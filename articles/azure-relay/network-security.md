@@ -3,18 +3,18 @@ title: Zabezpečení sítě pro Azure Relay
 description: Tento článek popisuje, jak pomocí Azure Relay používat pravidla brány firewall protokolu IP a soukromé koncové body.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 3aa3ffd119f65ec5181b0c382472cc4ef3c8bac4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 608224f42fac8cd2d8ff06ab84989b1f675d418c
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91263721"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134462"
 ---
 # <a name="network-security-for-azure-relay"></a>Zabezpečení sítě pro Azure Relay 
 Tento článek popisuje, jak používat následující funkce zabezpečení pro Azure Relay: 
 
 - Pravidla brány firewall protokolu IP (Preview)
-- Soukromé koncové body (Preview)
+- Privátní koncové body 
 
 > [!NOTE]
 > Azure Relay nepodporuje koncové body síťové služby. 
@@ -29,14 +29,14 @@ Pravidla brány firewall protokolu IP se používají na úrovni oboru názvů p
 
 Další informace najdete v tématu [Postup konfigurace brány firewall protokolu IP pro obor názvů přenosu](ip-firewall-virtual-networks.md) .
 
-## <a name="private-endpoints"></a>Soukromé koncové body
-
-**Služba privátního propojení** Azure umožňuje přístup ke službám Azure (například Azure Relay, Azure Service Bus, Azure Event Hubs, Azure Storage a Azure Cosmos DB) a hostovaným zákaznickým a partnerským službám Azure prostřednictvím privátního koncového bodu ve vaší virtuální síti. Další informace najdete v tématu [co je to Azure Private Link (Preview)?](../private-link/private-link-overview.md)
-
-**Privátní koncový bod** je síťové rozhraní, které umožňuje, aby vaše úlohy spuštěné ve virtuální síti připojovaly soukromě a bezpečně ke službě, která má **prostředek privátního propojení** (například obor názvů přenosu). Privátní koncový bod používá privátní IP adresu z vaší virtuální sítě a efektivně ho přinášejí do vaší virtuální sítě. Veškerý provoz do služby se dá směrovat prostřednictvím privátního koncového bodu, takže se nevyžadují žádné brány, zařízení NAT, ExpressRoute, připojení VPN ani veřejné IP adresy. Přenosy mezi vaší virtuální sítí a službou procházejí přes páteřní síť Microsoftu, která eliminuje expozici veřejného Internetu. Úroveň členitosti můžete v řízení přístupu poskytnout tím, že povolíte připojení ke konkrétním oborům názvů Azure Relay.
-
 > [!NOTE]
 > Tato funkce je aktuálně ve **verzi Preview**. 
+
+## <a name="private-endpoints"></a>Privátní koncové body
+
+**Služba privátního propojení** Azure umožňuje přístup ke službám Azure (například Azure Relay, Azure Service Bus, Azure Event Hubs, Azure Storage a Azure Cosmos DB) a hostovaným zákaznickým a partnerským službám Azure prostřednictvím privátního koncového bodu ve vaší virtuální síti. Další informace najdete v tématu [co je privátní propojení Azure?](../private-link/private-link-overview.md)
+
+**Privátní koncový bod** je síťové rozhraní, které umožňuje, aby vaše úlohy spuštěné ve virtuální síti připojovaly soukromě a bezpečně ke službě, která má **prostředek privátního propojení** (například obor názvů přenosu). Privátní koncový bod používá privátní IP adresu z vaší virtuální sítě a efektivně ho přinášejí do vaší virtuální sítě. Veškerý provoz do služby se dá směrovat prostřednictvím privátního koncového bodu, takže se nevyžadují žádné brány, zařízení NAT, ExpressRoute, připojení VPN ani veřejné IP adresy. Přenosy mezi vaší virtuální sítí a službou procházejí přes páteřní síť Microsoftu, která eliminuje expozici veřejného Internetu. Úroveň členitosti můžete v řízení přístupu poskytnout tím, že povolíte připojení ke konkrétním oborům názvů Azure Relay.
 
 Další informace najdete v tématu [Konfigurace privátních koncových bodů](private-link-service.md) .
 

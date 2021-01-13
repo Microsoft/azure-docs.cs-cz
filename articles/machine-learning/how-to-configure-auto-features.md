@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to,automl,contperf-fy21q2
 ms.date: 12/18/2020
-ms.openlocfilehash: b26b0d9086f464556cbca2c70773374c3cccbd52
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 5fcb57d1ef909d7c15e21b34c3f584c6615a6a44
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915857"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134411"
 ---
 # <a name="data-featurization-in-automated-machine-learning"></a>Data featurization v automatizovaném strojovém učení
 
@@ -46,7 +46,7 @@ U experimentů, které nakonfigurujete pomocí sady Python SDK, můžete povolit
 
 V následující tabulce jsou uvedena přijímaná nastavení pro `featurization` ve [třídě AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig):
 
-|Konfigurace Featurization | Popis|
+|Konfigurace Featurization | Description|
 ------------- | ------------- |
 |`"featurization": 'auto'`| Určuje, že v rámci předběžného zpracování jsou kroky [guardrails dat](#data-guardrails) a [featurization](#featurization) provedeny automaticky. Toto nastavení je výchozí.|
 |`"featurization": 'off'`| Určuje, že kroky featurization se nemají automaticky provádět.|
@@ -61,7 +61,7 @@ Následující tabulka shrnuje techniky, které jsou automaticky aplikovány na 
 > [!NOTE]
 > Pokud plánujete exportovat AutoML vytvořené modely do [modelu ONNX](concept-onnx.md), ve formátu ONNX se podporují jenom možnosti featurization označené hvězdičkou (*). Přečtěte si další informace o [převodu modelů na ONNX](concept-automated-ml.md#use-with-onnx).
 
-|Featurization &nbsp; kroky| Popis |
+|Featurization &nbsp; kroky| Description |
 | ------------- | ------------- |
 |**Přetáhnout vysokou mohutnost nebo žádné funkce odchylky** _ |Tyto funkce přetáhněte ze sady školení a ověření. Platí pro funkce se všemi chybějícími hodnotami, se stejnou hodnotou ve všech řádcích nebo s vysokou mohutnou (například hodnoty hash, ID nebo identifikátory GUID).|
 |_*Imputace – chybějící hodnoty**_ |Pro číselné funkce imputace s průměrem hodnot ve sloupci.<br/><br/>V případě funkcí kategorií se imputac s nejčastější hodnotou.|
@@ -122,6 +122,9 @@ Mezi podporovaná přizpůsobení patří:
 |**Aktualizace parametrů transformátoru** |Aktualizuje parametry pro zadaný transformátor. V současné době podporuje *imputac* (střední, nejčastější a medián) a *HashOneHotEncoder*.|
 |**Vyřazení sloupců** |Určuje sloupce, které se mají odpustit z natrénuje.|
 |**Blokovat transformátory**| Určuje, že se mají v procesu featurization použít transformátory bloku.|
+
+>[!NOTE]
+> Funkce **drop Columns** je zastaralá od verze sady SDK 1,19. Vyřaďte sloupce z datové sady jako součást čištění dat, než je zahodíte v rámci automatizovaného experimentu ML. 
 
 Vytvořte `FeaturizationConfig` objekt pomocí volání rozhraní API:
 

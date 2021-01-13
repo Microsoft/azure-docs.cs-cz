@@ -9,12 +9,12 @@ ms.subservice: text-analytics
 ms.topic: include
 ms.date: 10/02/2020
 ms.author: aahi
-ms.openlocfilehash: 308b2a9cb00f44f0e330d4fef5592d8855ee3394
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 00c1c8ddab9214bf7698c21b05c24afa36ec20d9
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94553128"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98147545"
 ---
 ## <a name="text-analytics-for-health-categories-entities-and-attributes"></a>Analýza textu pro kategorie, entity a atributy stavu
 
@@ -23,15 +23,15 @@ ms.locfileid: "94553128"
 
 | Kategorie  | Popis  |
 |---------|---------|
-| ROZBOR | koncepty, které zaznamenávají informace o tělních a anatomii, lokalitách, umístěních nebo oblastech. |
- | DEMOGRAFICKÝCH údajů | koncepty, které zaznamenávají informace o pohlaví a stáří. |
- | PROVĚŘEN | koncepty, které zaznamenávají informace o diagnostických procedurách a testech. |
- | GENOMICS | koncepty, které zaznamenávají informace o genůch a variantách. |
- | ZDRAVOTNÍ | koncepty, které zaznamenávají informace o událostech správy, prostředích péče a zdravotních profesích. |
- | LÉKAŘSKÝ STAV | koncepty, které zaznamenávají informace o Diagnostics, symptomech nebo symbolech. |
- | LÉKŮ | koncepty, které zaznamenávají informace o léků, včetně léků názvů, tříd, dávkování a směrování správy. |
- | RODN | koncepty, které zaznamenávají informace o lékařsky relevantních sociálních aspektech, jako je například rodinný vztah. |
- | NÍ | koncepty, které zaznamenávají informace o léčebných postupech. |
+| [ROZBOR](#anatomy) | koncepty, které zaznamenávají informace o tělních a anatomii, lokalitách, umístěních nebo oblastech. |
+ | [DEMOGRAFICKÝCH údajů](#demographics) | koncepty, které zaznamenávají informace o pohlaví a stáří. |
+ | [PROVĚŘEN](#examinations) | koncepty, které zaznamenávají informace o diagnostických procedurách a testech. |
+ | [GENOMICS](#genomics) | koncepty, které zaznamenávají informace o genůch a variantách. |
+ | [ZDRAVOTNÍ](#healthcare) | koncepty, které zaznamenávají informace o událostech správy, prostředích péče a zdravotních profesích. |
+ | [LÉKAŘSKÝ STAV](#medical-condition) | koncepty, které zaznamenávají informace o Diagnostics, symptomech nebo symbolech. |
+ | [LÉKŮ](#medication) | koncepty, které zaznamenávají informace o léků, včetně léků názvů, tříd, dávkování a směrování správy. |
+ | [RODN](#social) | koncepty, které zaznamenávají informace o lékařsky relevantních sociálních aspektech, jako je například rodinný vztah. |
+ | [NÍ](#treatment) | koncepty, které zaznamenávají informace o léčebných postupech. |
   
 Každá kategorie může zahrnovat dvě skupiny konceptů:
 
@@ -102,7 +102,7 @@ Kromě toho služba rozpoznává vztahy mezi různými koncepty, včetně vztah�
 
 :::image type="content" source="../../media/ta-for-health/exam-unit-attribute.png" alt-text="Příklad atributu měrné jednotky s entitou názvu testu":::
 
-**MEASUREMENT_VALUE** – hodnota kontroly. Například v *hemoglobin > 9,5 g/dl* , je výraz *9,5* hodnota pro test *hemoglobin* .
+**MEASUREMENT_VALUE** – hodnota kontroly. Například v *hemoglobin > 9,5 g/dl*, je výraz *9,5* hodnota pro test *hemoglobin* .
 
 :::image type="content" source="../../media/ta-for-health/exam-value-attribute.png" alt-text="Příklad atributu hodnot měření s entitou názvu testu":::
 
@@ -267,7 +267,15 @@ Kromě toho služba rozpoznává vztahy mezi různými koncepty, včetně vztah�
 +   **FREQUENCY_OF_MEDICATION**
 +   **ROUTE_OF_MEDICATION**
 +   **TIME_OF_MEDICATION**
-  
+
+## <a name="social"></a>Sociální sítě
+
+### <a name="entities"></a>Entity
+
+**FAMILY_RELATION** – zmínky o rodinných příbuzních daného subjektu. Například otců, dceřiné, na stejné úrovni, rodiče.
+
+:::image type="content" source="../../media/ta-for-health/family-relation.png" alt-text="Snímek obrazovky ukazuje jiný příklad atributu doby zpracování.":::
+
 ## <a name="treatment"></a>Ní
 
 ### <a name="entities"></a>Entity
@@ -294,17 +302,8 @@ Kromě toho služba rozpoznává vztahy mezi různými koncepty, včetně vztah�
 
 :::image type="content" source="../../media/ta-for-health/treatment-time.png" alt-text="Snímek obrazovky ukazuje příklad atributu doby zpracování.":::
 
-
 ### <a name="supported-relations"></a>Podporované relace
 
 + **DIRECTION_OF_TREATMENT**
 +   **TIME_OF_TREATMENT**
 +   **FREQUENCY_OF_TREATMENT**
-
-## <a name="social"></a>Sociální sítě
-
-### <a name="entities"></a>Entity
-
-**FAMILY_RELATION** – zmínky o rodinných příbuzních daného subjektu. Například otců, dceřiné, na stejné úrovni, rodiče.
-
-:::image type="content" source="../../media/ta-for-health/family-relation.png" alt-text="Snímek obrazovky ukazuje jiný příklad atributu doby zpracování.":::

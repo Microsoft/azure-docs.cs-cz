@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 12/11/2020
 ms.author: aahi
 ms.reviewer: assafi
-ms.openlocfilehash: 8ed768d7bb47db6f102dbb48b438f9f4a2987f1e
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 805ee7f5b210a09335b2177b83777c5caa805858
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97366353"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98147650"
 ---
 <a name="HOLTop"></a>
 
@@ -32,7 +32,7 @@ ms.locfileid: "97366353"
 
 ---
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * [Integrované vývojové prostředí (IDE) sady Visual Studio](https://visualstudio.microsoft.com/vs/)
@@ -268,7 +268,7 @@ static void SentimentAnalysisWithOpinionMiningExample(TextAnalyticsClient client
 
     AnalyzeSentimentResultCollection reviews = client.AnalyzeSentimentBatch(documents, options: new AnalyzeSentimentOptions()
     {
-        AdditionalSentimentAnalyses = AdditionalSentimentAnalyses.OpinionMining
+        IncludeOpinionMining = true
     });
 
     foreach (AnalyzeSentimentResult review in reviews)
@@ -395,7 +395,7 @@ Sentiment Score: 0.87
 
 ---
 
-## <a name="language-detection"></a>rozpoznávání jazyka,
+## <a name="language-detection"></a>Rozpoznávání jazyka
 
 # <a name="version-31-preview"></a>[Verze 3,1 Preview](#tab/version-3-1)
 
@@ -735,7 +735,7 @@ Vytvořte novou funkci s názvem `RecognizeEntitiesExample()` , která převezme
 --- 
 
 
-### <a name="key-phrase-extraction"></a>extrakce klíčových frází,
+### <a name="key-phrase-extraction"></a>Extrakce klíčových frází
 
 # <a name="version-31-preview"></a>[Verze 3,1 Preview](#tab/version-3-1)
 
