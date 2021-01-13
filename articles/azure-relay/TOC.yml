@@ -67,7 +67,7 @@
       items:
         - name: Konfigurace brány firewall protokolu IP (Preview)
           href: ip-firewall-virtual-networks.md
-        - name: Konfigurace privátních koncových bodů (Preview)
+        - name: Konfigurace privátních koncových bodů
           href: private-link-service.md
     - name: Správa a monitorování
       items:
