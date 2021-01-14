@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 1/13/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: b84256188cf5df3ddf389f763e669a2b2ca00852
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: e2f0d62ae6882229cee3ee32e3b362f2b6593da7
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183332"
+ms.locfileid: "98199231"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Řešení problémů se Synchronizací souborů Azure
 Pomocí Azure File Sync můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
@@ -52,9 +52,11 @@ Pokud chcete tento problém vyřešit, nainstalujte [KB2919355](https://support.
 <a id="server-registration-missing-subscriptions"></a>**Registrace serveru nezobrazuje seznam všech předplatných Azure.**  
 Při registraci serveru pomocí ServerRegistration.exe po kliknutí na rozevírací seznam předplatné Azure chybí předplatná.
 
-K tomuto problému dochází, protože ServerRegistration.exe v současné době nepodporuje prostředí s více klienty. Tento problém bude opraven v budoucí aktualizaci Azure File Sync agenta.
+K tomuto problému dochází, protože ServerRegistration.exe načte jenom odběry z prvních 5 tenantů Azure AD. 
 
-Pokud chcete tento problém vyřešit, použijte k registraci serveru následující příkazy PowerShellu:
+Pokud chcete zvýšit limit tenanta registrace serveru na serveru, vytvořte hodnotu DWORD s názvem ServerRegistrationTenantLimit v části HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync s hodnotou větší než 5.
+
+Tento problém můžete také vyřešit pomocí následujících příkazů PowerShellu k registraci serveru:
 
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
@@ -1318,7 +1320,7 @@ Pro agenta verze V10 za účelem a starší:
 6. Soubor. zip, který obsahuje protokoly a trasovací soubory, je uložen do výstupního adresáře, který jste zadali.
 
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 - [Sledování služby Synchronizace souborů Azure](storage-sync-files-monitoring.md)
 - [Nejčastější dotazy k souborům Azure](storage-files-faq.md)
 - [Řešení potíží se službou Azure Files ve Windows](storage-troubleshoot-windows-file-connection-problems.md)

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 038d19270fbdb672d397eb2bd56bd27e17ea7af9
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: f407f9ee2ea0ca73b29e4fde9d542c005f78a929
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929085"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200443"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Osvědčené postupy pro konfiguraci aplikací Azure
 
@@ -89,6 +89,10 @@ Konfigurace aplikací nabízí možnost hromadného [importu](./howto-import-exp
 ## <a name="multi-region-deployment-in-app-configuration"></a>Nasazení ve více oblastech v konfiguraci aplikace
 
 Konfigurace aplikace je regionální služba. Pro aplikace s různými konfiguracemi v jednotlivých oblastech může ukládání těchto konfigurací v jedné instanci vytvořit jediný bod selhání. Nasazení jedné instance konfigurace aplikace na oblast napříč více oblastmi může být lepší volbou. Může pomáhat s regionálním zotavením po havárii, výkonem a silou zabezpečení. Konfigurace podle oblastí taky zlepšuje latenci a používá kvóty pro oddělené omezování, protože omezování je na instanci. Pokud chcete použít zmírnění zotavení po havárii, můžete použít [víc úložišť konfigurací](./concept-disaster-recovery.md). 
+
+## <a name="client-applications-in-app-configuration"></a>Klientské aplikace v konfiguraci aplikace 
+
+Nadměrné požadavky na konfiguraci aplikací můžou mít za následek omezení nebo překročení limitu. Aplikace využívají ukládání do mezipaměti a inteligentní aktualizace aktuálně dostupné k optimalizaci počtu požadavků, které odesílají. Tento proces se dá zrcadlit v klientských aplikacích s vysokým objemem, protože se vyhnete přímým připojením k úložišti konfigurace. Místo toho se klientské aplikace připojí k vlastní službě a tato služba komunikuje s úložištěm konfigurace. Toto řešení proxy může zajistit, aby klientské aplikace nepřístuply k omezení omezení v úložišti konfigurací. Další informace o omezování najdete v [nejčastějších dotazech](https://docs.microsoft.com/azure/azure-app-configuration/faq#are-there-any-limits-on-the-number-of-requests-made-to-app-configuration).  
 
 ## <a name="next-steps"></a>Další kroky
 

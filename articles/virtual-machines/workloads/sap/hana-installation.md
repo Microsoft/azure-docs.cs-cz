@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 01/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a1430b32c0e74be7a0e50fa4c5c183018b2b55e0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 81d44dae0fed45d4a4df76973c7e233fd71baff1
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006298"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98198964"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Jak nainstalovat a nakonfigurovat SAP HANA (velké instance) v Azure
 
@@ -129,7 +129,7 @@ V důsledku toho musíte nastavit samostatný časový server, který mohou pou�
 Předpokládáme, že jste postupovali podle doporučení v tématu navrhování virtuálních sítí Azure a v tématu propojení těchto virtuálních sítí s velkými instancemi HANA, jak je popsáno v následujících dokumentech:
 
 - [Přehled a architektura SAP HANA (Velká instance) v Azure](./hana-overview-architecture.md)
-- [SAP HANA (velké instance) infrastruktury a připojení v Azure](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [SAP HANA (velké instance) infrastruktury a připojení v Azure](hana-overview-infrastructure-connectivity.md)
 
 V některých podrobnostech se dozvíte o sítích jednotlivých jednotek. Každá jednotka velkých instancí HANA má dvě nebo tři IP adresy, které jsou přiřazené dvěma nebo třem portům síťových adaptérů. V konfiguracích se škálováním na více systémů a ve scénáři replikace systému HANA se používají tři IP adresy. Jedna z IP adres přiřazená síťovému rozhraní jednotky je mimo fond IP adres, který je popsaný v tématu [SAP Hana (velké instance) přehled a architektura v Azure](./hana-overview-architecture.md).
 
@@ -139,7 +139,7 @@ Další informace o možnostech sítě Ethernet pro vaši architekturu najdete v
 
 Rozložení úložiště pro SAP HANA v Azure (velké instance) se konfiguruje SAP HANA v Azure `service management` prostřednictvím doporučených pokynů SAP. Tyto pokyny jsou popsány v dokumentu White Paper [požadavky na úložiště SAP HANA](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) . 
 
-Hrubou velikost různých svazků s různými jednotkami SKU velkých instancí HANA je popsána v článku [SAP Hana (velké instance) přehled a architektura v Azure](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Hrubou velikost různých svazků s různými jednotkami SKU velkých instancí HANA je popsána v článku [SAP Hana (velké instance) přehled a architektura v Azure](hana-overview-architecture.md).
 
 Zásady vytváření názvů svazků úložiště jsou uvedené v následující tabulce:
 
@@ -161,7 +161,7 @@ Pro prostředí se škálováním na více instancí se svazky, protokoly a zál
 
 Když se podíváte na jednotku velkých instancí HANA, zjistíte, že jednotky přicházejí do velkorysáho disku pro HANA a data a že je k dispozici svazek HANA/log/Backup. Důvodem pro velké objemy HANA/dat je to, že snímky úložiště, které nabízíme jako zákazník, používají stejný diskový svazek. Víc snímků úložiště, které provedete, je více místa spotřebované snímky v přiřazených svazcích úložiště. 
 
-Svazek HANA/log/Backup by neměl být svazkem pro zálohy databáze. Má velikost, která se má použít jako záložní svazek pro zálohy protokolu transakcí HANA. Další informace najdete v tématu [SAP Hana (velké instance) vysoká dostupnost a zotavení po havárii v Azure](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
+Svazek HANA/log/Backup by neměl být svazkem pro zálohy databáze. Má velikost, která se má použít jako záložní svazek pro zálohy protokolu transakcí HANA. Další informace najdete v tématu [SAP Hana (velké instance) vysoká dostupnost a zotavení po havárii v Azure](hana-overview-high-availability-disaster-recovery.md). 
 
 Kromě úložiště, které je k dispozici, můžete zakoupit další kapacitu úložiště v přírůstcích po 1 TB. Toto dodatečné úložiště je možné přidat jako nové svazky do velké instance HANA.
 

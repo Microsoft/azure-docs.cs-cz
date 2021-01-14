@@ -1,18 +1,18 @@
 ---
-title: Označení citlivosti vytváření sestav pro vaše data v Azure Blob Storage
-description: Tato příručka popisuje, jak zobrazit a používat dosah popisek pro vytváření sestav pro vaše data v Azure Blob Storage.
+title: Označení citlivosti vytváření sestav pro vaše data v Azure dosah pomocí dosah Insights
+description: V této příručce se dozvíte, jak zobrazit a použít označení citlivosti dosah při vytváření sestav pro vaše data.
 author: batamig
 ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/24/2020
-ms.openlocfilehash: e6a92282d2bcd316a771742048dacd9a7181de4f
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: dffecb48a8faa869cb3df450cc220e86195bbc87
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746178"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98199372"
 ---
 # <a name="sensitivity-label-insights-about-your-data-in-azure-purview"></a>Přehledy o vašich datech v Azure dosah s popisem citlivosti
 
@@ -27,7 +27,12 @@ V této příručce se dozvíte, jak:
 > - Zobrazení citlivosti popisků při označování dat
 > - Přechod k podrobnostem o dalších citlivostech týkajících se označování dat
 
-## <a name="prerequisites"></a>Předpoklady
+> [!NOTE]
+> Popisky citlivosti nalezené v [Power BIch prostředcích](register-scan-power-bi-tenant.md) , které jsou prohledávány pomocí dosah, nejsou aktuálně zobrazeny v sestavě citlivostní označování. 
+>
+> Chcete-li zobrazit popisky citlivosti Power BI assety, zobrazte Asset v [Data Catalog dosah](how-to-search-catalog.md).
+> 
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete s dosah přehledy, ujistěte se, že jste dokončili následující kroky:
 
@@ -37,6 +42,8 @@ Než začnete s dosah přehledy, ujistěte se, že jste dokončili následujíc�
 
 - Nastavení a dokončení kontroly dat testu v každém zdroji dat
 
+- Přihlásili jste se k dosah pomocí účtu s [rolí data Reader nebo data kurátor](catalog-permissions.md#azure-purviews-pre-defined-data-plane-roles).
+
 Další informace najdete v tématech [Správa zdrojů dat ve službě Azure dosah (Preview)](manage-data-sources.md) a [Automatické označování dat v Azure dosah](create-sensitivity-label.md).
 
 ## <a name="use-purview-sensitivity-labeling-insights"></a>Použití dosah s popisem citlivosti
@@ -45,9 +52,11 @@ V dosah se klasifikace podobají značkám předmětu a používají se k označ
 
 Popisky citlivosti umožňují určit, jak citlivá data jsou ve vaší organizaci. Konkrétní název projektu může být například vysoce důvěrný v rámci vaší organizace, zatímco stejný termín není důvěrný pro jiné organizace. 
 
-I když se klasifikace shodují přímo (číslo sociálního zabezpečení má klasifikaci **rodného čísla**), používají se popisky citlivosti, když se jedna nebo víc klasifikací a scénářů najde společně. 
+Klasifikace se shodují přímo, jako je číslo sociálního pojištění, které má klasifikaci **čísla sociálního pojištění**. 
 
-Dosah používá stejné klasifikace, označované také jako typy citlivých informací, jak Microsoft 365. To vám umožní roztáhnout stávající popisky citlivosti napříč prostředky Azure dosah.
+Na rozdíl od jsou popisky citlivosti aplikovány, když se jedna nebo více klasifikací a podmínek společně nacházejí. V tomto kontextu [podmínky](/microsoft-365/compliance/apply-sensitivity-label-automatically) odkazují na všechny parametry, které můžete definovat pro nestrukturovaná data, jako je například **blízkost jiné klasifikace**, a **spolehlivost%**. 
+
+Dosah používá stejné klasifikace, označované také jako [typy citlivých informací](/microsoft-365/compliance/sensitive-information-type-entity-definitions), jak Microsoft 365. To vám umožní roztáhnout stávající popisky citlivosti napříč prostředky Azure dosah.
 
 > [!NOTE]
 > Po prohledání vašich typů zdrojů popište **citlivostní označování** o několik hodin, aby odrážely nové prostředky.
@@ -69,7 +78,7 @@ Dosah používá stejné klasifikace, označované také jako typy citlivých in
 
    Hlavní stránka s **popisem citlivosti popisky** zobrazuje následující oblasti:
 
-   |Oblast  |Popis  |
+   |Plošný  |Description  |
    |---------|---------|
    |**Přehled zdrojů s popisky citlivosti**     |Zobrazí dlaždice, které poskytují: <br>– Počet odběrů nalezených ve vašich datech. <br>– Počet jedinečných popisků citlivosti použitých na vaše data <br>– Počet zdrojů s použitými popisky citlivosti <br>– Počet souborů a tabulek nalezených s použitými popisky citlivosti|
    |**Hlavní zdroje s popisky dat (posledních 30 dní)**     | Zobrazuje trend, za posledních 30 dní, z počtu zdrojů s použitými popisky citlivosti.       |

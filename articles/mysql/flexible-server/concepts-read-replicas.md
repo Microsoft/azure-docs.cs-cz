@@ -5,13 +5,13 @@ author: ambhatna
 ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/26/2020
-ms.openlocfilehash: 3fe63deb8115c0043023301c6d0dc3731e97743f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 01/14/2021
+ms.openlocfilehash: ccae7b3f201e55af0e9e6b4ca9e7fd4ffb9c4897
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492621"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200970"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql---flexible-server"></a>Čtení replik v Azure Database for MySQL-flexibilním serveru
 
@@ -24,14 +24,14 @@ Na straně aplikace je aplikace obvykle vyvinutá v jazyce Java nebo php a migro
 
 Funkce replika čtení umožňuje replikovat data z Azure Database for MySQL flexibilního serveru do serveru jen pro čtení. Můžete replikovat ze zdrojového serveru do až **10** replik. Repliky se aktualizují asynchronně s využitím technologie replikace na základě pozice v souboru binárního protokolu (binlog) nativní pro stroj MySQL. Další informace o replikaci binlog najdete v tématu [Přehled replikace MySQL binlog](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html).
 
-Repliky jsou nové servery, které spravujete podobně jako vaše zdrojové Azure Database for MySQL flexibilní servery. Účtují se vám poplatky za každou repliku čtení na základě zřízené výpočetní služby v virtuální jádra a úložišti v GB/měsíc. Další informace najdete v tématu [ceny](./concepts-compute-storage.md#pricing).
+Repliky jsou nové servery, které spravujete podobně jako vaše zdrojové Azure Database for MySQL flexibilní servery. Účtují se vám poplatky za každou repliku čtení na základě zřízené výpočetní služby v virtuální jádra a úložišti v GB/měsíc. Další informace najdete na stránce s [cenami](./concepts-compute-storage.md#pricing).
 
 Další informace o funkcích a problémech replikace MySQL najdete v [dokumentaci k replikaci MySQL](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html).
 
 > [!NOTE]
 > Komunikace bez posunu
 >
-> Microsoft podporuje různé a zahrnuté prostředí. Tento článek obsahuje odkazy na _podřízený_ text. [Průvodce stylem Microsoft pro komunikaci bez předplatných](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) se tímto způsobem rozpoznává jako vyloučené slovo. Toto slovo se v tomto článku používá kvůli konzistenci, protože je aktuálně slovo, které se zobrazuje v softwaru. Když se software aktualizuje, aby se odebralo slovo, aktualizuje se tento článek na zarovnání.
+> Microsoft podporuje různé a zahrnuté prostředí. Tento článek obsahuje odkazy na _Hlavní_ a _podřízený_ text. [Průvodce stylem Microsoftu pro komunikaci bez předplatných](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) je rozpoznává jako vyloučená slova. Tato slova se v tomto článku používají kvůli konzistenci, protože jsou aktuálně slova, která se zobrazují v softwaru. Když se software aktualizuje, aby se odstranila slova, Tento článek se aktualizuje tak, aby se vyrovnává.
 >
 
 ## <a name="common-use-cases-for-read-replica"></a>Běžné případy použití pro čtení repliky
@@ -40,7 +40,7 @@ Funkce replika čtení pomáhá zlepšit výkon a škálu úloh náročných na 
 
 Mezi běžné scénáře patří:
 
-* Škálování čtení-úloh přicházejících z aplikace pomocí proxy jednoduchého připojení jako [ProxySQL](https://aka.ms/ProxySQLLoadBalanceReplica) nebo pomocí vzoru založeného na mikroslužbách pro horizontální navýšení kapacity čtení dotazů přicházejících z aplikace na čtení replik
+* Škálování čtení-úloh přicházejících z aplikace pomocí proxy serveru s odlehčeným připojením, jako je [ProxySQL](https://aka.ms/ProxySQLLoadBalanceReplica) nebo pomocí vzoru založeného na mikroslužbách pro horizontální navýšení kapacity čtení dotazů přicházejících z aplikace na čtení replik
 * Úlohy sestav BI nebo analytická můžou používat repliky pro čtení jako zdroj dat pro vytváření sestav.
 * V případě IoT nebo výrobního scénáře, kdy se informace o telemetrii ingestují do databázového stroje MySQL, zatímco pro vytváření sestav dat se používá víc replik pro čtení
 
@@ -93,23 +93,23 @@ Přečtěte si, jak [zastavit replikaci do repliky](how-to-read-replicas-portal.
 
 ## <a name="failover"></a>Převzetí služeb při selhání
 
-Mezi zdrojovým serverem a serverem repliky neexistuje automatizované převzetí služeb při selhání. 
+Mezi zdrojovým serverem a serverem repliky neexistuje automatizované převzetí služeb při selhání.
 
 Repliky čtení jsou určené pro škálování úloh náročných na čtení a nejsou navržené tak, aby splňovaly požadavky serveru na vysokou dostupnost. Mezi zdrojovým serverem a serverem repliky neexistuje automatizované převzetí služeb při selhání. Když se replikace v replice pro čtení zastavuje online v režimu čtení, je to způsob, jakým se provádí ruční převzetí služeb při selhání.
 
-Vzhledem k tomu, že replikace je asynchronní, existuje prodleva mezi zdrojem a replikou. Velikost prodlevy může mít vliv na několik faktorů, jako je to, jak velké zatížení na zdrojovém serveru běží a latence mezi datovými centry. Ve většině případů je prodleva repliky v rozsahu od několika sekund do několika minut. Vlastní prodlevu replikace můžete sledovat pomocí *prodlevy repliky* metriky, která je k dispozici pro každou repliku. Tato metrika ukazuje čas od poslední opakované transakce. Doporučujeme, abyste zjistili, jaký je průměrný prodleva tím, že v časovém intervalu pozoruje prodlevu repliky. Můžete nastavit upozornění na prodlevu repliky, takže pokud bude mimo očekávaný rozsah, můžete provést akci.
+Vzhledem k tomu, že replikace je asynchronní, existuje prodleva mezi zdrojem a replikou. Velikost prodlevy může mít vliv na mnoho faktorů, jako je to, jak velké zatížení na zdrojovém serveru běží, a latence mezi datovými centry. Ve většině případů je prodleva repliky v rozsahu od několika sekund do několika minut. Vlastní prodlevu replikace můžete sledovat pomocí *prodlevy repliky* metriky, která je k dispozici pro každou repliku. Tato metrika ukazuje čas od poslední opakované transakce. Doporučujeme, abyste zjistili, jaký je průměrný prodleva tím, že v časovém intervalu pozoruje prodlevu repliky. Můžete nastavit upozornění na prodlevu repliky, takže pokud bude mimo očekávaný rozsah, můžete provést akci.
 
 > [!Tip]
 > Pokud převzetí služeb při selhání repliky přestanou, prodleva v době odpojování repliky ze zdroje bude označovat, kolik dat se ztratilo.
 
-Jakmile se rozhodnete, že chcete převzít služeb při selhání do repliky, 
+Až se rozhodnete pro převzetí služeb při selhání do repliky:
 
 1. Zastavení replikace do repliky<br/>
-   Tento krok je nezbytný k tomu, aby server repliky mohl přijímat zápisy. V rámci tohoto procesu se server repliky odpojí ze zdroje. Jakmile zahájíte zastavení replikace, proces back-endu obvykle trvá přibližně 2 minuty, než se dokončí. V části [zastavení replikace](#stop-replication) v tomto článku se seznámíte s důsledky této akce.
-    
+   Tento krok je nezbytný k tomu, aby server repliky mohl přijímat zápisy. V rámci tohoto procesu se server repliky odpojí ze zdroje. Po zahájení zastavení replikace bude proces back-endu obvykle trvat přibližně 2 minuty, než se dokončí. V části [zastavení replikace](#stop-replication) v tomto článku se seznámíte s důsledky této akce.
+
 2. Nasměrujte aplikaci na (bývalé) repliku.<br/>
    Každý server má jedinečný připojovací řetězec. Aktualizujte svou aplikaci tak, aby odkazovala na (bývalé) repliku místo zdroje.
-    
+
 Po úspěšném zpracování čtení a zápisu vaší aplikace jste dokončili převzetí služeb při selhání. Množství prostojů, na kterých bude prostředí aplikace záviset při zjištění problému a dokončení kroků 1 a 2 výše.
 
 ## <a name="considerations-and-limitations"></a>Důležité informace a omezení
@@ -125,10 +125,10 @@ Po úspěšném zpracování čtení a zápisu vaší aplikace jste dokončili p
 | Zastavené repliky | Pokud zastavíte replikaci mezi zdrojovým serverem a replikou pro čtení, zastavená replika se stane samostatným serverem, který přijímá čtení i zápis. Samostatný server se nedá znovu vytvořit do repliky. |
 | Odstraněné zdrojové a samostatné servery | Po odstranění zdrojového serveru se replikace zastaví na všechny repliky čtení. Tyto repliky se automaticky změní na samostatné servery a můžou přijímat operace čtení i zápisu. Samotný zdrojový server se odstraní. |
 | Uživatelské účty | Uživatelé na zdrojovém serveru se replikují do replik pro čtení. K replice pro čtení se můžete připojit pouze pomocí uživatelských účtů, které jsou k dispozici na zdrojovém serveru. |
-| Parametry serveru | Aby se při použití replik pro čtení zabránilo přerušení synchronizace dat a možné ztrátě nebo poškození dat, některé parametry serveru neumožňují aktualizaci. <br> Následující parametry serveru jsou uzamčené na zdrojovém serveru i na serverech repliky:<br> - [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/8.0/en/innodb-file-per-table-tablespaces.html) <br> - [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) <br> [`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler)Parametr je uzamčen na serverech repliky. <br> Pokud chcete na zdrojovém serveru aktualizovat jeden z výše uvedených parametrů, odstraňte prosím servery repliky, aktualizujte hodnotu parametru ve zdroji a znovu vytvořte repliky. |
+| Parametry serveru | Aby se při použití replik pro čtení zabránilo přerušení synchronizace dat a možné ztrátě nebo poškození dat, některé parametry serveru neumožňují aktualizaci. <br> Následující parametry serveru jsou uzamčené na zdrojovém serveru i na serverech repliky:<br> - [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/8.0/en/innodb-file-per-table-tablespaces.html) <br> - [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) <br> [`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler)Parametr je uzamčen na serverech repliky. <br> Pokud chcete na zdrojovém serveru aktualizovat jeden z výše uvedených parametrů, odstraňte servery repliky, aktualizujte hodnotu parametru ve zdroji a znovu vytvořte repliky. |
 | Jiné | -Vytvoření repliky repliky není podporováno. <br> – Tabulky v paměti můžou způsobit, že se repliky nesynchronizují. Toto je omezení technologie replikace MySQL. Další informace najdete v [referenční dokumentaci k MySQL](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html) . <br>– Zajistěte, aby tabulky zdrojového serveru měly primární klíče. Nedostatek primárních klíčů může způsobit latenci replikace mezi zdrojem a replikami.<br>– Projděte si úplný seznam omezení replikace MySQL v [dokumentaci k MySQL](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html) . |
 
 ## <a name="next-steps"></a>Další kroky
 
-- Naučte se [vytvářet a spravovat repliky pro čtení pomocí Azure Portal](how-to-read-replicas-portal.md)
-- Naučte se [vytvářet a spravovat repliky pro čtení pomocí Azure CLI](how-to-read-replicas-cli.md) .
+* Naučte se [vytvářet a spravovat repliky pro čtení pomocí Azure Portal](how-to-read-replicas-portal.md)
+* Naučte se [vytvářet a spravovat repliky pro čtení pomocí Azure CLI](how-to-read-replicas-cli.md) .

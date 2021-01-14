@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: procha
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 779add921b82f4cd39e86864c600f056489e904e
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 855f7b36c99bf7563c694529a43054da350561b7
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368589"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200851"
 ---
 # <a name="azure-synapse-analytics-data-integration-partners"></a>Partneři Azure synapse Analytics pro integraci dat
 
@@ -24,12 +24,12 @@ Pokud chcete vytvořit řešení datového skladu pomocí vyhrazeného fondu SQL
 
 ## <a name="data-integration-partners"></a>Partneři pro integraci dat
 
-| Partner | Popis | Odkaz na web/produkt |
+| Partner | Description | Odkaz na web/produkt |
 | ------- | ----------- | -------------------- |
 | ![Založený na AB](./media/sql-data-warehouse-partner-data-integration/abinitio-logo.png) |**Založený na AB**<br> Agilní digitální technický vývoj pro firmy ze společnosti Initio vám pomůže vyřešit náročné problémy se zpracováním dat a správou dat v podnikovém výpočetním prostředí. Cloudová platforma založená na službě AB umožňuje přístup a používání dat kdekoli v podnikovém ekosystému, ať už v Azure, nebo v místním prostředí, včetně dat uložených ve starších systémech. Kombinace intuitivního rozhraní s výkonnými funkcemi pro automatizaci, kvalitu dat, řízení dat a aktivní metadata umožňuje rychlý vývoj a skutečnou samoobslužnou práci s daty, aby analytici mohli rychle a efektivně provádět své úlohy. Přihlaste se k největším firmám na světě pomocí prostředí AB a zapněte velká data na smysluplná data. |[Stránka produktu](https://www.abinitio.com/) |
 | ![Alooma](./media/sql-data-warehouse-partner-data-integration/alooma_logo.png) |**Alooma**<br> Alooma je řešení pro extrakci, transformaci a načítání (ETL), které umožňuje datovým týmům integraci, obohacení a streamování dat z různých sila dat do datového skladu Azure synapse v reálném čase. |[Stránka produktu](https://www.alooma.com/) |
 | ![Alteryx](./media/sql-data-warehouse-partner-data-integration/alteryx_logo.png) |**Alteryx**<br> Alteryx Designer poskytuje opakovaně pracovní postup pro analýzu dat samoobslužných služeb, který vede k hlubším přehledům v řádu hodin, ne k týdenům typickým z tradičních přístupů. Alteryx Designer pomáhá analytikům dat kombinací přípravy dat, míchání dat a analýz – prediktivní, statistická a prostorová – pomocí stejného intuitivního uživatelského rozhraní. |[Stránka produktu](https://www.alteryx.com/partners/microsoft/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/alteryx.alteryx-designer)<br>|
-| ![Attunity](./media/sql-data-warehouse-partner-data-integration/attunity_logo.png) |**Attunity (CloudBeam)**<br>Attunity CloudBeam poskytuje automatizované řešení pro načítání dat do datového skladu Azure synapse. Zjednodušuje dávkové načítání a přírůstkovou replikaci dat z mnoha zdrojů – SQL Server, Oracle, DB2, Sybase, MySQL a dalších. |[Stránka produktu](http://www.attunity.com/attunity-cloudbeam-for-azure/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/attunity_cloudbeam.cloudbeam-dw-byol) <br> |
+| ![Attunity](./media/sql-data-warehouse-partner-data-integration/attunity_logo.png) |**Attunity (CloudBeam)**<br>Attunity CloudBeam poskytuje automatizované řešení pro načítání dat do datového skladu Azure synapse. Zjednodušuje dávkové načítání a přírůstkovou replikaci dat z mnoha zdrojů – SQL Server, Oracle, DB2, Sybase, MySQL a dalších. |[Stránka produktu](http://www.attunity.com/attunity-cloudbeam-for-azure/)<br>[Azure Marketplace](https://aws.amazon.com/marketplace/pp/Attunity-Attunity-CloudBeam/B00B5PB8IM) <br> |
 | ![Oddíly](./media/sql-data-warehouse-partner-data-integration/cdata-logo.png) |**CData Sync-cloudový datový kanál**<br>Vytvářejte vysoce výkonné datové kanály pro Microsoft Azure synapse během několika minut. Oddíl CData Sync je snadno použitelný kanál ETL nebo ELT, který zjednodušuje tok dat z více než 200 zdrojů podnikových dat do Azure synapse.  Pomocí CData Sync můžou uživatelé snadno vytvářet automatizované průběžné replikace dat mezi účetnictvím, CRM, ERP, automatizací marketingu, místními a cloudovým daty.|[Stránka produktu](https://www.cdata.com/sync/to/azuresynapse/?utm_source=azuresynapse&utm_medium=partner)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/cdatasoftware.cdatasync?tab=Overview)<br>|
 | ![Denodo](./media/sql-data-warehouse-partner-data-integration/denodo_logo.png) |**Denodo**<br>Denodo zajišťuje přístup k datům v reálném čase napříč různými zdroji dat organizace. Virtualizace dat využívá k přemostění dat napříč mnoha zdroji bez replikace. Denodo nabízí širokou škálu přístupů k strukturovaným a nestrukturovaným datům umístěným v podnikových, velkých a cloudových zdrojích, a to v dávce i v reálném čase.|[Stránka produktu](https://www.denodo.com/en)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/denodo.denodo-platform-7_0)<br> |
 | ![Dimodelo](./media/sql-data-warehouse-partner-data-integration/dimodelo-logo.png) |**Dimodelo**<br>Dimodelo Data Warehouse Studio je Automatizační nástroj datového skladu pro datovou platformu Azure. Dimodelo vylepšuje produktivitu vývojářů prostřednictvím vyhrazeného modelování datových skladů a nástroje pro návrh ETL, generování kódu s osvědčenými postupy, nasazení jedním kliknutím a orchestrace ETL. Dimodelo vylepšuje udržovatelnost díky šíření změn, umožňuje vývojářům soustředit se na obchodní výsledky a automatizuje přenositelnost napříč datovými platformami.|[Stránka produktu](https://www.dimodelo.com/data-warehouse-studio-for-azure-synapse/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/dimodelosolutions.dimodeloazurevs)<br> |

@@ -10,18 +10,18 @@ ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: vikancha
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2dccfebed26c8064db697413e7417ae08d69a3ac
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 38d9727cadd925b944809956eaee51103499a2df
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022029"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200902"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-windows"></a>Instalace ovladačů NVIDIA GPU pro virtuální počítače řady N-Series s Windows 
 
 Pokud chcete využívat možnosti GPU pro virtuální počítače řady Azure N-Series, které využívají grafické procesory NVIDIA, musíte nainstalovat ovladače GPU NVIDIA. [Rozšíření ovladače NVIDIA GPU](../extensions/hpccompute-gpu-windows.md) nainstaluje vhodné ovladače NVIDIA CUDA nebo Grid na virtuální počítač řady N-Series. Nainstalujte nebo spravujte rozšíření pomocí Azure Portal nebo nástrojů, jako jsou šablony Azure PowerShell nebo Azure Resource Manager. Podporované operační systémy a kroky nasazení najdete v [dokumentaci k rozšíření ovladače GPU NVIDIA](../extensions/hpccompute-gpu-windows.md) .
 
-Pokud se rozhodnete nainstalovat ovladače NVIDIA GPU ručně, najdete v tomto článku podporované operační systémy, ovladače a postup instalace a ověření. Pro [virtuální počítače se systémem Linux](../linux/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)jsou k dispozici také informace o ruční instalaci ovladače.
+Pokud se rozhodnete nainstalovat ovladače NVIDIA GPU ručně, najdete v tomto článku podporované operační systémy, ovladače a postup instalace a ověření. Pro [virtuální počítače se systémem Linux](../linux/n-series-driver-setup.md)jsou k dispozici také informace o ruční instalaci ovladače.
 
 Základní specifikace, kapacity úložiště a podrobnosti o discích najdete v tématu [velikosti virtuálních počítačů s Windows GPU](../sizes-gpu.md?toc=/azure/virtual-machines/windows/toc.json). 
 

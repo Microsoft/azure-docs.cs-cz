@@ -4,12 +4,12 @@ description: Nastavení testů webu ve službě Application Insights. Zasílán�
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 82b433407906c09d38a46c842334153525fb3c17
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 1b51c70dcebbfad5417a8478f4a956fb5d0608b1
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007921"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98198658"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Monitorování dostupnosti jakéhokoli webu
 
@@ -26,6 +26,9 @@ Existují tři typy testů dostupnosti:
 * [Testy dostupnosti vlastních stop](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet): Pokud se rozhodnete vytvořit vlastní aplikaci pro spuštění testů dostupnosti, `TrackAvailability()` lze použít metodu k odeslání výsledků do Application Insights.
 
 **Pro každý prostředek Application Insights můžete vytvořit testy dostupnosti až 100.**
+
+> [!IMPORTANT]
+> [Test příkazového testu adresy URL](#create-a-url-ping-test) a [webový test na více kroků](availability-multistep.md) se spoléhá na veřejnou internetovou infrastrukturu DNS k překladu názvů domén testovaných koncových bodů. To znamená, že pokud používáte Privátní DNS, musíte buď zajistit, aby všechny názvy domén testu byly přeložitelnými servery veřejných domén, nebo pokud není možné, můžete místo toho použít [vlastní sledovací testy dostupnosti](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet) .
 
 ## <a name="create-an-application-insights-resource"></a>Vytvořte prostředek Application Insights
 
@@ -69,7 +72,7 @@ Pokud chcete vytvořit svou první žádost o dostupnost, otevřete podokno dost
 |Nastavení| Vysvětlení
 |----|----|----|
 |**Téměř v reálném čase (Preview)** | Doporučujeme používat upozornění téměř v reálném čase. Konfigurace tohoto typu upozornění se provádí po vytvoření testu dostupnosti.  |
-|**Klasický** | Pro nové testy dostupnosti už nedoporučujeme používat klasické výstrahy.|
+|**Standardním** | Pro nové testy dostupnosti už nedoporučujeme používat klasické výstrahy.|
 |**Prahová hodnota umístění výstrahy**|Doporučujeme minimálně 3/5 umístění. Optimální vztah mezi prahovou hodnotou umístění výstrahy a počtem testovacích umístění je **prahová hodnota pro umístění upozornění**  =  **v umístění testovacích umístění – 2, minimálně pět umístění testu.**|
 
 ### <a name="location-population-tags"></a>Umístění značek naplnění

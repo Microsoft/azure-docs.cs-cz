@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 03/30/2020
-ms.openlocfilehash: 5d07dda82361ff59a43aa6753669bf38f4463059
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: d996a2e0732ad9b4da104265710970e04cdbd368
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491133"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98199766"
 ---
 # <a name="configure-lead-management-for-dynamics-365-customer-engagement"></a>Konfigurace správy zájemců pro Dynamics 365 Customer Engagement
 
@@ -21,7 +21,7 @@ Tento článek popisuje, jak nastavit zákaznickou zapojení Dynamics 365 (dří
 >[!NOTE]
 >Tyto pokyny jsou specifické pro cloudové prostředí hostované Microsoftem pro zákaznickou zapojení Dynamics 365. Připojení přímo k místnímu prostředí Dynamics není v současné době podporováno. Existují i další možnosti, jak můžete přijímat zájemce, jako je například konfigurace [koncového bodu https](./commercial-marketplace-lead-management-instructions-https.md) nebo [tabulky Azure](./commercial-marketplace-lead-management-instructions-azure-table.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení kroků v tomto článku jsou nutná následující uživatelská oprávnění:
 
@@ -37,19 +37,19 @@ K dokončení kroků v tomto článku jsou nutná následující uživatelská o
 1. Kliknutím na adresu URL vaší instance Dynamics otevřete Dynamics 365 Customer Engagement `https://tenant.crm.dynamics.com` .
 
 1. Vyberte ikonu ozubeného kolečka na horním panelu a pak vyberte **Upřesnit nastavení**.
- 
-    ![Položka nabídky Rozšířená nastavení Dynamics 365](./media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-advanced-settings.png)
+
+    ![Položka nabídky Rozšířená nastavení Dynamics 365](media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-advanced-settings.png)
 
 1. Na stránce **Nastavení** otevřete nabídku **Nastavení** na horním panelu a vyberte možnost **řešení**.
 
     >[!NOTE]
     >Pokud nevidíte možnosti na následující obrazovce, nemáte oprávnění, která potřebujete, abyste mohli pokračovat. Obraťte se na správce na instanci Dynamics 365 Customer Engagement.
 
-    ![Možnost řešení Dynamics 365](./media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-solutions.png)
+    ![Možnost řešení Dynamics 365](media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-solutions.png)
 
 1. Na stránce **řešení** vyberte **importovat** a přejít do umístění, kam jste uložili Microsoft Marketplace řešení pro **zápis zájemců** , které jste stáhli v kroku 1.
 
-    ![Tlačítko Import](./media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-crm-import.png)
+    ![Tlačítko Import](media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-crm-import.png)
 
 1. Import řešení dokončíte pomocí Průvodce importem řešení.
 
@@ -68,47 +68,47 @@ Tuto možnost doporučujeme, protože nikdy nebudete muset aktualizovat své už
 
 Konfigurace Azure Active Directory pro zákaznickou zapojení Dynamics 365:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/). V levém podokně vyberte **Azure Active Directory**.
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/). V levém podokně vyberte **Azure Active Directory**.
 
 1. Vyberte **vlastnosti** a ZKOPÍRUJTE hodnotu **ID adresáře** na stránce **vlastností adresáře** . Tuto hodnotu uložte, protože ji budete muset poskytnout na portálu pro publikování a získat tak potenciální zákazníky pro vaši nabídku na webu Marketplace.
 
-    ![Položka nabídky vlastností Azure Active Directory](./media/commercial-marketplace-lead-management-instructions-dynamics/aad-properties.png)
+    ![Položka nabídky vlastností Azure Active Directory](media/commercial-marketplace-lead-management-instructions-dynamics/aad-properties.png)
 
 1. V levém podokně Azure Active Directory vyberte **Registrace aplikací** a pak na této stránce vyberte **Nová registrace** .
 1. Zadejte smysluplný název pro název aplikace.
 1. V části **podporované typy účtů** vyberte **účty v libovolném organizačním adresáři**.
-1. V části **identifikátor URI přesměrování (volitelné)** vyberte **Web** a zadejte identifikátor URI, například `https://contosoapp1/auth` . 
+1. V části **identifikátor URI přesměrování (volitelné)** vyberte **Web** a zadejte identifikátor URI, například `https://contosoapp1/auth` .
 1. Vyberte **Zaregistrovat**.
 
-    ![Registrovat stránku aplikace](./media/commercial-marketplace-lead-management-instructions-dynamics/register-an-application.png)
+    ![Registrovat stránku aplikace](media/commercial-marketplace-lead-management-instructions-dynamics/register-an-application.png)
 
 1. Teď, když je vaše aplikace zaregistrovaná, přejděte na stránku Přehled aplikace. Zkopírujte hodnotu **ID aplikace (klienta)** na této stránce. Tuto hodnotu uložte, protože ji budete muset poskytnout na portálu pro publikování a v Dynamics 365, abyste mohli dostávat zájemce pro vaši nabídku na webu Marketplace.
 
-    ![Pole ID aplikace (klienta)](./media/commercial-marketplace-lead-management-instructions-dynamics/application-id.png)
+    ![Pole ID aplikace (klienta)](media/commercial-marketplace-lead-management-instructions-dynamics/application-id.png)
 
 1. V levém podokně aplikace vyberte **certifikáty & tajné klíče** a klikněte na tlačítko **nový tajný klíč klienta** . Zadejte smysluplný popis tajného kódu klienta a v části **konec platnosti** vyberte možnost **nikdy** . Vyberte **Přidat** a vytvořte tajný klíč klienta.
 
-    ![Položka nabídky certifikáty & tajných klíčů](./media/commercial-marketplace-lead-management-instructions-dynamics/aad-certificates-secrets.png)
+    ![Položka nabídky certifikáty & tajných klíčů](media/commercial-marketplace-lead-management-instructions-dynamics/aad-certificates-secrets.png)
 
 1. Po úspěšném vytvoření tajného klíče klienta Zkopírujte hodnotu **tajného klíče klienta** . Po opuštění stránky už nebudete moct tuto hodnotu načíst. Tuto hodnotu uložte, protože ji budete muset poskytnout na portálu pro publikování a získat tak potenciální zákazníky pro vaši nabídku na webu Marketplace. 
 1. V levém podokně aplikace vyberte **oprávnění rozhraní API** a pak vyberte **+ Přidat oprávnění**.
 1. Vyberte **rozhraní API Microsoftu** a pak jako rozhraní API vyberte **Dynamics CRM** .
-1. V části **jaký typ oprávnění vaše aplikace vyžaduje?** Ujistěte se, že je vybraná možnost **delegovaná oprávnění** . 
+1. V části **jaký typ oprávnění vaše aplikace vyžaduje?** Ujistěte se, že je vybraná možnost **delegovaná oprávnění** .
 1. V části **oprávnění** zaškrtněte políčko **user_impersonation** pro **přístup Common data Service jako uživatelé organizace**. Pak vyberte **Přidat oprávnění**.
 
-    ![Tlačítko Přidat oprávnění](./media/commercial-marketplace-lead-management-instructions-dynamics/api-permissions.png)
+    ![Tlačítko Přidat oprávnění](media/commercial-marketplace-lead-management-instructions-dynamics/api-permissions.png)
 
 1. Po dokončení kroků 1 až 14 v Azure Portal můžete přejít na instanci Dynamics 365 Customer Engagement tak, že přejdete na adresu URL, například `https://tenant.crm.dynamics.com` .
 1. Vyberte ikonu ozubeného kolečka na horním panelu a pak vyberte **Upřesnit nastavení**.
 1. Na stránce **Nastavení** otevřete nabídku **Nastavení** na horním panelu a vyberte **zabezpečení**.
 1. Na stránce **zabezpečení** vyberte **Uživatelé**. Na stránce **Uživatelé** vyberte rozevírací seznam **povolených uživatelů** a pak vyberte **Uživatelé aplikace**.
-1. Pokud chcete vytvořit nového uživatele, vyberte **Nový** . 
+1. Pokud chcete vytvořit nového uživatele, vyberte **Nový** .
 
-    ![Vytvoření nového uživatele](./media/commercial-marketplace-lead-management-instructions-dynamics/application-users.png)
+    ![Vytvoření nového uživatele](media/commercial-marketplace-lead-management-instructions-dynamics/application-users.png)
 
 1. V podokně **Nový uživatel** se ujistěte, že je vybraná možnost **Uživatel: uživatel aplikace** . Zadejte uživatelské jméno, jméno a příjmení a e-mailovou adresu uživatele, kterého chcete s tímto připojením použít. Také vložte do **ID aplikace** aplikaci, kterou jste vytvořili v Azure Portal z kroku 8. Vyberte **uložit & zavřít** a dokončete přidávání uživatele.
 
-    ![Nové podokno uživatele](./media/commercial-marketplace-lead-management-instructions-dynamics/new-user-info.png)
+    ![Nové podokno uživatele](media/commercial-marketplace-lead-management-instructions-dynamics/new-user-info.png)
 
 1. V části nastavení zabezpečení v tomto článku můžete dokončit konfiguraci připojení pro tohoto uživatele.
 
@@ -122,7 +122,7 @@ Konfigurace Office 365 pro Dynamics 365 Customer Engagement:
 
 1. Vyberte **Přidat uživatele**.
 
-    ![Microsoft 365 centra pro správu přidat možnost uživatele](./media/commercial-marketplace-lead-management-instructions-dynamics/ms-365-add-user.png)
+    ![Microsoft 365 centra pro správu přidat možnost uživatele](media/commercial-marketplace-lead-management-instructions-dynamics/ms-365-add-user.png)
 
 1. Vytvořte nového uživatele pro službu zapisovače zájemců. Nakonfigurujte tahle nastavení:
 
@@ -133,7 +133,7 @@ Konfigurace Office 365 pro Dynamics 365 Customer Engagement:
 
 Tyto hodnoty uložte, protože budete muset zadat **uživatelské jméno** a **heslo** na portálu pro publikování a získat tak potenciální zákazníky pro vaši nabídku na webu Marketplace.
 
-![Microsoft 365 centrum pro správu – nové uživatelské podokno](./media/commercial-marketplace-lead-management-instructions-dynamics/ms-365-new-user.png)
+![Microsoft 365 centrum pro správu – nové uživatelské podokno](media/commercial-marketplace-lead-management-instructions-dynamics/ms-365-new-user.png)
 
 ## <a name="security-settings"></a>Nastavení zabezpečení
 
@@ -142,32 +142,32 @@ Posledním krokem je povolit uživatele, kterého jste vytvořili pro zápis zá
 1. Kliknutím na adresu URL vaší instance Dynamics otevřete Dynamics 365 Customer Engagement `https://tenant.crm.dynamics.com` .
 1. Vyberte ikonu ozubeného kolečka na horním panelu a pak vyberte **Upřesnit nastavení**.
 1. Na stránce **Nastavení** otevřete nabídku **Nastavení** na horním panelu a vyberte **zabezpečení**.
-1. Na stránce **zabezpečení** vyberte **Uživatelé** a vyberte uživatele, kterého jste vytvořili v části "Konfigurace uživatelských oprávnění" v tomto dokumentu. Pak vyberte **Spravovat role**. 
+1. Na stránce **zabezpečení** vyberte **Uživatelé** a vyberte uživatele, kterého jste vytvořili v části "Konfigurace uživatelských oprávnění" v tomto dokumentu. Pak vyberte **Spravovat role**.
 
-    ![Karta spravovat role](./media/commercial-marketplace-lead-management-instructions-dynamics/security-manage-roles.png)
+    ![Karta spravovat role](media/commercial-marketplace-lead-management-instructions-dynamics/security-manage-roles.png)
 
 1. Vyhledejte název role **Microsoft Marketplace zapisovači potenciálních zákazníků** a vyberte ji pro přiřazení uživatele k roli.
 
-    ![Podokno Správa rolí uživatelů](./media/commercial-marketplace-lead-management-instructions-dynamics/security-manage-user-roles.png)
+    ![Podokno Správa rolí uživatelů](media/commercial-marketplace-lead-management-instructions-dynamics/security-manage-user-roles.png)
 
     >[!NOTE]
     >Tato role je vytvořena řešením, které jste importovali, a má pouze oprávnění k zápisu zájemců a ke sledování verze řešení za účelem zajištění kompatibility.
 
 1. Vraťte se na stránku **zabezpečení** a vyberte **role zabezpečení**. Vyhledejte roli **Microsoft Marketplace zapisovači potenciálních zákazníků** a vyberte ji.
 
-    ![Podokno role zabezpečení](./media/commercial-marketplace-lead-management-instructions-dynamics/security-roles.png)
+    ![Podokno role zabezpečení](media/commercial-marketplace-lead-management-instructions-dynamics/security-roles.png)
 
-1. V roli zabezpečení vyberte kartu **Základní záznamy** . Vyhledejte položku **Nastavení uživatelského rozhraní entity uživatele** . Pro tuto entitu povolte oprávnění vytvořit, číst a zapsat uživateli (1/4 žluté kružnice) tak, že v každém z odpovídajících kruhů kliknete jedenkrát.
+1. V roli zabezpečení vyberte kartu **Základní záznamy** . Vyhledejte položku **Nastavení uživatelského rozhraní entity uživatele** . Pro tuto entitu povolte oprávnění vytvořit, číst a zapsat uživateli (1/4 žluté kružnice) tak, že vyberete odpovídající přepínače.
 
-    ![Karta základních záznamů Microsoft Marketplaceho zapisovače zájemců](./media/commercial-marketplace-lead-management-instructions-dynamics/marketplace-lead-writer.png)
+    ![Karta základních záznamů Microsoft Marketplaceho zapisovače zájemců](media/commercial-marketplace-lead-management-instructions-dynamics/marketplace-lead-writer.png)
 
-1. Na kartě **vlastní nastavení** vyhledejte položku **systémová úloha** . Povolte pro tuto entitu oprávnění ke čtení, zápisu a AppendTo organizacím (plné zelené kroužky), a to tak, že v každém z příslušných kruhů kliknete čtyřikrát za časy.
+1. Na kartě **vlastní nastavení** vyhledejte položku **systémová úloha** . Povolit pro danou entitu oprávnění ke čtení, zápisu a AppendTo (u plných zelených přepínačů), a to tak, že vyberou odpovídající přepínače.
 
-    ![Microsoft Marketplace karta pro přizpůsobení zapisovače potenciálních zákazníků](./media/commercial-marketplace-lead-management-instructions-dynamics/marketplace-lead-writer-customization.png)
+    ![Microsoft Marketplace karta pro přizpůsobení zapisovače potenciálních zákazníků](media/commercial-marketplace-lead-management-instructions-dynamics/marketplace-lead-writer-customization.png)
 
 1. Vyberte **Uložit a zavřít**.
 
-## <a name="configure-your-offer-to-send-leads-to-dynamics-365-customer-engagement"></a>Konfigurace nabídky pro odeslání zájemců do Dynamics 365 Customer Engagement 
+## <a name="configure-your-offer-to-send-leads-to-dynamics-365-customer-engagement"></a>Konfigurace nabídky pro odeslání zájemců do Dynamics 365 Customer Engagement
 
 Postup konfigurace informací o správě zájemců pro vaši nabídku na portálu pro publikování:
 
@@ -178,25 +178,25 @@ Postup konfigurace informací o správě zájemců pro vaši nabídku na portál
 
 1. V místním okně Podrobnosti připojení vyberte možnost **Dynamics 365 Customer Engagement** pro cíl zájemce.
 
-    ![Pole cíl zájemce](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-lead-destination.png)
+    ![Pole cíl zájemce](media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-lead-destination.png)
 
 1. Zadejte **adresu URL** instance Dynamics 365, například `https://contoso.crm4.dynamics.com` .
 
-1. Vyberte metodu **ověřování** , buď Azure Active Directory, nebo sadu Office 365. 
-1. Pokud jste vybrali **Azure Active Directory** , zadejte **ID aplikace (** například `23456052-aaaa-bbbb-8662-1234df56788f` ), **ID adresáře** (například) `12345678-8af1-4asf-1234-12234d01db47` a **tajný klíč klienta** (například `1234ABCDEDFRZ/G/FdY0aUABCEDcqhbLn/ST122345nBc=` ).
+1. Vyberte metodu **ověřování**, buď Azure Active Directory, nebo sadu Office 365.
+1. Pokud jste vybrali **Azure Active Directory**, zadejte **ID aplikace (** například `23456052-aaaa-bbbb-8662-1234df56788f` ), **ID adresáře** (například) `12345678-8af1-4asf-1234-12234d01db47` a **tajný klíč klienta** (například `1234ABCDEDFRZ/G/FdY0aUABCEDcqhbLn/ST122345nBc=` ).
 
-    ![Ověřování pomocí Azure Active Directory vybraných](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-application-id.png)
+    ![Ověřování pomocí Azure Active Directory vybraných](media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-application-id.png)
 
-1. Pokud jste vybrali možnost **Office 365** , zadejte **uživatelské jméno** (například `contoso@contoso.onmicrosoft.com` ) a **heslo** (například `P@ssw0rd` ).
+1. Pokud jste vybrali možnost **Office 365**, zadejte **uživatelské jméno** (například `contoso@contoso.onmicrosoft.com` ) a **heslo** (například `P@ssw0rd` ).
 
-    ![Pole uživatelského jména pro Office 365](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-authentication.png)
+    ![Pole uživatelského jména pro Office 365](media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-authentication.png)
 
 1. Pro **kontaktní e-maily** zadejte e-mailové adresy pro lidi ve vaší společnosti, kteří by měli dostávat e-mailová oznámení při přijetí nového zájemce. Můžete zadat více e-mailových adres tak, že je oddělíte středníky.
 1. Vyberte **OK**.
 
 Chcete-li se ujistit, že jste úspěšně připojeni k cíli zájemce, klikněte na tlačítko **ověřit** . V případě úspěchu budete mít vedoucího testu v cíli realizace.
 
-![Kontaktní e-mailové pole](./media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-connection-details.png)
+![Kontaktní e-mailové pole](media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-connection-details.png)
 
 >[!NOTE]
 >Musíte dokončit konfiguraci zbytku nabídky a publikovat ji předtím, než budete moct získat zájemce pro tuto nabídku.

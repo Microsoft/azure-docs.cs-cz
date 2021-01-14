@@ -3,14 +3,14 @@ title: Vytvoření koncového bodu RESTful
 description: V tomto kurzu se dozvíte, jak vytvořit RESTful koncový bod pro vlastní poskytovatele. Podrobnosti o tom, jak zpracovávat požadavky a odpovědi pro podporované metody HTTP RESTful.
 author: jjbfour
 ms.topic: tutorial
-ms.date: 06/19/2019
+ms.date: 01/13/2021
 ms.author: jobreen
-ms.openlocfilehash: d7f6c51211ce0572797ade659b9316003502da1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54d0df287865d5d92403bf68227a2d4c5faa8bb4
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75650020"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200205"
 ---
 # <a name="author-a-restful-endpoint-for-custom-providers"></a>Vytvořit RESTful koncový bod pro vlastní zprostředkovatele
 
@@ -43,7 +43,7 @@ X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups
 
 V závislosti na záhlaví tohoto příkladu `x-ms-customproviders-requestpath` můžete pro své úložiště vytvořit parametry *PartitionKey* a *rowKey* , jak je znázorněno v následující tabulce:
 
-Parametr | Šablona | Popis
+Parametr | Template (Šablona) | Description
 ---|---|---
 *partitionKey* | `{subscriptionId}:{resourceGroupName}:{resourceProviderName}` | Parametr *partitionKey* určuje, jak jsou data rozdělená na oddíly. Data jsou obvykle rozdělená instancemi vlastního zprostředkovatele.
 *rowKey* | `{myResourceType}:{myResourceName}` | Parametr *rowKey* určuje jednotlivý identifikátor pro data. Identifikátor je obvykle název prostředku.
@@ -132,9 +132,9 @@ public static async Task<HttpResponseMessage> CreateCustomResource(HttpRequestMe
 }
 ```
 
-Metoda **CreateCustomResource** aktualizuje příchozí požadavek tak, aby zahrnoval pole **ID**, **název**a **typ**specifická pro Azure. Tato pole jsou vlastnosti nejvyšší úrovně používané službami v Azure. Umožňují vlastnímu zprostředkovateli spolupracovat s dalšími službami, jako jsou Azure Policy, Azure Resource Manager šablony a protokol aktivit Azure.
+Metoda **CreateCustomResource** aktualizuje příchozí požadavek tak, aby zahrnoval pole **ID**, **název** a **typ** specifická pro Azure. Tato pole jsou vlastnosti nejvyšší úrovně používané službami v Azure. Umožňují vlastnímu zprostředkovateli spolupracovat s dalšími službami, jako jsou Azure Policy, Azure Resource Manager šablony a protokol aktivit Azure.
 
-Vlastnost | Příklad | Popis
+Vlastnost | Příklad | Description
 ---|---|---
 **Jméno** | {myCustomResourceName} | Název vlastního prostředku
 **textový** | Microsoft. CustomProviders/resourceProviders/{ResourceType} | Obor názvů typu prostředku
@@ -347,7 +347,7 @@ Po přidání metod a tříd je potřeba aktualizovat metody **using** aplikace 
 ```csharp
 #r "Newtonsoft.Json"
 #r "Microsoft.WindowsAzure.Storage"
-#r "../bin/Microsoft.Azure.Management.ResourceManager.Fluent.dll"
+#r "../bin/Microsoft.Azure.Management.ResourceManager.Fluent"
 
 using System;
 using System.Net;

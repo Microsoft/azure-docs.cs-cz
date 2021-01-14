@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/19/2019
 ms.author: genli
-ms.openlocfilehash: f9907be0e7cd14876964b820d9b267f279fc50d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: affdee6871649102ef7881fb0f540eba6ab450ca
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331450"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200953"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Řešení potíží s virtuálním počítačem se systémem Linux připojením disku s operačním systémem k virtuálnímu počítači pro obnovení pomocí Azure Portal
 Pokud váš virtuální počítač se systémem Linux zaznamená chybu spuštění nebo disku, možná budete muset provést kroky pro řešení potíží na samotném virtuálním pevném disku. Běžným příkladem může být neplatná položka v `/etc/fstab` systému, která zabraňuje úspěšnému spuštění virtuálního počítače. Tento článek podrobně popisuje, jak pomocí Azure Portal připojit virtuální pevný disk k jinému virtuálnímu počítači se systémem Linux a opravit případné chyby a pak znovu vytvořit původní virtuální počítač.
@@ -49,7 +49,7 @@ Můžete také kliknout na **snímek obrazovky** v horní části protokolu diag
 Snímek je plná kopie virtuálního pevného disku jen pro čtení (VHD). Doporučujeme, abyste virtuální počítač před vytvořením snímku čistě vypnuli, aby se vymazaly všechny procesy, které probíhají. Pokud chcete pořídit snímek disku s operačním systémem, postupujte podle těchto kroků:
 
 1. Přejít na [Azure Portal](https://portal.azure.com). Z bočního panelu vyberte **virtuální počítače** a potom vyberte virtuální počítač, který má problém.
-1. V levém podokně vyberte **disky**a potom vyberte název disku s operačním systémem.
+1. V levém podokně vyberte **disky** a potom vyberte název disku s operačním systémem.
     ![Obrázek s názvem disku s operačním systémem](./media/troubleshoot-recovery-disks-portal-windows/select-osdisk.png)
 1. Na stránce **Přehled** na disku s operačním systémem a pak vyberte **vytvořit snímek**.
 1. Vytvořte snímek ve stejném umístění jako disk s operačním systémem.
@@ -95,7 +95,7 @@ K vytvoření disku ze snímku použijte následující postup:
 ## <a name="attach-disk-to-another-vm"></a>Připojit disk k jinému virtuálnímu počítači
 V následujících několika krocích použijete pro účely odstraňování potíží jiný virtuální počítač. Po připojení disku k virtuálnímu počítači pro řešení potíží můžete procházet a upravovat obsah disku. Tento proces umožňuje opravit chyby konfigurace nebo zkontrolovat další soubory protokolu aplikace nebo systému. K připojení disku k jinému virtuálnímu počítači použijte následující postup:
 
-1. Z portálu vyberte skupinu prostředků a potom vyberte virtuální počítač pro řešení potíží. Vyberte **disky**, vyberte **Upravit**a pak klikněte na **přidat datový disk**:
+1. Z portálu vyberte skupinu prostředků a potom vyberte virtuální počítač pro řešení potíží. Vyberte **disky**, vyberte **Upravit** a pak klikněte na **přidat datový disk**:
 
     ![Připojit existující disk na portálu](./media/troubleshoot-recovery-disks-portal-windows/attach-existing-disk.png)
 
@@ -169,13 +169,13 @@ Po vyřešení chyb odpojte stávající virtuální pevný disk od virtuálníh
 Azure Portal teď podporuje změnu disku s operačním systémem virtuálního počítače. Postupujte takto:
 
 1. Přejít na [Azure Portal](https://portal.azure.com). Z bočního panelu vyberte **virtuální počítače** a potom vyberte virtuální počítač, který má problém.
-1. V levém podokně vyberte **disky**a pak vyberte **swap disk s operačním systémem**.
+1. V levém podokně vyberte **disky** a pak vyberte **swap disk s operačním systémem**.
         ![Obrázek odkládacího disku s operačním systémem v Azure Portal](./media/troubleshoot-recovery-disks-portal-windows/swap-os-ui.png)
 
 1. Zvolte nový disk, který jste opravili, a potom zadejte název virtuálního počítače pro potvrzení změny. Pokud se disk v seznamu nezobrazí, počkejte 10. po odpojení disku od virtuálního počítače pro řešení potíží počkejte 10 minut. Také se ujistěte, že je disk ve stejném umístění jako virtuální počítač.
 1. Vyberte OK.
 
 ## <a name="next-steps"></a>Další kroky
-Pokud máte problémy s připojením k VIRTUÁLNÍmu počítači, přečtěte si téma [řešení potíží s připojením SSH k virtuálnímu počítači Azure](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Problémy s přístupem k aplikacím běžícím na vašem VIRTUÁLNÍm počítači najdete v tématu [řešení potíží s připojením aplikací na virtuálním počítači se systémem Linux](./troubleshoot-app-connection.md?toc=/azure/virtual-machines/linux/toc.json).
+Pokud máte problémy s připojením k VIRTUÁLNÍmu počítači, přečtěte si téma [řešení potíží s připojením SSH k virtuálnímu počítači Azure](troubleshoot-ssh-connection.md). Problémy s přístupem k aplikacím běžícím na vašem VIRTUÁLNÍm počítači najdete v tématu [řešení potíží s připojením aplikací na virtuálním počítači se systémem Linux](./troubleshoot-app-connection.md?toc=/azure/virtual-machines/linux/toc.json).
 
-Další informace o použití Správce prostředků naleznete v tématu [Azure Resource Manager Overview](../../azure-resource-manager/management/overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Další informace o použití Správce prostředků naleznete v tématu [Azure Resource Manager Overview](../../azure-resource-manager/management/overview.md).

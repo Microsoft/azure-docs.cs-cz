@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 44e9712466734c0e42fd2bea05c5110cbff6924b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 308d30118349e020d3b407243f106d9ad8368118
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964792"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98198981"
 ---
 # <a name="additional-network-requirements-for-large-instances"></a>Další požadavky na síť pro velké instance
 
@@ -31,7 +31,7 @@ Při přidávání dalších IP adres nebo podsítí použijte Azure Portal, Pow
 
 Místo generování nového agregovaného rozsahu přidejte nový rozsah IP adres jako nový rozsah do adresního prostoru virtuální sítě. Odešlete tuto změnu do Microsoftu. To vám umožní připojit se z tohoto nového rozsahu IP adres k jednotkám velkých instancí HANA ve vašem klientovi. K získání nového přidaného adresního prostoru virtuální sítě můžete otevřít žádost o podporu Azure. Po obdržení potvrzení proveďte následující kroky.
 
-Pokud chcete vytvořit další podsíť z Azure Portal, přečtěte si téma [vytvoření virtuální sítě pomocí Azure Portal](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network). Pokud ho chcete vytvořit z PowerShellu, přečtěte si téma [vytvoření virtuální sítě pomocí PowerShellu](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network).
+Pokud chcete vytvořit další podsíť z Azure Portal, přečtěte si téma [vytvoření virtuální sítě pomocí Azure Portal](../../../virtual-network/manage-virtual-network.md#create-a-virtual-network). Pokud ho chcete vytvořit z PowerShellu, přečtěte si téma [vytvoření virtuální sítě pomocí PowerShellu](../../../virtual-network/manage-virtual-network.md#create-a-virtual-network).
 
 ## <a name="add-virtual-networks"></a>Přidat virtuální sítě
 
@@ -51,11 +51,11 @@ Když se vytvoří nový okruh a SAP HANA v konfiguraci služby Microsoft Servic
 
 Pokud chcete odebrat podsíť virtuální sítě, můžete použít Azure Portal, PowerShell nebo rozhraní příkazového řádku Azure CLI. Pokud je rozsah IP adres vaší virtuální sítě Azure nebo adresní prostor agregovaný rozsah, nebudete u vás od Microsoftu nic sledovat. (Upozorňujeme ale, že virtuální síť pořád šíří adresní prostor trasy protokolu BGP, který obsahuje odstraněnou podsíť.) Možná jste definovali rozsah adres virtuální sítě Azure nebo adresní prostor jako více rozsahů IP adres, z nichž jedna byla přiřazena k odstraněné podsíti. Nezapomeňte ho odstranit z adresního prostoru virtuální sítě. Pak informujte SAP HANA o správě služeb Microsoftu, abyste ho odebrali z rozsahů, které SAP HANA na Azure (velké instance) můžou komunikovat s.
 
-Další informace najdete v tématu [odstranění podsítě](../../../virtual-network/virtual-network-manage-subnet.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#delete-a-subnet).
+Další informace najdete v tématu [odstranění podsítě](../../../virtual-network/virtual-network-manage-subnet.md#delete-a-subnet).
 
 ## <a name="delete-a-virtual-network"></a>Odstranění virtuální sítě
 
-Informace najdete v tématu [odstranění virtuální sítě](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#delete-a-virtual-network).
+Informace najdete v tématu [odstranění virtuální sítě](../../../virtual-network/manage-virtual-network.md#delete-a-virtual-network).
 
 SAP HANA ve službě Microsoft Service Management odstraní existující autorizaci v SAP HANA na Azure (velké instance) okruh ExpressRoute. Také odebere rozsah IP adres virtuální sítě Azure nebo adresní prostor pro komunikaci s velkými instancemi HANA.
 

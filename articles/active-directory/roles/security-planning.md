@@ -14,12 +14,12 @@ ms.subservice: roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a7304ffbb7718205ead48e27989d4a169375997
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: c981bde4e0699c4da33ada7e287b16e54b899a58
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861982"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98198913"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpečení privilegovaného přístupu pro hybridní a cloudová nasazení v Azure AD
 
@@ -255,7 +255,7 @@ Vyžadovat, aby vysoce vyexponované uživatelé měli moderní, silné ověřov
 * Útoky typu zosobnění
 * Útoky krádeže přihlašovacích údajů, jako je protokolování kláves, pass-the-hash a Pass-The-Ticket
 
-Nasazením pracovních stanic s privilegovaným přístupem můžete snížit riziko, že správci zadají svoje přihlašovací údaje v desktopovém prostředí, které nedošlo k posílení zabezpečení. Další informace najdete v tématu [pracovní stanice s privilegovaným přístupem](/windows-server/identity/securing-privileged-access/privileged-access-workstations).
+Nasazením pracovních stanic s privilegovaným přístupem můžete snížit riziko, že správci zadají svoje přihlašovací údaje v desktopovém prostředí, které nedošlo k posílení zabezpečení. Další informace najdete v tématu [pracovní stanice s privilegovaným přístupem](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/).
 
 #### <a name="review-national-institute-of-standards-and-technology-recommendations-for-handling-incidents"></a>Kontrola Národního institutu standardů a technologických doporučení pro zpracování incidentů
 
@@ -358,7 +358,7 @@ Fáze 4 plánu by se měla implementovat po dobu šesti měsíců a později. Do
 
 Zabezpečení privilegovaného přístupu je důležité pro zajištění bezpečnostních ujištění vašich obchodních prostředků. Měl by však být součástí kompletního programu zabezpečení, který poskytuje průběžné záruky zabezpečení. Tento program by měl obsahovat tyto prvky:
 
-* Zásada
+* Zásady
 * Operace
 * Zabezpečení informací
 * Servery

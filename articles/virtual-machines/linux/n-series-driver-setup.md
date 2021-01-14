@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: vikancha
-ms.openlocfilehash: c3443abaa1157122f7bcd43277a0ae00a2cd4407
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 7af13147804fd1e50a033635985c08b9c62f76ba
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98059088"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200987"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Instalace ovladačů NVIDIA GPU pro virtuální počítače řady N-Series se systémem Linux
 
 Pokud chcete využívat možnosti GPU pro virtuální počítače řady Azure N-Series, které využívají grafické procesory NVIDIA, musíte nainstalovat ovladače GPU NVIDIA. [Rozšíření ovladače NVIDIA GPU](../extensions/hpccompute-gpu-linux.md) nainstaluje vhodné ovladače NVIDIA CUDA nebo Grid na virtuální počítač řady N-Series. Nainstalujte nebo spravujte rozšíření pomocí Azure Portal nebo nástrojů, jako je Azure CLI nebo šablony Azure Resource Manager. Podporované distribuce a kroky nasazení najdete v [dokumentaci k rozšíření ovladače GPU NVIDIA](../extensions/hpccompute-gpu-linux.md) .
 
-Pokud se rozhodnete nainstalovat ovladače NVIDIA GPU ručně, najdete v tomto článku Podporované distribuce, ovladače a postup instalace a ověření. Pro [virtuální počítače s Windows](../windows/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)jsou k dispozici také informace o ruční instalaci ovladače.
+Pokud se rozhodnete nainstalovat ovladače NVIDIA GPU ručně, najdete v tomto článku Podporované distribuce, ovladače a postup instalace a ověření. Pro [virtuální počítače s Windows](../windows/n-series-driver-setup.md)jsou k dispozici také informace o ruční instalaci ovladače.
 
 Informace o specifikacích virtuálních počítačů řady N-Series, kapacitách úložiště a podrobnostech o disku najdete v tématu [velikosti virtuálních počítačů se systémem GPU Linux](../sizes-gpu.md?toc=/azure/virtual-machines/linux/toc.json). 
 
@@ -388,4 +388,4 @@ Pak vytvořte záznam pro skript pro aktualizaci v nástroji, `/etc/rc.d/rc3.d` 
 
 ## <a name="next-steps"></a>Další kroky
 
-* Pokud chcete zachytit image virtuálního počítače se systémem Linux pomocí nainstalovaných ovladačů NVIDIA, přečtěte si téma [postup generalizace a zachycení virtuálního počítače se systémem Linux](capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* Pokud chcete zachytit image virtuálního počítače se systémem Linux pomocí nainstalovaných ovladačů NVIDIA, přečtěte si téma [postup generalizace a zachycení virtuálního počítače se systémem Linux](capture-image.md).

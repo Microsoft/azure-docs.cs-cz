@@ -7,28 +7,28 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 84cb9860f247610621bff130aff155abf222f3c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f55b5d9093e2e8e78d3841c332d67f26e5106d38
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91274890"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200817"
 ---
 # <a name="frequently-asked-question-about-linux-virtual-machines"></a>Nejčastější dotazy týkající se Linux Virtual Machines
-Tento článek popisuje některé běžné otázky týkající se virtuálních počítačů s Linux vytvořenými v Azure pomocí modelu nasazení Správce prostředků. Verzi tohoto tématu pro Windows najdete v části [Nejčastější dotazy týkající se Windows Virtual Machines](../windows/faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+Tento článek popisuje některé běžné otázky týkající se virtuálních počítačů s Linux vytvořenými v Azure pomocí modelu nasazení Správce prostředků. Verzi tohoto tématu pro Windows najdete v části [Nejčastější dotazy týkající se Windows Virtual Machines](../windows/faq.md)
 
 ## <a name="what-can-i-run-on-an-azure-vm"></a>Co můžu spouštět na virtuálním počítači Azure?
-Všichni předplatitelé můžou na virtuálním počítači Azure spouštět serverový software. Další informace najdete v tématu [Linux v Azure-Endorsed distribucích](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .
+Všichni předplatitelé můžou na virtuálním počítači Azure spouštět serverový software. Další informace najdete v tématu [Linux v Azure-Endorsed distribucích](endorsed-distros.md) .
 
 ## <a name="how-much-storage-can-i-use-with-a-virtual-machine"></a>Kolik úložiště můžu využít s virtuálním počítačem?
-Každý datový disk může mít až 32 767 GiB. Počet datových disků, které můžete využít, závisí na velikosti virtuálního počítače. Podrobnosti najdete v článku [Velikosti služeb Virtual Machines](../sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Každý datový disk může mít až 32 767 GiB. Počet datových disků, které můžete využít, závisí na velikosti virtuálního počítače. Podrobnosti najdete v článku [Velikosti služeb Virtual Machines](../sizes.md).
 
 Azure Managed Disks jsou doporučené nabídky diskového úložiště pro použití s Azure Virtual Machines k trvalému ukládání dat. Pro každý virtuální počítač můžete použít více Managed Disks. Managed Disks nabízí dva typy trvalých možností úložiště: Premium a Standard Managed Disks. Informace o cenách najdete v tématu [Managed disks ceny](https://azure.microsoft.com/pricing/details/managed-disks).
 
 Účty Azure Storage taky můžou poskytovat úložiště pro disk operačního systému a všechny datové disky. Každý disk je soubor .vhd uložený jako objekt blob stránky. Podrobnosti o cenách najdete v tématu [Podrobnosti o cenách úložiště](https://azure.microsoft.com/pricing/details/storage/).
 
 ## <a name="how-can-i-access-my-virtual-machine"></a>Jak můžu získat přístup k virtuálnímu počítači?
-Navažte vzdálené připojení pro přihlášení k virtuálnímu počítači pomocí Secure Shell (SSH). Přečtěte si pokyny k připojení [ze systému Windows](ssh-from-windows.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) nebo [Linux a Mac](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). SSH ve výchozím nastavení umožňuje maximálně 10 souběžných připojení. Toto číslo můžete navýšit upravením konfiguračního souboru.
+Navažte vzdálené připojení pro přihlášení k virtuálnímu počítači pomocí Secure Shell (SSH). Přečtěte si pokyny k připojení [ze systému Windows](ssh-from-windows.md) nebo [Linux a Mac](mac-create-ssh-keys.md). SSH ve výchozím nastavení umožňuje maximálně 10 souběžných připojení. Toto číslo můžete navýšit upravením konfiguračního souboru.
 
 Pokud máte problémy, podívejte se na [řešení potíží s připojením Secure Shell (SSH)](../troubleshooting/troubleshoot-ssh-connection.md?toc=/azure/virtual-machines/linux/toc.json).
 
@@ -36,7 +36,7 @@ Pokud máte problémy, podívejte se na [řešení potíží s připojením Secu
 Nepoužívejte dočasný disk (adresář/dev/sdb1) k ukládání dat. Pouze pro dočasné úložiště. Nehrozí riziko ztráty dat, která se nedají obnovit.
 
 ## <a name="can-i-copy-or-clone-an-existing-azure-vm"></a>Můžu zkopírovat nebo naklonovat stávající virtuální počítač Azure?
-Ano. Pokyny najdete v tématu [Postup vytvoření kopie virtuálního počítače se systémem Linux v modelu nasazení Správce prostředků](copy-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Ano. Pokyny najdete v tématu [Postup vytvoření kopie virtuálního počítače se systémem Linux v modelu nasazení Správce prostředků](copy-vm.md).
 
 ## <a name="why-am-i-not-seeing-canada-central-and-canada-east-regions-through-azure-resource-manager"></a>Proč se mi nezobrazuje oblast Kanada – střed a Kanada – východní Azure Resource Manager?
 Pro vytváření virtuálních počítačů v existujících předplatných Azure se neregistrují automaticky dvě nové oblasti Kanady – střed a Kanada – východ. Tato registrace se provádí automaticky, když se virtuální počítač nasadí prostřednictvím Azure Portal do jakékoli jiné oblasti pomocí Azure Resource Manager. Po nasazení virtuálního počítače do jakékoli jiné oblasti Azure by měly být nové oblasti dostupné pro další virtuální počítače.

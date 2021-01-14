@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 09/27/2018
 ms.author: cynthn
 ms.custom: legacy
-ms.openlocfilehash: 751fa9f9fe2ba17a982b71a6332be302804f0dcc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d06dc03a016f057a9a3407a82a114f8df6757599
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89047288"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200681"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Vytvoření spravované image zobecněného virtuálního počítače v Azure
 
@@ -33,7 +33,7 @@ Ujistěte se, že nástroj Sysprep podporuje role serveru spuštěné v počíta
 >
 >Nástroj Sysprep vyžaduje, aby jednotky byly plně dešifrovány. Pokud jste na svém VIRTUÁLNÍm počítači povolili šifrování, před spuštěním nástroje Sysprep zakažte šifrování.
 >
-> Pokud máte v úmyslu spustit nástroj Sysprep před prvním nahráním virtuálního pevného disku (VHD) do Azure, ujistěte se, že jste [připravili virtuální počítač](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).  
+> Pokud máte v úmyslu spustit nástroj Sysprep před prvním nahráním virtuálního pevného disku (VHD) do Azure, ujistěte se, že jste [připravili virtuální počítač](prepare-for-upload-vhd-image.md).  
 > 
 > 
 
@@ -47,7 +47,7 @@ K generalizaci virtuálního počítače s Windows použijte následující post
    
 4. V dialogovém okně **Nástroj pro přípravu systému** vyberte možnost **Zadejte systém do prostředí při spuštění** a zaškrtněte políčko **generalizace** .
    
-5. V **Možnosti vypnutí**vyberte **vypnout**.
+5. V **Možnosti vypnutí** vyberte **vypnout**.
    
 6. Vyberte **OK**.
    
@@ -77,9 +77,9 @@ K generalizaci virtuálního počítače s Windows použijte následující post
 
    Zobrazí se stránka **vytvořit obrázek** .
 
-4. V poli **název**buď přijměte předem vyplněný název, nebo zadejte název, který chcete použít pro obrázek.
+4. V poli **název** buď přijměte předem vyplněný název, nebo zadejte název, který chcete použít pro obrázek.
 
-5. V části **Skupina prostředků**vyberte **vytvořit novou** a zadejte název nebo vyberte skupinu prostředků, kterou chcete použít v rozevíracím seznamu.
+5. V části **Skupina prostředků** vyberte **vytvořit novou** a zadejte název nebo vyberte skupinu prostředků, kterou chcete použít v rozevíracím seznamu.
 
 6. Pokud chcete odstranit zdrojový virtuální počítač po vytvoření image, po vytvoření image vyberte **automaticky odstranit tento virtuální počítač**.
 
@@ -217,7 +217,7 @@ Spravovanou bitovou kopii můžete vytvořit ze snímku generalizované virtuál
 
 ## <a name="create-an-image-from-a-vm-that-uses-a-storage-account"></a>Vytvoření image z virtuálního počítače, který používá účet úložiště
 
-Pokud chcete vytvořit spravovanou image z virtuálního počítače, který nepoužívá spravované disky, budete potřebovat identifikátor URI virtuálního pevného disku s operačním systémem v účtu úložiště, a to v následujícím formátu: https://*mystorageaccount*. blob.Core.Windows.NET/*vhdcontainer* / *vhdfilename. VHD*. V tomto příkladu je virtuální pevný disk v *mystorageaccount*, v kontejneru s názvem *vhdcontainer*a název souboru VHD je *vhdfilename. VHD*.
+Pokud chcete vytvořit spravovanou image z virtuálního počítače, který nepoužívá spravované disky, budete potřebovat identifikátor URI virtuálního pevného disku s operačním systémem v účtu úložiště, a to v následujícím formátu: https://*mystorageaccount*. blob.Core.Windows.NET/*vhdcontainer* / *vhdfilename. VHD*. V tomto příkladu je virtuální pevný disk v *mystorageaccount*, v kontejneru s názvem *vhdcontainer* a název souboru VHD je *vhdfilename. VHD*.
 
 
 1.  Vytvořte některé proměnné.
@@ -250,4 +250,4 @@ Pokud chcete vytvořit spravovanou image z virtuálního počítače, který nep
 
     
 ## <a name="next-steps"></a>Další kroky
-- [Vytvořte virtuální počítač ze spravované image](create-vm-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).    
+- [Vytvořte virtuální počítač ze spravované image](create-vm-generalized-managed.md). 

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d8f69f94c53227dc86fbbf9e9936a2fc3c97ec55
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: af248b4ee3ccd079d41317fdb1db3de82ad0f835
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967869"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98199032"
 ---
 # <a name="connecting-azure-vms-to-hana-large-instances"></a>Připojení virtuálních počítačů Azure k Velkým instancím HANA
 
@@ -41,7 +41,7 @@ Při pohledu na stranu Azure Virtual Network je potřeba:
 >[!Note]
 >Virtuální síť Azure pro velké instance HANA se musí vytvořit pomocí modelu nasazení Azure Resource Manager. Starší model nasazení Azure, který se běžně označuje jako model nasazení Classic, nepodporuje řešení pro velké instance HANA.
 
-K vytvoření virtuální sítě můžete použít Azure Portal, PowerShell, šablonu Azure nebo rozhraní příkazového řádku Azure CLI. (Další informace najdete v tématu [vytvoření virtuální sítě pomocí Azure Portal](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network)). V následujícím příkladu se podíváme na virtuální síť, která je vytvořená pomocí Azure Portal.
+K vytvoření virtuální sítě můžete použít Azure Portal, PowerShell, šablonu Azure nebo rozhraní příkazového řádku Azure CLI. (Další informace najdete v tématu [vytvoření virtuální sítě pomocí Azure Portal](../../../virtual-network/manage-virtual-network.md#create-a-virtual-network)). V následujícím příkladu se podíváme na virtuální síť, která je vytvořená pomocí Azure Portal.
 
 Při odkazování na **adresní prostor** v této dokumentaci na adresní prostor, který může virtuální síť Azure používat. Tento adresní prostor je také rozsah adres, který virtuální síť používá pro šíření tras protokolu BGP. Tento **adresní prostor** se tady může zobrazit:
 
