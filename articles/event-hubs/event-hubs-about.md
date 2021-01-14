@@ -2,13 +2,13 @@
 title: Co je služba Azure Event Hubs? – Služba pro příjem velkých objemů dat | Microsoft Docs
 description: Přečtěte si o Azure Event Hubs, což je streamovací služba pro velké objemy dat, která může ingestovat miliony událostí za sekundu.
 ms.topic: overview
-ms.date: 06/23/2020
-ms.openlocfilehash: b0124f023eab6638c986beb2305b1c4c375b47ee
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.date: 01/13/2021
+ms.openlocfilehash: 36eeb38d9ed1696c9524ae9b346065756ce49c46
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97954341"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98195754"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure Event Hubs – platforma pro zpracování velkých objemů dat a služba pro příjem událostí
 Azure Event Hubs je platforma pro streamování velkých objemů dat a služba pro příjem událostí. Dokáže přijímat a zpracovávat miliony událostí za sekundu. Data odeslaná do centra událostí je možné transformovat a uložit pomocí libovolného poskytovatele analýz v reálném čase nebo adaptérů pro dávkové zpracování a ukládání.
@@ -66,7 +66,7 @@ Event Hubs obsahuje následující [klíčové komponenty](event-hubs-features.m
 
 Následující obrázek znázorňuje architekturu zpracování datového proudu Event Hubs:
 
-![Event Hubs](./media/event-hubs-about/event_hubs_architecture.png)
+![Event Hubs](./media/event-hubs-about/event_hubs_architecture.svg)
 
 ## <a name="event-hubs-on-azure-stack-hub"></a>Event Hubs v Azure Stack Hubu
 Event Hubs v centru Azure Stack vám umožní realizovat hybridní cloudové scénáře. Podpora streamování a řešení založeného na událostech je podporovaná pro místní i cloudové zpracování Azure. Bez ohledu na to, jestli je váš scénář hybridní (připojený) nebo odpojený, může vaše řešení podporovat zpracování událostí nebo datových proudů ve velkém měřítku. Váš scénář je vázaný jenom na velikost clusteru Event Hubs, kterou můžete zřídit podle svých potřeb. 

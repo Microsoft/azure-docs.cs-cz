@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 12/03/2020
-ms.openlocfilehash: c824e0abea7320a20441e51caa2a05d534ff61b3
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 003a71f962652b1a1436f5d9875835534090a77a
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092682"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98196584"
 ---
 # <a name="automatically-label-your-data-in-azure-purview"></a>Automatické označování dat ve službě Azure dosah
 
@@ -33,8 +33,9 @@ V dosah se klasifikace podobají značkám předmětu a používají se k označ
 Dosah používá stejné klasifikace, označované také jako typy citlivých informací, jak Microsoft 365.  Popisky citlivosti MIP se vytvářejí v centru zabezpečení Microsoft 365 Security a dodržování předpisů (SCC). To vám umožní roztáhnout stávající popisky citlivosti napříč prostředky Azure dosah.
 
 > [!NOTE]
-> I když se klasifikace shodují přímo (číslo sociálního zabezpečení má klasifikaci **rodného čísla**), používají se popisky citlivosti, když se jedna nebo víc klasifikací a scénářů najde společně. 
-> 
+> Klasifikace se shodují přímo, jako je číslo sociálního pojištění, které má klasifikaci **čísla sociálního pojištění**. 
+>
+> Na rozdíl od jsou popisky citlivosti aplikovány, když se jedna nebo více klasifikací a podmínek společně nacházejí. V tomto kontextu [podmínky](/microsoft-365/compliance/apply-sensitivity-label-automatically) odkazují na všechny parametry, které můžete definovat pro nestrukturovaná data, jako je například **blízkost jiné klasifikace**, a **spolehlivost%**. 
 
 Popisky citlivosti ve službě Azure dosah se dají použít k automatickému použití popisků pro soubory a sloupce databáze.
 
@@ -91,11 +92,6 @@ Rozšířením popisků citlivosti MIP do Azure dosah mohou organizace zjišťov
 > Vzhledem k tomu, že Microsoft 365 a Azure dosah jsou samostatné služby, existuje možnost, že budou nasazeny v různých oblastech. Názvy popisků a vlastní citlivé informace jsou považovány za zákaznická data a jsou ve výchozím nastavení uchovávány v rámci stejného GEOGRAFICKého umístění, aby chránily citlivost vašich dat a vyloučily GDPR zákony.
 >
 > Z tohoto důvodu nejsou štítky a vlastní typy citlivých informací sdíleny do Azure dosah ve výchozím nastavení a vyžadují souhlas s jejich používáním v Azure dosah.
-
-> [!IMPORTANT]
-> Váš souhlas umožňuje Microsoftu sdílet název štítku a vlastní název typu citlivých *informací s Azure dosah i Azure Security Center* (ASC). Microsoft používá informace popisku z Azure dosah k rozšíření doporučení a upozornění v ASC. 
->
-> Souhlas v rámci centra dodržování předpisů Microsoft 365 platí pro sdílení těchto dat s oběma službami. V tuto chvíli není k dispozici žádný výběr pro sdílení informací o označování pomocí Azure dosah.
 
 **Chcete-li zvětšit popisky citlivosti na dosah:**
 
@@ -185,7 +181,7 @@ Prohledejte data v Azure dosah a automaticky použijte štítky, které jste vyt
 
 Další informace o tom, jak nastavit kontroly v různých assetech v Azure dosah, najdete v těchto tématech:
 
-|Zdroj  |Referenční informace  |
+|Zdroj  |Reference  |
 |---------|---------|
 |**Azure Blob Storage**     |[Registrace a kontrola Blob Storage v Azure](register-scan-azure-blob-storage-source.md)         |
 |**Azure Data Lake Storage**     |[Registrovat a kontrolovat Azure Data Lake Storage Gen1](register-scan-adls-gen1.md) </br>[Registrovat a kontrolovat Azure Data Lake Storage Gen2](register-scan-adls-gen2.md)         |

@@ -14,18 +14,18 @@ ms.workload: infrastructure
 ms.date: 06/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9254b3d19bd840b62d2f5f7023eba9a91e605d1e
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 2729369347de92153e9e8b84e008e5e22e732081
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967512"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197434"
 ---
 # <a name="sap-hana-large-instances-storage-architecture"></a>Architektura úložiště SAP HANA (velké instance)
 
 Rozložení úložiště pro SAP HANA v Azure (velké instance) se konfiguruje pomocí SAP HANA v modelu nasazení Classic podle doporučených pokynů pro SAP. Pokyny jsou popsány v dokumentu White Paper [požadavky na úložiště SAP HANA](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) .
 
-Velká instance HANA třídy Type se dodává se čtyřnásobným objemem paměti jako svazek úložiště. Pro třídu typu II velkých instancí HANA není úložiště čtyřikrát víc. Jednotky se dodávají se svazkem, který je určen pro ukládání záloh protokolu transakcí HANA. Další informace najdete v tématu [instalace a konfigurace SAP Hana (velké instance) v Azure](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Velká instance HANA třídy Type se dodává se čtyřnásobným objemem paměti jako svazek úložiště. Pro třídu typu II velkých instancí HANA není úložiště čtyřikrát víc. Jednotky se dodávají se svazkem, který je určen pro ukládání záloh protokolu transakcí HANA. Další informace najdete v tématu [instalace a konfigurace SAP Hana (velké instance) v Azure](hana-installation.md).
 
 V následující tabulce najdete informace o přidělení úložiště. Tabulka uvádí hrubou kapacitu pro různé svazky dodávané s různými jednotkami velkých instancí HANA.
 
@@ -94,7 +94,7 @@ Tyto velikosti představují Přibližná čísla svazků, která se mírně li�
 
 Možná budete potřebovat další úložiště. Úložiště můžete přidat tak, že si zakoupíte další úložiště v jednotkách o 1,5 TB. Toto dodatečné úložiště je možné přidat jako další svazek. Dá se taky použít k prodloužení jednoho nebo více stávajících svazků. Není možné zmenšit velikosti svazků v původním nasazení a hlavně zdokumentované předchozími tabulkami. Není také možné změnit názvy svazků nebo přípojných názvů. Výše popsané svazky úložiště jsou připojené k jednotkám velkých instancí HANA jako NFS4 svazky.
 
-Snímky úložiště můžete použít pro účely zálohování a obnovení a zotavení po havárii. Další informace najdete v tématu [SAP Hana (velké instance) vysoká dostupnost a zotavení po havárii v Azure](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Snímky úložiště můžete použít pro účely zálohování a obnovení a zotavení po havárii. Další informace najdete v tématu [SAP Hana (velké instance) vysoká dostupnost a zotavení po havárii v Azure](hana-overview-high-availability-disaster-recovery.md).
 
 Podrobnosti o rozložení úložiště pro váš scénář najdete v tématu [podporované scénáře HLI](hana-supported-scenario.md) .
 

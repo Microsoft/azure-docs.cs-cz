@@ -7,20 +7,20 @@ ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 8f60c83417e9c614ca30f140e6acbbf08e5643cf
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: ca8584d6cce3f5487d84f6647c42274879d610dd
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500644"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98198063"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Připojení datového disku k virtuálnímu počítači se systémem Linux pomocí portálu 
-V tomto článku se dozvíte, jak připojit nové i stávající disky k virtuálnímu počítači se systémem Linux prostřednictvím Azure Portal. [Datový disk můžete také připojit k virtuálnímu počítači s Windows v Azure Portal](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+V tomto článku se dozvíte, jak připojit nové i stávající disky k virtuálnímu počítači se systémem Linux prostřednictvím Azure Portal. [Datový disk můžete také připojit k virtuálnímu počítači s Windows v Azure Portal](../windows/attach-managed-disk-portal.md). 
 
 Než připojíte disky k VIRTUÁLNÍmu počítači, přečtěte si tyto tipy:
 
-* Velikost virtuálního počítače určuje, kolik datových disků můžete připojit. Podrobnosti najdete v tématu [velikosti pro virtuální počítače](../sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-* Disky připojené k virtuálním počítačům jsou ve skutečnosti soubory VHD uložené v Azure. Podrobnosti najdete v našem [úvodu ke spravovaným diskům](../managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* Velikost virtuálního počítače určuje, kolik datových disků můžete připojit. Podrobnosti najdete v tématu [velikosti pro virtuální počítače](../sizes.md).
+* Disky připojené k virtuálním počítačům jsou ve skutečnosti soubory VHD uložené v Azure. Podrobnosti najdete v našem [úvodu ke spravovaným diskům](../managed-disks-overview.md).
 * Po připojení disku se musíte [připojit k virtuálnímu počítači se systémem Linux a připojit nový disk](#connect-to-the-linux-vm-to-mount-the-new-disk).
 
 

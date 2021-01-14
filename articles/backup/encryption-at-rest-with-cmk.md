@@ -3,12 +3,12 @@ title: Šifrování zálohovaných dat pomocí klíčů spravovaných zákazník
 description: Přečtěte si, jak Azure Backup umožňuje šifrovat zálohovaná data pomocí klíčů spravovaných zákazníkem (CMK).
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 6e3eea4b5f44203b68c1263c0fb3ae843cabbe72
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: cc6ad2f67b84bcd62bcc18566a4ac5d159ea32c4
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895983"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197736"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Šifrování zálohovaných dat pomocí klíčů spravovaných zákazníkem
 
@@ -25,7 +25,7 @@ Tento článek popisuje následující:
 
 ## <a name="before-you-start"></a>Než začnete
 
-- Tato funkce umožňuje šifrovat **jenom nové trezory Recovery Services** . Všechny trezory, které obsahují existující položky registrované nebo se do ní pokusily zaregistrovat, se nepodporují.
+- Tato funkce umožňuje šifrovat **jenom nové trezory Recovery Services**. Všechny trezory, které obsahují existující položky registrované nebo se do ní pokusily zaregistrovat, se nepodporují.
 
 - Po povolení Recovery Services trezoru se šifrování pomocí zákaznických klíčů nedá vrátit zpátky na použití klíčů spravovaných platformou (výchozí). Šifrovací klíče můžete změnit podle svých požadavků.
 
@@ -33,7 +33,7 @@ Tento článek popisuje následující:
 
 - Tato funkce nesouvisí s [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md), která používá šifrování disků virtuálního počítače založeného na hostu pomocí nástroje BitLocker (pro Windows) a DM-Crypt (pro Linux).
 
-- Trezor Recovery Services lze zašifrovat pouze s klíči uloženými v Azure Key Vault nacházející se ve **stejné oblasti** . Klíče také musí být pouze **klíče RSA 2048** a měly by být v **povoleném** stavu.
+- Trezor Recovery Services lze zašifrovat pouze s klíči uloženými v Azure Key Vault nacházející se ve **stejné oblasti**. Klíče také musí být pouze **klíče RSA 2048** a měly by být v **povoleném** stavu.
 
 - Přesunutí šifrovaného trezoru Recovery Services CMK napříč skupinami prostředků a předplatnými není v současné době podporováno.
 
@@ -66,7 +66,7 @@ Azure Backup používá spravovanou identitu přiřazenou systémem k ověření
 
     ![Nastavení identity](./media/encryption-at-rest-with-cmk/managed-identity.png)
 
-1. Změňte **stav** na **zapnuto** a vyberte **Uložit** .
+1. Změňte **stav** na **zapnuto** a vyberte **Uložit**.
 
 1. Generuje se ID objektu, což je spravovaná identita trezoru přiřazená systémem.
 
@@ -74,11 +74,11 @@ Azure Backup používá spravovanou identitu přiřazenou systémem k ověření
 
 Pro přístup k Azure Key Vault, který obsahuje šifrovací klíč, teď musíte povolit Recovery Services trezor. To se provádí tak, že se pro přístup k Key Vault povolí spravovaná identita Recovery Servicesového trezoru.
 
-1. Přejděte do > **zásady přístupu** Azure Key Vault. Pokračujte a **přidejte zásady přístupu** .
+1. Přejděte do > **zásady přístupu** Azure Key Vault. Pokračujte a **přidejte zásady přístupu**.
 
     ![Přidat zásady přístupu](./media/encryption-at-rest-with-cmk/access-policies.png)
 
-1. V části **oprávnění klíče** vyberte **získat** , **vypsat** , **Rozbalit klíč** a operace **zabalení klíče** . To určuje akce pro klíč, který bude povolen.
+1. V části **oprávnění klíče** vyberte **získat**, **vypsat**, **Rozbalit klíč** a operace **zabalení klíče** . To určuje akce pro klíč, který bude povolen.
 
     ![Přiřadit klíčová oprávnění](./media/encryption-at-rest-with-cmk/key-permissions.png)
 
@@ -154,19 +154,27 @@ Přiřazení klíče:
 
     1. Zadejte **identifikátor URI klíče** , se kterým chcete šifrovat data v tomto trezoru Recovery Services. Je také nutné zadat předplatné, ve kterém je k dispozici Azure Key Vault (obsahující tento klíč). Tento identifikátor URI klíče lze získat z odpovídajícího klíče ve vašem Azure Key Vault. Ujistěte se, že se identifikátor URI klíče zkopíroval správně. Doporučuje se použít tlačítko **Kopírovat do schránky** , které je k dispozici s identifikátorem klíče.
 
+        >[!NOTE]
+        >Při zadávání šifrovacího klíče pomocí identifikátoru URI klíče nebude klíč automaticky otočen. Proto je potřeba aktualizovat klíče ručně zadáním nového klíče v případě potřeby.
+
         ![Zadejte identifikátor URI klíče.](./media/encryption-at-rest-with-cmk/key-uri.png)
 
     1. Procházet a vyberte klíč z Key Vault v podokně výběr klíče.
 
+        >[!NOTE]
+        >Při zadávání šifrovacího klíče pomocí podokna pro výběr klíče se klíč automaticky otočí, kdykoli je povolená nová verze klíče.
+
         ![Vyberte klíč z trezoru klíčů.](./media/encryption-at-rest-with-cmk/key-vault.png)
 
-1. Vyberte **Uložit** .
+1. Vyberte **Uložit**.
 
-1. **Sledování průběhu aktualizace šifrovacího klíče:** Průběh přiřazení klíče můžete sledovat pomocí **protokolu aktivit** v úložišti Recovery Services. Stav by se brzy změnil na **úspěšný** . Váš trezor teď bude šifrovat všechna data se zadaným klíčem jako KEK.
+1. **Sledování průběhu a stavu aktualizace šifrovacího klíče**: můžete sledovat průběh přiřazení šifrovacího klíče a jeho stav pomocí zobrazení **úlohy zálohování** na levém navigačním panelu. Stav by se brzy změnil na **dokončeno**. Váš trezor teď bude šifrovat všechna data se zadaným klíčem jako KEK.
 
-    ![Sledovat průběh s protokolem aktivit](./media/encryption-at-rest-with-cmk/activity-log.png)
+    ![Stav dokončen](./media/encryption-at-rest-with-cmk/status-succeeded.png)
 
-    ![Stav byl úspěšný](./media/encryption-at-rest-with-cmk/status-succeeded.png)
+    Aktualizace šifrovacího klíče se zaznamenávají taky v protokolu aktivit trezoru.
+
+    ![Protokol aktivit](./media/encryption-at-rest-with-cmk/activity-log.png)
 
 >[!NOTE]
 > Tento proces zůstává stejný, když chcete aktualizovat nebo změnit šifrovací klíč. Pokud chcete aktualizovat a používat klíč z jiné Key Vault (jiný než ten, který se právě používá), ujistěte se, že:
@@ -192,7 +200,7 @@ Než budete pokračovat v konfiguraci ochrany, důrazně doporučujeme, abyste m
 >
 >Pokud byly všechny výše uvedené kroky potvrzené, pokračujte v konfiguraci zálohování.
 
-Proces konfigurace a zálohování trezoru Recovery Services šifrovaných pomocí klíčů spravovaných zákazníkem je stejný jako trezor, který používá klíče spravované platformou bez jakýchkoli **změn v prostředí** . To platí pro [zálohování virtuálních počítačů Azure](./quick-backup-vm-portal.md) a také zálohování úloh spuštěných uvnitř virtuálního počítače (například [SAP HANA](./tutorial-backup-sap-hana-db.md) [SQL Server](./tutorial-sql-backup.md) databáze).
+Proces konfigurace a zálohování trezoru Recovery Services šifrovaných pomocí klíčů spravovaných zákazníkem je stejný jako trezor, který používá klíče spravované platformou bez jakýchkoli **změn v prostředí**. To platí pro [zálohování virtuálních počítačů Azure](./quick-backup-vm-portal.md) a také zálohování úloh spuštěných uvnitř virtuálního počítače (například [SAP HANA](./tutorial-backup-sap-hana-db.md) [SQL Server](./tutorial-sql-backup.md) databáze).
 
 ## <a name="restoring-data-from-backup"></a>Obnovování dat ze zálohy
 
@@ -214,7 +222,7 @@ Po dokončení obnovení můžete znovu zašifrovat obnovený disk nebo virtuál
 
 Sada šifrování disků je zadaná v části nastavení šifrování v podokně obnovení, jak je znázorněno níže:
 
-1. Na **discích, které používají váš klíč** , vyberte **Ano** .
+1. Na **discích, které používají váš klíč**, vyberte **Ano**.
 
 1. V rozevíracím seznamu vyberte algoritmus DES, který chcete použít pro obnovené disky. **Ujistěte se, že máte přístup k DES.**
 

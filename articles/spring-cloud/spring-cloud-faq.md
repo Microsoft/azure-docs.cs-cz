@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 0143b014328dfd5c164f0c3c62aeef7cabe1a17c
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 307afc8f1caafac1a511f0f9895cc73dd9b47eb4
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98065418"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98196040"
 ---
 # <a name="azure-spring-cloud-faq"></a>Nejčastější dotazy k jarnímu cloudu Azure
 
@@ -37,7 +37,7 @@ Zabezpečení a ochrana osobních údajů jsou v rámci nejdůležitějších pr
 
 ### <a name="in-which-regions-is-azure-spring-cloud-available"></a>Ve kterých oblastech je k dispozici Azure pružinový Cloud?
 
-Východní USA, Východní USA 2, Střed USA, Střed USA – jih, Střed USA – sever, Západní USA, Západní USA 2, Západní Evropa, Severní Evropa, Velká Británie – jih, jihovýchodní Asie, Austrálie – východ, Kanada – střed, Spojené arabské emiráty sever, Střed Indie, Korea – střed a Východní Asie. [Další informace](https://azure.microsoft.com/global-infrastructure/services/?products=spring-cloud)
+Východní USA, Východní USA 2, Střed USA, Střed USA – jih, Střed USA – sever, Západní USA, Západní USA 2, Západní Evropa, Severní Evropa, Velká Británie – jih, jihovýchodní Asie, Austrálie – východ, Kanada – střed, USA – sever, Střed Indie, Korea – střed, Východní Asie a Čína – východ 2 (Mooncake). [Další informace](https://azure.microsoft.com/global-infrastructure/services/?products=spring-cloud)
 
 ### <a name="is-any-customer-data-stored-outside-of-the-specified-region"></a>Jsou všechna zákaznická data uložená mimo určenou oblast?
 
@@ -96,7 +96,7 @@ Azure jaře Cloud podporuje Exportování protokolů a metriky aplikace na jaře
 
 ### <a name="does-azure-spring-cloud-support-distributed-tracing"></a>Podporuje Azure jaře Cloud distribuované trasování?
 
-Yes. Další informace najdete v tématu [kurz: použití distribuovaného trasování u jarního cloudu Azure](spring-cloud-tutorial-distributed-tracing.md).
+Ano. Další informace najdete v tématu [kurz: použití distribuovaného trasování u jarního cloudu Azure](spring-cloud-tutorial-distributed-tracing.md).
 
 ::: zone pivot="programming-language-java"
 ### <a name="what-resource-types-does-service-binding-support"></a>Jaké typy prostředků podporuje Service Binding?
@@ -109,7 +109,7 @@ V současné době jsou podporovány tři služby:
 
 ### <a name="can-i-view-add-or-move-persistent-volumes-from-inside-my-applications"></a>Můžu v rámci svých aplikací zobrazit, přidat nebo přesunout trvalé svazky?
 
-Yes.
+Ano.
 
 ### <a name="how-many-outbound-public-ip-addresses-does-an-azure-spring-cloud-instance-have"></a>Kolik odchozích veřejných IP adres má instance Azure jaře Cloud?
 
@@ -186,19 +186,19 @@ Důležité opravy zabezpečení (CVE skóre >= 9) použitelné pro jarní cloud
 ## <a name="deployment"></a>Nasazení
 
 ### <a name="does-azure-spring-cloud-support-blue-green-deployment"></a>Podporuje nasazení s modrou zeleným cloudem Azure?
-Yes. Další informace najdete v tématu [Nastavení přípravného prostředí](spring-cloud-howto-staging-environment.md).
+Ano. Další informace najdete v tématu [Nastavení přípravného prostředí](spring-cloud-howto-staging-environment.md).
 
 ### <a name="can-i-access-kubernetes-to-manipulate-my-application-containers"></a>Můžu získat přístup k Kubernetes, abyste mohli manipulovat s kontejnery aplikací?
 
-Ne.  Azure jaře Cloud vyabstrakce vývojáře z základní architektury, což vám umožní soustředit se na kód aplikace a obchodní logiku.
+No.  Azure jaře Cloud vyabstrakce vývojáře z základní architektury, což vám umožní soustředit se na kód aplikace a obchodní logiku.
 
 ### <a name="does-azure-spring-cloud-support-building-containers-from-source"></a>Podporuje Azure jaře Cloud vytváření kontejnerů ze zdroje?
 
-Yes. Další informace najdete v tématu [spuštění vaší jarní cloudové aplikace ze zdrojového kódu](spring-cloud-quickstart.md).
+Ano. Další informace najdete v tématu [spuštění vaší jarní cloudové aplikace ze zdrojového kódu](spring-cloud-quickstart.md).
 
 ### <a name="does-azure-spring-cloud-support-autoscaling-in-app-instances"></a>Podporuje Azure jaře Cloud automatické škálování v instancích aplikací?
 
-Yes.  Další informace najdete v tématu [Nastavení automatického škálování](spring-cloud-tutorial-setup-autoscale.md).
+Ano.  Další informace najdete v tématu [Nastavení automatického škálování](spring-cloud-tutorial-setup-autoscale.md).
 
 ::: zone pivot="programming-language-java"
 ### <a name="what-are-the-best-practices-for-migrating-existing-spring-cloud-microservices-to-azure-spring-cloud"></a>Jaké jsou osvědčené postupy pro migraci stávajících mikroslužeb pro jarní Cloud do Azure jaře cloudu?

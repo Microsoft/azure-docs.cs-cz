@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: cddc7f4f453f22b0cb36b1d3a1e9c2fba2dcabaf
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 577b8527d95a6410deca8002cddfaae31be1fc97
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96455088"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197485"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>Vytvoření virtuálního počítače s Windows ze specializovaného disku pomocí PowerShellu
 
@@ -54,7 +54,7 @@ Virtuální pevný disk můžete nahrát z specializovaného virtuálního poč�
 ### <a name="prepare-the-vm"></a>Příprava virtuálního počítače
 Použijte virtuální pevný disk tak, jak je, k vytvoření nového virtuálního počítače. 
   
-  * [Připravte si virtuální pevný disk Windows, který se má nahrát do Azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). **Neprovádějte generalizaci** virtuálního počítače pomocí nástroje Sysprep.
+  * [Připravte si virtuální pevný disk Windows, který se má nahrát do Azure](prepare-for-upload-vhd-image.md). **Neprovádějte generalizaci** virtuálního počítače pomocí nástroje Sysprep.
   * Odeberte všechny virtualizační nástroje a agenty hosta, které jsou nainstalované na virtuálním počítači (například nástroje VMware).
   * Ujistěte se, že je virtuální počítač nakonfigurovaný tak, aby získal IP adresu a nastavení DNS z protokolu DHCP. Tím se zajistí, že při spuštění serveru získá IP adresu v rámci virtuální sítě. 
 
@@ -193,7 +193,7 @@ $nsg = New-AzNetworkSecurityGroup `
     
 ```
 
-Další informace o koncových bodech a pravidlech NSG najdete v tématu [otevření portů k virtuálnímu počítači v Azure pomocí PowerShellu](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Další informace o koncových bodech a pravidlech NSG najdete v tématu [otevření portů k virtuálnímu počítači v Azure pomocí PowerShellu](nsg-quickstart-powershell.md).
 
 ### <a name="create-a-public-ip-address-and-nic"></a>Vytvoření veřejné IP adresy a síťové karty
 Pokud chcete povolit komunikaci s virtuálním počítačem ve virtuální síti, budete potřebovat [veřejnou IP adresu](../../virtual-network/public-ip-addresses.md) a síťové rozhraní.

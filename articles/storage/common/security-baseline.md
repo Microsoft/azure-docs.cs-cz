@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 29e72f8358591614489be2731d16e89428ef388b
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: f6825fee4cfb78ab54d782cd4d942bb994bedae9
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96301370"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98195717"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Základní hodnoty zabezpečení Azure pro Azure Storage
 
@@ -62,7 +62,7 @@ Všimněte si, že pokud máte k účtu úložiště připojené privátní konc
 
 **Doprovodné** materiály: nepoužitelné; doporučení je určené pro webové aplikace běžící na Azure App Service nebo výpočetních prostředcích.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -90,7 +90,7 @@ Všimněte si, že pokud máte k účtu úložiště připojené privátní konc
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems"></a>1,6: nasazení systémů ochrany před internetovými útoky na síť a prevence vniknutí
 
-**Pokyny**: Rozšířená ochrana před internetovými útoky pro Azure Storage poskytuje další vrstvu zabezpečení, která detekuje neobvyklé a potenciálně nebezpečné pokusy o přístup k účtům úložiště nebo jejich zneužití. Výstrahy zabezpečení se spouštějí při výskytu anomálií v aktivitě. Tyto výstrahy zabezpečení jsou integrovány do Azure Security Center a jsou také odesílány prostřednictvím e-mailu správcům předplatného s podrobnostmi o podezřelé aktivitě a doporučeních k tomu, jak tyto hrozby prozkoumat a opravit. 
+**Pokyny**: Rozšířená ochrana před internetovými útoky pro Azure Storage poskytuje další vrstvu zabezpečení, která detekuje neobvyklé a potenciálně nebezpečné pokusy o přístup k účtům úložiště nebo jejich zneužití. Výstrahy zabezpečení se spouštějí při výskytu anomálií v aktivitě. Tyto výstrahy zabezpečení jsou integrovány do centra Azure Security Center a jsou také odesílány e-mailem správcům předplatného s podrobnostmi o podezřelé aktivitě a doporučeními, jak hrozby prozkoumat a opravit. 
 
 - [Konfigurace rozšířené ochrany před internetovými útoky pro Azure Storage](./azure-defender-storage-configure.md)
 
@@ -102,7 +102,7 @@ Všimněte si, že pokud máte k účtu úložiště připojené privátní konc
 
 **Doprovodné** materiály: nepoužitelné; doporučení je určené pro webové aplikace běžící na Azure App Service nebo výpočetních prostředcích.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -126,7 +126,7 @@ Pokud je třeba přístup k síti určit na konkrétní účty úložiště, pou
 
 Můžete také využít integrované definice zásad související s účtem úložiště, například: účty úložiště by měly používat koncový bod služby virtuální sítě. 
 
-- [Konfigurace a Správa Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
+- [Jak nakonfigurovat a spravovat Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
 - [Ukázky Azure Policy pro úložiště](../../governance/policy/samples/built-in-policies.md#storage)
 
@@ -134,7 +134,7 @@ Můžete také využít integrované definice zásad související s účtem úl
 
 - [Vytvoření Azure Blueprint](../../governance/blueprints/create-blueprint-portal.md)
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -156,7 +156,7 @@ Můžete také využít integrované definice zásad související s účtem úl
 
 **Pokyny**: k protokolování změn konfigurace síťových prostředků použijte Azure Policy. Vytvoří výstrahy v rámci Azure Monitor, které se aktivují, když budou provedeny změny v kritických síťových prostředcích. 
 
-- [Konfigurace a Správa Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
+- [Jak nakonfigurovat a spravovat Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
 - [Vytváření výstrah v Azure Monitor](../../azure-monitor/platform/alerts-activity-log.md)
 
@@ -172,7 +172,7 @@ Můžete také využít integrované definice zásad související s účtem úl
 
 **Doprovodné** materiály: nepoužitelné; Microsoft udržuje časové zdroje pro účty Azure Storage.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Zodpovědnost**: Microsoft
 
@@ -200,7 +200,7 @@ Můžete také využít integrované definice zásad související s účtem úl
 
 **Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost**: netýká se
 
@@ -220,7 +220,7 @@ Můžete také využít integrované definice zásad související s účtem úl
 
 **Doprovodné** materiály: Chcete-li zkontrolovat protokoly Azure Storage, jsou k dispozici běžné možnosti, jako jsou například dotazy prostřednictvím nabídky Log Analytics a také jedinečná možnost zobrazení souborů protokolu přímo. V Azure Storage se protokoly ukládají v objektech blob, ke kterým se musí `http://accountname.blob.core.windows.net/$logs` přihlašovat přímo v (ve výchozím nastavení je složka protokolování skrytá, takže budete muset přejít přímo. V příkazech seznamu se nezobrazí. 
 
-Také pro svůj účet Azure Storage povolit rozšířenou ochranu před internetovými útoky. Rozšířená ochrana před internetovými útoky pro Azure Storage poskytuje další vrstvu zabezpečení, která detekuje neobvyklé a potenciálně nebezpečné pokusy o přístup k účtům úložiště nebo jejich zneužití. Výstrahy zabezpečení se spouštějí při výskytu anomálií v aktivitě. Tyto výstrahy zabezpečení jsou integrovány do Azure Security Center a jsou také odesílány prostřednictvím e-mailu správcům předplatného s podrobnostmi o podezřelé aktivitě a doporučeních k tomu, jak tyto hrozby prozkoumat a opravit. 
+Také pro svůj účet Azure Storage povolit rozšířenou ochranu před internetovými útoky. Rozšířená ochrana před internetovými útoky pro Azure Storage poskytuje další vrstvu zabezpečení, která detekuje neobvyklé a potenciálně nebezpečné pokusy o přístup k účtům úložiště nebo jejich zneužití. Výstrahy zabezpečení se spouštějí při výskytu anomálií v aktivitě. Tyto výstrahy zabezpečení jsou integrovány do centra Azure Security Center a jsou také odesílány e-mailem správcům předplatného s podrobnostmi o podezřelé aktivitě a doporučeními, jak hrozby prozkoumat a opravit. 
 
 - [Protokolovat a kontrolovat data](./storage-analytics-logging.md#how-logs-are-stored)
 
@@ -252,7 +252,7 @@ Také pro svůj účet Azure Storage povolit rozšířenou ochranu před interne
 
 - [Konfigurace rozšířené ochrany před internetovými útoky pro Azure Storage](./azure-defender-storage-configure.md?tabs=azure-portal)
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -270,7 +270,7 @@ Také pro svůj účet Azure Storage povolit rozšířenou ochranu před interne
 
 **Doprovodné** materiály: nepoužitelné; Srovnávací test je určený pro výpočetní prostředky.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost**: netýká se
 
@@ -298,7 +298,7 @@ Také pro svůj účet Azure Storage povolit rozšířenou ochranu před interne
 
 - [Porozumění objektům zabezpečení a řízení přístupu pro účet Azure Storage](./storage-introduction.md)
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -334,7 +334,7 @@ Pomocí Azure AD Privileged Identity Management privilegovaných rolí pro služ
 
 **Doprovodné** materiály: Povolte Azure Active Directory vícefaktorového ověřování a sledujte Azure Security Center doporučení pro správu identit a přístupu, která vám pomůžou ochránit prostředky účtu úložiště. 
 
-- [Povolení vícefaktorového ověřování v Azure](../../active-directory/authentication/howto-mfa-getstarted.md)
+- [Jak povolit vícefaktorové ověřování v Azure](../../active-directory/authentication/howto-mfa-getstarted.md)
 
 - [Jak monitorovat identitu a přístup v rámci Azure Security Center](../../security-center/security-center-identity-access.md)
 
@@ -346,11 +346,11 @@ Pomocí Azure AD Privileged Identity Management privilegovaných rolí pro služ
 
 **Doprovodné** materiály: použití privilegovaným přístupem (privilegovaných pracovních stanic) s MFA nakonfigurovaným pro přihlášení a konfiguraci prostředků účtu úložiště. 
 
-- [Další informace o pracovních stanicích s privilegovaným přístupem](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [Další informace o pracovních stanicích s privilegovaným přístupem](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-- [Povolení vícefaktorového ověřování v Azure](../../active-directory/authentication/howto-mfa-getstarted.md)
+- [Jak povolit vícefaktorové ověřování v Azure](../../active-directory/authentication/howto-mfa-getstarted.md)
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -382,7 +382,7 @@ Pomocí Azure AD Privileged Identity Management privilegovaných rolí pro služ
 
 **Pokyny**: jako centrální ověřování a systém autorizací použijte Azure Active Directory (Azure AD). Azure poskytuje řízení přístupu na základě role Azure (Azure RBAC) pro jemně odstupňovanou kontrolu nad přístupem klienta k prostředkům v účtu úložiště.  Použijte přihlašovací údaje Azure AD, pokud je to možné, místo použití klíče účtu, který může být snáze ohrožen. Když návrh aplikace vyžaduje pro přístup k úložišti objektů BLOB sdílené přístupové podpisy, pomocí přihlašovacích údajů Azure AD vytvořte delegovaný přístup uživatelů (SAS), pokud je to možné, pro zajištění vysokého zabezpečení.
 
-- [Vytvoření a konfigurace instance Azure AD](../../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
+- [Jak vytvořit a nakonfigurovat instanci Azure AD](../../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 - [Použití poskytovatele prostředků Azure Storage k přístupu k prostředkům správy](./authorization-resource-provider.md)
 
@@ -458,7 +458,7 @@ Vytvořte nastavení diagnostiky pro Azure Active Directory uživatelských úč
 
 - [Pochopení Customer Lockbox](../../security/fundamentals/customer-lockbox-overview.md)
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -490,7 +490,7 @@ Vytvořte nastavení diagnostiky pro Azure Active Directory uživatelských úč
 
 - [Koncové body služby Virtual Network](../../virtual-network/virtual-network-service-endpoints-overview.md)
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -520,7 +520,7 @@ Kromě toho můžete pomocí zásad koncového bodu služby virtuální sítě v
 
 **Monitorování služby Azure Security Center:** Ano
 
-**Odpovědnost:** Sdílená
+**Odpovědnost:** Sdílené
 
 ### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4,5: k identifikaci citlivých dat použijte aktivní nástroj zjišťování.
 
@@ -554,7 +554,7 @@ Kromě toho můžete pomocí zásad koncového bodu služby virtuální sítě v
 
 **Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost**: netýká se
 
@@ -564,7 +564,7 @@ Kromě toho můžete pomocí zásad koncového bodu služby virtuální sítě v
 
 - [Principy šifrování Azure Storage v klidovém umístění](./storage-service-encryption.md)
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -592,7 +592,7 @@ Kromě toho můžete pomocí zásad koncového bodu služby virtuální sítě v
 
 - [Doporučení k zabezpečení – Referenční příručka](../../security-center/recommendations-reference.md)
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -600,7 +600,7 @@ Kromě toho můžete pomocí zásad koncového bodu služby virtuální sítě v
 
 **Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost**: netýká se
 
@@ -608,7 +608,7 @@ Kromě toho můžete pomocí zásad koncového bodu služby virtuální sítě v
 
 **Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost**: netýká se
 
@@ -616,7 +616,7 @@ Kromě toho můžete pomocí zásad koncového bodu služby virtuální sítě v
 
 **Doprovodné** materiály: nepoužitelné; Microsoft provádí správu ohrožení zabezpečení pro základní systémy, které podporují účty úložiště.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -626,7 +626,7 @@ Kromě toho můžete pomocí zásad koncového bodu služby virtuální sítě v
 
 - [Pochopení Azure Security Center zabezpečeného skóre](../../security-center/secure-score-security-controls.md)
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -672,7 +672,7 @@ K detekci neautorizovaných prostředků Azure taky použijte rozšířenou ochr
 
 - [Konfigurace rozšířené ochrany před internetovými útoky pro Azure Storage](./azure-defender-storage-configure.md?tabs=azure-portal)
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -681,7 +681,7 @@ K detekci neautorizovaných prostředků Azure taky použijte rozšířenou ochr
 **Pokyny**: budete muset vytvořit inventarizaci schválených prostředků Azure podle potřeb vaší organizace. 
 
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -694,11 +694,11 @@ K detekci neautorizovaných prostředků Azure taky použijte rozšířenou ochr
 
 Kromě toho můžete pomocí grafu prostředků Azure dotazovat nebo zjišťovat prostředky v rámci předplatných. To může pomáhat v prostředích s vysokým zabezpečením, jako jsou ta s účty úložiště. 
 
-- [Konfigurace a Správa Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
+- [Jak nakonfigurovat a spravovat Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
 - [Jak vytvářet dotazy pomocí Azure graphu](../../governance/resource-graph/first-query-portal.md)
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -706,7 +706,7 @@ Kromě toho můžete pomocí grafu prostředků Azure dotazovat nebo zjišťovat
 
 **Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost**: netýká se
 
@@ -714,9 +714,9 @@ Kromě toho můžete pomocí grafu prostředků Azure dotazovat nebo zjišťovat
 
 **Pokyny**: zákazník může zabránit vytváření nebo používání prostředků pomocí Azure Policy podle požadavků zásad společnosti zákazníka. 
 
-- [Konfigurace a Správa Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
+- [Jak nakonfigurovat a spravovat Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -724,7 +724,7 @@ Kromě toho můžete pomocí grafu prostředků Azure dotazovat nebo zjišťovat
 
 **Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost**: netýká se
 
@@ -735,11 +735,11 @@ Kromě toho můžete pomocí grafu prostředků Azure dotazovat nebo zjišťovat
 - Žádné povolené typy prostředků 
 - Povolené typy prostředků 
 
-- [Konfigurace a Správa Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
+- [Jak nakonfigurovat a spravovat Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
 - [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](../../governance/policy/samples/index.md)
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -747,7 +747,7 @@ Kromě toho můžete pomocí grafu prostředků Azure dotazovat nebo zjišťovat
 
 **Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost**: netýká se
 
@@ -757,7 +757,7 @@ Kromě toho můžete pomocí grafu prostředků Azure dotazovat nebo zjišťovat
 
 - [Jak nakonfigurovat podmíněný přístup k blokování přístupu k ARM](../../role-based-access-control/conditional-access-azure-management.md)
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -765,7 +765,7 @@ Kromě toho můžete pomocí grafu prostředků Azure dotazovat nebo zjišťovat
 
 **Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost**: netýká se
 
@@ -773,7 +773,7 @@ Kromě toho můžete pomocí grafu prostředků Azure dotazovat nebo zjišťovat
 
 **Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro webové aplikace běžící na Azure App Service nebo výpočetních prostředcích.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost**: netýká se
 
@@ -794,7 +794,7 @@ Použijte doporučení z Azure Security Center jako standardní hodnoty konfigur
 
 - [Jak zobrazit dostupné aliasy Azure Policy](/powershell/module/az.resources/get-azpolicyalias)
 
-- [Konfigurace a Správa Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
+- [Jak nakonfigurovat a spravovat Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -804,7 +804,7 @@ Použijte doporučení z Azure Security Center jako standardní hodnoty konfigur
 
 **Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost**: netýká se
 
@@ -812,11 +812,11 @@ Použijte doporučení z Azure Security Center jako standardní hodnoty konfigur
 
 **Doprovodné** materiály: použijte Azure Policy [Deny] a [Deploy, pokud neexistuje] k vymáhání zabezpečených nastavení napříč prostředky účtu úložiště. 
 
-- [Konfigurace a Správa Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
+- [Jak nakonfigurovat a spravovat Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
 - [Porozumění efektům Azure Policy](../../governance/policy/concepts/effects.md)
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -824,7 +824,7 @@ Použijte doporučení z Azure Security Center jako standardní hodnoty konfigur
 
 **Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost**: netýká se
 
@@ -836,7 +836,7 @@ Použijte doporučení z Azure Security Center jako standardní hodnoty konfigur
 
 - [O oprávněních a skupinách v Azure DevOps](/azure/devops/organizations/security/about-permissions)
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -844,7 +844,7 @@ Použijte doporučení z Azure Security Center jako standardní hodnoty konfigur
 
 **Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost**: netýká se
 
@@ -852,9 +852,9 @@ Použijte doporučení z Azure Security Center jako standardní hodnoty konfigur
 
 **Doprovodné** materiály: využijte Azure Policy k oznamování, auditu a prosazování systémových konfigurací pro účet úložiště. Dále můžete vyvinout proces a kanál pro správu výjimek zásad. 
 
-- [Konfigurace a Správa Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
+- [Jak nakonfigurovat a spravovat Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -862,7 +862,7 @@ Použijte doporučení z Azure Security Center jako standardní hodnoty konfigur
 
 **Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost**: netýká se
 
@@ -880,7 +880,7 @@ Použijte doporučení z Azure Security Center jako standardní hodnoty konfigur
 
 **Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost**: netýká se
 
@@ -910,11 +910,11 @@ Kromě toho pravidelně otáčejte klíče účtu úložiště, abyste omezili d
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7,13: Eliminujte nezamýšlenou expozici přihlašovacích údajů
 
-**Pokyny**: implementace skeneru přihlašovacích údajů pro identifikaci přihlašovacích údajů v rámci kódu. Skener přihlašovacích údajů taky bude povzbudit přesunutí zjištěných přihlašovacích údajů do bezpečnějších umístění, jako je Azure Key Vault. 
+**Pokyny**: implementace skeneru přihlašovacích údajů pro identifikaci přihlašovacích údajů v rámci kódu. Credential Scanner bude také pobízet k přesunutí odhalených přihlašovacích údajů do bezpečnějších umístění, jako je Azure Key Vault. 
 
 - [Jak nastavit skener přihlašovacích údajů](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -926,7 +926,7 @@ Kromě toho pravidelně otáčejte klíče účtu úložiště, abyste omezili d
 
 **Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky. Microsoft zpracovává anti-malware pro základní platformu.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost**: netýká se
 
@@ -938,7 +938,7 @@ Před odesláním do nevýpočetních prostředků Azure, jako jsou App Service,
 
 - [Konfigurace rozšířené ochrany před internetovými útoky pro Azure Storage](./azure-defender-storage-configure.md?tabs=azure-portal)
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -946,7 +946,7 @@ Před odesláním do nevýpočetních prostředků Azure, jako jsou App Service,
 
 **Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky. Microsoft zpracovává anti-malware pro základní platformu.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost**: netýká se
 
@@ -1005,7 +1005,7 @@ Restore-AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedSto
 Poznámka: Pokud chcete kopírovat data do služby Azure Table Storage a z ní, nainstalujte AzCopy verze 7,3.
 
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -1017,7 +1017,7 @@ Poznámka: Pokud chcete kopírovat data do služby Azure Table Storage a z ní, 
 
 - [Obnovitelné odstranění objektů blob služby Azure Storage](../blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
-- [Ukládání důležitých podnikových dat objektů BLOB s neměnném úložištěm](../blobs/storage-blob-immutable-storage.md)
+- [Ukládání důležitých podnikových dat objektů blob s využitím neměnného úložiště](../blobs/storage-blob-immutable-storage.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -1029,7 +1029,7 @@ Poznámka: Pokud chcete kopírovat data do služby Azure Table Storage a z ní, 
 
 ### <a name="101-create-incident-response-guide"></a>10,1: Vytvoření Průvodce odpověďmi na incidenty
 
-**Pokyny**: Vytvoření Průvodce odpověďmi na incidenty pro vaši organizaci. Zajistěte, aby existovaly písemné plány odpovědí na incidenty, které definují všechny role pracovníků, a také fáze zpracování nebo správy incidentů z detekce až po přezkoumání po jednotlivých událostech.
+**Pokyny:** Sestavte pro vaši organizaci průvodce reakcemi na incidenty. Zajistěte, aby existovaly písemné plány reakcí na incidenty, které definují všechny role pracovníků, a také fáze zpracování nebo správy incidentů od jejich detekce až po přezkoumání po jejich ukončení.
 
 - [Pokyny k vytvoření vlastního procesu reakce na incidenty zabezpečení](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
@@ -1037,7 +1037,7 @@ Poznámka: Pokud chcete kopírovat data do služby Azure Table Storage a z ní, 
 
 - [Zákazník může také využít příručku pro zpracování incidentů zabezpečení počítače v NIST, aby mohl pomoci při vytváření vlastního plánu reakce na incidenty.](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -1061,7 +1061,7 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 
 - [Publikování v NIST – průvodce pro testování, školení a cvičení programů pro plány a možnosti IT](https://csrc.nist.gov/publications/detail/sp/800-84/final)
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -1105,13 +1105,13 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 
 **Doprovodné** materiály: řiďte se pravidly společnosti Microsoft o zapojení, abyste zajistili, že testy průniku nejsou v rozporu s zásadami Microsoftu. Využijte strategii a provádění testování na základě červeného týmového seskupování a živého průniku na cloudové infrastruktuře, služby a aplikace spravované společností Microsoft.
 
-- [Pravidla penetračního testování](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
+- [Pravidla zapojení testování průniku](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
-- [Etické testování průniku do cloudu Microsoftu](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
+- [Červený tým cloudových služeb Microsoftu](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
-**Odpovědnost:** Sdílená
+**Odpovědnost:** Sdílené
 
 ## <a name="next-steps"></a>Další kroky
 

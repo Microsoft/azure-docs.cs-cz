@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 2b811b1ace646cc4e0a93b937fbb90cfbf7aec0f
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 26fb70592a75910ae21d327e53569eda12dfea97
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704890"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197366"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Řešení potíží s agentem Log Analytics pro Linux 
 
@@ -96,6 +96,7 @@ Zjistili jsme, že při čisté opakované instalaci agenta se vyřeší i vět�
 | 5 | Sada prostředí musí být spuštěná jako kořenová nebo během připojování se vrátila 403 chyba. Spusťte příkaz pomocí příkazu `sudo` . |
 | 6 | Během připojování se vrátila Neplatná architektura balíčku nebo došlo k chybě 200. balíčky omsagent-*x64.sh lze instalovat pouze v systémech 64 a balíčky omsagent-* x86.sh lze instalovat pouze na 32 systémy. Stáhněte si správný balíček pro vaši architekturu z [nejnovější verze](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest). |
 | 17 | Instalace balíčku OMS se nezdařila. Prohlédněte si výstup příkazu pro kořenovou chybu. |
+| 18 | Instalace balíčku OMSConfig se nezdařila. Prohlédněte si výstup příkazu pro kořenovou chybu. |
 | 19 | Instalace balíčku OMI se nezdařila. Prohlédněte si výstup příkazu pro kořenovou chybu. |
 | 20 | Instalace balíčku SCX se nezdařila. Prohlédněte si výstup příkazu pro kořenovou chybu. |
 | 21 | Instalace sad poskytovatele se nezdařila. Prohlédněte si výstup příkazu pro kořenovou chybu. |

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/09/2020
 ms.author: terrylan
-ms.openlocfilehash: c88a2cf33cf1149a17af4a82dcf2858822f0c6d4
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 3808da24c1baf6dd6e3332d4bd26fd176b761c65
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94696145"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98196074"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Osvědčené postupy šifrování a zabezpečení dat v Azure
 Tento článek popisuje osvědčené postupy pro zabezpečení a šifrování dat.
@@ -74,7 +74,7 @@ Pomocí Azure RBAC můžete řídit, ke kterým uživatelům mají přístup. Po
 Vzhledem k tomu, že velká většina útoků cílí na koncového uživatele, se koncový bod stal jedním z primárních bodů útoku. Útočník, který nabývá tohoto koncového bodu, může pomocí přihlašovacích údajů uživatele získat přístup k datům organizace. Většina útoků na koncové body využívá skutečnost, že uživatelé jsou správci v místních pracovních stanicích.
 
 **Osvědčený postup**: Použijte zabezpečenou pracovní stanici pro správu k ochraně citlivých účtů, úloh a dat.   
-**Podrobnosti**: k omezení prostoru pro útoky v pracovních stanicích použijte [pracovní stanici privilegovaný přístup](/windows-server/identity/securing-privileged-access/privileged-access-workstations) . Tato zabezpečená pracovní stanice pro správu vám můžou přispět k zmírnění některých těchto útoků a zajištění bezpečnosti vašich dat.
+**Podrobnosti**: k omezení prostoru pro útoky v pracovních stanicích použijte [pracovní stanici privilegovaný přístup](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/) . Tato zabezpečená pracovní stanice pro správu vám můžou přispět k zmírnění některých těchto útoků a zajištění bezpečnosti vašich dat.
 
 **Osvědčený postup**: Ujistěte se, že je Endpoint Protection.   
 **Podrobnosti**: vynutili zásady zabezpečení ve všech zařízeních, která se používají ke zpracování dat bez ohledu na umístění dat (v cloudu nebo v místním prostředí).

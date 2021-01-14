@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 09/09/2016
 ms.author: daberry
-ms.openlocfilehash: f48963a4d18e80cb67bfbbdc532d34f89b8b5d8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d94f7389ce96c2e3bda35413cbcc7b1e8a992683
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87028443"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197536"
 ---
 # <a name="troubleshoot-resource-manager-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>Řešení potíží s nasazením Správce prostředků při vytváření nového virtuálního počítače se systémem Linux v Azure
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -46,23 +46,23 @@ Pokud chcete začít řešit potíže, Shromážděte protokoly aktivit a Identi
 
 **Chyby nahrávání:**
 
-**N<sup>1</sup>:** Pokud je operační systém Linux zobecněný a nahraje se jako specializované, zobrazí se chyba časového limitu zřizování, protože virtuální počítač se zablokuje ve fázi zřizování.
+**N <sup>1</sup>:** Pokud je operační systém Linux zobecněný a nahraje se jako specializované, zobrazí se chyba časového limitu zřizování, protože virtuální počítač se zablokuje ve fázi zřizování.
 
-**N<sup>2</sup>:** Pokud je operační systém Linux specializovaný a nahraje se jako zobecněný, zobrazí se chyba zřizování, protože nový virtuální počítač běží s původním názvem počítače, uživatelským jménem a heslem.
+**N <sup>2</sup>:** Pokud je operační systém Linux specializovaný a nahraje se jako zobecněný, zobrazí se chyba zřizování, protože nový virtuální počítač běží s původním názvem počítače, uživatelským jménem a heslem.
 
-**Rozhodnutí**
+**Řešení:**
 
 Chcete-li tyto chyby vyřešit, nahrajte původní virtuální pevný disk, který je k dispozici místně, se stejným nastavením jako v operačním systému (generalizovaná/specializovaná). Pokud se chcete nahrát jako zobecněné, nezapomeňte nejdřív spustit – zrušit zřízení.
 
 **Zachytit chyby:**
 
-**N<sup>3</sup>:** Pokud je operační systém Linux zobecněný a je zachycen jako specializovaný, zobrazí se chyba časového limitu zřizování, protože původní virtuální počítač nelze použít, protože je označen jako zobecněný.
+**N <sup>3</sup>:** Pokud je operační systém Linux zobecněný a je zachycen jako specializovaný, zobrazí se chyba časového limitu zřizování, protože původní virtuální počítač nelze použít, protože je označen jako zobecněný.
 
-**N<sup>4</sup>:** Pokud je operační systém Linux specializovaný a zachycuje se jako zobecněný, zobrazí se chyba při zřizování, protože nový virtuální počítač běží s původním názvem počítače, uživatelským jménem a heslem. Původní virtuální počítač také nelze použít, protože je označen jako specializovaný.
+**N <sup>4</sup>:** Pokud je operační systém Linux specializovaný a zachycuje se jako zobecněný, zobrazí se chyba při zřizování, protože nový virtuální počítač běží s původním názvem počítače, uživatelským jménem a heslem. Původní virtuální počítač také nelze použít, protože je označen jako specializovaný.
 
-**Rozhodnutí**
+**Řešení:**
 
-Chcete-li tyto chyby vyřešit, odstraňte aktuální bitovou kopii z portálu a znovu [ji Zachyťte z aktuálních virtuálních pevných disků](../linux/capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) se stejným nastavením jako u operačního systému (generalizovaná/specializovaná).
+Chcete-li tyto chyby vyřešit, odstraňte aktuální bitovou kopii z portálu a znovu [ji Zachyťte z aktuálních virtuálních pevných disků](../linux/capture-image.md) se stejným nastavením jako u operačního systému (generalizovaná/specializovaná).
 
 ## <a name="issue-custom-gallery-marketplace-image-allocation-failure"></a>Problém: vlastní/Galerie/image Marketplace; selhání přidělení
 K této chybě dochází v situacích, kdy je nový požadavek na virtuální počítač připnutý ke clusteru, který buď nepodporuje požadovanou velikost virtuálního počítače, nebo nemá k dispozici volné místo pro vyžádání žádosti.
@@ -74,7 +74,7 @@ K této chybě dochází v situacích, kdy je nový požadavek na virtuální po
 * Opakujte požadavek s menší velikostí virtuálního počítače.
 * Pokud velikost požadovaného virtuálního počítače nejde změnit:
   * Zastavte všechny virtuální počítače ve skupině dostupnosti.
-    Klikněte na **skupiny**prostředků  >  *vaše skupina prostředků*  >  **prostředky**  >  *vaše sada dostupnosti*  >  **Virtual Machines**  >  *your virtual machine*  >  **zastavíte**virtuální počítač.
+    Klikněte na **skupiny** prostředků  >  *vaše skupina prostředků*  >  **prostředky**  >  *vaše sada dostupnosti*  >  **Virtual Machines**  >    >  **zastavíte** virtuální počítač.
   * Po zastavení všech virtuálních počítačů Vytvořte nový virtuální počítač v požadované velikosti.
   * Nejprve spusťte nový virtuální počítač a potom vyberte všechny zastavené virtuální počítače a klikněte na tlačítko **Spustit**.
 

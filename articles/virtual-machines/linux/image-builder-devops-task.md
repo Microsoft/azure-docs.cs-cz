@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: a3016900b6265bfd56ad1a5a71f70efc01181af5
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 43447454b82b74c10b1d53c41c7883b0b9bef242
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499250"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98196499"
 ---
 # <a name="azure-image-builder-service-devops-task"></a>Úloha DevOps služby Azure image Builder
 
@@ -26,7 +26,7 @@ Existují dva úlohy DevOps pro sestavovatele bitových kopií virtuálních po�
 
 * [Nestabilní úloha AIB](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder-canary), která nám umožní umístit do nejnovějších aktualizací a funkcí a umožnit zákazníkům jejich otestování, než ji povýšíme na "stabilní" úlohu. Pokud neexistují žádné nahlášené problémy a naše telemetrie nezobrazuje žádné problémy, přibližně 1 týden později, budeme povýšit kód úlohy na stabilní. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Nainstalujte [stabilní úlohu DevOps z Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder).
 * Musíte mít účet VSTS DevOps a vytvořený kanál sestavení.
@@ -55,9 +55,9 @@ Existují dva úlohy DevOps pro sestavovatele bitových kopií virtuálních po�
 
 ## <a name="add-task-to-release-pipeline"></a>Přidat úlohu do kanálu uvolnění
 
-Vybrat **Release Pipeline**  >  **úpravu** kanálu vydaných verzí
+Vybrat   >  **úpravu** kanálu vydaných verzí
 
-V uživatelském agentovi vyberte, pokud *+* chcete přidat a pak vyhledat **Image Builder**. Vyberte **Přidat**.
+V uživatelském agentovi vyberte, pokud *+* chcete přidat a pak vyhledat **Image Builder**. Vyberte **Add** (Přidat).
 
 Nastavte následující vlastnosti úlohy:
 
@@ -194,7 +194,7 @@ Následující příklad vysvětluje, jak to funguje:
     
 #### <a name="total-length-of-image-build"></a>Celková délka sestavení obrázku
 
-V úloze kanálu DevOps se zatím nedají změnit celkovou délku. Používá výchozí hodnotu 240 minut. Pokud chcete zvýšit [buildTimeoutInMinutes](./image-builder-json.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#properties-buildtimeoutinminutes), můžete použít úlohu AZ CLI v kanálu vydání. Nakonfigurujte úkol pro zkopírování šablony a odeslání. Příklad najdete v tomto [řešení](https://github.com/danielsollondon/azvmimagebuilder/tree/master/solutions/4_Using_ENV_Variables#using-environment-variables-and-parameters-with-image-builder), nebo použijte AZ PowerShell.
+V úloze kanálu DevOps se zatím nedají změnit celkovou délku. Používá výchozí hodnotu 240 minut. Pokud chcete zvýšit [buildTimeoutInMinutes](./image-builder-json.md#properties-buildtimeoutinminutes), můžete použít úlohu AZ CLI v kanálu vydání. Nakonfigurujte úkol pro zkopírování šablony a odeslání. Příklad najdete v tomto [řešení](https://github.com/danielsollondon/azvmimagebuilder/tree/master/solutions/4_Using_ENV_Variables#using-environment-variables-and-parameters-with-image-builder), nebo použijte AZ PowerShell.
 
 
 #### <a name="storage-account"></a>Účet úložiště
@@ -306,7 +306,7 @@ V současné době není aktuálně k dispozici.
 
 ### <a name="can-i-specify-the-image-template-name"></a>Můžu zadat název šablony obrázku?
 
-Ne. Použije se jedinečný název šablony, který se pak odstraní.
+No. Použije se jedinečný název šablony, který se pak odstraní.
 
 ### <a name="the-image-builder-failed-how-can-i-troubleshoot"></a>Tvůrce imagí se nezdařil. Jak můžu řešit potíže?
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
-ms.openlocfilehash: 0cdb82bbf38244bc91ed54ffb7d7d734cefe9dd2
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 728fd8f4705d24f719b6dd47ba88d89fb399fd5a
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183315"
+ms.locfileid: "98195870"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Použití analýzy změn aplikace (Preview) v Azure Monitor
 
@@ -206,8 +206,10 @@ Jedná se o obecnou chybovou zprávu prezentovanou službou analýza změn aplik
 Toto je obecná chybová zpráva o neautorizovaném přístupu, která vysvětluje, že aktuální uživatel nemá dostatečná oprávnění k zobrazení změny. Aby bylo možné zobrazit změny infrastruktury vracené službou Azure Resource Graph a Azure Resource Manager, je pro prostředek vyžadován alespoň přístup čtenář. Pro změny souborů v hostu služby Web App a změny konfigurace je potřeba aspoň roli Přispěvatel.
 
 ### <a name="failed-to-register-microsoftchangeanalysis-resource-provider"></a>Nepovedlo se zaregistrovat poskytovatele prostředků Microsoft. ChangeAnalysis.
+Tato zpráva znamená, že se něco nezdařilo hned po odeslání žádosti o registraci poskytovatele prostředků do uživatelského rozhraní a není v souvislosti s problémem s oprávněním. Pravděpodobně se může jednat o dočasný problém s připojením k Internetu. Zkuste aktualizovat stránku a zkontrolovat připojení k Internetu. Pokud chyba přetrvává, obraťte se na changeanalysishelp@microsoft.com
  
-**Nemáte dostatečná oprávnění k registraci poskytovatele prostředků Microsoft. ChangeAnalysis. Obraťte se na správce předplatného Azure.** Tato chybová zpráva znamená, že vaše role v aktuálním předplatném nemá přiřazený obor **Microsoft. support/registr/Action** . K tomu může dojít v případě, že nejste vlastníkem předplatného a máte oprávnění ke sdíleným přístupům prostřednictvím spolupracovníka. To znamená, že se zobrazí přístup ke skupině prostředků. Chcete-li tento problém vyřešit, obraťte se na vlastníka předplatného, abyste mohli zaregistrovat poskytovatele prostředků **Microsoft. ChangeAnalysis** . To se dá udělat v Azure Portal prostřednictvím **předplatných | Poskytovatelé prostředků** a vyhledejte ```Microsoft.ChangeAnalysis``` a zaregistrujte se v uživatelském rozhraní nebo prostřednictvím Azure PowerShell nebo rozhraní příkazového řádku Azure.
+### <a name="you-dont-have-enough-permissions-to-register-microsoftchangeanalysis-resource-provider-contact-your-azure-subscription-administrator"></a>Nemáte dostatečná oprávnění k registraci poskytovatele prostředků Microsoft. ChangeAnalysis. Obraťte se na správce předplatného Azure.
+Tato chybová zpráva znamená, že vaše role v aktuálním předplatném nemá přiřazený obor **Microsoft. support/registr/Action** . K tomu může dojít v případě, že nejste vlastníkem předplatného a máte oprávnění ke sdíleným přístupům prostřednictvím spolupracovníka. To znamená, že se zobrazí přístup ke skupině prostředků. Chcete-li tento problém vyřešit, obraťte se na vlastníka předplatného, abyste mohli zaregistrovat poskytovatele prostředků **Microsoft. ChangeAnalysis** . To se dá udělat v Azure Portal prostřednictvím **předplatných | Poskytovatelé prostředků** a vyhledejte ```Microsoft.ChangeAnalysis``` a zaregistrujte se v uživatelském rozhraní nebo prostřednictvím Azure PowerShell nebo rozhraní příkazového řádku Azure.
 
 Registrovat poskytovatele prostředků prostřednictvím PowerShellu: 
 

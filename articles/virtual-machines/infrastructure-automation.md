@@ -7,19 +7,19 @@ ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 07/17/2020
 ms.author: cynthn
-ms.openlocfilehash: dfa0efaa49fbca0b927bfd32511348f3ded7e6c7
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 96c68850cfd8b03f7d1457eb0f1ca9ce5880c926
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302815"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197995"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>Použití nástrojů pro automatizaci infrastruktury s virtuálními počítači v Azure
 
 Aby bylo možné vytvářet a spravovat virtuální počítače Azure konzistentním způsobem ve velkém měřítku, obvykle je žádoucí určitá forma automatizace. Existuje mnoho nástrojů a řešení, které vám umožňují automatizovat kompletní životní cyklus nasazení a správy infrastruktury Azure. V tomto článku se seznámíte s některými nástroji pro automatizaci infrastruktury, které můžete použít v Azure. Tyto nástroje se běžně vejdou do jednoho z následujících přístupů:
 
 - Automatizace konfigurace virtuálních počítačů
-    - Mezi tyto nástroje patří [Chef](#chef)šablony [Ansible](#ansible), [Puppet](#puppet)a [Azure Resource Manager](#azure-resource-manager-template).
+    - Mezi tyto nástroje patří [](#chef)šablony [Ansible](#ansible), [Puppet](#puppet)a [Azure Resource Manager](#azure-resource-manager-template).
     - Mezi nástroje specifické pro přizpůsobení virtuálních počítačů patří [Cloud-init](#cloud-init) pro virtuální počítače se systémem Linux, [Konfigurace požadovaného stavu (DSC) prostředí PowerShell](#powershell-dsc)a [rozšíření vlastních skriptů Azure](#azure-custom-script-extension) pro všechny virtuální počítače Azure.
 
 - Automatizace správy infrastruktury
@@ -88,7 +88,7 @@ Skripty si můžete stáhnout z Azure Storage nebo z libovolného veřejného um
 Naučte se:
 
 - [Vytvořte virtuální počítač se systémem Linux pomocí Azure CLI a použijte rozšíření vlastních skriptů](./scripts/virtual-machines-linux-cli-sample-create-vm-nginx.md?toc=%2fcli%2fazure%2ftoc.json).
-- [Vytvořte virtuální počítač s Windows pomocí Azure PowerShell a použijte rozšíření vlastních skriptů](./scripts/virtual-machines-windows-powershell-sample-create-vm-iis.md?toc=%2fpowershell%2fmodule%2ftoc.json).
+- [Vytvořte virtuální počítač s Windows pomocí Azure PowerShell a použijte rozšíření vlastních skriptů](./scripts/virtual-machines-windows-powershell-sample-create-vm-iis.md).
 
 
 ## <a name="packer"></a>Packeru

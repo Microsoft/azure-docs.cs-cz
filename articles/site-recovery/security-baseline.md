@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 860bc9440547a4c62336ccc573859ec56b3400b5
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: c3e2245ae47504e058921c532ed40a220e95423d
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533855"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197570"
 ---
 # <a name="azure-security-baseline-for-site-recovery"></a>Základní hodnoty zabezpečení Azure pro Site Recovery
 
@@ -222,7 +222,7 @@ Vytvořte proces, ve kterém můžete sledovat identitu a řízení přístupu p
 
 **Doprovodné** materiály: Použijte zabezpečenou pracovní stanici spravovanou Azure (označovanou také jako pracovní stanice s privilegovaným přístupem (privilegovaným přístupem)) se službou Azure vícefaktorového ověřování pro úlohy správy a k provádění privilegovaných akcí na site Recoverych prostředcích.
 
-- [Pracovní stanice s privilegovaným přístupem](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [Pracovní stanice s privilegovaným přístupem](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [Plánování nasazení cloudové služby Azure AD Multi-Factor Authentication](../active-directory/authentication/howto-mfa-getstarted.md)
 

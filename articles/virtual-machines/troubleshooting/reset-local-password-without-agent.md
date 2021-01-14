@@ -13,18 +13,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: genli
-ms.openlocfilehash: 4cec8f77cacc5d3492dd6a5f8a8baa060f910763
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2cc6ef9b1d9ca8336162b524356ea6e0d1bf5fd2
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91650592"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197655"
 ---
 # <a name="reset-local-windows-password-for-azure-vm-offline"></a>Resetování místního hesla Windows pro offline virtuální počítač Azure
-Místní heslo pro Windows virtuálního počítače v Azure můžete resetovat pomocí [Azure Portal nebo Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) za předpokladu, že je nainstalovaný Agent hosta Azure. Tato metoda je hlavním způsobem, jak resetovat heslo pro virtuální počítač Azure. Pokud narazíte na problémy s agentem hosta Azure nereaguje nebo se nedaří nainstalovat po nahrání vlastní image, můžete heslo pro Windows resetovat ručně. Tento článek podrobně popisuje, jak resetovat heslo místního účtu připojením virtuálního disku zdrojového operačního systému k jinému virtuálnímu počítači. Kroky popsané v tomto článku se nevztahují na řadiče domény se systémem Windows. 
+Místní heslo pro Windows virtuálního počítače v Azure můžete resetovat pomocí [Azure Portal nebo Azure PowerShell](reset-rdp.md) za předpokladu, že je nainstalovaný Agent hosta Azure. Tato metoda je hlavním způsobem, jak resetovat heslo pro virtuální počítač Azure. Pokud narazíte na problémy s agentem hosta Azure nereaguje nebo se nedaří nainstalovat po nahrání vlastní image, můžete heslo pro Windows resetovat ručně. Tento článek podrobně popisuje, jak resetovat heslo místního účtu připojením virtuálního disku zdrojového operačního systému k jinému virtuálnímu počítači. Kroky popsané v tomto článku se nevztahují na řadiče domény se systémem Windows. 
 
 > [!WARNING]
-> Tento postup použijte až jako poslední možnost. Vždy se pokuste resetovat heslo pomocí [Azure Portal nebo Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) nejdříve.
+> Tento postup použijte až jako poslední možnost. Vždy se pokuste resetovat heslo pomocí [Azure Portal nebo Azure PowerShell](reset-rdp.md) nejdříve.
 
 ## <a name="overview-of-the-process"></a>Přehled procesu
 Základní kroky pro provedení místního resetování hesla pro virtuální počítač s Windows v Azure, když není k dispozici žádný přístup k agentovi hosta Azure, je následující:
@@ -41,7 +41,7 @@ Základní kroky pro provedení místního resetování hesla pro virtuální po
 > [!NOTE]
 > Tento postup se nevztahuje na řadiče domény systému Windows. Funguje pouze na samostatném serveru nebo na serveru, který je členem domény.
 
-Před pokusem o provedení následujících kroků se vždycky pokuste resetovat heslo pomocí [Azure Portal nebo Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) . Než začnete, ujistěte se, že máte zálohu svého virtuálního počítače.
+Před pokusem o provedení následujících kroků se vždycky pokuste resetovat heslo pomocí [Azure Portal nebo Azure PowerShell](reset-rdp.md) . Než začnete, ujistěte se, že máte zálohu svého virtuálního počítače.
 
 1. Položte si snímek disku s operačním systémem ovlivněného virtuálního počítače, vytvořte disk ze snímku a pak ho připojte k virtuálnímu počítači pro odstraňování potíží. Další informace najdete v tématu [řešení potíží s virtuálním počítačem s Windows připojením disku s operačním systémem k virtuálnímu počítači pro obnovení pomocí Azure Portal](troubleshoot-recovery-disks-portal-windows.md).
 2. Připojte se k virtuálnímu počítači pro řešení potíží pomocí vzdálené plochy.
@@ -71,10 +71,17 @@ Před pokusem o provedení následujících kroků se vždycky pokuste resetovat
      0Parameters=
      ```
      
-     :::image type="content" source="./media/reset-local-password-without-agent/create-scripts-ini-1.png" alt-text="Snímek obrazovky zobrazující aktualizace souboru gpt.ini" <username> /add
+     :::image type="content" source="./media/reset-local-password-without-agent/create-scripts-ini-1.png" alt-text="Snímek obrazovky zobrazující aktualizace souboru script.ini":::
+
+5. Vytvořte `FixAzureVM.cmd` `\Windows\System32\GroupPolicy\Machine\Scripts\Startup\` pomocí následujícího obsahu, nahraďte `<username>` a `<newpassword>` vlastními hodnotami:
+   
+    ```
+    net user <username> <newpassword> /add /Y
+    net localgroup administrators <username> /add
+    net localgroup "remote desktop users" <username> /add
     ```
 
-    :::image type="content" source="./media/reset-local-password-without-agent/create-fixazure-cmd-1.png" alt-text="Snímek obrazovky zobrazující aktualizace souboru gpt.ini":::
+    :::image type="content" source="./media/reset-local-password-without-agent/create-fixazure-cmd-1.png" alt-text="Snímek obrazovky zobrazující nově vytvořený soubor FixAzureVM. cmd, kde můžete aktualizovat uživatelské jméno a heslo.":::
    
     Při definování nového hesla musíte splnit požadavky nakonfigurované složitosti hesla pro váš virtuální počítač.
 
@@ -106,31 +113,31 @@ Před pokusem o provedení následujících kroků se vždycky pokuste resetovat
    
    * Vyberte virtuální počítač v Azure Portal a pak klikněte na *Odstranit*:
      
-     :::image type="content" source="./media/reset-local-password-without-agent/delete-vm-classic.png" alt-text="Snímek obrazovky zobrazující aktualizace souboru gpt.ini":::
+     :::image type="content" source="./media/reset-local-password-without-agent/delete-vm-classic.png" alt-text="Odstranit existující klasický virtuální počítač":::
 
 2. Připojte disk s operačním systémem zdrojového virtuálního počítače k virtuálnímu počítači pro řešení potíží. Virtuální počítač pro řešení potíží se musí nacházet ve stejné oblasti jako disk s operačním systémem zdrojového virtuálního počítače (například `West US` ):
    
    1. Vyberte virtuální počítač pro řešení potíží ve Azure Portal. Klikněte na *disky*  |  *připojit existující*:
      
-      :::image type="content" source="./media/reset-local-password-without-agent/disks-attach-existing-classic.png" alt-text="Snímek obrazovky zobrazující aktualizace souboru gpt.ini":::
+      :::image type="content" source="./media/reset-local-password-without-agent/disks-attach-existing-classic.png" alt-text="Připojit existující disk – klasický":::
      
    2. Vyberte *soubor VHD* a pak vyberte účet úložiště, který obsahuje váš zdrojový virtuální počítač:
      
-      :::image type="content" source="./media/reset-local-password-without-agent/disks-select-storage-account-classic.png" alt-text="Snímek obrazovky zobrazující aktualizace souboru gpt.ini":::
+      :::image type="content" source="./media/reset-local-password-without-agent/disks-select-storage-account-classic.png" alt-text="Vybrat účet úložiště – klasický":::
      
-   3. Zaškrtněte políčko *Zobrazit účty klasického úložiště*a pak vyberte zdrojový kontejner. Zdrojový kontejner je obvykle *VHD*:
+   3. Zaškrtněte políčko *Zobrazit účty klasického úložiště* a pak vyberte zdrojový kontejner. Zdrojový kontejner je obvykle *VHD*:
      
-      :::image type="content" source="./media/reset-local-password-without-agent/disks-select-container-classic.png" alt-text="Snímek obrazovky zobrazující aktualizace souboru gpt.ini":::
+      :::image type="content" source="./media/reset-local-password-without-agent/disks-select-container-classic.png" alt-text="Vybrat kontejner úložiště – klasický":::
 
-      :::image type="content" source="./media/reset-local-password-without-agent/disks-select-container-vhds-classic.png" alt-text="Snímek obrazovky zobrazující aktualizace souboru gpt.ini":::
+      :::image type="content" source="./media/reset-local-password-without-agent/disks-select-container-vhds-classic.png" alt-text="Výběr kontejneru úložiště – VHD – klasický":::
      
    4. Vyberte virtuální pevný disk s operačním systémem, který se má připojit. Pro dokončení procesu klikněte na tlačítko *Vybrat* :
      
-      :::image type="content" source="./media/reset-local-password-without-agent/disks-select-source-vhd-classic.png" alt-text="Snímek obrazovky zobrazující aktualizace souboru gpt.ini":::
+      :::image type="content" source="./media/reset-local-password-without-agent/disks-select-source-vhd-classic.png" alt-text="Vybrat zdrojový virtuální disk – klasický":::
 
    5. Kliknutím na OK připojte disk.
 
-      :::image type="content" source="./media/reset-local-password-without-agent/disks-attach-okay-classic.png" alt-text="Snímek obrazovky zobrazující aktualizace souboru gpt.ini":::
+      :::image type="content" source="./media/reset-local-password-without-agent/disks-attach-okay-classic.png" alt-text="Připojit existující disk – dialog OK – klasický":::
 
 3. Připojte se k virtuálnímu počítači pro řešení potíží pomocí vzdálené plochy a ujistěte se, že je disk s operačním systémem zdrojového virtuálního počítače viditelný:
 
@@ -140,7 +147,7 @@ Před pokusem o provedení následujících kroků se vždycky pokuste resetovat
 
    3. V Průzkumníku souborů vyhledejte datový disk, který jste připojili. Pokud virtuální pevný disk virtuálního počítače je jediným datovým diskem připojeným k virtuálnímu počítači pro řešení potíží, měl by to být jednotka F:.
      
-      :::image type="content" source="./media/reset-local-password-without-agent/troubleshooting-vm-file-explorer-classic.png" alt-text="Snímek obrazovky zobrazující aktualizace souboru gpt.ini":::
+      :::image type="content" source="./media/reset-local-password-without-agent/troubleshooting-vm-file-explorer-classic.png" alt-text="Zobrazit připojený datový disk":::
 
 4. Vytvořte `gpt.ini` v `\Windows\System32\GroupPolicy` jednotce zdrojového virtuálního počítače (Pokud `gpt.ini` existuje, přejmenujte na `gpt.ini.bak` ):
    
@@ -156,7 +163,7 @@ Před pokusem o provedení následujících kroků se vždycky pokuste resetovat
      Version=1
      ```
      
-     :::image type="content" source="./media/reset-local-password-without-agent/create-gpt-ini-classic.png" alt-text="Snímek obrazovky zobrazující aktualizace souboru gpt.ini":::
+     :::image type="content" source="./media/reset-local-password-without-agent/create-gpt-ini-classic.png" alt-text="Vytvořit gpt.ini – klasický":::
 
 5. Vytvořte `scripts.ini` v `\Windows\System32\GroupPolicy\Machine\Scripts\` . Ujistěte se, že jsou zobrazené skryté složky. V případě potřeby vytvořte `Machine` složky nebo `Scripts` .
    
@@ -168,10 +175,17 @@ Před pokusem o provedení následujících kroků se vždycky pokuste resetovat
      0Parameters=
      ```
      
-     :::image type="content" source="./media/reset-local-password-without-agent/create-scripts-ini-classic-1.png" alt-text="Snímek obrazovky zobrazující aktualizace souboru gpt.ini" <username> /add
+     :::image type="content" source="./media/reset-local-password-without-agent/create-scripts-ini-classic-1.png" alt-text="Vytvořit scripts.ini – klasický":::
+
+6. Vytvořte `FixAzureVM.cmd` `\Windows\System32\GroupPolicy\Machine\Scripts\Startup\` pomocí následujícího obsahu, nahraďte `<username>` a `<newpassword>` vlastními hodnotami:
+   
+    ```
+    net user <username> <newpassword> /add /Y
+    net localgroup administrators <username> /add
+    net localgroup "remote desktop users" <username> /add
     ```
 
-    :::image type="content" source="./media/reset-local-password-without-agent/create-fixazure-cmd-1.png" alt-text="Snímek obrazovky zobrazující aktualizace souboru gpt.ini":::
+    :::image type="content" source="./media/reset-local-password-without-agent/create-fixazure-cmd-1.png" alt-text="Vytvoření FixAzureVM. cmd – Classic":::
    
     Při definování nového hesla musíte splnit požadavky nakonfigurované složitosti hesla pro váš virtuální počítač.
 
@@ -179,19 +193,19 @@ Před pokusem o provedení následujících kroků se vždycky pokuste resetovat
    
    1. Vyberte virtuální počítač pro řešení potíží v Azure Portal klikněte na *disky*.
    
-   2. Vyberte datový disk připojený v kroku 2, klikněte na **Odpojit**a pak klikněte na **OK**.
+   2. Vyberte datový disk připojený v kroku 2, klikněte na **Odpojit** a pak klikněte na **OK**.
 
-     :::image type="content" source="./media/reset-local-password-without-agent/data-disks-classic.png" alt-text="Snímek obrazovky zobrazující aktualizace souboru gpt.ini":::
+     :::image type="content" source="./media/reset-local-password-without-agent/data-disks-classic.png" alt-text="Odpojení disku – řešení potíží s virtuálním počítačem – Classic":::
      
-     :::image type="content" source="./media/reset-local-password-without-agent/detach-disk-classic.png" alt-text="Snímek obrazovky zobrazující aktualizace souboru gpt.ini":::
+     :::image type="content" source="./media/reset-local-password-without-agent/detach-disk-classic.png" alt-text="Odpojení disku – řešení potíží s virtuálním počítačem – dialogové okno ok – klasický":::
 
 8. Vytvořte virtuální počítač z disku s operačním systémem zdrojového virtuálního počítače:
    
-     :::image type="content" source="./media/reset-local-password-without-agent/create-new-vm-from-template-classic.png" alt-text="Snímek obrazovky zobrazující aktualizace souboru gpt.ini":::
+     :::image type="content" source="./media/reset-local-password-without-agent/create-new-vm-from-template-classic.png" alt-text="Vytvoření virtuálního počítače ze šablony – klasický":::
 
-     :::image type="content" source="./media/reset-local-password-without-agent/choose-subscription-classic.png" alt-text="Snímek obrazovky zobrazující aktualizace souboru gpt.ini":::
+     :::image type="content" source="./media/reset-local-password-without-agent/choose-subscription-classic.png" alt-text="Vytvoření virtuálního počítače pomocí šablony – volba předplatného – klasický":::
 
-     :::image type="content" source="./media/reset-local-password-without-agent/create-vm-classic.png" alt-text="Snímek obrazovky zobrazující aktualizace souboru gpt.ini":::
+     :::image type="content" source="./media/reset-local-password-without-agent/create-vm-classic.png" alt-text="Vytvoření virtuálního počítače pomocí šablony – vytvoření virtuálního počítače – klasický":::
 
 ## <a name="complete-the-create-virtual-machine-experience"></a>Dokončení prostředí pro vytvoření virtuálního počítače
 
@@ -207,4 +221,4 @@ Před pokusem o provedení následujících kroků se vždycky pokuste resetovat
       * odebrat `gpt.ini` (Pokud `gpt.ini` existovalo dřív a přejmenovali jste ho na `gpt.ini.bak` , přejmenujte `.bak` soubor zpátky na `gpt.ini` )
 
 ## <a name="next-steps"></a>Další kroky
-Pokud se stále nemůžete připojit pomocí vzdálené plochy, přečtěte si [příručku pro odstraňování potíží s RDP](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). [Podrobný průvodce odstraňováním potíží s](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) protokolem RDP hledá místo konkrétních kroků postupy řešení potíží. Můžete také [otevřít žádost o podporu Azure](https://azure.microsoft.com/support/options/) pro praktickou pomoc.
+Pokud se stále nemůžete připojit pomocí vzdálené plochy, přečtěte si [příručku pro odstraňování potíží s RDP](troubleshoot-rdp-connection.md). [Podrobný průvodce odstraňováním potíží s](detailed-troubleshoot-rdp.md) protokolem RDP hledá místo konkrétních kroků postupy řešení potíží. Můžete také [otevřít žádost o podporu Azure](https://azure.microsoft.com/support/options/) pro praktickou pomoc.

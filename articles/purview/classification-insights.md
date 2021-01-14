@@ -1,18 +1,18 @@
 ---
-title: Vytváření sestav klasifikace pro vaše data s využitím dosah Insights (Preview)
-description: Tato příručka popisuje, jak zobrazit a používat vytváření sestav klasifikace dosah Insights pro vaše data.
+title: Vytváření sestav klasifikace pro vaše data v Azure dosah pomocí dosah Insights
+description: Tato příručka popisuje, jak zobrazit a používat vytváření sestav klasifikace dosah pro vaše data.
 author: batamig
 ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/24/2020
-ms.openlocfilehash: bb3c7cc3f51eae90c5b712d224407e639b232fbc
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: a0eed27636a3f65d68489d1f2249db784ba1d722
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938881"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98196533"
 ---
 # <a name="classification-insights-about-your-data-from-azure-purview"></a>Přehledy klasifikace vašich dat z Azure dosah
 
@@ -27,13 +27,15 @@ V této příručce se dozvíte, jak:
 > - Zobrazit přehledy o klasifikacích pro vaše data
 > - Přejít k podrobnostem o dalších podrobnostech klasifikace vašich dat
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete s dosah přehledy, ujistěte se, že jste dokončili následující kroky:
 
 - Nastavte prostředky Azure a vyplníte příslušné účty testovacími daty
 
-- Nastavení a dokončení kontroly dat testu v každém zdroji dat 
+- Nastavení a dokončení kontroly dat testu v každém zdroji dat
+
+- Přihlásili jste se k dosah pomocí účtu s [rolí data Reader nebo data kurátor](catalog-permissions.md#azure-purviews-pre-defined-data-plane-roles).
 
 Další informace najdete v tématu [Správa zdrojů dat ve službě Azure dosah (Preview)](manage-data-sources.md).
 
@@ -60,7 +62,7 @@ Dosah používá stejné typy citlivých informací jako Microsoft 365, což vá
 
    Hlavní stránka **Přehled klasifikace** zobrazuje následující oblasti:
 
-   |Oblast  |Popis  |
+   |Plošný  |Description  |
    |---------|---------|
    |**Přehled zdrojů s klasifikací**     |Zobrazí dlaždice, které poskytují: <br>– Počet odběrů nalezených ve vašich datech <br>– Počet jedinečných klasifikací nalezených ve vašich datech <br>– Počet nalezených klasifikovaných zdrojů <br>– Počet nalezených klasifikovaných souborů <br>– Počet nalezených klasifikovaných tabulek         |
    |**Hlavní zdroje s utajovanými daty (posledních 30 dní)**     |Zobrazuje trend, za posledních 30 dní, počtu zdrojů nalezených s utajovanými daty.            |

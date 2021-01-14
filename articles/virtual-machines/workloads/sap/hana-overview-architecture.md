@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 01/04/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c06988bf9c3558f5ef82862bdbcd821dc42ca28a
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 5ec3500c124d3e4f8cb1b46445c28c6a64c93526
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97880983"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98195445"
 ---
 #  <a name="what-is-sap-hana-on-azure-large-instances"></a>Co je SAP HANA ve velkých instancích Azure?
 
@@ -52,11 +52,11 @@ Tento dokument je jedním z několika dokumentů, které pokrývají SAP HANA v 
 
 Různé dokumenty s pokyny pro velké instance HANA se týkají těchto oblastí:
 
-- [Přehled a architektura v Azure SAP HANA (velké instance)](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [SAP HANA (velké instance) infrastruktury a připojení v Azure](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Instalace a konfigurace SAP HANA (velké instance) v Azure](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [SAP HANA (velké instance) s vysokou dostupností a zotavením po havárii v Azure](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Řešení potíží a monitorování v Azure SAP HANA (velké instance)](troubleshooting-monitoring.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Přehled a architektura v Azure SAP HANA (velké instance)](hana-overview-architecture.md)
+- [SAP HANA (velké instance) infrastruktury a připojení v Azure](hana-overview-infrastructure-connectivity.md)
+- [Instalace a konfigurace SAP HANA (velké instance) v Azure](hana-installation.md)
+- [SAP HANA (velké instance) s vysokou dostupností a zotavením po havárii v Azure](hana-overview-high-availability-disaster-recovery.md)
+- [Řešení potíží a monitorování v Azure SAP HANA (velké instance)](troubleshooting-monitoring.md)
 - [Nastavení vysoké dostupnosti v SUSE pomocí STONITH](./ha-setup-with-stonith.md)
 - [Zálohování a obnovení operačního systému pro SKU typu II u razítek revize 3](./os-backup-type-ii-skus.md)
 - [Úspory pro Velké instance SAP HANA s využitím rezervace Azure](../../../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md)

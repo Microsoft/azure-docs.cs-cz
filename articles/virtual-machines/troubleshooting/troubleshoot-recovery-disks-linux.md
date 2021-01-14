@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/16/2017
 ms.author: genli
-ms.openlocfilehash: bc796b4d9708c18f4d0612e6f3ebde9b2485d2f7
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 70855f7956e42d815e0b8135ccfe6e374853d8aa
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093136"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197519"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-with-the-azure-cli"></a>Řešení potíží s virtuálním počítačem se systémem Linux připojením disku s operačním systémem k virtuálnímu počítači pro obnovení pomocí Azure CLI
 Pokud váš virtuální počítač se systémem Linux zaznamená chybu spuštění nebo disku, možná budete muset provést kroky pro řešení potíží na samotném virtuálním pevném disku. Běžným příkladem může být neplatná položka v `/etc/fstab` systému, která zabraňuje úspěšnému spuštění virtuálního počítače. Tento článek podrobně popisuje, jak pomocí rozhraní příkazového řádku Azure připojit virtuální pevný disk k jinému virtuálnímu počítači se systémem Linux a opravit případné chyby a pak znovu vytvořit původní virtuální počítač. 
@@ -36,7 +36,7 @@ Proces řešení potíží je následující:
 
 K provedení těchto kroků při odstraňování potíží budete potřebovat nainstalovat nejnovější verzi [Azure CLI](/cli/azure/install-az-cli2) a přihlásit se k účtu Azure pomocí [AZ Login](/cli/azure/reference-index).
 
-Pomocí příkazů pro opravu virtuálního počítače můžete automatizovat kroky 1, 2, 3, 4, 6 a 7. Další dokumentaci a pokyny najdete v tématu [Oprava virtuálního počítače se systémem Linux pomocí příkazů pro opravu virtuálního počítače Azure](repair-linux-vm-using-azure-virtual-machine-repair-commands.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Pomocí příkazů pro opravu virtuálního počítače můžete automatizovat kroky 1, 2, 3, 4, 6 a 7. Další dokumentaci a pokyny najdete v tématu [Oprava virtuálního počítače se systémem Linux pomocí příkazů pro opravu virtuálního počítače Azure](repair-linux-vm-using-azure-virtual-machine-repair-commands.md).
 
 > [!Important]
 > Skripty v tomto článku se vztahují pouze na virtuální počítače, které používají [spravovaný disk](../managed-disks-overview.md). 

@@ -4,12 +4,12 @@ description: Naučte se integrovat Azure NetApp Files se službou Azure Kubernet
 services: container-service
 ms.topic: article
 ms.date: 10/23/2020
-ms.openlocfilehash: bc65c3dfad4c27c1650054c6836fbbbf07a7dbf2
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 19727d3c3322b05f340463d94a2bc3884e5d9d93
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93126249"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98196006"
 ---
 # <a name="integrate-azure-netapp-files-with-azure-kubernetes-service"></a>Integrace Azure NetApp Files se službou Azure Kubernetes
 
@@ -28,14 +28,14 @@ Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2
 Při použití Azure NetApp Files platí následující omezení:
 
 * Azure NetApp Files je k dispozici pouze [ve vybraných oblastech Azure][anf-regions].
-* Předtím, než budete moci použít Azure NetApp Files, je nutné udělit přístup ke službě Azure NetApp Files. Pokud chcete požádat o přístup, můžete použít [formulář pro odeslání Azure NetApp Files pořadníku][anf-waitlist]. Ke službě Azure NetApp Files nemůžete získat přístup, dokud nedostanete oficiální potvrzovací e-mail od Azure NetApp Files týmu.
+* Předtím, než budete moci použít Azure NetApp Files, je nutné udělit přístup ke službě Azure NetApp Files. Pokud chcete požádat o přístup, můžete použít [formulář pro odeslání Azure NetApp Files pořadníku][anf-waitlist] nebo přejít na https://azure.microsoft.com/services/netapp/#getting-started . Ke službě Azure NetApp Files nemůžete získat přístup, dokud nedostanete oficiální potvrzovací e-mail od Azure NetApp Files týmu.
 * Po počátečním nasazení clusteru AKS se podporuje pouze statické zřizování pro Azure NetApp Files.
 * Pokud chcete používat dynamické zřizování s Azure NetApp Files, nainstalujte a nakonfigurujte [NetApp Trident](https://netapp-trident.readthedocs.io/) verze 19,07 nebo novější.
 
 ## <a name="configure-azure-netapp-files"></a>Konfigurace Azure NetApp Files
 
 > [!IMPORTANT]
-> Než budete moct zaregistrovat poskytovatele prostředků  *Microsoft. NetApp* , musíte pro své předplatné vyplnit [formulář pro odeslání služby Azure NetApp Files pořadníku][anf-waitlist] . Prostředek nejde zaregistrovat, dokud nedostanete oficiální potvrzovací e-mail od Azure NetApp Files týmu.
+> Než budete moct zaregistrovat poskytovatele prostředků  *Microsoft. NetApp* , musíte dokončit [formulář pro odeslání služby Azure NetApp Files pořadníku][anf-waitlist] , nebo přejít na https://azure.microsoft.com/services/netapp/#getting-started pro vaše předplatné. Prostředek nejde zaregistrovat, dokud nedostanete oficiální potvrzovací e-mail od Azure NetApp Files týmu.
 
 Zaregistrujte poskytovatele prostředků *Microsoft. NetApp* :
 
@@ -46,7 +46,7 @@ az provider register --namespace Microsoft.NetApp --wait
 > [!NOTE]
 > Dokončení tohoto může nějakou dobu trvat.
 
-Když vytvoříte účet Azure NetApp pro použití s AKS, musíte vytvořit účet ve skupině prostředků **uzlu** . Nejprve Získejte název skupiny prostředků pomocí příkazu [AZ AKS show][az-aks-show] a přidejte `--query nodeResourceGroup` parametr dotazu. Následující příklad načte skupinu prostředků uzlu pro cluster AKS s názvem *myAKSCluster* v názvu skupiny prostředků *myResourceGroup* :
+Když vytvoříte účet Azure NetApp pro použití s AKS, musíte vytvořit účet ve skupině prostředků **uzlu** . Nejprve Získejte název skupiny prostředků pomocí příkazu [AZ AKS show][az-aks-show] a přidejte `--query nodeResourceGroup` parametr dotazu. Následující příklad načte skupinu prostředků uzlu pro cluster AKS s názvem *myAKSCluster* v názvu skupiny prostředků *myResourceGroup*:
 
 ```azurecli-interactive
 az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
@@ -145,7 +145,7 @@ az netappfiles volume show --resource-group $RESOURCE_GROUP --account-name $ANF_
 }
 ```
 
-Vytvoří `pv-nfs.yaml` definici PersistentVolume. Nahraďte `path` *creationToken* a parametrem `server` *ipAddress* z předchozího příkazu. Například:
+Vytvoří `pv-nfs.yaml` definici PersistentVolume. Nahraďte `path` *creationToken* a parametrem `server` *ipAddress* z předchozího příkazu. Příklad:
 
 ```yaml
 ---
@@ -158,6 +158,8 @@ spec:
     storage: 100Gi
   accessModes:
     - ReadWriteMany
+  mountOptions:
+    - vers=3
   nfs:
     server: 10.0.0.4
     path: /myfilepath2
@@ -177,7 +179,7 @@ kubectl describe pv pv-nfs
 
 ## <a name="create-the-persistentvolumeclaim"></a>Vytvoření PersistentVolumeClaim
 
-Vytvoří `pvc-nfs.yaml` definici PersistentVolume. Například:
+Vytvoří `pvc-nfs.yaml` definici PersistentVolume. Příklad:
 
 ```yaml
 apiVersion: v1
@@ -207,7 +209,7 @@ kubectl describe pvc pvc-nfs
 
 ## <a name="mount-with-a-pod"></a>Připojit pomocí pod
 
-Vytvořte `nginx-nfs.yaml` definici pod, která používá PersistentVolumeClaim. Například:
+Vytvořte `nginx-nfs.yaml` definici pod, která používá PersistentVolumeClaim. Příklad:
 
 ```yaml
 kind: Pod

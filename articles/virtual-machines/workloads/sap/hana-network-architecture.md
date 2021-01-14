@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b18e1cd20a4b0a886258fd56003cd273d92381fa
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: c1403c514f5a278fd406769f1d5271cc95a5c1df
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093974"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98195734"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>Síťová architektura SAP HANA (velké instance)
 
@@ -47,9 +47,9 @@ Pokud je SAP HANA v Azure (velké instance) nasazené v několika různých obla
 
 ## <a name="additional-virtual-network-information"></a>Další informace o virtuální síti
 
-Aby bylo možné připojit virtuální síť k ExpressRoute, je třeba vytvořit bránu Azure ExpressRoute. Další informace najdete v tématu [informace o branách ExpressRoute pro ExpressRoute](../../../expressroute/expressroute-about-virtual-network-gateways.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
+Aby bylo možné připojit virtuální síť k ExpressRoute, je třeba vytvořit bránu Azure ExpressRoute. Další informace najdete v tématu [informace o branách ExpressRoute pro ExpressRoute](../../../expressroute/expressroute-about-virtual-network-gateways.md). 
 
-Brána Azure ExpressRoute se používá s ExpressRoute k infrastruktuře mimo Azure nebo k razítku velké instance Azure. Bránu Azure ExpressRoute můžete připojit k maximálně čtyřem různým ExpressRoute okruhům, pokud tato připojení pocházejí z různých hraničních směrovačů Microsoft Enterprise. Další informace najdete v tématu [SAP Hana (velké instance) infrastruktury a připojení v Azure](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
+Brána Azure ExpressRoute se používá s ExpressRoute k infrastruktuře mimo Azure nebo k razítku velké instance Azure. Bránu Azure ExpressRoute můžete připojit k maximálně čtyřem různým ExpressRoute okruhům, pokud tato připojení pocházejí z různých hraničních směrovačů Microsoft Enterprise. Další informace najdete v tématu [SAP Hana (velké instance) infrastruktury a připojení v Azure](hana-overview-infrastructure-connectivity.md). 
 
 > [!NOTE] 
 > Maximální propustnost, kterou můžete dosáhnout pomocí brány ExpressRoute, je 10 GB/s s použitím připojení ExpressRoute. Kopírování souborů mezi virtuálním počítačem, který se nachází ve virtuální síti, a místním systému (jako jeden kopírovací datový proud) nedosáhne celé propustnosti různých SKU brány. K využití celé šířky pásma brány ExpressRoute použijte více datových proudů. Nebo je nutné zkopírovat různé soubory v paralelních datových proudech jednoho souboru.
@@ -60,7 +60,7 @@ Architektura sítě pro rozsáhlou instanci HANA může být rozdělená do čty
 
 - Místní sítě a ExpressRoute připojení k Azure. Tato část je doména zákazníka a je připojená k Azure prostřednictvím ExpressRoute. Tento okruh ExpressRoute se vám plně hradí jako zákazník. Šířka pásma by měla být dostatečně velká, aby bylo možné zpracovávat síťový provoz mezi místními prostředky a oblastí Azure, ke které se připojujete. Viz dole vpravo na následujícím obrázku.
 - Síťové služby Azure, jak je popsáno výše, s virtuálními sítěmi, které znovu vyžadují přidané brány ExpressRoute. Tato část je oblast, kde potřebujete najít vhodné návrhy pro požadavky na aplikace, zabezpečení a požadavky na dodržování předpisů. Bez ohledu na to, jestli používáte rozsáhlou instanci HANA, je další bod, který je třeba vzít v úvahu jako počet virtuálních sítí a SKU brány Azure na výběr z. Podívejte se na obrázek vpravo nahoře.
-- Připojení velké instance HANA prostřednictvím technologie ExpressRoute do Azure Tato část je nasazena a zpracována společností Microsoft. Vše, co potřebujete udělat, je poskytnout některé rozsahy IP adres po nasazení vašich assetů ve velké instanci HANA připojte okruh ExpressRoute k virtuálním sítím. Další informace najdete v tématu [SAP Hana (velké instance) infrastruktury a připojení v Azure](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Jako zákazník pro připojení mezi síťovými prostředky infrastruktury a velkými instancemi služby Azure Data Center se za vás neúčtují žádné další poplatky.
+- Připojení velké instance HANA prostřednictvím technologie ExpressRoute do Azure Tato část je nasazena a zpracována společností Microsoft. Vše, co potřebujete udělat, je poskytnout některé rozsahy IP adres po nasazení vašich assetů ve velké instanci HANA připojte okruh ExpressRoute k virtuálním sítím. Další informace najdete v tématu [SAP Hana (velké instance) infrastruktury a připojení v Azure](hana-overview-infrastructure-connectivity.md). Jako zákazník pro připojení mezi síťovými prostředky infrastruktury a velkými instancemi služby Azure Data Center se za vás neúčtují žádné další poplatky.
 - Síť v rámci razítka velké instance HANA, která je pro vás hlavně transparentní.
 
 ![Virtuální síť připojená k SAP HANA v Azure (velké instance) a místní](./media/hana-overview-architecture/image1-architecture.png)
@@ -98,7 +98,7 @@ Další podrobnosti o tom, jak nakonfigurovat rychlou cestu ExpressRoute, najdet
 
 ## <a name="single-sap-system"></a>Jeden systém SAP
 
-Místní infrastruktura, která se dřív zobrazila, je připojená prostřednictvím ExpressRoute do Azure. Okruh ExpressRoute se připojuje k hraničnímu směrovači Microsoft Enterprise (MSEE). Další informace najdete v tématu [ExpressRoute Technical Overview](../../../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Po navázání trasy se připojí k páteřní síti Azure.
+Místní infrastruktura, která se dřív zobrazila, je připojená prostřednictvím ExpressRoute do Azure. Okruh ExpressRoute se připojuje k hraničnímu směrovači Microsoft Enterprise (MSEE). Další informace najdete v tématu [ExpressRoute Technical Overview](../../../expressroute/expressroute-introduction.md). Po navázání trasy se připojí k páteřní síti Azure.
 
 > [!NOTE] 
 > Pokud chcete spustit SAP krajina v Azure, připojte se k hraničnímu směrovači Enterprise, který je nejblíže oblasti Azure na platformě SAP na šířku. K minimalizaci latence sítě mezi virtuálními počítači v rámci razítek velkých instancí v Azure IaaS a HANA jsou připojená razítka pro velká instance HANA přes vyhrazená zařízení podnikového hraničního směrovače.
@@ -136,7 +136,7 @@ Ve výchozím nastavení je pro SAP HANA v Azure (velké instance) důležité t
 
 * Pokud máte velké jednotky instancí HANA nasazené ve dvou různých oblastech Azure pro zotavení po havárii, platí stejná přechodná omezení směrování v minulosti. Jinými slovy, IP adresy velké instance jednotky HANA v jedné oblasti (například USA – západ) nebyly směrovány na jednotku velkých instancí HANA nasazenou v jiné oblasti (například USA – východ). Toto omezení bylo nezávislé na použití partnerského vztahu sítě Azure v různých oblastech nebo vzájemném propojení okruhů ExpressRoute, které spojují jednotky velkých instancí HANA s virtuálními sítěmi. V případě grafické reprezentace si přečtěte obrázek v části "použití jednotek velkých instancí HANA ve více oblastech." Toto omezení, které bylo dodáno s nasazenou architekturou, zakázalo okamžité použití replikace systému HANA jako funkce zotavení po havárii. V případě nedávných změn vyhledejte oddíl ' použít velké instance služby HANA v několika oblastech '. 
 
-* Jednotky s SAP HANA v Azure (velké instance) mají přiřazenou IP adresu z rozsahu adres fondu IP adres serveru, který jste odeslali při žádosti o nasazení velké instance HANA. Další informace najdete v tématu [SAP Hana (velké instance) infrastruktury a připojení v Azure](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Tato IP adresa je přístupná prostřednictvím předplatných Azure a okruhu, který propojuje virtuální sítě Azure s velkými instancemi HANA. IP adresa, která je přiřazená z tohoto rozsahu adres fondu IP adres serveru, je přímo přiřazená k hardwarové jednotce. V tomto *případě se už nepřiřazuje prostřednictvím* překladu adres (NAT), jako by to bylo v prvním nasazení tohoto řešení. 
+* Jednotky s SAP HANA v Azure (velké instance) mají přiřazenou IP adresu z rozsahu adres fondu IP adres serveru, který jste odeslali při žádosti o nasazení velké instance HANA. Další informace najdete v tématu [SAP Hana (velké instance) infrastruktury a připojení v Azure](hana-overview-infrastructure-connectivity.md). Tato IP adresa je přístupná prostřednictvím předplatných Azure a okruhu, který propojuje virtuální sítě Azure s velkými instancemi HANA. IP adresa, která je přiřazená z tohoto rozsahu adres fondu IP adres serveru, je přímo přiřazená k hardwarové jednotce. V tomto *případě se už nepřiřazuje prostřednictvím* překladu adres (NAT), jako by to bylo v prvním nasazení tohoto řešení. 
 
 ### <a name="direct-routing-to-hana-large-instances"></a>Přímé směrování na velké instance HANA
 

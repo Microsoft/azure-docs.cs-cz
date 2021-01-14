@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 9eab908d2767bcdc9305daa625c70be9b63b9756
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 1ba23b73836f1a2dbe73932ba920649ca5bb8b33
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96485542"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98195700"
 ---
 # <a name="azure-security-baseline-for-service-fabric"></a>Základní hodnoty zabezpečení Azure pro Service Fabric
 
@@ -64,7 +64,7 @@ Zvažte nasazení firewallu webových aplikací Azure (WAF) před kritickými we
 
 * [Service Fabric se službou Azure API Management – Přehled](./service-fabric-api-management-overview.md)
 
-* [Integrace API Management v interní virtuální síti s Application Gateway](../api-management/api-management-howto-integrate-internal-vnet-appgateway.md)
+* [Integrace služby API Management v interní virtuální síti se službou Application Gateway](../api-management/api-management-howto-integrate-internal-vnet-appgateway.md)
 
 * [Jak nasadit Azure WAF](../web-application-firewall/ag/create-waf-policy-ag.md)
 
@@ -380,7 +380,7 @@ Kromě toho můžete použít Azure Security Center doporučení pro správu ide
 
 **Doprovodné** materiály: použití privilegovaným přístupem (privilegovaných pracovních stanic) se službou Multi-Factor Authentication (MFA) nakonfigurovaným pro přihlášení k a konfiguraci clusterů Azure Service Fabric a souvisejících prostředků.
 
-* [Další informace o pracovních stanicích s privilegovaným přístupem](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [Další informace o pracovních stanicích s privilegovaným přístupem](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 * [Jak povolit vícefaktorové ověřování v Azure](../active-directory/authentication/howto-mfa-getstarted.md)
 

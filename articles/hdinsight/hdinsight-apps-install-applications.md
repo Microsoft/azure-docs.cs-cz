@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/17/2019
 ms.author: hrasheed
-ms.openlocfilehash: 3c1c7ac8fe8b7adf287bcde30a054df5ebaa63d7
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 2b6ea68d069b90293ab35024bebf3fbdc8acb592
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337436"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197672"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Instalace aplikací Apache Hadoop třetích stran v Azure HDInsight
 
@@ -23,7 +23,7 @@ An HDInsight aplikace je aplikace, kterou uživatelé můžou instalovat v clust
 
 Publikované aplikace jsou uvedeny v následujícím seznamu:
 
-|Aplikace |Typy clusteru | Popis |
+|Aplikace |Typy clusteru | Description |
 |---|---|---|
 |[Platforma AtScale Intelligence](https://azuremarketplace.microsoft.com/marketplace/apps/atscaleinc.atscale) |Hadoop |AtScale zapíná cluster HDInsight do serveru OLAP se škálováním na více instancí, což vám umožní interaktivně dotazovat se na miliardy řádků dat pomocí nástrojů BI, které už znáte, vlastníte a máte rádi – od Microsoft Excelu, Power BI, Tableau software až QlikView. |
 |[CDAP pro HDInsight](https://azuremarketplace.microsoft.com/marketplace/apps/cask.cdap-for-hdinsight) |HBase |CDAP je první sjednocená integrační platforma pro velké objemy dat, která zrychluje dobu na hodnotu Hadoop a umožňuje IT oddělení poskytovat data samoobslužných služeb. Open Source a rozšiřitelné CDAP odstraňují překážky při inovacích. Požadavky: 4 uzly oblasti, min D3 v2. |
@@ -37,7 +37,7 @@ Publikované aplikace jsou uvedeny v následujícím seznamu:
 |[Hvězdicový Presto pro Azure HDInsight](https://azuremarketplace.microsoft.com/marketplace/apps/starburstdatainc1579800938563.starburst-presto?tab=Overview) |Hadoop |Presto je rychlý a Škálovatelný modul SQL pro distribuované dotazy. Presto je ideální pro oddělení úložiště a výpočetních prostředků, které slouží k dotazování na data v Azure Data Lake Storage, databázích Azure Blob Storage, SQL a NoSQL a dalších zdrojích dat. |
 |[Kolekce dat StreamSets pro Cloud HDInsight](https://azuremarketplace.microsoft.com/marketplace/apps/streamsets.streamsets-data-collector-hdinsight) |Hadoop, HBA, Spark, Kafka |StreamSets data collector je jednoduchý, výkonný modul, který streamuje data v reálném čase. Pomocí kolekce dat můžete směrovat a zpracovávat data v datových proudech. Obsahuje 30denní licenci na zkušební verzi. |
 |[Trifacta Wrangler Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/trifacta.trifacta-db?tab=Overview) |Hadoop, Spark, HBA |Trifacta Wrangler Enterprise pro HDInsight podporuje datové tahání v podnikové síti pro libovolná škálování dat. Cena za provozování Trifacta v Azure je kombinací nákladů na předplatné Trifacta a náklady na infrastrukturu Azure pro virtuální počítače. |
-|[Datová platforma sjednocuje](https://unifisoftware.com/platform/) |Hadoop, HBA, vyplavení, Spark |Datová platforma sjednocuje je bezproblémově integrovaná sada nástrojů samoobslužných dat, která slouží k tomu, aby firemnímu uživateli bylo možné řešit výzvy k datům, které jsou zaměřeny na přírůstkové výnosy, snižovat náklady nebo provozní složitost. |
+|[Datová platforma sjednocuje](https://www.crunchbase.com/organization/unifi-software) |Hadoop, HBA, vyplavení, Spark |Datová platforma sjednocuje je bezproblémově integrovaná sada nástrojů samoobslužných dat, která slouží k tomu, aby firemnímu uživateli bylo možné řešit výzvy k datům, které jsou zaměřeny na přírůstkové výnosy, snižovat náklady nebo provozní složitost. |
 |[Unraveldata APM](https://azuremarketplace.microsoft.com/marketplace/apps/unravel-data.unravel-app) |Spark |Unravel data App pro cluster HDInsight Spark. |
 |[Ponor AI-Driven Data Catalog](https://azuremarketplace.microsoft.com/marketplace/apps/waterline_data.waterline_data) |Spark |Vyčíslení katalogů, uspořádání a řízení dat pomocí AI k automatickému označení dat pomocí obchodních podmínek. Katalog obchodních přepisů na vodoryskou je nepostradatelná komponenta, která je úspěšná pro samoobslužné analýzy, dodržování předpisů a zásady správného řízení a iniciativy správy IT. |
 
@@ -51,7 +51,7 @@ Následující postup ukazuje, jak můžete instalovat aplikace HDInsight do exi
 
 **Instalace aplikace HDInsight**
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 2. V nabídce vlevo přejděte na **všechny služby**  >  **Analytics**  >  **clustery HDInsight**.
 3. Ze seznamu vyberte cluster HDInsight.  Pokud ho ještě nemáte, vytvořte ho.  Viz článek [Vytvoření clusterů](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 4. V kategorii **Nastavení** vyberte **aplikace**. V hlavním okně uvidíte seznam nainstalovaných aplikací. 
@@ -75,7 +75,7 @@ Portál zobrazuje seznam nainstalovaných aplikací HDInsight pro cluster a vlas
 
 **Výpis vlastností aplikace a zobrazení HDInsight**
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 2. V nabídce vlevo přejděte na **všechny služby**  >  **Analytics**  >  **clustery HDInsight**.
 3. Ze seznamu vyberte cluster HDInsight.
 4. V kategorii **Nastavení** vyberte **aplikace**. V hlavním okně uvidíte seznam nainstalovaných aplikací. 
@@ -89,7 +89,7 @@ Portál zobrazuje seznam nainstalovaných aplikací HDInsight pro cluster a vlas
     |Status |Stav aplikace |
     |Stránku |Adresa URL webové aplikace, kterou jste nasadili na hraničním uzlu. Přihlašovací údaje jsou stejné jako přihlašovací údaje uživatele protokolu HTTP, které jste nakonfigurovali pro cluster. |
     |Koncový bod SSH |Pomocí SSH se můžete připojit k hraničnímu uzlu. Přihlašovací údaje SSH jsou stejné jako přihlašovací údaje uživatele SSH, které jste nakonfigurovali pro cluster. Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md). |
-    |Popis | Popis aplikace |
+    |Description | Popis aplikace |
 
 6. Pokud chcete aplikaci odstranit, klikněte pravým tlačítkem na aplikaci a potom v místní nabídce klikněte na **Odstranit** .
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 830f58ea11ba84dd2aee81c0352b3ede4aa4929c
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 8aecee0946c8418016be542e65b117894c68c591
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498247"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197604"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql---single-server"></a>Základní plán zabezpečení Azure pro Azure Database for PostgreSQL – jeden server
 
@@ -366,7 +366,7 @@ Přístup k rovině ovládacího prvku pro PostgreSQL je k dispozici samostatně
 
 **Pokyny**: použití pracovních stanic s privilegovaným přístupem (privilegovaným přístupem) s nakonfigurovaným Multi-Factor Authentication (MFA), které jsou nakonfigurovány pro přihlášení a konfiguraci prostředků Azure.
 
-- [Další informace o pracovních stanicích s privilegovaným přístupem](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [Další informace o pracovních stanicích s privilegovaným přístupem](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [Jak povolit vícefaktorové ověřování v Azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -982,7 +982,7 @@ Microsoft Anti-malware je povolený na podkladovém hostiteli, který podporuje 
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9,2: proveďte kompletní systémové zálohy a zálohujte všechny klíče spravované zákazníkem.
 
-**Doprovodné** materiály: Azure Database for PostgreSQL automaticky vytvoří zálohy serveru a uloží je do místně redundantního nebo geograficky redundantního úložiště v závislosti na volbě uživatele. Zálohy lze použít k obnovení serveru do určitého bodu v čase. Zálohování a obnovení jsou důležitou součástí jakékoli strategie pro provozní kontinuitu, protože chrání vaše data před náhodným poškozením nebo odstraněním.
+**Doprovodné** materiály: Azure Database for PostgreSQL automaticky vytvoří zálohy serveru a uloží je do místně redundantního nebo geograficky redundantního úložiště v závislosti na volbě uživatele. Zálohy lze použít k obnovení serveru do určitého bodu v čase. Zálohování a obnovení jsou základní součástí jakékoli strategie kontinuity podnikových procesů, protože chrání data před náhodným poškozením nebo odstraněním.
 
 Pokud chcete ukládat přihlašovací údaje pro instance Azure Database for PostgreSQL pomocí Azure Key Vault, zajistěte pravidelné automatizované zálohování vašich klíčů.
 

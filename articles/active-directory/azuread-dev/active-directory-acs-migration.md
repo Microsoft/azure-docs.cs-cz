@@ -13,12 +13,12 @@ ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: eda648a4d00a0ab4a51c66510060ce16421972ff
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 4f6b2b1c0f584e092c9e8f7d330a94b0b54fd6f2
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95020006"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197417"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Postupy: migrace z Azure Access Control Service
 
@@ -127,7 +127,7 @@ V následujících částech jsou popsána doporučení vysoké úrovně pro mig
 
 Každá cloudová služba Microsoftu, která přijímá tokeny vydané Access Control nyní podporuje alespoň jednu alternativní formu ověřování. Správný ověřovací mechanismus se u každé služby liší. Doporučujeme, abyste si pro každou službu poodkazovali na konkrétní dokumentaci pro oficiální pokyny. Pro usnadnění práce je k dispozici každá sada dokumentace:
 
-| Služba | Doprovodné materiály |
+| Služba | Pokyny |
 | ------- | -------- |
 | Azure Service Bus | [Migrace na sdílené přístupové podpisy](../../service-bus-messaging/service-bus-migrate-acs-sas.md) |
 | Azure Service Bus Relay | [Migrace na sdílené přístupové podpisy](../../azure-relay/relay-migrate-acs-sas.md) |
@@ -148,7 +148,7 @@ Každá cloudová služba Microsoftu, která přijímá tokeny vydané Access Co
 
 Zákazníci SharePoint 2013, 2016 a SharePointu Online používali službu ACS pro účely ověřování v cloudu, místních i hybridních scénářích. Některé funkce SharePointu a případy použití budou ovlivněny vyřazením služby ACS, i když jiné nebudou. Níže uvedená tabulka shrnuje pokyny k migraci pro některé z nejoblíbenějších funkcí SharePointu, které využívají ACS:
 
-| Příznak | Doprovodné materiály |
+| Příznak | Pokyny |
 | ------- | -------- |
 | Ověřují se uživatelé z Azure AD | Dřív služba Azure AD nepodporovala tokeny SAML 1,1 vyžadované službou SharePoint pro ověřování a služba ACS byla použita jako prostředník, který provedl SharePoint kompatibilní s formáty tokenů Azure AD. Teď můžete [SharePoint připojit přímo ke službě Azure AD pomocí aplikace Azure AD Galerie služby SharePoint v místní aplikaci](../saas-apps/sharepoint-on-premises-tutorial.md). |
 | [Ověřování aplikací & ověřování serveru ve službě SharePoint místně](/SharePoint/security-for-sharepoint-server/authentication-overview) | Neovlivněné vyřazením služby ACS; nejsou nutné žádné změny. | 
@@ -201,7 +201,7 @@ Následující tabulka porovnává funkce Access Control, které jsou relevantn�
 | OAuth 2.0 | Podpora pro koncept 13 | Podpora pro specifikaci RFC 6749, nejvíce moderní specifikace |
 | WS-Trust | Podporováno | Nepodporováno |
 | **Formáty tokenů** | | |
-| TOKEN | Podporováno ve verzi beta | Podporováno |
+| JWT | Podporováno ve verzi beta | Podporováno |
 | SAML 1,1 | Podporováno | Preview |
 | SAML 2.0 | Podporováno | Podporováno |
 | SWT | Podporováno | Nepodporováno |
@@ -252,7 +252,7 @@ Následující tabulka porovnává funkce Access Control, které jsou relevantn�
 | OAuth 2.0 | Podpora pro koncept 13 | Podpora pro specifikaci RFC 6749, nejvíce moderní specifikace |
 | WS-Trust | Podporováno | Nepodporováno |
 | **Formáty tokenů** | | |
-| TOKEN | Podporováno ve verzi beta | Podporováno |
+| JWT | Podporováno ve verzi beta | Podporováno |
 | SAML 1,1 | Podporováno | Nepodporováno |
 | SAML 2.0 | Podporováno | Nepodporováno |
 | SWT | Podporováno | Nepodporováno |
@@ -287,7 +287,7 @@ V těchto případech je vhodné zvážit migraci webové aplikace do jiné slu�
 
 ![Tento obrázek ukazuje logo identity testu.](./media/active-directory-acs-migration/rsz-ping.png)
 
-Služba [příkazem testovat identitu](https://www.pingidentity.com) nabízí dvě řešení podobná službě ACS. PingOne je cloudová služba identit, která podporuje mnoho stejných funkcí jako ACS a PingFederate je podobný místní produkt identity, který nabízí větší flexibilitu. Další podrobnosti o používání těchto produktů najdete v tématu [pokyny k vyřazení služby ACS](https://www.pingidentity.com/en/company/blog/posts/2017/migrating-from-microsoft-acs-to-ping-identity.html) pomocí nástroje.
+Služba [příkazem testovat identitu](https://www.pingidentity.com) nabízí dvě řešení podobná službě ACS. PingOne je cloudová služba identit, která podporuje mnoho stejných funkcí jako ACS a PingFederate je podobný místní produkt identity, který nabízí větší flexibilitu. Další podrobnosti o používání těchto produktů najdete v tématu pokyny k vyřazení služby ACS pomocí nástroje.
 
 Naším cílem při práci s identitou a nástrojem Auth0 je zajistit, aby měli všichni zákazníci Access Control cestu migrace pro své aplikace a služby, které minimalizují množství práce potřebné k přechodu z Access Control.
 
@@ -351,7 +351,7 @@ V těchto případech můžete zvážit migraci webové aplikace do jiné cloudo
 [Auth0](https://auth0.com/acs) je flexibilní cloudová služba identit, která [pro zákazníky Access ControlA vytvořila pokyny k migraci na vysoké úrovni](https://auth0.com/acs)a podporuje téměř všechny funkce služby ACS.
 
 ![Tento obrázek ukazuje, že se na tomto obrázku zobrazuje logo služby test identity ](./media/active-directory-acs-migration/rsz-ping.png)
- [příkazem příkazem](https://www.pingidentity.com) služby ACS. PingOne je cloudová služba identit, která podporuje mnoho stejných funkcí jako ACS a PingFederate je podobný místní produkt identity, který nabízí větší flexibilitu. Další podrobnosti o používání těchto produktů najdete v tématu [pokyny k vyřazení služby ACS](https://www.pingidentity.com/en/company/blog/posts/2017/migrating-from-microsoft-acs-to-ping-identity.html) pomocí nástroje.
+ [příkazem příkazem](https://www.pingidentity.com) služby ACS. PingOne je cloudová služba identit, která podporuje mnoho stejných funkcí jako ACS a PingFederate je podobný místní produkt identity, který nabízí větší flexibilitu. Další podrobnosti o používání těchto produktů najdete v tématu pokyny k vyřazení služby ACS pomocí nástroje.
 
 Naším cílem při práci s identitou a nástrojem Auth0 je zajistit, aby měli všichni zákazníci Access Control cestu migrace pro své aplikace a služby, které minimalizují množství práce potřebné k přechodu z Access Control.
 
