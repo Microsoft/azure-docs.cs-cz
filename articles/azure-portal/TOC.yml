@@ -70,8 +70,6 @@
       items:
         - name: Obnovení odstraněného řídicího panelu
           href: recover-shared-deleted-dashboard.md
-        - name: Řešení potíží s oblastí nebo předplatným skladové položky
-          href: supportability/sku-series-unavailable.md
         - name: Zachycení trasování prohlížeče pro řešení potíží
           href: capture-browser-trace.md
 - name: Referenční informace

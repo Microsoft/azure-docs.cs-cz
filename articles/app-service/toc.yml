@@ -102,6 +102,8 @@
   items:
     - name: Plány služby App Service
       href: overview-hosting-plans.md
+    - name: Správa nákladů
+      href: overview-manage-costs.md
     - name: Funkce operačního systému
       href: operating-system-functionality.md
     - name: Osvědčené postupy pro nasazení
