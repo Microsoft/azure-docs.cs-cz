@@ -63,19 +63,8 @@
         - name: Použití Azure Lab Services v rámci Teams
           items:
             - name: Přehled
+              displayName: labs within Teams
               href: lab-services-within-teams-overview.md
-            - name: Vytvoření testovacího prostředí z Teams
-              href: how-to-get-started-create-lab-within-teams.md
-            - name: Správa seznamů uživatelů
-              href: how-to-manage-user-lists-within-teams.md
-            - name: Správa fondu virtuálních počítačů
-              href: how-to-manage-vm-pool-within-teams.md
-            - name: Odstranění testovacích prostředí
-              href: how-to-delete-lab-within-teams.md
-            - name: Plány a nastavení
-              href: how-to-create-schedules-within-teams.md
-            - name: Přístup k virtuálnímu počítači (zobrazení studenta)
-              href: how-to-access-vm-for-students-within-teams.md
 - name: Návody
   items:
     - name: Příručka správce
@@ -164,6 +153,20 @@
           href: how-to-set-virtual-machine-passwords-student.md
         - name: Zobrazení informací o podpoře (student)
           href: lab-user-support-information.md
+    - name: Použití testovacích prostředí v rámci Teams
+      items:
+        - name: Vytvoření testovacího prostředí z Teams
+          href: how-to-get-started-create-lab-within-teams.md
+        - name: Správa seznamů uživatelů
+          href: how-to-manage-user-lists-within-teams.md
+        - name: Správa fondu virtuálních počítačů
+          href: how-to-manage-vm-pool-within-teams.md
+        - name: Odstranění testovacích prostředí
+          href: how-to-delete-lab-within-teams.md
+        - name: Plány a nastavení
+          href: how-to-create-schedules-within-teams.md
+        - name: Přístup k virtuálnímu počítači (zobrazení studenta)
+          href: how-to-access-vm-for-students-within-teams.md
 - name: Referenční informace
   items:
     - name: REST API

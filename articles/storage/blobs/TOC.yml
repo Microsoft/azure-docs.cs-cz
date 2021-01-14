@@ -307,6 +307,8 @@
               href: ../common/storage-account-recover.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Získání typu účtu a názvu SKU (.NET)
               href: ../common/storage-account-get-info.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Správa výchozí úrovně přístupu pro účet úložiště
+              href: ../common/manage-account-default-access-tier.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Vytvoření a správa kontejnerů
           items:
             - name: Vytvoření nebo odstranění kontejneru (.NET)
@@ -321,6 +323,8 @@
               href: storage-blobs-list.md
             - name: Správa metadat a vlastností objektů blob (.NET)
               href: storage-blob-properties-metadata.md
+            - name: Správa úrovně přístupu objektu blob
+              href: manage-access-tier.md
             - name: Kopírování objektu blob (SDK)
               href: storage-blob-copy.md
             - name: Použití značek indexu objektů blob
