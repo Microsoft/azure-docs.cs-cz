@@ -3,12 +3,12 @@ title: Nasazení prostředků do předplatného
 description: Popisuje postup vytvoření skupiny prostředků v Azure Resource Manager šabloně. Také ukazuje, jak nasadit prostředky v oboru předplatného Azure.
 ms.topic: conceptual
 ms.date: 01/13/2021
-ms.openlocfilehash: ba055970a8fac71b798fca9d3c76550cb7d482a7
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 1daf95945f619d0e904880d8a8a778810a685d9a
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178989"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183978"
 ---
 # <a name="subscription-deployments-with-arm-templates"></a>Nasazení předplatných pomocí šablon ARM
 
@@ -182,6 +182,8 @@ Můžete použít vnořené nasazení se sadou `scope` a `location` .
 Nebo můžete nastavit obor na `/` pro některé typy prostředků, jako jsou skupiny pro správu.
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/subscription-create-mg.json" highlight="12,15":::
+
+Další informace najdete v tématu [skupina pro správu](deploy-to-management-group.md#management-group).
 
 ## <a name="resource-groups"></a>Skupiny prostředků
 

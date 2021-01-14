@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: duau
-ms.openlocfilehash: 3cf493beab6dfe1767ae35ea36732dc364e29736
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0eb49f3c2acc31cba7b245995cf3bcb579113e4c
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401652"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183809"
 ---
 # <a name="traffic-manager-routing-methods"></a>Metody směrování Traffic Manageru
 
@@ -27,8 +27,8 @@ V Traffic Manager jsou k dispozici následující metody směrování provozu:
 * **[Vážená](#weighted):** Pokud chcete distribuovat provoz napříč sadou koncových bodů, a to buď rovnoměrně, nebo podle vah, které definujete, vyberte **Vážený** .
 * **[Výkon](#performance):** vyberte **výkon** , když máte koncové body v různých geografických umístěních a chcete, aby koncoví uživatelé používali "nejbližší" koncový bod z hlediska nejnižší latence sítě.
 * **[Geografické](#geographic):** vyberte **geografické** , aby byli uživatelé přesměrováni na konkrétní koncové body (Azure, External nebo Nested) na základě zeměpisné polohy, ze které jejich dotaz DNS pochází. To umožňuje Traffic Manager zákazníkům povolit scénáře, ve kterých je důležité, aby znali geografickou oblast uživatele a mohli je směrovat na základě důležitosti. Mezi příklady patří dodržování pověření k suverenitě dat, lokalizace obsahu & uživatelského prostředí a měření provozu z různých oblastí.
-* **[Multivalue](#multivalue)** Více hodnot: **Vyberte možnost** vyhodnotit pro Traffic Manager profily, které mohou mít jako koncové body pouze adresy IPv4/IPv6. Při přijetí dotazu pro tento profil jsou vráceny všechny funkční koncové body.
-* **[Podsíť](#subnet):** vyberte metodu směrování provozu **podsítě** , která mapuje sady rozsahů IP adres koncových uživatelů na konkrétní koncový bod v rámci profilu Traffic Manager. Po přijetí žádosti se vrátí koncový bod, který je namapován pro zdrojovou IP adresu této žádosti. 
+* **[](#multivalue)** Více hodnot: **Vyberte možnost** vyhodnotit pro Traffic Manager profily, které mohou mít jako koncové body pouze adresy IPv4/IPv6. Při přijetí dotazu pro tento profil jsou vráceny všechny funkční koncové body.
+* **[Podsíť](#subnet):** vyberte metodu směrování provozu **podsítě** , která mapuje sady rozsahů IP adres koncových uživatelů na konkrétní koncový bod v rámci profilu Traffic Manager. Po přijetí žádosti se vrátí koncový bod, který je namapován pro zdrojovou IP adresu této žádosti. 
 
 
 Všechny profily Traffic Manager zahrnují monitorování stavu koncových bodů a automatického převzetí služeb při selhání koncového bodu. Další informace najdete v tématu [Traffic Manager monitorování koncového bodu](traffic-manager-monitoring.md). Jeden profil Traffic Manager může používat jenom jednu metodu směrování provozu. Pro váš profil můžete kdykoli vybrat jinou metodu směrování provozu. Změny se uplatní během jedné minuty a neúčtují se žádné výpadky. Metody směrování provozu lze kombinovat pomocí vnořených Traffic Manager profilů. Vnořování umožňuje sofistikované a flexibilní konfigurace směrování provozu, které splňují potřeby větších, složitých aplikací. Další informace najdete v tématu [vnořené Traffic Manager profily](traffic-manager-nested-profiles.md).
@@ -125,36 +125,36 @@ Jak je vysvětleno, [jak Traffic Manager funguje](traffic-manager-how-it-works.m
 
 ### <a name="faqs"></a>Nejčastější dotazy
 
-* [Jaké jsou některé případy použití, kde se geografické směrování hodí?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-some-use-cases-where-geographic-routing-is-useful)
+* [Jaké jsou některé případy použití, kde se geografické směrování hodí?](./traffic-manager-faqs.md#what-are-some-use-cases-where-geographic-routing-is-useful)
 
-* [Návody rozhodnout, jestli mám použít metodu směrování výkonu nebo metodu geografického směrování?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-do-i-decide-if-i-should-use-performance-routing-method-or-geographic-routing-method)
+* [Návody rozhodnout, jestli mám použít metodu směrování výkonu nebo metodu geografického směrování?](./traffic-manager-faqs.md#how-do-i-decide-if-i-should-use-performance-routing-method-or-geographic-routing-method)
 
-* [Jaké jsou oblasti podporované Traffic Manager pro geografické směrování?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-the-regions-that-are-supported-by-traffic-manager-for-geographic-routing)
+* [Jaké jsou oblasti podporované Traffic Manager pro geografické směrování?](./traffic-manager-faqs.md#what-are-the-regions-that-are-supported-by-traffic-manager-for-geographic-routing)
 
-* [Jak Traffic Manager zjišťuje, ze kterého uživatele se dotazuje?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-manager-determine-where-a-user-is-querying-from)
+* [Jak Traffic Manager zjišťuje, ze kterého uživatele se dotazuje?](./traffic-manager-faqs.md#how-does-traffic-manager-determine-where-a-user-is-querying-from)
 
-* [Je zaručeno, že Traffic Manager dokáže správně určit přesné geografické umístění uživatele v každém případě?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#is-it-guaranteed-that-traffic-manager-can-correctly-determine-the-exact-geographic-location-of-the-user-in-every-case)
+* [Je zaručeno, že Traffic Manager dokáže správně určit přesné geografické umístění uživatele v každém případě?](./traffic-manager-faqs.md#is-it-guaranteed-that-traffic-manager-can-correctly-determine-the-exact-geographic-location-of-the-user-in-every-case)
 
-* [Musí být koncový bod fyzicky umístěný ve stejné oblasti, ve které je nakonfigurovaný pro geografické směrování?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-an-endpoint-need-to-be-physically-located-in-the-same-region-as-the-one-it-is-configured-with-for-geographic-routing)
+* [Musí být koncový bod fyzicky umístěný ve stejné oblasti, ve které je nakonfigurovaný pro geografické směrování?](./traffic-manager-faqs.md#does-an-endpoint-need-to-be-physically-located-in-the-same-region-as-the-one-it-is-configured-with-for-geographic-routing)
 
-* [Je možné přiřazovat geografické oblasti koncovým bodům v profilu, který není nakonfigurován tak, aby provedl geografické směrování?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-assign-geographic-regions-to-endpoints-in-a-profile-that-is-not-configured-to-do-geographic-routing)
+* [Je možné přiřazovat geografické oblasti koncovým bodům v profilu, který není nakonfigurován tak, aby provedl geografické směrování?](./traffic-manager-faqs.md#can-i-assign-geographic-regions-to-endpoints-in-a-profile-that-is-not-configured-to-do-geographic-routing)
 
-* [Proč se při pokusu o změnu metody směrování stávajícího profilu na geografickou chybu zobrazuje chyba?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#why-am-i-getting-an-error-when-i-try-to-change-the-routing-method-of-an-existing-profile-to-geographic)
+* [Proč se při pokusu o změnu metody směrování stávajícího profilu na geografickou chybu zobrazuje chyba?](./traffic-manager-faqs.md#why-am-i-getting-an-error-when-i-try-to-change-the-routing-method-of-an-existing-profile-to-geographic)
 
-* [Proč doporučujeme, aby zákazníci vytvářeli vnořené profily místo koncových bodů v profilu s povoleným geografickým směrováním?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#why-is-it-strongly-recommended-that-customers-create-nested-profiles-instead-of-endpoints-under-a-profile-with-geographic-routing-enabled)
+* [Proč doporučujeme, aby zákazníci vytvářeli vnořené profily místo koncových bodů v profilu s povoleným geografickým směrováním?](./traffic-manager-faqs.md#why-is-it-strongly-recommended-that-customers-create-nested-profiles-instead-of-endpoints-under-a-profile-with-geographic-routing-enabled)
 
-* [Existují nějaká omezení verze rozhraní API, která podporuje tento typ směrování?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#are-there-any-restrictions-on-the-api-version-that-supports-this-routing-type)
+* [Existují nějaká omezení verze rozhraní API, která podporuje tento typ směrování?](./traffic-manager-faqs.md#are-there-any-restrictions-on-the-api-version-that-supports-this-routing-type)
 
 ## <a name="multivalue-traffic-routing-method"></a><a name = "multivalue"></a>Vyhodnotit metodu směrování provozu
 Metoda vynásobení **přenosu provozu** umožňuje v jedné odpovědi na dotaz DNS získat několik zdravých koncových bodů. To umožňuje volajícímu provádět opakování na straně klienta s jinými koncovými body v případě, že vrácený koncový bod nereaguje. Tento model může zvýšit dostupnost služby a snížit latenci související s novým dotazem DNS za účelem získání fungujícího koncového bodu. Metoda směrování s více hodnotami funguje pouze v případě, že jsou všechny koncové body typu External a jsou zadány jako adresy IPv4 nebo IPv6. Při přijetí dotazu pro tento profil jsou vráceny všechny funkční koncové body a podléhají konfigurovatelnému maximálnímu počtu vrácených položek.
 
 ### <a name="faqs"></a>Nejčastější dotazy
 
-* [Jaké jsou případy použití, ve kterých je vhodné použít směrování s více hodnotami?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-some-use-cases-where-multivalue-routing-is-useful)
+* [Jaké jsou případy použití, ve kterých je vhodné použít směrování s více hodnotami?](./traffic-manager-faqs.md#what-are-some-use-cases-where-multivalue-routing-is-useful)
 
-* [Kolik koncových bodů se vrátí při použití směrování s více hodnotami?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-endpoints-are-returned-when-multivalue-routing-is-used)
+* [Kolik koncových bodů se vrátí při použití směrování s více hodnotami?](./traffic-manager-faqs.md#how-many-endpoints-are-returned-when-multivalue-routing-is-used)
 
-* [Získá se stejná sada koncových bodů, když se použije směrování s více hodnotami?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#will-i-get-the-same-set-of-endpoints-when-multivalue-routing-is-used)
+* [Získá se stejná sada koncových bodů, když se použije směrování s více hodnotami?](./traffic-manager-faqs.md#will-i-get-the-same-set-of-endpoints-when-multivalue-routing-is-used)
 
 ## <a name="subnet-traffic-routing-method"></a><a name = "subnet"></a>Přenos podsítí – Metoda směrování
 Metoda směrování provozu v **podsíti** umožňuje namapovat skupinu rozsahů IP adres koncového uživatele na konkrétní koncové body v profilu. Po takovém případě Traffic Manager obdrží dotaz DNS pro tento profil, zkontroluje zdrojovou IP adresu této žádosti (ve většině případů to bude odchozí IP adresa překladače DNS používaného volajícím), zjistit, ke kterému koncovému bodu je namapovaný, a vrátí tento koncový bod v odpovědi na dotaz. 
@@ -166,21 +166,17 @@ Směrování podsítí se dá využít k poskytování různých možností pro 
 
 ### <a name="faqs"></a>Nejčastější dotazy
 
-* [Jaké jsou případy použití, kde je směrování podsítě užitečné?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-some-use-cases-where-subnet-routing-is-useful)
+* [Jaké jsou případy použití, kde je směrování podsítě užitečné?](./traffic-manager-faqs.md#what-are-some-use-cases-where-subnet-routing-is-useful)
 
-* [Jak Traffic Manager znát IP adresu koncového uživatele?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-manager-know-the-ip-address-of-the-end-user)
+* [Jak Traffic Manager znát IP adresu koncového uživatele?](./traffic-manager-faqs.md#how-does-traffic-manager-know-the-ip-address-of-the-end-user)
 
-* [Jak lze při používání směrování podsítí zadat IP adresy?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-specify-ip-addresses-when-using-subnet-routing)
+* [Jak lze při používání směrování podsítí zadat IP adresy?](./traffic-manager-faqs.md#how-can-i-specify-ip-addresses-when-using-subnet-routing)
 
-* [Jak můžu při používání směrování podsítí zadat záložní koncový bod?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-specify-a-fallback-endpoint-when-using-subnet-routing)
+* [Jak můžu při používání směrování podsítí zadat záložní koncový bod?](./traffic-manager-faqs.md#how-can-i-specify-a-fallback-endpoint-when-using-subnet-routing)
 
-* [Co se stane, když je v profilu typu směrování podsítě zakázán koncový bod?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-happens-if-an-endpoint-is-disabled-in-a-subnet-routing-type-profile)
+* [Co se stane, když je v profilu typu směrování podsítě zakázán koncový bod?](./traffic-manager-faqs.md#what-happens-if-an-endpoint-is-disabled-in-a-subnet-routing-type-profile)
 
 
 ## <a name="next-steps"></a>Další kroky
 
 Naučte se vyvíjet aplikace s vysokou dostupností pomocí [Traffic Manager monitorování koncového bodu](traffic-manager-monitoring.md) .
-
-
-
-

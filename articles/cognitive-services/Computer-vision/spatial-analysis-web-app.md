@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 11/06/2020
+ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 9b9390b498f28fc8f9029f1c11805b970aaca73d
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: de011fb0f827ea90efe33e237bbf1c5100dc76a7
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95014556"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183468"
 ---
 # <a name="how-to-deploy-a-people-counting-web-application"></a>Postupy: nasazení webové aplikace pro počítání lidí
 
@@ -63,12 +63,12 @@ az iot hub device-identity create --hub-name "<IoT Hub Name>" --device-id "<Edge
 
 ### <a name="deploy-the-container-on-azure-iot-edge-on-the-host-computer"></a>Nasazení kontejneru v Azure IoT Edge v hostitelském počítači
 
-Nasaďte kontejner prostorových analýz jako modul IoT na hostitelském počítači pomocí Azure CLI. Proces nasazení vyžaduje soubor manifestu nasazení, který pojednává o požadovaných kontejnerech, proměnných a konfiguracích pro vaše nasazení. Ukázkový [manifest nasazení konkrétního Azure Stackho okraje](https://github.com/Azure-Samples/cognitive-services-rest-api-samples/) a také [neAzure Stackho nasazení specifického Edge](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) na GitHubu najdete na webu GitHub, který zahrnuje základní konfiguraci nasazení pro kontejner *prostorových analýz* . 
+Nasaďte kontejner prostorových analýz jako modul IoT na hostitelském počítači pomocí Azure CLI. Proces nasazení vyžaduje soubor manifestu nasazení, který pojednává o požadovaných kontejnerech, proměnných a konfiguracích pro vaše nasazení. Můžete najít ukázkový manifest nasazení [konkrétního Azure Stackho okraje](https://go.microsoft.com/fwlink/?linkid=2142179), [neAzure Stackho](https://go.microsoft.com/fwlink/?linkid=2152189)a [virtuální počítač Azure s použitím MANIFESTU nasazení specifického pro GPU](https://go.microsoft.com/fwlink/?linkid=2152189) na GitHubu, který zahrnuje základní konfiguraci nasazení pro kontejner *prostorových analýz* . 
 
 Alternativně můžete pomocí rozšíření Azure IoT pro Visual Studio Code provádět operace se službou IoT Hub. Další informace najdete [v nasazení Azure IoT Edge moduly z Visual Studio Code](../../iot-edge/how-to-deploy-modules-vscode.md) .
 
 > [!NOTE] 
-> Kontejnery *prostorových analýz – telegraf* a *prostorové analýzy pro diagnostiku* jsou volitelné. Můžete se rozhodnout je odebrat z *DeploymentManifest.jsv* souboru. Další informace najdete v článku [telemetrie a řešení problémů](./spatial-analysis-logging.md) . Můžete najít dvě vzorová *DeploymentManifest.jsk* souborům na GitHubu, a to buď pro [zařízení Azure Stack Edge](https://go.microsoft.com/fwlink/?linkid=2142179) , nebo na jiný [stolní počítač](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) .
+> Kontejnery *prostorových analýz – telegraf* a *prostorové analýzy pro diagnostiku* jsou volitelné. Můžete se rozhodnout je odebrat z *DeploymentManifest.jsv* souboru. Další informace najdete v článku [telemetrie a řešení problémů](./spatial-analysis-logging.md) . Můžete najít tři ukázkové *DeploymentManifest.js* souborů na GitHubu, pro [Azure Stack hraniční zařízení](https://go.microsoft.com/fwlink/?linkid=2142179), [stolní počítač](https://go.microsoft.com/fwlink/?linkid=2152189)nebo [virtuální počítač Azure s grafickým procesorem](https://go.microsoft.com/fwlink/?linkid=2152189) .
 
 ### <a name="set-environment-variables"></a>Nastavení proměnných prostředí
 
@@ -185,7 +185,7 @@ Počkejte, až se instalace dokončí, a přejděte k prostředku v Azure Portal
 * `EventHubConsumerGroup` – Název řetězce skupiny příjemců z IoT Hub Azure, můžete v IoT Hub vytvořit novou skupinu uživatelů nebo použít výchozí skupinu. 
 * `IotHubConnectionString`– Připojovací řetězec k vašemu IoT Hub Azure, můžete ho načíst z části klíče v tématu Konfigurace parametrů prostředků Azure IoT Hub ![](./media/spatial-analysis/solution-app-config-page.png)
 
-Po přidání těchto dvou nastavení klikněte na **Uložit**. Pak v levé navigační nabídce klikněte na **ověřování/autorizace** a aktualizujte je s požadovanou úrovní ověřování. Doporučujeme Azure Active Director (Azure AD) Express. 
+Po přidání těchto dvou nastavení klikněte na **Uložit**. Pak v levé navigační nabídce klikněte na **ověřování/autorizace** a aktualizujte je s požadovanou úrovní ověřování. Doporučujeme Azure Active Directory (Azure AD) Express. 
 
 ### <a name="test-the-app"></a>Otestování aplikace
 

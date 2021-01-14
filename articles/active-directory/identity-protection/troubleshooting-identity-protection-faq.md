@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d80b8f41e11f2fffa86dc7597fdf44dd27825fc
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: c169847c96d10d1c9fb47b210bc85a15e0690e32
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028892"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183111"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Nejčastější dotazy – ochrana identity v Azure Active Directory
 
@@ -31,7 +31,7 @@ Existuje aktuální známý problém, který způsobil latenci v toku neúspěš
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
-### <a name="why-is-a-user-is-at-risk"></a>Proč je uživatel ohrožen?
+### <a name="why-is-a-user-at-risk"></a>Proč je uživatel ohrožen?
 
 Pokud jste zákazník Azure AD Identity Protection, přejděte do zobrazení [rizikové uživatelé](howto-identity-protection-investigate-risk.md#risky-users) a klikněte na uživatele s riziky. V zásuvce v dolní části se na kartě Historie rizik zobrazí všechny události, které vedly ke změně rizika uživatele. Pokud chcete zobrazit všechna riziková přihlášení pro uživatele, klikněte na rizikové přihlašování uživatele. Chcete-li zobrazit všechna zjištění rizik pro tohoto uživatele, klikněte na možnost detekce rizik uživatele.
 

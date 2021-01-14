@@ -6,19 +6,20 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: navits09
 ms.author: navits
-ms.date: 09/18/2020
-ms.openlocfilehash: b042d1e1f38b2a4a84522d58ad482d4262f69a4a
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.date: 01/14/2020
+ms.openlocfilehash: 8979a94ee63ef50c0a3abacd5ab3515226200131
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94488889"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183434"
 ---
 # <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>Podpora programu komerčního tržiště v partnerském centru
 
 Společnost Microsoft poskytuje podporu pro širokou škálu produktů a služeb. Hledání správného týmu podpory je důležité pro zajištění vhodné a včasné reakce. Vezměte v úvahu následující scénáře, které vám pomůžou směrovat dotaz na příslušný tým:
 
 - Pokud jste Vydavatel a máte dotaz od zákazníka, požádejte zákazníka, aby požádal o podporu pomocí odkazů na podporu v [Azure Portal](https://portal.azure.com/).
+- Pokud jste Vydavatel a zjistili jste problémy se zabezpečením aplikace spuštěné v Azure, přečtěte si téma [Jak protokolovat lístek podpory událostí zabezpečení](/azure/security/fundamentals/event-support-ticket). Vydavatelé musí ohlásit podezřelé události zabezpečení, včetně bezpečnostních incidentů a ohrožení zabezpečení jejich Azure Marketplace softwaru a služeb, a to nejdřívějším příležitostí.
 - Pokud jste Vydavatel a máte dotaz týkající se vaší aplikace nebo služby, Projděte si následující možnosti podpory.
 
 ## <a name="support-options-for-publishers"></a>Možnosti podpory pro vydavatele
@@ -62,12 +63,12 @@ Budou k dispozici následující možnosti:
 
 - Pokud chcete vybrat jiné téma, vyberte v části **vybraný problém** jiný odkaz na téma.
 - Zkontrolujte popis tohoto problému, pokud je k dispozici.  Je to text zobrazený výše **doporučenými kroky**.
-- Zkontrolujte **Doporučené kroky** , pokud jsou k dispozici.
-- Zkontrolujte **Doporučené dokumenty** , pokud jsou k dispozici.
+- Zkontrolujte **Doporučené kroky**, pokud jsou k dispozici.
+- Zkontrolujte **Doporučené dokumenty**, pokud jsou k dispozici.
 
 ![Doporučená řešení](./media/support/recommended-solutions.png)
 
-Pokud nemůžete najít odpověď v **doporučených řešeních** , vyberte **zadat podrobnosti o problému**. Dokončete všechna povinná pole pro urychlení procesu řešení a pak vyberte **Odeslat**.
+Pokud nemůžete najít odpověď v **doporučených řešeních**, vyberte **zadat podrobnosti o problému**. Dokončete všechna povinná pole pro urychlení procesu řešení a pak vyberte **Odeslat**.
 
 >[!Note]
 >Pokud jste přihlášeni do partnerského centra a téma vyžaduje ověření, budete požádáni o přihlášení, než bude možné pokračovat.  Pro veřejná témata není ověřování nutné.
@@ -85,7 +86,7 @@ Chcete-li pomoci s tím, že agenti budou moci vyřešit potíže, zvažte přip
 
 ### <a name="microsoft-edge-and-google-chrome"></a>Microsoft Edge a Google Chrome
 
-Vygenerování souboru HAR pomocí **Microsoft Edge** nebo **Google Chrome** :
+Vygenerování souboru HAR pomocí **Microsoft Edge** nebo **Google Chrome**:
 
 1. Přejít na webovou stránku, na které dochází k problému.
 2. V pravém horním rohu okna vyberte ikonu se třemi tečkami a pak **Další nástroje** pro  >  **vývojáře**. Klávesu F12 můžete stisknout jako zástupce.
@@ -100,13 +101,13 @@ Vygenerování souboru HAR pomocí **Microsoft Edge** nebo **Google Chrome** :
 
 6. Reprodukování problému, který chcete vyřešit.
 7. Po reprodukování problému vyberte **Zastavit záznam síťového protokolu**.
-8. Vyberte **exportovat Har** , označený ikonou šipky dolů a uložte soubor.
+8. Vyberte **exportovat Har**, označený ikonou šipky dolů a uložte soubor.
 
     ![Export souboru HAR na Microsoft Edge nebo Google Chrome](media/support/chromium-network-export-har.png)
 
 ### <a name="mozilla-firefox"></a>Mozilla Firefox
 
-Vygenerování souboru HAR pomocí **Mozilla Firefox** :
+Vygenerování souboru HAR pomocí **Mozilla Firefox**:
 
 1. Přejít na webovou stránku, na které dochází k problému.
 1. V pravém horním rohu okna vyberte ikonu se třemi tečkami a pak nástroje **Web Developer**  >  **Toggle Tools**. Klávesu F12 můžete stisknout jako zástupce.
@@ -121,9 +122,9 @@ Vygenerování souboru HAR pomocí **Mozilla Firefox** :
 
 ### <a name="apple-safari"></a>Apple Safari
 
-Postup vygenerování souboru HAR pomocí **prohlížeče Safari** :
+Postup vygenerování souboru HAR pomocí **prohlížeče Safari**:
 
-1. Povolte vývojářské nástroje v Safari: vyberte předvolby **Safari**  >  **Preferences**. Přejděte na kartu **Upřesnit** a pak na **panelu nabídek vyberte možnost Zobrazit nabídku vývoje**.
+1. Povolte vývojářské nástroje v Safari: vyberte předvolby **Safari**  >  . Přejděte na kartu **Upřesnit** a pak na **panelu nabídek vyberte možnost Zobrazit nabídku vývoje**.
 1. Přejít na webovou stránku, na které dochází k problému.
 1. Vyberte **vývoj** a pak vyberte **Zobrazit web Inspector**.
 1. Vyberte kartu **síť** a pak výběrem **položky vymazat síťové položky** odeberte existující protokoly.

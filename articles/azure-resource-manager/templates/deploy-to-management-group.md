@@ -3,12 +3,12 @@ title: Nasazení prostředků do skupiny pro správu
 description: V této části najdete popis postupu nasazení prostředků v oboru skupiny pro správu v šabloně Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 01/13/2021
-ms.openlocfilehash: f847e481670d7f9afd4b40cfb8fcbec65d1e28c8
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: d6c6b925ad1533fc1f3bf490a9b996280164bd57
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178921"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184012"
 ---
 # <a name="management-group-deployments-with-arm-templates"></a>Nasazení skupin pro správu pomocí šablon ARM
 
@@ -44,6 +44,8 @@ U vnořených šablon, které se nasazují do předplatných nebo skupin prostř
 Pro správu prostředků použijte:
 
 * [značky](/azure/templates/microsoft.resources/tags)
+
+Skupiny pro správu jsou prostředky na úrovni tenanta. Skupiny pro správu v nasazení skupiny pro správu však můžete vytvořit nastavením rozsahu nové skupiny pro správu na tenanta. Viz [skupina pro správu](#management-group).
 
 ## <a name="schema"></a>Schéma
 
@@ -168,9 +170,55 @@ Můžete použít vnořené nasazení se sadou `scope` a `location` .
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/management-group-to-tenant.json" highlight="9,10,14":::
 
-Nebo můžete nastavit obor na `/` pro některé typy prostředků, jako jsou skupiny pro správu.
+Nebo můžete nastavit obor na `/` pro některé typy prostředků, jako jsou skupiny pro správu. Vytvoření nové skupiny pro správu je popsáno v následující části.
+
+## <a name="management-group"></a>Skupina pro správu
+
+Chcete-li vytvořit skupinu pro správu v nasazení skupiny pro správu, je nutné nastavit obor `/` pro skupinu pro správu.
+
+Následující příklad vytvoří novou skupinu pro správu v kořenové skupině pro správu.
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/management-group-create-mg.json" highlight="12,15":::
+
+Následující příklad vytvoří novou skupinu pro správu ve skupině pro správu, která je zadána jako nadřazená. Všimněte si, že obor je nastaven na hodnotu `/` .
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "mgName": {
+            "type": "string",
+            "defaultValue": "[concat('mg-', uniqueString(newGuid()))]"
+        },
+        "parentMG": {
+            "type": "string"
+        }
+    },
+    "resources": [
+        {
+            "name": "[parameters('mgName')]",
+            "type": "Microsoft.Management/managementGroups",
+            "apiVersion": "2020-05-01",
+            "scope": "/",
+            "location": "eastus",
+            "properties": {
+                "details": {
+                    "parent": {
+                        "id": "[tenantResourceId('Microsoft.Management/managementGroups', parameters('parentMG'))]"
+                    }
+                }
+            }
+        }
+    ],
+    "outputs": {
+        "output": {
+            "type": "string",
+            "value": "[parameters('mgName')]"
+        }
+    }
+}
+```
 
 ## <a name="azure-policy"></a>Azure Policy
 

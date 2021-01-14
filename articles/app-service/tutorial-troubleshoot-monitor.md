@@ -5,12 +5,12 @@ author: msangapu-msft
 ms.author: msangapu
 ms.topic: tutorial
 ms.date: 06/20/2020
-ms.openlocfilehash: 049adac5521efd68ae8aa77af2d1007f9dfe0c0e
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: af2711a3d219bb472334ad61bad0b87f6c691dab
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586988"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183196"
 ---
 # <a name="tutorial-troubleshoot-an-app-service-app-with-azure-monitor"></a>Kurz: řešení potíží s aplikací App Service pomocí Azure Monitor
 
@@ -22,7 +22,7 @@ V tomto kurzu se dozvíte, jak řešit [App Service](overview.md) aplikaci pomoc
 
 [Azure monitor](../azure-monitor/overview.md) maximalizuje dostupnost a výkon vašich aplikací a služeb tím, že poskytuje ucelené řešení pro shromažďování, analýzu a vykonávání telemetrie z vašich cloudových a místních prostředí.
 
-V tomto kurzu se naučíte:
+V tomto kurzu:
 
 > [!div class="checklist"]
 > * Konfigurace webové aplikace s Azure Monitor
@@ -33,7 +33,7 @@ Podle kroků v tomto kurzu můžete postupovat v systémech macOS, Linux a Windo
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu budete potřebovat:
 
@@ -171,11 +171,11 @@ where ResultDescription  contains "error"
 
 Ve `ResultDescription` sloupci se zobrazí následující chyba:
 
-<pre>
+```output
 PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted 
 (tried to allocate 16384 bytes) in /home/site/wwwroot/process.php on line 20, 
 referer: http://<app-name>.azurewebsites.net/
-</pre>
+```
 
 ### <a name="join-appservicehttplogs-and-appserviceconsolelogs"></a>Připojit AppServiceHTTPLogs a AppServiceConsoleLogs
 
@@ -201,11 +201,11 @@ myHttp | join myConsole on TimeGen | project TimeGen, CsUriStem, ScStatus, Resul
 
 Ve `ResultDescription` sloupci se zobrazí následující chyba ve stejnou dobu jako chyby webového serveru:
 
-<pre>
+```output
 PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted 
 (tried to allocate 16384 bytes) in /home/site/wwwroot/process.php on line 20, 
 referer: http://<app-name>.azurewebsites.net/
-</pre>
+```
 
 Zpráva o stavu paměti byla vyčerpána na řádku 20 `process.php` . Nyní jste potvrdili, že aplikace vytvořila chybu během chyby HTTP 500. Pojďme se podívat na kód pro identifikaci problému.
 

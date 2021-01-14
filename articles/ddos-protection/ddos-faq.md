@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 4196515463611f51dddb79438b1d4e827f1b32c2
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: e87fd8724ab9a967bf3b75579eb0e375a324a7b1
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165395"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183094"
 ---
 # <a name="azure-ddos-protection-standard-frequent-asked-questions"></a>Azure DDoS Protection standardní časté otázky
 
@@ -32,6 +32,8 @@ Azure DDoS Protection Standard, v kombinaci s osvědčenými postupy návrhu apl
 Plány DDoS Protection mají pevnou měsíční poplatek $2 944 za měsíc, který pokrývá až 100 veřejných IP adres. Ochrana dalších prostředků bude za každý prostředek měsíčně vypůjčit dalších $30. 
 
 V rámci tenanta se dá jeden plán DDoS Protection použít pro několik předplatných, takže nemusíte vytvářet více než jeden plán DDoS Protection.
+
+Další podrobnosti najdete v článku o [cenách Azure DDoS Protection Standard](https://azure.microsoft.com/pricing/details/ddos-protection/) .
 
 ## <a name="what-about-protection-at-the-service-layer-layer-7"></a>Co je ochrana ve vrstvě služeb (vrstva 7)?
 Zákazníci můžou používat službu Azure DDoS Protection v kombinaci s firewallem webových aplikací (WAF) k ochraně jak v síťové vrstvě (vrstva 3 a 4, nabízená Azure DDoS Protection Standard), tak i na vrstvě aplikace (vrstva 7, kterou nabízí WAF). Nabídky WAF zahrnují SKU Azure [Application Gateway WAF](../web-application-firewall/ag/ag-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a také nabídky firewallu webových aplikací třetích stran, které jsou k dispozici v [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=web%20application%20firewall).

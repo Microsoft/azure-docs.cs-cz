@@ -8,18 +8,29 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 12/15/2020
+ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: 98b8cca95b8815b32fb5de6567adcf4f150551eb
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 33987be39258adc74cf4f88dbb0544f7026f6086
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561966"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183349"
 ---
 # <a name="whats-new-in-computer-vision"></a>Co je nového v Počítačové zpracování obrazu
 
 Zjistěte, co je nového ve službě. Tyto položky můžou být poznámky k verzi, videa, příspěvky na blogu a další typy informací. Tuto stránku můžete označit tak, aby byla stále aktuální se službou.
+
+## <a name="january-2021"></a>Leden 2021
+
+### <a name="spatial-analysis-container-update"></a>Aktualizace kontejneru prostorových analýz
+
+Nová verze [kontejneru prostorových analýz](spatial-analysis-container.md) byla vydaná s novou sadou funkcí. Tento kontejner Docker umožňuje analyzovat streamování videa v reálném čase, abyste pochopili prostorové vztahy mezi lidmi a jejich pohybem prostřednictvím fyzických prostředí. 
+
+* [Operace prostorových analýz](spatial-analysis-operations.md) se teď dají nakonfigurovat tak, aby se zjistilo, jestli má osoba ochrannou plošku, jako je například maska. 
+    * Klasifikátor masky lze povolit pro `personcount` `personcrossingline` `personcrossingpolygon` operace a pomocí konfigurace `ENABLE_FACE_MASK_CLASSIFIER` parametru.
+    * Atributy `face_mask` a `face_noMask` budou vráceny jako metadata s hodnocením spolehlivosti pro každou osobu zjištěnou ve streamu videa.
+
 
 ## <a name="october-2020"></a>Říjen 2020
 

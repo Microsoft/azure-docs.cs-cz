@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: duau
 ms.custom: ''
-ms.openlocfilehash: f1a3cc5ccb326d6a198895f9f459e661f7805b1e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b20357413c62460aba55a2d354b90995a2aa4815
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003833"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183689"
 ---
 # <a name="traffic-manager-traffic-view"></a>Traffic Manager Zobrazení přenosů
 
@@ -72,29 +72,29 @@ Při použití Zobrazení přenosů se fakturuje na základě počtu datových b
 
 ## <a name="faqs"></a>Nejčastější dotazy
 
-* [Co Zobrazení přenosů udělat?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-does-traffic-view-do)
+* [Co Zobrazení přenosů udělat?](./traffic-manager-faqs.md#what-does-traffic-view-do)
 
-* [Jak můžu využít Zobrazení přenosů?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-benefit-from-using-traffic-view)
+* [Jak můžu využít Zobrazení přenosů?](./traffic-manager-faqs.md#how-can-i-benefit-from-using-traffic-view)
 
-* [Jak se Zobrazení přenosů liší od metrik Traffic Manager dostupných prostřednictvím služby Azure monitor?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-is-traffic-view-different-from-the-traffic-manager-metrics-available-through-azure-monitor)
+* [Jak se Zobrazení přenosů liší od metrik Traffic Manager dostupných prostřednictvím služby Azure monitor?](./traffic-manager-faqs.md#how-is-traffic-view-different-from-the-traffic-manager-metrics-available-through-azure-monitor)
 
-* [Používá Zobrazení přenosů informace o podsíti klienta EDNS?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-view-use-edns-client-subnet-information)
+* [Používá Zobrazení přenosů informace o podsíti klienta EDNS?](./traffic-manager-faqs.md#does-traffic-view-use-edns-client-subnet-information)
 
-* [Kolik dní dat Zobrazení přenosů použít?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-days-of-data-does-traffic-view-use)
+* [Kolik dní dat Zobrazení přenosů použít?](./traffic-manager-faqs.md#how-many-days-of-data-does-traffic-view-use)
 
-* [Jak Zobrazení přenosů zpracovávat externí koncové body?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-view-handle-external-endpoints)
+* [Jak Zobrazení přenosů zpracovávat externí koncové body?](./traffic-manager-faqs.md#how-does-traffic-view-handle-external-endpoints)
 
-* [Potřebuji povolit Zobrazení přenosů pro každý profil v předplatném?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#do-i-need-to-enable-traffic-view-for-each-profile-in-my-subscription)
+* [Potřebuji povolit Zobrazení přenosů pro každý profil v předplatném?](./traffic-manager-faqs.md#do-i-need-to-enable-traffic-view-for-each-profile-in-my-subscription)
 
-* [Jak můžu Zobrazení přenosů vypnout?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-turn-off-traffic-view)
+* [Jak můžu Zobrazení přenosů vypnout?](./traffic-manager-faqs.md#how-can-i-turn-off-traffic-view)
 
-* [Jak funguje Zobrazení přenosů fakturace?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-view-billing-work)
+* [Jak funguje Zobrazení přenosů fakturace?](./traffic-manager-faqs.md#how-does-traffic-view-billing-work)
 
 ## <a name="next-steps"></a>Další kroky
 
 - Informace [o tom, jak Traffic Manager funguje](traffic-manager-overview.md)
 - Další informace o [metodách směrování provozu](traffic-manager-routing-methods.md) , které podporuje Traffic Manager
-- Informace o tom, jak [vytvořit profil Traffic Manager](traffic-manager-create-profile.md)
+- Informace o tom, jak [vytvořit profil Traffic Manager](./quickstart-create-traffic-manager-profile.md)
 
 <!--Image references-->
 [1]: ./media/traffic-manager-traffic-view-overview/trafficview.png

@@ -4,15 +4,15 @@ description: Řešení běžných problémů v nasazení na Azure File Sync, kte
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 6/12/2020
+ms.date: 1/13/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: c7405ada800bd5fb9161e9d96bd4c8b0484be620
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b84256188cf5df3ddf389f763e669a2b2ca00852
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005307"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183332"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Řešení problémů se Synchronizací souborů Azure
 Pomocí Azure File Sync můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
@@ -199,10 +199,27 @@ Na serveru, na kterém se zobrazuje stav "je v režimu offline" na portálu, se 
 - Pokud je **GetNextJob dokončeno se stavem "0"** , server může komunikovat se službou Azure File Sync. 
     - Otevřete na serveru Správce úloh a ověřte, že je spuštěný proces monitorování synchronizace úložiště (AzureStorageSyncMonitor.exe). Pokud tento proces není spuštěný, zkuste nejprve server restartovat. Pokud restartování serveru problém nevyřeší, upgradujte na nejnovější [verzi agenta](./storage-files-release-notes.md) Synchronizace souborů Azure. 
 
-- Pokud byl **dokončen GetNextJob se stavem:-2134347756** , server nebude schopen komunikovat se službou Azure File Sync z důvodu brány firewall nebo proxy serveru. 
+- Pokud byl **dokončen GetNextJob se stavem:-2134347756** , server nebude schopen komunikovat se službou Azure File Sync z důvodu konfigurace objednávky brány firewall, proxy serveru nebo TLS. 
     - Pokud je server za bránou firewall, ověřte, že je povolený odchozí port 443. Pokud brána firewall omezuje provoz do konkrétních domén, zkontrolujte, že jsou dostupné domény uvedené v [dokumentaci](./storage-sync-files-firewall-and-proxy.md#firewall) k bráně firewall.
     - Pokud je server za proxy, nakonfigurujte nastavení proxy serveru na úrovni počítače nebo aplikace podle kroků v [dokumentaci k](./storage-sync-files-firewall-and-proxy.md#proxy)proxy serveru.
     - Pomocí rutiny Test-StorageSyncNetworkConnectivity ověřte síťové připojení k koncovým bodům služby. Další informace najdete v tématu [Test připojení k síti koncových bodů služby](./storage-sync-files-firewall-and-proxy.md#test-network-connectivity-to-service-endpoints).
+    - K přidání šifrovacích sad na server použijte zásady skupiny nebo rutiny TLS:
+        - Pokud chcete použít zásady skupiny, přečtěte si téma [Konfigurace pořadí šifrovacích sad TLS pomocí Zásady skupiny](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-group-policy).
+        - Pokud chcete používat rutiny protokolu TLS, přečtěte si téma [Konfigurace pořadí šifrovacích sad TLS pomocí rutin prostředí PowerShell pro TLS](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-tls-powershell-cmdlets).
+    
+        Azure File Sync aktuálně podporuje následující šifrovací sady pro protokol TLS 1,2:  
+        - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384_P384  
+        - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256_P256  
+        - TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384_P384  
+        - TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256_P256  
+        - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256  
+        - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256  
+        - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P256  
+        - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P256  
+        - TLS_RSA_WITH_AES_256_GCM_SHA384  
+        - TLS_RSA_WITH_AES_128_GCM_SHA256  
+        - TLS_RSA_WITH_AES_256_CBC_SHA256  
+        - TLS_RSA_WITH_AES_128_CBC_SHA256  
 
 - Pokud byl **dokončen GetNextJob se stavem:-2134347764** , server nebude schopen komunikovat se službou Azure File Sync z důvodu vypršení platnosti nebo odstranění certifikátu.  
     - Spusťte na serveru následující příkaz PowerShellu pro resetování certifikátu použitého pro ověřování:
@@ -1301,7 +1318,7 @@ Pro agenta verze V10 za účelem a starší:
 6. Soubor. zip, který obsahuje protokoly a trasovací soubory, je uložen do výstupního adresáře, který jste zadali.
 
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 - [Sledování služby Synchronizace souborů Azure](storage-sync-files-monitoring.md)
 - [Nejčastější dotazy k souborům Azure](storage-files-faq.md)
 - [Řešení potíží se službou Azure Files ve Windows](storage-troubleshoot-windows-file-connection-problems.md)

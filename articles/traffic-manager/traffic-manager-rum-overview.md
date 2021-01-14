@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: duau
 ms.custom: ''
-ms.openlocfilehash: 45c889ef8d67570fb075ec710616f20d110b7f50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 618f8fff532da0f6ae315ad9e4cda35a289949d1
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401601"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183706"
 ---
 # <a name="traffic-manager-real-user-measurements-overview"></a>Přehled funkce Měření reálných uživatelů Traffic Manageru
 
@@ -37,48 +37,47 @@ Při použití Měření reálných uživatelů se fakturuje na základě počtu
 
 ## <a name="faqs"></a>Nejčastější dotazy
 
-* [Jaké jsou výhody použití Měření reálných uživatelů?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-the-benefits-of-using-real-user-measurements)
+* [Jaké jsou výhody použití Měření reálných uživatelů?](./traffic-manager-faqs.md#what-are-the-benefits-of-using-real-user-measurements)
 
-* [Můžu Měření reálných uživatelů používat s oblastmi mimo Azure?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-real-user-measurements-with-non-azure-regions)
+* [Můžu Měření reálných uživatelů používat s oblastmi mimo Azure?](./traffic-manager-faqs.md#can-i-use-real-user-measurements-with-non-azure-regions)
 
-* [Jakou metodu směrování přináší výhody Měření reálných uživatelů?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#which-routing-method-benefits-from-real-user-measurements)
+* [Jakou metodu směrování přináší výhody Měření reálných uživatelů?](./traffic-manager-faqs.md#which-routing-method-benefits-from-real-user-measurements)
 
-* [Potřebuji Měření reálných uživatelů každý profil samostatně?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#do-i-need-to-enable-real-user-measurements-each-profile-separately)
+* [Potřebuji Měření reálných uživatelů každý profil samostatně?](./traffic-manager-faqs.md#do-i-need-to-enable-real-user-measurements-each-profile-separately)
 
-* [Návody vypnout Měření reálných uživatelů pro moje předplatné?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-do-i-turn-off-real-user-measurements-for-my-subscription)
+* [Návody vypnout Měření reálných uživatelů pro moje předplatné?](./traffic-manager-faqs.md#how-do-i-turn-off-real-user-measurements-for-my-subscription)
 
-* [Můžu Měření reálných uživatelů použít s klientskými aplikacemi jinými než webovými stránkami?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-real-user-measurements-with-client-applications-other-than-web-pages)
+* [Můžu Měření reálných uživatelů použít s klientskými aplikacemi jinými než webovými stránkami?](./traffic-manager-faqs.md#can-i-use-real-user-measurements-with-client-applications-other-than-web-pages)
 
-* [Kolik měření se provádí pokaždé, když se vykreslí webová stránka s povoleným Měření reálných uživatelů?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-measurements-are-made-each-time-my-real-user-measurements-enabled-web-page-is-rendered)
+* [Kolik měření se provádí pokaždé, když se vykreslí webová stránka s povoleným Měření reálných uživatelů?](./traffic-manager-faqs.md#how-many-measurements-are-made-each-time-my-real-user-measurements-enabled-web-page-is-rendered)
 
-* [Je zpoždění před spuštěním skriptu Měření reálných uživatelů na naší webové stránce?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#is-there-a-delay-before-real-user-measurements-script-runs-in-my-webpage)
+* [Je zpoždění před spuštěním skriptu Měření reálných uživatelů na naší webové stránce?](./traffic-manager-faqs.md#is-there-a-delay-before-real-user-measurements-script-runs-in-my-webpage)
 
-* [Můžu použít Měření reálných uživatelů jenom v oblastech Azure, které chci změřit?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-real-user-measurements-with-only-the-azure-regions-i-want-to-measure)
+* [Můžu použít Měření reálných uživatelů jenom v oblastech Azure, které chci změřit?](./traffic-manager-faqs.md#can-i-use-real-user-measurements-with-only-the-azure-regions-i-want-to-measure)
 
-* [Můžu omezit počet provedených měření na konkrétní číslo?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-limit-the-number-of-measurements-made-to-a-specific-number)
+* [Můžu omezit počet provedených měření na konkrétní číslo?](./traffic-manager-faqs.md#can-i-limit-the-number-of-measurements-made-to-a-specific-number)
 
-* [Můžu zobrazit měření prováděná klientskou aplikací jako součást Měření reálných uživatelů?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-see-the-measurements-taken-by-my-client-application-as-part-of-real-user-measurements)
+* [Můžu zobrazit měření prováděná klientskou aplikací jako součást Měření reálných uživatelů?](./traffic-manager-faqs.md#can-i-see-the-measurements-taken-by-my-client-application-as-part-of-real-user-measurements)
 
-* [Můžu změnit skript měření, který poskytuje Traffic Manager?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-modify-the-measurement-script-provided-by-traffic-manager)
+* [Můžu změnit skript měření, který poskytuje Traffic Manager?](./traffic-manager-faqs.md#can-i-modify-the-measurement-script-provided-by-traffic-manager)
 
-* [Bude možné, že ostatní uživatelé uvidí klíč, který používá Měření reálných uživatelů?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#will-it-be-possible-for-others-to-see-the-key-i-use-with-real-user-measurements)
+* [Bude možné, že ostatní uživatelé uvidí klíč, který používá Měření reálných uživatelů?](./traffic-manager-faqs.md#will-it-be-possible-for-others-to-see-the-key-i-use-with-real-user-measurements)
 
-* [Můžou jiné zneužít svůj klíč rumu?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-others-abuse-my-rum-key)
+* [Můžou jiné zneužít svůj klíč rumu?](./traffic-manager-faqs.md#can-others-abuse-my-rum-key)
 
-* [Potřebuji do všech mých webových stránek přidat měření JavaScriptu?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#do-i-need-to-put-the-measurement-javascript-in-all-my-web-pages)
+* [Potřebuji do všech mých webových stránek přidat měření JavaScriptu?](./traffic-manager-faqs.md#do-i-need-to-put-the-measurement-javascript-in-all-my-web-pages)
 
-* [Můžou se informace o mých koncových uživatelích identifikovat pomocí Traffic Manager, když používám Měření reálných uživatelů?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-information-about-my-end-users-be-identified-by-traffic-manager-if-i-use-real-user-measurements)
+* [Můžou se informace o mých koncových uživatelích identifikovat pomocí Traffic Manager, když používám Měření reálných uživatelů?](./traffic-manager-faqs.md#can-information-about-my-end-users-be-identified-by-traffic-manager-if-i-use-real-user-measurements)
 
-* [Musí webová stránka měřící Měření reálných uživatelů používat Traffic Manager pro směrování?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-the-webpage-measuring-real-user-measurements-need-to-be-using-traffic-manager-for-routing)
+* [Musí webová stránka měřící Měření reálných uživatelů používat Traffic Manager pro směrování?](./traffic-manager-faqs.md#does-the-webpage-measuring-real-user-measurements-need-to-be-using-traffic-manager-for-routing)
 
-* [Potřebuji pro použití s Měření reálných uživatelů hostovat jakoukoli službu v oblastech Azure?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#do-i-need-to-host-any-service-on-azure-regions-to-use-with-real-user-measurements)
+* [Potřebuji pro použití s Měření reálných uživatelů hostovat jakoukoli službu v oblastech Azure?](./traffic-manager-faqs.md#do-i-need-to-host-any-service-on-azure-regions-to-use-with-real-user-measurements)
 
-* [Zvýší se využití šířky pásma Azure při použití Měření reálných uživatelů?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#will-my-azure-bandwidth-usage-increase-when-i-use-real-user-measurements)
+* [Zvýší se využití šířky pásma Azure při použití Měření reálných uživatelů?](./traffic-manager-faqs.md#will-my-azure-bandwidth-usage-increase-when-i-use-real-user-measurements)
 
 ## <a name="next-steps"></a>Další kroky
 - Naučte se používat [měření reálných uživatelů s webovými stránkami](traffic-manager-create-rum-web-pages.md)
 - Informace [o tom, jak Traffic Manager funguje](traffic-manager-overview.md)
-- Další informace o [Mobile Center](https://docs.microsoft.com/mobile-center/)
+- Další informace o [Mobile Center](/mobile-center/)
 - Další informace o [metodách směrování provozu](traffic-manager-routing-methods.md) , které podporuje Traffic Manager
-- Informace o tom, jak [vytvořit profil Traffic Manager](traffic-manager-create-profile.md)
-
+- Informace o tom, jak [vytvořit profil Traffic Manager](./quickstart-create-traffic-manager-profile.md)

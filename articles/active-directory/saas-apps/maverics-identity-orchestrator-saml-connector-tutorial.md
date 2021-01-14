@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/12/2020
 ms.author: jeedes
-ms.openlocfilehash: a4bfe2b87f3f2242189a78d9a31a89d82720fd37
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 31392c1fa3d14d6f1e01a8b302575e9b592e42cd
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862067"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183145"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-with-maverics-identity-orchestrator-saml-connector"></a>Kurz: Integrace jednotného přihlašování Azure AD s Maverics identity Orchestrator konektorem SAML
 
@@ -38,7 +38,7 @@ V tomto kurzu se dozvíte, jak migrovat místní webovou aplikaci, která je akt
 
 Další pokyny k instalaci a konfiguraci najdete na [webu vrstvy](https://www.strata.io).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
 - Předplatné Maverics identity Orchestrator s povoleným SSO konektorem SAML. Pokud chcete získat Maverics software, kontaktujte [oddělení prodej](mailto:sales@strata.io).
@@ -157,7 +157,7 @@ secrets:
 Trezor klíčů Azure můžete nastavit buď pomocí Azure Portal, nebo pomocí Azure CLI.
 
 **Použití webu Azure Portal**
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. [Vytvořte nový trezor klíčů](../../key-vault/general/quick-create-portal.md).
 1. [Přidejte tajné klíče do trezoru klíčů](../../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault).
 1. [Registrace aplikace ve službě Azure AD](../develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)
@@ -167,27 +167,27 @@ Trezor klíčů Azure můžete nastavit buď pomocí Azure Portal, nebo pomocí 
 
 1. Otevřete rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli)a potom zadejte následující příkaz:
 
-    ```shell
+    ```azurecli
     az login
     ```
 
 1. Vytvořte nový trezor klíčů spuštěním následujícího příkazu:
-    ```shell
+    ```azurecli
     az keyvault create --name "[VAULT_NAME]" --resource-group "[RESOURCE_GROUP]" --location "[REGION]"
     ```
 
 1. Přidejte tajné klíče do trezoru klíčů spuštěním následujícího příkazu:
-    ```shell
+    ```azurecli
     az keyvault secret set --vault-name "[VAULT_NAME]" --name "[SECRET_NAME]" --value "[SECRET_VALUE]"
     ```
 
 1. Zaregistrujte aplikaci ve službě Azure AD spuštěním následujícího příkazu:
-    ```shell
+    ```azurecli
     az ad sp create-for-rbac -n "MavericsKeyVault" --skip-assignment > azure-credentials.json
     ```
 
 1. Autorizovat aplikaci pro použití tajného klíče spuštěním následujícího příkazu:
-    ```shell
+    ```azurecli
     az keyvault set-policy --name "[VAULT_NAME]" --spn [APPID] --secret-permissions list get
     #APPID can be found in the azure-credentials.json
     generated in the previous step
@@ -239,7 +239,7 @@ Maverics identity Orchestrator Azure AD Connector podporuje OpenID Connect a SAM
 
 1. Vygenerujte podpisový klíč JSON Web Token (JWT), který se používá k ochraně informací o relaci Orchestrator identity Maverics pomocí [nástroje OpenSSL](https://www.openssl.org/source/):
 
-    ```shell 
+    ```console 
     openssl rand 64 | base64
     ```
 1. Zkopírujte odpověď do `jwtSigningKey` konfigurační vlastnosti: `jwtSigningKey: TBHPvTtu6NUqU84H3Q45grcv9WDJLHgTioqRhB8QGiVzghKlu1mHgP1QHVTAZZjzLlTBmQwgsSoWxGHRcT4Bcw==` .

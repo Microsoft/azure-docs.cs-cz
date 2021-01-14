@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: fae9a4b1b82a1fe23e8882b45880a6ba0081f580
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 2f33fe4fafbe194238fcfbd4942807ed2fc4d6ff
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071118"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183536"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-your-development-environment-part-1-of-4"></a>Kurz: Začínáme s Azure Machine Learning ve vývojovém prostředí (část 1 ze 4)
 
@@ -36,7 +36,7 @@ V části 1 této série kurzů budete:
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet, ještě než začnete. Zkuste [Azure Machine Learning](https://aka.ms/AMLFree).
+- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Zkuste [Azure Machine Learning](https://aka.ms/AMLFree).
 - [Anaconda](https://www.anaconda.com/download/) nebo [Miniconda](https://www.anaconda.com/download/) ke správě virtuálních prostředí Python a instalaci balíčků.
 
 ## <a name="install-the-azure-machine-learning-sdk"></a>Instalace sady Azure Machine Learning SDK
@@ -54,18 +54,20 @@ Pokud tento příkaz vrátí `conda not found` chybu, [Stáhněte a nainstalujte
 Po instalaci conda použijte okno příkazového řádku terminálu nebo Anaconda a vytvořte nové prostředí:
 
 ```bash
-conda create -n tutorial python=3.7
+conda create -n tutorial python=3.8
 ```
 
 V dalším kroku nainstalujte sadu Azure Machine Learning SDK do prostředí Conda, které jste vytvořili:
 
 ```bash
 conda activate tutorial
-pip install azureml-sdk
+pip install azureml-core
 ```
     
 > [!NOTE]
-> Dokončení instalace sady Azure Machine Learning SDK trvá přibližně 5 minut.
+> Dokončení instalace sady Azure Machine Learning SDK trvá přibližně 2 minuty.
+>
+> Pokud se zobrazí chyba časového limitu, vyzkoušejte `pip install --default-timeout=100 azureml-core` intstead.
 
 
 > [!div class="nextstepaction"]

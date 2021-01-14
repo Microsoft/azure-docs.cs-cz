@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
-ms.openlocfilehash: 50e199d2d56016086bb409f8690e9828f1d19984
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 0cdb82bbf38244bc91ed54ffb7d7d734cefe9dd2
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881505"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183315"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Použití analýzy změn aplikace (Preview) v Azure Monitor
 
@@ -194,6 +194,27 @@ Pokud při prvním zobrazení historie změn po integraci s analýzou změn apli
 ### <a name="azure-lighthouse-subscription-is-not-supported"></a>Předplatné Azure Lighthouse se nepodporuje.
 
 - **Dotaz na poskytovatele prostředků Microsoft. ChangeAnalysis se nezdařil** *, protože předplatné služby Azure Lighthouse není podporováno, změny jsou k dispozici pouze v domovském tenantovi předplatného*. Poskytovatel prostředků pro změnu analýz pro uživatele, kteří nejsou v domovském tenantovi, má teď omezení. Očekáváme, že toto omezení bude v blízké budoucnosti vyřešeno. Pokud se jedná o blokující problém, existuje alternativní řešení, které zahrnuje vytvoření instančního objektu a explicitní přiřazení role pro povolení přístupu.  Obraťte changeanalysishelp@microsoft.com se na kontakt, kde najdete další informace.
+
+### <a name="an-error-occurred-while-getting-changes-please-refresh-this-page-or-come-back-later-to-view-changes"></a>Při načítání změn došlo k chybě. Aktualizujte prosím tuto stránku nebo se vraťte později, aby se zobrazily změny.
+
+Jedná se o obecnou chybovou zprávu prezentovanou službou analýza změn aplikace, když se změny nepovedlo načíst. Několik známých příčin:
+- Chyba připojení k Internetu z klientského zařízení
+- Změna služby Analysis Service, která je dočasně nedostupná aktualizace stránky po několika minutách obvykle tento problém vyřeší. Pokud chyba přetrvává, obraťte se na changeanalysishelp@micorosoft.com
+
+### <a name="you-dont-have-enough-permissions-to-view-some-changes-contact-your-azure-subscription-administrator"></a>Nemáte dostatečná oprávnění k zobrazení některých změn. Obraťte se na správce předplatného Azure.
+
+Toto je obecná chybová zpráva o neautorizovaném přístupu, která vysvětluje, že aktuální uživatel nemá dostatečná oprávnění k zobrazení změny. Aby bylo možné zobrazit změny infrastruktury vracené službou Azure Resource Graph a Azure Resource Manager, je pro prostředek vyžadován alespoň přístup čtenář. Pro změny souborů v hostu služby Web App a změny konfigurace je potřeba aspoň roli Přispěvatel.
+
+### <a name="failed-to-register-microsoftchangeanalysis-resource-provider"></a>Nepovedlo se zaregistrovat poskytovatele prostředků Microsoft. ChangeAnalysis.
+ 
+**Nemáte dostatečná oprávnění k registraci poskytovatele prostředků Microsoft. ChangeAnalysis. Obraťte se na správce předplatného Azure.** Tato chybová zpráva znamená, že vaše role v aktuálním předplatném nemá přiřazený obor **Microsoft. support/registr/Action** . K tomu může dojít v případě, že nejste vlastníkem předplatného a máte oprávnění ke sdíleným přístupům prostřednictvím spolupracovníka. To znamená, že se zobrazí přístup ke skupině prostředků. Chcete-li tento problém vyřešit, obraťte se na vlastníka předplatného, abyste mohli zaregistrovat poskytovatele prostředků **Microsoft. ChangeAnalysis** . To se dá udělat v Azure Portal prostřednictvím **předplatných | Poskytovatelé prostředků** a vyhledejte ```Microsoft.ChangeAnalysis``` a zaregistrujte se v uživatelském rozhraní nebo prostřednictvím Azure PowerShell nebo rozhraní příkazového řádku Azure.
+
+Registrovat poskytovatele prostředků prostřednictvím PowerShellu: 
+
+```PowerShell
+# Register resource provider
+Register-AzResourceProvider -ProviderNamespace "Microsoft.ChangeAnalysis"
+```
 
 ## <a name="next-steps"></a>Další kroky
 

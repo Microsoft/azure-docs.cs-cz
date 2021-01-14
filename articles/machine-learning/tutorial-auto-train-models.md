@@ -11,12 +11,12 @@ ms.author: anumamah
 ms.reviewer: nibaccam
 ms.date: 08/14/2020
 ms.custom: devx-track-python, automl
-ms.openlocfilehash: e1a5370501fe73fb783db9a039d9f060acdb0a35
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: f4d26ba6bec8f3e63ba89ed9abae789704a0828b
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511028"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184097"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Kurz: Využití automatizovaného strojového učení k predikci ceny jízdy taxíkem
 
@@ -208,11 +208,11 @@ K automatickému učení modelu proveďte následující kroky:
 
 Definujte parametr experimentu a nastavení modelu pro školení. Zobrazí úplný seznam [Nastavení](how-to-configure-auto-train.md). Odeslání experimentu s těmito výchozími nastaveními bude trvat přibližně 5-20 min, ale pokud budete chtít kratší dobu běhu, snižte `experiment_timeout_hours` parametr.
 
-|Vlastnost| Hodnota v tomto kurzu |Popis|
+|Vlastnost| Hodnota v tomto kurzu |Description|
 |----|----|---|
 |**iteration_timeout_minutes**|10|Časový limit pro každou iteraci v minutách Zvyšte tuto hodnotu u větších datových sad, které pro každou iteraci vyžadují více času.|
 |**experiment_timeout_hours**|0.3|Maximální doba v hodinách, po kterou můžou všechny iterace v kombinaci trvat, než se experiment ukončí.|
-|**enable_early_stopping**|Pravda|Příznak, který povolí předčasné ukončení, pokud se skóre v krátkém období nezlepšuje.|
+|**enable_early_stopping**|Ano|Příznak, který povolí předčasné ukončení, pokud se skóre v krátkém období nezlepšuje.|
 |**primary_metric**| spearman_correlation | Metrika, kterou chcete optimalizovat Model nejlépe přizpůsoben se vybere na základě této metriky.|
 |**featurization**| auto | Pomocí **auto** může experiment předzpracovat vstupní data (zpracování chybějících dat, převod textu na číslo atd.).|
 |**podrobností**| logging.INFO | Řídí úroveň protokolování.|
@@ -255,7 +255,7 @@ Po zahájení experimentu se výstup v rámci spuštění experimentu zobrazí j
 
 ```python
 from azureml.core.experiment import Experiment
-experiment = Experiment(ws, "taxi-experiment")
+experiment = Experiment(ws, "Tutorial-NYCTaxi")
 local_run = experiment.submit(automl_config, show_output=True)
 ```
 

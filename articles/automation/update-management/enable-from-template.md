@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 09/18/2020
-ms.openlocfilehash: 88dd82ee7e004a3613d6d9892b0e853406f4caf4
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: e2ebdd3d0f4a4461521ee5f412d5b4c4f872b8a0
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97696154"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183230"
 ---
 # <a name="enable-update-management-using-azure-resource-manager-template"></a>Povolení Update Managementu s využitím šablony Azure Resource Manageru
 
@@ -40,7 +40,7 @@ Následující tabulka uvádí verzi rozhraní API pro prostředky použité v t
 | Prostředek | Typ prostředku | Verze rozhraní API |
 |:---|:---|:---|
 | [Pracovní prostor](/azure/templates/microsoft.operationalinsights/workspaces) | pracovní prostory | 2020-03-01 – Preview |
-| [Účet Automation](/azure/templates/microsoft.automation/automationaccounts) | automatizace | 2020-01-13 – Preview |
+| [Účet služby Automation](/azure/templates/microsoft.automation/automationaccounts) | automatizace | 2020-01-13 – Preview |
 | [Propojené služby v pracovním prostoru](/azure/templates/microsoft.operationalinsights/workspaces/linkedservices) | pracovní prostory | 2020-03-01 – Preview |
 | [Řešení](/azure/templates/microsoft.operationsmanagement/solutions) | Řešení | 2015-11-01 – Preview |
 
@@ -315,7 +315,7 @@ Pokud Azure Automation a Azure Monitor začínáte, je důležité, abyste poroz
 
     **Azure CLI**
 
-    ```cli
+    ```azurecli
     az deployment group create --resource-group <my-resource-group> --name <my-deployment-name> --template-file deployUMSolutiontemplate.json
     ```
 
@@ -325,7 +325,7 @@ Pokud Azure Automation a Azure Monitor začínáte, je důležité, abyste poroz
 
 ## <a name="review-deployed-resources"></a>Kontrola nasazených prostředků
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 2. V Azure Portal otevřete účet Automation, který jste vytvořili.
 
