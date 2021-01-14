@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a6a1b41dd4ede055ba81c069c2164bb36da99876
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 93d444d781edbcfe4ab171460668aeb328070bff
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602304"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201633"
 ---
 # <a name="azure-security-baseline-for-azure-lighthouse"></a>Základní hodnoty zabezpečení Azure pro Azure Lighthouse
 
@@ -206,7 +206,7 @@ Měli byste zajistit, aby přihlašovací údaje (například heslo, certifikát
 
 **Pokyny:** Zabezpečené, izolované pracovní stanice jsou nesmírně důležité pro zabezpečení citlivých rolí, jako jsou správci, vývojáři a obsluha nejdůležitějších služeb. V závislosti na vašich požadavcích můžete pomocí vysoce zabezpečených uživatelských pracovních stanic nebo Azure bastionu provádět úlohy správy s Azure Lighthouse v produkčních prostředích. K nasazení zabezpečené a spravované uživatelské pracovní stanice pro úlohy správy použijte Azure Active Directory, Microsoft Defender Advanced Threat Protection (ATP) nebo Microsoft Intune. Zabezpečená pracovní stanice se dají centrálně spravovat tak, aby vynutila zabezpečenou konfiguraci, včetně silného ověřování, standardních hodnot softwaru a hardwaru a omezeného logického a síťového přístupu. 
 
-- [Pochopení pracovních stanic s privilegovaným přístupem](../active-directory/devices/concept-azure-managed-workstation.md)
+- [Pochopení pracovních stanic s privilegovaným přístupem](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [Nasazení pracovní stanice s privilegovaným přístupem](../active-directory/devices/howto-azure-managed-workstation.md)
 

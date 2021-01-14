@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/27/2020
 ms.author: cynthn
 ms.reviewer: olayemio
-ms.openlocfilehash: 40d3ff736194c4634b949af52ee7b09db20dd06d
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 84ec5ecbfdc2aab2445d050cc51d2b56acb7f3fd
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95026127"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202551"
 ---
 # <a name="create-a-managed-disk-from-an-image-version"></a>Vytvoření spravovaného disku z verze image
 
@@ -33,7 +33,7 @@ az sig image-version list \
    -o table
 ```
 
-Nastavte `source` proměnnou na ID verze image a pak pomocí [AZ disk Create](/cli/azure/disk?view=azure-cli-latest#az_disk_create) vytvořte spravovaný disk. 
+Nastavte `source` proměnnou na ID verze image a pak pomocí [AZ disk Create](/cli/azure/disk#az_disk_create) vytvořte spravovaný disk. 
 
 V tomto příkladu exportujeme disk s operačním systémem verze image pro vytvoření spravovaného disku s názvem *myManagedOSDisk* v oblasti *EastUS* ve skupině prostředků s názvem *myResourceGroup*. 
 

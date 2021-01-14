@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/22/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ddd8166dd29d2210fecdd72d5be446df47a6c5df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c327f5ffbf7c0fbfadf443e80cc1f7540855f59e
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89072294"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201820"
 ---
 # <a name="create-a-windows-virtual-machine-from-a-resource-manager-template"></a>Vytvoření virtuálního počítače s Windows ze šablony Resource Manageru
 
@@ -71,11 +71,11 @@ Poslední příkaz prostředí PowerShell z předchozího skriptu zobrazuje náz
 ## <a name="next-steps"></a>Další kroky
 
 - V případě, že došlo k potížím s nasazením, můžete se podívat na problémy s [běžnými chybami při nasazení Azure pomocí Azure Resource Manager](../../azure-resource-manager/templates/common-deployment-errors.md).
-- Naučte se vytvářet a spravovat virtuální počítače v tématu [vytváření a správa virtuálních počítačů s Windows pomocí modulu Azure PowerShell](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- Naučte se vytvářet a spravovat virtuální počítače v tématu [vytváření a správa virtuálních počítačů s Windows pomocí modulu Azure PowerShell](tutorial-manage-vm.md).
 
 Další informace o vytváření šablon najdete v syntaxi a vlastnostech JSON pro typy prostředků, které jste nasadili:
 
 - [Microsoft. Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
 - [Microsoft. Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
 - [Microsoft. Network/networkInterfaces](/azure/templates/microsoft.network/networkinterfaces)
-- [Microsoft.Compute/virtualMachines](/azure/templates/microsoft.compute/virtualmachines)
+- [Microsoft. COMPUTE/virtualMachines](/azure/templates/microsoft.compute/virtualmachines)

@@ -7,18 +7,18 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/03/2020
-ms.openlocfilehash: 06f738ea88093ea8de45efebea983fd7fa13216e
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: fcc3e487d949a9450f792a6cc230b64e7dbe950a
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387815"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202942"
 ---
 # <a name="tutorial-use-the-rest-apis"></a>Kurz: použití rozhraní REST API
 
 V tomto kurzu se naučíte používat rozhraní REST API pro Azure dosah. Každý, kdo chce odesílat data do katalogu Azure dosah, zahrnout katalog jako součást automatizovaného procesu nebo vytvořit vlastní uživatelské prostředí v katalogu, můžete k tomu použít rozhraní REST API.
 
-V tomto kurzu se naučíte:
+V tomto kurzu:
 
 > [!div class="checklist"]
 >
@@ -39,7 +39,7 @@ Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný úče
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se na [Azure Portal](https://portal.azure.com).
+Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-a-service-principal-application"></a>Vytvoření instančního objektu (aplikace)
 
@@ -142,7 +142,7 @@ Vyhledejte a uložte následující hodnoty:
 
 
 
-1. [Nainstalujte Node.js](https://github.com/Azure/autorest/blob/master/docs/installing-autorest.md).
+1. [Nainstalujte Node.js](https://github.com/Azure/autorest/blob/v2/docs/installing-autorest.md).
 1. Otevřete PowerShell a spusťte následující příkaz:
 
    ```powershell
@@ -173,7 +173,7 @@ Vyhledejte a uložte následující hodnoty:
 1. Ujistěte se, že je verze minimálně 2.3.21, a pak vyberte **nainstalovat**.
 1. Sestavte a spusťte aplikaci.
 
-Vzorový kód vrátí počet definice typedef v katalogu a ukazuje, jak zpracovávat přiřazení rolí. Podrobnosti naleznete v části `DoRoleAssignmentOperations()` v ukázkovém kódu. Další informace o projektu naleznete v tématu [nastavení projektu](https://github.com/Azure/autorest/blob/master/docs/client/proj-setup.md).
+Vzorový kód vrátí počet definice typedef v katalogu a ukazuje, jak zpracovávat přiřazení rolí. Podrobnosti naleznete v části `DoRoleAssignmentOperations()` v ukázkovém kódu. Další informace o projektu naleznete v tématu [nastavení projektu](https://github.com/Azure/autorest/blob/v2/docs/client/proj-setup.md).
 
 ### <a name="sample-code-for-the-console-application"></a>Vzorový kód pro konzolovou aplikaci
 

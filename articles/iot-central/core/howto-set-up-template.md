@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - contperf-fy21q1
 - device-developer
-ms.openlocfilehash: 9e5e96d97494f4ba9aa28e84b046cd057fe8eba7
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 236acc2ded3fcb651295e0342ab4e1e88174be46
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033404"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202959"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>Definování nového typu zařízení IoT v aplikaci Azure IoT Central
 
@@ -42,8 +42,16 @@ V IoT Central aplikaci šablona zařízení používá model zařízení k popis
 
 - Navrhněte šablonu zařízení v IoT Central a potom [do kódu zařízení implementujte svůj model zařízení](concepts-telemetry-properties-commands.md).
 - Importujte šablonu zařízení z [katalogu zařízení Azure Certified for IoT](https://aka.ms/iotdevcat). Upravte šablonu zařízení podle požadavků v IoT Central.
+> [!NOTE]
+> IoT Central vyžaduje úplný model se všemi odkazovanými rozhraními ve stejném souboru, při importu modelu z úložiště modelu použijte k získání plné verze klíčové slovo Expanded.
+Například. https://devicemodels.azure.com/dtmi/com/example/thermostat-1.expanded.json
+
 - Vytvoření modelu zařízení pomocí [jazyka DTDL (Digital vláknas Definition Language) verze 2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md). Visual Studio Code má rozšíření, které podporuje vytváření DTDL modelů. Další informace najdete v tématu [instalace a použití nástrojů pro vytváření DTDL](../../iot-pnp/howto-use-dtdl-authoring-tools.md). Pak model publikujte do úložiště veřejného modelu. Další informace najdete v tématu [úložiště modelů zařízení](../../iot-pnp/concepts-model-repository.md). Implementujte kód zařízení z modelu a připojte skutečné zařízení k vaší IoT Central aplikaci. IoT Central najde a naimportuje model zařízení z veřejného úložiště za vás a vygeneruje šablonu zařízení. Pak můžete přidat libovolné vlastnosti cloudu, vlastní nastavení a řídicí panely, které vaše aplikace IoT Central potřebuje k šabloně zařízení.
 - Vytvořte model zařízení pomocí nástroje DTDL. Implementujte kód zařízení z modelu. Ručně importujte model zařízení do aplikace IoT Central a pak přidejte všechny vlastnosti cloudu, přizpůsobení a řídicí panely, které aplikace IoT Central potřebuje.
+
+> [!TIP]
+> IoT Central vyžaduje úplný model se všemi odkazovanými rozhraními ve stejném souboru. Při importu modelu z úložiště modelu použijte k získání plné verze klíčové slovo *Expanded* .
+> Příklad: [https://devicemodels.azure.com/dtmi/com/example/thermostat-1.expanded.json](https://devicemodels.azure.com/dtmi/com/example/thermostat-1.expanded.json).
 
 Můžete také přidat šablony zařízení do aplikace IoT Central pomocí [REST API](/learn/modules/manage-iot-central-apps-with-rest-api/) nebo rozhraní příkazového [řádku](howto-manage-iot-central-from-cli.md).
 
@@ -119,10 +127,10 @@ Telemetrie je proud hodnot odeslaných ze zařízení, typicky ze senzoru. Senzo
 
 Následující tabulka ukazuje nastavení konfigurace pro schopnost telemetrie:
 
-| Pole | Popis |
+| Pole | Description |
 | ----- | ----------- |
 | Zobrazovaný název | Zobrazovaný název hodnoty telemetrie používané na řídicích panelech a formulářích |
-| Název | Název pole ve zprávě telemetrie IoT Central vygeneruje hodnotu pro toto pole ze zobrazovaného názvu, ale v případě potřeby můžete zvolit vlastní hodnotu. Toto pole musí být alfanumerické. |
+| Name | Název pole ve zprávě telemetrie IoT Central vygeneruje hodnotu pro toto pole ze zobrazovaného názvu, ale v případě potřeby můžete zvolit vlastní hodnotu. Toto pole musí být alfanumerické. |
 | Typ funkce | Telemetrie. |
 | Sémantický typ | Sémantický typ telemetrie, jako je například teplota, stav nebo událost. Volba sémantického typu Určuje, která z následujících polí je k dispozici. |
 | Schéma | Datový typ telemetrie, například Double, String nebo Vector. Dostupné možnosti určují sémantický typ. Schéma není k dispozici pro sémantické typy události a stavu. |
@@ -131,7 +139,7 @@ Následující tabulka ukazuje nastavení konfigurace pro schopnost telemetrie:
 | Jednotka | Jednotka pro hodnotu telemetrie, například **mph**, **%** nebo **&deg; C**. |
 | Zobrazit jednotku | Zobrazovací jednotka pro použití na řídicích panelech a formulářích. |
 | Komentář | Jakékoli komentáře k schopnosti telemetrie. |
-| Popis | Popis schopnosti telemetrie. |
+| Description | Popis schopnosti telemetrie. |
 
 ### <a name="properties"></a>Vlastnosti
 
@@ -139,10 +147,10 @@ Vlastnosti znázorňují hodnoty bodu v čase. Zařízení může například po
 
 Následující tabulka ukazuje nastavení konfigurace pro schopnost vlastnosti:
 
-| Pole | Popis |
+| Pole | Description |
 | ----- | ----------- |
 | Zobrazovaný název | Zobrazovaný název hodnoty vlastnosti používané na řídicích panelech a formulářích. |
-| Název | Název vlastnosti IoT Central vygeneruje hodnotu pro toto pole ze zobrazovaného názvu, ale v případě potřeby můžete zvolit vlastní hodnotu. Toto pole musí být alfanumerické. |
+| Name | Název vlastnosti IoT Central vygeneruje hodnotu pro toto pole ze zobrazovaného názvu, ale v případě potřeby můžete zvolit vlastní hodnotu. Toto pole musí být alfanumerické. |
 | Typ funkce | Majetek. |
 | Sémantický typ | Sémantický typ vlastnosti, jako je například teplota, stav nebo událost. Volba sémantického typu Určuje, která z následujících polí je k dispozici. |
 | Schéma | Datový typ vlastnosti, například Double, String nebo Vector. Dostupné možnosti určují sémantický typ. Schéma není k dispozici pro sémantické typy události a stavu. |
@@ -152,7 +160,7 @@ Následující tabulka ukazuje nastavení konfigurace pro schopnost vlastnosti:
 | Jednotka | Jednotka pro hodnotu vlastnosti, například **mph**, **%** nebo **&deg; C**. |
 | Zobrazit jednotku | Zobrazovací jednotka pro použití na řídicích panelech a formulářích. |
 | Komentář | Jakékoli komentáře k funkci vlastnosti. |
-| Popis | Popis schopnosti vlastnosti. |
+| Description | Popis schopnosti vlastnosti. |
 
 ### <a name="commands"></a>Příkazy
 
@@ -160,13 +168,13 @@ Příkazy zařízení můžete volat z IoT Central. Příkazy volitelně předaj
 
 Následující tabulka ukazuje nastavení konfigurace pro funkci příkazu:
 
-| Pole | Popis |
+| Pole | Description |
 | ----- | ----------- |
 | Zobrazovaný název | Zobrazovaný název příkazu, který se používá na řídicích panelech a formulářích. |
-| Název | Název příkazu IoT Central vygeneruje hodnotu pro toto pole ze zobrazovaného názvu, ale v případě potřeby můžete zvolit vlastní hodnotu. Toto pole musí být alfanumerické. |
+| Name | Název příkazu IoT Central vygeneruje hodnotu pro toto pole ze zobrazovaného názvu, ale v případě potřeby můžete zvolit vlastní hodnotu. Toto pole musí být alfanumerické. |
 | Typ funkce | Systému. |
 | Komentář | Jakékoli komentáře k funkci příkazu. |
-| Popis | Popis funkce příkazu |
+| Description | Popis funkce příkazu |
 | Žádost | Pokud je povoleno, definice parametru Request, včetně názvu, zobrazovaného názvu, schématu, jednotky a zobrazované jednotky. |
 | Odpověď | Pokud je povoleno, definice odpovědi příkazu, včetně názvu, zobrazovaného názvu, schématu, jednotky a zobrazované jednotky, je-li povolena. |
 
@@ -199,10 +207,10 @@ Pomocí vlastností cloudu můžete ukládat informace o zařízeních v IoT Cen
 
 Následující tabulka ukazuje nastavení konfigurace pro cloudovou vlastnost:
 
-| Pole | Popis |
+| Pole | Description |
 | ----- | ----------- |
 | Zobrazovaný název | Zobrazovaný název hodnoty vlastnosti cloudu používaný na řídicích panelech a formulářích. |
-| Název | Název vlastnosti cloudu IoT Central vygeneruje hodnotu pro toto pole ze zobrazovaného názvu, ale v případě potřeby můžete zvolit vlastní hodnotu. |
+| Name | Název vlastnosti cloudu IoT Central vygeneruje hodnotu pro toto pole ze zobrazovaného názvu, ale v případě potřeby můžete zvolit vlastní hodnotu. |
 | Sémantický typ | Sémantický typ vlastnosti, jako je například teplota, stav nebo událost. Volba sémantického typu Určuje, která z následujících polí je k dispozici. |
 | Schéma | Datový typ cloudové vlastnosti, jako je například Double, String nebo Vector. Dostupné možnosti určují sémantický typ. |
 

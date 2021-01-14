@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: acdddcd95883d13393838a47281fb888ac2f9274
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 26ef07269c9451c2e9d05d42e2247fbfcdae4844
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500389"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201956"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: návrh pro vysoký výkon
 
@@ -119,7 +119,7 @@ Nejlepším způsobem, jak změřit požadavky na výkon vaší aplikace, je pou
 
 Čítače výkonu jsou k dispozici pro procesor, paměť a každý logický disk a fyzický disk serveru. Když použijete disky Premium Storage s virtuálním počítačem, čítače fyzického disku jsou pro každý disk Storage úrovně Premium a čítače logických disků jsou pro každý svazek vytvořený na discích úložiště úrovně Premium. Je nutné zachytit hodnoty pro disky, které hostují zatížení vaší aplikace. Pokud existuje mapování mezi logickými a fyzickými disky, můžete se podívat na čítače fyzického disku. v opačném případě se podívejte na čítače logických disků. V systému Linux příkaz iostat vygeneruje sestavu využití procesoru a disku. Sestava využití disku poskytuje statistiku pro každé fyzické zařízení nebo oddíl. Pokud máte databázový server s daty a protokoly na samostatných discích, shromážděte tato data pro oba disky. Následující tabulka popisuje čítače pro disky, procesory a paměť:
 
-| Čítač | Popis | PerfMon | Iostat |
+| Čítač | Description | PerfMon | Iostat |
 | --- | --- | --- | --- |
 | **Počet vstupně-výstupních operací za sekundu** |Počet vstupně-výstupních požadavků vydaných na disk úložiště za sekundu. |Čtení z disku/s <br> Zápisy na disk/s |TPS <br> r/s <br> w/s |
 | **Čtení a zápisy na disk** |% operací čtení a zápisu provedených na disku. |% Doby čtení disku <br> % Času zápisu na disk |r/s <br> w/s |
@@ -222,7 +222,7 @@ Pokud však používáte stejnou aplikaci na Premium Storage, budete potřebovat
 
 Následující tabulka shrnuje rozpis nákladů tohoto scénáře pro Standard a Premium Storage.
 
-| &nbsp; | **Standard** | **Nárok** |
+| &nbsp; | **Standard** | **Premium** |
 | --- | --- | --- |
 | **Náklady na virtuální počítač za měsíc** |$1 570,58 (standardní \_ D14) |$1 003,66 (standardní \_ DS13) |
 | **Náklady na disky za měsíc** |$1 638,40 (32 × 1 TB disků) |$544,34 (4 x P30 disky) |
@@ -230,7 +230,7 @@ Následující tabulka shrnuje rozpis nákladů tohoto scénáře pro Standard a
 
 *Linux distribuce*  
 
-V případě Azure Premium Storage získáte stejnou úroveň výkonu pro virtuální počítače s Windows a Linux. Podporujeme spoustu různých typů Linux distribuce a [tady](linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)si můžete prohlédnout úplný seznam. Je důležité si uvědomit, že různé distribuce jsou lépe vhodné pro různé typy úloh. V závislosti na distribuce, na kterém běží vaše zatížení, se zobrazí různé úrovně výkonu. Otestujte distribuce pro Linux s vaší aplikací a vyberte tu, která nejlépe funguje.
+V případě Azure Premium Storage získáte stejnou úroveň výkonu pro virtuální počítače s Windows a Linux. Podporujeme spoustu různých typů Linux distribuce a [tady](linux/endorsed-distros.md)si můžete prohlédnout úplný seznam. Je důležité si uvědomit, že různé distribuce jsou lépe vhodné pro různé typy úloh. V závislosti na distribuce, na kterém běží vaše zatížení, se zobrazí různé úrovně výkonu. Otestujte distribuce pro Linux s vaší aplikací a vyberte tu, která nejlépe funguje.
 
 Pokud používáte systém Linux se Premium Storage, přečtěte si nejnovější aktualizace požadovaných ovladačů, abyste zajistili vysoký výkon.
 

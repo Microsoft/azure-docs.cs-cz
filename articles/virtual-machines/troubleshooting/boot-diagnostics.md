@@ -10,12 +10,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: delhan
-ms.openlocfilehash: 236390529ddaf84416448138d7b5bdf31caf681b
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.openlocfilehash: fa133e7c62b7970a1c48c7fd86c877bcf699e034
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827491"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201599"
 ---
 # <a name="how-to-use-boot-diagnostics-to-troubleshoot-virtual-machines-in-azure"></a>Řešení potíží s virtuálními počítači v Azure pomocí diagnostiky spouštění
 
@@ -94,4 +94,4 @@ Pokud chcete povolit diagnostiku spouštění na stávajícím virtuálním poč
 
 ### <a name="enable-boot-diagnostics-using-the-azure-cli"></a>Povolení diagnostiky spouštění pomocí Azure CLI
 
-Rozhraní příkazového řádku Azure můžete použít k povolení diagnostiky spouštění na stávajícím virtuálním počítači Azure. Další informace najdete v tématu [AZ VM Boot-Diagnostics](/cli/azure/vm/boot-diagnostics?view=azure-cli-latest).
+Rozhraní příkazového řádku Azure můžete použít k povolení diagnostiky spouštění na stávajícím virtuálním počítači Azure. Další informace najdete v tématu [AZ VM Boot-Diagnostics](/cli/azure/vm/boot-diagnostics).

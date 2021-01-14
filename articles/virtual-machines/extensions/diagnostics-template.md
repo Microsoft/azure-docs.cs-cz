@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/31/2017
 ms.author: mimckitt
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 181f226a4d7aa37ffd8c667db4736a96450e2be5
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: a91e21994dda126e14c100bcf1d2a69c36b13e1e
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94955952"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202160"
 ---
 # <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>Použití monitorování a diagnostiky pomocí virtuálních počítačů s Windows a Azure Resource Manager šablon
 Rozšíření Azure Diagnostics poskytuje funkce pro monitorování a diagnostiku na virtuálním počítači Azure se systémem Windows. Tyto možnosti můžete na virtuálním počítači povolit zahrnutím rozšíření jako části šablony Azure Resource Manager. Další informace o začlenění všech rozšíření v rámci šablony virtuálního počítače najdete v tématu [vytváření Azure Resource Manager šablon s rozšířeními virtuálních počítačů](../windows/template-description.md#extensions) . Tento článek popisuje, jak můžete přidat rozšíření Azure Diagnostics do šablony virtuálního počítače s Windows.  
@@ -63,7 +63,7 @@ U jednoduchého virtuálního počítače založeného na Správce prostředků 
 ]
 ```
 
-Další běžnou konvencí je přidání konfigurace rozšíření v uzlu kořenových prostředků šablony, a nikoli jejím definováním v uzlu prostředky virtuálního počítače. S tímto přístupem musíte explicitně zadat hierarchický vztah mezi příponou a virtuálním počítačem s hodnotami *název* a *typ* . Například: 
+Další běžnou konvencí je přidání konfigurace rozšíření v uzlu kořenových prostředků šablony, a nikoli jejím definováním v uzlu prostředky virtuálního počítače. S tímto přístupem musíte explicitně zadat hierarchický vztah mezi příponou a virtuálním počítačem s hodnotami *název* a *typ* . Příklad: 
 
 ```json
 "name": "[concat(variables('vmName'),'Microsoft.Insights.VMDiagnosticsSettings')]",
@@ -179,5 +179,5 @@ Každá tabulka WADMetrics obsahuje následující sloupce:
 
 ## <a name="next-steps"></a>Další kroky
 * Úplnou ukázkovou šablonu virtuálního počítače s Windows s diagnostickým rozšířením najdete v tématu [201-VM-monitoring-Diagnostics-Extension](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-monitoring-diagnostics-extension) .   
-* Nasazení šablony Azure Resource Manager pomocí [Azure PowerShell](../windows/ps-template.md) nebo [příkazového řádku Azure](../linux/create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* Nasazení šablony Azure Resource Manager pomocí [Azure PowerShell](../windows/ps-template.md) nebo [příkazového řádku Azure](../linux/create-ssh-secured-vm-from-template.md)
 * Další informace o [vytváření šablon Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md)

@@ -8,12 +8,12 @@ author: AlexandraKemperMS
 ms.author: alkemper
 ms.topic: conceptual
 ms.date: 3/9/2020
-ms.openlocfilehash: 9a6ae1581b3958495010b032980b0de2e267088b
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 13857580d434736fbf0b12f52d39537ca864a497
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931873"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203118"
 ---
 # <a name="use-feature-filters-to-enable-conditional-feature-flags"></a>Použití filtrů funkcí k zapnutí příznaků podmíněné funkce
 
@@ -56,19 +56,19 @@ Tato nastavení můžete nakonfigurovat pro příznaky funkcí definované v kon
     > [!div class="mx-imgBorder"]
     > ![Upravit příznak funkce beta verze](./media/edit-beta-feature-flag.png)
 
-1. Na obrazovce pro **Úpravy** vyberte přepínač **zapnuto** , pokud ještě není vybraný. Pak klikněte na tlačítko **Přidat filtr** . (Popisek **na** přepínači se změní na číst **podmíněné**.)
+1. Na obrazovce pro **Úpravy** vyberte tlačítko **Povolit příznak funkce** , pokud ještě není vybrané. Pak klikněte na tlačítko **Filtr použití funkcí** a vyberte možnost **vlastní**. 
 
 1. Do pole **klíč** zadejte *Microsoft. PERCENTAGE*.
 
     > [!div class="mx-imgBorder"]
     > ![Přidat filtr funkcí](./media/feature-flag-add-filter.png)
 
-1. Klikněte na místní nabídku vedle klíče filtru funkcí. Klikněte na **Upravit parametry**.
+1. Klikněte na místní nabídku vedle klíče filtru funkcí. Klikněte na **Upravit parametry filtru**.
 
     > [!div class="mx-imgBorder"]
-    > ![Upravit parametry filtru funkcí](./media/feature-flag-edit-filter-parameters.png)
+    > ![Upravit parametry filtru funkcí](./media/feature-flags-edit-filter-parameters.png)
 
-1. Najeďte myší pod záhlavím **název** tak, aby se textová pole zobrazovala v mřížce. Zadejte **název** *hodnoty* a **hodnotu** 50. Pole **hodnota** označuje procento požadavků, u kterých má být filtr funkcí povolen.
+1. Zadejte **název** *hodnoty* a **hodnotu** 50. Pole **hodnota** označuje procento požadavků, u kterých má být filtr funkcí povolen.
 
     > [!div class="mx-imgBorder"]
     > ![Nastavení parametrů filtru funkcí](./media/feature-flag-set-filter-parameters.png)

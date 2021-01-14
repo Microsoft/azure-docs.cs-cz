@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 5d5ecf95289bf7860363b7e97d834372ee6c2268
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 13515f2428b1fc95c31b04c984dd77dd316a4315
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185253"
+ms.locfileid: "98202194"
 ---
 # <a name="azure-security-baseline-for-azure-traffic-manager"></a>Základní hodnoty zabezpečení Azure pro Azure Traffic Manager
 
@@ -170,7 +170,7 @@ Můžete také povolit přístup za běhu pomocí Azure AD Privileged Identity M
 
 **Pokyny**: Použijte zabezpečenou pracovní stanici spravovanou v Azure (také známou jako pracovní stanice s privilegovaným přístupem nebo privilegovaným přístupem) pro úlohy správy, které vyžadují zvýšená oprávnění.
 
-- [Pochopení zabezpečení pracovních stanic spravovaných Azure](/security/compass/concept-azure-managed-workstation)
+- [Pochopení zabezpečení pracovních stanic spravovaných Azure](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [Jak povolit vícefaktorové ověřování v Azure](../active-directory/authentication/howto-mfa-getstarted.md)
 

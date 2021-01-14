@@ -6,23 +6,23 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: guybo
-ms.openlocfilehash: ef4175d24cfd02bb5cb6470b6334fea190b5bec2
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 9888cde8bca9fb0646dbdc8bb601b0887908ad1d
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500593"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203231"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>Informace pro neschválené distribuce
 
-Smlouva SLA platformy Azure se vztahuje na virtuální počítače s operačním systémem Linux jenom v případě, že se používá jedno z označených [distribucí](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) . Pro tyto schválené distribuce jsou předem nakonfigurované image pro Linux k dispozici v Azure Marketplace.
+Smlouva SLA platformy Azure se vztahuje na virtuální počítače s operačním systémem Linux jenom v případě, že se používá jedno z označených [distribucí](endorsed-distros.md) . Pro tyto schválené distribuce jsou předem nakonfigurované image pro Linux k dispozici v Azure Marketplace.
 
-* [Linux v rozdělení schváleném pro Azure](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Linux v rozdělení schváleném pro Azure](endorsed-distros.md)
 * [Podpora imagí pro Linux v Microsoft Azure](https://support.microsoft.com/kb/2941892)
 
 Všechna distribuce běžící v Azure mají řadu požadavků. Tento článek nemůže být komplexní, protože každá distribuce je odlišná. I v případě, že splňujete všechna kritéria uvedená níže, může být nutné významně upravit systém Linux, aby správně fungoval.
 
-Doporučujeme, abyste začali s jedním ze systému [Linux v rámci schválených distribucí v Azure](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Následující články ukazují, jak připravit různé schválené distribuce systému Linux podporované v Azure:
+Doporučujeme, abyste začali s jedním ze systému [Linux v rámci schválených distribucí v Azure](endorsed-distros.md). Následující články ukazují, jak připravit různé schválené distribuce systému Linux podporované v Azure:
 
 - [Distribuce založené na CentOS](create-upload-centos.md)
 - [Debian Linux](debian-create-upload-vhd.md)
@@ -38,7 +38,7 @@ Tento článek se zaměřuje na obecné pokyny pro provozování distribuce syst
 * Formát virtuálního pevného disku Hyper-V (VHDX) se v Azure nepodporuje, jenom *pevný virtuální* pevný disk.  Disk můžete převést na formát VHD pomocí Správce technologie Hyper-V nebo rutiny [Convert-VHD](/powershell/module/hyper-v/convert-vhd) . Pokud používáte VirtualBox, při vytváření disku vyberte **pevnou velikost** , nikoli výchozí (dynamicky přidělené).
 * Azure podporuje virtuální počítače Gen1 (Boot Boot) & Gen2 (UEFI Boot).
 * Maximální velikost povolená pro virtuální pevný disk je 1 023 GB.
-* Při instalaci systému Linux doporučujeme místo Správce logických svazků (LVM) používat standardní oddíly, což je výchozí nastavení pro mnoho instalací. Použití standardních oddílů zabrání v konfliktu LVM názvů s klonovanými virtuálními počítači, zejména pokud je disk s operačním systémem někdy připojený k jinému stejnému virtuálnímu počítači pro řešení potíží. [LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) nebo [RAID](/previous-versions/azure/virtual-machines/linux/configure-raid?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) se můžou používat na datových discích.
+* Při instalaci systému Linux doporučujeme místo Správce logických svazků (LVM) používat standardní oddíly, což je výchozí nastavení pro mnoho instalací. Použití standardních oddílů zabrání v konfliktu LVM názvů s klonovanými virtuálními počítači, zejména pokud je disk s operačním systémem někdy připojený k jinému stejnému virtuálnímu počítači pro řešení potíží. [LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm) nebo [RAID](/previous-versions/azure/virtual-machines/linux/configure-raid) se můžou používat na datových discích.
 * Podpora jádra pro připojení systémů souborů UDF je nezbytná. Při prvním spuštění v Azure se konfigurace zřizování předává virtuálnímu počítači se systémem Linux pomocí média ve formátu UDF, které je připojené k hostu. Agent Azure Linux musí připojit systém souborů UDF a načíst jeho konfiguraci a zřídit virtuální počítač.
 * Verze jádra Linux starší než 2.6.37 nepodporují architekturu NUMA na technologii Hyper-V s většími velikostmi virtuálních počítačů. Tento problém se týká především starších distribucí pomocí nadřazeného jádra Red Hat 2.6.32 a byl opraven v Red Hat Enterprise Linux (RHEL) 6,6 (kernel-2.6.32-504). Systémy s vlastními jádry staršími než 2.6.37 nebo jádry založenými na RHEL, které jsou starší než 2.6.32-504, musí nastavit parametr boot v `numa=off` příkazovém řádku jádra v souboru GRUB. conf. Další informace najdete v článku [Red Hat KB 436883](https://access.redhat.com/solutions/436883).
 * Nekonfigurujte odkládací oddíl na disku s operačním systémem. Agent pro Linux se dá nakonfigurovat tak, aby na dočasném disku prostředků vytvořil odkládací soubor, jak je popsáno v následujícím postupu.
@@ -67,7 +67,7 @@ Image VHD v Azure musí mít virtuální velikost zarovnaná na 1 MB.  Virtuáln
 
 * Virtuální pevný disk http: \/ / \<mystorageaccount> . blob.Core.Windows.NET/VHDs/MyLinuxVM.VHD má nepodporovanou virtuální velikost 21475270656 bajtů. Velikost musí být celé číslo (v MB).
 
-V takovém případě změňte velikost virtuálního počítače pomocí konzoly Správce technologie Hyper-V nebo rutiny [změnit velikost-VHD](/powershell/module/hyper-v/resize-vhd?view=win10-ps) PowerShell.  Pokud nepoužíváte v prostředí Windows, doporučujeme použít příkaz `qemu-img` k převedení (v případě potřeby) a změně velikosti VHD.
+V takovém případě změňte velikost virtuálního počítače pomocí konzoly Správce technologie Hyper-V nebo rutiny [změnit velikost-VHD](/powershell/module/hyper-v/resize-vhd) PowerShell.  Pokud nepoužíváte v prostředí Windows, doporučujeme použít příkaz `qemu-img` k převedení (v případě potřeby) a změně velikosti VHD.
 
 > [!NOTE]
 > Verze [qemu-img obsahuje známou chybu](https://bugs.launchpad.net/qemu/+bug/1490611) >= 2.2.1, která má za následek nesprávně naformátovaný virtuální pevný disk. Tento problém byl opravený v QEMU 2,6. Doporučujeme použít buď `qemu-img` 2.2.0, nebo nižší, nebo 2,6 nebo vyšší.
@@ -114,7 +114,7 @@ V takovém případě změňte velikost virtuálního počítače pomocí konzol
 
 ## <a name="linux-kernel-requirements"></a>Požadavky na jádro systému Linux
 
-Ovladače služby Linux Integration Services (LIS) pro Hyper-V a Azure se přímo podílejí na jádru nadřazeného Linux. Mnoho distribucí, které obsahují poslední verzi jádra systému Linux (například 3. x), mají tyto ovladače již k dispozici, nebo jinak poskytují nepoužívané verze těchto ovladačů s jejich jádry.  Tyto ovladače se neustále aktualizují v nadřazeném jádru s novými opravami a funkcemi, takže pokud je to možné, doporučujeme spustit [schválenou distribuci](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , která zahrnuje tyto opravy a aktualizace.
+Ovladače služby Linux Integration Services (LIS) pro Hyper-V a Azure se přímo podílejí na jádru nadřazeného Linux. Mnoho distribucí, které obsahují poslední verzi jádra systému Linux (například 3. x), mají tyto ovladače již k dispozici, nebo jinak poskytují nepoužívané verze těchto ovladačů s jejich jádry.  Tyto ovladače se neustále aktualizují v nadřazeném jádru s novými opravami a funkcemi, takže pokud je to možné, doporučujeme spustit [schválenou distribuci](endorsed-distros.md) , která zahrnuje tyto opravy a aktualizace.
 
 Pokud používáte variantu Red Hat Enterprise Linux verzí 6,0 až 6,3, budete muset nainstalovat [nejnovější ovladače aplikace lis pro technologii Hyper-V](https://go.microsoft.com/fwlink/p/?LinkID=254263&clcid=0x409). Počínaje RHEL 6.4 + (a deriváty) jsou už ovladače aplikace LIS součástí jádra, takže není potřeba žádné další instalační balíčky.
 

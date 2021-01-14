@@ -3,15 +3,15 @@ title: Konfigurace clusteru ve službě Azure Kubernetes Services (AKS)
 description: Informace o tom, jak nakonfigurovat cluster ve službě Azure Kubernetes Service (AKS)
 services: container-service
 ms.topic: article
-ms.date: 09/21/2020
+ms.date: 01/13/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: ab9e2a5483f0699ad7bfca991539025adff34b11
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: eacca50e00dfe8625d86362c444544e2fd5d5511
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97606908"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201106"
 ---
 # <a name="configure-an-aks-cluster"></a>Konfigurace clusteru AKS
 
@@ -21,10 +21,52 @@ V rámci vytváření clusteru AKS možná budete muset přizpůsobit konfigurac
 
 AKS nyní podporuje Ubuntu 18,04 jako operační systém Node (OS) ve všeobecné dostupnosti pro clustery ve verzích Kubernetes vyšších než 1.18.8. Pro verze nižší než 1.18. x je výchozí základní bitová kopie stále výchozí AKS Ubuntu 16,04. Od Kubernetes v 1.18. x a dalších je výchozí základ AKS Ubuntu 18,04.
 
-> [!IMPORTANT]
-> Fondy uzlů vytvořené ve výchozím nastavení Kubernetes v 1.18 nebo vyšší pro `AKS Ubuntu 18.04` Image Node. Fondy uzlů na podporované verzi Kubernetes, která je menší než 1,18, se přijímají `AKS Ubuntu 16.04` jako image uzlu, ale `AKS Ubuntu 18.04` po aktualizaci verze Kubernetes fondu uzlů na verzi v 1.18 nebo vyšší.
-> 
-> Před použitím clusterů na 1,18 nebo novějším se doporučuje testovat vaše úlohy na fondech uzlů AKS Ubuntu 18,04. Přečtěte si informace o [testování fondů uzlů Ubuntu 18,04](#use-aks-ubuntu-1804-existing-clusters-preview).
+### <a name="use-aks-ubuntu-1804-generally-available-on-new-clusters"></a>Používat AKS Ubuntu 18,04 všeobecně dostupné v nových clusterech
+
+Clustery vytvořené ve výchozím nastavení Kubernetes v 1.18 nebo vyšší pro `AKS Ubuntu 18.04` Image Node. Fondy uzlů v podporované verzi Kubernetes, která je menší než 1,18, se budou dál přijímat `AKS Ubuntu 16.04` jako image uzlu, ale `AKS Ubuntu 18.04` po aktualizaci verze Kubernetes fondu clusteru nebo uzlu na verzi v 1.18 nebo novějším se aktualizuje.
+
+Před použitím clusterů na 1,18 nebo novějším se doporučuje testovat vaše úlohy na fondech uzlů AKS Ubuntu 18,04. Přečtěte si informace o [testování fondů uzlů Ubuntu 18,04](#test-aks-ubuntu-1804-generally-available-on-existing-clusters).
+
+Pokud chcete vytvořit cluster pomocí `AKS Ubuntu 18.04` Image uzlu, stačí vytvořit cluster se systémem Kubernetes v 1.18 nebo vyšší, jak je znázorněno níže.
+
+```azurecli
+az aks create --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
+```
+
+### <a name="use-aks-ubuntu-1804-generally-available-on-existing-clusters"></a>Použití AKS Ubuntu 18,04 všeobecně dostupných na existujících clusterech
+
+Clustery vytvořené ve výchozím nastavení Kubernetes v 1.18 nebo vyšší pro `AKS Ubuntu 18.04` Image Node. Fondy uzlů v podporované verzi Kubernetes, která je menší než 1,18, se budou dál přijímat `AKS Ubuntu 16.04` jako image uzlu, ale `AKS Ubuntu 18.04` po aktualizaci verze Kubernetes fondu clusteru nebo uzlu na verzi v 1.18 nebo novějším se aktualizuje.
+
+Před použitím clusterů na 1,18 nebo novějším se doporučuje testovat vaše úlohy na fondech uzlů AKS Ubuntu 18,04. Přečtěte si informace o [testování fondů uzlů Ubuntu 18,04](#test-aks-ubuntu-1804-generally-available-on-existing-clusters).
+
+Pokud jsou clustery nebo fondy uzlů připravené k `AKS Ubuntu 18.04` imagi uzlů, můžete je jednoduše upgradovat na verzi v 1.18 nebo vyšší.
+
+```azurecli
+az aks upgrade --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
+```
+
+Pokud chcete pouze upgradovat pouze jeden fond uzlů:
+
+```azurecli
+az aks nodepool upgrade -name ubuntu1804 --cluster-name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
+```
+
+### <a name="test-aks-ubuntu-1804-generally-available-on-existing-clusters"></a>Test AKS Ubuntu 18,04 všeobecně dostupný na existujících clusterech
+
+Fondy uzlů vytvořené ve výchozím nastavení Kubernetes v 1.18 nebo vyšší pro `AKS Ubuntu 18.04` Image Node. Fondy uzlů na podporované verzi Kubernetes, která je menší než 1,18, se budou i nadále přijímat `AKS Ubuntu 16.04` jako image uzlu, ale `AKS Ubuntu 18.04` po aktualizaci verze Kubernetes fondu uzlů na hodnotu v 1.18 nebo novějším se aktualizují.
+
+Před upgradem fondů vašich produkčních uzlů se důrazně doporučuje testovat úlohy ve fondech uzlů AKS Ubuntu 18,04.
+
+Pokud chcete vytvořit fond uzlů pomocí `AKS Ubuntu 18.04` Image uzlu, stačí vytvořit fond uzlů se systémem Kubernetes v 1.18 nebo novějším. Vaše řídicí plocha clusteru musí být aspoň v 1.18 nebo vyšší, ale ostatní fondy uzlů můžou zůstat na starší verzi Kubernetes.
+Dál je potřeba upgradovat rovinu ovládacího prvku a pak vytvořit nový fond uzlů s v 1.18, který obdrží novou verzi operačního systému pro Image uzlu.
+
+```azurecli
+az aks upgrade --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14 --control-plane-only
+
+az aks nodepool add --name ubuntu1804 --cluster-name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
+```
+
+### <a name="use-aks-ubuntu-1804-on-new-clusters-preview"></a>Pro nové clustery použijte AKS Ubuntu 18,04 (Preview).
 
 V následující části se dozvíte, jak používat a testovat AKS Ubuntu 18,04 na clusterech, které ještě nepoužívají Kubernetes verze 1.18. x nebo vyšší, nebo které byly vytvořené před tím, než byla tato funkce všeobecně dostupná, pomocí verze Preview konfigurace operačního systému.
 
@@ -57,8 +99,6 @@ Pokud se stav zobrazuje jako zaregistrované, aktualizujte registraci `Microsoft
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
 ```
-
-### <a name="use-aks-ubuntu-1804-on-new-clusters-preview"></a>Pro nové clustery použijte AKS Ubuntu 18,04 (Preview).
 
 Nakonfigurujte cluster tak, aby při vytvoření clusteru používal Ubuntu 18,04. Pomocí `--aks-custom-headers` příznaku nastavte Ubuntu 18,04 jako výchozí operační systém.
 

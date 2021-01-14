@@ -6,21 +6,24 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/8/2020
-ms.openlocfilehash: bea618b34809544308caba46a0ffbdecee91d69f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 199810f835924ccbb51948169244622a19c5e8ed
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541806"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201429"
 ---
 # <a name="connect-to-azure-database-for-mysql-with-redirection"></a>Připojení ke službě Azure Database for MySQL s přesměrováním
 
 Toto téma vysvětluje, jak připojit aplikaci Azure Database for MySQL server s režimem přesměrování. Přesměrování se zaměřuje na snížení latence sítě mezi klientskými aplikacemi a servery MySQL tím, že umožňuje aplikacím připojení přímo k uzlům back-end serverů.
 
 ## <a name="before-you-begin"></a>Než začnete
-Přihlaste se na [Azure Portal](https://portal.azure.com). Vytvořte Azure Database for MySQL server s modulem verze 5,6, 5,7 nebo 8,0. 
+Přihlaste se na web [Azure Portal](https://portal.azure.com). Vytvořte Azure Database for MySQL server s modulem verze 5,6, 5,7 nebo 8,0. 
 
 Podrobnosti najdete v tématu Postup vytvoření Azure Database for MySQL serveru pomocí [Azure Portal](quickstart-create-mysql-server-database-using-azure-portal.md) nebo [Azure CLI](quickstart-create-mysql-server-database-using-azure-cli.md).
+
+> [!IMPORTANT]
+> Přesměrování se v tuto chvíli nepodporuje u [privátního odkazu pro Azure Database for MySQL](concepts-data-access-security-private-link.md).
 
 ## <a name="enable-redirection"></a>Povolit přesměrování
 

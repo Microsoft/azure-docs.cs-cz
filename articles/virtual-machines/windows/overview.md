@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 26905b746efb0bfcc877e0fa8fad797672bb6447
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d0973682a62b17a21557727a8d5eb8fcb7ec7ef1
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483211"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203367"
 ---
 # <a name="windows-virtual-machines-in-azure"></a>Virtuální počítače s Windows v Azure
 
@@ -50,7 +50,7 @@ Tato tabulka ukazuje několik způsobů, jak můžete získat seznam dostupných
 | portál Azure |Při vytváření virtuálního počítače vyberte umístění ze seznamu. |
 | Azure PowerShell |Použijte příkaz [Get-AzLocation](/powershell/module/az.resources/get-azlocation) . |
 | REST API |Použijte operaci [Vypsat umístění](/rest/api/resources/subscriptions). |
-| Azure CLI |Použijte operaci [az account list-locations](/cli/azure/account?view=azure-cli-latest). |
+| Azure CLI |Použijte operaci [az account list-locations](/cli/azure/account). |
 
 ### <a name="singapore-data-residency"></a>Zasídlí dat Singapuru
 
@@ -61,7 +61,7 @@ Platforma Azure oznámila špičkovou smlouvu o úrovni služeb (SLA) s 99,9% do
 
 
 ## <a name="vm-size"></a>Velikost virtuálního počítače
-[Velikost](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) virtuálního počítače, který použijete, se určuje podle úlohy, kterou chcete spustit. Velikost, kterou vyberete, pak určuje další faktory, jako například výpočetní výkon, paměť a kapacitu úložiště. Azure nabízí širokou škálu velikostí, které podporují mnoho typů použití.
+[Velikost](../sizes.md) virtuálního počítače, který použijete, se určuje podle úlohy, kterou chcete spustit. Velikost, kterou vyberete, pak určuje další faktory, jako například výpočetní výkon, paměť a kapacitu úložiště. Azure nabízí širokou škálu velikostí, které podporují mnoho typů použití.
 
 Azure účtuje [hodinovou cenu](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) na základě velikosti virtuálního počítače a operačního systému. V případě neúplných hodin Azure účtuje jenom využité minuty. Služba Storage je oceněna a účtována samostatně.
 
@@ -69,7 +69,7 @@ Azure účtuje [hodinovou cenu](https://azure.microsoft.com/pricing/details/virt
 Vaše předplatné má nastavené výchozí [kvóty](../../azure-resource-manager/management/azure-subscription-service-limits.md), které mohou ovlivnit nasazení velkého počtu virtuálních počítačů pro váš projekt. Aktuální limit jednoho předplatného je 20 virtuálních počítačů na oblast. Limity můžete navýšit tak, že [vyplníte lístek podpory s žádostí o navýšení](../../azure-portal/supportability/resource-manager-core-quotas-request.md).
 
 ### <a name="operating-system-disks-and-images"></a>Disky a image operačních systémů
-Virtuální počítače používají [virtuální pevné disky (VHD)](../managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) k ukládání jejich operačního systému (OS) a dat. Virtuální pevné disky se používají i pro image, ze kterých si můžete nainstalovat operační systém. 
+Virtuální počítače používají [virtuální pevné disky (VHD)](../managed-disks-overview.md) k ukládání jejich operačního systému (OS) a dat. Virtuální pevné disky se používají i pro image, ze kterých si můžete nainstalovat operační systém. 
 
 Azure poskytuje mnoho [imagí na webu Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?filters=virtual-machine-images%3Bwindows&page=1) s různými verzemi a typy operačních systémů Windows Server, které můžete použít. Image pořízené na webu Marketplace jsou identifikované vydavatelem image, nabídkou, skladovou jednotkou (SKU) a verzí (verze je obvykle uvedena jako poslední). Podporují se jen 64bitové operační systémy. Podrobnosti o podporovaných hostovaných operačních systémech, rolích a funkcích najdete v tématu věnovaném [podpoře serverového softwaru Microsoft pro virtuální počítače Microsoft Azure](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines).
 
@@ -78,9 +78,9 @@ Tato tabulka ukazuje několik způsobů, jak můžete najít informace o imagi.
 | Metoda | Popis |
 | --- | --- |
 | portál Azure |Hodnoty se pro vás zadají automaticky, když vyberete image, která se má použít. |
-| Azure PowerShell |[Get-AzVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) – umístění *umístění*<BR>[Get-AzVMImageOffer](/powershell/module/az.compute/get-azvmimageoffer) *– umístění umístění –* Vydavatel *vydavatele*<BR>[Get-AzVMImageSku](/powershell/module/az.compute/get-azvmimagesku) *– umístění umístění –* Vydavatel *vydavatele – nabídka* nabídky *offerName* |
+| Azure PowerShell |[Get-AzVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) – umístění *umístění*<BR>[Get-AzVMImageOffer](/powershell/module/az.compute/get-azvmimageoffer) *– umístění umístění –* Vydavatel *vydavatele*<BR>[Get-AzVMImageSku](/powershell/module/az.compute/get-azvmimagesku) *– umístění umístění –* Vydavatel *vydavatele – nabídka* nabídky  |
 | Rozhraní REST API |[Vypsat vydavatele imagí](/rest/api/compute/platformimages/platformimages-list-publishers)<BR>[Vypsat nabídky imagí](/rest/api/compute/platformimages/platformimages-list-publisher-offers)<BR>[Vypsat skladové jednotky (SKU) imagí](/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus) |
-| Azure CLI |[AZ VM Image list-Publishers](/cli/azure/vm/image?view=azure-cli-latest) – *umístění umístění*<BR>[AZ VM Image list-nabídky](/cli/azure/vm/image?view=azure-cli-latest) -- *Location* Location--Publisher *Publisher*<BR>[AZ VM Image list-SKU](/cli/azure/vm?view=azure-cli-latest) - *-Location Location--* *Publisher--* Offer *offername*|
+| Azure CLI |[AZ VM Image list-Publishers](/cli/azure/vm/image) – *umístění umístění*<BR>[AZ VM Image list-nabídky](/cli/azure/vm/image) -- *Location* Location--Publisher *Publisher*<BR>[AZ VM Image list-SKU](/cli/azure/vm) - *-Location Location--* *Publisher--* Offer *offername*|
 
 Můžete se rozhodnout [nahrát a použít vlastní image](upload-generalized-managed.md). Pokud tak učiníte, název vydavatele, nabídka a skladová jednotka (SKU) se nepoužijí.
 
@@ -103,7 +103,7 @@ Prostředky v této tabulce používá virtuální počítač a je nutné, aby e
 | [Virtuální síť](../../virtual-network/virtual-networks-overview.md) |Yes |Virtuální počítač musí být členem virtuální sítě. |
 | [Veřejná IP adresa](../../virtual-network/public-ip-addresses.md) |No |Virtuální počítač může mít přiřazenou veřejnou IP adresu pro umožnění vzdáleného přístupu. |
 | [Síťové rozhraní](../../virtual-network/virtual-network-network-interface.md) |Yes |Virtuální počítač potřebuje síťové rozhraní ke komunikaci v síti. |
-| [Datové disky](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |No |Virtuální počítač může zahrnovat datové disky pro rozšíření možností úložiště. |
+| [Datové disky](attach-managed-disk-portal.md) |No |Virtuální počítač může zahrnovat datové disky pro rozšíření možností úložiště. |
 
 
 ## <a name="data-residency"></a>Rezidence dat

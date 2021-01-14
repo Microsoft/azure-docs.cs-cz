@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: 886d6ff1d3437a9d45bdabc68b2bf3ab8cdaa3ef
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 5f49d2c918164fa529b12313e000aff5f8893a65
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349969"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201841"
 ---
 # <a name="tutorial-configure-blink-for-automatic-user-provisioning"></a>Kurz: Konfigurace blikání pro Automatické zřizování uživatelů
 
@@ -117,7 +117,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 9. Kontrola atributů uživatele synchronizovaných z Azure AD pro blikání v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů ve blikat pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
-    ![Blikání atributů uživatele](media/blink-provisioning-tutorial/user-attributes.png)
+    ![Blikání atributů uživatele](media/blink-provisioning-tutorial/new-user-attributes.png)
 
 10. Pokud chcete nakonfigurovat filtry rozsahu, postupujte podle pokynů uvedených v [kurzu k filtrům rozsahu](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
@@ -137,7 +137,11 @@ Tato operace spustí počáteční synchronizaci všech uživatelů definovanýc
 
 Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="change-log"></a>Protokol změn
+
+* 01/14/2021 – Přidal se vlastní atribut rozšíření **Company** , **Popis** a **umístění** .
+
+## <a name="additional-resources"></a>Další zdroje
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

@@ -3,12 +3,12 @@ title: Základní hodnoty zabezpečení Azure pro Azure DevTest Labs
 description: Základní hodnoty zabezpečení Azure pro Azure DevTest Labs
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 4ae3886e1c47b1d6835dc348b474e3d9e82a8f41
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: eabb55956f97f40312c894ccabd7a341ecc5688c
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348819"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202007"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Základní hodnoty zabezpečení Azure pro Azure DevTest Labs
 
@@ -172,7 +172,7 @@ Kromě toho můžete použít doporučení z Azure Security Center nebo integrov
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: Používejte vícefaktorové ověřování pro veškerý přístup založený na Azure Active Directory
 **Doprovodné materiály:** Povolte Azure Active Directory (AD) Multi-Factor Authentication (MFA) a sledujte Azure Security Center doporučení pro správu identit a přístupu.
 
-- [Povolení vícefaktorového ověřování v Azure](../active-directory/authentication/howto-mfa-getstarted.md)  
+- [Jak povolit vícefaktorové ověřování v Azure](../active-directory/authentication/howto-mfa-getstarted.md)  
 - [Jak monitorovat identitu a přístup v rámci Azure Security Center](../security-center/security-center-identity-access.md)
 
 **Monitorování Azure Security Center:** _ Ano
@@ -183,8 +183,8 @@ _ *Zodpovědnost:** zákazník
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: Používejte vyhrazené počítače (privilegovaný přístup k pracovní stanici) pro všechny úlohy správy
 **Doprovodné materiály:** Použití pracovních stanic s privilegovaným přístupem (privilegovaným přístupem) s MFA nakonfigurovaným pro přihlášení a konfiguraci prostředků Azure.
 
-- [Další informace o pracovních stanicích s privilegovaným přístupem](/windows-server/identity/securing-privileged-access/privileged-access-workstations)  
-- [Povolení vícefaktorového ověřování v Azure](../active-directory/authentication/howto-mfa-getstarted.md)  
+- [Další informace o pracovních stanicích s privilegovaným přístupem](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)  
+- [Jak povolit vícefaktorové ověřování v Azure](../active-directory/authentication/howto-mfa-getstarted.md)  
 
 **Monitorování Azure Security Center:** NENÍ K DISPOZICI
 
@@ -212,7 +212,7 @@ _ *Zodpovědnost:** zákazník
 ### <a name="39-use-azure-active-directory"></a>3,9: použijte Azure Active Directory
 **Doprovodné materiály:** Jako centrální ověřování a systém autorizací použijte Azure Active Directory (Azure AD). Azure AD chrání data pomocí silného šifrování pro neaktivní a tranzitní data. Azure AD také nasolete, hodnoty hash a bezpečně ukládají přihlašovací údaje uživatele.
 
-- [Vytvoření a konfigurace instance Azure AD](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)  
+- [Jak vytvořit a nakonfigurovat instanci Azure AD](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)  
 
 **Monitorování Azure Security Center:** Momentálně není k dispozici
 
@@ -468,7 +468,7 @@ _ *Azure Security Center monitorování:** nelze použít
 
 K dotazování a zjišťování prostředků v rámci předplatných také použijte graf Azure Resource. Může pomáhat v prostředích s vysokým zabezpečením, jako jsou ty, které využívají účty úložiště.
 
-- [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
+- [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 - [Jak vytvářet dotazy pomocí Azure graphu](../governance/resource-graph/first-query-portal.md)
 
 **Monitorování Azure Security Center:** Nelze použít
@@ -516,7 +516,7 @@ Kromě použití Change Tracking ke sledování softwarových aplikací, adaptiv
 - Povolené typy prostředků
 
 Viz následující články: 
-- [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
+- [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 - [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](../governance/policy/samples/index.md)
 
 **Monitorování Azure Security Center:** Ano
@@ -652,7 +652,7 @@ Azure Marketplace image virtuálních počítačů publikované Microsoftem jsou
 ### <a name="77-deploy-system-configuration-management-tools"></a>7,7: nasazení nástrojů pro správu konfigurace systému
 **Doprovodné materiály:** Definování a implementace standardních konfigurací zabezpečení pro prostředky Azure pomocí Azure Policy. Pomocí aliasů Azure Policy můžete vytvářet vlastní zásady pro auditování nebo prosazování konfigurace sítě vašich prostředků Azure vytvořených v DevTest Labs. Můžete také využít integrované definice zásad související s vašimi konkrétními prostředky. Kromě toho můžete k nasazení změn konfigurace použít Azure Automation.
 
-- [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
+- [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 - [Jak používat aliasy](../governance/policy/concepts/definition-structure.md#aliases)
 
 **Monitorování Azure Security Center:** Nelze použít
@@ -711,7 +711,7 @@ Azure Marketplace image virtuálních počítačů publikované Microsoftem jsou
 **Zodpovědnost:** Zákazníka
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7,13: Eliminujte nezamýšlenou expozici přihlašovacích údajů
-**Doprovodné materiály:** Implementujte kontrolu přihlašovacích údajů pro identifikaci přihlašovacích údajů v rámci kódu. Skener přihlašovacích údajů taky bude povzbudit přesunutí zjištěných přihlašovacích údajů do bezpečnějších umístění, jako je Azure Key Vault.
+**Doprovodné materiály:** Implementujte kontrolu přihlašovacích údajů pro identifikaci přihlašovacích údajů v rámci kódu. Credential Scanner bude také pobízet k přesunutí odhalených přihlašovacích údajů do bezpečnějších umístění, jako je Azure Key Vault.
 
 - Jak nastavit skener přihlašovacích údajů
 
@@ -877,7 +877,7 @@ Monitorování Azure Security Center: * * * * nejde použít.
 
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11,1: proveďte pravidelné testování průniku vašich prostředků Azure a zajistěte nápravu všech důležitých zjištění zabezpečení do 60 dnů.
-**Doprovodné materiály:** Využijte pravidla zapojení Microsoftu, abyste zajistili, že testy průniku nejsou v rozporu s zásadami Microsoftu. Využijte strategii Microsoftu a provádění etického testování průniku a penetračního testování živých webů proti cloudové infrastruktuře, službám a aplikacím spravovaným Microsoftem.
+**Doprovodné materiály:** Využijte pravidla zapojení Microsoftu, abyste zajistili, že testy průniku nejsou v rozporu s zásadami Microsoftu. Využijte strategii Microsoftu a spuštění červeného týmu a testování průniku na živém webu na cloudové infrastruktuře, službách a aplikacích spravovaný Microsoftem.
 
 - [Pravidla testování průniku pro zapojení](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 - [Červený tým Microsoftu v cloudu](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)

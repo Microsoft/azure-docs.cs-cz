@@ -16,12 +16,12 @@ ms.date: 11/05/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: edace0298514d1fc3cfd3afcff73fa0d29e18f0c
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 73376994e01ed89891726a8f6e1b727f89dab2fb
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96858769"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201718"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Požadavky pro Azure AD Connect
 Tento článek popisuje požadavky a požadavky na hardware pro službu Azure Active Directory (Azure AD) Connect.
@@ -83,7 +83,7 @@ Doporučujeme, abyste Server Azure AD Connect, abyste snížili plochu pro útok
 - Postupujte podle pokynů uvedených v části [zabezpečení privilegovaného přístupu](/windows-server/identity/securing-privileged-access/securing-privileged-access). 
 - Zamítnout použití ověřování NTLM se serverem AADConnect Tady je několik způsobů, jak to provést: [omezení NTLM na serveru AADConnect](/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-outgoing-ntlm-traffic-to-remote-servers) a [omezení NTLM v doméně](/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-ntlm-authentication-in-this-domain) .
 - Zajistěte, aby měl každý počítač jedinečné heslo místního správce. Další informace najdete v tématu [řešení hesla místního správce (LAPS)](https://support.microsoft.com/help/3062591/microsoft-security-advisory-local-administrator-password-solution-laps) může konfigurovat jedinečná náhodná hesla na každé pracovní stanici a na serveru, kde jsou v ní chráněná seznamem ACL. Resetovat hesla těchto účtů místních správců můžou číst nebo žádat jenom oprávnění autorizovaní uživatelé. LAPS můžete získat pro použití na pracovních stanicích a serverech z [webu Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=46899). Další pokyny pro provoz prostředí s LAPS a privilegovaným přístupem (Privileged Access Workstations) najdete v [provozních standardech na základě principu čistého zdroje](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#operational-standards-based-on-clean-source-principle). 
-- Implementujte vyhrazené [pracovní stanice s privilegovaným přístupem](/windows-server/identity/securing-privileged-access/privileged-access-workstations) pro všechny pracovníky s privilegovaným přístupem k informačním systémům vaší organizace. 
+- Implementujte vyhrazené [pracovní stanice s privilegovaným přístupem](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/) pro všechny pracovníky s privilegovaným přístupem k informačním systémům vaší organizace. 
 - Pomocí těchto [dalších pokynů](/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface) můžete omezit plochu útoku prostředí Active Directory.
 
 
@@ -140,7 +140,7 @@ Doporučujeme, abyste Server Azure AD Connect, abyste snížili plochu pro útok
 Další informace najdete v tématu MSDN o [výchozím elementu proxy serveru](/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings).
 Další informace o potížích s připojením najdete v tématu [řešení problémů s připojením](tshoot-connect-connectivity.md).
 
-### <a name="other"></a>Ostatní
+### <a name="other"></a>Jiné
 Volitelné: k ověření synchronizace použijte účet testovacího uživatele.
 
 ## <a name="component-prerequisites"></a>Předpoklady součásti

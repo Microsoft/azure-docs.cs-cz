@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71d64552520db28b3fe38cc354a30ee5470ee091
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 97893dece068dfdde85159f734095401288231d2
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060713"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201344"
 ---
 # <a name="protecting-microsoft-365-from-on-premises-attacks"></a>Ochrana Microsoft 365 z místních útoků
 
@@ -131,7 +131,7 @@ Zřizování se týká vytváření uživatelských účtů a skupin v aplikací
 
    *  Omezte přístup hosta na skupiny procházení a další vlastnosti v adresáři. Pomocí nastavení externí spolupráce můžete omezit schopnost hosta číst skupiny, které nejsou členy. 
 
-    *   Zablokuje přístup k Azure Portal. Je možné provádět vzácná nezbytná výjimka.  Vytvořte zásady podmíněného přístupu, které zahrnují všechny hosty a externí uživatele, a pak [implementujte zásadu pro blokování přístupu](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management.md). 
+    *   Zablokuje přístup k Azure Portal. Je možné provádět vzácná nezbytná výjimka.  Vytvořte zásady podmíněného přístupu, které zahrnují všechny hosty a externí uživatele, a pak [implementujte zásadu pro blokování přístupu](/azure/role-based-access-control/conditional-access-azure-management). 
 
 * **Odpojené doménové struktury:** Použijte [zřizování cloudu Azure AD](../cloud-provisioning/what-is-cloud-provisioning.md). To vám umožní připojit se k odpojeným doménovým strukturám a eliminovat nutnost navázat připojení mezi doménovými strukturami nebo vztahy důvěryhodnosti, což může rozšířit dopad místního porušení. * 
  

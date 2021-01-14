@@ -13,12 +13,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 - devx-track-azurecli
-ms.openlocfilehash: 892dad3963e9da3560acc2c782c3d14db246ea78
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13130a7ea473b260ddc4f0ebca2ef5b496b34c66
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87500585"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202982"
 ---
 # <a name="tutorial-use-the-azure-cli-and-azure-portal-to-configure-iot-hub-message-routing"></a>Kurz: použití rozhraní příkazového řádku Azure a Azure Portal ke konfiguraci směrování zpráv IoT Hub
 
@@ -136,17 +136,17 @@ Nyní nastavte směrování pro účet úložiště. Přejděte do podokna Směr
 
 [!INCLUDE [iot-hub-include-blob-storage-format](../../includes/iot-hub-include-blob-storage-format.md)]
 
-1. V [Azure Portal](https://portal.azure.com)vyberte **skupiny prostředků**a pak vyberte skupinu prostředků. Tento kurz používá **ContosoResources**.
+1. V [Azure Portal](https://portal.azure.com)vyberte **skupiny prostředků** a pak vyberte skupinu prostředků. Tento kurz používá **ContosoResources**.
 
 2. V seznamu prostředků vyberte Centrum IoT. Tento kurz používá **ContosoTestHub**.
 
-3. Vyberte **směrování zpráv**. V podokně **směrování zpráv** vyberte +**Přidat**. V podokně **Přidat trasu** vyberte +**Přidat** vedle pole koncový bod, aby se zobrazily podporované koncové body, jak je znázorněno na následujícím obrázku:
+3. Vyberte **směrování zpráv**. V podokně **směrování zpráv** vyberte +**Přidat**. V podokně **Přidat trasu** vyberte +**přidat koncový bod** vedle pole koncový bod pro zobrazení podporovaných koncových bodů, jak je znázorněno na následujícím obrázku:
 
-   ![Zahájení přidávání koncového bodu pro trasu](./media/tutorial-routing/message-routing-add-a-route-w-storage-ep.png)
+   ![Zahájení přidávání koncového bodu pro trasu](./media/tutorial-routing/message-routing-add-a-route-with-storage-endpoint-ver2.png)
 
-4. Vyberte **Úložiště objektů blob**. Zobrazí se podokno **přidat koncový bod úložiště** .
+4. Vyberte **úložiště**. Zobrazí se podokno **přidat koncový bod úložiště** .
 
-   ![Přidání koncového bodu](./media/tutorial-routing/message-routing-add-storage-ep.png)
+   ![Přidání koncového bodu](./media/tutorial-routing/message-routing-add-storage-endpoint-ver2.png)
 
 5. Zadejte název koncového bodu. V tomto kurzu se používá **ContosoStorageEndpoint**.
 

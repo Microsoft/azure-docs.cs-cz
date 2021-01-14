@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 2cd4b26e81df8ce57a09b4cdddc923035a41308e
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 56a04a7f689846fc8688d9a3144882fff3a809ad
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352894"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201310"
 ---
 # <a name="azure-security-baseline-for-data-lake-analytics"></a>Základní hodnoty zabezpečení Azure pro Data Lake Analytics
 
@@ -42,7 +42,7 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 **Doprovodné** materiály: nepoužitelné; Azure Data Lake Analytics neběží ve virtuální síti a při použití federovaných dotazů nelze odchozí volání konfigurovat na směrování přes zákaznickou virtuální síť.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost**: netýká se
 
@@ -50,7 +50,7 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 **Doprovodné** materiály: nepoužitelné; Tento ovládací prvek je určený pro webové aplikace běžící na instancích Azure App Service nebo IaaS.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost**: netýká se
 
@@ -70,7 +70,7 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 **Doprovodné** materiály: nepoužitelné; Data Lake Analytics neběží uvnitř zákaznických virtuálních sítí a nemůže nahrávat protokoly toku sítě pomocí skupin zabezpečení sítě (skupin zabezpečení sítě).
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost**: netýká se
 
@@ -78,7 +78,7 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 **Doprovodné** materiály: nepoužitelné; Data Lake Analytics je nabídka PaaS, která neumožňuje nasazení do zákaznických sítí.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost**: netýká se
 
@@ -86,7 +86,7 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 **Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro webové aplikace běžící na Azure App Service nebo výpočetních prostředcích.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost**: netýká se
 
@@ -94,7 +94,7 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 **Doprovodné** materiály: nepoužitelné; Data Lake Analytics neběží uvnitř zákaznických virtuálních sítí a nemůže používat skupiny zabezpečení sítě (skupin zabezpečení sítě).
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost**: netýká se
 
@@ -102,7 +102,7 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 **Doprovodné** materiály: nepoužitelné; Data Lake Analytics neběží uvnitř zákaznických virtuálních sítí a nemůže používat skupiny zabezpečení sítě (skupin zabezpečení sítě).
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost**: netýká se
 
@@ -110,7 +110,7 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 **Doprovodné** materiály: nepoužitelné; Data Lake Analytics neběží uvnitř zákaznických virtuálních sítí a nemůže používat skupiny zabezpečení sítě (skupin zabezpečení sítě).
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost**: netýká se
 
@@ -118,7 +118,7 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 **Doprovodné** materiály: nepoužitelné; Data Lake Analytics neběží uvnitř zákaznických virtuálních sítí a nemůže používat skupiny zabezpečení sítě (skupin zabezpečení sítě).
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost**: netýká se
 
@@ -130,7 +130,7 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 **Doprovodné** materiály: nepoužitelné; Společnost Microsoft udržuje zdroj času pro Data Lake Analytics.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Zodpovědnost**: Microsoft
 
@@ -170,7 +170,7 @@ Případně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třet�
 
 **Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost**: netýká se
 
@@ -218,7 +218,7 @@ Případně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třet�
 
 **Doprovodné** materiály: nepoužitelné; Data Lake Analytics nezpracovává ani nevytváří protokoly související s malwarem.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost**: netýká se
 
@@ -226,7 +226,7 @@ Případně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třet�
 
 **Pokyny**: implementace řešení od jiného výrobce z Azure Marketplace pro řešení protokolování DNS podle potřeby vaší organizace.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost**: netýká se
 
@@ -234,7 +234,7 @@ Případně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třet�
 
 **Doprovodné** materiály: nepoužitelné; Tento ovládací prvek je určený pro výpočetní prostředky, ve kterých má zákazník přístup k základnímu operačnímu systému.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost**: netýká se
 
@@ -260,7 +260,7 @@ Případně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třet�
 
 * [Přehled Azure Data Lake Analytics](./data-lake-analytics-overview.md)
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -290,7 +290,7 @@ Můžete také povolit přístup za běhu pomocí Azure AD Privileged Identity M
 
 **Doprovodné** materiály: Povolte Azure Active Directory Multi-Factor Authentication (MFA) a sledujte Azure Security Center doporučení pro správu identit a přístupu, která vám pomůžou ochránit vaše data Lake Analytics prostředky.
 
-* [Povolení vícefaktorového ověřování v Azure](../active-directory/authentication/howto-mfa-getstarted.md)
+* [Jak povolit vícefaktorové ověřování v Azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
 * [Jak monitorovat identitu a přístup v rámci Azure Security Center](../security-center/security-center-identity-access.md)
 
@@ -302,7 +302,7 @@ Můžete také povolit přístup za běhu pomocí Azure AD Privileged Identity M
 
 **Pokyny**: Použijte zabezpečenou pracovní stanici spravovanou v Azure (také známou jako pracovní stanice s privilegovaným přístupem nebo privilegovaným přístupem) pro úlohy správy, které vyžadují zvýšená oprávnění.
 
-* [Pochopení zabezpečení pracovních stanic spravovaných Azure](../active-directory/devices/concept-azure-managed-workstation.md)
+* [Pochopení zabezpečení pracovních stanic spravovaných Azure](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 * [Jak povolit Azure AD MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -328,7 +328,7 @@ Můžete také povolit přístup za běhu pomocí Azure AD Privileged Identity M
 
 * [Jak nakonfigurovat pojmenovaná umístění služby Azure AD](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -336,7 +336,7 @@ Můžete také povolit přístup za běhu pomocí Azure AD Privileged Identity M
 
 **Pokyny**: jako centrální ověřování a systém autorizací použijte Azure Active Directory (Azure AD). Řízení přístupu na základě role v Azure (Azure RBAC) poskytuje jemně odstupňovanou kontrolu nad přístupem klienta k prostředkům Data Lake Analytics.
 
-* [Vytvoření a konfigurace instance Azure AD](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
+* [Jak vytvořit a nakonfigurovat instanci Azure AD](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -384,7 +384,7 @@ Můžete také povolit přístup za běhu pomocí Azure AD Privileged Identity M
 
 * [Podporované služby a scénáře ve všeobecné dostupnosti](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost**: netýká se
 
@@ -398,7 +398,7 @@ Můžete také povolit přístup za běhu pomocí Azure AD Privileged Identity M
 
 * [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -444,7 +444,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
-**Odpovědnost:** Sdílená
+**Odpovědnost:** Sdílené
 
 ### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4,5: k identifikaci citlivých dat použijte aktivní nástroj zjišťování.
 
@@ -470,7 +470,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 **Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost**: netýká se
 
@@ -482,7 +482,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
-**Odpovědnost:** Sdílená
+**Odpovědnost:** Sdílené
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: protokolovat a upozornit na změny kritických prostředků Azure
 
@@ -514,7 +514,7 @@ Microsoft provádí správu ohrožení zabezpečení v základních systémech, 
 
 **Doprovodné** materiály: nepoužitelné; Tento ovládací prvek je určený pro výpočetní prostředky.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost**: netýká se
 
@@ -522,7 +522,7 @@ Microsoft provádí správu ohrožení zabezpečení v základních systémech, 
 
 **Doprovodné** materiály: nepoužitelné; Tento ovládací prvek je určený pro výpočetní prostředky.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost**: netýká se
 
@@ -530,7 +530,7 @@ Microsoft provádí správu ohrožení zabezpečení v základních systémech, 
 
 **Doprovodné** materiály: nepoužitelné; Tento ovládací prvek je určený pro výpočetní prostředky.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost**: netýká se
 
@@ -540,7 +540,7 @@ Microsoft provádí správu ohrožení zabezpečení v základních systémech, 
 
 * [Publikování v NIST – běžný systém vyhodnocování ohrožení zabezpečení](https://www.nist.gov/publications/common-vulnerability-scoring-system)
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -554,7 +554,7 @@ Microsoft provádí správu ohrožení zabezpečení v základních systémech, 
 
 I když se v Azure Resource Graph Exploreru můžou zjistit klasické prostředky Azure, důrazně doporučujeme vytvářet a používat Azure Resource Manager prostředky.
 
-* [Jak vytvářet dotazy pomocí Průzkumníka Azure Resource graphu](../governance/resource-graph/first-query-portal.md)
+* [Jak vytvářet dotazy pomocí Průzkumníka Azure Resource Graphu](../governance/resource-graph/first-query-portal.md)
 
 * [Jak zobrazit vaše předplatná Azure](/powershell/module/az.accounts/get-azsubscription)
 
@@ -596,7 +596,7 @@ Kromě toho použijte Azure Policy k omezení typu prostředků, které se dají
 
 **Doprovodné** materiály: Vytvořte inventarizaci schválených prostředků Azure a schváleného softwaru pro výpočetní prostředky podle potřeb vaší organizace.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost**: netýká se
 
@@ -608,7 +608,7 @@ Kromě toho použijte Azure Policy k omezení typu prostředků, které se dají
 
 Kromě toho použijte Azure Resource Graph k dotazování nebo zjišťování prostředků v rámci předplatných.
 
-* [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
+* [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 * [Jak vytvářet dotazy pomocí Azure graphu](../governance/resource-graph/first-query-portal.md)
 
@@ -620,7 +620,7 @@ Kromě toho použijte Azure Resource Graph k dotazování nebo zjišťování pr
 
 **Doprovodné** materiály: nepoužitelné; Tento ovládací prvek je určený pro výpočetní prostředky.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost**: netýká se
 
@@ -628,7 +628,7 @@ Kromě toho použijte Azure Resource Graph k dotazování nebo zjišťování pr
 
 **Doprovodné** materiály: nepoužitelné; Tento ovládací prvek je určený pro výpočetní prostředky.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost**: netýká se
 
@@ -636,7 +636,7 @@ Kromě toho použijte Azure Resource Graph k dotazování nebo zjišťování pr
 
 **Doprovodné** materiály: nepoužitelné; Tento ovládací prvek je určený pro výpočetní prostředky.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost**: netýká se
 
@@ -646,7 +646,7 @@ Kromě toho použijte Azure Resource Graph k dotazování nebo zjišťování pr
 - Žádné povolené typy prostředků
 - Povolené typy prostředků
 
-* [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
+* [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 * [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](../governance/policy/samples/index.md)
 
@@ -658,7 +658,7 @@ Kromě toho použijte Azure Resource Graph k dotazování nebo zjišťování pr
 
 **Doprovodné** materiály: nepoužitelné; Tento ovládací prvek je určený pro výpočetní prostředky.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost**: netýká se
 
@@ -668,7 +668,7 @@ Kromě toho použijte Azure Resource Graph k dotazování nebo zjišťování pr
 
 * [Jak nakonfigurovat podmíněný přístup k blokování přístupu k ARM](../role-based-access-control/conditional-access-azure-management.md)
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -676,7 +676,7 @@ Kromě toho použijte Azure Resource Graph k dotazování nebo zjišťování pr
 
 **Doprovodné** materiály: nepoužitelné; Tento ovládací prvek je určený pro výpočetní prostředky.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost**: netýká se
 
@@ -684,7 +684,7 @@ Kromě toho použijte Azure Resource Graph k dotazování nebo zjišťování pr
 
 **Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro webové aplikace běžící na Azure App Service nebo výpočetních prostředcích.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost**: netýká se
 
@@ -699,7 +699,7 @@ Kromě toho použijte Azure Resource Graph k dotazování nebo zjišťování pr
 
 * [Jak zobrazit dostupné aliasy Azure Policy](/powershell/module/az.resources/get-azpolicyalias)
 
-* [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
+* [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -709,7 +709,7 @@ Kromě toho použijte Azure Resource Graph k dotazování nebo zjišťování pr
 
 **Doprovodné** materiály: nepoužitelné; Tento ovládací prvek je určený pro výpočetní prostředky.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost**: netýká se
 
@@ -717,7 +717,7 @@ Kromě toho použijte Azure Resource Graph k dotazování nebo zjišťování pr
 
 **Pokyny**: použijte zásady Azure [Deny] a [nasazení, pokud neexistuje], abyste vynutili zabezpečená nastavení napříč prostředky Azure.
 
-* [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
+* [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 * [Pochopení Azure Policych efektů](../governance/policy/concepts/effects.md)
 
@@ -729,7 +729,7 @@ Kromě toho použijte Azure Resource Graph k dotazování nebo zjišťování pr
 
 **Doprovodné** materiály: nepoužitelné; Tento ovládací prvek je určený pro výpočetní prostředky.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost**: netýká se
 
@@ -741,7 +741,7 @@ Kromě toho použijte Azure Resource Graph k dotazování nebo zjišťování pr
 
 * [O oprávněních a skupinách v Azure DevOps](/azure/devops/organizations/security/about-permissions)
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -749,7 +749,7 @@ Kromě toho použijte Azure Resource Graph k dotazování nebo zjišťování pr
 
 **Doprovodné** materiály: nepoužitelné; Tento ovládací prvek je určený pro výpočetní prostředky.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost**: netýká se
 
@@ -757,7 +757,7 @@ Kromě toho použijte Azure Resource Graph k dotazování nebo zjišťování pr
 
 **Doprovodné** materiály: nepoužitelné; Tento ovládací prvek je určený pro výpočetní prostředky.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost**: netýká se
 
@@ -765,7 +765,7 @@ Kromě toho použijte Azure Resource Graph k dotazování nebo zjišťování pr
 
 **Doprovodné** materiály: nepoužitelné; Tento ovládací prvek je určený pro výpočetní prostředky.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost**: netýká se
 
@@ -773,9 +773,9 @@ Kromě toho použijte Azure Resource Graph k dotazování nebo zjišťování pr
 
 **Pokyny**: pomocí aliasů Azure Policy v oboru názvů Microsoft. DataLakeAnalytics můžete vytvořit vlastní zásady pro upozornění, audit a prosazování konfigurace systému. Použijte zásady Azure [audit], [Deny] a [nasazení, pokud neexistuje] k automatickému vymáhání konfigurací pro prostředky Azure Data Lake Analytics.
 
-* [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
+* [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -783,7 +783,7 @@ Kromě toho použijte Azure Resource Graph k dotazování nebo zjišťování pr
 
 **Doprovodné** materiály: nepoužitelné; Tento ovládací prvek je určený pro výpočetní prostředky.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost**: netýká se
 
@@ -791,7 +791,7 @@ Kromě toho použijte Azure Resource Graph k dotazování nebo zjišťování pr
 
 **Doprovodné** materiály: nepoužitelné; Data Lake Analytics nevystavuje žádné tajné kódy, které zákazník potřebuje ke správě.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost**: netýká se
 
@@ -799,17 +799,17 @@ Kromě toho použijte Azure Resource Graph k dotazování nebo zjišťování pr
 
 **Doprovodné** materiály: nepoužitelné; Data Lake Analytics nepodporuje spravované identity Azure.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost**: netýká se
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7,13: Eliminujte nezamýšlenou expozici přihlašovacích údajů
 
-**Pokyny**: implementace skeneru přihlašovacích údajů pro identifikaci přihlašovacích údajů v rámci kódu. Skener přihlašovacích údajů taky bude povzbudit přesunutí zjištěných přihlašovacích údajů do bezpečnějších umístění, jako je Azure Key Vault.
+**Pokyny**: implementace skeneru přihlašovacích údajů pro identifikaci přihlašovacích údajů v rámci kódu. Credential Scanner bude také pobízet k přesunutí odhalených přihlašovacích údajů do bezpečnějších umístění, jako je Azure Key Vault.
 
 * [Jak nastavit skener přihlašovacích údajů](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -821,7 +821,7 @@ Kromě toho použijte Azure Resource Graph k dotazování nebo zjišťování pr
 
 **Doprovodné** materiály: nepoužitelné; Tento ovládací prvek je určený pro výpočetní prostředky.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost**: netýká se
 
@@ -831,7 +831,7 @@ Kromě toho použijte Azure Resource Graph k dotazování nebo zjišťování pr
 
 Předem prohledejte veškerý obsah, který se nahrává do prostředků Azure, jako jsou App Service, Data Lake Analytics Blob Storage atd. Společnost Microsoft nemá přístup k vašim datům v těchto instancích.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -839,7 +839,7 @@ Předem prohledejte veškerý obsah, který se nahrává do prostředků Azure, 
 
 **Doprovodné** materiály: nepoužitelné; Tento ovládací prvek je určený pro výpočetní prostředky.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost**: netýká se
 
@@ -857,7 +857,7 @@ Předem prohledejte veškerý obsah, který se nahrává do prostředků Azure, 
 
 * [Přehled Azure Automation](../automation/automation-intro.md)
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -869,7 +869,7 @@ Předem prohledejte veškerý obsah, který se nahrává do prostředků Azure, 
 
 * [Kopírování dat z objektů blob Azure Storage do Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md)
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -877,7 +877,7 @@ Předem prohledejte veškerý obsah, který se nahrává do prostředků Azure, 
 
 **Doprovodné** materiály: pravidelně provádějte obnovení dat zálohovaných dat, abyste otestovali integritu dat.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -889,7 +889,7 @@ Předem prohledejte veškerý obsah, který se nahrává do prostředků Azure, 
 
 * [Autorizace přístupu k datům v Azure Storage](../storage/common/storage-auth.md)
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -899,7 +899,7 @@ Předem prohledejte veškerý obsah, který se nahrává do prostředků Azure, 
 
 ### <a name="101-create-an-incident-response-guide"></a>10,1: Vytvoření Průvodce odpověďmi na incidenty
 
-**Pokyny**: Vytvoření Průvodce odpověďmi na incidenty pro vaši organizaci. Zajistěte, aby existovaly písemné plány odpovědí na incidenty, které definují všechny role pracovníků, a také fáze zpracování nebo správy incidentů z detekce až po přezkoumání po jednotlivých událostech.
+**Pokyny:** Sestavte pro vaši organizaci průvodce reakcemi na incidenty. Zajistěte, aby existovaly písemné plány reakcí na incidenty, které definují všechny role pracovníků, a také fáze zpracování nebo správy incidentů od jejich detekce až po přezkoumání po jejich ukončení.
 
 * [Pokyny k vytvoření vlastního procesu reakce na incidenty zabezpečení](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
@@ -907,7 +907,7 @@ Předem prohledejte veškerý obsah, který se nahrává do prostředků Azure, 
 
 * [Zákazník může také využít příručku pro zpracování incidentů zabezpečení počítače v NIST, aby mohl pomoci při vytváření vlastního plánu reakce na incidenty.](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -921,7 +921,7 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 
 * [Používání značek k uspořádání prostředků Azure](../azure-resource-manager/management/tag-resources.md)
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -931,7 +931,7 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 
 * [Publikování v NIST – průvodce pro testování, školení a cvičení programů pro plány a možnosti IT](https://csrc.nist.gov/publications/detail/sp/800-84/final)
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -941,7 +941,7 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 
 * [Jak nastavit kontakt zabezpečení Azure Security Center](../security-center/security-center-provide-security-contact-details.md)
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -953,7 +953,7 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 
 * [Streamování upozornění do služby Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -963,7 +963,7 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 
 * [Jak nakonfigurovat automatizaci pracovních postupů a Logic Apps](../security-center/workflow-automation.md)
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -973,17 +973,17 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11,1: proveďte pravidelné testování průniku vašich prostředků Azure a zajistěte nápravu všech kritických poznatků zabezpečení.
 
-**Doprovodné** materiály: postupujte podle pravidel pro testování průniku Microsoft Cloud, abyste zajistili, že testy průniku nejsou v rozporu s zásadami Microsoftu. Využijte strategii Microsoftu a provádění etického testování průniku a penetračního testování živých webů proti cloudové infrastruktuře, službám a aplikacím spravovaným Microsoftem.
+**Doprovodné** materiály: postupujte podle pravidel pro testování průniku Microsoft Cloud, abyste zajistili, že testy průniku nejsou v rozporu s zásadami Microsoftu. Využijte strategii Microsoftu a spuštění červeného týmu a testování průniku na živém webu na cloudové infrastruktuře, službách a aplikacích spravovaný Microsoftem.
 
-* [Pravidla penetračního testování](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
+* [Pravidla zapojení testování průniku](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
-* [Etické testování průniku do cloudu Microsoftu](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
+* [Červený tým cloudových služeb Microsoftu](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
-**Odpovědnost:** Sdílená
+**Odpovědnost:** Sdílené
 
 ## <a name="next-steps"></a>Další kroky
 
 - Zobrazit [Srovnávací test zabezpečení Azure](../security/benchmarks/overview.md)
-- Přečtěte si další informace o [standardních hodnotách zabezpečení Azure](../security/benchmarks/security-baselines-overview.md).
+- Další informace o [základních úrovních zabezpečení Azure](../security/benchmarks/security-baselines-overview.md)

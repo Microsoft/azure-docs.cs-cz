@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 05/30/2017
 ms.author: genli
-ms.openlocfilehash: 43e2f1c304a2ede10445fa656dbdd16a4b60ca3c
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 63c1e388ecd53d9b827e45a1fa78bdb6feeaab21
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978947"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201939"
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Řešení potíží s připojeními SSH k virtuálnímu počítači Azure s Linuxem, která selžou, skončí chybou nebo se zamítnou
 Tento článek vám pomůže najít a opravit problémy, ke kterým dochází kvůli chybám Secure Shell (SSH), chybám připojení SSH nebo SSH, pokud se pokusíte připojit k virtuálnímu počítači se systémem Linux (VM). K řešení potíží a řešení problémů s připojením můžete použít rozšíření Azure Portal, Azure CLI nebo rozhraní pro přístup k virtuálnímu počítači pro Linux.
@@ -277,9 +277,9 @@ Zkuste vyřešit nejběžnější chyby připojení SSH pro virtuální počíta
   * Vytvořte uživatelský účet *sudo* .
   * Resetovat konfiguraci SSH.
 * Projděte si stav prostředků virtuálního počítače pro všechny problémy s platformou.<br>
-     Vyberte svůj virtuální počítač a posuňte **Nastavení**a Projděte si  >  **stav**.
+     Vyberte svůj virtuální počítač a posuňte **Nastavení** a Projděte si  >  **stav**.
 
-## <a name="additional-resources"></a>Další zdroje informací
-* Pokud ke svému VIRTUÁLNÍmu počítači stále nemůžete přihlašovat přes následující postup, přečtěte si [podrobnější postup odstraňování potíží](detailed-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) a Projděte si další kroky k vyřešení vašeho problému.
+## <a name="additional-resources"></a>Další zdroje
+* Pokud ke svému VIRTUÁLNÍmu počítači stále nemůžete přihlašovat přes následující postup, přečtěte si [podrobnější postup odstraňování potíží](detailed-troubleshoot-ssh-connection.md) a Projděte si další kroky k vyřešení vašeho problému.
 * Další informace o řešení potíží s přístupem k aplikacím najdete v tématu [řešení potíží s přístupem k aplikaci spuštěné na virtuálním počítači Azure](./troubleshoot-app-connection.md?toc=/azure/virtual-machines/linux/toc.json) .
 * Další informace o řešení potíží s virtuálními počítači, které byly vytvořeny pomocí modelu nasazení Classic, najdete v tématu [Postup resetování hesla nebo SSH pro virtuální počítače](/previous-versions/azure/virtual-machines/linux/classic/reset-access-classic)se systémem Linux.

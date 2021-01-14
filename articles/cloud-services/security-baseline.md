@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 100871ab2188aa638c4c9f2b058021706c7741bb
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: e6a42a39e55e379865332fce8a9aed8dfe78f57b
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96531900"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201327"
 ---
 # <a name="azure-security-baseline-for-azure-cloud-services"></a>Základní hodnoty zabezpečení Azure pro Azure Cloud Services
 
@@ -345,7 +345,7 @@ Projděte si rozdíly mezi rolemi pro správu předplatného Classic.
 
 **Doprovodné** materiály: doporučujeme pro úlohy správy, které vyžadují zvýšená oprávnění, používat zabezpečenou pracovní stanici spravovanou Azure (známá taky jako pracovní stanice s privilegovaným přístupem).
 
-- [Pochopení zabezpečení pracovních stanic spravovaných Azure](../active-directory/devices/concept-azure-managed-workstation.md)
+- [Pochopení zabezpečení pracovních stanic spravovaných Azure](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [Jak povolit Azure AD MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 

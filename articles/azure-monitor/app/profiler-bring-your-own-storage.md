@@ -4,14 +4,14 @@ description: Konfigurace BYOS (Přineste si vlastní úložiště) pro Profiler 
 ms.topic: conceptual
 author: renatosalas
 ms.author: regutier
-ms.date: 04/14/2020
+ms.date: 01/14/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: 719f0cfa0a1f80568acf3231ce3ffab441e5f6b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f82432c1dd8c66e8ce845831ff35d534a34e3e04
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87117389"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202534"
 ---
 # <a name="configure-bring-your-own-storage-byos-for-application-insights-profiler-and-snapshot-debugger"></a>Konfigurace Přineste si vlastní úložiště (BYOS) pro Application Insights Profiler a Snapshot Debugger
 
@@ -53,11 +53,11 @@ Kroky:
 1. Hledat & vybrat aplikaci přístup k důvěryhodnému úložišti diagnostické služby 
 1. Uložit změny
 
-_ ![ Obrázek 1,0](media/profiler-bring-your-own-storage/figure-10.png)_ 
+_![ Obrázek 1,0](media/profiler-bring-your-own-storage/figure-10.png)_ 
  _Obrázek 1,0_ 
 
 Po přidání role se tato role zobrazí v části "přiřazení rolí", podobně jako na obrázku 1,1. 
-_ ![ Obrázek 1,1](media/profiler-bring-your-own-storage/figure-11.png)_ 
+_![ Obrázek 1,1](media/profiler-bring-your-own-storage/figure-11.png)_ 
  _Obrázek 1,1_ 
 
 Pokud používáte také privátní odkaz, je vyžadována jedna další konfigurace, která umožňuje připojení k důvěryhodné službě společnosti Microsoft z vašeho Virtual Network. Informace najdete v [dokumentaci zabezpečení sítě úložiště](../../storage/common/storage-network-security.md#trusted-microsoft-services).
@@ -91,7 +91,7 @@ Chcete-li nakonfigurovat BYOS pro diagnostiku na úrovni kódu (Profiler/ladicí
 
     Vzorku
     ```powershell
-    $appInsights = Get-AzApplicationInsights -ResourceGroupName "{resource_group_name}" -Name "{storage_account_name}"
+    $appInsights = Get-AzApplicationInsights -ResourceGroupName "{resource_group_name}" -Name "{application_insights_name}"
     Remove-AzApplicationInsightsLinkedStorageAccount -ResourceId $appInsights.Id
     ```
 
@@ -226,7 +226,7 @@ Chcete-li nakonfigurovat BYOS pro diagnostiku na úrovni kódu (Profiler/ladicí
     DeploymentDebugLogLevel :
     ```
 
-1. Povolte diagnostiku na úrovni kódu (Profiler/ladicí program) na úlohy, které vás zajímají, prostřednictvím Azure Portal. (App Service > Application Insights) _ ![ Obrázek 2,0](media/profiler-bring-your-own-storage/figure-20.png)_ 
+1. Povolte diagnostiku na úrovni kódu (Profiler/ladicí program) na úlohy, které vás zajímají, prostřednictvím Azure Portal. (App Service > Application Insights) _![ Obrázek 2,0](media/profiler-bring-your-own-storage/figure-20.png)_ 
  _Obrázek 2,0_
 
 ## <a name="troubleshooting"></a>Řešení potíží

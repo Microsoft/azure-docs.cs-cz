@@ -5,13 +5,14 @@ author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/26/2020
-ms.openlocfilehash: 730b634f23599c5eef8c4c6c988820ae5e4fa9c8
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.date: 01/13/2021
+ms.custom: references_regions
+ms.openlocfilehash: f4a97f5534e4fd3847bf1cce6874de0f006cce38
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94535108"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201004"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Repliky pro čtení ve službě Azure Database for MySQL
 
@@ -24,20 +25,21 @@ Další informace o funkcích a problémech replikace MySQL najdete v [dokumenta
 > [!NOTE]
 > Komunikace bez posunu
 >
-> Microsoft podporuje různé a zahrnuté prostředí. Tento článek obsahuje odkazy na _podřízený_ text. [Průvodce stylem Microsoft pro komunikaci bez předplatných](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) se tímto způsobem rozpoznává jako vyloučené slovo. Toto slovo se v tomto článku používá kvůli konzistenci, protože je aktuálně slovo, které se zobrazuje v softwaru. Když se software aktualizuje, aby se odebralo slovo, aktualizuje se tento článek na zarovnání.
+> Microsoft podporuje různé a zahrnuté prostředí. Tento článek obsahuje odkazy na _Hlavní_ a _podřízený_ text. [Průvodce stylem Microsoftu pro komunikaci bez předplatných](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) je rozpoznává jako vyloučená slova. Tato slova se v tomto článku používají kvůli konzistenci, protože jsou aktuálně slova, která se zobrazují v softwaru. Když se software aktualizuje, aby se odstranila slova, Tento článek se aktualizuje tak, aby se vyrovnává.
 >
 
 ## <a name="when-to-use-a-read-replica"></a>Kdy použít repliku čtení
 
-Funkce replika čtení pomáhá zlepšit výkon a škálu úloh náročných na čtení. Úlohy spočívající ve čtení je možné oddělit do replik a úlohy spočívající v zápisu budou směrované do hlavní databáze.
+Funkce replika čtení pomáhá zlepšit výkon a škálu úloh náročných na čtení. Úlohy čtení se dají pro repliky izolovat, zatímco úlohy zápisu můžou být směrované na zdroj.
 
 Běžným scénářem je, aby úlohy BI a analýzy používaly jako zdroj dat pro vytváření sestav repliku pro čtení.
 
-Vzhledem k tomu, že repliky jsou jen pro čtení, nesnižují přímo na hlavní úrovni zátěže s kapacitou pro zápis. Tato funkce není určená pro úlohy, které jsou náročné na zápis.
+Vzhledem k tomu, že repliky jsou jen pro čtení, nesnižují na zdroj přímo zátěž kapacity pro zápis. Tato funkce není určená pro úlohy, které jsou náročné na zápis.
 
-Funkce replika čtení používá asynchronní replikaci MySQL. Tato funkce není určena pro scénáře synchronní replikace. Mezi zdrojem a replikou bude měřitelná prodleva. Data v replice nakonec budou konzistentní s daty v hlavní databázi. Tato funkce se používá pro úlohy, které můžou toto zpoždění obsloužit.
+Funkce replika čtení používá asynchronní replikaci MySQL. Tato funkce není určena pro scénáře synchronní replikace. Mezi zdrojem a replikou bude měřitelná prodleva. Data v replice nakonec budou konzistentní s daty ve zdroji. Tato funkce se používá pro úlohy, které můžou toto zpoždění obsloužit.
 
 ## <a name="cross-region-replication"></a>Replikace mezi oblastmi
+
 Repliku pro čtení můžete vytvořit v jiné oblasti ze zdrojového serveru. Replikace mezi oblastmi může být užitečná pro scénáře, jako je plánování zotavení po havárii, nebo pro uživatele přiblížit data.
 
 Zdrojový server můžete mít v libovolné [Azure Database for MySQL oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=mysql).  Zdrojový server může mít repliku ve své spárované oblasti nebo oblastech univerzální repliky. Následující obrázek ukazuje, které oblasti repliky jsou k dispozici v závislosti na zdrojové oblasti.
@@ -45,20 +47,22 @@ Zdrojový server můžete mít v libovolné [Azure Database for MySQL oblasti](h
 [:::image type="content" source="media/concepts-read-replica/read-replica-regions.png" alt-text="Čtení oblastí repliky":::](media/concepts-read-replica/read-replica-regions.png#lightbox)
 
 ### <a name="universal-replica-regions"></a>Oblasti univerzální repliky
+
 Repliku pro čtení můžete vytvořit v některé z následujících oblastí bez ohledu na to, kde se nachází zdrojový server. Mezi podporované oblasti univerzální repliky patří:
 
 Austrálie – východ, Austrálie – jihovýchod, Brazílie – jih, Kanada – střed, Kanada – východ, Střed USA, Východní Asie, Východní USA, Východní USA 2, Japonsko – východ, Japonsko – západ, Jižní Korea, Korea – jih, střed USA – sever, Severní Evropa, střed USA – jih, jihovýchodní Asie, Velká Británie – jih, Velká Británie – západ, Západní Evropa, Západní USA, západní USA 2 a Středozápadní USA.
 
 ### <a name="paired-regions"></a>Spárované oblasti
+
 Kromě oblastí univerzální repliky můžete vytvořit repliku pro čtení v oblasti párování Azure na vašem zdrojovém serveru. Pokud neznáte pár vaší oblasti, můžete získat další informace v [článku spárované oblasti Azure](../best-practices-availability-paired-regions.md).
 
 Pokud používáte repliky mezi jednotlivými oblastmi pro plánování zotavení po havárii, doporučujeme vytvořit repliku v spárované oblasti namísto jedné z ostatních oblastí. Spárované oblasti zabraňují souběžným aktualizacím a přiřazují fyzickou izolaci a zasídlí dat.  
 
 Je však třeba vzít v úvahu omezení: 
 
-* Oblast dostupnosti: Azure Database for MySQL je k dispozici ve Francii – střed, Spojené arabské emiráty Severní a Německo – střed. Nicméně jejich spárované oblasti nejsou k dispozici.
-    
-* Jednosměrné páry: některé oblasti Azure jsou spárovány pouze v jednom směru. Mezi tyto oblasti patří Západní Indie, Brazílie – jih a US Gov – Virginie. 
+* Oblast dostupnosti: Azure Database for MySQL je k dispozici ve Francii – střed, Spojené arabské emiráty Severní a Německo – střed. Nicméně spárované oblasti nejsou k dispozici.
+
+* Jednosměrné páry: některé oblasti Azure jsou spárovány pouze v jednom směru. Mezi tyto oblasti patří Západní Indie, Brazílie – jih a US Gov – Virginie.
    To znamená, že zdrojový server v Západní Indie může vytvořit repliku v Jižní Indie. Zdrojový server v Jižní Indie ale nemůže vytvořit repliku v Západní Indie. Důvodem je to, že sekundární oblast Západní Indie je Jižní Indie, ale sekundární oblast Jižní Indie není Západní Indie.
 
 ## <a name="create-a-replica"></a>Vytvoření repliky
@@ -108,22 +112,22 @@ Přečtěte si, jak [zastavit replikaci do repliky](howto-read-replicas-portal.m
 
 ## <a name="failover"></a>Převzetí služeb při selhání
 
-Mezi zdrojovým serverem a serverem repliky neexistuje automatizované převzetí služeb při selhání. 
+Mezi zdrojovým serverem a serverem repliky nedochází k automatizovanému převzetí služeb při selhání.
 
-Vzhledem k tomu, že replikace je asynchronní, existuje prodleva mezi zdrojem a replikou. Velikost prodlevy může mít vliv na několik faktorů, jako je to, jak velké zatížení na zdrojovém serveru běží a latence mezi datovými centry. Ve většině případů je prodleva repliky v rozsahu od několika sekund do několika minut. Vlastní prodlevu replikace můžete sledovat pomocí *prodlevy repliky* metriky, která je k dispozici pro každou repliku. Tato metrika ukazuje čas od poslední opakované transakce. Doporučujeme, abyste zjistili, jaký je průměrný prodleva tím, že v časovém intervalu pozoruje prodlevu repliky. Můžete nastavit upozornění na prodlevu repliky, takže pokud bude mimo očekávaný rozsah, můžete provést akci.
+Vzhledem k tomu, že replikace je asynchronní, existuje prodleva mezi zdrojem a replikou. Velikost prodlevy může mít vliv na mnoho faktorů, jako je to, jak velké zatížení na zdrojovém serveru běží, a latence mezi datovými centry. Ve většině případů je prodleva repliky v rozsahu od několika sekund do několika minut. Vlastní prodlevu replikace můžete sledovat pomocí *prodlevy repliky* metriky, která je k dispozici pro každou repliku. Tato metrika ukazuje čas od poslední opakované transakce. Doporučujeme, abyste zjistili, jaký je průměrný prodleva tím, že v časovém intervalu pozoruje prodlevu repliky. Můžete nastavit upozornění na prodlevu repliky, takže pokud bude mimo očekávaný rozsah, můžete provést akci.
 
 > [!Tip]
 > Pokud převzetí služeb při selhání repliky přestanou, prodleva v době odpojování repliky ze zdroje bude označovat, kolik dat se ztratilo.
 
-Jakmile se rozhodnete, že chcete převzít služeb při selhání do repliky, 
+Až se rozhodnete, že chcete převzít služeb při selhání do repliky:
 
 1. Zastavení replikace do repliky<br/>
-   Tento krok je nezbytný k tomu, aby server repliky mohl přijímat zápisy. V rámci tohoto procesu se server repliky odpojí z hlavního serveru. Jakmile zahájíte zastavení replikace, proces back-endu obvykle trvá přibližně 2 minuty, než se dokončí. V části [zastavení replikace](#stop-replication) v tomto článku se seznámíte s důsledky této akce.
-    
+   Tento krok je nezbytný k tomu, aby server repliky mohl přijímat zápisy. V rámci tohoto procesu se server repliky odpojí ze zdroje. Po zahájení zastavení replikace bude proces back-endu obvykle trvat přibližně 2 minuty, než se dokončí. V části [zastavení replikace](#stop-replication) v tomto článku se seznámíte s důsledky této akce.
+
 2. Nasměrujte aplikaci na (bývalé) repliku.<br/>
-   Každý server má jedinečný připojovací řetězec. Aktualizujte svou aplikaci tak, aby odkazovala na (bývalé) repliku místo na hlavní.
-    
-Po úspěšném zpracování čtení a zápisu vaší aplikace jste dokončili převzetí služeb při selhání. Množství prostojů, na kterých bude prostředí aplikace záviset při zjištění problému a dokončení kroků 1 a 2 výše.
+   Každý server má jedinečný připojovací řetězec. Aktualizujte svou aplikaci tak, aby odkazovala na (bývalé) repliku místo zdroje.
+
+Po úspěšném zpracování čtení a zápisu vaší aplikace jste dokončili převzetí služeb při selhání. Množství prostojů, na kterých bude prostředí aplikace záviset při zjištění problému a dokončení kroků 1 a 2 uvedených výše.
 
 ## <a name="global-transaction-identifier-gtid"></a>Identifikátor globální transakce (GTID)
 
@@ -139,7 +143,7 @@ Pro konfiguraci GTID jsou k dispozici následující parametry serveru:
 |`enforce_gtid_consistency`|Vyhodnotí konzistenci GTID tím, že umožňuje provádění pouze těch příkazů, které mohou být zaprotokolovány prostřednictvím bezpečnostních opatření. Aby bylo možné `ON` Povolit replikaci GTID, musí být tato hodnota nastavená na hodnotu. |`OFF`|`OFF`: Všechny transakce můžou porušovat GTID konzistenci.  <br> `ON`: Žádná transakce nemůže narušovat GTID konzistenci. <br> `WARN`: Všechny transakce můžou porušovat konzistenci GTID, ale vygeneruje se upozornění. | 
 
 > [!NOTE]
-> Jakmile je GTID povolené, nejde ho znovu zapnout. Pokud potřebujete GTID vypnout, obraťte se prosím na podporu. 
+> Po povolení GTID ho nelze znovu zapnout. Pokud potřebujete GTID vypnout, obraťte se prosím na podporu. 
 
 Pokud chcete povolit GTID a nakonfigurovat chování konzistence, aktualizujte `gtid_mode` `enforce_gtid_consistency` parametry serveru a pomocí [Azure Portal](howto-server-parameters.md), [Azure CLI](howto-configure-server-parameters-using-cli.md)nebo [PowerShellu](howto-configure-server-parameters-using-powershell.md).
 
@@ -164,10 +168,10 @@ Replika pro čtení je vytvořená jako nový server Azure Database for MySQL. E
 
 ### <a name="replica-configuration"></a>Konfigurace repliky
 
-Replika je vytvořena pomocí stejné konfigurace serveru jako hlavní. Po vytvoření repliky se dá změnit několik nastavení nezávisle na zdrojovém serveru: generování výpočetních prostředků, virtuální jádra, úložiště a doba uchovávání záloh. Cenová úroveň se dá změnit také nezávisle, s výjimkou nebo z úrovně Basic.
+Replika je vytvořena pomocí stejné konfigurace serveru jako zdroj. Po vytvoření repliky se dá změnit několik nastavení nezávisle na zdrojovém serveru: generování výpočetních prostředků, virtuální jádra, úložiště a doba uchovávání záloh. Cenová úroveň se dá změnit také nezávisle, s výjimkou nebo z úrovně Basic.
 
 > [!IMPORTANT]
-> Před aktualizací konfigurace zdrojového serveru na nové hodnoty aktualizujte konfiguraci repliky na stejné nebo vyšší hodnoty. Tato akce zajistí, že replika bude moct udržovat krok se všemi změnami na hlavním serveru.
+> Před aktualizací konfigurace zdrojového serveru na nové hodnoty aktualizujte konfiguraci repliky na stejné nebo vyšší hodnoty. Tato akce zajistí, že replika bude moct udržovat krok se všemi změnami na zdrojovém serveru.
 
 Pravidla brány firewall a nastavení parametrů se při vytvoření repliky dědí ze zdrojového serveru do repliky. Pak jsou pravidla repliky nezávislá.
 
@@ -188,31 +192,33 @@ Uživatelé na zdrojovém serveru se replikují do replik pro čtení. K replice
 Aby se při použití replik pro čtení zabránilo přerušení synchronizace dat a možné ztrátě nebo poškození dat, některé parametry serveru neumožňují aktualizaci.
 
 Následující parametry serveru jsou uzamčené na zdrojovém serveru i na serverech repliky:
-- [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/8.0/en/innodb-file-per-table-tablespaces.html) 
-- [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators)
 
-[`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler)Parametr je uzamčen na serverech repliky. 
+* [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/8.0/en/innodb-file-per-table-tablespaces.html) 
+* [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators)
 
-Pokud chcete na zdrojovém serveru aktualizovat jeden z výše uvedených parametrů, odstraňte prosím servery repliky, aktualizujte hodnotu parametru v hlavní větvi a znovu vytvořte repliky.
+[`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler)Parametr je uzamčen na serverech repliky.
+
+Pokud chcete na zdrojovém serveru aktualizovat jeden z výše uvedených parametrů, odstraňte servery repliky, aktualizujte hodnotu parametru ve zdroji a znovu vytvořte repliky.
 
 ### <a name="gtid"></a>GTID
 
 GTID se podporuje na:
-- MySQL verze 5,7 a 8,0 
-- Servery, které podporují úložiště až na 16 TB. Úplný seznam oblastí, které podporují 16 TB úložiště, najdete v článku o [cenové úrovni](concepts-pricing-tiers.md#storage) . 
 
-GTID je ve výchozím nastavení VYPNUTá. Jakmile je GTID povolené, nejde ho znovu zapnout. Pokud potřebujete GTID vypnout, obraťte se prosím na podporu. 
+* Verze MySQL 5,7 a 8,0.
+* Servery, které podporují úložiště až na 16 TB. Úplný seznam oblastí, které podporují 16 TB úložiště, najdete v článku o [cenové úrovni](concepts-pricing-tiers.md#storage) .
+
+GTID je ve výchozím nastavení VYPNUTá. Po povolení GTID ho nemůžete znovu zapnout. Pokud potřebujete GTID vypnout, obraťte se na podporu.
 
 Pokud je na zdrojovém serveru povolená možnost GTID, budou mít nově vytvořené repliky taky povolený GTID a budou používat replikaci GTID. Pokud chcete zachovat konzistenci replikace, nemůžete aktualizovat `gtid_mode` na zdrojovém nebo replikačním serveru.
 
-### <a name="other"></a>Další
+### <a name="other"></a>Jiné
 
-- Vytvoření repliky repliky není podporováno.
-- Tabulky v paměti můžou způsobit, že se repliky nesynchronizují. Toto je omezení technologie replikace MySQL. Další informace najdete v [referenční dokumentaci k MySQL](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html) .
-- Zajistěte, aby tabulky zdrojového serveru měly primární klíče. Nedostatek primárních klíčů může způsobit latenci replikace mezi zdrojem a replikami.
-- Úplný seznam omezení replikace MySQL najdete v [dokumentaci k MySQL](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html) .
+* Vytvoření repliky repliky se nepodporuje.
+* Tabulky v paměti můžou způsobit, že se repliky nesynchronizují. Toto je omezení technologie replikace MySQL. Další informace najdete v [referenční dokumentaci k MySQL](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html) .
+* Zajistěte, aby tabulky zdrojového serveru měly primární klíče. Nedostatek primárních klíčů může způsobit latenci replikace mezi zdrojem a replikami.
+* Úplný seznam omezení replikace MySQL najdete v [dokumentaci k MySQL](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html) .
 
 ## <a name="next-steps"></a>Další kroky
 
-- Naučte se [vytvářet a spravovat repliky pro čtení pomocí Azure Portal](howto-read-replicas-portal.md)
-- Naučte se [vytvářet a spravovat repliky pro čtení pomocí Azure CLI a REST API](howto-read-replicas-cli.md)
+* Naučte se [vytvářet a spravovat repliky pro čtení pomocí Azure Portal](howto-read-replicas-portal.md)
+* Naučte se [vytvářet a spravovat repliky pro čtení pomocí Azure CLI a REST API](howto-read-replicas-cli.md)

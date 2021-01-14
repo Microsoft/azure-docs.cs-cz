@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 2be48025bcf2be8cec63e2a251f034e72c803e88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cefe427a7a6f7a46c838147f3d699423c9f19c7b
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87289660"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201888"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>Vytvoření virtuálního počítače ze spravované image
 
@@ -29,7 +29,7 @@ Jedna spravovaná bitová kopie podporuje až 20 současných nasazení. Při po
 4. V nabídce vyberte **vytvořit virtuální počítač** .
 5. Zadejte informace o virtuálním počítači. Uživatelské jméno a heslo, které tady zadáte, se použije k přihlášení k virtuálnímu počítači. Po dokončení vyberte **OK**. Nový virtuální počítač můžete vytvořit v existující skupině prostředků, nebo výběrem možnosti **vytvořit novou** vytvořte novou skupinu prostředků pro uložení virtuálního počítače.
 6. Vyberte velikost virtuálního počítače. Pokud chcete zobrazit další velikosti, vyberte **Zobrazit vše** nebo změnit filtr **podporovaného typu disku** . 
-7. V části **Nastavení**podle potřeby proveďte změny a vyberte **OK**. 
+7. V části **Nastavení** podle potřeby proveďte změny a vyberte **OK**. 
 8. Na stránce Souhrn byste měli vidět název Image uvedený jako **privátní obrázek**. Výběrem **OK** spusťte nasazení virtuálního počítače.
 
 
@@ -41,7 +41,7 @@ PowerShell můžete použít k vytvoření virtuálního počítače z Image pom
 
 Zjednodušená sada parametrů pro [New-AzVm](/powershell/module/az.compute/new-azvm) vyžaduje, abyste zadali název, skupinu prostředků a název Image k vytvoření virtuálního počítače z image. New-AzVm použije hodnotu parametru **-Name** jako název všech prostředků, které automaticky vytvoří. V tomto příkladu poskytujeme podrobnější názvy pro každý z těchto prostředků, ale nechat rutinu je automaticky vytvořit. Můžete také vytvořit prostředky předem, například virtuální síť, a předat název prostředku do rutiny. New-AzVm použijí existující prostředky, pokud je nalezne podle jména.
 
-Následující příklad vytvoří virtuální počítač s názvem *myVMFromImage*ve skupině prostředků *myResourceGroup* z image s názvem *myImage*. 
+Následující příklad vytvoří virtuální počítač s názvem *myVMFromImage* ve skupině prostředků *myResourceGroup* z image s názvem *myImage*. 
 
 
 ```azurepowershell-interactive
@@ -60,4 +60,4 @@ New-AzVm `
 
 
 ## <a name="next-steps"></a>Další kroky
-[Vytvoření a správa virtuálních počítačů s Windows pomocí modulu Azure PowerShell](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+[Vytvoření a správa virtuálních počítačů s Windows pomocí modulu Azure PowerShell](tutorial-manage-vm.md)

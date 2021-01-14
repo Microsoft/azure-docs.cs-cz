@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 9e5f7d4e3c358c05713301ac1b1b896062f12bee
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 8c0fbc2c7830961ca8820e874daaffcf0c58faab
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914752"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202109"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-machines"></a>Základní hodnoty zabezpečení Azure pro Windows Virtual Machines
 
@@ -392,7 +392,7 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM tře
 
 **Doprovodné** materiály: použití privilegovaným přístupem (privilegovaných pracovních stanic) s MFA nakonfigurovaným pro přihlášení a konfiguraci prostředků Azure.
 
-* [Další informace o pracovních stanicích s privilegovaným přístupem](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [Další informace o pracovních stanicích s privilegovaným přístupem](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 * [Jak povolit vícefaktorové ověřování v Azure](../../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -596,7 +596,7 @@ Microsoft používá protokol TLS (Transport Layer Security) k ochraně dat při
 
 * [Vytvoření upozornění pro události protokolu aktivit Azure](../../azure-monitor/platform/alerts-activity-log.md)
 
-* [Protokolování Analýzy úložiště Azure](../../storage/common/storage-analytics-logging.md)
+* [Protokolování analýz služby Azure Storage](../../storage/common/storage-analytics-logging.md)
 
 **Monitorování Azure Security Center**: není k dispozici.
 

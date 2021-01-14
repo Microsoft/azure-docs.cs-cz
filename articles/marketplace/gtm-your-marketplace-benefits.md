@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 01/13/2021
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: 263c038cf5003d950cf500ccc13cf562ac71db0c
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 8843bc803cdad07d8b66f9aeb87688c816158200
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/14/2021
-ms.locfileid: "98184993"
+ms.locfileid: "98202266"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Výhody vašeho komerčního tržiště
 
@@ -65,7 +65,7 @@ Pokud publikujete zkušební nebo konzultační kontrolu konceptu, implementace 
 
 Následující tabulka shrnuje požadavky na způsobilost pro seznamy, zkušební verze a konzultační nabídky:
 
-![Výhody pro uvedení na trh](./media/marketplace-publishers-guide/gtm-eligibility-requirements.png)
+![Výhody pro uvedení na trh](./media/marketplace-publishers-guide/go-to-market-gtm-eligibility-requirements.png)
 
 Podrobné popisy všech těchto výhod najdete na [webu Marketplace](https://aka.ms/marketplacerewards)– výhody programu.
 
