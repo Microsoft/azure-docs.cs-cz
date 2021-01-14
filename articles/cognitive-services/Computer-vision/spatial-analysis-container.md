@@ -8,23 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 11/06/2020
+ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: f41e513ee0f2755c446a9cb95465c1f636fe5a7a
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: bb40586a93a40c2aaa3f0f884a0e747f168c324b
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97606262"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186050"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>Instalace a spuštění kontejneru prostorové analýzy (Preview)
 
 Kontejner prostorových analýz vám umožňuje analyzovat streamování videa v reálném čase, abyste pochopili prostorové vztahy mezi lidmi, jejich pohybem a interakcemi s objekty ve fyzických prostředích. Kontejnery jsou skvělé pro splnění určitých požadavků na zabezpečení a zásady správného řízení dat.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
-* Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" vytvořte prostředek počítačové zpracování obrazu vytvoření prostředku "  target="_blank"> Počítačové zpracování obrazu <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
+* Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" vytvořte prostředek počítačové zpracování obrazu vytvoření prostředku "  target="_blank"> počítačové zpracování obrazu <span class="docon docon-navigate-external x-hidden-focus"></span> </a> pro úroveň Standard S1 v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
     * Ke spuštění kontejneru prostorové analýzy budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Svůj klíč a koncový bod budete používat později.
 
 
@@ -61,6 +61,9 @@ V tomto článku budete stahovat a instalovat následující softwarové balíč
 * [Docker CE](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-engine---community-1) a [NVIDIA – Docker2](https://github.com/NVIDIA/nvidia-docker) 
 * [Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md) runtime.
 
+#### <a name="azure-vm-with-gpu"></a>[Virtuální počítač Azure s grafickým procesorem](#tab/virtual-machine)
+V našem příkladu budeme používat [virtuální počítač řady NC](https://docs.microsoft.com/azure/virtual-machines/nc-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) , který má jeden grafický procesor K80.
+
 ---
 
 | Požadavek | Popis |
@@ -85,7 +88,7 @@ Pokud vaše předplatné Azure neschválíte, nebudete moct kontejner spustit.
 
 ## <a name="set-up-the-host-computer"></a>Nastavení hostitelského počítače
 
-Doporučuje se pro hostitelský počítač použít Azure Stack hraniční zařízení. Pokud konfigurujete jiné zařízení, klikněte na **desktopový počítač** .
+Doporučuje se pro hostitelský počítač použít Azure Stack hraniční zařízení. Pokud konfigurujete jiné zařízení nebo **virtuální počítač** , pokud používáte virtuální počítač, klikněte na **desktopový počítač** .
 
 #### <a name="azure-stack-edge-device"></a>[Azure Stack hraniční zařízení](#tab/azure-stack-edge)
 
@@ -178,7 +181,7 @@ Restartujte počítač a spusťte následující příkaz.
 nvidia-smi
 ```
 
-Měli byste vidět následující výstup.
+Měl by se zobrazit následující výstup.
 
 ![Výstup ovladače NVIDIA](media/spatial-analysis/nvidia-driver-output.png)
 
@@ -252,13 +255,13 @@ Pomocí rozhraní příkazového řádku Azure vytvořte instanci služby Azure 
 
 ```bash
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
-az login
-az account set --subscription <name or ID of Azure Subscription>
-az group create --name "test-resource-group" --location "WestUS"
+sudo az login
+sudo az account set --subscription <name or ID of Azure Subscription>
+sudo az group create --name "test-resource-group" --location "WestUS"
 
-az iot hub create --name "test-iot-hub-123" --sku S1 --resource-group "test-resource-group"
+sudo az iot hub create --name "test-iot-hub-123" --sku S1 --resource-group "test-resource-group"
 
-az iot hub device-identity create --hub-name "test-iot-hub-123" --device-id "my-edge-device" --edge-enabled
+sudo az iot hub device-identity create --hub-name "test-iot-hub-123" --device-id "my-edge-device" --edge-enabled
 ```
 
 Pokud hostitelský počítač není Azure Stack hraniční zařízení, bude nutné nainstalovat [Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md) verze 1.0.9. Chcete-li stáhnout správnou verzi, postupujte podle následujících kroků:
@@ -297,7 +300,7 @@ V dalším kroku Zaregistrujte hostitelský počítač jako zařízení IoT Edge
 Zařízení IoT Edge musíte připojit k Azure IoT Hub. Je nutné zkopírovat připojovací řetězec z IoT Edge zařízení, které jste vytvořili dříve. Případně můžete spustit níže uvedený příkaz v rozhraní příkazového řádku Azure CLI.
 
 ```bash
-az iot hub device-identity show-connection-string --device-id my-edge-device --hub-name test-iot-hub-123
+sudo az iot hub device-identity show-connection-string --device-id my-edge-device --hub-name test-iot-hub-123
 ```
 
 V hostitelském počítači otevřeném  `/etc/iotedge/config.yaml` pro úpravy. Nahraďte `ADD DEVICE CONNECTION STRING HERE` připojovacím řetězcem. Uložte soubor a zavřete ho. Spuštěním tohoto příkazu restartujte službu IoT Edge v hostitelském počítači.
@@ -306,15 +309,100 @@ V hostitelském počítači otevřeném  `/etc/iotedge/config.yaml` pro úpravy.
 sudo systemctl restart iotedge
 ```
 
-Nasaďte kontejner prostorových analýz jako modul IoT na hostitelském počítači, a to buď z [Azure Portal](../../iot-edge/how-to-deploy-modules-portal.md) nebo prostřednictvím rozhraní příkazového [řádku Azure](../../iot-edge/how-to-deploy-modules-cli.md). Pokud používáte portál, nastavte identifikátor URI image na umístění vašeho Azure Container Registry. 
+Nasaďte kontejner prostorových analýz jako modul IoT na hostitelském počítači, a to buď z [Azure Portal](../../iot-edge/how-to-deploy-modules-portal.md) nebo prostřednictvím rozhraní příkazového [řádku Azure](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli?tabs=windows). Pokud používáte portál, nastavte identifikátor URI image na umístění vašeho Azure Container Registry. 
 
 Pomocí následujících kroků nasaďte kontejner pomocí Azure CLI.
+
+#### <a name="azure-vm-with-gpu"></a>[Virtuální počítač Azure s grafickým procesorem](#tab/virtual-machine)
+
+Virtuální počítač Azure s grafickým procesorem (GPU) se dá použít taky ke spouštění prostorových analýz. Níže uvedený příklad použije virtuální počítač [řady NC](https://docs.microsoft.com/azure/virtual-machines/nc-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) , který má jeden grafický procesor K80.
+
+#### <a name="create-the-vm"></a>Vytvoření virtuálního počítače
+
+Otevřete Průvodce [vytvořením virtuálního počítače](https://ms.portal.azure.com/#create/Microsoft.VirtualMachine) v Azure Portal.
+
+Zadejte název virtuálního počítače a vyberte oblast, která se má (US) Západní USA 2. Nezapomeňte nastavit `Availability Options` na "bez nutnosti redundance infrastruktury". Úplnou konfiguraci a další krok pro vyhledání správné velikosti virtuálního počítače najdete na obrázku níže. 
+
+:::image type="content" source="media/spatial-analysis/virtual-machine-instance-details.png" alt-text="Podrobnosti o konfiguraci virtuálního počítače." lightbox="media/spatial-analysis/virtual-machine-instance-details.png":::
+
+Velikost virtuálního počítače vyhledáte tak, že vyberete "Zobrazit všechny velikosti" a pak zobrazíte seznam pro velikosti virtuálních počítačů, které nejsou Premium Storage, zobrazené níže.
+
+:::image type="content" source="media/spatial-analysis/virtual-machine-sizes.png" alt-text="Velikosti virtuálních počítačů." lightbox="media/spatial-analysis/virtual-machine-sizes.png":::
+
+Pak vyberte buď **NC6** , nebo **NC6_Promo**.
+
+:::image type="content" source="media/spatial-analysis/promotional-selection.png" alt-text="propagační výběr" lightbox="media/spatial-analysis/promotional-selection.png":::
+
+Pak vytvořte virtuální počítač. Po vytvoření přejděte k prostředku virtuálního počítače v Azure Portal a vyberte `Extensions` v levém podokně. Zobrazí se okno rozšíření se všemi dostupnými rozšířeními. Vyberte `NVIDIA GPU Driver Extension` , klikněte na vytvořit a dokončete průvodce.
+
+Po úspěšném použití rozšíření přejděte na hlavní stránku virtuálního počítače v Azure Portal a klikněte na `Connect` . K virtuálnímu počítači se dá přistup přes SSH nebo RDP. Protokol RDP bude užitečný, protože bude umožňovat zobrazení okna Vizualizér (vysvětlení později). Pomocí následujících [kroků](https://docs.microsoft.com/azure/virtual-machines/linux/use-remote-desktop) NAKONFIGURUJTE přístup RDP a otevřete připojení ke vzdálené ploše virtuálního počítače.
+
+### <a name="verify-graphics-drivers-are-installed"></a>Ověření instalace grafických ovladačů
+
+Spusťte následující příkaz a ověřte, zda byly ovladače grafiky úspěšně nainstalovány. 
+
+```bash
+nvidia-smi
+```
+
+Měl by se zobrazit následující výstup.
+
+![Výstup ovladače NVIDIA](media/spatial-analysis/nvidia-driver-output.png)
+
+### <a name="install-docker-ce-and-nvidia-docker2-on-the-vm"></a>Instalace Docker CE a NVIDIA-docker2 na virtuálním počítači
+
+Spusťte následující příkazy po jednom, abyste mohli na virtuální počítač nainstalovat Docker CE a NVIDIA-docker2.
+
+V hostitelském počítači nainstalujte Docker CE.
+
+```bash
+sudo apt-get update
+```
+```bash
+sudo apt-get install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+```
+```bash
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+```
+```bash
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+```
+```bash
+sudo apt-get update
+```
+```bash
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io
+```
+
+
+Nainstalujte balíček softwaru *NVIDIA-Docker-2* .
+
+```bash
+distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
+```
+```bash
+curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
+```
+```bash
+curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+```
+```bash
+sudo apt-get update
+```
+```bash
+sudo apt-get install -y docker-ce nvidia-docker2
+```
+```bash
+sudo systemctl restart docker
+```
+
+Teď, když jste nastavili a nakonfigurovali svůj virtuální počítač, použijte následující postup k nasazení kontejneru prostorové analýzy. 
 
 ---
 
 ### <a name="iot-deployment-manifest"></a>Manifest nasazení IoT
 
-Chcete-li zjednodušit nasazování kontejnerů na více hostitelských počítačích, můžete vytvořit soubor manifestu nasazení a zadat možnosti vytvoření kontejneru a proměnné prostředí. Můžete najít příklad manifestu nasazení [pro Azure Stack Edge](https://go.microsoft.com/fwlink/?linkid=2142179) a  [Další stolní počítače](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) na GitHubu.
+Chcete-li zjednodušit nasazování kontejnerů na více hostitelských počítačích, můžete vytvořit soubor manifestu nasazení a zadat možnosti vytvoření kontejneru a proměnné prostředí. Příklad manifestu nasazení [pro Azure Stack Edge](https://go.microsoft.com/fwlink/?linkid=2142179), [dalších stolních počítačích](https://go.microsoft.com/fwlink/?linkid=2152270)a [virtuálního počítače Azure s grafickým procesorem](https://go.microsoft.com/fwlink/?linkid=2152189) na GitHubu najdete zde.
 
 V následující tabulce jsou uvedeny různé proměnné prostředí používané modulem IoT Edge. Můžete je také nastavit v manifestu nasazení výše, pomocí `env` atributu v `spatialanalysis` :
 
@@ -326,21 +414,24 @@ V následující tabulce jsou uvedeny různé proměnné prostředí používan�
 | ARCHON_NODES_LOG_LEVEL | Příjemce Podrobné | Úroveň protokolování, vyberte jednu ze dvou hodnot.|
 | OMP_WAIT_POLICY | PASIVNÍ | Neupravovat|
 | QT_X11_NO_MITSHM | 1 | Neupravovat|
-| API_KEY | váš klíč rozhraní API| Tuto hodnotu z prostředku Počítačové zpracování obrazu Shromážděte z Azure Portal. Můžete ji najít v části **klíč a koncový bod** pro váš prostředek. |
-| BILLING_ENDPOINT | identifikátor URI koncového bodu| Tuto hodnotu z prostředku Počítačové zpracování obrazu Shromážděte z Azure Portal. Můžete ji najít v části **klíč a koncový bod** pro váš prostředek.|
+| APIKEY | váš klíč rozhraní API| Tuto hodnotu z prostředku Počítačové zpracování obrazu Shromážděte z Azure Portal. Můžete ji najít v části **klíč a koncový bod** pro váš prostředek. |
+| FAKTURACE | identifikátor URI koncového bodu| Tuto hodnotu z prostředku Počítačové zpracování obrazu Shromážděte z Azure Portal. Můžete ji najít v části **klíč a koncový bod** pro váš prostředek.|
 | KONKRÉTNÍ | vyjádřit | Tato hodnota musí být nastavena na hodnotu *přijmout* , aby bylo možné kontejner spustit. |
 | Otevřete | : 1 | Tato hodnota musí být stejná jako výstup `echo $DISPLAY` na hostitelském počítači. Hraniční zařízení Azure Stack neobsahují displej. Toto nastavení se nedá použít.|
-
+| ARCHON_GRAPH_READY_TIMEOUT | 600 | Tuto proměnnou prostředí přidejte, pokud vaše GPU **nemá** T4 nebo NVIDIA 2080 ti.|
+| ORT_TENSORRT_ENGINE_CACHE_ENABLE | 0 | Tuto proměnnou prostředí přidejte, pokud vaše GPU **nemá** T4 nebo NVIDIA 2080 ti.|
+| KEY_ENV | Šifrovací klíč pomocného mechanismu | Přidejte tuto proměnnou prostředí, pokud Video_URL je nejasný řetězec. |
+| IV_ENV | Inicializační vektor | Přidejte tuto proměnnou prostředí, pokud Video_URL je nejasný řetězec.|
 
 > [!IMPORTANT]
 > `Eula` `Billing` `ApiKey` Aby bylo možné spustit kontejner, musí být zadány možnosti, a. v opačném případě se kontejner nespustí.  Další informace najdete v tématu [fakturace](#billing).
 
-Jakmile aktualizujete manifest nasazení pro [Azure Stack hraničních zařízení](https://go.microsoft.com/fwlink/?linkid=2142179) nebo [stolní počítač](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) s vlastním nastavením a výběrem operací, můžete použít následující příkaz rozhraní příkazového [řádku Azure CLI](../../iot-edge/how-to-deploy-modules-cli.md) k nasazení kontejneru v hostitelském počítači, jako modul IoT Edge.
+Když aktualizujete manifest nasazení pro [Azure Stack hraniční zařízení](https://go.microsoft.com/fwlink/?linkid=2142179), [stolní počítač](https://go.microsoft.com/fwlink/?linkid=2152270) nebo [virtuální počítač Azure s grafickým procesorem](https://go.microsoft.com/fwlink/?linkid=2152189) s vlastním nastavením a výběrem operací, můžete k nasazení kontejneru v hostitelském počítači, jako je IoT Edge modul, použít následující příkaz [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli?tabs=windows) .
 
 ```azurecli
-az login
-az extension add --name azure-iot
-az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge device name>" --content DeploymentManifest.json --subscription "<subscriptionId>"
+sudo az login
+sudo az extension add --name azure-iot
+sudo az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge device name>" --content DeploymentManifest.json --subscription "<subscriptionId>"
 ```
 
 |Parametr  |Popis  |
@@ -366,7 +457,7 @@ K nakonfigurování kontejneru pro použití připojených fotoaparátů, konfig
 
 ## <a name="redeploy-or-delete-the-deployment"></a>Opětovné nasazení nebo odstranění nasazení
 
-Pokud potřebujete nasazení aktualizovat, musíte se ujistit, že jsou předchozí nasazení úspěšně nasazená, nebo potřebujete odstranit nasazení IoT Edge zařízení, která nebyla dokončena. V opačném případě budou tato nasazení pokračovat a systém zůstane v nesprávném stavu. Můžete použít Azure Portal nebo rozhraní příkazového [řádku Azure CLI](/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment).
+Pokud potřebujete nasazení aktualizovat, musíte se ujistit, že jsou předchozí nasazení úspěšně nasazená, nebo potřebujete odstranit nasazení IoT Edge zařízení, která nebyla dokončena. V opačném případě budou tato nasazení pokračovat a systém zůstane v nesprávném stavu. Můžete použít Azure Portal nebo rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli?tabs=windows).
 
 ## <a name="use-the-output-generated-by-the-container"></a>Použít výstup generovaný kontejnerem
 
@@ -385,25 +476,25 @@ Přejděte do části **Container** a buď vytvořte nový kontejner, nebo použ
 
 Klikněte na **vygenerovat token SAS a adresu URL** a zkopírujte adresu URL SAS objektu BLOB. Nahraďte začínající `https` `http` a otestujte adresu URL v prohlížeči, který podporuje přehrávání videa.
 
-Nahraďte `VIDEO_URL` v manifestu nasazení pro vaše [Azure Stack hraniční zařízení](https://go.microsoft.com/fwlink/?linkid=2142179) nebo jiný [stolní počítač](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) s adresou URL, kterou jste vytvořili, pro všechny grafy. Nastavte `VIDEO_IS_LIVE` na `false` a znovu nasaďte kontejner prostorové analýzy s aktualizovaným manifestem. Viz následující příklad.
+Nahraďte `VIDEO_URL` v manifestu nasazení pro vaše [Azure Stack hraniční zařízení](https://go.microsoft.com/fwlink/?linkid=2142179), [stolní počítač](https://go.microsoft.com/fwlink/?linkid=2152270)nebo [virtuální počítač Azure pomocí GPU](https://go.microsoft.com/fwlink/?linkid=2152189) s adresou URL, kterou jste vytvořili, pro všechny grafy. Nastavte `VIDEO_IS_LIVE` na `false` a znovu nasaďte kontejner prostorové analýzy s aktualizovaným manifestem. Viz následující příklad.
 
 Modul pro prostorové analýzy začne spotřebovávat videosoubor a bude se nepřetržitě automaticky přehrávat také.
 
 
 ```json
 "zonecrossing": {
-  "operationId" : "cognitiveservices.vision.spatialanalysis-personcrossingpolygon",
-  "version": 1,
-  "enabled": true,
-  "parameters": {
-      "VIDEO_URL": "Replace http url here",
-      "VIDEO_SOURCE_ID": "personcountgraph",
-      "VIDEO_IS_LIVE": false,
-        "VIDEO_DECODE_GPU_INDEX": 0,
-      "DETECTOR_NODE_CONFIG": "{ \"gpu_index\": 0 }",
-      "SPACEANALYTICS_CONFIG": "{\"zones\":[{\"name\":\"queue\",\"polygon\":[[0.3,0.3],[0.3,0.9],[0.6,0.9],[0.6,0.3],[0.3,0.3]], \"threshold\":35.0}]}"
+    "operationId" : "cognitiveservices.vision.spatialanalysis-personcrossingpolygon",
+    "version": 1,
+    "enabled": true,
+    "parameters": {
+        "VIDEO_URL": "Replace http url here",
+        "VIDEO_SOURCE_ID": "personcountgraph",
+        "VIDEO_IS_LIVE": false,
+      "VIDEO_DECODE_GPU_INDEX": 0,
+        "DETECTOR_NODE_CONFIG": "{ \"gpu_index\": 0, \"do_calibration\": true }",
+        "SPACEANALYTICS_CONFIG": "{\"zones\":[{\"name\":\"queue\",\"polygon\":[[0.3,0.3],[0.3,0.9],[0.6,0.9],[0.6,0.3],[0.3,0.3]], \"events\": [{\"type\": \"zonecrossing\", \"config\": {\"threshold\": 16.0, \"focus\": \"footprint\"}}]}]}"
     }
-  },
+   },
 
 ```
 

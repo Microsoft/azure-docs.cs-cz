@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 09/11/2020
+ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 8e951e6cb18596b19f49bf42179297f656e3fa5f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 849afe54125588cb7664ee221e4f229e83be8f96
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91304286"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185474"
 ---
 # <a name="camera-placement-guide"></a>Průvodce umístěním kamery
 
@@ -52,7 +52,7 @@ Následující ilustrace znázorňuje zobrazení zvýšení úrovně pro směr p
 
 ## <a name="camera-height"></a>Výška kamery
 
-Obvykle by fotoaparáty měly být připojeny 12-14 metrů od země. Při plánování připojení kamery v tomto rozsahu zvažte překážku (například: odložení, odblokování, zavěšení a displeje), které by mohly ovlivnit zobrazení kamery, a pak podle potřeby upravte výšku.
+Obvykle by fotoaparáty měly být připojeny 12-14 metrů od země. V případě detekce masky obličeje doporučujeme, aby kamery byly připojeny 8-12 metrů od země. Při plánování připojení kamery v tomto rozsahu zvažte překážku (například: odložení, odblokování, zavěšení a displeje), které by mohly ovlivnit zobrazení kamery, a pak podle potřeby upravte výšku.
 
 ## <a name="camera-to-focal-point-distance"></a>Vzdálenost mezi fotoaparátem a ohniskem
 
@@ -68,7 +68,7 @@ Z výše uvedeného vypadá takto:
 
 ![Způsob měření vzdálenosti mezi kamerami a ohnisky](./media/spatial-analysis/camera-focal-point-above.png)
 
-Pomocí následující tabulky můžete určit vzdálenost kamery od ohniskového bodu na základě konkrétních výšek připojení. Tyto vzdálenosti jsou pro optimální umístění. Všimněte si, že tabulka poskytuje pokyny pod doporučením 12 – 14, protože některé stropy můžou výšku omezit.
+Pomocí následující tabulky můžete určit vzdálenost kamery od ohniskového bodu na základě konkrétních výšek připojení. Tyto vzdálenosti jsou pro optimální umístění. Všimněte si, že tabulka poskytuje pokyny pod doporučením 12 – 14, protože některé stropy můžou výšku omezit. Pro detekci štítku obličeje je doporučená vzdálenost mezi okamžikem a ohniskem (min/max) 4 – 10 pro výškou kamery od 8 do 12.
 
 | Výška kamery | Vzdálenost mezi fotoaparátem a ohniskem (min/max) |  
 | ------------- | ---------------------------------------- |  
@@ -91,7 +91,7 @@ V této části jsou popsány přijatelné rozsahy připojení úhlu kamery. Tyt
 
 ### <a name="line-configuration"></a>Konfigurace řádku
 
-V následující tabulce jsou uvedena doporučení pro kamery nakonfigurované pro operaci **cognitiveservices Account. Vision. spatialanalysis-personcrossingline** . 
+V následující tabulce jsou uvedena doporučení pro kamery nakonfigurované pro operaci **cognitiveservices Account. Vision. spatialanalysis-personcrossingline** . V případě detekce masky obličeje je hodnota +/-30 stupňů optimálním úhlem připojení kamery pro výškou kamery od 8 do 12.
 
 | Výška kamery | Vzdálenost mezi fotoaparátem a ohniskem | Optimální úhel připevnění kamery (min/max) |  
 | ------------- | ------------------------------ | ------------------------------------------ |  
@@ -127,7 +127,7 @@ Následující ilustrace poskytuje simulace pro zobrazení levé a pravé kamery
 
 #### <a name="queues"></a>Fronty
 
-**Cognitiveservices Account. Vision. spatialanalysis-personcount**, **cognitiveservices Account. Vision. spatialanalysis-persondistance**a **cognitiveservices Account. Vision. spatialanalysis-personcrossingpolygon** se dají použít k monitorování front. Aby se zajistila kvalita dat ve frontě, je vhodnější odstranit rušivé bariéry pásů, aby se minimalizoval překrytí lidí ve frontě a zajistila se konzistence umístění front v průběhu času.
+**Cognitiveservices Account. Vision. spatialanalysis-personcount**, **cognitiveservices Account. Vision. spatialanalysis-persondistance** a **cognitiveservices Account. Vision. spatialanalysis-personcrossingpolygon** se dají použít k monitorování front. Aby se zajistila kvalita dat ve frontě, je vhodnější odstranit rušivé bariéry pásů, aby se minimalizoval překrytí lidí ve frontě a zajistila se konzistence umístění front v průběhu času.
 
 ![Odvolatelné fronty pásů](./media/spatial-analysis/retractable-belt-queue.png)
 

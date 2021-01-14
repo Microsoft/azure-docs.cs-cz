@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 11/19/2020
 ms.author: alkohli
-ms.openlocfilehash: db97a34a79ac45525177a79a59a17426003aeab0
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: aad6a3ef754b5ba2c65a9b93fbdfcfdc26348487
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302628"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186154"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Kurz: Objednání Azure Data Boxu
 
@@ -57,7 +57,7 @@ Než začnete, ujistěte se, že:
 
 * Nainstalujte [Azure CLI](/cli/azure/install-azure-cli) verze 2.0.67 nebo novější. Případně můžete [nainstalovat pomocí MSI](https://aka.ms/installazurecliwindows).
 
-**Přihlaste se k Azure**
+**Přihlášení k Azure**
 
 Otevřete okno příkazového řádku Windows PowerShellu a přihlaste se k Azure pomocí příkazu [AZ Login](/cli/azure/reference-index#az-login) :
 

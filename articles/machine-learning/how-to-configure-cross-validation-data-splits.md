@@ -1,7 +1,7 @@
 ---
-title: Konfigurace křížového ověřování a rozdělení dat při experimentech automatizovaného strojového učení
+title: Rozdělení dat a křížové ověřování v automatizovaném strojovém učení
 titleSuffix: Azure Machine Learning
-description: Přečtěte si, jak nakonfigurovat křížové ověřování a rozdělení datových sad pro automatizované experimenty strojového učení.
+description: Naučte se konfigurovat rozdělení datových sad a křížové ověřování pro automatizované experimenty strojového učení.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,20 +11,20 @@ ms.author: cesardl
 author: CESARDELATORRE
 ms.reviewer: nibaccam
 ms.date: 06/16/2020
-ms.openlocfilehash: c29c8ab31507c0ec904a7534e50ef6523e1aab96
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 2e26bfa484d573c0158e518b31087fb10bdcdfb9
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360101"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185678"
 ---
 # <a name="configure-data-splits-and-cross-validation-in-automated-machine-learning"></a>Konfigurace dělení dat a křížového ověřování v rámci automatizovaného strojového učení
 
-V tomto článku se dozvíte, jaké jsou různé možnosti konfigurace rozdělených a ověřovacích dat a křížového ověřování pro automatizované Machine Learning, AutoML a experimenty.
+V tomto článku se dozvíte, jaké jsou různé možnosti konfigurace rozdělených a ověřovacích dat a křížového ověřování pro automatizované Machine Learning, automatizované ML a experimenty.
 
-Když v Azure Machine Learning k sestavování více modelů ML použijete AutoML, musí každý podřízený běh ověřit související model výpočtem metrik kvality pro daný model, jako je přesnost nebo AUC vážená. Tyto metriky se vypočtou porovnáním předpovědi vytvořených s každým modelem a skutečnými popisky z minulých pozorování v datech ověřování. 
+Při použití automatizovaného ML v Azure Machine Learning k sestavení více modelů ML musí každý podřízený běh ověřit související model výpočtem metrik kvality pro daný model, jako je přesnost nebo AUC vážená. Tyto metriky se vypočtou porovnáním předpovědi vytvořených s každým modelem a skutečnými popisky z minulých pozorování v datech ověřování. 
 
-AutoML experimenty provádí ověření modelu automaticky. Následující části popisují, jak můžete upravit nastavení ověřování pomocí [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py). 
+Automatizované experimenty ML provádí ověření modelu automaticky. Následující části popisují, jak můžete upravit nastavení ověřování pomocí [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py). 
 
 Informace o prostředí s nízkým kódováním nebo bez kódu najdete [v tématu Vytvoření automatizovaných experimentů strojového učení v Azure Machine Learning Studiu](how-to-use-automated-ml-for-ml-models.md). 
 
@@ -39,15 +39,15 @@ Pro tento článek potřebujete,
 
 * Seznamte se s nastavením automatizovaného experimentu strojového učení s Azure Machine Learning SDK. Pokud si chcete prohlédnout základní modely návrhu experimentů pro strojové učení, postupujte podle [kurzu](tutorial-auto-train-models.md) nebo [postupu](how-to-configure-auto-train.md) .
 
-* Porozumění datům pro křížové ověřování a analýzu/ověření se rozdělí jako koncepty. Vysvětlení vysoké úrovně
+* Porozumění datům vlaků a ověření a vzájemnému ověřování jako konceptů strojového učení. Vysvětlení vysoké úrovně
 
     * [O výukových, ověřovacích a testovacích sadách v Machine Learning](https://towardsdatascience.com/train-validation-and-test-sets-72cb40cba9e7)
 
-    * [Porozumění vzájemnému ověřování](https://towardsdatascience.com/understanding-cross-validation-419dbd47e9bd)
+    * [Vysvětlení vzájemného ověřování ve strojovém učení](https://towardsdatascience.com/understanding-cross-validation-419dbd47e9bd)
 
-## <a name="default--data-splits-and-cross-validation"></a>Výchozí rozdělená a křížová ověřování dat
+## <a name="default-data-splits-and-cross-validation"></a>Výchozí rozdělená a křížová ověřování dat
 
-Pomocí objektu [AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py) definujte nastavení experimentů a školení. V následujícím fragmentu kódu si všimněte, že jsou definovány pouze požadované parametry, které jsou parametry pro `n_cross_validation` nebo nejsou `validation_ data` zahrnuty **not** .
+Pomocí objektu [AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py) definujte nastavení experimentů a školení. V následujícím fragmentu kódu si všimněte, že jsou definovány pouze požadované parametry, které jsou parametry pro `n_cross_validation` nebo nejsou `validation_ data` zahrnuty  .
 
 ```python
 data = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/creditcard.csv"
@@ -67,7 +67,7 @@ Pokud explicitně neurčíte `validation_data` `n_cross_validation` parametr neb
 |&nbsp;Velikost dat &nbsp; školení| Technika ověřování |
 |---|-----|
 |**Větší &nbsp; než &nbsp; 20 000 &nbsp; řádků**| Je použito rozdělení dat pro vlak nebo ověření. Ve výchozím nastavení se jako sada ověření provede 10% počáteční sady dat školení. Pak se tato sada ověření používá pro výpočet metrik.
-|**Menší &nbsp; než &nbsp; 20 000 &nbsp; řádků**| Je použit přístup pro křížové ověřování. Výchozí počet skládání závisí na počtu řádků. <br> **Pokud je datová sada menší než 1 000 řádků** , použije se 10 skládání. <br> **Pokud jsou řádky mezi 1 000 a 20 000** , budou použity tři skládání.
+|**Menší &nbsp; než &nbsp; 20 000 &nbsp; řádků**| Je použit přístup pro křížové ověřování. Výchozí počet skládání závisí na počtu řádků. <br> **Pokud je datová sada menší než 1 000 řádků**, použije se 10 skládání. <br> **Pokud jsou řádky mezi 1 000 a 20 000**, budou použity tři skládání.
 
 ## <a name="provide-validation-data"></a>Zadat ověřovací data
 
@@ -93,7 +93,7 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
 
 ## <a name="provide-validation-set-size"></a>Zadat velikost sady ověření
 
-V tomto případě je pro experiment k dispozici pouze jedna datová sada. To znamená, že `validation_data` parametr není **not** zadán a poskytnutá datová sada je přiřazena k `training_data` parametru.  V `AutoMLConfig` objektu můžete nastavit `validation_size` parametr tak, aby obsahoval část školicích dat k ověření. To znamená, že sada ověření bude rozdělena podle AutoML z počátečního `training_data` poskytnutého. Tato hodnota by měla být v rozmezí od 0,0 do 1,0 (například 0,2 znamená, že se pro data ověření uchovávají 20% dat).
+V tomto případě je pro experiment k dispozici pouze jedna datová sada. To znamená, že `validation_data` parametr není  zadán a poskytnutá datová sada je přiřazena k `training_data` parametru.  V `AutoMLConfig` objektu můžete nastavit `validation_size` parametr tak, aby obsahoval část školicích dat k ověření. To znamená, že sada ověření bude rozdělena podle AutoML z počátečního `training_data` poskytnutého. Tato hodnota by měla být v rozmezí od 0,0 do 1,0 (například 0,2 znamená, že se pro data ověření uchovávají 20% dat).
 
 Podívejte se na následující příklad kódu:
 
@@ -117,7 +117,7 @@ Chcete-li provést křížové ověření, zahrňte `n_cross_validations` parame
 
 V následujícím kódu jsou definovány pět skládání pro křížové ověřování. Proto pět různých školení, každé školení pomocí 4/5 dat a každé ověření s použitím 1/5 dat s různými položením pokaždé.
 
-V důsledku toho se metriky počítají s průměrem 5 metrik ověřování.
+V důsledku toho se metriky počítají s průměrem pěti metrik ověřování.
 
 ```python
 data = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/creditcard.csv"

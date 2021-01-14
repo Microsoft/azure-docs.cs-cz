@@ -9,12 +9,12 @@ ms.author: mlearned
 description: Připojení clusteru Kubernetes s povoleným ARC Azure pomocí ARC Azure
 keywords: Kubernetes, oblouk, Azure, K8s, Containers
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 8155ed709045626dee44fb499304ff5244a61b54
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 131ec014c9ac016a682bc4928f74910a3405a5da
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060244"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186001"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Připojení clusteru Kubernetes s podporou služby Azure Arc (Preview)
 
@@ -35,19 +35,19 @@ Ověřte, že máte připravené tyto požadavky:
   
   Nainstalujte `connectedk8s` rozšíření, které vám pomůže připojit clustery Kubernetes do Azure:
   
-  ```console
+  ```azurecli
   az extension add --name connectedk8s
   ```
   
   Nainstalovat `k8sconfiguration` rozšíření:
   
-  ```console
+  ```azurecli
   az extension add --name k8sconfiguration
   ```
   
   Pokud chcete tato rozšíření později aktualizovat, spusťte následující příkazy:
   
-  ```console
+  ```azurecli
   az extension update --name connectedk8s
   az extension update --name k8sconfiguration
   ```
@@ -64,7 +64,7 @@ Agenti Azure ARC vyžadují, aby následující protokoly/porty/odchozí adresy 
 * TCP na portu 443 – > `https://:443`
 * TCP na portu 9418 – > `git://:9418`
 
-| Koncový bod (DNS)                                                                                               | Popis                                                                                                                 |
+| Koncový bod (DNS)                                                                                               | Description                                                                                                                 |
 | ------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
 | `https://management.azure.com`                                                                                 | Vyžaduje se, aby se agent připojil k Azure a zaregistroval cluster.                                                        |
 | `https://eastus.dp.kubernetesconfiguration.azure.com`, `https://westeurope.dp.kubernetesconfiguration.azure.com` | Koncový bod roviny dat pro agenta, aby načetl stav a načetl informace o konfiguraci                                      |

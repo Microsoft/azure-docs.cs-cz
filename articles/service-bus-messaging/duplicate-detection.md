@@ -2,32 +2,37 @@
 title: Zjišťování duplicitních zpráv Azure Service Bus | Microsoft Docs
 description: Tento článek vysvětluje, jak můžete zjišťovat duplicity v Azure Service Busch zprávách. Duplicitní zprávu lze ignorovat a vyřadit.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: dbca1b4b4f894d35835e7d37e0b4e742a2d3b917
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/13/2021
+ms.openlocfilehash: 29972f756c66f524cc2e4684fcb7afd1ca628820
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87083884"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184675"
 ---
 # <a name="duplicate-detection"></a>Vyhledávání duplicit
 
 Pokud dojde k selhání aplikace z důvodu závažné chyby hned po odeslání zprávy a opětovná instance aplikace se omylem domnívá, že předchozí doručení zprávy neproběhlo, pak následné odeslání způsobí, že se stejná zpráva zobrazí v systému dvakrát.
 
-Je také možné, že došlo k chybě na úrovni klienta nebo sítě a odeslání zprávy do fronty se zaznamená potvrzením, že se potvrzení neúspěšně vrátilo klientovi. Tento scénář opouští klientovi pochybnosti o výsledku operace odeslání.
+Je také možné, že došlo k chybě na úrovni klienta nebo sítě a odeslání zprávy do fronty se zařadí do fronty s potvrzením, které se neúspěšně vrátilo klientovi. Tento scénář opouští klientovi pochybnosti o výsledku operace odeslání.
 
 Zjišťování duplicitních hodnot trvá z těchto případů pochybnostm, protože umožňuje odesílateli znovu odeslat stejnou zprávu a fronta nebo téma zahodí jakékoli duplicitní kopie.
 
+## <a name="how-it-works"></a>Jak to funguje? 
 Povolení Detekce duplicitních dat pomáhá sledovat, které zprávy *MessageID* řízené aplikací všech zpráv odeslaných do fronty nebo tématu během zadaného časového období. Pokud se pošle nějaká nová zpráva s parametrem *MessageID* zaznamenaným během časového intervalu, zpráva se nahlásí jako přijatá (operace odeslání se zdaří), ale nově odeslaná zpráva se okamžitě ignoruje a vynechá. Neberou v úvahu žádné jiné části jiné zprávy, než je *MessageID* .
 
 Řízení aplikací identifikátoru je zásadní, protože pouze to umožňuje aplikaci spojit rozhraní *MessageID* s kontextem obchodního procesu, ze kterého může být v případě chyby předvídatelné rekonstruována.
 
 Pro obchodní proces, ve kterém se v průběhu zpracování určitého kontextu aplikace odesílají různé zprávy, může být parametr *MessageID* složený z identifikátoru kontextu na úrovni aplikace, jako je číslo nákupní objednávky a předmět zprávy, například **12345.2017/platba**.
 
-Parametr *MessageID* může mít vždy nějaký identifikátor GUID, ale ukotvení identifikátoru k obchodnímu procesu vede k předvídatelnému opakování, což je žádoucí pro efektivní využití funkce zjišťování duplicitních hodnot.
+Parametr *MessageID* může mít vždy nějaký identifikátor GUID, ale ukotvení identifikátoru k obchodnímu procesu vede k předvídatelnému opakování, což je žádoucí pro efektivní použití funkce zjišťování duplicitních hodnot.
 
-> [!NOTE]
-> Pokud je povolená detekce duplicit a ID relace nebo klíč oddílu nejsou nastavené, použije se jako klíč oddílu ID zprávy. Pokud není ID zprávy také nastaveno, knihovny .NET a AMQP automaticky vygenerují ID zprávy pro zprávu. Další informace najdete v tématu [použití klíčů oddílů](service-bus-partitioning.md#use-of-partition-keys).
+> [!IMPORTANT]
+>- Pokud je **povoleno** **dělení na oddíly** , `MessageId+PartitionKey` slouží k určení jedinečnosti. Pokud jsou povoleny relace, klíč oddílu a ID relace musí být stejné. 
+>- Pokud je **rozdělení na oddíly** **zakázáno** (výchozí nastavení), `MessageId` slouží pouze k určení jedinečnosti.
+>- Informace o identifikátorech SessionId, PartitionKey a MessageId najdete v tématu [použití klíčů oddílů](service-bus-partitioning.md#use-of-partition-keys).
+>- [Úroveň Premier](service-bus-premium-messaging.md) nepodporuje dělení na oddíly, proto doporučujeme, abyste ve svých aplikacích používali jedinečná ID zpráv a nespoléhá se na klíče oddílů pro detekci duplicitních dat. 
+
 
 ## <a name="enable-duplicate-detection"></a>Povolit detekci duplicit
 

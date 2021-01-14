@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 8ae5bcf103bbb2d2b952fa647ba591e49002f2ff
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 51c22346ee89150194fb1dc83752e2ba2a2e0cf0
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921610"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185440"
 ---
 # <a name="basic-concepts"></a>Základní koncepty
 
@@ -38,11 +38,16 @@ Azure Attestation poskytuje v každé oblasti výchozího zprostředkovatele. Z�
 
 | Oblast | Identifikátor URI ověření | 
 |--|--|
+| East US | `https://sharedeus.eus.attest.azure.net` | 
+| USA – západ | `https://sharedwus.wus.attest.azure.net` | 
 | Spojené království – jih | `https://shareduks.uks.attest.azure.net` | 
+| Spojené království – západ| `https://sharedukw.ukw.attest.azure.net  ` | 
+| Kanada – východ | `https://sharedcae.cae.attest.azure.net` | 
+| Střední Kanada | `https://sharedcac.cac.attest.azure.net` | 
+| Severní Evropa | `https://sharedneu.neu.attest.azure.net` | 
+| West Europe| `https://sharedweu.weu.attest.azure.net` | 
 | USA – východ 2 | `https://sharedeus2.eus2.attest.azure.net` | 
 | Střední USA | `https://sharedcus.cus.attest.azure.net` | 
-| East US| `https://sharedeus.eus.attest.azure.net` | 
-| Střední Kanada | `https://sharedcac.cac.attest.azure.net` | 
 
 ## <a name="attestation-request"></a>Žádost o ověření identity
 

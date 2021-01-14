@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f625b7dd68d4b5a5e1af68aeb53dac453ff8cbfd
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 5e45c51735e0b7ab4b263d3f3047b5848c82439d
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400824"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185763"
 ---
 # <a name="create-powershell-scripts-for-msix-app-attach-preview"></a>Vytváření skriptů PowerShellu pro připojení aplikace MSIX (Preview)
 
@@ -39,6 +39,17 @@ Pokud vaše aplikace používá certifikát, který není veřejný nebo podepsa
 6. Vyberte možnost **umístit všechny certifikáty do následujícího úložiště** a pak vyberte **Procházet**.
 7. Když se zobrazí okno vybrat úložiště certifikátů, vyberte **Důvěryhodné osoby** a pak vyberte **OK**.
 8. Vyberte **Další** a **Dokončit**.
+
+## <a name="enable-microsoft-hyper-v"></a>Povolit Microsoft Hyper-V
+
+Microsoft Hyper-V musí být povolený, protože `Mount-VHD` příkaz je nutný pro přípravu a `Dismount-VHD` je potřeba pro odfázi.
+
+```powershell
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
+```
+
+>[!NOTE]
+>Tato změna bude vyžadovat, abyste virtuální počítač restartovali.
 
 ## <a name="prepare-powershell-scripts-for-msix-app-attach"></a>Příprava skriptů PowerShellu pro připojení aplikace MSIX
 

@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: duau
 ms.custom: devx-track-js
-ms.openlocfilehash: c49672ad38ac8cf80214d03870b5876d741e76ec
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f9e8cdd3eb5c9f441444683fb5efaccc880b2757
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994872"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184607"
 ---
 # <a name="how-to-send-real-user-measurements-to-traffic-manager-with-visual-studio-mobile-center"></a>Postup odeslání Měření reálných uživatelů pro Traffic Manager v aplikaci Visual Studio Mobile Center
 
@@ -52,7 +52,7 @@ K získání klíče rumu pomocí Azure Portal použijte následující postup:
 
 ## <a name="step-2-instrument-your-app-with-the-rum-package-of-mobile-center-sdk"></a>Krok 2: instrumentace aplikace pomocí balíčku rumu sady Mobile Center SDK
 
-Pokud s Visual Studio Mobile Center začínáte, přejděte na jeho [Web](https://mobile.azure.com). Podrobné pokyny k integraci sady SDK najdete v tématu [Začínáme s Android SDK](https://docs.microsoft.com/mobile-center/sdk/getting-started/Android).
+Pokud s Visual Studio Mobile Center začínáte, přejděte na jeho [Web](https://mobile.azure.com). Podrobné pokyny k integraci sady SDK najdete v tématu [Začínáme s Android SDK](/mobile-center/sdk/getting-started/Android).
 
 Pokud chcete použít Měření reálných uživatelů, proveďte následující postup:
 
@@ -98,8 +98,7 @@ Pokud chcete použít Měření reálných uživatelů, proveďte následující
 ## <a name="next-steps"></a>Další kroky
 - Další informace o [měření reálných uživatelů](traffic-manager-rum-overview.md)
 - Informace [o tom, jak Traffic Manager funguje](traffic-manager-overview.md)
-- Další informace o [Mobile Center](https://docs.microsoft.com/mobile-center/)
+- Další informace o [Mobile Center](/mobile-center/)
 - [Zaregistrovat](https://mobile.azure.com) se v Mobile Center
 - Další informace o [metodách směrování provozu](traffic-manager-routing-methods.md) , které podporuje Traffic Manager
-- Informace o tom, jak [vytvořit profil Traffic Manager](traffic-manager-create-profile.md)
-
+- Informace o tom, jak [vytvořit profil Traffic Manager](./quickstart-create-traffic-manager-profile.md)

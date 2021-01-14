@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: duau
 ms.custom: ''
-ms.openlocfilehash: 8606e89a40e9cfd2c0f55df2c65532928c0d11f8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2bb104fd9cfc3c4ffddb82e4cf442e94c4650550
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95972585"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184554"
 ---
 # <a name="how-to-send-real-user-measurements-to-azure-traffic-manager-using-web-pages"></a>Odeslání Měření reálných uživatelů do Azure Traffic Manager pomocí webových stránek
 
@@ -68,5 +68,4 @@ Po získání klíče rumu je dalším krokem vložení tohoto zkopírovaného J
 - Další informace o [měření reálných uživatelů](traffic-manager-rum-overview.md)
 - Informace [o tom, jak Traffic Manager funguje](traffic-manager-overview.md)
 - Další informace o [metodách směrování provozu](traffic-manager-routing-methods.md) , které podporuje Traffic Manager
-- Informace o tom, jak [vytvořit profil Traffic Manager](traffic-manager-create-profile.md)
-
+- Informace o tom, jak [vytvořit profil Traffic Manager](./quickstart-create-traffic-manager-profile.md)

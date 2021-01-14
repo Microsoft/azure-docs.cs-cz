@@ -3,12 +3,12 @@ title: Nasazení prostředků do tenanta
 description: Popisuje postup nasazení prostředků v oboru tenanta v šabloně Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 01/13/2021
-ms.openlocfilehash: a397678488921744f076d93235304c8d217d961f
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 0b3ddc63e49b272c93349ada91e9a1599ea4be4f
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178955"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186205"
 ---
 # <a name="tenant-deployments-with-arm-templates"></a>Nasazení klientů pomocí šablon ARM
 
@@ -185,6 +185,8 @@ Pokud chcete cílit na skupinu prostředků v rámci tenanta, použijte vnořen�
 Následující šablona vytvoří skupinu pro správu.
 
 :::code language="json" source="~/quickstart-templates/tenant-deployments/new-mg/azuredeploy.json":::
+
+Pokud váš účet nemá oprávnění k nasazení do tenanta, můžete přesto vytvořit skupiny pro správu nasazením do jiného oboru. Další informace najdete v tématu [skupina pro správu](deploy-to-management-group.md#management-group).
 
 ## <a name="assign-role"></a>Přiřazení role
 

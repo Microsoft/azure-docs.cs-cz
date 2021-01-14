@@ -10,12 +10,12 @@ author: luisquintanilla
 ms.author: luquinta
 ms.date: 07/09/2020
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 9ad96bdb632e134cf3e3a0f82bb97f88c87e72e9
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 937b5ebb13bfbf27ff04b6944f2de7e32e7e656c
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033438"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185848"
 ---
 # <a name="train-and-deploy-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension-preview"></a>Výuka a nasazení modelu TensorFlow pro klasifikaci imagí pomocí rozšíření Azure Machine Learning Visual Studio Code (Preview)
 
@@ -78,7 +78,7 @@ V pracovním prostoru se dá vytvořit jeden nebo více experimentů, abyste moh
     > [!div class="mx-imgBorder"]
     > ![Vytvoření experimentu](./media/tutorial-train-deploy-image-classification-model-vscode/create-experiment.png)
 
-1. Pojmenujte experiment "MNIST ručně zapsaných" a stisknutím klávesy **ENTER** vytvořte nový experiment. 
+1. Pojmenujte svůj experiment "tutorial-VSCode-MNIST ručně zapsaných" a stisknutím klávesy **ENTER** vytvořte nový experiment. 
 
 Podobně jako pracovní prostory se do Azure pošle požadavek na vytvoření experimentu s poskytnutými konfiguracemi. Po několika minutách se nový experiment zobrazí v uzlu *experimenty* pracovního prostoru. 
 

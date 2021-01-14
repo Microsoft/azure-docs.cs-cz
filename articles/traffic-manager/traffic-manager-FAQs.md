@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: duau
-ms.openlocfilehash: 86758c355566fb67ebd8a606068e2044e0b8bd64
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17ccfeb709c530a868a75ecd87052618aaea4846
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89400173"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184573"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Nejčastější dotazy Traffic Manager
 
@@ -96,7 +96,7 @@ Hlavním rozdílem mezi těmito dvěma oblíbenými metodami směrování je to,
 
 ### <a name="what-are-the-regions-that-are-supported-by-traffic-manager-for-geographic-routing"></a>Jaké jsou oblasti podporované Traffic Manager pro geografické směrování?
 
-Hierarchii země nebo oblasti, kterou používá Traffic Manager, najdete [tady](traffic-manager-geographic-regions.md). I když je tato stránka stále aktuální se změnami, můžete také programově načíst stejné informace pomocí [Traffic Manager Azure REST API](https://docs.microsoft.com/rest/api/trafficmanager/). 
+Hierarchii země nebo oblasti, kterou používá Traffic Manager, najdete [tady](traffic-manager-geographic-regions.md). I když je tato stránka stále aktuální se změnami, můžete také programově načíst stejné informace pomocí [Traffic Manager Azure REST API](/rest/api/trafficmanager/). 
 
 ### <a name="how-does-traffic-manager-determine-where-a-user-is-querying-from"></a>Jak Traffic Manager zjišťuje, ze kterého uživatele se dotazuje?
 
@@ -116,11 +116,11 @@ Ne, umístění koncového bodu neukládá žádná omezení, na které lze nama
 
 ### <a name="can-i-assign-geographic-regions-to-endpoints-in-a-profile-that-is-not-configured-to-do-geographic-routing"></a>Je možné přiřazovat geografické oblasti koncovým bodům v profilu, který není nakonfigurován tak, aby provedl geografické směrování?
 
-Ano, pokud metoda směrování profilu není geografická, můžete k přiřazení geografických oblastí k koncovým bodům v tomto profilu použít [REST API Traffic Manager Azure](https://docs.microsoft.com/rest/api/trafficmanager/) . V případě negeografických profilů typu směrování se tato konfigurace ignoruje. Pokud takový profil změníte na typ geografické směrování později, Traffic Manager můžou tato mapování použít.
+Ano, pokud metoda směrování profilu není geografická, můžete k přiřazení geografických oblastí k koncovým bodům v tomto profilu použít [REST API Traffic Manager Azure](/rest/api/trafficmanager/) . V případě negeografických profilů typu směrování se tato konfigurace ignoruje. Pokud takový profil změníte na typ geografické směrování později, Traffic Manager můžou tato mapování použít.
 
 ### <a name="why-am-i-getting-an-error-when-i-try-to-change-the-routing-method-of-an-existing-profile-to-geographic"></a>Proč se při pokusu o změnu metody směrování stávajícího profilu na geografickou chybu zobrazuje chyba?
 
-Všechny koncové body v profilu s geografickým směrováním musí mít namapovanou aspoň jednu oblast. Pokud chcete převést stávající profil na typ geografické směrování, musíte nejdřív přidružit geografické oblasti ke všem jeho koncovým bodům pomocí [Traffic Manager Azure REST API](https://docs.microsoft.com/rest/api/trafficmanager/) před změnou typu směrování na geografickou. Pokud používáte portál, nejprve tyto koncové body odstraňte, změňte metodu směrování profilu na geografickou a přidejte koncové body spolu s jejich mapováním na geografickou oblast.
+Všechny koncové body v profilu s geografickým směrováním musí mít namapovanou aspoň jednu oblast. Pokud chcete převést stávající profil na typ geografické směrování, musíte nejdřív přidružit geografické oblasti ke všem jeho koncovým bodům pomocí [Traffic Manager Azure REST API](/rest/api/trafficmanager/) před změnou typu směrování na geografickou. Pokud používáte portál, nejprve tyto koncové body odstraňte, změňte metodu směrování profilu na geografickou a přidejte koncové body spolu s jejich mapováním na geografickou oblast.
 
 ### <a name="why-is-it-strongly-recommended-that-customers-create-nested-profiles-instead-of-endpoints-under-a-profile-with-geographic-routing-enabled"></a>Proč doporučujeme, aby zákazníci vytvářeli vnořené profily místo koncových bodů v profilu s povoleným geografickým směrováním?
 
@@ -306,7 +306,7 @@ Ceny Zobrazení přenosů jsou založené na počtu datových bodů použitých 
 
 Použití koncových bodů z více předplatných není možné u Azure Web Apps. Azure Web Apps vyžaduje, aby se vlastní název domény používaný pro Web Apps používal jenom v rámci jednoho předplatného. Není možné použít Web Apps z více předplatných se stejným názvem domény.
 
-U ostatních typů koncových bodů je možné použít Traffic Manager s koncovými body z více než jednoho předplatného. V Správce prostředků se koncové body z jakéhokoli předplatného dají přidat do Traffic Manager, pokud osoba, která konfiguruje profil Traffic Manager, má ke koncovému bodu oprávnění ke čtení. Tato oprávnění se dají udělit pomocí [řízení přístupu založeného na rolích Azure (Azure RBAC)](../role-based-access-control/role-assignments-portal.md). Koncové body z jiných předplatných je možné přidat pomocí [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) nebo rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-create).
+U ostatních typů koncových bodů je možné použít Traffic Manager s koncovými body z více než jednoho předplatného. V Správce prostředků se koncové body z jakéhokoli předplatného dají přidat do Traffic Manager, pokud osoba, která konfiguruje profil Traffic Manager, má ke koncovému bodu oprávnění ke čtení. Tato oprávnění se dají udělit pomocí [řízení přístupu založeného na rolích Azure (Azure RBAC)](../role-based-access-control/role-assignments-portal.md). Koncové body z jiných předplatných je možné přidat pomocí [Azure PowerShell](/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) nebo rozhraní příkazového [řádku Azure CLI](/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-create).
 
 ### <a name="can-i-use-traffic-manager-with-cloud-service-staging-slots"></a>Můžu použít Traffic Manager s testovacími sloty cloudové služby?
 
@@ -345,9 +345,9 @@ Azure Resource Manager vyžaduje, aby všechny skupiny prostředků určovaly um
 
 ### <a name="how-do-i-determine-the-current-health-of-each-endpoint"></a>Návody zjistit aktuální stav každého koncového bodu?
 
-Aktuální stav monitorování každého koncového bodu (kromě celkového profilu) se zobrazí v Azure Portal. Tyto informace jsou také k dispozici prostřednictvím [REST API](https://msdn.microsoft.com/library/azure/mt163667.aspx)monitorování provozu, [rutin prostředí PowerShell](https://docs.microsoft.com/powershell/module/az.trafficmanager)a [rozhraní příkazového řádku Azure CLI pro různé platformy](../cli-install-nodejs.md).
+Aktuální stav monitorování každého koncového bodu (kromě celkového profilu) se zobrazí v Azure Portal. Tyto informace jsou také k dispozici prostřednictvím [REST API](/rest/api/trafficmanager/)monitorování provozu, [rutin prostředí PowerShell](/powershell/module/az.trafficmanager)a [rozhraní příkazového řádku Azure CLI pro různé platformy](/cli/azure/install-classic-cli).
 
-Můžete také použít Azure Monitor ke sledování stavu koncových bodů a k zobrazení vizuální reprezentace. Další informace o používání Azure Monitor najdete v [dokumentaci ke službě Azure Monitoring](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics).
+Můžete také použít Azure Monitor ke sledování stavu koncových bodů a k zobrazení vizuální reprezentace. Další informace o používání Azure Monitor najdete v [dokumentaci ke službě Azure Monitoring](../azure-monitor/platform/data-platform.md).
 
 ### <a name="can-i-monitor-https-endpoints"></a>Můžu monitorovat koncové body HTTPS?
 
@@ -458,7 +458,7 @@ Počet kontrol Traffic Manager stavu, které dosáhnou svého koncového bodu, z
 
 ### <a name="how-can-i-get-notified-if-one-of-my-endpoints-goes-down"></a>Jak získám oznámení, pokud se některý z mých koncových bodů přestane nastavovat?
 
-Jedna z metrik poskytovaných nástrojem Traffic Manager je stavem koncových bodů v profilu. Tohle vidíte jako agregaci všech koncových bodů v profilu (například 75% vašich koncových bodů je v pořádku) nebo na úrovni jednotlivých koncových bodů. Traffic Manager metriky jsou zpřístupněny prostřednictvím Azure Monitor a pomocí [možností upozorňování](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) můžete dostávat oznámení, když dojde ke změně stavu koncového bodu. Další podrobnosti najdete v tématu [Traffic Manager metrik a upozornění](traffic-manager-metrics-alerts.md).  
+Jedna z metrik poskytovaných nástrojem Traffic Manager je stavem koncových bodů v profilu. Tohle vidíte jako agregaci všech koncových bodů v profilu (například 75% vašich koncových bodů je v pořádku) nebo na úrovni jednotlivých koncových bodů. Traffic Manager metriky jsou zpřístupněny prostřednictvím Azure Monitor a pomocí [možností upozorňování](../azure-monitor/platform/alerts-metric.md) můžete dostávat oznámení, když dojde ke změně stavu koncového bodu. Další podrobnosti najdete v tématu [Traffic Manager metrik a upozornění](traffic-manager-metrics-alerts.md).  
 
 ## <a name="traffic-manager-nested-profiles"></a>Traffic Manager vnořené profily
 
@@ -487,7 +487,7 @@ Traffic Manager fakturace má dvě komponenty: kontroly stavu koncových bodů a
 
 ### <a name="is-there-a-performance-impact-for-nested-profiles"></a>Je pro vnořené profily dopad na výkon?
 
-Ne. Při použití vnořených profilů se nevyskytl dopad na výkon.
+No. Při použití vnořených profilů se nevyskytl dopad na výkon.
 
 Traffic Manager názvové servery přecházejí hierarchii profilu interně při zpracování každého dotazu DNS. Dotaz DNS na nadřazený profil může přijmout odpověď DNS s koncovým bodem z podřízeného profilu. Jeden záznam CNAME se používá bez ohledu na to, jestli používáte jeden profil nebo vnořené profily. Pro každý profil v hierarchii není nutné vytvářet záznam CNAME.
 
@@ -502,7 +502,7 @@ Následující tabulka popisuje chování Traffic Managerch kontrol stavu pro vn
 | Zakázáno Podřízený profil byl zakázán. |Zastaveno |Stav nadřazeného koncového bodu je zastaven, není zakázán. Zakázaný stav je rezervovaný pro indikaci, že jste v nadřazeném profilu zakázali koncový bod. |
 | Degradovaný. Nejméně jeden koncový bod podřízeného profilu je v neomezeném stavu. |Online: počet online koncových bodů v podřízeném profilu je aspoň hodnota MinChildEndpoints.<BR>CheckingEndpoint: počet koncových bodů online plus CheckingEndpoint v podřízeném profilu je alespoň hodnota MinChildEndpoints.<BR>Snížený výkon: jinak. |Provoz se směruje na koncový bod stavového CheckingEndpoint. Pokud je nastavení MinChildEndpoints příliš vysoké, koncový bod je vždy snížený. |
 | Online. Nejméně jeden koncový bod podřízeného profilu je online stav. V neomezeném stavu není žádný koncový bod. |Viz výše. | |
-| CheckingEndpoints. Aspoň jeden podřízený koncový bod profilu je "CheckingEndpoint". Žádné koncové body nejsou online nebo jsou degradovány. |Stejné jako výše. | |
+| CheckingEndpoints. Aspoň jeden podřízený koncový bod profilu je "CheckingEndpoint". Žádné koncové body nejsou online nebo jsou degradovány. |Platí to samé jako výše. | |
 | Termín. Všechny koncové body podřízeného profilu jsou buď zakázány, nebo zastaveny, nebo tento profil nemá žádné koncové body. |Zastaveno | |
 
 ## <a name="next-steps"></a>Další kroky:

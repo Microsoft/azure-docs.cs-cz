@@ -5,12 +5,12 @@ author: macolso
 ms.author: macolso
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: e4760463a4d71e4c097b082aa6b93d8b339f94ca
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 5de1188ee018e796f918d7559c0e2c24c77834f4
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516966"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186188"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>Nejčastější dotazy týkající se Azure Container Instances
 
@@ -54,6 +54,10 @@ Přečtěte si podrobnější [pokyny](container-instances-troubleshooting.md#co
 ### <a name="what-net-or-net-core-image-layer-should-i-use-in-my-container"></a>Jakou vrstvu imagí .NET nebo .NET Core mám použít v kontejneru? 
 
 Použijte nejmenší obrázek, který splňuje vaše požadavky. Pro Linux byste mohli použít bitovou kopii .NET Core pro *modul runtime* , která byla od vydání .net Core 2,1 podporovaná. V případě systému Windows, pokud používáte úplný .NET Framework, je nutné použít základní bitovou kopii systému Windows Server (bitovou kopii pouze za běhu, například  *4.7.2-windowsservercore-ltsc2016*). Bitové kopie, které jsou jen za běhu, jsou menší, ale nepodporují úlohy, které vyžadují sadu .NET SDK.
+
+### <a name="what-types-of-container-registries-are-compatible-with-aci"></a>Jaké typy registrů kontejnerů jsou kompatibilní s ACI?
+
+ACI podporuje přebírání imagí z ACR a dalších registrů kontejnerů třetích stran, jako je Dockerhubu. ACI podporuje také přijímání imagí z místních registrů, pokud jsou kompatibilní se standardem OCR a mají koncový bod, který je veřejně vystavený pro Internet.
 
 ## <a name="availability-and-quotas"></a>Dostupnost a kvóty
 

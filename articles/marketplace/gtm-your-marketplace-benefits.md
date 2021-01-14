@@ -4,15 +4,15 @@ description: Služby pro uvedení na trh – prostředky společnosti Microsoft,
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 09/24/2020
+ms.date: 01/13/2021
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: ad86ebe1ca397004745e75dd279ea0a7cfe8348e
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 263c038cf5003d950cf500ccc13cf562ac71db0c
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94746563"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184993"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Výhody vašeho komerčního tržiště
 
@@ -104,16 +104,16 @@ Vydavatelé [seznamů a zkušebních verzí](determine-your-listing-type.md) se 
 
 Společnost Microsoft si vyhrazuje právo odvolat a zrušit výhody, které můžou využít pro vydavatele, kteří:
 
-* Zapojte se do neplatného aktivity pomocí jejich výpisu na webu Marketplace.
-* Získejte nákup, který se známý nebo považuje za podvodný.
-* Jsou označeny z komerčního tržiště.
-* Pomocí své nabídky můžete zobrazit marketing nebo jiný obsah, který porušuje zákony o autorských právech nebo ochranných známkách.
-* Porušuje zásady [programu pro sponzorství Azure](https://azure.microsoft.com/offers/ms-azr-0036p/), včetně, ale ne omezeného, pomocí financování Azure sponzorství pro své vlastní interní operace nebo Bitcoin dolování.
+- Zapojte se do neplatného aktivity pomocí jejich výpisu na webu Marketplace.
+- Získejte nákup, který se známý nebo považuje za podvodný.
+- Jsou označeny z komerčního tržiště.
+- Pomocí své nabídky můžete zobrazit marketing nebo jiný obsah, který porušuje zákony o autorských právech nebo ochranných známkách.
+- Porušuje zásady [programu pro sponzorství Azure](https://azure.microsoft.com/offers/ms-azr-0036p/), včetně, ale ne omezeného, pomocí financování Azure sponzorství pro své vlastní interní operace nebo Bitcoin dolování.
 
 Společnost Microsoft si vyhrazuje právo tyto ceny odvolat a ukončit na webu Marketplace v těchto případech:
 
-* Zákazník, který zakoupí, byl omylem a chce zrušit nákup.
-* Zákazník se zruší před použitím produktu partnera.
+- Zákazník, který zakoupí, byl omylem a chce zrušit nákup.
+- Zákazník se zruší před použitím produktu partnera.
 
 ### <a name="offer-availability"></a>Dostupnost nabídky
 

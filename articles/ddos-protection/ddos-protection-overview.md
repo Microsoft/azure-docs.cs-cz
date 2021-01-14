@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/9/2020
 ms.author: yitoh
-ms.openlocfilehash: 5e633b5e4b2ff2ce884bfaf99e3730968150cbed
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: e76086db36642664ca15acee26f4e0aca85ff272
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746367"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184455"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Přehled služby Azure DDoS Protection úrovně Standard
 
@@ -45,6 +45,10 @@ Azure DDoS Protection neukládá zákaznická data.
 - **Záruka nákladů:** Dodržením kreditu služeb přenosu dat a aplikací na více instancí za náklady na prostředky vzniklé v důsledku dokumentovaných útoků DDoS.
 
 ## <a name="pricing"></a>Ceny
+
+Plány DDoS Protection mají pevnou měsíční poplatek $2 944 za měsíc, který pokrývá až 100 veřejných IP adres. Ochrana dalších prostředků bude za každý prostředek měsíčně vypůjčit dalších $30.
+
+V rámci tenanta se dá jeden plán DDoS Protection použít pro několik předplatných, takže nemusíte vytvářet více než jeden plán DDoS Protection.
 
 Další informace o cenách Azure DDoS Protection Standard najdete v tématu [Azure DDoS Protection Standard Price](https://azure.microsoft.com/pricing/details/ddos-protection/).
 

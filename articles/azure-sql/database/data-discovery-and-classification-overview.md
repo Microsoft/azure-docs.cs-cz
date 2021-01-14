@@ -13,17 +13,17 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 12/01/2020
 tags: azure-synapse
-ms.openlocfilehash: ece76f0017a72484f5c4e66b2ab8c7e71d32f1a7
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 41ad711de81f075727e4c177c318054677cb0ece
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132016"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185349"
 ---
 # <a name="data-discovery--classification"></a>Zjišťování a klasifikace dat
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Klasifikace & Discovery dat je integrovaná do Azure SQL Database, spravované instance Azure SQL a Azure synapse Analytics. Poskytuje pokročilé možnosti pro zjišťování, klasifikaci, označování a oznamování citlivých dat ve vašich databázích.
+Klasifikace & Discovery dat je integrovaná do Azure SQL Database, spravované instance Azure SQL a Azure synapse Analytics. Poskytuje základní možnosti pro zjišťování, klasifikaci, označování a vytváření sestav citlivých dat ve vašich databázích.
 
 Vaše nejvíc citlivá data můžou zahrnovat obchodní, finanční, zdravotní péče nebo osobní údaje. Zjišťování a klasifikace těchto dat může hrát kontingenční roli v přístupu k ochraně informací ve vaší organizaci. Může sloužit jako infrastruktura na:
 
@@ -36,11 +36,11 @@ Vaše nejvíc citlivá data můžou zahrnovat obchodní, finanční, zdravotní 
 
 ## <a name="what-is-data-discovery--classification"></a><a id="what-is-dc"></a>Co je klasifikace & data Discovery?
 
-Klasifikace data Discovery & přináší sadu pokročilých služeb a nových funkcí v Azure. Tvoří nové paradigma pro ochranu informací pro SQL Database, spravovanou instanci SQL a Azure synapse, které mají za cíl chránit data a nikoli jenom databázi. Paradigma obsahuje:
+Klasifikace data Discovery & přináší sadu základních služeb a nových funkcí v Azure. Tvoří nové paradigma pro ochranu informací pro SQL Database, spravovanou instanci SQL a Azure synapse, které mají za cíl chránit data a nikoli jenom databázi. Paradigma obsahuje:
 
 - **Zjišťování a doporučení:** Klasifikační modul prohledá vaši databázi a určí sloupce, které obsahují potenciálně citlivá data. Potom vám poskytne snadný způsob, jak zkontrolovat a použít doporučenou klasifikaci prostřednictvím Azure Portal.
 
-- **Popisování:** Popisky klasifikace na základě citlivosti můžete u sloupců použít s použitím nových atributů metadat, které byly přidány do modulu SQL Server Database Engine. Tato metadata se pak dají použít k pokročilým scénářům auditování a ochrany na základě citlivosti.
+- **Popisování:** Popisky klasifikace na základě citlivosti můžete u sloupců použít s použitím nových atributů metadat, které byly přidány do modulu SQL Server Database Engine. Tato metadata se pak dají použít pro scénáře auditování a ochrany založené na citlivosti.
 
 - **Výsledek dotazu – nastavení citlivosti:** Citlivost sady výsledků dotazu je vypočítána v reálném čase pro účely auditování.
 

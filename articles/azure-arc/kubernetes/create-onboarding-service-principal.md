@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: 'Vytvoření instančního objektu s povolenou službou Azure ARC '
 keywords: Kubernetes, oblouk, Azure, kontejnery
-ms.openlocfilehash: 02689dba32c8cc91e4a4a4de4dee98bc990b4dd6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8eb38dbc04d964c0ab4869e801099ee9420d6ac2
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87050066"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184692"
 ---
 # <a name="create-an-azure-arc-enabled-onboarding-service-principal-preview"></a>Vytvoření instančního objektu s povolenou službou Azure ARC (verze Preview)
 
@@ -54,7 +54,7 @@ Oprávnění se můžou dál omezovat předáním příslušného `--scope` argu
 | Prostředek  | Argument `scope`| Účinek |
 | ------------- | ------------- | ------------- |
 | Předplatné | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333` | Instanční objekt může zaregistrovat libovolný cluster v existující skupině prostředků v daném předplatném. |
-| Resource Group | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`  | Instanční objekt může registrovat __jenom__ clustery ve skupině prostředků. `myGroup` |
+| Skupina prostředků | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`  | Instanční objekt může registrovat __jenom__ clustery ve skupině prostředků. `myGroup` |
 
 ```console
 az role assignment create \
@@ -82,7 +82,7 @@ az role assignment create \
 
 Odkaz na nově vytvořený instanční objekt:
 
-```console
+```azurecli
 az login --service-principal -u mySpnClientId -p mySpnClientSecret --tenant myTenantID
 az connectedk8s connect -n myConnectedClusterName -g myResoureGroupName
 ```

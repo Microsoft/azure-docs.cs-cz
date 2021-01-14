@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 68a384197409115343a81aea23b0f7d42166d716
-ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
+ms.openlocfilehash: 123302490e738e72106780006c77ef76fdc032cc
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97976805"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184624"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Podpora jazyka a hlasu pro službu rozpoznávání řeči
 
@@ -36,94 +36,94 @@ To get pronunciation bits:
 https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronunciation Datasets" -> Click on Import -> Locale: the list of locales there correspond to the supported locales
 -->
 
-| Jazyk                           | Národní prostředí (BCP-47) | Vlastní nastavení                                   |
-|------------------------------------|--------|--------------------------------------------------|
-| Arabština (Bahrajn), moderní Standard  | `ar-BH` | Jazykový model                                   |
-| Arabština (Egypt)                     | `ar-EG` | Jazykový model                                   |
-| Arabština (Irák)                      | `ar-IQ` | Jazykový model                                   |
-| Arabština (Izrael)                    | `ar-IL` | Jazykový model                                   |
-| Arabština (Jordánsko)                    | `ar-JO` | Jazykový model                                   |
-| Arabština (Kuvajt)                    | `ar-KW` | Jazykový model                                   |
-| Arabština (Libanon)                   | `ar-LB` | Jazykový model                                   |
-| Arabština (Omán)                      | `ar-OM` | Jazykový model                                   |
-| Arabština (Katar)                     | `ar-QA` | Jazykový model                                   |
-| Arabština (Saúdská Arábie)              | `ar-SA` | Jazykový model                                   |
-| Arabština (stav palestinská samospráva)        | `ar-PS` | Jazykový model                                   |
-| Arabština (Sýrie)                     | `ar-SY` | Jazykový model                                   |
-| Arabština (Spojené arabské emiráty)      | `ar-AE` | Jazykový model                                   |
-| Bulharština (Bulharsko)               | `bg-BG` | Jazykový model                                   |
-| katalánština (Španělsko)                    | `ca-ES` | Jazykový model                                   |
-| Čínština (kantonština, tradiční)   | `zh-HK` | Akustický model<br>Jazykový model                 |
-| Čínština (Mandarin, zjednodušená)     | `zh-CN` | Akustický model<br>Jazykový model                 |
-| Čínština (tchajwanský mandarinka)       | `zh-TW` | Akustický model<br>Jazykový model                 |
-| chorvatština (Chorvatsko)                 | `hr-HR` | Jazykový model                                   |
-| čeština (Česká republika)             | `cs-CZ` | Jazykový model                                   |
-| dánština (Dánsko)                   | `da-DK` | Jazykový model                                   |
-| nizozemština (Nizozemsko)                | `nl-NL` | Jazykový model                                   |
-| Angličtina (Austrálie)                | `en-AU` | Akustický model<br>Jazykový model                 |
-| Angličtina (Kanada)                   | `en-CA` | Akustický model<br>Jazykový model                 |
-| Angličtina (Hongkong)                | `en-HK` | Jazykový model                                   |
-| Angličtina (Indie)                    | `en-IN` | Akustický model<br>Jazykový model                 |
-| Angličtina (Irsko)                  | `en-IE` | Jazykový model                                   |
-| Angličtina (Nový Zéland)              | `en-NZ` | Akustický model<br>Jazykový model                 |
-| Angličtina (Nigérie)                  | `en-NG` | Jazykový model                                   |
-| Angličtina (Filipíny)              | `en-PH` | Jazykový model                                   |
-| Angličtina (Singapur)                | `en-SG` | Jazykový model                                   |
-| Angličtina (Jihoafrická republika)             | `en-ZA` | Jazykový model                                   |
-| Angličtina (Spojené království)           | `en-GB` | Akustický model<br>Jazykový model<br>Výslovnost|
-| Angličtina (Spojené státy)            | `en-US` | Akustický model<br>Jazykový model<br>Výslovnost|
-| Estonština (Estonsko)                  | `et-EE` | Jazykový model                                   |
-| finština (Finsko)                  | `fi-FI` | Jazykový model                                   |
-| Francouzština (Kanada)                    | `fr-CA` | Akustický model<br>Jazykový model                 |
-| francouzština (Francie)                    | `fr-FR` | Akustický model<br>Jazykový model<br>Výslovnost|
-| němčina (Německo)                   | `de-DE` | Akustický model<br>Jazykový model<br>Výslovnost|
-| Řečtina (Řecko)                     | `el-GR` | Jazykový model                                   |
-| Gudžarátština (Indie)                  | `gu-IN` | Jazykový model                                   |
-| hindština (Indie)                      | `hi-IN` | Akustický model<br>Jazykový model                 |
-| Maďarština (Maďarsko)                | `hu-HU` | Jazykový model                                   |
-| Irština (Irsko)                     | `ga-IE` | Jazykový model                                   |
-| italština (Itálie)                    | `it-IT` | Akustický model<br>Jazykový model<br>Výslovnost|
-| japonština (Japonsko)                   | `ja-JP` | Akustický model<br>Jazykový model                 |
-| korejština (Jižní Korea)                     | `ko-KR` | Akustický model<br>Jazykový model                 |
-| lotyština (Lotyšsko)                   | `lv-LV` | Jazykový model                                   |
-| litevština (Litva)             | `lt-LT` | Jazykový model                                   |
-| Maltština (Malta)                     | `mt-MT` | Jazykový model                                   |
-| Maráthština (Indie)                    | `mr-IN` | Jazykový model                                   |
-| Norština, Bokmål (Norsko)         | `nb-NO` | Jazykový model                                   |
-| polština (Polsko)                    | `pl-PL` | Jazykový model                                   |
-| Portugalština (Brazílie)                | `pt-BR` | Akustický model<br>Jazykový model<br>Výslovnost|
-| portugalština (Portugalsko)              | `pt-PT` | Jazykový model                                   |
-| rumunština (Rumunsko)                 | `ro-RO` | Jazykový model                                   |
-| ruština (Rusko)                   | `ru-RU` | Akustický model<br>Jazykový model                 |
-| slovenština (Slovensko)                  | `sk-SK` | Jazykový model                                   |
-| slovinština (Slovinsko)               | `sl-SI` | Jazykový model                                   |
-| Španělština (Argentina)                | `es-AR` | Jazykový model                                   |
-| Španělština (Bolívie)                  | `es-BO` | Jazykový model                                   |
-| Španělština (Chile)                    | `es-CL` | Jazykový model                                   |
-| Španělština (Kolumbie)                 | `es-CO` | Jazykový model                                   |
-| Španělština (Kostarika)               | `es-CR` | Jazykový model                                   |
-| Španělština (Kuba)                     | `es-CU` | Jazykový model                                   |
-| Španělština (Dominikánská republika)       | `es-DO` | Jazykový model                                   |
-| Španělština (Ekvádor)                  | `es-EC` | Jazykový model                                   |
-| Španělština (Salvador)              | `es-SV` | Jazykový model                                   |
-| Španělština (Rovníková Guinea)        | `es-GQ` | Jazykový model                                   |
-| Španělština (Guatemala)                | `es-GT` | Jazykový model                                   |
-| Španělština (Honduras)                 | `es-HN` | Jazykový model                                   |
-| Španělština (Mexiko)                   | `es-MX` | Akustický model<br>Jazykový model                 |
-| Španělština (Nikaragua)                | `es-NI` | Jazykový model                                   |
-| Španělština (Panama)                   | `es-PA` | Jazykový model                                   |
-| Španělština (Paraguay)                 | `es-PY` | Jazykový model                                   |
-| Španělština (Peru)                     | `es-PE` | Jazykový model                                   |
-| Španělština (Portoriko)              | `es-PR` | Jazykový model                                   |
-| Španělština (Španělsko)                    | `es-ES` | Akustický model<br>Jazykový model                 |
-| Španělština (Uruguay)                  | `es-UY` | Jazykový model                                   |
-| Španělština (USA)                      | `es-US` | Jazykový model                                   |
-| Španělština (Venezuela)                | `es-VE` | Jazykový model                                   |
-| švédština (Švédsko)                   | `sv-SE` | Jazykový model                                   |
-| Tamilština (Indie)                      | `ta-IN` | Jazykový model                                   |
-| Telugština (Indie)                     | `te-IN` | Jazykový model                                   |
-| thajština (Thajsko)                    | `th-TH` | Jazykový model                                   |
-| turečtina (Turecko)                   | `tr-TR` | Jazykový model                                   |
+| Jazyk                 | Národní prostředí (BCP-47) | Vlastní nastavení  | [Automatické zjišťování jazyka?](how-to-automatic-language-detection.md) |
+|------------------------------------|--------|---------------------------------------------------|-------------------------------|
+| Arabština (Bahrajn), moderní Standard  | `ar-BH` | Jazykový model                                   | Yes                           | 
+| Arabština (Egypt)                     | `ar-EG` | Jazykový model                                   | Yes                          |
+| Arabština (Irák)                      | `ar-IQ` | Jazykový model                                   |                           |
+| Arabština (Izrael)                    | `ar-IL` | Jazykový model                                   |                           |
+| Arabština (Jordánsko)                    | `ar-JO` | Jazykový model                                   |                           |
+| Arabština (Kuvajt)                    | `ar-KW` | Jazykový model                                   |                           |
+| Arabština (Libanon)                   | `ar-LB` | Jazykový model                                   |                           |
+| Arabština (Omán)                      | `ar-OM` | Jazykový model                                   |                           |
+| Arabština (Katar)                     | `ar-QA` | Jazykový model                                   |                           |
+| Arabština (Saúdská Arábie)              | `ar-SA` | Jazykový model                                   | Yes                          |
+| Arabština (stav palestinská samospráva)        | `ar-PS` | Jazykový model                                   |                           |
+| Arabština (Sýrie)                     | `ar-SY` | Jazykový model                                   | Yes                          |
+| Arabština (Spojené arabské emiráty)      | `ar-AE` | Jazykový model                                   |                           |
+| Bulharština (Bulharsko)               | `bg-BG` | Jazykový model                                   |                           |
+| katalánština (Španělsko)                    | `ca-ES` | Jazykový model                                   | Yes                          |
+| Čínština (kantonština, tradiční)   | `zh-HK` | Akustický model<br>Jazykový model                 |        Yes                   |
+| Čínština (Mandarin, zjednodušená)     | `zh-CN` | Akustický model<br>Jazykový model                 |     Yes                      |
+| Čínština (tchajwanský mandarinka)       | `zh-TW` | Akustický model<br>Jazykový model                 |           Yes                |
+| chorvatština (Chorvatsko)                 | `hr-HR` | Jazykový model                                   |                           |
+| čeština (Česká republika)             | `cs-CZ` | Jazykový model                                   |                           |
+| dánština (Dánsko)                   | `da-DK` | Jazykový model                                   | Yes                          |
+| nizozemština (Nizozemsko)                | `nl-NL` | Jazykový model                                   |    Yes                       |
+| Angličtina (Austrálie)                | `en-AU` | Akustický model<br>Jazykový model                 | Yes                          |
+| Angličtina (Kanada)                   | `en-CA` | Akustický model<br>Jazykový model                 | Yes                          |
+| Angličtina (Hongkong)                | `en-HK` | Jazykový model                                   |                           |
+| Angličtina (Indie)                    | `en-IN` | Akustický model<br>Jazykový model                 | Yes                          |
+| Angličtina (Irsko)                  | `en-IE` | Jazykový model                                   |                           |
+| Angličtina (Nový Zéland)              | `en-NZ` | Akustický model<br>Jazykový model                 |  Yes                         |
+| Angličtina (Nigérie)                  | `en-NG` | Jazykový model                                   |                           |
+| Angličtina (Filipíny)              | `en-PH` | Jazykový model                                   |                           |
+| Angličtina (Singapur)                | `en-SG` | Jazykový model                                   |                           |
+| Angličtina (Jihoafrická republika)             | `en-ZA` | Jazykový model                                   |                           |
+| Angličtina (Spojené království)           | `en-GB` | Akustický model<br>Jazykový model<br>Výslovnost| Yes                          |
+| Angličtina (Spojené státy)            | `en-US` | Akustický model<br>Jazykový model<br>Výslovnost| Yes                          |
+| Estonština (Estonsko)                  | `et-EE` | Jazykový model                                   |                           |
+| finština (Finsko)                  | `fi-FI` | Jazykový model                                   |     Yes                      |
+| Francouzština (Kanada)                    | `fr-CA` | Akustický model<br>Jazykový model                 |     Yes                      |
+| francouzština (Francie)                    | `fr-FR` | Akustický model<br>Jazykový model<br>Výslovnost|      Yes                     |
+| němčina (Německo)                   | `de-DE` | Akustický model<br>Jazykový model<br>Výslovnost|  Yes                         |
+| Řečtina (Řecko)                     | `el-GR` | Jazykový model                                   |                           |
+| Gudžarátština (Indie)                  | `gu-IN` | Jazykový model                                   |                           |
+| hindština (Indie)                      | `hi-IN` | Akustický model<br>Jazykový model                 |     Yes                      |
+| Maďarština (Maďarsko)                | `hu-HU` | Jazykový model                                   |                           |
+| Irština (Irsko)                     | `ga-IE` | Jazykový model                                   |                           |
+| italština (Itálie)                    | `it-IT` | Akustický model<br>Jazykový model<br>Výslovnost|      Yes                     |
+| japonština (Japonsko)                   | `ja-JP` | Akustický model<br>Jazykový model                 |      Yes                     |
+| korejština (Jižní Korea)                     | `ko-KR` | Akustický model<br>Jazykový model                 |      Yes                     |
+| lotyština (Lotyšsko)                   | `lv-LV` | Jazykový model                                   |                           |
+| litevština (Litva)             | `lt-LT` | Jazykový model                                   |                           |
+| Maltština (Malta)                     | `mt-MT` | Jazykový model                                   |                           |
+| Maráthština (Indie)                    | `mr-IN` | Jazykový model                                   |                           |
+| Norština, Bokmål (Norsko)         | `nb-NO` | Jazykový model                                   |     Yes                      |
+| polština (Polsko)                    | `pl-PL` | Jazykový model                                   |       Yes                    |
+| Portugalština (Brazílie)                | `pt-BR` | Akustický model<br>Jazykový model<br>Výslovnost|          Yes                 |
+| portugalština (Portugalsko)              | `pt-PT` | Jazykový model                                   |             Yes              |
+| rumunština (Rumunsko)                 | `ro-RO` | Jazykový model                                   |                           |
+| ruština (Rusko)                   | `ru-RU` | Akustický model<br>Jazykový model                 |                Yes           |
+| slovenština (Slovensko)                  | `sk-SK` | Jazykový model                                   |                           |
+| slovinština (Slovinsko)               | `sl-SI` | Jazykový model                                   |                           |
+| Španělština (Argentina)                | `es-AR` | Jazykový model                                   |                           |
+| Španělština (Bolívie)                  | `es-BO` | Jazykový model                                   |                           |
+| Španělština (Chile)                    | `es-CL` | Jazykový model                                   |                           |
+| Španělština (Kolumbie)                 | `es-CO` | Jazykový model                                   |                           |
+| Španělština (Kostarika)               | `es-CR` | Jazykový model                                   |                           |
+| Španělština (Kuba)                     | `es-CU` | Jazykový model                                   |                           |
+| Španělština (Dominikánská republika)       | `es-DO` | Jazykový model                                   |                           |
+| Španělština (Ekvádor)                  | `es-EC` | Jazykový model                                   |                           |
+| Španělština (Salvador)              | `es-SV` | Jazykový model                                   |                           |
+| Španělština (Rovníková Guinea)        | `es-GQ` | Jazykový model                                   |                           |
+| Španělština (Guatemala)                | `es-GT` | Jazykový model                                   |                           |
+| Španělština (Honduras)                 | `es-HN` | Jazykový model                                   |                           |
+| Španělština (Mexiko)                   | `es-MX` | Akustický model<br>Jazykový model                 |    Yes                       |
+| Španělština (Nikaragua)                | `es-NI` | Jazykový model                                   |                           |
+| Španělština (Panama)                   | `es-PA` | Jazykový model                                   |                           |
+| Španělština (Paraguay)                 | `es-PY` | Jazykový model                                   |                           |
+| Španělština (Peru)                     | `es-PE` | Jazykový model                                   |                           |
+| Španělština (Portoriko)              | `es-PR` | Jazykový model                                   |                           |
+| Španělština (Španělsko)                    | `es-ES` | Akustický model<br>Jazykový model                 |  Yes                         |
+| Španělština (Uruguay)                  | `es-UY` | Jazykový model                                   |                           |
+| Španělština (USA)                      | `es-US` | Jazykový model                                   |                           |
+| Španělština (Venezuela)                | `es-VE` | Jazykový model                                   |                           |
+| švédština (Švédsko)                   | `sv-SE` | Jazykový model                                   |   Yes                        |
+| Tamilština (Indie)                      | `ta-IN` | Jazykový model                                   |                           |
+| Telugština (Indie)                     | `te-IN` | Jazykový model                                   |                           |
+| thajština (Thajsko)                    | `th-TH` | Jazykový model                                   |      Yes                     |
+| turečtina (Turecko)                   | `tr-TR` | Jazykový model                                   |                           |
 
 ## <a name="text-to-speech"></a>Převod textu na řeč
 
@@ -146,41 +146,41 @@ Neuronové hlasy se dají použít k zajištění většího přirozeného a pou
 | Jazyk | Národní prostředí | Pohlaví | Název hlasu | Podpora stylů |
 |---|---|---|---|---|
 | Arabština (Egypt) | `ar-EG` | Female | `ar-EG-SalmaNeural` | Obecné |
-| Arabština (Egypt) | `ar-EG` | Male | `ar-EG-ShakirNeural` <sup>Nový</sup> | Obecné |
+| Arabština (Egypt) | `ar-EG` | Male | `ar-EG-ShakirNeural` <sup>Nová</sup> | Obecné |
 | Arabština (Saúdská Arábie) | `ar-SA` | Female | `ar-SA-ZariyahNeural` | Obecné |
-| Arabština (Saúdská Arábie) | `ar-SA` | Male | `ar-SA-HamedNeural` <sup>Nový</sup> | Obecné |
+| Arabština (Saúdská Arábie) | `ar-SA` | Male | `ar-SA-HamedNeural` <sup>Nová</sup> | Obecné |
 | Bulharština (Bulharsko) | `bg-BG` | Female | `bg-BG-KalinaNeural` | Obecné |
-| Bulharština (Bulharsko) | `bg-BG` | Male | `bg-BG-BorislavNeural` <sup>Nový</sup> | Obecné |
+| Bulharština (Bulharsko) | `bg-BG` | Male | `bg-BG-BorislavNeural` <sup>Nová</sup> | Obecné |
 | katalánština (Španělsko) | `ca-ES` | Female | `ca-ES-AlbaNeural` | Obecné |
-| katalánština (Španělsko) | `ca-ES` | Female | `ca-ES-JoanaNeural` <sup>Nový</sup> | Obecné |
-| katalánština (Španělsko) | `ca-ES` | Male | `ca-ES-EnricNeural` <sup>Nový</sup> | Obecné |
+| katalánština (Španělsko) | `ca-ES` | Female | `ca-ES-JoanaNeural` <sup>Nová</sup> | Obecné |
+| katalánština (Španělsko) | `ca-ES` | Male | `ca-ES-EnricNeural` <sup>Nová</sup> | Obecné |
 | Čínština (kantonština, tradiční) | `zh-HK` | Female | `zh-HK-HiuGaaiNeural` | Obecné |
-| Čínština (kantonština, tradiční) | `zh-HK` | Female | `zh-HK-HiuMaanNeural` <sup>Nový</sup> | Obecné |
-| Čínština (kantonština, tradiční) | `zh-HK` | Male | `zh-HK-WanLungNeural` <sup>Nový</sup> | Obecné |
+| Čínština (kantonština, tradiční) | `zh-HK` | Female | `zh-HK-HiuMaanNeural` <sup>Nová</sup> | Obecné |
+| Čínština (kantonština, tradiční) | `zh-HK` | Male | `zh-HK-WanLungNeural` <sup>Nová</sup> | Obecné |
 | Čínština (Mandarin, zjednodušená) | `zh-CN` | Female | `zh-CN-XiaoxiaoNeural` | Obecné, více dostupných stylů hlasu [pomocí SSML](speech-synthesis-markup.md#adjust-speaking-styles)  |
 | Čínština (Mandarin, zjednodušená) | `zh-CN` | Female | `zh-CN-XiaoyouNeural` | Dětský hlas, optimalizovaný pro mluvený popis scénáře |
 | Čínština (Mandarin, zjednodušená) | `zh-CN` | Male | `zh-CN-YunyangNeural` | Optimalizováno pro čtení zpráv,<br /> více dostupných stylů hlasu [pomocí SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
 | Čínština (Mandarin, zjednodušená) | `zh-CN` | Male | `zh-CN-YunyeNeural` | Optimalizováno pro mluvený popis scénáře  |
-| Čínština (tchajwanský mandarinka) | `zh-TW` | Female | `zh-TW-HsiaoChenNeural` <sup>Nový</sup> | Obecné |
+| Čínština (tchajwanský mandarinka) | `zh-TW` | Female | `zh-TW-HsiaoChenNeural` <sup>Nová</sup> | Obecné |
 | Čínština (tchajwanský mandarinka) | `zh-TW` | Female | `zh-TW-HsiaoYuNeural` | Obecné |
-| Čínština (tchajwanský mandarinka) | `zh-TW` | Male | `zh-TW-YunJheNeural` <sup>Nový</sup> | Obecné |
+| Čínština (tchajwanský mandarinka) | `zh-TW` | Male | `zh-TW-YunJheNeural` <sup>Nová</sup> | Obecné |
 | chorvatština (Chorvatsko) | `hr-HR` | Female | `hr-HR-GabrijelaNeural` | Obecné |
-| chorvatština (Chorvatsko) | `hr-HR` | Male | `hr-HR-SreckoNeural` <sup>Nový</sup> | Obecné |
+| chorvatština (Chorvatsko) | `hr-HR` | Male | `hr-HR-SreckoNeural` <sup>Nová</sup> | Obecné |
 | Čeština (Čeština) | `cs-CZ` | Female | `cs-CZ-VlastaNeural` | Obecné |
-| Čeština (Čeština) | `cs-CZ` | Male | `cs-CZ-AntoninNeural` <sup>Nový</sup> | Obecné |
+| Čeština (Čeština) | `cs-CZ` | Male | `cs-CZ-AntoninNeural` <sup>Nová</sup> | Obecné |
 | dánština (Dánsko) | `da-DK` | Female | `da-DK-ChristelNeural` | Obecné |
-| dánština (Dánsko) | `da-DK` | Male | `da-DK-JeppeNeural` <sup>Nový</sup> | Obecné |
+| dánština (Dánsko) | `da-DK` | Male | `da-DK-JeppeNeural` <sup>Nová</sup> | Obecné |
 | nizozemština (Nizozemsko) | `nl-NL` | Female | `nl-NL-ColetteNeural` | Obecné |
-| nizozemština (Nizozemsko) | `nl-NL` | Female | `nl-NL-FennaNeural` <sup>Nový</sup> | Obecné |
-| nizozemština (Nizozemsko) | `nl-NL` | Male | `nl-NL-MaartenNeural` <sup>Nový</sup> | Obecné |
+| nizozemština (Nizozemsko) | `nl-NL` | Female | `nl-NL-FennaNeural` <sup>Nová</sup> | Obecné |
+| nizozemština (Nizozemsko) | `nl-NL` | Male | `nl-NL-MaartenNeural` <sup>Nová</sup> | Obecné |
 | Angličtina (Austrálie) | `en-AU` | Female | `en-AU-NatashaNeural` | Obecné |
 | Angličtina (Austrálie) | `en-AU` | Male | `en-AU-WilliamNeural` | Obecné |
 | Angličtina (Kanada) | `en-CA` | Female | `en-CA-ClaraNeural` | Obecné |
-| Angličtina (Kanada) | `en-CA` | Male | `en-CA-LiamNeural` <sup>Nový</sup> | Obecné |
+| Angličtina (Kanada) | `en-CA` | Male | `en-CA-LiamNeural` <sup>Nová</sup> | Obecné |
 | Angličtina (Indie) | `en-IN` | Female | `en-IN-NeerjaNeural` | Obecné |
-| Angličtina (Indie) | `en-IN` | Male | `en-IN-PrabhatNeural` <sup>Nový</sup> | Obecné |
+| Angličtina (Indie) | `en-IN` | Male | `en-IN-PrabhatNeural` <sup>Nová</sup> | Obecné |
 | Angličtina (Irsko) | `en-IE` | Female | `en-IE-EmilyNeural` | Obecné |
-| Angličtina (Irsko) | `en-IE` | Male | `en-IE-ConnorNeural` <sup>Nový</sup> | Obecné |
+| Angličtina (Irsko) | `en-IE` | Male | `en-IE-ConnorNeural` <sup>Nová</sup> | Obecné |
 | Angličtina (Spojené království) | `en-GB` | Female | `en-GB-LibbyNeural` | Obecné |
 | Angličtina (Spojené království) | `en-GB` | Female | `en-GB-MiaNeural` | Obecné |
 | Angličtina (Spojené království) | `en-GB` | Male | `en-GB-RyanNeural` | Obecné |
@@ -188,29 +188,29 @@ Neuronové hlasy se dají použít k zajištění většího přirozeného a pou
 | Angličtina (Spojené státy) | `en-US` | Female | `en-US-JennyNeural` | Obecné |
 | Angličtina (Spojené státy) | `en-US` | Male | `en-US-GuyNeural` | Obecné |
 | finština (Finsko) | `fi-FI` | Female | `fi-FI-NooraNeural` | Obecné |
-| finština (Finsko) | `fi-FI` | Female | `fi-FI-SelmaNeural` <sup>Nový</sup> | Obecné |
-| finština (Finsko) | `fi-FI` | Male | `fi-FI-HarriNeural` <sup>Nový</sup> | Obecné |
+| finština (Finsko) | `fi-FI` | Female | `fi-FI-SelmaNeural` <sup>Nová</sup> | Obecné |
+| finština (Finsko) | `fi-FI` | Male | `fi-FI-HarriNeural` <sup>Nová</sup> | Obecné |
 | Francouzština (Kanada) | `fr-CA` | Female | `fr-CA-SylvieNeural` | Obecné |
 | Francouzština (Kanada) | `fr-CA` | Male | `fr-CA-JeanNeural` | Obecné |
 | francouzština (Francie) | `fr-FR` | Female | `fr-FR-DeniseNeural` | Obecné |
 | francouzština (Francie) | `fr-FR` | Male | `fr-FR-HenriNeural` | Obecné |
 | Francouzština (Švýcarsko) | `fr-CH` | Female | `fr-CH-ArianeNeural` | Obecné |
-| Francouzština (Švýcarsko) | `fr-CH` | Male | `fr-CH-FabriceNeural` <sup>Nový</sup> | Obecné |
+| Francouzština (Švýcarsko) | `fr-CH` | Male | `fr-CH-FabriceNeural` <sup>Nová</sup> | Obecné |
 | Němčina (Rakousko) | `de-AT` | Female | `de-AT-IngridNeural` | Obecné |
-| Němčina (Rakousko) | `de-AT` | Male | `de-AT-JonasNeural` <sup>Nový</sup> | Obecné |
+| Němčina (Rakousko) | `de-AT` | Male | `de-AT-JonasNeural` <sup>Nová</sup> | Obecné |
 | němčina (Německo) | `de-DE` | Female | `de-DE-KatjaNeural` | Obecné |
 | němčina (Německo) | `de-DE` | Male | `de-DE-ConradNeural` | Obecné |
 | Němčina (Švýcarsko) | `de-CH` | Female | `de-CH-LeniNeural` | Obecné |
-| Němčina (Švýcarsko) | `de-CH` | Male | `de-CH-JanNeural` <sup>Nový</sup> | Obecné |
+| Němčina (Švýcarsko) | `de-CH` | Male | `de-CH-JanNeural` <sup>Nová</sup> | Obecné |
 | Řečtina (Řecko) | `el-GR` | Female | `el-GR-AthinaNeural` | Obecné |
-| Řečtina (Řecko) | `el-GR` | Male | `el-GR-NestorasNeural` <sup>Nový</sup> | Obecné |
+| Řečtina (Řecko) | `el-GR` | Male | `el-GR-NestorasNeural` <sup>Nová</sup> | Obecné |
 | Hebrejština (Izrael) | `he-IL` | Female | `he-IL-HilaNeural` | Obecné |
-| Hebrejština (Izrael) | `he-IL` | Male | `he-IL-AvriNeural` <sup>Nový</sup> | Obecné |
+| Hebrejština (Izrael) | `he-IL` | Male | `he-IL-AvriNeural` <sup>Nová</sup> | Obecné |
 | hindština (Indie) | `hi-IN` | Female | `hi-IN-SwaraNeural` | Obecné |
-| hindština (Indie) | `hi-IN` | Male | `hi-IN-MadhurNeural` <sup>Nový</sup> | Obecné |
+| hindština (Indie) | `hi-IN` | Male | `hi-IN-MadhurNeural` <sup>Nová</sup> | Obecné |
 | Maďarština (Maďarsko) | `hu-HU` | Female | `hu-HU-NoemiNeural` | Obecné |
-| Maďarština (Maďarsko) | `hu-HU` | Male | `hu-HU-TamasNeural` <sup>Nový</sup> | Obecné |
-| Indonéština (Indonésie) | `id-ID` | Female | `id-ID-GadisNeural` <sup>Nový</sup> | Obecné |
+| Maďarština (Maďarsko) | `hu-HU` | Male | `hu-HU-TamasNeural` <sup>Nová</sup> | Obecné |
+| Indonéština (Indonésie) | `id-ID` | Female | `id-ID-GadisNeural` <sup>Nová</sup> | Obecné |
 | Indonéština (Indonésie) | `id-ID` | Male | `id-ID-ArdiNeural` | Obecné |
 | italština (Itálie) | `it-IT` | Female | `it-IT-ElsaNeural` | Obecné |
 | italština (Itálie) | `it-IT` | Female | `it-IT-IsabellaNeural` | Obecné |
@@ -220,45 +220,45 @@ Neuronové hlasy se dají použít k zajištění většího přirozeného a pou
 | korejština (Jižní Korea) | `ko-KR` | Female | `ko-KR-SunHiNeural` | Obecné |
 | korejština (Jižní Korea) | `ko-KR` | Male | `ko-KR-InJoonNeural` | Obecné |
 | malajština (Malajsie) | `ms-MY` | Female | `ms-MY-YasminNeural` | Obecné |
-| malajština (Malajsie) | `ms-MY` | Male | `ms-MY-OsmanNeural` <sup>Nový</sup> | Obecné |
+| malajština (Malajsie) | `ms-MY` | Male | `ms-MY-OsmanNeural` <sup>Nová</sup> | Obecné |
 | Norština, Bokmål (Norsko) | `nb-NO` | Female | `nb-NO-IselinNeural` | Obecné |
-| Norština, Bokmål (Norsko) | `nb-NO` | Female | `nb-NO-PernilleNeural` <sup>Nový</sup> | Obecné |
-| Norština, Bokmål (Norsko) | `nb-NO` | Male | `nb-NO-FinnNeural` <sup>Nový</sup> | Obecné |
-| polština (Polsko) | `pl-PL` | Female | `pl-PL-AgnieszkaNeural` <sup>Nový</sup> | Obecné |
+| Norština, Bokmål (Norsko) | `nb-NO` | Female | `nb-NO-PernilleNeural` <sup>Nová</sup> | Obecné |
+| Norština, Bokmål (Norsko) | `nb-NO` | Male | `nb-NO-FinnNeural` <sup>Nová</sup> | Obecné |
+| polština (Polsko) | `pl-PL` | Female | `pl-PL-AgnieszkaNeural` <sup>Nová</sup> | Obecné |
 | polština (Polsko) | `pl-PL` | Female | `pl-PL-ZofiaNeural` | Obecné |
-| polština (Polsko) | `pl-PL` | Male | `pl-PL-MarekNeural` <sup>Nový</sup> | Obecné |
+| polština (Polsko) | `pl-PL` | Male | `pl-PL-MarekNeural` <sup>Nová</sup> | Obecné |
 | Portugalština (Brazílie) | `pt-BR` | Female | `pt-BR-FranciscaNeural` | Obecné, více dostupných stylů hlasu [pomocí SSML](speech-synthesis-markup.md#adjust-speaking-styles)  |
 | Portugalština (Brazílie) | `pt-BR` | Male | `pt-BR-AntonioNeural` | Obecné |
 | portugalština (Portugalsko) | `pt-PT` | Female | `pt-PT-FernandaNeural` | Obecné |
-| portugalština (Portugalsko) | `pt-PT` | Female | `pt-PT-RaquelNeural` <sup>Nový</sup> | Obecné |
-| portugalština (Portugalsko) | `pt-PT` | Male | `pt-PT-DuarteNeural` <sup>Nový</sup> | Obecné |
+| portugalština (Portugalsko) | `pt-PT` | Female | `pt-PT-RaquelNeural` <sup>Nová</sup> | Obecné |
+| portugalština (Portugalsko) | `pt-PT` | Male | `pt-PT-DuarteNeural` <sup>Nová</sup> | Obecné |
 | rumunština (Rumunsko) | `ro-RO` | Female | `ro-RO-AlinaNeural` | Obecné |
-| rumunština (Rumunsko) | `ro-RO` | Male | `ro-RO-EmilNeural` <sup>Nový</sup> | Obecné |
+| rumunština (Rumunsko) | `ro-RO` | Male | `ro-RO-EmilNeural` <sup>Nová</sup> | Obecné |
 | ruština (Rusko) | `ru-RU` | Female | `ru-RU-DariyaNeural` | Obecné |
-| ruština (Rusko) | `ru-RU` | Female | `ru-RU-SvetlanaNeural` <sup>Nový</sup> | Obecné |
-| ruština (Rusko) | `ru-RU` | Male | `ru-RU-DmitryNeural` <sup>Nový</sup> | Obecné |
+| ruština (Rusko) | `ru-RU` | Female | `ru-RU-SvetlanaNeural` <sup>Nová</sup> | Obecné |
+| ruština (Rusko) | `ru-RU` | Male | `ru-RU-DmitryNeural` <sup>Nová</sup> | Obecné |
 | slovenština (Slovensko) | `sk-SK` | Female | `sk-SK-ViktoriaNeural` | Obecné |
-| slovenština (Slovensko) | `sk-SK` | Male | `sk-SK-LukasNeural` <sup>Nový</sup> | Obecné |
+| slovenština (Slovensko) | `sk-SK` | Male | `sk-SK-LukasNeural` <sup>Nová</sup> | Obecné |
 | slovinština (Slovinsko) | `sl-SI` | Female | `sl-SI-PetraNeural` | Obecné |
-| slovinština (Slovinsko) | `sl-SI` | Male | `sl-SI-RokNeural` <sup>Nový</sup> | Obecné |
+| slovinština (Slovinsko) | `sl-SI` | Male | `sl-SI-RokNeural` <sup>Nová</sup> | Obecné |
 | Španělština (Mexiko) | `es-MX` | Female | `es-MX-DaliaNeural` | Obecné |
 | Španělština (Mexiko) | `es-MX` | Male | `es-MX-JorgeNeural` | Obecné |
 | Španělština (Španělsko) | `es-ES` | Female | `es-ES-ElviraNeural` | Obecné |
 | Španělština (Španělsko) | `es-ES` | Male | `es-ES-AlvaroNeural` | Obecné |
 | švédština (Švédsko) | `sv-SE` | Female | `sv-SE-HilleviNeural` | Obecné |
-| švédština (Švédsko) | `sv-SE` | Female | `sv-SE-SofieNeural` <sup>Nový</sup> | Obecné |
-| švédština (Švédsko) | `sv-SE` | Male | `sv-SE-MattiasNeural` <sup>Nový</sup> | Obecné |
+| švédština (Švédsko) | `sv-SE` | Female | `sv-SE-SofieNeural` <sup>Nová</sup> | Obecné |
+| švédština (Švédsko) | `sv-SE` | Male | `sv-SE-MattiasNeural` <sup>Nová</sup> | Obecné |
 | Tamilština (Indie) | `ta-IN` | Female | `ta-IN-PallaviNeural` | Obecné |
-| Tamilština (Indie) | `ta-IN` | Male | `ta-IN-ValluvarNeural` <sup>Nový</sup> | Obecné |
+| Tamilština (Indie) | `ta-IN` | Male | `ta-IN-ValluvarNeural` <sup>Nová</sup> | Obecné |
 | Telugština (Indie) | `te-IN` | Female | `te-IN-ShrutiNeural` | Obecné |
-| Telugština (Indie) | `te-IN` | Male | `te-IN-MohanNeural` <sup>Nový</sup> | Obecné |
+| Telugština (Indie) | `te-IN` | Male | `te-IN-MohanNeural` <sup>Nová</sup> | Obecné |
 | thajština (Thajsko) | `th-TH` | Female | `th-TH-AcharaNeural` | Obecné |
 | thajština (Thajsko) | `th-TH` | Female | `th-TH-PremwadeeNeural` | Obecné |
-| thajština (Thajsko) | `th-TH` | Male | `th-TH-NiwatNeural` <sup>Nový</sup> | Obecné |
+| thajština (Thajsko) | `th-TH` | Male | `th-TH-NiwatNeural` <sup>Nová</sup> | Obecné |
 | turečtina (Turecko) | `tr-TR` | Female | `tr-TR-EmelNeural` | Obecné |
-| turečtina (Turecko) | `tr-TR` | Male | `tr-TR-AhmetNeural` <sup>Nový</sup> | Obecné |
+| turečtina (Turecko) | `tr-TR` | Male | `tr-TR-AhmetNeural` <sup>Nová</sup> | Obecné |
 | Vietnamština (Vietnam) | `vi-VN` | Female | `vi-VN-HoaiMyNeural` | Obecné |
-| Vietnamština (Vietnam) | `vi-VN` | Male | `vi-VN-NamMinhNeural` <sup>Nový</sup> | Obecné |
+| Vietnamština (Vietnam) | `vi-VN` | Male | `vi-VN-NamMinhNeural` <sup>Nová</sup> | Obecné |
 
 #### <a name="neural-voices-in-preview"></a>Hlasy neuronové ve verzi Preview
 
@@ -272,15 +272,15 @@ Níže jsou hlasy neuronové ve verzi Public Preview.
 | Čínština (Mandarin, zjednodušená) | `zh-CN` | Female | `zh-CN-XiaoxuanNeural` | Obecné, více aktérů rolí a stylů dostupných [pomocí SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
 | Čínština (Mandarin, zjednodušená) | `zh-CN` | Male   | `zh-CN-YunxiNeural` | Obecné, více stylů dostupných [pomocí SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
 | Estonština (Estonsko) | `et-EE` | Female | `et-EE-AnuNeural` | Obecné |
-| Estonština (Estonsko) | `et-EE` | Male | `et-EE-KertNeural` <sup>Nový</sup> | Obecné |
+| Estonština (Estonsko) | `et-EE` | Male | `et-EE-KertNeural` <sup>Nová</sup> | Obecné |
 | Irština (Irsko) | `ga-IE` | Female | `ga-IE-OrlaNeural` | Obecné |
-| Irština (Irsko) | `ga-IE` | Male | `ga-IE-ColmNeural` <sup>Nový</sup> | Obecné |
+| Irština (Irsko) | `ga-IE` | Male | `ga-IE-ColmNeural` <sup>Nová</sup> | Obecné |
 | lotyština (Lotyšsko) | `lv-LV` | Female | `lv-LV-EveritaNeural` | Obecné |
-| lotyština (Lotyšsko) | `lv-LV` | Male | `lv-LV-NilsNeural` <sup>Nový</sup> | Obecné |
+| lotyština (Lotyšsko) | `lv-LV` | Male | `lv-LV-NilsNeural` <sup>Nová</sup> | Obecné |
 | litevština (Litva) | `lt-LT` | Female | `lt-LT-OnaNeural` | Obecné |
-| litevština (Litva) | `lt-LT` | Male | `lt-LT-LeonasNeural` <sup>Nový</sup> | Obecné |
+| litevština (Litva) | `lt-LT` | Male | `lt-LT-LeonasNeural` <sup>Nová</sup> | Obecné |
 | Maltština (Malta) | `mt-MT` | Female | `mt-MT-GraceNeural` | Obecné |
-| Maltština (Malta) | `mt-MT` | Male | `mt-MT-JosephNeural` <sup>Nový</sup> | Obecné |
+| Maltština (Malta) | `mt-MT` | Male | `mt-MT-JosephNeural` <sup>Nová</sup> | Obecné |
 
 > [!IMPORTANT]
 > Hlasy ve verzi Public Preview jsou dostupné jenom ve třech oblastech služby: Východní USA, Západní Evropa a jihovýchodní Asie.

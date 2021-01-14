@@ -7,12 +7,13 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a8b2fdf99b33df3322748b7e073cc4ab18957c84
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.custom: contperf-fy21q3
+ms.openlocfilehash: 00e6802f37ec60467edbea98038dd23fcba1239a
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045236"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185491"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Správa modelů digitálních vláken Azure
 
@@ -52,9 +53,6 @@ V rámci této metody můžete přejít na, abyste definovali modely pro nemocni
 ## <a name="upload-models"></a>Nahrávání modelů
 
 Po vytvoření modelů je můžete nahrát do instance digitálních vláken Azure.
-
-> [!TIP]
-> Před odesláním do instance digitálního vlákna Azure doporučujeme vaše modely ověřit offline. Můžete použít [knihovnu analyzátorů DTDL na straně klienta](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/) a [ukázku validátoru DTDL](/samples/azure-samples/dtdl-validator/dtdl-validator) popsané v tématu [*Postupy: analýza a ověření modelů*](how-to-parse-models.md) pro kontrolu vašich modelů před jejich odesláním do služby.
 
 Až budete připraveni k nahrání modelu, můžete použít následující fragment kódu:
 

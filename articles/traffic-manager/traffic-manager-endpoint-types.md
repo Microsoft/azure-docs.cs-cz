@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2017
 ms.author: duau
-ms.openlocfilehash: 692c63849bc9e92ded43db3bf22ce14384f2b68d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e55c2115edef684f38aa53172596beffd101ef59
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401278"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184386"
 ---
 # <a name="traffic-manager-endpoints"></a>Koncové body Traffic Manageru
 
@@ -92,15 +92,15 @@ Pokud jsou všechny koncové body v profilu zakázané, nebo pokud je samotný p
 
 ## <a name="faqs"></a>Nejčastější dotazy
 
-* [Můžu použít Traffic Manager s koncovými body z více předplatných?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-traffic-manager-with-endpoints-from-multiple-subscriptions)
+* [Můžu použít Traffic Manager s koncovými body z více předplatných?](./traffic-manager-faqs.md#can-i-use-traffic-manager-with-endpoints-from-multiple-subscriptions)
 
-* [Můžu použít Traffic Manager s testovacími sloty cloudové služby?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-traffic-manager-with-cloud-service-staging-slots)
+* [Můžu použít Traffic Manager s testovacími sloty cloudové služby?](./traffic-manager-faqs.md#can-i-use-traffic-manager-with-cloud-service-staging-slots)
 
-* [Podporuje Traffic Manager koncové body IPv6?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-manager-support-ipv6-endpoints)
+* [Podporuje Traffic Manager koncové body IPv6?](./traffic-manager-faqs.md#does-traffic-manager-support-ipv6-endpoints)
 
-* [Můžu použít Traffic Manager s více než jednou webovou aplikací ve stejné oblasti?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-traffic-manager-with-more-than-one-web-app-in-the-same-region)
+* [Můžu použít Traffic Manager s více než jednou webovou aplikací ve stejné oblasti?](./traffic-manager-faqs.md#can-i-use-traffic-manager-with-more-than-one-web-app-in-the-same-region)
 
-* [Návody přesunout koncové body Azure profilu Traffic Manager do jiné skupiny prostředků?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-do-i-move-my-traffic-manager-profiles-azure-endpoints-to-a-different-resource-group-or-subscription)
+* [Návody přesunout koncové body Azure profilu Traffic Manager do jiné skupiny prostředků?](./traffic-manager-faqs.md#how-do-i-move-my-traffic-manager-profiles-azure-endpoints-to-a-different-resource-group-or-subscription)
 
 ## <a name="next-steps"></a>Další kroky
 

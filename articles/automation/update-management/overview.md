@@ -3,14 +3,14 @@ title: Přehled Azure Automation Update Management
 description: Tento článek poskytuje přehled funkce Update Management, která implementuje aktualizace pro počítače se systémem Windows a Linux.
 services: automation
 ms.subservice: update-management
-ms.date: 12/09/2020
+ms.date: 01/13/2021
 ms.topic: conceptual
-ms.openlocfilehash: 4b557c9772e76b6b61cdf01799ee30ba6bc11807
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: d66d4d32c788317d8b0781f9f24120fbce2f6f8f
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928422"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185610"
 ---
 # <a name="update-management-overview"></a>Přehled Update Managementu
 
@@ -65,16 +65,16 @@ Počítač zaregistrovaný pro Update Management ve více než jednom pracovním
 
 ## <a name="clients"></a>Klienti
 
-### <a name="supported-client-types"></a>Podporované typy klientů
+### <a name="supported-operating-systems"></a>Podporované operační systémy
 
-Následující tabulka uvádí podporované operační systémy pro posouzení aktualizací a opravy. Oprava vyžaduje Hybrid Runbook Worker, který se automaticky nainstaluje, když povolíte virtuální počítač nebo server pro správu pomocí Update Management. Informace o Hybrid Runbook Worker systémových požadavcích najdete v tématu [nasazení Hybrid Runbook Worker Windows](../automation-windows-hrw-install.md) a [nasazení Hybrid Runbook Worker pro Linux](../automation-linux-hrw-install.md).
+Následující tabulka uvádí podporované operační systémy pro posouzení aktualizací a opravy. Oprava vyžaduje systémovou Hybrid Runbook Worker, která se automaticky nainstaluje, když povolíte virtuální počítač nebo server pro správu pomocí Update Management. Informace o Hybrid Runbook Worker systémových požadavcích najdete v tématu [nasazení Hybrid Runbook Worker Windows](../automation-windows-hrw-install.md) a [nasazení Hybrid Runbook Worker pro Linux](../automation-linux-hrw-install.md).
 
 > [!NOTE]
 > Posouzení aktualizací počítačů se systémem Linux je podporováno pouze v určitých oblastech, které jsou uvedeny v účtu Automation a v [tabulce mapování](../how-to/region-mappings.md#supported-mappings)Log Analytics pracovního prostoru.
 
 |Operační systém  |Poznámky  |
 |---------|---------|
-|Windows Server 2019 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2016 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2012 R2 (Datacenter/Standard)<br><br>Windows Server 2012 ||
+|Windows Server 2019 (Datacenter/Datacenter Core/Standard)<br>Windows Server 2016 (Datacenter/Datacenter Core/Standard)<br>Windows Server 2012 R2 (Datacenter/Standard)<br>Windows Server 2012 |
 |Windows Server 2008 R2 (RTM a SP1 Standard)| Update Management podporuje posouzení a opravy pro tento operační systém. [Hybrid Runbook Worker](../automation-windows-hrw-install.md) se podporuje pro Windows Server 2008 R2. |
 |CentOS 6 a 7 (x64)      | Agenti Linux vyžadují přístup k úložišti aktualizací. Oprava založená na klasifikaci vyžaduje `yum` , aby vracela data zabezpečení, která CentOS ve svých verzích RTM. Další informace o opravách na základě klasifikace na CentOS najdete v tématu [klasifikace aktualizací v systému Linux](view-update-assessments.md#linux).          |
 |Red Hat Enterprise 6 a 7 (x64)     | Agenti Linux vyžadují přístup k úložišti aktualizací.        |
@@ -84,9 +84,9 @@ Následující tabulka uvádí podporované operační systémy pro posouzení a
 > [!NOTE]
 > Sady škálování virtuálních počítačů Azure je možné spravovat prostřednictvím Update Management. Update Management pracuje na samotných instancích a nikoli na základní imagi. Aktualizace budete muset naplánovat přírůstkově, takže se neaktualizují všechny instance virtuálních počítačů najednou. Uzly pro sadu škálování virtuálních počítačů můžete přidat pomocí postupu v části [Přidání počítače mimo Azure do Change Tracking a inventáře](../automation-tutorial-installed-software.md#add-a-non-azure-machine-to-change-tracking-and-inventory).
 
-### <a name="unsupported-client-types"></a>Nepodporované typy klientů
+### <a name="unsupported-operating-systems"></a>Nepodporované operační systémy
 
-V následující tabulce jsou uvedeny nepodporované operační systémy:
+Následující tabulka uvádí operační systémy, které nejsou podporovány nástrojem Update Management:
 
 |Operační systém  |Poznámky  |
 |---------|---------|
@@ -94,15 +94,20 @@ V následující tabulce jsou uvedeny nepodporované operační systémy:
 |Windows Server 2016 Nano Server     | Nepodporováno       |
 |Uzly služby Azure Kubernetes | Nepodporováno Použijte proces opravy popsaný v tématu [použití aktualizací zabezpečení a jádra pro uzly Linux ve službě Azure Kubernetes Service (AKS)](../../aks/node-updates-kured.md) .|
 
-### <a name="client-requirements"></a>Požadavky na klienty
+### <a name="system-requirements"></a>Požadavky na systém
 
-Následující informace popisují požadavky klienta specifické pro operační systém. Další pokyny najdete v tématu [Plánování sítě](#ports). Informace o požadavcích klienta na TLS 1,2 najdete v tématu [vynucení TLS 1,2 pro Azure Automation](../automation-managing-data.md#tls-12-enforcement-for-azure-automation).
+Následující informace popisují požadavky specifické pro operační systém. Další pokyny najdete v tématu [Plánování sítě](#ports). Pokud chcete pochopit požadavky na TLS 1,2, přečtěte si téma [vynucení TLS 1,2 pro Azure Automation](../automation-managing-data.md#tls-12-enforcement-for-azure-automation).
 
 #### <a name="windows"></a>Windows
 
+Požadavky na software:
+
+- Vyžaduje se .NET Framework 4,6 nebo novější. ([Stáhněte si .NET Framework](/dotnet/framework/install/guide-for-developers).
+- Je vyžadován Windows PowerShell 5,1 ([Stáhnout Windows Management Framework 5,1](https://www.microsoft.com/download/details.aspx?id=54616).)
+
 Agenti systému Windows musí být nakonfigurováni pro komunikaci se serverem WSUS nebo vyžadují přístup k Microsoft Update. Pro hybridní počítače doporučujeme nainstalovat agenta Log Analytics pro Windows tím, že nejprve připojíte počítač k [serverům s podporou ARC Azure](../../azure-arc/servers/overview.md)a pak pomocí Azure Policy přiřadíte [agenta nasazení Log Analytics k](../../governance/policy/samples/built-in-policies.md#monitoring) integrovaným zásadám Windows Azure ARC. Případně, pokud plánujete monitorovat počítače pomocí Azure Monitor pro virtuální počítače, použijte raději iniciativu [Enable Azure monitor pro virtuální počítače](../../governance/policy/samples/built-in-initiatives.md#monitoring) .
 
-Update Management můžete použít s Microsoft Endpoint Configuration Manager. Další informace o integračních scénářích najdete v tématu věnovaném [integraci Update Management s Windows Endpoint Configuration Manager](mecmintegration.md). Pro Windows servery spravované lokalitami ve vašem Configuration Manager prostředí se vyžaduje [agent Log Analytics pro Windows](../../azure-monitor/platform/agent-windows.md) . 
+Update Management můžete použít s Microsoft Endpoint Configuration Manager. Další informace o integračních scénářích najdete v tématu věnovaném [integraci Update Management s Windows Endpoint Configuration Manager](mecmintegration.md). Pro Windows servery spravované lokalitami ve vašem Configuration Manager prostředí se vyžaduje [agent Log Analytics pro Windows](../../azure-monitor/platform/agent-windows.md) .
 
 Ve výchozím nastavení jsou virtuální počítače s Windows, které jsou nasazené z Azure Marketplace, nastavené na příjem automatických aktualizací ze služby web Windows Update. Toto chování se nemění při přidávání virtuálních počítačů s Windows do pracovního prostoru. Pokud nespravujete aktivně aktualizace pomocí Update Management, použije se výchozí chování (pro automatické použití aktualizací).
 
@@ -111,7 +116,11 @@ Ve výchozím nastavení jsou virtuální počítače s Windows, které jsou nas
 
 #### <a name="linux"></a>Linux
 
-Pro Linux vyžaduje počítač přístup k úložišti aktualizací, které je buď soukromé, nebo veřejné. K interakci s Update Management je potřeba protokol TLS 1,1 nebo TLS 1,2. Update Management nepodporuje agenta Log Analytics pro Linux, který je nakonfigurován tak, aby hlásil do více než jednoho pracovního prostoru Log Analytics. Počítač musí mít také nainstalovaný Python 2. x.
+Požadavky na software:
+
+- Počítač vyžaduje přístup k úložišti aktualizací, které je buď soukromé, nebo veřejné.
+- K interakci s Update Management je potřeba protokol TLS 1,1 nebo TLS 1,2.
+- Je nainstalovaný Python 2. x.
 
 > [!NOTE]
 > Posouzení aktualizací počítačů se systémem Linux je podporováno pouze v určitých oblastech. Viz [Tabulka mapování](../how-to/region-mappings.md#supported-mappings)účtu služby Automation a Log Analytics pracovního prostoru.
@@ -130,11 +139,11 @@ Update Management používá prostředky popsané v této části. Tyto prostře
 
 ### <a name="hybrid-runbook-worker-groups"></a>Skupiny Hybrid Runbook Worker
 
-Po povolení Update Management se všechny počítače s Windows, které jsou přímo připojené k vašemu pracovnímu prostoru Log Analytics, automaticky nakonfigurují jako Hybrid Runbook Worker pro podporu runbooků, které podporují Update Management.
+Po povolení Update Management se všechny počítače s Windows, které jsou přímo připojené k vašemu pracovnímu prostoru Log Analytics, automaticky nakonfigurují jako systémové Hybrid Runbook Worker, aby podporovaly Runbooky podporující Update Management.
 
 Každý počítač s Windows, který je spravovaný pomocí Update Management, je uvedený v podokně Hybrid Worker Groups jako systémová skupina hybridních pracovních procesů pro účet Automation. Skupiny používají `Hostname FQDN_GUID` konvence vytváření názvů. Tyto skupiny nemůžete cílit na tyto sady Runbook ve vašem účtu. Pokud se pokusíte, pokus se nezdaří. Tyto skupiny jsou určené pouze pro podporu Update Management. Další informace o zobrazení seznamu počítačů s Windows nakonfigurovaných jako Hybrid Runbook Worker najdete v tématu [zobrazení procesů Hybrid Runbook Worker](../automation-hybrid-runbook-worker.md#view-system-hybrid-runbook-workers).
 
-Počítač s Windows můžete přidat do skupiny Hybrid Runbook Worker v účtu Automation pro podporu runbooků Automation, pokud používáte stejný účet pro Update Management a Hybrid Runbook Worker členství ve skupině. Tato funkce se přidala do 7.2.12024.0 verze Hybrid Runbook Worker.
+Počítač s Windows můžete přidat do skupiny uživatelů Hybrid Runbook Worker v účtu Automation pro podporu runbooků Automation, pokud používáte stejný účet pro Update Management a Hybrid Runbook Worker členství ve skupině. Tato funkce se přidala do 7.2.12024.0 verze Hybrid Runbook Worker.
 
 ### <a name="management-packs"></a>Sady Management Pack
 
@@ -158,11 +167,11 @@ Další informace o aktualizacích sad Management Pack najdete v tématu [připo
 
 Následující tabulka popisuje připojené zdroje, které Update Management podporuje:
 
-| Připojený zdroj | Podporováno | Popis |
+| Připojený zdroj | Podporováno | Description |
 | --- | --- | --- |
-| Agenti systému Windows |Ano |Update Management shromažďuje informace o aktualizacích systému z agentů Windows a potom spustí instalaci požadovaných aktualizací. |
-| Agenti systému Linux |Ano |Update Management shromažďuje informace o aktualizacích systému z agentů Linux a potom spustí instalaci požadovaných aktualizací v podporovaných distribucích. |
-| Skupina pro správu Operations Manageru |Ano |Update Management shromažďuje informace o aktualizacích systému z agentů v připojené skupině pro správu.<br/><br/>Přímé připojení od agenta Operations Manager do Azure Monitor protokolů není vyžadováno. Data se předávají ze skupiny pro správu do pracovního prostoru Log Analytics. |
+| Agenti systému Windows |Yes |Update Management shromažďuje informace o aktualizacích systému z agentů Windows a potom spustí instalaci požadovaných aktualizací. |
+| Agenti systému Linux |Yes |Update Management shromažďuje informace o aktualizacích systému z agentů Linux a potom spustí instalaci požadovaných aktualizací v podporovaných distribucích. |
+| Skupina pro správu Operations Manageru |Yes |Update Management shromažďuje informace o aktualizacích systému z agentů v připojené skupině pro správu.<br/><br/>Přímé připojení od agenta Operations Manager do Azure Monitor protokolů není vyžadováno. Data se předávají ze skupiny pro správu do pracovního prostoru Log Analytics. |
 
 ### <a name="collection-frequency"></a>Četnost shromažďování dat
 
@@ -207,7 +216,7 @@ Následující tabulka definuje klasifikace, které Update Management podporuje 
 |Balíčky funkcí     | Nové funkce produktu distribuované mimo vydání produktu.        |
 |Aktualizace Service Pack     | Kumulativní sada oprav hotfix, které se aplikují na aplikaci.        |
 |Aktualizace definic     | Aktualizace virů nebo jiných definičních souborů.        |
-|Nástroje     | Nástroj nebo funkce, které pomáhají dokončit jednu nebo více úloh.        |
+|nástroje     | Nástroj nebo funkce, které pomáhají dokončit jednu nebo více úloh.        |
 |Aktualizace     | Aktualizace aplikace nebo souboru, který je aktuálně nainstalován.        |
 
 Následující tabulka definuje podporované klasifikace aktualizací pro Linux.

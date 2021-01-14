@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/22/2018
 ms.author: duau
-ms.openlocfilehash: d96cd9b3c83357c2591edf4bbb09a82b897c6a24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f2aa3d05d349880b5eb2d35a2c58af0741b9855
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91826041"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185576"
 ---
 # <a name="nested-traffic-manager-profiles"></a>Vnořené profily Traffic Manageru
 
@@ -97,23 +97,23 @@ Nastavení monitorování v profilu Traffic Manager platí pro všechny koncové
 
 ## <a name="faqs"></a>Nejčastější dotazy
 
-* [Návody nakonfigurovat vnořené profily?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#traffic-manager-nested-profiles)
+* [Návody nakonfigurovat vnořené profily?](./traffic-manager-faqs.md#traffic-manager-nested-profiles)
 
-* [Kolik vrstev vnoření podporuje Traffic Manager?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-layers-of-nesting-does-traffic-manger-support)
+* [Kolik vrstev vnoření podporuje Traffic Manager?](./traffic-manager-faqs.md#how-many-layers-of-nesting-does-traffic-manger-support)
 
-* [Můžu ve stejném profilu Traffic Manager kombinovat jiné typy koncových bodů s vnořenými podřízenými profily?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-mix-other-endpoint-types-with-nested-child-profiles-in-the-same-traffic-manager-profile)
+* [Můžu ve stejném profilu Traffic Manager kombinovat jiné typy koncových bodů s vnořenými podřízenými profily?](./traffic-manager-faqs.md#can-i-mix-other-endpoint-types-with-nested-child-profiles-in-the-same-traffic-manager-profile)
 
-* [Jak model fakturace platí pro vnořené profily?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-the-billing-model-apply-for-nested-profiles)
+* [Jak model fakturace platí pro vnořené profily?](./traffic-manager-faqs.md#how-does-the-billing-model-apply-for-nested-profiles)
 
-* [Je pro vnořené profily dopad na výkon?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#is-there-a-performance-impact-for-nested-profiles)
+* [Je pro vnořené profily dopad na výkon?](./traffic-manager-faqs.md#is-there-a-performance-impact-for-nested-profiles)
 
-* [Jak Traffic Manager počítá stav vnořeného koncového bodu v nadřazeném profilu?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-manager-compute-the-health-of-a-nested-endpoint-in-a-parent-profile)
+* [Jak Traffic Manager počítá stav vnořeného koncového bodu v nadřazeném profilu?](./traffic-manager-faqs.md#how-does-traffic-manager-compute-the-health-of-a-nested-endpoint-in-a-parent-profile)
 
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o [profilech Traffic Manager](traffic-manager-overview.md)
 
-Informace o tom, jak [vytvořit profil Traffic Manager](traffic-manager-create-profile.md)
+Informace o tom, jak [vytvořit profil Traffic Manager](./quickstart-create-traffic-manager-profile.md)
 
 <!--Image references-->
 [1]: ./media/traffic-manager-nested-profiles/figure-1.png

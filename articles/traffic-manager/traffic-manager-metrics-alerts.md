@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/11/2018
 ms.author: duau
-ms.openlocfilehash: 997e2e97161e6db7cdca04c1b79f5149a2e4c409
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bd3588c207fe8828744a665539830d81805bd7b3
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003527"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184267"
 ---
 # <a name="traffic-manager-metrics-and-alerts"></a>Traffic Manager metriky a výstrahy
 
@@ -58,10 +58,10 @@ Tato metrika se dá zobrazit buď jako agregovaná hodnota představující stav
 
 *Obrázek 4: rozdělené zobrazení metrik stavu koncového bodu*
 
-Tyto metriky můžete využívat prostřednictvím portálu [služby Azure monitor](../azure-monitor/platform/metrics-supported.md), [REST API](https://docs.microsoft.com/rest/api/monitor/), [Azure CLI](https://docs.microsoft.com/cli/azure/monitor)a [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.applicationinsights)nebo prostřednictvím části metriky v prostředí portálu Traffic Manager.
+Tyto metriky můžete využívat prostřednictvím portálu [služby Azure monitor](../azure-monitor/platform/metrics-supported.md), [REST API](/rest/api/monitor/), [Azure CLI](/cli/azure/monitor)a [Azure PowerShell](/powershell/module/az.applicationinsights)nebo prostřednictvím části metriky v prostředí portálu Traffic Manager.
 
 ## <a name="alerts-on-traffic-manager-metrics"></a>Výstrahy na Traffic Manager metriky
-Kromě zpracování a zobrazování metrik z Azure Monitor Traffic Manager umožňuje zákazníkům nakonfigurovat a přijímat výstrahy spojené s těmito metrikami. V těchto metrikách si můžete vybrat, jaké podmínky je potřeba splnit, aby se zobrazila výstraha, jak často se tyto podmínky musí monitorovat a jak se mají výstrahy posílat. Další informace najdete v [dokumentaci Azure monitor Alerts](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md).
+Kromě zpracování a zobrazování metrik z Azure Monitor Traffic Manager umožňuje zákazníkům nakonfigurovat a přijímat výstrahy spojené s těmito metrikami. V těchto metrikách si můžete vybrat, jaké podmínky je potřeba splnit, aby se zobrazila výstraha, jak často se tyto podmínky musí monitorovat a jak se mají výstrahy posílat. Další informace najdete v [dokumentaci Azure monitor Alerts](../azure-monitor/platform/alerts-metric.md).
 
 ## <a name="next-steps"></a>Další kroky
 - Další informace o [službě Azure Monitor Service](../azure-monitor/platform/metrics-supported.md)

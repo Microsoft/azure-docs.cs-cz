@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
 ms.custom: mvc, seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 7e63f770763d1960148dfdfa184d0b4e2b76754c
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 2c4fbefc1bb801ab4a9387054ac91e5fca14ec18
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427095"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185593"
 ---
 # <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>Kurz: Vytvoření webové aplikace Java jarní Boot pomocí Azure App Service v systému Linux a Azure Cosmos DB
 
@@ -20,7 +20,7 @@ Tento kurz vás provede procesem sestavení, konfigurace, nasazení a škálová
 
 ![Aplikace pro spouštění pružiny, která ukládá data do Azure Cosmos DB](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
 
-V tomto kurzu se naučíte:
+V tomto kurzu:
 
 > [!div class="checklist"]
 > * Vytvořte databázi Cosmos DB.
@@ -55,23 +55,23 @@ yes | cp -rf .prep/* .
 
 Pomocí těchto kroků vytvořte v předplatném Azure Cosmos DBovou databázi. Aplikace seznamu úkolů se připojí k této databázi a uloží její data při spuštění a zůstane beze stavu aplikace bez ohledu na to, kde aplikaci spustíte.
 
-1. Přihlaste se k rozhraní příkazového řádku Azure a případně nastavte předplatné, pokud máte více než jedno připojení k přihlašovacím údajům.
+1. Přihlaste se k rozhraní příkazového řádku Azure a volitelně můžete nastavit předplatné, pokud máte více než jedno připojení k přihlašovacím údajům.
 
-    ```bash
+    ```azurecli
     az login
     az account set -s <your-subscription-id>
     ```   
 
 2. Vytvořte skupinu prostředků Azure, která označuje název skupiny prostředků.
 
-    ```bash
+    ```azurecli
     az group create -n <your-azure-group-name> \
         -l <your-resource-group-region>
     ```
 
 3. Vytvořte Azure Cosmos DB s `GlobalDocumentDB` typem. Název Cosmos DB musí obsahovat jenom malá písmena. Poznamenejte si `documentEndpoint` pole v odpovědi z příkazu.
 
-    ```bash
+    ```azurecli
     az cosmosdb create --kind GlobalDocumentDB \
         -g <your-azure-group-name> \
         -n <your-azure-COSMOS-DB-name-in-lower-case-letters>
@@ -79,7 +79,7 @@ Pomocí těchto kroků vytvořte v předplatném Azure Cosmos DBovou databázi. 
 
 4. Získejte Azure Cosmos DB klíč pro připojení k aplikaci. `primaryMasterKey` `documentEndpoint` V dalším kroku nechte v nejbližším případě, že je budete potřebovat.
 
-    ```bash
+    ```azurecli
     az cosmosdb list-keys -g <your-azure-group-name> -n <your-azure-COSMOSDB-name>
     ```
 
@@ -146,7 +146,7 @@ mvn package spring-boot:run
 
 Výstup by měl vypadat nějak takto.
 
-```bash
+```output
 bash-3.2$ mvn package spring-boot:run
 [INFO] Scanning for projects...
 [INFO] 
@@ -291,7 +291,7 @@ Na adresním řádku by se měla zobrazit aplikace spuštěná se vzdálenou adr
 
 Horizontální navýšení kapacity aplikace přidáním dalšího pracovního procesu:
 
-```bash
+```azurecli
 az appservice plan update --number-of-workers 2 \
    --name ${WEBAPP_PLAN_NAME} \
    --resource-group <your-azure-group-name>
@@ -301,7 +301,7 @@ az appservice plan update --number-of-workers 2 \
 
 Pokud tyto prostředky nepotřebujete pro další kurz (viz [Další kroky](#next)), můžete je odstranit spuštěním následujícího příkazu ve službě Cloud Shell: 
   
-```bash
+```azurecli
 az group delete --name <your-azure-group-name>
 ```
 

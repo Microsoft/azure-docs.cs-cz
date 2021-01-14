@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: c3cdc0a9fb9fa236fae37a52194f446278a42f72
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: d2f35ae7a6110acb2ca89bdaeb487eddabf84923
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616242"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185814"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>Modelování a dělení dat ve službě Azure Cosmos DB s využitím příkladu z reálného světa
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -60,7 +60,7 @@ Tady je seznam požadavků, které bude tato platforma muset vystavit:
 
 V této fázi jsme si nemysleli, jaké informace o tom, co jednotlivé entity (uživatelé, příspěvky atd.) budou obsahovat. Tento krok je obvykle mezi prvními, aby se provedl při navrhování na relačním úložišti, protože je nutné zjistit, jak budou tyto entity překládat z hlediska tabulek, sloupců, cizích klíčů atd. Je mnohem méně obav s databází dokumentů, která neuplatňuje žádné schéma při zápisu.
 
-Hlavním důvodem, proč je důležité identifikovat naše vzory přístupu od začátku, je to, že tento seznam žádostí bude naší sadou testů. Pokaždé, když procházíme přes náš datový model, projdeme jednotlivé požadavky a zkontrolujeme výkon a škálovatelnost.
+Hlavním důvodem, proč je důležité identifikovat naše vzory přístupu od začátku, je to, že tento seznam žádostí bude naší sadou testů. Pokaždé, když procházíme přes náš datový model, projdeme jednotlivé požadavky a zkontrolujeme výkon a škálovatelnost. Vyhodnotí se jednotky žádostí spotřebované v jednotlivých modelech a optimalizuje se. Všechny tyto modely používají výchozí zásady indexování a můžete je přepsat nastavením specifických vlastností, což může dále zlepšit spotřebu RU a latenci.
 
 ## <a name="v1-a-first-version"></a>V1: první verze
 
@@ -295,7 +295,7 @@ Také upravujeme komentáře a podobné položky pro přidání uživatelského 
 
 To, co chceme dosáhnout, je to, že při každém přidání komentáře nebo podobného příspěvku také zvýšíme `commentCount` nebo `likeCount` v odpovídajícím příspěvku. Jak `posts` je náš kontejner rozdělený na oddíly `postId` , nová položka (komentář nebo jako) a její odpovídající příspěvek do stejného logického oddílu. V důsledku toho můžeme tuto operaci provést pomocí [uložené procedury](stored-procedures-triggers-udfs.md) .
 
-Nyní při vytváření komentáře ( **[C3]** ) místo pouhého přidávání nové položky do `posts` kontejneru zavoláme následující uloženou proceduru v tomto kontejneru:
+Nyní při vytváření komentáře (**[C3]**) místo pouhého přidávání nové položky do `posts` kontejneru zavoláme následující uloženou proceduru v tomto kontejneru:
 
 ```javascript
 function createComment(postId, comment) {

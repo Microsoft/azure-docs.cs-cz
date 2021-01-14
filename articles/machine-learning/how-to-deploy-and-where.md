@@ -1,26 +1,26 @@
 ---
-title: Jak a kde nasadit modely
+title: Postup nasazení modelů strojového učení
 titleSuffix: Azure Machine Learning
-description: Naučte se, jak a kde nasadit modely Azure Machine Learning, včetně Azure Container Instances, služby Azure Kubernetes, Azure IoT Edge a FPGA.
+description: Naučte se, jak a kde nasazovat modely strojového učení. Nasazení do Azure Container Instances, služby Azure Kubernetes, Azure IoT Edge a FPGA.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.author: gopalv
 author: gvashishtha
 ms.reviewer: larryfr
-ms.date: 12/11/2020
+ms.date: 01/13/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: 195f1c527185fbd55450b6151f26525074db75f7
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: e9c691485eb0ec1a0b3c0564f9a8f9a5d2aa255d
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070418"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185797"
 ---
-# <a name="deploy-models-with-azure-machine-learning"></a>Nasazování modelů pomocí služby Azure Machine Learning
+# <a name="deploy-machine-learning-models-to-azure"></a>Nasazení modelů strojového učení do Azure
 
-Naučte se, jak nasadit model strojového učení jako webovou službu v cloudu Azure nebo Azure IoT Edge zařízení.
+Naučte se, jak nasadit model strojového učení nebo obsáhlého učení jako webovou službu v cloudu Azure. Můžete také nasadit do zařízení Azure IoT Edge.
 
 Pracovní postup je podobný bez ohledu na to, kam model nasadíte:
 
@@ -31,7 +31,7 @@ Pracovní postup je podobný bez ohledu na to, kam model nasadíte:
 1. Nasaďte model do cílového výpočetního objektu.
 1. Otestujte výslednou webovou službu.
 
-Další informace o konceptech, které jsou součástí pracovního postupu nasazení, najdete v tématu [Správa, nasazení a monitorování modelů pomocí Azure Machine Learning](concept-model-management-and-deployment.md).
+Další informace o konceptech, které jsou součástí pracovního postupu nasazení Machine Learning, najdete v tématu [Správa, nasazení a monitorování modelů pomocí Azure Machine Learning](concept-model-management-and-deployment.md).
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -197,7 +197,7 @@ Minimální odvozená konfigurace může být zapsaná jako:
 }
 ```
 
-To určuje, že nasazení bude používat soubor `score.py` v `./working_dir` adresáři ke zpracování příchozích požadavků.
+Tím se určí, že nasazení machine learningu bude používat soubor `score.py` v `./working_dir` adresáři ke zpracování příchozích požadavků.
 
 Podrobné informace o odvozených konfiguracích [najdete v tomto článku](./reference-azure-machine-learning-cli.md#inference-configuration-schema) . 
 
@@ -269,7 +269,7 @@ from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservic
 
 ---
 
-## <a name="deploy-your-model"></a>Nasazení modelu
+## <a name="deploy-your-machine-learning-model"></a>Nasazení modelu Machine Learning
 
 Teď jste připraveni nasadit svůj model. 
 
@@ -319,8 +319,8 @@ Následující tabulka popisuje různé stavy služby:
 | Přechod | Služba je v procesu nasazení. | No |
 | Není v pořádku | Služba je nasazená, ale v tuto chvíli není dostupná.  | No |
 | Unschedulable | Službu nyní nelze nasadit z důvodu nedostatku prostředků. | No |
-| Neúspěšný | Nasazení služby se nezdařilo z důvodu chyby nebo selhání. | Ano |
-| V pořádku | Služba je v pořádku a koncový bod je k dispozici. | Ano |
+| Neúspěšný | Nasazení služby se nezdařilo z důvodu chyby nebo selhání. | Yes |
+| V pořádku | Služba je v pořádku a koncový bod je k dispozici. | Yes |
 
 > [!TIP]
 > Při nasazování jsou image Docker pro cíle výpočtů sestavené a načtené z Azure Container Registry (ACR). Ve výchozím nastavení Azure Machine Learning vytvoří ACR, který používá *základní* úroveň služby. Změna ACR pro váš pracovní prostor na úroveň Standard nebo Premium může zkrátit dobu potřebnou k sestavování a nasazování imagí do vašich výpočetních cílů. Další informace najdete v tématu [Azure Container Registry úrovně služeb](../container-registry/container-registry-skus.md).

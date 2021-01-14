@@ -2,13 +2,13 @@
 title: Azure IoT Hub jako zdroj Event Grid
 description: Tento článek poskytuje vlastnosti a schéma pro události Azure IoT Hub. Obsahuje seznam dostupných typů událostí, příklad události a vlastností události.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 02ecf8d4df55aa6b4319e40892778f85f94e29a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/13/2021
+ms.openlocfilehash: 7e1c480bd2a662a2ee3418b35dc9c3b50d412a60
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86113645"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185831"
 ---
 # <a name="azure-iot-hub-as-an-event-grid-source"></a>Azure IoT Hub jako zdroj Event Grid
 Tento článek poskytuje vlastnosti a schéma pro události Azure IoT Hub. Úvod do schémat událostí najdete v tématu [Azure Event Grid schéma událostí](event-schema.md). 
@@ -26,8 +26,6 @@ Azure IoT Hub emituje následující typy událostí:
 | Microsoft.Devices.DeviceConnected | Publikováno, když je zařízení připojené ke IoT Hub. |
 | Microsoft.Devices.DeviceDisconnected | Publikováno, když se zařízení odpojí od služby IoT Hub. | 
 | Microsoft.Devices.DeviceTelemetry | Publikováno při odeslání zprávy telemetrie do služby IoT Hub. |
-
-Všechny události zařízení s výjimkou událostí telemetrie zařízení jsou všeobecně dostupné ve všech oblastech podporovaných nástrojem Event Grid. Událost telemetrie zařízení je ve verzi Public Preview a je dostupná ve všech oblastech kromě Východní USA, Západní USA, Západní Evropa, [Azure Government](../azure-government/documentation-government-welcome.md), [Azure Čína 21Vianet](/azure/china/china-welcome)a [Azure Německo](https://azure.microsoft.com/global-infrastructure/germany/).
 
 ### <a name="example-event"></a>Příklad události
 

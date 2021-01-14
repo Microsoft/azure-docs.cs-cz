@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2016
 ms.author: duau
-ms.openlocfilehash: 431eaff9da95063648d3e80acb54be9cc5c25bc5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: eaf50f3bdacaf5680bc5ecb1379faff20133b5ce
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021686"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184369"
 ---
 # <a name="using-load-balancing-services-in-azure"></a>Použití služeb pro vyrovnávání zatížení v Azure
 
@@ -41,7 +41,7 @@ Na koncepční úrovni každá z těchto služeb hraje jedinečnou roli v hierar
 * **Application Gateway** poskytuje aplikaci Service Delivery Controller (ADC) jako službu a nabízí různé možnosti vyrovnávání zatížení vrstvy 7 pro vaši aplikaci. Umožňuje zákazníkům optimalizovat produktivitu webové farmy tím, že v aplikační bráně předává ukončení protokolu TLS náročné na procesor. Mezi další možnosti směrování vrstvy 7 patří kruhové dotazování příchozích přenosů, spřažení relací na základě souborů cookie, směrování na základě cesty URL a možnost hostování několika webů za jedinou aplikační bránou. Application Gateway lze nakonfigurovat jako bránu internetovou bránu, pouze pro interní bránu nebo kombinaci obou. Application Gateway je plně spravovaná, škálovatelná a vysoká dostupnost Azure. Nabízí celou řadu možností diagnostiky a protokolování, které zlepšují správu.
 * **Load Balancer** je nedílnou součástí zásobníku Azure SDN, která poskytuje vysoce výkonné služby Vyrovnávání zatížení vrstvy 4 s nízkou latencí pro všechny protokoly UDP a TCP. Spravuje příchozí a odchozí připojení. Pokud chcete spravovat dostupnost služby, můžete nakonfigurovat veřejné a interní koncové body s vyrovnáváním zatížení a definovat pravidla pro mapování příchozích připojení na cíle v backendovém fondu s využitím možností monitorování stavu protokolů TCP a HTTP.
 
-## <a name="scenario"></a>Scénář
+## <a name="scenario"></a>Scenario
 
 V tomto ukázkovém scénáři používáme jednoduchý web, který slouží jako dva typy obsahu: obrazy a dynamicky vykreslené webové stránky. Web musí být geograficky redundantní a měl by sloužit svým uživatelům z nejbližšího umístění (nejnižší latence). Vývojář aplikace rozhodl, že všechny adresy URL, které odpovídají vzoru/images/*, se zpracovávají z vyhrazeného fondu virtuálních počítačů, které se liší od zbytku webové farmy.
 
@@ -92,11 +92,11 @@ Následující diagram znázorňuje architekturu tohoto scénáře:
 4. Definujte konfigurace virtuální sítě, podsítě, front-endové IP adresy a naslouchacího procesu pro službu Application Gateway. V tomto scénáři je front-end IP adresa **Veřejná**, což umožňuje později přidat jako koncový bod do profilu Traffic Manager.
 5. Nakonfigurujte naslouchací proces pomocí jedné z následujících možností:
     * Pokud používáte protokol HTTP, není k dispozici žádná konfigurace. Klikněte na **OK**.
-    * Pokud používáte protokol HTTPS, je vyžadována další konfigurace. Podívejte se na téma [Vytvoření aplikační brány](../application-gateway/application-gateway-create-gateway-portal.md), počínaje krokem 9. Po dokončení konfigurace klikněte na **OK**.
+    * Pokud používáte protokol HTTPS, je vyžadována další konfigurace. Podívejte se na téma [Vytvoření aplikační brány](../application-gateway/quick-create-portal.md), počínaje krokem 9. Po dokončení konfigurace klikněte na **OK**.
 
 #### <a name="configure-url-routing-for-application-gateways"></a>Konfigurace směrování adres URL pro brány Application Gateway
 
-Když zvolíte fond back-end, aplikace služby Application Gateway nakonfigurovaná s pravidlem na základě cesty má kromě distribuce kruhové dotazování také vzor cesty adresy URL požadavku. V tomto scénáři přidáváme pravidlo na základě cesty, které bude směrovat každou adresu URL s názvem "/images/ \* " do fondu imagí serveru. Další informace o konfiguraci směrování na základě cesty URL pro službu Application Gateway najdete v tématu [Vytvoření pravidla založeného na cestách pro službu Application Gateway](../application-gateway/application-gateway-create-url-route-portal.md).
+Když zvolíte fond back-end, aplikace služby Application Gateway nakonfigurovaná s pravidlem na základě cesty má kromě distribuce kruhové dotazování také vzor cesty adresy URL požadavku. V tomto scénáři přidáváme pravidlo na základě cesty, které bude směrovat každou adresu URL s názvem "/images/ \* " do fondu imagí serveru. Další informace o konfiguraci směrování na základě cesty URL pro službu Application Gateway najdete v tématu [Vytvoření pravidla založeného na cestách pro službu Application Gateway](../application-gateway/create-url-route-portal.md).
 
 ![Application Gateway diagram webové vrstvy](./media/traffic-manager-load-balancing-azure/web-tier-diagram.png)
 
@@ -156,7 +156,7 @@ V tomto scénáři Load Balancer distribuuje připojení z webové vrstvy k data
 
 Pokud databázový cluster s vysokou dostupností používá SQL Server AlwaysOn, přečtěte si téma [konfigurace jednoho nebo více naslouchacího procesu skupiny dostupnosti Always On](../azure-sql/virtual-machines/windows/availability-group-listener-powershell-configure.md) pro podrobné pokyny.
 
-Další informace o konfiguraci interního nástroje pro vyrovnávání zatížení najdete [v tématu Vytvoření interního nástroje pro vyrovnávání zatížení v Azure Portal](../load-balancer/load-balancer-get-started-ilb-arm-portal.md).
+Další informace o konfiguraci interního nástroje pro vyrovnávání zatížení najdete [v tématu Vytvoření interního nástroje pro vyrovnávání zatížení v Azure Portal](../load-balancer/quickstart-load-balancer-standard-internal-portal.md).
 
 1. V Azure Portal v levém podokně klikněte na **vytvořit prostředek**  >  **síťový**  >  **Nástroj pro vyrovnávání zatížení**.
 2. Vyberte název svého nástroje pro vyrovnávání zatížení.
@@ -210,5 +210,5 @@ Teď nakonfigurujeme front-end port IP a modul pro vyrovnávání zatížení v 
 ## <a name="next-steps"></a>Další kroky
 
 * [Přehled služby Traffic Manager](traffic-manager-overview.md)
-* [Přehled služby Application Gateway](../application-gateway/application-gateway-introduction.md)
+* [Přehled služby Application Gateway](../application-gateway/overview.md)
 * [Azure Load Balancer – přehled](../load-balancer/load-balancer-overview.md)

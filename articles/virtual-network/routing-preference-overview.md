@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/02/2020
 ms.author: mnayak
-ms.openlocfilehash: 656f8a0e0530a20807fc8fddd4cd96d1d955c8ac
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: fa83c51469636eb269aa5dc3192ff7e65b53ce89
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97912695"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186137"
 ---
 # <a name="what-is-routing-preference-preview"></a>Co je předvolby směrování (Preview)?
 
@@ -60,7 +60,7 @@ Veřejná IP adresa s volbou předvolby směrování "globální síť Microsoft
 * Azure Kubernetes Service (AKS)
 * Internetový nástroj pro vyrovnávání zatížení
 * Application Gateway
-* Brána Azure Firewall
+* Azure Firewall
 
 Pro úložiště primární koncové body vždy používají **globální síť Microsoft**. Můžete povolit sekundární koncové body s **internetem** podle vašeho výběru pro směrování provozu. Podporované služby úložiště:
 
@@ -74,7 +74,7 @@ Cenový rozdíl mezi oběma možnostmi se odráží v ceně za přenos dat z Int
 
 ## <a name="limitations"></a>Omezení
 
-* Preference směrování je kompatibilní jenom se standardní SKU veřejné IP adresy. Základní SKU veřejné IP adresy se nepodporuje.
+* Preference směrování je kompatibilní jenom se standardní SKU zóny s redundantními verzemi veřejné IP adresy. Základní SKU veřejné IP adresy se nepodporuje.
 * Preference směrování aktuálně podporuje jenom veřejné IP adresy IPv4. Veřejné IP adresy protokolu IPv6 nejsou podporovány.
 * Virtuální počítače s několika síťovými kartami můžou mít jenom jeden typ předvolby směrování.
 

@@ -5,12 +5,12 @@ services: automation
 ms.date: 12/04/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: c6d0f38eaa25f2fe033a5e2cf48ee6daa51fcbe6
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: f00002c7374e0c35c7bb91c28b2dd87ad71e3350
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929272"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184913"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Řešení problémů s Update Managementem
 
@@ -425,7 +425,7 @@ K této chybě může dojít z některého z následujících důvodů:
 
 V případě potřeby použijte pro nasazení aktualizací [dynamické skupiny](../update-management/configure-groups.md) . Kromě toho můžete provést následující kroky.
 
-1. Ověřte, zda váš počítač nebo server splňuje [požadavky](../update-management/overview.md#client-requirements).
+1. Ověřte, zda váš počítač nebo server splňuje [požadavky](../update-management/overview.md#system-requirements).
 2. Ověřte připojení k Hybrid Runbook Worker pomocí Poradce při potížích Hybrid Runbook Worker agenta. Další informace o poradci při potížích najdete v tématu [Poradce při potížích s aktualizací agenta](update-agent-issues.md).
 
 ## <a name="scenario-updates-are-installed-without-a-deployment"></a><a name="updates-nodeployment"></a>Scénář: aktualizace se instalují bez nasazení.

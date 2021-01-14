@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 09/11/2020
+ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: dd1b6d216f6225a13d86aa2435b5b1c807547ec3
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: dda3ece27fd2c687647e0aa289bd1596a87b274f
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95014573"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186018"
 ---
 # <a name="telemetry-and-troubleshooting"></a>Telemetrie a řešení potíží
 
@@ -68,7 +68,7 @@ az iot hub list
 az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principal name>" --scopes="<resource ID of IoT Hub>"
 ```
 
-V manifestu nasazení [Azure Stack hraničního zařízení](https://go.microsoft.com/fwlink/?linkid=2142179) nebo jiném [stolním počítači](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)vyhledejte modul *telegraf* a nahraďte následující hodnoty informace o instančním objektu z předchozího kroku a znovu proveďte nasazení.
+V manifestu nasazení pro [Azure Stack hraniční zařízení](https://go.microsoft.com/fwlink/?linkid=2142179), [stolní počítač](https://go.microsoft.com/fwlink/?linkid=2152270)nebo [virtuální počítač Azure s grafickým procesorem](https://go.microsoft.com/fwlink/?linkid=2152189)vyhledejte modul *telegraf* a nahraďte následující hodnoty informace o instančním objektu z předchozího kroku a znovu proveďte nasazení.
 
 ```json
 
@@ -103,7 +103,7 @@ Po nasazení modulu telegraf můžete k nahlášeným metrikám přistup prostř
 
 ### <a name="system-health-events"></a>Události stavu systému
 
-| Název události | Popis|
+| Název události | Description|
 |------|---------|
 |archon_exit    |Odesílá se, když uživatel změní stav modulu prostorové analýzy ze *spuštěno* na *Zastaveno*.  |
 |archon_error   |Odesílá se v případě, že dojde k chybě kontejneru v případě jakéhokoli procesu. Toto je kritická chyba.  |
@@ -121,7 +121,7 @@ Po nasazení modulu telegraf můžete k nahlášeným metrikám přistup prostř
 
 ##  <a name="troubleshooting-an-iot-edge-device"></a>Řešení potíží s IoT Edge zařízením
 
-`iotedge`Nástroj příkazového řádku můžete použít ke kontrole stavu a protokolů spuštěných modulů. Například:
+`iotedge`Nástroj příkazového řádku můžete použít ke kontrole stavu a protokolů spuštěných modulů. Příklad:
 * `iotedge list`: Oznamuje seznam spuštěných modulů. 
   Chyby můžete dále kontrolovat pomocí `iotedge logs edgeAgent` . Pokud se `iotedge` zablokuje, můžete ho zkusit restartovat pomocí. `iotedge restart edgeAgent`
 * `iotedge logs <module-name>`
@@ -129,7 +129,7 @@ Po nasazení modulu telegraf můžete k nahlášeným metrikám přistup prostř
 
 ## <a name="collect-log-files-with-the-diagnostics-container"></a>Shromáždění souborů protokolu pomocí kontejneru diagnostiky
 
-Prostorová analýza vygeneruje protokoly ladění Docker, které můžete použít k diagnostice běhových problémů, nebo zahrnout do lístků podpory. Modul pro diagnostiku prostorových analýz je k dispozici na Container Registry Microsoftu, abyste si ho stáhli. V souboru nasazení manifestu pro [Azure Stack hraniční zařízení](https://go.microsoft.com/fwlink/?linkid=2142179) nebo v jiném [stolním počítači](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)vyhledejte modul *diagnostiky* .
+Prostorová analýza vygeneruje protokoly ladění Docker, které můžete použít k diagnostice běhových problémů, nebo zahrnout do lístků podpory. Modul pro diagnostiku prostorových analýz je k dispozici na Container Registry Microsoftu, abyste si ho stáhli. V souboru nasazení manifestu pro [Azure Stack hraniční zařízení](https://go.microsoft.com/fwlink/?linkid=2142179), [stolní počítač](https://go.microsoft.com/fwlink/?linkid=2152270)nebo [virtuální počítač Azure s grafickým procesorem](https://go.microsoft.com/fwlink/?linkid=2152189) vyhledejte modul *diagnostiky* .
 
 V části "ENV" přidejte následující konfiguraci:
 
@@ -188,13 +188,13 @@ Dá se taky nastavit prostřednictvím vlákna s dvojitým odkazem IoT Edge modu
 > `diagnostics`Modul nemá vliv na obsah protokolování, pomáhá při shromažďování, filtrování a nahrávání stávajících protokolů.
 > Chcete-li použít tento modul, musíte mít rozhraní Docker API verze 1,40 nebo vyšší.
 
-Ukázkový soubor manifestu nasazení pro [zařízení Azure Stack Edge](https://go.microsoft.com/fwlink/?linkid=2142179) nebo jiný [stolní počítač](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)  obsahuje modul s názvem `diagnostics` , který shromažďuje a odesílá protokoly. Tento modul je ve výchozím nastavení zakázán a měl by být povolený prostřednictvím konfigurace IoT Edge modulu, pokud potřebujete přístup k protokolům. 
+Ukázkový soubor manifestu nasazení pro [Azure Stack hraniční zařízení](https://go.microsoft.com/fwlink/?linkid=2142179), [stolní počítač](https://go.microsoft.com/fwlink/?linkid=2152270)nebo [virtuální počítač Azure pomocí GPU](https://go.microsoft.com/fwlink/?linkid=2152189) obsahuje modul s názvem `diagnostics` , který shromažďuje a odesílá protokoly. Tento modul je ve výchozím nastavení zakázán a měl by být povolený prostřednictvím konfigurace IoT Edge modulu, pokud potřebujete přístup k protokolům. 
 
 `diagnostics`Kolekce je na vyžádání a ovládána prostřednictvím IoT Edge přímé metody a může odesílat protokoly do Azure Blob Storage.
 
 ### <a name="configure-diagnostics-upload-targets"></a>Konfigurace cílů nahrávání diagnostiky
 
-Na portálu IoT Edge vyberte zařízení a pak modul **diagnostiky** . V souboru manifestu ukázkového nasazení pro [Azure Stack hraniční zařízení](https://go.microsoft.com/fwlink/?linkid=2142179) nebo v jiných [stolních počítačích](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)vyhledejte oddíl **proměnné prostředí** pro diagnostiku s názvem `env` a přidejte následující informace:
+Na portálu IoT Edge vyberte zařízení a pak modul **diagnostiky** . V ukázkovém souboru manifestu nasazení pro [Azure Stack hraniční zařízení](https://go.microsoft.com/fwlink/?linkid=2142179), [stolní počítače](https://go.microsoft.com/fwlink/?linkid=2152270)nebo [virtuální počítač Azure s grafickým procesorem](https://go.microsoft.com/fwlink/?linkid=2152189) vyhledejte oddíl **proměnné prostředí** pro diagnostiku s názvem `env` a přidejte následující informace:
 
 **Konfigurace nahrávání do Azure Blob Storage**
 
@@ -232,7 +232,7 @@ Protokoly se nahrávají na vyžádání pomocí `getRTCVLogs` metody IoT Edge v
 
 Následující tabulka obsahuje seznam parametrů, které můžete použít při dotazování protokolů.
 
-| Klíčové slovo | Popis | Výchozí hodnota |
+| Klíčové slovo | Description | Výchozí hodnota |
 |--|--|--|
 | StartTime | Čas spuštění požadovaných protokolů v milisekundách UTC | `-1`, začátek modulu runtime kontejneru. Když `[-1.-1]` se použije jako časový rozsah, rozhraní API vrátí protokoly za poslední hodinu.|
 | EndTime | Požadovaný čas ukončení protokolů v milisekundách UTC. | `-1`, aktuální čas. Když `[-1.-1]` se použije časový rozsah, rozhraní API vrátí protokoly za poslední hodinu. |
@@ -243,7 +243,7 @@ Následující tabulka obsahuje seznam parametrů, které můžete použít při
 
 V následující tabulce jsou uvedeny atributy v odpovědi na dotaz.
 
-| Klíčové slovo | Popis|
+| Klíčové slovo | Description|
 |--|--|
 |DoPost| Buď *hodnotu true* , nebo *false*. Určuje, jestli jsou protokoly nahrané nebo ne. Pokud se rozhodnete Nenahrávat protokoly, rozhraní API vrátí informace ***synchronně** _. Pokud se rozhodnete odeslat protokoly, rozhraní API vrátí 200, pokud je požadavek platný, a spustí odesílání protokolů _*_asynchronně_*_.|
 |TimeFilter| Filtr času aplikovaný na protokoly.|
@@ -331,7 +331,7 @@ Vzdáleně se připojte z klienta Windows. Po vytvoření clusteru Kubernetes m�
 1. Spusťte relaci Windows PowerShellu jako správce. 
     1. Ujistěte se, že je ve vašem klientovi spuštěná služba Vzdálená správa systému Windows. Do příkazového řádku zadejte `winrm quickconfig` .
 
-2. Přiřaďte proměnnou pro IP adresu zařízení. Například, `$ip = "<device-ip-address>"`.
+2. Přiřaďte proměnnou pro IP adresu zařízení. Například `$ip = "<device-ip-address>"`.
 
 3. Pomocí následujícího příkazu přidejte IP adresu vašeho zařízení do seznamu důvěryhodných hostitelů klienta. 
 

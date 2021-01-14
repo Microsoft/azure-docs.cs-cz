@@ -2,17 +2,17 @@
 title: O verzi Preview zóny Azure Edge
 description: 'Přečtěte si o nabídkách hraničního zpracování od Microsoftu: zóna Azure Edge.'
 services: vnf-manager
-author: ganesr
+author: cherylmc
 ms.service: vnf-manager
 ms.topic: article
-ms.date: 07/07/2020
-ms.author: ganesr
-ms.openlocfilehash: 68aa3342ab09be73a82f4f896ffdff99d15a5350
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/13/2021
+ms.author: cherylmc
+ms.openlocfilehash: 04555303d5128db6c183d27a0c5fcb69063fdc28
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329564"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185406"
 ---
 # <a name="about-azure-edge-zone-preview"></a>O verzi Preview zóny Azure Edge
 
@@ -38,7 +38,7 @@ Existují tři typy hraničních zón Azure:
 
 ![Azure Edge Zone](./media/edge-zones-overview/edge-zones.png "Azure Edge Zone")
 
-Hraniční zóny Azure jsou rozšíření Azure, která jsou umístěná v centrech, která jsou mnohem mimo oblasti Azure. Azure Edge Zones podporuje virtuální počítače, kontejnery a vybranou sadu služeb Azure, které umožňují spouštět aplikace náročné na latenci a propustnosti blízko koncovým uživatelům. Hraniční zóny Azure jsou součástí globální sítě Microsoftu. Poskytují zabezpečené a spolehlivé připojení s vysokou šířkou pásma mezi aplikacemi, které běží na hraniční zóně blízko uživatele. A nabízejí kompletní sadu služeb Azure běžící v rámci oblastí Azure. Hraniční zóny Azure jsou vlastněné a provozované společností Microsoft. Pomocí stejné sady nástrojů Azure a stejného portálu můžete spravovat a nasazovat služby do hraničních zón.
+Hraniční zóny Azure jsou rozšíření Azure, která jsou umístěná v centrech, která jsou mnohem mimo oblasti Azure. Azure Edge Zones podporuje virtuální počítače, kontejnery a vybranou sadu služeb Azure, které umožňují spouštět aplikace náročné na latenci a propustnosti blízko koncovým uživatelům. Hraniční zóny Azure jsou součástí globální sítě Microsoftu. Poskytují zabezpečené a spolehlivé připojení s vysokou šířkou pásma mezi aplikacemi, které běží na hraniční zóně blízko uživatele. Hraniční zóny Azure jsou vlastněné a provozované společností Microsoft. Pomocí stejné sady nástrojů Azure a stejného portálu můžete spravovat a nasazovat služby do hraničních zón.
 
 Mezi typické případy použití patří:
 
@@ -61,7 +61,7 @@ Další informace [vám poskytne tým hraničních zón](https://aka.ms/EdgeZone
 
 Hraniční zóny Azure s dopravcem jsou rozšíření Azure, která jsou umístěná v datových centrech mobilní operátory v umístěních na populaci. Hraniční zóna Azure s infrastrukturou dopravců je jediným směrováním ze sítě 5G mobilního operátora. Toto umístění nabízí latenci méně než 10 milisekund pro aplikace z mobilních zařízení.
 
-Hraniční zóny Azure s dopravcem se nasazují v datových centrech mobilní operátory a připojují se k globální síti Microsoft. Poskytují zabezpečené a spolehlivé připojení s vysokou šířkou pásma mezi aplikacemi, které běží blízko uživateli. A nabízejí kompletní sadu služeb Azure běžící v rámci oblastí Azure. Vývojáři můžou pomocí stejné sady známých nástrojů sestavovat a nasazovat služby do hraničních zón.
+Hraniční zóny Azure s dopravcem se nasazují v datových centrech mobilní operátory a připojují se k globální síti Microsoft. Poskytují zabezpečené a spolehlivé připojení s vysokou šířkou pásma mezi aplikacemi, které běží blízko uživateli. Vývojáři můžou pomocí stejné sady známých nástrojů sestavovat a nasazovat služby do hraničních zón.
 
 Mezi typické případy použití patří:
 
