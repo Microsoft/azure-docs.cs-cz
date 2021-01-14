@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: fdde7613627c9fec0694f3985f78cf10e52f59c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4052a9c8614a17c3b5cdd871ad78be8cc3258c5a
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397092"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202585"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>Instalace a konfigurace PostgreSQL v Azure
 PostgreSQL je pokročilá open source databáze podobná Oracle a DB2. Zahrnuje funkce připravené pro podnikové prostředí, jako je plně KYSELé dodržování předpisů, spolehlivé zpracování transakcí a řízení souběžnosti s více verzemi. Podporuje také standardy, jako je ANSI SQL a SQL/MED (včetně obálek cizích dat pro Oracle, MySQL, MongoDB a mnoho dalších). Je vysoce rozšiřitelná s podporou více než 12 procedurálních jazyků, GIN a registrových indexů, podpory prostorových dat a několika NoSQL funkcí podobných funkcím pro aplikace založené na formátu JSON nebo klíč-hodnota.
@@ -24,13 +24,13 @@ V tomto článku se dozvíte, jak nainstalovat a nakonfigurovat PostgreSQL na vi
 
 ## <a name="install-postgresql"></a>Nainstalovat PostgreSQL
 > [!NOTE]
-> Aby bylo možné dokončit tento kurz, musíte mít již virtuální počítač Azure se systémem Linux. Pokud chcete před pokračováním vytvořit a nastavit virtuální počítač se systémem Linux, přečtěte si [kurz k virtuálním počítačům Azure Linux](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+> Aby bylo možné dokončit tento kurz, musíte mít již virtuální počítač Azure se systémem Linux. Pokud chcete před pokračováním vytvořit a nastavit virtuální počítač se systémem Linux, přečtěte si [kurz k virtuálním počítačům Azure Linux](quick-create-cli.md).
 > 
 > 
 
 V takovém případě jako port PostgreSQL použijte port 1999.  
 
-Připojte se k virtuálnímu počítači se systémem Linux, který jste vytvořili prostřednictvím výstupu. Pokud používáte virtuální počítač Azure Linux poprvé, přečtěte si téma [Použití SSH se systémem Linux v Azure](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) a Naučte se používat výstupy pro připojení k virtuálnímu počítači Linux.
+Připojte se k virtuálnímu počítači se systémem Linux, který jste vytvořili prostřednictvím výstupu. Pokud používáte virtuální počítač Azure Linux poprvé, přečtěte si téma [Použití SSH se systémem Linux v Azure](mac-create-ssh-keys.md) a Naučte se používat výstupy pro připojení k virtuálnímu počítači Linux.
 
 1. Spusťte následující příkaz, který přepne do kořenového adresáře (správce):
 
