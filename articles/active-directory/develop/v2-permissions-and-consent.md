@@ -12,12 +12,12 @@ ms.date: 09/23/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
 ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40
-ms.openlocfilehash: d3edadd4878dbd6e06648f7fb67a0c3e111665d1
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: da432ee3877af4de931ee6d55860b647090d8e3d
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178122"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208773"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Oprávnění a souhlas v koncovém bodu Microsoft Identity Platform
 
@@ -31,8 +31,7 @@ Platforma Microsoft Identity implementuje autorizační protokol [OAuth 2,0](act
 * Rozhraní API pro Microsoft 365 poštu: `https://outlook.office.com`
 * Azure Key Vault: `https://vault.azure.net`
 
-> [!NOTE]
-> Důrazně doporučujeme použít Microsoft Graph místo rozhraní API pro Microsoft 365 poštu atd.
+Důrazně doporučujeme použít Microsoft Graph místo rozhraní API pro Microsoft 365 poštu atd.
 
 Totéž platí pro všechny prostředky třetích stran, které jsou integrované s platformou Microsoft identity. Kterýkoli z těchto prostředků taky může definovat sadu oprávnění, která se dají použít k rozdělení funkcí tohoto prostředku do menších bloků dat. Například [Microsoft Graph](https://graph.microsoft.com) má definovaná oprávnění k provádění následujících úloh mimo jiné:
 
@@ -115,8 +114,7 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
 
 Jakmile uživatel zadá své přihlašovací údaje, koncový bod platformy Microsoft Identity ověří odpovídající záznam *souhlasu uživatele*. Pokud uživatel nesouhlasí s žádným z požadovaných oprávnění v minulosti ani správce nesouhlasí s těmito oprávněními jménem celé organizace, koncový bod platformy Microsoft Identity žádá uživatele, aby udělil požadovaná oprávnění.
 
-> [!NOTE]
->V tuto chvíli `offline_access` jsou oprávnění ("zachovat přístup k datům, ke kterým jste udělili přístup") a `user.read` ("přihlášení a čtení vašeho profilu") automaticky zahrnutá do původního souhlasu aplikace.  Tato oprávnění se obecně vyžadují pro správné fungování aplikací – `offline_access` poskytuje aplikaci přístup k aktualizacím tokenů, kritickým pro nativní a webové aplikace, a současně `user.read` poskytuje přístup k `sub` deklaraci identity, což klientovi nebo aplikaci umožní správně identifikovat uživatele v čase a získat přístup k informacím základní uživatele.
+V tuto chvíli `offline_access` jsou oprávnění ("zachovat přístup k datům, ke kterým jste udělili přístup") a `user.read` ("přihlášení a čtení vašeho profilu") automaticky zahrnutá do původního souhlasu aplikace.  Tato oprávnění se obecně vyžadují pro správné fungování aplikací – `offline_access` poskytuje aplikaci přístup k aktualizacím tokenů, kritickým pro nativní a webové aplikace, a současně `user.read` poskytuje přístup k `sub` deklaraci identity, což klientovi nebo aplikaci umožní správně identifikovat uživatele v čase a získat přístup k informacím základní uživatele.
 
 ![Ukázkový snímek obrazovky, který zobrazuje souhlas pracovního účtu](./media/v2-permissions-and-consent/work_account_consent.png)
 
@@ -148,8 +146,7 @@ Pokud aplikace požaduje oprávnění aplikace a správce udělí tato oprávně
 
 ## <a name="using-the-admin-consent-endpoint"></a>Použití koncového bodu souhlasu správce
 
-> [!NOTE]
-> Poznámka: po udělení souhlasu správce pomocí koncového bodu souhlasu správce jste dokončili udělení souhlasu správce a uživatelé nepotřebují provádět žádné další další akce. Po udělení souhlasu správce můžou uživatelé získat přístupový token prostřednictvím obvyklého toku ověřování a výsledný přístupový token bude mít odsouhlasená oprávnění.
+Po udělení souhlasu správce pomocí koncového bodu souhlasu správce jste dokončili udělení souhlasu správce a uživatelé nebudou muset provádět žádné další další akce. Po udělení souhlasu správce můžou uživatelé získat přístupový token prostřednictvím obvyklého toku ověřování a výsledný přístupový token bude mít odsouhlasená oprávnění.
 
 Když správce společnosti používá vaši aplikaci a přesměruje se na koncový bod autorizace, detekuje platforma Microsoftu identitu uživatele a požádá, jestli chce jménem celého tenanta udělit oprávnění, která jste si vyžádali. Existuje však i vyhrazený koncový bod souhlasu správce, který můžete použít, pokud chcete proaktivně požádat správce o udělení oprávnění jménem celého tenanta. Použití tohoto koncového bodu je také nezbytné pro vyžadování oprávnění aplikace (které nelze požadovat pomocí koncového bodu autorizace).
 
@@ -263,8 +260,7 @@ Obor můžete použít `/.default` k usnadnění migrace vašich aplikací z kon
 
 Obor/.Default se dá použít v jakémkoli toku OAuth 2,0, ale je nutný v toku spouštěném [jménem](v2-oauth2-on-behalf-of-flow.md) a v [toku přihlašovacích údajů klienta](v2-oauth2-client-creds-grant-flow.md)a také při použití koncového bodu souhlasu správce v2 k vyžádání oprávnění aplikace.
 
-> [!NOTE]
-> Klienti nemůžou `/.default` v jednom požadavku kombinovat statické () a dynamické svolení. Proto `scope=https://graph.microsoft.com/.default+mail.read` dojde k chybě z důvodu kombinace typů oborů.
+Klienti nemůžou `/.default` v jednom požadavku kombinovat statické () a dynamické svolení. Proto `scope=https://graph.microsoft.com/.default+mail.read` dojde k chybě z důvodu kombinace typů oborů.
 
 ### <a name="default-and-consent"></a>/.Default a souhlas
 

@@ -2,24 +2,24 @@
 title: Kurz pro objednání Azure Data Box | Microsoft Docs
 description: V tomto kurzu se dozvíte o Azure Data Box hybridní řešení, které umožňuje importovat místní data do Azure a jak objednat Azure Data Box.
 services: databox
-author: alkohli
+author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 11/19/2020
+ms.date: 01/13/2021
 ms.author: alkohli
-ms.openlocfilehash: aad6a3ef754b5ba2c65a9b93fbdfcfdc26348487
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: fd165795be85c26cdfcaee3c4fd01427274a7316
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/14/2021
-ms.locfileid: "98186154"
+ms.locfileid: "98210337"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Kurz: Objednání Azure Data Boxu
 
-Azure Data Box Disk je hybridní řešení, které umožňuje rychle, snadno a spolehlivě importovat místní data do Azure. Data přenášíte do úložného zařízení 80 TB společnosti Microsoft, které je k dispozici, a pak zařízení dodáte zpátky. Data se potom nahrají do Azure.
+Azure Data Box Disk je hybridní řešení, které umožňuje rychle, snadno a spolehlivě importovat místní data do Azure. Data přenášíte do úložného zařízení dodaného Microsoft 80-TB (použitelné kapacity) a pak zařízení dodáte zpátky. Data se potom nahrají do Azure.
 
-Tento kurz popisuje, jak objednat Azure Data Box. V tomto kurzu získáte informace o těchto tématech:
+Tento kurz popisuje, jak objednat Azure Data Box. V tomto kurzu získáte informace o těchto tématech:  
 
 > [!div class="checklist"]
 >
@@ -245,7 +245,7 @@ Chcete-li zařízení objednat, proveďte následující kroky v Azure Portal.
     |Skupina prostředků    | Skupina prostředků, kterou jste vybrali dříve. |
     |Název importovaného objednávky | Zadejte popisný název pro sledování objednávky. <br> Název může být tvořen 3 až 24 písmeny, číslicemi a spojovníky. <br> Název musí začínat a končit písmenem nebo číslicí.    |
 
-    ![Průvodce Data Boxem pro import objednávek, obrazovka základy, se správnými informacemi, které jsou vyplněné](media/data-box-deploy-ordered/select-data-box-import-06.png)<!--Generic subscription. Cut note. Box command.-->
+    ![Průvodce Data Boxem pro import objednávek, obrazovka základy, se správnými informacemi, které jsou vyplněné](media/data-box-deploy-ordered/select-data-box-import-06.png)
 
 7. Na obrazovce **cíl dat** vyberte **cílové umístění dat** – buď účty úložiště, nebo spravované disky.
 
@@ -253,7 +253,11 @@ Chcete-li zařízení objednat, proveďte následující kroky v Azure Portal.
 
     ![Data Box Průvodce objednávkami importu, obrazovky cílová data a s vybranými účty úložiště](media/data-box-deploy-ordered/select-data-box-import-07.png)
 
-    Na základě zadané oblasti Azure vyberte z filtrovaného seznamu existujících účtů úložiště jeden nebo více účtů úložiště. Data Box je možné propojit až s 10 účty úložiště. Můžete si také vytvořit nový účet **Pro obecné účely v1**, **Pro obecné účely v2** nebo **účet úložiště objektů blob**.
+    Na základě zadané oblasti Azure vyberte jeden nebo víc účtů úložiště z filtrovaného seznamu stávajících účtů úložiště. Data Box je možné propojit až s 10 účty úložiště. Můžete si také vytvořit nový účet **Pro obecné účely v1**, **Pro obecné účely v2** nebo **účet úložiště objektů blob**.
+
+   > [!NOTE]
+   > - Když vyberete účty úložiště Azure Premium, zřízená kvóta ve sdílené složce účtu úložiště se zvýší na velikost kopírovaných dat do sdílených složek. Po zvýšení kvóty se znovu neupraví, například pokud z nějakého důvodu Data Box nemůže kopírovat vaše data.
+   > - Tato kvóta se používá k fakturaci. Po nahrání dat do datového centra byste měli upravit kvótu, aby vyhovovala vašim potřebám. Další informace najdete v tématu [Princip fakturace](../../articles/storage/files/understanding-billing.md).
 
     Účty úložiště s virtuálními sítěmi se podporují. Pokud chcete službě Data Box povolit práci se zabezpečenými účty úložiště, v nastavení síťové brány firewall účtu úložiště povolte důvěryhodné služby. Další informace najdete v tématu Postup [přidání Azure Data box jako důvěryhodné služby](../storage/common/storage-network-security.md#exceptions).
 
@@ -409,7 +413,7 @@ Při seřazení zařízení pomocí Azure CLI proveďte následující kroky:
 
 1. Zapište si nastavení pro Data Box objednávku. Mezi tato nastavení patří vaše osobní/obchodní informace, název předplatného, informace o zařízení a informace o expedici. Tato nastavení budete muset použít jako parametry při spuštění příkazu CLI k vytvoření pořadí Data Box. Následující tabulka ukazuje nastavení parametrů používané pro `az databox job create` :
 
-   | Nastavení (parametr) | Description |  Ukázková hodnota |
+   | Nastavení (parametr) | Popis |  Ukázková hodnota |
    |---|---|---|
    |resource-group| Použijte existující skupinu prostředků, nebo vytvořte novou. Skupina prostředků je logický kontejner prostředků, které lze spravovat nebo nasadit společně. | myresourcegroup|
    |name| Název vytvářené objednávky. | "mydataboxorder"|
@@ -419,7 +423,7 @@ Při seřazení zařízení pomocí Azure CLI proveďte následující kroky:
    |skladové| Konkrétní Data Box zařízení, které objednáváte. Platné hodnoty jsou: "DataBox", "DataBoxDisk" a "DataBoxHeavy"| "DataBox" |
    |e-mail – seznam| E-mailové adresy přidružené k objednávce| "gusp@contoso.com" |
    |ulice – Address1| Adresa ulice, na kterou bude objednávka odeslána | "15700 NE 39th St" |
-   |Ulice – Address2| Informace o sekundární adrese, například číslo bytu nebo číslo budovy. | "Bld 123" |
+   |Ulice – Address2| Informace o sekundární adrese, například číslo bytu nebo číslo budovy. | "Sestavování 123" |
    |city| Město, do kterého bude zařízení expedováno. | Redmond |
    |stát nebo provincie| Stav, ve kterém se zařízení dokončí.| WA |
    |country| Země, kterou bude zařízení dodán. | "USA" |
@@ -528,7 +532,7 @@ Pomocí Azure PowerShell seřazení zařízení postupujte podle následujícíc
 
 2. Zapište si nastavení pro Data Box objednávku. Mezi tato nastavení patří vaše osobní/obchodní informace, název předplatného, informace o zařízení a informace o expedici. Tato nastavení budete muset použít jako parametry při spuštění příkazu PowerShellu k vytvoření pořadí Data Box. Následující tabulka ukazuje nastavení parametrů používané pro [New-AzDataBoxJob](/powershell/module/az.databox/New-AzDataBoxJob).
 
-    | Nastavení (parametr) | Description |  Ukázková hodnota |
+    | Nastavení (parametr) | Popis |  Ukázková hodnota |
     |---|---|---|
     |ResourceGroupName [povinné]| Použijte existující skupinu prostředků. Skupina prostředků je logický kontejner prostředků, které lze spravovat nebo nasadit společně. | myresourcegroup|
     |Název [povinné]| Název vytvářené objednávky. | "mydataboxorder"|
@@ -538,7 +542,7 @@ Pomocí Azure PowerShell seřazení zařízení postupujte podle následujícíc
     |DataBoxType [povinné]| Konkrétní Data Box zařízení, které objednáváte. Platné hodnoty jsou: "DataBox", "DataBoxDisk" a "DataBoxHeavy"| "DataBox" |
     |EmailId [povinné]| E-mailové adresy přidružené k objednávce| "gusp@contoso.com" |
     |StreetAddress1 [povinné]| Adresa ulice, na kterou bude objednávka odeslána | "15700 NE 39th St" |
-    |StreetAddress2| Informace o sekundární adrese, například číslo bytu nebo číslo budovy. | "Bld 123" |
+    |StreetAddress2| Informace o sekundární adrese, například číslo bytu nebo číslo budovy. | "Sestavování 123" |
     |StreetAddress3| Informace o terciární adrese. | |
     |Město [povinné]| Město, do kterého bude zařízení expedováno. | Redmond |
     |StateOrProvinceCode [povinné]| Stav, ve kterém se zařízení dokončí.| WA |
@@ -601,7 +605,7 @@ Microsoft potom připraví a odešle vaše zařízení přes místní přepravn�
 
 ### <a name="track-a-single-order"></a>Sledovat jednu objednávku
 
-Pokud chcete získat informace o sledování jednoho existujícího pořadí Azure Data Box, spusťte příkaz [AZ Databox Job show](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-show&preserve-view=true). Příkaz zobrazí informace o takovém pořadí, jako je například, nikoli omezení na: název, skupina prostředků, informace o sledování, ID předplatného, kontaktní informace, typ dodávky a SKU zařízení.
+Pokud chcete získat informace o sledování jednoho existujícího pořadí Azure Data Box, spusťte příkaz [`az databox job show`](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-show&preserve-view=true) . Příkaz zobrazí informace o takovém pořadí, jako je například, nikoli omezení na: název, skupina prostředků, informace o sledování, ID předplatného, kontaktní informace, typ dodávky a SKU zařízení.
 
    ```azurecli
    az databox job show --resource-group <resource-group> --name <order-name>
@@ -642,7 +646,7 @@ Pokud chcete získat informace o sledování jednoho existujícího pořadí Azu
 
 ### <a name="list-all-orders"></a>Vypsat všechny objednávky
 
-Pokud jste objednali více zařízení, můžete spuštěním [AZ Databox Job list](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-list&preserve-view=true) Zobrazit všechny vaše objednávky Azure Data box. Příkaz zobrazí seznam všech objednávek, které patří do určité skupiny prostředků. Zobrazuje se také ve výstupu: název objednávky, stav expedice, oblast Azure, typ doručení, stav objednávky. Zrušené objednávky jsou také zahrnuty v seznamu.
+Pokud jste objednali více zařízení, můžete spustit [`az databox job list`](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-list&preserve-view=true) pro zobrazení všech vašich Azure Data box objednávek. Příkaz zobrazí seznam všech objednávek, které patří do určité skupiny prostředků. Zobrazuje se také ve výstupu: název objednávky, stav expedice, oblast Azure, typ doručení, stav objednávky. Zrušené objednávky jsou také zahrnuty v seznamu.
 Příkaz také zobrazuje časová razítka jednotlivých objednávek.
 
 ```azurecli
@@ -718,7 +722,7 @@ Pokud chcete získat informace o sledování jednoho existujícího pořadí Azu
 
 ### <a name="list-all-orders"></a>Vypsat všechny objednávky
 
-Pokud jste objednali více zařízení, můžete spuštěním rutiny [Get-AzDataBoxJob](/powershell/module/az.databox/Get-AzDataBoxJob) Zobrazit všechny vaše objednávky Azure Data box. Příkaz zobrazí seznam všech objednávek, které patří do určité skupiny prostředků. Zobrazuje se také ve výstupu: název objednávky, stav expedice, oblast Azure, typ doručení, stav objednávky. Zrušené objednávky jsou také zahrnuty v seznamu.
+Pokud jste objednali více zařízení, můžete spustit [`Get-AzDataBoxJob`](/powershell/module/az.databox/Get-AzDataBoxJob) pro zobrazení všech vašich Azure Data box objednávek. Příkaz zobrazí seznam všech objednávek, které patří do určité skupiny prostředků. Zobrazuje se také ve výstupu: název objednávky, stav expedice, oblast Azure, typ doručení, stav objednávky. Zrušené objednávky jsou také zahrnuty v seznamu.
 Příkaz také zobrazuje časová razítka jednotlivých objednávek.
 
 ```azurepowershell
@@ -761,7 +765,7 @@ Zrušení objednávky odstraníte tak, že přejdete na **Přehled** a na panelu
 
 ### <a name="cancel-an-order"></a>Zrušení objednávky
 
-Pokud chcete Azure Data Box pořadí zrušit, spusťte příkaz [AZ Databox Job Cancel](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-cancel&preserve-view=true). Je nutné zadat důvod pro zrušení objednávky.
+Chcete-li zrušit Azure Data Box pořadí, spusťte příkaz [`az databox job cancel`](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-cancel&preserve-view=true) . Je nutné zadat důvod pro zrušení objednávky.
 
    ```azurecli
    az databox job cancel --resource-group <resource-group> --name <order-name> --reason <cancel-description>
@@ -798,7 +802,7 @@ Pokud chcete Azure Data Box pořadí zrušit, spusťte příkaz [AZ Databox Job 
 
 ### <a name="delete-an-order"></a>Odstranění objednávky
 
-Pokud jste zrušili Azure Data Boxou objednávku, můžete ji odstranit spuštěním příkazu [AZ Databox Job Delete](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-delete&preserve-view=true) .
+Pokud jste zrušili Azure Data Boxou objednávku, můžete ji spustit, [`az databox job delete`](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-delete&preserve-view=true) abyste objednávku odstranili.
 
    ```azurecli
    az databox job delete --name [-n] <order-name> --resource-group <resource-group> [--yes] [--verbose]
@@ -871,7 +875,7 @@ PS C:\WINDOWS\system32>
 
 ### <a name="delete-an-order"></a>Odstranění objednávky
 
-Pokud jste zrušili Azure Data Boxou objednávku, můžete ji odstranit spuštěním příkazu [Remove-AzDataBoxJob](/powershell/module/az.databox/remove-azdataboxjob) .
+Pokud jste zrušili Azure Data Boxou objednávku, můžete ji spustit, [`Remove-AzDataBoxJob`](/powershell/module/az.databox/remove-azdataboxjob) abyste objednávku odstranili.
 
 ```azurepowershell
 Remove-AzDataBoxJob -Name <String> -ResourceGroup <String>

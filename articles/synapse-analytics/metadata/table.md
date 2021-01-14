@@ -10,12 +10,12 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9ee18edd563d94a85dedf48b7a4d6df394c09707
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b93addfe659847187dffe61f12f5a2bfac9dca21
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461393"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209623"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Sdílené tabulky metadat Azure synapse Analytics
 
@@ -32,7 +32,7 @@ Vzhledem k tomu, že jsou tabulky synchronizovány do fondu SQL bez serveru asyn
 
 Pomocí Sparku můžete spravovat databáze Spark vytvořené. Můžete ho například odstranit pomocí úlohy fondu Apache Spark bez serveru a vytvořit v něm tabulky ze Sparku.
 
-Při vytváření objektů v takové databázi z fondu SQL bez serveru nebo při pokusu o vyřazení databáze bude operace úspěšná, ale původní databáze Spark se nemění.
+Při vytváření objektů v takové databázi z fondu SQL bez serveru nebo při pokusu o vyřazení databáze dojde k selhání operace. Původní databázi Spark nejde změnit přes server SQL bez serveru.
 
 ## <a name="expose-a-spark-table-in-sql"></a>Vystavení tabulky Spark v SQL
 

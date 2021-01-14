@@ -13,19 +13,19 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: 1b801bac28b131ff43c47024649bfe0986f768c7
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 81b7efdd6bca0471719c11d130be95405f4d54e1
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202891"
+ms.locfileid: "98210184"
 ---
 # <a name="support-for-32-bit-operating-systems-in-azure-virtual-machines"></a>Podpora 32bitových operačních systémů ve virtuálních počítačích Azure
 
 Microsoft Azure teď umožňuje uživatelům do Azure přenést do svých 32 operačních systémů Windows. Podporované jsou jenom specializované virtuální pevné disky a v Azure nebudou fungovat generalizované image. Vzhledem k tomu, že některé z těchto operačních systémů již dosáhly smlouvy o podpoře na konci životního cyklu, společnost Microsoft nenabízí další podporu pro tyto operační systémy. Podpora se také nenabízí pro operační systémy založené na systému Linux nebo pro distribuci na platformě BSD (Berkeley Software Distribution), které běží na Microsoft Azurem virtuálním počítači (VM).
 
 > [!NOTE]
-> Platforma Azure má omezení adresního prostoru paměti na virtuálních počítačích, na kterých běží operační systémy 32, kde je k dispozici jenom 1 GB paměti pro virtuální počítač a zbytek paměti pro virtuální počítač se zobrazí jako rezervovaný v rámci virtuálního počítače hosta. Jedná se o známý problém a v současné době ještě nemáte k dispozici žádnou opravu. Doporučujeme přesunout se na 64bitovou verzi operačního systému.
+> Platforma Azure má omezení adresního prostoru paměti na virtuálních počítačích, na kterých běží operační systémy 32, kde může být k dispozici jenom 1 GB paměti pro virtuální počítač (*zejména na SKU klienta, jako je třeba Win7 nebo Win10*), a zbytek paměti pro virtuální počítač se zobrazí jako rezervovaný v rámci virtuálního počítače hosta. Jedná se o známý problém a v současné době ještě nemáte k dispozici žádnou opravu. Doporučujeme přesunout se na 64bitovou verzi operačního systému.
 > 
 
 ## <a name="more-information"></a>Další informace

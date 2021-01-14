@@ -7,16 +7,16 @@ ms.service: attestation
 ms.topic: quickstart
 ms.date: 11/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: fb8b0f12844ce1057bd3cfc4716a32ee64ec5586
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: df1064128d6a4eca8497ebf3ea0c6ae8cd42255c
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937215"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208433"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-cli"></a>Rychlý Start: nastavení ověření Azure pomocí Azure CLI
 
-Začínáme s ověřováním Azure pomocí Azure CLI k nastavení ověření identity.
+Začínáme s [ověřováním Azure pomocí Azure CLI](/cli/azure/ext/attestation/attestation?view=azure-cli-latest).
 
 ## <a name="get-started"></a>Začínáme
 
@@ -65,7 +65,7 @@ Začínáme s ověřováním Azure pomocí Azure CLI k nastavení ověření ide
 
 Tady jsou příkazy, které můžete použít k vytvoření a správě poskytovatele ověření identity:
 
-1. Spuštěním příkazu [AZ Attestation Create Create](/cli/azure/ext/attestation/attestation?view=azure-cli-latest#ext_attestation_az_attestation_create) vytvořte poskytovatele ověření identity:
+1. Spuštěním příkazu [AZ Attestation Create Create](/cli/azure/ext/attestation/attestation?view=azure-cli-latest#ext_attestation_az_attestation_create) vytvořte poskytovatele ověření identity bez požadavku na podepsání zásad:
 
    ```azurecli
    az attestation create --name "myattestationprovider" --resource-group "MyResourceGroup" --location westus
@@ -128,7 +128,7 @@ Nastavení zásad ve formátu JWT pro daný druh typu ověřování pomocí cest
 
 ```azurecli
 az attestation policy set --name "myattestationprovider" --resource-group "MyResourceGroup" \
---attestation-type SGX-IntelSDK --new-attestation-policy-file "{file_path}" --policy-format JWT
+--attestation-type SGX-IntelSDK -f "{file_path}" --policy-format JWT
 ```
 
 ## <a name="next-steps"></a>Další kroky

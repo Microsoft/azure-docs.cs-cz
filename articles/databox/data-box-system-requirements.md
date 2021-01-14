@@ -1,28 +1,28 @@
 ---
 title: Microsoft Azure Data Box požadavky na systém | Microsoft Docs
-description: Seznamte se s důležitými požadavky na systém pro vaše Azure Data Box a klienty, kteří se připojují k Data Box.
+description: Seznamte se s důležitými požadavky na systém pro vaše Azure Data Box a pro klienty, kteří se připojují k Data Box.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 10/02/2020
+ms.date: 12/23/2020
 ms.author: alkohli
-ms.openlocfilehash: 5f1623ef4dde59e816e3afe5a5f5894c49469580
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0190e295c2ab206242ab8a44a09ffb42746d75bd
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91767873"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209542"
 ---
 # <a name="azure-data-box-system-requirements"></a>Azure Data Box požadavky na systém
 
-Tento článek popisuje důležité systémové požadavky pro Microsoft Azure Data Box a pro klienty, kteří se připojují k Data Box. Doporučujeme pečlivě zkontrolovat informace před nasazením Data Box a pak podle potřeby v průběhu nasazení a provozu na něj odkazovat.
+Tento článek popisuje důležité systémové požadavky pro Microsoft Azure Data Box a pro klienty, kteří se připojují k Data Box. Doporučujeme pečlivě zkontrolovat informace před nasazením Data Box a pak na ni odkazovat v případě potřeby během nasazení a provozu.
 
 Požadavky na systém zahrnují:
 
 * **Požadavky na software:** Pro hostitele, kteří se připojují k Data Box, popisuje podporované operační systémy, protokoly přenosů souborů, účty úložiště, typy úložiště a prohlížeče pro místní webové uživatelské rozhraní.
-* **Požadavky na síť:** V Data Box popisuje síťové připojení a požadavky na porty pro optimální provoz Data Box.
+* **Požadavky na síť:** Pro Data Box popisuje požadavky na síťová připojení a porty pro nejlepší provoz Data Box.
 
 
 ## <a name="software-requirements"></a>Požadavky na software
@@ -55,11 +55,11 @@ Požadavky na software zahrnují podporované operační systémy, protokoly př
 
 ## <a name="networking-requirements"></a>Požadavky na síť
 
-Vaše datacentrum má přístup k vysokorychlostní síti. Důrazně doporučujeme, abyste měli připojení minimálně 10 GbE. Pokud není k dispozici připojení s 10 GbEmi, je možné ke kopírování dat použít linku s 1 GbEí, ale budou ovlivněny i rychlosti kopírování.
+Vaše datacentrum má přístup k vysokorychlostní síti. Důrazně doporučujeme mít minimálně 1 10 připojení. Pokud není připojení k dispozici, můžete k kopírování dat použít odkaz na data s 1 GbE, ale rychlost kopírování ovlivní.
 
 ### <a name="port-requirements"></a>Požadavky na porty
 
-Následující tabulka uvádí porty, které je třeba v bráně firewall otevřít, aby bylo možné provozovat přenosy SMB nebo NFS. V této tabulce se *v* (*příchozí*) odkazuje na směr, ze kterého příchozí klient žádá o přístup k vašemu zařízení. *Výstupní (* nebo *odchozí*) odkazuje na směr, ve kterém vaše zařízení data Box odesílá data externě, mimo nasazení: například odchozí na Internet.
+Následující tabulka uvádí porty, které je třeba v bráně firewall otevřít, aby bylo možné provozovat přenosy SMB nebo NFS. V této tabulce se *v* (*příchozí*) odkazuje na směr, ze kterého příchozí klient žádá o přístup k vašemu zařízení. *Výstupní* (nebo *odchozí*) odkazuje na směr, ve kterém vaše zařízení data Box odesílá data externě, mimo nasazení. Například data můžou být odchozí na Internet.
 
 [!INCLUDE [data-box-port-requirements](../../includes/data-box-port-requirements.md)]
 

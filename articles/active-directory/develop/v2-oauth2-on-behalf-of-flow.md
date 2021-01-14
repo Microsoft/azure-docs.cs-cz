@@ -13,12 +13,12 @@ ms.date: 08/7/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 018d67b3e4e730cd46eb524a8927b3a6d68d74e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c8167142876dfac0ae0aeff51e85b66c65c607b
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88958656"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208844"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft Identity Platform a OAuth 2,0 s tokem za chodu
 
@@ -27,8 +27,8 @@ OBO (OAuth 2,0 on-of-jménem toku) slouží k použití případu, kdy aplikace 
 
 Tento článek popisuje, jak programovat přímo s protokolem ve vaší aplikaci.  Pokud je to možné, doporučujeme místo toho použít podporované knihovny Microsoft Authentication Library (MSAL) k [získání tokenů a volání zabezpečených webových rozhraní API](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows).  Podívejte se také na [ukázkové aplikace, které používají MSAL](sample-v2-code.md).
 
-> [!NOTE]
-> Od května 2018 se v `id_token` OBO toku nedá použít nějaký odvozený implicitní tok. Jednostránkové aplikace (jednostránkové) by měly předat **přístupovému** klientovi střední vrstvy přístupový token, aby se místo toho prováděly OBO toky. Další informace o tom, kteří klienti můžou provádět volání OBO, najdete v tématu [omezení](#client-limitations).
+
+Od května 2018 se v `id_token` OBO toku nedá použít nějaký odvozený implicitní tok. Jednostránkové aplikace (jednostránkové) by měly předat **přístupovému** klientovi střední vrstvy přístupový token, aby se místo toho prováděly OBO toky. Další informace o tom, kteří klienti můžou provádět volání OBO, najdete v tématu [omezení](#client-limitations).
 
 ## <a name="protocol-diagram"></a>Diagram protokolu
 
@@ -42,10 +42,9 @@ Následující kroky představují tok OBO a jsou vysvětleny pomocí následuj�
 1. Rozhraní API A ověřuje koncový bod vystavování tokenu platformy Microsoft identity a požaduje token pro přístup k rozhraní API B.
 1. Koncový bod vystavování tokenu platformy Microsoft Identity ověřuje přihlašovací údaje A pověření rozhraní API spolu s tokenem a a vydá přístupový token pro rozhraní API B (token B) k rozhraní API A.
 1. Token B je nastaven rozhraním API A v autorizační hlavičce požadavku na rozhraní API B.
-1. Data z zabezpečeného prostředku jsou vrácena rozhraním API B do rozhraní API a a odtud na klienta.
+1. Data z zabezpečeného prostředku jsou vrácena rozhraním API B do rozhraní API A a následně klientovi.
 
-> [!NOTE]
-> V tomto scénáři nemá služba střední vrstvy žádnou interakci s uživatelem, aby získala souhlas uživatele s přístupem k rozhraní API pro příjem dat. Proto možnost udělení přístupu k rozhraní API pro příjem dat se při ověřování prezentuje jako součást kroku souhlasu. Informace o tom, jak tuto aplikaci nastavit, najdete v tématu [získání souhlasu pro aplikaci střední vrstvy](#gaining-consent-for-the-middle-tier-application).
+V tomto scénáři nemá služba střední vrstvy žádnou interakci s uživatelem, aby získala souhlas uživatele s přístupem k rozhraní API pro příjem dat. Proto možnost udělení přístupu k rozhraní API pro příjem dat se při ověřování prezentuje jako součást kroku souhlasu. Informace o tom, jak tuto aplikaci nastavit, najdete v tématu [získání souhlasu pro aplikaci střední vrstvy](#gaining-consent-for-the-middle-tier-application).
 
 ## <a name="middle-tier-access-token-request"></a>Žádost o přístupový token střední vrstvy
 
@@ -152,10 +151,9 @@ Následující příklad ukazuje odpověď na úspěch na žádost o přístupov
 }
 ```
 
-> [!NOTE]
-> Výše přístupový token je ve formátu Microsoft Graph v 1.0. Důvodem je to, že formát tokenu je založený na **prostředku** , ke kterému se přistupoval a který nesouvisí s koncovými body použitými k vyžádání. Microsoft Graph je instalační program, který přijímá tokeny v 1.0, takže platforma Microsoft Identity Platform generuje přístupové tokeny v 1.0, když klient požaduje tokeny pro Microsoft Graph. Jiné aplikace mohou značit, že mají tokeny formátu v 2.0, tokeny formátu v 1.0 nebo dokonce speciální nebo šifrované formáty tokenů.  Koncové body v 1.0 a v 2.0 můžou emitovat buď formát tokenu – tímto způsobem může prostředek vždycky získat správný formát tokenu bez ohledu na to, jak nebo kde byl token vyžádán klientem. 
->
-> V tokenech přístupu by se měly zobrazit jenom aplikace. Klienti je **nesmí** kontrolovat. Kontrola přístupových tokenů pro jiné aplikace ve vašem kódu způsobí neočekávané porušení vaší aplikace, když se změní formát svých tokenů nebo začne jejich šifrování. 
+Výše přístupový token je ve formátu Microsoft Graph v 1.0. Důvodem je to, že formát tokenu je založený na **prostředku** , ke kterému se přistupoval a který nesouvisí s koncovými body použitými k vyžádání. Microsoft Graph je instalační program, který přijímá tokeny v 1.0, takže platforma Microsoft Identity Platform generuje přístupové tokeny v 1.0, když klient požaduje tokeny pro Microsoft Graph. Jiné aplikace mohou značit, že mají tokeny formátu v 2.0, tokeny formátu v 1.0 nebo dokonce speciální nebo šifrované formáty tokenů.  Koncové body v 1.0 a v 2.0 můžou emitovat buď formát tokenu – tímto způsobem může prostředek vždycky získat správný formát tokenu bez ohledu na to, jak nebo kde byl token vyžádán klientem. 
+
+V tokenech přístupu by se měly zobrazit jenom aplikace. Klienti je **nesmí** kontrolovat. Kontrola přístupových tokenů pro jiné aplikace ve vašem kódu způsobí neočekávané porušení vaší aplikace, když se změní formát svých tokenů nebo začne jejich šifrování. 
 
 ### <a name="error-response-example"></a>Příklad chybové odpovědi
 
@@ -189,8 +187,7 @@ Authorization: Bearer eyJ0eXAiO ... 0X2tnSQLEANnSPHY0gKcgw
 
 Některé webové služby založené na protokolu OAuth potřebují přístup k dalším rozhraním API webových služeb, která přijímají kontrolní výrazy SAML v neinteraktivních tocích. Azure Active Directory může poskytnout kontrolní výraz SAML v reakci na tok, který používá webovou službu založenou na SAML jako cílový prostředek.
 
->[!NOTE]
->Toto je nestandardní rozšíření pro tok OAuth 2,0, který umožňuje aplikaci založené na OAuth2 přistupovat k koncovým bodům rozhraní API webové služby, které využívají tokeny SAML.
+Toto je nestandardní rozšíření pro tok OAuth 2,0, který umožňuje aplikaci založené na OAuth2 přistupovat k koncovým bodům rozhraní API webové služby, které využívají tokeny SAML.
 
 > [!TIP]
 > Když zavoláte webovou službu chráněnou SAML z front-endové webové aplikace, můžete jednoduše zavolat rozhraní API a zahájit normální tok interaktivního ověřování s existující relací uživatele. Tok OBO je potřeba použít jenom v případě, že volání služba-služba vyžaduje, aby token SAML poskytoval kontext uživatele.
@@ -204,7 +201,7 @@ V závislosti na architektuře nebo využití vaší aplikace můžete zvážit 
 
 ### <a name="default-and-combined-consent"></a>/.Default a kombinovaný souhlas
 
-Aplikace střední vrstvy přidá klienta do seznamu známých klientských aplikací ve svém manifestu a klient může aktivovat kombinovaný postup souhlasu pro sebe i pro aplikaci střední vrstvy. Na koncovém bodu Microsoft Identity Platform se to dělá pomocí [ `/.default` oboru](v2-permissions-and-consent.md#the-default-scope). Při aktivaci obrazovky pro vyjádření souhlasu pomocí známých klientských aplikací a `/.default` na obrazovce pro vyjádření souhlasu se zobrazí oprávnění **both** pro klienta pro rozhraní API střední vrstvy a také si vyžádají jakékoli oprávnění, které jsou vyžadovány rozhraním API střední vrstvy. Uživatel poskytne souhlas obou aplikací a OBO tok funguje.
+Aplikace střední vrstvy přidá klienta do seznamu známých klientských aplikací ve svém manifestu a klient může aktivovat kombinovaný postup souhlasu pro sebe i pro aplikaci střední vrstvy. Na koncovém bodu Microsoft Identity Platform se to dělá pomocí [ `/.default` oboru](v2-permissions-and-consent.md#the-default-scope). Při aktivaci obrazovky pro vyjádření souhlasu pomocí známých klientských aplikací a `/.default` na obrazovce pro vyjádření souhlasu se zobrazí oprávnění  pro klienta pro rozhraní API střední vrstvy a také si vyžádají jakékoli oprávnění, které jsou vyžadovány rozhraním API střední vrstvy. Uživatel poskytne souhlas obou aplikací a OBO tok funguje.
 
 ### <a name="pre-authorized-applications"></a>Předem autorizované aplikace
 

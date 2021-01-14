@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 10/19/2020
-ms.openlocfilehash: 56c3475ae6a03600723e7a12b3f3809f003ce7c4
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.date: 1/13/2021
+ms.openlocfilehash: 4b5020b6cf7ac2f7aec586d7e6499285c1447b68
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922256"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209759"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperškálování úrovně služby
 
@@ -87,7 +87,7 @@ Následující diagram znázorňuje různé typy uzlů v databázi s škálovate
 
 Databáze v rámci škálování obsahuje následující různé typy komponent:
 
-### <a name="compute"></a>Výpočetní prostředky
+### <a name="compute"></a>Compute
 
 Výpočetní uzel je v místě, kde je relační modul životního prostředí. Toto je místo, kde dochází k jazyku, dotazu a zpracování transakcí. Všechny interakce uživatelů s databází škálování na úrovni služeb probíhají prostřednictvím těchto výpočetních uzlů. Výpočetní uzly mají mezipaměti založené na SSD (s RBPEXm rozšířením fondu vyrovnávací paměti v předchozím diagramu) k minimalizaci počtu síťových přenosů, které jsou nutné k načtení stránky dat. Je k dispozici jeden primární výpočetní uzel, ve kterém jsou zpracovávány všechny úlohy a zápisy čtení a transakcí. K dispozici je jeden nebo více sekundárních výpočetních uzlů, které fungují jako aktivní pohotovostní uzly pro účely převzetí služeb při selhání, a také fungovat jako výpočetní uzly jen pro čtení pro přesměrování zpracování úloh čtení (Pokud je tato funkce požadovaná).
 
@@ -168,16 +168,15 @@ Pokud potřebujete obnovit databázi v prostředí Azure SQL Database do jiné o
 2. Postupujte podle pokynů uvedených v tématu [geografické obnovení](./recovery-using-backups.md#geo-restore) stránky stránky při obnovení databáze v Azure SQL Database z automatických záloh.
 
 > [!NOTE]
-> Vzhledem k tomu, že zdroj a cíl jsou v samostatných oblastech, nemůže databáze sdílet snímkové úložiště se zdrojovou databází jako v negeografických obnoveních, což je kompletní velmi rychle. V případě geografického obnovení databáze s měřítkem dat se bude jednat o velikost operace, i když je cíl v spárované oblasti geograficky replikovaného úložiště.  To znamená, že při geografickém obnovení bude čas odpovídat velikosti databáze, která se obnovuje.  Pokud je cíl v spárované oblasti, kopie bude v rámci oblasti, která bude výrazně rychlejší než kopírování mezi oblastmi, ale bude stále i operací velikosti dat.
+> Vzhledem k tomu, že zdroj a cíl jsou v samostatných oblastech, nemůže databáze sdílet snímkové úložiště se zdrojovou databází jako v negeografických obnoveních, což dokončí rychle bez ohledu na velikost databáze. V případě geografického obnovení databáze s měřítkem dat se bude jednat o velikost operace, i když je cíl v spárované oblasti geograficky replikovaného úložiště. Proto bude geografické obnovení trvat v čase úměrné velikosti obnovené databáze. Pokud je cíl v spárované oblasti, přenos dat bude v rámci oblasti, která bude výrazně rychlejší než přenos dat mezi oblastmi, ale bude stále i operací velikosti dat.
 
 ## <a name="available-regions"></a><a name=regions></a>Dostupné oblasti
 
-Azure SQL Database úroveň škálování je dostupná ve všech oblastech, ale ve výchozím nastavení povolená je dostupná v následujících oblastech uvedených níže.
-Pokud chcete vytvořit databázi s škálovatelným škálováním v oblasti, která není uvedená jako podporovaná, můžete odeslat požadavek na registraci prostřednictvím Azure Portal. Pokyny najdete v tématu [zvýšení kvóty žádostí o Azure SQL Database](quota-increase-request.md) . Při odesílání vaší žádosti postupujte podle následujících pokynů:
+Azure SQL Database vrstva škálování je dostupná ve všech oblastech, ale ve výchozím nastavení povolená v následujících oblastech uvedených níže. Pokud chcete vytvořit databázi v rámci škálování na úrovni služby v oblasti, ve které není ve výchozím nastavení povolené škálování na úrovni služby, můžete odeslat požadavek na registraci prostřednictvím Azure Portal. Pokyny najdete v tématu [zvýšení kvóty žádostí o Azure SQL Database](quota-increase-request.md) . Při odesílání vaší žádosti postupujte podle následujících pokynů:
 
 - Použijte typ kvóty SQL Database [přístupu k oblasti](quota-increase-request.md#region) .
-- V části Podrobnosti o textu přidejte SKU COMPUTE a celkový počet jader včetně čitelných replik.
-- Zadejte také odhadované TB.
+- V popisu přidejte skladové položky COMPUTE/celkový počet jader včetně čitelných replik a určete, že požadujete kapacitu s měřítkem.
+- Také zadejte projekci celkové velikosti všech databází v čase v TB.
 
 Povolené oblasti:
 - Austrálie – východ
@@ -223,12 +222,12 @@ Jedná se o aktuální omezení úrovně služby škálování na úrovni služe
 | Problém | Popis |
 | :---- | :--------- |
 | Podokno Správa zálohování serveru nezobrazuje databáze s škálovatelnými škálováními. Budou filtrovány ze zobrazení.  | Vlastní škálování má samostatnou metodu pro správu záloh, takže nastavení uchovávání Long-Term a nastavení uchovávání záloh v určitém časovém okamžiku neplatí. Proto se databáze s škálovatelným škálováním nezobrazí v podokně Správa zálohování.<br><br>Pro databáze migrované do škálování z jiných Azure SQL Database úrovní služeb se zálohy před migrací uchovávají po dobu [uchovávání záloh](automated-backups-overview.md#backup-retention) zdrojové databáze. Tyto zálohy lze použít k [obnovení](recovery-using-backups.md#programmatic-recovery-using-automated-backups) zdrojové databáze k určitému bodu v čase před migrací.|
-| Obnovení k určitému bodu v čase | Nemůžete obnovit databázi s neškálovatelným škálováním jako databázi s škálovatelnými škálováními a databázi s měřítkem ve formátu. V případě databáze bez škálování na úrovni služby, která byla migrována do škálování, změnou její úrovně služeb, obnovení do bodu v čase před migrací a v rámci doby uchovávání záloh databáze je možné [programově](recovery-using-backups.md#programmatic-recovery-using-automated-backups). Obnovená databáze nebude škálovatelná. |
-| Pokud má databáze minimálně jeden datový soubor větší než 1 TB, migrace se nezdařila | V některých případech je možné tento problém obejít tak, že velké soubory zmenšíte na méně než 1 TB. Pokud migrujete databázi používanou během procesu migrace, ujistěte se, že žádný soubor nezíská větší velikost než 1 TB. Pomocí následujícího dotazu určete velikost databázových souborů. `SELECT *, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
+| Obnovení k určitému bodu v čase | Nemůžete obnovit databázi s neškálovatelným škálováním jako databázi s škálovatelnými škálováními a databázi s měřítkem ve formátu. V případě databáze bez škálování na úrovni služby, která byla migrována do škálování, změnou její úrovně služeb, obnovení do bodu v čase před migrací a v rámci doby uchovávání záloh databáze je [programově](recovery-using-backups.md#programmatic-recovery-using-automated-backups)podporována. Obnovená databáze nebude škálovatelná. |
+| Při změně Azure SQL Database úrovně služby na škálovatelné, operace dojde k chybě, pokud má databáze nějaké datové soubory větší než 1 TB. | V některých případech je možné tento problém obejít tak, že velké soubory [zmenšíte](file-space-manage.md#shrinking-data-files) na méně než 1 TB předtím, než se pokusíte změnit úroveň služby na škálování. Pomocí následujícího dotazu určete aktuální velikost databázových souborů. `SELECT file_id, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
 | Spravovaná instance SQL | Spravovaná instance Azure SQL se v současné době nepodporuje u databází s podporou škálování na více instancí. |
 | Elastické fondy |  Elastické fondy se v současné době nepodporují s měřítkem.|
 | Migrace do škálování je momentálně jednosměrnou operací. | Jakmile se databáze migruje do škálování, nejde ji migrovat přímo na úroveň služby, která není na úrovni služby. V současné době jediný způsob, jak migrovat databázi z velkého měřítka do neškálovatelného škálování, je exportovat a importovat pomocí souboru BacPac nebo jiných technologií pro přesun dat (hromadné kopírování, Azure Data Factory, Azure Databricks, SSIS atd.). BacPac exportujte/Azure Portal importujte z prostředí PowerShell pomocí rutiny [New-AzSqlDatabaseExport](/powershell/module/az.sql/new-azsqldatabaseexport) nebo [New-AzSqlDatabaseImport](/powershell/module/az.sql/new-azsqldatabaseimport)z Azure CLI pomocí příkazového řádku [AZ SQL DB export](/cli/azure/sql/db#az-sql-db-export) a [AZ SQL DB import](/cli/azure/sql/db#az-sql-db-import)a z [REST API](/rest/api/sql/databases%20-%20import%20export) se nepodporuje. Import/export BacPac pro menší databáze s více škálováními (až 200 GB) se podporuje pomocí SSMS a [SqlPackage](/sql/tools/sqlpackage) verze 18,4 a novější. Pro větší databáze může BacPac export/import trvat delší dobu a může dojít k selhání z různých důvodů.|
-| Migrace databází s In-Memory objekty OLTP | Měřítko podporuje podmnožinu objektů In-Memory OLTP, včetně paměťově optimalizovaných typů tabulek, proměnných tabulky a nativně kompilovaných modulů. Pokud se ale v databázi, kterou migrujete, vyskytuje libovolný druh In-Memory objektů OLTP, migrace z úrovně Premium a Pro důležité obchodní informace na škálování služby se nepodporuje. Chcete-li migrovat takovou databázi do škálování, je nutné vyřadit všechny In-Memory objekty OLTP a jejich závislosti. Po migraci databáze je možné tyto objekty znovu vytvořit. Odolné a netrvanlivé paměťově optimalizované tabulky se v současné době nepodporují a musí se znovu vytvořit jako diskové tabulky.|
+| Migrace databází s In-Memory objekty OLTP | Měřítko podporuje podmnožinu objektů In-Memory OLTP, včetně paměťově optimalizovaných typů tabulek, proměnných tabulky a nativně kompilovaných modulů. Pokud se ale v databázi, kterou migrujete, vyskytuje libovolný druh In-Memory objektů OLTP, migrace z úrovně Premium a Pro důležité obchodní informace na škálování služby se nepodporuje. Chcete-li migrovat takovou databázi do škálování, je nutné vyřadit všechny In-Memory objekty OLTP a jejich závislosti. Po migraci databáze je možné tyto objekty znovu vytvořit. Odolné a netrvanlivé paměťově optimalizované tabulky se v současné době nepodporují a musí se měnit na diskové tabulky.|
 | Geografická replikace  | Pro Azure SQL Database škálování na úrovni služby ještě nemůžete konfigurovat geografickou replikaci. |
 | Kopie databáze | Kopie databáze na škále je teď ve verzi Public Preview. |
 | Funkce inteligentní databáze | S výjimkou možnosti "vynutit plán" nejsou všechny ostatní možnosti automatického ladění zatím podporovány v rámci škálování: možnosti mohou být povoleny, ale nebudou zde učiněna žádná doporučení ani akce. |

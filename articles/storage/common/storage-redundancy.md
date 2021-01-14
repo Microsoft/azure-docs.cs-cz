@@ -1,5 +1,5 @@
 ---
-title: Redundance dat
+title: Data redundancy
 titleSuffix: Azure Storage
 description: Pochopení redundance dat v Azure Storage. Data v účtu Microsoft Azure Storage se replikují pro zajištění odolnosti a vysoké dostupnosti.
 services: storage
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/13/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 3c0b466a7db688ed3e24441f652f6a1ef1a88ee1
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 5a09a2083c1258a3120f8696aa39a0252dbfcf2d
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98180077"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209680"
 ---
 # <a name="azure-storage-redundancy"></a>Redundance Azure Storage
 
@@ -97,11 +97,19 @@ Geograficky redundantní úložiště (GRS) kopíruje data synchronně třikrát
 
 Operace zápisu se nejdřív potvrdí do primárního umístění a replikuje se pomocí LRS. Aktualizace se pak asynchronně replikuje do sekundární oblasti. Když jsou data zapsána do sekundárního umístění, je také replikována v tomto umístění pomocí LRS.
 
+Následující diagram znázorňuje, jak se data replikují pomocí GRS nebo RA-GRS:
+
+:::image type="content" source="media/storage-redundancy/geo-redundant-storage.png" alt-text="Diagram znázorňující replikaci dat pomocí GRS nebo RA-GRS":::
+
 ### <a name="geo-zone-redundant-storage"></a>Geograficky zónově redundantní úložiště
 
 Geograficky redundantní úložiště (GZRS) kombinuje vysokou dostupnost poskytovanou redundancí napříč zónami dostupnosti s ochranou z regionálních výpadků poskytovaných geografickou replikací. Data v účtu úložiště GZRS se zkopírují do tří [zón dostupnosti Azure](../../availability-zones/az-overview.md) v primární oblasti a také se replikují do sekundární geografické oblasti pro ochranu z regionálních havárií. Microsoft doporučuje používat GZRS pro aplikace, které vyžadují maximální konzistenci, odolnost a dostupnost, vynikající výkon a odolnost proti zotavení po havárii.
 
 S účtem úložiště GZRS můžete dál číst a zapisovat data, pokud se zóna dostupnosti stane nedostupnou nebo nejde obnovit. Kromě toho jsou vaše data také odolná v případě kompletního oblasti výpadku nebo havárie, ve které není primární oblast obnovitelné. GZRS je navržený tak, aby poskytoval alespoň 99.99999999999999% (16 9) odolnosti objektů v průběhu daného roku.
+
+Následující diagram znázorňuje, jak se data replikují pomocí GZRS nebo RA-GZRS:
+
+:::image type="content" source="media/storage-redundancy/geo-zone-redundant-storage.png" alt-text="Diagram znázorňující replikaci dat pomocí GZRS nebo RA-GZRS":::
 
 GZRS a RA-GZRS podporují jenom účty úložiště pro obecné účely verze 2. Další informace o typech účtů úložiště najdete v tématu [Přehled účtu Azure Storage](storage-account-overview.md). GZRS a RA-GZRS podporují objekty blob bloku, objekty blob stránky (s výjimkou disků VHD), soubory, tabulky a fronty.
 
@@ -189,7 +197,7 @@ Informace o cenách pro jednotlivé možnosti redundance najdete v tématu [Azur
 
 Azure Storage pravidelně ověřuje integritu dat uložených pomocí redundantních kontrol redundance (CRCs). Pokud je zjištěno poškození dat, je opraveno pomocí redundantních dat. Azure Storage taky vypočítává kontrolní součty pro veškerý síťový provoz, aby se zjistilo poškození datových paketů při ukládání nebo načítání dat.
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 - [Podívejte se na vlastnost čas poslední synchronizace pro účet úložiště.](last-sync-time-get.md)
 - [Změna možnosti redundance pro účet úložiště](redundancy-migration.md)

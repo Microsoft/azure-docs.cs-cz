@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: c0ceae8727681c045c3bbf3e6626937633b38997
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: ba06a0f9d520f445965329203aecd6c576666737
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013528"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209725"
 ---
 # <a name="using-an-app-service-environment"></a>Použití App Service Environment
 
@@ -51,7 +51,7 @@ Vytvoření aplikace v pomocném mechanismu řízení:
     > Aplikace pro Linux a aplikace pro Windows nemůžou být ve stejném plánu App Service, ale můžou být ve stejném App Service Environment.
     >
 
-1. Vyberte * * Další: monitorování * * Pokud chcete povolit App Insights s vaší aplikací, můžete to udělat v průběhu vytváření toku. 
+1. Vyberte **Další: monitorování**  Pokud chcete povolit App Insights s vaší aplikací, můžete to udělat během vytváření toku. 
 
 1.  Vybrat **Další: značky** přidejte libovolné značky, které chcete do aplikace.  
 
@@ -108,7 +108,7 @@ Pomocí pomocného mechanismu pro přístup jsou koncové body publikování dos
 
 Bez dalších změn nebudou internetové systémy CI, jako je GitHub a Azure DevOps, fungovat s pomocným mechanismem interního nástroje, protože koncový bod publikování není přístupný na internetu. Publikování na interního nástroje pomocného mechanismu pro Azure můžete povolit z Azure DevOps tím, že ve virtuální síti nainstalujete samoobslužného agenta pro vydanou verzi, který obsahuje ovládací prvek interního nástroje. 
 
-## <a name="storage"></a>Úložiště
+## <a name="storage"></a>Storage
 
 Pomocného programu má 1 TB úložiště pro všechny aplikace v pomocném formuláři. Plán App Service v izolované cenové SKU má limit 250 GB. V rámci pomocného mechanismu se 250 GB úložiště přidají za App Service plánu až do velikosti 1 TB. Můžete mít více App Service plánů než jenom čtyři, ale za omezení 1 TB se nepřidalo žádné další úložiště.
 

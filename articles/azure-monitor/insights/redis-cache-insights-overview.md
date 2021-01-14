@@ -2,15 +2,15 @@
 title: Azure Monitor pro Azure cache pro Redis | Microsoft Docs
 description: Tento článek popisuje funkci Azure Monitor for Azure Redis Cache, která poskytuje vlastníkům mezipaměti rychlé porozumění problémům s výkonem a využitím.
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
+author: lgayhardt
+ms.author: lagayhar
 ms.date: 09/10/2020
-ms.openlocfilehash: e7b8a8e131cf7e0aae051f42043abf0640c927e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 35f575410caa7a8a8ffbda35bdfa876418db8945
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90887019"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210371"
 ---
 # <a name="explore-azure-monitor-for-azure-cache-for-redis"></a>Prozkoumejte Azure Monitor pro Azure cache pro Redis
 
@@ -44,9 +44,9 @@ Tato funkce nevyžaduje, abyste povolili nebo nenakonfigurovali cokoli. Ve vých
 
 Pokud chcete zobrazit využití a výkon účtů úložiště napříč všemi vašimi předplatnými, proveďte následující kroky:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
-1. Vyhledejte **monitorování**a vyberte **monitorování**.
+1. Vyhledejte **monitorování** a vyberte **monitorování**.
 
     ![Vyhledávací pole se slovem "monitor" a výsledkem hledání služeb, které zobrazuje "monitor" se symbolem rychloměru](./media/cosmosdb-insights-overview/search-monitor.png)
 
@@ -54,7 +54,7 @@ Pokud chcete zobrazit využití a výkon účtů úložiště napříč všemi v
 
 ### <a name="overview"></a>Přehled
 
-V **přehledu**se v tabulce zobrazuje interaktivní mezipaměť Azure pro metriky Redis. Výsledky můžete filtrovat podle vybraných možností z následujících rozevíracích seznamů:
+V **přehledu** se v tabulce zobrazuje interaktivní mezipaměť Azure pro metriky Redis. Výsledky můžete filtrovat podle vybraných možností z následujících rozevíracích seznamů:
 
 - **Předplatná**: seznam obsahuje jenom odběry, které mají prostředek Azure cache for Redis.  
 
@@ -87,7 +87,7 @@ Když vyberete **operace** v horní části stránky, otevře se tabulka **opera
 - **Časová osa celkového počtu operací**
 - **Operace za sekundu**
 - **Příkazy Get**
-- **Příkazy Set**
+- **Sady**
 
 ![Snímek obrazovky s provozním prostředím](./media/redis-cache-insights-overview/operations.png)
 

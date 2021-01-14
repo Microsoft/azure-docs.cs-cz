@@ -2,16 +2,16 @@
 title: Řešení potíží s Azure Monitor přehledy na základě sešitu
 description: Poskytuje pokyny k odstraňování potíží s Azure Monitormi přehledy na základě sešitu pro služby, jako je Azure Key Vault, Azure CosmosDB, Azure Storage a Azure cache pro Redis.
 services: azure-monitor
-ms.author: mbullwin
-author: mrbullwinkle
+ms.author: lagayhar
+author: lgayhardt
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 90743a213092aacfa10139c12f47bc11faf0d86d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a2765e9dcf3b0e7bf28191e6ecbb069f26c42f5
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86498708"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208518"
 ---
 # <a name="troubleshooting-workbook-based-insights"></a>Řešení potíží s přehledy na základě sešitu
 

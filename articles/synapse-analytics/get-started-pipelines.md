@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: pipeline
 ms.topic: tutorial
-ms.date: 10/27/2020
-ms.openlocfilehash: af01d5b5e424dd5ea229115f7aa3570d0b7cd511
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.date: 12/31/2020
+ms.openlocfilehash: ade8a6b400967bc13fe3593f83f00ecc49ef06a2
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744931"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209793"
 ---
 # <a name="integrate-with-pipelines"></a>Integrace s kanály
 
@@ -26,14 +26,19 @@ V tomto kurzu se dozvíte, jak integrovat kanály a aktivity pomocí synapse stu
 V Azure synapse můžete integrovat širokou škálu úloh.
 
 1. V synapse studiu přejdete do centra **Integration** .
-1. Vyberte **+**  >  **kanál** a vytvořte nový kanál.
-1. Přejít do centra pro **vývoj** a vyberte jeden z poznámkových bloků, které jste vytvořili dříve.
-1. Přetáhněte tento poznámkový blok do kanálu ( **Poznámka** : Přidání kroku importovat moduly do poznámkového bloku, který je zadaný v [dokumentu](https://docs.microsoft.com/azure/synapse-analytics/spark/synapse-spark-sql-pool-import-export#transfer-data-to-or-from-a-sql-pool-attached-with-the-workspace), který se vyžaduje při spuštění z kanálu).
-1. V kanálu vyberte **Přidat Trigger**  >  **Nový/upravit** .
+1. Vyberte **+**  >  **kanál** a vytvořte nový kanál. Kliknutím na nový objekt kanálu Otevřete návrháře kanálů.
+1. V části **aktivity** rozbalte složku **synapse** a přetáhněte objekt **poznámkového bloku** do návrháře.
+1. Vyberte kartu **Nastavení** vlastností aktivity poznámkového bloku. Pomocí rozevíracího seznamu vyberte libovolný Poznámkový blok z aktuálního pracovního prostoru synapse. 
+1. V kanálu vyberte **Přidat Trigger**  >  **Nový/upravit**.
 1. V části **zvolit Trigger** vyberte **Nový** a nastavte **opakování** na "každou 1 hodinu".
-1. Vyberte **OK** . 
-1. Vyberte **Publikovat vše** .
-1. Pro okamžité spuštění kanálu bez čekání na další hodinu vyberte **Přidat**  >  **aktivační událost nyní** .
+1. Vyberte **OK**. 
+1. Vyberte **Publikovat vše**. 
+
+
+## <a name="monitor-pipeline"></a>Monitorování kanálu
+
+1. Když je kanál publikovaný, aby se spustilo okamžitě, aniž byste čekali na další hodinu, vyberte **Přidat**  >  **aktivační proceduru** aktivační události nyní.
+1. V synapse studiu přejdete do centra **monitorování** a výběrem **spuštění kanálu** monitorujte průběh provádění kanálu.
 
 
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: d24565522a75427be04cacfdc20347056a515847
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: ed79d9fb3be192d300587eda5198d9b153109241
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070758"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209776"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Příprava dat pro službu Custom Speech
 
@@ -46,9 +46,9 @@ Tato tabulka obsahuje seznam povolených datových typů, kdy se má použít ka
 
 | Datový typ | Používá se pro testování. | Doporučené množství | Používá se pro školení. | Doporučené množství |
 |-----------|-----------------|----------|-------------------|----------|
-| [Zvuk](#audio-data-for-testing) | Ano<br>Použito pro vizuální kontrolu | 5 zvukových souborů | No | – |
-| [Audio + přepisy s popiskem](#audio--human-labeled-transcript-data-for-testingtraining) | Ano<br>Používá se k vyhodnocení přesnosti. | 0,5 – 5 hodin zvukového přenosu | Ano | 1-20 hodin zvukového přenosu |
-| [Související text](#related-text-data-for-training) | No | Není k dispozici | Ano | 1-200 MB souvisejícího textu |
+| [Zvuk](#audio-data-for-testing) | Yes<br>Použito pro vizuální kontrolu | 5 zvukových souborů | No | Není k dispozici |
+| [Audio + přepisy s popiskem](#audio--human-labeled-transcript-data-for-testingtraining) | Yes<br>Používá se k vyhodnocení přesnosti. | 0,5 – 5 hodin zvukového přenosu | Yes | 1-20 hodin zvukového přenosu |
+| [Související text](#related-text-data-for-training) | No | Není k dispozici | Yes | 1-200 MB souvisejícího textu |
 
 Při učení nového modelu začněte s [souvisejícím textem](#related-text-data-for-training). Tato data budou již vylepšit rozpoznávání speciálních pojmů a frází. Školení s textem je mnohem rychlejší než školení na zvuk (minuty vs. dny).
 
@@ -93,7 +93,7 @@ Pomocí této tabulky zajistěte, aby byly vaše zvukové soubory správně form
 
 Pomocí <a href="http://sox.sourceforge.net" target="_blank" rel="noopener">Sox <span class="docon docon-navigate-external x-hidden-focus"></span> </a> ověřte vlastnosti zvuku nebo převeďte existující zvuk do příslušných formátů. Níže jsou uvedeny některé příklady, jak lze jednotlivé aktivity provést prostřednictvím příkazového řádku SoX:
 
-| Aktivita | Description | SoX – příkaz |
+| Aktivita | Popis | SoX – příkaz |
 |----------|-------------|-------------|
 | Kontrolovat zvukový formát | Pomocí tohoto příkazu ověřte<br>formát zvukového souboru. | `sox --i <filename>` |
 | Převod zvukového formátu | Tento příkaz slouží k převodu<br>zvukový soubor do jednoho kanálu, 16bitová, 16 KHz. | `sox <input> -b 16 -e signed-integer -c 1 -r 16k -t wav <output>.wav` |
@@ -121,11 +121,14 @@ Zvukové soubory mohou mít na začátku a na konci záznamu tiché ukončení. 
 
 Aby bylo možné řešit problémy, jako je odstraňování nebo nahrazování slov, je nutné, aby se vylepšilo rozpoznávání dat s větším množstvím dat. Obecně se doporučuje zadat přepisy slova po slovech přibližně 10 až 20 hodin zvukového přenosu. Přepisy všech souborů WAV by měl obsahovat jediný soubor prostého textu. Každý řádek souboru s přepisem by měl obsahovat název jednoho zvukového souboru a za ním odpovídající přepis. Název souboru a přepis by měly být oddělené tabulátorem (\t).
 
-  Například:
-```
-  speech01.wav  speech recognition is awesome
-  speech02.wav  the quick brown fox jumped all over the place
-  speech03.wav  the lazy dog was not amused
+Příklad:
+
+<!-- The following example contains tabs. Don't accidentally convert these into spaces. -->
+
+```input
+speech01.wav    speech recognition is awesome
+speech02.wav    the quick brown fox jumped all over the place
+speech03.wav    the lazy dog was not amused
 ```
 
 > [!IMPORTANT]
@@ -194,7 +197,7 @@ Mluvený formulář je fonetická sekvence, která je vypsána. Může se sklád
 
 Přizpůsobená výslovnost je k dispozici v angličtině ( `en-US` ) a němčině ( `de-DE` ). V této tabulce jsou uvedeny podporované znaky podle jazyka:
 
-| Language | Národní prostředí | Znaky |
+| Jazyk | Národní prostředí | Znaky |
 |----------|--------|------------|
 | Angličtina | `en-US` | `a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z` |
 | Němčina | `de-DE` | `ä, ö, ü, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z` |

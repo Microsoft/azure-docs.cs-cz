@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 93ac8cd3e462c244840a5ed569d685a9d67fa6c2
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: c752bc6ae49f009056067545fde292dc29027d5d
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165871"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208127"
 ---
 # <a name="best-practices-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Osvědčené postupy pro fond SQL bez serveru ve službě Azure synapse Analytics
 
@@ -129,7 +129,7 @@ Při dotazování na soubory CSV můžete použít analyzátor optimalizovaný p
 
 ## <a name="manually-create-statistics-for-csv-files"></a>Ruční vytváření statistik pro soubory CSV
 
-Fond SQL bez serveru spoléhá na statistiku pro generování optimálních plánů spouštění dotazů. V případě potřeby budou statistiky automaticky vytvořeny pro sloupce v souborech Parquet. V současné době se Statistika nevytvoří automaticky pro sloupce v souborech CSV a měli byste je vytvořit ručně pro sloupce, které používáte v dotazech, zejména ty, které se používají v DISTINCT, spojení, kde, ORDER BY a GROUP BY. Podrobnosti najdete v [statistice v neserverovém fondu SQL] (vývoj-Tables-Statistics. MD # Statistics-in-Server-SQL-pool).
+Fond SQL bez serveru spoléhá na statistiku pro generování optimálních plánů spouštění dotazů. V případě potřeby budou statistiky automaticky vytvořeny pro sloupce v souborech Parquet. V současné době se Statistika nevytvoří automaticky pro sloupce v souborech CSV a měli byste je vytvořit ručně pro sloupce, které používáte v dotazech, zejména ty, které se používají v DISTINCT, spojení, kde, ORDER BY a GROUP BY. Podrobnosti najdete [v statistikách fondu SQL bez serveru](develop-tables-statistics.md#statistics-in-serverless-sql-pool) .
 
 ## <a name="use-cetas-to-enhance-query-performance-and-joins"></a>Použití CETAS ke zvýšení výkonu a spojení dotazů
 

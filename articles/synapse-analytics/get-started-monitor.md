@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: monitoring
 ms.topic: tutorial
-ms.date: 10/15/2020
-ms.openlocfilehash: c2260cc0d2c6b889b44c738576e33abceebe23f1
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.date: 12/31/2020
+ms.openlocfilehash: 8c0cdcad9a7803e0d8063362ca62887990045c86
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444401"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209810"
 ---
 # <a name="monitor-your-synapse-workspace"></a>Monitorování pracovního prostoru synapse
 
@@ -36,15 +36,15 @@ Otevřete synapse Studio a přejděte do centra **monitorování** . Tady vidít
 
 ## <a name="apache-spark-activities"></a>Apache Spark aktivity
 
-1. Přejděte k **aktivitám integrace > > Apache Spark aplikací**. Teď uvidíte všechny aplikace Spark, které běží nebo které běží ve vašem pracovním prostoru.
+1. Přejděte na **aktivity > Apache Spark aplikace**. Teď uvidíte všechny aplikace Spark, které běží nebo které běží ve vašem pracovním prostoru.
 1. Najděte aplikaci, která už není spuštěná, a klikněte na její **název aplikace**. Nyní můžete zobrazit podrobnosti o aplikaci Spark.
 1. Pokud jste obeznámeni s Apache Spark, můžete najít standardní uživatelské rozhraní serveru Apache Spark historie kliknutím na **Server historie Spark**.
 
 ## <a name="sql-activities"></a>Aktivity SQL
 
-1. Přejděte na **integrační > aktivity > požadavky SQL**.
+1. Přejděte na **aktivity > požadavky SQL**.
 1. V tomto zobrazení si můžete prohlédnout požadavky SQL.
-1. Vyberte **fond** , který chcete monitorovat. Nyní můžete zobrazit všechny požadavky SQL spuštěné nebo spuštěné ve vašem pracovním prostoru ve fondu.
+1. Vyberte **fond** , který chcete monitorovat z filtru **fondu** . Nyní můžete zobrazit všechny požadavky SQL spuštěné nebo spuštěné ve vašem pracovním prostoru ve fondu.
 1. Najděte konkrétní požadavek SQL a najeďte myší na tuto položku. Po najetí myší se zobrazí ikona skriptu SQL.
 1. Pokud chcete zobrazit úplný text požadavku SQL, klikněte na ikonu skriptu SQL.
 

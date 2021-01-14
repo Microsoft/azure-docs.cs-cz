@@ -1,14 +1,14 @@
 ---
 title: Informace o tom, jak auditovat obsah virtuálních počítačů
 description: Přečtěte si, jak Azure Policy používá klienta konfigurace hosta k auditování nastavení v rámci virtuálních počítačů.
-ms.date: 10/14/2020
+ms.date: 01/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5ec43516c60d2fe5d923a7b87cddbea0ad640453
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: c141169545379f1ac0dd18a97e85652f97b90e6f
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071829"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210116"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Vysvětlení konfigurace hosta ve službě Azure Policy
 
@@ -60,7 +60,7 @@ Klient konfigurace hosta kontroluje nový obsah každých 5 minut. Po přijetí 
 
 Definice zásad konfigurace hostů jsou zahrnuté do nových verzí. Starší verze operačních systémů, které jsou k dispozici v Azure Marketplace, jsou vyloučené, pokud není klient konfigurace hosta kompatibilní. Následující tabulka obsahuje seznam podporovaných operačních systémů pro Image Azure:
 
-|Publisher|Název|Verze|
+|Publisher|Name|Verze|
 |-|-|-|
 |Canonical|Ubuntu Server|14,04 – 18,04|
 |Credativ|Debian|8 a novější|
@@ -101,11 +101,11 @@ Pro servery připojené k ARC v privátních datových centrech povolte provoz p
 
 ## <a name="managed-identity-requirements"></a>Požadavky na spravovanou identitu
 
-Definice zásad v iniciativě [nasazení požadavků pro povolení zásad konfigurace hostů na virtuálních počítačích](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8) povolují spravovanou identitu přiřazenou systémem, pokud taková neexistuje. V iniciativě existují dvě definice zásad, které spravují vytváření identit. Podmínky IF v definicích zásad zajišťují správné chování na základě aktuálního stavu prostředku počítače v Azure.
+Definice zásad v iniciativě _nasazení požadavků pro povolení zásad konfigurace hostů na virtuálních počítačích_ povolují spravovanou identitu přiřazenou systémem, pokud taková neexistuje. V iniciativě existují dvě definice zásad, které spravují vytváření identit. Podmínky IF v definicích zásad zajišťují správné chování na základě aktuálního stavu prostředku počítače v Azure.
 
-Pokud počítač momentálně nemá žádné spravované identity, platí tyto zásady: [ \[ Preview \] : Přidejte spravovanou identitu přiřazenou systémem a povolte přiřazení konfigurace hostů na virtuálních počítačích bez identit](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3cf2ab00-13f1-4d0c-8971-2ac904541a7e) .
+Pokud počítač v tuto chvíli nemá žádné spravované identity, budou platné zásady: [Přidat spravovanou identitu přiřazenou systémem a povolit přiřazení konfigurace hostů na virtuálních počítačích bez identit](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3cf2ab00-13f1-4d0c-8971-2ac904541a7e) .
 
-Pokud má počítač nyní uživatelsky přiřazenou identitu systému, platí následující: ve [ \[ verzi Preview \] : Přidání spravované identity přiřazené systémem pro povolení přiřazení konfigurace hostů na virtuálních počítačích s identitou přiřazenou uživatelem](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F497dff13-db2a-4c0f-8603-28fa3b331ab6) .
+Pokud má počítač v současné době uživatelsky přiřazené uživatelské identity, platí tyto zásady: [Přidání spravované identity přiřazené systémem pro povolení přiřazení konfigurace hostů na virtuálních počítačích s identitou přiřazenou uživatelem](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F497dff13-db2a-4c0f-8603-28fa3b331ab6) .
 
 ## <a name="guest-configuration-definition-requirements"></a>Požadavky na definici konfigurace hosta
 
@@ -120,7 +120,7 @@ Azure Policy používá vlastnost **complianceStatus** zprostředkovatele prost�
 
 #### <a name="auditing-operating-system-settings-following-industry-baselines"></a>Auditování nastavení operačního systému po oborových plánech
 
-Jedna z iniciativ v Azure Policy poskytuje možnost auditu nastavení operačního systému podle směrného plánu. Definice, _\[ verze Preview \] : Auditovat virtuální počítače s Windows, které neodpovídají nastavení základní hodnoty zabezpečení Azure,_ zahrnuje sadu pravidel založených na zásady skupiny Active Directory.
+Jedna z iniciativ v Azure Policy Audituje nastavení operačního systému podle směrného plánu. Definice, _\[ verze Preview \] : počítače s Windows by měly splňovat požadavky na základní hodnoty zabezpečení Azure,_ zahrnuje sadu pravidel založených na službě Active Directory Zásady skupiny.
 
 Většina nastavení je k dispozici jako parametry. Parametry umožňují přizpůsobit, co je auditováno.
 Zarovnejte zásady s vašimi požadavky nebo namapujte zásady na informace třetích stran, jako jsou například oborový zákon o standardech.

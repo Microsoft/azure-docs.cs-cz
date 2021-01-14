@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/18/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 5d950598e4a0af86ac37b53722e80eb4ef0a71a4
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 53c0d37d4a25c2f2092a9e52bcae8ea494046bb0
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183052"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210014"
 ---
 # <a name="app-service-networking-features"></a>Funkce App Service sítě
 
@@ -35,7 +35,7 @@ Místo připojení sítí potřebujete funkce pro zpracování různých aspekt�
 | Adresa přiřazená aplikacím | Hybridní připojení |
 | Omezení přístupu | Brána – požadovaná integrace virtuální sítě |
 | Koncové body služby | Integrace virtuální sítě |
-| Soukromé koncové body ||
+| Privátní koncové body ||
 
 Kromě popsaných výjimek můžete všechny tyto funkce použít dohromady. Můžete kombinovat funkce a vyřešit problémy.
 
@@ -43,20 +43,20 @@ Kromě popsaných výjimek můžete všechny tyto funkce použít dohromady. Mů
 
 U každého daného případu použití může být několik způsobů, jak problém vyřešit. Výběr nejlepší funkce někdy nabývá mimo případ použití. Následující případy příchozího použití ukazují, jak používat funkce App Service sítě k řešení problémů s řízením provozu, který do vaší aplikace směřuje:
  
-| Případ příchozího použití | Funkce |
+| Případ příchozího použití | Příznak |
 |---------------------|-------------------|
 | Podpora protokolu SSL založeného na protokolu IP pro vaši aplikaci | Adresa přiřazená aplikacím |
 | Podpora nesdílené vyhrazené příchozí adresy pro vaši aplikaci | Adresa přiřazená aplikacím |
 | Omezení přístupu k aplikaci ze sady dobře definovaných adres | Omezení přístupu |
-| Omezení přístupu k aplikaci z prostředků ve virtuální síti | Koncové body služby </br> INTERNÍHO NÁSTROJE POMOCNÉHO MECHANISMU </br> Soukromé koncové body |
-| Vystavení aplikace na privátní IP adrese ve vaší virtuální síti | INTERNÍHO NÁSTROJE POMOCNÉHO MECHANISMU </br> Soukromé koncové body </br> Privátní IP adresa pro příchozí provoz na instanci Application Gateway s koncovými body služby |
+| Omezení přístupu k aplikaci z prostředků ve virtuální síti | Koncové body služby </br> INTERNÍHO NÁSTROJE POMOCNÉHO MECHANISMU </br> Privátní koncové body |
+| Vystavení aplikace na privátní IP adrese ve vaší virtuální síti | INTERNÍHO NÁSTROJE POMOCNÉHO MECHANISMU </br> Privátní koncové body </br> Privátní IP adresa pro příchozí provoz na instanci Application Gateway s koncovými body služby |
 | Ochrana aplikace pomocí firewallu webových aplikací (WAF) | Application Gateway a interního nástroje pomocného mechanismu </br> Application Gateway s privátními koncovými body </br> Application Gateway s koncovými body služby </br> Přední dvířka Azure s omezeními přístupu |
 | Vyrovnávání zatížení aplikací v různých oblastech | Přední dvířka Azure s omezeními přístupu | 
 | Vyrovnávat zatížení provozu ve stejné oblasti | [Application Gateway s koncovými body služby][appgwserviceendpoints] | 
 
 Následující případy odchozího použití ukazují, jak používat funkce App Service sítě k řešení požadavků na odchozí přístup k vaší aplikaci:
 
-| Případ odchozího použití | Funkce |
+| Případ odchozího použití | Příznak |
 |---------------------|-------------------|
 | Přístup k prostředkům ve virtuální síti Azure ve stejné oblasti | Integrace virtuální sítě </br> ASE |
 | Přístup k prostředkům ve virtuální síti Azure v jiné oblasti | Brána – požadovaná integrace virtuální sítě </br> Pomocného mechanismu pro vytváření a virtuální sítě |
@@ -110,7 +110,7 @@ Tato funkce umožňuje vytvořit seznam pravidel pro povolení a odepření, kte
 
 Funkce omezení přístupu na základě IP adresy pomáhá při omezení IP adres, které se dají použít k přístupu k vaší aplikaci. Jsou podporovány adresy IPv4 i IPv6. Některé případy použití pro tuto funkci:
 * Omezte přístup k aplikaci ze sady dobře definovaných adres. 
-* Omezte přístup k provozu prostřednictvím služby Vyrovnávání zatížení, jako jsou třeba přední dveře Azure. Pokud chcete zablokovat příchozí provoz na přední dveře Azure, vytvořte pravidla, která povolí přenos z 147.243.0.0/16 a 2a01:111:2050::/44. 
+* Omezte přístup k provozu přes externí službu Vyrovnávání zatížení nebo jiná síťová zařízení se známými výstupními IP adresami. 
 
 Informace o tom, jak tuto funkci povolit, najdete v tématu [Konfigurace omezení přístupu][iprestrictions].
 
@@ -126,7 +126,20 @@ Některé případy použití pro tuto funkci:
 ![Diagram, který znázorňuje použití koncových bodů služby s Application Gateway.](media/networking-features/service-endpoints-appgw.png)
 
 Další informace o konfiguraci koncových bodů služby s vaší aplikací najdete v tématu [omezení přístupu Azure App Service][serviceendpoints].
+#### <a name="access-restriction-rules-based-on-service-tags-preview"></a>Pravidla omezení přístupu na základě značek služby (Preview)
+[Značky služeb Azure][servicetags] jsou dobře definované sady IP adres pro služby Azure. Značky služeb seskupují rozsahy IP adres používané v různých službách Azure a často jsou také dále vymezeny na konkrétní oblasti. Díky tomu můžete filtrovat *příchozí* provoz z konkrétních služeb Azure. 
 
+Úplný seznam značek a další informace najdete v odkazu na značku služby výše. Informace o tom, jak tuto funkci povolit, najdete v tématu [Konfigurace omezení přístupu][iprestrictions].
+#### <a name="http-header-filtering-for-access-restriction-rules-preview"></a>Filtrování hlaviček protokolu HTTP pro pravidla omezení přístupu (Preview)
+Pro každé pravidlo omezení přístupu můžete přidat další filtrování hlaviček protokolu HTTP. To vám umožní podrobněji zkontrolovat příchozí požadavek a filtr na základě konkrétních hodnot hlaviček protokolu HTTP. Každé záhlaví může mít až 8 hodnot na jedno pravidlo. V tuto chvíli se podporuje následující seznam hlaviček protokolu http: 
+* X-předané – pro
+* X-předávaný-Host
+* X – Azure – FDID
+* X-FD – HealthProbe
+
+K některým případům použití pro filtrování hlaviček protokolu HTTP patří:
+* Omezení přístupu k provozu z proxy serverů předávajících název hostitele
+* Omezení přístupu ke konkrétní instanci front-FDID pro Azure pomocí pravidla značek služby a omezením X-Azure-Header
 ### <a name="private-endpoint"></a>Privátní koncový bod
 
 Privátní koncový bod je síťové rozhraní, které vám prostřednictvím privátního propojení Azure připojuje soukromě a bezpečně ke své webové aplikaci. Privátní koncový bod používá privátní IP adresu z vaší virtuální sítě a efektivně tak přináší webovou aplikaci do vaší virtuální sítě. Tato funkce je určena pouze pro *příchozí* toky do vaší webové aplikace.
@@ -243,7 +256,7 @@ Tento styl nasazení vám neposkytne vyhrazenou adresu pro odchozí přenosy na 
 
 ### <a name="create-multitier-applications"></a>Vytváření vícevrstvých aplikací
 
-Vícevrstvá aplikace je aplikace, ve které je back-endové aplikace API dostupné jenom z front-endové úrovně. Existují dva způsoby, jak vytvořit vícevrstvou aplikaci. Jak začít pomocí integrace virtuální sítě připojit front-end webovou aplikaci k podsíti ve virtuální síti. Tím umožníte, aby webová aplikace prováděla volání do vaší virtuální sítě. Jakmile je aplikace front-end připojená k virtuální síti, musíte se rozhodnout, jak uzamknout přístup k vaší aplikaci API. Můžete:
+Vícevrstvá aplikace je aplikace, ve které je back-endové aplikace API dostupné jenom z front-endové úrovně. Existují dva způsoby, jak vytvořit vícevrstvou aplikaci. Jak začít pomocí integrace virtuální sítě připojit front-end webovou aplikaci k podsíti ve virtuální síti. Tím umožníte, aby webová aplikace prováděla volání do vaší virtuální sítě. Jakmile je aplikace front-end připojená k virtuální síti, musíte se rozhodnout, jak uzamknout přístup k vaší aplikaci API. Další možnosti:
 
 * Hostování front-endu i aplikace API ve stejném interního nástroje pomocném programu pro čtení a zpřístupnění aplikace front-end pro Internet pomocí aplikační brány.
 * Hostování front-endu ve víceklientské službě a back-endu v interního nástroje pomocném modulu pro obnovení.
@@ -299,3 +312,4 @@ Pokud provedete kontrolu App Service, najdete několik portů, které jsou vysta
 [networkinfo]: ./environment/network-info.md
 [appgwserviceendpoints]: ./networking/app-gateway-with-service-endpoints.md
 [privateendpoints]: ./networking/private-endpoint.md
+[servicetags]: ../virtual-network/service-tags-overview.md

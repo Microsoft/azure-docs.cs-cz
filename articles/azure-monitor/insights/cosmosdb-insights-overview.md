@@ -1,16 +1,16 @@
 ---
 title: Monitorovat Azure Cosmos DB s Azure Monitor pro Cosmos DB | Microsoft Docs
 description: Tento článek popisuje Azure Monitor pro funkci Cosmos DB, která poskytuje Cosmos DBm vlastníkům rychlé porozumění problémům s výkonem a využitím jejich účtů CosmosDB.
-author: mrbullwinkle
-ms.author: mbullwin
+author: lgayhardt
+ms.author: lagayhar
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 5e40f91945f83af7880f272f1578370f2ee1ec42
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 878ae21cfbe55565c4a20064d937d1447f96ce7a
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97608489"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209895"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db"></a>Prozkoumejte Azure Monitor pro Azure Cosmos DB
 
@@ -37,7 +37,7 @@ Tato funkce nevyžaduje, abyste povolili ani nenakonfigurovali cokoli. Tyto Azur
 
 Pokud chcete zobrazit využití a výkon účtů úložiště napříč všemi vašimi předplatnými, proveďte následující kroky.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 2. Vyhledejte **monitorování** a vyberte **monitor**.
 

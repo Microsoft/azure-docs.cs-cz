@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 1/24/2018
 ms.author: mimckitt
-ms.openlocfilehash: 9f45b0a9454176f53413940d3c310e0499b43d3c
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 444c6a9c131916a2a07f41fd5c1ff38fc1e7bfb2
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98180111"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210320"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>Jak nasadit Windows 10 v Azure s právy pro hostování s více klienty 
 Pro zákazníky s Windows 10 Enterprise E3/E5 podle uživatele nebo přístup k virtuálnímu počítači s Windows na úrovni uživatele (licence pro předplatné uživatele nebo licence k předplatnému uživatele) umožňuje víceklientské hostování pro Windows 10 přístup k cloudu a spouštění Windows 10 Virtual Machines v Azure bez placení na jinou licenci. Další informace najdete v tématu hostování s více [klienty pro Windows 10](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx).
@@ -24,14 +24,22 @@ Pro zákazníky s Windows 10 Enterprise E3/E5 podle uživatele nebo přístup k 
 >
 
 ## <a name="deploying-windows-10-image-from-azure-marketplace"></a>Nasazení image Windows 10 z Azure Marketplace 
-Pro prostředí PowerShell, rozhraní příkazového řádku a Azure Resource Manager nasazení šablon můžete najít image Windows 10 s následujícím vydavatelem, nabídkou, SKU.
+Pro prostředí PowerShell, rozhraní příkazového řádku a Azure Resource Manager nasazení šablon Windows 10 je možné najít image s Windows 10 pomocí `PublisherName: MicrosoftWindowsDesktop` a `Offer: Windows-10` .
 
-| Operační systém  |      Název vydavatele      |  Nabídka | Skladová jednotka (SKU) |
-|:----------|:-------------:|:------|:------|
-| Windows 10 Pro    | MicrosoftWindowsDesktop | Windows-10  | RS2-Pro   |
-| Windows 10 pro N  | MicrosoftWindowsDesktop | Windows-10  | RS2-ProN  |
-| Windows 10 Pro    | MicrosoftWindowsDesktop | Windows-10  | RS3-Pro   |
-| Windows 10 pro N  | MicrosoftWindowsDesktop | Windows-10  | RS3-ProN  |
+```powershell
+Get-AzVmImageSku -Location '$location' -PublisherName 'MicrosoftWindowsDesktop' -Offer 'Windows-10'
+
+Skus                        Offer      PublisherName           Location 
+----                        -----      -------------           -------- 
+rs4-pro                     Windows-10 MicrosoftWindowsDesktop eastus   
+rs4-pron                    Windows-10 MicrosoftWindowsDesktop eastus   
+rs5-enterprise              Windows-10 MicrosoftWindowsDesktop eastus   
+rs5-enterprisen             Windows-10 MicrosoftWindowsDesktop eastus   
+rs5-pro                     Windows-10 MicrosoftWindowsDesktop eastus   
+rs5-pron                    Windows-10 MicrosoftWindowsDesktop eastus  
+```
+
+Další informace o dostupných imagí najdete v tématu [vyhledání a použití Azure Marketplace imagí virtuálních počítačů s Azure PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage)
 
 ## <a name="qualify-for-multi-tenant-hosting-rights"></a>Nárok na práva hostování více tenantů 
 Aby bylo možné získat oprávnění pro hostování více tenantů a spouštět image Windows 10 na uživatelích Azure, musí mít jedno z následujících předplatných: 

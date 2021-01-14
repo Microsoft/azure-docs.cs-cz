@@ -3,17 +3,17 @@ title: Monitorování mobilních aplikací pomocí Azure Monitor Application Ins
 description: Poskytuje pokyny pro rychlé nastavení mobilní aplikace pro monitorování pomocí Azure Monitor Application Insights a App Center
 ms.subservice: application-insights
 ms.topic: quickstart
-author: mrbullwinkle
-ms.author: mbullwin
+author: lgayhardt
+ms.author: lagayhar
 ms.date: 06/26/2019
 ms.reviewer: daviste
 ms.custom: mvc
-ms.openlocfilehash: 27b74f99d926bf72bc22f153a8d76deb56646987
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 34c35baf1bd958058bec6642434464711f5e79f6
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993882"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210303"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>Začínáme s analýzou mobilní aplikace pomocí App Center a Application Insights
 
@@ -67,7 +67,7 @@ Pokud chcete ověřit přijímání vlastních událostí, přejděte v App Cent
 
 Jakmile vaše aplikace odesílá vlastní události a App Center tyto události přijímá, je potřeba na webu Azure Portal vytvořit prostředek Application Insights typu App Center:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 2. Vyberte **vytvořit prostředek pro**  >  **vývojáře**  >  **Application Insights**.
 
     > [!NOTE]

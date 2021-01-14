@@ -13,12 +13,12 @@ ms.date: 11/26/2019
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 1282c27378e6a088a600a3ab3105f3f548984d03
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 7bdb36566d7c501dc5ca5604f8c6963258aa951c
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063140"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208535"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-application"></a>Kurz: přihlášení uživatelů a volání rozhraní Microsoft Graph API z aplikace pro Android
 
@@ -57,8 +57,7 @@ Tato ukázka používá knihovnu Microsoft Authentication Library pro Android (M
 
 MSAL bude automaticky obnovovat tokeny, poskytovat jednotné přihlašování (SSO) mezi ostatními aplikacemi na zařízení a spravovat účty.
 
-> [!NOTE]
-> Tento kurz ukazuje zjednodušené příklady práce s MSAL pro Android. Pro zjednodušení používá jenom režim jednoho účtu. Další informace o složitějších scénářích najdete na webu GitHub v ukázce dokončeného [funkčního kódu](https://github.com/Azure-Samples/ms-identity-android-java/) .
+Tento kurz ukazuje zjednodušené příklady práce s MSAL pro Android. Pro zjednodušení používá jenom režim jednoho účtu. Další informace o složitějších scénářích najdete na webu GitHub v ukázce dokončeného [funkčního kódu](https://github.com/Azure-Samples/ms-identity-android-java/) .
 
 ## <a name="create-a-project"></a>Vytvoření projektu
 Pokud ještě nemáte aplikaci pro Android, postupujte podle těchto kroků a nastavte nový projekt.
@@ -85,8 +84,8 @@ Pokud ještě nemáte aplikaci pro Android, postupujte podle těchto kroků a na
 1. Zadejte název balíčku vašeho projektu. Pokud jste kód stáhli, je tato hodnota `com.azuresamples.msalandroidapp` .
 1. V části **hodnota hash podpisu** na stránce **Konfigurace aplikace pro Android** vyberte možnost **vygenerovat hodnotu hash signatury pro vývoj.** a zkopírujte příkaz nástroje nástroje, který se má použít pro vaši platformu.
 
-   > [!Note]
-   > KeyTool.exe je nainstalován jako součást sady Java Development Kit (JDK). Je také nutné nainstalovat nástroj OpenSSL pro spuštění příkazu nástroje. Další informace najdete v [dokumentaci k Androidu o generování klíče](https://developer.android.com/studio/publish/app-signing#generate-key) .
+
+     KeyTool.exe je nainstalován jako součást sady Java Development Kit (JDK). Je také nutné nainstalovat nástroj OpenSSL pro spuštění příkazu nástroje. Další informace najdete v [dokumentaci k Androidu o generování klíče](https://developer.android.com/studio/publish/app-signing#generate-key) .
 
 1. Zadejte **hodnotu hash podpisu** generovanou nástrojem.
 1. Vyberte **Konfigurovat** a uložte **konfiguraci MSAL** , která se zobrazí na stránce **Konfigurace Androidu** , abyste ji mohli zadat při pozdější konfiguraci aplikace.  
@@ -122,8 +121,7 @@ Pokud ještě nemáte aplikaci pro Android, postupujte podle těchto kroků a na
     }
    ```
 
-   >[!NOTE]
-   >Tento kurz ukazuje, jak nakonfigurovat aplikaci v režimu jednoho účtu. Podívejte se na dokumentaci, kde najdete další informace o [jednom nebo víc režimech účtů](./single-multi-account.md) a [konfiguraci aplikace](./msal-configuration.md) .
+     Tento kurz ukazuje, jak nakonfigurovat aplikaci v režimu jednoho účtu. Podívejte se na dokumentaci, kde najdete další informace o [jednom nebo víc režimech účtů](./single-multi-account.md) a [konfiguraci aplikace](./msal-configuration.md) .
 
 4. Do části **App**  >  **Src**  >  **Main**  >  **AndroidManifest.xml** přidejte `BrowserTabActivity` níže uvedenou aktivitu do těla aplikace. Tato položka umožňuje, aby Microsoft po dokončení ověřování vrátil zpět do vaší aplikace:
 
@@ -144,8 +142,11 @@ Pokud ještě nemáte aplikaci pro Android, postupujte podle těchto kroků a na
 
     Pro tuto hodnotu nahraďte název balíčku, který jste zaregistrovali v Azure Portal `android:host=` .
     Hodnotu hash klíče, kterou jste zaregistrovali v Azure Portal, nahraďte `android:path=` hodnotou. Hodnota hash **podpisu by neměla být kódovaná** v adrese URL. Zajistěte, aby na `/` začátku hodnoty hash podpisu existovala úvodní hodnota.
-    >[!NOTE]
-    >Název balíčku nahradíte hodnotou, kterou `android:host` by měl vypadat nějak takto: "com. azuresamples. msalandroidapp" signatura "hash", nahradíte `android:path` hodnotu parametr by měl vypadat nějak takto: "/1WIqXSqBj7w + h11ZifsnqwgyKrY =" tyto hodnoty bude možné najít v okně ověřování vaší registrace aplikace. Všimněte si, že váš identifikátor URI pro přesměrování bude vypadat nějak takto: "msauth://com.azuresamples.msalandroidapp/1wIqXSqBj7w%2Bh11ZifsnqwgyKrY%3D". I když je hodnota hash podpisu na konci této hodnoty zakódovaná, hodnota hash signatury by **neměla mít v** hodnotě kódování URL `android:path` .
+    
+    Název balíčku nahradíte hodnotou, kterou `android:host` by měl vypadat nějak takto: "com. azuresamples. msalandroidapp".
+    Hodnota hash podpisu nahradíte hodnotou, kterou `android:path` by měl vypadat nějak takto: "/1wIqXSqBj7w + h11ZifsnqwgyKrY =".
+    
+    Tyto hodnoty bude možné najít také v okně ověřování registrace vaší aplikace. Všimněte si, že váš identifikátor URI pro přesměrování bude vypadat nějak takto: "msauth://com.azuresamples.msalandroidapp/1wIqXSqBj7w%2Bh11ZifsnqwgyKrY%3D". I když je hodnota hash podpisu na konci této hodnoty zakódovaná, hodnota hash signatury by **neměla mít v** hodnotě kódování URL `android:path` .
 
 ## <a name="use-msal"></a>Použití MSAL
 
@@ -479,7 +480,7 @@ private void performOperationOnSignOut() {
             .show();
 }
 ```
-### <a name="layout"></a>Rozložení
+### <a name="layout"></a>Layout
 
 Vzorový `activity_main.xml` soubor pro zobrazení tlačítek a textových polí
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/16/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: a18a36b8583f8534b2a2e643e5c155dc7a2d65e2
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: e2c632de3d602fe2d3e5bfa74f78e90f48412067
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444057"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208909"
 ---
 # <a name="configure-a-mobile-app-that-calls-web-apis"></a>Konfigurace mobilní aplikace, která volá webová rozhraní API
 
@@ -148,9 +148,9 @@ Další informace najdete v tématu věnovaném [důležitým hledisku pro UWP p
 
 V zařízeních s Androidem a iOS poskytují zprostředkovatelé tyto akce:
 
-- **Jednotné přihlašování (SSO)** : jednotné přihlašování můžete použít pro zařízení zaregistrovaná ve službě Azure Active Directory (Azure AD). Když použijete jednotné přihlašování, uživatelé se nemusí přihlašovat ke každé aplikaci.
-- **Identifikace zařízení** : Toto nastavení umožňuje zásady podmíněného přístupu, které se vztahují k zařízením Azure AD. Proces ověřování používá certifikát zařízení, který byl vytvořen v době, kdy bylo zařízení připojeno k pracovní ploše.
-- **Ověření identifikace aplikace** : když aplikace volá zprostředkovatele, PŘEDÁ adresu URL pro přesměrování. Zprostředkovatel je pak ověří.
+- **Jednotné přihlašování (SSO)**: jednotné přihlašování můžete použít pro zařízení zaregistrovaná ve službě Azure Active Directory (Azure AD). Když použijete jednotné přihlašování, uživatelé se nemusí přihlašovat ke každé aplikaci.
+- **Identifikace zařízení**: Toto nastavení umožňuje zásady podmíněného přístupu, které se vztahují k zařízením Azure AD. Proces ověřování používá certifikát zařízení, který byl vytvořen v době, kdy bylo zařízení připojeno k pracovní ploše.
+- **Ověření identifikace aplikace**: když aplikace volá zprostředkovatele, PŘEDÁ adresu URL pro přesměrování. Zprostředkovatel je pak ověří.
 
 ### <a name="enable-the-broker-on-xamarin"></a>Povolení zprostředkovatele v Xamarin
 
@@ -249,8 +249,8 @@ Pokud chcete zaregistrovat schéma URL vaší aplikace, použijte následující
 
    Tady můžete `BundleId` zařízení jednoznačně identifikovat. Například pokud `BundleId` je `yourcompany.xforms` , vaše schéma URL je `msauth.com.yourcompany.xforms` .
 
-   > [!NOTE]
-   > Toto schéma URL se stane součástí identifikátoru URI přesměrování, který jedinečně identifikuje vaši aplikaci, když obdrží odpověď zprostředkovatele.
+  
+      Toto schéma URL se stane součástí identifikátoru URI přesměrování, který jedinečně identifikuje vaši aplikaci, když obdrží odpověď zprostředkovatele.
 
    ```XML
     <key>CFBundleURLTypes</key>
@@ -310,10 +310,9 @@ Když MSAL pro iOS a macOS volá zprostředkovatele, zprostředkovatel volá zp�
     }
 ```
 
-> [!NOTE]
-> Pokud jste přijali `UISceneDelegate` v systému iOS 13 nebo novějším, umístěte zpětné volání MSAL `scene:openURLContexts:` na `UISceneDelegate` místo. MSAL `handleMSALResponse:sourceApplication:` se musí volat jenom jednou pro každou adresu URL.
->
-> Další informace najdete v [dokumentaci společnosti Apple](https://developer.apple.com/documentation/uikit/uiscenedelegate/3238059-scene?language=objc).
+Pokud jste přijali `UISceneDelegate` v systému iOS 13 nebo novějším, umístěte zpětné volání MSAL `scene:openURLContexts:` na `UISceneDelegate` místo. MSAL `handleMSALResponse:sourceApplication:` se musí volat jenom jednou pro každou adresu URL.
+
+Další informace najdete v [dokumentaci společnosti Apple](https://developer.apple.com/documentation/uikit/uiscenedelegate/3238059-scene?language=objc).
 
 #### <a name="step-2-register-a-url-scheme"></a>Krok 2: registrace schématu adresy URL
 
@@ -329,8 +328,7 @@ Postup při registraci schématu pro aplikaci:
 
    Tady můžete `BundleId` zařízení jednoznačně identifikovat. Například pokud `BundleId` je `yourcompany.xforms` , vaše schéma URL je `msauth.com.yourcompany.xforms` .
 
-   > [!NOTE]
-   > Toto schéma URL se stane součástí identifikátoru URI přesměrování, který jedinečně identifikuje vaši aplikaci, když obdrží odpověď zprostředkovatele. Ujistěte se, že identifikátor URI přesměrování ve formátu `msauth.(BundleId)://auth` je zaregistrován pro vaši aplikaci v [Azure Portal](https://portal.azure.com).
+    Toto schéma URL se stane součástí identifikátoru URI přesměrování, který jedinečně identifikuje vaši aplikaci, když obdrží odpověď zprostředkovatele. Ujistěte se, že identifikátor URI přesměrování ve formátu `msauth.(BundleId)://auth` je zaregistrován pro vaši aplikaci v [Azure Portal](https://portal.azure.com).
 
    ```XML
    <key>CFBundleURLTypes</key>

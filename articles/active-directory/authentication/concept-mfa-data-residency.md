@@ -1,109 +1,126 @@
 ---
-title: Služba Azure AD Multi-Factor Authentication zasídlí dat
-description: Přečtěte si, jaká data v osobním a organizačním prostředí Azure AD Multi-Factor Authentication ukládá o vás a o vašich uživatelích a jaká data zůstanou v zemi nebo oblasti původu.
+title: Zasídlí dat vícefaktorového ověřování Azure AD
+description: Seznamte se s informacemi o tom, jaká data osobního a organizačního ověřování Azure AD jsou o vás a na vašich uživatelích a jaká data zůstanou v zemi nebo oblasti původu.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 12/11/2020
+ms.date: 01/14/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 788512db242bf1a1c6f18ffc0ee773bd3372aa42
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 788a666e8ec509bbd29a8dbd503a60b3dddefd6b
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355862"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208348"
 ---
-# <a name="data-residency-and-customer-data-for-azure-ad-multi-factor-authentication"></a>Data o sídle a zákaznických datech pro Azure AD Multi-Factor Authentication
+# <a name="data-residency-and-customer-data-for-azure-ad-multifactor-authentication"></a>Data zasídla a zákaznická data pro vícefaktorové ověřování Azure AD
 
 Zákaznická data jsou uložená v rámci Azure AD v geografickém umístění na základě adresy poskytnuté vaší organizací při přihlášení k odběru online služby Microsoftu, jako je Microsoft 365 a Azure. Informace o tom, kde jsou uložená zákaznická data, najdete v části [kde se nacházejí vaše data?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) v centru zabezpečení Microsoftu.
 
-Cloudová Multi-Factor Authentication služby Azure AD a Azure Multi-Factor Authentication Server a ukládají určité množství osobních údajů a dat organizace. Tento článek popisuje, co a kde jsou data uložená.
+Cloudové ověřování Azure AD s využitím vícefaktorového ověřování a zpracování serveru Azure AD s více fakty ověřování a ukládání některých osobních údajů a dat organizace. Tento článek popisuje, co a kde jsou data uložená.
 
-Služba Azure AD Multi-Factor Authentication obsahuje datová centra v USA, Evropě a Asie a Tichomoří. Následující činnosti pocházejí z regionálních Datacenter, s výjimkou případů, kdy je uvedeno níže:
+Služba Azure AD vícefaktorového ověřování má datová centra v USA, Evropě a Asie a Tichomoří. Následující činnosti pocházejí z regionálních Datacenter, s výjimkou případů, kdy je uvedeno níže:
 
-* Multi-Factor Authentication využívající telefonní hovory pocházející z Datacenter USA a jsou směrováni globálními poskytovateli.
+* Vícefaktorové ověřování pomocí telefonních hovorů pochází z Datacenter USA a jsou směrováni globálními poskytovateli.
 * Požadavky na ověřování uživatelů pro obecné účely z jiných oblastí, jako je Evropa nebo Austrálie, se aktuálně zpracovávají na základě umístění uživatele.
 * Nabízená oznámení používající Microsoft Authenticator aplikace se aktuálně zpracovávají v regionálních datacentrech na základě umístění uživatele.
     * Služby specifické pro dodavatele zařízení, jako je například nabízená oznámení Apple, můžou být mimo umístění uživatele.
 
-## <a name="personal-data-stored-by-azure-ad-multi-factor-authentication"></a>Osobní údaje uložené Multi-Factor Authentication Azure AD
+## <a name="personal-data-stored-by-azure-ad-multifactor-authentication"></a>Osobní údaje uložené ve službě Azure AD vícefaktorového ověřování
 
 Osobní údaje jsou informace na úrovni uživatele spojené s konkrétní osobou. Následující úložiště dat obsahují osobní údaje:
 
 * Zablokované uživatele
 * Obcházení uživatelé
 * Žádosti o změnu tokenu zařízení Microsoft Authenticator
-* Sestavy aktivit Multi-Factor Authentication
+* Sestavy aktivit vícefaktorového ověřování
 * Microsoft Authenticator aktivace
 
 Tyto informace se uchovávají po dobu 90 dnů.
 
-Služba Azure AD Multi-Factor Authentication neprotokoluje osobní údaje, jako je uživatelské jméno, telefonní číslo nebo IP adresa, ale existuje *UserObjectId* , který identifikuje Multi-Factor Authentication pokusů o přihlášení uživatelů. Data protokolu se ukládají po dobu 30 dnů.
+Vícefaktorové ověřování Azure AD neprotokoluje osobní údaje, jako je uživatelské jméno, telefonní číslo nebo IP adresa, ale existuje *UserObjectId* , který identifikuje vícefaktorové pokusy o ověření pro uživatele. Data protokolu se ukládají po dobu 30 dnů.
 
-### <a name="azure-ad-multi-factor-authentication"></a>Vícefaktorové ověřování Azure AD
+### <a name="azure-ad-multifactor-authentication"></a>Vícefaktorového ověřování Azure AD
 
 Pro veřejné cloudy Azure, kromě ověřování Azure B2C, serveru NPS a Windows Server 2016 nebo 2019 AD FS adaptéru se ukládají následující osobní údaje:
 
 | Typ události                           | Typ úložiště dat |
 |--------------------------------------|-----------------|
-| Token OATH                           | V protokolech Multi-Factor Authentication     |
-| Jednosměrná zpráva SMS                          | V protokolech Multi-Factor Authentication     |
-| Hlasový hovor                           | V protokolech Multi-Factor Authentication<br />Úložiště dat sestavy Multi-Factor Authentication aktivit<br />Blokování uživatelů při nahlášení podvodu |
-| Oznámení Microsoft Authenticator | V protokolech Multi-Factor Authentication<br />Úložiště dat sestavy Multi-Factor Authentication aktivit<br />Blokování uživatelů při nahlášení podvodu<br />Žádosti o změnu při Microsoft Authenticator změně tokenu zařízení |
-
-> [!NOTE]
-> Úložiště dat sestavy Multi-Factor Authentication aktivita je uloženo v USA pro všechny cloudy, bez ohledu na oblast, která žádost o ověření zpracovává. Microsoft Azure (Německo), Microsoft Azure provozovaný společností 21Vianet a Cloud pro státní správu Microsoftu mají svá vlastní nezávislá úložiště dat odděleně od úložišť dat oblasti veřejného cloudu, ale tato data se vždycky ukládají do USA. Tato úložiště dat obsahují osobní údaje, například hlavní název uživatele (UPN) a úplné telefonní číslo. 
+| Token OATH                           | V protokolech vícefaktorového ověřování     |
+| Jednosměrná zpráva SMS                          | V protokolech vícefaktorového ověřování     |
+| Hlasový hovor                           | V protokolech vícefaktorového ověřování<br />Úložiště dat sestavy aktivity vícefaktorového ověřování<br />Blokování uživatelů při nahlášení podvodu |
+| Oznámení Microsoft Authenticator | V protokolech vícefaktorového ověřování<br />Úložiště dat sestavy aktivity vícefaktorového ověřování<br />Blokování uživatelů při nahlášení podvodu<br />Žádosti o změnu při Microsoft Authenticator změně tokenu zařízení |
 
 V případě Microsoft Azure Government, Microsoft Azure (Německo) Microsoft Azure provozovaných společností 21Vianet, ověřování Azure B2C, rozšíření serveru NPS a Windows Server 2016 nebo 2019 AD FS adaptér jsou uloženy následující osobní údaje:
 
 | Typ události                           | Typ úložiště dat |
 |--------------------------------------|-----------------|
-| Token OATH                           | V protokolech Multi-Factor Authentication<br />Úložiště dat sestavy Multi-Factor Authentication aktivit |
-| Jednosměrná zpráva SMS                          | V protokolech Multi-Factor Authentication<br />Úložiště dat sestavy Multi-Factor Authentication aktivit |
-| Hlasový hovor                           | V protokolech Multi-Factor Authentication<br />Úložiště dat sestavy Multi-Factor Authentication aktivit<br />Blokování uživatelů při nahlášení podvodu |
-| Oznámení Microsoft Authenticator | V protokolech Multi-Factor Authentication<br />Úložiště dat sestavy Multi-Factor Authentication aktivit<br />Blokování uživatelů při nahlášení podvodu<br />Žádosti o změnu při Microsoft Authenticator změně tokenu zařízení |
+| Token OATH                           | V protokolech vícefaktorového ověřování<br />Úložiště dat sestavy aktivity vícefaktorového ověřování |
+| Jednosměrná zpráva SMS                          | V protokolech vícefaktorového ověřování<br />Úložiště dat sestavy aktivity vícefaktorového ověřování |
+| Hlasový hovor                           | V protokolech vícefaktorového ověřování<br />Úložiště dat sestavy aktivity vícefaktorového ověřování<br />Blokování uživatelů při nahlášení podvodu |
+| Oznámení Microsoft Authenticator | V protokolech vícefaktorového ověřování<br />Úložiště dat sestavy aktivity vícefaktorového ověřování<br />Blokování uživatelů při nahlášení podvodu<br />Žádosti o změnu při Microsoft Authenticator změně tokenu zařízení |
 
-### <a name="multi-factor-authentication-server"></a>Server Multi-Factor Authentication
+### <a name="multifactor-authentication-server"></a>Server vícefaktorového ověřování
 
-Pokud nasadíte a spustíte Azure Multi-Factor Authentication Server, ukládají se následující osobní údaje:
+Pokud nasadíte a spustíte vícefaktorového ověřování serveru Azure AD, uloží se následující osobní údaje:
 
 > [!IMPORTANT]
-> Od 1. července 2019 už společnost Microsoft nebude nabízet Multi-Factor Authentication Server pro nová nasazení. Noví zákazníci, kteří chtějí vyžadovat službu Multi-Factor Authentication od uživatelů, by měli používat cloudovou Multi-Factor Authentication služby Azure AD. Stávající zákazníci, kteří si aktivovali Multi-Factor Authentication Server před 1. července, budou moci stáhnout nejnovější verzi, budoucí aktualizace a generovat přihlašovací údaje pro aktivaci jako obvykle.
+> Od 1. července 2019 už společnost Microsoft nenabízí vícefaktorové ověřovací server pro nová nasazení. Noví zákazníci, kteří chtějí vyžadovat vícefaktorové ověřování od svých uživatelů, by měli používat vícefaktorové ověřování Azure AD založené na cloudu. Stávající zákazníci, kteří aktivovali vícefaktorové ověřování server před 1. července, budou moci stáhnout nejnovější verzi, budoucí aktualizace a generovat přihlašovací údaje pro aktivaci obvyklým způsobem.
 
 | Typ události                           | Typ úložiště dat |
 |--------------------------------------|-----------------|
-| Token OATH                           | V protokolech Multi-Factor Authentication<br />Úložiště dat sestavy Multi-Factor Authentication aktivit |
-| Jednosměrná zpráva SMS                          | V protokolech Multi-Factor Authentication<br />Úložiště dat sestavy Multi-Factor Authentication aktivit |
-| Hlasový hovor                           | V protokolech Multi-Factor Authentication<br />Úložiště dat sestavy Multi-Factor Authentication aktivit<br />Blokování uživatelů při nahlášení podvodu |
-| Oznámení Microsoft Authenticator | V protokolech Multi-Factor Authentication<br />Úložiště dat sestavy Multi-Factor Authentication aktivit<br />Blokování uživatelů při nahlášení podvodu<br />Žádosti o změnu při Microsoft Authenticator změně tokenu zařízení |
+| Token OATH                           | V protokolech vícefaktorového ověřování<br />Úložiště dat sestavy aktivity vícefaktorového ověřování |
+| Jednosměrná zpráva SMS                          | V protokolech vícefaktorového ověřování<br />Úložiště dat sestavy aktivity vícefaktorového ověřování |
+| Hlasový hovor                           | V protokolech vícefaktorového ověřování<br />Úložiště dat sestavy aktivity vícefaktorového ověřování<br />Blokování uživatelů při nahlášení podvodu |
+| Oznámení Microsoft Authenticator | V protokolech vícefaktorového ověřování<br />Úložiště dat sestavy aktivity vícefaktorového ověřování<br />Blokování uživatelů při nahlášení podvodu<br />Žádosti o změnu při Microsoft Authenticator změně tokenu zařízení |
 
-## <a name="organizational-data-stored-by-azure-ad-multi-factor-authentication"></a>Data organizace uložená pomocí Multi-Factor Authentication Azure AD
+## <a name="organizational-data-stored-by-azure-ad-multifactor-authentication"></a>Data organizace uložená pomocí vícefaktorového ověřování Azure AD
 
-Data organizace jsou informace na úrovni tenanta, které by mohly vystavit konfiguraci nebo nastavení prostředí. Nastavení klienta z následujících Azure Portal Multi-Factor Authentication stránky můžou ukládat podniková data, jako jsou prahové hodnoty uzamčení nebo informace o ID volajícího pro požadavky na příchozí ověřování na telefon:
+Data organizace jsou informace na úrovni tenanta, které by mohly vystavit konfiguraci nebo nastavení prostředí. Nastavení klienta z následujících Azure Portal ověřovací stránky s více fakty můžou ukládat data organizace, jako jsou mezní hodnoty uzamčení nebo informace o ID volajícího pro požadavky na příchozí ověřování na telefon:
 
 * Uzamčení účtu
 * Výstraha podvodů
 * Oznámení
 * Nastavení telefonního hovoru
 
-A pro Azure Multi-Factor Authentication Server můžou následující Azure Portal stránky obsahovat data organizace:
+A u vícefaktorového ověřování serveru Azure AD můžou následující stránky Azure Portal obsahovat data organizace:
 
 * Nastavení serveru
 * Jednorázové přihlášení
 * Pravidla ukládání do mezipaměti
-* Stav Multi-Factor Authentication Server
+* Stav vícefaktorového ověřovacího serveru
 
-## <a name="log-data-location"></a>Umístění dat protokolu
+## <a name="multifactor-authentication-logs-location"></a>Umístění protokolů vícefaktorového ověřování
 
-Kde jsou uloženy informace protokolu, závisí na tom, v jaké oblasti jsou zpracovávány. Většina geografických oblastí má nativní možnosti služby Azure AD Multi-Factor Authentication, takže data protokolu se ukládají ve stejné oblasti, která zpracovává žádost o Multi-Factor Authentication. V zeměpisných oblastech bez podpory Azure AD Multi-Factor Authentication jsou geografické oblasti USA nebo Evropa uloženy ve stejné oblasti, která zpracovává požadavek Multi-Factor Authentication.
+Následující tabulka uvádí umístění protokolů služby pro veřejné cloudy.
 
-Některá data protokolu základního ověřování se ukládají pouze do USA. Microsoft Azure (Německo) a Microsoft Azure provozované společností 21Vianet jsou vždy uložené v jejich příslušném cloudu. Data v cloudovém protokolu Microsoftu pro státní správu se vždycky ukládají do USA.
+| Veřejný cloud| Protokoly přihlašování | Sestava o aktivitě vícefaktorového ověřování        | Protokoly služby vícefaktorového ověřování       |
+|-------------|--------------|----------------------------------------|------------------------|
+| USA          | USA           | USA                                     | USA                     |
+| Evropa      | Evropa       | USA                                     | Evropa <sup>2</sup>    |
+| Austrálie   | Austrálie    | US<sup>1</sup>                         | Austrálie <sup>2</sup> |
+
+<sup>1</sup> Protokoly kódu OATH se ukládají v Austrálii.
+
+<sup>2</sup> . Hlasové hovory – protokoly služby vícefaktorového ověřování se ukládají do USA.
+
+V následující tabulce je uvedeno umístění pro protokoly služby pro cloudy svrchovan.
+
+| Suverénní cloud                      | Protokoly přihlašování                         | Sestava aktivity vícefaktorového ověřování (včetně osobních údajů)| Protokoly služby vícefaktorového ověřování |
+|--------------------------------------|--------------------------------------|-------------------------------|------------------|
+| Microsoft Azure Germany              | Německo                              | USA                            | USA               |
+| Microsoft Azure provozovaný společností 21Vianet | Čína                                | USA                            | USA               |
+| Cloud pro státní správu Microsoftu           | USA                                   | USA                            | USA               |
+
+Data sestavy s více fakty ověřování obsahují osobní údaje, jako je hlavní název uživatele (UPN) a úplné telefonní číslo.
+
+K provozu služby se používají protokoly služby vícefaktorového ověřování.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o tom, jaké informace o uživatelích shromažďuje cloudová Multi-Factor Authentication Azure AD a Azure Multi-Factor Authentication Server, najdete v článku [shromažďování uživatelských dat v Azure ad Multi-Factor Authentication](howto-mfa-reporting-datacollection.md).
+Další informace o tom, jaké informace o uživateli jsou shromažďovány pomocí vícefaktorového ověřování Azure AD založeného na cloudu a serveru Azure AD s více fakty, najdete v tématu [shromažďování uživatelských dat ve službě Azure AD s více fakty ověřování](howto-mfa-reporting-datacollection.md).

@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
-ms.date: 07/20/2020
-ms.openlocfilehash: 3b5f5d64498922e9fc35942ff4570d801aa6c516
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.date: 12/31/2020
+ms.openlocfilehash: 2feabda5ea3f0c0748b92de9fcb7ef05abbdcf4c
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98118876"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209436"
 ---
 # <a name="analyze-with-apache-spark"></a>Analýza pomocí Apache Spark
 
@@ -23,25 +23,25 @@ V tomto kurzu se seznámíte se základními kroky pro načtení a analýzu dat 
 
 ## <a name="analyze-nyc-taxi-data-in-blob-storage-using-spark"></a>Analýza dat NYC taxislužby v BLOB Storage pomocí Sparku
 
-1. V **datovém** centru vyberte **Přidat nový prostředek (další** tlačítko plus **propojeno**) > **Procházet galerii**.
-1. Vyberte **NYC taxislužby & Limousine provize – žluté taxislužby**.
-1. V dolní části stránky vyberte **pokračovat**  >  **Přidat datovou sadu**.
-1. V oblasti **propojených** **dat** klikněte pravým tlačítkem myši na položku **Azure Blob Storage** a potom vyberte možnost **ukázkové datové sady**  >  **nyc_tlc_yellow**.
-1. Vyberte **Nový Poznámkový blok** pro vytvoření nového poznámkového bloku s následujícím kódem:
+1. V **datovém** centru kliknutím na **+** tlačítko **přidejte nový prostředek** a pak klikněte na >> **Procházet galerii**. 
+1. Vyhledejte **NYC taxislužby & Limousine provize – žluté taxislužby** a klikněte na ni. 
+1. V dolní části stránky stiskněte **pokračovat** a pak **přidejte datovou sadu**. 
+1. V **datovém** centru v oblasti **propojených** dat klikněte pravým tlačítkem na **Azure Blob Storage >> ukázkové datové sady >> nyc_tlc_yellow** a vyberte **Nový Poznámkový blok** a pak **načtěte do datového rámce**.
+1. Tím se vytvoří nový Poznámkový blok s následujícím kódem:
+    ```
 
-    ```py
     from azureml.opendatasets import NycTlcYellow
 
     data = NycTlcYellow()
     data_df = data.to_spark_dataframe()
+    # Display 10 rows
     display(data_df.limit(10))
     ```
+1. V poznámkovém bloku vyberte v nabídce **připojit k** **Spark1** fond Spark bez serveru, který jsme vytvořili dříve.
+1. Vyberte v buňce **Spustit** .
+1. Pokud chcete pouze zobrazit schéma pro datový rámec, spusťte buňku s následujícím kódem:
+    ```
 
-1. V nabídce **připojit k** v poznámkovém bloku vyberte fond Spark bez serveru.
-1. V buňce vyberte **Spustit** .
-1. Chcete-li zobrazit pouze schéma pro datový rámec, spusťte buňku s následujícím kódem:
-
-    ```py
     data_df.printSchema()
     ```
 
@@ -52,7 +52,8 @@ Data jsou k dispozici v tabulce v **SQLPOOL1**. Načtěte ho do databáze Spark 
 1. V synapse studiu přejdete do centra pro **vývoj** .
 1. Vyberte **+**  >  **Poznámkový blok**.
 1. V horní části poznámkového bloku nastavte hodnotu **připojit k** **Spark1**.
-1. Vyberte **přidat kód** pro přidání buňky kódu poznámkového bloku a zadejte následující text:
+1. Do první buňky kódu v poznámkovém bloku zadejte následující kód:
+
 
     ```scala
     %%spark
@@ -61,16 +62,16 @@ Data jsou k dispozici v tabulce v **SQLPOOL1**. Načtěte ho do databáze Spark 
     df.write.mode("overwrite").saveAsTable("nyctaxi.trip")
     ```
 
-1. V buňce vyberte **Spustit** .
-1. V **datovém** centru klikněte pravým tlačítkem na **databáze** a pak vyberte **aktualizovat**. Tyto databáze by se měly zobrazit:
 
-    - **SQLPOOL1 (SQL)**
-    - **nyctaxi (Spark)**
+1. Spusťte skript. Může to trvat 2-3 minut.
+1. V **datovém** centru na kartě **pracovní prostor** klikněte pravým tlačítkem na **databáze** a pak vyberte **aktualizovat**. V seznamu by se teď měla zobrazit databáze **nyctaxi (Spark)** .
+
 
 ## <a name="analyze-the-nyc-taxi-data-using-spark-and-notebooks"></a>Analýza dat taxislužby NYC pomocí Sparku a poznámkových bloků
 
 1. Vraťte se do poznámkového bloku.
-1. Vytvořte novou buňku kódu a zadejte následující text.
+1. Vytvořte novou buňku kódu a zadejte následující kód. 
+
 
    ```py
    %%pyspark
@@ -78,8 +79,9 @@ Data jsou k dispozici v tabulce v **SQLPOOL1**. Načtěte ho do databáze Spark 
    display(df)
    ```
 
-1. Spuštěním buňky zobrazte data NYC taxislužby, která jste načetli do databáze **nyctaxi** Spark.
-1. Spusťte následující kód, který provede stejnou analýzu, kterou jste provedli dříve s vyhrazeným fondem SQL **SQLPOOL1**. Tento kód uloží a zobrazí výsledky analýzy do tabulky s názvem **nyctaxi. passengercountstats**.
+1. Spuštěním buňky zobrazíte data NYC taxislužby, která jste načetli do databáze **nyctaxi** Spark.
+1. Vytvořte novou buňku kódu a zadejte následující kód. Pak spusťte tuto buňku a proveďte stejnou analýzu, kterou jsme dříve zahrnuli do vyhrazeného fondu SQL **SQLPOOL1**. Tento kód uloží a zobrazí výsledky analýzy do tabulky s názvem **nyctaxi. passengercountstats**.
+
 
    ```py
    %%pyspark
@@ -100,9 +102,9 @@ Data jsou k dispozici v tabulce v **SQLPOOL1**. Načtěte ho do databáze Spark 
 
 ## <a name="load-data-from-a-spark-table-into-a-dedicated-sql-pool-table"></a>Načtení dat z tabulky Spark do vyhrazené tabulky fondu SQL
 
-Dříve jste zkopírovali data z vyhrazené tabulky fondu SQL **SQLPOOL1. dbo. Trip** do tabulky Spark **nyctaxi. Trip**. Pak data agreguje do tabulky Spark **nyctaxi. passengercountstats**. Nyní zkopírujete data z **nyctaxi. passengercountstats** do vyhrazené tabulky fondu SQL s názvem **SQLPOOL1. dbo. passengercountstats**.
+Dříve jsme zkopírovali data z vyhrazené tabulky SQLPOOL1 fondu SQL **. dbo. Trip** do tabulky Spark **nyctaxi. Trip**. Pak data agreguje do tabulky Spark **nyctaxi. passengercountstats**. Nyní zkopírujete data z **nyctaxi. passengercountstats** do vyhrazené tabulky fondu SQL s názvem **SQLPOOL1. dbo. passengercountstats**.
 
-Spusťte následující buňku v poznámkovém bloku. Nakopíruje agregovanou tabulku Spark zpátky do vyhrazené tabulky fondu SQL.
+1. Vytvořte novou buňku kódu a zadejte následující kód. Spusťte buňku v poznámkovém bloku. Nakopíruje agregovanou tabulku Spark zpátky do vyhrazené tabulky fondu SQL.
 
 ```scala
 %%spark

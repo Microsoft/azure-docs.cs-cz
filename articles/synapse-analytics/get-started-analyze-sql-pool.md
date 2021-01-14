@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
-ms.date: 11/17/2020
-ms.openlocfilehash: 9014469ca063ca52be0965ecbd4e8b21709d10a0
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.date: 12/31/2020
+ms.openlocfilehash: 38332492ba9f20ea7c6682d8341ddf6b5f1f11dd
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96455155"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209418"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>Analýza dat pomocí vyhrazených fondů SQL
 
@@ -23,8 +23,8 @@ Azure synapse Analytics poskytuje možnost analyzovat data pomocí vyhrazeného 
 
 ## <a name="load-the-nyc-taxi-data-into-sqlpool1"></a>Načtení dat taxislužby NYC do SQLPOOL1
 
-1. V synapse studiu přejděte do centra pro **vývoj** a pak vytvořte nový skript SQL.
-1. V části připojení k v tomto skriptu vyberte fond SQLPOOL1 (vytvořený v [kroku 1](https://docs.microsoft.com/azure/synapse-analytics/get-started-create-workspace#create-a-sql-pool) tohoto kurzu).
+1. V synapse studiu přejděte do centra pro **vývoj** , kliknutím na **+** tlačítko přidejte nový prostředek a pak vytvořte nový skript SQL.
+1. V rozevíracím seznamu připojit k výše uvedeném skriptu vyberte fond SQLPOOL1 (vytvořený v [kroku 1](https://docs.microsoft.com/azure/synapse-analytics/get-started-create-workspace#create-a-sql-pool) tohoto kurzu).
 1. Zadejte následující kód:
     ```
     CREATE TABLE [dbo].[Trip]
@@ -71,12 +71,13 @@ Azure synapse Analytics poskytuje možnost analyzovat data pomocí vyhrazeného 
     )
     OPTION (LABEL = 'COPY : Load [dbo].[Trip] - Taxi dataset');
     ```
-1. Tento skript se dokončí přibližně po 60 sekundách. Načte 2 000 000 řádků taxislužby dat NYC do tabulky nazvané **dbo. Cesta**
+1. Kliknutím na tlačítko Spustit spusťte skript.
+1. Tento skript se dokončí za méně než 60 sekund. Načte 2 000 000 řádků taxislužby dat NYC do tabulky nazvané **dbo. Cesta**.
 
 ## <a name="explore-the-nyc-taxi-data-in-the-dedicated-sql-pool"></a>Prozkoumat data taxislužby NYC ve vyhrazeném fondu SQL
 
 1. V synapse studiu přejdete do centra **dat** .
-1. Přejít na **SQLPOOL1**  >  **tabulky** SQLPOOL1. Zobrazí se několik načtených tabulek.
+1. Přejít na   >  **tabulky** SQLPOOL1. 
 1. Klikněte pravým tlačítkem na **dbo. Tabulka cest** a výběr **nového skriptu SQL**  >  **Vyberte horní 100 řádků**.
 1. Počkejte, než se vytvoří a spustí nový skript SQL.
 1. Všimněte si, že v horní části SQL Script **Connect** se automaticky nastaví fond SQL s názvem **SQLPOOL1**.
@@ -89,7 +90,7 @@ Azure synapse Analytics poskytuje možnost analyzovat data pomocí vyhrazeného 
     FROM  dbo.Trip
     WHERE TripDistanceMiles > 0 AND PassengerCount > 0
     GROUP BY PassengerCount
-    ORDER BY PassengerCount
+    ORDER BY PassengerCount;
     ```
 
     Tento dotaz ukazuje, jak celková vzdálenost cest a Průměrná doba odezvy se vztahují k počtu cestujících.

@@ -3,16 +3,16 @@ title: 'Rychlý Start: monitorování Node.js pomocí Azure Monitor Application 
 description: Poskytuje pokyny pro rychlé nastavení Node.js webové aplikace pro monitorování pomocí Azure Monitor Application Insights
 ms.subservice: application-insights
 ms.topic: quickstart
-author: mrbullwinkle
-ms.author: mbullwin
+author: lgayhardt
+ms.author: lagayhar
 ms.date: 07/12/2019
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-js
-ms.openlocfilehash: 550097272f90a2f7fa06af7f06810fd3fa0ed94f
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: e5fc7c71c1ced4542f00fe862699442c6b43bc69
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173889"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210354"
 ---
 # <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>Rychlý Start: zahájení monitorování webové aplikace v Node.js s využitím Azure Application Insights
 
@@ -29,7 +29,7 @@ Služba Azure Application Insights umožňuje monitorovat webové aplikace z hle
 
 Application Insights můžou shromažďovat data telemetrie z jakékoli aplikace připojené k Internetu, ať už běží místně nebo v cloudu. Pokud chcete tato data začít zobrazovat, použijte následující kroky.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 2. Vyberte **vytvořit prostředek pro**  >  **vývojáře**  >  **Application Insights**.
 
@@ -50,7 +50,7 @@ Application Insights můžou shromažďovat data telemetrie z jakékoli aplikace
 
 ## <a name="configure-appinsights-sdk"></a>Konfigurace sady AppInsights SDK
 
-1. Vyberte **Přehled** a zkopírujte **klíč instrumentace**vaší aplikace.
+1. Vyberte **Přehled** a zkopírujte **klíč instrumentace** vaší aplikace.
 
    ![Zobrazit Application Insights klíč instrumentace](./media/nodejs-quick-start/azure-app-insights-instrumentation-key.png)
 

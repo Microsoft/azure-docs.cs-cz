@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
-ms.date: 07/20/2020
-ms.openlocfilehash: 4ca9ababbeb7843f1a014a4bd51a5e24a74acbae
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 12/31/2020
+ms.openlocfilehash: c9f8760bd1a7b5d3700f3fdf03331fe7013e116f
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322941"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209402"
 ---
 # <a name="analyze-data-with-serverless-sql-pool-in-azure-synapse-analytics"></a>Analýza dat pomocí neserverového fondu SQL ve službě Azure synapse Analytics
 
@@ -23,10 +23,11 @@ V tomto kurzu se naučíte analyzovat data pomocí neserverového fondu SQL pomo
 
 ## <a name="analyze-nyc-taxi-data-in-blob-storage-using-serverless-sql-pool"></a>Analýza dat NYC taxislužby v BLOB Storage s využitím fondu SQL bez serveru
 
-1. V **datovém** centru pod **odkazem** klikněte pravým tlačítkem na **Azure Blob Storage > ukázkové datové sady > nyc_tlc_yellow** a vyberte **Vybrat prvních 100 řádků** .
+1. V **datovém** centru pod **odkazem** klikněte pravým tlačítkem na **Azure Blob Storage > ukázkové datové sady > nyc_tlc_yellow**, **New SQL Script** a vyberte **100 prvních řádků** .
 1. Tím se vytvoří nový skript SQL s následujícím kódem:
 
     ```
+    -- This is auto-generated code
     SELECT
         TOP 100 *
     FROM
@@ -42,7 +43,7 @@ V tomto kurzu se naučíte analyzovat data pomocí neserverového fondu SQL pomo
 Tabulky v databázích Spark jsou automaticky viditelné a mohou být dotazovány fondem SQL bez serveru.
 
 1. V synapse studiu přejdete do centra pro **vývoj** a vytvoříte nový skript SQL.
-1. Nastavte **připojení k** **fondu SQL bez serveru**.
+1. Nastavte **připojení na** integrovaný fond SQL **bez** serveru.
 1. Vložte do skriptu následující text a spusťte skript.
 
     ```sql

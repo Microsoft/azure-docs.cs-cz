@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/09/2020
-ms.openlocfilehash: 182ec758a8764a959b39296163e63e800cf5108c
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: a7171d656ec9f839aea4ae73763ec6ebd20c2bb3
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008479"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209827"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Jak pracovat s výsledky hledání v Azure Kognitivní hledání
 
@@ -103,7 +103,7 @@ Hledání skóre vyjadřuje obecnou představu o závažnosti a odráží sílu 
 
 ### <a name="how-to-get-consistent-ordering"></a>Jak získat konzistentní řazení
 
-Je-li konzistentní řazení požadavkem na aplikaci, můžete explicitně definovat **`$orderby`** výraz [] (dotaz-OData-Filter-OrderBy-syntax.MD) v poli. K řazení výsledků lze použít pouze pole, která jsou indexována jako **`sortable`** . Pole, která se běžně používají v **`$orderby`** polích hodnocení, datum a umístění, pokud zadáte hodnotu **`orderby`** parametru pro zahrnutí názvů polí a volání [**`geo.distance()` funkce**](query-odata-filter-orderby-syntax.md) pro geoprostorové hodnoty.
+Je-li konzistentní řazení požadavkem na aplikaci, můžete pro pole explicitně definovat [ **`$orderby`** výraz](query-odata-filter-orderby-syntax.md) . K řazení výsledků lze použít pouze pole, která jsou indexována jako **`sortable`** . Pole, která se běžně používají v **`$orderby`** polích hodnocení, datum a umístění, pokud zadáte hodnotu **`orderby`** parametru pro zahrnutí názvů polí a volání [**`geo.distance()` funkce**](query-odata-filter-orderby-syntax.md) pro geoprostorové hodnoty.
 
 Dalším přístupem, který propaguje konzistenci, je použití [vlastního profilu vyhodnocování](index-add-scoring-profiles.md). Profily vyhodnocování poskytují větší kontrolu nad hodnocením položek ve výsledcích vyhledávání a schopnost zvyšovat shody nalezené v konkrétních polích. Další logika hodnocení může pomáhat potlačit drobné rozdíly mezi replikami, protože výsledky hledání pro každý dokument jsou dále od sebe. Pro tento přístup doporučujeme použít [algoritmus hodnocení](index-ranking-similarity.md) .
 

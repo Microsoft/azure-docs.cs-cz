@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
-ms.date: 07/20/2020
-ms.openlocfilehash: 5e3fbd1868cc1216cb7b9d02b2aa8e690af33952
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.date: 12/31/2020
+ms.openlocfilehash: ad16b63360364acd88ab12fb4715d1fd3115c0fb
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917677"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209368"
 ---
 # <a name="analyze-data-in-a-storage-account"></a>Analýza dat v účtu úložiště
 
@@ -30,7 +30,7 @@ Zatím jsme pokryli scénáře, kdy se data nacházejí v databázích v pracovn
 
 ### <a name="create-csv-and-parquet-files-in-your-storage-account"></a>Vytváření souborů CSV a Parquet v účtu úložiště
 
-Spusťte následující kód v poznámkovém bloku. Vytvoří soubor CSV a soubor Parquet v účtu úložiště.
+Spusťte následující kód v poznámkovém bloku v nové buňce kódu. Vytvoří soubor CSV a soubor Parquet v účtu úložiště.
 
 ```py
 %%pyspark
@@ -48,26 +48,27 @@ Můžete analyzovat data ve výchozím účtu ADLS Gen2 v pracovním prostoru ne
 1. Přejít na **účty úložiště**  >  **MyWorkspace (Primary-contosolake)**.
 1. Vyberte možnost **Uživatelé (primární)**. Měla by se zobrazit složka **NYCTaxi** . Uvnitř byste měli vidět dvě složky s názvem **PassengerCountStats_csvformat** a **PassengerCountStats_parquetformat**.
 1. Otevřete složku **PassengerCountStats_parquetformat** . Uvnitř se zobrazí soubor Parquet s názvem, jako je `part-00000-2638e00c-0790-496b-a523-578da9a15019-c000.snappy.parquet` .
-1. Klikněte pravým tlačítkem na **. Parquet** a pak vyberte **Nový Poznámkový blok**. Vytvoří Poznámkový blok, který má podobné buňky:
+1. Klikněte pravým tlačítkem myši na **. Parquet**, vyberte **Nový Poznámkový blok** a pak vyberte **načíst do datového rámce**. Vytvoří se nový Poznámkový blok s buňkou, jako je tato:
 
     ```py
     %%pyspark
-    data_path = spark.read.load('abfss://users@contosolake.dfs.core.windows.net/NYCTaxi/PassengerCountStats.parquet/part-00000-1f251a58-d8ac-4972-9215-8d528d490690-c000.snappy.parquet', format='parquet')
-    data_path.show(100)
+    df = spark.read.load('abfss://users@contosolake.dfs.core.windows.net/NYCTaxi/PassengerCountStats.parquet/part-00000-1f251a58-d8ac-4972-9215-8d528d490690-c000.snappy.parquet', format='parquet')
+    display(df.limit(10))
     ```
 
-1. Spusťte buňku.
-1. Klikněte pravým tlačítkem na soubor Parquet uvnitř a pak vyberte **Nový skript SQL**  >  **Vybrat horní 100 řádků**. Vytvoří skript SQL podobný tomuto:
+1. Připojte se k fondu Spark s názvem **Spark1**. Spusťte buňku.
+1. Klikněte zpátky do složky **Uživatelé** . Znovu klikněte pravým tlačítkem na soubor **. Parquet** a pak vyberte **Nový skript SQL**  >  **Vybrat horní 100 řádků**. Vytvoří skript SQL podobný tomuto:
 
     ```sql
-    SELECT TOP 100 *
+    SELECT 
+        TOP 100 *
     FROM OPENROWSET(
         BULK 'https://contosolake.dfs.core.windows.net/users/NYCTaxi/PassengerCountStats.parquet/part-00000-1f251a58-d8ac-4972-9215-8d528d490690-c000.snappy.parquet',
         FORMAT='PARQUET'
-    ) AS [r];
+    ) AS [result]
     ```
 
-    V okně skript se pole **připojit k** nastaví na **fond SQL bez serveru**.
+    V okně skriptu se ujistěte, že je pole **připojit k** nastavené na **integrovaný** fond SQL bez serveru.
 
 1. Spusťte skript.
 

@@ -4,15 +4,15 @@ description: Tato příručka popisuje běžně používané metody horizontu.
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 1/7/2020
+ms.date: 1/5/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 6d2e3fccd6a61fe129050faa29cb7bb77674ccfe
-ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
+ms.openlocfilehash: 39770fe7aa7b11cae03304fda8901e81e0f1877a
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97976894"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208403"
 ---
 # <a name="horizon-api"></a>Rozhraní API pro Horizont 
 
@@ -20,11 +20,13 @@ Tato příručka popisuje běžně používané metody horizontu.
 
 ### <a name="getting-more-information"></a>Získání dalších informací
 
-Další informace o práci s horizontem a platformou CyberX najdete na následujících odkazech:
+Další informace o práci s horizontem a s platformou Defender for IoT najdete v následujících informacích:
 
-- V případě sady SDK pro vývoj s otevřeným vývojovým prostředím (ODE) se obraťte na svého zástupce CyberX.
+- V případě sady SDK pro vývoj s otevřeným vývojovým prostředím (ODE) se obraťte na svého zástupce v programu IoT.
 - Informace o podpoře a odstraňování potíží získáte od společnosti <support@cyberx-labs.com> .
-- Pokud chcete získat přístup k uživatelské příručce CyberX z konzoly CyberX, vyberte :::image type="icon" source="media/references-horizon-api/profile-icon.png"::: a pak vyberte **Stáhnout uživatelskou příručku**.
+
+- Pokud chcete získat přístup k uživatelské příručce Defender for IoT z konzoly Defender pro IoT, vyberte :::image type="icon" source="media/references-horizon-api/profile.png"::: a vyberte **Stáhnout uživatelskou příručku**.
+
 
 ## `horizon::protocol::BaseParser`
 
@@ -57,7 +59,7 @@ Ve většině případů bude tato akce prázdná. Vyvolejte výjimku pro horizo
 
 ### <a name="return-value"></a>Vrácená hodnota 
 
-Pole uint64_t, jehož registrace byla zpracována, do druhu uint64_t. To znamená, že na mapě budete mít seznam portů, jejichž hodnoty budou uin64_t.
+Pole uint64_t, což je registrace zpracovaná do druhu uint64_t. To znamená, že na mapě budete mít seznam portů, jejichž hodnoty budou uin64_t.
 
 ## `horizon::protocol::ParserResult horizon::protocol::BaseParser::processLayer(horizon::protocol::management::IProcessingUtils &,horizon::general::IDataBuffer &)`
 
@@ -69,12 +71,12 @@ Váš modul plug-in by měl být bezpečný pro přístup z více vláken, proto
 
 ### <a name="parameters"></a>Parametry
 
-- Řídicí jednotka sady SDK zodpovědná za ukládání dat a vytváření objektů souvisejících s SDK, například ILayer, pole atd.
+- Řídicí jednotka sady SDK zodpovědná za ukládání dat a vytváření objektů souvisejících s SDK, jako jsou například ILayer a pole.
 - Pomocná osoba pro čtení dat nezpracovaného paketu. Je již nastaveno na základě pořadí bajtů, které jste definovali v config.js.
 
 ### <a name="return-value"></a>Vrácená hodnota 
 
-Výsledek zpracování. Může to být buď úspěch, nebo poškozený/správnosti.
+Výsledek zpracování. Může to být buď *úspěch*, *poškozený* nebo *správnosti*.
 
 ## `horizon::protocol::SanityFailureResult: public horizon::protocol::ParserResult`
 
@@ -90,7 +92,7 @@ Konstruktor
 
 ## `horizon::protocol::MalformedResult: public horizon::protocol::ParserResult`
 
-Chybný výsledek, označili jsme, že jsme už tento paket rozpoznali jako náš protokol, ale některé ověřování se nepovedlo (rezervované bity jsou zapnuté, některá pole chybí atd.)
+Chybný výsledek, označili jsme, že jsme už tento paket rozpoznali jako náš protokol, ale některé ověření se nepovedlo (rezervované bity jsou zapnuté nebo chybí nějaké pole).
 
 ## `horizon::protocol::MalformedResult::MalformedResult(uint64_t)`
 
@@ -102,7 +104,7 @@ Konstruktor
 
 ## `horizon::protocol::SuccessResult: public horizon::protocol::ParserResult`
 
-Oznamuje horizontu úspěšného zpracování. Po úspěšném ověření se paket přijal; data patří do USA a byla extrahována všechna data.
+Oznamuje horizontu úspěšného zpracování. Po úspěšném přijetí paketu, data patří do USA a byla extrahována všechna data.
 
 ## `horizon::protocol::SuccessResult()`
 
@@ -114,7 +116,7 @@ Konstruktor
 
 ### <a name="parameters"></a>Parametry 
 
-- Směr paketu, je-li určen. Hodnoty můžou být požadavky, reakce
+- Směr paketu, je-li určen. Hodnoty mohou být *žádosti* nebo *odpovědi*.
 
 ## `horizon::protocol::SuccessResult(horizon::protocol::ParserResultDirection, const std::vector<uint64_t> &)`
 
@@ -122,7 +124,7 @@ Konstruktor
 
 ### <a name="parameters"></a>Parametry
 
-- Směr paketu, pokud jsme ho identifikovali, může být REQUEST, RESPONSE
+- Směr paketu, pokud jsme ho identifikovali, může být *Request*, *Response*.
 - Varování. Tyto události nebudou úspěšné, ale Horizont se oznámí.
 
 ## `horizon::protocol::SuccessResult(const std::vector<uint64_t> &)`
@@ -155,11 +157,11 @@ Odkaz na vytvořenou vrstvu, takže do ní můžete přidat data.
 
 ## `horizon::protocol::management::IFieldManagement &horizon::protocol::management::IProcessingUtils::getFieldsManager()`
 
-Získá objekt správy pole, který je zodpovědný za vytváření polí na různých objektech, například na ILayer
+Získá objekt správy pole, který je zodpovědný za vytváření polí v různých objektech, například na ILayer.
 
 ### <a name="return-value"></a>Vrácená hodnota
 
-Odkaz na manažera
+Odkaz na manažera.
 
 ## `void horizon::protocol::management::IFieldManagement::create(horizon::protocol::ILayer &, HorizonID, uint64_t)`
 
@@ -167,9 +169,9 @@ Vytvoří nové číselné pole 64 bitů ve vrstvě s požadovaným ID.
 
 ### <a name="parameters"></a>Parametry 
 
-- Vrstva, kterou jste vytvořili dříve
-- HorizonID vytvořeno pomocí makra HORIZON_FIELD
-- Nezpracovaná hodnota, kterou chcete uložit
+- Vrstva, kterou jste vytvořili dříve.
+- HorizonID vytvořeno pomocí makra **HORIZON_FIELD** .
+- Nezpracovaná hodnota, kterou chcete uložit.
 
 ## `void horizon::protocol::management::IFieldManagement::create(horizon::protocol::ILayer &, HorizonID, std::string)`
 
@@ -177,9 +179,9 @@ Vytvoří nové pole řetězce ve vrstvě s požadovaným ID. Paměť se přesun
 
 ### <a name="parameters"></a>Parametry  
 
-- Vrstva, kterou jste vytvořili dříve
-- HorizonID vytvořeno pomocí makra HORIZON_FIELD
-- Nezpracovaná hodnota, kterou chcete uložit
+- Vrstva, kterou jste vytvořili dříve.
+- HorizonID vytvořeno pomocí makra **HORIZON_FIELD** .
+- Nezpracovaná hodnota, kterou chcete uložit.
 
 ## `void horizon::protocol::management::IFieldManagement::create(horizon::protocol::ILayer &, HorizonID, std::vector<char> &)`
 
@@ -187,9 +189,9 @@ Vytvoří novou nezpracovanou hodnotu pole (pole bajtů) na vrstvě s požadovan
 
 ### <a name="parameters"></a>Parametry
 
-- Vrstva, kterou jste vytvořili dříve
-- HorizonID vytvořeno pomocí makra HORIZON_FIELD
-- Nezpracovaná hodnota, kterou chcete uložit
+- Vrstva, kterou jste vytvořili dříve.
+- HorizonID vytvořeno pomocí makra **HORIZON_FIELD** .
+- Nezpracovaná hodnota, kterou chcete uložit.
 
 ## `horizon::protocol::IFieldValueArray &horizon::protocol::management::IFieldManagement::create(horizon::protocol::ILayer &, HorizonID, horizon::protocol::FieldValueType)`
 
@@ -197,13 +199,13 @@ Vytvoří pole hodnota pole (Array) ve vrstvě zadaného typu s požadovaným ID
 
 ### <a name="parameters"></a>Parametry
 
-- Vrstva, kterou jste vytvořili dříve
-- HorizonID vytvořeno pomocí makra HORIZON_FIELD
-- Typ hodnot, které budou uloženy v poli
+- Vrstva, kterou jste vytvořili dříve.
+- HorizonID vytvořeno pomocí makra **HORIZON_FIELD** .
+- Typ hodnot, které budou uloženy v poli.
 
 ### <a name="return-value"></a>Vrácená hodnota
 
-Odkaz na pole, do kterého by měly být připojeny hodnoty
+Odkaz na pole, do kterého by měly být připojeny hodnoty.
 
 ## `void horizon::protocol::management::IFieldManagement::create(horizon::protocol::IFieldValueArray &, uint64_t)`
 
@@ -211,8 +213,8 @@ Připojí novou celočíselnou hodnotu k poli, které bylo dříve vytvořeno.
 
 ### <a name="parameters"></a>Parametry
 
-- Pole vytvořené dříve
-- Nezpracovaná hodnota, která má být uložena v poli
+- Pole, které bylo vytvořeno dříve.
+- Nezpracovaná hodnota, která má být uložena v poli.
 
 ## `void horizon::protocol::management::IFieldManagement::create(horizon::protocol::IFieldValueArray &, std::string)`
 
@@ -220,8 +222,8 @@ Připojí novou řetězcovou hodnotu k poli, které jste vytvořili dříve. Pam
 
 ### <a name="parameters"></a>Parametry
 
-- Pole vytvořené dříve
-- Nezpracovaná hodnota, která má být uložena v poli
+- Pole, které bylo vytvořeno dříve.
+- Nezpracovaná hodnota, která má být uložena v poli.
 
 ## `void horizon::protocol::management::IFieldManagement::create(horizon::protocol::IFieldValueArray &, std::vector<char> &)`
 
@@ -229,8 +231,8 @@ Připojí novou nezpracovanou hodnotu k poli, které bylo dříve vytvořeno. Pa
 
 ### <a name="parameters"></a>Parametry
 
-- Pole vytvořené dříve
-- Nezpracovaná hodnota, která má být uložena v poli
+- Pole, které bylo vytvořeno dříve.
+- Nezpracovaná hodnota, která má být uložena v poli.
 
 ## `bool horizon::general::IDataBuffer::validateRemainingSize(size_t)`
 
@@ -238,15 +240,15 @@ Kontroluje, zda vyrovnávací paměť obsahuje alespoň X bajtů.
 
 ### <a name="parameters"></a>Parametry
 
-Počet bajtů by měl existovat 
+Počet bajtů, které by měly existovat.
 
 ### <a name="return-value"></a>Vrácená hodnota
 
-True, pokud vyrovnávací paměť obsahuje alespoň X bajtů. V ostatních případech False
+True, pokud vyrovnávací paměť obsahuje alespoň X bajtů. V opačném případě je to `False` .
 
 ## `uint8_t horizon::general::IDataBuffer::readUInt8()`
 
-Přečte hodnotu uint8 (1 bajtů) z vyrovnávací paměti podle pořadí bajtů.
+Přečte hodnotu uint8 (1 bajt) z vyrovnávací paměti podle pořadí bajtů.
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -282,7 +284,7 @@ Hodnota načtená z vyrovnávací paměti.
 
 ### <a name="parameters"></a>Parametry 
 
-- Oblast paměti, do které se zkopírují data
+- Oblast paměti, do které se mají kopírovat data
 - Velikost oblasti paměti, tento parametr také definuje počet bajtů, které budou zkopírovány.
 
 ## `std::string_view horizon::general::IDataBuffer::readString(size_t)`

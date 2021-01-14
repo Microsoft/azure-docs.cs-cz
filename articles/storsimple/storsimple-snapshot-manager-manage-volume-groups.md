@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
-ms.openlocfilehash: 805ab0e78f0679ce483af3a73203b41132be2a59
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: df2d74701e21c3773d96564f1b06d80ddb9fce9d
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022951"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209215"
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-volume-groups"></a>Použití Snapshot Manager StorSimple k vytváření a správě skupin svazků
 ## <a name="overview"></a>Přehled
@@ -107,7 +107,7 @@ Pro úpravu skupiny svazků použijte následující postup.
 #### <a name="to-edit-a-volume-group"></a>Úprava skupiny svazků
 1. Kliknutím na ikonu na ploše spusťte StorSimple Snapshot Manager.
 2. V podokně **obor** rozbalte uzel **skupiny svazků** , klikněte pravým tlačítkem na název skupiny svazků a pak klikněte na **Upravit**.
-3. Zobrazí se dialogové okno * * vytvořit skupinu svazků * *. Můžete změnit položky **název**, **aplikace** a **svazky** .
+3. Zobrazí se dialogové okno **vytvořit skupinu svazků** . Můžete změnit položky **název**, **aplikace** a **svazky** .
 4. Klikněte na tlačítko **OK** a uložte změny.
 
 ## <a name="delete-a-volume-group"></a>Odstranění skupiny svazků

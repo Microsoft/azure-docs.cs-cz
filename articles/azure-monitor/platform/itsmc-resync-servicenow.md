@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: cea4503c4e3b9dd58cc475aaec355a2bb2e0bd29
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 9a6e46c0b52c22df0682034deaebd58bbfeb34a7
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98065175"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210044"
 ---
 # <a name="troubleshooting-problems-in-itsm-connector"></a>Řešení potíží v ITSM konektoru
 
@@ -53,6 +53,25 @@ Chcete-li zobrazit chyby na řídicím panelu, postupujte podle následujících
 
 5. Pomocí tohoto řídicího panelu budete moct zkontrolovat stav a chyby ve vašem konektoru.
     ![Snímek obrazovky zobrazující stav konektoru](media/itsmc-resync-servicenow/connector-dashboard.png)
+
+### <a name="dashboard-elements"></a>Prvky řídicího panelu
+
+Řídicí panel obsahuje informace o výstrahách, které byly odeslány do nástroje ITSM pomocí tohoto konektoru.
+Řídicí panel je rozdělen na 4 části:
+
+1. Pracovní položka vytvořena: graf a níže uvedená tabulka obsahují počet pracovních položek na typ. Pokud kliknete na graf nebo v tabulce, můžete zobrazit další podrobnosti o pracovních položkách.
+    ![Snímek obrazovky, který ukazuje vytvořenou pracovní položku.](media/itsmc-resync-servicenow/itsm-dashboard-workitems.png)
+2. Ovlivněné počítače: tabulky obsahují podrobné informace o položkách konfigurace, které vytvořily položky konfigurace.
+    Kliknutím na řádky v tabulkách můžete získat další podrobnosti o položkách konfigurace.
+    Tabulka obsahuje omezený počet řádků, pokud chcete zobrazit všechny seznamy, můžete kliknout na Zobrazit vše.
+    ![Snímek obrazovky zobrazující ovlivněné počítače](media/itsmc-resync-servicenow/itsm-dashboard-impacted-comp.png)
+3. Stav konektoru: graf a níže uvedená tabulka obsahují zprávy o stavu konektoru. Kliknutím na graf na řádcích v tabulce můžete získat další podrobnosti o zprávách o stavu konektoru.
+    Tabulka obsahuje omezený počet řádků, pokud chcete zobrazit všechny seznamy, můžete kliknout na Zobrazit vše.
+    ![Snímek obrazovky zobrazující stav konektoru](media/itsmc-resync-servicenow/itsm-dashboard-connector-status.png)
+4. Pravidla výstrah: tabulky obsahují informace o počtu zjištěných pravidel výstrahy.
+    Kliknutím na řádky v tabulkách můžete získat další podrobnosti o zjištěných pravidlech.
+    Tabulka obsahuje omezený počet řádků, pokud chcete zobrazit všechny seznamy, můžete kliknout na Zobrazit vše.
+    ![Snímek obrazovky, který zobrazuje pravidla výstrah.](media/itsmc-resync-servicenow/itsm-dashboard-alert-rules.png)
 
 ### <a name="service-map"></a>Mapa služeb
 

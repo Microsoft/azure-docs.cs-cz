@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: 1b92d1b5853d6b794ebdcf0e2052b8f15081d608
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 57f23f1fc0441ac50487cb3008c0b0f84f4b4e78
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507570"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209572"
 ---
 # <a name="learn-the-basics-of-the-speech-cli"></a>Seznamte se se základy rozpoznávání řeči v rozhraní příkazového řádku
 
@@ -173,11 +173,13 @@ V systému Windows můžete přehrát zvukový soubor zadáním `start greetings
 
 Nejjednodušší způsob, jak spustit dávkový převod textu na řeč, je vytvořit nový `.tsv` soubor (s oddělovači) a použít ho `--foreach` v rozhraní PŘÍKAZového řádku pro rozpoznávání řeči. Vezměte v úvahu následující soubor `text_synthesis.tsv` :
 
-```output
+<!-- The following example contains tabs. Don't accidentally convert these into spaces. -->
+
+```input
 audio.output    text
-C:\batch_wav_output\wav_1.wav    Sample text to synthesize.
-C:\batch_wav_output\wav_2.wav    Using the Speech CLI to run batch-synthesis.
-C:\batch_wav_output\wav_3.wav    Some more text to test capabilities.
+C:\batch_wav_output\wav_1.wav   Sample text to synthesize.
+C:\batch_wav_output\wav_2.wav   Using the Speech CLI to run batch-synthesis.
+C:\batch_wav_output\wav_3.wav   Some more text to test capabilities.
 ```
 
  Dále spustíte příkaz, který odkazuje na `text_synthesis.tsv` , provede shrnutí jednotlivých `text` polí a zapíše výsledek do odpovídající `audio.output` cesty jako `.wav` soubor. 
@@ -194,11 +196,13 @@ Tento příkaz je ekvivalentem běhu `spx synthesize --text Sample text to synth
 
 Nicméně pokud máte `.tsv` soubor podobný následujícímu příkladu se záhlavími sloupců, která **neodpovídají** argumentům příkazového řádku:
 
-```output
+<!-- The following example contains tabs. Don't accidentally convert these into spaces. -->
+
+```input
 wav_path    str_text
-C:\batch_wav_output\wav_1.wav    Sample text to synthesize.
-C:\batch_wav_output\wav_2.wav    Using the Speech CLI to run batch-synthesis.
-C:\batch_wav_output\wav_3.wav    Some more text to test capabilities.
+C:\batch_wav_output\wav_1.wav   Sample text to synthesize.
+C:\batch_wav_output\wav_2.wav   Using the Speech CLI to run batch-synthesis.
+C:\batch_wav_output\wav_3.wav   Some more text to test capabilities.
 ```
 
 Tyto názvy polí můžete přepsat na správné argumenty pomocí následující syntaxe ve `--foreach` volání. Toto je stejné volání jako výše.

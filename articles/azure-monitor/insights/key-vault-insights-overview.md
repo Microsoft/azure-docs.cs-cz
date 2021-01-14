@@ -3,15 +3,15 @@ title: Monitorovat Key Vault s Azure Monitor pro Key Vault | Microsoft Docs
 description: Tento článek popisuje Azure Monitor pro trezory klíčů.
 services: azure-monitor
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
+author: lgayhardt
+ms.author: lagayhar
 ms.date: 09/10/2020
-ms.openlocfilehash: d28138b251cf159b7cbc5cc6942bb287e57a95d7
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 41b058cf41aa1a8fb1def68851457385c8187823
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93088093"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209878"
 ---
 # <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault"></a>Monitorování služby trezoru klíčů pomocí Azure Monitor pro Key Vault
 Azure Monitor pro Key Vault poskytuje ucelený přehled o vašich trezorech klíčů tím, že nabízí jednotný pohled na vaše Key Vault požadavky, výkon, chyby a latenci.
@@ -34,7 +34,7 @@ Pokud chcete zobrazit využití a operace vašich trezorů klíčů ve všech va
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/)
 
-2. V Azure Portal v levém podokně vyberte **monitor** a v části přehledy vyberte **trezory klíčů** .
+2. V Azure Portal v levém podokně vyberte **monitor** a v části přehledy vyberte **trezory klíčů**.
 
 ![Snímek obrazovky s přehledem možností více grafů](./media/key-vaults-insights-overview/overview.png)
 
@@ -126,7 +126,7 @@ Vlastní nastavení se ukládají do vlastního sešitu, aby se zabránilo přep
 Pomocí následujících kroků můžete nakonfigurovat předplatné s více předplatnými a trezory klíčů a neúspěšné sešity pro obor na konkrétní odběry nebo trezory klíčů při každém spuštění:
 
 1. Na portálu vyberte **monitor** a v levém podokně vyberte **trezory klíčů** .
-2. V sešitu **přehledu** na panelu příkazů vyberte **Upravit** .
+2. V sešitu **přehledu** na panelu příkazů vyberte **Upravit**.
 3. V rozevíracím seznamu **odběry** vyberte jedno nebo více předplatných, které má Jo použít jako výchozí. Nezapomeňte, že sešit podporuje výběr až 10 předplatných.
 4. V rozevíracím seznamu **trezory klíčů** vyberte jeden nebo více účtů, které chcete použít jako výchozí. Nezapomeňte, že sešit podporuje výběr až na celkem 200 účtů úložiště.
 5. Na panelu příkazů vyberte **Uložit jako** a uložte kopii sešitu s vlastními úpravami a potom kliknutím na **hotové úpravy** vraťte do režimu čtení.

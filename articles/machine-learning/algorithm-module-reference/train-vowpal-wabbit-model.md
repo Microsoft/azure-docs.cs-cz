@@ -8,12 +8,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/02/2020
-ms.openlocfilehash: 6bc9f69440be772910ea8200b5ccf7d5a5122ae6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9894da7486ec3c0dfb92c94c7c7f4db2247ebeb7
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907804"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210201"
 ---
 # <a name="train-vowpal-wabbit-model"></a>Trénování modelu Vowpal Wabbit
 Tento článek popisuje, jak pomocí modulu **pro (Learning dostupné model** ) v Návrháři Azure Machine Learning vytvořit model strojového učení pomocí pro dostupné.  
@@ -22,7 +22,7 @@ Pokud chcete používat pro dostupné pro Machine Learning, naformátujte zadán
 
 Při spuštění kanálu je instance pro dostupné načtena do doby běhu experimentu spolu se zadanými daty. Po dokončení školení je model serializován zpátky do pracovního prostoru. Model můžete použít hned k určení skóre dat. 
 
-Chcete-li postupně vyškolit stávající model pro nová data, připojte uložený model k **předem připravenému portu Input dostupné modelu** **pro dostupné**a přidejte nová data do druhého vstupního portu.  
+Chcete-li postupně vyškolit stávající model pro nová data, připojte uložený model k **předem připravenému portu Input dostupné modelu** **pro dostupné** a přidejte nová data do druhého vstupního portu.  
 
 ## <a name="what-is-vowpal-wabbit"></a>Co je pro dostupné?  
 
@@ -54,7 +54,7 @@ Data lze číst ze dvou typů datových sad, datové sady souborů nebo tabulkov
 
 1. Do experimentu přidejte modul **dostupné modelu výuky pro** . 
   
-2. Přidejte datovou sadu školení a připojte ji k **školicím datům**. Pokud je datová sada školení adresářem, který obsahuje soubor školicích dat, zadejte název souboru školicích dat s **názvem souboru školicích**dat. Pokud je datová sada školení jedním souborem, ponechte **název souboru školicích dat** prázdný.
+2. Přidejte datovou sadu školení a připojte ji k **školicím datům**. Pokud je datová sada školení adresářem, který obsahuje soubor školicích dat, zadejte název souboru školicích dat s **názvem souboru školicích** dat. Pokud je datová sada školení jedním souborem, ponechte **název souboru školicích dat** prázdný.
 
 3. Do textového pole **argumenty VW** zadejte argumenty příkazového řádku pro spustitelný soubor pro dostupné.
 
@@ -86,8 +86,8 @@ Pro dostupné podporuje přírůstkové školení přidáním nových dat do exi
 1. Přidejte do svého kanálu modul **dostupné modelu výuky pro** .  
 2. Propojte dříve vyškolený model s předem vyškoleným vstupním portem **pro dostupné modelu** modulu.
 3. Připojte nové školicí údaje ke vstupnímu portu **školicích dat** modulu.
-4. V podokně Parametry **modelu pro dostupné pro analýzu**zadejte formát nových školicích dat a také název souboru dat školení, pokud je vstupní datovou sadou adresář.
-5. Vyberte možnost * * výstupní soubor čitelného modelu * * a **výstupní hodnoty inverzní hodnoty hash** , pokud se odpovídající soubory musí uložit do záznamů spuštění.
+4. V podokně Parametry **modelu pro dostupné pro analýzu** zadejte formát nových školicích dat a také název souboru dat školení, pokud je vstupní datovou sadou adresář.
+5. Vyberte **výstupní soubor čitelného modelu** a **výstupní možnosti souboru hodnoty hash** , pokud je potřeba uložit odpovídající soubory do záznamů spuštění.
 
 6. Odešlete kanál.  
 7. Vyberte modul a v pravém podokně vyberte **Registrovat datovou sadu** na kartě **výstupy a protokoly** , abyste zachovali aktualizovaný model v pracovním prostoru Azure Machine Learning.  Pokud nezadáte nový název, aktualizovaný model přepíše existující uložený model.

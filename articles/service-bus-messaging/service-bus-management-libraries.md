@@ -1,19 +1,18 @@
 ---
-title: Knihovny pro správu Azure Service Bus | Microsoft Docs
-description: Tento článek vysvětluje, jak pomocí Azure Service Bus knihovny pro správu dynamicky zřizovat Service Bus obory názvů a entity.
+title: Programové vytváření Azure Service Bus entit | Microsoft Docs
+description: Tento článek vysvětluje, jak dynamicky nebo programově zřizovat Service Bus obory názvů a entity.
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 06/23/2020
+ms.date: 01/13/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 915606bffc2037c8fcd1a7d33218143f40c78f2c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 97d89db17af9cde3afadee430b3d0c2a434e12c9
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89008042"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210133"
 ---
-# <a name="service-bus-management-libraries"></a>Knihovny pro správu služby Service Bus
-
+# <a name="dynamically-provision-service-bus-namespaces-and-entities"></a>Dynamické zřizování Service Bus oborů názvů a entit 
 Knihovny pro správu Azure Service Bus můžou dynamicky zřizovat Service Bus obory názvů a entity. Tato možnost umožňuje složitá nasazení a scénáře zasílání zpráv a umožňuje programově určit, které entity se mají zřídit. Tyto knihovny jsou aktuálně k dispozici pro rozhraní .NET.
 
 ## <a name="supported-functionality"></a>Podporované funkce
@@ -23,9 +22,137 @@ Knihovny pro správu Azure Service Bus můžou dynamicky zřizovat Service Bus o
 * Vytváření, aktualizace a odstraňování tématu
 * Vytvoření, aktualizace, odstranění odběru
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="azuremessagingservicebusadministration-recommended"></a>Azure. Messaging. ServiceBus. Administration (doporučeno)
+Pomocí třídy [ServiceBusAdministrationClient](/dotnet/api/azure.messaging.servicebus.administration.servicebusadministrationclient) v oboru názvů [Azure. Messaging. ServiceBus. Administrative](/dotnet/api/azure.messaging.servicebus.administration) můžete spravovat obory názvů, fronty, témata a odběry. Zde je ukázkový kód. Úplný příklad naleznete v tématu [příklad CRUD](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/servicebus/Azure.Messaging.ServiceBus/tests/Samples/Sample07_CrudOperations.cs).
 
-Pokud chcete začít používat Service Bus knihovny pro správu, musíte se ověřit pomocí služby Azure Active Directory (Azure AD). Azure AD vyžaduje, abyste se ověřili jako instanční objekt, který poskytuje přístup k prostředkům Azure. Informace o vytváření instančního objektu najdete v jednom z těchto článků:  
+```csharp
+using System;
+using System.Threading.Tasks;
+
+using Azure.Messaging.ServiceBus.Administration;
+
+namespace adminClientTrack2
+{
+    class Program
+    {
+        public static void Main()
+        {
+            MainAsync().GetAwaiter().GetResult();
+        }
+
+        private static async Task MainAsync()
+        {
+            string connectionString = "SERVICE BUS NAMESPACE CONNECTION STRING";
+            string QueueName = "QUEUE NAME";
+            string TopicName = "TOPIC NAME";
+            string SubscriptionName = "SUBSCRIPTION NAME";
+
+            var adminClient = new ServiceBusAdministrationClient(connectionString);
+            bool queueExists = await adminClient.QueueExistsAsync(QueueName);
+            if (!queueExists)
+            {
+                var options = new CreateQueueOptions(QueueName)
+                {
+                    MaxDeliveryCount = 3                    
+                };
+                await adminClient.CreateQueueAsync(options);
+            }
+
+
+            bool topicExists = await adminClient.TopicExistsAsync(TopicName);
+            if (!topicExists)
+            {
+                var options = new CreateTopicOptions(TopicName)
+                {
+                    MaxSizeInMegabytes = 1024
+                };
+                await adminClient.CreateTopicAsync(options);
+            }
+
+            bool subscriptionExists = await adminClient.SubscriptionExistsAsync(TopicName, SubscriptionName);
+            if (!subscriptionExists)
+            {
+                var options = new CreateSubscriptionOptions(TopicName, SubscriptionName)
+                {
+                    DefaultMessageTimeToLive = new TimeSpan(2, 0, 0, 0)
+                };
+                await adminClient.CreateSubscriptionAsync(options);
+            }
+        }
+    }
+}
+
+```
+
+
+## <a name="microsoftazureservicebusmanagement"></a>Microsoft. Azure. ServiceBus. Management 
+Pomocí třídy [ManagementClient](/dotnet/api/microsoft.azure.servicebus.management.managementclient) v oboru názvů [Microsoft. Azure. ServiceBus. Management](/dotnet/api/microsoft.azure.servicebus.management) můžete spravovat obory názvů, fronty, témata a odběry. Zde je ukázkový kód: 
+
+> [!NOTE]
+> Doporučujeme použít `ServiceBusAdministrationClient` třídu z `Azure.Messaging.ServiceBus.Administration` knihovny, která je nejnovější sadou SDK. Podrobnosti najdete v [první části](#azuremessagingservicebusadministration-recommended). 
+
+```csharp
+using System;
+using System.Threading.Tasks;
+
+using Microsoft.Azure.ServiceBus.Management;
+
+namespace SBusManagementClient
+{
+    class Program
+    {
+        public static void Main()
+        {
+            MainAsync().GetAwaiter().GetResult();
+        }
+
+        private static async Task MainAsync()
+        {
+            string connectionString = "SERVICE BUS NAMESPACE CONNECTION STRING";
+            string QueueName = "QUEUE NAME";
+            string TopicName = "TOPIC NAME";
+            string SubscriptionName = "SUBSCRIPTION NAME";
+
+            var managementClient = new ManagementClient(connectionString);
+            bool queueExists = await managementClient.QueueExistsAsync(QueueName);
+            if (!queueExists)
+            {
+                QueueDescription qd = new QueueDescription(QueueName);
+                qd.MaxSizeInMB = 1024;
+                qd.MaxDeliveryCount = 3;
+                await managementClient.CreateQueueAsync(qd);
+            }
+
+
+            bool topicExists = await managementClient.TopicExistsAsync(TopicName);
+            if (!topicExists)
+            {
+                TopicDescription td = new TopicDescription(TopicName);
+                td.MaxSizeInMB = 1024;
+                td.DefaultMessageTimeToLive = new TimeSpan(2, 0, 0, 0);
+                await managementClient.CreateTopicAsync(td);
+            }
+
+            bool subscriptionExists = await managementClient.SubscriptionExistsAsync(TopicName, SubscriptionName);
+            if (!subscriptionExists)
+            {
+                SubscriptionDescription sd = new SubscriptionDescription(TopicName, SubscriptionName);
+                sd.DefaultMessageTimeToLive = new TimeSpan(2, 0, 0, 0);
+                sd.MaxDeliveryCount = 3;
+                await managementClient.CreateSubscriptionAsync(sd);
+            }
+        }
+    }
+}
+```
+
+
+## <a name="microsoftazuremanagementservicebus"></a>Microsoft.Azure.Management.ServiceBus 
+Tato knihovna je součástí sady SDK ovládacího prvku na základě Azure Resource Manager. 
+
+### <a name="prerequisites"></a>Požadavky
+
+Pokud chcete začít s používáním této knihovny, musíte se ověřit pomocí služby Azure Active Directory (Azure AD). Azure AD vyžaduje, abyste se ověřili jako instanční objekt, který poskytuje přístup k prostředkům Azure. Informace o vytváření instančního objektu najdete v jednom z těchto článků:  
 
 * [Použití Azure Portal k vytvoření aplikace služby Active Directory a instančního objektu, který má přístup k prostředkům](../active-directory/develop/howto-create-service-principal-portal.md)
 * [Vytvoření instančního objektu pro přístup k prostředkům pomocí Azure PowerShellu](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
@@ -33,7 +160,7 @@ Pokud chcete začít používat Service Bus knihovny pro správu, musíte se ov�
 
 Tyto kurzy vám poskytnou `AppId` (ID klienta), `TenantId` a `ClientSecret` (ověřovací klíč), které se používají k ověřování pomocí knihoven pro správu. Pro skupinu prostředků, na které chcete spustit, musíte mít minimálně [**Azure Service Bus oprávnění vlastníka dat**](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner) nebo [**přispěvatele**](../role-based-access-control/built-in-roles.md#contributor) .
 
-## <a name="programming-pattern"></a>Programovací model
+### <a name="programming-pattern"></a>Programovací model
 
 Vzor pro manipulaci s jakýmkoli Service Busm prostředkem se řídí společným protokolem:
 
@@ -67,8 +194,8 @@ Vzor pro manipulaci s jakýmkoli Service Busm prostředkem se řídí společný
    await sbClient.Queues.CreateOrUpdateAsync(resourceGroupName, namespaceName, QueueName, queueParams);
    ```
 
-## <a name="complete-code-to-create-a-queue"></a>Úplný kód pro vytvoření fronty
-Tady je kompletní kód pro vytvoření Service Bus fronty: 
+### <a name="complete-code-to-create-a-queue"></a>Úplný kód pro vytvoření fronty
+Zde je ukázkový kód pro vytvoření fronty Service Bus. Úplný příklad najdete v [ukázce .NET Management na GitHubu](https://github.com/Azure-Samples/service-bus-dotnet-management/). 
 
 ```csharp
 using System;
@@ -154,8 +281,13 @@ namespace SBusADApp
 }
 ```
 
-> [!IMPORTANT]
-> Úplný příklad najdete v [ukázce .NET Management na GitHubu](https://github.com/Azure-Samples/service-bus-dotnet-management/). 
+## <a name="fluent-library"></a>Knihovna Fluent
+Příklad použití knihovny Fluent ke správě Service Bus entit naleznete v [této ukázce](https://github.com/Azure/azure-libraries-for-net/tree/master/Samples/ServiceBus). 
 
 ## <a name="next-steps"></a>Další kroky
-[Referenční informace k rozhraní API Microsoft. Azure. Management. ServiceBus](/dotnet/api/Microsoft.Azure.Management.ServiceBus)
+Podívejte se na následující referenční témata: 
+
+- [Azure. Messaging. ServiceBus. Administration](/dotnet/api/azure.messaging.servicebus.administration.servicebusadministrationclient)
+- [Microsoft. Azure. ServiceBus. Management](/dotnet/api/microsoft.azure.servicebus.management.managementclient)
+- [Microsoft.Azure.Management.ServiceBus](/dotnet/api/microsoft.azure.management.servicebus.servicebusmanagementclient)
+- [Fluent](/dotnet/api/microsoft.azure.management.servicebus.fluent)

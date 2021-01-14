@@ -3,15 +3,15 @@ title: Monitorování Azure Storage služeb pomocí Azure Monitor pro úložišt
 description: Tento článek popisuje Azure Monitor funkce úložiště, která správcům úložiště poskytuje rychlý přehled o problémech s výkonem a využitím jejich Azure Storagech účtů.
 ms.subservice: ''
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
+author: lgayhardt
+ms.author: lagayhar
 ms.date: 05/11/2020
-ms.openlocfilehash: 2538bc91be59ff12b39ee3f5f629e4c016480a97
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: 47799898251923b327954c764dcccb8157ba5119
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296331"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208637"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>Monitorování služby úložiště pomocí Azure Monitor pro úložiště
 

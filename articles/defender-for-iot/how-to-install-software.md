@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/2/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 5e33a7adc7b529df8c7c821cbfdcb0ad5709803b
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 2bd994f14863715274e137bce2dd6873eeec1135
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97838788"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208756"
 ---
 # <a name="defender-for-iot-installation"></a>Instalace Defenderu pro IoT
 
@@ -55,12 +55,12 @@ K dispozici jsou následující zařízení montovatelné do racku:
 
 K dispozici jsou následující virtuální spotřebiče:
 
-| **Typ nasazení** | **Enterprise** | **SMB** | **Řádek** |
+| **Typ nasazení** | **Enterprise** | **SMB** | **Čára** |
 |--|--|--|--|
 | **Popis** | Virtuální zařízení pro podniková nasazení | Virtuální zařízení pro nasazení SMB | Virtuální zařízení pro nasazení na lince |
 | **Maximální šířka \* pásma* _ | 150 MB/s | 15 MB/s | 3 MB/s |
 | _ *Max. chráněná zařízení** | 3 000 | 300 | 100 |
-| **Typ nasazení** | Enterprise | SMB | Řádek |
+| **Typ nasazení** | Enterprise | SMB | Čára |
 | **Popis** | Virtuální zařízení pro podniková nasazení | Virtuální zařízení pro nasazení SMB | Virtuální zařízení pro nasazení na lince |
 
 * Maximální kapacita šířky pásma se může lišit v závislosti na distribuci protokolu.
@@ -230,9 +230,9 @@ Tento článek popisuje, jak nakonfigurovat systém BIOS pomocí konfiguračníh
 
 4. Přihlašovací údaje zařízení jsou:
 
-   - Uživatelské jméno: **CyberX**
+   - Uživatelské jméno: **xxx**
 
-   - Heslo: **xhxvhttju, @4338**
+   - Heslo: **xxx**
 
      Je zahájena operace importovat profil serveru.
 
@@ -274,7 +274,7 @@ Postup ruční konfigurace:
 
    - Pokud zařízení není Defender pro zařízení IoT, otevřete prohlížeč a pokračujte na IP adresu, která byla nakonfigurovaná dřív. Přihlaste se s oprávněními výchozích správců Dell. Pro uživatelské jméno a **Calvin** pro heslo použijte **kořen** .
 
-   - Pokud je zařízení Defenderem pro zařízení IoT, přihlaste se pomocí **CyberX** pro uživatelské jméno a **@4338 xhxvhttju** pro heslo.
+   - Pokud je zařízení Defenderem pro zařízení IoT, přihlaste se pomocí **xxx** pro uživatelské jméno a **xxx** pro heslo.
 
 2. Po přístupu k systému BIOS přejděte do části **nastavení zařízení**.
 

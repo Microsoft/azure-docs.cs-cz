@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: ce8c32b1afdf4178e3ffdc09e9c9176436fa771b
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: cfec5ec5f14afc8c4eba5c21c5904687c9b187cc
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97605072"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209249"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Nasazení aplikace pro Azure App Service pomocí FTP/S
 
@@ -111,7 +111,7 @@ K určení problému s nasazením nebo za běhu najdete informace v tématu [nas
 ### <a name="im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue"></a>Nemůžu se připojit přes protokol FTP a publikovat kód. Jak můžu problém vyřešit?
 Ověřte, zda jste zadali správný název hostitele a [přihlašovací údaje](#open-ftp-dashboard). Ověřte také, že brána firewall neblokuje následující porty FTP v počítači:
 
-- Port připojení řízení FTP: 21
+- Port připojení ovládacího prvku FTP: 21, 990
 - Port pro připojení dat FTP: 989, 10001-10300
  
 ### <a name="how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode"></a>Jak se můžu připojit k FTP v Azure App Service prostřednictvím pasivního režimu?

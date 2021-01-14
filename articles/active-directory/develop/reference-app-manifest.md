@@ -13,12 +13,12 @@ ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: b29d8007ba7c6fb41209ad4f792069667416616b
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: d855e124c84dee8554073d05fa04fe078b92ddaa
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011539"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208885"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Manifest aplikace Azure Active Directory
 
@@ -115,17 +115,6 @@ Příklad:
     "allowPublicClient": false,
 ```
 
-### <a name="availabletoothertenants-attribute"></a>availableToOtherTenants – atribut
-
-| Klíč | Typ hodnoty |
-| :--- | :--- |
-| availableToOtherTenants | Logická hodnota |
-
-Nastavte na hodnotu true, pokud je aplikace sdílená s ostatními klienty. v opačném případě false.
-
-> [!NOTE]
-> Tento atribut je k dispozici pouze v prostředí **Registrace aplikací (zastaralé)** . Nahradili `signInAudience` v prostředí [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) .
-
 ### <a name="appid-attribute"></a>atribut appId
 
 | Klíč | Typ hodnoty |
@@ -165,17 +154,6 @@ Příklad:
     ],
 ```
 
-### <a name="displayname-attribute"></a>DisplayName – atribut
-
-| Klíč | Typ hodnoty |
-| :--- | :--- |
-| displayName | Řetězec |
-
-Zobrazovaný název aplikace
-
-> [!NOTE]
-> Tento atribut je k dispozici pouze v prostředí **Registrace aplikací (zastaralé)** . Nahradili `name` v prostředí [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) .
-
 ### <a name="errorurl-attribute"></a>errorUrl – atribut
 
 | Klíč | Typ hodnoty |
@@ -203,33 +181,6 @@ Příklad:
     "groupMembershipClaims": "SecurityGroup",
 ```
 
-### <a name="homepage-attribute"></a>atribut domovské stránky
-
-| Klíč | Typ hodnoty |
-| :--- | :--- |
-| domovské stránky |Řetězec |
-
-Adresa URL domovské stránky aplikace
-
-> [!NOTE]
-> Tento atribut je k dispozici pouze v prostředí **Registrace aplikací (zastaralé)** . Nahradili `signInUrl` v prostředí [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) .
-
-### <a name="objectid-attribute"></a>objectId – atribut
-
-| Klíč | Typ hodnoty |
-| :--- | :--- |
-|objectId | Řetězec |
-
-Jedinečný identifikátor aplikace v adresáři
-
-Tato možnost je k dispozici pouze v prostředí **Registrace aplikací (starší verze)** . Nahradili `id` v prostředí [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) .
-
-Příklad:
-
-```json
-    "objectId": "f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd",
-```
-
 ### <a name="optionalclaims-attribute"></a>optionalClaims – atribut
 
 | Klíč | Typ hodnoty |
@@ -245,7 +196,6 @@ Příklad:
 ```json
     "optionalClaims": null,
 ```
-
 
 
 ### <a name="identifieruris-attribute"></a>identifierUris – atribut
@@ -489,16 +439,6 @@ Příklad:
     ],
 ```
 
-### <a name="publicclient-attribute"></a>publicClient – atribut
-
-| Klíč | Typ hodnoty |
-| :--- | :--- |
-| publicClient | Logická hodnota|
-
-Určuje, jestli je tato aplikace veřejným klientem (například nainstalovaná aplikace spuštěná v mobilním zařízení).
-
-Tato vlastnost je k dispozici pouze v prostředí **Registrace aplikací (starší verze)** . Nahradili `allowPublicClient` v prostředí [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) .
-
 ### <a name="publisherdomain-attribute"></a>publisherDomain – atribut
 
 | Klíč | Typ hodnoty |
@@ -511,17 +451,7 @@ Příklad:
 
 ```json
     "publisherDomain": "https://www.contoso.com",
-````
-
-### <a name="replyurls-attribute"></a>replyUrls – atribut
-
-| Klíč | Typ hodnoty |
-| :--- | :--- |
-| replyUrls | Pole řetězců |
-
-Tato vlastnost s více hodnotami obsahuje seznam registrovaných redirect_uri hodnot, které služba Azure AD přijme jako cílová umístění při vracení tokenů.
-
-Tato vlastnost je k dispozici pouze v prostředí **Registrace aplikací (starší verze)** . Nahradili `replyUrlsWithType` v prostředí [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) .
+```
 
 ### <a name="replyurlswithtype-attribute"></a>replyUrlsWithType – atribut
 
