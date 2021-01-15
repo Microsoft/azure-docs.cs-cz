@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: ddde352df5fc6063dbe04aa05fe01fca9747f8fa
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 892b731f662af57916d067c562d48f4ec25e2210
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752834"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233045"
 ---
 # <a name="discover-assess-and-migrate-google-cloud-platform-gcp-vms-to-azure"></a>Zjišťování, vyhodnocení a migrace virtuálních počítačů Google Cloud Platform (GCP) do Azure
 
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte, jak:
 > * Spusťte test migrace a ujistěte se, že vše funguje podle očekávání.
 > * Spusťte úplnou migraci do Azure.
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="discover-and-assess"></a>Zjišťování a vyhodnocení
 
@@ -75,7 +75,7 @@ Zkontrolujte změny v [systému Windows](prepare-for-migration.md#windows-machin
 
 Připravte Azure pro migraci pomocí Azure Migrate: Server Migration Tool.
 
-**Úloha** | **Podrobnosti**
+**Úkol** | **Podrobnosti**
 --- | ---
 **Vytvoření projektu Azure Migrate** | Váš účet Azure potřebuje oprávnění Přispěvatel nebo Owner k [Vytvoření nového projektu](https://docs.microsoft.com/azure/migrate/create-manage-projects).
 **Ověření oprávnění pro účet Azure** | Váš účet Azure potřebuje oprávnění k vytvoření virtuálního počítače a zápis na spravovaný disk Azure.
@@ -246,13 +246,22 @@ Na zdrojovém virtuálním počítači GCP musí být nainstalovaný agent služ
     -  Zóna dostupnosti pro připnutí migrovaného počítače ke konkrétní zóně dostupnosti v oblasti Tuto možnost použijte k distribuci serverů, které tvoří aplikační vrstvu s více uzly napříč Zóny dostupnosti. Pokud vyberete tuto možnost, budete muset zadat zónu dostupnosti, která se má použít pro každý z vybraných počítačů na kartě Compute. Tato možnost je dostupná jenom v případě, že cílová oblast vybraná pro migraci podporuje Zóny dostupnosti
     -  Skupina dostupnosti umístí migrovaný počítač do skupiny dostupnosti. Vybraná cílová skupina prostředků musí mít jednu nebo víc skupin dostupnosti, aby bylo možné tuto možnost použít.
     - Není nutná žádná možnost redundance infrastruktury, pokud nepotřebujete žádnou z těchto konfigurací dostupnosti pro migrované počítače.
-11. V části **Zvýhodněné hybridní využití Azure**:
+11. V **typ šifrování disku** vyberte:
+    - Šifrování v klidovém případě pomocí klíče spravovaného platformou
+    - Šifrování v klidovém případě pomocí klíče spravovaného zákazníkem
+    - Dvojité šifrování pomocí klíčů spravovaných platformou a zákaznických klíčů
+
+   > [!NOTE]
+   > Pokud chcete replikovat virtuální počítače s CMK, musíte v cílové skupině prostředků [vytvořit sadu Disk Encryption](https://go.microsoft.com/fwlink/?linkid=2151800) . Objekty pro nastavení šifrování disku – mapování Managed Disks na Key Vault obsahující CMK, který se má použít pro SSE.
+  
+12. V části **Zvýhodněné hybridní využití Azure**:
+
     - Vyberte **Ne**, pokud nechcete využít Zvýhodněné hybridní využití Azure. Potom klikněte na **Další**.
     - Vyberte **Ano**, pokud máte počítače s Windows Serverem s aktivním Software Assurance nebo předplatným Windows Serveru a u migrovaných počítačů chcete využít tuto výhodu. Potom klikněte na **Další**.
 
-    ![Nastavení cíle](./media/tutorial-migrate-physical-virtual-machines/target-settings.png)
+    ![Nastavení cíle](./media/tutorial-migrate-vmware/target-settings.png)
 
-12. V části **COMPUTE** Zkontrolujte název virtuálního počítače, velikost, typ disku s operačním systémem a konfiguraci dostupnosti (Pokud jste zvolili v předchozím kroku). Virtuální počítače musí splňovat [požadavky Azure](migrate-support-matrix-physical-migration.md#azure-vm-requirements).
+13. V části **COMPUTE** Zkontrolujte název virtuálního počítače, velikost, typ disku s operačním systémem a konfiguraci dostupnosti (Pokud jste zvolili v předchozím kroku). Virtuální počítače musí splňovat [požadavky Azure](migrate-support-matrix-physical-migration.md#azure-vm-requirements).
 
     - **Velikost virtuálního počítače**: Pokud používáte doporučení pro vyhodnocení, zobrazuje se v rozevíracím seznamu velikost virtuálního počítače doporučená velikost. Jinak Azure Migrate vybere velikost na základě nejbližší shody v předplatném Azure. Případně můžete velikost vybrat ručně v části **Velikost virtuálního počítače Azure**.
     - **Disk s operačním systémem**: zadejte operační systém (spouštěcí) disk pro virtuální počítač. Disk s operačním systémem je disk, který obsahuje spouštěcí zavaděč a instalační program operačního systému.
@@ -261,13 +270,13 @@ Na zdrojovém virtuálním počítači GCP musí být nainstalovaný agent služ
 
 ![Nastavení výpočtů](./media/tutorial-migrate-physical-virtual-machines/compute-settings.png)
 
-13. V části **disky** určete, jestli se mají disky virtuálních počítačů replikovat do Azure, a v Azure vyberte typ disku (standardní disk SSD/HDD nebo Premium Managed Disks). Potom klikněte na **Další**.
+14. V části **disky** určete, jestli se mají disky virtuálních počítačů replikovat do Azure, a v Azure vyberte typ disku (standardní disk SSD/HDD nebo Premium Managed Disks). Potom klikněte na **Další**.
     - Disky můžete z replikace vyloučit.
     - Pokud disky vyloučíte, po migraci nebudou na virtuálním počítači Azure. 
 
     ![Nastavení disku](./media/tutorial-migrate-physical-virtual-machines/disks.png)
 
-14. V části **Kontrola a zahájení replikace** zkontrolujte nastavení a kliknutím na **Replikovat** spusťte počáteční replikaci serverů.
+15. V části **Kontrola a zahájení replikace** zkontrolujte nastavení a kliknutím na **Replikovat** spusťte počáteční replikaci serverů.
 
 > [!NOTE]
 > Nastavení replikace můžete aktualizovat kdykoli před spuštěním replikace, **Spravovat**  >  **replikační počítače**. Po spuštění replikace není možné nastavení změnit.
@@ -319,7 +328,7 @@ Až ověříte, že migrace testu funguje podle očekávání, můžete migrovat
     ![Replikace serverů](./media/tutorial-migrate-physical-virtual-machines/replicate-servers.png)
 
 2. V části **Replikace počítačů** klikněte pravým tlačítkem na virtuální počítač a vyberte **Migrovat**.
-3. V **Migrate**  >  **nástroji migrovat vypínání virtuálních počítačů a provádění plánované migrace bez ztráty dat** vyberte **Ano**  >  **OK**.
+3. V   >  **nástroji migrovat vypínání virtuálních počítačů a provádění plánované migrace bez ztráty dat** vyberte **Ano**  >  .
     - Pokud nechcete virtuální počítač vypnout, vyberte **ne**.
 4. Pro virtuální počítač se spustí úloha migrace. Stav úlohy můžete zobrazit kliknutím na ikonu zvonku oznámení v pravém horním rohu stránky portálu nebo na stránce úlohy nástroje pro migraci serveru (klikněte na přehled na dlaždici nástroje > v nabídce vlevo vyberte úlohy).
 5. Po dokončení úlohy můžete virtuální počítač zobrazit a spravovat na stránce Virtuální počítače.

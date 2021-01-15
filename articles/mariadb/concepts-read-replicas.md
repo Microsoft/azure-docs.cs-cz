@@ -5,13 +5,14 @@ author: savjani
 ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 10/15/2020
-ms.openlocfilehash: b2dbaa932c01c96582cb038143fa7686707be67d
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.date: 01/15/2021
+ms.custom: references_regions
+ms.openlocfilehash: 576ff68961a68a8b54037d661a51a9d2de7a56df
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541160"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98231787"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Repliky pro čtení ve službě Azure Database for MariaDB
 
@@ -24,7 +25,7 @@ Další informace o replikaci GTID najdete v [dokumentaci k replikaci MariaDB](h
 > [!NOTE]
 > Komunikace bez posunu
 >
-> Microsoft podporuje různé a zahrnuté prostředí. Tento článek obsahuje odkazy na _podřízený_ text. [Průvodce stylem Microsoft pro komunikaci bez předplatných](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) se tímto způsobem rozpoznává jako vyloučené slovo. Toto slovo se v tomto článku používá kvůli konzistenci, protože je aktuálně slovo, které se zobrazuje v softwaru. Když se software aktualizuje, aby se odebralo slovo, aktualizuje se tento článek na zarovnání.
+> Microsoft podporuje různé a zahrnuté prostředí. Tento článek obsahuje odkazy na _Hlavní_ a _podřízený_ text. [Průvodce stylem Microsoftu pro komunikaci bez předplatných](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) je rozpoznává jako vyloučená slova. Tato slova se v tomto článku používají kvůli konzistenci, protože jsou aktuálně slova, která se zobrazují v softwaru. Když se software aktualizuje, aby se odstranila slova, Tento článek se aktualizuje tak, aby se vyrovnává.
 >
 
 ## <a name="when-to-use-a-read-replica"></a>Kdy použít repliku čtení
@@ -38,6 +39,7 @@ Vzhledem k tomu, že repliky jsou jen pro čtení, nesnižují přímo na hlavn�
 Funkce replika čtení používá asynchronní replikaci. Tato funkce není určena pro scénáře synchronní replikace. Mezi zdrojem a replikou bude měřitelná prodleva. Data v replice nakonec budou konzistentní s daty v hlavní databázi. Tato funkce se používá pro úlohy, které můžou toto zpoždění obsloužit.
 
 ## <a name="cross-region-replication"></a>Replikace mezi oblastmi
+
 Repliku pro čtení můžete vytvořit v jiné oblasti ze zdrojového serveru. Replikace mezi oblastmi může být užitečná pro scénáře, jako je plánování zotavení po havárii, nebo pro uživatele přiblížit data.
 
 Zdrojový server můžete mít v libovolné [Azure Database for MariaDB oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=mariadb).  Zdrojový server může mít repliku ve své spárované oblasti nebo oblastech univerzální repliky. Následující obrázek ukazuje, které oblasti repliky jsou k dispozici v závislosti na zdrojové oblasti.
@@ -118,14 +120,13 @@ Vzhledem k tomu, že replikace je asynchronní, existuje prodleva mezi zdrojem a
 > [!Tip]
 > Pokud převzetí služeb při selhání repliky přestanou, prodleva v době odpojování repliky ze zdroje bude označovat, kolik dat se ztratilo.
 
-Jakmile se rozhodnete, že chcete převzít služeb při selhání do repliky, 
+Až se rozhodnete, že chcete převzít služeb při selhání do repliky,
 
 1. Zastavení replikace do repliky<br/>
-   Tento krok je nezbytný k tomu, aby server repliky mohl přijímat zápisy. V rámci tohoto procesu se server repliky odpojí z hlavního serveru. Jakmile zahájíte zastavení replikace, proces back-endu obvykle trvá přibližně 2 minuty, než se dokončí. V části [zastavení replikace](#stop-replication) v tomto článku se seznámíte s důsledky této akce.
-    
+   Tento krok je nezbytný k tomu, aby server repliky mohl přijímat zápisy. V rámci tohoto procesu se server repliky odpojí z hlavního serveru. Po zahájení zastavení replikace bude proces back-endu obvykle trvat přibližně 2 minuty, než se dokončí. V části [zastavení replikace](#stop-replication) v tomto článku se seznámíte s důsledky této akce.
 2. Nasměrujte aplikaci na (bývalé) repliku.<br/>
    Každý server má jedinečný připojovací řetězec. Aktualizujte svou aplikaci tak, aby odkazovala na (bývalé) repliku místo na hlavní.
-    
+
 Po úspěšném zpracování čtení a zápisu vaší aplikace jste dokončili převzetí služeb při selhání. Množství prostojů, na kterých bude prostředí aplikace záviset při zjištění problému a dokončení kroků 1 a 2 výše.
 
 ## <a name="considerations-and-limitations"></a>Důležité informace a omezení

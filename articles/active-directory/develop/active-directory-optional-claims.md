@@ -12,12 +12,12 @@ ms.date: 1/06/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 1debeab6e420d9021ebba1cecb2d551cf21c9fe2
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 6b5c328503a28c6eb92c2c20ca54d4d3d80c9a15
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028467"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232467"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Postupy: poskytnutí volitelných deklarací identity vaší aplikaci
 
@@ -45,25 +45,25 @@ I když jsou volitelné deklarace identity podporované v tokenech formátu v 1.
 Sada volitelných deklarací, které jsou ve výchozím nastavení k dispozici pro použití aplikací, jsou uvedeny níže. Pokud chcete přidat vlastní volitelné deklarace identity pro vaši aplikaci, přečtěte si část [rozšíření adresáře](#configuring-directory-extension-optional-claims)níže. Při přidávání deklarací do **přístupového tokenu** se deklarace vztahují na přístupové tokeny požadované *pro* aplikaci (webové rozhraní API), nikoli na deklarace identity *, které aplikace požaduje.* Bez ohledu na to, jak klient přistupuje k rozhraní API, se v přístupovém tokenu, který se používá k ověřování na rozhraní API, nachází správná data.
 
 > [!NOTE]
-> Většinu těchto deklarací lze zahrnout do JWTs pro tokeny v 1.0 a v 2.0, ale ne tokeny SAML, s výjimkou případů, kdy je uvedeno ve sloupci typ tokenu. Uživatelské účty podporují podmnožinu těchto deklarací, která je označena ve sloupci "typ uživatele".  Mnohé z uvedených deklarací se nevztahují na uživatele typu uživatel (nemají žádného tenanta `tenant_ctry` ).
+>Většinu těchto deklarací lze zahrnout do JWTs pro tokeny v 1.0 a v 2.0, ale ne tokeny SAML, s výjimkou případů, kdy je uvedeno ve sloupci typ tokenu. Uživatelské účty podporují podmnožinu těchto deklarací, která je označena ve sloupci "typ uživatele".  Mnohé z uvedených deklarací se nevztahují na uživatele typu uživatel (nemají žádného tenanta `tenant_ctry` ).
 
 **Tabulka 2: volitelná sada deklarací identity v 1.0 a v 2.0**
 
 | Název                       |  Popis   | Typ tokenu | Typ uživatele | Poznámky  |
 |----------------------------|----------------|------------|-----------|--------|
-| `auth_time`                | Čas posledního ověření uživatele Viz specifikace OpenID Connect.| TOKEN        |           |  |
-| `tenant_region_scope`      | Oblast tenanta prostředků | TOKEN        |           | |
-| `sid`                      | ID relace, která se používá pro odhlášení uživatele na relaci. | TOKEN        |  Osobní účty a účty Azure AD.   |         |
-| `verified_primary_email`   | Zdroj z PrimaryAuthoritativeEmail uživatele      | TOKEN        |           |         |
-| `verified_secondary_email` | Zdroj z SecondaryAuthoritativeEmail uživatele   | TOKEN        |           |        |
-| `vnet`                     | Informace o specifikátoru virtuální sítě | TOKEN        |           |      |
-| `fwd`                      | IP adresa.| TOKEN    |   | Přidá původní IPv4 adresu žádajícího klienta (Pokud se nachází uvnitř virtuální sítě). |
-| `ctry`                     | Země nebo oblast uživatele | TOKEN |  | Služba Azure AD vrátí `ctry` volitelnou deklaraci identity, pokud je přítomná a hodnota pole je standardní kód země/oblasti se dvěma písmeny, například FR, JP, SZ a tak dále. |
-| `tenant_ctry`              | Země tenanta prostředku | TOKEN | | Stejné jako `ctry` s výjimkou nastavenou na úrovni tenanta správcem.  Musí být také standardní hodnota se dvěma písmeny. |
-| `xms_pdl`             | Preferované umístění dat   | TOKEN | | V případě tenantů s více geografickými klienty je preferovaným umístěním dat kód se třemi písmeny ukazující geografickou oblast, ve které se uživatel nachází. Další informace najdete v dokumentaci k [Azure AD Connect o umístění preferovaného data](../hybrid/how-to-connect-sync-feature-preferreddatalocation.md).<br/>Například: `APC` pro Asie a Tichomoří. |
-| `xms_pl`                   | Preferovaný jazyk uživatele  | TOKEN ||Preferovaný jazyk uživatele, pokud je nastavený. Zdroj z jeho domovského tenanta ve scénářích přístupu hosta. Formát LL-CC ("en-US"). |
-| `xms_tpl`                  | Preferovaný jazyk tenanta| TOKEN | | Preferovaný jazyk tenanta prostředků, pokud je nastavený. Naformátované vše ("en"). |
-| `ztdid`                    | ID nasazení s nulovým dotykem | TOKEN | | Identita zařízení používaná pro [Windows autopilot](/windows/deployment/windows-autopilot/windows-10-autopilot) |
+| `auth_time`                | Čas posledního ověření uživatele Viz specifikace OpenID Connect.| JWT        |           |  |
+| `tenant_region_scope`      | Oblast tenanta prostředků | JWT        |           | |
+| `sid`                      | ID relace, která se používá pro odhlášení uživatele na relaci. | JWT        |  Osobní účty a účty Azure AD.   |         |
+| `verified_primary_email`   | Zdroj z PrimaryAuthoritativeEmail uživatele      | JWT        |           |         |
+| `verified_secondary_email` | Zdroj z SecondaryAuthoritativeEmail uživatele   | JWT        |           |        |
+| `vnet`                     | Informace o specifikátoru virtuální sítě | JWT        |           |      |
+| `fwd`                      | IP adresa.| JWT    |   | Přidá původní IPv4 adresu žádajícího klienta (Pokud se nachází uvnitř virtuální sítě). |
+| `ctry`                     | Země nebo oblast uživatele | JWT |  | Služba Azure AD vrátí `ctry` volitelnou deklaraci identity, pokud je přítomná a hodnota pole je standardní kód země/oblasti se dvěma písmeny, například FR, JP, SZ a tak dále. |
+| `tenant_ctry`              | Země tenanta prostředku | JWT | | Stejné jako `ctry` s výjimkou nastavenou na úrovni tenanta správcem.  Musí být také standardní hodnota se dvěma písmeny. |
+| `xms_pdl`             | Preferované umístění dat   | JWT | | V případě tenantů s více geografickými klienty je preferovaným umístěním dat kód se třemi písmeny ukazující geografickou oblast, ve které se uživatel nachází. Další informace najdete v dokumentaci k [Azure AD Connect o umístění preferovaného data](../hybrid/how-to-connect-sync-feature-preferreddatalocation.md).<br/>Například: `APC` pro Asie a Tichomoří. |
+| `xms_pl`                   | Preferovaný jazyk uživatele  | JWT ||Preferovaný jazyk uživatele, pokud je nastavený. Zdroj z jeho domovského tenanta ve scénářích přístupu hosta. Formát LL-CC ("en-US"). |
+| `xms_tpl`                  | Preferovaný jazyk tenanta| JWT | | Preferovaný jazyk tenanta prostředků, pokud je nastavený. Naformátované vše ("en"). |
+| `ztdid`                    | ID nasazení s nulovým dotykem | JWT | | Identita zařízení používaná pro [Windows autopilot](/windows/deployment/windows-autopilot/windows-10-autopilot) |
 | `email`                    | Adresovatelné e-maily pro tohoto uživatele, pokud ho uživatel má.  | JWT, SAML | MSA, Azure AD | Tato hodnota je ve výchozím nastavení zahrnutá, pokud je uživatel hostem v tenantovi.  U spravovaných uživatelů (uživatelů uvnitř tenanta) musí být požadavek požadován prostřednictvím této volitelné deklarace identity nebo, pouze v 2.0, s oborem OpenID.  U spravovaných uživatelů musí být e-mailová adresa nastavena na [portálu pro správu Office](https://portal.office.com/adminportal/home#/users).|
 | `acct`                | Stav uživatelských účtů v tenantovi | JWT, SAML | | Pokud je uživatel členem tenanta, hodnota je `0` . Pokud se jedná o hosta, hodnota je `1` . |
 | `groups`| Volitelné formátování pro deklarace skupin |JWT, SAML| |Používá se s nastavením GroupMembershipClaims v [manifestu aplikace](reference-app-manifest.md), který musí být nastaven také. Podrobnosti najdete v tématu [deklarace skupin](#configuring-groups-optional-claims) níže. Další informace o deklaracích skupin najdete v tématu [Konfigurace deklarací identity skupin](../hybrid/how-to-connect-fed-group-claims.md) .
@@ -148,13 +148,13 @@ Volitelné deklarace identity pro aplikaci můžete nakonfigurovat prostřednict
 [![Konfigurace volitelných deklarací v uživatelském rozhraní](./media/active-directory-optional-claims/token-configuration.png)](./media/active-directory-optional-claims/token-configuration.png)
 
 1. V části **Spravovat** vyberte **Konfigurace tokenu**.
+   - Okno **Konfigurace tokenu** možností uživatelského rozhraní není k dispozici pro aplikace zaregistrované v klientovi Azure AD B2C, které lze nakonfigurovat úpravou manifestu aplikace. Další informace najdete v tématu  [Přidání deklarací identity a přizpůsobení uživatelského vstupu pomocí vlastních zásad v Azure Active Directory B2C](../../active-directory-b2c/configure-user-input.md)  
+
 1. Vyberte **přidat volitelnou deklaraci identity**.
 1. Vyberte typ tokenu, který chcete konfigurovat.
 1. Vyberte volitelné deklarace, které se mají přidat.
-1. Vyberte **Add** (Přidat).
+1. Vyberte **Přidat**.
 
-> [!NOTE]
-> Okno **Konfigurace tokenu** možností uživatelského rozhraní není k dispozici pro aplikace zaregistrované v klientovi Azure AD B2C. U aplikací zaregistrovaných v tenantovi B2C lze volitelné deklarace identity nakonfigurovat úpravou manifestu aplikace. Další informace najdete v tématu [Přidání deklarací identity a přizpůsobení uživatelského vstupu pomocí vlastních zásad v Azure Active Directory B2C](../../active-directory-b2c/configure-user-input.md) 
 
 **Konfigurace volitelných deklarací pomocí manifestu aplikace:**
 
@@ -227,8 +227,7 @@ Kromě standardní volitelné sady deklarací identity můžete také nakonfigur
 
 Rozšíření schématu a Open nejsou podporovaná v volitelných deklaracích, ale jenom v rozšířeních adresářů stylů AAD-Graph. Tato funkce je užitečná pro připojení dalších uživatelských informací, které vaše aplikace může používat – například Další identifikátor nebo důležitou možnost konfigurace, kterou uživatel nastavil. Příklad najdete v dolní části této stránky.
 
-> [!NOTE]
-> Rozšíření schématu adresáře jsou funkcí jenom pro Azure AD. Pokud váš manifest aplikace požaduje vlastní rozšíření a uživatel MSA se do vaší aplikace přihlásí, tato rozšíření nebudou vrácena.
+Rozšíření schématu adresáře jsou funkcí jenom pro Azure AD. Pokud váš manifest aplikace požaduje vlastní rozšíření a uživatel MSA se do vaší aplikace přihlásí, tato rozšíření nebudou vrácena.
 
 ### <a name="directory-extension-formatting"></a>Formátování rozšíření adresáře
 
@@ -290,8 +289,7 @@ Tato část se zabývá možnostmi konfigurace v části volitelné deklarace id
    - accessToken pro přístupový token OAuth
    - Saml2Token pro tokeny SAML
 
-   > [!NOTE]
-   > Typ Saml2Token se vztahuje i na tokeny formátu SAML 1.1 i SAML 2.0.
+   Typ Saml2Token se vztahuje i na tokeny formátu SAML 1.1 i SAML 2.0.
 
    U každého relevantního typu tokenu Změňte deklaraci identity skupin na použití oddílu OptionalClaims v manifestu. Schéma OptionalClaims je následující:
 
@@ -315,8 +313,7 @@ Tato část se zabývá možnostmi konfigurace v části volitelné deklarace id
 
    Některé aplikace vyžadují informace o skupině pro uživatele v deklaraci identity role.  Pokud chcete změnit typ deklarace identity ze skupiny na deklaraci identity role, přidejte do dalších vlastností emit_as_roles.  Hodnoty skupiny budou vygenerovány v deklaraci identity role.
 
-   > [!NOTE]
-   > Pokud se použije emit_as_roles, nebudou se v deklaraci identity role zobrazovat všechny role aplikace nakonfigurované k přiřazení uživatele.
+   Pokud se použije emit_as_roles, nebudou se v deklaraci identity role zobrazovat všechny role aplikace nakonfigurované k přiřazení uživatele.
 
 **Příklady:**
 

@@ -10,16 +10,16 @@ ms.topic: how-to
 ms.custom: mvc
 ms.date: 08/11/2020
 ms.author: sebansal
-ms.openlocfilehash: 0925b51ed960b8007d2df86115ea7e5cf627fe7e
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: b3c917c9652954783fcddd92b9a7370c358ab3cc
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97826134"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233640"
 ---
 # <a name="export-certificates-from-azure-key-vault"></a>Exportovat certifikáty z Azure Key Vault
 
-Naučte se exportovat certifikáty z Azure Key Vault. Certifikáty můžete exportovat pomocí rozhraní příkazového řádku Azure, Azure PowerShell nebo Azure Portal. K exportu certifikátů Azure App Service můžete použít taky Azure Portal.
+Naučte se exportovat certifikáty z Azure Key Vault. Certifikáty můžete exportovat pomocí rozhraní příkazového řádku Azure, Azure PowerShell nebo Azure Portal. 
 
 ## <a name="about-azure-key-vault-certificates"></a>Informace o certifikátech ve službě Azure Key Vault
 
@@ -114,7 +114,7 @@ Pokud chcete stáhnout certifikát, vyberte **Stáhnout ve formátu CER** nebo *
 
 **Exportovat Azure App Service certifikátů**
 
-Certifikáty Azure App Service představují pohodlný způsob, jak si koupit certifikáty SSL. V rámci portálu je můžete přiřadit k aplikacím Azure. Tyto certifikáty můžete také exportovat z portálu jako soubory PFX, které se použijí jinde. Po importu se App Service certifikáty nacházejí v **tajných klíčích**.
+Certifikáty Azure App Service představují pohodlný způsob, jak si koupit certifikáty SSL. V rámci portálu je můžete přiřadit k aplikacím Azure. Po importu se App Service certifikáty nacházejí v **tajných klíčích**.
 
 Další informace najdete v postupu [export Azure App Service certifikátů](https://social.technet.microsoft.com/wiki/contents/articles/37431.exporting-azure-app-service-certificates.aspx).
 

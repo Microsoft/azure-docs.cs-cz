@@ -7,16 +7,22 @@ ms.author: anvar
 ms.manager: bsiva
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: 7ff9d9c6624016d4b1ea94072d52de1c42d73913
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: fbafed60019005fe2d81c96fb9557e3c307669ac
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400467"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233759"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Co je nového v Azure Migrate
 
 [Azure Migrate](migrate-services-overview.md) pomáhá zjišťovat, vyhodnocovat a migrovat místní servery, aplikace a data do cloudu Microsoft Azure. Tento článek shrnuje nové verze a funkce v Azure Migrate.
+
+## <a name="update-january-2021"></a>Aktualizace (leden 2021)
+-  Migrace virtuálních počítačů VMware na virtuální počítače Azure s disky šifrovanými pomocí dvojitého šifrování s použitím klíčů spravovaných platformou a zákazníkem (CMK Azure Migrate) je teď k dispozici prostřednictvím Azure Portal migrace serveru (bezagentská replikace).
+- Migrace virtuálních počítačů VMware na virtuální počítače Azure s disky šifrovanými pomocí šifrování na straně serveru (SSE) s klíči spravovanými zákazníkem (CMK) a dvojitým šifrováním pomocí klíčů spravovaných platformou a zákazníkem, je teď k dispozici prostřednictvím Azure Portal Azure Migrate migrace serveru (replikace založená na agentovi).
+- Migrace fyzických serverů a virtuálních počítačů z jiných cloudů, jako jsou AWS a GCP, do virtuálních počítačů Azure s disky šifrovanými pomocí šifrování na straně serveru (SSE) a s klíči spravovanými zákazníky (CMK) a s dvojitým šifrováním pomocí klíčů spravovaných platformou a zákazníkem, je teď k dispozici prostřednictvím Azure Portal Azure Migrate migrace serveru (replikace založená na agentovi).
+
 ## <a name="update-december-2020"></a>Aktualizace (prosince 2020)
 - Azure Migrate teď automaticky nainstaluje do virtuálních počítačů VMware agenta virtuálních počítačů Azure při jejich migraci do Azure pomocí metody migrace VMware bez agentů.
 - Migrace virtuálních počítačů VMware na virtuální počítače Azure s disky šifrovanými pomocí šifrování na straně serveru (SSE) pomocí klíčů spravovaných zákazníkem (CMK Azure Migrate) je teď k dispozici prostřednictvím služby Azure Portal.

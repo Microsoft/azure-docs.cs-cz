@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: kumud
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 507e17b2edb0db2d21265f3e945745d97395e7c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 527a2e0dd5a807552aed8d6a833d513fa40c72e3
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87503850"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234371"
 ---
 # <a name="use-an-azure-cli-sample-script-to-connect-two-virtual-networks"></a>Připojení dvou virtuálních sítí pomocí ukázkového skriptu Azure CLI
 
@@ -47,13 +47,13 @@ Tento skript k vytvoření skupiny prostředků, virtuálního počítače a vš
 
 | Příkaz | Poznámky |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) | Vytvoří virtuální síť Azure a podsíť. |
-| [az network vnet peering create](https://docs.microsoft.com/cli/azure/network/vnet/peering) | Vytvoří partnerský vztah mezi dvěma virtuálními sítěmi.  |
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
+| [az group create](/cli/azure/group) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
+| [az network vnet create](/cli/azure/network/vnet) | Vytvoří virtuální síť Azure a podsíť. |
+| [az network vnet peering create](/cli/azure/network/vnet/peering) | Vytvoří partnerský vztah mezi dvěma virtuálními sítěmi.  |
+| [az group delete](/cli/azure/vm/extension) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
+Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](/cli/azure).
 
 Další ukázkové skripty CLI pro sítě najdete v [dokumentaci se základními informacemi k sítím Azure](../cli-samples.md).

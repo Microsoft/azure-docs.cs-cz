@@ -7,12 +7,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: f0699ed065da4c63bc88945d75a866abcfbb9053
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: f4981036ca92f6efe2d3e23ea1f507a3a1f3c70a
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121358"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234252"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>Kurz: konfigurace a spuštění poskytovatele Azure Key Vault pro ovladač tajných klíčů úložiště pro Kubernetes
 
@@ -22,7 +22,7 @@ ms.locfileid: "98121358"
 
 V tomto kurzu získáte přístup k tajným klíčům a jejich načítání z trezoru klíčů Azure pomocí ovladače rozhraní kontejnerů úložiště klíčů (CSI) pro připojení tajných kódů do Kubernetes lusků.
 
-V tomto kurzu:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Používejte spravované identity.
@@ -37,6 +37,8 @@ V tomto kurzu:
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 * Než začnete s tímto kurzem, nainstalujte rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli-windows?view=azure-cli-latest).
+
+V tomto kurzu se předpokládá, že runnig službu Azure Kubernetes v uzlech systému Linux.
 
 ## <a name="use-managed-identities"></a>Použití spravovaných identit
 
@@ -77,6 +79,8 @@ Dokončete části Vytvoření skupiny prostředků, vytvoření clusteru AKS a 
     ![Snímek obrazovky s hodnotami principalId a clientId v rozhraní příkazového řádku Azure se zvýrazněným snímkem pro rozhraní příkazového ](../media/kubernetes-key-vault-2.png) ![ řádku Azure CLI s zvýrazněnými hodnotami SubscriptionId a nodeResourceGroup](../media/kubernetes-key-vault-3.png)
     
 ## <a name="install-helm-and-the-secrets-store-csi-driver"></a>Instalace Helm a ovladače pro uložení tajných kódů
+> [!NOTE]
+> Níže uvedená instalace funguje pouze na AKS v systému Linux. Další informace o instalaci ovladačů do úložiště tajných klíčů najdete v tématu [ovladače Azure Key Vault Provider for tajných klíčů úložiště CSI](https://github.com/Azure/secrets-store-csi-driver-provider-azure) . 
 
 K instalaci ovladače pro ukládání tajných klíčů si musíte nejdřív nainstalovat [Helm](https://helm.sh/docs/intro/install/).
 

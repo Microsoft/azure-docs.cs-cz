@@ -1,14 +1,14 @@
 ---
 title: Onboarding zákazníků do služby Azure Lighthouse
 description: Naučte se, jak začlenit zákazníka do Azure Lighthouse, který umožňuje získat a spravovat jejich prostředky prostřednictvím vlastního tenanta pomocí delegované správy prostředků Azure.
-ms.date: 12/15/2020
+ms.date: 01/14/2021
 ms.topic: how-to
-ms.openlocfilehash: 023b44a77cb38a14df8aa6a885ff137c02942061
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 1a7c8fc85819b2c34b5c64dc83cb908b7bee3c41
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516132"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232671"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Onboarding zákazníků do služby Azure Lighthouse
 
@@ -36,7 +36,7 @@ Pokud chcete připojit tenanta zákazníka, musí mít aktivní předplatné Azu
 
 Pokud tyto hodnoty ID již nemáte, můžete je načíst jedním z následujících způsobů. Ujistěte se, že používáte tyto přesné hodnoty v nasazení.
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure Portal
 
 ID tenanta si můžete zobrazit tak, že najedete myší na název účtu v horní pravé části Azure Portal, nebo výběrem **přepínače Adresář**. Pokud chcete vybrat a zkopírovat ID tenanta, vyhledejte na portálu "Azure Active Directory", pak vyberte **vlastnosti** a zkopírujte hodnotu zobrazenou v poli **ID adresáře** . Pokud chcete najít ID předplatného v tenantovi zákazníka, vyhledejte "Subscriptions" a pak vyberte příslušné ID předplatného.
 
@@ -62,14 +62,17 @@ az account show
 
 ## <a name="define-roles-and-permissions"></a>Definování rolí a oprávnění
 
-Jako poskytovatel služeb můžete chtít pro jednoho zákazníka provést několik úloh, které vyžadují různý přístup pro různé obory. Chcete-li přiřadit příslušné [předdefinované role Azure](../../role-based-access-control/built-in-roles.md) uživatelům ve vašem tenantovi, můžete definovat tolik autorizací, kolik potřebujete.
+Jako poskytovatel služeb můžete chtít pro jednoho zákazníka provést několik úloh, které vyžadují různý přístup pro různé obory. Můžete definovat tolik autorizací, kolik potřebujete, aby bylo možné přiřadit vhodné [předdefinované role Azure](../../role-based-access-control/built-in-roles.md). Každá autorizace zahrnuje **principalId** , který odkazuje na uživatele, skupinu nebo instanční objekt služby Azure AD ve správě tenanta.
 
-Pro zjednodušení správy doporučujeme používat pro každou roli skupiny uživatelů Azure AD. Získáte tak flexibilitu při přidávání nebo odebírání jednotlivých uživatelů do skupiny, která má přístup, takže nemusíte opakovat proces připojování, aby se změny projevily uživatelem. Role můžete přiřadit instančnímu objektu, který může být užitečný pro scénáře automatizace.
+> [!NOTE]
+> Pokud explicitně neurčíte, odkazy na uživatele v dokumentaci ke službě Azure Lighthouse se můžou vztahovat na uživatele, skupiny nebo instanční objekty služby Azure AD v rámci autorizace.
+
+Pro usnadnění správy doporučujeme používat pro každou roli skupiny uživatelů Azure AD, pokud je to možné, a ne jednotlivé uživatele. Získáte tak flexibilitu při přidávání nebo odebírání jednotlivých uživatelů do skupiny, která má přístup, takže nemusíte opakovat proces připojování, aby se změny projevily uživatelem. Můžete také přiřadit role k instančnímu objektu, který může být užitečný pro scénáře automatizace.
 
 > [!IMPORTANT]
 > Aby bylo možné přidat oprávnění pro skupinu Azure AD, musí být **typ skupiny** nastavený na **zabezpečení**. Tato možnost je vybrána při vytváření skupiny. Další informace najdete v tématu [Vytvoření základní skupiny a přidání členů pomocí Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
-Při definování autorizací nezapomeňte postupovat podle principu minimálního oprávnění, aby uživatelé měli jenom oprávnění potřebná k dokončení své úlohy. Pokyny a informace o podporovaných rolích najdete [v tématu Klienti, uživatelé a role ve scénářích Azure Lighthouse](../concepts/tenants-users-roles.md).
+Při definování autorizací nezapomeňte postupovat podle principu minimálního oprávnění, aby uživatelé měli jenom oprávnění potřebná k dokončení své úlohy. Informace o podporovaných rolích a osvědčených postupech najdete [v tématu Klienti, uživatelé a role ve scénářích Azure Lighthouse](../concepts/tenants-users-roles.md).
 
 Pokud chcete definovat autorizaci, budete muset znát hodnoty ID pro každého uživatele, skupinu uživatelů nebo instanční objekt v tenantovi poskytovatele služeb, ke kterému chcete udělit přístup. Také budete potřebovat ID definice role pro každou předdefinovanou roli, kterou chcete přiřadit. Pokud je ještě nemáte, můžete je načíst spuštěním příkazů níže v rámci tenanta poskytovatele služeb.
 
@@ -195,7 +198,7 @@ Následující příklad ukazuje upravený **delegatedResourceManagement.paramet
 }
 ```
 
-Poslední autorizace v předchozím příkladu přidá **principalId** s rolí správce přístupu uživatele (18d7d88d-d35e-4fb5-a5c3-7773c20a72d9). Při přiřazování této role musíte zahrnout vlastnost **delegatedRoleDefinitionIds** a jednu nebo více předdefinovaných rolí. Uživatel vytvořený v této autorizaci bude moci přiřadit tyto předdefinované role ke [spravovaným identitám](../../active-directory/managed-identities-azure-resources/overview.md) v tenantovi zákazníka, který je potřeba k [nasazení zásad, které se dají opravit](deploy-policy-remediation.md).  Uživatel také může vytvořit incidenty podpory.  Pro tohoto uživatele se nebudou vztahovat žádná další oprávnění normálně přidružená k roli správce přístupu uživatele.
+Poslední autorizace v předchozím příkladu přidá **principalId** s rolí správce přístupu uživatele (18d7d88d-d35e-4fb5-a5c3-7773c20a72d9). Při přiřazování této role musíte zahrnout vlastnost **delegatedRoleDefinitionIds** a jednu nebo více podporovaných integrovaných rolí Azure. Uživatel vytvořený v této autorizaci bude moci přiřadit tyto role ke [spravovaným identitám](../../active-directory/managed-identities-azure-resources/overview.md) v tenantovi zákazníka, který je potřeba k [nasazení zásad, které se dají opravit](deploy-policy-remediation.md).  Uživatel také může vytvořit incidenty podpory. Pro tento **principalId** se nebudou vztahovat žádná jiná oprávnění, která se běžně nevztahují k roli správce přístupu uživatelů.
 
 ## <a name="deploy-the-azure-resource-manager-templates"></a>Nasazení šablon Azure Resource Manager
 
@@ -208,7 +211,7 @@ Po aktualizaci souboru parametrů musí uživatel v tenantovi zákazníka nasadi
 
 Nasazení se může provést v Azure Portal, pomocí PowerShellu nebo pomocí rozhraní příkazového řádku Azure CLI, jak vidíte níže.
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure Portal
 
 1. V našem [úložišti GitHub](https://github.com/Azure/Azure-Lighthouse-samples/)vyberte tlačítko **nasadit do Azure** zobrazené vedle šablony, kterou chcete použít. Šablona se otevře v prostředí Azure Portal.
 1. Zadejte hodnoty pro **název nabídky MSP**, **Popis nabídky MSP**, **spravovaný podle ID tenanta** a **autorizací**. Pokud dáváte přednost, můžete vybrat možnost **Upravit parametry** a zadat hodnoty pro `mspOfferName` , `mspOfferDescription` , `managedbyTenantId` a `authorizations` přímo do souboru parametrů. Nezapomeňte aktualizovat tyto hodnoty namísto použití výchozích hodnot z šablony.
@@ -260,7 +263,7 @@ az deployment sub create --name <deploymentName> \
 
 Po úspěšném připojení zákaznického předplatného do Azure Lighthouse uvidí uživatelé v tenantovi poskytovatele služeb předplatné a jeho prostředky (pokud jim k ní byl udělen přístup prostřednictvím výše uvedeného procesu), a to buď jednotlivě, nebo jako člen skupiny Azure AD s příslušnými oprávněními. Potvrďte to tak, že zkontrolujete, že se odběr zobrazuje jedním z následujících způsobů:  
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure Portal
 
 V tenantovi poskytovatele služeb:
 
@@ -278,7 +281,7 @@ V tenantovi zákazníka:
 3. Potvrďte, že si můžete zobrazit odběry s názvem nabídky, který jste zadali v šabloně Správce prostředků.
 
 > [!NOTE]
-> Po dokončení nasazení může trvat několik minut, než se aktualizace projeví v Azure Portal.
+> Po dokončení nasazení může trvat až 15 minut, než se aktualizace projeví v Azure Portal. Pokud aktualizujete Azure Resource Manager tokenu, možná budete moct aktualizace zobrazit dřív, když aktualizujete prohlížeč, přihlásíte se k němu nebo vyžádáte nový token.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -312,6 +315,7 @@ Pokud se vám nepodaří úspěšně připojit zákazníka nebo pokud vaši uži
 - U delegovaného předplatného musí být zaregistrován poskytovatel prostředků **Microsoft. ManagedServices** . K tomu by mělo dojít automaticky během nasazování, ale v případě potřeby je můžete [zaregistrovat ručně](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider).
 - Autorizace nesmí obsahovat žádné uživatele s předdefinovanou rolí [vlastníka](../../role-based-access-control/built-in-roles.md#owner) ani žádné předdefinované role s [akcemi](../../role-based-access-control/role-definitions.md#dataactions).
 - Skupiny musí být vytvořeny s [**typem skupiny**](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md#group-types) nastavenou na **zabezpečení** a nesmí **Microsoft 365**.
+- Před povolením přístupu pro [vnořené skupiny](../..//active-directory/fundamentals/active-directory-groups-membership-azure-portal.md)může docházet k další prodlevě.
 - Uživatelé, kteří potřebují zobrazit prostředky v Azure Portal, musí mít roli [Čtenář](../../role-based-access-control/built-in-roles.md#reader) (nebo jinou předdefinovanou roli, která zahrnuje přístup ke čtenářům).
 
 ## <a name="next-steps"></a>Další kroky

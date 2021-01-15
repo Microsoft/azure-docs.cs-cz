@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: jlian
-ms.openlocfilehash: e569cbe9030b2ac5a42bd99233b4fefc925a5662
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: d36a7917693aef9063ade473759f2f451d3a677f
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98220302"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234014"
 ---
 # <a name="transport-layer-security-tls-support-in-iot-hub"></a>Podpora protokolu TLS (Transport Layer Security) v IoT Hub
 
@@ -48,7 +48,7 @@ Pro zvýšení zabezpečení nakonfigurujte centra IoT tak, aby povolovala *jeno
 * USA (Gov) – Arizona
 * US Gov – Virginie (podpora TLS 1.0/1.1 není v této oblasti k dispozici – je třeba povolit vynucení TLS 1,2 nebo vytvoření centra IoT)
 
-Pokud chcete povolit vynucení TLS 1,2, postupujte podle kroků v části [vytvoření centra IoT v Azure Portal](/.iot-hub-create-through-portal.md), s výjimkou.
+Pokud chcete povolit vynucení TLS 1,2, postupujte podle kroků v části [vytvoření centra IoT v Azure Portal](iot-hub-create-through-portal.md), s výjimkou.
 
 - Vyberte **oblast** z jedné v seznamu výše.
 - V části **Správa-> rozšířené-> TLS (Transport Layer Security) > minimální verze protokolu TLS** vyberte **1,2**. Toto nastavení se objevuje jenom pro Centrum IoT vytvořené v podporované oblasti.
@@ -117,7 +117,7 @@ Klient může navrhnout seznam vyšších šifrovacích sad, které budou použi
 
 Pomocí níže uvedených odkazů nakonfigurujte TLS 1,2 a povolená šifra v IoT Hub klientských sadách SDK.
 
-| Jazyk | Verze podporující TLS 1,2 | Dokumentace |
+| Language (Jazyk) | Verze podporující TLS 1,2 | Dokumentace |
 |----------|------------------------------------|---------------|
 | C        | Tag 2019-12-11 nebo novější            | [Odkaz](https://aka.ms/Tls_C_SDK_IoT) |
 | Python   | Verze 2.0.0 nebo novější             | [Odkaz](https://aka.ms/Tls_Python_SDK_IoT) |

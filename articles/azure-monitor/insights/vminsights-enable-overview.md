@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 12/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: ce90ab160696e2c38d917a391eecb0d51a31282f
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 655a146ccde9c75629d0a991a6a3aafa91f40764
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740585"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233963"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>Povolit Azure Monitor pro virtuální počítače – přehled
 
@@ -52,6 +52,9 @@ Azure Monitor pro virtuální počítače je k dispozici pro servery s podporou 
 
 Azure Monitor pro virtuální počítače podporuje všechny operační systémy, které podporují agenta Log Analytics a agenta závislostí. Úplný seznam najdete v tématu [přehled Azure Monitorch agentů ](../platform/agents-overview.md#supported-operating-systems) .
 
+> [!IMPORTANT]
+> Funkce Azure Monitor pro virtuální počítače stav hosta má více omezené podpory operačního systému, zatímco je ve verzi Public Preview. Podrobný seznam najdete v tématu [Povolení stavu hosta Azure monitor pro virtuální počítače (Preview)](vminsights-health-enable.md) .
+
 Přečtěte si následující seznam důležitých informací o podpoře agenta závislostí pro Linux, který podporuje Azure Monitor pro virtuální počítače:
 
 - Jsou podporované jen verze s výchozím a SMP jádrem Linuxu.
@@ -63,7 +66,7 @@ Přečtěte si následující seznam důležitých informací o podpoře agenta 
 ## <a name="log-analytics-workspace"></a>Pracovní prostor služby Log Analytics
 Azure Monitor pro virtuální počítače vyžaduje pracovní prostor Log Analytics. Podrobnosti a požadavky tohoto pracovního prostoru najdete v tématu [konfigurace log Analyticsho pracovního prostoru pro Azure monitor pro virtuální počítače](vminsights-configure-workspace.md) .
 ## <a name="agents"></a>Agenti
-Azure Monitor pro virtuální počítače vyžaduje, aby byly na každém virtuálním počítači nebo sadě škálování virtuálních počítačů, které mají být monitorovány, nainstalovány následující dva agenty. Jediným požadavkem k zaregistrování prostředků je instalace těchto agentů a jejich připojení k pracovnímu prostoru.
+Azure Monitor pro virtuální počítače vyžaduje, aby byly na každém virtuálním počítači nebo sadě škálování virtuálních počítačů, které mají být monitorovány, nainstalovány následující dva agenty. Chcete-li připojit prostředek, nainstalujte tyto agenty a připojte je k pracovnímu prostoru.  Požadavky na síť pro tyto agenty najdete v tématu [požadavky na síť](../platform/log-analytics-agent.md#network-requirements) .
 
 - [Agent Log Analytics](../platform/log-analytics-agent.md). Shromažďuje události a data o výkonu z virtuálního počítače nebo sady škálování virtuálních počítačů a doručuje je do pracovního prostoru Log Analytics. Metody nasazení pro agenta Log Analytics v prostředcích Azure používají rozšíření virtuálního počítače pro [Windows](../../virtual-machines/extensions/oms-windows.md) a [Linux](../../virtual-machines/extensions/oms-linux.md).
 - Agent závislostí. Shromažďuje zjištěná data o procesech spuštěných na virtuálním počítači a o závislostech externích procesů, které používá [funkce map v Azure monitor pro virtuální počítače](vminsights-maps.md). Agent závislostí spoléhá na agenta Log Analytics k doručování svých dat do Azure Monitor. Metody nasazení pro agenta závislostí v prostředcích Azure používají rozšíření virtuálního počítače pro [Windows](../../virtual-machines/extensions/agent-dependency-windows.md) a [Linux](../../virtual-machines/extensions/agent-dependency-linux.md).

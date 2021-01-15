@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: bc1ae4bc2cf64c3e2f996709c086eb23cb8b8385
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 61bd23c74fd7960317dff17175b355b473cd6dc7
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602593"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233827"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>Řešení potíží s certifikací virtuálního počítače
 
@@ -35,7 +35,7 @@ Chcete-li tento problém vyřešit, načtěte obrázek z Azure Marketplace a pro
 - [Bitové kopie systému Windows](azure-vm-create-using-approved-base.md)
 
 > [!Note]
-> Pokud používáte základní bitovou kopii systému Linux, která se nepoužívá Azure Marketplace, můžete posunout první oddíl o 2048 KB. To umožňuje, aby se neformátované místo použilo k přidávání nových fakturačních informací, a umožní Azure pokračovat v publikování virtuálního počítače Azure Marketplace.  
+> Pokud používáte základní image Linux, která se nepoužívá Azure Marketplace, zajistěte prosím, aby první 2048 sektorů (každý sektor je 512 bajtů) na virtuálním pevném disku bylo prázdné, aby Azure pokračoval s publikováním virtuálního počítače pro Azure Marketplace.  
 
 ## <a name="vm-extension-failure"></a>Selhání rozšíření virtuálního počítače
 
@@ -68,7 +68,7 @@ Ujistěte se, že jste před odesláním nabídky ověřili, že jste provedli p
 
 Problémy zřizování můžou zahrnovat tyto scénáře selhání:
 
-|Scénář|Chyba|Důvod|Řešení|
+|Scenario|Chybová|Důvod|Řešení|
 |---|---|---|---|
 |1|Neplatný virtuální pevný disk (VHD)|Pokud je zadaná hodnota souboru cookie v zápatí VHD nesprávná, bude virtuální pevný disk považován za neplatný.|Znovu vytvořte bitovou kopii a odešlete žádost.|
 |2|Neplatný typ objektu BLOB|Zřizování virtuálního počítače se nezdařilo, protože použitý blok je typ objektu BLOB místo typu stránky.|Znovu vytvořte bitovou kopii a odešlete žádost.|
@@ -140,7 +140,7 @@ Stáhněte si [sadu nástrojů Microsoft Certification Toolkit](azure-vm-image-t
 
 V následující tabulce jsou uvedeny testovací případy pro Linux, které sada nástrojů spustí. Ověření testu je uvedeno v popisu.
 
-|Scénář|Testovací případ|Description|
+|Scenario|Testovací případ|Popis|
 |---|---|---|
 |1|Bash historii|Před vytvořením image virtuálního počítače by se měly vymazat soubory historie bash.|
 |2|Verze agenta pro Linux|Je potřeba nainstalovat agenta Azure Linux 2.2.41 nebo novější.|
@@ -157,7 +157,7 @@ V následující tabulce jsou uvedeny testovací případy pro Linux, které sad
 
 V následující tabulce najdete běžné chyby, které se můžou zobrazit při spuštění testovacích případů:
 
-| Scénář | Testovací případ | Chyba | Řešení |
+| Scenario | Testovací případ | Chybová | Řešení |
 | --- | --- | --- | --- |
 | 1 | Testovací případ verze agenta pro Linux | Minimální verze agenta pro Linux je 2.2.41 nebo novější. Tento požadavek byl povinný od 1. května 2020. | Aktualizujte verzi agenta pro Linux. Měl by být 2,241 nebo novější. Další informace najdete na [stránce aktualizace verze agenta pro Linux](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support). |
 | 2 | Testovací případ historie bash | Pokud je velikost historie bash v odeslaném obrázku větší než 1 kilobajt (KB), dojde k chybě. Velikost je omezená na 1 KB, aby se zajistilo, že soubor historie bash neobsahuje žádné potenciálně citlivé informace. | Vyřešte připojením virtuálního pevného disku k jinému pracovnímu virtuálnímu počítači a proveďte změny a zmenšete velikost na 1 KB nebo méně. Odstraňte například `.bash` soubory historie. |
@@ -169,7 +169,7 @@ V následující tabulce najdete běžné chyby, které se můžou zobrazit při
 
 V následující tabulce jsou uvedeny testovací případy systému Windows, které sada nástrojů spustí, spolu s popisem ověření testu:
 
-|Scénář |Testovací případy|Description|
+|Scenario |Testovací případy|Popis|
 |---|---|---|---|
 |1|Architektura operačního systému|Azure podporuje jenom 64 operačních systémů.|
 |2|Závislost uživatelského účtu|Spuštění aplikace by nemělo být závislé na účtu správce.|
@@ -210,7 +210,7 @@ Protože virtuální počítače umožňují přístup k základnímu operační
 
 |Velikost virtuálního pevného disku|Skutečná obsazená velikost|Řešení|
 |---|---|---|
-|>500 tebibytes (TiB)|neuvedeno|Obraťte se na tým podpory se schválením výjimky.|
+|>500 tebibytes (TiB)|Není k dispozici|Obraťte se na tým podpory se schválením výjimky.|
 |250-500 TiB|Rozdíl velikosti objektu BLOB v >200 gibibajtech (GiB)|Obraťte se na tým podpory se schválením výjimky.|
 
 > [!NOTE]
@@ -319,7 +319,7 @@ Odeslání žádosti s imagí zakázaného SSH pro proces certifikace:
     
 V následující tabulce najdete případné problémy, které vznikají při stažení image virtuálního počítače s adresou URL sdíleného přístupového podpisu (SAS).
 
-|Scénář|Chyba|Důvod|Řešení|
+|Scenario|Chybová|Důvod|Řešení|
 |---|---|---|---|
 |1|Objekt BLOB se nenašel.|Virtuální pevný disk může být buď odstraněn, nebo přesunut ze zadaného umístění.|| 
 |2|Používaný objekt BLOB|VHD používá jiný interní proces.|Virtuální pevný disk by měl být v používaném stavu, když ho stáhnete s adresou URL SAS.|
@@ -328,14 +328,14 @@ V následující tabulce najdete případné problémy, které vznikají při st
 |6|Podmíněná hlavička HTTP|Adresa URL SAS není platná.|Získejte správnou adresu URL SAS.|
 |7|Neplatný název VHD|Zkontrolujte, jestli v názvu VHD existují nějaké speciální znaky, jako je například znak procenta `%` nebo uvozovky `"` .|Přejmenujte soubor VHD odebráním speciálních znaků.|
 
-## <a name="first-mb-2048-kb-partition-linux-only"></a>Prvních MB (2048 KB) oddíl (pouze Linux)
+## <a name="first-1mb-2048-sectors-each-sector-of-512-bytes-partition-linux-only"></a>První 1 MB (2048 sektorů, každý sektor v 512 bajtech) oddíl (jenom Linux)
 
-Když odešlete VHD, ujistěte se, že první 2048 KB virtuálního pevného disku je prázdné. V opačném případě se vaše žádost nezdaří.
+Když odešlete VHD, ujistěte se, že první 2048 sektorů (1 MB) virtuálního pevného disku je prázdný. V opačném případě se vaše žádost nezdaří. Upozorňujeme, že tato akce bude platit pro disk Boot/OS a ne pro žádné další datové disky.
 
 >[!NOTE]
->U určitých speciálních imagí, jako jsou ty, které jsou postavené na základních imagích Azure pro Windows a které se vycházejí z Azure Marketplace, zkontrolujeme fakturační značku a ignorujte oddíl MB, pokud se fakturační značka nachází a odpovídá našim hodnotám, které jsou k dispozici.
+>U určitých speciálních imagí, jako jsou ty, které jsou postavené na základních imagích Azure pro Windows, z Azure Marketplace nebo zajistěte, aby první 1 048 závažnosti (2048 sektorů) virtuálního pevného disku byla prázdná. 
 
-### <a name="create-a-first-mb-2048-kb-partition-on-an-empty-vhd"></a>Vytvoření prvního oddílu MB (2048 KB) na prázdném virtuálním pevném disku
+### <a name="create-a-first-1mb-2048-sectors-each-sector-of-512-bytes-partition-on-an-empty-vhd"></a>Vytvořte první 1 MB (2048 sektorů, každý sektor na 512 bajtů) oddílu na prázdném virtuálním pevném disku.
 
 Tyto kroky platí jenom pro Linux.
 
@@ -386,7 +386,7 @@ Tyto kroky platí jenom pro Linux.
    1. Jako hodnotu _prvního sektoru_ zadejte 2048. Jako výchozí hodnotu můžete opustit _poslední sektor_ .
 
       >[!IMPORTANT]
-      >Všechna existující data budou vymazána až 2048 KB. Zálohování virtuálního pevného disku před vytvořením nového oddílu.
+      >Všechna existující data budou smazána do 2048 sektorů (každý sektor 512 bajtů). Zálohování virtuálního pevného disku před vytvořením nového oddílu.
 
       ![Snímek obrazovky s příkazovým řádkem klienta výstupu znázorňující příkazy a výstup pro vymazané data.](./media/create-vm/vm-certification-issues-solutions-22.png)
 
@@ -400,7 +400,7 @@ Tyto kroky platí jenom pro Linux.
 
 1. Odpojte virtuální pevný disk od virtuálního počítače a odstraňte virtuální počítač.
 
-### <a name="create-a-first-mb-2048-kb-partition-by-moving-existing-data-on-vhd"></a>Vytvoření prvního oddílu MB (2048 KB) přesunutím stávajících dat na VHD
+### <a name="create-a-first-mb-2048-sectors-each-sector-of-512-bytes-partition-by-moving-existing-data-on-vhd"></a>Vytvoření prvního oddílu MB (2048 sektorů, každého sektoru 512 bajtů) přesunutím stávajících dat na VHD
 
 Tyto kroky platí jenom pro Linux.
 
@@ -480,7 +480,7 @@ Pokud se mají znovu použít všechny image z Azure Marketplace, musí být vir
 
 Pro řešení chyb souvisejících s datovým diskem použijte následující tabulku:
 
-|Chyba|Důvod|Řešení|
+|Chybová|Důvod|Řešení|
 |---|---|---|
 |`DataDisk- InvalidUrl:`|K této chybě může dojít při odeslání nabídky z důvodu neplatné logické jednotky (LUN).|Ověřte, že je pořadí čísel LUN pro datový disk v partnerském centru.|
 |`DataDisk- NotFound:`|K této chybě může dojít, protože datový disk není umístěný na zadané adrese URL SAS.|Ověřte, že je datový disk umístěný na zadané adrese URL SAS.|
@@ -571,7 +571,7 @@ Poskytnutí pevné image virtuálního počítače k nahrazení image virtuáln�
 Chcete-li provést tento postup, připravte technické prostředky pro bitovou kopii virtuálního počítače, kterou chcete přidat. Další informace najdete v tématu [Vytvoření virtuálního počítače pomocí schválené základny](azure-vm-create-using-approved-base.md)nebo [Vytvoření virtuálního počítače pomocí vlastní image](azure-vm-create-using-own-image.md) a [vygenerování identifikátoru URI SAS pro vaši image virtuálního počítače](azure-vm-get-sas-uri.md).
 
 1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/home).
-1. V levém podokně vyberte přehled **komerčního tržiště**  >  **Overview**.
+1. V levém podokně vyberte přehled **komerčního tržiště**  >  .
 1. Ve sloupci **alias nabídky** vyberte nabídku.
 1. Na kartě **Přehled plánu** ve sloupci **název** vyberte příslušný plán.
 1. Na kartě **Technická konfigurace** v části **image virtuálních počítačů** vyberte **+ Přidat image virtuálního počítače**.
@@ -587,7 +587,7 @@ Dále odeberte image virtuálního počítače s chybou zabezpečení.
 #### <a name="remove-the-vm-image-with-the-security-vulnerability-or-exploit"></a>Odebrání image virtuálního počítače s chybou zabezpečení nebo zneužitím
 
 1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/home).
-2. V levém podokně vyberte přehled **komerčního tržiště**  >  **Overview**.
+2. V levém podokně vyberte přehled **komerčního tržiště**  >  .
 3. Ve sloupci **alias nabídky** vyberte nabídku.
 4. Na kartě **Přehled plánu** ve sloupci **název** vyberte příslušný plán.
 5. Na kartě **Technická konfigurace** v části **image virtuálních počítačů** vedle image virtuálního počítače, kterou chcete odebrat, vyberte **Odebrat image virtuálního počítače**.

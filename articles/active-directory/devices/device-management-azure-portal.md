@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: hafowler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f142aa4ca203a65c45741f87853579ca60e1879
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: 1a735817f59e43e1a9e5d2a513f1ad397f18aab8
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831750"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232314"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Správa identit zařízení přes Azure Portal
 
@@ -165,10 +165,10 @@ Chcete-li zobrazit nebo spravovat nastavení zařízení v Azure Portal, je nutn
 
 - **Další místní správci na zařízeních připojených k Azure AD** – můžete vybrat uživatele, kterým se v zařízení udělují oprávnění místního správce. Tito uživatelé se přidají do role *Správci zařízení* v Azure AD. Globální správci ve službě Azure AD a vlastníci zařízení mají ve výchozím nastavení udělena práva místního správce. Tato možnost je funkce Premium Edition, která je dostupná prostřednictvím produktů, jako je Azure AD Premium nebo sada Enterprise Mobility Suite (EMS).
 - **Uživatelé mohou zaregistrovat svá zařízení ve službě Azure AD** – je třeba nakonfigurovat toto nastavení tak, aby bylo možné zaregistrovat zařízení s Windows 10 osobní, iOS, Androidem a MacOS, která budou registrována ve službě Azure AD. Pokud vyberete možnost **žádné**, zařízení se nemůžou registrovat v Azure AD. Registrace pomocí Microsoft Intune nebo správy mobilních zařízení (MDM) pro Microsoft 365 vyžaduje registraci. Pokud jste nakonfigurovali některou z těchto služeb, je vybraná možnost **vše** a **žádná** není k dispozici.
-- **Vyžadovat vícefaktorové ověřování pro připojení zařízení** – můžete si vybrat, jestli uživatelé musí poskytovat další ověřovací faktor pro připojení nebo registraci zařízení do Azure AD. Výchozí hodnota je **ne**. Při registraci nebo připojení k zařízení doporučujeme vyžadovat službu Multi-Factor Authentication. Než povolíte službu Multi-Factor Authentication pro tuto službu, musíte zajistit, aby bylo pro uživatele, kteří registrují svá zařízení, nakonfigurované vícefaktorové ověřování. Další informace o různých Multi-Factor Authentication služby Azure AD najdete v tématu [Začínáme se službou Azure ad Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md). 
+- **Zařízení, která mají být připojená ke službě Azure AD nebo registrovaná služba Azure AD, vyžadují Multi-Factor Authentication** – můžete si vybrat, jestli uživatelé musí poskytovat dodatečný ověřovací faktor k připojení nebo registraci zařízení ke službě Azure AD. Výchozí hodnota je **ne**. Při registraci nebo připojení k zařízení doporučujeme vyžadovat službu Multi-Factor Authentication. Než povolíte službu Multi-Factor Authentication pro tuto službu, musíte zajistit, aby bylo pro uživatele, kteří registrují svá zařízení, nakonfigurované vícefaktorové ověřování. Další informace o různých Multi-Factor Authentication služby Azure AD najdete v tématu [Začínáme se službou Azure ad Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md). 
 
 > [!NOTE]
-> **Vyžadovat použití vícefaktorového ověřování pro připojení zařízení** platí pro zařízení, která jsou připojená buď ke službě Azure AD (s některými výjimkami), nebo s registrovanými službami Azure AD. Toto nastavení se nevztahuje na hybridní zařízení připojená k Azure AD, [připojené virtuální počítače Azure AD na](/azure/active-directory/devices/howto-vm-sign-in-azure-ad-windows#enabling-azure-ad-login-in-for-windows-vm-in-azure) zařízeních s Azure a připojená k Azure AD pomocí [režimu automatického nasazení Windows autopilotu](/mem/autopilot/self-deploying).
+> Zařízení, která mají **být připojená k Azure AD nebo jsou registrovaná služba Azure AD, vyžadují Multi-Factor Authentication** nastavení platí pro zařízení, která jsou připojená buď ke službě Azure AD (s některými výjimkami), nebo s registrovanou službou Toto nastavení se nevztahuje na hybridní zařízení připojená k Azure AD, [připojené virtuální počítače Azure AD na](/azure/active-directory/devices/howto-vm-sign-in-azure-ad-windows#enabling-azure-ad-login-in-for-windows-vm-in-azure) zařízeních s Azure a připojená k Azure AD pomocí [režimu automatického nasazení Windows autopilotu](/mem/autopilot/self-deploying).
 
 - **Maximální počet zařízení** – toto nastavení umožňuje vybrat maximální počet připojených zařízení Azure AD nebo zařízení s registrovanými službou Azure AD, která může uživatel mít ve službě Azure AD. Pokud uživatel dosáhne této kvóty, nebude moct přidávat další zařízení, dokud nebudou odebrána některá z existujících zařízení. Výchozí hodnota je **50**.
 

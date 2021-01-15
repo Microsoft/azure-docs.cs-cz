@@ -4,14 +4,14 @@ description: Referenční příručka k funkcím ve výrazech pro Azure Logic Ap
 services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
-ms.topic: conceptual
-ms.date: 09/04/2020
-ms.openlocfilehash: 222f6ebacb6139ca26a6f1cdd0f896270c9b2fc2
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.topic: reference
+ms.date: 01/13/2021
+ms.openlocfilehash: fe40cbe84e8e3341b03c6c8e11701fe3db6bc3d0
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98034291"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234218"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Referenční příručka k používání funkcí ve výrazech pro Azure Logic Apps a automatizaci
 
@@ -166,7 +166,7 @@ Chcete-li změnit typ nebo formát hodnoty, můžete použít tyto funkce pro p�
 | [float](../logic-apps/workflow-definition-language-functions-reference.md#float) | Vrátí číslo s plovoucí desetinnou čárkou pro vstupní hodnotu. |
 | [int](../logic-apps/workflow-definition-language-functions-reference.md#int) | Vrátí celočíselnou verzi řetězce. |
 | [JSON](../logic-apps/workflow-definition-language-functions-reference.md#json) | Vrátí hodnotu nebo objekt typu JavaScript Object Notation (JSON) pro řetězec nebo XML. |
-| [řetězec](../logic-apps/workflow-definition-language-functions-reference.md#string) | Vrátí verzi řetězce pro vstupní hodnotu. |
+| [řetezce](../logic-apps/workflow-definition-language-functions-reference.md#string) | Vrátí verzi řetězce pro vstupní hodnotu. |
 | [uriComponent](../logic-apps/workflow-definition-language-functions-reference.md#uriComponent) | Vrátí verzi kódovanou identifikátorem URI pro vstupní hodnotu nahrazením znaků, které nejsou bezpečné, pomocí řídicích znaků. |
 | [uriComponentToBinary](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToBinary) | Vrátí binární verzi řetězce zakódovaného identifikátorem URI. |
 | [uriComponentToString](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToString) | Vrátí verzi řetězce pro řetězec kódovaný pomocí identifikátoru URI. |
@@ -214,7 +214,7 @@ Chcete-li pracovat s celými čísly a Floaty, můžete použít tyto matematick
 | [add](../logic-apps/workflow-definition-language-functions-reference.md#add) | Vrátí výsledek z přidání dvou čísel. |
 | [div](../logic-apps/workflow-definition-language-functions-reference.md#div) | Vrátí výsledek z dělení dvou čísel. |
 | [počet](../logic-apps/workflow-definition-language-functions-reference.md#max) | Vrátí nejvyšší hodnotu ze sady čísel nebo pole. |
-| [dlouhé](../logic-apps/workflow-definition-language-functions-reference.md#min) | Vrátí nejnižší hodnotu ze sady čísel nebo pole. |
+| [min](../logic-apps/workflow-definition-language-functions-reference.md#min) | Vrátí nejnižší hodnotu ze sady čísel nebo pole. |
 | [střední](../logic-apps/workflow-definition-language-functions-reference.md#mod) | Vrátí zbytek po dělení dvou čísel. |
 | [mul](../logic-apps/workflow-definition-language-functions-reference.md#mul) | Vrátí produkt pro vynásobení dvou čísel. |
 | [funkcí](../logic-apps/workflow-definition-language-functions-reference.md#rand) | Vrátí náhodné celé číslo ze zadaného rozsahu. |
@@ -268,7 +268,7 @@ Například můžete odkazovat na výstupy z jedné akce a používat tato data 
 
 | Funkce pracovních postupů | Úkol |
 | ----------------- | ---- |
-| [kroky](../logic-apps/workflow-definition-language-functions-reference.md#action) | Vrátí výstup aktuální akce za běhu nebo hodnoty z jiných párů názvu a hodnoty JSON. Viz také [Akce](../logic-apps/workflow-definition-language-functions-reference.md#actions). |
+| [akce](../logic-apps/workflow-definition-language-functions-reference.md#action) | Vrátí výstup aktuální akce za běhu nebo hodnoty z jiných párů názvu a hodnoty JSON. Viz také [Akce](../logic-apps/workflow-definition-language-functions-reference.md#actions). |
 | [actionBody](../logic-apps/workflow-definition-language-functions-reference.md#actionBody) | Vrátí `body` výstup akce za běhu. Viz také [tělo](../logic-apps/workflow-definition-language-functions-reference.md#body). |
 | [actionOutputs](../logic-apps/workflow-definition-language-functions-reference.md#actionOutputs) | Vrátí výstup akce za běhu. Zobrazit [výstupy](../logic-apps/workflow-definition-language-functions-reference.md#outputs) a [Akce](../logic-apps/workflow-definition-language-functions-reference.md#actions). |
 | [činností](../logic-apps/workflow-definition-language-functions-reference.md#actions) | Vrátí výstup akce za běhu nebo hodnoty z jiných párů názvu a hodnoty JSON. Viz také [Akce](../logic-apps/workflow-definition-language-functions-reference.md#action).  |
@@ -2532,11 +2532,17 @@ Tento příklad vytvoří proměnnou čítače a zvýší proměnnou o jednu bě
 
 ### <a name="json"></a>json
 
-Vrátí hodnotu nebo objekt typu JavaScript Object Notation (JSON) pro řetězec nebo XML.
+Vrátí hodnotu typu JavaScript Object Notation (JSON), objekt nebo pole objektů pro řetězec nebo XML.
 
 ```
 json('<value>')
+json(xml('value'))
 ```
+
+> [!IMPORTANT]
+> Bez schématu XML, které definuje strukturu výstupu, může funkce vracet výsledky, kde se struktura značně liší od očekávaného formátu v závislosti na vstupu.
+>  
+> Díky tomuto chování není tato funkce vhodná pro scénáře, ve kterých musí výstup odpovídat dobře definované smlouvě, například v důležitých obchodních systémech nebo řešeních.
 
 | Parametr | Povinné | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
@@ -2545,7 +2551,7 @@ json('<value>')
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*Výsledek JSON*> | Nativní typ nebo objekt JSON | Hodnota nebo objekt nativního typu JSON pro zadaný řetězec nebo XML. Pokud je řetězec null, funkce vrátí prázdný objekt. |
+| <*Výsledek JSON*> | Typ, objekt nebo pole JSON – nativní typ | Hodnota, objekt nebo pole objektů JSON pro nativní typ ze vstupního řetězce nebo XML. <p><p>– Pokud předáte XML s jediným podřízeným elementem v kořenovém elementu, funkce vrátí jeden objekt JSON pro daný podřízený element. <p> – Pokud předáte XML s více podřízenými prvky v kořenovém elementu, funkce vrátí pole, které obsahuje objekty JSON pro tyto podřízené prvky. <p>– Pokud má řetězec hodnotu null, funkce vrátí prázdný objekt. |
 ||||
 
 *Příklad 1*
@@ -2560,7 +2566,7 @@ A vrátí tento výsledek: `[1, 2, 3]`
 
 *Příklad 2*
 
-Tento příklad převede tento řetězec na formát JSON:
+Tento příklad převede tento řetězec do formátu JSON:
 
 ```
 json('{"fullName": "Sophia Owen"}')
@@ -2568,7 +2574,7 @@ json('{"fullName": "Sophia Owen"}')
 
 A vrátí tento výsledek:
 
-```
+```json
 {
   "fullName": "Sophia Owen"
 }
@@ -2576,23 +2582,53 @@ A vrátí tento výsledek:
 
 *Příklad 3*
 
-Tento příklad převede tento kód XML na formát JSON:
+V tomto příkladu se `json()` používají `xml()` funkce a k převodu XML, který má jeden podřízený element v kořenovém elementu do objektu JSON s názvem `person` pro daný podřízený element:
 
-```
-json(xml('<?xml version="1.0"?> <root> <person id='1'> <name>Sophia Owen</name> <occupation>Engineer</occupation> </person> </root>'))
-```
+`json(xml('<?xml version="1.0"?> <root> <person id='1'> <name>Sophia Owen</name> <occupation>Engineer</occupation> </person> </root>'))`
 
 A vrátí tento výsledek:
 
 ```json
 {
-   "?xml": { "@version": "1.0" },
+   "?xml": { 
+      "@version": "1.0" 
+   },
    "root": {
-      "person": [ {
+      "person": {
          "@id": "1",
          "name": "Sophia Owen",
          "occupation": "Engineer"
-      } ]
+      }
+   }
+}
+```
+
+*Příklad 4*
+
+V tomto příkladu se `json()` používají `xml()` funkce a k převodu XML s více podřízenými prvky v kořenovém elementu do pole s názvem `person` , které obsahuje objekty JSON pro tyto podřízené prvky:
+
+`json(xml('<?xml version="1.0"?> <root> <person id='1'> <name>Sophia Owen</name> <occupation>Engineer</occupation> </person> <person id='2'> <name>John Doe</name> <occupation>Engineer</occupation> </person> </root>'))`
+
+A vrátí tento výsledek:
+
+```json
+{
+   "?xml": {
+      "@version": "1.0"
+   },
+   "root": {
+      "person": [
+         {
+            "@id": "1",
+            "name": "Sophia Owen",
+            "occupation": "Engineer"
+         },
+         {
+            "@id": "2",
+            "name": "John Doe",
+            "occupation": "Engineer"
+         }
+      ]
    }
 }
 ```

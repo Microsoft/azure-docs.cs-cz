@@ -3,12 +3,12 @@ title: Migrace konfigurace fondu Batch z Cloud Services na Virtual Machines
 description: Naučte se aktualizovat konfiguraci fondu na nejnovější a doporučenou konfiguraci.
 ms.topic: how-to
 ms.date: 1/6/2021
-ms.openlocfilehash: b6f4184f7c4f133f74cb3157638b1621dad25fda
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: d987a185efb6593fd541dd14fa74b6c4d3ca41be
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97969023"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234303"
 ---
 # <a name="migrate-batch-pool-configuration-from-cloud-services-to-virtual-machines"></a>Migrace konfigurace fondu Batch z Cloud Services na Virtual Machines
 
@@ -22,7 +22,7 @@ Tento článek popisuje, jak migrovat do ' virtualMachineConfiguration '.
 
 Existující aktivní fondy nejde aktualizovat z ' cloudServiceConfiguration ' na ' virtualMachineConfiguration ', musí být vytvořeny nové fondy. Vytváření fondů pomocí příkazu ' virtualMachineConfiguration ' je podporováno všemi rozhraními API Batch, nástroji příkazového řádku, Azure Portal a ROZHRANÍm Batch Explorer.
 
-Kurzy pro [.NET](tutorial-parallel-dotnet.md) a [Python](tutorial-parallel-python.md) poskytují příklady vytváření fondů pomocí příkazu ' virtualMachineConfiguration '.
+**Kurzy pro [.NET](tutorial-parallel-dotnet.md) a [Python](tutorial-parallel-python.md) poskytují příklady vytváření fondů pomocí příkazu ' virtualMachineConfiguration '.**
 
 ## <a name="pool-configuration-differences"></a>Rozdíly v konfiguraci fondu
 

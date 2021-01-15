@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/28/2020
 ms.author: kumud
-ms.openlocfilehash: f49a340a004a4aef37bcae9e3ae1c2b02ae030b9
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: d02f85647d947c2f28527ba6f0397c2a98e73840
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913075"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234184"
 ---
 # <a name="azure-networking-services-overview"></a>Přehled síťových služeb Azure
 
@@ -33,10 +33,10 @@ Tato část popisuje služby, které poskytují připojení mezi prostředky Azu
 ### <a name="virtual-network"></a><a name="vnet"></a>Virtuální síť
 
 Azure Virtual Network (VNet) je základní stavební blok vaší privátní sítě v Azure. Virtuální sítě můžete použít k těmto akcím:
-- **Komunikace mezi prostředky Azure** : můžete nasadit virtuální počítače a několik dalších typů prostředků Azure do virtuální sítě, jako jsou Azure App Service prostředí, Azure Kubernetes Service (AKS) a Azure Virtual Machine Scale Sets. Úplný seznam prostředků Azure, které můžete nasadit do virtuální sítě, najdete v tématu věnovaném [integraci virtuální sítě do služeb](../virtual-network/virtual-network-for-azure-services.md).
-- Mezi sebou navzájem **komunikují** : virtuální sítě můžete vzájemně propojit a umožnit tak komunikaci prostředků v obou virtuálních sítích pomocí partnerského vztahu virtuálních sítí. Propojené virtuální sítě se můžou nacházet ve stejné oblasti Azure nebo v různých oblastech. Další informace najdete v tématu [partnerský vztah virtuálních sítí](../virtual-network/virtual-network-peering-overview.md).
-- **Komunikace s internetem** : všechny prostředky ve virtuální síti můžou ve výchozím nastavení komunikovat odchozí připojení k Internetu. Příchozí komunikaci s prostředkem můžete umožnit tím, že prostředku přiřadíte veřejnou IP adresu nebo veřejný Load Balancer. Ke správě odchozích připojení můžete použít taky [veřejné IP adresy](../virtual-network/virtual-network-public-ip-address.md) nebo veřejné [Load Balancer](../load-balancer/load-balancer-overview.md) .
-- **Komunikace s místními sítěmi** : místní počítače a sítě můžete připojit k virtuální síti pomocí [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) nebo [ExpressRoute](../expressroute/expressroute-introduction.md).
+- **Komunikace mezi prostředky Azure**: můžete nasadit virtuální počítače a několik dalších typů prostředků Azure do virtuální sítě, jako jsou Azure App Service prostředí, Azure Kubernetes Service (AKS) a Azure Virtual Machine Scale Sets. Úplný seznam prostředků Azure, které můžete nasadit do virtuální sítě, najdete v tématu věnovaném [integraci virtuální sítě do služeb](../virtual-network/virtual-network-for-azure-services.md).
+- Mezi sebou navzájem **komunikují**: virtuální sítě můžete vzájemně propojit a umožnit tak komunikaci prostředků v obou virtuálních sítích pomocí partnerského vztahu virtuálních sítí. Propojené virtuální sítě se můžou nacházet ve stejné oblasti Azure nebo v různých oblastech. Další informace najdete v tématu [partnerský vztah virtuálních sítí](../virtual-network/virtual-network-peering-overview.md).
+- **Komunikace s internetem**: všechny prostředky ve virtuální síti můžou ve výchozím nastavení komunikovat odchozí připojení k Internetu. Příchozí komunikaci s prostředkem můžete umožnit tím, že prostředku přiřadíte veřejnou IP adresu nebo veřejný Load Balancer. Ke správě odchozích připojení můžete použít taky [veřejné IP adresy](../virtual-network/virtual-network-public-ip-address.md) nebo veřejné [Load Balancer](../load-balancer/load-balancer-overview.md) .
+- **Komunikace s místními sítěmi**: místní počítače a sítě můžete připojit k virtuální síti pomocí [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) nebo [ExpressRoute](../expressroute/expressroute-introduction.md).
 
 Další informace najdete v tématu [co je Azure Virtual Network?](../virtual-network/virtual-networks-overview.md).
 
@@ -89,7 +89,7 @@ Azure Orbital je plně spravovaná cloudová pozemní stanice jako služba, kter
 Tato část popisuje síťové služby v Azure, které vám pomůžou chránit vaše síťové prostředky – chránit své aplikace pomocí kterékoli nebo kombinace těchto síťových služeb v Azure – DDoS Protection, privátního odkazu, brány firewall, brány firewall webových aplikací, skupin zabezpečení sítě a Virtual Networkch koncových bodů služby.
 
 ### <a name="ddos-protection"></a><a name="ddosprotection"></a>DDoS Protection 
-[Azure DDoS Protection](../virtual-network/manage-ddos-protection.md) poskytuje protiopatření proti nejpropracovanějším hrozbám DDoS. Služba poskytuje rozšířené možnosti zmírnění DDoS pro vaši aplikaci a prostředky nasazené ve virtuálních sítích. Kromě toho zákazníci, kteří používají Azure DDoS Protection, mají přístup k DDoS podpoře rychlých odpovědí, aby při aktivním útoku zapojili odborníky na DDoS.
+[Azure DDoS Protection](../ddos-protection/manage-ddos-protection.md) poskytuje protiopatření proti nejpropracovanějším hrozbám DDoS. Služba poskytuje rozšířené možnosti zmírnění DDoS pro vaši aplikaci a prostředky nasazené ve virtuálních sítích. Kromě toho zákazníci, kteří používají Azure DDoS Protection, mají přístup k DDoS podpoře rychlých odpovědí, aby při aktivním útoku zapojili odborníky na DDoS.
 
 :::image type="content" source="./media/networking-overview/ddos-protection.png" alt-text="DDoS Protection":::
 
@@ -106,14 +106,14 @@ Další informace o Azure Firewall najdete v dokumentaci k [Azure firewall](../f
 
 :::image type="content" source="./media/networking-overview/firewall-threat.png" alt-text="Přehled brány firewall":::
 
-### <a name="web-application-firewall"></a><a name="waf"></a>Web Application Firewall (Brána firewall webových aplikací)
+### <a name="web-application-firewall"></a><a name="waf"></a>Firewall webových aplikací
 [Firewall webových aplikací Azure](../web-application-firewall/overview.md) (WAF) poskytuje ochranu webových aplikací před běžnými webovými útoky a ohroženími zabezpečení, jako je například vkládání SQL a skriptování mezi weby. Azure WAF poskytuje předem chráněnou ochranu od OWASP hlavních chyb zabezpečení prostřednictvím spravovaných pravidel. Zákazníci navíc můžou nakonfigurovat také vlastní pravidla, která jsou zákaznická pravidla pro zajištění další ochrany založená na zdrojovém rozsahu IP adres, a požadavky na atributy, jako jsou hlavičky, soubory cookie, datová pole formuláře nebo parametry řetězce dotazu.
 
-Zákazníci se můžou rozhodnout nasadit [Azure WAF s Application Gateway](../application-gateway/waf-overview.md) , která poskytuje regionální ochranu entit ve veřejných a privátních adresních prostorech. Zákazníci si také můžou nasadit [Azure WAF s předními dveřmi](../frontdoor/waf-overview.md) , které poskytují ochranu na hraničních sítích pro veřejné koncové body.
+Zákazníci se můžou rozhodnout nasadit [Azure WAF s Application Gateway](../web-application-firewall/ag/ag-overview.md) , která poskytuje regionální ochranu entit ve veřejných a privátních adresních prostorech. Zákazníci si také můžou nasadit [Azure WAF s předními dveřmi](../web-application-firewall/afds/afds-overview.md) , které poskytují ochranu na hraničních sítích pro veřejné koncové body.
 
 :::image type="content" source="./media/networking-overview/waf-overview.png" alt-text="Firewall webových aplikací":::
 
-### <a name="network-security-groups"></a><a name="nsg"></a>Skupiny zabezpečení sítě
+### <a name="network-security-groups"></a><a name="nsg"></a>skupiny zabezpečení sítě,
 Pomocí skupiny zabezpečení sítě můžete filtrovat síťový provoz do a z prostředků Azure ve virtuální síti Azure. Další informace najdete v tématu [skupiny zabezpečení sítě](../virtual-network/network-security-groups-overview.md).
 
 ### <a name="service-endpoints"></a><a name="serviceendpoints"></a>Koncové body služby
@@ -166,7 +166,7 @@ Tato část popisuje síťové služby v Azure, které vám pomůžou monitorova
 Azure Network Watcher poskytuje nástroje pro monitorování, diagnostiku, zobrazení metrik a povolení nebo zakázání protokolů pro prostředky ve virtuální síti Azure. Další informace najdete v tématu [co je Network Watcher?](../network-watcher/network-watcher-monitoring-overview.md?toc=%2fazure%2fnetworking%2ftoc.json).
 
 ### <a name="azure-monitor-for-networks-preview"></a>Verze Preview pro Azure Monitor pro sítě
-Azure Monitor pro sítě poskytuje komplexní přehled o stavu a metrikách pro všechny nasazené síťové prostředky, a to bez nutnosti konfigurace. Poskytuje také přístup k funkcím monitorování sítě, jako je [monitorování připojení](../network-watcher/connection-monitor-preview.md), [protokolování toku pro skupiny zabezpečení sítě](../network-watcher/network-watcher-nsg-flow-logging-overview.md)a [Analýza provozu](../network-watcher/traffic-analytics.md). Další informace najdete v tématu [Azure monitor pro sítě ve verzi Preview](../azure-monitor/insights/network-insights-overview.md?toc=%2fazure%2fnetworking%2ftoc.json).
+Azure Monitor pro sítě poskytuje komplexní přehled o stavu a metrikách pro všechny nasazené síťové prostředky, a to bez nutnosti konfigurace. Poskytuje také přístup k funkcím monitorování sítě, jako je [monitorování připojení](../network-watcher/connection-monitor-overview.md), [protokolování toku pro skupiny zabezpečení sítě](../network-watcher/network-watcher-nsg-flow-logging-overview.md)a [Analýza provozu](../network-watcher/traffic-analytics.md). Další informace najdete v tématu [Azure monitor pro sítě ve verzi Preview](../azure-monitor/insights/network-insights-overview.md?toc=%2fazure%2fnetworking%2ftoc.json).
 
 ### <a name="expressroute-monitor"></a><a name="expressroutemonitor"></a>Monitorování ExpressRoute
 Další informace o tom, jak zobrazit metriky okruhů ExpressRoute, protokoly prostředků a výstrahy, najdete v tématu [monitorování ExpressRoute, metriky a výstrahy](../expressroute/expressroute-monitoring-metrics-alerts.md?toc=%2fazure%2fnetworking%2ftoc.json).
@@ -185,4 +185,4 @@ Další informace najdete v tématu [co je Virtual Network klepněte na](../virt
 
 - Vytvořte svou první virtuální síť a připojte k ní několik virtuálních počítačů, a to provedením kroků v článku [Vytvoření první virtuální sítě](../virtual-network/quick-create-portal.md?toc=%2fazure%2fnetworking%2ftoc.json) .
 - Připojte počítač k virtuální síti provedením kroků v [článku Konfigurace připojení typu Point-to-site](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json).
-- Vyrovnávání zatížení internetového provozu na veřejné servery provedením kroků v článku [vytvoření internetového nástroje pro vyrovnávání zatížení](../load-balancer/load-balancer-get-started-internet-portal.md?toc=%2fazure%2fnetworking%2ftoc.json) .
+- Vyrovnávání zatížení internetového provozu na veřejné servery provedením kroků v článku [vytvoření internetového nástroje pro vyrovnávání zatížení](../load-balancer/quickstart-load-balancer-standard-public-portal.md?toc=%2fazure%2fnetworking%2ftoc.json) .

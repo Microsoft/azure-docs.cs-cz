@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/27/2020
 ms.author: errobin
-ms.openlocfilehash: 63b91194c9ffb10fd8f4c5f1341eaf74bc81f5e1
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 88c287c4aa87b4df41bfe6bbc1992262b21d07aa
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94694877"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232756"
 ---
 # <a name="using-insights-to-monitor-and-configure-your-azure-load-balancer"></a>Monitorování a konfigurace Azure Load Balancer pomocí přehledů
 
@@ -68,7 +68,7 @@ Karta propustnost dat vám umožní zkontrolovat příchozí a odchozí propustn
 ### <a name="flow-distribution"></a>Distribuce toků
 Karta distribuce toků vám pomůže vizualizovat a spravovat počet toků, které instance back-endu dostávají a produkují. Zobrazuje frekvenci vytváření toků a počet toků pro příchozí a odchozí provoz a také přenos síťových přenosů, které instance virtuálních počítačů a sady škálování virtuálních počítačů přijímají. 
 
-Tato zobrazení vám můžou sdělit svůj názor na to, jestli konfigurace Load Balancer nebo vzorce provozu vedou k nevyváženému provozu. Například pokud máte nakonfigurované spřažení relace a jeden klient provádí neúměrný počet požadavků. Také vám poskytne informace o tom, jestli se při přístupu k velikosti vašeho počítače blíží [limit toku pro virtuální počítače](../virtual-network/virtual-machine-network-throughput.md#flow-limits-and-recommendations) .
+Tato zobrazení vám můžou sdělit svůj názor na to, jestli konfigurace Load Balancer nebo vzorce provozu vedou k nevyváženému provozu. Například pokud máte nakonfigurované spřažení relace a jeden klient provádí neúměrný počet požadavků. Také vám poskytne informace o tom, jestli se při přístupu k velikosti vašeho počítače blíží [limit toku pro virtuální počítače](../virtual-network/virtual-machine-network-throughput.md#flow-limits-and-active-connections-recommendations) .
 
 ### <a name="connection-monitors"></a>Monitorování připojení
 Na kartě monitorování připojení se zobrazí latence odezvy na globální mapě pro všechna nakonfigurovaná [monitorování připojení](../network-watcher/connection-monitor.md)  . Tyto vizuály poskytují užitečné informace pro služby s přísnými nároky na latenci. Abyste splnili Vaše požadavky, možná budete muset přidat další oblastní nasazení nebo přejít na model [Vyrovnávání zatížení pro různé regiony](./cross-region-overview.md) .

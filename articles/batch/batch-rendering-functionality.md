@@ -3,14 +3,14 @@ title: Možnosti vykreslování
 description: Pro spouštění úloh vykreslování a aplikací se používají standardní Azure Batch možnosti. Batch zahrnuje konkrétní funkce pro podporu vykreslování úloh.
 author: mscurrell
 ms.author: markscu
-ms.date: 08/02/2018
+ms.date: 01/14/2021
 ms.topic: how-to
-ms.openlocfilehash: 77a6ec54495b394c597f6d6b4ddb5f5fe3285550
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: d9d196897800467fd02397bb774af0bbb9ebabf0
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107466"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234269"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Možnosti vykreslování Azure Batch
 
@@ -18,7 +18,15 @@ Pro spouštění úloh vykreslování a aplikací se používají standardní Az
 
 Přehled konceptů služby Batch, včetně fondů, úloh a úkolů, najdete v [tomto článku](./batch-service-workflow-features.md).
 
-## <a name="batch-pools"></a>Fondy Batch
+## <a name="batch-pools-using-custom-vm-images-and-standard-application-licensing"></a>Fondy služby Batch pomocí vlastních imagí virtuálních počítačů a licencování standardních aplikací
+
+Stejně jako u jiných úloh a typů aplikace je možné vytvořit vlastní image virtuálního počítače s požadovanými vykreslovacími aplikacemi a moduly plug-in. Vlastní image virtuálního počítače se umístí do [Galerie sdílených imagí](../virtual-machines/shared-image-galleries.md) a [dá se použít k vytvoření fondů Batch](batch-sig-images.md).
+
+Řetězce příkazového řádku úlohy budou muset odkazovat na aplikace a cesty použité při vytváření vlastní image virtuálního počítače.
+
+Většina aplikací pro vykreslování bude vyžadovat licence získané z licenčního serveru. Pokud existuje stávající místní licenční server, musí být fond i licenční server ve stejné [virtuální síti](../virtual-network/virtual-networks-overview.md). Je také možné spustit licenční server na virtuálním počítači Azure s fondem služby Batch a virtuálním počítačem licenčního serveru, který se nachází ve stejné virtuální síti.
+
+## <a name="batch-pools-using-rendering-vm-images"></a>Fondy dávek využívající vykreslování imagí virtuálních počítačů
 
 ### <a name="rendering-application-installation"></a>Vykreslování instalace aplikace
 
@@ -71,13 +79,13 @@ Příkazový řádek Arnold 2017|kick.exe|ARNOLD_2017_EXEC|
 |Příkazový řádek Arnold 2018|kick.exe|ARNOLD_2018_EXEC|
 |Blenderu|blender.exe|BLENDER_2018_EXEC|
 
-### <a name="azure-vm-families"></a>Rodiny virtuálních počítačů Azure
+## <a name="azure-vm-families"></a>Rodiny virtuálních počítačů Azure
 
 Stejně jako u jiných úloh se různé požadavky na vykreslování a požadavky na výkon pro úlohy a projekty liší.  V Azure je k dispozici velké množství rodin virtuálních počítačů v závislosti na vašich požadavcích – nejnižší náklady, Nejlepší cena/výkon, nejlepší výkon a tak dále.
 Některé aplikace pro vykreslování, jako je například Arnold, jsou založené na procesoru. ostatní, například cykly V-Ray a V Blendu, můžou používat procesory nebo GPU.
 Popis dostupných rodin virtuálních počítačů a velikostí virtuálních počítačů [najdete v tématu typy a velikosti virtuálních](../virtual-machines/sizes.md)počítačů.
 
-### <a name="low-priority-vms"></a>Virtuální počítače s nízkou prioritou
+## <a name="low-priority-vms"></a>Virtuální počítače s nízkou prioritou
 
 Stejně jako u jiných úloh je možné virtuální počítače s nízkou prioritou využít ve fondech služby Batch pro vykreslování.  Virtuální počítače s nízkou prioritou fungují stejně jako běžné vyhrazené virtuální počítače, ale využívají nadbytečné kapacity Azure a jsou dostupné pro velkou slevu.  Kompromisy pro použití virtuálních počítačů s nízkou prioritou je, že tyto virtuální počítače nemusí být k dispozici, aby je bylo možné přidělit nebo kdykoli zrušit v závislosti na dostupné kapacitě. Z tohoto důvodu nebudou virtuální počítače s nízkou prioritou vhodné pro všechny úlohy vykreslování. Pokud například obrázky přestanou trvat mnoho hodin, je pravděpodobný, že se vykreslování těchto imagí přerušilo a restartuje kvůli tomu, že virtuální počítače nejsou v důsledku přerušení přijatelné.
 

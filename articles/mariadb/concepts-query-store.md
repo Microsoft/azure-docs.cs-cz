@@ -5,13 +5,13 @@ author: savjani
 ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: bca995f8b2cea33266e032b543abb18ee7140f3f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.date: 01/15/2021
+ms.openlocfilehash: 164285b1fea3dce18161066e643aa165e47cc496
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541177"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233982"
 ---
 # <a name="monitor-azure-database-for-mariadb-performance-with-query-store"></a>Monitorování výkonu Azure Database for MariaDB s využitím úložiště dotazů
 
@@ -21,7 +21,7 @@ Funkce úložiště dotazů v Azure Database for MariaDB poskytuje způsob, jak 
 
 ## <a name="common-scenarios-for-using-query-store"></a>Běžné scénáře použití úložiště dotazů
 
-Úložiště dotazů je možné použít v několika scénářích, včetně následujících:
+Úložiště dotazů se dá použít v mnoha scénářích, včetně následujících:
 
 - Zjišťování vrácených dotazů
 - Určení počtu spuštění dotazu v daném časovém intervalu
@@ -34,14 +34,14 @@ Funkce úložiště dotazů v Azure Database for MariaDB poskytuje způsob, jak 
 ### <a name="enable-query-store-using-the-azure-portal"></a>Povolit úložiště dotazů pomocí Azure Portal
 
 1. Přihlaste se k Azure Portal a vyberte Azure Database for MariaDB Server.
-1. V části **Nastavení** v nabídce vyberte **parametry serveru** .
-1. Vyhledejte parametr query_store_capture_mode.
-1. Nastavte hodnotu vše a **uložte**.
+2. V části **Nastavení** v nabídce vyberte **parametry serveru** .
+3. Vyhledejte parametr query_store_capture_mode.
+4. Nastavte hodnotu vše a **uložte**.
 
 Postup při povolování statistik čekání v úložišti dotazů:
 
 1. Vyhledejte parametr query_store_wait_sampling_capture_mode.
-1. Nastavte hodnotu vše a **uložte**.
+2. Nastavte hodnotu vše a **uložte**.
 
 Umožňuje trvat až 20 minut, než se první dávka dat uloží v databázi MySQL.
 
@@ -108,7 +108,7 @@ Použijte [Azure Portal](howto-server-parameters.md) k získání nebo nastaven�
 
 ## <a name="views-and-functions"></a>Zobrazení a funkce
 
-Umožňuje zobrazit a spravovat úložiště dotazů pomocí následujících zobrazení a funkcí. Kdokoli z [veřejné role vybrat oprávnění](howto-create-users.md#create-additional-admin-users) může tato zobrazení použít k zobrazení dat v úložišti dotazů. Tato zobrazení jsou k dispozici pouze v databázi **MySQL** .
+Umožňuje zobrazit a spravovat úložiště dotazů pomocí následujících zobrazení a funkcí. Kdokoli z [veřejné role vybrat oprávnění](howto-create-users.md#create-more-admin-users) může tato zobrazení použít k zobrazení dat v úložišti dotazů. Tato zobrazení jsou k dispozici pouze v databázi **MySQL** .
 
 Dotazy jsou normalizovány tím, že si po odebrání literálů a konstant vyhledají jejich strukturu. Pokud jsou dva dotazy stejné s výjimkou hodnot literálů, budou mít stejnou hodnotu hash.
 
@@ -139,7 +139,7 @@ Toto zobrazení vrátí všechna data v úložišti dotazů. Pro každé jedine�
 | `sum_select_scan` | bigint (20)| NO| Počet kontrol vybraných pro výběr |
 | `sum_sort_rows` | bigint (20)| NO| Počet seřazených řádků|
 | `sum_no_index_used` | bigint (20)| NO| Počet pokusů, kolikrát dotaz nepoužil žádné indexy|
-| `sum_no_good_index_used` | bigint (20)| NO| Počet pokusů, kolikrát prováděcí modul dotazu nepoužil žádné dobré indexy|
+| `sum_no_good_index_used` | bigint (20)| NO| Počet pokusů, kolikrát modul provádění dotazů nepoužil žádné dobré indexy|
 | `sum_created_tmp_tables` | bigint (20)| NO| Celkový počet vytvořených dočasných tabulek|
 | `sum_created_tmp_disk_tables` | bigint (20)| NO| Celkový počet dočasných tabulek vytvořených na disku (generuje se I/O)|
 | `first_seen` | časové razítko| NO| První výskyt dotazu (UTC) během okna agregace|

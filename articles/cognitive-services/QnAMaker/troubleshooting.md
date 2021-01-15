@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: troubleshooting
 ms.date: 11/09/2020
-ms.openlocfilehash: e8b1d985fcb2852df52382e005ec0f0266e23d9d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: aea205bee41aed232b8453417dca521d2dfc83ab
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96345640"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233776"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>Řešení potíží pro QnA Maker
 
@@ -323,6 +323,29 @@ Pokud máte obsah z více jazyků, nezapomeňte vytvořit samostatnou službu pr
 
 1. Spusťte službu App Service.
 1. Přístup k vaší znalostní bázi vám umožní ověřit, jestli je teď funguje.
+
+</details>
+<details>
+<summary><b>Proč můj Application Insights nefunguje?</b></summary>
+
+**Odpověď**: Projděte si výše uvedené kroky a opravte problém:
+
+1. V části App Service-> nastavení – > konfiguračního oddílu > nastavení aplikace-> Name-se správně nakonfigurují a nastavují na příslušnou kartu Přehled Application Insights ("klíč instrumentace") GUID. 
+
+1. V části App Service-> nastavení – > oddílu "Application Insights" – > Ujistěte se, že je App Insights povolený a připojený ke příslušnému prostředku Application Insights.
+
+</details>
+
+<details>
+<summary><b>Můj Application Insights je povolený, ale proč nefunguje správně?</b></summary>
+
+**Odpověď**: postupujte prosím podle níže uvedených kroků: 
+
+1.  Pokud zde existuje nějaká hodnota, zkopírujte hodnotu APPINSIGHTS_INSTRUMENTATIONKEY název do názvu ' UserAppInsightsKey '. 
+
+1.  Pokud klíč "UserAppInsightsKey" v nastavení aplikace neexistuje, přidejte prosím nový klíč s tímto názvem a zkopírujte hodnotu.
+
+1.  Uložte ho a automaticky se restartuje App Service. Tato chyba by měla tento problém vyřešit. 
 
 </details>
 

@@ -10,12 +10,12 @@ author: ramakoni1
 ms.author: ramakoni
 ms.reviewer: sstein,vanto
 ms.date: 01/14/2021
-ms.openlocfilehash: 7c797c7e002f40a28e4be674c125c6ea5d60a13f
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: ec61f2c67576d6e144d8d4bb7e8ecaaa157db0a9
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219058"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233368"
 ---
 # <a name="troubleshooting-connectivity-issues-and-other-errors-with-azure-sql-database-and-azure-sql-managed-instance"></a>Řešení potíží s připojením a dalších chyb pomocí Azure SQL Database a spravované instance Azure SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -42,7 +42,7 @@ Když ve službě SQL Database dojde k vysokému zatížení, infrastruktura Azu
 ### <a name="steps-to-resolve-transient-connectivity-issues"></a>Postup řešení potíží s přechodným připojením
 
 1. Podívejte se na [řídicí panel služby Microsoft Azure](https://azure.microsoft.com/status) pro všechny známé výpadky, ke kterým došlo v době, během které aplikace ohlásila chyby.
-2. Aplikace, které se připojují ke cloudové službě, jako je třeba Azure SQL Database, by měly očekávat události pravidelného překonfigurování a implementují logiku opakování pro zpracování těchto chyb, místo aby je zpřístupnění jako chyby aplikací pro uživatele.
+2. Aplikace, které se připojují ke cloudové službě, jako je třeba Azure SQL Database, by měly očekávat události pravidelného překonfigurování a implementují logiku opakování pro zpracování těchto chyb namísto chyb aplikací zpřístupnění uživatelům.
 3. Vzhledem k tomu, že se databáze blíží omezení prostředků, může se jednat o přechodný problém s připojením. Viz [omezení prostředků](resource-limits-logical-server.md#what-happens-when-database-resource-limits-are-reached).
 4. Pokud potíže s připojením trvají nebo pokud doba, po kterou vaše aplikace narazí na chybu, překračuje 60 sekund, nebo pokud se v daném dni zobrazí více výskytů chyby, zastavte žádost o podporu Azure výběrem možnosti **získat podporu** na webu [podpory Azure](https://azure.microsoft.com/support/options) .
 
@@ -104,49 +104,46 @@ Pokud chcete tento problém vyřešit, požádejte správce služby, aby vám po
 Správce služby obvykle může pomocí následujících kroků přidat přihlašovací údaje pro přihlášení:
 
 1. Přihlaste se k serveru pomocí SQL Server Management Studio (SSMS).
-2. Spusťte následující dotaz SQL ke kontrole, jestli je přihlašovací jméno zakázané:
+2. Spusťte následující dotaz SQL v hlavní databázi, abyste zkontrolovali, jestli je přihlašovací jméno zakázané:
 
    ```sql
-   SELECT name, is_disabled FROM sys.sql_logins
+   SELECT name, is_disabled FROM sys.sql_logins;
    ```
 
 3. Pokud odpovídající jméno je zakázané, povolte ho pomocí následujícího příkazu:
 
    ```sql
-   Alter login <User name> enable
+   ALTER LOGIN <User name> ENABLE;
    ```
 
-4. Pokud uživatelské jméno přihlášení SQL neexistuje, vytvořte ho pomocí následujících kroků:
-
-   1. V SSMS dvakrát klikněte na **zabezpečení** a rozbalte ho.
-   2. Klikněte pravým tlačítkem na **přihlašovací údaje** a potom vyberte **nové přihlášení**.
-   3. Ve vygenerovaném skriptu pomocí zástupných symbolů upravte a spusťte následující dotaz SQL:
+4. Pokud uživatelské jméno přihlášení SQL neexistuje, upravte a spusťte následující dotaz SQL pro vytvoření nového přihlášení SQL:
 
    ```sql
    CREATE LOGIN <SQL_login_name, sysname, login_name>
-   WITH PASSWORD = '<password, sysname, Change_Password>'
+   WITH PASSWORD = '<password, sysname, Change_Password>';
    GO
    ```
 
-5. Dvakrát klikněte na **databáze**.
+5. V Průzkumník objektů SSMS rozbalte položku **databáze**.
 6. Vyberte databázi, ke které chcete udělit oprávnění uživatele.
-7. Dvakrát klikněte na **zabezpečení**.
-8. Klikněte pravým tlačítkem na **Uživatelé** a pak vyberte **Nový uživatel**.
-9. Ve vygenerovaném skriptu pomocí zástupných symbolů upravte a spusťte následující dotaz SQL:
+7. Klikněte pravým tlačítkem na **zabezpečení** a pak vyberte **Nový**, **uživatel**.
+8. Ve vygenerovaném skriptu pomocí zástupných symbolů upravte a spusťte následující dotaz SQL:
 
    ```sql
    CREATE USER <user_name, sysname, user_name>
    FOR LOGIN <login_name, sysname, login_name>
-   WITH DEFAULT_SCHEMA = <default_schema, sysname, dbo>
+   WITH DEFAULT_SCHEMA = <default_schema, sysname, dbo>;
    GO
-   -- Add user to the database owner role
 
-   EXEC sp_addrolemember N'db_owner', N'<user_name, sysname, user_name>'
+   -- Add user to the database owner role
+   EXEC sp_addrolemember N'db_owner', N'<user_name, sysname, user_name>';
    GO
    ```
 
+   `sp_addrolemember`K mapování konkrétních uživatelů na konkrétní databázové role můžete také použít.
+
    > [!NOTE]
-   > `sp_addrolemember`K mapování konkrétních uživatelů na konkrétní databázové role můžete také použít.
+   > V Azure SQL Database zvažte novější syntaxi [ALTER role](/sql/t-sql/statements/alter-role-transact-sql) pro správu členství v databázové roli.  
 
 Další informace najdete v tématu [Správa databází a přihlášení v Azure SQL Database](./logins-create-manage.md).
 
@@ -183,7 +180,7 @@ Pokud chcete tento problém obejít, zkuste jednu z následujících metod:
 - Ověřte, zda existují dlouho běžící dotazy.
 
   > [!NOTE]
-  > Jedná se o minimalist přístup, který nemusí problém vyřešit. Podrobné informace o řešení potíží s blokováním dotazů najdete v tématu [pochopení a řešení problémů s blokováním Azure SQL](understand-resolve-blocking.md).
+  > Jedná se o minimalist přístup, který nemusí problém vyřešit. Podrobnější informace o řešení potíží s dlouhým spuštěním nebo blokováním dotazů najdete v tématu [pochopení a vyřešení problémů s blokováním Azure SQL Database](understand-resolve-blocking.md).
 
 1. Spusťte následující dotaz SQL, který zkontroluje [Sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) zobrazení a zobrazí všechny blokující požadavky:
 
@@ -191,12 +188,15 @@ Pokud chcete tento problém obejít, zkuste jednu z následujících metod:
    SELECT * FROM sys.dm_exec_requests;
    ```
 
-2. Určete **vstupní vyrovnávací paměť** pro blokování Headers.
-3. Nalaďte dotaz na blokování hlav.
+1. Určete **vstupní vyrovnávací paměť** pro blokování hlav pomocí funkce [Sys.dm_exec_input_buffer](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-input-buffer-transact-sql) Dynamic Management a session_id problematického dotazu, například:
 
-   Podrobný postup pro řešení potíží najdete v tématu [je můj dotaz běží v cloudu dobře?](/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud). 
+   ```sql 
+   SELECT * FROM sys.dm_exec_input_buffer (100,0);
+   ```
 
-Pokud databáze konzistentně dosáhne svého limitu bez ohledu na blokující a dlouhotrvající dotazy, zvažte upgrade na edici s více zdroji [verzí](https://azure.microsoft.com/pricing/details/sql-database/).
+1. Nalaďte dotaz na blokování hlav.
+
+Pokud databáze konzistentně dosáhne svého limitu bez ohledu na blokující a dlouhotrvající dotazy, zvažte upgrade [na edici s více zdroji.](https://azure.microsoft.com/pricing/details/sql-database/)
 
 Další informace o omezeních databáze najdete v tématu  [SQL Database omezení prostředků pro servery](./resource-limits-logical-server.md).
 
@@ -254,12 +254,18 @@ Při opakovaném výskytu této chyby zkuste problém vyřešit pomocí následu
    SELECT * FROM sys.dm_exec_requests;
    ```
 
-2. Určete vstupní vyrovnávací paměť pro dlouho běžící dotaz.
+2. Určete **vstupní vyrovnávací paměť** pro blokování hlav pomocí funkce [Sys.dm_exec_input_buffer](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-input-buffer-transact-sql) Dynamic Management a session_id problematického dotazu, například:
+
+   ```sql 
+   SELECT * FROM sys.dm_exec_input_buffer (100,0);
+   ```
+
 3. Nalaďte dotaz.
 
-Zvažte také dávkování dotazů. Informace o dávkovém zpracování najdete v tématu [použití dávkového zpracování ke zlepšení výkonu aplikace SQL Database](../performance-improve-use-batching.md).
+    > [!Note]
+    > Další informace o řešení potíží s blokováním v Azure SQL Database najdete v tématu [pochopení a vyřešení Azure SQL Database blokující problémy](understand-resolve-blocking.md).
 
-Podrobný postup pro řešení potíží najdete v tématu [je můj dotaz běží v cloudu dobře?](/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud).
+Zvažte také dávkování dotazů. Informace o dávkovém zpracování najdete v tématu [použití dávkového zpracování ke zlepšení výkonu aplikace SQL Database](../performance-improve-use-batching.md).
 
 ### <a name="error-40551-the-session-has-been-terminated-because-of-excessive-tempdb-usage"></a>Chyba 40551: relace byla ukončena z důvodu nadměrného využití databáze TEMPDB
 
@@ -297,7 +303,7 @@ Podrobný postup pro řešení potíží najdete v tématu [je můj dotaz běž�
 | Kód chyby | Závažnost | Popis |
 | ---:| ---:|:--- |
 | 10928 |20 |ID prostředku:% d. Limit% s pro databázi je% d a byl dosažen. Další informace najdete v tématu [SQL Database omezení prostředků pro databáze s jednou a ve fondu](resource-limits-logical-server.md).<br/><br/>ID prostředku indikuje prostředek, který dosáhl limitu. Pro pracovní vlákna, ID prostředku = 1. Pro relace, ID prostředku = 2.<br/><br/>Další informace o této chybě a o tom, jak ji vyřešit, najdete v těchto tématech: <br/>&bull;&nbsp; [Omezení prostředků logického SQL serveru](resource-limits-logical-server.md)<br/>&bull;&nbsp; [Omezení založené na DTU pro izolované databáze](service-tiers-dtu.md)<br/>&bull;&nbsp; [Omezení pro elastické fondy založené na DTU](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [limity založené na Vcore pro jednotlivé databáze](resource-limits-vcore-single-databases.md)<br/>&bull;&nbsp; [omezení pro elastické fondy založené na Vcore](resource-limits-vcore-elastic-pools.md)<br/>&bull;&nbsp; [Omezení prostředků spravované instance Azure SQL](../managed-instance/resource-limits.md) |
-| 10929 |20 |ID prostředku:% d. Minimální záruka% s je% d, maximální limit je% d a aktuální využití databáze je% d. Server je však v současnosti příliš zaneprázdněn, aby podporoval žádosti větší než% d pro tuto databázi. ID prostředku indikuje prostředek, který dosáhl limitu. Pro pracovní vlákna, ID prostředku = 1. Pro relace, ID prostředku = 2. Další informace najdete tady: <br/>&bull;&nbsp; [Omezení prostředků logického SQL serveru](resource-limits-logical-server.md)<br/>&bull;&nbsp; [Omezení založené na DTU pro izolované databáze](service-tiers-dtu.md)<br/>&bull;&nbsp; [Omezení pro elastické fondy založené na DTU](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [limity založené na Vcore pro jednotlivé databáze](resource-limits-vcore-single-databases.md)<br/>&bull;&nbsp; [omezení pro elastické fondy založené na Vcore](resource-limits-vcore-elastic-pools.md)<br/>&bull;&nbsp; [Omezení prostředků spravované instance Azure SQL](../managed-instance/resource-limits.md) <br/>V opačném případě zkuste to prosím znovu později. |
+| 10929 |20 |ID prostředku:% d. Minimální záruka% s je% d, maximální limit je% d a aktuální využití databáze je% d. Server je však v současnosti příliš zaneprázdněn, aby podporoval žádosti větší než% d pro tuto databázi. ID prostředku indikuje prostředek, který dosáhl limitu. Pro pracovní vlákna, ID prostředku = 1. Pro relace, ID prostředku = 2. Další informace najdete tady: <br/>&bull;&nbsp; [Omezení prostředků logického SQL serveru](resource-limits-logical-server.md)<br/>&bull;&nbsp; [Omezení založené na DTU pro izolované databáze](service-tiers-dtu.md)<br/>&bull;&nbsp; [Omezení pro elastické fondy založené na DTU](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [limity založené na Vcore pro jednotlivé databáze](resource-limits-vcore-single-databases.md)<br/>&bull;&nbsp; [omezení pro elastické fondy založené na Vcore](resource-limits-vcore-elastic-pools.md)<br/>&bull;&nbsp; [Omezení prostředků spravované instance Azure SQL](../managed-instance/resource-limits.md) <br/>V opačném případě zkuste to znovu později. |
 | 40544 |20 |Databáze dosáhla kvóty velikosti. Můžete rozdělit nebo odstranit data, vyřadit indexy nebo si v dokumentaci vyhledat možná řešení. Informace o škálování databáze najdete v tématu [škálování prostředků jedné databáze](single-database-scale.md) a [škálování prostředků elastického fondu](elastic-pool-scale.md).|
 | 40549 |16 |Relace je ukončena, protože máte dlouhotrvající transakci. Zkuste zkrátit transakci. Informace o dávkovém zpracování najdete v tématu [použití dávkového zpracování ke zlepšení výkonu aplikace SQL Database](../performance-improve-use-batching.md).|
 | 40550 |16 |Relace byla ukončena, protože získala příliš mnoho zámků. Zkuste číst nebo upravit méně řádků v jedné transakci. Informace o dávkovém zpracování najdete v tématu [použití dávkového zpracování ke zlepšení výkonu aplikace SQL Database](../performance-improve-use-batching.md).|
@@ -311,9 +317,9 @@ Následující chyby souvisejí s vytvářením a používáním elastických fo
 
 | Kód chyby | Závažnost | Popis | Nápravná opatření |
 |:--- |:--- |:--- |:--- |
-| 1132 | 17 |Elastický fond dosáhl svého limitu úložiště. Využití úložiště pro elastický fond nemůže přesáhnout (% d) MB. Došlo k pokusu o zápis dat do databáze, když bylo dosaženo limitu úložiště elastického fondu. Informace o omezeních prostředků najdete v těchto tématech: <br/>&bull;&nbsp; [Omezení pro elastické fondy založené na DTU](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [omezení pro elastické fondy založené na Vcore](resource-limits-vcore-elastic-pools.md) <br/> |Pokud je to možné, zvažte zvýšení DTU a/nebo Přidání úložiště do elastického fondu, pokud je to možné, abyste zvýšili jeho limit úložiště, omezili jste úložiště používané jednotlivými databázemi v elastickém fondu nebo z elastického fondu odebíráte databáze. Škálování elastického fondu najdete v tématu [škálování prostředků elastického fondu](elastic-pool-scale.md).|
-| 10929 | 16 |Minimální záruka% s je% d, maximální limit je% d a aktuální využití databáze je% d. Server je však v současnosti příliš zaneprázdněn, aby podporoval žádosti větší než% d pro tuto databázi. Informace o omezeních prostředků najdete v těchto tématech: <br/>&bull;&nbsp; [Omezení pro elastické fondy založené na DTU](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [omezení pro elastické fondy založené na Vcore](resource-limits-vcore-elastic-pools.md) <br/> V opačném případě zkuste to prosím znovu později. Minimální počet jednotek DTU/vCore na databázi; DTU/vCore Max na databázi. Celkový počet souběžných pracovních procesů (požadavků) napříč všemi databázemi v elastickém fondu se pokusil překročit limit fondu. |Pokud je to možné, můžete zvýšit DTU nebo virtuální jádra elastického fondu, pokud je to možné, aby se zvýšil jeho limit pracovního procesu, nebo odebrat databáze z elastického fondu. |
-| 40844 | 16 |Databáze% ls na serveru% LS je databáze edice% LS v elastickém fondu a nemůže mít relaci průběžného kopírování.  |Není k dispozici |
+| 1132 | 17 |Elastický fond dosáhl svého limitu úložiště. Využití úložiště pro elastický fond nemůže přesáhnout (% d) MB. Došlo k pokusu o zápis dat do databáze, když bylo dosaženo limitu úložiště elastického fondu. Informace o omezeních prostředků najdete v těchto tématech: <br/>&bull;&nbsp; [Omezení pro elastické fondy založené na DTU](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [omezení pro elastické fondy založené na Vcore](resource-limits-vcore-elastic-pools.md) <br/> |Pokud je to možné, zvažte zvýšení DTU a/nebo Přidání úložiště do elastického fondu, pokud je to možné, abyste zvýšili jeho limit úložiště, omezili jste úložiště používané jednotlivými databázemi v elastickém fondu nebo z elastického fondu odebíráte databáze. Škálování elastického fondu najdete v tématu [škálování prostředků elastického fondu](elastic-pool-scale.md). Další informace o odebrání nevyužitého místa z databáze najdete v tématu [Správa prostoru souborů pro databáze v Azure SQL Database](file-space-manage.md).|
+| 10929 | 16 |Minimální záruka% s je% d, maximální limit je% d a aktuální využití databáze je% d. Server je však v současnosti příliš zaneprázdněn, aby podporoval žádosti větší než% d pro tuto databázi. Informace o omezeních prostředků najdete v těchto tématech: <br/>&bull;&nbsp; [Omezení pro elastické fondy založené na DTU](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [omezení pro elastické fondy založené na Vcore](resource-limits-vcore-elastic-pools.md) <br/> V opačném případě zkuste to znovu později. Minimální počet jednotek DTU/vCore na databázi; DTU/vCore Max na databázi. Celkový počet souběžných pracovních procesů (požadavků) napříč všemi databázemi v elastickém fondu se pokusil překročit limit fondu. |Pokud je to možné, můžete zvýšit DTU nebo virtuální jádra elastického fondu, pokud je to možné, aby se zvýšil jeho limit pracovního procesu, nebo odebrat databáze z elastického fondu. |
+| 40844 | 16 |Databáze% ls na serveru% LS je databáze edice% LS v elastickém fondu a nemůže mít relaci průběžného kopírování.  |– |
 | 40857 | 16 |Nenašel se elastický fond pro server:% ls, název elastického fondu:% ls. Zadaný elastický fond na zadaném serveru neexistuje. | Zadejte platný název elastického fondu. |
 | 40858 | 16 |Elastický fond% LS už na serveru:% LS existuje. Zadaný elastický fond již na určeném serveru existuje. | Zadejte nový název elastického fondu. |
 | 40859 | 16 |Elastický fond nepodporuje úroveň služby% ls. Zadaná úroveň služby není podporovaná pro zřizování elastického fondu. |Zadejte správnou edici nebo ponechte prázdnou vrstvu služby, aby používala výchozí úroveň služby. |

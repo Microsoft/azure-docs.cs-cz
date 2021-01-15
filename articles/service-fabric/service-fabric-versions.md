@@ -3,12 +3,12 @@ title: Podporované verze clusteru v Azure Service Fabric
 description: Přečtěte si o verzích clusterů v Azure Service Fabric, včetně odkazu na nejnovější verze z blogu týmu Service Fabric.
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: abf9900e9749a1b21d927e0315076b38848bea10
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: c2ea2b53649cf148a19df46835c8936345aa20e5
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132643"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234337"
 ---
 # <a name="supported-service-fabric-versions"></a>Podporované verze Service Fabric
 
@@ -37,18 +37,18 @@ Vyžádáme a doporučujeme, abyste provedli kroky k upgradu na nejnovější po
 Upgradujte na Service Fabric podporované verze níže, aby nedocházelo k výpadkům nebo ztrátě funkčnosti souvisejících s touto změnou. Zajistěte, aby byly v clusterech spuštěné alespoň tyto verze, aby nedocházelo k problémům ve vašem prostředí.
 
   ###### <a name="supported-service-fabric-runtime-versions"></a>Podporované verze modulu runtime Service Fabric
-   Pokud v níže uvedeném seznamu nejsou uvedené podporované verze Service Fabric, upgradujte prosím na jednu z těchto verzí, která už obsahuje potřebné změny, abyste zabránili výpadkům v clusteru.  
+   Pokud v níže uvedeném seznamu nejsou uvedené podporované verze Service Fabric, upgradujte prosím na jednu z těchto verzí, která už obsahuje potřebné změny, abyste zabránili výpadkům v clusteru. **Poznámka:** Všechny verze 7,2 obsahují nezbytné změny.
   
   | Operační systém | Aktuální Service Fabric modul runtime v clusteru | Verze CU/patch  | 
   | --- | --- |--- | 
   | Windows | 7,0. * | 7.0.478.9590 |
   | Windows | 7,1. * | 7.1.503.9590 |
-  | Windows | 7,2. * | 7.2.445.9590 |
+  | Windows | 7,2. * | 7,2. * |
   | Ubuntu 16 | 7,0. * | 7.0.472.1  |
   | Linux Ubuntu 16,04 | 7,1. * | 7.1.455.1  |
   | Linux Ubuntu 18,04 | 7,1. * | 7.1.455.1804 |
-  | Linux Ubuntu 16,04 | 7,2. * | 7.2.447.1 |
-  | Linux Ubuntu 18,04 | 7,2. * | 7.2.447.1804 |
+  | Linux Ubuntu 16,04 | 7,2. * | 7,2. * |
+  | Linux Ubuntu 18,04 | 7,2. * | 7,2. * |
  
 ### <a name="upgrade-alert-for-versions-greater-than-63"></a>Výstraha upgradu pro verze větší než 6,3 
 Pro zlepšení zabezpečení a dostupnosti infrastruktura Azure provede změnu, která může ovlivnit Service Fabric zákazníky. **Všechny Service Fabric clustery, které používají [funkci Open Networking pro kontejnery](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode), běží na nepodporovaných verzích, které jsou větší než 6,3 a nižší než 7,0 a nekompatibilní podporované verze z 7,0 a vyšší jsou ovlivněny**. Zadání adresování změny vyžaduje aktualizaci Service Fabric runtime, která je již k dispozici pro všechny podporované verze Service Fabric ve všech oblastech.
@@ -58,24 +58,24 @@ Pro zlepšení zabezpečení a dostupnosti infrastruktura Azure provede změnu, 
  
   - V **případě clusterů, ve kterých je spuštěná verze Service Fabric větší než 6,3, nepoužívají funkci otevřené sítě**, zůstane cluster funkční, ale funkce otevřít sítě pro clustery kontejnerů přestane fungovat, což by mohlo způsobit přerušení služeb pro vaše úlohy.
 
- - Clustery s **verzí Service Fabric větší než 6,3 a využívají [funkci otevřené sítě pro kontejnery](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode)** , cluster zůstane v provozu, ale přestane fungovat, což by mohlo způsobit přerušení služeb pro vaše úlohy.
+ - **U clusterů, na kterých běží verze Service Fabric větší než 6,3 a využívají [funkci Open Networking pro kontejnery](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode)** , by cluster mohl být nedostupný a přestane fungovat, což by mohlo způsobit přerušení služeb pro vaše úlohy.
   
 #### <a name="required-action"></a>Požadovaná akce
 Upgradujte na Service Fabric podporované verze níže, aby nedocházelo k výpadkům nebo ztrátě funkčnosti souvisejících s touto změnou. Zajistěte, aby byly v clusterech spuštěné alespoň tyto verze, aby nedocházelo k problémům ve vašem prostředí. 
  
  ###### <a name="supported-service-fabric-runtime-versions"></a>Podporované verze modulu runtime Service Fabric
- Pokud v níže uvedeném seznamu nejsou uvedené podporované verze Service Fabric, upgradujte prosím na jednu z těchto verzí, která už obsahuje potřebné změny, aby se zabránilo ztrátě funkčnosti.  
+ Pokud v níže uvedeném seznamu nejsou uvedené podporované verze Service Fabric, upgradujte prosím na jednu z těchto verzí, která už obsahuje potřebné změny, aby se zabránilo ztrátě funkčnosti.  **Poznámka:** Všechny verze 7,2 obsahují nezbytné změny.
  
   | Operační systém | Aktuální Service Fabric modul runtime v clusteru | Verze CU/patch  | 
   | --- | --- |--- | 
   | Windows | 7,0. * | 7.0.478.9590 |
   | Windows | 7,1. * | 7.1.503.9590 |
-  | Windows | 7,2. * | 7.2.445.9590 |
+  | Windows | 7,2. * | 7,2. * |
   | Linux Ubuntu 16,04 | 7,0. * | 7.0.472.1  |
   | Linux Ubuntu 16,04 | 7,1. * | 7.1.455.1  |
   | Linux Ubuntu 18,04 | 7,1. * | 7.1.455.1804 |
-  | Linux Ubuntu 16,04 | 7,2. * | 7.2.447.1 |
-  | Linux Ubuntu 18,04 | 7,2. * | 7.2.447.1804 |
+  | Linux Ubuntu 16,04 | 7,2. * | 7,2. * |
+  | Linux Ubuntu 18,04 | 7,2. * | 7,2. * |
 
 ## <a name="supported-versions"></a>Podporované verze
 V následující tabulce jsou uvedeny verze Service Fabric a jejich koncová data podpory.

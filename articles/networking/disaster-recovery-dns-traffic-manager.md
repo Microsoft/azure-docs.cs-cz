@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/08/2018
 ms.author: kumud
-ms.openlocfilehash: 6eab1803bf5adab42be87b5f8567682c6d75947e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8cb1a490ac8edf2630253b45d99c3394bbe721b8
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74483530"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234150"
 ---
 # <a name="disaster-recovery-using-azure-dns-and-traffic-manager"></a>Zotavení po havárii s využitím Azure DNS a Traffic Manageru
 
@@ -45,7 +45,7 @@ Většina podnikových zákazníků vybírá architekturu s více oblastmi pro o
     
     *Obrázek: aktivní/pasivní s konfigurací záložního pohotovostního režimu zotavení po havárii*
     
-Další informace o převzetí služeb při selhání a vysoké dostupnosti najdete v tématu [zotavení po havárii pro aplikace Azure](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications).
+Další informace o převzetí služeb při selhání a vysoké dostupnosti najdete v tématu [zotavení po havárii pro aplikace Azure](/azure/architecture/resiliency/disaster-recovery-azure-applications).
 
 
 ## <a name="planning-your-disaster-recovery-architecture"></a>Plánování architektury zotavení po havárii
@@ -54,7 +54,7 @@ Existují dvě technické aspekty při nastavení architektury zotavení po hav�
 -  Použití mechanismu nasazení k replikaci instancí, dat a konfigurací mezi primárními a pohotovostními prostředími. Tento typ zotavení po havárii se dá nativně provést prostřednictvím Azure Site-Recovery přes Microsoft Azure partnerská zařízení/služby, jako je Veritas nebo NetApp. 
 - Vývoj řešení pro přesměrování síťového nebo webového provozu z primární lokality do pohotovostní lokality. Tento typ zotavení po havárii můžete dosáhnout prostřednictvím Azure DNS, Azure Traffic Manager (DNS) nebo globálních nástrojů pro vyrovnávání zatížení třetích stran.
 
-Tento článek se týká pouze přístupů přes přesměrování sítě a webového provozu. Pokyny k nastavení Azure Site Recovery najdete v dokumentaci k [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/).
+Tento článek se týká pouze přístupů přes přesměrování sítě a webového provozu. Pokyny k nastavení Azure Site Recovery najdete v dokumentaci k [Azure Site Recovery](../site-recovery/index.yml).
 DNS je jedním z nejúčinnějších mechanismů pro směrování síťového provozu, protože služba DNS je často globální a externě připojená k datovému centru a je izolovaná od selhání na úrovni regionu nebo oblasti dostupnosti (AZ). Jedním z nich může být mechanismus převzetí služeb při selhání založený na DNS a v Azure, takže dvě služby DNS můžou být stejné v některém Azure DNS (autoritativní DNS) a Azure Traffic Manager (směrování inteligentních přenosů na základě DNS). 
 
 Je důležité pochopit několik konceptů služby DNS, které jsou široce používány pro diskuzi o řešeních, která jsou uvedená v tomto článku:
@@ -170,12 +170,3 @@ Během havárie se primární koncový bod vyhledá a stav se změní na **Degra
 ## <a name="next-steps"></a>Další kroky
 - Přečtěte si další informace o [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md).
 - Přečtěte si další informace o [Azure DNS](../dns/dns-overview.md).
-
-
-
-
-
-
-
-
-

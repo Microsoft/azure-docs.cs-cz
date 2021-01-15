@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 118bdcb6929abfc162ff05e91f1621f087b6c50c
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: ae0bc6ea35d5c6e3ebe0cd7f232e5c8b1e637d9d
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186724"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234048"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms"></a>Dotazování protokolů z Azure Monitor pro virtuální počítače
 
@@ -92,7 +92,7 @@ Tady jsou některé důležité body, které je potřeba vzít v úvahu:
 
 #### <a name="naming-and-classification"></a>Pojmenovávání a klasifikace
 
-Pro usnadnění práce se do vlastnosti RemoteIp zahrne IP adresa vzdáleného konce připojení. U příchozích připojení je RemoteIp stejná jako SourceIp, zatímco u odchozích připojení je stejná jako DestinationIp. Vlastnost RemoteDnsCanonicalNames představuje kanonické názvy DNS hlášené počítačem pro RemoteIp. Vlastnosti RemoteDnsQuestions a RemoteClassification jsou vyhrazené pro budoucí použití. 
+Pro usnadnění práce se do vlastnosti RemoteIp zahrne IP adresa vzdáleného konce připojení. U příchozích připojení je RemoteIp stejná jako SourceIp, zatímco u odchozích připojení je stejná jako DestinationIp. Vlastnost RemoteDnsCanonicalNames představuje kanonické názvy DNS hlášené počítačem pro RemoteIp. Vlastnost RemoteDnsQuestions reprezentuje otázky DNS hlášené počítačem pro RemoteIp. Vlastnost RemoveClassification je vyhrazena pro budoucí použití. 
 
 #### <a name="geolocation"></a>Geografická poloha
 
@@ -454,7 +454,7 @@ Záznamy s typem *InsightsMetrics* mají údaje o výkonu z hostovaného operač
 | Obor názvů | Název | Popis | Jednotka | Značky |
 |:---|:---|:---|:---|:---|
 | Počítač    | Tep             | Prezenční signál počítače                        | | |
-| Paměť      | AvailableMB           | Bajty dostupné paměti                    | Megabajty      | memorySizeMB – celková velikost paměti|
+| Memory (Paměť)      | AvailableMB           | Bajty dostupné paměti                    | Megabajty      | memorySizeMB – celková velikost paměti|
 | Síť     | WriteBytesPerSecond   | Bajty zápisu v síti za sekundu            | BytesPerSecond | NetworkDeviceId-ID zařízení<br>bajty-celkový počet odeslaných bajtů |
 | Síť     | ReadBytesPerSecond    | Počet bajtů přečtených v síti za sekundu             | BytesPerSecond | networkDeviceId-ID zařízení<br>Bajty celkem přijatých bajtů |
 | Procesor   | UtilizationPercentage | Procento využití procesoru          | Procento        | totalCpus – celkový počet procesorů |

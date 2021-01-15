@@ -3,16 +3,19 @@ title: Azure Service Bus s .NET a AMQP 1,0 | Microsoft Docs
 description: Tento článek popisuje, jak použít Azure Service Bus z aplikace .NET pomocí AMQP (rozšířený protokol řízení front zpráv).
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 7a67ab74efc700e16f5b1689e9cc1f459ecf14bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d6d7d01a56d2e7068f9c4ccb8ec505914a31ecf
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88067099"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233929"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>Použití Service Bus z rozhraní .NET s AMQP 1,0
 
 Podpora AMQP 1,0 je k dispozici v balíčku Service Bus verze 2,1 nebo novější. Nejnovější verzi si můžete ověřit stažením Service Bus bitů z [nugetu][NuGet].
+
+> [!NOTE]
+> V knihovně .NET pro Service Bus můžete použít buď rozšířený protokol řízení front zpráv (AMQP) (AMQP), nebo protokol SBMP (Service Bus Messaging Protocol). AMQP je výchozí protokol používaný knihovnou .NET. Doporučujeme, abyste použili Protokol AMQP (což je výchozí nastavení) a nepřepíšete ho. 
 
 ## <a name="configure-net-applications-to-use-amqp-10"></a>Konfigurace aplikací .NET pro použití AMQP 1,0
 
@@ -41,6 +44,14 @@ Hodnota `Microsoft.ServiceBus.ConnectionString` nastavení je Service Bus připo
 Kde `namespace` a `SAS key` jsou získány z [Azure Portal][Azure portal] při vytváření oboru názvů Service Bus. Další informace najdete v tématu [Vytvoření oboru názvů Service Bus pomocí Azure Portal][Create a Service Bus namespace using the Azure portal].
 
 Při použití AMQP připojit připojovací řetězec k `;TransportType=Amqp` . Tento zápis dá pokyn klientské knihovně k tomu, aby připojení k Service Bus pomocí AMQP 1,0.
+
+### <a name="amqp-over-websockets"></a>AMQP přes WebSockets
+Pokud chcete používat AMQP přes objekty WebSockets, nastavte `TransportType` v připojovacím řetězci na `AmqpWebSockets` . Příklad: `Endpoint=sb://[namespace].servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[SAS key];TransportType=AmqpWebSockets`. 
+
+Pokud používáte knihovnu .NET Microsoft. Azure. ServiceBus, nastavte [ServiceBusConnection. TransportType](/dotnet/api/microsoft.azure.servicebus.servicebusconnection.transporttype) na AmqpWebSockets z [TransportType enum](/dotnet/api/microsoft.azure.servicebus.transporttype).
+
+Pokud používáte knihovnu .NET Azure. Messaging. ServiceBus, nastavte [ServiceBusClient. TransportType](/dotnet/api/azure.messaging.servicebus.servicebusclient.transporttype) na AmqpWebSockets z [ServiceBusTransportType enum](/dotnet/api/azure.messaging.servicebus.servicebustransporttype).
+
 
 ## <a name="message-serialization"></a>Serializace zprávy
 

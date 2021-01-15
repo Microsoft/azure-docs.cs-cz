@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0876478d638963e7157f7a16a263000eec634db0
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: f4b443265047edfadb449582483dba3c463d927d
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97005115"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232739"
 ---
 # <a name="overview-of-role-based-access-control-in-azure-active-directory"></a>Přehled řízení přístupu na základě role v Azure Active Directory
 
@@ -38,7 +38,7 @@ Předdefinované role jsou mimo box s pevnou sadou oprávnění. Tyto definice r
 
 Po vytvoření vlastní definice role (nebo pomocí předdefinované role) ji můžete přiřadit k uživateli vytvořením přiřazení role. Přiřazení role uděluje uživateli oprávnění v definici role v zadaném oboru. Tento dvoustupňový proces vám umožní vytvořit definici jedné role a přiřadit ji v různých oborech mnohokrát. Obor definuje sadu prostředků Azure AD, ke kterým má člen role přístup. Nejběžnější je obor v rozsahu pro organizaci (v rámci organizace). Vlastní role může být přiřazena v oboru celé organizace, což znamená, že člen role má oprávnění role pro všechny prostředky v organizaci. Vlastní roli lze také přiřadit v oboru objektu. Příkladem oboru objektu může být jedna aplikace. Stejnou roli je možné přiřadit jednomu uživateli přes všechny aplikace v organizaci a pak jinému uživateli s rozsahem jenom aplikace se sestavami výdajů společnosti Contoso.  
 
-Integrované a vlastní role Azure AD fungují v konceptech podobně jako [řízení přístupu na základě role v Azure (RBAC)](../../active-directory-b2c/overview.md). [Rozdíl mezi těmito dvěma systémy řízení přístupu na základě rolí](../../role-based-access-control/rbac-and-directory-admin-roles.md) spočívá v tom, že Azure RBAC řídí přístup k prostředkům Azure, jako jsou virtuální počítače nebo úložiště, pomocí správy prostředků Azure a vlastní role Azure AD řídí přístup k prostředkům Azure ad pomocí Graph API. Oba systémy využívají koncept definic rolí a přiřazení rolí. Oprávnění služby Azure AD RBAC nelze zahrnout do rolí Azure ani naopak.
+Integrované a vlastní role Azure AD fungují v konceptech podobně jako [řízení přístupu na základě role v Azure (RBAC)](https://docs.microsoft.com/azure/active-directory/develop/access-tokens#payload-claims). [Rozdíl mezi těmito dvěma systémy řízení přístupu na základě rolí](../../role-based-access-control/rbac-and-directory-admin-roles.md) spočívá v tom, že Azure RBAC řídí přístup k prostředkům Azure, jako jsou virtuální počítače nebo úložiště, pomocí správy prostředků Azure a vlastní role Azure AD řídí přístup k prostředkům Azure ad pomocí Graph API. Oba systémy využívají koncept definic rolí a přiřazení rolí. Oprávnění služby Azure AD RBAC nelze zahrnout do rolí Azure ani naopak.
 
 ### <a name="how-azure-ad-determines-if-a-user-has-access-to-a-resource"></a>Jak Azure AD určuje, jestli má uživatel přístup k prostředku
 
@@ -77,7 +77,7 @@ Definice role neboli role je kolekce oprávnění. Definice role obsahuje seznam
 - Předdefinované role vytvořené Microsoftem, které se nedají změnit.
 - Vlastní role vytvořené a spravované vaší organizací.
 
-### <a name="scope"></a>Rozsah
+### <a name="scope"></a>Obor
 
 Obor je omezení povolených akcí pro určitý prostředek služby Azure AD v rámci přiřazení role. Když přiřadíte roli, můžete zadat obor, který omezí přístup správce ke konkrétnímu prostředku. Pokud například chcete vývojářům udělit vlastní roli, ale jenom ke správě konkrétní registrace aplikace, můžete do přiřazení role zahrnout konkrétní registraci aplikace jako obor.
 

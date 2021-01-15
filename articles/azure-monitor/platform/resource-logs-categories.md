@@ -4,12 +4,12 @@ description: Referenční informace o Azure Monitorch pochopit podporované slu�
 ms.subservice: logs
 ms.topic: reference
 ms.date: 12/09/2020
-ms.openlocfilehash: c7b2d48b40843930bba78f54d2294769d952daf6
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: aeac069b4e9382867664a82af62e29e72da7585e
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931224"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232243"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Podporované kategorie pro protokoly prostředků Azure
 
@@ -18,7 +18,7 @@ ms.locfileid: "96931224"
 
 [Protokoly prostředků Azure monitor](./platform-logs-overview.md) jsou protokoly emitované službami Azure, které popisují fungování těchto služeb nebo prostředků. Všechny protokoly prostředků dostupné prostřednictvím Azure Monitor sdílejí společné schéma nejvyšší úrovně s flexibilitou pro každou službu, aby vygenerovala jedinečné vlastnosti pro vlastní události.
 
-Kombinace typu prostředku (k dispozici ve `resourceId` Vlastnosti) a `category` jednoznačné určení schématu. Pro všechny protokoly prostředků s poli se specifickými službami se pak přidalo společné schéma pro různé kategorie protokolů. Další informace najdete v tématu [společné schéma a schéma specifické pro službu pro protokoly prostředků Azure]() .
+Kombinace typu prostředku (k dispozici ve `resourceId` Vlastnosti) a `category` jednoznačné určení schématu. K dispozici je společné schéma pro všechny protokoly prostředků s poli pro konkrétní služby, které se pak přidají do různých kategorií protokolů. Další informace najdete v tématech [běžné a specifické schéma pro protokoly prostředků Azure]() .
 
 
 ## <a name="costs"></a>Náklady
@@ -34,7 +34,7 @@ Některé kategorie lze podporovat pouze pro konkrétní typy prostředků. Poku
 Pokud ještě chybí něco, můžete otevřít komentář k GitHubu na konci tohoto článku.
 ## <a name="microsoftanalysisservicesservers"></a>Microsoft. AnalysisServices/servery
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -44,7 +44,7 @@ Náklady: zdarma
 
 ## <a name="microsoftapimanagementservice"></a>Microsoft.ApiManagement/service
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -53,7 +53,7 @@ Náklady: zdarma
 
 ## <a name="microsoftappplatformspring"></a>Microsoft. AppPlatform/pružina
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -63,7 +63,7 @@ Náklady: zdarma
 
 ## <a name="microsoftautomationautomationaccounts"></a>Microsoft. Automation/automationAccounts
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -74,7 +74,7 @@ Náklady: zdarma
 
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -83,7 +83,7 @@ Náklady: zdarma
 
 ## <a name="microsoftbatchaiworkspaces"></a>Microsoft.BatchAI/Workspaces
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -94,7 +94,7 @@ Náklady: zdarma
 
 ## <a name="microsoftblockchainblockchainmembers"></a>Microsoft. blockchain/blockchainMembers
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -106,7 +106,7 @@ Náklady: zdarma
 
 ## <a name="microsoftblockchaincordamembers"></a>Microsoft. blockchain/cordaMembers
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -115,16 +115,16 @@ Náklady: zdarma
 
 ## <a name="microsoftcdncdnwebapplicationfirewallpolicies"></a>Microsoft. CDN/cdnwebapplicationfirewallpolicies
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
-|WebApplicationFirewallLogs|Protokoly brány firewall pro web spustí aplikace|
+|WebApplicationFirewallLogs|Protokoly brány firewall webových aplikací|
 
 
 ## <a name="microsoftcdnprofiles"></a>Microsoft. CDN/profily
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -133,7 +133,7 @@ Náklady: zdarma
 
 ## <a name="microsoftcdnprofilesendpoints"></a>Microsoft. CDN/Profiles/koncových bodů
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -142,7 +142,7 @@ Náklady: zdarma
 
 ## <a name="microsoftclassicnetworknetworksecuritygroups"></a>Microsoft. ClassicNetwork/networksecuritygroups
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -151,7 +151,7 @@ Náklady: zdarma
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft. Cognitiveservices Account/účty
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -162,7 +162,7 @@ Náklady: zdarma
 
 ## <a name="microsoftcontainerregistryregistries"></a>Microsoft. ContainerRegistry/Registry
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -172,7 +172,7 @@ Náklady: zdarma
 
 ## <a name="microsoftcontainerservicemanagedclusters"></a>Microsoft. ContainerService/managedClusters
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -185,7 +185,7 @@ Náklady: zdarma
 
 ## <a name="microsoftcustomprovidersresourceproviders"></a>Microsoft. CustomProviders/resourceproviders
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -194,7 +194,7 @@ Náklady: zdarma
 
 ## <a name="microsoftdatabricksworkspaces"></a>Microsoft. datacihly/pracovní prostory
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -207,12 +207,12 @@ Náklady: zdarma
 |záleží|Tajné kódy datacihlů|
 |sqlPermissions|Datacihly SQLPermissions|
 |protokoly|SSH datacihlů|
-|pracovní prostor|Pracovní prostor datacihly|
+|Pracovní prostor|Pracovní prostor datacihly|
 
 
 ## <a name="microsoftdatafactoryfactories"></a>Microsoft. DataFactory/továrny
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -223,7 +223,7 @@ Náklady: zdarma
 
 ## <a name="microsoftdatalakestoreaccounts"></a>Microsoft. DataLakeStore/účty
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -233,7 +233,7 @@ Náklady: zdarma
 
 ## <a name="microsoftdatashareaccounts"></a>Microsoft. datashare/Accounts
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -245,7 +245,7 @@ Náklady: zdarma
 
 ## <a name="microsoftdbformariadbservers"></a>Microsoft. DBforMariaDB/servery
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -255,7 +255,7 @@ Náklady: zdarma
 
 ## <a name="microsoftdbformysqlflexibleservers"></a>Microsoft. DBforMySQL/flexibleServers
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -265,7 +265,7 @@ Náklady: zdarma
 
 ## <a name="microsoftdbformysqlservers"></a>Microsoft. DBforMySQL/servery
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -275,7 +275,7 @@ Náklady: zdarma
 
 ## <a name="microsoftdbforpostgresqlflexibleservers"></a>Microsoft. DBforPostgreSQL/flexibleServers
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -284,7 +284,7 @@ Náklady: zdarma
 
 ## <a name="microsoftdbforpostgresqlservers"></a>Microsoft. DBforPostgreSQL/servery
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -295,7 +295,7 @@ Náklady: zdarma
 
 ## <a name="microsoftdbforpostgresqlserversv2"></a>Microsoft. DBforPostgreSQL/serversv2
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -304,7 +304,7 @@ Náklady: zdarma
 
 ## <a name="microsoftdesktopvirtualizationapplicationgroups"></a>Microsoft. DesktopVirtualization/applicationgroups
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -315,32 +315,32 @@ Náklady: zdarma
 
 ## <a name="microsoftdesktopvirtualizationhostpools"></a>Microsoft. DesktopVirtualization/hostpools
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |CheckPoint|CheckPoint|
 |Připojení|Připojení|
-|Chyba|Chyba|
+|Chybová|Chybová|
 |HostRegistration|HostRegistration|
 |Správa|Správa|
 
 
 ## <a name="microsoftdesktopvirtualizationworkspaces"></a>Microsoft. DesktopVirtualization/pracovní prostory
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |CheckPoint|CheckPoint|
-|Chyba|Chyba|
+|Chyba|Chybová|
 |Informační kanál|Informační kanál|
 |Správa|Správa|
 
 
 ## <a name="microsoftdevicesiothubs"></a>Microsoft. Devices/IotHubs
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -362,7 +362,7 @@ Náklady: zdarma
 
 ## <a name="microsoftdevicesprovisioningservices"></a>Microsoft. Devices/provisioningServices
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -372,7 +372,7 @@ Náklady: zdarma
 
 ## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/databaseAccounts
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -388,7 +388,7 @@ Náklady: zdarma
 
 ## <a name="microsofteventgriddomains"></a>Microsoft. EventGrid/domény
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -398,7 +398,7 @@ Náklady: zdarma
 
 ## <a name="microsofteventgridsystemtopics"></a>Microsoft. EventGrid/systemTopics
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -407,7 +407,7 @@ Náklady: zdarma
 
 ## <a name="microsofteventgridtopics"></a>Microsoft. EventGrid/témata
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -417,7 +417,7 @@ Náklady: zdarma
 
 ## <a name="microsofteventhubnamespaces"></a>Microsoft. EventHub/obory názvů
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -432,7 +432,7 @@ Náklady: zdarma
 
 ## <a name="microsofthealthcareapisservices"></a>Microsoft. HealthcareApis/Services
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -441,7 +441,7 @@ Náklady: zdarma
 
 ## <a name="microsoftinsightsautoscalesettings"></a>Microsoft. Insights/AutoscaleSettings
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -451,7 +451,7 @@ Náklady: zdarma
 
 ## <a name="microsoftinsightscomponents"></a>Microsoft. Insights/Components
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -470,7 +470,7 @@ Náklady: zdarma
 
 ## <a name="microsoftkeyvaultvaults"></a>Trezory a trezory Microsoft.
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -479,7 +479,7 @@ Náklady: zdarma
 
 ## <a name="microsoftkustoclusters"></a>Microsoft. Kusto/clustery
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -494,7 +494,7 @@ Náklady: zdarma
 
 ## <a name="microsoftlogicintegrationaccounts"></a>Microsoft. Logic/integrationAccounts
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -503,7 +503,7 @@ Náklady: zdarma
 
 ## <a name="microsoftlogicworkflows"></a>Microsoft. Logic/Workflows
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -512,7 +512,7 @@ Náklady: zdarma
 
 ## <a name="microsoftmachinelearningservicesworkspaces"></a>Microsoft. MachineLearningServices/pracovní prostory
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -525,7 +525,7 @@ Náklady: zdarma
 
 ## <a name="microsoftmediamediaservices"></a>Microsoft. Media/MediaServices
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -534,7 +534,7 @@ Náklady: zdarma
 
 ## <a name="microsoftnetworkapplicationgateways"></a>Microsoft. Network/applicationGateways
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -545,7 +545,7 @@ Náklady: zdarma
 
 ## <a name="microsoftnetworkazurefirewalls"></a>Microsoft. Network/azurefirewalls
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -555,7 +555,7 @@ Náklady: zdarma
 
 ## <a name="microsoftnetworkbastionhosts"></a>Microsoft. Network/bastionHosts
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -564,7 +564,7 @@ Náklady: zdarma
 
 ## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft. Network/expressRouteCircuits
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -573,7 +573,7 @@ Náklady: zdarma
 
 ## <a name="microsoftnetworkfrontdoors"></a>Microsoft. Network/frontdoors
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -583,7 +583,7 @@ Náklady: zdarma
 
 ## <a name="microsoftnetworkloadbalancers"></a>Microsoft. Network/loadBalancers
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -593,7 +593,7 @@ Náklady: zdarma
 
 ## <a name="microsoftnetworknetworksecuritygroups"></a>Microsoft. Network/networksecuritygroups
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -604,7 +604,7 @@ Náklady: zdarma
 
 ## <a name="microsoftnetworkpublicipaddresses"></a>Microsoft. Network/publicIPAddresses
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -615,7 +615,7 @@ Náklady: zdarma
 
 ## <a name="microsoftnetworktrafficmanagerprofiles"></a>Microsoft. Network/trafficManagerProfiles
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -624,7 +624,7 @@ Náklady: zdarma
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft. Network/virtualNetworkGateways
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -637,7 +637,7 @@ Náklady: zdarma
 
 ## <a name="microsoftnetworkvirtualnetworks"></a>Microsoft. Network/virtualNetworks
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -646,7 +646,7 @@ Náklady: zdarma
 
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft. PowerBIDedicated/– kapacity
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -655,7 +655,7 @@ Náklady: zdarma
 
 ## <a name="microsoftrecoveryservicesvaults"></a>Microsoft. RecoveryServices/trezory
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -677,7 +677,7 @@ Náklady: zdarma
 
 ## <a name="microsoftrelaynamespaces"></a>Microsoft. Relay/obory názvů
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -686,7 +686,7 @@ Náklady: zdarma
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft. Search/searchServices
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -695,7 +695,7 @@ Náklady: zdarma
 
 ## <a name="microsoftservicebusnamespaces"></a>Microsoft. ServiceBus/obory názvů
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -704,7 +704,7 @@ Náklady: zdarma
 
 ## <a name="microsoftsignalrservicesignalr"></a>Microsoft. SignalRService/Signaler
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -713,7 +713,7 @@ Náklady: zdarma
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft. SQL/managedInstances
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -724,7 +724,7 @@ Náklady: zdarma
 
 ## <a name="microsoftsqlmanagedinstancesdatabases"></a>Microsoft. SQL/managedInstances/databáze
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -736,7 +736,7 @@ Náklady: zdarma
 
 ## <a name="microsoftsqlserversdatabases"></a>Microsoft. SQL/servery/databáze
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -760,7 +760,7 @@ Náklady: zdarma
 
 ## <a name="microsoftstoragestorageaccountsblobservices"></a>Microsoft. Storage/storageAccounts/blobServices
 
-Náklady: placeno jako v části protokoly platforem na [stránce s cenami Azure monitor.](https://azure.microsoft.com/pricing/details/monitor/) 
+Náklady na export: placeno do části protokoly platforem na [stránce s cenami Azure monitor.](https://azure.microsoft.com/pricing/details/monitor/) 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -771,7 +771,7 @@ Náklady: placeno jako v části protokoly platforem na [stránce s cenami Azure
 
 ## <a name="microsoftstoragestorageaccountsfileservices"></a>Microsoft. Storage/storageAccounts/služby
 
-Náklady: placeno jako v části protokoly platforem na [stránce s cenami Azure monitor.](https://azure.microsoft.com/pricing/details/monitor/) 
+Náklady na export: placeno do části protokoly platforem na [stránce s cenami Azure monitor.](https://azure.microsoft.com/pricing/details/monitor/) 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -782,7 +782,7 @@ Náklady: placeno jako v části protokoly platforem na [stránce s cenami Azure
 
 ## <a name="microsoftstoragestorageaccountsqueueservices"></a>Microsoft. Storage/storageAccounts/queueServices
 
-Náklady: placeno jako v části protokoly platforem na [stránce s cenami Azure monitor.](https://azure.microsoft.com/pricing/details/monitor/) 
+Náklady na export: placeno do části protokoly platforem na [stránce s cenami Azure monitor.](https://azure.microsoft.com/pricing/details/monitor/) 
  
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -793,7 +793,7 @@ Náklady: placeno jako v části protokoly platforem na [stránce s cenami Azure
 
 ## <a name="microsoftstoragestorageaccountstableservices"></a>Microsoft. Storage/storageAccounts/tableServices
 
-Náklady: placeno jako v části protokoly platforem na [stránce s cenami Azure monitor.](https://azure.microsoft.com/pricing/details/monitor/) 
+Náklady na export: placeno do části protokoly platforem na [stránce s cenami Azure monitor.](https://azure.microsoft.com/pricing/details/monitor/) 
  
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -804,7 +804,7 @@ Náklady: placeno jako v části protokoly platforem na [stránce s cenami Azure
 
 ## <a name="microsoftstreamanalyticsstreamingjobs"></a>Microsoft. StreamAnalytics/streamingjobs
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -814,7 +814,7 @@ Náklady: zdarma
 
 ## <a name="microsoftsynapseworkspaces"></a>Microsoft. synapse/pracovní prostory
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -826,7 +826,7 @@ Náklady: zdarma
 
 ## <a name="microsoftsynapseworkspacesbigdatapools"></a>Microsoft. synapse/pracovní prostory/bigDataPools
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -835,7 +835,7 @@ Náklady: zdarma
 
 ## <a name="microsoftsynapseworkspacessqlpools"></a>Microsoft. synapse/pracovní prostory/sqlPools
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -849,7 +849,7 @@ Náklady: zdarma
 
 ## <a name="microsoftwebhostingenvironments"></a>Microsoft. Web/hostingenvironments
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 |Kategorie |Zobrazovaný název kategorie|
 |---|---|
@@ -858,7 +858,7 @@ Náklady: zdarma
 
 ## <a name="microsoftwebsites"></a>Microsoft. Web/weby
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 
 |Kategorie |Zobrazovaný název kategorie|
@@ -873,7 +873,7 @@ Náklady: zdarma
 
 ## <a name="microsoftwebsitesslots"></a>Microsoft. Web/weby/sloty
 
-Náklady: zdarma 
+Náklady k exportu: zdarma 
 
 
 |Kategorie |Zobrazovaný název kategorie|

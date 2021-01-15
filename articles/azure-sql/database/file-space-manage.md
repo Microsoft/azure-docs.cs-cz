@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: jrasnick, sstein
-ms.date: 03/12/2019
-ms.openlocfilehash: 3a46e47d6e12d52113bf63342c84a58ca98743d0
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 12/22/2020
+ms.openlocfilehash: 08cab806d6ad8b75821a92994dde0fa07db8b960
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789603"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233589"
 ---
 # <a name="manage-file-space-for-databases-in-azure-sql-database"></a>Správa prostoru souborů pro databáze v Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -84,7 +84,7 @@ Upravte následující dotaz, který vrátí velikost využitého místa pro dat
 SELECT TOP 1 storage_in_megabytes AS DatabaseDataSpaceUsedInMB
 FROM sys.resource_stats
 WHERE database_name = 'db1'
-ORDER BY end_time DESC
+ORDER BY end_time DESC;
 ```
 
 ### <a name="database-data-space-allocated-and-unused-allocated-space"></a>Přidělené a nevyužité volné místo v databázi dat
@@ -98,7 +98,7 @@ SELECT SUM(size/128.0) AS DatabaseDataSpaceAllocatedInMB,
 SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS int)/128.0) AS DatabaseDataSpaceAllocatedUnusedInMB
 FROM sys.database_files
 GROUP BY type_desc
-HAVING type_desc = 'ROWS'
+HAVING type_desc = 'ROWS';
 ```
 
 ### <a name="database-data-max-size"></a>Maximální velikost dat databáze
@@ -108,7 +108,7 @@ Upravte následující dotaz tak, aby vracel maximální velikost dat databáze.
 ```sql
 -- Connect to database
 -- Database data max size in bytes
-SELECT DATABASEPROPERTYEX('db1', 'MaxSizeInBytes') AS DatabaseDataMaxSizeInBytes
+SELECT DATABASEPROPERTYEX('db1', 'MaxSizeInBytes') AS DatabaseDataMaxSizeInBytes;
 ```
 
 ## <a name="understanding-types-of-storage-space-for-an-elastic-pool"></a>Porozumění typům úložného prostoru pro elastický fond
@@ -121,6 +121,9 @@ Při správě prostoru pro elastický fond je důležité pochopit následujíc�
 |**Přidělené datové místo**|Součet datového prostoru přiděleného všemi databázemi v elastickém fondu.||
 |**Přidělené datové místo, ale nepoužívá se**|Rozdíl mezi objemem přiděleného datového prostoru a datovým prostorem používaným všemi databázemi v elastickém fondu.|Toto množství představuje maximální prostor přidělený pro elastický fond, který je možné uvolnit zmenšením datových souborů databáze.|
 |**Maximální velikost dat**|Maximální množství datového prostoru, které může elastický fond používat pro všechny jeho databáze.|Prostor přidělený elastickému fondu by neměl překročit maximální velikost elastického fondu.  Pokud k tomuto stavu dojde, může být přidělené místo, které není používáno, uvolněno zmenšením datových souborů databáze.|
+
+> [!NOTE]
+> Chybová zpráva "elastický fond dosáhl svého limitu úložiště" značí, že objekty databáze byly přiděleny dostatek místa pro splnění limitu úložiště elastického fondu, ale v alokaci datového prostoru může být nevyužité místo. Zvažte zvýšení limitu úložiště elastického fondu, nebo jako krátkodobé řešení, a uvolněte tak místo v níže uvedené části s [**nevyužitým přiděleným místem**](#reclaim-unused-allocated-space) . Měli byste být také vědomi potenciálního dopadu na výkon při zmenšování souborů databáze, viz část [**nové sestavení indexů**](#rebuild-indexes) níže.
 
 ## <a name="query-an-elastic-pool-for-storage-space-information"></a>Dotazování elastického fondu pro informace o prostoru úložiště
 
@@ -136,7 +139,7 @@ Upravte následující dotaz, který vrátí velikost využitého datového pros
 SELECT TOP 1 avg_storage_percent / 100.0 * elastic_pool_storage_limit_mb AS ElasticPoolDataSpaceUsedInMB
 FROM sys.elastic_pool_resource_stats
 WHERE elastic_pool_name = 'ep1'
-ORDER BY end_time DESC
+ORDER BY end_time DESC;
 ```
 
 ### <a name="elastic-pool-data-space-allocated-and-unused-allocated-space"></a>Přidělené a nevyužité volné místo v datovém prostoru elastického fondu
@@ -187,7 +190,7 @@ Následující snímek obrazovky ukazuje příklad výstupu skriptu:
 
 ### <a name="elastic-pool-data-max-size"></a>Maximální velikost dat elastického fondu
 
-Upravte následující dotaz T-SQL, který vrátí maximální velikost dat elastického fondu.  Jednotky výsledku dotazu jsou v MB.
+Upravte následující dotaz T-SQL, který vrátí poslední zaznamenanou maximální velikost dat elastického fondu.  Jednotky výsledku dotazu jsou v MB.
 
 ```sql
 -- Connect to master
@@ -195,13 +198,13 @@ Upravte následující dotaz T-SQL, který vrátí maximální velikost dat elas
 SELECT TOP 1 elastic_pool_storage_limit_mb AS ElasticPoolMaxSizeInMB
 FROM sys.elastic_pool_resource_stats
 WHERE elastic_pool_name = 'ep1'
-ORDER BY end_time DESC
+ORDER BY end_time DESC;
 ```
 
 ## <a name="reclaim-unused-allocated-space"></a>Uvolnění nevyužitého přiděleného místa
 
 > [!NOTE]
-> Tento příkaz může mít vliv na výkon databáze, pokud je spuštěný, a pokud je to možné, měly by být spuštěny během období nízkého využití.
+> Příkazy zmenšení ovlivňují výkon databáze při běhu a pokud je to možné, měli byste je spouštět během období nízkého využití.
 
 ### <a name="dbcc-shrink"></a>Sbalení příkazu DBCC
 
@@ -209,24 +212,28 @@ Jakmile zjistíte, že databáze byly zjištěny pro získání nevyužitého p�
 
 ```sql
 -- Shrink database data space allocated.
-DBCC SHRINKDATABASE (N'db1')
+DBCC SHRINKDATABASE (N'db1');
 ```
 
-Tento příkaz může mít vliv na výkon databáze, pokud je spuštěný, a pokud je to možné, měly by být spuštěny během období nízkého využití.  
+Příkazy zmenšení ovlivňují výkon databáze při běhu a pokud je to možné, měli byste je spouštět během období nízkého využití.  
 
-Další informace o tomto příkazu najdete v tématu [SHRINKDATABASE](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql).
+Měli byste být také vědomi potenciálního dopadu na výkon při zmenšování souborů databáze, viz část [**nové sestavení indexů**](#rebuild-indexes) níže.
+
+Další informace o tomto příkazu najdete v tématu [SHRINKDATABASE](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql.md).
 
 ### <a name="auto-shrink"></a>Automatické zmenšení
 
 Alternativně lze pro databázi povolit automatické zmenšení.  Automatické zmenšení snižuje složitost správy souborů a je méně ovlivněná na výkon databáze než `SHRINKDATABASE` nebo `SHRINKFILE` .  Automatické zmenšení může být užitečné hlavně při správě elastických fondů s mnoha databázemi.  Automatické zmenšení ale může být méně účinné při uvolnění místa v souboru než `SHRINKDATABASE` a `SHRINKFILE` .
+Ve výchozím nastavení je automatické zmenšování zakázáno podle doporučení pro většinu databází. Další informace najdete v tématu věnovaném [důležitým AUTO_SHRINK](/troubleshoot/sql/admin/considerations-autogrow-autoshrink#considerations-for-auto_shrink).
+
 Chcete-li povolit automatické zmenšení, upravte název databáze v následujícím příkazu.
 
 ```sql
 -- Enable auto-shrink for the database.
-ALTER DATABASE [db1] SET AUTO_SHRINK ON
+ALTER DATABASE [db1] SET AUTO_SHRINK ON;
 ```
 
-Další informace o tomto příkazu najdete v tématu možnosti [sady databáze](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) .
+Další informace o tomto příkazu najdete v tématu možnosti [sady databáze](/sql/t-sql/statements/alter-database-transact-sql-set-options) .
 
 ### <a name="rebuild-indexes"></a>Opětovné sestavení indexů
 

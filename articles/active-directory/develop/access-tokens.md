@@ -13,12 +13,12 @@ ms.date: 10/27/2020
 ms.author: hirsin
 ms.reviewer: mmacy, hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: ceb5acbee2e572b1859a5577b58dd586fc924b3b
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 4a798443560f62673ef8fcf0bce970a66071d011
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653278"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232382"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Tokeny přístupu Microsoft Identity Platform
 
@@ -292,10 +292,7 @@ Přihlášení *bez hesla* je jeden z nich, kdy uživatel nezadal heslo pro jeho
 - Hlas
 - PIN
 
-> [!NOTE]
-> Primární obnovovací tokeny (PRT) ve Windows 10 jsou oddělené na základě přihlašovacích údajů. Například Windows Hello a heslo mají své odpovídající PRTs, které jsou izolované od sebe. Když se uživatel přihlásí pomocí přihlašovacích údajů Hello (PIN nebo biometrika) a pak změní heslo, bude odvolaný PRT založený na hesle, který jste dříve získali. Při opětovném přihlášení pomocí hesla se zruší platnost starého PRT a vyžádá se nový.
->
-> Při použití k načtení nového přístupového tokenu a obnovení tokenu se tokeny pro aktualizaci neověřují nebo odvolají.  Vaše aplikace by ale měla staré zrušit, jakmile se použije, a nahradit ji novým, protože nový token má nový čas vypršení platnosti.
+Další podrobnosti o primárních tokenech pro aktualizaci najdete v [primárních tokenech aktualizace](../devices/concept-primary-refresh-token.md) .
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 24e52f517f46de06fef8aa52e889185826c20d44
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: abf4e4621a7e42829032923a67d21c5322f432ec
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498391"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232722"
 ---
 # <a name="frequently-asked-questions-about-classic-to-azure-resource-manager-migration"></a>Nejčastější dotazy ohledně migrace z modelu Classic na Azure Resource Manager
 
@@ -82,11 +82,11 @@ Během migrace se prostředky transformují z modelu Classic na Resource Manager
 
 Když přesunete virtuální počítač z klasického do režimu Správce prostředků, zálohy provedené před migrací se nebudou migrovat na nově migrovaný Správce prostředků virtuální počítač. Pokud ale chcete zachovat zálohy klasických virtuálních počítačů, postupujte před migrací pomocí těchto kroků. 
 
-1. V trezoru Recovery Services otevřete kartu **chráněné položky** a vyberte virtuální počítač. 
-2. Klikněte na Zastavit ochranu. Políčko *Delete associated backup data* (Odstranit přidružená data záloh) ponechte **nezaškrtnuté**.
+1. V trezoru Recovery Services otevřete okno **zálohované položky** a vyberte virtuální počítač. 
+2. Klikněte na zastavit zálohování. V rozevírací nabídce vyberte zachovat data záloh.
 
 > [!NOTE]
-> Náklady na instanci zálohy se vám budou účtovat, dokud si zachováte data. Záložní kopie se vyřadí jako rozsah pro uchování dat. Poslední záložní kopie je ale vždycky zachovaná, dokud data zálohy explicitně neodstraníte. Po překročení rozsahu uchování doporučujeme, abyste zkontrolovali rozsah uchování virtuálního počítače a aktivovali v chráněné položce v trezoru možnost odstranit data zálohy. 
+> Tato možnost zastaví všechny budoucí úlohy zálohování z ochrany virtuálního počítače. Služba Azure Backup však uchová body obnovení, které byly zálohovány.  Abyste zachovali body obnovení v trezoru, musíte platit, abyste si ponechali body obnovení v trezoru (podrobnosti najdete [Azure Backup ceny](https://azure.microsoft.com/pricing/details/backup/) ). V případě potřeby budete moct virtuální počítač obnovit. Pokud se rozhodnete obnovit ochranu virtuálního počítače, můžete použít možnost *obnovit zálohování* .
 >
 >
 
@@ -99,7 +99,7 @@ Pokud navíc chcete zálohovat migrovaný virtuální počítač, v okně Správ
 
 ## <a name="can-i-validate-my-subscription-or-resources-to-see-if-theyre-capable-of-migration"></a>Je možné ověřit, jestli jsou prostředky nebo předplatné schopné migrace? 
 
-Ano. U možnosti migrace s podporou platformy je prvním krokem přípravy na migraci ověření, že jsou prostředky schopné migrace. V případě selhání operace ověření se zobrazí zprávy se všemi důvody, proč migraci není možné dokončit.
+Yes. U možnosti migrace s podporou platformy je prvním krokem přípravy na migraci ověření, že jsou prostředky schopné migrace. V případě selhání operace ověření se zobrazí zprávy se všemi důvody, proč migraci není možné dokončit.
 
 ## <a name="what-happens-if-i-run-into-a-quota-error-while-preparing-the-iaas-resources-for-migration"></a>Co se stane, pokud při přípravě prostředků IaaS na migraci dojde k chybě kvóty? 
 

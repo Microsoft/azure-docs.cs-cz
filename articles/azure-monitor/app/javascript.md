@@ -4,12 +4,12 @@ description: Získejte zobrazení stránky a počty relací, data webového klie
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 31cfa2e56fa10743c9a95d4df880fb1869fd9613
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 60b3e9229adb93ce32c97c2822a465f7f629d47d
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98203435"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234354"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights pro webové stránky
 
@@ -107,7 +107,7 @@ Každá možnost konfigurace je uvedená výše na novém řádku, pokud nechcet
 
 Dostupné možnosti konfigurace jsou
 
-| Název | Typ | Description
+| Název | Typ | Popis
 |------|------|----------------
 | src | řetězec **[povinné]** | Úplná adresa URL, ze které se má načíst sada SDK Tato hodnota se používá pro atribut src dynamicky přidávaného &lt; skriptu nebo &gt; značky. Můžete použít veřejné umístění CDN nebo vlastní soukromý hostovaný.
 | name | řetězec *[nepovinné]* | Globální název inicializované sady SDK, výchozí hodnota `appInsights` . Proto ```window.appInsights``` bude odkaz na inicializovaná instanci. Poznámka: Pokud zadáte hodnotu názvu nebo předchozí instanci, která má být přiřazena (prostřednictvím globálního názvu appInsightsSDK), bude tato hodnota názvu také definována v globálním oboru názvů jako ```window.appInsightsSDK=<name value>``` , to je vyžadováno inicializačním kódem sady SDK, aby bylo zajištěno, že se inicializuje a aktualizuje správné kostry fragmentů a metod proxy.
@@ -170,7 +170,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>Konfigurace
 Většina polí konfigurace je pojmenována tak, aby mohla být nastavená na hodnotu false. Všechna pole jsou volitelná s výjimkou `instrumentationKey` .
 
-| Name | Výchozí | Description |
+| Název | Výchozí | Popis |
 |------|---------|-------------|
 | instrumentationKey | null | **Povinné**<br>Klíč instrumentace, který jste získali z Azure Portal. |
 | accountId | null | Volitelné ID účtu, pokud vaše aplikace seskupí uživatele na účty. Žádné mezery, čárky, středníky, rovny nebo svislé čáry |
@@ -266,7 +266,8 @@ V současné době nabízíme samostatný [modul plug-in pro reakce](javascript-
 |---------------|
 | [React](javascript-react-plugin.md)|
 | [React Native](javascript-react-native-plugin.md)|
-| [Angular](javascript-angular-plugin.md) |
+| [Angular](javascript-angular-plugin.md)|
+| [Klikněte na analýza Automatická kolekce.](javascript-click-analytics-plugin.md)|
 
 ## <a name="explore-browserclient-side-data"></a>Prozkoumat data v prohlížeči nebo na straně klienta
 

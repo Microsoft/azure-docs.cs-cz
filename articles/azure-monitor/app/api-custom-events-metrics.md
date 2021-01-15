@@ -4,12 +4,12 @@ description: Pokud chcete sledovat využití a diagnostikovat problémy, vložte
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: ae64888669fb9a3c053802ee4f7ad7db6316265d
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: d553c192d62baedb93c7f8270c56526fbf8edb62
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780497"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233742"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Rozhraní API služby Application Insights pro vlastní události a metriky
 
@@ -146,7 +146,9 @@ telemetry.trackEvent({name: "WinGame"});
 
 ### <a name="custom-events-in-analytics"></a>Vlastní události v analýzách
 
-Telemetrii je k dispozici v `customEvents` tabulce v [Application Insights Analytics](../log-query/log-query-overview.md). Každý řádek představuje volání `trackEvent(..)` ve vaší aplikaci.
+Telemetrii je k dispozici v `customEvents` tabulce na [kartě protokoly Application Insights](../log-query/log-query-overview.md) nebo v [prostředí používání](usage-overview.md). Události můžou pocházet z `trackEvent(..)` nebo [kliknout na analýza modul plug-in automatické kolekce](javascript-click-analytics-plugin.md).
+
+ 
 
 Pokud je [vzorkování](./sampling.md) v provozu, vlastnost vlastnost ItemCount zobrazí hodnotu větší než 1. Například vlastnost ItemCount = = 10 znamená, že u 10 volání trackEvent () proces vzorkování přenáší pouze jeden z nich. Chcete-li získat správný počet vlastních událostí, měli byste proto použít kód jako `customEvents | summarize sum(itemCount)` .
 
@@ -437,7 +439,7 @@ exceptions
 | summarize sum(itemCount) by type
 ```
 
-Většina důležitých informací o zásobníku se už extrahuje do samostatných proměnných, ale pokud chcete získat další informace, můžete si ji stáhnout ze své `details` struktury. Vzhledem k tomu, že je tato struktura dynamická, je vhodné přetypovat výsledek na očekávaný typ. Například:
+Většina důležitých informací o zásobníku se už extrahuje do samostatných proměnných, ale pokud chcete získat další informace, můžete si ji stáhnout ze své `details` struktury. Vzhledem k tomu, že je tato struktura dynamická, je vhodné přetypovat výsledek na očekávaný typ. Příklad:
 
 ```kusto
 exceptions
@@ -500,7 +502,7 @@ Můžete hledat obsah zprávy, ale (na rozdíl od hodnot vlastností) nemůžete
 Omezení velikosti `message` je mnohem vyšší než omezení vlastností.
 Výhodou TrackTrace je, že do zprávy můžete ukládat poměrně dlouhá data. Můžete například zakódovat data POST.  
 
-Kromě toho můžete do zprávy přidat úroveň závažnosti. A podobně jako u jiné telemetrie můžete přidat hodnoty vlastností, které vám pomohou filtrovat nebo vyhledat různé sady trasování. Například:
+Kromě toho můžete do zprávy přidat úroveň závažnosti. A podobně jako u jiné telemetrie můžete přidat hodnoty vlastností, které vám pomohou filtrovat nebo vyhledat různé sady trasování. Příklad:
 
 *C#*
 
@@ -1066,7 +1068,7 @@ var appInsights = window.appInsights || function(config){ ...
 
 ## <a name="telemetrycontext"></a>TelemetryContext
 
-TelemetryClient má kontextovou vlastnost, která obsahuje hodnoty, které jsou odesílány společně se všemi daty telemetrie. Obvykle jsou nastavené standardními moduly telemetrie, ale můžete je také nastavit sami. Například:
+TelemetryClient má kontextovou vlastnost, která obsahuje hodnoty, které jsou odesílány společně se všemi daty telemetrie. Obvykle jsou nastavené standardními moduly telemetrie, ale můžete je také nastavit sami. Příklad:
 
 ```csharp
 telemetry.Context.Operation.Name = "MyOperationName";
@@ -1122,4 +1124,3 @@ Informace o tom, jak dlouho se data uchovávají, najdete v tématu [uchováván
 
 * [Hledat události a protokoly](./diagnostic-search.md)
 * [Řešení potíží](../faq.md)
-

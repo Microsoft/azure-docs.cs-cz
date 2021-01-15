@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 63d56d8afc584a760f4b31c6021d4c764afd52b3
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: bbcebfd69789eb6ec03e565b347d05533043781c
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064415"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232331"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Kurz: volání rozhraní API Microsoft Graph z aplikace Univerzální platforma Windows (UWP)
 
@@ -34,7 +34,7 @@ V tomto kurzu:
 > * Přidat kód pro volání rozhraní API Microsoft Graph
 > * Otestování aplikace
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) s nainstalovanou úlohou [vývoj Univerzální platforma Windows](/windows/uwp/get-started/get-set-up)
 
@@ -48,7 +48,7 @@ Tato příručka vytvoří ukázkovou aplikaci UWP, která se dotazuje na rozhra
 
 Tato příručka používá následující balíček NuGet:
 
-|Knihovna|Description|
+|Knihovna|Popis|
 |---|---|
 |[Microsoft. identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)| Identity a ověřování Microsoftu|
 |[Microsoft. Graph](https://www.nuget.org/packages/Microsoft.Graph)|Klientská knihovna Microsoft Graph|
@@ -59,8 +59,8 @@ Tato část obsahuje podrobné pokyny pro integraci aplikace Windows Desktop .NE
 
 Tato příručka vytvoří aplikaci, která zobrazí tlačítko s dotazem na rozhraní Microsoft Graph API a tlačítko pro odhlášení. Zobrazuje také textová pole obsahující výsledky volání.
 
-> [!NOTE]
-> Chcete stáhnout tuto ukázkovou aplikaci Visual Studio, místo jejího vytváření? [Stáhněte si projekt](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)a přejděte k kroku [Registrace aplikace](#register-your-application "krok registrace aplikace") , abyste před spuštěním nakonfigurovali vzorek kódu.
+> [!Tip]
+> Pokud chcete zobrazit dokončenou verzi projektu, který sestavíte v tomto kurzu, můžete [si ho stáhnout z GitHubu](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip).
 
 ### <a name="create-your-application"></a>Vytvořte si svoji aplikaci
 
@@ -292,8 +292,7 @@ private async void SignOutButton_Click(object sender, RoutedEventArgs e)
     }
 ```
 
-> [!NOTE]
-> MSAL.NET používá asynchronní metody k získání tokenů nebo manipulaci s účty. Ve vlákně UI musíte podporovat akce uživatelského rozhraní. To je důvod `Dispatcher.RunAsync` volání a preventivních opatření k volání `ConfigureAwait(false)` .
+MSAL.NET používá asynchronní metody k získání tokenů nebo manipulaci s účty. Ve vlákně UI musíte podporovat akce uživatelského rozhraní. To je důvod `Dispatcher.RunAsync` volání a preventivních opatření k volání `ConfigureAwait(false)` .
 
 #### <a name="more-information-about-signing-out"></a>Další informace o odhlášení<a name="more-information-on-sign-out"></a>
 
@@ -477,8 +476,7 @@ Rozhraní Microsoft Graph API vyžaduje, `user.read` aby se v oboru četl profil
 
 Chcete-li získat přístup k kalendářům uživatele v kontextu aplikace, přidejte `Calendars.Read` delegované oprávnění k informacím o registraci aplikace. Pak přidejte `Calendars.Read` obor do `acquireTokenSilent` volání.
 
-> [!NOTE]
-> Uživatelům se může zobrazit výzva k dalšímu souhlasu při zvýšení počtu oborů.
+Uživatelům se může zobrazit výzva k dalšímu souhlasu při zvýšení počtu oborů.
 
 ## <a name="known-issues"></a>Známé problémy
 

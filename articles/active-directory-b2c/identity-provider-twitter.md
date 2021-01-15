@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 7779730b98630d08af046e7cb402caca1d0c2fe6
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: a0f209e0ac17c62378d279a32f4a27f48a9f74bd
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653652"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232688"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-twitter-account-using-azure-active-directory-b2c"></a>Nastavte si registraci a přihlaste se pomocí účtu Twitteru pomocí Azure Active Directory B2C
 
@@ -29,22 +29,27 @@ ms.locfileid: "97653652"
 
 ::: zone-end
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 ## <a name="create-an-application"></a>Vytvoření aplikace
 
-Pokud chcete jako poskytovatele identity v Azure AD B2C používat Twitter, musíte vytvořit aplikaci Twitter. Pokud ještě nemáte účet na Twitteru, můžete se zaregistrovat [https://twitter.com/signup](https://twitter.com/signup) .
+Pokud chcete povolit přihlášení uživatelům s účtem Twitteru v Azure Active Directory B2C (Azure AD B2C), musíte vytvořit aplikaci Twitter. Pokud ještě nemáte účet na Twitteru, můžete se zaregistrovat [https://twitter.com/signup](https://twitter.com/signup) . Musíte se také [použít pro vývojářský účet](https://developer.twitter.com/en/apply/user.html). Další informace najdete v tématu [použití pro přístup](https://developer.twitter.com/en/apply-for-access).
 
-1. Přihlaste se k webu pro [vývojáře na Twitteru](https://developer.twitter.com/en/apps) pomocí přihlašovacích údajů k účtu Twitteru.
-1. Vyberte  **vytvořit aplikaci**.
-1. Zadejte **název aplikace** a **Popis aplikace**.
-1. Do **adresy URL webu** zadejte `https://your-tenant.b2clogin.com` . Nahraďte `your-tenant` názvem vašeho tenanta. Například `https://contosob2c.b2clogin.com`.
-1. Jako **adresu URL zpětného volání** zadejte `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-user-flow-Id/oauth1/authresp` . Nahraďte `your-tenant` názvem vašeho tenanta a `your-user-flow-Id` identifikátorem toku uživatele. Například `b2c_1A_signup_signin_twitter`. Při zadávání názvu tenanta a ID toku uživatele je potřeba použít malá písmena, i když jsou v Azure AD B2C definované velkými písmeny.
-1. V dolní části stránky si přečtěte a přijměte podmínky a pak vyberte **vytvořit**.
-1. Na stránce **podrobností aplikace** vyberte **Upravit > upravit podrobnosti**, zaškrtněte políčko **Povolit přihlášení pomocí Twitteru** a potom vyberte **Uložit**.
-1. Vyberte **klíče a tokeny** a zaznamenejte **klíč rozhraní API příjemce** a hodnoty **tajného klíče rozhraní API příjemce** , které chcete použít později.
+1. Přihlaste se k [portálu pro vývojáře na Twitteru](https://developer.twitter.com/portal/projects-and-apps) pomocí přihlašovacích údajů k účtu Twitteru.
+1. V části **samostatné aplikace** vyberte **+ vytvořit aplikaci**.
+1. Zadejte **název aplikace** a pak vyberte **Dokončit**.
+1. Zkopírujte hodnotu **klíče aplikace** a klíč **rozhraní API**.  Pomocí obou z nich můžete nakonfigurovat Twitter jako poskytovatele identity ve vašem tenantovi. 
+1. V části **nastavení aplikace** vyberte **nastavení aplikace**.
+1. V části **nastavení ověřování** vyberte **Upravit** .
+    1. Zaškrtněte políčko **Povolit 3 – legged OAuth** .
+    1. Zaškrtněte políčko pro **zadání e-mailové adresy uživatele** .
+    1. Jako **adresu URL zpětného volání** zadejte `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-user-flow-Id/oauth1/authresp` . Nahraďte `your-tenant` názvem vašeho tenanta a `your-user-flow-Id` identifikátorem toku uživatele. Například `b2c_1A_signup_signin_twitter`. Při zadávání názvu tenanta a ID toku uživatele je potřeba použít malá písmena, i když jsou v Azure AD B2C definované velkými písmeny.
+    1. Jako **adresu URL webu** zadejte `https://your-tenant.b2clogin.com` . Nahraďte `your-tenant` názvem vašeho tenanta. Například `https://contosob2c.b2clogin.com`.
+    1. Zadejte adresu URL pro **účely podmínek služby**, například `http://www.contoso.com/tos` . Adresa URL zásad je stránka, kterou udržujete pro poskytování podmínek a ujednání pro vaši aplikaci.
+    1. Zadejte adresu URL pro **Zásady ochrany osobních údajů**, například `http://www.contoso.com/privacy` . Adresa URL zásad je stránka, kterou udržujete pro poskytování informací o ochraně osobních údajů pro vaši aplikaci.
+    1. Vyberte **Uložit**.
 
 ::: zone pivot="b2c-user-flow"
 
@@ -55,9 +60,19 @@ Pokud chcete jako poskytovatele identity v Azure AD B2C používat Twitter, mus�
 1. Zvolte **Všechny služby** v levém horním rohu portálu Azure Portal a vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **Zprostředkovatelé identity** a pak vyberte **Twitter**.
 1. Zadejte **název**. Například *Twitter*.
-1. Pro **ID klienta** zadejte klíč rozhraní API příjemce aplikace Twitter, kterou jste vytvořili dříve.
-1. Pro **tajný klíč klienta** zadejte tajný klíč rozhraní API příjemce, který jste si poznamenali.
+1. Pro **ID klienta** zadejte *klíč rozhraní API* aplikace Twitter, kterou jste vytvořili dříve.
+1. Pro **tajný klíč klienta** zadejte *tajný kód klíče rozhraní API* , který jste si poznamenali.
 1. Vyberte **Uložit**.
+
+## <a name="add-twitter-identity-provider-to-a-user-flow"></a>Přidání poskytovatele identity Twitteru do toku uživatele 
+
+1. Ve vašem tenantovi Azure AD B2C vyberte **toky uživatelů**.
+1. Vyberte tok uživatele, který chcete přidat poskytovatele identity Twitteru.
+1. V části **Zprostředkovatelé sociální identity** vyberte **Twitter**.
+1. Vyberte **Uložit**.
+1. Pokud chcete zásady testovat, vyberte **Spustit tok uživatele**.
+1. V poli **aplikace** vyberte webovou aplikaci s názvem *testapp1* , kterou jste předtím zaregistrovali. Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
+1. Klikněte na **Spustit tok uživatele** .
 
 ::: zone-end
 
@@ -103,7 +118,7 @@ Můžete definovat účet Twitter jako zprostředkovatele deklarací, a to tak, 
             <Item Key="request_token_endpoint">https://api.twitter.com/oauth/request_token</Item>
             <Item Key="ClaimsEndpoint">https://api.twitter.com/1.1/account/verify_credentials.json?include_email=true</Item>
             <Item Key="ClaimsResponseFormat">json</Item>
-            <Item Key="client_id">Your Twitter application consumer key</Item>
+            <Item Key="client_id">Your Twitter application API key</Item>
           </Metadata>
           <CryptographicKeys>
             <Key Id="client_secret" StorageReferenceId="B2C_1A_TwitterSecret" />
@@ -127,8 +142,8 @@ Můžete definovat účet Twitter jako zprostředkovatele deklarací, a to tak, 
     </ClaimsProvider>
     ```
 
-4. Hodnotu **client_id** nahraďte klíč příjemce, který jste předtím nahráli.
-5. Uložte soubor.
+4. Hodnotu **client_id** nahraďte *tajným klíčem rozhraní API* , který jste předtím nahráli.
+5. Soubor uložte.
 
 ### <a name="upload-the-extension-file-for-verification"></a>Nahrajte soubor rozšíření pro ověření.
 
@@ -173,24 +188,6 @@ Teď, když máte tlačítko na místě, musíte ho propojit s akcí. Tato akce 
     Aktualizujte hodnotu **TechnicalProfileReferenceId** na ID technického profilu, který jste vytvořili dříve. Například `Twitter-OAUTH1`.
 
 3. Uložte soubor *TrustFrameworkExtensions.xml* a znovu ho nahrajte pro účely ověření.
-
-::: zone-end
-
-::: zone pivot="b2c-user-flow"
-
-## <a name="add-twitter-identity-provider-to-a-user-flow"></a>Přidání poskytovatele identity Twitteru do toku uživatele 
-
-1. Ve vašem tenantovi Azure AD B2C vyberte **toky uživatelů**.
-1. Klikněte na tok uživatele, který chcete pro poskytovatele identity Twitteru.
-1. V části **Zprostředkovatelé sociální identity** vyberte **Twitter**.
-1. Vyberte **Uložit**.
-1. Pokud chcete zásady testovat, vyberte **Spustit tok uživatele**.
-1. V poli **aplikace** vyberte webovou aplikaci s názvem *testapp1* , kterou jste předtím zaregistrovali. Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
-1. Klikněte na **Spustit tok uživatele** .
-
-::: zone-end
-
-::: zone pivot="b2c-custom-policy"
 
 ## <a name="update-and-test-the-relying-party-file"></a>Aktualizace a testování souboru předávající strany
 

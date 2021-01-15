@@ -13,12 +13,12 @@ ms.date: 01/04/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperf-fy21q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 0b3c2f74edff661326e97da7b06860914468c43b
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: ec925ce165c1de98fe920381e1b51e3388c1e4ad
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98059343"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232399"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Konfigurovatelné životnosti tokenů v platformě Microsoft Identity Platform (Preview)
 
@@ -101,8 +101,7 @@ Důvěrné klienty jsou aplikace, které můžou bezpečně ukládat heslo klien
 
 Veřejné klienty nemohou bezpečně ukládat heslo klienta (tajný kód). Například aplikace pro iOS/Android nemůže odvažovat tajný klíč od vlastníka prostředku, takže se považuje za veřejného klienta. Můžete nastavit zásady pro prostředky, aby se zabránilo aktualizačním tokenům z veřejných klientů starších než v zadaném období, od získání nového páru přístupů nebo obnovovacího tokenu. Chcete-li to provést, použijte [vlastnost Max neaktivního času obnovovacího tokenu](#refresh-token-max-inactive-time) ( `MaxInactiveTime` ). Pomocí zásad můžete také nastavit dobu, po kterou se obnovovací tokeny už nepřijímají. Chcete-li to provést, použijte vlastnost [maximální stáří tokenu aktualizace s jedním koeficientem](#single-factor-session-token-max-age) nebo [token relace ve více faktorech](#multi-factor-refresh-token-max-age) . Dobu platnosti obnovovacího tokenu můžete upravit tak, aby bylo možné řídit, kdy a jak často musí uživatel při použití veřejné klientské aplikace znovu zadat přihlašovací údaje.
 
-> [!NOTE]
-> Vlastnost maximální stáří představuje dobu, po kterou lze použít jeden token. 
+Vlastnost maximální stáří představuje dobu, po kterou lze použít jeden token. 
 
 ### <a name="single-sign-on-session-tokens"></a>Tokeny relace jednotného přihlašování
 Když se uživatel ověřuje pomocí platformy Microsoft Identity Platform, je k relaci jednotného přihlašování (SSO) s prohlížečem uživatele a platformou Microsoft identity. Token jednotného přihlašování ve formě souboru cookie představuje tuto relaci. Token relace jednotného přihlašování není vázán na konkrétní prostředek nebo klientskou aplikaci. Tokeny relace jednotného přihlašování se dají odvolat a jejich platnost se kontroluje pokaždé, když se používají.

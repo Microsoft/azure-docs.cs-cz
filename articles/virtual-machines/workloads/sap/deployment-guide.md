@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/16/2020
 ms.author: sedusch
-ms.openlocfilehash: 2eb3564153734ff70b7df69da568966e29747863
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: c70de186468eb3efacc82c1d5c8802612475fd4d
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202432"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232790"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Nasazení Azure Virtual Machines pro SAP NetWeaver
 
@@ -325,7 +325,7 @@ Azure Virtual Machines je řešení pro organizace, které potřebují výpočet
 
 V tomto článku jsme pokryli postup nasazení aplikací SAP na virtuálních počítačích v Azure, včetně alternativních možností nasazení a řešení potíží. Tento článek sestaví na informacích v [Azure Virtual Machines plánování a implementace pro SAP NetWeaver][planning-guide]. Také doplňuje dokumentaci k instalaci SAP a poznámky SAP, které jsou primárními prostředky pro instalaci a nasazení softwaru SAP.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
@@ -371,7 +371,7 @@ Pro určení velikosti SAP si můžete sdělit následující informace:
 
 V Azure Resource Manager můžete použít skupiny prostředků ke správě všech prostředků aplikace ve vašem předplatném Azure. Další informace najdete v článku [Přehled Azure Resource Manageru][resource-group-overview].
 
-## <a name="resources"></a>Zdroje informací
+## <a name="resources"></a>Prostředky
 
 ### <a name="sap-resources"></a><a name="42ee2bdb-1efc-4ec7-ab31-fe4c22769b94"></a>Prostředky SAP
 
@@ -452,7 +452,7 @@ Průvodce vás provede nastavením požadovaných parametrů k vytvoření virtu
      * **Skupina zabezpečení sítě**: Další informace najdete v tématu [řízení toku síťového provozu pomocí skupin zabezpečení sítě][virtual-networks-nsg].
    * **Rozšíření**: rozšíření virtuálních počítačů můžete nainstalovat přidáním do nasazení. V tomto kroku nemusíte přidávat rozšíření. Rozšíření požadovaná pro podporu SAP se instalují později. Viz kapitola [Konfigurace rozšíření Azure pro SAP][deployment-guide-4.5] v této příručce.
    * **Vysoká dostupnost**: vyberte skupinu dostupnosti, nebo zadejte parametry pro vytvoření nové skupiny dostupnosti. Další informace najdete v tématu [skupiny dostupnosti Azure][planning-guide-3.2.3].
-   * **Monitorování**
+   * **Sledování**
      * **Diagnostika spouštění**: můžete vybrat možnost **Zakázat** pro diagnostiku spouštění.
      * **Diagnostika hostovaného operačního systému**: pro diagnostiku monitorování můžete vybrat **Zakázat** .
 
@@ -591,7 +591,7 @@ Průvodce vás provede nastavením požadovaných parametrů k vytvoření virtu
      * **Skupina zabezpečení sítě**: Další informace najdete v tématu [řízení toku síťového provozu pomocí skupin zabezpečení sítě][virtual-networks-nsg].
    * **Rozšíření**: rozšíření virtuálních počítačů můžete nainstalovat přidáním do nasazení. V tomto kroku nemusíte přidávat rozšíření. Rozšíření požadovaná pro podporu SAP se instalují později. Viz kapitola [Konfigurace rozšíření Azure pro SAP][deployment-guide-4.5] v této příručce.
    * **Vysoká dostupnost**: vyberte skupinu dostupnosti, nebo zadejte parametry pro vytvoření nové skupiny dostupnosti. Další informace najdete v tématu [skupiny dostupnosti Azure][planning-guide-3.2.3].
-   * **Monitorování**
+   * **Sledování**
      * **Diagnostika spouštění**: můžete vybrat možnost **Zakázat** pro diagnostiku spouštění.
      * **Diagnostika hostovaného operačního systému**: pro diagnostiku monitorování můžete vybrat **Zakázat** .
 
@@ -912,8 +912,8 @@ Další informace o trasách definovaných uživatelem najdete v tématu [trasy 
 ### <a name="configure-the-azure-extension-for-sap"></a><a name="d98edcd3-f2a1-49f7-b26a-07448ceb60ca"></a>Konfigurace rozšíření Azure pro SAP
 
 > [!NOTE]
-> Obecný příkaz podpory: Pokud potřebujete podporu pro rozšíření Azure pro SAP, vždy prosím otevřete incident pomocí SAP pro komponentu BC-OP-NT-AZR pro Windows nebo BC-OP-LNX-AZR.
-> V systému podpory SAP existují vyhrazení technici podpory Microsoftu, které vám pomůžou s našimi společnými zákazníky.
+> Obecný příkaz podpory:  
+> Podpora rozšíření Azure pro SAP je poskytována prostřednictvím kanálů podpory SAP. Pokud potřebujete pomoc s rozšířením Azure pro SAP, otevřete prosím případ podpory s [podporou SAP](https://support.sap.com/). 
 
 Po přípravě virtuálního počítače, jak je popsáno v tématu [scénáře nasazení virtuálních počítačů pro SAP v Azure][deployment-guide-3], je na virtuálním počítači nainstalovaný agent virtuálního počítače Azure. Dalším krokem je nasazení rozšíření Azure pro SAP, které je k dispozici v úložišti rozšíření Azure v globálních datacentrech Azure. Další informace najdete v tématu [plánování a implementace služby Azure Virtual Machines pro SAP NetWeaver][planning-guide-9.1].
 

@@ -3,12 +3,12 @@ title: Analýza využití pomocí Azure Application Insights | Dokumentace Micro
 description: Pochopte uživatele a to, co dělají s vaší aplikací.
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 4f4954451bfa195b07c580ffa451b8cb333eb32c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 633d35ec16f5eb9de664421c38cd4c824dc240cf
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90532099"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233844"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Analýzy používání pomocí nástroje Application Insights
 
@@ -65,7 +65,7 @@ Přehledy o tom, jaké jsou zajímavé vzory v sadě dat, najdete na pravé stra
 
 ## <a name="retention---how-many-users-come-back"></a>Uchování – kolik uživatelů se vrátí?
 
-Uchovávání vám pomůže pochopit, jak často se uživatelé budou vracet k používání své aplikace, na základě kohorty uživatelů, kteří provedli některé obchodní akce během určitého časového intervalu. 
+Uchovávání vám pomůže pochopit, jak často se uživatelé budou vracet k používání své aplikace, na základě kohorty uživatelů, kteří provedli některé obchodní akce během určitého časového intervalu. 
 
 - Informace o tom, jaké konkrétní funkce způsobí, že se uživatelé budou moci vrátit více než jiné 
 - Forma hypotézy založená na datech reálného uživatele 
@@ -79,7 +79,9 @@ Ovládací prvky uchování v horní části umožňují definovat konkrétní u
 
 ## <a name="custom-business-events"></a>Vlastní obchodní události
 
-Chcete-li získat jasné informace o tom, co uživatelé s vaší aplikací dělají, je vhodné vložit řádky kódu do protokolu pro vlastní události. Tyto události mohou sledovat cokoli od podrobných uživatelských akcí, jako je například kliknutí na určitá tlačítka, na důležitější obchodní události, jako je například vytvoření nákupu nebo získání hry. 
+Chcete-li získat jasné informace o tom, co uživatelé s vaší aplikací dělají, je vhodné vložit řádky kódu do protokolu pro vlastní události. Tyto události mohou sledovat cokoli od podrobných uživatelských akcí, jako je například kliknutí na určitá tlačítka, na důležitější obchodní události, jako je například vytvoření nákupu nebo získání hry.
+
+K shromažďování vlastních událostí můžete také použít [modul plug-in pro automatické shromažďování a analýzu](javascript-click-analytics-plugin.md) .
 
 I když v některých případech mohou zobrazení stránky představovat užitečné události, neplatí obecně. Uživatel může otevřít stránku produktu bez nákupu produktu. 
 

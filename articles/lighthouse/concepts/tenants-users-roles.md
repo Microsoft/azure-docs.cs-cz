@@ -1,14 +1,14 @@
 ---
 title: Klienti, uživatelé a role ve scénářích Azure Lighthouse
 description: Seznamte se s koncepty Azure Active Directory klientů, uživatelů a rolí a také jak se dají použít ve scénářích Azure Lighthouse.
-ms.date: 10/29/2020
+ms.date: 01/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: 411b9bae19166e1875011360aa011c05d590b237
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d78828cc739030f8e456c64885d77ddf59dd13fb
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023938"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233912"
 ---
 # <a name="tenants-users-and-roles-in-azure-lighthouse-scenarios"></a>Klienti, uživatelé a role ve scénářích Azure Lighthouse
 
@@ -18,7 +18,10 @@ Před zprovozněním zákazníků pro [Azure Lighthouse](../overview.md)je důle
 
 Aby bylo možné dosáhnout této logické projekce, *musí být předplatné* (nebo jedna nebo víc skupin prostředků v rámci předplatného) v tenantovi zákazníka připojené do Azure Lighthouse. Tento proces připojování se dá provést buď [prostřednictvím šablon Azure Resource Manager](../how-to/onboard-customer.md) , nebo [publikováním veřejné nebo soukromé nabídky k Azure Marketplace](../how-to/publish-managed-services-offers.md).
 
-Podle toho, jakou metodu připojování zvolíte, budete muset definovat *autorizaci*. Každá autorizace určuje uživatelský účet ve správě tenanta, který bude mít přístup k delegovaným prostředkům, a předdefinovanou roli, která nastaví oprávnění, která budou mít tito uživatelé pro tyto prostředky.
+Podle toho, jakou metodu připojování zvolíte, budete muset definovat *autorizaci*. Každé autorizaci Určuje **principalId** , který bude mít přístup k delegovaným prostředkům, a předdefinovanou roli, která nastaví oprávnění, která budou mít tito uživatelé pro tyto prostředky. Tento **principalId** definuje uživatele, skupinu nebo instanční objekt služby Azure AD ve správě tenanta.
+
+> [!NOTE]
+> Pokud explicitně neurčíte, odkazy na uživatele v dokumentaci ke službě Azure Lighthouse se můžou vztahovat na uživatele, skupiny nebo instanční objekty služby Azure AD v rámci autorizace.
 
 ## <a name="best-practices-for-defining-users-and-roles"></a>Osvědčené postupy pro definování uživatelů a rolí
 

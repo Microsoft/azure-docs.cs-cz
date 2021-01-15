@@ -12,12 +12,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperf-fy21q1, contperf-fy21q2
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: cc0d908f479fe5bdf14abb2ace0e6c046fd6d7d5
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 45280ec41a9fd9423e4184b2e1ce593720ab6488
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011945"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232348"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Rychlý Start: registrace aplikace s platformou Microsoft identity
 
@@ -25,7 +25,7 @@ V tomto rychlém startu zaregistrujete aplikaci do Azure Portal, aby platforma M
 
 Každá aplikace, pro kterou má platforma Microsoft Identity provádět správu identit a přístupu (IAM), musí být zaregistrovaná. Bez ohledu na to, jestli se jedná o klientskou aplikaci, jako je webová nebo mobilní aplikace, nebo se jedná o webové rozhraní API, které zálohuje klientskou aplikaci, registrace vytvoří vztah důvěryhodnosti mezi vaší aplikací a poskytovatelem identity a platformou Microsoft identity.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure s aktivním předplatným – [vytvořit účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * Dokončení [rychlého startu: nastavení tenanta](quickstart-create-new-tenant.md)
@@ -97,7 +97,7 @@ Existují určitá omezení formátu identifikátorů URI přesměrování přid
 
 ## <a name="add-credentials"></a>Přidat přihlašovací údaje
 
-Přihlašovací údaje jsou používány důvěrnými klientskými aplikacemi, které přistupují k webovému rozhraní API. Příklady důvěrných klientů jsou webové aplikace, jiná webová rozhraní API nebo aplikace typu démon a Service-Type. Přihlašovací údaje umožňují, aby se vaše aplikace ověřovala jako samotná a nevyžadovala žádné interakce od uživatele za běhu.
+Přihlašovací údaje jsou používány [důvěrnými klientskými aplikacemi](msal-client-applications.md) , které přistupují k webovému rozhraní API. Příklady důvěrných klientů jsou [webové aplikace](scenario-web-app-call-api-overview.md), jiná [webová rozhraní API](scenario-protected-web-api-overview.md)nebo [aplikace typu démon a Service-Type](scenario-daemon-overview.md). Přihlašovací údaje umožňují, aby se vaše aplikace ověřovala jako samotná a nevyžadovala žádné interakce od uživatele za běhu. 
 
 K registraci důvěrných klientských aplikací můžete přidat jak certifikáty, tak i klientské tajné klíče (řetězce) jako přihlašovací údaje.
 
@@ -105,7 +105,7 @@ K registraci důvěrných klientských aplikací můžete přidat jak certifiká
 
 ### <a name="add-a-certificate"></a>Přidat certifikát
 
-V případě, že se někdy označuje jako *veřejný klíč*, jsou certifikáty doporučeným typem přihlašovacích údajů, protože poskytují vyšší úroveň zabezpečení než tajný klíč klienta.
+V případě, že se někdy označuje jako *veřejný klíč*, jsou certifikáty doporučeným typem přihlašovacích údajů, protože poskytují vyšší úroveň zabezpečení než tajný klíč klienta. Další informace o tom, jak používat certifikát jako metodu ověřování v aplikaci, najdete v tématu [přihlašovací údaje certifikátu pro ověřování aplikací platformy Microsoft Identity Platform](active-directory-certificate-credentials.md) .
 
 1. V Azure Portal vyberte svou aplikaci v **Registrace aplikací** .
 1. Vyberte **certifikáty & tajných klíčů**  >  **nahrát certifikát**.
@@ -114,7 +114,7 @@ V případě, že se někdy označuje jako *veřejný klíč*, jsou certifikáty
 
 ### <a name="add-a-client-secret"></a>Přidat tajný klíč klienta
 
-Tajný kód klienta, označovaný také jako *heslo aplikace*, je hodnota řetězce, kterou může aplikace použít místo certifikátu k samotné identitě. To je snazší pro použití těchto dvou typů přihlašovacích údajů, které se často používají během vývoje, ale považuje se za méně bezpečné než certifikát. Ve svých aplikacích běžících v produkčním prostředí byste měli používat certifikáty.
+Tajný kód klienta, označovaný také jako *heslo aplikace*, je hodnota řetězce, kterou může aplikace použít místo certifikátu k samotné identitě. To je snazší pro použití těchto dvou typů přihlašovacích údajů, které se často používají během vývoje, ale považuje se za méně bezpečné než certifikát. Ve svých aplikacích běžících v produkčním prostředí byste měli používat certifikáty. Další informace o doporučeních pro zabezpečení aplikací najdete v tématu [osvědčené postupy a doporučení pro Microsoft Identity Platform](identity-platform-integration-checklist.md#security) .
 
 1. V Azure Portal vyberte svou aplikaci v **Registrace aplikací** .
 1. Vyberte **certifikáty & tajných klíčů**  >   **nový tajný klíč klienta**.
@@ -122,6 +122,8 @@ Tajný kód klienta, označovaný také jako *heslo aplikace*, je hodnota řetě
 1. Vyberte dobu trvání.
 1. Vyberte **Přidat**.
 1. **Poznamenejte si hodnotu tajného klíče** pro použití v kódu klientské aplikace – po opuštění této stránky se už *nezobrazí* .
+
+**Poznámka:** ID generované spolu s hodnotou tajného klíče je ID tajného klíče, které se liší od ID aplikace.
 
 ## <a name="next-steps"></a>Další kroky
 

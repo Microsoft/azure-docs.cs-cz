@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: fb193637525722bf227241a614cd977fbf70c9ac
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: df4bd0ae0884feae8bd21e33f4d27b6ceb207337
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93074178"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233997"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Nejčastější dotazy týkající se konfigurace a správy pro Web Apps v Azure
 
@@ -63,7 +63,7 @@ Nastavení časového pásma serveru pro vaši webovou aplikaci:
 2. V části **nastavení aplikace** přidejte toto nastavení:
     * Key = WEBSITE_TIME_ZONE
     * Hodnota = *časové pásmo, které chcete*
-3. Vyberte **Uložit** .
+3. Vyberte **Uložit**.
 
 Pro služby App Service, které běží na Windows, se podívejte na výstup z `tzutil /L` příkazu Windows. Použijte hodnotu z druhého řádku každé položky. Například: "Tonga (běžný čas)". Některé z těchto hodnot jsou také uvedeny ve sloupci **timezone (časové pásmo** ) ve [výchozích časových pásmech](/windows-hardware/manufacture/desktop/default-time-zones).
 
@@ -71,14 +71,14 @@ Pro služby App Services spuštěné v systému Linux nastavte hodnotu z [datab�
 
 ## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>Proč dojde k selhání mých nepřetržitých webových úloh?
 
-Ve výchozím nastavení jsou webové aplikace uvolněny, pokud nejsou po stanovenou dobu nečinné. To umožňuje systému šetřit prostředky. V plánech Basic a Standard můžete zapnout nastavení **Always On** , aby se webová aplikace neustále načetla. Pokud vaše webová aplikace spouští nepřetržité webové úlohy, měli byste zapnout funkci **Always On** , jinak nemusí být webové úlohy spolehlivě fungovat. Další informace najdete v tématu [Vytvoření nepřetržitě spuštěné úlohy WebJob](webjobs-create.md#CreateContinuous).
+Ve výchozím nastavení jsou webové aplikace uvolněny, pokud nejsou po stanovenou dobu nečinné. To umožňuje systému šetřit prostředky. V plánech Basic a Standard můžete zapnout nastavení **Always On** , aby se webová aplikace neustále načetla. Pokud vaše webová aplikace spouští nepřetržité webové úlohy, měli byste zapnout funkci **Always On**, jinak nemusí být webové úlohy spolehlivě fungovat. Další informace najdete v tématu [Vytvoření nepřetržitě spuštěné úlohy WebJob](webjobs-create.md#CreateContinuous).
 
 ## <a name="how-do-i-get-the-outbound-ip-address-for-my-web-app"></a>Návody získat odchozí IP adresu pro moji webovou aplikaci?
 
 Získání seznamu odchozích IP adres pro vaši webovou aplikaci:
 
 1. V okně Azure Portal v okně webové aplikace přejděte do nabídky **vlastnosti** .
-2. Vyhledejte **odchozí IP adresy** .
+2. Vyhledejte **odchozí IP adresy**.
 
 Zobrazí se seznam odchozích IP adres.
 
@@ -131,7 +131,7 @@ Kontrola protokolů webové úlohy:
 2. Vyberte webovou úlohu.
 3. Vyberte tlačítko **přepnout výstup** .
 4. Pokud chcete stáhnout výstupní soubor, vyberte odkaz **ke stažení** .
-5. Pro jednotlivé běhy vyberte **jednotlivé vyvolání** .
+5. Pro jednotlivé běhy vyberte **jednotlivé vyvolání**.
 6. Vyberte tlačítko **přepnout výstup** .
 7. Vyberte odkaz ke stažení.
 
@@ -185,8 +185,8 @@ Pro zachycení trasování F12 máte dvě možnosti:
 ### <a name="f12-console-output"></a>Výstup konzoly F12
 
 1. Vyberte kartu **Konzola** .
-2. Pro každou kartu, která obsahuje více než 0 položek, vyberte kartu ( **Chyba** , **varování** nebo **informace** ). Pokud karta není vybraná, ikona karty je po přesunutí kurzoru z ní šedá nebo černá.
-3. V oblasti zpráv v podokně klikněte pravým tlačítkem myši a vyberte možnost **Kopírovat vše** .
+2. Pro každou kartu, která obsahuje více než 0 položek, vyberte kartu (**Chyba**, **varování** nebo **informace**). Pokud karta není vybraná, ikona karty je po přesunutí kurzoru z ní šedá nebo černá.
+3. V oblasti zpráv v podokně klikněte pravým tlačítkem myši a vyberte možnost **Kopírovat vše**.
 4. Vložte zkopírovaný text do souboru a pak soubor uložte.
 
 Chcete-li zobrazit soubor HAR, můžete použít [prohlížeč Har](http://www.softwareishard.com/har/viewer/).
@@ -284,7 +284,7 @@ Podrobnou dokumentaci k ověřování a autorizaci v App Service najdete v člá
 
 ## <a name="how-do-i-redirect-the-default-azurewebsitesnet-domain-to-my-azure-web-apps-custom-domain"></a>Návody přesměrovat výchozí doménu *. azurewebsites.net na vlastní doménu webové aplikace Azure?
 
-Když vytváříte nový web pomocí Web Apps v Azure, k vaší lokalitě se přiřadí výchozí *název_webu* . azurewebsites.NET doména. Pokud do svého webu přidáte vlastní název hostitele a nechcete, aby uživatelé měli přístup k vaší výchozí doméně *. azurewebsites.net, můžete přesměrovat výchozí adresu URL. Informace o tom, jak přesměrovat veškerý provoz z výchozí domény vašeho webu do vlastní domény, najdete v tématu [přesměrování výchozí domény do vlastní domény ve službě Azure Web Apps](https://zainrizvi.io/blog/block-default-azure-websites-domain/).
+Když vytváříte nový web pomocí Web Apps v Azure, k vaší lokalitě se přiřadí výchozí *název_webu*. azurewebsites.NET doména. Pokud do svého webu přidáte vlastní název hostitele a nechcete, aby uživatelé měli přístup k vaší výchozí doméně *. azurewebsites.net, můžete přesměrovat výchozí adresu URL. Informace o tom, jak přesměrovat veškerý provoz z výchozí domény vašeho webu do vlastní domény, najdete v tématu [přesměrování výchozí domény do vlastní domény ve službě Azure Web Apps](https://zainrizvi.io/blog/block-default-azure-websites-domain/).
 
 ## <a name="how-do-i-determine-which-version-of-net-version-is-installed-in-app-service"></a>Návody určit, která verze rozhraní .NET je nainstalovaná v App Service?
 
@@ -317,3 +317,8 @@ Můžete také zadat konkrétní dynamické a statické typy MIME, které chcete
 ## <a name="how-do-i-migrate-from-an-on-premises-environment-to-app-service"></a>Návody migraci z místního prostředí do App Service?
 
 Chcete-li migrovat lokality z webových serverů Windows a Linux na App Service, můžete použít Pomocník s migrací Azure App Service. Nástroj pro migraci v Azure podle potřeby vytvoří webové aplikace a databáze a publikuje obsah. Další informace najdete v tématu [Azure App Service Pomocník s migrací](https://appmigration.microsoft.com/).
+
+## <a name="why-is-my-certificate-issued-for-11-months-and-not-for-a-full-year"></a>Proč je můj certifikát vystavený na 11 měsíců, a ne na celý rok?
+
+Maximální doba trvání pro všechny certifikáty vystavené po 1. 9. 2020 je teď 397 dnů. Certifikáty vystavené před 1. 9. 2020 mají platnost maximálně 825 dnů, dokud se neprodlouží jejich platnost, neobnoví jejich klíče atd. Tato změna má vliv na všechny certifikáty, jejichž platnost se prodlouží po 1. 9. 2020, a uživatelé můžou zaznamenat kratší platnost prodloužených certifikátů.
+Společnost GoDaddy implementovala službu předplatného, která splňuje nové požadavky a zároveň respektuje stávající certifikáty zákazníků. Třicet dnů před vypršením platnosti nově vystaveného certifikátu služba automaticky vystaví druhý certifikát, kterým se prodlouží původní datum vypršení platnosti. App Service ve spolupráci se společností GoDaddy tuto změnu řeší, aby se zajistilo, že zákazníci získají celou dobu platnosti svých certifikátů.

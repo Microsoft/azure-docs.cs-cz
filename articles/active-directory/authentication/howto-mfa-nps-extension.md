@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: deb05083ca45c24a58cabf9e923b706575ef093b
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 484dd8313710332660bb20d55f3dac2aa21bbc61
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562136"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232518"
 ---
 # <a name="integrate-your-existing-network-policy-server-nps-infrastructure-with-azure-ad-multi-factor-authentication"></a>Integrace stávající infrastruktury serveru NPS (Network Policy Server) se službou Azure AD Multi-Factor Authentication
 
@@ -70,7 +70,7 @@ Servery VPN směrují žádosti o ověření, takže potřebují vědět o nový
 
 Rozšíření serveru NPS je určeno pro práci s vaší stávající infrastrukturou. Než začnete, ujistěte se, že máte následující předpoklady.
 
-### <a name="licenses"></a>Licenses
+### <a name="licenses"></a>Licence
 
 Rozšíření serveru NPS pro Azure AD Multi-Factor Authentication je k dispozici pro zákazníky s [licencemi pro Multi-Factor Authentication Azure AD](./concept-mfa-howitworks.md). Licence založené na spotřebě pro Multi-Factor Authentication Azure AD, jako jsou licence vázané na uživatele nebo na ověřování, nejsou kompatibilní s rozšířením NPS.
 
@@ -116,6 +116,8 @@ Kromě toho je potřeba připojení k následujícím adresám URL, aby se dokon
 * *https: \/ /Login.microsoftonline.com*
 * *https: \/ /provisioningapi.microsoftonline.com*
 * *https: \/ /aadcdn.msauth.NET*
+* *https: \/ /www.powershellgallery.com*
+* *https: \/ /aadcdn.msftauthimages.NET*
 
 ## <a name="prepare-your-environment"></a>Příprava prostředí
 

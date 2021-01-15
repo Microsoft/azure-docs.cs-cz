@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/06/2021
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: d5f5e1098b688fc307bae5ea3538c818cb529b0a
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: e15dce586dc4dd43cf56fd1cbb08b84ebcda1787
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97962393"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232297"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Aplikace klasické pracovní plochy, která volá webová rozhraní API: získání tokenu
 
@@ -242,7 +242,7 @@ MSAL poskytuje implementace webového uživatelského rozhraní pro většinu pl
 - Chcete testovat aplikaci v uživatelském rozhraní a používat automatizovaný prohlížeč, který lze použít se systémem selen.
 - Prohlížeč a aplikace, které používají MSAL, jsou v samostatných procesech.
 
-##### <a name="at-a-glance"></a>Na první pohled
+##### <a name="at-a-glance"></a>Ve zkratce
 
 K dosažení tohoto cíle přiřadíte MSAL `start Url` , který se musí zobrazit v prohlížeči podle volby, aby koncový uživatel mohl zadávat položky, jako je například uživatelské jméno.
 Po dokončení ověřování se aplikace musí předat zpátky do MSAL `end Url` , která obsahuje kód poskytovaný službou Azure AD.
@@ -420,8 +420,8 @@ Pokud se chcete přihlásit k doméně uživatele v doméně nebo počítači p�
 - Integrované ověřování systému Windows lze použít pouze pro *federované a* uživatele, tedy pro uživatele vytvořené ve službě Active Directory a na základě služby Azure AD. Uživatelé, kteří vytvořili přímo ve službě Azure AD bez zálohování služby Active Directory, se nazývají *spravované* uživatele, nemůžou tento tok ověřování používat. Toto omezení neovlivňuje tok uživatelského jména a hesla.
 - IWA je pro aplikace napsané pro platformy .NET Framework, .NET Core a Univerzální platforma Windows (UWP).
 - IWA neobejde službu [Multi-Factor Authentication (MFA)](../authentication/concept-mfa-howitworks.md). Pokud je nakonfigurované vícefaktorové ověřování, může IWA selhat, pokud se vyžaduje výzva MFA, protože MFA vyžaduje zásah uživatele.
-  > [!NOTE]
-  > Tato jedna z nich je obtížné. IWA je neinteraktivní, ale MFA vyžaduje interaktivitu uživatele. Nebudete ovládat, kdy zprostředkovatel identity požaduje, aby bylo provedeno MFA, správce tenanta. Vícefaktorové ověřování se vyžaduje v případě, že se přihlašujete z jiné země nebo oblasti, když se nepřipojí přes síť VPN k podnikové síti, a někdy i při připojení přes VPN. Neočekává se deterministické sady pravidel. Azure AD používá AI k nepřetržitému učení, jestli je potřeba MFA. Přejít zpět na výzvu uživatele, jako je interaktivní ověřování nebo tok kódu zařízení, pokud IWA dojde k chybě.
+  
+    IWA je neinteraktivní, ale MFA vyžaduje interaktivitu uživatele. Nebudete ovládat, kdy zprostředkovatel identity požaduje, aby bylo provedeno MFA, správce tenanta. Vícefaktorové ověřování se vyžaduje v případě, že se přihlašujete z jiné země nebo oblasti, když se nepřipojí přes síť VPN k podnikové síti, a někdy i při připojení přes VPN. Neočekává se deterministické sady pravidel. Azure AD používá AI k nepřetržitému učení, jestli je potřeba MFA. Přejít zpět na výzvu uživatele, jako je interaktivní ověřování nebo tok kódu zařízení, pokud IWA dojde k chybě.
 
 - Předaná autorita `PublicClientApplicationBuilder` musí být:
   - Tenant ve formuláři `https://login.microsoftonline.com/{tenant}/` , kde `tenant` je buď identifikátor GUID, který představuje ID tenanta nebo doménu přidruženou k tenantovi.
@@ -602,14 +602,13 @@ Token můžete získat také zadáním uživatelského jména a hesla. Tento tok
 
 ### <a name="this-flow-isnt-recommended"></a>Tento tok se nedoporučuje.
 
-Tento tok se *nedoporučuje* , protože aplikace požádá uživatele o heslo, protože není zabezpečené. Další informace najdete v tématu [co je řešení rostoucího problému s hesly?](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/). Upřednostňovaný tok pro získání tokenu v tichém režimu na počítačích připojených k doméně systému Windows je [integrované ověřování systému Windows](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Integrated-Windows-Authentication). Můžete také použít [tok kódu zařízení](https://aka.ms/msal-net-device-code-flow).
+Uživatelské jméno a tok hesla se *nedoporučují* , protože aplikace požádá uživatele o heslo, protože není zabezpečené. Další informace najdete v tématu [co je řešení rostoucího problému s hesly?](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/) Upřednostňovaný tok pro získání tokenu v tichém režimu na počítačích připojených k doméně systému Windows je [integrované ověřování systému Windows](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Integrated-Windows-Authentication). Můžete také použít [tok kódu zařízení](https://aka.ms/msal-net-device-code-flow).
 
-> [!NOTE]
-> Použití uživatelského jména a hesla je užitečné v některých případech, například ve scénářích DevOps. Pokud ale chcete použít uživatelské jméno a heslo v interaktivních scénářích, kde máte vlastní uživatelské rozhraní, vezměte v úvahu, jak z něho opustit. Pomocí uživatelského jména a hesla získáte několik věcí:
->
-> - Základní principy moderní identity. Heslo může být nepřístupné a přehrajteelné, protože sdílený tajný klíč je možné zachytit. Nejedná se o nekompatibilní bez hesla.
-> - Uživatelé, kteří potřebují provést MFA, se nemohou přihlásit, protože neexistují žádné interakce.
-> - Uživatelé nemůžou provádět jednotné přihlašování (SSO).
+Použití uživatelského jména a hesla je užitečné v některých případech, například ve scénářích DevOps. Pokud ale chcete použít uživatelské jméno a heslo v interaktivních scénářích, kde máte vlastní uživatelské rozhraní, vezměte v úvahu, jak z něho opustit. Pomocí uživatelského jména a hesla získáte několik věcí:
+
+- Základní principy moderní identity. Heslo může být nepřístupné a přehrajteelné, protože sdílený tajný klíč je možné zachytit. Nejedná se o nekompatibilní bez hesla.
+- Uživatelé, kteří potřebují provést MFA, se nemohou přihlásit, protože neexistují žádné interakce.
+- Uživatelé nemůžou provádět jednotné přihlašování (SSO).
 
 ### <a name="constraints"></a>Omezení
 
