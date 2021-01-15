@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
-ms.date: 12/15/2020
+ms.date: 01/14/2020
 ms.custom: contperf-fy21q1,contperfq1
-ms.openlocfilehash: 17c5cc265b4199d745325bf2c9d9fbca24cc6506
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 61305e4f9ba45cb7c13a96bee9d1aab81108bb4d
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617115"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220690"
 ---
 # <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Obsáhlý Learning a strojové učení v Azure Machine Learning
 
@@ -57,7 +57,7 @@ Následující tabulka porovnává tyto dvě metody podrobněji:
 |  **Doba spouštění** | Provede poměrně krátkou dobu, od několika sekund až po několik hodin. | Výuka obvykle trvá příliš dlouho, protože algoritmus hloubkového učení zahrnuje mnoho vrstev. |
 |  **Výstup** | Výstupem je obvykle číselná hodnota, jako je například skóre nebo klasifikace. | Výstup může mít několik formátů, jako je text, skóre nebo zvuk. |
 
-## <a name="transfer-learning"></a>Přenos učení
+## <a name="what-is-transfer-learning"></a>Co je učení přenosu
 
 Školení modelů pro hloubkové učení často vyžaduje velké množství školicích dat, špičkových výpočetních prostředků (GPU, TPU) a delší dobu výuky. Ve scénářích, kdy nemáte k dispozici žádnou z těchto možností, můžete postupovat podle techniky, která je známá jako *přenosová výuka.*
 
@@ -65,7 +65,7 @@ Učení přenosu je technika, která používá znalostní bázi získanou z ře
 
 Vzhledem ke struktuře sítí neuronové, první sada vrstev obvykle obsahuje funkce nižší úrovně, zatímco konečná sada vrstev obsahuje funkci vyšší úrovně, která je blíže k příslušné doméně. Tím, že ještě potřeba vyřadit konečné vrstvy pro použití v nové doméně nebo problému, můžete významně zkrátit dobu, data a výpočetní prostředky potřebné ke školení nového modelu. Například pokud již máte model, který rozpozná automobily, můžete změnit účel, který model používá ke studiu přenosu, a také rozpoznávat nákladní automobily, motocykly a jiné druhy vozidel.
 
-Naučte se, jak použít učení přenosu pro klasifikaci imagí pomocí Open-Source architektury v Azure Machine Learning: [klasifikaci imagí pomocí modelu Pytorch](./how-to-train-pytorch.md?WT.mc_id=docs-article-lazzeri).
+Naučte se, jak použít učení přenosu pro klasifikaci imagí pomocí Open-Source architektury v Azure Machine Learning: [Naučte si PyTorch model obsáhlého učení s využitím učení přenosu](./how-to-train-pytorch.md?WT.mc_id=docs-article-lazzeri).
 
 ## <a name="deep-learning-use-cases"></a>Případy použití hloubkového učení
 

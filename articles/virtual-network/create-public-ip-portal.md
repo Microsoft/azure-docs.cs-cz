@@ -11,22 +11,22 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
-ms.openlocfilehash: bd35d3288591a01c14e306960601eef6dea7e761
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 02a6e934b517cdd118b6175d9cfef73bee4c996d
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97954137"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223002"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-the-azure-portal"></a>Rychlý Start: vytvoření veřejné IP adresy pomocí Azure Portal
 
-V tomto článku se dozvíte, jak vytvořit prostředek veřejné IP adresy pomocí Azure Portal. Další informace o tom, k jakým prostředkům může být přidružen, rozdíl mezi základní a standardní SKU a dalšími souvisejícími informacemi, najdete v tématu [veřejné IP adresy](https://docs.microsoft.com/azure/virtual-network/public-ip-addresses).  V tomto příkladu se zaměříme jenom na adresy IPv4. Další informace o adresách IPv6 najdete v tématu [IPv6 pro virtuální síť Azure](https://docs.microsoft.com/azure/virtual-network/ipv6-overview).
+V tomto článku se dozvíte, jak vytvořit prostředek veřejné IP adresy pomocí Azure Portal. Další informace o tom, k jakým prostředkům může být přidružen, rozdíl mezi základní a standardní SKU a dalšími souvisejícími informacemi, najdete v tématu [veřejné IP adresy](./public-ip-addresses.md).  V tomto příkladu se zaměříme jenom na adresy IPv4. Další informace o adresách IPv6 najdete v tématu [IPv6 pro virtuální síť Azure](./ipv6-overview.md).
 
 # <a name="standard-sku---using-zones"></a>[**Standardní SKU – používání zón**](#tab/option-create-public-ip-standard-zones)
 
 Pomocí následujících kroků vytvořte standardní veřejnou IP adresu redundantní v zóně s názvem **myStandardZRPublicIP**.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 2. Vyberte **Vytvořit prostředek**. 
 3. Do vyhledávacího pole zadejte *veřejnou IP adresu*.
 4. Ve výsledcích hledání vyberte **Veřejná IP adresa**. Potom na stránce **Veřejná IP adresa** vyberte **vytvořit**.
@@ -37,7 +37,7 @@ Pomocí následujících kroků vytvořte standardní veřejnou IP adresu redund
     | Verze protokolu IP              | Vybrat IPv4                 |    
     | SKU                     | Vybrat **Standard**         |
     | Úroveň (Pokud je zobrazena *)                  | Vybrat **oblastní**         |
-    | Název                    | Zadejte *myStandardZRPublicIP*          |
+    | Name                    | Zadejte *myStandardZRPublicIP*          |
     | Přiřazení IP adresy   | Všimněte si, že tato možnost bude uzamčena jako statická.                                        |
     | Časový limit nečinnosti (minuty)  | Ponechte hodnotu 4.        |
     | Popisek názvu DNS          | Ponechte hodnotu prázdnou.    |
@@ -46,15 +46,15 @@ Pomocí následujících kroků vytvořte standardní veřejnou IP adresu redund
     | Umístění                | Vyberte **východní USA 2**      |
     | Zóna dostupnosti       | Vyberte **zónu – redundantní** nebo vyberte konkrétní zónu (viz poznámka níže). |
 
-Všimněte si, že se jedná o platné výběry pouze v oblastech s [zóny dostupnosti](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones).  (Můžete také vybrat konkrétní zónu v těchto oblastech, i když nebude odolná vůči selhání oblasti.)
+Všimněte si, že se jedná o platné výběry pouze v oblastech s [zóny dostupnosti](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones).  (Můžete také vybrat konkrétní zónu v těchto oblastech, i když nebude odolná vůči selhání oblasti.)
 
-\* = Úroveň se vztahuje k funkcím [Load Balancer mezi oblastmi](https://docs.microsoft.com/azure/load-balancer/cross-region-overview) , které jsou aktuálně ve verzi Preview.
+\* = Úroveň se vztahuje k funkcím [Load Balancer mezi oblastmi](../load-balancer/cross-region-overview.md) , které jsou aktuálně ve verzi Preview.
 
 # <a name="basic-sku"></a>[**Základní SKU**](#tab/option-create-public-ip-basic)
 
 Pomocí následujících kroků vytvořte základní statickou veřejnou IP adresu s názvem **myBasicPublicIP**.  Základní veřejné IP adresy nemají koncept zón dostupnosti.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 2. Vyberte **Vytvořit prostředek**. 
 3. Do vyhledávacího pole zadejte *veřejnou IP adresu*.
 4. Ve výsledcích hledání vyberte **Veřejná IP adresa**. Potom na stránce **Veřejná IP adresa** vyberte **vytvořit**.
@@ -64,7 +64,7 @@ Pomocí následujících kroků vytvořte základní statickou veřejnou IP adre
     | ---                     | ---                         |
     | Verze protokolu IP              | Vybrat IPv4                 |    
     | SKU                     | Vybrat **Standard**         |
-    | Název                    | Zadejte *myBasicPublicIP*          |
+    | Name                    | Zadejte *myBasicPublicIP*          |
     | Přiřazení IP adresy   | Zvolit **statickou** (viz poznámka níže)                                     |
     | Časový limit nečinnosti (minuty)  | Ponechte hodnotu 4.        |
     | Popisek názvu DNS          | Ponechte hodnotu prázdnou.    |
@@ -78,9 +78,9 @@ Pokud je přijatelné, aby se IP adresa změnila v čase, můžete vybrat **dyna
 
 ## <a name="additional-information"></a>Další informace 
 
-Další podrobnosti o jednotlivých polích uvedených výše najdete v tématu [Správa veřejných IP adres](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#create-a-public-ip-address).
+Další podrobnosti o jednotlivých polích uvedených výše najdete v tématu [Správa veřejných IP adres](./virtual-network-public-ip-address.md#create-a-public-ip-address).
 
 ## <a name="next-steps"></a>Další kroky
-- Přidružení [veřejné IP adresy k virtuálnímu počítači](https://docs.microsoft.com/azure/virtual-network/associate-public-ip-address-vm#azure-portal)
-- Přečtěte si další informace o [veřejných IP adresách](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) v Azure.
+- Přidružení [veřejné IP adresy k virtuálnímu počítači](./associate-public-ip-address-vm.md#azure-portal)
+- Přečtěte si další informace o [veřejných IP adresách](./public-ip-addresses.md#public-ip-addresses) v Azure.
 - Přečtěte si další informace o všech [nastaveních veřejné IP adresy](virtual-network-public-ip-address.md#create-a-public-ip-address).

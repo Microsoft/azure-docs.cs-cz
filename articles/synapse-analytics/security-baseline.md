@@ -8,24 +8,24 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 65985e05be1061bb69eb160cf5be559cb271d5cd
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 89a437504394797b8cbed5325210186248082c33
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202925"
+ms.locfileid: "98218226"
 ---
 # <a name="azure-security-baseline-for-azure-synapse-analytics"></a>Základní hodnoty zabezpečení Azure pro Azure synapse Analytics
 
 Základní plán zabezpečení Azure pro Azure synapse Analytics obsahuje doporučení, která vám pomůžou vylepšit stav zabezpečení vašeho nasazení.
 
-Základní hodnota této služby se vykreslí z [bezpečnostního testu Azure Security 1,0](https://docs.microsoft.com/azure/security/benchmarks/overview), který poskytuje doporučení k zabezpečení cloudových řešení v Azure s využitím našich osvědčených postupů.
+Základní hodnota této služby se vykreslí z [bezpečnostního testu Azure Security 1,0](../security/benchmarks/overview.md), který poskytuje doporučení k zabezpečení cloudových řešení v Azure s využitím našich osvědčených postupů.
 
-Další informace najdete v tématu [Přehled standardních hodnot zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview).
+Další informace najdete v tématu [Přehled standardních hodnot zabezpečení Azure](../security/benchmarks/security-baselines-overview.md).
 
 ## <a name="network-security"></a>Zabezpečení sítě
 
-*Další informace najdete v tématu [řízení zabezpečení: zabezpečení sítě](/azure/security/benchmarks/security-control-network-security).*
+*Další informace najdete v tématu [řízení zabezpečení: zabezpečení sítě](../security/benchmarks/security-control-network-security.md).*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1,1: Ochrana prostředků Azure v rámci virtuálních sítí
 
@@ -33,13 +33,13 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 Případně můžete při připojování ke synapse fondu SQL zúžit rozsah odchozího připojení k databázi SQL pomocí skupiny zabezpečení sítě. Nastavením povolit službám Azure na OFF zakažte všechny přenosy služeb Azure do databáze SQL prostřednictvím veřejného koncového bodu. Ujistěte se, že nejsou v pravidlech brány firewall povolená žádná veřejná IP adresa.
 
-* [Principy privátního odkazu Azure](https://docs.microsoft.com/azure/private-link/private-link-overview)
+* [Principy privátního odkazu Azure](../private-link/private-link-overview.md)
 
-* [Principy privátního odkazu pro Azure synapse SQL](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)
+* [Principy privátního odkazu pro Azure synapse SQL](../azure-sql/database/private-endpoint-overview.md)
 
-* [Vytvoření Virtual Network](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+* [Vytvoření Virtual Network](../virtual-network/quick-create-portal.md)
 
-* [Vytvoření NSG s konfigurací zabezpečení](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [Vytvoření NSG s konfigurací zabezpečení](../virtual-network/tutorial-filter-network-traffic.md)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
@@ -51,13 +51,13 @@ Případně můžete při připojování ke synapse fondu SQL zúžit rozsah odc
 
 Protokoly toku NSG můžete také odesílat do pracovního prostoru Log Analytics a používat Analýza provozu k poskytování přehledů o toku přenosů ve vašem cloudu Azure. Mezi výhody Analýza provozu patří schopnost vizualizovat síťovou aktivitu a identifikovat aktivní body, identifikovat bezpečnostní hrozby, pochopit vzory toků provozu a označovat nesprávné konfigurace sítě.
 
-* [Jak povolit protokoly toku NSG](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+* [Jak povolit protokoly toku NSG](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [Pochopení zabezpečení sítě, které poskytuje Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
+* [Pochopení zabezpečení sítě, které poskytuje Azure Security Center](../security-center/security-center-network-recommendations.md)
 
-* [Postup povolení a použití Analýza provozu](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+* [Postup povolení a použití Analýza provozu](../network-watcher/traffic-analytics.md)
 
-* [Pochopení zabezpečení sítě, které poskytuje Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
+* [Pochopení zabezpečení sítě, které poskytuje Azure Security Center](../security-center/security-center-network-recommendations.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -77,15 +77,15 @@ Protokoly toku NSG můžete také odesílat do pracovního prostoru Log Analytic
 
 Povolit DDoS Protection standard pro virtuální sítě přidružené k Azure synapse SQL pro ochranu před distribuovanými útoky DoS (Denial of Service). K odepření komunikace se známými škodlivými nebo nepoužívanými internetovými IP adresami použijte Azure Security Center integrovanou analýzu hrozeb.
 
-* [Principy ATP pro Azure synapse SQL](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)
+* [Principy ATP pro Azure synapse SQL](../azure-sql/database/threat-detection-overview.md)
 
-* [Jak povolit pokročilou zabezpečení dat pro Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)
+* [Jak povolit pokročilou zabezpečení dat pro Azure SQL Database](../azure-sql/database/azure-defender-for-sql.md)
 
-* [Přehled reklam](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)
+* [Přehled reklam](../azure-sql/database/azure-defender-for-sql.md)
 
-* [Jak nakonfigurovat DDoS Protection](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)
+* [Jak nakonfigurovat DDoS Protection](../ddos-protection/manage-ddos-protection.md)
 
-* [Pochopení Azure Security Center integrované analýzy hrozeb](https://docs.microsoft.com/azure/security-center/security-center-alerts-data-services)
+* [Pochopení Azure Security Center integrované analýzy hrozeb](../security-center/azure-defender.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -95,9 +95,9 @@ Povolit DDoS Protection standard pro virtuální sítě přidružené k Azure sy
 
 **Pokyny**: když se připojujete k vašemu rezervovanému fondu SQL a máte Povolené protokoly toku NSG (Network Security Group), odešlete protokoly do účtu Azure Storage pro auditování provozu. Protokoly toku můžete také odesílat do Log Analyticsho pracovního prostoru nebo je streamovat do Event Hubs. Pokud je to potřeba pro prošetření aktivity neobvyklé, povolte zachytávání paketů Network Watcher.
 
-* [Jak povolit protokoly toku NSG](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+* [Jak povolit protokoly toku NSG](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [Postup povolení Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-create)
+* [Postup povolení Network Watcher](../network-watcher/network-watcher-create.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -107,7 +107,7 @@ Povolit DDoS Protection standard pro virtuální sítě přidružené k Azure sy
 
 **Doprovodné** materiály: použití rozšířené ochrany před internetovými útoky (ATP) pro Azure synapse SQL. ATP detekuje aktivity neobvyklé indikující neobvyklé a potenciálně škodlivé pokusy o přístup k databázím nebo jejich zneužití a může aktivovat různé výstrahy, jako je například "potenciální injektáže SQL," a "přístup z neobvyklého umístění". ATP je součástí nabídky rozhraní ADS (Advanced Data Security) a dá se k nim přistupovat a spravovat prostřednictvím centrálního portálu SQL ADS. ATP také integruje výstrahy s Azure Security Center.
 
-* [Principy ATP pro Azure synapse SQL](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)
+* [Principy ATP pro Azure synapse SQL](../azure-sql/database/threat-detection-overview.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -127,9 +127,9 @@ Povolit DDoS Protection standard pro virtuální sítě přidružené k Azure sy
 
 Při použití koncového bodu služby pro vyhrazený fond SQL se vyžaduje odchozí IP adresy pro Azure SQL Database: musí být otevřené skupiny zabezpečení sítě (skupin zabezpečení sítě), aby se mohly Azure SQL Database IP adresy, aby bylo možné připojení. To můžete provést pomocí značek služby NSG pro Azure SQL Database.
 
-* [Pochopení značek služeb pomocí koncových bodů služby pro Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview#limitations)
+* [Pochopení značek služeb pomocí koncových bodů služby pro Azure SQL Database](../azure-sql/database/vnet-service-endpoint-rule-overview.md#limitations)
 
-* [Pochopení a používání značek služeb](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
+* [Pochopení a používání značek služeb](../virtual-network/service-tags-overview.md)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
@@ -141,9 +141,9 @@ Při použití koncového bodu služby pro vyhrazený fond SQL se vyžaduje odch
 
 Pomocí Azure modrotisky můžete zjednodušit rozsáhlá nasazení Azure tím, že zabalíte klíčové artefakty prostředí, jako jsou šablony pro správu prostředků Azure, řízení přístupu na základě role Azure (Azure RBAC) a zásady, a to v jediné definici podrobného plánu. Podrobné sestavování můžete snadno použít pro nová předplatná a prostředí a vyladit řízení a správu prostřednictvím správy verzí.
 
-* [Jak nakonfigurovat a spravovat Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [Vytvoření Azure Blueprint](https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal)
+* [Vytvoření Azure Blueprint](../governance/blueprints/create-blueprint-portal.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -157,7 +157,7 @@ Použijte některou z předdefinovaných Azure Policy definic souvisejících s 
 
 Pomocí Azure PowerShell nebo Azure CLI můžete vyhledávat nebo provádět akce s prostředky na základě jejich značek.
 
-* [Vytváření a používání značek](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
@@ -167,9 +167,9 @@ Pomocí Azure PowerShell nebo Azure CLI můžete vyhledávat nebo provádět akc
 
 **Pokyny**: pomocí protokolu aktivit Azure můžete monitorovat konfigurace síťových prostředků a zjišťovat změny síťových prostředků, které souvisejí s vaším vyhrazeným fondem SQL. Vytvoří výstrahy v rámci Azure Monitor, které se aktivují, když budou provedeny změny v kritických síťových prostředcích.
 
-* [Jak zobrazit a načíst události protokolu aktivit Azure](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
+* [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
-* [Vytváření výstrah v Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Vytváření výstrah v Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
@@ -177,13 +177,13 @@ Pomocí Azure PowerShell nebo Azure CLI můžete vyhledávat nebo provádět akc
 
 ## <a name="logging-and-monitoring"></a>Protokolování a monitorování
 
-*Další informace najdete v tématu [řízení zabezpečení: protokolování a monitorování](/azure/security/benchmarks/security-control-logging-monitoring).*
+*Další informace najdete v tématu [řízení zabezpečení: protokolování a monitorování](../security/benchmarks/security-control-logging-monitoring.md).*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2,1: Použijte schválené zdroje synchronizace času
 
 **Doprovodné** materiály: Microsoft udržuje časové zdroje pro prostředky Azure. Můžete aktualizovat synchronizaci času pro vaše nasazení výpočtů.
 
-* [Jak nakonfigurovat časovou synchronizaci pro výpočetní prostředky Azure](https://docs.microsoft.com/azure/virtual-machines/windows/time-sync)
+* [Jak nakonfigurovat časovou synchronizaci pro výpočetní prostředky Azure](../virtual-machines/windows/time-sync.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -199,9 +199,9 @@ Pokud povolíte auditování, můžete je zapsat do protokolu auditu v účtu Az
 
 Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třetí strany.
 
-* [Nastavení auditování pro prostředky SQL Azure](https://docs.microsoft.com/azure/azure-sql/database/auditing-overview#server-vs-database-level)
+* [Nastavení auditování pro prostředky SQL Azure](../azure-sql/database/auditing-overview.md#server-vs-database-level)
 
-* [Jak připojit Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -213,11 +213,11 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM tře
 
 Auditování lze povolit na úrovni databáze nebo serveru a je navrženo, aby bylo povoleno na úrovni serveru pouze v případě, že pro určitou databázi nevyžadujete konfiguraci samostatné datové jímky nebo uchování.
 
-* [Postup povolení auditování pro Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-auditing)
+* [Postup povolení auditování pro Azure SQL Database](../azure-sql/database/auditing-overview.md)
 
-* [Jak povolit auditování pro server](https://docs.microsoft.com/azure/azure-sql/database/auditing-overview#setup-auditing)
+* [Jak povolit auditování pro server](../azure-sql/database/auditing-overview.md#setup-auditing)
 
-* [Rozdíly v zásadách auditování na úrovni serveru oproti databázi](https://docs.microsoft.com/azure/sql-database/sql-database-auditing#server-vs-database-level)
+* [Rozdíly v zásadách auditování na úrovni serveru oproti databázi](../azure-sql/database/auditing-overview.md#server-vs-database-level)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -235,11 +235,11 @@ Auditování lze povolit na úrovni databáze nebo serveru a je navrženo, aby b
 
 **Doprovodné** materiály: při ukládání protokolů souvisejících s vaším vyhrazeným fondem SQL v účtu úložiště, Log Analytics pracovním prostoru nebo centra událostí nastavte dobu uchování protokolu podle předpisů pro dodržování předpisů vaší organizace.
 
-* [Správa životního cyklu úložiště objektů blob v Azure](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal)
+* [Správa životního cyklu úložiště objektů blob v Azure](../storage/blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal)
 
-* [Postup nastavení parametrů uchovávání protokolů v pracovním prostoru Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+* [Postup nastavení parametrů uchovávání protokolů v pracovním prostoru Log Analytics](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
-* [Zachytávání událostí streamování v Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)
+* [Zachytávání událostí streamování v Event Hubs](../event-hubs/event-hubs-capture-overview.md)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
@@ -251,13 +251,13 @@ Auditování lze povolit na úrovni databáze nebo serveru a je navrženo, aby b
 
 Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třetí strany.
 
-* [Pochopení rozšířené ochrany před internetovými útoky a upozorňování na Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)
+* [Pochopení rozšířené ochrany před internetovými útoky a upozorňování na Azure SQL Database](../azure-sql/database/threat-detection-overview.md)
 
-* [Jak povolit pokročilou zabezpečení dat pro Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)
+* [Jak povolit pokročilou zabezpečení dat pro Azure SQL Database](../azure-sql/database/azure-defender-for-sql.md)
 
-* [Jak nakonfigurovat vlastní výstrahy pro Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-insights-alerts-portal?view=azps-1.4.0&preserve-view=true)
+* [Jak nakonfigurovat vlastní výstrahy pro Azure SQL Database](../azure-sql/database/alerts-insights-configure-portal.md?preserve-view=true&view=azps-1.4.0)
 
-* [Jak připojit Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -269,13 +269,13 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM tře
 
 Alternativně můžete povolit a začlenit data do Azure Sentinel.
 
-* [Pochopení rozšířené ochrany před internetovými útoky a upozorňování na Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)
+* [Pochopení rozšířené ochrany před internetovými útoky a upozorňování na Azure SQL Database](../azure-sql/database/threat-detection-overview.md)
 
-* [Jak povolit pokročilou zabezpečení dat pro Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)
+* [Jak povolit pokročilou zabezpečení dat pro Azure SQL Database](../azure-sql/database/azure-defender-for-sql.md)
 
-* [Správa výstrah v Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)
+* [Správa výstrah v Azure Security Center](../security-center/security-center-managing-and-responding-alerts.md)
 
-* [Jak připojit Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -307,7 +307,7 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel.
 
 ## <a name="identity-and-access-control"></a>Identita a řízení přístupu
 
-*Další informace najdete v tématu [řízení zabezpečení: identita a řízení přístupu](/azure/security/benchmarks/security-control-identity-access-control).*
+*Další informace najdete v tématu [řízení zabezpečení: identita a řízení přístupu](../security/benchmarks/security-control-identity-access-control.md).*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: udržování inventáře účtů pro správu
 
@@ -317,19 +317,19 @@ Při prvním nasazení Azure SQL zadejte přihlašovací jméno správce a přid
 
 Pro operace správy použijte předdefinované role Azure, které se musí explicitně přiřadit. Pomocí modulu Azure AD PowerShell můžete provádět dotazy ad hoc a zjišťovat účty, které jsou členy skupin pro správu.
 
-* [Ověřování pro SQL Database](https://docs.microsoft.com/azure/azure-sql/database/security-overview#authentication)
+* [Ověřování pro SQL Database](../azure-sql/database/security-overview.md#authentication)
 
-* [Vytváření účtů pro uživatele bez oprávnění správce](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage#create-accounts-for-non-administrator-users)
+* [Vytváření účtů pro uživatele bez oprávnění správce](../azure-sql/database/logins-create-manage.md#create-accounts-for-non-administrator-users)
 
-* [Použití účtu Azure Active Directory k ověřování](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage#create-additional-logins-and-users-having-administrative-permissions)
+* [Použití účtu Azure Active Directory k ověřování](../azure-sql/database/logins-create-manage.md#create-additional-logins-and-users-having-administrative-permissions)
 
-* [Jak získat roli adresáře ve službě Azure AD pomocí PowerShellu](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&preserve-view=true)
+* [Jak získat roli adresáře ve službě Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrole?preserve-view=true&view=azureadps-2.0)
 
-* [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&preserve-view=true)
+* [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
 
-* [Správa stávajících přihlašovacích údajů a účtů správců v Azure SQL](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage#existing-logins-and-user-accounts-after-creating-a-new-database)
+* [Správa stávajících přihlašovacích údajů a účtů správců v Azure SQL](../azure-sql/database/logins-create-manage.md#existing-logins-and-user-accounts-after-creating-a-new-database)
 
-* [Předdefinované role v Azure](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)
+* [Předdefinované role v Azure](../role-based-access-control/built-in-roles.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -339,9 +339,9 @@ Pro operace správy použijte předdefinované role Azure, které se musí expli
 
 **Doprovodné** materiály: Azure Active Directory nemá koncept výchozích hesel. Při zřizování vyhrazeného fondu SQL doporučujeme, abyste se rozhodli o integraci ověřování s Azure Active Directory. Pomocí této metody ověřování uživatel odesílá název uživatelského účtu a požaduje, aby služba používala informace přihlašovacích údajů uložené v Azure Active Directory (Azure AD).
 
-* [Jak nakonfigurovat a spravovat Azure Active Directory ověřování pomocí Azure SQL](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure?tabs=azure-powershell#active-directory-password-authentication)
+* [Jak nakonfigurovat a spravovat Azure Active Directory ověřování pomocí Azure SQL](../azure-sql/database/authentication-aad-configure.md?tabs=azure-powershell#active-directory-password-authentication)
 
-* [Principy ověřování v Azure SQL](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage#existing-logins-and-user-accounts-after-creating-a-new-database)
+* [Principy ověřování v Azure SQL](../azure-sql/database/logins-create-manage.md#existing-logins-and-user-accounts-after-creating-a-new-database)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -353,9 +353,9 @@ Pro operace správy použijte předdefinované role Azure, které se musí expli
 
 Chcete-li identifikovat účty správců pro databázi, otevřete Azure Portal a přejděte na kartu Vlastnosti serveru nebo spravované instance.
 
-* [Pochopení Azure Security Center identity a přístupu](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Pochopení Azure Security Center identity a přístupu](../security-center/security-center-identity-access.md)
 
-* [Správa stávajících přihlašovacích údajů a účtů správců v Azure SQL](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage#existing-logins-and-user-accounts-after-creating-a-new-database)
+* [Správa stávajících přihlašovacích údajů a účtů správců v Azure SQL](../azure-sql/database/logins-create-manage.md#existing-logins-and-user-accounts-after-creating-a-new-database)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -365,11 +365,11 @@ Chcete-li identifikovat účty správců pro databázi, otevřete Azure Portal a
 
 **Pokyny**: použijte registraci aplikace Azure (instanční objekt) k získání tokenu, který se dá použít k interakci s datovým skladem na řídicí rovině (Azure Portal) prostřednictvím volání rozhraní API.
 
-* [Volání rozhraní Azure REST API](https://docs.microsoft.com/rest/api/azure/#how-to-call-azure-rest-apis-with-postman)
+* [Volání rozhraní Azure REST API](/rest/api/azure/#how-to-call-azure-rest-apis-with-postman)
 
-* [Postup registrace klientské aplikace (instančního objektu) ve službě Azure AD](https://docs.microsoft.com/rest/api/azure/#register-your-client-application-with-azure-ad)
+* [Postup registrace klientské aplikace (instančního objektu) ve službě Azure AD](/rest/api/azure/#register-your-client-application-with-azure-ad)
 
-* [Informace o REST API SQL pro Azure synapse](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-rest-api)
+* [Informace o REST API SQL pro Azure synapse](./sql-data-warehouse/sql-data-warehouse-manage-compute-rest-api.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -379,11 +379,11 @@ Chcete-li identifikovat účty správců pro databázi, otevřete Azure Portal a
 
 **Doprovodné** materiály: Povolte Azure Active Directory (AD) Multi-Factor Authentication (MFA) a sledujte Azure Security Center doporučení pro správu identit a přístupu.
 
-* [Jak povolit vícefaktorové ověřování v Azure](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [Jak povolit vícefaktorové ověřování v Azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
-* [Jak monitorovat identitu a přístup v rámci Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Jak monitorovat identitu a přístup v rámci Azure Security Center](../security-center/security-center-identity-access.md)
 
-* [Pochopení vícefaktorového ověřování v Azure SQL](https://docs.microsoft.com/azure/azure-sql/database/authentication-mfa-ssms-overview)
+* [Pochopení vícefaktorového ověřování v Azure SQL](../azure-sql/database/authentication-mfa-ssms-overview.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -395,7 +395,7 @@ Chcete-li identifikovat účty správců pro databázi, otevřete Azure Portal a
 
 * [Další informace o pracovních stanicích s privilegovaným přístupem](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-* [Jak povolit vícefaktorové ověřování v Azure](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [Jak povolit vícefaktorové ověřování v Azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -409,15 +409,15 @@ Použití rozšířené ochrany před internetovými útoky pro Azure SQL Databa
 
 SQL Server Audit vám umožní vytvořit audity serveru, které můžou obsahovat specifikace auditu serveru pro události na úrovni serveru a specifikace auditu databáze pro události na úrovni databáze. Auditované události lze zapsat do protokolů událostí nebo auditovat soubory.
 
-* [Identifikace uživatelů Azure AD označených příznakem rizikové aktivity](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk)
+* [Identifikace uživatelů Azure AD označených příznakem rizikové aktivity](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [Jak monitorovat aktivitu identity uživatelů a přístupu v Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Jak monitorovat aktivitu identity uživatelů a přístupu v Azure Security Center](../security-center/security-center-identity-access.md)
 
-* [Kontrola rozšířené ochrany před internetovými útoky a potenciálních výstrah](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview#advanced-threat-protection-alerts)
+* [Kontrola rozšířené ochrany před internetovými útoky a potenciálních výstrah](../azure-sql/database/threat-detection-overview.md#alerts)
 
-* [Pochopení přihlašovacích údajů a uživatelských účtů v Azure SQL](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage)
+* [Pochopení přihlašovacích údajů a uživatelských účtů v Azure SQL](../azure-sql/database/logins-create-manage.md)
 
-* [Pochopení SQL Server auditování](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine?view=sql-server-ver15&preserve-view=true)
+* [Pochopení SQL Server auditování](/sql/relational-databases/security/auditing/sql-server-audit-database-engine?preserve-view=true&view=sql-server-ver15)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -427,7 +427,7 @@ SQL Server Audit vám umožní vytvořit audity serveru, které můžou obsahova
 
 **Pokyny**: pomocí pojmenovaných umístění podmíněného přístupu povolte přístup k portálu a správě prostředků Azure jenom z konkrétních logických skupin rozsahů IP adres nebo zemí nebo oblastí.
 
-* [Postup konfigurace pojmenovaných umístění v Azure](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+* [Postup konfigurace pojmenovaných umístění v Azure](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
@@ -437,9 +437,9 @@ SQL Server Audit vám umožní vytvořit audity serveru, které můžou obsahova
 
 **Pokyny**: vytvořte správce Azure Active Directory (AD) pro server Azure SQL Database ve vyhrazeném fondu SQL.
 
-* [Jak nakonfigurovat a spravovat ověřování Azure AD pomocí Azure SQL](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure)
+* [Jak nakonfigurovat a spravovat ověřování Azure AD pomocí Azure SQL](../azure-sql/database/authentication-aad-configure.md)
 
-* [Jak vytvořit a nakonfigurovat instanci Azure AD](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance)
+* [Jak vytvořit a nakonfigurovat instanci Azure AD](../active-directory-domain-services/tutorial-create-instance.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -451,9 +451,9 @@ SQL Server Audit vám umožní vytvořit audity serveru, které můžou obsahova
 
 Při použití ověřování SQL vytvořte v databázi uživatele databáze s omezením. Zajistěte, aby jeden nebo více uživatelů databáze umístili do vlastní databázové role s konkrétními oprávněními, která jsou vhodná pro danou skupinu uživatelů.
 
-* [Jak používat kontroly přístupu](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+* [Jak používat kontroly přístupu](../active-directory/governance/access-reviews-overview.md)
 
-* [Pochopení přihlašovacích údajů a uživatelských účtů v Azure SQL](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage)
+* [Pochopení přihlašovacích údajů a uživatelských účtů v Azure SQL](../azure-sql/database/logins-create-manage.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -465,13 +465,13 @@ Při použití ověřování SQL vytvořte v databázi uživatele databáze s om
 
 Při použití ověřování SQL vytvořte v databázi uživatele databáze s omezením. Zajistěte, aby jeden nebo více uživatelů databáze umístili do vlastní databázové role s konkrétními oprávněními, která jsou vhodná pro danou skupinu uživatelů.
 
-* [Jak používat kontroly přístupu](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+* [Jak používat kontroly přístupu](../active-directory/governance/access-reviews-overview.md)
 
-* [Jak nakonfigurovat a spravovat ověřování Azure AD pomocí Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure)
+* [Jak nakonfigurovat a spravovat ověřování Azure AD pomocí Azure SQL Database](../azure-sql/database/authentication-aad-configure.md)
 
-* [Integrace protokolů aktivit Azure do služby Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+* [Integrace protokolů aktivit Azure do služby Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-* [Pochopení přihlašovacích údajů a uživatelských účtů v Azure SQL](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage)
+* [Pochopení přihlašovacích údajů a uživatelských účtů v Azure SQL](../azure-sql/database/logins-create-manage.md)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
@@ -483,13 +483,13 @@ Při použití ověřování SQL vytvořte v databázi uživatele databáze s om
 
 Při použití ověřování SQL vytvořte v databázi uživatele databáze s omezením. Zajistěte, aby jeden nebo více uživatelů databáze umístili do vlastní databázové role s konkrétními oprávněními, která jsou vhodná pro danou skupinu uživatelů.
 
-* [Jak zobrazit přihlášení rizik Azure AD](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+* [Jak zobrazit přihlášení rizik Azure AD](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [Jak nakonfigurovat a povolit zásady rizik ochrany identity](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
+* [Jak nakonfigurovat a povolit zásady rizik ochrany identity](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
-* [Postup zprovoznění služby Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-data-sources)
+* [Postup zprovoznění služby Azure Sentinel](../sentinel/connect-data-sources.md)
 
-* [Pochopení přihlašovacích údajů a uživatelských účtů v Azure SQL](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage)
+* [Pochopení přihlašovacích údajů a uživatelských účtů v Azure SQL](../azure-sql/database/logins-create-manage.md)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
@@ -499,7 +499,7 @@ Při použití ověřování SQL vytvořte v databázi uživatele databáze s om
 
 **Doprovodné** materiály: ve scénářích podpory, kde Microsoft potřebuje získat přístup k datům souvisejícím s Azure SQL Database ve vašem vyhrazeném fondu SQL, Azure Customer Lockbox poskytuje rozhraní pro kontrolu a schválení nebo zamítnutí požadavků na přístup k datům.
 
-* [Pochopení Customer Lockbox](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)
+* [Pochopení Customer Lockbox](../security/fundamentals/customer-lockbox-overview.md)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
@@ -507,7 +507,7 @@ Při použití ověřování SQL vytvořte v databázi uživatele databáze s om
 
 ## <a name="data-protection"></a>Ochrana dat
 
-*Další informace najdete v tématu [řízení zabezpečení: Ochrana dat](/azure/security/benchmarks/security-control-data-protection).*
+*Další informace najdete v tématu [řízení zabezpečení: Ochrana dat](../security/benchmarks/security-control-data-protection.md).*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: Udržujte inventář citlivých informací
 
@@ -515,9 +515,9 @@ Při použití ověřování SQL vytvořte v databázi uživatele databáze s om
 
 Klasifikace zjišťování dat &amp; je integrovaná do Azure synapse SQL. Poskytuje pokročilé možnosti pro zjišťování, klasifikaci, označování a oznamování citlivých dat ve vašich databázích.
 
-* [Vytváření a používání značek](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
-* [Vysvětlení klasifikace zjišťování dat &amp;](https://docs.microsoft.com/azure/azure-sql/database/data-discovery-and-classification-overview)
+* [Vysvětlení klasifikace zjišťování dat &amp;](../azure-sql/database/data-discovery-and-classification-overview.md)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
@@ -527,13 +527,13 @@ Klasifikace zjišťování dat &amp; je integrovaná do Azure synapse SQL. Posky
 
 **Pokyny**: implementace samostatných předplatných nebo skupin pro správu pro vývoj, testování a produkci. Prostředky by měly být oddělené virtuální sítí nebo podsítí, vhodně označené a zabezpečené v rámci skupiny zabezpečení sítě nebo Azure Firewall. Prostředky, které ukládají nebo zpracovávají citlivá data, by měly být izolované. Použít privátní odkaz; Nasaďte Azure SQL Server do virtuální sítě a bezpečně se připojte pomocí privátního odkazu.
 
-* [Vytvoření dalších předplatných Azure](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [Vytvoření dalších předplatných Azure](../cost-management-billing/manage/create-subscription.md)
 
-* [Postup vytvoření Skupiny pro správu](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [Postup vytvoření Skupiny pro správu](../governance/management-groups/create-management-group-portal.md)
 
-* [Vytváření a používání značek](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
-* [Jak nastavit privátní odkaz pro Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview#how-to-set-up-private-link-for-azure-sql-database)
+* [Jak nastavit privátní odkaz pro Azure SQL Database](../azure-sql/database/private-endpoint-overview.md#how-to-set-up-private-link-for-azure-sql-database)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -547,11 +547,11 @@ Rozšířená ochrana před internetovými útoky pro Azure SQL Database, spravo
 
 Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje veškerý obsah zákazníka za citlivý a vede na skvělé délky, aby se zabránilo ochraně před ztrátou a únikem informací a riziky zákazníků. Aby se zajistilo zabezpečení zákaznických dat v Azure, společnost Microsoft implementovala a udržuje sadu robustních ovládacích prvků a možností ochrany dat.
 
-* [Jak nakonfigurovat privátní linku a skupin zabezpečení sítě, aby se zabránilo exfiltraceí dat na instancích Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)
+* [Jak nakonfigurovat privátní linku a skupin zabezpečení sítě, aby se zabránilo exfiltraceí dat na instancích Azure SQL Database](../azure-sql/database/private-endpoint-overview.md)
 
-* [Pochopení rozšířené ochrany před internetovými útoky pro Azure SQL Database](https://docs.microsoft.com/azure/azure-sql/database/threat-detection-overview)
+* [Pochopení rozšířené ochrany před internetovými útoky pro Azure SQL Database](../azure-sql/database/threat-detection-overview.md)
 
-* [Principy ochrany zákaznických dat v Azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Principy ochrany zákaznických dat v Azure](../security/fundamentals/protection-customer-data.md)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
@@ -561,7 +561,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 **Doprovodné** materiály: Azure SQL Database zabezpečení vašich dat šifrováním dat při pohybu pomocí Transport Layer Security. SQL Server pro všechna připojení vynutila šifrování (SSL/TLS). Tím se zajistí, že všechna data budou zašifrovaná mezi klientem a serverem, a to bez ohledu na nastavení šifrování nebo TrustServerCertificate v připojovacím řetězci.
 
-* [Pochopení šifrování Azure SQL při přenosu](https://docs.microsoft.com/azure/sql-database/sql-database-security-overview#information-protection-and-encryption)
+* [Pochopení šifrování Azure SQL při přenosu](../azure-sql/database/security-overview.md#information-protection-and-encryption)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -575,9 +575,9 @@ Klasifikace zjišťování dat &amp; je součástí rozšířené nabídky zabez
 
 Kromě toho můžete v Azure Portal nastavit zásadu dynamického maskování dat (DDM). Modul doporučení DDM označuje určitá pole z vaší databáze jako potenciálně citlivá pole, která mohou být vhodná pro maskování.
 
-* [Použití zjišťování a klasifikace dat pro Azure SQL Server](https://docs.microsoft.com/azure/sql-database/sql-database-data-discovery-and-classification)
+* [Použití zjišťování a klasifikace dat pro Azure SQL Server](../azure-sql/database/data-discovery-and-classification-overview.md)
 
-* [Principy dynamického maskování dat pro Azure synapse SQL](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started)
+* [Principy dynamického maskování dat pro Azure synapse SQL](../azure-sql/database/dynamic-data-masking-overview.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -589,11 +589,11 @@ Kromě toho můžete v Azure Portal nastavit zásadu dynamického maskování da
 
 Autorizaci řídí členství v databázové roli vašeho uživatelského účtu a oprávnění na úrovni objektů. Doporučený postup je udělit uživatelům co nejmenší možná oprávnění.
 
-* [Jak integrovat SQL Server Azure s Azure Active Directory k ověřování](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication)
+* [Jak integrovat SQL Server Azure s Azure Active Directory k ověřování](../azure-sql/database/authentication-aad-overview.md)
 
-* [Jak řídit přístup v Azure SQL Server](https://docs.microsoft.com/azure/sql-database/sql-database-control-access)
+* [Jak řídit přístup v Azure SQL Server](../azure-sql/database/logins-create-manage.md)
 
-* [Vysvětlení autorizace a ověřování v Azure SQL](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage)
+* [Vysvětlení autorizace a ověřování v Azure SQL](../azure-sql/database/logins-create-manage.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -603,7 +603,7 @@ Autorizaci řídí členství v databázové roli vašeho uživatelského účtu
 
 **Doprovodné** materiály: nepoužitelné; Microsoft spravuje základní infrastrukturu pro Azure synapse SQL a implementuje přísné ovládací prvky, které zabrání ztrátě nebo expozici zákaznických dat.
 
-* [Principy ochrany zákaznických dat v Azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Principy ochrany zákaznických dat v Azure](../security/fundamentals/protection-customer-data.md)
 
 **Monitorování služby Azure Security Center:** Neuvedeno
 
@@ -613,11 +613,11 @@ Autorizaci řídí členství v databázové roli vašeho uživatelského účtu
 
 **Doprovodné** materiály: transparentní šifrování dat (TDE) pomáhá chránit Azure synapse SQL před hrozbou škodlivosti offline aktivity šifrováním dat v klidovém stavu. Šifruje a dešifruje databáze, související zálohy a soubory transakčních protokolů v reálném čase, a přitom nevyžaduje změny v aplikaci. V Azure je výchozím nastavením pro TDE, že klíč DEK je chráněn integrovaným certifikátem serveru. Alternativně můžete použít TDE spravované zákazníky, označované také jako podpora služby Bring Your Own Key (BYOK) pro TDE. V tomto scénáři TDE ochrana šifrování klíč DEK je asymetrický klíč spravovaný zákazníkem, který je uložený ve Azure Key Vault ve vlastnictví a spravovaném zákazníkovi (cloudový externí systém správy klíčů Azure) a nikdy neopouští Trezor klíčů.
 
-* [Pochopení transparentního šifrování dat spravovaného službou](https://docs.microsoft.com/azure/azure-sql/database/transparent-data-encryption-tde-overview?tabs=azure-portal)
+* [Pochopení transparentního šifrování dat spravovaného službou](../azure-sql/database/transparent-data-encryption-tde-overview.md?tabs=azure-portal)
 
-* [Pochopení transparentního šifrování dat spravovaného zákazníkem](https://docs.microsoft.com/azure/azure-sql/database/transparent-data-encryption-tde-overview?tabs=azure-portal#customer-managed-transparent-data-encryption---bring-your-own-key)
+* [Pochopení transparentního šifrování dat spravovaného zákazníkem](../azure-sql/database/transparent-data-encryption-tde-overview.md?tabs=azure-portal#customer-managed-transparent-data-encryption---bring-your-own-key)
 
-* [Jak zapnout TDE pomocí vlastního klíče](https://docs.microsoft.com/azure/azure-sql/database/transparent-data-encryption-byok-configure)
+* [Jak zapnout TDE pomocí vlastního klíče](../azure-sql/database/transparent-data-encryption-byok-configure.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -629,9 +629,9 @@ Autorizaci řídí členství v databázové roli vašeho uživatelského účtu
 
 Kromě toho můžete nastavit výstrahy pro databáze ve fondu SQL synapse pomocí Azure Portal. Když některá metrika (například velikost databáze nebo využití procesoru) dosáhne prahové hodnoty, můžou vám výstrahy poslat e-mail nebo zavolat webový Hook.
 
-* [Vytvoření upozornění pro události protokolu aktivit Azure](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/platform/alerts-activity-log.md)
 
-* [Vytvoření upozornění pro Azure SQL synapse](https://docs.microsoft.com/azure/azure-sql/database/alerts-insights-configure-portal)
+* [Vytvoření upozornění pro Azure SQL synapse](../azure-sql/database/alerts-insights-configure-portal.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -639,17 +639,17 @@ Kromě toho můžete nastavit výstrahy pro databáze ve fondu SQL synapse pomoc
 
 ## <a name="vulnerability-management"></a>Správa ohrožení zabezpečení
 
-*Další informace najdete v tématu [řízení zabezpečení: Správa ohrožení](/azure/security/benchmarks/security-control-vulnerability-management)zabezpečení.*
+*Další informace najdete v tématu [řízení zabezpečení: Správa ohrožení](../security/benchmarks/security-control-vulnerability-management.md)zabezpečení.*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: spuštění automatizovaných nástrojů pro kontrolu ohrožení zabezpečení
 
 **Doprovodné** materiály: povolení pokročilých zabezpečení dat a sledování doporučení od Azure Security Center při provádění posouzení ohrožení zabezpečení vašich databází SQL Azure.
 
-* [Jak spustit posuzování ohrožení zabezpečení ve vašich databázích SQL Azure](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment)
+* [Jak spustit posuzování ohrožení zabezpečení ve vašich databázích SQL Azure](../azure-sql/database/sql-vulnerability-assessment.md)
 
-* [Jak povolit pokročilé zabezpečení dat](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)
+* [Jak povolit pokročilé zabezpečení dat](../azure-sql/database/azure-defender-for-sql.md)
 
-* [Implementace doporučení pro posouzení ohrožení zabezpečení Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-vulnerability-assessment-recommendations)
+* [Implementace doporučení pro posouzení ohrožení zabezpečení Azure Security Center](../security-center/deploy-vulnerability-assessment-vm.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -675,7 +675,7 @@ Kromě toho můžete nastavit výstrahy pro databáze ve fondu SQL synapse pomoc
 
 **Pokyny**: posouzení ohrožení zabezpečení je skenovací služba integrovaná do Azure synapse SQL. Služba využívá znalostní bázi pravidel, která označují bezpečnostní hrozby. Zvýrazňuje odchylky od osvědčených postupů, jako jsou například nepřesné konfigurace, nadměrné oprávnění a nechráněná citlivá data. K posouzení ohrožení zabezpečení lze využít a spravovat prostřednictvím portálu centrálních zabezpečení SQL Advanced Data Security (ADS).
 
-* [Správa a export kontrol posouzení ohrožení zabezpečení na portálu SQL ADS](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment)
+* [Správa a export kontrol posouzení ohrožení zabezpečení na portálu SQL ADS](../azure-sql/database/sql-vulnerability-assessment.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -687,9 +687,9 @@ Kromě toho můžete nastavit výstrahy pro databáze ve fondu SQL synapse pomoc
 
 Klasifikace zjišťování dat &amp; je integrovaná do Azure synapse SQL. Poskytuje pokročilé možnosti pro zjišťování, klasifikaci, označování a oznamování citlivých dat ve vašich databázích.
 
-* [Pochopení Azure Security Center zabezpečeného skóre](https://docs.microsoft.com/azure/security-center/security-center-secure-score)
+* [Pochopení Azure Security Center zabezpečeného skóre](../security-center/secure-score-security-controls.md)
 
-* [Vysvětlení klasifikace zjišťování dat &amp;](https://docs.microsoft.com/azure/azure-sql/database/data-discovery-and-classification-overview)
+* [Vysvětlení klasifikace zjišťování dat &amp;](../azure-sql/database/data-discovery-and-classification-overview.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -697,7 +697,7 @@ Klasifikace zjišťování dat &amp; je integrovaná do Azure synapse SQL. Posky
 
 ## <a name="inventory-and-asset-management"></a>Správa inventáře a aktiv
 
-*Další informace najdete v tématu [řízení zabezpečení: inventář a Správa prostředků](/azure/security/benchmarks/security-control-inventory-asset-management).*
+*Další informace najdete v tématu [řízení zabezpečení: inventář a Správa prostředků](../security/benchmarks/security-control-inventory-asset-management.md).*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6,1: použití řešení automatizovaného zjišťování prostředků
 
@@ -705,11 +705,11 @@ Klasifikace zjišťování dat &amp; je integrovaná do Azure synapse SQL. Posky
 
 I když je možné zjistit klasické prostředky Azure prostřednictvím Azure Resource graphu, důrazně se doporučuje vytvořit a použít prostředky Azure Resource Manager, které budou předány.
 
-* [Jak vytvářet dotazy pomocí Azure Resource graphu](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Jak vytvářet dotazy pomocí Azure Resource graphu](../governance/resource-graph/first-query-portal.md)
 
-* [Jak zobrazit vaše předplatná Azure](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0&preserve-view=true)
+* [Jak zobrazit vaše předplatná Azure](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-3.0.0)
 
-* [Pochopení Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Pochopení Azure RBAC](../role-based-access-control/overview.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -719,7 +719,7 @@ I když je možné zjistit klasické prostředky Azure prostřednictvím Azure R
 
 **Doprovodné** materiály: použití značek pro prostředky Azure poskytující metadata k logickému uspořádání do taxonomie.
 
-* [Vytváření a používání značek](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
@@ -729,11 +729,11 @@ I když je možné zjistit klasické prostředky Azure prostřednictvím Azure R
 
 **Doprovodné** materiály: Používejte označení, skupiny pro správu a samostatné odběry, pokud je to vhodné, k organizování a sledování prostředků. Proveďte pravidelné sjednocení inventáře a zajistěte si včas odstranění neautorizovaných prostředků z předplatného.
 
-* [Vytvoření dalších předplatných Azure](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [Vytvoření dalších předplatných Azure](../cost-management-billing/manage/create-subscription.md)
 
-* [Postup vytvoření Skupiny pro správu](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [Postup vytvoření Skupiny pro správu](../governance/management-groups/create-management-group-portal.md)
 
-* [Vytváření a používání značek](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -755,9 +755,9 @@ I když je možné zjistit klasické prostředky Azure prostřednictvím Azure R
 
 Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky v rámci předplatných. Ujistěte se, že všechny prostředky Azure přítomné v daném prostředí jsou schválené.
 
-* [Jak nakonfigurovat a spravovat Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [Jak vytvářet dotazy pomocí Azure Resource graphu](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Jak vytvářet dotazy pomocí Azure Resource graphu](../governance/resource-graph/first-query-portal.md)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
@@ -795,9 +795,9 @@ Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky
 
 Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky v rámci předplatných. Ujistěte se, že všechny prostředky Azure přítomné v daném prostředí jsou schválené.
 
-* [Jak nakonfigurovat a spravovat Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
+* [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](../governance/policy/samples/index.md)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
@@ -815,7 +815,7 @@ Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky
 
 **Pokyny**: pomocí podmíněného přístupu Azure omezte schopnost uživatelů komunikovat s Azure Resource Manager konfigurací "blokování přístupu" pro aplikaci Microsoft Azure Management.
 
-* [Postup konfigurace podmíněného přístupu pro blokování přístupu k Azure Resource Manager](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+* [Postup konfigurace podmíněného přístupu pro blokování přístupu k Azure Resource Manager](../role-based-access-control/conditional-access-azure-management.md)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
@@ -833,9 +833,9 @@ Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky
 
 **Doprovodné** materiály: libovolný prostředek, který souvisí s vaším vyhrazeným fondem SQL, který je vyžadován pro obchodní operace, ale může být pro organizaci vyšší riziko, měl by být izolovaný ve svém vlastním virtuálním počítači nebo virtuální síti a dostatečně zabezpečený buď pomocí Azure firewall nebo skupiny zabezpečení sítě.
 
-* [Jak vytvořit virtuální síť](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+* [Jak vytvořit virtuální síť](../virtual-network/quick-create-portal.md)
 
-* [Vytvoření NSG s konfigurací zabezpečení](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [Vytvoření NSG s konfigurací zabezpečení](../virtual-network/tutorial-filter-network-traffic.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -843,7 +843,7 @@ Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky
 
 ## <a name="secure-configuration"></a>Zabezpečená konfigurace
 
-*Další informace najdete v tématu [řízení zabezpečení: zabezpečená konfigurace](/azure/security/benchmarks/security-control-secure-configuration).*
+*Další informace najdete v tématu [řízení zabezpečení: zabezpečená konfigurace](../security/benchmarks/security-control-secure-configuration.md).*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: Vytvoření zabezpečených konfigurací pro všechny prostředky Azure
 
@@ -851,9 +851,9 @@ Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky
 - Nasazení detekce hrozeb na SQL serverech
 - SQL Server by měl používat koncový bod služby virtuální sítě
 
-* [Jak zobrazit dostupné aliasy Azure Policy](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0&preserve-view=true)
+* [Jak zobrazit dostupné aliasy Azure Policy](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-3.3.0)
 
-* [Jak nakonfigurovat a spravovat Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -871,9 +871,9 @@ Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky
 
 **Doprovodné** materiály: použijte Azure Policy [Deny] a [Deploy, pokud neexistuje] pro vymáhání zabezpečených nastavení napříč prostředky Azure.
 
-* [Jak nakonfigurovat a spravovat Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [Pochopení Azure Policych efektů](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+* [Pochopení Azure Policych efektů](../governance/policy/concepts/effects.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -891,9 +891,9 @@ Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky
 
 **Doprovodné** materiály: Pokud používáte vlastní definice Azure Policy, použijte k bezpečnému ukládání a správě kódu službu Azure DevOps nebo Azure Repos.
 
-* [Jak v Azure DevOps ukládat kód](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&preserve-view=true)
+* [Jak v Azure DevOps ukládat kód](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-* [Dokumentace k Azure Repos](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops&preserve-view=true)
+* [Dokumentace k Azure Repos](/azure/devops/repos/index?preserve-view=true&view=azure-devops)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -927,7 +927,7 @@ Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky
 
 **Doprovodné** materiály: využijte Azure Security Center k provádění kontrol standardních hodnot pro všechny prostředky, které souvisejí s vaším vyhrazeným fondem SQL.
 
-* [Jak opravit doporučení v Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-sql-service-recommendations)
+* [Jak opravit doporučení v Azure Security Center](../security-center/security-center-remediate-recommendations.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -945,9 +945,9 @@ Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky
 
 **Pokyny**: transparentní šifrování dat (TDE) pomocí klíčů spravovaných zákazníkem v Azure Key Vault umožňuje šifrování automaticky generovaného šifrovacího klíče databáze (klíč DEK) pomocí asymetrického klíče spravovaného zákazníkem, který se nazývá TDE Protector. To se také obecně označuje jako podpora Bring Your Own Key (BYOK) pro transparentní šifrování dat. Ve scénáři BYOK se ochrana TDE ukládá do Azure Key Vault ve vlastnictví a spravovaném zákazníkem. Kromě toho se ujistěte, že je v Azure Key Vault povolené obnovitelné odstranění.
 
-* [Jak povolit TDE s klíčem spravovaným zákazníkem z Azure Key Vault](https://docs.microsoft.com/azure/azure-sql/database/transparent-data-encryption-byok-configure?tabs=azure-powershell)
+* [Jak povolit TDE s klíčem spravovaným zákazníkem z Azure Key Vault](../azure-sql/database/transparent-data-encryption-byok-configure.md?tabs=azure-powershell)
 
-* [Jak povolit obnovitelné odstranění v Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell)
+* [Jak povolit obnovitelné odstranění v Azure Key Vault](../key-vault/general/key-vault-recovery.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -957,9 +957,9 @@ Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky
 
 **Doprovodné** materiály: použití spravovaných identit k poskytování služeb Azure s automaticky spravovanou identitou v Azure Active Directory (AD). Spravované identity vám umožňují ověřit jakoukoli službu, která podporuje ověřování Azure AD, včetně Azure Key Vault bez jakýchkoli přihlašovacích údajů ve vašem kódu.
 
-* [Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k Azure SQL](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-sql)
+* [Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k Azure SQL](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-sql.md)
 
-* [Postup konfigurace spravovaných identit](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
+* [Postup konfigurace spravovaných identit](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
@@ -977,7 +977,7 @@ Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky
 
 ## <a name="malware-defense"></a>Obrana před malwarem
 
-*Další informace najdete v tématu [řízení zabezpečení: obrana proti malwaru](/azure/security/benchmarks/security-control-malware-defense).*
+*Další informace najdete v tématu [řízení zabezpečení: obrana proti malwaru](../security/benchmarks/security-control-malware-defense.md).*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: použijte centrálně spravovaný antimalwarový software
 
@@ -993,7 +993,7 @@ Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky
 
 Předem prohledejte veškerý obsah, který se nahrává do nevýpočetních prostředků Azure, jako jsou App Service, Data Lake Storage, Blob Storage, Azure SQL Server atd. Společnost Microsoft nemá přístup k vašim datům v těchto instancích.
 
-* [Pochopení Microsoft antimalwaru pro Azure Cloud Services a Virtual Machines](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
+* [Pochopení Microsoft antimalwaru pro Azure Cloud Services a Virtual Machines](../security/fundamentals/antimalware.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -1009,13 +1009,13 @@ Předem prohledejte veškerý obsah, který se nahrává do nevýpočetních pro
 
 ## <a name="data-recovery"></a>Obnovení dat
 
-*Další informace najdete v tématu [řízení zabezpečení – obnovení dat](/azure/security/benchmarks/security-control-data-recovery).*
+*Další informace najdete v tématu [řízení zabezpečení – obnovení dat](../security/benchmarks/security-control-data-recovery.md).*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9,1: zajištění pravidelného automatického zálohování
 
 **Doprovodné** materiály: snímky vyhrazeného fondu SQL se automaticky provedou během dne vytváření bodů obnovení, které jsou k dispozici po dobu sedmi dnů. Tuto dobu uchování nelze změnit. Vyhrazený fond SQL podporuje osm hodin cíl bodu obnovení (RPO). Datový sklad můžete obnovit v primární oblasti z libovolného snímku, který jste provedli během posledních sedmi dnů. Všimněte si, že v případě potřeby můžete také ručně aktivovat snímky.
 
-* [Zálohování a obnovení ve vyhrazeném fondu SQL](/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
+* [Zálohování a obnovení ve vyhrazeném fondu SQL](./sql-data-warehouse/backup-and-restore.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -1027,9 +1027,9 @@ Předem prohledejte veškerý obsah, který se nahrává do nevýpočetních pro
 
 Pokud k šifrování šifrovacího klíče databáze používáte klíč spravovaný zákazníkem, ujistěte se, že je váš klíč zálohovaný.
 
-* [Zálohování a obnovení ve vyhrazeném fondu SQL](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
+* [Zálohování a obnovení ve vyhrazeném fondu SQL](./sql-data-warehouse/backup-and-restore.md)
 
-* [Postup zálohování klíčů Azure Key Vault](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0&preserve-view=true)
+* [Postup zálohování klíčů Azure Key Vault](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?preserve-view=true&view=azurermps-6.13.0)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -1039,11 +1039,11 @@ Pokud k šifrování šifrovacího klíče databáze používáte klíč spravov
 
 **Doprovodné** materiály: pravidelně testujte body obnovení, abyste měli jistotu, že jsou vaše snímky platné. Chcete-li obnovit existující vyhrazený fond SQL z bodu obnovení, můžete použít buď Azure Portal, nebo PowerShell. Test obnovení zálohovaných klíčů spravovaných zákazníkem
 
-* [Postup obnovení klíčů Azure Key Vault](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0&preserve-view=true)
+* [Postup obnovení klíčů Azure Key Vault](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?preserve-view=true&view=azurermps-6.13.0)
 
-* [Zálohování a obnovení ve vyhrazeném fondu SQL](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
+* [Zálohování a obnovení ve vyhrazeném fondu SQL](./sql-data-warehouse/backup-and-restore.md)
 
-* [Postup obnovení existujícího vyhrazeného fondu SQL](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-restore-active-paused-dw)
+* [Postup obnovení existujícího vyhrazeného fondu SQL](./sql-data-warehouse/sql-data-warehouse-restore-active-paused-dw.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -1055,11 +1055,11 @@ Pokud k šifrování šifrovacího klíče databáze používáte klíč spravov
 
 Ve výchozím nastavení se data v účtu úložiště šifrují pomocí klíčů spravovaných Microsoftem. Pro šifrování vašich dat můžete spoléhat na klíče spravované Microsoftem, nebo můžete šifrování spravovat pomocí vlastních klíčů. Pokud spravujete vlastní klíče pomocí Key Vault, ujistěte se, že je povolené obnovitelné odstranění.
 
-* [Správa Azure SQL Database dlouhodobého uchovávání záloh](https://docs.microsoft.com/azure/sql-database/sql-database-long-term-backup-retention-configure)
+* [Správa Azure SQL Database dlouhodobého uchovávání záloh](../azure-sql/database/long-term-backup-retention-configure.md)
 
-* [Šifrování služby Azure Storage pro neaktivní uložená data](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)
+* [Šifrování služby Azure Storage pro neaktivní uložená data](../storage/common/storage-service-encryption.md)
 
-* [Jak povolit obnovitelné odstranění v Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+* [Jak povolit obnovitelné odstranění v Key Vault](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -1067,13 +1067,13 @@ Ve výchozím nastavení se data v účtu úložiště šifrují pomocí klíč�
 
 ## <a name="incident-response"></a>Reakce na incidenty
 
-*Další informace najdete v tématu [řízení zabezpečení: reakce na incidenty](/azure/security/benchmarks/security-control-incident-response).*
+*Další informace najdete v tématu [řízení zabezpečení: reakce na incidenty](../security/benchmarks/security-control-incident-response.md).*
 
 ### <a name="101-create-an-incident-response-guide"></a>10,1: Vytvoření Průvodce odpověďmi na incidenty
 
 **Doprovodné** materiály: Zajistěte, aby existovaly písemné plány odpovědí na incidenty, které definují role pracovníků a také fáze zpracování a správy incidentů.
 
-* [Postup konfigurace automatizace pracovních postupů v rámci služby Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
+* [Postup konfigurace automatizace pracovních postupů v rámci služby Azure Security Center](../security-center/security-center-planning-and-operations-guide.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -1083,7 +1083,7 @@ Ve výchozím nastavení se data v účtu úložiště šifrují pomocí klíč�
 
 **Pokyny**: Security Center přiřadí závažnosti výstrahám, které vám pomůžou určit prioritu pořadí, ve kterém se zúčastníte jednotlivých výstrah, takže pokud dojde k ohrožení určitého prostředku, můžete se k němu hned dostat. Závažnost je založena na tom, jak se nachází Security Center ve vyhledávání nebo v analytickém formátu, který vydává výstrahu, a také na úrovni spolehlivosti, u kterých došlo k škodlivému záměru za aktivitu, která vedla k upozornění.
 
-* [Výstrahy zabezpečení ve službě Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
+* [Výstrahy zabezpečení ve službě Azure Security Center](../security-center/security-center-alerts-overview.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -1103,7 +1103,7 @@ Ve výchozím nastavení se data v účtu úložiště šifrují pomocí klíč�
 
 **Doprovodné** materiály: kontaktní informace incidentu zabezpečení bude společnost Microsoft používat ke kontaktování v případě, že služba Microsoft Security Response Center (MSRC) zjistí, že k datům došlo nezákonní nebo neoprávněná osoba.
 
-* [Jak nastavit kontakt zabezpečení Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+* [Jak nastavit kontakt zabezpečení Azure Security Center](../security-center/security-center-provide-security-contact-details.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -1113,9 +1113,9 @@ Ve výchozím nastavení se data v účtu úložiště šifrují pomocí klíč�
 
 **Doprovodné** materiály: vyexportujte výstrahy a doporučení Azure Security Center pomocí funkce průběžného exportu. Průběžný export umožňuje exportovat výstrahy a doporučení buď ručně, nebo nepřetržitě, průběžným způsobem. Pomocí konektoru Azure Security Center Data můžete streamovat výstrahy na Sentinel.
 
-* [Postup konfigurace průběžného exportu](https://docs.microsoft.com/azure/security-center/continuous-export)
+* [Postup konfigurace průběžného exportu](../security-center/continuous-export.md)
 
-* [Streamování upozornění do služby Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+* [Streamování upozornění do služby Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -1125,7 +1125,7 @@ Ve výchozím nastavení se data v účtu úložiště šifrují pomocí klíč�
 
 **Doprovodné** materiály: použití funkce automatizace pracovního postupu v Azure Security Center k automatickému spouštění odpovědí prostřednictvím "Logic Apps" na výstrahy a doporučení zabezpečení.
 
-* [Jak nakonfigurovat automatizaci pracovních postupů a Logic Apps](https://docs.microsoft.com/azure/security-center/workflow-automation)
+* [Jak nakonfigurovat automatizaci pracovních postupů a Logic Apps](../security-center/workflow-automation.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -1133,7 +1133,7 @@ Ve výchozím nastavení se data v účtu úložiště šifrují pomocí klíč�
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Penetrační testy a tzv. red team exercises
 
-*Další informace najdete v tématu [řízení zabezpečení: testy průniku a cvičení červeného týmu](/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
+*Další informace najdete v tématu [řízení zabezpečení: testy průniku a cvičení červeného týmu](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md).*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11,1: proveďte pravidelné testování průniku vašich prostředků Azure a zajistěte nápravu všech kritických poznatků zabezpečení.
 
@@ -1147,5 +1147,5 @@ Ve výchozím nastavení se data v účtu úložiště šifrují pomocí klíč�
 
 ## <a name="next-steps"></a>Další kroky
 
-- Zobrazit [Srovnávací test zabezpečení Azure](/azure/security/benchmarks/overview)
-- Další informace o [základních úrovních zabezpečení Azure](/azure/security/benchmarks/security-baselines-overview)
+- Zobrazit [Srovnávací test zabezpečení Azure](../security/benchmarks/overview.md)
+- Další informace o [základních úrovních zabezpečení Azure](../security/benchmarks/security-baselines-overview.md)

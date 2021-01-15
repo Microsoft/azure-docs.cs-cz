@@ -10,13 +10,13 @@ ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
-ms.date: 09/15/2020
-ms.openlocfilehash: 9dfe70cf6c91a0c12604f91e583a9a4eb9b4e088
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 1/14/2021
+ms.openlocfilehash: e21a5a5be03ffa4ada362247c488ee7d12bd50f7
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308829"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222220"
 ---
 # <a name="resource-limits-for-azure-sql-database-and-azure-synapse-analytics-servers"></a>Omezení prostředků pro Azure SQL Database a Azure synapse Analytics Server
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -61,7 +61,7 @@ Pokud se setkáte s vysokým využitím výpočetních prostředků, zahrnují m
 - Zvýšením výpočetní velikosti databáze nebo elastického fondu poskytnete databázi s více výpočetními prostředky. Viz téma [škálování prostředků jedné databáze](single-database-scale.md) a [škálování prostředků elastického fondu](elastic-pool-scale.md).
 - Optimalizace dotazů pro snížení využití prostředků procesoru u každého dotazu. Další informace najdete v části [Ladění dotazů a pomocné parametry](performance-guidance.md#query-tuning-and-hinting).
 
-### <a name="storage"></a>Úložiště
+### <a name="storage"></a>Storage
 
 Když využité místo v databázi dosáhne limitu maximální velikosti, vkládání a aktualizace databáze, které zvyšují velikost dat, selžou a klienti obdrží [chybovou zprávu](troubleshoot-common-errors-issues.md). Příkazy SELECT a DELETE budou i nadále úspěšné.
 
@@ -80,7 +80,7 @@ Pokud se setkáte s vysokým využitím relace nebo pracovního procesu, zahrnuj
 - Zvýšení úrovně služby nebo výpočetní velikosti databáze nebo elastického fondu. Viz téma [škálování prostředků jedné databáze](single-database-scale.md) a [škálování prostředků elastického fondu](elastic-pool-scale.md).
 - Optimalizujte dotazy, aby se snížilo využití prostředků každého dotazu, pokud příčinou zvýšení využití pracovního procesu je spor pro výpočetní prostředky. Další informace najdete v části [Ladění dotazů a pomocné parametry](performance-guidance.md#query-tuning-and-hinting).
 - Zmenšení nastavení [MAXDOP](/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option#Guidelines) (maximální úroveň paralelismu).
-- Optimalizace úlohy dotazů za účelem snížení počtu výskytů a trvání blokování dotazů.
+- Optimalizace úlohy dotazů za účelem snížení počtu výskytů a trvání blokování dotazů. Další informace najdete v tématu [pochopení a řešení problémů s blokováním Azure SQL](understand-resolve-blocking.md).
 
 ### <a name="memory"></a>Paměť
 

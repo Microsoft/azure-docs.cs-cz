@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/01/2020
 ms.author: kumud
-ms.openlocfilehash: a25d6d0d1990682287b5962a7bd93a0c525db133
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: a29454f09268406511730c63dcc3bc3063b909c6
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882360"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218650"
 ---
 # <a name="integrate-azure-services-with-virtual-networks-for-network-isolation"></a>Integrace služeb Azure s virtuálními sítěmi pro izolaci sítě
 
@@ -66,7 +66,7 @@ Další informace najdete v tématu [koncové body služby virtuální sítě](v
 
 ## <a name="service-tags"></a>Značky služeb
 
-Značka služby představuje skupinu předpon IP adres z dané služby Azure. Pomocí značek služeb můžete definovat řízení přístupu k síti pro [skupiny zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) nebo [Azure firewall](https://docs.microsoft.com/azure/firewall/service-tags). Zadáním názvu značky služby (například AzureEventGrid) v příslušném zdrojovém nebo cílovém poli pravidla můžete povolit nebo odepřít provoz pro příslušnou službu.
+Značka služby představuje skupinu předpon IP adres z dané služby Azure. Pomocí značek služeb můžete definovat řízení přístupu k síti pro [skupiny zabezpečení sítě](./network-security-groups-overview.md#security-rules) nebo [Azure firewall](../firewall/service-tags.md). Zadáním názvu značky služby (například AzureEventGrid) v příslušném zdrojovém nebo cílovém poli pravidla můžete povolit nebo odepřít provoz pro příslušnou službu.
 
 ![Povolení nebo zamítnutí provozu pomocí značek služeb](./media/network-isolation/service-tags.png)
 
@@ -78,4 +78,4 @@ Další informace o značkách služeb a službách Azure, které je podporují,
 
 - Naučte se [integrovat aplikaci do sítě Azure](../app-service/web-sites-integrate-with-vnet.md).
 - Naučte se, jak [omezit přístup k prostředkům pomocí značek služeb](tutorial-restrict-network-access-to-resources.md).
-- Naučte se [připojit soukromě k účtu Azure Cosmos pomocí privátního odkazu Azure](../private-link/create-private-endpoint-cosmosdb-portal.md).
+- Naučte se [připojit soukromě k účtu Azure Cosmos pomocí privátního odkazu Azure](../private-link/tutorial-private-endpoint-cosmosdb-portal.md).

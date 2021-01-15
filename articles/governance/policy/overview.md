@@ -1,14 +1,14 @@
 ---
 title: Přehled zásad Azure
 description: Azure Policy je služba v Azure, pomocí které vytváříte, přiřazujete a spravujete definice zásad ve svém prostředí Azure.
-ms.date: 10/05/2020
+ms.date: 01/14/2021
 ms.topic: overview
-ms.openlocfilehash: 96fd29b5e3d24bc3e678461a95005e004a8a3a80
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: df430586af2e701ec2881f6ea760095fd2ca79d0
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803948"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220724"
 ---
 # <a name="what-is-azure-policy"></a>Co je Azure Policy?
 
@@ -83,7 +83,7 @@ Pokud žádná z předdefinovaných rolí nemá požadovaná oprávnění, vytvo
 
 ### <a name="resources-covered-by-azure-policy"></a>Prostředky, na které se vztahuje Azure Policy
 
-Azure Policy vyhodnocuje všechny prostředky v Azure a prostředcích s podporou ARC. Pro určité poskytovatele prostředků, jako je například [Konfigurace hostů](./concepts/guest-configuration.md), [Služba Azure Kubernetes](../../aks/intro-kubernetes.md)a [Azure Key Vault](../../key-vault/general/overview.md), je k dispozici hlubší integrace pro správu nastavení a objektů. Další informace najdete v tématu [režimy poskytovatele prostředků](./concepts/definition-structure.md).
+Azure Policy vyhodnocuje všechny prostředky Azure na úrovni předplatného, včetně prostředků s podporou ARC. Pro určité poskytovatele prostředků, jako je například [Konfigurace hostů](./concepts/guest-configuration.md), [Služba Azure Kubernetes](../../aks/intro-kubernetes.md)a [Azure Key Vault](../../key-vault/general/overview.md), je k dispozici hlubší integrace pro správu nastavení a objektů. Další informace najdete v tématu [režimy poskytovatele prostředků](./concepts/definition-structure.md).
 
 ### <a name="recommendations-for-managing-policies"></a>Doporučení pro správu zásad
 
@@ -107,7 +107,7 @@ Tady je několik ukazatelů a tipů, které byste měli mít na paměti:
 
 Postup vytváření a implementace zásady v Azure Policy začíná vytvořením definice zásady. Každá definice zásady se vynucuje za určitých podmínek. A má definovaný účinek, který se provede, pokud jsou splněny podmínky.
 
-V Azure Policy nabízíme několik předdefinovaných zásad, které jsou ve výchozím nastavení dostupné. Například:
+V Azure Policy nabízíme několik předdefinovaných zásad, které jsou ve výchozím nastavení dostupné. Příklad:
 
 - **Povolené skladové položky účtu úložiště** (odepřít): Určuje, jestli se nasazený účet úložiště nachází v rámci sady velikostí SKU. Jeho účinkem je odmítnutí všech účtů úložiště, které nedodržují sadu definovaných velikostí SKU.
 - **Povolený typ prostředku** (odepřít): definuje typy prostředků, které můžete nasadit. Jeho účelem je Odepřít všechny prostředky, které nejsou součástí tohoto definovaného seznamu.
@@ -145,7 +145,7 @@ Podobně jako parametry zásad pomáhají parametry iniciativ zjednodušit sprá
 
 Jako příklad může posloužit scénář, ve kterém máte definici iniciativy **initiativeC** s definicemi zásad **policyA** a **policyB**, z nichž každá očekává jiný typ parametru:
 
-| Zásada | Název parametru |Typ parametru  |Poznámka |
+| Zásady | Název parametru |Typ parametru  |Poznámka |
 |---|---|---|---|
 | policyA | allowedLocations | array  |Tento parametr jako hodnotu očekává seznam řetězců, protože typ parametru byl definovaný jako pole. |
 | policyB | allowedSingleLocation |řetězec |Tento parametr jako hodnotu očekává jedno slovo, protože typ parametru byl definovaný jako řetězec. |

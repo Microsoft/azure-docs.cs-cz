@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 04/15/2020
 ms.author: gsilva
-ms.openlocfilehash: fd50af98fe0d7f20273c45e2b86c18215a3626f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b3728a2b67529bab0900d42b3e39140d9329bc83
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87289624"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223631"
 ---
-# <a name="create-a-windows-vm-with-accelerated-networking-using-azure-powershell"></a>Vytvoření virtuálního počítače s Windows s akcelerovanými síťovými službami pomocí Azure PowerShell
+# <a name="create-a-windows-vm-with-accelerated-networking-using-azure-powershell"></a>Vytvoření virtuálního počítače s Windows a akcelerovanými síťovými službami pomocí Azure PowerShellu
 
 V tomto kurzu se dozvíte, jak vytvořit virtuální počítač s Windows s akcelerovanými síťovými službami.
 
@@ -65,7 +65,7 @@ Akcelerované sítě se podporují na většině účelových a výpočetních i
 
 Na instancích podporujících multithreading se podporuje akcelerované sítě pro instance virtuálních počítačů se čtyřmi nebo více vCPU. Podporované řady jsou: D/Dsv3, D/Dsv4, da/Dasv4, E/Esv3, EA/Easv4, Fsv2, Lsv2, MS/MMS a MS/Mmsv2.
 
-Další informace o instancích virtuálních počítačů najdete v tématu [velikosti pro virtuální počítače s Windows v Azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Další informace o instancích virtuálních počítačů najdete v tématu [velikosti pro virtuální počítače s Windows v Azure](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ### <a name="custom-images"></a>Vlastní image
 
@@ -85,7 +85,7 @@ Virtuální počítače (Classic) nejde nasadit s akcelerovanými síťovými sl
 
 ## <a name="vm-creation-using-the-portal"></a>Vytvoření virtuálního počítače pomocí portálu
 
-I když tento článek popisuje kroky pro vytvoření virtuálního počítače s akcelerovanými síťovými službami pomocí Azure PowerShell, můžete taky [pomocí Azure Portal vytvořit virtuální počítač](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , který umožňuje akcelerované síťové služby. Když vytváříte virtuální počítač na portálu, klikněte na stránce **vytvořit virtuální počítač** na kartu **síť** . Tato karta nabízí možnost **zrychlit síťové služby**. Pokud jste zvolili [podporovaný operační systém](#supported-operating-systems) a [Velikost virtuálního počítače](#supported-vm-instances), tato možnost je automaticky nastavená na **zapnuto**. V opačném případě je možnost nastavená na **vypnuto**a Azure zobrazí důvod, proč se nedá povolit.
+I když tento článek popisuje kroky pro vytvoření virtuálního počítače s akcelerovanými síťovými službami pomocí Azure PowerShell, můžete taky [pomocí Azure Portal vytvořit virtuální počítač](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , který umožňuje akcelerované síťové služby. Když vytváříte virtuální počítač na portálu, klikněte na stránce **vytvořit virtuální počítač** na kartu **síť** . Tato karta nabízí možnost **zrychlit síťové služby**. Pokud jste zvolili [podporovaný operační systém](#supported-operating-systems) a [Velikost virtuálního počítače](#supported-vm-instances), tato možnost je automaticky nastavená na **zapnuto**. V opačném případě je možnost nastavená na **vypnuto** a Azure zobrazí důvod, proč se nedá povolit.
 
 > [!NOTE]
 > Prostřednictvím portálu lze povolit pouze podporované operační systémy. Pokud používáte vlastní image a vaše image podporuje akcelerované síťové služby, vytvořte si virtuální počítač pomocí rozhraní příkazového řádku nebo PowerShellu. 
@@ -104,7 +104,7 @@ V informacích o síťovém rozhraní vedle označení **akcelerované síťové
 
 Než budete pokračovat, nainstalujte [Azure PowerShell](/powershell/azure/install-az-ps) verze 1.0.0 nebo novější. Pokud chcete zjistit aktuálně nainstalovanou verzi, spusťte příkaz `Get-Module -ListAvailable Az` . Pokud potřebujete nainstalovat nebo upgradovat, nainstalujte nejnovější verzi modulu AZ Module z [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/Az). V relaci PowerShellu se přihlaste k účtu Azure pomocí rutiny [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount).
 
-V následujících příkladech nahraďte příklady názvů parametrů vlastními hodnotami. Příklady názvů parametrů zahrnují *myResourceGroup*, *myNic*a *myVM*.
+V následujících příkladech nahraďte příklady názvů parametrů vlastními hodnotami. Příklady názvů parametrů zahrnují *myResourceGroup*, *myNic* a *myVM*.
 
 ### <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 
@@ -208,7 +208,7 @@ V následujících příkladech nahraďte příklady názvů parametrů vlastní
     $vmConfig = New-AzVMConfig -VMName "myVm" -VMSize "Standard_DS4_v2"
     ```
 
-    Seznam všech velikostí a vlastností virtuálních počítačů najdete v tématu [velikosti virtuálních počítačů s Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+    Seznam všech velikostí a vlastností virtuálních počítačů najdete v tématu [velikosti virtuálních počítačů s Windows](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 3. Vytvořte zbytek konfigurace virtuálního počítače pomocí [set-AzVMOperatingSystem](/powershell/module/az.compute/set-azvmoperatingsystem) a [set-AzVMSourceImage](/powershell/module/az.compute/set-azvmsourceimage). Následující příkaz vytvoří virtuální počítač s Windows serverem 2016:
 

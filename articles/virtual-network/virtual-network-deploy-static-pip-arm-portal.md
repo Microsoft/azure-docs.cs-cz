@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/12/2020
 ms.author: allensu
-ms.openlocfilehash: 1ae0b869b24c4e05c88b936eceb1b9b1db3a9405
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: d416af3d3a8eb8ab8057f13cc0d9a133adcb849a
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506307"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221152"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-portal"></a>Vytvoření virtuálního počítače se statickou veřejnou IP adresou pomocí Azure Portal
 
@@ -28,11 +28,11 @@ Přiřaďte statickou veřejnou IP adresu, nikoli dynamickou adresu, abyste zaji
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 
-1. V levé horní části portálu vyberte **vytvořit prostředek**  >  **Compute**  >  **virtuální počítač** COMPUTE nebo ve vyhledávacím poli vyhledejte **virtuální počítač** .
+1. V levé horní části portálu vyberte **vytvořit prostředek**  >    >  **virtuální počítač** COMPUTE nebo ve vyhledávacím poli vyhledejte **virtuální počítač** .
    
 2. V části **vytvořit virtuální počítač** zadejte nebo vyberte hodnoty na kartě **základy** :
 
@@ -62,13 +62,13 @@ Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
     | **Síťové rozhraní** |  |
     | Virtuální síť | Přijměte výchozí název sítě. |
     | Podsíť | Přijměte výchozí konfiguraci podsítě. |
-    | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. </br> V nástroji **vytvořit veřejnou IP adresu** zadejte do název **myPublicIP**. </br> V případě **SKU** vyberte možnost **Standard**. </br> **Přiřazení** , vyberte **statické**. </br> Vyberte **OK**.  |
+    | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. </br> V nástroji **vytvořit veřejnou IP adresu** zadejte do název **myPublicIP**. </br> V případě **SKU** vyberte možnost **Standard**. </br> **Přiřazení**, vyberte **statické**. </br> Vyberte **OK**.  |
     | Skupina zabezpečení sítě NIC | Vybrat **základní**|
     | Veřejné příchozí porty | Vyberte možnost **Povolení vybraných portů**. |
     | Vyberte příchozí porty | Vybrat **RDP (3389)** |
 
     > [!WARNING]
-    > Je vybrán portál 3389, který umožňuje vzdálený přístup k virtuálnímu počítači s Windows serverem z Internetu. Otevření portu 3389 na Internet se nedoporučuje spravovat produkční úlohy. </br> Pokud chcete získat zabezpečený přístup k virtuálním počítačům Azure, přečtěte si téma **[co je Azure bastionu?](/azure/bastion/bastion-overview)**
+    > Je vybrán portál 3389, který umožňuje vzdálený přístup k virtuálnímu počítači s Windows serverem z Internetu. Otevření portu 3389 na Internet se nedoporučuje spravovat produkční úlohy. </br> Pokud chcete získat zabezpečený přístup k virtuálním počítačům Azure, přečtěte si téma **[co je Azure bastionu?](../bastion/bastion-overview.md)**
    
 5. Vyberte **Zkontrolovat a vytvořit**. 
   
@@ -78,7 +78,7 @@ Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 Pokud už je nepotřebujete, odstraňte skupinu prostředků a všechny prostředky, které obsahuje:
 
-1. Do pole **Hledat** v horní části portálu zadejte **myResourceGroup**. Jakmile se ve výsledcích hledání zobrazí skupina prostředků **myResourceGroup** , vyberte ji.
+1. Do pole **Hledat** v horní části portálu zadejte **myResourceGroup**. Jakmile se ve výsledcích hledání zobrazí skupina prostředků **myResourceGroup**, vyberte ji.
 2. Vyberte **Odstranit skupinu prostředků**.
 3. V části **ZADEJTE NÁZEV SKUPINY PROSTŘEDKŮ** zadejte **myResourceGroup** a vyberte **Odstranit**.
 
@@ -95,7 +95,7 @@ SKU veřejné IP adresy virtuálního počítače se musí shodovat s SKU veřej
 
 Můžete si stáhnout seznam rozsahů (předpon) pro [veřejný](https://www.microsoft.com/download/details.aspx?id=56519) cloud Azure a cloudy Azure [US Government](https://www.microsoft.com/download/details.aspx?id=57063), [China](https://www.microsoft.com/download/details.aspx?id=57062) a [Germany](https://www.microsoft.com/download/details.aspx?id=57064).
 
-- Přečtěte si další informace o [statických veřejných IP adresách](virtual-network-ip-addresses-overview-arm.md#allocation-method).
-- Přečtěte si další informace o [veřejných IP adresách](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) v Azure.
+- Přečtěte si další informace o [statických veřejných IP adresách](./public-ip-addresses.md#allocation-method).
+- Přečtěte si další informace o [veřejných IP adresách](./public-ip-addresses.md#public-ip-addresses) v Azure.
 - Přečtěte si další informace o všech [nastaveních veřejné IP adresy](virtual-network-public-ip-address.md#create-a-public-ip-address).
-- Přečtěte si další informace o [privátních IP adresách](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) a přiřazení [statických privátních IP adres](virtual-network-network-interface-addresses.md#add-ip-addresses) k virtuálnímu počítači Azure.
+- Přečtěte si další informace o [privátních IP adresách](./private-ip-addresses.md) a přiřazení [statických privátních IP adres](virtual-network-network-interface-addresses.md#add-ip-addresses) k virtuálnímu počítači Azure.

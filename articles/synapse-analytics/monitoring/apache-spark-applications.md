@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 16b37258d922db59f520d4e30c45773f6d1108cf
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 2f9fa6e7ef9a7ee8ea7dd2a09622f26f6fd9739e
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341036"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223121"
 ---
 # <a name="use-synapse-studio-to-monitor-your-apache-spark-applications"></a>Monitorování aplikací Apache Spark pomocí nástroje synapse Studio
 
@@ -29,11 +29,11 @@ Tento kurz se zabývá následujícími úkony:
 * Zobrazit zrušenou Apache Spark aplikaci
 * Ladění Apache Spark aplikace selhalo.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete s tímto kurzem, ujistěte se, že splňujete následující požadavky:
 
-- Pracovní prostor synapse Studio. Pokyny najdete v tématu [Vytvoření pracovního prostoru synapse Studio](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace#create-a-workspace).
+- Pracovní prostor synapse Studio. Pokyny najdete v tématu [Vytvoření pracovního prostoru synapse Studio](../../machine-learning/how-to-manage-workspace.md#create-a-workspace).
 
 - Fond Apache Spark.
 
@@ -47,7 +47,7 @@ Otevřete **monitorování** a pak vyberte **Apache Spark aplikace**. Chcete-li 
 
   ![Výběr dokončené úlohy](./media/how-to-monitor-spark-applications/select-completed-job.png)
 
-1. Zkontroluje **dokončené úkoly** , **stav** a **celkovou dobu trvání**.
+1. Zkontroluje **dokončené úkoly**, **stav** a **celkovou dobu trvání**.
 
 2. Aktualizuje dotaz protokolu.
 
@@ -59,7 +59,7 @@ Otevřete **monitorování** a pak vyberte **Apache Spark aplikace**. Chcete-li 
 
 6. Přehled úlohy můžete zobrazit v grafu vygenerované úlohy. Ve výchozím nastavení se v grafu zobrazují všechny úlohy. Toto zobrazení můžete filtrovat podle **ID úlohy**.
 
-7. Ve výchozím nastavení je vybraná možnost zobrazení **průběhu** . Tok dat můžete kontrolovat výběrem možnosti **Progress** / **Read** / **Written** / **Doba** čtení v rozevíracím seznamu **zobrazení** průběhu.
+7. Ve výchozím nastavení je vybraná možnost zobrazení **průběhu** . Tok dat můžete kontrolovat výběrem možnosti  /  /  / **Doba** čtení v rozevíracím seznamu **zobrazení** průběhu.
 
 8. Pokud chcete úlohu přehrát, klikněte na tlačítko **přehrávání** . Kdykoli můžete kliknout na tlačítko **zastavit** .
 
@@ -96,7 +96,7 @@ Otevřete **monitorování** a pak vyberte **Apache Spark aplikace**. Chcete-li 
 
    ![vybrat spuštěnou úlohu](./media/how-to-monitor-spark-applications/select-running-job.png)
 
-1. Zkontroluje **dokončené úkoly** , **stav** a **celkovou dobu trvání**.
+1. Zkontroluje **dokončené úkoly**, **stav** a **celkovou dobu trvání**.
 
 2. **Zrušte** Apache Spark aplikaci.
 
@@ -120,7 +120,7 @@ Otevřete **monitorování** a pak vyberte **Apache Spark aplikace**. Chcete-li 
 
  ![vybrat zrušenou úlohu](./media/how-to-monitor-spark-applications/select-cancelled-job.png) 
 
-1. Zkontroluje **dokončené úkoly** , **stav** a **celkovou dobu trvání**.
+1. Zkontroluje **dokončené úkoly**, **stav** a **celkovou dobu trvání**.
 
 2. Aktualizujte dotaz protokolu.
 
@@ -142,7 +142,7 @@ Otevřete **monitorování** a pak vyberte **Apache Spark aplikace**. Pokud chce
 
 ![vybrat neúspěšnou úlohu](./media/how-to-monitor-spark-applications/select-failed-job.png)
 
-1. Zkontroluje **dokončené úkoly** , **stav** a **celkovou dobu trvání**.
+1. Zkontroluje **dokončené úkoly**, **stav** a **celkovou dobu trvání**.
 
 2. Aktualizuje dotaz protokolu.
 
@@ -158,4 +158,4 @@ Otevřete **monitorování** a pak vyberte **Apache Spark aplikace**. Pokud chce
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o monitorování spuštění kanálu najdete v článku [monitorování spuštění kanálu pomocí synapse studia](how-to-monitor-pipeline-runs.md) .  
+Další informace o monitorování spuštění kanálu najdete v článku [monitorování spuštění kanálu pomocí synapse studia](how-to-monitor-pipeline-runs.md) .

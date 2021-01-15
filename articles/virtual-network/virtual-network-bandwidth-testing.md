@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/06/2020
 ms.author: steveesp
-ms.openlocfilehash: 0b009b7c44084e76194c1447fefdb2ff59f8086a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a2f6750a4d0a48c6971f60241976fb55410b65c
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91812280"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221438"
 ---
 # <a name="bandwidththroughput-testing-ntttcp"></a>Testování šířky pásma a propustnosti (NTTTCP)
 
@@ -26,7 +26,7 @@ Při testování výkonu propustnosti sítě v Azure je nejvhodnější použít
 Zkopírujte nástroj do dvou virtuálních počítačů Azure se stejnou velikostí. Jeden virtuální počítač funguje jako ODESÍLATEL a druhý jako přijímač.
 
 #### <a name="deploying-vms-for-testing"></a>Nasazení virtuálních počítačů pro testování
-Pro účely tohoto testu musí být oba virtuální počítače buď ve stejné [skupině umístění blízkosti](../virtual-machines/windows/co-location.md) , nebo ve stejné skupině dostupnosti, aby bylo možné použít své interní IP adresy a vyloučit z testu nástroje pro vyrovnávání zatížení. Je možné provést test pomocí virtuální IP adresy, ale tento druh testování je mimo rozsah tohoto dokumentu.
+Pro účely tohoto testu musí být oba virtuální počítače buď ve stejné [skupině umístění blízkosti](../virtual-machines/co-location.md) , nebo ve stejné skupině dostupnosti, aby bylo možné použít své interní IP adresy a vyloučit z testu nástroje pro vyrovnávání zatížení. Je možné provést test pomocí virtuální IP adresy, ale tento druh testování je mimo rozsah tohoto dokumentu.
 
 Poznamenejte si IP adresu příjemce. Pojďme zavolat tuto IP adresu "a. b. c. r"
 
@@ -65,7 +65,7 @@ Povolte NTttcp přes bránu Windows Firewall takto:
 
 netsh advfirewall firewall Add rule program = \<PATH\> \\ntttcp.exe název = "NTttcp" Protocol = any dir = in Action = Allow Enable = Yes Profile = any
 
-Pokud jste například zkopírovali ntttcp.exe do složky "c: \\ Tools", bude to příkaz: 
+Pokud jste například zkopírovali ntttcp.exe do složky "c: \\ Tools", bude to příkaz: 
 
 netsh advfirewall firewall Add rule program = c: \\ tools \\ntttcp.exe název = "NTttcp" Protocol = any dir = in Action = Allow Enable = Yes Profile = any
 
@@ -82,7 +82,7 @@ NTttcp-r – m 8, \* , 10.0.0.4-t 300
 
 Spusťte NTTTCP na ODESILATELi (**spusťte z cmd**, ne z PowerShellu):
 
-NTttcp-s – m 8, \* , 10.0.0.4-t 300 
+NTttcp-s – m 8, \* , 10.0.0.4-t 300 
 
 Počkejte na výsledky.
 
@@ -95,19 +95,19 @@ Na virtuálních počítačích se systémem Linux (ODESÍLATEL i přijímač) s
 
 CentOS – instalace Gitu:
 ``` bash
-  yum install gcc -y  
-  yum install git -y
+  yum install gcc -y  
+  yum install git -y
 ```
 Ubuntu – instalace Gitu:
 ``` bash
- apt-get -y install build-essential  
- apt-get -y install git
+ apt-get -y install build-essential  
+ apt-get -y install git
 ```
 Vytvořit a nainstalovat na obou těchto počítačích:
 ``` bash
- git clone https://github.com/Microsoft/ntttcp-for-linux
- cd ntttcp-for-linux/src
- make && make install
+ git clone https://github.com/Microsoft/ntttcp-for-linux
+ cd ntttcp-for-linux/src
+ make && make install
 ```
 
 Jako v příkladu Windows předpokládáme, že IP adresa PŘIJÍMAČe pro Linux je 10.0.0.4.
@@ -123,7 +123,7 @@ A na ODESILATELi spusťte:
 ``` bash
 ntttcp -s10.0.0.4 -t 300
 ```
- 
+ 
 Délka testu se nastaví na výchozí hodnotu 60 sekund, pokud není zadán žádný časový parametr.
 
 ## <a name="testing-between-vms-running-windows-and-linux"></a>Testování mezi virtuálními počítači se systémem Windows a LINUX:

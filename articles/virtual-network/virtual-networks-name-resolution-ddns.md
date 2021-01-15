@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2017
 ms.author: subsarma
-ms.openlocfilehash: 9f5b535a341956e5675ba96ba9570bd3f2ff3443
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad91eb94aedcdd0e4e715162e3ae064a1d2fb1ea
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84710945"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220418"
 ---
 # <a name="use-dynamic-dns-to-register-hostnames-in-your-own-dns-server"></a>Použití dynamického DNS k registraci názvů hostitelů na vlastním serveru DNS
 
@@ -28,14 +28,14 @@ ms.locfileid: "84710945"
 Když jsou vaše vlastní servery DNS hostované jako virtuální počítače Azure, můžete předávat dotazy na název hostitele pro stejnou virtuální síť do Azure a vyřešit tak názvy hostitelů. Pokud tuto možnost nechcete použít, můžete zaregistrovat názvy hostitelů virtuálních počítačů na serveru DNS pomocí dynamického DNS (DDNS). Azure nemá přihlašovací údaje k přímému vytváření záznamů na serverech DNS, takže je často potřeba alternativní uspořádání. Některé běžné scénáře s dalšími alternativami následují:
 
 ## <a name="windows-clients"></a>Klienti Windows
-Klienti systému Windows, kteří nejsou připojeni k doméně, se při spuštění pokoušejí nezabezpečené aktualizace DDNS nebo se změní jejich IP adresa. Název DNS je název hostitele a přípona primárního serveru DNS. Azure ponechá příponu primárního serveru DNS prázdnou, ale můžete nastavit příponu na virtuálním počítači prostřednictvím [uživatelského rozhraní](https://technet.microsoft.com/library/cc794784.aspx) nebo [PowerShellu](/powershell/module/dnsclient/set-dnsclient).
+Klienti systému Windows, kteří nejsou připojeni k doméně, se při spuštění pokoušejí nezabezpečené aktualizace DDNS nebo se změní jejich IP adresa. Název DNS je název hostitele a přípona primárního serveru DNS. Azure ponechá příponu primárního serveru DNS prázdnou, ale můžete nastavit příponu na virtuálním počítači prostřednictvím [uživatelského rozhraní](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc794784(v=ws.10)) nebo [PowerShellu](/powershell/module/dnsclient/set-dnsclient).
 
 Klienti systému Windows připojené k doméně registrují své IP adresy s řadičem domény pomocí zabezpečeného DDNS. Proces připojení k doméně nastaví primární příponu DNS na klientovi a vytvoří a udržuje vztah důvěryhodnosti.
 
 ## <a name="linux-clients"></a>Klienti Linux
 Klienti se systémem Linux se většinou neregistrují společně se serverem DNS při spuštění, předpokládá, že je server DHCP. Servery DHCP v Azure nemají přihlašovací údaje k registraci záznamů na serveru DNS. K odeslání aktualizací DDNS můžete použít nástroj s názvem `nsupdate` , který je součástí balíčku BIND. Vzhledem k tomu, že je protokol DDNS standardizovaný, můžete použít `nsupdate` i v případě, že na serveru DNS nepoužíváte BIND.
 
-K vytvoření a údržbě položky hostname na serveru DNS můžete použít zavěšení, které poskytuje klient DHCP. V průběhu cyklu DHCP klient spustí skripty v */etc/DHCP/dhclient-Exit-Hooks.d/*. K registraci nové IP adresy můžete použít háky pomocí `nsupdate` . Například:
+K vytvoření a údržbě položky hostname na serveru DNS můžete použít zavěšení, které poskytuje klient DHCP. V průběhu cyklu DHCP klient spustí skripty v */etc/DHCP/dhclient-Exit-Hooks.d/*. K registraci nové IP adresy můžete použít háky pomocí `nsupdate` . Příklad:
 
 ```bash
 #!/bin/sh

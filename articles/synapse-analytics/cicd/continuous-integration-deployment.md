@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: d38c57a8c8504e1e03406f7cd8a0b61725cb0511
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 7a665bf05167a6bdf20c7325c66a5d0e439aa7f1
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008077"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223682"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Průběžná integrace a doručování pro Azure synapse Workspace
 
@@ -21,7 +21,7 @@ ms.locfileid: "97008077"
 
 Průběžná integrace (CI) je proces automatizace sestavení a testování kódu pokaždé, když člen týmu potvrdí změny ve správě verzí. Průběžné nasazování (CD) je proces sestavení, testování, konfigurace a nasazení z několika testovacích nebo přípravných prostředí do produkčního prostředí.
 
-Pro pracovní prostor Azure synapse můžete průběžnou integraci a doručování (CI/CD) přesunout všechny entity z jednoho prostředí (vývoj, testování, produkce) do jiného. Pokud chcete svůj pracovní prostor zvýšit na jiný pracovní prostor, existují dvě části: použití [šablon Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview) k vytvoření nebo aktualizaci prostředků pracovního prostoru (fondů a pracovního prostoru). Migrujte artefakty (skripty SQL, Poznámkový blok, definice úlohy Spark, kanály, datové sady, toky dat atd.) pomocí nástrojů CI/CD synapse v Azure DevOps. 
+Pro pracovní prostor Azure synapse můžete průběžnou integraci a doručování (CI/CD) přesunout všechny entity z jednoho prostředí (vývoj, testování, produkce) do jiného. Pokud chcete svůj pracovní prostor zvýšit na jiný pracovní prostor, existují dvě části: použití [šablon Azure Resource Manager](../../azure-resource-manager/templates/overview.md) k vytvoření nebo aktualizaci prostředků pracovního prostoru (fondů a pracovního prostoru). Migrujte artefakty (skripty SQL, Poznámkový blok, definice úlohy Spark, kanály, datové sady, toky dat atd.) pomocí nástrojů CI/CD synapse v Azure DevOps. 
 
 V tomto článku se dozvíte, jak pomocí kanálu pro vydávání Azure automatizovat nasazení pracovního prostoru synapse do více prostředí.
 
@@ -46,7 +46,7 @@ V tomto článku se dozvíte, jak pomocí kanálu pro vydávání Azure automati
 
 1.  Do pole **název fáze** zadejte název vašeho prostředí.
 
-1.  Vyberte **Přidat artefakt** a pak vyberte úložiště Git nakonfigurované pro vývoj synapse Studio. Vyberte úložiště Git, které jste použili pro správu šablon ARM fondů a pracovního prostoru. Pokud jako zdroj použijete GitHub, budete muset vytvořit připojení služby pro svůj účet GitHub a úložiště Pull. Další informace o [připojení služby](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints) 
+1.  Vyberte **Přidat artefakt** a pak vyberte úložiště Git nakonfigurované pro vývoj synapse Studio. Vyberte úložiště Git, které jste použili pro správu šablon ARM fondů a pracovního prostoru. Pokud jako zdroj použijete GitHub, budete muset vytvořit připojení služby pro svůj účet GitHub a úložiště Pull. Další informace o [připojení služby](/azure/devops/pipelines/library/service-endpoints) 
 
     ![Přidat větev publikování](media/release-creation-github.png)
 
@@ -87,7 +87,7 @@ Přidejte úlohu nasazení Azure Resource Manager pro vytvoření nebo aktualiza
     ![udělit oprávnění](media/release-creation-grant-permission.png)
 
  > [!WARNING]
-> V režimu úplného nasazení se **odstraní** prostředky, které jsou ve skupině prostředků, ale nejsou zadané v nové šabloně správce prostředků. Další informace najdete v tématu [režimy nasazení Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/templates/deployment-modes) .
+> V režimu úplného nasazení se **odstraní** prostředky, které jsou ve skupině prostředků, ale nejsou zadané v nové šabloně správce prostředků. Další informace najdete v tématu [režimy nasazení Azure Resource Manager](../../azure-resource-manager/templates/deployment-modes.md) .
 
 ## <a name="set-up-a-stage-task-for-artifacts-deployment"></a>Nastavení úlohy fáze pro nasazení artefaktů 
 
@@ -122,7 +122,7 @@ Pomocí rozšíření [nasazení pracovního prostoru synapse](https://marketpla
 
 ## <a name="create-release-for-deployment"></a>Vytvořit vydání pro nasazení 
 
-Po uložení všech změn můžete vybrat **vytvořit vydání** a ručně vytvořit vydání. Informace o automatizaci vytváření vydání najdete v tématu [triggery vydané verze Azure DevOps](https://docs.microsoft.com/azure/devops/pipelines/release/triggers) .
+Po uložení všech změn můžete vybrat **vytvořit vydání** a ručně vytvořit vydání. Informace o automatizaci vytváření vydání najdete v tématu [triggery vydané verze Azure DevOps](/azure/devops/pipelines/release/triggers) .
 
    ![Vyberte vytvořit vydání.](media/release-creation-manually.png)
 
@@ -133,6 +133,4 @@ Pokud používáte integraci Git s vaším pracovním prostorem synapse a máte 
 -   **Integrace Gitu**. Nakonfigurujte jenom váš pracovní prostor vývojového synapse s integrací Gitu. Změny pracovních prostorů testů a výroby se nasazují prostřednictvím CI/CD a nepotřebují integraci Git.
 -   **Příprava fondů před migrací artefaktů**. Pokud máte skript SQL nebo Poznámkový blok připojený ke fondům v pracovním prostoru pro vývoj, očekává se stejný název fondů v různých prostředích. 
 -   **Infrastruktura jako kód (IAC)**. Správa infrastruktury (sítí, virtuálních počítačů, nástrojů pro vyrovnávání zatížení a topologie připojení) v popisném modelu používá stejnou verzi jako DevOps tým používá ke zdrojovému kódu. 
--   **Ostatní**. Podívejte se [na osvědčené postupy pro artefakty ADF](/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd) .
-
-
+-   **Ostatní**. Podívejte se [na osvědčené postupy pro artefakty ADF](../../data-factory/continuous-integration-deployment.md#best-practices-for-cicd) .

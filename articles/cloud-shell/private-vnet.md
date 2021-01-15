@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: damaerte
-ms.openlocfilehash: a820fb4ec5d6c2053b1104b68dbda0ae70f624c0
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 58f6c7a3b5d68d2825cead545ba1b683d1faf1af
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98179193"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222798"
 ---
 # <a name="deploy-cloud-shell-into-an-azure-virtual-network"></a>Nasazení Cloud Shell do služby Azure Virtual Network
 
@@ -87,9 +87,6 @@ Pokud **RegistrationState** je `Registered` , není vyžadována žádná akce. 
 Pokud už máte požadovanou virtuální síť, ke které se chcete připojit, přeskočte tuto část.
 
 V Azure Portal nebo pomocí rozhraní příkazového řádku Azure CLI, Azure PowerShell atd. Vytvořte skupinu prostředků a virtuální síť v nové skupině prostředků, **musí být skupina prostředků a virtuální síť ve stejné oblasti**.
-
-> [!NOTE]
-> Ve verzi Public Preview musí být skupina prostředků a virtuální síť umístěné buď v WestCentralUS nebo WestUS.
 
 ### <a name="arm-templates"></a>Šablony ARM
 Využijte [šablonu Azure pro rychlý Start](https://aka.ms/cloudshell/docs/vnet/template) k vytvoření prostředků Cloud Shell ve virtuální síti a [šablonu pro rychlý Start Azure](https://aka.ms/cloudshell/docs/vnet/template/storage) pro vytvoření potřebného úložiště. Poznamenejte si názvy prostředků, a to hlavně podle názvu sdílené složky.

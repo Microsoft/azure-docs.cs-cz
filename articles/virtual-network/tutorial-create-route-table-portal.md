@@ -13,16 +13,16 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: d630a41f9b83a852605ffad2a85ad6dd14bbac73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e047f46e110e1f7b1d544545c80bd1097ae65167
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86079645"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221914"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>Kurz: Směrování síťového provozu s využitím směrovací tabulky pomocí webu Azure Portal
 
-Azure ve výchozím nastavení směruje provoz mezi všemi podsítěmi v rámci virtuální sítě. Můžete vytvořit vlastní trasy a přepsat tak výchozí směrování Azure. Vlastní trasy jsou užitečné, když například chcete směrovat provoz mezi podsítěmi přes síťové virtuální zařízení (síťové virtuální zařízení). V tomto kurzu se naučíte:
+Azure ve výchozím nastavení směruje provoz mezi všemi podsítěmi v rámci virtuální sítě. Můžete vytvořit vlastní trasy a přepsat tak výchozí směrování Azure. Vlastní trasy jsou užitečné, když například chcete směrovat provoz mezi podsítěmi přes síťové virtuální zařízení (síťové virtuální zařízení). V tomto kurzu:
 
 > [!div class="checklist"]
 > * Vytvoření síťového virtuálního zařízení, které směruje provoz
@@ -34,7 +34,7 @@ Azure ve výchozím nastavení směruje provoz mezi všemi podsítěmi v rámci 
 
 V tomto kurzu se používá [Azure Portal](https://portal.azure.com). Můžete použít také rozhraní příkazového [řádku Azure](tutorial-create-route-table-cli.md) nebo [Azure PowerShell](tutorial-create-route-table-powershell.md).
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="create-an-nva"></a>Vytvoření síťového virtuálního zařízení
 
@@ -46,12 +46,12 @@ Síťová virtuální zařízení (síťová virtuální zařízení) jsou virtu
 
     ![Windows Server 2016 Datacenter, vytvoření virtuálního počítače, Azure Portal](./media/tutorial-create-route-table-portal/vm-ws2016-datacenter.png)
 
-1. Na stránce **vytvořit virtuální počítač** v části **základy**zadejte nebo vyberte tyto informace:
+1. Na stránce **vytvořit virtuální počítač** v části **základy** zadejte nebo vyberte tyto informace:
 
     | Sekce | Nastavení | Akce |
     | ------- | ------- | ----- |
     | **Podrobnosti o projektu** | Předplatné | Zvolte vaše předplatné. |
-    | | Skupina prostředků | Vyberte **vytvořit novou**, zadejte *MyResourceGroup*a vyberte **OK**. |
+    | | Skupina prostředků | Vyberte **vytvořit novou**, zadejte *MyResourceGroup* a vyberte **OK**. |
     | **Podrobnosti o instancích** | Název virtuálního počítače | Zadejte *myVmNva*. |
     | | Oblast | Vyberte **východní USA (US)**. |
     | | Možnosti dostupnosti | Vyberte možnost **nepožaduje se žádná redundance infrastruktury**. |
@@ -67,35 +67,35 @@ Síťová virtuální zařízení (síťová virtuální zařízení) jsou virtu
 
     Pak vyberte **Další: disky >**.
 
-1. V části **disky**vyberte nastavení, která jsou pro vaše potřeby vhodná, a potom vyberte **další: síťové >**.
+1. V části **disky** vyberte nastavení, která jsou pro vaše potřeby vhodná, a potom vyberte **další: síťové >**.
 
 1. V části **síť**:
 
-    1. V případě **virtuální sítě**vyberte **vytvořit novou**.
+    1. V případě **virtuální sítě** vyberte **vytvořit novou**.
     
     1. V dialogovém okně **vytvořit virtuální síť** zadejte do pole **název** *myVirtualNetwork*.
 
-    1. V **adresním prostoru**nahraďte stávající rozsah adres *10.0.0.0/16*.
+    1. V **adresním prostoru** nahraďte stávající rozsah adres *10.0.0.0/16*.
 
-    1. V části **podsítě**výběrem ikony **Odstranit** odstraňte existující podsíť a potom zadejte následující kombinace **názvu podsítě** a **rozsahu adres**. Po zadání platného názvu a rozsahu se pod ním zobrazí nový prázdný řádek.
+    1. V části **podsítě** výběrem ikony **Odstranit** odstraňte existující podsíť a potom zadejte následující kombinace **názvu podsítě** a **rozsahu adres**. Po zadání platného názvu a rozsahu se pod ním zobrazí nový prázdný řádek.
 
         | Název podsítě | Rozsah adres |
         | ----------- | ------------- |
-        | *Republik* | *10.0.0.0/24* |
-        | *Hlášen* | *10.0.1.0/24* |
+        | *Veřejná* | *10.0.0.0/24* |
+        | *Privátní* | *10.0.1.0/24* |
         | *DMZ* | *10.0.2.0/24* |
 
     1. Kliknutím na **tlačítko OK** zavřete dialogové okno.
 
-    1. V možnosti **podsíť**vyberte **DMZ (10.0.2.0/24)**.
+    1. V možnosti **podsíť** vyberte **DMZ (10.0.2.0/24)**.
 
-    1. Ve **veřejné IP adrese**vyberte **žádné**, protože se tento virtuální počítač nebude připojovat přes Internet.
+    1. Ve **veřejné IP adrese** vyberte **žádné**, protože se tento virtuální počítač nebude připojovat přes Internet.
 
-    1. Vyberte **Další: >správy **.
+    1. Vyberte **Další: >správy**.
 
 1. Pod položkou **Správa**:
 
-    1. V **účtu úložiště pro diagnostiku**vyberte **vytvořit novou**.
+    1. V **účtu úložiště pro diagnostiku** vyberte **vytvořit novou**.
     
     1. V dialogovém okně **vytvořit účet úložiště** zadejte nebo vyberte tyto informace:
 
@@ -124,7 +124,7 @@ Síťová virtuální zařízení (síťová virtuální zařízení) jsou virtu
 
 3. Na stránce **směrovací tabulka** vyberte **vytvořit**.
 
-4. V **tabulce vytvořit směrovací tabulku**zadejte nebo vyberte tyto informace:
+4. V **tabulce vytvořit směrovací tabulku** zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
@@ -148,13 +148,13 @@ Síťová virtuální zařízení (síťová virtuální zařízení) jsou virtu
 
     ![Přidat trasu, směrovací tabulku, Azure Portal](./media/tutorial-create-route-table-portal/add-route.png)
 
-1. Do **Přidat trasu**zadejte nebo vyberte tyto informace:
+1. Do **Přidat trasu** zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
     | Název trasy | *ToPrivateSubnet* |
     | Předpona adresy | *10.0.1.0/24* (rozsah adres *privátní* podsítě vytvořené dříve) |
-    | Typ dalšího segmentu směrování | **Virtuální zařízení** |
+    | Typ dalšího přesměrování | **Virtuální zařízení** |
     | Adresa dalšího segmentu | *10.0.2.4* (adresa v rozsahu adres podsítě *DMZ* ) |
 
 1. Vyberte **OK**.
@@ -169,7 +169,7 @@ Síťová virtuální zařízení (síťová virtuální zařízení) jsou virtu
 
 1. V seznamu podsíť virtuální sítě vyberte možnost **veřejné**.
 
-1. V **tabulce směrování**zvolte směrovací tabulku, kterou jste vytvořili (**myRouteTablePublic**), a pak vyberte **Uložit** a přidružte tabulku směrování k *veřejné* podsíti.
+1. V **tabulce směrování** zvolte směrovací tabulku, kterou jste vytvořili (**myRouteTablePublic**), a pak vyberte **Uložit** a přidružte tabulku směrování k *veřejné* podsíti.
 
     ![Přidružit směrovací tabulku, seznam podsítí, virtuální síť, Azure Portal](./media/tutorial-create-route-table-portal/associate-route-table.png)
 
@@ -189,7 +189,7 @@ Pak zapněte předávání IP pro nový virtuální počítač s síťové virtu
 
 1. V panelu nabídek síťové rozhraní vyberte **Konfigurace protokolu IP**.
 
-1. Na stránce **Konfigurace protokolu IP** nastavte **předávání IP** na **povoleno**a vyberte **Uložit**.
+1. Na stránce **Konfigurace protokolu IP** nastavte **předávání IP** na **povoleno** a vyberte **Uložit**.
 
     ![Povolit předávání IP, konfigurace IP, síťové rozhraní, virtuální počítač síťové virtuální zařízení (Network Virtual zařízení), Azure Portal](./media/tutorial-create-route-table-portal/enable-ip-forwarding.png)
 
@@ -239,7 +239,7 @@ Než vyberete **vytvořit** , abyste vytvořili veřejný nebo privátní virtu�
 
 1. Na stránce **připojit se pomocí protokolu RDP** vyberte **Stáhnout soubor RDP**. Azure vytvoří soubor protokol RDP (Remote Desktop Protocol) (*. RDP*) a stáhne ho do vašeho počítače.
 
-1. Otevřete stažený soubor *. RDP* . Pokud se zobrazí výzva, vyberte **Připojit**. Vyberte **Další možnosti**  >  **použít jiný účet**a pak zadejte uživatelské jméno a heslo, které jste zadali při vytváření privátního virtuálního počítače.
+1. Otevřete stažený soubor *. RDP* . Pokud se zobrazí výzva, vyberte **Připojit**. Vyberte **Další možnosti**  >  **použít jiný účet** a pak zadejte uživatelské jméno a heslo, které jste zadali při vytváření privátního virtuálního počítače.
 
 1. Vyberte **OK**.
 
@@ -249,7 +249,7 @@ Než vyberete **vytvořit** , abyste vytvořili veřejný nebo privátní virtu�
 
 V pozdějším kroku použijete nástroj Trace Route k otestování směrování. Trasování tras používá protokol ICMP (Internet Control Message Protocol), který ve výchozím nastavení zakáže bránu Windows Firewall. Povolte protokol ICMP přes bránu Windows Firewall.
 
-1. Ve vzdálené ploše *myVmPrivate*otevřete PowerShell.
+1. Ve vzdálené ploše *myVmPrivate* otevřete PowerShell.
 
 1. Zadejte tento příkaz:
 
@@ -284,7 +284,7 @@ V pozdějším kroku použijete nástroj Trace Route k otestování směrování
     ```cmd
     mstsc /v:myVmPublic
     ```
-1. Ve vzdálené ploše *myVmPublic*otevřete PowerShell.
+1. Ve vzdálené ploše *myVmPublic* otevřete PowerShell.
 
 1. Povolte protokol ICMP přes bránu Windows Firewall zadáním tohoto příkazu:
 
@@ -349,7 +349,7 @@ Pokud už skupinu prostředků nepotřebujete, odstraňte *myResourceGroup* a v�
 
 1. Vyberte **Odstranit skupinu prostředků**.
 
-1. V potvrzovacím dialogovém okně zadejte *myResourceGroup* pro **Zadejte název skupiny prostředků**a pak vyberte **Odstranit**. Azure odstraní *myResourceGroup* a všechny prostředky, které jsou svázané s touto skupinou prostředků, včetně směrovacích tabulek, účtů úložiště, virtuálních sítí, virtuálních počítačů, síťových rozhraní a veřejných IP adres.
+1. V potvrzovacím dialogovém okně zadejte *myResourceGroup* pro **Zadejte název skupiny prostředků** a pak vyberte **Odstranit**. Azure odstraní *myResourceGroup* a všechny prostředky, které jsou svázané s touto skupinou prostředků, včetně směrovacích tabulek, účtů úložiště, virtuálních sítí, virtuálních počítačů, síťových rozhraní a veřejných IP adres.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -361,4 +361,4 @@ I když můžete nasadit mnoho prostředků Azure v rámci virtuální sítě, A
 > [Omezení síťového přístupu k prostředkům PaaS](tutorial-restrict-network-access-to-resources.md)
 
 > [!NOTE] 
-> Náklady na služby Azure Services. Azure Cost Management vám pomůže nastavit rozpočty a nakonfigurovat výstrahy, aby zůstaly pod kontrolou. Pomocí Cost Management Analyzujte, spravujte a optimalizujte náklady na Azure. Další informace najdete v [rychlém startu při analýze vašich nákladů](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
+> Náklady na služby Azure Services. Azure Cost Management vám pomůže nastavit rozpočty a nakonfigurovat výstrahy, aby zůstaly pod kontrolou. Pomocí Cost Management Analyzujte, spravujte a optimalizujte náklady na Azure. Další informace najdete v [rychlém startu při analýze vašich nákladů](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).

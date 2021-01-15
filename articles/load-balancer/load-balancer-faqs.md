@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 04/22/2020
 ms.author: errobin
-ms.openlocfilehash: 2e559d574413b8eb0be2303798e0b16bfffad2cb
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: e9f46b11d9c0b5251ee4d52f64d657926f6f9c5e
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695397"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222985"
 ---
 # <a name="load-balancer-frequently-asked-questions"></a>Load Balancer nejčastějších dotazech
 
@@ -36,8 +36,8 @@ Pravidla překladu adres (NAT) slouží k určení prostředku back-end pro smě
 ## <a name="what-is-ip-1686312916"></a>Co je IP 168.63.129.16?
 Virtuální IP adresa hostitele označeného jako infrastruktura Azure Load Balancer, kde se nacházely sondy stavu Azure. Při konfiguraci back-end instancí musí umožňovat provoz z této IP adresy úspěšné reakce na sondy stavu. Toto pravidlo nekomunikuje s přístupem k front-endu Load Balancer. Pokud Azure Load Balancer nepoužíváte, můžete toto pravidlo přepsat. Další informace o značkách služby najdete [tady](../virtual-network/service-tags-overview.md#available-service-tags).
 
-## <a name="can-i-use-global-vnet-peering-with-basic-load-balancer"></a>Můžu použít globální VNET peering se základními Load Balancer?
-Ne. Základní Load Balancer nepodporuje globální partnerský vztah virtuální sítě. Místo toho můžete použít Standard Load Balancer. Projděte si článek [upgrade ze základního na standardní](upgrade-basic-standard.md) článek pro bezproblémové upgradu.
+## <a name="can-i-use-global-vnet-peering-with-basic-load-balancer"></a>Můžu použít globální VNet peering se základními Load Balancer?
+No. Základní Load Balancer nepodporuje globální partnerský vztah virtuální sítě. Místo toho můžete použít Standard Load Balancer. Projděte si článek [upgrade ze základního na standardní](upgrade-basic-standard.md) článek pro bezproblémové upgradu.
 
 ## <a name="how-can-i-discover-the-public-ip-that-an-azure-vm-uses"></a>Jak můžu zjistit veřejnou IP adresu, kterou virtuální počítač Azure používá?
 
@@ -45,6 +45,9 @@ Existuje mnoho způsobů, jak určit veřejnou zdrojovou IP adresu odchozího p�
 Pomocí příkazu nslookup můžete odeslat dotaz DNS pro název myip.opendns.com do překladače OpenDNS. Služba vrátí zdrojovou IP adresu, která se použila k odeslání dotazu. Když z virtuálního počítače spustíte následující dotaz, odpověď je veřejná IP adresa používaná pro tento virtuální počítač:
 
  ```nslookup myip.opendns.com resolver1.opendns.com```
+ 
+## <a name="can-i-add-a-vm-from-the-same-availability-set-to-different-backend-pools-of-a-load-balancer"></a>Můžu přidat virtuální počítač ze stejné skupiny dostupnosti do různých back-endu Load Balancer?
+Ne, toto se stát nemůže.
 
 ## <a name="how-do-connections-to-azure-storage-in-the-same-region-work"></a>Jak funguje připojení k Azure Storage ve stejné oblasti?
 Pro připojení k úložišti ve stejné oblasti jako virtuální počítač není nutné mít odchozí připojení prostřednictvím výše uvedených scénářů. Pokud to nechcete, použijte skupiny zabezpečení sítě (skupin zabezpečení sítě), jak je vysvětleno výše. Připojení k úložišti v jiných oblastech vyžaduje odchozí připojení. Pamatujte na to, že při připojování k úložišti z virtuálního počítače ve stejné oblasti bude zdrojová IP adresa v diagnostických protokolech úložiště interní adresa poskytovatele, nikoli veřejná IP adresa vašeho virtuálního počítače. Pokud chcete omezit přístup k účtu úložiště na virtuální počítače v jedné nebo více Virtual Networkch podsítích ve stejné oblasti, při konfiguraci brány firewall účtu úložiště použijte [koncové body služby Virtual Network](../virtual-network/virtual-network-service-endpoints-overview.md) a nemusíte mít veřejnou IP adresu. Po nakonfigurování koncových bodů služby se v diagnostických protokolech úložiště zobrazí vaše Virtual Network privátní IP adresa, nikoli adresa interního poskytovatele.

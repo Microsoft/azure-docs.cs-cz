@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 06/11/2020
 ms.author: allensu
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0ec054d55432ad2680314b4ff91a067d37b629d4
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: e99ee28460c1639a7f0b9dd989bbe5a287a9158c
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94734323"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221812"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-azure-cli-and-test-the-nat-service"></a>Kurz: Vytvoření brány NAT pomocí Azure CLI a testování služby NAT
 
@@ -34,7 +34,7 @@ V tomto kurzu vytvoříte bránu NAT, která poskytuje odchozí připojení k vi
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte skupinu prostředků pomocí příkazu [az group create](https://docs.microsoft.com/cli/azure/group). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
+Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
 Následující příklad vytvoří skupinu prostředků s názvem **myResourceGroupNAT** v umístění **eastus2** :
 
@@ -49,7 +49,7 @@ Následující příklad vytvoří skupinu prostředků s názvem **myResourceGr
 
 ### <a name="create-a-public-ip-address"></a>Vytvoření veřejné IP adresy
 
-Pro přístup k veřejnému Internetu potřebujete pro bránu NAT jednu nebo více veřejných IP adres. Pomocí [AZ Network Public-IP Create](https://docs.microsoft.com/cli/azure/network/public-ip) vytvořte prostředek veřejné IP adresy s názvem **myPublicIPsource** v **myResourceGroupNAT**.
+Pro přístup k veřejnému Internetu potřebujete pro bránu NAT jednu nebo více veřejných IP adres. Pomocí [AZ Network Public-IP Create](/cli/azure/network/public-ip) vytvořte prostředek veřejné IP adresy s názvem **myPublicIPsource** v **myResourceGroupNAT**.
 
 ```azurecli-interactive
   az network public-ip create \
@@ -77,7 +77,7 @@ Tato část podrobně popisuje, jak můžete vytvořit a nakonfigurovat následu
   - Veřejný fond IP adres a předponu veřejných IP adres, které se mají použít pro odchozí toky přeložené prostředkem brány NAT.
   - Změňte časový limit nečinnosti z výchozí hodnoty 4 minuty na 10 minut.
 
-Vytvořte globální bránu Azure NAT pomocí [AZ Network NAT Gateway Create](https://docs.microsoft.com/cli/azure/network/nat?view=azure-cli-latest) s názvem **myNATgateway**. Příkaz používá veřejnou IP adresu **myPublicIP** i předponu veřejné IP adresy **myPublicIPprefix**. Příkaz také změní časový limit nečinnosti na 10 minut.
+Vytvořte globální bránu Azure NAT pomocí [AZ Network NAT Gateway Create](/cli/azure/network/nat?view=azure-cli-latest) s názvem **myNATgateway**. Příkaz používá veřejnou IP adresu **myPublicIP** i předponu veřejné IP adresy **myPublicIPprefix**. Příkaz také změní časový limit nečinnosti na 10 minut.
 
 ```azurecli-interactive
   az network nat gateway create \
@@ -99,7 +99,7 @@ Provedeme vás instalací kompletního testovacího prostředí. Pomocí Open so
 
 Než nasadíte virtuální počítač a budete moct otestovat bránu NAT, musíme vytvořit virtuální síť.
 
-Vytvořte virtuální síť s názvem **myVnetsource** s podsítí s názvem **mySubnetsource** v **myResourceGroupNAT** pomocí [AZ Network Microsoft Azure Virtual Network Create](https://docs.microsoft.com/cli/azure/network/vnet).  Adresní prostor IP adres pro virtuální síť je **192.168.0.0/16**. Podsíť ve virtuální síti je **192.168.0.0/24**.
+Vytvořte virtuální síť s názvem **myVnetsource** s podsítí s názvem **mySubnetsource** v **myResourceGroupNAT** pomocí [AZ Network Microsoft Azure Virtual Network Create](/cli/azure/network/vnet).  Adresní prostor IP adres pro virtuální síť je **192.168.0.0/16**. Podsíť ve virtuální síti je **192.168.0.0/24**.
 
 ```azurecli-interactive
   az network vnet create \
@@ -113,7 +113,7 @@ Vytvořte virtuální síť s názvem **myVnetsource** s podsítí s názvem **m
 
 ### <a name="configure-nat-service-for-source-subnet"></a>Konfigurace služby NAT pro zdrojovou podsíť
 
-Nakonfigurujte zdrojovou podsíť **mySubnetsource** ve službě Virtual Network **myVnetsource** tak, aby používala konkrétní prostředek brány NAT **myNATgateway** pomocí [AZ Network Microsoft Azure Virtual Network podsíti Update](https://docs.microsoft.com/cli/azure/network/vnet/subnet). Tento příkaz aktivuje službu NAT v zadané podsíti.
+Nakonfigurujte zdrojovou podsíť **mySubnetsource** ve službě Virtual Network **myVnetsource** tak, aby používala konkrétní prostředek brány NAT **myNATgateway** pomocí [AZ Network Microsoft Azure Virtual Network podsíti Update](/cli/azure/network/vnet/subnet). Tento příkaz aktivuje službu NAT v zadané podsíti.
 
 ```azurecli-interactive
     az network vnet subnet update \
@@ -132,7 +132,7 @@ Tento virtuální počítač můžete také vytvořit bez veřejné IP adresy a 
 
 ### <a name="create-public-ip-for-source-vm"></a>Vytvoření veřejné IP adresy pro zdrojový virtuální počítač
 
-Vytvoříme veřejnou IP adresu, která se použije pro přístup ke zdrojovému virtuálnímu počítači. Pomocí [AZ Network Public-IP Create](https://docs.microsoft.com/cli/azure/network/public-ip) vytvořte prostředek veřejné IP adresy s názvem **myPublicIPsourceVM** v **myResourceGroupNAT**.
+Vytvoříme veřejnou IP adresu, která se použije pro přístup ke zdrojovému virtuálnímu počítači. Pomocí [AZ Network Public-IP Create](/cli/azure/network/public-ip) vytvořte prostředek veřejné IP adresy s názvem **myPublicIPsourceVM** v **myResourceGroupNAT**.
 
 ```azurecli-interactive
   az network public-ip create \
@@ -144,7 +144,7 @@ Vytvoříme veřejnou IP adresu, která se použije pro přístup ke zdrojovému
 
 ### <a name="create-an-nsg-for-source-vm"></a>Vytvoření NSG pro zdrojový virtuální počítač
 
-Vzhledem k tomu, že standardní veřejné IP adresy jsou zabezpečené ve výchozím nastavení, musíme vytvořit NSG a povolit tak příchozí přístup pro přístup přes SSH.  Služba Azure NAT má na vědomí směr toku. Když je ve stejné podsíti nakonfigurovaná brána NAT, NSG se nepoužije pro odchozí připojení. Pomocí [AZ Network NSG Create](https://docs.microsoft.com/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create) vytvořte prostředek NSG s názvem **myNSGsource** v **myResourceGroupNAT**.
+Vzhledem k tomu, že standardní veřejné IP adresy jsou zabezpečené ve výchozím nastavení, musíme vytvořit NSG a povolit tak příchozí přístup pro přístup přes SSH.  Služba Azure NAT má na vědomí směr toku. Když je ve stejné podsíti nakonfigurovaná brána NAT, NSG se nepoužije pro odchozí připojení. Pomocí [AZ Network NSG Create](/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create) vytvořte prostředek NSG s názvem **myNSGsource** v **myResourceGroupNAT**.
 
 ```azurecli-interactive
   az network nsg create \
@@ -155,7 +155,7 @@ Vzhledem k tomu, že standardní veřejné IP adresy jsou zabezpečené ve vých
 
 ### <a name="expose-ssh-endpoint-on-source-vm"></a>Zveřejnit koncový bod SSH na zdrojovém virtuálním počítači
 
-Vytvoříme pravidlo v NSG pro přístup SSH ke zdrojovému virtuálnímu počítači. Pomocí [AZ Network NSG Rule Create](https://docs.microsoft.com/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create) vytvořte pravidlo NSG s názvem **SSH**. Toto pravidlo se vytvoří v NSG s názvem **myNSGsource** ve skupině prostředků **myResourceGroupNAT**.
+Vytvoříme pravidlo v NSG pro přístup SSH ke zdrojovému virtuálnímu počítači. Pomocí [AZ Network NSG Rule Create](/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create) vytvořte pravidlo NSG s názvem **SSH**. Toto pravidlo se vytvoří v NSG s názvem **myNSGsource** ve skupině prostředků **myResourceGroupNAT**.
 
 ```azurecli-interactive
   az network nsg rule create \
@@ -211,7 +211,7 @@ Nyní vytvoříme cíl pro odchozí přenosy přeložené službou překladu adr
 
  Musíme vytvořit virtuální síť, ve které bude cílový virtuální počítač.  Tyto příkazy jsou stejný postup jako u zdrojového virtuálního počítače s malými změnami k zpřístupnění cílového koncového bodu.
 
-Vytvořte virtuální síť s názvem **myVnetdestination** s podsítí s názvem **mySubnetdestination** v **myResourceGroupNAT** pomocí [AZ Network Microsoft Azure Virtual Network Create](https://docs.microsoft.com/cli/azure/network/vnet).  Adresní prostor IP adres pro virtuální síť je **192.168.0.0/16**. Podsíť ve virtuální síti je **192.168.0.0/24**.
+Vytvořte virtuální síť s názvem **myVnetdestination** s podsítí s názvem **mySubnetdestination** v **myResourceGroupNAT** pomocí [AZ Network Microsoft Azure Virtual Network Create](/cli/azure/network/vnet).  Adresní prostor IP adres pro virtuální síť je **192.168.0.0/16**. Podsíť ve virtuální síti je **192.168.0.0/24**.
 
 ```azurecli-interactive
   az network vnet create \
@@ -225,7 +225,7 @@ Vytvořte virtuální síť s názvem **myVnetdestination** s podsítí s názve
 
 ### <a name="create-public-ip-for-destination-vm"></a>Vytvoření veřejné IP adresy pro cílový virtuální počítač
 
-Vytvoříme veřejnou IP adresu, která se použije pro přístup ke zdrojovému virtuálnímu počítači. Pomocí [AZ Network Public-IP Create](https://docs.microsoft.com/cli/azure/network/public-ip) vytvořte prostředek veřejné IP adresy s názvem **myPublicIPdestinationVM** v **myResourceGroupNAT**. 
+Vytvoříme veřejnou IP adresu, která se použije pro přístup ke zdrojovému virtuálnímu počítači. Pomocí [AZ Network Public-IP Create](/cli/azure/network/public-ip) vytvořte prostředek veřejné IP adresy s názvem **myPublicIPdestinationVM** v **myResourceGroupNAT**. 
 
 ```azurecli-interactive
   az network public-ip create \
@@ -237,7 +237,7 @@ Vytvoříme veřejnou IP adresu, která se použije pro přístup ke zdrojovému
 
 ### <a name="create-an-nsg-for-destination-vm"></a>Vytvoření NSG pro cílový virtuální počítač
 
-Standardní veřejné IP adresy jsou "zabezpečené ve výchozím nastavení", budete muset vytvořit NSG a povolit tak příchozí přístup pro SSH. Služba Azure NAT má na vědomí směr toku. Když je ve stejné podsíti nakonfigurovaná brána NAT, NSG se nepoužije pro odchozí připojení. Pomocí [AZ Network NSG Create](https://docs.microsoft.com/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create) vytvořte prostředek NSG s názvem **myNSGdestination** v **myResourceGroupNAT**.
+Standardní veřejné IP adresy jsou "zabezpečené ve výchozím nastavení", budete muset vytvořit NSG a povolit tak příchozí přístup pro SSH. Služba Azure NAT má na vědomí směr toku. Když je ve stejné podsíti nakonfigurovaná brána NAT, NSG se nepoužije pro odchozí připojení. Pomocí [AZ Network NSG Create](/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create) vytvořte prostředek NSG s názvem **myNSGdestination** v **myResourceGroupNAT**.
 
 ```azurecli-interactive
     az network nsg create \
@@ -248,7 +248,7 @@ Standardní veřejné IP adresy jsou "zabezpečené ve výchozím nastavení", b
 
 ### <a name="expose-ssh-endpoint-on-destination-vm"></a>Vystavení koncového bodu SSH na cílovém virtuálním počítači
 
-Vytvoříme pravidlo v NSG pro přístup SSH k cílovému virtuálnímu počítači. Pomocí [AZ Network NSG Rule Create](https://docs.microsoft.com/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create) vytvořte pravidlo NSG s názvem **SSH**. Toto pravidlo se vytvoří v NSG s názvem **myNSGdestination** ve skupině prostředků **myResourceGroupNAT**.
+Vytvoříme pravidlo v NSG pro přístup SSH k cílovému virtuálnímu počítači. Pomocí [AZ Network NSG Rule Create](/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create) vytvořte pravidlo NSG s názvem **SSH**. Toto pravidlo se vytvoří v NSG s názvem **myNSGdestination** ve skupině prostředků **myResourceGroupNAT**.
 
 ```azurecli-interactive
     az network nsg rule create \
@@ -266,7 +266,7 @@ Vytvoříme pravidlo v NSG pro přístup SSH k cílovému virtuálnímu počíta
 
 ### <a name="expose-http-endpoint-on-destination-vm"></a>Vystavit koncový bod HTTP na cílovém virtuálním počítači
 
-Vytvoříme pravidlo v NSG pro přístup HTTP k cílovému virtuálnímu počítači. Pomocí [AZ Network NSG Rule Create](https://docs.microsoft.com/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create) vytvořte pravidlo NSG s názvem **http** v NSG s názvem **myNSGdestination** v **myResourceGroupNAT**.
+Vytvoříme pravidlo v NSG pro přístup HTTP k cílovému virtuálnímu počítači. Pomocí [AZ Network NSG Rule Create](/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create) vytvořte pravidlo NSG s názvem **http** v NSG s názvem **myNSGdestination** v **myResourceGroupNAT**.
 
 ```azurecli-interactive
     az network nsg rule create \
@@ -434,4 +434,3 @@ Zkontrolujte metriky v Azure Monitor a podívejte se, jak vaše služba NAT fung
 - Rychlý Start pro nasazení [prostředku brány NAT pomocí Azure Portal](./quickstart-create-nat-gateway-portal.md).
 
 > [!div class="nextstepaction"]
-

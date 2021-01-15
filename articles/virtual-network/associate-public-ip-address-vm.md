@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: allensu
-ms.openlocfilehash: 9b5fc9e4118d98905138b7f205f61d85a96b60b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 76f92b5da2331748fbbbfc68f1e456fd50dd71ee
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88035463"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223019"
 ---
 # <a name="associate-a-public-ip-address-to-a-virtual-machine"></a>Přidružení veřejné IP adresy k virtuálnímu počítači
 
@@ -28,9 +28,9 @@ K virtuálnímu počítači můžete přidružit veřejnou IP adresu pomocí [Az
 
 ## <a name="azure-portal"></a>portál Azure
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 2. Vyhledejte virtuální počítač, do kterého chcete přidat veřejnou IP adresu, nebo ho vyhledejte a vyberte.
-3. V části **Nastavení**vyberte **sítě**a pak vyberte síťové rozhraní, do kterého chcete přidat veřejnou IP adresu, jak je znázorněno na následujícím obrázku:
+3. V části **Nastavení** vyberte **sítě** a pak vyberte síťové rozhraní, do kterého chcete přidat veřejnou IP adresu, jak je znázorněno na následujícím obrázku:
 
    ![Vybrat síťové rozhraní](./media/associate-public-ip-address-vm/select-nic.png)
 
@@ -44,7 +44,7 @@ K virtuálnímu počítači můžete přidružit veřejnou IP adresu pomocí [Az
    > [!NOTE]
    > Veřejné IP adresy jsou přidruženy k konfiguracím protokolu IP pro síťové rozhraní. V předchozím obrázku má síťové rozhraní jednu konfiguraci protokolu IP. Pokud má síťové rozhraní více konfigurací protokolu IP, všechny se zobrazí v seznamu a Vy byste vybrali konfiguraci protokolu IP, ke které chcete přidružit veřejnou IP adresu.
 
-5. Vyberte možnost **povoleno**a pak vyberte možnost **IP adresa (*Konfigurace požadovaných nastavení*)**. Vyberte existující veřejnou IP adresu, která automaticky zavře pole **zvolit veřejnou IP adresu** . Pokud nemáte uvedené žádné veřejné IP adresy, musíte si ho vytvořit. Informace o postupu najdete v tématu [Vytvoření veřejné IP adresy](virtual-network-public-ip-address.md#create-a-public-ip-address). Vyberte **Save (Uložit**), jak je znázorněno na následujícím obrázku, a potom pole pro konfiguraci protokolu IP zavřete.
+5. Vyberte možnost **povoleno** a pak vyberte možnost **IP adresa (*Konfigurace požadovaných nastavení*)**. Vyberte existující veřejnou IP adresu, která automaticky zavře pole **zvolit veřejnou IP adresu** . Pokud nemáte uvedené žádné veřejné IP adresy, musíte si ho vytvořit. Informace o postupu najdete v tématu [Vytvoření veřejné IP adresy](virtual-network-public-ip-address.md#create-a-public-ip-address). Vyberte **Save (Uložit**), jak je znázorněno na následujícím obrázku, a potom pole pro konfiguraci protokolu IP zavřete.
 
    ![Povolit veřejnou IP adresu](./media/associate-public-ip-address-vm/enable-public-ip-address.png)
 
@@ -214,4 +214,4 @@ Než se budete moct připojit k veřejné IP adrese z Internetu, ujistěte se, �
 
 ## <a name="next-steps"></a>Další kroky
 
-Povolí příchozí internetový provoz do virtuálního počítače pomocí skupiny zabezpečení sítě. Informace o tom, jak vytvořit skupinu zabezpečení sítě, najdete v tématu [práce se skupinami zabezpečení sítě](manage-network-security-group.md#work-with-network-security-groups). Další informace o skupinách zabezpečení sítě najdete v tématu [skupiny zabezpečení](security-overview.md).
+Povolí příchozí internetový provoz do virtuálního počítače pomocí skupiny zabezpečení sítě. Informace o tom, jak vytvořit skupinu zabezpečení sítě, najdete v tématu [práce se skupinami zabezpečení sítě](manage-network-security-group.md#work-with-network-security-groups). Další informace o skupinách zabezpečení sítě najdete v tématu [skupiny zabezpečení](./network-security-groups-overview.md).

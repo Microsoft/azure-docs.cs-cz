@@ -9,12 +9,12 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 906d3d28aabf8f6ecd6e04c38b4519937fa95c2b
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 68b113de63cfefde805c1c46e9303829c4eb33a7
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092155"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222135"
 ---
 # <a name="machine-learning-capabilities-in-azure-synapse-analytics"></a>Funkce Machine Learning ve službě Azure synapse Analytics
 
@@ -40,7 +40,7 @@ Většina projektů strojového učení zahrnuje dobře zavedený postup. jední
 
 #### <a name="data-source-and-pipelines"></a>Zdroje dat a kanály
 
-Díky [Azure Data Factory](/azure/data-factory/introduction)nativně integrovaná součást služby Azure synapse je k dispozici výkonná sada nástrojů pro přijímání dat a kanály orchestrace dat. Díky tomu můžete snadno vytvářet datové kanály pro přístup k datům a jejich transformaci do formátu, který je možné spotřebovat pro strojové učení. [Přečtěte si další informace o datových kanálech](/azure/data-factory/concepts-pipelines-activities?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) v synapse. 
+Díky [Azure Data Factory](../../data-factory/introduction.md)nativně integrovaná součást služby Azure synapse je k dispozici výkonná sada nástrojů pro přijímání dat a kanály orchestrace dat. Díky tomu můžete snadno vytvářet datové kanály pro přístup k datům a jejich transformaci do formátu, který je možné spotřebovat pro strojové učení. [Přečtěte si další informace o datových kanálech](../../data-factory/concepts-pipelines-activities.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json) v synapse. 
 
 #### <a name="data-preparation-and-explorationvisualization"></a>Příprava a průzkum a vizualizace dat
 
@@ -64,13 +64,13 @@ Kromě MLlib lze také použít k vývoji modelů oblíbené knihovny, jako je n
 
 #### <a name="train-models-with-azure-machine-learning-automated-ml"></a>Výuka modelů pomocí Azure Machine Learning automatizovaného ML
 
-Dalším způsobem, jak naučit modely strojového učení, které nevyžadují v strojovém učení spoustu předchozích znalostí, je použití automatizovaného ML. [Automatizovaná ml](/azure/machine-learning/concept-automated-ml) je funkce, která automaticky nakládá sadu modelů strojového učení a umožňuje uživateli vybrat nejlepší model na základě konkrétních metrik. Díky bezproblémové integraci s Azure Machine Learning z notebooků Azure synapse můžou uživatelé snadno využívat automatizované ML v synapse s ověřováním průchozích Azure Active Directory.  To znamená, že musíte odkazovat na pracovní prostor Azure Machine Learning a nemusíte zadávat žádné přihlašovací údaje. Tady je [kurz automatizovaného ml](../spark/apache-spark-azure-machine-learning-tutorial.md) , který popisuje, jak pomocí Azure Machine Learning automatizovaného ml ve fondech Spark synapse používat automatizovanou analýzu.
+Dalším způsobem, jak naučit modely strojového učení, které nevyžadují v strojovém učení spoustu předchozích znalostí, je použití automatizovaného ML. [Automatizovaná ml](../../machine-learning/concept-automated-ml.md) je funkce, která automaticky nakládá sadu modelů strojového učení a umožňuje uživateli vybrat nejlepší model na základě konkrétních metrik. Díky bezproblémové integraci s Azure Machine Learning z notebooků Azure synapse můžou uživatelé snadno využívat automatizované ML v synapse s ověřováním průchozích Azure Active Directory.  To znamená, že musíte odkazovat na pracovní prostor Azure Machine Learning a nemusíte zadávat žádné přihlašovací údaje. Tady je [kurz automatizovaného ml](../spark/apache-spark-azure-machine-learning-tutorial.md) , který popisuje, jak pomocí Azure Machine Learning automatizovaného ml ve fondech Spark synapse používat automatizovanou analýzu.
 
 ### <a name="model-deployment-and-scoring"></a>Nasazení a bodování modelu
 
 Modely, které byly vyškoleny buď v Azure synapse nebo mimo Azure synapse, se dají snadno použít pro dávkové vyhodnocování. V současné době v synapse existují dva způsoby, jak můžete spustit dávkové vyhodnocování.
 
-* Pomocí [funkce prediktivního TSQL](../sql-data-warehouse/sql-data-warehouse-predict.md) ve fondech SQL synapse můžete spustit předpovědi přímo tam, kde vaše data žijí. Tato výkonná a škálovatelná funkce umožňuje rozšířit data bez přesunu dat z datového skladu. Zavádí se nový [model strojového učení s asistencí v nástroji synapse Studio](https://aka.ms/synapse-ml-ui) , kde můžete nasadit model ONNX z registru Azure Machine Learning modelu v synapse fondech SQL pro dávkové vyhodnocování pomocí předpovědi.
+* Pomocí [funkce prediktivního TSQL](../sql-data-warehouse/sql-data-warehouse-predict.md) ve fondech SQL synapse můžete spustit předpovědi přímo tam, kde vaše data žijí. Tato výkonná a škálovatelná funkce umožňuje rozšířit data bez přesunu dat z datového skladu. Zavádí se nový [model strojového učení s asistencí v nástroji synapse Studio](./tutorial-sql-pool-model-scoring-wizard.md) , kde můžete nasadit model ONNX z registru Azure Machine Learning modelu v synapse fondech SQL pro dávkové vyhodnocování pomocí předpovědi.
 
 * Další možností pro dávkové vyhodnocování modelů strojového učení ve službě Azure synapse je využít fondy Apache Spark pro Azure synapse. V závislosti na knihovnách, které se používají ke vzdělávání modelů, můžete ke spuštění bodování dávky použít prostředí kódu.
 

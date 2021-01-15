@@ -12,16 +12,16 @@ ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
-ms.date: 07/07/2020
+ms.date: 01/12/2021
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 05/23/2019
-ms.openlocfilehash: 7b53767aea9df2da8dbf89e26fff03c792918016
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: ff1e5edad05ebd7157f71ad2e099ea88905be4f3
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893675"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221132"
 ---
 # <a name="tutorial-send-push-notifications-to-xamarinios-apps-using-azure-notification-hubs"></a>Kurz: odesílání nabízených oznámení do aplikací pro Xamarin. iOS pomocí Azure Notification Hubs
 
@@ -65,7 +65,7 @@ Dokončení tohoto kurzu je předpokladem pro všechny ostatní kurzy služby No
 
      ![Visual Studio – Výběr typu aplikace][31]
 
-2. Zadejte název aplikace a identifikátor organizace, klikněte na **Další**a pak na **vytvořit** .
+2. Zadejte název aplikace a identifikátor organizace, klikněte na **Další** a pak na **vytvořit** .
 
 3. V zobrazení Řešení dvakrát klikněte na soubor *Info.plist* a v části **Identita** se ujistěte, že identifikátor sady odpovídá identifikátoru použitému při vytváření profilu zřizování. V části **Podepisování** zkontrolujte, že v části **Tým** je vybraný váš vývojářský účet, možnost Automatically manage signing (Automaticky se starat o podepisování) je vybraná a váš podpisový certifikát a profil zřizování jsou automaticky vybrané.
 
@@ -88,14 +88,20 @@ Dokončení tohoto kurzu je předpokladem pro všechny ostatní kurzy služby No
 7. Do `AppDelegate.cs` přidejte následující příkaz using:
 
     ```csharp
-    using WindowsAzure.Messaging;
+    using WindowsAzure.Messaging.NotificationHubs;
     using UserNotifications
     ```
 
-8. Deklarovat instanci `SBNotificationHub` :
+8. Vytvořte implementaci `MSNotificationHubDelegate` v `AppDelegate.cs` :
 
     ```csharp
-    private SBNotificationHub Hub { get; set; }
+    public class AzureNotificationHubListener : MSNotificationHubDelegate
+    {
+        public override void DidReceivePushNotification(MSNotificationHub notificationHub, MSNotificationHubMessage message)
+        {
+
+        }
+    }
     ```
 
 9. V nástroji `AppDelegate.cs` aktualizujte `FinishedLaunching()` tak, aby odpovídaly následujícímu kódu:
@@ -103,105 +109,32 @@ Dokončení tohoto kurzu je předpokladem pro všechny ostatní kurzy služby No
     ```csharp
     public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
     {
-        if (UIDevice.CurrentDevice.CheckSystemVersion(10, 0))
-        {
-            UNUserNotificationCenter.Current.RequestAuthorization(UNAuthorizationOptions.Alert | UNAuthorizationOptions.Badge | UNAuthorizationOptions.Sound,
-                                                                    (granted, error) => InvokeOnMainThread(UIApplication.SharedApplication.RegisterForRemoteNotifications));
-        }
-        else if (UIDevice.CurrentDevice.CheckSystemVersion(8, 0))
-        {
-            var pushSettings = UIUserNotificationSettings.GetSettingsForTypes(
-                    UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound,
-                    new NSSet());
-
-            UIApplication.SharedApplication.RegisterUserNotificationSettings(pushSettings);
-            UIApplication.SharedApplication.RegisterForRemoteNotifications();
-        }
-        else
-        {
-            UIRemoteNotificationType notificationTypes = UIRemoteNotificationType.Alert | UIRemoteNotificationType.Badge | UIRemoteNotificationType.Sound;
-            UIApplication.SharedApplication.RegisterForRemoteNotificationTypes(notificationTypes);
-        }
+        // Set the Message listener
+        MSNotificationHub.SetDelegate(new AzureNotificationHubListener());
+        
+        // Start the SDK
+        MSNotificationHub.Start(ListenConnectionString, NotificationHubName);
 
         return true;
     }
     ```
 
-10. V `AppDelegate.cs` , přepište `RegisteredForRemoteNotifications()` metodu:
+10. V nástroji `AppDelegate.cs` implementujte `DidReceivePushNotification` metodu pro `AzureNotificationHubListener` třídu:
 
     ```csharp
-    public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
+    public override void DidReceivePushNotification(MSNotificationHub notificationHub, MSNotificationHubMessage message)
     {
-        Hub = new SBNotificationHub(Constants.ListenConnectionString, Constants.NotificationHubName);
+        // This sample assumes { aps: { alert: { title: "Hello", body: "World" } } }
+        var alertTitle = message.Title ?? "Notification";
+        var alertBody = message.Body;
 
-        Hub.UnregisterAll (deviceToken, (error) => {
-            if (error != null)
-            {
-                System.Diagnostics.Debug.WriteLine("Error calling Unregister: {0}", error.ToString());
-                return;
-            }
-
-            NSSet tags = null; // create tags if you want
-            Hub.RegisterNative(deviceToken, tags, (errorCallback) => {
-                if (errorCallback != null)
-                    System.Diagnostics.Debug.WriteLine("RegisterNative error: " + errorCallback.ToString());
-            });
-        });
+        var myAlert = UIAlertController.Create(alertTitle, alertBody, UIAlertControllerStyle.Alert);
+        myAlert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, null));
+        UIApplication.SharedApplication.KeyWindow.RootViewController.PresentViewController(myAlert, true, null);
     }
     ```
 
-11. V `AppDelegate.cs` , přepište `ReceivedRemoteNotification()` metodu:
-
-    ```csharp
-    public override void ReceivedRemoteNotification(UIApplication application, NSDictionary userInfo)
-    {
-        ProcessNotification(userInfo, false);
-    }
-    ```
-
-12. V nástroji `AppDelegate.cs` vytvořte `ProcessNotification()` metodu:
-
-    ```csharp
-    void ProcessNotification(NSDictionary options, bool fromFinishedLaunching)
-    {
-        // Check to see if the dictionary has the aps key.  This is the notification payload you would have sent
-        if (null != options && options.ContainsKey(new NSString("aps")))
-        {
-            //Get the aps dictionary
-            NSDictionary aps = options.ObjectForKey(new NSString("aps")) as NSDictionary;
-
-            string alert = string.Empty;
-
-            //Extract the alert text
-            // NOTE: If you're using the simple alert by just specifying
-            // "  aps:{alert:"alert msg here"}  ", this will work fine.
-            // But if you're using a complex alert with Localization keys, etc.,
-            // your "alert" object from the aps dictionary will be another NSDictionary.
-            // Basically the JSON gets dumped right into a NSDictionary,
-            // so keep that in mind.
-            if (aps.ContainsKey(new NSString("alert")))
-                alert = (aps [new NSString("alert")] as NSString).ToString();
-
-            //If this came from the ReceivedRemoteNotification while the app was running,
-            // we of course need to manually process things like the sound, badge, and alert.
-            if (!fromFinishedLaunching)
-            {
-                //Manually show an alert
-                if (!string.IsNullOrEmpty(alert))
-                {
-                    var myAlert = UIAlertController.Create("Notification", alert, UIAlertControllerStyle.Alert);
-                    myAlert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, null));
-                    UIApplication.SharedApplication.KeyWindow.RootViewController.PresentViewController(myAlert, true, null);
-                }
-            }
-        }
-    }
-    ```
-
-    > [!NOTE]
-    > Můžete si vybrat, že se má potlačit `FailedToRegisterForRemoteNotifications()` zpracování situací, jako je například žádné síťové připojení. To je obzvláště důležité, když by uživatel mohl spustit aplikaci v režimu offline (například letadlo) a vy chcete zpracovávat scénáře zpráv oznámení specifické pro vaši aplikaci.
-
-13. Spusťte aplikaci v zařízení.
+11. Spusťte aplikaci v zařízení.
 
 ## <a name="send-test-push-notifications"></a>Odešlete nabízená oznámení
 

@@ -3,12 +3,12 @@ title: Podrobnosti struktury definice zásad
 description: Popisuje způsob, jakým se používají definice zásad k navázání konvencí pro prostředky Azure ve vaší organizaci.
 ms.date: 10/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 52adaf9522e4690c4c44a72ed47592f5b1d6471e
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 6e04551a2ef2f890844693fec71d2d3232a456f2
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883244"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220809"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -22,7 +22,7 @@ _PolicyRule_ schéma definice zásad najdete tady:[https://schema.management.azu
 K vytvoření definice zásady použijete JSON. Definice zásad obsahuje prvky pro:
 
 - zobrazované jméno
-- Popis
+- description
 - režim
 - zprostředkovatele identity
 - parameters
@@ -261,7 +261,7 @@ Logické operátory můžete vnořovat. Následující příklad ukazuje, že op
 
 ### <a name="conditions"></a>Podmínky
 
-Podmínka vyhodnocuje, zda **pole** nebo **hodnota** přistupující objekty splňují určitá kritéria. Podporované podmínky jsou:
+Podmínka vyhodnocuje, zda hodnota splňuje určitá kritéria. Podporované podmínky jsou:
 
 - `"equals": "stringValue"`
 - `"notEquals": "stringValue"`
@@ -291,12 +291,9 @@ Hodnota by neměla mít více než jeden zástupný znak `*` .
 
 Při použití podmínek **Match** a **notMatch** zadejte, `#` aby odpovídaly číslici, `?` pro písmeno, `.` aby odpovídaly jakémukoli znaku a jakémukoliv jinému znaku, aby odpovídaly tomuto skutečnému znaku. Zatímco **Match** a **notMatch** rozlišují velká a malá písmena, všechny ostatní podmínky, které vyhodnocují _StringValue_ , rozlišují malá a velká písmena. Alternativy nerozlišující velká a malá písmena jsou k dispozici v **matchInsensitively** a **notMatchInsensitively**.
 
-V hodnotě pole **\[ \* \] alias** pole je každý prvek v poli vyhodnocen individuálně pomocí logických prvků **a** mezi prvky. Další informace naleznete v tématu [odkazující na vlastnosti prostředku pole](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties).
-
 ### <a name="fields"></a>Pole
 
-Podmínky jsou tvořeny pomocí polí. Pole odpovídá vlastnostem v datové části požadavku prostředku a popisuje stav prostředku.
-
+Podmínky, které vyhodnocují, zda hodnoty vlastností v datové části požadavku prostředku splňují určitá kritéria, mohou být vytvořeny pomocí výrazu **pole** .
 Podporují se následující pole:
 
 - `name`
@@ -305,6 +302,7 @@ Podporují se následující pole:
 - `kind`
 - `type`
 - `location`
+  - Pole umístění jsou normalizována na podporu různých formátů. Například `East US 2` je považována za rovnou `eastus2` .
   - Pro prostředky, které jsou nezávislá umístění, použijte **globální** .
 - `id`
   - Vrátí ID prostředku, který se má vyhodnotit.
@@ -324,6 +322,10 @@ Podporují se následující pole:
 
 > [!NOTE]
 > `tags.<tagName>`, `tags[tagName]` a `tags[tag.with.dots]` jsou stále přijatelné způsoby deklarace pole značek. Preferované výrazy jsou však uvedeny výše.
+
+> [!NOTE]
+> V výrazech **pole** odkazujících na **\[ \* \] alias** jsou jednotlivé prvky v poli vyhodnocovány individuálně pomocí logických prvků **a** mezi prvky.
+> Další informace naleznete v tématu [odkazující na vlastnosti prostředku pole](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties).
 
 #### <a name="use-tags-with-parameters"></a>Použití značek s parametry
 
@@ -355,7 +357,7 @@ V následujícím příkladu `concat` se používá k vytvoření vyhledávání
 
 ### <a name="value"></a>Hodnota
 
-Podmínky mohou být také vytvořeny pomocí **hodnoty**. **hodnota** kontroluje podmínky proti [parametrům](#parameters), [podporované funkce šablon](#policy-functions)nebo literály. **hodnota** je spárována s libovolnou podporovanou [podmínkou](#conditions).
+Podmínky, které vyhodnocují, zda hodnota splňují určitá kritéria, mohou být vytvořeny pomocí výrazu **hodnoty** . Hodnoty mohou být literály, hodnoty [parametrů](#parameters)nebo vrácené hodnoty všech [podporovaných funkcí šablon](#policy-functions).
 
 > [!WARNING]
 > Pokud je výsledkem _funkce šablony_ chyba, vyhodnocení zásad se nezdařilo. Neúspěšné vyhodnocení je implicitní **odmítnutí**. Další informace najdete v tématu [předcházení chybám šablon](#avoiding-template-failures). Použijte [enforcementMode](./assignment-structure.md#enforcement-mode) z **DoNotEnforce** , abyste zabránili dopadu neúspěšného vyhodnocení nových nebo aktualizovaných prostředků při testování a ověřování nové definice zásady.
@@ -440,9 +442,11 @@ S revidovaným pravidlem zásad `if()` před tím, než  se pokusíte získat `s
 
 ### <a name="count"></a>Počet
 
-Podmínky, které počítají, kolik členů pole v datové části prostředků, které odpovídají výrazu podmínky, mohou být tvořeny pomocí výrazu **Count** . Běžné scénáře kontrolují, jestli alespoň jedno z ', ' přesně jedno z ', ' vše z ' nebo ' žádné z ', které členové pole splní. funkce **Count** vyhodnocuje každého člena pole [ \[ \* \] aliasu](#understanding-the--alias) pro výraz podmínky a sečte _skutečný_ výsledek, který je pak porovnán s operátorem výrazu. Výrazy **Count** můžou být do jedné definice **policyRule** přidány až třikrát.
+Podmínky, které počítají, kolik členů pole splňují určitá kritéria, mohou být vytvořeny pomocí výrazu **Count** . Běžné scénáře kontrolují, jestli je aspoň jedna z ', ' přesně jedna z ', ' vše z ', ' all z ' nebo ' None of ', aby splňovala podmínku. Funkce **Count** vyhodnocuje jednotlivé členy pole pro výraz podmínky a sečte _skutečné_ výsledky, které jsou pak porovnány s operátorem výrazu.
 
-Struktura výrazu **Count** je:
+#### <a name="field-count"></a>Počet polí
+
+Spočítá, kolik členů pole v datové části požadavku vyhovuje výrazu podmínky. Struktura výrazů **počtu polí** je:
 
 ```json
 {
@@ -456,16 +460,62 @@ Struktura výrazu **Count** je:
 }
 ```
 
-Pro **počet** se používají tyto vlastnosti:
+Pro **počet polí** se používají tyto vlastnosti:
 
-- **Count. Field** (Required): obsahuje cestu k poli a musí se jednat o alias pole. Pokud pole chybí, je výraz vyhodnocen jako _nepravdivý_ bez zvážení výrazu podmínky.
-- **Count. Where** (volitelné): výraz podmínky, který má individuálně vyhodnotit každého člena pole [ \[ \* \] aliasu](#understanding-the--alias) **Count. Field**. Pokud tato vlastnost není k dispozici, jsou všechny členy pole s cestou pole vyhodnoceny na _hodnotu true_. V této vlastnosti lze použít jakoukoli [podmínku](../concepts/definition-structure.md#conditions) .
+- **Count. Field** (Required): obsahuje cestu k poli a musí se jednat o alias pole.
+- **Count. Where** (volitelné): výraz podmínky, který se má individuálně vyhodnotit pro každého člena pole [ \[ \* \] aliasu](#understanding-the--alias) `count.field` . Pokud tato vlastnost není k dispozici, jsou všechny členy pole s cestou pole vyhodnoceny na _hodnotu true_. V této vlastnosti lze použít jakoukoli [podmínku](../concepts/definition-structure.md#conditions) .
   [Logické operátory](#logical-operators) lze použít uvnitř této vlastnosti k vytvoření složitých požadavků na vyhodnocení.
 - **\<condition\>** (povinné): hodnota je porovnána s počtem položek, které splnily výraz **Count. Where** podmínky. Měla by se použít číselná [Podmínka](../concepts/definition-structure.md#conditions) .
 
-Další informace o tom, jak pracovat s vlastnostmi pole v Azure Policy, včetně podrobného vysvětlení způsobu vyhodnocení výrazu Count, naleznete v tématu [odkazující na vlastnosti prostředku pole](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties).
+Výrazy **Count pole** mohou v rámci jedné definice **policyRule** vytvořit výčet stejných polí v jednom definici až třikrát.
 
-#### <a name="count-examples"></a>Příklady počtu
+Další informace o tom, jak pracovat s vlastnostmi pole v Azure Policy, včetně podrobného vysvětlení toho, jak je výraz **počtu polí** vyhodnocován, naleznete v tématu [odkazující na vlastnosti prostředku pole](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties).
+
+#### <a name="value-count"></a>Počet hodnot
+Spočítá, kolik členů pole splní podmínku. Pole může být literální pole nebo [odkaz na parametr array](#using-a-parameter-value). Struktura výrazů **počtu hodnot** je:
+
+```json
+{
+    "count": {
+        "value": "<literal array | array parameter reference>",
+        "name": "<index name>",
+        "where": {
+            /* condition expression */
+        }
+    },
+    "<condition>": "<compare the count of true condition expression array members to this value>"
+}
+```
+
+S **počtem hodnot** se používají tyto vlastnosti:
+
+- **Count. Value** (Required): pole, které se má vyhodnotit.
+- **Count.Name** (povinné): název indexu složený z anglických písmen a číslic. Definuje název hodnoty člena pole vyhodnoceného v aktuální iteraci. Název se používá pro odkazování aktuální hodnoty uvnitř `count.where` podmínky. Volitelné, pokud výraz **Count** není v podřízeném objektu jiného výrazu **Count** . Pokud není zadaný, název indexu se implicitně nastaví na `"default"` .
+- **Count. Where** (volitelné): výraz podmínky, který se má individuálně vyhodnotit pro každého člena pole `count.value` . Pokud tato vlastnost není k dispozici, všechny členy pole budou vyhodnocovány na _hodnotu true_. V této vlastnosti lze použít jakoukoli [podmínku](../concepts/definition-structure.md#conditions) . [Logické operátory](#logical-operators) lze použít uvnitř této vlastnosti k vytvoření složitých požadavků na vyhodnocení. K hodnotě aktuálně výčtového člena pole lze přistupovat voláním [aktuální](#the-current-function) funkce.
+- **\<condition\>** (povinné): hodnota je porovnána s počtem položek, které splnily `count.where` výraz podmínky. Měla by se použít číselná [Podmínka](../concepts/definition-structure.md#conditions) .
+
+Vynutila se následující omezení:
+- V jedné definici **policyRule** lze použít až 10 výrazů **počtu hodnot** .
+- Každý výraz **počtu hodnot** může provádět až 100 iterací. Toto číslo zahrnuje počet iterací provedených všemi nadřazenými výrazy **počtu hodnot** .
+
+#### <a name="the-current-function"></a>Aktuální funkce
+
+`current()`Funkce je k dispozici pouze v rámci `count.where` podmínky. Vrací hodnotu člena pole, která je aktuálně výčtem vyhodnocení výrazu **Count** .
+
+**Využití počtu hodnot**
+
+- `current(<index name defined in count.name>)`. Příklad: `current('arrayMember')`.
+- `current()`. Povoleno pouze v případě, že výraz **Count hodnoty** není podřízeným prvkem jiného výrazu **Count** . Vrací stejnou hodnotu jako výše.
+
+Pokud hodnota vrácená voláním je objekt, jsou podporovány přístupové objekty vlastností. Příklad: `current('objectArrayMember').property`.
+
+**Využití počtu polí**
+
+- `current(<the array alias defined in count.field>)`. Například `current('Microsoft.Test/resource/enumeratedArray[*]')`.
+- `current()`. Povoleno pouze v případě, že výraz **počtu polí** není podřízeným prvkem jiného výrazu **Count** . Vrací stejnou hodnotu jako výše.
+- `current(<alias of a property of the array member>)`. Například `current('Microsoft.Test/resource/enumeratedArray[*].property')`.
+
+#### <a name="field-count-examples"></a>Příklady počtu polí
 
 Příklad 1: zjištění, zda je pole prázdné
 
@@ -550,18 +600,162 @@ Příklad 5: Ověřte, že aspoň jeden člen pole odpovídá více vlastnostem 
 }
 ```
 
-Příklad 6: použití `field()` funkce v `where` podmínkách pro přístup k hodnotě literálu aktuálně vyhodnoceného člena pole. Tato podmínka kontroluje, že neexistují žádná pravidla zabezpečení s hodnotou sudé s číslem _priority_ .
+Příklad 6: použití `current()` funkce v `where` podmínkách pro přístup k hodnotě aktuálně výčtového člena pole v rámci funkce šablony. Tato podmínka kontroluje, zda virtuální síť obsahuje předponu adresy, která není v rozsahu CIDR 10.0.0.0/24.
 
 ```json
 {
     "count": {
-        "field": "Microsoft.Network/networkSecurityGroups/securityRules[*]",
+        "field": "Microsoft.Network/virtualNetworks/addressSpace.addressPrefixes[*]",
         "where": {
-          "value": "[mod(first(field('Microsoft.Network/networkSecurityGroups/securityRules[*].priority')), 2)]",
-          "equals": 0
+          "value": "[ipRangeContains('10.0.0.0/24', current('Microsoft.Network/virtualNetworks/addressSpace.addressPrefixes[*]'))]",
+          "equals": false
         }
     },
     "greater": 0
+}
+```
+
+Příklad 7: použití `field()` funkce v `where` podmínkách pro přístup k hodnotě aktuálně výčtového člena pole. Tato podmínka kontroluje, zda virtuální síť obsahuje předponu adresy, která není v rozsahu CIDR 10.0.0.0/24.
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Network/virtualNetworks/addressSpace.addressPrefixes[*]",
+        "where": {
+          "value": "[ipRangeContains('10.0.0.0/24', first(field(('Microsoft.Network/virtualNetworks/addressSpace.addressPrefixes[*]')))]",
+          "equals": false
+        }
+    },
+    "greater": 0
+}
+```
+
+#### <a name="value-count-examples"></a>Příklady počtu hodnot
+
+Příklad 1: Ověřte, zda název prostředku odpovídá některé z uvedených vzorů názvů.
+
+```json
+{
+    "count": {
+        "value": [ "prefix1_*", "prefix2_*" ],
+        "name": "pattern",
+        "where": {
+            "field": "name",
+            "like": "[current('pattern')]"
+        }
+    },
+    "greater": 0
+}
+```
+
+Příklad 2: Ověřte, zda název prostředku odpovídá některé z uvedených vzorů názvů. `current()`Funkce neurčuje název indexu. Výsledek je stejný jako předchozí příklad.
+
+```json
+{
+    "count": {
+        "value": [ "prefix1_*", "prefix2_*" ],
+        "where": {
+            "field": "name",
+            "like": "[current()]"
+        }
+    },
+    "greater": 0
+}
+```
+
+Příklad 3: Ověřte, zda název prostředku odpovídá jakémukoli z daných vzorů názvů poskytnutých parametrem Array.
+
+```json
+{
+    "count": {
+        "value": "[parameters('namePatterns')]",
+        "name": "pattern",
+        "where": {
+            "field": "name",
+            "like": "[current('pattern')]"
+        }
+    },
+    "greater": 0
+}
+```
+
+Příklad 4: Ověřte, jestli žádná z prefixů adres virtuální sítě není v seznamu schválených předpon.
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Network/virtualNetworks/addressSpace.addressPrefixes[*]",
+        "where": {
+            "count": {
+                "value": "[parameters('approvedPrefixes')]",
+                "name": "approvedPrefix",
+                "where": {
+                    "value": "[ipRangeContains(current('approvedPrefix'), current('Microsoft.Network/virtualNetworks/addressSpace.addressPrefixes[*]'))]",
+                    "equals": true
+                },
+            },
+            "equals": 0
+        }
+    },
+    "greater": 0
+}
+```
+
+Příklad 5: Ověřte, že jsou v NSG definovaná všechna rezervovaná pravidla NSG. Vlastnosti rezervovaných pravidel NSG jsou definovány v parametru pole obsahujícího objekty.
+
+Hodnota parametru:
+
+```json
+[
+    {
+        "priority": 101,
+        "access": "deny",
+        "direction": "inbound",
+        "destinationPortRange": 22
+    },
+    {
+        "priority": 102,
+        "access": "deny",
+        "direction": "inbound",
+        "destinationPortRange": 3389
+    }
+]
+```
+
+Politických
+```json
+{
+    "count": {
+        "value": "[parameters('reservedNsgRules')]",
+        "name": "reservedNsgRule",
+        "where": {
+            "count": {
+                "field": "Microsoft.Network/networkSecurityGroups/securityRules[*]",
+                "where": {
+                    "allOf": [
+                        {
+                            "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].priority",
+                            "equals": "[current('reservedNsgRule').priority]"
+                        },
+                        {
+                            "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].access",
+                            "equals": "[current('reservedNsgRule').access]"
+                        },
+                        {
+                            "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].direction",
+                            "equals": "[current('reservedNsgRule').direction]"
+                        },
+                        {
+                            "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].destinationPortRange",
+                            "equals": "[current('reservedNsgRule').destinationPortRange]"
+                        }
+                    ]
+                }
+            },
+            "equals": 1
+        }
+    },
+    "equals": "[length(parameters('reservedNsgRules'))]"
 }
 ```
 
@@ -627,7 +821,6 @@ Následující funkce jsou dostupné jenom v pravidlech zásad:
   }
   ```
 
-
 - `ipRangeContains(range, targetRange)`
     - **Range**: [required] řetězec-řetězec určující rozsah IP adres.
     - **targetRange**: [povinný] řetězec – řetězec určující rozsah IP adres.
@@ -639,6 +832,8 @@ Následující funkce jsou dostupné jenom v pravidlech zásad:
     - Rozsah CIDR (příklady: `10.0.0.0/24` , `2001:0DB8::/110` )
     - Rozsah definovaný počátečními a koncovými IP adresami (příklady: `192.168.0.1-192.168.0.9` , `2001:0DB8::-2001:0DB8::3:FFFF` )
 
+- `current(indexName)`
+    - Speciální funkce, která se dá použít jenom ve [výrazech Count](#count).
 
 #### <a name="policy-function-example"></a>Příklad funkce zásad
 
@@ -709,14 +904,14 @@ Seznam aliasů se vždycky zvětšuje. Chcete-li zjistit, které aliasy jsou akt
 
 ### <a name="understanding-the--alias"></a>Princip aliasu [*]
 
-Několik dostupných aliasů má verzi, která se zobrazí jako název Normal (normální) a další, která je **\[\*\]** k ní připojená. Například:
+Několik dostupných aliasů má verzi, která se zobrazí jako název Normal (normální) a další, která je **\[\*\]** k ní připojená. Příklad:
 
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules`
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]`
 
 Alias ' Normal ' představuje pole jako jedinou hodnotu. Toto pole je určeno pro přesné scénáře porovnání shody, pokud celá sada hodnot musí být přesně definovaná, a ne více a méně.
 
-**\[\*\]** Alias představuje kolekci hodnot vybraných z prvků vlastnosti prostředku pole. Například:
+**\[\*\]** Alias představuje kolekci hodnot vybraných z prvků vlastnosti prostředku pole. Příklad:
 
 | Alias | Vybrané hodnoty |
 |:---|:---|

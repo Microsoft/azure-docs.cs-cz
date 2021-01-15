@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 12/04/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: a0458264b6ea0c741244531fc104a7637108b06e
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 4681039f60154b95eeb7e40196ca33055a192c74
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121341"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222101"
 ---
 # <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link-preview"></a>Dotazování na data Azure Cosmos DB pomocí neserverového fondu SQL ve verzi Preview odkazu na Azure synapse
 
@@ -205,6 +205,8 @@ Výsledek tohoto dotazu může vypadat podobně jako v následující tabulce:
 Další informace o typech SQL, které by se měly používat pro Azure Cosmos DB hodnoty, najdete na stránce [pravidla pro mapování typů SQL](#azure-cosmos-db-to-sql-type-mappings) na konci článku.
 
 ## <a name="create-view"></a>Vytvořit zobrazení
+
+Vytváření zobrazení v hlavních nebo výchozích databázích se nedoporučuje ani nepodporuje. Proto potřebujete vytvořit uživatelskou databázi pro zobrazení.
 
 Po identifikaci schématu můžete zobrazit zobrazení dat Azure Cosmos DB. Klíč účtu Azure Cosmos DB byste měli umístit do samostatného přihlašovacího údaje a odkazovat na toto pověření z `OPENROWSET` funkce. Neudržujte klíč účtu v definici zobrazení.
 

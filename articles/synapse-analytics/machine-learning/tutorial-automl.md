@@ -9,16 +9,16 @@ ms.reviewer: jrasnick, garye
 ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: e219531a88787f19197a2e8c2a80040497c6dc1e
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: f3b0c5f1487951d05bc83973e5b4b9f3634a694b
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901415"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222254"
 ---
 # <a name="tutorial-train-a-machine-learning-model-without-code"></a>Kurz: výuka modelu strojového učení bez kódu
 
-Data můžete v tabulkách Spark rozšířit o nové modely strojového učení, které pomocí [automatizovaného strojového učení](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml)naučíte. V Azure synapse Analytics můžete vybrat tabulku Spark v pracovním prostoru, která se použije jako školicí sada pro sestavování modelů strojového učení, a můžete to udělat v prostředí bez kódu.
+Data můžete v tabulkách Spark rozšířit o nové modely strojového učení, které pomocí [automatizovaného strojového učení](../../machine-learning/concept-automated-ml.md)naučíte. V Azure synapse Analytics můžete vybrat tabulku Spark v pracovním prostoru, která se použije jako školicí sada pro sestavování modelů strojového učení, a můžete to udělat v prostředí bez kódu.
 
 V tomto kurzu se naučíte naučit modely strojového učení pomocí prostředí bez kódu v Azure synapse Analytics studia. Pomocí automatizovaného strojového učení v Azure Machine Learning místo ručního kódování prostředí. Typ modelu, který se naučíte, závisí na problému, který se snažíte vyřešit.
 
@@ -32,7 +32,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet před 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na [Azure Portal](https://portal.azure.com/).
+Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-spark-table-for-training-dataset"></a>Vytvoření tabulky Spark pro datovou sadu školení
 

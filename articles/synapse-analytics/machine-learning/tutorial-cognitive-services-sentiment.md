@@ -9,16 +9,16 @@ ms.reviewer: jrasnick, garye
 ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 1b407cbee5218149f794ab125ac058e32b422558
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 6a4833cf0d73939e01fd3e3e7263c6cba3c0a28a
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96468366"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222186"
 ---
 # <a name="tutorial-sentiment-analysis-with-cognitive-services-preview"></a>Kurz: analýza mínění pomocí Cognitive Services (Preview)
 
-V tomto kurzu se naučíte, jak snadno rozšířit data v Azure synapse pomocí [Cognitive Services](https://go.microsoft.com/fwlink/?linkid=2147492). K provedení analýzy mínění použijeme funkce [Analýza textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) . Uživatel ve službě Azure synapse může jednoduše vybrat tabulku obsahující textový sloupec, který se má rozšířit pomocí zabarvení. Tyto zabarvení mohou být kladné, záporné, smíšené nebo neutrální a bude vrácena i pravděpodobnost.
+V tomto kurzu se naučíte, jak snadno rozšířit data v Azure synapse pomocí [Cognitive Services](../../cognitive-services/index.yml). K provedení analýzy mínění použijeme funkce [Analýza textu](../../cognitive-services/text-analytics/index.yml) . Uživatel ve službě Azure synapse může jednoduše vybrat tabulku obsahující textový sloupec, který se má rozšířit pomocí zabarvení. Tyto zabarvení mohou být kladné, záporné, smíšené nebo neutrální a bude vrácena i pravděpodobnost.
 
 Tento kurz zahrnuje:
 
@@ -28,7 +28,7 @@ Tento kurz zahrnuje:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet před tím, než začnete](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Pracovní prostor Azure synapse Analytics](../get-started-create-workspace.md) s účtem úložiště adls Gen2 nakonfigurovaný jako výchozí úložiště. Musíte být **přispěvatelem dat objektů BLOB úložiště** adls Gen2 systému souborů, se kterými pracujete.
 - V pracovním prostoru Azure synapse Analytics je fond Spark. Podrobnosti najdete v tématu [Vytvoření fondu Spark ve službě Azure synapse](../quickstart-create-sql-pool-studio.md).
@@ -98,7 +98,7 @@ Poznámkový blok, který jste právě otevřeli, používá [knihovnu mmlspark]
 
 Informace o Azure Key Vault, které jste zadali, vám umožní bezpečně odkázat na tajné kódy z tohoto prostředí bez jejich odhalení.
 
-Nyní můžete **spouštět všechny** buňky pro obohacení dat pomocí zabarvení. Zabarvení bude vrácen jako kladný/záporný/neutrální/smíšený a získáte pravděpodobnost pro mínění. Přečtěte si další informace o [Cognitive Services mínění analýze](https://go.microsoft.com/fwlink/?linkid=2147792).
+Nyní můžete **spouštět všechny** buňky pro obohacení dat pomocí zabarvení. Zabarvení bude vrácen jako kladný/záporný/neutrální/smíšený a získáte pravděpodobnost pro mínění. Přečtěte si další informace o [Cognitive Services mínění analýze](../../cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md).
 
 ![Spustit Analýza mínění](media/tutorial-cognitive-services/tutorial-cognitive-services-sentiment-00h.png)
 

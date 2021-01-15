@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: aldomel
-ms.openlocfilehash: ca6460497fa026feca503df741ad6811a95fb9e3
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 512694d75bace40f33e346d28289f62e2adb04b8
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936926"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221010"
 ---
 # <a name="virtual-network-traffic-routing"></a>Směrování provozu virtuální sítě
 
@@ -80,12 +80,12 @@ Při vytváření trasy definované uživatelem můžete zadat následující ty
 
 * **Virtuální zařízení:** Virtuální zařízení je virtuální počítač, na kterém je obvykle spuštěná síťová aplikace, jako je například brána firewall. Další informace o různých předkonfigurovaných virtuálních síťových zařízeních, která můžete nasadit ve virtuální síti, najdete na webu [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances). Při vytváření trasy s typem segmentu směrování **Virtuální zařízení** zadáváte také IP adresu dalšího segmentu směrování. Tato IP adresa může být:
 
-    * [Privátní IP adresa](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) síťového rozhraní připojeného k virtuálnímu počítači. Pro každé síťové rozhraní připojené k virtuálnímu počítači, který předává provoz na jinou adresu než svou vlastní, musí být povolená možnost Azure *Povolit předávání IP*. Toto nastavení pro síťové rozhraní zakáže kontrolu zdroje a cíle, kterou provádí Azure. Další informace o [povolení předávání IP pro síťové rozhraní](virtual-network-network-interface.md#enable-or-disable-ip-forwarding). Přestože je možnost *Povolit předávání IP* nastavením Azure, možná bude nutné povolit předávání IP také v operačním systému virtuálního počítače, aby zařízení předávalo provoz mezi privátními IP adresami přiřazenými k síťovým rozhraním Azure. Pokud zařízení musí směrovat provoz na veřejnou IP adresu, musí buď předávat provoz přes proxy, nebo přeložit privátní IP adresu zdroje na vlastní privátní IP adresu, kterou pak Azure před odesláním provozu do internetu přeloží na veřejnou IP adresu. Informace o určení požadovaných nastavení v rámci virtuálního počítače najdete v dokumentaci k vašemu operačnímu systému nebo síťové aplikaci. Vysvětlení odchozích připojení v Azure najdete v tématu [Principy odchozích připojení](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json).<br>
+    * [Privátní IP adresa](./private-ip-addresses.md) síťového rozhraní připojeného k virtuálnímu počítači. Pro každé síťové rozhraní připojené k virtuálnímu počítači, který předává provoz na jinou adresu než svou vlastní, musí být povolená možnost Azure *Povolit předávání IP*. Toto nastavení pro síťové rozhraní zakáže kontrolu zdroje a cíle, kterou provádí Azure. Další informace o [povolení předávání IP pro síťové rozhraní](virtual-network-network-interface.md#enable-or-disable-ip-forwarding). Přestože je možnost *Povolit předávání IP* nastavením Azure, možná bude nutné povolit předávání IP také v operačním systému virtuálního počítače, aby zařízení předávalo provoz mezi privátními IP adresami přiřazenými k síťovým rozhraním Azure. Pokud zařízení musí směrovat provoz na veřejnou IP adresu, musí buď předávat provoz přes proxy, nebo přeložit privátní IP adresu zdroje na vlastní privátní IP adresu, kterou pak Azure před odesláním provozu do internetu přeloží na veřejnou IP adresu. Informace o určení požadovaných nastavení v rámci virtuálního počítače najdete v dokumentaci k vašemu operačnímu systému nebo síťové aplikaci. Vysvětlení odchozích připojení v Azure najdete v tématu [Principy odchozích připojení](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json).<br>
 
         > [!NOTE]
         > Virtuální zařízení nasaďte do jiné podsítě, než ve které jsou nasazené prostředky, které se přes toto virtuální zařízení směrují. Nasazení virtuálního zařízení do stejné podsítě a následné použití směrovací tabulky na podsíť, která směruje provoz přes toto virtuální zařízení, může mít za následek smyčky směrování, kdy provoz nikdy neopustí podsíť.
 
-    * Privátní IP adresa [interního nástroje pro vyrovnávání zatížení](../load-balancer/load-balancer-get-started-ilb-arm-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) Azure. Nástroj pro vyrovnávání zatížení se často používá jako součást [strategie pro dosažení vysoké dostupnosti virtuálních síťových zařízení](/azure/architecture/reference-architectures/dmz/nva-ha?toc=%2fazure%2fvirtual-network%2ftoc.json).
+    * Privátní IP adresa [interního nástroje pro vyrovnávání zatížení](../load-balancer/quickstart-load-balancer-standard-internal-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) Azure. Nástroj pro vyrovnávání zatížení se často používá jako součást [strategie pro dosažení vysoké dostupnosti virtuálních síťových zařízení](/azure/architecture/reference-architectures/dmz/nva-ha?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
     Můžete definovat trasu s předponou adresy 0.0.0.0/0 a typem dalšího segmentu směrování Virtuální zařízení a tím umožnit zařízení kontrolovat provoz a určit, jestli ho předat, nebo zahodit. Pokud máte v úmyslu vytvořit trasu definovanou uživatelem, která obsahuje předponu adresy 0.0.0.0/0, přečtěte si nejprve část [Předpona adresy 0.0.0.0/0](#default-route).
 
@@ -107,8 +107,8 @@ Zobrazené a odkazované názvy typů dalších segmentů směrování se liší
 |Internet                        |Internet                                        |Internet (není dostupné v Classic CLI v režimu asm)|
 |Virtuální zařízení               |VirtualAppliance                                |VirtualAppliance|
 |Žádné                            |Žádné                                            |Null (není dostupné v Classic CLI v režimu asm)|
-|Peering virtuálních sítí         |Partnerské vztahy virtuálních sítí                                    |Není|
-|Koncový bod služby pro virtuální síť|VirtualNetworkServiceEndpoint                   |Není|
+|Partnerský vztah virtuální sítě         |Partnerské vztahy virtuálních sítí                                    |Nelze použít|
+|Koncový bod služby pro virtuální síť|VirtualNetworkServiceEndpoint                   |Nelze použít|
 
 ### <a name="border-gateway-protocol"></a>Protokol BGP (Border Gateway Protocol)
 
@@ -140,7 +140,7 @@ Směrovací tabulka obsahuje například následující trasy:
 |Zdroj   |Předpony adres  |Typ dalšího segmentu směrování           |
 |---------|---------         |-------                 |
 |Výchozí  | 0.0.0.0/0        |Internet                |
-|Uživatel     | 0.0.0.0/0        |Brána virtuální sítě |
+|User     | 0.0.0.0/0        |Brána virtuální sítě |
 
 Pokud je provoz určený pro IP adresu mimo předpony adres jakýchkoli jiných tras ve směrovací tabulce, Azure vybere trasu se zdrojem **Uživatel**, protože trasy definované uživatelem mají vyšší prioritu než výchozí systémové trasy.
 
@@ -207,20 +207,20 @@ Následující obrázek ukazuje implementaci prostřednictvím modelu nasazení 
 
 Směrovací tabulka pro podsíť *Subnet1* na obrázku obsahuje následující trasy:
 
-|ID  |Zdroj |State  |Předpony adres    |Typ dalšího segmentu směrování          |IP adresa dalšího segmentu směrování|Název trasy definované uživatelem| 
+|ID  |Zdroj |Stav  |Předpony adres    |Typ dalšího segmentu směrování          |IP adresa dalšího segmentu směrování|Název trasy definované uživatelem| 
 |----|-------|-------|------              |-------                |--------           |--------      |
 |1   |Výchozí|Neplatný|10.0.0.0/16         |Virtuální síť        |                   |              |
-|2   |Uživatel   |Aktivní |10.0.0.0/16         |Virtuální zařízení      |10.0.100.4         |Within-VNet1  |
-|3   |Uživatel   |Aktivní |10.0.0.0/24         |Virtuální síť        |                   |Within-Subnet1|
+|2   |User   |Aktivní |10.0.0.0/16         |Virtuální zařízení      |10.0.100.4         |Within-VNet1  |
+|3   |User   |Aktivní |10.0.0.0/24         |Virtuální síť        |                   |Within-Subnet1|
 |4   |Výchozí|Neplatný|10.1.0.0/16         |Partnerské vztahy virtuálních sítí           |                   |              |
 |5   |Výchozí|Neplatný|10.2.0.0/16         |Partnerské vztahy virtuálních sítí           |                   |              |
-|6   |Uživatel   |Aktivní |10.1.0.0/16         |Žádné                   |                   |ToVNet2-1-Drop|
-|7   |Uživatel   |Aktivní |10.2.0.0/16         |Žádné                   |                   |ToVNet2-2-Drop|
+|6   |User   |Aktivní |10.1.0.0/16         |Žádné                   |                   |ToVNet2-1-Drop|
+|7   |User   |Aktivní |10.2.0.0/16         |Žádné                   |                   |ToVNet2-2-Drop|
 |8   |Výchozí|Neplatný|10.10.0.0/16        |Brána virtuální sítě|[X.X.X.X]          |              |
-|9   |Uživatel   |Aktivní |10.10.0.0/16        |Virtuální zařízení      |10.0.100.4         |To-On-Prem    |
+|9   |User   |Aktivní |10.10.0.0/16        |Virtuální zařízení      |10.0.100.4         |To-On-Prem    |
 |10  |Výchozí|Aktivní |[X.X.X.X]           |VirtualNetworkServiceEndpoint    |         |              |
 |11  |Výchozí|Neplatný|0.0.0.0/0           |Internet               |                   |              |
-|12  |Uživatel   |Aktivní |0.0.0.0/0           |Virtuální zařízení      |10.0.100.4         |Default-NVA   |
+|12  |User   |Aktivní |0.0.0.0/0           |Virtuální zařízení      |10.0.100.4         |Default-NVA   |
 
 Následuje vysvětlení jednotlivých ID tras:
 
@@ -241,7 +241,7 @@ Následuje vysvětlení jednotlivých ID tras:
 
 Směrovací tabulka pro podsíť *Subnet2* na obrázku obsahuje následující trasy:
 
-|Zdroj  |State  |Předpony adres    |Typ dalšího segmentu směrování             |IP adresa dalšího segmentu směrování|
+|Zdroj  |Stav  |Předpony adres    |Typ dalšího segmentu směrování             |IP adresa dalšího segmentu směrování|
 |------- |-------|------              |-------                   |--------           
 |Výchozí |Aktivní |10.0.0.0/16         |Virtuální síť           |                   |
 |Výchozí |Aktivní |10.1.0.0/16         |Partnerské vztahy virtuálních sítí              |                   |

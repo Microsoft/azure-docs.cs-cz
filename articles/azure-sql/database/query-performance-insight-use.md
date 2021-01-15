@@ -10,13 +10,13 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: wiassaf, sstein
-ms.date: 03/10/2020
-ms.openlocfilehash: a016781e5b05c8f43c043bf1f3368a58064e43ad
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 1/14/2021
+ms.openlocfilehash: db24f280f66e567572821297cfc9bb9b1e19743b
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501256"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222322"
 ---
 # <a name="query-performance-insight-for-azure-sql-database"></a>Query Performance Insight pro Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -30,7 +30,7 @@ Query Performance Insight nabízí inteligentní analýzu dotazů pro izolované
 
 ![Query Performance Insight](./media/query-performance-insight-use/opening-title.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Query Performance Insight vyžaduje, aby [úložiště dotazů](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) bylo ve vaší databázi aktivní. Ve výchozím nastavení se automaticky povolí pro všechny databáze ve Azure SQL Database. Pokud není úložiště dotazů spuštěné, Azure Portal vás vyzve, abyste ho povolili.
 
@@ -155,7 +155,7 @@ Zobrazení podrobností dotazu:
 
 Dvě metriky v Query Performance Insight vám pomůžou najít potenciální problémová místa: trvání a počet spuštění.
 
-Dlouhotrvající dotazy mají největší potenciál na uzamykání prostředků déle, blokují jiné uživatele a omezují škálovatelnost. Jsou to také nejlepší kandidáty na optimalizaci.
+Dlouhotrvající dotazy mají největší potenciál na uzamykání prostředků déle, blokují jiné uživatele a omezují škálovatelnost. Jsou to také nejlepší kandidáty na optimalizaci. Další informace najdete v tématu [pochopení a řešení problémů s blokováním Azure SQL](understand-resolve-blocking.md).
 
 Identifikace dlouhotrvajících dotazů:
 

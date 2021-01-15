@@ -9,12 +9,12 @@ ms.reviewer: jrasnick, garye
 ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: cf76a3d09da83693791873feb9e6ab03c432e47f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: eef65db05ab94b5b8de5ff82c2c51dba0730f170
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96468120"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222169"
 ---
 # <a name="tutorial-pre-requisites-for-using-cognitive-services-in-azure-synapse"></a>Kurz: předpoklady pro použití Cognitive Services ve službě Azure synapse
 
@@ -28,7 +28,7 @@ Tento kurz zahrnuje:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet před tím, než začnete](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Pracovní prostor Azure synapse Analytics](../get-started-create-workspace.md) s účtem úložiště adls Gen2 nakonfigurovaný jako výchozí úložiště. Musíte být **přispěvatelem dat objektů BLOB úložiště** adls Gen2 systému souborů, se kterými pracujete.
 
@@ -38,7 +38,7 @@ Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-cognitive-services-resource"></a>Vytvoření prostředku Cognitive Services
 
-[Azure Cognitive Services](https://go.microsoft.com/fwlink/?linkid=2147492) zahrnuje mnoho různých typů služeb. Níže jsou uvedeny některé příklady, které se používají v kurzech synapse.
+[Azure Cognitive Services](../../cognitive-services/index.yml) zahrnuje mnoho různých typů služeb. Níže jsou uvedeny některé příklady, které se používají v kurzech synapse.
 
 ### <a name="create-an-anomaly-detector-resource"></a>Vytvoření prostředku detektoru anomálií
 Vytvořte [detektor anomálií](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) v Azure Portal.
@@ -53,7 +53,7 @@ Vytvoří prostředek [Analýza textu](https://ms.portal.azure.com/#create/Micro
 ## <a name="create-key-vault-and-configure-secrets-and-access"></a>Vytvoření Key Vault a konfigurace tajných klíčů a přístupu
 
 1. Vytvoří [Key Vault](https://ms.portal.azure.com/#create/Microsoft.KeyVault) v Azure Portal.
-2. Přejděte na **zásady přístupu Key Vault >** a udělte oprávnění MSI v [pracovním prostoru Azure synapse](https://docs.microsoft.com/azure/synapse-analytics/security/synapse-workspace-managed-identity) ke čtení tajných kódů z Azure Key Vault.
+2. Přejděte na **zásady přístupu Key Vault >** a udělte oprávnění MSI v [pracovním prostoru Azure synapse](../security/synapse-workspace-managed-identity.md) ke čtení tajných kódů z Azure Key Vault.
 
 >Ujistěte se, že se změny zásad ukládají. Tento krok je snadno neúspěšný.
 
