@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/01/2019
-ms.openlocfilehash: 53277f64c3d1b03572732157756da1fececbcd43
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 69f00416f180f83c761be5ed444e80903e9fcbb6
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184565"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234439"
 ---
 # <a name="import-azure-monitor-log-data-into-power-bi"></a>Importovat data protokolu Azure Monitor do Power BI
 
@@ -27,6 +27,9 @@ Chcete-li importovat data z [pracovního prostoru Log Analytics](manage-access.m
 
 ## <a name="export-query"></a>Exportovat dotaz
 Začněte vytvořením [dotazu protokolu](../log-query/log-query-overview.md) , který vrátí data, která chcete vyplnit Power BI datovou sadu.  Pak tento dotaz exportujte do [jazyka Power Query (M)](/powerquery-m/power-query-m-language-specification) , který lze použít v Power BI Desktop.
+
+> [!WARNING]
+> Buďte opatrní, aby se [Váš dotaz optimalizoval](../log-query/query-optimization.md) tak, aby nemusel běžet moc dlouho nebo může mít časový limit. Všimněte si hodnoty **TimeSpan** v exportovaném dotazu, který definuje časové rozpětí dat, které dotaz načte. Použijte nejmenší časový interval, který požadujete k omezení množství dat vrácených dotazem.
 
 1. [Vytvořte dotaz protokolu v Log Analytics](../log-query/log-analytics-tutorial.md) pro extrakci dat pro datovou sadu.
 2. Vyberte **exportovat**  >  **Power BI dotaz (M)**.  Tím se dotaz exportuje do textového souboru s názvem **PowerBIQuery.txt**. 
