@@ -12,6 +12,9 @@
       href: manage-ddos-protection-powershell.md
     - name: Vytvoření plánu ochrany před útoky DDoS – CLI
       href: manage-ddos-protection-cli.md
+    - name: Vytvoření plánu ochrany před útoky DDoS – šablona ARM
+      displayName: Resource Manager
+      href: manage-ddos-protection-template.md
 - name: Kurzy
   items:
     - name: Zobrazení a konfigurace telemetrie ochrany před útoky DDoS

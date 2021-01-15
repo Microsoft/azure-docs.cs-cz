@@ -3,7 +3,7 @@
 - name: Přehled
   href: overview.md
   items:
-    - name: Co je nového
+    - name: Co je nového?
       href: release-notes.md
     - name: Architektura řešení
       href: architecture.md
@@ -201,6 +201,10 @@
       items:
         - name: Práce s rozhraními API Defenderu for IoT
           href: references-work-with-defender-for-iot-apis.md
+        - name: Horizon API
+          href: references-horizon-api.md
+        - name: Horizon SDK
+          href: references-horizon-sdk.md
         - name: Práce s příkazy CLI Defenderu for IoT
           href: references-work-with-defender-for-iot-cli-commands.md
         - name: Správa proprietárních protokolů (Horizon)

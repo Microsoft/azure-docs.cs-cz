@@ -179,6 +179,8 @@
               href: database/performance-guidance.md
             - name: Monitorování výkonu pomocí zobrazení dynamické správy
               href: database/monitoring-with-dmvs.md
+            - name: Vysvětlení a řešení chyb blokování
+              href: database/understand-resolve-blocking.md
             - name: Protokolování diagnostických telemetrických dat
               href: database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md
             - name: OLTP v paměti
