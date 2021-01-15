@@ -8,21 +8,21 @@ ms.subservice: core
 ms.author: minxia
 author: mx-iao
 ms.reviewer: peterlu
-ms.date: 12/10/2020
+ms.date: 01/14/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: e3bf77406df302c4ba83cb7a8f1a30fba9f6339e
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 962054943a68aa61ac681de97eeebc10fe3f2b0a
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97795933"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216627"
 ---
 # <a name="train-pytorch-models-at-scale-with-azure-machine-learning"></a>PyTorch se škálováním modelů pomocí Azure Machine Learning
 
 V tomto článku se dozvíte, jak spustit [PyTorch](https://pytorch.org/) školicí skripty v podnikovém měřítku pomocí Azure Machine Learning.
 
-Ukázkové skripty v tomto článku se používají ke klasifikaci kuřecích a tureckých imagí k vytvoření neuronové sítě s hloubkovým učením (DNN) na základě [kurzu](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html)přenosu PyTorch. Učení přenosu je technika, která používá znalostní bázi získanou z řešení jednoho problému na jiný, ale související problém. Tento postup je pomocný při školicím procesu, protože vyžaduje méně dat, čas a výpočetní prostředky než od nuly.
+Ukázkové skripty v tomto článku se používají ke klasifikaci kuřecích a tureckých imagí k vytvoření neuronové sítě s hloubkovým učením (DNN) na základě [kurzu](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html)přenosu PyTorch. Učení přenosu je technika, která používá znalostní bázi získanou z řešení jednoho problému na jiný, ale související problém. Tento postup je pomocný při školicím procesu, protože vyžaduje méně dat, čas a výpočetní prostředky než od nuly. Další informace o učení pro přenos najdete v článku o [podrobném učení vs Machine Learning](./concept-deep-learning-vs-machine-learning.md#what-is-transfer-learning) .
 
 Bez ohledu na to, jestli školicíte model PyTorch pro obsáhlý Learning od základu nebo přenášíte stávající model do cloudu, můžete použít Azure Machine Learning k horizontálnímu navýšení kapacity Open-Source školicích úloh pomocí elastických výpočetních prostředků pro Cloud. Pomocí Azure Machine Learning můžete sestavovat, nasazovat, používat a monitorovat modely produkčního prostředí. 
 

@@ -8,18 +8,18 @@ ms.subservice: security
 ms.date: 10/25/2020
 ms.author: xujiang1
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2e96cbf0c1464e27b0a384e8a813118056103b91
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: 41403a59be0395a6d9874c7369bfe59c22f5ac17
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296627"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218361"
 ---
 # <a name="connect-to-workspace-resources-from-a-restricted-network"></a>Připojení k prostředkům pracovního prostoru z omezené sítě
 
 Předpokládejme, že jste správcem IT, který spravuje omezenou síť vaší organizace. Chcete povolit síťové připojení mezi Azure synapse Analytics Studio a pracovní stanicí v rámci této omezené sítě. V tomto článku se dozvíte, jak.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure**: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * **Pracovní prostor analýzy Azure synapse**: můžete si ho vytvořit z Azure synapse Analytics. V kroku 4 budete potřebovat název pracovního prostoru.
@@ -40,7 +40,7 @@ Následující snímek obrazovky ukazuje podrobnosti Azure Resource Manager odch
 
 Když vytváříte další tři pravidla, nahraďte hodnotu **cílové značky služby** pomocí **AzureFrontDoor. front**- **azureactivedirectory selhala** nebo **AzureMonitor** ze seznamu.
 
-Další informace najdete v tématu [Přehled značek služeb](/azure/virtual-network/service-tags-overview).
+Další informace najdete v tématu [Přehled značek služeb](../../virtual-network/service-tags-overview.md).
 
 ## <a name="step-2-create-private-link-hubs"></a>Krok 2: vytvoření rozbočovačů privátního propojení
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: 5581a4c43f0b78dc8c14c44bfb1ded371a925fd0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61ca4dc8cd7048df69c827e7ca657b9882900819
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88706026"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218905"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Vytvoření, změna nebo odstranění virtuální sítě
 
@@ -56,7 +56,7 @@ Před dokončením kroků v jakékoli části tohoto článku proveďte následu
      - **Název podsítě**: název podsítě musí být v rámci virtuální sítě jedinečný. Po vytvoření podsítě už název podsítě nemůžete změnit. Portál vyžaduje, abyste při vytváření virtuální sítě definovali jednu podsíť, a to i v případě, že virtuální síť nemusí mít žádné podsítě. Na portálu můžete při vytváření virtuální sítě definovat jenom jednu podsíť. Další podsítě můžete do virtuální sítě přidat později po vytvoření virtuální sítě. Informace o přidání podsítě do virtuální sítě najdete v tématu [Správa podsítí](virtual-network-manage-subnet.md). Virtuální síť s více podsítěmi můžete vytvořit pomocí rozhraní příkazového řádku Azure CLI nebo PowerShellu.
 
        >[!TIP]
-       >V některých případech můžou správci vytvořit různé podsítě pro filtrování nebo řízení směrování provozu mezi podsítěmi. Před definováním podsítí zvažte, jak budete chtít filtrovat a směrovat provoz mezi vašimi podsítěmi. Další informace o filtrování provozu mezi podsítěmi najdete v tématu [skupiny zabezpečení sítě](security-overview.md). Azure automaticky směruje provoz mezi podsítěmi, ale můžete přepsat výchozí trasy Azure. Další informace o směrování provozu ve výchozí podsíti Azure najdete v tématu [Přehled směrování](virtual-networks-udr-overview.md).
+       >V některých případech můžou správci vytvořit různé podsítě pro filtrování nebo řízení směrování provozu mezi podsítěmi. Před definováním podsítí zvažte, jak budete chtít filtrovat a směrovat provoz mezi vašimi podsítěmi. Další informace o filtrování provozu mezi podsítěmi najdete v tématu [skupiny zabezpečení sítě](./network-security-groups-overview.md). Azure automaticky směruje provoz mezi podsítěmi, ale můžete přepsat výchozí trasy Azure. Další informace o směrování provozu ve výchozí podsíti Azure najdete v tématu [Přehled směrování](virtual-networks-udr-overview.md).
        >
 
      - **Rozsah adres podsítě**: rozsah musí spadat do adresního prostoru, který jste zadali pro virtuální síť. Nejmenší rozsah, který můžete zadat, je/29, který poskytuje osm IP adres pro podsíť. Azure rezervuje v každé podsíti první a poslední adresu pro shodu protokolu. Tři další adresy jsou rezervované pro využití služeb Azure. V důsledku toho má virtuální síť s rozsahem adres podsítě/29 jenom tři použitelné IP adresy. Pokud plánujete připojit virtuální síť k bráně sítě VPN, musíte vytvořit podsíť brány. Přečtěte si další informace o [konkrétních požadavcích na rozsah adres pro podsítě brány](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub). Rozsah adres můžete po vytvoření podsítě změnit za určitých podmínek. Informace o tom, jak změnit rozsah adres podsítě, najdete v tématu [Správa podsítí](virtual-network-manage-subnet.md).
@@ -118,7 +118,7 @@ Postup přidání nebo odebrání rozsahu adres:
 
 1. Do vyhledávacího pole v horní části portálu zadejte do vyhledávacího pole *virtuální sítě* . Pokud se ve výsledcích hledání zobrazí **virtuální sítě** , vyberte ji.
 2. V seznamu virtuálních sítí vyberte virtuální síť, pro kterou chcete přidat nebo odebrat rozsah adres.
-3. V části **Nastavení**vyberte **adresní prostor**.
+3. V části **Nastavení** vyberte **adresní prostor**.
 4. Proveďte jednu z následujících možností:
     - **Přidejte rozsah adres**: zadejte nový rozsah adres. Rozsah adres se nemůže překrývat s existujícím rozsahem adres, který je definován pro virtuální síť.
     - **Odeberte rozsah adres**: na pravé straně rozsahu adres, který chcete odebrat, vyberte **...** a pak vyberte **Odebrat**. Pokud podsíť existuje v rozsahu adres, nemůžete tento rozsah adres odebrat. Chcete-li odebrat rozsah adres, je nutné nejprve odstranit všechny podsítě (a všechny prostředky v podsítích), které existují v rozsahu adres.
@@ -135,7 +135,7 @@ Všechny virtuální počítače, které jsou připojené k virtuální síti, s
 
 1. Do vyhledávacího pole v horní části portálu zadejte do vyhledávacího pole *virtuální sítě* . Pokud se ve výsledcích hledání zobrazí **virtuální sítě** , vyberte ji.
 2. V seznamu virtuálních sítí vyberte virtuální síť, pro kterou chcete změnit servery DNS.
-3. V části **Nastavení**vyberte **servery DNS**.
+3. V části **Nastavení** vyberte **servery DNS**.
 4. Vyberte jednu z následujících možností:
    - **Výchozí (poskytováno Azure)**: všechny názvy prostředků a privátní IP adresy se automaticky zaregistrují na Azure DNS servery. Můžete přeložit názvy mezi prostředky, které jsou připojené ke stejné virtuální síti. Tuto možnost nelze použít k překladu názvů mezi virtuálními sítěmi. Chcete-li přeložit názvy mezi virtuálními sítěmi, je nutné použít vlastní server DNS.
    - **Vlastní**: můžete přidat jeden nebo více serverů, až do limitu Azure pro virtuální síť. Další informace o omezeních serveru DNS najdete v tématu [omezení Azure](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-networking-limits-classic). Máte tyto možnosti:
@@ -157,7 +157,7 @@ Virtuální síť můžete odstranit jenom v případě, že k ní nejsou připo
 
 1. Do vyhledávacího pole v horní části portálu zadejte do vyhledávacího pole *virtuální sítě* . Pokud se ve výsledcích hledání zobrazí **virtuální sítě** , vyberte ji.
 2. V seznamu virtuálních sítí vyberte virtuální síť, kterou chcete odstranit.
-3. Výběrem možnosti **připojená zařízení**v části **Nastavení**ověřte, že se k virtuální síti nepřipojují žádná zařízení. Pokud máte připojená zařízení, musíte je odstranit, abyste mohli odstranit virtuální síť. Pokud neexistují žádná připojená zařízení, vyberte **Přehled**.
+3. Výběrem možnosti **připojená zařízení** v části **Nastavení** ověřte, že se k virtuální síti nepřipojují žádná zařízení. Pokud máte připojená zařízení, musíte je odstranit, abyste mohli odstranit virtuální síť. Pokud neexistují žádná připojená zařízení, vyberte **Přehled**.
 4. Vyberte **Odstranit**.
 5. Pokud chcete potvrdit odstranění virtuální sítě, vyberte **Ano**.
 
@@ -179,4 +179,4 @@ Aby bylo možné provádět úlohy s virtuálními sítěmi, musí být váš ú
 ## <a name="next-steps"></a>Další kroky
 
 - Vytvoření virtuální sítě pomocí [PowerShellu](powershell-samples.md) nebo ukázkových skriptů [Azure CLI](cli-samples.md) nebo používání [šablon Azure správce prostředků](template-samples.md)
-- Vytvoření a přiřazení [definic Azure Policy](policy-samples.md) pro virtuální sítě
+- Vytvoření a přiřazení [definic Azure Policy](./policy-reference.md) pro virtuální sítě

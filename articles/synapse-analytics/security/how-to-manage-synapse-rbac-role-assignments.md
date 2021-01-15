@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: f26b54a18ff137575cac208d70e4693c0b9914a8
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: c88371eb450d5b0e2e8b821cdec0e87190e291f8
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572282"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218191"
 ---
 # <a name="how-to-manage-synapse-rbac-role-assignments-in-synapse-studio"></a>Jak spravovat přiřazení rolí RBAC synapse v synapse studiu
 
@@ -65,7 +65,7 @@ Chcete-li přiřadit roli pro jemnější rozsah, vyberte **položku pracovní p
 
 ![Přidat přiřazení role položky pracovního prostoru – vybrat typ položky](./media/how-to-manage-synapse-rbac-role-assignments/access-control-add-workspace-item-assignment-select-item-type.png) 
 
-Vyberte konkrétní **položku** , která se má použít jako obor, a pak vyberte **roli** , kterou chcete přiřadit z rozevírací nabídky.  Rozevírací seznam obsahuje jenom role, které jsou platné pro vybraný typ položky. [Další informace](https://go.microsoft.com/fwlink/?linkid=2148306).  
+Vyberte konkrétní **položku** , která se má použít jako obor, a pak vyberte **roli** , kterou chcete přiřadit z rozevírací nabídky.  Rozevírací seznam obsahuje jenom role, které jsou platné pro vybraný typ položky. [Přečtěte si další informace](./synapse-workspace-synapse-rbac.md).  
 
 ![Přidat přiřazení role položky pracovního prostoru – vybrat roli](./media/how-to-manage-synapse-rbac-role-assignments/access-control-add-workspace-item-assignment-select-role.png) 
  
@@ -81,4 +81,4 @@ Pamatujte, že změny přiřazení rolí budou trvat až 2-5 minut.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Pochopení rolí RBAC synapse potřebných k provádění běžných úloh](./synapse-workspace-understand-what-role-you-need.md) 
+[Pochopení rolí RBAC synapse potřebných k provádění běžných úloh](./synapse-workspace-understand-what-role-you-need.md)

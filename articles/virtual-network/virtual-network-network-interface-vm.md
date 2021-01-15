@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: f7253be2844f40ca52df2f9b3bc9cbba552fea2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b45bd2e2b9ad971891cbcb944286f40b4f66883
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85480129"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216947"
 ---
 # <a name="add-network-interfaces-to-or-remove-network-interfaces-from-virtual-machines"></a>Přidání nebo odebrání síťových rozhraní na virtuálních počítačích
 
@@ -61,11 +61,11 @@ Postup přidání síťového rozhraní k virtuálnímu počítači:
 
 1. Chcete-li najít existující virtuální počítač, vyhledejte [Azure Portal](https://portal.azure.com) . Vyhledejte a vyberte **virtuální počítače**.
 
-2. Vyberte název vašeho virtuálního počítače. Virtuální počítač musí podporovat počet síťových rozhraní, která chcete přidat. Pokud chcete zjistit, kolik síťových rozhraní podporuje jednotlivé velikosti virtuálních počítačů, přečtěte si část velikosti v Azure pro virtuální počítače se systémem [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [virtuální počítače s Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+2. Vyberte název vašeho virtuálního počítače. Virtuální počítač musí podporovat počet síťových rozhraní, která chcete přidat. Pokud chcete zjistit, kolik síťových rozhraní podporuje jednotlivé velikosti virtuálních počítačů, přečtěte si část velikosti v Azure pro virtuální počítače se systémem [Linux](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [virtuální počítače s Windows](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-3. Na panelu příkazů virtuálního počítače vyberte **zastavit**a potom v potvrzovacím dialogovém okně klikněte na **OK** . Pak počkejte, než se **stav** virtuálního počítače změní na **Zastaveno (přidělení zrušeno)**.
+3. Na panelu příkazů virtuálního počítače vyberte **zastavit** a potom v potvrzovacím dialogovém okně klikněte na **OK** . Pak počkejte, než se **stav** virtuálního počítače změní na **Zastaveno (přidělení zrušeno)**.
 
-4. Z panelu nabídky virtuálního počítače vyberte **sítě**  >  **připojit síťové rozhraní**. Pak v části **Připojit stávající síťové rozhraní**zvolte síťové rozhraní, které se chcete připojit, a vyberte **OK**.
+4. Z panelu nabídky virtuálního počítače vyberte **sítě**  >  **připojit síťové rozhraní**. Pak v části **Připojit stávající síťové rozhraní** zvolte síťové rozhraní, které se chcete připojit, a vyberte **OK**.
 
     >[!NOTE]
     >Síťové rozhraní, které vyberete, nemůže mít povolené urychlení sítě, nemůže mít přiřazenou adresu IPv6 a musí existovat ve stejné virtuální síti se síťovým rozhraním aktuálně připojeným k virtuálnímu počítači.
@@ -133,7 +133,7 @@ Další informace o nastaveních síťových rozhraní a o tom, jak je změnit, 
 
 - Virtuální počítač musí mít připojené aspoň jedno síťové rozhraní.
 
-- Virtuální počítač může mít k virtuálnímu počítači k dispozici jenom tolik síťových rozhraní, jako podporuje velikost virtuálního počítače. Další informace o tom, kolik síťových rozhraní podporuje jednotlivé velikosti virtuálních počítačů, najdete v tématu velikosti v Azure pro virtuální počítače se systémem [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [virtuální počítače s Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Všechny velikosti podporují alespoň dvě síťová rozhraní.
+- Virtuální počítač může mít k virtuálnímu počítači k dispozici jenom tolik síťových rozhraní, jako podporuje velikost virtuálního počítače. Další informace o tom, kolik síťových rozhraní podporuje jednotlivé velikosti virtuálních počítačů, najdete v tématu velikosti v Azure pro virtuální počítače se systémem [Linux](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [virtuální počítače s Windows](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Všechny velikosti podporují alespoň dvě síťová rozhraní.
 
 - Síťová rozhraní, která přidáte do virtuálního počítače, se momentálně nedají připojit k jinému virtuálnímu počítači. Další informace o tom, jak vytvářet síťová rozhraní, najdete v tématu [Vytvoření síťového rozhraní](virtual-network-network-interface.md#create-a-network-interface).
 
@@ -143,7 +143,7 @@ Další informace o nastaveních síťových rozhraní a o tom, jak je změnit, 
 
 - Můžete řídit, které síťové rozhraní odesíláte odchozí provoz. Virtuální počítač ale ve výchozím nastavení odesílá veškerý odchozí provoz na IP adresu, která je přiřazená k primární konfiguraci protokolu IP primárního síťového rozhraní.
 
-- V minulosti musely mít všechny virtuální počítače ve stejné skupině dostupnosti jedno nebo několik síťových rozhraní. Virtuální počítače s libovolným počtem síťových rozhraní teď můžou existovat ve stejné skupině dostupnosti až do počtu, který podporuje velikost virtuálního počítače. Virtuální počítač můžete přidat do skupiny dostupnosti jenom po jeho vytvoření. Další informace o skupinách dostupnosti najdete v tématu [Správa dostupnosti virtuálních počítačů v Azure](../virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy).
+- V minulosti musely mít všechny virtuální počítače ve stejné skupině dostupnosti jedno nebo několik síťových rozhraní. Virtuální počítače s libovolným počtem síťových rozhraní teď můžou existovat ve stejné skupině dostupnosti až do počtu, který podporuje velikost virtuálního počítače. Virtuální počítač můžete přidat do skupiny dostupnosti jenom po jeho vytvoření. Další informace o skupinách dostupnosti najdete v tématu [Správa dostupnosti virtuálních počítačů v Azure](../virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy).
 
 - Můžete propojit síťová rozhraní ve stejném virtuálním počítači s různými podsítěmi v rámci virtuální sítě. Všechna síťová rozhraní ale musí být připojená ke stejné virtuální síti.
 
@@ -157,7 +157,7 @@ Další informace o nastaveních síťových rozhraní a o tom, jak je změnit, 
 
 Pokud chcete vytvořit virtuální počítač s více síťovými rozhraními nebo IP adresami, přečtěte si:
 
-|Úloha|Nástroj|
+|Úkol|Nástroj|
 |---|---|
 |Vytvoření virtuálního počítače s několika síťovými kartami|[CLI](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 |Vytvoření virtuálního počítače s jedním síťovým ADAPTÉRem s více adresami IPv4|[CLI](virtual-network-multiple-ip-addresses-cli.md), [PowerShell](virtual-network-multiple-ip-addresses-powershell.md)|

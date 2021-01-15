@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
 ms.date: 12/31/2020
-ms.openlocfilehash: 38332492ba9f20ea7c6682d8341ddf6b5f1f11dd
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 683da659dcfa07c0a105382f4cc93d1f4dfb21b5
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209418"
+ms.locfileid: "98219528"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>Analýza dat pomocí vyhrazených fondů SQL
 
@@ -24,7 +24,7 @@ Azure synapse Analytics poskytuje možnost analyzovat data pomocí vyhrazeného 
 ## <a name="load-the-nyc-taxi-data-into-sqlpool1"></a>Načtení dat taxislužby NYC do SQLPOOL1
 
 1. V synapse studiu přejděte do centra pro **vývoj** , kliknutím na **+** tlačítko přidejte nový prostředek a pak vytvořte nový skript SQL.
-1. V rozevíracím seznamu připojit k výše uvedeném skriptu vyberte fond SQLPOOL1 (vytvořený v [kroku 1](https://docs.microsoft.com/azure/synapse-analytics/get-started-create-workspace#create-a-sql-pool) tohoto kurzu).
+1. V rozevíracím seznamu připojit k výše uvedeném skriptu vyberte fond SQLPOOL1 (vytvořený v [kroku 1](./get-started-create-workspace.md) tohoto kurzu).
 1. Zadejte následující kód:
     ```
     CREATE TABLE [dbo].[Trip]
@@ -103,4 +103,3 @@ Azure synapse Analytics poskytuje možnost analyzovat data pomocí vyhrazeného 
 
 > [!div class="nextstepaction"]
 > [Analýza pomocí Sparku](get-started-analyze-spark.md)
-

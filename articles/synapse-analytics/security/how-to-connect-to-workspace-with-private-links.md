@@ -8,20 +8,20 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 699a7321646167b0a9fb20a77a40999ec33b14f0
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9782cce4165487b612c0295dc893d120ed043225
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461331"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218259"
 ---
 # <a name="connect-to-your-azure-synapse-workspace-using-private-links"></a>Připojení k pracovnímu prostoru Azure Synapse s využitím privátních propojení
 
-Tento článek vás seznámí s postupem vytvoření privátního koncového bodu pro váš pracovní prostor Azure synapse. Další informace najdete v tématu [soukromé odkazy a soukromé koncové body](https://docs.microsoft.com/azure/private-link/) .
+Tento článek vás seznámí s postupem vytvoření privátního koncového bodu pro váš pracovní prostor Azure synapse. Další informace najdete v tématu [soukromé odkazy a soukromé koncové body](../../private-link/index.yml) .
 
 ## <a name="step-1-register-network-resource-provider"></a>Krok 1: registrace poskytovatele síťových prostředků
 
-Pokud jste to ještě neudělali, zaregistrujte poskytovatele síťových prostředků. Když zaregistrujete poskytovatele prostředků, nakonfigurujete vaše předplatné, aby fungovalo s poskytovatelem prostředků. Po [registraci](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)vyberte v seznamu poskytovatelů prostředků možnost *Microsoft. Network* . Pokud je poskytovatel síťových prostředků již zaregistrován, přejděte ke kroku 2.
+Pokud jste to ještě neudělali, zaregistrujte poskytovatele síťových prostředků. Když zaregistrujete poskytovatele prostředků, nakonfigurujete vaše předplatné, aby fungovalo s poskytovatelem prostředků. Po [registraci](../../azure-resource-manager/management/resource-providers-and-types.md)vyberte v seznamu poskytovatelů prostředků možnost *Microsoft. Network* . Pokud je poskytovatel síťových prostředků již zaregistrován, přejděte ke kroku 2.
 
 ## <a name="step-2-open-your-azure-synapse-workspace-in-azure-portal"></a>Krok 2: otevřete pracovní prostor Azure synapse v Azure Portal
 

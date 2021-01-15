@@ -5,12 +5,12 @@ ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.custom: cc996988-fb4f-47, devx-track-azurecli
-ms.openlocfilehash: 2526fd60d6e07ecf43864945f2b05858b41ca567
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 70aecc2613fbe21d34e36f9487d7ba383e140bc8
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98035202"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217358"
 ---
 # <a name="manage-your-function-app"></a>Správa aplikace Function App 
 
@@ -19,11 +19,6 @@ V Azure Functions aplikace Function App poskytuje kontext spuštění pro vaše 
 Jednotlivé funkce aplikace Function App se nasazují společně a navzájem se škálují. Všechny funkce ve stejné sdílené složce aplikace Function App mají na každou instanci stejnou velikost jako aplikace Function App. 
 
 Připojovací řetězce, proměnné prostředí a další nastavení aplikace jsou definovány samostatně pro každou aplikaci Function App. Všechna data, která musí být sdílená mezi aplikacemi Function App, by se měla ukládat externě v trvalém úložišti.
-
-Tento článek popisuje, jak nakonfigurovat a spravovat aplikace Function App. 
-
-> [!TIP]  
-> Řadu možností konfigurace je možné spravovat taky pomocí [Azure CLI]. 
 
 ## <a name="get-started-in-the-azure-portal"></a>Začínáme na webu Azure Portal
 
@@ -37,15 +32,17 @@ Na stránce Přehled můžete přejít na všechno, co potřebujete ke správě 
 
 ## <a name="work-with-application-settings"></a><a name="settings"></a>Práce s nastavením aplikace
 
-Karta **nastavení aplikace** uchovává nastavení, která používá aplikace Function App. Tato nastavení jsou šifrovaná a je nutné vybrat možnost **Zobrazit hodnoty** a zobrazit hodnoty na portálu. K nastavení aplikace můžete přistupovat také pomocí Azure CLI.
+Nastavení aplikace je možné spravovat z [Azure Portal](functions-how-to-use-azure-function-app-settings.md?tabs=portal#settings) a pomocí [Azure CLI](functions-how-to-use-azure-function-app-settings.md?tabs=azurecli#settings) a [Azure PowerShell](functions-how-to-use-azure-function-app-settings.md?tabs=powershell#settings). Můžete také spravovat nastavení aplikace z [Visual Studio Code](functions-develop-vs-code.md#application-settings-in-azure) a ze sady [Visual Studio](functions-develop-vs.md#function-app-settings). 
 
-### <a name="portal"></a>Portál
+Tato nastavení jsou uložená zašifrovaná. Další informace najdete v tématu [zabezpečení nastavení aplikace](security-concepts.md#application-settings).
 
-Chcete-li přidat nastavení na portálu, vyberte možnost **nové nastavení aplikace** a přidejte novou dvojici klíč-hodnota.
+# <a name="portal"></a>[Azure Portal](#tab/portal)
+
+Karta **nastavení aplikace** uchovává nastavení, která používá aplikace Function App. Chcete-li zobrazit hodnoty na portálu, je nutné vybrat možnost **Zobrazit hodnoty** . Chcete-li přidat nastavení na portálu, vyberte možnost **nové nastavení aplikace** a přidejte novou dvojici klíč-hodnota.
 
 ![Nastavení aplikace Function App v Azure Portal.](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-settings-tab.png)
 
-### <a name="azure-cli"></a>Azure CLI
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 
 [`az functionapp config appsettings list`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-list)Příkaz vrátí existující nastavení aplikace, jako v následujícím příkladu:
 
@@ -62,6 +59,22 @@ az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
 --resource-group <RESOURCE_GROUP_NAME> \
 --settings CUSTOM_FUNCTION_APP_SETTING=12345
 ```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
+
+[`Get-AzFunctionAppSetting`](/powershell/module/az.functions/get-azfunctionappsetting)Rutina vrátí existující nastavení aplikace, jako v následujícím příkladu: 
+
+```azurepowershell-interactive
+Get-AzFunctionAppSetting -Name <FUNCTION_APP_NAME> -ResourceGroupName <RESOURCE_GROUP_NAME>
+```
+
+[`Update-AzFunctionAppSetting`](/powershell/module/az.functions/update-azfunctionappsetting)Příkaz přidá nebo aktualizuje nastavení aplikace. Následující příklad vytvoří nastavení s klíčem s názvem `CUSTOM_FUNCTION_APP_SETTING` a hodnotou `12345` :
+
+```azurepowershell-interactive
+Update-AzFunctionAppSetting -Name <FUNCTION_APP_NAME> -ResourceGroupName <RESOURCE_GROUP_NAME> -AppSetting @{"CUSTOM_FUNCTION_APP_SETTING" = "12345"}
+```
+
+---
 
 ### <a name="use-application-settings"></a>Použít nastavení aplikace
 

@@ -3,17 +3,17 @@ title: Zabezpečení sítě pro Azure Relay
 description: Tento článek popisuje, jak pomocí Azure Relay používat pravidla brány firewall protokolu IP a soukromé koncové body.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 608224f42fac8cd2d8ff06ab84989b1f675d418c
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 735a0b7dc303ad63cb301151e3e14e4488c856b1
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134462"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217239"
 ---
 # <a name="network-security-for-azure-relay"></a>Zabezpečení sítě pro Azure Relay 
 Tento článek popisuje, jak používat následující funkce zabezpečení pro Azure Relay: 
 
-- Pravidla brány firewall protokolu IP (Preview)
+- Pravidla brány firewall protokolu IP
 - Privátní koncové body 
 
 > [!NOTE]
@@ -28,9 +28,6 @@ Tato funkce je užitečná ve scénářích, ve kterých Azure Relay by měly b�
 Pravidla brány firewall protokolu IP se používají na úrovni oboru názvů přenosu. Proto se pravidla vztahují na všechna připojení z klientů pomocí libovolného podporovaného protokolu. Všechny pokusy o připojení z IP adresy, které neodpovídají povolenému pravidlu IP v oboru názvů přenosu, se odmítnou jako neautorizované. Odpověď nezmiňuje pravidlo protokolu IP. Pravidla filtru IP se aplikují v pořadí a první pravidlo, které odpovídá IP adrese, určuje akci přijmout nebo odmítnout.
 
 Další informace najdete v tématu [Postup konfigurace brány firewall protokolu IP pro obor názvů přenosu](ip-firewall-virtual-networks.md) .
-
-> [!NOTE]
-> Tato funkce je aktuálně ve **verzi Preview**. 
 
 ## <a name="private-endpoints"></a>Privátní koncové body
 

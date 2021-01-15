@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2020
 ms.author: rdhillon
-ms.openlocfilehash: 13535a82f8aca741a1e25755e5a2d971ce45514e
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 9766379807e6d2708fd6935dd2ffbd7660f9988f
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739293"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216644"
 ---
 # <a name="virtual-network-service-endpoint-policies-for-azure-storage"></a>Zásady koncového bodu služby pro virtuální síť pro službu Azure Storage
 
@@ -32,7 +32,7 @@ Zásady koncových bodů služby pro virtuální síť nabízejí následující
 
 - __Vylepšené zabezpečení Virtual Network provozu do Azure Storage__
 
-  [Značky služeb Azure pro skupiny zabezpečení sítě](https://aka.ms/servicetags) umožňují omezit odchozí přenosy virtuální sítě do konkrétních oblastí Azure Storage. To však umožňuje provoz do libovolného účtu v rámci vybrané Azure Storage oblasti.
+  [Značky služeb Azure pro skupiny zabezpečení sítě](./network-security-groups-overview.md) umožňují omezit odchozí přenosy virtuální sítě do konkrétních oblastí Azure Storage. To však umožňuje provoz do libovolného účtu v rámci vybrané Azure Storage oblasti.
   
   Zásady koncového bodu umožňují zadat Azure Storage účty, kterým je povolen odchozí přístup k virtuální síti, a omezit přístup ke všem ostatním účtům úložiště. To poskytuje mnohem podrobnější kontrolu zabezpečení pro ochranu datových exfiltrace z vaší virtuální sítě.
 

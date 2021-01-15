@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: allensu
-ms.openlocfilehash: 265ed0f4cb58a321bde78714f36123bf197d42f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3fd0cfe644ad78059e25d5386cd1a01f56ad9fba
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84710996"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216984"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Přidání, změna nebo odebrání IP adres pro síťové rozhraní Azure
 
@@ -48,8 +48,8 @@ K síťovému rozhraní můžete podle potřeby přidat tolik [privátních](#pr
 
 1. Do pole, které obsahuje *prostředky vyhledávání* textu v horní části Azure Portal zadejte *Síťová rozhraní*. Pokud se ve výsledcích hledání zobrazí **Síťová rozhraní** , vyberte ji.
 2. V seznamu vyberte síťové rozhraní, ze kterého chcete přidat adresu IPv4.
-3. V části **Nastavení**vyberte **Konfigurace protokolu IP**.
-4. V části **Konfigurace protokolu IP**vyberte **+ Přidat**.
+3. V části **Nastavení** vyberte **Konfigurace protokolu IP**.
+4. V části **Konfigurace protokolu IP** vyberte **+ Přidat**.
 5. Zadejte následující příkaz a pak vyberte **OK**:
 
    |Nastavení|Povinné?|Podrobnosti|
@@ -73,7 +73,7 @@ Možná budete muset změnit metodu přiřazení adresy IPv4, změnit statickou 
 
 1. Do pole, které obsahuje *prostředky vyhledávání* textu v horní části Azure Portal zadejte *Síťová rozhraní*. Pokud se ve výsledcích hledání zobrazí **Síťová rozhraní** , vyberte ji.
 2. V seznamu vyberte síťové rozhraní, pro které chcete zobrazit nebo změnit nastavení IP adresy.
-3. V části **Nastavení**vyberte **Konfigurace protokolu IP**.
+3. V části **Nastavení** vyberte **Konfigurace protokolu IP**.
 4. V seznamu vyberte konfiguraci protokolu IP, kterou chcete upravit.
 5. Podle potřeby změňte nastavení pomocí informací o nastavení v kroku 5 [Přidání konfigurace protokolu IP](#add-ip-addresses).
 6. Vyberte **Uložit**.
@@ -94,8 +94,8 @@ Možná budete muset změnit metodu přiřazení adresy IPv4, změnit statickou 
 
 1. Do pole, které obsahuje *prostředky vyhledávání* textu v horní části Azure Portal zadejte *Síťová rozhraní*. Pokud se ve výsledcích hledání zobrazí **Síťová rozhraní** , vyberte ji.
 2. Vyberte síťové rozhraní, které chcete ze seznamu odebrat IP adresy.
-3. V části **Nastavení**vyberte **Konfigurace protokolu IP**.
-4. Klikněte pravým tlačítkem na konfiguraci [sekundární](#secondary) IP adresy ( [primární](#primary) konfiguraci nemůžete odstranit), vyberte **Odstranit**a pak vyberte **Ano**a potvrďte odstranění. Pokud má konfigurace přiřazen prostředek veřejné IP adresy, prostředek se zrušení přidružení z konfigurace protokolu IP, ale prostředek se neodstraní.
+3. V části **Nastavení** vyberte **Konfigurace protokolu IP**.
+4. Klikněte pravým tlačítkem na konfiguraci [sekundární](#secondary) IP adresy ( [primární](#primary) konfiguraci nemůžete odstranit), vyberte **Odstranit** a pak vyberte **Ano** a potvrďte odstranění. Pokud má konfigurace přiřazen prostředek veřejné IP adresy, prostředek se zrušení přidružení z konfigurace protokolu IP, ale prostředek se neodstraní.
 
 **Příkazy**
 
@@ -130,7 +130,7 @@ Kromě konfigurace primárního protokolu IP může být k síťovému rozhraní
 
 [Konfiguraci protokolu IP](#ip-configurations)můžete přiřadit následující typy IP adres:
 
-### <a name="private"></a>Soukromé
+### <a name="private"></a>Privátní
 
 Privátní adresy [IPv4](#ipv4) nebo IPv6 umožňují virtuálnímu počítači komunikovat s ostatními prostředky ve virtuální síti nebo v jiných propojených sítích. 
 
@@ -151,7 +151,7 @@ Pomocí předchozích kroků zůstane privátní IP adresa přiřazená síťov�
 
 Kromě toho, že virtuální počítač může komunikovat s jinými prostředky v rámci stejné nebo připojené virtuální sítě, privátní IP adresa taky umožňuje virtuálnímu počítači komunikovat odchozí připojení k Internetu. Odchozí připojení jsou zdrojová síťová adresa přeložená v Azure na nepředvídatelné veřejné IP adresy. Další informace o odchozím připojení k Internetu pro Azure najdete v článku věnovaném [odchozímu připojení k Internetu Azure](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json) . Příchozí připojení k privátní IP adrese virtuálního počítače nemůžete z Internetu komunikovat. Pokud vaše odchozí připojení vyžadují předvídatelné veřejné IP adresy, přidružte prostředek veřejné IP adresy k síťovému rozhraní.
 
-### <a name="public"></a>Public
+### <a name="public"></a>Veřejná
 
 Veřejné IP adresy přiřazené prostřednictvím prostředku veřejné IP adresy umožňují příchozí připojení k virtuálnímu počítači z Internetu. Odchozí připojení k Internetu používají předvídatelné IP adresy. Podrobnosti najdete [v tématu Principy odchozích připojení v Azure](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json) . Veřejnou IP adresu můžete přiřadit konfiguraci protokolu IP, ale není to nutné. Pokud nepřiřazujete veřejnou IP adresu k virtuálnímu počítači tím, že přidružíte prostředek veřejné IP adresy, může virtuální počítač nadále komunikovat odchozí připojení k Internetu. V takovém případě je privátní IP adresa Zdrojová síťová adresa přeložená Azure na nepředvídatelné veřejné IP adresy. Další informace o prostředcích veřejných IP adres najdete v tématu [prostředek veřejné IP adresy](virtual-network-public-ip-address.md).
 
@@ -200,12 +200,12 @@ K primární nebo sekundární konfiguraci IP adres nemůžete přiřadit veřej
 Veřejná IP adresa se vytvoří se základní nebo standardní SKU. Další informace o rozdílech SKU najdete v tématu [Správa veřejných IP adres](virtual-network-public-ip-address.md).
 
 > [!NOTE]
-> Při přiřazování veřejné IP adresy standardní SKU k síťovému rozhraní virtuálního počítače je potřeba explicitně povolit plánovaný provoz pomocí [skupiny zabezpečení sítě](security-overview.md#network-security-groups). Komunikace s prostředkem nebude možná, dokud nevytvoříte a nepřiřadíte skupinu zabezpečení sítě a explicitně nepovolíte požadovaný provoz.
+> Při přiřazování veřejné IP adresy standardní SKU k síťovému rozhraní virtuálního počítače je potřeba explicitně povolit plánovaný provoz pomocí [skupiny zabezpečení sítě](./network-security-groups-overview.md#network-security-groups). Komunikace s prostředkem nebude možná, dokud nevytvoříte a nepřiřadíte skupinu zabezpečení sítě a explicitně nepovolíte požadovaný provoz.
 
 ## <a name="next-steps"></a>Další kroky
 Pokud chcete vytvořit virtuální počítač s různými konfiguracemi IP adres, přečtěte si následující články:
 
-|Úloha|Nástroj|
+|Úkol|Nástroj|
 |---|---|
 |Vytvoření virtuálního počítače s několika síťovými rozhraními|[CLI](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 |Vytvoření virtuálního počítače s jedním síťovým ADAPTÉRem s více adresami IPv4|[CLI](virtual-network-multiple-ip-addresses-cli.md), [PowerShell](virtual-network-multiple-ip-addresses-powershell.md)|

@@ -8,18 +8,18 @@ ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/14/2019
-ms.openlocfilehash: edd1549ddabef0ae1ba37150ad75a371ac6e6d85
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 55d1b7171201c962278d7c526528b36848c19449
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94365512"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217885"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Funkce jsou informace o akcích a kontextu.
 
 Služba pro přizpůsobování funguje tak, že se naučí, co by aplikace měla zobrazit uživatelům v daném kontextu.
 
-Přizpůsobení používá **funkce** , které jsou informace o **aktuálním kontextu** pro výběr nejlepší **Akce**. Tyto funkce reprezentují všechny informace, které si myslíte, abyste mohli dosáhnout vyšší ceny. Funkce mohou být velmi obecné nebo specifické pro položku. 
+Přizpůsobení používá **funkce**, které jsou informace o **aktuálním kontextu** pro výběr nejlepší **Akce**. Tyto funkce reprezentují všechny informace, které si myslíte, abyste mohli dosáhnout vyšší ceny. Funkce mohou být velmi obecné nebo specifické pro položku. 
 
 Můžete mít například **funkci** o:
 
@@ -37,12 +37,12 @@ Přizpůsobené aplikace nepředepisuje, neomezuje ani neopravují funkce, kter�
 
 ## <a name="supported-feature-types"></a>Podporované typy funkcí
 
-Přizpůsobení podporuje funkce typu String, numeric a Boolean.
+Přizpůsobení podporuje funkce typu String, numeric a Boolean. Je velmi pravděpodobné, že vaše aplikace bude většinou používat řetězcové funkce s několika výjimkami.
 
 ### <a name="how-choice-of-feature-type-affects-machine-learning-in-personalizer"></a>Jak volba typu funkce ovlivní Machine Learning v přizpůsobování
 
-* **Řetězce** : u typů řetězců každá kombinace klíče a hodnoty vytváří novou váhu v modelu strojového učení pro přizpůsobení. 
-* **Číselná** hodnota: je třeba použít číselné hodnoty, pokud má číslo proporcionálně ovlivnit výsledek přizpůsobení. To je velmi závislé na scénáři. Ve zjednodušeném příkladu, například při přizpůsobení maloobchodního prostředí, může být NumberOfPetsOwned funkce, která je numerická, protože může chtít, aby lidé se dvěma nebo 3 domácími osobami ovlivnili výsledek přizpůsobení dvakrát nebo třikrát, a to v rozsahu 1 PET. Funkce, které jsou založené na číselných jednotkách, ale u kterých není význam lineární – například stáří, teplota nebo výška osoby – jsou nejlépe kódované jako řetězce a kvalita funkcí se může obvykle zlepšit pomocí rozsahů. Například stáří může být kódováno jako "stáří": "0-5", "stáří": "6-10" atd.
+* **Řetězce**: u typů řetězců se každá kombinace klíče a hodnoty považuje za funkci One-Hot (například Žánr: "ScienceFiction" a Žánr: "dokumentace" vytvoří dvě nové vstupní funkce pro model strojového učení.
+* **Číslo**: v případě, že se jedná o velikost, je třeba použít číselné hodnoty, které by měly proporcionálně ovlivnit výsledek přizpůsobení. To je velmi závislé na scénáři. Ve zjednodušeném příkladu, například při přizpůsobení maloobchodního prostředí, může být NumberOfPetsOwned funkce, která je numerická, protože může chtít, aby lidé se dvěma nebo 3 domácími osobami ovlivnili výsledek přizpůsobení dvakrát nebo třikrát, a to v rozsahu 1 PET. Funkce, které jsou založeny na numerických jednotkách, ale u kterých není význam lineární – například stáří, teplota nebo výška osoby – jsou nejlépe kódované jako řetězce. Například DayOfMonth by byl řetězec s "1", "2"... "31". Pokud máte mnoho kategorií, může být kvalita funkcí obvykle vylepšena pomocí rozsahů. Například stáří může být kódováno jako "stáří": "0-5", "stáří": "6-10" atd.
 * **Logické** hodnoty odeslané s hodnotou false fungují jako v případě, že jste byly odeslány vůbec.
 
 Funkce, které nejsou k dispozici, by měly být z požadavku vynechány. Vyhněte se posílání funkcí s hodnotou null, protože se při výuce modelu zpracuje jako stávající a s hodnotou null.
@@ -80,12 +80,14 @@ Objekty JSON můžou zahrnovat vnořené objekty JSON a jednoduché vlastnosti n
         { 
             "user": {
                 "profileType":"AnonymousUser",
-                "latlong": [47.6, -122.1]
+                "latlong": ["47.6", "-122.1"]
             }
         },
         {
-            "state": {
-                "timeOfDay": "noon",
+            "environment": {
+                "dayOfMonth": "28",
+                "monthOfYear": "8",
+                "timeOfDay": "13:00",
                 "weather": "sunny"
             }
         },
@@ -93,6 +95,13 @@ Objekty JSON můžou zahrnovat vnořené objekty JSON a jednoduché vlastnosti n
             "device": {
                 "mobile":true,
                 "Windows":true
+            }
+        },
+        {
+            "userActivity" : {
+                "itemsInCart": 3,
+                "cartValue": 250,
+                "appliedCoupon": true
             }
         }
     ]
@@ -112,6 +121,8 @@ Objekty JSON můžou zahrnovat vnořené objekty JSON a jednoduché vlastnosti n
 Dobrá sada funkcí pomáhá přizpůsobovat, jak předpovědět akci, která bude řídit nejvyšší odměnu. 
 
 Zvažte odeslání funkcí rozhraní API pro řazení přizpůsobeného rozhraní, které se řídí těmito doporučeními:
+
+* Pro funkce, které nejsou velikostí, použijte kategorií a typy řetězců. 
 
 * K dispozici je dostatek funkcí pro přizpůsobení. Přesnější cílení obsahu vyžaduje, aby bylo potřeba víc funkcí.
 

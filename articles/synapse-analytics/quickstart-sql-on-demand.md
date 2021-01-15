@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: e75bab664bdd0d6a4ac898905226c9956f62b4ff
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: ffa9e7b5685f9a200f6a403045687626f67f66f4
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450511"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218293"
 ---
 # <a name="quickstart-use-serverless-sql-pool"></a>Rychlý Start: použití fondu SQL bez serveru
 
@@ -22,11 +22,11 @@ Synapse fond SQL bez serveru je služba dotazů bez serveru, která umožňuje s
 
 V tomto rychlém startu se zobrazí dotazování: CSV, Apache Parquet a soubory JSON.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Vyberte si klienta SQL pro vydávání dotazů:
 
-- [Azure synapse Studio](quickstart-synapse-studio.md) je webový nástroj, který můžete použít k procházení souborů v úložišti a vytváření dotazů SQL.
+- [Azure synapse Studio](./get-started-create-workspace.md) je webový nástroj, který můžete použít k procházení souborů v úložišti a vytváření dotazů SQL.
 - [Azure Data Studio](sql/get-started-azure-data-studio.md) je klientský nástroj, který umožňuje spouštět dotazy a poznámkové bloky SQL v databázi na vyžádání.
 - [SQL Server Management Studio](sql/get-started-ssms.md) je klientský nástroj, který umožňuje spouštět dotazy SQL v databázi na vyžádání.
 

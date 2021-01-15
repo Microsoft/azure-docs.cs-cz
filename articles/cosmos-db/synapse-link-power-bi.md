@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: acomet
-ms.openlocfilehash: be2657d9606f260fcea06d2535be87fc6976577c
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 8a3142199502b912f20ebe05c625aa40be9fab11
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915670"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218667"
 ---
 # <a name="use-power-bi-and-serverless-synapse-sql-pool-preview-to-analyze-azure-cosmos-db-data-with-synapse-link"></a>Použití Power BI a synapse fondu SQL (ve verzi Preview) k analýze Azure Cosmos DB dat pomocí propojení synapse 
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -41,7 +41,7 @@ Než začnete, nezapomeňte vytvořit tyto prostředky:
 
 ## <a name="create-a-database-and-views"></a>Vytvoření databáze a zobrazení
 
-V pracovním prostoru synapse otevřete kartu **vývoj** , vyberte **+** ikonu a vyberte **skript SQL**.
+Vytváření zobrazení v hlavních nebo výchozích databázích se nedoporučuje ani nepodporuje. Proto je nutné spustit tento krok vytvořením databáze. V pracovním prostoru synapse otevřete kartu **vývoj** , vyberte **+** ikonu a vyberte **skript SQL**.
 
 :::image type="content" source="./media/synapse-link-power-bi/add-sql-script.png" alt-text="Přidání skriptu SQL do pracovního prostoru analýzy synapse":::
 

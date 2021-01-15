@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: alehall
 ms.reviewer: jrasnick
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 005e3a3b717d4b1b8e5eb02b77a1d228908f8707
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 0537d2353d6b372ed19127101c488b872bbc5224
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92210623"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218854"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-with-azure-powershell"></a>Rychlý Start: vytvoření pracovního prostoru Azure synapse s využitím Azure PowerShell
 
@@ -30,9 +30,9 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 - [Účet úložiště Azure Data Lake Storage Gen2](../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 
     > [!IMPORTANT]
-    > Pracovní prostor Azure synapse musí být schopný číst a zapisovat na vybraný ADLS Gen2 účet. Pro libovolný účet úložiště, který propojíte jako primární účet úložiště, musíte povolit **hierarchický obor názvů** při vytváření účtu úložiště, jak je popsáno v tématu [Vytvoření účtu úložiště](https://docs.microsoft.com/azure/storage/common/storage-account-create?tabs=azure-powershell#create-a-storage-account).
+    > Pracovní prostor Azure synapse musí být schopný číst a zapisovat na vybraný ADLS Gen2 účet. Pro libovolný účet úložiště, který propojíte jako primární účet úložiště, musíte povolit **hierarchický obor názvů** při vytváření účtu úložiště, jak je popsáno v tématu [Vytvoření účtu úložiště](../storage/common/storage-account-create.md?tabs=azure-powershell#create-a-storage-account).
 
-Pokud se rozhodnete použít Cloud Shell, přečtěte si téma [přehled Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) , kde najdete další informace.
+Pokud se rozhodnete použít Cloud Shell, přečtěte si téma [přehled Azure Cloud Shell](../cloud-shell/overview.md) , kde najdete další informace.
 
 ### <a name="install-the-azure-powershell-module-locally"></a>Místní instalace modulu Azure PowerShell
 
@@ -43,7 +43,7 @@ Další informace o ověřování pomocí Azure PowerShell najdete v tématu vě
 ### <a name="install-the-azure-synapse-powershell-module"></a>Instalace modulu PowerShellu pro Azure synapse
 
 > [!IMPORTANT]
-> I když je modul PowerShell **AZ. synapse** ve verzi Preview, musíte ho nainstalovat samostatně pomocí `Install-Module` rutiny. Až bude tento modul PowerShellu všeobecně dostupný, bude součástí budoucna ve výchozím nastavení AZ PowerShell Module releases a Available v rámci Azure Cloud Shell.
+> I když je modul PowerShell **AZ. synapse** ve verzi Preview, musíte ho nainstalovat samostatně pomocí `Install-Module` rutiny. Jakmile bude tento powershellový modul obecně dostupný, stane se součástí budoucích verzí modulu Az PowerShellu a bude ve výchozím nastavení dostupný v rámci Azure Cloud Shellu.
 
 ```azurepowershell-interactive
 Install-Module -Name Az.Synapse

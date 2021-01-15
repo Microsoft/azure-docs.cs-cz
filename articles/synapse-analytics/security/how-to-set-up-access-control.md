@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 12/03/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: 62c30356017b5ea5d93351e6f22b8b7b0c22718c
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 7dbbe3afb2a5eb19b5c4893bd73eddbf11e788d4
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109262"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218072"
 ---
 # <a name="how-to-set-up-access-control-for-your-synapse-workspace"></a>Jak nastavit řízení přístupu pro pracovní prostor synapse 
 
@@ -73,8 +73,8 @@ Vytvořit také tuto skupinu zabezpečení:
 Pro základní nastavení jsou tyto pět skupin dostatečné. Později můžete přidat skupiny zabezpečení, které budou obsluhovat uživatele, kteří potřebují více specializovaného přístupu, nebo poskytnout uživatelům přístup pouze k určitým prostředkům.
 
 > [!NOTE]
->- Naučte se vytvořit skupinu zabezpečení v [tomto článku](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal).
->- Naučte se přidat skupinu zabezpečení z jiné skupiny zabezpečení v [tomto článku](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-membership-azure-portal).
+>- Naučte se vytvořit skupinu zabezpečení v [tomto článku](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
+>- Naučte se přidat skupinu zabezpečení z jiné skupiny zabezpečení v [tomto článku](../../active-directory/fundamentals/active-directory-groups-membership-azure-portal.md).
 
 >[!Tip]
 >Jednotliví uživatelé synapse můžou pomocí Azure Active Directory v Azure Portal zobrazit jejich členství ve skupinách a určit, které role se jim mají udělit.
@@ -272,7 +272,7 @@ Chcete-li spravovat přístup, můžete přidat nebo odebrat uživatele do skupi
 Jako poslední krok zabezpečení pracovního prostoru byste měli zabezpečit přístup k síti pomocí:
 - [Firewall pracovního prostoru](./synapse-workspace-ip-firewall.md)
 - [Spravovaná virtuální síť](./synapse-workspace-managed-vnet.md) 
-- [Soukromé koncové body](./synapse-workspace-managed-private-endpoints.md)
+- [Privátní koncové body](./synapse-workspace-managed-private-endpoints.md)
 - [Privátní propojení](../../azure-sql/database/private-endpoint-overview.md)
 
 ## <a name="step-10-completion"></a>Krok 10: dokončení

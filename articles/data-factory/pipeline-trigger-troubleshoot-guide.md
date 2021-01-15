@@ -7,46 +7,40 @@ ms.date: 12/15/2020
 ms.topic: troubleshooting
 ms.author: susabat
 ms.reviewer: susabat
-ms.openlocfilehash: 0e67a316b012eda61607c84edfd8e10d6aa3318d
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 0ceee3c65e8c4df5d843bb441fb6426a0f4eb696
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589147"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220248"
 ---
 # <a name="troubleshoot-pipeline-orchestration-and-triggers-in-azure-data-factory"></a>Řešení potíží s orchestrací kanálu a triggery v Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Spuštění kanálu v Azure Data Factory definuje instanci spuštění kanálu. Máte například kanál, který se spouští v 8:00 dop. 9:00 AM a 10:00. V tomto případě existují tři samostatná spuštění kanálu nebo spuštění kanálu. Každé spuštění kanálu má jedinečné ID spuštění. ID spuštění je identifikátor GUID (globálně jedinečný identifikátor), který definuje konkrétní spuštění kanálu.
+Spuštění kanálu v Azure Data Factory definuje instanci spuštění kanálu. Řekněme například, že máte kanál, který běží v 8:00 AM, 9:00 a 10:00. V tomto případě existují tři samostatná spuštění kanálu. Každé spuštění kanálu má jedinečné ID spuštění. ID spuštění je globálně jedinečný identifikátor (GUID), který definuje konkrétní spuštění kanálu.
 
-Instance spuštění kanálu se obvykle vytvářejí předáváním argumentů do parametrů, které definujete v kanálech. Kanál můžete spustit ručně nebo prostřednictvím aktivační události. Podrobnosti najdete [v tématu spuštění kanálu a triggery v Azure Data Factory](concepts-pipeline-execution-triggers.md) .
+Instance spuštění kanálu se obvykle vytvářejí předáváním argumentů do parametrů, které definujete v kanálech. Kanál můžete spustit buď ručně, nebo pomocí triggeru. Podrobnosti najdete [v tématu spuštění kanálu a triggery v Azure Data Factory](concepts-pipeline-execution-triggers.md) .
 
 ## <a name="common-issues-causes-and-solutions"></a>Běžné problémy, příčiny a řešení
 
-### <a name="pipeline-with-azure-function-throws-error-with-private-end-point-connectivity"></a>Kanál s funkcí Azure Functions vyvolá chybu s privátním připojením koncového bodu.
+### <a name="an-azure-functions-app-pipeline-throws-an-error-with-private-endpoint-connectivity"></a>Azure Functions kanál aplikace vyvolá chybu s připojením privátního koncového bodu.
  
-#### <a name="issue"></a>Problém
-V případě nějakého kontextu máte Data Factory a Azure Function App běžet na privátním koncovém bodu. Snažíte se získat kanál, který komunikuje s Function App Azure pro práci. Vyzkoušeli jste tři různé metody, ale jedna z nich vrátí chybu `Bad Request` , další dvě metody vrátí `103 Error Forbidden` .
+Máte Data Factory a aplikace funkce Azure běží na privátním koncovém bodu. Pokoušíte se spustit kanál, který komunikuje s aplikací Function App. Vyzkoušeli jste tři různé metody, ale jedna vrátí chybu "špatný požadavek" a ostatní dvě metody vrátí "103 chyba zakázáno".
 
-#### <a name="cause"></a>Příčina 
-Data Factory v současné době nepodporuje pro Azure Function App konektor privátního koncového bodu. A mělo by to být důvod, proč Azure Function App odmítl volání, protože by byl nakonfigurovaný tak, aby povoloval jenom připojení z privátního odkazu.
+**Příčina**: Data Factory v současné době nepodporuje pro aplikace Function App konektor privátního koncového bodu. Azure Functions odmítne volání, protože je nakonfigurována tak, aby povolovala pouze připojení z privátního odkazu.
 
-#### <a name="resolution"></a>Řešení
-Můžete vytvořit soukromý koncový bod typu **PrivateLinkService** a zadat DNS vaší aplikace Function App a připojení by mělo fungovat.
+**Řešení**: Vytvořte koncový bod **PrivateLinkService** a poskytněte službě DNS vaší aplikace Function App.
 
-### <a name="pipeline-run-is-killed-but-the-monitor-still-shows-progress-status"></a>Běh kanálu byl ukončen, ale monitor stále zobrazuje stav průběhu.
+### <a name="a-pipeline-run-is-canceled-but-the-monitor-still-shows-progress-status"></a>Spuštění kanálu se zrušilo, ale monitor stále zobrazuje stav průběhu.
 
-#### <a name="issue"></a>Problém
-Při ukončení běhu kanálu se často v monitorování kanálu stále zobrazuje stav průběhu. K tomu dochází kvůli problému s mezipamětí v prohlížeči a nemáte správné filtry pro monitorování.
+Když zrušíte spuštění kanálu, monitorování kanálu často zobrazuje stav průběhu. K tomu dojde kvůli problému s mezipamětí prohlížeče. Také možná nemáte správné filtry monitorování.
 
-#### <a name="resolution"></a>Řešení
-Aktualizujte prohlížeč a použijte pro monitorování filtry vpravo.
+**Řešení**: aktualizujte prohlížeč a použijte správné filtry monitorování.
  
-### <a name="copy-pipeline-failure--found-more-columns-than-expected-column-count-delimitedtextmorecolumnsthandefined"></a>Kopírování selhání kanálu – našlo se víc sloupců, než se očekával počet sloupců (DelimitedTextMoreColumnsThanDefined).
-
-#### <a name="issue"></a>Problém  
-Pokud soubory v rámci konkrétní složky, kterou kopírujete, obsahují soubory s různými schématy, jako je například proměnlivý počet sloupců, různé oddělovače, nastavení znak uvozovek nebo nějaký problém s daty, kanál Data Factory bude spuštěn v této chybě:
+### <a name="you-see-a-delimitedtextmorecolumnsthandefined-error-when-copying-a-pipeline"></a>Při kopírování kanálu se zobrazí chyba "DelimitedTextMoreColumnsThanDefined".
+ 
+Pokud složka, kterou kopírujete, obsahuje soubory s různými schématy, jako je například proměnný počet sloupců, jiné oddělovače, nastavení znaků uvozovek nebo některý problém s daty, může Data Factory kanál vyvolat tuto chybu:
 
 `
 Operation on target Copy_sks  failed: Failure happened on 'Sink' side.
@@ -56,51 +50,41 @@ Message=Error found when processing 'Csv/Tsv Format Text' source '0_2020_11_09_1
 Source=Microsoft.DataTransfer.Common,'
 `
 
-#### <a name="resolution"></a>Řešení
-Při vytváření aktivity Kopírování dat vyberte možnost binární kopírování. Tímto způsobem můžete pro hromadné kopírování nebo migraci dat z jednoho Data Lake do druhé s možností **binary** Data Factory otevřít soubory pro čtení schématu, ale stačí považovat každý soubor za binární a zkopírovat je do jiného umístění.
+**Řešení**: při vytváření aktivity kopírování vyberte možnost **binární kopírování** . Tímto způsobem se v případě hromadného kopírování nebo migrace dat z jednoho data Lake na jiný Data Factory neotevřou soubory pro čtení schématu. Místo toho Data Factory zpracuje každý soubor jako binární a zkopíruje ho do druhého umístění.
 
-### <a name="pipeline-run-fails-when-capacity-limit-of-integration-runtime-is-reached"></a>Spuštění kanálu se nepovede, když se dosáhne limitu kapacity prostředí Integration runtime.
+### <a name="a-pipeline-run-fails-when-you-reach-the-capacity-limit-of-the-integration-runtime"></a>Spuštění kanálu se při dosažení limitu kapacity prostředí Integration runtime nezdařilo.
 
-#### <a name="issue"></a>Problém
 Chybová zpráva:
 
 `
 Type=Microsoft.DataTransfer.Execution.Core.ExecutionException,Message=There are substantial concurrent MappingDataflow executions which is causing failures due to throttling under Integration Runtime 'AutoResolveIntegrationRuntime'.
 `
 
-Tato chyba označuje omezení za prostředí Integration runtime, které je aktuálně 50. Podrobnosti najdete v tématu [omezení](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#version-2) .
+**Příčina**: dosáhli jste limitu kapacity prostředí Integration runtime. Je možné, že budete provozovat velké množství toku dat pomocí stejného prostředí Integration runtime ve stejnou dobu. Podrobnosti najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#version-2) .
 
-Pokud spustíte velké množství toku dat pomocí stejného prostředí Integration runtime současně, může to způsobit tento druh chyby.
+**Řešení**:
+ 
+- Spusťte své kanály v různých časech triggerů.
+- Vytvořte nový prostředí Integration runtime a rozdělte kanály do několika prostředí Integration runtime.
 
-#### <a name="resolution"></a>Řešení 
-- Oddělte tyto kanály pro různé doby triggeru, které se mají spustit.
-- Vytvořte nový prostředí Integration runtime a rozdělte tyto kanály v rámci více prostředí Integration runtime.
+### <a name="you-have-activity-level-errors-and-failures-in-pipelines"></a>Máte chyby na úrovni aktivity a chyby v kanálech.
 
-### <a name="how-to-monitor-pipeline-failures-on-regular-interval"></a>Jak monitorovat selhání kanálu v pravidelných intervalech
+Azure Data Factory orchestrace umožňuje podmíněnou logiku a umožňuje uživatelům provádět různé cesty na základě výsledku předchozí aktivity. Umožňuje čtyři podmíněné cesty: **po úspěšném** dokončení (výchozí průchod) **po neúspěšném** **dokončení** a **Při přeskočení**. 
 
-#### <a name="issue"></a>Problém
-Často je potřeba monitorovat kanály Data Factory v intervalech, což znamená 5 minut. Pomocí koncového bodu se můžete dotazovat a filtrovat spouštění kanálů z datové továrny. 
+Azure Data Factory vyhodnocuje výsledek všech aktivit na úrovni listu. Výsledky kanálu jsou úspěšné pouze v případě, že všechny pokusy pozůstávají úspěšné. Pokud se koncová aktivita přeskočí, vyhodnotí se místo toho její Nadřazená aktivita. 
 
-#### <a name="recommendation"></a>Doporučení
-1. Nastavte aplikaci logiky Azure pro dotazování všech neúspěšných kanálů každých 5 minut.
-2. Potom můžete hlásit incidenty do našeho systému lístků podle [QueryByFactory](https://docs.microsoft.com/rest/api/datafactory/pipelineruns/querybyfactory).
+**Řešení**
 
-#### <a name="reference"></a>Referenční informace
-- [Externí – odesílání oznámení z Data Factory](https://www.mssqltips.com/sqlservertip/5962/send-notifications-from-an-azure-data-factory-pipeline--part-2/)
+1. Implementujte kontroly na úrovni aktivity podle následujících pokynů, [jak zpracovat selhání a chyby kanálu](https://techcommunity.microsoft.com/t5/azure-data-factory/understanding-pipeline-failures-and-error-handling/ba-p/1630459).
+1. Pomocí Azure Logic Apps můžete sledovat kanály v pravidelných intervalech po [dotazech podle továrny](https://docs.microsoft.com/rest/api/datafactory/pipelineruns/querybyfactory).
 
-### <a name="how-to-handle-activity-level-errors-and-failures-in-pipelines"></a>Postup zpracování chyb na úrovni aktivity a selhání v kanálech
+## <a name="monitor-pipeline-failures-in-regular-intervals"></a>Monitorování selhání kanálu v pravidelných intervalech
 
-#### <a name="issue"></a>Problém
-Azure Data Factory orchestrace umožňuje podmíněnou logiku a umožňuje uživateli v závislosti na výsledcích předchozí aktivity provádět různé cesty. Umožňuje čtyři podmíněné cesty: "po úspěchu (výchozí průchod)", "při selhání", "po dokončení" a "Při přeskočení". Používání různých cest je povoleno.
+Možná budete muset monitorovat neúspěšné Data Factory kanály v intervalech, 5 minut. Pomocí koncového bodu se můžete dotazovat a filtrovat spouštění kanálů z datové továrny. 
 
-Azure Data Factory definuje úspěšné a neúspěšné spuštění kanálu následujícím způsobem:
+Nastavte aplikaci logiky Azure pro dotazování všech neúspěšných kanálů každých 5 minut, jak je popsáno v tématu [dotazování podle továrny](https://docs.microsoft.com/rest/api/datafactory/pipelineruns/querybyfactory). Potom můžete hlásit incidenty do našeho systému lístků.
 
-- Vyhodnotit výsledek pro všechny aktivity na úrovni listu. Pokud se koncová aktivita přeskočí, vyhodnotí se místo toho její Nadřazená aktivita.
-- Výsledek kanálu je úspěšný pouze v případě, že všechny ponechují úspěšné.
-
-#### <a name="recommendation"></a>Doporučení
-- Implementujte kontroly úrovně aktivity za [účelem zpracování selhání a chyb kanálu](https://techcommunity.microsoft.com/t5/azure-data-factory/understanding-pipeline-failures-and-error-handling/ba-p/1630459).
-- Pomocí aplikace Azure Logic Apps můžete kanály monitorovat v pravidelných intervalech po [dotazování pomocí DataFactory]( https://docs.microsoft.com/rest/api/datafactory/pipelineruns/querybyfactory).
+Další informace najdete v [části odesílání oznámení z Data Factory, část 2](https://www.mssqltips.com/sqlservertip/5962/send-notifications-from-an-azure-data-factory-pipeline--part-2/).
 
 ## <a name="next-steps"></a>Další kroky
 

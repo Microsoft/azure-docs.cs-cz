@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: eb94b67b026ed108f31f6cd802010577665ec0d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ece3e639e0ef3516696e2a0bad7deeb833433a6
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87286083"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219194"
 ---
 # <a name="troubleshooting-connectivity-problems-between-azure-vms"></a>Řešení potíží s připojením mezi virtuálními počítači Azure
 
@@ -49,7 +49,7 @@ Při řešení tohoto problému postupujte podle těchto kroků. Po dokončení 
 
 ### <a name="step-1-check-whether-nic-is-misconfigured"></a>Krok 1: ověření, jestli je síťové rozhraní špatně nakonfigurované
 
-Postupujte podle kroků v části [Postup resetování síťového rozhraní pro virtuální počítač Azure s Windows](../virtual-machines/windows/reset-network-interface.md). 
+Postupujte podle kroků v části [Postup resetování síťového rozhraní pro virtuální počítač Azure s Windows](../virtual-machines/troubleshooting/reset-network-interface.md). 
 
 Pokud k problému dochází poté, co upravíte síťové rozhraní (NIC), postupujte následovně:
 
@@ -62,8 +62,8 @@ Další informace najdete v tématu [přidání síťových rozhraní nebo jejic
 
 **Virtuální počítač s jednou síťovou kartou** 
 
-- [Znovu nasadit virtuální počítač s Windows](../virtual-machines/windows/redeploy-to-new-node.md)
-- [Znovu nasadit virtuální počítač se systémem Linux](../virtual-machines/linux/redeploy-to-new-node.md)
+- [Znovu nasadit virtuální počítač s Windows](../virtual-machines/troubleshooting/redeploy-to-new-node-windows.md)
+- [Znovu nasadit virtuální počítač se systémem Linux](../virtual-machines/troubleshooting/redeploy-to-new-node-linux.md)
 
 ### <a name="step-2-check-whether-network-traffic-is-blocked-by-nsg-or-udr"></a>Krok 2: ověření, jestli je síťový provoz blokovaný pomocí NSG nebo UDR
 
@@ -103,7 +103,7 @@ Seznam řízení přístupu (ACL) poskytuje možnost selektivního povolení neb
 
 ### <a name="step-7-check-whether-the-endpoint-is-created-for-the-classic-vm"></a>Krok 7: ověření, zda je koncový bod vytvořen pro klasický virtuální počítač
 
-Všechny virtuální počítače, které vytvoříte v Azure pomocí modelu nasazení Classic, můžou automaticky komunikovat přes privátní síťový kanál s ostatními virtuálními počítači ve stejné cloudové službě nebo ve virtuální síti. Počítače v jiných virtuálních sítích ale vyžadují koncové body pro směrování příchozího síťového provozu do virtuálního počítače. Další informace najdete v tématu [nastavení koncových bodů](../virtual-machines/windows/classic/setup-endpoints.md).
+Všechny virtuální počítače, které vytvoříte v Azure pomocí modelu nasazení Classic, můžou automaticky komunikovat přes privátní síťový kanál s ostatními virtuálními počítači ve stejné cloudové službě nebo ve virtuální síti. Počítače v jiných virtuálních sítích ale vyžadují koncové body pro směrování příchozího síťového provozu do virtuálního počítače. Další informace najdete v tématu [nastavení koncových bodů](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints).
 
 ### <a name="step-8-try-to-connect-to-a-vm-network-share"></a>Krok 8: Pokuste se připojit ke sdílené síťové složce virtuálních počítačů
 

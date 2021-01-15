@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/29/2019
 ms.author: steveesp
-ms.openlocfilehash: 77ea14097538f722569acb5a0371674776aac8e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8f167a7947c42ce837ec83b336ae636f593f2e4
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84687799"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219254"
 ---
 # <a name="test-vm-network-latency"></a>Test latence sítě virtuálních počítačů
 
@@ -55,7 +55,7 @@ Pomocí těchto nástrojů pomůžete zajistit, že se měří jenom doba doruč
 Při vytváření konfigurace virtuálních počítačů mějte na paměti následující doporučení:
 - Použijte nejnovější verzi systému Windows nebo Linux.
 - Povolte urychlené síťové služby pro dosažení nejlepších výsledků.
-- Nasaďte virtuální počítače se [skupinou umístění blízkosti Azure](https://docs.microsoft.com/azure/virtual-machines/linux/co-location).
+- Nasaďte virtuální počítače se [skupinou umístění blízkosti Azure](../virtual-machines/co-location.md).
 - Větší virtuální počítače obvykle provádějí lepší výkon než menší virtuální počítače.
 
 ### <a name="tips-for-analysis"></a>Tipy pro analýzu
@@ -77,7 +77,7 @@ Zvažte vložení latte.exe do samostatné složky, jako je například *c:\Tool
 
 ### <a name="allow-latteexe-through-windows-defender-firewall"></a>Povolení latte.exe prostřednictvím firewallu v programu Windows Defender
 
-Na *přijímači*vytvořte pravidlo povolení v bráně firewall v programu Windows Defender, které umožní doručení latte.exe provozu. Je nejjednodušší povolit celý latte.exe program podle názvu, nikoli povolit příchozí porty TCP.
+Na *přijímači* vytvořte pravidlo povolení v bráně firewall v programu Windows Defender, které umožní doručení latte.exe provozu. Je nejjednodušší povolit celý latte.exe program podle názvu, nikoli povolit příchozí porty TCP.
 
 Povolte latte.exe pomocí brány firewall v programu Windows Defender spuštěním následujícího příkazu:
 
@@ -91,7 +91,7 @@ Pokud jste například zkopírovali latte.exe do složky *c:\Tools* , bude to p�
 
 ### <a name="run-latency-tests"></a>Testy latence spuštění
 
-* Na *přijímači*spusťte latte.exe (spusťte ho z okna cmd, nikoli z PowerShellu):
+* Na *přijímači* spusťte latte.exe (spusťte ho z okna cmd, nikoli z PowerShellu):
 
     ```cmd
     latte -a <Receiver IP address>:<port> -i <iterations>
@@ -105,13 +105,13 @@ Pokud jste například zkopírovali latte.exe do složky *c:\Tools* , bude to p�
 
     `latte -a 10.0.0.4:5005 -i 65100`
 
-* Na *odesilateli*spusťte latte.exe (spusťte ho z okna cmd, nikoli z PowerShellu):
+* Na *odesilateli* spusťte latte.exe (spusťte ho z okna cmd, nikoli z PowerShellu):
 
     ```cmd
     latte -c -a <Receiver IP address>:<port> -i <iterations>
     ```
 
-    Výsledný příkaz je stejný jako na přijímači s výjimkou přidání &nbsp; *-c* k označení toho, že se jedná o *klienta*nebo *odesílateli*:
+    Výsledný příkaz je stejný jako na přijímači s výjimkou přidání &nbsp; *-c* k označení toho, že se jedná o *klienta* nebo *odesílateli*:
 
     `latte -c -a 10.0.0.4:5005 -i 65100`
 
@@ -176,7 +176,7 @@ sudo make install
 
 Po dokončení instalace SockPerf jsou virtuální počítače připravené ke spuštění testů latence. 
 
-Nejdřív na *přijímači*spusťte SockPerf.
+Nejdřív na *přijímači* spusťte SockPerf.
 
 Jakékoli dostupné číslo portu je přesné. V tomto příkladu používáme port 12345:
 
@@ -200,7 +200,7 @@ Tento příklad SockPerf používá velikost zprávy 350, což je typické pro p
 
 
 ## <a name="next-steps"></a>Další kroky
-* Vylepšete latenci pomocí [skupiny umístění s použitím blízkosti Azure](https://docs.microsoft.com/azure/virtual-machines/linux/co-location).
+* Vylepšete latenci pomocí [skupiny umístění s použitím blízkosti Azure](../virtual-machines/co-location.md).
 * Naučte se [optimalizovat sítě pro virtuální počítače](../virtual-network/virtual-network-optimize-network-bandwidth.md) ve vašem scénáři.
 * Přečtěte si o [tom, jak je šířka pásma přidělena virtuálním počítačům](../virtual-network/virtual-machine-network-throughput.md).
 * Další informace najdete v tématu [Nejčastější dotazy k Azure Virtual Network](../virtual-network/virtual-networks-faq.md).

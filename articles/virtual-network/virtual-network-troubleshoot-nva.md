@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2018
 ms.author: genli
-ms.openlocfilehash: 3a8982b5626e3c19dbd49a3d2e20542d44b1a1da
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 18f2128b6869b4047cc6f35e1638aca81233a014
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368583"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219228"
 ---
 # <a name="network-virtual-appliance-issues-in-azure"></a>Problémy se síťovými virtuálními zařízení v Azure
 
@@ -87,13 +87,13 @@ Použití prostředí PowerShell
 
 **Ověřte, jestli je možné směrovat provoz do síťové virtuální ZAŘÍZENÍu.**
 
-1. V [Azure Portal](https://portal.azure.com)otevřete **Network Watcher**vyberte **Další segment směrování**.
+1. V [Azure Portal](https://portal.azure.com)otevřete **Network Watcher** vyberte **Další segment směrování**.
 2. Zadejte virtuální počítač, který je nakonfigurovaný pro přesměrování provozu do síťové virtuální zařízení, a cílovou IP adresu, na které se má zobrazit další segment směrování. 
 3. Pokud síťové virtuální zařízení není uveden jako **Další segment směrování**, ověřte a aktualizujte tabulky směrování Azure.
 
 **Ověřte, jestli přenosy můžou dosáhnout pro síťové virtuální zařízení.**
 
-1. V [Azure Portal](https://portal.azure.com)otevřete **Network Watcher**a vyberte možnost **ověření toku IP**. 
+1. V [Azure Portal](https://portal.azure.com)otevřete **Network Watcher** a vyberte možnost **ověření toku IP**. 
 2. Zadejte virtuální počítač a IP adresu síťové virtuální zařízení a potom zkontrolujte, jestli jsou přenosy blokované všemi skupinami zabezpečení sítě (NSG).
 3. Pokud existuje pravidlo NSG, které blokuje provoz, najděte NSG v **platných pravidlech zabezpečení** a pak ho aktualizujte, aby bylo možné předávání provozu. Pak znovu spusťte **kontrolu protokolu IP** a pomocí **řešení potíží s připojením** otestujte komunikaci TCP z virtuálního počítače na svou interní nebo externí IP adresu.
 
@@ -107,7 +107,7 @@ Použití prostředí PowerShell
    netstat -an
     ```
 
-    Pro Linux:
+    V Linuxu:
 
     ```console
    netstat -an | grep -i listen
@@ -127,7 +127,7 @@ Pokud síť virtuálních počítačů využívá špičky nebo zobrazuje obdob�
 ## <a name="advanced-network-administrator-troubleshooting"></a>Pokročilý poradce při potížích správce sítě
 
 ### <a name="capture-network-trace"></a>Zachytit trasování sítě
-Zaznamenejte si souběžnou síťovou trasu na zdrojovém virtuálním počítači, síťové virtuální zařízení a cílový virtuální počítač, zatímco spouštíte **[PsPing](https://docs.microsoft.com/sysinternals/downloads/psping)** nebo **nmap**, a pak trasování zastavte.
+Zaznamenejte si souběžnou síťovou trasu na zdrojovém virtuálním počítači, síťové virtuální zařízení a cílový virtuální počítač, zatímco spouštíte **[PsPing](/sysinternals/downloads/psping)** nebo **nmap**, a pak trasování zastavte.
 
 1. Pokud chcete zachytit síťové trasování, spusťte následující příkaz:
 

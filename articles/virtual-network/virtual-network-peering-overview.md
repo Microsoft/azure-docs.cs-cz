@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2019
 ms.author: kumud
-ms.openlocfilehash: 61617777efa8241c93b2b5ffe42fc1d914b6ebcf
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: feea2d54edd8a93e6e0effbef03389ef895d5ffb
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004972"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216746"
 ---
 # <a name="virtual-network-peering"></a>Partnerský vztah virtuální sítě
 
@@ -48,7 +48,7 @@ Latence sítě mezi virtuálními počítači v partnerských virtuálních sít
 Provoz mezi virtuálními počítači v partnerských virtuálních sítích je směrován přímo přes páteřní infrastrukturu Microsoftu, ne prostřednictvím brány ani přes veřejný internet.
 
 Skupiny zabezpečení sítě v obou virtuálních sítích můžete použít k blokování přístupu k ostatním virtuálním sítím nebo podsítím.
-Při konfiguraci partnerského vztahu virtuálních sítí buď otevřete nebo zavřete pravidla skupiny zabezpečení sítě mezi virtuálními sítěmi. Pokud otevřete úplné propojení mezi partnerskými virtuálními sítěmi, můžete použít skupiny zabezpečení sítě a zablokovat nebo odepřít konkrétní přístup. Výchozí možností je úplné připojení. Další informace o skupinách zabezpečení sítě najdete v tématu [skupiny zabezpečení](security-overview.md).
+Při konfiguraci partnerského vztahu virtuálních sítí buď otevřete nebo zavřete pravidla skupiny zabezpečení sítě mezi virtuálními sítěmi. Pokud otevřete úplné propojení mezi partnerskými virtuálními sítěmi, můžete použít skupiny zabezpečení sítě a zablokovat nebo odepřít konkrétní přístup. Výchozí možností je úplné připojení. Další informace o skupinách zabezpečení sítě najdete v tématu [skupiny zabezpečení](./network-security-groups-overview.md).
 
 ## <a name="service-chaining"></a>Řetězení služeb
 

@@ -11,12 +11,12 @@ ms.author: lle
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 12/25/2020
-ms.openlocfilehash: 76d53458154a7e66589c16f955373975bb04b25b
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: fd56ef74a7641a01eae2354f149f45e84ff56833
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121584"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217443"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Vytvoření a konfigurace místního prostředí Integration Runtime
 
@@ -155,23 +155,23 @@ dmgcmd ACTION args...
 
 Tady jsou podrobnosti o akcích a argumentech aplikace: 
 
-|KROKY|args|Description|
+|KROKY|args|Popis|
 |------|----|-----------|
-|RN<br/>-RegisterNewNode|"`<AuthenticationKey>`" ["`<NodeName>`"]|Zaregistrujte místně hostovaný uzel Integration runtime se zadaným ověřovacím klíčem a názvem uzlu.|
-|věk<br/>-EnableRemoteAccess|"`<port>`" ["`<thumbprint>`"]|Povolením vzdáleného přístupu na aktuálním uzlu nastavte cluster s vysokou dostupností. Nebo povolte nastavení přihlašovacích údajů přímo v místním prostředí IR bez průchodu Azure Data Factory. Provedete to tak, že použijete rutinu **New-AzDataFactoryV2LinkedServiceEncryptedCredential** ze vzdáleného počítače ve stejné síti.|
-|-erac,<br/>-EnableRemoteAccessInContainer|"`<port>`" ["`<thumbprint>`"]|Pokud je uzel spuštěn v kontejneru, povolte vzdálený přístup k aktuálnímu uzlu.|
-|agenta<br/>-DisableRemoteAccess||Zakáže vzdálený přístup k aktuálnímu uzlu. Pro instalaci s více uzly je potřeba vzdálený přístup. Rutina **New-AzDataFactoryV2LinkedServiceEncryptedCredential** prostředí PowerShell stále funguje i v případě, že je vzdálený přístup zakázán. Toto chování je pravdivé, pokud je rutina spuštěna ve stejném počítači jako uzel IR v místním prostředí.|
-|k<br/>– Klíč|"`<AuthenticationKey>`"|Přepsat nebo aktualizovat předchozí ověřovací klíč Tuto akci buďte opatrní. Váš předchozí místně hostovaný uzel IR může přejít do režimu offline, pokud klíč je nového prostředí Integration runtime.|
-|-gbf,<br/>-GenerateBackupFile|"`<filePath>`" "`<password>`"|Vygeneruje záložní soubor pro aktuální uzel. Záložní soubor zahrnuje přihlašovací údaje klíče uzlu a datového úložiště.|
-|-ibf,<br/>-ImportBackupFile|"`<filePath>`" "`<password>`"|Obnovte uzel ze záložního souboru.|
-|í<br/>-Restart||Restartujte hostitelskou službu Integration runtime v místním prostředí.|
-|pracují<br/>– Spustit||Spusťte hostovanou hostitelskou službu Integration runtime.|
-|š<br/>-Stop||Zastavte hostitelskou službu Integration runtime v místním prostředí.|
-|služby SUS<br/>-StartUpgradeService||Spusťte službu upgradu místního prostředí Integration runtime.|
-|počet propustnosti<br/>-StopUpgradeService||Zastavte službu upgradu místního prostředí Integration runtime.|
-|-tonau,<br/>-TurnOnAutoUpdate||Zapněte automatickou aktualizaci prostředí Integration runtime pro místní hostování.|
-|-toffau,<br/>-TurnOffAutoUpdate||Vypněte automatickou aktualizaci prostředí Integration runtime pro místní hostování.|
-|SSA<br/>-SwitchServiceAccount|"`<domain\user>`" ["`<password>`"]|Nastavte DIAHostService tak, aby běžel jako nový účet. Pro systémové účty a virtuální účty použijte prázdné heslo.|
+|`-rn`,<br/>`-RegisterNewNode`|"`<AuthenticationKey>`" ["`<NodeName>`"]|Zaregistrujte místně hostovaný uzel Integration runtime se zadaným ověřovacím klíčem a názvem uzlu.|
+|`-era`,<br/>`-EnableRemoteAccess`|"`<port>`" ["`<thumbprint>`"]|Povolením vzdáleného přístupu na aktuálním uzlu nastavte cluster s vysokou dostupností. Nebo povolte nastavení přihlašovacích údajů přímo v místním prostředí IR bez průchodu Azure Data Factory. Provedete to tak, že použijete rutinu **New-AzDataFactoryV2LinkedServiceEncryptedCredential** ze vzdáleného počítače ve stejné síti.|
+|`-erac`,<br/>`-EnableRemoteAccessInContainer`|"`<port>`" ["`<thumbprint>`"]|Pokud je uzel spuštěn v kontejneru, povolte vzdálený přístup k aktuálnímu uzlu.|
+|`-dra`,<br/>`-DisableRemoteAccess`||Zakáže vzdálený přístup k aktuálnímu uzlu. Pro instalaci s více uzly je potřeba vzdálený přístup. Rutina **New-AzDataFactoryV2LinkedServiceEncryptedCredential** prostředí PowerShell stále funguje i v případě, že je vzdálený přístup zakázán. Toto chování je pravdivé, pokud je rutina spuštěna ve stejném počítači jako uzel IR v místním prostředí.|
+|`-k`,<br/>`-Key`|"`<AuthenticationKey>`"|Přepsat nebo aktualizovat předchozí ověřovací klíč Tuto akci buďte opatrní. Váš předchozí místně hostovaný uzel IR může přejít do režimu offline, pokud klíč je nového prostředí Integration runtime.|
+|`-gbf`,<br/>`-GenerateBackupFile`|"`<filePath>`" "`<password>`"|Vygeneruje záložní soubor pro aktuální uzel. Záložní soubor zahrnuje přihlašovací údaje klíče uzlu a datového úložiště.|
+|`-ibf`,<br/>`-ImportBackupFile`|"`<filePath>`" "`<password>`"|Obnovte uzel ze záložního souboru.|
+|`-r`,<br/>`-Restart`||Restartujte hostitelskou službu Integration runtime v místním prostředí.|
+|`-s`,<br/>`-Start`||Spusťte hostovanou hostitelskou službu Integration runtime.|
+|`-t`,<br/>`-Stop`||Zastavte hostitelskou službu Integration runtime v místním prostředí.|
+|`-sus`,<br/>`-StartUpgradeService`||Spusťte službu upgradu místního prostředí Integration runtime.|
+|`-tus`,<br/>`-StopUpgradeService`||Zastavte službu upgradu místního prostředí Integration runtime.|
+|`-tonau`,<br/>`-TurnOnAutoUpdate`||Zapněte automatickou aktualizaci prostředí Integration runtime pro místní hostování.|
+|`-toffau`,<br/>`-TurnOffAutoUpdate`||Vypněte automatickou aktualizaci prostředí Integration runtime pro místní hostování.|
+|`-ssa`,<br/>`-SwitchServiceAccount`|"`<domain\user>`" ["`<password>`"]|Nastavte DIAHostService tak, aby běžel jako nový účet. Pro systémové účty a virtuální účty použijte prázdné heslo.|
 
 
 ## <a name="install-and-register-a-self-hosted-ir-from-microsoft-download-center"></a>Instalace a registrace místního prostředí IR z webu Microsoft Download Center
@@ -205,9 +205,9 @@ Výchozí protokol účtu služby místního prostředí Integration runtime je 
 
 Ujistěte se, že účet má oprávnění přihlásit se jako služba. V opačném případě prostředí Integration runtime nelze úspěšně spustit. Můžete kontrolovat oprávnění v **místních zásadách zabezpečení – > nastavení zabezpečení – > místních zásad – > přiřazení uživatelských práv – > přihlášení jako služba** .
 
-![Oprávnění účtu služby](media/create-self-hosted-integration-runtime/shir-service-account-permission.png)
+![Snímek obrazovky místních zásad zabezpečení – přiřazení uživatelských práv](media/create-self-hosted-integration-runtime/shir-service-account-permission.png)
 
-![Oprávnění účtu služby](media/create-self-hosted-integration-runtime/shir-service-account-permission-2.png)
+![Snímek obrazovky s přiřazením uživatelských práv k přihlášení jako služby](media/create-self-hosted-integration-runtime/shir-service-account-permission-2.png)
 
 
 ## <a name="notification-area-icons-and-notifications"></a>Ikony a oznámení oznamovací oblasti

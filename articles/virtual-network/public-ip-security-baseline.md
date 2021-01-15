@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 8dd49125dc54403328fe53ae1aa0112ab2005501
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: d625cb8e0d0fa0f2fff55fbd41818057b7e9cb89
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201123"
+ms.locfileid: "98217647"
 ---
 # <a name="azure-security-baseline-for-azure-public-ip"></a>Základní hodnota zabezpečení Azure pro veřejnou IP adresu Azure
 
@@ -30,7 +30,7 @@ Pokud chcete zjistit, jak se veřejná IP adresa Azure kompletně mapuje na srov
 
 Azure PowerShell nebo Azure CLI je možné použít k vyhledání nebo provádění akcí s prostředky na základě jejich značek. 
 
-- [Vytváření a používání značek](/azure/azure-resource-manager/resource-group-using-tags) 
+- [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md) 
 
 - [Postup vytvoření Virtual Network Azure](quick-create-portal.md) 
 
@@ -64,7 +64,7 @@ Místo toho můžete povolit a začlenit data do Azure Sentinel nebo SIEM třet�
 
 **Pokyny**: pomocí protokolu aktivit Azure můžete monitorovat konfigurace a zjišťovat změny pro vaše veřejné instance IP. Jiná než na řídicí rovině (například Azure Portal), samotná veřejná IP adresa negeneruje protokoly auditu. Veřejná IP adresa poskytuje nástroje pro monitorování, diagnostiku, zobrazení metrik a povolení nebo zakázání protokolů pro prostředky ve službě Azure Virtual Network.
 
-- [Jak zobrazit a načíst události protokolu aktivit Azure](/azure/azure-monitor/platform/activity-log-view)
+- [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -88,7 +88,7 @@ Pomocí protokolu aktivit Azure můžete monitorovat konfigurace a zjišťovat z
 
 Veřejná IP adresa sama negeneruje protokoly týkající se síťového provozu jiného než na řídicí rovině (například Azure Portal).
 
-- [Jak zobrazit a načíst události protokolu aktivit Azure](/azure/azure-monitor/platform/activity-log-view)
+- [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -114,9 +114,9 @@ Veřejná IP adresa sama negeneruje protokoly týkající se síťového provozu
 
 V inventáři nebo dotazování předem definovaných předdefinovaných rolí Azure existují pro určité prostředky prostřednictvím nástrojů, jako je Azure CLI, Azure PowerShell nebo Azure Portal.
 
-- [Jak získat roli adresáře ve službě Azure AD pomocí PowerShellu](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [Jak získat roli adresáře ve službě Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
-- [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -128,7 +128,7 @@ V inventáři nebo dotazování předem definovaných předdefinovaných rolí A
 
 Povolený přístup za běhu pomocí Azure Active Directory (Azure AD) Privileged Identity Management (PIM) a Azure Resource Manager. 
 
-- [Další informace o Privileged Identity Management](/azure/active-directory/privileged-identity-management)
+- [Další informace o Privileged Identity Management](../active-directory/privileged-identity-management/index.yml)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -164,9 +164,9 @@ Povolený přístup za běhu pomocí Azure Active Directory (Azure AD) Privilege
 
 Zkontrolujte a vyakčníte zjišťování rizik Azure AD pro výstrahy a sestavy týkající se rizikového chování uživatelů.
 
-- [Postup nasazení Privileged Identity Management (PIM)](/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+- [Postup nasazení Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-- [Vysvětlení zjišťování rizik Azure AD](/azure/active-directory/reports-monitoring/concept-risk-events)
+- [Vysvětlení zjišťování rizik Azure AD](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -198,7 +198,7 @@ Zkontrolujte a vyakčníte zjišťování rizik Azure AD pro výstrahy a sestavy
 
 Pomocí kontrol přístupu Azure identity můžete efektivně spravovat členství ve skupinách, přístup k podnikovým aplikacím a přiřazování rolí. Přístup uživatelů je možné pravidelně kontrolovat a ujistit se, že uživatelé mají schválení a pokračování v přístupu.
 
-- [Pochopení sestav Azure AD](/azure/active-directory/reports-monitoring/)
+- [Pochopení sestav Azure AD](../active-directory/reports-monitoring/index.yml)
 
 - [Jak používat recenze Azure identity Access](../active-directory/governance/access-reviews-overview.md)
 
@@ -211,7 +211,7 @@ Pomocí kontrol přístupu Azure identity můžete efektivně spravovat členstv
 **Pokyny**: Implementujte integraci s jakýmkoli nástrojem Siem/monitoring na základě vašeho přístupu ke službě Azure Active Directory (Azure AD) pro přihlašovací aktivity, audit a zdroje protokolů událostí.
 Zjednodušte tento proces vytvořením nastavení diagnostiky pro uživatelské účty Azure AD a odesláním protokolů auditu a protokolů přihlášení do Log Analytics pracovního prostoru. Nakonfigurujte požadované výstrahy v pracovním prostoru Log Analytics. 
 
-- [Jak integrovat protokoly aktivit Azure pomocí Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Jak integrovat protokoly aktivit Azure pomocí Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -220,7 +220,7 @@ Zjednodušte tento proces vytvořením nastavení diagnostiky pro uživatelské 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3,12: upozornění na odchylku chování přihlášení k účtu
 
 **Doprovodné** materiály: použití funkcí ochrany identity Azure Active Directory (Azure AD) ke konfiguraci automatizovaných odpovědí na zjištěné podezřelé akce související s identitami uživatelů. Ingestování dat do Azure Sentinel pro další šetření podle potřeby a na základě podnikových požadavků.
-- [Zobrazení rizikových přihlášení Azure AD](/azure/active-directory/reports-monitoring/concept-risky-sign-ins) 
+- [Zobrazení rizikových přihlášení Azure AD](../active-directory/identity-protection/overview-identity-protection.md) 
 
 - [Jak nakonfigurovat a povolit zásady rizik ochrany identity](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md) 
 
@@ -242,7 +242,7 @@ I když je možné zjistit klasické prostředky Azure pomocí grafu prostředk�
 
 - [Jak vytvářet dotazy pomocí Azure Resource graphu](../governance/resource-graph/first-query-portal.md)
 
-- [Jak zobrazit vaše předplatná Azure](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [Jak zobrazit vaše předplatná Azure](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
 - [Pochopení Azure RBAC](../role-based-access-control/overview.md)
 
@@ -254,7 +254,7 @@ I když je možné zjistit klasické prostředky Azure pomocí grafu prostředk�
 
 **Doprovodné** materiály: použití značek pro prostředky Azure poskytující metadata k logickému uspořádání do taxonomie.
 
-- [Vytváření a používání značek](/azure/azure-resource-manager/resource-group-using-tags)
+- [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -269,11 +269,11 @@ Kromě toho použijte Azure Policy k omezení typu prostředků, které se dají
 - Žádné povolené typy prostředků
 - Povolené typy prostředků
 
-- [Vytvoření dalších předplatných Azure](/azure/billing/billing-create-subscription)
+- [Vytvoření dalších předplatných Azure](../cost-management-billing/manage/create-subscription.md)
 
-- [Vytvoření skupin pro správu](/azure/governance/management-groups/create)
+- [Vytvoření skupin pro správu](../governance/management-groups/create-management-group-portal.md)
 
-- [Vytváření a používání značek](/azure/azure-resource-manager/resource-group-using-tags)
+- [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -302,7 +302,7 @@ Pomocí Azure Resource Graphu se můžete dotazovat na prostředky v rámci jeji
 
 - [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](/azure/governance/policy/samples/not-allowed-resource-types)
+- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](../governance/policy/samples/index.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -350,9 +350,9 @@ Pomocí Azure Resource Graphu se můžete dotazovat na prostředky v rámci jeji
 
 **Doprovodné** materiály: Pokud používáte vlastní definice Azure Policy, použijte k bezpečnému ukládání a správě kódu službu Azure DevOps nebo Azure Repos.
 
-- [Jak v Azure DevOps ukládat kód](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [Jak v Azure DevOps ukládat kód](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-- [Dokumentace k Azure Repos](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+- [Dokumentace k Azure Repos](/azure/devops/repos/index?view=azure-devops)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -408,7 +408,7 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka a 
 
 - [Výstrahy zabezpečení ve službě Azure Security Center](../security-center/security-center-alerts-overview.md) 
 
-- [Používání značek k uspořádání prostředků Azure](/azure/azure-resource-manager/resource-group-using-tags)
+- [Používání značek k uspořádání prostředků Azure](../azure-resource-manager/management/tag-resources.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -474,5 +474,5 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka a 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Zobrazit [Srovnávací test zabezpečení Azure](/azure/security/benchmarks/overview)
-- Další informace o [základních úrovních zabezpečení Azure](/azure/security/benchmarks/security-baselines-overview)
+- Zobrazit [Srovnávací test zabezpečení Azure](../security/benchmarks/overview.md)
+- Další informace o [základních úrovních zabezpečení Azure](../security/benchmarks/security-baselines-overview.md)

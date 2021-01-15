@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/02/2019
 ms.author: rimayber
 ms.reviewer: dgoddard, stegag, steveesp, minale, btalb, prachank
-ms.openlocfilehash: 67b635f09cb9407279e89b5f7b8526dab3c08946
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1f6abbf68d4f648aeee6c025800f24140c9459e9
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017606"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219313"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>Ladění výkonu protokolu TCP/IP pro virtuální počítače Azure
 
@@ -89,7 +89,7 @@ Zákazníkům nedoporučujeme zvyšovat jednotky MTU virtuálních počítačů.
 
 #### <a name="large-send-offload"></a>Velké přesměrování odesílání
 
-Vysoké snižování zátěže (IEEE) může zlepšit výkon sítě snižováním zátěže segmentů paketů na adaptér sítě Ethernet. Pokud je povolený IEEE, vytvoří zásobník protokolu TCP/IP velký paket TCP a pošle ho do adaptéru Ethernet pro segmentaci před přesměrováním. Výhodou přesměrování je to, že může uvolnit procesor z segmentace paketů do velikosti, které odpovídají jednotce MTU, a přesměrovat zpracování na rozhraní sítě Ethernet, kde se provádí v hardwaru. Další informace o výhodách IEEE najdete v tématu [Podpora většího snižování zátěže](https://docs.microsoft.com/windows-hardware/drivers/network/performance-in-network-adapters#supporting-large-send-offload-lso).
+Vysoké snižování zátěže (IEEE) může zlepšit výkon sítě snižováním zátěže segmentů paketů na adaptér sítě Ethernet. Pokud je povolený IEEE, vytvoří zásobník protokolu TCP/IP velký paket TCP a pošle ho do adaptéru Ethernet pro segmentaci před přesměrováním. Výhodou přesměrování je to, že může uvolnit procesor z segmentace paketů do velikosti, které odpovídají jednotce MTU, a přesměrovat zpracování na rozhraní sítě Ethernet, kde se provádí v hardwaru. Další informace o výhodách IEEE najdete v tématu [Podpora většího snižování zátěže](/windows-hardware/drivers/network/performance-in-network-adapters#supporting-large-send-offload-lso).
 
 Když je přípravek povolený, můžou zákazníci Azure při provádění zachycení paketů zobrazovat velké velikosti snímků. Tyto velké velikosti snímků můžou vést k tomu, že někteří zákazníci dostanou fragmentaci nebo že se používá velká jednotka MTU, pokud není. Pomocí technologie IEEE může adaptér sítě Ethernet inzerovat větší maximální velikost segmentu (MSS) do zásobníku protokolu TCP/IP a vytvořit tak větší paket TCP. Celý nesegmentující rámec se pak přepošle na adaptér Ethernet a bude viditelný v zachytávání paketů provedeném na virtuálním počítači. Paket se ale bude rozdělit do několika menších snímků, a to na základě MTU adaptéru Ethernet.
 
@@ -117,7 +117,7 @@ Proces PMTUD je neefektivní a má vliv na výkon sítě. Po odeslání paketů,
 
 Pokud používáte virtuální počítače, které provádějí zapouzdření (například sítě VPN IPsec), existují další požadavky týkající se velikosti paketů a jednotky MTU. Sítě VPN přidávají k paketům další hlavičky, které zvyšují velikost paketů a vyžadují menší hodnotu MSS.
 
-V případě Azure doporučujeme, abyste nastavili připojení TCP MSS k 1 350 bajtů a MTU rozhraní pro tunelové připojení na 1 400. Další informace naleznete na [stránce zařízení VPN a parametry protokolu IPSec/IKE](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices).
+V případě Azure doporučujeme, abyste nastavili připojení TCP MSS k 1 350 bajtů a MTU rozhraní pro tunelové připojení na 1 400. Další informace naleznete na [stránce zařízení VPN a parametry protokolu IPSec/IKE](../vpn-gateway/vpn-gateway-about-vpn-devices.md).
 
 ### <a name="latency-round-trip-time-and-tcp-window-scaling"></a>Doba odezvy, doba odezvy a škálování okna protokolu TCP
 
@@ -210,7 +210,7 @@ Get-NetTCPConnection
 Get-NetTCPSetting
 ```
 
-Počáteční velikost okna TCP a faktor škálování TCP v systému Windows můžete nastavit pomocí `Set-NetTCPSetting` příkazu prostředí PowerShell. Další informace najdete v tématu  [set-NetTCPSetting](https://docs.microsoft.com/powershell/module/nettcpip/set-nettcpsetting?view=win10-ps).
+Počáteční velikost okna TCP a faktor škálování TCP v systému Windows můžete nastavit pomocí `Set-NetTCPSetting` příkazu prostředí PowerShell. Další informace najdete v tématu  [set-NetTCPSetting](/powershell/module/nettcpip/set-nettcpsetting?view=win10-ps).
 
 ```powershell
 Set-NetTCPSetting
@@ -253,13 +253,13 @@ Urychlené síťové funkce zvyšují výkon tím, že virtuálnímu počítači
 
 - **Snížení využití CPU**: obejít virtuální přepínač v hostiteli vede k menšímu využití procesoru při zpracování síťového provozu.
 
-Pokud chcete používat urychlené síťové služby, musíte je explicitně povolit na každém příslušném virtuálním počítači. Pokyny najdete v tématu [Vytvoření virtuálního počítače se systémem Linux s akcelerovanými síťovými](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) službami.
+Pokud chcete používat urychlené síťové služby, musíte je explicitně povolit na každém příslušném virtuálním počítači. Pokyny najdete v tématu [Vytvoření virtuálního počítače se systémem Linux s akcelerovanými síťovými](./create-vm-accelerated-networking-cli.md) službami.
 
 #### <a name="receive-side-scaling"></a>Škálování na straně příjmu
 
-Škálování na straně příjmu (RSS) je technologie síťového ovladače, která distribuuje příjem síťového provozu efektivněji distribucí procesu příjmu mezi více procesorů v systému s více procesory. Technologie RSS v jednoduchém smyslu umožňuje systému zpracovat více přijímaných přenosů, protože používá všechny dostupné procesory, nikoli jenom jeden. Další technické diskuzi o technologii RSS najdete v tématu [Úvod do škálování na straně příjmu](https://docs.microsoft.com/windows-hardware/drivers/network/introduction-to-receive-side-scaling).
+Škálování na straně příjmu (RSS) je technologie síťového ovladače, která distribuuje příjem síťového provozu efektivněji distribucí procesu příjmu mezi více procesorů v systému s více procesory. Technologie RSS v jednoduchém smyslu umožňuje systému zpracovat více přijímaných přenosů, protože používá všechny dostupné procesory, nikoli jenom jeden. Další technické diskuzi o technologii RSS najdete v tématu [Úvod do škálování na straně příjmu](/windows-hardware/drivers/network/introduction-to-receive-side-scaling).
 
-Pokud chcete získat nejlepší výkon, když je na virtuálním počítači povolené urychlené síťové služby, je potřeba povolit RSS. RSS může také poskytovat výhody pro virtuální počítače, které nevyužívají urychlené síťové služby. Přehled toho, jak zjistit, jestli je povolený RSS a jak ho povolit, najdete v tématu [optimalizace propustnosti sítě pro virtuální počítače Azure](https://aka.ms/FastVM).
+Pokud chcete získat nejlepší výkon, když je na virtuálním počítači povolené urychlené síťové služby, je potřeba povolit RSS. RSS může také poskytovat výhody pro virtuální počítače, které nevyužívají urychlené síťové služby. Přehled toho, jak zjistit, jestli je povolený RSS a jak ho povolit, najdete v tématu [optimalizace propustnosti sítě pro virtuální počítače Azure](./virtual-network-optimize-network-bandwidth.md).
 
 ### <a name="tcp-time_wait-and-time_wait-assassination"></a>TIME_WAIT TCP a TIME_WAIT Assassination
 
@@ -271,7 +271,7 @@ Hodnota pro rozsah portů pro odchozí sokety je obvykle konfigurovatelná v zá
 
 K vyřešení tohoto omezení škálování můžete použít TIME_WAIT Assassination. TIME_WAIT Assassination umožňuje znovu použít soket v určitých situacích, například když pořadové číslo v paketu IP nového připojení přesáhne pořadové číslo posledního paketu z předchozího připojení. V takovém případě bude operační systém umožňovat navázání nového připojení (přijme novou hodnotu SYN/ACK) a vynutí zavření předchozího připojení, které bylo ve stavu TIME_WAIT. Tato funkce se podporuje na virtuálních počítačích s Windows v Azure. Pokud se chcete dozvědět o podpoře jiných virtuálních počítačů, obraťte se na dodavatele operačního systému.
 
-Další informace o konfiguraci nastavení TIME_WAIT TCP a rozsahu zdrojových portů najdete v tématu [nastavení, která je možné upravit za účelem zlepšení výkonu sítě](https://docs.microsoft.com/biztalk/technical-guides/settings-that-can-be-modified-to-improve-network-performance).
+Další informace o konfiguraci nastavení TIME_WAIT TCP a rozsahu zdrojových portů najdete v tématu [nastavení, která je možné upravit za účelem zlepšení výkonu sítě](/biztalk/technical-guides/settings-that-can-be-modified-to-improve-network-performance).
 
 ## <a name="virtual-network-factors-that-can-affect-performance"></a>Faktory virtuální sítě, které mohou ovlivnit výkon
 
@@ -287,7 +287,7 @@ Akcelerované síťové služby jsou navržené tak, aby vylepšily výkon sít�
 
 Virtuální počítače Azure mají k těmto počítačům připojené aspoň jedno síťové rozhraní. Můžou mít několik. Šířka pásma přidělená virtuálnímu počítači je součet všech odchozích přenosů napříč všemi síťovými rozhraními připojenými k počítači. Jinými slovy, Šířka pásma se přiděluje na základě jednotlivých virtuálních počítačů bez ohledu na to, kolik síťových rozhraní je k počítači připojené.
 
-Očekávaná odchozí propustnost a počet síťových rozhraní podporovaných jednotlivými velikostmi virtuálních počítačů jsou podrobně popsány v části [velikosti pro virtuální počítače s Windows v Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json). Chcete-li zobrazit maximální propustnost, vyberte typ, například **obecný účel**, a pak vyhledejte část o řadě velikostí na výsledné stránce (například "Dv2-Series"). Pro každou řadu je k dispozici tabulka, která poskytuje specifikace sítě v posledním sloupci s názvem "maximální počet síťových adaptérů/očekávaná šířka pásma sítě (MB/s)".
+Očekávaná odchozí propustnost a počet síťových rozhraní podporovaných jednotlivými velikostmi virtuálních počítačů jsou podrobně popsány v části [velikosti pro virtuální počítače s Windows v Azure](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Chcete-li zobrazit maximální propustnost, vyberte typ, například **obecný účel**, a pak vyhledejte část o řadě velikostí na výsledné stránce (například "Dv2-Series"). Pro každou řadu je k dispozici tabulka, která poskytuje specifikace sítě v posledním sloupci s názvem "maximální počet síťových adaptérů/očekávaná šířka pásma sítě (MB/s)".
 
 Limit propustnosti se vztahuje na virtuální počítač. Propustnost není ovlivněná těmito faktory:
 
@@ -299,7 +299,7 @@ Limit propustnosti se vztahuje na virtuální počítač. Propustnost není ovli
 
 - **Protokol**: veškerý odchozí provoz ve všech protokolech počítá směrem k limitu.
 
-Další informace najdete v tématu [Šířka pásma sítě virtuálních počítačů](https://aka.ms/AzureBandwidth).
+Další informace najdete v tématu [Šířka pásma sítě virtuálních počítačů](./virtual-machine-network-throughput.md).
 
 ### <a name="internet-performance-considerations"></a>Požadavky na výkon Internetu
 
@@ -333,7 +333,7 @@ Nasazení v Azure může komunikovat s koncovými body mimo Azure na veřejném 
 
 Pro každé odchozí připojení Azure Load Balancer potřebuje toto mapování spravovat po určitou dobu. S využitím víceklientské architektury Azure je udržování tohoto mapování pro každý výstupní tok každého virtuálního počítače náročné na prostředky. Existují však omezení nastavená a založená na konfiguraci Virtual Network Azure. Nebo pokud chcete přesněji říci, že virtuální počítač Azure může v daném okamžiku provádět jenom určitý počet odchozích připojení. Po dosažení tohoto limitu nebude moct virtuální počítač vytvořit další odchozí připojení.
 
-Toto chování je ale možné nakonfigurovat. Další informace o vyčerpání portů SNAT a SNAT najdete v [tomto článku](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections).
+Toto chování je ale možné nakonfigurovat. Další informace o vyčerpání portů SNAT a SNAT najdete v [tomto článku](../load-balancer/load-balancer-outbound-connections.md).
 
 ## <a name="measure-network-performance-on-azure"></a>Měření výkonu sítě v Azure
 
@@ -341,13 +341,13 @@ Množství maximálního výkonu v tomto článku se vztahuje na latenci sítě/
 
 ### <a name="measure-round-trip-time-and-packet-loss"></a>Měření doby odezvy a ztráty paketů
 
-Výkon protokolu TCP se intenzivně spoléhá na čas RTT a ztrátu paketů. Nástroj pro odesílání informací v systému Windows a Linux poskytuje nejjednodušší způsob, jak změřit čas a ztrátu paketů. Výstupem nástroje test dat se zobrazí latence minimální/maximální/průměrné doby mezi zdrojem a cílem. Zobrazí se také ztráta paketů. Ve výchozím nastavení používá nástroj test protokolu ICMP protokol ICMP. Pomocí PsPing můžete testovat čas RTT protokolu TCP. Další informace najdete v tématu [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping).
+Výkon protokolu TCP se intenzivně spoléhá na čas RTT a ztrátu paketů. Nástroj pro odesílání informací v systému Windows a Linux poskytuje nejjednodušší způsob, jak změřit čas a ztrátu paketů. Výstupem nástroje test dat se zobrazí latence minimální/maximální/průměrné doby mezi zdrojem a cílem. Zobrazí se také ztráta paketů. Ve výchozím nastavení používá nástroj test protokolu ICMP protokol ICMP. Pomocí PsPing můžete testovat čas RTT protokolu TCP. Další informace najdete v tématu [PsPing](/sysinternals/downloads/psping).
 
 ### <a name="measure-actual-throughput-of-a-tcp-connection"></a>Měření skutečné propustnosti připojení TCP
 
 NTttcp je nástroj pro testování výkonu protokolu TCP pro Linux nebo virtuální počítač s Windows. Můžete změnit různá nastavení TCP a pak testovat výhody pomocí NTttcp. Další informace najdete v těchto zdrojích:
 
-- [Testování šířky pásma a propustnosti (NTttcp)](https://aka.ms/TestNetworkThroughput)
+- [Testování šířky pásma a propustnosti (NTttcp)](./virtual-network-bandwidth-testing.md)
 
 - [Nástroj NTttcp](https://gallery.technet.microsoft.com/NTttcp-Version-528-Now-f8b12769)
 
@@ -357,9 +357,9 @@ Pomocí nástroje s názvem iPerf můžete testovat výkon různých typů virtu
 
 Další informace najdete v těchto článcích:
 
-- [Řešení potíží s výkonem ExpressRoute sítě](https://docs.microsoft.com/azure/expressroute/expressroute-troubleshooting-network-performance)
+- [Řešení potíží s výkonem ExpressRoute sítě](../expressroute/expressroute-troubleshooting-network-performance.md)
 
-- [Ověření propustnosti sítě VPN do virtuální sítě](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-validate-throughput-to-vnet)
+- [Ověření propustnosti sítě VPN do virtuální sítě](../vpn-gateway/vpn-gateway-validate-throughput-to-vnet.md)
 
 ### <a name="detect-inefficient-tcp-behaviors"></a>Zjištění neefektivních chování protokolu TCP
 
@@ -371,4 +371,4 @@ Tyto typy paketů jsou pořád označením, že propustnost TCP nedosahuje maxim
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste se seznámili s optimalizací výkonu protokolu TCP/IP pro virtuální počítače Azure, si můžete přečíst další informace o [Plánování virtuálních sítí](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm) nebo další [informace o připojení a konfiguraci virtuálních sítí](https://docs.microsoft.com/azure/virtual-network/).
+Teď, když jste se seznámili s optimalizací výkonu protokolu TCP/IP pro virtuální počítače Azure, si můžete přečíst další informace o [Plánování virtuálních sítí](./virtual-network-vnet-plan-design-arm.md) nebo další [informace o připojení a konfiguraci virtuálních sítí](./index.yml).

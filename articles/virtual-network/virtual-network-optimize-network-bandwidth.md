@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/06/2020
 ms.author: steveesp
-ms.openlocfilehash: a9db2bcc0b44dfb6146517de8a139f34cd8584af
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: bb9235f4d1190bf7f71ddc007f09c9666c353234
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654451"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216797"
 ---
 # <a name="optimize-network-throughput-for-azure-virtual-machines"></a>Optimalizace propustnosti sítě pro virtuální počítače Azure
 
@@ -152,7 +152,7 @@ sudo ./install.sh #or upgrade.sh if prior LIS was previously installed
 Další informace o integračních službách Linux verze 4,2 pro Hyper-V najdete na [stránce pro stažení](https://www.microsoft.com/download/details.aspx?id=55106).
 
 ## <a name="next-steps"></a>Další kroky
-* Nasazení virtuálních počítačů blízko sebe navzájem pro nízkou latenci se [skupinou umístění blízkosti](../virtual-machines/windows/co-location.md)
+* Nasazení virtuálních počítačů blízko sebe navzájem pro nízkou latenci se [skupinou umístění blízkosti](../virtual-machines/co-location.md)
 * Podívejte se na optimalizovaný výsledek s [testováním šířky pásma a propustnosti virtuálního počítače Azure](virtual-network-bandwidth-testing.md) pro váš scénář.
 * Přečtěte si o tom [, jak je šířka pásma přidělena virtuálním počítačům](virtual-machine-network-throughput.md) .
 * Další informace o [nejčastějších dotazech k Azure Virtual Network (FAQ)](virtual-networks-faq.md)

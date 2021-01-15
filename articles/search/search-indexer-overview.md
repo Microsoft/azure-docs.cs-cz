@@ -9,18 +9,18 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/11/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 0405db2b68abefbfdc424def9e35e363e45043cd
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 5861e79054bed0d9d75258dfa9cb39b198f0f93d
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98180128"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216440"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Indexery ve službě Azure Cognitive Search
 
 *Indexer* ve službě Azure kognitivní hledání je prohledávací modul, který extrahuje hledaná data a metadata z externího zdroje dat Azure a naplní index vyhledávání pomocí mapování polí mezi zdrojovými daty a vaším indexem. Tento přístup se někdy označuje jako "pull model", protože služba získává data v, aniž byste museli psát kód, který do indexu přidává data.
 
-Indexery jsou jenom Azure a jednotlivé indexery pro Azure SQL, Azure Cosmos DB, Azure Table Storage a Blob Storage. Při konfiguraci indexeru zadáte zdroj dat (počátek) a také index (cíl). Několik zdrojů dat, jako jsou indexery služby Blob Storage, mají další vlastnosti specifické pro daný typ obsahu.
+Indexery jsou jenom Azure a jednotlivé indexery pro [Azure SQL](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md), [Azure Cosmos DB](search-howto-index-cosmosdb.md), [Azure Table Storage](search-howto-indexing-azure-tables.md) a [BLOB Storage](search-howto-indexing-azure-blob-storage.md). Při konfiguraci indexeru zadáte zdroj dat (počátek) a také index (cíl). Několik zdrojů, jako je BLOB Storage, má další konfigurační vlastnosti, které jsou specifické pro daný typ obsahu.
 
 Indexery můžete spouštět na vyžádání nebo podle plánu opakované aktualizace dat, který se spouští tak často, jak každých pět minut. Častější aktualizace vyžadují model nabízených oznámení, který současně aktualizuje data v Kognitivní hledání Azure i v externím zdroji dat.
 
@@ -28,11 +28,11 @@ Indexery můžete spouštět na vyžádání nebo podle plánu opakované aktual
 
 Indexer můžete použít jako jediný způsob příjmu dat, nebo můžete použít kombinaci technik, které zahrnují načítání pouze některých polí v indexu, volitelně transformovat nebo rozšířit obsah na cestě. Následující tabulka shrnuje hlavní scénáře.
 
-| Scenario |Strategie |
+| Scénář |Strategie |
 |----------|---------|
 | Jeden zdroj | Tento model je nejjednodušší: jeden zdroj dat je jediným poskytovatelem obsahu pro index vyhledávání. Ze zdroje určíte jedno pole obsahující jedinečné hodnoty, které bude sloužit jako klíč dokumentu v indexu vyhledávání. Jedinečná hodnota bude použita jako identifikátor. Všechna ostatní zdrojová pole jsou namapována implicitně nebo explicitně na odpovídající pole v indexu. </br></br>Důležitou poznatkem je, že hodnota klíče dokumentu pochází ze zdrojových dat. Vyhledávací služba negeneruje klíčové hodnoty. Při dalších spuštěních se přidají příchozí dokumenty s novými klíči, zatímco příchozí dokumenty s existujícími klíči se buď sloučí, nebo přepíší, v závislosti na tom, jestli jsou indexová pole null nebo naplněná. |
-| Více zdrojů| Index může přijímat obsah z více zdrojů, kde každé spuštění přináší nový obsah z jiného zdroje. </br></br>Jedním z výsledků může být index, který po spuštění každého indexeru získává dokumenty, přičemž všechny dokumenty jsou zcela vytvořené z každého zdroje. Výzvou k tomuto scénáři spočívá v návrhu schématu indexu, který funguje pro všechna příchozí data, a klíč dokumentu, který je v indexu vyhledávání jednotný. Například pokud jsou hodnoty, které jednoznačně identifikují dokument, metadata_storage_path v kontejneru objektů BLOB a v primárním klíči v tabulce SQL, můžete si představit, že jeden nebo oba zdroje musí být upraveny tak, aby poskytovaly klíčové hodnoty ve společném formátu bez ohledu na původ obsahu. V tomto scénáři byste měli očekávat, že provedete určitou úroveň předběžného zpracování, aby se data homogenizuje, aby bylo možné je načíst do jediného indexu.</br></br>Alternativním výsledkem může být hledání dokumentů, které se částečně vyplňují při prvním spuštění, a potom se dále vyplní následnými běhy, aby se hodnoty z jiných zdrojů vyplnily. Výzvou k tomuto vzoru se zajistí, že každý běh indexování bude cílen na stejný dokument. Sloučení polí do existujícího dokumentu vyžaduje shodu s klíčem dokumentu. Ukázku tohoto scénáře najdete v tématu [kurz: index z více zdrojů dat](tutorial-multiple-data-sources.md). |
-| Transformace obsahu | Kognitivní hledání podporuje volitelná chování [rozšíření AI](cognitive-search-concept-intro.md) , která přidávají analýzu obrázků a zpracování přirozeného jazyka pro vytváření nových prohledávatelných obsahu a struktury. Rozšíření AI je definované [dovednosti](cognitive-search-working-with-skillsets.md), připojené k indexeru. Aby bylo možné provést obohacení AI, indexer stále potřebuje index a zdroj dat, ale v tomto scénáři přidá zpracování dovednosti do indexeru. |
+| Více zdrojů| Index může přijímat obsah z více zdrojů, kde každé spuštění přináší nový obsah z jiného zdroje. </br></br>Jedním z výsledků může být index, který po spuštění každého indexeru získává dokumenty, přičemž všechny dokumenty jsou zcela vytvořené z každého zdroje. Například dokumenty 1-100 se nacházejí v úložišti objektů blob, dokumenty 101-200 jsou z Azure SQL a tak dále. Výzvou k tomuto scénáři spočívá v navrhování schématu indexu, který funguje pro všechna příchozí data, a strukturu klíčů dokumentu, která je v indexu vyhledávání jednotná. Nativně jsou hodnoty, které jedinečně identifikují dokument, metadata_storage_path v kontejneru objektů BLOB a v primárním klíči v tabulce SQL. Můžete si představit, že jeden nebo oba zdroje musí být upraveny tak, aby poskytovaly klíčové hodnoty ve společném formátu bez ohledu na původ obsahu. V tomto scénáři byste měli očekávat, že provedete určitou úroveň předběžného zpracování, aby se data homogenizuje, aby bylo možné je načíst do jediného indexu.</br></br>Alternativním výsledkem může být hledání dokumentů, které se částečně vyplňují při prvním spuštění, a potom se dále vyplní následnými běhy, aby se hodnoty z jiných zdrojů vyplnily. Například pole 1-10 se nacházejí v úložišti objektů blob, 11-20 z Azure SQL a tak dále. Výzvou k tomuto vzoru se zajistí, že každý běh indexování bude cílen na stejný dokument. Sloučení polí do existujícího dokumentu vyžaduje shodu s klíčem dokumentu. Ukázku tohoto scénáře najdete v tématu [kurz: index z více zdrojů dat](tutorial-multiple-data-sources.md). |
+| Transformace obsahu | Kognitivní hledání podporuje volitelná chování [rozšíření AI](cognitive-search-concept-intro.md) , která přidávají analýzu obrázků a zpracování přirozeného jazyka pro vytváření nových prohledávatelných obsahu a struktury. Rozšíření AI je založené na indexerech prostřednictvím připojeného [dovednosti](cognitive-search-working-with-skillsets.md). Aby bylo možné provést obohacení AI, indexer stále potřebuje index a zdroj dat, ale v tomto scénáři přidá zpracování dovednosti do indexeru. |
 
 ## <a name="approaches-for-creating-and-managing-indexers"></a>Přístupy k vytváření a správě indexerů
 
@@ -92,9 +92,9 @@ Dovednosti provádění je volitelný krok, který vyvolá integrované nebo vla
 
 ### <a name="stage-4-output-field-mappings"></a>Fáze 4: mapování polí výstupu
 
-Výstupem dovednosti je ve skutečnosti strom informací nazývaný obohacený dokument. Mapování polí pro výstup umožňují vybrat, které části tohoto stromu mají být namapovány na pole v indexu. Přečtěte si, jak [definovat mapování polí pro výstup](cognitive-search-output-field-mapping.md).
+Pokud zahrnete dovednosti, pravděpodobně budete muset zahrnout mapování polí výstupu. Výstupem dovednosti je ve skutečnosti strom informací nazývaný obohacený dokument. Mapování polí pro výstup umožňují vybrat, které části tohoto stromu mají být namapovány na pole v indexu. Přečtěte si, jak [definovat mapování polí pro výstup](cognitive-search-output-field-mapping.md).
 
-Stejně jako u mapování polí, která přidružuje doslovné hodnoty ze zdrojového do cílového pole, mapování polí výstupu říká indexeru, jak přidružit transformované hodnoty v rozšířeném dokumentu na cílová pole v indexu. Na rozdíl od mapování polí, která jsou považována za volitelnou, bude vždy nutné definovat mapování polí pro libovolný transformovaný obsah, který se musí nacházet v indexu.
+Vzhledem k tomu, že mapování polí přiřadí doslovné hodnoty ze zdroje dat do cílových polí, mapování polí výstupu sděluje indexeru, jak přidružit transformované hodnoty v rozšířeném dokumentu na cílová pole v indexu. Na rozdíl od mapování polí, která jsou považována za volitelnou, bude vždy nutné definovat mapování polí pro libovolný transformovaný obsah, který se musí nacházet v indexu.
 
 Následující obrázek ukazuje vzorový indexer [relace ladění](cognitive-search-debug-session.md) fází indexeru: trhliny dokumentů, mapování polí, provádění dovednosti a mapování výstupních polí.
 

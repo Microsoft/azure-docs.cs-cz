@@ -11,18 +11,18 @@ ms.topic: how-to
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
-ms.date: 04/19/2020
-ms.openlocfilehash: 480e9f9031481621ac9d568a7bd97b942f47b947
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 1/14/2021
+ms.openlocfilehash: b87d0a2446eb2b65c20ae0bef408320686cb5165
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96493636"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219126"
 ---
 # <a name="monitoring-microsoft-azure-sql-database-and-azure-sql-managed-instance-performance-using-dynamic-management-views"></a>Monitorování výkonu služeb Microsoft Azure SQL Database a Azure SQL Managed Instance s využitím zobrazení dynamické správy
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Microsoft Azure SQL Database a Azure SQL Managed instance umožňují podmnožinu zobrazení dynamické správy pro diagnostiku problémů s výkonem, což může být způsobeno blokovanými nebo dlouhotrvajícími dotazy, kritickými body prostředků, špatnými plány dotazů a tak dále. Toto téma poskytuje informace o tom, jak zjistit běžné problémy s výkonem pomocí zobrazení dynamické správy.
+Microsoft Azure SQL Database a Azure SQL Managed instance umožňují podmnožinu zobrazení dynamické správy pro diagnostiku problémů s výkonem, což může být způsobeno blokovanými nebo dlouhotrvajícími dotazy, kritickými body prostředků, špatnými plány dotazů a tak dále. Tento článek poskytuje informace o tom, jak zjistit běžné problémy s výkonem pomocí zobrazení dynamické správy.
 
 Microsoft Azure SQL Database a Azure SQL Managed instance částečně podporují tři kategorie zobrazení dynamické správy:
 
@@ -254,12 +254,12 @@ GO
 
 Při identifikaci problémů s výkonem v/v jsou hlavní typy čekání přidružené k `tempdb` problémům `PAGELATCH_*` (ne `PAGEIOLATCH_*` ). Čekání ale `PAGELATCH_*` vždy znamená, že máte `tempdb` spory.  Toto čekání může také znamenat, že kvůli souběžným požadavkům, které cílí na stejnou stránku dat, dochází na stránce dat ke kolizím uživatelských objektů. Chcete-li dále ověřit kolize `tempdb` , pomocí [Sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) potvrďte, že hodnota wait_resource začíná na, `2:x:y` kde 2 je `tempdb` ID databáze, `x` je ID souboru a `y` ID stránky.  
 
-Pro kolize databáze tempdb je běžnou metodou snížit nebo znovu napsat kód aplikace, který závisí na `tempdb` .  `tempdb`Mezi běžné oblasti využití patří:
+Pro kolize databáze tempdb je běžnou metodou snížit nebo přepsat kód aplikace, který závisí na `tempdb` .  `tempdb`Mezi běžné oblasti využití patří:
 
 - Dočasné tabulky
 - Proměnné tabulek
 - Parametry vracející tabulku
-- Použití úložiště verzí (zejména v případě dlouhotrvajících transakcí)
+- Využití úložiště verzí (spojené s dlouhými běžícími transakcemi)
 - Dotazy s plány dotazů, které využívají řazení, hash spojení a zařazování
 
 ### <a name="top-queries-that-use-table-variables-and-temporary-tables"></a>Nejčastější dotazy, které používají proměnné tabulky a dočasné tabulky
@@ -563,14 +563,14 @@ SELECT resource_name, AVG(avg_cpu_percent) AS Average_Compute_Utilization
 FROM sys.server_resource_stats
 WHERE start_time BETWEEN @s AND @e  
 GROUP BY resource_name  
-HAVING AVG(avg_cpu_percent) >= 80
+HAVING AVG(avg_cpu_percent) >= 80;
 ```
 
 ### <a name="sysresource_stats"></a>sys.resource_stats
 
 Zobrazení [Sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) v **hlavní** databázi obsahuje další informace, které vám pomůžou monitorovat výkon databáze na konkrétní úrovni služby a výpočetní velikosti. Data se shromažďují každých 5 minut a uchovávají se po dobu přibližně 14 dnů. Toto zobrazení je užitečné pro dlouhodobé historické analýzy způsobu, jakým vaše databáze používá prostředky.
 
-Následující graf ukazuje využití prostředků procesoru pro databázi Premium s výpočetní velikostí P2 pro každou hodinu v týdnu. Tento graf začíná v pondělí, zobrazuje 5 pracovních dnů a pak zobrazuje víkend, pokud je aplikace mnohem méně nastává.
+Následující graf ukazuje využití prostředků procesoru pro databázi Premium s výpočetní velikostí P2 pro každou hodinu v týdnu. Tento graf začíná v pondělí, zobrazuje pět pracovních dnů a pak zobrazuje víkend, pokud je aplikace mnohem méně nastává.
 
 ![Použití databázového prostředku](./media/monitoring-with-dmvs/sql_db_resource_utilization.png)
 
@@ -578,7 +578,7 @@ Z dat má tato databáze v současné době zatížení CPU ve špičce přesně
 
 Jiné typy aplikací mohou interpretovat stejný graf odlišně. Například pokud se aplikace pokusí zpracovat data mzdy každý den a má stejný graf, tento druh modelu "batch job" může na výpočetní úrovni P1 dělat přesně. Výpočetní velikost P1 má 100 DTU ve srovnání s 200 DTU na výpočetní úrovni P2. Výpočetní velikost P1 poskytuje poloviční výkon výpočetní velikosti P2. Takže 50% využití procesoru v P2 se rovná 100% využití CPU v P1. Pokud aplikace nemá vypršení časových limitů, může to být bez ohledu na to, jestli úloha trvá 2 hodiny nebo 2,5 hodin, pokud se k tomu ještě nejedná. Aplikace v této kategorii pravděpodobně může používat výpočetní velikost P1. Můžete využít výhod faktu, že během dne jsou k dispozici časová období, kdy je využití prostředků nižší, aby se v jednom z nich později v daném dni mohly přebírat jakékoli "velké špičky". Výpočetní velikost P1 může být pro tento druh aplikace dobrá (a ušetřit tak peníze), pokud úlohy můžou být dokončeny včas každý den.
 
-Databázový stroj zveřejňuje spotřebované informace o prostředcích pro každou aktivní **sys.resource_stats** databázi v zobrazení sys.resource_stats **hlavní** databáze na každém serveru. Data v tabulce jsou agregována do intervalu 5 minut. V případě úrovní služeb Basic, Standard a Premium může tato data trvat více než 5 minut, než se v tabulce zobrazí, takže tato data jsou užitečnější pro historická analýzy, nikoli téměř v reálném čase. Dotaz na zobrazení **Sys.resource_stats** , abyste viděli poslední historii databáze a ověřili, jestli vámi zvolená rezervace dodala požadovaný výkon v případě potřeby.
+Databázový stroj zveřejňuje spotřebované informace o prostředcích pro každou aktivní  databázi v zobrazení sys.resource_stats **hlavní** databáze na každém serveru. Data v tabulce jsou agregována do intervalu 5 minut. V případě úrovní služeb Basic, Standard a Premium může tato data trvat více než 5 minut, než se v tabulce zobrazí, takže tato data jsou užitečnější pro historická analýzy, nikoli téměř v reálném čase. Dotaz na zobrazení **Sys.resource_stats** , abyste viděli poslední historii databáze a ověřili, jestli vámi zvolená rezervace dodala požadovaný výkon v případě potřeby.
 
 > [!NOTE]
 > V Azure SQL Database musíte být připojeni k **Hlavní** databázi, abyste mohli dotazovat **Sys.resource_stats** v následujících příkladech.
@@ -589,7 +589,7 @@ V tomto příkladu se dozvíte, jak jsou data v tomto zobrazení vystavena:
 SELECT TOP 10 *
 FROM sys.resource_stats
 WHERE database_name = 'resource1'
-ORDER BY start_time DESC
+ORDER BY start_time DESC;
 ```
 
 ![Zobrazení katalogu sys.resource_stats](./media/monitoring-with-dmvs/sys_resource_stats.png)
@@ -624,7 +624,7 @@ Následující příklad ukazuje různé způsoby, jak můžete použít zobraze
     WHERE database_name = 'userdb1' AND start_time > DATEADD(day, -7, GETDATE());
     ```
 
-3. Pomocí těchto informací o průměrných a maximálních hodnotách každé metriky prostředků můžete vyhodnotit, jak dobře se vaše zatížení vejde do vybrané výpočetní velikosti. Průměrné hodnoty z **Sys.resource_stats** obvykle poskytují dobrý základ pro použití s cílovou velikostí. Měl by to být vaše primární měření. Například můžete používat standardní úroveň služby s výpočetní velikostí S2. Průměrné procentuální hodnoty použití pro čtení a čtení v CPU a vstupně-výstupních operacích jsou nižší než 40%, průměrný počet pracovních procesů je pod 50 a průměrný počet relací je pod 200. Vaše úlohy se můžou vejít do výpočetní velikosti S1. Můžete snadno zjistit, jestli vaše databáze odpovídá omezením pracovních procesů a relací. Pokud chcete zjistit, jestli databáze zapadá do nižší výpočetní velikosti s ohledem na PROCESORy, čtení a zápisy, vydělte číslo DTU nižší výpočetní velikosti číslem DTU aktuální velikosti a pak výsledek vynásobte 100:
+3. Pomocí těchto informací o průměrných a maximálních hodnotách každé metriky prostředků můžete vyhodnotit, jak dobře se vaše zatížení vejde do vybrané výpočetní velikosti. Průměrné hodnoty z **Sys.resource_stats** obvykle poskytují dobrý základ pro použití s cílovou velikostí. Měl by to být vaše primární měření. Například můžete používat standardní úroveň služby s výpočetní velikostí S2. Průměrné procentuální hodnoty použití pro čtení a čtení v CPU a vstupně-výstupních operacích jsou nižší než 40%, průměrný počet pracovních procesů je pod 50 a průměrný počet relací je pod 200. Vaše úlohy se můžou vejít do výpočetní velikosti S1. Můžete snadno zjistit, jestli vaše databáze odpovídá omezením pracovních procesů a relací. Pokud chcete zjistit, jestli databáze zapadá do nižší výpočetní velikosti s ohledem na procesor, čtení a zápisy, vydělte číslo DTU nižší výpočetní velikosti číslem DTU aktuální velikosti a pak výsledek vynásobte 100:
 
     `S1 DTU / S2 DTU * 100 = 20 / 50 * 100 = 40`
 
@@ -699,7 +699,7 @@ Pokud chcete zobrazit počet aktuálních aktivních relací, spusťte tento dot
 
 ```sql
 SELECT COUNT(*) AS [Sessions]
-FROM sys.dm_exec_connections
+FROM sys.dm_exec_connections;
 ```
 
 Pokud analyzujete úlohu SQL Server, upravte dotaz tak, aby se soustředit na konkrétní databázi. Tento dotaz vám pomůže určit možné potřeby relace pro databázi, Pokud zvažujete jejich přesun do Azure.
@@ -709,7 +709,7 @@ SELECT COUNT(*) AS [Sessions]
 FROM sys.dm_exec_connections C
 INNER JOIN sys.dm_exec_sessions S ON (S.session_id = C.session_id)
 INNER JOIN sys.databases D ON (D.database_id = S.database_id)
-WHERE D.name = 'MyDatabase'
+WHERE D.name = 'MyDatabase';
 ```
 
 Tyto dotazy znovu vrátí počet bodů v čase. Pokud shromáždíte více ukázek v průběhu času, budete mít k dispozici nejvhodnější informace o použití vaší relace.
@@ -743,7 +743,7 @@ ORDER BY 2 DESC;
 
 ### <a name="monitoring-blocked-queries"></a>Monitorování blokovaných dotazů
 
-Pomalé nebo dlouho běžící dotazy můžou přispět k nadměrné spotřebě prostředků a být v důsledku blokovaných dotazů. Příčinou blokování může být špatný návrh aplikace, špatné plány dotazů, chybějící užitečné indexy atd. K získání informací o aktuální aktivitě uzamykání v databázi můžete použít zobrazení sys.dm_tran_locks. Příklad kódu naleznete v tématu [Sys.dm_tran_locks (Transact-SQL)](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-locks-transact-sql).
+Pomalé nebo dlouho běžící dotazy můžou přispět k nadměrné spotřebě prostředků a být v důsledku blokovaných dotazů. Příčinou blokování může být špatný návrh aplikace, špatné plány dotazů, chybějící užitečné indexy atd. K získání informací o aktuální aktivitě uzamykání v databázi můžete použít zobrazení sys.dm_tran_locks. Příklad kódu naleznete v tématu [Sys.dm_tran_locks (Transact-SQL)](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-locks-transact-sql). Další informace o řešení potíží s blokováním najdete v tématu [vysvětlení a řešení problémů s blokováním Azure SQL](understand-resolve-blocking.md).
 
 ### <a name="monitoring-query-plans"></a>Monitorování plánů dotazů
 

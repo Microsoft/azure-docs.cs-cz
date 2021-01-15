@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 062bd41b0803cbb08f74fbcbcebb89bbddeb0d45
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 4c58968cb6a38a10433915ec8fa00336ccad301e
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97559799"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216406"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Výběr cenové úrovně pro Azure Kognitivní hledání
 
@@ -78,7 +78,7 @@ K řešení postavenému na Azure Kognitivní hledání může doplatit tyto ná
   + klíče spravované zákazníkem a dvojité šifrování (vyžaduje [Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/))
   + privátní koncové body pro model bez přístupu k Internetu (vyžaduje [privátní odkaz Azure](https://azure.microsoft.com/pricing/details/private-link/))
 
-### <a name="service-costs"></a>Náklady na službu
+### <a name="service-costs"></a>Náklady na služby
 
 Na rozdíl od virtuálních počítačů nebo jiných prostředků, které můžou být pozastavené, aby se předešlo poplatkům, služba Azure Kognitivní hledání je vždycky dostupná na hardwaru vyhrazeném pro výhradní použití. Vytvoření služby je fakturovatelná událost, která se spustí při vytvoření služby a končí při odstranění služby. 
 
@@ -88,15 +88,13 @@ Při odhadování nákladů na řešení hledání mějte na paměti, že ceny a
 
 ### <a name="bandwidth-charges"></a>Poplatky za šířku pásma
 
-Pokud je zdroj dat Azure v jiné oblasti než Azure Kognitivní hledání, může použití [indexerů](search-indexer-overview.md) ovlivnit fakturaci. V tomto scénáři se jedná o náklady na přesun odchozích dat ze zdroje dat Azure do Azure Kognitivní hledání. 
+Pokud je zdroj dat Azure v jiné oblasti než Azure Kognitivní hledání, může použití [indexerů](search-indexer-overview.md) ovlivnit fakturaci. V tomto scénáři může být pro přesun odchozích dat ze zdroje dat Azure do Azure Kognitivní hledání náklady. Podrobnosti najdete na stránkách s cenami v dané datové platformě Azure.
 
 Pokud vytvoříte službu Azure Kognitivní hledání ve stejné oblasti, ve které jsou vaše data, můžete poplatky za odchozí přenosy dat zcela eliminovat. Tady jsou některé informace na [stránce s cenami za šířku pásma](https://azure.microsoft.com/pricing/details/bandwidth/):
 
-+ Společnost Microsoft neúčtuje žádná příchozí data do žádné služby v Azure.
-+ Z Azure Kognitivní hledání se neúčtují žádné poplatky za odchozí data. Pokud je například vaše vyhledávací služba v Západní USA a webová aplikace Azure je Východní USA, společnost Microsoft neúčtuje za datové části odpovědí na dotazy, které pocházejí z Západní USA.
-+ V řešeních s více službami se za přenos dat mezi všemi službami ve stejné oblasti neúčtují žádné poplatky.
++ Příchozí data: Microsoft neúčtuje žádná příchozí data do žádné služby v Azure. 
 
-Poplatky platí pro odchozí data, pokud jsou služby v různých oblastech. Tyto poplatky nejsou ve skutečnosti součástí faktury za Azure Kognitivní hledání. Jsou tady uvedené, protože pokud používáte data nebo indexovací indexery AI k vyžádání dat z různých oblastí, uvidíte v celkové faktuře náklady.
++ Odchozí data: odchozí data odkazují na výsledky dotazu. Kognitivní hledání za odchozí data neúčtuje, ale odchozí poplatky z Azure jsou možné, pokud jsou služby v různých oblastech. Tyto poplatky nejsou ve skutečnosti součástí faktury za Azure Kognitivní hledání. Tady jsou zmíněné informace, protože pokud odesíláte výsledky do jiných oblastí nebo mimo Azure, můžou se tyto náklady projevit v celkové faktuře.
 
 ### <a name="ai-enrichment-with-cognitive-services"></a>Obohacení AI pomocí Cognitive Services
 

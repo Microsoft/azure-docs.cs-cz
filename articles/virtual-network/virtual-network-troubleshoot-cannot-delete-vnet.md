@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 27372207df66b4198bd9c785ecc099fa88cbe548
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: b974af343907c98ebd7a318bc60a0e553a07a233
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335671"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219347"
 ---
 # <a name="troubleshooting-failed-to-delete-a-virtual-network-in-azure"></a>Řešení potíží: Nepodařilo se odstranit virtuální síť v Azure.
 
@@ -70,9 +70,9 @@ Pokud je k dispozici brána Application Gateway, je nutné ji odebrat předtím,
 
    ![Snímek obrazovky se seznamem skrytých profilů sítě](media/virtual-network-troubleshoot-cannot-delete-vnet/container-instances.png)
 
-1. Odstraňte podsíť nebo virtuální síť znovu.
+1. Znovu odstraňte podsíť nebo virtuální síť.
 
-Pokud tyto kroky problém nevyřeší, pomocí těchto [příkazů Azure CLI](https://docs.microsoft.com/azure/container-instances/container-instances-vnet#clean-up-resources) vyčistěte prostředky. 
+Pokud tyto kroky problém nevyřeší, pomocí těchto [příkazů Azure CLI](../container-instances/container-instances-vnet.md#clean-up-resources) vyčistěte prostředky. 
 
 ### <a name="check-whether-azure-active-directory-domain-service-is-enabled-in-the-virtual-network"></a>Ověřte, jestli je ve virtuální síti povolená Azure Active Directory Doménová služba.
 

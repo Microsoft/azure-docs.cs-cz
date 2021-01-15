@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 06/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 43e4027c9d88b209ed0606e045dd5b4d47d3ff6e
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: a35cdebe5ff4db562b19dc4ceed069a831af4305
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92088512"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219993"
 ---
 # <a name="analyze-complex-data-types-in-azure-synapse-analytics"></a>Analýza složitých datových typů ve službě Azure synapse Analytics
 
@@ -28,7 +28,7 @@ Technici dat potřebují porozumět tomu, jak efektivně zpracovávat komplexní
 
 ## <a name="what-are-arrays-and-nested-structures"></a>Co jsou pole a vnořené struktury?
 
-Následující objekt pochází z [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview). V tomto objektu jsou vnořené struktury a pole obsahující vnořené struktury.
+Následující objekt pochází z [Application Insights](../azure-monitor/app/app-insights-overview.md). V tomto objektu jsou vnořené struktury a pole obsahující vnořené struktury.
 
 ```json
 {
@@ -221,4 +221,4 @@ Existují dva různé typy operací:
 ## <a name="next-steps"></a>Další kroky
 
 * [Naučte se dotazovat synapse odkaz na Azure Cosmos DB pomocí Sparku.](./synapse-link/how-to-query-analytical-store-spark.md)
-* [Dotazování vnořených typů Parquet](./sql/query-parquet-nested-types.md) 
+* [Dotazování vnořených typů Parquet](./sql/query-parquet-nested-types.md)

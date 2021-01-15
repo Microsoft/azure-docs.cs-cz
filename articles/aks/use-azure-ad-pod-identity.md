@@ -4,12 +4,12 @@ description: Naučte se, jak používat spravované identity pod AAD pod správo
 services: container-service
 ms.topic: article
 ms.date: 12/01/2020
-ms.openlocfilehash: 150e2e71a4db8ab07caad479ae098d5b9eb746da
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: d992c5c5384c04fe39511481550ab7b0ea47069e
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96466827"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217868"
 ---
 # <a name="use-azure-active-directory-pod-managed-identities-in-azure-kubernetes-service-preview"></a>Použití identit spravovaných pod Azure Active Directory ve službě Azure Kubernetes (Preview)
 
@@ -56,7 +56,7 @@ Vytvořte cluster AKS se zapnutou spravovanou identitou a s povolenou identitou 
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
-az aks create -g myResourceGroup -n myAKSCluster --enable-managed-identity --enable-pod-identity
+az aks create -g myResourceGroup -n myAKSCluster --enable-managed-identity --enable-pod-identity --network-plugin azure
 ```
 
 Přihlaste se ke svému clusteru AKS pomocí [AZ AKS Get-Credentials][az-aks-get-credentials] . Tento příkaz také stáhne a nakonfiguruje `kubectl` klientský certifikát na vašem vývojovém počítači.

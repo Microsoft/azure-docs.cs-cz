@@ -6,17 +6,17 @@ ms.topic: how-to
 ms.date: 11/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 101b3a05591a7815ba28756bb5b07e855b64e769
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 85026092e513ecc9ec3c23e292a416297774a2e4
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505542"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217834"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Použití Microsoft Teams na virtuálním počítači s Windows
 
 >[!IMPORTANT]
->Optimalizace médií pro týmy je podporovaná pro prostředí Microsoft 365 vládní organizace (RSZ). Pro GCC-High nebo DoD není podporována optimalizace médií pro týmy.
+>Optimalizace médií pro týmy je podporovaná pro Microsoft 365 vládní organizace (RSZ) a GCC-High prostředí. Pro GCC-High nebo DoD není podporována optimalizace médií pro týmy.
 
 >[!NOTE]
 >Optimalizace médií pro Microsoft Teams je k dispozici pouze pro stolního klienta Windows na počítačích s Windows 10. Optimalizace médií vyžadují desktopový klient Windows verze 1.2.1026.0 nebo novější.
@@ -120,11 +120,11 @@ Po instalaci služby WebSocket a desktopové aplikace Teams použijte následuj�
 
 3. Vyberte **verzi**.
 
-      Pokud jste načetli optimalizace médií, zobrazí se v banneru **WVD Media optimalizované pro multimédia**. Pokud se v banneru zobrazuje **WVD médium Nepřipojeno** , ukončete aplikaci teams a zkuste to znovu.
+      Pokud jste načetli optimalizace médií, zobrazí se v banneru **WVD Media optimalizované pro multimédia**. Pokud se v banneru zobrazuje **WVD médium Nepřipojeno**, ukončete aplikaci teams a zkuste to znovu.
 
 4. Vyberte svůj obrázek profilu uživatele a pak vyberte **Nastavení**.
 
-      Pokud se načtou optimalizace médií, budou se zvuková zařízení a kamery dostupné místně zobrazit v nabídce zařízení. Pokud se v nabídce zobrazuje **vzdálené zvuky** , ukončete aplikaci teams a zkuste to znovu. Pokud se zařízení v nabídce ještě nezobrazí, podívejte se na nastavení ochrany osobních údajů na místním počítači. Ujistěte se, že **Nastavení**  >  **Privacy**  >  **oprávnění aplikace** soukromí nastavení **povoluje aplikacím přístup k vašemu mikrofonu** **zapnuté**. Odpojte se od vzdálené relace a pak znovu připojte a znovu zkontrolujte zvuková zařízení a videa. Pokud chcete spojit volání a schůzky s videem, musíte taky udělit oprávnění aplikacím pro přístup k vaší kameře.
+      Pokud se načtou optimalizace médií, budou se zvuková zařízení a kamery dostupné místně zobrazit v nabídce zařízení. Pokud se v nabídce zobrazuje **vzdálené zvuky**, ukončete aplikaci teams a zkuste to znovu. Pokud se zařízení v nabídce ještě nezobrazí, podívejte se na nastavení ochrany osobních údajů na místním počítači. Ujistěte se, že **Nastavení**  >    >  **oprávnění aplikace** soukromí nastavení **povoluje aplikacím přístup k vašemu mikrofonu** **zapnuté**. Odpojte se od vzdálené relace a pak znovu připojte a znovu zkontrolujte zvuková zařízení a videa. Pokud chcete spojit volání a schůzky s videem, musíte taky udělit oprávnění aplikacím pro přístup k vaší kameře.
 
       Pokud se optimalizace nenačte, odinstalujte a znovu nainstalujte týmy a znovu zkontrolujte.
 
@@ -140,7 +140,7 @@ Použití týmů ve virtualizovaném prostředí se liší od použití týmů v
 
 ### <a name="calls-and-meetings"></a>Volání a schůzky
 
-- Desktopový klient pro týmy v prostředích virtuálních ploch Windows nepodporuje živé události. Prozatím doporučujeme připojit živé události od [webového klienta Teams](https://teams.microsoft.com) ve vzdálené relaci.
+- Klient stolních počítačů v prostředích virtuálních ploch Windows nepodporuje vytváření živých událostí, ale můžete se připojit k živým událostem. Prozatím doporučujeme místo toho vytvořit živé události z [webového klienta Teams](https://teams.microsoft.com) ve vzdálené relaci.
 - Volání nebo schůzky aktuálně nepodporují sdílení aplikací. Relace plochy podporují sdílení plochy.
 - Poskytněte řízení a převzít řízení, které se v tuto chvíli nepodporují.
 - Týmy na virtuálním počítači s Windows podporují jenom jeden příchozí vstup videa. To znamená, že když se někdo pokusí sdílet svoji obrazovku, zobrazí se jejich obrazovka místo na obrazovce vedoucího ovládacího prvku schůzky.

@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 352d5218f91fa55134a7515b6aeee49857847468
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 345cbe2efb644fe2b84d4a6021ff962337e29285
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173205"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219908"
 ---
 # <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>Způsob, jakým uživatelé ve vaší organizaci můžou pozvat uživatele typu Host do aplikace
 
@@ -28,8 +28,8 @@ Po přidání uživatele typu Host do adresáře ve službě Azure AD může vla
  - Konfigurace aplikace pro samoobslužnou službu a přiřazení skupiny k aplikaci
 
 > [!NOTE]
-> Tento článek popisuje, jak nastavit samoobslužnou správu pro galerie a aplikace založené na SAML, které jste přidali do svého tenanta Azure AD. Můžete také [nastavit samoobslužné skupiny Microsoft 365](../enterprise-users/groups-self-service-management.md) , aby uživatelé mohli spravovat přístup ke svým vlastním skupinám Microsoft 365. Další způsoby, jak můžou uživatelé sdílet soubory Office a aplikace s uživateli typu Host, najdete [v tématu přístup hosta ve skupinách Microsoft 365](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6) a [sdílení souborů a složek služby SharePoint](https://support.office.com/article/share-sharepoint-files-or-folders-1fe37332-0f9a-4719-970e-d2578da4941c).
-
+> * Tento článek popisuje, jak nastavit samoobslužnou správu pro galerie a aplikace založené na SAML, které jste přidali do svého tenanta Azure AD. Můžete také [nastavit samoobslužné skupiny Microsoft 365](../enterprise-users/groups-self-service-management.md) , aby uživatelé mohli spravovat přístup ke svým vlastním skupinám Microsoft 365. Další způsoby, jak můžou uživatelé sdílet soubory Office a aplikace s uživateli typu Host, najdete [v tématu přístup hosta ve skupinách Microsoft 365](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6) a [sdílení souborů a složek služby SharePoint](https://support.office.com/article/share-sharepoint-files-or-folders-1fe37332-0f9a-4719-970e-d2578da4941c).
+> * Uživatelé můžou pozvat hosty jenom v případě, že mají roli **pozvat hosta** .
 ## <a name="invite-a-guest-user-to-an-app-from-the-access-panel"></a>Pozvání uživatele typu Host k aplikaci z přístupového panelu
 
 Po nakonfigurování aplikace pro samoobslužné uživatele mohou vlastníci aplikace pomocí vlastního přístupového panelu pozvat uživatele typu Host do aplikace, kterou chtějí sdílet. Uživatel typu Host není nutně potřeba do Azure AD přidat předem. 
@@ -73,7 +73,7 @@ Po nakonfigurování aplikace pro samoobslužné uživatele můžou vlastníci a
 7. Vyberte možnost **Přidat** a automaticky odešlete pozvánku uživateli typu Host. Po odeslání e-mailové pozvánky se uživatelský účet automaticky přidá do adresáře jako uživatel typu host.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Samoobslužná správa aplikací vyžaduje určité počáteční nastavení globálním správcem a správcem Azure AD. V rámci tohoto nastavení nakonfigurujete aplikaci pro samoobslužnou službu a přiřadíte skupinu k aplikaci, kterou může vlastník aplikace spravovat. Skupinu můžete také nakonfigurovat tak, aby umožňovala komukoli požádat o členství, ale vyžaduje schválení vlastníka skupiny. (Další informace o [správě skupin samoobslužných služeb](../enterprise-users/groups-self-service-management.md).) 
 
