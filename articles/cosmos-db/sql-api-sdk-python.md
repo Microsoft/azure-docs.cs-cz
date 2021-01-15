@@ -9,14 +9,14 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-python
-ms.openlocfilehash: b69b3a3888b2d6e19b8eaa92ba9b2fedf0e15545
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 27bcb220c67392661cc1b2875823abdca4593bd4
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93091114"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220945"
 ---
-# <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Python SDK pro SQL API: poznámky k verzi a prostředky
+# <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Sada Python SDK služby Azure Cosmos DB pro rozhraní SQL API: Poznámky k verzi a zdroje informací
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
@@ -320,41 +320,41 @@ Verze 4.0.0 B1 je první náhled našeho úsilí o vytvoření uživatelsky př�
 Microsoft poskytuje oznámení alespoň **12 měsíců** před vyřazením sady SDK z důvodu hladkého přechodu na novější/podporovanou verzi. Nové funkce, možnosti a optimalizace se přidávají jen do aktuální sady SDK, proto vám doporučujeme, abyste vždy co nejdříve provedli aktualizaci na nejnovější verzi sady SDK.
 
 > [!WARNING]
-> Po 31. srpna 2022 už Azure Cosmos DB neprovádí opravy chyb, přidávají nové funkce a poskytuje podporu pro verze 1. x nebo 2. x sady Azure Cosmos DB Python SDK pro SQL API. Pokud nechcete upgradovat, požadavky odeslané z verze 1. x a 2. x sady SDK budou nadále obsluhovány službou Azure Cosmos DB.
+> Po 31. srpna 2022 už Azure Cosmos DB neprovádí opravy chyb ani neposkytuje podporu pro verze 1. x a 2. x sady Azure Cosmos DB Python SDK pro SQL API. Pokud nechcete upgradovat, požadavky odeslané z verze 1. x a 2. x sady SDK budou nadále obsluhovány službou Azure Cosmos DB.
 
 | Verze | Datum vydání | Datum vyřazení |
 | --- | --- | --- |
 | [4.0.0](#400) |20. května 2020 |--- |
 | [3.0.2](#302) |15. listopadu 2018 |--- |
 | [3.0.1](#301) |Říjen 04, 2018 |--- |
-| [2.3.3](#233) |Září 08, 2018 |30. srpna 2020 |
-| [2.3.2](#232) |8\. května 2018 |30. srpna 2020 |
-| [2.3.1](#231) |21. prosince 2017 |30. srpna 2020 |
-| [2.3.0](#230) |10. listopadu 2017 |30. srpna 2020 |
-| [2.2.1](#221) |Září 29, 2017 |30. srpna 2020 |
-| [2.2.0](#220) |10. května 2017 |30. srpna 2020 |
-| [2.1.0](#210) |Květen 01, 2017 |30. srpna 2020 |
-| [2.0.1](#201) |30. října 2016 |30. srpna 2020 |
-| [2.0.0](#200) |29. září 2016 |30. srpna 2020 |
-| [1.9.0](#190) |7. července 2016 |30. srpna 2020 |
-| [1.8.0](#180) |14. června 2016 |30. srpna 2020 |
-| [1.7.0](#170) |26. dubna 2016 |30. srpna 2020 |
-| [1.6.1](#161) |08 8. dubna 2016 |30. srpna 2020 |
-| [1.6.0](#160) |29. března 2016 |30. srpna 2020 |
-| [1.5.0](#150) |Leden 03, 2016 |30. srpna 2020 |
-| [1.4.2](#142) |06 6. října 2015 |30. srpna 2020 |
-| 1.4.1 |06 6. října 2015 |30. srpna 2020 |
-| [1.2.0](#120) |6. srpna 2015 |30. srpna 2020 |
-| [1.1.0](#110) |9. července 2015 |30. srpna 2020 |
-| [1.0.1](#101) |25. května 2015 |30. srpna 2020 |
-| 1.0.0 |7. dubna 2015 |30. srpna 2020 |
+| [2.3.3](#233) |Září 08, 2018 |31. srpna 2022 |
+| [2.3.2](#232) |8\. května 2018 |31. srpna 2022 |
+| [2.3.1](#231) |21. prosince 2017 |31. srpna 2022 |
+| [2.3.0](#230) |10. listopadu 2017 |31. srpna 2022 |
+| [2.2.1](#221) |Září 29, 2017 |31. srpna 2022 |
+| [2.2.0](#220) |10. května 2017 |31. srpna 2022 |
+| [2.1.0](#210) |Květen 01, 2017 |31. srpna 2022 |
+| [2.0.1](#201) |30. října 2016 |31. srpna 2022 |
+| [2.0.0](#200) |29. září 2016 |31. srpna 2022 |
+| [1.9.0](#190) |7. července 2016 |31. srpna 2022 |
+| [1.8.0](#180) |14. června 2016 |31. srpna 2022 |
+| [1.7.0](#170) |26. dubna 2016 |31. srpna 2022 |
+| [1.6.1](#161) |08 8. dubna 2016 |31. srpna 2022 |
+| [1.6.0](#160) |29. března 2016 |31. srpna 2022 |
+| [1.5.0](#150) |Leden 03, 2016 |31. srpna 2022 |
+| [1.4.2](#142) |06 6. října 2015 |31. srpna 2022 |
+| 1.4.1 |06 6. října 2015 |31. srpna 2022 |
+| [1.2.0](#120) |6. srpna 2015 |31. srpna 2022 |
+| [1.1.0](#110) |9. července 2015 |31. srpna 2022 |
+| [1.0.1](#101) |25. května 2015 |31. srpna 2022 |
+| 1.0.0 |7. dubna 2015 |31. srpna 2022 |
 | 0.9.4 – zapůjčení |14. ledna 2015 |29. února 2016 |
 | 0.9.3 – zapůjčení |9. prosince 2014 |29. února 2016 |
 | 0.9.2 – zapůjčení |25. listopadu 2014 |29. února 2016 |
 | 0.9.1 – zapůjčení |23. září 2014 |29. února 2016 |
 | 0.9.0 – zapůjčení |21. srpna 2014 |29. února 2016 |
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 

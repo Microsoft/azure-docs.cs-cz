@@ -3,12 +3,12 @@ title: Vytváření zásad pro vlastnosti polí u prostředků
 description: Naučte se pracovat s parametry pole a výrazy jazyka pole, vyhodnotit alias [*] a přidat prvky pomocí pravidel Definice Azure Policy.
 ms.date: 10/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 60044d4a599c14088ea923a6a14cb46543646995
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 650b2ec6bc1bbd12cd10abb1917ef5ea2d6029e9
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920453"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220741"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Vytváření zásad pro vlastnosti pole v prostředcích Azure
 
@@ -16,10 +16,8 @@ Vlastnosti Azure Resource Manager jsou běžně definovány jako řetězce a log
 
 - Typ [parametru definice](../concepts/definition-structure.md#parameters), který poskytuje více možností
 - Součást [pravidla zásad](../concepts/definition-structure.md#policy-rule) s použitím podmínek **v** nebo **notIn**
-- Součást pravidla zásad, které vyhodnocuje [ \[ \* \] alias](../concepts/definition-structure.md#understanding-the--alias) k vyhodnocení:
-  - Scénáře, jako je **none**, **Any** nebo **All**
-  - Komplexní scénáře s **počtem**
-- V [efektu připojit](../concepts/effects.md#append) , který se má nahradit nebo přidat k existujícímu poli
+- Součást pravidla zásad, které počítá, kolik členů pole splní podmínku
+- Aktualizace existujícího pole v efektech [připojit](../concepts/effects.md#append) a [Upravit](../concepts/effects.md#modify)
 
 Tento článek se zabývá každým použitím Azure Policy a poskytuje několik ukázkových definic.
 
@@ -46,7 +44,7 @@ Tato definice zásady umožňuje, aby bylo každé jedno umístění pro paramet
 
 Jako _řetězec_ **typu** se dá nastavit jenom jedna hodnota při přiřazování zásady. Pokud je tato zásada přiřazena, prostředky v oboru jsou povoleny pouze v rámci jedné oblasti Azure. Většina definic zásad musí povolit seznam schválených možností, jako je například povolování _eastus2_, _eastus_ a _westus2_.
 
-Pokud chcete vytvořit definici zásady, která povoluje více možností, použijte _array_ **typ** pole. Stejné zásady je možné přepsat následujícím způsobem:
+Pokud chcete vytvořit definici zásady, která povoluje více možností, použijte  **typ** pole. Stejné zásady je možné přepsat následujícím způsobem:
 
 ```json
 "parameters": {
@@ -97,50 +95,123 @@ Chcete-li použít tento řetězec pro každou sadu SDK, použijte následujíc�
 
 - Azure CLI: příkaz [AZ Policy Assignment Create](/cli/azure/policy/assignment#az_policy_assignment_create) with Parameter **param**
 - Azure PowerShell: rutina [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) s parametrem **PolicyParameter**
-- REST API: v rámci těla požadavku jako hodnota vlastnosti **Properties. Parameters** _v rámci textu_ [create](/rest/api/resources/policyassignments/create) žádosti.
+- REST API: v rámci těla požadavku jako hodnota vlastnosti **Properties. Parameters** _v rámci textu_ [](/rest/api/resources/policyassignments/create) žádosti.
 
-## <a name="array-conditions"></a>Podmínky pole
+## <a name="using-arrays-in-conditions"></a>Použití polí v podmínkách
 
-[Podmínky](../concepts/definition-structure.md#conditions) pravidla zásad, které _array_ 
- mohou být použity jako **typ** pole, jsou omezeny na `in` a `notIn` . Následující definici zásad proveďte `equals` jako příklad:
+### <a name="in-and-notin"></a>`In` a `notIn`
+
+`in`Podmínky a `notIn` fungují pouze s hodnotami pole. Kontrolují existenci hodnoty v poli. Pole může být literální pole JSON nebo odkaz na parametr array. Příklad:
 
 ```json
 {
-  "policyRule": {
-    "if": {
-      "not": {
-        "field": "location",
-        "equals": "[parameters('allowedLocations')]"
-      }
-    },
-    "then": {
-      "effect": "audit"
-    }
-  },
-  "parameters": {
-    "allowedLocations": {
-      "type": "Array",
-      "metadata": {
-        "description": "The list of allowed locations for resources.",
-        "displayName": "Allowed locations",
-        "strongType": "location"
-      }
-    }
-  }
+      "field": "tags.environment",
+      "in": [ "dev", "test" ]
 }
 ```
 
-Při pokusu o vytvoření této definice zásady prostřednictvím Azure Portal vede k chybě, například k této chybové zprávě:
+```json
+{
+      "field": "location",
+      "notIn": "[parameters('allowedLocations')]"
+}
+```
 
-- Zásady {GUID} nešlo parametrizované kvůli chybám ověření. Zkontrolujte prosím, jestli jsou parametry zásad správně definované. Výsledek vyhodnocení vnitřní výjimky pro výraz jazyka [Parameters (' allowedLocations ')] je typu Array, očekával se typ String.
+### <a name="value-count"></a>Počet hodnot
 
-Očekávaným **typem** podmínky `equals` je _řetězec_. Vzhledem k tomu, že **allowedLocations** je definován jako _pole_ **typu** , modul zásad vyhodnotí výraz jazyka a vyvolá chybu. V případě `in` `notIn` podmínky a modul zásad očekává _pole_ **typu** ve výrazu jazyka. Chcete-li tuto chybovou zprávu vyřešit, změňte `equals` hodnotu na `in` nebo `notIn` .
+Výraz [počtu hodnot](../concepts/definition-structure.md#value-count) počítá, kolik členů pole splňuje podmínku. Poskytuje způsob, jak několikrát vyhodnotit stejnou podmínku pomocí různých hodnot u každé iterace. Například následující podmínka kontroluje, zda název prostředku odpovídá jakémukoli vzoru z pole vzorů:
+
+```json
+{
+    "count": {
+        "value": [ "test*", "dev*", "prod*" ],
+        "name": "pattern",
+        "where": {
+            "field": "name",
+            "like": "[current('pattern')]"
+        }
+    },
+    "greater": 0
+}
+```
+
+Aby bylo možné vyhodnotit výraz, Azure Policy vyhodnotí `where` stav 3 časy, jednou pro každého člena `[ "test*", "dev*", "prod*" ]` a spočítá, kolikrát byl vyhodnocen `true` . V každé iteraci je hodnota aktuálního člena pole spárována s `pattern` názvem indexu definovaným pomocí `count.name` . Tato hodnota se pak může odkazovat uvnitř `where` podmínky voláním speciální funkce šablony: `current('pattern')` .
+
+| Iterace | `current('pattern')` Vrácená hodnota |
+|:---|:---|
+| 1 | `"test*"` |
+| 2 | `"dev*"` |
+| 3 | `"prod*"` |
+
+Podmínka je pravdivá pouze v případě, že je výsledný počet větší než 0.
+
+Chcete-li nastavit podmínku nad obecnější, použijte odkaz na parametr namísto pole literálu:
+
+ ```json
+{
+    "count": {
+        "value": "[parameters('patterns')]",
+        "name": "pattern",
+        "where": {
+            "field": "name",
+            "like": "[current('pattern')]"
+        }
+    },
+    "greater": 0
+}
+```
+
+Pokud výraz **Count hodnoty** není pod žádným jiným výrazem **Count** , `count.name` je volitelný a `current()` funkce může být použita bez argumentů:
+
+```json
+{
+    "count": {
+        "value": "[parameters('patterns')]",
+        "where": {
+            "field": "name",
+            "like": "[current()]"
+        }
+    },
+    "greater": 0
+}
+```
+
+**Počet hodnot** také podporuje pole komplexních objektů, což umožňuje složitější podmínky. Například následující podmínka definuje požadovanou hodnotu značky pro každý vzor názvu a kontroluje, zda název prostředku odpovídá vzoru, ale nemá požadovanou hodnotu značky:
+
+```json
+{
+    "count": {
+        "value": [
+            { "pattern": "test*", "envTag": "dev" },
+            { "pattern": "dev*", "envTag": "dev" },
+            { "pattern": "prod*", "envTag": "prod" },
+        ],
+        "name": "namePatternRequiredTag",
+        "where": {
+            "allOf": [
+                {
+                    "field": "name",
+                    "like": "[current('namePatternRequiredTag').pattern]"
+                },
+                {
+                    "field": "tags.env",
+                    "notEquals": "[current('namePatternRequiredTag').envTag]"
+                }
+            ]
+        }
+    },
+    "greater": 0
+}
+```
+
+Užitečné příklady najdete v tématu [Příklady počtu hodnot](../concepts/definition-structure.md#value-count-examples).
 
 ## <a name="referencing-array-resource-properties"></a>Odkazy na vlastnosti prostředku pole
 
 Mnoho případů použití vyžaduje práci s vlastnostmi pole ve vyhodnoceném prostředku. Některé scénáře vyžadují odkazování na celé pole (například na kontrolu jeho délky). Jiné vyžadují použití podmínky u jednotlivých členů pole (například zajistěte, aby všechna pravidla brány firewall blokovala přístup z Internetu). Porozumění různým způsobům, Azure Policy mohou odkazovat na vlastnosti prostředku a jak se tyto odkazy chovají, když odkazují na vlastnosti pole, je klíč pro zápis podmínek, které se vztahují k těmto scénářům.
 
 ### <a name="referencing-resource-properties"></a>Odkazování na vlastnosti prostředku
+
 Na vlastnosti prostředku se dá odkazovat Azure Policy pomocí [aliasů](../concepts/definition-structure.md#aliases) existují dva způsoby, jak odkazovat na hodnoty vlastnosti prostředku v Azure Policy:
 
 - Podmínka [pole](../concepts/definition-structure.md#fields) se používá ke kontrole, zda **všechny** vybrané vlastnosti prostředku splňují podmínku. Příklad:
@@ -172,7 +243,7 @@ Vlastnosti prostředků pole jsou obvykle reprezentovány dvěma různými typy 
 
 #### <a name="referencing-the-array"></a>Odkazování na pole
 
-První alias představuje jednu hodnotu, hodnotu `stringArray` vlastnosti z obsahu žádosti. Vzhledem k tomu, že hodnota této vlastnosti je pole, není velmi užitečné v podmínkách zásad. Například:
+První alias představuje jednu hodnotu, hodnotu `stringArray` vlastnosti z obsahu žádosti. Vzhledem k tomu, že hodnota této vlastnosti je pole, není velmi užitečné v podmínkách zásad. Příklad:
 
 ```json
 {
@@ -219,9 +290,9 @@ Pokud pole obsahuje objekty, lze pomocí `[*]` aliasu vybrat hodnotu konkrétní
 }
 ```
 
-Tato podmínka je pravdivá, pokud jsou hodnoty všech `property` vlastností v systému `objectArray` rovny `"value"` .
+Tato podmínka je pravdivá, pokud jsou hodnoty všech `property` vlastností v systému `objectArray` rovny `"value"` . Další příklady najdete v tématu [Další \[ \* \] Příklady aliasů](#appendix--additional--alias-examples).
 
-Při použití `field()` funkce pro odkaz na alias pole je vrácená hodnota pole všech vybraných hodnot. Toto chování znamená, že běžným případem použití `field()` funkce je možnost použít šablony funkcí na hodnoty vlastností prostředku velmi omezená. Jediné funkce šablony, které lze použít v tomto případě jsou ty, které přijímají argumenty pole. Například je možné získat délku pole s `[length(field('Microsoft.Test/resourceType/objectArray[*].property'))]` . Nicméně složitější scénáře, jako je použití šablony funkce na jednotlivé členy pole a jejich porovnání s požadovanou hodnotou, jsou možné pouze při použití `count` výrazu. Další informace najdete v tématu [výraz Count](#count-expressions).
+Při použití `field()` funkce pro odkaz na alias pole je vrácená hodnota pole všech vybraných hodnot. Toto chování znamená, že běžným případem použití `field()` funkce je možnost použít šablony funkcí na hodnoty vlastností prostředku velmi omezená. Jediné funkce šablony, které lze použít v tomto případě jsou ty, které přijímají argumenty pole. Například je možné získat délku pole s `[length(field('Microsoft.Test/resourceType/objectArray[*].property'))]` . Nicméně složitější scénáře, jako je použití šablony funkce na jednotlivé členy pole a jejich porovnání s požadovanou hodnotou, jsou možné pouze při použití `count` výrazu. Další informace najdete v tématu [výraz počtu polí](#field-count-expressions).
 
 Chcete-li vytvořit souhrn, přečtěte si následující ukázkový obsah prostředku a vybrané hodnoty vrácené různými aliasy:
 
@@ -275,9 +346,9 @@ Při použití `field()` funkce v ukázkovém obsahu prostředku jsou výsledky 
 | `[field('Microsoft.Test/resourceType/objectArray[*].nestedArray')]` | `[[ 1, 2 ], [ 3, 4 ]]` |
 | `[field('Microsoft.Test/resourceType/objectArray[*].nestedArray[*]')]` | `[1, 2, 3, 4]` |
 
-## <a name="count-expressions"></a>Výrazy Count
+### <a name="field-count-expressions"></a>Výrazy počtu polí
 
-[Count](../concepts/definition-structure.md#count) – počet výrazů, kolik členů pole splňuje podmínku, a porovnání počtu s cílovou hodnotou. `Count` je intuitivnější a univerzální pro vyhodnocení polí v porovnání s `field` podmínkami. Syntaxe je:
+Výrazy [počtu polí](../concepts/definition-structure.md#field-count) počítají, kolik členů pole splňuje podmínku a porovnávají počet s cílovou hodnotou. `Count` je intuitivnější a univerzální pro vyhodnocení polí v porovnání s `field` podmínkami. Syntaxe je:
 
 ```json
 {
@@ -289,7 +360,7 @@ Při použití `field()` funkce v ukázkovém obsahu prostředku jsou výsledky 
 }
 ```
 
-Při použití bez podmínky Where `count` jednoduše vrátí délku pole. S ukázkovým obsahem prostředků z předchozí části `count` je následující výraz vyhodnocen na, `true` protože `stringArray` má tři členy:
+Při použití bez `where` podmínky `count` jednoduše vrátí délku pole. S ukázkovým obsahem prostředků z předchozí části `count` je následující výraz vyhodnocen na, `true` protože `stringArray` má tři členy:
 
 ```json
 {
@@ -314,6 +385,7 @@ Toto chování funguje i u vnořených polí. Například následující `count`
 Mocnina `count` je v `where` podmínce. Je-li zadána, Azure Policy vytvoří výčet členů pole a vyhodnotí každý s podmínkou a spočítá, na kolik členů pole bylo vyhodnoceno `true` . Konkrétně při každé iteraci `where` vyhodnocení podmínky Azure Policy vybere jednoho člena pole ***i** _ a vyhodnotí obsah prostředků proti `where` podmínce _* jako if **_i_*_ je jediným členem array_ *. Když je v každé iteraci dostupný jenom jeden člen pole, poskytuje způsob, jak u každého člena pole použít komplexní podmínky.
 
 Příklad:
+
 ```json
 {
   "count": {
@@ -326,7 +398,7 @@ Příklad:
   "equals": 1
 }
 ```
-Aby bylo možné vyhodnotit `count` výraz, Azure Policy vyhodnotí `where` stav 3 časy, jednou pro každého člena `stringArray` a spočítá, kolikrát byl vyhodnocen `true` . Když `where` Podmínka odkazuje na `Microsoft.Test/resourceType/stringArray[*]` členy pole, místo výběru všech členů `stringArray` , vybere pouze jeden člen pole pokaždé, když:
+Aby bylo možné vyhodnotit `count` výraz, Azure Policy vyhodnotí `where` stav 3 časy, jednou pro každého člena `stringArray` a spočítá, kolikrát byl vyhodnocen `true` . Pokud `where` Podmínka odkazuje na `Microsoft.Test/resourceType/stringArray[*]` členy pole, místo výběru všech členů `stringArray` , vybere pouze jeden člen pole pokaždé, když:
 
 | Iterace | Vybrané `Microsoft.Test/resourceType/stringArray[*]` hodnoty | `where` Výsledek vyhodnocení |
 |:---|:---|:---|
@@ -337,6 +409,7 @@ Aby bylo možné vyhodnotit `count` výraz, Azure Policy vyhodnotí `where` stav
 A proto se `count` vrátí `1` .
 
 Tady je složitější výraz:
+
 ```json
 {
   "count": {
@@ -366,6 +439,7 @@ Tady je složitější výraz:
 A tak `count` vrátí `1` .
 
 Skutečnost, že `where` výraz je vyhodnocen proti **celému** obsahu žádosti (se změnami pouze pro člena pole, který je právě vyčíslen) znamená, že `where` podmínka může také odkazovat na pole mimo pole:
+
 ```json
 {
   "count": {
@@ -384,6 +458,7 @@ Skutečnost, že `where` výraz je vyhodnocen proti **celému** obsahu žádosti
 | 2 | `tags.env` => `"prod"` | `true` |
 
 Jsou povolené taky vnořené výrazy Count:
+
 ```json
 {
   "count": {
@@ -417,9 +492,33 @@ Jsou povolené taky vnořené výrazy Count:
 | 2 | `Microsoft.Test/resourceType/objectArray[*].property` => `"value2`</br> `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3`, `4` | 1 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3` |
 | 2 | `Microsoft.Test/resourceType/objectArray[*].property` => `"value2`</br> `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3`, `4` | 2 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `4` |
 
-### <a name="the-field-function-inside-where-conditions"></a>`field()`Funkce v `where` podmínkách
+#### <a name="accessing-current-array-member-with-template-functions"></a>Přístup k aktuálnímu členu pole pomocí funkcí šablony
 
-Způsob, jakým `field()` se funkce chovají, `where` když je uvnitř podmínky založena na následujících konceptech:
+Při použití funkcí šablony použijte `current()` funkci pro přístup k hodnotě aktuálního člena pole nebo k hodnotám kterékoli z jeho vlastností. Chcete-li získat přístup k hodnotě aktuálního člena pole, předejte alias definovaný v rámci `count.field` nebo jako kterýkoli z jeho podřízených aliasů jako argument `current()` funkce. Příklad:
+
+```json
+{
+  "count": {
+    "field": "Microsoft.Test/resourceType/objectArray[*]",
+    "where": {
+        "value": "[current('Microsoft.Test/resourceType/objectArray[*].property')]",
+        "like": "value*"
+    }
+  },
+  "equals": 2
+}
+
+```
+
+| Iterace | `current()` Vrácená hodnota | `where` Výsledek vyhodnocení |
+|:---|:---|:---|
+| 1 | Hodnota `property` v prvním členovi `objectArray[*]` : `value1` | `true` |
+| 2 | Hodnota `property` v prvním členovi `objectArray[*]` : `value2` | `true` |
+
+#### <a name="the-field-function-inside-where-conditions"></a>Funkce Field v podmínkách WHERE
+
+`field()`Funkci lze také použít pro přístup k hodnotě aktuálního člena pole, pokud výraz **Count** není uvnitř **podmínky existence** ( `field()` funkce vždy odkazuje na prostředek vyhodnocený v podmínky **if** ).
+Chování `field()` při odkazování na vyhodnocené pole je založeno na následujících konceptech:
 1. Aliasy pole jsou přeloženy do kolekce hodnot vybraných ze všech členů pole.
 1. `field()` funkce odkazující na aliasy pole vracejí pole s vybranými hodnotami.
 1. Odkaz na počítané aliasy pole uvnitř `where` podmínky vrátí kolekci s jednou hodnotou vybranou ze člena pole, který je vyhodnocován v aktuální iteraci.
@@ -465,7 +564,7 @@ Proto pokud je potřeba přístup k hodnotě počítaného aliasu pole pomocí `
 | 2 | `Microsoft.Test/resourceType/stringArray[*]` => `"b"` </br>  `[first(field('Microsoft.Test/resourceType/stringArray[*]'))]` => `"b"` | `true` |
 | 3 | `Microsoft.Test/resourceType/stringArray[*]` => `"c"` </br>  `[first(field('Microsoft.Test/resourceType/stringArray[*]'))]` => `"c"` | `true` |
 
-Užitečné příklady najdete v tématu [Příklady počtu](../concepts/definition-structure.md#count-examples).
+Užitečné příklady najdete v tématu [Příklady počtu polí](../concepts/definition-structure.md#field-count-examples).
 
 ## <a name="modifying-arrays"></a>Úprava polí
 
@@ -487,6 +586,59 @@ Příkazy [připojit](../concepts/effects.md#append) a [Upravit](../concepts/eff
 | `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].action` | `modify` s `addOrReplace` operací | Azure Policy připojí nebo nahradí existující `action` vlastnost každého člena pole. |
 
 Další informace najdete v [příkladech připojení](../concepts/effects.md#append-examples).
+
+## <a name="appendix--additional--alias-examples"></a>Příloha – další příklady aliasů [*]
+
+Pro kontrolu, zda všechny členy pole v obsahu žádosti splňují určitou podmínku, se doporučuje použít [výrazy počtu polí](#field-count-expressions) . V některých jednoduchých podmínkách je však možné dosáhnout stejného výsledku pomocí přístupového objektu pole s aliasem pole (jak je popsáno v tématu [odkazování na kolekci členů pole](#referencing-the-array-members-collection)). To může být užitečné v pravidlech zásad, která překračují limit povolených výrazů **Count** . Tady jsou příklady pro běžné případy použití:
+
+Příklad pravidla zásad pro tabulku scénář:
+
+```json
+"policyRule": {
+    "if": {
+        "allOf": [
+            {
+                "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules",
+                "exists": "true"
+            },
+            <-- Condition (see table below) -->
+        ]
+    },
+    "then": {
+        "effect": "[parameters('effectType')]"
+    }
+}
+```
+
+Pole **ipRules** je pro následující tabulku scénář následující:
+
+```json
+"ipRules": [
+    {
+        "value": "127.0.0.1",
+        "action": "Allow"
+    },
+    {
+        "value": "192.168.1.1",
+        "action": "Allow"
+    }
+]
+```
+
+Pro každý příklad podmínky Nahraďte parametr `<field>` `"field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value"` .
+
+Následující výsledky jsou výsledkem kombinace podmínky a ukázkového pravidla zásad a pole stávajících hodnot výše:
+
+|Podmínka |Výsledek | Scénář |Vysvětlení |
+|-|-|-|-|
+|`{<field>,"notEquals":"127.0.0.1"}` |Nothing |Žádná shoda |Jeden prvek pole se vyhodnotí jako false (127.0.0.1! = 127.0.0.1) a jeden jako true (127.0.0.1! = 192.168.1.1), takže podmínka **notEquals** je _nepravdivá_ a efekt se neaktivuje. |
+|`{<field>,"notEquals":"10.0.4.1"}` |Vliv na zásady |Žádná shoda |Obě prvky pole se vyhodnocují jako true (10.0.4.1! = 127.0.0.1 a 10.0.4.1! = 192.168.1.1), takže podmínka **notEquals** je _pravdivá_ a výsledek se aktivuje. |
+|`"not":{<field>,"notEquals":"127.0.0.1" }` |Vliv na zásady |Jedna nebo více shod |Jeden prvek pole se vyhodnotí jako false (127.0.0.1! = 127.0.0.1) a jeden jako true (127.0.0.1! = 192.168.1.1), takže podmínka **notEquals** je _NEPRAVDA_. Logický operátor se vyhodnotí jako true (**ne** _false_), takže se efekt aktivuje. |
+|`"not":{<field>,"notEquals":"10.0.4.1"}` |Nothing |Jedna nebo více shod |Obě prvky pole jsou vyhodnoceny jako true (10.0.4.1! = 127.0.0.1 a 10.0.4.1! = 192.168.1.1), takže podmínka **notEquals** je _pravdivá_. Logický operátor se vyhodnotí jako false (**ne** _true_), takže se efekt neaktivuje. |
+|`"not":{<field>,"Equals":"127.0.0.1"}` |Vliv na zásady |Neshoda |Jeden prvek pole se vyhodnotí jako true (127.0.0.1 = = 127.0.0.1) a jeden jako false (127.0.0.1 = = 192.168.1.1), takže podmínka **Equals** je _false_. Logický operátor se vyhodnotí jako true (**ne** _false_), takže se efekt aktivuje. |
+|`"not":{<field>,"Equals":"10.0.4.1"}` |Vliv na zásady |Neshoda |Obě prvky pole jsou vyhodnoceny jako false (10.0.4.1 = = 127.0.0.1 a 10.0.4.1 = = 192.168.1.1), takže podmínka **Equals** je _false_. Logický operátor se vyhodnotí jako true (**ne** _false_), takže se efekt aktivuje. |
+|`{<field>,"Equals":"127.0.0.1"}` |Nothing |Všechny shody |Jeden prvek pole se vyhodnotí jako true (127.0.0.1 = = 127.0.0.1) a jeden jako false (127.0.0.1 = = 192.168.1.1), takže podmínka **Equals** je _false_ a efekt se neaktivuje. |
+|`{<field>,"Equals":"10.0.4.1"}` |Nothing |Všechny shody |Obě prvky pole jsou vyhodnoceny jako false (10.0.4.1 = = 127.0.0.1 a 10.0.4.1 = = 192.168.1.1), takže podmínka **Equals** je _false_ a účinek není aktivován. |
 
 ## <a name="next-steps"></a>Další kroky
 

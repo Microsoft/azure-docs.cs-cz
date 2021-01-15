@@ -11,6 +11,10 @@
       href: quickstart-template.md
     - name: PowerShell
       href: quickstart-powershell.md
+    - name: Portál
+      href: quickstart-portal.md
+    - name: Rozhraní příkazového řádku
+      href: quickstart-azure-cli.md
 - name: Kurzy
   items:
     - name: Vytvoření zásad ověřování identity
@@ -39,7 +43,7 @@
       href: workflow.md
     - name: Zobrazení protokolů auditu
       href: audit-logs.md
-- name: Odkazy
+- name: Reference
   items:
     - name: Regionální dostupnost
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=azure-attestation'

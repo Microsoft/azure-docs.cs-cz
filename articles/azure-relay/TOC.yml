@@ -65,7 +65,7 @@
               href: relay-hybrid-connections-node-ws-api-overview.md
     - name: Zabezpečení
       items:
-        - name: Konfigurace brány firewall protokolu IP (Preview)
+        - name: Konfigurace brány firewall protokolu P
           href: ip-firewall-virtual-networks.md
         - name: Konfigurace privátních koncových bodů
           href: private-link-service.md
