@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff656887081681a804285e9a96352feef15fc675
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 7557985b23991f1a53d45f6f2d2283500c0d73f3
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97744040"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222407"
 ---
 # <a name="discover-the-current-state-of-external-collaboration-in-your-organization"></a>Zjištění aktuálního stavu externí spolupráce ve vaší organizaci 
 
@@ -46,9 +46,9 @@ Externí organizace je možné určit pomocí názvů domén e-mailových adres 
 
 ### <a name="use-allow-or-deny-lists"></a>Použít seznamy povolených nebo zakázaných
 
-Dalším způsobem, jak zjistit, kdo jste v současnosti spolupracujete, nebo se kterými jste zablokovali spolupráci, je zjistit, jestli jste do [seznamů povolených nebo odepřených](../external-identities/allow-deny-list.md)organizací přidali nějaké organizace.
+Zvažte, jestli vaše organizace chce dovolit spolupráci jenom s konkrétními organizacemi. Případně zvažte, jestli vaše organizace chce zablokovat spolupráci s konkrétními organizacemi.  Na úrovni tenanta existuje [seznam povolených nebo odepřených](../external-identities/allow-deny-list.md)dat, který se dá použít k řízení celkových pozvání a uplatnění všech B2B bez ohledu na zdroj (např. týmy, SharePoint a Azure Portal).
+Pokud používáte správu nároků, můžete také určit rozsah přístupových balíčků k podmnožině svých partnerů pomocí nastavení konkrétní propojené organizace, jak je uvedeno níže.
 
-Vezměte v úvahu, jestli vaše organizace chce dovolit spolupráci jenom s konkrétními organizacemi. Zvažte také, jestli vaše organizace chce zablokovat spolupráci s konkrétními organizacemi. Tato nastavení se můžou vztahovat k celkovému uplatnění B2B nebo jenom ke konkrétnímu balíčku přístupu.
 
 ![Snímek obrazovky se seznamem povolených odepření při vytváření nového přístupového balíčku](media/secure-external-access/2-new-access-package.png)
 

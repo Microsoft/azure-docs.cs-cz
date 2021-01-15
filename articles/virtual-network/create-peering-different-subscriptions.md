@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/09/2019
 ms.author: kumud
-ms.openlocfilehash: 79062ae45f04b290f6e4120906b98590ce95dbe1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 654c883498e724d10104133f99ef1664f72fe09d
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87833262"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223478"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions-and-azure-active-directory-tenants"></a>Vytvoření partnerského vztahu virtuální sítě – Správce prostředků, různých předplatných a klientů Azure Active Directory
 
@@ -31,14 +31,14 @@ Postup vytvoření partnerského vztahu virtuální sítě se liší v závislos
 |[Jedna Resource Manager, druhá Classic](create-peering-different-deployment-models.md) |Stejné|
 |[Jedna Resource Manager, druhá Classic](create-peering-different-deployment-models-subscriptions.md) |Různé|
 
-Partnerský vztah virtuální sítě nelze vytvořit mezi dvěma virtuálními sítěmi nasazenými prostřednictvím modelu nasazení Classic. Pokud potřebujete propojit virtuální sítě, které byly vytvořeny prostřednictvím modelu nasazení Classic, můžete k propojení virtuálních sítí použít [VPN Gateway](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) Azure.
+Partnerský vztah virtuální sítě nelze vytvořit mezi dvěma virtuálními sítěmi nasazenými prostřednictvím modelu nasazení Classic. Pokud potřebujete propojit virtuální sítě, které byly vytvořeny prostřednictvím modelu nasazení Classic, můžete k propojení virtuálních sítí použít [VPN Gateway](../vpn-gateway/tutorial-site-to-site-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) Azure.
 
 Tento kurz je virtuálními sítěmi ve stejné oblasti. Můžete také vytvořit partnerský vztah virtuálních sítí v různých [podporovaných oblastech](virtual-network-manage-peering.md#cross-region). Doporučujeme, abyste se seznámili s [požadavky a omezeními partnerských vztahů](virtual-network-manage-peering.md#requirements-and-constraints) před vytvořením partnerského vztahu virtuálních sítí.
 
 K vytvoření partnerského vztahu virtuálních sítí můžete použít [Azure Portal](#portal), [rozhraní příkazového řádku](#cli) Azure (CLI), azure [PowerShell](#powershell)nebo [šablonu Azure Resource Manager](#template) . Vyberte některou z předchozích odkazů nástrojů, abyste přešli přímo k postupu při vytváření partnerského vztahu virtuálních sítí pomocí vašeho nástroje podle vlastního výběru.
 
 Pokud jsou virtuální sítě v různých předplatných a odběry jsou přidružené k různým klientům Azure Active Directory, před pokračováním proveďte následující kroky:
-1. Přidejte uživatele z každého tenanta služby Active Directory jako [uživatele typu Host](../active-directory/b2b/add-users-administrator.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-guest-users-to-the-directory) v opačném Azure Active Directory tenantovi.
+1. Přidejte uživatele z každého tenanta služby Active Directory jako [uživatele typu Host](../active-directory/external-identities/add-users-administrator.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-guest-users-to-the-directory) v opačném Azure Active Directory tenantovi.
 1. Každý uživatel musí přijmout pozvánku uživatele typu host z opačného tenanta Azure Active Directory.
 
 ## <a name="create-peering---azure-portal"></a><a name="portal"></a>Vytvoření partnerských vztahů – Azure Portal
@@ -46,7 +46,7 @@ Pokud jsou virtuální sítě v různých předplatných a odběry jsou přidru�
 Následující kroky používají pro každé předplatné různé účty. Pokud používáte účet, který má oprávnění k oběma předplatným, můžete použít stejný účet pro všechny kroky, přeskočit kroky pro odhlášení z portálu a přeskočit kroky pro přiřazení dalších uživatelských oprávnění k virtuálním sítím.
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako *Usera*. Účet, se kterým se přihlašujete, musí mít potřebná oprávnění k vytvoření partnerského vztahu virtuální sítě. Seznam oprávnění najdete v tématu [oprávnění partnerského vztahu virtuálních sítí](virtual-network-manage-peering.md#permissions).
-2. Vyberte **+ vytvořit prostředek**, vyberte **sítě**a pak vyberte **virtuální síť**.
+2. Vyberte **+ vytvořit prostředek**, vyberte **sítě** a pak vyberte **virtuální síť**.
 3. Vyberte nebo zadejte následující příklady hodnot pro následující nastavení a pak vyberte **vytvořit**:
     - **Název**: *myVnetA*
     - **Adresní prostor**: *10.0.0.0/16*
@@ -59,7 +59,7 @@ Následující kroky používají pro každé předplatné různé účty. Pokud
 5. V seznamu svislých možností na levé straně vyberte **řízení přístupu (IAM)** .
 6. V části **řízení přístupu myVnetA (IAM)** vyberte **+ Přidat přiřazení role**.
 7. V poli **role** vyberte **Přispěvatel sítě** .
-8. V poli **Vybrat** vyberte *UserB*nebo zadejte e-mailovou adresu UserB, kterou chcete vyhledat.
+8. V poli **Vybrat** vyberte *UserB* nebo zadejte e-mailovou adresu UserB, kterou chcete vyhledat.
 9. Vyberte **Uložit**.
 10. V části **myVnetA-Access Control (IAM)** vyberte **vlastnosti** ze svislého seznamu možností na levé straně. Zkopírujte **ID prostředku**, které se používá v pozdějším kroku. ID prostředku je podobné jako v následujícím příkladu: `/subscriptions/<Subscription Id>/resourceGroups/myResourceGroupA/providers/Microsoft.Network/virtualNetworks/myVnetA` .
 11. Odhlaste se z portálu jako UserA a pak se přihlaste jako UserB.
@@ -74,14 +74,14 @@ Následující kroky používají pro každé předplatné různé účty. Pokud
     - **Umístění**: *východní USA*
 
 13. Do pole **Hledat prostředky** v horní části portálu zadejte *myVnetB*. Pokud se zobrazí ve výsledcích hledání, vyberte **myVnetB** .
-14. V části **myVnetB**vyberte **vlastnosti** ze svislého seznamu možností na levé straně. Zkopírujte **ID prostředku**, které se používá v pozdějším kroku. ID prostředku je podobné jako v následujícím příkladu: `/subscriptions/<Subscription ID>/resourceGroups/myResourceGroupB/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB` .
-15. V části **myVnetB**vyberte **řízení přístupu (IAM)** a pak proveďte kroky 5-10 pro myVnetB, a to zadáním **Usera** v kroku 8.
+14. V části **myVnetB** vyberte **vlastnosti** ze svislého seznamu možností na levé straně. Zkopírujte **ID prostředku**, které se používá v pozdějším kroku. ID prostředku je podobné jako v následujícím příkladu: `/subscriptions/<Subscription ID>/resourceGroups/myResourceGroupB/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB` .
+15. V části **myVnetB** vyberte **řízení přístupu (IAM)** a pak proveďte kroky 5-10 pro myVnetB, a to zadáním **Usera** v kroku 8.
 16. Odhlaste se z portálu jako UserB a přihlaste se jako UserA.
 17. Do pole **Hledat prostředky** v horní části portálu zadejte *myVnetA*. Pokud se zobrazí ve výsledcích hledání, vyberte **myVnetA** .
 18. Vyberte **myVnetA**.
-19. V části **Nastavení**vyberte **partnerské vztahy**.
-20. V části **myVnetA-peering**vyberte **+ Přidat** .
-21. V části **Přidat partnerský vztah**zadejte nebo vyberte následující možnosti a pak vyberte **OK**:
+19. V části **Nastavení** vyberte **partnerské vztahy**.
+20. V části **myVnetA-peering** vyberte **+ Přidat** .
+21. V části **Přidat partnerský vztah** zadejte nebo vyberte následující možnosti a pak vyberte **OK**:
      - **Název**: *myVnetAToMyVnetB*
      - **Model nasazení virtuální sítě**: vyberte **Správce prostředků**.
      - **Znám moje ID prostředku**: zaškrtněte toto políčko.
@@ -90,10 +90,10 @@ Následující kroky používají pro každé předplatné různé účty. Pokud
     V tomto kurzu se žádná další nastavení nepoužívají. Pokud se chcete dozvědět o všech nastaveních partnerských vztahů, přečtěte si téma [Správa partnerských vztahů virtuálních sítí](virtual-network-manage-peering.md#create-a-peering).
 22. Partnerský vztah, který jste vytvořili, se zobrazí po výběru **OK** v předchozím kroku o krátké čekání. Datum **zahájení** se zobrazí ve sloupci **stav partnerského vztahu** pro partnerský vztah **myVnetAToMyVnetB** , který jste vytvořili. Nastavili jste partnerský vztah myVnetA k myVnetB, ale teď musíte mít rovnocenné myVnetB pro myVnetA. Partnerský vztah se musí vytvořit v obou směrech, aby bylo možné vzájemně komunikovat prostředky ve virtuálních sítích.
 23. Odhlaste se z portálu jako UserA a přihlaste se jako UserB.
-24. Proveďte znovu kroky 17-21 pro myVnetB. V kroku 21 pojmenujte partnerský vztah *myVnetBToMyVnetA*, vyberte *myVnetA* pro **virtuální síť**a v poli **ID prostředku** zadejte ID z kroku 10.
+24. Proveďte znovu kroky 17-21 pro myVnetB. V kroku 21 pojmenujte partnerský vztah *myVnetBToMyVnetA*, vyberte *myVnetA* pro **virtuální síť** a v poli **ID prostředku** zadejte ID z kroku 10.
 25. Pár sekund po výběru **OK** pro vytvoření partnerského vztahu pro myVnetB, partnerský vztah **myVnetBToMyVnetA** , který jste právě vytvořili, je uvedený **ve sloupci** **stav partnerského vztahu** .
 26. Odhlaste se z portálu jako UserB a přihlaste se jako UserA.
-27. Proveďte znovu kroky 17-19. **Stav partnerského** vztahu pro partnerský vztah **MyVnetAToVNetB** je teď **připojený**taky. Partnerský vztah se úspěšně naváže po zobrazení **připojení** ve sloupci **stav partnerského vztahu** pro obě virtuální sítě v partnerském vztahu. Všechny prostředky Azure, které vytvoříte v obou virtuálních sítích, teď můžou vzájemně komunikovat prostřednictvím jejich IP adres. Pokud pro virtuální sítě používáte výchozí překlad názvů Azure, prostředky ve virtuálních sítích nebudou schopné překládat názvy mezi virtuálními sítěmi. Pokud chcete přeložit názvy mezi virtuálními sítěmi v partnerském vztahu, musíte vytvořit vlastní server DNS. Přečtěte si, jak nastavit [překlad názvů pomocí vlastního serveru DNS](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server).
+27. Proveďte znovu kroky 17-19. **Stav partnerského** vztahu pro partnerský vztah **MyVnetAToVNetB** je teď **připojený** taky. Partnerský vztah se úspěšně naváže po zobrazení **připojení** ve sloupci **stav partnerského vztahu** pro obě virtuální sítě v partnerském vztahu. Všechny prostředky Azure, které vytvoříte v obou virtuálních sítích, teď můžou vzájemně komunikovat prostřednictvím jejich IP adres. Pokud pro virtuální sítě používáte výchozí překlad názvů Azure, prostředky ve virtuálních sítích nebudou schopné překládat názvy mezi virtuálními sítěmi. Pokud chcete přeložit názvy mezi virtuálními sítěmi v partnerském vztahu, musíte vytvořit vlastní server DNS. Přečtěte si, jak nastavit [překlad názvů pomocí vlastního serveru DNS](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server).
 28. **Volitelné**: i když se v tomto kurzu nezabývá vytvářením virtuálních počítačů, můžete vytvořit virtuální počítač v každé virtuální síti a připojit se z jednoho virtuálního počítače k druhému a ověřit připojení.
 29. **Volitelné**: Chcete-li odstranit prostředky, které vytvoříte v tomto kurzu, proveďte kroky v části [odstranění prostředků](#delete-portal) v tomto článku.
 
@@ -292,7 +292,7 @@ Po dokončení tohoto kurzu možná budete chtít odstranit prostředky, které 
 1. Přihlaste se k Azure Portal jako UserA.
 2. Do vyhledávacího pole portálu zadejte **myResourceGroupA**. Ve výsledcích hledání vyberte **myResourceGroupA**.
 3. Vyberte **Odstranit**.
-4. Odstranění potvrďte tak, že do pole **Zadejte název skupiny prostředků** zadáte **myResourceGroupA**a pak vyberete **Odstranit**.
+4. Odstranění potvrďte tak, že do pole **Zadejte název skupiny prostředků** zadáte **myResourceGroupA** a pak vyberete **Odstranit**.
 5. Odhlaste se z portálu jako UserA a přihlaste se jako UserB.
 6. Proveďte kroky 2-4 pro myResourceGroupB.
 

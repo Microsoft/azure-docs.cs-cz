@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 11/25/2020
+ms.date: 01/14/2020
 ms.author: jlian
-ms.openlocfilehash: f4438aebcb81d665a19a595ac7ade4fea27fc43f
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: e569cbe9030b2ac5a42bd99233b4fefc925a5662
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621004"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220302"
 ---
 # <a name="transport-layer-security-tls-support-in-iot-hub"></a>Podpora protokolu TLS (Transport Layer Security) v IoT Hub
 
@@ -46,9 +46,16 @@ Pro zvýšení zabezpečení nakonfigurujte centra IoT tak, aby povolovala *jeno
 * Středojižní USA
 * Západní USA 2
 * USA (Gov) – Arizona
-* USA (Gov) – Virginia
+* US Gov – Virginie (podpora TLS 1.0/1.1 není v této oblasti k dispozici – je třeba povolit vynucení TLS 1,2 nebo vytvoření centra IoT)
 
-Pro tento účel zřiďte novou IoT Hub v některé z podporovaných oblastí a nastavte `minTlsVersion` vlastnost na `1.2` specifikaci prostředků služby IoT Hub pro Azure Resource Manager Template:
+Pokud chcete povolit vynucení TLS 1,2, postupujte podle kroků v části [vytvoření centra IoT v Azure Portal](/.iot-hub-create-through-portal.md), s výjimkou.
+
+- Vyberte **oblast** z jedné v seznamu výše.
+- V části **Správa-> rozšířené-> TLS (Transport Layer Security) > minimální verze protokolu TLS** vyberte **1,2**. Toto nastavení se objevuje jenom pro Centrum IoT vytvořené v podporované oblasti.
+
+    :::image type="content" source="media/iot-hub-tls-12-enforcement.png" alt-text="Snímek obrazovky ukazující, jak zapnout vynucení TLS 1,2 během vytváření IoT Hub":::
+
+Chcete-li použít šablonu ARM pro vytvoření, zřiďte novou IoT Hub v některé z podporovaných oblastí a nastavte `minTlsVersion` vlastnost na hodnotu `1.2` ve specifikaci prostředků:
 
 ```json
 {
@@ -112,11 +119,11 @@ Pomocí níže uvedených odkazů nakonfigurujte TLS 1,2 a povolená šifra v Io
 
 | Jazyk | Verze podporující TLS 1,2 | Dokumentace |
 |----------|------------------------------------|---------------|
-| C        | Tag 2019-12-11 nebo novější            | [Propojit](https://aka.ms/Tls_C_SDK_IoT) |
-| Python   | Verze 2.0.0 nebo novější             | [Propojit](https://aka.ms/Tls_Python_SDK_IoT) |
-| C#       | Verze 1.21.4 nebo novější            | [Propojit](https://aka.ms/Tls_CSharp_SDK_IoT) |
-| Java     | Verze 1.19.0 nebo novější            | [Propojit](https://aka.ms/Tls_Java_SDK_IoT) |
-| NodeJS   | Verze 1.12.2 nebo novější            | [Propojit](https://aka.ms/Tls_Node_SDK_IoT) |
+| C        | Tag 2019-12-11 nebo novější            | [Odkaz](https://aka.ms/Tls_C_SDK_IoT) |
+| Python   | Verze 2.0.0 nebo novější             | [Odkaz](https://aka.ms/Tls_Python_SDK_IoT) |
+| C#       | Verze 1.21.4 nebo novější            | [Odkaz](https://aka.ms/Tls_CSharp_SDK_IoT) |
+| Java     | Verze 1.19.0 nebo novější            | [Odkaz](https://aka.ms/Tls_Java_SDK_IoT) |
+| NodeJS   | Verze 1.12.2 nebo novější            | [Odkaz](https://aka.ms/Tls_Node_SDK_IoT) |
 
 IoT Edge zařízení je možné nakonfigurovat tak, aby při komunikaci s IoT Hub používala TLS 1,2. Pro účely tohoto účelu použijte [stránku dokumentace IoT Edge](https://github.com/Azure/iotedge/blob/master/edge-modules/edgehub-proxy/README.md).
 

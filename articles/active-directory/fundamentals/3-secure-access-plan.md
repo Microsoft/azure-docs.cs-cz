@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd04d24e0e46b053381858be037a009b1987f8e9
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 40738f8fcb14c48ccfe3bc7869e5176c4ab63165
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97932516"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222326"
 ---
 # <a name="3-create-a-security-plan-for-external-access"></a>3. vytvoření plánu zabezpečení pro externí přístup 
 
@@ -159,7 +159,7 @@ Azure AD P2 a Microsoft 365 E5 mají úplnou sadu nástrojů zabezpečení a zá
 
 ### <a name="provisioning-signing-in-reviewing-access-and-deprovisioning-bolded-entries-are-preferred-methods"></a>Zřizování, přihlašování, kontrola přístupu a zrušení zřízení. Tučné položky jsou preferované metody
 
-| Funkce| Zřízení externích uživatelů| Vynutili reqs přihlášení.| Kontrola přístupu| Zrušit zřízení přístupu |
+| Příznak| Zřízení externích uživatelů| Vynutili reqs přihlášení.| Kontrola přístupu| Zrušit zřízení přístupu |
 | - | - | - | - | - |
 | Spolupráce B2B Azure AD| Pozvání prostřednictvím e-mailu, jednorázového hesla, samoobslužné služby| | **Pravidelná kontrola na partnera**| Odebrat účet<br>Omezit přihlášení |
 | Správa nároků| **Přidat uživatele prostřednictvím přiřazení nebo samoobslužného přístupu**| | Kontroly přístupu|**Vypršení platnosti nebo odebrání balíčku přístupu**|
@@ -170,7 +170,7 @@ Azure AD P2 a Microsoft 365 E5 mají úplnou sadu nástrojů zabezpečení a zá
 
  ### <a name="access-to-resources-bolded-entries-are-preferred-methods"></a>Přístup k prostředkům. Tučné položky jsou preferované metody
 
-|Funkce | Přístup k prostředkům aplikace &| Přístup k SharePointu & OneDrive| Přístup k týmům| Zabezpečení dokumentu & e-mailu |
+|Příznak | Přístup k prostředkům aplikace &| Přístup k SharePointu & OneDrive| Přístup k týmům| Zabezpečení dokumentu & e-mailu |
 | - |-|-|-|-|
 | Správa nároků| **Přidat uživatele prostřednictvím přiřazení nebo samoobslužného přístupu**| **Přístupové balíčky**| **Přístupové balíčky**|  |
 | Skupina Office 365| | Přístup k lokalitám (a souvisejícímu obsahu), který je součástí skupiny| Přístup k týmům (a souvisejícímu obsahu), který je součástí skupiny|  |
@@ -190,7 +190,7 @@ Můžete dosáhnout robustního řízení pomocí Azure AD P1 a Microsoft 365 E3
 ### <a name="provisioning-signing-in-reviewing-access-and-deprovisioning"></a>Zřizování, přihlašování, kontrola přístupu a zrušení zřízení
 
 
-|Funkce | Zřízení externích uživatelů| Vymáhat požadavky na přihlášení| Kontrola přístupu| Zrušit zřízení přístupu |
+|Příznak | Zřízení externích uživatelů| Vymáhat požadavky na přihlášení| Kontrola přístupu| Zrušit zřízení přístupu |
 | - |-|-|-|-|
 | Spolupráce B2B Azure AD| **Pozvání prostřednictvím e-mailu, jednorázového hesla, samoobslužné služby**| Přímá federace B2B| **Pravidelná kontrola na partnera**| Odebrat účet<br>Omezit přihlášení |
 | Skupiny Microsoft nebo Office 365| | | | Vypršení platnosti nebo odstranění skupiny.<br>Odebrání ze skupiny |
@@ -200,7 +200,7 @@ Můžete dosáhnout robustního řízení pomocí Azure AD P1 a Microsoft 365 E3
 
  ### <a name="access-to-resources"></a>Přístup k prostředkům.
 
-|Funkce | Přístup k prostředkům aplikace &| Přístup k SharePointu & OneDrive| Přístup k týmům| Zabezpečení dokumentu & e-mailu |
+|Příznak | Přístup k prostředkům aplikace &| Přístup k SharePointu & OneDrive| Přístup k týmům| Zabezpečení dokumentu & e-mailu |
 | - |-|-|-|-|
 | Skupiny Microsoft nebo Office 365| | **Přístup k lokalitám, které jsou součástí skupiny (a přidruženého obsahu)**|**Přístup k týmům, které jsou součástí Microsoft 365 skupiny (a souvisejícího obsahu)**|  |
 | Popisky citlivosti| | Ruční klasifikace a omezení přístupu| Ruční klasifikace a omezení přístupu.| Ruční klasifikace pro omezení a šifrování |

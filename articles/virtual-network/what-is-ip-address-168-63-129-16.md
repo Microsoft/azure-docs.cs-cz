@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/15/2019
 ms.author: genli
-ms.openlocfilehash: 03c1badf984fb150631c157f3fdc07856b60e965
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 1e304bc30a48c92fdff576723dae6af1e26ef3da
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93088893"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222577"
 ---
 # <a name="what-is-ip-address-1686312916"></a>Co je IP adresa 168.63.129.16?
 
@@ -37,7 +37,7 @@ IP adresa 168.63.129.16 je virtuální veřejná IP adresa, která se používá
 
 ## <a name="scope-of-ip-address-1686312916"></a>Rozsah IP adres 168.63.129.16
 
-Veřejná IP adresa 168.63.129.16 se používá ve všech oblastech a v národních cloudech. Tato speciální veřejná IP adresa je vlastněná Microsoftem a nebude se měnit. Tuto IP adresu doporučujeme v jakýchkoli místních zásadách brány firewall (ve virtuálním počítači) Povolte (odchozí směr). Komunikace mezi touto zvláštní IP adresou a prostředky je bezpečná, protože z této IP adresy může zdroj zprávy vytvořit jenom interní platforma Azure. Pokud je tato adresa zablokovaná, může dojít k neočekávanému chování v nejrůznějších scénářích. 168.63.129.16 je [virtuální IP adresa uzlu hostitele](../virtual-network/security-overview.md#azure-platform-considerations) , protože nepodléhá uživatelsky definovaným trasám.
+Veřejná IP adresa 168.63.129.16 se používá ve všech oblastech a v národních cloudech. Tato speciální veřejná IP adresa je vlastněná Microsoftem a nebude se měnit. Tuto IP adresu doporučujeme v jakýchkoli místních zásadách brány firewall (ve virtuálním počítači) Povolte (odchozí směr). Komunikace mezi touto zvláštní IP adresou a prostředky je bezpečná, protože z této IP adresy může zdroj zprávy vytvořit jenom interní platforma Azure. Pokud je tato adresa zablokovaná, může dojít k neočekávanému chování v nejrůznějších scénářích. 168.63.129.16 je [virtuální IP adresa uzlu hostitele](./network-security-groups-overview.md#azure-platform-considerations) , protože nepodléhá uživatelsky definovaným trasám.
 
 - Agent virtuálního počítače vyžaduje odchozí komunikaci přes porty 80/TCP a 32526/TCP s WireServer (168.63.129.16). Ty by měly být otevřené v místní bráně firewall na virtuálním počítači. Komunikace na těchto portech s 168.63.129.16 nepodléhá nakonfigurovaným skupinám zabezpečení sítě.
 
@@ -49,5 +49,5 @@ Veřejná IP adresa 168.63.129.16 se používá ve všech oblastech a v národn�
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Skupiny zabezpečení](security-overview.md)
+- [Skupiny zabezpečení](./network-security-groups-overview.md)
 - [Vytvoření, změna nebo odstranění skupiny zabezpečení sítě](manage-network-security-group.md)

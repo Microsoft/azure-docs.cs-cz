@@ -5,7 +5,7 @@ services: active-directory
 author: curtand
 ms.author: curtand
 manager: daveba
-ms.date: 12/03/2020
+ms.date: 01/14/2020
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: enterprise-users
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e940c6eb2710ea43e756e4ea7956a39df9e0ce8
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: bf2d0d3335468147575eb53a99940866baa18375
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575546"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222517"
 ---
 # <a name="restrict-guest-access-permissions-preview-in-azure-active-directory"></a>Omezení oprávnění k přístupu hosta (Preview) v Azure Active Directory
 
@@ -139,14 +139,15 @@ Tím, že je to podporováno, znamenáme, že prostředí je očekávané. Konkr
 - Teams
 - Outlook (OWA)
 - SharePoint
+- Planner v týmech
+- Webová aplikace Planner
 
 ### <a name="services-currently-not-supported"></a>Aktuálně nepodporované služby
 
 Služba bez aktuální podpory může mít problémy s kompatibilitou s novým nastavením omezení hostů.
 
 - Formuláře
-- Planner v týmech
-- Aplikace plánovače
+- Mobilní aplikace Planneru
 - Project
 - Yammer
 
@@ -157,10 +158,10 @@ Otázka | Odpověď
 Kde se tato oprávnění vztahují? | Tato oprávnění na úrovni adresáře se vynutila napříč službami a portály Azure AD, včetně Microsoft Graph, PowerShell v2, Azure Portal a portálu moje aplikace. Ovlivněné jsou taky Microsoft 365 služby, které využívají Microsoft 365 skupiny pro scénáře spolupráce, konkrétně Outlook, Microsoft teams a SharePoint.
 Jak omezená oprávnění ovlivňují, které skupiny můžou zobrazit hosté? | Bez ohledu na výchozí nebo omezené oprávnění hosta nemohou hosté vytvořit výčet seznamu skupin nebo uživatelů. Hosté můžou zobrazit skupiny, které jsou členy v Azure Portal i na portálu moje aplikace v závislosti na oprávněních:<li>**Výchozí oprávnění**: Pokud chcete najít skupiny, které jsou členy v Azure Portal, musí uživatel v seznamu **Všichni uživatelé** vyhledat své ID objektu a pak vybrat **skupiny**. Tady uvidí seznam skupin, které jsou členy, včetně všech podrobností o skupině, včetně názvu, e-mailu a tak dále. Na portálu moje aplikace uvidí seznam skupin, které vlastní, a skupiny, které jsou členy.</li><li>**Omezená oprávnění hostů**: v Azure Portal stále můžou najít seznam skupin, které jsou členy, tak, že v seznamu všichni uživatelé vyhledá své ID objektu a pak vybere skupiny. Mohou zobrazit pouze velmi omezené podrobnosti o skupině, zejména ID objektu. Podle návrhu jsou sloupce název a E-mail prázdné a typ skupiny nebyl rozpoznán. Na portálu moje aplikace nebudou mít přístup k seznamu skupin, které vlastní nebo které skupiny jsou členy.</li><br>Podrobnější porovnání oprávnění adresáře, která pocházejí z Graph API, najdete v tématu věnovaném [výchozím oprávněním uživatele](../fundamentals/users-default-permissions.md#member-and-guest-users).
 Na které části portálu moje aplikace bude tato funkce mít vliv? | Tato nová oprávnění budou respektovat funkce skupin na portálu moje aplikace. To zahrnuje všechny cesty pro zobrazení seznamu skupin a členství ve skupinách v mých aplikacích. V dostupnosti dlaždice skupiny nebyly provedeny žádné změny. Existující nastavení skupiny v Azure Portal nadále řídí dostupnost dlaždice skupiny.
-Potlačí tato oprávnění nastavení hostů pro SharePoint nebo Microsoft Teams? | Ne. Tato stávající nastavení stále ovládají prostředí a přístup k nim v těchto aplikacích. Pokud se například zobrazí problémy na SharePointu, zkontrolujte nastavení externího sdílení.
-Jaké jsou známé problémy s kompatibilitou v Planneru a Yammeru? | <li>S oprávněním nastaveným na omezeno budou hosté přihlášení do aplikace plánovače nebo přístup k plánovači v Microsoft Teams mít přístup k jejich plánům ani úlohám.<li>S oprávněním nastaveným na hodnotu "omezeno" budou hosté přihlášení do Yammeru moci opustit skupinu.
+Potlačí tato oprávnění nastavení hostů pro SharePoint nebo Microsoft Teams? | No. Tato stávající nastavení stále ovládají prostředí a přístup k nim v těchto aplikacích. Pokud se například zobrazí problémy na SharePointu, zkontrolujte nastavení externího sdílení.
+Jaké jsou známé problémy s kompatibilitou v Planneru a Yammeru? | <li>S oprávněním nastaveným na hodnotu "omezeno" můžou hosté přihlášení do mobilní aplikace Planner získat přístup k jejich plánům nebo úlohám.<li>S oprávněním nastaveným na hodnotu "omezeno" budou hosté přihlášení do Yammeru moci opustit skupinu.
 Budou se moje stávající oprávnění hostů v mém tenantovi měnit? | V aktuálním nastavení se neudělaly žádné změny. Udržujeme zpětnou kompatibilitu s vaším stávajícím nastavením. Rozhodnete, že chcete provést změny.
-Budou tato oprávnění nastavena ve výchozím nastavení? | Ne. Existující výchozí oprávnění zůstanou beze změny. Volitelně můžete nastavit oprávnění pro více omezující podmínky.
+Budou tato oprávnění nastavena ve výchozím nastavení? | No. Existující výchozí oprávnění zůstanou beze změny. Volitelně můžete nastavit oprávnění pro více omezující podmínky.
 Existují pro tuto funkci nějaké licenční požadavky? | Ne, s touto funkcí neexistují žádné nové licenční požadavky.
 
 ## <a name="next-steps"></a>Další kroky

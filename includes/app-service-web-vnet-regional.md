@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 10/21/2020
 ms.author: ccompy
-ms.openlocfilehash: 57b2955f8cec059cd20d353eba31dc39ad992d50
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 3f9dd35959980eef4e1bec550bf7e9f583cf30d2
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97506298"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98225309"
 ---
 Použití místní integrace virtuální sítě umožňuje aplikacím přístup k těmto akcím:
 
@@ -19,7 +19,7 @@ Použití místní integrace virtuální sítě umožňuje aplikacím přístup 
 * Prostředky v rámci připojení Azure ExpressRoute.
 * Prostředky ve virtuální síti, do které jste integraci.
 * Prostředky napříč partnerskými připojeními, mezi které patří připojení Azure ExpressRoute.
-* Soukromé koncové body 
+* Privátní koncové body 
 
 Když použijete integraci virtuální sítě s virtuální sítě ve stejné oblasti, můžete použít tyto funkce sítě Azure:
 
@@ -48,7 +48,6 @@ Při použití integrace virtuální sítě s virtuální sítě ve stejné obla
 * Tato funkce vyžaduje nepoužitou podsíť, která je ve virtuální síti Azure Resource Manager a/28 nebo větší.
 * Aplikace a virtuální síť musí být ve stejné oblasti.
 * Virtuální síť nejde odstranit pomocí integrované aplikace. Před odstraněním virtuální sítě odeberte integraci.
-* Integraci s virtuální sítě můžete integrovat jenom do stejného předplatného jako aplikace.
 * Pro každý App Service plán můžete mít jenom jednu místní integraci virtuální sítě. Víc aplikací ve stejném plánu App Service může používat stejnou virtuální síť.
 * Pokud máte aplikaci, která používá místní integraci virtuální sítě, nemůžete změnit předplatné aplikace ani plán.
 * Vaše aplikace nemůže překládat adresy v Azure DNS Private Zones bez změny konfigurace.
@@ -80,7 +79,7 @@ Místní integrace virtuální sítě umožňuje používat koncové body služb
 1. Konfigurace místní integrace virtuální sítě pomocí webové aplikace
 1. Přejít na cílovou službu a nakonfigurovat koncové body služby proti podsíti používané pro integraci
 
-### <a name="network-security-groups"></a>Skupiny zabezpečení sítě
+### <a name="network-security-groups"></a>skupiny zabezpečení sítě,
 
 Skupiny zabezpečení sítě můžete použít k blokování příchozího a odchozího provozu do prostředků ve virtuální síti. Aplikace, která používá místní integraci virtuální sítě, může používat [skupinu zabezpečení sítě][VNETnsg] k blokování odchozího provozu do prostředků ve vaší virtuální síti nebo v Internetu. Chcete-li zablokovat provoz na veřejné adresy, je nutné, aby nastavení aplikace WEBSITE_VNET_ROUTE_ALL nastaveno na hodnotu 1. Příchozí pravidla ve NSG se nevztahují na vaši aplikaci, protože integrace virtuální sítě má vliv jenom na odchozí přenosy z vaší aplikace.
 
@@ -108,7 +107,7 @@ Tato nastavení budou posílat všechna vaše odchozí volání z vaší aplikac
 > [!NOTE]
 >Pokus o přidání vlastní domény do webové aplikace pomocí Privátní DNS zóny není možné použít s Integrace virtuální sítě. Vlastní ověření domény se provádí na úrovni kontroleru, nikoli na úrovni pracovního procesu, což brání tomu, aby se záznamy DNS zobrazily. Pokud chcete použít vlastní doménu ze zóny Privátní DNS, musí být ověření obejít pomocí Application Gateway nebo interního nástroje App Service Environment.
 
-### <a name="private-endpoints"></a>Soukromé koncové body
+### <a name="private-endpoints"></a>Privátní koncové body
 
 Pokud chcete provést volání do [soukromých koncových bodů][privateendpoints], je nutné zajistit, aby se vaše vyhledávání DNS přeložilo na soukromý koncový bod. Aby vyhledávání DNS z vaší aplikace odkazovalo na vaše soukromé koncové body, můžete:
 

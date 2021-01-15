@@ -17,18 +17,18 @@ ms.workload: infrastructure-services
 ms.date: 02/07/2019
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: ced76b73a8a08e6886cf0cef04c74a82d05c75dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2825d8d9f8be7c56d7beea767a1afb7a290eafa2
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84708123"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222594"
 ---
 # <a name="create-a-virtual-machine-with-a-static-private-ip-address-using-powershell"></a>Vytvoření virtuálního počítače se statickou privátní IP adresou pomocí PowerShellu
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Virtuální počítač (VM) můžete vytvořit se statickou privátní IP adresou. Pokud chcete vybrat, která adresa z podsítě je přiřazená k virtuálnímu počítači, přiřaďte statickou privátní IP adresu, nikoli dynamickou adresu. Přečtěte si další informace o [statických privátních IP adresách](virtual-network-ip-addresses-overview-arm.md#allocation-method). Chcete-li změnit soukromou IP adresu přiřazenou existujícímu virtuálnímu počítači z dynamického na statickou nebo pro práci s veřejnými IP adresami, přečtěte si téma [Přidání, změna nebo odebrání IP adres](virtual-network-network-interface-addresses.md).
+Virtuální počítač (VM) můžete vytvořit se statickou privátní IP adresou. Pokud chcete vybrat, která adresa z podsítě je přiřazená k virtuálnímu počítači, přiřaďte statickou privátní IP adresu, nikoli dynamickou adresu. Přečtěte si další informace o [statických privátních IP adresách](./public-ip-addresses.md#allocation-method). Chcete-li změnit soukromou IP adresu přiřazenou existujícímu virtuálnímu počítači z dynamického na statickou nebo pro práci s veřejnými IP adresami, přečtěte si téma [Přidání, změna nebo odebrání IP adres](virtual-network-network-interface-addresses.md).
 
 ## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 
@@ -109,5 +109,5 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si další informace o [privátních IP adresách](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) a přiřazení [statických privátních IP adres](virtual-network-network-interface-addresses.md#add-ip-addresses) k virtuálnímu počítači Azure.
+- Přečtěte si další informace o [privátních IP adresách](./private-ip-addresses.md) a přiřazení [statických privátních IP adres](virtual-network-network-interface-addresses.md#add-ip-addresses) k virtuálnímu počítači Azure.
 - Přečtěte si další informace o vytváření virtuálních počítačů se systémy [Linux](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a [Windows](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) .

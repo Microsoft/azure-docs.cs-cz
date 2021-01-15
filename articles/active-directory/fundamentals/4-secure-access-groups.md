@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e28714e2557027a3f8f5504f7052973a77720b6
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: f83e5584f8f9c6823e1259cb5e6034d8b13ae3a6
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97744061"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222373"
 ---
 # <a name="securing-external-access-with-groups"></a>Zabezpečení externího přístupu pomocí skupin 
 
@@ -86,7 +86,7 @@ Další informace o dynamických skupinách najdete v tématu [Vytvoření nebo 
 
 Pokud používáte skupiny pro účely zabezpečení nebo přístupu k prostředkům, je důležité, aby měly jednu funkci. Pokud se skupina používá pro udělení přístupu k prostředkům, neměla by se používat k žádným jiným účelům. Pokud se skupina používá pro obecné účely, jako je například definování umístění nebo členství v týmu, neměli byste ji také používat k zabezpečení přístupu. 
 
-Pro skupiny zabezpečení doporučujeme konvence pojmenování, které tento účel znemožňuje vymazat. Například:
+Pro skupiny zabezpečení doporučujeme konvence pojmenování, které tento účel znemožňuje vymazat. Příklad:
 
 * *Secure_access_finance_apps*
 
@@ -104,7 +104,7 @@ Skupiny zabezpečení Azure AD i skupiny Microsoft 365 můžete vytvořit z port
 | - | - | - |
 | Co může skupina obsahovat?| Uživatelé<br>Skupiny<br>Instanční objekty<br>Zařízení| Jenom uživatelé |
 | Kde se skupina vytvořila?| Portál Azure AD<br>Portál M365 (Pokud má být povolený e-mail)<br>PowerShell<br>Microsoft Graph<br>Portál pro koncové uživatele| Portál M365<br>Portál Azure AD<br>PowerShell<br>Microsoft Graph<br>V Microsoft 365ch aplikacích |
-| Kdo se ve výchozím nastavení vytváří?| Správci <br>Koncoví uživatelé| Správci<br>Koncoví uživatelé |
+| Kdo se ve výchozím nastavení vytváří?| Administrators <br>Koncoví uživatelé| Administrators<br>Koncoví uživatelé |
 | Kdo se dá ve výchozím nastavení přidat?| Interní uživatelé (členové)| Členové tenanta a hosté z jakékoli organizace |
 | K čemu udělí přístup?| Pouze prostředky, ke kterým je přiřazena.| Všechny prostředky související se skupinami:<br>(Skupinová poštovní schránka, web, tým, chaty a další zahrnuté prostředky M365)<br>Všechny ostatní prostředky, ke kterým se přidá skupina |
 | Dá se použít s| Podmíněný přístup<br>Správa nároků<br>Licencování skupin| Podmíněný přístup<br>Správa nároků<br>Popisky citlivosti |

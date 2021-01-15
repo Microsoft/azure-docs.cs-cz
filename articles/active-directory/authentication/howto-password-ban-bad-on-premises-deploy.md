@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: deb1f74902fe28d53a5180e4f341547f339a83ac
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: d0a082149d85736000b5bb6a91e2fc7132205a88
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741980"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220282"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>Plánování a nasazení místní Azure Active Directory ochrany heslem
 
@@ -99,7 +99,7 @@ Platí následující základní požadavky:
 
 Na agenta řadiče domény služby Azure AD Password Protection platí následující požadavky:
 
-* Všechny počítače, ve kterých bude nainstalován software agenta řadiče domény Azure AD pro ochranu heslem, musí používat systém Windows Server 2012 nebo novější.
+* Všechny počítače, ve kterých bude nainstalován software agenta pro řadič domény Azure AD pro ochranu heslem, musí používat Windows Server 2012 nebo novější, včetně edicí Windows serveru Core.
     * Doména nebo doménová struktura služby Active Directory nemusí být na úrovni funkčnosti domény (úrovni funkčnosti domény) nebo úrovně funkčnosti doménové struktury (FFL) systému Windows Server 2012. Jak je uvedeno v [zásadách návrhu](concept-password-ban-bad-on-premises.md#design-principles), není k dispozici žádný minimální úrovni funkčnosti domény ani FFL nutný pro spuštění agenta řadiče domény ani proxy serveru.
 * Všechny počítače, na kterých běží agent řadiče domény Azure AD pro ochranu heslem, musí mít nainstalované rozhraní .NET 4,5.
 * Jakákoli doména služby Active Directory, která spouští službu agenta řadiče domény Azure AD, musí používat replikaci služby systém souborů DFS (Distributed File System) (DFSR) pro replikaci adresáře SYSVOL.
@@ -116,7 +116,7 @@ Na agenta řadiče domény služby Azure AD Password Protection platí následuj
 
 Na službu proxy ochrany heslem služby Azure AD platí následující požadavky:
 
-* Všechny počítače, ve kterých se služba proxy ochrany heslem Azure AD bude instalovat, musí používat Windows Server 2012 R2 nebo novější.
+* Všechny počítače, ve kterých se služba proxy ochrany heslem Azure AD bude instalovat, musí používat Windows Server 2012 R2 nebo novější, včetně edic Windows Server Core.
 
     > [!NOTE]
     > Nasazení služby proxy ochrany heslem Azure AD je povinný požadavek na nasazení ochrany heslem Azure AD, i když řadič domény může mít odchozí přímé připojení k Internetu.

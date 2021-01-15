@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: allensu
-ms.openlocfilehash: 62c1b323899f03a043904f4b10d5fe3bb551e0f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4ef8e6207d53a192b19f8343a60093e82368fa6
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91441765"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223376"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>Navrhování virtuálních sítí pomocí prostředků brány NAT
 
@@ -60,7 +60,7 @@ Následující diagram znázorňuje zapisovatelné odkazy mezi různými Azure R
 
 Překlad adres (NAT) se doporučuje pro většinu úloh, pokud nemáte konkrétní závislost na [Load Balancer odchozí připojení na základě fondu](../load-balancer/load-balancer-outbound-connections.md).  
 
-Můžete migrovat ze standardních scénářů nástroje pro vyrovnávání zatížení, včetně [odchozích pravidel](../load-balancer/load-balancer-outbound-rules-overview.md), do brány NAT. Pokud chcete migrovat, přesuňte prostředky předpony veřejné IP adresy a veřejné IP adresy ze služby Load Balancer do brány NAT. Nové IP adresy brány NAT se nevyžadují. Prostředky se standardními veřejnými IP adresami a prostředky předpony veřejných IP adres se dají znovu použít, dokud celková hodnota nepřekročí 16 IP adres. Plánování migrace s přerušením služeb při přechodu.  K minimalizaci přerušení slouží automatizace procesu. Nejprve otestujte migraci v přípravném prostředí.  V průběhu přechodu nejsou ovlivněny příchozí toky.
+Můžete migrovat ze standardních scénářů nástroje pro vyrovnávání zatížení, včetně [odchozích pravidel](../load-balancer/load-balancer-outbound-connections.md#outboundrules), do brány NAT. Pokud chcete migrovat, přesuňte prostředky předpony veřejné IP adresy a veřejné IP adresy ze služby Load Balancer do brány NAT. Nové IP adresy brány NAT se nevyžadují. Prostředky se standardními veřejnými IP adresami a prostředky předpony veřejných IP adres se dají znovu použít, dokud celková hodnota nepřekročí 16 IP adres. Plánování migrace s přerušením služeb při přechodu.  K minimalizaci přerušení slouží automatizace procesu. Nejprve otestujte migraci v přípravném prostředí.  V průběhu přechodu nejsou ovlivněny příchozí toky.
 
 
 Následující příklad je fragment kódu z Azure Resource Manager šablony.  Tato šablona nasadí několik prostředků, včetně brány NAT.  V tomto příkladu má šablona následující parametry:
@@ -230,7 +230,7 @@ I když se zdá, že se tento scénář bude pracovat, jeho model stavu a režim
 
 Každý prostředek brány NAT může poskytovat propustnost až 50 GB/s. Nasazení můžete rozdělit do několika podsítí a přiřadit každou podsíť nebo skupiny podsítí a bránu NAT pro horizontální navýšení kapacity.
 
-Každá brána NAT podporuje 64 000 toků pro TCP a UDP na přiřazenou odchozí IP adresu.  Podrobné informace a pokyny k [řešení problémů najdete](https://docs.microsoft.com/azure/virtual-network/troubleshoot-nat) v následující části o překladu zdrojového síťového adres (SNAT).
+Každá brána NAT podporuje 64 000 toků pro TCP a UDP na přiřazenou odchozí IP adresu.  Podrobné informace a pokyny k [řešení problémů najdete](./troubleshoot-nat.md) v následující části o překladu zdrojového síťového adres (SNAT).
 
 ## <a name="source-network-address-translation"></a>Překlad zdrojové síťové adresy
 
@@ -264,7 +264,7 @@ Brány NAT oportunisticky znovu používat zdrojový port (SNAT).  Následujíc�
 |:---:|:---:|:---:|
 | 4 | 192.168.0.16:4285 | 65.52.0.2:80 |
 
-Brána NAT bude pravděpodobně překládat tok 4 na port, který může být použit i pro jiné cíle.  Další diskuzi o správném určení velikosti zřizování IP adres najdete v tématu [škálování](https://docs.microsoft.com/azure/virtual-network/nat-gateway-resource#scaling) .
+Brána NAT bude pravděpodobně překládat tok 4 na port, který může být použit i pro jiné cíle.  Další diskuzi o správném určení velikosti zřizování IP adres najdete v tématu [škálování](#scaling) .
 
 | Tok | Zdrojová řazená kolekce členů | SNAT'ed zdrojová řazená kolekce členů | Cílová řazená kolekce členů | 
 |:---:|:---:|:---:|:---:|
@@ -307,7 +307,7 @@ Prostředky brány NAT oportunisticky opakované použití zdrojového kódu (SN
 
 Porty SNAT do různých cílů se pravděpodobně znovu použijí, pokud je to možné. A jako přístupy k vyčerpání portů SNAT nemusí být toky úspěšné.  
 
-Podívejte se například na [základy SNAT](https://docs.microsoft.com/azure/virtual-network/nat-gateway-resource#source-network-address-translation) .
+Podívejte se například na [základy SNAT](#source-network-address-translation) .
 
 
 ### <a name="protocols"></a>Protokoly
@@ -359,10 +359,10 @@ Chceme zjistit, jak můžeme službu vylepšit. Chybí funkce? Udělejte si př�
   - [Azure Portal](./quickstart-create-nat-gateway-portal.md)
   - [Šablona](./quickstart-create-nat-gateway-template.md)
 * Další informace o rozhraní API prostředků brány NAT
-  - [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways)
-  - [Azure CLI](https://docs.microsoft.com/cli/azure/network/nat/gateway)
-  - [PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway)
+  - [REST API](/rest/api/virtualnetwork/natgateways)
+  - [Azure CLI](/cli/azure/network/nat/gateway)
+  - [PowerShell](/powershell/module/az.network/new-aznatgateway)
 * Přečtěte si o [zónách dostupnosti](../availability-zones/az-overview.md).
-* Přečtěte si o [službě Load Balancer úrovně Standard](../load-balancer/load-balancer-standard-overview.md).
+* Přečtěte si o [službě Load Balancer úrovně Standard](../load-balancer/load-balancer-overview.md).
 * Seznamte [se se zónami dostupnosti a standardním nástrojem pro vyrovnávání zatížení](../load-balancer/load-balancer-standard-availability-zones.md).
 * [Řekněte nám, co se má sestavit příště pro Virtual Network překlad adres (NAT) ve službě UserVoice](https://aka.ms/natuservoice).

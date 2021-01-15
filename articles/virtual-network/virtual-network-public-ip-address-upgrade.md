@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 12/08/2020
 ms.author: blehr
 ms.custom: references_regions
-ms.openlocfilehash: 3e2905019244279129528c177a76291cb7d75e11
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: d6e8c4f4b6646254aeea12cf587f47047e661e3f
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825767"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222866"
 ---
 # <a name="upgrade-public-ip-addresses"></a>Upgrade veřejných IP adres
 
@@ -33,15 +33,15 @@ V tomto článku jsou revidovány následující scénáře:
 
 ## <a name="upgrade-public-ip-address-from-basic-to-standard-sku"></a>Upgrade veřejné IP adresy z úrovně Basic na standard SKU
 
-Aby bylo možné upgradovat veřejnou IP adresu, nesmí být přidružená k žádnému prostředku (Další informace o zrušení přidružení veřejných IP adres) najdete na [této stránce](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#view-modify-settings-for-or-delete-a-public-ip-address) .
+Aby bylo možné upgradovat veřejnou IP adresu, nesmí být přidružená k žádnému prostředku (Další informace o zrušení přidružení veřejných IP adres) najdete na [této stránce](./virtual-network-public-ip-address.md#view-modify-settings-for-or-delete-a-public-ip-address) .
 
 >[!IMPORTANT]
->Veřejné IP adresy upgradované z úrovně Basic na standard SKU nadále nemají žádné [zóny dostupnosti](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones).  To znamená, že není možné je přidružit k prostředku Azure, který je buď redundantní v zóně, nebo vázaný na předem stanovenou zónu v oblastech, kde je tato možnost nabízena.
+>Veřejné IP adresy upgradované z úrovně Basic na standard SKU nadále nemají žádné [zóny dostupnosti](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones).  To znamená, že není možné je přidružit k prostředku Azure, který je buď redundantní v zóně, nebo vázaný na předem stanovenou zónu v oblastech, kde je tato možnost nabízena.
 
 ---
 # <a name="basic-to-standard---powershell"></a>[**Základní až standard – PowerShell**](#tab/option-upgrade-powershell)
 
-Následující příklad předpokládá předchozí vytvoření veřejné IP adresy základní SKU pomocí příkladu uvedeného na [této stránce](https://docs.microsoft.com/azure/virtual-network/create-public-ip-powershell?tabs=option-create-public-ip-basic) se základní veřejnou IP adresou **myBasicPublicIP** v **myResourceGroup**.
+Následující příklad předpokládá předchozí vytvoření veřejné IP adresy základní SKU pomocí příkladu uvedeného na [této stránce](./create-public-ip-powershell.md?tabs=option-create-public-ip-basic) se základní veřejnou IP adresou **myBasicPublicIP** v **myResourceGroup**.
 
 Aby bylo možné upgradovat IP adresu, jednoduše spusťte níže uvedené příkazy pomocí PowerShellu.  Poznámka: Pokud je IP adresa už staticky přidělená, může se tato část přeskočit.
 
@@ -63,7 +63,7 @@ Set-AzPublicIpAddress -PublicIpAddress $pubIP
 
 # <a name="basic-to-standard---cli"></a>[**Základní na standard – CLI**](#tab/option-upgrade-cli)
 
-Následující příklad předpokládá předchozí vytvoření veřejné IP adresy základní SKU pomocí příkladu uvedeného na [této stránce](https://docs.microsoft.com/azure/virtual-network/create-public-ip-cli?tabs=option-create-public-ip-basic) se základní veřejnou IP adresou **myBasicPublicIP** v **myResourceGroup**.
+Následující příklad předpokládá předchozí vytvoření veřejné IP adresy základní SKU pomocí příkladu uvedeného na [této stránce](./create-public-ip-cli.md?tabs=option-create-public-ip-basic) se základní veřejnou IP adresou **myBasicPublicIP** v **myResourceGroup**.
 
 Aby bylo možné upgradovat IP adresu, jednoduše spusťte níže uvedené příkazy pomocí Azure CLI.  Poznámka: Pokud je IP adresa už staticky přidělená, může se tato část přeskočit.
 
@@ -95,7 +95,7 @@ Pokud chcete využívat nové funkce v Azure Resource Manager, můžete migrovat
 
 # <a name="reserved-to-basic---powershell"></a>[**Vyhrazeno pro základní – PowerShell**](#tab/option-migrate-powershell)
 
-Následující příklad předpokládá předchozí vytvoření klasického **MyReservedIP** Azure vyhrazená IP adresa v **myResourceGroup**. Další podmínkou pro migraci je zajistit, aby bylo předplatné služby Azure Resource Manager zaregistrované pro migraci. Tento postup je popsaný v podrobnostech o krocích 3 a 4 [této stránky](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-ps).
+Následující příklad předpokládá předchozí vytvoření klasického **MyReservedIP** Azure vyhrazená IP adresa v **myResourceGroup**. Další podmínkou pro migraci je zajistit, aby bylo předplatné služby Azure Resource Manager zaregistrované pro migraci. Tento postup je popsaný v podrobnostech o krocích 3 a 4 [této stránky](../virtual-machines/migration-classic-resource-manager-ps.md).
 
 Aby bylo možné migrovat Vyhrazená IP adresa, spusťte následující příkazy pomocí prostředí PowerShell.  Poznámka: Pokud IP adresa není přidružená k žádné službě (pod ní je služba s názvem **mojesluzba**), tento krok se dá přeskočit.
 
@@ -119,7 +119,7 @@ V Azure Resource Manager se vytvoří nová skupina prostředků s použitím n�
 
 # <a name="reserved-to-basic---cli"></a>[**Vyhrazeno pro základní-CLI**](#tab/option-migrate-cli)
 
-Následující příklad předpokládá předchozí vytvoření klasického **MyReservedIP** Azure vyhrazená IP adresa v **myResourceGroup**. Další podmínkou pro migraci je zajistit, aby bylo předplatné služby Azure Resource Manager zaregistrované pro migraci. Tento postup je popsaný v podrobnostech o krocích 3 a 4 [této stránky](https://docs.microsoft.com/azure/virtual-machines/linux/migration-classic-resource-manager-cli).
+Následující příklad předpokládá předchozí vytvoření klasického **MyReservedIP** Azure vyhrazená IP adresa v **myResourceGroup**. Další podmínkou pro migraci je zajistit, aby bylo předplatné služby Azure Resource Manager zaregistrované pro migraci. Tento postup je popsaný v podrobnostech o krocích 3 a 4 [této stránky](../virtual-machines/migration-classic-resource-manager-cli.md).
 
 Aby bylo možné migrovat Vyhrazená IP adresa, spusťte níže uvedené příkazy pomocí Azure CLI.  Poznámka: Pokud IP adresa není přidružená k žádné službě (pod ní je služba s názvem **mojesluzba** and Deployment **myDeployment**), tento krok se dá přeskočit.
 
@@ -145,12 +145,12 @@ V Azure Resource Manager se vytvoří nová skupina prostředků s použitím n�
 
 ## <a name="limitations"></a>Omezení
 
-* Aby bylo možné upgradovat základní veřejnou IP adresu, nelze ji přidružit k žádnému prostředku Azure.  Přečtěte si prosím [tuto stránku](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#view-modify-settings-for-or-delete-a-public-ip-address) , kde najdete další informace, jak zrušit přidružení veřejných IP adres.  Podobně, aby bylo možné migrovat Vyhrazená IP adresa, nelze je přidružit k žádné cloudové službě.  Další informace o tom, jak zrušit přidružení rezervovaných IP adres, najdete na [této stránce](https://docs.microsoft.com/azure/virtual-network/remove-public-ip-address-vm) .  
-* Veřejné IP adresy upgradované z úrovně Basic na standard SKU budou mít i nadále žádné [zóny dostupnosti](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones) , a proto se nedají přidružit k prostředku Azure, který je buď redundantní v zóně nebo v oblasti.  Všimněte si, že to platí jenom pro oblasti, které nabízí zóny dostupnosti.
+* Aby bylo možné upgradovat základní veřejnou IP adresu, nelze ji přidružit k žádnému prostředku Azure.  Přečtěte si prosím [tuto stránku](./virtual-network-public-ip-address.md#view-modify-settings-for-or-delete-a-public-ip-address) , kde najdete další informace, jak zrušit přidružení veřejných IP adres.  Podobně, aby bylo možné migrovat Vyhrazená IP adresa, nelze je přidružit k žádné cloudové službě.  Další informace o tom, jak zrušit přidružení rezervovaných IP adres, najdete na [této stránce](./remove-public-ip-address-vm.md) .  
+* Veřejné IP adresy upgradované z úrovně Basic na standard SKU budou mít i nadále žádné [zóny dostupnosti](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones) , a proto se nedají přidružit k prostředku Azure, který je buď redundantní v zóně nebo v oblasti.  Všimněte si, že to platí jenom pro oblasti, které nabízí zóny dostupnosti.
 * Nemůžete downgradovat z úrovně Standard na Basic.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si další informace o [veřejných IP adresách](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) v Azure, včetně rozdílu mezi typy SKU a [nastavení veřejné IP adresy](virtual-network-public-ip-address.md#create-a-public-ip-address).
-- Přečtěte si, jak [upgradovat veřejné nástroje pro vyrovnávání zatížení Azure z úrovně Basic na standard](https://docs.microsoft.com/azure/load-balancer/upgrade-basic-standard).
-- Pochopte [rezervované IP adresy Azure Classic](https://docs.microsoft.com/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip) a [migraci klasických prostředků na Azure Resource Manager](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-overview).
+- Přečtěte si další informace o [veřejných IP adresách](./public-ip-addresses.md#public-ip-addresses) v Azure, včetně rozdílu mezi typy SKU a [nastavení veřejné IP adresy](virtual-network-public-ip-address.md#create-a-public-ip-address).
+- Přečtěte si, jak [upgradovat veřejné nástroje pro vyrovnávání zatížení Azure z úrovně Basic na standard](../load-balancer/upgrade-basic-standard.md).
+- Pochopte [rezervované IP adresy Azure Classic](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip) a [migraci klasických prostředků na Azure Resource Manager](../virtual-machines/migration-classic-resource-manager-overview.md).

@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 12/16/2020
-ms.openlocfilehash: d987d21700e5f19ad8228b08508e8da842cc39eb
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.date: 01/14/2020
+ms.openlocfilehash: 983e037376be48f497118b06cce8b23c430b1501
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914106"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223070"
 ---
 # <a name="open-source-integration-with-azure-machine-learning-projects"></a>Integrace open source s Azure Machine Learning projekty
 
@@ -42,11 +42,11 @@ Open Source algoritmy strojového učení známé jako neuronové Networks, což
 
 Mezi open source architektury hloubkového učení a návody patří:
 
- *  [PyTorch](https://github.com/pytorch/pytorch): [Naučte model klasifikace imagí hloubkového učení s využitím učení přenosu v PyTorch](how-to-train-pytorch.md) 
+ *  [PyTorch](https://github.com/pytorch/pytorch): [školení modelu klasifikace imagí s hloubkovým učením pomocí učení přenosu](how-to-train-pytorch.md) 
  *  [TensorFlow](https://github.com/tensorflow/tensorflow): [rozpoznávání ručně psaných číslic pomocí TensorFlow](how-to-train-tensorflow.md)
  *  [Keras](https://github.com/keras-team/keras): [vytvoření sítě neuronové pro analýzu imagí pomocí Keras](how-to-train-keras.md)
 
-Školení modelu hloubkového učení od začátku často vyžaduje velké množství času, dat a výpočetních prostředků. Školicí proces můžete zástupcem pomocí učení přenosu. Učení přenosu je technika, která používá znalostní bázi získanou z řešení jednoho problému na jiný, ale související problém. To znamená, že můžete přebírat existující model pro použití. Další informace o učení pro přenos najdete v [článku o podrobném učení](concept-deep-learning-vs-machine-learning.md#transfer-learning) .
+Školení modelu hloubkového učení od začátku často vyžaduje velké množství času, dat a výpočetních prostředků. Školicí proces můžete zástupcem pomocí učení přenosu. Učení přenosu je technika, která používá znalostní bázi získanou z řešení jednoho problému na jiný, ale související problém. To znamená, že můžete přebírat existující model pro použití. Další informace o učení pro přenos najdete v [článku o podrobném učení vs Machine Learning](concept-deep-learning-vs-machine-learning.md#what-is-transfer-learning) .
 
 ### <a name="reinforcement-learning-ray-rllib"></a>Posílení učení: Ray RLLib
 

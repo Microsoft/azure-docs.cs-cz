@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 09/09/2020
-ms.openlocfilehash: 52b9a67ee8c11011ea04f7414a3d978f5860c0ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 698e65c4b982c5d639ffc666b394765fd04bd202
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708063"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222458"
 ---
 # <a name="commercial-marketplace-policies-and-terms"></a>Podmínky a zásady komerčního marketplace
 
@@ -27,9 +27,8 @@ Nabídky na komerčním tržišti musí být v souladu s našimi zásadami a pod
 
 - [Zásady certifikace na komerčním marketplace](/legal/marketplace/certification-policies?context=/azure/marketplace/context/context)
 - [Zásady kontroly Microsoft AppSource a Azure Marketplace](/legal/marketplace/rating-review-policies?context=/azure/marketplace/context/context)
-- [Zásady účasti na Azure Marketplace](/legal/marketplace/participation-policy?context=/azure/marketplace/context/context)
 - [Podmínky Azure Marketplace](/legal/marketplace/terms?context=/azure/marketplace/context/context)
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Co je komerční tržiště Microsoftu?](overview.md)
+- [Co je komerční marketplace Microsoftu?](overview.md)

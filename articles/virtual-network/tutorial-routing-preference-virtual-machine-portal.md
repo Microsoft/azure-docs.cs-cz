@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/02/2020
 ms.author: mnayak
-ms.openlocfilehash: 35e4b90e9bdd52a20bf892f0784b191384f271ac
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: beb670106690645a80aa12b930e3a005efb4282a
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533702"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221642"
 ---
 # <a name="configure-routing-preference-for-a-vm-using-the-azure-portal"></a>Konfigurace předvolby směrování pro virtuální počítač pomocí Azure Portal
 
@@ -31,7 +31,7 @@ V tomto článku se dozvíte, jak vytvořit virtuální počítač s veřejnou I
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se na [Azure Portal](https://preview.portal.azure.com/).
+Přihlaste se na web [Azure Portal](https://preview.portal.azure.com/).
 
 ## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 
@@ -79,5 +79,5 @@ Pokud už je nepotřebujete, odstraňte skupinu prostředků a všechny prostře
 
 ## <a name="next-steps"></a>Další kroky
 - Přečtěte si další informace o [veřejné IP adrese s upřednostněním směrování](routing-preference-overview.md).
-- Přečtěte si další informace o [veřejných IP adresách](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) v Azure.
+- Přečtěte si další informace o [veřejných IP adresách](./public-ip-addresses.md#public-ip-addresses) v Azure.
 - Přečtěte si další informace o všech [nastaveních veřejné IP adresy](virtual-network-public-ip-address.md#create-a-public-ip-address).

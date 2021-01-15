@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/25/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: 36e5bb33b7d555c3b457b63f94d9032ff390e6cb
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: b7c683edd15ab05e9efc239ffe07759078754607
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342310"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222645"
 ---
 # <a name="azure-kubernetes-network-policies-overview"></a>Přehled zásad sítě Azure Kubernetes
 
@@ -38,7 +38,7 @@ Při implementaci zabezpečení pro váš cluster použijte skupiny zabezpečen�
 Azure NPM se dá použít v následujících způsobech, jak poskytnout mikrosegmentaci pro lusky.
 
 ### <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
-NPM je k dispozici nativně v AKS a je možné ji povolit v době vytváření clusteru. Přečtěte si další informace o [zabezpečení provozu mezi lusky pomocí zásad sítě ve službě Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/use-network-policies).
+NPM je k dispozici nativně v AKS a je možné ji povolit v době vytváření clusteru. Přečtěte si další informace o [zabezpečení provozu mezi lusky pomocí zásad sítě ve službě Azure Kubernetes Service (AKS)](../aks/use-network-policies.md).
 
 ### <a name="aks-engine"></a>AKS – modul
 AKS-Engine je nástroj, který generuje šablonu Azure Resource Manager pro nasazení clusteru Kubernetes v Azure. Konfigurace clusteru se zadává v souboru JSON, který se předá nástroji při generování šablony. Podrobnosti k úplnému výčtu podporovaných nastavení clusteru včetně jejich popisu najdete v tématu Modul služby Microsoft Azure Container Service – definice clusteru.
@@ -118,9 +118,9 @@ Níže je seznam podporovaných metrik:
 |`npm_num_iptables_rules`     | počet pravidel softwaru iptables     | Měřidlo        |-         |         
 |`npm_num_ipsets`     |počet IPSets         |Měřidlo            |-         |
 |`npm_num_ipset_entries`     |počet položek IP adres ve všech IPSets         |Měřidlo         |-         |
-|`npm_add_policy_exec_time`     |modul runtime pro přidání zásady sítě         |Souhrn         |Quantile (0,5, 0,9 nebo 0,99)         |
-|`npm_add_iptables_rule_exec_time`     |modul runtime pro přidání pravidla softwaru iptables         |Souhrn         |Quantile (0,5, 0,9 nebo 0,99)         |
-|`npm_add_ipset_exec_time`     |modul runtime pro přidání IPSet         |Souhrn         |Quantile (0,5, 0,9 nebo 0,99)         |
+|`npm_add_policy_exec_time`     |modul runtime pro přidání zásady sítě         |Shrnutí         |Quantile (0,5, 0,9 nebo 0,99)         |
+|`npm_add_iptables_rule_exec_time`     |modul runtime pro přidání pravidla softwaru iptables         |Shrnutí         |Quantile (0,5, 0,9 nebo 0,99)         |
+|`npm_add_ipset_exec_time`     |modul runtime pro přidání IPSet         |Shrnutí         |Quantile (0,5, 0,9 nebo 0,99)         |
 |`npm_ipset_counts` Upřesnit     |počet položek v rámci jednotlivých IPSet         |GaugeVec         |nastavit název & hodnota hash         |
 
 Různé úrovně Quantile v metrikách "exec_time" vám pomůžou rozlišovat mezi obecnými a nejhoršími případy.
@@ -130,7 +130,7 @@ Pro každou "exec_time" souhrnnou metriku jsou k dispozici také metrika "exec_t
 Metriky je možné vyřadit prostřednictvím Azure Monitor pro kontejnery nebo přes Prometheus.
 
 ### <a name="setup-for-azure-monitor"></a>Instalační program pro Azure Monitor
-Prvním krokem je povolení Azure Monitor pro kontejnery pro cluster Kubernetes. Postup najdete v článku [Azure monitor for Containers Overview](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview). Jakmile budete mít Azure Monitor pro kontejnery povolené, nakonfigurujte [Azure monitor kontejnerů ConfigMap](https://aka.ms/container-azm-ms-agentconfig) tak, aby umožňovaly integraci npm a shromažďování METRIK Prometheus npm. Azure monitor pro kontejnery ConfigMap obsahuje ```integrations``` část s nastavením pro shromažďování METRIK npm. Tato nastavení jsou ve výchozím nastavení ve ConfigMap zakázaná. Povolením základního nastavení ```collect_basic_metrics = true``` budou shromažďovány základní metriky npm. Když se povolí rozšířené nastavení, ```collect_advanced_metrics = true``` budou se kromě základních metrik shromažďovat i pokročilé metriky. 
+Prvním krokem je povolení Azure Monitor pro kontejnery pro cluster Kubernetes. Postup najdete v článku [Azure monitor for Containers Overview](../azure-monitor/insights/container-insights-overview.md). Jakmile budete mít Azure Monitor pro kontejnery povolené, nakonfigurujte [Azure monitor kontejnerů ConfigMap](https://aka.ms/container-azm-ms-agentconfig) tak, aby umožňovaly integraci npm a shromažďování METRIK Prometheus npm. Azure monitor pro kontejnery ConfigMap obsahuje ```integrations``` část s nastavením pro shromažďování METRIK npm. Tato nastavení jsou ve výchozím nastavení ve ConfigMap zakázaná. Povolením základního nastavení ```collect_basic_metrics = true``` budou shromažďovány základní metriky npm. Když se povolí rozšířené nastavení, ```collect_advanced_metrics = true``` budou se kromě základních metrik shromažďovat i pokročilé metriky. 
 
 Po úpravě ConfigMap ho uložte místně a použijte ConfigMap pro váš cluster následujícím způsobem.
 
@@ -143,7 +143,7 @@ integrations: |-
 ```
 Rozšířené metriky jsou volitelné a když je zapnete, budou automaticky zapnuty základní kolekce metrik. Rozšířené metriky aktuálně obsahují pouze `npm_ipset_counts`
 
-Další informace o [nastavení kolekce kontejnerů pro Azure monitor v mapování konfigurace](https://aka.ms/azmon-containers-agent-collection-settings-doc)
+Další informace o [nastavení kolekce kontejnerů pro Azure monitor v mapování konfigurace](../azure-monitor/insights/container-insights-agent-config.md)
 
 ### <a name="visualization-options-for-azure-monitor"></a>Možnosti vizualizace pro Azure Monitor
 Jakmile je kolekce metriky NPM povolená, můžete zobrazit metriky v Azure Portal pomocí kontejnerových přehledů nebo v Grafana.
@@ -154,7 +154,7 @@ Otevřete Azure Portal. Jakmile budete mít přehled o clusteru, přejděte do �
 Kromě zobrazení sešitu (obrázky níže) můžete také přímo zadat dotaz na metriky Prometheus v části protokoly v části přehledy. Tento dotaz bude například vracet všechny shromažďované metriky.
 | kde TimeGenerated > před (5H) | kde název obsahuje "npm_"
 
-Můžete také zadat dotaz na Log Analytics přímo pro metriky. Další informace o Začínáme s [dotazy Log Analytics](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-log-search) 
+Můžete také zadat dotaz na Log Analytics přímo pro metriky. Další informace o Začínáme s [dotazy Log Analytics](../azure-monitor/insights/container-insights-log-search.md) 
 
 #### <a name="viewing-in-grafana-dashboard"></a>Zobrazení v řídicím panelu Grafana
 Nastavte server Grafana a nakonfigurujte zdroj dat Log Analytics, jak je popsáno [zde](https://grafana.com/grafana/plugins/grafana-azure-monitor-datasource). Pak naimportujte [řídicí panel Grafana pomocí back-endu Log Analytics](https://grafana.com/grafana/dashboards/10956) do Grafana Labs.
@@ -266,4 +266,3 @@ Tady je několik ukázkových řídicích panelů pro metriky NPM ve Container I
 -  Přečtěte si o [sítích kontejnerů](container-networking-overview.md).
 - [Nasaďte modul plug-in](deploy-container-networking.md) pro clustery Kubernetes nebo kontejnery Docker.
 
-    

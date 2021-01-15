@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/03/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: dd5197f99f7187e21eb466bfa213f68a7638e24d
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 54001cde76bd89305eb77544c6e6858defda6096
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045338"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222543"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>Správa grafu digitálních vláken pomocí vztahů
 
@@ -157,7 +157,7 @@ Tady je výstup konzoly výše uvedeného programu:
 > [!TIP]
 > Dvojitým grafem je koncept vytváření vztahů mezi vlákna. Chcete-li zobrazit vizuální znázornění s dvojitým grafem, přečtěte si část [*vizualizace*](how-to-manage-graph.md#visualization) tohoto článku. 
 
-### <a name="create-a-twin-graph-from-a-csv-file"></a>Vytvoření dvojitě vytvořeného grafu ze souboru CSV
+## <a name="create-graph-from-a-csv-file"></a>Vytvoření grafu ze souboru CSV
 
 V praktických případech použití budou zdvojené hierarchie často vytvářeny z dat uložených v jiné databázi nebo v tabulce nebo v souboru CSV. V této části se dozvíte, jak číst data ze souboru CSV a vytvořit z něj graf s dvojitou platností.
 

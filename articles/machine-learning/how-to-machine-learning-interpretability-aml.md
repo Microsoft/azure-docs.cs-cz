@@ -10,13 +10,13 @@ author: minthigpen
 ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 74ddaaf7a2d279439c0cd27ba0840f02f297877b
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.custom: how-to, devx-track-python, responsible-ml
+ms.openlocfilehash: fda1bc2ef0a112a8a32ba7c4caebf29028c8cdd7
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98119556"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222747"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>Vysvětlení modelů ML & předpovědi v Pythonu (Preview) pomocí balíčku pro interpretaci
 
@@ -340,7 +340,7 @@ Prozkoumejte důležité funkce, které mají vliv na celkový předpovědi mode
 
 Čtvrtá karta na kartě vysvětlení vám umožní přejít na jednotlivé DataPoint a jejich jednotlivé důležité funkce. Můžete načíst vykreslení důležitosti jednotlivých funkcí pro libovolný datový bod tak, že kliknete na kterýkoli z jednotlivých datových bodů v hlavním bodovém grafu nebo v průvodci panelem kliknete na konkrétní DataPoint.
 
-|Znázorněte|Description|
+|Znázorněte|Popis|
 |----|-----------|
 |Důležitost jednotlivých funkcí|Zobrazuje důležité funkce, které jsou k dishlavnímu okraji pro jednotlivé předpovědi. Pomáhá ilustrovat místní chování základního modelu v konkrétním datovém bodě.|
 |Analýza What-If|Umožňuje změnit hodnoty funkcí vybraného reálného datového bodu a sledovat výsledné změny hodnoty předpovědi tím, že generuje hypotetické DataPoint s novými hodnotami funkcí.|

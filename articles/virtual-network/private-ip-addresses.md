@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: 13688b73c0cd73e13e407f1b75beb8dda61a754f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36db885cab734c037b0032c714de28b905595ef0
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84172372"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223257"
 ---
 # <a name="private-ip-addresses"></a>Privátní IP adresy
 Privátní IP adresy umožňují komunikaci mezi prostředky v Azure. 
@@ -82,8 +82,8 @@ Virtuální počítače nakonfigurované pomocí DNS spravované službou Azure 
 
 Privátní IP adresu můžete přiřadit konfiguraci **front-endu** pro:
 
-* [Interní nástroj pro vyrovnávání zatížení Azure](../load-balancer/load-balancer-internal-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (interního nástroje)
-* [Azure Application Gateway](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 
+* [Interní nástroj pro vyrovnávání zatížení Azure](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (interního nástroje)
+* [Azure Application Gateway](../application-gateway/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 
 
 Tato privátní IP adresa slouží jako interní koncový bod. Interní koncový bod je přístupný pouze pro prostředky v rámci své virtuální sítě a vzdálené sítě, které jsou k němu připojeny. Je možné přiřadit dynamickou nebo statickou IP adresu.
 

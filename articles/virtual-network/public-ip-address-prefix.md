@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/29/2020
 ms.author: allensu
-ms.openlocfilehash: 53dd6d2dda762b3cbf53f4aaec6cd3692a9656e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d98107075c215c0a00bc2035325a6ad8bf5bfc5
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87432578"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222424"
 ---
 # <a name="public-ip-address-prefix"></a>Předpona veřejné IP adresy
 
 Předpona veřejných IP adres je rezervovaný rozsah IP adres v Azure. Azure nabízí souvislý rozsah adres pro vaše předplatné na základě toho, kolik zadáte. 
 
-Pokud nejste obeznámeni s veřejnými adresami, přečtěte si téma [veřejné IP adresy.](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)
+Pokud nejste obeznámeni s veřejnými adresami, přečtěte si téma [veřejné IP adresy.](./public-ip-addresses.md#public-ip-addresses)
 
 Veřejné IP adresy se přiřazují z fondu adres v každé oblasti Azure. Můžete [si stáhnout](https://www.microsoft.com/download/details.aspx?id=56519) Seznam rozsahů, které Azure používá pro každou oblast. Například 40.121.0.0/16 je jedním z více než 100 rozsahů, které Azure používá v oblasti Východní USA. Rozsah zahrnuje použitelné adresy 40.121.0.1-40.121.255.254.
 
@@ -68,9 +68,9 @@ K statické veřejné IP adrese můžete přidružit následující prostředky 
 ## <a name="constraints"></a>Omezení
 
 - Nemůžete zadat IP adresy pro předponu. Azure poskytuje IP adresy pro předponu na základě zadané velikosti.
-- Ve výchozím nastavení můžete vytvořit předponu s až 16 IP adresami nebo/28. Přečtěte si o [omezeních sítě zvýšení požadavků](https://docs.microsoft.com/azure/azure-portal/supportability/networking-quota-requests) a [omezení Azure](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) , kde najdete další informace.
+- Ve výchozím nastavení můžete vytvořit předponu s až 16 IP adresami nebo/28. Přečtěte si o [omezeních sítě zvýšení požadavků](../azure-portal/supportability/networking-quota-requests.md) a [omezení Azure](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) , kde najdete další informace.
 - Po vytvoření předpony nemůžete rozsah změnit.
-- Z rozsahu předpony lze přiřadit pouze statické veřejné IP adresy, které byly vytvořeny pomocí standardní SKU. Další informace o SKU veřejných IP adres najdete v tématu [Veřejná IP adresa](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses).
+- Z rozsahu předpony lze přiřadit pouze statické veřejné IP adresy, které byly vytvořeny pomocí standardní SKU. Další informace o SKU veřejných IP adres najdete v tématu [Veřejná IP adresa](./public-ip-addresses.md#public-ip-addresses).
 - Adresy z rozsahu lze přiřadit pouze k prostředkům Azure Resource Manager. Adresy se nedají přiřadit k prostředkům v modelu nasazení Classic.
 - Všechny veřejné IP adresy vytvořené z předpony musí existovat ve stejné oblasti a předplatném Azure jako předpona. Adresy musí být přiřazené k prostředkům ve stejné oblasti a předplatném.
 - Pokud jsou adresy v rámci této adresy přiřazené k prostředkům veřejné IP adresy, které jsou přidružené k prostředku, nemůžete předponu odstranit. Zrušte přidružení všech prostředků veřejné IP adresy, kterým jsou nejprve přiřazeny IP adresy z předpony.

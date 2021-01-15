@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 52d6bc97245423a4add392ab05634d21bcf83a0d
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 1b8d88167dac6b2d0b1ba2afc90c443fd80b9e46
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358006"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223155"
 ---
 # <a name="prepare-virtual-machines-for-an-fci-sql-server-on-azure-vms"></a>Příprava virtuálních počítačů na FCI (SQL Server na virtuálních počítačích Azure)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -27,7 +27,7 @@ Tento článek popisuje, jak připravit virtuální počítače Azure na jejich 
 
 Další informace najdete v tématu Přehled [FCI s SQL Server na virtuálních počítačích Azure](failover-cluster-instance-overview.md) a [osvědčených postupech pro clustery](hadr-cluster-best-practices.md). 
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 
 - Předplatné Microsoft Azure. Začněte [zdarma](https://azure.microsoft.com/free/). 
 - Doména Windows na virtuálních počítačích Azure nebo v místním datacentru, které se rozšířily do Azure s párováním virtuálních sítí.
@@ -68,7 +68,7 @@ V clusteru s podporou převzetí služeb při selhání hosta virtuálního poč
 Umístit oba virtuální počítače:
 
 - Ve stejné skupině prostředků Azure jako vaše skupina dostupnosti, pokud používáte skupiny dostupnosti.
-- Ve stejné virtuální síti jako řadič domény.
+- Ve stejné virtuální síti jako řadič domény nebo ve virtuální síti, která má vhodné připojení k řadiči domény.
 - V podsíti, která má dostatek adresního prostoru IP adres pro virtuální počítače i všechny FCIs, které můžete nakonec použít na clusteru.
 - V rámci skupiny dostupnosti Azure nebo zóny dostupnosti.
 

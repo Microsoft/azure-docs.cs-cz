@@ -6,18 +6,18 @@ ms.service: virtual-network
 ms.topic: how-to
 ms.date: 08/26/2019
 ms.author: allensu
-ms.openlocfilehash: ed3da649ba65484a79b42ba5bb45431839e123d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a80c731e4245b1a295364e5b8c87f90290f7f74
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84711438"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223304"
 ---
 # <a name="move-an-azure-virtual-network-to-another-region-by-using-the-azure-portal"></a>Přesuňte virtuální síť Azure do jiné oblasti pomocí Azure Portal
 
 Existují různé scénáře pro přesun existující virtuální sítě Azure z jedné oblasti do druhé. Například můžete chtít vytvořit virtuální síť se stejnou konfigurací pro testování a dostupnost jako stávající virtuální síť. Případně můžete chtít přesunout produkční virtuální síť do jiné oblasti v rámci plánování zotavení po havárii.
 
-K dokončení přesunu virtuální sítě do jiné oblasti můžete použít šablonu Azure Resource Manager. Provedete to tak, že virtuální síť vyexportujete do šablony, upravíte parametry tak, aby odpovídaly cílové oblasti, a pak šablonu nasadíte do nové oblasti. Další informace o šablonách Správce prostředků najdete v tématu [rychlý Start: vytvoření a nasazení Azure Resource Manager šablon pomocí Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
+K dokončení přesunu virtuální sítě do jiné oblasti můžete použít šablonu Azure Resource Manager. Provedete to tak, že virtuální síť vyexportujete do šablony, upravíte parametry tak, aby odpovídaly cílové oblasti, a pak šablonu nasadíte do nové oblasti. Další informace o šablonách Správce prostředků najdete v tématu [rychlý Start: vytvoření a nasazení Azure Resource Manager šablon pomocí Azure Portal](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md).
 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -32,7 +32,7 @@ K dokončení přesunu virtuální sítě do jiné oblasti můžete použít ša
 
 - Ověřte, že vaše předplatné Azure umožňuje vytvářet virtuální sítě v cílové oblasti. Pokud chcete povolit požadovanou kvótu, obraťte se na podporu.
 
-- Ujistěte se, že vaše předplatné má dostatek prostředků na podporu přidání virtuálních sítí pro tento proces. Další informace najdete v tématu [Limity, kvóty a omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
+- Ujistěte se, že vaše předplatné má dostatek prostředků na podporu přidání virtuálních sítí pro tento proces. Další informace najdete v tématu [Limity, kvóty a omezení předplatného a služeb Azure](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits).
 
 
 ## <a name="prepare-for-the-move"></a>Příprava na přesun
@@ -89,7 +89,7 @@ Pokud chcete exportovat virtuální síť a nasadit cílovou virtuální síť p
 
 1. Volitelné V závislosti na vašich požadavcích můžete také změnit jiné parametry v šabloně.
 
-    * **Adresní prostor**: před uložením souboru můžete změnit adresní prostor virtuální sítě změnou **resources**  >  části**addressSpace** prostředků a změnou vlastnosti **addressPrefixes** :
+    * **Adresní prostor**: před uložením souboru můžete změnit adresní prostor virtuální sítě změnou   >  části **addressSpace** prostředků a změnou vlastnosti **addressPrefixes** :
 
         ```json
                 "resources": [
@@ -178,15 +178,15 @@ Pokud chcete exportovat virtuální síť a nasadit cílovou virtuální síť p
 
 1. V online editoru vyberte Save ( **Uložit**).
 
-1. Pokud chcete zvolit předplatné, ve kterém se bude nasazovat cílová virtuální síť **Basics**, vyberte  >  **předplatné**základní.
+1. Pokud chcete zvolit předplatné, ve kterém se bude nasazovat cílová virtuální síť , vyberte  >  **předplatné** základní.
 
-1. Chcete-li zvolit skupinu prostředků, do které bude nasazena cílová virtuální síť **Basics**, vyberte možnost  >  **Skupina prostředků**základní. 
+1. Chcete-li zvolit skupinu prostředků, do které bude nasazena cílová virtuální síť , vyberte možnost  >  **Skupina prostředků** základní. 
 
     Pokud pro cílovou virtuální síť potřebujete vytvořit novou skupinu prostředků, vyberte **vytvořit novou**. Ujistěte se, že název není stejný jako název zdrojové skupiny prostředků ve stávající virtuální síti.
 
-1. Ověřte, **Basics**zda  >  je umístění základních**umístění** nastaveno na cílové umístění, do kterého chcete virtuální síť nasadit.
+1. Ověřte, zda  >  je umístění základních **umístění** nastaveno na cílové umístění, do kterého chcete virtuální síť nasadit.
 
-1. V části **Nastavení**ověřte, že se název shoduje s názvem, který jste zadali dříve v editoru parametrů.
+1. V části **Nastavení** ověřte, že se název shoduje s názvem, který jste zadali dříve v editoru parametrů.
 
 1. Zaškrtněte políčko **podmínky a ujednání** .
 
@@ -209,5 +209,5 @@ Pokud chcete potvrdit změny a dokončit přesun virtuální sítě, odstraňte 
 V tomto kurzu jste přesunuli virtuální síť Azure z jedné oblasti do druhé pomocí Azure Portal a pak vyčistili nepotřebné zdrojové prostředky. Další informace o přesouvání prostředků mezi oblastmi a zotavení po havárii v Azure najdete tady:
 
 
-- [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
-- [Přesunutí virtuálních počítačů Azure do jiné oblasti](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)
+- [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/management/move-resource-group-and-subscription.md)
+- [Přesunutí virtuálních počítačů Azure do jiné oblasti](../site-recovery/azure-to-azure-tutorial-migrate.md)

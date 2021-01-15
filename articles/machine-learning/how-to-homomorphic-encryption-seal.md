@@ -9,13 +9,13 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python, deploy
-ms.openlocfilehash: 3509530994b07a16fb1f2780fffc6fd27cf8aa7c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, devx-track-python, deploy, responsible-ml
+ms.openlocfilehash: a2c8b765f109408b8cb08f78a4b3ad2283f35eb9
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325512"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223580"
 ---
 # <a name="how-to-deploy-an-encrypted-inferencing-web-service-preview"></a>Nasazení šifrované webové služby Inferencing (Preview)
 
@@ -34,7 +34,7 @@ ACI je skvělé řešení pro testování a porozumění pracovnímu postupu nas
 
 Metoda šifrování použitá v této ukázce je [homomorphic šifrování](https://github.com/Microsoft/SEAL#homomorphic-encryption). Homomorphic šifrování umožňuje provádět výpočty na šifrovaných datech bez nutnosti přístupu ke tajnému (dešifrovacímu) klíči. Výsledky výpočtů jsou zašifrované a dají se odhalet jenom vlastníkem tajného klíče. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto průvodci se předpokládá, že máte v Azure Machine Learning zaregistrovaný model klasifikace imagí. Pokud ne, zaregistrujte model pomocí předvedeného [modelu](https://github.com/Azure/MachineLearningNotebooks/raw/master/tutorials/image-classification-mnist-data/sklearn_mnist_model.pkl) nebo si vytvořte vlastní tím, že zadáte [model klasifikace obrázků pomocí Azure Machine Learning kurzu](tutorial-train-models-with-aml.md).
 

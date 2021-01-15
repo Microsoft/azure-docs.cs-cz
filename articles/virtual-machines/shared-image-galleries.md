@@ -9,16 +9,16 @@ ms.workload: infrastructure
 ms.date: 10/14/2020
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 4156308fa58ea1f02e6e3f2c5174839dc1cd381c
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 2731a7f263db223c258ddfc434bc84f59632d1f5
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96841408"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223359"
 ---
 # <a name="shared-image-galleries-overview"></a>Přehled Galerie sdílených imagí
 
-Galerie sdílených imagí je služba, která pomáhá sestavovat strukturu a organizaci kolem imagí. Galerie sdílených imagí poskytují:
+Shared Image Gallery je služba, která pomáhá vytvořit strukturu imagí a zajistit jejich organizaci. Galerie sdílených imagí poskytují:
 
 - Globální replikace imagí.
 - Správa verzí a seskupování imagí pro snadnější správu.
@@ -150,8 +150,8 @@ Vzhledem k tomu, že je galerie sdílených imagí, definice obrázku a verze im
 
 | Sdíleno s uživatelem     | Sdílená galerie obrázků | Definice image | Verze image |
 |----------------------|----------------------|--------------|----------------------|
-| Sdílená galerie obrázků | Ano                  | Ano          | Ano                  |
-| Definice image     | No                   | Ano          | Ano                  |
+| Sdílená galerie obrázků | Yes                  | Yes          | Yes                  |
+| Definice image     | No                   | Yes          | Yes                  |
 
 Pro nejlepší prostředí doporučujeme sdílení na úrovni galerie. Nedoporučujeme sdílet jednotlivé verze imagí. Další informace o RBAC najdete v tématu [Správa přístupu k prostředkům Azure pomocí RBAC](../role-based-access-control/role-assignments-portal.md).
 
@@ -226,7 +226,7 @@ Prostředek Galerie sdílených imagí můžete vytvořit pomocí šablon. K dis
 
 Pokud chcete zobrazit seznam všech prostředků Galerie sdílených imagí v rámci předplatných, ke kterým máte přístup v Azure Portal, postupujte podle následujících kroků:
 
-1. Otevřete web [Azure Portal](https://portal.azure.com).
+1. Otevřete [Azure Portal](https://portal.azure.com).
 1. Posuňte se dolů na stránku a vyberte **všechny prostředky**.
 1. Vyberte všechna předplatná, pod kterými chcete zobrazit seznam všech prostředků.
 1. Vyhledejte prostředky pro galerii typu **sdílená image**.
@@ -316,6 +316,11 @@ Pro nasazení virtuálních počítačů a virtuálních počítačů pomocí ve
 ### <a name="can-i-update-my-virtual-machine-scale-set-created-using-managed-image-to-use-shared-image-gallery-images"></a>Můžu aktualizovat sadu škálování virtuálního počítače vytvořenou pomocí spravované image pro použití imagí Galerie sdílených imagí?
 
 Ano, můžete aktualizovat odkaz na obrázek sady škálování ze spravované image na Image Galerie sdílených imagí, pokud typ operačního systému, generaci technologie Hyper-V a rozložení datových disků odpovídají mezi obrázky.
+
+## <a name="troubleshoot-shared-image-gallery-issues"></a>Řešení potíží s galerií sdílených imagí
+Pokud máte problémy s prováděním operací s prostředky v galerii sdílených imagí, Projděte si seznam běžných chyb v [Průvodci odstraňováním potíží](troubleshooting-shared-images.md).
+
+Kromě toho můžete svoji otázku publikovat a označit ji `azure-virtual-machines-images` na adrese [Q&A](/answers/topics/azure-virtual-machines-images.html).
 
 ## <a name="next-steps"></a>Další kroky
 
