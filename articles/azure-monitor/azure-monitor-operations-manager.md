@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/11/2021
-ms.openlocfilehash: 85172e2430a3e65edb0c5ec119c920e2c7d20217
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 877251ba7e0c1f3c33cab37e20d609479b69520c
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234756"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251824"
 ---
 # <a name="azure-monitor-for-existing-operations-manager-customers"></a>Azure Monitor pro stávající zákazníky Operations Manager
 Tento článek poskytuje pokyny pro zákazníky, kteří aktuálně používají [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/welcome) a plánují přechod [Azure monitor](overview.md) při migraci obchodních aplikací a dalších prostředků do Azure. Předpokládá, že váš konečný cíl je úplným přechodem do cloudu a nahrazuje co nejvíce Operations Manager funkcím Azure Monitor, aniž by to ohrozilo vaše podnikání a provozní požadavky. 
@@ -63,7 +63,7 @@ U každé z vašich obchodních aplikací povolíte Application Insights. Identi
 Jak se seznámíte s Azure Monitor, začnete vytvářet pravidla výstrah, která budou moci nahradit některé funkce Management Pack a začít vyvíjet obchodní procesy, aby používaly novou monitorovací platformu. To vám umožní začít odebírat počítače a sady Management Pack z Operations Manager skupiny pro správu. Můžete dál používat sady Management Pack pro důležitý serverový software a místní infrastrukturu, ale dál sledovat nové funkce v Azure Monitor, které vám umožní vyřadit další funkce.
 
 ## <a name="monitor-azure-services"></a>Monitorování služeb Azure
-Služby Azure ve skutečnosti vyžadují Azure Monitor shromažďování telemetrie a je to povolený okamžik, kdy vytvoříte předplatné Azure. [Protokol aktivit](platform/activity-log.md) se automaticky shromáždí pro předplatné a [metriky platformy](platform/data-platform-metrics.md) se automaticky shromažďují z libovolných prostředků Azure, které vytvoříte. Můžete okamžitě začít používat [Průzkumníka metrik](platform/metrics-getting-started.md), který je podobný zobrazení výkonu v konzoli Operations Console, ale poskytuje interaktivní analýzu a [Pokročilé agregace](platform/metrics-charts.md) dat. [Vytvořte výstrahu metriky](platform/alerts-metric.md) , která bude upozorněna na překročení prahové hodnoty, nebo [přidat graf na řídicí panel Azure](platform/metrics-charts.md#pin-charts-to-dashboards) pro přehlednost.
+Služby Azure ve skutečnosti vyžadují Azure Monitor shromažďování telemetrie a je to povolený okamžik, kdy vytvoříte předplatné Azure. [Protokol aktivit](platform/activity-log.md) se automaticky shromáždí pro předplatné a [metriky platformy](platform/data-platform-metrics.md) se automaticky shromažďují z libovolných prostředků Azure, které vytvoříte. Můžete okamžitě začít používat [Průzkumníka metrik](platform/metrics-getting-started.md), který je podobný zobrazení výkonu v konzoli Operations Console, ale poskytuje interaktivní analýzu a [Pokročilé agregace](platform/metrics-charts.md) dat. [Vytvořte výstrahu metriky](platform/alerts-metric.md) , která bude upozorněna na překročení prahové hodnoty, nebo [přidat graf na řídicí panel Azure](platform/metrics-charts.md#pinning-to-dashboards) pro přehlednost.
 
 [![Průzkumník metrik](media/azure-monitor-operations-manager/metrics-explorer.png)](media/azure-monitor-operations-manager/metrics-explorer.png#lightbox)
 

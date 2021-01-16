@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 01/12/2020
 ms.subservice: metrics
-ms.openlocfilehash: 79728e53c1d53a8a4463fc0bd1ddee5db89fc013
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 1d83ef07714e0ce69f01aa240cc3058195c7b1af
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234729"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251977"
 ---
 # <a name="azure-monitor-metrics-metrics-aggregation-and-display-explained"></a>Vysvětlení metrik Azure Monitor metriky metriky a zobrazení
 
@@ -125,7 +125,7 @@ Použití filtrování vám umožní vyčistit graf, aby se zobrazila informace 
 
 :::image type="content" source="media/metrics-aggregation-explained/split-filter-total-disk write-bytes-all-VMs.png" alt-text="Snímek obrazovky s bajty zápisu na disk pro všechny virtuální počítače ve skupině prostředků v hotelů společnosti Contoso rozdělené a filtrované podle názvu virtuálního počítače" border="true" lightbox="media/metrics-aggregation-explained/split-filter-total-disk write-bytes-all-VMs.png":::
 
-Další informace o tom, jak zobrazit rozdělená data dimenze v grafu Průzkumníka metrik, najdete v tématu [Pokročilé funkce v Průzkumníkovi metrik – filtry a rozdělení](metrics-charts.md#apply-filters-to-charts).
+Další informace o tom, jak zobrazit rozdělená data dimenze v grafu Průzkumníka metrik, najdete v tématu [Pokročilé funkce v Průzkumníkovi metrik – filtry a rozdělení](metrics-charts.md#filters).
 
 ### <a name="null-and-zero-values"></a>Hodnoty NULL a nula
 

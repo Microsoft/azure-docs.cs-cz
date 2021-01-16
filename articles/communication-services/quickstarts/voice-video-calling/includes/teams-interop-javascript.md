@@ -5,26 +5,18 @@ ms.author: mikben
 ms.date: 10/10/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: c72083f205fae77de366125e666cee479fd46805
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: dbba87be839d7f172d42827698a8e485c2edddd8
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97692029"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98256412"
 ---
 ## <a name="prerequisites"></a>Předpoklady
 
 - Funkční [komunikační služba volá aplikaci](../getting-started-with-calling.md).
 - [Nasazení týmů](/deployoffice/teams-install).
 
-## <a name="enable-teams-interoperability"></a>Povolit interoperabilitu týmů
-
-Funkce interoperability týmů je aktuálně v privátní verzi Preview. Pokud chcete povolit tuto funkci pro prostředek komunikačních služeb, pošlete prosím e-mail [acsfeedback@microsoft.com](mailto:acsfeedback@microsoft.com) s:
-
-1. ID předplatného pro předplatné Azure, které obsahuje váš prostředek komunikačních služeb.
-2. ID tenanta vašich týmů. Nejjednodušší způsob, jak to získat, je [získat a sdílet odkaz na tým](https://support.microsoft.com/office/create-a-link-or-a-code-for-joining-a-team-11b0de3b-9288-4cb4-bc49-795e7028296f).
-
-Abyste mohli tuto funkci používat, musíte být členem vlastnící organizace obou entit.
 
 ## <a name="add-the-teams-ui-controls"></a>Přidat ovládací prvky uživatelského rozhraní týmů
 

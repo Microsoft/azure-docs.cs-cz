@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: 5a06a0663601c221dd456b9cf4437cb9f32a18f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99bc49dfe7b3f7b6a9d49c2947d8d8c01ad98dac
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81399916"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98256499"
 ---
 :::row:::
     :::column span="3":::
@@ -31,20 +31,6 @@ Sadu C++ Speech SDK lze nainstalovat ze **Správce balíčků** pomocí následu
 Install-Package Microsoft.CognitiveServices.Speech
 ```
 
-#### <a name="c-binaries-and-header-files"></a>Binární soubory a hlavičkové soubory C++
-
-Alternativně je možné sadu C++ Speech SDK nainstalovat z binárních souborů. Stáhněte si sadu SDK jako <a href="https://aka.ms/csspeech/linuxbinary" target="_blank">balíček <span class="docon docon-navigate-external x-hidden-focus"></span> . tar</a> a rozbalte soubory v adresáři dle vašeho výběru. Obsah tohoto balíčku (který zahrnuje hlavičkové soubory pro architektury cílové platformy x86 i x64) je strukturovaný takto:
-
-  | Cesta                   | Description                                          |
-  |------------------------|------------------------------------------------------|
-  | `license.md`           | Licence                                              |
-  | `ThirdPartyNotices.md` | Oznámení třetích stran                                  |
-  | `include`              | Hlavičkové soubory pro C++                                 |
-  | `lib/x64`              | Nativní knihovna x64 pro propojení s vaší aplikací |
-  | `lib/x86`              | Nativní knihovna x86 pro propojení s vaší aplikací |
-
-  Chcete-li vytvořit aplikaci, zkopírujte nebo přesuňte požadované binární soubory (a knihovny) do vývojového prostředí. Zahrňte je podle požadavků v procesu sestavení.
-
-#### <a name="additional-resources"></a>Další zdroje
+#### <a name="additional-resources"></a>Další zdroje informací
 
 - <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/cpp" target="_blank">Zdrojový kód v rychlém startu pro Windows, Linux a macOS <span class="docon docon-navigate-external x-hidden-focus"></span></a>

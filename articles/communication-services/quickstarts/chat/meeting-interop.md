@@ -7,12 +7,12 @@ ms.author: askaur
 ms.date: 12/08/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: ea66e4295e8228aa382aa29a46fcca8147dcbc98
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 1ad6b7241c7167c6da8952e7db2797fa275b7246
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97578117"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251913"
 ---
 # <a name="quickstart-join-your-chat-app-to-a-teams-meeting"></a>Rychlý Start: připojení aplikace chat k týmu schůzky
 
@@ -29,11 +29,7 @@ Začněte s komunikačními službami Azure připojením vašeho řešení chatu
 
 Uživatel komunikačních služeb, který se připojí k týmům, kteří se účastní týmu jako uživatel typu Host, může přistupovat ke chatu schůzky pouze v případě, že se připojí k volání schůzky v týmu. Informace o tom, jak přidat uživatele komunikačních služeb do volání na schůzku, najdete v dokumentaci pro [týmy pro spolupráci](../voice-video-calling/get-started-teams-interop.md) .
 
-Funkce interoperability týmů je aktuálně v privátní verzi Preview. Pokud chcete povolit tuto funkci pro prostředek komunikačních služeb, pošlete prosím e-mail acsfeedback@microsoft.com s: 
-1. ID předplatného pro předplatné Azure, které obsahuje váš prostředek komunikačních služeb. 
-2. ID tenanta vašich týmů. Nejjednodušší způsob, jak to získat, je získat a sdílet odkaz na tým. 
-
-Abyste mohli tuto funkci používat, musíte být členem vlastnící organizace obou entit. 
+Abyste mohli tuto funkci používat, musíte být členem vlastnící organizace obou entit.
 
 [!INCLUDE [Join Teams meetings](./includes/meeting-interop-javascript.md)]
 

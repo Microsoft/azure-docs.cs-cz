@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 9751bd082947e66b3fc5ea47448857558301a1e7
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 59329fccda77f16e4a595e9b1789ef684c5cbf95
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97366501"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98256444"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>Omezení sítě – Azure Resource Manager
 Následující omezení platí pouze pro síťové prostředky spravované prostřednictvím **Azure Resource Manager** v jednotlivých oblastech na jedno předplatné. Naučte se, jak [Zobrazit aktuální využití prostředků proti limitům předplatného](../articles/networking/check-usage-against-limits.md).
@@ -34,7 +34,7 @@ Následující omezení platí pouze pro síťové prostředky spravované prost
 | Privátní IP adresy na virtuální počítač |256 |
 | Veřejné IP adresy na síťové rozhraní |256 |
 | Veřejné IP adresy na virtuální počítač |256 |
-| [Souběžné toky TCP nebo UDP na síťové karty virtuálního počítače nebo instance role](../articles/virtual-network/virtual-machine-network-throughput.md#flow-limits-and-recommendations) |500 000 |
+| [Souběžné toky TCP nebo UDP na síťové karty virtuálního počítače nebo instance role](../articles/virtual-network/virtual-machine-network-throughput.md#flow-limits-and-active-connections-recommendations) |500 000 |
 | Karty síťového rozhraní |65 536 |
 | Network Security Groups (Skupiny zabezpečení sítě) |5 000 |
 | Počet pravidel NSG na skupinu NSG |1 000 |
@@ -68,7 +68,7 @@ Následující omezení platí pouze pro síťové prostředky spravované přes
 
 | Prostředek                                | Omezení         |
 |-----------------------------------------|-------------------------------|
-| Nástroje pro vyrovnávání zatížení                          | 1 000                         |
+| nástroje pro vyrovnávání zatížení,                          | 1 000                         |
 | Pravidla na prostředek                      | 1 500                         |
 | Pravidla na síťový adaptér (u všech IP adres na síťovém adaptéru) | 300                           |
 | Konfigurace IP adresy front-endu              | 600                           |
@@ -84,7 +84,7 @@ Následující omezení platí pouze pro síťové prostředky spravované přes
 
 | Prostředek                                | Omezení        |
 |-----------------------------------------|------------------------------|
-| Nástroje pro vyrovnávání zatížení                          | 1 000                        |
+| nástroje pro vyrovnávání zatížení,                          | 1 000                        |
 | Pravidla na prostředek                      | 250                          |
 | Pravidla na síťový adaptér (u všech IP adres na síťovém adaptéru) | 300                          |
 | Konfigurace IP adresy front-endu              | 200                          |

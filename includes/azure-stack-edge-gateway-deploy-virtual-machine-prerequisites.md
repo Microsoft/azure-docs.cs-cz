@@ -2,14 +2,14 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 12/21/2020
+ms.date: 01/15/2021
 ms.author: alkohli
-ms.openlocfilehash: f2443765ecc9116193cefbc729ced25fa5657e59
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 56fc24966fa60c3a5e91f92b57332ae2f6a525ff
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763420"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98256539"
 ---
 Než budete moct nasadit virtuální počítače na Azure Stack hraniční zařízení, musíte klienta nakonfigurovat tak, aby se připojil k zařízení přes Azure Resource Manager přes Azure PowerShell. Podrobný postup najdete [v tomto zařízení v Azure Stack Edge](../articles/databox-online/azure-stack-edge-j-series-connect-resource-manager.md), kde se můžete připojit k Azure Resource Manager.
 
@@ -38,11 +38,3 @@ Ujistěte se, že se k přístupu k zařízení z klienta dají použít tyto kr
     > Pokud vytváříte virtuální počítače GPU, vyberte síťové rozhraní připojené k Internetu. To vám umožní nainstalovat na zařízení rozšíření GPU.
 
 
-1. Povolte roli virtuálních počítačů z Azure Portal. Tento krok vytvoří jedinečné předplatné pro vaše zařízení, které se používá k vytváření virtuálních počítačů prostřednictvím místních rozhraní API daného zařízení. 
-
-    1. Pokud chcete povolit roli virtuálních počítačů, v Azure Portal přejít na prostředek Azure Stack Edge pro zařízení Azure Stack Edge. Přejít na **> výpočtů na Edge Virtual Machines**.
-
-        ![Přidat image virtuálního počítače 1](../articles/databox-online/media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-image-1.png)
-
-    1. Vyberte **Virtual Machines** pro přechod na stránku **Přehled** . **Povolte** správu cloudu virtuálních počítačů.
-        ![Přidat image virtuálního počítače 2](../articles/databox-online/media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-image-2.png)

@@ -3,14 +3,14 @@ title: Kurz Kubernetes v Azure – Příprava aplikace
 description: V tomto kurzu Azure Kubernetes Service (AKS) se dozvíte, jak pomocí Docker Compose připravit a sestavit vícekontejnerovou aplikaci, kterou pak můžete nasadit do AKS.
 services: container-service
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 01/12/2021
 ms.custom: mvc
-ms.openlocfilehash: 15bf29c676c4ca41fc2d005f3500a89ed6b9c380
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 349bf90ea0b344d5232c885358814f39fba4c19f
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91576332"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251946"
 ---
 # <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>Kurz: Příprava aplikace pro službu Azure Kubernetes Service (AKS)
 
@@ -23,9 +23,9 @@ V tomto kurzu, který je první částí sedmidílné série, se připraví víc
 
 Po dokončení bude ve vašem místním vývojovém prostředí spuštěná následující aplikace:
 
-![Obrázek clusteru Kubernetes v Azure](./media/container-service-tutorial-kubernetes-prepare-app/azure-vote.png)
+:::image type="content" source="./media/container-service-kubernetes-tutorials/azure-vote-local.png" alt-text="Snímek obrazovky s obrázkem kontejneru hlasovací aplikace Azure, která je místně otevřená v místním webovém prohlížeči" lightbox="./media/container-service-kubernetes-tutorials/azure-vote-local.png":::
 
-V dalších kurzech se image kontejneru nahraje do Azure Container Registry a pak se nasadí do clusteru AKS.
+V novějších kurzech se image kontejneru nahraje do Azure Container Registry a pak se nasadí do clusteru AKS.
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -33,11 +33,12 @@ V tomto kurzu se předpokládá základní znalost klíčových konceptů Docker
 
 K dokončení tohoto kurzu potřebujete místní vývojové prostředí pro Docker se spuštěnými kontejnery Linuxu. Docker nabízí balíčky pro konfiguraci Dockeru v systému [Mac][docker-for-mac], [Windows][docker-for-windows] nebo [Linux][docker-for-linux].
 
-Azure Cloud Shell neobsahuje součásti Dockeru nutné pro dokončení všech kroků v těchto kurzech. Proto doporučujeme použít úplné vývojové prostředí pro Docker.
+> [!NOTE]
+> Azure Cloud Shell neobsahuje součásti Dockeru nutné pro dokončení všech kroků v těchto kurzech. Proto doporučujeme použít úplné vývojové prostředí pro Docker.
 
 ## <a name="get-application-code"></a>Získání kódu aplikace
 
-Ukázkovou aplikací používanou v tomto kurzu je základní hlasovací aplikace. Aplikace se skládá z front-end webové součásti a back-end instance Redis. Webová součást je zabalená do vlastní image kontejneru. Instance Redis využívá nezměněnou image z Docker Hubu.
+[Ukázková aplikace][sample-application] použitá v tomto kurzu je základní hlasovací aplikace, která se skládá z front-endové webové komponenty a back-endové instance Redis. Webová součást je zabalená do vlastní image kontejneru. Instance Redis využívá nezměněnou image z Docker Hubu.
 
 Pomocí příkazu [git][] naklonujte ukázkovou aplikaci do svého vývojového prostředí:
 
@@ -51,7 +52,35 @@ Přejděte do klonovaného adresáře.
 cd azure-voting-app-redis
 ```
 
-Tento adresář obsahuje zdrojový kód aplikace, předem vytvořený soubor Docker Compose a soubor manifestu Kubernetes. Tyto soubory se používají v celé této sérii kurzů.
+Tento adresář obsahuje zdrojový kód aplikace, předem vytvořený soubor Docker Compose a soubor manifestu Kubernetes. Tyto soubory se používají v celé této sérii kurzů. Obsah a struktura adresáře jsou následující:
+
+```output
+azure-voting-app-redis
+│   azure-vote-all-in-one-redis.yaml
+│   docker-compose.yaml
+│   LICENSE
+│   README.md
+│
+├───azure-vote
+│   │   app_init.supervisord.conf
+│   │   Dockerfile
+│   │   Dockerfile-for-app-service
+│   │   sshd_config
+│   │
+│   └───azure-vote
+│       │   config_file.cfg
+│       │   main.py
+│       │
+│       ├───static
+│       │       default.css
+│       │
+│       └───templates
+│               index.html
+│
+└───jenkins-tutorial
+        config-jenkins.sh
+        deploy-jenkins-vm.sh
+```
 
 ## <a name="create-container-images"></a>Vytváření imagí kontejneru
 
@@ -88,11 +117,11 @@ d10e5244f237        mcr.microsoft.com/azuredocs/azure-vote-front:v1   "/entrypoi
 
 Pokud chcete zobrazit spuštěnou aplikaci, zadejte v místním webovém prohlížeči `http://localhost:8080`. Načte se ukázková aplikace, jak je znázorněno v následujícím příkladu:
 
-![Obrázek clusteru Kubernetes v Azure](./media/container-service-tutorial-kubernetes-prepare-app/azure-vote.png)
+:::image type="content" source="./media/container-service-kubernetes-tutorials/azure-vote-local.png" alt-text="Snímek obrazovky s obrázkem kontejneru hlasovací aplikace Azure, která je místně otevřená v místním webovém prohlížeči" lightbox="./media/container-service-kubernetes-tutorials/azure-vote-local.png":::
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Teď, když jste ověřili funkčnost aplikace, můžete zastavit a odebrat spuštěné kontejnery. Neodstraňujte image kontejnerů – v dalším kurzu se image *azure-vote-front* nahraje do instance služby Azure Container Registry.
+Teď, když jste ověřili funkčnost aplikace, můžete zastavit a odebrat spuštěné kontejnery. ***Neodstraňujte image kontejnerů** _ – v dalším kurzu se nahraje obrázek _azure-hlasování-dopředu * do instance Azure Container Registry.
 
 Zastavte a odeberte instance kontejnerů a související prostředky pomocí příkazu [docker-compose down][docker-compose-down]:
 
@@ -100,7 +129,7 @@ Zastavte a odeberte instance kontejnerů a související prostředky pomocí př
 docker-compose down
 ```
 
-Po odebrání místní aplikace máte k dispozici image Docker, která obsahuje hlasovací aplikaci Azure, *hlasování pro Azure*pro použití s dalším kurzem.
+Po odebrání místní aplikace máte k dispozici image Docker, která obsahuje hlasovací aplikaci Azure, *hlasování pro Azure* pro použití s dalším kurzem.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -125,7 +154,8 @@ V dalším kurzu se dozvíte, jak ukládat image do služby Azure Container Regi
 [docker-images]: https://docs.docker.com/engine/reference/commandline/images/
 [docker-ps]: https://docs.docker.com/engine/reference/commandline/ps/
 [docker-compose-down]: https://docs.docker.com/compose/reference/down
-[Git]: https://git-scm.com/downloads
+[git]: https://git-scm.com/downloads
+[sample-application]: https://github.com/Azure-Samples/azure-voting-app-redis
 
 <!-- LINKS - internal -->
 [aks-tutorial-prepare-acr]: ./tutorial-kubernetes-prepare-acr.md
