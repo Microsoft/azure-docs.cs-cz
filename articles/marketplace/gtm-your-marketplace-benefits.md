@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 01/13/2021
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: 8843bc803cdad07d8b66f9aeb87688c816158200
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 07535add495484abae06fc6ac8ac435d84bccc52
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202266"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246243"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Výhody vašeho komerčního tržiště
 
@@ -26,7 +26,7 @@ Ceny na Marketplace jsou navržené tak, aby vám podporovaly v konkrétní fáz
 
 Program vytvoří pozitivní smyčku zpětné vazby: výhody v jednotlivých fázích růstu jsou navržené tak, aby vás pokračovaly v další fázi, což vám umožní rozšířit vaši firmu na zákazníky Microsoftu, pole Microsoftu a prostřednictvím kanálu Microsoftu prostřednictvím komerčního tržiště, které využijí vaší platformy.
 
-Vaše výhody se liší v závislosti na tom, jestli je vaše nabídka [seznam, zkušební verze nebo transakční](determine-your-listing-type.md#available-listing-options-by-offer-type).
+Vaše výhody se liší v závislosti na tom, jestli je vaše nabídka [seznam, zkušební verze nebo transakční](determine-your-listing-type.md).
 
 Na základě vašich nároků vám bude kontaktován člen týmu útraty, pokud vaše nabídka bude živá.
 

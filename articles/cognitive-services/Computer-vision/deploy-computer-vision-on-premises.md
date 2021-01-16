@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 11/23/2020
 ms.author: aahi
-ms.openlocfilehash: d79c52c05d09eedab2dd964acb544c9cdb405380
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: b3e1bb3f418f21c75e29b5a1cad337c6f3c10145
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562595"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246634"
 ---
 # <a name="use-computer-vision-container-with-kubernetes-and-helm"></a>Použití kontejneru Počítačové zpracování obrazu s Kubernetes a Helm
 
@@ -258,6 +258,8 @@ Podle návrhu každý kontejner V3 má dispečera a pracovní proces pro rozpozn
 
 Kontejner přijímající požadavek může rozdělit úkol na dílčí úkoly jedné stránky a přidat je do univerzální fronty. Libovolný pracovní proces pro rozpoznávání z kontejneru s menší kapacitou může využívat dílčí úkoly z fronty, provádět rozpoznávání a odesílat výsledky do úložiště. Propustnost je možné v `n` závislosti na počtu nasazených kontejnerů zvýšit na krátkou dobu.
 
+Kontejner V3 zpřístupňuje rozhraní API sondy živých funkcí v `/ContainerLiveness` cestě. K nakonfigurování testu živého provozu pro Kubernetes použijte následující příklad nasazení. 
+
 Zkopírujte a vložte následující YAML do souboru s názvem `deployment.yaml` . Nahraďte `# {ENDPOINT_URI}` `# {API_KEY}` komentáře a vlastními hodnotami. Nahraďte `# {AZURE_STORAGE_CONNECTION_STRING}` Komentář vaším připojovacím řetězcem Azure Storage. Nakonfigurujte `replicas` na číslo, které chcete, což je `3` v následujícím příkladu nastaveno na hodnotu.
 
 ```yaml
@@ -293,6 +295,13 @@ spec:
           value: # {AZURE_STORAGE_CONNECTION_STRING}
         - name: Queue__Azure__ConnectionString
           value: # {AZURE_STORAGE_CONNECTION_STRING}
+        livenessProbe:
+          httpGet:
+            path: /ContainerLiveness
+            port: 5000
+          initialDelaySeconds: 60
+          periodSeconds: 60
+          timeoutSeconds: 20
 --- 
 apiVersion: v1
 kind: Service

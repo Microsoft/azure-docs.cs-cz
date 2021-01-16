@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/28/2020
 ms.author: shhazam
-ms.openlocfilehash: d4686f1d7192d1469e52e653185f1fc9389764de
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 2d82aaadf158e45cb8faaeee0b9b4e0fc80a3420
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97832314"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247331"
 ---
 # <a name="connect-your-data-from-defender-for-iot-to-azure-sentinel"></a>Připojení dat z programu Defender pro IoT do Azure Sentinel 
 
@@ -25,7 +25,7 @@ Použijte Defender pro IoT Connector ke streamování všech vašich Defenderů 
 
 Tato integrace umožňuje organizacím rychle detekovat útoky s více fázemi, které jsou často mezi sebou a hranicemi. Kromě toho Defender pro integraci IoT s funkcemi orchestrace, automatizace a odezva zabezpečení Azure Sentinel umožňuje automatizovanou reakci a prevenci pomocí integrované playbooky optimalizované pro. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Oprávnění **ke čtení** a **zápisu** v pracovním prostoru, na kterém je nasazená Azure Sentinel
 - V příslušném IoT Hub musí být **povolený** **Defender pro IoT** .
@@ -65,5 +65,5 @@ Po připojení **předplatného** jsou data centra dostupná v Azure Sentinel p�
 
 V tomto dokumentu jste zjistili, jak připojit Defender pro IoT k Azure Sentinel. Další informace o detekci hrozeb a přístupu k datům zabezpečení najdete v následujících článcích:
 
-- Naučte se, jak pomocí funkce Azure Sentinel [získat přehled o vašich datech a potenciálních hrozbách](https://docs.microsoft.com/azure/sentinel/quickstart-get-visibility).
+- Naučte se, jak pomocí funkce Azure Sentinel [získat přehled o vašich datech a potenciálních hrozbách](../sentinel/quickstart-get-visibility.md).
 - Informace o [přístupu k datům zabezpečení IoT](how-to-security-data-access.md)

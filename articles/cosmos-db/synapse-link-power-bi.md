@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: acomet
-ms.openlocfilehash: 8a3142199502b912f20ebe05c625aa40be9fab11
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: f0111228b9b0030cbbceb9fc70d829a7a22fda01
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218667"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247008"
 ---
 # <a name="use-power-bi-and-serverless-synapse-sql-pool-preview-to-analyze-azure-cosmos-db-data-with-synapse-link"></a>Použití Power BI a synapse fondu SQL (ve verzi Preview) k analýze Azure Cosmos DB dat pomocí propojení synapse 
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -23,7 +23,7 @@ V tomto scénáři použijete zástupné údaje o prodeji na Surface produktů v
 > [!IMPORTANT]
 > Podpora synapse fondu SQL bez serveru pro odkaz na Azure synapse pro Azure Cosmos DB je v současnosti ve verzi Preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Další informace najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, nezapomeňte vytvořit tyto prostředky:
 
@@ -41,7 +41,7 @@ Než začnete, nezapomeňte vytvořit tyto prostředky:
 
 ## <a name="create-a-database-and-views"></a>Vytvoření databáze a zobrazení
 
-Vytváření zobrazení v hlavních nebo výchozích databázích se nedoporučuje ani nepodporuje. Proto je nutné spustit tento krok vytvořením databáze. V pracovním prostoru synapse otevřete kartu **vývoj** , vyberte **+** ikonu a vyberte **skript SQL**.
+V pracovním prostoru synapse otevřete kartu **vývoj** , vyberte **+** ikonu a vyberte **skript SQL**.
 
 :::image type="content" source="./media/synapse-link-power-bi/add-sql-script.png" alt-text="Přidání skriptu SQL do pracovního prostoru analýzy synapse":::
 
@@ -49,7 +49,7 @@ Každý pracovní prostor přichází s koncovým bodem SQL bez serveru. Po vytv
 
 :::image type="content" source="./media/synapse-link-power-bi/enable-sql-on-demand-endpoint.png" alt-text="Povolit skriptu SQL používat koncový bod SQL bez serveru v pracovním prostoru":::
 
-Vytvoří novou databázi s názvem **RetailCosmosDB** a zobrazení SQL nad kontejnery s povoleným odkazem synapse. Následující příkaz ukazuje, jak vytvořit databázi:
+Vytváření zobrazení v **hlavních** nebo **výchozích** databázích se nedoporučuje ani nepodporuje. Vytvoří novou databázi s názvem **RetailCosmosDB** a zobrazení SQL nad kontejnery s povoleným odkazem synapse. Následující příkaz ukazuje, jak vytvořit databázi:
 
 ```sql
 -- Create database

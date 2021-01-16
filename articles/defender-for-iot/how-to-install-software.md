@@ -7,18 +7,18 @@ ms.author: shhazam
 ms.date: 12/2/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 2bd994f14863715274e137bce2dd6873eeec1135
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 49a0129ff26d4a12392066aa6304317d71fdb0f1
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98208756"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247586"
 ---
 # <a name="defender-for-iot-installation"></a>Instalace Defenderu pro IoT
 
 Tento článek popisuje, jak nainstalovat následující prvky Azure Defenderu pro IoT:
 
-- **Senzor**: Defender pro senzory IoT shromažďuje síťový provoz ICS pomocí pasivního monitorování (bez agentů). Pasivní a nerušivé, senzory mají žádný vliv na sítě a a zařízení IoT. Senzor se připojí k portu SPAN nebo k síti KLEPNE a hned začne monitorovat vaši síť. V konzole senzoru se objevují detekce. Zde je můžete zobrazit, prozkoumat a analyzovat v mapě sítě, v inventáři zařízení a v rozsáhlých různých sestavách. Mezi příklady patří sestavy posouzení rizik, dotazy dolování dat a vektory útoku. Přečtěte si další informace o schopnostech senzorů v tématu [uživatelská příručka ke snímači IoT pro uživatele (přímé stažení)](https://aka.ms/AzureDefenderforIoTUserGuide).
+- **Senzor**: Defender pro senzory IoT shromažďuje síťový provoz ICS pomocí pasivního monitorování (bez agentů). Pasivní a nerušivé, senzory mají žádný vliv na sítě a a zařízení IoT. Senzor se připojí k portu SPAN nebo k síti KLEPNE a hned začne monitorovat vaši síť. V konzole senzoru se objevují detekce. Zde je můžete zobrazit, prozkoumat a analyzovat v mapě sítě, v inventáři zařízení a v rozsáhlých různých sestavách. Mezi příklady patří sestavy posouzení rizik, dotazy dolování dat a vektory útoku. Přečtěte si další informace o schopnostech senzorů v tématu [uživatelská příručka ke snímači IoT pro uživatele (přímé stažení)](./getting-started.md).
 
 - Místní **Konzola pro správu**: místní Konzola pro správu umožňuje provádět správu zařízení, řízení rizik a správu ohrožení zabezpečení. Můžete ji také použít k provádění monitorování hrozeb a reakci na incidenty v celém podniku. Nabízí jednotný pohled na všechna síťová zařízení, klíč IoT a rizika a výstrahy zjištěné v zařízeních, kde jsou senzory nasazeny. Pomocí místní konzoly pro správu můžete zobrazit a spravovat senzory v gapped sítích.
 
@@ -44,7 +44,7 @@ K dispozici jsou následující zařízení montovatelné do racku:
 
 | **Typ nasazení** | **Firemní** | **Enterprise** | **SMB** |  |
 |--|--|--|--|--|
-| **Model** | HPE DL360 | Dell PowerEdge R340 XL | HPE DL20 | HPE DL20 |
+| **Modelování** | HPE DL360 | Dell PowerEdge R340 XL | HPE DL20 | HPE DL20 |
 | **Porty monitorování** | až 15 RJ45 nebo 8 OPT | až 9 RJ45 nebo 6 OPT | až 8 RJ45 nebo 6 OPT | 4 RJ45 |
 | **Maximální šířka \* pásma* _ | 3 GB/s | 1 GB/s | 1 GB/s | 100 MB/s |
 | _ *Max. chráněná zařízení** | 30 000 | 10 000 | 15 000 | 1 000 |
@@ -586,7 +586,7 @@ Můžete nasadit virtuální počítač pro nástroj Defender pro IoT snímač v
 | **Malý podnik** | PROCESOR: 4 <br/>Paměť: 8G RAM<br/>PEVNÝ DISK: 500 GB | Testovací nebo malé produkční prostředí | -  |
 | **Office** | PROCESOR: 4<br/>Paměť: 8G RAM<br/>PEVNÝ DISK: 100 GB | Malá testovací prostředí | -  |
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Místní Konzola pro správu podporuje možnosti nasazení VMware a Hyper-V. Než začnete s instalací, ujistěte se, že máte následující položky:
 
@@ -717,7 +717,7 @@ Místní virtuální počítač konzoly pro správu podporuje následující arc
 | Enterprise | PROCESOR: 4 <br/> Paměť: 8G RAM<br/> PEVNÝ DISK: 500 GB | Velká produkční prostředí |
 | Enterprise | PROCESOR: 4 <br/>Paměť: 8G RAM <br/> PEVNÝ DISK: 100 GB | Malá testovací prostředí | 
    
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Místní Konzola pro správu podporuje možnosti nasazení VMware a Hyper-V. Než začnete s instalací, ověřte následující:
 
@@ -1033,7 +1033,7 @@ Konfigurace portu SPAN:
 
 1. Otevřete vlastnosti virtuálního přepínače.
 
-2. Vyberte **Add** (Přidat).
+2. Vyberte **Přidat**.
 
 3. Vyberte **virtuální počítač**  >  **Další**.
 

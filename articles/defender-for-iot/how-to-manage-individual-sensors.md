@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 01/10/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: b61bef89d53da280961b818425d11a6f81bbf5ea
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 25f47be98b11f05ee6ac27018152ece05c0de4e4
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210235"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246685"
 ---
 # <a name="manage-individual-sensors"></a>Správa individuálních senzorů
 
@@ -62,7 +62,7 @@ Přidání nového aktivačního souboru:
 
 5. Stáhněte si aktivační soubor ze stránky **soubor pro aktivaci stahování** .
 
-6. Uložte soubor.
+6. Soubor uložte.
 
     :::image type="content" source="media/how-to-manage-individual-sensors/download-activation-file.png" alt-text="Stáhněte si aktivační soubor z programu Defender pro IoT Hub.":::
 
@@ -84,7 +84,7 @@ Pokud se aktivační soubor nepovedlo nahrát, zobrazí se chybová zpráva. Moh
 
 - **Pro místně připojené senzory**: aktivační soubor není platný. Pokud soubor není platný, přejdete na portál Defender for IoT. Na stránce **Správa senzorů** vyberte senzor s neplatným souborem a stáhněte nový aktivační soubor.
 
-- Senzory **připojené k cloudu**: senzor se nemůže připojit k Internetu. Ověřte konfiguraci senzoru sítě. Pokud se váš senzor potřebuje připojit prostřednictvím webového proxy serveru pro přístup k Internetu, ověřte, že je váš proxy server správně nakonfigurovaný na obrazovce **Konfigurace sítě senzorů** . Ověřte, že \* v bráně firewall nebo proxy serveru je povolený. Azure-Devices.NET:443. Pokud se zástupné znaky nepodporují nebo chcete mít větší kontrolu, měli byste v bráně firewall nebo proxy serveru otevřít plně kvalifikovaný název domény pro konkrétního Defenderu pro IoT Hub. Podrobnosti najdete v tématu [IoT Hub koncových bodů reference](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-endpoints).  
+- Senzory **připojené k cloudu**: senzor se nemůže připojit k Internetu. Ověřte konfiguraci senzoru sítě. Pokud se váš senzor potřebuje připojit prostřednictvím webového proxy serveru pro přístup k Internetu, ověřte, že je váš proxy server správně nakonfigurovaný na obrazovce **Konfigurace sítě senzorů** . Ověřte, že \* v bráně firewall nebo proxy serveru je povolený. Azure-Devices.NET:443. Pokud se zástupné znaky nepodporují nebo chcete mít větší kontrolu, měli byste v bráně firewall nebo proxy serveru otevřít plně kvalifikovaný název domény pro konkrétního Defenderu pro IoT Hub. Podrobnosti najdete v tématu [IoT Hub koncových bodů reference](../iot-hub/iot-hub-devguide-endpoints.md).  
 
 - **Pro senzory připojené k cloudu**: aktivační soubor je platný, ale Defender pro IoT ho zamítl. Pokud tento problém nemůžete vyřešit, můžete si stáhnout další aktivaci ze stránky **Správa senzorů** v Defenderu pro IoT Portal. Pokud to nepomůže, obraťte se na podpora Microsoftu.
 
@@ -397,7 +397,7 @@ V konzole se zobrazí chyby obnovení.
 
 Následující postup popisuje aktualizaci samostatného senzoru pomocí konzoly senzorů. Proces aktualizace trvá přibližně 30 minut.
 
-1. Přejděte na web [Azure Portal](https://portal.azure.com/).
+1. Přejděte na [Azure Portal](https://portal.azure.com/).
 
 2. Přejít na Defender pro IoT.
 
@@ -455,7 +455,7 @@ Přístup k vlastnostem systému:
 
 3. V části **Obecné** vyberte **Vlastnosti systému** .
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 [Analýzy a balíčky pro analýzu hrozeb](how-to-work-with-threat-intelligence-packages.md)
 

@@ -6,21 +6,15 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
-ms.date: 12/18/2020
-ms.openlocfilehash: 091af70383eb3cab32a0453d7f7542d8a4395d0b
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.date: 01/14/2021
+ms.openlocfilehash: 89cd9f46474e8e311f003f317b90bdb21eae55fe
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98107391"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247539"
 ---
 # <a name="introduction-to-listing-options"></a>Úvod k možnostem výpisu
-
-Dostupné _Možnosti výpisu_ ze komerčního tržiště můžete použít k zapojení potenciálních zákazníků různými způsoby. Po publikování vaší nabídky se možnosti pro výpisy, které jste si zvolili pro vaši nabídku, zobrazí jako tlačítko v levém horním rohu stránky se seznamem vaší nabídky v online obchodech. Například následující snímek obrazovky ukazuje stránku se seznamem nabídek v Microsoft AppSource online obchodu s tlačítky pro **kontaktování** a **testování testovacích jednotek** .
-
-:::image type="content" source="./media/listing-options.png" alt-text="Znázorňuje stránku se seznamem pro nabídku. Zobrazí se tlačítka kontaktní osoba a testovací jednotka.":::
-
-## <a name="available-listing-options-by-offer-type"></a>Dostupné možnosti výpisu podle typu nabídky
 
 Při vytváření typu nabídky zvolíte jednu nebo více možností výpisu. Tyto možnosti určují, kteří tlačítka uvidí na stránce seznam nabídek v online obchodech. Možnosti výpisu zahrnují _bezplatnou zkušební verzi_, _testovací_ verzi, _kontaktování na mě_ a _Získejte ji hned teď_.
 
@@ -42,7 +36,7 @@ Tato tabulka obsahuje seznam dostupných možností pro každý typ nabídky.
 | Software jako služba | &#10004; | &#10004; | &#10004; | &#10004; |
 ||||||
 
-`*` Možnost získat nyní se zobrazí jako seznam obsahuje možnosti získat nyní (zdarma), přinést si vlastní licenci (BYOL), předplatné a používání na základě využití. Podrobnosti najdete v tématu o [tom, jak ho získat hned](#get-it-now).
+&#42; možnosti získat nyní se zobrazí jako možnost získat nyní (zdarma), využít vlastní licenci (BYOL), předplatné a ceny na základě využití. Podrobnosti najdete v tématu o [tom, jak ho získat hned](#get-it-now).
 
 ### <a name="free-trial"></a>Bezplatná zkušební verze
 
@@ -102,9 +96,15 @@ Tato tabulka uvádí, které typy nabídek podporují další cenové možnosti,
 
 Pomocí této možnosti výpisu můžete aplikaci zdarma nabídnout. Zákazníci získají bezplatnou nabídku pomocí tlačítka _získat nyní_ .
 
-#### <a name="byol"></a>BYOL
+> [!NOTE]
+> Získat hned (zdarma) nabídky nejsou způsobilé pro výhody na webu Marketplace pro transakční nabídky. Vzhledem k tomu, že prezentace žádné transakce, jsou tyto kategorie zařazeny do kategorií "zkušební verze". Podívejte se na následující [ceny na webu Marketplace](#marketplace-rewards) .
 
-Pomocí komerčního tržiště Vylepšete možnosti zjistitelnosti, Automatizujte zřizování vašeho řešení a dokončete finanční transakci od Marketplace. Možnost uvést vlastní licenci (BYOL) je ideální pro migrace z místního prostředí do cloudu. Zákazníci používají k nákupu nabídky možnost _získat IT_ , a to s využitím licence, kterou si předem koupili.
+#### <a name="bring-your-own-license-byol"></a>Používání vlastní licence (BYOL)
+
+Pomocí této možnosti výpisu umožníte zákazníkům nasadit vaši nabídku pomocí licence zakoupené mimo komerční web Marketplace. Tato možnost je ideální pro migrace z místního prostředí do cloudu. Zákazníci použijí tlačítko _získat IT_ k nákupu nabídky pomocí licence, kterou si předem koupili.
+
+> [!NOTE]
+> Nabídky BYOL nejsou způsobilé pro výhody na webu Marketplace pro transakce, které lze v nabídce provádět. Vzhledem k tomu, že tyto požadavky vyžadují, aby zákazník získal licenci od partnera a nedošlo k žádné transakci prostřednictvím komerčního prezentaceu na webu Marketplace, patří do kategorií "list". Podívejte se na následující [ceny na webu Marketplace](#marketplace-rewards) .
 
 #### <a name="subscription"></a>Předplatné
 
@@ -117,11 +117,17 @@ Paušální poplatek můžete účtovat pro tyto typy nabídek:
 
 Ceny na základě využití podporují následující typy nabídek:
 
-- Nabídka aplikace Azure (spravovaná aplikace) podporuje účtované podle objemu. Další podrobnosti najdete v tématu [spravovaná aplikace účtované podle objemu](./partner-center-portal/azure-app-metered-billing.md).
-- SaaS nabídky podporují ceny účtované podle objemu a na uživatele (za pracovní stanici). Další informace o účtovaných fakturách najdete v tématu [měřené fakturace pro SaaS pomocí komerční služby měření na webu Marketplace](./partner-center-portal/saas-metered-billing.md).
+- Nabídka aplikace Azure (spravovaná aplikace) podporuje účtované podle objemu. Další podrobnosti najdete v tématu [spravovaná aplikace účtované podle objemu](partner-center-portal/azure-app-metered-billing.md).
+- SaaS nabídky podporují ceny účtované podle objemu a na uživatele (za pracovní stanici). Další informace o účtovaných fakturách najdete v tématu [měřené fakturace pro SaaS pomocí komerční služby měření na webu Marketplace](partner-center-portal/saas-metered-billing.md).
 - Virtuální počítač Azure nabízí podporu podle počtu jader, podle základní velikosti a ceny za trh a základní velikosti. Cenové možnosti jsou ceny za hodinu a účtují se měsíčně.
 
 Při vytváření nabídky s podporou transakcí je důležité pochopit informace o cenách, fakturaci, fakturaci a výběru před výběrem typu nabídky a vytvořením nabídky. Další informace najdete v článku [online obchody pro obchod na webu Marketplace](overview.md#commercial-marketplace-online-stores).
+
+## <a name="sample-offer"></a>Ukázka nabídky
+
+Po publikování vaší nabídky se možnosti výpisu, které jste zvolili, zobrazí jako tlačítko v levém horním rohu stránky se seznamem v online obchodech. Například na následující obrazovce vidíte stránku se seznamem nabídek v Microsoft AppSource online obchodu s tlačítky **získat nyní** a **testovat disk** :
+
+:::image type="content" source="media/listing-options.png" alt-text="Znázorňuje stránku se seznamem nabídky s tlačítky pro kontaktování a testování testovacích jednotek.":::
 
 ## <a name="listing-and-pricing-options-by-online-store"></a>Seznam a cenové možnosti pro online obchod
 
@@ -149,10 +155,14 @@ SaaS příkazy, které lze využít v AppSource, jsou momentálně pouze kreditn
 
 &#42;&#42; Microsoft 365 doplňky je zdarma nainstalovat a je možné je můžou finančně zhodnocovat pomocí nabídky SaaS. Další informace najdete v tématu [monetizovat vašeho doplňku pro Office 365 prostřednictvím komerčního tržiště Microsoftu](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace).
 
-## <a name="marketplace-rewards"></a>Ceny Marketplace
+## <a name="marketplace-rewards"></a>Marketplace Rewards
 
 Vaše ceny na webu Marketplace se liší v závislosti na zvolené možnosti výpisu. Další informace najdete v tématu [výhody komerčního tržiště](gtm-your-marketplace-benefits.md).
 
+Pokud je vaše nabídka transakční, získáte výhody při zvýšení účtovaného prodeje.
+
+Netransakční nabídky získají výhody v závislosti na tom, jestli je k dispozici bezplatná zkušební verze.
+
 ## <a name="next-steps"></a>Další kroky
 
-- Chcete-li zvolit typ nabídky, kterou chcete vytvořit, přečtěte si téma [Průvodce publikováním podle typu nabídky](./publisher-guide-by-offer-type.md).
+- Chcete-li zvolit typ nabídky, kterou chcete vytvořit, přečtěte si téma [Průvodce publikováním podle typu nabídky](publisher-guide-by-offer-type.md).

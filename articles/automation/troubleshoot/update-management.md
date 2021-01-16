@@ -2,15 +2,15 @@
 title: Řešení potíží s Azure Automation Update Management
 description: V tomto článku se dozvíte, jak řešit problémy s Azure Automation Update Management.
 services: automation
-ms.date: 12/04/2020
+ms.date: 01/13/2021
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: f00002c7374e0c35c7bb91c28b2dd87ad71e3350
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 55e58c92004f4f4cf4ba6a96620b4f037c80cdb4
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98184913"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246260"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Řešení problémů s Update Managementem
 
@@ -144,13 +144,11 @@ K tomuto problému může dojít při potížích s místními konfiguracemi neb
    | summarize by Computer, Solutions
    ```
 
-4. Pokud počítač ve výsledcích dotazu nevidíte, nebude nedávno vrácen se změnami. Pravděpodobně došlo k potížím s místní konfigurací a je třeba [agenta přeinstalovat](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows).
+    Pokud počítač ve výsledcích dotazu nevidíte, nebude nedávno vrácen se změnami. Pravděpodobně došlo k potížím s místní konfigurací a je třeba [agenta přeinstalovat](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows).
 
-5. Pokud se Váš počítač zobrazí ve výsledcích dotazu, vyhledejte problémy s konfigurací rozsahu. [Konfigurace oboru](../update-management/scope-configuration.md) určuje, které počítače jsou nakonfigurovány pro Update Management.
+    Pokud je váš počítač uvedený ve výsledcích dotazu, ověřte pod vlastností **řešení** **, které jsou** uvedeny v seznamu. Ověří, jestli je zaregistrované u Update Management. Pokud tomu tak není, vyhledejte problémy s konfigurací oboru. [Konfigurace oboru](../update-management/scope-configuration.md) určuje, které počítače jsou nakonfigurovány pro Update Management. Pokud chcete nakonfigurovat konfiguraci oboru pro cílový počítač, přečtěte si téma [Povolení počítačů v pracovním prostoru](../update-management/enable-from-automation-account.md#enable-machines-in-the-workspace).
 
-6. Pokud se Váš počítač zobrazuje v pracovním prostoru, ale ne v Update Management, musíte nakonfigurovat konfiguraci oboru, aby se na počítač nastavil cíl. Další informace o tom, jak to udělat, najdete v tématu [Povolení počítačů v pracovním prostoru](../update-management/enable-from-automation-account.md#enable-machines-in-the-workspace).
-
-7. V pracovním prostoru spusťte tento dotaz.
+4. V pracovním prostoru spusťte tento dotaz.
 
    ```kusto
    Operation
@@ -158,9 +156,9 @@ K tomuto problému může dojít při potížích s místními konfiguracemi neb
    | sort by TimeGenerated desc
    ```
 
-8. Pokud získáte `Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota` výsledek, je dosaženo kvóty definované v pracovním prostoru, která zastavila ukládání dat. V pracovním prostoru přejděte na **Správa objemu dat** v části **využití a odhadované náklady** a změňte nebo odeberte kvótu.
+   Pokud získáte `Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota` výsledek, je dosaženo kvóty definované v pracovním prostoru, která zastavila ukládání dat. V pracovním prostoru přejděte na **Správa objemu dat** v části **využití a odhadované náklady** a změňte nebo odeberte kvótu.
 
-9. Pokud je problém stále nevyřešený, postupujte podle kroků v části [nasazení Hybrid Runbook Worker Windows](../automation-windows-hrw-install.md) a přeinstalujte Hybrid Worker pro Windows. V případě systému Linux postupujte podle pokynů v části [nasazení Hybrid Runbook Worker pro Linux](../automation-linux-hrw-install.md).
+5. Pokud je problém stále nevyřešený, postupujte podle kroků v části [nasazení Hybrid Runbook Worker Windows](../automation-windows-hrw-install.md) a přeinstalujte Hybrid Worker pro Windows. V případě systému Linux postupujte podle pokynů v části [nasazení Hybrid Runbook Worker pro Linux](../automation-linux-hrw-install.md).
 
 ## <a name="scenario-unable-to-register-automation-resource-provider-for-subscriptions"></a><a name="rp-register"></a>Scénář: nejde zaregistrovat poskytovatele prostředků služby Automation pro předplatná.
 

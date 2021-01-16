@@ -3,12 +3,12 @@ title: Azure Event Grid doručování a opakování
 description: Popisuje, jak Azure Event Grid doručuje události a jak zpracovává nedoručené zprávy.
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 51473cf457a1c713e6694edd23c344be8c4d439e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3c4ed6ec2c9eae4dbcf70a831e3e7f70a28a57a0
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463245"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247365"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Doručování zpráv Event Grid a opakování
 
@@ -57,7 +57,7 @@ Další informace o použití rozhraní příkazového řádku Azure s Event Gri
 
 Pokud EventGrid obdrží při pokusu o doručení události chybu, EventGrid rozhodne, zda má opakovat doručení nebo nedoručené písmeno, nebo událost vyřaďte na základě typu chyby. 
 
-Pokud chyba vrácená koncovým bodem nastavila chybu související se konfigurací, která se nedá opravit pomocí opakování (například při odstranění koncového bodu), EventGrid buď neodstraní odkládání události, nebo událost vyřaďte, pokud není nenakonfigurované žádné nedoručené písmeno.
+Pokud chyba vrácená koncovým bodem nastavila chybu související s konfigurací, kterou nelze opravit pomocí opakovaných pokusů (například při odstranění koncového bodu), EventGrid vykoná nedoručení události nebo vynechá událost, pokud není Nenakonfigurováno nedoručené písmeno.
 
 Níže jsou uvedené typy koncových bodů, pro které opakování neproběhne:
 
@@ -67,7 +67,7 @@ Níže jsou uvedené typy koncových bodů, pro které opakování neproběhne:
 | Webhook | 400 Chybný požadavek, je příliš velká entita žádosti 413, 403 zakázáno, 404 Nenalezeno, 401 Neautorizováno |
  
 > [!NOTE]
-> Pokud pro koncový bod není nakonfigurované Dead-Letter, události se při výskytu chyb ztratí, takže pokud nechcete, aby se tyto druhy událostí vynechaly, zvažte konfiguraci nedoručených zpráv.
+> Pokud pro koncový bod není nakonfigurované Dead-Letter, události se při výskytu chyb ztratí. Pokud nechcete, aby se tyto druhy událostí vynechaly, zvažte konfiguraci nedoručených zpráv.
 
 Pokud chyba vrácená koncovým bodem není mezi seznamem výše, EventGrid provede opakování pomocí zásad popsaných níže:
 
@@ -80,7 +80,10 @@ Po doručení zprávy vyčká Event Grid 30 sekund na odpověď. Pokud koncový 
 - 10 minut
 - 30 minut
 - 1 hodina
-- Po hodinách po dobu až 24 hodin
+- 3 hodiny
+- 6 hodin
+- Každých 12 hodin až po dobu 24 hodin
+
 
 Pokud koncový bod během 3 minut odpoví, Event Grid se pokusí odebrat událost z fronty opakovaných pokusů, ale stále se můžou přijmout duplicity.
 
@@ -104,7 +107,7 @@ Když Event Grid nemůže doručovat událost v určitém časovém období nebo
 
 Je-li splněna některá z podmínek, událost je vyřazena nebo byla nedoručena.  Ve výchozím nastavení Event Grid nezapne nedoručené písmeno. Pokud ho chcete povolit, musíte zadat účet úložiště pro ukládání nedoručených událostí při vytváření odběru události. Vyžádáte si události z tohoto účtu úložiště, abyste mohli vyřešit dodávky.
 
-Event Grid pošle událost do umístění nedoručených zpráv, když se pokusí všechny jeho pokusy opakovat. Pokud Event Grid obdrží kód odpovědi 400 (špatný požadavek) nebo 413 (příliš velký požadavek na entitu požadavku), okamžitě ho pošle do koncového bodu se nedoručenými písmeny. Tyto kódy odpovědí ukazují, že doručení události nebude nikdy úspěšné.
+Event Grid pošle událost do umístění nedoručených zpráv, když se pokusí všechny jeho pokusy opakovat. Pokud Event Grid obdrží kód odpovědi 400 (špatný požadavek) nebo 413 (příliš velký požadavek na entitu požadavku), okamžitě naplánuje událost pro nedoručené zprávy. Tyto kódy odpovědí ukazují, že doručení události nebude nikdy úspěšné.
 
 Doba do živého vypršení platnosti se kontroluje jenom při příštím naplánovaném pokusu o doručení. Proto platí, že i když doba do provozu vyprší před dalším plánovaným pokusem o doručení, je tato událost kontrolována pouze v okamžiku příštího doručení a následně nedoručená. 
 

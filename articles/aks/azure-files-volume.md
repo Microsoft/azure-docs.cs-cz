@@ -5,12 +5,12 @@ description: Zjistěte, jak ručně vytvořit svazek se soubory Azure pro použi
 services: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.openlocfilehash: 89976211763f5d4729718c4e4c6503650f27f7cc
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: a6e28464df2ff9c9dcc7734a127cc00f887e08dd
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93126269"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246957"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>Ruční vytvoření a použití svazku se sdílenou složkou Azure ve službě Azure Kubernetes Service (AKS)
 
@@ -26,7 +26,7 @@ Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2
 
 ## <a name="create-an-azure-file-share"></a>Vytvoření sdílené složky Azure
 
-Než budete moct používat soubory Azure jako Kubernetes svazek, musíte vytvořit účet Azure Storage a sdílenou složku. Následující příkazy vytvoří skupinu prostředků s názvem *myAKSShare* , účet úložiště a sdílenou složku s názvem *aksshare* :
+Než budete moct používat soubory Azure jako Kubernetes svazek, musíte vytvořit účet Azure Storage a sdílenou složku. Následující příkazy vytvoří skupinu prostředků s názvem *myAKSShare*, účet úložiště a sdílenou složku s názvem *aksshare*:
 
 ```azurecli-interactive
 # Change these four parameters as needed for your own environment
@@ -69,7 +69,7 @@ kubectl create secret generic azure-secret --from-literal=azurestorageaccountnam
 
 ## <a name="mount-the-file-share-as-a-volume"></a>Připojit sdílenou složku jako svazek
 
-Pokud chcete sdílenou složku služby soubory Azure připojit k vašemu zařízení pod, nakonfigurujte svazek ve specifikaci kontejneru. Vytvořte nový soubor s názvem `azure-files-pod.yaml` s následujícím obsahem. Pokud jste změnili název sdílené složky nebo tajného názvu, aktualizujte název souboru *název_sdílené_položky* a název *tajného* klíče. V případě potřeby aktualizujte `mountPath` cestu, která je cesta, kde je sdílená složka souborů připojená v poli pod. V případě kontejnerů Windows serveru určete *mountPath* pomocí konvence cesty Windows, třeba *:* .
+Pokud chcete sdílenou složku služby soubory Azure připojit k vašemu zařízení pod, nakonfigurujte svazek ve specifikaci kontejneru. Vytvořte nový soubor s názvem `azure-files-pod.yaml` s následujícím obsahem. Pokud jste změnili název sdílené složky nebo tajného názvu, aktualizujte název souboru *název_sdílené_položky* a název *tajného* klíče. V případě potřeby aktualizujte `mountPath` cestu, která je cesta, kde je sdílená složka souborů připojená v poli pod. V případě kontejnerů Windows serveru určete *mountPath* pomocí konvence cesty Windows, třeba *:*.
 
 ```yaml
 apiVersion: v1
@@ -104,7 +104,7 @@ Pomocí `kubectl` příkazu vytvořte pod.
 kubectl apply -f azure-files-pod.yaml
 ```
 
-Teď máte spuštěný pod s sdílenou složkou Azure, která je připojená na */mnt/Azure* . `kubectl describe pod mypod`K ověření, zda je sdílená složka úspěšně připojena, můžete použít. Následující zhuštěný příklad výstupu ukazuje svazek připojený do kontejneru:
+Teď máte spuštěný pod s sdílenou složkou Azure, která je připojená na */mnt/Azure*. `kubectl describe pod mypod`K ověření, zda je sdílená složka úspěšně připojena, můžete použít. Následující zhuštěný příklad výstupu ukazuje svazek připojený do kontejneru:
 
 ```
 Containers:
@@ -133,7 +133,7 @@ Volumes:
 
 ## <a name="mount-options"></a>Možnosti připojení
 
-Výchozí hodnota pro *FileMode* a *dirMode* je *0755* pro Kubernetes verze 1.9.1 a vyšší. Pokud používáte cluster s Kubernetes verze 1.8.5 nebo vyšší a staticky vytváříte objekt trvalého svazku, musí být v objektu *PersistentVolume* zadány možnosti připojení. Následující příklad nastaví *0777* :
+Výchozí hodnota pro *FileMode* a *dirMode* je *0755* pro Kubernetes verze 1.9.1 a vyšší. Pokud používáte cluster s Kubernetes verze 1.8.5 nebo vyšší a staticky vytváříte objekt trvalého svazku, musí být v objektu *PersistentVolume* zadány možnosti připojení. Následující příklad nastaví *0777*:
 
 ```yaml
 apiVersion: v1
@@ -145,7 +145,6 @@ spec:
     storage: 5Gi
   accessModes:
     - ReadWriteMany
-  storageClassName: azurefile
   azureFile:
     secretName: azure-secret
     shareName: aksshare
@@ -159,9 +158,9 @@ spec:
   - nobrl
 ```
 
-Pokud používáte cluster verze 1.8.0-1.8.4, je možné určit kontext zabezpečení s hodnotou *runAsUser* nastavenou na *0* . Další informace o kontextu zabezpečení najdete v tématu [Konfigurace kontextu zabezpečení][kubernetes-security-context].
+Pokud používáte cluster verze 1.8.0-1.8.4, je možné určit kontext zabezpečení s hodnotou *runAsUser* nastavenou na *0*. Další informace o kontextu zabezpečení najdete v tématu [Konfigurace kontextu zabezpečení][kubernetes-security-context].
 
-Pokud chcete aktualizovat možnosti připojení, vytvořte soubor *azurefile-Mount-Options-PV. yaml* s *PersistentVolume* . Například:
+Pokud chcete aktualizovat možnosti připojení, vytvořte soubor *azurefile-Mount-Options-PV. yaml* s *PersistentVolume*. Příklad:
 
 ```yaml
 apiVersion: v1
@@ -173,7 +172,6 @@ spec:
     storage: 5Gi
   accessModes:
     - ReadWriteMany
-  storageClassName: azurefile
   azureFile:
     secretName: azure-secret
     shareName: aksshare
@@ -187,7 +185,7 @@ spec:
   - nobrl
 ```
 
-Vytvořte soubor *azurefile-Mount-Options-PVC. yaml* s *PersistentVolumeClaim* , který používá *PersistentVolume* . Například:
+Vytvořte soubor *azurefile-Mount-Options-PVC. yaml* s *PersistentVolumeClaim* , který používá *PersistentVolume*. Příklad:
 
 ```yaml
 apiVersion: v1
@@ -197,20 +195,20 @@ metadata:
 spec:
   accessModes:
     - ReadWriteMany
-  storageClassName: azurefile
+  storageClassName: ""
   resources:
     requests:
       storage: 5Gi
 ```
 
-Použijte `kubectl` příkazy k vytvoření *PersistentVolume* a *PersistentVolumeClaim* .
+Použijte `kubectl` příkazy k vytvoření *PersistentVolume* a *PersistentVolumeClaim*.
 
 ```console
 kubectl apply -f azurefile-mount-options-pv.yaml
 kubectl apply -f azurefile-mount-options-pvc.yaml
 ```
 
-Ověřte, že je váš *PersistentVolumeClaim* vytvořený a vázaný na *PersistentVolume* .
+Ověřte, že je váš *PersistentVolumeClaim* vytvořený a vázaný na *PersistentVolume*.
 
 ```console
 $ kubectl get pvc azurefile
@@ -219,7 +217,7 @@ NAME        STATUS   VOLUME      CAPACITY   ACCESS MODES   STORAGECLASS   AGE
 azurefile   Bound    azurefile   5Gi        RWX            azurefile      5s
 ```
 
-Aktualizujte své specifikace kontejneru, aby odkazovaly na *PersistentVolumeClaim* a aktualizovali pod. Například:
+Aktualizujte své specifikace kontejneru, aby odkazovaly na *PersistentVolumeClaim* a aktualizovali pod. Příklad:
 
 ```yaml
 ...

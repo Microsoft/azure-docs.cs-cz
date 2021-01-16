@@ -4,15 +4,15 @@ description: Seznamte se s hardwarem a virtuálním zařízením pro certifikova
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/21/2020
+ms.date: 01/13/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: b22f880eee1b691b6b50b8151a64a2d501b891b3
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 25685d7e933c9d171e1547be2f5899c08443321a
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97838976"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246566"
 ---
 # <a name="identify-required-appliances"></a>Identifikace požadovaných zařízení
 
@@ -41,7 +41,7 @@ V této části najdete přehled dostupných modelů fyzického senzoru. Můžet
 | Typ nasazení | Firemní | Enterprise | SMB |
 |--|--|--|--|
 | Image | :::image type="content" source="media/how-to-prepare-your-network/corporate-hpe-proliant-dl360-v2.png" alt-text="Model podnikové úrovně."::: | :::image type="content" source="media/how-to-prepare-your-network/enterprise-and-smb-hpe-proliant-dl20-v2.png" alt-text="Model podnikové úrovně."::: | :::image type="content" source="media/how-to-prepare-your-network/enterprise-and-smb-hpe-proliant-dl20-v2.png" alt-text="Model na úrovni protokolu SMB."::: |
-| Model | HPE DL360 | HPE DL20 | HPE DL20 |
+| Modelování | HPE DL360 | HPE DL20 | HPE DL20 |
 | Porty monitorování | Až 15 RJ45 nebo 8 OPT | Až 8 RJ45 nebo 6 OPT | 4 RJ45 |
 | Maximální šířka pásma [1](#anchortext) | 3 GB za sekundu | 1 GB za sekundu | 200 MB za sekundu |
 | Maximální počet chráněných zařízení | 30 000 | 15 000 | 1 000 |
@@ -50,7 +50,7 @@ Podrobnosti o dodavatelích najdete v tématu [specifikace zařízení](#applian
 
 O předkonfigurovaných senzorech: Společnost Microsoft se dostavila s šipkou, aby poskytovala předem nakonfigurované senzory. Pokud chcete koupit předkonfigurovaný senzor, šipka kontaktu na následující adrese: <hardware.sales@arrow.com>
 
-Informace o tom, jak se přinášejí vlastní zařízení: Projděte si podporované modely popsané tady. Po získání zařízení si přečtěte tento software v programu **Defender for IoT**  >  **Network snímače ISO**  >   .
+Informace o zavedení vlastního zařízení: Projděte si podporované modely popsané tady. Po získání zařízení si přečtěte tento software v programu **Defender for IoT**  >  **Network snímače ISO**  >   .
 
 :::image type="content" source="media/how-to-prepare-your-network/azure-defender-for-iot-sensor-download-software-screen.png" alt-text="Síťové senzory ISO.":::
 
@@ -92,14 +92,14 @@ Tato část popisuje hardwarové specifikace pro následující zařízení:
 
 ## <a name="corporate-deployment-hpe-proliant-dl360"></a>Firemní nasazení: HPE prozávislé DL360
 
-| Komponenta | Technické specifikace |
+| Součást | Technické specifikace |
 |--|--|
 | Skříň | rackový server 1U |
 | Dimenze | 42,9 x 43,46 x 70,7 (cm)/1.69 "x 17,11" x 27,83 "(in) |
 | Hmotnost | Max 16,27 kg (35,86 kg) |
 | Procesor | Intel Xeon stříbrné 4215 R 3,2 GHz, 11 min. cache, 8c/16T, 130 W |
 | Sad | Intel C621 |
-| Paměť | 32 GB = 2 × 16 až GB 2666MT/s DDR4 ECC UDIMM |
+| Memory (Paměť) | 32 GB = 2 × 16 až GB 2666MT/s DDR4 ECC UDIMM |
 | Úložiště | 6 x 1,2-TB SAS 12G Enterprise 10 000 SFF (2,5 v) v Hot-Plug pevný disk – RAID 5 |
 | Síťový adaptér | Na desce: 2 × 1-GB Broadcom BCM5720<br>On-Board dvěma: karta portů iDRAC 1-GB Broadcom BCM5720<br><br>Externí: 1 x Intel Ethernet i350 QP 1-GB Server Adapter, nízký profil |
 | Správa | HPE MOP Advanced |
@@ -128,14 +128,14 @@ Tato část popisuje hardwarové specifikace pro následující zařízení:
 
 ## <a name="enterprise-deployment-hpe-proliant-dl20"></a>Podnikové nasazení: HPE prozávislé DL20
 
-| Komponenta | Technické specifikace |
+| Součást | Technické specifikace |
 |--|--|
 | Skříň | rackový server 1U |
 | Rozměry (výška × šířka × hloubka) | 4,32 x 43,46 × 38,22 cm/1.70 × 17,11 × 15,05 palce |
 | Hmotnost | 7,9 kg/17.41. kg |
 | Procesor | Intel Xeon E-2234, 3,6 GHz, 4C/8T, 71 W |
 | Sad | Intel C242 |
-| Paměť | 2 × 16 GB duální hodnocení x8 DDR4-2666 |
+| Memory (Paměť) | 2 × 16 GB duální hodnocení x8 DDR4-2666 |
 | Úložiště | 3 × 1 TB SATA 6G midline 7,2 K SFF (2,5 in) – RAID 5 s Smart Array P408i-The SR Controller |
 | Síťový adaptér | Na desce: 2 × 1 GB <br>Na desce: karta portu MOP 1 GB <br>Externí: 1 x HPE Ethernet 1-GB 4-port 366FLR Adapter |
 | Správa | HPE MOP Advanced |
@@ -163,14 +163,14 @@ Tato část popisuje hardwarové specifikace pro následující zařízení:
 
 ## <a name="smb-deployment-hpe-proliant-dl20"></a>Nasazení protokolu SMB: HPE prozávislé DL20
 
-| Komponenta | Technické specifikace |
+| Součást | Technické specifikace |
 |--|--|
 | Skříň | rackový server 1U |
 | Rozměry (výška × šířka × hloubka) | 4,32 x 43,46 × 38,22 cm/1.70 × 17,11 × 15,05 palce |
 | Hmotnost | 7,88 kg/17.37. kg |
 | Procesor | Intel Xeon E-2224, 3,4 GHz, 4C, 71 W |
 | Sad | Intel C242 |
-| Paměť | 1 × 8 GB duální hodnocení x8 DDR4-2666 |
+| Memory (Paměť) | 1 × 8 GB duální hodnocení x8 DDR4-2666 |
 | Úložiště | 2 × 1 TB SATA 6G midline 7,2 K SFF (2,5 in) – RAID 1 s inteligentním polem P208i-a |
 | Síťový adaptér | Na desce: 2 × 1 GB <br>Na desce: karta portu MOP 1 GB <br>Externí: 1 x HPE Ethernet 1-GB 4-port 366FLR Adapter |
 | Správa | HPE MOP Advanced |
@@ -202,7 +202,7 @@ Tato část popisuje hardwarové specifikace pro následující zařízení:
 | Typ | Firemní | Enterprise | SMB |
 |--|--|--|--|
 | Virtuální procesory | 32 | 8 | 4 |
-| Paměť | 32 GB | 32 GB | 8 GB |
+| Memory (Paměť) | 32 GB | 32 GB | 8 GB |
 | Úložiště | 5,6 TB | 1,8 TB | 500 GB |
 
 ### <a name="on-premises-management-console-appliance"></a>Místní zařízení konzoly pro správu
@@ -211,7 +211,7 @@ Tato část popisuje hardwarové specifikace pro následující zařízení:
 |--|--|
 | Popis | Virtuální zařízení pro podnikové typy nasazení |
 | Virtuální procesory | 8 |
-| Paměť | 32 GB |
+| Memory (Paměť) | 32 GB |
 | Úložiště | 1,8 TB |
 
 Podporované hypervisory: VMware ESXi verze 5,0 a novější, Hyper-V
@@ -223,7 +223,7 @@ Tato část podrobně popisuje další zařízení, která byla certifikována s
 | Typ nasazení | Enterprise |
 |--|--|
 | Image | :::image type="content" source="media/how-to-prepare-your-network/deployment-type-enterprise-for-azure-defender-for-iot-v2.png" alt-text="Typ podnikového nasazení."::: |
-| Model | Dell PowerEdge R340 XL |
+| Modelování | Dell PowerEdge R340 XL |
 | Porty monitorování | Až devět RJ45 nebo šest OPT |
 | Maximální šířka pásma [1](#anchortext2)| 1G MB/s |
 | Maximální počet chráněných zařízení | 10 000 |
@@ -236,14 +236,14 @@ Po zakoupení zařízení si přečtěte tento software v **programu Defender fo
 
 ## <a name="enterprise-deployment-dell-poweredge-r340-xl"></a>Podnikové nasazení: Dell PowerEdge R340 XL
 
-| Komponenta | Technické specifikace |
+| Součást | Technické specifikace |
 |--|--|
 | Skříň | rackový server 1U |
 | Dimenze | 42,8 x 434,0 x 596 (mm)/1,67 "x 17,09" x 23,5 "(in) |
 | Hmotnost | Maximální 29,98 kg/13.6 kg |
 | Procesor | Intel Xeon E-2144G 3,6 GHz, 8 min cache, 4C/8T, Turbo (71 W) |
 | Sad | Intel C246 |
-| Paměť | 32 GB = 2 × 16 až GB 2666MT/s DDR4 ECC UDIMM |
+| Memory (Paměť) | 32 GB = 2 × 16 až GB 2666MT/s DDR4 ECC UDIMM |
 | Úložiště | 3 × 2 – TB 7,2 K ot./min. SATA 6 až 2 GB 512n 3,5-in Hot-Plug hard disk-RAID 5 |
 | Síťový adaptér | Na desce: 2 × 1-GB Broadcom BCM5720<br>On-Board dvěma: karta portů iDRAC 1-GB Broadcom BCM5720 <br><br>Externí: 1 x Intel Ethernet i350 QP 1-GB Server Adapter, nízký profil |
 | Správa | iDRAC devět Enterprise |
@@ -254,28 +254,6 @@ Po zakoupení zařízení si přečtěte tento software v **programu Defender fo
 ## <a name="dell-r340-bom"></a>Dell R340 BOM
 
 :::image type="content" source="media/how-to-prepare-your-network/enterprise-deployment-for-azure-defender-for-iot-dell-r340-bom.png" alt-text="Dell R340 BOM.":::
-
-## <a name="smb-deployment-neousys-nuvo-5006lp"></a>Nasazení SMB: Neousys NUVO – 5006LP
-
-| Komponenta | Technické specifikace |
-|--|--|
-| Stavebnictví | Aluminum, Fanless a design pro prach – návrh |
-| Dimenze | 240 mm (W) x 225 mm (D) × 77 mm (H) |
-| Hmotnost | 3,1 kg (včetně procesoru, paměti a pevného disku) |
-| Procesor | Intel Core i5-6500TE (6 min cache, až 3,30 GHz) S1151 |
-| Sad | Centrum řadičů platformy Intel Q170 |
-| Paměť | 8 GB DDR4 2133 MHz (SODIMM) s velkou teplotou |
-| Úložiště | 128 GB mSATA SSD pro 3ME3 s velkou teplotou |
-| Síťový adaptér | porty gigabitového Ethernetu 6x od Intel i219 |
-| Přístup k zařízení | 4 USBs: dvě přední strany, dvě zadní kola, jedna interní |
-| Adaptér napájení | 120/240VAC-20VDC/6A |
-| Připojení | Montážní Kit, DIN kolejnice |
-| Provozní teplota | \-25 °C ~ 70 OC |
-| Teplota úložiště | \-40 OC ~ 85 OC |
-| Vlhkost | 10% ~ 90%, nekondenzující |
-| Vibrační | Provozní, 5 Grms, 5-500 Hz, 3 osy <br>(w/SSD, podle IEC60068-2-64) |
-| Náraz | Provozní, 50 Grms, poloviční kosinus 11 – doba trvání (w/SSD, podle IEC60068-2 – 27) |
-| SOFTWARE | CE/FCC Class A, podle EN 55022, EN 55024 a EN 55032 |
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -8,14 +8,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 11/25/2020
+ms.date: 01/15/2021
 ms.custom: designer
-ms.openlocfilehash: 14be695f2f58b9738af11a3d2ca3f06592a1cc6e
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 6bba5ad17cbb6f1ed72d06b37c6d6af9ebd26495
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575954"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246464"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>Kurz: nasazení modelu strojového učení pomocí návrháře
 
@@ -97,11 +97,30 @@ Až se dokončí zřizování služby AKS, vraťte se do kanálu Inferencing v r
 
 1. Vyberte cluster AKS, který jste vytvořili.
 
-1. Vyberte **Nasadit**.
-    
     :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png"alt-text="Snímek obrazovky ukazující, jak nastavit nový koncový bod v reálném čase":::
 
+    Můžete také změnit **upřesňující** nastavení koncového bodu v reálném čase.
+    
+    |Rozšířené nastavení|Popis|
+    |---|---|
+    |Povolit diagnostiku Application Insights a shromažďování dat| Určuje, jestli se má povolit Azure Application Ingishts shromažďovat data z nasazených koncových bodů. </br> Ve výchozím nastavení: false |
+    |Časový limit vyhodnocování| Časový limit (v milisekundách), který se má vymáhat pro volání bodování webové služby.</br>Ve výchozím nastavení: 60000|
+    |Automatické škálování povoleno|   Určuje, zda má být povoleno automatické škálování webové služby.</br>Ve výchozím nastavení: true|
+    |Minimální počet replik| Minimální počet kontejnerů, které se mají použít při automatickém škálování této webové služby.</br>Ve výchozím nastavení: 1|
+    |Maximální počet replik| Maximální počet kontejnerů, které se mají použít při automatickém škálování této webové služby.</br> Ve výchozím nastavení: 10|
+    |Cílové využití|Cílové využití (v procentech z 100), které by měl modul automatického škálování zkusit zachovat pro tuto webovou službu.</br> Ve výchozím nastavení: 70|
+    |Interval aktualizace|Jak často (v sekundách) se automatické škálování pokusí škálovat tuto webovou službu.</br> Ve výchozím nastavení: 1|
+    |Rezervní kapacita procesoru|Počet jader procesoru, které se mají přidělit této webové službě.</br> Ve výchozím nastavení: 0,1|
+    |Kapacita rezervy paměti|Velikost paměti (v GB), která má být přidělena této webové službě.</br> Ve výchozím nastavení: 0,5|
+        
+
+1. Vyberte **Nasadit**. 
+
     Po dokončení nasazení se zobrazí oznámení o úspěchu nad plátnem. Může to trvat několik minut.
+
+> [!TIP]
+> Pokud v poli nastavení koncového bodu v reálném čase vyberete **Azure Container instance** pro **COMPUTE** , můžete ho nasadit taky na **Azure Container instance** (ACI).
+> Instance kontejneru Azure se používá pro testování nebo vývoj. Použijte ACI pro úlohy s nižší škálou zatížení procesoru, které vyžadují méně než 48 GB paměti RAM.
 
 ## <a name="view-the-real-time-endpoint"></a>Zobrazení koncového bodu v reálném čase
 

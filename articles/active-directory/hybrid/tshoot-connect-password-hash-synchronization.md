@@ -16,12 +16,12 @@ ms.date: 03/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77271679306b0fbde10c748afc7535f3ad3d0945
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c6ec162ceb51c3bf19be42219b054d8371ff221
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317561"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247348"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>Řešení potíží se synchronizace hodnot hash hesel pomocí synchronizace Azure AD Connect
 
@@ -64,7 +64,7 @@ Pomocí úlohy řešení potíží můžete zjistit, proč nejsou synchronizová
 
 3. Spusťte Průvodce Azure AD Connect.
 
-4. Přejděte na stránku **další úlohy** , vyberte možnost **řešení potíží**a klikněte na tlačítko **Další**.
+4. Přejděte na stránku **další úlohy** , vyberte možnost **řešení potíží** a klikněte na tlačítko **Další**.
 
 5. Na stránce Poradce při potížích klikněte na **Spustit** a spusťte v PowerShellu nabídku pro odstraňování potíží.
 
@@ -147,7 +147,7 @@ Pomocí úlohy řešení potíží můžete určit, proč jeden objekt nesynchro
 
 3. Spusťte Průvodce Azure AD Connect.
 
-4. Přejděte na stránku **další úlohy** , vyberte možnost **řešení potíží**a klikněte na tlačítko **Další**.
+4. Přejděte na stránku **další úlohy** , vyberte možnost **řešení potíží** a klikněte na tlačítko **Další**.
 
 5. Na stránce Poradce při potížích klikněte na **Spustit** a spusťte v PowerShellu nabídku pro odstraňování potíží.
 
@@ -227,7 +227,7 @@ Pomocí `Invoke-ADSyncDiagnostics` rutiny můžete určit, proč jeden objekt ne
 
 2. Spusťte `Set-ExecutionPolicy RemoteSigned` nebo `Set-ExecutionPolicy Unrestricted` .
 
-3. Spusťte příkaz `Import-Module ADSyncDiagnostics`.
+3. Spusťte `Import-Module ADSyncDiagnostics`.
 
 4. Spusťte následující rutinu:
 
@@ -235,7 +235,7 @@ Pomocí `Invoke-ADSyncDiagnostics` rutiny můžete určit, proč jeden objekt ne
    Invoke-ADSyncDiagnostics -PasswordSync -ADConnectorName <Name-of-AD-Connector> -DistinguishedName <DistinguishedName-of-AD-object>
    ```
 
-   Například:
+   Příklad:
 
    ```powershell
    Invoke-ADSyncDiagnostics -PasswordSync -ADConnectorName "contoso.com" -DistinguishedName "CN=TestUserCN=Users,DC=contoso,DC=com"
@@ -253,7 +253,7 @@ Pokud chcete zjistit, proč nejsou synchronizovaná žádná hesla, postupujte p
 
     ![Výstup skriptu PowerShellu z nastavení synchronizace hesel](./media/tshoot-connect-password-hash-synchronization/psverifyconfig.png)  
 
-3. Pokud tato funkce není ve službě Azure AD povolená nebo pokud není stav synchronizace kanálu povolený, spusťte Průvodce připojit instalaci. Vyberte možnost **přizpůsobit možnosti synchronizace**a zrušte výběr možnosti synchronizace hesel. Tato změna dočasně zakáže funkci. Pak spusťte průvodce znovu a znovu povolte synchronizaci hesel. Spusťte skript znovu a ověřte, zda je konfigurace správná.
+3. Pokud tato funkce není ve službě Azure AD povolená nebo pokud není stav synchronizace kanálu povolený, spusťte Průvodce připojit instalaci. Vyberte možnost **přizpůsobit možnosti synchronizace** a zrušte výběr možnosti synchronizace hesel. Tato změna dočasně zakáže funkci. Pak spusťte průvodce znovu a znovu povolte synchronizaci hesel. Spusťte skript znovu a ověřte, zda je konfigurace správná.
 
 4. Vyhledejte chyby v protokolu událostí. Vyhledejte následující události, což znamená problém:
     * Zdroj: "synchronizace adresáře" ID: 0, 611, 652, 655 Pokud vidíte tyto události, máte problém s připojením. Zpráva protokolu událostí obsahuje informace o doménové struktuře, ve kterých došlo k problému. Další informace najdete v tématu [problém s připojením](#connectivity problem).
@@ -272,7 +272,7 @@ Pokud jste použili vlastní instalaci, nastavte oprávnění ručně pomocí n�
     
 1. Pokud chcete najít účet, který používá konektor služby Active Directory, spusťte **Synchronization Service Manager**. 
  
-2. Přejít na **konektory**a vyhledat místní doménovou strukturu služby Active Directory, kterou řešíte. 
+2. Přejít na **konektory** a vyhledat místní doménovou strukturu služby Active Directory, kterou řešíte. 
  
 3. Vyberte spojnici a klikněte na tlačítko **vlastnosti**. 
  
@@ -281,7 +281,7 @@ Pokud jste použili vlastní instalaci, nastavte oprávnění ručně pomocí n�
     ![Účet používaný konektorem služby Active Directory](./media/tshoot-connect-password-hash-synchronization/connectoraccount.png)  
     Poznamenejte si uživatelské jméno a doménu, ve které se účet nachází.
     
-5. Spusťte modul **Uživatelé a počítače služby Active Directory**a ověřte, že účet, který jste dříve našli, má v kořenu všech domén v doménové struktuře nastavená oprávnění dodržovat:
+5. Spusťte modul **Uživatelé a počítače služby Active Directory** a ověřte, že účet, který jste dříve našli, má v kořenu všech domén v doménové struktuře nastavená oprávnění dodržovat:
     * Replikovat změny adresáře
     * Replikovat všechny změny adresáře
 
@@ -291,7 +291,7 @@ Pokud jste použili vlastní instalaci, nastavte oprávnění ručně pomocí n�
 
 7. Vraťte se na **Synchronization Service Manager** a **nakonfigurujte oddíl adresáře**. 
  
-8. V části **Vybrat oddíly adresáře**vyberte svoji doménu, zaškrtněte políčko **použít pouze upřednostňované řadiče domény** a pak klikněte na **Konfigurovat**. 
+8. V části **Vybrat oddíly adresáře** vyberte svoji doménu, zaškrtněte políčko **použít pouze upřednostňované řadiče domény** a pak klikněte na **Konfigurovat**. 
 
 9. V seznamu zadejte řadiče domény, které se mají připojit, aby je bylo nutné použít ke synchronizaci hesel. Stejný seznam se používá i pro import a export. Proveďte tyto kroky pro všechny domény.
 
@@ -304,7 +304,7 @@ Pokud jste použili vlastní instalaci, nastavte oprávnění ručně pomocí n�
 
 Můžete snadno řešit potíže se synchronizací hodnot hash hesel tak, že zkontrolujete stav objektu.
 
-1. V modulu **Uživatelé a počítače služby Active Directory**vyhledejte uživatele a ověřte, zda je zaškrtnuto políčko **při dalším přihlášení musí uživatel změnit heslo** .  
+1. V modulu **Uživatelé a počítače služby Active Directory** vyhledejte uživatele a ověřte, zda je zaškrtnuto políčko **při dalším přihlášení musí uživatel změnit heslo** .  
 
     ![Produktivní hesla služby Active Directory](./media/tshoot-connect-password-hash-synchronization/adprodpassword.png)  
 
@@ -320,7 +320,7 @@ Můžete snadno řešit potíže se synchronizací hodnot hash hesel tak, že zk
 
     d. Vyberte možnost **Hledat místo v konektoru**.
 
-    e. V poli **obor** vyberte **rozlišující název nebo kotva**a pak zadejte úplný rozlišující název uživatele, kterého se chystáte řešit.
+    e. V poli **obor** vyberte **rozlišující název nebo kotva** a pak zadejte úplný rozlišující název uživatele, kterého se chystáte řešit.
 
     ![Hledat uživatele v prostoru konektoru s rozlišujícím názvem](./media/tshoot-connect-password-hash-synchronization/searchcs.png)  
 
@@ -346,7 +346,7 @@ Můžete snadno řešit potíže se synchronizací hodnot hash hesel tak, že zk
 
     ![Informace v úložišti Metaverse](./media/tshoot-connect-password-hash-synchronization/mvconnectors.png)  
 
-    k. Vyberte řádek, který představuje Azure AD, klikněte na **vlastnosti**a potom klikněte na kartu vydaná **čára** . Objekt prostoru konektoru by měl mít odchozí pravidlo, které je ve sloupci **PasswordSync** nastaveno na **hodnotu true**. Ve výchozí konfiguraci je název synchronizačního pravidla **pro AAD – připojení uživatele**.  
+    k. Vyberte řádek, který představuje Azure AD, klikněte na **vlastnosti** a potom klikněte na kartu vydaná **čára** . Objekt prostoru konektoru by měl mít odchozí pravidlo, které je ve sloupci **PasswordSync** nastaveno na **hodnotu true**. Ve výchozí konfiguraci je název synchronizačního pravidla **pro AAD – připojení uživatele**.  
 
     ![Dialogové okno Vlastnosti objektu prostoru konektoru](./media/tshoot-connect-password-hash-synchronization/cspasswordsync2.png)  
 
@@ -362,7 +362,7 @@ Sloupec status (stav) může obsahovat následující hodnoty:
 | SourceConnectorNotPresent |V prostoru konektoru služby Active Directory nebyl nalezen žádný objekt. |
 | TargetNotExportedToDirectory |Objekt v prostoru konektoru služby Azure AD ještě není exportovaný. |
 | MigratedCheckDetailsForMoreInfo |Záznam v protokolu byl vytvořen před sestavením 1.0.9125.0 a je zobrazen ve starším stavu. |
-| Chyba |Služba vrátila neznámou chybu. |
+| Chybová |Služba vrátila neznámou chybu. |
 | Neznámý |Při pokusu o zpracování dávky hodnot hash hesel došlo k chybě.  |
 | MissingAttribute |Konkrétní atributy (například hash protokolu Kerberos) vyžadované Azure AD Domain Services nejsou k dispozici. |
 | RetryRequestedByTarget |Konkrétní atributy (například hash protokolu Kerberos) vyžadované Azure AD Domain Services nebyly dříve k dispozici. Pokus o opětovnou synchronizaci hodnoty hash hesla uživatele je proveden. |
@@ -380,7 +380,7 @@ if ($aadConnectors -ne $null -and $adConnectors -ne $null)
 {
     if ($aadConnectors.Count -eq 1)
     {
-        $features = Get-ADSyncAADCompanyFeature -ConnectorName $aadConnectors[0].Name
+        $features = Get-ADSyncAADCompanyFeature
         Write-Host
         Write-Host "Password sync feature enabled in your Azure AD directory: "  $features.PasswordHashSync
         foreach ($adConnector in $adConnectors)

@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 11/10/2020
-ms.openlocfilehash: baeb5fbadfaf128c2c491a1fdb7e880b413878d6
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 731a1fdf9520efc43c954cba79602ed84f983b3d
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491065"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247246"
 ---
 # <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>Rychlý Start: vytvoření účtu, databáze, kontejneru a položek Azure Cosmos z Azure Portal
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -51,11 +51,11 @@ Azure Cosmos DB účet vytvoříte tak, že přejdete na [Azure Portal](https://
     |Nastavení|Hodnota|Popis |
     |---|---|---|
     |Předplatné|Název předplatného|Vyberte předplatné Azure, které chcete použít pro tento účet Azure Cosmos. |
-    |Resource Group (Skupina prostředků)|Název skupiny prostředků|Vyberte skupinu prostředků nebo vyberte **vytvořit nové** a zadejte jedinečný název nové skupiny prostředků. |
-    |Account Name|Jedinečný název|Zadejte název, který identifikuje váš účet Azure Cosmos. Vzhledem k tomu, že *Documents.Azure.com* je připojen k názvu, který zadáte k vytvoření identifikátoru URI, použijte jedinečný název.<br><br>Název může obsahovat jenom malá písmena, číslice a znak spojovníku (-). Musí mít délku 3-31 znaků.|
+    |Skupina prostředků|Název skupiny prostředků|Vyberte skupinu prostředků nebo vyberte **vytvořit nové** a zadejte jedinečný název nové skupiny prostředků. |
+    |Název účtu|Jedinečný název|Zadejte název, který identifikuje váš účet Azure Cosmos. Vzhledem k tomu, že *Documents.Azure.com* je připojen k názvu, který zadáte k vytvoření identifikátoru URI, použijte jedinečný název.<br><br>Název může obsahovat jenom malá písmena, číslice a znak spojovníku (-). Musí mít délku 3-31 znaků.|
     |Rozhraní API|Typ účtu, který se má vytvořit|Vyberte **Core (SQL)** pro vytvoření databáze dokumentů a dotaz pomocí syntaxe SQL. <br><br>Rozhraní API určuje typ účtu, který se má vytvořit. Azure Cosmos DB poskytuje pět rozhraní API: Core (SQL) a MongoDB pro data dokumentů, Gremlin pro data grafu, tabulku Azure a Cassandra. V současné době musíte pro každé rozhraní API vytvořit samostatný účet. <br><br>[Přečtěte si další informace o rozhraní SQL API](introduction.md).|
     |Režim kapacity|Zřízená propustnost nebo bez serveru|Vyberte **zřízenou propustnost** a vytvořte účet v režimu [zřízené propustnosti](set-throughput.md) . Pokud chcete vytvořit účet v režimu bez [serveru](serverless.md) , vyberte možnost bez **serveru** .|
-    |Použít slevu založenou na bezplatné úrovni|Použít nebo nepoužít|U Azure Cosmos DB úrovně Free získáte v účtu první 400 RU/s a 5 GB úložiště zdarma. Přečtěte si další informace o [bezplatné úrovni](https://azure.microsoft.com/pricing/details/cosmos-db/).|
+    |Použít Azure Cosmos DB slevu úrovně Free|Použít nebo nepoužít|U Azure Cosmos DB úrovně Free získáte v účtu první 400 RU/s a 5 GB úložiště zdarma. Přečtěte si další informace o [bezplatné úrovni](https://azure.microsoft.com/pricing/details/cosmos-db/).|
     |Umístění|Oblast nejbližší vašim uživatelům|Vyberte zeměpisné umístění, ve kterém chcete účet služby Azure Cosmos DB hostovat. Použijte umístění, které je nejblíže vašim uživatelům, a poskytněte jim tak nejrychlejší přístup k datům.|
     |Typ účtu|Produkční nebo neprodukční|Vyberte možnost **produkce** , pokud se účet bude používat pro produkční úlohy. Vyberte **neprodukční** , pokud se účet bude používat pro neprodukční, třeba pro vývoj, testování, kontrolu kvality nebo přípravu. Toto je nastavení značky prostředku Azure, které vystavuje možnosti portálu, ale nemá vliv na příslušný účet Azure Cosmos DB. Tuto hodnotu můžete kdykoli změnit.|
     |Geografická redundance|Povolit nebo zakázat|Povolte nebo zakažte globální distribuci na účtu spárováním oblasti s oblastí dvojice. Později můžete do svého účtu přidat další oblasti.|
@@ -99,7 +99,7 @@ K vytvoření databáze a kontejneru můžete použít Průzkumník dat v Azure 
     |Nastavení|Navrhovaná hodnota|Popis
     |---|---|---|
     |**ID databáze**|ToDoList|Jako název nové databáze zadejte *ToDoList* . Názvy databází musí obsahovat 1 až 255 znaků a nesmí obsahovat ani mezeru `/, \\, #, ?` . Ověřte možnost **zřízení propustnosti databáze** , která umožňuje sdílení propustnosti zřízené do databáze napříč všemi kontejnery v rámci databáze. Tato možnost také pomáhá při úsporách nákladů. |
-    |**Propustnost**|400|Nechte propustnost na 400 jednotek žádostí za sekundu (RU/s). Pokud budete chtít snížit latenci, můžete propustnost později navýšit.<br><br>**Poznámka** : Toto nastavení není k dispozici při vytváření nového kontejneru v účtu bez serveru.| 
+    |**Propustnost**|400|Nechte propustnost na 400 jednotek žádostí za sekundu (RU/s). Pokud budete chtít snížit latenci, můžete propustnost později navýšit.<br><br>**Poznámka**: Toto nastavení není k dispozici při vytváření nového kontejneru v účtu bez serveru.| 
     |**ID kontejneru**|Položky|Jako název nového kontejneru zadejte *položky* . Pro ID kontejnerů platí stejné požadavky týkající se použitých znaků jako pro názvy databází.|
     |**Klíč oddílu**| /kategorie| Ukázka popsaná v tomto článku používá jako klíč oddílu */Category* .|
 

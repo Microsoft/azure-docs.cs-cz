@@ -11,12 +11,12 @@ ms.date: 06/11/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2e24246c749978cd2bbb5b3d0821eea6d7dfb4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c506c87ad5901754175f18e6b50bc6ed46a3c19
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89660865"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246906"
 ---
 # <a name="azure-ad-connect-group-writeback"></a>Zpětný zápis skupin Azure AD Connect
 
@@ -37,7 +37,7 @@ Pokud chcete povolit zpětný zápis skupin, použijte následující postup:
 3. Na stránce **připojit ke službě Azure AD** zadejte svoje přihlašovací údaje. Klikněte na **Next** (Další).
 4. Na stránce **volitelné funkce** ověřte, že jsou stále vybrané možnosti, které jste předtím nakonfigurovali.
 5. Vyberte možnost **zpětný zápis skupiny** a klikněte na **Další**.
-6. Na **stránce zpětný zápis**vyberte organizační jednotku (OU) služby Active Directory pro ukládání objektů synchronizovaných z Microsoft 365 do vaší místní organizace a pak klikněte na **Další**.
+6. Na **stránce zpětný zápis** vyberte organizační jednotku (OU) služby Active Directory pro ukládání objektů synchronizovaných z Microsoft 365 do vaší místní organizace a pak klikněte na **Další**.
 7. Na stránce **připraveno** ke konfiguraci klikněte na **Konfigurovat**.
 8. Po dokončení průvodce klikněte na tlačítko **ukončit** na stránce Konfigurace byla dokončena.
 9. Otevřete Windows PowerShell jako správce na serveru Azure Active Directory Connect a spusťte následující příkazy.
@@ -45,7 +45,13 @@ Pokud chcete povolit zpětný zápis skupin, použijte následující postup:
 ```Powershell
 $AzureADConnectSWritebackAccountDN =  <MSOL_ account DN>
 Import-Module "C:\Program Files\Microsoft Azure Active Directory Connect\AdSyncConfig\AdSyncConfig.psm1"
+
+# To grant the <MSOL_account> permission to all domains in the forest:
 Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN $AzureADConnectSWritebackAccountDN
+
+# To grant the <MSOL_account> permission to specific OU (eg. the OU chosen to writeback Office 365 Groups to):
+$GroupWritebackOU = <DN of OU where groups are to be written back to>
+Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN $AzureADConnectSWritebackAccountDN -ADObjectDN $GroupWritebackOU
 ```
 
 Další informace o konfiguraci skupin Microsoft 365 najdete v tématu [konfigurace Microsoft 365 skupin pomocí místní služby Exchange Hybrid](/exchange/hybrid-deployment/set-up-microsoft-365-groups#enable-group-writeback-in-azure-ad-connect).

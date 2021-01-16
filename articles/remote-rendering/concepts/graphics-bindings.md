@@ -10,12 +10,12 @@ ms.date: 12/11/2019
 ms.topic: conceptual
 ms.service: azure-remote-rendering
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 853c71ed4803f717188568ec051c40c4f73afe95
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: cefd00609062c30b036f87a0a01a75dc2afb868b
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92202867"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246141"
 ---
 # <a name="graphics-binding"></a>Grafika – vazba
 
@@ -150,13 +150,13 @@ Potřebujete dva kamery:
 
 Základní postup je takový, že se vzdálená image i místní obsah vykreslují do cíle mimo obrazovku pomocí proxy kamery. Bitová kopie proxy serveru se pak znovu prochází do místního prostoru kamery, který je dále vysvětlen v části " [reprojekce v pozdní fázi](../overview/features/late-stage-reprojection.md)".
 
-Instalace je trochu větší a funguje takto:
+`GraphicsApiType.SimD3D11` podporuje také vykreslování stereoscopic, které je potřeba povolit během `InitSimulation` volání nastavení níže. Instalace je trochu větší a funguje takto:
 
 #### <a name="create-proxy-render-target"></a>Vytvořit cíl vykreslování proxy
 
 Vzdálený a místní obsah je potřeba vykreslit pro vykreslování barvy mimo obrazovku s názvem "proxy" pomocí dat z kamery proxy, které poskytuje `GraphicsBindingSimD3d11.Update` funkce.
 
-Proxy musí odpovídat rozlišení vyrovnávací paměti, a měl by být ve formátu *DXGI_FORMAT_R8G8B8A8_UNORM* nebo *DXGI_FORMAT_B8G8R8A8_UNORM* int. Jakmile je relace připravena, je `GraphicsBindingSimD3d11.InitSimulation` nutné ji volat před připojením k této relaci:
+Proxy musí odpovídat rozlišení vyrovnávací paměti, a měl by být ve formátu *DXGI_FORMAT_R8G8B8A8_UNORM* nebo *DXGI_FORMAT_B8G8R8A8_UNORM* int. V případě vykreslování stereoscopic je textura proxy barvy a, pokud se používá hloubka, Hloubka proxy hloubky musí mít dvě vrstvy pole místo jednoho. Jakmile je relace připravena, je `GraphicsBindingSimD3d11.InitSimulation` nutné ji volat před připojením k této relaci:
 
 ```cs
 AzureSession currentSession = ...;
@@ -166,8 +166,9 @@ IntPtr depth = ...; // native pointer to ID3D11Texture2D
 float refreshRate = 60.0f; // Monitor refresh rate up to 60hz.
 bool flipBlitRemoteFrameTextureVertically = false;
 bool flipReprojectTextureVertically = false;
+bool stereoscopicRendering = false;
 GraphicsBindingSimD3d11 simBinding = (currentSession.GraphicsBinding as GraphicsBindingSimD3d11);
-simBinding.InitSimulation(d3dDevice, depth, color, refreshRate, flipBlitRemoteFrameTextureVertically, flipReprojectTextureVertically);
+simBinding.InitSimulation(d3dDevice, depth, color, refreshRate, flipBlitRemoteFrameTextureVertically, flipReprojectTextureVertically, stereoscopicRendering);
 ```
 
 ```cpp
@@ -178,8 +179,9 @@ void* depth = ...; // native pointer to ID3D11Texture2D
 float refreshRate = 60.0f; // Monitor refresh rate up to 60hz.
 bool flipBlitRemoteFrameTextureVertically = false;
 bool flipReprojectTextureVertically = false;
+bool stereoscopicRendering = false;
 ApiHandle<GraphicsBindingSimD3d11> simBinding = currentSession->GetGraphicsBinding().as<GraphicsBindingSimD3d11>();
-simBinding->InitSimulation(d3dDevice, depth, color, refreshRate, flipBlitRemoteFrameTextureVertically, flipReprojectTextureVertically);
+simBinding->InitSimulation(d3dDevice, depth, color, refreshRate, flipBlitRemoteFrameTextureVertically, flipReprojectTextureVertically, stereoscopicRendering);
 ```
 
 Funkci init je nutné poskytnout ukazatelům na nativní zařízení D3D a také k barvě a hloubkové textuře cíle vykreslování proxy serveru. Po inicializaci `AzureSession.ConnectToRuntime` a `DisconnectFromRuntime` může být volána několikrát, ale při přepnutí na jinou relaci `GraphicsBindingSimD3d11.DeinitSimulation` je nutné nejprve volat původní relaci, aby bylo `GraphicsBindingSimD3d11.InitSimulation` možné je volat v jiné relaci.
@@ -196,13 +198,14 @@ Pokud je vrácená aktualizace proxy `SimulationUpdate.frameId` null, zatím nee
 ```cs
 AzureSession currentSession = ...;
 GraphicsBindingSimD3d11 simBinding = (currentSession.GraphicsBinding as GraphicsBindingSimD3d11);
-SimulationUpdate update = new SimulationUpdate();
+SimulationUpdateParameters updateParameters = new SimulationUpdateParameters();
 // Fill out camera data with current camera data
+// (see "Simulation Update structures" section below)
 ...
-SimulationUpdate proxyUpdate = new SimulationUpdate();
-simBinding.Update(update, out proxyUpdate);
+SimulationUpdateResult updateResult = new SimulationUpdateResult();
+simBinding.Update(updateParameters, out updateResult);
 // Is the frame data valid?
-if (proxyUpdate.frameId != 0)
+if (updateResult.frameId != 0)
 {
     // Bind proxy render target
     simBinding.BlitRemoteFrameToProxy();
@@ -223,13 +226,14 @@ else
 ApiHandle<AzureSession> currentSession;
 ApiHandle<GraphicsBindingSimD3d11> simBinding = currentSession->GetGraphicsBinding().as<GraphicsBindingSimD3d11>();
 
-SimulationUpdate update;
+SimulationUpdateParameters updateParameters;
 // Fill out camera data with current camera data
+// (see "Simulation Update structures" section below)
 ...
-SimulationUpdate proxyUpdate;
-simBinding->Update(update, &proxyUpdate);
+SimulationUpdateResult updateResult;
+simBinding->Update(updateParameters, &updateResult);
 // Is the frame data valid?
-if (proxyUpdate.frameId != 0)
+if (updateResult.frameId != 0)
 {
     // Bind proxy render target
     simBinding->BlitRemoteFrameToProxy();
@@ -245,6 +249,112 @@ else
     ...
 }
 ```
+
+#### <a name="simulation-update-structures"></a>Struktury aktualizací simulace
+
+V každém snímku **aktualizuje smyčka vykreslování** z předchozí části zadání rozsahu parametrů kamery odpovídajících místní kameře a vrátí sadu parametrů kamery, které odpovídají následujícímu dostupnému snímku snímku. Tyto dvě sady jsou zachyceny v `SimulationUpdateParameters` a `SimulationUpdateResult` struktury v uvedeném pořadí:
+
+```cs
+public struct SimulationUpdateParameters
+{
+    public UInt32 frameId;
+    public StereoMatrix4x4 viewTransform;
+    public StereoCameraFOV fieldOfView;
+};
+
+public struct SimulationUpdateResult
+{
+    public UInt32 frameId;
+    public float nearPlaneDistance;
+    public float farPlaneDistance;
+    public StereoMatrix4x4 viewTransform;
+    public StereoCameraFOV fieldOfView;
+};
+```
+
+Členové struktury mají následující význam:
+
+| Člen | Popis |
+|--------|-------------|
+| frameId | Souvislý identifikátor snímku. Nutné pro vstup SimulationUpdateParameters a musí se průběžně zvyšovat u každého nového rámce. Bude 0 v SimulationUpdateResult, pokud ještě nejsou k dispozici žádná data rámce. |
+| viewTransform | Levý pravý – pár stereo z matic pro transformaci snímku zobrazení kamery. Pro vykreslování monoscopic `left` je platný pouze člen. |
+| fieldOfView | Levý pravý – dvojici v poli OpenXR, která je v [oblasti zobrazení](https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#angles), podle typu pole kamery snímků. Pro vykreslování monoscopic `left` je platný pouze člen. |
+| nearPlaneDistance | poblíž vzdálenosti, která se používá pro matici projekce aktuálního vzdáleného snímku. |
+| farPlaneDistance | Velká vzdálenost použitá pro matrici projekce aktuálního vzdáleného snímku. |
+
+Stereofonní páry `viewTransform` a `fieldOfView` Povolit nastavení obou hodnot oka v případě, že je povoleno vykreslování stereoscopic. Jinak se `right` Členové budou ignorovat. Jak vidíte, pouze transformace kamery se předává jako 4x4 transformační matrice, zatímco nejsou zadány žádné matrice projekce. Skutečné matrice se vypočítávají pomocí vzdáleného vykreslování Azure interně pomocí zadaných polí v zobrazení a aktuální plochy s téměř rovinou a nadmnožinou roviny v [rozhraní CameraSettings API](../overview/features/camera.md).
+
+Vzhledem k tomu, že je možné změnit téměř rovinu a nejvyšší rovinu [CameraSettings](../overview/features/camera.md) během běhu za běhu a služba aplikuje tato nastavení asynchronně, každá SimulationUpdateResult také obsahuje specifickou plochu a daleko rovinu, která se používá při vykreslování odpovídajícího snímku. Tyto hodnoty roviny můžete použít k přizpůsobení matricí projekce pro vykreslování místních objektů, aby odpovídaly vzdálenému vykreslování snímků.
+
+A konečně, zatímco volání **aktualizace simulace** vyžaduje pole v konvenci OpenXR pro normalizaci a bezpečnostní důvody algoritmů, můžete využít funkce pro převod, které jsou znázorněny v následující příklady naplnění struktury:
+
+```cs
+public SimulationUpdateParameters CreateSimulationUpdateParameters(UInt32 frameId, Matrix4x4 viewTransform, Matrix4x4 projectionMatrix)
+{
+    SimulationUpdateParameters parameters;
+    parameters.frameId = frameId;
+    parameters.viewTransform.left = viewTransform;
+    if(parameters.fieldOfView.left.fromProjectionMatrix(projectionMatrix) != Result.Success)
+    {
+        // Invalid projection matrix
+        return null;
+    }
+    return parameters;
+}
+
+public void GetCameraSettingsFromSimulationUpdateResult(SimulationUpdateResult result, out Matrix4x4 projectionMatrix, out Matrix4x4 viewTransform, out UInt32 frameId)
+{
+    if(result.frameId == 0)
+    {
+        // Invalid frame data
+        return;
+    }
+    
+    // Use the screenspace depth convention you expect for your projection matrix locally
+    if(result.fov.left.toProjectionMatrix(result.nearPlaneDistance, result.farPlaneDistance, DepthConvention.ZeroToOne, projectionMatrix) != Result.Success)
+    {
+        // Invalid field-of-view
+        return;
+    }
+    viewTransform = result.viewTransform.left;
+    frameId = result.frameId;
+}
+```
+
+```cpp
+SimulationUpdateParameters CreateSimulationUpdateParameters(uint32_t frameId, Matrix4x4 viewTransform, Matrix4x4 projectionMatrix)
+{
+    SimulationUpdateParameters parameters;
+    parameters.frameId = frameId;
+    parameters.viewTransform.left = viewTransform;
+    if(FovFromProjectionMatrix(projectionMatrix, parameters.fieldOfView.left) != Result::Success)
+    {
+        // Invalid projection matrix
+        return {};
+    }
+    return parameters;
+}
+
+void GetCameraSettingsFromSimulationUpdateResult(const SimulationUpdateResult& result, Matrix4x4& projectionMatrix, Matrix4x4& viewTransform, uint32_t& frameId)
+{
+    if(result.frameId == 0)
+    {
+        // Invalid frame data
+        return;
+    }
+    
+    // Use the screenspace depth convention you expect for your projection matrix locally
+    if(FovToProjectionMatrix(result.fieldOfView.left, result.nearPlaneDistance, result.farPlaneDistance, DepthConvention::ZeroToOne, projectionMatrix) != Result::Success)
+    {
+        // Invalid field-of-view
+        return;
+    }
+    viewTransform = result.viewTransform.left;
+    frameId = result.frameId;
+}
+```
+
+Tyto převodní funkce umožňují rychlé přepínání mezi specifikacemi pole a 4x4 perspektivy projekce v závislosti na vašich potřebách pro místní vykreslování. Tyto převodní funkce obsahují logiku ověřování a vrátí chyby bez nastavení platného výsledku pro případ, že vstupní matice projekce nebo vstupní pole jsou neplatné.
 
 ## <a name="api-documentation"></a>Dokumentace k rozhraní API
 

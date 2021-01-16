@@ -17,12 +17,12 @@ ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 08399c1b2d930abfdd5832cb102a789844931d61
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 22bfef17f68b2e83e4f7462d8e9af6fb8aacc284
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027692"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246736"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Co jsou kontroly přístupu Azure AD?
 
@@ -63,8 +63,8 @@ V závislosti na tom, co chcete zkontrolovat, vytvoříte kontrolu přístupu v 
 | --- | --- | --- | --- |
 | Členové skupiny zabezpečení</br>Členové skupiny Office | Určení kontroloři</br>Vlastníci skupiny</br>Samoobslužné kontroly | Kontroly přístupu Azure AD</br>Skupiny Azure AD | Přístupový panel |
 | Přiřazeno k připojené aplikaci | Určení kontroloři</br>Samoobslužné kontroly | Kontroly přístupu Azure AD</br>Aplikace Azure AD Enterprise (ve verzi Preview) | Přístupový panel |
-| Role Azure AD | Určení kontroloři</br>Samoobslužné kontroly | [Azure AD PIM](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | portál Azure |
-| Role prostředku Azure | Určení kontroloři</br>Samoobslužné kontroly | [Azure AD PIM](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | portál Azure |
+| Role Azure AD | Určení kontroloři</br>Samoobslužné kontroly | [Azure AD PIM](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Portál Azure Portal |
+| Role prostředku Azure | Určení kontroloři</br>Samoobslužné kontroly | [Azure AD PIM](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Portál Azure Portal |
 
 ## <a name="license-requirements"></a>Licenční požadavky
 
@@ -97,13 +97,13 @@ Další informace o licencích najdete v tématu [přiřazení nebo odebrání l
 
 Tady je několik ukázkových scénářů licencí, které vám pomůžou určit počet licencí, které musíte mít.
 
-| Scénář | Výpočet | Počet licencí |
+| Scenario | Výpočet | Počet licencí |
 | --- | --- | --- |
 | Správce vytvoří kontrolu přístupu skupiny A s 75 uživateli a 1 vlastníkem skupiny a přiřadí vlastníka skupiny jako kontrolora. | 1 licence pro vlastníka skupiny jako kontrolor | 1 |
 | Správce vytvoří kontrolu přístupu skupiny B s 500 uživateli a 3 vlastníky skupiny a přiřadí 3 vlastníky skupiny jako kontrolory. | 3 licence pro každého vlastníka skupiny jako kontroloři | 3 |
 | Správce vytvoří kontrolu přístupu skupiny B s 500 uživateli. Provede si ho samy se změnami. | licence 500 pro každého uživatele jako kontroloři samoobslužné. | 500 |
 | Správce vytvoří kontrolu přístupu skupiny C s 50 členskými uživateli a 25 uživateli typu Host. Provede si ho samy se změnami. | licence 50 pro každého uživatele jako kontroloři pro sebe. * | 50 |
-| Správce vytvoří kontrolu přístupu skupiny D s 6 členskými uživateli a 108 uživateli typu Host. Provede si ho samy se změnami. | 6 licencí pro každého uživatele jako kontroloři pro sebe. Uživatelům typu Host se účtuje měsíční aktivní uživatel (MAU). Nejsou potřeba žádné další licence. *  | - |
+| Správce vytvoří kontrolu přístupu skupiny D s 6 členskými uživateli a 108 uživateli typu Host. Provede si ho samy se změnami. | 6 licencí pro každého uživatele jako kontroloři pro sebe. Uživatelům typu Host se účtuje měsíční aktivní uživatel (MAU). Nejsou potřeba žádné další licence. *  | 6 |
 
 \* Ceny Azure AD External identity (uživatel typu Host) jsou založené na měsíčních aktivních uživatelích (MAU), což je počet jedinečných uživatelů s aktivitou ověřování v kalendářním měsíci. Tento model nahrazuje model účtování poměru 1:5, který povoluje až pět uživatelů typu Host pro každou licenci Azure AD Premium ve vašem tenantovi. Pokud je váš tenant propojený s předplatným a používáte funkce externích identit ke spolupráci s uživateli typu Host, bude se vám automaticky účtovat pomocí fakturačního modelu založeného na MAU. Další informace najdete v tématu Model fakturace pro externí identity služby Azure AD.
 

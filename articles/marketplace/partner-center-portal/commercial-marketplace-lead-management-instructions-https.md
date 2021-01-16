@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 03/30/2020
-ms.openlocfilehash: b4dabee6a725fd02b7be6dd12c8a032e3d816835
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 5bea2cf256e30bd896957bbee0e0ad824057a569
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489365"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247178"
 ---
 # <a name="use-an-https-endpoint-to-manage-commercial-marketplace-leads"></a>Použití koncového bodu HTTPS ke správě potenciálních zákazníků z obchodu na webu Marketplace
 
@@ -35,7 +35,7 @@ Tento článek vysvětluje, jak vytvořit nový tok v Power automatu pro generov
 
     ![Moje toky + automatizovaná – od prázdná](./media/commercial-marketplace-lead-management-instructions-https/https-myflows-create-fromblank.png)
 
-1. Pojmenujte tok a potom v části **Zvolte, jak se má tento tok aktivovat** , vyberte, **kdy se přijme požadavek HTTP**.
+1. Pojmenujte tok a potom v části **Zvolte, jak se má tento tok aktivovat**, vyberte, **kdy se přijme požadavek HTTP**.
 
     ![Tlačítko pro přeskočení okna pro automatické sestavování toku](./media/commercial-marketplace-lead-management-instructions-https/https-myflows-pick-request-trigger.png)
 
@@ -66,6 +66,10 @@ Tento článek vysvětluje, jak vytvořit nový tok v Power automatu pro generov
         },
         "LeadSource": {
           "id": "/properties/LeadSource",
+          "type": "string"
+        },
+        "Description": {
+          "id": "/properties/Description",
           "type": "string"
         },
         "UserDetails": {
@@ -162,15 +166,15 @@ Tento článek vysvětluje, jak vytvořit nový tok v Power automatu pro generov
 
 1. V okně **Odeslat e-mail** nakonfigurujte následující povinná pole:
 
-   - **Do** : Zadejte alespoň jednu platnou e-mailovou adresu, kam budou odesílány zájemci.
-   - **Předmět** : Power Automate vám dává možnost Přidat dynamický obsah, jako je například **LeadSource** , na následující obrazovce. Začněte zadáním názvu pole. Pak v automaticky otevíraném okně vyberte seznam pro výběr dynamického obsahu. 
+   - **Do**: Zadejte alespoň jednu platnou e-mailovou adresu, kam budou odesílány zájemci.
+   - **Předmět**: Power Automate vám dává možnost Přidat dynamický obsah, jako je například **LeadSource** , na následující obrazovce. Začněte zadáním názvu pole. Pak v automaticky otevíraném okně vyberte seznam pro výběr dynamického obsahu. 
 
         >[!NOTE] 
         > Při přidávání názvů polí můžete každý název sledovat dvojtečkou (:) a pak vyberte **ENTER** a vytvořte nový řádek. Po přidání názvů polí můžete přidat každý přidružený parametr ze seznamu dynamického výběru.
 
         ![Přidání e-mailové akce pomocí dynamického obsahu](./media/commercial-marketplace-lead-management-instructions-https/add-email-using-dynamic-content.png)
 
-   - **Tělo** : ze seznamu pro výběr dynamického obsahu přidejte do textu e-mailu požadované informace. Použijte například LastName, FirstName, E-mail a společnost. Až budete s nastavením e-mailového oznámení hotovi, vypadá to jako na příkladu na následující obrazovce.
+   - **Tělo**: ze seznamu pro výběr dynamického obsahu přidejte do textu e-mailu požadované informace. Použijte například LastName, FirstName, E-mail a společnost. Až budete s nastavením e-mailového oznámení hotovi, vypadá to jako na příkladu na následující obrazovce.
 
 
        ![Příklad e-mailového oznámení](./media/commercial-marketplace-lead-management-instructions-https/send-an-email.png)

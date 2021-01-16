@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/07/2020
 ms.author: rkarlin
-ms.openlocfilehash: 0c303adb4ee7c7551c6b389ec169d92a661a63bc
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 678b50ffb2df2cd16312548109b93f6f1a7f08ff
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97835019"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247461"
 ---
 # <a name="azure-defender-for-iot-frequently-asked-questions"></a>Nejčastější dotazy k Azure Defenderu pro IoT
 
@@ -38,7 +38,7 @@ Azure Defender pro IoT poskytuje komplexní podporu protokolů. Kromě podpory v
 Toto jedinečné řešení pro vývoj protokolů jako modulů plug-in nevyžaduje pro podporu nového protokolu žádné vyhrazené vývojářské týmy ani verze vydání. Vývojáři, partneři a zákazníci můžou bezpečně vyvíjet protokoly a sdílet poznatky a znalosti pomocí horizontu. 
 
 ## <a name="do-i-have-to-purchase-hardware-appliances-from-microsoft-partners"></a>Musím si koupit hardwarová zařízení od partnerů Microsoftu?
-Azure Defender pro IoT snímač se spouští na konkrétních specifikacích hardwaru, jak je popsáno v [Průvodci specifikacemi hardwaru](https://aka.ms/AzureDefenderforIoTBareMetalAppliance), zákazníci si můžou koupit certifikovaný hardware od partnerů Microsoftu nebo používat poskytnuté kusovníky (BOM) a koupit si ho sami. 
+Azure Defender pro IoT snímač se spouští na konkrétních specifikacích hardwaru, jak je popsáno v [Průvodci specifikacemi hardwaru](./how-to-identify-required-appliances.md), zákazníci si můžou koupit certifikovaný hardware od partnerů Microsoftu nebo používat poskytnuté kusovníky (BOM) a koupit si ho sami. 
 
 Certifikovaný hardware byl testován v našich laboratořích pro stabilitu ovladačů, pokles paketů a velikost sítě.
 
@@ -51,7 +51,7 @@ Ano, můžete to! Místní řešení Azure Defender pro IoT Platform je nasazen�
 
 Služba Azure Defender pro IoT snímač se připojí k portu SPAN nebo k síti KLEPNE a hned začne shromažďovat síťový provoz ICS prostřednictvím pasivního monitorování (bez agentů). Nemá žádný vliv na sítě, protože není umístěný v cestě k datům a aktivně nekontroluje zařízení.
 
-Například:
+Příklad:
 - Jedno zařízení (Virtual of fyzický) může být v DMZ vrstvě dílenského řízení a všechny přenosy dat z dílenského řízení jsou směrovány do této vrstvy.
 - Alternativně můžete najít malé senzory v každé aplikaci dílny pomocí cloudu nebo místní správy, která se nachází v DMZ vrstvě dílenského řízení. Jiné zařízení (virtuální nebo fyzické) může monitorovat provoz v dílenském DMZ vrstvě (pro SCADA, historian nebo instatusování).
 

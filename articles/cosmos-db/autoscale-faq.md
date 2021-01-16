@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/11/2020
-ms.openlocfilehash: a740ad62dacc9a29cab1cc144f1789e125ec2e89
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 31b96f03a8519b068eaa816443be0a0f374a4a8c
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368575"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247025"
 ---
 # <a name="frequently-asked-questions-about-autoscale-provisioned-throughput-in-azure-cosmos-db"></a>Nejčastější dotazy týkající se zajištěné propustnosti automatického škálování v Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -43,24 +43,24 @@ V rámci účtů oblastí s jedním zápisem je sazba automatického škálován
 V účtech s více oblastmi zápisu je sazba automatického škálování za 100 RU/s stejná jako sazba pro standardní (ruční) zřízené více než jednu propustnost v oblasti zápisu. Ve vyúčtování se zobrazí existující měřič více oblastí zápisu. Vzhledem k tomu, že sazby jsou stejné, pokud používáte automatické škálování, uvidíte stejné množství jako u standardní propustnosti.
 
 ### <a name="does-autoscale-work-with-reserved-capacity"></a>Funguje automatické škálování s vyhrazenou kapacitou?
-Ano. Když si koupíte rezervovanou kapacitu pro účty s jednou oblastí zápisu, použije se sleva rezervace pro prostředky automatického škálování na využití měřiče v poměru 1,5 * [poměr konkrétní oblasti](../cost-management-billing/reservations/understand-cosmosdb-reservation-charges.md#reservation-discount-per-region). 
+Yes. Když si koupíte rezervovanou kapacitu pro účty s jednou oblastí zápisu, použije se sleva rezervace pro prostředky automatického škálování na využití měřiče v poměru 1,5 * [poměr konkrétní oblasti](../cost-management-billing/reservations/understand-cosmosdb-reservation-charges.md#reservation-discount-per-region). 
 
 Vyhrazená kapacita oblasti s více zápisy funguje stejně pro zajištění propustnosti v rámci automatického škálování a standardní (ruční). Zobrazit [rezervovanou kapacitu Azure Cosmos DB](cosmos-db-reserved-capacity.md)
 
 ### <a name="does-autoscale-work-with-free-tier"></a>Funguje automatické škálování na úrovni Free?
-Ano. Na úrovni Free můžete použít propustnost automatického škálování na kontejneru. Podpora pro sdílené databáze propustnosti automatického škálování s vlastními maximálními RU/s ještě není k dispozici. Podívejte se, jak [funguje fakturace úrovně Free s automatické škálování](understand-your-bill.md#billing-examples-with-free-tier-accounts).
+Yes. Na úrovni Free můžete použít propustnost automatického škálování na kontejneru. Podpora pro sdílené databáze propustnosti automatického škálování s vlastními maximálními RU/s ještě není k dispozici. Podívejte se, jak [funguje fakturace úrovně Free s automatické škálování](understand-your-bill.md#azure-free-tier).
 
 ### <a name="is-autoscale-supported-for-all-apis"></a>Podporuje se automatické škálování pro všechna rozhraní API?
 Ano, automatické škálování se podporuje pro všechna rozhraní API: Core (SQL), Gremlin, Table, Cassandra a API pro MongoDB.
 
 ### <a name="is-autoscale-supported-for-multi-region-write-accounts"></a>Podporuje se automatické škálování pro účty pro zápis ve více oblastech?
-Ano. Maximální RU/s jsou dostupné v každé oblasti, která se přidá k účtu Azure Cosmos DB. 
+Yes. Maximální RU/s jsou dostupné v každé oblasti, která se přidá k účtu Azure Cosmos DB. 
 
 ### <a name="how-do-i-enable-autoscale-on-new-databases-or-containers"></a>Návody povolit automatické škálování pro nové databáze nebo kontejnery?
 V tomto článku najdete informace o [tom, jak povolit automatické škálování](how-to-provision-autoscale-throughput.md).
 
 ### <a name="can-i-enable-autoscale-on-an-existing-database-or-a-container"></a>Můžu povolit automatické škálování u existující databáze nebo kontejneru?
-Ano. V případě potřeby můžete také přepínat mezi zajištěním automatického škálování a standardní (ruční) zřízené propustnost. V současné době se pro všechna rozhraní API dá k těmto operacím použít jenom [Azure Portal](how-to-provision-autoscale-throughput.md#enable-autoscale-on-existing-database-or-container) .
+Yes. V případě potřeby můžete také přepínat mezi zajištěním automatického škálování a standardní (ruční) zřízené propustnost. V současné době se pro všechna rozhraní API dá k těmto operacím použít jenom [Azure Portal](how-to-provision-autoscale-throughput.md#enable-autoscale-on-existing-database-or-container) .
 
 ### <a name="how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work"></a>Jak funguje migrace mezi automatickým škálováním a standardní (ruční) zřízené propustností?
 V koncepční fázi je změna typu propustnosti dvoustupňový proces. Nejdřív odešlete žádost o změnu nastavení propustnosti pro použití automatického škálování nebo ruční zajištěné propustnosti. V obou případech systém automaticky určí a nastaví počáteční hodnotu RU/s na základě aktuálního nastavení a úložiště propustnosti. V průběhu tohoto kroku nebude přijata žádná hodnota RU/s zadaná uživatelem. Až se aktualizace dokončí, můžete [změnit ru/s](#can-i-change-the-max-rus-on-the-database-or-container) tak, aby odpovídaly vašim úlohám. 
@@ -101,7 +101,7 @@ Pokud dojde k překročení limitu úložiště přidruženého k maximální pr
 Pokud například zadáte maximální RU/s 50 000 RU/s (škály 5000-50 000 RU/s), můžete ukládat až 500 GB dat. Pokud překročíte 500 GB, například na 600 GB úložiště, nový maximální počet RU/s bude 60 000 (škálování mezi 6 000 a 60 000 RU/s).
 
 ### <a name="can-i-change-the-max-rus-on-the-database-or-container"></a>Můžu u databáze nebo kontejneru změnit maximum RU/s? 
-Ano. V tomto [článku](how-to-provision-autoscale-throughput.md) najdete informace o tom, jak změnit maximální ru/s. Když změníte maximální RU/s, v závislosti na požadované hodnotě může to být asynchronní operace, která může nějakou dobu trvat (může to být až 4-6 hodin, v závislosti na vybraném RU/s).
+Yes. V tomto [článku](how-to-provision-autoscale-throughput.md) najdete informace o tom, jak změnit maximální ru/s. Když změníte maximální RU/s, v závislosti na požadované hodnotě může to být asynchronní operace, která může nějakou dobu trvat (může to být až 4-6 hodin, v závislosti na vybraném RU/s).
 
 #### <a name="increasing-the-max-rus"></a>Zvýšení maximálního RU/s
 Když odešlete požadavek na zvýšení maximálního RU/s `Tmax` , v závislosti na vybraném maximálním počtu ru/s zřídí služba další prostředky pro podporu vyšších maximálních ru/s. I když se to děje, vaše stávající úlohy a operace nebudou ovlivněny. Systém bude pokračovat ve škálování databáze nebo kontejneru mezi předchozí `0.1*Tmax` až do `Tmax` chvíle, kdy nový rozsah škálování `0.1*Tmax_new` na `Tmax_new` je připravený.
@@ -137,7 +137,7 @@ Pokud celkový počet spotřebovaných RU/s překročí maximální RU/s databá
 > Azure Cosmos DB klientské sady SDK a nástroje pro import dat (Azure Data Factory, hromadně prováděč Library) se automaticky opakují na 429s, takže občasné 429sy jsou přesné. V případě trvalého vysokého počtu 429s může být potřeba zvýšit maximální RU/s nebo zkontrolovat strategii dělení pro [aktivní oddíl](#autoscale-rate-limiting).
 
 ### <a name="is-it-still-possible-to-see-429s-throttlingrate-limiting-when-autoscale-is-enabled"></a><a id="autoscale-rate-limiting"></a> Je stále možné zobrazit 429s (omezení četnosti a přenosů), pokud je povoleno automatické škálování? 
-Ano. Chyby 429 se můžou zobrazovat ve dvou scénářích. V případě, že celkový počet spotřebovaných RU/s přesáhne maximum RU/s databáze nebo kontejneru, služba omezí požadavky odpovídajícím způsobem. 
+Yes. Chyby 429 se můžou zobrazovat ve dvou scénářích. V případě, že celkový počet spotřebovaných RU/s přesáhne maximum RU/s databáze nebo kontejneru, služba omezí požadavky odpovídajícím způsobem. 
 
 V případě, že je k dispozici aktivní oddíl, tj. hodnota klíče logického oddílu, která má neúměrně vyšší množství požadavků v porovnání s jinými hodnotami klíče oddílu, je možné, že základní fyzický oddíl překročí svůj rozpočet RU/s. Pokud se chcete vyhnout horkým oddílům, doporučujeme [zvolit vhodný klíč oddílu](partitioning-overview.md#choose-partitionkey), který zajistí rovnoměrnou distribuci úložiště a propustnosti. 
 

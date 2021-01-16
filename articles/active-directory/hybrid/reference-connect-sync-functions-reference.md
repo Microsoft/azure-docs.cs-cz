@@ -16,12 +16,12 @@ ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6c8be064ade8182355c320e948b3b60b846033d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 7454733233f1fd487d774d52a6f46187354ae05c
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348054"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246702"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect Sync: Reference k funkcím
 V Azure AD Connect jsou funkce použity k manipulaci s hodnotou atributu během synchronizace.  
@@ -124,7 +124,7 @@ Funkce s typy **mvbin**, **mvstr** a **mvref** mohou pracovat pouze s více hodn
   * [Chyba](#error)
   * [IIF](#iif)
   * [Výběr](#select)
-  * [Přepnutí](#switch)
+  * [Přepínač](#switch)
   * [,](#where)
   * [Řetězce](#with)
 * **Text**
@@ -625,7 +625,7 @@ Pokud je DN "CN = Jan, OU = Brno, OU = GA, OU = US, DC = contoso, DC = com", pak
 Jak nás vrátíme.
 
 ---
-### <a name="error"></a>Chyba
+### <a name="error"></a>Chybová
 **Popis:**  
 Funkce Error slouží k vrácení vlastní chyby.
 
@@ -664,7 +664,7 @@ Možné hodnoty pro tento formát najdete tady: [vlastní formáty data a času 
 
 **Příklad:**  
 
-`FormatDateTime(CDate("12/25/2007"),"yyyy-mm-dd")`  
+`FormatDateTime(CDate("12/25/2007"),"yyyy-MM-dd")`  
 Má za následek "2007-12-25".
 
 `FormatDateTime(DateFromNum([pwdLastSet]),"yyyyMMddHHmmss.0Z")`  

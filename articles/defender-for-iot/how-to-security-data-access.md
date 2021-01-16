@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/04/2020
 ms.author: mlottner
-ms.openlocfilehash: c4f65da4f9a4f7ade94d76e99d57439e62b3c808
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 495f9d568760421c7f42df3acf74217c15b01a05
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092053"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246335"
 ---
 # <a name="access-your-security-data"></a>Přístup k datům zabezpečení
 
@@ -37,7 +37,7 @@ Přístup k výstrahám a doporučením v pracovním prostoru Log Analytics po k
 1. Vyberte výstrahu nebo doporučení v programu Defender pro IoT.
 1. Klikněte na **Další šetření** a potom kliknutím na zobrazit, **která zařízení mají tato upozornění, klikněte sem a zobrazte sloupec DeviceID**.
 
-Podrobnosti o dotazování na data z Log Analytics najdete v tématu Začínáme [s dotazy v Log Analytics](/azure/azure-monitor/log-query/get-started-queries).
+Podrobnosti o dotazování na data z Log Analytics najdete v tématu Začínáme [s dotazy v Log Analytics](../azure-monitor/log-query/get-started-queries.md).
 
 ## <a name="security-alerts"></a>Výstrahy zabezpečení
 
@@ -66,9 +66,9 @@ SecurityAlert
 
 | TimeGenerated           | IoTHubId                                                                                                       | DeviceId      | AlertSeverity | DisplayName                           | Popis                                             | ExtendedProperties                                                                                                                                                             |
 |-------------------------|----------------------------------------------------------------------------------------------------------------|---------------|---------------|---------------------------------------|---------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 2018-11-18T18:10:29.000 | /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Vysoké          | Útok hrubou silou uspěl           | Útok hrubou silou na zařízení byl úspěšný.        |    {"Úplná zdrojová adresa": "[ \" 10.165.12.18: \" ]", "uživatelská jména": "[ \" \" ]", "DeviceID": "IoT-Device-Linux"}                                                                       |
-| 2018-11-19T12:40:31.000 | /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Vysoké          | Místní přihlášení na zařízení bylo úspěšné.      | Zjistilo se úspěšné místní přihlášení k zařízení.     | {"Vzdálená adresa": "?", "vzdálený port": "", "místní port": "", "přihlašovací prostředí": "/bin/su", "ID procesu přihlášení": "28207", "uživatelské jméno": "útočník", "DeviceId": "IoT-Device-Linux"} |
-| 2018-11-19T12:40:31.000 | /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Vysoké          | Neúspěšný pokus o přihlášení k místnímu zařízení  | Zjistil se neúspěšný místní pokus o přihlášení do zařízení. |    {"Vzdálená adresa": "?", "vzdálený port": "", "místní port": "", "přihlašovací prostředí": "/bin/su", "ID procesu přihlášení": "22644", "uživatelské jméno": "útočník", "DeviceId": "IoT-Device-Linux"} |
+| 2018-11-18T18:10:29.000 | /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Vysoká          | Útok hrubou silou uspěl           | Útok hrubou silou na zařízení byl úspěšný.        |    {"Úplná zdrojová adresa": "[ \" 10.165.12.18: \" ]", "uživatelská jména": "[ \" \" ]", "DeviceID": "IoT-Device-Linux"}                                                                       |
+| 2018-11-19T12:40:31.000 | /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Vysoká          | Místní přihlášení na zařízení bylo úspěšné.      | Zjistilo se úspěšné místní přihlášení k zařízení.     | {"Vzdálená adresa": "?", "vzdálený port": "", "místní port": "", "přihlašovací prostředí": "/bin/su", "ID procesu přihlášení": "28207", "uživatelské jméno": "útočník", "DeviceId": "IoT-Device-Linux"} |
+| 2018-11-19T12:40:31.000 | /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Vysoká          | Neúspěšný pokus o přihlášení k místnímu zařízení  | Zjistil se neúspěšný místní pokus o přihlášení do zařízení. |    {"Vzdálená adresa": "?", "vzdálený port": "", "místní port": "", "přihlašovací prostředí": "/bin/su", "ID procesu přihlášení": "22644", "uživatelské jméno": "útočník", "DeviceId": "IoT-Device-Linux"} |
 
 ### <a name="device-summary"></a>Souhrn zařízení
 
@@ -89,9 +89,9 @@ SecurityAlert
 
 | IoTHubId                                                                                                       | DeviceId      | AlertSeverity | DisplayName                           | Počet |
 |----------------------------------------------------------------------------------------------------------------|---------------|---------------|---------------------------------------|-----|
-| /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Vysoké          | Útok hrubou silou uspěl           | 9   |
+| /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Vysoká          | Útok hrubou silou uspěl           | 9   |
 | /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Střední        | Neúspěšný pokus o přihlášení k místnímu zařízení  | 242 |
-| /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Vysoké          | Místní přihlášení na zařízení bylo úspěšné.      | 31  |
+| /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Vysoká          | Místní přihlášení na zařízení bylo úspěšné.      | 31  |
 | /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Střední        | Kryptografická mince – Miner                     | 4   |
 
 ### <a name="iot-hub-summary"></a>Shrnutí centra IoT
@@ -113,9 +113,9 @@ SecurityAlert
 
 | IoTHubId                                                                                                       | AlertSeverity | DisplayName                           | CntDevices |
 |----------------------------------------------------------------------------------------------------------------|---------------|---------------------------------------|------------|
-| /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | Vysoké          | Útok hrubou silou uspěl           | 1          |
+| /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | Vysoká          | Útok hrubou silou uspěl           | 1          |
 | /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | Střední        | Neúspěšný pokus o přihlášení k místnímu zařízení  | 1          |
-| /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | Vysoké          | Místní přihlášení na zařízení bylo úspěšné.      | 1          |
+| /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | Vysoká          | Místní přihlášení na zařízení bylo úspěšné.      | 1          |
 | /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | Střední        | Kryptografická mince – Miner                     | 1          |
 
 ## <a name="security-recommendations"></a>Doporučení zabezpečení
@@ -166,9 +166,9 @@ SecurityRecommendation
 
 | IoTHubId                                                                                                       | DeviceId      | RecommendationSeverity | Počet |
 |----------------------------------------------------------------------------------------------------------------|---------------|------------------------|-----|
-| /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Vysoké          | 2   |
+| /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Vysoká          | 2   |
 | /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Střední        | 1 |
-| /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Vysoké          | 1  |
+| /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Vysoká          | 1  |
 | /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Střední        | 4   |
 
 ## <a name="next-steps"></a>Další kroky

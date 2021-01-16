@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/27/2019
 ms.author: shhazam
-ms.openlocfilehash: d3b50d909fb167ee123b548603628bae7d844c5b
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 2b1cd131e578b1d16fabee99b8de536e4a48ece0
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97839429"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247297"
 ---
 # <a name="get-started-with-azure-defender-for-iot-device-security-agents"></a>Začínáme se službou Azure Defender pro agenty zabezpečení zařízení IoT
 
@@ -31,7 +31,7 @@ Agenti zabezpečení služby IoT pro IoT zpracovávají nezpracované shromažď
 K nasazení a otestování programu Defender pro agenty zabezpečení IoT použijte následující pracovní postup:
 
 1. [Povolit Defender pro službu IoT na IoT Hub](quickstart-onboard-iot-hub.md)
-1. Pokud IoT Hub nemá žádná registrovaná zařízení, [Zaregistrujte nové zařízení](../iot-accelerators/quickstart-device-simulation-deploy.md).
+1. Pokud IoT Hub nemá žádná registrovaná zařízení, [Zaregistrujte nové zařízení](../iot-accelerators/iot-accelerators-device-simulation-overview.md).
 1. [Vytvořte modul zabezpečení azureiotsecurity](quickstart-create-security-twin.md) pro vaše zařízení.
 1. Pokud chcete nainstalovat agenta na simulovaném zařízení Azure místo instalace na skutečném zařízení, [vystavte si nový virtuální počítač Azure (VM)](../virtual-machines/linux/quick-create-portal.md) v dostupné zóně.
 1. Nasaďte do svého zařízení IoT nebo nového virtuálního počítače [agenta zabezpečení pro IoT for IoT](how-to-deploy-linux-cs.md) .

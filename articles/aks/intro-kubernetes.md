@@ -5,12 +5,12 @@ services: container-service
 ms.topic: overview
 ms.date: 05/06/2019
 ms.custom: mvc
-ms.openlocfilehash: 75f4602be15ef2487272ed5790d92c4c884c551f
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 4115ab2140cd3bf67135e494e16fb8121c040ff6
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681546"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246192"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
 
@@ -58,17 +58,17 @@ Azure Kubernetes Service nabízí několik verzí Kubernetes. Jakmile budou v AK
 
 Další informace o verzích životního cyklu, naleznete v tématu [Podporované verze Kubernetes v AKS][aks-supported versions]. Další postup, jak upgradovat, najdete v tématu [Upgrade clusteru Azure Kubernetes Service (AKS)][aks-upgrade].
 
-### <a name="gpu-enabled-nodes"></a>Uzly s podporou grafického procesoru
+### <a name="gpu-enabled-nodes"></a>Uzly s podporou GPU
 
-AKS podporuje vytváření fondů uzlů s podporou grafického procesoru. Azure v současné době nabízí virtuální počítače s podporou jednoho nebo více grafických procesorů. Virtuální počítače s podporou grafického procesoru jsou určené pro úlohy náročné na výpočetní nebo grafický výkon a úlohy vizualizace.
+AKS podporuje vytváření fondů uzlů s podporou GPU. Azure v současné době poskytuje jeden nebo víc virtuálních počítačů s podporou GPU. Virtuální počítače s podporou GPU jsou navržené pro úlohy náročné na výpočetní výkon, náročné na grafiku a vizualizaci.
 
 Další informace najdete v tématu [Použití grafických procesorů v AKS][aks-gpu].
 
 ### <a name="confidential-computing-nodes-public-preview"></a>Důvěrné výpočetní uzly (Public Preview)
 
-AKS podporuje vytváření fondů pro důvěrné výpočetní prostředí založené na Intel SGX (virtuální počítače DCSv2). V případě důvěrných výpočetních uzlů je možné kontejnery spouštět v prostředí důvěryhodného a izolovaného spuštění založeném na hardwaru (enclaves). Izolace mezi kontejnery v kombinaci s integritou kódu prostřednictvím ověření identity vám může pomáhat s vaší ochrannou strategií zabezpečení kontejneru v rámci důkladné ochrany. Důvěrné výpočetní uzly podporují jak důvěrné kontejnery (existující aplikace Docker), tak kontejnery s podporou enklávy.
+AKS podporuje vytváření fondů pro důvěrné výpočetní prostředí založené na Intel SGX (virtuální počítače DCSv2). V případě důvěrných výpočetních uzlů je možné kontejnery spouštět v prostředí pro důvěryhodné spuštění založené na hardwaru (enclaves). Izolace mezi kontejnery v kombinaci s integritou kódu prostřednictvím ověření identity vám může pomáhat s vaší ochrannou strategií zabezpečení kontejneru v rámci důkladné ochrany. Uzly důvěrného zpracování podporují důvěrné kontejnery (existující aplikace Docker) i kontejnery s podporou enklávy.
 
-Další informace najdete v tématu [důvěrné výpočetní uzly v AKS][conf-com-node] .
+Další informace najdete v tématu [důvěrné výpočetní uzly v AKS][conf-com-node].
 
 ### <a name="storage-volume-support"></a>Podpora svazků úložiště
 
@@ -80,7 +80,7 @@ Začněte s dynamickými trvalými svazky na [discích Azure][azure-disk] nebo v
 
 ## <a name="virtual-networks-and-ingress"></a>Virtuální sítě a příchozí přenos dat
 
-Cluster AKS je možné nasadit do stávající virtuální sítě. V této konfiguraci se ke každému podu v clusteru přiřadí IP adresa ve virtuální síti a pody tak můžou komunikovat přímo s ostatními pody v clusteru a dalšími uzly ve virtuální síti. Pody se můžou připojit také k jiným službám v partnerské virtuální síti a k místním sítím přes ExpressRoute nebo připojení VPN typu Site-to-Site (S2S).
+Cluster AKS je možné nasadit do stávající virtuální sítě. V této konfiguraci se ke každému podu v clusteru přiřadí IP adresa ve virtuální síti a pody tak můžou komunikovat přímo s ostatními pody v clusteru a dalšími uzly ve virtuální síti. Lusky se taky můžou připojit k ostatním službám v partnerské virtuální síti a k místním sítím přes ExpressRoute nebo připojení VPN typu Site-to-Site (S2S).
 
 Další informace najdete v tématu [Koncepty sítě pro aplikace v AKS][aks-networking].
 
@@ -98,15 +98,15 @@ Kubernetes má bohatou ekosystém nástrojů pro vývoj a správu, jako je Helm 
 
 Služba Azure Dev Spaces navíc poskytuje rychlé a iterativní vývojové prostředí Kubernetes pro týmy. S minimální konfigurací můžete spouštět a ladit kontejnery přímo v AKS. Jak začít, najdete v článku [Azure Dev Spaces][azure-dev-spaces].
 
-Projekt Azure DevOps poskytuje jednoduché řešení pro přenos stávajícího kódu a úložiště Git do Azure. Projekt Azure DevOps automaticky vytvoří prostředky Azure, jako je služba AKS, kanál verze ve Azure DevOps Services obsahující kanály buildu pro průběžnou integraci, nastaví kanály verze pro průběžné nasazování a pak vytvoří prostředek Azure Application Insights pro účely monitorování.
+DevOps Starter poskytuje jednoduché řešení pro vložení stávajícího kódu a úložišť Git do Azure. DevOps Starter automaticky vytvoří prostředky Azure, jako je AKS, kanál vydání v Azure DevOps Services, který obsahuje kanál sestavení pro CI, nastaví pro CD kanál pro vydávání verzí a pak vytvoří prostředek Azure Application Insights pro monitorování.
 
-Další informace najdete v tématu věnovaném [projektu Azure DevOps][azure-devops].
+Další informace najdete v tématu [DevOps Starter][azure-devops].
 
 ## <a name="docker-image-support-and-private-container-registry"></a>Podpora image dockeru a privátní registr kontejnerů
 
 AKS podporuje formátu image dockeru. Pro soukromé úložiště vašich imagí dockeru můžete AKS provést integraci se službou Azure Container Registry (ACR).
 
-Chcete-li vytvořit úložiště bitových kopií, viz téma [Azure Container Registry][acr-docs].
+Pokud chcete vytvořit úložiště privátních imagí, přečtěte si téma [Azure Container Registry][acr-docs].
 
 ## <a name="kubernetes-certification"></a>Certifikace Kubernetes
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/11/2020
 ms.author: Zhchia
-ms.openlocfilehash: 56b75d34bed65dae53c88eab6a16d848083ccc73
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 084592a8db47a94a0fcd683105f749f514c05ea3
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96179057"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247569"
 ---
 # <a name="tutorial-configure-cofense-recipient-sync-for-automatic-user-provisioning"></a>Kurz: Konfigurace synchronizace příjemců Cofense pro Automatické zřizování uživatelů
 
@@ -165,9 +165,13 @@ Tato operace zahájí cyklus počáteční synchronizace všech uživatelů a sk
 ## <a name="step-6-monitor-your-deployment"></a>Krok 6. Monitorování nasazení
 Po dokončení konfigurace zřizování můžete své nasazení monitorovat pomocí následujících prostředků:
 
-1. S využitím [protokolů zřizování](../reports-monitoring/concept-provisioning-logs.md) můžete zjistit, kteří uživatelé se zřídili úspěšně a kteří neúspěšně.
-2. Pokud chcete zjistit, jaký je stav cyklu zřizování a jak blízko je dokončení, zkontrolujte [indikátor průběhu](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md).
-3. Pokud se zdá, že konfigurace zřizování není v pořádku, aplikace přejde do karantény. Další informace o stavech karantény najdete [tady](../app-provisioning/application-provisioning-quarantine-status.md).  
+* S využitím [protokolů zřizování](../reports-monitoring/concept-provisioning-logs.md) můžete zjistit, kteří uživatelé se zřídili úspěšně a kteří neúspěšně.
+* Pokud chcete zjistit, jaký je stav cyklu zřizování a jak blízko je dokončení, zkontrolujte [indikátor průběhu](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md).
+* Pokud se zdá, že konfigurace zřizování není v pořádku, aplikace přejde do karantény. Další informace o stavech karantény najdete [tady](../app-provisioning/application-provisioning-quarantine-status.md). 
+
+## <a name="change-log"></a>Protokol změn
+
+* 01/15/2020 – pro mapování identifikátorů objectId-> externalId bylo implementováno "pouze během vytváření objektu" na "Always".
 
 ## <a name="additional-resources"></a>Další zdroje informací
 

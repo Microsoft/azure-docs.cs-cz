@@ -8,12 +8,12 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 10/27/2020
-ms.openlocfilehash: b038834df3889a8b4b7f4a749568635e99f8408e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 8b63dfb015c7337e36dac3812e92ddc53914206d
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96188747"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247161"
 ---
 # <a name="how-to-review-and-publish-an-offer-to-the-commercial-marketplace"></a>Kontrola a publikování nabídky na komerčním webu Marketplace
 
@@ -150,7 +150,7 @@ Na následujícím snímku obrazovky vidíte stránku s **přehledem nabídky** 
 ### <a name="previewing-and-approving-your-offer"></a>Zobrazení náhledu a schválení nabídky
 
 > [!IMPORTANT]
-> Pokud chcete ověřit kompletní tok nákupu a nastavování, kupte si nabídku, i když je ve verzi Preview. Nejdřív od Microsoftu upozorněte [lístek podpory](https://aka.ms/marketplacesupport) , abyste se ujistili, že Nezpracováváme poplatky.
+> Pokud chcete ověřit kompletní tok nákupu a nastavování, kupte si nabídku, i když je ve verzi Preview. Nejdřív od Microsoftu upozorněte [lístek podpory](https://aka.ms/marketplacesupport) , abyste se ujistili, že Nezpracováváme poplatky. Pokud vaše nabídka obsahuje seznam kontaktů, otestujte, jestli je potenciální zájemce vytvořen podle očekávání, zadáním podrobností o kontaktech ve verzi Preview.
 
 Na stránce **Přehled nabídky** se zobrazí odkazy ve verzi Preview pod tlačítkem **Přejít na Live** . V závislosti na možnostech, které jste zvolili při vytváření vaší nabídky, se bude jednat o odkaz buď na AppSource Preview Azure Marketplace, ve verzi Preview, nebo v obou. Pokud jste se rozhodli prodat nabídku prostřednictvím Microsoftu, může kdokoli, kdo byl přidán do cílové skupiny Preview, otestovat pořízení a nasazení vaší nabídky, aby se zajistilo, že splní vaše požadavky v této fázi.
 
@@ -197,7 +197,7 @@ Zobrazení historie vaší nabídky:
 
 |Událost    |Popis    |
 |---------|---------------|
-|Nabídka vytvořena    |Nabídka se vytvořila v partnerském centru. Uživatel vybral v přehledu **komerčního tržiště** typ nabídky, ID nabídky a alias nabídky  >  **Overview**.    |
+|Nabídka vytvořena    |Nabídka se vytvořila v partnerském centru. Uživatel vybral v přehledu **komerčního tržiště** typ nabídky, ID nabídky a alias nabídky  >  .    |
 |Vytvořený plán: *název plánu*    |Uživatel vytvořil nový plán zadáním ID plánu a názvu plánu na kartě **Přehled plánu** .</br>*Tato událost se vztahuje pouze na typy nabídek, které podporují plány*.    |
 |Plán se odstranil    |Uživatel odstranil pracovní plán, který nebyl publikován, výběrem možnosti **Odstranit koncept** ze stránky **Přehled plánu** .</br>*Tato událost se vztahuje pouze na typy nabídek, které podporují plány*.    |
 |Vyvolaný plán zastavil prodej: *název plánu*    |Uživatel zahájil plán, který se zastavil – prodej výběrem možnosti **ukončit prodej** na stránce **Přehled plánu** .</br>*Tato událost se vztahuje pouze na typy nabídek, které podporují plány*.    |
@@ -226,7 +226,7 @@ Existují čtyři filtry:
 * Události
 * Uživatelé
 * Datum
-* Stránky
+* Pages (Stránky)
 
 Když vyberete filtr **stránky** , můžete vybrat libovolné stránky partnerského centra, které se vztahují k vašemu typu nabídky. Když se použije, filtr **stránky** zobrazí všechny **odeslané nabídky pro náhled událostí ve verzi Preview** se změnami vybrané stránky.
 

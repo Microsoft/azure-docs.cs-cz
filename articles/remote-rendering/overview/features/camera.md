@@ -5,12 +5,12 @@ author: christophermanthei
 ms.author: chmant
 ms.date: 03/07/2020
 ms.topic: article
-ms.openlocfilehash: fc82d046caa3663cffcda585258642813ab3a7d8
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 76bb9d289e984dd8c229bdaaab09e679e11283fe
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207253"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246277"
 ---
 # <a name="camera"></a>Camera
 
@@ -32,7 +32,7 @@ V nastaveních kamery lze změnit následující vlastnosti:
 
 **Blízko a daleko rovina:**
 
-Aby se zajistilo, že není možné nastavit žádné neplatné rozsahy, vlastnosti **NearPlane** a **FarPlane** jsou jen pro čtení a pro změnu rozsahu existují samostatné funkce **SetNearAndFarPlane** . Tato data budou odeslána na konec rámce na server.
+Aby se zajistilo, že není možné nastavit žádné neplatné rozsahy, vlastnosti **NearPlane** a **FarPlane** jsou jen pro čtení a pro změnu rozsahu existují samostatné funkce **SetNearAndFarPlane** . Tato data budou odeslána na konec rámce na server. Při nastavování těchto hodnot musí být **NearPlane** menší než **FarPlane**. V opačném případě dojde k chybě.
 
 > [!IMPORTANT]
 > V Unity se to při změně hlavní kamery blízko i daleko řídí automaticky.
@@ -44,6 +44,21 @@ Někdy je vhodné zakázat zápis hloubky do vyrovnávací paměti pro účely l
 > [!TIP]
 > V Unity je k dispozici součást ladění s názvem **EnableDepthComponent** , která se dá použít k přepínání této funkce v uživatelském rozhraní editoru.
 
+**InverseDepth**:
+
+> [!NOTE]
+> Toto nastavení je důležité pouze v případě `EnableDepth` , že je nastavena na `true` . V opačném případě toto nastavení nemá žádný vliv.
+
+Vyrovnávací paměti hloubky obvykle zaznamenávají hodnoty z v rozsahu s plovoucí desetinnou čárkou (0; 1], přičemž 0 označuje blízkou rovinu a 1 označuje hloubku nejvyšší roviny. Je také možné Invertovat tento rozsah a hodnoty hloubky záznamu v rozsahu [1; 0], to znamená, že blízko roviny je 1 a hloubka nejvyšší roviny bude 0. Obecně to znamená, že druhá vylepšuje distribuci přesnosti s plovoucí desetinnou čárkou v nelineárním rozsahu z.
+
+> [!WARNING]
+> Běžný přístup navertuje hodnoty téměř roviny a daleko v objektech fotoaparátu. Tato chyba se při vzdáleném vykreslování Azure nezdaří s chybou při pokusu o provedení této akce v `CameraSettings` .
+
+Rozhraní API pro vzdálené vykreslování Azure potřebuje informace o tom, jak se má hloubka vyrovnávací paměti pro váš místní zobrazovací jednotku správně poznat do vyrovnávací paměti místní hloubky. Pokud je rozsah vyrovnávací paměti hloubky [0; 1], nechejte tento příznak jako `false` . Použijete-li vyrovnávací paměť s obrácenou hloubkou s rozsahem [1; 0], nastavte `InverseDepth` příznak na `true` .
+
+> [!NOTE]
+> V případě Unity je správné nastavení již použito, takže není `RemoteManager` nutné provádět ruční zásah.
+
 Změna nastavení kamery může probíhat takto:
 
 ```cs
@@ -53,6 +68,7 @@ void ChangeCameraSetting(AzureSession session)
 
     settings.SetNearAndFarPlane(0.1f, 20.0f);
     settings.EnableDepth = false;
+    settings.InverseDepth = false;
 }
 ```
 
@@ -63,6 +79,7 @@ void ChangeStageSpace(ApiHandle<AzureSession> session)
 
     settings->SetNearAndFarPlane(0.1f, 20.0f);
     settings->SetEnableDepth(false);
+    settings->SetInverseDepth(false);
 }
 ```
 
