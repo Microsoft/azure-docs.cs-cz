@@ -230,7 +230,7 @@
         - name: Dokumentace ke službě Azure Security Center
           href: ../security-center/
         - name: Dokumentace k zabezpečení Azure
-          href: 'https://docs.microsoft.com/azure/security/'
+          href: ../security/index.yml
         - name: Modul zabezpečení Azure RTOS na Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/azure-rtos+azure-iot-security-module'
         - name: 'Blog věnovaný zabezpečení, ochraně osobních údajů a dodržování předpisů v Azure IoT'
