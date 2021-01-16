@@ -9,12 +9,12 @@ ms.date: 11/13/2020
 ms.author: normesta
 ms.subservice: common
 ms.custom: subject-cost-optimization
-ms.openlocfilehash: 6942c3ecd631a141f1df741ff827a6889605e536
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 14e53efb7be9eef3ca388e6524e5ffd678671cd0
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498196"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251637"
 ---
 # <a name="plan-and-manage-costs-for-azure-blob-storage"></a>Plánování a Správa nákladů pro Azure Blob Storage
 
@@ -75,16 +75,16 @@ Další informace najdete v tématu [Správa životního cyklu služby Azure Blo
 
 ## <a name="create-budgets"></a>Tvorba rozpočtů
 
-Pro účely řízení nákladů můžete vytvořit [rozpočty](../../cost-management-billing/costs/tutorial-acm-create-budgets.md) a nastavit upozornění, která účastníky automaticky upozorňují na anomálie a nebezpečí nadměrných výdajů. Upozornění jsou založena na porovnání útraty s rozpočtem a prahovými hodnotami nákladů. Rozpočty a výstrahy se vytvářejí pro předplatná Azure a skupiny prostředků, takže jsou užitečné v rámci celkové strategie monitorování nákladů. Můžou ale mít omezené funkce pro správu jednotlivých nákladů na služby Azure, jako jsou náklady na Azure Storage, protože jsou navržené tak, aby sledovaly náklady na vyšší úrovni.
+Pro účely řízení nákladů můžete vytvořit [rozpočty](../../cost-management-billing/costs/tutorial-acm-create-budgets.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) a nastavit upozornění, která účastníky automaticky upozorňují na anomálie a nebezpečí nadměrných výdajů. Upozornění jsou založena na porovnání útraty s rozpočtem a prahovými hodnotami nákladů. Rozpočty a výstrahy se vytvářejí pro předplatná Azure a skupiny prostředků, takže jsou užitečné v rámci celkové strategie monitorování nákladů. Můžou ale mít omezené funkce pro správu jednotlivých nákladů na služby Azure, jako jsou náklady na Azure Storage, protože jsou navržené tak, aby sledovaly náklady na vyšší úrovni.
 
 ## <a name="monitor-costs"></a>Sledovat náklady
 
-Při používání prostředků Azure s Azure Storage se vám účtují náklady. Náklady na jednotku využití prostředků se liší podle časových intervalů (sekundy, minuty, hodiny a dny) nebo podle využití jednotek (bajty, megabajtů atd.). Náklady se účtují ihned po využití Azure Storage spustí. Náklady můžete zobrazit v podokně [Analýza nákladů](../../cost-management-billing/costs/quick-acm-cost-analysis.md) v Azure Portal.
+Při používání prostředků Azure s Azure Storage se vám účtují náklady. Náklady na jednotku využití prostředků se liší podle časových intervalů (sekundy, minuty, hodiny a dny) nebo podle využití jednotek (bajty, megabajtů atd.). Náklady se účtují ihned po využití Azure Storage spustí. Náklady můžete zobrazit v podokně [Analýza nákladů](../../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) v Azure Portal.
 
 Při použití analýzy nákladů můžete zobrazit Azure Storage náklady v grafech a tabulkách pro různé časové intervaly. Některé příklady jsou podle dne, aktuálního a předchozího měsíce a roku. Můžete také zobrazit náklady na rozpočty a předpokládané náklady. Přepínáním na delší zobrazení v průběhu času vám může pomáhat identifikovat trendy útraty a zjistit, kde došlo k nadměrnému útratě. Pokud jste vytvořili rozpočty, můžete také snadno zjistit, kde byly překročeny.
 
 >[!NOTE]
-> Analýza nákladů podporuje různé typy účtů Azure. Úplný seznam podporovaných typů účtů si můžete prohlédnout v článku [Vysvětlení dat služby Cost Management](../../cost-management-billing/costs/understand-cost-mgt-data.md). Pokud chcete zobrazit data o nákladech, potřebujete přinejmenším oprávnění ke čtení k vašemu účtu Azure. Informace o přiřazování přístupu k datům služby Azure Cost Management najdete v článku [Přiřazení přístupu k datům](../../cost-management-billing/costs/assign-access-acm-data.md).
+> Analýza nákladů podporuje různé typy účtů Azure. Úplný seznam podporovaných typů účtů si můžete prohlédnout v článku [Vysvětlení dat služby Cost Management](../../cost-management-billing/costs/understand-cost-mgt-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn). Pokud chcete zobrazit data o nákladech, potřebujete přinejmenším oprávnění ke čtení k vašemu účtu Azure. Informace o přiřazování přístupu k datům služby Azure Cost Management najdete v článku [Přiřazení přístupu k datům](../../cost-management-billing/costs/assign-access-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
 
 Postup zobrazení Azure Storagech nákladů při analýze nákladů:
 

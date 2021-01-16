@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 10/02/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a47126a48ea63efd4e49097428679b85b7a95a61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ec900f0537030d3ed0d1c875e8125806159bd51
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667159"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251450"
 ---
 # <a name="create-a-windows-virtual-desktop-host-pool-with-powershell"></a>Vytvoření fondu hostitelů virtuálních počítačů s Windows pomocí PowerShellu
 
@@ -20,7 +20,7 @@ ms.locfileid: "91667159"
 
 Fondy hostitelů jsou kolekce jednoho nebo více identických virtuálních počítačů v prostředích klienta virtuálních počítačů s Windows. Každý fond hostitelů je možné přidružit k několika skupinám RemoteApp, jedné skupině aplikací klasické pracovní plochy a několika hostitelům relací.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto článku se předpokládá, že už jste postupovali podle pokynů v tématu [nastavení modulu PowerShellu](powershell-module.md).
 
@@ -93,7 +93,7 @@ K úspěšnému připojení k doméně udělejte na každém virtuálním počí
 
 1. [Připojte se k virtuálnímu počítači](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine) pomocí přihlašovacích údajů, které jste zadali při vytváření virtuálního počítače.
 2. Na virtuálním počítači spusťte **Ovládací panely** a vyberte možnost **systém**.
-3. Vyberte **název počítače**, vyberte **změnit nastavení**a pak zvolte **změnit...**
+3. Vyberte **název počítače**, vyberte **změnit nastavení** a pak zvolte **změnit...**
 4. Vyberte **doména** a pak zadejte doménu služby Active Directory ve virtuální síti.
 5. Proveďte ověření pomocí doménového účtu, který má oprávnění k počítačům připojeným k doméně.
 
@@ -124,13 +124,13 @@ Pokud chcete zaregistrovat agenty virtuálních počítačů s Windows, udělejt
 
 Agenta budete muset aktualizovat, pokud jste v některé z následujících situací:
 
-- Chcete migrovat dříve registrovanou relaci do nového fondu hostitelů.
+- Chcete migrovat dříve registrovaného hostitele relace do nového fondu hostitelů
 - Po aktualizaci se hostitel relace nezobrazí ve fondu hostitelů.
 
 Aktualizace agenta:
 
 1. Přihlaste se k virtuálnímu počítači jako správce.
-2. Vyhledejte **služby**a pak zastavte procesy **Rdagent** a **Remote Desktop agent Loader** .
+2. Vyhledejte **služby** a pak zastavte procesy **Rdagent** a **Remote Desktop agent Loader** .
 3. Dále vyhledejte agenta a MSIs zaváděcího programu. Budou umístěny buď ve složce **C:\DeployAgent** , nebo podle umístění, do kterého jste ho uložili při instalaci.
 4. Vyhledejte následující soubory a odinstalujte je:
      

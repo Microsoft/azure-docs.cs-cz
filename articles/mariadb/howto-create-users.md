@@ -6,22 +6,20 @@ ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 01/15/2021
-ms.openlocfilehash: 62aadb366fd216cb6dcefff6cdde24dc21b8483a
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 77975ae16ba6b66c55db5ef5927bfc49f9cecdc5
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231906"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251518"
 ---
 # <a name="create-users-in-azure-database-for-mariadb"></a>Vytváření uživatelů ve službě Azure Database for MariaDB
 
 Tento článek popisuje, jak můžete vytvářet uživatele v Azure Database for MariaDB.
 
 > [!NOTE]
-> Komunikace bez posunu
->
-> Microsoft podporuje různé a zahrnuté prostředí. Tento článek obsahuje odkazy na _Hlavní_ a _podřízený_ text. [Průvodce stylem Microsoftu pro komunikaci bez předplatných](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) je rozpoznává jako vyloučená slova. Tato slova se v tomto článku používají kvůli konzistenci, protože jsou aktuálně slova, která se zobrazují v softwaru. Když se software aktualizuje, aby se odstranila slova, Tento článek se aktualizuje tak, aby se vyrovnává.
->
+> Tento článek obsahuje odkazy na _podřízený_ termín, termín, který už Microsoft nepoužívá. Po odebrání termínu ze softwaru ho odebereme z tohoto článku.
+
 
 Při prvním vytvoření Azure Database for MariaDB jste zadali přihlašovací uživatelské jméno a heslo správce serveru. Další informace najdete v [rychlém](quickstart-create-mariadb-server-database-using-azure-portal.md)startu. Přihlašovací uživatelské jméno správce serveru můžete najít z Azure Portal.
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/04/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 70b7042e4006cc59419d0ea6798fe7626a82c086
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 872a67d8d9f41c0c809df54304352b2a5f58e011
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621072"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251756"
 ---
 # <a name="required-url-list"></a>Seznam požadovaných adres URL
 
@@ -32,6 +32,7 @@ Virtuální počítače Azure, které vytvoříte pro virtuální počítač s W
 |* xt.blob.core.windows.net|443|Přenosy agenta|AzureCloud|
 |* eh.servicebus.windows.net|443|Přenosy agenta|AzureCloud|
 |* xt.table.core.windows.net|443|Přenosy agenta|AzureCloud|
+|* xt.queue.core.windows.net|443|Přenosy agenta|AzureCloud|
 |catalogartifact.azureedge.net|443|Azure Marketplace|AzureCloud|
 |kms.core.windows.net|1688|Aktivace Windows|Internet|
 |mrsglobalsteus2prod.blob.core.windows.net|443|Aktualizace zásobníku agenta a SXS|AzureCloud|

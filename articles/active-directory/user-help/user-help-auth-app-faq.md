@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 12/09/2020
+ms.date: 01/15/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: a1307aa19c66e3f6fcb71f677e6c67551d2a01f9
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: f799ed5c18537b862a4971075ae9107b7a722fdd
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928320"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251501"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Nejčastější dotazy k aplikaci Microsoft Authenticator
 
@@ -33,13 +33,17 @@ Aplikace Microsoft Authenticator nahradila Azure Authenticator aplikaci a při p
 
 Odpověď **: registrace** zařízení dává vašemu zařízení přístup ke službám vaší organizace a neumožňuje vaší organizaci přístup k vašemu zařízení.
 
-## <a name="too-many-app-permissions"></a>Příliš mnoho oprávnění aplikace
+### <a name="too-many-app-permissions"></a>Příliš mnoho oprávnění aplikace
 
 **Otázka**: Proč aplikace požaduje mnoho oprávnění?
 
-Odpověď **: zde** je úplný seznam oprávnění, která mohou být požádána o jejich použití v aplikaci. Konkrétní oprávnění, která vidíte, budou záviset na typu telefonu, který máte.
+Odpověď **: zde** je úplný seznam oprávnění, která mohou být požádána o jejich použití v aplikaci. Konkrétní oprávnění, která vidíte, budou záviset na typu telefonu, který máte. Někdy vaše organizace chce znát vaše **umístění** , než vám umožní přístup k určitým prostředkům. Aplikace bude požadovat toto oprávnění pouze v případě, že vaše organizace má zásady vyžadující umístění.
 
-- **Umístění:** Někdy vaše organizace chce znát vaše umístění, než vám umožní přístup k určitým prostředkům. Aplikace bude požadovat toto oprávnění pouze v případě, že vaše organizace má zásady vyžadující umístění. 
+### <a name="error-adding-account"></a>Chyba při přidávání účtu
+
+**Otázka**: při pokusu o přidání účtu se zobrazí chybová zpráva oznamující, že účet, který se pokoušíte přidat, není v tuto chvíli platný. Požádejte správce, aby tento problém vyřešil (ověření jedinečnosti). " Co bych měl/a dělat?
+
+Odpověď **: obraťte** se na správce a sdělte mu, že se vám nedaří přidat účet do ověřovatele kvůli problému s ověřením jedinečnosti. Budete muset zadat uživatelské jméno pro přihlášení, aby vám správce mohl vyhledat ve vaší organizaci.
 
 ### <a name="legacy-apns-support-deprecated"></a>Starší verze podpory služby APNs je zastaralá.
 

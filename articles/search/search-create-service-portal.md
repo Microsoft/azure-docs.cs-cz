@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 10/14/2020
-ms.openlocfilehash: 1b3804029a4174698ed1e4e4f8d75fbed4fba981
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 3f55e2a7d62d2f32173d382dc9be0d6eb4f83fae
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102808"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98249750"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Rychlé zprovoznění: Vytvoření služby Azure Cognitive Search na portálu
 
@@ -30,7 +30,7 @@ Dáváte přednost prostředí PowerShell? Použijte [šablonu služby](https://
 Pro dobu života služby jsou opraveny následující vlastnosti služby – změna kterékoli z nich vyžaduje novou službu. Vzhledem k tomu, že jsou pevně dané, zvažte použití dopadu při vyplňování jednotlivých vlastností:
 
 * Název služby se může nacházet v rámci koncového bodu adresy URL ([recenze tipů](#name-the-service) pro užitečné názvy služeb).
-* Úroveň služby [má vliv na fakturaci](search-sku-tier.md) a nastavuje limit nahoru pro kapacitu. Některé funkce nejsou dostupné na úrovni Free.
+* [Úroveň služby](search-sku-tier.md) má vliv na fakturaci a nastavuje limit nahoru pro kapacitu. Některé funkce nejsou dostupné na úrovni Free.
 * Oblast služby může určit dostupnost určitých scénářů. Pokud potřebujete [funkce s vysokým zabezpečením](search-security-overview.md) nebo [obohacení AI](cognitive-search-concept-intro.md), budete muset Azure kognitivní hledání umístit do stejné oblasti jako jiné služby nebo v oblastech, které zajišťují konkrétní funkci. 
 
 ## <a name="subscribe-free-or-paid"></a>Předplatné (bezplatné nebo placené)
@@ -41,7 +41,7 @@ Případně si můžete [aktivovat výhody pro předplatitele MSDN](https://azur
 
 ## <a name="find-azure-cognitive-search"></a>Najít Kognitivní hledání Azure
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 1. V levém horním rohu klikněte na symbol plus (+ vytvořit prostředek).
 
@@ -59,11 +59,11 @@ Skupina prostředků je kontejner, který obsahuje související prostředky pro
 
 Pokud nekombinujete prostředky do jedné skupiny, nebo pokud jsou stávající skupiny prostředků vyplněné prostředky používanými v nesouvisejících řešeních, vytvořte novou skupinu prostředků jenom pro svůj prostředek Azure Kognitivní hledání. 
 
-:::image type="content" source="media/search-create-service-portal/new-resource-group.png" alt-text="Vytvoření prostředku na portálu" border="false":::
+:::image type="content" source="media/search-create-service-portal/new-resource-group.png" alt-text="Vytvoření nové skupiny prostředků" border="false":::
 
 V průběhu času můžete sledovat aktuální a předpokládané náklady nebo si můžete zobrazit poplatky za jednotlivé prostředky. Následující snímek obrazovky znázorňuje druh informací o nákladech, které můžete očekávat při kombinování více prostředků do jedné skupiny.
 
-:::image type="content" source="media/search-create-service-portal/resource-group-cost-management.png" alt-text="Vytvoření prostředku na portálu" border="false":::
+:::image type="content" source="media/search-create-service-portal/resource-group-cost-management.png" alt-text="Správa nákladů na úrovni skupiny prostředků" border="false":::
 
 > [!TIP]
 > Skupiny prostředků zjednodušují vyčištění, protože odstraněním skupiny se odstraní všechny služby, které jsou v ní obsažené. U prototypových projektů, které využívají více služeb, spojení všech služeb do stejné skupiny prostředků usnadňuje vyčištění po skončení projektu.
@@ -114,11 +114,11 @@ Pamatujte na to, že po vytvoření služby se cenová úroveň nedá změnit. P
 
 Po zadání potřebných vstupů pokračujte a vytvořte službu. 
 
-:::image type="content" source="media/search-create-service-portal/new-service3.png" alt-text="Vytvoření prostředku na portálu" border="false":::
+:::image type="content" source="media/search-create-service-portal/new-service3.png" alt-text="Kontrola a vytvoření služby" border="false":::
 
 Vaše služba se nasadí během několika minut. Průběh můžete sledovat prostřednictvím oznámení Azure. Zvažte možnost připnutí služby na řídicí panel, aby byl v budoucnu snadný přístup.
 
-:::image type="content" source="media/search-create-service-portal/monitor-notifications.png" alt-text="Vytvoření prostředku na portálu" border="false":::
+:::image type="content" source="media/search-create-service-portal/monitor-notifications.png" alt-text="Monitorování a připnutí služby" border="false":::
 
 ## <a name="get-a-key-and-url-endpoint"></a>Získání klíčového a URL koncového bodu
 
@@ -128,7 +128,7 @@ Pokud nepoužíváte portál, programový přístup k vaší nové službě vyž
 
 2. Na stránce **klíče** zkopírujte jeden z klíčů správce (Jedná se o ekvivalentní). K vytváření, aktualizaci a odstraňování objektů ve službě se vyžadují klíče rozhraní API pro správu. Naproti tomu klíče dotazů poskytují přístup pro čtení k obsahu indexu.
 
-   :::image type="content" source="media/search-create-service-portal/get-url-key.png" alt-text="Vytvoření prostředku na portálu" border="false":::
+   :::image type="content" source="media/search-create-service-portal/get-url-key.png" alt-text="Stránka s přehledem služby s koncovým bodem adresy URL" border="false":::
 
 Koncový bod a klíč nejsou pro úlohy založené na portálu vyžadovány. Portál je už propojený s vaším prostředkem Azure Kognitivní hledání s právy správce. Návod pro portál, Začínáme s [rychlým startem: vytvoření indexu služby Azure kognitivní hledání na portálu](search-get-started-portal.md).
 
@@ -136,9 +136,9 @@ Koncový bod a klíč nejsou pro úlohy založené na portálu vyžadovány. Por
 
 Po zřízení můžete službu škálovat tak, aby vyhovovala vašim potřebám. Pokud jste pro službu Azure Kognitivní hledání zvolili úroveň Standard, můžete škálovat službu ve dvou dimenzích: repliky a oddíly. Pokud byste zvolili úroveň Basic, mohli byste přidávat pouze repliky. Při zřízení bezplatné služby škálování není k dispozici.
 
-***Oddíly***: Umožňují službě ukládat a prohledávat více dokumentů.
+**_Oddíly_* _ umožní službě ukládat a prohledávat více dokumentů.
 
-***Repliky***: Umožňují službě zpracovat větší množství vyhledávacích dotazů.
+_*_Repliky_*_ umožňují vaší službě zpracovávat větší zatížení vyhledávacích dotazů.
 
 Přidáním prostředků se zvýší vaše měsíční náklady. [Cenová kalkulačka](https://azure.microsoft.com/pricing/calculator/) vám pomůže porozumět důsledkům přidání prostředků na fakturaci. Mějte na paměti, že prostředky můžete upravit na základě zatížení. Například můžete navýšit prostředky kvůli vytvoření úplného počátečního indexu a později je pak snížit na úroveň vhodnější pro přírůstkové indexování.
 
@@ -146,10 +146,10 @@ Přidáním prostředků se zvýší vaše měsíční náklady. [Cenová kalkul
 > Služba musí mít [2 repliky pro smlouvu SLA jen pro čtení a 3 repliky pro smlouvu SLA se čtením a zápisem](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
 
 1. Přejděte na stránku vyhledávací služby na webu Azure Portal.
-2. V levém navigačním podokně vyberte **Nastavení**  >  **škálovat**.
+2. V levém navigačním podokně vyberte _ *Nastavení** > **škálování**.
 3. Přetažením posuvníku můžete přidat prostředky obou typů.
 
-:::image type="content" source="media/search-create-service-portal/settings-scale.png" alt-text="Vytvoření prostředku na portálu" border="false":::
+:::image type="content" source="media/search-create-service-portal/settings-scale.png" alt-text="Přidání kapacity prostřednictvím replik a oddílů" border="false":::
 
 > [!Note]
 > Úložiště na oddíly a rychlost se zvyšují na vyšších úrovních. Další informace najdete v tématu o [kapacitě a omezeních](search-limits-quotas-capacity.md).

@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/15/2021
 ms.custom: references_regions
-ms.openlocfilehash: 576ff68961a68a8b54037d661a51a9d2de7a56df
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: c91aab2bf59f93cf897f9a1b9109172523ae4e57
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231787"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251399"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Repliky pro čtení ve službě Azure Database for MariaDB
 
@@ -23,10 +23,7 @@ Repliky jsou nové servery, které spravujete podobně jako běžné Azure Datab
 Další informace o replikaci GTID najdete v [dokumentaci k replikaci MariaDB](https://mariadb.com/kb/en/library/gtid/).
 
 > [!NOTE]
-> Komunikace bez posunu
->
-> Microsoft podporuje různé a zahrnuté prostředí. Tento článek obsahuje odkazy na _Hlavní_ a _podřízený_ text. [Průvodce stylem Microsoftu pro komunikaci bez předplatných](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) je rozpoznává jako vyloučená slova. Tato slova se v tomto článku používají kvůli konzistenci, protože jsou aktuálně slova, která se zobrazují v softwaru. Když se software aktualizuje, aby se odstranila slova, Tento článek se aktualizuje tak, aby se vyrovnává.
->
+> Tento článek obsahuje odkazy na _podřízený_ termín, termín, který už Microsoft nepoužívá. Po odebrání termínu ze softwaru ho odebereme z tohoto článku.
 
 ## <a name="when-to-use-a-read-replica"></a>Kdy použít repliku čtení
 
@@ -123,8 +120,11 @@ Vzhledem k tomu, že replikace je asynchronní, existuje prodleva mezi zdrojem a
 Až se rozhodnete, že chcete převzít služeb při selhání do repliky,
 
 1. Zastavení replikace do repliky<br/>
+
    Tento krok je nezbytný k tomu, aby server repliky mohl přijímat zápisy. V rámci tohoto procesu se server repliky odpojí z hlavního serveru. Po zahájení zastavení replikace bude proces back-endu obvykle trvat přibližně 2 minuty, než se dokončí. V části [zastavení replikace](#stop-replication) v tomto článku se seznámíte s důsledky této akce.
-2. Nasměrujte aplikaci na (bývalé) repliku.<br/>
+
+2. Nasměrujte aplikaci na (bývalé) repliku.
+
    Každý server má jedinečný připojovací řetězec. Aktualizujte svou aplikaci tak, aby odkazovala na (bývalé) repliku místo na hlavní.
 
 Po úspěšném zpracování čtení a zápisu vaší aplikace jste dokončili převzetí služeb při selhání. Množství prostojů, na kterých bude prostředí aplikace záviset při zjištění problému a dokončení kroků 1 a 2 výše.

@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python
-ms.openlocfilehash: adec2a85373d33d08fe9aa16895d03229e40f475
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 886db905008af94b66a902cc551e4d55b36572a8
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825827"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250124"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Aktivační událost Azure Event Grid pro Azure Functions
 
@@ -432,7 +432,7 @@ Vysvětlení běžných vlastností a specifických pro události naleznete v t�
 
 Pokud chcete začít přijímat Event Grid požadavky HTTP, vytvořte Event Grid předplatné, které určuje adresu URL koncového bodu, která funkci vyvolá.
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure Portal
 
 U funkcí, které vyvíjíte v Azure Portal pomocí triggeru Event Grid vyberte možnost **integrace** a potom vyberte **aktivační událost Event Grid** a vyberte **vytvořit Event Grid předplatné**.
 
@@ -603,7 +603,7 @@ Jako první se přijme žádost o ověření předplatného. Ignorujte všechny 
 
 ### <a name="manually-post-the-request"></a>Ruční odeslání žádosti
 
-Spusťte funkci Event Grid lokálně.
+Spusťte funkci Event Grid lokálně. `Content-Type`Hlavičky a `aeg-event-type` se musí nastavit ručně, zatímco všechny ostatní hodnoty můžou být ponechány jako výchozí.
 
 K vytvoření požadavku HTTP POST použijte nástroj, jako je například [post](https://www.getpostman.com/) nebo [kudrlinkou](https://curl.haxx.se/docs/httpscripting.html) :
 

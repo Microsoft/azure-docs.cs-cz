@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 7c3af0865282475ded0172d18aecad1dfb61721b
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 5219553fe300d607212af1ef6cedf72ce6506762
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814257"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250328"
 ---
 # <a name="troubleshooting-metrics-charts"></a>Řešení potíží s grafy metrik
 
@@ -48,7 +48,7 @@ Některé prostředky negenerují metriky neustále. Azure například neshroma�
 
 ### <a name="all-metric-values-were-outside-of-the-locked-y-axis-range"></a>Všechny hodnoty metrik byly mimo vymezený rozsah osy Y
 
-[Vymezením hranic osy Y grafu](metrics-charts.md#lock-boundaries-of-chart-y-axis) můžete neúmyslně způsobit, že se čára grafu nezobrazí v zobrazované oblasti grafu. Pokud je například osa Y vymezená rozsahem od 0 % do 50 % a metrika má konstantní hodnotu 100 %, čára se vždy vykreslí mimo viditelnou oblast a graf bude vypadat prázdně.
+[Vymezením hranic osy Y grafu](metrics-charts.md#locking-the-range-of-the-y-axis) můžete neúmyslně způsobit, že se čára grafu nezobrazí v zobrazované oblasti grafu. Pokud je například osa Y vymezená rozsahem od 0 % do 50 % a metrika má konstantní hodnotu 100 %, čára se vždy vykreslí mimo viditelnou oblast a graf bude vypadat prázdně.
 
 **Řešení:** Ověřte, že hranice osy y grafu nejsou uzamčené mimo rozsah hodnot metriky. Pokud jsou hranice osy Y vymezené, můžete je dočasně resetovat a tím zajistit, aby hodnoty metrik nespadaly mimo rozsah grafu. Vymezení rozsahu osy Y s automatickými intervaly se nedoporučuje u grafů s agregacemi **součtu**, **minima** a **maxima**, protože při změně velikosti okna prohlížeče nebo změně rozlišení obrazovky se intervaly změní, a tím se změní i hodnoty těchto agregací. Po přepnutí intervalů může zobrazovaná oblast grafu zůstat prázdná.
 

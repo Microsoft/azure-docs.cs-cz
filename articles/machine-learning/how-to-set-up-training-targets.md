@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: ec4917aa378f746eb2caac6a7b4ce99d1c44db90
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 55e618a7e4e0d21f6d4afab270e257c26fa15634
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127647"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251110"
 ---
 # <a name="configure-and-submit-training-runs"></a>Konfigurace a odesílání trénovacích spuštění
 
@@ -26,7 +26,7 @@ Po školení je běžné začít na místním počítači a později škálovat 
 
 Vše, co potřebujete udělat, je definovat prostředí pro každý cíl výpočtů v rámci **Konfigurace spuštění skriptu**.  Pak, pokud chcete spustit experiment pro školení na jiném cílovém výpočetním prostředí, zadejte konfiguraci spuštění pro výpočetní výkon.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 * [Sada SDK Azure Machine Learning pro Python](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) (>= 1.13.0)
@@ -75,6 +75,9 @@ experiment = Experiment(workspace=ws, name=experiment_name)
 Vyberte výpočetní cíl, na kterém se má školicí skript spustit. Pokud se v ScriptRunConfig nezadá žádný cíl výpočtů, nebo pokud `compute_target='local'` Azure ml provede místní spuštění skriptu. 
 
 Vzorový kód v tomto článku předpokládá, že jste již vytvořili výpočetní cíl v `my_compute_target` části požadavky.
+
+>[!Note]
+>Azure Databricks se pro školení modelů nepodporují jako výpočetní cíl. Pro úlohy přípravy a nasazování dat můžete použít Azure Databricks. 
 
 ## <a name="create-an-environment"></a>Vytvoření prostředí
 Azure Machine Learning [prostředí](concept-environments.md) jsou zapouzdření prostředí, ve kterém se vaše školení ve službě Machine Learning stane. Určují balíčky Pythonu, image Docker, proměnné prostředí a nastavení softwaru v rámci vašich školicích a vyhodnocovacích skriptů. Určují také moduly runtime (Python, Spark nebo Docker).

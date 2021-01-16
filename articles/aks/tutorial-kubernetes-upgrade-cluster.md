@@ -3,14 +3,14 @@ title: Kurz Kubernetes v Azure – Upgrade clusteru
 description: V tomto kurzu Azure Kubernetes Service (AKS) se dozvíte, jak upgradovat existující cluster AKS na nejnovější dostupnou verzi Kubernetes.
 services: container-service
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 01/12/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 517172b919552a24e9cb12bbaad14eb8cb71b3fd
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 8efb381562a5c55fa2c29b8379312dc41ef6a046
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007530"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251331"
 ---
 # <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>Kurz: Upgrade Kubernetes ve službě Azure Kubernetes Service (AKS)
 
@@ -37,22 +37,22 @@ Před upgradem clusteru pomocí příkazu [az aks get-upgrades][] zkontrolujte, 
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster
 ```
 
-V následujícím příkladu je aktuální verze *1.15.11* a v části *upgrady* se zobrazí dostupné verze.
+V následujícím příkladu je aktuální verze *1.18.10* a v části *upgrady* se zobrazí dostupné verze.
 
 ```json
 {
   "agentPoolProfiles": null,
   "controlPlaneProfile": {
-    "kubernetesVersion": "1.15.11",
+    "kubernetesVersion": "1.18.10",
     ...
     "upgrades": [
       {
         "isPreview": null,
-        "kubernetesVersion": "1.16.8"
+        "kubernetesVersion": "1.19.1"
       },
       {
         "isPreview": null,
-        "kubernetesVersion": "1.16.9"
+        "kubernetesVersion": "1.19.3"
       }
     ]
   },
@@ -82,7 +82,7 @@ az aks upgrade \
 > [!NOTE]
 > Najednou můžete upgradovat pouze jednu dílčí verzi. Můžete třeba upgradovat z *1.14. x* na *1.15. x*, ale nemůžete upgradovat z *1.14. x* na *1.16. x* přímo. Pokud chcete upgradovat z *1.14. x* na *1.16. x*, nejdřív upgradujte z *1.14. x* na *1.15. x* a pak proveďte jiný upgrade z *1.15. x* na *1.16. x*.
 
-Následující zhuštěný příklad výstupu ukazuje výsledek upgradu na *1.16.8*. Všimněte si, že *kubernetesVersion* nyní hlásí *1.16.8*:
+Následující zhuštěný příklad výstupu ukazuje výsledek upgradu na *1.19.1*. Všimněte si, že *kubernetesVersion* nyní hlásí *1.19.1*:
 
 ```json
 {
@@ -100,7 +100,7 @@ Následující zhuštěný příklad výstupu ukazuje výsledek upgradu na *1.16
   "enableRbac": false,
   "fqdn": "myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io",
   "id": "/subscriptions/<Subscription ID>/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster",
-  "kubernetesVersion": "1.16.8",
+  "kubernetesVersion": "1.19.1",
   "location": "eastus",
   "name": "myAKSCluster",
   "type": "Microsoft.ContainerService/ManagedClusters"
@@ -115,12 +115,12 @@ Následujícím způsobem ověřte úspěšné provedení upgradu pomocí přík
 az aks show --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-Následující příklad výstupu ukazuje, že cluster AKS spouští *KubernetesVersion 1.16.8*:
+Následující příklad výstupu ukazuje, že cluster AKS spouští *KubernetesVersion 1.19.1*:
 
-```
+```output
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
 ------------  ----------  ---------------  -------------------  -------------------  ----------------------------------------------------------------
-myAKSCluster  eastus      myResourceGroup  1.16.8               Succeeded            myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io
+myAKSCluster  eastus      myResourceGroup  1.19.1               Succeeded            myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io
 ```
 
 ## <a name="delete-the-cluster"></a>Odstranění clusteru

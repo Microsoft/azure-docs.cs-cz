@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2021
 ms.custom: references_regions
-ms.openlocfilehash: f4a97f5534e4fd3847bf1cce6874de0f006cce38
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: c380a3edb556adb72d067cb2910c8afbf66b99a0
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201004"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250260"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Repliky pro čtení ve službě Azure Database for MySQL
 
@@ -23,9 +23,7 @@ Repliky jsou nové servery, které spravujete podobně jako běžné Azure Datab
 Další informace o funkcích a problémech replikace MySQL najdete v [dokumentaci k replikaci MySQL](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html).
 
 > [!NOTE]
-> Komunikace bez posunu
->
-> Microsoft podporuje různé a zahrnuté prostředí. Tento článek obsahuje odkazy na _Hlavní_ a _podřízený_ text. [Průvodce stylem Microsoftu pro komunikaci bez předplatných](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) je rozpoznává jako vyloučená slova. Tato slova se v tomto článku používají kvůli konzistenci, protože jsou aktuálně slova, která se zobrazují v softwaru. Když se software aktualizuje, aby se odstranila slova, Tento článek se aktualizuje tak, aby se vyrovnává.
+> Tento článek obsahuje odkazy na _podřízený_ termín, termín, který už Microsoft nepoužívá. Po odebrání termínu ze softwaru ho odebereme z tohoto článku.
 >
 
 ## <a name="when-to-use-a-read-replica"></a>Kdy použít repliku čtení
@@ -211,7 +209,7 @@ GTID je ve výchozím nastavení VYPNUTá. Po povolení GTID ho nemůžete znovu
 
 Pokud je na zdrojovém serveru povolená možnost GTID, budou mít nově vytvořené repliky taky povolený GTID a budou používat replikaci GTID. Pokud chcete zachovat konzistenci replikace, nemůžete aktualizovat `gtid_mode` na zdrojovém nebo replikačním serveru.
 
-### <a name="other"></a>Jiné
+### <a name="other"></a>Další
 
 * Vytvoření repliky repliky se nepodporuje.
 * Tabulky v paměti můžou způsobit, že se repliky nesynchronizují. Toto je omezení technologie replikace MySQL. Další informace najdete v [referenční dokumentaci k MySQL](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html) .

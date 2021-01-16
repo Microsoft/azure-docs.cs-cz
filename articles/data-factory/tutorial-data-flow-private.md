@@ -7,13 +7,13 @@ ms.reviewer: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/19/2019
-ms.openlocfilehash: 9a4b57f3813adfeee53891f733dd4d303dbbef8d
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 01/15/2021
+ms.openlocfilehash: a5c93244862d72f9c8ea2928c41e699302b1752b
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497125"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98249430"
 ---
 # <a name="transform-data-securely-by-using-mapping-data-flow"></a>Zabezpečená transformace dat pomocí mapování toku dat
 
@@ -34,6 +34,7 @@ V tomto kurzu provedete následující kroky:
 > * Monitorování aktivity toku dat.
 
 ## <a name="prerequisites"></a>Předpoklady
+
 * **Předplatné Azure**. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * **Účet služby Azure Storage**. Používáte Data Lake Storage jako *zdrojová* úložiště a úložiště dat *jímky* . Pokud účet úložiště nemáte, přečtěte si téma [Vytvoření účtu služby Azure Storage](../storage/common/storage-account-create.md?tabs=azure-portal), kde najdete postup jeho vytvoření. *Ujistěte se, že účet úložiště povoluje přístup jenom z vybraných sítí.* 
 
@@ -44,7 +45,7 @@ Soubor, který v tomto kurzu transformuje, je moviesDB.csv, který najdete na to
 V tomto kroku vytvoříte datovou továrnu a otevřete Data Factory uživatelské rozhraní pro vytvoření kanálu v datové továrně.
 
 1. Otevřete Microsoft Edge nebo Google Chrome. V současné době podporuje Data Factory uživatelské rozhraní pouze webové prohlížeče Microsoft Edge a Google Chrome.
-1. V nabídce vlevo vyberte **vytvořit**  >  **Analytics**  >  **Data Factory** analýzy prostředků.
+1. V nabídce vlevo vyberte **vytvořit**  >    >  **Data Factory** analýzy prostředků.
 1. Do pole **Název** na stránce **Nová datová továrna** zadejte **ADFTutorialDataFactory**.
 
    Název datové továrny musí být *globálně jedinečný*. Pokud se zobrazí chybová zpráva s názvem hodnota, zadejte jiný název objektu pro vytváření dat (například yournameADFTutorialDataFactory). Pravidla pro pojmenovávání artefaktů služby Data Factory najdete v tématu [Data Factory – pravidla pojmenování](naming-rules.md).
@@ -64,12 +65,14 @@ V tomto kroku vytvoříte datovou továrnu a otevřete Data Factory uživatelsk�
 1. Vyberte **Vytvořit a monitorovat**. Na samostatné kartě se spustí uživatelské rozhraní služby Data Factory.
 
 ## <a name="create-an-azure-ir-in-data-factory-managed-virtual-network"></a>Vytvoření Azure IR v Data Factory spravovaném Virtual Network
+
 V tomto kroku vytvoříte Azure IR a povolíte Data Factory spravované Virtual Network.
 
 1. Na portálu Data Factory klikněte na **Spravovat** a vyberte **Nový** , aby se vytvořila nová Azure IR.
 
    ![Snímek obrazovky, který ukazuje vytvoření nového Azure IR.](./media/tutorial-copy-data-portal-private/create-new-azure-ir.png)
-1. Vyberte možnost **Azure** IR.
+1. Na stránce **instalace prostředí Integration runtime** vyberte, který modul runtime integrace se má vytvořit na základě požadovaných možností. V tomto kurzu vyberte **Azure, v** místním prostředí a potom klikněte na **pokračovat**. 
+1. Vyberte **Azure** a potom kliknutím na **pokračovat** vytvořte prostředí Azure Integration runtime.
 
    ![Snímek obrazovky, který zobrazuje novou Azure IR.](./media/tutorial-copy-data-portal-private/azure-ir.png)
 
@@ -254,6 +257,6 @@ Kanál můžete ladit před jeho publikováním. V tomto kroku aktivujete ladic�
 
 Pokud jste postupovali podle tohoto kurzu správně, měli byste do složky jímky zapsat 83 řádků a 2 sloupce. Správnost dat můžete ověřit kontrolou úložiště objektů BLOB.
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 V tomto kurzu jste použili Data Factory uživatelské rozhraní k vytvoření kanálu, který kopíruje a transformuje data ze zdroje Data Lake Storage Gen2 do jímky Data Lake Storage Gen2 (povolením přístupu pouze k vybraným sítím) pomocí mapování toku dat v [Data Factory spravovaných Virtual Network](managed-virtual-network-private-endpoint.md).

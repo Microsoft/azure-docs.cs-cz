@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 01/15/2021
-ms.openlocfilehash: fb7d9f78ac5498affa10521e17cff4348eecb5eb
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 5ebae41e68633eb10959c56011dd71952f9564bd
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231940"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250413"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>Konfigurace Replikace vstupních dat v Azure Database for MariaDB
 
@@ -23,12 +23,6 @@ Před provedením kroků v tomto článku zkontrolujte [omezení a požadavky](c
 
 > [!NOTE]
 > Pokud je váš zdrojový Server verze 10,2 nebo novější, doporučujeme nastavit Replikace vstupních dat pomocí [globálního ID transakce](https://mariadb.com/kb/en/library/gtid/).
-
-> [!NOTE]
-> Komunikace bez posunu
->
-> Microsoft podporuje různé a zahrnuté prostředí. Tento článek obsahuje odkazy na _Hlavní_ a _podřízený_ text. [Průvodce stylem Microsoftu pro komunikaci bez předplatných](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) je rozpoznává jako vyloučená slova. Tato slova se v tomto článku používají kvůli konzistenci, protože jsou aktuálně slova, která se zobrazují v softwaru. Když se software aktualizuje, aby se odstranila slova, Tento článek se aktualizuje tak, aby se vyrovnává.
->
 
 ## <a name="create-a-mariadb-server-to-use-as-a-replica"></a>Vytvoření serveru MariaDB pro použití jako repliky
 
@@ -46,6 +40,10 @@ Před provedením kroků v tomto článku zkontrolujte [omezení a požadavky](c
 3. Přidejte IP adresu zdrojového serveru k pravidlům brány firewall repliky. 
 
    Pomocí webu [Azure Portal](howto-manage-firewall-portal.md) nebo [Azure CLI](howto-manage-firewall-cli.md) aktualizujte pravidla brány firewall.
+
+> [!NOTE]
+> Tento článek obsahuje odkazy na _podřízený_ termín, termín, který už Microsoft nepoužívá. Po odebrání termínu ze softwaru ho odebereme z tohoto článku.
+>
 
 ## <a name="configure-the-source-server"></a>Konfigurace zdrojového serveru
 

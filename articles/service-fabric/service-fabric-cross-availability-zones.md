@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: f729c00d3b78631a32013ec9453302584cecbd16
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 82161a8f66dd717a9dc448a743b818a9ab9938db
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97962427"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250974"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Nasazení clusteru Azure Service Fabric napříč Zóny dostupnosti
 Zóny dostupnosti v Azure je nabídka s vysokou dostupností, která chrání vaše aplikace a data při selhání datacentra. Zóna dostupnosti je jedinečné fyzické umístění vybavené nezávislým napájením, chlazením a sítí v oblasti Azure.
@@ -345,7 +345,7 @@ Pokud chcete povolit zóny v sadě škálování virtuálního počítače, mus�
 
 * První hodnotou je vlastnost **Zones** , která určuje zóny dostupnosti přítomná v sadě škálování virtuálního počítače.
 * Druhá hodnota je vlastnost "singlePlacementGroup", která musí být nastavena na hodnotu true. **Sada škálování rozložené přes 3 AZ může škálovat virtuální počítače až 300 i s "singlePlacementGroup = true".**
-* Třetí hodnota je "zoneBalance" a je volitelná, což zajistí striktní vyrovnávání zatížení, pokud je nastaveno na hodnotu true. Přečtěte si o [zoneBalancing](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones#zone-balancing).
+* Třetí hodnota je "zoneBalance", která zajišťuje striktní vyrovnávání zóny, pokud je nastavena hodnota true. Doporučujeme tuto možnost nastavit na true, aby nedošlo k nevyvážené distribuci virtuálních počítačů napříč zónami. Přečtěte si o [zoneBalancing](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones#zone-balancing).
 * Přepsání FaultDomain a UpgradeDomain není nutné konfigurovat.
 
 ```json
@@ -357,7 +357,7 @@ Pokud chcete povolit zóny v sadě škálování virtuálního počítače, mus�
     "zones": ["1", "2", "3"],
     "properties": {
         "singlePlacementGroup": "true",
-        "zoneBalance": false
+        "zoneBalance": true
     }
 }
 ```

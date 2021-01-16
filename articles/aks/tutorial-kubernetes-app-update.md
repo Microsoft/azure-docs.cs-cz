@@ -3,14 +3,14 @@ title: Kurz Kubernetes v Azure – Aktualizace aplikace
 description: V tomto kurzu Azure Kubernetes Service (AKS) zjistíte, jak aktualizovat existující nasazení aplikace do AKS o novou verzi kódu aplikace.
 services: container-service
 ms.topic: tutorial
-ms.date: 09/30/2020
-ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: c8401a81a36d86b871df9fc428c393007b97c400
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.date: 01/12/2021
+ms.custom: mvc
+ms.openlocfilehash: b969e3ec1c670c0a12129289c8ff7eb81df51ff9
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833907"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250651"
 ---
 # <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>Kurz: Aktualizace aplikace ve službě Azure Kubernetes Service (AKS)
 
@@ -64,7 +64,7 @@ docker-compose up --build -d
 
 Pokud chcete ověřit, že se v aktualizované imagi kontejneru projevily provedené změny, otevřete místní webový prohlížeč a přejděte na adresu `http://localhost:8080`.
 
-:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated.png" alt-text="Snímek obrazovky s příkladem aktualizované hlasovací aplikace Azure pro Image kontejneru, která se otevřela v místním webovém prohlížeči a místním hostiteli.":::
+:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated.png" alt-text="Snímek obrazovky, který ukazuje příklad aktualizované image kontejneru Azure hlasovací aplikace běžící místně na místním webovém prohlížeči":::
 
 Aktualizované hodnoty uvedené v souboru *config_file. cfg* se zobrazí ve spuštěné aplikaci.
 
@@ -85,7 +85,7 @@ docker tag mcr.microsoft.com/azuredocs/azure-vote-front:v1 <acrLoginServer>/azur
 Teď pomocí příkazu [docker push][docker-push] nahrajte image do registru. Nahraďte `<acrLoginServer>` názvem přihlašovacího serveru ACR.
 
 > [!NOTE]
-> Pokud máte potíže s vložením do registru ACR, ujistěte se, že jste stále přihlášeni. Spusťte příkaz [AZ ACR Login][az-acr-login] s použitím názvu vašeho Azure Container Registry, který jste vytvořili v kroku [Vytvoření Azure Container Registry](tutorial-kubernetes-prepare-acr.md#create-an-azure-container-registry) . Například, `az acr login --name <azure container registry name>`.
+> Pokud máte potíže s vložením do registru ACR, ujistěte se, že jste stále přihlášeni. Spusťte příkaz [AZ ACR Login][az-acr-login] s použitím názvu vašeho Azure Container Registry, který jste vytvořili v kroku [Vytvoření Azure Container Registry](tutorial-kubernetes-prepare-acr.md#create-an-azure-container-registry) . Například `az acr login --name <azure container registry name>`.
 
 ```console
 docker push <acrLoginServer>/azure-vote-front:v2
@@ -143,9 +143,9 @@ Pokud chcete zobrazit aktualizovanou aplikaci, nejprve získejte externí IP adr
 kubectl get service azure-vote-front
 ```
 
-Nyní otevřete místní webový prohlížeč na IP adresu vaší služby:
+Nyní otevřete webový prohlížeč na IP adresu vaší služby:
 
-:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated-external.png" alt-text="Snímek obrazovky s příkladem aktualizované hlasovací aplikace Azure, která se otevřela v místním webovém prohlížeči":::
+:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated-external.png" alt-text="Snímek obrazovky s příkladem aktualizované aplikace Azure hlasovacího obrázku běžícího v clusteru AKS otevřeném v místním webovém prohlížeči.":::
 
 ## <a name="next-steps"></a>Další kroky
 

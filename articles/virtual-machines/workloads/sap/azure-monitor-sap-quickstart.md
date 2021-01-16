@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: workloads
 ms.date: 08/17/2020
 ms.reviewer: cynthn
-ms.openlocfilehash: c3b3848e4e4f7b0445f882265dbe66bb10b48833
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 0bb0a7833e9ee3b499ae013b665ecf137c667005
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968583"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250991"
 ---
 # <a name="deploy-azure-monitor-for-sap-solutions-with-azure-portal"></a>Nasazení Azure Monitor pro řešení SAP pomocí Azure Portal
 
@@ -65,7 +65,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 ### <a name="high-availability-cluster-pacemaker-provider"></a>Poskytovatel clusteru s vysokou dostupností (Pacemaker)
 
-1. Z rozevírací nabídky vyberte **cluster s vysokou dostupností (Pacemaker)** . 
+1. Z rozevíracího seznamu vyberte **cluster s vysokou dostupností (Pacemaker)** . 
 
    > [!IMPORTANT]
    > Pokud chcete nakonfigurovat poskytovatele clusteru s vysokou dostupností (Pacemaker), ujistěte se, že je v každém uzlu nainstalovaný ha_cluster_provider. Další informace najdete v tématu o [exportéru clusteru ha](https://github.com/ClusterLabs/ha_cluster_exporter#installation) .
@@ -77,6 +77,18 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 4. Po dokončení vyberte **Přidat poskytovatele**. V případě potřeby pokračujte v přidávání dalších zprostředkovatelů nebo kliknutím na tlačítko **zkontrolovat + vytvořit** dokončete nasazení.
 
    :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-5.png" alt-text="Image zobrazuje možnosti související s poskytovatelem Pacemaker clusteru HA." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-5.png":::
+
+
+### <a name="os-linux-provider"></a>Poskytovatel operačního systému (Linux) 
+
+1. V rozevíracím seznamu vyberte operační systém (Linux). 
+
+> [!IMPORTANT]
+> Pokud chcete nakonfigurovat poskytovatele operačního systému (Linux), ujistěte se, že je v každé instanci BareMetal nainstalovaná Node_Exporter. Další informace najdete v tématu [Node_Exporter](https://github.com/prometheus/node_exporter)
+
+2. Zadejte název, který bude identifikátorem instance BareMetal.
+3. Zadejte koncový bod exportéra uzlu ve formátu http://IP:9100/metrics .
+4. Po dokončení vyberte **Přidat poskytovatele**. V případě potřeby pokračujte v přidávání dalších zprostředkovatelů nebo kliknutím na tlačítko **zkontrolovat + vytvořit**   dokončete nasazení. 
 
 
 ### <a name="microsoft-sql-server-provider"></a>Poskytovatel Microsoft SQL Server

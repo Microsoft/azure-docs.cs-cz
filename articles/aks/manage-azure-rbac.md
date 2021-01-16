@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: a2a385b2be4e1005a7aabd76261b3190ecd2a506
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: af8d0300b533d9f25cddf225f4ffbe78ca6bf2cb
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684215"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98249631"
 ---
 # <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>Použití Azure RBAC pro autorizaci Kubernetes (Preview)
 
@@ -27,7 +27,7 @@ Možnost spravovat RBAC pro prostředky Kubernetes z Azure vám dává možnost 
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
-### <a name="prerequisites"></a>Požadavky 
+### <a name="prerequisites"></a>Předpoklady 
 - Ujistěte se, že máte Azure CLI verze 2.9.0 nebo novější.
 - Ujistěte se, že máte `EnableAzureRBACPreview` povolený příznak funkce.
 - Ujistěte se, že máte `aks-preview` nainstalovanou [příponu CLI][az-extension-add] v 0.4.55 nebo novější verzi.
@@ -115,7 +115,7 @@ AKS poskytuje následující čtyři předdefinované role:
 
 | Role                                | Popis  |
 |-------------------------------------|--------------|
-| Prohlížeč RBAC pro službu Azure Kubernetes  | Povoluje přístup jen pro čtení k zobrazení většiny objektů v oboru názvů. Nepovoluje zobrazení rolí nebo vazeb rolí. Tato role nepovoluje zobrazení `Secrets` , protože čtení obsahu tajných kódů umožňuje přístup k přihlašovacím údajům ServiceAccount v oboru názvů, což by mohlo povolit přístup k rozhraní API jako libovolný ServiceAccount v oboru názvů (forma eskalace oprávnění).  |
+| Čtečka RBAC služby Azure Kubernetes  | Povoluje přístup jen pro čtení k zobrazení většiny objektů v oboru názvů. Nepovoluje zobrazení rolí nebo vazeb rolí. Tato role nepovoluje zobrazení `Secrets` , protože čtení obsahu tajných kódů umožňuje přístup k přihlašovacím údajům ServiceAccount v oboru názvů, což by mohlo povolit přístup k rozhraní API jako libovolný ServiceAccount v oboru názvů (forma eskalace oprávnění).  |
 | Zapisovač RBAC služby Azure Kubernetes | Povoluje přístup pro čtení a zápis většiny objektů v oboru názvů. Tato role nepovoluje prohlížení a úpravy rolí nebo vazeb rolí. Tato role však umožňuje přístup k `Secrets` luskům a jejich spuštění jako libovolných ServiceAccount v oboru názvů, takže se dá použít k získání úrovní přístupu rozhraní API všech ServiceAccount v oboru názvů. |
 | Správce RBAC služby Azure Kubernetes  | Povoluje přístup správce, který má být udělen v rámci oboru názvů. Umožňuje přístup pro čtení a zápis většiny prostředků v oboru názvů (nebo oboru clusteru), včetně možnosti vytvářet role a vazby rolí v rámci oboru názvů. Tato role nepovoluje přístup pro zápis k kvótě prostředků nebo samotnému oboru názvů. |
 | Správce clusteru RBAC služby Azure Kubernetes  | Umožňuje přístupu super uživatele k provedení jakékoli akce u libovolného prostředku. Poskytuje plnou kontrolu nad všemi prostředky v clusteru a ve všech oborech názvů. |

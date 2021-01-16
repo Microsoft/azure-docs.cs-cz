@@ -8,12 +8,12 @@ ms.author: mbaldwin
 author: msmbaldwin
 manager: rkarlin
 ms.date: 09/30/2020
-ms.openlocfilehash: a9a783333d8edd40556b7744eb7cf7dfb52953a7
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 4a6b3e4c6354c292d000a307bc25f8532aa9a096
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97933978"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250787"
 ---
 # <a name="azure-key-vault-recovery-management-with-soft-delete-and-purge-protection"></a>Azure Key Vault správu obnovení s ochranou pomocí obnovitelného odstranění a mazání
 
@@ -23,12 +23,14 @@ Další informace o Key Vault najdete v tématu.
 - [Přehled služby Key Vault](overview.md)
 - [Přehled Azure Key Vault klíčů, tajných kódů a certifikátů](about-keys-secrets-certificates.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/dotnet) .
 * [Modul PowerShellu](https://docs.microsoft.com/powershell/azure/install-az-ps).
 * [Azure CLI](/cli/azure/install-azure-cli)
 * Key Vault – můžete ho vytvořit pomocí [Azure Portal](../general/quick-create-portal.md) [Azure CLI](../general/quick-create-cli.md)nebo [Azure PowerShell](../general/quick-create-powershell.md)
+* Uživatel bude potřebovat následující oprávnění (na úrovni předplatného), aby mohl provádět operace s odstraněnými trezory: | Microsoft. webdeletedVaults trezor/Locations//Read | Zobrazit vlastnosti neodstraněného trezoru klíčů | | Microsoft. webdeletedVaults trezor/Locations//vyprázdnění/Action | Vymazání tichého odstraněného trezoru klíčů |
+
 
 ## <a name="what-are-soft-delete-and-purge-protection"></a>Co jsou ochrana obnovitelného odstranění a mazání
 
@@ -392,6 +394,6 @@ Další informace o obnovitelném odstranění najdete v tématu [přehled Azure
 - [Key Vault příkazů rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/keyvault)
 - [Zálohování Azure Key Vault](backup.md)
 - [Postup povolení protokolování Key Vault](howto-logging.md)
-- [Zabezpečený přístup k trezoru klíčů](secure-your-key-vault.md)
+- [Zabezpečení přístupu k trezoru klíčů](secure-your-key-vault.md)
 - [Azure Key Vault příručka pro vývojáře](developers-guide.md)
 - [Osvědčené postupy použití trezoru klíčů](security-overview.md)

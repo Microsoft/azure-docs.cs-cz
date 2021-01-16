@@ -3,12 +3,12 @@ title: Zlepšení výkonu aplikací Azure pomocí služby Advisor
 description: Využijte doporučení k výkonu v Azure Advisor ke zlepšení rychlosti a odezvy vašich důležitých podnikových aplikací.
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: 8937272f8b6ef945d80076732ea38523f7b475a1
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: d7d4e87670ca529f38465e928c4067daec802b8f
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97802537"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98248424"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Zlepšení výkonu aplikací Azure pomocí Azure Advisor
 
@@ -177,7 +177,7 @@ Přečtěte si další informace o [sadě moderního čtecího zařízení](../c
 
 ## <a name="improve-vm-performance-by-changing-the-maximum-session-limit"></a>Zvýšení výkonu virtuálních počítačů změnou maximálního limitu relací
 
-Advisor detekuje, že máte fond hostitelů, který má nejprve nastavenou hloubku jako algoritmus vyrovnávání zatížení, a maximální počet relací fondu hostitelů je větší nebo roven 99999. Při vyrovnávání zatížení do hloubky se na základě limitu maximálního počtu relací určuje maximální počet uživatelů, kteří můžou mít souběžné relace s jedním hostitelem relací. Pokud je maximální počet relací příliš vysoký, budou všechny uživatelské relace směrovány na stejného hostitele relace a to způsobí problémy s výkonem a spolehlivostí. Proto když nakonfigurujete fond hostitelů tak, aby měl při prvním vyrovnávání zatížení určitou hloubku, musíte nastavit vhodný maximální počet relací podle konfigurace nasazení a kapacity virtuálních počítačů. 
+Advisor detekuje, že máte fond hostitelů, který má nejprve nastavenou hloubku jako algoritmus vyrovnávání zatížení, a maximální počet relací fondu hostitelů je větší nebo roven 999999. Při vyrovnávání zatížení do hloubky se na základě limitu maximálního počtu relací určuje maximální počet uživatelů, kteří můžou mít souběžné relace s jedním hostitelem relací. Pokud je maximální počet relací příliš vysoký, budou všechny uživatelské relace směrovány na stejného hostitele relace a to způsobí problémy s výkonem a spolehlivostí. Proto když nakonfigurujete fond hostitelů tak, aby měl při prvním vyrovnávání zatížení určitou hloubku, musíte nastavit vhodný maximální počet relací podle konfigurace nasazení a kapacity virtuálních počítačů. 
 
 Další informace o vyrovnávání zatížení na virtuálním počítači s Windows najdete v tématu [Konfigurace metody vyrovnávání zatížení pro virtuální počítače s Windows](/azure/virtual-desktop/troubleshoot-set-up-overview).
 

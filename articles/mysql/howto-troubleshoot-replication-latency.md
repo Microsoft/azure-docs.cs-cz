@@ -7,12 +7,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 01/13/2021
-ms.openlocfilehash: 34210d08ad5328f200f5b92c13bfcf85cfead3ec
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 92513a8c24b5106e3a59c8cfa4d743e900b957bf
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98199474"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98249767"
 ---
 # <a name="troubleshoot-replication-latency-in-azure-database-for-mysql"></a>Řešení potíží s latencí replikace ve službě Azure Database for MySQL
 
@@ -32,9 +32,7 @@ Prodleva replikace u sekundárních replik čtení závisí na několika faktore
 V tomto článku se dozvíte, jak řešit latenci replikace v Azure Database for MySQL. Porozumíte také některým běžným příčinám zvýšené latence replikace na serverech repliky.
 
 > [!NOTE]
-> Komunikace bez posunu
->
-> Microsoft podporuje různé a zahrnuté prostředí. Tento článek obsahuje odkazy na _Hlavní_ a _podřízený_ text. [Průvodce stylem Microsoftu pro komunikaci bez předplatných](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) je rozpoznává jako vyloučená slova. Tato slova se v tomto článku používají kvůli konzistenci, protože jsou aktuálně slova, která se zobrazují v softwaru. Když se software aktualizuje, aby se odstranila slova, Tento článek se aktualizuje tak, aby se vyrovnává.
+> Tento článek obsahuje odkazy na _podřízený_ termín, termín, který už Microsoft nepoužívá. Po odebrání termínu ze softwaru ho odebereme z tohoto článku.
 >
 
 ## <a name="replication-concepts"></a>Koncepty replikace

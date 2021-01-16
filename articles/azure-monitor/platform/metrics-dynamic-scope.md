@@ -1,86 +1,89 @@
 ---
-title: Zobrazení více prostředků v Průzkumník metrik
-description: Naučte se vizualizovat více prostředků v Azure Monitor Průzkumník metrik
+title: Zobrazení více prostředků v Průzkumníkovi metrik Azure
+description: Naučte se vizualizovat více prostředků pomocí Průzkumníka metrik Azure.
 author: ritaroloff
 services: azure-monitor
 ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: riroloff
 ms.subservice: metrics
-ms.openlocfilehash: 9d1460a8bebe75a3ee471eb304fcf642d566b5dd
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 4c895b287f72929e2a0571ccc2cae8cc4f673388
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614638"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250481"
 ---
-# <a name="viewing-multiple-resources-in-metrics-explorer"></a>Zobrazení více prostředků v Průzkumník metrik
+# <a name="view-multiple-resources-in-the-azure-metrics-explorer"></a>Zobrazení více prostředků v Průzkumníkovi metrik Azure
 
-Výběr oboru prostředků umožňuje zobrazit metriky napříč několika prostředky, které jsou ve stejném předplatném a oblasti. Níže najdete pokyny k zobrazení více prostředků v Azure Monitor Průzkumník metrik. 
+Výběr oboru prostředků umožňuje zobrazit metriky napříč několika prostředky, které jsou ve stejném předplatném a oblasti. V tomto článku se dozvíte, jak zobrazit víc prostředků pomocí funkce Azure Metrics Explorer Azure Monitor. 
 
-## <a name="selecting-a-resource"></a>Výběr prostředku 
+## <a name="select-a-resource"></a>Výběr prostředku 
 
-V nabídce **Azure monitor** vyberte **metriky** nebo v části **monitorování** v nabídce prostředku. Kliknutím na tlačítko Vybrat obor otevřete nástroj pro výběr oboru prostředků, který vám umožní vybrat prostředky, pro které chcete zobrazit metriky. Tato hodnota by již měla být naplněna, pokud jste spustili průzkumníka metrik z nabídky prostředku. 
+V nabídce **Azure monitor** vyberte **metriky** nebo v části **monitorování** v nabídce prostředku. Pak zvolte **Vybrat obor** a otevřete tak výběr oboru. 
 
-![Snímek obrazovky pro výběr oboru prostředků zvýrazněný červeně](./media/metrics-charts/019.png)
+Pomocí nástroje pro výběr oboru můžete vybrat prostředky, jejichž metriky chcete zobrazit. Pokud jste otevřeli Průzkumníka metrik z nabídky prostředku, měl by se tento obor naplnit. 
 
-## <a name="selecting-multiple-resources"></a>Výběr několika prostředků 
+![Snímek obrazovky znázorňující otevření výběru oboru prostředků](./media/metrics-charts/019.png)
 
-Některé typy prostředků mají povolenou možnost dotazování na metriky přes více prostředků, pokud jsou ve stejném předplatném a umístění. Tyto typy prostředků se dají najít v horní části rozevíracího seznamu "typy prostředků". 
+## <a name="select-multiple-resources"></a>Výběr více prostředků 
 
-![Snímek obrazovky zobrazující rozevírací seznam prostředků, které jsou kompatibilní s více prostředky ](./media/metrics-charts/020.png)
+Některé typy prostředků se mohou dotazovat na metriky v několika prostředcích. Metrika musí být v rámci stejného předplatného a umístění. Tyto typy prostředků najdete v horní části nabídky **typy prostředků** .
+
+![Snímek obrazovky zobrazující nabídku prostředků, které jsou kompatibilní s více prostředky.](./media/metrics-charts/020.png)
 
 > [!WARNING] 
-> Aby bylo možné vizualizovat metriky napříč několika prostředky, skupinami prostředků nebo předplatnými, musíte mít oprávnění čtenář monitoring na úrovni předplatného. Pokud to chcete provést, postupujte podle pokynů v [tomto dokumentu](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
+> Aby bylo možné vizualizovat metriky napříč několika prostředky, skupinami prostředků nebo předplatnými, musíte mít oprávnění čtenář monitoring na úrovni předplatného. Další informace najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
 
-Aby bylo možné vizualizovat metriky v několika prostředcích, Začněte výběrem několika prostředků v rámci výběru oboru prostředků. 
+Pokud chcete vizualizovat metriky v několika prostředcích, Začněte výběrem několika prostředků v rámci výběru oboru prostředků. 
 
-![Snímek obrazovky, který ukazuje, jak vybrat více prostředků](./media/metrics-charts/021.png)
+![Snímek obrazovky, který ukazuje, jak vybrat více prostředků.](./media/metrics-charts/021.png)
 
 > [!NOTE]
-> Máte možnost vybrat jenom několik prostředků v rámci stejného typu prostředku, umístění a předplatného. Prostředky mimo tato kritéria nebudou možné vybírat. 
+> Prostředky, které vyberete, musí být v rámci stejného typu prostředku, umístění a předplatného. Prostředky, které se nevejdou do těchto kritérií, nejde vybrat. 
 
-Po dokončení výběru klikněte na tlačítko použít a uložte výběr. 
+Po dokončení klikněte na tlačítko **použít** a uložte výběr. 
 
-## <a name="selecting-a-resource-group-or-subscription"></a>Výběr skupiny prostředků nebo předplatného 
+## <a name="select-a-resource-group-or-subscription"></a>Výběr skupiny prostředků nebo předplatného 
 
 > [!WARNING]
 > Aby bylo možné vizualizovat metriky napříč několika prostředky, skupinami prostředků nebo předplatnými, musíte mít oprávnění čtenář monitoring na úrovni předplatného. 
 
-Pro typy kompatibilní s více prostředky můžete také zadat dotaz na metriky v rámci předplatného nebo několika skupin prostředků. Začněte tím, že vyberete předplatné nebo jednu nebo více skupin prostředků: 
+Pro typy, které jsou kompatibilní s více prostředky, můžete zadávat dotazy na metriky v rámci předplatného nebo několika skupin prostředků. Začněte tím, že vyberete předplatné nebo jednu nebo více skupin prostředků: 
 
-![Snímek obrazovky, který ukazuje dotazování napříč více skupinami prostředků ](./media/metrics-charts/022.png)
+![Snímek obrazovky, který ukazuje dotazování napříč více skupinami prostředků.](./media/metrics-charts/022.png)
 
-Pak budete muset vybrat typ prostředku a umístění, aby bylo možné pokračovat v použití nového oboru. 
+Vyberte typ prostředku a umístění. 
 
-![Snímek obrazovky zobrazující vybrané skupiny prostředků ](./media/metrics-charts/023.png)
+![Snímek obrazovky, který zobrazuje vybrané skupiny prostředků.](./media/metrics-charts/023.png)
 
-Můžete také rozšířit vybrané obory, abyste ověřili, na kterých zdrojích se bude tato možnost vztahovat.
+Vybrané obory můžete rozbalit a ověřit tak prostředky, na které se vaše výběry vztahují.
 
-![Snímek obrazovky zobrazující vybrané prostředky v rámci skupin ](./media/metrics-charts/024.png)
+![Snímek obrazovky, který zobrazuje vybrané prostředky v rámci skupin.](./media/metrics-charts/024.png)
 
-Po dokončení výběru oborů klikněte na použít, aby se vaše výběry uložily. 
+Po dokončení výběru oborů vyberte **použít**. 
 
-## <a name="splitting-and-filtering-by-resource-group-or-resources"></a>Rozdělení a filtrování podle skupiny prostředků nebo prostředků
+## <a name="split-and-filter-by-resource-group-or-resources"></a>Rozdělení a filtrování podle skupin prostředků nebo prostředků
 
-Po vykreslení prostředků můžete pomocí nástroje pro dělení a filtrování získat lepší přehled o datech. 
+Po vykreslení prostředků můžete použít rozdělení a filtrování, abyste získali lepší přehled o vašich datech. 
 
-Rozdělení vám umožní vizualizovat, jak různé segmenty metriky vzájemně porovnávají. Když například vykreslujete metriku pro více prostředků, můžete k rozdělení podle ID prostředku nebo skupiny prostředků použít nástroj rozdělení na více instancí. To vám umožní snadno porovnat jednu metriku napříč několika prostředky nebo skupinami prostředků.  
+Rozdělení vám umožní vizualizovat, jak různé segmenty metriky vzájemně porovnávají. Pokud například vykreslíte metriku pro více prostředků, můžete zvolit možnost **použít rozdělení** pro rozdělení podle ID prostředku nebo skupiny prostředků. Rozdělení umožňuje porovnat jednu metriku napříč několika prostředky nebo skupinami prostředků.  
 
-Níže je například graf procentuální podílu CPU v rámci 9VMs. Rozdělením podle ID prostředku můžete snadno zjistit, jak se procentuální podíl procesoru na virtuálním počítači liší. 
+Například následující graf ukazuje procentuální podíl procesoru napříč devět virtuálních počítačů. Po rozdělení podle ID prostředku se zobrazí informace o tom, jak se na virtuálním počítači liší procentuální hodnota procesoru. 
 
-![Snímek obrazovky, který ukazuje, jak můžete použít rozdělování k zobrazení procenta využití procesoru na virtuální počítač](./media/metrics-charts/026.png)
+![Snímek obrazovky, který ukazuje, jak používat rozdělování k zobrazení procenta využití procesoru napříč virtuálními počítači.](./media/metrics-charts/026.png)
 
-Kromě rozdělení můžete pomocí funkce filtrování zobrazit jenom skupiny prostředků, které chcete zobrazit.  Pokud například chcete zobrazit procentuální hodnotu procesoru pro virtuální počítače pro určitou skupinu prostředků, můžete použít nástroj Přidat filtr pro filtrování podle skupiny prostředků. V tomto příkladu filtrujeme podle TailspinToysDemo, čímž se odstraní metriky přidružené k prostředkům v TailspinToys. 
+Spolu s rozdělením můžete použít filtrování k zobrazení pouze těch skupin prostředků, které chcete zobrazit.  Pokud například chcete zobrazit procentuální hodnotu procesoru pro virtuální počítače pro určitou skupinu prostředků, můžete vybrat **Přidat filtr** a filtrovat podle skupiny prostředků. 
 
-![Snímek obrazovky, který ukazuje, jak můžete filtrovat podle skupiny prostředků](./media/metrics-charts/027.png)
+V tomto příkladu filtrujeme podle TailspinToysDemo. V tomto případě filtr odebere metriky přidružené k prostředkům v TailspinToys. 
 
-## <a name="pinning-your-multi-resource-charts"></a>Připnutí grafů s více prostředky 
+![Snímek obrazovky, který ukazuje, jak filtrovat podle skupiny prostředků.](./media/metrics-charts/027.png)
 
-> [!WARNING] 
-> Aby bylo možné vizualizovat metriky napříč několika prostředky, skupinami prostředků nebo předplatnými, musíte mít oprávnění čtenář monitoring na úrovni předplatného. Pokud to chcete provést, postupujte podle pokynů v [tomto dokumentu](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal). 
+## <a name="pin-multiple-resource-charts"></a>Připnutí grafů s více prostředky 
 
-Pokud chcete svůj graf více zdrojů připnout, postupujte prosím podle [pokynů.](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts#pin-charts-to-dashboards) 
+Grafy s více prostředky, které vizualizují metriky napříč skupinami prostředků a předplatnými, vyžadují, aby měl uživatel oprávnění *Čtenář monitorování* na úrovni předplatného. Zajistěte, aby všichni uživatelé řídicích panelů, na které připnutí grafů s více prostředky mají dostatečná oprávnění. Další informace najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
+
+Pokud chcete připnout graf s více prostředky na řídicí panel, přečtěte si téma [připnutí na řídicí panely](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts#pinning-to-dashboards). 
 
 ## <a name="next-steps"></a>Další kroky
 

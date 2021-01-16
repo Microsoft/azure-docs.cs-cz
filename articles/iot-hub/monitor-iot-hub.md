@@ -6,12 +6,12 @@ ms.author: robinsh
 ms.topic: conceptual
 ms.service: iot-hub
 ms.date: 11/06/2020
-ms.openlocfilehash: 2fabf75f74ccf57f57e7b47720ceda8885420842
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 35134f3ee4946d294ba6c6f71bd3953823d6d138
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460913"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250024"
 ---
 # <a name="monitoring-azure-iot-hub"></a>Monitorování IoT Hub Azure
 
@@ -87,7 +87,7 @@ Seznam metrik platforem shromážděných pro Azure IoT Hub najdete v tématu [m
 
 Pro IoT Hub metriky platforem, které jsou shromažďovány v jednotkách Count, nemusí být některé agregace dostupné nebo použitelné. Další informace najdete v tématu [podporované agregace v referenčních informacích monitorování Azure IoT Hub](monitor-iot-hub-reference.md#supported-aggregations).
 
-Některé metriky IoT Hub, jako jsou [metriky směrování](monitor-iot-hub-reference.md#routing-metrics), jsou multidimenzionální. Pro tyto metriky můžete použít [filtry](../azure-monitor/platform/metrics-charts.md#apply-filters-to-charts) a [rozdělit](../azure-monitor/platform/metrics-charts.md#apply-splitting-to-a-chart) je do grafů na základě dimenze.
+Některé metriky IoT Hub, jako jsou [metriky směrování](monitor-iot-hub-reference.md#routing-metrics), jsou multidimenzionální. Pro tyto metriky můžete použít [filtry](../azure-monitor/platform/metrics-charts.md#filters) a [rozdělit](../azure-monitor/platform/metrics-charts.md#apply-splitting) je do grafů na základě dimenze.
 
 ## <a name="analyzing-logs"></a>Analýza protokolů
 
@@ -119,7 +119,7 @@ Některé operace v IoT Hub protokoly prostředků vrátí `sdkVersion` vlastnos
 
 V následující tabulce je uveden název sady SDK používané pro různé sady SDK Azure IoT:
 
-| Název sady SDK ve vlastnosti sdkVersion | Jazyk |
+| Název sady SDK ve vlastnosti sdkVersion | Language (Jazyk) |
 |----------|----------|
 | .NET | .NET (C#) |
 | Microsoft. Azure. Devices | Sada SDK služby .NET (C#) |
@@ -286,7 +286,7 @@ class Program
 }
 ```
 
-## <a name="alerts"></a>Výstrahy
+## <a name="alerts"></a>Upozornění
 
 Azure Monitor výstrahy proaktivně upozorní na to, že se ve vašich datech monitorování nacházejí důležité podmínky. Umožňují identifikovat a řešit problémy v systému před tím, než si je vaši zákazníci všimnete. Můžete nastavit výstrahy na [metrikách](../azure-monitor/platform/alerts-metric-overview.md), [protokolech](../azure-monitor/platform/alerts-unified-log.md)a [protokolu aktivit](../azure-monitor/platform/activity-log-alerts.md). Různé typy výstrah mají výhody a nevýhody.
 

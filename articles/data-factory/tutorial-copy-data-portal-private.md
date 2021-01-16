@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 05/15/2020
+ms.date: 01/15/2021
 ms.author: jingwang
-ms.openlocfilehash: 4f5d691ef99ac4647d2031d6588d0b3922edd8cf
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: dfd2ed47c3fd963d7e119d235719771b25bdaf34
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505984"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98249496"
 ---
 # <a name="copy-data-securely-from-azure-blob-storage-to-a-sql-database-by-using-private-endpoints"></a>Bezpečné kopírování dat z úložiště objektů BLOB v Azure do databáze SQL pomocí privátních koncových bodů
 
@@ -34,7 +34,7 @@ V tomto kurzu provedete následující kroky:
 * Vytvoření kanálu s aktivitou kopírování
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * **Předplatné Azure**. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * **Účet služby Azure Storage**. Blob Storage použijete jako *zdrojové* úložiště dat. Pokud účet úložiště nemáte, přečtěte si téma [Vytvoření účtu služby Azure Storage](../storage/common/storage-account-create.md?tabs=azure-portal), kde najdete postup jeho vytvoření. *Ujistěte se, že účet úložiště povoluje přístup jenom z vybraných sítí.* 
 * **Azure SQL Database**. Tuto databázi použijete jako úložiště dat *jímky*. Pokud službu Azure SQL Database nemáte, přečtěte si téma [Vytvoření databáze SQL](../azure-sql/database/single-database-create-quickstart.md) , kde najdete kroky pro její vytvoření. *Ujistěte se, že účet SQL Database povoluje přístup pouze z vybraných sítí.* 
@@ -45,7 +45,7 @@ Teď Připravte úložiště objektů BLOB a SQL Database pro kurz provedením n
 
 #### <a name="create-a-source-blob"></a>Vytvoření zdrojového objektu blob
 
-1. Otevřete Poznámkový blok. Zkopírujte následující text a uložte si ho na disk jako soubor **emp.txt** :
+1. Otevřete Poznámkový blok. Zkopírujte následující text a uložte si ho na disk jako soubor **emp.txt**:
 
     ```
     FirstName,LastName
@@ -57,7 +57,7 @@ Teď Připravte úložiště objektů BLOB a SQL Database pro kurz provedením n
 
 #### <a name="create-a-sink-sql-table"></a>Vytvoření tabulky SQL jímky
 
-Použitím následujícího skriptu SQL si v databázi SQL Database vytvořte tabulku **emp** :
+Použitím následujícího skriptu SQL si v databázi SQL Database vytvořte tabulku **emp**:
 
 ```sql
 CREATE TABLE dbo.emp
@@ -76,7 +76,7 @@ V tomto kroku vytvoříte datovou továrnu a spustíte uživatelské rozhraní s
 
 1. Otevřete Microsoft Edge nebo Google Chrome. V současné době podporuje Data Factory uživatelské rozhraní pouze webové prohlížeče Microsoft Edge a Google Chrome.
 
-1. V nabídce vlevo vyberte **vytvořit**  >  **Analytics**  >  **Data Factory** analýzy prostředků.
+1. V nabídce vlevo vyberte **vytvořit**  >    >  **Data Factory** analýzy prostředků.
 
 1. Do pole **Název** na stránce **Nová datová továrna** zadejte **ADFTutorialDataFactory**.
 
@@ -107,7 +107,8 @@ V tomto kroku vytvoříte prostředí Azure Integration runtime a povolíte Data
 1. Na portálu Data Factory klikněte na **Správa** a vyberte **Nový** a vytvořte nový prostředí Azure Integration runtime.
 
    ![Snímek obrazovky, který ukazuje vytvoření nového prostředí Azure Integration runtime.](./media/tutorial-copy-data-portal-private/create-new-azure-ir.png)
-1. Vyberte Vytvoření prostředí **Azure** Integration runtime.
+1. Na stránce **instalace prostředí Integration runtime** vyberte, který modul runtime integrace se má vytvořit na základě požadovaných možností. V tomto kurzu vyberte **Azure, v** místním prostředí a potom klikněte na **pokračovat**. 
+1. Vyberte **Azure** a potom kliknutím na **pokračovat** vytvořte prostředí Azure Integration runtime.
 
    ![Snímek obrazovky, který ukazuje nový prostředí Azure Integration runtime.](./media/tutorial-copy-data-portal-private/azure-ir.png)
 1. V části **Konfigurace virtuální sítě (Preview)** vyberte **Povolit**.
@@ -136,7 +137,7 @@ V tomto kurzu začnete vytvořením kanálu. Potom vytvoříte propojené služb
 ### <a name="configure-a-source"></a>Konfigurace zdroje
 
 >[!TIP]
->V tomto kurzu použijete **klíč účtu** jako typ ověřování pro zdrojové úložiště dat. V případě potřeby můžete také zvolit jiné podporované metody ověřování, jako je **URI SAS** , **instanční objekt** a **spravovaná identita** . Další informace najdete v odpovídajících částech v tématu [kopírování a transformace dat v úložišti objektů BLOB v Azure pomocí Azure Data Factory](./connector-azure-blob-storage.md#linked-service-properties).
+>V tomto kurzu použijete **klíč účtu** jako typ ověřování pro zdrojové úložiště dat. V případě potřeby můžete také zvolit jiné podporované metody ověřování, jako je **URI SAS**,**instanční objekt** a **spravovaná identita** . Další informace najdete v odpovídajících částech v tématu [kopírování a transformace dat v úložišti objektů BLOB v Azure pomocí Azure Data Factory](./connector-azure-blob-storage.md#linked-service-properties).
 >
 >K bezpečnému ukládání tajných kódů pro úložiště dat doporučujeme také použití Azure Key Vault. Další informace a ilustrace najdete v tématu [uložení přihlašovacích údajů v Azure Key Vault](./store-credentials-in-key-vault.md).
 
@@ -220,7 +221,7 @@ Pokud jste nevybrali hypertextový odkaz při testování připojení, postupujt
 >K bezpečnému ukládání tajných kódů pro úložiště dat doporučujeme také použití Azure Key Vault. Další informace a ilustrace najdete v tématu [uložení přihlašovacích údajů v Azure Key Vault](./store-credentials-in-key-vault.md).
 
 #### <a name="create-a-sink-dataset-and-linked-service"></a>Vytvoření datové sady jímky a propojené služby
-1. Přejděte na kartu **Jímka** , vyberte **+ Nová** a vytvořte datovou sadu jímky.
+1. Přejděte na kartu **Jímka**, vyberte **+ Nová** a vytvořte datovou sadu jímky.
 
 1. V dialogovém okně **Nová datová sada** zadejte do vyhledávacího pole **SQL** a vyfiltrujte konektory. Vyberte **Azure SQL Database** a pak vyberte **pokračovat**. V tomto kurzu zkopírujte data do databáze SQL Database.
 
@@ -280,7 +281,7 @@ Před publikováním artefaktů (propojených služeb, datových sad a kanálu) 
 1. Počkejte, dokud se nezobrazí zpráva **Publikování proběhlo úspěšně**. Chcete-li zobrazit zprávy s oznámením, vyberte možnost **Zobrazit oznámení** v pravém horním rohu (tlačítko zvonku).
 
 
-#### <a name="summary"></a>Shrnutí
+#### <a name="summary"></a>Souhrn
 Kanál v této ukázce kopíruje data z úložiště objektů blob do SQL Database pomocí privátních koncových bodů v Data Factory spravovaných Virtual Network. Naučili jste se:
 
 * Vytvoření datové továrny

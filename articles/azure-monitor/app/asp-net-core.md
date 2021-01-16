@@ -4,12 +4,12 @@ description: Monitorujte ASP.NET Core webové aplikace pro účely dostupnosti, 
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 04/30/2020
-ms.openlocfilehash: 2921c6379b34e002013b5f0087cefd502ab0ab84
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 2f17f4fbed196932ad7a5680338c459740e4d3bd
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96904529"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98249104"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights pro ASP.NET Core aplikace
 
@@ -53,7 +53,7 @@ Pro Visual Studio pro Mac použít [Ruční pokyny](#enable-application-insights
 
 3. Vyberte **Začínáme**. Text tohoto výběru se může lišit v závislosti na vaší verzi sady Visual Studio. Některé starší verze používají místo toho tlačítko **Spustit zdarma** .
 
-4. Vyberte své předplatné. Pak vyberte **Resource** položku  >  **registr** prostředků.
+4. Vyberte své předplatné. Pak vyberte položku  >  **registr** prostředků.
 
 5. Po přidání Application Insights do projektu ověřte, že používáte nejnovější stabilní verzi sady SDK. Přejít na **projekt**  >  **Správa balíčků NuGet**  >  **Microsoft. ApplicationInsights. AspNetCore** Pokud potřebujete, klikněte na tlačítko **aktualizovat**.
 
@@ -69,7 +69,7 @@ Pro Visual Studio pro Mac použít [Ruční pokyny](#enable-application-insights
 
     ```xml
         <ItemGroup>
-          <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.13.1" />
+          <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.16.0" />
         </ItemGroup>
     ```
 
@@ -110,7 +110,7 @@ Pro Visual Studio pro Mac použít [Ruční pokyny](#enable-application-insights
 
     * `ApplicationInsights:InstrumentationKey`
 
-    Například:
+    Příklad:
 
     * `SET ApplicationInsights:InstrumentationKey=putinstrumentationkeyhere`
 
@@ -125,7 +125,7 @@ Pro Visual Studio pro Mac použít [Ruční pokyny](#enable-application-insights
 
 ### <a name="user-secrets-and-other-configuration-providers"></a>Uživatelské klíče a další poskytovatelé konfigurace
 
-Pokud chcete uložit klíč instrumentace v ASP.NET Core uživatelských tajných klíčích nebo si ho načíst z jiného poskytovatele konfigurace, můžete použít přetížení s `Microsoft.Extensions.Configuration.IConfiguration` parametrem. Například, `services.AddApplicationInsightsTelemetry(Configuration);`.
+Pokud chcete uložit klíč instrumentace v ASP.NET Core uživatelských tajných klíčích nebo si ho načíst z jiného poskytovatele konfigurace, můžete použít přetížení s `Microsoft.Extensions.Configuration.IConfiguration` parametrem. Například `services.AddApplicationInsightsTelemetry(Configuration);`.
 Od Microsoft. ApplicationInsights. AspNetCore verze [2.15.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore)volání `services.AddApplicationInsightsTelemetry()` automaticky přečte klíč instrumentace z `Microsoft.Extensions.Configuration.IConfiguration` aplikace. Není nutné explicitně poskytnout `IConfiguration` .
 
 ## <a name="run-your-application"></a>Spusťte aplikaci
@@ -232,7 +232,7 @@ Seznam [konfigurovatelných nastavení v nástroji `ApplicationInsightsServiceOp
 
 ### <a name="configuration-recommendation-for-microsoftapplicationinsightsaspnetcore-sdk-2150--above"></a>Doporučení konfigurace pro Microsoft. ApplicationInsights. AspNetCore SDK 2.15.0 & výše
 
-Od verze Microsoft. ApplicationInsights. AspNetCore SDK [2.15.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.15.0) doporučujeme nakonfigurovat všechna nastavení dostupná v `ApplicationInsightsServiceOptions` , včetně instrumentationkey použití `IConfiguration` instance aplikace. Nastavení musí být v části "ApplicationInsights", jak je znázorněno v následujícím příkladu. Následující část appsettings.jsv tématu Konfigurace klíče instrumentace a také vypnutí adaptivního vzorkování a shromažďování čítačů výkonu.
+Od Microsoft. ApplicationInsights. AspNetCore SDK verze [2.15.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.15.0)se doporučuje nakonfigurovat všechna nastavení dostupná v `ApplicationInsightsServiceOptions` , včetně instrumentationkey použití `IConfiguration` instance aplikace. Nastavení musí být v části "ApplicationInsights", jak je znázorněno v následujícím příkladu. Následující část appsettings.jsv tématu Konfigurace klíče instrumentace a také vypnutí adaptivního vzorkování a shromažďování čítačů výkonu.
 
 ```json
 {
@@ -398,7 +398,7 @@ Výše uvedené nebrání žádnému modulu automatické kolekce v shromažďov�
 
 ### <a name="does-application-insights-support-aspnet-core-3x"></a>Podporuje Application Insights ASP.NET Core 3. X?
 
-Ano. Aktualizace na [sadu Application Insights SDK pro ASP.NET Core](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) verze 2.8.0 nebo vyšší. Starší verze sady SDK nepodporují ASP.NET Core 3. X.
+Yes. Aktualizace na [sadu Application Insights SDK pro ASP.NET Core](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) verze 2.8.0 nebo vyšší. Starší verze sady SDK nepodporují ASP.NET Core 3. X.
 
 Také Pokud používáte pokyny na základě sady Visual Studio z [tohoto místa](#enable-application-insights-server-side-telemetry-visual-studio), aktualizujte na zprovoznění nejnovější verzi sady visual Studio 2019 (16.3.0). Předchozí verze sady Visual Studio nepodporují automatickou registraci pro aplikace ASP.NET Core 3. X.
 
@@ -485,11 +485,11 @@ Pokud je sada SDK nainstalována v době sestavení, jak je znázorněno v tomto
 
 ### <a name="can-i-enable-application-insights-monitoring-by-using-tools-like-status-monitor"></a>Můžu Application Insights monitorování povolit pomocí nástrojů jako Monitorování stavu?
 
-No. [Monitorování stavu](./monitor-performance-live-website-now.md) a [monitorování stavu v2](./status-monitor-v2-overview.md) aktuálně podporují pouze ASP.NET 4. x.
+Ne. [Monitorování stavu](./monitor-performance-live-website-now.md) a [monitorování stavu v2](./status-monitor-v2-overview.md) aktuálně podporují pouze ASP.NET 4. x.
 
 ### <a name="if-i-run-my-application-in-linux-are-all-features-supported"></a>Pokud Spouštím aplikaci v systému Linux, jsou podporovány všechny funkce?
 
-Ano. Podpora funkcí pro sadu SDK je stejná na všech platformách, s následujícími výjimkami:
+Yes. Podpora funkcí pro sadu SDK je stejná na všech platformách, s následujícími výjimkami:
 
 * Sada SDK shromažďuje [čítače událostí](./eventcounters.md) v systému Linux, protože [čítače výkonu](./performance-counters.md) jsou podporovány pouze ve Windows. Většina metrik je stejná.
 * I když `ServerTelemetryChannel` je ve výchozím nastavení povolená, pokud je aplikace spuštěná v systému Linux nebo MacOS, kanál automaticky nevytvoří místní složku úložiště, aby se telemetrie dočasně zachovala v případě, že dojde k problémům se sítí. Z důvodu tohoto omezení dojde ke ztrátě telemetrie, pokud dojde k dočasným problémům se sítí nebo serverem. Pokud chcete tento problém obejít, nakonfigurujte pro tento kanál místní složku:

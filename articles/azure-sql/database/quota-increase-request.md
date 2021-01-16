@@ -9,17 +9,17 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: sstein
 ms.date: 06/04/2020
-ms.openlocfilehash: 44a37a912c5c7a882d21631b8ce2da2c7ba9c05e
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 27719663acfbdbcd7293defc4b746153359adb61
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97967697"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251844"
 ---
 # <a name="request-quota-increases-for-azure-sql-database-and-sql-managed-instance"></a>Zvýšení kvóty požadavků pro Azure SQL Database a SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Tento článek vysvětluje, jak požádat o zvýšení kvóty pro Azure SQL Database a Azure SQL Managed instance. Vysvětluje také, jak povolit přístup k předplatnému v určité oblasti.
+Tento článek vysvětluje, jak požádat o zvýšení kvóty pro Azure SQL Database a Azure SQL Managed instance. Vysvětluje taky, jak povolit přístup k předplatnému pro určitou oblast a jak požádat o povolení konkrétního hardwaru v oblasti.
 
 ## <a name="create-a-new-support-request"></a><a id="newquota"></a> Vytvořit novou žádost o podporu
 
@@ -62,8 +62,7 @@ Následující části popisují možnosti zvýšení kvóty pro **SQL Database*
 
 - Jednotky transakcí databáze (DTU) na server
 - Servery na předplatné
-- Přístup k oblasti řady M-Series
-- Přístup k oblasti
+- Přístup k oblasti předplatných nebo konkrétního hardwaru
 
 ### <a name="database-transaction-units-dtus-per-server"></a>Jednotky transakcí databáze (DTU) na server
 
@@ -109,30 +108,15 @@ Pokud vaše předplatné potřebuje přístup v konkrétní oblasti, vyberte mo�
 
    ![Přístup k oblasti žádostí](./media/quota-increase-request/quota-request.png)
 
-<!--
-### <a id="mseries"></a> Enable M-series access to a region
+### <a name="request-enabling-specific-hardware-in-a-region"></a>Žádost o povolení konkrétního hardwaru v oblasti
 
-To enable M-series hardware for a subscription and region, a support request must be opened.
+Pokud vydaná [hardwarová generace](service-tiers-vcore.md#hardware-generations) není ve vaší oblasti k dispozici (viz [dostupnost hardwaru](service-tiers-vcore.md#hardware-availability)), můžete si ji vyžádat pomocí následujících kroků.
 
-1. Select the **M-series region access** quota type.
+1. Vyberte jiný typ kvóty **žádosti o kvótu** .
 
-1. In the **Select a location** list, select the Azure region to use. The quota is per subscription in each region.
+1. Do pole **Popis** uveďte svůj požadavek, včetně názvu generování hardwaru a názvu oblasti, ve které ho budete potřebovat.
 
-
-   ![Request M-series region access](./media/quota-increase-request/quota-m-series.png)
--->
-
-## <a name="sql-managed-instance-quota-type"></a><a id="sqlmiquota"></a> Typ kvóty spravované instance SQL
-
-Pro typ kvóty **spravované instance SQL** použijte následující postup:
-
-1. V seznamu **oblast** vyberte oblast Azure, do které chcete cílit.
-
-1. Zadejte nové limity, které požadujete pro **podsíť** a **Vcore**.
-
-   ![Podrobnosti kvóty spravované instance SQL](./media/quota-increase-request/quota-details-managed-instance.png)
-
-Další informace najdete v tématu [Přehled omezení prostředků spravované instance Azure SQL](../managed-instance/resource-limits.md).
+   ![Požádat o hardware v nové oblasti](./media/quota-increase-request/hardware-in-new-region.png)
 
 ## <a name="submit-your-request"></a>Odeslání žádosti
 

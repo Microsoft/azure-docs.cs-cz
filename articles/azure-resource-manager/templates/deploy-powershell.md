@@ -2,13 +2,13 @@
 title: Nasazení prostředků pomocí PowerShellu a šablony
 description: K nasazení prostředků do Azure použijte Azure Resource Manager a Azure PowerShell. Prostředky jsou definovány v šabloně Resource Manageru.
 ms.topic: conceptual
-ms.date: 10/22/2020
-ms.openlocfilehash: 40ee659f5892c983f84409a10634c6a8d6d78cc5
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.date: 01/15/2021
+ms.openlocfilehash: d895c6e029b0b4a70333dde987706549609c8bd3
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028485"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251012"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-powershell"></a>Nasazení prostředků pomocí šablon ARM a Azure PowerShell
 
@@ -135,7 +135,7 @@ Aby nedocházelo ke konfliktům s souběžnými nasazeními a zajistili v histor
 
 Místo nasazení místní nebo vzdálené šablony můžete vytvořit [specifikaci šablony](template-specs.md). Specifikace šablony je prostředek ve vašem předplatném Azure, který obsahuje šablonu ARM. Usnadňuje bezpečné sdílení šablony s uživateli ve vaší organizaci. K udělení přístupu ke specifikaci šablony použijte řízení přístupu na základě role Azure (Azure RBAC). Tato funkce je aktuálně ve verzi Preview.
 
-Následující příklady ukazují, jak vytvořit a nasadit specifikace šablony. Tyto příkazy jsou k dispozici pouze v případě, že jste se [zaregistrovali ve verzi Preview](https://aka.ms/templateSpecOnboarding).
+Následující příklady ukazují, jak vytvořit a nasadit specifikace šablony.
 
 Nejdřív vytvořte specifikaci šablony tím, že poskytnete šablonu ARM.
 

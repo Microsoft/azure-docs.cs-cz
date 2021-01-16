@@ -4,12 +4,12 @@ description: Sledování problémů pomocí automatického škálování Azure p
 ms.topic: conceptual
 ms.date: 11/4/2019
 ms.subservice: autoscale
-ms.openlocfilehash: a29b5d11a6ea06af9d5b6a8b5120c6f0caa6601e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c4589acd17e76d1341d5aceada67e565c8f8c37
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979050"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251263"
 ---
 # <a name="troubleshooting-azure-autoscale"></a>Řešení potíží s automatické škálování Azure
  
@@ -51,20 +51,20 @@ Pojďme se podívat na metriky ze služby automatického škálování.
 
 ![Příklad procenta využití sady škálování virtuálního počítače](media/autoscale-troubleshoot/autoscale-vmss-CPU-ex-full-2.png)
 
-***Obrázek 1a – procentuální metrika procesoru pro sadu škálování virtuálního počítače a metriku metriky hodnoty metriky pro nastavení automatického škálování***
+**_Obrázek 1a – procentuální metrika procesoru pro sadu škálování virtuálního počítače a metriku metriky hodnoty metriky pro nastavení automatického škálování_* _
 
 ![Prahová hodnota metriky a zjištěná kapacita](media/autoscale-troubleshoot/autoscale-metric-threshold-capacity-ex-full.png)
 
-***Obrázek 1b – prahová hodnota metriky a zjištěná kapacita***
+_*_Obrázek 1b – prahová hodnota metriky a zjištěná kapacita_*_
 
-Na obrázku 1b je **prahová hodnota metriky** (světle modrá čára) pro pravidlo škálování na více instancí 70.  **Zjištěná kapacita** (tmavě modrá čára) zobrazuje počet aktivních instancí, které jsou aktuálně 3. 
+U pravidla škálování na více instancí je na obrázku 1b *prahová hodnota* _ x (světle modrá čára) 70.  **Zjištěná kapacita** (tmavě modrá čára) zobrazuje počet aktivních instancí, které jsou aktuálně 3. 
 
 > [!NOTE]
 > **Prahovou hodnotu metriky** můžete vyfiltrovat podle pravidla triggeru metrika dimenze vyměnit (zvětšit), aby se zobrazila prahová hodnota pro horizontální navýšení kapacity a škálování v pravidle (snížení). 
 
 ## <a name="example-2---advanced-autoscaling-for-a-virtual-machine-scale-set"></a>Příklad 2 – rozšířené automatické škálování pro sadu škálování virtuálního počítače
 
-Máme nastavení automatického škálování, které umožňuje prostředku škálované sady virtuálních počítačů škálovat horizontální navýšení kapacity na základě vlastních **odchozích toků**metriky. Všimněte si, že je zaškrtnuta možnost **dělení metriky podle počtu instancí** pro prahovou hodnotu metriky. 
+Máme nastavení automatického škálování, které umožňuje prostředku škálované sady virtuálních počítačů škálovat horizontální navýšení kapacity na základě vlastních **odchozích toků** metriky. Všimněte si, že je zaškrtnuta možnost **dělení metriky podle počtu instancí** pro prahovou hodnotu metriky. 
 
 Pravidlo akce škálování je: 
 
@@ -76,18 +76,18 @@ V tomto případě se hodnota metriky metriky modulu automatického škálován�
 
 ![Příklad grafu metriky automatického škálování sady škálování virtuálního počítače](media/autoscale-troubleshoot/autoscale-vmss-metric-chart-ex-2.png)
 
-***Obrázek 2 – příklad grafu metriky automatického škálování sady škálování virtuálního počítače***
+**_Obrázek 2 – graf metriky automatického škálování sady škálování virtuálního počítače – příklad_* _
 
 Na obrázku 2 vidíte dva grafy metrik. 
 
-Graf nahoře zobrazuje skutečnou hodnotu metriky **odchozích toků** . Skutečná hodnota je 6. 
+Graf nahoře zobrazuje skutečnou hodnotu metriky "*výstupní toky*" _. Skutečná hodnota je 6. 
 
 Graf v dolní části zobrazuje několik hodnot. 
  - **Zjištěná hodnota metriky** (světle modrá) je 3, protože existují 2 aktivní instance a 6 děleno 2 je 3. 
  - **Zjištěná kapacita** (fialová) zobrazuje počet instancí zobrazených modulem automatického škálování. 
  - **Prahová hodnota metriky** (světle zelená) je nastavena na hodnotu 10. 
 
-Pokud existuje více pravidel pro akce škálování, můžete použít možnost rozdělení nebo **Přidat filtr** v grafu Průzkumníka metrik pro zobrazení metriky podle konkrétního zdroje nebo pravidla. Další informace o rozdělení grafu metriky najdete v tématu [Pokročilé funkce metrik grafů – rozdělení](metrics-charts.md#apply-splitting-to-a-chart)
+Pokud existuje více pravidel pro akce škálování, můžete použít možnost rozdělení nebo **Přidat filtr** v grafu Průzkumníka metrik pro zobrazení metriky podle konkrétního zdroje nebo pravidla. Další informace o rozdělení grafu metriky najdete v tématu [Pokročilé funkce metrik grafů – rozdělení](metrics-charts.md#apply-splitting)
 
 ## <a name="example-3---understanding-autoscale-events"></a>Příklad 3 – porozumění událostem automatického škálování
 

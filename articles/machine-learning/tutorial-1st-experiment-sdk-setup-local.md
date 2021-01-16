@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 2f33fe4fafbe194238fcfbd4942807ed2fc4d6ff
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 0d099d31db3619e14da4fe66e26b25a0e36ee39c
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183536"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250685"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-your-development-environment-part-1-of-4"></a>Kurz: Začínáme s Azure Machine Learning ve vývojovém prostředí (část 1 ze 4)
 
@@ -34,10 +34,11 @@ V části 1 této série kurzů budete:
 > [!NOTE]
 > Tento kurz se zaměřuje na Azure Machine Learning koncepty vyžadované k odeslání **dávkových úloh** – jedná se o případ, kdy se kód odešle do cloudu, aby běžel na pozadí bez zásahu uživatele. To je užitečné pro hotové skripty nebo kód, který chcete spustit opakovaně, nebo pro úlohy strojového učení náročné na výpočetní výkon. Pokud máte více zajímat se o průzkumné pracovní postup, můžete místo toho použít [Jupyter nebo RStudio na instanci služby compute Azure Machine Learning](tutorial-1st-experiment-sdk-setup.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Zkuste [Azure Machine Learning](https://aka.ms/AMLFree).
-- [Anaconda](https://www.anaconda.com/download/) nebo [Miniconda](https://www.anaconda.com/download/) ke správě virtuálních prostředí Python a instalaci balíčků.
+- [Anaconda](https://www.anaconda.com/download/) nebo [Miniconda](https://www.anaconda.com/download/) ke správě virtuálních prostředí Python a instalaci balíčků.  
+- Pokud nejste obeznámeni s používáním Conda, přečtěte si téma [Začínáme s conda](https://conda.io/projects/conda/en/latest/user-guide/getting-started.html).
 
 ## <a name="install-the-azure-machine-learning-sdk"></a>Instalace sady Azure Machine Learning SDK
 

@@ -1,226 +1,235 @@
 ---
-title: Pokročilé funkce Průzkumníku metrik Azure
-description: Seznamte se s pokročilými funkcemi Azure Monitor Průzkumník metrik
+title: Rozšířené funkce Průzkumníka metrik Azure
+description: Přečtěte si o rozšířených použitích Průzkumníka metrik Azure.
 author: vgorbenko
 services: azure-monitor
 ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: a80eaecc02fa3c8c6618341c02e22241f0dc7faf
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: b4feb177abbdbfb9666be0ea0746c8316acdf5ae
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845046"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250753"
 ---
-# <a name="advanced-features-of-azure-metrics-explorer"></a>Pokročilé funkce Průzkumníku metrik Azure
+# <a name="advanced-features-of-the-azure-metrics-explorer"></a>Rozšířené funkce Průzkumníka metrik Azure
 
 > [!NOTE]
-> V tomto článku se předpokládá, že máte zkušenosti se základními funkcemi Průzkumník metrik. Pokud jste nový uživatel a chcete zjistit, jak vytvořit první graf metriky, přečtěte si téma [Začínáme s Azure Průzkumník metrik](metrics-getting-started.md).
+> V tomto článku se předpokládá, že jste obeznámeni se základními funkcemi funkce Průzkumník metrik Azure v Azure Monitor. Pokud jste nový uživatel a chcete zjistit, jak vytvořit první graf metriky, přečtěte si téma [Začínáme s Průzkumníkem metrik](metrics-getting-started.md).
 
-## <a name="metrics-in-azure"></a>Metriky v Azure
+V Azure Monitor [metriky](data-platform-metrics.md) představují řadu měřených hodnot a počty, které se shromažďují a ukládají v průběhu času. Metriky můžou být standardní (označované taky jako platforma) nebo vlastní. 
 
-[Metrikami v Azure monitor](data-platform-metrics.md) jsou řady měřených hodnot a počty, které se shromažďují a ukládají v průběhu času. Existují metriky Standard (nebo "platforma") a vlastní metriky. Standardní metriky vám nabízí samotná platforma Azure. Standardní metriky odráží údaje o stavu a využití vašich prostředků Azure. Vzhledem k tomu, že své aplikace odesílají vlastní metriky do Azure pomocí [rozhraní Application Insights API pro vlastní události a metriky](../app/api-custom-events-metrics.md),  [rozšíření Windows Azure Diagnostics (WAD)](./diagnostics-extension-overview.md)nebo [Azure monitor REST API](./metrics-store-custom-rest-api.md).
+Standardní metriky poskytuje platforma Azure. Odrážejí údaje o stavu a využití vašich prostředků Azure. 
 
 ## <a name="resource-scope-picker"></a>Výběr oboru prostředků
-Výběr oboru prostředků umožňuje zobrazit metriky v rámci jednoho a několika prostředků. Níže najdete pokyny k použití výběru oboru prostředků. 
+Nástroj pro výběr oboru prostředků umožňuje zobrazit metriky napříč jednotlivými prostředky a více prostředky. V následujících částech se dozvíte, jak používat nástroj pro výběr oboru prostředků. 
 
-### <a name="selecting-a-single-resource"></a>Výběr jednoho prostředku
-V nabídce **Azure monitor** vyberte **metriky** nebo v části **monitorování** v nabídce prostředku. Kliknutím na tlačítko Vybrat obor otevřete výběr oboru, který vám umožní vybrat prostředky, pro které chcete zobrazit metriky. Tato hodnota by již měla být naplněna, pokud jste spustili průzkumníka metrik z nabídky prostředku. 
+### <a name="select-a-single-resource"></a>Vyberte jeden prostředek.
+V nabídce **Azure monitor** vyberte **metriky** nebo v části **monitorování** v nabídce prostředku. Pak zvolte **Vybrat obor** a otevřete tak výběr oboru. 
 
-![Snímek obrazovky pro výběr oboru prostředků](./media/metrics-charts/scope-picker.png)
+Pomocí nástroje pro výběr oboru můžete vybrat prostředky, jejichž metriky chcete zobrazit. Pokud jste v nabídce prostředku otevřeli Průzkumníka metrik Azure, musí se rozsah naplnit. 
 
-U určitých prostředků můžete najednou zobrazit jenom metriky s jedním prostředkem. Tyto prostředky jsou uvedené v části všechny typy prostředků v rozevíracím seznamu typy prostředků.
+![Snímek obrazovky znázorňující otevření výběru oboru prostředků](./media/metrics-charts/scope-picker.png)
 
-![Snímek obrazovky s jedním prostředkem](./media/metrics-charts/single-resource-scope.png)
+U některých prostředků můžete v jednu chvíli zobrazit jenom metriky prostředků. V nabídce **typy prostředků** jsou tyto prostředky v části **všechny typy prostředků** .
 
-Po kliknutí na požadovaný prostředek se zobrazí všechna předplatná a skupiny prostředků, které tento prostředek obsahují.
+![Snímek obrazovky znázorňující jeden prostředek.](./media/metrics-charts/single-resource-scope.png)
 
-![Snímek dostupných prostředků](./media/metrics-charts/available-single-resource.png)
+Po výběru prostředku se zobrazí všechna předplatná a skupiny prostředků, které tento prostředek obsahují.
+
+![Snímek obrazovky zobrazující dostupné prostředky](./media/metrics-charts/available-single-resource.png)
 
 > [!TIP]
-> Pokud chcete zobrazit metriky více zdrojů najednou nebo metriky v rámci předplatného nebo skupiny prostředků, klikněte na tlačítko pro odkazování.
+> Pokud chcete, aby možnost zobrazila metriky pro více prostředků najednou, nebo pokud chcete zobrazit metriky v rámci předplatného nebo skupiny prostředků **, vyberte možnost** odkaz.
 
-Až budete s výběrem spokojeni, klikněte na použít.
+Až budete s výběrem spokojeni, vyberte **použít**.
 
-### <a name="viewing-metrics-across-multiple-resources"></a>Zobrazení metrik v několika prostředcích
-Některé typy prostředků mají povolenou možnost dotazování na metriky přes více prostředků, pokud jsou ve stejném předplatném a umístění. Tyto typy prostředků se dají najít v horní části rozevíracího seznamu "typy prostředků". Další informace o tom, jak zobrazit metriky v několika prostředcích, najdete v [tomto dokumentu](metrics-dynamic-scope.md#selecting-multiple-resources).
+### <a name="view-metrics-across-multiple-resources"></a>Zobrazení metrik v různých prostředcích
+Některé typy prostředků se mohou dotazovat na metriky v několika prostředcích. Prostředky musí být v rámci stejného předplatného a umístění. Tyto typy prostředků najdete v horní části nabídky **typy prostředků** . 
 
-![Snímek obrazovky s typy různých prostředků](./media/metrics-charts/multi-resource-scope.png)
+Další informace najdete v tématu [Výběr více prostředků](metrics-dynamic-scope.md#select-multiple-resources).
 
-Pro typy kompatibilní s více prostředky můžete také zadat dotaz na metriky v rámci předplatného nebo několika skupin prostředků. Další informace o tom, jak to provést, najdete v [tomto článku](metrics-dynamic-scope.md#selecting-a-resource-group-or-subscription) .
+![Snímek obrazovky znázorňující typy různých prostředků](./media/metrics-charts/multi-resource-scope.png)
 
+Pro typy, které jsou kompatibilní s více prostředky, můžete zadávat dotazy na metriky v rámci předplatného nebo několika skupin prostředků. Další informace najdete v tématu [Výběr skupiny prostředků nebo předplatného](metrics-dynamic-scope.md#select-a-resource-group-or-subscription).
 
-## <a name="create-views-with-multiple-metrics-and-charts"></a>Vytváření zobrazení s více metrikami a grafy
+## <a name="multiple-metric-lines-and-charts"></a>Více čar a grafů metriky
 
-Můžete vytvářet grafy, které vykreslují více řádků metrik nebo zobrazují více grafů metrik najednou. Tato funkce umožňuje:
+V Průzkumníkovi metrik Azure můžete vytvářet grafy, které vykreslují více řádků metrik nebo zobrazují více grafů metrik současně. Tato funkce umožňuje:
 
-- korelujte související metriky ve stejném grafu a podívejte se, jak jedna hodnota souvisí s jinou hodnotou.
-- Zobrazit metriky s různými jednotkami měření v těsné blízkosti
-- vizuální agregace a porovnání metrik z několika prostředků
+- Korelujte související metriky ve stejném grafu, abyste viděli, jak se jedna hodnota vztahuje na jinou.
+- Zobrazit metriky, které používají různé měrné jednotky v těsné blízkosti.
+- Vizuálně agregovat a porovnejte metriky z více zdrojů.
 
-Pokud máte například 5 účtů úložiště a chcete zjistit, kolik místa je mezi nimi využito, můžete vytvořit (skládaný) plošný graf, který zobrazuje jednotlivec a součet všech hodnot v určitých bodech v čase.
+Představte si například, že máte pět účtů úložiště a chcete zjistit, kolik místa spotřebovávají dohromady. Můžete vytvořit (skládaný) plošný graf, který zobrazuje jednotlivé hodnoty a součet všech hodnot v určitých bodech v čase.
 
 ### <a name="multiple-metrics-on-the-same-chart"></a>Víc metrik na stejném grafu
 
-Nejprve [vytvořte nový graf](metrics-getting-started.md#create-your-first-metric-chart). Klikněte na **Přidat metriku** a zopakováním kroků přidejte další metriku do stejného grafu.
+Chcete-li zobrazit více metrik ve stejném grafu, [vytvořte nejprve nový graf](metrics-getting-started.md#create-your-first-metric-chart). Pak vyberte **Přidat metriku**. Opakováním tohoto kroku přidejte další metriky do stejného grafu.
 
-   > [!NOTE]
-   > Obvykle nechcete, aby byly metriky s různými jednotkami měření (tj. "milisekundy" a "kilobajty"), nebo s výrazně odlišným měřítkem v jednom grafu. Místo toho zvažte použití více grafů. Kliknutím na tlačítko přidat graf vytvoříte v Průzkumníkovi metrik více grafů.
+> [!NOTE]
+> Grafy by obvykle neměly kombinovat metriky, které používají různé měrné jednotky. Nepoužívejte třeba kombinování jedné metriky, která používá milisekundy s jinou, která používá kilobajty. Také se vyhněte smíchání metrik, jejichž měřítko se výrazně liší. 
+>
+> V těchto případech zvažte místo toho použití více grafů. V Průzkumníku metrik vyberte **přidat graf** pro vytvoření nového grafu.
 
 ### <a name="multiple-charts"></a>Více grafů
 
-Klikněte na **přidat graf** a vytvořte další graf s jinou metrikou.
+Pokud chcete vytvořit jiný graf, který používá jinou metriku, vyberte **přidat graf**.
 
-### <a name="order-or-delete-multiple-charts"></a>Objednat nebo odstranit více grafů
+Chcete-li změnit pořadí nebo odstranění více grafů, klikněte na tlačítko se třemi tečkami (**...**) a otevřete nabídku grafu. Pak zvolte **Přesunout nahoru**, **Přesunout dolů** nebo **Odstranit**.
 
-Chcete-li seřadit nebo odstranit více grafů, klikněte na symbol tří teček ( **...** ) a otevřete nabídku graf a vyberte odpovídající položku v nabídce **Přesunout nahoru**, **Přesunout dolů** nebo **Odstranit**.
+## <a name="aggregation"></a>Agregace
 
-## <a name="changing-aggregation"></a>Změna agregace
+Když přidáte metriku do grafu, Průzkumník metrik automaticky použije výchozí agregaci. Ve výchozím nastavení je to v základních scénářích smysl. K získání dalších přehledů o této metrikě ale můžete použít jinou agregaci. 
 
-Když přidáte metriku do grafu, Průzkumník metrik automaticky vybere jeho výchozí agregaci. Ve výchozím nastavení je to ve scénářích Basic, ale k získání dalších přehledů o této metrikě můžete použít jinou agregaci. Zobrazení různých agregací v grafu vyžaduje, abyste porozuměli tomu, jak je Průzkumník metrik zpracovává. 
+Před použitím různých agregací v grafu byste měli pochopit, jak je Průzkumník metrik zpracovává. Metriky představují řadu měření (neboli hodnoty metrik), které jsou zachyceny v časovém období. Při vykreslení grafu se hodnoty vybrané metriky samostatně agreguje v *časovém intervalu*. 
 
-Metriky jsou série měření (neboli hodnoty metrik) zachycené za časové období. Při vykreslení grafu se hodnoty vybrané metriky samostatně agreguje v *časovém intervalu*. Velikost časového intervalu můžete vybrat [pomocí panelu pro výběr Průzkumník metrikho času](metrics-getting-started.md#select-a-time-range). Pokud neprovedete explicitní výběr časového intervalu, časové rozlišení se automaticky vybere v závislosti na aktuálně vybraném časovém rozsahu. Po určení časového intervalu jsou hodnoty metrik, které byly zachyceny během každého intervalu intervalu, agregovány a umístěny do grafu – jedna hodnota DataPoint za časový interval.
+Velikost časového intervalu můžete vybrat pomocí [panelu pro výběr času](metrics-getting-started.md#select-a-time-range)v Průzkumníkovi metrik. Pokud jste nevybrali časový interval explicitně, použije se ve výchozím nastavení aktuálně vybraný časový rozsah. Po určení časového intervalu se hodnoty metrik, které byly zachyceny během každé časové intervaly, sčítají v grafu, jeden datový bod za časový interval.
 
-Předpokládejme například, že se v grafu zobrazuje metrika **doby odezvy serveru** pomocí **průměrné** agregace za **posledních 24 hodin** časového intervalu:
+Předpokládejme například, že se v grafu zobrazuje metrika *doby odezvy serveru* . Používá *průměrnou* agregaci v časovém intervalu za *posledních 24 hodin*. V tomto příkladu:
 
-- Pokud je časová členitost nastavená na 30 minut, graf se vykreslí z 48 agregovaných DataPoint (například Spojnicový graf připojuje 48 teček v oblasti vykreslení grafu). To znamená 24 hodin × 2 datapoints za hodinu. Každý DataPoint představuje *průměr* všech zaznamenaných dob odezvy pro žádosti serveru, ke kterým došlo během každé z příslušných 30 minut časových období.
-- Pokud časové rozlišení přepnete na 15 minut, dostanete 96 agregovaných datapoints.  To znamená 24 hodin × 4 datapoints za hodinu.
+- Pokud je časová členitost nastavená na 30 minut, graf se vykreslí z 48 agregovaných datových bodů. To znamená, že spojnicový graf spojí 48 teček v oblasti vykreslení grafu (24 hodin × 2 datové body za hodinu). Každý datový bod představuje *průměr* všech zaznamenaných dob odezvy pro žádosti serveru, ke kterým došlo během každé z příslušných 30 minut časových období.
+- Pokud časové rozlišení přepnete na 15 minut, dostanete 96 agregovaných datových bodů.  To znamená, že získáte 24 hodin × 4 datových bodů za hodinu.
 
-V Průzkumníkovi metriky je dostupných pět základních výpočetních výpočtů: **Sum**, **Count**, **min**, **Max** a **Average**. Agregace **součtu** je někdy označována jako **Celková** agregace. U mnoha metrik Průzkumník metrik skryje agregace, které jsou zcela nepodstatné a nelze je použít.
+Průzkumník metrik má pět základních statistických typů agregace: Sum, Count, min, Max a Average. Agregace *Sum* se někdy označuje jako *Celková* agregace. V případě mnoha metrik Průzkumník metrik skryje agregace, které nejsou relevantní a nelze je použít.
 
-**Sum** – součet všech hodnot zachycených v intervalu agregace
+* **Sum**: součet všech hodnot zachycených během intervalu agregace.
 
-![Snímek obrazovky součtu požadavku](./media/metrics-charts/request-sum.png)
+    ![Snímek obrazovky žádosti o součet](./media/metrics-charts/request-sum.png)
 
-**Count** – počet měření zachycených v intervalu agregace. Počítejte s tím, že v případě, že je metrika vždycky zachycena s hodnotou 1, se **počet** bude rovnat **součtu** . To je běžné v případě, že metrika sleduje počet různých událostí a každé měření představuje jednu událost (tj. kód se při každém výskytu nové žádosti aktivuje na záznam metriky).
+* **Count**(počet): počet měření zachycených během intervalu agregace. 
+    
+    Pokud je metrika vždy zachycena s hodnotou 1, agregace Count je rovna agregaci součtu. Tento scénář je běžný, pokud metrika sleduje počet jedinečných událostí a každé měření představuje jednu událost. Kód vygeneruje záznam metriky pokaždé, když přijde nový požadavek.
 
-![Snímek obrazovky počtu požadavků](./media/metrics-charts/request-count.png)
+    ![Snímek obrazovky s požadavkem na počet.](./media/metrics-charts/request-count.png)
 
-**Average** – průměr hodnot metriky zachycených v intervalu agregace
+* **Average**: průměr hodnot metriky zachycených během intervalu agregace.
 
-![Snímek obrazovky s průměrným požadavkem](./media/metrics-charts/request-avg.png)
+    ![Snímek obrazovky s průměrným požadavkem.](./media/metrics-charts/request-avg.png)
 
-**Min** – nejmenší hodnota zachycená v intervalu agregace
+* **Min**: nejmenší hodnota zachycená během intervalu agregace.
 
-![Snímek obrazovky s minimální žádostí](./media/metrics-charts/request-min.png)
+    ![Snímek obrazovky s minimální žádostí](./media/metrics-charts/request-min.png)
 
-**Max** – největší hodnota zachycená v intervalu agregace
+* **Max**: největší hodnota zachycená během intervalu agregace.
 
-![Snímek obrazovky s maximálním počtem žádostí](./media/metrics-charts/request-max.png)
+    ![Snímek obrazovky s maximálním požadavkem](./media/metrics-charts/request-max.png)
 
-## <a name="apply-filters-to-charts"></a>Použití filtrů u grafů
+## <a name="filters"></a>Filtry
 
-Můžete použít filtry na grafy, které zobrazují metriky s rozměry. Pokud například metrika "Count" obsahuje dimenzi, "typ odezvy", která označuje, zda byla odpověď z transakcí úspěšná nebo neúspěšná, pak filtrování v této dimenzi vykreslí řádek grafu pouze úspěšných (nebo pouze neúspěšných) transakcí. 
+Můžete použít filtry na grafy, jejichž metriky mají rozměry. Představte si například metriku "počet transakcí", která má dimenzi "typ odpovědi". Tato dimenze označuje, zda byla odpověď z transakcí úspěšná nebo neúspěšná. Pokud filtrujete tuto dimenzi, zobrazí se řádek grafu jenom úspěšných (nebo jenom neúspěšných) transakcí. 
 
-### <a name="to-add-a-filter"></a>Přidání filtru
+### <a name="add-a-filter"></a>Přidání filtru
 
-1. Vyberte **Přidat filtr** nad grafem.
+1. Nad grafem vyberte **Přidat filtr**.
 
-2. Vyberte dimenzi (vlastnost), kterou chcete filtrovat.
+2. Vyberte dimenzi (vlastnost), která se má filtrovat.
 
    ![Snímek obrazovky zobrazující dimenze (vlastnosti), které můžete filtrovat.](./media/metrics-charts/028.png)
 
-3. Vyberte, které hodnoty dimenze chcete zahrnout při vykreslování grafu (Tento příklad ukazuje odfiltrování úspěšných transakcí úložiště):
+3. Vyberte hodnoty dimenzí, které chcete zahrnout při vykreslení grafu. Následující příklad odfiltruje úspěšné transakce úložiště:
 
-   ![Snímek obrazovky zobrazující filtrování z úspěšných transakcí úložiště](./media/metrics-charts/029.png)
+   ![Snímek obrazovky zobrazující úspěšné filtrované transakce úložiště](./media/metrics-charts/029.png)
 
-4. Po výběru hodnot filtru klikněte na pryč v selektoru filtru a zavřete ho. Graf teď zobrazuje, kolik transakcí úložiště selhalo:
+4. Vyberte mimo **selektor filtru** a zavřete ho. Graf teď zobrazuje, kolik transakcí úložiště selhalo:
 
-   ![Snímek obrazovky, který ukazuje, kolik transakcí úložiště selhalo](./media/metrics-charts/030.png)
+   ![Snímek obrazovky, který ukazuje, kolik transakcí úložiště selhalo.](./media/metrics-charts/030.png)
 
-5. Opakováním kroků 1-4 můžete použít více filtrů pro stejné grafy.
+Opakováním těchto kroků můžete použít více filtrů pro stejné grafy.
 
 
 
-## <a name="apply-splitting-to-a-chart"></a>Použití rozdělení na graf
+## <a name="metric-splitting"></a>Rozdělení metriky
 
-Metriku můžete rozdělit podle dimenzí, abyste vizualizují, jak různé segmenty metriky vzájemně porovnávají a identifikují neležící segmenty dimenze.
+Metriku můžete rozdělit podle dimenzí, abyste vizualizují, jak různé segmenty metriky jsou srovnávány. Rozdělení vám také může přispět k identifikaci neležících segmentů dimenze.
 
 ### <a name="apply-splitting"></a>Použít rozdělení
 
-1. V grafu klikněte na **rozdělení použít** .
+1. Nad grafem vyberte **použít rozdělení**.
  
    > [!NOTE]
-   > Rozdělení nelze použít u grafů s více metrikami. Můžete mít také více filtrů, ale v jednom grafu je použita pouze jedna rozdělená dimenze.
+   > Grafy, které mají více metrik, nemůžou používat rozdělení funkcí. I když graf může mít více filtrů, může mít pouze jednu rozdělenou dimenzi.
 
-2. Vyberte dimenzi, na které chcete graf rozdělit:
+2. Vyberte dimenzi, na které se má graf rozdělit:
 
-   ![Snímek obrazovky zobrazující vybranou dimenzi, na které se má váš graf rozdělit](./media/metrics-charts/031.png)
+   ![Snímek obrazovky zobrazující vybranou dimenzi, na které se má graf rozdělit](./media/metrics-charts/031.png)
 
-   Nyní graf nyní zobrazuje více řádků, jeden pro každý segment dimenze:
+   Graf nyní zobrazuje více řádků, jeden pro každý segment dimenze:
 
-   ![Snímek obrazovky, který zobrazuje více řádků, jeden pro každý segment dimenze.](./media/metrics-charts/032.png)
+   ![Snímek obrazovky zobrazující řádky pro jednotlivé segmenty dimenzí](./media/metrics-charts/032.png)
 
-3. Kliknutím na tlačítko mimo **Výběr seskupení** jej zavřete.
+3. Vyberte mimo **selektor seskupení** a zavřete ho.
 
    > [!NOTE]
-   > Použijte filtrování i rozdělení na stejnou dimenzi, abyste skryli segmenty, které jsou pro váš scénář nerelevantní a usnadňují čtení grafů.
+   > Chcete-li skrýt segmenty, které jsou nepodstatné pro váš scénář, a usnadnit čtení grafů, použijte filtrování i rozdělení na stejnou dimenzi.
 
-## <a name="lock-boundaries-of-chart-y-axis"></a>Zamknout hranice osy y grafu
+## <a name="locking-the-range-of-the-y-axis"></a>Uzamykání rozsahu osy y
 
-Uzamykání rozsahu osy y je důležité, pokud se v grafu zobrazí menší kolísání větších hodnot. 
+Uzamčení rozsahu osy hodnot (y) je důležité v grafech, které zobrazují malé kolísání velkých hodnot. 
 
-Například pokud se objem úspěšných žádostí sníží z 99,99% na 99,5%, může představovat významné snížení kvality služby. Všímáte malých numerických hodnot ale může být obtížné nebo dokonce nemožné z výchozího nastavení grafu. V takovém případě můžete uzamknout nejnižší hranici grafu až 99%, což by vedlo k lepšímu vynechání tohoto malého vypuštění. 
+Například pokles objemu úspěšných požadavků od 99,99% do 99,5% může představovat významné snížení kvality služby. Ale pokud použijete výchozí nastavení grafu, ale všímáte malými výkyvy numerických hodnot, je obtížné nebo ještě nemožné. V takovém případě můžete uzamknout nejnižší hranici grafu až 99 procent, aby bylo malé vyřazení přesnější. 
 
-Dalším příkladem je kolísání dostupné paměti, kde hodnota nebude technicky nikdy dostupná 0. Když opravíte rozsah na vyšší hodnotu, může to být tím, že se v paměti uvolní. 
+Dalším příkladem je kolísání dostupné paměti. V tomto scénáři nebude hodnota technicky nikdy přístupná 0. Oprava rozsahu na vyšší hodnotu by mohla být v dostupném případě přehlednější. 
 
-Chcete-li řídit rozsah osy y, použijte znak "...". Nabídka graf a vyberte **nastavení grafu** pro přístup k rozšířeným nastavením grafu.
+Chcete-li řídit rozsah osy y, otevřete nabídku grafu (**...**). Pak vyberte **nastavení grafu** pro přístup k pokročilým nastavením grafu.
 
-![Snímek obrazovky, který zvýrazní možnost nastavení grafu](./media/metrics-charts/033.png)
+![Snímek obrazovky, který zvýrazní výběr nastavení grafu](./media/metrics-charts/033.png)
 
- Upravte hodnoty v části Rozsah osy Y nebo použijte tlačítko **auto** a vraťte se k výchozímu nastavení.
+Upravte hodnoty v části **Rozsah osy Y** nebo vyberte **auto** a vraťte se k výchozím hodnotám.
  
  ![Snímek obrazovky, který zvýrazní část rozsahu osy Y.](./media/metrics-charts/034.png)
 
 > [!WARNING]
-> Uzamykání ohraničení osy y pro grafy, které sledují různé počty nebo součty v určitém časovém období (a proto používají počty, součty, minimum nebo maximum agregace) obvykle vyžadují zadání členitosti času, ale nespoléhání se na automatické výchozí hodnoty. To je nezbytné, protože hodnoty v grafech se mění, když je časová hustota automaticky upravována uživatelem v prohlížeči nebo při přechodu z jednoho rozlišení obrazovky na jiný. Výsledná změna v časovém intervalu ovlivňuje vzhled grafu, neověřuje aktuální výběr rozsahu osy y.
+> Pokud potřebujete zamknout hranice osy y pro grafy, které sledují počty nebo součty v určitém časovém období (pomocí agregací COUNT, Sum, min nebo max), měli byste obvykle zadat členitou časovou osu. V takovém případě byste neměli spoléhat na automatické výchozí hodnoty. 
+>
+> Zvolíte pevnou časovou členitost, protože hodnoty grafu se změní, když se automaticky upraví časové rozlišení, jakmile uživatel změní velikost okna prohlížeče nebo změní rozlišení obrazovky. Výsledná změna v časové členitosti má vliv na vzhled grafu, který neověřuje aktuální výběr rozsahu osy y.
 
-## <a name="change-colors-of-chart-lines"></a>Změna barev čar grafu
+## <a name="line-colors"></a>Barvy čáry
 
 Po nakonfigurování grafů jsou čáry grafu automaticky přiřazeny barevně z výchozí palety. Tyto barvy můžete změnit.
 
-Chcete-li změnit barvu čáry grafu, klikněte na barevný pruh v legendě, která odpovídá grafu. Otevře se dialogové okno pro výběr barvy. Použijte výběr barvy ke konfiguraci barvy čáry.
+Chcete-li změnit barvu čáry grafu, vyberte v legendě barevný pruh, který odpovídá grafu. Otevře se dialogové okno pro výběr barvy. Pro konfiguraci barvy čáry použijte výběr barvy.
 
-![Snímek obrazovky, který ukazuje, jak změnit barvu](./media/metrics-charts/035.png)
+![Snímek obrazovky, který ukazuje, jak změnit barvu.](./media/metrics-charts/035.png)
 
-Až budou barvy grafu nakonfigurované, zůstanou při připnutí grafu na řídicí panel. V následující části se dozvíte, jak připnout graf.
+Vaše přizpůsobené barvy se zachovají při připnutí grafu na řídicí panel. V následující části se dozvíte, jak připnout graf.
 
-## <a name="pin-charts-to-dashboards"></a>Připnutí grafů na řídicí panely
+## <a name="pinning-to-dashboards"></a>Připnutí k řídicím panelům 
 
-Po nakonfigurování grafů je můžete chtít přidat na řídicí panely, abyste ji mohli znovu zobrazit, případně v kontextu jiné telemetrie monitorování nebo sdílet s týmem.
+Po nakonfigurování grafu je můžete chtít přidat na řídicí panel. Když připnete graf na řídicí panel, můžete ho zpřístupnit vašemu týmu. Přehledy můžete získat také zobrazením v kontextu jiné telemetrie monitorování.
 
-Připnutí nakonfigurovaného grafu na řídicí panel:
+Pokud chcete napnout nakonfigurovaný graf na řídicí panel, vyberte v pravém horním rohu grafu možnost **Připnout na řídicí panel**.
 
-Po konfiguraci grafu klikněte na **Připnout na řídicí panel** v pravém horním rohu grafu.
+![Snímek obrazovky znázorňující, jak připnout graf na řídicí panel](./media/metrics-charts/036.png)
 
-![Snímek obrazovky, který ukazuje, jak připnout na graf](./media/metrics-charts/036.png)
+## <a name="alert-rules"></a>Pravidla upozornění
 
-## <a name="create-alert-rules"></a>Vytváření pravidel upozornění
+Pomocí kritérií vizualizace můžete vytvořit pravidlo upozornění založené na metrikách. Nové pravidlo upozornění bude zahrnovat cílové prostředky, metriky, rozdělení a filtrování dimenzí vašeho grafu. Tato nastavení můžete změnit pomocí podokna pro vytvoření pravidla výstrahy.
 
-Můžete použít kritéria, která jste nastavili k vizualizaci metrik, jako základ pro pravidlo upozornění na základě metrik. Nové pravidlo upozorňování bude obsahovat cílový prostředek, metriku, rozdělení a filtrování dimenzí v grafu. Tato nastavení budete moct později změnit v podokně vytvoření pravidla výstrahy.
+Začněte tím, že vyberete **nové pravidlo výstrahy**.
 
-### <a name="to-create-a-new-alert-rule-click-new-alert-rule"></a>Chcete-li vytvořit nové pravidlo výstrahy, klikněte na **nové pravidlo výstrahy** .
+![Snímek obrazovky zobrazující tlačítko nového pravidla výstrahy zvýrazněné červeně](./media/metrics-charts/042.png)
 
-![Tlačítko nové pravidlo upozornění zvýrazněné červeně](./media/metrics-charts/042.png)
+Otevře se podokno vytvoření pravidla výstrahy. V podokně vidíte rozměry metriky grafu. Pole v podokně jsou předem vyplněna, aby vám pomohly upravit pravidlo.
 
-Převezmete podokno pro vytvoření pravidla výstrahy se základními rozměry metriky z vašeho grafu, aby bylo snazší generovat vlastní pravidla upozornění.
+![Snímek obrazovky znázorňující podokno pro vytvoření pravidla](./media/metrics-charts/041.png)
 
-![Vytvořit pravidlo výstrahy](./media/metrics-charts/041.png)
-
-Další informace o nastavení výstrah metrik najdete v tomto [článku](alerts-metric.md) .
+Další informace najdete v tématu [Vytvoření, zobrazení a Správa upozornění na metriky](alerts-metric.md).
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-*V grafu nevidím žádná data.*
+Pokud v grafu nevidíte žádná data, přečtěte si následující informace pro řešení potíží:
 
-* Filtry se použijí na všechny grafy v podokně. Ujistěte se, že při zaměření na jeden graf jste nastavili filtr, který vyloučí všechna data na jiném.
+* Filtry se použijí na všechny grafy v podokně. Když se zaměříte na graf, ujistěte se, že jste nastavili filtr, který vylučuje všechna data v jiném grafu.
 
-* Pokud chcete nastavit jiné filtry v různých grafech, vytvořte je v různých oknech a uložte je jako samostatné oblíbené položky. Pokud chcete, můžete je připnout na řídicí panel, abyste je viděli společně.
+* Chcete-li nastavit různé filtry v různých grafech, vytvořte grafy v různých oknech. Pak grafy uložte jako samostatné oblíbené položky. Pokud chcete, můžete grafy připnout na řídicí panel, abyste je mohli vidět dohromady.
 
-* Pokud graf vytvoříte tak, že vlastnost, která není definovaná u metriky, nebude v grafu žádná. Zkuste vymazat segmentaci (rozdělení) nebo zvolit jinou vlastnost.
+* Pokud graf nasegmentujte pomocí vlastnosti, kterou metrika nedefinuje, nezobrazí se v grafu žádný obsah. Zkuste vymazat segmentaci (rozdělení) nebo zvolit jinou vlastnost.
 
 ## <a name="next-steps"></a>Další kroky
 
-  Další informace o osvědčených postupech pro vytváření řídicích panelů s možnými metrikami najdete v [tématu vytváření vlastních řídicích panelů klíčových ukazatelů výkonu](../learn/tutorial-app-dashboards.md) .
+Další informace o vytváření řídicích panelů s akcemi pomocí metrik najdete v tématu [vytváření vlastních řídicích panelů klíčových ukazatelů výkonu](../learn/tutorial-app-dashboards.md).
+
+ 

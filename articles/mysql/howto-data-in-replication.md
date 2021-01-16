@@ -6,21 +6,19 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/13/2021
-ms.openlocfilehash: f7103a83d115f30367cc07ff4e1ea64a9cc617b9
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 22974a47a6b1e9d49e5055a85f46286497cfe149
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98199542"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250528"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Postup konfigurace Azure Database for MySQL Replikace vstupních dat
 
 Tento článek popisuje, jak nastavit [replikace vstupních dat](concepts-data-in-replication.md) v Azure Database for MySQL konfigurací zdrojového serveru a serveru repliky. V tomto článku se předpokládá, že máte několik předchozích zkušeností se servery a databázemi MySQL.
 
 > [!NOTE]
-> Komunikace bez posunu
->
-> Microsoft podporuje různé a zahrnuté prostředí. Tento článek obsahuje odkazy na _Hlavní_ a _podřízený_ text. [Průvodce stylem Microsoftu pro komunikaci bez předplatných](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) je rozpoznává jako vyloučená slova. Tato slova se v tomto článku používají kvůli konzistenci, protože jsou aktuálně slova, která se zobrazují v softwaru. Když se software aktualizuje, aby se odstranila slova, Tento článek se aktualizuje tak, aby se vyrovnává.
+> Tento článek obsahuje odkazy na _podřízený_ termín, termín, který už Microsoft nepoužívá. Po odebrání termínu ze softwaru ho odebereme z tohoto článku.
 >
 
 Pokud chcete vytvořit repliku ve službě Azure Database for MySQL, [replikace vstupních dat](concepts-data-in-replication.md)  synchronizuje data ze zdrojového serveru MySQL místně, na virtuálních počítačích (VM) nebo v cloudových databázových službách. Replikace vstupních dat je založená na replikaci na základě pozice v souboru binárního protokolu (binlog) nativní pro MySQL. Další informace o replikaci binlog najdete v tématu [Přehled replikace MySQL binlog](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html).

@@ -6,12 +6,12 @@ ms.author: bwren
 ms.subservice: metrics
 ms.topic: tutorial
 ms.date: 03/09/2020
-ms.openlocfilehash: 5dcb86ff4af2a68ecf0bb361e6da4f788ea32b62
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 121de67ddb251e7431873c76e379eb223ceacd0d
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881289"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250668"
 ---
 # <a name="tutorial-create-a-metrics-chart-in-azure-monitor"></a>Kurz: vytvoření grafu metrik v Azure Monitor
 Průzkumník metrik je funkce Azure Monitor v Azure Portal, která umožňuje vytvářet grafy z hodnot metriky, vizuálně sladit trendy a zkoumat špičky a neshodné hodnoty metriky. Pomocí Průzkumníka metrik můžete prozkoumat stav a využití vašich prostředků Azure nebo vykreslit grafy z vlastních metrik. 
@@ -27,7 +27,7 @@ Následuje video, které zobrazuje rozsáhlejší scénář, než postup uveden�
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4qO59]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete prostředek Azure, který se má monitorovat. Můžete použít libovolný prostředek v předplatném Azure, které podporuje metriky. Chcete-li zjistit, zda prostředek podporuje metriky, přejděte do příslušné nabídky v Azure Portal a ověřte, zda je v této nabídce v části **monitorování** k dispozici možnost **metriky** .
 
@@ -70,20 +70,20 @@ Použijte **časový štětec** k prozkoumání zajímavé oblasti grafu, jako j
 ## <a name="apply-dimension-filters-and-splitting"></a>Použití filtrů dimenzí a rozdělení
 V následujících odkazech najdete informace o pokročilých funkcích, které vám umožní provádět další analýzy metrik a identifikovat potenciální odlehlé hodnoty ve vašich datech.
 
-- [Filtrování](../platform/metrics-charts.md#apply-filters-to-charts) umožňuje zvolit, které hodnoty dimenze budou zahrnuty v grafu. Například může být vhodné zobrazit pouze úspěšné požadavky při vytváření grafu metriky *doby odezvy serveru* . 
+- [Filtrování](../platform/metrics-charts.md#filters) umožňuje zvolit, které hodnoty dimenze budou zahrnuty v grafu. Například může být vhodné zobrazit pouze úspěšné požadavky při vytváření grafu metriky *doby odezvy serveru* . 
 
-- [Rozdělení](../platform/metrics-charts.md#apply-splitting-to-a-chart) ovládacích prvků určuje, zda graf zobrazuje samostatné řádky pro každou hodnotu dimenze, nebo agreguje hodnoty do jednoho řádku. Například můžete chtít zobrazit jednu čáru pro průměrnou dobu odezvy napříč všemi instancemi serveru nebo můžete chtít samostatné řádky pro každý server. 
+- [Rozdělení](../platform/metrics-charts.md#apply-splitting) ovládacích prvků určuje, zda graf zobrazuje samostatné řádky pro každou hodnotu dimenze, nebo agreguje hodnoty do jednoho řádku. Například můžete chtít zobrazit jednu čáru pro průměrnou dobu odezvy napříč všemi instancemi serveru nebo můžete chtít samostatné řádky pro každý server. 
 
 Podívejte [se na příklady grafů](../platform/metric-chart-samples.md) , které mají použité filtrování a rozdělení.
 
 ## <a name="advanced-chart-settings"></a>Upřesnit nastavení grafu
 
-Můžete přizpůsobit styl grafu, název a upravit pokročilá nastavení grafu. Po dokončení přizpůsobení ho připněte na řídicí panel, abyste mohli svoji práci uložit. Můžete také nakonfigurovat výstrahy metrik. V tématu [Pokročilé funkce služby Azure Průzkumník metrik](../platform/metrics-charts.md#lock-boundaries-of-chart-y-axis) se dozvíte o těchto a dalších pokročilých funkcích v průzkumníkovi metrik Azure monitor.
+Můžete přizpůsobit styl grafu, název a upravit pokročilá nastavení grafu. Po dokončení přizpůsobení ho připněte na řídicí panel, abyste mohli svoji práci uložit. Můžete také nakonfigurovat výstrahy metrik. V tématu [Pokročilé funkce služby Azure Průzkumník metrik](../platform/metrics-charts.md#locking the-range-of-the-y-axis) se dozvíte o těchto a dalších pokročilých funkcích v průzkumníkovi metrik Azure monitor.
 
 
 ## <a name="next-steps"></a>Další kroky
 Teď, když jste se naučili pracovat s metrikami v Azure Monitor, Naučte se používat metriky k posílání proaktivní výstrah.
 
 > [!div class="nextstepaction"]
-> [Vytváření, zobrazení a správa upozornění na metriky pomocí služby Azure Monitor](../platform/metrics-charts.md#create-alert-rules)
+> [Vytváření, zobrazení a správa upozornění na metriky pomocí služby Azure Monitor](../platform/metrics-charts.md#alert-rules)
 

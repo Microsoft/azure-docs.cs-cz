@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/18/2020
-ms.openlocfilehash: b62621a77f383b5c6413e7c187e7ba3d60beabad
-ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
+ms.openlocfilehash: 5e608d38ff70d51b569088629a6d80cb08e74ed4
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97732083"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251620"
 ---
 # <a name="synonyms-in-azure-cognitive-search"></a>Synonyma v Azure Kognitivní hledání
 
@@ -21,9 +21,9 @@ Pomocí map synonym můžete přidružit ekvivalentní podmínky a rozšířit r
 
 ## <a name="create-synonyms"></a>Vytvořit synonyma
 
-Mapa synonym je Asset, který se dá vytvořit jednou a použít v mnoha indexech. [Úroveň služby](search-limits-quotas-capacity.md#synonym-limits) určuje, kolik mapování synonym můžete vytvořit, od 3 do 1. mapy synonym pro úrovně Free a Basic, až 20 pro úrovně Standard. 
+Mapa synonym je Asset, který se dá vytvořit jednou a použít v mnoha indexech. [Úroveň služby](search-limits-quotas-capacity.md#synonym-limits) určuje, kolik mapování synonym můžete vytvořit (v rozsahu od tří než tří synonymních map pro úrovně Free a Basic, až 20 pro úrovně Standard. 
 
-Můžete vytvořit více map synonym pro různé jazyky, jako jsou anglické a francouzské verze, nebo lexikony, pokud obsah obsahuje technickou nebo nadkrývající terminologii. I když můžete vytvořit více map synonym, v současné době může pole použít pouze jeden z nich.
+Můžete vytvořit více map synonym pro různé jazyky, jako jsou anglické a francouzské verze, nebo lexikony, pokud obsah obsahuje technickou nebo nadkrývající terminologii. I když ve vyhledávací službě můžete vytvořit několik map synonym, může pole použít jenom jeden z nich.
 
 Mapa synonym se skládá z názvu, formátu a pravidel, které fungují jako položky mapování synonym. Jediným podporovaným formátem je `solr` a `solr` formát Určuje vytváření pravidel.
 
@@ -50,7 +50,7 @@ Pravidla mapování dodržují specifikace Open Source filtru synonym pro Apache
 
 Každé pravidlo musí být odděleno znakem nového řádku ( `\n` ). Můžete definovat až 5 000 pravidel na mapování synonym v rámci bezplatné služby a 20 000 pravidel na mapu v jiných úrovních. Každé pravidlo může mít až 20 rozšíření (nebo položek v pravidle). Další informace najdete v tématu [omezení synonym](search-limits-quotas-capacity.md#synonym-limits).
 
-Analyzátory dotazů budou mít malá písmena velká a malá písmena, ale pokud chcete zachovat speciální znaky v řetězci, jako je čárka nebo pomlčka, přidejte při vytváření mapy synonym příslušné řídicí znaky. 
+Analyzátory dotazů budou mít malá písmena velká a malá písmena, ale pokud chcete zachovat speciální znaky v řetězci, jako je čárka nebo pomlčka, přidejte při vytváření mapy synonym příslušné řídicí znaky.
 
 ### <a name="equivalency-rules"></a>Pravidla pro rovnocennost
 
@@ -85,7 +85,7 @@ V případě explicitního případu je dotaz na `Washington` `Wash.` nebo `WA` 
 
 ### <a name="escaping-special-characters"></a>Speciální znaky pro uvozovací znaky
 
-Pokud potřebujete definovat synonyma, která obsahují čárky nebo jiné speciální znaky, můžete je zadat pomocí zpětného lomítka, jako v tomto příkladu:
+Při zpracování dotazu se analyzují synonyma. Pokud potřebujete definovat synonyma, která obsahují čárky nebo jiné speciální znaky, můžete je zadat pomocí zpětného lomítka, jako v tomto příkladu:
 
 ```json
 {
@@ -143,11 +143,15 @@ POST /indexes?api-version=2020-06-30
 
 Přidání synonym nezavádí nové požadavky na vytváření dotazů. Můžete vystavit dotazy a fráze stejným způsobem jako před přidáním synonym. Jediným rozdílem je, že pokud se v mapě synonym vyskytuje termín dotazu, stroj dotazu buď rozbalí nebo nahradí podmínky nebo frázi v závislosti na pravidle.
 
-## <a name="how-synonyms-interact-with-other-features"></a>Jak synonyma komunikují s jinými funkcemi
+## <a name="how-synonyms-are-used-during-query-execution"></a>Jak se používají synonyma při provádění dotazu
 
-Funkce synonym přepíše původní dotaz pomocí synonym pomocí operátoru OR. Z tohoto důvodu se zvýrazňování přístupů a profily vyhodnocování považují za původní podmínky a synonyma jako ekvivalentní.
+Synonyma jsou techniky rozšíření dotazu, která doplňují obsah indexu se stejnými výrazy, ale pouze pro pole, která mají přiřazení synonym. Pokud dotaz v oboru pole *vyloučí* pole s povoleným synonymem, neuvidíte shody z mapy synonym.
 
-Synonyma se vztahují pouze na vyhledávací dotazy a nejsou podporovány pro filtry, omezující vlastnosti, automatické dokončování a návrhy. Automatické dokončování a návrhy jsou založené jenom na původním období; shody synonym nejsou v odpovědi zobrazeny.
+V případě polí s povoleným synonymem jsou synonyma považována za stejnou analýzu textu jako související pole. Například pokud se pole analyzuje pomocí standardního analyzátoru aplikace Lucene, budou se za tyto výrazy v době dotazu také vztahovat standardní analyzátor Lucene. Pokud chcete zachovat interpunkční znaménka, jako jsou tečky nebo pomlčky, v termínu synonyma použijte analyzátor pro zachování obsahu v poli.
+
+Interně funkce synonym přepíše původní dotaz s synonymy pomocí operátoru OR. Z tohoto důvodu se zvýrazňování přístupů a profily vyhodnocování považují za původní podmínky a synonyma jako ekvivalentní.
+
+Synonyma se vztahují pouze na textové dotazy bezplatného formuláře a nejsou podporovány pro filtry, omezující vlastnosti, automatické dokončování a návrhy. Automatické dokončování a návrhy jsou založené jenom na původním období; shody synonym nejsou v odpovědi zobrazeny.
 
 Rozšíření synonym neplatí pro výrazy vyhledávání se zástupnými znaky; výrazy s předponou, přibližnými a regulárními výrazy nejsou rozbaleny.
 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 11/06/2020
+ms.date: 01/14/2021
 ms.author: b-juche
-ms.openlocfilehash: a07898692c8af70fab0d2634ed1513f0f3666a4d
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 759759b67582b241d0bab1e043dd15e54a804faf
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505456"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251535"
 ---
 # <a name="troubleshoot-capacity-pool-issues"></a>Řešení potíží s fondy kapacity
 
@@ -34,9 +34,6 @@ Tento článek popisuje řešení problémů, ke kterým může dojít při spr�
 | Vytvoření nebo změna svazku se nezdařila s `Requested throughput not available` chybou | Dostupná propustnost svazku závisí na velikosti fondu kapacity a na úrovni služby. Pokud nemáte dostatek propustnosti, měli byste zvětšit velikost fondu nebo upravit stávající propustnost svazku. | 
 
 ## <a name="issues-when-changing-the-capacity-pool-of-a-volume"></a>Problémy při změně fondu kapacity svazku 
-
-> [!IMPORTANT] 
-> [Dynamická Změna úrovně služby](dynamic-change-volume-service-level.md) pro registraci ve verzi Public Preview se podrží, dokud nebudete pokračovat.
 
 |     Chybový stav    |     Řešení    |
 |-|-|

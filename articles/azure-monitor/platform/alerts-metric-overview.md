@@ -4,12 +4,12 @@ description: Získejte přehled o tom, co můžete dělat s výstrahami metrik a
 ms.date: 01/13/2021
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: d8e0621f88455a68ad0ee1b236f6b423c9d54b52
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: ab80496784b5d86d270830546cec73aadbcc50a6
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98179890"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251229"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Principy fungování upozornění na metriky ve službě Azure Monitor
 
@@ -26,7 +26,7 @@ Můžete definovat pravidlo výstrahy metriky zadáním cílového prostředku, 
 - Cílový prostředek (prostředek Azure, který chcete monitorovat): myVM
 - Metrika: procento využití procesoru
 - Typ podmínky: static
-- Časová agregace (statistika, která se spouští přes nezpracované hodnoty metrik. [Podporovaná časová agregace](metrics-charts.md#changing-aggregation) jsou min, Max, AVG, Total, Count): Average
+- Časová agregace (statistika, která se spouští přes nezpracované hodnoty metrik. [Podporovaná časová agregace](metrics-charts.md#aggregation) jsou min, Max, AVG, Total, Count): Average
 - Období (pohled na pozadí, na kterém jsou zaškrtnuté hodnoty metrik): za posledních 5 minut
 - Frekvence (frekvence, s jakou výstraha metrika kontroluje, jestli jsou podmínky splněné): 1 min
 - Operátor: je větší než
@@ -43,7 +43,7 @@ Pokud v jednom pravidle používáte více podmínek, pravidlo "and" tyto podmí
 - Cílový prostředek (prostředek Azure, který chcete monitorovat): myVM
 - Metrika: procento využití procesoru
 - Typ podmínky: dynamické
-- Časová agregace (statistika, která se spouští přes nezpracované hodnoty metrik. [Podporovaná časová agregace](metrics-charts.md#changing-aggregation) jsou min, Max, AVG, Total, Count): Average
+- Časová agregace (statistika, která se spouští přes nezpracované hodnoty metrik. [Podporovaná časová agregace](metrics-charts.md#aggregation) jsou min, Max, AVG, Total, Count): Average
 - Období (pohled na pozadí, na kterém jsou zaškrtnuté hodnoty metrik): za posledních 5 minut
 - Frekvence (frekvence, s jakou výstraha metrika kontroluje, jestli jsou podmínky splněné): 1 min
 - Operátor: je větší než
@@ -141,7 +141,7 @@ Tato funkce se v současné době podporuje pro metriky platforem (ne pro vlastn
 
 | Služba | Veřejné Azure | Státní správa | Čína |
 |:--------|:--------|:--------|:--------|
-| Virtuální počítače<sup>1</sup>  | **Ano** | **Ano** | No |
+| Virtuální počítače<sup>1</sup>  | **Ano** | **Ano** | Ne |
 | Databáze systému SQL Server | **Ano** | **Ano** | **Ano** |
 | Elastické fondy SQL serveru | **Ano** | **Ano** | **Ano** |
 | Fondy kapacity souborů NetApp | **Ano** | **Ano** | **Ano** |
@@ -180,7 +180,7 @@ V případě upozornění na metriky budete obvykle informováni do 5 minut, pok
 ## <a name="next-steps"></a>Další kroky
 
 - [Naučte se vytvářet, zobrazovat a spravovat upozornění na metriky v Azure.](alerts-metric.md)
-- [Naučte se vytvářet upozornění v rámci Azure montior Průzkumník metrik](./metrics-charts.md#create-alert-rules)
+- [Naučte se vytvářet upozornění v rámci Azure montior Průzkumník metrik](./metrics-charts.md#alert-rules)
 - [Naučte se nasazovat výstrahy metrik pomocí šablon Azure Resource Manager.](./alerts-metric-create-templates.md)
 - [Další informace o skupinách akcí](action-groups.md)
 - [Další informace o typu podmínky dynamického prahového hodnoty](alerts-dynamic-thresholds.md)

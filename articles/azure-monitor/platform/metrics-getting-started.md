@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 710de93a24037031784ca8d37a8ae0be76bff9e6
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 2bf56379a32bf8035ea2d0d3fe797776ec6ba40d
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614579"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250396"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Začínáme s Průzkumníkem metrik Azure
 
@@ -38,7 +38,7 @@ Pokud chcete vytvořit graf metriky, ze svého prostředku, skupiny prostředků
 
     > ![Vyberte metriku](./media/metrics-getting-started/metrics-dropdown.png)
 
-4. Volitelně můžete [změnit agregaci metriky](metrics-charts.md#changing-aggregation). Můžete například chtít, aby v grafu bylo možné zobrazit minimální, maximální nebo průměrné hodnoty metriky.
+4. Volitelně můžete [změnit agregaci metriky](metrics-charts.md#aggregation). Můžete například chtít, aby v grafu bylo možné zobrazit minimální, maximální nebo průměrné hodnoty metriky.
 
 > [!TIP]
 > Použijte tlačítko **Přidat metriku** a opakujte tyto kroky, pokud chcete zobrazit více metrik vykreslených ve stejném grafu. U více grafů v jednom zobrazení vyberte tlačítko **přidat graf** nahoře.
@@ -57,7 +57,7 @@ Ve výchozím nastavení se v grafu zobrazuje posledních 24 hodin dat metrik. P
 
 ## <a name="apply-dimension-filters-and-splitting"></a>Použití filtrů dimenzí a rozdělení
 
-[Filtrování](metrics-charts.md#apply-filters-to-charts) a [rozdělení](metrics-charts.md#apply-splitting-to-a-chart) jsou výkonné diagnostické nástroje pro metriky, které mají rozměry. Tyto funkce ukazují, jak různé segmenty metrik ("hodnoty dimenzí") ovlivňují celkovou hodnotu metriky a umožňují identifikovat možné odlehlé hodnoty.
+[Filtrování](metrics-charts.md#filters) a [rozdělení](metrics-charts.md#apply-splitting) jsou výkonné diagnostické nástroje pro metriky, které mají rozměry. Tyto funkce ukazují, jak různé segmenty metrik ("hodnoty dimenzí") ovlivňují celkovou hodnotu metriky a umožňují identifikovat možné odlehlé hodnoty.
 
 - **Filtrování** umožňuje zvolit, které hodnoty dimenze budou zahrnuty v grafu. Například můžete chtít zobrazit úspěšné požadavky při vytváření grafu metriky *Doba odezvy serveru* . Je nutné použít filtr na *úspěch dimenze požadavku* . 
 

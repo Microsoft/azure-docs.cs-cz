@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: 61bd23c74fd7960317dff17175b355b473cd6dc7
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 921c05b76640935a1bd9e65d556933c23093e5b2
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233827"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251433"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>Řešení potíží s certifikací virtuálního počítače
 
@@ -23,19 +23,6 @@ Tento článek vysvětluje běžné chybové zprávy během publikování imagí
 > [!NOTE]
 > Pokud máte dotazy k tomuto článku nebo návrhy na vylepšení, obraťte se na [podporu partnerského centra](https://aka.ms/marketplacepublishersupport).
 
-## <a name="approved-base-image"></a>Schválená základní image
-
-Když odešlete žádost o opětovné publikování image s aktualizacemi, může testovací případ na částečný počet selhat. Pokud dojde k chybě, váš obrázek nebude schválený.
-
-K této chybě dojde, když použijete základní bitovou kopii, která patří jinému vydavateli a aktualizovali jste bitovou kopii. V takové situaci nebudete moct publikovat image.
-
-Chcete-li tento problém vyřešit, načtěte obrázek z Azure Marketplace a proveďte v něm změny. Další informace najdete v následujících článcích:
-
-- [Image Linux](../virtual-machines/linux/endorsed-distros.md?toc=/azure/virtual-machines/linux/toc.json)
-- [Bitové kopie systému Windows](azure-vm-create-using-approved-base.md)
-
-> [!Note]
-> Pokud používáte základní image Linux, která se nepoužívá Azure Marketplace, zajistěte prosím, aby první 2048 sektorů (každý sektor je 512 bajtů) na virtuálním pevném disku bylo prázdné, aby Azure pokračoval s publikováním virtuálního počítače pro Azure Marketplace.  
 
 ## <a name="vm-extension-failure"></a>Selhání rozšíření virtuálního počítače
 
@@ -170,7 +157,7 @@ V následující tabulce najdete běžné chyby, které se můžou zobrazit při
 V následující tabulce jsou uvedeny testovací případy systému Windows, které sada nástrojů spustí, spolu s popisem ověření testu:
 
 |Scenario |Testovací případy|Popis|
-|---|---|---|---|
+|---|---|---|
 |1|Architektura operačního systému|Azure podporuje jenom 64 operačních systémů.|
 |2|Závislost uživatelského účtu|Spuštění aplikace by nemělo být závislé na účtu správce.|
 |3|Cluster s podporou převzetí služeb při selhání|Funkce Clustering s podporou převzetí služeb při selhání ve Windows serveru zatím není podporovaná. Aplikace by neměla být závislá na této funkci.|
@@ -250,7 +237,7 @@ Pokud bitová kopie není nainstalovaná s některou z následujících verzí j
 |Řada OS|Verze|jádro|
 |---|---|---|
 |Ubuntu|14,04 LTS|4.4.0-151| 
-||14,04 LTS|4.15.0-1049 – * – Azure|
+||14,04 LTS|4.15.0-1049 – \* Azure|
 ||16,04 LTS|4.15.0-1049|
 ||18,04 LTS|4.18.0 – 1023|
 ||18,04 LTS|5.0.0-1025|
@@ -283,9 +270,9 @@ Pokud bitová kopie není nainstalovaná s některou z následujících verzí j
 |Oracle|6,10|UEK2 2.6.39-400.312.2<br>UEK3 3.8.13-118.35.2<br>RHCK 2.6.32-754.15.3 
 ||7.0 – 7.5|UEK3 3.8.13-118.35.2<br>UEK4 4.1.12-124.28.3<br>RHCK následuje po RHEL.|
 ||7.6|RHCK 3.10.0-957.21.3<br>UEK5 4.14.35-1902.2.0|
-|CoreOS stabilní 2079.6.0|4.19.43*|
-||Beta verze 2135.3.1|4.19.50*|
-||Alfa 2163.2.1|4.19.50*|
+|CoreOS stabilní 2079.6.0|4.19.43\*|
+||Beta verze 2135.3.1|4.19.50\*|
+||Alfa 2163.2.1|4.19.50\*|
 |Debian|Jessie (zabezpečení)|3.16.68 – 2|
 ||Jessie – porty|4.9.168-1 + deb9u3|
 ||Roztáhnout (zabezpečení)|4.9.168-1 + deb9u3|
@@ -328,14 +315,11 @@ V následující tabulce najdete případné problémy, které vznikají při st
 |6|Podmíněná hlavička HTTP|Adresa URL SAS není platná.|Získejte správnou adresu URL SAS.|
 |7|Neplatný název VHD|Zkontrolujte, jestli v názvu VHD existují nějaké speciální znaky, jako je například znak procenta `%` nebo uvozovky `"` .|Přejmenujte soubor VHD odebráním speciálních znaků.|
 
-## <a name="first-1mb-2048-sectors-each-sector-of-512-bytes-partition-linux-only"></a>První 1 MB (2048 sektorů, každý sektor v 512 bajtech) oddíl (jenom Linux)
+## <a name="first-1-mb-partition-2048-sectors-each-sector-of-512-bytes"></a>První oddíl 1-MB (2 048 sektorů, každý sektor 512 bajtů)
 
-Když odešlete VHD, ujistěte se, že první 2048 sektorů (1 MB) virtuálního pevného disku je prázdný. V opačném případě se vaše žádost nezdaří. Upozorňujeme, že tato akce bude platit pro disk Boot/OS a ne pro žádné další datové disky.
+Pokud [vytváříte vlastní image](azure-vm-create-using-own-image.md), ujistěte se, že první 2 048 sektorů disku s operačním systémem (1 MB) je prázdný. V opačném případě se publikování nezdaří. Tento požadavek platí jenom pro disk s operačním systémem (ne pro datové disky). Pokud sestavíte image [ze schválené základny](azure-vm-create-using-approved-base.md), můžete tento požadavek přeskočit. 
 
->[!NOTE]
->U určitých speciálních imagí, jako jsou ty, které jsou postavené na základních imagích Azure pro Windows, z Azure Marketplace nebo zajistěte, aby první 1 048 závažnosti (2048 sektorů) virtuálního pevného disku byla prázdná. 
-
-### <a name="create-a-first-1mb-2048-sectors-each-sector-of-512-bytes-partition-on-an-empty-vhd"></a>Vytvořte první 1 MB (2048 sektorů, každý sektor na 512 bajtů) oddílu na prázdném virtuálním pevném disku.
+### <a name="create-a-1-mb-partition-2048-sectors-each-sector-of-512-bytes-on-an-empty-vhd-linux-only-steps"></a>Vytvoření oddílu s 1 MBm (2 048 sektorů, každého sektoru 512 bajtů) na prázdném virtuálním pevném disku (kroky jenom se systémem Linux)
 
 Tyto kroky platí jenom pro Linux.
 
@@ -400,7 +384,7 @@ Tyto kroky platí jenom pro Linux.
 
 1. Odpojte virtuální pevný disk od virtuálního počítače a odstraňte virtuální počítač.
 
-### <a name="create-a-first-mb-2048-sectors-each-sector-of-512-bytes-partition-by-moving-existing-data-on-vhd"></a>Vytvoření prvního oddílu MB (2048 sektorů, každého sektoru 512 bajtů) přesunutím stávajících dat na VHD
+### <a name="create-a-first-1-mb-partition-2048-sectors-each-sector-of-512-bytes-by-moving-existing-data-on-vhd"></a>Vytvoření prvního oddílu s 1 MBm (2 048 sektorů, každého sektoru 512 bajtů) přesunutím stávajících dat na virtuální pevný disk
 
 Tyto kroky platí jenom pro Linux.
 

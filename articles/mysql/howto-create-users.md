@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/13/2021
-ms.openlocfilehash: de4e7959a5778c7275427450ead876338f052882
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 9a6346a2b62c81dd74cf0ebe9a85df12d3488679
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196771"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251246"
 ---
 # <a name="create-databases-and-users-in-azure-database-for-mysql"></a>Vytváření databází a uživatelů v Azure Database for MySQL
 
@@ -20,9 +20,7 @@ ms.locfileid: "98196771"
 Tento článek popisuje, jak vytvořit uživatele v Azure Database for MySQL.
 
 > [!NOTE]
-> Komunikace bez posunu
->
-> Microsoft podporuje různé a zahrnuté prostředí. Tento článek obsahuje odkazy na _Hlavní_ a _podřízený_ text. [Průvodce stylem Microsoftu pro komunikaci bez předplatných](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) je rozpoznává jako vyloučená slova. Tato slova se v tomto článku používají kvůli konzistenci, protože jsou aktuálně slova, která se zobrazují v softwaru. Když se software aktualizuje, aby se odstranila slova, Tento článek se aktualizuje tak, aby se vyrovnává.
+> Tento článek obsahuje odkazy na _podřízený_ termín, termín, který už Microsoft nepoužívá. Po odebrání termínu ze softwaru ho odebereme z tohoto článku.
 >
 
 Při prvním vytvoření serveru Azure Database for MySQL jste zadali uživatelské jméno a heslo správce serveru. Další informace najdete v tomto [rychlém](quickstart-create-mysql-server-database-using-azure-portal.md)startu. Uživatelské jméno správce serveru můžete určit v Azure Portal.
