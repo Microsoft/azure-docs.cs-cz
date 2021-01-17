@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2021
-ms.openlocfilehash: a708fb76b5a3d0fd0683cdb8915d1a5e1824a57c
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 4ad362b983f81e2cdc10cdbccafd8dda951482d7
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251664"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539554"
 ---
 # <a name="how-to-estimate-and-manage-costs-of-an-azure-cognitive-search-service"></a>Jak odhadnout a spravovat náklady na službu Azure Kognitivní hledání
 
@@ -25,7 +25,12 @@ Architektura škálovatelnosti v Azure Kognitivní hledání je založená na fl
 
 Množství prostředků používaných vaší vyhledávací službou vynásobené fakturační sazbou stanovenou vrstvou služby určuje náklady na provoz služby. Náklady a kapacita jsou pevně vázané. Při odhadování nákladů je potřeba pochopit kapacitu potřebnou ke spouštění vašich úloh indexování a dotazování, což vám dává nejlepší představu o plánovaných nákladech.
 
-Pro účely fakturace má Kognitivní hledání koncept *hledané jednotky* (SU). SU je produktem *replik* a *oddílů* používaných službou: **(R × P = SU)**. Počet jednotek služby SUs vynásobený fakturační sazbou **(Su * sazba = Měsíční útrata)** je primárním rozhodujícím z nákladů souvisejících s vyhledáváním. 
+Pro účely fakturace existují dva jednoduché vzorce, které je třeba znát:
+
+| Vzorec | Popis |
+|---------|-------------|
+| **R × P = SU** | Počet použitých replik vynásobený počtem použitých oddílů se rovná množství *jednotek hledání* (SU) používaných službou. SU je jednotka prostředku, která může být buď oddílem, nebo replikou. |
+| **SU * fakturační sazba = měsíční výdaje** | Počet služeb SUs vynásobený fakturační sazbou úrovně, ve které jste službu zřídili, je primárním rozhodujícím rozhodujícím z vašich celkových měsíčních faktur. Některé funkce nebo úlohy mají závislosti na dalších službách Azure, což může zvýšit náklady na vaše řešení na úrovni předplatného. V části Fakturovatelné události najdete funkce, které se dají přidat do faktury. |
 
 Každá služba začíná jednou SU (jedna replika vynásobená jedním oddílem) jako minimální. Maximum pro jakoukoli službu je 36 SUs. Toto maximum je možné dosáhnout několika způsoby: 6 oddílů × 6 replik nebo 3 oddíly x 12 replik, například. Je běžné použít méně než celkovou kapacitu (například 3-replika, 3-partition Service se účtuje jako 9 SUs). Platné kombinace najdete v grafu [kombinací oddílů a repliky](search-capacity-planning.md#chart) .
 

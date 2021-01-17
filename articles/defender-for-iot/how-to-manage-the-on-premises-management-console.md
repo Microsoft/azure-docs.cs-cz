@@ -4,15 +4,15 @@ description: Přečtěte si o možnostech místní konzoly pro správu, jako je 
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/12/2020
+ms.date: 1/12/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 34efef4a01b58cc26fd1567336184837a703ade2
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 80dbad919e9446100bdeebb7cde71c147abfc8bc
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97838752"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539345"
 ---
 # <a name="manage-the-on-premises-management-console"></a>Správa místní konzoly pro správu
 
@@ -49,9 +49,26 @@ Azure Defender pro IoT používá certifikáty SSL a TLS k těmto akcím:
 
 - Nahrajte certifikát podepsaný certifikační autoritou a vyžádejte si konkrétní požadavky na certifikát a šifrování, které vaše organizace požaduje.
 
-- Umožňuje ověření mezi konzolou pro správu a připojenými senzory a mezi konzolou pro správu a konzolou pro správu s vysokou dostupností. Ověření se vyhodnocuje na základě seznamu odvolaných certifikátů a data vypršení platnosti certifikátu. *Pokud se ověření nepovede, dojde k zastavení komunikace mezi konzolou pro správu a senzorem a v konzole se zobrazí chyba ověření.* Tato možnost je po instalaci povolena ve výchozím nastavení.
+- Umožňuje ověření mezi konzolou pro správu a připojenými senzory a mezi konzolou pro správu a konzolou pro správu s vysokou dostupností. Ověření se vyhodnocuje na základě seznamu odvolaných certifikátů a data vypršení platnosti certifikátu. *Pokud se ověření nepovede, dojde k zastavení komunikace mezi konzolou pro správu a senzorem a v konzole se zobrazí chyba ověření*. Tato možnost je po instalaci povolena ve výchozím nastavení.
 
 Pravidla předávání třetích stran nejsou ověřena. Příklady jsou informace o výstrahách odeslaných protokolu SYSLOG, Splunk nebo ServiceNow. a komunikace se službou Active Directory.
+
+#### <a name="ssl-certificates"></a>Certifikáty SSL
+
+Defender pro IoT snímač a místní Konzola pro správu používají SSL a certifikáty TLS pro tyto funkce: 
+
+ - Zabezpečte komunikaci mezi uživateli a webovou konzolou zařízení. 
+ 
+ - Zabezpečená komunikace s REST API na senzoru a místní konzole pro správu.
+ 
+ - Zabezpečte komunikaci mezi senzory a místní konzolou pro správu. 
+
+Po nainstalování zařízení vygeneruje místní certifikát podepsaný svým držitelem, který umožňuje předběžný přístup k webové konzole. Pomocí nástroje příkazového řádku je možné nainstalovat certifikáty Enterprise SSL a TLS [`cyberx-xsense-certificate-import`](#cli-commands) . 
+
+ > [!NOTE]
+ > Pro integrační a předávací pravidla, kde je zařízení klientem a iniciátorem relace, se používají konkrétní certifikáty a nevztahují se k systémovým certifikátům.  
+ >
+ >V těchto případech jsou certifikáty většinou přijímány ze serveru, nebo používají asymetrické šifrování, kde bude k dispozici konkrétní certifikát pro nastavení integrace. 
 
 ### <a name="update-certificates"></a>Aktualizace certifikátů
 
@@ -60,16 +77,19 @@ Správci místní konzoly pro správu mohou aktualizovat certifikáty.
 Aktualizace certifikátu:  
 
 1. Vyberte **nastavení systému**.
+
 1. Vyberte **certifikáty SSL/TLS**.
 1. Odstraňte certifikát nebo ho upravte a přidejte nový.
    
    - Přidejte název certifikátu.
+   
    - Nahrajte soubor CRT a soubor klíče a zadejte přístupové heslo.
    - V případě potřeby nahrajte soubor PEM.
 
 Změna nastavení ověřování:
 
 1. Zapněte nebo vypněte přepínač **Povolit ověření certifikátu** .
+
 1. Vyberte **Uložit**.
 
 Pokud je možnost povolena a ověření se nepovede, dojde k zastavení komunikace mezi konzolou pro správu a senzorem a v konzole se zobrazí chyba ověření.
@@ -78,25 +98,30 @@ Pokud je možnost povolena a ověření se nepovede, dojde k zastavení komunika
 
 Podporují se tyto certifikáty:
 
-- Privátní a podniková infrastruktura klíčů (privátní infrastruktura veřejných klíčů) 
+- Privátní a podniková infrastruktura klíčů (privátní infrastruktura veřejných klíčů)
+ 
 - Infrastruktura veřejných klíčů (veřejná infrastruktura veřejných klíčů) 
+
 - Místně generované na zařízení (místně podepsané svým držitelem) 
 
   > [!IMPORTANT]
-  > Nedoporučujeme používat certifikáty podepsané svým držitelem. Toto připojení není zabezpečené a mělo by se používat jenom pro testovací prostředí. Vlastníka certifikátu nelze ověřit a zabezpečení systému nelze udržovat. Certifikáty podepsané svým držitelem by se nikdy neměly používat pro produkční sítě.  
+  > Nedoporučujeme používat certifikáty podepsané svým držitelem. Tento typ připojení není zabezpečený a měl by se používat jenom pro testovací prostředí. Vzhledem k tomu, že vlastník certifikátu nelze ověřit a zabezpečení systému nelze udržovat, certifikáty podepsané svým držitelem by se nikdy neměly používat pro produkční sítě.
+
+### <a name="supported-ssl-certificates"></a>Podporované certifikáty SSL 
 
 Podporovány jsou následující parametry: 
 
 **CRT certifikátu**
 
 - Primární soubor certifikátu pro název domény
+
 - Signature – algoritmus = SHA256RSA
 - Signatura algoritmu hash = SHA256
 - Platné od = platné datum posledního
 - Platný až = platné budoucí datum
 - Veřejný klíč = RSA 2048 bity (minimum) nebo 4096 bitů
 - Distribuční bod seznamu CRL = adresa URL souboru. CRL
-- Subject CN = URL může být certifikát se zástupnými znaky; například www.contoso.com nebo \* . contoso.com
+- Subject CN = URL může být certifikát se zástupnými znaky; například senzor. contoso. <span> com nebo *. contoso. <span> Doplňky
 - Subject (C) ountry = defined, například US
 - Subjekt (OU) organizační jednotka = definovaná; například contoso Labs
 - Subject (O) organizace = Defined; například Contoso Inc
@@ -104,17 +129,25 @@ Podporovány jsou následující parametry:
 **Soubor klíče**
 
 - Soubor klíče generovaný při vytváření CSR
+
 - RSA 2048 bity (minimálně) nebo 4096 bitů
+
+ > [!Note]
+ > Použití klíče s délkou 4096bits:
+ > - Metoda handshake SSL na začátku každého připojení bude pomalejší.  
+ > - Během ověřování metodou handshake dojde ke zvýšení využití procesoru. 
 
 **Řetěz certifikátů**
 
 - Soubor zprostředkujícího certifikátu (pokud existuje), který byl dodán vaší certifikační autoritou.
+
 - Certifikát certifikační autority, který vystavil certifikát serveru, by měl být nejprve v souboru, následovaný všemi ostatními až do kořenového adresáře. 
 - Řetězec může obsahovat atributy kontejneru.
 
 **Hesel**
 
 - Podporuje se jeden klíč.
+
 - Nastavte při importu certifikátu.
 
 Certifikáty s jinými parametry mohou fungovat, ale společnost Microsoft je nepodporuje.
@@ -123,23 +156,51 @@ Certifikáty s jinými parametry mohou fungovat, ale společnost Microsoft je ne
 
 **. pem: soubor kontejneru certifikátů**
 
-Název pochází z PEM (Privacy Enhanced mail), historické metody pro zabezpečený e-mail. Formát kontejneru je překladem Base64 klíčů x509 ASN. 1.  
+Soubory PEM (Privacy Enhanced mail) byly obecný typ souboru používaný k zabezpečení e-mailů. Současné době, soubory PEM se používají s certifikáty a používají klíče ASN1 x509.  
 
-Tento soubor je definovaný v části RFC 1421 až 1424: kontejnerový formát, který může obsahovat jenom veřejný certifikát (třeba instalace Apache, soubory certifikátů CA a další certifikáty SSL). Nebo může zahrnovat celý řetěz certifikátů, včetně veřejného klíče, privátního klíče a kořenových certifikátů.  
+Soubor kontejneru je definovaný v části RFC 1421 až 1424, což je formát kontejneru, který může obsahovat jenom veřejný certifikát. Například nainstaluje Apache, certifikát certifikační autority, soubory atd., SSL nebo certifikáty. To může zahrnovat celý řetěz certifikátů, včetně veřejného klíče, privátního klíče a kořenových certifikátů.  
 
-Může také kódovat CSR, protože formát PKCS10 se dá přeložit na PEM.
+Může také kódovat CSR jako formát PKCS10, který se dá přeložit na PEM.
 
 **. CERT. cer. CRT: soubor kontejneru certifikátů**
 
-Jedná se o soubor s příponou. pem (nebo zřídka,. der) s jinou příponou. Průzkumník souborů systému Windows ho rozpoznává jako certifikát. Průzkumník souborů nerozpoznal soubor. pem.
+`.pem`Nebo `.der` formátovaný soubor s jinou příponou. Tento soubor rozpozná Průzkumník Windows jako certifikát. `.pem`   Průzkumník Windows nerozpoznal soubor.
 
 **. Key: soubor privátního klíče**
 
 Soubor klíče má stejný formát jako soubor PEM, ale má jinou příponu. 
 
+#### <a name="additional-commonly-available-key-artifacts"></a>Další běžně dostupné klíčové artefakty
+
+**. CSR – žádost o podepsání certifikátu**  
+
+Tento soubor se používá k odesílání certifikačním autoritám. Skutečný formát je PKCS10, který je definován v dokumentu RFC 2986 a může obsahovat některé nebo všechny klíčové podrobnosti požadovaného certifikátu. Například předmět, organizace a stav. Je to veřejný klíč certifikátu, který podepisuje certifikační autorita, a při návratu obdrží certifikát.  
+
+Vrácený certifikát je veřejný certifikát, který obsahuje veřejný klíč, ale ne privátní klíč. 
+
+**. pkcs12. pfx. p12 – kontejner hesel**. 
+
+Společnost Microsoft původně definovala RSA v standardech šifrování Public-Key (PKCS), a proto ji původně zvýšila společnost Microsoft a později byla odeslána jako RFC 7292.  
+
+Tento formát kontejneru vyžaduje heslo, které obsahuje dvojice veřejného i privátního certifikátu. Na rozdíl od `.pem`   souborů je tento kontejner plně zašifrovaný.  
+
+Pomocí OpenSSL můžete soubor přepínat do `.pem`   souboru s veřejným i privátním klíčem: `openssl pkcs12 -in file-to-convert.p12 -out converted-file.pem -nodes`  
+
+**. der – binární KÓDOVANÝ PEM**
+
+Způsob, jak kódovat číslo ASN. 1 v binárním souboru, je `.pem`   souborem, který je pouze soubor kódovaný v kódování Base64 `.der` . 
+
+OpenSSL může tyto soubory převést na `.pem` :  `openssl x509 -inform der -in to-convert.der -out converted.pem` .  
+
+Systém Windows bude tyto soubory rozpoznat jako soubory certifikátů. Ve výchozím nastavení bude systém Windows exportovat certifikáty jako `.der` formátované soubory s jinou příponou.
+
+**. CRL – seznam odvolaných certifikátů**.  
+
+Certifikační autority je poskytují jako způsob, jak zrušit autorizaci certifikátů před jejich vypršením platnosti. 
+
 #### <a name="cli-commands"></a>Příkazy rozhraní CLI
 
-`cyberx-xsense-certificate-import`K importu certifikátů použijte příkaz CLI. Chcete-li tento nástroj použít, je třeba odeslat soubory certifikátů do zařízení (pomocí nástrojů, jako je WinSCP nebo wget).
+`cyberx-xsense-certificate-import`K importu certifikátů použijte příkaz CLI. Chcete-li tento nástroj použít, je třeba do zařízení odeslat soubory certifikátů pomocí nástrojů, jako je WinSCP nebo wget.
 
 Příkaz podporuje následující vstupní příznaky:
 
@@ -160,6 +221,41 @@ Při použití příkazu CLI:
 - Ověřte, jestli jsou na zařízení čitelné soubory certifikátů.
 
 - Ověřte, že se název domény a IP adresa v certifikátu shodují s konfigurací, kterou IT oddělení plánuje.
+
+### <a name="use-openssl-to-manage-certificates"></a>Použití OpenSSL ke správě certifikátů
+
+Spravujte certifikáty pomocí následujících příkazů:
+
+| Popis | CLI – příkaz |
+|--|--|
+| Vygenerovat nový privátní klíč a žádost o podepsání certifikátu | `openssl req -out CSR.csr -new -newkey rsa:2048 -nodes -keyout privateKey.key` |
+| Vygenerování certifikátu podepsaného svým držitelem | `openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out certificate.crt` |
+| Vygenerovat žádost o podepsání certifikátu (CSR) pro existující privátní klíč | `openssl req -out CSR.csr -key privateKey.key -new` |
+| Vygenerovat žádost o podepsání certifikátu na základě existujícího certifikátu | `openssl x509 -x509toreq -in certificate.crt -out CSR.csr -signkey privateKey.key` |
+| Odebrání přístupového hesla z privátního klíče | `openssl rsa -in privateKey.pem -out newPrivateKey.pem` |
+
+Pokud potřebujete ověřit informace v rámci certifikátu, CSR nebo privátního klíče, použijte tyto příkazy;
+
+| Popis | CLI – příkaz |
+|--|--|
+| Ověření žádosti o podepsání certifikátu (CSR) | `openssl req -text -noout -verify -in CSR.csr` |
+| Ověřit privátní klíč | `openssl rsa -in privateKey.key -check` |
+| Ověřit certifikát | `openssl x509 -in certificate.crt -text -noout`  |
+
+Pokud se zobrazí chyba, že se soukromý klíč neshoduje s certifikátem, nebo pokud certifikát, který jste nainstalovali do lokality, není důvěryhodný, použijte k opravě chyby tyto příkazy.
+
+| Popis | CLI – příkaz |
+|--|--|
+| Zkontrolujte hodnotu hash MD5 veřejného klíče a ujistěte se, že se shoduje s tím, co je v rámci zástupce nebo privátního klíče. | první. `openssl x509 -noout -modulus -in certificate.crt | openssl md5` <br /> odst. `openssl rsa -noout -modulus -in privateKey.key | openssl md5` <br /> 1. `openssl req -noout -modulus -in CSR.csr | openssl md5 ` |
+
+Chcete-li převést certifikáty a klíče do různých formátů, aby byly kompatibilní s konkrétními typy serverů nebo softwaru, použijte tyto příkazy;
+
+| Popis | CLI – příkaz |
+|--|--|
+| Převod souboru DER (. CRT. cer. der) na PEM  | `openssl x509 -inform der -in certificate.cer -out certificate.pem`  |
+| Převod souboru PEM na DER | `openssl x509 -outform der -in certificate.pem -out certificate.der`  |
+| Převod souboru PKCS # 12 (. pfx. P12), který obsahuje privátní klíč a certifikáty, na PEM | `openssl pkcs12 -in keyStore.pfx -out keyStore.pem -nodes` <br />Můžete přidat `-nocerts` pouze do výstupu privátního klíče nebo přidat `-nokeys` pouze do výstupu certifikátů. |
+| Převod souboru certifikátu PEM a soukromého klíče na PKCS # 12 (. pfx. P12) | `openssl pkcs12 -export -out certificate.pfx -inkey privateKey.key -in certificate.crt -certfile CACert.crt` |
 
 ## <a name="define-backup-and-restore-settings"></a>Definování nastavení zálohování a obnovení
 
@@ -299,7 +395,27 @@ Resetování hesla:
 > [!NOTE]
 > Senzor je propojený s předplatným, ke kterému byl původně připojený. Heslo můžete obnovit jenom pomocí stejného předplatného, ke kterému je připojené.
 
-## <a name="see-also"></a>Viz také
+## <a name="update-the-software-version"></a>Aktualizace verze softwaru
+
+Následující postup popisuje, jak aktualizovat místní verzi softwaru konzoly pro správu. Proces aktualizace trvá přibližně 30 minut.
+
+1. Přejděte na [Azure Portal](https://portal.azure.com/).
+
+1. Přejít na Defender pro IoT.
+
+1. Přejít na stránku **aktualizace** .
+
+1. V části místní konzole pro správu vyberte verzi.
+
+1. Vyberte **Stáhnout** a uložte soubor.
+
+1. Přihlaste se k místní konzole pro správu a v postranní nabídce vyberte **nastavení systému** .
+
+1. V podokně **aktualizace verze** vyberte **aktualizovat**.
+
+1. Vyberte soubor, který jste stáhli ze stránky **aktualizace** Defender pro IoT.
+
+## <a name="see-also"></a>Viz také:
 
 [Správa senzorů z konzoly pro správu](how-to-manage-sensors-from-the-on-premises-management-console.md)
 

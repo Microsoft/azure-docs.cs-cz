@@ -2,14 +2,14 @@
 title: Osvědčené postupy pro zlepšení výkonu pomocí Azure Service Bus
 description: Popisuje, jak použít Service Bus k optimalizaci výkonu při výměně zprostředkovaných zpráv.
 ms.topic: article
-ms.date: 11/11/2020
+ms.date: 01/15/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6a0457537712ccb85191f320fd348446eed9b229
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 7bfff1a31365724ed1d1cb6ff1956a4e2ef4f4c0
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97655624"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539441"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Doporučené postupy pro zlepšení výkonu pomocí zasílání zpráv Service Bus
 
@@ -24,22 +24,27 @@ Service Bus umožňuje klientům odesílat a přijímat zprávy prostřednictví
 2. Protokol SBMP (Service Bus Messaging Protocol)
 3. Hypertextový přenosový protokol (HTTP)
 
-AMQP je nejúčinnější, protože udržuje připojení k Service Bus. Implementuje také dávkování a předběžné načítání. Pokud není výslovně uvedeno jinak, veškerý obsah v tomto článku předpokládá použití AMQP nebo SBMP.
+AMQP je nejúčinnější, protože udržuje připojení k Service Bus. Implementuje také [dávkování](#batching-store-access) a [předběžné načítání](#prefetching). Pokud není výslovně uvedeno jinak, veškerý obsah v tomto článku předpokládá použití AMQP nebo SBMP.
 
 > [!IMPORTANT]
 > SBMP je k dispozici pouze pro .NET Framework. AMQP je výchozí hodnota pro .NET Standard.
 
 ## <a name="choosing-the-appropriate-service-bus-net-sdk"></a>Výběr vhodné Service Bus .NET SDK
-K dispozici jsou dvě podporované Azure Service Bus sady .NET SDK. Jejich rozhraní API jsou podobná a můžou být matoucí, který z nich si vybrat. V následující tabulce najdete informace, které vám pomůžou s vaším rozhodnutím. Doporučujeme používat sadu Microsoft. Azure. ServiceBus SDK, protože je moderní, výkonná a je kompatibilní s více platformami. Kromě toho podporuje AMQP přes WebSockets a je součástí kolekce Azure .NET SDK pro open source projekty.
+Existují tři podporované Azure Service Bus sady .NET SDK. Jejich rozhraní API jsou podobná a můžou být matoucí, který z nich si vybrat. V následující tabulce najdete informace, které vám pomůžou s vaším rozhodnutím. Azure. Messaging. ServiceBus SDK je nejnovější a doporučujeme ho použít přes jiné sady SDK. Azure. Messaging. ServiceBus i Microsoft. Azure. ServiceBus sady SDK jsou moderní, výkonná a kompatibilní s více platformami. Kromě toho podporují AMQP přes objekty WebSockets a jsou součástí kolekce Azure .NET SDK pro open source projekty.
 
 | Balíček NuGet | Primární obory názvů | Minimální počet platforem: | Protokoly |
 |---------------|----------------------|---------------------|-------------|
-| <a href="https://www.nuget.org/packages/Microsoft.Azure.ServiceBus" target="_blank">Microsoft. Azure. ServiceBus <span class="docon docon-navigate-external x-hidden-focus"></span></a> | `Microsoft.Azure.ServiceBus`<br>`Microsoft.Azure.ServiceBus.Management` | .NET Core 2.0<br>.NET Framework 4.6.1<br>Mono 5,4<br>Xamarin. iOS 10,14<br>Xamarin. Mac 3,8<br>Xamarin. Android 8,0<br>Univerzální platforma Windows 10.0.16299 | AMQP<br>HTTP |
-| <a href="https://www.nuget.org/packages/WindowsAzure.ServiceBus" target="_blank">WindowsAzure. ServiceBus <span class="docon docon-navigate-external x-hidden-focus"></span></a> | `Microsoft.ServiceBus`<br>`Microsoft.ServiceBus.Messaging` | .NET Framework 4.6.1 | AMQP<br>SBMP<br>HTTP |
+| [Azure. Messaging. ServiceBus](https://www.nuget.org/packages/Azure.Messaging.ServiceBus) | `Azure.Messaging.ServiceBus`<br>`Azure.Messaging.ServiceBus.Administration` | .NET Core 2.0<br>.NET Framework 4.6.1<br>Mono 5,4<br>Xamarin. iOS 10,14<br>Xamarin. Mac 3,8<br>Xamarin. Android 8,0<br>Univerzální platforma Windows 10.0.16299 | AMQP<br>HTTP |
+| [Microsoft. Azure. ServiceBus](https://www.nuget.org/packages/Azure.Messaging.ServiceBus/) | `Microsoft.Azure.ServiceBus`<br>`Microsoft.Azure.ServiceBus.Management` | .NET Core 2.0<br>.NET Framework 4.6.1<br>Mono 5,4<br>Xamarin. iOS 10,14<br>Xamarin. Mac 3,8<br>Xamarin. Android 8,0<br>Univerzální platforma Windows 10.0.16299 | AMQP<br>HTTP |
+| [WindowsAzure. ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus) | `Microsoft.ServiceBus`<br>`Microsoft.ServiceBus.Messaging` | .NET Framework 4.6.1 | AMQP<br>SBMP<br>HTTP |
 
 Další informace o minimální podpoře .NET Standard platforem najdete v tématu [Podpora implementace rozhraní .NET](/dotnet/standard/net-standard#net-implementation-support).
 
 ## <a name="reusing-factories-and-clients"></a>Používání továrn a klientů
+# <a name="azuremessagingservicebus-sdk"></a>[Azure. Messaging. ServiceBus SDK](#tab/net-standard-sdk-2)
+Service Bus objekty, které pracují se službou, jako je například [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient), [ServiceBusSender](/dotnet/api/azure.messaging.servicebus.servicebussender), [ServiceBusReceiver](/dotnet/api/azure.messaging.servicebus.servicebusreceiver)a [ServiceBusProcessor](/dotnet/api/azure.messaging.servicebus.servicebusprocessor), by měly být registrovány pro vkládání závislostí jako singleton (nebo instance jednou a sdílená). ServiceBusClient je možné zaregistrovat pro vkládání závislostí s [ServiceBusClientBuilderExtensions](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/servicebus/Azure.Messaging.ServiceBus/src/Compatibility/ServiceBusClientBuilderExtensions.cs). 
+
+Po odeslání nebo přijetí každé zprávy doporučujeme, abyste tyto objekty nezavřeli nebo neodstranili. Pokud chcete zavřít nebo odstranit objekty specifické pro entitu (ServiceBusSender/Receiver/procesor), dojde k odtržení odkazu na službu Service Bus. Zrušením ServiceBusClient výsledků odtrhnout připojení ke službě Service Bus. Navázání připojení je náročná operace, kterou se můžete vyhnout opětovným použitím stejného ServiceBusClient a vytvořením potřebných objektů specifických pro danou entitu ze stejné instance ServiceBusClient. Tyto objekty klienta můžete bezpečně použít pro souběžné asynchronní operace a z více vláken.
 
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft. Azure. ServiceBus SDK](#tab/net-standard-sdk)
 
@@ -55,6 +60,27 @@ Service Bus objekty klienta, například `QueueClient` nebo `MessageSender` , js
 Operace, jako je například Send, Receive, DELETE atd., nějakou dobu trvá. Tato doba zahrnuje dobu, kterou služba Service Bus potřebuje k zpracování operace, a latenci žádosti a odpovědi. Chcete-li zvýšit počet operací v čase, operace musí být spuštěny souběžně.
 
 Klient plánuje souběžné operace provedením **asynchronních** operací. Další požadavek se spustí před dokončením předchozí žádosti. Následující fragment kódu je příkladem asynchronní operace odeslání:
+
+# <a name="azuremessagingservicebus-sdk"></a>[Azure. Messaging. ServiceBus SDK](#tab/net-standard-sdk-2)
+```csharp
+var messageOne = new ServiceBusMessage(body);
+var messageTwo = new ServiceBusMessage(body);
+
+var sendFirstMessageTask =
+    sender.SendMessageAsync(messageOne).ContinueWith(_ =>
+    {
+        Console.WriteLine("Sent message #1");
+    });
+var sendSecondMessageTask =
+    sender.SendMessageAsync(messageTwo).ContinueWith(_ =>
+    {
+        Console.WriteLine("Sent message #2");
+    });
+
+await Task.WhenAll(sendFirstMessageTask, sendSecondMessageTask);
+Console.WriteLine("All messages sent");
+
+```
 
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft. Azure. ServiceBus SDK](#tab/net-standard-sdk)
 
@@ -101,6 +127,35 @@ Console.WriteLine("All messages sent");
 ---
 
 Následující kód je příkladem asynchronní operace Receive.
+
+# <a name="azuremessagingservicebus-sdk"></a>[Azure. Messaging. ServiceBus SDK](#tab/net-standard-sdk-2)
+
+```csharp
+var client = new ServiceBusClient(connectionString);
+var options = new ServiceBusProcessorOptions 
+{
+
+      AutoCompleteMessages = false,
+      MaxConcurrentCalls = 20
+};
+await using ServiceBusProcessor processor = client.CreateProcessor(queueName,options);
+processor.ProcessMessageAsync += MessageHandler;
+processor.ProcessErrorAsync += ErrorHandler;
+
+static Task ErrorHandler(ProcessErrorEventArgs args)
+{
+    Console.WriteLine(args.Exception);
+    return Task.CompletedTask;
+};
+
+static async Task MessageHandler(ProcessMessageEventArgs args)
+{
+Console.WriteLine("Handle message");
+      await args.CompleteMessageAsync(args.Message);
+}
+
+await processor.StartProcessingAsync();
+```
 
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft. Azure. ServiceBus SDK](#tab/net-standard-sdk)
 
@@ -168,6 +223,9 @@ Service Bus nepodporuje transakce pro operace Receive a DELETE. U všech scéná
 
 Dávkování na straně klienta umožňuje klientovi nebo tématu klienta zpozdit odeslání zprávy po určitou dobu. Pokud během tohoto časového období klient odešle další zprávy, přenese zprávy v jedné dávce. Dávkování na straně klienta také způsobí, že klient fronty nebo předplatného vygeneruje více **úplných** požadavků do jediného požadavku. Dávkování je k dispozici pouze pro operace asynchronního **odeslání** a **dokončení** . Synchronní operace se okamžitě odesílají do služby Service Bus. K dávkování nedochází při operacích prohlížení a příjmu, ani k dávkování mezi klienty.
 
+# <a name="azuremessagingservicebus-sdk"></a>[Azure. Messaging. ServiceBus SDK](#tab/net-standard-sdk-2)
+Funkce dávkování pro sadu .NET Standard SDK zatím nevystavuje vlastnost k manipulaci.
+
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft. Azure. ServiceBus SDK](#tab/net-standard-sdk)
 
 Funkce dávkování pro sadu .NET Standard SDK zatím nevystavuje vlastnost k manipulaci.
@@ -217,6 +275,19 @@ Pokud chcete zvýšit propustnost fronty, tématu nebo předplatného, Service B
 Další operace úložiště, ke kterým dojde během tohoto intervalu, se přidají do dávky. Přístup k dávkovému úložišti má vliv jenom na operace **Send** a **Complete** . operace přijímání nejsou ovlivněny. Přístup k Batch Storu je vlastnost v entitě. Dávkování probíhá napříč všemi entitami, které umožňují přístup k dávce v dávkovém úložišti.
 
 Při vytváření nové fronty, tématu nebo předplatného je ve výchozím nastavení povolený přístup k Batch Storu.
+
+
+# <a name="azuremessagingservicebus-sdk"></a>[Azure. Messaging. ServiceBus SDK](#tab/net-standard-sdk-2)
+Pokud chcete zakázat přístup pomocí dávkového úložiště, budete potřebovat instanci `ServiceBusAdministrationClient` . Vytvořte `CreateQueueOptions` z popisu fronty, na kterou vlastnost nastavuje `EnableBatchedOperations` `false` .
+
+```csharp
+var options = new CreateQueueOptions(path)
+{
+    EnableBatchedOperations = false
+};
+var queue = await administrationClient.CreateQueueAsync(options);
+```
+
 
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft. Azure. ServiceBus SDK](#tab/net-standard-sdk)
 
@@ -270,6 +341,12 @@ Hodnota vlastnosti TTL (Time-to-Live) zprávy je serverem zkontrolována v době
 
 Předběžné načítání neovlivňuje počet fakturovaných operací zasílání zpráv a je k dispozici pouze pro Service Bus klientský protokol. Protokol HTTP nepodporuje předběžné načtení. Předběžné načtení je k dispozici pro synchronní i asynchronní operace Receive.
 
+# <a name="azuremessagingservicebus-sdk"></a>[Azure. Messaging. ServiceBus SDK](#tab/net-standard-sdk-2)
+Další informace najdete v následujících `PrefetchCount` vlastnostech:
+
+- [ServiceBusReceiver.PrefetchCount](/dotnet/api/azure.messaging.servicebus.servicebusreceiver.prefetchcount)
+- [ServiceBusProcessor.PrefetchCount](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.prefetchcount)
+
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft. Azure. ServiceBus SDK](#tab/net-standard-sdk)
 
 Další informace najdete v následujících `PrefetchCount` vlastnostech:
@@ -287,10 +364,6 @@ Další informace najdete v následujících `PrefetchCount` vlastnostech:
 ---
 
 ## <a name="prefetching-and-receivebatch"></a>Přednačtení a ReceiveBatch
-
-> [!NOTE]
-> Tato část platí jenom pro sadu SDK WindowsAzure. ServiceBus, protože Microsoft. Azure. ServiceBus SDK nezveřejňuje dávkové funkce.
-
 I když koncepce předběžného načítání více zpráv má podobnou sémantiku zpracování zpráv v dávce ( `ReceiveBatch` ), existují drobné rozdíly, které je potřeba při použití těchto přístupů zachovat.
 
 Předběžné načtení je konfigurace (nebo režim) na klientovi ( `QueueClient` a `SubscriptionClient` ) a `ReceiveBatch` jedná se o operaci (která má sémantiku požadavku-odpověď).
@@ -309,7 +382,7 @@ Pokud jedna fronta nebo téma nedokáže zpracovat očekávanou hodnotu, použij
 ## <a name="development-and-testing-features"></a>Funkce pro vývoj a testování
 
 > [!NOTE]
-> Tato část platí jenom pro sadu SDK WindowsAzure. ServiceBus, protože Microsoft. Azure. ServiceBus SDK tuto funkci nezveřejňuje.
+> Tato část se vztahuje jenom na sadu SDK WindowsAzure. ServiceBus, jako je Microsoft. Azure. ServiceBus a Azure. Messaging. ServiceBus tuto funkci nezveřejňuje.
 
 Service Bus má jednu funkci, která se používá specificky pro vývoj, která **by se nikdy neměla používat v produkčních konfiguracích**: [`TopicDescription.EnableFilteringMessagesBeforePublishing`][TopicDescription.EnableFiltering] .
 
@@ -372,9 +445,9 @@ Pokud chcete maximalizovat propustnost, postupujte podle těchto pokynů:
 * Nechte povolený přístup k Batch Storu. Tento přístup omezuje celkové zatížení entity. Zároveň se tím snižuje celková rychlost, kterou lze zprávy zapsat do fronty nebo tématu.
 * Nastavte počet předběžných hodnot na malou hodnotu (například PrefetchCount = 10). Tento počet brání přijímačům v nečinnosti, zatímco ostatní příjemci mají velký počet zpráv uložených v mezipaměti.
 
-### <a name="topic-with-a-small-number-of-subscriptions"></a>Téma s malým počtem předplatných
+### <a name="topic-with-a-few-subscriptions"></a>Téma s několika předplatnými
 
-Cíl: maximalizace propustnosti tématu s malým počtem předplatných. Celá řada předplatných obdrží zprávu, což znamená, že celková míra příjmu u všech předplatných je větší než rychlost odesílání. Počet odesílatelů je malý. Počet přijímačů na předplatné je malý.
+Cíl: maximalizace propustnosti tématu s několika předplatnými. Celá řada předplatných obdrží zprávu, což znamená, že celková míra příjmu u všech předplatných je větší než rychlost odesílání. Počet odesílatelů je malý. Počet přijímačů na předplatné je malý.
 
 Pokud chcete maximalizovat propustnost, postupujte podle těchto pokynů:
 

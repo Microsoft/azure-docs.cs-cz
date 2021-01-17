@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 327dce053c38fdb7b03e7ceb0d7a62ec8b8e7248
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 87af99d5136a8bed93854e9396895cddeb22549a
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96993023"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98540476"
 ---
 ## <a name="download-and-install"></a>Stažení a instalace
 
@@ -59,11 +59,11 @@ Pomocí těchto kroků nainstalujete rozhraní příkazového řádku rozpoznáv
 
 1. <a href="https://www.docker.com/get-started" target="_blank">Nainstalovat Docker Desktop <span class="docon docon-navigate-external x-hidden-focus"></span> </a> pro vaši platformu, pokud ještě není nainstalovaná.
 2. Do nového příkazového řádku nebo terminálu zadejte tento příkaz:
-   ```shell   
+   ```console   
    docker pull msftspeech/spx
    ```
 3. Zadejte tento příkaz. Měli byste vidět informace o nápovědě pro rozhraní příkazového řádku pro rozpoznávání řeči:
-   ```shell 
+   ```console 
    docker run -it --rm msftspeech/spx help
    ```
 
@@ -93,27 +93,27 @@ Při volání `spx` příkazu v kontejneru Docker musíte připojit adresář v 
 
 V systému Windows budou vaše příkazy začínat takto:
 
-```shell
+```console
 docker run -it -v c:\spx-data:/data --rm msftspeech/spx
 ```
 
 V systému Linux nebo macOS budou vaše příkazy vypadat jako v ukázce níže. Nahraďte `ABSOLUTE_PATH` absolutní cestou k připojenému adresáři. Tato cesta byla vrácena `pwd` příkazem v předchozí části. 
 
 Pokud před nastavením klíče a oblasti spustíte tento příkaz, zobrazí se vám chyba s oznámením, že byste si měli klíč a oblast nastavit:
-```shell   
+```console   
 sudo docker run -it -v ABSOLUTE_PATH:/data --rm msftspeech/spx
 ```
 
 Chcete-li použít `spx` příkaz nainstalovaný v kontejneru, vždy zadejte úplný příkaz, následovaný parametry vaší žádosti.
 Například v systému Windows tento příkaz nastaví klíč:
 
-```shell
+```console
 docker run -it -v c:\spx-data:/data --rm msftspeech/spx config @key --set SUBSCRIPTION-KEY
 ```
 
 Chcete-li rozšířit interakci s nástrojem příkazového řádku, můžete spustit kontejner s interaktivním prostředím bash přidáním parametru EntryPoint.
 V systému Windows zadejte tento příkaz pro spuštění kontejneru, který zveřejňuje interaktivní rozhraní příkazového řádku, kde můžete zadat více `spx` příkazů:
-```shell
+```console
 docker run -it --entrypoint=/bin/bash -v c:\spx-data:/data --rm msftspeech/spx
 ```
 
@@ -160,7 +160,7 @@ Follow these instructions to create a shortcut:
 Pokud chcete začít používat rozhraní příkazového řádku, musíte zadat klíč předplatného pro rozpoznávání řeči a identifikátor oblasti. Tyto přihlašovací údaje můžete získat podle kroků v [části Vyzkoušejte si službu Speech Service zdarma](../overview.md#try-the-speech-service-for-free).
 Jakmile budete mít svůj klíč předplatného a identifikátor oblasti (např. `eastus`, `westus` ) spusťte následující příkazy.
 
-```shell
+```console
 spx config @key --set SUBSCRIPTION-KEY
 spx config @region --set REGION
 ```

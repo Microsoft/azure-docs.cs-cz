@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2021
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 38ddfc2d3940bb9267edd6c5c683918c1fb5dc58
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 1a1fc0ce634282ffd4fcf374138fe97a04f32062
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251692"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539605"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Výběr cenové úrovně pro Azure Kognitivní hledání
 
@@ -71,7 +71,7 @@ Ceny vrstev obsahují podrobnosti o úložišti pro jednotlivé oddíly, které 
 
 ## <a name="billing-rates"></a>Fakturační sazby
 
-Úrovně mají různé fakturační sazby s vyšší sazbou za úrovně, které běží na dražším hardwaru nebo poskytují dražší funkce. Fakturační sazba je to, co vidíte na [stránkách s cenami Azure](https://azure.microsoft.com/pricing/details/search/) pro každou úroveň služby Azure kognitivní hledání.
+Úrovně mají různé fakturační sazby s vyšší sazbou za úrovně, které běží na dražším hardwaru nebo poskytují dražší funkce. Fakturační sazbu za vrstvu najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/search/) Azure pro Azure kognitivní hledání.
 
 Jakmile vytvoříte službu, bude se vám účtovat *cena za pevné náklady* na provoz služby po hodinách a na *přírůstkové náklady* , pokud se rozhodnete přidat větší kapacitu.
 
