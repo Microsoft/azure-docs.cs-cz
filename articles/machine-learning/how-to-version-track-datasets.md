@@ -1,7 +1,7 @@
 ---
 title: Správa verzí datových sad
 titleSuffix: Azure Machine Learning
-description: Naučte se, jak nejlépe nastavovat datové sady a jak funguje Správa verzí s kanály strojového učení.
+description: Naučte se, jak pomocí kanálů strojového učení nastavovat datové sady Machine Learning a jak funguje Správa verzí.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,14 +11,14 @@ ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 7eb8010853ba370f4502b6bc155c6a098e64965b
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 3290574b26abe544c8c749165e22bef41a83ecf3
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133442"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538150"
 ---
-# <a name="version-and-track-datasets-in-experiments"></a>Verze a sledování datových sad v experimentech
+# <a name="version-and-track-azure-machine-learning-datasets"></a>Verze a sledování Azure Machine Learning datových sad
 
 V tomto článku se dozvíte, jak verze a sledování Azure Machine Learning datových sad pro reprodukovatelnost. Správa verzí datových sad je způsob, jak můžete založit stav vašich dat, abyste pro budoucí experimenty mohli použít konkrétní verzi datové sady.
 
@@ -27,7 +27,7 @@ Typické scénáře správy verzí:
 * Když jsou nová data dostupná pro přeškolení
 * Při použití různých přístupů k přípravě dat nebo technickému řízení funkcí
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro tento kurz potřebujete:
 

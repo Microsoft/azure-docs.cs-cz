@@ -5,13 +5,13 @@ author: savjani
 ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
-ms.date: 01/15/2021
-ms.openlocfilehash: 5ebae41e68633eb10959c56011dd71952f9564bd
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.date: 01/18/2021
+ms.openlocfilehash: 67e4da13d6954342b9979eb57a35c812cb63bb3e
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250413"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539994"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>Konfigurace Replikace vstupních dat v Azure Database for MariaDB
 
@@ -23,6 +23,9 @@ Před provedením kroků v tomto článku zkontrolujte [omezení a požadavky](c
 
 > [!NOTE]
 > Pokud je váš zdrojový Server verze 10,2 nebo novější, doporučujeme nastavit Replikace vstupních dat pomocí [globálního ID transakce](https://mariadb.com/kb/en/library/gtid/).
+
+> [!NOTE]
+> Tento článek obsahuje odkazy na _podřízený_ termín, termín, který už Microsoft nepoužívá. Po odebrání termínu ze softwaru ho odebereme z tohoto článku.
 
 ## <a name="create-a-mariadb-server-to-use-as-a-replica"></a>Vytvoření serveru MariaDB pro použití jako repliky
 
@@ -40,10 +43,6 @@ Před provedením kroků v tomto článku zkontrolujte [omezení a požadavky](c
 3. Přidejte IP adresu zdrojového serveru k pravidlům brány firewall repliky. 
 
    Pomocí webu [Azure Portal](howto-manage-firewall-portal.md) nebo [Azure CLI](howto-manage-firewall-cli.md) aktualizujte pravidla brány firewall.
-
-> [!NOTE]
-> Tento článek obsahuje odkazy na _podřízený_ termín, termín, který už Microsoft nepoužívá. Po odebrání termínu ze softwaru ho odebereme z tohoto článku.
->
 
 ## <a name="configure-the-source-server"></a>Konfigurace zdrojového serveru
 
@@ -95,7 +94,7 @@ Následující kroky připravují a konfigurují místně hostovaný Server Mari
 
 3. Zapněte binární protokolování.
 
-    Pokud chcete zjistit, jestli je v hlavní části povolené binární protokolování, zadejte následující příkaz:
+    Pokud chcete zjistit, jestli je na primárním počítači povolené binární protokolování, zadejte následující příkaz:
 
    ```sql
    SHOW VARIABLES LIKE 'log_bin';

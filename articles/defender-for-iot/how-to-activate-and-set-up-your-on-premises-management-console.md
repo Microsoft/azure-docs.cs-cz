@@ -4,15 +4,15 @@ description: Aktivace a nastavení konzoly pro správu zajišťuje registraci se
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/24/2020
+ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 56092d61e1eed4e4ebe4f8cb7f97d01e91e8543e
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: d344b3d9ea54243d61cc6a1f3f0982eb5ab1d238
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97839476"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538589"
 ---
 # <a name="activate-and-set-up-your-on-premises-management-console"></a>Aktivace a nastavení místní konzoly pro správu 
 
@@ -51,7 +51,7 @@ Po počáteční aktivaci může počet monitorovaných zařízení překročit 
 
 ## <a name="set-up-a-certificate"></a>Nastavení certifikátu
 
-Po instalaci konzoly pro správu se vygeneruje místní certifikát podepsaný svým držitelem, který se použije pro přístup ke konzole nástroje. Po prvním přihlášení správce ke konzole pro správu se tomuto uživateli zobrazí výzva k připojení certifikátu protokolu SSL/TLS. Doporučujeme, abyste pracovali s certifikátem důvěryhodné certifikační autority a nepoužívali místně generovaný certifikát podepsaný svým držitelem.
+Po instalaci konzoly pro správu se vygeneruje místní certifikát podepsaný svým držitelem, který se použije pro přístup ke konzole nástroje. Po prvním přihlášení správce ke konzole pro správu se tomuto uživateli zobrazí výzva k připojení certifikátu protokolu SSL/TLS. 
 
 K dispozici jsou dvě úrovně zabezpečení:
 
@@ -61,7 +61,9 @@ K dispozici jsou dvě úrovně zabezpečení:
 Konzola podporuje následující typy certifikátů:
 
 - Privátní a podniková infrastruktura klíčů (privátní infrastruktura veřejných klíčů)
+
 - Infrastruktura veřejných klíčů (veřejná infrastruktura veřejných klíčů)
+
 - Místně generované na zařízení (místně podepsané svým držitelem) 
 
   > [!IMPORTANT]
@@ -230,7 +232,7 @@ Následující tabulka popisuje parametry v okně **Správa lokality** .
 | Poslední upgrade | Datum posledního upgradu |
 | Průběh upgradu | Indikátor průběhu zobrazuje stav procesu upgradu následujícím způsobem:<br />– Nahrávání balíčku<br />– Příprava na instalaci<br />-Zastavování procesů<br />– Zálohování dat<br />-Pořizování snímku<br />– Aktualizace konfigurace<br />– Aktualizace závislostí<br />– Aktualizace knihoven<br />-Opravy databází<br />– Spouštění procesů<br />– Ověřování systémových správnosti<br />– Ověření bylo úspěšné.<br />– Úspěch<br />– Chyba<br />-Upgrade byl zahájen.<br />-Spouští se instalaceogress bar shows the status of the upgrade process, as follows:<br />- Uploading package<br />- Preparing to install<br />- Stopping processes<br />- Backing up data<br />- Taking snapshot<br />- Updating configuration<br />- Updating dependencies<br />- Updating libraries<br />- Patching databases<br />- Starting processes<br />- Validating system sanity<br />- Validation succeeded<br />- Success<br />- Failure<br />- Upgrade started<br />- Starting installation<br /></br >Podrobnosti o upgradu najdete v tématu [Podpora Microsoftu](https://support.microsoft.com/) . |
 | Prostředky | Počet assetů, které senzor monitoruje. |
-| Výstrahy | Počet výstrah na senzoru. |
+| Upozornění | Počet výstrah na senzoru. |
 | :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/assign-icon.png" border="false"::: | Umožňuje přiřadit senzor k zónám. |
 | :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/delete-icon.png" border="false":::| Povolí odstranění odpojeného senzoru z webu. |
 | :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/sensor-icon.png" border="false"::: | Určuje, kolik senzorů je aktuálně připojeno k zóně. |
@@ -314,6 +316,6 @@ Zrušení přiřazení a odstranění snímače:
 
 3. Pokud chcete odstranit nepřiřazený senzor z webu, vyberte snímač ze seznamu nepřiřazených senzorů a vyberte :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/delete-icon.png" border="false"::: .
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
-[Řešení potíží se senzorem a místní konzolou pro správu](how-to-troubleshoot-the-sensor-and-on-premises-management-console.md)
+[Řešení potíží se senzory a místní konzolou pro správu](how-to-troubleshoot-the-sensor-and-on-premises-management-console.md)

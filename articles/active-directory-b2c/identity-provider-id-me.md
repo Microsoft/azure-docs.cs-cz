@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/17/2020
+ms.date: 01/15/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 6877a82d81b46ac2ffda8d0f0bf3fb0d7b337ff3
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: c7d43a55878a07e424ce1b6f55782502c244239c
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97663594"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98537933"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-idme-account-using-azure-active-directory-b2c"></a>Nastavte si registraci a přihlaste se pomocí účtu ID.me pomocí Azure Active Directory B2C
 
@@ -32,14 +32,14 @@ ms.locfileid: "97663594"
 ::: zone pivot="b2c-custom-policy"
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites-custom-policy](../../includes/active-directory-b2c-customization-prerequisites-custom-policy.md)]
 
 
 ## <a name="create-an-idme-application"></a>Vytvoření aplikace v ID.me
 
-Pokud chcete použít účet ID.me jako poskytovatele identity v Azure Active Directory B2C (Azure AD B2C), musíte vytvořit aplikaci v [ID.me vývojářských zdrojích pro API & SDK](https://developers.id.me/). Pokud ještě nemáte účet vývojáře ID.me, můžete se zaregistrovat [https://developers.id.me/registration/new](https://developers.id.me/registration/new) .
+Pokud chcete povolit přihlášení pro uživatele s účtem ID.me v Azure Active Directory B2C (Azure AD B2C), musíte vytvořit aplikaci v [prostředcích vývojáře ID.me pro API & SDK](https://developers.id.me/). Další informace najdete v tématu [Průvodce integrací OAuth](https://developers.id.me/documentation/oauth/overview/kyc). Pokud ještě nemáte účet vývojáře ID.me, můžete se zaregistrovat [https://developers.id.me/registration/new](https://developers.id.me/registration/new) .
 
 1. Přihlaste se k [prostředkům ID.me Developer pro API & SDK](https://developers.id.me/) s přihlašovacími údaji k účtu ID.me.
 1. Vyberte **Zobrazit moje aplikace** a vyberte **pokračovat**.
@@ -118,7 +118,7 @@ Pokud chcete, aby se uživatelé přihlásili pomocí účtu ID.me, musíte úč
     ```
 
 4. Nastavte **client_id** na ID aplikace z registrace aplikace.
-5. Uložte soubor.
+5. Soubor uložte.
 
 ### <a name="add-the-claims-transformations"></a>Přidat transformace deklarací identity
 

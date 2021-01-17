@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/15/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 05c4d36f266fb526a1d0232cc32f0408e4322c80
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 2b640730bac410136ef8fdd4ea8e0261f68a3284
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654383"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538146"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Nastavení přihlášení pro konkrétní organizaci Azure Active Directory v Azure Active Directory B2C
 
@@ -32,13 +32,13 @@ V tomto článku se dozvíte, jak povolit přihlášení pro uživatele z konkr�
 
 ::: zone-end
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 ## <a name="register-an-azure-ad-app"></a>Registrace aplikace Azure AD
 
-Pokud chcete povolit přihlášení pro uživatele z konkrétní organizace Azure AD, musíte zaregistrovat aplikaci v rámci tenanta organizace Azure AD.
+Pokud chcete povolit přihlášení pro uživatele s účtem Azure AD z konkrétní organizace Azure AD, v Azure Active Directory B2C (Azure AD B2C) musíte vytvořit aplikaci v [Azure Portal](https://portal.azure.com). Další informace najdete v tématu [Registrace aplikace s platformou Microsoft Identity](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app).
 
 1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Ujistěte se, že používáte adresář, který obsahuje váš tenant organizace Azure AD (například contoso.com). V horní nabídce vyberte **Filtr adresář + odběr** a pak zvolte adresář, který obsahuje vašeho TENANTA Azure AD.
@@ -238,7 +238,7 @@ Teď, když máte tlačítko na místě, musíte ho propojit s akcí. Tato akce 
 ## <a name="add-azure-ad-identity-provider-to-a-user-flow"></a>Přidání poskytovatele identity Azure AD do toku uživatele 
 
 1. Ve vašem tenantovi Azure AD B2C vyberte **toky uživatelů**.
-1. Klikněte na tok uživatele, který chcete poskytovateli identit Azure AD.
+1. Klikněte na tok uživatele, který chcete přidat poskytovatele identity Azure AD.
 1. V části **Zprostředkovatelé sociální identity** vyberte **Contoso Azure AD**.
 1. Vyberte **Uložit**.
 1. Pokud chcete zásady testovat, vyberte **Spustit tok uživatele**.

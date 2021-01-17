@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing
-ms.openlocfilehash: 43784fe2bb94d5abd012f22ed530e4631a304614
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c13203c076378e1ff8f213971466eb5f63dfc4f4
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335982"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539176"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Zvýhodněné hybridní využití Azure pro Windows Server
 Zákazníci se Software Assurance, Zvýhodněné hybridní využití Azure pro Windows Server, vám umožní využívat místní licence k Windows serveru a spouštět virtuální počítače s Windows v Azure s nižšími náklady. K nasazení nových virtuálních počítačů s operačním systémem Windows můžete použít Zvýhodněné hybridní využití Azure pro Windows Server. Tento článek se dokončí postupem, jak nasadit nové virtuální počítače s Zvýhodněné hybridní využití Azure pro Windows Server a jak aktualizovat existující běžící virtuální počítače. Další informace o Zvýhodněné hybridní využití Azure pro licencování Windows serveru a úspory nákladů najdete na [stránce zvýhodněné hybridní využití Azure licencování Windows serveru](https://azure.microsoft.com/pricing/hybrid-use-benefit/).
@@ -42,10 +42,9 @@ K dispozici je několik způsobů použití virtuálních počítačů s Windows
 Všechny image založené na operačním systému Windows Server jsou podporované pro Zvýhodněné hybridní využití Azure pro Windows Server. Můžete použít image podpory platformy Azure nebo nahrát vlastní image Windows serveru. 
 
 ### <a name="portal"></a>Portál
-Pokud chcete vytvořit virtuální počítač s Zvýhodněné hybridní využití Azure pro Windows Server, použijte přepínač v části "Uložit peníze".
+Pokud chcete vytvořit virtuální počítač s Zvýhodněné hybridní využití Azure pro Windows Server, posuňte se do dolní části karty **základy** během procesu vytváření a v části **licencování** zaškrtněte políčko pro použití existující licence na Windows Server. 
 
 ### <a name="powershell"></a>PowerShell
-
 
 ```powershell
 New-AzVm `
@@ -65,7 +64,7 @@ az vm create \
     --license-type Windows_Server
 ```
 
-### <a name="template"></a>Šablona
+### <a name="template"></a>Template (Šablona)
 V rámci šablon Správce prostředků `licenseType` je třeba zadat další parametr. Další informace o [vytváření Azure Resource Manager šablon](../../azure-resource-manager/templates/template-syntax.md) najdete v článku.
 ```json
 "properties": {

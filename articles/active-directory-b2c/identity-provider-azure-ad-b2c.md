@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/14/2021
+ms.date: 01/15/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: b8be516051f8eed0649064ae0f7c29a4dde85675
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 8a0d69ea57eb5b8b2a074c37d4798a99c576ce95
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98224444"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538176"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-azure-ad-b2c-account-from-another-azure-ad-b2c-tenant"></a>Nastavení registrace a přihlášení pomocí účtu Azure AD B2C z jiného tenanta Azure AD B2C
 
@@ -37,20 +37,20 @@ Tento článek popisuje, jak nastavit federaci s jiným Azure AD B2C tenant. Kdy
 ![Azure AD B2C federace s jiným klientem Azure AD B2C](./media/identity-provider-azure-ad-b2c/azure-ad-b2c-federation.png)
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 ## <a name="create-an-azure-ad-b2c-application"></a>Vytvoření aplikace Azure AD B2C
 
-Pokud chcete použít účet Azure AD B2C jako [poskytovatele identity](openid-connect.md) v tenantovi Azure AD B2C (například contoso), v druhé Azure AD B2C (například Fabrikam):
+Pokud chcete povolit přihlášení pro uživatele s účtem z jiného tenanta Azure AD B2C (například Fabrikam), v Azure AD B2C (například contoso):
 
 1. Vytvořte [uživatelský tok](tutorial-create-user-flows.md)nebo [vlastní zásadu](custom-policy-get-started.md).
 1. Pak vytvořte aplikaci v Azure AD B2C, jak je popsáno v této části. 
 
 K vytvoření aplikace.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Ujistěte se, že používáte adresář, který obsahuje vašeho jiného klienta Azure AD B2C (například Fabrikam.com).
 1. V Azure Portal vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **Registrace aplikací** a pak vyberte **Nová registrace**.
@@ -79,7 +79,7 @@ K vytvoření aplikace.
 
 ## <a name="configure-azure-ad-b2c-as-an-identity-provider"></a>Konfigurace Azure AD B2C jako zprostředkovatele identity
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Ujistěte se, že používáte adresář, který obsahuje Azure AD B2C tenanta, pro který chcete nakonfigurovat federaci (například contoso). V horní nabídce vyberte filtr **adresář + odběr** a zvolte adresář, který obsahuje klienta Azure AD B2C (například contoso).
 1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **Zprostředkovatelé identity** a potom vyberte **Nový poskytovatel OpenID Connect**.

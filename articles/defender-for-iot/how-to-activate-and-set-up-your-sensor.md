@@ -4,15 +4,15 @@ description: Tento článek popisuje, jak se přihlásit a aktivovat konzolu sen
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/26/2020
+ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 9305609b624a96e4d785657dfb63af6639e132c4
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 4ad1562bdd9853b6ff3c537790a54dbeab96b5b8
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97838968"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538572"
 ---
 # <a name="activate-and-set-up-your-sensor"></a>Aktivace a nastavení senzoru
 
@@ -65,10 +65,13 @@ K dispozici jsou dvě úrovně zabezpečení:
 Konzola podporuje následující typy certifikátů:
 
 - Privátní a podniková infrastruktura klíčů (privátní infrastruktura veřejných klíčů)
+
 - Infrastruktura veřejných klíčů (veřejná infrastruktura veřejných klíčů)
+
 - Místně generované na zařízení (místně podepsané svým držitelem) 
 
-  > VÝZNAMNÁ Doporučujeme nepoužívat výchozí certifikát podepsaný svým držitelem. Certifikát není zabezpečený a měl by se používat jenom pro testovací prostředí. Vlastníka certifikátu nelze ověřit a zabezpečení systému nelze udržovat. Pro produkční sítě nikdy tuto možnost nepoužívejte.
+  > [!IMPORTANT]
+  > Doporučujeme nepoužívat výchozí certifikát podepsaný svým držitelem. Certifikát není zabezpečený a měl by se používat jenom pro testovací prostředí. Vlastníka certifikátu nelze ověřit a zabezpečení systému nelze udržovat. Pro produkční sítě nikdy tuto možnost nepoužívejte.
 
 ### <a name="sign-in-and-activate-the-sensor"></a>Přihlaste se a aktivujte senzor.
 
@@ -139,7 +142,7 @@ Zpočátku se tato aktivita provádí v výukovém režimu, který dává vašem
 
 Zkontrolujte nastavení systému senzoru a ujistěte se, že je senzor nakonfigurovaný tak, aby optimálně zjišťoval a upozornil.
 
-Definujte nastavení systému senzoru. Například:
+Definujte nastavení systému senzoru. Příklad:
 
 - Definujte ICS (nebo IoT) a oddělené podsítě.
 
@@ -179,7 +182,7 @@ Přístup k nástrojům konzoly získáte z vedlejší nabídky.
 | Řídicí panel | :::image type="icon" source="media/concept-sensor-console-overview/dashboard-icon-azure.png" border="false"::: | Zobrazení intuitivního snímku stavu zabezpečení sítě. |
 | Mapa zařízení | :::image type="icon" source="media/concept-sensor-console-overview/asset-map-icon-azure.png" border="false"::: | Zobrazit síťová zařízení, připojení zařízení a vlastnosti zařízení v mapě. K zobrazení vaší sítě jsou k dispozici různé možnosti přiblížení, zvýraznění a filtrování. |
 | Inventář zařízení | :::image type="icon" source="media/concept-sensor-console-overview/asset-inventory-icon-azure.png" border="false":::  | Inventář zařízení zobrazuje rozsáhlou škálu atributů zařízení, které tento senzor detekuje. Možnosti jsou k dispozici pro: <br /> -Filtrovat informace podle polí tabulky a zobrazit zobrazené filtrované informace. <br /> – Exportujte informace do souboru CSV. <br /> – Importujte podrobnosti registru Windows.|
-| Výstrahy | :::image type="icon" source="media/concept-sensor-console-overview/alerts-icon-azure.png" border="false"::: | Zobrazit upozornění, když dojde k porušení zásad, se vyskytnou odchylky od chování standardních hodnot nebo se zjistí jakýkoli typ podezřelé aktivity v síti. |
+| Upozornění | :::image type="icon" source="media/concept-sensor-console-overview/alerts-icon-azure.png" border="false"::: | Zobrazit upozornění, když dojde k porušení zásad, se vyskytnou odchylky od chování standardních hodnot nebo se zjistí jakýkoli typ podezřelé aktivity v síti. |
 | Sestavy | :::image type="icon" source="media/concept-sensor-console-overview/reports-icon-azure.png" border="false"::: | Zobrazení sestav založených na dotazech dolování dat. |
 
 **Výsledcích**
@@ -211,10 +214,10 @@ Přístup k nástrojům konzoly získáte z vedlejší nabídky.
 |----|---|---|
 | Podpora | :::image type="icon" source="media/concept-sensor-console-overview/support-icon-azure.png" border="false"::: | Požádejte o nápovědu [Podpora Microsoftu](https://support.microsoft.com/) . |
 
-### <a name="see-also"></a>Viz také
+### <a name="see-also"></a>Viz také:
 
 [Připojení snímače](getting-started.md#4-onboard-a-sensor)
 
 [Spravovat aktivační soubory senzorů](how-to-manage-individual-sensors.md#manage-sensor-activation-files)
 
-[Řízení sledování provozu](how-to-control-what-traffic-is-monitored.md)
+[Určení, který provoz se monitoruje](how-to-control-what-traffic-is-monitored.md)

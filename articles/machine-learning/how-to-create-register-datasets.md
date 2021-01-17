@@ -1,5 +1,5 @@
 ---
-title: Vytvoření Azure Machine Learning datových sad pro přístup k datům
+title: Vytváření datových sad služby Azure Machine Learning
 titleSuffix: Azure Machine Learning
 description: Naučte se vytvářet Azure Machine Learning datové sady pro přístup k datům pro spuštění experimentování ve službě Machine Learning.
 services: machine-learning
@@ -12,16 +12,14 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: fa6cdeaa47c7fdf9e90cdab96397473d8498afa0
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 8dac15f359d8ab6c7a84bbc30dba392322e84bb5
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108700"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538198"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Vytváření datových sad služby Azure Machine Learning
-
-
 
 V tomto článku se dozvíte, jak vytvořit Azure Machine Learning datové sady pro přístup k datům pro místní nebo vzdálené experimenty pomocí sady Azure Machine Learning Python SDK. Informace o tom, kde se datové sady vejdou do celého pracovního postupu pro přístup k datům v Azure Machine Learning, najdete v článku [zabezpečený přístup k datům](concept-data.md#data-workflow) .
 
@@ -37,7 +35,7 @@ S Azure Machine Learningmi datovými sadami můžete:
 
 * Sdílejte data a spolupracujte s ostatními uživateli.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K vytváření a práci s datovými sadami potřebujete:
 
@@ -127,6 +125,7 @@ Pokud chcete znovu použít a sdílet datové sady v rámci experimentu v pracov
 > Nahrajte soubory z místního adresáře a v rámci jediné metody pomocí metody Public Preview Vytvořte datovou sadu typu [upload_directory ()](/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?preserve-view=true&view=azure-ml-py#upload-directory-src-dir--target--pattern-none--overwrite-false--show-progress-true-). Tato metoda je funkcí [experimentální](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) verze Preview a může se kdykoli změnit. 
 > 
 >  Tato metoda nahraje data do vašeho podkladového úložiště a výsledkem je, že se vám budou účtovat náklady na úložiště. 
+
 ### <a name="create-a-tabulardataset"></a>Vytvoření TabularDataset
 
 Pomocí [`from_delimited_files()`](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory) metody `TabularDatasetFactory` třídy můžete číst soubory ve formátu. csv nebo. TSV a vytvořit neregistrované TabularDataset. Pokud načítáte z více souborů, výsledky budou shrnuty do jednoho tabulkového znázornění. 
@@ -171,12 +170,11 @@ titanic_ds.take(3).to_pandas_dataframe()
 
 |Indexovacím|PassengerId (ID pasažéra)|Zachované|Pclass|Název|Sex|Věk|SibSp|Parch|Ticket (Lístek)|Vozov|Posádk|Nastoupilo
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
-0|1|Nepravda|3|Braund, Mr. Owen Harris|male (muž)|22,0|1|0|A/5 21171|7,2500||S
+0|1|Ne|3|Braund, Mr. Owen Harris|male (muž)|22,0|1|0|A/5 21171|7,2500||S
 1|2|Ano|1|Cumings, paní Jan Bradley (Florencie Briggs th...|female (žena)|38,0|1|0|POČÍTAČ 17599|71,2833|C85|C
 2|3|Ano|3|Heikkinen, chybíš. Laina|female (žena)|26.0|0|0|STON/O2. 3101282|7,9250||S
 
 Chcete-li znovu použít a sdílet datové sady mezi experimenty v pracovním prostoru, [Zaregistrujte datovou sadu](#register-datasets).
-
 
 ## <a name="explore-data"></a>Zkoumání dat
 
@@ -206,7 +204,7 @@ titanic_ds.take(3).to_pandas_dataframe()
 
 |Indexovacím|PassengerId (ID pasažéra)|Zachované|Pclass|Název|Sex|Věk|SibSp|Parch|Ticket (Lístek)|Vozov|Posádk|Nastoupilo
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
-0|1|Nepravda|3|Braund, Mr. Owen Harris|male (muž)|22,0|1|0|A/5 21171|7,2500||S
+0|1|Ne|3|Braund, Mr. Owen Harris|male (muž)|22,0|1|0|A/5 21171|7,2500||S
 1|2|Ano|1|Cumings, paní Jan Bradley (Florencie Briggs th...|female (žena)|38,0|1|0|POČÍTAČ 17599|71,2833|C85|C
 2|3|Ano|3|Heikkinen, chybíš. Laina|female (žena)|26.0|0|0|STON/O2. 3101282|7,9250||S
 

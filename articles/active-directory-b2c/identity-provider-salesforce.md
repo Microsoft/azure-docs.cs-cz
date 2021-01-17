@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/05/2021
+ms.date: 01/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 129809a83bcebdcf80b05a7300dd9acf862e5886
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 92c5850c3e8c6db63bb5f6287078d2b0345a051c
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900395"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538041"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-salesforce-account-using-azure-active-directory-b2c"></a>Nastavte si registraci a přihlaste se pomocí účtu Salesforce pomocí Azure Active Directory B2C
 
@@ -30,14 +30,14 @@ ms.locfileid: "97900395"
 
 ::: zone-end
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 
 ## <a name="create-a-salesforce-application"></a>Vytvoření aplikace Salesforce
 
-Pokud chcete použít účet Salesforce v Azure Active Directory B2C (Azure AD B2C), musíte ve **správci aplikací** Salesforce vytvořit aplikaci. Další informace najdete v tématech [Konfigurace základního nastavení připojené aplikace](https://help.salesforce.com/articleView?id=connected_app_create_basics.htm)a [Povolení nastavení OAuth pro integraci rozhraní API](https://help.salesforce.com/articleView?id=connected_app_create_api_integration.htm) .
+Pokud chcete povolit přihlášení pro uživatele s účtem Salesforce v Azure Active Directory B2C (Azure AD B2C), musíte ve [správci aplikací](https://login.salesforce.com/)Salesforce vytvořit aplikaci. Další informace najdete v tématech [Konfigurace základního nastavení připojené aplikace](https://help.salesforce.com/articleView?id=connected_app_create_basics.htm)a [Povolení nastavení OAuth pro integraci rozhraní API](https://help.salesforce.com/articleView?id=connected_app_create_api_integration.htm) .
 
 1. [Přihlaste se k Salesforce](https://login.salesforce.com/).
 1. V nabídce vyberte možnost **Nastavení**.
@@ -157,7 +157,7 @@ Pokud chcete, aby se uživatelé přihlásili pomocí účtu Salesforce, musíte
 
 4. **Metadata** se nastaví na adresu URL [dokumentu konfigurace Salesforce OpenID Connect](https://help.salesforce.com/articleView?id=remoteaccess_using_openid_discovery_endpoint.htm). Pro izolovaný prostor (sandbox) se login.salesforce.com nahrazuje test.salesforce.com. V případě komunity se login.salesforce.com nahrazuje adresou URL komunity, jako je například username.force.com/.well-known/openid-configuration. Adresa URL musí být HTTPS.
 5. Nastavte **client_id** na ID aplikace z registrace aplikace.
-6. Uložte soubor.
+6. Soubor uložte.
 
 ### <a name="upload-the-extension-file-for-verification"></a>Nahrajte soubor rozšíření pro ověření.
 
@@ -210,7 +210,7 @@ Teď, když máte tlačítko na místě, musíte ho propojit s akcí. Tato akce 
 ## <a name="add-salesforce-identity-provider-to-a-user-flow"></a>Přidání poskytovatele identity Salesforce do toku uživatele 
 
 1. Ve vašem tenantovi Azure AD B2C vyberte **toky uživatelů**.
-1. Klikněte na tok uživatele, který chcete poskytovateli identity Salesforce.
+1. Klikněte na tok uživatele, který chcete přidat poskytovatele identity Salesforce.
 1. V části **Zprostředkovatelé sociální identity** vyberte **Salesforce**.
 1. Vyberte **Uložit**.
 1. Pokud chcete zásady testovat, vyberte **Spustit tok uživatele**.

@@ -5,14 +5,14 @@ author: savjani
 ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 01/15/2021
+ms.date: 01/18/2021
 ms.custom: references_regions
-ms.openlocfilehash: c91aab2bf59f93cf897f9a1b9109172523ae4e57
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 39547e3156a684293a0624f974a8b0930f656485
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251399"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98540017"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Repliky pro čtení ve službě Azure Database for MariaDB
 
@@ -27,13 +27,13 @@ Další informace o replikaci GTID najdete v [dokumentaci k replikaci MariaDB](h
 
 ## <a name="when-to-use-a-read-replica"></a>Kdy použít repliku čtení
 
-Funkce replika čtení pomáhá zlepšit výkon a škálu úloh náročných na čtení. Úlohy spočívající ve čtení je možné oddělit do replik a úlohy spočívající v zápisu budou směrované do hlavní databáze.
+Funkce replika čtení pomáhá zlepšit výkon a škálu úloh náročných na čtení. Úlohy čtení se dají pro repliky izolovat, zatímco úlohy zápisu můžou být směrované na primární.
 
 Běžným scénářem je, aby úlohy BI a analýzy používaly jako zdroj dat pro vytváření sestav repliku pro čtení.
 
-Vzhledem k tomu, že repliky jsou jen pro čtení, nesnižují přímo na hlavní úrovni zátěže s kapacitou pro zápis. Tato funkce není určená pro úlohy, které jsou náročné na zápis.
+Vzhledem k tomu, že repliky jsou jen pro čtení, nesnižují přímo na primární úrovni zátěže s kapacitou pro zápis. Tato funkce není určená pro úlohy, které jsou náročné na zápis.
 
-Funkce replika čtení používá asynchronní replikaci. Tato funkce není určena pro scénáře synchronní replikace. Mezi zdrojem a replikou bude měřitelná prodleva. Data v replice nakonec budou konzistentní s daty v hlavní databázi. Tato funkce se používá pro úlohy, které můžou toto zpoždění obsloužit.
+Funkce replika čtení používá asynchronní replikaci. Tato funkce není určena pro scénáře synchronní replikace. Mezi zdrojem a replikou bude měřitelná prodleva. Data v replice nakonec budou konzistentní s daty na primárním virtuálním počítači. Tato funkce se používá pro úlohy, které můžou toto zpoždění obsloužit.
 
 ## <a name="cross-region-replication"></a>Replikace mezi oblastmi
 
@@ -44,11 +44,13 @@ Zdrojový server můžete mít v libovolné [Azure Database for MariaDB oblasti]
 [![Čtení oblastí repliky](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
 
 ### <a name="universal-replica-regions"></a>Oblasti univerzální repliky
+
 Repliku pro čtení můžete vytvořit v některé z následujících oblastí bez ohledu na to, kde se nachází zdrojový server. Mezi podporované oblasti univerzální repliky patří:
 
 Austrálie – východ, Austrálie – jihovýchod, Brazílie – jih, Kanada – střed, Kanada – východ, Střed USA, Východní Asie, Východní USA, Východní USA 2, Japonsko – východ, Japonsko – západ, Jižní Korea, Korea – jih, střed USA – sever, Severní Evropa, střed USA – jih, jihovýchodní Asie, Velká Británie – jih, Velká Británie – západ, Západní Evropa, Západní USA, západní USA 2 a Středozápadní USA.
 
 ### <a name="paired-regions"></a>Spárované oblasti
+
 Kromě oblastí univerzální repliky můžete vytvořit repliku pro čtení v oblasti párování Azure na vašem zdrojovém serveru. Pokud neznáte pár vaší oblasti, můžete získat další informace v [článku spárované oblasti Azure](../best-practices-availability-paired-regions.md).
 
 Pokud používáte repliky mezi jednotlivými oblastmi pro plánování zotavení po havárii, doporučujeme vytvořit repliku v spárované oblasti namísto jedné z ostatních oblastí. Spárované oblasti zabraňují souběžným aktualizacím a přiřazují fyzickou izolaci a zasídlí dat.  
@@ -56,7 +58,7 @@ Pokud používáte repliky mezi jednotlivými oblastmi pro plánování zotaven�
 Je však třeba vzít v úvahu omezení: 
 
 * Oblast dostupnosti: Azure Database for MariaDB je k dispozici ve Francii – střed, Spojené arabské emiráty Severní a Německo – střed. Nicméně jejich spárované oblasti nejsou k dispozici.
-    
+
 * Jednosměrné páry: některé oblasti Azure jsou spárovány pouze v jednom směru. Mezi tyto oblasti patří Západní Indie, Brazílie – jih a US Gov – Virginie. 
    To znamená, že zdrojový server v Západní Indie může vytvořit repliku v Jižní Indie. Zdrojový server v Jižní Indie ale nemůže vytvořit repliku v Západní Indie. Důvodem je to, že sekundární oblast Západní Indie je Jižní Indie, ale sekundární oblast Jižní Indie není Západní Indie.
 
@@ -110,7 +112,7 @@ Přečtěte si, jak [zastavit replikaci do repliky](howto-read-replicas-portal.m
 
 ## <a name="failover"></a>Převzetí služeb při selhání
 
-Mezi zdrojovým serverem a serverem repliky neexistuje automatizované převzetí služeb při selhání. 
+Mezi zdrojovým serverem a serverem repliky neexistuje automatizované převzetí služeb při selhání.
 
 Vzhledem k tomu, že replikace je asynchronní, existuje prodleva mezi zdrojem a replikou. Velikost prodlevy může mít vliv na několik faktorů, jako je to, jak velké zatížení na zdrojovém serveru běží a latence mezi datovými centry. Ve většině případů je prodleva repliky v rozsahu od několika sekund do několika minut. Vlastní prodlevu replikace můžete sledovat pomocí *prodlevy repliky* metriky, která je k dispozici pro každou repliku. Tato metrika ukazuje čas od poslední opakované transakce. Doporučujeme, abyste zjistili, jaký je průměrný prodleva tím, že v časovém intervalu pozoruje prodlevu repliky. Můžete nastavit upozornění na prodlevu repliky, takže pokud bude mimo očekávaný rozsah, můžete provést akci.
 
@@ -119,13 +121,13 @@ Vzhledem k tomu, že replikace je asynchronní, existuje prodleva mezi zdrojem a
 
 Až se rozhodnete, že chcete převzít služeb při selhání do repliky,
 
-1. Zastavení replikace do repliky<br/>
+1. Zastavte replikaci do repliky.
 
-   Tento krok je nezbytný k tomu, aby server repliky mohl přijímat zápisy. V rámci tohoto procesu se server repliky odpojí z hlavního serveru. Po zahájení zastavení replikace bude proces back-endu obvykle trvat přibližně 2 minuty, než se dokončí. V části [zastavení replikace](#stop-replication) v tomto článku se seznámíte s důsledky této akce.
+   Tento krok je nezbytný k tomu, aby server repliky mohl přijímat zápisy. V rámci tohoto procesu se server repliky odpojí z primární služby. Po zahájení zastavení replikace bude proces back-endu obvykle trvat přibližně 2 minuty, než se dokončí. V části [zastavení replikace](#stop-replication) v tomto článku se seznámíte s důsledky této akce.
 
 2. Nasměrujte aplikaci na (bývalé) repliku.
 
-   Každý server má jedinečný připojovací řetězec. Aktualizujte svou aplikaci tak, aby odkazovala na (bývalé) repliku místo na hlavní.
+   Každý server má jedinečný připojovací řetězec. Aktualizujte svou aplikaci tak, aby odkazovala na (bývalé) repliku místo na primární.
 
 Po úspěšném zpracování čtení a zápisu vaší aplikace jste dokončili převzetí služeb při selhání. Množství prostojů, na kterých bude prostředí aplikace záviset při zjištění problému a dokončení kroků 1 a 2 výše.
 
@@ -148,10 +150,10 @@ Replika pro čtení je vytvořená jako nový server Azure Database for MariaDB.
 
 ### <a name="replica-configuration"></a>Konfigurace repliky
 
-Replika je vytvořena pomocí stejné konfigurace serveru jako hlavní. Po vytvoření repliky se dá změnit několik nastavení nezávisle na zdrojovém serveru: generování výpočetních prostředků, virtuální jádra, úložiště, doba uchování zálohy a verze stroje MariaDB. Cenová úroveň se dá změnit také nezávisle, s výjimkou nebo z úrovně Basic.
+Replika je vytvořena pomocí stejné konfigurace serveru jako primární. Po vytvoření repliky se dá změnit několik nastavení nezávisle na zdrojovém serveru: generování výpočetních prostředků, virtuální jádra, úložiště, doba uchování zálohy a verze stroje MariaDB. Cenová úroveň se dá změnit také nezávisle, s výjimkou nebo z úrovně Basic.
 
 > [!IMPORTANT]
-> Před aktualizací konfigurace zdrojového serveru na nové hodnoty aktualizujte konfiguraci repliky na stejné nebo vyšší hodnoty. Tato akce zajistí, že replika bude moct udržovat krok se všemi změnami na hlavním serveru.
+> Před aktualizací konfigurace zdrojového serveru na nové hodnoty aktualizujte konfiguraci repliky na stejné nebo vyšší hodnoty. Tato akce zajistí, že replika bude mít všechny změny provedené v primárním stavu.
 
 Pravidla brány firewall a nastavení parametrů se při vytvoření repliky dědí ze zdrojového serveru do repliky. Pak jsou pravidla repliky nezávislá.
 
@@ -172,20 +174,21 @@ Uživatelé na zdrojovém serveru se replikují do replik pro čtení. K replice
 Aby se při použití replik pro čtení zabránilo přerušení synchronizace dat a možné ztrátě nebo poškození dat, některé parametry serveru neumožňují aktualizaci.
 
 Následující parametry serveru jsou uzamčené na zdrojovém serveru i na serverech repliky:
-- [`innodb_file_per_table`](https://mariadb.com/kb/en/library/innodb-system-variables/#innodb_file_per_table) 
-- [`log_bin_trust_function_creators`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#log_bin_trust_function_creators)
+
+* [`innodb_file_per_table`](https://mariadb.com/kb/en/library/innodb-system-variables/#innodb_file_per_table) 
+* [`log_bin_trust_function_creators`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#log_bin_trust_function_creators)
 
 [`event_scheduler`](https://mariadb.com/kb/en/library/server-system-variables/#event_scheduler)Parametr je uzamčen na serverech repliky.
 
-Pokud chcete na zdrojovém serveru aktualizovat jeden z výše uvedených parametrů, odstraňte prosím servery repliky, aktualizujte hodnotu parametru v hlavní větvi a znovu vytvořte repliky.
+Pokud chcete na zdrojovém serveru aktualizovat jeden z výše uvedených parametrů, odstraňte prosím servery repliky, aktualizujte hodnotu parametru na primárním a znovu vytvořte repliky.
 
 ### <a name="other"></a>Další
 
-- Vytvoření repliky repliky není podporováno.
-- Tabulky v paměti můžou způsobit, že se repliky nesynchronizují. Toto je omezení technologie MariaDB pro replikaci.
-- Zajistěte, aby tabulky zdrojového serveru měly primární klíče. Nedostatek primárních klíčů může způsobit latenci replikace mezi zdrojem a replikami.
+* Vytvoření repliky repliky není podporováno.
+* Tabulky v paměti můžou způsobit, že se repliky nesynchronizují. Toto je omezení technologie MariaDB pro replikaci.
+* Zajistěte, aby tabulky zdrojového serveru měly primární klíče. Nedostatek primárních klíčů může způsobit latenci replikace mezi zdrojem a replikami.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Naučte se [vytvářet a spravovat repliky pro čtení pomocí Azure Portal](howto-read-replicas-portal.md)
-- Naučte se [vytvářet a spravovat repliky pro čtení pomocí Azure CLI a REST API](howto-read-replicas-cli.md)
+* Naučte se [vytvářet a spravovat repliky pro čtení pomocí Azure Portal](howto-read-replicas-portal.md)
+* Naučte se [vytvářet a spravovat repliky pro čtení pomocí Azure CLI a REST API](howto-read-replicas-cli.md)

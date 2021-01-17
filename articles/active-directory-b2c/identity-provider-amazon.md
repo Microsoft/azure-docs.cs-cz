@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.custom: project-no-code
-ms.date: 12/07/2020
+ms.date: 01/15/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 48887df0ce6228fa436cb91bfb0a3ee7aa0f6c08
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 79fcbb6d2bf10da566139b0d103a4f31930f3200
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654502"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98537980"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-amazon-account-using-azure-active-directory-b2c"></a>Nastavte si registraci a přihlaste se pomocí účtu Amazon pomocí Azure Active Directory B2C
 
@@ -30,13 +30,13 @@ ms.locfileid: "97654502"
 
 ::: zone-end
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 ## <a name="create-an-app-in-the-amazon-developer-console"></a>Vytvoření aplikace v konzole pro vývojáře Amazon
 
-Pokud chcete použít účet Amazon jako federovaného poskytovatele identity v Azure Active Directory B2C (Azure AD B2C), musíte vytvořit aplikaci ve svých [vývojářských službách a technologiích Amazon](https://developer.amazon.com). Pokud ještě nemáte účet Amazon, můžete se zaregistrovat v [https://www.amazon.com/](https://www.amazon.com/) .
+Pokud chcete povolit přihlášení uživatelům s účtem Amazon v Azure Active Directory B2C (Azure AD B2C), musíte vytvořit aplikaci v [Amazon Developer Services a technologiích](https://developer.amazon.com). Další informace najdete v tématu [Registrace pro přihlášení pomocí Amazon](https://developer.amazon.com/docs/login-with-amazon/register-web.html). Pokud ještě nemáte účet Amazon, můžete se zaregistrovat v [https://www.amazon.com/](https://www.amazon.com/) .
 
 > [!NOTE]  
 > V **kroku 8** níže použijte následující adresy URL, které nahradíte `your-tenant-name` názvem svého tenanta. Při zadávání názvu tenanta používejte malá písmena, i když je tenant definovaný velkými písmeny v Azure AD B2C.
@@ -128,7 +128,7 @@ Pokud chcete, aby se uživatelé přihlásili pomocí účtu Amazon, musíte ú�
     ```
 
 4. Nastavte **client_id** na ID aplikace z registrace aplikace.
-5. Uložte soubor.
+5. Soubor uložte.
 
 ### <a name="upload-the-extension-file-for-verification"></a>Nahrajte soubor rozšíření pro ověření.
 
@@ -181,7 +181,7 @@ Teď, když máte tlačítko na místě, musíte ho propojit s akcí. Tato akce 
 ## <a name="add-amazon-identity-provider-to-a-user-flow"></a>Přidání poskytovatele identity Amazon do toku uživatele 
 
 1. Ve vašem tenantovi Azure AD B2C vyberte **toky uživatelů**.
-1. Klikněte na tok uživatele, který chcete pro poskytovatele Amazon identity.
+1. Klikněte na tok uživatele, který chcete přidat poskytovatele identity Amazon.
 1. V části **Zprostředkovatelé sociální identity** vyberte **Amazon**.
 1. Vyberte **Uložit**.
 1. Pokud chcete zásady testovat, vyberte **Spustit tok uživatele**.

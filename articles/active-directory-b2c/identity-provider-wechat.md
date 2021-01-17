@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: af840a7becb0fb2c23e01153828458ee1cfa51a1
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 1dd9af3abd723b3a7adad82f3bbb4a09fc4464f7
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654230"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538014"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-wechat-account-using-azure-active-directory-b2c"></a>Nastavte si registraci a přihlaste se pomocí účtu WeChat pomocí Azure Active Directory B2C
 
@@ -27,13 +27,13 @@ ms.locfileid: "97654230"
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 ## <a name="create-a-wechat-application"></a>Vytvoření aplikace v WeChat
 
-Pokud chcete účet WeChat použít jako poskytovatele identity v Azure Active Directory B2C (Azure AD B2C), musíte ve svém tenantovi vytvořit aplikaci, která ho bude představovat. Pokud ještě nemáte účet WeChat, můžete získat informace na adrese [https://kf.qq.com/faq/161220Brem2Q161220uUjERB.html](https://kf.qq.com/faq/161220Brem2Q161220uUjERB.html) .
+Pokud chcete povolit přihlášení pro uživatele s účtem WeChat v Azure Active Directory B2C (Azure AD B2C), musíte vytvořit aplikaci v [centru pro správu WeChat](https://open.weixin.qq.com/). Pokud ještě nemáte účet WeChat, můžete získat informace na adrese [https://kf.qq.com](https://kf.qq.com/faq/161220Brem2Q161220uUjERB.html) .
 
 ### <a name="register-a-wechat-application"></a>Registrace aplikace WeChat
 
@@ -130,7 +130,7 @@ Pokud chcete, aby se uživatelé přihlásili pomocí účtu WeChat, musíte ú�
     ```
 
 4. Nastavte **client_id** na ID aplikace z registrace aplikace.
-5. Uložte soubor.
+5. Soubor uložte.
 
 ### <a name="upload-the-extension-file-for-verification"></a>Nahrajte soubor rozšíření pro ověření.
 
@@ -183,7 +183,7 @@ Teď, když máte tlačítko na místě, musíte ho propojit s akcí. Tato akce 
 ## <a name="add-wechat-identity-provider-to-a-user-flow"></a>Přidání poskytovatele identity WeChat do toku uživatele 
 
 1. Ve vašem tenantovi Azure AD B2C vyberte **toky uživatelů**.
-1. Klikněte na tok uživatele, který chcete WeChat poskytovatel identity.
+1. Klikněte na tok uživatele, který chcete přidat poskytovatele identity WeChat.
 1. V části **Zprostředkovatelé sociální identity** vyberte **WeChat**.
 1. Vyberte **Uložit**.
 1. Pokud chcete zásady testovat, vyberte **Spustit tok uživatele**.

@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: troubleshooting
 ms.date: 07/15/2020
 ms.author: chrande
-ms.openlocfilehash: 06a06d275ba6f5ded475ffd693ee61e7a72b9516
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 26097408d0b83b043f4a25183146c892fc4b48ad
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127698"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538548"
 ---
 # <a name="troubleshoot-common-issues-in-azure-cosmos-dbs-api-for-mongodb"></a>Řešení běžných problémů v rozhraní Azure Cosmos DB API pro MongoDB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -36,7 +36,7 @@ Následující článek popisuje běžné chyby a řešení pro nasazení pomoc�
 | 67 | CannotCreateIndex | Požadavek na vytvoření indexu nelze dokončit. | V kontejneru lze vytvořit až 500 indexů s jedním polem. Do složeného indexu lze zahrnout maximálně osm polí (složené indexy jsou podporovány ve verzi 3.6 +). |
 | 115 | CommandNotSupported | Pokusy o požadavek se nepodporují. | V této chybě by se měly zadat další podrobnosti. Pokud je tato funkce pro vaše nasazení důležitá, dejte nám prosím v [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)vytvořením lístku podpory. |
 | 11000 | DuplicateKey | Klíč horizontálních oddílů (Azure Cosmos DB klíč oddílu) dokumentu, který vkládáte, už v kolekci existuje nebo je porušené omezení jedinečného pole indexu. | K aktualizaci existujícího dokumentu použijte funkci Update (). Pokud je omezení jedinečného pole indexu porušeno, vložte nebo aktualizujte dokument s hodnotou pole, která ještě neexistuje v horizontálních oddílů nebo oddílu. |
-| 16500 | TooManyRequests  | Celkový počet spotřebovaných jednotek žádostí je vyšší než zřízený počet jednotek žádostí pro kolekci, a proto došlo k omezení. | Zvažte škálování propustnosti přiřazené kontejneru nebo sadě kontejnerů na webu Azure Portal, případně můžete zkusit operaci zopakovat. Pokud povolíte SSR (opakování na straně serveru), Azure Cosmos DB automaticky opakuje požadavky, které selhaly kvůli této chybě. |
+| 16500 | TooManyRequests  | Celkový počet spotřebovaných jednotek žádostí je vyšší než zřízený počet jednotek žádostí pro kolekci, a proto došlo k omezení. | Zvažte škálování propustnosti přiřazené kontejneru nebo sadě kontejnerů na webu Azure Portal, případně můžete zkusit operaci zopakovat. Pokud [povolíte SSR](prevent-rate-limiting-errors.md) (opakování na straně serveru), Azure Cosmos DB automaticky opakuje požadavky, které selhaly kvůli této chybě. |
 | 16501 | ExceededMemoryLimit | Jako služba pro více tenantů se operace převzala v průběhu plnění paměti klienta. | Snižte rozsah operace prostřednictvím přísnějších kritérií dotazu nebo kontaktujte podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Příklad: `db.getCollection('users').aggregate([{$match: {name: "Andy"}}, {$sort: {age: -1}}]))` |
 | 40324 | Nerozpoznaný název fáze kanálu | Název fáze v žádosti o agregovaný kanál nebyl rozpoznán. | Zajistěte, aby všechny názvy kanálů agregace byly ve vaší žádosti platné. |
 | - | Problémy s verzí přenosového protokolu MongoDB | Starší verze ovladačů MongoDB nemůžou v připojovacích řetězech rozpoznat název účtu Azure Cosmos. | Připojíte *AppName = @**account** @* na konci rozhraní API Cosmos DB pro připojovací řetězec MongoDB, kde název ***účtu*** je váš Cosmos DB název účtu. |

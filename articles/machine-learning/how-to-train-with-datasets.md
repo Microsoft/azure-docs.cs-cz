@@ -1,7 +1,7 @@
 ---
-title: Výuka pomocí souborů AzureML-DataSet
+title: Výuka s datovými sadami machine learningu
 titleSuffix: Azure Machine Learning
-description: Naučte se, jak zpřístupnit vaše data pro místní nebo vzdálené výpočty pro školení modelů ML s Azure Machine Learningmi datovými sadami.
+description: Naučte se, jak zpřístupnit vaše data místnímu nebo vzdálenému výpočetnímu prostředí pro školení modelů s Azure Machine Learningmi datovými sadami.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,15 +12,14 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 52b52c4c19b22fb1afd76d1e8dfa4163326c0244
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 2d6282c527293abdb8b21e0591548cb51e1339a9
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108586"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539670"
 ---
-# <a name="train-with-datasets-in-azure-machine-learning"></a>Výuka s datovými sadami v Azure Machine Learning
-
+# <a name="train-models-with-azure-machine-learning-datasets"></a>Výuka modelů s Azure Machine Learningmi datovými sadami 
 
 V tomto článku se dozvíte, jak pracovat s [Azure Machine Learningmi datovými sadami](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py) a naučit modely strojového učení.  V místním nebo vzdáleném výpočetním cíli můžete použít datové sady, aniž byste se museli starat o připojovací řetězce nebo cesty k datům. 
 
@@ -28,11 +27,11 @@ Azure Machine Learning datové sady poskytují bezproblémovou integraci s Azure
 
 Pokud nejste připraveni k zpřístupnění dat pro školení modelů, ale chcete načíst data do poznámkového bloku pro zkoumání dat, přečtěte si téma Jak [Prozkoumat data v datové sadě](how-to-create-register-datasets.md#explore-data). 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K vytváření a školení s datovými sadami potřebujete:
 
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet, ještě než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 * [Pracovní prostor Azure Machine Learning](how-to-manage-workspace.md).
 
@@ -41,7 +40,7 @@ K vytváření a školení s datovými sadami potřebujete:
 > [!Note]
 > Některé třídy DataSet mají závislosti na balíčku [AzureML-dataprep](/python/api/azureml-dataprep/?preserve-view=true&view=azure-ml-py) . Pro uživatele systému Linux jsou tyto třídy podporovány pouze v následujících distribucích: Red Hat Enterprise Linux, Ubuntu, Fedora a CentOS.
 
-## <a name="use-datasets-directly-in-training-scripts"></a>Použití datových sad přímo ve školicích skriptech
+## <a name="consume-datasets-in-machine-learning-training-scripts"></a>Využívání datových sad v školicích skriptech pro Machine Learning
 
 Pokud máte strukturovaná data, která ještě nejsou registrovaná jako datová sada, vytvořte TabularDataset a použijte ji přímo ve školicím skriptu pro svůj místní nebo vzdálený experiment.
 
@@ -90,6 +89,7 @@ df = dataset.to_pandas_dataframe()
 ```
 
 ### <a name="configure-the-training-run"></a>Konfigurace spuštění školení
+
 Objekt [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrun?preserve-view=true&view=azure-ml-py) se používá ke konfiguraci a odeslání školicího běhu.
 
 Tento kód vytvoří objekt ScriptRunConfig, `src` který určuje
@@ -141,6 +141,7 @@ mnist_ds = Dataset.File.from_files(path = web_paths)
 ```
 
 ### <a name="configure-the-training-run"></a>Konfigurace spuštění školení
+
 Při připojování prostřednictvím parametru konstruktoru doporučujeme předat datovou sadu jako argument `arguments` `ScriptRunConfig` . Tím se v školicím skriptu dostanete pomocí argumentů cestu k datům (bod připojení). Tímto způsobem budete moct použít stejný školicí skript pro místní ladění a vzdálené školení na jakékoli cloudové platformě.
 
 Následující příklad vytvoří ScriptRunConfig, který předává do objektu DataSet prostřednictvím `arguments` . Po odeslání běhu budou datové soubory odkazované datovou sadou `mnist_ds` připojeny k cíli výpočtů.
@@ -160,7 +161,7 @@ run = experiment.submit(src)
 run.wait_for_completion(show_output=True)
 ```
 
-### <a name="retrieve-the-data-in-your-training-script"></a>Načtěte data ve školicím skriptu.
+### <a name="retrieve-data-in-your-training-script"></a>Načtení dat ve školicím skriptu
 
 Následující kód ukazuje, jak načíst data ve skriptu.
 
@@ -222,10 +223,9 @@ print(os.listdir(mounted_path))
 print (mounted_path)
 ```
 
+## <a name="get-datasets-in-machine-learning-scripts"></a>Získání datových sad ve skriptech Machine Learning
 
-## <a name="directly-access-datasets-in-your-script"></a>Přímý přístup k datovým sadám ve skriptu
-
-Registrované datové sady jsou přístupné místně i vzdáleně na výpočetních clusterech, jako je Azure Machine Learning Compute. Chcete-li získat přístup k zadané datové sadě mezi experimenty, použijte následující kód pro přístup k pracovnímu prostoru a registrované datové sadě podle názvu. Ve výchozím nastavení [`get_by_name()`](/python/api/azureml-core/azureml.core.dataset.dataset?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-by-name-workspace--name--version--latest--) metoda na `Dataset` třídě vrátí nejnovější verzi datové sady, která je zaregistrována v pracovním prostoru.
+Registrované datové sady jsou přístupné místně i vzdáleně na výpočetních clusterech, jako je Azure Machine Learning Compute. Chcete-li získat přístup k zadané datové sadě mezi experimenty, použijte následující kód pro přístup k pracovnímu prostoru a získejte datovou sadu, která byla použita v předchozím odeslaném běhu. Ve výchozím nastavení [`get_by_name()`](/python/api/azureml-core/azureml.core.dataset.dataset?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-by-name-workspace--name--version--latest--) metoda na `Dataset` třídě vrátí nejnovější verzi datové sady, která je zaregistrována v pracovním prostoru.
 
 ```Python
 %%writefile $script_folder/train.py
@@ -244,7 +244,7 @@ titanic_ds = Dataset.get_by_name(workspace=workspace, name=dataset_name)
 df = titanic_ds.to_pandas_dataframe()
 ```
 
-## <a name="accessing-source-code-during-training"></a>Přístup ke zdrojovému kódu během školení
+## <a name="access-source-code-during-training"></a>Přístup ke zdrojovému kódu během školení
 
 Azure Blob Storage má vyšší propustnost než sdílenou složku Azure a bude se škálovat na velký počet spuštěných paralelně. Z tohoto důvodu doporučujeme nakonfigurovat vaše běhy na používání úložiště objektů BLOB pro přenos souborů zdrojového kódu.
 

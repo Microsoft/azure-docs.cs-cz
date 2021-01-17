@@ -4,15 +4,15 @@ description: Řešení běžných problémů v nasazení na Azure File Sync, kte
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 1/13/2021
+ms.date: 1/15/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: a262c2b4351c96217001ba42e8c745f7d71c7d45
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 71de1d17731e086d012da5365fa6671bcb9e6e3b
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233895"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539249"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Řešení problémů se Synchronizací souborů Azure
 Pomocí Azure File Sync můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
@@ -916,6 +916,22 @@ K této chybě dochází, protože Azure File Sync nepodporuje přesměrování 
 | **Požadována náprava** | Ne |
 
 K této chybě dojde, když operace přijímání dat překročí časový limit. Tuto chybu je možné ignorovat, pokud probíhá synchronizace (AppliedItemCount je větší než 0). Přečtěte si téma [návody sledování průběhu aktuální relace synchronizace?](#how-do-i-monitor-the-progress-of-a-current-sync-session).
+
+<a id="-2134375814"></a>**Synchronizace se nezdařila, protože na serveru nelze nalézt cestu koncového bodu serveru.**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80c8027a |
+| **HRESULT (desetinné číslo)** | -2134375814 |
+| **Text chyby** | ECS_E_SYNC_ROOT_DIRECTORY_NOT_FOUND |
+| **Požadována náprava** | Ano |
+
+K této chybě dojde, pokud byl adresář použitý jako cesta koncového bodu serveru přejmenován nebo odstraněn. Pokud byl adresář přejmenován, přejmenujte adresář zpátky na původní název a restartujte službu agenta synchronizace úložiště (FileSyncSvc).
+
+Pokud byl adresář odstraněn, proveďte následující kroky a odeberte stávající koncový bod serveru a vytvořte nový koncový bod serveru pomocí nové cesty:
+
+1. Odeberte koncový bod serveru ve skupině synchronizace podle postupu popsaného v části [Odebrání koncového bodu serveru](./storage-sync-files-server-endpoint.md#remove-a-server-endpoint).
+2. Pomocí postupu popsaného v části [Přidání koncového bodu serveru](https://docs.microsoft.com/azure/storage/files/storage-sync-files-server-endpoint#add-a-server-endpoint)vytvořte nový koncový bod serveru ve skupině synchronizace.
 
 ### <a name="common-troubleshooting-steps"></a>Běžné kroky při řešení potíží
 <a id="troubleshoot-storage-account"></a>**Ověřte, že účet úložiště existuje.**  

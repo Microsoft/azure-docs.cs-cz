@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
-ms.date: 10/19/2020
-ms.openlocfilehash: 921c05b76640935a1bd9e65d556933c23093e5b2
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.date: 01/15/2021
+ms.openlocfilehash: 8c2739503f00848b1515f2061c2a9aa250c091a3
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251433"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539848"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>Řešení potíží s certifikací virtuálního počítače
 
@@ -22,7 +22,6 @@ Tento článek vysvětluje běžné chybové zprávy během publikování imagí
 
 > [!NOTE]
 > Pokud máte dotazy k tomuto článku nebo návrhy na vylepšení, obraťte se na [podporu partnerského centra](https://aka.ms/marketplacepublishersupport).
-
 
 ## <a name="vm-extension-failure"></a>Selhání rozšíření virtuálního počítače
 
@@ -60,12 +59,12 @@ Problémy zřizování můžou zahrnovat tyto scénáře selhání:
 |1|Neplatný virtuální pevný disk (VHD)|Pokud je zadaná hodnota souboru cookie v zápatí VHD nesprávná, bude virtuální pevný disk považován za neplatný.|Znovu vytvořte bitovou kopii a odešlete žádost.|
 |2|Neplatný typ objektu BLOB|Zřizování virtuálního počítače se nezdařilo, protože použitý blok je typ objektu BLOB místo typu stránky.|Znovu vytvořte bitovou kopii a odešlete žádost.|
 |3|Časový limit zřizování nebo není správně zobecněný|Došlo k potížím s generalizací virtuálních počítačů.|Znovu vytvořte bitovou kopii pomocí generalizace a odešlete žádost.|
+|
 
 > [!NOTE]
 > Další informace o generalizaci virtuálních počítačů najdete v těchto tématech:
 > - [Dokumentace pro Linux](azure-vm-create-using-approved-base.md#generalize-the-image)
 > - [Dokumentace k Windows](../virtual-machines/windows/capture-image-resource.md#generalize-the-windows-vm-using-sysprep)
-
 
 ## <a name="vhd-specifications"></a>Specifikace VHD
 
@@ -93,7 +92,7 @@ Kontrolní součet|4
 Jedinečné ID|16
 Uložený stav|1
 Vyhrazené|427
-
+|
 
 ### <a name="vhd-specifications"></a>Specifikace VHD
 
@@ -139,6 +138,7 @@ V následující tabulce jsou uvedeny testovací případy pro Linux, které sad
 |8|Interval – aktivní klient|Nastavte ClientAliveInterval na 180. V případě potřeby je možné aplikaci nastavit z 30 na 235. Pokud pro koncové uživatele povolíte SSH, musí být tato hodnota nastavena, jak je vysvětleno.|
 |9|Architektura operačního systému|Podporují se jen 64bitové operační systémy.|
 |10|Automatická aktualizace|Určuje, jestli je povolená Automatická aktualizace agenta pro Linux.|
+|
 
 ### <a name="common-test-case-errors"></a>Běžné chyby testovacího případu
 
@@ -150,7 +150,7 @@ V následující tabulce najdete běžné chyby, které se můžou zobrazit při
 | 2 | Testovací případ historie bash | Pokud je velikost historie bash v odeslaném obrázku větší než 1 kilobajt (KB), dojde k chybě. Velikost je omezená na 1 KB, aby se zajistilo, že soubor historie bash neobsahuje žádné potenciálně citlivé informace. | Vyřešte připojením virtuálního pevného disku k jinému pracovnímu virtuálnímu počítači a proveďte změny a zmenšete velikost na 1 KB nebo méně. Odstraňte například `.bash` soubory historie. |
 | 3 | Požadovaný parametr jádra pro testovací případ | Tato chyba se zobrazí, pokud hodnota pro `console` není nastavená na `ttyS0` . Kontrolou spusťte následující příkaz: <br /> `cat /proc/cmdline` | Nastavte hodnotu pro `console` na a `ttyS0` odešlete požadavek znovu. |
 | 4 | Testovací případ intervalu ClientAlive | Pokud sada nástrojů poskytuje pro tento testovací případ neúspěšný výsledek, existuje nevhodná hodnota pro `ClientAliveInterval` . | Nastavte hodnotu pro `ClientAliveInterval` na hodnotu menší nebo rovnou 235 a potom žádost znovu odešlete. |
-
+|
 
 ### <a name="windows-test-cases"></a>Testovací případy Windows
 
@@ -175,8 +175,9 @@ V následující tabulce jsou uvedeny testovací případy systému Windows, kte
 |15|Služby SNMP|Funkce služeb SNMP (Simple Network Management Protocol) se zatím nepodporuje. Aplikace by neměla být závislá na této funkci.|
 |16|Služba Windows Internet Name Service|Služba Windows Internet Name Service. Tato funkce serveru zatím není podporovaná. Aplikace by neměla být závislá na této funkci.|
 |17|Služba bezdrátové sítě LAN|Služba bezdrátové sítě LAN. Tato funkce serveru zatím není podporovaná. Aplikace by neměla být závislá na této funkci.|
+|
 
-Pokud jste pocházeli při jakémkoli selhání s předchozími testovacími případy, přečtěte si sloupec **Popis** v tabulce pro řešení. Pokud chcete získat další informace, obraťte se na tým podpory. 
+Pokud jste pocházeli při jakémkoli selhání s předchozími testovacími případy, přečtěte si sloupec **Popis** v tabulce pro řešení. Pokud chcete získat další informace, obraťte se na tým podpory.
 
 ## <a name="data-disk-size-verification"></a>Ověření velikosti datového disku
 
@@ -192,6 +193,7 @@ Omezení velikosti disku operačního systému najdete v následujících pravid
 |---|---|
 |Linux|1 GB až 1023 GB|
 |Windows|30 GB až 250 GB|
+|
 
 Protože virtuální počítače umožňují přístup k základnímu operačnímu systému, zajistěte, aby velikost virtuálního pevného disku byla pro virtuální pevný disk dostatečně velká. Disky nejsou rozšiřitelné bez výpadků. Použijte velikost disku od 30 GB do 50 GB.
 
@@ -199,6 +201,7 @@ Protože virtuální počítače umožňují přístup k základnímu operační
 |---|---|---|
 |>500 tebibytes (TiB)|Není k dispozici|Obraťte se na tým podpory se schválením výjimky.|
 |250-500 TiB|Rozdíl velikosti objektu BLOB v >200 gibibajtech (GiB)|Obraťte se na tým podpory se schválením výjimky.|
+|
 
 > [!NOTE]
 > Větší velikosti disků účtují vyšší náklady a během procesu instalace a replikace budou mít za následek zpoždění. Z důvodu tohoto zpoždění a nákladů může tým podpory vyhledat odůvodnění pro schválení výjimky.
@@ -209,7 +212,7 @@ Aby se zabránilo potenciálnímu útoku souvisejícímu s virem WannaCry, zajis
 
 Verzi souboru bitové kopie můžete ověřit z `C:\windows\system32\drivers\srv.sys` nebo `srv2.sys` .
 
-Následující tabulka uvádí minimální opravenou verzi Windows serveru: 
+Následující tabulka uvádí minimální opravenou verzi Windows serveru:
 
 |Operační systém|Verze|
 |---|---|
@@ -218,6 +221,7 @@ Následující tabulka uvádí minimální opravenou verzi Windows serveru:
 |Windows Server 2012 R2|6.3.9600.18604|
 |Windows Server 2016|10.0.14393.953|
 |Windows Server 2019|Není k dispozici|
+|
 
 > [!NOTE]
 > Windows Server 2019 nemá žádné požadavky na povinnou verzi.
@@ -230,8 +234,8 @@ Aktualizujte jádro pomocí schválené verze a odešlete požadavek znovu. Schv
 
 Pokud bitová kopie není nainstalovaná s některou z následujících verzí jádra, aktualizujte ji pomocí správných oprav. Po aktualizaci obrázku pomocí těchto požadovaných oprav vyžádejte od týmu podpory potřebné schválení:
 
-- CVE-2019-11477 
-- CVE-2019-11478 
+- CVE-2019-11477
+- CVE-2019-11478
 - CVE-2019-11479
 
 |Řada OS|Verze|jádro|
@@ -278,6 +282,7 @@ Pokud bitová kopie není nainstalovaná s některou z následujících verzí j
 ||Roztáhnout (zabezpečení)|4.9.168-1 + deb9u3|
 ||Debian GNU/Linux 10 (Buster)|Debian 6.3.0 – 18 a deb9u1|
 ||Buster, SID (porty roztažení)|4.19.37-5|
+|
 
 ## <a name="image-size-should-be-in-multiples-of-megabytes"></a>Velikost obrázku musí být v násobcích megabajtů.
 
@@ -303,7 +308,7 @@ Odeslání žádosti s imagí zakázaného SSH pro proces certifikace:
 3. Odešlete žádost o certifikaci znovu.
 
 ## <a name="download-failure"></a>Chyba stahování
-    
+
 V následující tabulce najdete případné problémy, které vznikají při stažení image virtuálního počítače s adresou URL sdíleného přístupového podpisu (SAS).
 
 |Scenario|Chybová|Důvod|Řešení|
@@ -314,12 +319,13 @@ V následující tabulce najdete případné problémy, které vznikají při st
 |4|Neplatný podpis|Přidružená adresa URL SAS pro virtuální pevný disk je nesprávná.|Získejte správnou adresu URL SAS.|
 |6|Podmíněná hlavička HTTP|Adresa URL SAS není platná.|Získejte správnou adresu URL SAS.|
 |7|Neplatný název VHD|Zkontrolujte, jestli v názvu VHD existují nějaké speciální znaky, jako je například znak procenta `%` nebo uvozovky `"` .|Přejmenujte soubor VHD odebráním speciálních znaků.|
+|
 
-## <a name="first-1-mb-partition-2048-sectors-each-sector-of-512-bytes"></a>První oddíl 1-MB (2 048 sektorů, každý sektor 512 bajtů)
+## <a name="first-1-mb-2048-sectors-each-sector-of-512-bytes-partition"></a>Prvních 1 MB (2048 sektorů, každý sektor v 512 bajtech) oddíl
 
-Pokud [vytváříte vlastní image](azure-vm-create-using-own-image.md), ujistěte se, že první 2 048 sektorů disku s operačním systémem (1 MB) je prázdný. V opačném případě se publikování nezdaří. Tento požadavek platí jenom pro disk s operačním systémem (ne pro datové disky). Pokud sestavíte image [ze schválené základny](azure-vm-create-using-approved-base.md), můžete tento požadavek přeskočit. 
+Pokud [vytváříte vlastní image](azure-vm-create-using-own-image.md), ujistěte se, že první 2048 sektorů disku s operačním systémem (1 MB) je prázdný. V opačném případě se publikování nezdaří. Tento požadavek platí jenom pro disk s operačním systémem (ne datové disky). Pokud sestavíte image [ze schválené základny](azure-vm-create-using-approved-base.md), můžete tento požadavek přeskočit.
 
-### <a name="create-a-1-mb-partition-2048-sectors-each-sector-of-512-bytes-on-an-empty-vhd-linux-only-steps"></a>Vytvoření oddílu s 1 MBm (2 048 sektorů, každého sektoru 512 bajtů) na prázdném virtuálním pevném disku (kroky jenom se systémem Linux)
+### <a name="create-a-1-mb-2048-sectors-each-sector-of-512-bytes-partition-on-an-empty-vhd"></a>Vytvořte oddíl o velikosti 1 MB (2048 sektorů, každý sektor 512 bajtů) na prázdném virtuálním pevném disku.
 
 Tyto kroky platí jenom pro Linux.
 
@@ -374,17 +380,17 @@ Tyto kroky platí jenom pro Linux.
 
       ![Snímek obrazovky s příkazovým řádkem klienta výstupu znázorňující příkazy a výstup pro vymazané data.](./media/create-vm/vm-certification-issues-solutions-22.png)
 
-   1. Zadáním `w` potvrďte vytváření oddílů. 
+   1. Zadáním `w` potvrďte vytváření oddílů.
 
       ![Snímek obrazovky s příkazovým řádkem klienta pro výstup ukazující příkazy pro vytvoření oddílu](./media/create-vm/vm-certification-issues-solutions-23.png)
 
-   1. Tabulku oddílů můžete ověřit spuštěním příkazu `n fdisk /dev/sdb` a zadáním `p` . Uvidíte, že je vytvořen oddíl s hodnotou posunu 2048. 
+   1. Tabulku oddílů můžete ověřit spuštěním příkazu `n fdisk /dev/sdb` a zadáním `p` . Uvidíte, že je vytvořen oddíl s hodnotou posunu 2048.
 
       ![Snímek obrazovky s příkazovým řádkem klienta výstupu znázorňující příkazy pro vytvoření posunu 2048.](./media/create-vm/vm-certification-issues-solutions-24.png)
 
 1. Odpojte virtuální pevný disk od virtuálního počítače a odstraňte virtuální počítač.
 
-### <a name="create-a-first-1-mb-partition-2048-sectors-each-sector-of-512-bytes-by-moving-existing-data-on-vhd"></a>Vytvoření prvního oddílu s 1 MBm (2 048 sektorů, každého sektoru 512 bajtů) přesunutím stávajících dat na virtuální pevný disk
+### <a name="create-a-1-mb-2048-sectors-each-sector-of-512-bytes-partition-by-moving-existing-data-on-vhd"></a>Vytvoření oddílu s 1 MBm (2048 sektorů, každého sektoru 512 bajtů) přesunutím stávajících dat na VHD
 
 Tyto kroky platí jenom pro Linux.
 
@@ -452,11 +458,11 @@ Když je vytvořen obrázek, může být namapován na nebo přiřazen nesprávn
 
 Pokud se mají znovu použít všechny image z Azure Marketplace, musí být virtuální pevný disk s operačním systémem zobecněný.
 
-* Pro **Linux** následující proces GENERALIZUJE virtuální počítač Linux a znovu ho nasadí jako samostatný virtuální počítač.
+- Pro **Linux** následující proces GENERALIZUJE virtuální počítač Linux a znovu ho nasadí jako samostatný virtuální počítač.
 
   V okně SSH zadejte následující příkaz: `sudo waagent -deprovision+user` .
 
-* Pro **Windows** můžete zobecnit bitové kopie systému Windows pomocí nástroje `sysreptool` .
+- Pro **Windows** můžete zobecnit bitové kopie systému Windows pomocí nástroje `sysreptool` .
 
   Další informace o tomto `sysreptool` nástroji najdete v tématu [Přehled nástroje pro přípravu systému (Sysprep)](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview).
 

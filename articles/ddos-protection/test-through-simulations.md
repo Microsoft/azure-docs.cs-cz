@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: e3a665e3615c9ff3a68cf13eeaef5e8f41632f6a
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 55042c8d1e612598cc5728668c9e87b054fb3afa
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900356"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98537834"
 ---
 # <a name="test-through-simulations"></a>Testování prostřednictvím simulací
 
@@ -29,7 +29,7 @@ Spolupracujeme s [cloudem BreakingPoint](https://www.ixiacom.com/products/breaki
 - DDoS dodržování předpisů v dokumentu.
 - Vyškolte své týmy zabezpečení sítě.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Než budete moct dokončit kroky v tomto kurzu, musíte nejdřív vytvořit [Plán Standard Protection pro Azure DDoS](manage-ddos-protection.md) s chráněnými veřejnými IP adresami.
 - Nejprve musíte vytvořit účet s [BreakingPoint cloudem](http://breakingpoint.cloud/). 
@@ -42,9 +42,9 @@ Spolupracujeme s [cloudem BreakingPoint](https://www.ixiacom.com/products/breaki
     |---------      |---------                                          |
     |Cílová IP adresa           | Zadejte jednu z vaší veřejné IP adresy, kterou chcete otestovat.                     |
     |Číslo portu   | Zadejte _443_.                       |
-    |Profil DDoS | Mezi možné hodnoty patří **zahlcení DNS**, **zaplavení NTPv2**, **zaplavení protokolu SSDP**, **TCP syn**, **UDP 64B,**, UDP **128B**, UDP **256B zaplavení**, **UDP 512B zaplavování**, **UDP 1024B** zaplavování, UDP **1514B**, **fragmentace** UDP **memcached**.|
-    |Velikost testu       | Možné hodnoty zahrnují **100 tisíc PPS, 50 MB/s a 4 zdrojové IP adresy**, **200 tisíc PPS, 100 MB/s a 8 zdrojových IP adres**, **400 tisíc PPS, 200Mbps a 16 zdrojových IP adres**, **800K pps, 400 MB/s a 32 zdroje IP adres**.                                  |
-    |Doba trvání testu | Možné hodnoty zahrnují **10 minut**, **15 minut**, **20 minut**, **25** minut, **30 minut**.|
+    |Profil DDoS | Možné hodnoty:,, `DNS Flood` `NTPv2 Flood` `SSDP Flood` , `TCP SYN Flood` , `UDP 64B Flood` , `UDP 128B Flood` , `UDP 256B Flood` , `UDP 512B Flood` , `UDP 1024B Flood` , `UDP 1514B Flood` , `UDP Fragmentation` , `UDP Memcached` .|
+    |Velikost testu       | Možné hodnoty zahrnují `100K pps, 50 Mbps and 4 source IPs` , `200K pps, 100 Mbps and 8 source IPs` , `400K pps, 200Mbps and 16 source IPs` , `800K pps, 400 Mbps and 32 source IPs` .                                  |
+    |Doba trvání testu | Možné hodnoty:,,, `10 Minutes` `15 Minutes` `20 Minutes` `25 Minutes` , `30 Minutes` .|
 
 Teď by měl vypadat takto:
 

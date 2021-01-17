@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 24e267b66d11cb3c5ca2b70ed09b7acb3653da99
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 36b7618fbacc18ec506f12eabc642246d3148ce0
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653601"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98537924"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-weibo-account-using-azure-active-directory-b2c"></a>Nastavte si registraci a přihlaste se pomocí účtu Weibo pomocí Azure Active Directory B2C
 
@@ -26,13 +26,13 @@ ms.locfileid: "97653601"
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 ## <a name="create-a-weibo-application"></a>Vytvoření aplikace v Weibo
 
-Pokud chcete účet Weibo použít jako poskytovatele identity v Azure Active Directory B2C (Azure AD B2C), musíte ve svém tenantovi vytvořit aplikaci, která ho bude představovat. Pokud ještě nemáte účet Weibo, můžete se zaregistrovat [https://weibo.com/signup/signup.php?lang=en-us](https://weibo.com/signup/signup.php?lang=en-us) .
+Pokud chcete povolit přihlášení pro uživatele s účtem Weibo v Azure Active Directory B2C (Azure AD B2C), musíte vytvořit aplikaci na [portálu pro vývojáře Weibo](https://open.weibo.com/). Pokud ještě nemáte účet Weibo, můžete se zaregistrovat [https://weibo.com](https://weibo.com/signup/signup.php?lang=en-us) .
 
 1. Přihlaste se k [portálu pro vývojáře Weibo](https://open.weibo.com/) pomocí přihlašovacích údajů k účtu Weibo.
 1. Po přihlášení vyberte své zobrazované jméno v pravém horním rohu.
@@ -179,7 +179,7 @@ Pokud chcete, aby se uživatelé přihlásili pomocí účtu Weibo, musíte úč
     ```
 
 4. Nastavte **client_id** na ID aplikace z registrace aplikace.
-5. Uložte soubor.
+5. Soubor uložte.
 
 ### <a name="add-the-claims-transformations"></a>Přidat transformace deklarací identity
 
@@ -263,7 +263,7 @@ Teď, když máte tlačítko na místě, musíte ho propojit s akcí. Tato akce 
 ## <a name="add-weibo-identity-provider-to-a-user-flow"></a>Přidání poskytovatele identity Weibo do toku uživatele 
 
 1. Ve vašem tenantovi Azure AD B2C vyberte **toky uživatelů**.
-1. Klikněte na tok uživatele, který chcete Weibo poskytovatel identity.
+1. Klikněte na tok uživatele, který chcete přidat poskytovatele identity Weibo.
 1. V části **Zprostředkovatelé sociální identity** vyberte **Weibo**.
 1. Vyberte **Uložit**.
 1. Pokud chcete zásady testovat, vyberte **Spustit tok uživatele**.

@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: c8b942e66a76bcc3a095f9bd3d40b44bf4217e50
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 286f4f5ca8a18a67da2ac24beb4c6935de35778d
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584880"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538131"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-google-account-using-azure-active-directory-b2c"></a>Nastavte si registraci a přihlaste se pomocí účtu Google pomocí Azure Active Directory B2C
 
@@ -37,7 +37,7 @@ ms.locfileid: "97584880"
 
 ## <a name="create-a-google-application"></a>Vytvoření aplikace Google
 
-Pokud chcete použít účet Google jako [poskytovatele identity](authorization-code-flow.md) v Azure Active Directory B2C (Azure AD B2C), musíte vytvořit aplikaci v konzole pro vývojáře Google. Pokud ještě nemáte účet Google, můžete se zaregistrovat v [https://accounts.google.com/SignUp](https://accounts.google.com/SignUp) .
+Pokud chcete povolit přihlášení uživatelům s účtem Google v Azure Active Directory B2C (Azure AD B2C), musíte vytvořit aplikaci v [konzole pro vývojáře Google](https://console.developers.google.com/). Další informace najdete v tématu [Nastavení OAuth 2,0](https://support.google.com/googleapi/answer/6158849). Pokud ještě nemáte účet Google, můžete se zaregistrovat v [https://accounts.google.com/SignUp](https://accounts.google.com/SignUp) .
 
 1. Přihlaste se ke [konzole pro vývojáře Google](https://console.developers.google.com/) pomocí svých přihlašovacích údajů k účtu Google.
 1. V levém horním rohu stránky vyberte seznam projekt a pak vyberte **Nový projekt**.
@@ -136,7 +136,7 @@ Pokud chcete, aby se uživatelé přihlásili pomocí účtu Google, musíte ú�
     ```
 
 4. Nastavte **client_id** na ID aplikace z registrace aplikace.
-5. Uložte soubor.
+5. Soubor uložte.
 
 ### <a name="upload-the-extension-file-for-verification"></a>Nahrajte soubor rozšíření pro ověření.
 
@@ -189,7 +189,7 @@ Teď, když máte tlačítko na místě, musíte ho propojit s akcí. Tato akce 
 ## <a name="add-google-identity-provider-to-a-user-flow"></a>Přidání poskytovatele identity Google do toku uživatele 
 
 1. Ve vašem tenantovi Azure AD B2C vyberte **toky uživatelů**.
-1. Klikněte na tok uživatele, který chcete pro poskytovatele Google identity Provider.
+1. Klikněte na tok uživatele, který chcete přidat do služby Google identity Provider.
 1. V části **Zprostředkovatelé sociální identity** vyberte **Google**.
 1. Vyberte **Uložit**.
 1. Pokud chcete zásady testovat, vyberte **Spustit tok uživatele**.

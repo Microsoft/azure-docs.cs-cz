@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 11/04/2020
-ms.openlocfilehash: f71bcc1fd3b92a32a3e6d9fa056bae7131a663bd
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: a2e5cd43add6db080441812e4350d6f003ef81a2
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492603"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538492"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-by-using-the-azure-portal"></a>Rychlý Start: vytvoření serveru Azure Database for MySQL pomocí Azure Portal
 
@@ -45,7 +45,7 @@ Vyžaduje se předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvo
    Název serveru | **mydemoserver** | Zadejte jedinečný název. Název serveru může obsahovat pouze malá písmena, číslice a znak spojovníku (-). Musí obsahovat 3 až 63 znaků.
    Zdroj dat |**Žádný** | Pokud chcete vytvořit nový server úplně od začátku, vyberte **Žádný**. **Zálohování** vyberte jenom v případě, že obnovujete z geografické zálohy existujícího serveru.
    Umístění |Vaše požadované umístění | Vyberte umístění ze seznamu.
-   Verze | Nejnovější hlavní verze| Použijte nejnovější hlavní verzi. Zobrazit [všechny podporované verze](../postgresql/concepts-supported-versions.md).
+   Verze | Nejnovější hlavní verze| Použijte nejnovější hlavní verzi. Zobrazit [všechny podporované verze](../mysql/concepts-supported-versions.md).
    Výpočty + úložiště | Použít výchozí| Výchozí cenová úroveň je **pro obecné účely** se **4 virtuální jádra** a **100 GB** úložiště. Uchovávání záloh je nastaveno na **7 dní** s možností **geograficky redundantního** zálohování.<br/>Projděte si stránku s [cenami](https://azure.microsoft.com/pricing/details/mysql/) a aktualizujte výchozí nastavení, pokud potřebujete.
    Uživatelské jméno správce | **mydemoadmin** | Zadejte uživatelské jméno správce serveru. Pro uživatelské jméno správce nemůžete použít **azure_superuser**, **admin**, **Administrator**, **root**, **Guest** ani **Public** .
    Heslo | Heslo | Nové heslo pro uživatele správce serveru. Heslo musí mít délku 8 až 128 znaků a obsahovat kombinaci velkých a malých písmen, číslic a jiných než alfanumerických znaků (!, $, #,% a tak dále).

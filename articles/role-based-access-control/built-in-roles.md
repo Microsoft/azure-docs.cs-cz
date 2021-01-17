@@ -7,16 +7,16 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 12/16/2020
+ms.date: 01/15/2021
 ms.custom: generated
-ms.openlocfilehash: f22b74b16594419b0eff33f0c73d6e9c3a62ac15
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 8f44de679c9b0280652b0020d1e454a70f7114a3
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97655029"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538524"
 ---
-# <a name="azure-built-in-roles"></a>Předdefinované role v Azure
+# <a name="azure-built-in-roles"></a>Předdefinované role Azure
 
 [Řízení přístupu na základě role v Azure (Azure RBAC)](overview.md) má několik předdefinovaných rolí Azure, které můžete přiřadit uživatelům, skupinám, objektům služby a spravovaným identitám. Přiřazení rolí představují způsob, jakým ovládáte přístup k prostředkům Azure. Pokud předdefinované role nevyhovují konkrétním potřebám vaší organizace, můžete vytvořit vlastní [vlastní role Azure](custom-roles.md).
 
@@ -119,6 +119,9 @@ Následující tabulka uvádí stručný popis a jedinečné ID každé předdef
 > | [Přispěvatel doménových služeb HDInsight](#hdinsight-domain-services-contributor) | Může číst, vytvářet, upravovat a odstraňovat služby související s doménami, které jsou potřeba pro HDInsight Balíček zabezpečení podniku | 8d8d5a11-05d3-4bda-a417-a08778121c7c |
 > | [Přispěvatel Log Analytics](#log-analytics-contributor) | Přispěvatel Log Analytics může číst všechna data monitorování a upravovat nastavení monitorování. Úprava nastavení monitorování zahrnuje přidání rozšíření virtuálního počítače do virtuálních počítačů. čtení klíčů účtu úložiště, aby bylo možné konfigurovat shromažďování protokolů z Azure Storage; vytváření a konfigurace účtů služby Automation; přidávání řešení; a konfigurují se diagnostiky Azure na všech prostředcích Azure. | 92aaf0da-9dab-42b6-94a3-d43ce8d16293 |
 > | [Čtenář Log Analytics](#log-analytics-reader) | Log Analytics čtenář může zobrazit a vyhledat všechna data monitorování a také zobrazit nastavení monitorování, včetně zobrazení konfigurace diagnostiky Azure na všech prostředcích Azure. | 73c42c96-874c-492b-b04d-ab87d138a893 |
+> | [Dosah data kurátor](#purview-data-curator) | Data kurátor Microsoft. dosah můžou vytvářet, číst, upravovat a odstraňovat datové objekty katalogu a vytvářet vztahy mezi objekty. Tato role je ve verzi Preview a může se změnit. | 8a3c2885-9b38-4fd2-9d99-91af537c1347 |
+> | [Čtecí modul dat dosah](#purview-data-reader) | Čtečka dat Microsoft. dosah umí číst datové objekty katalogu. Tato role je ve verzi Preview a může se změnit. | ff100721-1b9d-43d8-af52-42b69c1272db |
+> | [Správce zdroje dat dosah](#purview-data-source-administrator) | Správce zdrojů dat Microsoft. dosah může spravovat zdroje dat a kontroly dat. Tato role je ve verzi Preview a může se změnit. | 200bba9e-f0c8-430f-892b-6f0794863803 |
 > | [Přispěvatel registru schématu (Preview)](#schema-registry-contributor-preview) | Čtení, zápis a odstraňování skupin registru schémat a schémat. | 5dffeca3-4936-4216-b2bc-10343a5abb25 |
 > | [Nástroj pro čtení registru schématu (Preview)](#schema-registry-reader-preview) | Čtení a výpis skupin registru a schémat registru. | 2c56ea50-c6b3-40a6-83c0-9d98858bc7d2 |
 > | **Blockchain** |  |  |
@@ -395,7 +398,7 @@ Umožňuje spravovat přístup uživatelů k prostředkům Azure. [Další infor
 }
 ```
 
-## <a name="compute"></a>Compute
+## <a name="compute"></a>Výpočetní prostředky
 
 
 ### <a name="classic-virtual-machine-contributor"></a>Přispěvatel klasických virtuálních počítačů
@@ -1164,7 +1167,7 @@ Umožňuje správu profilů Traffic Manager, ale neumožňuje řídit, kdo k nim
 }
 ```
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Úložiště
 
 
 ### <a name="avere-contributor"></a>Přispěvatel avere
@@ -3072,7 +3075,7 @@ Umožňuje spravovat weby (nikoli webové plány), ale ne přístup k nim.
 }
 ```
 
-## <a name="containers"></a>Kontejnery
+## <a name="containers"></a>Containers
 
 
 ### <a name="acrdelete"></a>AcrDelete
@@ -4883,6 +4886,133 @@ Log Analytics čtenář může zobrazit a vyhledat všechna data monitorování 
     }
   ],
   "roleName": "Log Analytics Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="purview-data-curator"></a>Dosah data kurátor
+
+Data kurátor Microsoft. dosah můžou vytvářet, číst, upravovat a odstraňovat datové objekty katalogu a vytvářet vztahy mezi objekty. Tato role je ve verzi Preview a může se změnit.
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | [Microsoft. dosah](resource-provider-operations.md#microsoftpurview)/Accounts/Read | Číst prostředek účtu pro poskytovatele Microsoft dosah. |
+> | **NotActions** |  |
+> | *žádný* |  |
+> | **Akce dataactions** |  |
+> | [Microsoft. dosah](resource-provider-operations.md#microsoftpurview)/Accounts/data/Read | Čtení datových objektů. |
+> | [Microsoft. dosah](resource-provider-operations.md#microsoftpurview)/Accounts/data/Write | Vytváření, aktualizace a odstraňování datových objektů. |
+> | **NotDataActions** |  |
+> | *žádný* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "The Microsoft.Purview data curator can create, read, modify and delete catalog data objects and establish relationships between objects. This role is in preview and subject to change.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/8a3c2885-9b38-4fd2-9d99-91af537c1347",
+  "name": "8a3c2885-9b38-4fd2-9d99-91af537c1347",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Purview/accounts/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Purview/accounts/data/read",
+        "Microsoft.Purview/accounts/data/write"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Purview Data Curator",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="purview-data-reader"></a>Čtecí modul dat dosah
+
+Čtečka dat Microsoft. dosah umí číst datové objekty katalogu. Tato role je ve verzi Preview a může se změnit.
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | [Microsoft. dosah](resource-provider-operations.md#microsoftpurview)/Accounts/Read | Číst prostředek účtu pro poskytovatele Microsoft dosah. |
+> | **NotActions** |  |
+> | *žádný* |  |
+> | **Akce dataactions** |  |
+> | [Microsoft. dosah](resource-provider-operations.md#microsoftpurview)/Accounts/data/Read | Čtení datových objektů. |
+> | **NotDataActions** |  |
+> | *žádný* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "The Microsoft.Purview data reader can read catalog data objects. This role is in preview and subject to change.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/ff100721-1b9d-43d8-af52-42b69c1272db",
+  "name": "ff100721-1b9d-43d8-af52-42b69c1272db",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Purview/accounts/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Purview/accounts/data/read"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Purview Data Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="purview-data-source-administrator"></a>Správce zdroje dat dosah
+
+Správce zdrojů dat Microsoft. dosah může spravovat zdroje dat a kontroly dat. Tato role je ve verzi Preview a může se změnit.
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | [Microsoft. dosah](resource-provider-operations.md#microsoftpurview)/Accounts/Read | Číst prostředek účtu pro poskytovatele Microsoft dosah. |
+> | **NotActions** |  |
+> | *žádný* |  |
+> | **Akce dataactions** |  |
+> | [Microsoft. dosah](resource-provider-operations.md#microsoftpurview)/Accounts/Scan/Read | Čtení zdrojů dat a prohledávání. |
+> | [Microsoft. dosah](resource-provider-operations.md#microsoftpurview)/Accounts/Scan/Write | Vytváření, aktualizace a odstraňování zdrojů dat a Správa kontrol. |
+> | **NotDataActions** |  |
+> | *žádný* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "The Microsoft.Purview data source administrator can manage data sources and data scans. This role is in preview and subject to change.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/200bba9e-f0c8-430f-892b-6f0794863803",
+  "name": "200bba9e-f0c8-430f-892b-6f0794863803",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Purview/accounts/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Purview/accounts/scan/read",
+        "Microsoft.Purview/accounts/scan/write"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Purview Data Source Administrator",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
@@ -7015,7 +7145,9 @@ Proveďte jakoukoli akci s klíči trezoru klíčů s výjimkou oprávnění ke 
 > [!div class="mx-tableFixed"]
 > | Akce | Popis |
 > | --- | --- |
-> | *žádný* |  |
+> | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/eventSubscriptions/Write | Vytvořit nebo aktualizovat eventSubscription |
+> | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/eventSubscriptions/Read | Přečíst eventSubscription |
+> | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/eventSubscriptions/DELETE | Odstranění eventSubscription |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -7035,7 +7167,11 @@ Proveďte jakoukoli akci s klíči trezoru klíčů s výjimkou oprávnění ke 
   "name": "e147488a-f6f5-4113-8e2d-b22465e65bf6",
   "permissions": [
     {
-      "actions": [],
+      "actions": [
+        "Microsoft.EventGrid/eventSubscriptions/write",
+        "Microsoft.EventGrid/eventSubscriptions/read",
+        "Microsoft.EventGrid/eventSubscriptions/delete"
+      ],
       "notActions": [],
       "dataActions": [
         "Microsoft.KeyVault/vaults/keys/read",
@@ -7438,6 +7574,9 @@ Oprávnění k zobrazení Security Center. Může zobrazit doporučení, výstra
 > | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
 > | [Microsoft. Security](resource-provider-operations.md#microsoftsecurity)/*/Read | Číst součásti a zásady zabezpečení |
 > | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/*/Read |  |
+> | [Microsoft. Security](resource-provider-operations.md#microsoftsecurity)/iotDefenderSettings/packageDownloads/Action | Načte informace o balíčcích ke stažení IoT Defender. |
+> | [Microsoft. Security](resource-provider-operations.md#microsoftsecurity)/iotDefenderSettings/downloadManagerActivation/Action | Soubor aktivace správce stahování s daty kvóty předplatného |
+> | [Microsoft. Security](resource-provider-operations.md#microsoftsecurity)/iotSensors/downloadResetPassword/Action | Stažení resetování souboru hesla pro senzory IoT |
 > | [Microsoft. Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/Read | Vypíše skupiny pro správu ověřeného uživatele. |
 > | **NotActions** |  |
 > | *žádný* |  |
@@ -7464,6 +7603,9 @@ Oprávnění k zobrazení Security Center. Může zobrazit doporučení, výstra
         "Microsoft.Resources/subscriptions/resourceGroups/read",
         "Microsoft.Security/*/read",
         "Microsoft.Support/*/read",
+        "Microsoft.Security/iotDefenderSettings/packageDownloads/action",
+        "Microsoft.Security/iotDefenderSettings/downloadManagerActivation/action",
+        "Microsoft.Security/iotSensors/downloadResetPassword/action",
         "Microsoft.Management/managementGroups/read"
       ],
       "notActions": [],
@@ -8611,8 +8753,8 @@ Definice role pro autorizaci libovolného uživatele nebo služby k vytvoření 
 > | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/operationresults/Read | Získejte výsledky operace předplatného. |
 > | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/Read | Získá seznam předplatných. |
 > | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. Kubernetes/connectedClusters/Write |  |
-> | Microsoft. Kubernetes/connectedClusters/Read |  |
+> | [Microsoft. Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/Write | Zapisuje connectedClusters |
+> | [Microsoft. Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/Read | Číst connectedClusters |
 > | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
 > | *žádný* |  |

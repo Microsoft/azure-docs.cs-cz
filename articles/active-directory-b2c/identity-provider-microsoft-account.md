@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 123b36ba854bec8b363d59bbed5e70f18da1e578
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: d9cba08e5b6650edc0decd3ff9df4060e9ad815c
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653703"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538007"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-microsoft-account-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení pomocí účet Microsoft s využitím Azure Active Directory B2C
 
@@ -30,13 +30,13 @@ ms.locfileid: "97653703"
 
 ::: zone-end
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 ## <a name="create-a-microsoft-account-application"></a>Vytvoření aplikace účet Microsoft
 
-Pokud chcete použít účet Microsoft jako [poskytovatele identity](openid-connect.md) v Azure Active Directory B2C (Azure AD B2C), musíte vytvořit aplikaci v TENANTOVI Azure AD. Tenant Azure AD není stejný jako váš tenant Azure AD B2C. Pokud ještě nemáte účet Microsoft, můžete si ho získat na adrese [https://www.live.com/](https://www.live.com/) .
+Pokud chcete povolit přihlášení pro uživatele s účet Microsoft v Azure Active Directory B2C (Azure AD B2C), musíte vytvořit aplikaci v [Azure Portal](https://portal.azure.com). Další informace najdete v tématu [Registrace aplikace s platformou Microsoft Identity](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app). Pokud ještě nemáte účet Microsoft, můžete si ho získat na adrese [https://www.live.com/](https://www.live.com/) .
 
 1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD, a to tak, že v horní nabídce vyberete adresář a filtr **předplatného** a zvolíte adresář, který obsahuje vašeho TENANTA Azure AD.
@@ -152,7 +152,7 @@ Službu Azure AD můžete definovat jako zprostředkovatele deklarací přidán�
     ```
 
 1. Hodnotu **client_id** nahraďte *ID aplikace (klienta)* aplikace služby Azure AD, kterou jste si poznamenali dříve.
-1. Uložte soubor.
+1. Soubor uložte.
 
 Nyní jste nakonfigurovali zásady tak, aby Azure AD B2C vědět, jak komunikovat s aplikací účet Microsoft ve službě Azure AD.
 
@@ -210,7 +210,7 @@ Teď, když máte tlačítko na místě, musíte ho propojit s akcí. Tato akce 
 ## <a name="add-microsoft-identity-provider-to-a-user-flow"></a>Přidání poskytovatele identity Microsoftu do toku uživatele 
 
 1. Ve vašem tenantovi Azure AD B2C vyberte **toky uživatelů**.
-1. Klikněte na tok uživatele, který chcete pro poskytovatele Microsoft Identity Provider.
+1. Klikněte na tok uživatele, kterému chcete přidat poskytovatele identity Microsoftu.
 1. V části **Zprostředkovatelé sociální identity** vyberte **účet Microsoft**.
 1. Vyberte **Uložit**.
 1. Pokud chcete zásady testovat, vyberte **Spustit tok uživatele**.

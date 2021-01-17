@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 10/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6a9eb99ae7af88e77fa597fa92ff8e6278c307e6
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 42502864cfed177adfe487e9c59247579628fec8
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108945"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539068"
 ---
 # <a name="windows-virtual-desktop-service-connections"></a>Připojení ke službě virtuální plochy Windows
 
@@ -49,14 +49,15 @@ Chcete-li tento problém vyřešit, stačí, když uživatele přiřadíte ke sk
 K tomu může dojít také v případě, že poskytovatel CSP vytvořil předplatné a pak ho přenesl na zákazníka. Pro vyřešení tohoto nového registru poskytovatele prostředků.
 
 1. Přihlaste se k portálu Azure.
-2. Klikněte na **předplatné**a pak vyberte své předplatné.
+2. Klikněte na **předplatné** a pak vyberte své předplatné.
 3. V nabídce na levé straně stránky vyberte **poskytovatel prostředků**.
-4. Vyhledejte a vyberte **Microsoft. DesktopVirtualization**a pak vyberte **znovu registrovat**.
+4. Vyhledejte a vyberte **Microsoft. DesktopVirtualization** a pak vyberte **znovu registrovat**.
 
 ## <a name="next-steps"></a>Další kroky
 
 - Přehled řešení potíží s virtuálním počítačem s Windows a cvičeními eskalace najdete v tématu [věnovaném řešení potíží s přehledem, zpětnou vazbou a podporou](troubleshoot-set-up-overview.md).
 - Informace o řešení potíží při vytváření prostředí virtuálních počítačů s Windows a fondu hostitelů v prostředí virtuálních ploch Windows najdete v tématu [Vytvoření fondu prostředí a hostitele](troubleshoot-set-up-issues.md).
 - Informace o řešení problémů při konfiguraci virtuálního počítače na virtuálním počítači s Windows najdete v tématu [Konfigurace virtuálního počítače hostitele relace](troubleshoot-vm-configuration.md).
+- Informace o řešení potíží souvisejících s agentem virtuálního počítače s Windows nebo s připojením relace najdete v tématu [řešení běžných potíží s agentem virtuálních počítačů s Windows](troubleshoot-agent.md).
 - Pokud chcete řešit problémy při používání PowerShellu s virtuálním počítačem s Windows, přečtěte si téma [virtuální plocha Windows PowerShell](troubleshoot-powershell.md).
 - Kurz řešení potíží najdete v tématu [kurz: řešení potíží s nasazením správce prostředků šablon](../azure-resource-manager/templates/template-tutorial-troubleshoot.md).

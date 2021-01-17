@@ -5,13 +5,13 @@ author: mksuni
 ms.author: sumuth
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 01/15/2021
-ms.openlocfilehash: b0f0ee9477a84dc198ea3fb48b2ed81be10ea9c5
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.date: 01/18/2021
+ms.openlocfilehash: ac7019abab1aefaee95c155e34fbc0cb551b4d94
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251875"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538422"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mariadb"></a>Porozumění změnám v kořenové CA se mění Azure Database for MariaDB
 
@@ -19,6 +19,9 @@ Azure Database for MariaDB změní kořenový certifikát pro klientskou aplikac
 
 >[!NOTE]
 > Na základě zpětné vazby od zákazníků jsme rozšířili vyřazení kořenových certifikátů pro naši stávající kořenovou certifikační autoritu Baltimore od října 26, 2020 do 15. února 2021. Doufáme, že toto rozšíření poskytuje dostatek času vedoucího k tomu, aby naši uživatelé mohli implementovat změny klienta, pokud budou ovlivněny.
+
+> [!NOTE]
+> Tento článek obsahuje odkazy na _podřízený_ termín, termín, který už Microsoft nepoužívá. Po odebrání termínu ze softwaru ho odebereme z tohoto článku.
 
 ## <a name="what-update-is-going-to-happen"></a>K jaké aktualizaci dojde?
 
@@ -69,7 +72,7 @@ Pokud se chcete vyhnout přerušení dostupnosti vaší aplikace z důvodu neoč
 
   - Pro uživatele .NET (MariaDB Connector/NET, MariaDBConnector) se ujistěte, že **BaltimoreCyberTrustRoot** a **DigiCertGlobalRootG2** existují v úložišti certifikátů Windows, důvěryhodných kořenových certifikačních autorit. Pokud nějaké certifikáty neexistují, importujte chybějící certifikát.
 
-    ![Azure Database for MariaDB certifikát .NET](media/overview/netconnecter-cert.png)
+    [![Azure Database for MariaDB certifikát .NET](media/overview/netconnecter-cert.png)](media/overview/netconnecter-cert.png#lightbox)
 
   - Pro uživatele rozhraní .NET na platformě Linux pomocí SSL_CERT_DIR zajistěte, aby **BaltimoreCyberTrustRoot** a **DigiCertGlobalRootG2** existovaly v adresáři označeném SSL_CERT_DIR. Pokud nějaké certifikáty neexistují, vytvořte soubor s chybějícím certifikátem.
 
@@ -80,10 +83,10 @@ Pokud se chcete vyhnout přerušení dostupnosti vaší aplikace z důvodu neoč
    (Root CA1: BaltimoreCyberTrustRoot.crt.pem)
    -----END CERTIFICATE-----
    -----BEGIN CERTIFICATE-----
-    (Root CA2: DigiCertGlobalRootG2.crt.pem)
+   (Root CA2: DigiCertGlobalRootG2.crt.pem)
    -----END CERTIFICATE-----
    ```
-   
+
 - Nahraďte soubor PEM původní kořenové certifikační autority souborem kombinované kořenové certifikační autority a restartujte aplikaci nebo klienta.
 - Po nasazení nového certifikátu na straně serveru můžete v budoucnu změnit soubor PEM certifikační autority na DigiCertGlobalRootG2. CRT. pem.
 
@@ -150,11 +153,7 @@ Vzhledem k tomu, že se jedná o změnu na straně klienta, pokud klient použí
 
 ### <a name="12-if-im-using-data-in-replication-do-i-need-to-perform-any-action"></a>12. Pokud používám replikaci dat, potřebuji provést jakoukoli akci?
 
-> [!NOTE]
-> Tento článek obsahuje odkazy na _podřízený_ termín, termín, který už Microsoft nepoužívá. Po odebrání termínu ze softwaru ho odebereme z tohoto článku.
->
-
-*   Pokud je replikace dat z virtuálního počítače (Prem nebo virtuálního počítače Azure) na Azure Database for MySQL, musíte ověřit, jestli se k vytvoření repliky používá protokol SSL. Spusťte příkaz **Zobrazit stav podřízeného** a ověřte následující nastavení.
+- Pokud je replikace dat z virtuálního počítače (Prem nebo virtuálního počítače Azure) na Azure Database for MySQL, musíte ověřit, jestli se k vytvoření repliky používá protokol SSL. Spusťte příkaz **Zobrazit stav podřízeného** a ověřte následující nastavení.
 
     ```azurecli-interactive
     Master_SSL_Allowed            : Yes
@@ -177,6 +176,7 @@ Pokud pro připojení k Azure Database for MySQL používáte [replikaci dat](co
   Master_SSL_Cipher             :
   Master_SSL_Key                : ~\azure_mysqlclient_key.pem
   ```
+
   Pokud se zobrazí certifikát pro CA_file, SSL_Cert a SSL_Key, budete muset soubor aktualizovat přidáním [nového certifikátu](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem).
 
 - Pokud je replikace dat mezi dvěma Azure Database for MySQL, pak je potřeba resetovat repliku spuštěním **volání MySQL.az_replication_change_master** a zadat nový duální kořenový certifikát jako poslední parametr [master_ssl_ca](howto-data-in-replication.md#link-the-source-and-replica-servers-to-start-data-in-replication).

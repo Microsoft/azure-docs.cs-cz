@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/17/2020
+ms.date: 01/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: bde7c1adefea88ed5b5d86e2c0e17f475be1bc71
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: e2c576c97d170726f5ec1b06e5a6d0d859a85e64
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654366"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538130"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-linkedin-account-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení pomocí účtu LinkedIn pomocí Azure Active Directory B2C
 
@@ -30,13 +30,13 @@ ms.locfileid: "97654366"
 
 ::: zone-end
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 ## <a name="create-a-linkedin-application"></a>Vytvoření aplikace LinkedIn
 
-Pokud chcete použít účet LinkedIn jako [poskytovatele identity](authorization-code-flow.md) v Azure Active Directory B2C (Azure AD B2C), musíte ve svém tenantovi vytvořit aplikaci, která ho bude představovat. Pokud ještě nemáte účet LinkedIn, můžete se zaregistrovat v [https://www.linkedin.com/](https://www.linkedin.com/) .
+Pokud chcete povolit přihlášení uživatelům s účtem LinkedIn v Azure Active Directory B2C (Azure AD B2C), musíte vytvořit aplikaci na [webu LinkedIn Developers](https://www.developer.linkedin.com/). Další informace najdete v tématu [tok autorizačního kódu](https://docs.microsoft.com/linkedin/shared/authentication/authorization-code-flow). Pokud ještě nemáte účet LinkedIn, můžete se zaregistrovat v [https://www.linkedin.com/](https://www.linkedin.com/) .
 
 1. Přihlaste se na [Web vývojářům LinkedIn](https://www.developer.linkedin.com/) pomocí svých přihlašovacích údajů k účtu LinkedIn.
 1. Vyberte **Moje aplikace** a pak klikněte na **vytvořit aplikaci**.
@@ -137,7 +137,7 @@ Definujte účet LinkedIn jako zprostředkovatele deklarací, a to tak, že ho p
     ```
 
 1. Hodnotu **client_id** nahraďte ID klienta aplikace LinkedIn, kterou jste předtím nahráli.
-1. Uložte soubor.
+1. Soubor uložte.
 
 ### <a name="add-the-claims-transformations"></a>Přidat transformace deklarací identity
 
@@ -232,7 +232,7 @@ Teď, když máte tlačítko na místě, musíte ho propojit s akcí. Tato akce 
 ## <a name="add-linkedin-identity-provider-to-a-user-flow"></a>Přidání poskytovatele identity LinkedInu do toku uživatele 
 
 1. Ve vašem tenantovi Azure AD B2C vyberte **toky uživatelů**.
-1. Klikněte na tok uživatele, který chcete poskytovateli identity LinkedInu.
+1. Klikněte na tok uživatele, který chcete přidat poskytovatele identity LinkedIn.
 1. V části **Zprostředkovatelé sociální identity** vyberte **LinkedIn**.
 1. Vyberte **Uložit**.
 1. Pokud chcete zásady testovat, vyberte **Spustit tok uživatele**.

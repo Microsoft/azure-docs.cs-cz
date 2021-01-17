@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 68ffde11059de4809e519c1ac4f79503f25b0004
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 38eee59ecffa0c09403f47678e588b678e038413
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653737"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98537977"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-github-account-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení pomocí účtu GitHubu pomocí Azure Active Directory B2C
 
@@ -32,15 +32,15 @@ ms.locfileid: "97653737"
 
 ::: zone-end
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 ## <a name="create-a-github-oauth-application"></a>Vytvoření aplikace GitHub OAuth
 
-Pokud chcete použít účet GitHub jako [poskytovatele identity](authorization-code-flow.md) v Azure Active Directory B2C (Azure AD B2C), musíte ve svém tenantovi vytvořit aplikaci, která ho bude představovat. Pokud ještě nemáte účet GitHubu, můžete se zaregistrovat v [https://www.github.com/](https://www.github.com/) .
+Pokud chcete povolit přihlášení pomocí účtu GitHubu v Azure Active Directory B2C (Azure AD B2C), musíte vytvořit aplikaci na portálu pro [vývojáře GitHubu](https://github.com/settings/developers) . Další informace najdete v tématu [Vytvoření aplikace OAuth](https://docs.github.com/en/free-pro-team@latest/developers/apps/creating-an-oauth-app). Pokud ještě nemáte účet GitHubu, můžete se zaregistrovat v [https://www.github.com/](https://www.github.com/) .
 
-1. Přihlaste se k webu pro [vývojáře na GitHubu](https://github.com/settings/developers) pomocí vašich přihlašovacích údajů GitHubu.
+1. Přihlaste se k [vývojáři GitHubu](https://github.com/settings/developers) pomocí svých přihlašovacích údajů GitHubu.
 1. Vyberte **aplikace OAuth** a pak vyberte **Nová aplikace OAuth**.
 1. Zadejte **název aplikace** a **adresu URL domovské stránky**.
 1. Zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` **adresu URL zpětného volání autorizace**. Nahraďte `your-tenant-name` názvem vašeho tenanta Azure AD B2C. Při zadávání názvu tenanta používejte všechna malá písmena, a to i v případě, že je tenant v Azure AD B2C definovaný velkými písmeny.
@@ -134,7 +134,7 @@ Pokud chcete, aby se uživatelé přihlásili pomocí účtu GitHubu, musíte ú
     ```
 
 1. Nastavte **client_id** na ID aplikace z registrace aplikace.
-1. Uložte soubor.
+1. Soubor uložte.
 
 ### <a name="add-the-claims-transformations"></a>Přidat transformace deklarací identity
 
@@ -218,7 +218,7 @@ Teď, když máte tlačítko na místě, musíte ho propojit s akcí. Tato akce 
 ## <a name="add-github-identity-provider-to-a-user-flow"></a>Přidání poskytovatele identity GitHubu do toku uživatele 
 
 1. Ve vašem tenantovi Azure AD B2C vyberte **toky uživatelů**.
-1. Klikněte na tok uživatele, který chcete pro poskytovatele identity GitHubu.
+1. Klikněte na tok uživatele, který chcete přidat poskytovatele identity GitHubu.
 1. V části **Zprostředkovatelé sociální identity** vyberte **GitHub**.
 1. Vyberte **Uložit**.
 1. Pokud chcete zásady testovat, vyberte **Spustit tok uživatele**.

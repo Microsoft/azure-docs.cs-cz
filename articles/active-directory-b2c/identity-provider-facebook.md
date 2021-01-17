@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 37fc33ae8084a2b4e99e7b5dc417eac70060eef5
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 02c3890a9aca03d9d79b55098297174401cab37d
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516196"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98537946"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení pomocí účtu Facebook pomocí Azure Active Directory B2C
 
@@ -36,7 +36,7 @@ ms.locfileid: "97516196"
 
 ## <a name="create-a-facebook-application"></a>Vytvoření aplikace na Facebooku
 
-Pokud chcete použít účet Facebook jako [poskytovatele identity](authorization-code-flow.md) v Azure Active Directory B2C (Azure AD B2C), musíte ve svém tenantovi vytvořit aplikaci, která ho bude představovat. Pokud ještě nemáte účet Facebook, můžete se zaregistrovat [https://www.facebook.com/](https://www.facebook.com/) .
+Pokud chcete povolit přihlášení pro uživatele s účtem Facebook v Azure Active Directory B2C (Azure AD B2C), musíte na [řídicím panelu aplikace pro Facebook](https://developers.facebook.com/)vytvořit aplikaci. Další informace najdete v tématu [vývoj aplikací](https://developers.facebook.com/docs/development). Pokud ještě nemáte účet Facebook, můžete se zaregistrovat [https://www.facebook.com/](https://www.facebook.com/) .
 
 1. Přihlaste se ke [službě Facebook pro vývojáře](https://developers.facebook.com/) s přihlašovacími údaji k účtu Facebook.
 1. Pokud jste to ještě neudělali, musíte se zaregistrovat jako vývojář Facebooku. Provedete to tak, **že vyberete Začínáme** v pravém horním rohu stránky, přijmete zásady Facebooku a dokončíte registrační kroky.
@@ -93,7 +93,7 @@ Pokud chcete použít účet Facebook jako [poskytovatele identity](authorizatio
 ## <a name="add-facebook-identity-provider-to-a-user-flow"></a>Přidání poskytovatele identity Facebooku do toku uživatele 
 
 1. Ve vašem tenantovi Azure AD B2C vyberte **toky uživatelů**.
-1. Klikněte na tok uživatele, který chcete pro poskytovatele identity Facebooku.
+1. Klikněte na tok uživatele, ke kterému chcete přidat poskytovatele identity Facebooku.
 1. V části **Zprostředkovatelé sociální identity** vyberte **Facebook**.
 1. Vyberte **Uložit**.
 1. Pokud chcete zásady testovat, vyberte **Spustit tok uživatele**.

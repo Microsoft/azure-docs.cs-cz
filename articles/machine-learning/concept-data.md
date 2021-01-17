@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 08/31/2020
 ms.custom: devx-track-python, data4ml
-ms.openlocfilehash: 6d8c04e48a3d0009a152830a4ee332cd706c4b2c
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 8b73676adbb9aa12e6f3b42dd26bed94b22780a8
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360169"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539898"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Zabezpečení přístupu k datům v Azure Machine Learning
 
@@ -42,7 +42,7 @@ Až budete připraveni použít data v cloudovém řešení úložiště, doporu
 
     1. Využijte ji přímo v Azure Machine Learning řešení, jako je automatické spouštění strojového učení (automatizované ML), kanály strojového učení nebo [návrhář Azure Machine Learning](concept-designer.md).
 
-4. Vytvořte [monitorování datových sad](#data-drift) pro výstupní datovou sadu modelu pro detekci posunu dat. 
+4. Vytvořte [monitorování datových sad](#drift) pro výstupní datovou sadu modelu pro detekci posunu dat. 
 
 5. Pokud se zjistí posun dat, aktualizujte vstupní datovou sadu a odpovídajícím způsobem svůj model znovu nahlaste.
 
@@ -50,7 +50,8 @@ Následující diagram nabízí vizuální ukázku tohoto doporučeného pracovn
 
 ![Diagram znázorňuje službu Azure Storage, která se zachází do úložiště dat, které se přetéká do datové sady. Datová sada natéká do modelu školení, která přechází na posun dat, který přetéká zpět na datovou sadu.](./media/concept-data/data-concept-diagram.svg)
 
-## <a name="datastores"></a>Úložiště dat
+<a name="datastores"></a>
+## <a name="connect-to-storage-with-datastores"></a>Připojení k úložišti s úložištěm dat
 
 Azure Machine Learning úložiště dat bezpečně udržují informace o připojení do služby Azure Storage, takže je nemusíte zakódovat ve svých skriptech. [Zaregistrujte a vytvořte úložiště dat](how-to-access-data.md) , abyste se mohli snadno připojit k účtu úložiště a přistupovat k datům v základní službě Azure Storage. 
 
@@ -65,7 +66,8 @@ Podporované cloudové služby úložiště v Azure, které se dají registrovat
 + Systém souborů Databricks
 + Azure Database for MySQL
 
-## <a name="datasets"></a>Datové sady
+<a name="datasets"></a>
+## <a name="reference-data-in-storage-with-datasets"></a>Referenční data v úložišti s datovými sadami
 
 Azure Machine Learning datové sady nejsou kopie vašich dat. Vytvořením datové sady vytvoříte odkaz na data ve službě úložiště společně s kopií jeho metadat. 
 
@@ -105,7 +107,7 @@ S datovými sadami můžete provádět řadu úloh strojového učení prostřed
 
 <a name="label"></a>
 
-## <a name="data-labeling"></a>Popisky dat
+## <a name="label-data-with-data-labeling-projects"></a>Popisek dat pomocí projektů s popiskem dat
 
 Popisování velkých objemů dat je často starostí v projektech strojového učení. Ty, které mají součást počítačové vize, jako je například klasifikace obrázku nebo detekce objektu, obvykle vyžadují tisíce imagí a odpovídající popisky.
 
@@ -115,7 +117,7 @@ Vytvořte [projekt pro označování dat a vypište](how-to-create-labeling-proj
 
 <a name="drift"></a>
 
-## <a name="data-drift"></a>Posun dat
+## <a name="monitor-model-performance-with-data-drift"></a>Monitorování výkonu modelu s posunem dat
 
 V kontextu strojového učení je posun dat změnou v modelu vstupní data, která vede k modelování snížení výkonu. Je jedním z hlavních důvodů, které se v průběhu času snižují přesností, a díky tomu sledování posunu dat pomáhá detekovat problémy s výkonem modelu.
 
