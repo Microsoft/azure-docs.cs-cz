@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: 639b810cbb99496f84b76fc96124145a019fb625
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 548cee262d874f5bc0f6024a857c2bb8a5466106
+ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705536"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98541338"
 ---
 # <a name="tutorial-discover-physical-servers-with-server-assessment"></a>Kurz: zjištění fyzických serverů pomocí posouzení serveru
 
@@ -40,7 +40,7 @@ Než začnete s tímto kurzem, Projděte si tyto požadavky.
 
 **Požadavek** | **Podrobnosti**
 --- | ---
-**Náplně** | Potřebujete počítač, na kterém chcete spustit zařízení Azure Migrate. Počítač by měl mít:<br/><br/> – Nainstalovaný systém Windows Server 2016. _(V současné době se nasazení zařízení podporuje jenom v systému Windows Server 2016.)_<br/><br/> – 16 GB RAM, 8 vCPU, přibližně 80 GB diskového úložiště<br/><br/> – Statická nebo dynamická IP adresa s přístupem k Internetu, a to buď přímo, nebo prostřednictvím proxy serveru.
+**Náplně** | Potřebujete počítač, na kterém chcete spustit zařízení Azure Migrate. Počítač by měl mít:<br/><br/> – Nainstalovaný systém Windows Server 2016.<br/> _(V současné době se nasazení zařízení podporuje jenom v systému Windows Server 2016.)_<br/><br/> – 16 GB paměti RAM, 8 vCPU, přibližně 80 GB diskového úložiště<br/><br/> – Statická nebo dynamická IP adresa s přístupem k Internetu, a to buď přímo, nebo prostřednictvím proxy serveru.
 **Windows servery** | Povolí příchozí připojení na portu WinRM 5985 (HTTP), takže zařízení může vyžádat metadata o konfiguraci a výkonu.
 **Servery s Linuxem** | Povolí příchozí připojení na portu 22 (TCP).
 
@@ -48,7 +48,7 @@ Než začnete s tímto kurzem, Projděte si tyto požadavky.
 
 Chcete-li vytvořit projekt Azure Migrate a zaregistrovat Azure Migrate zařízení, budete potřebovat účet s tímto:
 - Oprávnění přispěvatele nebo vlastníka v předplatném Azure.
-- Oprávnění k registraci aplikací Azure Active Directory.
+- Oprávnění k registraci aplikací Azure Active Directory (AAD).
 
 Pokud jste si právě vytvořili bezplatný účet Azure, jste vlastníkem vašeho předplatného. Pokud nejste vlastníkem předplatného, pracujte s vlastníkem a přiřaďte oprávnění následujícím způsobem:
 
@@ -67,19 +67,20 @@ Pokud jste si právě vytvořili bezplatný účet Azure, jste vlastníkem vaše
 
     ![Otevře stránku přidat přiřazení role, která účtu přiřadí roli.](./media/tutorial-discover-physical/assign-role.png)
 
-7. Na portálu vyhledejte uživatele a v části **služby** vyberte **Uživatelé**.
-8. V **nastavení uživatele** ověřte, že uživatelé Azure AD můžou registrovat aplikace (ve výchozím nastavení nastavené na **Ano** ).
+1. Aby bylo možné zařízení zaregistrovat, váš účet Azure potřebuje **oprávnění k registraci aplikací AAD.**
+1. V Azure Portal přejděte na   >    >  **uživatelské nastavení** Azure Active Directory uživatelé.
+1. V **nastavení uživatele** ověřte, že uživatelé Azure AD můžou registrovat aplikace (ve výchozím nastavení nastavené na **Ano** ).
 
     ![Ověřte v uživatelských nastaveních, která můžou uživatelé registrovat v aplikacích Active Directory.](./media/tutorial-discover-physical/register-apps.png)
 
-9. Alternativně může tenant nebo globální správce přiřadit roli **vývojář aplikací** k účtu, aby umožnil registraci aplikací AAD. [Přečtěte si další informace](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
+9. Pokud je nastavení ' Registrace aplikací ' nastaveno na hodnotu ' ne ', požádejte tenanta/globálního správce, aby přiřadil požadované oprávnění. Alternativně může tenant nebo globální správce přiřadit roli **vývojář aplikace** k účtu, aby umožnil registraci aplikace AAD. [Přečtěte si další informace](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
 
 ## <a name="prepare-physical-servers"></a>Příprava fyzických serverů
 
 Nastavte účet, který zařízení může použít pro přístup k fyzickým serverům.
 
-- Pro Windows servery použijte doménový účet pro počítače připojené k doméně a místní účet pro počítače, které nejsou připojené k doméně. Uživatelský účet by měl být přidán do těchto skupin: Remote Management Users, Performance Monitor Users a Performance Log Users.
-- V případě serverů s Linuxem musíte na serverech s Linuxem, které chcete vyhledat, mít účet superuživatele. Alternativně můžete nastavit nekořenový účet s požadovanými funkcemi pomocí následujících příkazů:
+- Pro **Windows servery** použijte doménový účet pro počítače připojené k doméně a místní účet pro počítače, které nejsou připojené k doméně. Uživatelský účet by měl být přidán do těchto skupin: Remote Management Users, Performance Monitor Users a Performance Log Users.
+- Pro **servery se systémem** Linux budete potřebovat kořenový účet na serverech se systémem Linux, které chcete zjistit. Alternativně můžete nastavit nekořenový účet s požadovanými funkcemi pomocí následujících příkazů:
 
 **Příkaz** | **Účel**
 --- | --- |
@@ -102,23 +103,25 @@ Nastavte nový projekt Azure Migrate.
    ![Pole pro název a oblast projektu](./media/tutorial-discover-physical/new-project.png)
 
 7. Vyberte **Vytvořit**.
-8. Počkejte několik minut, než se projekt Azure Migrate nasadí.
-
-**Azure Migrate: Nástroj pro vyhodnocení serveru** se ve výchozím nastavení přidá do nového projektu.
+8. Počkejte několik minut, než se projekt Azure Migrate nasadí. **Azure Migrate: Nástroj pro vyhodnocení serveru** se ve výchozím nastavení přidá do nového projektu.
 
 ![Stránka zobrazující Nástroj pro vyhodnocení serveru přidaný ve výchozím nastavení](./media/tutorial-discover-physical/added-tool.png)
 
+> [!NOTE]
+> Pokud jste již vytvořili projekt, můžete použít stejný projekt k registraci dalších zařízení pro zjišťování a vyhodnocení většího počtu serverů. [Další informace](create-manage-projects.md#find-a-project)
 
 ## <a name="set-up-the-appliance"></a>Nastavení zařízení
 
-Nastavení zařízení:
-- Zadejte název zařízení a vygenerujte Azure Migrate klíč projektu na portálu.
-- Stáhněte si soubor ZIP pomocí skriptu Azure Migrate Installer z Azure Portal.
-- Extrahujte obsah ze souboru ZIP. Spusťte konzolu PowerShellu s oprávněními správce.
-- Spusťte skript prostředí PowerShell pro spuštění webové aplikace zařízení.
-- Nakonfigurujte zařízení poprvé a zaregistrujte ho pomocí Azure Migrate projektu pomocí klíče Azure Migrate projektu.
+Azure Migrate zařízení provádí zjišťování serveru a odesílá Azure Migrate metadata konfigurace serveru a výkonu. Zařízení je možné nastavit spuštěním skriptu PowerShellu, který se dá stáhnout z Azure Migrate projektu.
 
-### <a name="generate-the-azure-migrate-project-key"></a>Vygenerovat klíč projektu Azure Migrate
+Nastavení zařízení:
+1. Zadejte název zařízení a vygenerujte Azure Migrate klíč projektu na portálu.
+2. Stáhněte si soubor ZIP pomocí skriptu Azure Migrate Installer z Azure Portal.
+3. Extrahujte obsah ze souboru ZIP. Spusťte konzolu PowerShellu s oprávněními správce.
+4. Spusťte skript prostředí PowerShell pro spuštění webové aplikace zařízení.
+5. Nakonfigurujte zařízení poprvé a zaregistrujte ho pomocí Azure Migrate projektu pomocí klíče Azure Migrate projektu.
+
+### <a name="1-generate-the-azure-migrate-project-key"></a>1. vygenerujte klíč projektu Azure Migrate.
 
 1. V části **Cíle migrace** > **Servery** > **Azure Migrate: Hodnocení serverů** vyberte **Zjistit**.
 2. V možnosti **zjišťovat počítače**  >  **jsou virtualizované počítače?** vyberte **fyzické nebo jiné (AWS, GCP, Xen atd.)**.
@@ -127,10 +130,9 @@ Nastavení zařízení:
 1. Po úspěšném vytvoření prostředků Azure se vygeneruje **klíč projektu Azure Migrate** .
 1. Zkopírujte klíč, protože ho budete potřebovat k dokončení registrace zařízení během jeho konfigurace.
 
-### <a name="download-the-installer-script"></a>Stažení instalačního skriptu
+### <a name="2-download-the-installer-script"></a>2. Stáhněte si instalační skript.
 
 V **2: Stáhněte zařízení Azure Migrate** a klikněte na **Stáhnout**.
-
 
 ### <a name="verify-security"></a>Ověřit zabezpečení
 
@@ -155,7 +157,7 @@ Před nasazením souboru ZIP ověřte, zda je soubor zip zabezpečený.
         Fyzický (85,8 MB) | [Nejnovější verze](https://go.microsoft.com/fwlink/?linkid=2140338) | ae132ebc574caf231bf41886891040ffa7abbe150c8b50436818b69e58622276
  
 
-### <a name="run-the-azure-migrate-installer-script"></a>Spusťte skript instalačního programu Azure Migrate
+### <a name="3-run-the-azure-migrate-installer-script"></a>3. Spusťte skript instalačního programu Azure Migrate
 Skript instalačního programu provede následující akce:
 
 - Nainstaluje agenty a webovou aplikaci pro zjišťování a hodnocení fyzických serverů.
@@ -184,13 +186,11 @@ Spusťte skript následujícím způsobem:
 
 Pokud přecházíte mezi všemi problémy, získáte přístup k protokolům skriptu na adrese C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log pro řešení potíží.
 
-
-
 ### <a name="verify-appliance-access-to-azure"></a>Ověření přístupu zařízení k Azure
 
 Ujistěte se, že se virtuální počítač zařízení může připojit k adresám URL Azure pro cloudy [veřejné](migrate-appliance.md#public-cloud-urls) a [státní správy](migrate-appliance.md#government-cloud-urls) .
 
-### <a name="configure-the-appliance"></a>Konfigurace zařízení
+### <a name="4-configure-the-appliance"></a>4. konfigurace zařízení
 
 Nastavte zařízení poprvé.
 

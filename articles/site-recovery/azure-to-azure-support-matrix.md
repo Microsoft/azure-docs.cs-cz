@@ -4,12 +4,12 @@ description: Shrnuje podporu zotavení po havárii virtuálních počítačů Az
 ms.topic: article
 ms.date: 11/29/2020
 ms.author: raynew
-ms.openlocfilehash: e2cbea433d56d4c1290a5d1cdc54b56e81b4cd73
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: f0c7e23e45a84fa73c7e63b5aaa6280177cf8b27
+ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234320"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98541304"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Matice podpory pro zotavení po havárii virtuálních počítačů Azure mezi oblastmi Azure
 
@@ -44,13 +44,13 @@ Virtuální počítače můžete replikovat a obnovovat mezi dvěma oblastmi v r
 **Geografický cluster** | **Oblasti Azure**
 -- | --
 Používaný | Kanada – východ, Kanada – střed, Střed USA – jih, Středozápadní USA, Východní USA, Východní USA 2, Západní USA, Západní USA 2, Střed USA, Střed USA – sever
-Evropa | Velká Británie – západ, Velká Británie – jih, Severní Evropa, Západní Evropa, Jižní Afrika západní, Jižní Afrika sever, Norsko – východ, Norsko – západ, Francie – střed, Švýcarsko – sever
+Evropa | Velká Británie – západ, Velká Británie – jih, Severní Evropa, Západní Evropa, Jihoafrická Afrika západní, Jižní Afrika sever, Norsko – východ, Francie – střed, Švýcarsko – sever
 Asie | Jižní Indie, Střed Indie, Západní Indie, jihovýchodní Asie, Východní Asie, Japonsko – východ, Japonsko – západ, Korea – střed, Jižní Korea
 Austrálie    | Austrálie – východ, Austrálie – jihovýchod, Austrálie – střed, Austrálie – střed 2
 Azure Government    | US GOV) – Virginia, US GOV Iowa, US GOV Arizona, US GOV Texas, US DOD – východ, US DOD – střed
 Německo    | Německo – střed, Německo – severovýchod
 Čína | Čína – východ, Čína – sever, Čína North2, Čína – východ 2
-Omezené oblasti rezervované pro zotavení po havárii v zemi |Německo – sever vyhrazena pro Německo – středozápad, Švýcarsko – západ vyhrazena pro Švýcarsko – sever Francie – jih vyhrazena pro Francii – střed, Spojené arabské emiráty Central je omezená pro Spojené arabské emiráty Severní zákazníky
+Omezené oblasti rezervované pro zotavení po havárii v zemi |Německo – sever vyhrazena pro Německo – středozápad, Švýcarsko – západ vyhrazena pro Švýcarsko – sever Francie – jih vyhrazená pro Francii – střed, USA – západ pro Spojené arabské emiráty severy, Norsko – západ pro zákazníky v Norsku – východ
 
 >[!NOTE]
 >

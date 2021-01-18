@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: 90532a88e145507b09de9d36f704bc5c88899e95
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 109f61d9ff76d084b292dbe3cc8ce663b50141ae
+ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861899"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98541321"
 ---
 # <a name="tutorial-discover-hyper-v-vms-with-server-assessment"></a>Kurz: zjišťování virtuálních počítačů Hyper-V pomocí posouzení serveru
 
@@ -42,16 +42,14 @@ Než začnete s tímto kurzem, Projděte si tyto požadavky.
 **Požadavek** | **Podrobnosti**
 --- | ---
 **Hostitel Hyper-V** | Hostitelé Hyper-V, na kterých jsou virtuální počítače umístěné, můžou být samostatné nebo v clusteru.<br/><br/> V hostiteli musí být spuštěný systém Windows Server 2019, Windows Server 2016 nebo Windows Server 2012 R2.<br/><br/> Ověřte, že jsou povolená příchozí připojení na portu WinRM 5985 (HTTP), aby se zařízení mohlo připojit k vyžádanému metadatům virtuálních počítačů a datům výkonu pomocí model CIM (Common Information Model) (CIM) relace.
-**Nasazení zařízení** | Hostitel Hyper-V potřebuje prostředky k přidělení virtuálního počítače pro zařízení:<br/><br/> – Windows Server 2016<br/><br/> – 16 GB paměti RAM<br/><br/> – Osm vCPU<br/><br/> – Přibližně 80 GB diskového úložiště.<br/><br/> – Externí virtuální přepínač.<br/><br/> – Přístup k Internetu na virtuálním počítači přímo nebo prostřednictvím proxy serveru.
+**Nasazení zařízení** | Hostitel Hyper-V potřebuje prostředky k přidělení virtuálního počítače pro zařízení:<br/><br/> – 16 GB paměti RAM, 8 vCPU a přibližně 80 GB diskového úložiště.<br/><br/> – Externí virtuální přepínač a přístup k Internetu na virtuálním počítači zařízení, přímo nebo prostřednictvím proxy serveru.
 **Virtuální počítače** | Virtuální počítače můžou běžet s operačním systémem Windows nebo Linux. 
-
-Než začnete, můžete [zkontrolovat data](migrate-appliance.md#collected-data---hyper-v) , která zařízení shromáždí během zjišťování.
 
 ## <a name="prepare-an-azure-user-account"></a>Příprava uživatelského účtu Azure
 
 Chcete-li vytvořit projekt Azure Migrate a zaregistrovat Azure Migrate zařízení, budete potřebovat účet s tímto:
 - Oprávnění přispěvatele nebo vlastníka v předplatném Azure.
-- Oprávnění k registraci aplikací Azure Active Directory.
+- Oprávnění k registraci aplikací Azure Active Directory (AAD).
 
 Pokud jste si právě vytvořili bezplatný účet Azure, jste vlastníkem vašeho předplatného. Pokud nejste vlastníkem předplatného, pracujte s vlastníkem a přiřaďte oprávnění následujícím způsobem:
 
@@ -71,20 +69,20 @@ Pokud jste si právě vytvořili bezplatný účet Azure, jste vlastníkem vaše
 
     ![Otevře stránku přidat přiřazení role, která účtu přiřadí roli.](./media/tutorial-discover-hyper-v/assign-role.png)
 
-7. Na portálu vyhledejte uživatele a v části **služby** vyberte **Uživatelé**.
-8. V **nastavení uživatele** ověřte, že uživatelé Azure AD můžou registrovat aplikace (ve výchozím nastavení nastavené na **Ano** ).
+1. Aby bylo možné zařízení zaregistrovat, váš účet Azure potřebuje **oprávnění k registraci aplikací AAD.**
+1. V Azure Portal přejděte na   >    >  **uživatelské nastavení** Azure Active Directory uživatelé.
+1. V **nastavení uživatele** ověřte, že uživatelé Azure AD můžou registrovat aplikace (ve výchozím nastavení nastavené na **Ano** ).
 
     ![Ověřte v uživatelských nastaveních, která můžou uživatelé registrovat v aplikacích Active Directory.](./media/tutorial-discover-hyper-v/register-apps.png)
 
-9. Alternativně může tenant nebo globální správce přiřadit roli **vývojář aplikací** k účtu, aby umožnil registraci aplikací AAD. [Přečtěte si další informace](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
+9. Pokud je nastavení ' Registrace aplikací ' nastaveno na hodnotu ' ne ', požádejte tenanta/globálního správce, aby přiřadil požadované oprávnění. Alternativně může tenant nebo globální správce přiřadit roli **vývojář aplikace** k účtu, aby umožnil registraci aplikace AAD. [Přečtěte si další informace](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
 
 ## <a name="prepare-hyper-v-hosts"></a>Příprava hostitelů technologie Hyper-V
 
 Nastavte účet s přístupem správce na hostitelích Hyper-V. Zařízení používá tento účet ke zjišťování.
 
 - Možnost 1: Připravte účet s přístupem správce k hostitelskému počítači Hyper-V.
-- Možnost 2: Připravte účet místního správce nebo účet správce domény a přidejte tento účet do těchto skupin: Uživatelé vzdálené správy, Správci technologie Hyper-V a uživatelé nástroje Performance Monitor.
-
+- Možnost 2: Pokud nechcete přiřazovat oprávnění správce, vytvořte místní účet nebo uživatelský účet domény a přidejte ho do těchto skupin – Uživatelé vzdálené správy, Správci technologie Hyper-V a uživatelé nástroje Performance Monitor.
 
 ## <a name="set-up-a-project"></a>Nastavení projektu
 
@@ -99,26 +97,28 @@ Nastavte nový projekt Azure Migrate.
    ![Pole pro název a oblast projektu](./media/tutorial-discover-hyper-v/new-project.png)
 
 7. Vyberte **Vytvořit**.
-8. Počkejte několik minut, než se projekt Azure Migrate nasadí.
-
-**Azure Migrate: Nástroj pro vyhodnocení serveru** se ve výchozím nastavení přidá do nového projektu.
+8. Počkejte několik minut, než se projekt Azure Migrate nasadí. **Azure Migrate: Nástroj pro vyhodnocení serveru** se ve výchozím nastavení přidá do nového projektu.
 
 ![Stránka zobrazující Nástroj pro vyhodnocení serveru přidaný ve výchozím nastavení](./media/tutorial-discover-hyper-v/added-tool.png)
 
+> [!NOTE]
+> Pokud jste již vytvořili projekt, můžete použít stejný projekt k registraci dalších zařízení ke zjišťování a vyhodnocení více virtuálních počítačů. další[informace](create-manage-projects.md#find-a-project)
 
 ## <a name="set-up-the-appliance"></a>Nastavení zařízení
 
+Azure Migrate: posouzení serveru používá odlehčené Azure Migrate zařízení. Zařízení provádí zjišťování virtuálních počítačů a odesílá metadata o konfiguraci a výkonu virtuálních počítačů do Azure Migrate. Zařízení je možné nastavit tak, že nasadíte soubor VHD, který se dá stáhnout z Azure Migrate projektu.
+
+> [!NOTE]
+> Pokud z nějakého důvodu nemůžete zařízení nastavit pomocí šablony, můžete ho nastavit pomocí skriptu PowerShellu na existujícím serveru Windows Server 2016. [Přečtěte si další informace](deploy-appliance-script.md#set-up-the-appliance-for-hyper-v).
+
 V tomto kurzu se nastavuje zařízení na virtuálním počítači s technologií Hyper-V následujícím způsobem:
 
-- Zadejte název zařízení a vygenerujte Azure Migrate klíč projektu na portálu.
-- Z Azure Portal Stáhněte komprimovaný VHD Hyper-V.
-- Vytvořte zařízení a ověřte, že se může připojit k Azure Migrate posouzení serveru.
-- Nakonfigurujte zařízení poprvé a zaregistrujte ho pomocí Azure Migrate projektu pomocí klíče Azure Migrate projektu.
-> [!NOTE]
-> Pokud z nějakého důvodu nemůžete zařízení nastavit pomocí šablony, můžete ho nastavit pomocí skriptu PowerShellu. [Přečtěte si další informace](deploy-appliance-script.md#set-up-the-appliance-for-hyper-v).
+1. Zadejte název zařízení a vygenerujte Azure Migrate klíč projektu na portálu.
+1. Z Azure Portal Stáhněte komprimovaný VHD Hyper-V.
+1. Vytvořte zařízení a ověřte, že se může připojit k Azure Migrate posouzení serveru.
+1. Nakonfigurujte zařízení poprvé a zaregistrujte ho pomocí Azure Migrate projektu pomocí klíče Azure Migrate projektu.
 
-
-### <a name="generate-the-azure-migrate-project-key"></a>Vygenerovat klíč projektu Azure Migrate
+### <a name="1-generate-the-azure-migrate-project-key"></a>1. vygenerujte klíč projektu Azure Migrate.
 
 1. V části **Cíle migrace** > **Servery** > **Azure Migrate: Hodnocení serverů** vyberte **Zjistit**.
 2. V rozevíracích **seznamech počítačů**  >  , ve **kterých jsou počítače virtualizované?** vyberte **Ano, s technologií Hyper-V**.
@@ -127,10 +127,9 @@ V tomto kurzu se nastavuje zařízení na virtuálním počítači s technologi�
 1. Po úspěšném vytvoření prostředků Azure se vygeneruje **klíč projektu Azure Migrate** .
 1. Zkopírujte klíč, protože ho budete potřebovat k dokončení registrace zařízení během jeho konfigurace.
 
-### <a name="download-the-vhd"></a>Stažení virtuálního pevného disku
+### <a name="2-download-the-vhd"></a>2. Stáhněte VHD.
 
-V **2: Stáhněte zařízení Azure Migrate** vyberte. Soubor VHD a klikněte na **Stáhnout**. 
-
+V **2: Stáhněte zařízení Azure Migrate** vyberte. Soubor VHD a klikněte na **Stáhnout**.
 
 ### <a name="verify-security"></a>Ověřit zabezpečení
 
@@ -156,7 +155,7 @@ Před nasazením souboru ZIP ověřte, zda je soubor zip zabezpečený.
         --- | --- | ---
         Hyper-V (85,8 MB) | [Nejnovější verze](https://go.microsoft.com/fwlink/?linkid=2140424) |  cfed44bb52c9ab3024a628dc7a5d0df8c624f156ec1ecc3507116bae330b257f
 
-### <a name="create-the-appliance-vm"></a>Vytvoření virtuálního počítače zařízení
+### <a name="3-create-the-appliance-vm"></a>3. Vytvoření virtuálního počítače zařízení
 
 Naimportujte stažený soubor a vytvořte virtuální počítač.
 
@@ -177,7 +176,7 @@ Naimportujte stažený soubor a vytvořte virtuální počítač.
 
 Ujistěte se, že se virtuální počítač zařízení může připojit k adresám URL Azure pro cloudy [veřejné](migrate-appliance.md#public-cloud-urls) a [státní správy](migrate-appliance.md#government-cloud-urls) .
 
-### <a name="configure-the-appliance"></a>Konfigurace zařízení
+### <a name="4-configure-the-appliance"></a>4. konfigurace zařízení
 
 Nastavte zařízení poprvé.
 
@@ -214,8 +213,6 @@ Nastavte zařízení poprvé.
 1. Po úspěšném přihlášení se vraťte na předchozí kartu pomocí Správce konfigurace zařízení.
 4. Pokud má uživatelský účet Azure použitý k protokolování správná oprávnění k prostředkům Azure vytvořeným během generování klíče, zahájí se registrace zařízení.
 1. Po úspěšné registraci zařízení si můžete zobrazit podrobnosti o registraci kliknutím na **Zobrazit podrobnosti**.
-
-
 
 ### <a name="delegate-credentials-for-smb-vhds"></a>Pověření delegáta pro virtuální pevné disky SMB
 

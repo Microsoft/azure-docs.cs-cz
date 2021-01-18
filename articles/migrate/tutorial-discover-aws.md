@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: 935aa8297e8b244bfd05483f07aad3eadb485f1b
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 8fb17dc880b74da3ca4e96df10946878fde31909
+ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97797073"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98541406"
 ---
 # <a name="tutorial-discover-aws-instances-with-server-assessment"></a>Kurz: zjištění instancí AWS pomocí posouzení serveru
 
@@ -40,7 +40,7 @@ Než začnete s tímto kurzem, Projděte si tyto požadavky.
 
 **Požadavek** | **Podrobnosti**
 --- | ---
-**Náplně** | Potřebujete virtuální počítač EC2, na kterém chcete spustit zařízení Azure Migrate. Počítač by měl mít:<br/><br/> – Nainstalovaný systém Windows Server 2016. Spuštění zařízení na počítači s Windows serverem 2019 se nepodporuje.<br/><br/> – 16 GB RAM, 8 vCPU, přibližně 80 GB diskového úložiště a externí virtuální přepínač.<br/><br/> – Statická nebo dynamická IP adresa s přístupem k Internetu, a to buď přímo, nebo prostřednictvím proxy serveru.
+**Náplně** | Potřebujete virtuální počítač EC2, na kterém chcete spustit zařízení Azure Migrate. Počítač by měl mít:<br/><br/> – Nainstalovaný systém Windows Server 2016.<br/> _Spuštění zařízení na počítači s Windows serverem 2019 se nepodporuje_.<br/><br/> – 16 GB RAM, 8 vCPU, přibližně 80 GB diskového úložiště a externí virtuální přepínač.<br/><br/> – Statická nebo dynamická IP adresa s přístupem k Internetu, a to buď přímo, nebo prostřednictvím proxy serveru.
 **Instance systému Windows** | Povolí příchozí připojení na portu WinRM 5985 (HTTP), takže zařízení může vyžádat metadata o konfiguraci a výkonu.
 **Instance systému Linux** | Povolí příchozí připojení na portu 22 (TCP).<br/><br/> Instance by se měly používat `bash` jako výchozí prostředí, jinak se zjišťování nezdaří.
 
@@ -48,7 +48,7 @@ Než začnete s tímto kurzem, Projděte si tyto požadavky.
 
 Chcete-li vytvořit projekt Azure Migrate a zaregistrovat Azure Migrate zařízení, budete potřebovat účet s tímto:
 - Oprávnění přispěvatele nebo vlastníka v předplatném Azure.
-- Oprávnění k registraci aplikací Azure Active Directory.
+- Oprávnění k registraci aplikací Azure Active Directory (AAD).
 
 Pokud jste si právě vytvořili bezplatný účet Azure, jste vlastníkem vašeho předplatného. Pokud nejste vlastníkem předplatného, pracujte s vlastníkem a přiřaďte oprávnění následujícím způsobem:
 
@@ -67,18 +67,20 @@ Pokud jste si právě vytvořili bezplatný účet Azure, jste vlastníkem vaše
 
     ![Otevře stránku přidat přiřazení role, která účtu přiřadí roli.](./media/tutorial-discover-aws/assign-role.png)
 
-7. Na portálu vyhledejte uživatele a v části **služby** vyberte **Uživatelé**.
-8. V **nastavení uživatele** ověřte, že uživatelé Azure AD můžou registrovat aplikace (ve výchozím nastavení nastavené na **Ano** ).
+1. Aby bylo možné zařízení zaregistrovat, váš účet Azure potřebuje **oprávnění k registraci aplikací AAD.**
+1. V Azure Portal přejděte na   >    >  **uživatelské nastavení** Azure Active Directory uživatelé.
+1. V **nastavení uživatele** ověřte, že uživatelé Azure AD můžou registrovat aplikace (ve výchozím nastavení nastavené na **Ano** ).
 
     ![Ověřte v uživatelských nastaveních, která můžou uživatelé registrovat v aplikacích Active Directory.](./media/tutorial-discover-aws/register-apps.png)
 
+1. Pokud je nastavení ' Registrace aplikací ' nastaveno na hodnotu ' ne ', požádejte tenanta/globálního správce, aby přiřadil požadované oprávnění. Alternativně může tenant nebo globální správce přiřadit roli **vývojář aplikace** k účtu, aby umožnil registraci aplikace AAD. [Přečtěte si další informace](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
 
 ## <a name="prepare-aws-instances"></a>Příprava instancí AWS
 
 Nastavte účet, který může zařízení použít pro přístup k AWS instancím.
 
-- Pro Windows servery nastavte místní uživatelský účet na všech serverech Windows, které chcete zahrnout do zjišťování. Přidejte uživatelský účet do následujících skupin:-Remote Management Users-Performance Monitor Users-Performance Log Users.
- - V případě serverů s Linuxem musíte na serverech s Linuxem, které chcete vyhledat, mít účet superuživatele.
+- Pro **Windows servery** nastavte místní uživatelský účet na všech serverech Windows, které chcete zahrnout do zjišťování. Přidejte uživatelský účet do následujících skupin:-Remote Management Users-Performance Monitor Users-Performance Log Users.
+ - Pro **servery se systémem** Linux budete potřebovat kořenový účet na serverech se systémem Linux, které chcete zjistit. Alternativní postup najdete v pokynech v tabulce [podpory](migrate-support-matrix-physical.md#physical-server-requirements) .
 - Azure Migrate používá ověřování hesla při zjišťování instancí AWS. Instance AWS ve výchozím nastavení nepodporují ověřování hesla. Než budete moct zjistit instanci, musíte povolit ověřování hesla.
     - U počítačů s Windows povolte port WinRM 5985 (HTTP). To umožňuje vzdálené volání rozhraní WMI.
     - Pro počítače se systémem Linux:
@@ -105,11 +107,12 @@ Nastavte nový projekt Azure Migrate.
    ![Pole pro název a oblast projektu](./media/tutorial-discover-aws/new-project.png)
 
 7. Vyberte **Vytvořit**.
-8. Počkejte několik minut, než se projekt Azure Migrate nasadí.
-
-**Azure Migrate: Nástroj pro vyhodnocení serveru** se ve výchozím nastavení přidá do nového projektu.
+8. Počkejte několik minut, než se projekt Azure Migrate nasadí. **Azure Migrate: Nástroj pro vyhodnocení serveru** se ve výchozím nastavení přidá do nového projektu.
 
 ![Stránka zobrazující Nástroj pro vyhodnocení serveru přidaný ve výchozím nastavení](./media/tutorial-discover-aws/added-tool.png)
+
+> [!NOTE]
+> Pokud jste již vytvořili projekt, můžete použít stejný projekt k registraci dalších zařízení pro zjišťování a vyhodnocení většího počtu serverů. [Další informace](create-manage-projects.md#find-a-project)
 
 ## <a name="set-up-the-appliance"></a>Nastavení zařízení
 
@@ -120,17 +123,14 @@ Zařízení Azure Migrate je jednoduché zařízení, které využije Azure Migr
 
 [Přečtěte si další informace](migrate-appliance.md) o zařízení Azure Migrate.
 
-
-## <a name="appliance-deployment-steps"></a>Postup nasazení zařízení
-
 Nastavení zařízení:
-- Zadejte název zařízení a vygenerujte Azure Migrate klíč projektu na portálu.
-- Stáhněte si soubor ZIP pomocí skriptu Azure Migrate Installer z Azure Portal.
-- Extrahujte obsah ze souboru ZIP. Spusťte konzolu PowerShellu s oprávněními správce.
-- Spusťte skript prostředí PowerShell pro spuštění webové aplikace zařízení.
-- Nakonfigurujte zařízení poprvé a zaregistrujte ho pomocí Azure Migrate projektu pomocí klíče Azure Migrate projektu.
+1. Zadejte název zařízení a vygenerujte Azure Migrate klíč projektu na portálu.
+1. Stáhněte si soubor ZIP pomocí skriptu Azure Migrate Installer z Azure Portal.
+1. Extrahujte obsah ze souboru ZIP. Spusťte konzolu PowerShellu s oprávněními správce.
+1. Spusťte skript prostředí PowerShell pro spuštění webové aplikace zařízení.
+1. Nakonfigurujte zařízení poprvé a zaregistrujte ho pomocí Azure Migrate projektu pomocí klíče Azure Migrate projektu.
 
-### <a name="generate-the-azure-migrate-project-key"></a>Vygenerovat klíč projektu Azure Migrate
+### <a name="1-generate-the-azure-migrate-project-key"></a>1. vygenerujte klíč projektu Azure Migrate.
 
 1. V části **Cíle migrace** > **Servery** > **Azure Migrate: Hodnocení serverů** vyberte **Zjistit**.
 2. V možnosti **zjišťovat počítače**  >  **jsou virtualizované počítače?** vyberte **fyzické nebo jiné (AWS, GCP, Xen atd.)**.
@@ -139,10 +139,9 @@ Nastavení zařízení:
 1. Po úspěšném vytvoření prostředků Azure se vygeneruje **klíč projektu Azure Migrate** .
 1. Zkopírujte klíč, protože ho budete potřebovat k dokončení registrace zařízení během jeho konfigurace.
 
-### <a name="download-the-installer-script"></a>Stažení instalačního skriptu
+### <a name="2-download-the-installer-script"></a>2. Stáhněte si instalační skript.
 
 V **2: Stáhněte zařízení Azure Migrate** a klikněte na **Stáhnout**.
-
 
 ### <a name="verify-security"></a>Ověřit zabezpečení
 
@@ -167,7 +166,7 @@ Před nasazením souboru ZIP ověřte, zda je soubor zip zabezpečený.
         Fyzický (85 MB) | [Nejnovější verze](https://go.microsoft.com/fwlink/?linkid=2140338) | ca67e8dbe21d113ca93bfe94c1003ab7faba50472cb03972d642be8a466f78ce
  
 
-### <a name="run-the-azure-migrate-installer-script"></a>Spusťte skript instalačního programu Azure Migrate
+### <a name="3-run-the-azure-migrate-installer-script"></a>3. Spusťte skript instalačního programu Azure Migrate
 Skript instalačního programu provede následující akce:
 
 - Nainstaluje agenty a webovou aplikaci pro zjišťování a hodnocení fyzických serverů.
@@ -196,13 +195,11 @@ Spusťte skript následujícím způsobem:
 
 Pokud přecházíte mezi všemi problémy, získáte přístup k protokolům skriptu na adrese C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log pro řešení potíží.
 
-
-
 ### <a name="verify-appliance-access-to-azure"></a>Ověření přístupu zařízení k Azure
 
 Ujistěte se, že se virtuální počítač zařízení může připojit k adresám URL Azure pro cloudy [veřejné](migrate-appliance.md#public-cloud-urls) a [státní správy](migrate-appliance.md#government-cloud-urls) .
 
-### <a name="configure-the-appliance"></a>Konfigurace zařízení
+### <a name="4-configure-the-appliance"></a>4. konfigurace zařízení
 
 Nastavte zařízení poprvé.
 

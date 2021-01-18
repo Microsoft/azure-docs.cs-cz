@@ -1,6 +1,6 @@
 ---
 title: Poznámky k verzi pro Azure Security Center
-description: Popis toho, co je nového a co se změnilo v Azure Security Center.
+description: Popis toho, co je nového a co se změnilo v Azure Security Center
 services: security-center
 documentationcenter: na
 author: memildin
@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/07/2021
+ms.date: 01/17/2021
 ms.author: memildin
-ms.openlocfilehash: 86da6c0a3393dd3f47143355597cd9ccdec9928d
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 48e7093c30ffb135231f5843cb0767848f242d89
+ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539937"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98541375"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Co je nového v Azure Security Center?
 
@@ -32,6 +32,24 @@ Další informace o *plánovaných* změnách, které už brzy Security Center, 
 
 
 ## <a name="january-2021"></a>Leden 2021
+
+Aktualizace v prosinci zahrnují:
+
+- [Export filtrovaných seznamů doporučení CSV](#csv-export-of-filtered-list-of-recommendations)
+- [Posouzení ohrožení zabezpečení pro místní a více cloudových počítačů je všeobecně dostupné.](#vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-generally-available)
+
+
+### <a name="csv-export-of-filtered-list-of-recommendations"></a>Export filtrovaných seznamů doporučení CSV 
+
+V listopadu 2020 jsme přidali filtry na stránku doporučení ([teď seznam doporučení obsahuje filtry](#recommendations-list-now-includes-filters)). V prosinci jsme tyto filtry rozšířili ([Stránka doporučení obsahuje nové filtry pro prostředí, závažnost a dostupné odpovědi](#recommendations-page-has-new-filters-for-environment-severity-and-available-responses)). 
+
+V tomto oznámení měníme chování tlačítka **stáhnout do souboru CSV** , aby export sdíleného svazku clusteru zahrnoval jenom doporučení aktuálně zobrazená v seznamu filtrovaných. 
+
+Například na obrázku níže vidíte, že seznam byl filtrován na dvě doporučení. Vygenerovaný soubor CSV obsahuje podrobnosti o stavu všech prostředků ovlivněných těmito dvěma doporučeními.   
+
+:::image type="content" source="media/security-center-managing-and-responding-alerts/export-to-csv-with-filters.png" alt-text="Export filtrovaných doporučení do souboru CSV":::
+
+Další informace najdete v [doporučeních pro zabezpečení v Azure Security Center](security-center-recommendations.md).
 
 ### <a name="vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-generally-available"></a>Posouzení ohrožení zabezpečení pro místní a více cloudových počítačů je všeobecně dostupné.
 

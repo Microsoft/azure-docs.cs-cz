@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: 181f645540a267d65b15a0345a61752a8a5f78fa
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 079f176a741fa3423081cb96503691f0f2e2e7b2
+ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704723"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98541423"
 ---
 # <a name="tutorial-discover-google-cloud-platform-gcp-instances-with-server-assessment"></a>Kurz: zjištění instancí Google Cloud Platform (GCP) pomocí posouzení serveru
 
@@ -40,7 +40,7 @@ Než začnete s tímto kurzem, Projděte si tyto požadavky.
 
 **Požadavek** | **Podrobnosti**
 --- | ---
-**Náplně** | Potřebujete instanci virtuálního počítače GCP, na které se má spustit zařízení Azure Migrate. Počítač by měl mít:<br/><br/> – Nainstalovaný systém Windows Server 2016. Spuštění zařízení na počítači s Windows serverem 2019 se nepodporuje.<br/><br/> – 16 GB RAM, 8 vCPU, přibližně 80 GB diskového úložiště a externí virtuální přepínač.<br/><br/> – Statická nebo dynamická IP adresa s přístupem k Internetu, a to buď přímo, nebo prostřednictvím proxy serveru.
+**Náplně** | Potřebujete instanci virtuálního počítače GCP, na které se má spustit zařízení Azure Migrate. Počítač by měl mít:<br/><br/> – Nainstalovaný systém Windows Server 2016.<br/> _Spuštění zařízení na počítači s Windows serverem 2019 se nepodporuje_.<br/><br/> – 16 GB RAM, 8 vCPU, přibližně 80 GB diskového úložiště a externí virtuální přepínač.<br/><br/> – Statická nebo dynamická IP adresa s přístupem k Internetu, a to buď přímo, nebo prostřednictvím proxy serveru.
 **Instance virtuálních počítačů s Windows** | Povolí příchozí připojení na portu WinRM 5985 (HTTP), takže zařízení může vyžádat metadata o konfiguraci a výkonu.
 **Instance virtuálních počítačů se systémem Linux** | Povolí příchozí připojení na portu 22 (TCP).
 
@@ -48,7 +48,7 @@ Než začnete s tímto kurzem, Projděte si tyto požadavky.
 
 Chcete-li vytvořit projekt Azure Migrate a zaregistrovat Azure Migrate zařízení, budete potřebovat účet s tímto:
 - Oprávnění přispěvatele nebo vlastníka v předplatném Azure.
-- Oprávnění k registraci aplikací Azure Active Directory.
+- Oprávnění k registraci aplikací Azure Active Directory (AAD).
 
 Pokud jste si právě vytvořili bezplatný účet Azure, jste vlastníkem vašeho předplatného. Pokud nejste vlastníkem předplatného, pracujte s vlastníkem a přiřaďte oprávnění následujícím způsobem:
 
@@ -67,22 +67,24 @@ Pokud jste si právě vytvořili bezplatný účet Azure, jste vlastníkem vaše
 
     ![Otevře stránku přidat přiřazení role, která účtu přiřadí roli.](./media/tutorial-discover-gcp/assign-role.png)
 
-7. Na portálu vyhledejte uživatele a v části **služby** vyberte **Uživatelé**.
-8. V **nastavení uživatele** ověřte, že uživatelé Azure AD můžou registrovat aplikace (ve výchozím nastavení nastavené na **Ano** ).
+1. Aby bylo možné zařízení zaregistrovat, váš účet Azure potřebuje **oprávnění k registraci aplikací AAD.**
+1. V Azure Portal přejděte na   >    >  **uživatelské nastavení** Azure Active Directory uživatelé.
+1. V **nastavení uživatele** ověřte, že uživatelé Azure AD můžou registrovat aplikace (ve výchozím nastavení nastavené na **Ano** ).
 
     ![Ověřte v uživatelských nastaveních, která můžou uživatelé registrovat v aplikacích Active Directory.](./media/tutorial-discover-gcp/register-apps.png)
 
+1. Pokud je nastavení ' Registrace aplikací ' nastaveno na hodnotu ' ne ', požádejte tenanta/globálního správce, aby přiřadil požadované oprávnění. Alternativně může tenant nebo globální správce přiřadit roli **vývojář aplikace** k účtu, aby umožnil registraci aplikace AAD. [Přečtěte si další informace](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
 
 ## <a name="prepare-gcp-instances"></a>Příprava instancí GCP
 
 Nastavte účet, který zařízení může použít pro přístup k instancím virtuálních počítačů GCP.
 
-- Pro Windows servery
+- Pro **Windows servery**:
     - Nastavte místní uživatelský účet na počítačích, které nejsou připojené k doméně, a účet domény na počítačích, které nejsou připojené k doméně, které chcete zahrnout do zjišťování. Přidejte uživatelský účet do následujících skupin: 
         - Uživatelé vzdálené správy
         - Uživatelé sledování výkonu
         - Uživatelé protokolu výkonu.
-- Pro servery se systémem Linux:
+- Pro **servery se systémem Linux**:
     - Na serverech se systémem Linux, které chcete zjistit, potřebujete kořenový účet. Pokud nemůžete poskytnout kořenový účet, použijte alternativní postup, kde najdete další informace v tabulce [podpory](migrate-support-matrix-physical.md#physical-server-requirements) .
     - Azure Migrate používá ověřování hesla při zjišťování instancí AWS. Instance AWS ve výchozím nastavení nepodporují ověřování hesla. Než budete moct zjistit instanci, musíte povolit ověřování hesla.
         1. Přihlaste se ke každému počítači se systémem Linux.
@@ -108,11 +110,12 @@ Nastavte nový projekt Azure Migrate.
    ![Pole pro název a oblast projektu](./media/tutorial-discover-gcp/new-project.png)
 
 7. Vyberte **Vytvořit**.
-8. Počkejte několik minut, než se projekt Azure Migrate nasadí.
-
-**Azure Migrate: Nástroj pro vyhodnocení serveru** se ve výchozím nastavení přidá do nového projektu.
+8. Počkejte několik minut, než se projekt Azure Migrate nasadí. **Azure Migrate: Nástroj pro vyhodnocení serveru** se ve výchozím nastavení přidá do nového projektu.
 
 ![Stránka zobrazující Nástroj pro vyhodnocení serveru přidaný ve výchozím nastavení](./media/tutorial-discover-gcp/added-tool.png)
+
+> [!NOTE]
+> Pokud jste již vytvořili projekt, můžete použít stejný projekt k registraci dalších zařízení pro zjišťování a vyhodnocení většího počtu serverů. [Další informace](create-manage-projects.md#find-a-project)
 
 ## <a name="set-up-the-appliance"></a>Nastavení zařízení
 
@@ -123,17 +126,14 @@ Zařízení Azure Migrate je jednoduché zařízení, které využije Azure Migr
 
 [Přečtěte si další informace](migrate-appliance.md) o zařízení Azure Migrate.
 
-
-## <a name="appliance-deployment-steps"></a>Postup nasazení zařízení
-
 Nastavení zařízení:
-- Zadejte název zařízení a vygenerujte Azure Migrate klíč projektu na portálu.
-- Stáhněte si soubor ZIP pomocí skriptu Azure Migrate Installer z Azure Portal.
-- Extrahujte obsah ze souboru ZIP. Spusťte konzolu PowerShellu s oprávněními správce.
-- Spusťte skript prostředí PowerShell pro spuštění webové aplikace zařízení.
-- Nakonfigurujte zařízení poprvé a zaregistrujte ho pomocí Azure Migrate projektu pomocí klíče Azure Migrate projektu.
+1. Zadejte název zařízení a vygenerujte Azure Migrate klíč projektu na portálu.
+1. Stáhněte si soubor ZIP pomocí skriptu Azure Migrate Installer z Azure Portal.
+1. Extrahujte obsah ze souboru ZIP. Spusťte konzolu PowerShellu s oprávněními správce.
+1. Spusťte skript prostředí PowerShell pro spuštění webové aplikace zařízení.
+1. Nakonfigurujte zařízení poprvé a zaregistrujte ho pomocí Azure Migrate projektu pomocí klíče Azure Migrate projektu.
 
-### <a name="generate-the-azure-migrate-project-key"></a>Vygenerovat klíč projektu Azure Migrate
+### <a name="1-generate-the-azure-migrate-project-key"></a>1. vygenerujte klíč projektu Azure Migrate.
 
 1. V části **Cíle migrace** > **Servery** > **Azure Migrate: Hodnocení serverů** vyberte **Zjistit**.
 2. V možnosti **zjišťovat počítače**  >  **jsou virtualizované počítače?** vyberte **fyzické nebo jiné (AWS, GCP, Xen atd.)**.
@@ -142,10 +142,9 @@ Nastavení zařízení:
 5. Po úspěšném vytvoření prostředků Azure se vygeneruje **klíč projektu Azure Migrate** .
 6. Zkopírujte klíč, protože ho budete potřebovat k dokončení registrace zařízení během jeho konfigurace.
 
-### <a name="download-the-installer-script"></a>Stažení instalačního skriptu
+### <a name="2-download-the-installer-script"></a>2. Stáhněte si instalační skript.
 
 V **2: Stáhněte zařízení Azure Migrate** a klikněte na **Stáhnout**.
-
 
 ### <a name="verify-security"></a>Ověřit zabezpečení
 
@@ -170,7 +169,7 @@ Před nasazením souboru ZIP ověřte, zda je soubor zip zabezpečený.
         Fyzický (85 MB) | [Nejnovější verze](https://go.microsoft.com/fwlink/?linkid=2140338) | ae132ebc574caf231bf41886891040ffa7abbe150c8b50436818b69e58622276
  
 
-### <a name="run-the-azure-migrate-installer-script"></a>Spusťte skript instalačního programu Azure Migrate
+### <a name="3-run-the-azure-migrate-installer-script"></a>3. Spusťte skript instalačního programu Azure Migrate
 Skript instalačního programu provede následující akce:
 
 - Nainstaluje agenty a webovou aplikaci pro zjišťování a hodnocení serverů GCP.
@@ -199,13 +198,11 @@ Spusťte skript následujícím způsobem:
 
 Pokud přecházíte mezi všemi problémy, získáte přístup k protokolům skriptu na adrese C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log pro řešení potíží.
 
-
-
 ### <a name="verify-appliance-access-to-azure"></a>Ověření přístupu zařízení k Azure
 
 Ujistěte se, že se virtuální počítač zařízení může připojit k adresám URL Azure pro cloudy [veřejné](migrate-appliance.md#public-cloud-urls) a [státní správy](migrate-appliance.md#government-cloud-urls) .
 
-### <a name="configure-the-appliance"></a>Konfigurace zařízení
+### <a name="4-configure-the-appliance"></a>4. konfigurace zařízení
 
 Nastavte zařízení poprvé.
 
@@ -237,7 +234,6 @@ Nastavte zařízení poprvé.
 1. Po úspěšném přihlášení se vraťte na předchozí kartu pomocí Správce konfigurace zařízení.
 4. Pokud má uživatelský účet Azure použitý k protokolování správná [oprávnění](#prepare-an-azure-user-account) k prostředkům Azure vytvořeným během generování klíče, zahájí se registrace zařízení.
 5. Po úspěšné registraci zařízení si můžete zobrazit podrobnosti o registraci kliknutím na **Zobrazit podrobnosti**.
-
 
 ## <a name="start-continuous-discovery"></a>Spustit průběžné zjišťování
 

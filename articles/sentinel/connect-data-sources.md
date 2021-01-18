@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: 432104c7e2cb9486dfb47a793ae73829d8705b60
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: e294423e3f078253984dc4fcd8695c2676abb236
+ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655812"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98541253"
 ---
 # <a name="connect-data-sources"></a>Připojení zdrojů dat
 
@@ -69,6 +69,8 @@ Služba Azure Sentinel podporuje následující metody datového připojení:
     - [Alcide kAudit](connect-alcide-kaudit.md)
     - [Barracuda WAF](connect-barracuda.md)
     - [Barracuda CloudGen Firewall](connect-barracuda-cloudgen-firewall.md)
+    - [LEPŠÍ ochrany před mobilními hrozbami](connect-better-mtd.md)
+    - [Beyond Security beSECURE](connect-besecure.md)
     - [Citrix Analytics (Security)](connect-citrix-analytics.md)
     - [F5 BIG-IP](connect-f5-big-ip.md)
     - [Forcepoint DLP](connect-forcepoint-dlp.md)
@@ -93,6 +95,8 @@ Služba Azure Sentinel podporuje následující metody datového připojení:
         - [AI Vectra Detect](connect-ai-vectra-detect.md)
         - [Check Point](connect-checkpoint.md)
         - [Cisco ASA](connect-cisco.md)
+        - [Citrix WAF](connect-citrix-waf.md)
+        - [Trezor hesel CyberArk Enterprise](connect-cyberark.md)
         - [ExtraHop Reveal(x)](connect-extrahop.md)
         - [F5 ASM](connect-f5.md)
         - [Produkty Forcepoint](connect-forcepoint-casb-ngfw.md)
@@ -101,6 +105,8 @@ Služba Azure Sentinel podporuje následující metody datového připojení:
         - [One Identity Safeguard](connect-one-identity.md)
         - [Palo Alto Networks](connect-paloalto.md)
         - [Trend Micro Deep Security](connect-trend-micro.md)
+        - [Trend Micro TippingPoint](connect-trend-micro-tippingpoint.md)
+        - [WireX Network forenzní Platform](connect-wirex-systems.md)
         - [Zscaler](connect-zscaler.md)
         - [Jiná zařízení na bázi CEF](connect-common-event-format.md)
     - **Brány firewall, proxy servery a koncové body – syslog:**
@@ -137,7 +143,7 @@ Případně můžete agenta nasadit ručně na existující virtuální počíta
 | AzureActivity | Přehled [připojení aktivit](connect-azure-activity.md) a [protokolů aktivit](../azure-monitor/platform/platform-logs-overview.md) Azure| &#10003; | |
 | AuditLogs | [Připojení Azure AD](connect-azure-active-directory.md)  | &#10003; | |
 | SigninLogs | [Připojení Azure AD](connect-azure-active-directory.md)  | &#10003; | |
-| AzureFirewall |[Diagnostika Azure](../firewall/firewall-diagnostics.md) | &#10003; | |
+| AzureFirewall |[Azure Diagnostics](../firewall/firewall-diagnostics.md) | &#10003; | |
 | InformationProtectionLogs_CL  | [Sestavy Azure Information Protection](/azure/information-protection/reports-aip)<br>[Připojení služby Azure Information Protection](connect-azure-information-protection.md)  | &#10003; | To obvykle používá funkci **InformationProtectionEvents** společně s datovým typem. Další informace najdete v tématu [Postup úpravy sestav a vytváření vlastních dotazů](/azure/information-protection/reports-aip#how-to-modify-the-reports-and-create-custom-queries) .|
 | AzureNetworkAnalytics_CL  | [Analýza](../network-watcher/traffic-analytics.md) provozu [analytického schématu](../network-watcher/traffic-analytics.md) provozu  | | |
 | CommonSecurityLog  | [Připojit CEF](connect-common-event-format.md)  | &#10003; | |
