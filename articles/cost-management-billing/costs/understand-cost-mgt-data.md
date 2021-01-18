@@ -3,18 +3,18 @@ title: Vysvětlení dat služby Azure Cost Management
 description: Tento článek vám pomůže lépe porozumět datům, která obsahuje služba Azure Cost Management, a tomu, jak často se zpracovávají, shromažďují, zobrazují a uzavírají.
 author: bandersmsft
 ms.author: banders
-ms.date: 10/26/2020
+ms.date: 01/06/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 97ae2ba26818bbc306da71af814d9b4f95858b6a
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: e6096c259ec1870a711a515bf02d5d00b4f75345
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032571"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964146"
 ---
 # <a name="understand-cost-management-data"></a>Vysvětlení dat služby Cost Management
 
@@ -114,7 +114,7 @@ Azure Cost Management přijímá značky jako součást jednotlivých záznamů 
 - Některé nasazené prostředky nemusí podporovat značky nebo nemusí vkládat značky do dat o využití.
 - Značky prostředků jsou zahrnuté jenom v datech o využití, když se značka používá. Značky se neaplikují na historická data.
 - Značky prostředků jsou ve službě Cost Management dostupné jenom po aktualizaci dat.
-- Značky prostředků jsou ve službě Cost Management dostupné, jenom pokud je prostředek aktivní nebo spuštěný a vytváří záznamy o využití (např. ne v případě uvolněného virtuálního počítače).
+- Značky prostředků jsou ve službě Cost Management dostupné, jenom pokud je prostředek aktivní nebo spuštěný a vytváří záznamy o využití. Například v případě uvolněného virtuálního počítače.
 - Správa značek vyžaduje přístup přispěvatele ke každému prostředku.
 - Správa zásad značek vyžaduje přístup buď vlastníka, nebo přispěvatele zásad ke skupině pro správu, předplatnému nebo skupině prostředků.
     
@@ -139,8 +139,7 @@ Tady je několik tipů pro práci se značkami:
 
 - Plánujte dopředu a definujte strategii označování, která vám umožní rozdělit náklady podle organizace, aplikace, prostředí atd.
 - Použijte Azure Policy ke kopírování značek skupin prostředků do jednotlivých prostředků a vynucení strategie označování.
-- Použijte rozhraní API značek ve spojení s dotazem nebo podrobnostmi o využití a získejte všechny náklady na základě aktuálních značek.
-
+- Použijte rozhraní API pro značky ve spojení s dotazem nebo podrobnostmi o využití a získejte všechny náklady na základě aktuálních značek.
 
 ## <a name="cost-and-usage-data-updates-and-retention"></a>Aktualizace a uchovávání údajů o využití a nákladech
 
@@ -151,17 +150,18 @@ Data o nákladech a využití jsou obvykle dostupná v části Správa nákladů
 - Odhadované poplatky pro aktuální fakturační období se mohou změnit s tím, jak generujete větší využití.
 - Každá aktualizace je kumulativní a zahrnuje všechny řádkové položky a informace z předchozí aktualizace.
 - Azure finalizuje, neboli _uzavře_, aktuální fakturační období až 72 hodin (tři kalendářní dny) po skončení fakturačního období.
+- V období aktuálního otevřeného měsíce (nefakturovaného) by se údaje správy nákladů měly považovat jenom za odhady. V některých případech může k zaznamenání poplatků do systému dojít nějakou dobu poté, co skutečně došlo k využití.
 
 Následující příklady ilustrují to, jak by mohla fakturační období skončit:
 
 * Předplatná smlouvy Enterprise (EA) – pokud fakturační měsíc končí 31. března, odhadované poplatky se aktualizují až o 72 hodin později. V tomto příkladu k tomu dojde 4. dubna o půlnoci (UTC).
 * Předplatná s průběžnými platbami – pokud fakturační měsíc končí 15. května, odhadované poplatky by se mohly aktualizovat až o 72 hodin později. V tomto příkladu by k tomu došlo 19. května o půlnoci (UTC).
 
-Jakmile jsou údaje o nákladech a využití k dispozici v modulu Správa nákladů + fakturace, budou se uchovávat nejméně 7 let.
+Jakmile jsou údaje o nákladech a využití k dispozici v modulu Cost Management + Billing, budou se uchovávat nejméně sedm let.
 
 ### <a name="rerated-data"></a>Opakovaně vyhodnocená data
 
-Ať už data načítáte pomocí rozhraní API služby Cost Management, Power BI nebo webu Azure Portal, počítejte s tím, že poplatky pro aktuální fakturační období se přepočítávají a neustále mění až do uzavření faktury.
+Ať už data načítáte pomocí rozhraní API služby Cost Management, Power BI, nebo prostřednictvím webu Azure Portal, počítejte s tím, že poplatky pro aktuální fakturační období se přepočítávají a následně mění až do uzavření faktury.
 
 ## <a name="cost-rounding"></a>Zaokrouhlení nákladů
 
@@ -184,6 +184,6 @@ Historická data pro nabídky založené na kreditech a platbách předem nemus�
 - MSDN (MS-AZR-0062P)
 - Visual Studio (MS-AZR-0029P, MS-AZR-0059P, MS-AZR-0060P, MS-AZR-0063P, MS-AZR-0064P)
 
-## <a name="see-also"></a>Viz také
+## <a name="next-steps"></a>Další kroky
 
 - Pokud jste si ještě neprošli úvodní příručku pro Cost Management, najdete ji v tématu [Začínáme s analýzou nákladů](./quick-acm-cost-analysis.md).

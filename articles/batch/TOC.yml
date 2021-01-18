@@ -223,14 +223,12 @@
           items:
             - name: Vykreslování s využitím Azure
               href: batch-rendering-service.md
-            - name: Image virtuálních počítačů pro vykreslování
+            - name: Dávkové vykreslování imagí virtuálních počítačů
               href: batch-rendering-applications.md
             - name: Možnosti vykreslování služby Batch
               href: batch-rendering-functionality.md
             - name: Použití vykreslování služby Batch
               href: batch-rendering-using.md
-            - name: Použití manažerů vykreslování
-              href: batch-rendering-render-managers.md
             - name: Reference k aplikacím pro vykreslování
               href: batch-rendering-application-reference.md
             - name: Úložiště a přesun dat

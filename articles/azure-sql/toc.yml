@@ -55,6 +55,8 @@
               href: ./database/security-controls-policy.md
             - name: Standardní hodnoty zabezpečení
               href: database/security-baseline.md
+            - name: Funkce Always Encrypted
+              href: database/always-encrypted-landing.yml
             - name: Azure Defender for SQL
               href: database/azure-defender-for-sql.md
             - name: Rozšířená ochrana před internetovými útoky
@@ -255,6 +257,8 @@
               href: database/service-tier-hyperscale.md
             - name: Nejčastější dotazy k hyperškálování
               href: database/service-tier-hyperscale-frequently-asked-questions-faq.md
+        - name: Plánování a správa nákladů
+          href: database/cost-management.md
     - name: Rychlé starty
       href: database/quickstart-content-reference-guide.md
       items:
@@ -293,14 +297,16 @@
               href: database/active-geo-replication-configure-portal.md
         - name: Zabezpečení
           items:
+            - name: Always Encrypted se zabezpečenými enklávami
+              href: database/always-encrypted-enclaves-getting-started.md
             - name: Konfigurace zabezpečení
               href: database/secure-database-tutorial.md
+            - name: Vytváření uživatelů s využitím instančních objektů
+              href: database/authentication-aad-service-principal-tutorial.md
             - name: Obměna klíčů BYOK transparentního šifrování dat
               href: database/transparent-data-encryption-byok-key-rotation.md
             - name: Odebrání ochrany transparentního šifrování dat
               href: database/transparent-data-encryption-byok-remove-tde-protector.md
-            - name: Vytváření uživatelů s využitím instančních objektů
-              href: database/authentication-aad-service-principal-tutorial.md
         - name: Přesun dat
           items:
             - name: Migrace s využitím DMS
@@ -371,6 +377,19 @@
               href: database/sql-data-sync-troubleshoot.md
         - name: Zabezpečení
           items:
+            - name: Funkce Always Encrypted
+              href: database/always-encrypted-landing.yml
+            - name: Always Encrypted se zabezpečenými enklávami
+              href: database/always-encrypted-with-secure-enclaves-landing.yml
+              items:
+                - name: Konfigurace a využití funkce Always Encrypted se zabezpečenými enklávami >
+                  href: /sql/relational-databases/security/encryption/configure-always-encrypted-enclaves
+                - name: Ověření identity a plánování enkláv Intel SGX
+                  href: database/always-encrypted-enclaves-plan.md
+                - name: Povolení Intel SGX
+                  href: database/always-encrypted-enclaves-enable-sgx.md
+                - name: Konfigurace služby Azure Attestation
+                  href: database/always-encrypted-enclaves-configure-attestation.md
             - name: Auditování Azure SQL
               href: database/auditing-overview.md
             - name: Formát protokolu auditu
@@ -922,10 +941,12 @@
               href: /sql/relational-databases/database-mail/database-mail?toc=%2fazure%2fazure-sql%2ftoc.json
         - name: Zabezpečení
           items:
-            - name: Zabezpečení veřejných koncových bodů
-              href: managed-instance/public-endpoint-overview.md
+            - name: Funkce Always Encrypted
+              href: database/always-encrypted-landing.yml
             - name: Auditování
               href: managed-instance/auditing-configure.md
+            - name: Zabezpečení veřejných koncových bodů
+              href: managed-instance/public-endpoint-overview.md
             - name: Skupiny vztahů důvěryhodnosti serveru
               href: managed-instance/server-trust-group-overview.md
     - name: Postup

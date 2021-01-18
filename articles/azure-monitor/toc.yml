@@ -8,6 +8,8 @@
       href: faq.md
     - name: Co je nového?
       href: whats-new.md
+    - name: Migrace z Operations Manageru
+      href: azure-monitor-operations-manager.md
 - name: Rychlé starty
   items:
     - name: Monitorování prostředků Azure
@@ -196,6 +198,8 @@
               href: platform/metric-chart-samples.md
             - name: Řešení potíží s grafy metrik
               href: platform/metrics-troubleshoot.md
+            - name: Principy agregace metrik
+              href: platform/metrics-aggregation-explained.md
     - name: Protokoly služby Azure Monitor
       items:
         - name: Přehled
@@ -664,6 +668,8 @@
                       href: app/javascript-react-native-plugin.md
                     - name: Modul plug-in Angular
                       href: app/javascript-angular-plugin.md
+                    - name: Modul plug-in Click Analytics Auto-collection
+                      href: app/javascript-click-analytics-plugin.md
                 - name: Řešení potíží
                   items:
                     - name: Selhání načtení sad SDK

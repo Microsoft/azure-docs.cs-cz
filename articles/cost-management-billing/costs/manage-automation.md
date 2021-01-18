@@ -3,17 +3,17 @@ title: Správa nákladů na Azure s využitím automatizace
 description: Tento článek vysvětluje, jak můžete spravovat náklady na Azure s využitím automatizace.
 author: bandersmsft
 ms.author: banders
-ms.date: 11/19/2020
+ms.date: 01/06/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: 47d9c2838c5c806214e3be2f9ba7ce335bc0af67
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 02215bace693ac5ac36f9fc29758215d45b23eb1
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94956088"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051781"
 ---
 # <a name="manage-costs-with-automation"></a>Správa nákladů s využitím automatizace
 
@@ -56,6 +56,22 @@ Doporučujeme zadávat _maximálně jeden požadavek_ na rozhraní API pro podro
 **Cílení na hlavní rozsahy bez filtrování**
 
 Rozhraní API využijte k získání všech potřebných dat na nejvyšší úrovni, která je k dispozici. Před jakýmkoli filtrováním, seskupováním nebo agregovanou analýzou počkejte, než se všechna potřebná data ingestují. Toto rozhraní API je optimalizované speciálně pro poskytování velkých objemů neagregovaných nezpracovaných nákladových dat. Další informace o rozsazích dostupných ve službě Cost Management najdete v tématu [Vysvětlení a práce s rozsahy](./understand-work-scopes.md). Po stažení potřebných dat pro příslušný rozsah použijte aplikaci Excel k analýze těchto dat s využitím filtrů a kontingenčních tabulek.
+
+### <a name="notes-about-pricing"></a>Poznámky k cenám
+
+Pokud si chcete odsouhlasit využití a poplatky s ceníkem nebo fakturou, seznamte se následujícími informacemi.
+
+Ceny v ceníku – ceny uvedené v ceníku jsou ceny, které dostáváte z Azure. Jsou škálované na konkrétní měrnou jednotku. Tyto měrné jednotky ale bohužel ne vždycky odpovídají jednotkám měření použitým při generování aktuálního využití prostředků a poplatků.
+
+Ceny pro podrobnosti využití – soubory využití uvádějí škálované informace, které nemusejí přesně odpovídat ceníku. Konkrétně se jedná o tyto:
+
+- Jednotková cena – cena se škáluje tak, aby odpovídala měrné jednotce, kterou prostředky Azure používají při generování poplatků. Pokud dojde k škálování, cena nebude odpovídat ceně uvedené v ceníku.
+- Měrná jednotka – představuje měrnou jednotku, kterou prostředky Azure používají při generování poplatků.
+- Platná cena / sazba za prostředky – cena představuje skutečnou sazbu, kterou po uplatnění slev platíte za jednotku. Je to cena, která se má spolu s množstvím použít k výpočtu cena × množství pro odsouhlasení poplatků. Tato cena také zohledňuje následující scénáře a škálovanou jednotkovou cenu, která je v souborech také k dispozici. V důsledku toho se může lišit od škálované jednotkové ceny.
+  - Ceny po úrovních – příklad: 10 USD za prvních 100 jednotek, 8 USD za dalších 100 jednotek.
+  - Zahrnuté množství – příklad: Prvních 100 jednotek je zdarma a pak se účtuje 10 USD za jednotku.
+  - Reservations
+  - Zaokrouhlení, ke kterému dochází během výpočtu – zaokrouhlování bere v úvahu spotřebované množství, ceny po úrovních a ceny zahrnutého množství a škálovanou jednotkovou cenu.
 
 ## <a name="example-usage-details-api-requests"></a>Příklady požadavků na rozhraní API pro podrobnostmi využití
 
@@ -325,7 +341,7 @@ Rozpočty můžete nakonfigurovat tak, aby spouštěly automatizované akce pomo
 
 ## <a name="data-latency-and-rate-limits"></a>Omezení četnosti a latence dat
 
-Doporučujeme, abyste tato rozhraní API nevolali víckrát než jednou denně. Data služby Cost Management se aktualizují každé čtyři hodiny tak, jak jsou od poskytovatelů prostředků Azure přijímána nová data o využití. Častější volání neposkytuje žádná další data. Místo toho by vedlo ke zvýšení zatížení. Další informace o tom, jak často se mění data a jak se nakládá s latencí dat, najdete v tématu [Vysvětlení dat služby Cost Management](understand-cost-mgt-data.md).
+Doporučujeme, abyste tato rozhraní API nevolali víckrát než jednou denně. Data služby Cost Management se aktualizují každé čtyři hodiny tak, jak jsou od poskytovatelů prostředků Azure přijímána nová data o využití. Častější volání neposkytuje víc dat. Místo toho vede ke zvýšení zatížení. Další informace o tom, jak často se mění data a jak se nakládá s latencí dat, najdete v tématu [Vysvětlení dat služby Cost Management](understand-cost-mgt-data.md).
 
 ### <a name="error-code-429---call-count-has-exceeded-rate-limits"></a>Kód chyby 429 – počet volání překročil omezení četnosti
 

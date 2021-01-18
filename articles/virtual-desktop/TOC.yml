@@ -128,6 +128,8 @@
       href: authentication.md
     - name: Prostředí Windows Virtual Desktop
       href: environment-setup.md
+    - name: Agent Windows Virtual Desktop
+      href: agent-overview.md
     - name: Připojení k síti
       items:
         - name: Principy připojení k síti
@@ -180,6 +182,8 @@
       href: troubleshoot-vm-configuration.md
     - name: Připojení služby Vzdálená plocha
       href: troubleshoot-service-connection.md
+    - name: Agent Windows Virtual Desktop
+      href: troubleshoot-agent.md
     - name: Potíže s klienty Vzdálené plochy
       href: troubleshoot-client.md
     - name: PowerShell pro Windows Virtual Desktop

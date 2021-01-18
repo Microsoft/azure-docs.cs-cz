@@ -308,10 +308,10 @@
       items:
         - name: Volba úrovně
           href: search-sku-tier.md
-        - name: Odhad kapacity a nákladů
-          href: search-sku-manage-costs.md
-        - name: Úprava kapacity
+        - name: Odhad a správa kapacity
           href: search-capacity-planning.md
+        - name: Odhadněte náklady
+          href: search-sku-manage-costs.md
         - name: Omezení služby
           href: search-limits-quotas-capacity.md
         - name: Škálování pro zajištění výkonu

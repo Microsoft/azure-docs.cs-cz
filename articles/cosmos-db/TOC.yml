@@ -1122,6 +1122,10 @@
           href: find-request-unit-charge-mongodb.md
         - name: Řešení potíží s výkonem dotazů
           href: mongodb-troubleshoot-query.md
+        - name: Řešení běžných potíží
+          href: mongodb-troubleshoot.md
+        - name: Prevence chyb omezování rychlosti
+          href: prevent-rate-limiting-errors.md
         - name: Ukládání a správa služby Spring Data
           href: /azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db?context=%2fazure%2fcosmos-db%2fcontext%2fcontext
         - name: Příkazy rozšíření MongoDB
@@ -1134,8 +1138,6 @@
           href: powershell-samples-mongodb.md
         - name: Správa s využitím rozhraní příkazového řádku Azure
           href: cli-samples-mongodb.md
-        - name: Řešení běžných potíží
-          href: mongodb-troubleshoot.md
     - name: Referenční informace
       items:
         - name: Poskytovatel prostředků REST
