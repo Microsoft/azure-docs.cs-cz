@@ -234,7 +234,7 @@
         - name: Rezervace služby Disk Storage
           href: ../../cost-management-billing/reservations/understand-disk-reservations.md
         - name: Výkon disků a virtuálních počítačů
-          href: disk-performance-linux.md
+          href: ../disks-performance.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Návrh pro vysoký výkon
           href: ../premium-storage-performance.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Zvládání výkonových špiček disků
@@ -906,10 +906,8 @@
           href: snapshot-copy-managed-disk.md
         - name: Rezervace služby Disk Storage
           href: ../disks-reserved-capacity.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-        - name: Vytvoření přírůstkového snímku – CLI
-          href: disks-incremental-snapshots.md
-        - name: Vytvoření přírůstkového snímku – portál
-          href: disks-incremental-snapshots-portal.md
+        - name: Vytvoření přírůstkového snímku
+          href: ../disks-incremental-snapshots.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Zálohování nespravovaných disků
           href: incremental-snapshots.md
         - name: Šifrování
@@ -943,7 +941,7 @@
             - name: Použití disků Ultra
               href: ../disks-enable-ultra-ssd.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Srovnávací test disku
-              href: disks-benchmarks.md
+              href: ../disks-benchmarks.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Vyhledání nepřipojených disků – CLI
           href: find-unattached-disks.md
         - name: Vyhledání nepřipojených disků – portál

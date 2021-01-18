@@ -1094,25 +1094,26 @@
     - name: Kurzy
       items:
         - name: Vizualizace dat s využitím Apache Sparku
+          displayname: machine learning
           href: ./spark/apache-spark-data-visualization-tutorial.md
-          displayname: machine learning
         - name: Použití průvodce bodováním pro vyhrazené fondy SQL
-          href: machine-learning/tutorial-sql-pool-model-scoring-wizard.md
           displayname: machine learning
+          href: machine-learning/tutorial-sql-pool-model-scoring-wizard.md
         - name: Trénování modelu bez kódu s využitím automatizovaného strojového učení
+          displayname: machine learning
           href: ./machine-learning/tutorial-automl.md
         - name: Trénování modelu v Pythonu s využitím automatizovaného strojového učení
+          displayname: machine learning
           href: ./spark/apache-spark-azure-machine-learning-tutorial.md
-          displayname: machine learning
         - name: Vytvoření modelu s využitím knihovny Apache Spark MLlib
-          href: ./spark/apache-spark-machine-learning-mllib-notebook.md
           displayname: machine learning
+          href: ./spark/apache-spark-machine-learning-mllib-notebook.md
+        - name: Konfigurace Cognitive Services pro Azure Synapse
+          href: ./machine-learning/tutorial-configure-cognitive-services-synapse.md
         - name: Analýza mínění s využitím Cognitive Services
           href: ./machine-learning/tutorial-cognitive-services-sentiment.md
         - name: Detekce anomálií s využitím Cognitive Services
           href: ./machine-learning/tutorial-cognitive-services-anomaly.md
-        - name: Konfigurace Cognitive Services pro Azure Synapse
-          href: ./machine-learning/tutorial-configure-cognitive-services-synapse.md
 - name: Data Catalog a zásady správného řízení
   items:
     - name: Rychlé starty
