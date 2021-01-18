@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/22/2020
-ms.openlocfilehash: e0a1d8dba9ea284322584de3b4be2ae390d15fdf
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: c95f8b9e4466b22519a4dea580a86a0dcda83857
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920250"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555929"
 ---
 # <a name="register-and-scan-azure-synapse-analytics"></a>Registrace a kontrola Azure synapse Analytics
 
@@ -24,9 +24,9 @@ Azure synapse Analytics (dřív SQL DW) podporuje úplné a přírůstkové kont
 
 ### <a name="known-limitations"></a>Známá omezení
 
-Azure dosah nepodporuje kontrolu [zobrazení](https://docs.microsoft.com/sql/relational-databases/views/views?view=sql-server-ver15) v Azure synapse Analytics.
+Azure dosah nepodporuje kontrolu [zobrazení](/sql/relational-databases/views/views?view=azure-sqldw-latest&preserve-view=true) v Azure synapse Analytics.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Před registrací zdrojů dat vytvořte účet Azure dosah. Další informace o vytvoření účtu dosah najdete v tématu [rychlý Start: vytvoření účtu Azure dosah](create-catalog-portal.md).
 - Musíte být správcem zdroje dat služby Azure dosah.
@@ -45,7 +45,7 @@ Existují tři způsoby, jak nastavit ověřování pro úložiště objektů BL
 
 ### <a name="managed-identity-recommended"></a>Spravovaná identita (doporučeno) 
    
-Váš účet dosah má svou vlastní spravovanou identitu, která je v podstatě vaším dosah názvem. Musíte vytvořit uživatele služby Azure AD ve službě Azure synapse Analytics (dříve SQL DW) s přesným názvem spravované identity dosah podle požadavků a kurzu [vytváření uživatelů Azure AD pomocí aplikací Azure AD](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-service-principal-tutorial).
+Váš účet dosah má svou vlastní spravovanou identitu, která je v podstatě vaším dosah názvem. Musíte vytvořit uživatele služby Azure AD ve službě Azure synapse Analytics (dříve SQL DW) s přesným názvem spravované identity dosah podle požadavků a kurzu [vytváření uživatelů Azure AD pomocí aplikací Azure AD](/azure/azure-sql/database/authentication-aad-service-principal-tutorial).
 
 Příklad syntaxe SQL pro vytvoření uživatele a udělení oprávnění:
 
@@ -102,7 +102,7 @@ GO
 
 ### <a name="sql-authentication"></a>Ověřování SQL
 
-Můžete postupovat podle pokynů v tématu [Vytvoření přihlašovacích](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current&preserve-view=true#examples-1) údajů a vytvoření přihlašovacích údajů pro Azure synapse Analytics (dřív SQL DW), pokud ho ještě nemáte.
+Můžete postupovat podle pokynů v tématu [Vytvoření přihlašovacích](/sql/t-sql/statements/create-login-transact-sql?view=azure-sqldw-latest&preserve-view=true#examples-1) údajů a vytvoření přihlašovacích údajů pro Azure synapse Analytics (dřív SQL DW), pokud ho ještě nemáte.
 
 Když je vybraná metoda ověřování **SQL**, budete muset získat heslo a uložit ho do trezoru klíčů:
 

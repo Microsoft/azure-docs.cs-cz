@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: 360fbc3e1bfe7890f1f3b05899eb95ce7a3a72c2
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 4e19991de20b130b878a230313d87ca09d31a84e
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96496615"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556439"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>Kurz: Vytvoření první datové továrny pomocí webu Azure Portal
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.locfileid: "96496615"
 > Tento článek se týká verze 1 služby Azure Data Factory, která je všeobecně dostupná. Pokud používáte aktuální verzi služby Data Factory, přečtěte si [Rychlý start: Vytvoření datové továrny pomocí Data Factory](../quickstart-create-data-factory-dot-net.md).
 
 > [!WARNING]
-> Editor JSON na webu Azure Portal pro vytváření obsahu & nasazení kanálů ADF V1 se vypne v 31. července 2019. Po 31. července 2019 můžete dál používat [rutiny PowerShellu](/powershell/module/az.datafactory/?view=azps-2.4.0&viewFallbackFrom=azps-2.3.2)pro ADF V1, [ADF v1 v1 sady .NET](/dotnet/api/microsoft.azure.management.datafactories.models?view=azure-dotnet), [adf v1 API](/rest/api/datafactory/) k vytváření & nasazovat kanály ADF v1.
+> Editor JSON na webu Azure Portal pro vytváření obsahu & nasazení kanálů ADF V1 se vypne v 31. července 2019. Po 31. července 2019 můžete dál používat [rutiny PowerShellu](/powershell/module/az.datafactory/)pro ADF V1, [ADF v1 v1 sady .NET](/dotnet/api/microsoft.azure.management.datafactories.models), [adf v1 API](/rest/api/datafactory/) k vytváření & nasazovat kanály ADF v1.
 
 V tomto článku se dozvíte, jak pomocí webu [Azure Portal](https://portal.azure.com/) vytvořit první datovou továrnu. Pokud chcete kurz absolvovat s použitím jiných nástrojů nebo sad SDK, vyberte některou z možností z rozevíracího seznamu. 
 
@@ -42,7 +42,7 @@ Kanál v tomto kurzu obsahuje jednu aktivitu: aktivitu Azure HDInsight Hive. Tat
 > 
 > Kanál může obsahovat víc než jednu aktivitu. A dvě aktivity můžete zřetězit (spustit jednu aktivitu po druhé) nastavením výstupní datové sady jedné aktivity jako vstupní datové sady druhé aktivity. Další informace najdete v tématu [Plánování a spouštění ve službě Data Factory](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Přečtěte si [Přehled kurzu](data-factory-build-your-first-pipeline.md) a proveďte kroky v části Požadavky.
 
 Tento článek neposkytuje koncepční přehled služby Data Factory. Další informace o této službě najdete v tématu [Úvod do služby Azure Data Factory](data-factory-introduction.md).  
@@ -52,7 +52,7 @@ Objekt pro vytváření dat může mít jeden nebo víc kanálů. Kanál může 
 
 Pokud chcete vytvořit datovou továrnu, postupujte následovně:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 1. Vyberte **Nový**  >  **data a analýzy**  >  **Data Factory**.
 
@@ -93,7 +93,7 @@ Pokud chcete vytvořit datovou továrnu, postupujte následovně:
 Před vytvořením kanálu v datové továrně je nejprve potřeba vytvořit několik entit datové továrny. Nejprve vytvoříte propojené služby, které propojí úložiště dat a výpočetní služby s úložištěm dat. Pak nadefinujte vstupní a výstupní datovou sadu, které budou reprezentovat vstupní a výstupní data v propojených úložištích dat. Nakonec vytvořte kanál s aktivitou, která používá tyto datové sady.
 
 ## <a name="create-linked-services"></a>Vytvoření propojených služeb
-V tomto kroku s datovou továrnou propojíte svůj účet služby Azure Storage a cluster HDInsight na vyžádání. Účet úložiště v této ukázce obsahuje vstupní a výstupní data pro kanál. Propojená služba HDInsight slouží v této ukázce ke spuštění skriptu Hive určeného v aktivitě kanálu. Určete, [data store](data-factory-data-movement-activities.md)jaké / [výpočetní služby](data-factory-compute-linked-services.md) úložiště dat se ve vašem scénáři používají. Pak tyto služby propojte s datovou továrnou vytvořením propojených služeb.  
+V tomto kroku s datovou továrnou propojíte svůj účet služby Azure Storage a cluster HDInsight na vyžádání. Účet úložiště v této ukázce obsahuje vstupní a výstupní data pro kanál. Propojená služba HDInsight slouží v této ukázce ke spuštění skriptu Hive určeného v aktivitě kanálu. Určete, [](data-factory-data-movement-activities.md)jaké / [výpočetní služby](data-factory-compute-linked-services.md) úložiště dat se ve vašem scénáři používají. Pak tyto služby propojte s datovou továrnou vytvořením propojených služeb.  
 
 ### <a name="create-a-storage-linked-service"></a>Vytvoření propojené služby Storage
 V tomto kroku s datovou továrnou propojíte svůj účet úložiště. V tomto kurzu použijete k uložení vstupních a výstupních dat a souboru skriptu HQL stejný účet úložiště.
@@ -421,7 +421,7 @@ K monitorování kanálů můžete použít také aplikaci pro monitorování a 
 
     ![Seznam Okna aktivit](./media/data-factory-build-your-first-pipeline-using-editor/activity-window-details.png)
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 V tomto kurzu jste vytvořili datovou továrnu, která zpracovává data pomocí skriptu Hive v clusteru HDInsight Hadoop. Pomocí editoru služby Data Factory na webu Azure Portal jste provedli následující:  
 
 * Vytvoření datové továrny

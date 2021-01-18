@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: 9fe1b7a077142b00aaf2a8502faa0e166c4311c4
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 219f8728eb90101e7437cbb82b44a1f7124ef14d
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915619"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556422"
 ---
 # <a name="secure-and-isolate-azure-hdinsight-clusters-with-private-link-preview"></a>Zabezpečte a izolujte clustery Azure HDInsight pomocí privátního propojení (Preview).
 
@@ -60,7 +60,7 @@ Standardní nástroje pro vyrovnávání zatížení neposkytují automaticky [v
 
 ### <a name="prepare-your-environment"></a>Příprava prostředí
 
-Pro successgfull vytváření služeb privátních propojení musíte explicitně [zakázat zásady sítě pro službu privátního propojení](../private-link/disable-private-link-service-network-policy.md).
+Aby bylo možné úspěšně vytvořit služby privátních odkazů, je nutné explicitně [zakázat zásady sítě pro službu privátního propojení](../private-link/disable-private-link-service-network-policy.md).
 
 Následující diagram ukazuje příklad konfigurace sítě, která je potřeba před vytvořením clusteru. V tomto příkladu musí být veškerý odchozí provoz [nuceně](../firewall/forced-tunneling.md) Azure firewall pomocí udr a před vytvořením clusteru by měly být v bráně firewall povolené požadované odchozí závislosti. U Balíček zabezpečení podniku clusterů může být připojení k síti Azure Active Directory Domain Services dostupné pomocí partnerského vztahu virtuální sítě.
 
@@ -100,12 +100,12 @@ networkProperties: {
 
 Úplnou šablonu s mnoha funkcemi zabezpečení HDInsight Enterprise, včetně privátního propojení, najdete v tématu [Šablona zabezpečení HDInsight Enterprise](https://github.com/Azure-Samples/hdinsight-enterprise-security/tree/main/ESP-HIB-PL-Template).
 
-### <a name="use-azure-powershell"></a>Použití Azure PowerShellu
+### <a name="use-azure-powershell"></a>Použití Azure Powershell
 
-Pokud chcete použít [PowerShell, podívejte](/powershell/module/az.hdinsight/new-azhdinsightcluster?view=azps-5.1.0#example-4--create-an-azure-hdinsight-cluster-with-relay-outbound-and-private-link-feature)se na tento příklad.
+Pokud chcete použít PowerShell, přečtěte [si tento příklad.](/powershell/module/az.hdinsight/new-azhdinsightcluster#example-4--create-an-azure-hdinsight-cluster-with-relay-outbound-and-private-link-feature)
 
 ### <a name="use-azure-cli"></a>Použití Azure CLI
-Pokud chcete použít rozhraní příkazového řádku Azure, přečtěte [si tento příklad.](/cli/azure/hdinsight?view=azure-cli-latest#az_hdinsight_create-examples)
+Pokud chcete použít rozhraní příkazového řádku Azure, přečtěte [si tento příklad.](/cli/azure/hdinsight#az_hdinsight_create-examples)
 
 ## <a name="next-steps"></a>Další kroky
 

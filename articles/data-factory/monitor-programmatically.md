@@ -11,12 +11,12 @@ author: dcstwh
 ms.author: weetok
 manager: anandsub
 ms.custom: devx-track-python
-ms.openlocfilehash: e7b435080fda48e1df0bb31d16dafed30ac3d3db
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: b5d1f0c0d6aa848e590e68e1f18abf7861674483
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497856"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556558"
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>Programové sledování v Azure Data Factory
 
@@ -68,7 +68,7 @@ Pokud chcete zachovat data běhu kanálu po dobu více než 45 dnů, nastavte sv
     Console.ReadKey();
     ```
 
-Úplnou dokumentaci k sadě .NET SDK naleznete v tématu [Data Factory .NET SDK Reference](/dotnet/api/microsoft.azure.management.datafactory?view=azure-dotnet).
+Úplnou dokumentaci k sadě .NET SDK naleznete v tématu [Data Factory .NET SDK Reference](/dotnet/api/microsoft.azure.management.datafactory).
 
 ## <a name="python"></a>Python
 Úplný návod k vytvoření a monitorování kanálu pomocí Python SDK najdete v tématu [Vytvoření datové továrny a kanálu pomocí Pythonu](quickstart-create-data-factory-python.md).
@@ -86,7 +86,7 @@ activity_runs_paged = list(adf_client.activity_runs.list_by_pipeline_run(
 print_activity_run_details(activity_runs_paged[0])
 ```
 
-Kompletní dokumentaci k sadě Python SDK najdete v tématu Referenční informace k [sadě SDK](/python/api/overview/azure/datafactory?view=azure-python)pro Python Data Factory.
+Kompletní dokumentaci k sadě Python SDK najdete v tématu Referenční informace k [sadě SDK](/python/api/overview/azure/datafactory)pro Python Data Factory.
 
 ## <a name="rest-api"></a>REST API
 Úplný návod k vytváření a monitorování kanálu pomocí REST API najdete v tématu [Vytvoření datové továrny a kanálu pomocí REST API](quickstart-create-data-factory-rest-api.md).

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/18/2020
-ms.openlocfilehash: 9003366ec0d64057ca7426d5b6b99986bc21fc9d
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 0d282ee805ac61ba17ceb3ecc6a3d8179ea7b319
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920289"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555895"
 ---
 # <a name="register-and-scan-an-on-premises-sql-server"></a>Registrace a kontrola místního SQL serveru
 
@@ -34,9 +34,9 @@ Místní zdroj dat SQL serveru podporuje:
 
 ### <a name="known-limitations"></a>Známá omezení
 
-Azure dosah nepodporuje kontrolu [zobrazení](https://docs.microsoft.com/sql/relational-databases/views/views?view=sql-server-ver15) v SQL Server. 
+Azure dosah nepodporuje kontrolu [zobrazení](/sql/relational-databases/views/views) v SQL Server.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Před registrací zdrojů dat vytvořte účet Azure dosah. Další informace o vytvoření účtu dosah najdete v tématu [rychlý Start: vytvoření účtu Azure dosah](create-catalog-portal.md).
 

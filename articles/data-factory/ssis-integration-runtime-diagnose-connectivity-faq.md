@@ -10,12 +10,12 @@ author: meiyl
 ms.reviewer: sawinark
 manager: yidetu
 ms.date: 06/07/2020
-ms.openlocfilehash: ede36b20353f00ed9a4f80bec2d7bc5a3512a9ea
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 698a9c062596a3439d95ac0d586854fc6616fdd6
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637951"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556541"
 ---
 # <a name="use-the-diagnose-connectivity-feature-in-the-ssis-integration-runtime"></a>Použití funkce diagnostiky připojení v prostředí SSIS Integration runtime
 
@@ -38,13 +38,13 @@ V následujících částech se dozvíte o nejběžnějších chybách, ke kter�
 
 ## <a name="error-code-invalidinput"></a>Kód chyby: InvalidInput
 
-- **Chybová zpráva** : Ověřte prosím správnost vstupu.
-- **Potenciální příčina** : váš vstup není správný.
-- **Doporučení** : Ověřte si zadání.
+- **Chybová zpráva**: Ověřte prosím správnost vstupu.
+- **Potenciální příčina**: váš vstup není správný.
+- **Doporučení**: Ověřte si zadání.
 
 ## <a name="error-code-firewallornetworkissue"></a>Kód chyby: FirewallOrNetworkIssue
 
-- **Chybová zpráva** : Ověřte prosím, jestli je tento port otevřený v bráně firewall/serveru/NSG a síť je stabilní.
+- **Chybová zpráva**: Ověřte prosím, jestli je tento port otevřený v bráně firewall/serveru/NSG a síť je stabilní.
 - **Možné příčiny:**
   - Váš server neotevře port.
   - Vaše skupina zabezpečení sítě má odepřený odchozí provoz na portu.
@@ -56,17 +56,17 @@ V následujících částech se dozvíte o nejběžnějších chybách, ke kter�
 
 ## <a name="error-code-misconfigureddnssettings"></a>Kód chyby: MisconfiguredDnsSettings
 
-- **Chybová zpráva** : Pokud používáte vlastní server DNS ve virtuální síti, který jste připojili k vašemu Azure-SSIS IR, ověřte, že dokáže přeložit název hostitele. "
+- **Chybová zpráva**: Pokud používáte vlastní server DNS ve virtuální síti, který jste připojili k vašemu Azure-SSIS IR, ověřte, že dokáže přeložit název hostitele. "
 - **Možné příčiny:**
   -  Došlo k potížím s vlastním DNS.
   -  Pro název privátního hostitele nepoužíváte plně kvalifikovaný název domény (FQDN).
 - **Doporučit**
   -  Opravte vlastní problém DNS, abyste se ujistili, že dokáže přeložit název hostitele.
-  -  Použijte plně kvalifikovaný název domény. Azure-SSIS IR automaticky nepřipojí vlastní příponu DNS. Použijte například **<your_private_server>. contoso.com** namísto **<your_private_server>** .
+  -  Použijte plně kvalifikovaný název domény. Azure-SSIS IR automaticky nepřipojí vlastní příponu DNS. Použijte například **<your_private_server>. contoso.com** namísto **<your_private_server>**.
 
 ## <a name="error-code-servernotallowremoteconnection"></a>Kód chyby: ServerNotAllowRemoteConnection
 
-- **Chybová zpráva** : "Ověřte prosím, jestli je na serveru povoleno vzdálené připojení TCP prostřednictvím tohoto portu."
+- **Chybová zpráva**: "Ověřte prosím, jestli je na serveru povoleno vzdálené připojení TCP prostřednictvím tohoto portu."
 - **Možné příčiny:**
   -  Brána firewall serveru nepovoluje vzdálená připojení TCP.
   -  Váš server není online.
@@ -76,7 +76,7 @@ V následujících částech se dozvíte o nejběžnějších chybách, ke kter�
    
 ## <a name="error-code-misconfigurednsgsettings"></a>Kód chyby: MisconfiguredNsgSettings
 
-- **Chybová zpráva** : Ověřte prosím, jestli NSG vaší virtuální sítě umožňuje odchozí přenosy přes tento port. Pokud používáte Azure ExpressRoute a nebo UDR, ověřte prosím, jestli je tento port v bráně firewall nebo na serveru otevřený.
+- **Chybová zpráva**: Ověřte prosím, jestli NSG vaší virtuální sítě umožňuje odchozí přenosy přes tento port. Pokud používáte Azure ExpressRoute a nebo UDR, ověřte prosím, jestli je tento port v bráně firewall nebo na serveru otevřený.
 - **Možné příčiny:**
   -  Vaše skupina zabezpečení sítě má odepřený odchozí provoz na portu.
   -  SÍŤOVÉ virtuální zařízení/Azure Firewall/místní brána firewall neotevírá port.
@@ -86,24 +86,24 @@ V následujících částech se dozvíte o nejběžnějších chybách, ke kter�
 
 ## <a name="error-code-genericissues"></a>Kód chyby: GenericIssues
 
-- **Chybová zpráva** : "test připojení selhalo z důvodu obecných problémů".
-- **Potenciální příčina** : test Connection zjistil obecný dočasný problém.
-- **Doporučení** : zkuste připojení otestovat později. Pokud se k opakovanému pokusu nepodaří, obraťte se na tým podpory Azure Data Factory.
+- **Chybová zpráva**: "test připojení selhalo z důvodu obecných problémů".
+- **Potenciální příčina**: test Connection zjistil obecný dočasný problém.
+- **Doporučení**: zkuste připojení otestovat později. Pokud se k opakovanému pokusu nepodaří, obraťte se na tým podpory Azure Data Factory.
 
 ## <a name="error-code-pspingexecutiontimeout"></a>Kód chyby: PSPingExecutionTimeout
 
-- **Chybová zpráva** : "časový limit připojení testu", zkuste to prosím znovu později. "
-- **Potenciální příčina** : vypršel časový limit připojení testu.
-- **Doporučení** : zkuste připojení otestovat později. Pokud se k opakovanému pokusu nepodaří, obraťte se na tým podpory Azure Data Factory.
+- **Chybová zpráva**: "časový limit připojení testu", zkuste to prosím znovu později. "
+- **Potenciální příčina**: vypršel časový limit připojení testu.
+- **Doporučení**: zkuste připojení otestovat později. Pokud se k opakovanému pokusu nepodaří, obraťte se na tým podpory Azure Data Factory.
 
 ## <a name="error-code-networkinstable"></a>Kód chyby: NetworkInstable
 
-- **Chybová zpráva** : "test připojení se nezdařil z důvodu nestability sítě".
-- **Potenciální příčina** : přechodný problém sítě.
-- **Doporučení** : Ověřte, zda je server nebo síť brány firewall stabilní.
+- **Chybová zpráva**: "test připojení se nezdařil z důvodu nestability sítě".
+- **Potenciální příčina**: přechodný problém sítě.
+- **Doporučení**: Ověřte, zda je server nebo síť brány firewall stabilní.
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Nasazení projektu SSIS do Azure pomocí SSMS](/sql/integration-services/ssis-quickstart-deploy-ssms)
 - [Spouštění balíčků SSIS v Azure s SSMS](/sql/integration-services/ssis-quickstart-run-ssms)
-- [Plánování balíčků SSIS v Azure](/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms?view=sql-server-ver15)
+- [Plánování balíčků SSIS v Azure](/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)

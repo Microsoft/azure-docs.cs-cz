@@ -6,12 +6,12 @@ ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 11/30/2020
-ms.openlocfilehash: 244f8a446e33102e018881b3ec8f32ba9d8cbcc6
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 7d624f2dd2c0c9b4c7e99d5628a1d47e4303da7f
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014141"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555589"
 ---
 # <a name="use-managed-identities-to-access-azure-sql-database-or-azure-synapse-analytics-from-an-azure-stream-analytics-job-preview"></a>Použití spravovaných identit pro přístup k Azure SQL Database nebo ke službě Azure synapse Analytics z úlohy Azure Stream Analytics (Preview)
 
@@ -123,7 +123,7 @@ Po vytvoření uživatele databáze s omezením a přístupu ke službám Azure 
 
 Po vytvoření uživatele databáze s omezením a přístupu ke službám Azure na portálu, jak je popsáno v předchozí části, má vaše úloha Stream Analytics oprávnění ze spravované identity pro **připojení** k vašemu prostředku databáze Azure synapse prostřednictvím spravované identity. Doporučujeme, abyste dál udělili oprávnění k HROMADNÝm OPERACÍm pro výběr, vložení a správu databáze pro Stream Analytics úlohy, které budou potřeba později v pracovním postupu Stream Analytics. Oprávnění **Select** umožňuje úloze otestovat připojení k tabulce v databázi Azure synapse. Oprávnění k **hromadnému provádění operací** **Vložit** a spravovat databázi umožňují testování koncových Stream Analytics dotazů po nakonfigurování vstupu a výstupu databáze Azure synapse.
 
-Chcete-li udělit oprávnění pro hromadné operace správy databáze, bude nutné udělit všechna oprávnění, která jsou označena jako **řízení** v rámci [odvozená oprávnění databáze](/sql/t-sql/statements/grant-database-permissions-transact-sql?view=azure-sqldw-latest#remarks) pro Stream Analytics úlohy. Toto oprávnění budete potřebovat, protože úloha Stream Analytics provádí příkaz COPY, který vyžaduje [správu hromadných operací a vkládání databáze](/sql/t-sql/statements/copy-into-transact-sql).
+Chcete-li udělit oprávnění pro hromadné operace správy databáze, bude nutné udělit všechna oprávnění, která jsou označena jako **řízení** v rámci [odvozená oprávnění databáze](/sql/t-sql/statements/grant-database-permissions-transact-sql?view=azure-sqldw-latest&preserve-view=true#remarks) pro Stream Analytics úlohy. Toto oprávnění budete potřebovat, protože úloha Stream Analytics provádí příkaz COPY, který vyžaduje [správu hromadných operací a vkládání databáze](/sql/t-sql/statements/copy-into-transact-sql).
 
 ---
 

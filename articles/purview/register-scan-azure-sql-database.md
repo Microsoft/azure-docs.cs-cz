@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: 15708e35fa27bb4a1f72368df6f49ff747eb799b
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 36781e7f975ee9d4a03cf899650701bf2d3940ac
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739786"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555946"
 ---
 # <a name="register-and-scan-an-azure-sql-database"></a>Registrace a kontrola Azure SQL Database
 
@@ -28,7 +28,7 @@ Zdroj dat Azure SQL Database podporuje následující funkce:
 
 ### <a name="known-limitations"></a>Známá omezení
 
-Azure dosah nepodporuje kontrolu [zobrazení](https://docs.microsoft.com/sql/relational-databases/views/views?view=sql-server-ver15&preserve-view=true) v Azure SQL Database. 
+Azure dosah nepodporuje kontrolu [zobrazení](/sql/relational-databases/views/views?view=azuresqldb-current&preserve-view=true) v Azure SQL Database.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -50,7 +50,7 @@ Ověřování pro kontrolu Azure SQL Database. Pokud potřebujete vytvořit nov�
 > [!Note]
 > Nové přihlašovací údaje mohou vytvářet pouze přihlášení objektu zabezpečení na úrovni serveru (vytvořené procesem zřizování) nebo členové `loginmanager` databázové role v hlavní databázi. Po udělení oprávnění trvá přibližně **15 minut** , účet dosah by měl mít příslušná oprávnění, aby bylo možné kontrolovat prostředky.
 
-Pokud nemáte tuto možnost k dispozici, můžete postupovat podle pokynů v tématu [Vytvoření přihlašovacích](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current&preserve-view=true#examples-1) údajů a vytvoření přihlašovacích údajů pro Azure SQL Database. Pro další kroky budete potřebovat **uživatelské jméno** a **heslo** .
+Pokud nemáte tuto možnost k dispozici, můžete postupovat podle pokynů v tématu [Vytvoření přihlašovacích](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current&preserve-view=true#examples-1) údajů a vytvoření přihlašovacích údajů pro Azure SQL Database. Pro další kroky budete potřebovat **uživatelské jméno** a **heslo** .
 
 1. V Azure Portal přejděte do svého trezoru klíčů.
 1. Vyberte **nastavení > tajných** kódů.
@@ -100,7 +100,7 @@ Objekt služby nebo spravovaná identita musí mít oprávnění k získání me
     ```
 
     > [!Note]
-    > `Username`Je to váš vlastní instanční objekt nebo spravovaná identita dosah. Můžete si přečíst další informace o [rolích s pevnou databází a jejich schopnostech](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles?view=sql-server-ver15&preserve-view=true#fixed-database-roles).
+    > `Username`Je to váš vlastní instanční objekt nebo spravovaná identita dosah. Můžete si přečíst další informace o [rolích s pevnou databází a jejich schopnostech](/sql/relational-databases/security/authentication-access/database-level-roles?view=sql-server-ver15&preserve-view=true#fixed-database-roles).
     
 ##### <a name="add-service-principal-to-key-vault-and-purviews-credential"></a>Přidání instančního objektu do trezoru klíčů a přihlašovacích údajů služby dosah
 

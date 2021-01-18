@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: jingwang
-ms.openlocfilehash: 4741053acdefe27eadc380d9144c548af4b5143c
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: a29cf81a6e074f680fc9c04337a07d273ac456cf
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97346092"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555368"
 ---
 # <a name="copy-data-to-or-from-a-file-system-by-using-azure-data-factory"></a>Kopírování dat do nebo ze systému souborů pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -41,7 +41,7 @@ Konkrétně tento konektor systému souborů podporuje:
 - Kopírování souborů pomocí ověřování **systému Windows** .
 - Soubory se kopírují jako soubory nebo se analyzují nebo generují pomocí [podporovaných formátů souborů a kompresních kodeků](supported-file-formats-and-compression-codecs.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -65,7 +65,7 @@ Pro propojenou službu systému souborů jsou podporovány následující vlastn
 
 ### <a name="sample-linked-service-and-dataset-definitions"></a>Ukázka propojené služby a definic datových sad
 
-| Scénář | "hostitel" v definici propojené služby | "folderPath" v definici datové sady |
+| Scenario | "hostitel" v definici propojené služby | "folderPath" v definici datové sady |
 |:--- |:--- |:--- |
 | Místní složka v počítači Integration Runtime: <br/><br/>Příklady: D: \\ \* nebo D:\folder\subfolder\\* |Ve formátu JSON: `D:\\`<br/>V uživatelském rozhraní: `D:\` |Ve formátu JSON: `.\\` nebo `folder\\subfolder`<br>V uživatelském rozhraní: `.\` nebo `folder\subfolder` |
 | Vzdálená sdílená složka: <br/><br/>Příklady: \\ \\ MyServer \\ share nebo sdílená \\ \* \\ \\ \\ Složka MyServer sdílené \\ složky \\\\* |Ve formátu JSON: `\\\\myserver\\share`<br/>V uživatelském rozhraní: `\\myserver\share` |Ve formátu JSON: `.\\` nebo `folder\\subfolder`<br/>V uživatelském rozhraní: `.\` nebo `folder\subfolder` |
@@ -151,7 +151,7 @@ Pro systém souborů jsou podporovány následující vlastnosti `storeSettings`
 | typ                     | Vlastnost Type v poli `storeSettings` musí být nastavená na **FileServerReadSettings**. | Ano                                           |
 | **_Vyhledejte soubory ke zkopírování:_* _ |  |  |
 | MOŽNOST 1: statická cesta<br> | Kopírovat ze zadané cesty ke složce nebo souboru v datové sadě. Pokud chcete zkopírovat všechny soubory ze složky, zadejte také `wildcardFileName` jako `_` . |  |
-| MOŽNOST 2: filtr na straně serveru<br>– Filtr  | Nativní filtr na straně souborového serveru, který poskytuje lepší výkon než filtr zástupných znaků možnosti 3. Používá `*` se pro spárování nula nebo více znaků a `?` pro porovnávání s žádným nebo jedním znakem. Přečtěte **si další** informace o syntaxi a poznámkách od poznámek v [této části](/dotnet/api/system.io.directory.getfiles?view=netframework-4.7.2#System_IO_Directory_GetFiles_System_String_System_String_System_IO_SearchOption_). | Ne                                                          |
+| MOŽNOST 2: filtr na straně serveru<br>– Filtr  | Nativní filtr na straně souborového serveru, který poskytuje lepší výkon než filtr zástupných znaků možnosti 3. Používá `*` se pro spárování nula nebo více znaků a `?` pro porovnávání s žádným nebo jedním znakem. Přečtěte **si další** informace o syntaxi a poznámkách od poznámek v [této části](/dotnet/api/system.io.directory.getfiles#System_IO_Directory_GetFiles_System_String_System_String_System_IO_SearchOption_). | Ne                                                          |
 | MOŽNOST 3: filtr na straně klienta<br>- wildcardFolderPath | Cesta ke složce se zástupnými znaky pro filtrování zdrojových složek. K takovému filtru dochází na straně ADF. potom můžete vytvořit výčet složek nebo souborů v dané cestě přes ADF a potom použít filtr zástupných znaků.<br>Povolené zástupné znaky jsou: `*` (odpovídá žádnému nebo více znakům) a `?` (odpovídá žádnému nebo jednomu znaku); `^` Pokud vlastní název složky obsahuje zástupný znak nebo tento řídicí znak v rámci, použijte k Escape. <br>Další příklady najdete v [příkladech složky a filtru souborů](#folder-and-file-filter-examples). | Ne                                            |
 | MOŽNOST 3: filtr na straně klienta<br>- wildcardFileName | Název souboru se zástupnými znaky v rámci daného folderPath/wildcardFolderPath pro filtrování zdrojových souborů. K takovému filtru dochází na straně ADF a potom se v rámci dané cesty provede výčet souborů a potom se použije filtr zástupných znaků.<br>Povolené zástupné znaky jsou: `*` (odpovídá žádnému nebo více znakům) a `?` (odpovídá žádnému nebo jednomu znaku); použijte `^` k Escape, jestli váš skutečný název souboru obsahuje zástupný znak nebo tento řídicí znak v.<br>Další příklady najdete v [příkladech složky a filtru souborů](#folder-and-file-filter-examples). | Ano |
 | MOŽNOST 3: seznam souborů<br>- fileListPath | Určuje, že se má zkopírovat daná sada souborů. Najeďte na textový soubor, který obsahuje seznam souborů, které chcete zkopírovat, jeden soubor na řádek, což je relativní cesta k cestě nakonfigurované v datové sadě.<br/>Při použití této možnosti nezadávejte název souboru v datové sadě. Další příklady najdete v [příkladech seznamu souborů](#file-list-examples). |Ne |
@@ -159,7 +159,7 @@ Pro systém souborů jsou podporovány následující vlastnosti `storeSettings`
 | zahrnout | Určuje, zda mají být data rekurzivně čtena z podsložek nebo pouze ze zadané složky. Všimněte si, že pokud je rekurzivní nastavení nastaveno na hodnotu true a jímka je úložiště založené na souborech, prázdná složka nebo podsložka není kopírována ani vytvořena v jímky. <br>Povolené hodnoty jsou _ *true** (výchozí) a **false**.<br>Tato vlastnost se při konfiguraci nepoužívá `fileListPath` . |Ne |
 | deleteFilesAfterCompletion | Uvádí, zda budou binární soubory po úspěšném přesunutí do cílového úložiště odstraněny ze zdrojového úložiště. Odstranění souboru je vázané na soubor, takže když aktivita kopírování selže, uvidíte, že některé soubory se už zkopírovaly do cílového umístění a odstranily ze zdroje, zatímco ostatní jsou pořád ve zdrojovém úložišti. <br/>Tato vlastnost je platná pouze ve scénáři kopírování binárních souborů. Výchozí hodnota: false. |Ne |
 | modifiedDatetimeStart    | Filtr souborů na základě atributu: Naposledy změněno <br>Soubory budou vybrány, pokud čas poslední změny spadá do časového rozsahu mezi `modifiedDatetimeStart` a `modifiedDatetimeEnd` . Čas se použije na časové pásmo UTC ve formátu "2018-12-01T05:00:00Z". <br> Vlastnosti mohou mít hodnotu NULL, což znamená, že pro datovou sadu nebude použit filtr atributů souborů.  Pokud `modifiedDatetimeStart` má hodnota DateTime `modifiedDatetimeEnd` , ale je null, znamená to, že budou vybrány soubory, jejichž atribut Last Modified je větší nebo roven hodnotě DateTime.  Pokud `modifiedDatetimeEnd` má hodnota DateTime `modifiedDatetimeStart` , ale je null, znamená to, že jsou soubory, jejichž naposledy upravený atribut je menší než hodnota DateTime, bude vybrána.<br/>Tato vlastnost se při konfiguraci nepoužívá `fileListPath` . | Ne                                            |
-| modifiedDatetimeEnd      | Stejné jako výše.                                               | Ne                                            |
+| modifiedDatetimeEnd      | Platí to samé jako výše.                                               | Ne                                            |
 | enablePartitionDiscovery | U souborů, které jsou rozdělené na oddíly, určete, jestli se mají analyzovat oddíly z cesty k souboru, a přidejte je jako další zdrojové sloupce.<br/>Povolené hodnoty jsou **false** (výchozí) a **true**. | Ne                                            |
 | partitionRootPath | Pokud je povoleno zjišťování oddílů, zadejte absolutní kořenovou cestu, aby bylo možné číst rozdělené složky jako sloupce dat.<br/><br/>Pokud není zadaný, ve výchozím nastavení<br/>– Pokud použijete cestu k souboru v datové sadě nebo v seznamu souborů na zdroji, je kořenová cesta oddílu cestou nakonfigurovanou v datové sadě.<br/>– Když použijete filtr složky se zástupnými znaky, kořenová cesta oddílu je dílčí cesta před prvním zástupným znakem.<br/><br/>Předpokládejme například, že nakonfigurujete cestu v datové sadě jako kořen/složka/rok = 2020/měsíc = 08/Day = 27:<br/>– Pokud zadáte kořenovou cestu oddílu jako "root/složka/Year = 2020", aktivita kopírování vygeneruje další dva sloupce `month` a `day` hodnoty "08" a "27" společně se sloupci uvnitř souborů.<br/>-Pokud není zadána kořenová cesta oddílu, nebude vygenerován žádný sloupec navíc. | Ne                                            |
 | maxConcurrentConnections | Počet připojení, která se mají souběžně připojit k úložišti úložiště Určete pouze v případě, že chcete omezit souběžné připojení k úložišti dat. | Ne                                            |

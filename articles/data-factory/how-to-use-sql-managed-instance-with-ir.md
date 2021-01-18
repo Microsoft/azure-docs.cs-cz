@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/15/2020
-ms.openlocfilehash: 86bff161e29384b10030ed3d524301f6dea6037e
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: fb622bdb1d7aa485c421122cdfbd2493a32cf5db
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92634160"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555657"
 ---
 # <a name="use-azure-sql-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>Použití spravované instance Azure SQL s služba SSIS (SQL Server Integration Services) (SSIS) v Azure Data Factory
 
@@ -32,7 +32,7 @@ Nyní můžete přesunout projekty služba SSIS (SQL Server Integration Services
 
 ## <a name="provision-azure-ssis-ir-with-ssisdb-hosted-by-azure-sql-managed-instance"></a>Zřízení Azure-SSIS IR s SSISDB hostovaným pomocí spravované instance Azure SQL
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 1. Při volbě Azure Active Directory ověřování [povolit Azure Active Directory (Azure AD) na spravované instanci SQL Azure](enable-aad-authentication-azure-ssis-ir.md#configure-azure-ad-authentication-for-azure-sql-managed-instance)
 
@@ -41,7 +41,7 @@ Nyní můžete přesunout projekty služba SSIS (SQL Server Integration Services
     - Přes soukromý koncový bod (upřednostňovaný)
 
         1. Vyberte virtuální síť, ke které se má Azure-SSIS IR připojit:
-            - Uvnitř stejné virtuální sítě jako spravovaná instance s **jinou podsítí** .
+            - Uvnitř stejné virtuální sítě jako spravovaná instance s **jinou podsítí**.
             - Uvnitř jiné virtuální sítě, než je spravovaná instance, prostřednictvím partnerského vztahu virtuální sítě (která je omezená na stejnou oblast z důvodu omezení globálních partnerských vztahů) nebo připojení virtuální sítě k virtuální síti.
 
             Další informace o připojení ke spravovaným instancím SQL najdete v tématu [připojení aplikace ke spravované instanci Azure SQL](https://review.docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app).
@@ -54,7 +54,7 @@ Nyní můžete přesunout projekty služba SSIS (SQL Server Integration Services
 
         - Když Azure-SSIS IR není uvnitř virtuální sítě (upřednostňovaná)
 
-            **Příchozí požadavek spravované instance SQL** , aby povoloval příchozí provoz z Azure-SSIS IR.
+            **Příchozí požadavek spravované instance SQL**, aby povoloval příchozí provoz z Azure-SSIS IR.
 
             | Transportní protokol | Zdroj | Rozsah zdrojových portů | Cíl | Rozsah cílových portů |
             |---|---|---|---|---|
@@ -64,15 +64,15 @@ Nyní můžete přesunout projekty služba SSIS (SQL Server Integration Services
 
         - při Azure-SSIS IR v rámci virtuální sítě
 
-            Pokud je spravovaná instance SQL v oblasti, kterou Azure-SSIS IR nepodporuje, je Azure-SSIS IR uvnitř virtuální sítě bez partnerského vztahu virtuálních sítí z důvodu omezení globálního partnerského vztahu virtuální sítě. V tomto scénáři **Azure-SSIS IR v rámci virtuální sítě** připojí SPRAVOVANOU instanci SQL **přes Veřejný koncový bod** . Pomocí pravidel pro skupinu zabezpečení sítě (NSG) povolte provoz mezi spravovanou instancí SQL a Azure-SSIS IR:
+            Pokud je spravovaná instance SQL v oblasti, kterou Azure-SSIS IR nepodporuje, je Azure-SSIS IR uvnitř virtuální sítě bez partnerského vztahu virtuálních sítí z důvodu omezení globálního partnerského vztahu virtuální sítě. V tomto scénáři **Azure-SSIS IR v rámci virtuální sítě** připojí SPRAVOVANOU instanci SQL **přes Veřejný koncový bod**. Pomocí pravidel pro skupinu zabezpečení sítě (NSG) povolte provoz mezi spravovanou instancí SQL a Azure-SSIS IR:
 
-            1. **Příchozí požadavek spravované instance SQL** , aby povoloval příchozí provoz z Azure-SSIS IR.
+            1. **Příchozí požadavek spravované instance SQL**, aby povoloval příchozí provoz z Azure-SSIS IR.
 
                 | Transportní protokol | Zdroj | Rozsah zdrojových portů | Cíl |Rozsah cílových portů |
                 |---|---|---|---|---|
                 |TCP|Statická IP adresa Azure-SSIS IR <br> Podrobnosti najdete v tématu věnovaném využití [vlastní veřejné IP adresy pro Azure-SSIS IR](join-azure-ssis-integration-runtime-virtual-network.md#publicIP).|*|VirtualNetwork|3342|
 
-             1. **Odchozí požadavek Azure-SSIS IR** , který umožňuje odchozí přenosy do spravované instance SQL
+             1. **Odchozí požadavek Azure-SSIS IR**, který umožňuje odchozí přenosy do spravované instance SQL
 
                 | Transportní protokol | Zdroj | Rozsah zdrojových portů | Cíl |Rozsah cílových portů |
                 |---|---|---|---|---|
@@ -80,7 +80,7 @@ Nyní můžete přesunout projekty služba SSIS (SQL Server Integration Services
 
 ### <a name="configure-virtual-network"></a>Konfigurace virtuální sítě
 
-1. **Oprávnění uživatele** . Uživatel, který vytváří Azure-SSIS IR, musí mít [přiřazení role](../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-for-a-user-at-a-scope) aspoň u prostředku Azure Data Factory s jednou z následujících možností:
+1. **Oprávnění uživatele**. Uživatel, který vytváří Azure-SSIS IR, musí mít [přiřazení role](../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-for-a-user-at-a-scope) aspoň u prostředku Azure Data Factory s jednou z následujících možností:
 
     - Použijte integrovanou roli Přispěvatel sítě. Tato role se dodává s oprávněním _Microsoft. \* Network/_ , které má mnohem větší rozsah, než je nutné.
     - Vytvořte vlastní roli, která bude obsahovat jenom potřebná oprávnění _Microsoft. Network/virtualNetworks/ \* /Join/Action_ . Pokud chcete pro Azure-SSIS IR při připojení k virtuální síti Azure Resource Manager použít i vlastní veřejné IP adresy, v roli taky uveďte oprávnění _Microsoft. Network/publicIPAddresses/*/JOIN/Action_ .
@@ -103,23 +103,23 @@ Nyní můžete přesunout projekty služba SSIS (SQL Server Integration Services
         - Microsoft. Network/NetworkSecurityGroups
 
     1. Povolí provoz na základě pravidla skupiny zabezpečení sítě (NSG), aby bylo možné provoz mezi spravovanou instancí SQL a Azure-SSIS IR a provozem, který vyžaduje Azure-SSIS IR.
-        1. **Příchozí požadavek spravované instance SQL** , aby povoloval příchozí provoz z Azure-SSIS IR.
+        1. **Příchozí požadavek spravované instance SQL**, aby povoloval příchozí provoz z Azure-SSIS IR.
 
             | Transportní protokol | Zdroj | Rozsah zdrojových portů | Cíl | Rozsah cílových portů | Komentáře |
             |---|---|---|---|---|---|
-            |TCP|VirtualNetwork|*|VirtualNetwork|1433, 11000-11999|Pokud je vaše zásada připojení SQL Database serveru nastavená na **proxy** místo **přesměrování** , je potřeba jenom port 1433.|
+            |TCP|VirtualNetwork|*|VirtualNetwork|1433, 11000-11999|Pokud je vaše zásada připojení SQL Database serveru nastavená na **proxy** místo **přesměrování**, je potřeba jenom port 1433.|
 
-        1. **Odchozí požadavek Azure-SSIS IR** , který umožňuje odchozí přenosy do spravované instance SQL a další provoz, který vyžaduje Azure-SSIS IR
+        1. **Odchozí požadavek Azure-SSIS IR**, který umožňuje odchozí přenosy do spravované instance SQL a další provoz, který vyžaduje Azure-SSIS IR
 
         | Transportní protokol | Zdroj | Rozsah zdrojových portů | Cíl | Rozsah cílových portů | Komentáře |
         |---|---|---|---|---|---|
-        | TCP | VirtualNetwork | * | VirtualNetwork | 1433, 11000-11999 |Povolí odchozí provoz do spravované instance SQL. Pokud je zásada připojení nastavená na **proxy** místo **přesměrování** , je potřeba jenom port 1433. |
+        | TCP | VirtualNetwork | * | VirtualNetwork | 1433, 11000-11999 |Povolí odchozí provoz do spravované instance SQL. Pokud je zásada připojení nastavená na **proxy** místo **přesměrování**, je potřeba jenom port 1433. |
         | TCP | VirtualNetwork | * | AzureCloud | 443 | Uzly vašeho Azure-SSIS IR ve virtuální síti používají tento port pro přístup ke službám Azure, jako je například Azure Storage a Azure Event Hubs. |
         | TCP | VirtualNetwork | * | Internet | 80 | Volitelné Uzly vašeho Azure-SSIS IR ve virtuální síti používají tento port ke stažení seznamu odvolaných certifikátů z Internetu. Pokud zablokujete tento provoz, může dojít ke snížení výkonu při spuštění prostředí IR a ke ztrátě možností použití certifikátu pro kontrolu seznamu odvolaných certifikátů. Pokud chcete dále zúžit cíl na určité plně kvalifikované názvy domény, přečtěte si téma [použití Azure ExpressRoute nebo trasy definované uživatelem (udr)](./join-azure-ssis-integration-runtime-virtual-network.md#route).|
-        | TCP | VirtualNetwork | * | Úložiště | 445 | Volitelné Toto pravidlo se vyžaduje jenom v případě, že chcete spustit balíček SSIS uložený ve službě soubory Azure. |
+        | TCP | VirtualNetwork | * | Storage | 445 | Volitelné Toto pravidlo se vyžaduje jenom v případě, že chcete spustit balíček SSIS uložený ve službě soubory Azure. |
         |||||||
 
-        1. **Příchozí požadavek Azure-SSIS IR** , který umožní provoz potřebný Azure-SSIS IR.
+        1. **Příchozí požadavek Azure-SSIS IR**, který umožní provoz potřebný Azure-SSIS IR.
 
         | Transportní protokol | Zdroj | Rozsah zdrojových portů | Cíl | Rozsah cílových portů | Komentáře |
         |---|---|---|---|---|---|
@@ -163,7 +163,7 @@ Další informace o tom, jak vytvořit Azure-SSIS IR, najdete [v tématu Vytvoř
 
 ## <a name="clean-up-ssisdb-logs"></a>Vyčistit protokoly SSISDB
 
-Zásady uchovávání protokolů SSISDB jsou definované pomocí níže uvedených vlastností v [Catalog.catalog_properties](/sql/integration-services/system-views/catalog-catalog-properties-ssisdb-database?view=sql-server-ver15):
+Zásady uchovávání protokolů SSISDB jsou definované pomocí níže uvedených vlastností v [Catalog.catalog_properties](/sql/integration-services/system-views/catalog-catalog-properties-ssisdb-database):
 
 - OPERATION_CLEANUP_ENABLED
 

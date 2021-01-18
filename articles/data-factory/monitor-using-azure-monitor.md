@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 35d2073dca21b4a0d48a43bed9933bb7549cf8f3
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d1325ac1afbca8b30cc640f1f22cb598506a5c91
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497890"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555708"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>Monitorování a Data Factory výstrah pomocí Azure Monitor
 
@@ -583,7 +583,7 @@ Tady jsou atributy protokolu SSIS a operace spuštění/zastavení/údržby IR.
 
 #### <a name="ssis-event-message-context-log-attributes"></a>Atributy protokolu kontextu zprávy události SSIS
 
-Tady jsou atributy protokolu podmínek souvisejících se zprávami o událostech, které jsou vygenerované SSIS spouštěními balíčků na SSIS IR. Poskytují podobné informace jako [tabulka kontextu zprávy události SSIS Catalog (SSISDB) nebo zobrazení](/sql/integration-services/system-views/catalog-event-message-context?view=sql-server-ver15) , které zobrazuje hodnoty za běhu mnoha vlastností balíčku SSIS. Vygenerují se, když vyberete `Basic/Verbose` úroveň protokolování a užitečnost pro ladění a kontrolu kompatibility.
+Tady jsou atributy protokolu podmínek souvisejících se zprávami o událostech, které jsou vygenerované SSIS spouštěními balíčků na SSIS IR. Poskytují podobné informace jako [tabulka kontextu zprávy události SSIS Catalog (SSISDB) nebo zobrazení](/sql/integration-services/system-views/catalog-event-message-context) , které zobrazuje hodnoty za běhu mnoha vlastností balíčku SSIS. Vygenerují se, když vyberete `Basic/Verbose` úroveň protokolování a užitečnost pro ladění a kontrolu kompatibility.
 
 ```json
 {
@@ -620,7 +620,7 @@ Tady jsou atributy protokolu podmínek souvisejících se zprávami o událostec
 | **operationId**            | Řetězec | Jedinečné ID pro sledování konkrétní operace v SSISDB          | `1` (1 znamená operace týkající se balíčků, které **nejsou** uložené v SSISDB nebo vyvolané prostřednictvím T-SQL) |
 | **contextDepth**           | Řetězec | Hloubka kontextu zprávy události                              | `0` (0 znamená kontext před spuštěním spuštění balíčku, 1 znamená kontext při výskytu chyby a zvyšuje se, jak je kontext dále z chyby) |
 | **packagePath**            | Řetězec | Cesta k objektu balíčku jako zdroj kontextu zprávy události      | `\Package` |
-| **contextType**            | Řetězec | Typ objektu balíčku jako zdroj kontextu zprávy události      | `60`(Další informace naleznete v tématu [Další typy kontextu](/sql/integration-services/system-views/catalog-event-message-context?view=sql-server-ver15#remarks)) |
+| **contextType**            | Řetězec | Typ objektu balíčku jako zdroj kontextu zprávy události      | `60`(Další informace naleznete v tématu [Další typy kontextu](/sql/integration-services/system-views/catalog-event-message-context#remarks)) |
 | **contextSourceName**      | Řetězec | Název objektu balíčku jako zdroj kontextu zprávy události      | `MyPackage` |
 | **contextSourceId**        | Řetězec | Jedinečné ID objektu balíčku jako zdroj kontextu zprávy události | `{E2CF27FB-EA48-41E9-AF6F-3FE938B4ADE1}` |
 | **propertyName**           | Řetězec | Název vlastnosti balíčku pro zdroj kontextu zprávy události   | `DelayValidation` |
@@ -629,7 +629,7 @@ Tady jsou atributy protokolu podmínek souvisejících se zprávami o událostec
 
 #### <a name="ssis-event-messages-log-attributes"></a>Atributy protokolu zpráv událostí SSIS
 
-Tady jsou atributy protokolu událostí, které jsou vygenerované SSIS spouštěními balíčků na SSIS IR. Poskytují podobné informace jako [tabulka nebo zobrazení zpráv událostí SSISDB](/sql/integration-services/system-views/catalog-event-messages?view=sql-server-ver15) , které zobrazují podrobný text nebo metadata zpráv událostí. Jsou vygenerovány na jakékoli úrovni protokolování s výjimkou `None` .
+Tady jsou atributy protokolu událostí, které jsou vygenerované SSIS spouštěními balíčků na SSIS IR. Poskytují podobné informace jako [tabulka nebo zobrazení zpráv událostí SSISDB](/sql/integration-services/system-views/catalog-event-messages) , které zobrazují podrobný text nebo metadata zpráv událostí. Jsou vygenerovány na jakékoli úrovni protokolování s výjimkou `None` .
 
 ```json
 {
@@ -669,8 +669,8 @@ Tady jsou atributy protokolu událostí, které jsou vygenerované SSIS spoušt�
 | **úroveň**                  | Řetězec | Úroveň diagnostických protokolů                                       | `Informational` |
 | **operationId**            | Řetězec | Jedinečné ID pro sledování konkrétní operace v SSISDB        | `1` (1 znamená operace týkající se balíčků, které **nejsou** uložené v SSISDB nebo vyvolané prostřednictvím T-SQL) |
 | **messageTime**            | Řetězec | Čas, kdy se zpráva události vytvoří ve formátu UTC          | `2017-06-28T21:00:27.3534352Z` |
-| **messageType**            | Řetězec | Typ zprávy události                                     | `70`(Další informace najdete v tématu [Další typy zpráv](/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database?view=sql-server-ver15#remarks)) |
-| **messageSourceType**      | Řetězec | Typ zdroje zprávy události                              | `20`(Další informace naleznete v tématu [Další typy zdrojů zpráv](/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database?view=sql-server-ver15#remarks)) |
+| **messageType**            | Řetězec | Typ zprávy události                                     | `70`(Další informace najdete v tématu [Další typy zpráv](/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database#remarks)) |
+| **messageSourceType**      | Řetězec | Typ zdroje zprávy události                              | `20`(Další informace naleznete v tématu [Další typy zdrojů zpráv](/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database#remarks)) |
 | **Zpráva**                | Řetězec | Text zprávy události                                     | `MyPackage:Validation has started.` |
 | **soubor s balíčkem**            | Řetězec | Název provedeného souboru balíčku                             | `MyPackage.dtsx` |
 | **eventName**              | Řetězec | Název související události run-time                                 | `OnPreValidate` |
@@ -683,7 +683,7 @@ Tady jsou atributy protokolu událostí, které jsou vygenerované SSIS spoušt�
 
 #### <a name="ssis-executable-statistics-log-attributes"></a>Atributy protokolu statistiky spustitelných souborů SSIS
 
-Tady jsou atributy protokolu spustitelných statistik generovaných spouštěním balíčků SSIS na SSIS IR, kde jsou spustitelné soubory kontejnery nebo úkoly v toku řízení balíčků. Poskytují podobné informace jako [SSISDBou tabulku statistik nebo zobrazení](/sql/integration-services/system-views/catalog-executable-statistics?view=sql-server-ver15) , které zobrazují řádek pro každý spuštěný spustitelný soubor, včetně jeho iterací. Vygenerují se na úrovni protokolování s výjimkou `None` a užitečnou pro identifikaci kritických bodů a selhání na úrovni úlohy.
+Tady jsou atributy protokolu spustitelných statistik generovaných spouštěním balíčků SSIS na SSIS IR, kde jsou spustitelné soubory kontejnery nebo úkoly v toku řízení balíčků. Poskytují podobné informace jako [SSISDBou tabulku statistik nebo zobrazení](/sql/integration-services/system-views/catalog-executable-statistics) , které zobrazují řádek pro každý spuštěný spustitelný soubor, včetně jeho iterací. Vygenerují se na úrovni protokolování s výjimkou `None` a užitečnou pro identifikaci kritických bodů a selhání na úrovni úlohy.
 
 ```json
 {
@@ -727,7 +727,7 @@ Tady jsou atributy protokolu spustitelných statistik generovaných spouštění
 
 #### <a name="ssis-execution-component-phases-log-attributes"></a>Atributy protokolu fází provádění SSIS
 
-Tady jsou atributy protokolu běhových statistik pro součásti toku dat, které jsou generovány SSIS spouštěními balíčků na SSIS IR. Poskytují podobné informace jako [tabulka nebo zobrazení fáze komponenty SSISDB](/sql/integration-services/system-views/catalog-execution-component-phases?view=sql-server-ver15) , která zobrazuje čas strávený součástmi toku dat ve všech fázích spuštění. Vygenerují se, když vyberete `Performance/Verbose` úroveň protokolování a užitečnou pro zachytávání statistik spuštění toku dat.
+Tady jsou atributy protokolu běhových statistik pro součásti toku dat, které jsou generovány SSIS spouštěními balíčků na SSIS IR. Poskytují podobné informace jako [tabulka nebo zobrazení fáze komponenty SSISDB](/sql/integration-services/system-views/catalog-execution-component-phases) , která zobrazuje čas strávený součástmi toku dat ve všech fázích spuštění. Vygenerují se, když vyberete `Performance/Verbose` úroveň protokolování a užitečnou pro zachytávání statistik spuštění toku dat.
 
 ```json
 {
@@ -773,7 +773,7 @@ Tady jsou atributy protokolu běhových statistik pro součásti toku dat, kter�
 
 #### <a name="ssis-execution-data-statistics-log-attributes"></a>Atributy protokolu statistiky dat spuštění SSIS
 
-Tady jsou atributy protokolu pohybů dat prostřednictvím každé nohy kanálů toku dat, od nadřazeného až po komponenty, které jsou vygenerované SSIS spouštěními balíčků na SSIS IR. Poskytují podobné informace jako [tabulka statistiky SSISDB provádění dat nebo zobrazení](/sql/integration-services/system-views/catalog-execution-data-statistics?view=sql-server-ver15) , která zobrazuje počty řádků dat přesunutých prostřednictvím úkolů toku dat. Vygenerují se, když vyberete `Verbose` úroveň protokolování a užitečnou pro výpočet propustnosti toku dat.
+Tady jsou atributy protokolu pohybů dat prostřednictvím každé nohy kanálů toku dat, od nadřazeného až po komponenty, které jsou vygenerované SSIS spouštěními balíčků na SSIS IR. Poskytují podobné informace jako [tabulka statistiky SSISDB provádění dat nebo zobrazení](/sql/integration-services/system-views/catalog-execution-data-statistics) , která zobrazuje počty řádků dat přesunutých prostřednictvím úkolů toku dat. Vygenerují se, když vyberete `Verbose` úroveň protokolování a užitečnou pro výpočet propustnosti toku dat.
 
 ```json
 {
@@ -903,7 +903,7 @@ Při dotazování protokolu SSIS IR na Log Analytics můžete použít vlastnost
 
 ![Dotazování protokolů operací IR SSIS na Log Analytics](media/data-factory-monitor-oms/log-analytics-query.png)
 
-Při dotazování protokolů spouštění balíčků SSIS na Log Analytics je můžete spojit s použitím **OperationId** / **ExecutionId** / vlastností **ID korelace** OperationId ExecutionID. **OperationId** / **ExecutionID** se vždycky nastaví na `1` pro všechny operace nebo provádění související s balíčky, které **nejsou** uložené v SSISDB nebo vyvolané prostřednictvím T-SQL.
+Při dotazování protokolů spouštění balíčků SSIS na Log Analytics je můžete spojit s použitím  /  / vlastností **ID korelace** OperationId ExecutionID. **OperationId** / **ExecutionID** se vždycky nastaví na `1` pro všechny operace nebo provádění související s balíčky, které **nejsou** uložené v SSISDB nebo vyvolané prostřednictvím T-SQL.
 
 ![Dotazování na Log Analytics protokoly spouštění balíčků SSIS](media/data-factory-monitor-oms/log-analytics-query2.png)
 

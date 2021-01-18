@@ -11,12 +11,12 @@ ms.reviewer: sawinark
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 04/15/2019
-ms.openlocfilehash: b4902e1fb7a2a181d3d5b2ce2ac6d1d458500fce
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 9609c382161514611ddc41af040e8fb438431fdf
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844178"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555997"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>Řešení potíží se spuštěním balíčku v prostředí SSIS Integration runtime
 
@@ -28,7 +28,7 @@ Tento článek obsahuje nejběžnější chyby, se kterými se můžete setkat p
 
 Pomocí portálu Azure Data Factory můžete kontrolovat výstup aktivity provádění balíčku SSIS. Výstup obsahuje výsledky spuštění, chybové zprávy a ID operace. Podrobnosti najdete v tématu [monitorování kanálu](how-to-invoke-ssis-package-ssis-activity.md#monitor-the-pipeline).
 
-Pomocí katalogu SSIS (SSISDB) si prohlédněte protokoly podrobností pro spuštění. Podrobnosti najdete v tématu [monitorování spuštěných balíčků a dalších operací](/sql/integration-services/performance/monitor-running-packages-and-other-operations?view=sql-server-2017).
+Pomocí katalogu SSIS (SSISDB) si prohlédněte protokoly podrobností pro spuštění. Podrobnosti najdete v tématu [monitorování spuštěných balíčků a dalších operací](/sql/integration-services/performance/monitor-running-packages-and-other-operations).
 
 ## <a name="common-errors-causes-and-solutions"></a>Běžné chyby, jejich příčiny a řešení
 
@@ -91,7 +91,7 @@ Tato chyba znamená, že se místní disk používá v uzlu SSIS Integration run
 K této chybě dojde, když spuštění balíčku nemůže najít soubor na místním disku v prostředí SSIS Integration runtime. Vyzkoušejte tyto akce:
 * Nepoužívejte absolutní cestu v balíčku, který je spuštěn v prostředí SSIS Integration runtime. Použijte aktuální pracovní adresář spuštění (.) nebo složku Temp (% TEMP%). takové.
 * Pokud potřebujete zachovat některé soubory v uzlech SSIS Integration runtime, připravte soubory, jak je popsáno v tématu [přizpůsobení instalace](how-to-configure-azure-ssis-ir-custom-setup.md). Po dokončení spuštění budou všechny soubory v pracovním adresáři vyčištěny.
-* Místo uložení souboru v uzlu Integration runtime SSIS použijte soubory Azure. Podrobnosti najdete v tématu [použití sdílených složek Azure](/sql/integration-services/lift-shift/ssis-azure-files-file-shares?view=sql-server-2017#use-azure-file-shares).
+* Místo uložení souboru v uzlu Integration runtime SSIS použijte soubory Azure. Podrobnosti najdete v tématu [použití sdílených složek Azure](/sql/integration-services/lift-shift/ssis-azure-files-file-shares#use-azure-file-shares).
 
 ### <a name="error-message-the-database-ssisdb-has-reached-its-size-quota"></a>Chybová zpráva: "databáze ' SSISDB ' dosáhla kvóty velikosti"
 
@@ -154,7 +154,7 @@ Jednou z možných příčin je, že váš Self-Hosted Integration runtime není
 
 * Potenciální příčina a doporučená akce:
   * Pokud se zobrazí také varovná zpráva "komponenta nepodporuje použití Správce připojení s hodnotou ConnectByProxy Value true" v protokolu spuštění to znamená, že se správce připojení používá u komponenty, která ještě není podporována "ConnectByProxy". Podporované součásti najdete v části [konfigurace Self-Hosted IR jako proxy pro Azure-SSIS IR v ADF](self-hosted-integration-runtime-proxy-ssis.md#enable-ssis-packages-to-connect-by-proxy) .
-  * Protokol spuštění najdete v [sestavě SSMS](/sql/integration-services/performance/monitor-running-packages-and-other-operations?view=sql-server-2017#reports) nebo ve složce protokolu, kterou jste zadali v aktivitě spuštění balíčku SSIS.
+  * Protokol spuštění najdete v [sestavě SSMS](/sql/integration-services/performance/monitor-running-packages-and-other-operations#reports) nebo ve složce protokolu, kterou jste zadali v aktivitě spuštění balíčku SSIS.
   * Virtuální síť se dá také použít pro přístup k místním datům jako alternativu. Další podrobnosti najdete v článku [připojení prostředí Azure-SSIS Integration runtime k virtuální síti](join-azure-ssis-integration-runtime-virtual-network.md) .
 
 ### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-ssis-executor-exit-code--1n-loglocation-ssistelemetryexecutionlog-effectiveintegrationruntime--executionduration--durationinqueue--integrationruntimequeue--"></a>Chybová zpráva: stav pracovní úlohy: nezdařilo se. Chyba přípravné úlohy: ErrorCode: 2906, ErrorMessage: provedení balíčku se nezdařilo., výstup: {"OperationErrorMessages": "SSIS prováděcího modulu vykonavatele:-1. \ n"; "LogLocation": "... \\ SSISTelemetry \\ ExecutionLog \\ ... "," effectiveIntegrationRuntime ":"... "," executionDuration ":...," durationInQueue ": {" integrationRuntimeQueue ":...}}"

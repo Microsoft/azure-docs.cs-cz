@@ -12,12 +12,12 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 11/19/2020
-ms.openlocfilehash: 82cc58d46061ec7b623d062ab0b0e5a1fdae7ddd
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: bde8bc11a959bea4bd2c05c5ae75db81192aad6a
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352214"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555861"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>Konfigurace prostředí IR v místním prostředí jako proxy serveru pro Azure-SSIS IR v Azure Data Factory
 
@@ -54,7 +54,7 @@ Nakonec stáhnete a nainstalujete nejnovější verzi prostředí IR v místním
 
 ### <a name="enable-windows-authentication-for-on-premises-staging-tasks"></a>Povolit ověřování systému Windows pro místní pracovní úkoly
 
-Pokud místní pracovní úkoly v místním prostředí IR vyžadují ověřování systému Windows, [nakonfigurujte balíčky SSIS tak, aby používaly stejné ověřování systému Windows](/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth?view=sql-server-ver15). 
+Pokud místní pracovní úkoly v místním prostředí IR vyžadují ověřování systému Windows, [nakonfigurujte balíčky SSIS tak, aby používaly stejné ověřování systému Windows](/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth). 
 
 Vaše místní pracovní úkoly budou vyvolány s účtem služby IR v místním prostředí (*NT SERVICE\DIAHostService* ve výchozím nastavení) a vaše úložiště dat budou k dispozici s účtem ověřování systému Windows. Oba účty vyžadují, aby jim byly přiřazeny určité zásady zabezpečení. V místním počítači IR použijte místní zásady **zabezpečení**  >  **místní zásady**  >  **přiřazení uživatelských práv** a pak postupujte takto:
 
@@ -70,7 +70,7 @@ Pokud jste to ještě neudělali, vytvořte propojenou službu Azure Blob Storag
 - V případě **metody ověřování** vyberte **klíč účtu**, **identifikátor URI SAS**, **instanční objekt** nebo **spravovanou identitu**.  
 
 >[!TIP]
->Pokud vyberete metodu **instančního objektu** , udělte instančnímu objektu aspoň roli *Přispěvatel dat objektu BLOB služby Storage* . Další informace najdete v tématu [konektor Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties). Pokud vyberete metodu **spravované identity** , udělte svým službám pro přístup k Azure Blob Storage správné role spravované identitou ADF. Další informace najdete v tématu věnovaném [přístupu k Azure Blob Storage pomocí ověřování Azure Active Directory pomocí spravované identity ADF](/sql/integration-services/connection-manager/azure-storage-connection-manager?view=sql-server-ver15#managed-identities-for-azure-resources-authentication).
+>Pokud vyberete metodu **instančního objektu** , udělte instančnímu objektu aspoň roli *Přispěvatel dat objektu BLOB služby Storage* . Další informace najdete v tématu [konektor Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties). Pokud vyberete metodu **spravované identity** , udělte svým službám pro přístup k Azure Blob Storage správné role spravované identitou ADF. Další informace najdete v tématu věnovaném [přístupu k Azure Blob Storage pomocí ověřování Azure Active Directory pomocí spravované identity ADF](/sql/integration-services/connection-manager/azure-storage-connection-manager#managed-identities-for-azure-resources-authentication).
 
 ![Příprava služby Azure Blob Storage – propojená služba pro přípravu](media/self-hosted-integration-runtime-proxy-ssis/shir-azure-blob-storage-linked-service.png)
 
@@ -132,7 +132,7 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 
 Pomocí nejnovějšího SSDT jako rozšíření projektů SSIS pro Visual Studio nebo samostatného instalačního programu můžete najít novou `ConnectByProxy` vlastnost, která byla přidána do Správce připojení pro podporované součásti toku dat.
 * [Stažení rozšíření projektů SSIS pro Visual Studio](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects)
-* [Stažení samostatného instalačního programu](/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#ssdt-for-vs-2017-standalone-installer)   
+* [Stažení samostatného instalačního programu](/sql/ssdt/download-sql-server-data-tools-ssdt#ssdt-for-vs-2017-standalone-installer)   
 
 Když navrhujete nové balíčky obsahující úlohy toku dat pomocí komponent, které přistupují k datům v místním prostředí, můžete tuto vlastnost povolit nastavením na *hodnotu true* v podokně **vlastnosti** příslušných správců připojení.
 

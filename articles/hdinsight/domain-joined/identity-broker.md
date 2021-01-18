@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 11/03/2020
-ms.openlocfilehash: c6bc5ca748a35b17c61d314e96f7284d30e7fc3b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: b8dfe9a23e5c6697323142212156006cb65d2f9b
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96338125"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556524"
 ---
 # <a name="azure-hdinsight-id-broker-hib"></a>Azure HDInsight ID Broker (HIB)
 
@@ -52,7 +52,7 @@ Následující diagram znázorňuje základní tok ověřování pro federované
 
 Vytvoření clusteru Balíček zabezpečení podniku s povoleným zprostředkovatelem HDInsight ID:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Postupujte podle základních kroků pro vytvoření clusteru Balíček zabezpečení podniku. Další informace najdete v tématu [Vytvoření clusteru HDInsight s balíček zabezpečení podniku](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp).
 1. Vyberte **Povolit zprostředkovatele ID HDInsight**.
 
@@ -126,9 +126,9 @@ Pokud chcete řešit problémy s ověřováním, přečtěte si [tuto příručk
 
 V instalačním programu HDInsight ID Broker se můžou vlastní aplikace a klienti, kteří se připojují k bráně, aktualizovat tak, aby nejdřív získaly požadovaný token OAuth. Použijte postup v [tomto dokumentu](../../storage/common/storage-auth-aad-app.md) k získání tokenu s následujícími informacemi:
 
-*   Identifikátor URI prostředku OAuth: `https://hib.azurehdinsight.net` 
+*    Identifikátor URI prostředku OAuth: `https://hib.azurehdinsight.net` 
 *   AppId: 7865c1d2-F040-46cc-875f-831a1ef6a28a
-*   Oprávnění: (název: cluster. v/v, ID: 8f89faa0-ffef-4007-974d-4989b39ad77d)
+*    Oprávnění: (název: cluster. v/v, ID: 8f89faa0-ffef-4007-974d-4989b39ad77d)
 
 Po získání tokenu OAuth ho použijte v autorizační hlavičce požadavku HTTP do brány clusteru (například https:// <clustername> -int.azurehdinsight.NET). Vzorový příkaz složené na rozhraní Apache Livy API může vypadat jako v tomto příkladu:
     
@@ -146,7 +146,7 @@ Pro každý cluster bude aplikace třetí strany registrována v AAD s identifik
 V AAD se vyžaduje souhlas pro všechny aplikace třetích stran předtím, než může ověřit uživatele nebo získat přístup k datům.
 
 ### <a name="can-the-consent-be-approved-programatically"></a>Je možné souhlas schválit programově?
-Rozhraní API pro Microsoft Graph umožňuje automatizovat souhlas. v dokumentaci k [rozhraní API](/graph/api/resources/oauth2permissiongrant?view=graph-rest-1.0) můžete sekvenci automatizace souhlasu:
+Rozhraní API pro Microsoft Graph umožňuje automatizovat souhlas. v dokumentaci k [rozhraní API](/graph/api/resources/oauth2permissiongrant) můžete sekvenci automatizace souhlasu:
 
 * Registrace aplikace a udělení oprávnění Application. getpro přístup k aplikaci Microsoft Graph
 * Po vytvoření clusteru se dotaz na aplikaci clusteru vyhledá na základě identifikátoru URI identifikátoru.

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dd1c7c20441d12600e2101f738904caf6260509e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 0305094d3883fa6fc3254a682f9aa6f3202c9e48
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96496002"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555521"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Vytváření, sledování a Správa datových továrn Azure pomocí sady Azure Data Factory .NET SDK
 > [!NOTE]
@@ -27,9 +27,9 @@ ms.locfileid: "96496002"
 Pomocí sady Data Factory .NET SDK můžete programově vytvářet, monitorovat a spravovat datové továrny Azure. Tento článek obsahuje návod, pomocí kterého můžete vytvořit ukázkovou konzolovou aplikaci .NET, která vytvoří a monitoruje datovou továrnu. 
 
 > [!NOTE]
-> Tento článek nepopisuje všechny možnosti rozhraní .NET API služby Data Factory. V tématu [Data Factory rozhraní .NET API Reference](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1) pro komplexní dokumentaci k rozhraní .NET api pro Data Factory. 
+> Tento článek nepopisuje všechny možnosti rozhraní .NET API služby Data Factory. V tématu [Data Factory rozhraní .NET API Reference](/dotnet/api/overview/azure/data-factory) pro komplexní dokumentaci k rozhraní .NET api pro Data Factory. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -93,7 +93,7 @@ Vytvořte aplikaci Azure Active Directory, vytvořte pro ni instanční objekt a
 9. Získejte ID aplikace.
 
     ```powershell
-    $azureAdApplication 
+    $azureAdApplication    
     ```
     Poznamenejte si ID aplikace (applicationID) ve výstupu.
 

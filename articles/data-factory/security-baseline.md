@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 4e82b4adbfde7623de9497c94e56a9ae303131ad
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: ff777f079116942eba32e49f359c7f7e0b99f65d
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202772"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555776"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>Základní hodnoty zabezpečení Azure pro Azure Data Factory
 
@@ -335,9 +335,9 @@ I když je služba Azure AD doporučovanou metodou správy uživatelského pří
 
 * [Informace o Privileged identity Manageru](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-* [Jak získat roli adresáře ve službě Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+* [Jak získat roli adresáře ve službě Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrole)
 
-* [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+* [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 * [Informace pro místní účty](../active-directory/devices/assign-local-admin.md#manage-the-device-administrator-role)
 
@@ -744,7 +744,7 @@ I když je možné zjistit klasické prostředky Azure pomocí grafu prostředk�
 
 * [Jak vytvářet dotazy pomocí Azure Resource graphu](../governance/resource-graph/first-query-portal.md)
 
-* [Jak zobrazit vaše předplatná Azure](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [Jak zobrazit vaše předplatná Azure](/powershell/module/az.accounts/get-azsubscription)
 
 * [Pochopení Azure RBAC](../role-based-access-control/overview.md)
 
@@ -880,7 +880,7 @@ Všimněte si, že to platí jenom v případě, že vaše Integration Runtime b
 
 **Pokyny**: Pokud spouštíte integraci modulu runtime na virtuálním počítači Azure, v závislosti na typu skriptů můžete použít konfigurace specifické pro operační systém nebo prostředky třetích stran k omezení schopnosti uživatelů spouštět skripty v rámci výpočetních prostředků Azure. Můžete také využít Azure Security Center Adaptivní řízení aplikací, abyste zajistili, že se spustí jenom autorizovaný software, a veškerý neautorizovaný software bude zablokovaný na Azure Virtual Machines.
 
-* [Řízení spouštění skriptu PowerShellu v prostředích Windows](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
+* [Řízení spouštění skriptu PowerShellu v prostředích Windows](/powershell/module/microsoft.powershell.security/set-executionpolicy)
 
 * [Jak používat Azure Security Center Adaptivní řízení aplikací](../security-center/security-center-adaptive-application.md)
 
@@ -918,7 +918,7 @@ Všimněte si, že to platí jenom v případě, že vaše Integration Runtime b
 
 **Pokyny**: definování a implementace standardních konfigurací zabezpečení pro Azure Data Factory s Azure Policy. Použijte aliasy Azure Policy v oboru názvů Microsoft. DataFactory, abyste vytvořili vlastní zásady pro auditování nebo prosazování konfigurace vašich Azure Data Factorych instancí.
 
-* [Jak zobrazit dostupné aliasy Azure Policy](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [Jak zobrazit dostupné aliasy Azure Policy](/powershell/module/az.resources/get-azpolicyalias)
 
 * [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -964,7 +964,7 @@ Pro většinu scénářů se může při schůzi a údržbě požadavků na zabe
 
 * [Informace o vytváření šablon Azure Resource Manager](../virtual-machines/windows/ps-template.md)
 
-* [Jak nahrát vlastní virtuální pevný disk virtuálního počítače do Azure](/azure-stack/operator/azure-stack-add-vm-image?view=azs-1910)
+* [Jak nahrát vlastní virtuální pevný disk virtuálního počítače do Azure](/azure-stack/operator/azure-stack-add-vm-image)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -974,9 +974,9 @@ Pro většinu scénářů se může při schůzi a údržbě požadavků na zabe
 
 **Doprovodné** materiály: Pokud používáte vlastní definice Azure Policy, použijte k bezpečnému ukládání a správě kódu službu Azure DevOps nebo Azure Repos.
 
-* [Jak v Azure DevOps ukládat kód](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [Jak v Azure DevOps ukládat kód](/azure/devops/repos/git/gitworkflow)
 
-* [Dokumentace k Azure Repos](/azure/devops/repos/index?view=azure-devops)
+* [Dokumentace k Azure Repos](/azure/devops/repos/index)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -1150,7 +1150,7 @@ Pro některá z vašich úložišť dat si Projděte základní informace o zabe
 
 * [Přehled zálohování virtuálních počítačů Azure](../backup/backup-azure-vms-introduction.md)
 
-* [Postup zálohování klíčů trezoru klíčů v Azure](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Postup zálohování klíčů trezoru klíčů v Azure](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -1164,7 +1164,7 @@ V případě jakýchkoli úložišť dat najdete pokyny k ověřování záloh v
 
 * [Postup obnovení souborů ze zálohy virtuálního počítače Azure](../backup/backup-azure-restore-files-from-vm.md)
 
-* [Postup obnovení klíčů trezoru klíčů v Azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Postup obnovení klíčů trezoru klíčů v Azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 

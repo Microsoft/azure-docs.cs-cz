@@ -571,7 +571,11 @@
             - name: Synchronizace dat z produktu ITSM
               href: platform/itsmc-synced-data.md
             - name: Řešení potíží v ITSM konektoru
-              href: platform/itsmc-resync-servicenow.md
+              items:
+                - name: Přehled
+                  href: platform/itsmc-resync-servicenow.md
+                - name: Šetření řídicího panelu
+                  href: platform/itsmc-dashboard.md
             - name: Integrace se zabezpečeným exportem
               items:
                 - name: Přehled
