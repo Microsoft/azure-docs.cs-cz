@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: 6c1f323828eb48b61b38370bc2fe56d4c93bf036
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 889ee48c43119086047d6f52737266f4c611fc8d
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127205"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562739"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Klíč spravovaný zákazníkem v Azure Monitoru 
 
@@ -83,19 +83,19 @@ Některé kroky konfigurace běží asynchronně, protože je nepůjde rychle do
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-Není k dispozici
+–
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Není k dispozici
+–
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Není k dispozici
+–
 
 # <a name="rest"></a>[REST](#tab/rest)
 
-Při použití REST odpověď zpočátku po přijetí vrátí stavový kód HTTP 200 (OK) a záhlaví s vlastností *Azure-AsyncOperation* :
+Při použití REST odpověď zpočátku vrátí stavový kód HTTP 202 (přijato) a hlavičku s vlastností *Azure-AsyncOperation* :
 ```json
 "Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-08-01"
 ```
@@ -160,7 +160,7 @@ Operace je asynchronní a její dokončení může chvíli trvat.
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-Není k dispozici
+–
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -200,7 +200,7 @@ Dokončení tohoto klíče trvá několik minut. Stav aktualizace můžete zjist
 1. Zkopírujte hodnotu URL Azure-AsyncOperation z odpovědi a postupujte podle [kontroly stavu asynchronních operací](#asynchronous-operations-and-status-check).
 2. Odešlete požadavek GET na cluster a podívejte se na vlastnosti *KeyVaultProperties* . Nedávno aktualizovaný klíč by měl vrátit odpověď.
 
-Odpověď na požadavek GET by měla vypadat takto po dokončení aktualizace klíče: 200 OK a záhlaví
+Odpověď na požadavek GET by měla vypadat jako při dokončení aktualizace klíče: 202 (přijato) a záhlaví
 ```json
 {
   "identity": {
@@ -283,7 +283,7 @@ Propojení účtu úložiště pro *dotaz* k vašemu pracovnímu prostoru – do
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-Není k dispozici
+–
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -327,7 +327,7 @@ Propojení účtu úložiště s *upozorněními* k vašemu pracovnímu prostoru
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-Není k dispozici
+–
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

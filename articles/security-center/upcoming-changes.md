@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/05/2021
+ms.date: 01/18/2021
 ms.author: memildin
-ms.openlocfilehash: 071f1974e09d2754fe20f3ac2cc90929c4a2eb98
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: ba9a640c2231c7098e58ad6e29bbfa196436a7f9
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98180212"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562314"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Důležité nadcházející změny Azure Security Center
 
@@ -31,10 +31,24 @@ Pokud hledáte nejnovější poznámky k verzi, najdete je v [Azure Security Cen
 
 ## <a name="planned-changes"></a>Plánované změny
 
+- [Nepoužívá se dvě doporučení pro řízení zabezpečení použít aktualizace systému.](#two-recommendations-from-apply-system-updates-security-control-being-deprecated)
 - [Vylepšení doporučení klasifikace dat SQL](#enhancements-to-sql-data-classification-recommendation)
 - ["Nepoužitelné" prostředky, které se mají ohlásit jako "vyhovující" v Azure Policy posouzení](#not-applicable-resources-to-be-reported-as-compliant-in-azure-policy-assessments)
 - [35 doporučení verze Preview pro zvýšení pokrytí srovnávacího testu zabezpečení Azure](#35-preview-recommendations-being-added-to-increase-coverage-of-azure-security-benchmark)
 
+
+### <a name="two-recommendations-from-apply-system-updates-security-control-being-deprecated"></a>Nepoužívá se dvě doporučení pro řízení zabezpečení použít aktualizace systému. 
+
+**Odhadované datum změny:** Únor 2021
+
+Následující dvě doporučení se naplánují jako zastaralá v únoru 2021:
+
+- Počítače **by měly být restartovány, aby bylo možné použít aktualizace systému**. To může vést ke mírnému dopadu na vaše zabezpečené skóre.
+- **Agent monitorování by měl být nainstalovaný na vašich počítačích**. Toto doporučení se týká pouze místních počítačů a některé z jeho logiky se přenesou na jiné doporučení **Log Analytics by se měly vyřešit problémy se stavem agenta na vašich počítačích**. To může vést ke mírnému dopadu na vaše zabezpečené skóre.
+
+Doporučujeme, abyste provedli kontrolu průběžného exportu a konfigurací automatizace pracovních postupů, abyste zjistili, jestli jsou tato doporučení zahrnutá v nich. Také by se měly aktualizovat všechny řídicí panely nebo jiné nástroje pro monitorování, které by je mohly používat.
+
+Další informace o těchto doporučeních najdete na [referenční stránce doporučení zabezpečení](recommendations-reference.md).
 
 
 ### <a name="enhancements-to-sql-data-classification-recommendation"></a>Vylepšení doporučení klasifikace dat SQL

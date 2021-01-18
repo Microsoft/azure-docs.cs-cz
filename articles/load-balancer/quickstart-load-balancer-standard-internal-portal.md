@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 14203021846e97a53f59c3bc24a1586774613dec
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: f70116847a8743cf8b3cb56ff35f9d913f13f359
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704329"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562348"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Rychlý Start: vytvoření interního nástroje pro vyrovnávání zatížení virtuálních počítačů pomocí Azure Portal
 
@@ -41,11 +41,13 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 >[!NOTE]
 >Pro produkční úlohy se doporučuje používat nástroj pro vyrovnávání zatížení Standard SKU.  Další informace o SKU najdete v tématu **[Azure Load Balancer SKU](skus.md)**.
 
-:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal.png" alt-text="Prostředky služby Load Balancer úrovně Standard vytvořené pro rychlý Start." border="false":::
-
 V této části vytvoříte Nástroj pro vyrovnávání zatížení, který vyrovnává zatížení virtuálních počítačů. 
 
 Při vytváření interního nástroje pro vyrovnávání zatížení je virtuální síť nakonfigurovaná jako síť pro nástroj pro vyrovnávání zatížení. 
+
+Následující diagram znázorňuje prostředky vytvořené v rámci tohoto rychlého startu:
+
+:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal.png" alt-text="Prostředky služby Load Balancer úrovně Standard vytvořené pro rychlý Start." border="false":::
 
 Privátní IP adresa ve virtuální síti je ve výchozím nastavení pro nástroj pro vyrovnávání zatížení nakonfigurovaná jako front-end (s názvem jako **LoadBalancerFrontend** ). 
 
@@ -112,10 +114,10 @@ V této části vytvoříte virtuální síť a podsíť.
     | ---                     | ---                                                |
     | Předplatné               | Vyberte své předplatné.    |    
     | Skupina prostředků         | Vyberte **CreateIntLBQS-RG** vytvořené v předchozím kroku.|
-    | Název                   | Zadejte **myLoadBalancer**                                   |
+    | Name                   | Zadejte **myLoadBalancer**                                   |
     | Oblast         | Vyberte **Západní Evropa**.                                        |
     | Typ          | Vyberte **interní**.                                        |
-    | SKU           | Vybrat **Standard** |
+    | Skladová položka           | Vybrat **Standard** |
     | Virtuální síť | Vyberte **myVNet** vytvořené v předchozím kroku. |
     | Podsíť  | Vyberte **myBackendSubnet** vytvořené v předchozím kroku. |
     | Přiřazení IP adresy | Vyberte **Dynamická**. |
@@ -199,12 +201,8 @@ V této části vytvoříte pravidlo nástroje pro vyrovnávání zatížení:
     | Sonda stavu | Vyberte **myHealthProbe**. |
     | Časový limit nečinnosti (minuty) | Přesuňte posuvník na **15** minut. |
     | Resetování protokolu TCP | Vyberte **Povoleno**. |
-    | Překlad odchozích adres zdrojové sítě (SNAT) | Vybrat **(doporučeno) použít odchozí pravidla pro poskytování back-end členů fondu pro přístup k Internetu.** |
-
+    
 4. Ponechte zbytek výchozích hodnot a pak vyberte **OK**.
-
->[!NOTE]
->Virtuální počítače ve fondu back-end nebudou mít odchozí připojení k Internetu s touto konfigurací. </br> Další informace o poskytování odchozího připojení najdete v tématech: </br> **[Odchozí připojení v Azure](load-balancer-outbound-connections.md)**</br> Možnosti pro poskytování připojení: </br> **[Konfigurace nástroje pro vyrovnávání zatížení – pouze odchozí](egress-only.md)** </br> **[Co je Virtual Network NAT?](../virtual-network/nat-overview.md)**
 
 ## <a name="create-backend-servers"></a>Vytvoření serverů back-end
 
@@ -268,7 +266,7 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
 
     | Nastavení | VIRTUÁLNÍ POČÍTAČ 2 | VIRTUÁLNÍ POČÍTAČ 3 |
     | ------- | ----- | ---- |
-    | Název |  **myVM2** | **myVM3** |
+    | Name |  **myVM2** | **myVM3** |
     | Zóna dostupnosti | **2** | **3** |
     | Skupina zabezpečení sítě | Vybrat existující **myNSG**| Vybrat existující **myNSG** |
 
@@ -278,11 +276,13 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
 >[!NOTE]
 >Pro produkční úlohy se doporučuje používat nástroj pro vyrovnávání zatížení Standard SKU.  Další informace o SKU najdete v tématu **[Azure Load Balancer SKU](skus.md)**.
 
-:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal-basic.png" alt-text="Základní prostředky nástroje pro vyrovnávání zatížení vytvořené v rychlém startu." border="false":::
-
 V této části vytvoříte Nástroj pro vyrovnávání zatížení, který vyrovnává zatížení virtuálních počítačů. 
 
 Při vytváření interního nástroje pro vyrovnávání zatížení je virtuální síť nakonfigurovaná jako síť pro nástroj pro vyrovnávání zatížení. 
+
+Následující diagram znázorňuje prostředky vytvořené v rámci tohoto rychlého startu:
+
+:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal-basic.png" alt-text="Základní prostředky nástroje pro vyrovnávání zatížení vytvořené v rychlém startu." border="false":::
 
 Privátní IP adresa ve virtuální síti je ve výchozím nastavení pro nástroj pro vyrovnávání zatížení nakonfigurovaná jako front-end (s názvem jako **LoadBalancerFrontend** ). 
 
@@ -349,10 +349,10 @@ V této části vytvoříte virtuální síť a podsíť.
     | ---                     | ---                                                |
     | Předplatné               | Vyberte své předplatné.    |    
     | Skupina prostředků         | Vyberte **CreateIntLBQS-RG** vytvořené v předchozím kroku.|
-    | Název                   | Zadejte **myLoadBalancer**                                   |
+    | Name                   | Zadejte **myLoadBalancer**                                   |
     | Oblast         | Vyberte **Západní Evropa**.                                        |
     | Typ          | Vyberte **interní**.                                        |
-    | SKU           | Vybrat **základní** |
+    | Skladová položka           | Vybrat **základní** |
     | Virtuální síť | Vyberte **myVNet** vytvořené v předchozím kroku. |
     | Podsíť  | Vyberte **myBackendSubnet** vytvořené v předchozím kroku. |
     | Přiřazení IP adresy | Vyberte **Dynamická**. |
@@ -389,7 +389,7 @@ Vytvořte fond back-end adres **myBackendPool** , který bude zahrnovat virtuál
     | Virtuální síť | Vyberte **myVNet**. |
     | Přidruženo k | Vybrat **virtuální počítače** |
 
-4. Vyberte **Add** (Přidat).
+4. Vyberte **Přidat**.
 
 ### <a name="create-a-health-probe"></a>Vytvoření sondy stavu
 
@@ -506,7 +506,7 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
 
     | Nastavení | VIRTUÁLNÍ POČÍTAČ 2 | VIRTUÁLNÍ POČÍTAČ 3 |
     | ------- | ----- | ---- |
-    | Název |  **myVM2** | **myVM3** |
+    | Name |  **myVM2** | **myVM3** |
     | Skupina dostupnosti | Vybrat **myAvailabilitySet** | Vybrat **myAvailabilitySet** |
     | Skupina zabezpečení sítě | Vybrat existující **myNSG** | Vybrat existující **myNSG** |
 
@@ -524,7 +524,7 @@ Virtuální počítače vytvořené v předchozích krocích se musí přidat do
 
 5. Zaškrtněte políčka vedle **myVM1**, **myVM2** a **myVM3**.
 
-6. Vyberte **Add** (Přidat).
+6. Vyberte **Přidat**.
 
 7. Vyberte **Uložit**.
 ---

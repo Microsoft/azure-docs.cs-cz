@@ -3,12 +3,12 @@ title: Šifrování zálohovaných dat pomocí klíčů spravovaných zákazník
 description: Přečtěte si, jak Azure Backup umožňuje šifrovat zálohovaná data pomocí klíčů spravovaných zákazníkem (CMK).
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: cc6ad2f67b84bcd62bcc18566a4ac5d159ea32c4
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 30bcf907e1a2759c8a9977e50cb4880c2e254ca2
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197736"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562756"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Šifrování zálohovaných dat pomocí klíčů spravovaných zákazníkem
 
@@ -37,7 +37,10 @@ Tento článek popisuje následující:
 
 - Přesunutí šifrovaného trezoru Recovery Services CMK napříč skupinami prostředků a předplatnými není v současné době podporováno.
 
-- Tato funkce se teď dá konfigurovat jenom z Azure Portal.
+- Tato funkce se dá nakonfigurovat pomocí Azure Portal a PowerShellu.
+
+    >[!NOTE]
+    >K použití zákaznických klíčů pro zálohy v úložišti Recovery Services použijte AZ Module 5.3.0 nebo vyšší.
 
 Pokud jste úložiště Recovery Services nevytvořili a nenakonfigurujete, můžete [si ho přečíst zde](backup-create-rs-vault.md).
 
@@ -62,6 +65,8 @@ Azure Backup používá spravovanou identitu přiřazenou systémem k ověření
 >[!NOTE]
 >Po povolení nesmí být spravovaná identita zakázaná **(ještě dočasně** ). Zakázání spravované identity může vést k nekonzistentnímu chování.
 
+**Na portálu:**
+
 1. Přejít na váš Recovery Services trezor – > **Identita**
 
     ![Nastavení identity](./media/encryption-at-rest-with-cmk/managed-identity.png)
@@ -70,9 +75,33 @@ Azure Backup používá spravovanou identitu přiřazenou systémem k ověření
 
 1. Generuje se ID objektu, což je spravovaná identita trezoru přiřazená systémem.
 
+**S prostředím PowerShell:**
+
+Pomocí příkazu [Update-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/update-azrecoveryservicesvault) povolte spravovanou identitu přiřazenou systémem pro trezor služby Recovery Services.
+
+Příklad:
+
+```AzurePowerShell
+$vault=Get-AzRecoveryServicesVault -ResourceGroupName "testrg" -Name "testvault"
+
+Update-AzRecoveryServicesVault -IdentityType SystemAssigned -VaultId $vault.ID
+
+$vault.Identity | fl
+```
+
+Výstup:
+
+```output
+PrincipalId : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+TenantId    : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+Type        : SystemAssigned
+```
+
 ### <a name="assign-permissions-to-the-recovery-services-vault-to-access-the-encryption-key-in-the-azure-key-vault"></a>Přiřaďte oprávnění k trezoru Recovery Services pro přístup k šifrovacímu klíči v Azure Key Vault
 
 Pro přístup k Azure Key Vault, který obsahuje šifrovací klíč, teď musíte povolit Recovery Services trezor. To se provádí tak, že se pro přístup k Key Vault povolí spravovaná identita Recovery Servicesového trezoru.
+
+Na **portálu**:
 
 1. Přejděte do > **zásady přístupu** Azure Key Vault. Pokračujte a **přidejte zásady přístupu**.
 
@@ -89,6 +118,32 @@ Pro přístup k Azure Key Vault, který obsahuje šifrovací klíč, teď musít
 1. Po dokončení vyberte **Přidat** a přidejte nové zásady přístupu.
 
 1. Vyberte **Uložit** a uložte změny provedené v zásadách přístupu Azure Key Vault.
+
+**S prostředím PowerShell**:
+
+Pomocí příkazu [set-AzRecoveryServicesVaultProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultproperty) Povolte šifrování pomocí klíčů spravovaných zákazníkem a přiřaďte nebo aktualizujte šifrovací klíč, který se má použít.
+
+Příklad:
+
+```azurepowershell
+$keyVault = Get-AzKeyVault -VaultName "testkeyvault" -ResourceGroupName "testrg" 
+$key = Get-AzKeyVaultKey -VaultName $keyVault -Name "testkey" 
+Set-AzRecoveryServicesVaultProperty -EncryptionKeyId $key.ID -KeyVaultSubscriptionId "xxxx-yyyy-zzzz"  -VaultId $vault.ID
+
+
+$enc=Get-AzRecoveryServicesVaultProperty -VaultId $vault.ID
+$enc.encryptionProperties | fl
+```
+
+Výstup:
+
+```output
+EncryptionAtRestType          : CustomerManaged
+KeyUri                        : testkey
+SubscriptionId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx 
+LastUpdateStatus              : Succeeded
+InfrastructureEncryptionState : Disabled
+```
 
 ### <a name="enable-soft-delete-and-purge-protection-on-the-azure-key-vault"></a>Povolení ochrany obnovitelného odstranění a vyprázdnění na Azure Key Vault
 
@@ -220,6 +275,8 @@ Po dokončení obnovení můžete znovu zašifrovat obnovený disk nebo virtuál
 
 #### <a name="select-a-disk-encryption-set-while-restoring-from-vault-recovery-point"></a>Vyberte sadu šifrování disku při obnovení z bodu obnovení trezoru.
 
+Na **portálu**:
+
 Sada šifrování disků je zadaná v části nastavení šifrování v podokně obnovení, jak je znázorněno níže:
 
 1. Na **discích, které používají váš klíč**, vyberte **Ano**.
@@ -230,6 +287,21 @@ Sada šifrování disků je zadaná v části nastavení šifrování v podokně
 >Možnost zvolit algoritmus DES během obnovování není k dispozici, pokud obnovujete virtuální počítač, který používá Azure Disk Encryption.
 
 ![Šifrování disku pomocí klíče](./media/encryption-at-rest-with-cmk/encrypt-disk-using-your-key.png)
+
+**S prostředím PowerShell**:
+
+Pomocí příkazu [Get-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) s parametrem [ `-DiskEncryptionSetId <string>` ] [Určete algoritmus DES](https://docs.microsoft.com/powershell/module/az.compute/get-azdiskencryptionset) , který se použije k šifrování obnoveného disku. Další informace o obnovení disků ze zálohy virtuálního počítače najdete v [tomto článku](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#restore-an-azure-vm).
+
+Příklad:
+
+```azurepowershell
+$namedContainer = Get-AzRecoveryServicesBackupContainer  -ContainerType "AzureVM" -Status "Registered" -FriendlyName "V2VM" -VaultId $vault.ID
+$backupitem = Get-AzRecoveryServicesBackupItem -Container $namedContainer  -WorkloadType "AzureVM" -VaultId $vault.ID
+$startDate = (Get-Date).AddDays(-7)
+$endDate = Get-Date
+$rp = Get-AzRecoveryServicesBackupRecoveryPoint -Item $backupitem -StartDate $startdate.ToUniversalTime() -EndDate $enddate.ToUniversalTime() -VaultId $vault.ID
+$restorejob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -TargetResourceGroupName "DestRGforManagedDisks" -DiskEncryptionSetId “testdes1” -VaultId $vault.ID
+```
 
 #### <a name="restoring-files"></a>Obnovování souborů
 

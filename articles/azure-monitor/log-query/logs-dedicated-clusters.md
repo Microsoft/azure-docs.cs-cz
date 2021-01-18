@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: 34524626cc213233c3db2ca438261b238eb18a2a
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: 93b05a5535b80d0e0d1a07c88aa9b19052f1b703
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831767"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562671"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor protokolovat vyhrazené clustery
 
@@ -58,7 +58,7 @@ Další podrobnosti najdete [tady]( https://docs.microsoft.com/azure/azure-monit
 
 ## <a name="asynchronous-operations-and-status-check"></a>Asynchronní operace a kontroly stavu
 
-Některé kroky konfigurace běží asynchronně, protože je nepůjde rychle dokončit. Stav v odpovědi může být jedna z následujících: ' InProgress ', ' aktualizace ', ' odstranění ', ' úspěch nebo neúspěch ' včetně kódu chyby. Při použití REST odpověď zpočátku po přijetí vrátí stavový kód HTTP 200 (OK) a záhlaví s vlastností Azure-AsyncOperation:
+Některé kroky konfigurace běží asynchronně, protože je nepůjde rychle dokončit. Stav v odpovědi může být jedna z následujících: ' InProgress ', ' aktualizace ', ' odstranění ', ' úspěch nebo neúspěch ' včetně kódu chyby. Při použití REST odpověď zpočátku vrátí stavový kód HTTP 202 (přijato) a záhlaví s Azure-AsyncOperation vlastností:
 
 ```JSON
 "Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-08-01"
@@ -125,7 +125,7 @@ Content-type: application/json
 
 *Response* (Odpověď)
 
-Mělo by být 200 OK a záhlaví.
+Měla by být 202 (přijato) a záhlaví.
 
 ### <a name="check-cluster-provisioning-status"></a>Zkontroluje stav zřizování clusteru.
 
@@ -229,7 +229,7 @@ Content-type: application/json
 
 *Response* (Odpověď)
 
-200 OK a záhlaví.
+202 (přijato) a záhlaví.
 
 ### <a name="check-workspace-link-status"></a>Ověřit stav odkazu na pracovní prostor
   

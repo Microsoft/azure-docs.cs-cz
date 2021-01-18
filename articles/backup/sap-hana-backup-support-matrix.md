@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte o podporovaných scénářích a omeze
 ms.topic: conceptual
 ms.date: 11/7/2019
 ms.custom: references_regions
-ms.openlocfilehash: 7f287206c40e4556db2ee4b38bb46ef8e5352102
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 5065f4cf3d9ab75c6e3b682b6a24387ce7449b0f
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98072186"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562654"
 ---
 # <a name="support-matrix-for-backup-of-sap-hana-databases-on-azure-vms"></a>Matice podpory pro zálohování databází SAP HANA na virtuálních počítačích Azure
 
@@ -25,7 +25,7 @@ Azure Backup podporuje zálohování databází SAP HANA do Azure. Tento článe
 | **Topologie**               | SAP HANA spouštění jenom na virtuálních počítačích Azure Linux                    | Velké instance HANA (HLI)                                   |
 | **Oblasti**                   | **GA**<br> **Severní Amerika** – Střed USA, Východní USA 2, Východní USA, Střed USA – sever, Střed USA – jih, Západní USA 2, Středozápadní USA, západní USA, Kanada – střed, Kanada – východ, Brazílie – jih <br> **Asie a Tichomoří** – Austrálie – střed, Austrálie – střed, Austrálie – východ, Austrálie – jihovýchod, Japonsko – východ, Japonsko – západ, Korea – jih, Jižní korea, východní Asie, jihovýchodní asie, Střed Indie, Jižní Indie, Západní Indie, Čína – východ, Čína – sever, Čína – východ 2, Čína – Sever 2 <br> **Evropa** – Západní Evropa, Severní Evropa, Francie – střed, Velká Británie – jih, Velká Británie – západ, Německo – sever, Německo – středozápad, Švýcarsko – sever, Švýcarsko – západ, centrální Švýcarsko – sever, Norsko – východ, Norsko – západ <br> **Afrika/já** – Jižní Afrika sever, Jižní Afrika – západ, Spojené arabské emiráty sever, Spojené arabské emiráty střed  <BR>  **Oblasti Azure Government** | Francie – jih, Německo – střed, Německo – severovýchod, US Gov IOWA |
 | **Verze operačního systému**            | SLES 12 s aktualizací SP2, SP3, SP4 a SP5; SLES 15 s SP0, SP1, SP2 <br><br>  Od 1. srpna 2020 je SAP HANA zálohování pro RHEL (7,4, 7,6, 7,7 & 8,1) všeobecně dostupné.                |                                             |
-| **Verze HANA**          | SDC v HANA 1. x, MDC na HANA 2. x <= SPS04 rev 48, SPS05 (pro scénáře s povoleným šifrováním se ještě ověřuje)      |                                                            |
+| **Verze HANA**          | SDC v HANA 1. x, MDC na HANA 2. x <= SPS04 rev 53, SPS05 (pro scénáře s povoleným šifrováním se ještě ověřuje)      |                                                            |
 | **Nasazení HANA**       | SAP HANA jenom na jednom virtuálním počítači Azure – jenom škálovat. <br><br> U nasazení s vysokou dostupností se oba uzly na obou různých počítačích považují za jednotlivé uzly s oddělenými datovými řetězy.               | Škálování na více instancí <br><br> V nasazeních s vysokou dostupností nebude zálohování automaticky převzetí služeb při selhání sekundárním uzlem. Konfigurace zálohování by se měla provádět samostatně pro každý uzel.                                           |
 | **Instance HANA**         | Jedna instance SAP HANA na jednom virtuálním počítači Azure – pouze horizontální navýšení kapacity | Několik instancí SAP HANA na jednom virtuálním počítači. V jednom okamžiku můžete chránit jenom jednu z těchto více instancí.                  |
 | **Typy databází HANA**    | Kontejner Izolovaná databáze (SDC) na 1. x, kontejneru více databází (MDC) na 2. x | MDC v HANA 1. x                                              |

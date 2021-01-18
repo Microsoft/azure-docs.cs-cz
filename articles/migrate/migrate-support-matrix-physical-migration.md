@@ -6,16 +6,16 @@ ms.author: rahugup
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/14/2020
-ms.openlocfilehash: a1203133d8749b43a92d89e7251539a1e002bfd8
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: a3e8b19810a58031b4d11cc6e361215afbc85de2
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968564"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562636"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>Matice podpory pro migraci fyzických serverů
 
-Tento článek shrnuje nastavení podpory a omezení pro migraci fyzických serverů s [Azure Migrate: Migrace serveru](migrate-services-overview.md#azure-migrate-server-migration-tool) . Pokud hledáte informace o vyhodnocování fyzických serverů pro migraci do Azure, Projděte si přehled [podpory pro vyhodnocení](migrate-support-matrix-physical.md).
+Tento článek shrnuje nastavení podpory a omezení pro migraci fyzických serverů do Azure pomocí [Azure Migrate: Migrace serveru](migrate-services-overview.md#azure-migrate-server-migration-tool) . Pokud hledáte informace o vyhodnocování fyzických serverů pro migraci do Azure, Projděte si přehled [podpory pro vyhodnocení](migrate-support-matrix-physical.md).
 
 ## <a name="migrating-machines-as-physical"></a>Migrace počítačů jako fyzických
 
@@ -25,7 +25,7 @@ K migraci místních počítačů jako fyzických serverů můžete použít rep
 - Virtuální počítače virtualizované pomocí platforem, jako je Xen, KVM.
 - Virtuální počítače Hyper-V nebo virtuální počítače VMware z nějakého důvodu nechcete používat standardní toky [Hyper-v](tutorial-migrate-hyper-v.md) nebo [VMware](server-migrate-overview.md) .
 - Virtuální počítače běžící v privátních cloudech.
-- Virtuální počítače běžící ve veřejných cloudech, například Amazon Web Services (AWS) nebo Google Cloud Platform (GCP).
+- Virtuální počítače běžící ve veřejných cloudech, včetně Amazon Web Services (AWS) nebo Google Cloud Platform (GCP).
 
 
 ## <a name="migration-limitations"></a>Omezení migrace
@@ -57,7 +57,6 @@ Tabulka shrnuje podporu pro fyzické servery, které chcete migrovat pomocí mig
 **NFS** | Svazky NFS připojené jako svazky na počítačích se nebudou replikovat.
 **cíle iSCSI** | Počítače s cíli iSCSI nejsou podporované pro migraci bez agenta.
 **Multipath v/v** | Nepodporováno
-**VMotion úložiště** | Podporováno
 **Seskupené síťové adaptéry** | Nepodporováno
 **IPv6** | Nepodporováno
 
