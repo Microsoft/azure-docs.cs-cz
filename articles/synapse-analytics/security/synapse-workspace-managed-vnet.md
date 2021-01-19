@@ -5,15 +5,15 @@ author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: security
-ms.date: 04/15/2020
+ms.date: 01/18/2021
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 949b7e55569cc6fceacc37677ed06a28bb85d7c2
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: f55251932c8aa8f632bd3b498943ac722f006dee
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98116360"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569897"
 ---
 # <a name="azure-synapse-analytics-managed-virtual-network"></a>Virtual Network spravovaných analýz Azure synapse
 
@@ -52,8 +52,21 @@ Pokud políčko nezaškrtnete, nebude mít k pracovnímu prostoru přidruženou 
 
 ![Povolit spravovaný Virtual Network pracovního prostoru](./media/synapse-workspace-managed-vnet/enable-managed-vnet-1.png)
 
+Po zvolení přidružení spravovaného pracovního prostoru Virtual Network s vaším pracovním prostorem můžete chránit před exfiltrace dat tím, že povolíte odchozí připojení ze spravovaného pracovního prostoru Virtual Network jenom ke schváleným cílům pomocí [spravovaných privátních koncových bodů](./synapse-workspace-managed-private-endpoints.md). Vyberte **Ano** , pokud chcete omezit odchozí přenosy ze spravovaného pracovního prostoru Virtual Network na cíle prostřednictvím spravovaných privátních koncových bodů. 
 
-Vybráním možnosti **Přehled** z Azure Portal můžete zjistit, jestli je váš pracovní prostor Azure synapse přidružený ke spravovanému pracovnímu Virtual Network prostoru.
+
+>[!IMPORTANT]
+>Metastore je v pracovních prostorech synapse, které mají spravované Virtual Network se zapnutou ochranou exfiltrace dat, zakázaná. V těchto pracovních prostorech nebudete moct použít Spark SQL.
+
+![Odchozí přenosy pomocí spravovaných privátních koncových bodů](./media/synapse-workspace-managed-vnet/select-outbound-connectivity.png)
+
+Pokud chcete, aby odchozí přenosy z pracovního prostoru do libovolného cíle povolovaly, vyberte **ne** .
+
+Můžete taky určit cíle, na které se spravované privátní koncové body vytvoří z pracovního prostoru Azure synapse. Ve výchozím nastavení jsou spravované privátní koncové body pro prostředky ve stejném tenantovi služby AAD, ke kterému vaše předplatné patří, povolené. Pokud chcete vytvořit spravovaný privátní koncový bod k prostředku v tenantovi služby AAD, který se liší od toho, ke kterému vaše předplatné patří, můžete tohoto tenanta AAD přidat tak, že vyberete **+ Přidat**. Můžete buď vybrat tenanta AAD z rozevíracího seznamu, nebo ručně zadat ID tenanta AAD.
+
+![Přidat další klienty AAD](./media/synapse-workspace-managed-vnet/add-additional-azure-active-directory-tenants.png)
+
+Po vytvoření pracovního prostoru můžete ověřit, jestli je váš pracovní prostor Azure synapse přidružený ke spravovanému pracovnímu prostoru Virtual Network tím, že vyberete **Přehled** z Azure Portal.
 
 ![Přehled pracovního prostoru v Azure Portal](./media/synapse-workspace-managed-vnet/enable-managed-vnet-2.png)
 

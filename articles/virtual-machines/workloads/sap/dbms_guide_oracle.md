@@ -13,15 +13,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/20/2020
+ms.date: 01/18/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3e99b3a8960eb49856e9a016eb054eed41eccde9
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: b4cf2e79acf4cd58ff94a2e90f07202341672a1d
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965251"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569432"
 ---
 # <a name="azure-virtual-machines-oracle-dbms-deployment-for-sap-workload"></a>Nasazení Azure DBMS pro úlohy SAP v Virtual Machines Oracle
 
@@ -360,7 +360,7 @@ V článku [Azure Storage typy pro úlohy SAP](./planning-guide-storage.md) zís
 
 Důrazně doporučujeme použít [Azure Managed disks](../../managed-disks-overview.md). Důrazně doporučujeme pro nasazení Oracle Database použít službu [Azure Premium Storage nebo Azure Ultra disk](../../disks-types.md) .
 
-Síťové jednotky nebo vzdálené sdílené složky jako souborové služby Azure nejsou podporované pro Oracle Database soubory. Další informace naleznete v tématu:
+Síťové jednotky nebo vzdálené sdílené složky jako souborové služby Azure nejsou podporované pro Oracle Database soubory. Další informace najdete tady:
 
 - [Představujeme službu Microsoft Azure File](/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
 
@@ -423,7 +423,7 @@ Další informace o zotavení po havárii pro databáze Oracle v Azure najdete v
 
 ### <a name="accelerated-networking"></a>Urychlení sítě
 Pro nasazení Oracle ve Windows důrazně doporučujeme zrychlit sítě, jak je popsáno v tématu [urychlené síťové služby Azure](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/). Zvažte také doporučení, která jsou k [disVirtual Machines v části požadavky na nasazení Azure DBMS pro úlohy SAP](dbms_guide_general.md). 
-### <a name="other"></a>Ostatní
+### <a name="other"></a>Jiné
 [Důležité informace týkající se nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md) popisují další důležité koncepty týkající se nasazení virtuálních počítačů s Oracle Database, včetně skupin dostupnosti Azure a monitorování SAP.
 
 ## <a name="specifics-for-oracle-database-on-oracle-linux"></a>Specifické pro Oracle Database Oracle Linux
@@ -445,15 +445,19 @@ V takovém případě doporučujeme nainstalovat nebo najít Oracle Home, Stage,
 
 ### <a name="storage-configuration"></a>Konfigurace úložiště
 
-Systémy souborů ext4, XFS a Oracle ASM jsou podporovány pro Oracle Database soubory v Azure. Všechny soubory databáze musí být uložené v těchto systémech souborů na základě VHD nebo Managed Disks. Tyto disky jsou připojené k virtuálnímu počítači Azure a jsou založené na [Azure Page BLOB Storage](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) nebo [Azure Managed disks](../../managed-disks-overview.md).
+Systémy souborů ext4, XFS, NFSv 4.1 (pouze v Azure NetApp Files (ANF)) nebo Oracle ASM (viz poznámka SAP [#2039619](https://launchpad.support.sap.com/#/notes/2039619) pro požadavky na vydání a verzi) jsou podporovány pro Oracle Database soubory v Azure. Všechny soubory databáze musí být uložené v těchto systémech souborů na discích VHD, Managed Disks nebo ANF. Tyto disky jsou připojené k virtuálnímu počítači Azure a jsou založené na [Azure Page BLOB Storage](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs), [azure Managed disks](../../managed-disks-overview.md)nebo [Azure NetApp Files](https://azure.microsoft.com/services/netapp/).
 
-Pro Oracle Linux jádra UEK se vyžaduje minimálně UEK verze 4, která podporuje [Azure Premium SSD](../../premium-storage-performance.md#disk-caching).
+Seznam minimálních požadavků jako: 
+
+- Pro Oracle Linux jádra UEK se vyžaduje minimálně UEK verze 4, která podporuje [Azure Premium SSD](../../premium-storage-performance.md#disk-caching).
+- Pro Oracle s ANF je minimální podporovaná Oracle Linux 8,2.
+- Pro Oracle s ANF je minimální podporovaná verze Oracle 19c (19.8.0.0).
 
 Zarezervujte článek [Azure Storage typy pro úlohy SAP](./planning-guide-storage.md) , abyste získali další podrobnosti o specifických typech úložiště bloku Azure vhodných pro úlohy DBMS.
 
-Používání [Azure Managed disks](../../managed-disks-overview.md)se důrazně doporučuje. Pro nasazení Oracle Database se důrazně doporučuje používat [Azure Premium SSD](../../disks-types.md) .
+Pomocí blokového úložiště Azure se důrazně doporučuje použít [Azure Managed disks](../../managed-disks-overview.md) a [Azure Premium ssd](../../disks-types.md) pro nasazení Oracle Database.
 
-Síťové jednotky nebo vzdálené sdílené složky jako souborové služby Azure nejsou podporované pro Oracle Database soubory. Další informace najdete v následujících článcích: 
+S výjimkou Azure NetApp Files nejsou pro soubory Oracle Database podporovány jiné sdílené disky, síťové jednotky ani vzdálené sdílené složky, jako je třeba služba Azure File Services (AFS). Další informace najdete v následujících článcích: 
 
 - [Představujeme službu Microsoft Azure File](/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
 
@@ -469,10 +473,10 @@ Minimální konfigurace:
 
 | Součást | Disk | Ukládání do mezipaměti | Odstranění |
 | --- | ---| --- | --- |
-| /Oracle/ \<SID> /origlogaA & mirrlogB | Disk úrovně Premium nebo Ultra | Žádné | Není potřeba |
-| /Oracle/ \<SID> /origlogaB & mirrlogA | Disk úrovně Premium nebo Ultra | Žádné | Není potřeba |
-| /Oracle/ \<SID> /sapdata1... n | Disk úrovně Premium nebo Ultra | Jen pro čtení | Dá se použít pro Premium |
-| /Oracle/ \<SID> /oraarch | Standard | Žádné | Není potřeba |
+| /Oracle/ \<SID> /origlogaA & mirrlogB | Premium, Ultra disk nebo ANF | Žádné | Není potřeba |
+| /Oracle/ \<SID> /origlogaB & mirrlogA | Premium, Ultra disk nebo ANF | Žádné | Není potřeba |
+| /Oracle/ \<SID> /sapdata1... n | Premium, Ultra disk nebo ANF | Jen pro čtení | Dá se použít pro Premium |
+| /Oracle/ \<SID> /oraarch | Standard nebo ANF | Žádné | Není potřeba |
 | Oracle Home, `saptrace` ,... | Disk s operačním systémem (Premium) | | Není potřeba |
 
 * Odstranění: LVM Stripe nebo MDADM using RAID0
@@ -483,13 +487,13 @@ Konfigurace výkonu:
 
 | Součást | Disk | Ukládání do mezipaměti | Odstranění |
 | --- | ---| --- | --- |
-| /Oracle/ \<SID> /origlogaA | Disk úrovně Premium nebo Ultra | Žádné | Dá se použít pro Premium  |
-| /Oracle/ \<SID> /origlogaB | Disk úrovně Premium nebo Ultra | Žádné | Dá se použít pro Premium |
-| /Oracle/ \<SID> /mirrlogAB | Disk úrovně Premium nebo Ultra | Žádné | Dá se použít pro Premium |
-| /Oracle/ \<SID> /mirrlogBA | Disk úrovně Premium nebo Ultra | Žádné | Dá se použít pro Premium |
-| /Oracle/ \<SID> /sapdata1... n | Disk úrovně Premium nebo Ultra | Jen pro čtení | Doporučeno pro Premium  |
-| /Oracle/ \<SID> /sapdata (n + 1) * | Disk úrovně Premium nebo Ultra | Žádné | Dá se použít pro Premium |
-| /Oracle/ \<SID> /oraarch * | Disk úrovně Premium nebo Ultra | Žádné | Není potřeba |
+| /Oracle/ \<SID> /origlogaA | Premium, Ultra disk nebo ANF | Žádné | Dá se použít pro Premium  |
+| /Oracle/ \<SID> /origlogaB | Premium, Ultra disk nebo ANF | Žádné | Dá se použít pro Premium |
+| /Oracle/ \<SID> /mirrlogAB | Premium, Ultra disk nebo ANF | Žádné | Dá se použít pro Premium |
+| /Oracle/ \<SID> /mirrlogBA | Premium, Ultra disk nebo ANF | Žádné | Dá se použít pro Premium |
+| /Oracle/ \<SID> /sapdata1... n | Premium, Ultra disk nebo ANF | Jen pro čtení | Doporučeno pro Premium  |
+| /Oracle/ \<SID> /sapdata (n + 1) * | Premium, Ultra disk nebo ANF | Žádné | Dá se použít pro Premium |
+| /Oracle/ \<SID> /oraarch * | Premium, Ultra disk nebo ANF | Žádné | Není potřeba |
 | Oracle Home, `saptrace` ,... | Disk s operačním systémem (Premium) | Není potřeba |
 
 * Odstranění: LVM Stripe nebo MDADM using RAID0
@@ -500,6 +504,10 @@ Konfigurace výkonu:
 
 
 Pokud se při použití služby Azure Premium Storage vyžaduje víc IOPS, doporučujeme pomocí LVM (Správce logických svazků) nebo MDADM vytvořit jeden velký logický svazek na několika připojených discích. Další informace najdete v tématu [týkajícím se nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md) týkající se pokynů a ukazatelů, jak využít LVM nebo MDADM. Tento přístup zjednodušuje správu místa na disku a pomáhá zabránit tomu, abyste se vyhnuli ruční distribuci souborů mezi více připojených disků.
+
+Pokud plánujete použít Azure NetApp Files Ujistěte se, že je správně nakonfigurovaný klient dNFS. Použití dNFS je povinné pro podporované prostředí. Konfigurace dNFS je popsána v článku [vytváření Oracle Database v přímém systému souborů NFS](https://docs.oracle.com/en/database/oracle/oracle-database/19/ntdbi/creating-an-oracle-database-on-direct-nfs.html#GUID-2A0CCBAB-9335-45A8-B8E3-7E8C4B889DEA).
+
+Příklad demonstrující použití systému souborů NFS založeného na Azure NetApp Files pro databáze Oracle se zobrazí v blogu [nasazení SAP AnyDB (Oracle 19c) s Azure NetApp Files](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/deploy-sap-anydb-oracle-19c-with-azure-netapp-files/ba-p/2064043).
 
 
 #### <a name="write-accelerator"></a>Akcelerátor zápisu

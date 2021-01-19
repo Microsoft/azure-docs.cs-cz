@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: rbeckers
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e9e5db87f983c5db59715eb8b6a9561acf5fad14
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 9c8016b566db8be1b7f5c5ddb8d92123d6673db5
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630611"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569840"
 ---
 # <a name="migrate-code-from-v20-to-v30-of-the-rest-api"></a>Migrace kódu z verze 2.0 do verze 3.0 REST API
 
@@ -24,11 +24,51 @@ V porovnání s verzí v2 je verze V3 služby Speech Services REST API pro přev
 
 ## <a name="forward-compatibility"></a>Dopředná kompatibilita
 
-Všechny entity z v2 lze také najít v rozhraní V3 API se stejnou identitou. Kde se změnilo schéma výsledku (například přepisy), výsledek GET v rozhraní API verze V3 používá schéma v3. Výsledek GET ve verzi v2 rozhraní API používá stejné schéma v2. Nově vytvořené entity ve verzi 3 **nejsou k dispozici ve** výsledcích z rozhraní API v2.
+Všechny entity z v2 lze také najít v rozhraní V3 API se stejnou identitou. Kde se změnilo schéma výsledku (například přepisy), výsledek GET v rozhraní API verze V3 používá schéma v3. Výsledek GET ve verzi v2 rozhraní API používá stejné schéma v2. Nově vytvořené entity na **V3 nejsou**   k dispozici v odpovědích z rozhraní API v2. 
+
+## <a name="migration-steps"></a>Kroky migrace
+
+Toto je souhrnný seznam položek, o kterých je potřeba vědět, když připravujete migraci. Podrobnosti najdete v jednotlivých odkazech. V závislosti na aktuálním použití rozhraní API se můžou použít všechny níže uvedené kroky. Pouze některé změny vyžadují netriviální změny v kódu volajícího. Většina změn vyžaduje pouze změnu názvů položek. 
+
+Obecné změny: 
+
+1. [Změnit název hostitele](#host-name-changes)
+
+1. [Přejmenujte ID vlastnosti na sebe v klientském kódu.](#identity-of-an-entity) 
+
+1. [Změna kódu pro iteraci přes kolekce entit](#working-with-collections-of-entities)
+
+1. [Přejmenujte název vlastnosti na hodnotu DisplayName v kódu klienta.](#name-of-an-entity)
+
+1. [Úprava načítání metadat odkazovaných entit](#accessing-referenced-entities)
+
+1. Pokud používáte dávku přepisu: 
+
+    * [Úprava kódu pro vytváření přepisů Batch](#creating-transcriptions) 
+
+    * [Přizpůsobení kódu pro nové schéma výsledků přepisu](#format-of-v3-transcription-results)
+
+    * [Upravit kód způsobu načítání výsledků](#getting-the-content-of-entities-and-the-results)
+
+1. Pokud používáte rozhraní API pro školení a testování vlastních modelů: 
+
+    * [Použít úpravy pro školení vlastního modelu](#customizing-models)
+
+    * [Změna způsobu, jakým se načítají základní a vlastní modely](#retrieving-base-and-custom-models)
+
+    * [Přejmenujte segment cesty accuracytests na vyhodnocení ve vašem klientském kódu.](#accuracy-tests)
+
+1. Používáte-li rozhraní API koncových bodů:
+
+    * [Změna způsobu načítání protokolů koncových bodů](#retrieving-endpoint-logs)
+
+1. Další drobné změny: 
+
+    * [Předání všech vlastních vlastností jako customProperties, nikoli vlastností ve vašich žádostech POST](#using-custom-properties)
+
+    * [Přečtěte si umístění z umístění hlavičky odpovědi místo operace – umístění.](#response-headers)
 
 ## <a name="breaking-changes"></a>Změny způsobující chyby
-
-Seznam nejnovějších změn byl seřazen podle velikosti změn požadovaných k přizpůsobení. Pouze některé změny vyžadují netriviální změny v kódu volajícího. Většina změn vyžaduje pouze změnu názvů položek.
 
 ### <a name="host-name-changes"></a>Změny názvu hostitele
 

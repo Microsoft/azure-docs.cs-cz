@@ -3,12 +3,12 @@ title: Co je nového ve službě Azure Backup
 description: Seznamte se s novými funkcemi v Azure Backup.
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.openlocfilehash: ba29ddea5d5f096640f2bfc012c44ab06bb3e131
-ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
+ms.openlocfilehash: 62a6146990863c339917777b2624fee76ebe60d8
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2020
-ms.locfileid: "96309660"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569415"
 ---
 # <a name="whats-new-in-azure-backup"></a>Co je nového ve službě Azure Backup
 
@@ -18,6 +18,9 @@ Další informace o nových vydaných verzích najdete v tématu popisujícím t
 
 ## <a name="updates-summary"></a>Souhrn aktualizací
 
+- Leden 2021
+  - [Zálohování disku Azure (ve verzi Preview)](disk-backup-overview.md)
+  - [Šifrování v klidovém formátu pomocí klíčů spravovaných zákazníkem je teď všeobecně dostupné.](encryption-at-rest-with-cmk.md)
 - Listopad 2020
   - [Šablona Azure Resource Manager pro zálohování ve službě Azure File Share (AFS)](#azure-resource-manager-template-for-afs-backup)
   - [Přírůstkové zálohování pro databáze SAP HANA na virtuálních počítačích Azure](#incremental-backups-for-sap-hana-databases)
@@ -31,6 +34,18 @@ Další informace o nových vydaných verzích najdete v tématu popisujícím t
   - [Zálohování SAP HANA v RHEL Azure Virtual Machines](#backup-sap-hana-in-rhel-azure-virtual-machines)
   - [Redundantní úložiště zóny (ZRS) pro zálohovaná data](#zone-redundant-storage-zrs-for-backup-data)
   - [Obnovitelné odstranění pro úlohy SQL Server a SAP HANA na virtuálních počítačích Azure](#soft-delete-for-sql-server-and-sap-hana-workloads)
+
+## <a name="azure-disk-backup-in-preview"></a>Zálohování disku Azure (ve verzi Preview)
+
+Azure disk Backup nabízí řešení klíč, které poskytuje správu životního cyklu snímků pro [Azure Managed disks](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview) automatizací pravidelného vytváření snímků a jejich zachování po nakonfigurované době pomocí zásad zálohování. Můžete spravovat snímky disků s nulovými náklady na infrastrukturu a nemusíte mít vlastní skriptování ani nároky na správu. Jedná se o řešení zálohování konzistentní vzhledem k selháním, které využívá přírůstkové zálohování spravovaného disku pomocí [přírůstkových snímků](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots) s podporou více záloh za den. Je to také řešení bez agentů a nemá vliv na výkon produkčních aplikací. Podporuje zálohování a obnovení disků s operačním systémem i datové disky (včetně sdílených disků), ať už jsou aktuálně připojené ke spuštěnému virtuálnímu počítači Azure.
+
+Další informace najdete v tématu [zálohování disku Azure (ve verzi Preview)](disk-backup-overview.md).
+
+## <a name="encryption-at-rest-using-customer-managed-keys"></a>Šifrování v klidovém formátu pomocí klíčů spravovaných zákazníkem
+
+Podpora šifrování v klidovém formátu pomocí klíčů spravovaných zákazníkem je teď všeobecně dostupná. Díky tomu máte možnost šifrovat data záloh ve vašich úložištích Recovery Services pomocí vlastních klíčů uložených v trezorech klíčů Azure. Šifrovací klíč, který se používá k šifrování záloh v trezoru Recovery Services, se může lišit od těch, které se použily k šifrování zdroje. Data jsou chráněná pomocí šifrovacího klíče založeného na standardu AES 256 (klíč DEK), který je zase chráněn pomocí klíčů uložených v Key Vault. V porovnání s šifrováním pomocí klíčů spravovaných platformou (které jsou ve výchozím nastavení k dispozici) vám to umožní získat větší kontrolu nad klíči a může vám pomoci lépe splnit požadavky na dodržování předpisů.
+
+Další informace najdete v tématu [šifrování zálohovaných dat pomocí klíčů spravovaných zákazníkem](encryption-at-rest-with-cmk.md).
 
 ## <a name="azure-resource-manager-template-for-afs-backup"></a>Šablona Azure Resource Manager pro zálohování AFS
 

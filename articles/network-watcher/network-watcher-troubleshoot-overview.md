@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
-ms.openlocfilehash: 5342c4505bd300d1287acba246ca59610f2697bd
-ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
+ms.openlocfilehash: 0d0597c2df8731171505a090de6959d8a112c004
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97858633"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569976"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Úvod k řešení potíží s prostředky v Azure Network Watcher
 
@@ -73,7 +73,7 @@ V následujících tabulkách jsou uvedeny různé typy chyb (ID z předchozího
 | ConnectionIsMarkedDisconnected | Připojení je označeno jako odpojené. |Ne|
 | ConnectionNotConfiguredOnGateway | V podkladové službě není nakonfigurované připojení. | Ano |
 | ConnectionMarkedStandby | Podkladová služba je označena jako pohotovostní.| Ano|
-| Ověřování | Neshoda předsdíleného klíče | Ano|
+| Authentication | Neshoda předsdíleného klíče | Ano|
 | PeerReachability | Partnerská brána není dostupná. | Ano|
 | IkePolicyMismatch | Partnerská brána má zásady IKE, které Azure nepodporuje. | Ano|
 | Chyba WfpParse | Při analýze protokolu WFP došlo k chybě. |Ano|
@@ -209,7 +209,9 @@ Elapsed Time            330 sec
 ```
 
 ## <a name="considerations"></a>Požadavky 
+* Pro každé předplatné se dá spustit jenom jedna operace řešení potíží. Pokud chcete spustit jinou operaci odstraňování potíží, počkejte na dokončení předchozí. Aktivace dalších operací v době, kdy předchozí akce nebyla dokončena, způsobí selhání dalších operací. 
 * Chyba CLI: Pokud ke spuštění příkazu používáte Azure CLI, VPN Gateway a účet úložiště musí být ve stejné skupině prostředků. Zákazníci s prostředky v různých skupinách prostředků můžou místo toho použít PowerShell nebo Azure Portal.  
+
 
 ## <a name="next-steps"></a>Další kroky
 

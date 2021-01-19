@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 01/12/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2d2b65261e09d056ec76b25d6fcb6627bc54770b
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: 65794c695fa4b36586b23a308845b1f12a20b7cb
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165718"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569942"
 ---
 # <a name="synapse-managed-private-endpoints"></a>Synapse spravované privátní koncové body
 
@@ -23,7 +23,7 @@ V tomto článku se vysvětlují spravované privátní koncové body ve služb�
 
 Spravované privátní koncové body jsou soukromé koncové body vytvořené ve spravovaném Virtual Network přidruženém k vašemu pracovnímu prostoru Azure synapse. Spravované soukromé koncové body vytvoří privátní odkaz na prostředky Azure. Azure synapse tyto privátní koncové body spravuje vaším jménem. Můžete vytvořit spravované privátní koncové body z vašeho pracovního prostoru Azure synapse a získat přístup ke službám Azure (například Azure Storage nebo Azure Cosmos DB) a hostovaným zákazníkům a partnerským službám Azure.
 
-Při správě privátních koncových bodů se přenosy mezi vaším pracovním prostorem Azure synapse a dalšími prostředky Azure procházejí výhradně přes páteřní síť Microsoftu. Spravované privátní koncové body chrání před exfiltrace dat. Spravovaný privátní koncový bod používá privátní IP adresu ze spravovaného Virtual Network k účinnému uvedení služby Azure, kterou váš pracovní prostor Azure synapse komunikuje do vašeho Virtual Network. Spravované privátní koncové body jsou namapovány na konkrétní prostředek v Azure, nikoli na celou službu. Zákazníci můžou omezit připojení ke konkrétnímu prostředku schválenému jeho organizací. 
+Pokud používáte spravované privátní koncové body, provoz mezi vaším pracovním prostorem Azure synapse a dalšími prostředky Azure prochází výhradně přes páteřní síť Microsoftu. Spravované privátní koncové body chrání před exfiltrace dat. Spravovaný privátní koncový bod používá privátní IP adresu ze spravovaného Virtual Network k účinnému uvedení služby Azure, kterou váš pracovní prostor Azure synapse komunikuje do vašeho Virtual Network. Spravované privátní koncové body jsou namapovány na konkrétní prostředek v Azure, nikoli na celou službu. Zákazníci můžou omezit připojení ke konkrétnímu prostředku schválenému jeho organizací. 
 
 Přečtěte si další informace o [privátních odkazech a soukromých koncových bodech](../../private-link/index.yml).
 

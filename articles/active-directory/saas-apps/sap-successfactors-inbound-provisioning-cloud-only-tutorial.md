@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 08/05/2020
+ms.date: 01/19/2021
 ms.author: chmutali
-ms.openlocfilehash: a62943c1a808424ded1a5e46ed115cda332bf7d5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6a73ecf18a4bd89567dc603758d9ff8501267a1f
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020751"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98570030"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-azure-ad-user-provisioning"></a>Kurz: Konfigurace zřizování SAP SuccessFactors pro uživatele Azure AD
 Cílem tohoto kurzu je Ukázat kroky, které musíte provést při zřizování pracovních dat od SuccessFactors zaměstnanců do Azure Active Directory, s volitelným zpětným zápisem e-mailové adresy SuccessFactors. 
@@ -91,51 +91,61 @@ Spolupracujte s týmem správce SuccessFactors nebo partnerem pro implementaci a
 
 ### <a name="create-an-api-permissions-role"></a>Vytvoření role oprávnění API
 
-* Přihlaste se k SAP SuccessFactors pomocí uživatelského účtu, který má přístup k centru pro správu.
-* Vyhledejte *možnosti spravovat role oprávnění* a pak ve výsledcích hledání vyberte **Spravovat role oprávnění** .
+1. Přihlaste se k SAP SuccessFactors pomocí uživatelského účtu, který má přístup k centru pro správu.
+1. Vyhledejte *možnosti spravovat role oprávnění* a pak ve výsledcích hledání vyberte **Spravovat role oprávnění** .
   ![Správa rolí oprávnění](./media/sap-successfactors-inbound-provisioning/manage-permission-roles.png)
-* V seznamu role oprávnění klikněte na **vytvořit nový**.
-  > [!div class="mx-imgBorder"]
-  > ![Vytvořit novou roli oprávnění](./media/sap-successfactors-inbound-provisioning/create-new-permission-role-1.png)
-* Přidejte název a **Popis** **role** nové role oprávnění. Název a popis by měl označovat, že role je určena pro oprávnění k použití rozhraní API.
-  > [!div class="mx-imgBorder"]
-  > ![Podrobnosti role oprávnění](./media/sap-successfactors-inbound-provisioning/permission-role-detail.png)
-* V části nastavení oprávnění klikněte na **oprávnění...**, přejděte dolů na seznam oprávnění a klikněte na **spravovat nástroje pro integraci**. Zaškrtněte políčko, pokud **chcete, aby správce mohl přistupovat k rozhraní OData API prostřednictvím základního ověřování**.
-  > [!div class="mx-imgBorder"]
-  > ![Správa integračních nástrojů](./media/sap-successfactors-inbound-provisioning/manage-integration-tools.png)
-* Posuňte se dolů ve stejném poli a vyberte **centrální rozhraní API pro zaměstnance**. Přidáním oprávnění, jak je vidět níže, můžete číst pomocí rozhraní ODATA API a upravit pomocí rozhraní ODATA API. Vyberte možnost upravit, pokud chcete použít stejný účet ke zpětnému zápisu do SuccessFactors scénáře. 
-  > [!div class="mx-imgBorder"]
-  > ![Oprávnění ke čtení zápisu](./media/sap-successfactors-inbound-provisioning/odata-read-write-perm.png)
-* Klikněte na **Hotovo**. Klikněte na **Save Changes** (Uložit změny).
+1. V seznamu role oprávnění klikněte na **vytvořit nový**.
+    > [!div class="mx-imgBorder"]
+    > ![Vytvořit novou roli oprávnění](./media/sap-successfactors-inbound-provisioning/create-new-permission-role-1.png)
+1. Přidejte název a **Popis** **role** nové role oprávnění. Název a popis by měl označovat, že role je určena pro oprávnění k použití rozhraní API.
+    > [!div class="mx-imgBorder"]
+    > ![Podrobnosti role oprávnění](./media/sap-successfactors-inbound-provisioning/permission-role-detail.png)
+1. V části nastavení oprávnění klikněte na **oprávnění...**, přejděte dolů na seznam oprávnění a klikněte na **spravovat nástroje pro integraci**. Zaškrtněte políčko, pokud **chcete, aby správce mohl přistupovat k rozhraní OData API prostřednictvím základního ověřování**.
+    > [!div class="mx-imgBorder"]
+    > ![Správa integračních nástrojů](./media/sap-successfactors-inbound-provisioning/manage-integration-tools.png)
+1. Posuňte se dolů ve stejném poli a vyberte **centrální rozhraní API pro zaměstnance**. Přidáním oprávnění, jak je vidět níže, můžete číst pomocí rozhraní ODATA API a upravit pomocí rozhraní ODATA API. Vyberte možnost upravit, pokud chcete použít stejný účet ke zpětnému zápisu do SuccessFactors scénáře. 
+    > [!div class="mx-imgBorder"]
+    > ![Oprávnění ke čtení zápisu](./media/sap-successfactors-inbound-provisioning/odata-read-write-perm.png)
+
+1. V poli stejná oprávnění klikněte na **uživatelská oprávnění – > údaje o zaměstnancích** a zkontrolujte atributy, které může účet služby číst z klienta SuccessFactors. Chcete-li například načíst atribut *username* z SuccessFactors, ujistěte se, že pro tento atribut je uděleno oprávnění "View". Podobně zkontrolujte každý atribut pro oprávnění zobrazit. 
+
+    > [!div class="mx-imgBorder"]
+    > ![Oprávnění k datům zaměstnanců](./media/sap-successfactors-inbound-provisioning/review-employee-data-permissions.png)
+   
+
+    >[!NOTE]
+    >Úplný seznam atributů načtených touto zřizovací aplikací najdete v [referenčních informacích k atributům SuccessFactors](../app-provisioning/sap-successfactors-attribute-reference.md) .
+
+1. Klikněte na **Hotovo**. Klikněte na **Save Changes** (Uložit změny).
 
 ### <a name="create-a-permission-group-for-the-api-user"></a>Vytvoření skupiny oprávnění pro uživatele rozhraní API
 
-* V centru pro správu SuccessFactors vyhledejte *možnosti spravovat skupiny oprávnění* a pak ve výsledcích hledání vyberte **Spravovat skupiny oprávnění** .
-  > [!div class="mx-imgBorder"]
-  > ![Správa skupin oprávnění](./media/sap-successfactors-inbound-provisioning/manage-permission-groups.png)
-* V okně Spravovat skupiny oprávnění klikněte na **vytvořit nový**.
-  > [!div class="mx-imgBorder"]
-  > ![Přidat novou skupinu](./media/sap-successfactors-inbound-provisioning/create-new-group.png)
-* Přidejte název skupiny pro novou skupinu. Název skupiny by měl označovat, že skupina je určena pro uživatele rozhraní API.
-  > [!div class="mx-imgBorder"]
-  > ![Název skupiny oprávnění](./media/sap-successfactors-inbound-provisioning/permission-group-name.png)
-* Přidejte členy do skupiny. Můžete například vybrat **uživatelské jméno** z rozevírací nabídky fond osob a pak zadat uživatelské jméno účtu rozhraní API, které se bude používat pro integraci. 
-  > [!div class="mx-imgBorder"]
-  > ![Přidání členů skupiny](./media/sap-successfactors-inbound-provisioning/add-group-members.png)
-* Kliknutím na **Hotovo** dokončíte vytváření skupiny oprávnění.
+1. V centru pro správu SuccessFactors vyhledejte *možnosti spravovat skupiny oprávnění* a pak ve výsledcích hledání vyberte **Spravovat skupiny oprávnění** .
+    > [!div class="mx-imgBorder"]
+    > ![Správa skupin oprávnění](./media/sap-successfactors-inbound-provisioning/manage-permission-groups.png)
+1. V okně Spravovat skupiny oprávnění klikněte na **vytvořit nový**.
+    > [!div class="mx-imgBorder"]
+    > ![Přidat novou skupinu](./media/sap-successfactors-inbound-provisioning/create-new-group.png)
+1. Přidejte název skupiny pro novou skupinu. Název skupiny by měl označovat, že skupina je určena pro uživatele rozhraní API.
+    > [!div class="mx-imgBorder"]
+    > ![Název skupiny oprávnění](./media/sap-successfactors-inbound-provisioning/permission-group-name.png)
+1. Přidejte členy do skupiny. Můžete například vybrat **uživatelské jméno** z rozevírací nabídky fond osob a pak zadat uživatelské jméno účtu rozhraní API, které se bude používat pro integraci. 
+    > [!div class="mx-imgBorder"]
+    > ![Přidání členů skupiny](./media/sap-successfactors-inbound-provisioning/add-group-members.png)
+1. Kliknutím na **Hotovo** dokončíte vytváření skupiny oprávnění.
 
 ### <a name="grant-permission-role-to-the-permission-group"></a>Udělení role oprávnění skupině oprávnění
 
-* V centru pro správu SuccessFactors vyhledejte *možnosti spravovat role oprávnění* a pak ve výsledcích hledání vyberte **Spravovat role oprávnění** .
-* V **seznamu role oprávnění** vyberte roli, kterou jste vytvořili pro oprávnění používání rozhraní API.
-* V části **udělení této role na...**, klikněte na tlačítko **Přidat..** ..
-* V rozevírací nabídce vyberte **skupinu oprávnění** a pak kliknutím na **Vybrat...** otevřete okno skupiny, kde můžete hledat a vybrat skupinu vytvořenou výše. 
-  > [!div class="mx-imgBorder"]
-  > ![Přidat skupinu oprávnění](./media/sap-successfactors-inbound-provisioning/add-permission-group.png)
-* Zkontrolujte roli oprávnění udělení skupiny oprávnění. 
-  > [!div class="mx-imgBorder"]
-  > ![Podrobnosti role a skupiny oprávnění](./media/sap-successfactors-inbound-provisioning/permission-role-group.png)
-* Klikněte na **Save Changes** (Uložit změny).
+1. V centru pro správu SuccessFactors vyhledejte *možnosti spravovat role oprávnění* a pak ve výsledcích hledání vyberte **Spravovat role oprávnění** .
+1. V **seznamu role oprávnění** vyberte roli, kterou jste vytvořili pro oprávnění používání rozhraní API.
+1. V části **udělení této role na...**, klikněte na tlačítko **Přidat..** ..
+1. V rozevírací nabídce vyberte **skupinu oprávnění** a pak kliknutím na **Vybrat...** otevřete okno skupiny, kde můžete hledat a vybrat skupinu vytvořenou výše. 
+    > [!div class="mx-imgBorder"]
+    > ![Přidat skupinu oprávnění](./media/sap-successfactors-inbound-provisioning/add-permission-group.png)
+1. Zkontrolujte roli oprávnění udělení skupiny oprávnění. 
+    > [!div class="mx-imgBorder"]
+    > ![Podrobnosti role a skupiny oprávnění](./media/sap-successfactors-inbound-provisioning/permission-role-group.png)
+1. Klikněte na **Save Changes** (Uložit změny).
 
 ## <a name="configuring-user-provisioning-from-successfactors-to-azure-ad"></a>Konfigurace zřizování uživatelů z SuccessFactors do Azure AD
 
@@ -161,7 +171,7 @@ Tato část popisuje kroky pro zřizování uživatelských účtů z SuccessFac
 
 6. Až se aplikace přidá a zobrazí se obrazovka s podrobnostmi aplikace, vyberte **zřizování** .
 
-7. Změnit režim **zřizování** **Mode** na **automaticky**
+7. Změnit režim **zřizování**  na **automaticky**
 
 8. Dokončete část **přihlašovací údaje správce** následujícím způsobem:
 

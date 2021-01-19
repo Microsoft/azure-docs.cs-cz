@@ -4,12 +4,12 @@ description: Přečtěte si o Azure Database for PostgreSQL zálohování s dlou
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: 32837e5bb871f7db5024569efc27940047aeacd7
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 628f43788c11558185a7b8a735373f0a663fdad1
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734636"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569483"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>Azure Database for PostgreSQL zálohování s dlouhodobou dobou uchovávání (Preview)
 
@@ -135,7 +135,7 @@ V následujících pokynech jsou podrobné pokyny ke konfiguraci zálohování v
 
 1. Definujte nastavení **uchování** . Můžete přidat jedno nebo více pravidel uchovávání. Každé pravidlo uchovávání informací předpokládá vstupy pro konkrétní zálohy a úložiště dat a dobu uchování pro tyto zálohy.
 
-1. Zálohy si můžete uložit v jednom ze dvou úložišť dat (nebo vrstev): **záložní úložiště dat** (Hot úrovně) nebo **úložiště dat archivu** (ve verzi Preview). Můžete zvolit mezi **dvěma možnostmi vrstvení** k definování, kdy jsou zálohy rozloženy mezi dvě úložiště dat:
+1. Zálohy si můžete uložit v jednom ze dvou úložišť dat (nebo vrstev): **záložní úložiště dat** (standardní úroveň) nebo **úložiště dat archivu** (ve verzi Preview). Můžete zvolit mezi **dvěma možnostmi vrstvení** k definování, kdy jsou zálohy rozloženy mezi dvě úložiště dat:
 
     - Pokud dáváte přednost záložní kopii v úložištích záložních i archivních dat, vyberte možnost **okamžitě** zkopírovat.
     - Pokud chcete přesunout zálohu do úložiště dat v úložišti zálohovaných dat, vyberte možnost přesunout **na konec platnosti** .
@@ -296,7 +296,7 @@ V [tomto dokumentu](https://download.microsoft.com/download/7/4/d/74d689aa-909d-
 
 Vytvořením přístupnosti sítě v síti povolíte příznak **Povolit přístup ke službám Azure** v zobrazení serveru. V zobrazení serveru v podokně **zabezpečení připojení** nastavte příznak **Povolení přístupu ke službám Azure** na **Ano**.
 
-![Pravidlo Povolit přístup ke službám Azure](./media/backup-azure-database-postgresql/allow-access-to-azure-services.png)
+![Povolení přístupu ke službám Azure](./media/backup-azure-database-postgresql/allow-access-to-azure-services.png)
 
 ### <a name="usererrorcontainernotaccessible"></a>UserErrorContainerNotAccessible
 

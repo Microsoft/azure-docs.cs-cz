@@ -13,15 +13,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/28/2020
+ms.date: 01/18/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 511801962d07e5fb99000b2fc19adce2489b46d3
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 2c7ea804e9e85578076969f0ec6bdf90b571bb75
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967478"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98570078"
 ---
 # <a name="nfs-v41-volumes-on-azure-netapp-files-for-sap-hana"></a>Svazky NFS v4.1 ve službě Azure NetApp Files pro SAP HANA
 
@@ -69,10 +69,10 @@ Maximální propustnost pro LIF a jednu relaci Linux je mezi 1,2 a 1,4 GB/s.
 | 1 TB | 16 MB/s | 64 MB/s | 128 MB/s |
 | 2 TB | 32 MB/s | 128 MB/s | 256 MB/s |
 | 4 TB | 64 MB/s | 256 MB/s | 512 MB/s |
-| 10 TB | 160 MB/s | 640 MB/s | 1,280 MB/s |
-| 15 TB | 240 MB/s | 960 MB/s | 1,400 MB/s |
-| 20 TB | 320 MB/s | 1,280 MB/s | 1,400 MB/s |
-| 40 TB | 640 MB/s | 1,400 MB/s | 1,400 MB/s |
+| 10 TB | 160 MB/s | 640 MB/s | 1 280 MB/s |
+| 15 TB | 240 MB/s | 960 MB/s | 1 400 MB/s |
+| 20 TB | 320 MB/s | 1 280 MB/s | 1 400 MB/s |
+| 40 TB | 640 MB/s | 1 400 MB/s | 1 400 MB/s |
 
 Je důležité pochopit, že data se zapisují do stejného SSD do back-endu úložiště. Kvóta výkonu z fondu kapacit byla vytvořena, aby bylo možné spravovat prostředí.
 Klíčové ukazatele výkonu jsou pro všechny velikosti databází HANA stejné. V téměř všech případech tento předpoklad neodráží realitu a očekává se, že zákazník. Velikost systémů HANA nemusí nutně znamenat, že malý systém vyžaduje nízkou propustnost úložiště – a velký systém vyžaduje vysokou propustnost úložiště. Obecně ale můžeme očekávat vyšší propustnost pro větší databázové instance HANA. V důsledku pravidel pro změny velikosti SAP pro základní hardware tyto větší instance HANA také poskytují více prostředků procesoru a vyšší paralelismus v rámci úloh, jako je načítání dat po restartování instancí. V důsledku toho by měly být velikosti svazků přijaty na očekávání a požadavky zákazníků. A neřídí se jenom čistě požadavky na kapacitu.

@@ -14,15 +14,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 01/05/2021
+ms.date: 01/18/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e3a4c367bbe0770495a63c00ca33861ac815460f
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 0b323268c625ed25236cf4a9f9faa17606bd967c
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121001"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98570061"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Použití Azure k hostování a spouštění scénářů pro úlohy SAP
 
@@ -49,7 +49,8 @@ Pokud máte konkrétní otázky, budeme v této části úvodní stránky ukazov
 - Co je Azure Storage pro můj scénář nejvhodnější? Číst [Azure Storage typy pro úlohy SAP](./planning-guide-storage.md)
 - Je jádro Red Hat v Oracle Enterprise Linux podporované systémem SAP? Přečtěte [si poznámku o podpoře SAP sap #1565179](https://launchpad.support.sap.com/#/notes/1565179)
 - Proč jsou rodiny virtuálních počítačů Azure [da (s) v4](https://docs.microsoft.com/azure/virtual-machines/dav4-dasv4-series) / [(](https://docs.microsoft.com/azure/virtual-machines/eav4-easv4-series) s) necertifikované pro SAP HANA? Rodiny virtuálních počítačů Azure Das/EAS jsou založené na hardwaru založeném na procesorech AMD. SAP HANA nepodporuje procesory AMD, a to ani ve virtualizovaných scénářích.
-- Proč se mi pořád zobrazuje zpráva: příznaky CPU pro instrukci RDTSCP nebo příznaky CPU pro constant_tsc nebo nonstop_tsc nejsou nastavené nebo current_clocksource a available_clocksource nejsou správně nakonfigurované s SAP HANA, i když jsou na tom, že běží nejnovější jádra pro Linux. Odpověď najdete v [poznámce SAP support #2791572](https://launchpad.support.sap.com/#/notes/2791572) 
+- Proč se mi pořád zobrazuje zpráva: příznaky CPU pro instrukci RDTSCP nebo příznaky CPU pro constant_tsc nebo nonstop_tsc nejsou nastavené nebo current_clocksource a available_clocksource nejsou správně nakonfigurované s SAP HANA, i když jsou na tom, že běží nejnovější jádra pro Linux. Odpověď najdete v [poznámce SAP support #2791572](https://launchpad.support.sap.com/#/notes/2791572)
+- Kde najdu architektury pro nasazení SAP Fiori v Azure? Podívejte se na blog [SAP v Azure: Application Gateway nastavení brány firewall webových aplikací (WAF) v2 pro internetové aplikace SAP Fiori](https://blogs.sap.com/2020/12/03/sap-on-azure-application-gateway-web-application-firewall-waf-v2-setup-for-internet-facing-sap-fiori-apps/) 
 
  
 ## <a name="sap-hana-on-azure-large-instances"></a>SAP HANA v Azure (velké instance)
@@ -83,6 +84,7 @@ V této části najdete dokumenty ke službě Microsoft Power BI Integration do 
 
 ## <a name="change-log"></a>Protokol změn
 
+- 01/18/2021: Přidání podpory souborů NFS Azure NET Apps pro Oracle v [azure Virtual Machines nasazení Oracle DBMS pro úlohy SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_oracle) a nastavení desetinných míst v tabulce v dokumentu [systému souborů NFS v 4.1 na Azure NetApp Files pro SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp)
 - 01/11/2021: drobné změny v [ha pro SAP NW na virtuálních počítačích Azure v RHEL pro aplikace SAP](./high-availability-guide-rhel.md), [ha pro SAP NW na virtuálních počítačích Azure v RHEL s ANF](./high-availability-guide-rhel-netapp-files.md) a [ha pro SAP NW na virtuálních počítačích Azure](./high-availability-guide-rhel-multi-sid.md) v, které umožňují přizpůsobit příkazy pro RHEL8 i RHEL7 a ENSA1 a ENSA2
 - 01/05/2021: změny v [SAP HANA škálování na více instancí s pohotovostním uzlem na virtuálních počítačích Azure s ANF v SLES](./sap-hana-scale-out-standby-netapp-files-suse.md) a SAP HANA škálování na více instancí [s pohotovostním uzlem na virtuálních počítačích Azure s ANF v RHEL](./sap-hana-scale-out-standby-netapp-files-rhel.md), revize Doporučené konfigurace, která povolí agentovi SAP hosta spravovat rozsah místních portů  
 - 01/04/2021: přidejte nové oblasti Azure podporované službou HLI do [toho, co je SAP HANA v Azure (velké instance)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) .

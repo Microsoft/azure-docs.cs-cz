@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 09/23/2020
+ms.date: 01/18/2021
 ms.author: alkohli
-ms.openlocfilehash: 059aad8b45aa449f5cd28c97f4ba55e2204c04ce
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 31947ca4d5eb632998f5c50257c12ef9a52dfc66
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937062"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98570095"
 ---
 # <a name="what-is-azure-stack-edge-pro-with-gpu"></a>Co je Azure Stack Edge Pro s GPU?
 
@@ -44,7 +44,7 @@ Azure Stack Edge pro nabízí následující možnosti:
 |---------|---------|
 |Akcelerované AI Inferencing| Povoleno integrovaným grafickým procesorem (jeden nebo dva v závislosti na modelu).|
 |Hraniční Computing      |Podporuje úlohy virtuálních počítačů a kontejnerů, aby bylo možné analyzovat, zpracovávat a filtrovat data. |
-|Přístup k datům     | Přímý přístup k datům z rozšíření Azure Storage Blob a ze souborů Azure pomocí cloudových rozhraní API za účelem dalšího zpracování dat v cloudu. Místní mezipaměť v zařízení se používá pro rychlý přístup k naposledy použitým souborům.|
+|Přístup k datům     | Přímý přístup k datům z rozšíření Azure Storage Blob a ze souborů Azure pomocí cloudových rozhraní API za účelem dalšího zpracování dat v cloudu. Místní mezipaměť v zařízení se používá pro rychlý přístup k naposledy použitým souborům.|
 |Spravované v cloudu     |Zařízení a služba se spravují prostřednictvím Azure Portal.  |
 |Nahrání offline     | Odpojený režim podporuje scénáře nahrání v režimu offline.|
 |Podporované protokoly pro přenos souborů      | Podpora pro protokoly Standard SMB, NFS a REST pro příjem dat. <br> Další informace o podporovaných verzích najdete v tématu [požadavky na systém Azure Stack Edge pro](azure-stack-edge-system-requirements.md).|
@@ -71,7 +71,7 @@ Azure Stack Edge pro nabízí následující možnosti:
 
 Fyzické zařízení Azure Stack Edge pro, prostředek Azure a cílový účet úložiště, do kterého přenášíte data, nemusí být ve stejné oblasti.
 
-- **Dostupnost prostředků** – pro tuto verzi Preview je prostředek k dispozici v oblastech východní USA, západní EU a Jižní východní Asie.
+- **Dostupnost prostředků** – pro tuto verzi je prostředek k dispozici v oblastech východní USA, západní EU a Jižní východní Asie.
 
 - **Dostupnost zařízení** – seznam všech zemí nebo oblastí, ve kterých je zařízení Azure Stack Edge pro dostupné, najdete v části **dostupnost** na kartě **Azure Stack Edge** pro [Azure Stack ceny pro Edge pro](https://azure.microsoft.com/pricing/details/azure-stack/edge/#azureStackEdgePro).
     

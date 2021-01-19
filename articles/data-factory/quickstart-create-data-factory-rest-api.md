@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.date: 06/10/2019
+ms.date: 01/18/2021
 ms.author: jingwang
-ms.openlocfilehash: 48928c5c4f3a2787e8f00e4084daacf6a64f1ea7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 34a2e423e06782b0d43766cccac9319ce68239d4
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461576"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569466"
 ---
 # <a name="quickstart-create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>Rychlé zprovoznění: Vytvoření datové továrny Azure a kanálu pomocí rozhraní REST API
 
@@ -34,7 +34,7 @@ Tento rychlý start popisuje použití rozhraní REST API k vytvoření datové 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -303,7 +303,7 @@ Zde je ukázkový výstup:
 ```
 ## <a name="create-pipeline"></a>Vytvoření kanálu
 
-V tomto příkladu tento kanál obsahuje jednu aktivitu a přebírá dva parametry – vstupní cestu objektů blob a výstupní cestu objektů blob. Hodnoty pro tyto parametry se nastaví při aktivaci nebo spuštění kanálu. Aktivita kopírování odkazuje na stejnou datovou sadu objektů blob, kterou jste vytvořili v předchozím kroku jako vstup a výstup. Když se tato datová sada použije jako vstupní, zadá se vstupní cesta. A když se tato datová sada použije jako výstupní, zadá se výstupní cesta.
+V tomto příkladu tento kanál obsahuje jednu aktivitu kopírování. Aktivita kopírování odkazuje na "InputDataset" a "OutputDataset" vytvořená v předchozím kroku jako vstup a výstup.
 
 ```powershell
 $request = "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${dataFactoryName}/pipelines/Adfv2QuickStartPipeline?api-version=${apiVersion}"
@@ -383,10 +383,7 @@ Zde je ukázkový výstup:
 
 ## <a name="create-pipeline-run"></a>Vytvoření spuštění kanálu
 
-V tomto kroku jako hodnoty parametrů **inputPath** a **outputPath** zadaných v kanálu nastavíte skutečné cesty k objektům blob zdroje a jímky a aktivujete spuštění kanálu. ID spuštění kanálu vrácené v textu odpovědi se použije později v rozhraní API pro monitorování.
-
-Před uložením souboru nahraďte hodnotu **inputPath** a **outputPath** cestou objektu BLOB zdroje a jímky ke zkopírování dat z a do.
-
+V tomto kroku aktivujete spuštění kanálu. ID spuštění kanálu vrácené v textu odpovědi se použije později v rozhraní API pro monitorování.
 
 ```powershell
 $request = "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/pipelines/Adfv2QuickStartPipeline/createRun?api-version=${apiVersion}"

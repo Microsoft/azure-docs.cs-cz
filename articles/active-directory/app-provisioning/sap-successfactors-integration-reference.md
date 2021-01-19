@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
 ms.workload: identity
-ms.date: 07/20/2020
+ms.date: 01/19/2021
 ms.author: chmutali
-ms.openlocfilehash: 805cdc0713afd43502bb224cce60167adbc418ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e97be7fef09287e6c4f8696e217702b97853fa6a
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90969520"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569449"
 ---
 # <a name="how-azure-active-directory-provisioning-integrates-with-sap-successfactors"></a>Jak se Azure Active Directory zřizování integruje s SAP SuccessFactors 
 
@@ -52,24 +52,25 @@ Služba zřizování Azure AD pro každého uživatele v SuccessFactors načít�
 | 3  | PerPhone                               | phoneNav                     | Vždy           |
 | 4  | PerEmail                               | emailNav                     | Vždy           |
 | 5  | EmpEmployment                          | employmentNav                | Vždy           |
-| 6  | Uživatel                                   | employmentNav/userNav        | Vždy           |
+| 6  | User                                   | employmentNav/userNav        | Vždy           |
 | 7  | EmpJob                                 | employmentNav/jobInfoNav     | Vždy           |
 | 8  | EmpEmploymentTermination               | activeEmploymentsCount       | Vždy           |
-| 9  | FOCompany                              | employmentNav/jobInfoNav/companyNav | Pouze v případě `company` , že `companyId` je namapován atribut nebo |
-| 10 | FODepartment                           | employmentNav/jobInfoNav/departmentNav | Pouze v případě `department` , že `departmentId` je namapován atribut nebo |
-| 11 | FOBusinessUnit                         | employmentNav/jobInfoNav/businessUnitNav | Pouze v případě `businessUnit` , že `businessUnitId` je namapován atribut nebo |
-| 12 | FOCostCenter                           | employmentNav/jobInfoNav/costCenterNav | Pouze v případě `costCenter` , že `costCenterId` je namapován atribut nebo |
-| 13 | FODivision                             | employmentNav/jobInfoNav/divisionNav  | Pouze v případě `division` , že `divisionId` je namapován atribut nebo |
-| 14 | FOJobCode                              | employmentNav/jobInfoNav/jobCodeNav  | Pouze v případě `jobCode` , že `jobCodeId` je namapován atribut nebo |
-| 15 | FOPayGrade                             | employmentNav/jobInfoNav/payGradeNav  | Pouze v případě, že `payGrade` je mapován atribut |
-| 16 | FOLocation                             | employmentNav/jobInfoNav/locationNav  | Pouze v případě, že `location` je mapován atribut |
-| 17 | FOCorporateAddressDEFLT                | employmentNav/jobInfoNav/addressNavDEFLT  | Pokud mapování obsahuje jeden z následujících atributů: `officeLocationAddress,  officeLocationCity, officeLocationZipCode` |
-| 18 | FOEventReason                          | employmentNav/jobInfoNav/eventReasonNav  | Pouze v případě, že `eventReason` je mapován atribut |
-| 19 | EmpGlobalAssignment                    | employmentNav/empGlobalAssignmentNav | Pouze v případě, že `assignmentType` je namapován |
-| 20 | Rozevírací seznam EmploymentType                | employmentNav/jobInfoNav/employmentTypeNav | Pouze v případě, že `employmentType` je namapován |
-| 21 | Rozevírací seznam EmployeeClass                 | employmentNav/jobInfoNav/employeeClassNav | Pouze v případě, že `employeeClass` je namapován |
-| 22 | Rozevírací seznam EmplStatus                    | employmentNav/jobInfoNav/emplStatusNav | Pouze v případě, že `emplStatus` je namapován |
-| 23 | Rozevírací seznam AssignmentType                | employmentNav/empGlobalAssignmentNav/assignmentTypeNav | Pouze v případě, že `assignmentType` je namapován |
+| 9  | Správce uživatele                         | employmentNav/userNav/Manager/empInfo | Vždy  |
+| 10 | FOCompany                              | employmentNav/jobInfoNav/companyNav | Pouze v případě `company` , že `companyId` je namapován atribut nebo |
+| 11 | FODepartment                           | employmentNav/jobInfoNav/departmentNav | Pouze v případě `department` , že `departmentId` je namapován atribut nebo |
+| 12 | FOBusinessUnit                         | employmentNav/jobInfoNav/businessUnitNav | Pouze v případě `businessUnit` , že `businessUnitId` je namapován atribut nebo |
+| 13 | FOCostCenter                           | employmentNav/jobInfoNav/costCenterNav | Pouze v případě `costCenter` , že `costCenterId` je namapován atribut nebo |
+| 14 | FODivision                             | employmentNav/jobInfoNav/divisionNav  | Pouze v případě `division` , že `divisionId` je namapován atribut nebo |
+| 15 | FOJobCode                              | employmentNav/jobInfoNav/jobCodeNav  | Pouze v případě `jobCode` , že `jobCodeId` je namapován atribut nebo |
+| 16 | FOPayGrade                             | employmentNav/jobInfoNav/payGradeNav  | Pouze v případě, že `payGrade` je mapován atribut |
+| 17 | FOLocation                             | employmentNav/jobInfoNav/locationNav  | Pouze v případě, že `location` je mapován atribut |
+| 18 | FOCorporateAddressDEFLT                | employmentNav/jobInfoNav/addressNavDEFLT  | Pokud mapování obsahuje jeden z následujících atributů: `officeLocationAddress,  officeLocationCity, officeLocationZipCode` |
+| 19 | FOEventReason                          | employmentNav/jobInfoNav/eventReasonNav  | Pouze v případě, že `eventReason` je mapován atribut |
+| 20 | EmpGlobalAssignment                    | employmentNav/empGlobalAssignmentNav | Pouze v případě, že `assignmentType` je namapován |
+| 21 | Rozevírací seznam EmploymentType                | employmentNav/jobInfoNav/employmentTypeNav | Pouze v případě, že `employmentType` je namapován |
+| 22 | Rozevírací seznam EmployeeClass                 | employmentNav/jobInfoNav/employeeClassNav | Pouze v případě, že `employeeClass` je namapován |
+| 23 | Rozevírací seznam EmplStatus                    | employmentNav/jobInfoNav/emplStatusNav | Pouze v případě, že `emplStatus` je namapován |
+| 24 | Rozevírací seznam AssignmentType                | employmentNav/empGlobalAssignmentNav/assignmentTypeNav | Pouze v případě, že `assignmentType` je namapován |
 
 ## <a name="how-full-sync-works"></a>Jak funguje Úplná synchronizace
 V závislosti na mapování atributů během úplné synchronizace služby zřizování Azure AD pošle následující dotaz "GET" rozhraní OData API, který načte efektivní data všech aktivních uživatelů. 
@@ -167,7 +168,7 @@ Výchozí schéma aplikace Azure AD SuccessFactors zřizování se dodává s [9
    * Pokud je atribut součástí entity *EmpJob* , vyhledejte atribut pod uzlem *employmentNav/jobInfoNav* . 
 1. Vytvořte cestu JSON přidruženou k atributu a přidejte tento nový atribut do seznamu atributů SuccessFactors. 
    * Příklad 1: řekněme, že chcete přidat atribut *okToRehire*, který je součástí entity *employmentNav* , pak použijte JSONPath  `$.employmentNav.results[0].okToRehire`
-   * Příklad 2: řekněme, že chcete přidat *časové pásmo*atributu, který je součástí entity *userNav* , pak použijte JSONPath. `$.employmentNav.results[0].userNav.timeZone`
+   * Příklad 2: řekněme, že chcete přidat *časové pásmo* atributu, který je součástí entity *userNav* , pak použijte JSONPath. `$.employmentNav.results[0].userNav.timeZone`
    * Příklad 3: řekněme, že chcete přidat atribut *flsaStatus*, který je součástí entity *jobInfoNav* , pak použijte JSONPath `$.employmentNav.results[0].jobInfoNav.results[0].flsaStatus`
 1. Uložte schéma. 
 1. Restartujte zřizování.
@@ -245,7 +246,7 @@ Tato změna schématu také podporuje scénář převodu pracovních procesů.
 
 Když se pro globální přiřazení zpracuje uživatel v centru zaměstnanců, SuccessFactors přidá novou entitu *EmpEmployment* a nastaví *assignmentClass* na GA. Zároveň vytvoří novou entitu *uživatele* . Proto má uživatel teď:
 * Jedna *EmpEmployment*  +  *uživatelská* entita, která odpovídá přiřazení domů s *assignmentClass* nastavenou na "St" a 
-* Další *EmpEmployment*  +  entita*uživatele* EmpEmployment, která odpovídá globálnímu přiřazení s *assignmentClass* nastavenou na "GA"
+* Další   +  entita *uživatele* EmpEmployment, která odpovídá globálnímu přiřazení s *assignmentClass* nastavenou na "GA"
 
 Chcete-li načíst atributy patřící do uživatelského profilu standardního přiřazení a globálního přiřazení, použijte následující postup: 
 

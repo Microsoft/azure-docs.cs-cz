@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 95993b35174b80dae8c878c22554ee60afeb8a14
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 57a9f6f11283e020efc25f55f1df473a6cb2d321
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92206216"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569993"
 ---
 # <a name="server-side-performance-queries"></a>Dotazy na výkon na straně serveru
 
@@ -65,9 +65,9 @@ Načtený `FrameStatistics` objekt obsahuje následující členy:
 | Člen | Vysvětlení |
 |:-|:-|
 | latencyPoseToReceive | Latence z fotoaparátu představuje odhad na klientském zařízení, dokud není rámec serveru pro tuto pozici plně dostupný klientské aplikaci. Tato hodnota zahrnuje zpáteční dobu v síti, čas vykreslování serveru, dekódování videa a kompenzaci kolísání. Viz **interval 1 na obrázku výše.**|
-| latencyReceiveToPresent | Latence z dostupnosti přijatého vzdáleného rámce, dokud klientská aplikace nevolá PresentFrame na procesor. |
-| latencyPresentToDisplay  | Latence v zobrazování snímku na CPU, dokud se nezobrazují indikátory Tato hodnota zahrnuje čas GPU klienta, všechny snímky uložené do vyrovnávací paměti prováděné operačním systémem, reprojektování hardwaru a čas vyzkoušení displeje závislého na zařízení. Viz **interval 2 na obrázku výše.**|
-| timeSinceLastPresent | Čas mezi následnými voláními PresentFrame na procesoru. Hodnoty větší než doba trvání displeje (například 16,6 MS na klientském zařízení 60-Hz) označují problémy způsobené klientskou aplikací v čase, kdy nedokončuje zatížení procesoru. Viz **interval 3 na obrázku výše.**|
+| latencyReceiveToPresent | Latence z dostupnosti přijatého vzdáleného rámce, dokud klientská aplikace nevolá PresentFrame na procesor. Viz **interval 2 na obrázku výše.**|
+| latencyPresentToDisplay  | Latence v zobrazování snímku na CPU, dokud se nezobrazují indikátory Tato hodnota zahrnuje čas GPU klienta, všechny snímky uložené do vyrovnávací paměti prováděné operačním systémem, reprojektování hardwaru a čas vyzkoušení displeje závislého na zařízení. Viz **interval 3 na obrázku výše.**|
+| timeSinceLastPresent | Čas mezi následnými voláními PresentFrame na procesoru. Hodnoty větší než doba trvání displeje (například 16,6 MS na klientském zařízení 60-Hz) označují problémy způsobené klientskou aplikací v čase, kdy nedokončuje zatížení procesoru.|
 | videoFramesReceived | Počet rámců přijatých ze serveru za poslední sekundu. |
 | videoFrameReusedCount | Počet přijatých snímků za poslední sekundu, které byly použity na zařízení více než jednou. Nenulové hodnoty označují, že se snímky musely znovu použít a znovu promítnout z důvodu kolísání sítě nebo nadměrného vykreslování serveru. |
 | videoFramesSkipped | Počet přijatých rámců za poslední sekundu, které byly Dekódovatelné, ale nebyly zobrazeny při zobrazení, protože byl přijat novější rámec. Nenulové hodnoty označují, že kolísání sítě způsobilo zpoždění více rámců a pak dorazí do klientského zařízení dohromady v shluku. |
@@ -132,7 +132,7 @@ V rozporu s `FrameStatistics` objektem `PerformanceAssessment` obsahuje objekt i
 | networkLatency | Přibližná Průměrná doba odezvy sítě v milisekundách Na ilustraci výše to odpovídá součtu červené šipky. Hodnota je vypočítána odečtením skutečného času vykreslování serveru od `latencyPoseToReceive` hodnoty `FrameStatistics` . I když tato aproximace není přesná, poskytuje určitou indikaci latence sítě, která je izolovaná od hodnot latence vypočítaných v klientovi. |
 | polygonsRendered | Počet trojúhelníků vykreslených v jednom snímku. Toto číslo zahrnuje také trojúhelníky, které byly po vygenerování později poraženy. To znamená, že toto číslo se neliší v různých polohách kamery, ale výkon se může výrazně lišit v závislosti na sazbě pro odstranení trojúhelníku.|
 
-Pro lepší vyhodnocení hodnot zahrnuje každá část klasifikaci kvality, jako je **Skvělé**, **dobrá**, **Mediocre**nebo **špatná**.
+Pro lepší vyhodnocení hodnot zahrnuje každá část klasifikaci kvality, jako je **Skvělé**, **dobrá**, **Mediocre** nebo **špatná**.
 Tato metrika posouzení poskytuje přibližnou indikaci stavu serveru, ale neměla by být zobrazena jako absolutní. Předpokládejme například, že se zobrazí skóre Mediocre pro čas GPU. Je považován za Mediocre, protože se blíží limitu pro celkové časové náklady v rámci rámce. V takovém případě může být nicméně dobrá hodnota, protože vykreslujete složitý model.
 
 ## <a name="statistics-debug-output"></a>Statistika ladění výstupu
