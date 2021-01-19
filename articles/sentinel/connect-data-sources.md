@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: e294423e3f078253984dc4fcd8695c2676abb236
-ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
+ms.openlocfilehash: cffc41264dfa30fd833aef465a13abc799334b2f
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98541253"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567477"
 ---
 # <a name="connect-data-sources"></a>Připojení zdrojů dat
 
@@ -69,7 +69,7 @@ Služba Azure Sentinel podporuje následující metody datového připojení:
     - [Alcide kAudit](connect-alcide-kaudit.md)
     - [Barracuda WAF](connect-barracuda.md)
     - [Barracuda CloudGen Firewall](connect-barracuda-cloudgen-firewall.md)
-    - [LEPŠÍ ochrany před mobilními hrozbami](connect-better-mtd.md)
+    - [BETTER Mobile Threat Defense](connect-better-mtd.md)
     - [Beyond Security beSECURE](connect-besecure.md)
     - [Citrix Analytics (Security)](connect-citrix-analytics.md)
     - [F5 BIG-IP](connect-f5-big-ip.md)
@@ -77,8 +77,10 @@ Služba Azure Sentinel podporuje následující metody datového připojení:
     - [Okta SSO](connect-okta-single-sign-on.md)
     - [Orca Security](connect-orca-security-alerts.md)
     - [Protokoly Perimeteru 81](connect-perimeter-81-logs.md)
+    - [Zabezpečení e-mailu Proofpoint na vyžádání (POD)](connect-proofpoint-pod.md)
     - [Proofpoint TAP](connect-proofpoint-tap.md)
     - [Qualys VM](connect-qualys-vm.md)
+    - [Cloud služeb Salesforce](connect-salesforce-service-cloud.md)
     - [Squadra Technologies secRMM](connect-squadra-secrmm.md)
     - [Symantec ICDX](connect-symantec.md)
     - [VMware Carbon Black Cloud Endpoint Standard](connect-vmware-carbon-black.md)
@@ -104,15 +106,19 @@ Služba Azure Sentinel podporuje následující metody datového připojení:
         - [Illusive Networks AMS](connect-illusive-attack-management-system.md)
         - [One Identity Safeguard](connect-one-identity.md)
         - [Palo Alto Networks](connect-paloalto.md)
+        - [Thycotic tajný server](connect-thycotic-secret-server.md)
         - [Trend Micro Deep Security](connect-trend-micro.md)
         - [Trend Micro TippingPoint](connect-trend-micro-tippingpoint.md)
         - [WireX Network forenzní Platform](connect-wirex-systems.md)
         - [Zscaler](connect-zscaler.md)
         - [Jiná zařízení na bázi CEF](connect-common-event-format.md)
     - **Brány firewall, proxy servery a koncové body – syslog:**
+        - [UCS (Cisco Unified Computing System)](connect-cisco-ucs.md)
         - [Infoblox NIOS](connect-infoblox.md)
+        - [Juniper SRX](connect-juniper-srx.md)
         - [Pulse Connect Secure](connect-pulse-connect-secure.md)
         - [Sophos XG](connect-sophos-xg-firewall.md)
+        - [Proxy Squid](connect-squid-proxy.md)
         - [Symantec Proxy SG](connect-symantec-proxy-sg.md)
         - [Symantec VIP](connect-symantec-vip.md)
         - [Jiná zařízení založená na protokolu syslog](connect-syslog.md)

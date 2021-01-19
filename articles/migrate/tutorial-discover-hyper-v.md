@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: 109f61d9ff76d084b292dbe3cc8ce663b50141ae
-ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
+ms.openlocfilehash: eb10001436d3184b89aa064ec82fcd1f56bea931
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98541321"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98566919"
 ---
 # <a name="tutorial-discover-hyper-v-vms-with-server-assessment"></a>Kurz: zjišťování virtuálních počítačů Hyper-V pomocí posouzení serveru
 
@@ -79,10 +79,41 @@ Pokud jste si právě vytvořili bezplatný účet Azure, jste vlastníkem vaše
 
 ## <a name="prepare-hyper-v-hosts"></a>Příprava hostitelů technologie Hyper-V
 
-Nastavte účet s přístupem správce na hostitelích Hyper-V. Zařízení používá tento účet ke zjišťování.
+Hostitele Hyper-V můžete připravit ručně nebo pomocí skriptu. Přípravné kroky jsou shrnuté v tabulce. Tento skript automaticky připraví.
 
-- Možnost 1: Připravte účet s přístupem správce k hostitelskému počítači Hyper-V.
-- Možnost 2: Pokud nechcete přiřazovat oprávnění správce, vytvořte místní účet nebo uživatelský účet domény a přidejte ho do těchto skupin – Uživatelé vzdálené správy, Správci technologie Hyper-V a uživatelé nástroje Performance Monitor.
+**Krok** | **Skript** | **Ruční**
+--- | --- | ---
+Ověření požadavků hostitele | Kontroluje, zda je na hostiteli spuštěná podporovaná verze technologie Hyper-V a role Hyper-V.<br/><br/>Povolí službu WinRM a na hostiteli otevře porty 5985 (HTTP) a 5986 (HTTPS) (potřebné pro kolekci metadat). | V hostiteli musí být spuštěný systém Windows Server 2019, Windows Server 2016 nebo Windows Server 2012 R2.<br/><br/> Ověřte, že jsou povolená příchozí připojení na portu WinRM 5985 (HTTP), aby se zařízení mohlo připojit k vyžádanému metadatům virtuálních počítačů a datům výkonu pomocí model CIM (Common Information Model) (CIM) relace.
+Ověřit verzi PowerShellu | Kontroluje, zda spouštíte skript v podporované verzi prostředí PowerShell. | Podívejte se na hostitele Hyper-V, na kterém běží PowerShell verze 4,0 nebo novější.
+Vytvoření účtu | Ověřuje, zda máte správná oprávnění pro hostitele Hyper-V.<br/><br/> Umožňuje vytvořit místní uživatelský účet se správnými oprávněními. | Možnost 1: Připravte účet s přístupem správce k hostitelskému počítači Hyper-V.<br/><br/> Možnost 2: Připravte účet místního správce nebo účet správce domény a přidejte tento účet do těchto skupin: Uživatelé vzdálené správy, Správci technologie Hyper-V a uživatelé nástroje Performance Monitor.
+Povolit vzdálenou komunikaci PowerShellu | Povolí vzdálenou komunikaci PowerShellu na hostiteli, aby zařízení Azure Migrate mohlo spouštět na hostiteli příkazy PowerShellu přes připojení WinRM. | Pokud chcete nastavit, otevřete v každém hostiteli konzolu PowerShellu jako správce a spusťte tento příkaz: ``` powershell Enable-PSRemoting -force ```
+Nastavení integračních služeb technologie Hyper-V | Kontroluje, zda jsou integrační služby technologie Hyper-V povoleny na všech virtuálních počítačích spravovaných hostitelem. | Povolte na každém virtuálním počítači [integrační služby technologie Hyper-V](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services.md) .<br/><br/> Pokud používáte systém Windows Server 2003, [postupujte podle těchto pokynů](prepare-windows-server-2003-migration.md).
+Delegovat přihlašovací údaje, pokud se disky virtuálních počítačů nacházejí ve vzdálených sdílených složkách protokolu SMB | Delegáti pověření | Spuštěním tohoto příkazu povolíte zprostředkovateli CredSSP delegovat přihlašovací údaje na hostitelích, na kterých běží virtuální počítače Hyper-V s disky ve sdílených složkách SMB: ```powershell Enable-WSManCredSSP -Role Server -Force ```<br/><br/> Tento příkaz můžete spustit vzdáleně na všech hostitelích Hyper-V.<br/><br/> Pokud přidáte nové uzly hostitele v clusteru, jsou automaticky přidány pro zjišťování, ale je nutné povolit zprostředkovatele CredSSP ručně.<br/><br/> Když zařízení nastavíte, dokončíte nastavení CredSSP [jeho povolením na zařízení](#delegate-credentials-for-smb-vhds). 
+
+### <a name="run-the-script"></a>Spuštění skriptu
+
+1. Stáhněte si skript z webu [Microsoft Download Center](https://aka.ms/migrate/script/hyperv). Skript je kryptograficky podepsán společností Microsoft.
+2. Ověřte integritu skriptu buď pomocí MD5, nebo souborů SHA256 hash. Hodnoty hashtagu jsou uvedené níže. Spuštěním tohoto příkazu vygenerujte hodnotu hash pro tento skript:
+
+    ```powershell
+    C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]
+    ```
+    Příklad použití:
+
+    ```powershell
+    C:\>CertUtil -HashFile C:\Users\Administrators\Desktop\ MicrosoftAzureMigrate-Hyper-V.ps1 SHA256
+    ```
+3. Po ověření integrity skriptu spusťte skript na každém hostiteli Hyper-V pomocí tohoto příkazu PowerShellu:
+
+    ```powershell
+    PS C:\Users\Administrators\Desktop> MicrosoftAzureMigrate-Hyper-V.ps1
+    ```
+Hodnoty hash jsou:
+
+**Hash** |  **Hodnota**
+--- | ---
+MD5 | 0ef418f31915d01f896ac42a80dc414e
+SHA256 | 0ad60e7299925eff4d1ae9f1c7db485dc9316ef45b0964148a3c07c80761ade2
 
 ## <a name="set-up-a-project"></a>Nastavení projektu
 

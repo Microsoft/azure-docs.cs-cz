@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.openlocfilehash: 67d4137a21753b221e17a1effde35bc1b89600d3
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: f52c0296023098c755feb1bf0baba980f2988bd7
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753803"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567716"
 ---
 # <a name="server-assessment-overview-migrate-to-azure-vmware-solution"></a>Přehled posouzení serveru (migrace do řešení VMware Azure)
 
@@ -207,6 +207,8 @@ Po určení efektivní hodnoty využití se velikost úložiště, sítě a výp
 
 Pokud používáte *jako místní velikost*, posouzení serveru nebere v úvahu historii výkonu virtuálních počítačů a disků. Místo toho přiděluje uzly AVS v závislosti na velikosti přidělené místně. Výchozí typ úložiště je síti vSAN v AVS.
 
+[Přečtěte si další informace](https://docs.microsoft.com/azure/migrate/tutorial-assess-vmware-azure-vmware-solution#review-an-assessment) o tom, jak zkontrolovat vyhodnocení řešení Azure VMware.
+
 ## <a name="confidence-ratings"></a>Hodnocení spolehlivosti
 
 Každé posouzení na základě výkonu v Azure Migrate je přidruženo k hodnocení spolehlivosti, které je v rozsahu od jednoho (nejnižší) po pět hvězdiček (nejvyšší).
@@ -235,9 +237,15 @@ V závislosti na procentu dostupných datových bodů se hodnocení spolehlivost
 
 Tady je několik důvodů, proč hodnocení může získat nízkou spolehlivost:
 
-- Nevytvořili jste profil svého prostředí po dobu, po kterou vytváříte posouzení. Pokud například vytvoříte hodnocení s trváním výkonu nastaveným na jeden den, musíte po spuštění zjišťování pro všechny datové body, které se mají shromáždit, počkat aspoň jeden den.
-- Některé virtuální počítače se vypnuly během období, pro které se hodnocení vypočítalo. Pokud jsou některé virtuální počítače po určitou dobu vypnuté, vyhodnocování serveru nemůže shromažďovat data o výkonu pro tuto dobu.
-- Některé virtuální počítače byly vytvořeny během období, pro které bylo hodnocení vypočítáno. Pokud jste například vytvořili vyhodnocení pro historii výkonu za poslední měsíc, ale některé virtuální počítače byly vytvořeny pouze před týdnem, historie výkonu nových virtuálních počítačů nebude po celou dobu trvání k dispozici.
+- Nevytvořili jste profil svého prostředí po dobu, po kterou vytváříte posouzení. Pokud například vytvoříte hodnocení s trváním výkonu nastaveným na jeden den, musíte počkat alespoň den po zahájení zjišťování všech datových bodů, které se mají shromáždit.
+- Posouzení nemůže shromáždit údaje o výkonu pro některé nebo všechny virtuální počítače v období posouzení. Pro hodnocení s vysokou mírou jistoty Prosím zajistěte: 
+    - Virtuální počítače jsou napájené po dobu trvání posouzení.
+    - Odchozí připojení na portech 443 jsou povolená.
+    - Pro virtuální počítače Hyper-V je povolená dynamická paměť. 
+    
+    Přepočítejte posouzení, aby se projevily poslední změny míry spolehlivosti.
+
+- Některé virtuální počítače byly vytvořeny během doby, kdy bylo hodnocení vypočítáno. Předpokládejme například, že jste vytvořili posouzení historie výkonu za poslední měsíc, ale některé virtuální počítače byly vytvořeny pouze v týdnu. V takovém případě nebudou k dispozici data o výkonu nových virtuálních počítačů za celou dobu trvání a míra spolehlivosti bude nízká.
 
 > [!NOTE]
 > Pokud je hodnocení spolehlivosti nějakého posouzení menší než pět hvězdiček, doporučujeme, abyste počkali aspoň jeden den, než zařízení profiluje prostředí, a pak posouzení přepočítá. Pokud to neuděláte, velikost na základě výkonu nemusí být spolehlivá. V takovém případě doporučujeme, abyste přepnuli posouzení na místní nastavení velikosti.

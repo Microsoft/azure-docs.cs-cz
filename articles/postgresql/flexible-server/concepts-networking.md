@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: cf7c5fa8563544add55a7fad5075848eb5116fe1
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: c30c01a18a17981b4e034c9df2cf822e6580430e
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96901928"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567738"
 ---
 # <a name="networking-overview---azure-database-for-postgresql---flexible-server"></a>Přehled sítí – Azure Database for PostgreSQL – flexibilní Server
 
@@ -74,7 +74,7 @@ Tady je několik konceptů, se kterými se můžete seznámit při používání
 Přečtěte si, jak vytvořit flexibilní Server s privátním přístupem (Integration VNet) v [Azure Portal](how-to-manage-virtual-network-portal.md) nebo [v rozhraní příkazového řádku Azure](how-to-manage-virtual-network-cli.md).
 
 > [!NOTE]
-> Pokud používáte vlastní server DNS, musíte k překladu plně kvalifikovaného názvu domény Azure Database for MySQL flexibilního serveru použít službu DNS pro přeposílání. Další informace najdete [v tématu Překlad názvů, který používá vlastní server DNS](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) .
+> Pokud používáte vlastní server DNS, musíte k překladu plně kvalifikovaného názvu domény Azure Database for PostgreSQL flexibilního serveru použít službu DNS pro přeposílání. Další informace najdete [v tématu Překlad názvů, který používá vlastní server DNS](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) .
 
 ## <a name="public-access-allowed-ip-addresses"></a>Veřejný přístup (povolené IP adresy)
 Mezi charakteristiky metody veřejného přístupu patří:
@@ -83,7 +83,7 @@ Mezi charakteristiky metody veřejného přístupu patří:
 * Flexibilní Server není v jedné z vašich virtuálních sítí Azure.
 * Síťový provoz do a ze serveru nepřekračuje privátní síť. Provoz používá obecné internetové cesty.
 
-### <a name="firewall-rules"></a>Pravidla brány firewall
+### <a name="firewall-rules"></a>Pravidla firewallu
 Udělení oprávnění k IP adrese se nazývá pravidlo brány firewall. Pokud se pokus o připojení dostane z IP adresy, kterou jste nepovolili, zobrazí se v původním klientovi chyba.
 
 Naučte se, jak vytvořit flexibilní Server s veřejným přístupem (povolenými IP adresami) v [Azure Portal](how-to-manage-firewall-portal.md) nebo [v rozhraní příkazového řádku Azure](how-to-manage-firewall-cli.md).

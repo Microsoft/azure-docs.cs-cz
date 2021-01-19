@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/12/2021
 ms.author: yelevin
-ms.openlocfilehash: 549b4e1e5e1aef3f6957fa52d69d252c55934286
-ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
+ms.openlocfilehash: 989520e079988e1821d8bb9a936f857e1f62c11a
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98541552"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567760"
 ---
 # <a name="connect-your-trend-micro-tippingpoint-solution-to-azure-sentinel"></a>Připojení řešení Trend Micro TippingPoint k Azure Sentinel
 
@@ -32,7 +32,7 @@ V tomto článku se dozvíte, jak připojit řešení System pro ochranu před h
 > [!NOTE]
 > Data budou uložená v geografickém umístění pracovního prostoru, na kterém běží Azure Sentinel.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Musíte mít oprávnění ke čtení a zápisu v pracovním prostoru Sentinel Azure.
 
@@ -48,15 +48,15 @@ Pokud chcete získat své protokoly do služby Azure Sentinel, nakonfigurujte sv
 
 1. Postupujte podle pokynů na kartě **pokyny** v části **Konfigurace**:
 
-    1. **1. Linux konfigurace agenta SYSLOG** – tento krok proveďte v případě, že ještě nemáte spuštěný Server pro překládání protokolů, nebo pokud potřebujete nějaký jiný. Podrobnější pokyny a vysvětlení najdete v části [Krok 1: nasazení služby pro](connect-cef-agent.md) překládání protokolů v dokumentaci k ověřovacím službám Azure.
+    1. V části **1. Konfigurace agenta syslog pro Linux** – tento krok proveďte, pokud ještě nemáte spuštěný Server pro překládání protokolů, nebo pokud ho potřebujete. Podrobnější pokyny a vysvětlení najdete v části [Krok 1: nasazení služby pro](connect-cef-agent.md) překládání protokolů v dokumentaci k ověřovacím službám Azure.
 
-    1. **2. předávejte od agenta syslog protokol SMS od trendu**
+    1. V části **2. Přeposílání protokolu SMS Trend Micro TippingPoint do agenta SYSLOG** – Tato konfigurace by měla zahrnovat tyto prvky:
         - Cíl protokolu – název hostitele nebo IP adresa serveru pro předávání protokolů
         - Protokol a port – **TCP 514** (Pokud je to možné jinak, nezapomeňte provést paralelní změnu v procesu démona syslog na serveru pro předávání protokolů)
         - Formát protokolu – **ARCSIGHT CEF Format v 4.2**
         - Typy protokolů – všechny dostupné
 
-    1. **3. ověření připojení** – ověřte příjem dat zkopírováním příkazu na stránce konektoru a jeho spuštěním na serveru pro přeposílání protokolů. Podrobnější pokyny a vysvětlení najdete v části [Krok 3: ověření připojení](connect-cef-verify.md) v dokumentaci k ověřovacím službám Azure.
+    1. V části **3. Ověřit připojení** – ověřte příjem dat zkopírováním příkazu na stránce konektoru a jeho spuštěním na serveru pro přeposílání protokolů. Podrobnější pokyny a vysvětlení najdete v části [Krok 3: ověření připojení](connect-cef-verify.md) v dokumentaci k ověřovacím službám Azure.
 
         Může trvat až 20 minut, než se vaše protokoly začnou zobrazovat v Log Analytics.
 

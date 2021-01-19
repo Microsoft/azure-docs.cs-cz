@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
-ms.date: 01/15/2021
-ms.openlocfilehash: 8c2739503f00848b1515f2061c2a9aa250c091a3
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.date: 01/18/2021
+ms.openlocfilehash: f802292d9723179b36d5291993bd4e07487fe6a8
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539848"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567384"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>Řešení potíží s certifikací virtuálního počítače
 
@@ -54,7 +54,7 @@ Ujistěte se, že jste před odesláním nabídky ověřili, že jste provedli p
 
 Problémy zřizování můžou zahrnovat tyto scénáře selhání:
 
-|Scenario|Chybová|Důvod|Řešení|
+|Scenario|Chyba|Důvod|Řešení|
 |---|---|---|---|
 |1|Neplatný virtuální pevný disk (VHD)|Pokud je zadaná hodnota souboru cookie v zápatí VHD nesprávná, bude virtuální pevný disk považován za neplatný.|Znovu vytvořte bitovou kopii a odešlete žádost.|
 |2|Neplatný typ objektu BLOB|Zřizování virtuálního počítače se nezdařilo, protože použitý blok je typ objektu BLOB místo typu stránky.|Znovu vytvořte bitovou kopii a odešlete žádost.|
@@ -70,7 +70,7 @@ Problémy zřizování můžou zahrnovat tyto scénáře selhání:
 
 ### <a name="conectix-cookie-and-other-vhd-specifications"></a>Conectix soubor cookie a další specifikace VHD
 
-Řetězec ' conectix ' je součástí specifikace VHD. Je definovaný jako soubor cookie o velikosti 8 bajtů v zápatí VHD, který identifikuje tvůrce souboru. Tento soubor cookie mají všechny soubory VHD vytvořené Microsoftem. 
+Řetězec ' conectix ' je součástí specifikace VHD. Je definovaný jako soubor cookie o velikosti 8 bajtů v zápatí VHD, který identifikuje tvůrce souboru. Tento soubor cookie mají všechny soubory VHD vytvořené Microsoftem.
 
 Objekt BLOB ve formátu VHD by měl mít formát 512-byte v tomto formátu:
 
@@ -144,7 +144,7 @@ V následující tabulce jsou uvedeny testovací případy pro Linux, které sad
 
 V následující tabulce najdete běžné chyby, které se můžou zobrazit při spuštění testovacích případů:
 
-| Scenario | Testovací případ | Chybová | Řešení |
+| Scenario | Testovací případ | Chyba | Řešení |
 | --- | --- | --- | --- |
 | 1 | Testovací případ verze agenta pro Linux | Minimální verze agenta pro Linux je 2.2.41 nebo novější. Tento požadavek byl povinný od 1. května 2020. | Aktualizujte verzi agenta pro Linux. Měl by být 2,241 nebo novější. Další informace najdete na [stránce aktualizace verze agenta pro Linux](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support). |
 | 2 | Testovací případ historie bash | Pokud je velikost historie bash v odeslaném obrázku větší než 1 kilobajt (KB), dojde k chybě. Velikost je omezená na 1 KB, aby se zajistilo, že soubor historie bash neobsahuje žádné potenciálně citlivé informace. | Vyřešte připojením virtuálního pevného disku k jinému pracovnímu virtuálnímu počítači a proveďte změny a zmenšete velikost na 1 KB nebo méně. Odstraňte například `.bash` soubory historie. |
@@ -311,14 +311,14 @@ Odeslání žádosti s imagí zakázaného SSH pro proces certifikace:
 
 V následující tabulce najdete případné problémy, které vznikají při stažení image virtuálního počítače s adresou URL sdíleného přístupového podpisu (SAS).
 
-|Scenario|Chybová|Důvod|Řešení|
-|---|---|---|---|
-|1|Objekt BLOB se nenašel.|Virtuální pevný disk může být buď odstraněn, nebo přesunut ze zadaného umístění.|| 
-|2|Používaný objekt BLOB|VHD používá jiný interní proces.|Virtuální pevný disk by měl být v používaném stavu, když ho stáhnete s adresou URL SAS.|
-|3|Neplatná adresa URL SAS|Přidružená adresa URL SAS pro virtuální pevný disk je nesprávná.|Získejte správnou adresu URL SAS.|
-|4|Neplatný podpis|Přidružená adresa URL SAS pro virtuální pevný disk je nesprávná.|Získejte správnou adresu URL SAS.|
-|6|Podmíněná hlavička HTTP|Adresa URL SAS není platná.|Získejte správnou adresu URL SAS.|
-|7|Neplatný název VHD|Zkontrolujte, jestli v názvu VHD existují nějaké speciální znaky, jako je například znak procenta `%` nebo uvozovky `"` .|Přejmenujte soubor VHD odebráním speciálních znaků.|
+|Chyba|Důvod|Řešení|
+|---|---|---|
+|Objekt BLOB se nenašel.|Virtuální pevný disk může být buď odstraněn, nebo přesunut ze zadaného umístění.|| 
+|Používaný objekt BLOB|VHD používá jiný interní proces.|Virtuální pevný disk by měl být v používaném stavu, když ho stáhnete s adresou URL SAS.|
+|Neplatná adresa URL SAS|Přidružená adresa URL SAS pro virtuální pevný disk je nesprávná.|Získejte správnou adresu URL SAS.|
+|Neplatný podpis|Přidružená adresa URL SAS pro virtuální pevný disk je nesprávná.|Získejte správnou adresu URL SAS.|
+|Podmíněná hlavička HTTP|Adresa URL SAS není platná.|Získejte správnou adresu URL SAS.|
+|Neplatný název VHD|Zkontrolujte, jestli v názvu VHD existují nějaké speciální znaky, jako je například znak procenta `%` nebo uvozovky `"` .|Přejmenujte soubor VHD odebráním speciálních znaků.|
 |
 
 ## <a name="first-1-mb-2048-sectors-each-sector-of-512-bytes-partition"></a>Prvních 1 MB (2048 sektorů, každý sektor v 512 bajtech) oddíl
@@ -470,7 +470,7 @@ Pokud se mají znovu použít všechny image z Azure Marketplace, musí být vir
 
 Pro řešení chyb souvisejících s datovým diskem použijte následující tabulku:
 
-|Chybová|Důvod|Řešení|
+|Chyba|Důvod|Řešení|
 |---|---|---|
 |`DataDisk- InvalidUrl:`|K této chybě může dojít při odeslání nabídky z důvodu neplatné logické jednotky (LUN).|Ověřte, že je pořadí čísel LUN pro datový disk v partnerském centru.|
 |`DataDisk- NotFound:`|K této chybě může dojít, protože datový disk není umístěný na zadané adrese URL SAS.|Ověřte, že je datový disk umístěný na zadané adrese URL SAS.|
@@ -558,7 +558,7 @@ Poskytnutí pevné image virtuálního počítače k nahrazení image virtuáln�
 
 #### <a name="provide-a-new-vm-image-to-address-the-security-vulnerability-or-exploit"></a>Zadejte novou image virtuálního počítače pro řešení ohrožení zabezpečení nebo zneužití.
 
-Chcete-li provést tento postup, připravte technické prostředky pro bitovou kopii virtuálního počítače, kterou chcete přidat. Další informace najdete v tématu [Vytvoření virtuálního počítače pomocí schválené základny](azure-vm-create-using-approved-base.md)nebo [Vytvoření virtuálního počítače pomocí vlastní image](azure-vm-create-using-own-image.md) a [vygenerování identifikátoru URI SAS pro vaši image virtuálního počítače](azure-vm-get-sas-uri.md).
+Chcete-li provést tento postup, připravte technické prostředky pro bitovou kopii virtuálního počítače, kterou chcete přidat. Další informace najdete v tématu [Vytvoření virtuálního počítače pomocí schválené základny](azure-vm-create-using-approved-base.md) nebo [Vytvoření virtuálního počítače pomocí vlastní image](azure-vm-create-using-own-image.md) a [vygenerování identifikátoru URI SAS pro vaši image virtuálního počítače](azure-vm-get-sas-uri.md).
 
 1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/home).
 1. V levém podokně vyberte přehled **komerčního tržiště**  >  .

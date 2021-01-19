@@ -7,18 +7,18 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 11/04/2020
-ms.openlocfilehash: a2e5cd43add6db080441812e4350d6f003ef81a2
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: b8f3a8e06bb27051417205c4dc3141948960bb00
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98538492"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567805"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-by-using-the-azure-portal"></a>Rychlý Start: vytvoření serveru Azure Database for MySQL pomocí Azure Portal
 
 Azure Database for MySQL je spravovaná služba, pomocí které můžete spouštět, spravovat a škálovat vysoce dostupné databáze MySQL v cloudu. V tomto rychlém startu se dozvíte, jak pomocí Azure Portal vytvořit Azure Database for MySQL jeden server. Také se dozvíte, jak se připojit k serveru.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Vyžaduje se předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="create-an-azure-database-for-mysql-single-server"></a>Vytvoření jednoho serveru Azure Database for MySQL
@@ -45,7 +45,7 @@ Vyžaduje se předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvo
    Název serveru | **mydemoserver** | Zadejte jedinečný název. Název serveru může obsahovat pouze malá písmena, číslice a znak spojovníku (-). Musí obsahovat 3 až 63 znaků.
    Zdroj dat |**Žádný** | Pokud chcete vytvořit nový server úplně od začátku, vyberte **Žádný**. **Zálohování** vyberte jenom v případě, že obnovujete z geografické zálohy existujícího serveru.
    Umístění |Vaše požadované umístění | Vyberte umístění ze seznamu.
-   Verze | Nejnovější hlavní verze| Použijte nejnovější hlavní verzi. Zobrazit [všechny podporované verze](../mysql/concepts-supported-versions.md).
+   Verze | Nejnovější hlavní verze| Použijte nejnovější hlavní verzi. Zobrazit [všechny podporované verze](concepts-supported-versions.md).
    Výpočty + úložiště | Použít výchozí| Výchozí cenová úroveň je **pro obecné účely** se **4 virtuální jádra** a **100 GB** úložiště. Uchovávání záloh je nastaveno na **7 dní** s možností **geograficky redundantního** zálohování.<br/>Projděte si stránku s [cenami](https://azure.microsoft.com/pricing/details/mysql/) a aktualizujte výchozí nastavení, pokud potřebujete.
    Uživatelské jméno správce | **mydemoadmin** | Zadejte uživatelské jméno správce serveru. Pro uživatelské jméno správce nemůžete použít **azure_superuser**, **admin**, **Administrator**, **root**, **Guest** ani **Public** .
    Heslo | Heslo | Nové heslo pro uživatele správce serveru. Heslo musí mít délku 8 až 128 znaků a obsahovat kombinaci velkých a malých písmen, číslic a jiných než alfanumerických znaků (!, $, #,% a tak dále).

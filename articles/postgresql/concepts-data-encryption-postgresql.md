@@ -6,16 +6,16 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: c2a6a88e9f730e17c929cf7949352448903435f6
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 730d12558e413d96909914d06187d0d5f89ec661
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98118451"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567522"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>Azure Database for PostgreSQL šifrování dat s jedním serverem pomocí klíče spravovaného zákazníkem
 
-Služba Azure PostgreSQL využívá [šifrování Azure Storage](../storage/common/storage-service-encryption.md) k šifrování neaktivních dat ve výchozím nastavení pomocí klíčů spravovaných Microsoftem. Pro uživatele Azure PostgreSQL je velmi podobné transparentnímu Encruption dat (TDE) v jiných databázích, jako je například SQL Server. Mnoho organizací vyžaduje úplné řízení přístupu k datům pomocí klíče spravovaného zákazníkem. Šifrování dat pomocí klíčů spravovaných zákazníkem pro Azure Database for PostgreSQL jediným serverem vám umožní přinést si vlastní klíč (BYOK) pro ochranu dat v klidovém prostředí. Umožňuje také organizacím implementovat oddělení povinností při správě klíčů a dat. V případě šifrování spravovaného zákazníkem máte úplnou kontrolu nad životním cyklem klíčů, oprávněními k používání klíčů a auditováním operací s klíči, za které také zodpovídáte.
+Služba Azure PostgreSQL využívá [šifrování Azure Storage](../storage/common/storage-service-encryption.md) k šifrování neaktivních dat ve výchozím nastavení pomocí klíčů spravovaných Microsoftem. Pro uživatele Azure PostgreSQL se jedná o velmi podobné transparentní šifrování dat (TDE) v jiných databázích, jako je například SQL Server. Mnoho organizací vyžaduje úplné řízení přístupu k datům pomocí klíče spravovaného zákazníkem. Šifrování dat pomocí klíčů spravovaných zákazníkem pro Azure Database for PostgreSQL jediným serverem vám umožní přinést si vlastní klíč (BYOK) pro ochranu dat v klidovém prostředí. Umožňuje také organizacím implementovat oddělení povinností při správě klíčů a dat. V případě šifrování spravovaného zákazníkem máte úplnou kontrolu nad životním cyklem klíčů, oprávněními k používání klíčů a auditováním operací s klíči, za které také zodpovídáte.
 
 Šifrování dat pomocí klíčů spravovaných zákazníkem pro Azure Database for PostgreSQL jeden server je nastaveno na úrovni serveru. Pro daný server se k zašifrování datového šifrovacího klíče (klíč DEK) používaného službou používá klíč spravovaný zákazníkem (KEK), který se nazývá klíč šifrovací klíč (). KEK je asymetrický klíč uložený v instanci [Azure Key Vault](../key-vault/general/secure-your-key-vault.md) spravované zákazníkem a zákazníkem. Klíč šifrování klíče (KEK) a šifrovací klíč (klíč DEK) jsou podrobněji popsány dále v tomto článku.
 

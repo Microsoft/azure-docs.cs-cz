@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 01/02/2021
 ms.custom: MVC
-ms.openlocfilehash: aac949de0b0ae1f085187c1b5e1f3b64d8edad03
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: c0f4f1d7f0213ad24d25d8d34235475bbdb0316a
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233810"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567096"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>Migrace počítačů jako fyzických serverů do Azure
 
@@ -163,6 +163,8 @@ V počítačích, které chcete migrovat, je potřeba nainstalovat agenta služb
     - Přístupové heslo můžete získat na zařízení replikace. Z příkazového řádku spusťte **C:\ProgramData\ASR\home\svsystems\bin\genpassphrase.exe-v** pro zobrazení aktuálního přístupového hesla.
     - Neobnovujte heslo znovu. Tím dojde k přerušení připojení a bude nutné znovu zaregistrovat zařízení replikace.
 
+> [!NOTE]
+> V parametru */Platform* zadáte *VMware* , pokud migrujete virtuální počítače VMware nebo fyzické počítače.
 
 ### <a name="install-on-windows"></a>Instalace v systému Windows
 

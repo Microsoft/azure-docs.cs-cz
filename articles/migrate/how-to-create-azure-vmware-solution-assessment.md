@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 93d17ec2a4fb5c191ce02c73a7a3532e9c854b00
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: fb1ec55bc68ccc323f8dee90982a9169e3085219
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752069"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567651"
 ---
 # <a name="create-an-azure-vmware-solution-avs-assessment"></a>Vytvoření posouzení řešení Azure VMware (AVS)
 
@@ -58,27 +58,29 @@ Spusťte posouzení řešení Azure VMware (AVS) následujícím způsobem:
 
     ![Snímek obrazovky ukazuje Azure Migrate servery s vyhodnocením vybraným v části nástroje pro posouzení.](./media/how-to-create-assessment/assess.png)
 
-3. V okně **vyhodnotit servery** vyberte typ posouzení jako "Azure VMware Solution (AVS)", vyberte zdroj zjišťování a zadejte název posouzení.
+3. V okně **vyhodnotit servery** vyberte typ posouzení jako "Azure VMware Solution (AVS)", vyberte zdroj zjišťování.
 
-    ![Základní informace o posouzení](./media/how-to-create-avs-assessment/assess-servers-avs.png)
+    :::image type="content" source="./media/how-to-create-avs-assessment/assess-servers-avs.png" alt-text="Přidat základy hodnocení":::
 
-4. Kliknutím na **Zobrazit vše** zobrazíte vlastnosti posouzení.
+4. Klikněte na **Upravit** a zkontrolujte vlastnosti posouzení.
 
-    ![Vlastnosti vyhodnocení pro funkci AVS](./media/how-to-create-avs-assessment/avs-view-all.png)
+    :::image type="content" source="./media/tutorial-assess-vmware-azure-vmware-solution/assess-servers.png" alt-text="Umístění tlačítka pro úpravy pro kontrolu vlastností posouzení":::
 
-5. Kliknutím na **Další** přejděte do části **Vybrat počítače, které se mají posoudit**. V části **Vybrat nebo vytvořit skupinu** vyberte **Vytvořit novou** a zadejte název skupiny. Skupina sdružuje jeden nebo více virtuálních počítačů pro posouzení.
+1. V části **Vybrat počítače pro vyhodnocení**  >  **názvu vyhodnocení** > zadejte název posouzení. 
+ 
+1. V **Vyberte nebo vytvořte skupinu** > vyberte **vytvořit novou** a zadejte název skupiny. Skupina sdružuje jeden nebo více virtuálních počítačů pro posouzení.
+    
+    :::image type="content" source="./media/tutorial-assess-vmware-azure-vmware-solution/assess-group.png" alt-text="Přidání virtuálních počítačů do skupiny":::
 
-6. V části **přidat počítače do skupiny** vyberte virtuální počítače, které chcete do skupiny přidat.
+1. V části **přidat počítače do skupiny** vyberte virtuální počítače, které chcete do skupiny přidat.
 
-7. Kliknutím na **Další** přejděte do části **Zkontrolovat a vytvořit posouzení** a zkontrolujte podrobnosti o posouzení.
+1. Kliknutím na **Další** přejděte do části **Zkontrolovat a vytvořit posouzení** a zkontrolujte podrobnosti o posouzení.
 
-8. Kliknutím na **vytvořit posouzení** vytvořte skupinu a spusťte posouzení.
+1. Kliknutím na **vytvořit posouzení** vytvořte skupinu a spusťte posouzení.
 
-    ![Vytvoření hodnocení AVS](./media/how-to-create-avs-assessment/avs-assessment-create.png)
+1. Po vytvoření můžete posouzení zobrazit v části **Servery** > **Azure Migrate: Hodnocení serverů** > **Posouzení**.
 
-9. Po vytvoření můžete posouzení zobrazit v části **Servery** > **Azure Migrate: Hodnocení serverů** > **Posouzení**.
-
-10. Klikněte na **Exportovat posouzení** a stáhněte ho jako excelový soubor.
+1. Klikněte na **Exportovat posouzení** a stáhněte ho jako excelový soubor.
 
 
 ## <a name="review-an-azure-vmware-solution-avs-assessment"></a>Projděte si posouzení řešení Azure VMware (AVS).
@@ -88,6 +90,8 @@ Posouzení řešení Azure VMware (AVS) popisuje:
 - **Připravenost k řešení Azure VMware (AVS)**: to, jestli jsou místní virtuální počítače vhodné pro migraci do řešení Azure VMware (AVS).
 - **Počet uzlů pro funkci AVS**: odhadovaný počet uzlů AVS potřebných ke spuštění virtuálních počítačů.
 - **Využití v uzlech služby AVS**: předpokládané využití procesoru, paměti a úložiště napříč všemi uzly.
+    - Využití zahrnuje přední faktoring v následujících režijních clusterech, jako jsou vCenter Server, NSX Manager (velký), NSX Edge, pokud je nasazený HCX, a to i v případě, že je nasadí zařízení HCX Manager a IX. ~ 44vCPU (11 procesor), 75 GB paměti RAM a 722GB úložiště před komprimací a odstranění duplicitních dat.
+    - Paměť, deduplicity a komprese jsou aktuálně nastavené na 100% využití paměti a 1,5 deduplicity a komprimace, které budou uživatelem definovaným vstupem v přidaných verzích dále umožňující uživateli vyladit požadované změny velikosti.
 - **Odhad měsíčních nákladů**: Odhadované měsíční náklady na všechny uzly řešení Azure VMware (AVS), na kterých běží místní virtuální počítače.
 
 
@@ -97,7 +101,7 @@ Posouzení řešení Azure VMware (AVS) popisuje:
 
 2. V **posouzení** klikněte na posouzení a otevřete ho.
 
-    ![Souhrn posouzení pro funkci AVS](./media/how-to-create-avs-assessment/avs-assessment-summary.png)
+    :::image type="content" source="./media/how-to-create-avs-assessment/avs-assessment-summary.png" alt-text="Souhrn posouzení pro funkci AVS":::
 
 ### <a name="review-azure-vmware-solution-avs-readiness"></a>Kontrola připravenosti řešení Azure VMware (AVS)
 

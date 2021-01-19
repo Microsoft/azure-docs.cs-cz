@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 36c832e198d7b6e9a6c3f6ddc19ad87c87917f38
-ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
+ms.openlocfilehash: 80e5cc18888b0e014fc1f617ca27dee05146472e
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98541270"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567681"
 ---
 # <a name="step-2-configure-your-security-solution-to-send-cef-messages"></a>Krok 2: konfigurace řešení zabezpečení pro posílání zpráv CEF
 
@@ -41,6 +41,7 @@ Pokud vaše řešení zabezpečení již obsahuje existující konektor, použij
 - [Illusive Networks AMS](connect-illusive-attack-management-system.md)
 - [One Identity Safeguard](connect-one-identity.md)
 - [Palo Alto Networks](connect-paloalto.md)
+- [Thycotic tajný server](connect-thycotic-secret-server.md)
 - [Trend Micro Deep Security](connect-trend-micro.md)
 - [Trend Micro TippingPoint](connect-trend-micro-tippingpoint.md)
 - [WireX Network forenzní Platform](connect-wirex-systems.md)
@@ -64,7 +65,7 @@ Pokud pro konkrétní řešení zabezpečení neexistuje konektor, použijte ná
 > [!NOTE]
 > **Změna zdroje pole TimeGenerated**
 >
-> - Ve výchozím nastavení agent Log Analytics naplní pole *TimeGenerated* ve schématu časem, kdy agent přijal událost z démona syslog. V důsledku toho se čas, kdy se událost vygenerovala ve zdrojovém systému, nezaznamená v Azure Sentinel.
+> - Ve výchozím nastavení agent Log Analytics naplní pole *TimeGenerated* ve schématu časem, kdy agent přijal událost z démona syslog. Proto se ve službě Azure Sentinel nezaznamená čas vygenerování události ve zdrojovém systému.
 >
 > - Můžete ale spustit následující příkaz, který bude stahovat a spouštět `TimeGenerated.py` skript. Tento skript nakonfiguruje agenta Log Analytics k naplnění pole *TimeGenerated* pomocí původního času události v jeho zdrojovém systému místo času, kdy ho agent přijal.
 >

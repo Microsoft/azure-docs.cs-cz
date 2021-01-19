@@ -12,12 +12,12 @@ ms.date: 12/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07acd71eb1a77592c82b80aa574d79b98c48f60e
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 0067ed618f95e7f83fc041fe214bbc4d715a504f
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608295"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567625"
 ---
 # <a name="azure-ad-connect-sync-v2-endpoint-api"></a>Rozhraní API koncového bodu synchronizace služby Azure AD Connect v2 
 Společnost Microsoft nasadila nový koncový bod (rozhraní API) pro Azure AD Connect, který vylepšuje výkon operací synchronizační služby Azure Active Directory. Díky použití nového koncového bodu v2 budete mít při exportu a importu do Azure AD patrné zvýšení výkonu. Tento nový koncový bod podporuje následující:
@@ -28,7 +28,7 @@ Společnost Microsoft nasadila nový koncový bod (rozhraní API) pro Azure AD C
 > [!NOTE]
 > V současné době nový koncový bod nemá nakonfigurovanou omezení velikosti skupiny pro Microsoft 365 skupiny, které jsou zapsány zpět. To může mít vliv na latenci služby Active Directory a synchronizaci cyklů. Doporučuje se postupně zvyšovat velikosti skupin.  
 
-## <a name="pre-requisites"></a>Požadavky  
+## <a name="prerequisites"></a>Požadavky  
 Aby bylo možné použít nový koncový bod v2, budete muset použít [Azure AD Connect verze 1.5.30.0](https://www.microsoft.com/download/details.aspx?id=47594) nebo novější a postupovat podle níže uvedených kroků nasazení a povolit koncový bod v2 pro váš Azure AD Connect Server.   
 
 ## <a name="deployment-guidance"></a>Pokyny k nasazení 
@@ -106,7 +106,7 @@ K navýšení limitu členství můžete použít následující kroky:
 1. Otevřít Editor pravidel synchronizace Azure AD 
 2. V editoru vyberte **odchozí** pro směr 
 3. Klikněte na možnost **ven do AAD –** pravidlo synchronizace připojení ke skupině. 
-4. Klikněte na **Edit** ![ snímek obrazovky pro úpravy, na kterém se zobrazí vybraná možnost zobrazit a spravovat vaše synchronizační pravidla pomocí příkazu připojit k službě AAD-Group Join.](media/how-to-connect-sync-endpoint-api-v2/endpoint2.png)
+4. Klikněte na  ![ snímek obrazovky pro úpravy, na kterém se zobrazí vybraná možnost zobrazit a spravovat vaše synchronizační pravidla pomocí příkazu připojit k službě AAD-Group Join.](media/how-to-connect-sync-endpoint-api-v2/endpoint2.png)
 
 6. Kliknutím na tlačítko **Ano** zakážete výchozí pravidlo a vytvoříte upravitelnou kopii.
  ![Snímek obrazovky, na kterém se zobrazí okno Upravit potvrzení rezervovaného pravidla s vybraným tlačítkem Ano](media/how-to-connect-sync-endpoint-api-v2/endpoint3.png)
@@ -176,7 +176,7 @@ Pokud jste povolili koncový bod v2 a potřebujete provést vrácení zpět, pos
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy  
  
 **Kdy se nový koncový bod stane výchozím nastavením pro upgrady a nové instalace?**  
-</br>Plánujeme nové vydání AADConnect pro publikování ke stažení v lednu 2021. Tato verze ve výchozím nastavení použije koncový bod v2 a umožní synchronizaci skupin větších než 50 tis withuot jakékoli další konfigurace. Tato verze bude následně publikována pro automatický upgrade na opravňující servery.
+</br>Plánujeme nové vydání AADConnect pro publikování ke stažení v lednu 2021. Tato verze ve výchozím nastavení použije koncový bod v2 a umožní synchronizaci skupin větších než 50 tis bez jakékoli další konfigurace. Tato verze bude následně publikována pro automatický upgrade na opravňující servery.
  
 ## <a name="next-steps"></a>Další kroky
 

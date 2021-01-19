@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
-ms.openlocfilehash: aad1e2a1c8d7ce6a1b6219c42893b1f4a59c6f42
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: e7251f8b83110bc24a7ba3d7b078993b39a2c001
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753140"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98566888"
 ---
 # <a name="tutorial-assess-vmware-vms-for-migration-to-azure-vms"></a>Kurz: posouzení virtuálních počítačů VMware pro migraci na virtuální počítače Azure
 
@@ -63,20 +63,19 @@ Proveďte posouzení následujícím způsobem:
 
     ![Umístění tlačítka pro vyhodnocení](./media/tutorial-assess-vmware-azure-vm/assess-servers.png)
 
-3. V **Assess servers**  >  případě vyhodnocení **typu vyhodnocení** serverů vyberte **virtuální počítač Azure**.
+3. V   >  případě vyhodnocení **typu vyhodnocení** serverů vyberte **virtuální počítač Azure**.
 4. Ve **zdroji zjišťování**:
 
     - Pokud jste v zařízení zjistili počítače, vyberte **počítače zjištěné z Azure Migrate zařízení**.
     - Pokud jste zjistili počítače pomocí importovaného souboru CSV, vyberte **importovat počítače**. 
     
-1. Zadejte název posouzení. 
-1. Kliknutím na **Zobrazit vše** zobrazíte vlastnosti posouzení.
+1. Klikněte na **Upravit** a zkontrolujte vlastnosti posouzení.
 
     ![Umístění tlačítka Zobrazit vše pro kontrolu vlastností posouzení](./media/tutorial-assess-vmware-azure-vm/assessment-name.png)
 
 1. Ve vlastnostech **posouzení** vlastnosti  >  **cíle**:
     - V části **cílové umístění** zadejte oblast Azure, do které chcete migrovat.
-        - Doporučení pro velikost a náklady jsou založena na umístění, které zadáte.
+        - Doporučení pro velikost a náklady jsou založena na umístění, které zadáte. Po změně cílového umístění z výchozího nastavení budete vyzváni k zadání **rezervovaných instancí** a **řady virtuálních počítačů**.
         - V Azure Government můžete cílit na posouzení v [těchto oblastech](migrate-support-matrix.md#supported-geographies-azure-government) .
     - V **typu úložiště**
         - Pokud chcete v rámci posouzení použít data založená na výkonu, vyberte možnost **automaticky** pro Azure Migrate, která doporučuje typ úložiště, a to na základě vstupně-výstupních operací disku a propustnosti.
@@ -84,17 +83,21 @@ Proveďte posouzení následujícím způsobem:
     - V části **rezervované instance** určete, jestli chcete pro virtuální počítač použít rezervované instance, když ho migrujete.
         - Pokud vyberete možnost použití rezervované instance, nemůžete zadat hodnotu "**sleva (%)**" nebo **Doba provozu virtuálního počítače**. 
         - [Přečtěte si další informace](https://aka.ms/azurereservedinstances).
- 7. Ve **velikosti virtuálního počítače**:
- 
-    - V části **kritéria změny velikosti** vyberte, pokud chcete vyhodnotit vyhodnocení pro data konfigurace počítače/metadata nebo na data založená na výkonu. Pokud používáte údaje o výkonu:
+ 1. Ve **velikosti virtuálního počítače**:
+     - V části **kritéria změny velikosti** vyberte, pokud chcete vyhodnotit vyhodnocení pro data konfigurace počítače/metadata nebo na data založená na výkonu. Pokud používáte údaje o výkonu:
         - V části **Historie výkonu** určete dobu trvání dat, na které chcete vyhodnotit základ posouzení.
         - V části **využití percentilu** zadejte hodnotu percentilu, kterou chcete použít pro vzorek výkonu. 
     - V poli **série virtuálních počítačů** určete řadu virtuálních počítačů Azure, které chcete zvážit.
         - Pokud používáte posouzení na základě výkonu, Azure Migrate navrhne hodnotu.
         - Podle potřeby selepšit nastavení. Pokud například nemáte produkční prostředí, které potřebuje pro virtuální počítače řady A-Series v Azure, můžete ze seznamu řad vyloučit řady.
-    - V části **faktor komfortu** určete vyrovnávací paměť, kterou chcete použít při posuzování. Tyto účty jsou důležité pro problémy, jako je sezónní využití, historie krátkého výkonu a pravděpodobný nárůst využití v budoucnu. Pokud například použijete faktor komfortu 2: **Component**  |  **efektivní využití** komponent  |  **Přidat faktor komfortu (2,0)** jader | 2 | 4 paměti | 8 GB | 16 GB     
+    - V části **faktor komfortu** určete vyrovnávací paměť, kterou chcete použít při posuzování. Tyto účty jsou důležité pro problémy, jako je sezónní využití, historie krátkého výkonu a pravděpodobný nárůst využití v budoucnu. Pokud například použijete faktor komfortu 2:
+    
+        **Komponenta** | **Efektivní využití** | **Přidat faktor pohodlí (2,0)**
+        --- | --- | ---
+        Cores | 2  | 4
+        Memory (Paměť) | 8 GB | 16 GB
    
-8. V **ceně**:
+1. V **ceně**:
     - Pokud jste zaregistrovaní, zadejte v **nabídce** nabídku [Azure](https://azure.microsoft.com/support/legal/offer-details/) . Posouzení serveru odhaduje náklady na tuto nabídku.
     - V části **Měna** vyberte fakturační měnu vašeho účtu.
     - V části **sleva (%)** přidejte do nabídky Azure všechny slevy specifické pro předplatné, které obdržíte. Výchozí nastavení je 0 %.
@@ -102,23 +105,30 @@ Proveďte posouzení následujícím způsobem:
         - To je užitečné pro virtuální počítače Azure, které neběží nepřetržitě.
         - Odhad nákladů vychází z určeného trvání.
         - Výchozí hodnota je 31 dní za měsíc/24 hodin denně.
-
     - V **předplatném EA** určete, jestli se má při odhadu nákladů vzít v úvahu sleva předplatného smlouva Enterprise (EA). 
     - V **zvýhodněné hybridní využití Azure** určete, jestli už máte licenci Windows serveru. Pokud tak učiníte a jsou zahrnuté v aktivním programu Software Assurance předplatných Windows serveru, můžete požádat o [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-use-benefit/) , když přenášíte licence do Azure.
 
-9. Pokud provedete změny, klikněte na **Uložit** .
+1. Pokud provedete změny, klikněte na **Uložit** .
 
     ![Vlastnosti posouzení](./media/tutorial-assess-vmware-azure-vm/assessment-properties.png)
 
-10. V nabídce **vyhodnotit servery** klikněte na **Další**.
-11. V **Vyberte počítače, které chcete vyhodnotit**, vyberte **vytvořit novou** a zadejte název skupiny. 
-12. Vyberte zařízení a vyberte virtuální počítače, které chcete do skupiny přidat. Potom klikněte na **Další**.
+1. V **vyhodnocování serverů** > klikněte na **Další**.
 
+1. V části **Vybrat počítače pro vyhodnocení**  >  **názvu vyhodnocení** > zadejte název posouzení. 
+
+1. V **Vyberte nebo vytvořte skupinu** > vyberte **vytvořit novou** a zadejte název skupiny. 
+    
      ![Přidání virtuálních počítačů do skupiny](./media/tutorial-assess-vmware-azure-vm/assess-group.png)
 
-13. V části * * revize + vytvořit posouzení zkontrolujte podrobnosti posouzení a kliknutím na **vytvořit posouzení** vytvořte skupinu a spusťte posouzení.
+
+1. Vyberte zařízení a vyberte virtuální počítače, které chcete do skupiny přidat. Potom klikněte na **Další**.
 
 
+1. V části **Revize + vytvořit posouzení** zkontrolujte podrobnosti posouzení a kliknutím na **vytvořit posouzení** vytvořte skupinu a spusťte posouzení.
+
+1. Po vytvoření můžete posouzení zobrazit v části **Servery** > **Azure Migrate: Hodnocení serverů** > **Posouzení**.
+
+1. Klikněte na **Exportovat posouzení** a stáhněte ho jako excelový soubor.
     > [!NOTE]
     > Pro posouzení na základě výkonu doporučujeme, abyste před vytvořením posouzení počkali alespoň den od spuštění zjišťování. To poskytuje čas ke shromažďování dat o výkonu s větší jistotou. V ideálním případě po zahájení zjišťování počkejte na dobu trvání výkonu, kterou zadáte (den/týden/měsíc) pro hodnocení s vysokou mírou jistoty.
 

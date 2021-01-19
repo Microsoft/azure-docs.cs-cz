@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak obnovit soubory a složky z bodu 
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: b4bd64fb00c2f341e474ecb96738fab47d717474
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: 9bd66c1e3c89c8974adc3970f8595e5100878088
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831665"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567142"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Obnovení souborů ze zálohy virtuálního počítače Azure
 
@@ -114,7 +114,7 @@ V systému Linux musí operační systém počítače používaného k obnovení
 
 Skript také vyžaduje, aby byly součásti Python a bash spouštěny a bezpečně připojeny k bodu obnovení.
 
-|Komponenta | Verze  |
+|Součást | Verze  |
 | --------------- | ---- |
 | bash | 4 a vyšší |
 | python | 2.6.6 a vyšší  |
@@ -188,7 +188,7 @@ V systému Linux jsou svazky bodu obnovení připojeny ke složce, ve které je 
 Pokud proces obnovení souboru přestane reagovat po spuštění skriptu pro obnovení souborů (například pokud disky nejsou nikdy připojeny nebo jsou připojeny, ale svazky se nezobrazí), proveďte následující kroky:
 
 1. V souboru/etc/iSCSI/iscsid.conf změňte nastavení z:
-    - `node.conn[0].timeo.noop_out_timeout = 5`  schopn `node.conn[0].timeo.noop_out_timeout = 30`
+    - `node.conn[0].timeo.noop_out_timeout = 5`  schopn `node.conn[0].timeo.noop_out_timeout = 120`
 2. Po provedení výše uvedených změn znovu spusťte skript. Pokud dojde k přechodným selháním, zajistěte, aby mezi znovu běžela mezera 20 až 30 minut, aby nedocházelo k následným nárůstům požadavků, které mají vliv na cílovou přípravu. Tento interval mezi opakovanými spuštěními zajistí, že cíl je připravený pro připojení ze skriptu.
 3. Po obnovení souboru se vraťte na portál a vyberte Odpojit **disky** pro body obnovení, ve kterých jste nedokázali připojit svazky. V podstatě tento krok vyčistí všechny existující procesy a relace a zvýší pravděpodobnost obnovení.
 

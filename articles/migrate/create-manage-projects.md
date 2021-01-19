@@ -1,21 +1,21 @@
 ---
 title: Vytváření a správa projektů Azure Migrate
 description: Umožňuje najít, vytvořit, spravovat a odstranit projekty v Azure Migrate.
-author: ms-psharma
-ms.author: panshar
+author: vineetvikram
+ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: 445e08b255e5b4dd67dd1c6a47c8df6ce59df5bd
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: de0c48bb775b96052fe16d60aa58049bfd58ca4d
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753820"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567782"
 ---
 # <a name="create-and-manage-azure-migrate-projects"></a>Vytváření a správa projektů Azure Migrate
 
-Tento článek popisuje, jak vytvářet, spravovat a odstraňovat [Azure Migrate](migrate-services-overview.md) projekty.
+Tento článek popisuje, jak vytvářet, spravovat a odstraňovat [Azure Migrate](migrate-services-overview.md) projekty. Pokud používáte klasické Azure Migrate projekty, odstraňte je prosím a postupujte podle pokynů pro vytvoření nového projektu Azure Migrate. Nemůžete upgradovat klasické Azure Migrate projekty ani komponenty na Azure Migrate.
 
 Azure Migrate projekt se používá k ukládání metadat zjišťování, hodnocení a migrace shromážděných z prostředí, které vyhodnotili nebo migrujete. V projektu můžete sledovat zjištěné prostředky, vytvářet posouzení a orchestrovat migrace do Azure.  
 
@@ -120,7 +120,7 @@ Poznámky:
 
 1. Přejděte do pracovního prostoru Log Analytics připojeného k projektu.
 
-    - Pokud jste neodstranili Azure Migrate projekt, můžete najít odkaz na pracovní prostor v rámci **Essentials**  >  **posouzení serveru** Essentials.
+    - Pokud jste neodstranili Azure Migrate projekt, můžete najít odkaz na pracovní prostor v rámci   >  **posouzení serveru** Essentials.
        ![LA pracovní prostor ](./media/create-manage-projects/loganalytics-workspace.png) .
        
     - Pokud jste již Azure Migrate projekt odstranili, vyberte **skupiny prostředků** v levém podokně Azure Portal a vyhledejte pracovní prostor.
