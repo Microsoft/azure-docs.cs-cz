@@ -159,6 +159,20 @@
           href: how-to-troubleshoot-the-sensor-and-on-premises-management-console.md
         - name: Nastavení monitorování SNMP MIB
           href: how-to-set-up-snmp-mib-monitoring.md
+        - name: Integrace s partnery
+          items:
+            - name: Integrace Cisco ISE pxGridu
+              href: integration-cisco-ise-pxgrid.md
+            - name: Integrace Forescoutu
+              href: integration-forescout.md
+            - name: Integrace Fortinetu
+              href: integration-fortinet.md
+            - name: Integrace Palo Alto
+              href: integration-palo-alto.md
+            - name: Integrace ServiceNow
+              href: integration-servicenow.md
+            - name: Integrace Splunku
+              href: integration-splunk.md
     - name: Řešení založená na agentech pro tvůrce zařízení
       items:
         - name: Práce s modulem zabezpečení pro Azure RTOS
