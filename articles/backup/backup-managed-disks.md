@@ -3,12 +3,12 @@ title: Zálohování Azure Managed Disks
 description: Naučte se, jak zálohovat Azure Managed Disks z Azure Portal.
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: c4e2d4e649d59389ac3f8bd115e43acabc792eb2
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 2169e2f44e3ffb2c05c674d633efabed2c531878
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98557506"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573118"
 ---
 # <a name="back-up-azure-managed-disks-in-preview"></a>Zálohování Azure Managed Disks (ve verzi Preview)
 
@@ -129,6 +129,8 @@ Pro konfiguraci zálohování spravovaných disků se vyžadují tyto požadavky
    >Zadejte název trezoru záloh a vyberte spravovanou identitu trezoru.
 
    ![Přidat roli Přispěvatel snímku disku](./media/backup-managed-disks/disk-snapshot-contributor-role.png)
+
+1. Pokud je zálohovaný disk zašifrovaný pomocí [klíčů spravovaných zákazníkem (CMK)](https://docs.microsoft.com/azure/virtual-machines/disks-enable-customer-managed-keys-portal) nebo pomocí klíčů spravovaných [platformou a klíčů spravovaných zákazníkem](https://docs.microsoft.com/azure/virtual-machines/disks-enable-double-encryption-at-rest-portal), přiřaďte mu oprávnění role **Čtenář** k spravované identitě trezoru záloh na prostředku **sady šifrování disku** .
 
 1. Ověřte, jestli má spravovaná identita trezoru záloh správnou sadu přiřazení rolí na zdrojovém disku a skupině prostředků, která slouží jako úložiště dat snímku.
 

@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: c94218248f1122cdb60ab8124bc9d9365fe8947b
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 120335a7bce83bc3d4771ea64f665d67c7d1079a
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97931734"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572795"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Výkon a škálování v Durable Functions (Azure Functions)
 
@@ -103,7 +103,7 @@ Funkce aktivity jsou bezstavové a automaticky se škálují s přidáním virtu
   "extensions": {
     "durableTask": {
       "storageProvider": {
-          "partitionCount": 3
+        "partitionCount": 3
       }
     }
   }
@@ -264,7 +264,7 @@ Když plánujete použít Durable Functions pro produkční aplikaci, je důlež
 
 Následující tabulka uvádí očekávaná *maximální* čísla propustnosti pro dříve popsané scénáře. "Instance" odkazuje na jednu instanci funkce Orchestrator běžící na jednom malém virtuálním počítači ([a1](../../virtual-machines/sizes-previous-gen.md)) v Azure App Service. Ve všech případech se předpokládá, že jsou povolené [Rozšířené relace](#orchestrator-function-replay) . Skutečné výsledky se můžou lišit v závislosti na využití procesoru nebo vstupně-výstupní práci prováděné kódem funkce.
 
-| Scénář | Maximální propustnost |
+| Scenario | Maximální propustnost |
 |-|-|
 | Provádění sekvenční aktivity | 5 aktivit za sekundu, na instanci |
 | Paralelní provádění aktivit (ventilátor-out) | 100 aktivit za sekundu, na instanci |

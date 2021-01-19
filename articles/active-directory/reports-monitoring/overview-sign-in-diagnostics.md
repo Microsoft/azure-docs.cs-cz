@@ -1,6 +1,6 @@
 ---
-title: Co je diagnostika přihlašování ve službě Azure AD? | Dokumentace Microsoftu
-description: Poskytuje obecný přehled diagnostiky přihlášení ve službě Azure AD.
+title: Co je diagnostika přihlášení pro Azure Active Directory?
+description: Poskytuje obecný přehled diagnostiky přihlášení v Azure Active Directory.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -17,170 +17,161 @@ ms.date: 12/15/2020
 ms.author: markvi
 ms.reviewer: tspring
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e85de1edd94a0430a4b28b332d9e43b967afba76
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: cdef3e1f1a60c9eb0c751855837e9cbe77e015e9
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97608914"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572285"
 ---
-# <a name="what-is-sign-in-diagnostic-in-azure-ad"></a>Co je diagnostika přihlašování ve službě Azure AD?
+# <a name="what-is-the-sign-in-diagnostic-in-azure-ad"></a>Jaká je diagnostika přihlášení ve službě Azure AD?
 
-Azure AD poskytuje flexibilní model zabezpečení, který umožňuje řídit, co můžou uživatelé dělat se spravovanými prostředky. Přístup k těmto prostředkům není řízen pouze tím **, kdo** jste, ale také **způsobem, jak** k nim přistupujete. Flexibilita se obvykle dodává spolu s určitou mírou složitosti z důvodu počtu možností konfigurace, které máte. Složitost má potenciál zvýšit riziko chyb.
+Azure Active Directory (Azure AD) poskytuje flexibilní model zabezpečení, který řídí, co můžou uživatelé dělat se spravovanými prostředky. Přístup k těmto prostředkům se řídí nejen tím, *kdo* jsou, ale také podle *toho, jak* k nim přistupuje. Flexibilní model se obvykle dodává s určitou mírou složitosti z důvodu počtu možností konfigurace, které máte. Složitost má potenciál zvýšit riziko chyb.
 
-Jako správce IT budete potřebovat řešení, které vám nabídne správnou úroveň přehledu o aktivitách v systému, abyste mohli snadno diagnostikovat a řešit problémy, když k nim dojde. Diagnostika přihlášení pro Azure AD je příkladem takového řešení. Pomocí diagnostiky můžete analyzovat, co se stalo během přihlašování, a jaké akce můžete provést k vyřešení problémů, aniž byste museli zahrnovat podporu Microsoftu.
+Jako správce IT budete potřebovat řešení, které vám poskytne přehled o aktivitách v systému. Tato viditelnost vám umožní diagnostikovat a řešit problémy, když k nim dojde. Diagnostika přihlášení pro Azure AD je příkladem takového řešení. Pomocí diagnostiky můžete analyzovat, co se stalo při pokusu o přihlášení, a získat doporučení pro řešení problémů, aniž byste museli zahrnovat podporu Microsoftu.
 
 Tento článek vám poskytne přehled o tom, co řešení dělá a jak ho můžete používat.
 
-
 ## <a name="requirements"></a>Požadavky
 
-Diagnostika přihlášení je dostupná ve všech edicích služby Azure AD.<br> Abyste ho mohli používat, musíte být globálním správcem ve službě Azure AD.
+Diagnostika přihlášení je dostupná ve všech edicích služby Azure AD.
+
+Abyste ho mohli používat, musíte být globálním správcem ve službě Azure AD.
 
 ## <a name="how-it-works"></a>Jak to funguje
 
-V Azure AD se odpověď na pokus o přihlášení váže na to **, kdo** jste vy a **jak** máte přístup k vašemu tenantovi. Například jako správce můžete při přihlašování z podnikové sítě obvykle nakonfigurovat všechny aspekty vašeho tenanta. Pokud se přihlašujete pomocí stejného účtu z nedůvěryhodné sítě, může být dokonce i zablokovaný.
- 
+V Azure AD je odpověď na pokus o přihlášení vázaná na to *, kdo* se přihlašuje a *jak* přistupují k tenantovi. Správce může například během přihlašování z podnikové sítě obvykle nakonfigurovat všechny aspekty tenanta. Ale stejný uživatel může být zablokován, když se přihlásí pomocí stejného účtu z nedůvěryhodné sítě.
+
 Vzhledem k větší flexibilitě systému, který reaguje na pokus o přihlášení, se můžete setkat ve scénářích, kdy potřebujete řešit problémy s přihlášením. Diagnostika přihlášení je funkce, která:
 
-- Analyzuje data z přihlášení. 
+- Analyzuje data z událostí přihlášení.
 
-- Zobrazuje, co se stalo, a doporučení k řešení problémů. 
+- Zobrazuje, co se stalo.
+
+- Poskytuje doporučení pro řešení problémů.
 
 Diagnostika přihlášení pro Azure AD je navržená tak, aby umožňovala samočinnou diagnostiku chyb přihlášení. K dokončení procesu diagnostiky musíte provést tyto kroky:
 
-![Proces diagnostiky přihlašování](./media/overview-sign-in-diagnostics/process.png)
- 
-1. **Definujte** rozsah událostí přihlašování, které vás zajímají.
+![Diagram znázorňující diagnostiku přihlášení](./media/overview-sign-in-diagnostics/process.png)
 
-2. **Vyberte** přihlášení, které chcete zkontrolovat.
+1. Definujte rozsah událostí přihlášení, které vás zajímají.
 
-3. **Kontrola** výsledku diagnostiky
+2. Vyberte přihlášení, které chcete zkontrolovat.
 
-4. **Provést** akce
+3. Zkontrolujte výsledky diagnostiky.
 
- 
+4. Proveďte akci.
+
 ### <a name="define-scope"></a>Definovat obor
 
-Cílem tohoto kroku je definovat rozsah přihlašovacích modulů, které chcete prozkoumat. Váš rozsah je založený na uživateli nebo identifikátoru (ID korelace, requestId) a časový rozsah. Pokud chcete rozšířit rozsah dalšího rozsahu, můžete také zadat název aplikace. Azure AD používá informace o oboru k vyhledání správných událostí.  
+Cílem tohoto kroku je definovat rozsah událostí přihlášení, které se mají prozkoumat. Váš rozsah je založený na uživateli nebo identifikátoru (ID korelace, requestId) a časový rozsah. Pokud chcete rozšířit rozsah dalšího rozsahu, můžete zadat název aplikace. Azure AD používá informace o oboru k vyhledání správných událostí.  
 
 ### <a name="select-sign-in"></a>Vybrat přihlášení  
 
-Na základě vašich kritérií hledání Azure AD načte všechna vyhovující přihlášení a prezentuje je v zobrazení seznamu Shrnutí ověřování. 
+Na základě vašich kritérií hledání Azure AD načte všechny vyhovující přihlašovací události a prezentuje je v zobrazení seznamu Shrnutí ověřování.
 
-![Souhrn ověřování](./media/overview-sign-in-diagnostics/authentication-summary.png)
- 
+![Částečný snímek obrazovky s oddílem souhrn ověřování](./media/overview-sign-in-diagnostics/authentication-summary.png)
+
 Sloupce zobrazené v tomto zobrazení můžete přizpůsobit.
 
-### <a name="review-diagnostic"></a>Zkontrolovat diagnostiku 
+### <a name="review-diagnostic"></a>Zkontrolovat diagnostiku
 
-Pro vybranou událost přihlášení vám Azure AD poskytne výsledek diagnostiky. 
+Pro vybranou událost přihlášení vám Azure AD poskytne výsledky diagnostiky.
 
-![Výsledky diagnostiky](./media/overview-sign-in-diagnostics/diagnostics-results.png)
+![Částečný snímek obrazovky, který ukazuje oddíl výsledků diagnostiky](./media/overview-sign-in-diagnostics/diagnostics-results.png)
 
- 
-Výsledek začíná posouzením. Posouzení vysvětluje několik vět, co se stalo. Vysvětlení vám pomůže pochopit chování systému. 
+Tyto výsledky začínají posouzením, což vysvětluje, co se stalo v několika větách. Vysvětlení vám pomůže pochopit chování systému.
 
-V dalším kroku získáte souhrnné informace o souvisejících zásadách podmíněného přístupu, které byly aplikovány na vybrané přihlášení. Tato část se dokončí doporučenými kroky pro nápravu problému. Vzhledem k tomu, že není vždy možné řešit problémy bez další pomoci, může být doporučený krok otevřít lístek podpory. 
+V dalším kroku získáte souhrnné informace o souvisejících zásadách podmíněného přístupu, které byly aplikovány na vybranou událost přihlášení. Diagnostické výsledky také obsahují doporučené kroky nápravy, které vám pomohly problém vyřešit. Vzhledem k tomu, že není vždy možné problémy vyřešit bez další pomoci, může být Doporučeným krokem otevření lístku podpory.
 
-### <a name="take-action"></a>Provést akci 
+### <a name="take-action"></a>Provést akci
+
 V tomto okamžiku byste měli mít k dispozici informace, které potřebujete k vyřešení vašeho problému.
-
 
 ## <a name="scenarios"></a>Scénáře
 
-V této části najdete přehled zahrnutých diagnostických scénářů. Implementují se tyto scénáře: 
- 
+Následující scénáře jsou pokryté diagnostikou přihlášení:
+
 - Blokováno podmíněným přístupem
 
 - Neúspěšný podmíněný přístup
 
-- MFA z podmíněného přístupu
+- Vícefaktorové ověřování (MFA) z podmíněného přístupu
 
 - MFA z jiných požadavků
 
 - Vyžaduje se ověření MFA.
 
-- Vyžaduje se ověření MFA, ale pokus o přihlášení uživatele není ze zabezpečeného umístění.
+- Požadováno ověření MFA (rizikové přihlašovací umístění)
 
 - Úspěšné přihlášení
 
-
 ### <a name="blocked-by-conditional-access"></a>Blokováno podmíněným přístupem
 
-Tento scénář je založený na přihlášení, které zablokovala zásada podmíněného přístupu.
+V tomto scénáři byl pokus o přihlášení zablokován zásadou podmíněného přístupu.
 
-![Blokování přístupu](./media/overview-sign-in-diagnostics/block-access.png)
+![Snímek obrazovky zobrazující konfiguraci přístupu s vybraným přístupovým blokem](./media/overview-sign-in-diagnostics/block-access.png)
 
-Část Diagnostika v tomto scénáři zobrazuje podrobnosti o přihlášení uživatele a použitých zásadách.
-
+Část Diagnostika v tomto scénáři zobrazuje podrobnosti o události přihlášení uživatele a použitých zásadách.
 
 ### <a name="failed-conditional-access"></a>Neúspěšný podmíněný přístup
 
-Tento scénář je obvykle výsledkem přihlášení, které selhalo, protože nebyly splněny požadavky zásad podmíněného přístupu. Obvyklými příklady jsou:
+Tento scénář je obvykle důsledkem pokusu o přihlášení, které selhalo, protože nebyly splněny požadavky zásad podmíněného přístupu. Obvyklými příklady jsou:
 
-![Vyžadovat ovládací prvky](./media/overview-sign-in-diagnostics/require-controls.png)
+![Snímek obrazovky se zobrazením konfigurace přístupu s příklady běžných zásad a vybraným oprávněním pro udělení přístupu](./media/overview-sign-in-diagnostics/require-controls.png)
 
 - Vyžadovat zařízení připojené k hybridní službě Azure AD
 
 - Vyžadovat klientskou aplikaci schválenou
 
-- Vyžadování zásad ochrany aplikací   
+- Vyžadování zásad ochrany aplikací
 
-
-Část Diagnostika v tomto scénáři zobrazuje podrobnosti o přihlášení uživatele a použitých zásadách.
-
+Část Diagnostika pro tento scénář zobrazuje podrobnosti o pokusu o přihlášení uživatele a použitých zásadách.
 
 ### <a name="mfa-from-conditional-access"></a>MFA z podmíněného přístupu
 
-Tento scénář je založený na zásadách podmíněného přístupu, které mají požadavek na přihlášení pomocí sady Multi-Factor Authentication set.
+V tomto scénáři mají zásady podmíněného přístupu požadavek na přihlášení pomocí vícefaktorového ověřování sady.
 
-![Vyžadovat Multi-Factor Authentication](./media/overview-sign-in-diagnostics/require-mfa.png)
+![Snímek obrazovky se zobrazenou konfigurací přístupu s použitím vícefaktorového ověřování](./media/overview-sign-in-diagnostics/require-mfa.png)
 
-Část Diagnostika v tomto scénáři zobrazuje podrobnosti o přihlášení uživatele a použitých zásadách.
-
-
+Část Diagnostika pro tento scénář zobrazuje podrobnosti o pokusu o přihlášení uživatele a použitých zásadách.
 
 ### <a name="mfa-from-other-requirements"></a>MFA z jiných požadavků
 
-Tento scénář je založený na požadavku vícefaktorového ověřování, který se vynutil zásadami podmíněného přístupu. Například Multi-Factor Authentication pro jednotlivé uživatele.
+V tomto scénáři se zásady podmíněného přístupu nenakonfigurovaly na požadavek vícefaktorového ověřování. Například vícefaktorové ověřování na základě jednotlivých uživatelů.
 
-
-![Vyžadovat vícefaktorové ověřování na uživatele](./media/overview-sign-in-diagnostics/mfa-per-user.png)
-
+![Snímek obrazovky s vícefaktorového ověřováním na konfiguraci uživatele](./media/overview-sign-in-diagnostics/mfa-per-user.png)
 
 Záměrem tohoto diagnostického scénáře je poskytnout další podrobnosti o:
 
-- Zdroj přerušení Multi-Factor Authentication. 
-- Výsledek interakce klienta.
+- Zdroj přerušení vícefaktorového ověřování
+- Výsledek interakce klienta
 
-V této části najdete taky všechny podrobnosti o pokusu o přihlášení uživatele. 
-
+Můžete si také zobrazit všechny podrobnosti o pokusu o přihlášení uživatele.
 
 ### <a name="mfa-proof-up-required"></a>Vyžaduje se ověření MFA.
 
-Tento scénář je založený na přihlášeních, která byla přerušena požadavky na nastavení vícefaktorového ověřování. Tato instalace se označuje také jako "Kontrola pravopisu".
+V tomto scénáři se pokusy o přihlášení přerušily požadavky na nastavení vícefaktorového ověřování. Tato instalace se označuje také jako prokazování.
 
-Ověření Multi-Factor Authentication prochází, pokud je uživatel nutný k použití vícefaktorového ověřování, ale ještě není nakonfigurovaný, nebo správce nakonfiguroval uživatele, aby ho nakonfiguroval.
+K prokázání vícefaktorového ověřování dojde, když je uživatel nutný k použití vícefaktorového ověřování, ale ještě ho ještě nenakonfiguroval, nebo Správce požadoval, aby ji nakonfigurovali uživatel.
 
-Záměrem tohoto diagnostického scénáře je poskytnout přehled o tom, že přerušení Multi-Factor Authentication bylo nastaveno na stav a poskytnout doporučení, aby uživatel dokončil kontrolu.
+Účelem tohoto diagnostického scénáře je odhalit, že přerušení vícefaktorového ověřování bylo způsobeno nedostatkem konfigurace uživatele. Doporučené řešení je pro uživatele k dokončení kontroly.
 
-### <a name="mfa-proof-up-required-from-a-risky-sign-in"></a>U rizikové přihlašování se vyžaduje ověření MFA.
+### <a name="mfa-proof-up-required-risky-sign-in-location"></a>Požadováno ověření MFA (rizikové přihlašovací umístění)
 
-Tento scénář je výsledkem přihlášení, která byla přerušena žádostí o nastavení služby Multi-Factor Authentication z rizikového přihlašování. 
+V tomto scénáři se pokusy o přihlášení přerušily požadavkem na nastavení vícefaktorového ověřování z rizikového přihlašování.
 
-Záměrem tohoto diagnostického scénáře je poskytnout přehled o tom, že přerušení služby Multi-Factor Authentication bylo nastaveno na stav, aby bylo možné poskytnout doporučení, aby uživatel dokončil kontrolu, ale provedl z umístění v síti, které se nejeví jako rizikové. Například pokud je podniková síť definovaná jako pojmenovaná lokalita, pokusí se provést zkušební místo v podnikové síti.
+Účelem tohoto diagnostického scénáře je odhalit, že přerušení vícefaktorového ověřování bylo způsobeno nedostatkem konfigurace uživatele. Doporučené řešení je pro uživatele, aby dokončí zkušební kontrolu, konkrétně ze síťového umístění, které se nejeví jako rizikové.
 
+Pokud je například podniková síť definovaná jako pojmenované umístění, měl by se uživatel pokusit provést kontrolu v podnikové síti místo toho.
 
 ### <a name="successful-sign-in"></a>Úspěšné přihlášení
 
-Tento scénář je založený na přihlášeních, která se nepřerušila pomocí podmíněného přístupu nebo vícefaktorového ověřování.
+V tomto scénáři se události přihlášení nepřerušily pomocí podmíněného přístupu nebo vícefaktorového ověřování.
 
-Účelem tohoto diagnostického scénáře je poskytnout přehled o tom, co uživatel zadal během přihlašování v případě, že existovaly zásady podmíněného přístupu nebo zásady, které se očekávaly, nebo nakonfigurovaná služba Multi-Factor Authentication, která se očekávala k přerušení přihlášení uživatele.
-
-
+Tento diagnostický scénář poskytuje podrobné informace o událostech přihlašování uživatelů, u kterých se očekává, že budou přerušeny kvůli zásadám podmíněného přístupu nebo vícefaktorového ověřování.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Co jsou sestavy služby Azure Active Directory?](overview-reports.md)
-* [Co je monitorování služby Azure Active Directory?](overview-monitoring.md)
+- [Co jsou sestavy služby Azure Active Directory?](overview-reports.md)
+- [Co je monitorování služby Azure Active Directory?](overview-monitoring.md)

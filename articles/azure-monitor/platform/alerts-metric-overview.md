@@ -1,15 +1,15 @@
 ---
 title: Pochopte, jak budou výstrahy metriky fungovat v Azure Monitor.
 description: Získejte přehled o tom, co můžete dělat s výstrahami metrik a jak fungují v Azure Monitor.
-ms.date: 01/13/2021
+ms.date: 01/19/2021
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: ab80496784b5d86d270830546cec73aadbcc50a6
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 031768b8a72fbe9498abd3c17e0f79fd157d4f52
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251229"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572727"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Principy fungování upozornění na metriky ve službě Azure Monitor
 
@@ -26,7 +26,7 @@ Můžete definovat pravidlo výstrahy metriky zadáním cílového prostředku, 
 - Cílový prostředek (prostředek Azure, který chcete monitorovat): myVM
 - Metrika: procento využití procesoru
 - Typ podmínky: static
-- Časová agregace (statistika, která se spouští přes nezpracované hodnoty metrik. [Podporovaná časová agregace](metrics-charts.md#aggregation) jsou min, Max, AVG, Total, Count): Average
+- Typ agregace (statistika, která se spouští přes nezpracované hodnoty metrik. [Podporované typy agregace](./metrics-aggregation-explained.md#aggregation-types) jsou minimální, maximální, průměrná, celková, počet): průměr.
 - Období (pohled na pozadí, na kterém jsou zaškrtnuté hodnoty metrik): za posledních 5 minut
 - Frekvence (frekvence, s jakou výstraha metrika kontroluje, jestli jsou podmínky splněné): 1 min
 - Operátor: je větší než
@@ -43,7 +43,7 @@ Pokud v jednom pravidle používáte více podmínek, pravidlo "and" tyto podmí
 - Cílový prostředek (prostředek Azure, který chcete monitorovat): myVM
 - Metrika: procento využití procesoru
 - Typ podmínky: dynamické
-- Časová agregace (statistika, která se spouští přes nezpracované hodnoty metrik. [Podporovaná časová agregace](metrics-charts.md#aggregation) jsou min, Max, AVG, Total, Count): Average
+- Typ agregace (statistika, která se spouští přes nezpracované hodnoty metrik. [Podporované typy agregace](./metrics-aggregation-explained.md#aggregation-types) jsou minimální, maximální, průměrná, celková, počet): průměr.
 - Období (pohled na pozadí, na kterém jsou zaškrtnuté hodnoty metrik): za posledních 5 minut
 - Frekvence (frekvence, s jakou výstraha metrika kontroluje, jestli jsou podmínky splněné): 1 min
 - Operátor: je větší než
@@ -80,7 +80,7 @@ Výstrahy metrik v Azure Monitor také podporují monitorování více kombinac�
 - Typ podmínky: static
 - Dimenze
   - Instance = InstanceName1, InstanceName2
-- Časová agregace: průměr
+- Typ agregace: průměr
 - Období: za posledních 5 minut
 - Frekvence: 1 min
 - Operátor: GreaterThan
@@ -95,7 +95,7 @@ Podobně jako předtím toto pravidlo monitoruje, pokud průměrné využití CP
 - Typ podmínky: static
 - Dimenze
   - Instance = *
-- Časová agregace: průměr
+- Typ agregace: průměr
 - Období: za posledních 5 minut
 - Frekvence: 1 min
 - Operátor: GreaterThan
@@ -112,7 +112,7 @@ Při monitorování více dimenzí může pravidlo pro dynamické prahové hodno
 - Typ podmínky: dynamické
 - Dimenze
   - Instance = *
-- Časová agregace: průměr
+- Typ agregace: průměr
 - Období: za posledních 5 minut
 - Frekvence: 1 min
 - Operátor: GreaterThan

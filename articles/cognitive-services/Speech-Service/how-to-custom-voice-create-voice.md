@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 3747033fcaf65e0c6da07e9f1bb625771958bb4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 262a96c0c316987d0245ed29836f6a013c4339d1
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319057"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573152"
 ---
 # <a name="create-a-custom-voice"></a>Vytvoření vlastního hlasu
 
@@ -52,17 +52,21 @@ V následující tabulce jsou uvedeny stavy zpracování pro importované datov�
 
 Po dokončení ověření uvidíte celkový počet odpovídajících projevy pro každou datovou sadu ve sloupci **projevy** . Pokud datový typ, který jste vybrali, vyžaduje segmentaci dlouhého zvuku, tento sloupec odráží jenom projevy, které jsme pro vás segmentoval buď na základě vašich přepisů, nebo prostřednictvím služby přepisu řeči. Můžete ještě více stáhnout datovou sadu, která je ověřená, aby se zobrazily podrobné výsledky projevy úspěšně naimportované a jejich přepisů mapování. Pomocný parametr: dlouhé segmentace zvuku může trvat déle než hodinu, než se zpracování dat dokončí.
 
-U datových sad en-US a zh-CN můžete dál stahovat sestavu pro kontrolu skóre výslovnosti a úrovně hluku pro každé vaše nahrávky. Skóre výslovnosti je rozsah od 0 do 100. Skóre nižší než 70 (normálně) indikuje chybu řeči nebo neshoda skriptu. Hodně zdůraznění může snížit vaše výsledky výslovnosti a ovlivnit vygenerovaný digitální hlas.
+V zobrazení podrobností dat můžete dále kontrolovat výsledky výslovnosti a úroveň hluku pro každou z vašich datových sad. Skóre výslovnosti je rozsah od 0 do 100. Skóre nižší než 70 (normálně) indikuje chybu řeči nebo neshoda skriptu. Hodně zdůraznění může snížit vaše výsledky výslovnosti a ovlivnit vygenerovaný digitální hlas.
 
 Vyšší poměr mezi signálem a hlukem (SNR) znamená nižší šum ve zvukovém prostředí. Můžete obvykle dosáhnout 50 + SNR záznamem na Professional studia. Zvuk s SNRem nižším než 20 může vést k zjevnému šumu ve vygenerovaném hlasu.
 
 Zvažte opětovné zaznamenávání všech projevy s nízkými výslovnostmi nebo nedostatečnými poměry k hluku. Pokud se nemůžete znovu nahrávat, můžete tyto projevy z datové sady vyloučit.
 
+> [!NOTE]
+> Je nutné, aby při použití vlastního hlasu neuronové bylo nutné zaregistrovat hlasový talentů na kartě **Voice talentů** . Při přípravě skriptu pro nahrávání nezapomeňte přidat níže uvedenou větu, abyste získali talentů potvrzení využití jejich hlasových dat k vytvoření hlasového modelu TTS a vygenerovali syntetické rozpoznávání řeči. "I [stav vašeho jména a příjmení] si uvědomte, že nahrávky mého hlasu budou použity uživatelem [State název společnosti] k vytvoření a použití syntetické verze mého hlasu."
+Tato věta se použije k ověření, jestli se nahrávky v datových sadách pro školení provádějí stejnou osobou, která uděluje souhlas. [Přečtěte si další informace o tom, jak se budou zpracovávat vaše data, a jak se talentů ověřování hlasu](https://aka.ms/CNV-data-privacy). 
+
 ## <a name="build-your-custom-voice-model"></a>Sestavení vlastního hlasového modelu
 
 Po ověření datové sady ji můžete použít k sestavení vlastního hlasového modelu.
 
-1.  Přejděte na **text na řeč > Custom Voice > [název projektu] > školení**.
+1.  Přejděte na **text na řeč > vlastní hlasový > [název projektu] > model**.
 
 2.  Klikněte na **výuka model**.
 
@@ -72,15 +76,22 @@ Po ověření datové sady ji můžete použít k sestavení vlastního hlasové
 
     Běžné použití pole **Description** je záznam názvů datových sad, které byly použity k vytvoření modelu.
 
-4.  Na stránce **Vybrat data školení** zvolte jednu nebo více datových sad, které chcete použít pro školení. Před odesláním projevy ověřte jeho počet. Můžete začít s libovolným počtem projevy pro hlasové modely en-US a zh-CN. Pro ostatní národní prostředí musíte vybrat více než 2 000 projevy, aby bylo možné naučit hlas.
+4.  Na stránce **Vybrat data školení** zvolte jednu nebo více datových sad, které chcete použít pro školení. Před odesláním projevy ověřte jeho počet. Můžete začít s libovolným počtem projevy pro hlasové modely en-US a zh-CN pomocí školicí metody "adaptivního". U ostatních národních prostředí musíte vybrat více než 2 000 projevy, aby bylo možné naučit hlas pomocí standardní úrovně, včetně metod školení "statistická metoda" a "zřetězené" a více než 300 projevy pro výuku vlastního neuronovéového hlasu. 
 
     > [!NOTE]
     > Z školení se odeberou duplicitní názvy zvuku. Ujistěte se, že datové sady, které vyberete, neobsahují stejné zvukové názvy v několika souborech. zip.
 
     > [!TIP]
-    > Pro výsledky kvality se vyžaduje použití datových sad ze stejného mluvčího. Pokud datové sady, které jste odeslali pro školení, obsahují celkový počet menší než 6 000 jedinečných projevy, budete svůj hlasový model předávat prostřednictvím techniky syntézy statistických ukazatelů. V případě, že vaše školicí data překročí celkový počet 6 000 jedinečných projevy, zahájíte školicí proces s technikou syntézy zřetězení. Technologie zřetězení obvykle může mít za následek větší přirozený a vyšší přesnost hlasových výsledků. Pokud chcete vytvořit model s nejnovější technologií neuronové TTS, která může vytvořit digitální hlasový ekvivalent veřejně dostupných [hlasů neuronové](language-support.md#neural-voices), [obraťte se na vlastního hlasového týmu](https://go.microsoft.com/fwlink/?linkid=2108737) .
+    > Pro výsledky kvality se vyžaduje použití datových sad ze stejného mluvčího. Různé metody školení vyžadují jinou velikost školicích dat. Aby bylo možné vytvořit model s metodou "statistická metoda", jsou vyžadovány alespoň 2 000 odlišné projevy. Pro metodu "zřetězení" je to 6 000 projevy, zatímco pro "neuronové" je minimální požadavek na velikost dat 300 projevy.
 
-5.  Klikněte na **výuka** a začněte vytvářet svůj hlasový model.
+5. V dalším kroku vyberte **metodu školení** . 
+
+    > [!NOTE]
+    > Pokud chcete naučit neuronové hlas, musíte zadat profil hlasového talentů se souborem s vyjádřením informací o zvuku, který je k dispozici v hlasovém talentůu, abyste mohli využít jeho data o řeči k učení vlastního hlasového modelu. Vlastní neuronové hlas je k dispozici s omezeným přístupem. Ujistěte se, že rozumíte [požadavkům na AI](https://aka.ms/gating-overview) a [použijete přístup tady](https://aka.ms/customneural). 
+    
+    Na této stránce můžete také vybrat nahrávání skriptu pro testování. Testovací skript musí být soubor txt, který je menší než 1 MB. Podporovaný formát kódování zahrnuje ANSI/ASCII, UTF-8, UTF-8-BOM, UTF-16-LE nebo UTF-16-. Každý odstavec utterance bude mít za následek samostatný zvuk. Pokud chcete zkombinovat všechny věty do jednoho zvukového zařízení, udělejte je v jednom odstavci. 
+
+6. Klikněte na **výuka** a začněte vytvářet svůj hlasový model.
 
 V tabulce školení se zobrazí nová položka, která odpovídá nově vytvořenému modelu. V tabulce se zobrazí také stav: zpracování, úspěch, selhalo.
 
@@ -92,10 +103,13 @@ Zobrazený stav odráží proces převodu datové sady na hlasový model, jak je
 | Úspěšný | Váš hlasový model byl vytvořen a lze jej nasadit. |
 | Neúspěšný | Váš hlasový model se v rámci školení nezdařil z důvodu mnoha důvodů, například problémy s nezpracovanými daty nebo problémy se sítí. |
 
-Doba školení se liší v závislosti na objemu zpracovaných zvukových dat. Typický časový rozsah od přibližně 30 minut po stovky projevy až 40 hodin za 20 000 projevy. Po úspěšném školení o modelu ho můžete začít testovat.
+Doba školení se liší v závislosti na objemu zpracovaných zvukových dat a vybrané metodě školení. Může být v rozmezí 30 minut až 40 hodin. Po úspěšném školení o modelu ho můžete začít testovat. 
 
 > [!NOTE]
 > Uživatelé bezplatného předplatného (F0) mohou současně vyškolit jedno písmo hlasu. Standardní předplatné (S0) uživatelé můžou doškolit tři hlasy současně. Pokud dosáhnete limitu, počkejte, dokud alespoň jedno z vašich hlasových písem dokončí školení, a akci opakujte.
+
+> [!NOTE]
+> Školení vlastních hlasů pro neuronové není bezplatné. Podívejte se na [ceny](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) zde. 
 
 > [!NOTE]
 > Maximální počet hlasových modelů, které je možné vyškolet na předplatné, je 10 modelů pro uživatele bezplatného předplatného (F0) a 100 pro uživatele Standard Subscription (S0).
@@ -104,32 +118,27 @@ Pokud používáte funkci neuronové Voice Training, můžete si vybrat, abyste 
 
 ## <a name="test-your-voice-model"></a>Testování hlasového modelu
 
-Po úspěšném vytvoření hlasového písma ho můžete před nasazením pro použití otestovat.
+Každé školení bude automaticky generovat ukázkové zvukové 100y, které vám pomůžou s testováním modelu. Po úspěšném vytvoření vašeho hlasového modelu ho můžete před nasazením pro použití otestovat.
 
-1.  Přejděte na **text na řeč > Custom Voice > [název projektu] > testování**.
+1.  Přejděte na **text na řeč > vlastní hlasový > [název projektu] > model**.
 
-2.  Klikněte na **Přidat test**.
+2.  Klikněte na název modelu, který chcete otestovat.
 
-3.  Vyberte jeden nebo více modelů, které chcete testovat.
+3.  Na stránce s podrobnostmi o modelu najdete vzorové zvuky na kartě **testování** . 
 
-4.  Zadejte text, který chcete mluvit s hlasem. Pokud jste vybrali možnost testování více modelů najednou, bude stejný text použit pro testování různých modelů.
-
-    > [!NOTE]
-    > Jazyk textu musí být stejný jako jazyk vašeho hlasového písma. Testovat lze pouze úspěšně proučené modely. V tomto kroku je podporován pouze prostý text.
-
-5.  Klikněte na **Vytvořit**.
-
-Jakmile odešlete žádost o test, vrátíte se na stránku test. Tabulka nyní obsahuje položku, která odpovídá vaší nové žádosti a sloupci Stav. Vysyntetizování řeči může trvat několik minut. Když se sloupec Stav **úspěšně**dožádaný, můžete přehrát zvuk, nebo si stáhnout textový vstup (soubor. txt) a zvukový výstup (soubor. wav) a další Audition k jeho kvalitě.
-
-Výsledky testu můžete také najít na stránce podrobností u jednotlivých modelů, které jste vybrali pro testování. Přejděte na kartu **školení** a kliknutím na název modelu zadejte stránku s podrobnostmi o modelu.
+Kvalita hlasu závisí na několika faktorech, včetně velikosti školicích dat, kvality záznamu, přesnosti souboru přepisu, jak dobře zaznamenaného hlasu v školicích datech odpovídá osobnosti navrženého hlasu pro zamýšlený případ použití a další. [Zde najdete další informace o možnostech a omezeních naší technologie a o osvědčených postupech pro zlepšení kvality modelu](https://aka.ms/CNV-limits). 
 
 ## <a name="create-and-use-a-custom-voice-endpoint"></a>Vytvoření a použití vlastního koncového bodu hlasu
 
 Po úspěšném vytvoření a otestování vašeho hlasového modelu ho nasadíte do vlastního koncového bodu pro převod textu na řeč. Tento koncový bod pak použijete místo obvyklého koncového bodu při vytváření požadavků na převod textu na řeč prostřednictvím REST API. Váš vlastní koncový bod může být volán pouze předplatným, které jste použili k nasazení písma.
 
-Pokud chcete vytvořit nový vlastní hlasový koncový bod, přečtěte si **text na řeč > vlastního nasazení hlasových >**. Vyberte **přidat koncový bod** a zadejte **název** a **Popis** vlastního koncového bodu. Pak vyberte vlastní hlasový model, který chcete přidružit k tomuto koncovému bodu.
+Pokud chcete vytvořit nový vlastní hlasový koncový bod, přečtěte si **text na řeč > Custom voice > Endpoint**. Vyberte **přidat koncový bod** a zadejte **název** a **Popis** vlastního koncového bodu. Pak vyberte vlastní hlasový model, který chcete přidružit k tomuto koncovému bodu.
 
-Po kliknutí na tlačítko **Přidat** se v tabulce koncového bodu zobrazí položka pro nový koncový bod. Vytvoření instance nového koncového bodu může trvat několik minut. Po **úspěšném**stavu nasazení je koncový bod připravený k použití.
+Po kliknutí na tlačítko **Přidat** se v tabulce koncového bodu zobrazí položka pro nový koncový bod. Vytvoření instance nového koncového bodu může trvat několik minut. Po **úspěšném** stavu nasazení je koncový bod připravený k použití.
+
+Pokud ho nebudete používat, můžete koncový bod **pozastavit** a **obnovit** . Když se po pozastavení znovu aktivuje koncový bod, adresa URL koncového bodu se zachová stejně, takže nemusíte měnit kód v aplikacích. 
+
+Koncový bod můžete také aktualizovat na nový model. Chcete-li změnit model, ujistěte se, že je nový model pojmenován stejně jako ten, který chcete aktualizovat. 
 
 > [!NOTE]
 > Uživatelé bezplatného předplatného (F0) můžou mít nasazený jenom jeden model. Standardní předplatné (S0) může vytvořit až 50 koncových bodů, z nichž každý má vlastní hlas.

@@ -4,21 +4,21 @@ titleSuffix: Azure Digital Twins
 description: Přečtěte si, jak nastavit směrování událostí z digitálních vláken Azure na Azure Time Series Insights.
 author: alexkarcher-msft
 ms.author: alkarche
-ms.date: 7/14/2020
+ms.date: 1/19/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: f776482c684004c8d661f69d8158ba9597c923b2
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 24b4f56e5798acc4d9bd0962be7059a359958645
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127026"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573237"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Integrace digitálních vláken Azure s Azure Time Series Insights
 
 V tomto článku se dozvíte, jak integrovat digitální vlákna Azure pomocí [Azure Time Series Insights (TSI)](../time-series-insights/overview-what-is-tsi.md).
 
-Řešení popsané v tomto článku vám umožní shromáždit a analyzovat historické údaje o řešení IoT. Digitální vlákna Azure je skvělým způsobem, který umožňuje zasílat data do Time Series Insights, protože umožňuje korelovat více datových proudů a standardizovat informace před jejich odesláním do Time Series Insights. 
+Řešení popsané v tomto článku vám umožní shromáždit a analyzovat historické údaje o řešení IoT. Azure Digital Twins se výborně hodí k zasílání dat do Time Series Insights, protože umožňuje korelovat více streamů dat a standardizovat informace, než je pošle do Time Series Insights. 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -38,31 +38,28 @@ Pomocí níže uvedené cesty budete připojeni Time Series Insights k digitáln
     :::column-end:::
 :::row-end:::
 
-## <a name="create-a-route-and-filter-to-twin-update-notifications"></a>Vytvoření trasy a filtru pro dvojitá oznámení o aktualizacích
+## <a name="create-a-route-and-filter-to-twin-update-notifications"></a>Vytvořit trasu a filtr pro oznámení o aktualizacích dvojčete
 
 Instance digitálních vláken Azure mohou generovat [události s dvojitou aktualizací](how-to-interpret-event-data.md) pokaždé, když se aktualizuje stav vlákna. V této části vytvoříte [**trasu událostí**](concepts-route-events.md) digitálních vláken Azure, která bude tyto události aktualizace směrovat na Azure [Event Hubs](../event-hubs/event-hubs-about.md) pro další zpracování.
 
 Kurz digitálních vláken Azure [*: připojení uceleného řešení*](./tutorial-end-to-end.md) projde scénářem, kde se k aktualizaci atributu teploty na digitálním vlákna představujícím místnost používá teploměr. Tento model spoléhá na nepřesné aktualizace a nepředávací telemetrii ze zařízení IoT, což vám poskytne flexibilitu při změně podkladového zdroje dat, aniž by bylo potřeba aktualizovat logiku Time Series Insights.
 
-1. Nejdřív vytvořte obor názvů centra událostí, který bude přijímat události z instance digitálního vlákna Azure. Můžete buď použít níže uvedené pokyny pro Azure CLI, nebo použít Azure Portal: [*rychlý Start: vytvoření centra událostí pomocí Azure Portal*](../event-hubs/event-hubs-create.md).
+1. Nejdřív vytvořte obor názvů centra událostí, který bude přijímat události z instance digitálního vlákna Azure. Můžete buď použít níže uvedené pokyny pro Azure CLI, nebo použít Azure Portal: [*rychlý Start: vytvoření centra událostí pomocí Azure Portal*](../event-hubs/event-hubs-create.md). Pokud chcete zjistit, které oblasti podporují Event Hubs, navštivte [*produkty Azure dostupné v jednotlivých oblastech*](https://azure.microsoft.com/global-infrastructure/services/?products=event-hubs).
 
     ```azurecli-interactive
-    # Create an Event Hubs namespace. Specify a name for the Event Hubs namespace.
-    az eventhubs namespace create --name <name for your Event Hubs namespace> --resource-group <resource group name> -l <region, for example: East US>
+    az eventhubs namespace create --name <name for your Event Hubs namespace> --resource-group <resource group name> -l <region>
     ```
 
-2. Vytvořte centrum událostí v rámci oboru názvů.
+2. Vytvořte centrum událostí v rámci oboru názvů, aby se přijímaly události s dvojitou změnou. Zadejte název centra událostí.
 
     ```azurecli-interactive
-    # Create an event hub to receive twin change events. Specify a name for the event hub. 
     az eventhubs eventhub create --name <name for your Twins event hub> --resource-group <resource group name> --namespace-name <Event Hubs namespace from above>
     ```
 
-3. Vytvořte [autorizační pravidlo](/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest&preserve-view=true#az-eventhubs-eventhub-authorization-rule-create) s oprávněními Odeslat a přijmout.
+3. Vytvořte [autorizační pravidlo](/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest&preserve-view=true#az-eventhubs-eventhub-authorization-rule-create) s oprávněními Odeslat a přijmout. Zadejte název pravidla.
 
     ```azurecli-interactive
-    # Create an authorization rule. Specify a name for the rule.
-    az eventhubs eventhub authorization-rule create --rights Listen Send --resource-group <resource group name> --namespace-name <Event Hubs namespace from above> --eventhub-name <Twins event hub name from above> --name <name for your Twins auth rule>
+        az eventhubs eventhub authorization-rule create --rights Listen Send --resource-group <resource group name> --namespace-name <Event Hubs namespace from above> --eventhub-name <Twins event hub name from above> --name <name for your Twins auth rule>
     ```
 
 4. Vytvořte [koncový bod](concepts-route-events.md#create-an-endpoint) digitálních vláken Azure, který propojuje centrum událostí s instancí digitálních vláken Azure.
@@ -71,12 +68,12 @@ Kurz digitálních vláken Azure [*: připojení uceleného řešení*](./tutori
     az dt endpoint create eventhub --endpoint-name <name for your Event Hubs endpoint> --eventhub-resource-group <resource group name> --eventhub-namespace <Event Hubs namespace from above> --eventhub <Twins event hub name from above> --eventhub-policy <Twins auth rule from above> -n <your Azure Digital Twins instance name>
     ```
 
-5. Vytvořte [trasu](concepts-route-events.md#create-an-event-route) v rámci digitálních vláken Azure, která odešle do koncového bodu události s dvojitou aktualizací. Filtr v této trase umožní předat do koncového bodu pouze zprávy s dvojitou aktualizací.
+5. Vytvořte [trasu](concepts-route-events.md#create-an-event-route) v Azure Digital Twins k posílání událostí aktualizací dvojčete do vašeho koncového bodu. Filtr v této trase umožní předat do koncového bodu pouze zprávy s dvojitou aktualizací.
 
     >[!NOTE]
-    >V současnosti se jedná o **známý problém** v Cloud Shell ovlivňují tyto skupiny příkazů: `az dt route` , `az dt model` , `az dt twin` .
+    >V současné době existuje **známý problém** v Cloud Shellu, který se týká těchto skupin příkazů: `az dt route`, `az dt model`, `az dt twin`.
     >
-    >Chcete-li tento problém vyřešit, buď spusťte `az login` v Cloud Shell před spuštěním příkazu, nebo použijte [místní CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) místo Cloud Shell. Další podrobnosti najdete v tématu [*řešení potíží: známé problémy v Azure Digital revláken*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell).
+    >Pokud chcete tento problém vyřešit, buď spusťte `az login` v Cloud Shellu před spuštěním příkazu, nebo místo Cloud Shellu použijte [místní rozhraní příkazového řádku (CLI)](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true). Další podrobnosti najdete v tématu [*řešení potíží: známé problémy v Azure Digital revláken*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell).
 
     ```azurecli-interactive
     az dt route create -n <your Azure Digital Twins instance name> --endpoint-name <Event Hub endpoint from above> --route-name <name for your route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
@@ -86,7 +83,7 @@ Než začnete pracovat, poznamenejte si *obor názvů Event Hubs* a *skupinu pro
 
 ## <a name="create-a-function-in-azure"></a>Vytvoření funkce v Azure
 
-V dalším kroku použijete Azure Functions k vytvoření funkce aktivované Event Hubs v aplikaci Function App. Můžete použít aplikaci Function App vytvořenou v rámci kompletního kurzu ([*kurz: připojení k*](./tutorial-end-to-end.md)kompletnímu řešení) nebo vlastní. 
+V dalším kroku použijete Azure Functions k vytvoření **funkce aktivované Event Hubs** v aplikaci Function App. Můžete použít aplikaci Function App vytvořenou v rámci kompletního kurzu ([*kurz: připojení k*](./tutorial-end-to-end.md)kompletnímu řešení) nebo vlastní. 
 
 Tato funkce převede tyto události s dvojitou aktualizací z původního formátu jako dokumenty JSON patch na objekty JSON obsahující pouze aktualizované a přidané hodnoty z vašich vláken.
 
@@ -100,9 +97,9 @@ Odsud pak funkce pošle objekty JSON, které vytvoří, do druhého centra udál
 
 Později nanastavíte také některé proměnné prostředí, které tato funkce použije pro připojení k vlastním centrům událostí.
 
-## <a name="send-telemetry-to-an-event-hub"></a>Odeslání telemetrie do centra událostí
+## <a name="send-telemetry-to-an-event-hub"></a>Posílání telemetrie do centra událostí
 
-Nyní vytvoříte druhé centrum událostí a nakonfigurujete funkci pro streamování výstupu do tohoto centra událostí. Toto centrum událostí pak bude připojené k Time Series Insights.
+Nyní vytvoříte druhé centrum událostí a nakonfigurujete funkci pro streamování výstupu do tohoto centra událostí. Toto centrum událostí se pak připojí k Time Series Insights.
 
 ### <a name="create-an-event-hub"></a>Vytvoření centra událostí
 
@@ -110,22 +107,22 @@ Pokud chcete vytvořit druhé centrum událostí, můžete použít níže uvede
 
 1. Příprava *oboru názvů Event Hubs* a názvu *skupiny prostředků* z výše uvedeného článku
 
-2. Vytvořit nové centrum událostí
+2. Vytvořte nové centrum událostí. Zadejte název centra událostí.
+
     ```azurecli-interactive
-    # Create an event hub. Specify a name for the event hub. 
     az eventhubs eventhub create --name <name for your TSI event hub> --resource-group <resource group name from earlier> --namespace-name <Event Hubs namespace from earlier>
     ```
-3. Vytvoření [autorizačního pravidla](/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest&preserve-view=true#az-eventhubs-eventhub-authorization-rule-create) s oprávněními Odeslat a přijmout
+3. Vytvořte [autorizační pravidlo](/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest&preserve-view=true#az-eventhubs-eventhub-authorization-rule-create) s oprávněními Odeslat a přijmout. Zadejte název pravidla.
+
     ```azurecli-interactive
-    # Create an authorization rule. Specify a name for the rule.
-    az eventhubs eventhub authorization-rule create --rights Listen Send --resource-group <resource group name> --namespace-name <Event Hubs namespace from earlier> --eventhub-name <TSI event hub name from above> --name <name for your TSI auth rule>
+        az eventhubs eventhub authorization-rule create --rights Listen Send --resource-group <resource group name> --namespace-name <Event Hubs namespace from earlier> --eventhub-name <TSI event hub name from above> --name <name for your TSI auth rule>
     ```
 
 ## <a name="configure-your-function"></a>Konfigurace funkce
 
 V dalším kroku budete muset ve své aplikaci Function App nastavovat proměnné prostředí z dříve, které obsahují připojovací řetězce pro centra událostí, která jste vytvořili.
 
-### <a name="set-the-twins-event-hub-connection-string"></a>Nastavení připojovacího řetězce centra událostí s dvojitými událostmi
+### <a name="set-the-twins-event-hub-connection-string"></a>Nastavení připojovacího řetězce centra událostí Twins
 
 1. Pomocí autorizačních pravidel, která jste vytvořili výše pro centrum vláken, Získejte [připojovací řetězec centra událostí](../event-hubs/event-hubs-get-connection-string.md).
 
@@ -133,13 +130,13 @@ V dalším kroku budete muset ve své aplikaci Function App nastavovat proměnn�
     az eventhubs eventhub authorization-rule keys list --resource-group <resource group name> --namespace-name <Event Hubs namespace> --eventhub-name <Twins event hub name from earlier> --name <Twins auth rule from earlier>
     ```
 
-2. Použijte připojovací řetězec, který získáte jako výsledek vytvoření nastavení aplikace ve vaší aplikaci Function App, které obsahuje připojovací řetězec:
+2. Pomocí připojovacího řetězce, který získáte jako výsledek, vytvořte nastavení aplikace ve vaší aplikaci funkcí, které bude obsahovat připojovací řetězec:
 
     ```azurecli-interactive
     az functionapp config appsettings set --settings "EventHubAppSetting-Twins=<Twins event hub connection string>" -g <resource group> -n <your App Service (function app) name>
     ```
 
-### <a name="set-the-time-series-insights-event-hub-connection-string"></a>Nastavit připojovací řetězec centra událostí Time Series Insights
+### <a name="set-the-time-series-insights-event-hub-connection-string"></a>Nastavení připojovacího řetězce centra událostí Time Series Insights
 
 1. Pomocí autorizačních pravidel, která jste vytvořili výše pro centrum Time Series Insights, Získejte [připojovací řetězec centra událostí](../event-hubs/event-hubs-get-connection-string.md):
 
@@ -147,13 +144,13 @@ V dalším kroku budete muset ve své aplikaci Function App nastavovat proměnn�
     az eventhubs eventhub authorization-rule keys list --resource-group <resource group name> --namespace-name <Event Hubs namespace> --eventhub-name <TSI event hub name> --name <TSI auth rule>
     ```
 
-2. Ve vaší aplikaci Function App vytvořte nastavení aplikace, které obsahuje připojovací řetězec:
+2. Ve vaší aplikaci funkcí vytvořte nastavení aplikace, které bude obsahovat připojovací řetězec:
 
     ```azurecli-interactive
     az functionapp config appsettings set --settings "EventHubAppSetting-TSI=<TSI event hub connection string>" -g <resource group> -n <your App Service (function app) name>
     ```
 
-## <a name="create-and-connect-a-time-series-insights-instance"></a>Vytvoření a připojení instance Time Series Insights
+## <a name="create-and-connect-a-time-series-insights-instance"></a>Vytvořit a připojit instanci Time Series Insights
 
 V dalším kroku nastavíte instanci Time Series Insights pro příjem dat z druhého centra událostí. Postupujte podle následujících kroků a podrobnější informace o tomto procesu najdete v tématu [*kurz: nastavení Azure Time Series Insights Gen2 PAYG Environment*](../time-series-insights/tutorials-set-up-tsi-environment.md).
 

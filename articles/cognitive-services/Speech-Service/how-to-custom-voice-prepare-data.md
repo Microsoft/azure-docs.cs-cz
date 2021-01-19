@@ -10,18 +10,26 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 5427e9f996fb77d455aa8064fc7cb1c65e1fcf7e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 563a3e224ffedc98bcc3102ea865f06315294365
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74805973"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573101"
 ---
 # <a name="prepare-data-to-create-a-custom-voice"></a>Příprava dat pro vytvoření vlastního hlasu
 
 Až budete připraveni vytvořit vlastní hlas pro převod textu na řeč, je prvním krokem shromáždění zvukového záznamu a přidružených skriptů pro zahájení školení v hlasovém modelu. Služba Speech používá tato data k vytvoření jedinečného hlasu optimalizovaného pro vyhledání hlasu v záznamech. Po školení hlasu můžete v aplikacích začít syntetizovat řeč.
 
-Můžete začít s malým množstvím dat, abyste mohli vytvořit zkoušku konceptu. Další data, která zadáte, ale tím větší je, že váš vlastní hlas bude zvuk. Než budete moct naučit vlastní hlasový model pro převod textu na řeč, budete potřebovat zvukové nahrávky a související text. Na této stránce zkontrolujeme typy dat, způsob jejich použití a způsob jejich správy.
+Než budete moct naučit vlastní hlasový model pro převod textu na řeč, budete potřebovat zvukové nahrávky a související text. Na této stránce zkontrolujeme typy dat, způsob jejich použití a způsob jejich správy.
+
+> [!NOTE]
+> Pokud chcete naučit neuronové hlas, musíte zadat profil hlasového talentů se souborem s vyjádřením informací o zvuku, který je k dispozici v hlasovém talentůu, abyste mohli využít jeho data o řeči k učení vlastního hlasového modelu. Při přípravě skriptu nahrávání se ujistěte, že jste zahrnuli níže uvedenou větu. 
+
+> "I [stav vašeho jména a příjmení] si uvědomte, že nahrávky mého hlasu budou použity uživatelem [State název společnosti] k vytvoření a použití syntetické verze mého hlasu."
+Tato věta se použije k ověření, jestli se školicí data provádějí stejnou osobou, která tento souhlas provede. Tady si můžete přečíst další informace o [ověřování hlasových talentů](https://aka.ms/CNV-data-privacy) .
+
+> Vlastní neuronové hlas je k dispozici s omezeným přístupem. Ujistěte se, že rozumíte [požadavkům na AI](https://aka.ms/gating-overview) a [použijete přístup tady](https://aka.ms/customneural). 
 
 ## <a name="data-types"></a>Typy dat
 
@@ -31,22 +39,22 @@ V některých případech nemusíte mít správnou datovou sadu, která je přip
 
 Tato tabulka obsahuje seznam datových typů a jejich využití k vytvoření vlastního hlasového modelu pro převod textu na řeč.
 
-| Datový typ | Popis | Kdy je použít | Vyžaduje se další služba. | Množství pro školení modelu | Národní prostředí (y) |
-| --------- | ----------- | ----------- | --------------------------- | ----------------------------- | --------- |
-| **Individuální projevy + vyhovující přepis** | Kolekce (. zip) zvukových souborů (. wav) jako samostatného projevy. Každý zvukový soubor by měl mít délku 15 sekund nebo méně, spárováno s formátovaným přepisem (. txt). | Profesionální nahrávky s vyhovujícími Přepisy | Připraveno pro školení. | Žádný tvrdý požadavek pro en-US a zh-CN. Více než 2000 + DISTINCT projevy pro ostatní národní prostředí. | [Všechna vlastní hlasová prostředí](language-support.md#customization) |
-| **Dlouhý zvuk + přepis (beta verze)** | Kolekce (ZIP) dlouhých, nesegmentované zvukové soubory (delší než 20 sekund) spárované s přepisem (. txt), který obsahuje všechna mluvený text. | Máte zvukové soubory a vyhovující přepisy, ale nesegmentují se na projevy. | Segmentace (pomocí dávkového přepisu).<br>V případě potřeby transformuje formát zvuku. | Žádný pevný požadavek  | [Všechna vlastní hlasová prostředí](language-support.md#customization) |
-| **Jenom zvuk (beta verze)** | Kolekce (. zip) zvukových souborů bez přepisu. | Máte k dispozici pouze zvukové soubory bez přepisů. | Segmentace a generování přepisu (pomocí dávkového přepisu).<br>V případě potřeby transformuje formát zvuku.| Žádný pevný požadavek | [Všechna vlastní hlasová prostředí](language-support.md#customization) |
+| Datový typ | Popis | Kdy je použít | Vyžaduje se další zpracování. | 
+| --------- | ----------- | ----------- | --------------------------- |
+| **Individuální projevy + vyhovující přepis** | Kolekce (. zip) zvukových souborů (. wav) jako samostatného projevy. Každý zvukový soubor by měl mít délku 15 sekund nebo méně, spárováno s formátovaným přepisem (. txt). | Profesionální nahrávky s vyhovujícími Přepisy | Připraveno pro školení. |
+| **Dlouhý zvuk + přepis (beta verze)** | Kolekce (ZIP) dlouhých, nesegmentované zvukové soubory (delší než 20 sekund) spárované s přepisem (. txt), který obsahuje všechna mluvený text. | Máte zvukové soubory a vyhovující přepisy, ale nesegmentují se na projevy. | Segmentace (pomocí dávkového přepisu).<br>V případě potřeby transformuje formát zvuku. | 
+| **Jenom zvuk (beta verze)** | Kolekce (. zip) zvukových souborů bez přepisu. | Máte k dispozici pouze zvukové soubory bez přepisů. | Segmentace a generování přepisu (pomocí dávkového přepisu).<br>V případě potřeby transformuje formát zvuku.| 
 
 Soubory by měly být seskupené podle typu do datové sady a nahrané jako soubor zip. Každá datová sada může obsahovat pouze jeden datový typ.
 
 > [!NOTE]
-> Maximální počet datových sad povolených pro import na jedno předplatné je 10 souborů. zip pro uživatele bezplatného předplatného (F0) a 500 pro uživatele Standard Subscription (S0).
+> Maximální počet datových sad povolených pro import na jedno předplatné je 10 souborů zip pro uživatele bezplatného předplatného (F0) a 500 pro uživatele Standard Subscription (S0).
 
 ## <a name="individual-utterances--matching-transcript"></a>Individuální projevy + vyhovující přepis
 
 Záznamy jednotlivých projevy a vyhovující přepisy můžete připravit dvěma způsoby. Napište skript a vyčtěte ho hlasovým talentůem, nebo využijte veřejně dostupný zvuk a přepisovat ho na text. Pokud to uděláte, upravte disfluencies ze zvukových souborů, jako je "um" a další zvuky s výplní, stutters, mumbled slova nebo nesprávné výslovnosti.
 
-Chcete-li vytvořit dobré písmo hlasu, vytvořte nahrávky v tiché místnosti pomocí vysoce kvalitního mikrofonu. Základem je konzistentní objem, míra speaking, rozteč mluveného slova a vyjádření mannerisms řeči.
+Pokud chcete vytvořit dobrý hlasový model, vytvářejte nahrávky v tiché místnosti pomocí vysoce kvalitního mikrofonu. Základem je konzistentní objem, míra speaking, rozteč mluveného slova a vyjádření mannerisms řeči.
 
 > [!TIP]
 > Pokud chcete vytvořit hlas pro použití v produkčním prostředí, doporučujeme použít profesionální záznamový Studio a hlasový talentů. Další informace najdete v tématu [Jak nahrávat ukázky hlasu pro vlastní hlas](record-custom-voice-samples.md).
@@ -89,9 +97,6 @@ Níže je uveden příklad, jak jsou přepisy uspořádány utterance by utteran
 0000000003[tab] It was Janet Maslin.
 ```
 Je důležité, aby přepisy byly 100% přesného přepisu odpovídajícího zvukového záznamu. Chyby v přepisech zavedou ke ztrátě kvality během školení.
-
-> [!TIP]
-> Při sestavování hlasů pro převod textu na řeč vyberte projevy (nebo zapište skripty), které berou v úvahu jak fonetické pokrytí, tak efektivitu. Máte potíže s získáním požadované výsledků? [Obraťte se na vlastního hlasového](mailto:speechsupport@microsoft.com) týmu a získejte další informace o tom, jak nás poradíme.
 
 ## <a name="long-audio--transcript-beta"></a>Dlouhý zvuk + přepis (beta verze)
 

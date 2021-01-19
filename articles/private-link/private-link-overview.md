@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/03/2020
 ms.author: allensu
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 3c03a207e91ae969836e208f4e6bf4ea32086c7d
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: b3ca4f11b02f32e65cf80adc65ec12d25e6e7905
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121310"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573169"
 ---
 # <a name="what-is-azure-private-link"></a>Co je privátní propojení Azure? 
 Privátní odkaz Azure vám umožňuje přístup ke službám Azure PaaS (například Azure Storage a SQL Database) a službám, které hostuje zákaznická/Partnerská služba Azure, prostřednictvím [privátního koncového bodu](private-endpoint-overview.md) ve vaší virtuální síti.
@@ -66,7 +66,7 @@ Privátní propojení Azure přináší následující výhody:
 |Azure Event Grid| Všechny veřejné oblasti<br/> Všechny oblasti státní správy       |  | GA   <br/> [Naučte se vytvořit privátní koncový bod pro Azure Event Grid.](../event-grid/network-security.md) |
 |Azure Web Apps | Všechny veřejné oblasti      | Podporováno s plánem PremiumV2, PremiumV3 nebo funkcí Premium  | GA   <br/> [Přečtěte si, jak vytvořit privátní koncový bod pro Azure Web Apps.](./tutorial-private-endpoint-webapp-portal.md)   |
 |Azure Machine Learning | Všechny veřejné oblasti    |  | GA   <br/> [Naučte se vytvořit privátní koncový bod pro Azure Machine Learning.](../machine-learning/how-to-configure-private-link.md)   |
-| Azure Automation  | Všechny veřejné oblasti |  | Preview </br> [Naučte se vytvořit privátní koncový bod pro Azure Automation.](../automation/how-to/private-link-security.md)| |
+| Azure Automation  | Všechny veřejné oblasti<br/> Všechny oblasti státní správy |  | Preview </br> [Naučte se vytvořit privátní koncový bod pro Azure Automation.](../automation/how-to/private-link-security.md)| |
 | Azure IoT Hub | Všechny veřejné oblasti    |  | GA   <br/> [Přečtěte si, jak vytvořit privátní koncový bod pro Azure IoT Hub.](../iot-hub/virtual-network-support.md) |
 | Azure SignalR | VÝCHODNÍ USA, STŘED USA – JIH,<br/>ZÁPADNÍ USA 2, všechny čínské oblasti      |  | Preview   <br/> [Přečtěte si, jak vytvořit privátní koncový bod pro službu Azure Signal.](../azure-signalr/howto-private-endpoints.md)   |
 | Azure Monitor <br/>(Log Analytics & Application Insights) | Všechny veřejné oblasti      |  | GA   <br/> [Naučte se vytvořit privátní koncový bod pro Azure Monitor.](../azure-monitor/platform/private-link-security.md)   | 

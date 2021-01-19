@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/08/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 9bee5fa6b76aad9305947ebe460f37c399340038
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: d858474eca34243a007d0d0ac1e023a4a0fab8ec
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98033440"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572336"
 ---
 # <a name="text-to-speech-rest-api"></a>Rozhraní REST API pro převod textu na řeč
 
@@ -50,7 +50,7 @@ Než začnete používat toto rozhraní API, pochopte:
 | Austrálie – východ | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Brazil South | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Střední Kanada | `https://canadacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| Střední USA | `https://centralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| USA – střed | `https://centralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Východní Asie | `https://eastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | East US | `https://eastus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA – východ 2 | `https://eastus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
@@ -60,9 +60,11 @@ Než začnete používat toto rozhraní API, pochopte:
 | Jižní Korea – střed | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA – středosever | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Severní Evropa | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Jižní Afrika – sever | `https://southafricanorth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Středojižní USA | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Southeast Asia | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Spojené království – jih | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| USA – středozápad | `https://westcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | West Europe | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA – západ | `https://westus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Západní USA 2 | `https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
@@ -211,10 +213,10 @@ Tato tabulka obsahuje seznam požadovaných a volitelných hlaviček pro požada
 
 | Hlavička | Popis | Požadováno/volitelné |
 |--------|-------------|---------------------|
-| `Authorization` | Autorizační token předchází slovu `Bearer` . Další informace najdete v tématu [Ověřování](#authentication). | Povinné |
-| `Content-Type` | Určuje typ obsahu pro zadaný text. Přijatá hodnota: `application/ssml+xml` . | Povinné |
-| `X-Microsoft-OutputFormat` | Určuje formát výstup zvuku. Úplný seznam přijatých hodnot najdete v tématu [zvukové výstupy](#audio-outputs). | Povinné |
-| `User-Agent` | Název aplikace. Zadaná hodnota musí být kratší než 255 znaků. | Povinné |
+| `Authorization` | Autorizační token předchází slovu `Bearer` . Další informace najdete v tématu [Ověřování](#authentication). | Vyžadováno |
+| `Content-Type` | Určuje typ obsahu pro zadaný text. Přijatá hodnota: `application/ssml+xml` . | Vyžadováno |
+| `X-Microsoft-OutputFormat` | Určuje formát výstup zvuku. Úplný seznam přijatých hodnot najdete v tématu [zvukové výstupy](#audio-outputs). | Vyžadováno |
+| `User-Agent` | Název aplikace. Zadaná hodnota musí být kratší než 255 znaků. | Vyžadováno |
 
 ### <a name="audio-outputs"></a>Zvukové výstupy
 

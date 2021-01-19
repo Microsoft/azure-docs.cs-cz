@@ -7,40 +7,59 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 252026f7c59f73dfb37f69d7708a80be827ce104
-ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+ms.openlocfilehash: 7af91e2065235d749d3a690a3c4c244fc45c0e5a
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96748786"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572761"
 ---
 # <a name="examples-of-an-attestation-policy"></a>Příklady zásad ověřování identity
 
 Zásady ověření identity se používají ke zpracování legitimace ověřování a určení, jestli ověření identity Azure vydá token ověření identity. Generování tokenu ověření identity se dá řídit pomocí vlastních zásad. Níže jsou uvedeny některé příklady zásad ověřování identity.
 
-## <a name="default-policy-for-an-sgx-enclave-with-policyformattext"></a>Výchozí zásady pro SGX enklávy s PolicyFormat = text
+## <a name="default-policy-for-an-sgx-enclave-in-text-format"></a>Výchozí zásady pro SGX enklávy v textovém formátu
+
+```
+version= 1.0;
+authorizationrules
+{
+    c:[type=="$is-debuggable"] => permit();
+};
+
+issuancerules
+{
+    c:[type=="$is-debuggable"] => issue(type="is-debuggable", value=c.value);
+    c:[type=="$sgx-mrsigner"] => issue(type="sgx-mrsigner", value=c.value);
+    c:[type=="$sgx-mrenclave"] => issue(type="sgx-mrenclave", value=c.value);
+    c:[type=="$product-id"] => issue(type="product-id", value=c.value);
+    c:[type=="$svn"] => issue(type="svn", value=c.value);
+    c:[type=="$tee"] => issue(type="tee", value=c.value);
+};
+```
+
+## <a name="sample-custom-policy-for-an-sgx-enclave-in-text-format"></a>Ukázková vlastní zásada pro SGX enklávy v textovém formátu
 
 ```
 Version= 1.0;
-authorizationrules
+authorizationrules 
 {
-    c:[type==”$is-debuggable”] => permit();
+       [ type=="x-ms-sgx-is-debuggable", value==false ]
+        && [ type=="x-ms-sgx-product-id", value==<product-id> ]
+        && [ type=="x-ms-sgx-svn", value>= 0 ]
+        && [ type=="x-ms-sgx-mrsigner", value=="<mrsigner>"] 
+    => permit();
 };
 issuancerules
 {
-    c:[type==”$is-debuggable”] => issue(type=”is-debuggable”, value=c.value);
-    c:[type==”$sgx-mrsigner”] => issue(type=”sgx-mrsigner”, value=c.value);
-    c:[type==”$sgx-mrenclave”] => issue(type=”sgx-mrenclave”, value=c.value);
-    c:[type==”$product-id”] => issue(type=”product-id”, value=c.value);
-    c:[type==”$svn”] => issue(type=”svn”, value=c.value);
-    c:[type==”$tee”] => issue(type=”tee”, value=c.value);
+    c:[type=="x-ms-sgx-is-debuggable"] => issue(type="is-debuggable", value=c.value);
+    c:[type=="x-ms-sgx-mrsigner"] => issue(type="sgx-mrsigner", value=c.value);
+    c:[type=="x-ms-sgx-mrenclave"] => issue(type="sgx-mrenclave", value=c.value);
+    c:[type=="x-ms-sgx-product-id"] => issue(type="product-id", value=c.value);
+    c:[type=="x-ms-sgx-svn"] => issue(type="svn", value=c.value);
+    c:[type=="x-ms-sgx-tee"] => issue(type="tee", value=c.value);
 };
 ```
-
-## <a name="default-policy-for-vbs-enclave"></a>Výchozí zásady pro VBS enklávy
-
-Pro VBS enklávy nejsou k dispozici žádné výchozí zásady.
-
 
 ## <a name="unsigned-policy-for-an-sgx-enclave-with-policyformatjwt"></a>Nepodepsaná zásada pro SGX enklávy s PolicyFormat = JWT
 

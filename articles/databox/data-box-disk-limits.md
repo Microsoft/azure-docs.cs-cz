@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: alkohli
-ms.openlocfilehash: fb0e56c5eeebb4f3a869feacb996d690ea7dde86
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: e003d0121721838bd5ae038a3a8b4d1b8cd9d1eb
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92124165"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573186"
 ---
 # <a name="azure-data-box-disk-limits"></a>Omezení Azure Data Box Disk
 
@@ -44,7 +44,7 @@ Nejnovější informace o omezeních služby Azure Storage a osvědčených post
 
 ## <a name="data-upload-caveats"></a>Výhody a rizika nahrávání dat
 
-- Nekopírujte data přímo do disků. Zkopírujte data na předem vytvořené složky *BlockBlob*,*PageBlob*a *AzureFile* .
+- Nekopírujte data přímo do disků. Zkopírujte data na předem vytvořené složky *BlockBlob*,*PageBlob* a *AzureFile* .
 - Složka pod *BlockBlob* a *PageBlob* je kontejner. Například kontejnery jsou vytvořeny jako *BlockBlob/Container* a *PageBlob/Container*.
 - Pokud máte v cloudu existující objekt Azure (například objekt BLOB) se stejným názvem, jako má kopírovaný objekt, Data Box Disk soubor přejmenuje jako soubor (1) v cloudu.
 - Každý soubor zapsaný do sdílených složek *BlockBlob* a *PageBlob* se nahraje jako objekt blob bloku a objekt blob stránky v uvedeném pořadí.
@@ -75,8 +75,8 @@ Tady jsou velikosti objektů Azure, které se dají zapsat. Zajistěte, aby vše
 |-------------------|-----------------------------------------------------------|
 | Objekt blob bloku        | ~ 4,75 TiB                                                 |
 | Objekt blob stránky         | 8 TiB <br> (Každý soubor nahraný ve formátu objektu blob stránky musí být 512 bajtů, jinak se nahrávání nepovede. <br> VHD i VHDX jsou zarovnaný 512 bajtů.) |
-|Soubory Azure        | 1 TiB <br> Max. Velikost sdílené složky je 5 TiB.     |
-| Spravované disky     |4 TiB <br> Další informace o velikosti a omezeních najdete v těchto tématech: <li>[Cíle škálovatelnosti pro spravované disky](../virtual-machines/windows/disk-scalability-targets.md#managed-virtual-machine-disks)</li>|
+|Azure Files        | 1 TiB <br> Max. Velikost sdílené složky je 5 TiB.     |
+| Spravované disky     |4 TiB <br> Další informace o velikosti a omezeních najdete v těchto tématech: <li>[Cíle škálovatelnosti pro spravované disky](../virtual-machines/disks-scalability-targets.md#managed-virtual-machine-disks)</li>|
 
 
 ## <a name="azure-block-blob-page-blob-and-file-naming-conventions"></a>Zásady pro pojmenovávání objektů blob bloku Azure, objektů blob stránky a názvů souborů

@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 01/03/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: b5cb7d0e421657b84c365d8dca536191cafd4e72
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 2053632f24504f896d1045f99d581b9aa6050b55
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861970"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573135"
 ---
 # <a name="about-azure-defender-for-iot-network-setup"></a>O programu Azure Defender pro síť IoT
 
@@ -97,7 +97,7 @@ Ověřte, že vaše zásada zabezpečení vaší organizace umožňuje přístup
 | **Účel** | **Protokol** | **Přenos** | **V nebo ven** | **Port** | **Kategorie** |
 | ----------- | ----------- | ------------ | ---------- | -------- | ------------ |
 | **Přístup ke webové konzole** | HTTPS | TCP | V nebo ven | 443 | Místní Konzola pro správu pro platformu Defender for IoT |
-| **Přístup k rozhraní příkazového řádku** | SSH | TCP | V nebo ven | 22 | Rozhraní příkazového řádku |
+| **Přístup k rozhraní příkazového řádku** | SSH | TCP | V nebo ven | 22 | CLI |
 | **Propojení mezi platformou Defender for IoT a místní konzolou pro správu** | SSL | TCP | V nebo ven | 443 | Senzor a místní Konzola pro správu|
 | **Místní Konzola pro správu, která se používá jako NTP pro senzor** | NTP | UDP| Do CM | 123 | Časová synchronizace | 
 | **Senzor připojený k externímu serveru NTP (Pokud je relevantní)** | NTP | UDP | V nebo ven| 123 | Časová synchronizace |
@@ -223,7 +223,7 @@ V síti s hvězdičkami je každý hostitel připojený k centrálnímu centru. 
 
 Tady je několik doporučení pro nasazení různých senzorů:
 
-| * * Číslo * *| **Měřiče** | **Závislost** | **Počet senzorů** |
+| **Číselná** | **Měřiče** | **Závislost** | **Počet senzorů** |
 |--|--|--|--|
 | Maximální vzdálenost mezi přepínači | 80 měřičů | Připravený ethernetový kabel | Více než 1 |
 | Počet sítí typu OT. | Více než 1 | Bez fyzického připojení | Více než 1 |
@@ -363,7 +363,7 @@ Klepnutím na agregátory lze také použít pro monitorování portů. Tato za�
 
 Tyto modely byly testovány na kompatibilitu. Ostatní dodavatelé a modely můžou být taky kompatibilní.
 
-| Image | Model |
+| Image | Modelování |
 | -- | -- |
 | :::image type="content" source="media/how-to-set-up-your-network/garland-p1gccas-v2.png" alt-text="Snímek obrazovky Garland P1GCCAS.":::  | Garland P1GCCAS  |
 | :::image type="content" source="media/how-to-set-up-your-network/ixia-tpa2-cu3-v2.png" alt-text="Snímek obrazovky IXIA TPA2-CU3.":::  | IXIA TPA2 – CU3  |
@@ -591,7 +591,7 @@ Přehled diagramu průmyslové sítě vám umožní definovat vhodné umístěn�
 
 5. Chcete-li ověřit, zda mají přepínače schopnost zrcadlení portů, zadejte čísla modelů přepínačů, ke kterým se má platforma Defender for IoT připojit:
 
-    | **#** | **Přepínač** | **Model** | **Podpora zrcadlení přenosů (SPAN, RSPAN nebo None)** |
+    | **#** | **Přepínač** | **Modelování** | **Podpora zrcadlení přenosů (SPAN, RSPAN nebo None)** |
     |--|--|--|--|
     | 1 |  |  |
     | 2 |  |  |

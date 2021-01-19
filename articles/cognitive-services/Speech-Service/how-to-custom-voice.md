@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: trbye
-ms.openlocfilehash: 6ae164b1300119481e495e647dd491beafdd5241
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: e48dfd224a9656c7d8327dd77f1b55e9a744f3af
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025074"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573084"
 ---
 # <a name="get-started-with-custom-voice"></a>Začínáme se službou Custom Voice
 
@@ -39,10 +39,10 @@ Diagram níže popisuje kroky pro vytvoření vlastního hlasového modelu pomoc
 
 ## <a name="custom-neural-voices"></a>Vlastní hlasy neuronové
 
-Funkce pro přizpůsobení hlasu neuronové je aktuálně ve verzi Public Preview omezená na vybrané zákazníky. Vyplňte formulář této [aplikace](https://go.microsoft.com/fwlink/?linkid=2108737) a začněte.
+Vlastní hlas v současné době podporuje úrovně Standard a neuronové. Vlastní neuronové hlas umožňuje uživatelům vytvářet vyšší kvality hlasových modelů a přitom přitom vyžadovat méně dat a poskytuje míry, které vám pomůžou nasadit AI zodpovědnou. Doporučujeme používat vlastní neuronové hlas pro vývoj realističtějších hlasů pro více přirozených konverzací a umožnit vašim zákazníkům a koncovým uživatelům těžit z nejnovější technologie pro převod textu na řeč, a to podle zodpovědného způsobu. [Přečtěte si další informace o vlastním neuronovéém hlasu](https://aka.ms/CNV-Transparency-Note). 
 
 > [!NOTE]
-> V rámci snahy Microsoftu o návrh zodpovědného AI je naším záměrem chránit práva jednotlivců a společnosti a podporovat transparentní interakce v rámci lidských počítačů. Z tohoto důvodu není vlastní neuronové hlas všeobecně dostupný všem zákazníkům. Přístup k technologii můžete získat až po zkontrolování vašich aplikací a s potvrzením, že je budete používat v souladu s našimi principy etiky. Přečtěte si další informace o našich [procesech uzavírání aplikací](./concepts-gating-overview.md).
+> V rámci snahy Microsoftu o návrh zodpovědného AI jsme omezili použití vlastního hlasu neuronové. Přístup k technologii můžete získat až po kontrole vašich aplikací a s potvrzením, že je budete používat v souladu s našimi zodpovědnými principy AI. Přečtěte si další informace o našich [zásadách pro omezení přístupu](https://aka.ms/gating-overview) a [použijte je tady](https://aka.ms/customneural). [Jazyky](language-support.md#customization) a [oblasti](regions.md#custom-voices) podporované standardem a neuronové verzí vlastního hlasu se liší. Než začnete, Projděte si podrobnosti.  
 
 ## <a name="set-up-your-azure-account"></a>Nastavení účtu Azure
 
@@ -56,7 +56,7 @@ Po vytvoření účtu Azure a předplatného služby pro rozpoznávání řeči 
 4. Pokud byste chtěli přepnout na jiné předplatné řeči, použijte ikonu ozubeného kola umístěnou v horním navigačním panelu.
 
 > [!NOTE]
-> Předtím, než budete moci službu používat, musíte mít v Azure vytvořený klíč F0 nebo S0.
+> Než budete moct službu používat, musíte mít v Azure vytvořený klíč služby F0 nebo S0 Speech. Vlastní neuronové hlas podporuje pouze vrstvu S0. 
 
 ## <a name="how-to-create-a-project"></a>Jak vytvořit projekt
 

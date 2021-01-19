@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: a9591a394d80e7b4c60f28fda6c0a425ba3d0a4f
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 05d6607c091361ecee3fcd5527025b6f9fb59051
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98180060"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573203"
 ---
 # <a name="tutorial-create-a-hierarchy-of-iot-edge-devices-preview"></a>Kurz: vytvoření hierarchie zařízení IoT Edge (Preview)
 
@@ -27,7 +27,7 @@ Můžete strukturovat hierarchii zařízení, aby se ke cloudu mohla připojit j
 
 Cílem tohoto kurzu je vytvořit hierarchii IoT Edge zařízení, která simulují produkční prostředí. Na konci nasadíte [modul simulovaného senzoru teploty](https://azuremarketplace.microsoft.com/marketplace/apps/azure-iot.simulated-temperature-sensor) na zařízení nižší vrstvy bez přístupu k Internetu stažením imagí kontejneru v hierarchii.
 
-Tento kurz vás provede vytvořením hierarchie IoT Edge zařízení, nasazením IoT Edge kontejnerů runtime na vaše zařízení a místní konfigurací zařízení. V tomto kurzu:
+Tento kurz vás provede vytvořením hierarchie IoT Edge zařízení, nasazením IoT Edge kontejnerů runtime na vaše zařízení a místní konfigurací zařízení. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 >
@@ -425,6 +425,7 @@ V [Azure Portal](https://ms.portal.azure.com/):
                            "env": {
                                "REGISTRY_PROXY_REMOTEURL": {
                                    "value": "https://mcr.microsoft.com"
+                               } 
                            },
                            "status": "running",
                            "restartPolicy": "always"
@@ -453,7 +454,7 @@ V [Azure Portal](https://ms.portal.azure.com/):
                    },
                    "runtime": {
                        "settings": {
-                           "minDockerVersion": "v1.25",
+                           "minDockerVersion": "v1.25"
                        },
                        "type": "docker"
                    },
@@ -575,7 +576,7 @@ V [Azure Portal](https://ms.portal.azure.com/):
                    },
                    "runtime": {
                        "settings": {
-                           "minDockerVersion": "v1.25",
+                           "minDockerVersion": "v1.25"
                        },
                        "type": "docker"
                    },

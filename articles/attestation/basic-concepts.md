@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 51c22346ee89150194fb1dc83752e2ba2a2e0cf0
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: c6c09dc771692cb2fc2f36840e729874cfaf2d09
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185440"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572812"
 ---
 # <a name="basic-concepts"></a>Základní koncepty
 
@@ -28,9 +28,7 @@ Níže jsou uvedené základní koncepty týkající se Microsoft Azure ověřen
 
 ## <a name="attestation-provider"></a>Zprostředkovatel ověření identity
 
-Zprostředkovatel ověření identity patří do poskytovatele prostředků Azure s názvem Microsoft. Attestation. Poskytovatel prostředků je koncový bod služby, který poskytuje kontrakt Azure pro ověření identity REST a je nasazený pomocí [Azure Resource Manager](../azure-resource-manager/management/overview.md). Každý poskytovatel ověření identity respektuje konkrétní, zjistitelnou zásadu. 
-
-Poskytovatelé ověřování identity se vytvoří s výchozími zásadami pro každý typ ověření identity (Všimněte si, že VBS enklávy nemá žádné výchozí zásady). Další podrobnosti o výchozích zásadách pro SGX najdete v tématu [Příklady zásad ověřování](policy-examples.md) .
+Zprostředkovatel ověření identity patří do poskytovatele prostředků Azure s názvem Microsoft. Attestation. Poskytovatel prostředků je koncový bod služby, který poskytuje kontrakt Azure pro ověření identity REST a je nasazený pomocí [Azure Resource Manager](../azure-resource-manager/management/overview.md). Každý poskytovatel ověření identity respektuje konkrétní, zjistitelnou zásadu. Poskytovatelé ověřování identity se vytvoří s výchozími zásadami pro každý typ ověření identity (Všimněte si, že VBS enklávy nemá žádné výchozí zásady). Další podrobnosti o výchozích zásadách pro SGX najdete v tématu [Příklady zásad ověřování](policy-examples.md) .
 
 ### <a name="regional-default-provider"></a>Regionální výchozí zprostředkovatel
 
@@ -47,7 +45,7 @@ Azure Attestation poskytuje v každé oblasti výchozího zprostředkovatele. Z�
 | Severní Evropa | `https://sharedneu.neu.attest.azure.net` | 
 | West Europe| `https://sharedweu.weu.attest.azure.net` | 
 | USA – východ 2 | `https://sharedeus2.eus2.attest.azure.net` | 
-| Střední USA | `https://sharedcus.cus.attest.azure.net` | 
+| USA – střed | `https://sharedcus.cus.attest.azure.net` | 
 
 ## <a name="attestation-request"></a>Žádost o ověření identity
 
@@ -63,7 +61,7 @@ Zásady ověření identity se používají ke zpracování legitimace ověřov�
 
 Pokud výchozí zásady ve zprostředkovateli ověření identity nesplňují požadavky, zákazníci budou moct vytvářet vlastní zásady v jakékoli oblasti podporované službou Azure Attestation. Správa zásad je klíčová funkce poskytovaná zákazníkům pomocí ověření identity Azure. Zásady budou specifické pro typ ověření identity a dají se použít k identifikaci enclaves nebo přidání deklarací identity do výstupního tokenu nebo k úpravě deklarací v výstupním tokenu. 
 
-Podívejte [se na příklady zásad ověření identity](policy-examples.md) pro výchozí obsah a ukázky zásad.
+Podívejte [se na příklady zásad ověření identity](policy-examples.md) pro ukázky zásad.
 
 ## <a name="benefits-of-policy-signing"></a>Výhody podepisování zásad
 
@@ -85,25 +83,55 @@ Příklad generovaného tokenu JWT pro SGX enklávy:
 
 ```
 {
-  “alg”: “RS256”,
-  “jku”: “https://tradewinds.us.attest.azure.net/certs”,
-  “kid”: “f1lIjBlb6jUHEUp1/Nh6BNUHc6vwiUyMKKhReZeEpGc=”,
-  “typ”: “JWT”
+  "alg": "RS256",
+  "jku": "https://tradewinds.us.attest.azure.net/certs",
+  "kid": <self signed certificate reference to perform signature verification of attestation token,
+  "typ": "JWT"
 }.{
-  “maa-ehd”: <input enclave held data>,
-  “exp”: 1568187398,
-  “iat”: 1568158598,
-  “is-debuggable”: false,
-  “iss”: “https://tradewinds.us.attest.azure.net”,
-  “nbf”: 1568158598,
-  “product-id”: 4639,
-  “sgx-mrenclave”: “”,
-  “sgx-mrsigner”: “”,
-  “svn”: 0,
-  “tee”: “sgx”
+  "aas-ehd": <input enclave held data>,
+  "exp": 1568187398,
+  "iat": 1568158598,
+  "is-debuggable": false,
+  "iss": "https://tradewinds.us.attest.azure.net",
+  "maa-attestationcollateral": 
+    {
+      "qeidcertshash": <SHA256 value of QE Identity issuing certs>,
+      "qeidcrlhash": <SHA256 value of QE Identity issuing certs CRL list>,
+      "qeidhash": <SHA256 value of the QE Identity collateral>,
+      "quotehash": <SHA256 value of the evaluated quote>, 
+      "tcbinfocertshash": <SHA256 value of the TCB Info issuing certs>, 
+      "tcbinfocrlhash": <SHA256 value of the TCB Info issuing certs CRL list>, 
+      "tcbinfohash": <SHA256 value of the TCB Info collateral>
+     },
+  "maa-ehd": <input enclave held data>,
+  "nbf": 1568158598,
+  "product-id": 4639,
+  "sgx-mrenclave": <SGX enclave mrenclave value>,
+  "sgx-mrsigner": <SGX enclave msrigner value>,
+  "svn": 0,
+  "tee": "sgx"
+  "x-ms-attestation-type": "sgx", 
+  "x-ms-policy-hash": <>,
+  "x-ms-sgx-collateral": 
+    {
+      "qeidcertshash": <SHA256 value of QE Identity issuing certs>,
+      "qeidcrlhash": <SHA256 value of QE Identity issuing certs CRL list>,
+      "qeidhash": <SHA256 value of the QE Identity collateral>,
+      "quotehash": <SHA256 value of the evaluated quote>, 
+      "tcbinfocertshash": <SHA256 value of the TCB Info issuing certs>, 
+      "tcbinfocrlhash": <SHA256 value of the TCB Info issuing certs CRL list>, 
+      "tcbinfohash": <SHA256 value of the TCB Info collateral>
+     },
+  "x-ms-sgx-ehd": <>, 
+  "x-ms-sgx-is-debuggable": true,
+  "x-ms-sgx-mrenclave": <SGX enclave mrenclave value>,
+  "x-ms-sgx-mrsigner": <SGX enclave msrigner value>, 
+  "x-ms-sgx-product-id": 1, 
+  "x-ms-sgx-svn": 1,
+  "x-ms-ver": "1.0"
 }.[Signature]
 ```
-Deklarace identity, jako je "EXP", "IAT", "ISS", "NBF", jsou definovány v [dokumentu RFC](https://tools.ietf.org/html/rfc7517) a zbývající jsou generovány pomocí ověření identity Azure. Další informace najdete v tématu [deklarace identity vydané Azure Attestation](claim-sets.md) .
+Některé výše použité deklarace identity se považují za zastaralé, ale jsou plně podporované.  Doporučuje se, aby veškerý budoucí kód a nástroje používaly nepoužívané názvy deklarací identity. Další informace najdete v tématu [deklarace identity vydané Azure Attestation](claim-sets.md) .
 
 ## <a name="encryption-of-data-at-rest"></a>Šifrování dat v klidovém umístění
 

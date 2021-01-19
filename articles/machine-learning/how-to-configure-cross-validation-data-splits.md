@@ -11,18 +11,18 @@ ms.author: cesardl
 author: CESARDELATORRE
 ms.reviewer: nibaccam
 ms.date: 06/16/2020
-ms.openlocfilehash: 2e26bfa484d573c0158e518b31087fb10bdcdfb9
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 8e749e5f6ea6bcf76a1b4f143bce03ceb41cbb07
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185678"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573288"
 ---
 # <a name="configure-data-splits-and-cross-validation-in-automated-machine-learning"></a>Konfigurace dělení dat a křížového ověřování v rámci automatizovaného strojového učení
 
 V tomto článku se dozvíte, jaké jsou různé možnosti konfigurace rozdělených a ověřovacích dat a křížového ověřování pro automatizované Machine Learning, automatizované ML a experimenty.
 
-Při použití automatizovaného ML v Azure Machine Learning k sestavení více modelů ML musí každý podřízený běh ověřit související model výpočtem metrik kvality pro daný model, jako je přesnost nebo AUC vážená. Tyto metriky se vypočtou porovnáním předpovědi vytvořených s každým modelem a skutečnými popisky z minulých pozorování v datech ověřování. 
+Při použití automatizovaného ML v Azure Machine Learning k sestavení více modelů ML musí každý podřízený běh ověřit související model výpočtem metrik kvality pro daný model, jako je přesnost nebo AUC vážená. Tyto metriky se vypočtou porovnáním předpovědi vytvořených s každým modelem a skutečnými popisky z minulých pozorování v datech ověřování. [Přečtěte si další informace o tom, jak se počítají metriky na základě typu ověřování](#metric-calculation-for-cross-validation-in-machine-learning). 
 
 Automatizované experimenty ML provádí ověření modelu automaticky. Následující části popisují, jak můžete upravit nastavení ověřování pomocí [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py). 
 
@@ -43,9 +43,9 @@ Pro tento článek potřebujete,
 
     * [O výukových, ověřovacích a testovacích sadách v Machine Learning](https://towardsdatascience.com/train-validation-and-test-sets-72cb40cba9e7)
 
-    * [Vysvětlení vzájemného ověřování ve strojovém učení](https://towardsdatascience.com/understanding-cross-validation-419dbd47e9bd)
+    * [Vysvětlení vzájemného ověřování ve strojovém učení](https://towardsdatascience.com/understanding-cross-validation-419dbd47e9bd) 
 
-## <a name="default-data-splits-and-cross-validation"></a>Výchozí rozdělená a křížová ověřování dat
+## <a name="default-data-splits-and-cross-validation-in-machine-learning"></a>Výchozí rozdělená data a křížové ověřování ve strojovém učení
 
 Pomocí objektu [AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py) definujte nastavení experimentů a školení. V následujícím fragmentu kódu si všimněte, že jsou definovány pouze požadované parametry, které jsou parametry pro `n_cross_validation` nebo nejsou `validation_ data` zahrnuty  .
 
@@ -155,6 +155,13 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
 
 > [!NOTE]
 > Pokud chcete použít `cv_split_column_names` s `training_data` a `label_column_name` , upgradujte prosím Azure Machine Learning Python SDK verze 1.6.0 nebo novější. Pro předchozí verze sady SDK použijte prosím použití `cv_splits_indices` , ale Všimněte si, že se používá `X` pouze pro `y` vstup a datovou sadu. 
+
+
+## <a name="metric-calculation-for-cross-validation-in-machine-learning"></a>Výpočet metriky pro vzájemné ověřování ve strojovém učení
+
+Když se použije křížové ověření k přeložení nebo Monte Carlo, vypočítají se metriky pro každé přeložení pro ověření a pak se agreguje. Agregační operace je průměrem pro skalární metriky a součet pro grafy. Metriky vypočítané během vzájemného ověřování jsou založené na všech skládáních a proto všechny ukázky ze sady školení. [Přečtěte si další informace o metrikách v automatizovaném strojovém učení](how-to-understand-automated-ml.md).
+
+Když se použije vlastní sada ověření nebo automaticky vybraná ověřovací sada, vypočítají se metriky vyhodnocení modelu jenom z této sady ověření, nikoli z dat školení.
 
 ## <a name="next-steps"></a>Další kroky
 

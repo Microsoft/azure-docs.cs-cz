@@ -10,19 +10,20 @@ ms.author: sagopal
 ms.date: 12/3/2020
 ms.topic: troubleshooting
 ms.custom: devx-track-python
-ms.openlocfilehash: b452c24b4b2ed6021910f267b9941f3829acccd8
-ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
+ms.openlocfilehash: 71061c056b499f79727f70fb855db7a81a65f3bd
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97733299"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572166"
 ---
 # <a name="troubleshoot-environment-image-builds"></a>Řešení potíží s sestaveními imagí prostředí
+
 Naučte se řešit problémy s buildy imagí prostředí Docker a instalací balíčků.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **Předplatné Azure** Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
+* Předplatné Azure. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
 * [Sada Azure Machine Learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
 * Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)
 * [Rozšíření CLI pro Azure Machine Learning](reference-azure-machine-learning-cli.md).
@@ -30,26 +31,27 @@ Naučte se řešit problémy s buildy imagí prostředí Docker a instalací bal
 
 ## <a name="docker-image-build-failures"></a>Selhání sestavení imagí Docker
  
-Pro většinu selhání sestavení imagí najdete hlavní příčinu v protokolu sestavení imagí.
-Protokol sestavení image můžete najít z portálu Azure Machine Learning (20 \_ \_log.txt sestavení imagí \_ ) nebo z vašich úloh ACR spustí protokoly.
+U většiny selhání sestavení imagí najdete hlavní příčinu v protokolu sestavení imagí.
+Vyhledá protokol sestavení image z portálu Azure Machine Learning (20 \_ \_log.txt sestavení imagí \_ ) nebo pomocí protokolů, které spouštíte v rámci úlohy Azure Container Registry.
  
-Ve většině případů je snazší reprodukování chyb v místním prostředí. Zkontrolujte druh chyby a zkuste provést jednu z následujících `setuptools` akcí:
+Je obvykle snazší reprodukování chyb místně. Zkontrolujte druh chyby a zkuste provést jednu z následujících `setuptools` akcí:
 
-- Místní instalace závislosti conda `conda install suspicious-dependency==X.Y.Z`
-- Nainstalovat závislost PIP místně `pip install suspicious-dependency==X.Y.Z`
-- Zkuste vyhodnotit celé prostředí. `conda create -f conda-specification.yml`
+- Místní instalace závislosti conda: `conda install suspicious-dependency==X.Y.Z` .
+- Nainstalovat závislost PIP místně: `pip install suspicious-dependency==X.Y.Z` .
+- Zkuste vyhodnotit celé prostředí: `conda create -f conda-specification.yml` .
 
 > [!IMPORTANT]
-> Zajistěte, aby platforma a překladač na vašich místních COMPUTE odpovídaly těm na vzdálených. 
+> Ujistěte se, že platforma a překladač na vašem místním výpočetním clusteru odpovídají těm ve vzdáleném výpočetním clusteru. 
 
 ### <a name="timeout"></a>Časový limit 
  
-Problémy s časovým limitem se můžou vyskytnout u různých problémů se sítí:
+Následující problémy se sítí můžou způsobit chyby s časovým limitem:
+
 - Nízká šířka pásma internetu
 - Problémy serveru
-- Velká závislost, kterou nelze stáhnout pomocí zadaného nastavení časového limitu conda nebo PIP
+- Velké závislosti, které nelze stáhnout pomocí zadaného nastavení časových limitů conda nebo PIP
  
-K tomuto problému se označují zprávy podobné následujícímu:
+K tomuto problému se označují zprávy podobné následujícím příkladům:
  
 ```
 ('Connection broken: OSError("(104, \'ECONNRESET\')")', OSError("(104, 'ECONNRESET')"))
@@ -58,42 +60,45 @@ K tomuto problému se označují zprávy podobné následujícímu:
 ReadTimeoutError("HTTPSConnectionPool(host='****', port=443): Read timed out. (read timeout=15)",)
 ```
 
-Možná řešení:
+Pokud se zobrazí chybová zpráva, vyzkoušejte jedno z následujících možných řešení:
  
-- Zkuste použít jiný zdroj závislosti, pokud je k dispozici jako Zrcadlová, BLOB Storage nebo jiné kanály Pythonu.
-- Aktualizujte conda nebo PIP. Pokud se používá vlastní soubor Docker, aktualizujte nastavení časového limitu.
+- Pro závislost zkuste použít jiný zdroj, jako je například Zrcadlová, Blob Storagea Azure nebo jiné kanály Pythonu.
+- Aktualizujte conda nebo PIP. Pokud používáte vlastní soubor Docker, aktualizujte nastavení časového limitu.
 - Některé verze PIP mají známé problémy. Zvažte přidání konkrétní verze PIP do závislostí prostředí.
 
 ### <a name="package-not-found"></a>Balíček se nenašel.
 
-Toto je nejběžnější případ selhání sestavení imagí.
+Následující chyby jsou nejběžnější pro selhání sestavení imagí:
 
-- Nepovedlo se najít balíček conda.
-        ```
-        ResolvePackageNotFound: 
-          - not-existing-conda-package
-        ```
+- Nepovedlo se najít balíček conda:
 
-- Zadaný balíček nebo verzi PIP se nepovedlo najít.
-        ```
-        ERROR: Could not find a version that satisfies the requirement invalid-pip-package (from versions: none)
-        ERROR: No matching distribution found for invalid-pip-package
-        ```
+   ```
+   ResolvePackageNotFound: 
+   - not-existing-conda-package
+   ```
 
-- Chybná závislost vnořeného PIP
-        ```
-        ERROR: No matching distribution found for bad-backage==0.0 (from good-package==1.0)
-        ```
+- Nepodařilo se najít zadaný balíček nebo verzi PIP:
 
-Ověřte, zda balíček existuje v zadaných zdrojích. K ověření závislostí PIP použijte [vyhledávání v PIP](https://pip.pypa.io/en/stable/reference/pip_search/) .
+   ```
+   ERROR: Could not find a version that satisfies the requirement invalid-pip-package (from versions: none)
+   ERROR: No matching distribution found for invalid-pip-package
+   ```
 
-`pip search azureml-core`
+- Chybná závislost vnořeného PIP:
 
-Pro závislosti conda použijte [hledání conda](https://docs.conda.io/projects/conda/en/latest/commands/search.html).
+   ```
+   ERROR: No matching distribution found for bad-package==0.0 (from good-package==1.0)
+   ```
 
-`conda search conda-forge::numpy`
+Ověřte, zda balíček existuje v zadaných zdrojích. K ověření závislostí PIP použijte [vyhledávání v PIP](https://pip.pypa.io/en/stable/reference/pip_search/) :
 
-Další možnosti:
+- `pip search azureml-core`
+
+Pro závislosti conda použijte [vyhledávání conda](https://docs.conda.io/projects/conda/en/latest/commands/search.html):
+
+- `conda search conda-forge::numpy`
+
+Pro další možnosti zkuste:
 - `pip search -h`
 - `conda search -h`
 
@@ -101,16 +106,16 @@ Další možnosti:
 
 Zajistěte, aby pro zadanou platformu a verzi interpreta Pythonu existovala požadovaná distribuce.
 
-V případě závislostí PIP přejděte na `https://pypi.org/project/[PROJECT NAME]/[VERSION]/#files` . a podívejte se, jestli je k dispozici požadovaná verze. Například https://pypi.org/project/azureml-core/1.11.0/#files.
+V případě závislostí PIP přejděte na adresu `https://pypi.org/project/[PROJECT NAME]/[VERSION]/#files` a zjistěte, jestli je požadovaná verze dostupná. Příklad zobrazíte tak, že přejdete na https://pypi.org/project/azureml-core/1.11.0/#files .
 
-V případě závislostí conda ověřte balíček v úložišti kanálu.
-Pro kanály udržované společností Anaconda, Inc. se podívejte [sem](https://repo.anaconda.com/pkgs/).
+Pro závislosti conda se podívejte na balíček v úložišti kanálu.
+Pro kanály udržované společností Anaconda, Inc. Ověřte [stránku balíčky Anaconda](https://repo.anaconda.com/pkgs/).
 
 ### <a name="pip-package-update"></a>Aktualizace balíčku PIP
 
 Během instalace nebo aktualizace balíčku PIP může překladač potřebovat aktualizovat již nainstalovaný balíček, aby splňoval nové požadavky.
 Odinstalace může selhat z různých důvodů vztahujících se k verzi PIP nebo způsobu instalace závislosti.
-Nejběžnějším scénářem je, že závislost nainstalovaná pomocí conda nemohla být odinstalována pomocí PIP.
+Nejběžnějším scénářem je, že závislost, kterou nainstaloval Conda, nejde odinstalovat pomocí PIP.
 V tomto scénáři zvažte odinstalaci závislosti pomocí `conda remove mypackage` .
 
 ```
@@ -122,58 +127,70 @@ ERROR: Cannot uninstall 'mypackage'. It is a distutils installed project and thu
 
 Některé verze instalačního programu mají v překladačích balíčků problémy, které mohou vést k selhání sestavení.
 
-Pokud se používá vlastní základní Image nebo souboru Dockerfile, doporučujeme použít conda verze 4.5.4 nebo vyšší.
+Pokud používáte vlastní základní Image nebo souboru Dockerfile, doporučujeme použít conda verze 4.5.4 nebo novější.
 
-Pro instalaci závislostí PIP se vyžaduje balíček PIP. Pokud ve svém prostředí není zadaná verze, použije se nejnovější verze.
-Doporučujeme použít známou verzi PIP, abyste předešli přechodným problémům nebo zásadním změnám, které mohou být způsobeny nejnovějšími verzemi nástroje.
+K instalaci závislostí PIP se vyžaduje balíček PIP. Pokud v prostředí není zadaná verze, použije se nejnovější verze.
+Doporučujeme použít známou verzi PIP, abyste předešli přechodným problémům nebo zásadním změnám, které může způsobit nejnovější verze nástroje.
 
-Pokud se zobrazí některá z následujících zpráv, zvažte ve svém prostředí připnutí verze PIP:
+Pokud se zobrazí následující zpráva, zvažte možnost připnutí verze PIP ve vašem prostředí:
 
-`Warning: you have pip-installed dependencies in your environment file, but you do not list pip itself as one of your conda dependencies. Conda may not use the correct pip to install your packages, and they may end up in the wrong place. Please add an explicit pip dependency. I'm adding one for you, but still nagging you.`
+   ```
+   Warning: you have pip-installed dependencies in your environment file, but you do not list pip itself as one of your conda dependencies. Conda may not use the correct pip to install your packages, and they may end up in the wrong place. Please add an explicit pip dependency. I'm adding one for you, but still nagging you.
+   ```
 
-`Pip subprocess error:
-ERROR: THESE PACKAGES DO NOT MATCH THE HASHES FROM THE REQUIREMENTS FILE. If you have updated the package versions, update the hashes as well. Otherwise, examine the package contents carefully; someone may have tampered with them.`
+Chyba podprocesu PIP:
+   ```
+   ERROR: THESE PACKAGES DO NOT MATCH THE HASHES FROM THE REQUIREMENTS FILE. If you have updated the package versions, update the hashes as well. Otherwise, examine the package contents carefully; someone may have tampered with them.
+   ```
 
-Instalaci PIP je navíc možné zablokovat v nekonečné smyčce, pokud se v závislostech nepřeložitelné konflikty. Pokud pracujete místně, nadowngradujte verzi PIP na < 20,3. V prostředí conda vytvořeném ze souboru YAML se tento problém zobrazí jenom v případě, že kanál conda-zfalšovat je kanál s nejvyšší prioritou. Chcete-li zmírnit problém, explicitně zadejte PIP < 20,3 (! = 20,3 nebo = 20.2.4 PIN k jiné verzi) jako závislost conda v souboru specifikace conda.
+Instalaci PIP můžete zablokovat v nekonečné smyčce, pokud se v závislostech nepřeložitelné konflikty. Pokud pracujete místně, nadowngradete verzi PIP na < 20,3. V prostředí conda vytvořeném ze souboru YAML se tento problém zobrazí jenom v případě, že je conda-zfalšovat kanál s nejvyšší prioritou. Chcete-li zmírnit problém, explicitně zadejte PIP < 20,3 (! = 20,3 nebo = 20.2.4 PIN k jiné verzi) jako závislost conda v souboru specifikace conda.
 
 ## <a name="service-side-failures"></a>Selhání na straně služby
 
-### <a name="unable-to-pull-image-from-mcraddress-could-not-be-resolved-for-container-registry"></a>Nepovedlo se přeložit image z MCR nebo adresy pro Container Registry.
+Pokud chcete řešit možné chyby na straně služby, přečtěte si následující scénáře.
+
+### <a name="youre-unable-to-pull-an-image-from-a-container-registry-or-the-address-couldnt-be-resolved-for-a-container-registry"></a>Nemůžete načíst image z registru kontejnerů nebo nemůžete přeložit adresu registru kontejneru.
+
 Možné problémy:
-- Název cesty k registru kontejnerů se nemusí správně přeložit. Ověřte, že názvy obrázků používají dvojitá lomítka a směr lomítka v hostitelích se systémem Linux vs je správný.
-- Pokud ACR za virtuální sítí používá privátní koncový bod v [nepodporované oblasti](https://docs.microsoft.com/azure/private-link/private-link-overview#availability), nakonfigurujte ACR za virtuální sítí pomocí koncového bodu služby (veřejného přístupu) z portálu a zkuste to znovu.
-- Po vložení ACR za virtuální síť se ujistěte, že je spuštěná [Šablona ARM](https://docs.microsoft.com/azure/machine-learning/how-to-enable-virtual-network#azure-container-registry) . To umožňuje pracovnímu prostoru komunikovat s instancí ACR.
+- Název cesty k registru kontejnerů nemusí být správně vyřešen. Ověřte, že názvy obrázků používají dvojitá lomítka a směr lomítka v systémech Linux a hostitelů Windows je správný.
+- Pokud registr kontejneru za virtuální sítí používá privátní koncový bod v [nepodporované oblasti](https://docs.microsoft.com/azure/private-link/private-link-overview#availability), nakonfigurujte registr kontejneru pomocí koncového bodu služby (veřejného přístupu) z portálu a zkuste to znovu.
+- Po umístění registru kontejneru za virtuální sítí spusťte [šablonu Azure Resource Manager](https://docs.microsoft.com/azure/machine-learning/how-to-enable-virtual-network#azure-container-registry) , aby pracovní prostor mohl komunikovat s instancí registru kontejneru.
 
-### <a name="401-error-from-workspace-acr"></a>401 chyba z pracovního prostoru ACR
-Opětovná synchronizace klíčů úložiště pomocí [WS.sync_keys ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#sync-keys--)
+### <a name="you-get-a-401-error-from-a-workspace-container-registry"></a>Zobrazí se chyba 401 z registru kontejneru pracovního prostoru.
 
-### <a name="environment-keeps-throwing-waiting-for-other-conda-operations-to-finish-error"></a>Prostředí neustále vyvolává čekání na dokončení dalších operací conda... Chyba
-Když se pokračuje v sestavení bitové kopie, conda klient sady SDK zamkne. V případě, že došlo k chybě procesu nebo byl nesprávně zrušen uživatelem Conda, zůstane v uzamčeném stavu. Pokud to chcete vyřešit, ručně odstraňte soubor zámku. 
+Opětovná synchronizace klíčů úložiště pomocí [WS.sync_keys ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#sync-keys--).
 
-### <a name="custom-docker-image-not-in-registry"></a>Vlastní image Docker není v registru
+### <a name="the-environment-keeps-throwing-a-waiting-for-other-conda-operations-to-finish-error"></a>Prostředí udržuje možnost čekat na dokončení dalších operací conda... Chyba
+
+Když se pokračuje v sestavení bitové kopie, conda klient sady SDK zamkne. Pokud uživatel úspěšně přerušil nebo zrušil chybu, conda zůstane ve stavu uzamčeno. Chcete-li tento problém vyřešit, odstraňte soubor zámku ručně. 
+
+### <a name="your-custom-docker-image-isnt-in-the-registry"></a>Vlastní image Docker není v registru.
+
 Ověřte, zda je použita [správná značka](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments#create-an-environment) a zda `user_managed_dependencies = True` . `Environment.python.user_managed_dependencies = True` zakáže conda a použije nainstalované balíčky uživatele.
 
-### <a name="common-vnet-issues"></a>Běžné problémy virtuální sítě
+### <a name="you-get-one-of-the-following-common-virtual-network-issues"></a>Získáte jeden z následujících běžných problémů s virtuální sítí.
 
-1. Ověřte, že je účet úložiště, výpočetní cluster a Azure Container Registry všechny ve stejné podsíti virtuální sítě.
-2. Když je ACR za virtuální sítí, nedá se použít přímo k sestavení imagí. K sestavení imagí je potřeba použít výpočetní cluster.
-3. Úložiště může být potřeba umístit za virtuální síť v těchto případech:
-    - Použití Inferencing nebo privátního kolečka
-    - Zobrazení chyb služby 403 (Neautorizováno)
-    - Nejde získat podrobnosti o imagi z ACR/MCR.
+- Ověřte, že účet úložiště, výpočetní cluster a registr kontejneru jsou všechny ve stejné podsíti virtuální sítě.
+- Pokud je registr kontejneru za virtuální sítí, nejde ho použít přímo k sestavení imagí. K sestavení imagí budete muset použít výpočetní cluster.
+- Úložiště může být potřeba umístit za virtuální síť, pokud:
+    - Použijte Inferencing nebo soukromé kolo.
+    - Viz chyby služby 403 (Neautorizováno).
+    - Nejde získat podrobnosti o imagi z Azure Container Registry.
 
-### <a name="image-build-fails-when-trying-to-access-network-protected-storage"></a>Při pokusu o přístup k úložišti chráněnému síti se nepovedlo sestavit image.
-- ACR úkoly nefungují za virtuální sítí. Pokud má uživatel své ACR za virtuální sítí, musí k sestavení image použít výpočetní cluster.
-- Úložiště by mělo být za virtuální sítí, aby bylo možné z něj vyžádat od něj závislosti. 
+### <a name="the-image-build-fails-when-youre-trying-to-access-network-protected-storage"></a>Při pokusu o přístup k úložišti chráněnému síti se nepodaří sestavení image.
 
-### <a name="cannot-run-experiments-when-storage-has-network-security-enabled"></a>Nejde spustit experimenty, pokud má úložiště zapnuté zabezpečení sítě.
-Když použijete výchozí image Docker a povolíte závislosti spravované uživatelem, musíte použít [značky služby](https://docs.microsoft.com/azure/machine-learning/how-to-enable-virtual-network) MicrosoftContainerRegistry a AzureFrontDoor. FirstParty pro povolených MCR a jeho závislosti.
+- Úkoly Azure Container Registry nefungují za virtuální sítí. Pokud má uživatel svůj registr kontejneru za virtuální sítí, musí k sestavení image použít výpočetní cluster.
+- Úložiště by mělo být za virtuální sítí, aby z něho bylo možné vyžádat závislosti.
 
- Další informace najdete v tématu [Povolení virtuální](https://docs.microsoft.com/azure/machine-learning/how-to-enable-virtual-network#azure-container-registry) sítě.
+### <a name="you-cant-run-experiments-when-storage-has-network-security-enabled"></a>Nemůžete spouštět experimenty, pokud má úložiště zapnuté zabezpečení sítě.
 
-### <a name="creating-an-icm"></a>Vytváření ICM
+Pokud používáte výchozí image Docker a povolíte závislosti spravované uživatelem, použijte [značky služby](https://docs.microsoft.com/azure/machine-learning/how-to-enable-virtual-network) MicrosoftContainerRegistry a AzureFrontDoor. FirstParty pro povolených Azure Container registry a jeho závislosti.
 
-Při vytváření a přiřazování ICM do metastore přidejte prosím lístek podpory CSS, abychom mohli problém lépe pochopit.
+ Další informace najdete v tématu [Povolení virtuálních sítí](https://docs.microsoft.com/azure/machine-learning/how-to-enable-virtual-network#azure-container-registry).
+
+### <a name="you-need-to-create-an-icm"></a>Je potřeba vytvořit ICM.
+
+Když vytváříte nebo přiřazujete ICM k metastore, zahrňte lístek podpory CSS, abychom mohli problém lépe pochopit.
 
 ## <a name="next-steps"></a>Další kroky
 

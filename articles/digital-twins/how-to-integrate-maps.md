@@ -4,16 +4,16 @@ titleSuffix: Azure Digital Twins
 description: Podívejte se, jak pomocí Azure Functions vytvořit funkci, která může použít oznámení o vytvářené grafice a digitální vlákna Azure k aktualizaci Azure Maps vnitřní mapy.
 author: alexkarcher-msft
 ms.author: alkarche
-ms.date: 6/3/2020
+ms.date: 1/19/2021
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 24487d3028b90d28f302a6f259096ba68c964541
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 6a654f74ff6a32ad37646021d504359c84942c12
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222118"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573033"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>Použití digitálních vláken Azure k aktualizaci mapy vnitřních Azure Maps
 
@@ -72,7 +72,7 @@ Tento model čte přímo z místnosti místo zařízení IoT, což vám dává f
 
 ## <a name="create-a-function-to-update-maps"></a>Vytvoření funkce pro aktualizaci map
 
-Chystáte se vytvořit funkci aktivovanou *Event Grid* v rámci aplikace Function App z kompletního kurzu ([*kurz: připojení kompletního řešení*](./tutorial-end-to-end.md)). Tato funkce rozbalí tato oznámení a pošle aktualizace Azure Maps funkcím stateset k aktualizaci teploty jedné místnosti. 
+Chystáte se vytvořit funkci aktivovanou **Event Grid** v rámci aplikace Function App z kompletního kurzu ([*kurz: připojení kompletního řešení*](./tutorial-end-to-end.md)). Tato funkce rozbalí tato oznámení a pošle aktualizace Azure Maps funkcím stateset k aktualizaci teploty jedné místnosti.
 
 V následujícím dokumentu najdete referenční informace: [*Azure Event Grid Trigger pro Azure Functions*](../azure-functions/functions-bindings-event-grid-trigger.md).
 

@@ -6,15 +6,15 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 12/08/2020
+ms.date: 01/19/2021
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 42701fbcee9833fd31fff3ace55d48079015dbcd
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: c1b17d8c624d4bef74278acc24ece37a736a5ca8
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96906399"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572965"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>Rychlý start: Směrování webového provozu pomocí služby Azure Application Gateway – Azure Portal
 
@@ -26,7 +26,7 @@ Tento rychlý Start můžete také dokončit pomocí [Azure PowerShell](quick-cr
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -78,7 +78,7 @@ Aplikační bránu vytvoříte pomocí karet na stránce **vytvořit Aplikační
    > [!NOTE]
    > Pro SKU Application Gateway v2 musí existovat **Veřejná** konfigurace IP adresy front-endu. Pořád můžete mít veřejnou i soukromou konfiguraci front-endu IP, ale jenom konfiguraci protokolu IP front-endu (jenom režim interního nástroje) pro SKU v2 není aktuálně povolená. 
 
-2. Zvolte **vytvořit nový** pro **veřejnou IP adresu** a jako název veřejné IP adresy zadejte *myAGPublicIPAddress* a pak vyberte **OK**. 
+2. Vyberte možnost **Přidat nový** pro **veřejnou IP adresu** a jako název veřejné IP adresy zadejte *myAGPublicIPAddress* a pak vyberte **OK**. 
 
      ![Vytvořit novou aplikační bránu: front-endové](./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png)
 
@@ -86,9 +86,9 @@ Aplikační bránu vytvoříte pomocí karet na stránce **vytvořit Aplikační
 
 ### <a name="backends-tab"></a>Karta back-endy
 
-Back-end fond slouží ke směrování požadavků na servery back-end, které obsluhují požadavek. Back-endové fondy se dají skládat ze síťových adaptérů, virtuálních počítačů a virtuálních IP adres, interních IP adres, plně kvalifikovaných názvů domény (FQDN) a back-endu s více klienty, jako je Azure App Service. V tomto příkladu vytvoříte prázdný back-end fond s aplikační bránou a potom přidáte cíle back-end do fondu back-end.
+Back-end fond slouží ke směrování požadavků na servery back-end, které obsluhují požadavek. Back-endové fondy se dají skládat ze síťových adaptérů, virtuálních počítačů, virtuálních IP adres, interních IP adres, plně kvalifikovaných názvů domény (FQDN) a back-endu s více klienty, jako je Azure App Service. V tomto příkladu vytvoříte prázdný back-end fond s aplikační bránou a potom přidáte cíle back-end do fondu back-end.
 
-1. Na kartě back- **endy** vyberte **+ Přidat back-end fond**.
+1. Na kartě back- **endy** vyberte **Přidat back-end fond**.
 
 2. V okně **Přidat fond back-end** , které se otevře, zadejte následující hodnoty a vytvořte prázdný back-end fond:
 
@@ -105,7 +105,7 @@ Back-end fond slouží ke směrování požadavků na servery back-end, které o
 
 Na kartě **Konfigurace** se připojíte k front-endovému a back-endovému fondu, který jste vytvořili pomocí pravidla směrování.
 
-1. Ve sloupci **pravidla směrování** vyberte **Přidat pravidlo** .
+1. Ve sloupci **pravidla směrování** vyberte **Přidat pravidlo směrování** .
 
 2. V okně **Přidat pravidlo směrování** , které se otevře, jako **název pravidla** zadejte *myRoutingRule* .
 
@@ -120,7 +120,7 @@ Na kartě **Konfigurace** se připojíte k front-endovému a back-endovému fond
 
 4. Na kartě **cílení na server back-end** vyberte **MyBackendPool** pro **cíl back-endu**.
 
-5. Pro **Nastavení http** vyberte **vytvořit novou** a vytvořte nové nastavení http. Nastavením protokolu HTTP se určí chování pravidla směrování. V okně **Přidat nastavení protokolu HTTP** , které se otevře, zadejte *myHTTPSetting* pro **název nastavení http** a *80* pro **port back-end**. Přijměte výchozí hodnoty pro ostatní nastavení v okně **Přidat nastavení http** a pak vyberte **Přidat** a vraťte se do okna **Přidat pravidlo směrování** . 
+5. Pokud chcete přidat nové nastavení HTTP, vyberte pro **Nastavení http** možnost **Přidat nový** . Nastavením protokolu HTTP se určí chování pravidla směrování. V okně **Přidat nastavení protokolu HTTP** , které se otevře, zadejte *myHTTPSetting* pro **název nastavení http** a *80* pro **port back-end**. Přijměte výchozí hodnoty pro ostatní nastavení v okně **Přidat nastavení http** a pak vyberte **Přidat** a vraťte se do okna **Přidat pravidlo směrování** . 
 
      ![Vytvořit novou aplikační bránu: nastavení HTTP](./media/application-gateway-create-gateway-portal/application-gateway-create-httpsetting.png)
 
@@ -147,7 +147,7 @@ Uděláte to takto:
 ### <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 
 1. V nabídce webu Azure Portal nebo na **domovské stránce** vyberte **Vytvořit prostředek**. Zobrazí se **nové** okno.
-2. V seznamu **oblíbených** vyberte **Windows Server 2016 Datacenter** . Zobrazí se stránka **vytvořit virtuální počítač** .<br>Application Gateway může směrovat provoz na libovolný typ virtuálního počítače, který se používá v jeho fondu back-endu. V tomto příkladu použijete Windows Server 2016 Datacenter.
+2. V seznamu **oblíbených** vyberte **Windows Server 2016 Datacenter** . Zobrazí se stránka **vytvořit virtuální počítač** .<br>Application Gateway může směrovat provoz na libovolný typ virtuálního počítače, který se používá v jeho fondu back-endu. V tomto příkladu použijete virtuální počítač s Windows serverem 2016 Datacenter.
 3. Zadejte tyto hodnoty na kartě **základy** pro následující nastavení virtuálního počítače:
 
     - **Skupina prostředků**: pro název skupiny prostředků vyberte **myResourceGroupAG** .
@@ -165,9 +165,11 @@ Uděláte to takto:
 
 ### <a name="install-iis-for-testing"></a>Nainstalovat službu IIS pro testování
 
-V tomto příkladu nainstalujete službu IIS na virtuální počítače jenom k úspěšnému ověření, že se brána Application Gateway úspěšně vytvořila.
+V tomto příkladu nainstalujete IIS na virtuální počítače, abyste ověřili, že Azure vytvořil bránu Application Gateway úspěšně.
 
-1. Otevřete Azure PowerShell. V horním navigačním panelu Azure Portal vyberte **Cloud Shell** a v rozevíracím seznamu vyberte **PowerShell** . 
+1. Otevřete Azure PowerShell.
+
+   V horním navigačním panelu Azure Portal vyberte **Cloud Shell** a v rozevíracím seznamu vyberte **PowerShell** . 
 
     ![Instalace vlastního rozšíření](./media/application-gateway-create-gateway-portal/application-gateway-extension.png)
 
@@ -208,7 +210,9 @@ V tomto příkladu nainstalujete službu IIS na virtuální počítače jenom k 
 
 ## <a name="test-the-application-gateway"></a>Otestování aplikační brány
 
-I když služba IIS není nutná k vytvoření služby Application Gateway, nainstalujete ji v tomto rychlém startu, abyste ověřili, jestli Azure úspěšně vytvořil Aplikační bránu. Použijte službu IIS k otestování služby Application Gateway:
+I když služba IIS není nutná k vytvoření služby Application Gateway, nainstalujete ji v tomto rychlém startu, abyste ověřili, jestli Azure úspěšně vytvořil Aplikační bránu. 
+
+Použijte službu IIS k otestování služby Application Gateway:
 
 1. Na stránce s **přehledem** vyhledejte veřejnou IP adresu pro aplikační bránu. ![ Zaznamenejte si veřejnou IP adresu aplikační brány ](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png) nebo vyberte **všechny prostředky**, do vyhledávacího pole zadejte *myAGPublicIPAddress* a potom ho vyberte ve výsledcích hledání. Azure zobrazí veřejnou IP adresu na stránce **Přehled** .
 2. Zkopírujte veřejnou IP adresu a vložte ji do adresního řádku prohlížeče, abyste mohli procházet tuto IP adresu.
@@ -227,7 +231,7 @@ Odstranění skupiny prostředků:
 1. V nabídce Azure Portal vyberte **skupiny prostředků** nebo vyhledejte a vyberte *skupiny prostředků*.
 2. Na stránce **skupiny prostředků** vyhledejte v seznamu **myResourceGroupAG** a pak ho vyberte.
 3. Na **stránce skupina prostředků** vyberte **Odstranit skupinu prostředků**.
-4. Zadejte *myResourceGroupAG* pro **typ název skupiny prostředků** a pak vyberte **Odstranit** .
+4. Do pole **Zadejte název skupiny prostředků** zadejte *myResourceGroupAG* a pak vyberte **Odstranit** .
 
 ## <a name="next-steps"></a>Další kroky
 

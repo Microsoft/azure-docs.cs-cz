@@ -4,12 +4,12 @@ description: Shrnuje podporu zotavení po havárii virtuálních počítačů Az
 ms.topic: article
 ms.date: 11/29/2020
 ms.author: raynew
-ms.openlocfilehash: fdd5b8f9cea549f64c4857d1c45b95b0d9b9ec53
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 2dbd7cd756e386b44c6933697ff50180021ac035
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/19/2021
-ms.locfileid: "98569959"
+ms.locfileid: "98572302"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Matice podpory pro zotavení po havárii virtuálních počítačů Azure mezi oblastmi Azure
 
@@ -213,7 +213,7 @@ Offline změny v chráněných discích | Odpojení disků a provedení úprav v
 
 Tato tabulka shrnuje podporu pro disk s operačním systémem Azure VM, datový disk a dočasný disk.
 
-- Abyste se vyhnuli problémům s výkonem, je důležité sledovat omezení počtu disků virtuálních počítačů a cíle pro virtuální počítače se systémem [Linux](../virtual-machines/linux/disk-scalability-targets.md) a [Windows](../virtual-machines/windows/disk-scalability-targets.md) .
+- Abyste se vyhnuli problémům s výkonem, je důležité sledovat omezení počtu disků virtuálních počítačů a cíle pro službu [Managed disks](../virtual-machines/disks-scalability-targets.md) .
 - Pokud nasadíte s výchozím nastavením, Site Recovery na základě nastavení zdroje automaticky vytvoří disky a účty úložiště.
 - Pokud přizpůsobíte, ujistěte se, že dodržujete pokyny.
 
@@ -261,7 +261,7 @@ Disky s povoleným akcelerátorem zápisu | Nepodporováno
 Značky  | Uživatelem vygenerované značky se replikují každých 24 hodin.
 
 >[!IMPORTANT]
-> Abyste se vyhnuli problémům s výkonem, ujistěte se, že je pro virtuální počítače se systémem [Linux](../virtual-machines/linux/disk-scalability-targets.md) nebo [Windows](../virtual-machines/windows/disk-scalability-targets.md) dodržujte škálovatelnost a výkonnostní cíle pro disky virtuálních počítačů. Pokud použijete výchozí nastavení, Site Recovery v závislosti na konfiguraci zdroje vytvoří požadované disky a účty úložiště. Pokud přizpůsobíte a vyberete vlastní nastavení, postupujte podle škálovatelnosti disku a cílů výkonu pro vaše zdrojové virtuální počítače.
+> Abyste se vyhnuli problémům s výkonem, ujistěte se, že je pro službu [Managed disks](../virtual-machines/disks-scalability-targets.md)vhodná škálovatelnost a cíle výkonu virtuálního počítače. Pokud použijete výchozí nastavení, Site Recovery v závislosti na konfiguraci zdroje vytvoří požadované disky a účty úložiště. Pokud přizpůsobíte a vyberete vlastní nastavení, postupujte podle škálovatelnosti disku a cílů výkonu pro vaše zdrojové virtuální počítače.
 
 ## <a name="limits-and-data-change-rates"></a>Limity a míry změny dat
 

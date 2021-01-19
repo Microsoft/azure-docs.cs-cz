@@ -3,12 +3,12 @@ title: Matice podpory pro zotavení po havárii VMware/fyzický v Azure Site Rec
 description: Shrnuje podporu pro zotavení po havárii virtuálních počítačů VMware a fyzického serveru do Azure pomocí Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: eaf12a9799f834046bc3914816f38d672fcc931b
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 4bf0227cf11b21d7cde2807d465385bfc2b998b5
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234082"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573050"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Matice podpory pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure
 
@@ -57,6 +57,9 @@ IIS | Ujistěte se, že:<br/><br/> – Nemáte již existující výchozí web. 
 Typ síťové karty | VMXNET3 (při nasazení jako virtuální počítač VMware)
 Typ IP adresy | Static
 Porty | 443 použito pro orchestraci řídicích kanálů<br/>9443 pro přenos dat
+
+> [!NOTE]
+Operační systém musí být nainstalovaný s anglickým národním prostředím. Převod národního prostředí po instalaci může mít za následek potenciální problémy.
 
 ## <a name="replicated-machines"></a>Replikované počítače
 
@@ -183,10 +186,10 @@ Přidat disk na replikovaný virtuální počítač | Nepodporováno<br/> Zakaž
 Seskupování síťových adaptérů hostitele | Podporováno pro virtuální počítače VMware. <br/><br/>Není podporováno pro replikaci fyzického počítače.
 Síť VLAN sítě hostitele | Yes.
 Síť IPv4 hostitele | Yes.
-Síť IPv6 hostitele | Ne.
-Seskupování síťových adaptérů hosta/serveru | Ne.
+Síť IPv6 hostitele | No.
+Seskupování síťových adaptérů hosta/serveru | No.
 Síť IPv4 hosta/serveru | Yes.
-Síť s protokolem IPv6 Host/Server | Ne.
+Síť s protokolem IPv6 Host/Server | No.
 Statická IP adresa sítě hosta/serveru (Windows) | Yes.
 Statická IP adresa sítě hosta nebo serveru (Linux) | Yes. <br/><br/>Virtuální počítače jsou nakonfigurovány na používání protokolu DHCP při navrácení služeb po obnovení.
 Síť s více síťovými kartami Host/Server | Yes.
@@ -208,7 +211,7 @@ Zachovat zdrojovou IP adresu | Ano
 Koncové body služby virtuální sítě Azure<br/> | Ano
 Urychlení sítě | Ne
 
-## <a name="storage"></a>Úložiště
+## <a name="storage"></a>Storage
 **Komponenta** | **Podporováno**
 --- | ---
 Dynamický disk | Disk s operačním systémem musí být základní disk. <br/><br/>Datové disky můžou být dynamické disky.

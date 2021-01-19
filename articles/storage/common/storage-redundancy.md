@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/13/2021
+ms.date: 01/19/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 5a09a2083c1258a3120f8696aa39a0252dbfcf2d
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 83a4a2aa8328a6e3de9eab44bbf19fc76921b128
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209680"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573345"
 ---
 # <a name="azure-storage-redundancy"></a>Redundance Azure Storage
 
@@ -35,11 +35,15 @@ Data v účtu Azure Storage jsou vždy replikována třikrát v primární oblas
 
 ### <a name="locally-redundant-storage"></a>Místně redundantní úložiště
 
-Místně redundantní úložiště (LRS) replikuje vaše data třikrát v jednom fyzickém umístění v primární oblasti. LRS poskytuje v průběhu daného roku alespoň 99,999999999% (11 devíti) odolnosti objektů.
+Místně redundantní úložiště (LRS) replikuje vaše data třikrát v rámci jediného datového centra v primární oblasti. LRS poskytuje v průběhu daného roku alespoň 99,999999999% (11 devíti) odolnosti objektů.
 
 LRS je možnost redundance nejnižší ceny a nabízí minimální odolnost v porovnání s jinými možnostmi. LRS chrání vaše data proti racku serveru a selhání jednotky. Pokud ale v datovém centru dojde k havárii, jako je třeba požár nebo zahlcení, může dojít ke ztrátě nebo obnovení všech replik účtu úložiště pomocí LRS. Pro zmírnění tohoto rizika Společnost Microsoft doporučuje používat úložiště ZRS ( [Zone-redundantní](#zone-redundant-storage) úložiště), [geograficky redundantní úložiště](#geo-redundant-storage) (GRS) nebo [geograficky redundantní úložiště](#geo-zone-redundant-storage) (GZRS).
 
 Požadavek na zápis do účtu úložiště, který používá LRS, proběhne synchronně. Operace zápisu se úspěšně vrátí až po zápisu dat do všech tří replik.
+
+Následující diagram znázorňuje, jak se data replikují do jednoho datového centra s LRS:
+
+:::image type="content" source="media/storage-redundancy/locally-redundant-storage.png" alt-text="Diagram znázorňující, jak se data replikují v jednom datovém centru pomocí LRS":::
 
 LRS je dobrou volbou pro následující scénáře:
 
@@ -54,7 +58,11 @@ Pomocí ZRS jsou vaše data stále přístupná pro operace čtení i zápisu i 
 
 Požadavek na zápis do účtu úložiště, který používá ZRS, proběhne synchronně. Operace zápisu se úspěšně vrátí až po zápisu dat do všech replik ve třech zónách dostupnosti.
 
-Microsoft doporučuje používat ZRS v primární oblasti pro scénáře, které vyžadují konzistenci, odolnost a vysokou dostupnost. Doporučujeme také používat ZRS, pokud chcete omezit aplikaci na replikaci dat pouze v zemi nebo oblasti z důvodu požadavků na zásady správného řízení dat.
+Microsoft doporučuje používat ZRS v primární oblasti pro scénáře, které vyžadují konzistenci, odolnost a vysokou dostupnost. ZRS se taky doporučuje, aby se omezila replikace dat do země nebo oblasti, aby splňovala požadavky na zásady správného řízení dat.
+
+Následující diagram znázorňuje, jak se data replikují napříč zónami dostupnosti v primární oblasti pomocí ZRS:
+
+:::image type="content" source="media/storage-redundancy/zone-redundant-storage.png" alt-text="Diagram znázorňující, jak se data replikují v primární oblasti pomocí ZRS":::
 
 ZRS poskytuje vynikající výkon, nízkou latenci a odolnost pro vaše data, pokud je dočasně nedostupná. ZRS sám o sobě však nemusí chránit vaše data před regionální havárií, při které je trvale ovlivněno více zón. V případě ochrany před místními katastrofami Microsoft doporučuje použití [geograficky redundantního úložiště](#geo-zone-redundant-storage) (GZRS), které používá ZRS v primární oblasti a také geograficky replikuje vaše data do sekundární oblasti.
 
@@ -171,10 +179,10 @@ Následující tabulka uvádí, zda jsou vaše data v daném scénáři odolná 
 
 | Scénář výpadku | LRS | ZRS | GRS/RA – GRS | GZRS/RA – GZRS |
 |:-|:-|:-|:-|:-|
-| Uzel v datovém centru nebude dostupný. | Yes | Yes | Yes | Yes |
-| Nebudete mít k dispozici celé datové centrum (oblast nebo mimo oblast). | No | Yes | Ano<sup>1</sup> | Yes |
-| V primární oblasti dojde k výpadku v rámci oblasti. | No | No | Ano<sup>1</sup> | Ano<sup>1</sup> |
-| Přístup pro čtení do sekundární oblasti je k dispozici, pokud primární oblast nebude k dispozici. | No | No | Ano (s RA-GRS) | Ano (s RA-GZRS) |
+| Uzel v datovém centru nebude dostupný. | Ano | Ano | Ano | Ano |
+| Nebudete mít k dispozici celé datové centrum (oblast nebo mimo oblast). | Ne | Ano | Ano<sup>1</sup> | Ano |
+| V primární oblasti dojde k výpadku v rámci oblasti. | Ne | Ne | Ano<sup>1</sup> | Ano<sup>1</sup> |
+| Přístup pro čtení do sekundární oblasti je k dispozici, pokud primární oblast nebude k dispozici. | Ne | Ne | Ano (s RA-GRS) | Ano (s RA-GZRS) |
 
 <sup>1</sup> převzetí služeb při selhání účtu se vyžaduje k obnovení dostupnosti pro zápis, pokud primární oblast nebude k dispozici. Další informace najdete v tématu [převzetí služeb při selhání při zotavení po havárii a účtu úložiště](storage-disaster-recovery-guidance.md).
 

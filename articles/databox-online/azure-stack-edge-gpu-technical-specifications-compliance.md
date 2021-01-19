@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 10/07/2020
+ms.date: 01/19/2021
 ms.author: alkohli
-ms.openlocfilehash: 225cb9a31b73f330d8b4ed5790caacc4fa729477
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d40d26e8fab0832a37a43c353e11189f8f193f14
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91839941"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573322"
 ---
 # <a name="technical-specifications-and-compliance-for-azure-stack-edge-pro-with-gpu"></a>Technické specifikace a dodržování předpisů pro Azure Stack Edge pro pomocí GPU 
 
@@ -26,7 +26,7 @@ Zařízení Azure Stack Edge pro má následující specifikace pro výpočetní
 | Specifikace           | Hodnota                  |
 |-------------------------|----------------------------|
 | Procesor                     | 2 X procesor Intel Xeon stříbrné 4214 (Cascade Lake) – procesor            |
-| Paměť                  | 128 (8x16 GB) GB RAM                     |
+| Memory (Paměť)                  | 128 (8x16 GB) GB RAM <br> Dell kompatibilní 16 GB PC4-23400 DDR4-2933Mhz 2Rx8 1.2 v ECC registrovaný RDIMM       |
 
 
 ## <a name="compute-acceleration-specifications"></a>Specifikace zrychlení výpočtů
@@ -45,18 +45,18 @@ Zařízení Azure Stack Edge pro má dvě 100-240 V jednotkách napájení (PSUs
 | Specifikace           | 750 W PSU                  |
 |-------------------------|----------------------------|
 | Maximální výstupní výkon    | 750 W                     |
-| Frequency               | 50/60 Hz                   |
+| Frekvence               | 50/60 Hz                   |
 | Výběr rozsahu napětí | Automatické rozsahy: 100-240 V AC |
-| Horká, připojitelná           | Yes                        |
+| Horká, připojitelná           | Ano                        |
 
 
 ## <a name="network-interface-specifications"></a>Specifikace síťového rozhraní
 
 Vaše zařízení Azure Stack Edge pro má šest síťových rozhraní PORT1-PORT6.
 
-| Specifikace           | Description                 |
+| Specifikace           | Popis                 |
 |-------------------------|----------------------------|
-|  Síťová rozhraní    | **rozhraní 2 X 1 GbE** – 1 rozhraní pro správu se používá pro počáteční instalaci a ve výchozím nastavení je statický. Po dokončení počáteční instalace můžete použít rozhraní pro data s libovolnou IP adresou. Při resetování se ale rozhraní vrátí zpět na statickou IP adresu. <br>Druhý port rozhraní 2 je uživatelsky konfigurovatelné, dá se použít k přenosu dat a je ve výchozím nastavení DHCP. <br>**4 X 25 rozhraní rozhraní** – tato datová rozhraní, port 3 až port 6, můžou být nakonfigurovaná uživatelem jako DHCP (výchozí) nebo static. Můžou také fungovat jako rozhraní s 10 GbE.  | 
+|  Síťová rozhraní    | **rozhraní 2 X 1 GbE** – 1 rozhraní pro správu se používá pro počáteční instalaci a ve výchozím nastavení je statický. Po dokončení počáteční instalace můžete použít rozhraní pro data s libovolnou IP adresou. Při resetování se ale rozhraní vrátí zpět na statickou IP adresu. <br>Druhý port rozhraní 2 je uživatelsky konfigurovatelné, dá se použít k přenosu dat a je ve výchozím nastavení DHCP. <br>**4 X 25 rozhraní rozhraní** – tato datová rozhraní, port 3 až port 6, můžou být nakonfigurovaná uživatelem jako DHCP (výchozí) nebo static. Můžou také fungovat jako rozhraní 10 GbE.  | 
 
 Vaše zařízení Azure Stack Edge pro má následující síťový hardware:
 
@@ -67,8 +67,8 @@ Tady jsou podrobnosti o kartě Mellanox:
 
 | Parametr           | Popis                 |
 |-------------------------|----------------------------|
-| Model    | ConnectX®-4 LX EN síťová karta                      |
-| Popis modelu               | 25GbE Dual-Port SFP28; PCIe 3.0 x8; ROHS R6                    |
+| Modelování    | ConnectX®-4 LX EN síťová karta                      |
+| Popis modelu               | 25 GbE Dual-Port SFP28; PCIe 3.0 x8; ROHS R6                    |
 | Číslo součásti zařízení (R640) | MCX4121A-ACAT  |
 | PSID MÁ (R640)           | MT_2420110034                         |
 
@@ -88,11 +88,9 @@ Zařízení Azure Stack Edge pro mají pět 2,5 DC P4610 SSD, každé s kapacito
 |    Spouštěcí SATA jednotky SSD (Solid-State Drive)      |    1                  |
 |    Spouštěcí kapacita SSD                       |    240 GB             |
 |    Celková kapacita                          |    8,0 TB             |
-|    Celková použitelná kapacita *                  |    ~ 4,19 TB          |
+|    Celková použitelná kapacita                   |    ~ 4,19 TB          |
+|    Konfigurace RAID                      |    Prostory úložiště s přímým přístupem s kombinací zrcadlení a parity  |
 |    Řadič SAS                          |    HBA330 12 GB/s     |
-
-
-**Po zajištění odolnosti proti chybám a rezervování prostoru pro interní použití.*
 
 <!--Remove based on feedback from Ravi
 ## Other hardware specifications
@@ -150,6 +148,7 @@ V této části jsou uvedeny specifikace týkající se prostředí skříně, j
 |     Skříně                           |     Provozní specifikace                                                                                                                                                                                         |
 |-----------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |    Tok dat                              |    Tok systému je zepředu zezadu. Systém musí být provozován s nízkým tlakem na zadní výfukovou instalaci. <!--Back pressure created by rack doors and obstacles should not exceed 5 pascals (0.5 mm water gauge).-->    |
+| Příchozí ochrana (IP)                 |    Tento typ zařízení připojeného k racku pro vnitřní použití se většinou netestuje na ochranu příchozích dat (pro ochranu proti pevným a kapalinám pro elektrickou skříň). Posouzení bezpečnosti od výrobce ukazuje IPXO (bez ochrany příchozích dat).  |
 |    Maximální výška, provozní        |    3048 měřičů (10 000 metrů) s maximální provozní teplotou rozhodnocenou [specifikací pro stanovení provozní teploty](#operating-temperature-de-rating-specifications).                                                                                |
 |    Maximální nadlimitní hodnota, která není funkční    |    12 000 měřičů (39 370 metrů)                                                                                                                                                                                         |
 |    Úraz, provozní                   |    6 G až 11 milisekund v 6 orientaci                                                                                                                                                                         |

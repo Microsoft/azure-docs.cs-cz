@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: 53fd2332224d903c5a4b33563470cf3569f82b13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec605fd30252b9a0cfb80d0bc3ff145ed3b5a1d4
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86526652"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573305"
 ---
 # <a name="troubleshoot-azure-virtual-machine-performance-on-linux-or-windows"></a>Řešení potíží s výkonem virtuálních počítačů Azure v systému Linux nebo Windows
 
@@ -44,7 +44,7 @@ Postup povolení diagnostiky virtuálních počítačů:
 
    ![Klikněte na nastavení a potom na Diagnostika.](media/troubleshoot-performance-virtual-machine-linux-windows/2-virtual-machines-diagnostics.png)
 
-Na kartě **Agent** v části **nastavení diagnostiky**můžete zaškrtnout účet úložiště, který se používá pro nastavení diagnostiky.
+Na kartě **Agent** v části **nastavení diagnostiky** můžete zaškrtnout účet úložiště, který se používá pro nastavení diagnostiky.
 
 ![Ověřit účet úložiště](media/troubleshoot-performance-virtual-machine-linux-windows/3-check-storage-account.png)
 
@@ -52,7 +52,7 @@ Na kartě **Agent** v části **nastavení diagnostiky**můžete zaškrtnout ú�
 
 Úložiště je velmi důležitou vrstvou, když plánujeme analyzovat vstupně-výstupní výkon virtuálního počítače v Azure. Pro metriky související s úložištěm je potřeba povolit diagnostiku jako další krok. To může být také povoleno, pokud chceme analyzovat pouze čítače související s úložištěm.
 
-1. Pomocí výběru virtuálního počítače určete, který účet úložiště (nebo účty) váš virtuální počítač používá. Klikněte na **Nastavení**a potom na **disky**:
+1. Pomocí výběru virtuálního počítače určete, který účet úložiště (nebo účty) váš virtuální počítač používá. Klikněte na **Nastavení** a potom na **disky**:
 
    ![Klikněte na nastavení a potom na disky.](media/troubleshoot-performance-virtual-machine-linux-windows/4-storage-disks-disks-selection.png)
 
@@ -198,7 +198,7 @@ Hodnotu averagee2elatency představuje latenci klienta. Ověřte, jak aplikace p
 
 #### <a name="check-for-azure-storage-throttling---add-the-storage-account-metrics-throttlingerror"></a>Ověřit omezení Azure Storage – přidejte metriky účtu úložiště: ThrottlingError
 
-Hodnoty pro omezování signalizují, že budete omezovat na úrovni účtu úložiště, což znamená, že váš účet zasáhne limit IOPS. Zaškrtnutím metriky **TotalRequests**můžete zjistit, jestli jste nedosáhli prahové hodnoty IOPS.
+Hodnoty pro omezování signalizují, že budete omezovat na úrovni účtu úložiště, což znamená, že váš účet zasáhne limit IOPS. Zaškrtnutím metriky **TotalRequests** můžete zjistit, jestli jste nedosáhli prahové hodnoty IOPS.
 
 Všimněte si, že každý virtuální pevný disk má omezení 500 IOPS nebo 60 MBit, ale je vázaný na kumulativní limit 20000 IOPS na účet úložiště.
 
@@ -208,7 +208,7 @@ Pokud chcete zjistit, jestli jste nedosáhli limitu IOPS, přejděte do části 
 
 S novými nabídkami disků v rámci standardního úložiště se limity IOPS a propustnosti můžou lišit, ale kumulativní limit standardního účtu úložiště je 20000 IOPS (Premium Storage má jiné limity na úrovni účtu nebo disku). Přečtěte si další informace o různých omezeních disků standardního úložiště a omezeních na disk:
 
-* [Škálovatelnost a výkonnostní cíle pro disky virtuálních počítačů ve Windows](../windows/disk-scalability-targets.md).
+* [Škálovatelnost a výkonnostní cíle pro disky virtuálních počítačů ve Windows](../disks-scalability-targets.md).
 
 #### <a name="references"></a>Reference
 
@@ -224,7 +224,7 @@ Ověřte propustnost všech virtuálních pevných disků připojených k virtu�
 
 Nové nabídky disků v rámci standardního úložiště mají jiný počet vstupně-výstupních operací za sekundu a propustnost (IOPS se nezveřejňují na virtuální pevný disk). Podívejte se na data, abyste viděli, jestli jste nedosáhli limitu celkové propustnosti disků VHD na úrovni virtuálních počítačů pomocí čtení a zápisu z disku, a pak Optimalizujte konfiguraci úložiště virtuálních počítačů tak, aby bylo možné škálovat minulé limity pro jedno virtuální pevné disky. Přečtěte si další informace o různých omezeních disků standardního úložiště a omezeních na disk:
 
-* [Škálovatelnost a výkonnostní cíle pro disky virtuálních počítačů ve Windows](../windows/disk-scalability-targets.md).
+* [Škálovatelnost a výkonnostní cíle pro disky virtuálních počítačů ve Windows](../disks-scalability-targets.md).
 
 ### <a name="high-disk-utilizationlatency-remediation"></a>Vysoké využití disku/náprava latence
 
