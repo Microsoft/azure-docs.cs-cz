@@ -101,6 +101,8 @@
           href: ../expressroute/expressroute-howto-coexist-resource-manager.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
         - name: Síť VPN přes privátní partnerské vztahy
           href: site-to-site-vpn-private-peering.md
+    - name: Připojení site-to-site mezi Azure a AWS
+      href: create-vpn-azure-aws-managed-solutions.md
     - name: Připojení typu VNet-to-VNet
       items:
         - name: Konfigurace připojení typu VNet-to-VNet

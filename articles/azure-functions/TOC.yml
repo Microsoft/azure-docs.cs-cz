@@ -413,8 +413,6 @@
           href: ./functions-create-vnet.md
         - name: Vytvoření definice OpenAPI 2.0
           href: ./functions-openapi-definition.md
-        - name: Export do PowerApps a Microsoft Flow
-          href: app-service-export-api-to-powerapps-and-flow.md
         - name: Použití spravované identity
           href: ../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
         - name: Přizpůsobení koncového bodu funkce HTTP
