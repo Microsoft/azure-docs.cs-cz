@@ -20,6 +20,8 @@
       href: ../../search/cognitive-search-custom-skill-form.md
     - name: Použití Rozpoznávání formulářů se službou AI Builder
       href: tutorial-ai-builder.md
+    - name: Hromadná extrakce dat formuláře
+      href: tutorial-bulk-processing.md
 - name: Koncepty
   items:
     - name: Extrakce rozložení

@@ -80,6 +80,8 @@
           href: sap-successfactors-integration-reference.md
         - name: Referenční informace k atributu SuccessFactors
           href: sap-successfactors-attribute-reference.md
+        - name: Integrace Workday
+          href: workday-integration-reference.md
         - name: Referenční informace k atributu Workday
           href: workday-attribute-reference.md
         - name: Historie verzí agenta zřizování

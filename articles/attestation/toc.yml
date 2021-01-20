@@ -21,6 +21,8 @@
       href: author-sign-policy.md
     - name: Vytvoření privátního koncového bodu – PowerShell
       href: private-endpoint-powershell.md
+    - name: Monitorování diagnostiky Azure
+      href: azure-diagnostic-monitoring.md
     - name: Ukázky kódu ověřování identity SGX
       href: /samples/browse/?expanded=azure&terms=attestation
 - name: Příklady

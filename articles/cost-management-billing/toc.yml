@@ -188,16 +188,6 @@
               href: manage/pay-by-invoice.md
             - name: Vytvoření dalších předplatných
               href: manage/create-subscription.md
-            - name: Programové vytváření předplatných EA
-              href: manage/programmatically-create-subscription-enterprise-agreement.md
-            - name: Programové vytváření předplatných MCA
-              href: manage/programmatically-create-subscription-microsoft-customer-agreement.md
-            - name: Programové vytváření předplatných MPA
-              href: manage/programmatically-create-subscription-microsoft-partner-agreement.md
-            - name: Vytváření předplatných – šablona ARM
-              href: manage/create-subscription-template.md
-            - name: Programové vytváření předplatných – verze Preview
-              href: manage/programmatically-create-subscription-preview.md
             - name: Udělení přístupu pro vytváření předplatných EA
               href: manage/grant-access-to-create-subscription.md
             - name: Export informací o předplatném
@@ -214,6 +204,20 @@
               href: manage/transfer-subscriptions-subscribers-csp.md
             - name: Zrušení předplatného
               href: manage/cancel-azure-subscription.md
+        - name: Programové vytváření předplatných
+          items:
+            - name: Programové vytváření předplatných
+              href: manage/programmatically-create-subscription.md
+            - name: Programové vytváření předplatných EA
+              href: manage/programmatically-create-subscription-enterprise-agreement.md
+            - name: Programové vytváření předplatných MCA
+              href: manage/programmatically-create-subscription-microsoft-customer-agreement.md
+            - name: Programové vytváření předplatných MPA
+              href: manage/programmatically-create-subscription-microsoft-partner-agreement.md
+            - name: Vytváření předplatných – šablona ARM
+              href: manage/create-subscription-template.md
+            - name: Programové vytváření předplatných – rozhraní API verze Preview
+              href: manage/programmatically-create-subscription-preview.md
         - name: Správa předplatných smlouvy Enterprise
           items:
             - name: Role EA v Azure

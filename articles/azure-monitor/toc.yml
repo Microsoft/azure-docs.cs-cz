@@ -574,12 +574,12 @@
               items:
                 - name: Přehled
                   href: platform/itsmc-troubleshoot-overview.md
-                - name: Synchronní ITSM konektor
-                  href: platform/itsmc-resync-servicenow.md
                 - name: Šetření řídicího panelu
                   href: platform/itsmc-dashboard.md
                 - name: Běžné chyby
                   href: platform/itsmc-dashboard-errors.md
+                - name: Synchronní ITSM konektor
+                  href: platform/itsmc-resync-servicenow.md
             - name: Integrace se zabezpečeným exportem
               items:
                 - name: Přehled

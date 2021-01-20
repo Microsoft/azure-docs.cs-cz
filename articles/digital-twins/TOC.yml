@@ -129,90 +129,92 @@
               href: troubleshoot-error-403.md
 - name: Referenční informace
   items:
-    - name: Omezení služby Digital Twins
-      href: reference-service-limits.md
-    - name: Ceny služby Digital Twins
-      href: 'https://azure.microsoft.com/pricing/details/digital-twins/'
-    - name: Rozhraní API a sady SDK
+    - name: REST API – referenční informace
+      href: /rest/api/azure-digitaltwins/
+    - name: Sady SDK
       items:
-        - name: REST API – referenční informace
-          href: /rest/api/azure-digitaltwins/
         - name: Řídicí rovina
           items:
-            - name: Swagger
+            - name: .NET (C#) SDK
+              href: /dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet
+            - name: Java SDK
+              href: /azure/developer/java/sdk/
+        - name: Rovina dat
+          items:
+            - name: .NET (C#) SDK
+              href: /dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet
+            - name: Java SDK
+              href: /java/api/overview/azure/digitaltwins/client?preserve-view=true&view=azure-java-stable
+            - name: JavaScript SDK
+              href: /javascript/api/@azure/digital-twins-core/?branch=master&view=azure-node-latest
+            - name: Python SDK
+              href: /python/api/azure-digitaltwins-core/azure.digitaltwins.core?view=azure-python
+    - name: CLI služby Digital Twins
+      href: /cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true
+- name: Zdroje a prostředky
+  items:
+    - name: Rozhraní API a sady SDK
+      items:
+        - name: Řídicí rovina
+          items:
+            - name: Řídicí rovina – Swagger
               href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/stable'
             - name: .NET (C#) SDK – NuGet
               href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/'
-            - name: .NET (C#) SDK – referenční informace
-              href: /dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet
-            - name: .NET (C#) SDK – zdroj
+            - name: .NET (C#) SDK – zdrojový kód
               href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins'
             - name: Java SDK – Maven
               href: 'https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_10_31/azure-mgmt-digitaltwins/1.0.0/jar'
-            - name: Java SDK – referenční informace
-              href: /azure/developer/java/sdk/
-            - name: Java SDK – zdroj
+            - name: Java SDK – zdrojový kód
               href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/mgmt-v2020_10_31'
-            - name: JavaScript SDK
+            - name: JavaScript SDK – NPM
               href: 'https://www.npmjs.com/package/@azure/arm-digitaltwins'
-            - name: JavaScript SDK – zdroj
+            - name: JavaScript SDK – zdrojový kód
               href: 'https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/arm-digitaltwins'
             - name: Python SDK – PyPi
               href: 'https://pypi.org/project/azure-mgmt-digitaltwins/'
-            - name: Python SDK – zdroj
+            - name: Python SDK – zdrojový kód
               href: 'https://github.com/Azure/azure-sdk-for-python/tree/release/v3/sdk/digitaltwins/azure-mgmt-digitaltwins'
             - name: Go SDK – GoDoc
               href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/digitaltwins/mgmt/2020-10-31/digitaltwins'
-            - name: Go – zdroj
+            - name: Go – zdrojový kód
               href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/digitaltwins/mgmt/2020-10-31/digitaltwins'
         - name: Rovina dat
           items:
-            - name: Swagger
+            - name: Rovina dat – Swagger
               href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins'
             - name: .NET (C#) SDK – NuGet
               href: 'https://www.nuget.org/packages/Azure.DigitalTwins.Core'
-            - name: .NET (C#) SDK – referenční informace
-              href: /dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet
-            - name: .NET (C#) SDK – zdroj
+            - name: .NET (C#) SDK – zdrojový kód
               href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core'
             - name: Java SDK – Maven
               href: 'https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0/jar'
-            - name: Java SDK – referenční informace
-              href: /java/api/overview/azure/digitaltwins/client?preserve-view=true&view=azure-java-stable
-            - name: Java SDK – zdroj
+            - name: Java SDK – zdrojový kód
               href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/azure-digitaltwins-core'
-            - name: JavaScript SDK – npm
+            - name: JavaScript SDK – NPM
               href: 'https://www.npmjs.com/package/@azure/digital-twins-core'
-            - name: JavaScript SDK – referenční informace
-              href: /javascript/api/@azure/digital-twins-core/?branch=master&view=azure-node-latest
-            - name: JavaScript SDK – zdroj
+            - name: JavaScript SDK – zdrojový kód
               href: 'https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/digital-twins-core'
             - name: Python SDK – PyPi
               href: 'https://pypi.org/project/azure-digitaltwins-core/'
-            - name: Python SDK – referenční informace
-              href: /python/api/azure-digitaltwins-core/azure.digitaltwins.core?view=azure-python
-            - name: Python SDK – zdroj
+            - name: Python SDK – zdrojový kód
               href: 'https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-digitaltwins-core'
-    - name: CLI služby Digital Twins
-      items:
-        - name: Referenční informace k CLI služby Digital Twins
-          href: /cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true
-        - name: Balíček CLI
-          href: 'https://github.com/Azure/azure-iot-cli-extension/releases'
+    - name: Balíček CLI služby Digital Twins
+      href: 'https://github.com/Azure/azure-iot-cli-extension/releases'
     - name: Modul Azure PowerShell služby Digital Twins
       href: 'https://www.powershellgallery.com/packages/Az.DigitalTwins/'
-    - name: DTDL
+    - name: Moduly Terraformu
       items:
-        - name: Specifikace DTDL v2
-          href: 'https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md'
-        - name: Rozšíření DTDL pro VS Code
-          href: 'https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-dtdl'
-        - name: Knihovna analyzátoru DTDL – NuGet
-          href: 'https://www.nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/'
-        - name: Validátor DTDL (ukázka)
-          href: /samples/azure-samples/dtdl-validator/dtdl-validator/
-        - name: Specifikace DTMI
-          href: 'https://github.com/Azure/digital-twin-model-identifier'
+        - name: Prostředek instance služby Digital Twins
+          href: 'https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/digital_twins_instance'
+        - name: Zdroj dat instance služby Digital Twins
+          href: 'https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/digital_twins_instance'
+        - name: Prostředek koncového bodu centra událostí
+          href: 'https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/digital_twins_endpoint_eventhub'
+        - name: Prostředek koncového bodu služby Event Grid
+          href: 'https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/digital_twins_endpoint_eventgrid'
+        - name: Prostředek koncového bodu služby Service Bus
+          href: 'https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/digital_twins_endpoint_servicebus'
     - name: Nástroje a ukázkové projekty
       items:
         - name: Služba simulátoru zařízení
@@ -229,6 +231,34 @@
           href: /samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/
         - name: Vlastní swaggery pro konektor Logic Apps
           href: /samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/
+    - name: DTDL
+      items:
+        - name: Specifikace DTDL v2
+          href: 'https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md'
+        - name: Rozšíření DTDL pro VS Code
+          href: 'https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-dtdl'
+        - name: Knihovna analyzátoru DTDL – NuGet
+          href: 'https://www.nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/'
+        - name: Validátor DTDL (ukázka)
+          href: /samples/azure-samples/dtdl-validator/dtdl-validator/
+        - name: Specifikace DTMI
+          href: 'https://github.com/Azure/digital-twin-model-identifier'
+        - name: Požadavky na zákaznická data
+      href: resources-customer-data-requests.md
+    - name: Ceny a dostupnost
+      items:
+        - name: Ceny
+          href: 'https://azure.microsoft.com/pricing/details/digital-twins'
+        - name: SLA
+          href: 'https://azure.microsoft.com/support/legal/sla/digital-twins'
+        - name: Oblasti a dostupnost
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins'
+        - name: Omezení služby Digital Twins
+          href: reference-service-limits.md
+    - name: Příběhy zákazníků
+      href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20Digital%20Twins%22&ff=&p=0&so=story_publish_date%20desc'
+    - name: Videa na webu Channel 9
+      href: 'https://channel9.msdn.com/Search?term=%22Azure%20Digital%20Twins%22'
     - name: Nástroje Azure
       items:
         - name: Azure Cloud Shell
@@ -239,21 +269,5 @@
           href: 'https://portal.azure.com'
     - name: Dokumentace ke službě Azure RBAC
       href: ../role-based-access-control/overview.md
-- name: Zdroje a prostředky
-  items:
     - name: Možnosti pomoci a podpory
       href: ../iot-fundamentals/iot-support-help.md
-    - name: Příběhy zákazníků
-      href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20Digital%20Twins%22&ff=&p=0&so=story_publish_date%20desc'
-    - name: Videa na webu Channel 9
-      href: 'https://channel9.msdn.com/Search?term=%22Azure%20Digital%20Twins%22'
-    - name: Požadavky na zákaznická data
-      href: resources-customer-data-requests.md
-    - name: Ceny a dostupnost
-      items:
-        - name: Ceny
-          href: 'https://azure.microsoft.com/pricing/details/digital-twins'
-        - name: SLA
-          href: 'https://azure.microsoft.com/support/legal/sla/digital-twins'
-        - name: Oblasti a dostupnost
-          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins'

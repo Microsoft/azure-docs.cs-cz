@@ -182,7 +182,7 @@
         - name: Disky OS s kratší platností
           href: ../virtual-machines/ephemeral-os-disks.md
         - name: Cíle škálovatelnosti pro disky
-          href: ../virtual-machines/windows/disk-scalability-targets.md
+          href: ../virtual-machines/disks-scalability-targets.md
           maintainContext: true
         - name: Zálohování a zotavení po havárii pro disky
           href: ../virtual-machines/backup-and-disaster-recovery-for-azure-iaas-disks.md
