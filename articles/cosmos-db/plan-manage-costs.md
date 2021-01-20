@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/19/2020
-ms.openlocfilehash: 07e165382608f4fde5433de0f4436cb86f5083af
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 2bea2324817986654de6689a2be15d0cbf999b38
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251892"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602135"
 ---
 # <a name="plan-and-manage-costs-for-azure-cosmos-db"></a>Plánování a Správa nákladů na Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -21,7 +21,7 @@ Tento článek popisuje, jak můžete plánovat a spravovat náklady na Azure Co
 
 Po zahájení práce s prostředky Azure Cosmos DB použijte funkce Cost Management k nastavení rozpočtů a monitorování nákladů. Můžete si také projít předpokládané náklady a identifikovat trendy útraty, které identifikují oblasti, kde můžete chtít pracovat. Náklady na Azure Cosmos DB jsou jenom částí měsíčních nákladů na faktuře Azure. I když tento článek vysvětluje, jak naplánovat a spravovat náklady na Azure Cosmos DB, účtují se vám všechny služby a prostředky Azure, které se používají ve vašem předplatném Azure, včetně služeb třetích stran.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="provisioned-throughput-or-serverless"></a>Zřízená propustnost nebo bez serveru
 
@@ -73,7 +73,7 @@ Při zahájení používání prostředků Azure Cosmos DB z Azure Portal může
 
 Pokud má vaše předplatné Azure limit útraty, Azure vám zabrání v útratě za vaši kreditní částku. Při vytváření a používání prostředků Azure se vaše kredity používají. Po dosažení limitu kreditu budou prostředky, které jste nasadili, zakázané pro zbytek tohoto fakturačního období. Limit kreditu nemůžete změnit, ale můžete ho odebrat. Další informace o limitech útraty najdete v tématu [limit útraty Azure](../cost-management-billing/manage/spending-limit.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
 
-Za poplatky za Azure Cosmos DB se můžete účtovat pomocí kreditu za Azure smlouva Enterprise peněžního závazku. Kredity peněžních závazků ale nemůžete použít k placení poplatků za produkty a služby třetích stran, včetně těch z Azure Marketplace.
+Za poplatky za Azure Cosmos DB můžete platit pomocí kreditu služby Azure (dříve nazývaného peněžního závazku). Nemůžete ale použít předplatné Azure pro platby za poplatky za produkty a služby třetích stran, včetně těch z Azure Marketplace.
 
 ## <a name="monitor-costs"></a>Sledovat náklady
 

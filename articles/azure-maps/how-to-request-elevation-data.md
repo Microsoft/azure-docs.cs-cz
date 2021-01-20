@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 76232a917e8856a06645fabc0ab4716195c5c0e1
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: a303f5e6177d0dc4205eaec8c3b1911e8e004fe3
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094195"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602425"
 ---
 # <a name="request-elevation-data-using-the-azure-maps-elevation-service-preview"></a>Vyžádat data zvýšení oprávnění pomocí služby zvýšení úrovně Azure Maps (Preview)
 
@@ -471,7 +471,7 @@ Zobrazit <a href='https://codepen.io/azuremaps/pen/619c888c70089c3350a3e95d499f3
 
 ### <a name="get-elevation-data-by-polyline-path"></a>Získat data zvýšení úrovně podle cesty lomené čáry
 
-Následující ukázková webová stránka ukazuje, jak pomocí mapového ovládacího prvku zobrazit data zvýšení úrovně podél cesty. Uživatel definuje cestu kliknutím na `PolyLine` ikonu v levém horním rohu a vykreslení lomené čáry na mapě. Mapový ovládací prvek následně vykreslí data zvýšení úrovně ve barvách, které jsou uvedeny v klíči umístěném v pravém horním rohu.
+Následující ukázková webová stránka ukazuje, jak pomocí mapového ovládacího prvku zobrazit data zvýšení úrovně podél cesty. Uživatel definuje cestu kliknutím na `Polyline` ikonu v levém horním rohu a vykreslení lomené čáry na mapě. Mapový ovládací prvek následně vykreslí data zvýšení úrovně ve barvách, které jsou uvedeny v klíči umístěném v pravém horním rohu.
 
 <br/>
 

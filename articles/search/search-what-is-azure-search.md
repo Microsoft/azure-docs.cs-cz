@@ -9,34 +9,34 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 12/17/2020
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 1814555f738f37523c5b23ae729bf20bff62e1f9
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 3f62ab20359273aec6743c27ab46b33027e82b55
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97679518"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598402"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Co je Azure Cognitive Search?
 
 Azure Kognitivní hledání ([dříve označované jako "Azure Search"](whats-new.md#new-service-name)) je cloudová vyhledávací služba, která vývojářům poskytuje rozhraní API a nástroje pro vytváření bohatých funkcí vyhledávání přes soukromý, heterogenní obsah ve webových, mobilních a podnikových aplikacích. 
 
-Když vytváříte službu Kognitivní hledání, získáte:
+Vyhledávací služba má následující součásti:
 
-+ Vyhledávací modul, který provádí indexování a provádění dotazů
-+ Trvalé úložiště vyhledávacích indexů, které vytvoříte a spravujete
++ Vyhledávací modul pro indexování a provádění dotazů
++ Trvalé úložiště vyhledávacích indexů vlastněných uživatelem
 + Dotazovací jazyk pro vytváření jednoduchých a složitých dotazů
-+ [Rozšíření řízená AI](cognitive-search-concept-intro.md), vytváření prohledávatelných obsahu na základě obrázků, nezpracovaného textu, souborů aplikace
-+ Integrace s dalšími službami Azure pro data, Machine Learning/AI a zabezpečení
++ Volitelná [rozšíření založená na AI](cognitive-search-concept-intro.md), vytváření prohledávatelných obsahu na základě obrázků, nezpracovaného textu, souborů aplikace
++ Volitelná integrace s dalšími službami Azure pro data, Machine Learning/AI a zabezpečení
 
 Služba vyhledávání v architektuře je mezi externími úložišti dat, která obsahují vaše neindexovaná data, a klientskou aplikací, která odesílá dotazy do indexu vyhledávání a zpracovává odpověď.
 
 ![Architektura Azure Kognitivní hledání](media/search-what-is-azure-search/azure-search-diagram.svg "Architektura Azure Kognitivní hledání")
 
-Kromě toho se služba vyhledávání integruje s dalšími službami Azure ve formě *indexerů* , které automatizují přijímání a načítání dat ze zdrojů dat Azure, a *dovednosti* , které zahrnují spotřební AI z Cognitive Services, jako je například analýza obrázků a textu nebo vlastní AI, které vytvoříte v Azure Machine Learning nebo zabalíte do Azure Functions.
+Kromě toho je možné hledat ve formě *indexerů* s dalšími službami Azure, které automatizují přijímání a načítání dat ze zdrojů dat Azure, a *dovednosti* , které zahrnují spotřební AI z Cognitive Services, jako je například analýza obrázků a textu nebo vlastní AI, které vytvoříte v Azure Machine Learning nebo zabalíte do Azure Functions.
 
 V samotné službě Search se tyto dvě primární úlohy *indexují* a *dotazují*. 
 
-+ Indexování přináší do vyhledávací služby text a umožňuje prohledávat. Interně se příchozí text zpracovává do tokenů a ukládá se do obrácených indexů pro rychlé prověřování. 
++ Indexování ingestuje text do vaší vyhledávací služby a umožňuje je prohledávatelné. Interně se příchozí text zpracovává do tokenů a ukládá se do obrácených indexů pro rychlé prověřování. Můžete nahrát libovolný obsah, který je ve formátu dokumentů JSON.
 
   V rámci indexování máte možnost Přidat *rozšíření AI* prostřednictvím [dovedností rozpoznávání](cognitive-search-working-with-skillsets.md), a to buď z předdefinovaných společností Microsoft, nebo z vlastních dovedností, které vytvoříte. Následná analýza a transformace můžou mít za následek nové informace a struktury, které dříve neexistovaly, a poskytují tak vysoký výkon pro mnoho scénářů vyhledávání a vědomostí o dolování.
 
@@ -48,13 +48,13 @@ Funkce se zveřejňuje prostřednictvím jednoduchého rozhraní [REST API](/res
 
 Azure Kognitivní hledání je vhodným způsobem pro následující scénáře aplikací:
 
-+ Konsoliduje heterogenní obsah do privátního uživatelsky definovaného vyhledávacího indexu. Index vyhledávání můžete naplnit pomocí datových proudů dokumentů JSON z libovolného zdroje. Pro podporované zdroje v Azure použijte *indexer* k automatizaci indexování. Hlavním důvodem pro použití Kognitivní hledání je kontrola schématu indexu a aktualizace plánu.
++ Konsoliduje heterogenní obsah do privátního uživatelsky definovaného vyhledávacího indexu.
 
-+ Snadná implementace funkcí souvisejících s vyhledáváním Rozhraní API pro vyhledávání zjednodušují vytváření dotazů, omezující navigaci, filtry (včetně geografického hledání), mapování synonym, automatické dokončování a optimalizaci závažnosti. Pomocí integrovaných funkcí můžete vyhovět očekáváním koncových uživatelů při hledání podobného komerčním vyhledávacím webům.
++ Snadná implementace funkcí souvisejících s vyhledáváním: optimalizace závažnosti, omezující navigace, filtry (včetně hledání geografického prostoru), mapování synonym a automatické dokončování.
 
-+ Nezpracovaný obsah je velký nerozlišený textový soubor nebo soubory obrázků nebo soubory aplikace uložené ve službě Azure Blob Storage nebo Cosmos DB. K identifikaci a extrakci textu, vytvoření struktury nebo vytváření nových informací, jako je například přeložený text nebo entity, můžete použít [odbornosti rozpoznávání](cognitive-search-concept-intro.md) během indexování.
++ Transformujte velké nerozlišené textové nebo obrázkové soubory nebo soubory aplikace uložené ve službě Azure Blob Storage nebo Cosmos DB do prohledávatelných dokumentů JSON. To se dosáhne při indexování prostřednictvím [dovedností rozpoznávání](cognitive-search-concept-intro.md) , které přidávají externí zpracování.
 
-+ Obsah vyžaduje jazykovou nebo vlastní analýzu textu. Pokud máte obsah, který není v angličtině, Azure Kognitivní hledání podporuje analyzátory Lucene i procesory přirozeného jazyka společnosti Microsoft. Můžete také nakonfigurovat analyzátory, abyste dosáhli specializovaného zpracování nezpracovaného obsahu, jako je filtrování diakritických znamének nebo rozpoznávání a zachování vzorů v řetězcích.
++ Přidejte jazykovou nebo vlastní analýzu textu. Pokud máte obsah, který není v angličtině, Azure Kognitivní hledání podporuje analyzátory Lucene i procesory přirozeného jazyka společnosti Microsoft. Můžete také nakonfigurovat analyzátory, abyste dosáhli specializovaného zpracování nezpracovaného obsahu, jako je filtrování diakritických znamének nebo rozpoznávání a zachování vzorů v řetězcích.
 
 Další informace o konkrétních funkcích najdete v tématu [funkce služby Azure kognitivní hledání](search-features-list.md)
 
@@ -62,11 +62,11 @@ Další informace o konkrétních funkcích najdete v tématu [funkce služby Az
 
 Ucelený průzkum základních funkcí vyhledávání se dá dosáhnout ve čtyřech krocích:
 
-1. [**Vytvořte vyhledávací službu**](search-create-service-portal.md) na úrovni Free sdílené s ostatními předplatiteli nebo [placená úroveň](https://azure.microsoft.com/pricing/details/search/) vyhrazených prostředků, které používá jenom vaše služba. Všechny rychlé starty a kurzy je možné absolvovat s bezplatnou službou.
+1. [**Vytvořte vyhledávací službu**](search-create-service-portal.md) ve sdílené bezplatné úrovni nebo na [Fakturovatelné úrovni](https://azure.microsoft.com/pricing/details/search/) pro vyhrazené prostředky používané pouze vaší službou. Všechny rychlé starty a kurzy se dají dokončit na sdílené službě.
 
-1. Pomocí portálu [**vytvořte index vyhledávání**](search-what-is-an-index.md) [REST API](/rest/api/searchservice/create-index). [Sada .NET SDK](search-howto-dotnet-sdk.md)nebo jiná sada SDK. Schéma indexu definuje strukturu prohledávatelných obsahu.
+1. Pomocí portálu, [REST API](/rest/api/searchservice/create-index), [sady .NET SDK](search-howto-dotnet-sdk.md)nebo jiné sady SDK [**vytvořte index vyhledávání**](search-what-is-an-index.md) . Schéma indexu definuje strukturu prohledávatelných obsahu.
 
-1. [**Nahrajte obsah**](search-what-is-data-import.md) do indexu. Použijte [model "push"](tutorial-optimize-indexing-push-api.md) pro vložení dokumentů JSON z libovolného zdroje nebo použijte [model "pull" (indexery)](search-indexer-overview.md) , pokud jsou zdrojová data v Azure.
+1. [**Nahrajte obsah**](search-what-is-data-import.md) pomocí [modelu push](tutorial-optimize-indexing-push-api.md) pro vložení dokumentů JSON z libovolného zdroje nebo použijte [model "pull" (indexery)](search-indexer-overview.md) , pokud jsou zdrojová data v Azure.
 
 1. [**Dotazování indexu**](search-query-overview.md) pomocí [Průzkumníka služby Search](search-explorer.md) na portálu, [REST API](search-get-started-rest.md), [.NET SDK](/dotnet/api/azure.search.documents.searchclient.search)nebo jiné sadě SDK.
 

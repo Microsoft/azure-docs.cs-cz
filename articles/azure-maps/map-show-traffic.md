@@ -9,22 +9,26 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: ec7459a356221fb7b599cbbc02f1cb825920b5b3
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: b6fcf39e05c4649503f0b7a80aadaaa16df24674
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92890662"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599558"
 ---
 # <a name="show-traffic-on-the-map"></a>Zobrazit provoz na mapě
 
 V Azure Maps jsou k dispozici dva typy dat přenosů:
 
 - Data o incidentech – skládají se z bodů a řádkových dat pro věci, jako jsou konstrukce, uzavření provozu a nehody.
-- Data toku – poskytuje metriky toku provozu na cestách. Data toku provozu se často používají k obarvení cest. Barvy jsou založené na tom, kolik přenosů zpomaluje tok, relativně k limitu rychlosti nebo jiné metriky. Data toku provozu v Azure Maps mají tři různé metriky měření:
-    - `relative` – je relativní vzhledem k rychlosti volného toku provozu.
-    - `absolute` – je absolutní rychlost všech vozidel na cestách.
-    - `relative-delay` -Zobrazí oblasti, které jsou pomalejší než průměrná očekávaná prodleva.
+- Data toku – poskytuje metriky toku provozu na cestách. Data toku provozu se často používají k obarvení cest. Barvy jsou založené na tom, kolik přenosů zpomaluje tok, relativně k limitu rychlosti nebo jiné metriky. Existují čtyři hodnoty, které lze předat do `flow` Možnosti provozu mapy.
+
+    |Hodnota toku | Popis|
+    | :-- | :-- |
+    | `none` | Nezobrazuje data o přenosech na mapě. |
+    | `relative` | Zobrazuje přenosová data, která se vztahují k rychlosti volného toku provozu. |
+    | `relative-delay` | Zobrazí oblasti, které jsou pomalejší než průměrná očekávaná prodleva. |
+    | `absolute` | Zobrazuje absolutní rychlost všech vozidel na cestách. |
 
 Následující kód ukazuje, jak zobrazit data o přenosech na mapě.
 

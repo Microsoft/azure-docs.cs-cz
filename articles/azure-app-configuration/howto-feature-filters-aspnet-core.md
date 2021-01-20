@@ -8,12 +8,12 @@ author: AlexandraKemperMS
 ms.author: alkemper
 ms.topic: conceptual
 ms.date: 3/9/2020
-ms.openlocfilehash: 13857580d434736fbf0b12f52d39537ca864a497
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 39455c4bc193cce036bd169c702b5c020d53d2f6
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98203118"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602245"
 ---
 # <a name="use-feature-filters-to-enable-conditional-feature-flags"></a>Použití filtrů funkcí k zapnutí příznaků podmíněné funkce
 
@@ -31,7 +31,7 @@ Můžete také vytvořit vlastní filtr funkcí, který implementuje [rozhraní 
 
 ## <a name="registering-a-feature-filter"></a>Registrace filtru funkcí
 
-Filtr funkcí zaregistrujete voláním `AddFeatureFilter` metody a zadáním názvu filtru funkce. Například následující Registry kódu `PercentageFilter` :
+Zaregistrujte filtr funkcí voláním `AddFeatureFilter` metody a zadáním názvu typu požadovaného filtru funkce. Například následující Registry kódu `PercentageFilter` :
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -56,14 +56,14 @@ Tato nastavení můžete nakonfigurovat pro příznaky funkcí definované v kon
     > [!div class="mx-imgBorder"]
     > ![Upravit příznak funkce beta verze](./media/edit-beta-feature-flag.png)
 
-1. Na obrazovce pro **Úpravy** vyberte tlačítko **Povolit příznak funkce** , pokud ještě není vybrané. Pak klikněte na tlačítko **Filtr použití funkcí** a vyberte možnost **vlastní**. 
+1. Na obrazovce pro **Úpravy** zaškrtněte políčko **Povolit příznak funkce** , pokud již není povoleno. Potom zaškrtněte políčko **použít filtr funkcí** a vyberte **vlastní**. 
 
-1. Do pole **klíč** zadejte *Microsoft. PERCENTAGE*.
+1. V poli **název** vyberte *Microsoft. PERCENTAGE*.
 
     > [!div class="mx-imgBorder"]
     > ![Přidat filtr funkcí](./media/feature-flag-add-filter.png)
 
-1. Klikněte na místní nabídku vedle klíče filtru funkcí. Klikněte na **Upravit parametry filtru**.
+1. Klikněte na místní nabídku vedle názvu filtru funkce. Klikněte na **Upravit parametry filtru**.
 
     > [!div class="mx-imgBorder"]
     > ![Upravit parametry filtru funkcí](./media/feature-flags-edit-filter-parameters.png)
@@ -75,10 +75,10 @@ Tato nastavení můžete nakonfigurovat pro příznaky funkcí definované v kon
 
 1. Klikněte na **použít** a vraťte se na obrazovku **příznaku pro úpravu funkce** . Pak klikněte na **použít** znovu a uložte nastavení příznaku funkce.
 
-1. **Stav** příznaku funkce se teď zobrazuje jako *podmíněný*. Tento stav indikuje, že příznak funkce bude povolený nebo zakázaný podle jednotlivých požadavků, a to na základě kritérií vydaných filtrem funkcí.
+1. Příznak funkce na stránce **správce funkcí** má nyní hodnotu **filtru funkce** *Custom*. 
 
     > [!div class="mx-imgBorder"]
-    > ![Příznak podmíněné funkce](./media/feature-flag-filter-enabled.png)
+    > ![Příznak funkce uvedený v hodnotě filtru funkce Custom (vlastní)](./media/feature-flag-filter-custom.png)
 
 ## <a name="feature-filters-in-action"></a>Filtry funkcí v akci
 

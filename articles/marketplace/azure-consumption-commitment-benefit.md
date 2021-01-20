@@ -8,12 +8,12 @@ author: emuench
 ms.author: mingshen
 ms.date: 10/15/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: d8cb5179583dd23ea2bd4baf5ebe7d84b0ae9cbf
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 748b6c3506127de8fce153a77571664ea531ffa1
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814427"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601353"
 ---
 # <a name="azure-consumption-commitment-benefit"></a>Zvýhodnění závazku využití Azure
 
@@ -24,7 +24,7 @@ Výběr nabídky komerčních nabídek společnosti Microsoft pro web Marketplac
 
 Ověříme všechny nabídky, které se účastní tohoto programu, abyste měli jistotu, že budete dostávat vysoce kvalitní řešení.
 
-Pokud chcete tuto výhodu využít, stačí si koupit opravňující nabídku na Azure Marketplace s využitím předplatného, které se týká vaší smlouvy Azure. Pro tuto výhodu není nárok na předplacené a peněžní závazky Azure.
+Pokud chcete tuto výhodu využít, stačí si koupit opravňující nabídku na Azure Marketplace s využitím předplatného, které se týká vaší smlouvy Azure. Pro tuto výhodu nemá tato výhoda nárok na předplacení Azure (dříve označované jako peněžní závazek).
 
 > [!IMPORTANT]
 > Vyloučení se můžou vztahovat na smlouvy CtC podepsané před touto výhodou Marketplace. Pokud máte otázky týkající se nároků, obraťte se na pracovníky účet Microsoft.

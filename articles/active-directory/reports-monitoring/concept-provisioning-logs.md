@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 12/28/2020
+ms.date: 1/19/2021
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56818862b6bc4eb38b819185aceb121e6e78488e
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 05a514debcf8036a296bbe66b2dd75c7dacacdc2
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803523"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600747"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Sestavy zřizování na portálu Azure Active Directory (Preview)
 
@@ -133,7 +133,7 @@ Filtr **akcí** umožňuje filtrovat:
 - Aktualizace
 - Odstranit
 - Zakázat
-- Ostatní
+- Jiné
 
 Kromě toho můžete také nastavit následující filtry pro filtry výchozího zobrazení:
 
@@ -174,7 +174,7 @@ Podrobnosti jsou seskupené podle následujících kategorií:
 
 - Upravené vlastnosti
 
-- Shrnutí
+- Souhrn
 
 
 ![Podrobnosti zřizování](./media/concept-provisioning-logs/provisioning-tabs.png "Karty")
@@ -206,7 +206,7 @@ Karta **Poradce při potížích a doporučeních** poskytuje kód chyby a důvo
 **Změněné vlastnosti** zobrazují starou hodnotu a novou hodnotu. V případech, kdy není k dispozici stará hodnota sloupce stará hodnota je prázdná. 
 
 
-### <a name="summary"></a>Shrnutí
+### <a name="summary"></a>Souhrn
 
 Karta **Souhrn** poskytuje přehled o tom, co se stalo, a identifikátory pro objekt ve zdrojovém a cílovém systému. 
 
@@ -215,8 +215,6 @@ Karta **Souhrn** poskytuje přehled o tom, co se stalo, a identifikátory pro ob
 - Azure Portal ukládá nahlášená data zřizování po dobu 30 dnů, pokud máte edici Premium a 7 dní, pokud máte bezplatnou edici. Zřizovací protokoly je možné publikovat do [Log Analytics](../app-provisioning/application-provisioning-log-analytics.md) za účelem uchování po dobu 30 dnů. 
 
 - Atribut Change ID můžete použít jako jedinečný identifikátor. To je například užitečné při interakci s produktovou podporou.
-
-- V tuto chvíli není k dispozici možnost stahovat data zřizování jako soubor CSV, ale data můžete exportovat pomocí [Microsoft Graph](/graph/api/provisioningobjectsummary-list?tabs=http&view=graph-rest-beta).
 
 - Pro uživatele, kteří nejsou v oboru, se můžou zobrazit vynechané události. To je očekáváno, zejména v případě, že je rozsah synchronizace nastaven na všechny uživatele a skupiny. Naše služba vyhodnotí všechny objekty v tenantovi, a to i ty, které jsou mimo rozsah. 
 

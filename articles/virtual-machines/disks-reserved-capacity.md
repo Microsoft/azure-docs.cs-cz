@@ -7,12 +7,12 @@ ms.date: 01/30/2020
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: e3642a621253b79fdfcdd8cb2b648dee534c6758
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: db6575894904e6ced2d4be48fec5961f5b8b8a54
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968681"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602625"
 ---
 # <a name="reduce-costs-with-azure-disks-reservation"></a>Snížení nákladů pomocí rezervací disků Azure
 
@@ -70,7 +70,7 @@ K zakoupení rezervované kapacity použijte následující postup:
    |Element  |Popis  |
    |---------|---------|
    |**Rozsah**   |  Kolik předplatných může využívat fakturační výhody spojené s rezervací. Tato hodnota také určuje, jak se rezervace použije u konkrétních předplatných. <br/><br/> Pokud vyberete **Shared (sdílená**), použije se sleva rezervace pro Azure Storage kapacity v rámci každého předplatného v rámci vašeho fakturačního kontextu. Fakturační kontext vychází z toho, jak jste se zaregistrovali do Azure. U podnikových zákazníků je sdíleným oborem registrace a zahrnuje všechna předplatná v rámci registrace. Pro zákazníky s průběžnými platbami, sdílený obor zahrnuje všechna jednotlivá předplatná s tarify průběžných plateb vytvořenými správcem účtu.  <br/><br/>  Pokud vyberete **jedno předplatné**, použije se sleva rezervace pro Azure Storage kapacity ve vybraném předplatném. <br/><br/> Když vyberete **jednu skupinu prostředků**, použije se sleva rezervace pro Azure Storage kapacity ve vybraném předplatném a v vybrané skupině prostředků tohoto předplatného. <br/><br/> Po zakoupení rezervace můžete obor rezervací změnit.  |
-   |**Předplatné**  | Předplatné, které používáte pro platbu za Azure Storage rezervaci. Způsob platby ve vybraném předplatném se používá při zpoplatnění nákladů. Předplatné musí být jeden z následujících typů:<br/><ul><li> Smlouva Enterprise (nabídka čísla MS-AZR-0017P a MS-AZR-0148P). U podnikového předplatného se poplatky odečtou z bilance peněžního závazku registrace nebo se účtují jako nadlimitní využití.</li><br/><li>Individuální předplatné s tarify průběžných plateb (nabídky Numbers MS-AZR-0003P a MS-AZR-0023P). U jednotlivých předplatných s tarify průběžných plateb se poplatky účtují na základě platební karty nebo platby na faktuře v předplatném.</li></ul>    |
+   |**Předplatné**  | Předplatné, které používáte pro platbu za Azure Storage rezervaci. Způsob platby ve vybraném předplatném se používá při zpoplatnění nákladů. Předplatné musí být jeden z následujících typů:<br/><ul><li> Smlouva Enterprise (nabídka čísla MS-AZR-0017P a MS-AZR-0148P). U podnikového předplatného se poplatky odečtou od předplatného Azure v rámci předplatného (dříve nazývaného peněžního závazku), nebo se účtují jako nadlimitní využití.</li><br/><li>Individuální předplatné s tarify průběžných plateb (nabídky Numbers MS-AZR-0003P a MS-AZR-0023P). U jednotlivých předplatných s tarify průběžných plateb se poplatky účtují na základě platební karty nebo platby na faktuře v předplatném.</li></ul>    |
    | **Disky** | Skladová položka, kterou chcete vytvořit. |
    | **Oblast** | Oblast, ve které je rezervace platná. |
    | **Četnost fakturace** | Jak často se účtuje účet pro rezervaci. Mezi možnosti patří **měsíční** a **předem**. |

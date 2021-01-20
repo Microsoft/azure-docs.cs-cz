@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: 6450b44e5c7281f0a24fd5000c9feec6e61fa29c
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 325502255e84e38a39ca5b90ee4126354c0d425b
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98540557"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601247"
 ---
 # <a name="get-started-with-the-windows-virtual-desktop-agent"></a>Začínáme s agentem virtuálního počítače s Windows
 
@@ -44,5 +44,4 @@ Tato instalace aktualizace obvykle na novém virtuálním počítači trvá 2-3 
 
 Teď, když máte lepší znalosti o agentu virtuálních počítačů s Windows, najdete tady některé materiály, které vám můžou usnadnit:
 
-- Podívejte se na část [aktualizace agenta virtuálních počítačů s Windows](whats-new.md) , kde najdete informace o tom, co nového aktualizace agenta každý měsíc zahrnuje.
 - Pokud se setkáváte s agentem nebo problémy související s připojením, přečtěte si [Průvodce řešením potíží s agentem pro virtuální počítače s Windows](troubleshoot-agent.md).

@@ -1,7 +1,7 @@
 ---
-title: Spouštění poznámkových bloků Jupyter ve vlastním pracovním prostoru
+title: Spuštění poznámkových bloků Jupyter ve vašem pracovním prostoru
 titleSuffix: Azure Machine Learning
-description: Přečtěte si, jak spustit Jupyter Notebook, aniž byste opustili pracovní prostor v Azure Machine Learning Studiu.
+description: Přečtěte si, jak spustit Poznámkový blok Jupyter, aniž byste opustili pracovní prostor v Azure Machine Learning Studiu.
 services: machine-learning
 author: abeomor
 ms.author: osomorog
@@ -10,27 +10,19 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
-ms.date: 06/27/2020
-ms.openlocfilehash: d253699199617489947dd95a44d9bcd1eff17334
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 01/19/2021
+ms.openlocfilehash: 7bb1ce8141f609feb4f354aa85f202915e197f37
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325417"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599243"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Spouštění poznámkových bloků Jupyter ve vlastním pracovním prostoru
 
-
 Přečtěte si, jak spustit poznámkové bloky Jupyter přímo ve vašem pracovním prostoru v Azure Machine Learning Studiu. I když můžete spustit [Jupyter](https://jupyter.org/) nebo [JupyterLab](https://jupyterlab.readthedocs.io), můžete také upravit a spustit poznámkové bloky, aniž byste museli opustit pracovní prostor.
 
-Podívejte se, jak můžete:
-
-* Vytvoření poznámkových bloků Jupyter v pracovním prostoru
-* Spuštění experimentu z poznámkového bloku
-* Změna prostředí poznámkového bloku
-* Vyhledání podrobností o výpočetních instancích použitých ke spouštění vašich poznámkových bloků
-
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://aka.ms/AMLFree).
 * Machine Learning pracovní prostor. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
@@ -48,7 +40,7 @@ Vytvoření nového poznámkového bloku:
     :::image type="content" source="media/how-to-run-jupyter-notebooks/create-new-file.png" alt-text="Create new file":::
 
 1. Pojmenujte soubor. 
-1. Pro Jupyter Notebook soubory vyberte jako typ souboru **Poznámkový blok** .
+1. Pro soubory poznámkového bloku Jupyter jako typ souboru vyberte **Poznámkový blok** .
 1. Vyberte adresář souborů.
 1. Vyberte **Vytvořit**.
 
@@ -153,18 +145,6 @@ Každý Poznámkový blok se automaticky uloží každých 30 sekund. Automatick
  
 Výběrem **kontrolního bodu** v nabídce Poznámkový blok vytvořte pojmenovaný kontrolní bod a obnovte Poznámkový blok na uložený kontrolní bod.
 
-
-### <a name="useful-keyboard-shortcuts"></a>Užitečné klávesové zkratky
-
-|Klávesnice  |Akce  |
-|---------|---------|
-|Shift+Enter     |  Spuštění buňky       |
-|Ctrl + mezerník | Aktivace technologie IntelliSense |
-|CTRL + M (Windows)     |  Povolí nebo zakáže soutisk karty v poznámkovém bloku.       |
-|CTRL + SHIFT + M (Mac & Linux)     |    Povolí nebo zakáže soutisk karty v poznámkovém bloku.     |
-|TAB (při zapnutém depeši tabulátorem) | Přidat znak \t (odsazení)
-|TAB (když je zakázané přesahy tabulátoru) | Změní fokus na další položku s fokusem (Odstranit tlačítko buňky, tlačítko spustit atd.).
-
 ## <a name="delete-a-notebook"></a>Odstranění poznámkového bloku
 
 *Nemůžete* odstranit poznámkové bloky **ukázek** .  Tyto poznámkové bloky jsou součástí studia a aktualizují se při každém publikování nové sady SDK.  
@@ -175,20 +155,38 @@ Poznámkové bloky **uživatelských souborů** *můžete* odstranit některým 
 * Z libovolného panelu nástrojů poznámkového bloku vyberte [**otevřít terminál**](#terminal)  pro přístup k oknu terminálu pro instanci Compute.
 * V Jupyter nebo JupyterLab s jejich nástroji.
 
-## <a name="run-an-experiment"></a>Spuštění experimentu
+## <a name="run-a-notebook-or-python-script"></a>Spuštění poznámkového bloku nebo skriptu Pythonu
 
-Chcete-li spustit experiment z poznámkového bloku, nejprve se připojíte ke spuštěné [výpočetní instanci](concept-compute-instance.md). Pokud nemáte výpočetní instanci, vytvořte ji pomocí těchto kroků: 
+Pokud chcete spustit Poznámkový blok nebo skript Pythonu, musíte se nejdřív připojit ke spuštěné [výpočetní instanci](concept-compute-instance.md). Pokud nemáte výpočetní instanci, vytvořte ji pomocí těchto kroků: 
 
-1. Vyberte **+** na panelu nástrojů Poznámkový blok. 
+1. Vyberte na **+** panelu nástrojů poznámkového bloku nebo skriptu. 
 2. Pojmenujte výpočetní prostředky a vyberte **Velikost virtuálního počítače**. 
 3. Vyberte **Vytvořit**.
-4. Instance služby COMPUTE se automaticky připojí k poznámkovému bloku a vy teď můžete spouštět své buňky.
+4. Instance COMPUTE je automaticky připojena k souboru.  Nyní můžete spouštět buňky poznámkového bloku nebo skriptu Pythonu pomocí nástroje nalevo od instance Compute.
 
 Pouze můžete zobrazit a použít výpočetní instance, které vytvoříte.  Vaše **uživatelské soubory** jsou uložené odděleně od virtuálního počítače a sdílí se mezi všemi výpočetními instancemi v pracovním prostoru.
 
 ### <a name="view-logs-and-output"></a>Zobrazit protokoly a výstup
 
 Pomocí [widgetů poznámkového bloku](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py) můžete zobrazit průběh běhu a protokolů. Pomůcka je asynchronní a poskytuje aktualizace až do dokončení školení. Pomůcky Azure Machine Learning jsou také podporovány v Jupyter a JupterLab.
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/jupyter-widget.png" alt-text="Snímek obrazovky: widget poznámkového bloku Jupyter ":::
+
+## <a name="explore-variables-in-the-notebook"></a>Prozkoumat proměnné v poznámkovém bloku
+
+Na panelu nástrojů Poznámkový blok použijte nástroj **Průzkumník proměnných** k zobrazení názvu, typu, délky a vzorových hodnot pro všechny proměnné, které byly vytvořeny v poznámkovém bloku.
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/variable-explorer.png" alt-text="Snímek obrazovky: Nástroj Průzkumník proměnných":::
+
+Vyberte nástroj pro zobrazení okna Průzkumníka proměnných.
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/variable-explorer-window.png" alt-text="Snímek obrazovky: okno Průzkumníka proměnných":::
+
+## <a name="navigate-with-a-toc"></a>Navigace pomocí obsahu
+
+Na panelu nástrojů pro Poznámkový blok použijte nástroj  **obsah** k zobrazení nebo skrytí obsahu.  Spustí Markdownu buňku s nadpisem, který se má přidat do obsahu. Kliknutím na položku v tabulce se posuňte k této buňce v poznámkovém bloku.  
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/table-of-contents.png" alt-text="Snímek obrazovky: obsah v poznámkovém bloku":::
 
 ## <a name="change-the-notebook-environment"></a>Změna prostředí poznámkového bloku
 
@@ -234,7 +232,7 @@ Poznámkový blok automaticky vyhledá všechny jádra Jupyter nainstalované na
     ```
 
 > [!NOTE]
-> Pro správu balíčků v rámci poznámkového bloku použijte funkce **% PIP** nebo **% conda** Magic k automatické instalaci balíčků do **aktuálně běžícího jádra** , ne z **! PIP** nebo **! conda** , která odkazuje na všechny balíčky (včetně balíčků mimo aktuálně běžící jádro).
+> Pro správu balíčků v rámci poznámkového bloku použijte funkce **% PIP** nebo **% conda** Magic k automatické instalaci balíčků do **aktuálně běžícího jádra**, ne z **! PIP** nebo **! conda** , která odkazuje na všechny balíčky (včetně balíčků mimo aktuálně běžící jádro).
 
 Můžete nainstalovat kterýkoli z [dostupných jader Jupyter](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels) .
 
@@ -242,22 +240,105 @@ Můžete nainstalovat kterýkoli z [dostupných jader Jupyter](https://github.co
 
 Indikátor vedle rozevíracího seznamu **COMPUTE** zobrazuje jeho stav.  Stav je zobrazen také v rozevíracím seznamu.  
 
-|Color |Stav výpočtů |
+|Barva |Stav výpočtů |
 |---------|---------| 
 | Green | Spuštěná výpočetní prostředí |
-| Červený |Výpočet se nezdařil | 
+| Red |Výpočet se nezdařil | 
 | Black | Služba COMPUTE byla zastavena |
 |  Světle modrá |Výpočetní prostředí pro vytváření, spouštění, restartování a nastavování |
 |  Les |Výpočetní odstranění, zastavení |
 
 Indikátor vedle rozevíracího seznamu **jádro** zobrazuje jeho stav.
 
-|Color |Stav jádra |
+|Barva |Stav jádra |
 |---------|---------|
 |  Green |Připojení jádra, nečinné, zaneprázdněné|
 |  Les |Jádro není připojeno. |
 
-## <a name="find-compute-details"></a>Najít podrobnosti o COMPUTE 
+## <a name="shortcut-keys"></a>Klávesové zkratky
+Podobně jako Jupyter poznámkové bloky mají modální uživatelské rozhraní Azure Machine Learning Studio poznámkách. Klávesnice funguje jinak v závislosti na tom, v jakém režimu je buňka poznámkového bloku. Azure Machine Learning Studio poznámkové bloky podporují pro danou buňku kódu následující dva režimy: režim příkazů a režim úprav.
+
+### <a name="command-mode-shortcuts"></a>Klávesové zkratky v režimu příkazu
+
+Buňka je v režimu příkazu, když není k dispozici žádný textový kurzor, který je vyzván k zadání. Když je buňka v režimu příkazu, můžete Poznámkový blok upravit jako celek, ale ne psát do jednotlivých buněk. Stisknutím `ESC` nebo pomocí myši vyberte mimo oblast editoru buňky režim příkazu.  Levý okraj aktivní buňky je modrý a plný a jeho tlačítko **Spustit** je modré.
+
+   :::image type="content" source="media/how-to-run-jupyter-notebooks/command-mode.png" alt-text="Buňka poznámkového bloku v režimu příkazu ":::
+
+| Zástupce                      | Popis                          |
+| ----------------------------- | ------------------------------------|
+| Enter                         | Přechod do režimu úprav             |        
+| Shift + Enter                 | Spustit buňku, vyberte níže         |     
+| Ctrl/Command + ENTER       | Spustit buňku                            |
+| ALT + ENTER                   | Spustit buňku, Vložit buňku kódu níže    |
+| Ctrl/Command + Alt + Enter | Spustit buňku, Vložit buňku Markdownu pod|
+| ALT + R                       | Spustit vše      |                       
+| Y                             | Převést buňku na kód    |                         
+| M                             | Převést buňku na Markdownu  |                       
+| Nahoru/K                          | Vybrat buňku výše    |               
+| Dolů/J                        | Vybrat buňku níže    |               
+| A                             | Vložit buňku kódu nad  |            
+| B                             | Vložit buňku kódu níže   |           
+| Ctrl/Command + Shift + A   | Vložit buňku Markdownu výše    |      
+| Ctrl/Command + Shift + B   | Vložit buňku Markdownu pod   |       
+| X                             | Vyjmout vybranou buňku    |               
+| C                             | Kopírovat vybranou buňku   |               
+| Shift + V                     | Vložit vybranou buňku výše           |
+| V                             | Vložit vybranou buňku níže    |       
+| D D                           | Odstranit vybranou buňku|                
+| O                             | Přepnout výstup         |              
+| SHIFT + O                     | Přepnout posouvání výstupu   |          
+| I JSEM                           | Jádro přerušení |                   
+| 0 0                           | Restartovat jádro |                     
+| SHIFT + MEZERNÍK                 | Posunout nahoru  |                         
+| Místo                         | Posunout dolů|
+| Karta                           | Změnit zaměření na další položku, která se zaměřuje na výběr (když je zakázané depeše tabulátoru)|
+| Ctrl/Command + S           | Uložit Poznámkový blok |                      
+| 1                             | Změnit na H1|                       
+| 2                             | Změnit na H2|                        
+| 3                             | Změnit na H3|                        
+| 4                             | Změnit na H4 |                       
+| 5                             | Změnit na H5 |                       
+| 6                             | Změnit na h6 |                       
+
+### <a name="edit-mode-shortcuts"></a>Klávesové zkratky v režimu úprav
+
+Režim úprav je označen textovým kurzorem, který vás vyzve k zadání v oblasti editoru. Když je buňka v režimu úprav, můžete zadat text do buňky. Stisknutím `Enter` nebo pomocí myši přejděte na oblast editoru buňky a vyberte režim úprav. Levý okraj aktivní buňky je zelený a šrafování a jeho tlačítko **Spustit** je zelené. V režimu úprav se také zobrazí výzva kurzoru v buňce.
+
+   :::image type="content" source="media/how-to-run-jupyter-notebooks/edit-mode.png" alt-text="Buňka poznámkového bloku v režimu úprav":::
+
+Pomocí následujících klávesových zkratek můžete snáze procházet a spouštět kód v Azure Machine Learning poznámkových blocích v režimu úprav.
+
+| Zástupce                      | Popis|                                     
+| ----------------------------- | ----------------------------------------------- |
+| Escape                        | Přejít do režimu příkazu|  
+| Ctrl/Command + mezerník       | Aktivace technologie IntelliSense |
+| Shift + Enter                 | Spustit buňku, vyberte níže |                         
+| Ctrl/Command + ENTER       | Spustit buňku  |                                      
+| ALT + ENTER                   | Spustit buňku, Vložit buňku kódu níže  |              
+| Ctrl/Command + Alt + Enter | Spustit buňku, Vložit buňku Markdownu pod  |          
+| ALT + R                       | Spustit všechny buňky     |                              
+| Nahoru                            | Přesunout kurzor nahoru nebo předchozí buňku    |             
+| Dolů                          | Přesunout kurzor dolů nebo další buňka |                  
+| Ctrl/Command + S           | Uložit Poznámkový blok   |                                
+| Ctrl/Command + up          | Přejít na začátek buňky   |                             
+| Ovládací prvek/příkaz + šipka dolů        | Přejít na konec buňky |                                 
+| Karta                           | Dokončení nebo odsazení kódu (Pokud je povolené depeše na kartě) |
+| Ctrl/Command + M           | Povolit/zakázat soutisk karty  |                       
+| Ctrl/Command +]           | Rážce |                                         
+| Control/Command + [           | Zmenšit odsazení  |                                        
+| Ovládací prvek/příkaz + A           | Vybrat vše|                                      
+| Ctrl/Command + Z           | Zpět |                                           
+| Ctrl/Command + Shift + Z   | Opakovat |                                           
+| Ctrl/Command + Y           | Opakovat |                                           
+| Ovládací prvek/příkaz + Home        | Přejít na začátek buňky|                                
+| Ovládací prvek/příkaz + end         | Přejít na konec buňky   |                               
+| Ctrl/Command + šipka vlevo        | Přejít o jedno slovo doleva |                               
+| Ctrl/Command + šipka vpravo       | Přejít o jedno slovo doprava |                              
+| Ctrl/Command + Backspace   | Odstranit slovo před |                             
+| Control/Command + Delete      | Odstranit slovo za |                              
+| Ovládací prvek/příkaz +/           | Přepnout komentář na CU
+
+## <a name="find-compute-details"></a>Najít podrobnosti o COMPUTE
 
 Podrobnosti o vašich výpočetních instancích najdete na stránce **COMPUTE** v [studiu](https://ml.azure.com).
 

@@ -4,16 +4,16 @@ description: Zabrání uživatelům aktualizovat nebo odstraňovat prostředky A
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f1073d8c4a6902ea00a9b4098ef87bc411b3e6c0
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 7efeb8a073a04f78f77046c07c107abf0c7526f4
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555664"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602201"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Zamknutí prostředků, aby se zabránilo neočekávaným změnám
 
-Jako správce můžete potřebovat uzamknout předplatné, skupinu prostředků nebo prostředek, abyste ostatním uživatelům v organizaci zabránili v náhodném odstranění nebo úpravě důležitých prostředků. Zámek můžete nastavit na úroveň **CanNotDelete** nebo **ReadOnly**. Na portálu se zámky nazývají **Delete** a **jen pro čtení** .
+Jako správce můžete považovat za nutné uzamknout určité předplatné, skupinu prostředků nebo prostředek, abyste ostatním uživatelům v organizaci zabránili v nechtěném odstranění nebo úpravě důležitých prostředků. Zámek můžete nastavit na úroveň **CanNotDelete** nebo **ReadOnly**. Na portálu se zámky nazývají **Delete** a **jen pro čtení** .
 
 * **CanNotDelete** znamená, že autorizovaní uživatelé můžou pořád číst a upravovat prostředek, ale nemůžou prostředek odstranit.
 * **ReadOnly** znamená, že autorizovaní uživatelé můžou číst prostředek, ale nemůžou prostředek odstranit ani aktualizovat. Použití tohoto zámku je podobné jako omezení všech autorizovaných uživatelů na oprávnění udělené rolí **Čtenář** .
@@ -28,7 +28,7 @@ Zámky služby Resource Manager se vztahují jen na operace, které probíhají 
 
 ## <a name="considerations-before-applying-locks"></a>Předpoklady před použitím zámků
 
-Použití zámků může vést k neočekávaným výsledkům, protože některé operace, které nezpůsobují úpravu prostředku, skutečně vyžadují akce blokované zámkem. Mezi běžné příklady operací, které jsou blokované zámky, patří:
+Použití zámků může vést k neočekávaným výsledkům, protože některé operace, které nezpůsobují úpravu prostředku, skutečně vyžadují akce blokované zámkem. Zámky zabrání operacím, které vyžadují požadavek POST, na rozhraní Azure Resource Manager API. Mezi běžné příklady operací, které jsou blokované zámky, patří:
 
 * Zámek jen pro čtení v **účtu úložiště** zabraňuje všem uživatelům v výpisu klíčů. Operace výpisu klíčů se zpracovává prostřednictvím požadavku POST, protože vrácené klíče jsou k dispozici pro operace zápisu.
 

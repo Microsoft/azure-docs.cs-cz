@@ -1,7 +1,7 @@
 ---
 title: Nejčastější dotazy k hlasovým pomocníkům
 titleSuffix: Azure Cognitive Services
-description: Získejte odpovědi na nejoblíbenější otázky týkající se hlasových asistentů pomocí vlastních příkazů (Preview) nebo přímého kanálu pro hlasový vstup.
+description: Získejte odpovědi na nejoblíbenější otázky o hlasových asistentech pomocí vlastních příkazů nebo kanálu Direct line Speech.
 services: cognitive-services
 author: trrwilson
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: b43d446930d1f8c40c12e5d0aeba6eb202ef47ef
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 4b0bbb982ed48dc052b1a15514ad36b1d69b62b5
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353727"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599413"
 ---
 # <a name="voice-assistants-frequently-asked-questions"></a>Nejčastější dotazy k hlasovým pomocníkům
 
@@ -25,11 +25,11 @@ Pokud nemůžete najít odpovědi na vaše otázky v tomto dokumentu, podívejte
 
 **Otázka: co je hlasový asistent?**
 
-**A:** Podobně jako Cortana, hlasového asistenta je řešení, které naslouchá uživateli mluveného projevy, analyzuje obsah těchto projevy pro účely, provádí jednu nebo více akcí v reakci na záměr utterance a pak poskytuje reakci na uživatele, který často zahrnuje hlasovou komponentu. Je to "Hlasová" Hlasová prostředí pro interakci se systémem. Autoři hlasového asistenta vytvoří aplikaci na zařízení pomocí sady `DialogServiceConnector` v sadě Speech SDK ke komunikaci s pomocníkem vytvořeným pomocí [vlastních příkazů (Preview)](custom-commands.md) nebo [přímého kanálu pro hlasový vstup](direct-line-speech.md) v rozhraní bot. Tito asistenti můžou používat vlastní klíčová slova, vlastní řeč a vlastní hlas k poskytování prostředí přizpůsobeného vaší značkou nebo produktem.
+**A:** Podobně jako Cortana, hlasového asistenta je řešení, které naslouchá uživateli mluveného projevy, analyzuje obsah těchto projevy pro účely, provádí jednu nebo více akcí v reakci na záměr utterance a pak poskytuje reakci na uživatele, který často zahrnuje hlasovou komponentu. Je to "Hlasová" Hlasová prostředí pro interakci se systémem. Autoři hlasového asistenta vytvoří aplikaci na zařízení pomocí sady `DialogServiceConnector` v sadě Speech SDK ke komunikaci s pomocníkem vytvořeným pomocí [vlastních příkazů](custom-commands.md) nebo kanálu [Direct line Speech](direct-line-speech.md) pro bot Framework. Tito asistenti můžou používat vlastní klíčová slova, vlastní řeč a vlastní hlas k poskytování prostředí přizpůsobeného vaší značkou nebo produktem.
 
-**Otázka: mám použít vlastní příkazy (Preview) nebo Direct line Speech? Jaký je rozdíl?**
+**Otázka: mám použít vlastní příkazy nebo přímé čáry pro řeč? Jaký je rozdíl?**
 
-Odpověď **:** [vlastní příkazy (Preview)](custom-commands.md) jsou vysoce složitou sadou nástrojů, která umožňuje snadno vytvořit a hostovat pomocníka, který je vhodný pro scénáře dokončování úkolů. [Přímý line Speech](direct-line-speech.md) poskytuje bohatší a sofistikované funkce, které umožňují využít robustní scénáře konverzace. Další informace najdete v [porovnání s řešením pomocníka](voice-assistants.md#choosing-an-assistant-solution) .
+Odpověď **:** [vlastní příkazy](custom-commands.md) jsou s nižší složitou sadou nástrojů, které umožňují snadno vytvořit a hostovat pomocníka, který je vhodný pro scénáře dokončování úkolů. [Přímý line Speech](direct-line-speech.md) poskytuje bohatší a sofistikované funkce, které umožňují využít robustní scénáře konverzace. Další informace najdete v [porovnání s řešením pomocníka](voice-assistants.md#choosing-an-assistant-solution) .
 
 **Otázka: Návody začít?**
 
@@ -61,7 +61,7 @@ Podrobnější příručku najdete v [části kurzu](tutorial-voice-enable-your-
 
 **A:** Tato chyba označuje problém s komunikací mezi vaším asistentem a službou hlasového asistenta.
 
-- Pro vlastní příkazy (Preview) se ujistěte, že je publikovaná vaše aplikace Custom Commands (Preview).
+- Pro vlastní příkazy se ujistěte, že je publikovaná vaše aplikace pro vlastní příkazy.
 - V případě přímého vstupu na řeč se ujistěte, že jste [připojili robota k kanálu přímého řádku s přímým přístupem](/azure/bot-service/bot-service-channel-connect-directlinespeech), [Přidali jsme podporu protokolu streamování](/azure/bot-service/directline-speech-bot) do robotu (s příslušnou podporou webového soketu) a pak zkontrolujete, že robot reaguje na příchozí požadavky z kanálu.
 
 **Otázka: Tento kód stále nefunguje a/nebo se při použití. zobrazuje jiná chyba `DialogServiceConnector` . Co mám dělat?**
