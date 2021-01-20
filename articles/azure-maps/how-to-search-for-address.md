@@ -3,17 +3,17 @@ title: Vyhledat umístění pomocí služby Azure Maps Search Services
 description: Přečtěte si o službě Azure Maps Search. Podívejte se, jak používat tuto sadu rozhraní API pro účely geografického kódování, reverzního geografického kódování, přibližného vyhledávání a obráceného hledání mezi ulice.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 10/05/2020
+ms.date: 01/19/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 00ddb53276c052d538d658f2c40384e86cf72aee
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: dddf56edf2037d87a28589a59834db32f8d04a4c
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92910980"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598369"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>Vyhledat umístění pomocí služby Azure Maps Search Services
 
@@ -27,7 +27,7 @@ V tomto článku se naučíte:
 * Chcete-li přeložit polohu souřadnic na ulici, proveďte [hledání zpětného překladu adres](/rest/api/maps/search/getsearchaddressreverse) .
 * Přeloží umístění souřadnic do uživatelsky srozumitelnější meziulice pomocí [hledané adresy rozhraní API pro reverzní meziulici](/rest/api/maps/search/getsearchaddressreversecrossstreet).  Nejčastěji to je potřeba při sledování aplikací, které přijímají informační kanál GPS ze zařízení nebo z assetu, a chcete zjistit, kde se nachází souřadnice.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 1. [Vytvořit účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného.
@@ -36,14 +36,14 @@ V tomto kurzu se používá aplikace [po](https://www.postman.com/) aplikaci, al
 
 ## <a name="request-latitude-and-longitude-for-an-address-geocoding"></a>Vyžádat zeměpisnou šířku a zeměpisnou délku adresy (geografické kódování)
 
-V tomto příkladu použijeme rozhraní API pro Azure Maps [získat adresu pro hledání](/rest/api/maps/search/getsearchaddress) k převedení adresy na souřadnice zeměpisné šířky a délky. Tento proces se označuje také jako *geografické kódování* . Kromě vrácení souřadnic vrátí odpověď také podrobné vlastnosti adresy, jako je ulice, PSČ, okres a informace o zemi nebo oblasti.
+V tomto příkladu použijeme rozhraní API pro Azure Maps [získat adresu pro hledání](/rest/api/maps/search/getsearchaddress) k převedení adresy na souřadnice zeměpisné šířky a délky. Tento proces se označuje také jako *geografické kódování*. Kromě vrácení souřadnic vrátí odpověď také podrobné vlastnosti adresy, jako je ulice, PSČ, okres a informace o zemi nebo oblasti.
 
 >[!TIP]
 >Pokud máte sadu adres pro účely INCODE, můžete k odeslání dávky dotazů v jednom volání rozhraní API použít [rozhraní API pro dávku po vyhledání](/rest/api/maps/search/postsearchaddressbatch) .
 
-1. Otevřete aplikaci pro vyúčtování. V horní části okna po aplikaci vyberte **Nový** . V okně **vytvořit nové** vyberte **kolekce** .  Pojmenujte kolekci a vyberte tlačítko **vytvořit** . Tuto kolekci použijete pro zbytek příkladů v tomto dokumentu.
+1. Otevřete aplikaci pro vyúčtování. V horní části okna po aplikaci vyberte **Nový**. V okně **vytvořit nové** vyberte **kolekce**.  Pojmenujte kolekci a vyberte tlačítko **vytvořit** . Tuto kolekci použijete pro zbytek příkladů v tomto dokumentu.
 
-2. Pokud chcete vytvořit žádost, vyberte **Nový** znovu. V okně **vytvořit nové** vyberte **požadavek** . Zadejte **název žádosti** . Vyberte kolekci, kterou jste vytvořili v předchozím kroku, a pak vyberte **Uložit** .
+2. Pokud chcete vytvořit žádost, vyberte **Nový** znovu. V okně **vytvořit nové** vyberte **požadavek**. Zadejte **název žádosti** . Vyberte kolekci, kterou jste vytvořili v předchozím kroku, a pak vyberte **Uložit**.
 
 3. Na kartě tvůrce vyberte metodu **Get** http a zadejte následující adresu URL. V této žádosti hledáme konkrétní adresu: `400 Braod St, Seattle, WA 98109` . U této žádosti a dalších žádostí uvedených v tomto článku nahraďte `{Azure-Maps-Primary-Subscription-key}` primárním klíčem předplatného.
 
@@ -75,7 +75,7 @@ V tomto příkladu použijeme přibližné hledání k prohledání celého svě
 >[!IMPORTANT]
 >Pokud chcete výsledky geografického posunu do příslušné oblasti pro vaše uživatele, vždy přidejte tolik podrobností umístění, kolik je možné. Další informace najdete v tématu [osvědčené postupy pro hledání](how-to-use-best-practices-for-search.md#geobiased-search-results).
 
-1. Otevřete aplikaci pro odesílání, klikněte na **Nový** a vyberte **žádost** . Zadejte **název žádosti** . Vyberte kolekci, kterou jste vytvořili v předchozí části, nebo vytvořte novou, a pak vyberte **Uložit** .
+1. Otevřete aplikaci pro odesílání, klikněte na **Nový** a vyberte **žádost**. Zadejte **název žádosti** . Vyberte kolekci, kterou jste vytvořili v předchozí části, nebo vytvořte novou, a pak vyberte **Uložit**.
 
 2. Na kartě tvůrce vyberte metodu **Get** http a zadejte následující adresu URL. U této žádosti a dalších žádostí uvedených v tomto článku nahraďte `{Azure-Maps-Primary-Subscription-key}` primárním klíčem předplatného.
 
@@ -94,7 +94,7 @@ V tomto příkladu použijeme přibližné hledání k prohledání celého svě
 
 4. Výchozím chováním je hledání celého světa, který může vracet zbytečné výsledky. V dalším kroku vyhledáme jenom Pizza USA. Přidejte `countrySet` klíč do oddílu **param** a nastavte jeho hodnotu na `US` . Nastavením `countrySet` klíče se `US` naváže výsledky k USA.
 
-    :::image type="content" source="./media/how-to-search-for-address/search-fuzzy-country.png" alt-text="Hledat adresu":::
+    :::image type="content" source="./media/how-to-search-for-address/search-fuzzy-country.png" alt-text="Hledání pizza v USA":::
 
     Výsledky jsou nyní ohraničeny kódem země a dotaz vrátí Pizza restaurací ve USA.
 
@@ -107,9 +107,9 @@ V tomto příkladu použijeme přibližné hledání k prohledání celého svě
     | připojí | 47,620525 |
     | lon | -122,349274 |
     | zaoblen | 400 |
-    | počtu | 5|
+    | limit | 5|
 
-6. Klikněte na **Odeslat** . Odpověď zahrnuje výsledky pro Pizza restaurací poblíž ručičky místa v Seattlu.
+6. Klikněte na **Odeslat**. Odpověď zahrnuje výsledky pro Pizza restaurací poblíž ručičky místa v Seattlu.
 
 ## <a name="search-for-a-street-address-using-reverse-address-search"></a>Hledání adresy ulice pomocí zpětného vyhledávání adres
 
@@ -123,7 +123,7 @@ V tomto příkladu použijeme přibližné hledání k prohledání celého svě
 
 V tomto příkladu provedeme zpětné vyhledávání pomocí několika volitelných parametrů, které jsou k dispozici. Úplný seznam volitelných parametrů najdete v tématu [parametry zpětného vyhledávání](/rest/api/maps/search/getsearchaddressreverse#uri-parameters).
 
-1. V aplikaci pro odesílání klikněte na **Nový** a vyberte **požadavek** . Zadejte **název žádosti** . Vyberte kolekci, kterou jste vytvořili v první části, nebo vytvořte novou, a pak vyberte **Uložit** .
+1. V aplikaci pro odesílání klikněte na **Nový** a vyberte **požadavek**. Zadejte **název žádosti** . Vyberte kolekci, kterou jste vytvořili v první části, nebo vytvořte novou, a pak vyberte **Uložit**.
 
 2. Na kartě tvůrce vyberte metodu **Get** http a zadejte následující adresu URL. U této žádosti a dalších žádostí uvedených v tomto článku nahraďte `{Azure-Maps-Primary-Subscription-key}` primárním klíčem předplatného. Požadavek by měl vypadat jako na následující adrese URL:
 
@@ -142,15 +142,15 @@ V tomto příkladu provedeme zpětné vyhledávání pomocí několika voliteln�
     | returnRoadUse | true | Vrátí na adrese cesty pro použití. Všechny možné typy provozu najdete v tématu [typy cest pro použití](/rest/api/maps/search/getsearchaddressreverse#uri-parameters).|
     | returnMatchType | true| Vrátí typ shody. Všechny možné hodnoty najdete v tématu s [výsledky hledání zpětné adresy](/rest/api/maps/search/getsearchaddressreverse#searchaddressreverseresult) .
 
-   :::image type="content" source="./media/how-to-search-for-address/search-reverse.png" alt-text="Hledat adresu":::
+   :::image type="content" source="./media/how-to-search-for-address/search-reverse.png" alt-text="Hledání se obrátí.":::
 
 5. Klikněte na **Odeslat** a zkontrolujte text odpovědi.
 
 6. V dalším kroku přidáme `entityType` klíč a nastavíme jeho hodnotu na `Municipality` . `entityType`Klíč přepíše `returnMatchType` klíč v předchozím kroku. Bude také nutné odebrat `returnSpeedLimit` a, `returnRoadUse` protože požadujeme informace o úřadu.  Všechny možné typy entit naleznete v tématu [typy entit](/rest/api/maps/search/getsearchaddressreverse#entitytype).
 
-    :::image type="content" source="./media/how-to-search-for-address/search-reverse-entity-type.png" alt-text="Hledat adresu":::
+    :::image type="content" source="./media/how-to-search-for-address/search-reverse-entity-type.png" alt-text="Hledání zpětného entityType.":::
 
-7. Klikněte na **Odeslat** . Porovnejte výsledky s výsledky vrácenými v kroku 5.  Vzhledem k tomu, že požadovaný typ entity je nyní `municipality` , odpověď neobsahuje informace o ulici. Vrácené `geometryId` hodnoty lze také použít k vyžádání mnohoúhelníku hranice prostřednictvím Azure Maps získat [rozhraní API pro mnohoúhelník vyhledávání](/rest/api/maps/search/getsearchpolygon).
+7. Klikněte na **Odeslat**. Porovnejte výsledky s výsledky vrácenými v kroku 5.  Vzhledem k tomu, že požadovaný typ entity je nyní `municipality` , odpověď neobsahuje informace o ulici. Vrácené `geometryId` hodnoty lze také použít k vyžádání mnohoúhelníku hranice prostřednictvím Azure Maps získat [rozhraní API pro mnohoúhelník vyhledávání](/rest/api/maps/search/getsearchpolygon).
 
 >[!TIP]
 >Chcete-li získat další informace o těchto parametrech a získat informace o dalších informacích, přečtěte si [část parametry zpětného vyhledávání](/rest/api/maps/search/getsearchaddressreverse#uri-parameters).
@@ -159,7 +159,7 @@ V tomto příkladu provedeme zpětné vyhledávání pomocí několika voliteln�
 
 V tomto příkladu vyhledáme meziulici na základě souřadnic adresy.
 
-1. V aplikaci pro odesílání klikněte na **Nový** a vyberte **požadavek** . Zadejte **název žádosti** . Vyberte kolekci, kterou jste vytvořili v první části, nebo vytvořte novou, a pak vyberte **Uložit** .
+1. V aplikaci pro odesílání klikněte na **Nový** a vyberte **požadavek**. Zadejte **název žádosti** . Vyberte kolekci, kterou jste vytvořili v první části, nebo vytvořte novou, a pak vyberte **Uložit**.
 
 2. Na kartě tvůrce vyberte metodu **Get** http a zadejte následující adresu URL. U této žádosti a dalších žádostí uvedených v tomto článku nahraďte `{Azure-Maps-Primary-Subscription-key}` primárním klíčem předplatného. Požadavek by měl vypadat jako na následující adrese URL:
   
@@ -167,9 +167,9 @@ V tomto příkladu vyhledáme meziulici na základě souřadnic adresy.
    https://atlas.microsoft.com/search/address/reverse/crossstreet/json?&api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}&language=en-US&query=47.591180,-122.332700
     ```
 
-    :::image type="content" source="./media/how-to-search-for-address/search-address-cross.png" alt-text="Hledat adresu":::
+    :::image type="content" source="./media/how-to-search-for-address/search-address-cross.png" alt-text="Hledat mezi ulici":::
   
-3. Klikněte na **Odeslat** a zkontrolujte text odpovědi. Všimněte si, že odpověď obsahuje `crossStreet` hodnotu `Occidental Avenue South` .
+3. Klikněte na **Odeslat** a zkontrolujte text odpovědi. Všimněte si, že odpověď obsahuje `crossStreet` hodnotu `South Atlantic Street` .
 
 ## <a name="next-steps"></a>Další kroky
 

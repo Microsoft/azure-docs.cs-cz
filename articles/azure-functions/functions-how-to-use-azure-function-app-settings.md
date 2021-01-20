@@ -5,12 +5,12 @@ ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.custom: cc996988-fb4f-47, devx-track-azurecli
-ms.openlocfilehash: 70aecc2613fbe21d34e36f9487d7ba383e140bc8
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 4db6abeb3e6f4a07780268a6455177e0ca237205
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98217358"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598482"
 ---
 # <a name="manage-your-function-app"></a>Správa aplikace Function App 
 
@@ -84,7 +84,7 @@ Když vyvíjíte aplikaci funkcí lokálně, musíte zachovat místní kopie tě
 
 ## <a name="hosting-plan-type"></a>Typ plánu hostování
 
-Když vytvoříte aplikaci Function App, vytvoříte také App Service plán hostování, ve kterém se aplikace spouští. Plán může mít jednu nebo víc aplikací Function App. Funkce, škálování a ceny vašich funkcí závisí na typu plánu. Další informace najdete na stránce s [cenami Azure Functions](https://azure.microsoft.com/pricing/details/functions/).
+Když vytvoříte aplikaci Function App, vytvoříte také plán hostování, ve kterém je aplikace spuštěná. Plán může mít jednu nebo víc aplikací Function App. Funkce, škálování a ceny vašich funkcí závisí na typu plánu. Další informace najdete v tématu [možnosti hostování Azure Functions](functions-scale.md).
 
 Typ plánu, který aplikace Function App používá, můžete určit z Azure Portal nebo pomocí rozhraní příkazového řádku Azure CLI nebo Azure PowerShell. 
 
@@ -131,6 +131,75 @@ V předchozím příkladu nahraďte `<RESOURCE_GROUP>` a `<FUNCTION_APP_NAME>` n
 
 ---
 
+## <a name="plan-migration"></a>Plánování migrace
+
+Příkazy rozhraní příkazového řádku Azure můžete použít k migraci aplikace Function App mezi plánem spotřeby a plánem Premium ve Windows. Konkrétní příkazy závisí na směru migrace. Přímá migrace na vyhrazený plán (App Service) není v současné době podporovaná.
+
+Tato migrace není podporována na platformě Linux.
+
+### <a name="consumption-to-premium"></a>Spotřeba do úrovně Premium
+
+Pomocí následujícího postupu můžete migrovat plán spotřeby do plánu Premium ve Windows:
+
+1. Spusťte následující příkaz, který vytvoří nový plán App Service (elastické Premium) ve stejné oblasti a skupině prostředků jako vaše existující aplikace Function App.  
+
+    ```azurecli-interactive
+    az functionapp plan create --name <NEW_PREMIUM_PLAN_NAME> --resource-group <MY_RESOURCE_GROUP> --location <REGION> --sku EP1
+    ```
+
+1. Spuštěním následujícího příkazu migrujete stávající aplikaci Function App do nového plánu Premium.
+
+    ```azurecli-interactive
+    az functionapp update --name <MY_APP_NAME> --resource-group <MY_RESOURCE_GROUP> --plan <NEW_PREMIUM_PLAN>
+    ```
+
+1. Pokud už nepotřebujete svůj předchozí plán aplikace Function App, po potvrzení, že jste úspěšně migrovali na nový, odstraňte původní plán aplikace Function App. Spuštěním následujícího příkazu zobrazíte seznam všech plánů spotřeby ve vaší skupině prostředků.
+
+    ```azurecli-interactive
+    az functionapp plan list --resource-group <MY_RESOURCE_GROUP> --query "[?sku.family=='Y'].{PlanName:name,Sites:numberOfSites}" -o table
+    ```
+
+    Plán můžete bezpečně odstranit pomocí nulových webů, což je ten, který jste migrovali z.
+
+1. Spuštěním následujícího příkazu odstraňte plán spotřeby, ze kterého jste migrovali.
+
+    ```azurecli-interactive
+    az functionapp plan delete --name <CONSUMPTION_PLAN_NAME> --resource-group <MY_RESOURCE_GROUP>
+    ```
+
+### <a name="premium-to-consumption"></a>Premium na spotřebu
+
+Následující postup použijte k migraci plánu Premium na plán spotřeby ve Windows:
+
+1. Spusťte následující příkaz, který vytvoří novou aplikaci Function App (spotřeba) ve stejné oblasti a skupině prostředků jako vaše existující aplikace Function App. Tento příkaz také vytvoří nový plán spotřeby, ve kterém je spuštěná aplikace Function App.
+
+    ```azurecli-interactive
+    az functionapp create --resource-group <MY_RESOURCE_GROUP> --name <NEW_CONSUMPTION_APP_NAME> --consumption-plan-location <REGION> --runtime dotnet --functions-version 3 --storage-account <STORAGE_NAME>
+    ```
+
+1. Spuštěním následujícího příkazu migrujete stávající aplikaci Function App do nového plánu spotřeby.
+
+    ```azurecli-interactive
+    az functionapp update --name <MY_APP_NAME> --resource-group <MY_RESOURCE_GROUP> --plan <NEW_CONSUMPTION_PLAN>
+    ```
+
+1. Odstraňte aplikaci funkcí, kterou jste vytvořili v kroku 1, protože potřebujete jenom plán, který jste vytvořili pro spuštění stávající aplikace Function App.
+
+    ```azurecli-interactive
+    az functionapp delete --name <NEW_CONSUMPTION_APP_NAME> --resource-group <MY_RESOURCE_GROUP>
+    ```
+
+1. Pokud už nepotřebujete předchozí plán aplikace Function App, odstraňte původní plán aplikací Function po potvrzení, že jste úspěšně migrovali na nový. Upozorňujeme, že pokud se plán neodstraní, bude se vám i nadále účtovat plán Premium. Spuštěním následujícího příkazu zobrazíte seznam všech plánů Premium ve vaší skupině prostředků.
+
+    ```azurecli-interactive
+    az functionapp plan list --resource-group <MY_RESOURCE_GROUP> --query "[?sku.family=='EP'].{PlanName:name,Sites:numberOfSites}" -o table
+    ```
+
+1. Spuštěním následujícího příkazu odstraňte plán Premium, ze kterého jste migrovali.
+
+    ```azurecli-interactive
+    az functionapp plan delete --name <PREMIUM_PLAN> --resource-group <MY_RESOURCE_GROUP>
+    ```
 
 ## <a name="platform-features"></a>Funkce platformy
 

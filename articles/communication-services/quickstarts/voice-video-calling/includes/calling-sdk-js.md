@@ -4,14 +4,14 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: d50ce842a1b2bca26ef14dfbc81aab90d4ac2d8c
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: c51316b445471c58ae88237b370f5a25fdedf373
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97692005"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98605221"
 ---
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 - Nasazený prostředek komunikačních služeb. [Vytvořte prostředek služby Communications](../../create-communication-resource.md).
@@ -78,7 +78,7 @@ Chcete-li umístit volání 1: n uživateli a číslo veřejné telefonní čís
 Aby bylo možné volat do veřejné telefonní služby, musí být prostředek komunikačních služeb nakonfigurovaný.
 ```js
 
-const userCallee = { communicationUserId: <ACS_USER_ID> }
+const userCallee = { communicationUserId: <ACS_USER_ID> };
 const pstnCallee = { phoneNumber: <PHONE_NUMBER>};
 const groupCall = callAgent.call([userCallee, pstnCallee], placeCallOptions);
 
@@ -348,7 +348,7 @@ Tím se synchronně vrátí instance vzdáleného účastníka.
 
 ```js
 const userIdentifier = { communicationUserId: <ACS_USER_ID> };
-const pstnIdentifier = { phoneNumber: <PHONE_NUMBER>}
+const pstnIdentifier = { phoneNumber: <PHONE_NUMBER>};
 const remoteParticipant = call.addParticipant(userIdentifier);
 const remoteParticipant = call.addParticipant(pstnIdentifier);
 ```
@@ -361,7 +361,7 @@ Musíte předat jeden z typů ' identifikátor ', který se vyřeší asynchronn
 
 ```js
 const userIdentifier = { communicationUserId: <ACS_USER_ID> };
-const pstnIdentifier = { phoneNumber: <PHONE_NUMBER>}
+const pstnIdentifier = { phoneNumber: <PHONE_NUMBER>};
 await call.removeParticipant(userIdentifier);
 await call.removeParticipant(pstnIdentifier);
 ```

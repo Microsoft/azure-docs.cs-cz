@@ -4,16 +4,16 @@ description: V tomto rychlém startu vytvoříte v úložišti objektů (blob) �
 author: mhopkins-msft
 ms.custom: devx-track-java
 ms.author: mhopkins
-ms.date: 07/24/2020
+ms.date: 01/19/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 39b5a812c5f9b8e148b5180569af110c72e2c75b
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: b3bb8736eb7a8e24f47812fc4feecbf96628dfb6
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95544594"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599819"
 ---
 # <a name="quickstart-manage-blobs-with-java-v8-sdk"></a>Rychlý Start: Správa objektů BLOB pomocí sady Java V8 SDK
 
@@ -22,7 +22,7 @@ V tomto rychlém startu se naučíte spravovat objekty BLOB pomocí Java. Objekt
 > [!NOTE]
 > V tomto rychlém startu se používá starší verze klientské knihovny pro úložiště objektů BLOB v Azure. Pokud chcete začít používat nejnovější verzi, přečtěte si téma [rychlý Start: Správa objektů BLOB pomocí sady Java V12 SDK](storage-quickstart-blobs-java.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - Účet služby Azure Storage. [Vytvořte účet úložiště](../common/storage-account-create.md).
@@ -201,5 +201,5 @@ sourceFile.deleteOnExit();
 V tomto článku jste zjistili, jak přenášet soubory mezi místním diskem a úložištěm objektů BLOB v Azure pomocí jazyka Java. Další informace o práci s Javou najdete v našem úložišti zdrojového kódu na GitHubu.
 
 > [!div class="nextstepaction"]
-> Reference k rozhraní [Java API](/java/api/overview/azure/storage?view=azure-java-legacy) 
+> Reference k rozhraní [Java API](/java/api/overview/azure/storage?view=azure-java-legacy&preserve-view=true) 
 >  [Ukázky kódu pro Java](../common/storage-samples-java.md)

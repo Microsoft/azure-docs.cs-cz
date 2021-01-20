@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: e50d7aba5cc5b3d5d620d844cc9ad169ad8b3bf6
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 6f2dfdbb5833b34441b4abba7359ad70c4717d1d
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025887"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602155"
 ---
 # <a name="set-up-web-endpoints"></a>Nastavení webových koncových bodů
 
@@ -23,7 +23,7 @@ V tomto článku se naučíte, jak v aplikaci Vlastní příkazy nastavit webov�
 
 - Nastavení webových koncových bodů webu v aplikaci Vlastní příkazy
 - Volání webových koncových bodů webu v aplikaci Vlastní příkazy
-- Příjem odpovědí webových koncových bodů 
+- Příjem odpovědí webových koncových bodů
 - Integrace odpovědí webových koncových bodů do vlastní datové části JSON, odeslání a vizualizace z klientské aplikace Speech SDK pro UPW v C#
 
 ## <a name="prerequisites"></a>Požadavky
@@ -35,7 +35,7 @@ V tomto článku se naučíte, jak v aplikaci Vlastní příkazy nastavit webov�
 
 ## <a name="setup-web-endpoints"></a>Nastavení webových koncových bodů
 
-1. Otevřete aplikaci Vlastní příkazy, kterou jste si vytvořili dříve. 
+1. Otevřete aplikaci Vlastní příkazy, kterou jste si vytvořili dříve.
 1. Přejděte na Webové koncové body a klikněte na Nový webový koncový bod.
 
    > [!div class="mx-imgBorder"]
@@ -61,7 +61,7 @@ V tomto článku se naučíte, jak v aplikaci Vlastní příkazy nastavit webov�
 1. Přejděte na příkaz **TurnOnOff**, jako pravidlo dokončení vyberte **ConfirmationResponse** a potom vyberte **Přidat akci**.
 1. V části **New Action-Type** (Nový typ akce) vyberte **Call web endpoint** (Volání koncového bodu).
 1. V části **Edit Action - Endpoints** (Akce pro úpravy – koncové body) vyberte **UpdateDeviceState**. To je webový koncový bod, který jsme vytvořili.  
-1. V části **Configuration** (Konfigurace) zadejte následující hodnoty: 
+1. V části **Configuration** (Konfigurace) zadejte následující hodnoty:
    > [!div class="mx-imgBorder"]
    > ![Parametry akce volání koncových bodů](media/custom-commands/setup-web-endpoint-edit-action-parameters.png)
 
@@ -75,16 +75,16 @@ V tomto článku se naučíte, jak v aplikaci Vlastní příkazy nastavit webov�
     > - Navrhované parametry dotazů jsou nutné jenom pro ukázkový koncový bod.
 
 1. V části **On Success - Action to execute** (Při úspěchu – Akce, která se má provést) vyberte **Send speech response** (Odeslat odpověď v řeči).
-    
+
     V části **Simple editor** (Jednoduchý editor) zadejte `{SubjectDevice} is {OnOff}`.
-   
+
    > [!div class="mx-imgBorder"]
    > ![Snímek obrazovky, který zobrazuje akci při úspěchu – spuštění](media/custom-commands/setup-web-endpoint-edit-action-on-success-send-response.png)
 
    | Nastavení | Navrhovaná hodnota | Popis |
    | ------- | --------------- | ----------- |
    | Akce, která se má provést | Send speech response (Odeslat odpověď v řeči) | Akce, která se má provést, pokud se požadavek na webový koncový bod zdaří |
-   
+
    > [!NOTE]
    > - K polím v odpovědi HTTP můžete také získat přímý přístup pomocí `{YourWebEndpointName.FieldName}`. Příklad: `{UpdateDeviceState.TV}`
 
@@ -101,7 +101,7 @@ V tomto článku se naučíte, jak v aplikaci Vlastní příkazy nastavit webov�
 
    > [!NOTE]
    > - Parametr `{WebEndpointErrorMessage}` je volitelný. Pokud nechcete zpřístupnit žádnou chybovou zprávu, můžete ho bez obav odebrat.
-   > - V rámci našeho ukázkového koncového bodu vracíme odpověď HTTP s podrobnými chybovými zprávami pro běžné chyby, jako jsou například chybějící parametry hlavičky. 
+   > - V rámci našeho ukázkového koncového bodu vracíme odpověď HTTP s podrobnými chybovými zprávami pro běžné chyby, jako jsou například chybějící parametry hlavičky.
 
 ### <a name="try-it-out-in-test-portal"></a>Vyzkoušení na testovacím portálu
 - Odpověď při úspěchu:
@@ -119,7 +119,7 @@ V části [Postupy: Odeslání aktivity do klientské aplikace (Preview)](./how-
 Ve většině případů ale chcete posílat aktivitu do klientské aplikace jenom v případě, že volání webového koncového bodu je úspěšné. V tomto příkladu je to tehdy, když se úspěšně aktualizuje stav zařízení.
 
 1. Odstraňte dříve přidanou akci **Send activity to client** (Odeslání aktivity do klientské aplikace).
-1. Upravte volání webového koncového bodu: 
+1. Upravte volání webového koncového bodu:
     1. V části **Konfigurace** zkontrolujte, že hodnota **Parametry dotazu** je `item={SubjectDevice}&&value={OnOff}`
     1. V části **On Success** (Při úspěchu) změňte **Action to execute** (Akce, která se má provést) na **Send activity to client** (Odeslání aktivity do klientské aplikace).
     1. Následující kód JSON zkopírujte do části **Activity Content** (Obsah aktivity).
@@ -133,7 +133,6 @@ Ve většině případů ale chcete posílat aktivitu do klientské aplikace jen
       }
     }
    ```
-   
 Teď odesíláte aktivitu do klientské aplikace jenom v případě, že požadavek na webový koncový bod je úspěšný.
 
 ### <a name="create-visuals-for-syncing-device-state"></a>Vytváření vizuálů pro synchronizaci stavu zařízení
@@ -147,7 +146,7 @@ Následující kód XML přidejte do části `MainPage.xaml` nad blokem `"Enable
         .........../>
 ```
 
-### <a name="sync-device-state"></a>Synchronizace stavu zařízení 
+### <a name="sync-device-state"></a>Synchronizace stavu zařízení
 
 V části `MainPage.xaml.cs` přidejte odkaz `using Windows.Web.Http;`. Do třídy `MainPage` přidejte následující kód. Tato metoda pošle do ukázkového koncového bodu požadavek GET a extrahuje aktuální stav zařízení pro vaši aplikaci. Nezapomeňte změnit parametr `<your_app_name>` na hodnotu použitou v **hlavičce** webového koncového bodu pro Vlastní příkazy.
 
@@ -157,7 +156,7 @@ private async void SyncDeviceState_ButtonClicked(object sender, RoutedEventArgs 
     //Create an HTTP client object
     var httpClient = new HttpClient();
 
-    //Add a user-agent header to the GET request. 
+    //Add a user-agent header to the GET request.
     var your_app_name = "<your-app-name>";
 
     Uri endpoint = new Uri("https://webendpointexample.azurewebsites.net/api/DeviceState");

@@ -11,16 +11,16 @@ ms.author: cesardl
 author: CESARDELATORRE
 ms.reviewer: nibaccam
 ms.date: 06/16/2020
-ms.openlocfilehash: 8e749e5f6ea6bcf76a1b4f143bce03ceb41cbb07
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: a781900534156e455c125dffe3b1334820fdf4d5
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573288"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599055"
 ---
 # <a name="configure-data-splits-and-cross-validation-in-automated-machine-learning"></a>Konfigurace dělení dat a křížového ověřování v rámci automatizovaného strojového učení
 
-V tomto článku se dozvíte, jaké jsou různé možnosti konfigurace rozdělených a ověřovacích dat a křížového ověřování pro automatizované Machine Learning, automatizované ML a experimenty.
+V tomto článku se seznámíte s různými možnostmi konfigurace školicích dat a rozdělených dat spolu s nastavením křížového ověřování pro automatizované Machine Learning, automatizované ML a experimenty.
 
 Při použití automatizovaného ML v Azure Machine Learning k sestavení více modelů ML musí každý podřízený běh ověřit související model výpočtem metrik kvality pro daný model, jako je přesnost nebo AUC vážená. Tyto metriky se vypočtou porovnáním předpovědi vytvořených s každým modelem a skutečnými popisky z minulých pozorování v datech ověřování. [Přečtěte si další informace o tom, jak se počítají metriky na základě typu ověřování](#metric-calculation-for-cross-validation-in-machine-learning). 
 
@@ -29,7 +29,7 @@ Automatizované experimenty ML provádí ověření modelu automaticky. Následu
 Informace o prostředí s nízkým kódováním nebo bez kódu najdete [v tématu Vytvoření automatizovaných experimentů strojového učení v Azure Machine Learning Studiu](how-to-use-automated-ml-for-ml-models.md). 
 
 > [!NOTE]
-> Studio v současné době podporuje rozdělení dat pro školení a ověřování a možnosti křížového ověřování, ale nepodporuje zadání jednotlivých datových souborů pro sadu ověřování. 
+> Studio v současné době podporuje rozdělená a ověřovací data a také možnosti křížového ověřování, ale nepodporuje určení jednotlivých datových souborů pro sadu ověřování. 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -41,7 +41,7 @@ Pro tento článek potřebujete,
 
 * Porozumění datům vlaků a ověření a vzájemnému ověřování jako konceptů strojového učení. Vysvětlení vysoké úrovně
 
-    * [O výukových, ověřovacích a testovacích sadách v Machine Learning](https://towardsdatascience.com/train-validation-and-test-sets-72cb40cba9e7)
+    * [Informace o školeních, ověřování a testování dat ve službě Machine Learning](https://towardsdatascience.com/train-validation-and-test-sets-72cb40cba9e7)
 
     * [Vysvětlení vzájemného ověřování ve strojovém učení](https://towardsdatascience.com/understanding-cross-validation-419dbd47e9bd) 
 
@@ -62,7 +62,7 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
                             )
 ```
 
-Pokud explicitně neurčíte `validation_data` `n_cross_validation` parametr nebo, použije AutoML výchozí techniky v závislosti na počtu řádků v jedné zadané datové sadě `training_data` :
+Pokud explicitně neurčíte `validation_data` `n_cross_validation` parametr nebo, použije automatizované ml výchozí techniky v závislosti na počtu řádků, které jsou k dispozici v jedné datové sadě `training_data` :
 
 |&nbsp;Velikost dat &nbsp; školení| Technika ověřování |
 |---|-----|
@@ -71,7 +71,7 @@ Pokud explicitně neurčíte `validation_data` `n_cross_validation` parametr neb
 
 ## <a name="provide-validation-data"></a>Zadat ověřovací data
 
-V takovém případě můžete buď začít s jedním datovým souborem a rozdělit ho na sady pro školení a ověřování, nebo můžete pro sadu ověřování zadat samostatný datový soubor. V obou případech `validation_data` parametr v `AutoMLConfig` objektu přiřazuje ta data, která chcete použít jako sadu ověřování. Tento parametr přijímá pouze datové sady ve formě [Azure Machine Learning datové](how-to-create-register-datasets.md) sady nebo PANDAS dataframe.   
+V takovém případě můžete buď začít s jedním datovým souborem a rozdělit ho na data a sady dat pro ověření, nebo můžete zadat samostatný datový soubor pro sadu ověřování. V obou případech `validation_data` parametr v `AutoMLConfig` objektu přiřazuje ta data, která chcete použít jako sadu ověřování. Tento parametr přijímá pouze datové sady ve formě [Azure Machine Learning datové](how-to-create-register-datasets.md) sady nebo PANDAS dataframe.   
 
 Následující příklad kódu explicitně definuje, kterou část poskytnutých dat v nástroji `dataset` můžete použít pro účely školení a ověření.
 

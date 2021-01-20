@@ -1,5 +1,5 @@
 ---
-title: Vytvoření image z virtuálního počítače (Preview)
+title: Vytvoření image z virtuálního počítače
 description: Naučte se používat Azure PowerShell k vytvoření image v galerii sdílených imagí z existujícího virtuálního počítače v Azure.
 author: cynthn
 ms.topic: how-to
@@ -9,14 +9,14 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 3a7ca8236307bbf8a419d2988e1a6dc1e4c40597
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 1a0bfb79b03b778696faef29597cabbcff47e6df
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964860"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601667"
 ---
-# <a name="preview-create-an-image-from-a-vm"></a>Verze Preview: vytvoření image z virtuálního počítače
+# <a name="create-an-image-from-a-vm"></a>Vytvoření image z virtuálního počítače
 
 Pokud máte existující virtuální počítač, který byste chtěli použít k vytvoření několika identických virtuálních počítačů, můžete pomocí tohoto virtuálního počítače vytvořit image v galerii sdílených imagí pomocí Azure PowerShell. Můžete také vytvořit image z virtuálního počítače pomocí rozhraní příkazového [řádku Azure CLI](image-version-vm-cli.md).
 

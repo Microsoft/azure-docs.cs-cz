@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 06/17/2020
-ms.openlocfilehash: 9fe0c79a2f65b27b35aa5029d0a53de62ef08078
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: e85c97df29bbbcc5d446d788cc190f3c90f24024
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251654"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602228"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Pravidla brány firewall pro Azure SQL Database a Azure synapse
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -43,6 +43,9 @@ Pravidla brány firewall protokolu IP na úrovni serveru můžete nakonfigurovat
 
 - Pokud chcete používat portál nebo PowerShell, musíte být vlastníkem předplatného nebo přispěvatelem předplatného.
 - Chcete-li použít jazyk Transact-SQL, je nutné se připojit k *Hlavní* databázi jako přihlašovací jméno hlavního objektu na úrovni serveru nebo jako správce Azure Active Directory. (Pravidlo brány firewall protokolu IP na úrovni serveru musí být nejdřív vytvořené uživatelem, který má oprávnění na úrovni Azure.)
+
+> [!NOTE]
+> Ve výchozím nastavení se během vytváření nového logického serveru SQL Server z Azure Portal nastaví možnost **Povolení služeb Azure a prostředků pro přístup k tomuto serveru** na hodnotu **ne**.
 
 ### <a name="database-level-ip-firewall-rules"></a>Pravidla brány firewall protokolu IP na úrovni databáze
 

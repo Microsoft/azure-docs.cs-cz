@@ -5,12 +5,12 @@ ms.custom: subject-cost-optimization
 ms.service: app-service
 ms.topic: how-to
 ms.date: 01/01/2021
-ms.openlocfilehash: f92b766fc1122456fda70d2deff81fa80a02d159
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 85035ff894127df4e9eb8334702fd9546d7a63c3
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250107"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598703"
 ---
 # <a name="plan-and-manage-costs-for-azure-app-service"></a>Plánování a Správa nákladů na Azure App Service
 
@@ -51,7 +51,7 @@ Další nákladové prostředky pro App Service jsou (podrobnosti najdete v tém
 
 Když odstraníte všechny aplikace v plánu App Service, plán bude dál počítat poplatky na základě nakonfigurované cenové úrovně a počtu instancí. Abyste se vyhnuli nechtěným poplatkům, odstraňte plán nebo ho Škálujte dolů na úroveň **Free** .
 
-Po odstranění prostředků Azure App Service můžou dál existovat prostředky ze souvisejících služeb Azure. Nadále se účtují náklady, dokud je neodstraníte. Příklad:
+Po odstranění prostředků Azure App Service můžou dál existovat prostředky ze souvisejících služeb Azure. Nadále se účtují náklady, dokud je neodstraníte. Například:
 
 - Virtual Network, který jste vytvořili pro plán App Service **izolované** vrstvy
 - Účty úložiště, které jste vytvořili pro ukládání záloh nebo diagnostických protokolů
@@ -61,7 +61,7 @@ Po odstranění prostředků Azure App Service můžou dál existovat prostředk
 
 ### <a name="using-monetary-credit-with-azure-app-service"></a>Použití peněžního kreditu s Azure App Service
 
-Můžete platit za Azure App Service poplatky s kreditem peněžního závazku EA. Kredity peněžních závazků EA ale nemůžete použít k placení poplatků za produkty a služby třetích stran, včetně těch, které jsou Azure Marketplace.
+Za poplatky za Azure App Service můžete platit pomocí kreditu služby Azure (dříve nazývaného peněžního závazku). Nemůžete však použít kredit plateb Azure k placení poplatků za produkty a služby třetích stran, včetně těch, které jsou Azure Marketplace.
 
 ## <a name="estimate-costs"></a>Odhadněte náklady
 

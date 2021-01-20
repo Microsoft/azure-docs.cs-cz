@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 11/30/2020
-ms.openlocfilehash: 72068e5b0af35adce4188a8922cb2415d1f5f71f
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 9b74f6e82e39955554c13f6ce3490bc3c22c2b98
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250722"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600461"
 ---
 # <a name="plan-and-manage-costs-for-azure-expressroute"></a>Plánování a Správa nákladů pro Azure ExpressRoute
 
@@ -22,7 +22,7 @@ Po zahájení používání prostředků ExpressRoute použijte funkce Cost Mana
 
 Pamatujte, že náklady na ExpressRoute jsou jenom částí měsíčních nákladů na faktuře Azure. I když tento článek vysvětluje, jak plánovat a spravovat náklady na ExpressRoute, účtuje se vám všechny služby a prostředky Azure, které se používají ve vašem předplatném Azure, včetně služeb třetích stran.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Analýza nákladů v Cost Management podporuje většinu typů účtů Azure, ale ne všechny. Úplný seznam podporovaných typů účtů si můžete prohlédnout v článku [Vysvětlení dat služby Cost Management](../cost-management-billing/costs/understand-cost-mgt-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn). K zobrazení dat o nákladech potřebujete alespoň oprávnění ke čtení pro účet Azure. 
 
@@ -76,9 +76,9 @@ Při vytváření okruhu ExpressRoute se můžete rozhodnout vytvořit bránu Ex
 
 Pokud máte po odstranění okruhu ExpressRoute bránu ExpressRoute, bude se vám účtovat náklady, dokud ji neodstraníte.
 
-### <a name="using-monetary-credit"></a>Použití peněžního kreditu
+### <a name="using-azure-prepayment-credit"></a>Používání předplacených kreditů Azure
 
-Za poplatky za ExpressRoute můžete platit pomocí kreditu peněžních závazků EA. Kredity peněžních závazků EA ale nemůžete použít k placení poplatků za produkty a služby třetích stran, včetně těch, které jsou Azure Marketplace.
+Za poplatky za ExpressRoute můžete platit pomocí kreditu za předplacenou službu Azure (dříve označovaný jako peněžní závazek). Nemůžete však použít kredit plateb Azure k placení poplatků za produkty a služby třetích stran, včetně těch, které jsou Azure Marketplace.
 
 ## <a name="monitor-costs"></a>Sledovat náklady
 

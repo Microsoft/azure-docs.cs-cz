@@ -5,13 +5,13 @@ author: abhijitpai
 ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/19/2020
-ms.openlocfilehash: 793ff9eedb747da0edcbbf2df50b62f06f407892
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.date: 01/19/2021
+ms.openlocfilehash: 9ace9a319f4cc6bcc1545d6d1becce61b1892765
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247420"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598680"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kvóty služby Azure Cosmos DB
 
@@ -37,7 +37,7 @@ Propustnost můžete zřídit na úrovni kontejneru nebo databáze na úrovni je
 | Maximální velikost úložiště na kontejner | Unlimited |
 | Maximální velikost úložiště na databázi | Unlimited |
 | Maximální velikost přílohy na účet (funkce přílohy se už nepoužívá) | 2 GB |
-| Vyžaduje se minimální RU/s za 1 GB. | 10 RU/s<br>**Poznámka:** Pokud Váš kontejner nebo databáze obsahuje více než 1 TB dat, může mít váš účet nárok na náš [program "vysoké úložiště/nízká propustnost"](set-throughput.md#high-storage-low-throughput-program) . |
+| Vyžaduje se minimální RU/s za 1 GB. | 10 RU/s<br>**Poznámka:** Toto minimum se dá snížit, pokud je váš účet způsobilý pro náš [program vysokého úložiště/nízké propustnosti](set-throughput.md#high-storage-low-throughput-program) . |
 
 > [!NOTE]
 > Další informace o osvědčených postupech pro správu úloh, které mají klíče oddílů vyžadující vyšší limity pro úložiště nebo propustnost, najdete v tématu [Vytvoření syntetického klíče oddílu](synthetic-partition-keys.md).
@@ -60,7 +60,7 @@ Pokud chcete odhadnout minimální propustnost vyžadovanou kontejnerem s ručn�
 
 Příklad: Předpokládejme, že máte zřízen kontejner s 400 RU/s a úložištěm 0 GB. Zvýšíte propustnost na 50 000 RU/s a naimportujete 20 GB dat. Minimální RU/s je teď `MAX(400, 20 * 10 RU/s per GB, 50,000 RU/s / 100)` = 500 ru/s. V průběhu času se úložiště zvětšuje na 200 GB. Minimální RU/s je teď `MAX(400, 200 * 10 RU/s per GB, 50,000 / 100)` = 2000 ru/s. 
 
-**Poznámka:** Pokud Váš kontejner nebo databáze obsahuje více než 1 TB dat, může mít váš účet nárok na náš [program "vysokorychlostní úložiště/nízká propustnost"](set-throughput.md#high-storage-low-throughput-program).
+**Poznámka:** minimální propustnost 10 ru/s za GB úložiště se dá snížit, pokud je váš účet způsobilý pro náš [program vysokého úložiště/nízké propustnosti](set-throughput.md#high-storage-low-throughput-program).
 
 #### <a name="minimum-throughput-on-shared-throughput-database"></a>Minimální propustnost u sdílené databáze propustnosti 
 Pokud chcete odhadnout minimální propustnost vyžadovanou pro sdílenou databázi propustnosti s ruční propustností, najděte maximum z těchto hodnot:
@@ -72,7 +72,7 @@ Pokud chcete odhadnout minimální propustnost vyžadovanou pro sdílenou datab�
 
 Příklad: Předpokládejme, že máte zřízenou databázi s 400 RU/s, 15 GB úložiště a 10 kontejnery. Minimální RU/s je `MAX(400, 15 * 10 RU/s per GB, 400 / 100, 400 + 0 )` = 400 ru/s. Pokud v databázi existovalo 30 kontejnerů, minimální RU/s by byla `400 + MAX(30 - 25, 0) * 100 RU/s` = 900 ru/s. 
 
-**Poznámka:** Pokud Váš kontejner nebo databáze obsahuje více než 1 TB dat, může mít váš účet nárok na náš [program "vysokorychlostní úložiště/nízká propustnost"](set-throughput.md#high-storage-low-throughput-program).
+**Poznámka:** minimální propustnost 10 ru/s za GB úložiště se dá snížit, pokud je váš účet způsobilý pro náš [program vysokého úložiště/nízké propustnosti](set-throughput.md#high-storage-low-throughput-program).
 
 V části Souhrn jsou zde uvedená minimální omezení pro podávání RU. 
 

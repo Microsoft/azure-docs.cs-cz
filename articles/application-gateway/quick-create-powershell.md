@@ -6,25 +6,25 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 08/27/2020
+ms.date: 01/19/2021
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 3f64086ed97594416b5964cf648c857c2f271480
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8073d1e18b08a6deb0175f8eaf18de382e93e299
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91331093"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601850"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway-using-azure-powershell"></a>Rychlý Start: směrování webového provozu pomocí Azure Application Gateway pomocí Azure PowerShell
 
 V tomto rychlém startu použijete Azure PowerShell k vytvoření aplikační brány. Pak ho otestujete, abyste se ujistili, že funguje správně. 
 
-Aplikační brána směruje webový provoz aplikace do konkrétních prostředků ve fondu back-end. Posluchačům přiřadíte porty, vytvoříte pravidla a přidáte prostředky do back-endového fondu. V zájmu zjednodušení Tento článek používá jednoduché nastavení s veřejnou front-end IP adresou, základní naslouchací proces, který hostuje jednu lokalitu v aplikační bráně, pravidlo základního směrování požadavku a dva virtuální počítače ve fondu back-end.
+Aplikační brána směruje webový provoz aplikace do konkrétních prostředků ve fondu back-end. Posluchačům přiřadíte porty, vytvoříte pravidla a přidáte prostředky do back-endového fondu. V zájmu zjednodušení Tento článek používá jednoduché nastavení s veřejnou front-end IP adresou, základní naslouchací proces pro hostování jedné lokality na aplikační bráně, pravidla základního směrování požadavku a dva virtuální počítače ve fondu back-end.
 
 Tento rychlý Start můžete také dokončit pomocí [Azure CLI](quick-create-cli.md) nebo [Azure Portal](quick-create-portal.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Azure PowerShell verze 1.0.0 nebo novější](/powershell/azure/install-az-ps) (Pokud Azure PowerShell spustíte místně).
@@ -48,7 +48,7 @@ New-AzResourceGroup -Name myResourceGroupAG -Location eastus
 ```
 ## <a name="create-network-resources"></a>Vytvoření síťových prostředků
 
-Aby mohl Azure komunikovat mezi prostředky, které vytvoříte, potřebuje virtuální síť.  Podsíť aplikační brány může obsahovat jenom aplikační brány. Žádné další prostředky nejsou povoleny.  Můžete buď vytvořit novou podsíť pro Application Gateway nebo použít stávající. V tomto příkladu vytvoříte v tomto příkladu dvě podsítě: jednu pro aplikační bránu a druhou pro back-end servery. IP adresu front-endu Application Gateway můžete nakonfigurovat tak, aby byla veřejná nebo soukromá jako na základě vašeho případu použití. V tomto příkladu zvolíte veřejnou front-end IP adresu.
+Aby mohl Azure komunikovat mezi prostředky, které vytvoříte, potřebuje virtuální síť.  Podsíť aplikační brány může obsahovat jenom aplikační brány. Žádné další prostředky nejsou povoleny.  Můžete buď vytvořit novou podsíť pro Application Gateway nebo použít stávající. V tomto příkladu vytvoříte dvě podsítě: jednu pro aplikační bránu a druhou pro back-end servery. Můžete nakonfigurovat IP adresu front-endu Application Gateway tak, aby byla veřejná nebo soukromá, podle vašeho případu použití. V tomto příkladu zvolíte veřejnou IP adresu front-endu.
 
 1. Vytvořte konfigurace podsítě pomocí `New-AzVirtualNetworkSubnetConfig` .
 2. Vytvořte virtuální síť s konfiguracemi podsítí pomocí `New-AzVirtualNetwork` . 
@@ -81,7 +81,7 @@ New-AzPublicIpAddress `
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>Vytvoření konfigurací IP adres a front-endového portu
 
 1. Použijte `New-AzApplicationGatewayIPConfiguration` k vytvoření konfigurace, která přidruží podsíť, kterou jste vytvořili s aplikační bránou. 
-2. Použijte `New-AzApplicationGatewayFrontendIPConfig` k vytvoření konfigurace, která přiřadí veřejnou IP adresu, kterou jste předtím vytvořili ve službě Application Gateway. 
+2. Použijte `New-AzApplicationGatewayFrontendIPConfig` k vytvoření konfigurace, která přiřadí veřejnou IP adresu, kterou jste předtím vytvořili pro aplikační bránu. 
 3. Použijte `New-AzApplicationGatewayFrontendPort` k přiřazení portu 80 pro přístup k aplikační bráně.
 
 ```azurepowershell-interactive
@@ -101,7 +101,7 @@ $frontendport = New-AzApplicationGatewayFrontendPort `
 
 ### <a name="create-the-backend-pool"></a>Vytvoření back-endového fondu
 
-1. Slouží `New-AzApplicationGatewayBackendAddressPool` k vytvoření back-end fondu pro aplikační bránu. Back-end fond bude nyní prázdný. Při vytváření síťových karet serveru back-end v následující části je přidáte do fondu back-end.
+1. Slouží `New-AzApplicationGatewayBackendAddressPool` k vytvoření back-end fondu pro aplikační bránu. Back-end fond je nyní prázdný. Při vytváření síťových karet serveru back-end v následující části je přidáte do fondu back-end.
 2. Nakonfigurujte nastavení pro fond back-end pomocí `New-AzApplicationGatewayBackendHttpSetting` .
 
 ```azurepowershell-interactive
@@ -164,7 +164,9 @@ New-AzApplicationGateway `
 
 ### <a name="backend-servers"></a>Back-endové servery
 
-Teď, když jste vytvořili Application Gateway, vytvořte back-end virtuální počítače, které budou hostovat weby. Back-end se může skládat z síťových adaptérů, virtuálních počítačů a virtuálních IP adres, interních IP adres, plně kvalifikovaných názvů domény (FQDN) a back-endu s více klienty, jako je Azure App Service. V tomto příkladu vytvoříte dva virtuální počítače pro Azure, které budou používat jako servery back-end pro službu Application Gateway. Nainstalujete také službu IIS na virtuální počítače a ověříte tak, že Azure úspěšně vytvořil Aplikační bránu.
+Teď, když jste vytvořili Application Gateway, vytvořte back-end virtuální počítače, které budou hostovat weby. Back-end se může skládat ze síťových adaptérů, virtuálních počítačů s měřítkem, veřejné IP adresy, interní IP adresy, plně kvalifikovaných názvů domény (FQDN) a back-endu s více klienty, jako je Azure App Service. 
+
+V tomto příkladu vytvoříte dva virtuální počítače, které budou sloužit jako servery back-end pro aplikační bránu. Nainstalujete také službu IIS na virtuální počítače a ověříte tak, že Azure úspěšně vytvořil Aplikační bránu.
 
 #### <a name="create-two-virtual-machines"></a>Vytvoření dvou virtuálních počítačů
 
@@ -173,7 +175,7 @@ Teď, když jste vytvořili Application Gateway, vytvořte back-end virtuální 
 3. Vytvořte konfiguraci virtuálního počítače pomocí `New-AzVMConfig` .
 4. Vytvořte virtuální počítač pomocí `New-AzVM` .
 
-Když spustíte následující ukázku kódu pro vytvoření virtuálních počítačů, Azure vás vyzve k zadání přihlašovacích údajů. Jako uživatelské jméno a heslo zadejte *azureuser* :
+Když spustíte následující ukázku kódu pro vytvoření virtuálních počítačů, Azure vás vyzve k zadání přihlašovacích údajů. Zadejte uživatelské jméno a heslo:
     
 ```azurepowershell-interactive
 $appgw = Get-AzApplicationGateway -ResourceGroupName myResourceGroupAG -Name myAppGateway
@@ -224,7 +226,9 @@ for ($i=1; $i -le 2; $i++)
 
 ## <a name="test-the-application-gateway"></a>Otestování aplikační brány
 
-I když služba IIS není nutná k vytvoření aplikační brány, nainstalovali jste se v tomto rychlém startu, abyste ověřili, jestli Azure úspěšně vytvořil Aplikační bránu. Použijte službu IIS k otestování služby Application Gateway:
+I když služba IIS není nutná k vytvoření služby Application Gateway, nainstalujete ji v tomto rychlém startu, abyste ověřili, jestli Azure úspěšně vytvořil Aplikační bránu.
+
+Použijte službu IIS k otestování služby Application Gateway:
 
 1. Spuštěním `Get-AzPublicIPAddress` Získejte veřejnou IP adresu aplikační brány. 
 2. Zkopírujte veřejnou IP adresu a vložte ji do adresního řádku prohlížeče. Když aktualizujete prohlížeč, měl by se zobrazit název virtuálního počítače. Platná odpověď ověří, že se služba Application Gateway úspěšně vytvořila, a může se úspěšně připojit k back-endu.

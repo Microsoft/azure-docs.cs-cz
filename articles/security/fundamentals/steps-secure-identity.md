@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: 4703a76ff0a0b55a438f9f0d164cd7f2d3242a02
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: ffc5bafca305086b0c524c76eb91b8aec2e2655d
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842018"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602439"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Pět kroků pro zabezpečení infrastruktury identity
 
@@ -81,7 +81,7 @@ Pomocí [PowerShellu můžete zabránit vypršení platnosti hesel](../../active
 
 Pokud vaše organizace používá řešení hybridní identity s předávacím ověřováním nebo federaci, měli byste povolit synchronizaci hodnot hash hesel z následujících dvou důvodů:
 
-* Zpráva [Uživatelé s nevrácenými přihlašovacími údaji](../../active-directory/identity-protection/overview-identity-protection.md) ve správě Azure AD vás upozorní na páry uživatelské jméno a heslo, které jsou vystavené na "tmavém webu". Nenáročné množství hesel se nevrací prostřednictvím útoků phishing, malwaru a hesla na webech třetích stran, které jsou později porušené. Společnost Microsoft nalezne mnoho z těchto nevrácených přihlašovacích údajů a oznámí vám v této sestavě, jestli se shodují s přihlašovacími údaji ve vaší organizaci – ale jenom v případě, že jste [povolili synchronizaci hodnot hash hesel](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md).
+* Zpráva [Uživatelé s nevrácenými přihlašovacími údaji](../../active-directory/identity-protection/overview-identity-protection.md) ve správě Azure AD vás upozorní na páry uživatelské jméno a heslo, které jsou vystavené na "tmavém webu". Nenáročné množství hesel se nevrací prostřednictvím útoků phishing, malwaru a hesla na webech třetích stran, které jsou později porušené. Společnost Microsoft nalezne mnoho z těchto nevrácených přihlašovacích údajů a upozorní vás v této sestavě, pokud se shodují s přihlašovacími údaji ve vaší organizaci – ale jenom v případě, že [povolíte synchronizaci hodnot hash hesel](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md) nebo máte jenom cloudové identity.
 * V případě výpadku místního výpadku (například při útoku ransomwarem) můžete přepínat na použití [cloudového ověřování pomocí synchronizace hodnot hash hesel](../../active-directory/hybrid/choose-ad-authn.md). Tato metoda ověřování záloh vám umožní pokračovat v přístupu k aplikacím nakonfigurovaným pro ověřování pomocí Azure Active Directory, včetně Microsoft 365. V takovém případě se pracovníci IT nebudou muset oddělit k osobním e-mailovým účtům, aby mohli sdílet data, dokud nedojde k vyřešení místního výpadku.
 
 Přečtěte si další informace o tom, jak funguje [synchronizace hodnot hash hesel](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md) .
@@ -199,7 +199,7 @@ Azure AD poskytuje správcům možnost spravovat přístup k prostředkům pomoc
 
 Pomocí kontrol [přístupu ke službě Azure AD](../../active-directory/governance/access-reviews-overview.md)můžete spravovat přístup k balíčku a členství ve skupinách, přístup k podnikovým aplikacím a přiřazení privilegovaných rolí, abyste měli jistotu, že udržujete standard zabezpečení.  Vlastníci prohledí samy sebe, vlastníci prostředků a další kontroloři zajišťují, že uživatelé neuchovávají přístup po delší dobu, kdy je už nepotřebují.
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 Existuje mnoho aspektů zabezpečení infrastruktury identity, ale tento kontrolní seznam s pěti kroky vám pomůže rychle provést bezpečnější a zabezpečenou infrastrukturu identity:
 

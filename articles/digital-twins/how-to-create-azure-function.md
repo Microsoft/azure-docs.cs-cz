@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6c4f23406c97d647002fbb3ab4a3544866303cf4
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 6f74f973abc33d809624bd8abd5a514a52ccfe70
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051339"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602693"
 ---
 # <a name="connect-function-apps-in-azure-for-processing-data"></a>Připojení aplikací Function App v Azure pro zpracování dat
 
@@ -27,7 +27,7 @@ Tady je přehled kroků, které obsahuje:
 1. Vytvoření projektu Azure Functions v sadě Visual Studio
 2. Zápis funkce s triggerem [Event Grid](../event-grid/overview.md)
 3. Přidání ověřovacího kódu do funkce (aby bylo možné získat přístup k digitálním Vlákenám Azure)
-4. Publikování aplikace Function App do Azure
+4. Publikování aplikace funkcí do Azure
 5. Nastavení přístupu [zabezpečení](concepts-security.md) pro aplikaci Function App
 
 ## <a name="prerequisite-set-up-azure-digital-twins-instance"></a>Předpoklad: nastavení instance digitálních vláken Azure
@@ -63,24 +63,20 @@ Aby bylo možné použít sadu SDK, budete muset do svého projektu zahrnout ná
 To můžete provést tak, že kliknete pravým tlačítkem na projekt a v seznamu vyberete _Spravovat balíčky NuGet_ . Pak v okně, které se otevře, vyberte _Procházet_ kartu a vyhledejte následující balíčky. Vyberte _nainstalovat_ a _přijměte_ licenční smlouvu pro instalaci balíčků.
 
 * `Azure.DigitalTwins.Core`
-* `Azure.Identity` 
-
-Pro konfiguraci kanálu Azure SDK pro správné nastavení pro Azure Functions budete potřebovat taky následující balíčky. Pokud chcete nainstalovat všechny balíčky, opakujte stejný postup jako výše.
-
+* `Azure.Identity`
 * `System.Net.Http`
-* `Azure.Core.Pipeline`
+* `Azure.Core`
 
 **Možnost 2. Přidat balíčky pomocí `dotnet` nástroje příkazového řádku:**
 
 Alternativně můžete použít následující `dotnet add` příkazy v nástroji příkazového řádku:
-```cmd/sh
-dotnet add package System.Net.Http
-dotnet add package Azure.Core.Pipeline
-```
 
-Pak přidejte do svého projektu dvě další závislosti, které budete potřebovat pro práci s digitálními úkoly Azure pomocí digitálních vláken. Pomocí níže uvedených odkazů můžete přejít k balíčkům v NuGet, kde můžete najít příkazy konzoly (včetně rozhraní .NET CLI) a přidat do projektu nejnovější verzi.
- * [**Azure. DigitalTwins. Core**](https://www.nuget.org/packages/Azure.DigitalTwins.Core). Toto je balíček pro [sadu Azure Digital Revlákens SDK pro .NET](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true).
- * [**Azure. identity**](https://www.nuget.org/packages/Azure.Identity). Tato knihovna poskytuje nástroje, které vám pomůžou s ověřováním v Azure.
+```cmd/sh
+dotnet add package Azure.DigitalTwins.Core
+dotnet add package Azure.Identity
+dotnet add package System.Net.Http
+dotnet add package Azure.Core
+```
 
 Potom ve Visual Studiu Průzkumník řešení otevřete soubor _Function.cs_ , kde máte vzorový kód a přidejte následující příkazy _using_ do funkce. 
 
@@ -110,7 +106,7 @@ Po těchto změnách bude kód vaší funkce podobný následujícímu:
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs":::
 
-## <a name="publish-the-function-app-to-azure"></a>Publikování aplikace Function App do Azure
+## <a name="publish-the-function-app-to-azure"></a>Publikování aplikace funkcí do Azure
 
 Pokud chcete projekt publikovat do aplikace Function App v Azure, klikněte pravým tlačítkem na projekt funkce (ne řešení) v Průzkumník řešení a zvolte **publikovat**.
 
@@ -154,7 +150,7 @@ Pomocí následujícího příkazu vytvořte identitu spravovanou systémem. Poz
 ```azurecli-interactive 
 az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>   
 ```
-Pomocí hodnoty _principalId_ v následujícím příkazu přiřaďte identitě aplikace funkcí do role _vlastníka dat digitálních vláken Azure_ pro vaši instanci digitálních vláken Azure.
+Pomocí hodnoty _principalId_ v následujícím příkazu přiřaďte identitu aplikace funkcí roli _Vlastník dat služby Azure Digital Twins_ pro vaši instanci Azure Digital Twins.
 
 ```azurecli-interactive 
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Data Owner"

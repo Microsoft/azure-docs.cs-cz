@@ -7,18 +7,18 @@ ms.custom: subject-cost-optimization
 ms.service: cognitive-services
 ms.topic: how-to
 ms.date: 12/15/2020
-ms.openlocfilehash: 4fe06edbb3e02f23ef56a3e7fff848682e36e3af
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 925a092eb67fa459213a37df0fc6b3f7a1b8a0fb
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251314"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602367"
 ---
 # <a name="plan-and-manage-costs-for-azure-cognitive-services"></a>Plánování a Správa nákladů pro Azure Cognitive Services
 
 Tento článek popisuje, jak plánujete a spravovat náklady na Azure Cognitive Services. Nejprve pomocí cenové kalkulačky Azure pomůže naplánovat náklady na Cognitive Services před tím, než přidáte jakékoli prostředky pro službu, abyste mohli odhadnout náklady. V dalším kroku můžete při přidávání prostředků Azure zkontrolovat odhadované náklady. Po zahájení práce s prostředky Cognitive Services (například řeč, Počítačové zpracování obrazu, LUIS, Analýza textu, překladatel atd.) pomocí Cost Management funkcí nastavte rozpočty a sledujte náklady. Můžete si také projít předpokládané náklady a identifikovat trendy útraty, které identifikují oblasti, kde můžete chtít pracovat. Náklady na Cognitive Services jsou jenom částí měsíčních nákladů na faktuře Azure. I když tento článek vysvětluje, jak naplánovat a spravovat náklady na Cognitive Services, účtují se vám všechny služby a prostředky Azure, které se používají ve vašem předplatném Azure, včetně služeb třetích stran.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Analýza nákladů v Cost Management podporuje většinu typů účtů Azure, ale ne všechny. Úplný seznam podporovaných typů účtů si můžete prohlédnout v článku [Vysvětlení dat služby Cost Management](../cost-management-billing/costs/understand-cost-mgt-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn). K zobrazení dat o nákladech potřebujete alespoň oprávnění ke čtení pro účet Azure. Informace o přiřazování přístupu k datům služby Azure Cost Management najdete v článku [Přiřazení přístupu k datům](../cost-management/assign-access-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
 
@@ -60,9 +60,9 @@ Po odstranění prostředků QnA Maker můžou dál existovat následující pro
 - [Azure App Service (pro modul runtime)](https://azure.microsoft.com/pricing/details/app-service/)
 - [Kognitivní hledání Azure (pro data)](https://azure.microsoft.com/pricing/details/search/)
 
-### <a name="using-monetary-credit-with-cognitive-services"></a>Použití peněžního kreditu s Cognitive Services
+### <a name="using-azure-prepayment-credit-with-cognitive-services"></a>Použití předplacených kreditů Azure s Cognitive Services
 
-Můžete platit za Cognitive Services poplatky s kreditem peněžního závazku EA. Nemůžete ale použít kredit peněžních závazků EA na platby za poplatky za produkty a služby třetích stran, včetně těch, které jsou Azure Marketplace.
+Za poplatky za Cognitive Services můžete platit pomocí kreditu služby Azure (dříve nazývaného peněžního závazku). Nemůžete však použít kredit plateb Azure k placení poplatků za produkty a služby třetích stran, včetně těch, které jsou z Azure Marketplace.
 
 ## <a name="create-budgets"></a>Tvorba rozpočtů
 

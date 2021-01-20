@@ -1,5 +1,5 @@
 ---
-title: Vytvoření sdílené složky NFS – soubory Azure
+title: Vytvoření sdílené složky NFS – soubory Azure (Preview)
 description: Naučte se, jak vytvořit sdílenou složku Azure, kterou je možné připojit pomocí protokolu síťového systému souborů.
 author: roygara
 ms.service: storage
@@ -8,12 +8,12 @@ ms.date: 12/04/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 3cf22ee22c35b850aff33290a59a7043bb57c984
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 323eed77d6f7a6ccfcdd0a7c7aecff3a125300dc
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620936"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602669"
 ---
 # <a name="how-to-create-an-nfs-share"></a>Postup vytvoření sdílené složky systému souborů NFS
 
@@ -27,7 +27,7 @@ Sdílené složky Azure jsou plně spravované sdílené složky, které jsou v 
 
 [!INCLUDE [files-nfs-regional-availability](../../../includes/files-nfs-regional-availability.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Vytvořte [účet úložiště](storage-how-to-create-premium-fileshare.md).
 

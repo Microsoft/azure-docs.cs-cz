@@ -1,18 +1,18 @@
 ---
-title: Získání podpory pro portál komerčního tržiště v partnerském centru
-description: Seznamte se s možnostmi podpory v partnerském centru, včetně postupu zapracování žádosti o podporu.
+title: Podpora programu pro komerční tržiště v partnerském centru
+description: Seznamte se s možnostmi podpory pro komerční program Marketplace v partnerském centru, včetně postupu při zapracování žádosti o podporu.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: navits09
 ms.author: navits
-ms.date: 01/14/2020
-ms.openlocfilehash: 8979a94ee63ef50c0a3abacd5ab3515226200131
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.date: 01/19/2020
+ms.openlocfilehash: 6075027124352746a3adbb8f6937d3787eb22b9d
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183434"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602591"
 ---
 # <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>Podpora programu komerčního tržiště v partnerském centru
 
@@ -22,60 +22,43 @@ Společnost Microsoft poskytuje podporu pro širokou škálu produktů a služeb
 - Pokud jste Vydavatel a zjistili jste problémy se zabezpečením aplikace spuštěné v Azure, přečtěte si téma [Jak protokolovat lístek podpory událostí zabezpečení](/azure/security/fundamentals/event-support-ticket). Vydavatelé musí ohlásit podezřelé události zabezpečení, včetně bezpečnostních incidentů a ohrožení zabezpečení jejich Azure Marketplace softwaru a služeb, a to nejdřívějším příležitostí.
 - Pokud jste Vydavatel a máte dotaz týkající se vaší aplikace nebo služby, Projděte si následující možnosti podpory.
 
-## <a name="support-options-for-publishers"></a>Možnosti podpory pro vydavatele
+## <a name="get-help-or-open-a-support-ticket"></a>Získání pomoci nebo otevření lístku podpory
 
-1. Přihlaste se k [programu komerčního obchodu v partnerském centru](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) pomocí pracovního účtu (Pokud jste to ještě neudělali, budete muset [vytvořit účet partnerského centra](partner-center-portal/create-account.md).
+1. Přihlaste se pomocí svého pracovního účtu. Pokud jste to ještě neudělali, budete muset [vytvořit účet partnerského centra](partner-center-portal/create-account.md).
 
-2. V horní nabídce na pravé straně stránky vyberte ikonu **Podpora** .
+1. V nabídce v pravém horním rohu stránky vyberte ikonu **Podpora** . Podokno **pomoc a podpora** se zobrazí na pravé straně stránky.
 
-3. Podokno **pomoc a podpora** se zobrazí na pravé straně stránky.
+1. Pokud chcete získat nápovědu k komerčnímu tržišti, vyberte **komerční tržiště**.
 
    ![Rozevírací nabídka podpora](./media/support/commercial-marketplace-support-pane.png)
 
-    Nebo přejít do podokna **domovské stránky** a vybrat **pomoc a podpora**.
+1. V poli **Shrnutí problému** zadejte stručný popis problému.
 
-   ![Pomoc a podpora z domovské stránky](./media/support/homepage-help-support.png)
+1. V poli **typ problému** proveďte jednu z následujících akcí:
 
-4. Vyberte **[dokumentaci](../index.yml)** a Projděte si kompletní odpovědi na otázky a prostředky.
+    - **Možnost 1**: zadejte klíčová slova, jako je: Marketplace, aplikace Azure, nabídka SaaS, Správa účtů, Správa zájemců, problém nasazení, výběr nebo spoluprodejní nabídka. Pak z doporučeného seznamu vyberte typ problému.
 
-5. Vyberte **[Fórum Komunitní fórum na webu Marketplace](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)** a odpovězte na své otázky tím, že využijete znalosti jiných vydavatelů Microsoftu.
+    - **Možnost 2**: vyberte **Procházet témata** v seznamu **kategorie** a pak vyberte **komerční tržiště**. Pak vyberte příslušné **téma** a dílčí **téma**.
 
-6. Vyberte **[Další pomoc](https://aka.ms/marketplacepublishersupport)** pro otevření nového lístku **žádosti o podporu** .  
+1. Po nalezení vybraného tématu vyberte možnost **Zkontrolovat řešení**.
 
-## <a name="how-to-open-a-support-ticket"></a>Postup otevření lístku podpory
+    ![Další krok](./media/support/next-step.png)
 
-Teď jste připraveni otevřít lístek podpory na obrazovce **pomoc a podpora** .
+Zobrazí se následující možnosti:
 
-![Nápověda a podpora](./media/support/help-and-support.png)
+- Pokud chcete vybrat jiné téma, klikněte na **vybrat jiný problém**.
+- Pokud chcete problém vyřešit, Projděte si doporučené kroky a dokumenty, pokud jsou k dispozici.
 
->[!Note]
->Pokud jste se přihlásili v partnerském centru, získáte lepší zkušenosti s podporou.
+    ![Doporučená řešení](./media/support/recommended-solutions.png)
 
-**Možnost 1:** Zadejte klíčová slova, jako je: Marketplace, aplikace Azure, nabídka SaaS, Správa účtů, Správa zájemců, problém nasazení, výběr atd.
-
-**Možnost 2:** Témata procházení – > vybrat **kategorii** = komerční marketplace – > vyberte příslušné **téma** a pak dílčí **téma**.
-
-Jakmile zjistíte, že jste si vybrali téma, vyberte **Zkontrolovat řešení**.
-
-![Další krok](./media/support/next-step.png)
-
-Budou k dispozici následující možnosti:
-
-- Pokud chcete vybrat jiné téma, vyberte v části **vybraný problém** jiný odkaz na téma.
-- Zkontrolujte popis tohoto problému, pokud je k dispozici.  Je to text zobrazený výše **doporučenými kroky**.
-- Zkontrolujte **Doporučené kroky**, pokud jsou k dispozici.
-- Zkontrolujte **Doporučené dokumenty**, pokud jsou k dispozici.
-
-![Doporučená řešení](./media/support/recommended-solutions.png)
-
-Pokud nemůžete najít odpověď v **doporučených řešeních**, vyberte **zadat podrobnosti o problému**. Dokončete všechna povinná pole pro urychlení procesu řešení a pak vyberte **Odeslat**.
+Pokud nemůžete najít odpověď v svépomocné nápovědě, vyberte možnost **poskytnout podrobnosti o problému**. Dokončete všechna povinná pole pro urychlení procesu řešení a pak vyberte **Odeslat**.
 
 >[!Note]
->Pokud jste přihlášeni do partnerského centra a téma vyžaduje ověření, budete požádáni o přihlášení, než bude možné pokračovat.  Pro veřejná témata není ověřování nutné.
+>Pokud jste se přihlásili k partnerskému centru, budete se možná muset přihlásit, než budete moct vytvořit lístek.
 
 ## <a name="track-your-existing-support-requests"></a>Sledování stávajících žádostí o podporu
 
-Pokud chcete zkontrolovat všechny otevřené a uzavřené lístky, na levém navigačním panelu klikněte na **komerční Marketplace** a pak vyberte **Podpora**.
+Pokud chcete zkontrolovat otevřené a uzavřené lístky, vyberte v levé navigační nabídce možnost Podpora **komerčního tržiště**  >  .
 
 ## <a name="record-issue-details-with-a-har-file"></a>Záznam detailů problému se souborem HAR
 

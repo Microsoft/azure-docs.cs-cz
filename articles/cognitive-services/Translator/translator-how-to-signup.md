@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: a9050b85c974a3c04ca717e8fe3d5188c1bf7a40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6773c6b29ecfd8354c54a6214cfe0b4050edcd38
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88244308"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602653"
 ---
 # <a name="how-to-sign-up-for-translator"></a>Jak se zaregistrovat k překladateli
 
@@ -41,7 +41,7 @@ Po přihlášení k portálu můžete vytvořit odběr pro překladatele násled
 Při registraci k překladateli získáte vlastní přizpůsobený přístupový klíč, který je jedinečný pro vaše předplatné. Tento klíč je požadován při každém volání překladatele.
 
 1. Načtěte ověřovací klíč tak, že nejdřív vyberete příslušné předplatné.
-1. V části **Správa prostředků** v podrobnostech o vašem předplatném vyberte **klíče** .
+1. V části **Správa prostředků** v podrobnostech o vašem předplatném vyberte **klíče a koncový bod** .
 1. Zkopírujte jeden z klíčů uvedených pro vaše předplatné.
 
 ## <a name="learn-test-and-get-support"></a>Naučte se, testujte a získáte podporu.
@@ -59,7 +59,7 @@ Microsoft Translator bude obecně moci předem předat vaše první pár požada
 
 Pomocí vlastního překladatele můžete přizpůsobit svoje překlady a vytvořit systém překladu, který se vyladěný na vlastní terminologii a styl, počínaje obecnými systémy Microsoft Translator neuronové machine translation. [Další informace](customization.md)
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [Začínáme s Azure (3 – minutové video)](https://azure.microsoft.com/get-started/?b=16.24)
 - [Jak platit pomocí faktury](https://azure.microsoft.com/pricing/invoicing/)

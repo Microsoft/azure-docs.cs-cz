@@ -4,17 +4,17 @@ description: Naučte se používat Azure Queue Storage z Pythonu k vytváření 
 author: mhopkins-msft
 ms.author: mhopkins
 ms.reviewer: dineshm
-ms.date: 08/25/2020
+ms.date: 01/19/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
 ms.custom: seo-javascript-october2019, devx-track-python
-ms.openlocfilehash: e473bf5c2761010a6aeea94e6430d34ca34989fb
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 82d18fd79b10a8500cfd9191f143438d69fda401
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97588272"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600791"
 ---
 # <a name="how-to-use-azure-queue-storage-from-python"></a>Jak používat Azure Queue Storage z Pythonu
 
@@ -69,7 +69,7 @@ Alternativní metody instalace najdete v tématu [sada Azure SDK pro Python](htt
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-[`QueueService`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2)Objekt vám umožní pracovat s frontami. Následující kód vytvoří `QueueService` objekt. Do horní části každého souboru Pythonu, do kterého chcete programově přistupovat, přidejte následující kód Azure Storage:
+[`QueueService`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2&preserve-view=true)Objekt vám umožní pracovat s frontami. Následující kód vytvoří `QueueService` objekt. Do horní části každého souboru Pythonu, do kterého chcete programově přistupovat, přidejte následující kód Azure Storage:
 
 ```python
 from azure.storage.queue import (
@@ -127,7 +127,7 @@ Chcete-li vložit zprávu do fronty, použijte [`send_message`](/azure/developer
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-Chcete-li vložit zprávu do fronty, použijte [`put_message`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#put-message-queue-name--content--visibility-timeout-none--time-to-live-none--timeout-none-) metodu k vytvoření nové zprávy a jejímu přidání do fronty.
+Chcete-li vložit zprávu do fronty, použijte [`put_message`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2&preserve-view=true#put-message-queue-name--content--visibility-timeout-none--time-to-live-none--timeout-none-) metodu k vytvoření nové zprávy a jejímu přidání do fronty.
 
 ```python
 message = u"Hello, World"
@@ -167,7 +167,7 @@ Můžete prohlížet zprávy bez jejich odebrání z fronty voláním [`peek_mes
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-Můžete prohlížet zprávy bez jejich odebrání z fronty voláním [`peek_messages`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#peek-messages-queue-name--num-messages-none--timeout-none-) metody. Ve výchozím nastavení tato metoda prohlédne jednu zprávu.
+Můžete prohlížet zprávy bez jejich odebrání z fronty voláním [`peek_messages`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2&preserve-view=true#peek-messages-queue-name--num-messages-none--timeout-none-) metody. Ve výchozím nastavení tato metoda prohlédne jednu zprávu.
 
 ```python
 messages = queue_service.peek_messages(queue_name)
@@ -190,7 +190,7 @@ Následující kód používá [`update_message`](/azure/developer/python/sdk/st
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-Následující kód používá [`update_message`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#update-message-queue-name--message-id--pop-receipt--visibility-timeout--content-none--timeout-none-) metodu k aktualizaci zprávy. Časový limit viditelnosti je nastavený na 0, což znamená, že se zpráva zobrazuje hned a obsah se aktualizuje.
+Následující kód používá [`update_message`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2&preserve-view=true#update-message-queue-name--message-id--pop-receipt--visibility-timeout--content-none--timeout-none-) metodu k aktualizaci zprávy. Časový limit viditelnosti je nastavený na 0, což znamená, že se zpráva zobrazuje hned a obsah se aktualizuje.
 
 ```python
 messages = queue_service.get_messages(queue_name)
@@ -214,7 +214,7 @@ Metoda [get_queue_properties](/azure/developer/python/sdk/storage/azure-storage-
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-[`get_queue_metadata`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#get-queue-metadata-queue-name--timeout-none-)Metoda vrátí vlastnosti fronty včetně `approximate_message_count` .
+[`get_queue_metadata`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2&preserve-view=true#get-queue-metadata-queue-name--timeout-none-)Metoda vrátí vlastnosti fronty včetně `approximate_message_count` .
 
 ```python
 metadata = queue_service.get_queue_metadata(queue_name)
@@ -238,7 +238,7 @@ Když zavoláte [receive_messages](/azure/developer/python/sdk/storage/azure-sto
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-Když zavoláte [get_messages](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#get-messages-queue-name--num-messages-none--visibility-timeout-none--timeout-none-), ve výchozím nastavení se ve frontě zobrazí další zpráva. Zpráva vrácená z `get_messages` se bude neviditelná pro jakýkoliv jiný kód, který čte zprávy z této fronty. Ve výchozím nastavení tato zpráva zůstává neviditelná po dobu 30 sekund. Chcete-li dokončit odebrání zprávy z fronty, je nutné také volat [delete_message](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#delete-message-queue-name--message-id--pop-receipt--timeout-none-).
+Když zavoláte [get_messages](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2&preserve-view=true#get-messages-queue-name--num-messages-none--visibility-timeout-none--timeout-none-), ve výchozím nastavení se ve frontě zobrazí další zpráva. Zpráva vrácená z `get_messages` se bude neviditelná pro jakýkoliv jiný kód, který čte zprávy z této fronty. Ve výchozím nastavení tato zpráva zůstává neviditelná po dobu 30 sekund. Chcete-li dokončit odebrání zprávy z fronty, je nutné také volat [delete_message](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2&preserve-view=true#delete-message-queue-name--message-id--pop-receipt--timeout-none-).
 
 ```python
 messages = queue_service.get_messages(queue_name)
@@ -260,7 +260,7 @@ Následující příklad kódu používá [`receive_messages`](/azure/developer/
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-Následující příklad kódu používá [`get_messages`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#get-messages-queue-name--num-messages-none--visibility-timeout-none--timeout-none-) metodu k získání 16 zpráv v jednom volání. Pak každou zprávu zpracuje pomocí `for` smyčky. Také se pro každou zprávu nastaví časový limit neviditelnosti 5 minut.
+Následující příklad kódu používá [`get_messages`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2&preserve-view=true#get-messages-queue-name--num-messages-none--visibility-timeout-none--timeout-none-) metodu k získání 16 zpráv v jednom volání. Pak každou zprávu zpracuje pomocí `for` smyčky. Také se pro každou zprávu nastaví časový limit neviditelnosti 5 minut.
 
 ```python
 messages = queue_service.get_messages(queue_name, num_messages=16, visibility_timeout=5*60)
@@ -282,7 +282,7 @@ Pokud chcete odstranit frontu a všechny zprávy, které jsou v ní obsažené, 
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-Pokud chcete odstranit frontu a všechny zprávy, které jsou v ní obsažené, zavolejte [`delete_queue`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#delete-queue-queue-name--fail-not-exist-false--timeout-none-) metodu.
+Pokud chcete odstranit frontu a všechny zprávy, které jsou v ní obsažené, zavolejte [`delete_queue`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2&preserve-view=true#delete-queue-queue-name--fail-not-exist-false--timeout-none-) metodu.
 
 ```python
 print("Deleting queue: " + queue_name)

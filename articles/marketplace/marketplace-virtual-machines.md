@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: 433875e52e77a8992197b47fe0424cd0b7e9f50c
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: d9e26b6388223ae252a5e85e6e9fb9783a3b8429
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628284"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600400"
 ---
 # <a name="how-to-plan-a-virtual-machine-offer"></a>Postup plánování nabídky virtuálního počítače
 
@@ -29,7 +29,7 @@ Proces navrhování, sestavování a testování nabídek trvá čas a vyžaduje
   - [Virtuální počítače s Linuxem](../virtual-machines/linux/tutorial-manage-vm.md)
   - [Virtuální počítače s Windows](../virtual-machines/windows/tutorial-manage-vm.md)
 
-- Ukázky
+- ukázky
   - [Ukázky v Azure CLI pro virtuální počítače se systémem Linux](../virtual-machines/linux/cli-samples.md)
   - [Azure PowerShell pro virtuální počítače se systémem Linux](../virtual-machines/linux/powershell-samples.md)
   - [Ukázky v Azure CLI pro virtuální počítače s Windows](../virtual-machines/windows/cli-samples.md)
@@ -73,7 +73,7 @@ Nabídka virtuálních počítačů vyžaduje aspoň jeden plán. Plán definuje
 Virtuální počítače jsou plně aktivní a využívají licenční modely (BYOL) s průběžnými platbami nebo s vlastními licencemi. Společnost Microsoft hostuje transakci obchodu a účtuje vaše zákazníky vaším jménem. Výhody používání upřednostňovaného platebního vztahu mezi zákazníkem a Microsoftem, včetně všech smluv Enterprise, získáte s výhodou. Další informace najdete v tématu [Možnosti Transact](./marketplace-commercial-transaction-capabilities-and-considerations.md)-The pro prodej na webu Marketplace.
 
 > [!NOTE]
-> Peněžní závazky spojené s smlouva Enterprise se dají použít k využití Azure vašeho virtuálního počítače, ale ne k licenčním poplatkům za software.
+> Předplatné Azure (dříve označované jako peněžní závazek), které je přidružené k smlouva Enterprise, se dá použít ve vašem VIRTUÁLNÍm počítači s využitím Azure, ale ne na licenční poplatky za software.
 
 ### <a name="licensing-options"></a>Možnosti licencování
 
@@ -115,7 +115,7 @@ Abyste mohli shromažďovat informace o zákaznících, musíte vaši nabídku p
 
 Připojení k CRM můžete kdykoli přidat nebo změnit během vytváření nabídky nebo po ní. Podrobné pokyny najdete v [zákaznických zákaznících z nabídky komerčních webů na webu Marketplace](partner-center-portal/commercial-marketplace-get-customer-leads.md).
 
-## <a name="legal-contracts"></a>Platné smlouvy
+## <a name="legal-contracts"></a>Právní smlouvy
 
 Pro zjednodušení procesu nákupu pro zákazníky a omezení právní složitosti pro dodavatele softwaru nabízí společnost Microsoft standardní kontrakt, který můžete použít pro vaše nabídky na komerčním webu Marketplace. Když nabízený software obdržíte na základě standardního kontraktu, zákazníci ho musí přečíst a přijmout jenom jednou a vy nemusíte vytvářet vlastní podmínky.
 

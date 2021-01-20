@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 81d9a6bcbd910a60e1f659e430bbe527eb3077c6
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 5be02ff698dac02d702e47f8929c6f8ddf2adbb7
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251739"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602543"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>Plánování a Správa nákladů na Azure Machine Learning
 
@@ -81,9 +81,9 @@ ws.delete(delete_dependent_resources=True)
 
 Pokud vytvoříte Azure Kubernetes Service (AKS) v pracovním prostoru nebo pokud k pracovnímu prostoru připojíte nějaké výpočetní prostředky, musíte je odstranit samostatně v [Azure Portal](https://portal.azure.com).
 
-### <a name="using-monetary-credit-with-azure-machine-learning"></a>Použití peněžního kreditu s Azure Machine Learning
+### <a name="using-azure-prepayment-credit-with-azure-machine-learning"></a>Použití předplacených kreditů Azure s Azure Machine Learning
 
-Můžete platit za Azure Machine Learning poplatky s kreditem peněžního závazku EA. Nemůžete ale použít kredit peněžních závazků EA na platby za poplatky za produkty a služby třetích stran, včetně těch, které jsou Azure Marketplace.
+Za poplatky za Azure Machine Learning můžete platit pomocí kreditu služby Azure (dříve nazývaného peněžního závazku). Předplatné Azure ale nemůžete použít k platbám za poplatky za produkty a služby třetích stran, včetně těch, které jsou Azure Marketplace.
 
 
 ## <a name="create-budgets"></a>Tvorba rozpočtů

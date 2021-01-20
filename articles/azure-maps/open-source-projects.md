@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 0f0d94dbc7b2c720faa1da41a88e3c3313dac377
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: df82e76fa2e5a9ea70c447411beafb8a2df9b036
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680752"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601590"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure Maps projekty open-source v komunitě
 
@@ -65,6 +65,12 @@ Následuje seznam open source projektů, které rozšiřuje možnosti Azure Maps
 | [Vzdálené řízení Azure Maps .NET UWP pro technologii IoT](https://github.com/Azure-Samples/azure-maps-dotnet-webgl-uwp-iot-remote-control) | Toto je ukázková aplikace, která ukazuje, jak sestavit vzdáleně řízenou mapu pomocí Azure Maps a služeb IoT Hub. |
 | [Implementace prostorové analýzy IoT s využitím Azure Maps](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing) | Sledování a zachytávání relevantních událostí, ke kterým dochází v prostoru a čase, je běžným scénářem IoT. |
 
+**Moduly plug-in pro mapové ovládací prvky třetích stran**
+
+| Název projektu | Popis |
+|-|-|
+| [Azure Maps modul plug-in pro leták](https://github.com/azure-samples/azure-maps-leaflet) | Modul plug-in pro [letáky](https://leafletjs.com/) JavaScriptu, který usnadňuje překrytí vrstev dlaždic ze [služeb Azure Maps dlaždice](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview). |
+ 
 **Nástroje a prostředky**
 
 | Název projektu | Popis |

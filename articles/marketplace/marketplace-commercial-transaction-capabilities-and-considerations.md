@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: d602687ea623b90ea5dcae4ece09a1ccc438ea57
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 5a2a7abf0227812826428557b86c4468f7693c82
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822382"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600395"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Možnosti Transact-The pro komerční web Marketplace
 
@@ -115,7 +115,7 @@ V tomto scénáři vám Microsoft účtuje $1,14 za hodinu pro použití publiko
 |Microsoft udržuje 100% nákladů na využití Azure. | $0,14 za hodinu |
 ||
 
-**Používání vlastní licence (BYOL)**
+**Přineste si vlastní licenci (BYOL)**
 
 BYOL má následující nákladovou strukturu:
 
@@ -160,7 +160,7 @@ V tomto scénáři Microsoft účtuje $100,00 pro softwarovou licenci a vyplatí
 
 **Kreditní karty a měsíční faktury** – zákazníci můžou také platit pomocí platební karty a faktury za měsíc. V takovém případě se vaše licenční poplatky za software účtují stejně jako smlouva Enterprise scénář, jako náklady na použití, oddělené od jakýchkoli nákladů na používání specifické pro Azure.
 
-**Bezplatné kredity a peněžní závazky** – někteří zákazníci si můžou Předplaťte Azure s peněžním závazkem v smlouva Enterprise nebo jste získali bezplatné kredity pro použití s Azure. I když se tyto kredity dají použít k placení za využití Azure, nedají se za licenční poplatky za software vydavatele použít.
+**Bezplatné kredity a předplacení Azure** – někteří zákazníci si vybírají platbu Azure pomocí předplacení Azure (dříve označované jako peněžní závazek) ve smlouva Enterprise nebo jste získali bezplatné kredity pro použití s Azure. I když se tyto kredity dají použít k placení za využití Azure, nedají se za licenční poplatky za software vydavatele použít.
 
 **Fakturace a kolekce** – fakturace na základě softwaru vydavatele se zobrazí při fakturaci vybrané zákazníkem a postupuje podle časové osy fakturace. Zákazníkům, kteří nemají smlouva Enterprise v místě, se účtují měsíčně pro licence na tržiště pro software Marketplace. Zákazníci s smlouva Enterprise se účtují měsíčně prostřednictvím faktury, která se prezentuje čtvrtletně.
 

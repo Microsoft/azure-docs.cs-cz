@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.date: 12/09/2020
-ms.openlocfilehash: ab772043c681684836e3c488419584d94dd0b45a
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: c7a0be6f1d402cc994532ab4bc5a5d0ea39bc8b7
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98220639"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599050"
 ---
 # <a name="plan-and-manage-costs-for-azure-synapse-analytics"></a>Plánování a Správa nákladů pro Azure synapse Analytics
 
@@ -48,9 +48,9 @@ Po odstranění prostředků Azure synapse můžou dál existovat následující
 
 - Data Lake Storage Gen2
 
-### <a name="using-monetary-credit-with-azure-synapse"></a>Použití peněžního kreditu s využitím Azure synapse 
+### <a name="using-azure-prepayment-credit-with-azure-synapse"></a>Používání předplacených kreditů Azure s Azure synapse 
 
-Poplatky za Azure synapse můžete zaplatit s kreditem peněžního závazku EA. Nemůžete ale použít kredit peněžních závazků EA na platby za poplatky za produkty a služby třetích stran, včetně těch, které jsou Azure Marketplace.
+Za poplatky za Azure synapse můžete platit pomocí kreditu za předplacenou službu Azure (dříve označovaný jako peněžní závazek). Nemůžete však použít kredit plateb Azure k placení poplatků za produkty a služby třetích stran, včetně těch, které jsou z Azure Marketplace.
 
 ## <a name="review-estimated-costs-in-the-azure-portal"></a>Zjištění odhadovaných nákladů na webu Azure Portal
 

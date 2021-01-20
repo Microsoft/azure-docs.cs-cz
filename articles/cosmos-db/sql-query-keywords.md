@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 07/29/2020
+ms.date: 01/20/2021
 ms.author: tisande
-ms.openlocfilehash: 35232f95bc18432db05775807d95f23ceab66aea
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 09148e65e446d723fbfe7a54602db59ee0739f83
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93333762"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599347"
 ---
 # <a name="keywords-in-azure-cosmos-db"></a>Klíčová slova v Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -107,6 +107,73 @@ Dotazy s agregovanou systémovou funkcí a poddotazem s `DISTINCT` nejsou podpor
 ```sql
 SELECT COUNT(1) FROM (SELECT DISTINCT f.lastName FROM f)
 ```
+
+## <a name="like"></a>LIKE
+
+Vrací logickou hodnotu v závislosti na tom, zda konkrétní řetězec znaků odpovídá zadanému vzoru. Vzor může obsahovat běžné znaky a zástupné znaky. Můžete psát logicky ekvivalentní dotazy pomocí `LIKE` klíčového slova nebo [RegexMatch](sql-query-regexmatch.md) systémové funkce. Můžete sledovat stejné využití indexu bez ohledu na to, kterou si zvolíte. Proto byste měli použít, `LIKE` Pokud dáváte přednost její syntaxi více než regulární výrazy.
+
+> [!NOTE]
+> Vzhledem `LIKE` k tomu, že může používat index, byste měli [vytvořit index rozsahu](indexing-policy.md) pro vlastnosti, které porovnáváte pomocí `LIKE` .
+
+Můžete použít následující zástupné znaky, jako například:
+
+| Zástupný znak | Popis                                                  | Příklad                                     |
+| -------------------- | ------------------------------------------------------------ | ------------------------------------------- |
+| %                    | Libovolný řetězec nula nebo více znaků                      | KDE c. Description jako "% SO% PS%"      |
+| _ (podtržítko)     | Libovolný jeden znak                                       | KDE c. Description jako "% SO_PS%"      |
+| [ ]                  | Libovolný jeden znak v zadaném rozsahu ([a-f]) nebo set ([abcdef]). | KDE c. Description jako "% SO [t-z] PS%"  |
+| [^]                  | Libovolný jeden znak, který není v zadaném rozsahu ([^ a-f]) nebo set ([^ abcdef]). | KDE c. Description jako "% SO [^ abc] PS%" |
+
+
+### <a name="using-like-with-the--wildcard-character"></a>Použití LIKE se zástupným znakem%
+
+`%`Znak odpovídá jakémukoli řetězci nula nebo více znaků. Například umístěním na `%` začátek a konec vzoru vrátí následující dotaz všechny položky s popisem, který obsahuje `fruit` :
+
+```sql
+SELECT *
+FROM c
+WHERE c.description LIKE "%fruit%"
+```
+
+Pokud jste `%` na začátku vzoru použili jenom znak, vrátili byste jenom položky s popisem, který se začal používat `fruit` :
+
+```sql
+SELECT *
+FROM c
+WHERE c.description LIKE "fruit%"
+```
+
+
+### <a name="using-not-like"></a>Použití NOT LIKE
+
+Následující příklad vrátí všechny položky s popisem, který neobsahuje `fruit` :
+
+```sql
+SELECT *
+FROM c
+WHERE c.description NOT LIKE "%fruit%"
+```
+
+### <a name="using-the-escape-clause"></a>Použití řídicí klauzule
+
+Můžete vyhledat vzory, které zahrnují jeden nebo více zástupných znaků pomocí řídicí klauzule. Například pokud jste chtěli Hledat popisy, které obsahovaly řetězec `20-30%` , nechcete interpretovat `%` jako zástupný znak.
+
+```sql
+SELECT *
+FROM c
+WHERE c.description LIKE '%20-30!%%' ESCAPE '!'
+```
+
+### <a name="using-wildcard-characters-as-literals"></a>Použití zástupných znaků jako literálů
+
+Zástupné znaky můžete v závorkách uzavřít, aby byly považovány za literální znaky. Když v hranatých závorkách uzavíráte zástupný znak, odeberete všechny speciální atributy. Tady je několik příkladů:
+
+| Vzor           | Význam |
+| ----------------- | ------- |
+| NAPŘÍKLAD "20-30 [%]" | 20-30%  |
+| LIKE "[_] n"     | _n      |
+| LIKE "[[]"    | [       |
+| LIKE "]"        | ]       |
 
 ## <a name="in"></a>IN
 

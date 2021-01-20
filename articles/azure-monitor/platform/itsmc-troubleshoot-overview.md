@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: 14f1056bf761eb7b591d04db34610468058bc255
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: 2ffe7c8994d32917a08896c7d25f20d4adf09066
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562844"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601901"
 ---
 # <a name="troubleshooting-problems-in-itsm-connector"></a>Řešení potíží v ITSM konektoru
 
@@ -53,11 +53,36 @@ Pokud používáte Service Map, můžete zobrazit položky oddělení služeb vy
      - Ujistěte se, že je webová aplikace úspěšně nasazená a že je vytvořené hybridní připojení. Pokud chcete ověřit, jestli se úspěšně navázalo připojení k místnímu Service Managermu počítači, přečtěte si adresu URL webové aplikace, jak je popsáno v dokumentaci pro vytvoření [hybridního připojení](./itsmc-connections-scsm.md#configure-the-hybrid-connection).  
 
 - Pokud se Log Analytics výstrahy aktivují, ale pracovní položky se nevytvoří v produktu ITSM, pokud se položky konfigurace nevytvoří/propojí s pracovními položkami nebo další informace, podívejte se na tyto zdroje:
-   -  ITSMC: řešení zobrazuje souhrn připojení, pracovních položek, počítačů a dalších. Vyberte dlaždici, která má popisek **stavu konektoru** . Provedete to tak, že přejdete do **protokolu hledání** pomocí příslušného dotazu. Další informace najdete v záznamech protokolu s `LogType_S` `ERROR` .
+   -  ITSMC: řešení zobrazuje [Souhrn připojení](itsmc-dashboard.md), pracovních položek, počítačů a dalších. Vyberte dlaždici, která má popisek **stavu konektoru** . Provedete to tak, že přejdete do **protokolu hledání** pomocí příslušného dotazu. Další informace najdete v záznamech protokolu s `LogType_S` `ERROR` .
+   Můžete zobrazit podrobnosti o zprávách v tabulce – [tady](itsmc-dashboard-errors.md).
    - Stránka **hledání v protokolu** : zobrazí chyby a související informace přímo pomocí dotazu `*ServiceDeskLog_CL*` .
 
-### <a name="troubleshoot-service-manager-web-app-deployment"></a>Řešení potíží s nasazením Service Manager Web App
+## <a name="common-symptoms---how-it-should-be-resolved"></a>Běžné příznaky – jak by se mělo vyřešit?
 
--   Pokud máte problémy s nasazením webové aplikace, ujistěte se, že máte oprávnění k vytváření a nasazování prostředků v rámci předplatného.
--   Pokud získáte **odkaz na objekt není nastaven na instanci objektu** při spuštění [skriptu](itsmc-service-manager-script.md), ujistěte se, že jste zadali platné hodnoty v části **Konfigurace uživatele** .
--   Pokud se vám nepodaří vytvořit obor názvů služby Service Bus Relay, ujistěte se, že je v předplatném registrovaný požadovaný poskytovatel prostředků. Pokud není zaregistrované, ručně vytvořte obor názvů služby Service Bus Relay z Azure Portal. Můžete ho také vytvořit při [vytváření hybridního připojení](./itsmc-connections-scsm.md#configure-the-hybrid-connection) v Azure Portal.
+Níže uvedený seznam obsahuje běžné příznaky a jejich řešení:
+
+* **Příznak**: jsou vytvořeny duplicitní pracovní položky.
+
+    **Příčina**: příčinou může být jedna ze dvou možností:
+    * Pro výstrahu je definována více než jedna akce ITSM.
+    * Upozornění je vyřešeno.
+
+    **Řešení**: může existovat dvě řešení:
+    * Ujistěte se, že máte jednu skupinu akcí ITSM na jednu výstrahu.
+    * Konektor ITSM nepodporuje aktualizaci stavu pracovních položek při vyřešení výstrahy. Je vytvořena nová vyřešená pracovní položka.
+* **Příznak**: pracovní položky nejsou vytvořeny.
+
+    **Příčina**: Tento příznak může být z několika důvodů:
+    * Úprava kódu na straně ServiceNow
+    * Nesprávná konfigurace oprávnění
+    * Omezení rychlosti ServiceNow jsou příliš vysoká/nízká.
+    * Platnost tokenu aktualizace vypršela.
+    * Konektor ITSM se odstranil.
+
+    **Řešení**: [řídicí panel](itsmc-dashboard.md) můžete zkontrolovat a zkontrolovat chyby v části stav konektoru. Projděte si [běžné chyby](itsmc-dashboard-errors.md) a zjistěte, jak chybu vyřešit.
+
+* **Příznak**: Nejde vytvořit akci ITSM pro skupinu akcí.
+
+    **Příčina**: u nově vytvořeného KONEKTORu ITSM se ještě dokončila počáteční synchronizace.
+
+    **Řešení**: můžete si prohlédnout [běžné chyby uživatelského rozhraní](itsmc-dashboard-errors.md#ui-common-errors) a zjistit, jak chybu vyřešit.

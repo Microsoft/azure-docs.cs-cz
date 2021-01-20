@@ -3,17 +3,17 @@ title: 'Rychlý Start: Klientská knihovna pro úložiště objektů BLOB v Azur
 description: Vytváření, odesílání a odstraňování objektů BLOB a kontejnerů v Node.js pomocí Azure Storage klientské knihovny v10 za účelem pro JavaScript
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 07/24/2020
+ms.date: 01/19/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 1f47c35997fe060fd3c318602bcad17de83b530c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2371c789b9e4a9fc70f4207fd8a634e419c97912
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91249616"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599446"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v10-sdk-in-nodejs"></a>Rychlý Start: Správa objektů BLOB pomocí sady JavaScript v10 za účelem SDK v Node.js
 
@@ -22,7 +22,7 @@ V tomto rychlém startu se naučíte spravovat objekty BLOB pomocí Node.js. Obj
 > [!NOTE]
 > V tomto rychlém startu se používá starší verze klientské knihovny pro úložiště objektů BLOB v Azure. Pokud chcete začít používat nejnovější verzi, přečtěte si téma [rychlý Start: Správa objektů BLOB pomocí sady JavaScript V12 SDK v Node.js](storage-quickstart-blobs-nodejs.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - Účet služby Azure Storage. [Vytvořte účet úložiště](../common/storage-account-create.md).
@@ -84,7 +84,7 @@ Container "demo" is deleted
 Done
 ```
 
-Pokud pro tento rychlý Start používáte nový účet úložiště, může se zobrazit jenom *ukázkový* kontejner uvedený pod popiskem*kontejnery:*.
+Pokud pro tento rychlý Start používáte nový účet úložiště, může se zobrazit jenom *ukázkový* kontejner uvedený pod popiskem *kontejnery:*.
 
 ## <a name="understanding-the-code"></a>Vysvětlení kódu
 
@@ -139,7 +139,7 @@ const ONE_MEGABYTE = 1024 * 1024;
 const FOUR_MEGABYTES = 4 * ONE_MEGABYTE;
 ```
 
-Žádosti vytvořené rozhraním API je možné nastavit tak, aby po uplynutí daného intervalu vypršel časový limit. Třída [Aborter](/javascript/api/%40azure/storage-blob/aborter?view=azure-node-legacy) se stará o vypršení časového limitu žádostí a následující konstanta slouží k definování časových limitů použitých v této ukázce.
+Žádosti vytvořené rozhraním API je možné nastavit tak, aby po uplynutí daného intervalu vypršel časový limit. Třída [Aborter](/javascript/api/%40azure/storage-blob/aborter?view=azure-node-legacy&preserve-view=true) se stará o vypršení časového limitu žádostí a následující konstanta slouží k definování časových limitů použitých v této ukázce.
 
 ```javascript
 const ONE_MINUTE = 60 * 1000;
@@ -178,13 +178,13 @@ const serviceURL = new ServiceURL(`https://${STORAGE_ACCOUNT_NAME}.blob.core.win
 
 V tomto bloku kódu se používají následující třídy:
 
-- Třída [SharedKeyCredential](/javascript/api/%40azure/storage-blob/sharedkeycredential?view=azure-node-legacy) má na starosti zabalení přihlašovacích údajů k účtu úložiště a jejich poskytnutí kanálu žádosti.
+- Třída [SharedKeyCredential](/javascript/api/%40azure/storage-blob/sharedkeycredential?view=azure-node-legacy&preserve-view=true) má na starosti zabalení přihlašovacích údajů k účtu úložiště a jejich poskytnutí kanálu žádosti.
 
-- Třída [StorageURL](/javascript/api/%40azure/storage-blob/storageurl?view=azure-node-legacy) zajišťuje vytvoření nového kanálu.
+- Třída [StorageURL](/javascript/api/%40azure/storage-blob/storageurl?view=azure-node-legacy&preserve-view=true) zajišťuje vytvoření nového kanálu.
 
-- Třída [ServiceURL](/javascript/api/%40azure/storage-blob/serviceurl?view=azure-node-legacy) sestavuje adresu URL použitou v rozhraní REST API. Instance této třídy vám umožňují provádět akce, jako je výpis kontejnerů, a poskytují kontextové informace pro generování adres URL kontejnerů.
+- Třída [ServiceURL](/javascript/api/%40azure/storage-blob/serviceurl?view=azure-node-legacy&preserve-view=true) sestavuje adresu URL použitou v rozhraní REST API. Instance této třídy vám umožňují provádět akce, jako je výpis kontejnerů, a poskytují kontextové informace pro generování adres URL kontejnerů.
 
-Instance *ServiceURL* se používá s instancemi [ContainerURL](/javascript/api/%40azure/storage-blob/containerurl?view=azure-node-legacy) a [BlockBlobURL](/javascript/api/%40azure/storage-blob/blockbloburl?view=azure-node-legacy) ke správě kontejnerů a objektů blob v účtu úložiště.
+Instance *ServiceURL* se používá s instancemi [ContainerURL](/javascript/api/%40azure/storage-blob/containerurl?view=azure-node-legacy&preserve-view=true) a [BlockBlobURL](/javascript/api/%40azure/storage-blob/blockbloburl?view=azure-node-legacy&preserve-view=true) ke správě kontejnerů a objektů blob v účtu úložiště.
 
 ```javascript
 const containerURL = ContainerURL.fromServiceURL(serviceURL, containerName);

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 01/15/2021
-ms.openlocfilehash: 9291689b362b5cbe651a72220196dd30b40745cf
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 9a43318ed935dd1e71b6da75c9f078fbebbd29eb
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98540551"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599018"
 ---
 # <a name="error-investigation-using-the-dashboard"></a>Chyba při šetření pomocí řídicího panelu
 
@@ -53,6 +53,9 @@ Chcete-li zobrazit chyby na řídicím panelu, postupujte podle následujících
     ![Snímek obrazovky zobrazující ovlivněné počítače](media/itsmc-resync-servicenow/itsm-dashboard-impacted-comp.png)
 3. Stav konektoru: graf a níže uvedená tabulka obsahují zprávy o stavu konektoru. Kliknutím na graf na řádcích v tabulce můžete získat další podrobnosti o zprávách o stavu konektoru.
     Tabulka obsahuje omezený počet řádků, pokud chcete zobrazit všechny seznamy, můžete kliknout na Zobrazit vše.
+
+    Můžete zobrazit podrobnosti o zprávách v tabulce – [tady](itsmc-dashboard-errors.md).
+
     ![Snímek obrazovky zobrazující stav konektoru](media/itsmc-resync-servicenow/itsm-dashboard-connector-status.png)
 4. Pravidla výstrah: tabulky obsahují informace o počtu zjištěných pravidel výstrahy.
     Kliknutím na řádky v tabulkách můžete získat další podrobnosti o zjištěných pravidlech.

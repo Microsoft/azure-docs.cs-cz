@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: převod textu na řeč
-ms.openlocfilehash: af0c9338cb9661402c3a76bab55f34b01304c7b6
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 54db794d4e9cf0cd2a049a865f2e7bb52698a4bd
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024513"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599543"
 ---
 # <a name="what-is-text-to-speech"></a>Co je převod textu na řeč?
 
@@ -39,7 +39,7 @@ V tomto přehledu se dozvíte o výhodách a funkcích služby převod textu na 
 
 * Neuronové hlasy – špičkové sítě neuronové se používají k překonání omezení tradiční syntézy řeči s ohledem na zátěž a nevýbušnost v mluveném jazyce. Prosody předpověď a Hlasová syntéza se provádí současně, což vede k více kapalinovým a přirozeným výstupům. Hlasy neuronové se dají použít k zajištění většího přirozeného a poutavého působení chatovacích robotů o a hlasových asistentů, převodu digitálních textů, jako jsou například e-knihy na audiobooks, a k vylepšení navigačních systémů v klecích. V případě přirozeného Prosody jako přirozeného a jasného kloubování slov, neuronové hlasy významně omezují naslouchat únavu při interakci se systémy AI. Úplný seznam hlasů pro neuronové najdete v tématu [podporované jazyky](language-support.md#text-to-speech).
 
-* SSML (Speech syntézy Language) – značkovací jazyk založený na jazyce XML, který slouží k přizpůsobení výstupů řeči na text. Pomocí SSML můžete upravit rozteč, přidat pauzy, zlepšit výslovnost, zrychlit nebo zpomalit rychlost řeči, zvýšit nebo snížit objem a zadat u jednoho dokumentu více hlasů. Viz [SSML](speech-synthesis-markup.md).
+* Upravit styly speaking pomocí jazyka SSML-Speech syntézy (SSML) je značkovací jazyk založený na jazyce XML, který slouží k přizpůsobení výstupů řeči na text. Pomocí SSML můžete upravit rozteč, přidat pauzy, zlepšit výslovnost, zrychlit nebo zpomalit rychlost řeči, zvýšit nebo snížit objem a zadat u jednoho dokumentu více hlasů. Další informace najdete v tématu [postup](speech-synthesis-markup.md) pro úpravu stylu speaking.
 
 ## <a name="get-started"></a>Začínáme
 

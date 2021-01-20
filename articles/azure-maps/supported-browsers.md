@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 43bf70d66c42bc0ecd5e26e4cc724456bd4bf84e
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: f51b46efcaf9be4f51e96b038b93562d0e3eae0b
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896918"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601160"
 ---
 # <a name="web-sdk-supported-browsers"></a>Podporované prohlížeče pro sadu Web SDK
 
@@ -36,7 +36,7 @@ Sada Azure Maps Web SDK podporuje následující desktopové prohlížeče:
 - Microsoft Edge (aktuální a předchozí verze)
 - Google Chrome (aktuální a předchozí verze)
 - Mozilla Firefox (aktuální a předchozí verze)
-- Apple Safari (Mac OS X) (aktuální a předchozí verze)
+- Apple Safari (macOS X) (aktuální a předchozí verze)
 
 Viz také [cílení na starší verze prohlížečů](#Target-Legacy-Browsers) dále v tomto článku.
 
@@ -63,7 +63,7 @@ V Node.js jsou podporovány také následující moduly web SDK:
 
 ## <a name="target-legacy-browsers"></a><a name="Target-Legacy-Browsers"></a>Cílové starší verze prohlížečů
 
-Můžete chtít cílit na starší prohlížeče, které nepodporují WebGL, nebo které mají jenom omezenou podporu. V takových případech doporučujeme, abyste používali Azure Maps služby společně s open source mapovým ovládacím prvkem, jako je například [leták](https://leafletjs.com/). Tady je příklad:
+Můžete chtít cílit na starší prohlížeče, které nepodporují WebGL, nebo které mají jenom omezenou podporu. V takových případech doporučujeme, abyste používali Azure Maps služby společně s open source mapovým ovládacím prvkem, jako je například [leták](https://leafletjs.com/). Tady je příklad, který využívá open source [modul plug-in Azure Maps leták](https://github.com/azure-samples/azure-maps-leaflet).
 
 <br/>
 
@@ -71,6 +71,7 @@ Můžete chtít cílit na starší prohlížeče, které nepodporují WebGL, neb
 Podívejte se na pero <a href='https://codepen.io/azuremaps/pen/GeLgyx/'>Azure Maps + leták</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
+Další ukázky kódu používající Azure Maps v letáku najdete [tady](https://azuremapscodesamples.azurewebsites.net/?search=leaflet).
 
 ## <a name="next-steps"></a>Další kroky
 

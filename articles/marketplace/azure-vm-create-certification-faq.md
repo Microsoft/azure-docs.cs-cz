@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 01/18/2021
-ms.openlocfilehash: f802292d9723179b36d5291993bd4e07487fe6a8
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 80dc19a58d212bb6ab8d608e222cd3a0bd3990d1
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567384"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600985"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>Řešení potíží s certifikací virtuálního počítače
 
@@ -321,7 +321,7 @@ V následující tabulce najdete případné problémy, které vznikají při st
 |Neplatný název VHD|Zkontrolujte, jestli v názvu VHD existují nějaké speciální znaky, jako je například znak procenta `%` nebo uvozovky `"` .|Přejmenujte soubor VHD odebráním speciálních znaků.|
 |
 
-## <a name="first-1-mb-2048-sectors-each-sector-of-512-bytes-partition"></a>Prvních 1 MB (2048 sektorů, každý sektor v 512 bajtech) oddíl
+## <a name="first-partition-starts-at-1-mb-2048-sectors"></a>První oddíl začíná 1 MB (2048 sektorů).
 
 Pokud [vytváříte vlastní image](azure-vm-create-using-own-image.md), ujistěte se, že první 2048 sektorů disku s operačním systémem (1 MB) je prázdný. V opačném případě se publikování nezdaří. Tento požadavek platí jenom pro disk s operačním systémem (ne datové disky). Pokud sestavíte image [ze schválené základny](azure-vm-create-using-approved-base.md), můžete tento požadavek přeskočit.
 

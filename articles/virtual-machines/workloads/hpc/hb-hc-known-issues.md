@@ -5,19 +5,24 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: workloads
 ms.topic: article
-ms.date: 10/19/2020
+ms.date: 1/19/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: f4e93deb40799cbcc9c86aff454e250f1ab71712
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 777c78047ec9bf195c5e0c823aa0edfb287b3998
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94963330"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598320"
 ---
 # <a name="known-issues-with-h-series-and-n-series-vms"></a>Známé problémy s virtuálními počítači řady H a N
 
 Tento článek popisuje nejběžnější problémy a řešení při použití prostředí HPC [řady H-Series](../../sizes-hpc.md) a [N-Series](../../sizes-gpu.md) a virtuálních počítačů GPU.
+
+## <a name="accelerated-networking-on-hb-hc-hbv2-and-ndv2"></a>Urychlené síťové služby na neHBv2ch, HC, NDv2 a
+
+[Akcelerované síťové služby Azure](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) jsou teď dostupné [na velikostech](../../hb-series.md)virtuálních počítačů s podporou RDMA a [InfiniBand a SR](../../hbv2-series.md) -IOV, která [je](../../hc-series.md)v [paměti.](../../ndv2-series.md) Tato možnost teď umožňuje vylepšenou dobu (až 30 GB/s) a latence v síti Ethernet Azure. I když se jedná o možnosti RDMA přes síť InfiniBand, můžou některé změny platformy pro tuto funkci ovlivnit chování určitých MPI implementací v případě, že úlohy spuštěním v InfiniBand. Konkrétně rozhraní InfiniBand na některých virtuálních počítačích může mít trochu odlišný název (mlx5_1 na rozdíl od dřívější mlx5_0) a to může vyžadovat seování příkazových řádků MPI zvláště při použití rozhraní UCX (obvykle se jedná o OpenMP a HPC-X).
+Další podrobnosti najdete v tomto [článku na blogu](https://techcommunity.microsoft.com/t5/azure-compute/accelerated-networking-on-hb-hc-and-hbv2/ba-p/2067965) s pokyny, jak vyřešit všechny zjištěné problémy.
 
 ## <a name="infiniband-driver-installation-on-n-series-vms"></a>Instalace ovladače InfiniBand na virtuálních počítačích řady N-Series
 

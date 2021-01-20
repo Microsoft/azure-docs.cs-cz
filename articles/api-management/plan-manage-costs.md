@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: api-management
 ms.topic: how-to
 ms.date: 12/15/2020
-ms.openlocfilehash: 90449a29f58f31827e2a36b5f6c41563e88ac032
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 799ef33e78737bfd2e1c1a1cfa4991f44c8f5ec0
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251348"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599645"
 ---
 # <a name="plan-and-manage-costs-for-api-management"></a>Plánování a Správa nákladů na API Management
 
@@ -20,7 +20,7 @@ Tento článek popisuje, jak plánujete a spravovat náklady na Azure API Manage
 
 Náklady na API Management jsou jenom částí měsíčních nákladů na faktuře Azure. I když tento článek vysvětluje, jak naplánovat a spravovat náklady na API Management, účtují se vám všechny služby a prostředky Azure, které se používají ve vašem předplatném Azure, včetně služeb třetích stran.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Analýza nákladů v Cost Management podporuje většinu typů účtů Azure, ale ne všechny. Úplný seznam podporovaných typů účtů si můžete prohlédnout v článku [Vysvětlení dat služby Cost Management](../cost-management-billing/costs/understand-cost-mgt-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn). K zobrazení dat o nákladech potřebujete alespoň oprávnění ke čtení pro účet Azure. Informace o přiřazování přístupu k datům služby Azure Cost Management najdete v článku [Přiřazení přístupu k datům](../cost-management-billing/costs/assign-access-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
 
@@ -49,7 +49,7 @@ Další informace o cenách a funkcích najdete v těchto tématech:
 
 ### <a name="using-monetary-credit-with-api-management"></a>Použití peněžního kreditu s API Management
 
-Můžete platit za API Management poplatky s kreditem peněžního závazku EA. Kredity peněžních závazků EA ale nemůžete použít k placení poplatků za produkty a služby třetích stran, včetně těch, které jsou Azure Marketplace.
+Za poplatky za API Management můžete platit pomocí předplatného Azure (dříve označovaného jako peněžní závazek). Nemůžete však použít kredit plateb Azure k placení poplatků za produkty a služby třetích stran, včetně těch, které jsou Azure Marketplace.
 
 ## <a name="monitor-costs"></a>Sledovat náklady
 

@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/10/2020
-ms.openlocfilehash: 4fea027663b55e87822eae1fd0cdb2d67dbc630b
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.date: 01/19/2021
+ms.openlocfilehash: a03ad1eb893c97671d7ab60cc38708115a73d260
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96170816"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602398"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Úvod k zřízené propustnosti v Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -109,7 +109,7 @@ Reakce těchto metod také obsahuje [minimální zřízenou propustnost](concept
 Skutečné minimální RU/s se může lišit v závislosti na konfiguraci vašeho účtu. Obecně se ale jedná o maximum:
 
 * 400 RU/s 
-* Aktuální úložiště v GB × 10 RU/s (Pokud Váš kontejner nebo databáze neobsahuje více než 1 TB dat, přečtěte si náš [velký program pro úložiště/nízkou propustnost](#high-storage-low-throughput-program)).
+* Aktuální úložiště v GB × 10 RU/s (Toto omezení se dá v některých případech zmírnit, přečtěte si náš [velký program pro úložiště/nízkou propustnost](#high-storage-low-throughput-program)).
 * Nejvyšší RU/s zřízené v databázi nebo kontejneru/100
 
 ### <a name="changing-the-provisioned-throughput"></a>Změna zřízené propustnosti
@@ -139,7 +139,7 @@ Jak je popsáno výše v předchozí [zřízené propustnosti](#current-provisio
 
 To může být obavou v situacích, kdy potřebujete ukládat velké objemy dat, ale v porovnání s nízkými nároky na propustnost. Aby lépe vyhovovaly těmto scénářům, Azure Cosmos DB zavedl **program vysokého úložiště/nízké propustnosti** , který u oprávněných účtů sníží omezení ru/s na GB.
 
-V současné době musíte mít v účtu k dispozici alespoň 1 kontejner nebo sdílenou databázi s více než 1 TB dat, aby mohla být v účtu oprávněná. Abyste se mohli připojit k tomuto programu a posoudit celou způsobilost, stačí udělat, abyste [Tento průzkum](https://customervoice.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRzBPrdEMjvxPuDm8fCLUtXpUREdDU0pCR0lVVFY5T1lRVEhWNUZITUJGMC4u)naplnili. Tým Azure Cosmos DB pak bude sledovat a pokračovat v registraci.
+Abyste se mohli připojit k tomuto programu a posoudit celou způsobilost, stačí udělat, abyste [Tento průzkum](https://customervoice.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRzBPrdEMjvxPuDm8fCLUtXpUREdDU0pCR0lVVFY5T1lRVEhWNUZITUJGMC4u)naplnili. Tým Azure Cosmos DB pak bude sledovat a pokračovat v registraci.
 
 ## <a name="comparison-of-models"></a>Porovnání modelů
 Tato tabulka ukazuje porovnání mezi zřizováním standardní (ruční) propustností databáze vs. v kontejneru. 

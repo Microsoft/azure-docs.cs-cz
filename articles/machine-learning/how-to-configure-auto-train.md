@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: f2170aad9bc0218d39244d08f5cc838235f8fee9
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 9021d933e3808867ec784ad3c6d0f8810d608ea3
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134360"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600059"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurace experimentů automatizovaného strojového učení v Pythonu
 
@@ -65,7 +65,7 @@ automl_config = AutoMLConfig(task = "classification")
 
 Automatizované strojové učení podporuje data nacházející se na místním desktopu nebo v cloudu, například ve službě Azure Blob Storage. Data lze číst do **PANDAS dataframe** nebo do **Azure Machine Learning TabularDataset**. [Další informace o datových sadách](how-to-create-register-datasets.md)
 
-Požadavky na trénovací data:
+Požadavky na školicí data ve strojovém učení:
 - Data musí být v tabulkovém formátu.
 - Hodnota pro předpověď, cílový sloupec musí být v datech.
 
@@ -96,9 +96,9 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 
 ## <a name="training-validation-and-test-data"></a>Školení, ověřování a testování dat
 
-Můžete určit samostatné **školicí a ověřovací sady** přímo v `AutoMLConfig` konstruktoru. Přečtěte si další informace o [tom, jak nakonfigurovat rozdělení dat a vzájemné ověřování](how-to-configure-cross-validation-data-splits.md) pro AutoML experimenty. 
+Můžete určit samostatné **školicí údaje a sady dat pro ověřování** přímo v `AutoMLConfig` konstruktoru. Přečtěte si další informace o [tom, jak nakonfigurovat rozdělení dat a vzájemné ověřování](how-to-configure-cross-validation-data-splits.md) pro AutoML experimenty. 
 
-Pokud explicitně nezadáte `validation_data` `n_cross_validation` parametr nebo, AutoML použije výchozí techniky k určení, jak se provádí ověřování. Toto určení závisí na počtu řádků v datové sadě přiřazené k vašemu `training_data` parametru. 
+Pokud explicitně neurčíte `validation_data` `n_cross_validation` parametr nebo, použije automatizované ml výchozí techniky k určení, jak se provádí ověřování. Toto určení závisí na počtu řádků v datové sadě přiřazené k vašemu `training_data` parametru. 
 
 |&nbsp;Velikost dat &nbsp; školení| Technika ověřování |
 |---|-----|
@@ -183,7 +183,7 @@ Následující tabulka shrnuje podporované modely podle typu úkolu.
 > [!NOTE]
 > Pokud plánujete exportovat vytvořené modely automl do [modelu ONNX](concept-onnx.md), je možné převést pouze ty algoritmy označené znakem * na formát ONNX. Přečtěte si další informace o [převodu modelů na ONNX](concept-automated-ml.md#use-with-onnx). <br> <br> Všimněte si také, že ONNX podporuje v tuto chvíli pouze úlohy klasifikace a regrese. 
 
-Classification | Regrese | Prognózování časové řady
+Klasifikace | Regrese | Prognózování časové řady
 |-- |-- |--
 [Logistická regrese](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)* | [Elastická síť](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)* | [Elastická síť](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)
 [Lehký GBM](https://lightgbm.readthedocs.io/en/latest/index.html)* |[Lehký GBM](https://lightgbm.readthedocs.io/en/latest/index.html)*|[Lehký GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
@@ -205,7 +205,7 @@ Classification | Regrese | Prognózování časové řady
 
 Přečtěte si o konkrétních definicích těchto metrik v seznámení s [automatizovanými výsledky strojového učení](how-to-understand-automated-ml.md).
 
-|Classification | Regrese | Prognózování časové řady
+|Klasifikace | Regrese | Prognózování časové řady
 |--|--|--
 |accuracy| spearman_correlation | spearman_correlation
 |AUC_weighted | normalized_root_mean_squared_error | normalized_root_mean_squared_error
@@ -219,7 +219,7 @@ U každého automatizovaného experimentu strojového učení se vaše data auto
 
 Při konfiguraci experimentů ve vašem `AutoMLConfig` objektu můžete nastavení povolit nebo zakázat `featurization` . V následující tabulce jsou uvedena přijímaná nastavení pro featurization v [objektu AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig). 
 
-|Konfigurace Featurization | Description |
+|Konfigurace Featurization | Popis |
 | ------------- | ------------- |
 |`"featurization": 'auto'`| Označuje, že v rámci předběžného zpracování se [kroky guardrails a featurization](how-to-configure-auto-features.md#featurization) provádějí automaticky. **Výchozí nastavení**.|
 |`"featurization": 'off'`| Indikuje, že krok featurization se neprovádí automaticky.|
