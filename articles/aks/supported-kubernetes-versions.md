@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: ecea9dcd28aede92ef255bf002b9195ded43c68b
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: 53093edb1d3c142336f06ec8544aaa7b55e37477
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296110"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98611249"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Podporované verze Kubernetes ve službě Azure Kubernetes Service (AKS)
 
@@ -138,13 +138,14 @@ Historii minulých verzí najdete v tématu [Kubernetes](https://en.wikipedia.or
 
 |  Verze K8s | Verze nadřazeného softwaru  | AKS ve verzi Preview  | AKS GA  | Konec života |
 |--------------|-------------------|--------------|---------|-------------|
-| 1.16  | SEP-19-19  | Leden 2019   | Březen 2020  | Leden 2021 * | 
+| 1.16  | SEP-19-19  | Leden 2019   | Březen 2020  | Leden 2021| 
 | 1,17  | Dec-09-19  | Leden 2019   | Července 2020  | 1,20 GA | 
 | 1,18  | Březen – 23-20  | Květen 2020   | Srpna 2020  | 1,21 GA | 
 | 1,19  | Srpna 04-20  | SEP 2020   | Listopadu 2020  | 1,22 GA | 
 | 1,20  | DEC-08-20  | Leden 2021   | Březen 2021  | 1,23 GA |
+| 1,21  | Duben – 08-21 * | Květen 2021   | Července 2021  | 1,24 GA |
 
-\* V důsledku svátků se AKS prodlouží životnost 1,16 od listopadu 2020 až do ledna 2021. [Další informace](https://github.com/Azure/AKS/releases/tag/2020-10-12).
+\* Verze Kubernetes 1,21 pro odesílání nadřazených verzí se může změnit jako nadřazený kalendář, který se ještě dokončuje.
 
 
 ## <a name="faq"></a>Nejčastější dotazy
@@ -155,7 +156,7 @@ Informování s Kubernetes 1,19, [Open Source komunita rozšiřuje podporu na 1 
 
 **Co se stane, když uživatel upgraduje cluster Kubernetes s menší verzí, která se nepodporuje?**
 
-Pokud používáte verzi *n-3* nebo starší, znamená to, že nejste mimo rámec podpory, a zobrazí se výzva k upgradu. Po úspěšném dokončení upgradu z verze n-3 na n-2 se vrátíte do našich zásad podpory. Příklad:
+Pokud používáte verzi *n-3* nebo starší, znamená to, že nejste mimo rámec podpory, a zobrazí se výzva k upgradu. Po úspěšném dokončení upgradu z verze n-3 na n-2 se vrátíte do našich zásad podpory. Například:
 
 - Pokud je nejstarší podporovaná verze AKS *1.15.* a a jste na *1.14. b* nebo starší, nejste mimo podporu.
 - Po úspěšném dokončení upgradu z aplikace *1.14. b* na *1.15. a* nebo vyšší se vrátíte do našich zásad podpory.

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 43d593a65fd08542eb2829fcebcea81ea0c99986
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: e10f45af89e19f6fe62ff729f96d870e008c96ec
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91995446"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98611096"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Škálovatelnost a cíle výkonnosti služby Azure Files
 
@@ -31,7 +31,7 @@ Nadřazeným prostředkem sdílené složky Azure je účet úložiště Azure. 
 > [!Important]  
 > Využití účtu úložiště pro obecné účely z jiných služeb úložiště má vliv na sdílené složky Azure v účtu úložiště. Pokud například dosáhnete maximální kapacity účtu úložiště ve službě Azure Blob Storage, nebudete moct ve sdílené složce Azure vytvářet nové soubory, a to ani v případě, že je vaše sdílená složka Azure menší než maximální velikost sdílené složky.
 
-## <a name="azure-files-scale-targets"></a>Cíle škálování souborů Azure
+## <a name="azure-files-scale-targets"></a>Cíle škálování služby Azure Files
 
 Existují tři kategorie omezení, které je třeba vzít v úvahu pro soubory Azure: účty úložiště, sdílené složky a soubory.
 
@@ -77,7 +77,7 @@ Abychom vám pomohli naplánovat nasazení pro každou fázi, níže jsou výsle
 | Konfigurace systému | Podrobnosti |
 |-|-|
 | Procesor | 64 virtuálních jader s 64 MiB L3 cache |
-| Paměť | 128 GiB |
+| Memory (Paměť) | 128 GiB |
 | Disk | Disky SAS s RAID 10 s mezipamětí zálohovanou pro baterie |
 | Síť | 1 GB/s sítě |
 | Úloha | Pro obecné účely souborový server|
@@ -87,16 +87,16 @@ Abychom vám pomohli naplánovat nasazení pro každou fázi, níže jsou výsle
 | Počet objektů | objekty 25 000 000 |
 | Velikost datové sady| ~ 4,7 TiB |
 | Průměrná velikost souboru | ~ 200 KiB (největší soubor: 100 GiB) |
-| Počáteční výčet změn v cloudu | 7 objektů za sekundu  |
+| Počáteční výčet změn v cloudu | 20 objektů za sekundu  |
 | Propustnost nahrávání | 20 objektů za sekundu na skupinu synchronizace |
 | Propustnost stahování oboru názvů | 400 objektů za sekundu |
 
 ### <a name="initial-one-time-provisioning"></a>Prvotní zřízení v jednom čase
 
 **Počáteční výčet změn v cloudu**: když se vytvoří nová skupina synchronizace, bude první krok, který se spustí, počáteční výčet změn v cloudu. V tomto procesu bude systém vypsat všechny položky ve sdílené složce Azure. Během tohoto procesu nebude žádná aktivita synchronizace, tj. žádné položky nebudou staženy z koncového bodu cloudu do koncového bodu serveru a žádné položky nebudou odeslány z koncového bodu serveru do koncového bodu cloudu. Po dokončení počátečního výčtu změn v cloudu bude aktivita synchronizace pokračovat.
-Rychlost výkonu je 7 objektů za sekundu. Zákazníci si můžou odhadnout čas, který bude trvat, aby dokončili počáteční výčet změn v cloudu tím, že určí počet položek ve sdílené složce cloudu a pomocí následujících vzorců Získá čas ve dnech. 
+Míra výkonu je 20 objektů za sekundu. Zákazníci si můžou odhadnout čas, který bude trvat, aby dokončili počáteční výčet změn v cloudu tím, že určí počet položek ve sdílené složce cloudu a pomocí následujících vzorců Získá čas ve dnech. 
 
-   **Čas (ve dnech) počátečního výčtu cloudu = (počet objektů v koncovém bodu cloudu)/(7 * 60 × 60 * 24)**
+   **Čas (ve dnech) počátečního výčtu cloudu = (počet objektů v koncovém bodu cloudu)/(20 × 60 × 60 × 24)**
 
 **Propustnost stahování oboru názvů** Při přidání nového koncového bodu serveru do existující skupiny synchronizace agent Azure File Sync nestáhne žádný obsah souboru z koncového bodu cloudu. Nejprve synchronizuje celý obor názvů a potom aktivuje odvolání na pozadí pro stažení souborů, a to buď v celém rozsahu, nebo v případě, že je povolená vrstva cloudu, do zásady clouding nastavené na koncovém bodu serveru.
 

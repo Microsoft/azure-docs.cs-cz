@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 10/20/2020
-ms.openlocfilehash: e87c9efc910d08307d40d42e58f8272a01902a41
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: b351be1e7212dc9923f701599dd951a73254afe0
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96552843"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610365"
 ---
 # <a name="role-based-access-control-in-azure-purviews-data-plane"></a>Řízení přístupu na základě role v rovině dat Azure dosah
 
@@ -23,7 +23,7 @@ Tento článek popisuje, jak se v [rovině dat](../azure-resource-manager/manage
 
 ## <a name="azure-purviews-pre-defined-data-plane-roles"></a>Předem definované role roviny dat v Azure dosah
 
-Azure dosah definuje sadu předem definovaných rolí rovin dat, které se dají použít k určení toho, kdo má přístup k čemu v Azure dosah. Tyto role jsou:
+Azure dosah definuje sadu předem definovaných rolí rovin dat, které se dají použít k určení toho, kdo má přístup k čemu v Azure dosah. Jedná se o následující role:
 
 * **Role čtecího modulu dat dosah** – má přístup k portálu dosah a může číst veškerý obsah v Azure dosah s výjimkou prověřování vazeb.
 * **Role dosah data kurátor** – má přístup k portálu dosah a může číst veškerý obsah v Azure dosah s výjimkou prověřování vazeb, může upravit informace o prostředcích, upravit definice klasifikace a podmínky glosáře a může použít klasifikace a pojmy glosáře k assetům.
@@ -31,9 +31,9 @@ Azure dosah definuje sadu předem definovaných rolí rovin dat, které se dají
 
 ## <a name="understanding-how-to-use-azure-purviews-data-plane-roles"></a>Princip použití rolí roviny dat v Azure dosah
 
-Při vytvoření účtu Azure dosah se tvůrce zpracuje, jako by byl v rolích dosah data kurátor a dosah správce zdrojů dat. Tvůrce účtu ale není přiřazen k těmto rolím v úložišti rolí. Azure dosah rozpozná, že objekt zabezpečení je autorem účtu a rozšiřuje tyto možnosti na základě jejich identity.
+Při vytvoření účtu Azure dosah se tvůrce zpracuje, jako by byl v rolích dosah data kurátor a dosah správce zdrojů dat. Tvůrce účtu však není k těmto rolím přiřazený v úložišti rolí. Azure Purview rozpozná, že je objekt zabezpečení tvůrcem účtu, a v závislosti na jeho identitě na něj rozšíří příslušné možnosti.
 
-Všichni ostatní uživatelé můžou účet Azure dosah použít jenom v případě, že se nacházejí aspoň v jedné z těchto rolí. To znamená, že když se vytvoří účet Azure dosah, nikdo jiný než tvůrce má k účtu přístup nebo použije jeho rozhraní API, dokud se nevloží do jedné nebo více předchozích definovaných rolí.
+Všichni ostatní uživatelé můžou účet Azure Purview používat pouze v případě, že mají alespoň jednu z těchto rolí. To znamená, že když se vytvoří účet Azure dosah, nikdo jiný než tvůrce má k účtu přístup nebo použije jeho rozhraní API, dokud se nevloží do jedné nebo více předchozích definovaných rolí.
 
 Upozorňujeme, že role správce zdrojů dat dosah má dva podporované scénáře. První scénář je pro uživatele, kteří už jsou dosah čtenáři dat nebo data dosah Curators, které potřebují také schopnost vytvářet kontroly. Uživatelé musí být ve dvou rolích, alespoň v jednom z dosah data Reader nebo dosah data kurátor a také je umístit do role správce zdrojů dat dosah.
 
@@ -77,8 +77,8 @@ Pro uživatele, kteří mají přístup k firemním [Azure Portal](https://porta
 |Potřebuji aktivovat instanční objekt nebo jinou programovou identitu, abyste mohli nastavit a monitorovat kontroly v Azure dosah bez povolení programové identity pro přístup k informacím katalogu. |Role správce zdroje dat dosah|
 |Potřebuji umístit uživatele do rolí v Azure dosah | Vlastník nebo správce přístupu uživatelů |
 
-V dalším článku se dozvíte, jak do role přidat objekt zabezpečení.
+Další informace o tom, jak do role přidat objekt zabezpečení, najdete v tématu [rychlý Start: vytvoření účtu Azure dosah](create-catalog-portal.md) .
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Rychlý Start: vytvoření účtu Azure dosah](create-catalog-portal.md)
+* [Přehledy dat](concept-insights.md)

@@ -9,12 +9,12 @@ ms.custom:
 - references_regions
 - fasttrack-edit
 - devx-track-azurecli
-ms.openlocfilehash: d944512e5f6126920ab4fba99fb70513b93177ba
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 26dd3f7df5a71c687bfb4935f290e7a54b4e01fe
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936817"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610263"
 ---
 # <a name="azure-functions-premium-plan"></a>Plán Azure Functions Premium
 
@@ -142,7 +142,7 @@ az functionapp plan update -g <resource_group> -n <premium_plan_name> --min-inst
 
 Při vytváření nebo škálování plánu si můžete vybrat mezi třemi velikostmi instancí. Bude se vám účtovat celkový počet jader a zřízených paměti za sekundu, které jsou pro každou instanci přiděleny. Vaše aplikace se může podle potřeby automaticky škálovat na více instancí.
 
-|SKU|Cores|Paměť|Storage|
+|Skladová položka|Cores|Memory (Paměť)|Storage|
 |--|--|--|--|
 |EP1|1|3,5 GB|250 GB|
 |EP2|2|7GB|250 GB|
@@ -153,6 +153,8 @@ Při vytváření nebo škálování plánu si můžete vybrat mezi třemi velik
 Spuštění v počítači, který má více paměti, vždy neznamená, že aplikace Function App používá veškerou dostupnou paměť.
 
 Například aplikace funkcí JavaScriptu je omezená na výchozí omezení paměti v Node.js. Pokud chcete zvýšit toto omezení pevné paměti, přidejte nastavení aplikace `languageWorkers:node:arguments` s hodnotou `--max-old-space-size=<max memory in MB>` .
+
+A pro plány s více než 4 GB paměti zajistěte, aby nastavení platformy bitová verze bylo nastavené na `64 Bit` [Obecné nastavení](/azure/app-service/configure-common#configure-general-settings).
 
 ## <a name="region-max-scale-out"></a>Maximální horizontální navýšení kapacity oblasti
 
@@ -168,7 +170,7 @@ Prohlédněte si kompletní regionální dostupnost funkcí na webu [Azure](http
 |Australia Southeast | 100 | 20 |
 |Brazil South| 100 | 20 |
 |Střední Kanada| 100 | 20 |
-|Střední USA| 100 | 20 |
+|USA – střed| 100 | 20 |
 |Čína – východ 2| 100 | 20 |
 |Čína – sever 2| 100 | 20 |
 |Východní Asie| 100 | 20 |

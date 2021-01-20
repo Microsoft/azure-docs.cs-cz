@@ -2,17 +2,17 @@
 title: Chyba překročení velikosti úlohy
 description: Popisuje, jak řešit chyby, pokud je velikost nebo Šablona úlohy příliš velká.
 ms.topic: troubleshooting
-ms.date: 10/07/2020
-ms.openlocfilehash: 638bdef246fc908ab997bfb99e7526febdb3792e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/19/2021
+ms.openlocfilehash: 1fde4918aff6e3bf494876f83c5b4313b3c5f3d2
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91822145"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610399"
 ---
 # <a name="resolve-errors-for-job-size-exceeded"></a>Řešení chyb pro překročení velikosti úlohy
 
-Tento článek popisuje, jak vyřešit chyby **JobSizeExceededException** a **DeploymentSizeExceededException** .
+Tento článek popisuje, jak vyřešit chyby **JobSizeExceededException** a **DeploymentJobSizeExceededException** .
 
 ## <a name="symptom"></a>Příznak
 
@@ -20,9 +20,12 @@ Při nasazování šablony se zobrazí chyba s oznámením, že nasazení překr
 
 ## <a name="cause"></a>Příčina
 
-Tato chyba se může zobrazit, když velikost šablony překročí 4 MB. Limit velikosti 4 MB se vztahuje na konečný stav šablony po rozbalení pro definice prostředků, které používají [kopírování](copy-resources.md) k vytvoření mnoha instancí. Konečný stav zahrnuje také vyřešené hodnoty pro proměnné a parametry.
+Tato chyba se zobrazí, pokud nasazení překročí jedno z povolených limitů. Obvykle se tato chyba zobrazí, pokud buď šablona nebo úloha, která spouští nasazení, je příliš velká.
 
-Úloha nasazení zahrnuje i metadata o žádosti. U velkých šablon může metadata v kombinaci s šablonou překročit povolenou velikost úlohy.
+Úloha nasazení nemůže být větší než 1 MB. Úloha zahrnuje metadata o požadavku. U velkých šablon může metadata v kombinaci s šablonou překročit povolenou velikost úlohy.
+
+
+Šablona nemůže být větší než 4 MB. Limit velikosti 4 MB se vztahuje na konečný stav šablony po rozbalení pro definice prostředků, které používají [kopírování](copy-resources.md) k vytvoření mnoha instancí. Konečný stav zahrnuje také vyřešené hodnoty pro proměnné a parametry.
 
 Další omezení pro tuto šablonu:
 
@@ -44,4 +47,4 @@ Zkuste zkrátit délku názvů, které používáte pro [parametry](template-par
 
 ## <a name="solution-3---use-serial-copy"></a>Řešení 3 – použití sériového kopírování
 
-Druhou možností je změnit smyčku kopírování z [paralelního zpracování na sériové](copy-resources.md#serial-or-parallel). Tuto možnost použijte jenom v případě, že se domníváte, že při nasazování velkého počtu prostředků přes kopii dojde k chybě. Tato změna může významně prodloužit dobu nasazení, protože prostředky nejsou nasazeny paralelně.
+Zvažte možnost změnit smyčku kopírování z [paralelního zpracování na sériové](copy-resources.md#serial-or-parallel). Tuto možnost použijte jenom v případě, že se domníváte, že při nasazování velkého počtu prostředků přes kopii dojde k chybě. Tato změna může významně prodloužit dobu nasazení, protože prostředky nejsou nasazeny paralelně.

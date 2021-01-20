@@ -8,12 +8,12 @@ ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 32aa94c986c90b7bd46b9f5561021c34c0f142af
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 29f7f241f119ca7fab50409881b517961b00cf20
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492088"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610467"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Plánování nasazení Synchronizace souborů Azure
 
@@ -50,6 +50,9 @@ Skupiny synchronizace se nasazují do **služby synchronizace úložiště**, co
 Než budete moct vytvořit skupinu synchronizace v rámci služby synchronizace úložiště, musíte nejdřív zaregistrovat Windows Server se službou synchronizace úložiště. Tím se vytvoří **registrovaný objekt serveru** , který představuje vztah důvěryhodnosti mezi serverem nebo clusterem a službou synchronizace úložiště. Pokud chcete zaregistrovat službu synchronizace úložiště, musíte nejdřív na server nainstalovat agenta Azure File Sync. Jednotlivé servery nebo clustery je možné zaregistrovat jenom v jedné službě synchronizace úložiště.
 
 Skupina synchronizace obsahuje jeden koncový bod cloudu nebo sdílenou složku Azure a nejméně jeden koncový bod serveru. Objekt koncového bodu serveru obsahuje nastavení, která konfigurují schopnost **vrstvení cloudu** , která poskytuje možnosti ukládání do mezipaměti Azure File Sync. Aby bylo možné synchronizovat se sdílenou složkou Azure, musí být účet úložiště obsahující sdílenou složku Azure ve stejné oblasti Azure jako služba synchronizace úložiště.
+
+> [!Important]  
+> Můžete provádět změny libovolného koncového bodu cloudu nebo koncového bodu serveru ve skupině synchronizace a nechat soubory synchronizované s ostatními koncovými body ve skupině synchronizace. Pokud provedete přímo změnu koncového bodu cloudu (sdílená složka Azure), je třeba nejprve zjistit změny Azure File Sync úlohy zjišťování změn. Úloha detekce změn se iniciuje pro koncový bod cloudu jenom jednou za 24 hodin. Další informace najdete v [nejčastějších dotazech k souborům Azure](storage-files-faq.md#afs-change-detection).
 
 ### <a name="management-guidance"></a>Pokyny pro správu
 Při nasazování Azure File Sync doporučujeme:
@@ -99,8 +102,8 @@ V následující tabulce jsme poskytovali jak velikost oboru názvů, tak i pře
 | 3        | 1.4     | 2        | 8 (počáteční synchronizace)/2 (Typická četnost změn)      |
 | 5        | 2.3     | 2        | 16 (počáteční synchronizace)/4 (Typická četnost změn)    |
 | 10       | 4.7     | 4        | 32 (počáteční synchronizace)/8 (Typická četnost změn)   |
-| 30       | 14,0    | 8        | 48 (počáteční synchronizace)/16 (Typická četnost změn)   |
-| 50       | 23,3    | 16       | 64 (počáteční synchronizace)/32 (Typická četnost změn)  |
+| 30       | 14.0    | 8        | 48 (počáteční synchronizace)/16 (Typická četnost změn)   |
+| 50       | 23.3    | 16       | 64 (počáteční synchronizace)/32 (Typická četnost změn)  |
 | 100 *     | 46,6    | 32       | 128 (počáteční synchronizace)/32 (Typická četnost změn)  |
 
 \*Synchronizace více než 100 000 000 souborů & adresářů v tuto chvíli není doporučena. Toto je částečný limit na základě našich testovaných prahových hodnot. Další informace najdete v tématu [škálovatelnost a cíle výkonnosti souborů Azure](storage-files-scale-targets.md#azure-file-sync-scale-targets).
@@ -152,7 +155,7 @@ V následující tabulce je uveden stav spolupráce funkcí systému souborů NT
 | Seznamy ACL | Plně podporováno | Windows – volitelné seznamy řízení přístupu se uchovávají Azure File Sync a vynutily Windows Server na koncových bodech serveru. Seznamy ACL je taky možné vyhovět při přímém připojení sdílené složky Azure, ale to vyžaduje další konfiguraci. Další informace najdete v [části Identita](#identity) . |
 | Pevné odkazy | Přeskočeno | |
 | Symbolické odkazy | Přeskočeno | |
-| Přípojné body | Částečně podporováno | Přípojné body můžou být kořenem koncového bodu serveru, ale pokud se nacházejí v oboru názvů koncového bodu serveru, přeskočí se. |
+| Přípojné body | Částečně podporované | Přípojné body můžou být kořenem koncového bodu serveru, ale pokud se nacházejí v oboru názvů koncového bodu serveru, přeskočí se. |
 | Spojení | Přeskočeno | Například systém souborů DFS (Distributed File System) DfrsrPrivate a DFSRoots složky. |
 | Body rozboru | Přeskočeno | |
 | Komprese NTFS | Plně podporováno | |
@@ -326,7 +329,7 @@ Azure File Sync je k dispozici v následujících oblastech:
 | Veřejná | Spojené arabské emiráty | Spojené arabské emiráty sever | `uaenorth` |
 | Veřejná | UK | Spojené království – jih | `uksouth` |
 | Veřejná | UK | Spojené království – západ | `ukwest` |
-| Veřejná | USA | Střední USA | `centralus` |
+| Veřejná | USA | USA – střed | `centralus` |
 | Veřejná | USA | East US | `eastus` |
 | Veřejná | USA | USA – východ 2 | `eastus2` |
 | Veřejná | USA | USA – středosever | `northcentralus` |

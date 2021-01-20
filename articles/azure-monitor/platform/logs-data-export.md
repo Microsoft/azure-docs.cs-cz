@@ -7,12 +7,12 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: 8e310ea487818f6d82869fe1973c8e9ed0b04195
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: d9ae9cae1a0a8014f007cd7c4a3d1f97f27128bb
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97797107"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610960"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Export dat pracovního prostoru Log Analytics v Azure Monitor (Preview)
 Export dat v pracovním prostoru Log Analytics v Azure Monitor umožňuje průběžně exportovat data z vybraných tabulek v pracovním prostoru Log Analytics do účtu služby Azure Storage nebo Event Hubs Azure jako shromážděná. Tento článek poskytuje podrobné informace o této funkci a postupu konfigurace exportu dat ve vašich pracovních prostorech.
@@ -35,13 +35,16 @@ Export dat Log Analytics pracovního prostoru průběžně exportuje data z prac
 
 ## <a name="current-limitations"></a>Aktuální omezení
 
-- Konfigurace se teď dá provést jenom pomocí požadavků CLI nebo REST. Nemůžete použít Azure Portal ani PowerShell.
+- Konfiguraci lze provést v současnosti pomocí požadavků CLI nebo REST. Azure Portal nebo PowerShell ještě nejsou podporované.
 - Možnost v rozhraní příkazového ```--export-all-tables``` řádku a REST není podporována a bude odebrána. Seznam tabulek v pravidlech exportu byste měli zadat explicitně.
-- Podporované tabulky jsou aktuálně omezeny na konkrétní v níže uvedené části [podporované tabulky](#supported-tables) . Pokud pravidlo exportu dat obsahuje nepodporovanou tabulku, operace bude úspěšná, ale pro tuto tabulku nebudou exportována žádná data. Pokud pravidlo exportu dat obsahuje tabulku, která neexistuje, dojde k selhání s chybou. ```Table <tableName> does not exist in the workspace.```
+- Podporované tabulky jsou aktuálně omezeny na konkrétní v níže uvedené části [podporované tabulky](#supported-tables) . 
+- Pokud pravidlo exportu dat obsahuje nepodporovanou tabulku, operace bude úspěšná, ale pro tuto tabulku nebudou exportována žádná data, dokud není tabulka podporovaná. 
+- Pokud pravidlo exportu dat obsahuje tabulku, která neexistuje, dojde k chybě s chybou ```Table <tableName> does not exist in the workspace``` .
 - Pracovní prostor Log Analytics může být v libovolné oblasti s výjimkou následujících:
   - Švýcarsko – sever
   - Švýcarsko – západ
   - Oblasti Azure Government
+- V pracovním prostoru můžete vytvořit dvě pravidla exportu – v může být jedno pravidlo pro centrum událostí a jedno pravidlo k účtu úložiště.
 - Cílový účet úložiště nebo centrum událostí musí být ve stejné oblasti jako pracovní prostor Log Analytics.
 - Názvy tabulek, které mají být exportovány, nemohou být pro účet úložiště delší než 60 znaků a v centru událostí nejsou delší než 47 znaků. Tabulky s delšími názvy nebudou exportovány.
 
@@ -58,7 +61,7 @@ Export dat Log Analytics pracovního prostoru průběžně exportuje data z prac
 ## <a name="data-completeness"></a>Úplnost dat
 Export dat bude pokračovat v pokusu o odeslání dat po dobu až 30 minut v případě, že cíl není k dispozici. Pokud není po 30 minutách k dispozici, budou data zahozena, dokud nebude cíl k dispozici.
 
-## <a name="cost"></a>Cost
+## <a name="cost"></a>Náklady
 Pro funkci exportu dat se momentálně neúčtují žádné další poplatky. Ceny za export dat budou v budoucnu ohlášeny a oznámení poskytované před zahájením fakturace. Pokud se rozhodnete, že budete exportovat data i po uplynutí období oznámení, bude se vám účtovat příslušná sazba.
 
 ## <a name="export-destinations"></a>Exportovat cíle
@@ -115,7 +118,7 @@ Pokud jste nakonfigurovali účet úložiště tak, aby povoloval přístup z vy
 
 
 ### <a name="create-or-update-data-export-rule"></a>Vytvořit nebo aktualizovat pravidlo exportu dat
-Pravidlo exportu dat definuje data, která se mají exportovat pro sadu tabulek do jednoho cíle. Můžete vytvořit pravidlo pro každý cíl.
+Pravidlo exportu dat definuje data, která se mají exportovat pro sadu tabulek do jednoho cíle. Pro každý cíl můžete vytvořit jedno pravidlo.
 
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)

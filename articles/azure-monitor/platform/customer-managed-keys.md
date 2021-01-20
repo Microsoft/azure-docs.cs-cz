@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: 889ee48c43119086047d6f52737266f4c611fc8d
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: 6061980ec556fccde3de882a291bc390b88c5a24
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562739"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98611079"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Klíč spravovaný zákazníkem v Azure Monitoru 
 
@@ -386,15 +386,11 @@ Customer-Managed klíč je k dispozici na vyhrazeném clusteru a tyto operace js
 
 ## <a name="limitations-and-constraints"></a>Omezení a omezení
 
-- Klíč spravovaný zákazníkem se podporuje na vyhrazeném Log Analyticsm clusteru a vhodný pro zákazníky, kteří odesílají 1 TB za den.
-
 - Maximální počet clusterů na oblast a předplatné je 2.
 
-- Maximální počet propojených pracovních prostorů ke clusteru je 1000.
+- Maximální počet pracovních prostorů, které lze propojit s clusterem, je 1000
 
 - Pracovní prostor můžete propojit s clusterem a pak ho odpojit. Počet operací propojení s pracovním prostorem v konkrétním pracovním prostoru je omezený na 2 v období 30 dnů.
-
-- Odkaz na pracovní prostor na cluster by se měl přenést až po ověření, že se zřízení clusteru Log Analytics dokončilo. Data odesílaná do vašeho pracovního prostoru před dokončením budou vyřazena a nebude možné je obnovit.
 
 - Šifrování klíče spravovaného zákazníkem se vztahuje na nově ingestovaná data po čase konfigurace. Data, která byla ingestovaná před konfigurací, zůstávají šifrovaná pomocí klíče Microsoft Key. Můžete zadávat dotazy na data ingestovaná před a po bezproblémové konfiguraci klíče spravovaného zákazníkem.
 
@@ -404,14 +400,12 @@ Customer-Managed klíč je k dispozici na vyhrazeném clusteru a tyto operace js
 
 - Přesun clusteru do jiné skupiny prostředků nebo předplatného se momentálně nepodporuje.
 
-- Vaše Azure Key Vault, cluster a propojené pracovní prostory musí být ve stejné oblasti a v rámci stejného tenanta Azure Active Directory (Azure AD), ale můžou být v různých předplatných.
-
-- Odkaz na pracovní prostor na cluster se nezdaří, pokud je propojený s jiným clusterem.
+- Vaše Azure Key Vault, cluster a pracovní prostory musí být ve stejné oblasti a v rámci stejného tenanta Azure Active Directory (Azure AD), ale můžou být v různých předplatných.
 
 - V Číně momentálně není k dispozici bezpečnostní modul. 
 
-- Pro clustery vytvořené z října 2020 se v podporovaných oblastech automaticky nakonfiguruje [dvojité šifrování](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) . Můžete ověřit, jestli je váš cluster nakonfigurovaný pro dvojité šifrování, požadavkem GET v clusteru a `"isDoubleEncryptionEnabled"` hodnotou vlastnosti – `true` pro clustery se zapnutým šifrováním s dvojitým šifrováním. 
-  - Pokud vytvoříte cluster a obdržíte chybu "<název oblasti> nepodporuje pro clustery dvojité šifrování", můžete cluster stále vytvořit bez šifrování. `"properties": {"isDoubleEncryptionEnabled": false}`Do textu žádosti REST přidejte vlastnost.
+- Pro clustery vytvořené z října 2020 se v podporovaných oblastech automaticky nakonfiguruje [dvojité šifrování](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) . Odesláním žádosti o získání do clusteru můžete ověřit, jestli je váš cluster nakonfigurovaný pro šifrování s dvojitým šifrováním a zda `isDoubleEncryptionEnabled` je tato hodnota `true` pro clustery s povoleným dvojitým šifrováním. 
+  - Pokud vytvoříte cluster a obdržíte chybu "<název oblasti> nepodporuje dvojité šifrování pro clustery", můžete cluster i nadále vytvořit bez šifrování dvojitým šifrováním přidáním `"properties": {"isDoubleEncryptionEnabled": false}` do textu žádosti REST.
   - Nastavení dvojitého šifrování nelze změnit po vytvoření clusteru.
 
   - Pokud je váš cluster nastavený pomocí spravované identity přiřazené uživatelem, nastavení `UserAssignedIdentities` `None` pozastaví cluster a znemožní přístup k vašim datům, ale nemůžete vrátit zpět odvolání a aktivovat cluster bez nutnosti otevřít žádost o podporu. Toto omezení se vztahuje na spravovanou identitu přiřazenou systémem.
@@ -429,13 +423,15 @@ Customer-Managed klíč je k dispozici na vyhrazeném clusteru a tyto operace js
 
   - Key Vault míra přístupu – frekvence, kterou Azure Monitor přístup k úložišti Key Vault pro operace zabalení a rozbalení je mezi 6 až 60 sekundami.
 
-- Pokud vytvoříte cluster a okamžitě zadáte KeyVaultProperties, operace může selhat, protože zásady přístupu nejde definovat, dokud není systémová identita přiřazená ke clusteru.
-
-- Pokud aktualizujete existující cluster pomocí KeyVaultProperties a zásada přístupu pro klíč "Get" v Key Vault chybí, operace se nezdaří.
+- Pokud cluster aktualizujete při zřizování nebo aktualizaci stavu, aktualizace se nezdaří.
 
 - Pokud při vytváření clusteru dojde k chybě, může to být tím, že jste cluster odstranili za posledních 14 dní a je v období obnovitelného odstranění. Název clusteru zůstane rezervovaný během období obnovitelného odstranění a nemůžete vytvořit nový cluster s tímto názvem. Název se uvolní po uplynutí doby tichého odstranění, kdy se cluster trvale odstraní.
 
-- Pokud cluster aktualizujete, zatímco probíhá operace, operace se nezdaří.
+- Odkaz na pracovní prostor na cluster se nezdaří, pokud je propojený s jiným clusterem.
+
+- Pokud vytvoříte cluster a okamžitě zadáte KeyVaultProperties, operace může selhat, protože zásady přístupu nejde definovat, dokud není systémová identita přiřazená ke clusteru.
+
+- Pokud aktualizujete existující cluster pomocí KeyVaultProperties a zásada přístupu pro klíč "Get" v Key Vault chybí, operace se nezdaří.
 
 - Pokud se nedaří nasadit cluster, ověřte, že pracovní prostory Azure Key Vault, cluster a propojené Log Analytics jsou ve stejné oblasti. Může být v různých předplatných.
 

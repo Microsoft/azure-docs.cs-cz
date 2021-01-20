@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: 93b05a5535b80d0e0d1a07c88aa9b19052f1b703
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: a5cbbed3881433121f5ab811082969bc3c6c4f7f
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562671"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98609940"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor protokolovat vyhrazené clustery
 
@@ -512,27 +512,25 @@ Pomocí následujícího volání REST odstraňte cluster:
 
 - Pracovní prostor můžete propojit s clusterem a pak ho odpojit. Počet operací propojení s pracovním prostorem v konkrétním pracovním prostoru je omezený na 2 v období 30 dnů.
 
-- Odkaz na pracovní prostor na cluster by se měl přenést až po ověření, že se zřízení clusteru Log Analytics dokončilo. Data odesílaná do vašeho pracovního prostoru před dokončením budou vyřazena a nebude možné je obnovit.
-
 - Přesun clusteru do jiné skupiny prostředků nebo předplatného se momentálně nepodporuje.
-
-- Odkaz na pracovní prostor na cluster se nezdaří, pokud je propojený s jiným clusterem.
 
 - V Číně momentálně není k dispozici bezpečnostní modul. 
 
-- Pro clustery vytvořené z října 2020 se v podporovaných oblastech automaticky nakonfiguruje [dvojité šifrování](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) . Můžete ověřit, jestli je váš cluster nakonfigurovaný pro dvojité šifrování, požadavkem GET v clusteru a `"isDoubleEncryptionEnabled"` hodnotou vlastnosti – `true` pro clustery se zapnutým šifrováním s dvojitým šifrováním. 
-  - Pokud vytvoříte cluster a obdržíte chybu "<název oblasti> nepodporuje pro clustery dvojité šifrování", můžete cluster stále vytvořit bez šifrování. `"properties": {"isDoubleEncryptionEnabled": false}`Do textu žádosti REST přidejte vlastnost.
+- Pro clustery vytvořené z října 2020 se v podporovaných oblastech automaticky nakonfiguruje [dvojité šifrování](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) . Odesláním žádosti o získání do clusteru můžete ověřit, jestli je váš cluster nakonfigurovaný pro šifrování s dvojitým šifrováním a zda `isDoubleEncryptionEnabled` je tato hodnota `true` pro clustery s povoleným dvojitým šifrováním. 
+  - Pokud vytvoříte cluster a obdržíte chybu "<název oblasti> nepodporuje dvojité šifrování pro clustery", můžete cluster i nadále vytvořit bez šifrování dvojitým šifrováním přidáním `"properties": {"isDoubleEncryptionEnabled": false}` do textu žádosti REST.
   - Nastavení dvojitého šifrování nelze změnit po vytvoření clusteru.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
 - Pokud při vytváření clusteru dojde k chybě, může to být tím, že jste cluster odstranili za posledních 14 dní a je ve stavu obnovitelného odstranění. Název clusteru zůstane rezervovaný během období obnovitelného odstranění a nemůžete vytvořit nový cluster s tímto názvem. Název se uvolní po uplynutí doby tichého odstranění, kdy se cluster trvale odstraní.
 
-- Pokud cluster aktualizujete, zatímco probíhá operace, operace se nezdaří.
+- Pokud cluster aktualizujete při zřizování nebo aktualizaci stavu, aktualizace se nezdaří.
 
 - Některé operace jsou dlouhé a jejich dokončení může chvíli trvat – jedná se o vytvoření clusteru, aktualizaci klíčů clusteru a odstranění clusteru. Stav operace můžete zjistit dvěma způsoby:
   - Pokud používáte REST, zkopírujte hodnotu adresy URL Azure-AsyncOperation z odpovědi a postupujte podle [kontroly stavu asynchronních operací](#asynchronous-operations-and-status-check).
   - Odešlete požadavek GET do clusteru nebo pracovního prostoru a sledujte odpověď. Například nepropojený pracovní prostor nebude mít *clusterResourceId* v části *funkce*.
+
+- Odkaz na pracovní prostor na cluster se nezdaří, pokud je propojený s jiným clusterem.
 
 - Chybové zprávy
   

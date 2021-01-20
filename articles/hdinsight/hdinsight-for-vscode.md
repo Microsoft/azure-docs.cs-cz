@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: c32f90221a73d04fd6c54c8332826232d0e6a6f3
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 30c13adfebb911e443fb042821e09628da3b9405
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968530"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610977"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Použití nástrojů pro podregistr Spark & pro Visual Studio Code
 
@@ -21,7 +21,7 @@ Naučte se používat nástroje Apache Spark & podregistr pro Visual Studio Code
 
 Nástroje Spark & podregistr je možné nainstalovat na platformy, které Visual Studio Code podporuje. Všimněte si následujících požadavků pro různé platformy.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení kroků v tomto článku jsou vyžadovány následující položky:
 
@@ -211,31 +211,30 @@ K odeslání dotazů pomocí interaktivního příkazu PySpark použijte násled
 
    ![pyspark se úspěšně nainstaloval.](./media/hdinsight-for-vscode/pyspark-kernel-installed-successfully.png)
 
-7. Pomocí příkazového řádku spusťte **instalaci PIP numpy = = 1.19.3** a znovu znovu načtěte okno VSCode.
 
-8. V řádku nabídek přejděte k **zobrazení**  >  **paleta příkazů...** nebo použijte klávesovou zkratku **SHIFT + CTRL + P** a zadejte **Python: vyberte interpreter a spusťte Jupyter Server**.
+7. V řádku nabídek přejděte k **zobrazení**  >  **paleta příkazů...** nebo použijte klávesovou zkratku **SHIFT + CTRL + P** a zadejte **Python: vyberte interpreter a spusťte Jupyter Server**.
 
    ![Výběr interpretu pro spuštění serveru Jupyter](./media/hdinsight-for-vscode/select-interpreter-to-start-jupyter-server.png)
 
-9. Vyberte níže uvedenou možnost Pythonu.
+8. Vyberte níže uvedenou možnost Pythonu.
 
    ![Vyberte níže uvedenou možnost.](./media/hdinsight-for-vscode/choose-the-below-option.png)
     
-10. V řádku nabídek přejděte k **zobrazení**  >  **paleta příkazů...** nebo použijte klávesovou zkratku **SHIFT + CTRL + P** a zadejte **Developer: reload Window**.
+9. V řádku nabídek přejděte k **zobrazení**  >  **paleta příkazů...** nebo použijte klávesovou zkratku **SHIFT + CTRL + P** a zadejte **Developer: reload Window**.
 
     ![znovu načíst okno](./media/hdinsight-for-vscode/reload-window.png)
 
-11. [Připojte](#connect-to-an-azure-account) se k účtu Azure nebo propojte cluster, pokud jste to ještě neudělali.
+10. [Připojte](#connect-to-an-azure-account) se k účtu Azure nebo propojte cluster, pokud jste to ještě neudělali.
 
-12. Vyberte veškerý kód, klikněte pravým tlačítkem na editor skriptů a vyberte **Spark: PySpark Interactive/synapse: PySpark Interactive** k odeslání dotazu. 
+11. Vyberte veškerý kód, klikněte pravým tlačítkem na editor skriptů a vyberte **Spark: PySpark Interactive/synapse: PySpark Interactive** k odeslání dotazu. 
 
     ![interaktivní kontextová nabídka pyspark](./media/hdinsight-for-vscode/pyspark-interactive-right-click.png)
 
-13. Pokud jste nezadali výchozí cluster, vyberte cluster. Po chvíli se **interaktivní výsledky Pythonu** zobrazí na nové kartě. Kliknutím na PySpark přepněte jádro na **PySpark/synapse PySpark** a kód se úspěšně spustí. Pokud chcete přepnout na jádro synapse Pyspark, doporučujeme zakázat automatické nastavení v Azure Portal. V opačném případě může trvat delší dobu, než se cluster probudí a nastaví se jádro synapse při prvním použití. Pokud nástroje umožňují také odeslat blok kódu namísto celého souboru skriptu pomocí místní nabídky:
+12. Pokud jste nezadali výchozí cluster, vyberte cluster. Po chvíli se **interaktivní výsledky Pythonu** zobrazí na nové kartě. Kliknutím na PySpark přepněte jádro na **PySpark/synapse PySpark** a kód se úspěšně spustí. Pokud chcete přepnout na jádro synapse Pyspark, doporučujeme zakázat automatické nastavení v Azure Portal. V opačném případě může trvat delší dobu, než se cluster probudí a nastaví se jádro synapse při prvním použití. Pokud nástroje umožňují také odeslat blok kódu namísto celého souboru skriptu pomocí místní nabídky:
 
     ![interaktivní okno pyspark interaktivního Pythonu](./media/hdinsight-for-vscode/pyspark-interactive-python-interactive-window.png)
 
-14. Zadejte **%% info** a potom stiskněte SHIFT + ENTER, abyste zobrazili informace o úloze (volitelné):
+13. Zadejte **%% info** a potom stiskněte SHIFT + ENTER, abyste zobrazili informace o úloze (volitelné):
 
     ![informace o úloze interaktivního zobrazení pyspark](./media/hdinsight-for-vscode/pyspark-interactive-view-job-information.png)
 
@@ -353,7 +352,7 @@ Odešlete soubor a Všimněte si, že se `.vscode` Složka automaticky přidala 
   
   **Text žádosti**
 
-  | name | Popis | typ |
+  | name | description | typ |
   | --- | --- | --- |
   |  – soubor | Soubor obsahující aplikaci, která se má provést | Cesta (povinné) |
   | proxyUser | Uživatel, který se má zosobnit při spuštění úlohy | Řetězec |
@@ -374,7 +373,7 @@ Odešlete soubor a Všimněte si, že se `.vscode` Složka automaticky přidala 
 
   **Tělo odpovědi** Vytvořený objekt Batch.
 
-  | name | Popis | typ |
+  | name | description | typ |
   | --- | ---| --- |
   | ID | ID relace | Int |
   | appId | ID aplikace této relace | Řetězec |

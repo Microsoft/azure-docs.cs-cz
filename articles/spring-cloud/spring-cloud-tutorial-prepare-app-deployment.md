@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 5d160c46b235c6890426cab9de52ec7b827efe4a
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 37753265afa7e76e87dbcdc5893595bea66798f4
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96750709"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610246"
 ---
 # <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>Příprava aplikace pro nasazení v jarním cloudu Azure
 
@@ -146,40 +146,14 @@ Jarní cloud Azure podporuje pouze aplikace pružiny pro spuštění, které jso
 
 Jarní spouštěcí verze | Jarní cloudová verze
 ---|---
-2.1 | Střední verze
 2,2 | Hoxton.SR8
 2.3 | Hoxton.SR8
+2.4.1 + | 2020.0.0
 
 > [!NOTE]
-> Zjistili jsme problém se jarním 2,4 spuštěním ověřování TLS mezi vašimi aplikacemi a Eureka a momentálně spolupracujete se zdrojovou komunitou, abyste ji mohli vyřešit. Alternativní řešení najdete v našich [nejčastějších dotazech](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-faq?pivots=programming-language-java#development) .
+> Zjistili jsme problém se jarním spouštěním 2.4.0 při ověřování TLS mezi vašimi aplikacemi a Eureka, použijte prosím 2.4.1 nebo vyšší. Pokud si nejste s používáním 2.4.0, přečtěte si naše [Nejčastější dotazy týkající](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-faq?pivots=programming-language-java#development) se řešení.
 
-### <a name="dependencies-for-spring-boot-version-21"></a>Závislosti pro jaře Booting verze 2,1
-
-Pro jaře Booting verze 2,1 přidejte do souboru POM aplikace následující závislosti.
-
-```xml
-    <!-- Spring Boot dependencies -->
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.12.RELEASE</version>
-    </parent>
-
-    <!-- Spring Cloud dependencies -->
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Greenwich.RELEASE</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-```
-
-### <a name="dependencies-for-spring-boot-version-22"></a>Závislosti pro jaře Booting verze 2,2
+### <a name="dependencies-for-spring-boot-version-2223"></a>Závislosti pro jaře Boot verze 2.2/2.3
 
 Pro jaře Booting verze 2,2 přidejte do souboru POM aplikace následující závislosti.
 
@@ -204,16 +178,17 @@ Pro jaře Booting verze 2,2 přidejte do souboru POM aplikace následující zá
         </dependencies>
     </dependencyManagement>
 ```
-### <a name="dependencies-for-spring-boot-version-23"></a>Závislosti pro jaře Booting verze 2,3
 
-Pro jaře Booting verze 2,3 přidejte do souboru POM aplikace následující závislosti.
+### <a name="dependencies-for-spring-boot-version-24"></a>Závislosti pro jaře Booting verze 2,4
+
+Pro jaře Booting verze 2,2 přidejte do souboru POM aplikace následující závislosti.
 
 ```xml
     <!-- Spring Boot dependencies -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.3.0.RELEASE</version>
+        <version>2.4.1.RELEASE</version>
     </parent>
 
     <!-- Spring Cloud dependencies -->
@@ -222,34 +197,14 @@ Pro jaře Booting verze 2,3 přidejte do souboru POM aplikace následující zá
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Hoxton.SR8</version>
+                <version>2020.0.0</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
 ```
-## <a name="azure-spring-cloud-client-dependency"></a>Závislost klienta na jaře cloudu Azure
 
-Azure jaře Cloud hostuje a spravuje jarní cloudové komponenty. Mezi tyto komponenty patří jarní cloudová služba a server pro konfiguraci jarního cloudu. Doporučuje se použít jaře Boot 2,2 nebo 2,3. V případě jarního spouštění 2,1 budete muset do svých závislostí zahrnout klientskou knihovnu pro jarní cloudy Azure, aby bylo možné komunikovat s instancí cloudové služby Azure jaře.
-
-V následující tabulce jsou uvedené správné verze cloudových cloudů Azure pro vaši aplikaci, které využívají jarní spouštěcí a jarní Cloud.
-
-Jarní spouštěcí verze | Jarní cloudová verze | Verze počátečního cloudu pro Azure jaře pro klienta
----|---|---
-2.1. x | Střední verze | 2.1.2
-2.2. x | Hoxton.SR8 | Není potřeba
-2.3. x | Hoxton.SR8 | Není potřeba
-
-Pokud používáte jarní spouštění 2,1, zahrňte do souboru pom.xml následující dependenciy.
-
-```xml
-<dependency>
-        <groupId>com.microsoft.azure</groupId>
-        <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
-        <version>2.1.2</version>
-</dependency>
-```
 > [!WARNING]
 > Nezadávejte `server.port` v konfiguraci. U jarního cloudu Azure se toto nastavení overide na pevné číslo portu. Respektujte prosím toto nastavení a v kódu nespecifikujte port serveru.
 
@@ -329,6 +284,9 @@ Zahrňte `spring-boot-starter-actuator` závislost do oddílu závislosti v soub
 
 ### <a name="distributed-tracing"></a>Distribuované trasování
 
+Musíte taky povolit instanci Azure Application Insights, abyste mohli pracovat s instancí cloudové služby Azure na jaře. Informace o tom, jak používat Application Insights s využitím služby Azure Pramenitého cloudu, najdete v [dokumentaci k distribuovanému trasování](spring-cloud-tutorial-distributed-tracing.md).
+
+#### <a name="spring-boot-2223"></a>Jarní spuštění 2.2/2.3
 `spring-cloud-starter-sleuth` `spring-cloud-starter-zipkin` Do oddílu závislosti v souboru pom.xml zahrňte následující a závislosti:
 
 ```xml
@@ -342,7 +300,15 @@ Zahrňte `spring-boot-starter-actuator` závislost do oddílu závislosti v soub
 </dependency>
 ```
 
- Musíte taky povolit instanci Azure Application Insights, abyste mohli pracovat s instancí cloudové služby Azure na jaře. Informace o tom, jak používat Application Insights s využitím služby Azure Pramenitého cloudu, najdete v [dokumentaci k distribuovanému trasování](spring-cloud-tutorial-distributed-tracing.md).
+#### <a name="spring-boot-24"></a>Jarní spuštění 2,4
+`spring-cloud-sleuth-zipkin`Do části závislosti v souboru pom.xml zahrňte následující závislost:
+
+```xml
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-sleuth-zipkin</artifactId>
+</dependency>
+```
 
 ## <a name="see-also"></a>Viz také
 * [Analýza protokolů a metrik aplikace](./diagnostic-services.md)

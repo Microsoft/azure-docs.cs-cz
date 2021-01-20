@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b7980bfc58ed696a74d3da259e23fb7e428621a9
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: e92b17a5743e983ca3e77ad18c0973b9f056dfbd
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028909"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98611164"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Průvodce vývojáře pro službu Azure Key Vault
 
@@ -41,7 +41,7 @@ Přístup k vrstvě správy řídí [řízení přístupu na základě role v Az
 
 | Azure CLI | PowerShell | REST API | Resource Manager | .NET | Python | Java | JavaScript |  
 |--|--|--|--|--|--|--|--|
-|[Odkaz](/cli/azure/keyvault)<br>[Rychlý start](quick-create-cli.md)|[Odkaz](/powershell/module/az.keyvault)<br>[Rychlý start](quick-create-powershell.md)|[Odkaz](/rest/api/keyvault/)|[Odkaz](/azure/templates/microsoft.keyvault/vaults)|[Odkaz](/dotnet/api/microsoft.azure.management.keyvault)<br>[Rychlý start](https://docs.microsoft.com/azure/key-vault/general/vault-create-template)|[Odkaz](/python/api/azure-mgmt-keyvault/azure.mgmt.keyvault)|[Odkaz](/java/api/com.microsoft.azure.management.keyvault)|[Odkaz](/javascript/api/@azure/arm-keyvault)|
+|[Odkaz](/cli/azure/keyvault)<br>[Rychlý start](quick-create-cli.md)|[Odkaz](/powershell/module/az.keyvault)<br>[Rychlý start](quick-create-powershell.md)|[Odkaz](/rest/api/keyvault/)|[Odkaz](/azure/templates/microsoft.keyvault/vaults)<br>[Rychlý start](https://docs.microsoft.com/azure/key-vault/general/vault-create-template)|[Odkaz](/dotnet/api/microsoft.azure.management.keyvault)|[Odkaz](/python/api/azure-mgmt-keyvault/azure.mgmt.keyvault)|[Odkaz](/java/api/com.microsoft.azure.management.keyvault)|[Odkaz](/javascript/api/@azure/arm-keyvault)|
 
 Instalační balíčky a zdrojový kód najdete v tématu [klientské knihovny](client-libraries.md) .
 
@@ -67,7 +67,7 @@ Scénáře ověřování jsou podporované **klientskou knihovnou identity Azure
 
 Další informace o službě Azure identity Client libarary najdete v těchto tématech:
 
-### <a name="azure-identity-client-libraries"></a>Klientské knihovny identit Azure
+**Klientské knihovny identit Azure**
 
 | .NET | Python | Java | JavaScript |
 |--|--|--|--|
@@ -85,8 +85,7 @@ Výukové programy, jak ověřit Key Vault v aplikacích, najdete v tématech:
 
 Přístup k klíčům, tajným klíčům a certifikátům je řízen rovinou dat. Řízení přístupu roviny dat se dá provést pomocí zásad přístupu k místnímu trezoru nebo Azure RBAC (Preview).
 
-**Klíče rozhraní API a sady SDK**
-
+**Rozhraní API pro klíče a sady SDK**
 
 | Azure CLI | PowerShell | REST API | Resource Manager | .NET | Python | Java | JavaScript |  
 |--|--|--|--|--|--|--|--|
@@ -94,13 +93,11 @@ Přístup k klíčům, tajným klíčům a certifikátům je řízen rovinou dat
 
 **Rozhraní API a sady SDK pro certifikáty**
 
-
 | Azure CLI | PowerShell | REST API | Resource Manager | .NET | Python | Java | JavaScript |  
 |--|--|--|--|--|--|--|--|
 |[Odkaz](/cli/azure/keyvault/certificate)<br>[Rychlý start](../certificates/quick-create-cli.md)|[Odkaz](/powershell/module/az.keyvault)<br>[Rychlý start](../certificates/quick-create-powershell.md)|[Odkaz](/rest/api/keyvault/#certificate-operations)|–|[Odkaz](/dotnet/api/azure.security.keyvault.certificates)<br>[Rychlý start](../certificates/quick-create-net.md)|[Odkaz](/python/api/overview/azure/keyvault-certificates-readme)<br>[Rychlý start](../certificates/quick-create-python.md)|[Odkaz](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-certificates/4.1.0/index.html)<br>[Rychlý start](../certificates/quick-create-java.md)|[Odkaz](/javascript/api/@azure/keyvault-certificates/)<br>[Rychlý start](../certificates/quick-create-node.md)|
 
 **Rozhraní API a sady SDK tajných klíčů**
-
 
 | Azure CLI | PowerShell | REST API | Resource Manager | .NET | Python | Java | JavaScript |  
 |--|--|--|--|--|--|--|--|

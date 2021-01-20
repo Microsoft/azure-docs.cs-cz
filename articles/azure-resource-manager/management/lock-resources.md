@@ -4,12 +4,12 @@ description: Zabrání uživatelům aktualizovat nebo odstraňovat prostředky A
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7efeb8a073a04f78f77046c07c107abf0c7526f4
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 53054f89c992139fbbd4f087d2a0344e26d97efc
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602201"
+ms.locfileid: "98610195"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Zamknutí prostředků, aby se zabránilo neočekávaným změnám
 
@@ -254,10 +254,17 @@ Pokud chcete získat všechny zámky pro skupinu prostředků, použijte:
 Get-AzResourceLock -ResourceGroupName exampleresourcegroup
 ```
 
-K odstranění zámku použijte:
+Pokud chcete odstranit zámek prostředku, použijte:
 
 ```azurepowershell-interactive
 $lockId = (Get-AzResourceLock -ResourceGroupName exampleresourcegroup -ResourceName examplesite -ResourceType Microsoft.Web/sites).LockId
+Remove-AzResourceLock -LockId $lockId
+```
+
+Pokud chcete odstranit zámek pro skupinu prostředků, použijte:
+
+```azurepowershell-interactive
+$lockId = (Get-AzResourceLock -ResourceGroupName exampleresourcegroup).LockId
 Remove-AzResourceLock -LockId $lockId
 ```
 
@@ -295,10 +302,17 @@ Pokud chcete získat všechny zámky pro skupinu prostředků, použijte:
 az lock list --resource-group exampleresourcegroup
 ```
 
-K odstranění zámku použijte:
+Pokud chcete odstranit zámek prostředku, použijte:
 
 ```azurecli
 lockid=$(az lock show --name LockSite --resource-group exampleresourcegroup --resource-type Microsoft.Web/sites --resource-name examplesite --output tsv --query id)
+az lock delete --ids $lockid
+```
+
+Pokud chcete odstranit zámek pro skupinu prostředků, použijte:
+
+```azurecli
+lockid=$(az lock show --name LockSite --resource-group exampleresourcegroup  --output tsv --query id)
 az lock delete --ids $lockid
 ```
 

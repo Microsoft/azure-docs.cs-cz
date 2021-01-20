@@ -1,5 +1,5 @@
 ---
-title: Strojírenství funkcí v oblasti datových věd – vědecký proces týmového zpracování dat
+title: Vytváření funkcí ve strojovém učení – vědecké zpracování týmových dat
 description: Přečtěte si informace o technikách funkcí a její roli v procesu rozšíření dat Machine Learning.
 services: machine-learning
 author: marktab
@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 05/14/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperf-fy20q4
-ms.openlocfilehash: 7cf97edcb2f2f7a23d5c899194d497deade1f507
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: b20a6744644678879fedf44e960854f558eb0f03
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031857"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610433"
 ---
-# <a name="feature-engineering-in-data-science"></a>Strojírenství funkcí v oblasti datových věd
+# <a name="feature-engineering-in-machine-learning"></a>Strojírenství funkcí ve strojovém učení
 
 V tomto článku se seznámíte s technologickými postupy a jejími rolemi v tématu zvyšování dat ve službě Machine Learning. Naučte se z ilustrované příklady vypracované z [Azure Machine Learning Studio (klasické)](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio) experimenty. 
 

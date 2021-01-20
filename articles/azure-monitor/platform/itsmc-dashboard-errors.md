@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 01/18/2021
-ms.openlocfilehash: 7240c1b0f19dc49ab4130c5ee2516dcfefb2e2c2
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 9521c13b21317bb0a782b0bea0b08312ff24b113
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602183"
+ms.locfileid: "98610348"
 ---
 # <a name="errors-in-the-connector-status"></a>Chyby ve stavu konektoru
 
@@ -27,7 +27,7 @@ v této části najdete běžné chyby, které se zobrazují v části stav kone
   * Vlastní skript nasazený v instanci ServiceNow způsobí, že se incidenty budou ignorovat.
   * Samotný kód aplikace pro integrátory OMS byl změněn na straně ServiceNow, například skript před.
 
-    **Řešení**: zakažte všechny vlastní skripty nebo změny kódu v cestě pro import dat.
+  **Řešení**: zakažte všechny vlastní skripty nebo změny kódu v cestě pro import dat.
 
 * **Chyba**: "{" Chyba ": {" zpráva ":" operace selhala "," Detail ":" aktualizace výjimky ACL se nezdařila z důvodu omezení zabezpečení "}"
 

@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
 ms.date: 11/24/2020
-ms.openlocfilehash: 7ee203595a796529ae0aefe8b0c52a689ac29968
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: d94736656f691da9e893e4619a2299a061acd8e8
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96762325"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98611198"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-the-azure-portal"></a>Kurz: vytvoření Azure Load Balancer mezi oblastmi pomocí Azure Portal
 
@@ -32,7 +32,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 > Azure Load Balancer pro různé oblasti je aktuálně ve verzi Public Preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure.
 - Dvě **standardní** SKU služby Vyrovnávání zatížení Azure s back-end fondy nasazenými ve dvou různých oblastech Azure.
@@ -41,7 +41,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="sign-in-to-azure-portal"></a>Přihlášení k webu Azure Portal
 
-[Přihlaste](https://preview.portal.azure.com) se k portálu Azure Preview.
+[Přihlaste](https://portal.azure.com) se k portálu Azure Preview.
 
 ## <a name="create-cross-region-load-balancer"></a>Vytvoření nástroje pro vyrovnávání zatížení mezi oblastmi
 
@@ -55,10 +55,10 @@ V této části vytvoříte Nástroj pro vyrovnávání zatížení mezi oblastm
     | ---                     | ---                                                |
     | Předplatné               | Vyberte své předplatné.    |    
     | Skupina prostředků         | Vyberte **vytvořit novou** a do textového pole zadejte **CreateCRLBTutorial-RG** .|
-    | Název                   | Zadejte **myLoadBalancer-CR** .                                   |
+    | Name                   | Zadejte **myLoadBalancer-CR** .                                   |
     | Oblast         | Vyberte **západní USA**.                                        |
     | Typ          | Vyberte **Veřejný**.                                        |
-    | SKU           | Vybrat **Standard** |
+    | Skladová položka           | Vybrat **Standard** |
     | Úroveň           | Vybrat **globální** |
     | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu.|
     | Název veřejné IP adresy | Do textového pole zadejte **myPublicIP-CR** .|

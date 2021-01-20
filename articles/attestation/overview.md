@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: 6a587ecbe7ff67908b22d4f2429cfdd0c511e07d
-ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+ms.openlocfilehash: 0d1b2bd039f3e110c83d7ad4bf32f1e53e4c7a79
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96748769"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610144"
 ---
 # <a name="microsoft-azure-attestation-preview"></a>Microsoft Azure Attestation (Preview)
 
@@ -39,6 +39,12 @@ Klientské aplikace můžou být navržené tak, aby využívaly výhod SGX encl
 [Open enklávy](https://openenclave.io/sdk/) (OE) je kolekce knihoven, které cílí na vytvoření jedné sjednocené enclaving abstrakce pro vývojáře pro vytváření aplikací založených na Tee. Nabízí univerzální zabezpečený model aplikace, který minimalizuje určité platformy. Microsoft se zobrazí jako základní krok – kámen pro democratizing hardwarové technologie enklávy, jako je SGX, a zvyšování jejich přijetí v Azure.
 
 OE standardizace specifické požadavky pro ověření enklávy důkazů. To se říká jako vysoce škálovatelný spotřebitel ověření identity Azure.
+
+### <a name="tpm-attestation"></a>Osvědčení TPM 
+
+Ověřování založené na čipu TPM (Trusted Platform Module) je důležité pro zajištění kontroly stavu platforem. ČIP TPM funguje jako kořen vztahu důvěryhodnosti a koprocesor zabezpečení, který zajišťuje kryptografickou platnost měření (legitimace). Zařízení s čipem TPM se můžou spoléhat na ověření identity, aby se prokázalo, že integrita spouštění není ohrožená, a pomocí deklarací identity zjistili, že při spuštění se při zjišťování aktivují stavy funkcí. 
+
+Klientské aplikace můžou být navržené tak, aby využívaly výhody ověřování pomocí čipu TPM tím, že se přijímají úlohy citlivé na zabezpečení, které se provedou jenom po ověření, aby byla platforma zabezpečená. Takové aplikace pak můžou využít ověření Azure k rutinnímu vytvoření vztahu důvěryhodnosti v platformě a její možnosti přistupovat k citlivým datům.
 
 ## <a name="azure-attestation-can-run-in-a-tee"></a>Azure Attestation může běžet v TEE.
 

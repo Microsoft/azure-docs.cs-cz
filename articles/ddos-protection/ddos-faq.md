@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2020
 ms.author: yitoh
-ms.openlocfilehash: b53501bf5aa4bafb0229158edfe0cb244116b909
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 89685d1b8c3a57fa142bbbfd1114f9aa0ff0c400
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600840"
+ms.locfileid: "98611113"
 ---
 # <a name="azure-ddos-protection-standard-frequent-asked-questions"></a>Azure DDoS Protection standardní časté otázky
 
@@ -79,4 +79,7 @@ Viz [testování prostřednictvím simulací](test-through-simulations.md).
 
 ## <a name="how-long-does-it-take-for-the-metrics-to-load-on-portal"></a>Jak dlouho trvá, než se metriky načtou na portálu?
 Metriky by se měly zobrazovat na portálu během 5 minut. Pokud je váš prostředek napadený, začnou se na portálu během 5-7 minut zobrazovat další metriky. 
+
+## <a name="does-the-service-store-customer-data"></a>Ukládá služba data o zákaznících?
+Ne, Azure DDoS Protection neukládá zákaznická data.
     

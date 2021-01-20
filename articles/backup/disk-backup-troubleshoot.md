@@ -3,12 +3,12 @@ title: Řešení potíží se zálohováním ve službě Azure disk Backup
 description: Postup řešení potíží se zálohováním ve službě Azure disk Backup
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 0a2ef1ea20ee8d6b7a3f32e244d3e00f3add80a2
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 3e7c81d70fc898528532a841a484bf6fff8b83a7
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98558204"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98611232"
 ---
 # <a name="troubleshooting-backup-failures-in-azure-disk-backup-in-preview"></a>Řešení potíží se zálohováním ve službě Azure disk Backup (ve verzi Preview)
 
@@ -153,12 +153,30 @@ Chybová zpráva: metadata snímku disku pro tento bod obnovení byla odstraněn
 
 Doporučená akce: Zvažte použití jiného bodu obnovení, který chcete obnovit. Další informace najdete v [dokumentaci k obnovení](restore-managed-disks.md).
 
+### <a name="error-code-backupagentpluginhostvalidateprotectionerror"></a>Kód chyby: BackupAgentPluginHostValidateProtectionError
+
+Chybová zpráva: zálohování disku ještě není dostupné v oblasti trezoru záloh, v rámci které se pokoušíte konfigurovat ochranu.
+
+Doporučená akce: úložiště záloh musí být v oblasti podporované ve verzi Preview. Dostupnost oblastí najdete v části [Podpora](disk-backup-support-matrix.md).
+
+### <a name="error-code-usererrordppdatasourcealreadyhasbackupinstance"></a>Kód chyby: UserErrorDppDatasourceAlreadyHasBackupInstance
+
+Chybová zpráva: disk, na který se pokoušíte nakonfigurovat zálohování, je už chráněný. Disk je už přidružený k instanci zálohy v úložišti záloh.
+
+Doporučená akce: Tento disk je už přidružený k instanci zálohy v úložišti záloh. Pokud chcete tento disk znovu chránit, odstraňte instanci zálohování z trezoru záloh, kde je aktuálně chráněná, a znovu ho Zabezpečte v jakémkoli jiném trezoru.
+
+### <a name="error-code-usererrordppdatasourcealreadyprotected"></a>Kód chyby: UserErrorDppDatasourceAlreadyProtected
+
+Chybová zpráva: disk, na který se pokoušíte nakonfigurovat zálohování, je už chráněný. Disk je už přidružený k instanci zálohy v úložišti záloh.
+
+Doporučená akce: Tento disk je už přidružený k instanci zálohy v úložišti záloh. Pokud chcete tento disk znovu chránit, odstraňte instanci zálohování z trezoru služby Backup, kde je aktuálně chráněná, a znovu ho Zabezpečte v jakémkoli jiném trezoru.
+
 ### <a name="error-code-usererrormaxconcurrentoperationlimitreached"></a>Kód chyby: UserErrorMaxConcurrentOperationLimitReached
 
-Chybová zpráva: operaci nelze spustit, protože pro tento typ operace dosáhlo maximálního počtu povolených souběžných operací.
+Chybová zpráva: operaci nelze spustit, protože bylo dosaženo maximálního počtu povolených souběžných záloh.
 
-Doporučená akce: Počkejte na dokončení předchozích operací.
+Doporučená akce: Počkejte na dokončení předchozí spuštěné zálohy.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Matice podpory Azure disk Backup](disk-backup-support-matrix.md)
+- [Matice podpory pro zálohování disků Azure](disk-backup-support-matrix.md)

@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/19/2021
-ms.openlocfilehash: 9ace9a319f4cc6bcc1545d6d1becce61b1892765
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 007bf845bab6f493fae91debefde27a4929d9f95
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598680"
+ms.locfileid: "98611028"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kvóty služby Azure Cosmos DB
 
@@ -236,7 +236,8 @@ V následující tabulce jsou uvedeny limity, které jsou specifické pro podpor
 | Prostředek | Výchozí omezení |
 | --- | --- |
 | Maximální velikost paměti pro dotaz na MongoDB (Toto omezení je jenom pro 3,2 verze serveru). | 40 MB |
-| Maximální doba provádění operací MongoDB| 30 s |
+|Maximální doba provádění operací MongoDB (verze serveru 3,2)| 15 sekund|
+|Maximální doba provádění operací MongoDB (verze serveru 3,6)| 60 sekund|
 | Časový limit nečinného připojení pro uzavření připojení na straně serveru * | 30 minut |
 
 \* Doporučujeme, aby klientské aplikace nastavily časový limit nečinného připojení v nastavení ovladače na 2-3 minut, protože [výchozí časový limit pro vyrovnávání zatížení Azure je 4 minuty](../load-balancer/load-balancer-tcp-idle-timeout.md).  Tento časový limit zajistí, aby nečinné připojení neuzavřelo zprostředkující Nástroj pro vyrovnávání zatížení mezi klientským počítačem a Azure Cosmos DB.

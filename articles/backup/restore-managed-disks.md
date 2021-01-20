@@ -3,12 +3,12 @@ title: Obnovit Managed Disks Azure
 description: Přečtěte si, jak obnovit Azure Managed Disks z Azure Portal.
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 043a10a7359c95529ff1c4dcc181ea4aba75cb5f
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 848a7476b1c5095d4e4d3156d4c7ce33da777090
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98557510"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98611130"
 ---
 # <a name="restore-azure-managed-disks-in-preview"></a>Obnovit Azure Managed Disks (ve verzi Preview)
 
@@ -65,6 +65,8 @@ K provedení operace obnovení se vyžadují následující požadavky:
     >I když se přiřazení rolí na portálu správně odrážejí, může trvat přibližně 15 minut, než se oprávnění použije ve spravované identitě trezoru záloh.
     >
     >Během naplánovaných záloh nebo operací zálohování na vyžádání Azure Backup ukládá přírůstkové snímky disku ve skupině prostředků snímku, která je k dispozici při konfiguraci zálohování disku. Azure Backup používá tyto přírůstkové snímky během operace obnovení. Pokud jsou snímky smazány nebo přesunuty ze skupiny prostředků snímku nebo pokud je u skupiny prostředků snímku zrušeno přiřazení role úložiště záloh, operace obnovení selže.
+
+1. Pokud je disk, který se má obnovit, zašifrovaný pomocí [klíčů spravovaných zákazníkem (CMK)](https://docs.microsoft.com/azure/virtual-machines/disks-enable-customer-managed-keys-portal) nebo pomocí klíčů spravovaných [platformou a klíčů spravovaných zákazníkem](https://docs.microsoft.com/azure/virtual-machines/disks-enable-double-encryption-at-rest-portal), přiřaďte mu oprávnění role **Čtenář** k spravované identitě úložiště záloh na prostředku **sady šifrování disku** .
 
 Po splnění požadavků proveďte operaci obnovení pomocí těchto kroků.
 

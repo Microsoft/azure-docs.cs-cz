@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: 2ffe7c8994d32917a08896c7d25f20d4adf09066
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: a4a7b7a4008d5cc4636e2d533c225a618f35af05
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601901"
+ms.locfileid: "98611181"
 ---
 # <a name="troubleshooting-problems-in-itsm-connector"></a>Řešení potíží v ITSM konektoru
 
@@ -57,7 +57,7 @@ Pokud používáte Service Map, můžete zobrazit položky oddělení služeb vy
    Můžete zobrazit podrobnosti o zprávách v tabulce – [tady](itsmc-dashboard-errors.md).
    - Stránka **hledání v protokolu** : zobrazí chyby a související informace přímo pomocí dotazu `*ServiceDeskLog_CL*` .
 
-## <a name="common-symptoms---how-it-should-be-resolved"></a>Běžné příznaky – jak by se mělo vyřešit?
+## <a name="common-symptoms---how-should-it-be-resolved"></a>Běžné příznaky – jak by se mělo vyřešit?
 
 Níže uvedený seznam obsahuje běžné příznaky a jejich řešení:
 

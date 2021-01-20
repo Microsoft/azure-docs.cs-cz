@@ -8,20 +8,20 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: lagayhar
-ms.openlocfilehash: e69d5cc76f8f4b14ab87e13546c98859bb801418
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 7af26be91ff129e4c968bcb131cc98290cd8d7b9
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234752"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610076"
 ---
 # <a name="click-analytics-auto-collection-plugin-for-application-insights-javascript-sdk"></a>Klikněte na Analytics modul plug-in pro automatické shromažďování pro Application Insights JavaScript SDK
 
-Klikněte na analýza Automatická kolekce modul plug-in pro Application Insights JavaScript SDK, umožňuje automatické sledování událostí kliknutí na webových stránkách na základě `data-*` meta značek. Tento modul plug-in používá `data-*` globální atributy pro zachycení událostí Click a naplnění dat telemetrie.
+Tento modul plug-in automaticky sleduje události Click na webových stránkách a používá atributy data-* u elementů HTML k naplnění telemetrie událostí.
 
 ## <a name="getting-started"></a>Začínáme
 
-Uživatelé můžou instalační modul plug-in automatických kolekcí kliknout na analýza přes npm.
+Uživatelé můžou nastavit modul plug-in pro automatické shromažďování Click Analytics přes npm.
 
 ### <a name="npm-setup"></a>nastavení npm
 
@@ -79,7 +79,7 @@ appInsights.loadAppInsights();
 
 ## <a name="configuration"></a>Konfigurace
 
-| Název                  | Typ                               | Výchozí | Popis                                                                                                                              |
+| Název                  | Typ                               | Výchozí | Description                                                                                                                              |
 | --------------------- | -----------------------------------| --------| ---------------------------------------------------------------------------------------------------------------------------------------- |
 | autocapture           | boolean                            | true    | Automatická konfigurace zachycení.                                                                                                         |
 | onCuePoint              | [IValueCallback](#ivaluecallback)  | null    | Konfigurace zpětných volání.                                                                                                                 |
@@ -101,21 +101,21 @@ appInsights.loadAppInsights();
 
 ### <a name="icustomdatatags"></a>ICustomDataTags
 
-| Název                      | Typ    | Výchozí   | Popis                                                                                       |
-|---------------------------|---------|-----------|---------------------------------------------------------------------------------------------------|
-| useDefaultContentNameOrId | boolean | false (nepravda)     | Když není konkrétní prvek označený jako výchozí customDataPrefix nebo customDataPrefix není poskytnutý uživatelem, tento příznak se používá ke shromáždění standardního atributu HTML pro vlastnost Attribute. |
-| customDataPrefix          | řetězec  | `data-`   | Název automatického zachycení obsahu a hodnotu prvků, které jsou označeny poskytnutou předponou.       |
-| aiBlobAttributeTag        | řetězec  | `ai-blob` | Modul plug-in podporuje označování metadat obsahu objektů BLOB JSON místo jednotlivých `data-*` atributů. |
-| metaDataPrefix            | řetězec  | null      | Automatické zachycení názvu a obsahu elementu HTML Head 's poskytnutá předpona |
-| captureAllMetaDataContent | řetězec  | null      | Automatické zachycení všech názvů a obsahu meta elementu HTML Head. Výchozí hodnota je false. Pokud je tato možnost povolená, přepíše zadané metaDataPrefix. |
-| parentDataTag             | řetězec  | null      | Zastaví procházení modelu DOM při zachycení názvu obsahu a hodnoty prvků, pokud se tato značka objevila.|
-| dntDataTag                | řetězec  | `ai-dnt`  | Prvky HTML s tímto atributem bude modul plug-in ignorovat pro záznam dat telemetrie.|
+| Název                      | Typ    | Výchozí   | Výchozí značka pro použití v HTML |   Description                                                                                |
+|---------------------------|---------|-----------|-------------|----------------------------------------------------------------------------------------------|
+| useDefaultContentNameOrId | boolean | false (nepravda)     | –         |Shromažďuje standardní atribut HTML pro obsah atributu Attribute, pokud konkrétní element není označený jako výchozí customDataPrefix nebo pokud uživatel neposkytuje customDataPrefix. |
+| customDataPrefix          | řetězec  | `data-`   | `data-*`| Název automatického zachycení obsahu a hodnotu prvků, které jsou označeny poskytnutou předponou. Například `data-*-id` `data-<yourcustomattribute>` lze použít v HTML značek.   |
+| aiBlobAttributeTag        | řetězec  | `ai-blob` |  `data-ai-blob`| Modul plug-in podporuje atribut BLOB JSON místo jednotlivých `data-*` atributů. |
+| metaDataPrefix            | řetězec  | null      | –  | Automatické zachycení názvu a obsahu elementu meta HTML v případě zachycení s použitím poskytnuté předpony Například `custom-` lze použít v metaznačky značky HTML. |
+| captureAllMetaDataContent | boolean | false (nepravda)     | –   | Automatické zachycení všech názvů a obsahu meta elementu HTML Head. Výchozí hodnota je false. Pokud je tato možnost povolená, přepíše zadané metaDataPrefix. |
+| parentDataTag             | řetězec  | null      |  –  | Zastaví procházení modelu DOM při zachycení názvu obsahu a hodnoty prvků, pokud se tato značka objevila. Například `data-<yourparentDataTag>` lze použít ve značkách jazyka HTML.|
+| dntDataTag                | řetězec  | `ai-dnt`  |  `data-ai-dnt`| Prvky HTML s tímto atributem bude modul plug-in ignorovat pro záznam dat telemetrie.|
 
 ### <a name="behaviorvalidator"></a>behaviorValidator
 
-Funkci behaviorValidator můžete použít, pokud chcete zajistit konzistenci dat, i když automatická kontrola, že se chování s označením v kódu shodují s předdefinovaným seznamem známých a přijatelných taxonomií v rámci vašeho podniku. Není nutné ani očekávat, že většina Azure Monitor zákazníci tuto službu použijí, ale jsou k dispozici pro pokročilé scénáře. V rámci tohoto rozšíření jsou k dispozici tři různé funkce zpětného volání behaviorValidator. Uživatelé ale můžou použít vlastní funkce zpětného volání, pokud vystavené funkce nevyřeší váš požadavek. Záměrem je využít vlastní strukturu dat chování, modul plug-in používá tuto funkci validátoru při extrakci chování z datových značek.
+Funkce behaviorValidator automaticky kontroluje, zda je označení chování v kódu v souladu s předem definovaným seznamem. Tím se zajistí, že se v rámci zavedené taxonomie vaší firmy budou mít označená chování. Není nutné ani očekávat, že většina Azure Monitor zákazníci tuto službu použijí, ale jsou k dispozici pro pokročilé scénáře. V rámci tohoto rozšíření jsou k dispozici tři různé funkce zpětného volání behaviorValidator. Uživatelé ale můžou použít vlastní funkce zpětného volání, pokud vystavené funkce nevyřeší váš požadavek. Záměrem je využít vlastní strukturu dat chování, modul plug-in používá tuto funkci validátoru při extrakci chování z datových značek.
 
-| Název                   | Popis                                                                        |
+| Název                   | Description                                                                        |
 | ---------------------- | -----------------------------------------------------------------------------------|
 | BehaviorValueValidator | Tuto funkci zpětného volání použijte v případě, že struktura dat chování je pole řetězců.|
 | BehaviorMapValidator   | Tuto funkci zpětného volání použijte v případě, že struktura dat chování je slovník.       |
@@ -312,6 +312,7 @@ appInsights.loadAppInsights();
 
 ## <a name="next-steps"></a>Další kroky
 
+- Podívejte se na [úložiště GitHub](https://github.com/microsoft/ApplicationInsights-JS/tree/master/extensions/applicationinsights-clickanalytics-js) a [balíček npm](https://www.npmjs.com/package/@microsoft/applicationinsights-clickanalytics-js) pro modul plug-in automatických kolekcí pro analýzu.
 - [Analýza událostí v prostředí používání](usage-segmentation.md) slouží k analýze horních kliknutí a řezů podle dostupných dimenzí.
 - V poli customDimensions v tabulce CustomEvents v [Log Analytics](../log-query/log-analytics-tutorial.md#write-a-query)klikněte na data v oblasti obsah v části atribut.
 - Sestavte [sešit](../platform/workbooks-overview.md) , abyste mohli vytvářet vlastní vizualizace kliknutí na data.

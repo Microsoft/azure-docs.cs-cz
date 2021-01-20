@@ -11,26 +11,28 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to,automl,contperf-fy21q2
 ms.date: 12/18/2020
-ms.openlocfilehash: 5fcb57d1ef909d7c15e21b34c3f584c6615a6a44
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: c90ef9fe49a87c18c7f4f55175bafaebfd31d722
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134411"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610297"
 ---
 # <a name="data-featurization-in-automated-machine-learning"></a>Data featurization v automatizovaném strojovém učení
 
-
-
-Přečtěte si o nastaveních featurization dat v Azure Machine Learning a o tom, jak tyto funkce přizpůsobit pro [automatizované experimenty ml](concept-automated-ml.md).
+Přečtěte si o nastaveních featurization dat v Azure Machine Learning a o tom, jak tyto funkce přizpůsobit pro [automatizované experimenty strojového učení](concept-automated-ml.md).
 
 ## <a name="feature-engineering-and-featurization"></a>Strojírenství a featurization funkcí
 
-*Inženýrské funkce* je proces využití dat v doméně k vytváření funkcí, které usnadňují používání algoritmů strojového učení (ml) k lepšímu učení. V Azure Machine Learning se pro usnadnění vývoje funkcí používají techniky pro škálování dat a normalizaci. Souhrnně tyto techniky a technické funkce se nazývají *featurization* v automatizovaném strojovém učení nebo v *autoML* experimenty.
+Školicí data se skládají z řádků a sloupců. Každý řádek je sledování nebo záznam a sloupce každého řádku jsou funkce, které popisují každý záznam. Obvykle jsou pro vytváření prediktivních modelů vybrány funkce, které nejlépe charakterizují vzory v datech.
+
+I když mnoho nezpracovaných datových polí lze použít přímo k vytvoření modelu, je často nutné vytvořit další (inženýrské) funkce, které poskytují informace, které lépe odlišují vzory v datech. Tento proces se nazývá **inženýr funkcí**, kde se využití dat v doméně využívá k vytváření funkcí, které zase usnadňují používání algoritmů strojového učení. 
+
+V Azure Machine Learning se pro usnadnění vývoje funkcí používají techniky pro škálování dat a normalizaci. Souhrnně tyto techniky a technické funkce se nazývají **featurization** v automatizovaných experimentech ml.
 
 ## <a name="prerequisites"></a>Požadavky
 
-V tomto článku se předpokládá, že už víte, jak nakonfigurovat AutoML experiment. Informace o konfiguraci najdete v následujících článcích:
+V tomto článku se předpokládá, že už víte, jak nakonfigurovat automatizované experimenty ML. Informace o konfiguraci najdete v následujících článcích:
 
 - Pro prostředí s prvním kódem: [nakonfigurujte automatizované experimenty ml pomocí sady Azure Machine Learning SDK pro Python](how-to-configure-auto-train.md).
 - Pro použití s nízkým kódováním nebo prostředí bez kódu: [Vytvářejte, kontrolujte a nasaďte automatizované modely strojového učení pomocí Azure Machine Learning studia](how-to-use-automated-ml-for-ml-models.md).
@@ -59,7 +61,7 @@ V následující tabulce jsou uvedena přijímaná nastavení pro `featurization
 Následující tabulka shrnuje techniky, které jsou automaticky aplikovány na vaše data. Tyto techniky se aplikují na experimenty, které jsou nakonfigurované pomocí sady SDK nebo studia. Chcete-li toto chování zakázat, nastavte `"featurization": 'off'` v `AutoMLConfig` objektu.
 
 > [!NOTE]
-> Pokud plánujete exportovat AutoML vytvořené modely do [modelu ONNX](concept-onnx.md), ve formátu ONNX se podporují jenom možnosti featurization označené hvězdičkou (*). Přečtěte si další informace o [převodu modelů na ONNX](concept-automated-ml.md#use-with-onnx).
+> Pokud plánujete exportovat AutoML vytvořené modely do [modelu ONNX](concept-onnx.md), ve formátu ONNX se podporují jenom možnosti featurization označené hvězdičkou (*). Přečtěte si další informace o [převodu modelů na ONNX](how-to-use-automl-onnx-model-dotnet.md).
 
 |Featurization &nbsp; kroky| Description |
 | ------------- | ------------- |

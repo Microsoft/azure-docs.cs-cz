@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: 4052a9c8614a17c3b5cdd871ad78be8cc3258c5a
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 3bacec27f5253741b340688374d64402fdbc2836
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202585"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610382"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>Instalace a konfigurace PostgreSQL v Azure
 PostgreSQL je pokročilá open source databáze podobná Oracle a DB2. Zahrnuje funkce připravené pro podnikové prostředí, jako je plně KYSELé dodržování předpisů, spolehlivé zpracování transakcí a řízení souběžnosti s více verzemi. Podporuje také standardy, jako je ANSI SQL a SQL/MED (včetně obálek cizích dat pro Oracle, MySQL, MongoDB a mnoho dalších). Je vysoce rozšiřitelná s podporou více než 12 procedurálních jazyků, GIN a registrových indexů, podpory prostorových dat a několika NoSQL funkcí podobných funkcím pro aplikace založené na formátu JSON nebo klíč-hodnota.
@@ -35,7 +35,7 @@ Připojte se k virtuálnímu počítači se systémem Linux, který jste vytvoř
 1. Spusťte následující příkaz, který přepne do kořenového adresáře (správce):
 
     ```console
-    # sudo su -
+    sudo su -
     ```
 
 2. Některé distribuce mají závislosti, které je třeba nainstalovat před instalací PostgreSQL. V tomto seznamu vyhledejte distribuce a spusťte příslušný příkaz:
@@ -43,27 +43,27 @@ Připojte se k virtuálnímu počítači se systémem Linux, který jste vytvoř
    * Základní operační systém Red Hat:
 
         ```console
-        # yum install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam  libxslt-devel tcl-devel python-devel -y
+        yum install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam  libxslt-devel tcl-devel python-devel -y
         ```
 
    * Debian Base Linux:
 
         ```console
-        # apt-get install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam libxslt-devel tcl-devel python-devel -y
+        apt-get install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam libxslt-devel tcl-devel python-devel -y
         ```
 
    * SUSE Linux:
 
         ```console
-        # zypper install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam  libxslt-devel tcl-devel python-devel -y
+        zypper install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam  libxslt-devel tcl-devel python-devel -y
         ```
 
 3. Stáhněte si PostgreSQL do kořenového adresáře a potom balíček rozbalte:
 
     ```console
-    # wget https://ftp.postgresql.org/pub/source/v9.3.5/postgresql-9.3.5.tar.bz2 -P /root/
+    wget https://ftp.postgresql.org/pub/source/v9.3.5/postgresql-9.3.5.tar.bz2 -P /root/
 
-    # tar jxvf  postgresql-9.3.5.tar.bz2
+    tar jxvf  postgresql-9.3.5.tar.bz2
     ```
 
     Výše je příklad. Podrobnější adresu ke stažení najdete v [indexu/Pub/source/](https://ftp.postgresql.org/pub/source/).
@@ -71,15 +71,15 @@ Připojte se k virtuálnímu počítači se systémem Linux, který jste vytvoř
 4. Chcete-li spustit sestavení, spusťte tyto příkazy:
 
     ```console
-    # cd postgresql-9.3.5
+    cd postgresql-9.3.5
 
-    # ./configure --prefix=/opt/postgresql-9.3.5
+    ./configure --prefix=/opt/postgresql-9.3.5
     ```
 
 5. Pokud chcete sestavit všechno, co se dá sestavit, včetně dokumentace (HTML a Man Pages) a dalších modulů ( `contrib` ), spusťte následující příkaz:
 
     ```console
-    # gmake install-world
+    gmake install-world
     ```
 
     Měla by se zobrazit následující potvrzovací zpráva:
@@ -92,23 +92,23 @@ Připojte se k virtuálnímu počítači se systémem Linux, který jste vytvoř
 1. Volitelné Vytvořte symbolický odkaz, který zkrátí odkaz na PostgreSQL, aby neobsahoval číslo verze:
 
     ```console
-    # ln -s /opt/postgresql-9.3.5 /opt/pgsql
+    ln -s /opt/postgresql-9.3.5 /opt/pgsql
     ```
 
 2. Vytvořte adresář pro databázi:
 
     ```console
-    # mkdir -p /opt/pgsql_data
+    mkdir -p /opt/pgsql_data
     ```
 
 3. Vytvoření nekořenového uživatele a změna profilu daného uživatele. Pak v našem příkladu přepněte na tohoto nového uživatele (s názvem *Postgres* ):
 
     ```console
-    # useradd postgres
+    useradd postgres
    
-    # chown -R postgres.postgres /opt/pgsql_data
+    chown -R postgres.postgres /opt/pgsql_data
    
-    # su - postgres
+    su - postgres
     ```
    
    > [!NOTE]
@@ -135,13 +135,13 @@ Připojte se k virtuálnímu počítači se systémem Linux, který jste vytvoř
 5. Spusťte soubor *bash_profile* :
 
     ```console
-    $ source .bash_profile
+    source .bash_profile
     ```
 
 6. Ověřte instalaci pomocí následujícího příkazu:
 
     ```console
-    $ which psql
+    which psql
     ```
 
     Pokud je instalace úspěšná, zobrazí se následující odpověď:
@@ -153,13 +153,13 @@ Připojte se k virtuálnímu počítači se systémem Linux, který jste vytvoř
 7. Můžete také zjistit verzi PostgreSQL:
 
     ```sql
-    $ psql -V
+    psql -V
     ```
 
 8. Inicializovat databázi:
 
     ```console
-    $ initdb -D $PGDATA -E UTF8 --locale=C -U postgres -W
+    initdb -D $PGDATA -E UTF8 --locale=C -U postgres -W
     ```
 
     Měl by se zobrazit následující výstup:
@@ -172,17 +172,17 @@ Připojte se k virtuálnímu počítači se systémem Linux, který jste vytvoř
 Spusťte následující příkazy:
 
 ```console
-# cd /root/postgresql-9.3.5/contrib/start-scripts
+cd /root/postgresql-9.3.5/contrib/start-scripts
 
-# cp linux /etc/init.d/postgresql
+cp linux /etc/init.d/postgresql
 ```
 
 Upravte v souboru/etc/init.d/PostgreSQL dvě proměnné. Předpona je nastavena na instalační cestu PostgreSQL: **/opt/PgSQL**. PGDATA je nastavená na cestu úložiště dat PostgreSQL: **/opt/pgsql_data**.
 
 ```config
-# sed -i '32s#usr/local#opt#' /etc/init.d/postgresql
+sed -i '32s#usr/local#opt#' /etc/init.d/postgresql
 
-# sed -i '35s#usr/local/pgsql/data#opt/pgsql_data#' /etc/init.d/postgresql
+sed -i '35s#usr/local/pgsql/data#opt/pgsql_data#' /etc/init.d/postgresql
 ```
 
 ![Snímek obrazovky, který zobrazuje předponu instalace a datový adresář.](./media/postgresql-install/no2.png)
@@ -190,19 +190,19 @@ Upravte v souboru/etc/init.d/PostgreSQL dvě proměnné. Předpona je nastavena 
 Změňte soubor tak, aby byl spustitelný jako spustitelný:
 
 ```console
-# chmod +x /etc/init.d/postgresql
+chmod +x /etc/init.d/postgresql
 ```
 
 Spustit PostgreSQL:
 
 ```console
-# /etc/init.d/postgresql start
+/etc/init.d/postgresql start
 ```
 
 Ověřte, zda je koncový bod PostgreSQL zapnutý:
 
 ```console
-# netstat -tunlp|grep 1999
+netstat -tunlp|grep 1999
 ```
 
 Měl by se zobrazit následující výstup:
@@ -213,19 +213,19 @@ Měl by se zobrazit následující výstup:
 Přepněte znovu na uživatele Postgres:
 
 ```console
-# su - postgres
+su - postgres
 ```
 
 Vytvořte databázi Postgres:
 
 ```console
-$ createdb events
+createdb events
 ```
 
 Připojte se k databázi událostí, kterou jste právě vytvořili:
 
 ```console
-$ psql -d events
+psql -d events
 ```
 
 ## <a name="create-and-delete-a-postgres-table"></a>Vytvoření a odstranění tabulky Postgres
