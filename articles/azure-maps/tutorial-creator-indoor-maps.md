@@ -8,20 +8,18 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: eab8a2729209bb0023662b652f862b4fa678470e
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: dac5a434d7f7c62d7a20e971294992ea91c79d2b
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905719"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625011"
 ---
 # <a name="tutorial-use-creator-preview-to-create-indoor-maps"></a>Kurz: použití Tvůrce (Preview) k vytvoření vnitřních map
 
 > [!IMPORTANT]
 > Služby Azure Maps Creator jsou momentálně ve verzi Public Preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-
 
 V tomto kurzu se dozvíte, jak vytvořit mapy vnitřních. V tomto kurzu se naučíte používat rozhraní API k těmto akcím:
 
@@ -34,7 +32,7 @@ V tomto kurzu se dozvíte, jak vytvořit mapy vnitřních. V tomto kurzu se nau�
 > * Vytvoření funkce stateset pomocí vašich funkcí mapy a dat v datové sadě
 > * Aktualizace stateset funkcí
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Vytvoření vnitřních map:
 
@@ -411,6 +409,10 @@ TILESET je sada vektorových dlaždic, které se vykreslují na mapě. Tilesets 
 [Rozhraní API pro získání](/rest/api/maps/featurestate/getstatespreview) stavů funkce umožňuje načíst stav funkce pomocí její funkce `ID` . Stateset a jeho prostředky můžete také odstranit pomocí [rozhraní API pro odstranění stavu funkce](/rest/api/maps/featurestate/deletestatesetpreview).
 
 Další informace o různých službách Azure Maps Creator (Preview) popsaných v tomto článku najdete v tématu [Tvůrce vnitřních map](creator-indoor-maps.md).
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Nejsou k dispozici žádné prostředky, které vyžadují vyčištění.
 
 ## <a name="next-steps"></a>Další kroky
 

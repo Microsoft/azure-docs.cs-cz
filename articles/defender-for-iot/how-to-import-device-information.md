@@ -1,5 +1,5 @@
 ---
-title: Importovat informace o zařízení
+title: Import informací o zařízení
 description: Defender pro senzory IoT monitoruje a analyzuje zrcadlený provoz. V těchto případech můžete chtít importovat data pro rozšíření informací o zařízeních, která jsou už zjištěná.
 author: shhazam-ms
 manager: rkarlin
@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/06/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 0a443ba7b41615fc62882bd8de6bf077c6b5a137
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 7cb805f60ba9feb0ae2d1483b2ab2df4e03639d8
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97838956"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625410"
 ---
 # <a name="import-device-information-to-a-sensor"></a>Import informací o zařízení do snímače
 
@@ -67,7 +67,7 @@ Tato část popisuje, jak naimportovat IP adresu zařízení, operační systém
 
 Import IP adresy, operačního systému a úrovně opravy:
 
-1. Stáhněte soubor [assets_info_2.2.8 a up.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) z centra pro [technickou podporu](https://cyberx-labs.zendesk.com/hc/en-us) a zadejte následující informace:
+1. Stáhněte soubor [devices_info_2.2.8 a up.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) z centra pro [technickou podporu](https://cyberx-labs.zendesk.com/hc/en-us) a zadejte následující informace:
 
    - **IP adresa**: zadejte IP adresu zařízení.
 
@@ -85,7 +85,7 @@ Import IP adresy, operačního systému a úrovně opravy:
 
 Import stavu autorizace:
 
-1. Stáhněte a uložte soubor [authorized_assets.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) z programu Defender pro centrum helpdesk pro IoT. Ověřte, že jste soubor uložili jako sdílený svazek clusteru.
+1. Stáhněte a uložte soubor [authorized_devices.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) z programu Defender pro centrum helpdesk pro IoT. Ověřte, že jste soubor uložili jako sdílený svazek clusteru.
 
 2. Zadejte tyto informace:
 
@@ -154,7 +154,7 @@ Tato část popisuje, jak naimportovat IP adresu zařízení, operační systém
 
 Import IP adresy, operačního systému a úrovně opravy:
 
-1. Stáhněte soubor [assets_info_2.2.8 a up.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) z centra pro [technickou podporu](https://cyberx-labs.zendesk.com/hc/en-us) a zadejte následující informace:
+1. Stáhněte soubor [devices_info_2.2.8 a up.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) z centra pro [technickou podporu](https://cyberx-labs.zendesk.com/hc/en-us) a zadejte následující informace:
 
    - **IP adresa**: IP adresa zařízení.
 
@@ -172,7 +172,7 @@ Import IP adresy, operačního systému a úrovně opravy:
 
 Import stavu autorizace:
 
-1. Stáhněte a uložte soubor [authorized_assets.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) z programu Defender pro centrum helpdesk pro IoT. Ověřte, že jste soubor uložili jako sdílený svazek clusteru.
+1. Stáhněte a uložte soubor [authorized_devices.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) z programu Defender pro centrum helpdesk pro IoT. Ověřte, že jste soubor uložili jako sdílený svazek clusteru.
 
 2. Zadejte tyto informace:
 
@@ -190,6 +190,6 @@ Po importu informací zobrazíte výstrahy týkající se neautorizovaných zař
 
 ## <a name="see-also"></a>Viz také
 
-[Řízení sledování provozu](how-to-control-what-traffic-is-monitored.md)
+[Určení, který provoz se monitoruje](how-to-control-what-traffic-is-monitored.md)
 
-[Prozkoumat detekci senzorů v inventáři zařízení](how-to-investigate-sensor-detections-in-a-device-inventory.md)
+[Prošetření detekovaných senzorů v inventáři zařízení](how-to-investigate-sensor-detections-in-a-device-inventory.md)

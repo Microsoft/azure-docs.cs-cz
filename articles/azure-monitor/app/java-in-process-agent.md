@@ -6,12 +6,12 @@ ms.date: 03/29/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 32d906bf96a0ad5cf798f68bf83f2d6af1064361
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 931189a6740009bd26472c186057fa0e6ef5fddf
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231736"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624888"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>Azure Monitor monitorování aplikací s kódováním kódu Java Application Insights
 
@@ -25,7 +25,7 @@ Z aplikace můžete stále odesílat vlastní telemetrie. Agent 3,0 bude sledova
 
 Agent 3,0 podporuje jazyk Java 8 a vyšší.
 
-## <a name="quickstart"></a>Rychlý start
+## <a name="quickstart"></a>Rychlé zprovoznění
 
 **1. Stáhněte agenta.**
 
@@ -34,11 +34,11 @@ Agent 3,0 podporuje jazyk Java 8 a vyšší.
 >
 > Přečtěte si pečlivě všechny [Možnosti konfigurace](./java-standalone-config.md) , protože se úplně změnila struktura JSON, kromě samotného názvu souboru, který všechno byl malý.
 
-Stáhnout [ApplicationInsights-agent-3.0.1. jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.1/applicationinsights-agent-3.0.1.jar)
+Stáhnout [ApplicationInsights-agent-3.0.2. jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.2/applicationinsights-agent-3.0.2.jar)
 
 **2. Nasměrujte JVM na agenta.**
 
-Přidat `-javaagent:path/to/applicationinsights-agent-3.0.1.jar` do ARGUMENTŮ JVM vaší aplikace
+Přidat `-javaagent:path/to/applicationinsights-agent-3.0.2.jar` do ARGUMENTŮ JVM vaší aplikace
 
 Typické argumenty JVM zahrnují `-Xmx512m` a `-XX:+UseG1GC` . Takže pokud víte, kam je přidat, pak už víte, kam je přidat.
 
@@ -54,7 +54,7 @@ Najeďte agentem na prostředek Application Insights, a to nastavením proměnn�
 APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=...
 ```
 
-Nebo vytvořením konfiguračního souboru s názvem `applicationinsights.json` a jeho umístěním do stejného adresáře jako `applicationinsights-agent-3.0.1.jar` s následujícím obsahem:
+Nebo vytvořením konfiguračního souboru s názvem `applicationinsights.json` a jeho umístěním do stejného adresáře jako `applicationinsights-agent-3.0.2.jar` s následujícím obsahem:
 
 ```json
 {
@@ -143,13 +143,13 @@ Následující tabulka představuje aktuálně podporované vlastní typy teleme
 
 |                     | Mikrometr | Log4j, logback, červenec | 2. x SDK |
 |---------------------|------------|---------------------|---------|
-| **Vlastní události**   |            |                     |  Ano    |
-| **Vlastní metriky**  |  Ano       |                     |  Ano    |
-| **Závislosti**    |            |                     |  Ano    |
-| **Výjimky**      |            |  Ano                |  Ano    |
-| **Page Views**      |            |                     |  Ano    |
-| **Žádosti**        |            |                     |  Ano    |
-| **Trasování**          |            |  Ano                |  Ano    |
+| **Vlastní události**   |            |                     |  Yes    |
+| **Vlastní metriky**  |  Yes       |                     |  Yes    |
+| **Závislosti**    |            |                     |  Yes    |
+| **Výjimky**      |            |  Yes                |  Yes    |
+| **Page Views**      |            |                     |  Yes    |
+| **Žádosti**        |            |                     |  Yes    |
+| **Trasování**          |            |  Yes                |  Yes    |
 
 V tuto chvíli neplánujeme vydání sady SDK pomocí Application Insights 3,0.
 
@@ -255,7 +255,7 @@ try {
 ### <a name="add-request-custom-dimensions-using-the-2x-sdk"></a>Přidání vlastních dimenzí žádosti pomocí sady 2. x SDK
 
 > [!NOTE]
-> Tato funkce je pouze v 3.0.1 a novějších.
+> Tato funkce je pouze v 3.0.2 a novějších.
 
 Přidejte `applicationinsights-web-2.6.2.jar` do své aplikace (všechny 2. x verze jsou podporovány Application Insights Java 3,0, ale Využijte možnost nejnovější, pokud máte možnost použít):
 
@@ -279,7 +279,7 @@ requestTelemetry.getProperties().put("mydimension", "myvalue");
 ### <a name="set-the-request-telemetry-user_id-using-the-2x-sdk"></a>Nastavení telemetrie požadavků user_Id pomocí sady 2. x SDK
 
 > [!NOTE]
-> Tato funkce je pouze v 3.0.1 a novějších.
+> Tato funkce je pouze v 3.0.2 a novějších.
 
 Přidejte `applicationinsights-web-2.6.2.jar` do své aplikace (všechny 2. x verze jsou podporovány Application Insights Java 3,0, ale Využijte možnost nejnovější, pokud máte možnost použít):
 
@@ -303,7 +303,7 @@ requestTelemetry.getContext().getUser().setId("myuser");
 ### <a name="override-the-request-telemetry-name-using-the-2x-sdk"></a>Přepsat název telemetrie žádosti pomocí sady 2. x SDK
 
 > [!NOTE]
-> Tato funkce je pouze v 3.0.1 a novějších.
+> Tato funkce je pouze v 3.0.2 a novějších.
 
 Přidejte `applicationinsights-web-2.6.2.jar` do své aplikace (všechny 2. x verze jsou podporovány Application Insights Java 3,0, ale Využijte možnost nejnovější, pokud máte možnost použít):
 

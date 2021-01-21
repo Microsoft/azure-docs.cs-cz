@@ -4,12 +4,12 @@ description: Informace o řešení potíží s agentem Java pro Azure Monitor Ap
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 2876abd3749c9e56cef462e41b8268135f82cd12
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 788eea17cabbea46578d0f59919ae95a59f2223f
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232212"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625343"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>Průvodce odstraňováním potíží: Azure Monitor Application Insights pro Java
 
@@ -17,7 +17,7 @@ V tomto článku se zaměříme na některé běžné problémy, které byste mo
 
 ## <a name="check-the-self-diagnostic-log-file"></a>Podívejte se na soubor protokolu, který je v samostatném diagnostickém
 
-Ve výchozím nastavení agent Java 3,0 pro Application Insights vytvoří soubor protokolu s názvem `applicationinsights.log` ve stejném adresáři, ve kterém je uložený `applicationinsights-agent-3.0.1.jar` soubor.
+Ve výchozím nastavení agent Java 3,0 pro Application Insights vytvoří soubor protokolu s názvem `applicationinsights.log` ve stejném adresáři, ve kterém je uložený `applicationinsights-agent-3.0.2.jar` soubor.
 
 Tento soubor protokolu je prvním místem, kde můžete vyhledat tipy pro případné problémy, se kterými se můžete setkat.
 

@@ -1,20 +1,20 @@
 ---
-title: Streamy zařízení Azure IoT Hub Node.js rychlý Start pro SSH a RDP
+title: Rychlý Start – streamy zařízení Azure IoT Hub Node.js rychlý Start pro SSH a RDP
 description: V tomto rychlém startu spustíte ukázkovou Node.js aplikaci, která funguje jako proxy a povoluje scénáře SSH a RDP přes IoT Hub streamy zařízení.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.custom: mvc, devx-track-js, devx-track-azurecli
+ms.custom: references_regions
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: f32882dcb423c6f42a21a242a7e628ef6acda006
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: ef45a6277adeff09a34fe22b7abeb21d3e603167
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96902132"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624350"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-nodejs-proxy-application-preview"></a>Rychlý Start: povolení SSH a RDP přes datový proud IoT Hub zařízení pomocí proxy aplikace Node.js (Preview)
 
@@ -22,7 +22,7 @@ ms.locfileid: "96902132"
 
 V tomto rychlém startu povolíte odesílání Secure Shell (SSH) a protokol RDP (Remote Desktop Protocol) (RDP) do zařízení přes datový proud zařízení. Datové proudy zařízení v Azure IoT Hub umožňují aplikacím služeb a zařízením komunikovat zabezpečeným způsobem a bránou firewall. Tento rychlý Start popisuje spuštění aplikace Node.js proxy serveru, která běží na straně služby. Ve verzi Public Preview podporuje Node.js SDK pouze datové proudy zařízení na straně služby. V důsledku toho tento rychlý Start popisuje pokyny ke spuštění pouze místní proxy aplikace služby.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Dokončení [Povolení protokolu SSH a RDP přes IoT Hub datových proudů zařízení pomocí aplikace proxy](./quickstart-device-streams-proxy-c.md) v jazyce C nebo [Povolení protokolu SSH a RDP přes IoT Hub datových proudů zařízení pomocí proxy aplikace jazyka C#](./quickstart-device-streams-proxy-csharp.md).
 
@@ -45,7 +45,7 @@ Microsoft Azure IoT Hub aktuálně podporuje streamy zařízení jako [funkci ve
 > [!IMPORTANT]
 > Verze Preview datových proudů zařízení je momentálně podporovaná jenom pro centra IoT vytvořená v následujících oblastech:
 >
-> * Střední USA
+> * USA – střed
 > * Střed USA EUAP
 > * Severní Evropa
 > * Jihovýchodní Asie

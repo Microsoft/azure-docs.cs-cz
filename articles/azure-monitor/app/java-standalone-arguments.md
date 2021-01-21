@@ -6,12 +6,12 @@ ms.date: 04/16/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 21465305e635cba7d8d4f912bcca2b0306b294e9
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: bd6ed2e5c848b39ad946209d5ea92fcf6ce3b438
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233691"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625360"
 ---
 # <a name="adding-the-jvm-arg---azure-monitor-application-insights-for-java"></a>Přidání JVM ARG-Azure Monitor Application Insights pro Java
 
@@ -23,24 +23,24 @@ Nakonfigurujte [App Services](../../app-service/configure-language-java.md#set-j
 
 ## <a name="spring-boot"></a>Spring Boot
 
-Přidejte ARG JVM `-javaagent:path/to/applicationinsights-agent-3.0.1.jar` někam do `-jar` , například:
+Přidejte ARG JVM `-javaagent:path/to/applicationinsights-agent-3.0.2.jar` někam do `-jar` , například:
 
 ```
-java -javaagent:path/to/applicationinsights-agent-3.0.1.jar -jar <myapp.jar>
+java -javaagent:path/to/applicationinsights-agent-3.0.2.jar -jar <myapp.jar>
 ```
 
 ## <a name="spring-boot-via-docker-entry-point"></a>Pružinové spouštění prostřednictvím vstupního bodu Docker
 
-Pokud používáte formulář *exec* , přidejte parametr `"-javaagent:path/to/applicationinsights-agent-3.0.1.jar"` do seznamu parametrů někam před `"-jar"` parametr, například:
+Pokud používáte formulář *exec* , přidejte parametr `"-javaagent:path/to/applicationinsights-agent-3.0.2.jar"` do seznamu parametrů někam před `"-jar"` parametr, například:
 
 ```
-ENTRYPOINT ["java", "-javaagent:path/to/applicationinsights-agent-3.0.1.jar", "-jar", "<myapp.jar>"]
+ENTRYPOINT ["java", "-javaagent:path/to/applicationinsights-agent-3.0.2.jar", "-jar", "<myapp.jar>"]
 ```
 
-Používáte-li formulář *prostředí* , přidejte ARG JVM `-javaagent:path/to/applicationinsights-agent-3.0.1.jar` někam do, například `-jar` :
+Používáte-li formulář *prostředí* , přidejte ARG JVM `-javaagent:path/to/applicationinsights-agent-3.0.2.jar` někam do, například `-jar` :
 
 ```
-ENTRYPOINT java -javaagent:path/to/applicationinsights-agent-3.0.1.jar -jar <myapp.jar>
+ENTRYPOINT java -javaagent:path/to/applicationinsights-agent-3.0.2.jar -jar <myapp.jar>
 ```
 
 ## <a name="tomcat-8-linux"></a>Tomcat 8 (Linux)
@@ -50,7 +50,7 @@ ENTRYPOINT java -javaagent:path/to/applicationinsights-agent-3.0.1.jar -jar <mya
 Pokud jste nainstalovali Tomcat přes `apt-get` nebo `yum` , měli byste mít soubor `/etc/tomcat8/tomcat8.conf` .  Přidejte tento řádek na konec tohoto souboru:
 
 ```
-JAVA_OPTS="$JAVA_OPTS -javaagent:path/to/applicationinsights-agent-3.0.1.jar"
+JAVA_OPTS="$JAVA_OPTS -javaagent:path/to/applicationinsights-agent-3.0.2.jar"
 ```
 
 ### <a name="tomcat-installed-via-download-and-unzip"></a>Tomcat nainstalované prostřednictvím stažení a rozbalení
@@ -58,10 +58,10 @@ JAVA_OPTS="$JAVA_OPTS -javaagent:path/to/applicationinsights-agent-3.0.1.jar"
 Pokud jste nainstalovali Tomcat prostřednictvím stažení a dekomprimovat z nástroje [https://tomcat.apache.org](https://tomcat.apache.org) , měli byste mít soubor `<tomcat>/bin/catalina.sh` .  Vytvořte nový soubor ve stejném adresáři `<tomcat>/bin/setenv.sh` s názvem s následujícím obsahem:
 
 ```
-CATALINA_OPTS="$CATALINA_OPTS -javaagent:path/to/applicationinsights-agent-3.0.1.jar"
+CATALINA_OPTS="$CATALINA_OPTS -javaagent:path/to/applicationinsights-agent-3.0.2.jar"
 ```
 
-Pokud soubor `<tomcat>/bin/setenv.sh` již existuje, upravte ho a přidejte `-javaagent:path/to/applicationinsights-agent-3.0.1.jar` do `CATALINA_OPTS` .
+Pokud soubor `<tomcat>/bin/setenv.sh` již existuje, upravte ho a přidejte `-javaagent:path/to/applicationinsights-agent-3.0.2.jar` do `CATALINA_OPTS` .
 
 
 ## <a name="tomcat-8-windows"></a>Tomcat 8 (Windows)
@@ -71,36 +71,36 @@ Pokud soubor `<tomcat>/bin/setenv.sh` již existuje, upravte ho a přidejte `-ja
 Vyhledejte soubor `<tomcat>/bin/catalina.bat` .  Vytvořte nový soubor ve stejném adresáři `<tomcat>/bin/setenv.bat` s názvem s následujícím obsahem:
 
 ```
-set CATALINA_OPTS=%CATALINA_OPTS% -javaagent:path/to/applicationinsights-agent-3.0.1.jar
+set CATALINA_OPTS=%CATALINA_OPTS% -javaagent:path/to/applicationinsights-agent-3.0.2.jar
 ```
 
 Citace nejsou nutné, ale pokud je chcete zahrnout, správné umístění je:
 
 ```
-set "CATALINA_OPTS=%CATALINA_OPTS% -javaagent:path/to/applicationinsights-agent-3.0.1.jar"
+set "CATALINA_OPTS=%CATALINA_OPTS% -javaagent:path/to/applicationinsights-agent-3.0.2.jar"
 ```
 
-Pokud soubor `<tomcat>/bin/setenv.bat` již existuje, stačí ho upravit a přidat do nástroje `-javaagent:path/to/applicationinsights-agent-3.0.1.jar` `CATALINA_OPTS` .
+Pokud soubor `<tomcat>/bin/setenv.bat` již existuje, stačí ho upravit a přidat do nástroje `-javaagent:path/to/applicationinsights-agent-3.0.2.jar` `CATALINA_OPTS` .
 
 ### <a name="running-tomcat-as-a-windows-service"></a>Spuštění Tomcat jako služby systému Windows
 
-Vyhledejte soubor `<tomcat>/bin/tomcat8w.exe` .  Spusťte tento spustitelný soubor a přidejte `-javaagent:path/to/applicationinsights-agent-3.0.1.jar` na `Java Options` kartu pod `Java` .
+Vyhledejte soubor `<tomcat>/bin/tomcat8w.exe` .  Spusťte tento spustitelný soubor a přidejte `-javaagent:path/to/applicationinsights-agent-3.0.2.jar` na `Java Options` kartu pod `Java` .
 
 
 ## <a name="jboss-eap-7"></a>JBoss EAP 7
 
 ### <a name="standalone-server"></a>Samostatný server
 
-Přidat `-javaagent:path/to/applicationinsights-agent-3.0.1.jar` do existující `JAVA_OPTS` proměnné prostředí v souboru `JBOSS_HOME/bin/standalone.conf` (Linux) nebo `JBOSS_HOME/bin/standalone.conf.bat` (Windows):
+Přidat `-javaagent:path/to/applicationinsights-agent-3.0.2.jar` do existující `JAVA_OPTS` proměnné prostředí v souboru `JBOSS_HOME/bin/standalone.conf` (Linux) nebo `JBOSS_HOME/bin/standalone.conf.bat` (Windows):
 
 ```java    ...
-    JAVA_OPTS="<b>-javaagent:path/to/applicationinsights-agent-3.0.1.jar</b> -Xms1303m -Xmx1303m ..."
+    JAVA_OPTS="<b>-javaagent:path/to/applicationinsights-agent-3.0.2.jar</b> -Xms1303m -Xmx1303m ..."
     ...
 ```
 
 ### <a name="domain-server"></a>Doménový server
 
-Přidat `-javaagent:path/to/applicationinsights-agent-3.0.1.jar` k existujícímu `jvm-options` v `JBOSS_HOME/domain/configuration/host.xml` :
+Přidat `-javaagent:path/to/applicationinsights-agent-3.0.2.jar` k existujícímu `jvm-options` v `JBOSS_HOME/domain/configuration/host.xml` :
 
 ```xml
 ...
@@ -110,7 +110,7 @@ Přidat `-javaagent:path/to/applicationinsights-agent-3.0.1.jar` k existujícím
         <jvm-options>
             <option value="-server"/>
             <!--Add Java agent jar file here-->
-            <option value="-javaagent:path/to/applicationinsights-agent-3.0.1.jar"/>
+            <option value="-javaagent:path/to/applicationinsights-agent-3.0.2.jar"/>
             <option value="-XX:MetaspaceSize=96m"/>
             <option value="-XX:MaxMetaspaceSize=256m"/>
         </jvm-options>
@@ -150,20 +150,20 @@ Přidat tyto řádky do `start.ini`
 
 ```
 --exec
--javaagent:path/to/applicationinsights-agent-3.0.1.jar
+-javaagent:path/to/applicationinsights-agent-3.0.2.jar
 ```
 
 
 ## <a name="payara-5"></a>Payara 5
 
-Přidat `-javaagent:path/to/applicationinsights-agent-3.0.1.jar` k existujícímu `jvm-options` v `glassfish/domains/domain1/config/domain.xml` :
+Přidat `-javaagent:path/to/applicationinsights-agent-3.0.2.jar` k existujícímu `jvm-options` v `glassfish/domains/domain1/config/domain.xml` :
 
 ```xml
 ...
 <java-config ...>
     <!--Edit the JVM options here-->
     <jvm-options>
-        -javaagent:path/to/applicationinsights-agent-3.0.1.jar>
+        -javaagent:path/to/applicationinsights-agent-3.0.2.jar>
     </jvm-options>
         ...
 </java-config>
@@ -179,7 +179,7 @@ Java and Process Management > Process definition >  Java Virtual Machine
 ```
 V části Obecné argumenty JVM přidejte následující:
 ```
--javaagent:path/to/applicationinsights-agent-3.0.1.jar
+-javaagent:path/to/applicationinsights-agent-3.0.2.jar
 ```
 Potom uložte a znovu spusťte aplikační server.
 
@@ -188,5 +188,5 @@ Potom uložte a znovu spusťte aplikační server.
 
 Vytvořte nový soubor `jvm.options` v adresáři serveru (například `<openliberty>/usr/servers/defaultServer` ) a přidejte tento řádek:
 ```
--javaagent:path/to/applicationinsights-agent-3.0.1.jar
+-javaagent:path/to/applicationinsights-agent-3.0.2.jar
 ```

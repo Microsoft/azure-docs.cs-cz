@@ -1,28 +1,27 @@
 ---
 title: Azure Traffic Manager | Microsoft Docs
-description: Tento článek obsahuje přehled služby Azure Traffic Manager. Zjistěte, jestli je pro vaši aplikaci tou správnou volbou pro vyrovnávání zatížení provozu uživatelů.
+description: Tento článek obsahuje přehled služby Azure Traffic Manager. Zjistěte, zda se jedná o správnou volbu pro síťový provoz vyrovnávání zatížení pro vaši aplikaci.
 services: traffic-manager
 author: duongau
-manager: twooley
 ms.service: traffic-manager
 customer intent: As an IT admin, I want to learn about Traffic Manager and what I can use it for.
 ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/23/2019
+ms.date: 01/19/2021
 ms.author: duau
-ms.openlocfilehash: e2a4db1404709dadb2500df29f3f7acf8787c2b2
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 09b82eed5ad6a9ad121ca56d197eb9c003d027f5
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185727"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624905"
 ---
 # <a name="what-is-traffic-manager"></a>Co je Traffic Manager?
-Azure Traffic Manager je nástroj pro vyrovnávání zatížení provozu na základě DNS, který umožňuje optimálně distribuovat provoz do služeb napříč globálními oblastmi Azure při zajištění vysoké dostupnosti a rychlosti odezvy.
+Azure Traffic Manager je nástroj pro vyrovnávání zatížení pro provoz založený na DNS. Tato služba umožňuje distribuovat provoz do vašich veřejných aplikací napříč globálními oblastmi Azure. Traffic Manager taky poskytuje veřejné koncové body s vysokou dostupností a rychlou odezvou.
 
-Traffic Manager pomocí DNS směruje požadavky klientů do nejvhodnějšího koncového bodu služby v závislosti na metodě směrování provozu a stavu koncových bodů. Koncový bod je jakákoli internetová služba hostovaná v rámci nebo mimo Azure. Traffic Manager poskytuje celou řadu [metod směrování provozu](traffic-manager-routing-methods.md) a [možností monitorování koncových bodů](traffic-manager-monitoring.md), takže vyhovuje různým požadavkům aplikací a modelům automatického převzetí služeb při selhání. Služba Traffic Manager je odolná vůči selhání, a to i selhání celé oblasti Azure.
+Traffic Manager používá DNS k směrování požadavků klienta na příslušný koncový bod služby na základě metody směrování provozu. Traffic Manager také poskytuje monitorování stavu pro každý koncový bod. Koncovým bodem může být libovolná internetová služba hostovaná v systému Azure nebo mimo něj. Traffic Manager poskytuje celou řadu [metod směrování provozu](traffic-manager-routing-methods.md) a [možností monitorování koncových bodů](traffic-manager-monitoring.md), takže vyhovuje různým požadavkům aplikací a modelům automatického převzetí služeb při selhání. Služba Traffic Manager je odolná vůči selhání, a to i selhání celé oblasti Azure.
 
 >[!NOTE]
 > Azure pro vaše scénáře poskytuje sadu plně spravovaných řešení pro vyrovnávání zatížení. Pokud chcete zajistit ukončování protokolu TLS (tzv. přesměrování zpracování SSL) nebo zpracování jednotlivých požadavků HTTP nebo HTTPS na úrovni aplikace, přečtěte si o službě [Application Gateway](../application-gateway/overview.md). Pokud hledáte regionální vyrovnávání zatížení, přečtěte si [Load Balancer](../load-balancer/load-balancer-overview.md). Vašim kompletním scénářům by mohla prospět kombinace těchto řešení podle potřeby.
@@ -37,11 +36,11 @@ Traffic Manager zajišťuje vysokou dostupnost klíčových aplikací tím, že 
     
 ## <a name="improve-application-performance"></a>Zlepšení výkonu aplikací
 
-Azure umožňuje provozovat cloudové služby nebo weby v datacentrech umístěných po celém světe. Traffic Manager zlepšuje odezvu aplikací tím, že směruje provoz do koncového bodu s nejnižší latencí sítě pro konkrétního klienta.
+Azure umožňuje provozovat cloudové služby a weby v datových centrech po celém světě. Traffic Manager může zlepšit odezvu vašeho webu tím, že směruje provoz na koncový bod s nejnižší latencí.
 
-## <a name="perform-service-maintenance-without-downtime"></a>Provádění údržby služeb bez výpadků
+## <a name="service-maintenance-without-downtime"></a>Údržba služby bez výpadků
 
-U svých aplikací můžete provádět operace plánované údržby bez jakýchkoli výpadků. Traffic Manager může směrovat provoz do alternativních koncových bodů, zatímco probíhá údržba.
+Můžete mít plánované údržbě v aplikacích bez výpadků. Traffic Manager může směrovat provoz do alternativních koncových bodů, zatímco probíhá údržba.
 
 ## <a name="combine-hybrid-applications"></a>Kombinace hybridních aplikací
 

@@ -1,5 +1,5 @@
 ---
-title: Rychlý start k řízení zařízení ze služby Azure IoT Hub (Python) | Microsoft Docs
+title: Rychlý Start – řízení zařízení z Azure IoT Hub rychlý Start (Python) | Microsoft Docs
 description: V tomto rychlém startu spustíte dvě ukázkové aplikace Python. První aplikace je back-endová aplikace, která může vzdáleně řídit zařízení připojená k vašemu centru. Druhá aplikace simuluje zařízení připojené k vašemu centru, které je možné řídit vzdáleně.
 author: wesmc7777
 manager: philmea
@@ -14,12 +14,12 @@ ms.custom:
 - devx-track-python
 - devx-track-azurecli
 ms.date: 09/14/2020
-ms.openlocfilehash: 5db51e78a6770a642728cc058f425baf7c7e095b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 7ee30398ccfdad3ea7b28f277e45c2224de827e8
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832156"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624655"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-python"></a>Rychlý start: Řízení zařízení připojeného k centru IoT (Python)
 
@@ -27,7 +27,7 @@ ms.locfileid: "94832156"
 
 V tomto rychlém startu použijete přímou metodu k řízení simulovaného zařízení připojeného k Azure IoT Hub. IoT Hub je služba Azure, která umožňuje spravovat zařízení IoT z cloudu a ingestovat velké objemy telemetrie zařízení do cloudu za účelem uložení nebo zpracování. Přímé metody můžete použít k provádění vzdálených změn chování zařízení připojeného k centru IoT. V tomto rychlém startu se používají dvě aplikace Pythonu: aplikace simulovaného zařízení, která reaguje na přímé metody volané z back-endové aplikace a back-endové aplikace, která volá přímé metody na simulovaném zařízení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
@@ -68,7 +68,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
     **YourIoTHubName**: níže uvedený zástupný symbol nahraďte názvem, který jste zvolili pro Centrum IoT.
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyPythonDevice --output table
+    az iot hub device-identity connection-string show --hub-name {YourIoTHubName} --device-id MyPythonDevice --output table
     ```
 
     Poznamenejte si připojovací řetězec zařízení, který vypadá takto:

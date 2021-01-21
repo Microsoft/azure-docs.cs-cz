@@ -3,12 +3,12 @@ title: Dynamické přidávání oddílů do centra událostí v Azure Event Hubs
 description: V tomto článku se dozvíte, jak dynamicky přidávat oddíly do centra událostí v Azure Event Hubs.
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: 4ebe4491338c24a331812041f4d3e6d37b934117
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: e6efdc7bab309f825032555c97f1e1128f5addd6
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132167"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625261"
 ---
 # <a name="dynamically-add-partitions-to-an-event-hub-apache-kafka-topic-in-azure-event-hubs"></a>Dynamické přidávání oddílů do centra událostí (Apache Kafka téma) v Azure Event Hubs
 Služba Event Hubs poskytuje datový proud zpráv pomocí schématu rozdělujícího datový proud na oddíly pro jednotlivé příjemce. To zajišťuje, aby každý příjemce četl jenom konkrétní podmnožinu nebo oddíl datového proudu zpráv. Toto schéma umožňuje vodorovné škálování zpracování událostí a poskytuje další funkce zaměřené na datový proud, které nejsou ve frontách a tématech k dispozici. Oddíl je seřazená posloupnost událostí, která se nachází v centru událostí. Jakmile přijdete o novější události, přidají se na konec této sekvence. Další informace o oddílech obecně najdete v [oddílu oddíly](event-hubs-scalability.md#partitions) .
@@ -26,14 +26,14 @@ V době vytváření centra událostí můžete zadat počet oddílů. V někter
 V této části se dozvíte, jak aktualizovat počet oddílů centra událostí různými způsoby (PowerShell, CLI atd.).
 
 ### <a name="powershell"></a>PowerShell
-K aktualizaci oddílů v centru událostí použijte příkaz prostředí PowerShell [set-AzureRmEventHub](/powershell/module/azurerm.eventhub/Set-AzureRmEventHub?view=azurermps-6.13.0) . 
+K aktualizaci oddílů v centru událostí použijte příkaz prostředí PowerShell [set-AzureRmEventHub](/powershell/module/azurerm.eventhub/Set-AzureRmEventHub) . 
 
 ```azurepowershell-interactive
 Set-AzureRmEventHub -ResourceGroupName MyResourceGroupName -Namespace MyNamespaceName -Name MyEventHubName -partitionCount 12
 ```
 
 ### <a name="cli"></a>Rozhraní příkazového řádku
-[`az eventhubs eventhub update`](/cli/azure/eventhubs/eventhub?view=azure-cli-latest#az-eventhubs-eventhub-update)K aktualizaci oddílů v centru událostí použijte příkaz CLI. 
+[`az eventhubs eventhub update`](/cli/azure/eventhubs/eventhub#az-eventhubs-eventhub-update)K aktualizaci oddílů v centru událostí použijte příkaz CLI. 
 
 ```azurecli-interactive
 az eventhubs eventhub update --resource-group MyResourceGroupName --namespace-name MyNamespaceName --name MyEventHubName --partition-count 12

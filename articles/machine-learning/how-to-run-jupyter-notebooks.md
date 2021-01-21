@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: 7bb1ce8141f609feb4f354aa85f202915e197f37
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: cdd8783daf9e1e1458f47e773eb3b6ccedfbae83
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98599243"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624553"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Spouštění poznámkových bloků Jupyter ve vlastním pracovním prostoru
 
@@ -264,7 +264,7 @@ Buňka je v režimu příkazu, když není k dispozici žádný textový kurzor,
 
    :::image type="content" source="media/how-to-run-jupyter-notebooks/command-mode.png" alt-text="Buňka poznámkového bloku v režimu příkazu ":::
 
-| Zástupce                      | Popis                          |
+| Zástupce                      | Description                          |
 | ----------------------------- | ------------------------------------|
 | Enter                         | Přechod do režimu úprav             |        
 | Shift + Enter                 | Spustit buňku, vyberte níže         |     
@@ -308,7 +308,7 @@ Režim úprav je označen textovým kurzorem, který vás vyzve k zadání v obl
 
 Pomocí následujících klávesových zkratek můžete snáze procházet a spouštět kód v Azure Machine Learning poznámkových blocích v režimu úprav.
 
-| Zástupce                      | Popis|                                     
+| Zástupce                      | Description|                                     
 | ----------------------------- | ----------------------------------------------- |
 | Escape                        | Přejít do režimu příkazu|  
 | Ctrl/Command + mezerník       | Aktivace technologie IntelliSense |
@@ -342,7 +342,14 @@ Pomocí následujících klávesových zkratek můžete snáze procházet a spou
 
 Podrobnosti o vašich výpočetních instancích najdete na stránce **COMPUTE** v [studiu](https://ml.azure.com).
 
+## <a name="troubleshooting"></a>Řešení potíží
+
+* Pokud se nemůžete připojit k poznámkovému bloku, ujistěte se, že komunikace webového soketu **není zakázaná** . Aby funkce COMPUTE instance Jupyter fungovala, musí být povolená komunikace webového soketu. Ujistěte se prosím, že vaše síť povoluje připojení pomocí protokolu WebSocket k *. instances.azureml.net a *. instances.azureml.ms. 
+
+* Když je instance služby COMPUTE nasazená v pracovním prostoru privátního propojení, dá se k ní dostat jenom z virtuální sítě. Pokud používáte vlastní soubor DNS nebo hostitele, přidejte položku pro <název instance>. <region> . instances.azureml.ms s privátní IP adresou privátního koncového bodu v pracovním prostoru. Další informace najdete v článku o [vlastním serveru DNS](https://docs.microsoft.com/azure/machine-learning/how-to-custom-dns?tabs=azure-cli) .
+    
 ## <a name="next-steps"></a>Další kroky
 
 * [Spuštění prvního experimentu](tutorial-1st-experiment-sdk-train.md)
 * [Zálohování úložiště souborů pomocí snímků](../storage/files/storage-snapshots-files.md)
+* [Práce v zabezpečených prostředích](https://docs.microsoft.com/azure/machine-learning/how-to-secure-training-vnet#compute-instance)

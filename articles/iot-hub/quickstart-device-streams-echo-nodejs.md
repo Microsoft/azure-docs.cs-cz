@@ -1,5 +1,5 @@
 ---
-title: Komunikace s aplikací zařízení v Node.js s využitím streamování zařízení Azure IoT Hub
+title: Rychlý Start – komunikace s aplikací zařízení v Node.js s využitím streamování zařízení Azure IoT Hub
 description: V tomto rychlém startu spustíte Node.js aplikaci na straně služby, která komunikuje se zařízením IoT přes datový proud zařízení.
 author: robinsh
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc, devx-track-js, devx-track-azurecli
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 678955970f3eeb87a10c43cd43effc3464db7794
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 335014f032162866e4780bf1294ddcd108b4fd03
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832003"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624384"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-nodejs-via-iot-hub-device-streams-preview"></a>Rychlý Start: komunikace s aplikací zařízení v Node.js prostřednictvím datových proudů zařízení IoT Hub (Preview)
 
@@ -22,7 +22,7 @@ ms.locfileid: "94832003"
 
 V tomto rychlém startu spustíte aplikaci na straně služby a nastavíte komunikaci mezi zařízením a službou pomocí datových proudů zařízení. Datové proudy zařízení v Azure IoT Hub umožňují aplikacím služeb a zařízením komunikovat zabezpečeným způsobem a bránou firewall. Během veřejné verze Preview podporuje Node.js SDK na straně služby pouze datové proudy zařízení. V důsledku toho se v tomto rychlém startu vztahují jenom na pokyny ke spuštění aplikace na straně služby.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Dokončíní [komunikace s aplikacemi zařízení v C prostřednictvím IoT Hub datových proudů zařízení](./quickstart-device-streams-echo-c.md) nebo [komunikace s aplikacemi zařízení v jazyce C# prostřednictvím IoT Hub datových proudů zařízení](./quickstart-device-streams-echo-csharp.md).
 
@@ -47,7 +47,7 @@ Microsoft Azure IoT Hub aktuálně podporuje streamy zařízení jako [funkci ve
 > [!IMPORTANT]
 > Verze Preview datových proudů zařízení je momentálně podporovaná jenom pro centra IoT vytvořená v následujících oblastech:
 >
-> * Střední USA
+> * USA – střed
 > * Střed USA EUAP
 > * Severní Evropa
 > * Jihovýchodní Asie
@@ -79,7 +79,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
     **YourIoTHubName**: níže uvedený zástupný symbol nahraďte názvem, který jste zvolili pro Centrum IoT.
 
     ```azurecli-interactive
-    az iot hub show-connection-string --policy-name service --name {YourIoTHubName} --output table
+    az iot hub connection-string show --policy-name service --name {YourIoTHubName} --output table
     ```
 
     Všimněte si vráceného připojovacího řetězce služby pro pozdější použití v tomto rychlém startu. Soubor bude vypadat jako v následujícím příkladu:
@@ -154,4 +154,4 @@ V tomto rychlém startu nastavíte centrum IoT, zaregistrované zařízení, nav
 Další informace o datových proudech zařízení získáte pomocí odkazů níže:
 
 > [!div class="nextstepaction"]
-> [Přehled streamů zařízení](./iot-hub-device-streams-overview.md) 
+> [Přehled streamů zařízení](./iot-hub-device-streams-overview.md)

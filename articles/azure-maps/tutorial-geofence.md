@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: ee32749e2c6f0118507fcfc6d4994a04ea3a6d69
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 759adea3cf34b79c76b6facec3bd4626ca54107e
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997269"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625028"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Kurz: Nastavení monitorované geografické zóny pomocí Azure Maps
 
@@ -194,7 +194,7 @@ V dalším kroku vytvoříte dva koncové body [Aplikace logiky](../event-grid/h
 
 3. Do pole **Hledat na Marketplace** zadejte **Aplikace logiky**.
 
-4. Z výsledků vyberte možnost vytvořit **aplikaci logiky**  >  **Create**.
+4. Z výsledků vyberte možnost vytvořit **aplikaci logiky**  >  .
 
 5. Na stránce **Aplikace logiky** zadejte následující hodnoty:
     * **Předplatné** , které chcete použít pro tuto aplikaci logiky.
@@ -205,7 +205,7 @@ V dalším kroku vytvoříte dva koncové body [Aplikace logiky](../event-grid/h
 
     :::image type="content" source="./media/tutorial-geofence/logic-app-create.png" alt-text="Snímek obrazovky s vytvořením aplikace logiky":::
 
-6. Vyberte **zkontrolovat + vytvořit**. Zkontrolujte nastavení a vyberte **vytvořit** pro odeslání nasazení. Po úspěšném dokončení nasazení vyberte **Přejít k prostředku**. Jste převzali na **návrháře aplikace logiky**.
+6. Vyberte **Zkontrolovat a vytvořit**. Zkontrolujte nastavení a vyberte **vytvořit** pro odeslání nasazení. Po úspěšném dokončení nasazení vyberte **Přejít k prostředku**. Jste převzali na **návrháře aplikace logiky**.
 
 7. Vyberte typ triggeru. Přejděte dolů do části **Začínáme s běžným triggerem** . Vyberte, **kdy se přijme požadavek HTTP**.
 
@@ -282,7 +282,7 @@ Každý z následujících oddílů provede požadavky rozhraní API pomocí pě
    https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.638237&lon=-122.1324831&searchBuffer=5&isAsync=True&mode=EnterAndExit
    ```
 
-3. Vyberte **Poslat**. V okně odpověď se zobrazí následující text v poli s odpovědí.
+3. Vyberte **Odeslat**. V okně odpověď se zobrazí následující text v poli s odpovědí.
 
     ```json
     {
@@ -322,7 +322,7 @@ V předchozí geografické odpovědi se záporná vzdálenost od geografického 
    https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.63800&lon=-122.132531&searchBuffer=5&isAsync=True&mode=EnterAndExit
    ```
 
-3. Vyberte **Poslat**. V okně odpověď se zobrazí následující text v poli s odpovědí:
+3. Vyberte **Odeslat**. V okně odpověď se zobrazí následující text v poli s odpovědí:
 
     ```json
     {
@@ -362,7 +362,7 @@ V předchozí odpovědi typu geografická odpověď se zařízení nacházelo v 
       https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.63810783315048&lon=-122.13336020708084&searchBuffer=5&isAsync=True&mode=EnterAndExit
       ```
 
-3. Vyberte **Poslat**. V okně odpověď se zobrazí následující text v poli s odpovědí:
+3. Vyberte **Odeslat**. V okně odpověď se zobrazí následující text v poli s odpovědí:
 
     ```json
     {
@@ -405,7 +405,7 @@ V předchozí odpovědi typu geografická odpověď byla zařízení v geografic
     https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.637988&userTime=2023-01-16&lon=-122.1338344&searchBuffer=5&isAsync=True&mode=EnterAndExit
     ```
 
-3. Vyberte **Poslat**. V okně odpověď se zobrazí následující text v poli s odpovědí:
+3. Vyberte **Odeslat**. V okně odpověď se zobrazí následující text v poli s odpovědí:
 
     ```json
     {
@@ -439,7 +439,7 @@ V předchozí odpovědi na geografickou odpověď bylo zařízení v geografick�
     https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.63799&lon=-122.134505&searchBuffer=5&isAsync=True&mode=EnterAndExit
     ```
 
-3. Vyberte **Poslat**. V okně odpověď se zobrazí následující text v poli s odpovědí:
+3. Vyberte **Odeslat**. V okně odpověď se zobrazí následující text v poli s odpovědí:
 
     ```json
     {
@@ -471,6 +471,10 @@ V předchozí odpovědi typu geografická odpověď byla zařízení ukončena g
 
 
 Můžete také [Odeslat e-mailová oznámení pomocí Event Grid a Logic Apps](../event-grid/publish-iot-hub-events-to-logic-apps.md) a pomocí Azure Mapsu kontrolovat [podporované obslužné rutiny událostí v Event Grid](../event-grid/event-handlers.md) .
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Nejsou k dispozici žádné prostředky, které vyžadují vyčištění.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 0004a250173ce6707462b852016d205782479717
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: d8aaf093a7e2a0ad1470d72d815e919f5b4e2d05
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896676"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624979"
 ---
 # <a name="tutorial-how-to-display-route-directions-using-azure-maps-route-service-and-map-control"></a>Kurz: jak zobrazit směry tras pomocí služby Azure Maps Route Service a mapového ovládacího prvku
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak pomocí [rozhraní Azure Maps Route Service API](
 
 Úplný zdrojový kód pro ukázku můžete získat [zde](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/route.html). Ukázku najdete [tady](https://azuremapscodesamples.azurewebsites.net/?sample=Route%20to%20a%20destination).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 1. [Vytvořit účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného.
@@ -39,7 +39,7 @@ V tomto kurzu se dozvíte, jak pomocí [rozhraní Azure Maps Route Service API](
 
 Následující kroky ukazují, jak vytvořit a zobrazit mapový ovládací prvek na webové stránce.
 
-1. Na místním počítači vytvořte nový soubor s názvem **MapRoute.html** .
+1. Na místním počítači vytvořte nový soubor s názvem **MapRoute.html**.
 2. Zkopírujte nebo vložte následující kód HTML do souboru.
 
     ```HTML
@@ -174,7 +174,7 @@ V tomto kurzu vykreslíme trasu pomocí čárové vrstvy. Počáteční a koncov
 
 3. Uložte **MapRoute.html** a aktualizujte prohlížeč. Mapa se teď nacentruje na střed Seattle. Modrý kód pro 15kolíkový označí počáteční bod. Kulatě modrý kód PIN označuje koncový bod.
 
-    :::image type="content" source="./media/tutorial-route-location/map-pins.png" alt-text="Základní vykreslování mapy mapového ovládacího prvku":::
+    :::image type="content" source="./media/tutorial-route-location/map-pins.png" alt-text="Zobrazení počátečního a koncového bodu na mapě":::
 
 <a id="getroute"></a>
 
@@ -183,7 +183,7 @@ V tomto kurzu vykreslíme trasu pomocí čárové vrstvy. Počáteční a koncov
 V této části se dozvíte, jak používat rozhraní API pro Azure Maps trasy k získání směrných tras a odhadované doby doručení od jednoho bodu k druhému.
 
 >[!TIP]
->Služba Azure Maps Route Services nabízí rozhraní API k plánování tras na základě různých typů tras, jako jsou *nejrychlejší* , nejkratší *, kandidát* nebo *Thrilling* trasy založené na vzdálenosti, přenosných podmínkách a způsobu využití přenosu. *shortest* Tato služba také umožňuje uživatelům plánovat budoucí trasy na základě historických přenosových podmínek. Uživatelé mohou zobrazit předpovědi trvání tras pro určitou dobu. Další informace najdete v tématu [získání rozhraní API pro směr směrování](/rest/api/maps/route/getroutedirections).
+>Služba Azure Maps Route Services nabízí rozhraní API k plánování tras na základě různých typů tras, jako jsou *nejrychlejší*, nejkratší *, kandidát* nebo *Thrilling* trasy založené na vzdálenosti, přenosných podmínkách a způsobu využití přenosu.  Tato služba také umožňuje uživatelům plánovat budoucí trasy na základě historických přenosových podmínek. Uživatelé mohou zobrazit předpovědi trvání tras pro určitou dobu. Další informace najdete v tématu [získání rozhraní API pro směr směrování](/rest/api/maps/route/getroutedirections).
 
 1. Do `GetMap` funkce uvnitř `ready` obslužné rutiny události ovládacího prvku přidejte následující kód jazyka JavaScript.
 
@@ -216,9 +216,13 @@ V této části se dozvíte, jak používat rozhraní API pro Azure Maps trasy k
 
 3. Uložte soubor **MapRoute.html** a aktualizujte webový prohlížeč. Mapa by nyní měla zobrazovat trasu od začátku do koncového bodu.
 
-     :::image type="content" source="./media/tutorial-route-location/map-route.png" alt-text="Základní vykreslování mapy mapového ovládacího prvku":::
+     :::image type="content" source="./media/tutorial-route-location/map-route.png" alt-text="Služba Směrování a řízení mapy Azure":::
 
 Úplný zdrojový kód pro ukázku můžete získat [zde](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/route.html). Ukázku najdete [tady](https://azuremapscodesamples.azurewebsites.net/?sample=Route%20to%20a%20destination).
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Nejsou k dispozici žádné prostředky, které vyžadují vyčištění.
 
 ## <a name="next-steps"></a>Další kroky
 

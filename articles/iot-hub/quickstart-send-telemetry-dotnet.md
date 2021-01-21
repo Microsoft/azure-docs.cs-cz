@@ -1,5 +1,5 @@
 ---
-title: Rychlý start k odesílání telemetrických dat do služby Azure IoT Hub (C#) | Microsoft Docs
+title: Rychlý Start – odeslání telemetrie do služby Azure IoT Hub Starter (C#) | Microsoft Docs
 description: V tomto rychlém startu spustíte dvě ukázkové aplikace C#, které odesílají simulovaná telemetrická data do centra IoT a čtou telemetrická data z centra IoT, aby se mohla zpracovávat v cloudu.
 author: robinsh
 manager: philmea
@@ -14,12 +14,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - devx-track-azurecli
 ms.date: 06/01/2020
-ms.openlocfilehash: b515274ef4bcf494c071ddb487590ff9cdccf4c0
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 914df5b80dee7da041b268a3aaf25ac493d0cf5b
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121468"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624435"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-service-application-net"></a>Rychlý Start: odeslání telemetrie ze zařízení do služby IoT Hub a její čtení pomocí aplikace služby (.NET)
 

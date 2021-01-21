@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/02/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 47e3833fe9f35467c1d16945a9b336d4014b2efd
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 9da5c8c89ee124e527584164b21b096ac815e5ca
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97838692"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625460"
 ---
 # <a name="investigate-all-enterprise-sensor-detections-in-the-device-inventory"></a>Prozkoumat všechna zjišťování podnikového senzoru v inventáři zařízení
 
@@ -67,7 +67,7 @@ Tyto informace můžete použít k tomu, abyste se dozvěděli. Například:
 
 - Uživatelé přihlášení k zařízením
 
-:::image type="content" source="media/how-to-work-with-asset-inventory-information/asset-inventory-screen-with-items-highlighted-v2.png" alt-text="Tabulka dat na obrazovce inventáře prostředků":::
+:::image type="content" source="media/how-to-work-with-asset-inventory-information/asset-inventory-screen-with-items-highlighted-v2.png" alt-text="Tabulka dat na obrazovce inventáře zařízení":::
 
 Data můžete integrovat podle těchto údajů:
 
@@ -131,13 +131,13 @@ K načtení a integraci těchto informací můžete použít příkazy v program
 
 Můžete filtrovat inventář zařízení a zobrazit tak sloupce zájmu. Můžete například zobrazit informace o zařízení PLC.
 
-:::image type="content" source="media/how-to-work-with-asset-inventory-information/asset-inventory-view-v2.png" alt-text="Snímek obrazovky inventáře assetů.":::
+:::image type="content" source="media/how-to-work-with-asset-inventory-information/asset-inventory-view-v2.png" alt-text="Snímek obrazovky inventáře zařízení.":::
 
 Filtr je po opuštění okna vymazán.
 
 Chcete-li použít stejný filtr několikrát, můžete uložit filtr nebo kombinaci filtrů, které potřebujete. Můžete otevřít levé podokno a zobrazit filtry, které jste uložili:
 
-:::image type="content" source="media/how-to-work-with-asset-inventory-information/view-your-asset-inventories-v2.png" alt-text="Obrazovka inventáře prostředků":::
+:::image type="content" source="media/how-to-work-with-asset-inventory-information/view-your-asset-inventories-v2.png" alt-text="Obrazovka inventáře zařízení.":::
 
 Filtrování inventáře zařízení:
 
@@ -187,7 +187,7 @@ Následující nástroje jsou k dispozici pro zobrazení zařízení a informac�
 
 - **Zobrazit vlastnosti zařízení**: například senzor, který monitoruje zařízení a základní vlastnosti zařízení. Kliknutím pravým tlačítkem myši na zařízení zobrazíte vlastnosti zařízení.
 
-  :::image type="content" source="media/how-to-work-with-asset-inventory-information/asset-properties-v2.png" alt-text="Snímek obrazovky zobrazení vlastností Assetu":::
+  :::image type="content" source="media/how-to-work-with-asset-inventory-information/asset-properties-v2.png" alt-text="Snímek obrazovky s zobrazením vlastností zařízení":::
 
 - **Výstraha přidružená k zařízení:** Kliknutím pravým tlačítkem myši na zařízení zobrazíte související výstrahy.
 
@@ -227,4 +227,4 @@ K dispozici jsou tyto další informace o zóně:
 
 ## <a name="see-also"></a>Viz také
 
-[Prozkoumat detekci senzorů v inventáři zařízení](how-to-investigate-sensor-detections-in-a-device-inventory.md)
+[Prošetření detekovaných senzorů v inventáři zařízení](how-to-investigate-sensor-detections-in-a-device-inventory.md)

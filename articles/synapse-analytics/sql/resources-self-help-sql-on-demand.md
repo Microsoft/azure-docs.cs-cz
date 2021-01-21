@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4c3b5095da4e55dc8f881a610f80f1150422e739
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: c67b0bab554f363b8389c5557eadeac6e4c577a2
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98119913"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625227"
 ---
 # <a name="self-help-for-serverless-sql-pool"></a>Samoobslužná ochrana pro fond SQL bez serveru
 
@@ -29,7 +29,9 @@ Pokud synapse Studio nemůže navázat připojení k fondu SQL bez serveru, vši
 
 ## <a name="query-fails-because-file-cannot-be-opened"></a>Dotaz se nezdařil, protože soubor nelze otevřít.
 
-Pokud se dotaz nezdařil s chybou říká ' soubor nelze otevřít, protože neexistuje nebo je používán jiným procesem ' a Vy jste si jisti, že oba soubory existují a že se nepoužívá v jiném procesu, znamená to, že fond SQL bez serveru nemůže získat přístup k souboru. K tomuto problému obvykle dochází, protože vaše Azure Active Directory identita nemá práva pro přístup k souboru. Ve výchozím nastavení se fond SQL bez serveru snaží získat přístup k souboru pomocí Azure Active Directory identity. Chcete-li tento problém vyřešit, musíte mít správná oprávnění pro přístup k souboru. Nejjednodušší je udělit sami sobě roli Přispěvatel dat v objektech blob služby Storage pro účet úložiště, který se pokoušíte dotazovat. [Další informace najdete v úplném průvodci řízením přístupu k úložišti pomocí Azure Active Directory](../../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). 
+Pokud se dotaz nezdařil s chybou říká ' soubor nelze otevřít, protože neexistuje nebo je používán jiným procesem ' a Vy jste si jisti, že oba soubory existují a že se nepoužívá v jiném procesu, znamená to, že fond SQL bez serveru nemůže získat přístup k souboru. K tomuto problému obvykle dochází, protože vaše Azure Active Directory identita nemá práva pro přístup k souboru. Ve výchozím nastavení se fond SQL bez serveru snaží získat přístup k souboru pomocí Azure Active Directory identity. Chcete-li tento problém vyřešit, musíte mít správná oprávnění pro přístup k souboru. Nejjednodušší je udělit sami sobě roli Přispěvatel dat v objektech blob služby Storage pro účet úložiště, který se pokoušíte dotazovat. 
+- [Další informace najdete v úplném průvodci řízením přístupu k úložišti pomocí Azure Active Directory](../../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). 
+- [Navštivte řízení přístupu účtu úložiště pro fond SQL bez serveru ve službě Azure synapse Analytics.](develop-storage-files-storage-access-control.md)
 
 ## <a name="query-fails-because-it-cannot-be-executed-due-to-current-resource-constraints"></a>Dotaz se nezdařil, protože jej nelze provést z důvodu aktuálních omezení prostředků. 
 

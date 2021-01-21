@@ -1,6 +1,6 @@
 ---
-title: Nastavení a použití metrik a protokolů ve službě Azure IoT Hub
-description: Naučte se, jak nastavit a používat metriky a protokoly ve službě Azure IoT Hub. Tím získáte data, která se budou analyzovat, aby bylo možné diagnostikovat problémy, které vaše centrum může mít.
+title: Kurz – nastavení a používání metrik a protokolů ve službě Azure IoT Hub
+description: Kurz – Naučte se, jak nastavit a používat metriky a protokoly ve službě Azure IoT Hub. Tím získáte data, která se budou analyzovat, aby bylo možné diagnostikovat problémy, které vaše centrum může mít.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - devx-track-azurecli
 - devx-track-csharp
-ms.openlocfilehash: a16dbeedc2362f4a263d59a673dbb4358f7ba034
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: bf834a6dd648ffc8f4b1633dbb383f33cd99335f
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436483"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625195"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-logs-with-an-iot-hub"></a>Kurz: nastavení a použití metrik a protokolů ve službě IoT Hub
 
@@ -42,7 +42,7 @@ V tomto kurzu provedete následující úlohy:
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 - Ve vývojovém počítači potřebujete .NET Core SDK 2,1 nebo vyšší. Sadu .NET Core SDK pro různé platformy si můžete stáhnout z webu [.NET](https://www.microsoft.com/net/download/all).
 
@@ -174,7 +174,7 @@ Teď použijeme Průzkumníka metrik k vytvoření grafu, který bude zobrazovat
 
    :::image type="content" source="media/tutorial-use-metrics-and-diags/metrics-select-time-range.png" alt-text="Snímek obrazovky zobrazující nastavení času metrik":::
 
-1. V grafu je k dispozici částečné nastavení metriky vymezené pro Centrum IoT. Hodnoty oboru **Scope** názvů a **metriky** ponechte ve výchozím nastavení. Vyberte nastavení **metriky** a zadejte telemetrie a pak vyberte **zprávy telemetrie odeslané** z rozevíracího seznamu. **Agregace** bude automaticky nastavena na **součet**. Všimněte si, že se také změní název grafu.
+1. V grafu je k dispozici částečné nastavení metriky vymezené pro Centrum IoT. Hodnoty oboru  názvů a **metriky** ponechte ve výchozím nastavení. Vyberte nastavení **metriky** a zadejte telemetrie a pak vyberte **zprávy telemetrie odeslané** z rozevíracího seznamu. **Agregace** bude automaticky nastavena na **součet**. Všimněte si, že se také změní název grafu.
 
    :::image type="content" source="media/tutorial-use-metrics-and-diags/metrics-telemetry-messages-sent.png" alt-text="Snímek obrazovky, který ukazuje přidání zpráv telemetrie do grafu":::
 

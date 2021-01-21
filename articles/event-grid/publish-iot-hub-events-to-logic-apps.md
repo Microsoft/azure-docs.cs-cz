@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.author: philmea
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 857ae8d824443e9a8abdac7c4a66e2b014be2be0
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 3772988e9bf4f733323adae6c0527c8b811c4d04
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566346"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624452"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>Kurz: Posílání e-mailových oznámení o událostech služby Azure IoT Hub s využitím služeb Event Grid a Logic Apps
 
@@ -59,7 +59,7 @@ Dále vytvořte aplikaci logiky a přidejte Trigger služby Event Grid, který z
 
 ### <a name="create-a-logic-app-resource"></a>Vytvořte prostředek aplikace logiky
 
-1. V [Azure Portal](https://portal.azure.com)vyberte **vytvořit prostředek** , do vyhledávacího pole zadejte "Logic App" a vyberte Return (vrátit). Z výsledků vyberte **Aplikace logiky** .
+1. V [Azure Portal](https://portal.azure.com)vyberte **vytvořit prostředek**, do vyhledávacího pole zadejte "Logic App" a vyberte Return (vrátit). Z výsledků vyberte **Aplikace logiky** .
 
    ![Vytvoření aplikace logiky](./media/publish-iot-hub-events-to-logic-apps/select-logic-app.png)
 
@@ -91,7 +91,7 @@ Trigger je konkrétní událost, která spustí aplikaci logiky. V tomto kurzu t
 
    ![Použít ukázkovou datovou část](./media/publish-iot-hub-events-to-logic-apps/sample-payload.png)
 
-1. Do textového pole vložte JSON *schématu události připojené zařízení* a potom vyberte **Hotovo** :
+1. Do textového pole vložte JSON *schématu události připojené zařízení* a potom vyberte **Hotovo**:
 
    ```json
      [{  
@@ -137,17 +137,17 @@ Akce jsou všechny kroky, které se provádějí potom, co trigger spustí praco
 
 1. Vytvořte e-mailovou šablonu. 
 
-   * **Komu** : Zadejte e-mailovou adresu pro příjem e-mailů s oznámením. Pro účely tohoto kurzu použijte e-mailový účet, ke kterému máte při testování přístup. 
+   * **Komu**: Zadejte e-mailovou adresu pro příjem e-mailů s oznámením. Pro účely tohoto kurzu použijte e-mailový účet, ke kterému máte při testování přístup. 
 
-   * **Předmět** : Vyplňte text předmětu. Po kliknutí na textové pole Předmět můžete vybrat dynamický obsah, který chcete zahrnout. Tento kurz například používá `IoT Hub alert: {eventType}` . Pokud nevidíte dynamický obsah, vyberte hypertextový odkaz **Přidat dynamický obsah** – tím ho přepínáte a vypnuli.
+   * **Předmět**: Vyplňte text předmětu. Po kliknutí na textové pole Předmět můžete vybrat dynamický obsah, který chcete zahrnout. Tento kurz například používá `IoT Hub alert: {eventType}` . Pokud nevidíte dynamický obsah, vyberte hypertextový odkaz **Přidat dynamický obsah** – tím ho přepínáte a vypnuli.
 
-   * **Text** : Napište text e-mailu. V nástroji pro výběr vyberte vlastnosti JSON, které budou zahrnovat dynamický obsah na základě dat události. Pokud nemůžete zobrazit dynamický obsah, v textovém poli text **zprávy** vyberte hypertextový odkaz **Přidat dynamický obsah** . Pokud se vám nezobrazují požadovaná pole, klikněte na tlačítko *Další* na obrazovce dynamický obsah a přidejte pole z předchozí akce.
+   * **Text**: Napište text e-mailu. V nástroji pro výběr vyberte vlastnosti JSON, které budou zahrnovat dynamický obsah na základě dat události. Pokud nemůžete zobrazit dynamický obsah, v textovém poli text **zprávy** vyberte hypertextový odkaz **Přidat dynamický obsah** . Pokud se vám nezobrazují požadovaná pole, klikněte na tlačítko *Další* na obrazovce dynamický obsah a přidejte pole z předchozí akce.
 
    Vaše e-mailová šablona může vypadat podobně jako tento příklad:
 
    ![Vyplnění informací e-mailu](./media/publish-iot-hub-events-to-logic-apps/email-content.png)
 
-1. V Návrháři Logic Apps vyberte **Uložit** .  
+1. V Návrháři pro Logic Apps vyberte **Uložit**.  
 
 ### <a name="copy-the-http-url"></a>Zkopírujte adresu URL protokolu HTTP
 
@@ -165,34 +165,34 @@ Než odejdete z návrháře aplikace logiky, zkopírujte adresu URL, kterou vaš
 
 V této části nakonfigurujete v IoT Hubu publikování událostí, když k nim dojde. 
 
-1. Na webu Azure Portal přejděte do svého centra IoT. Můžete to udělat tak, že vyberete **skupiny prostředků** , pak vyberete skupinu prostředků tohoto kurzu a pak ze seznamu prostředků vyberete Centrum IoT.
+1. Na webu Azure Portal přejděte do svého centra IoT. Můžete to udělat tak, že vyberete **skupiny prostředků**, pak vyberete skupinu prostředků tohoto kurzu a pak ze seznamu prostředků vyberete Centrum IoT.
 
-1. Vyberte **události**.
+1. Vyberte **Události**.
 
    ![Otevření podrobností Event Gridu](./media/publish-iot-hub-events-to-logic-apps/event-grid.png)
 
-1. Vyberte **odběr události**. 
+1. Vyberte **Odběr události**. 
 
    ![Vytvoření nového odběru události](./media/publish-iot-hub-events-to-logic-apps/event-subscription.png)
 
 1. Vytvořte odběr události s následujícími hodnotami: 
 
-   1. V části **Podrobnosti odběru události** :
+   1. V části **PODROBNOSTI O ODBĚRU UDÁLOSTÍ**:
       1. Zadejte **název** odběru události. 
       2. Vyberte **Event Grid schéma** pro **schéma událostí**. 
-   2. V části **Podrobnosti o tématu** :
-      1. Potvrďte, že je **typ tématu** nastaven na **IoT Hub**. 
-      2. Potvrďte, že název služby IoT Hub je nastaven jako hodnota pro pole **zdrojového prostředku** . 
+   2. V části **PODROBNOSTI O TÉMATU**:
+      1. Potvrďte, že **Typ tématu** je nastavený na **IoT Hub**. 
+      2. Potvrďte, že název centra IoT je nastaven jako hodnota pro pole **Zdrojový prostředek**. 
       3. Zadejte název **systémového tématu** , které se vytvoří za vás. Další informace o systémových tématech najdete v tématu [Přehled systémových témat](system-topics.md).
-   3. V části **typy událostí** :
-      1. Vyberte rozevírací seznam **filtrovat typy událostí** .
+   3. V části **TYPY UDÁLOSTÍ**:
+      1. Vyberte rozevírací seznam **Filtrovat na typy událostí**.
       1. Zrušte zaškrtnutí políček **vytvořeno zařízení** a **odstraněné zařízení** **a nechte** zaškrtnuté políčko **Odpojeno zařízení a odpojit zařízení** .
 
-         ![vybrat typy událostí předplatného](./media/publish-iot-hub-events-to-logic-apps/subscription-event-types.png)
+         ![Výběr typů událostí odběru](./media/publish-iot-hub-events-to-logic-apps/subscription-event-types.png)
    
-   4. V části **Podrobnosti o koncovém bodu** : 
+   4. V části **PODROBNOSTI O KONCOVÝCH BODECH**: 
        1. Jako **webový Hook** vyberte **Typ koncového bodu** .
-       2. Klikněte na **Vybrat koncový bod** , vložte adresu URL, kterou jste zkopírovali z aplikace logiky, a potvrďte výběr.
+       2. Klikněte na **Vybrat koncový bod** a vložte adresu URL, kterou jste zkopírovali ze své aplikace logiky. Pak výběr potvrďte.
 
          ![Výběr adresy URL koncového bodu](./media/publish-iot-hub-events-to-logic-apps/endpoint-webhook.png)
 
@@ -242,4 +242,7 @@ Pokud chcete odstranit všechny prostředky vytvořené v tomto kurzu, odstraňt
 * [Informace o uspořádání událostí připojení a odpojení zařízení](../iot-hub/iot-hub-how-to-order-connection-state-events.md)
 * Další informace o tom, co ještě můžete provést se službou [Event Grid](overview.md)
 
-Úplný seznam podporovaných konektorů aplikace logiky najdete v tématu [Přehled konektorů](/connectors/).
+Úplný seznam podporovaných konektorů aplikace logiky najdete v tématu. 
+
+> [!div class="nextstepaction"]
+> [Přehled konektorů](/connectors/).

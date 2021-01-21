@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: Blackmist
 ms.author: nigup
 author: nishankgu
-ms.date: 11/09/2020
+ms.date: 01/20/2020
 ms.custom: how-to, seodec18, devx-track-azurecli, contperf-fy21q2
-ms.openlocfilehash: 636f63b3f7e43bd8f27d1df58ab82d24bd19a616
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 8420aecbc160fa6df2640d2ba0ae8a8b77702b67
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033744"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624536"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Správa přístupu k pracovnímu prostoru služby Azure Machine Learning
 
@@ -161,6 +161,10 @@ Musíte mít oprávnění k celému oboru nové definice role. Například pokud
 > [!NOTE]
 > Použití aktualizací rolí může trvat 15 minut až hodinu, než se použije u všech přiřazení rolí v daném oboru.
 
+## <a name="use-azure-resource-manager-templates-for-repeatability"></a>Použití šablon Azure Resource Manager pro opakování
+
+Pokud předpokládáte, že budete muset znovu vytvořit složitá přiřazení rolí, může být šablona Azure Resource Manager velká. [Šablona přiřazení role 201 – Machine-Learning-závislosti (role](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-dependencies-role-assignment) ) ukazuje, jak lze zadat přiřazení rolí ve zdrojovém kódu pro opakované použití. 
+
 ## <a name="common-scenarios"></a>Obvyklé scénáře
 
 Následující tabulka představuje souhrn Azure Machine Learningch aktivit a oprávnění, která jsou potřebná k jejich provedení v nejmenším rozsahu. Pokud například aktivitu lze provést s oborem pracovního prostoru (sloupcem 4), pak všechny vyšší obory s tímto oprávněním budou také fungovat automaticky:
@@ -192,7 +196,7 @@ Pokud chcete přiřadit identitu přiřazenou uživateli k Azure Machine Learnin
 
 Pokud chcete provádět operace MLflow s vaším pracovním prostorem Azure Machine Learning, použijte následující obory, které vlastní role:
 
-| Operace MLflow | Rozsah |
+| Operace MLflow | Obor |
 | --- | --- |
 | Vypíše všechny experimenty v úložišti sledování pracovních prostorů, získá experiment podle ID, získá experiment podle názvu. | `Microsoft.MachineLearningServices/workspaces/experiments/read` |
 | Vytvoření experimentu s názvem, nastavení značky na experimentu, obnovení experimentu označeného k odstranění| `Microsoft.MachineLearningServices/workspaces/experiments/write` | 

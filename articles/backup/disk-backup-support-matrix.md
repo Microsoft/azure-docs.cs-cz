@@ -1,15 +1,15 @@
 ---
-title: Matice podpory Azure disk Backup
+title: Matice podpory pro zálohování disků Azure
 description: Poskytuje souhrn nastavení podpory a omezení zálohování disku Azure.
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 950651148237c7b9374c378e27ef5cd76697ae9e
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 099e83d8a2fb109da862657265dad8be8143f608
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98557527"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624930"
 ---
 # <a name="azure-disk-backup-support-matrix-in-preview"></a>Matice podpory Azure disk Backup (ve verzi Preview)
 
@@ -55,6 +55,8 @@ Další oblasti budou oznámeny, jakmile budou k dispozici.
 - Zásady zálohování se v současné době nedají upravit a skupina prostředků snímku, která je přiřazená k instanci zálohy, když nakonfigurujete zálohování disku, nejde změnit.
 
 - V současné době se Azure Portal prostředí pro konfiguraci zálohování disků omezí na maximálně 20 disků od stejného předplatného.
+
+- V současné době (ve verzi Preview) není podporováno použití PowerShellu a Azure CLI ke konfiguraci zálohování a obnovení disků.
 
 - Při konfiguraci zálohování musí být vybraný disk, který se má zálohovat, a skupinu prostředků snímku, kde mají být snímky uložené, a to v rámci stejného předplatného. Pro určitý disk nemůžete vytvořit přírůstkový snímek mimo předplatné tohoto disku. Přečtěte si další informace o [přírůstkových snímcích](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal#restrictions) pro spravovaný disk. Další informace o tom, jak zvolit skupinu prostředků snímku, najdete v tématu  [Konfigurace zálohování](backup-managed-disks.md#configure-backup).
 

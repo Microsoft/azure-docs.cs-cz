@@ -2,13 +2,13 @@
 title: Propojení šablon pro nasazení
 description: Popisuje způsob použití propojených šablon v šabloně Azure Resource Manager (šablona ARM) k vytvoření modulárního řešení šablon. Ukazuje, jak předat hodnoty parametrů, určit soubor parametrů a dynamicky vytvořené adresy URL.
 ms.topic: conceptual
-ms.date: 12/07/2020
-ms.openlocfilehash: cac63ccdd13e245baf97695e9b138c29d3db4958
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.date: 01/20/2021
+ms.openlocfilehash: dd810167e07f1bb23f9563936cb481652953ccd1
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760618"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624854"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Použití propojené a vnořené šablony při nasazování prostředků Azure
 
@@ -162,7 +162,7 @@ Následující šablona ukazuje, jak jsou řešeny výrazy šablony podle oboru.
 
 Hodnota `exampleVar` změny závisí na hodnotě `scope` vlastnosti v `expressionEvaluationOptions` . V následující tabulce jsou uvedeny výsledky pro oba obory.
 
-| `expressionEvaluationOptions` oboru | Výstup |
+| Rozsah vyhodnocení | Výstup |
 | ----- | ------ |
 | vnořen | z vnořené šablony |
 | vnější (nebo výchozí) | z nadřazené šablony |
@@ -274,6 +274,129 @@ Následující příklad nasadí SQL Server a načte tajný klíč trezoru klí�
   ],
   "outputs": {
   }
+}
+```
+
+Buďte opatrní při použití hodnot zabezpečeného parametru ve vnořené šabloně. Pokud nastavíte rozsah na hodnotu vnější, budou zabezpečené hodnoty uloženy jako prostý text v historii nasazení. Uživatel, který si prohlížejí šablonu v historii nasazení, může zobrazit zabezpečené hodnoty. Místo toho použijte vnitřní obor nebo přidejte do nadřazené šablony prostředky, které vyžadují zabezpečené hodnoty.
+
+Následující úryvek ukazuje, které hodnoty jsou zabezpečené a které nejsou zabezpečené.
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "adminUsername": {
+      "type": "string",
+      "metadata": {
+        "description": "Username for the Virtual Machine."
+      }
+    },
+    "adminPasswordOrKey": {
+      "type": "securestring",
+      "metadata": {
+        "description": "SSH Key or password for the Virtual Machine. SSH key is recommended."
+      }
+    }
+  },
+  ...
+  "resources": [
+    {
+      "type": "Microsoft.Compute/virtualMachines",
+      "apiVersion": "2020-06-01",
+      "name": "mainTemplate",
+      "properties": {
+        ...
+        "osProfile": {
+          "computerName": "mainTemplate",
+          "adminUsername": "[parameters('adminUsername')]",
+          "adminPassword": "[parameters('adminPasswordOrKey')]" // Yes, secure because resource is in parent template
+        }
+      }
+    },
+    {
+      "name": "outer",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2019-10-01",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "outer"
+        },
+        "mode": "Incremental",
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "resources": [
+            {
+              "type": "Microsoft.Compute/virtualMachines",
+              "apiVersion": "2020-06-01",
+              "name": "outer",
+              "properties": {
+                ...
+                "osProfile": {
+                  "computerName": "outer",
+                  "adminUsername": "[parameters('adminUsername')]",
+                  "adminPassword": "[parameters('adminPasswordOrKey')]" // No, not secure because resource is in nested template with outer scope
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "inner",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2019-10-01",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "adminPasswordOrKey": {
+              "value": "[parameters('adminPasswordOrKey')]"
+          },
+          "adminUsername": {
+              "value": "[parameters('adminUsername')]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "parameters": {
+            "adminUsername": {
+              "type": "string",
+              "metadata": {
+                "description": "Username for the Virtual Machine."
+              }
+            },
+            "adminPasswordOrKey": {
+              "type": "securestring",
+              "metadata": {
+                "description": "SSH Key or password for the Virtual Machine. SSH key is recommended."
+              }
+            }
+          },
+          "resources": [
+            {
+              "type": "Microsoft.Compute/virtualMachines",
+              "apiVersion": "2020-06-01",
+              "name": "inner",
+              "properties": {
+                ...
+                "osProfile": {
+                  "computerName": "inner",
+                  "adminUsername": "[parameters('adminUsername')]",
+                  "adminPassword": "[parameters('adminPasswordOrKey')]" // Yes, secure because resource is in nested template and scope is inner
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
 }
 ```
 
@@ -674,7 +797,7 @@ az deployment group create --resource-group ExampleGroup --template-uri $url?$to
 
 Následující příklady znázorňují běžné použití propojených šablon.
 
-|Hlavní šablona  |Propojená šablona |Popis  |
+|Hlavní šablona  |Propojená šablona |Description  |
 |---------|---------| ---------|
 |[Hello World](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) |[odkazovaná šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json) | Vrátí řetězec z propojené šablony. |
 |[Load Balancer s veřejnou IP adresou](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[odkazovaná šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |Vrátí veřejnou IP adresu z propojené šablony a nastaví tuto hodnotu v nástroji pro vyrovnávání zatížení. |

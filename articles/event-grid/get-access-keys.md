@@ -3,12 +3,12 @@ title: Získání přístupového klíče pro prostředek Event Grid
 description: Tento článek popisuje, jak získat přístupový klíč pro Event Grid téma nebo doménu.
 ms.topic: how-to
 ms.date: 07/07/2020
-ms.openlocfilehash: e5694fe0b5f22f7f76285c344627005ea727ae3c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e258cebe1652178a67c292d0cccab3a151eddf7
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86105859"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624822"
 ---
 # <a name="get-access-keys-for-event-grid-resources-topics-or-domains"></a>Získání přístupových klíčů pro Event Grid prostředky (témata nebo domény)
 Přístupové klíče slouží k ověřování událostí publikování aplikace pro Azure Event Grid prostředků (témat a domén). Doporučujeme pravidelně znovu vygenerovat klíče a bezpečně je ukládat. Máte k dispozici dva přístupové klíče, abyste mohli při opětovném generování druhé klávesy spravovat připojení pomocí jednoho klíče.
@@ -21,13 +21,13 @@ V Azure Portal přejděte na kartu **přístupové klíče** **Event Grid témat
 :::image type="content" source="./media/get-access-keys/azure-portal.png" alt-text="Stránka přístupových klíčů":::
 
 ## <a name="azure-powershell"></a>Azure PowerShell
-K získání přístupových klíčů pro témata použijte příkaz [Get-AzEventGridTopicKey](/powershell/module/az.eventgrid/get-azeventgridtopickey?view=azps-4.3.0) . 
+K získání přístupových klíčů pro témata použijte příkaz [Get-AzEventGridTopicKey](/powershell/module/az.eventgrid/get-azeventgridtopickey) . 
 
 ```azurepowershell-interactive
 Get-AzEventGridTopicKey -ResourceGroup <RESOURCE GROUP NAME> -Name <TOPIC NAME>
 ```
 
-Pro získání přístupových klíčů k doménám použijte příkaz [Get-AzEventGridDomainKey](/powershell/module/az.eventgrid/get-azeventgriddomainkey?view=azps-4.3.0) . 
+Pro získání přístupových klíčů k doménám použijte příkaz [Get-AzEventGridDomainKey](/powershell/module/az.eventgrid/get-azeventgriddomainkey) . 
 
 ```azurepowershell-interactive
 Get-AzEventGridDomainKey -ResourceGroup <RESOURCE GROUP NAME> -Name <DOMAIN NAME>

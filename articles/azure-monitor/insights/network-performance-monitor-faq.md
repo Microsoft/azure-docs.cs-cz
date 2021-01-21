@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 8e26a4d996e4c1767856b3dd98ae318d8992a89b
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: 8047e340f3262ba84484f5a8b57c17bf34a4af73
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562688"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625161"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Nejčastější dotazy k řešení Network Performance Monitor
 
@@ -34,7 +34,7 @@ Níže jsou uvedené požadavky na platformu pro různé možnosti NPM:
 - Funkce monitorování ExpressRoute pro NPM podporuje jenom operační systém Windows Server (2008 SP1 nebo novější).
 
 ### <a name="can-i-use-linux-machines-as-monitoring-nodes-in-npm"></a>Můžu počítače se systémem Linux použít jako uzly monitorování v NPM?
-Možnost monitorování sítí pomocí uzlů se systémem Linux je teď všeobecně dostupná. Iniciativy agenta [sem](../../virtual-machines/extensions/oms-linux.md). Agenti systému Linux poskytují možnost monitorování pouze pro funkci sledování výkonu NPM a nejsou k dispozici pro monitorování připojení služby a možnosti monitorování ExpressRoute.
+Možnost monitorování sítí pomocí uzlů se systémem Linux je teď všeobecně dostupná. Iniciativy agenta [sem](../../virtual-machines/extensions/oms-linux.md). 
 
 ### <a name="what-are-the-size-requirements-of-the-nodes-to-be-used-for-monitoring-by-npm"></a>Jaké jsou požadavky na velikost uzlů, které se mají použít k monitorování pomocí NPM?
 Aby bylo možné spustit řešení NPM na virtuálních počítačích uzlů pro monitorování sítí, musí mít uzly alespoň 500 MB paměti a jednu jádro. Nemusíte používat samostatné uzly pro používání NPM. Řešení může běžet na uzlech, na kterých běží jiné úlohy. Řešení má možnost zastavit proces monitorování, pokud používá více než 5% CPU.

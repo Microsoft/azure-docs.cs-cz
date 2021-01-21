@@ -3,12 +3,12 @@ title: Konfigurace vlastního klíče pro šifrování dat služby Azure Event H
 description: Tento článek poskytuje informace o tom, jak nakonfigurovat vlastní klíč pro šifrování služby Azure Event Hubs data REST.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 1b0469a2f25b7f2bec2668b6ab33ff99eb1df809
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 095def84c5ab5e4dac7802027468b67eefb3161f
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348207"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625377"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Konfigurace klíčů spravovaných zákazníkem pro šifrování dat Azure Event Hubs v klidovém formátu pomocí Azure Portal
 Azure Event Hubs poskytuje šifrování neaktivních dat pomocí šifrování služby Azure Storage (Azure SSE). Event Hubs spoléhá na Azure Storage uložení dat a ve výchozím nastavení se všechna data uložená pomocí Azure Storage šifrují pomocí klíčů spravovaných Microsoftem. 
@@ -42,12 +42,12 @@ Pokud chcete povolit klíčům spravovaným zákazníkem v Azure Portal, postupu
 Po povolení klíčů spravovaných zákazníkem je potřeba přidružit spravovaný klíč zákazníka k vašemu oboru názvů Azure Event Hubs. Event Hubs podporuje pouze Azure Key Vault. Pokud zapnete možnost **šifrování pomocí klíče spravovaného zákazníkem** v předchozí části, je potřeba, abyste klíč importovali do Azure Key Vault. Klíče musí také obsahovat **obnovitelné odstranění** a pro tento klíč **se** neodstraňují konfigurace. Tato nastavení se dají nakonfigurovat pomocí [PowerShellu](../key-vault/general/key-vault-recovery.md) nebo rozhraní příkazového [řádku](../key-vault/general/key-vault-recovery.md).
 
 1. Pokud chcete vytvořit nový trezor klíčů, postupujte podle pokynů pro [rychlý start](../key-vault/general/overview.md)Azure Key Vault. Další informace o importu existujících klíčů najdete v tématu [informace o klíčích, tajných klíčích a certifikátech](../key-vault/general/about-keys-secrets-certificates.md).
-1. Pokud chcete při vytváření trezoru zapnout ochranu pomocí obnovitelného odstranění i vyprázdnění, použijte příkaz [AZ datatrezor Create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) .
+1. Pokud chcete při vytváření trezoru zapnout ochranu pomocí obnovitelného odstranění i vyprázdnění, použijte příkaz [AZ datatrezor Create](/cli/azure/keyvault#az-keyvault-create) .
 
     ```azurecli-interactive
     az keyvault create --name ContosoVault --resource-group ContosoRG --location westus --enable-soft-delete true --enable-purge-protection true
     ```    
-1. Pokud chcete přidat ochranu vyprázdnit do existujícího trezoru (který už má povolené obnovitelné odstranění), použijte příkaz [AZ klíčů trezor Update](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update) .
+1. Pokud chcete přidat ochranu vyprázdnit do existujícího trezoru (který už má povolené obnovitelné odstranění), použijte příkaz [AZ klíčů trezor Update](/cli/azure/keyvault#az-keyvault-update) .
 
     ```azurecli-interactive
     az keyvault update --name ContosoVault --resource-group ContosoRG --enable-purge-protection true
@@ -94,10 +94,10 @@ Pomocí těchto kroků povolte protokoly pro klíče spravované zákazníkem.
 ## <a name="log-schema"></a>Schéma protokolu 
 Všechny protokoly jsou uložené ve formátu JavaScript Object Notation (JSON). Každá položka má pole řetězce, která používají formát popsaný v následující tabulce. 
 
-| Název | Popis |
+| Název | Description |
 | ---- | ----------- | 
 | /TN | Popis úlohy, která selhala. |
-| ActivityId | Interní ID, které se používá ke sledování. |
+| ID aktivity | Interní ID, které se používá ke sledování. |
 | category | Definuje klasifikaci úkolu. Například pokud je klíč z vašeho trezoru klíčů zakázaný, pak se jedná o kategorii informací, nebo pokud se klíč nedá rozdělit, může dojít k chybě. |
 | resourceId | ID prostředku Azure Resource Manager |
 | keyVault | Úplný název trezoru klíčů |

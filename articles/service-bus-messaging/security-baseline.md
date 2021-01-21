@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 16320e3f667c413778e166bfaacf81347226f4b1
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 00d19d7b554e8a867412cfb982e1377fd90bd936
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202738"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624519"
 ---
 # <a name="azure-security-baseline-for-service-bus"></a>Základní hodnoty zabezpečení Azure pro Service Bus
 
@@ -231,9 +231,9 @@ Pomocí Azure PowerShell nebo Azure CLI můžete vyhledávat nebo provádět akc
 
 - [Předdefinované role pro Azure Service Bus](authenticate-application.md#azure-built-in-roles-for-azure-service-bus)
 
-- [Jak získat roli adresáře ve službě Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0) 
+- [Jak získat roli adresáře ve službě Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrole) 
 
-- [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -507,7 +507,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 - [Jak vytvářet dotazy pomocí Azure Resource graphu](../governance/resource-graph/first-query-portal.md)
 
-- [Jak zobrazit vaše předplatná Azure](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [Jak zobrazit vaše předplatná Azure](/powershell/module/az.accounts/get-azsubscription)
 
 - [Pochopení Azure RBAC](../role-based-access-control/overview.md)
 
@@ -605,7 +605,7 @@ Pomocí aliasů Azure Policy v oboru názvů Microsoft. ServiceBus můžete vytv
 
 - [Předdefinované zásady Azure pro Service Bus ](./policy-reference.md)
 
-- [Jak zobrazit dostupné aliasy Azure Policy](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [Jak zobrazit dostupné aliasy Azure Policy](/powershell/module/az.resources/get-azpolicyalias)
 
 - [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -731,7 +731,7 @@ Pomocí následujícího příkazu PowerShellu Zajistěte pravidelné automatizo
 
 - [Postup konfigurace klíčů spravovaných zákazníkem pro šifrování Azure Service Busch dat v klidovém umístění](configure-customer-managed-key.md)
 
-- [Postup obnovení klíčů trezoru klíčů v Azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Postup obnovení klíčů trezoru klíčů v Azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 

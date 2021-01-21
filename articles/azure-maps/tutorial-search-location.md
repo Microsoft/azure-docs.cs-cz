@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 8cc7c1e0b776574ec7908557108e2cda49bb2a11
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 31dd1c06b0f17b469454593131ccdc93b45b2446
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896656"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624963"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>Kurz: hledání okolních bodů zájmu pomocí Azure Maps
 
@@ -26,12 +26,12 @@ V tomto kurzu se dozvíte, jak nastavit účet s Azure Maps a pak pomocí rozhra
 > * Vytvořit novou webovou stránku s použitím rozhraní API pro mapové ovládací prvky
 > * Vyhledání okolního bodu zájmu pomocí vyhledávací služby Maps
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 <a id="createaccount"></a>
 <a id="getkey"></a>
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com). Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
 2. [Vytvořit účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account)
 3. [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného. Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](how-to-manage-authentication.md).
 
@@ -41,7 +41,7 @@ V tomto kurzu se dozvíte, jak nastavit účet s Azure Maps a pak pomocí rozhra
 
 Rozhraní Ovládací prvek Mapa API je praktická Klientská knihovna. Toto rozhraní API umožňuje snadno integrovat mapy do vaší webové aplikace. Skrývá složitost úplného volání služby REST a zvyšuje produktivitu díky přizpůsobitelným součástem. Následující kroky ukazují, jak vytvořit statickou stránku HTML s vloženým rozhraním API pro mapové ovládací prvky.
 
-1. Na místním počítači vytvořte nový soubor s názvem **MapSearch.html** .
+1. Na místním počítači vytvořte nový soubor s názvem **MapSearch.html**.
 2. Přidejte do souboru následující součásti HTML:
 
    ```HTML
@@ -246,6 +246,10 @@ Mapa, kterou jsme vytvořili, zatím z výsledků hledání používá pouze dat
     ![Ovládací prvek Mapa a Search Service v Azure](./media/tutorial-search-location/popup-map.png)
 
 Pokud chcete zobrazit úplný kód pro tento kurz, klikněte [sem](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/search.html). Chcete-li zobrazit živý ukázku, klikněte [sem](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20for%20points%20of%20interest) .
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Nejsou k dispozici žádné prostředky, které vyžadují vyčištění.
 
 ## <a name="next-steps"></a>Další kroky
 

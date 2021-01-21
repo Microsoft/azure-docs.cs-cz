@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 36db1b23d8fb17cec4fe981c938f8c7003543b4d
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 73eb693ab9f06535fd523eb386969e2cce961eef
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97838721"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624587"
 ---
 # <a name="manage-sensors-from-the-management-console"></a>Správa senzorů z konzoly pro správu
 
@@ -144,13 +144,13 @@ Pomocí informací o odpojených senzorech můžete posílat upozornění třet�
 
 Senzory jsou chráněny pěti Defendery pro moduly IoT. Moduly pro připojené senzory můžete povolit nebo zakázat.
 
-| Modul | Popis | Ukázkový scénář |
+| Modul | Description | Ukázkový scénář |
 |--|--|--|
 | Modul porušení protokolu | K porušení protokolu dojde, pokud struktura paketu nebo hodnoty polí neodpovídají specifikaci protokolu. | Výstraha "Neplatná operace MODBUS (kód funkce nula)". Tato výstraha indikuje, že primární zařízení odeslalo do sekundárního zařízení požadavek s kódem funkce 0. Tato možnost není povolena podle specifikace protokolu a sekundární zařízení nemusí správně zpracovat vstup. |
 | Modul porušení zásad | Porušení zásad probíhá u odchylky od chování standardních hodnot definovaných ve zjištěné nebo nakonfigurované zásadě. | Výstraha "neautorizovaný agent uživatele protokolu HTTP". Tato výstraha indikuje, že se aplikace, kterou zásada nezískala nebo schválila, používá jako klient HTTP na zařízení. Může se jednat o nový webový prohlížeč nebo aplikaci v tomto zařízení. |
 | Malwarový stroj | Malware detekuje aktivitu škodlivou v síti. | Výstraha "podezření na škodlivou aktivitu (Stuxnet)". Tato výstraha indikuje, že senzor nalezl podezřelou síťovou aktivitu známou jako v souvislosti s malwarem Stuxnet, což je pokročilá trvalá hrozba zaměřená na průmyslové řízení a SCADA sítě. |
 | Modul anomálií | Malwarový modul detekuje anomálii v chování sítě. | "Periodické chování v komunikačním kanálu" Toto je komponenta, která kontroluje síťová připojení a vyhledává pravidelné nebo cyklické chování přenosu dat, což je běžné v průmyslových sítích. |
-| Provozní modul | Tento modul detekuje provozní incidenty nebo nefunkční entity. | "U prostředku se předpokládá, že se jedná o odpojené (nereagují) upozornění. Tato výstraha se aktivuje, když zařízení nereaguje na žádné požadavky na předdefinované období. Může to znamenat vypnutí zařízení, odpojení nebo selhání.
+| Provozní modul | Tento modul detekuje provozní incidenty nebo nefunkční entity. | `Device is Suspected to be Disconnected (Unresponsive)` Upozornění. Tato výstraha se aktivuje, když zařízení nereaguje na žádné požadavky na předdefinované období. Může to znamenat vypnutí zařízení, odpojení nebo selhání.
 |
 
 Pokud chcete povolit nebo zakázat motory pro připojené senzory:

@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 953a9cfeed558291fba1cb517039f26860444904
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 98499961f55b55b15687d5742b4d593e3d461e49
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233657"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625326"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>Možnosti konfigurace – Azure Monitor Application Insights pro Java
 
@@ -39,14 +39,14 @@ Další podrobnosti a další možnosti konfigurace najdete níže.
 
 ## <a name="configuration-file-path"></a>Cesta ke konfiguračnímu souboru
 
-Ve výchozím nastavení Application Insights Java 3,0 očekává, že se konfigurační soubor pojmenuje a že se `applicationinsights.json` nachází ve stejném adresáři jako `applicationinsights-agent-3.0.1.jar` .
+Ve výchozím nastavení Application Insights Java 3,0 očekává, že se konfigurační soubor pojmenuje a že se `applicationinsights.json` nachází ve stejném adresáři jako `applicationinsights-agent-3.0.2.jar` .
 
 Vlastní cestu ke konfiguračnímu souboru můžete zadat buď pomocí
 
 * `APPLICATIONINSIGHTS_CONFIGURATION_FILE` Proměnná prostředí nebo
 * `applicationinsights.configuration.file` Systémová vlastnost Java
 
-Pokud zadáte relativní cestu, bude vyřešena vzhledem k adresáři, kde `applicationinsights-agent-3.0.1.jar` se nachází.
+Pokud zadáte relativní cestu, bude vyřešena vzhledem k adresáři, kde `applicationinsights-agent-3.0.2.jar` se nachází.
 
 ## <a name="connection-string"></a>Připojovací řetězec
 
@@ -170,7 +170,7 @@ Pokud chcete přidat vlastní dimenze do všech telemetrie:
 `${...}` dá se použít ke čtení hodnoty ze zadané proměnné prostředí při spuštění.
 
 > [!NOTE]
-> Od verze 3.0.1, pokud přidáte vlastní dimenzi s názvem `service.version` , bude hodnota uložena ve `application_Version` sloupci v tabulce protokoly Application Insights místo jako vlastní dimenze.
+> Od verze 3.0.2, pokud přidáte vlastní dimenzi s názvem `service.version` , bude hodnota uložena ve `application_Version` sloupci v tabulce protokoly Application Insights místo jako vlastní dimenze.
 
 ## <a name="telemetry-processors-preview"></a>Procesory telemetrie (Preview)
 
@@ -241,7 +241,7 @@ Zakázání automatické kolekce metrik mikroměřičů (včetně metriky pohán
 
 ## <a name="suppressing-specific-auto-collected-telemetry"></a>Potlačení konkrétní automaticky shromážděné telemetrie
 
-Počínaje verzí 3.0.1 se konkrétní automaticky shromážděná telemetrie dá potlačit pomocí těchto možností konfigurace:
+Počínaje verzí 3.0.2 se konkrétní automaticky shromážděná telemetrie dá potlačit pomocí těchto možností konfigurace:
 
 ```json
 {
@@ -338,7 +338,7 @@ Ve výchozím nastavení Application Insights Java 3,0 protokoluje na úrovni `I
 
 `level` může to být jedna z `OFF` ,,,, `ERROR` `WARN` `INFO` `DEBUG` nebo `TRACE` .
 
-`path` může být absolutní nebo relativní cesta. Relativní cesty jsou vyřešeny v adresáři, kde `applicationinsights-agent-3.0.1.jar` je umístěn.
+`path` může být absolutní nebo relativní cesta. Relativní cesty jsou vyřešeny v adresáři, kde `applicationinsights-agent-3.0.2.jar` je umístěn.
 
 `maxSizeMb` je maximální velikost souboru protokolu před tím, než se vrátí.
 

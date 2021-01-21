@@ -1,20 +1,20 @@
 ---
-title: Rychlé zprovoznění zařízení Azure IoT Hub streamy v C# pro SSH a RDP
+title: Rychlý Start – Azure IoT Hub Device Streams C# pro SSH a RDP
 description: V tomto rychlém startu spustíte dvě ukázkové aplikace v C#, které umožňují scénáře SSH a RDP přes datový proud zařízení IoT Hub.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: quickstart
-ms.custom: mvc, devx-track-azurecli
+ms.custom: references_regions
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: adf0f42b34a4bd7e5df2d2994408dbc175c5e01b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 12e26818f86fc4abdc1873d031182fd994c04687
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94831918"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624367"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Rychlý Start: povolení SSH a RDP přes datový proud zařízení IoT Hub pomocí aplikace proxy v jazyce C# (Preview)
 
@@ -26,30 +26,11 @@ Microsoft Azure IoT Hub aktuálně podporuje streamy zařízení jako [funkci ve
 
 Tento článek nejdřív popisuje nastavení pro SSH (pomocí portu 22) a pak popisuje, jak změnit port instalace pro protokol RDP. Vzhledem k tomu, že proudy zařízení jsou aplikace a protokol nezávislá, je možné stejný vzorek upravit tak, aby vyhovoval jiným typům provozu aplikací. Tato změna obvykle zahrnuje pouze změnu komunikačního portu na ten, který používá zamýšlená aplikace.
 
-## <a name="how-it-works"></a>Jak to funguje
-
-Následující obrázek ukazuje, jak jsou v této ukázce místní aplikace proxy serveru a místní služby pro místní zařízení, umožňují koncové připojení mezi klientem SSH a procesy démona SSH. Tady předpokládáme, že démon běží na stejném zařízení jako aplikace pro místní proxy zařízení.
-
-![Instalace místní proxy aplikace](./media/quickstart-device-streams-proxy-csharp/device-stream-proxy-diagram.png)
-
-1. Místní proxy aplikace služby se připojí ke službě IoT Hub a inicializuje datový proud zařízení do cílového zařízení.
-
-1. Místní proxy aplikace pro zařízení dokončí modul handshake iniciace streamování a vytvoří komplexní tunelové propojení prostřednictvím koncového bodu streamování služby IoT Hub na straně služby.
-
-1. Místní proxy aplikace zařízení se připojí k procesu démon SSH, který naslouchá na portu 22 na zařízení. Toto nastavení je možné konfigurovat, jak je popsáno v části spuštění aplikace pro místní proxy zařízení.
-
-1. Místní proxy aplikace služby čeká na nové připojení SSH od uživatele tím, že naslouchá na určeném portu, což je v tomto případě port 2222. Toto nastavení lze konfigurovat, jak je popsáno v části spuštění aplikace pro místní proxy server služby. Když se uživatel připojí přes klienta SSH, tunel umožňuje přenos aplikace SSH mezi klientem a serverovou aplikací SSH.
-
-> [!NOTE]
-> Provoz SSH, který se odesílá přes datový proud zařízení, se prochází tunelovým propojením přes koncový bod streamování IoT Hub, nikoli přímo mezi službou a zařízením. Další informace najdete v tématu [výhody použití datových proudů zařízení ve službě IoT Hub](iot-hub-device-streams-overview.md#benefits).
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Verze Preview datových proudů zařízení je momentálně podporovaná jenom pro centra IoT, která jsou vytvořená v následujících oblastech:
 
-  * Střední USA
+  * USA – střed
   * Střed USA EUAP
   * Southeast Asia
   * Severní Evropa
@@ -71,6 +52,25 @@ Následující obrázek ukazuje, jak jsou v této ukázce místní aplikace prox
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
+
+## <a name="how-it-works"></a>Jak to funguje
+
+Následující obrázek ukazuje, jak jsou v této ukázce místní aplikace proxy serveru a místní služby pro místní zařízení, umožňují koncové připojení mezi klientem SSH a procesy démona SSH. Tady předpokládáme, že démon běží na stejném zařízení jako aplikace pro místní proxy zařízení.
+
+![Instalace místní proxy aplikace](./media/quickstart-device-streams-proxy-csharp/device-stream-proxy-diagram.png)
+
+1. Místní proxy aplikace služby se připojí ke službě IoT Hub a inicializuje datový proud zařízení do cílového zařízení.
+
+1. Místní proxy aplikace pro zařízení dokončí modul handshake iniciace streamování a vytvoří komplexní tunelové propojení prostřednictvím koncového bodu streamování služby IoT Hub na straně služby.
+
+1. Místní proxy aplikace zařízení se připojí k procesu démon SSH, který naslouchá na portu 22 na zařízení. Toto nastavení je možné konfigurovat, jak je popsáno v části spuštění aplikace pro místní proxy zařízení.
+
+1. Místní proxy aplikace služby čeká na nové připojení SSH od uživatele tím, že naslouchá na určeném portu, což je v tomto případě port 2222. Toto nastavení lze konfigurovat, jak je popsáno v části spuštění aplikace pro místní proxy server služby. Když se uživatel připojí přes klienta SSH, tunel umožňuje přenos aplikace SSH mezi klientem a serverovou aplikací SSH.
+
+> [!NOTE]
+> Provoz SSH, který se odesílá přes datový proud zařízení, se prochází tunelovým propojením přes koncový bod streamování IoT Hub, nikoli přímo mezi službou a zařízením. Další informace najdete v tématu [výhody použití datových proudů zařízení ve službě IoT Hub](iot-hub-device-streams-overview.md#benefits).
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
@@ -96,7 +96,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
    > Zástupný text *YourIoTHubName* nahraďte názvem, který jste zvolili pro Centrum IoT.
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDevice --output table
+    az iot hub device-identity connection-string show --hub-name {YourIoTHubName} --device-id MyDevice --output table
     ```
 
     Poznamenejte si vrácený připojovací řetězec zařízení pro pozdější použití v tomto rychlém startu. Soubor bude vypadat jako v následujícím příkladu:

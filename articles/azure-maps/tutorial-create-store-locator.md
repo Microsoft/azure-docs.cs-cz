@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 398e964ad773e4c015129c6dd3d4784f1300e16b
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 801c2fe1710952a12584bf10dd8e5c77de3b839c
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905770"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625094"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Kurz: vytvoření lokátoru úložiště pomocí Azure Maps
 
@@ -33,7 +33,7 @@ Tento kurz vás provede procesem vytvoření jednoduchého lokátoru úložišt�
 
 Přejděte dopředu na [příklad lokátoru Live Storu](https://azuremapscodesamples.azurewebsites.net/?sample=Simple%20Store%20Locator) nebo [zdrojový kód](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 1. [Vytvoření účtu Azure Maps s cenovou úrovní S1](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného.
@@ -935,6 +935,10 @@ V tomto kurzu jste zjistili, jak vytvořit základní Lokátor úložiště pomo
  * Uložte svá data do databáze a vyhledejte umístění v okolí. Další informace najdete v tématu [Přehled typů prostorových dat SQL Server](/sql/relational-databases/spatial/spatial-data-types-overview?preserve-view=true&view=sql-server-2017) a [dotazování prostorových dat pro nejbližší sousední uzel](/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor?preserve-view=true&view=sql-server-2017).
 
 Můžete [Zobrazit úplný zdrojový kód](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator), [zobrazit živý ukázku](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Simple%20Store%20Locator) a získat další informace o pokrytí a funkcích Azure Maps pomocí [úrovní přiblížení a mřížky dlaždic](zoom-levels-and-tile-grid.md). Můžete také [použít výrazy stylu řízené daty](data-driven-style-expressions-web-sdk.md) pro použití v obchodní logice.
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Nejsou k dispozici žádné prostředky, které vyžadují vyčištění.
 
 ## <a name="next-steps"></a>Další kroky
 

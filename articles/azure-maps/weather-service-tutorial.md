@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 259db10aa8f5cd2b711eca001bc6d48057d5280d
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: 32ce875600bb948e7c3e8479f712e99d25eb6367
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97683200"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624947"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>Kurz: spojení dat senzorů s daty předpovědi počasí pomocí Azure Notebooks (Python)
 
@@ -196,6 +196,10 @@ Pokud chcete prozkoumat rozhraní API Azure Maps používaná v tomto kurzu, př
 * [Vykreslení – získat obrázek mapy](/rest/api/maps/render/getmapimage)
 
 Úplný seznam Azure Maps rozhraní REST API najdete v tématu [Azure Maps REST API](./consumption-model.md).
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Nejsou k dispozici žádné prostředky, které vyžadují vyčištění.
 
 ## <a name="next-steps"></a>Další kroky
 

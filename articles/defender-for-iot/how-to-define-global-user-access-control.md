@@ -1,5 +1,5 @@
 ---
-title: Definovat globální řízení přístupu uživatele
+title: Definování globálního řízení přístupu uživatelů
 description: Ve velkých organizacích můžou být uživatelská oprávnění složitá a můžou být určená globální strukturou organizace, a to i se standardní strukturou lokalit a zón.
 author: shhazam-ms
 manager: rkarlin
@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/08/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: de3ff6ead1f0dd86e07c86b992a720a676a2095c
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 399eee06d472204eaf6dbc333f15cee7c4373739
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97839268"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624638"
 ---
 # <a name="define-global-access-control"></a>Definování globálního řízení přístupu
 
@@ -20,7 +20,7 @@ Ve velkých organizacích můžou být uživatelská oprávnění složitá a m�
 
 Aby bylo možné podporovat požadavky na uživatelská přístupová oprávnění, která jsou globální a složitější, můžete vytvořit globální obchodní topologii založenou na obchodních jednotkách, oblastech a lokalitách. Pak můžete pro tyto entity definovat oprávnění k přístupu uživatele.
 
-Práce s nástroji Access Tools for Business Topology pomáhá organizacím implementovat strategie nulové důvěryhodnosti tím, že lépe ovládá, kde uživatelé spravují a analyzují prostředky v Azure Defenderu pro platformu IoT.
+Práce s nástroji Access Tools for Business Topology pomáhá organizacím implementovat strategie nulové důvěryhodnosti tím, že lépe ovládá, kde uživatelé spravují a analyzují zařízení v Azure Defenderu pro platformu IoT.
 
 ## <a name="about-access-groups"></a>O přístupových skupinách
 

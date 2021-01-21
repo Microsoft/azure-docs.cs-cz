@@ -1,6 +1,6 @@
 ---
-title: Zobrazení výsledků směrování zpráv služby Azure IoT Hub (.NET) | Microsoft Docs
-description: Po nastavení všech prostředků pomocí části 1 tohoto kurzu přidejte možnost směrovat zprávy do Azure Stream Analytics a zobrazit výsledky v PowerBI.
+title: Kurz – zobrazení výsledků směrování zpráv služby Azure IoT Hub (.NET) | Microsoft Docs
+description: Kurz – po nastavení všech prostředků v části 1 tohoto kurzu přidejte možnost směrovat zprávy do Azure Stream Analytics a zobrazit výsledky v Power BI.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 14f6fc685e99060474a17503cb13ba09a61a5a9a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 0db05c8caae8483de3b55448bfbe6b2bcfc23187
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149201"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625278"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>Kurz: část 2 – zobrazení směrovaných zpráv
 
@@ -116,7 +116,7 @@ Pokud chcete zobrazit data ve vizualizaci Power BI, nejprve vytvořte úlohu Str
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Přidání vstupu úlohy Stream Analytics
 
-1. V části **topologie úlohy**vyberte **vstupy**.
+1. V části **topologie úlohy** vyberte **vstupy**.
 
 2. V podokně **vstupy** vyberte **Přidat vstup streamu** a vyberte IoT Hub. Na další obrazovce vyplňte následující pole:
 
@@ -142,9 +142,9 @@ Pokud chcete zobrazit data ve vizualizaci Power BI, nejprve vytvořte úlohu Str
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Přidání vstupu úlohy Stream Analytics
 
-1. V části **topologie úlohy**vyberte **výstupy**.
+1. V části **topologie úlohy** vyberte **výstupy**.
 
-2. V podokně **výstupy** vyberte **Přidat**a pak vyberte **Power BI**. Na další obrazovce vyplňte následující pole:
+2. V podokně **výstupy** vyberte **Přidat** a pak vyberte **Power BI**. Na další obrazovce vyplňte následující pole:
 
    **Alias pro výstup:** Jedinečný alias pro výstup. Tento kurz používá **contosooutputs**. 
 
@@ -154,7 +154,7 @@ Pokud chcete zobrazit data ve vizualizaci Power BI, nejprve vytvořte úlohu Str
 
    Pro zbývající pole můžete použít výchozí hodnoty.
 
-3. Vyberte **autorizovat**a přihlaste se ke svému účtu Power BI. (Může to trvat více než jeden pokus).
+3. Vyberte **autorizovat** a přihlaste se ke svému účtu Power BI. (Může to trvat více než jeden pokus).
 
    ![Nastavte výstupy pro úlohu Stream Analytics.](./media/tutorial-routing-view-message-routing-results/stream-analytics-job-outputs.png)
 
@@ -162,7 +162,7 @@ Pokud chcete zobrazit data ve vizualizaci Power BI, nejprve vytvořte úlohu Str
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>Konfigurace dotazu pro úlohu Stream Analytics
 
-1. V části **topologie úlohy**vyberte možnost **dotaz**.
+1. V části **topologie úlohy** vyberte možnost **dotaz**.
 
 2. Nahraďte `[YourInputAlias]` názvem aliasu pro vstup úlohy. Tento kurz používá **contosoinputs**.
 
@@ -176,7 +176,7 @@ Pokud chcete zobrazit data ve vizualizaci Power BI, nejprve vytvořte úlohu Str
 
 ### <a name="run-the-stream-analytics-job"></a>Spuštění úlohy Stream Analytics
 
-V Stream Analytics úlohy vyberte **Spustit**  >  **nyní**  >  **Start**. Jakmile se úloha úspěšně spustí, stav úlohy se změní ze **Zastaveno** na **Spuštěno**.
+V Stream Analytics úlohy vyberte **Spustit**  >  **nyní**  >  . Jakmile se úloha úspěšně spustí, stav úlohy se změní ze **Zastaveno** na **Spuštěno**.
 
 K vytvoření sestavy Power BI potřebujete data, takže Power BI je potřeba po vytvoření zařízení a spuštění aplikace simulace zařízení nastavit.
 
@@ -218,7 +218,7 @@ Pokud je všechno správně nastavené, v tomto okamžiku byste měli získat n�
 
 2. V [Azure Portal](https://portal.azure.com)vyberte **skupiny prostředků** a vyberte skupinu prostředků. Tento kurz používá **ContosoResources**. 
 
-    Vyberte účet úložiště, vyberte **kontejnery**a pak vyberte kontejner. Tento kurz používá **contosoresults**. Měli byste vidět složku, ve které můžete procházet adresáře, dokud neuvidíte jeden nebo několik souborů. Otevřete jeden z těchto souborů; obsahují položky směrované do účtu úložiště. 
+    Vyberte účet úložiště, vyberte **kontejnery** a pak vyberte kontejner. Tento kurz používá **contosoresults**. Měli byste vidět složku, ve které můžete procházet adresáře, dokud neuvidíte jeden nebo několik souborů. Otevřete jeden z těchto souborů; obsahují položky směrované do účtu úložiště. 
 
    ![Soubory výsledků v úložišti](./media/tutorial-routing-view-message-routing-results/results-in-storage.png)
 
@@ -238,7 +238,7 @@ Teď, když je aplikace pořád spuštěná, nastavte vizualizaci Power BI, abys
 
    Měli byste vidět datovou sadu určenou při vytváření výstupu pro úlohu služby Stream Analytics. Tento kurz používá **contosodataset**. (Zobrazení datové sady může na začátku 5 až 10 minut trvat.)
 
-4. V části **Akce**vyberte první ikonu pro vytvoření sestavy.
+4. V části **Akce** vyberte první ikonu pro vytvoření sestavy.
 
    ![Power BI pracovní prostor s zvýrazněnými akcemi a ikonou sestavy](./media/tutorial-routing-view-message-routing-results/power-bi-actions.png)
 
@@ -280,7 +280,7 @@ Přihlaste se ke svému účtu [Power BI](https://powerbi.microsoft.com/). Přej
 
 ### <a name="use-the-azure-cli-to-clean-up-resources"></a>Vyčištění prostředků pomocí Azure CLI
 
-Chcete-li odebrat skupinu prostředků, použijte příkaz [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete). `$resourceGroup` byl nastaven na **ContosoResources** zpět na začátku tohoto kurzu.
+Chcete-li odebrat skupinu prostředků, použijte příkaz [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete&preserve-view=true). `$resourceGroup` byl nastaven na **ContosoResources** zpět na začátku tohoto kurzu.
 
 ```azurecli-interactive
 az group delete --name $resourceGroup

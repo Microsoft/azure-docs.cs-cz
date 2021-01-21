@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/16/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: e46bb87788de27916860720284087643db7153dc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a63c309c8e728e3f76ad904d479557b368388954
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95913398"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624771"
 ---
 # <a name="use-azure-storage-explorer-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Správa adresářů, souborů a seznamů ACL ve službě Azure Data Lake Storage Gen2 pomocí Průzkumníka služby Azure Storage
 
@@ -80,7 +80,7 @@ Pokud chcete soubory stáhnout pomocí **Průzkumník služby Azure Storage** s 
 
 Oprávnění můžete nastavit v kořenu vašeho kontejneru. Abyste to mohli udělat, musíte být přihlášeni k Průzkumník služby Azure Storage s vaším individuálním účtem s právy k tomu, aby to bylo možné (na rozdíl od připojovacího řetězce). Klikněte pravým tlačítkem na svůj kontejner a vyberte **Spravovat oprávnění** a v dialogovém okně **Spravovat oprávnění** .
 
-![Průzkumník služby Microsoft Azure Storage – Správa přístupu k adresáři](media/storage-quickstart-blobs-storage-Explorer/manageperms.png)
+![Průzkumník služby Microsoft Azure Storage – Správa přístupu k adresáři](media/storage-quickstart-blobs-storage-explorer/manageperms.png)
 
 Dialog **Spravovat oprávnění** umožňuje spravovat oprávnění pro vlastníka a skupinu vlastníci. Umožňuje také přidat nové uživatele a skupiny do seznamu řízení přístupu, pro který pak můžete spravovat oprávnění.
 
@@ -105,6 +105,10 @@ V obou těchto kategoriích máte tři oprávnění, která pak můžete přiřa
 > Výběrem těchto možností se nenastaví oprávnění k žádným aktuálně existujícím položkám v adresáři. Je nutné přejít na každou jednotlivou položku a nastavit oprávnění ručně, pokud soubor již existuje.
 
 Můžete spravovat oprávnění pro jednotlivé adresáře a také jednotlivé soubory, což vám umožní jemně odstupňované řízení přístupu. Proces pro správu oprávnění pro adresáře i soubory je stejný, jak je popsáno výše. Klikněte pravým tlačítkem na soubor nebo adresář, u kterého chcete spravovat oprávnění, a postupujte podle stejného procesu.
+
+## <a name="private-endpoints-in-azure-data-lake-storage-gen2"></a>Soukromé koncové body v Azure Data Lake Storage Gen2
+
+Průzkumník služby Storage využívá při práci s Azure Data Lake Storage Gen2 i [koncové body](../common/storage-private-endpoints.md#private-endpoints-for-azure-storage) objektů BLOB (blob) & Data Lake Storage Gen2 (DFS). Pokud je přístup k Azure Data Lake Storage Gen2 nakonfigurovaný pomocí privátních koncových bodů, zajistěte, aby se pro účet úložiště vytvořily dva privátní koncové body: jeden s cílovým dílčím prostředkem `blob` a druhý s cílovým dílčím prostředkem `dfs` .
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: b2f95ddb13896ed461a20f1948fef34569586d1f
-ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
+ms.openlocfilehash: bfe3e00c4930ba57c930eb1bc2f2dd4ed11886e0
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97977064"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624680"
 ---
 # <a name="control-what-traffic-is-monitored"></a>Určení, který provoz se monitoruje
 
@@ -157,7 +157,7 @@ Změny mohou nastat například tehdy, když server DHCP přiřadí IP adresy.
 
 Definování dynamických IP adres u každého snímače umožňuje komplexní a transparentní podporu v instancích změny IP adresy. Tím zajistíte komplexní vytváření sestav pro každé jedinečné zařízení.
 
-Konzola senzoru prezentuje nejaktuálnější IP adresu přidruženou k zařízení a označuje, která zařízení jsou dynamická. Příklad:
+Konzola senzoru prezentuje nejaktuálnější IP adresu přidruženou k zařízení a označuje, která zařízení jsou dynamická. Například:
 
 - Sestava dolování dat a inventář zařízení konsoliduje veškerou aktivitu získanou ze zařízení jako jednu entitu, a to bez ohledu na změny IP adresy. Tyto sestavy označují, které adresy byly definovány jako adresy DHCP.
 
@@ -186,11 +186,11 @@ Postup nastavení rozsahu adres DHCP:
 
 ## <a name="configure-dns-servers-for-reverse-lookup-resolution"></a>Konfigurace serverů DNS pro rozlišení zpětného vyhledávání
 
-Pokud chcete zlepšit obohacení prostředků, můžete nakonfigurovat několik serverů DNS, aby bylo možné zpětné vyhledávání provést. Můžete přeložit názvy hostitelů nebo plně kvalifikované názvy domény přidružené k IP adresám zjištěným v síťových podsítích. Například pokud senzor zjistí IP adresu, může zadat dotaz na více serverů DNS, aby vyřešil název hostitele.
+Pokud chcete zlepšit rozšíření zařízení, můžete nakonfigurovat několik serverů DNS, aby bylo možné zpětné vyhledávání provést. Můžete přeložit názvy hostitelů nebo plně kvalifikované názvy domény přidružené k IP adresám zjištěným v síťových podsítích. Například pokud senzor zjistí IP adresu, může zadat dotaz na více serverů DNS, aby vyřešil název hostitele.
 
 Podporují se všechny formáty CIDR.
 
-Název hostitele se zobrazí v inventáři prostředků a v mapě prostředků a také v sestavách.
+Název hostitele se zobrazí v inventáři zařízení a v mapě zařízení a v sestavách.
 
 Plány řešení zpětného vyhledávání můžete naplánovat pro konkrétní hodinové intervaly, například každých 12 hodin. Případně můžete naplánovat určitý čas.
 
@@ -212,7 +212,7 @@ Definování serverů DNS:
 
 5. Do pole **port serveru DNS** zadejte port DNS.
 
-6. Vyřešte síťové IP adresy pro plně kvalifikované názvy domén prostředků. Do pole **počet popisků** přidejte počet popisků domény, které se mají zobrazit. Od zleva doprava se zobrazí až 30 znaků.
+6. Vyřešte síťové IP adresy pro plně kvalifikované názvy domén zařízení. Do pole **počet popisků** přidejte počet popisků domény, které se mají zobrazit. Od zleva doprava se zobrazí až 30 znaků.
 
 7. V poli **podsítě** zadejte podsítě, které má server DNS dotazovat.
 
@@ -220,7 +220,7 @@ Definování serverů DNS:
 
 ### <a name="test-the-dns-configuration"></a>Otestování konfigurace DNS 
 
-Pomocí testovacího prostředku ověřte, zda správně definované nastavení funguje:
+Pomocí testovacího zařízení ověřte, zda správně definované nastavení funguje:
 
 1. Povolte přepínač **vyhledávání DNS** .
 

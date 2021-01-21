@@ -3,75 +3,72 @@ title: Řešení potíží se službou Azure VM File Recovery
 description: Řešení potíží při obnovování souborů a složek ze zálohy virtuálního počítače Azure
 ms.topic: troubleshooting
 ms.date: 07/12/2020
-ms.openlocfilehash: bd369577e320cf6dca510183948f41e6cf91779b
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: aec69b91ad1dae5864e5e8fba61c53e6d15887f4
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97605288"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624502"
 ---
-# <a name="troubleshooting-issues-in-file-recovery-of-azure-vm-backup"></a>Řešení potíží s obnovením souborů zálohování virtuálních počítačů Azure
+# <a name="troubleshoot-issues-in-file-recovery-of-an-azure-vm-backup"></a>Řešení potíží s obnovením souborů zálohování virtuálních počítačů Azure
 
-Tento článek popisuje postup řešení potíží, který vám může při obnovování souborů a složek ze zálohy virtuálního počítače Azure pomáhat při řešení problémů s Azure Backup.
+Tento článek popisuje kroky pro řešení potíží, které vám pomůžou vyřešit problémy obnovování souborů a složek ze zálohy virtuálních počítačů Azure.
 
 ## <a name="common-error-messages"></a>Běžné chybové zprávy
 
-### <a name="exception-caught-while-connecting-to-target"></a>Při připojování k cíli se zachytila výjimka.
+V této části najdete postup řešení potíží s chybovými zprávami, které se mohou zobrazit.
+
+### <a name="exception-caught-while-connecting-to-target"></a>"Při připojování k cíli byla zachycena výjimka"
 
 **Možná příčina**: skript nemůže získat přístup k bodu obnovení.
 
-**Doporučená akce**: Ověřte, zda počítač splňuje všechny požadavky na [přístup](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#step-4-access-requirements-to-successfully-run-the-script).
+**Doporučená akce**: Pokud chcete tento problém vyřešit, postupujte podle kroků uvedených ve [skriptu, ale připojení selhalo](#the-script-runs-but-the-connection-to-the-iscsi-target-failed).
 
-### <a name="the-target-has-already-been-logged-in-via-an-iscsi-session"></a>Cíl se už přihlásil přes relaci iSCSI.
+### <a name="the-target-has-already-been-logged-in-via-an-iscsi-session"></a>"Cíl se už přihlásil prostřednictvím relace iSCSI."
 
 **Možná příčina**: skript již byl spuštěn na stejném počítači a jednotky byly připojeny.
 
-**Doporučená akce**: svazky bodu obnovení již byly připojeny. Nemusí být připojené se stejnými písmeny jednotky původního virtuálního počítače. Procházejte všemi dostupnými svazky v Průzkumníkovi souborů.
+**Doporučená akce**: svazky bodu obnovení již byly připojeny. Nejde je připojit se stejnými písmeny jednotky původního virtuálního počítače. Procházejte dostupné svazky v Průzkumníkovi souborů.
 
-### <a name="this-script-is-invalid-because-the-disks-have-been-dismounted-via-portalexceeded-the-12-hr-limit-download-a-new-script-from-the-portal"></a>Tento skript je neplatný, protože disky byly odpojeny přes portál nebo překročily limit 12 hodin. Stažení nového skriptu z portálu
+### <a name="this-script-is-invalid-because-the-disks-have-been-dismounted-via-portalexceeded-the-12-hr-limit-download-a-new-script-from-the-portal"></a>Tento skript je neplatný, protože disky byly odpojeny přes portál nebo překročily limit 12 hodin. Stažení nového skriptu z portálu "
 
-**Možná příčina**: disky byly odpojeny z portálu nebo byl překročen limit 12 hodin.
+**Možná příčina**: disky byly odpojeny z portálu nebo byl překročen časový limit 12 hodin.
 
-**Doporučená akce**: skript je po uplynutí 12 hodin od jeho stažení neplatný a nedá se spustit. Přejděte na portál a Stáhněte si nový skript, abyste mohli pokračovat v obnovování souborů.
+**Doporučená akce**: 12 hodin po stažení skriptu je neplatných a nedá se spustit. Přejděte na portál a pak stáhněte nový skript, abyste mohli pokračovat v obnovování souborů.
 
-## <a name="troubleshooting-common-scenarios"></a>Řešení potíží s běžnými scénáři
+### <a name="iscsi_tcp-module-cant-be-loaded-or-iscsi_tcp_module-not-found"></a>modul iscsi_tcp nejde načíst (nebo) iscsi_tcp_module se nenašel.
 
-V této části najdete postup řešení problémů, ke kterým může docházet při stahování a spouštění skriptu pro obnovení souborů.
+**Doporučená akce**: Chcete-li tento problém vyřešit, postupujte podle kroků v [části stažení skriptu úspěšně, ale spuštění se nezdaří](#the-script-downloads-successfully-but-fails-to-run).
 
-### <a name="cant-download-the-script"></a>Skript nejde stáhnout.
+## <a name="common-problems"></a>Běžné problémy
 
-Doporučená akce:
+V této části najdete postup řešení běžných problémů, ke kterým může dojít při stahování a spouštění skriptu pro obnovení souboru.
 
-1. Ujistěte se, že máte všechna [potřebná oprávnění ke stažení skriptu](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#select-recovery-point-who-can-generate-script).
-1. Ujistěte se, že existuje připojení k IP adresám cíle Azure.
+### <a name="you-cant-download-the-script"></a>Nemůžete stáhnout skript.
 
-Chcete-li ověřit připojení, spusťte jeden z následujících příkazů z příkazového řádku se zvýšenými oprávněními.
+1. Ujistěte se, že máte [potřebná oprávnění ke stažení skriptu](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#select-recovery-point-who-can-generate-script).
+1. Ověřte připojení k IP adresám cíle Azure. Z příkazového řádku se zvýšenými oprávněními spusťte jeden z následujících příkazů:
 
-`nslookup download.microsoft.com`
+   `nslookup download.microsoft.com`
 
-nebo
+    nebo
 
-`ping download.microsoft.com`
+    `ping download.microsoft.com`
 
 ### <a name="the-script-downloads-successfully-but-fails-to-run"></a>Skript se úspěšně stáhne, ale nespustí se.
 
-#### <a name="for-sles-12-sp4-os-linux"></a>Pro SLES 12 SP4 OS (Linux)
+Když spustíte skript Pythonu pro obnovení na úrovni položek (ILR) v SUSE Linux Enterprise Server 12 SP4, dojde k chybě s chybou "iscsi_tcp modul nejde načíst" nebo "iscsi_tcp_module nebyl nalezen".
 
-**Chyba**: iscsi_tcp_module Nenalezeno
+**Možná příčina**: modul ILR používá **iscsi_tcp** k navázání připojení TCP ke službě zálohování. V rámci verze SLES 12 SP4 odstranil SUSE z balíčku Open-iSCSI **iscsi_tcp** , takže operace ilr se nezdařila.
 
-**Možná příčina**: při spuštění skriptu Pythonu pro obnovení na úrovni položek (ilr) v operačním systému SUSE Linux verze 12sp4 dojde k chybě **_modul iscsi_tcp nelze načíst_* _.
+**Doporučená akce**: spuštění skriptu obnovení souborů není podporované na virtuálních počítačích s SUSE 12 SP4. Zkuste operaci obnovení provést na starší verzi SUSE 12 SP4.
 
-Modul ILR používá _ *iscsi_tcp** k navázání připojení TCP ke službě zálohování. V rámci verze 12SP4 se SUSE **iscsi_tcp** odebral z balíčku Open-iSCSI, takže operace ilr se nezdařila.
+### <a name="the-script-runs-but-the-connection-to-the-iscsi-target-failed"></a>Skript se spustí, ale připojení k cíli iSCSI selhalo.
 
-**Doporučená akce**: spuštění skriptu obnovení souborů není podporované na virtuálních počítačích s SUSE 12SP4. Zkuste operaci obnovení provést na starší verzi SUSE 12SP4.
+Při připojování k cíli se může zobrazit chybová zpráva "výjimka byla zachycena.
 
-### <a name="the-script-runs-but-connection-to-iscsi-target-failed"></a>Skript se spustí, ale připojení k cíli iSCSI selhalo.
-
-**Chyba**: při připojování k cíli se zachytila výjimka.
-
-1. Ujistěte se, že počítač, ve kterém je spuštěný skript, splňuje všechny [požadavky na přístup](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#step-4-access-requirements-to-successfully-run-the-script).
-1. Ověřte připojení k cílovým IP adresám Azure.
-Chcete-li ověřit připojení, spusťte jeden z následujících příkazů z příkazového řádku se zvýšenými oprávněními.
+1. Ujistěte se, že počítač, ve kterém je spuštěný skript, splňuje [požadavky na přístup](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#step-4-access-requirements-to-successfully-run-the-script).
+1. Ověřte připojení k IP adresám cíle Azure. Z příkazového řádku se zvýšenými oprávněními spusťte jeden z následujících příkazů:
 
    `nslookup download.microsoft.com`
 
@@ -79,95 +76,98 @@ Chcete-li ověřit připojení, spusťte jeden z následujících příkazů z p
 
    `ping download.microsoft.com`
 1. Ujistěte se, že máte přístup k odchozímu portu iSCSI 3260.
-1. Ujistěte se, že neexistuje žádná brána firewall nebo NSG, která blokuje provoz na IP adresy cíle Azure nebo na adresy URL služby Recovery Services.
-1. Zkontroluje, jestli antivirová ochrana blokuje spuštění skriptu.
+1. Ověřte, jestli brána firewall nebo NSG blokuje provoz na IP adresy cíle Azure nebo na adresy URL služby Recovery Services.
+1. Ujistěte se, že váš antivirový software neblokoval spuštění skriptu.
 
-### <a name="connected-to-recovery-point-but-disks-didnt-get-attached"></a>Připojeno k bodu obnovení, ale disky se nepřipojily
+### <a name="youre-connected-to-the-recovery-point-but-the-disks-werent-attached"></a>Jste připojení k bodu obnovení, ale nepřipojili jsme disky.
 
-Ujistěte se, že máte [správný počítač pro spuštění skriptu](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script) .
+Vyřešte tento problém podle kroků pro váš operační systém.
 
-#### <a name="on-a-windows-vm"></a>Na virtuálním počítači s Windows
+#### <a name="windows-file-recovery-fails-on-server-with-storage-pools"></a>Obnovení souborů systému Windows na serveru s fondy úložiště se nezdařilo.
 
-**Fond úložiště na virtuálním počítači se připojí v režimu jen pro čtení**: ve Windows 2012 R2 a Windows 2016 (s fondy úložiště) při prvním spuštění skriptu může přejít do stavu jen pro čtení.
+Při prvním spuštění skriptu na Windows Serveru 2012 R2 a Windows serveru 2016 (s fondy úložiště) se může fond úložiště připojit k virtuálnímu počítači jen pro čtení.
 
-Aby bylo možné tento problém vyřešit, je nutné ručně nastavit Read-Write přístup k fondu úložiště poprvé a připojit virtuální disky. Postupujte následovně:
+>[!Tip]
+> Ujistěte se, že máte [správný počítač pro spuštění skriptu](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script).
 
-1. Nastavte přístup Read-Write.
+Tento problém vyřešíte tak, že ručně přiřadíte ke fondu úložiště přístup pro čtení i zápis a připojíte virtuální disky:
 
-   Přejděte na **Správce serveru**  >  **souborové fondy úložiště a souborové služby úložiště**  >    >  .
+1. Přejít na **Správce serveru**  >  **souborové fondy úložiště a souborové služby úložiště**  >    >  .
 
-   ![Úložiště Windows](./media/backup-azure-restore-files-from-vm/windows-storage-1.png)
+   ![Snímek obrazovky s možnostmi fondů úložiště](./media/backup-azure-restore-files-from-vm/windows-storage-1.png)
 
-1. V okně **fond úložiště** klikněte pravým tlačítkem na dostupný fond úložiště a vyberte možnost **nastavit Read-Write přístup** .
+1. V okně **fond úložiště** klikněte pravým tlačítkem na dostupný fond úložiště a vyberte **nastavit přístup Read-Write**.
 
-   ![Zápis pro čtení do úložiště Windows](./media/backup-azure-restore-files-from-vm/windows-storage-read-write-2.png)
+   ![Snímek obrazovky s možnostmi kliknutí pravým tlačítkem myši pro zařazování úložiště](./media/backup-azure-restore-files-from-vm/windows-storage-read-write-2.png)
 
-1. Po přiřazení fondu úložiště s přístupem pro čtení a zápis Připojte virtuální disk.
+1. Až bude fond úložiště přiřazený k přístupu pro čtení i zápis, klikněte pravým tlačítkem myši v části **virtuální disky** a vyberte **připojit virtuální disk**.
 
-   Přejděte na **Správce serveru uživatelské rozhraní**. V části **virtuální disky** > kliknutím pravým tlačítkem myši vyberte možnost **připojit virtuální disk** .
+   ![Snímek obrazovky zobrazující možnosti pro virtuální disk pravým tlačítkem myši](./media/backup-azure-restore-files-from-vm/server-manager-virtual-disk-3.png)
 
-   ![Virtuální disk správce serveru](./media/backup-azure-restore-files-from-vm/server-manager-virtual-disk-3.png)
+#### <a name="linux-file-recovery-fails-to-auto-mount-because-the-disk-doesnt-contain-volumes"></a>Obnovení souborů systému Linux se nepodařilo automaticky připojit, protože disk neobsahuje svazky.
 
-#### <a name="on-a-linux-vm"></a>Na virtuálním počítači se systémem Linux
+Při provádění obnovení souborů služba zálohování detekuje svazky a automaticky se připojí. Pokud však jsou v zálohovaných discích nezpracované oddíly, tyto disky nejsou automaticky připojeny a datový disk nelze pro obnovení zobrazit.
 
-##### <a name="file-recovery-fails-to-auto-mount-because-disk-doesnt-contain-volumes"></a>Obnovení souboru se nepodaří automaticky připojit, protože disk neobsahuje svazky.
+Tento problém vyřešíte tak, že přejdete na [obnovit soubory ze zálohy virtuálního počítače Azure](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#lvmraid-arrays-for-linux-vms).
 
-Při provádění obnovení souborů služba zálohování detekuje svazky a automounts. Pokud však jsou v zálohovaných discích nezpracované oddíly, pak tyto disky nejsou automaticky připojeny a datový disk nelze pro obnovení zobrazit.
+#### <a name="linux-file-recovery-fails-because-the-os-couldnt-identify-the-file-system"></a>Obnovení souboru pro Linux se nepovede, protože operační systém nemohl identifikovat systém souborů.
 
-Chcete-li tento problém vyřešit, postupujte podle kroků popsaných v tomto [článku](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#lvmraid-arrays-for-linux-vms).
-
-##### <a name="the-os-couldnt-identify-the-filesystem-causing-linux-file-recovery-to-fail-while-mountings-disks"></a>OPERAČNÍ systém nemohl identifikovat systém souborů, který způsobil selhání obnovení souboru systému Linux během připojování disků.
-
-Při spouštění skriptu pro obnovení souborů se datový disk nepodařilo připojit s následující chybou:
-
-"Následující oddíly se nepovedlo připojit, protože operační systém nemohl identifikovat systém souborů."
+Když spustíte skript pro obnovení souborů, datový disk se nemůže připojit. Zobrazí se chybová zpráva: následující oddíly se nepodařilo připojit, protože došlo k chybě operačního systému při pokusu o identifikaci systému souborů.
 
 Pokud chcete tento problém vyřešit, ověřte, jestli je svazek zašifrovaný pomocí aplikace třetí strany. Pokud je šifrovaný, disk nebo virtuální počítač se na portálu nezobrazí jako zašifrovaný.
 
-1. Přihlaste se k zálohovanému virtuálnímu počítači a spusťte příkaz:
+1. Přihlaste se k zálohovanému virtuálnímu počítači a spusťte tento příkaz:
 
-   `*lsblk -f*`
+   `lsblk -f`
 
-   ![Disk bez svazku](./media/backup-azure-restore-files-from-vm/disk-without-volume-5.png)
+   ![Snímek obrazovky zobrazující výsledky příkazu pro výpis blokovaných zařízení](./media/backup-azure-restore-files-from-vm/disk-without-volume-5.png)
 
-2. Ověřte systém souborů a šifrování.
-3. Pokud je svazek zašifrovaný, obnovení souborů se nepodporuje. [Přečtěte si další informace](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#support-for-file-level-restore).
+1. Ověřte systém souborů a šifrování. Pokud je svazek zašifrovaný, obnovení souborů se nepodporuje. Další informace najdete v [matrici podpory pro zálohování virtuálních počítačů Azure](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#support-for-file-level-restore).
 
-### <a name="disks-are-attached-but-unable-to-mount-volumes"></a>Disky jsou připojené, ale nemůžou připojit svazky.
+### <a name="disks-are-attached-but-the-volumes-arent-mounted"></a>Disky jsou připojené, ale svazky nejsou připojené.
 
-- Ujistěte se, že máte [správný počítač pro spuštění skriptu](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script).
+Vyřešte tento problém podle kroků pro váš operační systém.
 
-#### <a name="on-windows-vms"></a>Na virtuálních počítačích s Windows
+#### <a name="windows"></a>Windows
 
-Při spuštění skriptu pro obnovení souborů pro Windows se zobrazí zpráva, že **je připojený tento svazek**: * 0. Disky jsou ale zjištěné v konzole pro správu disků. Při připojování svazků přes iSCSI se některé zjištěné svazky přejdou do stavu offline. Když kanál iSCSI komunikuje mezi virtuálním počítačem a službou, detekuje tyto svazky a převede je do režimu online, ale nejsou připojené.
+Když spustíte skript pro obnovení souborů pro Windows, zobrazí se zpráva "0 připojené svazky obnovení". Disky jsou ale zjištěné v konzole pro správu disků.
 
-   ![Disk není připojený.](./media/backup-azure-restore-files-from-vm/disk-not-attached-6.png)
+**Možná příčina**: když jste připojili svazky přes iSCSI, některé svazky, které se zjistily, přešly do offline režimu. Když kanál iSCSI komunikuje mezi virtuálním počítačem a službou, detekuje tyto svazky a převede je do režimu online, ale nejsou připojené.
+
+   ![Snímek obrazovky znázorňující připojené svazky pro obnovení 0](./media/backup-azure-restore-files-from-vm/disk-not-attached-6.png)
 
 Chcete-li tento problém identifikovat a vyřešit, proveďte následující kroky:
 
-1. V okně příkazového řádku pomocí příkazu **diskmgmt** * spusťte příkaz *Správa disků**.
-1. Ověřte, zda jsou zobrazeny žádné další disky. V následujícím příkladu je disk 2 další disk.
+>[!Tip]
+>Ujistěte se, že máte [správný počítač pro spuštění skriptu](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script).
 
-   ![Disk management0](./media/backup-azure-restore-files-from-vm/disk-management-7.png)
+1. V okně **příkazového** řádku spusťte příkaz **diskmgmt** a spusťte **správu disků**.
+1. Vyhledejte všechny další disky. V následujícím příkladu je **disk 2** další disk.
 
-1. Pravým tlačítkem myši klikněte na **nový svazek** a vyberte **změnit písmeno jednotky a cestu**.
+   ![Snímek obrazovky s oknem správy disků s dalším diskem](./media/backup-azure-restore-files-from-vm/disk-management-7.png)
 
-   ![Disk management1](./media/backup-azure-restore-files-from-vm/disk-management-8.png)
+1. Klikněte pravým tlačítkem na **nový svazek** a pak vyberte **změnit písmeno jednotky a cestu**.
 
-1. V okně **Přidat písmeno jednotky nebo cestu** vyberte **přiřadit následující písmeno jednotky** a přiřaďte dostupnou jednotku a vyberte **OK**.
+   ![Snímek obrazovky s možnostmi kliknutí pravým tlačítkem myši na další disk](./media/backup-azure-restore-files-from-vm/disk-management-8.png)
 
-   ![Disk management2](./media/backup-azure-restore-files-from-vm/disk-management-9.png)
+1. V okně **změnit písmeno jednotky nebo cestu** vyberte **přiřadit následující písmeno jednotky**, přiřaďte dostupnou jednotku a pak vyberte **OK**.
 
-1. V Průzkumníku souborů si prohlédněte písmeno jednotky, které jste zvolili, a prozkoumejte soubory.
+   ![Snímek obrazovky okna změnit písmeno jednotky nebo cestu](./media/backup-azure-restore-files-from-vm/disk-management-9.png)
 
-#### <a name="on-linux-vms"></a>Na virtuálních počítačích se systémem Linux
+1. Otevřete Průzkumníka souborů, kde můžete zobrazit jednotku, kterou jste zvolili, a prozkoumat soubory.
 
-- Ujistěte se, že máte [správný počítač pro spuštění skriptu](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script).
-- Pokud chráněný virtuální počítač se systémem Linux používá LVM nebo pole RAID, postupujte podle kroků uvedených v tomto [článku](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#lvmraid-arrays-for-linux-vms).
+#### <a name="linux"></a>Linux
 
-### <a name="cant-copy-the-files-from-mounted-volumes"></a>Nejde zkopírovat soubory z připojených svazků.
+>[!Tip]
+>Ujistěte se, že máte [správný počítač pro spuštění skriptu](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script).
 
-Kopírování může selhat s chybou **0x80070780: k souboru nelze přistupovat systém.** V takovém případě Ověřte, jestli je na zdrojovém serveru povolená funkce odstranění duplicitních dat na disku. Pak zajistěte, aby měl server pro obnovení duplicity na jednotkách povolený. Roli odstranění duplicitních dat můžete nechat nenakonfigurovanou, takže nebudete jednotky odstraňovat na serveru pro obnovení.
+Pokud chráněný virtuální počítač se systémem Linux používá LVM nebo pole RAID, postupujte podle kroků v části [obnovení souborů ze zálohy virtuálního počítače Azure](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#lvmraid-arrays-for-linux-vms).
+
+### <a name="you-cant-copy-the-files-from-mounted-volumes"></a>Soubory nemůžete kopírovat z připojených svazků.
+
+Kopírování může selhat s chybou "0x80070780: soubor nemůže být v systému k dispozici." 
+
+Ověřte, jestli je na zdrojovém serveru povolená funkce odstranění duplicitních dat na disku. Pokud tomu tak je, zajistěte, aby na jednotkách pro obnovení bylo povoleno odstraňování duplicitních dat. Odstranění duplicitních dat můžete nechat nenakonfigurované, abyste jednotky na serveru pro obnovení nemuseli odstraňovat.
 
 ## <a name="next-steps"></a>Další kroky
 

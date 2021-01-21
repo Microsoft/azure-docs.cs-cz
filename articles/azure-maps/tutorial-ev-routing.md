@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: f30b99a1d9c8303d5b2ed4b02819d0ca837946d2
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 7a33cf4e66ce31f8fb8534de25d7564a5784ca3a
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905736"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625045"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Kurz: směrování elektrických vozidel pomocí Azure Notebooks (Python)
 
@@ -35,7 +35,7 @@ V tomto kurzu:
 > * Najděte a vizualizujte trasu k nejbližší elektrické stanici zpoplatnění elektrického vozidla na základě času na disku.
 
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 
 Abyste mohli tento kurz dokončit, musíte nejdřív vytvořit účet Azure Maps a získat primární klíč (klíč předplatného). 
 
@@ -76,7 +76,7 @@ Chcete-li postupovat spolu s tímto kurzem, je třeba vytvořit projekt Azure No
 
 Zkuste pochopit funkčnost, která je implementovaná v souboru Jupyter Notebook. Spusťte kód v souboru Jupyter Notebook vždy po jedné buňce. Kód můžete v každé buňce spustit tak, že v horní části aplikace Jupyter Notebook vyberete tlačítko **Spustit** .
 
-  ![Tlačítko spustit](./media/tutorial-ev-routing/run.png)
+  ![Tlačítko Spustit](./media/tutorial-ev-routing/run.png)
 
 ## <a name="install-project-level-packages"></a>Instalovat balíčky na úrovni projektu
 
@@ -398,6 +398,10 @@ Pokud chcete prozkoumat rozhraní API Azure Maps používaná v tomto kurzu, př
 * [Vyjednaná matice směrování](/rest/api/maps/route/postroutematrix)
 * [Získat směr směrování](/rest/api/maps/route/getroutedirections)
 * [Rozhraní REST API pro Azure Maps](./consumption-model.md)
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Nejsou k dispozici žádné prostředky, které vyžadují vyčištění.
 
 ## <a name="next-steps"></a>Další kroky
 

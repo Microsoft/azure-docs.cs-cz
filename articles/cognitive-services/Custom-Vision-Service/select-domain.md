@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: shono
-ms.openlocfilehash: 0dbd6ea13069b72e6bca5c065af92568a5c7cdb8
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 2259d0114d91af2e688df66ff8dc4e8d293c2b03
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97844941"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624826"
 ---
 # <a name="select-a-domain-for-a-custom-vision-project"></a>Vyberte doménu pro Custom Vision projekt.
 
@@ -25,10 +25,11 @@ Na kartě nastavení v Custom Vision projektu můžete vybrat doménu pro svůj 
 
 |Doména|Účel|
 |---|---|
-|__Obecné__| Optimalizováno pro širokou škálu úloh klasifikace imagí. Pokud žádná z ostatních domén není vhodná nebo si nejste jisti, jakou doménu chcete vybrat, vyberte možnost Obecná doména. ÚČET `ee85a74c-405e-4adc-bb47-ffa8ca0c9f31`|
+|__Obecné__| Optimalizováno pro širokou škálu úloh klasifikace imagí. Pokud žádná z ostatních domén není vhodná nebo pokud si nejste jisti, jakou doménu chcete vybrat, vyberte možnost Obecná doména. ÚČET `ee85a74c-405e-4adc-bb47-ffa8ca0c9f31`|
+|__Obecné [a1]__| Optimalizováno pro lepší přesnost s srovnatelným časem odvození jako obecnou doménou. Doporučuje se u větších datových sad nebo složitějších uživatelských scénářů. Tato doména vyžaduje více času školení. ÚČET `a8e3c40f-fb4a-466f-832a-5e457ae4a344`|
 |__Simulant__|Optimalizováno pro fotografie misek, jak byste je viděli v nabídce restaurace. Pokud chcete klasifikovat fotografie jednotlivých druhů ovoce a zeleniny, použijte doménu jídla. ÚČET `c151d5b5-dd07-472a-acc8-15d29dea8518`|
 |__Orientační body tváře__|Optimalizováno pro rozpoznatelný orientačních bodů, jak přirozené, tak umělé. Tato doména funguje nejlépe, když je ve fotografii jasně viditelný bod. Tato doména funguje i v případě, že je bod lehce překážkou pro lidi před ním. ÚČET `ca455789-012d-4b50-9fec-5bb63841c793`|
-|__Maloobchod__|Optimalizováno pro obrázky, které se nacházejí v nákupním katalogu nebo na nákupním webu. Pokud požadujete vysokou přesnost klasifikace mezi dresses, Pants a košile, použijte tuto doménu. ÚČET `b30a91ae-e3c1-4f73-a81e-c270bff27c39`|
+|__Maloobchod__|Optimalizováno pro obrázky, které se nacházejí v nákupním katalogu nebo na nákupním webu. Pokud chcete s vysokou přesností klasifikovat mezi dresses, Pants a košile, použijte tuto doménu. ÚČET `b30a91ae-e3c1-4f73-a81e-c270bff27c39`|
 |__Kompaktní domény__| Optimalizováno pro omezení klasifikace v reálném čase u hraničních zařízení.|
 
 ## <a name="object-detection"></a>Detekce objektů
@@ -36,6 +37,7 @@ Na kartě nastavení v Custom Vision projektu můžete vybrat doménu pro svůj 
 |Doména|Účel|
 |---|---|
 |__Obecné__| Optimalizováno pro širokou škálu úloh detekce objektů. Pokud žádná z ostatních domén není vhodná nebo si nejste jisti, kterou doménu si zvolíte, vyberte možnost Obecná doména. ÚČET `da2e3a8a-40a5-4171-82f4-58522f70fbc1`|
+|__Obecné [a1]__| Optimalizováno pro lepší přesnost s srovnatelným časem odvození jako obecnou doménou. Doporučuje se pro přesnější potřeby umístění oblastí, větší datové sady nebo složitější scénáře uživatelů. Tato doména vyžaduje více času školení a výsledky nejsou deterministické: očekává se, že rozdíl v mapě +-1% se stejnými školicími daty je k dispozici. ÚČET `9c616dff-2e7d-ea11-af59-1866da359ce6`|
 |__Logo__|Optimalizováno pro hledání loga značky v obrázcích. ÚČET `1d8ffafe-ec40-4fb2-8f90-72b3b6cecea4`|
 |__Produkty na police__|Optimalizováno pro zjišťování a klasifikaci produktů v police. ÚČET `3780a898-81c3-4516-81ae-3a139614e1f3`|
 |__Kompaktní domény__| Optimalizováno pro omezení detekce objektů v reálném čase u hraničních zařízení.|
@@ -46,9 +48,10 @@ Modely generované pomocí kompaktních domén lze exportovat pro místní spuš
 
 Výkon modelu se liší podle vybrané domény. V níže uvedené tabulce oznamujeme velikost modelu a dobu odvození na PROCESORech Intel Desktop a NVidia GPU \[ 1 \] . Tato čísla nezahrnují předzpracování a postprocessingí času.
 
-|Úloha|Doména|ID|Velikost modelu|Čas odvození procesoru|Čas odvození GPU|
+|Úkol|Doména|ID|Velikost modelu|Čas odvození procesoru|Čas odvození GPU|
 |---|---|---|---|---|---|
-|Klasifikace|Obecné (kompaktní)|`0732100f-1a38-4e49-a514-c9b44c697ab5`|5 MB|13 MS|5 MS|
+|Klasifikace|Obecné (kompaktní)|`0732100f-1a38-4e49-a514-c9b44c697ab5`|6 MB|10 MS|5 MS|
+|Klasifikace|General (Compact) [S1]|`a1db07ca-a19a-4830-bae8-e004a42dc863`|43 MB|50 MS|5 MS|
 |Detekce objektů|Obecné (kompaktní)|`a27d5ca5-bb19-49d8-a70a-fec086c47f5b`|45 MB|35 MS|5 MS|
 |Detekce objektů|General (Compact) [S1]|`7ec2ac80-887b-48a6-8df9-8b1357765430`|14 MB|27 MS|7 MS|
 

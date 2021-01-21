@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 05/26/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 97741423fa8b689a92bd9db78b810e6b86aefcbd
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 56fc11583bcdd271d0225de90ef7ab06bcf87cbf
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247059"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625110"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-powershell"></a>Vytvoření kontejneru Windows serveru v clusteru služby Azure Kubernetes (AKS) pomocí PowerShellu
 
@@ -20,7 +20,7 @@ Služba Azure Kubernetes Service (AKS) je spravovaná služba Kubernetes, která
 
 V tomto článku se předpokládá základní znalost konceptů Kubernetes. Další informace najdete v tématu [základní koncepty Kubernetes pro Azure Kubernetes Service (AKS)][kubernetes-concepts].
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -97,7 +97,7 @@ Po několika minutách se příkaz dokončí a vrátí informace o clusteru. Mů
 Ve výchozím nastavení se cluster AKS vytvoří s fondem uzlů, který může spouštět kontejnery Linux. Pomocí `New-AzAksNodePool` rutiny přidejte fond uzlů, který může spouštět kontejnery Windows serveru společně s fondem uzlů pro Linux.
 
 ```azurepowershell-interactive
-New-AzAksNodePool -ResourceGroupName myResourceGroup -ClusterName myAKSCluster -OsType Windows -Name npwin -KubernetesVersion 1.16.7
+New-AzAksNodePool -ResourceGroupName myResourceGroup -ClusterName myAKSCluster -VmSetType VirtualMachineScaleSets -OsType Windows -Name npwin -KubernetesVersion 1.16.7
 ```
 
 Výše uvedený příkaz vytvoří nový fond uzlů s názvem **npwin** a přidá ho do **myAKSCluster**. Při vytváření fondu uzlů pro spouštění kontejnerů Windows serveru je výchozí hodnota pro **VmSize** **Standard_D2s_v3**. Pokud se rozhodnete nastavit parametr **VmSize** , podívejte se na seznam [omezených velikostí virtuálních počítačů][restricted-vm-sizes]. Minimální doporučená velikost je **Standard_D2s_v3**. Předchozí příkaz používá také výchozí podsíť ve výchozí virtuální síti vytvořené při spuštění `New-AzAks` .

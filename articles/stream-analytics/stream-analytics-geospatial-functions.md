@@ -6,16 +6,16 @@ ms.author: krishmam
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: 8d01f43dd6e404bb8f8ae0898625ae1ea9d09fd6
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: dc590593b9bff8f646ee6155d32a2ce3f9790f6e
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98020430"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625244"
 ---
 # <a name="introduction-to-stream-analytics-geospatial-functions"></a>Úvod do Stream Analytics geoprostorové funkce
 
-Geoprostorové funkce v Azure Stream Analytics umožňují analýzu dat v reálném čase streamování geoprostorového obsahu. Pouze pár řádků kódu, můžete vyvíjet řešení produkčních stupňů pro složité scénáře. 
+Geoprostorové funkce v Azure Stream Analytics umožňují analýzu dat v reálném čase streamování geoprostorového obsahu. Pouze pár řádků kódu, můžete vyvíjet řešení produkčních stupňů pro složité scénáře. Tyto funkce podporují všechny typy Well a třídy injson, mnohoúhelník a LineString.
 
 Mezi příklady scénářů, které můžou využívat geoprostorové funkce, patří:
 
@@ -110,7 +110,7 @@ Další informace najdete v referenčních informacích k [CreatePolygon](/strea
 
 
 ## <a name="st_distance"></a>ST_DISTANCE
-`ST_DISTANCE`Funkce vrací vzdálenost mezi dvěma body v metrech. 
+`ST_DISTANCE`Funkce vrátí vzdálenost mezi dvěma geometrií v metrech. 
 
 Následující dotaz `ST_DISTANCE` vygeneruje událost, když je čerpací stanice menší než 10 km od auta.
 
@@ -123,7 +123,7 @@ JOIN Station s ON ST_DISTANCE(c.Location, s.Location) < 10 * 1000
 Další informace najdete v referenčních informacích k [ST_DISTANCE](/stream-analytics-query/st-distance) .
 
 ## <a name="st_overlaps"></a>ST_OVERLAPS
-`ST_OVERLAPS`Funkce porovná dva mnohoúhelníky. Pokud se mnohoúhelníky překrývají, funkce vrátí hodnotu 1. Funkce vrátí hodnotu 0, pokud se mnohoúhelníky nepřekrývají. 
+`ST_OVERLAPS`Funkce porovná dvě geometrií. Pokud se geometrií překrývá, funkce vrátí hodnotu 1. Funkce vrátí hodnotu 0, pokud se geometrií nepřekrývá. 
 
 Následující dotaz `ST_OVERLAPS` vygeneruje událost, když je budova v rámci možné zóny zahlcení.
 
@@ -144,7 +144,7 @@ JOIN Storm s ON ST_OVERLAPS(c.Location, s.Course)
 Další informace najdete v referenčních informacích k [ST_OVERLAPS](/stream-analytics-query/st-overlaps) .
 
 ## <a name="st_intersects"></a>ST_INTERSECTS
-`ST_INTERSECTS`Funkce porovná dvě LineString. Pokud se LineString protínají, funkce vrátí hodnotu 1. Funkce vrátí hodnotu 0, pokud se LineString neprotínají.
+`ST_INTERSECTS`Funkce porovná dvě geometrií. Pokud se geometrií protínají, funkce vrátí hodnotu 1. Funkce vrátí hodnotu 0, pokud se geometrií vzájemně neprotínají.
 
 Následující příklad dotazu používá `ST_INTERSECTS` k určení, jestli se pavedá cesta překládá na nečistotě.
 
@@ -170,7 +170,7 @@ FROM input
 Další informace najdete v referenčních informacích k [ST_INTERSECTS](/stream-analytics-query/st-intersects) .
 
 ## <a name="st_within"></a>ST_WITHIN
-`ST_WITHIN`Funkce určuje, zda je bod nebo mnohoúhelník v rámci mnohoúhelníku. Pokud mnohoúhelník obsahuje bod nebo mnohoúhelník, funkce vrátí hodnotu 1. Funkce vrátí 0, pokud se bod nebo mnohoúhelník nenachází v deklarovaném mnohoúhelníku.
+`ST_WITHIN`Funkce určuje, zda je geometrie v jiné geometrii. Pokud je první součástí v posledních, funkce vrátí hodnotu 1. Funkce vrátí hodnotu 0, pokud první geometrie není umístěna v rámci poslední.
 
 Následující příklad dotazu používá `ST_WITHIN` k určení, zda je cílový bod doručení v rámci daného mnohoúhelníku datového skladu.
 

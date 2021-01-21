@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 63184a623c6f0a8c53e09e6af92c05e45c5e0794
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: b530fc320f6c29dd7a86a39c5a7019265bb6b724
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185970"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624418"
 ---
 # <a name="spatial-analysis-operations"></a>Operace prostorových analýz
 
@@ -69,6 +69,38 @@ Jedná se o parametry, které vyžaduje každá z těchto prostorových analytic
 | DETECTOR_NODE_CONFIG | JSON určující, na kterém GPU se má spustit uzel detektoru By měl být v následujícím formátu: `"{ \"gpu_index\": 0 }",`|
 | SPACEANALYTICS_CONFIG | Konfigurace JSON pro zónu a řádek, jak je uvedeno níže.|
 | ENABLE_FACE_MASK_CLASSIFIER | `True` Pokud chcete, aby se zjistilo, že uživatelé mají ve videu v datovém proudu více uživatelů, `False` zakažte ho Ve výchozím nastavení je tato hodnota zakázaná. Detekce masky obličeje vyžaduje, aby byl parametr šířky vstupní videa 1920 `"INPUT_VIDEO_WIDTH": 1920` . Atribut masky obličeje nebude vrácen, pokud se zjištěné osoby netýkají kamery nebo jsou příliš daleko od ní. Další informace najdete v průvodci [umístěním kamery](spatial-analysis-camera-placement.md) . |
+
+Toto je příklad parametrů DETECTOR_NODE_CONFIG pro všechny operace prostorové analýzy.
+
+```json
+{
+"gpu_index": 0,
+"do_calibration": true,
+"enable_recalibration": true,
+"calibration_quality_check_frequency_seconds":86400,
+"calibration_quality_check_sampling_num": 80,
+"calibration_quality_check_sampling_times": 5,
+"calibration_quality_check_sample_collect_frequency_seconds": 300,
+"calibration_quality_check_one_round_sample_collect_num":10,
+"calibration_quality_check_queue_max_size":1000,
+"recalibration_score": 75
+}
+```
+
+| Název | Typ| Description|
+|---------|---------|---------|
+| `gpu_index` | řetězec| Index GPU, na kterém se tato operace spustí|
+| `do_calibration` | řetězec | Indikuje, že je zapnutá kalibrace. `do_calibration` aby funkce **cognitiveservices Account. Vision. spatialanalysis-persondistance** fungovala správně, musí mít hodnotu true. ve výchozím nastavení je do_calibration nastaveno na hodnotu true. |
+| `enable_recalibration` | bool | Určuje, zda je zapnuta automatická rekalibrace. Výchozí je `true`.|
+| `calibration_quality_check_frequency_seconds` | int | Minimální počet sekund mezi jednotlivými změnami kvality k určení, jestli je nutná znovu kalibrace. Výchozí hodnota je `86400` (24 hodin). Používá se pouze v případě `enable_recalibration=True` .|
+| `calibration_quality_check_sampling_num` | int | Počet náhodně vybraných vzorků uložených dat, které se mají použít pro měření chyby kontroly kvality Výchozí je `80`. Používá se pouze v případě `enable_recalibration=True` .|
+| `calibration_quality_check_sampling_times` | int | Počet, kolikrát se budou měřit chyby na různých sadách náhodně vybraných datových vzorků pro kontrolu kvality. Výchozí je `5`. Používá se pouze v případě `enable_recalibration=True` .|
+| `calibration_quality_check_sample_collect_frequency_seconds` | int | Minimální počet sekund mezi shromažďováním nových vzorků dat pro rekalibraci a kontrolu kvality. Výchozí hodnota je `300` (5 minut). Používá se pouze v případě `enable_recalibration=True` .|
+| `calibration_quality_check_one_round_sample_collect_num` | int | Minimální počet nových vzorků dat, které se mají shromáždit na konci kolekce vzorků Výchozí je `10`. Používá se pouze v případě `enable_recalibration=True` .|
+| `calibration_quality_check_queue_max_size` | int | Maximální počet ukázek dat, které se mají uložit při kalibraci modelu kamery Výchozí je `1000`. Používá se pouze v případě `enable_recalibration=True` .|
+| `recalibration_score` | int | Maximální prahová hodnota kvality pro zahájení rekalibrace. Výchozí je `75`. Používá se pouze v případě `enable_recalibration=True` . Kvalita kalibrace se počítá na základě inverzní relace s chybou reprojekce cíle obrázku. Vzhledem k zjištěným cílům v rámečcích 2D snímků jsou cíle prodány do prostorového prostoru a znovu procházejí zpátky do snímku 2D obrázku pomocí stávajících parametrů kalibrace kamery. Chyba opětovného proprojekce se měří v průměrných vzdálenostech mezi zjištěnými cíli a znovu plánovanými cíli.|
+| `enable_breakpad`| bool | Určuje, zda chcete povolit Breakpad, který se používá ke generování výpisu stavu systému pro použití při ladění. `false`Ve výchozím nastavení je to. Pokud ho nastavíte na `true` , budete také muset přidat `"CapAdd": ["SYS_PTRACE"]` do `HostConfig` části kontejneru `createOptions` . Ve výchozím nastavení se výpis stavu systému nahraje do aplikace [RealTimePersonTracking](https://appcenter.ms/orgs/Microsoft-Organization/apps/RealTimePersonTracking/crashes/errors?version=&appBuild=&period=last90Days&status=&errorType=all&sortCol=lastError&sortDir=desc) AppCenter, pokud chcete, aby se výpisy paměti nahrály do vlastní aplikace AppCenter, můžete proměnnou prostředí přepsat `RTPT_APPCENTER_APP_SECRET` pomocí tajného kódu aplikace.
+
 
 ### <a name="zone-configuration-for-cognitiveservicesvisionspatialanalysis-personcount"></a>Konfigurace zóny pro cognitiveservices Account. Vision. spatialanalysis-personcount
 
@@ -142,10 +174,10 @@ Toto je příklad vstupu JSON pro parametr SPACEANALYTICS_CONFIG, který konfigu
 | `line` | list| Definice řádku Toto je směrná čára, která vám umožní pochopit "vstup" vs. "Exit".|
 | `start` | dvojice hodnot| souřadnice x, y pro počáteční bod řádku Hodnoty float označují polohu vrcholu vzhledem k hornímu a levému rohu. Chcete-li vypočítat absolutní hodnoty x, y, vynásobte tyto hodnoty velikostí rámečku. |
 | `end` | dvojice hodnot| souřadnice x, y pro koncový bod řádku Hodnoty float označují polohu vrcholu vzhledem k hornímu a levému rohu. Chcete-li vypočítat absolutní hodnoty x, y, vynásobte tyto hodnoty velikostí rámečku. |
-| `threshold` | float| Pokud je spolehlivost modelů AI větší nebo rovna této hodnotě, dojde k odchozímu přenosu událostí. |
+| `threshold` | float| Pokud je spolehlivost modelů AI větší nebo rovna této hodnotě, dojde k odchozímu přenosu událostí. Výchozí hodnota je 16. To je doporučená hodnota pro dosažení maximální přesnosti. |
 | `type` | řetězec| Pro **cognitiveservices Account. Vision. spatialanalysis-personcrossingline** by to mělo být `linecrossing` .|
 |`trigger`|řetězec|Typ triggeru pro odeslání události.<br>Podporované hodnoty: událost: aktivuje se, když někdo přeškrtne řádek.|
-| `focus` | řetězec| Umístění bodu v ohraničujícím poli osoby používané k výpočtu událostí. Hodnota fokusu může být `footprint` (nároky na osobu), (v ohraničujícím poli ve středu osoby) (v `bottom_center` `center` ohraničujícím poli středu).|
+| `focus` | řetězec| Umístění bodu v ohraničujícím poli osoby používané k výpočtu událostí. Hodnota fokusu může být `footprint` (nároky na osobu), (v ohraničujícím poli ve středu osoby) (v `bottom_center` `center` ohraničujícím poli středu). Výchozí hodnota je.|
 
 ### <a name="zone-configuration-for-cognitiveservicesvisionspatialanalysis-personcrossingpolygon"></a>Konfigurace zóny pro cognitiveservices Account. Vision. spatialanalysis-personcrossingpolygon
 
@@ -186,10 +218,10 @@ Toto je příklad vstupu JSON pro parametr SPACEANALYTICS_CONFIG, který konfigu
 | `zones` | list| Seznam zón. |
 | `name` | řetězec| Popisný název této zóny.|
 | `polygon` | list| Každá dvojice hodnot představuje x, y pro vrcholy mnohoúhelníku. Mnohoúhelník představuje oblasti, ve kterých jsou lidé sledováni nebo počítáni. Hodnoty float označují polohu vrcholu vzhledem k hornímu a levému rohu. Chcete-li vypočítat absolutní hodnoty x, y, vynásobte tyto hodnoty velikostí rámečku. 
-| `threshold` | float| Pokud je spolehlivost modelů AI větší nebo rovna této hodnotě, dojde k odchozímu přenosu událostí. |
+| `threshold` | float| Pokud je spolehlivost modelů AI větší nebo rovna této hodnotě, dojde k odchozímu přenosu událostí. Výchozí hodnota je 48, pokud je typ zonecrossing a 16, pokud je čas DwellTime. Tyto hodnoty jsou doporučené pro dosažení maximální přesnosti.  |
 | `type` | řetězec| Pro **cognitiveservices Account. Vision. spatialanalysis-personcrossingpolygon** by to mělo být `zonecrossing` nebo `zonedwelltime` .|
 | `trigger`|řetězec|Typ triggeru pro odeslání události<br>Podporované hodnoty: Event: aktivuje se, když někdo zadá nebo ukončí zónu.|
-| `focus` | řetězec| Umístění bodu v ohraničujícím poli osoby používané k výpočtu událostí. Hodnota fokusu může být `footprint` (nároky na osobu), (v ohraničujícím poli ve středu osoby) (v `bottom_center` `center` ohraničujícím poli středu).|
+| `focus` | řetězec| Umístění bodu v ohraničujícím poli osoby používané k výpočtu událostí. Hodnota fokusu může být `footprint` (nároky na osobu), (v ohraničujícím poli ve středu osoby) (v `bottom_center` `center` ohraničujícím poli středu). Výchozí hodnota je.|
 
 ### <a name="zone-configuration-for-cognitiveservicesvisionspatialanalysis-persondistance"></a>Konfigurace zóny pro cognitiveservices Account. Vision. spatialanalysis-persondistance
 
@@ -228,29 +260,6 @@ Toto je příklad vstupu JSON pro parametr SPACEANALYTICS_CONFIG, který konfigu
 | `minimum_distance_threshold` | float| Vzdálenost ve stopách, která aktivuje událost "TooClose", pokud jsou lidé méně, než je vzdálenost od sebe.|
 | `maximum_distance_threshold` | float| Vzdálenost ve stopách, která spustí událost "TooFar", pokud jsou lidé větší než vzdálenost.|
 | `focus` | řetězec| Umístění bodu v ohraničujícím poli osoby používané k výpočtu událostí. Hodnota fokusu může být `footprint` (nároky na osobu), (v ohraničujícím poli ve středu osoby) (v `bottom_center` `center` ohraničujícím poli středu).|
-
-Toto je příklad vstupu JSON pro parametr DETECTOR_NODE_CONFIG, který konfiguruje zónu **cognitiveservices Account. Vision. spatialanalysis-persondistance** .
-
-```json
-{ 
-"gpu_index": 0, 
-"do_calibration": true
-}
-```
-
-| Název | Typ| Description|
-|---------|---------|---------|
-| `gpu_index` | řetězec| Index GPU, na kterém se tato operace spustí|
-| `do_calibration` | řetězec | Indikuje, že je zapnutá kalibrace. `do_calibration` aby funkce **cognitiveservices Account. Vision. spatialanalysis-persondistance** fungovala správně, musí mít hodnotu true.|
-| `enable_recalibration` | bool | Určuje, zda je zapnuta automatická rekalibrace. Výchozí je `true`.|
-| `calibration_quality_check_frequency_seconds` | int | Minimální počet sekund mezi jednotlivými změnami kvality k určení, jestli je nutná znovu kalibrace. Výchozí hodnota je `86400` (24 hodin). Používá se pouze v případě `enable_recalibration=True` .|
-| `calibration_quality_check_sampling_num` | int | Počet náhodně vybraných vzorků uložených dat, které se mají použít pro měření chyby kontroly kvality Výchozí je `80`. Používá se pouze v případě `enable_recalibration=True` .|
-| `calibration_quality_check_sampling_times` | int | Počet, kolikrát se budou měřit chyby na různých sadách náhodně vybraných datových vzorků pro kontrolu kvality. Výchozí je `5`. Používá se pouze v případě `enable_recalibration=True` .|
-| `calibration_quality_check_sample_collect_frequency_seconds` | int | Minimální počet sekund mezi shromažďováním nových vzorků dat pro rekalibraci a kontrolu kvality. Výchozí hodnota je `300` (5 minut). Používá se pouze v případě `enable_recalibration=True` .|
-| `calibration_quality_check_one_round_sample_collect_num` | int | Minimální počet nových vzorků dat, které se mají shromáždit na konci kolekce vzorků Výchozí je `10`. Používá se pouze v případě `enable_recalibration=True` .|
-| `calibration_quality_check_queue_max_size` | int | Maximální počet ukázek dat, které se mají uložit při kalibraci modelu kamery Výchozí je `1000`. Používá se pouze v případě `enable_recalibration=True` .|
-| `recalibration_score` | int | Maximální prahová hodnota kvality pro zahájení rekalibrace. Výchozí je `75`. Používá se pouze v případě `enable_recalibration=True` . Kvalita kalibrace se počítá na základě inverzní relace s chybou reprojekce cíle obrázku. Vzhledem k zjištěným cílům v rámečcích 2D snímků jsou cíle prodány do prostorového prostoru a znovu procházejí zpátky do snímku 2D obrázku pomocí stávajících parametrů kalibrace kamery. Chyba opětovného proprojekce se měří v průměrných vzdálenostech mezi zjištěnými cíli a znovu plánovanými cíli.|
-| `enable_breakpad`| bool | Určuje, zda chcete povolit Breakpad, který se používá ke generování výpisu stavu systému pro použití při ladění. `false`Ve výchozím nastavení je to. Pokud ho nastavíte na `true` , budete také muset přidat `"CapAdd": ["SYS_PTRACE"]` do `HostConfig` části kontejneru `createOptions` . Ve výchozím nastavení se výpis stavu systému nahraje do aplikace [RealTimePersonTracking](https://appcenter.ms/orgs/Microsoft-Organization/apps/RealTimePersonTracking/crashes/errors?version=&appBuild=&period=last90Days&status=&errorType=all&sortCol=lastError&sortDir=desc) AppCenter, pokud chcete, aby se výpisy paměti nahrály do vlastní aplikace AppCenter, můžete proměnnou prostředí přepsat `RTPT_APPCENTER_APP_SECRET` pomocí tajného kódu aplikace.
 
 Informace o konfiguracích zóny a řádku najdete v pokynech k [umístění kamery](spatial-analysis-camera-placement.md) .
 
@@ -606,7 +615,7 @@ Ukázka JSON pro detekci výstupu pomocí této operace s `zonedwelltime` typem 
 | `trackinId` | řetězec| Jedinečný identifikátor zjištěné osoby|
 | `status` | řetězec| Směr křížení mnohoúhelníku, buď ENTER, nebo Exit|
 | `side` | int| Číslo strany mnohoúhelníku, kterou osoba přejíždí. Každá strana je očíslovanou hranou mezi dvěma vrcholy mnohoúhelníku, které představují vaši zónu. Hrana mezi prvními dvěma vrcholy mnohoúhelníku představuje první stranu|
-| `durationMs` | int | Počet milisekund, které reprezentují čas strávený osobou v zóně. Toto pole je k dispozici, pokud je typ události _personZoneDwellTimeEvent_|
+| `durationMs` | float | Počet milisekund, které reprezentují čas strávený osobou v zóně. Toto pole je k dispozici, pokud je typ události _personZoneDwellTimeEvent_|
 | `zone` | řetězec | Pole Name (název) mnohoúhelníku, které představuje zónu, která byla překročena.|
 
 | Název pole detekce | Typ| Description|

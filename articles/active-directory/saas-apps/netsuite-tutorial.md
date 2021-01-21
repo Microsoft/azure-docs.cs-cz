@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/09/2020
+ms.date: 01/20/2021
 ms.author: jeedes
-ms.openlocfilehash: 9272114dd472717e59680b40c07d8435dea19682
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d99a19efcef0cae518d8d21d3371adaf37d32ff7
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181964"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625477"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-sso-with-netsuite"></a>Kurz: Integrace jednotného přihlašování (SSO) Azure AD pomocí NetSuite
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat NetSuite s Azure Active Directory (Azu
 * Umožněte uživatelům, aby se automaticky přihlásili k NetSuite pomocí svých účtů Azure AD.
 * Spravujte své účty na jednom centrálním místě, Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -41,7 +41,6 @@ NetSuite podporuje:
 
 * Jednotné přihlašování iniciované IDP
 * Zřizování uživatele JIT (just-in-time).
-* [Automatizované zřizování uživatelů](NetSuite-provisioning-tutorial.md).
 
 > [!NOTE]
 > Vzhledem k tomu, že identifikátor této aplikace je pevná řetězcová hodnota, může být v jednom klientovi nakonfigurovaná jenom jedna instance.
@@ -104,7 +103,7 @@ Pokud chcete povolit jednotné přihlašování služby Azure AD v Azure Portal,
 
 1. Kromě toho očekává aplikace NetSuite několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Název | Zdrojový atribut |
+    | Name | Zdrojový atribut |
     | ---------------| --------------- |
     | account  | `account id` |
 
@@ -153,7 +152,7 @@ V této části povolíte uživateli B. Simon používat jednotné přihlašová
 
 1. V prohlížeči otevřete novou kartu a přihlaste se k webu NetSuite společnosti jako správce.
 
-2. V horním navigačním panelu vyberte možnost **Nastavení** a potom vyberte možnost **Company**  >  **Povolit funkce** společnosti.
+2. V horním navigačním panelu vyberte možnost **Nastavení** a potom vyberte možnost   >  **Povolit funkce** společnosti.
 
     ![Snímek obrazovky ukazuje možnost povolit funkce vybrané od společnosti.](./media/NetSuite-tutorial/ns-setupsaml.png)
 
@@ -187,7 +186,7 @@ V této části povolíte uživateli B. Simon používat jednotné přihlašová
 
     c. Vyberte **Odeslat**.
 
-9. V horním navigačním panelu NetSuite vyberte **Nastavení** a pak vyberte **Company**  >  **informace o** společnosti společnosti.
+9. V horním navigačním panelu NetSuite vyberte **Nastavení** a pak vyberte   >  **informace o** společnosti společnosti.
 
     ![Snímek obrazovky zobrazuje informace o společnosti vybrané ze společnosti.](./media/NetSuite-tutorial/ns-com.png)
 

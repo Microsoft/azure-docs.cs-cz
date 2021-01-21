@@ -3,12 +3,12 @@ title: AMQP 1,0 v Azure Service Bus a průvodci protokolem Event Hubs | Microsof
 description: Průvodce protokolem pro výrazy a popis AMQP 1,0 v Azure Service Bus a Event Hubs
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: e001327c2c7da08cb9a3552f97fc9a7d8b7921a2
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 2154221ebfe69b659ff83100ed614133e178ccdb
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95736710"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624485"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>AMQP 1,0 v Azure Service Bus a průvodci protokolem Event Hubs
 
@@ -73,7 +73,7 @@ Připojení, kanály a relace jsou dočasné. Pokud se základní připojení sb
 
 ### <a name="amqp-outbound-port-requirements"></a>AMQP požadavky na Odchozí porty
 
-Klienti, kteří používají připojení AMQP přes protokol TCP, vyžadují, aby byly v místní bráně firewall otevřené porty 5671 a 5672. Spolu s těmito porty může být potřeba otevřít další porty, pokud je povolená funkce [EnableLinkRedirect](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.enablelinkredirect?view=azure-dotnet) . `EnableLinkRedirect` je nová funkce zasílání zpráv, která pomáhá při přijímání zpráv přeskočit jedno směrování, což pomáhá zvýšit propustnost. Klient by začal komunikovat přímo s back-end službou přes rozsah portů 104XX, jak je znázorněno na následujícím obrázku. 
+Klienti, kteří používají připojení AMQP přes protokol TCP, vyžadují, aby byly v místní bráně firewall otevřené porty 5671 a 5672. Spolu s těmito porty může být potřeba otevřít další porty, pokud je povolená funkce [EnableLinkRedirect](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.enablelinkredirect) . `EnableLinkRedirect` je nová funkce zasílání zpráv, která pomáhá při přijímání zpráv přeskočit jedno směrování, což pomáhá zvýšit propustnost. Klient by začal komunikovat přímo s back-end službou přes rozsah portů 104XX, jak je znázorněno na následujícím obrázku. 
 
 ![Seznam cílových portů][4]
 
@@ -222,10 +222,10 @@ Jakákoli vlastnost, kterou musí aplikace definovat, by měla být namapována 
 | --- | --- | --- |
 | ID zprávy |Identifikátor volného formátu definovaného aplikací pro tuto zprávu. Používá se pro detekci duplicit. |[Parametr](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | user-id |Identifikátor uživatele definovaný aplikací, není interpretován pomocí Service Bus. |Nedostupné prostřednictvím rozhraní Service Bus API. |
-| na |Identifikátor cíle definovaného aplikací, není interpretován pomocí Service Bus. |[Schopn](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| závislosti |Identifikátor účelu zprávy definované aplikací, není interpretován pomocí Service Bus. |[Popisek](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| na |Identifikátor cíle definovaného aplikací, není interpretován pomocí Service Bus. |[Do](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| subject |Identifikátor účelu zprávy definované aplikací, není interpretován pomocí Service Bus. |[Popisek](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | odpovědět na |Indikátor odpovědi na cestu definovaný aplikací, není interpretován pomocí Service Bus. |[ReplyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| correlation-id |Identifikátor korelace definovaný aplikací, není interpretován pomocí Service Bus. |[ID](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| correlation-id |Identifikátor korelace definovaný aplikací, není interpretován pomocí Service Bus. |[CorrelationId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | typ obsahu |Indikátor typu obsahu definovaného aplikací pro tělo, které není interpretováno Service Bus. |[Třída](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | kódování obsahu |Symbol pro kódování obsahu definovaného aplikací pro tělo, které není interpretováno Service Bus. |Nedostupné prostřednictvím rozhraní Service Bus API. |
 | absolutní – doba vypršení platnosti |Deklaruje, na jakém místě vyprší absolutní Okamžitá zpráva. Ignoruje se při vstupu (pozoruje se hlavička TTL), která je pro výstup směrodatná. |[ExpiresAtUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
@@ -240,14 +240,14 @@ K dispozici je několik dalších vlastností zpráv Service Bus, které nejsou 
 
 | Klíč mapy poznámek | Využití | Název rozhraní API |
 | --- | --- | --- |
-| x-opt-Schedule-front-Time | Deklaruje, v jakém čase by se měla zpráva zobrazovat v entitě. |[ScheduledEnqueueTime](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.scheduledenqueuetimeutc?view=azure-dotnet) |
-| x – opt-partition-Key | Klíč definovaný aplikací, který určuje, ve kterém oddílu se má zpráva nakládat. | [PartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.partitionkey?view=azure-dotnet) |
-| x-opt-Via-partition-Key | Hodnota klíče oddílu definovaného aplikací, pokud se má transakce použít k posílání zpráv prostřednictvím fronty přenosu. | [ViaPartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.viapartitionkey?view=azure-dotnet) |
-| x-opt-zařazování za běhu | Čas UTC definovaný službou, který představuje skutečný čas enqueuing zprávy Ignoruje se u vstupu. | [EnqueuedTimeUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc?view=azure-dotnet) |
-| x-opt-Sequence-Number | Jedinečné číslo definované službou přiřazené zprávě | [SequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber?view=azure-dotnet) |
-| x – opt-offset | Pořadové číslo zprávy ve frontě definované službou | [EnqueuedSequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedsequencenumber?view=azure-dotnet) |
-| x – výslovný souhlas – zamčené – až | Definováno službou. Datum a čas, kdy bude zpráva uzamčena ve frontě nebo předplatném. | [LockedUntilUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.lockeduntilutc?view=azure-dotnet) |
-| x-opt-nedoručených zpráv – zdroj | Definováno službou. Pokud je zpráva přijata z fronty nedoručených zpráv, zdroji původní zprávy. | [DeadLetterSource](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deadlettersource?view=azure-dotnet) |
+| x-opt-Schedule-front-Time | Deklaruje, v jakém čase by se měla zpráva zobrazovat v entitě. |[ScheduledEnqueueTime](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.scheduledenqueuetimeutc) |
+| x – opt-partition-Key | Klíč definovaný aplikací, který určuje, ve kterém oddílu se má zpráva nakládat. | [PartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.partitionkey) |
+| x-opt-Via-partition-Key | Hodnota klíče oddílu definovaného aplikací, pokud se má transakce použít k posílání zpráv prostřednictvím fronty přenosu. | [ViaPartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.viapartitionkey) |
+| x-opt-zařazování za běhu | Čas UTC definovaný službou, který představuje skutečný čas enqueuing zprávy Ignoruje se u vstupu. | [EnqueuedTimeUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc) |
+| x-opt-Sequence-Number | Jedinečné číslo definované službou přiřazené zprávě | [SequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber) |
+| x – opt-offset | Pořadové číslo zprávy ve frontě definované službou | [EnqueuedSequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedsequencenumber) |
+| x – výslovný souhlas – zamčené – až | Definováno službou. Datum a čas, kdy bude zpráva uzamčena ve frontě nebo předplatném. | [LockedUntilUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.lockeduntilutc) |
+| x-opt-nedoručených zpráv – zdroj | Definováno službou. Pokud je zpráva přijata z fronty nedoručených zpráv, zdroji původní zprávy. | [DeadLetterSource](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deadlettersource) |
 
 ### <a name="transaction-capability"></a>Schopnost transakce
 
