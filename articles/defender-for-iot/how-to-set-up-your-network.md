@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 01/03/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 2053632f24504f896d1045f99d581b9aa6050b55
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: a71ea75eb603b141c4b28cff5f2b4aa957583bcd
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573135"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621308"
 ---
 # <a name="about-azure-defender-for-iot-network-setup"></a>O programu Azure Defender pro síť IoT
 
@@ -94,35 +94,36 @@ Pro senzory a místní webové aplikace konzoly pro správu se podporují násle
 
 Ověřte, že vaše zásada zabezpečení vaší organizace umožňuje přístup k následujícím akcím:
 
-| **Účel** | **Protokol** | **Přenos** | **V nebo ven** | **Port** | **Kategorie** |
-| ----------- | ----------- | ------------ | ---------- | -------- | ------------ |
-| **Přístup ke webové konzole** | HTTPS | TCP | V nebo ven | 443 | Místní Konzola pro správu pro platformu Defender for IoT |
-| **Přístup k rozhraní příkazového řádku** | SSH | TCP | V nebo ven | 22 | CLI |
-| **Propojení mezi platformou Defender for IoT a místní konzolou pro správu** | SSL | TCP | V nebo ven | 443 | Senzor a místní Konzola pro správu|
-| **Místní Konzola pro správu, která se používá jako NTP pro senzor** | NTP | UDP| Do CM | 123 | Časová synchronizace | 
-| **Senzor připojený k externímu serveru NTP (Pokud je relevantní)** | NTP | UDP | V nebo ven| 123 | Časová synchronizace |
-| **Propojení mezi Defenderem a platformou pro správu a poštovním serverem služby IoT (Pokud je to relevantní)** | SMTP | TCP | Správa ze senzorů | 25 | E-mail |
-| **Protokoly, které odesílají z místní konzoly pro správu na server syslog (Pokud je to relevantní)** | Syslog | UDP | Správa ze senzorů| 514 | LEEF |
-| **Port serveru DNS (Pokud je relevantní)** | DNS | – | V nebo ven| 53 | DNS |
-| **Propojení mezi Defenderem a platformou pro správu a místní konzolou pro správu služby Active Directory (Pokud je relevantní)** | LDAPS | TCP | V nebo ven | 636 <br />389 | Active Directory |
-| **Vzdálené sběrače SNMP (pokud jsou relevantní)** | SNMP | UDP | Správa ze senzorů| 161 | Monitorování |
-| **Monitorování koncového bodu systému Windows (Pokud je relevantní)** | Rozhraní WMI | UDP | Správa ze senzorů| 135 | Monitorování |
-| **Monitorování koncového bodu systému Windows (Pokud je relevantní)** | Rozhraní WMI | TCP | Správa ze senzorů| 1024 a vyšší | Monitorování |
-| **Tunelové propojení (Pokud je relevantní)** | Tunelové propojení | TCP | DO CM | 9000<br />Kromě portu 443<br />Od koncového uživatele k místní konzole pro správu <br />Port 22 ze senzoru do místní konzoly pro správu | Monitorování |
-| **Odchozí do programu Defender pro IoT Hub** | HTTPS | TCP | Správa ze senzorů| **Adresa URL**<br />*. azure-devices.net:443<br />nebo pokud se zástupné znaky nepodporují<br />{název centra IoT Hub}. Azure – devices.net:443 |
+| Protokol | Přenos | Vstupně-výstupní | Port | Použito | Účel | Zdroj | Cíl |
+|--|--|--|--|--|--|--|--|
+| HTTPS | TCP | VSTUPNĚ-VÝSTUPNÍ | 443 | Senzor a místní Konzola pro správu – webová konzola | Přístup ke webové konzole | Klient | Senzor a místní Konzola pro správu |
+| SSH | TCP | VSTUPNĚ-VÝSTUPNÍ | 22 | Rozhraní příkazového řádku | Přístup k rozhraní příkazového řádku | Klient | Senzor a místní Konzola pro správu |
+| SSL | TCP | VSTUPNĚ-VÝSTUPNÍ | 443 | Senzor a místní Konzola pro správu | Propojení mezi platformou CyberX a platformou centrální správy | snímač | Místní Konzola pro správu |
+| NTP | UDP | IN | 123 | Čas synchronizace | Místní Konzola pro správu se používá jako NTP pro senzory. | snímač | místní Konzola pro správu |
+| NTP | UDP | VSTUPNĚ-VÝSTUPNÍ | 123 | Čas synchronizace | Senzor připojený k externímu serveru NTP, když není nainstalovaná žádná místní Konzola pro správu | snímač | NTP |
+| SMTP | TCP | MIMO | 25 | E-mail | Spojení mezi platformou CyberX a platformou správy a poštovním serverem | Senzor a místní Konzola pro správu | E-mailový server |
+| Syslog | UDP | MIMO | 514 | LEEF | Protokoly, které odesílají z místní konzoly pro správu na server syslog | Místní Konzola pro správu a senzor | Server syslogu |
+| DNS |  | VSTUPNĚ-VÝSTUPNÍ | 53 | DNS | Port serveru DNS | Místní Konzola pro správu a senzor | Server DNS |
+| LDAP | TCP | VSTUPNĚ-VÝSTUPNÍ | 389 | Active Directory | Připojení mezi platformou CyberX a platformou správy ke službě Active Directory | Místní Konzola pro správu a senzor | Server LDAP |
+| LDAPS | TCP | VSTUPNĚ-VÝSTUPNÍ | 636 | Active Directory | Připojení mezi platformou CyberX a platformou správy ke službě Active Directory | Místní Konzola pro správu a senzor | Server LDAPs |
+| SNMP | UDP | MIMO | 161 | Monitorování | Vzdálené sběrače SNMP. | Místní Konzola pro správu a senzor | Server SNMP |
+| Rozhraní WMI | UDP | MIMO | 135 | Monitorování | Monitorování koncového bodu systému Windows | Elektrické | Příslušný prvek sítě |
+| Tunelové propojení | TCP | IN | 9000 <br /><br />– nad portem 443 <br /><br />Od koncového uživatele k místní konzole pro správu. <br /><br />– Port 22 od senzoru k místní konzole pro správu  | Monitorování | Tunelové propojení | Elektrické | Místní Konzola pro správu |
 
 ### <a name="planning-rack-installation"></a>Plánování instalace racku
 
 Naplánování instalace racku:
 
 1. Připravte monitor a klávesnici pro nastavení sítě vašeho zařízení.
-2. Přidělte prostor stojanu pro dané zařízení.
-3. Máte k dispozici AC napájení zařízení.
-4. Připravte kabel LAN pro připojení správy k síťovému přepínači.
-5. Připravte kabely LAN pro připojení portů přepínače SPAN (mirror) a nebo sítě do programu Defender pro zařízení IoT. 
-6. Nakonfigurujte, připojte a ověřte porty SPAN v zrcadlených přepínačích, jak je popsáno v relaci revize architektury.
-7. Připojte nakonfigurovaný port SPAN k počítači, na kterém je spuštěný Nástroj Wireshark, a ověřte, jestli je port správně nakonfigurovaný.
-8. Otevřete všechny příslušné porty brány firewall.
+
+1. Přidělte prostor stojanu pro dané zařízení.
+
+1. Máte k dispozici AC napájení zařízení.
+1. Připravte kabel LAN pro připojení správy k síťovému přepínači.
+1. Připravte kabely LAN pro připojení portů přepínače SPAN (mirror) a nebo sítě do programu Defender pro zařízení IoT. 
+1. Nakonfigurujte, připojte a ověřte porty SPAN v zrcadlených přepínačích, jak je popsáno v relaci revize architektury.
+1. Připojte nakonfigurovaný port SPAN k počítači, na kterém je spuštěný Nástroj Wireshark, a ověřte, jestli je port správně nakonfigurovaný.
+1. Otevřete všechny příslušné porty brány firewall.
 
 ## <a name="about-passive-network-monitoring"></a>Informace o pasivním monitorování sítě
 
@@ -141,6 +142,7 @@ Následující části popisují Purdue úrovně.
 Úroveň 0 se skládá z nejrůznějších senzorů, poháněcí zařízení a zařízení zapojených do základního výrobního procesu. Tato zařízení provádějí základní funkce pro průmyslové automatizaci a systém řízení, jako například:
 
 - Řízení motoru.
+
 - Měření proměnných.
 - Nastavení výstupu.
 - Provádění klíčových funkcí, jako je malování, svařování a ohnutí.
@@ -227,7 +229,7 @@ Tady je několik doporučení pro nasazení různých senzorů:
 |--|--|--|--|
 | Maximální vzdálenost mezi přepínači | 80 měřičů | Připravený ethernetový kabel | Více než 1 |
 | Počet sítí typu OT. | Více než 1 | Bez fyzického připojení | Více než 1 |
-| Počet přepínačů | Dá se použít ke konfiguraci RSPAN | Až 8 přepínačů s místním rozsahem blízko ke senzoru podle vzdálenosti kabelů | Více než 1 |
+| Počet přepínačů | Dá se použít ke konfiguraci RSPAN | Až osm přepínačů s místním rozsahem blízko ke senzoru podle vzdálenosti kabelů | Více než 1 |
 
 #### <a name="traffic-mirroring"></a>Zrcadlení provozu  
 
@@ -353,7 +355,7 @@ Klepnutím na aktivní nebo pasivní agregaci se nainstalují vložené do síť
 
 Koncová přístupová klávesa (klepněte na) je hardwarové zařízení, které umožňuje tok síťového provozu z portu A na port B a z portu B na port A bez přerušení. Vytváří přesnou kopii obou stran toku provozu, a to nepřetržitě, bez narušení integrity sítě. V případě potřeby se v některých případech agreguje přenos a příjem provozu pomocí nastavení přepínače. Pokud není agregace podporovaná, každý klepnutím použije dva porty senzoru k monitorování odesílání a přijímání provozu.
 
-Klepnutí jsou vyvýhodnější z nejrůznějších důvodů. Jsou založené na hardwaru a nemůžou být ohrožené. Předávají veškerý provoz, dokonce i poškozené zprávy, které přepínače často přecházejí. Nerozlišují se s procesorem, takže časování paketů je přesné, pokud přepínače zpracovávají funkci zrcadlení jako úlohu s nízkou prioritou, která může ovlivnit načasování zrcadlených paketů. Pro účely forenzní je klepněte na nejlepší zařízení.
+V různých důvodech je výhodné vyklepnutí. Jsou založené na hardwaru a nemůžou být ohrožené. Předávají veškerý provoz, dokonce i poškozené zprávy, které přepínače často přecházejí. Nerozlišují se s procesorem, takže časování paketů je přesné, pokud přepínače zpracovávají funkci zrcadlení jako úlohu s nízkou prioritou, která může ovlivnit načasování zrcadlených paketů. Pro účely forenzní je klepněte na nejlepší zařízení.
 
 Klepnutím na agregátory lze také použít pro monitorování portů. Tato zařízení jsou založená na procesorech a nejsou tak vnitřně zabezpečená jako při klepnutí na hardware. Nemusí odrážet přesné časování paketů.
 
@@ -364,10 +366,10 @@ Klepnutím na agregátory lze také použít pro monitorování portů. Tato za�
 Tyto modely byly testovány na kompatibilitu. Ostatní dodavatelé a modely můžou být taky kompatibilní.
 
 | Image | Modelování |
-| -- | -- |
-| :::image type="content" source="media/how-to-set-up-your-network/garland-p1gccas-v2.png" alt-text="Snímek obrazovky Garland P1GCCAS.":::  | Garland P1GCCAS  |
-| :::image type="content" source="media/how-to-set-up-your-network/ixia-tpa2-cu3-v2.png" alt-text="Snímek obrazovky IXIA TPA2-CU3.":::  | IXIA TPA2 – CU3  |
-| :::image type="content" source="media/how-to-set-up-your-network/us-robotics-usr-4503-v2.png" alt-text="Snímek obrazovky US Robotics USR 4503.":::  | US Robotics USR 4503  |
+|--|--|
+| :::image type="content" source="media/how-to-set-up-your-network/garland-p1gccas-v2.png" alt-text="Snímek obrazovky Garland P1GCCAS."::: | Garland P1GCCAS |
+| :::image type="content" source="media/how-to-set-up-your-network/ixia-tpa2-cu3-v2.png" alt-text="Snímek obrazovky IXIA TPA2-CU3."::: | IXIA TPA2 – CU3 |
+| :::image type="content" source="media/how-to-set-up-your-network/us-robotics-usr-4503-v2.png" alt-text="Snímek obrazovky US Robotics USR 4503."::: | US Robotics USR 4503 |
 
 ##### <a name="special-tap-configuration"></a>Konfigurace speciálního klepnutí
 
@@ -425,7 +427,7 @@ Relevantní informace:
 
 - Pokud se k tomuto přepínači má připojit program Defender pro IoT, je v něm k dispozici fyzické místo v racku?
 
-#### <a name="additional-considerations"></a>Další aspekty
+#### <a name="other-considerations"></a>Další důležité informace
 
 Účelem programu Defender pro zařízení IoT je monitorování provozu z vrstev 1 a 2.
 
@@ -547,7 +549,7 @@ Zkontrolujte tento seznam před nasazením lokality:
 | 14 | Stojan a kabely zařízení. | ☐ |  |
 | 15 | Přidělte prostředky lokality pro podporu nasazení. | ☐ |  |
 | 16 | Vytvořte skupiny služby Active Directory nebo místní uživatele. | ☐ |  |
-| 17 | Nastavte školení (samoobslužné vzdělávání). | ☐ |  |
+| 17 | Nastavení školení (samoobslužné vzdělávání). | ☐ |  |
 | 18 | Přejít nebo No – přejít. | ☐ |  |
 | 19 | Naplánování data nasazení. | ☐ |  |
 
@@ -671,7 +673,7 @@ Zadejte podrobnosti adresy pro síťovou kartu senzoru, která bude připojena k
 | Tajný klíč | |
 | Řetězec komunity SNMP v2 |
 
-### <a name="cm-ssl-certificate"></a>CM – certifikát SSL
+### <a name="on-premises-management-console-ssl-certificate"></a>Certifikát SSL místní konzoly pro správu
 
 Plánujete použít certifikát SSL? Ano nebo Ne
 

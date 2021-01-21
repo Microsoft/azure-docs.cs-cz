@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: d344b3d9ea54243d61cc6a1f3f0982eb5ab1d238
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 94a1db30419e5d7e52f369392d94b817d0dc273a
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98538589"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98623750"
 ---
 # <a name="activate-and-set-up-your-on-premises-management-console"></a>Aktivace a nastavení místní konzoly pro správu 
 
@@ -147,13 +147,13 @@ Nastavení tunelového propojení na senzor:
 
 ## <a name="set-up-a-site"></a>Nastavení lokality
 
-Výchozí podniková mapa poskytuje celkový přehled o prostředcích podle několika úrovní geografických umístění.
+Výchozí podniková mapa poskytuje celkový přehled o vašich zařízeních v závislosti na několika úrovních geografických umístění.
 
-Zobrazení prostředků může být vyžadováno, pokud jsou organizační struktura a uživatelská oprávnění složitá. V těchto případech může být nastavení lokality určeno globální strukturou organizace, kromě standardní struktury lokalit nebo zón.
+Zobrazení zařízení může být vyžadováno, pokud jsou organizační struktura a uživatelská oprávnění složitá. V těchto případech může být nastavení lokality určeno globální strukturou organizace, kromě standardní struktury lokalit nebo zón.
 
 Pro podporu tohoto prostředí potřebujete vytvořit globální obchodní topologii, která je založená na organizačních jednotkách, oblastech, webech a zónách vaší organizace. K těmto entitám musíte také definovat přístupová oprávnění uživatelů pomocí skupin přístupu.
 
-Přístupové skupiny umožňují lepší kontrolu nad tím, kde uživatelé spravují a analyzují prostředky v programu Defender pro platformu IoT.
+Přístupové skupiny umožňují lepší kontrolu nad tím, kde uživatelé spravují a analyzují zařízení v programu Defender pro IoT Platform.
 
 ### <a name="how-it-works"></a>Jak to funguje
 
@@ -215,7 +215,7 @@ Odstranění webu:
 
 ## <a name="create-enterprise-zones"></a>Vytvořit podnikové zóny
 
-Zóny jsou logické entity, které umožňují rozdělit prostředky v rámci lokality do skupin podle různých charakteristik. Můžete například vytvořit skupiny pro výrobní linky, podstanice, oblasti webu nebo typy assetů. Můžete definovat zóny na základě jakékoli charakteristiky, která je vhodná pro vaši organizaci.
+Zóny jsou logické entity, které umožňují rozdělit zařízení v rámci lokality do skupin podle různých charakteristik. Můžete například vytvořit skupiny pro výrobní linky, podstanice, oblasti webu nebo typy zařízení. Můžete definovat zóny na základě jakékoli charakteristiky, která je vhodná pro vaši organizaci.
 
 Zóny můžete nakonfigurovat jako součást procesu konfigurace lokality.
 
@@ -231,8 +231,8 @@ Následující tabulka popisuje parametry v okně **Správa lokality** .
 | Připojení | Stav připojení snímače. Stav lze **připojit** nebo **Odpojit**. |
 | Poslední upgrade | Datum posledního upgradu |
 | Průběh upgradu | Indikátor průběhu zobrazuje stav procesu upgradu následujícím způsobem:<br />– Nahrávání balíčku<br />– Příprava na instalaci<br />-Zastavování procesů<br />– Zálohování dat<br />-Pořizování snímku<br />– Aktualizace konfigurace<br />– Aktualizace závislostí<br />– Aktualizace knihoven<br />-Opravy databází<br />– Spouštění procesů<br />– Ověřování systémových správnosti<br />– Ověření bylo úspěšné.<br />– Úspěch<br />– Chyba<br />-Upgrade byl zahájen.<br />-Spouští se instalaceogress bar shows the status of the upgrade process, as follows:<br />- Uploading package<br />- Preparing to install<br />- Stopping processes<br />- Backing up data<br />- Taking snapshot<br />- Updating configuration<br />- Updating dependencies<br />- Updating libraries<br />- Patching databases<br />- Starting processes<br />- Validating system sanity<br />- Validation succeeded<br />- Success<br />- Failure<br />- Upgrade started<br />- Starting installation<br /></br >Podrobnosti o upgradu najdete v tématu [Podpora Microsoftu](https://support.microsoft.com/) . |
-| Prostředky | Počet assetů, které senzor monitoruje. |
-| Upozornění | Počet výstrah na senzoru. |
+| Zařízení | Počet zařízení, která senzor monitoruje. |
+| Výstrahy | Počet výstrah na senzoru. |
 | :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/assign-icon.png" border="false"::: | Umožňuje přiřadit senzor k zónám. |
 | :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/delete-icon.png" border="false":::| Povolí odstranění odpojeného senzoru z webu. |
 | :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/sensor-icon.png" border="false"::: | Určuje, kolik senzorů je aktuálně připojeno k zóně. |
@@ -316,6 +316,6 @@ Zrušení přiřazení a odstranění snímače:
 
 3. Pokud chcete odstranit nepřiřazený senzor z webu, vyberte snímač ze seznamu nepřiřazených senzorů a vyberte :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/delete-icon.png" border="false"::: .
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 [Řešení potíží se senzory a místní konzolou pro správu](how-to-troubleshoot-the-sensor-and-on-premises-management-console.md)

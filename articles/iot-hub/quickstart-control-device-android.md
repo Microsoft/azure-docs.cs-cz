@@ -1,5 +1,5 @@
 ---
-title: Řízení zařízení v rychlém startu Azure IoT Hub (Android) | Microsoft Docs
+title: Rychlý Start – řízení zařízení z Azure IoT Hub rychlý Start (Android) | Microsoft Docs
 description: V tomto rychlém startu spustíte dvě ukázkové aplikace Java. Jedna aplikace je aplikace služby, která může vzdáleně řídit zařízení připojená k rozbočovači. Druhá aplikace běží na fyzickém nebo simulovaném zařízení připojeném k vašemu rozbočovači, který se dá řídit vzdáleně.
 author: wesmc7777
 manager: philmea
@@ -14,12 +14,12 @@ ms.custom:
 - devx-track-azurecli
 ms.date: 06/21/2019
 ms.author: wesmc
-ms.openlocfilehash: 969ae6dc1e3667bc360890c292371a0a9b1ba2dc
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 345b82d8120be52066ce6f834b7f2338b6c3bfd0
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844587"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98623294"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>Rychlý Start: řízení zařízení připojeného ke centru IoT (Android)
 
@@ -27,7 +27,7 @@ ms.locfileid: "94844587"
 
 V tomto rychlém startu použijete přímou metodu k řízení simulovaného zařízení připojeného k Azure IoT Hub. IoT Hub je služba Azure, která umožňuje spravovat zařízení IoT z cloudu a ingestovat velké objemy telemetrie zařízení do cloudu za účelem uložení nebo zpracování. Přímé metody můžete použít k provádění vzdálených změn chování zařízení připojeného k centru IoT. V tomto rychlém startu se používají dvě aplikace: simulovaná aplikace zařízení, která reaguje na přímé metody volané z back-endové aplikace služby a aplikace služby, která volá metodu Direct na zařízení s Androidem.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
@@ -73,7 +73,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
    **YourIoTHubName**: níže uvedený zástupný symbol nahraďte názvem, který zvolíte pro Centrum IoT.
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string \
+    az iot hub device-identity connection-string show\
       --hub-name {YourIoTHubName} \
       --device-id MyAndroidDevice \
       --output table
@@ -115,7 +115,7 @@ Ukázkovou aplikaci sady SDK pro zařízení můžete spustit na fyzickém zař�
     DeviceConnectionString=HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyAndroidDevice;SharedAccessKey={YourSharedAccessKey}
     ```
 
-3. V Android Studio klikněte na **File**  >  **projekt synchronizace souborů se soubory Gradle**. Ověřte, že se sestavení dokončilo.
+3. V Android Studio klikněte na   >  **projekt synchronizace souborů se soubory Gradle**. Ověřte, že se sestavení dokončilo.
 
    > [!NOTE]
    > Pokud synchronizace projektu neproběhne úspěšně, může to být z některého z následujících důvodů:
@@ -133,7 +133,7 @@ Tato aplikace musí být při spuštění ukázky sady SDK v provozu na fyzické
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Čtení telemetrie z centra
 
-V této části použijete Azure Cloud Shell s [rozšířením IoT](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest) k monitorování zpráv odesílaných zařízením s Androidem.
+V této části použijete Azure Cloud Shell s [rozšířením IoT](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest&preserve-view=true) k monitorování zpráv odesílaných zařízením s Androidem.
 
 1. Pomocí služby Azure Cloud Shell spusťte následující příkaz, který provede připojení a čtení zpráv z centra IoT:
 
@@ -166,7 +166,7 @@ Aplikace služby back-end IoT Hub obvykle běží v cloudu, kde je snazší zmí
     DeviceId=MyAndroidDevice
     ```
 
-3. V Android Studio klikněte na **File**  >  **projekt synchronizace souborů se soubory Gradle**. Ověřte, že se sestavení dokončilo.
+3. V Android Studio klikněte na   >  **projekt synchronizace souborů se soubory Gradle**. Ověřte, že se sestavení dokončilo.
 
    > [!NOTE]
    > Pokud synchronizace projektu neproběhne úspěšně, může to být z některého z následujících důvodů:

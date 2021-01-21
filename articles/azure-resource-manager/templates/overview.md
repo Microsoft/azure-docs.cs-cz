@@ -2,13 +2,13 @@
 title: Přehled šablon
 description: V této části najdete popis výhod používání Azure Resource Manager šablon (šablon ARM) pro nasazení prostředků.
 ms.topic: conceptual
-ms.date: 12/17/2020
-ms.openlocfilehash: c4995791b784351219458c546442d082e2396315
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.date: 01/20/2021
+ms.openlocfilehash: dd9207ca1d0397b7dce63eb826567f07b1d0b892
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657307"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621835"
 ---
 # <a name="what-are-arm-templates"></a>Co je šablona ARM?
 
@@ -125,6 +125,12 @@ Pokud si představíte, že vaše vrstvy mají tři samostatné životní cykly,
 ![šablona vrstvy](./media/overview/tier-templates.png)
 
 Informace o vnořených šablonách najdete v tématu [Použití propojených šablon s Azure Resource Managerem](linked-templates.md).
+
+## <a name="share-templates"></a>Sdílení šablon
+
+Po vytvoření šablony ji můžete chtít sdílet s ostatními uživateli ve vaší organizaci. [Specifikace šablon](template-specs.md) umožňují uložit šablonu jako typ prostředku. Řízení přístupu na základě rolí se používá ke správě přístupu ke specifikaci šablony. Uživatelé s přístupem pro čtení do specifikace šablony ji mohou nasadit, ale nemění šablonu.
+
+Tento přístup znamená, že můžete bezpečně sdílet šablony, které vyhovují standardům vaší organizace.
 
 ## <a name="next-steps"></a>Další kroky
 

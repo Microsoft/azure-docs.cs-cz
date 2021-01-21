@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 4ad1562bdd9853b6ff3c537790a54dbeab96b5b8
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 908460bd0a034e21524b6ea6d3042f362cc810d4
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98538572"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98623585"
 ---
 # <a name="activate-and-set-up-your-sensor"></a>Aktivace a nastavení senzoru
 
@@ -44,7 +44,7 @@ Předtím, než se přihlásíte ke konzole senzorů, by měli mít uživatelé 
 
 Váš senzor byl připojen k Azure Defenderu pro IoT v určitém režimu správy:
 
-| Typ režimu | Popis |
+| Typ režimu | Description |
 |--|--|
 | **Režim připojení ke cloudu** | Informace, které senzor detekuje, se zobrazí v konzole senzorů. Informace o výstrahách se také doručují prostřednictvím služby IoT Hub a dají se sdílet s ostatními službami Azure, jako je Azure Sentinel. |
 | **Místně připojený režim** | Informace, které senzor detekuje, se zobrazí v konzole senzorů. Informace o detekci se také sdílí s místní konzolou pro správu, pokud je senzor připojený k němu. |
@@ -134,15 +134,15 @@ Po přihlášení se otevře konzola Azure Defender pro IoT.
 
 ## <a name="initial-setup-and-learning-for-administrators"></a>Počáteční nastavení a učení (pro správce)
 
-Po prvním přihlášení začne Azure Defender pro IoT snímač monitorovat vaši síť automaticky. Síťové prostředky se zobrazí v sekcích mapa assetu a inventáře prostředků. Azure Defender pro IoT začne zjišťovat a upozorňovat na všechny bezpečnostní a provozní incidenty, které se ve vaší síti vyskytují. Na základě zjištěných informací pak můžete vytvářet sestavy a dotazy.
+Po prvním přihlášení začne Azure Defender pro IoT snímač monitorovat vaši síť automaticky. Síťová zařízení se zobrazí v sekcích mapa zařízení a inventáře zařízení. Azure Defender pro IoT začne zjišťovat a upozorňovat na všechny bezpečnostní a provozní incidenty, které se ve vaší síti vyskytují. Na základě zjištěných informací pak můžete vytvářet sestavy a dotazy.
 
-Zpočátku se tato aktivita provádí v výukovém režimu, který dává vašemu senzoru informace o běžné činnosti vaší sítě. Senzor například učí prostředky zjištěné ve vaší síti, protokoly zjištěné v síti a přenosy souborů, ke kterým dochází mezi konkrétními prostředky. Tato aktivita se bude nacházet v rámci aktivity směrného plánu vaší sítě.
+Zpočátku se tato aktivita provádí v výukovém režimu, který dává vašemu senzoru informace o běžné činnosti vaší sítě. Senzor například učí zařízení zjištěná ve vaší síti, protokoly zjištěné v síti a přenosy souborů, ke kterým dochází mezi konkrétními zařízeními. Tato aktivita se bude nacházet v rámci aktivity směrného plánu vaší sítě.
 
 ### <a name="review-and-update-basic-system-settings"></a>Zkontrolovat a aktualizovat základní systémová nastavení
 
 Zkontrolujte nastavení systému senzoru a ujistěte se, že je senzor nakonfigurovaný tak, aby optimálně zjišťoval a upozornil.
 
-Definujte nastavení systému senzoru. Příklad:
+Definujte nastavení systému senzoru. Například:
 
 - Definujte ICS (nebo IoT) a oddělené podsítě.
 
@@ -177,23 +177,23 @@ Přístup k nástrojům konzoly získáte z vedlejší nabídky.
 
 **Navigace** 
 
-| Okno | Ikona | Popis |
+| Okno | Ikona | Description |
 | -----------|--|--|
 | Řídicí panel | :::image type="icon" source="media/concept-sensor-console-overview/dashboard-icon-azure.png" border="false"::: | Zobrazení intuitivního snímku stavu zabezpečení sítě. |
 | Mapa zařízení | :::image type="icon" source="media/concept-sensor-console-overview/asset-map-icon-azure.png" border="false"::: | Zobrazit síťová zařízení, připojení zařízení a vlastnosti zařízení v mapě. K zobrazení vaší sítě jsou k dispozici různé možnosti přiblížení, zvýraznění a filtrování. |
 | Inventář zařízení | :::image type="icon" source="media/concept-sensor-console-overview/asset-inventory-icon-azure.png" border="false":::  | Inventář zařízení zobrazuje rozsáhlou škálu atributů zařízení, které tento senzor detekuje. Možnosti jsou k dispozici pro: <br /> -Filtrovat informace podle polí tabulky a zobrazit zobrazené filtrované informace. <br /> – Exportujte informace do souboru CSV. <br /> – Importujte podrobnosti registru Windows.|
-| Upozornění | :::image type="icon" source="media/concept-sensor-console-overview/alerts-icon-azure.png" border="false"::: | Zobrazit upozornění, když dojde k porušení zásad, se vyskytnou odchylky od chování standardních hodnot nebo se zjistí jakýkoli typ podezřelé aktivity v síti. |
+| Výstrahy | :::image type="icon" source="media/concept-sensor-console-overview/alerts-icon-azure.png" border="false"::: | Zobrazit upozornění, když dojde k porušení zásad, se vyskytnou odchylky od chování standardních hodnot nebo se zjistí jakýkoli typ podezřelé aktivity v síti. |
 | Sestavy | :::image type="icon" source="media/concept-sensor-console-overview/reports-icon-azure.png" border="false"::: | Zobrazení sestav založených na dotazech dolování dat. |
 
 **Výsledcích**
 
-| Okno| Ikona | Popis |
+| Okno| Ikona | Description |
 |---|---|---|
 | Časová osa události | :::image type="icon" source="media/concept-sensor-console-overview/event-timeline-icon-azure.png" border="false"::: | Zobrazit časovou osu pomocí informací o výstrahách, událostech sítě (informativní) a uživatelských operacích, jako jsou přihlášení uživatelů a odstranění uživatelů.|
 
 **Navigace**
 
-| Okno | Ikona | Popis |
+| Okno | Ikona | Description |
 |---|---|---|
 | Dolování dat | :::image type="icon" source="media/concept-sensor-console-overview/data-mining-icon-azure.png" border="false"::: | Generování komplexních a podrobných informací o zařízeních vaší sítě v různých vrstvách. |
 | Trendy a statistiky | :::image type="icon" source="media/concept-sensor-console-overview/trends-and-statistics-icon-azure.jpg" border="false"::: | Zobrazení trendů a statistik v rozsáhlých různých widgetech. |
@@ -201,7 +201,7 @@ Přístup k nástrojům konzoly získáte z vedlejší nabídky.
 
 **Správce**
 
-| Okno | Ikona | Popis |
+| Okno | Ikona | Description |
 |---|---|---|
 | Uživatelé | :::image type="icon" source="media/concept-sensor-console-overview/users-icon-azure.png" border="false"::: | Definujte uživatele a role s různými úrovněmi přístupu. |
 | Šíření | :::image type="icon" source="media/concept-sensor-console-overview/forwarding-icon-azure.png" border="false"::: | Dodejte informace o výstrahách partnerům, které se integrují s Defenderem pro IoT, na e-mailové adresy, na servery webhooků a další. <br /> Podrobnosti najdete v podrobnostech [o upozorněních před oznámením](how-to-forward-alert-information-to-partners.md) . |
@@ -210,11 +210,11 @@ Přístup k nástrojům konzoly získáte z vedlejší nabídky.
 
 **Podpora**
 
-| Okno| Ikona | Popis |
+| Okno| Ikona | Description |
 |----|---|---|
 | Podpora | :::image type="icon" source="media/concept-sensor-console-overview/support-icon-azure.png" border="false"::: | Požádejte o nápovědu [Podpora Microsoftu](https://support.microsoft.com/) . |
 
-### <a name="see-also"></a>Viz také:
+### <a name="see-also"></a>Viz také
 
 [Připojení snímače](getting-started.md#4-onboard-a-sensor)
 

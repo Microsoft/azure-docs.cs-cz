@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 13edc0280f1a6f7e962e8e4593d8a17990dd9e6f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 3cb6ee3162c70d2d07c4868ae90ecc54bd489966
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92454741"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98622487"
 ---
 # <a name="tutorial-integrate-displayr-with-azure-active-directory"></a>Kurz: integrace inplay s Azure Active Directory
 
@@ -78,6 +78,10 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<YOURDOMAIN>.displayr.com`
 
     b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:`<YOURDOMAIN>.displayr.com`
+    
+    c. Do textového pole **Adresa URL odpovědi** zadejte `https://app.displayr.com/Login/ProcessSamlResponse` .
+    
+    d. Klikněte na **Uložit**.
 
     >[!NOTE]
     >Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Pro získání těchto hodnot se obraťte na [tým podpory pro klienty](mailto:support@displayr.com) . Můžete se také podívat na vzory uvedené v části základní konfigurace SAML v Azure Portal.
@@ -88,25 +92,23 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Aplikace aktéra očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů. Kliknutím na tlačítko **Upravit** ikonu otevřete dialogové okno atributy uživatele.
 
-    ![Snímek obrazovky, který zobrazuje oddíl "atributy uživatele" se zvýrazněnou ikonou "Upravit".](common/edit-attribute.png)
+   ![Snímek obrazovky, který zobrazuje oddíl "atributy uživatele" se zvýrazněnou ikonou "Upravit".](common/edit-attribute.png)
 
 1. Kromě výše očekává aplikace inplay v odpovědi SAML několik atributů, které se mají vrátit zpátky. V dialogovém okně deklarace identity v části **atributy uživatele & deklarace** v dialogu **deklarace skupiny (Preview)** proveďte následující kroky:
 
-    a. Klikněte na **pero** vedle **skupin vrácených v deklaraci identity**.
+   a. Klikněte na **přidat deklaraci skupiny**.
 
-    ![Snímek obrazovky, který zobrazuje část "atributy uživatele & deklarace identity" ikonou "pero" vedle možnosti "skupiny vrácené v deklaraci".](./media/displayr-tutorial/config04.png)
+      ![Snímek obrazovky, který zobrazuje okno deklarace identity (Preview) s vybraným nastavením.](./media/displayr-tutorial/config05.png)
 
-    ![Snímek obrazovky, který zobrazuje okno deklarace identity (Preview) s vybraným nastavením.](./media/displayr-tutorial/config05.png)
+   b. V seznamu přepínačů vyberte **všechny skupiny** .
 
-    b. V seznamu přepínačů vyberte **všechny skupiny** .
+   c. Vyberte **zdrojový atribut** **ID skupiny**.
 
-    c. Vyberte **zdrojový atribut** **ID skupiny**.
+   d. Ověřte **přizpůsobení názvu deklarace identity skupiny**.
 
-    d. Ověřte **přizpůsobení názvu deklarace identity skupiny**.
+   e. Ověřte **, že se skupiny emitují jako deklarace identity role**.
 
-    e. Ověřte **, že se skupiny emitují jako deklarace identity role**.
-
-    f. Klikněte na **Uložit**.
+   f. Klikněte na **Uložit**.
 
 1. V části **Nastavení inplay** zkopírujte příslušné adresy URL na základě vašeho požadavku.
 
@@ -154,11 +156,11 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `Britta Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `BrittaSimon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například `BrittaSimon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
@@ -166,13 +168,13 @@ V této části vytvoříte testovacího uživatele v Azure Portal s názvem Bri
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure udělením přístupu ke službě DisplayName.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte položku **aktér**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
@@ -212,7 +214,7 @@ Pokud chcete povolit uživatele Azure AD, přihlaste se k nástroji inplay, mus�
 
 Když na přístupovém panelu kliknete na dlaždici vylektoru, měli byste být automaticky přihlášeni k inlektoru, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 444e7c9ad06c6f2ad584c0701fa652b901a4c3e7
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 3bb0aadf81ba501070ce0c734847bb16c0378896
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680773"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624034"
 ---
 # <a name="tutorial-migrate-web-service-from-google-maps"></a>Kurz: migrace webové služby z Google Maps
 
@@ -22,6 +22,7 @@ Mapy Azure i Google poskytují přístup k prostorovým rozhraním API prostřed
 
 V tomto kurzu se naučíte, jak:
 
+> [!div class="checklist"]
 > * Dopředné a obrácené geografické kódování
 > * Hledání bodů zájmu
 > * Vypočítat trasy a směry
@@ -40,7 +41,7 @@ V tabulce jsou uvedena rozhraní API služby Azure Maps, která mají podobnou f
 
 | Rozhraní API služby Google Maps | Rozhraní API služby Azure Maps                                                                      |
 |-------------------------|---------------------------------------------------------------------------------------------|
-| Pokyny              | [Trasa](/rest/api/maps/route)                                     |                         
+| Pokyny              | [Cestě](/rest/api/maps/route)                                     |                         
 | Matice vzdáleností         | [Matice směrování](/rest/api/maps/route/postroutematrixpreview)       |                         
 | Geokódování               | [Hledání](/rest/api/maps/search)                                   |                         
 | Hledání míst           | [Hledání](/rest/api/maps/search)                                   |                         
@@ -66,7 +67,7 @@ Azure Maps má několik dalších webových služeb REST, které mohou být zaj�
 
 ## <a name="prerequisites"></a>Požadavky
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
 2. [Vytvořit účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account)
 3. [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného. Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](how-to-manage-authentication.md).
 
@@ -335,7 +336,7 @@ V Azure Maps musí být umístění kódu PIN ve formátu "Zeměpisná šířka"
 * `custom` – Určuje vlastní ikonu, která se má použít. Adresa URL ukazující na obrázek ikony může být přidána na konec `pins` parametru za informace o umístění kódu PIN.
 * `{udid}` – Jedinečné ID dat (UDID) pro ikonu uloženou v Azure Maps platformě úložiště dat.
 
-Přidejte styly kódu PIN ve `optionNameValue` formátu. Oddělte více stylů znaky svislé čáry ( \| ). Například: `iconType|optionName1Value1|optionName2Value2`. Hodnoty a názvy možností nejsou oddělené. Pro značky stylu použijte následující názvy možností stylu:
+Přidejte styly kódu PIN ve `optionNameValue` formátu. Oddělte více stylů znaky svislé čáry ( \| ). Příklad: `iconType|optionName1Value1|optionName2Value2`. Hodnoty a názvy možností nejsou oddělené. Pro značky stylu použijte následující názvy možností stylu:
 
 * `al` – Určuje neprůhlednost (alfa) značky. Vyberte číslo mezi 0 a 1.
 * `an` – Určuje kotvu PIN. Zadejte hodnoty X a y pixelů ve formátu "X y".

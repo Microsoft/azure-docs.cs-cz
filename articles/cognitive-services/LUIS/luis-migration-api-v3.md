@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: 59cf250a9db5a1f6759495c1b5a3c48cb07cde15
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 59dfa439f6428f2db972a8f848887e1a74bc2622
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95018782"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624299"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>Předpověď změn koncového bodu pro v3
 
@@ -66,9 +66,6 @@ Toto rozhraní API se v koncovém bodě verze V3 nepodporuje – pro opravy prav
 
 Pokračujte v použití koncového bodu předpovědi rozhraní v2 API, dokud se neuvolní v rozhraní bot Framework V 4.7.
 
-## <a name="v2-api-deprecation"></a>Zastaralé rozhraní API v2
-
-Předpokládané rozhraní API v2 nebude zastaralé po dobu nejméně 9 měsíců od verze V3 Preview, 8. června 2020.
 
 ## <a name="endpoint-url-changes"></a>Změny adresy URL koncového bodu
 
@@ -105,8 +102,8 @@ Pokud se chcete dotazovat podle verze, musíte nejdřív [publikovat přes rozhr
 
 |Vlastnost|Typ|Verze|Výchozí|Účel|
 |--|--|--|--|--|
-|`dynamicLists`|array|Jenom V3|Nepožadováno.|[Dynamické seznamy](schema-change-prediction-runtime.md#dynamic-lists-passed-in-at-prediction-time) umožňují rozšiřování existující entity vyškolené a publikované seznamu, která už je v aplikaci Luis.|
-|`externalEntities`|array|Jenom V3|Nepožadováno.|[Externí entity](schema-change-prediction-runtime.md#external-entities-passed-in-at-prediction-time) poskytují vaší aplikaci Luis schopnost identifikovat a označovat entity za běhu, které se dají použít jako funkce pro stávající entity. |
+|`dynamicLists`|array|Jenom V3|Nevyžadují se.|[Dynamické seznamy](schema-change-prediction-runtime.md#dynamic-lists-passed-in-at-prediction-time) umožňují rozšiřování existující entity vyškolené a publikované seznamu, která už je v aplikaci Luis.|
+|`externalEntities`|array|Jenom V3|Nevyžadují se.|[Externí entity](schema-change-prediction-runtime.md#external-entities-passed-in-at-prediction-time) poskytují vaší aplikaci Luis schopnost identifikovat a označovat entity za běhu, které se dají použít jako funkce pro stávající entity. |
 |`options.datetimeReference`|řetězec|Jenom V3|Žádná výchozí|Používá se k určení [posunu datetimeV2](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity). Formát pro datetimeReference je [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).|
 |`options.preferExternalEntities`|boolean|Jenom V3|false (nepravda)|Určuje, jestli se použije [Externí entita uživatele (se stejným názvem jako existující entita)](schema-change-prediction-runtime.md#override-existing-model-predictions) , nebo jestli se existující entita v modelu používá pro předpověď. |
 |`query`|řetězec|Jenom V3|Povinná hodnota.|**V v2** je utterance, který má být předpovězen, v `q` parametru. <br><br>**V v3** je funkce předána do `query` parametru.|
@@ -268,9 +265,6 @@ V v3 stejný výsledek s `verbose` příznakem pro vrácení metadat entity:
 
 Přečtěte [si informace o](schema-change-prediction-runtime.md) tom, jak aplikaci rozvést v předpokládaném prostředí.
 
-## <a name="deprecation"></a>Vyřazení
-
-Rozhraní v2 API nebude zastaralé po dobu nejméně 9 měsíců od verze V3 Preview.
 
 ## <a name="next-steps"></a>Další kroky
 

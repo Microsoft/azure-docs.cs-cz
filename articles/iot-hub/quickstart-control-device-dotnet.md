@@ -1,5 +1,5 @@
 ---
-title: Rychlý start k řízení zařízení ze služby Azure IoT Hub (.NET) | Microsoft Docs
+title: Rychlý Start – řízení zařízení z Azure IoT Hub rychlý Start (.NET) | Microsoft Docs
 description: V tomto rychlém startu spustíte dvě ukázkové aplikace C#. Jedna aplikace je aplikace služby, která může vzdáleně řídit zařízení připojená k rozbočovači. Druhá aplikace simuluje zařízení připojené k vašemu centru, které je možné řídit vzdáleně.
 author: robinsh
 manager: philmea
@@ -14,12 +14,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - devx-track-azurecli
 ms.date: 03/04/2020
-ms.openlocfilehash: 39cfa64b756ef6bf20f8cbf3d6e8f8a25e81c674
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 88b818a25a0888cc74783a210cc7a1c0acb455ac
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092869"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98623260"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-net"></a>Rychlý start: Řízení zařízení připojeného k centru IoT (.NET)
 
@@ -82,7 +82,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
    **YourIoTHubName**: níže uvedený zástupný symbol nahraďte názvem, který jste zvolili pro Centrum IoT.
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string \
+    az iot hub device-identity connection-string show \
       --hub-name {YourIoTHubName} \
       --device-id MyDotnetDevice \
       --output table

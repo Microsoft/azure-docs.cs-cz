@@ -7,14 +7,14 @@ ms.author: shhazam
 ms.date: 12/13/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 1ac87f98af555aae155a201cc20692c950fc7924
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 419e32a127947cde1d3761507f0df7a889528ff2
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97838637"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621924"
 ---
-# <a name="basic-concepts"></a>Základní pojmy 
+# <a name="basic-concepts"></a>Základní koncepty 
 
 Tento článek popisuje klíčové výhody Azure Defenderu pro IoT.
 
@@ -22,7 +22,7 @@ Tento článek popisuje klíčové výhody Azure Defenderu pro IoT.
 
 Defender pro senzory IoT se připojí k portu SPAN nebo k síti KLEPNE a okamžitě zahájí shromažďování síťového provozu ICS prostřednictvím pasivního monitorování (bez agentů). Hloubková kontrola paketů (DPI) se používá k Dissect provozu ze sériového a síťového zařízení pro řízení sítě Ethernet. Defender pro IoT má nulový dopad na sítě, protože není umístěný v cestě k datům a aktivně nekontroluje zařízení. 
 
-K dodávání okamžitých snímků podrobných informací o prostředcích, Defender pro snímače IoT doplňuje pasivní monitorování s volitelnou aktivní komponentou. Tato součást používá bezpečné příkazy schválené dodavatelem k dotazování na zařízení s Windows i řadičem pro podrobnosti o assetu, jak často, tak i zřídka, jak potřebujete.
+Aby bylo možné doručovat rychlé snímky podrobných informací o zařízení, Defender pro snímače IoT doplňuje pasivní monitorování s volitelnou aktivní komponentou. Tato součást používá bezpečné příkazy schválené dodavatelem k dotazování na zařízení s Windows i řadičem pro podrobnosti o zařízení, a to často nebo častěji, jak potřebujete.
 
 ## <a name="embedded-knowledge-of-ics-protocols-devices-and-applications"></a>Informace o vloženém znalostech protokolů, zařízení a aplikací ICS
 
@@ -34,7 +34,7 @@ Motory identifikují problémy zabezpečení prostřednictvím průběžného mo
 
 - **Detekce porušení protokolu**: identifikuje použití struktur paketů a hodnot polí, které porušují specifikace protokolu ICS.
 
-- **Detekce porušení zásad**: identifikuje porušení zásad, jako je neoprávněné použití kódů funkcí, přístup ke konkrétním objektům nebo změny konfigurace prostředků.
+- **Detekce porušení zásad**: identifikuje porušení zásad, jako je neoprávněné použití kódů funkcí, přístup ke konkrétním objektům nebo změny konfigurace zařízení.
 
 - **Detekce průmyslových malwaru**: identifikuje chování, které indikuje přítomnost známého malwaru, jako je například Conficker, černá energie, Havex, WannaCry a NotPetya.
 

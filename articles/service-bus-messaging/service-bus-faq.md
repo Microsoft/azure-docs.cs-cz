@@ -3,12 +3,12 @@ title: Nejčastější dotazy k Azure Service Bus | Microsoft Docs
 description: Tento článek obsahuje odpovědi na některé nejčastější dotazy týkající se Azure Service Bus.
 ms.topic: article
 ms.date: 09/16/2020
-ms.openlocfilehash: acd741101928f5a2dfd72eab1598af6e4556a3d1
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 576df12a9d53ec3585f8691016cd250bf1ba4be3
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96022131"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98623103"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Nejčastější dotazy k Azure Service Bus (FAQ)
 
@@ -57,7 +57,7 @@ Oficiální sady Azure SDK obecně používají protokol AMQP k posílání a p�
 
 [!INCLUDE [service-bus-websockets-options](../../includes/service-bus-websockets-options.md)]
 
-Starší balíček WindowsAzure. ServiceBus pro .NET Framework má možnost použít starší verzi protokolu Service Bus Messaging Protocol (SBMP), která se také označuje jako "NetMessaging". Tento protokol používá porty TCP 9350-9354. Výchozím režimem tohoto balíčku je automatické zjištění, zda jsou tyto porty k dispozici pro komunikaci, a v případě, že se jedná o tento případ, přepne na objekty WebSockets s protokolem TLS přes port 443. Toto nastavení můžete přepsat a tento režim vynutit nastavením `Https` [ConnectivityMode](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet) na [`ServiceBusEnvironment.SystemConnectivity`](/dotnet/api/microsoft.servicebus.servicebusenvironment.systemconnectivity?view=azure-dotnet) nastavení, které platí globálně pro aplikaci.
+Starší balíček WindowsAzure. ServiceBus pro .NET Framework má možnost použít starší verzi protokolu Service Bus Messaging Protocol (SBMP), která se také označuje jako "NetMessaging". Tento protokol používá porty TCP 9350-9354. Výchozím režimem tohoto balíčku je automatické zjištění, zda jsou tyto porty k dispozici pro komunikaci, a v případě, že se jedná o tento případ, přepne na objekty WebSockets s protokolem TLS přes port 443. Toto nastavení můžete přepsat a tento režim vynutit nastavením `Https` [ConnectivityMode](/dotnet/api/microsoft.servicebus.connectivitymode) na [`ServiceBusEnvironment.SystemConnectivity`](/dotnet/api/microsoft.servicebus.servicebusenvironment.systemconnectivity) nastavení, které platí globálně pro aplikaci.
 
 ### <a name="what-ip-addresses-do-i-need-to-add-to-allow-list"></a>Jaké IP adresy potřebuji přidat do seznamu povolených adres?
 Chcete-li najít správné IP adresy, které se mají přidat do seznamu povolených připojení, postupujte podle následujících kroků:
@@ -119,7 +119,7 @@ Pro obecné informace o cenách Azure můžete také navštívit [Nejčastějš�
 Jakýkoli přenos dat v rámci dané oblasti Azure se poskytuje zdarma, stejně jako všechny příchozí přenosy dat. Přenos dat mimo oblast podléhá poplatkům za výstup, který najdete [tady](https://azure.microsoft.com/pricing/details/bandwidth/).
 
 ### <a name="does-service-bus-charge-for-storage"></a>Účtuje se Service Bus za úložiště?
-Ne. Za úložiště se neúčtují Service Bus. Existuje však kvóta, která omezuje maximální množství dat, která lze uchovávat pro jednotlivé fronty nebo témata. Podívejte se na další Nejčastější dotazy.
+No. Za úložiště se neúčtují Service Bus. Existuje však kvóta, která omezuje maximální množství dat, která lze uchovávat pro jednotlivé fronty nebo témata. Podívejte se na další Nejčastější dotazy.
 
 ### <a name="i-have-a-service-bus-standard-namespace-why-do-i-see-charges-under-resource-group-system"></a>Mám obor názvů Service Bus Standard. Proč se mi v rámci skupiny prostředků ' $system ' účtují poplatky?
 Azure Service Bus nedávno upgradovali komponenty fakturace. V důsledku této změny se může stát, že pokud máte obor názvů Service Bus Standard, můžete zobrazit položky řádku pro prostředek "/Subscriptions/<azure_subscription_id>/resourceGroups/$system/providers/Microsoft.ServiceBus/namespaces/$system" v části Skupina prostředků "$system".

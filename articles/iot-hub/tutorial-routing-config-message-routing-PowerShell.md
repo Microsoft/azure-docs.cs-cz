@@ -1,6 +1,6 @@
 ---
-title: Konfigurace směrování zpráv pro Azure IoT Hub s využitím Azure PowerShell
-description: Nakonfigurujte směrování zpráv pro Azure IoT Hub pomocí Azure PowerShell. V závislosti na vlastnostech ve zprávě můžete směrovat na účet úložiště nebo Service Bus frontu.
+title: Kurz – konfigurace směrování zpráv pro Azure IoT Hub s využitím Azure PowerShell
+description: Kurz – konfigurace směrování zpráv pro Azure IoT Hub pomocí Azure PowerShell V závislosti na vlastnostech ve zprávě můžete směrovat na účet úložiště nebo Service Bus frontu.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 92c30287e836ccadda915dab70a4d40e9c4e851a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be1560bcc03ec7a26f4bc374392c746243cd731a
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89073399"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624068"
 ---
 # <a name="tutorial-use-azure-powershell-to-configure-iot-hub-message-routing"></a>Kurz: použití Azure PowerShell ke konfiguraci směrování zpráv IoT Hub
 
@@ -142,7 +142,7 @@ Nejdřív nastavte koncový bod pro účet úložiště a pak vytvořte trasu zp
 
 Toto jsou proměnné používané skriptem, které musí být nastaveny v rámci relace Cloud Shell:
 
-skupina **prostředků: existují**dva výskyty tohoto pole – nastavení obou z nich pro skupinu prostředků.
+skupina **prostředků: existují** dva výskyty tohoto pole – nastavení obou z nich pro skupinu prostředků.
 
 **název**: Toto pole je název IoT Hub, na kterou bude směrování platit.
 

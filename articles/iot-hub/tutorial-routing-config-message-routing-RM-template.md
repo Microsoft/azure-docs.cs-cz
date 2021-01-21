@@ -1,6 +1,6 @@
 ---
-title: Konfigurace směrování zpráv pro Azure IoT Hub pomocí šablony Azure Resource Manager
-description: Konfigurace směrování zpráv pro Azure IoT Hub pomocí šablony Azure Resource Manager
+title: Kurz – konfigurace směrování zpráv pro Azure IoT Hub pomocí šablony Azure Resource Manager
+description: Kurz – konfigurace směrování zpráv pro Azure IoT Hub pomocí šablony Azure Resource Manager
 author: robinsh
 manager: philmeagit st
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: e5ae5948c8baf1573393c73026c84d0f62e8693e
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 53217340b0d91f3de77e5e0d8c0a82e30599d6ed
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480101"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621424"
 ---
 # <a name="tutorial-use-an-azure-resource-manager-template-to-configure-iot-hub-message-routing"></a>Kurz: použití šablony Azure Resource Manager ke konfiguraci směrování zpráv IoT Hub
 
@@ -58,7 +58,7 @@ Většina těchto parametrů má výchozí hodnoty. Ty, které končí **_in** j
 
 **sku_name**: Toto pole je měřítko pro IoT Hub. Tato hodnota musí být S1 nebo vyšší. Bezplatná úroveň pro tento kurz nefunguje, protože nepovoluje více koncových bodů.
 
-**sku_units**: Toto pole se používá **sku_name**a je počet IoT Hub jednotek, které se dají použít.
+**sku_units**: Toto pole se používá **sku_name** a je počet IoT Hub jednotek, které se dají použít.
 
 **d2c_partitions**: Toto pole je počet oddílů používaných pro datový proud událostí.
 
@@ -364,7 +364,7 @@ Pomocí Průzkumníka souborů, které se zobrazí, Najděte soubory na místní
 
 Po nahrání souborů se v dialogovém okně výsledků zobrazí něco jako na následujícím obrázku.
 
-![Cloud Shell řádku nabídek s zvýrazněnou možností nahrát/stáhnout soubory](media/tutorial-routing-config-message-routing-RM-template/CloudShell_upload_results.png)
+![Cloud Shell řádku nabídek s zvýrazněnými výsledky nahrávání nebo stahování](media/tutorial-routing-config-message-routing-RM-template/CloudShell_upload_results.png)
 
 Soubory se nahrají do sdílené složky používané instancí Cloud Shell. 
 

@@ -1,5 +1,5 @@
 ---
-title: Odeslání telemetrie do služby Azure IoT Hub Starter (Android) | Microsoft Docs
+title: Rychlý Start – odeslání telemetrie do služby Azure IoT Hub rychlý Start (Android) | Microsoft Docs
 description: V tomto rychlém startu spustíte ukázkovou aplikaci pro Android, která bude odesílat simulovanou telemetrii do služby IoT Hub a číst telemetrii ze služby IoT Hub ke zpracování v cloudu.
 author: wesmc7777
 manager: philmea
@@ -14,12 +14,12 @@ ms.custom:
 - devx-track-azurecli
 ms.date: 03/15/2019
 ms.author: wesmc
-ms.openlocfilehash: d9598f7a0bc8e4a8b92ac53612023585eb19f4c4
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: dd622f0d55be000e2318c53f200bebf49c373724
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121511"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624316"
 ---
 # <a name="quickstart-send-iot-telemetry-from-an-android-device"></a>Rychlý Start: odeslání telemetrie IoT ze zařízení s Androidem
 
@@ -100,7 +100,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Čtení telemetrie z centra
 
-V této části použijete Azure Cloud Shell s [rozšířením IoT](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest) , abyste mohli monitorovat zprávy zařízení odesílané zařízením s Androidem.
+V této části použijete Azure Cloud Shell s [rozšířením IoT](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest&preserve-view=true) , abyste mohli monitorovat zprávy zařízení odesílané zařízením s Androidem.
 
 1. Pomocí služby Azure Cloud Shell spusťte následující příkaz, který provede připojení a čtení zpráv z centra IoT:
 

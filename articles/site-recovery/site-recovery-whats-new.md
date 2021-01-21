@@ -2,13 +2,13 @@
 title: Co je nového v Azure Site Recovery
 description: Obsahuje souhrn nových funkcí a nejnovější aktualizace služby Azure Site Recovery.
 ms.topic: conceptual
-ms.date: 10/22/2020
-ms.openlocfilehash: 3667f963eac0ebc719872db00ac069c7da70ec91
-ms.sourcegitcommit: b849ecdc8aa97337299b0f09970b7810c59cd044
+ms.date: 01/20/2021
+ms.openlocfilehash: 2778f1af99512c4594d2d688eea7e04b3b81ae47
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96310353"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621756"
 ---
 # <a name="whats-new-in-site-recovery"></a>Co je nového ve službě Site Recovery
 
@@ -22,13 +22,27 @@ Pro Site Recovery komponenty podporujeme N-4 verze, kde N je nejnovější vydan
 
 **Aktualizace** |  **Sjednocené nastavení** | **Vajíčka konfiguračního serveru** | **Agent služby mobility** | **Poskytovatel Site Recovery** | **Agent Recovery Services**
 --- | --- | --- | --- | --- | ---
+[Kumulativní aktualizace 53](https://support.microsoft.com/help/4602881/)  | 9.40.5850.1 | 5.1.6537.0 | 9.40.5850.1 | 5.1.6537.0  | 2.0.9202.0
 [Kumulativní aktualizace 52](https://support.microsoft.com/help/4597409/)  | 9.39.5796.1 | 5.1.6458.0 | 9.39.5796.1 | 5.1.6458.0  | 2.0.9196.0
 [Kumulativní aktualizace 51](https://support.microsoft.com/help/4590304)  | 9.38.5761.1 | 5.1.6400.0 | 9.38.5761.1 | 5.1.6400.0  | 2.0.9193.0
 [Kumulativní aktualizace 50](https://support.microsoft.com/help/4582666/) | 9.37.5724.1 | 5.1.6347.0 | 9.37.5724.1 | 5.1.6347.0  | 2.0.9192.0
 [Kumulativní aktualizace 49](https://support.microsoft.com/help/4578241/) | 9.36.5696.1 | 5.1.6315.0 | 9.36.5696.1 | 5.1.6315.0 | 2.0.9188.0
-[Kumulativní aktualizace 48](https://support.microsoft.com/help/4573888/) | 9.35.5659.1 | 5.1.6200.0 | 9.35.5659.1 | 5.1.6200.0 | 2.0.9186.0
+
 
 [Přečtěte si další informace](service-updates-how-to.md) o instalaci a podpoře aktualizací.
+
+## <a name="updates-january-2021"></a>Aktualizace (leden 2021)
+
+### <a name="update-rollup-53"></a>Kumulativní aktualizace 53
+
+[Kumulativní aktualizace 53](https://support.microsoft.com/help/4602881/update-rollup-53-for-azure-site-recovery) poskytuje následující aktualizace:
+
+**Aktualizace** | **Podrobnosti**
+--- | ---
+**Zprostředkovatelé a agenti** | Aktualizace Site Recovery agentů a zprostředkovatelů, jak je popsáno v souhrnu.
+**Opravy a vylepšení problémů** | Řada oprav a vylepšení, jak je popsáno v souhrnu. 
+**Zotavení po havárii virtuálního počítače Azure** | Replikace pro značky je teď podporovaná. Všechny značky přidané do virtuálních počítačů Azure, disků a síťových karet ve zdrojové oblasti se replikují do počítačů v cílové oblasti.<br/><br/> Virtuální počítače Azure s Debian 10 se teď podporují pro replikaci.
+**Virtuální počítač VMware/fyzické zotavení po havárii do Azure** | Aktualizace zahrnuje vylepšení protokolování pro replikaci virtuálních počítačů VMware do Azure a vylepšené zasílání zpráv o chybách.<br/><br/> Virtuální počítače VMware a fyzické počítače s Debian 10 se teď podporují pro replikaci.
 
 
 ## <a name="updates-november-2020"></a>Aktualizace (listopad 2020)
@@ -414,7 +428,7 @@ Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
 --- | ---
 **Mapování sítě** | Pro zotavení po havárii virtuálního počítače Azure teď můžete použít jakoukoli dostupnou cílovou síť, když povolíte replikaci.
 **SSD úrovně Standard** | Nyní můžete nastavit zotavení po havárii pro virtuální počítače Azure pomocí [SSD úrovně Standard disků](../virtual-machines/disks-types.md#standard-ssd).
-**Prostory úložiště – přímé** | Zotavení po havárii pro aplikace běžící na Azure VM Apps můžete nastavit pomocí [prostory úložiště s přímým přístupem](/windows-server/storage/storage-spaces/storage-spaces-direct-overview) pro vysokou dostupnost.  Použití Prostory úložiště s přímým přístupem (S2D) společně s Site Recovery poskytuje komplexní ochranu úloh virtuálních počítačů Azure. S2D umožňuje hostovat hostovaný cluster v Azure. To je užitečné hlavně v případě, že virtuální počítač je hostitelem kritické aplikace, například SAP ASCS Layer, SQL Server nebo souborového serveru se škálováním na více systémů.
+**Prostory úložiště s přímým přístupem** | Zotavení po havárii pro aplikace běžící na Azure VM Apps můžete nastavit pomocí [prostory úložiště s přímým přístupem](/windows-server/storage/storage-spaces/storage-spaces-direct-overview) pro vysokou dostupnost.  Použití Prostory úložiště s přímým přístupem (S2D) společně s Site Recovery poskytuje komplexní ochranu úloh virtuálních počítačů Azure. S2D umožňuje hostovat hostovaný cluster v Azure. To je užitečné hlavně v případě, že virtuální počítač je hostitelem kritické aplikace, například SAP ASCS Layer, SQL Server nebo souborového serveru se škálováním na více systémů.
 
 
 ### <a name="vmwarephysical-server-disaster-recovery"></a>Zotavení po havárii VMware/fyzický server
@@ -452,7 +466,7 @@ Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
 **Funkce** | **Podrobnosti**
 --- | ---
 **Podpora Linuxu** | Přidala se podpora pro RedHat Workstation 6/7 a nové verze jádra pro Ubuntu, Debian a SUSE.
-**Prostory úložiště – přímé** | Site Recovery podporuje virtuální počítače Azure s využitím Prostory úložiště s přímým přístupem (S2D).
+**Prostory úložiště s přímým přístupem** | Site Recovery podporuje virtuální počítače Azure s využitím Prostory úložiště s přímým přístupem (S2D).
 
 ### <a name="vmware-vmsphysical-servers-disaster-recovery"></a>Zotavení po havárii virtuálních počítačů VMware/fyzických serverů
 

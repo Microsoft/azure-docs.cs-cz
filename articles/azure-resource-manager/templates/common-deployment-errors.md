@@ -3,13 +3,13 @@ title: Řešení potíží s běžnými chybami nasazení
 description: Popisuje řešení běžných chyb při nasazení prostředků do Azure pomocí Azure Resource Manager.
 tags: top-support-issue
 ms.topic: troubleshooting
-ms.date: 09/09/2020
-ms.openlocfilehash: 785a74184cae8523b99da7f647ca87fda53c8648
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.date: 01/20/2021
+ms.openlocfilehash: bb701baf164cfd6ba1dd5c670a406343e83c5c70
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185823"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98622807"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Řešení běžných problémů s nasazením v Azure při použití Azure Resource Manageru
 
@@ -25,7 +25,7 @@ Pokud hledáte informace o kódu chyby a tyto informace nejsou v tomto článku 
 | AccountPropertyCannotBeSet | Ověřte dostupné vlastnosti účtu úložiště. | [storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
 | AllocationFailed | V clusteru nebo oblasti nejsou dostupné prostředky nebo nemůžou podporovat požadovanou velikost virtuálního počítače. Opakujte požadavek později nebo si vyžádejte jinou velikost virtuálního počítače. | [Problémy se zřizováním a](../../virtual-machines/troubleshooting/troubleshoot-deployment-new-vm-linux.md)přidělením pro [problémy se systémem Linux, zřizováním a přidělením pro Windows](../../virtual-machines/troubleshooting/troubleshoot-deployment-new-vm-windows.md) a [odstraňování potíží s přidělováním](../../virtual-machines/troubleshooting/allocation-failure.md)|
 | AnotherOperationInProgress | Počkejte na dokončení souběžné operace. | |
-| AuthorizationFailed | Váš účet nebo objekt služby nemá dostatečný přístup k dokončení nasazení. Ověřte, do jaké role účet patří, a jeho přístup k oboru nasazení.<br><br>Tato chyba se může zobrazit, když požadovaný poskytovatel prostředků není zaregistrován. | [Řízení přístupu na základě role Azure (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)<br><br>[Vyřešit registraci](error-register-resource-provider.md) |
+| AuthorizationFailed | Váš účet nebo objekt služby nemá dostatečný přístup k dokončení nasazení. Ověřte, do jaké role účet patří, a jeho přístup k oboru nasazení.<br><br>Tato chyba se může zobrazit, když požadovaný poskytovatel prostředků není zaregistrován. | [Řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)<br><br>[Vyřešit registraci](error-register-resource-provider.md) |
 | Důvodu chybného požadavku | Odeslali jste hodnoty nasazení, které se neshodují s tím, co očekává Správce prostředků. Pro pomoc s řešením potíží se podívejte na vnitřní stavovou zprávu. | [Odkaz na šablonu](/azure/templates/) a [podporovaná umístění](resource-location.md) |
 | Konflikt | Požadujete operaci, která není v aktuálním stavu prostředku povolena. Například změna velikosti disku je povolená jenom při vytváření virtuálního počítače nebo při uvolnění virtuálního počítače. | |
 | DeploymentActiveAndUneditable | Počkejte, než se dokončí souběžné nasazení do této skupiny prostředků. | |
@@ -34,7 +34,7 @@ Pokud hledáte informace o kódu chyby a tyto informace nejsou v tomto článku 
 | DeploymentNameLengthLimitExceeded | Názvy nasazení jsou omezené na 64 znaků.  | |
 | DeploymentFailed | Chyba DeploymentFailed je obecná chyba, která neposkytuje podrobnosti potřebné k vyřešení chyby. Vyhledejte v podrobnostech o chybě kód chyby, který poskytuje další informace. | [Najít kód chyby](#find-error-code) |
 | DeploymentQuotaExceeded | Pokud dosáhnete limitu nasazení 800 na jednu skupinu prostředků, odstraňte nasazení z historie, která už nepotřebujete. | [Vyřešit chybu, pokud je počet nasazení vyšší než 800](deployment-quota-exceeded.md) |
-| DeploymentSizeExceeded | Zjednodušte svou šablonu, aby se snížila velikost. | [Vyřešit chyby velikosti šablony](error-job-size-exceeded.md) |
+| DeploymentJobSizeExceeded | Zjednodušte svou šablonu, aby se snížila velikost. | [Vyřešit chyby velikosti šablony](error-job-size-exceeded.md) |
 | DnsRecordInUse | Název záznamu DNS musí být jedinečný. Zadejte jiný název. | |
 | ImageNotFound | Ověřte nastavení bitové kopie virtuálního počítače. |  |
 | InUseSubnetCannotBeDeleted | Tato chyba se může zobrazit při pokusu o aktualizaci prostředku a žádost se zpracovává odstraněním a vytvořením prostředku. Ujistěte se, že jste zadali všechny nezměněné hodnoty. | [Aktualizace prostředku](/azure/architecture/building-blocks/extending-templates/update-resource) |

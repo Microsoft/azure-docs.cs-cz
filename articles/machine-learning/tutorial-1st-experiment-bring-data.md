@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: tracking-python
-ms.openlocfilehash: ab497dee35afdd60247d156d0f30bbf003ea1210
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: c08d9ee6704203d0634d7a1b90a57de9c6a99d31
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98072152"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98622791"
 ---
 # <a name="tutorial-use-your-own-data-part-4-of-4"></a>Kurz: použití vlastních dat (část 4 ze 4)
 
@@ -99,6 +99,20 @@ tutorial
 ```
 
 Pokud jste v předchozím kurzu nespouštěli místně, nebudete `train.py` mít `data/` adresář. V takovém případě spusťte `torchvision.datasets.CIFAR10` metodu místně `download=True` ve vašem `train.py` skriptu.
+
+Pokud chcete spustit místní prostředí, ujistěte se, že jste ukončili prostředí kurzu a aktivujete nové prostředí conda:
+
+```bash
+conda deactivate                # If you are still using the tutorial environment, exit it
+```
+
+```bash
+conda env create -f .azureml/pytorch-env.yml    # create the new conda environment with updated dependencies
+```
+
+```bash
+conda activate pytorch-aml-env          # activate new conda environment
+```
 
 Pokud chcete upravený školicí skript spustit místně, zavolejte:
 

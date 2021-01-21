@@ -12,18 +12,18 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/09/2020
-ms.openlocfilehash: 13f9e2271dd18121ba740c843e99fae86c76821d
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 5b4ab207462955be3876dc1a25fae491e48a9cd2
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845404"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621706"
 ---
 # <a name="welcome-to-azure-defender-for-iot"></a>Vítá vás Azure Defender pro IoT
 
 Sítě provozní technologie (OT) využívají mnoho nejdůležitějších aspektů naší společnosti. Mnohé z těchto technologií ale nebyly navržené s ohledem na zabezpečení a nelze je chránit pomocí tradičních ovládacích prvků zabezpečení IT. Internet věcí (IoT) navíc umožňuje novou vlnu inovací s miliardami připojených zařízení, což zvyšuje míru útoku a riziko.  
 
-Azure Defender pro IoT je jednotné řešení zabezpečení, které slouží k identifikaci prostředků, ohrožení zabezpečení a hrozeb v IoT/OT. Umožňuje zabezpečit celé prostředí IoT/OT, bez ohledu na to, jestli potřebujete chránit existující zařízení IoT/OT, nebo můžete vytvořit zabezpečení pro nové inovace IoT.  
+Azure Defender pro IoT je jednotné řešení zabezpečení pro identifikaci zařízení, ohrožení zabezpečení a hrozeb v rámci IoT/OT. Umožňuje zabezpečit celé prostředí IoT/OT, bez ohledu na to, jestli potřebujete chránit existující zařízení IoT/OT, nebo můžete vytvořit zabezpečení pro nové inovace IoT.  
 
 Azure Defender pro IoT nabízí dvě sady možností, které vyhovují potřebám vašeho prostředí.
 
@@ -47,7 +47,7 @@ Možnosti monitorování bez agentů v Azure Defenderu pro IoT poskytují pro ty
 
 ### <a name="automatic-device-discovery"></a>Automatické zjišťování zařízení  
 
-Pomocí pasivního monitorování sítě bez agentů získáte úplný inventář všech prostředků IoT/OT, jejich podrobnosti a způsob jejich komunikace s nulovým dopadem na síť IoT/OT.  
+Pomocí pasivního monitorování sítě bez agentů získáte úplný inventář všech zařízení IoT/OT, jejich podrobnosti a způsob komunikace s nulovým dopadem na síť IoT/OT.  
 
 ### <a name="proactive-visibility-into-risk-and-vulnerabilities"></a>Proaktivní přehled o rizikech a ohroženích zabezpečení
  
@@ -61,7 +61,7 @@ Detekuje neobvyklé nebo neoprávněné aktivity se specializovanými analýzami
 
 Integrujte se do Azure Sentinel pro pohled na pohled na celou organizaci. Implementujte sjednocené řízení zabezpečení IoT/OT s integrací do stávajících pracovních postupů, včetně nástrojů třetích stran, jako jsou Splunk, IBM QRadar a ServiceNow. 
 
-## <a name="agent-based-solution-for-device-builders"></a>Řešení založené na agentovi pro sestavovatele zařízení 
+## <a name="agent-based-solution-for-device-builders"></a>Řešení založená na agentech pro tvůrce zařízení 
 
 Zabezpečení je téměř univerzálním problémem pro implementátory IoT. Zařízení IoT mají jedinečné potřeby pro monitorování koncového bodu, správu stav zabezpečení a detekci hrozeb – to vše s vysokými nároky na výkon. 
 

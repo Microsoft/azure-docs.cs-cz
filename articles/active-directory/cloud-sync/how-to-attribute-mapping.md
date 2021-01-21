@@ -11,12 +11,12 @@ ms.date: 09/22/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f1b1d792891b3ab8dabff42757d0e705e512879
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 80a035f30294449a024bbde76df2d42ddc23396e
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98613397"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98622707"
 ---
 # <a name="azure-ad-connect-cloud-sync-attribute-mapping"></a>Azure AD Connect mapování atributů synchronizace cloudu
 
@@ -57,9 +57,9 @@ Chcete-li použít novou funkci, postupujte podle následujících kroků.
 
 1.  Na portálu Azure Portal vyberte **Azure Active Directory**.
 2.  Vyberte **Azure AD Connect**.
-3.  Vyberte **Spravovat zřizování**.
+3.  Vyberte **Spravovat cloudovou synchronizaci**.
 
-    ![Spravovat zřizování](media/how-to-configure/manage-1.png)
+    ![Spravovat zřizování](media/how-to-install/install-6.png)
 
 4. V části **Konfigurace** vyberte svou konfiguraci.
 5. Vyberte **kliknutím upravit mapování**.  Tím se otevře obrazovka mapování atributů.

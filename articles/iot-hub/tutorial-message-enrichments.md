@@ -4,16 +4,16 @@ description: Kurz ukazující použití rozšíření zpráv pro zprávy Azure I
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 12/20/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 60bd416cf330676485f83720be4365b56c56baaf
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: ddc212e99c0e55156f56df6bf77e122408a727f9
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436704"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624051"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>Kurz: použití rozšíření zpráv Azure IoT Hub
 
@@ -38,7 +38,7 @@ Tady jsou úkoly, které provedete k dokončení tohoto kurzu:
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Mít předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Mít předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 - Nainstalujte [Visual Studio](https://www.visualstudio.com/).
 
@@ -279,7 +279,7 @@ V tomto okamžiku se prostředky nastavují a směrování zpráv je nakonfiguro
 ## <a name="create-and-configure-by-using-a-resource-manager-template"></a>Vytvoření a konfigurace pomocí šablony Správce prostředků
 Šablonu Správce prostředků můžete použít k vytvoření a konfiguraci prostředků, směrování zpráv a rozšíření zpráv.
 
-1. Přihlaste se k webu Azure Portal. Výběrem **+ vytvořit prostředek zobrazíte** vyhledávací pole. Zadejte *nasazení šablony* a vyhledejte ho. V podokně výsledků vyberte možnost **template Deployment (nasadit pomocí vlastní šablony)**.
+1. Přihlaste se k portálu Azure. Výběrem **+ vytvořit prostředek zobrazíte** vyhledávací pole. Zadejte *nasazení šablony* a vyhledejte ho. V podokně výsledků vyberte možnost **template Deployment (nasadit pomocí vlastní šablony)**.
 
    ![Template deployment v Azure Portal](./media/tutorial-message-enrichments/template-select-deployment.png)
 
@@ -386,7 +386,7 @@ Pokud chcete odebrat všechny prostředky, které jste vytvořili v tomto kurzu,
 
 ### <a name="use-the-azure-cli-to-clean-up-resources"></a>Vyčištění prostředků pomocí Azure CLI
 
-Chcete-li odebrat skupinu prostředků, použijte příkaz [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete). Odvolání, které `$resourceGroup` bylo nastaveno na **ContosoResourcesMsgEn** na začátku tohoto kurzu.
+Chcete-li odebrat skupinu prostředků, použijte příkaz [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete&preserve-view=true). Odvolání, které `$resourceGroup` bylo nastaveno na **ContosoResourcesMsgEn** na začátku tohoto kurzu.
 
 ```azurecli-interactive
 az group delete --name $resourceGroup
@@ -397,6 +397,7 @@ az group delete --name $resourceGroup
 V tomto kurzu jste nakonfigurovali a otestovali přidání rozšíření zpráv do IoT Hub zpráv pomocí následujících kroků:
 
 **Použití IoT Hubch rozšíření zpráv**
+
 > [!div class="checklist"]
 > * První způsob: vytváření prostředků a konfigurace směrování zpráv pomocí Azure CLI. Ruční konfigurace rozšíření zprávy pomocí [Azure Portal](https://portal.azure.com).
 > * Druhá metoda: Vytvořte prostředky a nakonfigurujte směrování zpráv a rozšíření zpráv pomocí šablony Azure Resource Manager.
@@ -407,5 +408,8 @@ Další informace o rozšířeních zpráv najdete v tématu [Přehled rozšíř
 
 Další informace o směrování zpráv najdete v těchto článcích:
 
-* [Použití směrování zpráv IoT Hub k posílání zpráv ze zařízení do cloudu do různých koncových bodů](iot-hub-devguide-messages-d2c.md)
-* [Kurz: IoT Hub směrování](tutorial-routing.md)
+> [!div class="nextstepaction"]
+> [Použití směrování zpráv IoT Hub k posílání zpráv ze zařízení do cloudu do různých koncových bodů](iot-hub-devguide-messages-d2c.md)
+
+> [!div class="nextstepaction"]
+> [Kurz: IoT Hub směrování](tutorial-routing.md)

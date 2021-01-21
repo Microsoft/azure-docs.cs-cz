@@ -1,6 +1,6 @@
 ---
-title: Odeslání telemetrie do služby Azure IoT Hub Starter (iOS)
-description: Spusťte ukázkovou aplikaci pro iOS, která odešle simulovanou telemetrii do služby IoT Hub a přečte telemetrii ze služby IoT Hub ke zpracování v cloudu.
+title: Rychlý Start – odeslání telemetrie do služby Azure IoT Hub Starter (iOS)
+description: V tomto rychlém startu spustíte ukázkovou aplikaci pro iOS, která odesílá simulovaná telemetrická data do centra IoT a čte z centra IoT telemetrická data pro účely zpracování v cloudu.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - devx-track-azurecli
 ms.date: 04/03/2019
-ms.openlocfilehash: 6699015a3c8939f012eb837da3d8b0c3d49527d5
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 4af985d93c5b02ab20df97abd5fa0371edf889f5
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121466"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624248"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-ios"></a>Rychlý start: Odesílání telemetrických dat ze zařízení do centra IoT (iOS)
 

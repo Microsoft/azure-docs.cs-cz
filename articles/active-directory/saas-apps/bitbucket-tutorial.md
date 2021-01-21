@@ -9,26 +9,23 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/27/2018
+ms.date: 01/12/2021
 ms.author: jeedes
-ms.openlocfilehash: 5e0b1d8d2cb80886131a88c01a6c24102ad7c77c
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: aa5e3e88ceb957728799f27482de7477ba6b7b48
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673535"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621243"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-bitbucket-by-resolution-gmbh"></a>Kurz: Azure Active Directory integrace se službou SAML SSO pro Bitbucket podle rezoluce GmbH
 
-V tomto kurzu se naučíte integrovat jednotné přihlašování SAML pro Bitbucket pomocí rezoluce GmbH s Azure Active Directory (Azure AD).
-Integrace jednotného přihlašování SAML pro Bitbucket podle rezoluce GmbH s Azure AD poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrovat jednotné přihlašování SAML pro Bitbucket pomocí řešení GmbH s Azure Active Directory (Azure AD). Při integraci jednotného přihlašování SAML pro Bitbucket pomocí řešení GmbH s Azure AD můžete:
 
-* Můžete řídit v Azure AD, který má přístup k SAML SSO pro Bitbucket podle rezoluce GmbH.
-* Můžete povolit, aby se vaši uživatelé automaticky přihlásili k SAML SSO pro Bitbucket pomocí rezoluce GmbH (jednotné přihlašování) se svými účty Azure AD.
-* Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
+* Řízení ve službě Azure AD, která má přístup toSAML SSO pro Bitbucket podle rezoluce GmbH.
+* Umožněte, aby se vaši uživatelé automaticky přihlásili k toSAML SSO pro Bitbucket pomocí rezoluce GmbH s jejich účty Azure AD.
+* Spravujte své účty v jednom centrálním umístění: Azure Portal.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
-Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -45,72 +42,50 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 * Jednotné přihlašování SAML pro Bitbucket podle rezoluce GmbH podporuje **jenom při** zřizování uživatelů.
 
 
-## <a name="adding-saml-sso-for-bitbucket-by-resolution-gmbh-from-the-gallery"></a>Přidání jednotného přihlašování SAML pro Bitbucket podle rezoluce GmbH z Galerie
+## <a name="add-saml-sso-for-bitbucket-by-resolution-gmbh-from-the-gallery"></a>Přidání jednotného přihlašování SAML pro Bitbucket podle rezoluce GmbH z Galerie
 
 Pokud chcete nakonfigurovat integraci SAML SSO pro Bitbucket podle rezoluce GmbH na Azure AD, musíte do svého seznamu spravovaných aplikací pro SaaS přidat jednotné přihlašování SAML pro Bitbucket podle rezoluce GmbH z galerie.
 
-**K přidání jednotného přihlašování SAML pro Bitbucket podle rezoluce GmbH z Galerie proveďte následující kroky:**
+1. Přihlaste se k Azure Portal pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
+1. V levém podokně vyberte **Azure Active Directory**.
+1. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** zadejte do vyhledávacího pole **SAML SSO pro Bitbucket by Resolution GmbH** .
+1. Z výsledků vyberte **SAML SSO pro Bitbucket podle rezoluce GmbH** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
+## <a name="configure-and-test-azure-ad-sso-for-saml-sso-for-bitbucket-by-resolution-gmbh"></a>Konfigurace a testování jednotného přihlašování služby Azure AD pro SAML SSO for Bitbucket podle rezoluce GmbH
 
-    ![Tlačítko Azure Active Directory](common/select-azuread.png)
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí jednotného přihlašování SAML pro Bitbucket podle rezoluce GmbH pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojený vztah mezi uživatelem služby Azure AD a souvisejícím uživatelem v rámci SAML SSO pro Bitbucket podle rezoluce GmbH.
 
-2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování služby Azure AD pomocí jednotného přihlašování SAML pro Bitbucket podle rezoluce GmbH, proveďte následující kroky:
 
-    ![Okno podnikové aplikace](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **Nová aplikace** v horní části dialogového okna.
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
+    1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
+    1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
+2. **[Nakonfigurujte jednotné přihlašování SAML pro Bitbucket podle rezoluce GmbH SSO](#configure-saml-sso-for-bitbucket-by-resolution-gmbh-sso)** – ke konfiguraci nastavení jednoho Sign-On na straně aplikace.
+    1. **[Vytvořte jednotné přihlašování SAML pro Bitbucket podle řešení GmbH Test User](#create-saml-sso-for-bitbucket-by-resolution-gmbh-test-user)** – Pokud chcete mít protějšek Britta Simon v jednotném přihlašování SAML pro Bitbucket podle rezoluce GmbH, která je propojená s reprezentací uživatele v Azure AD.
+6. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-    ![Tlačítko Nová aplikace](common/add-new-app.png)
-
-4. Do vyhledávacího pole zadejte **SAML SSO pro Bitbucket podle rezoluce GmbH**, vyberte položku **SAML SSO pro Bitbucket podle rezoluce GmbH** z panelu výsledek a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
-
-    ![Jednotné přihlašování SAML pro Bitbucket podle rezoluce GmbH v seznamu výsledků](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
-
-V této části nakonfigurujete a otestujete jednotné přihlašování služby Azure AD pomocí jednotného přihlašování SAML pro Bitbucket podle rezoluce GmbH na základě testovacího uživatele s názvem **Britta Simon**.
-Aby jednotné přihlašování fungovalo, je potřeba zřídit odkaz na propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v rámci SAML SSO pro Bitbucket podle rezoluce GmbH.
-
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí jednotného přihlašování SAML pro Bitbucket pomocí nástroje Solution GmbH, musíte dokončit tyto stavební bloky:
-
-1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte jednotné přihlašování SAML pro Bitbucket podle rezoluce GmbH – jednotné přihlašování](#configure-saml-sso-for-bitbucket-by-resolution-gmbh-single-sign-on)** – pro konfiguraci nastavení jednoho Sign-On na straně aplikace.
-3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
-4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
-5. **[Vytvořte jednotné přihlašování SAML pro Bitbucket podle řešení GmbH Test User](#create-saml-sso-for-bitbucket-by-resolution-gmbh-test-user)** – Pokud chcete mít protějšek Britta Simon v jednotném přihlašování SAML pro Bitbucket podle rezoluce GmbH, která je propojená s reprezentací uživatele v Azure AD.
-6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
 V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
-
-Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí jednotného přihlašování SAML pro Bitbucket podle rezoluce GmbH, proveďte následující kroky:
-
-1. V [Azure Portal](https://portal.azure.com/)na stránce pro integraci aplikace **SAML pro Bitbucket podle rezoluce GmbH** vyberte **jednotné přihlašování**.
-
-    ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
-
-2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
-
-    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
-
-3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+ 
+1. V Azure Portal na stránce rozhraní **SAML SSO pro Bitbucket podle** článku Application Integration GmbH najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. Na stránce **vybrat jednu Sign-On metodu** vyberte **SAML**.
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML vyberte ikonu tužky pro **základní konfiguraci SAML** a upravte nastavení.
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
 4. V části **základní konfigurace SAML** proveďte následující kroky, pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** :
 
-    ![Snímek obrazovky ukazuje základní konfiguraci SAML, kde můžete zadat identifikátor, odpovědět U R L a vybrat Uložit.](common/idp-intiated.png)
 
     a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://<server-base-url>/plugins/servlet/samlsso`
 
     b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://<server-base-url>/plugins/servlet/samlsso`
 
     c. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
-
-    ![Snímek obrazovky s nastavením další U R ls, kde můžete zadat přihlášení U R L.](common/metadata-upload-additional-signon.png)
-
+    
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://<server-base-url>/plugins/servlet/samlsso`
 
     > [!NOTE]
@@ -120,7 +95,31 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí jednotn�
 
     ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
-### <a name="configure-saml-sso-for-bitbucket-by-resolution-gmbh-single-sign-on"></a>Konfigurace jednotného přihlašování SAML pro Bitbucket podle rezoluce GmbH Single Sign-On
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
+
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
+
+1. V levém podokně Azure Portal vyberte **Azure Active Directory**  >  **Uživatelé**  >  **Všichni uživatelé**.
+1. V horní části obrazovky vyberte **Nový uživatel** .
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
+   1. Do pole **Název** zadejte `B.Simon`.  
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například `B.Simon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a potom heslo zapište.
+   1. Vyberte **Vytvořit**.
+
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+
+V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k JEDNOTNÉmu přihlašování SAML pro Bitbucket podle rezoluce GmbH.
+
+1. V Azure Portal vyberte možnost **podnikové aplikace**  >  **všechny aplikace**.
+1. V seznamu aplikace vyberte položku **SAML SSO pro Bitbucket podle rezoluce GmbH**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
+1. Vyberte možnost **Přidat uživatele**. Pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny**.
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelů položku **B. Simon** . Pak zvolte **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
+1. V dialogovém okně **Přidat přiřazení** vyberte **přiřadit**.
+
+## <a name="configure-saml-sso-for-bitbucket-by-resolution-gmbh-sso"></a>Konfigurace jednotného přihlašování SAML pro Bitbucket podle rezoluce GmbH SSO
 
 1. Přihlaste se ke svému jednotnému přihlašování SAML pro Bitbucket pomocí webu usnesení GmbH jako správce.
 
@@ -160,71 +159,28 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí jednotn�
 
     ![Uložit](./media/bitbucket-tutorial/tutorial_bitbucket_save.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
-Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
-
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
-
-    ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
-
-2. V horní části obrazovky vyberte **Nový uživatel** .
-
-    ![Tlačítko pro nového uživatele](common/new-user.png)
-
-3. Ve vlastnostech uživatele proveďte následující kroky.
-
-    ![Uživatelský dialog](common/user-properties.png)
-
-    a. Do pole **název** zadejte **BrittaSimon**.
-
-    b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
-    Například BrittaSimon@contoso.com.
-
-    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
-
-    d. Klikněte na **Vytvořit**.
-
-### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
-
-V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k JEDNOTNÉmu přihlašování SAML pro Bitbucket podle rezoluce GmbH.
-
-1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace** a pak vyberte položku **SAML SSO pro Bitbucket podle rezoluce GmbH**.
-
-    ![Okno Podnikové aplikace](common/enterprise-applications.png)
-
-2. V seznamu aplikace zadejte a vyberte **jednotné přihlašování SAML pro Bitbucket podle rezoluce GmbH**.
-
-    ![Odkaz na rozhraní SAML SSO pro Bitbucket podle rezoluce GmbH v seznamu aplikací](common/all-applications.png)
-
-3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
-
-    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
-
-4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
-
-    ![Podokno přidat přiřazení](common/add-assign-user.png)
-
-5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-
-6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-
-7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
-
-### <a name="create-saml-sso-for-bitbucket-by-resolution-gmbh-test-user"></a>Vytvoření jednotného přihlašování SAML pro Bitbucket podle řešení GmbH Test User
+## <a name="create-saml-sso-for-bitbucket-by-resolution-gmbh-test-user"></a>Vytvoření jednotného přihlašování SAML pro Bitbucket podle řešení GmbH Test User
 
 Cílem této části je vytvořit uživatele s názvem Britta Simon v jednotném přihlašování SAML pro Bitbucket podle rezoluce GmbH. Jednotné přihlašování SAML pro Bitbucket podle rezoluce GmbH podporuje zřizování za běhu a také uživatele je možné vytvořit ručně, obraťte se na [tým podpory SAML pro Bitbucket podle](https://marketplace.atlassian.com/plugins/com.resolution.atlasplugins.samlsso-bitbucket/server/support) vašeho požadavku.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+## <a name="test-sso"></a>Test SSO 
 
-V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí následujících možností. 
 
-Když na přístupovém panelu kliknete na dlaždici SSO SSO pro Bitbucket podle rezoluce GmbH, měli byste se automaticky přihlásit k rozhraní SAML SSO pro BitBucket, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
+#### <a name="sp-initiated"></a>Zahájena SP:
 
-## <a name="additional-resources"></a>Další materiály
+* Kliknutím na **test této aplikace** v Azure Portal. Tím se přesměruje na adresu URL jednotného přihlašování SAML pro Bitbucket podle adresy URL pro podpis GmbH, kde můžete spustit tok přihlášení.  
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
+* Přihlaste se k SAML SSO pro Bitbucket podle adresy URL pro přihlašování na základě překladu GmbH a potom z něj zahajte tok přihlášení.
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>Iniciované IDP:
 
-- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
+* Klikněte na **testovat tuto aplikaci** v Azure Portal a měli byste se automaticky přihlášeni ke službě SAML SSO pro Bitbucket podle rezoluce GmbH, pro kterou jste si nastavili jednotné přihlašování.
+
+K otestování aplikace v jakémkoli režimu můžete také použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici SAML SSO for Bitbucket by v části Moje aplikace, pokud je nakonfigurovaná v režimu SP, budete přesměrováni na přihlašovací stránku aplikace pro inicializaci toku přihlašovacích údajů a pokud je nakonfigurovaná v režimu IDP, měli byste se automaticky přihlásit ke službě SAML SSO pro Bitbucket podle rezoluce GmbH, pro kterou jste si nastavili jednotné přihlašování. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](../user-help/my-apps-portal-end-user-access.md).
+
+
+## <a name="next-steps"></a>Další kroky
+
+Jakmile nakonfigurujete jednotné přihlašování SAML pro Bitbucket podle rezoluce GmbH, můžete vynutili řízení relací, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Ovládací prvky relace se rozšíří z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

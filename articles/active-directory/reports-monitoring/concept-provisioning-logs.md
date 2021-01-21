@@ -17,12 +17,12 @@ ms.date: 1/19/2021
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05a514debcf8036a296bbe66b2dd75c7dacacdc2
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 4c7d02b48d30fa558f8fd12f92705046dab74057
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600747"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624231"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Sestavy zřizování na portálu Azure Active Directory (Preview)
 
@@ -37,7 +37,11 @@ Architektura vytváření sestav ve službě Azure Active Directory (Azure AD) s
     - **Riziková přihlášení** – [rizikové přihlášení](../identity-protection/overview-identity-protection.md) je indikátorem pokusu o přihlášení, který mohl provést někdo, kdo není legitimním vlastníkem uživatelského účtu.
     - **Uživatelé označení příznakem rizika** – [rizikové uživatel](../identity-protection/overview-identity-protection.md) je indikátorem uživatelského účtu, který mohl být ohrožen.
 
-Toto téma vám poskytne přehled o zřizovacích sestavách.
+Toto téma poskytuje přehled protokolů zřizování. Poskytují odpovědi na otázky, jako jsou: 
+
+* Které skupiny byly úspěšně vytvořeny v ServiceNow?
+* Které uživatele byly úspěšně odebrány z Adobe?
+* Které uživatele z Workday byly úspěšně vytvořeny ve službě Active Directory? 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -52,14 +56,16 @@ Toto téma vám poskytne přehled o zřizovacích sestavách.
 
 Aby se váš tenant mohl podívat na veškerou sestavu aktivity zřizování, musí mít přidruženou licenci Azure AD Premium. Pokud chcete upgradovat edici Azure Active Directory, přečtěte si téma [Začínáme se Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) . 
 
-## <a name="provisioning-logs"></a>Protokoly zřizování
 
-Protokoly zřizování poskytují odpovědi na následující otázky:
+## <a name="ways-of-interacting-with-the-provisioning-logs"></a>Způsoby interakce s protokoly zřizování 
+Zákazníci mají čtyři možnosti, jak interaktivně pracovat s protokoly zřizování:
 
-* Které skupiny byly úspěšně vytvořeny v ServiceNow?
-* Které uživatele byly úspěšně odebrány z Adobe?
-* Kteří uživatelé nebyli úspěšně vytvořeni v DropBoxu?
+1. Přístup k protokolům z Azure Portal, jak je popsáno níže.
+1. Streamování zřizovacích protokolů do [Azure monitor](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-log-analytics), což umožňuje rozšířené uchovávání dat, vytváření vlastních řídicích panelů, výstrah a dotazů.
+1. Dotazování [rozhraní API pro Microsoft Graph](https://docs.microsoft.com/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta) pro protokoly zřizování
+1. Stažení protokolů zřizování jako souboru CSV nebo formátu JSON.
 
+## <a name="access-the-logs-from-the-azure-portal"></a>Přístup k protokolům z Azure Portal
 Přístup k protokolům zřizování můžete získat tak, že v části **monitorování** v okně **Azure Active Directory** v [Azure Portal](https://portal.azure.com)vyberete **protokoly zřizování** . Může trvat až dvě hodiny, než se některé záznamy zřizování zobrazí na portálu.
 
 ![Protokoly zřizování](./media/concept-provisioning-logs/access-provisioning-logs.png "Protokoly zřizování")
@@ -87,7 +93,7 @@ To umožňuje zobrazit další pole, nebo odebrat pole, která jsou už zobrazen
 
 Chcete-li získat podrobnější informace, vyberte položku v zobrazení seznamu.
 
-![Podrobné informace](./media/concept-provisioning-logs/steps.png "Filtr")
+![Podrobné informace](./media/concept-provisioning-logs/steps.png "Filtrovat")
 
 
 ## <a name="filter-provisioning-activities"></a>Filtrovat aktivity zřizování
@@ -101,7 +107,7 @@ Ve výchozím zobrazení můžete vybrat následující filtry:
 - Akce
 
 
-![Přidání filtrů](./media/concept-provisioning-logs/default-filter.png "Filtr")
+![Přidání filtrů](./media/concept-provisioning-logs/default-filter.png "Filtrovat")
 
 Filtr **identit** umožňuje zadat název nebo identitu, o které se zajímáte. Tato identita by mohla být uživatel, skupina, role nebo jiný objekt. Můžete hledat podle názvu nebo ID objektu. ID se liší podle scénáře. Například při zřizování objektu ze služby Azure AD do SalesForce je ID zdroje ID objektu uživatele ve službě Azure AD, zatímco TargetID je ID uživatele v Salesforce. Při zřizování z Workday do služby Active Directory je zdrojem ID ID zaměstnance pracovního procesu Workday. Všimněte si, že jméno uživatele nemusí být vždy k dispozici ve sloupci identita. Vždy bude existovat jedno ID. 
 
@@ -192,7 +198,7 @@ Karta **kroky** popisuje kroky podniknuté při zřizování objektu. Zřizován
 
 
 
-![Snímek obrazovky se zobrazí na kartě kroky, na které se zobrazují kroky zřizování.](./media/concept-provisioning-logs/steps.png "Filtr")
+![Snímek obrazovky se zobrazí na kartě kroky, na které se zobrazují kroky zřizování.](./media/concept-provisioning-logs/steps.png "Filtrovat")
 
 
 ### <a name="troubleshoot-and-recommendations"></a>Řešení potíží a doporučení
@@ -205,10 +211,57 @@ Karta **Poradce při potížích a doporučeních** poskytuje kód chyby a důvo
 
 **Změněné vlastnosti** zobrazují starou hodnotu a novou hodnotu. V případech, kdy není k dispozici stará hodnota sloupce stará hodnota je prázdná. 
 
-
 ### <a name="summary"></a>Souhrn
 
 Karta **Souhrn** poskytuje přehled o tom, co se stalo, a identifikátory pro objekt ve zdrojovém a cílovém systému. 
+
+## <a name="download-logs-as-csv-or-json"></a>Stáhnout protokoly jako CSV nebo JSON
+
+Protokoly zřizování pro pozdější použití si můžete stáhnout tak, že přejdete na protokoly v Azure Portal a kliknete na stáhnout. Soubor se vyfiltruje na základě kritérií filtru, která jste vybrali. Aby bylo možné zkrátit dobu potřebnou ke stažení a velikost stahovaných, možná budete chtít nastavit filtry jako specifické. Stahování CSV je rozdělené do tří souborů:
+
+* ProvisioningLogs: stáhne všechny protokoly s výjimkou kroků zřizování a upravených vlastností.
+* ProvisioningLogs_ProvisioningSteps: obsahuje kroky zřizování a ID změny. ID změny se dá použít k připojení události k ostatním dvěma souborům.
+* ProvisioningLogs_ModifiedProperties: obsahuje atributy, které byly změněny, a ID změny. ID změny se dá použít k připojení události k ostatním dvěma souborům.
+
+#### <a name="opening-the-json-file"></a>Otevření souboru JSON
+K otevření souboru JSON použijte textový editor, jako je [Microsoft Visual Studio kód](https://aka.ms/vscode). Visual Studio Code usnadňuje čtení pomocí zvýrazňování syntaxe. Soubor JSON se taky dá otevřít pomocí prohlížečů ve formátu bez úprav, např. [Microsoft Edge](https://aka.ms/msedge) . 
+
+#### <a name="prettifying-the-json-file"></a>Prettifying soubor JSON
+Soubor JSON se stáhne ve formátu minifikovaného, aby se snížila velikost souboru ke stažení. To zase může ztížit čtení datové části. Pokud chcete soubor prettify, podívejte se na dvě možnosti:
+
+1. Použití Visual Studio Code k formátování formátu JSON
+
+Pokud chcete soubor JSON zformátovat pomocí Visual Studio Code, postupujte podle pokynů uvedených [tady](https://code.visualstudio.com/docs/languages/json#_formatting) .
+
+2. Použití PowerShellu k formátování formátu JSON
+
+Tento skript vytvoří výstup JSON ve formátu prettified s kartami a mezerami. 
+
+` $JSONContent = Get-Content -Path "<PATH TO THE PROVISIONING LOGS FILE>" | ConvertFrom-JSON`
+
+`$JSONContent | ConvertTo-Json > <PATH TO OUTPUT THE JSON FILE>`
+
+#### <a name="parsing-the-json-file"></a>Analýza souboru JSON
+
+Tady jsou některé ukázkové příkazy pro práci se souborem JSON pomocí PowerShellu. Můžete použít libovolný programovací jazyk, se kterým máte v pohodlí.  
+
+Nejprve [si přečtěte soubor JSON](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/convertfrom-json?view=powershell-7.1) spuštěním:
+
+` $JSONContent = Get-Content -Path "<PATH TO THE PROVISIONING LOGS FILE>" | ConvertFrom-JSON`
+
+Nyní můžete analyzovat data pro váš scénář. Zde je několik příkladů: 
+
+1. Výstup všech jobIDs v JsonFile
+
+`foreach ($provitem in $JSONContent) { $provitem.jobId }`
+
+2. Výstup všech changeIds pro události, u kterých byla akce "vytvořit"
+
+`foreach ($provitem in $JSONContent) { `
+`   if ($provItem.action -eq 'Create') {`
+`       $provitem.changeId `
+`   }`
+`}`
 
 ## <a name="what-you-should-know"></a>Co byste měli vědět
 
@@ -226,7 +279,7 @@ Karta **Souhrn** poskytuje přehled o tom, co se stalo, a identifikátory pro ob
 
 Pomocí následující tabulky můžete lépe pochopit, jak vyřešit chyby, které můžete najít v protokolech zřizování. U všech chybových kódů, které chybí, poskytněte zpětnou vazbu pomocí odkazu v dolní části této stránky. 
 
-|Kód chyby|Popis|
+|Kód chyby|Description|
 |---|---|
 |Konflikt, EntryConflict|Opravte konfliktní hodnoty atributů buď v rámci služby Azure AD, nebo v aplikaci, nebo zkontrolujte shodnou konfiguraci atributu, pokud by byl konfliktní uživatelský účet shodný a převzatý z něj. Další informace o konfiguraci atributů odpovídajícího atributu najdete v následující [dokumentaci](../app-provisioning/customize-application-attributes.md) .|
 |TooManyRequests|Cílová aplikace odmítla tento pokus o aktualizaci uživatele, protože je přetížena a přijímá příliš mnoho požadavků. Žádná akce není k dispozici. Tento pokus bude automaticky vyřazen. Společnost Microsoft si také oznámila tento problém.|
@@ -234,14 +287,14 @@ Pomocí následující tabulky můžete lépe pochopit, jak vyřešit chyby, kte
 |InsufficientRights, MethodNotAllowed, NotPermitted, Neautorizováno| Služba Azure AD se dokázala ověřit u cílové aplikace, ale nemá autorizaci k provedení této aktualizace. Projděte si pokyny, které poskytuje cílová aplikace, a také [kurz](../saas-apps/tutorial-list.md)příslušné aplikace.|
 |UnprocessableEntity|Cílová aplikace vrátila neočekávanou odpověď. Konfigurace cílové aplikace nemusí být správná nebo může dojít k potížím se službou cílové aplikace, která brání jejímu fungování.|
 |WebExceptionProtocolError |Při připojování k cílové aplikaci došlo k chybě protokolu HTTP. Žádná akce není k dispozici. Tento pokus bude automaticky vyřazen za 40 minut.|
-|InvalidAnchor|Uživatel, který byl dříve vytvořen nebo spárován službou zřizování, již neexistuje. Zkontrolujte, jestli uživatel existuje. Pokud chcete vynutit přesouhlasení všech uživatelů, použijte k [restartování úlohy](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta)MS Graph API. Všimněte si, že restartování zřizování spustí počáteční cyklus, který může nějakou dobu trvat. Odstraní také mezipaměť, kterou služba zřizování používá k provozu, což znamená, že všechny uživatele a skupiny v tenantovi budou muset být vyhodnoceny znovu a určité události zřizování by mohly být vyhozeny.|
-|NotImplemented | Cílová aplikace vrátila neočekávanou odpověď. Konfigurace aplikace nemusí být správná nebo může být problém služby s cílovou aplikací, což brání v práci. Projděte si pokyny, které poskytuje cílová aplikace, a také [kurz](../saas-apps/tutorial-list.md)příslušné aplikace. |
+|InvalidAnchor|Uživatel, který byl dříve vytvořen nebo spárován službou zřizování, již neexistuje. Zkontrolujte, jestli uživatel existuje. Pokud chcete vynutit přesouhlasení všech uživatelů, použijte k [restartování úlohy](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta)MS Graph API. Restartováním zřizování se aktivuje počáteční cyklus, což může trvat nějakou dobu. Odstraní také mezipaměť, kterou služba zřizování používá k provozu, což znamená, že všechny uživatele a skupiny v tenantovi budou muset být vyhodnoceny znovu a určité události zřizování by mohly být vyhozeny.|
+|NotImplemented | Cílová aplikace vrátila neočekávanou odpověď. Konfigurace aplikace nemusí být správná nebo může být problém služby s cílovou aplikací, což brání v práci. Projděte si pokyny, které poskytuje cílová aplikace a příslušný [kurz](../saas-apps/tutorial-list.md)aplikace. |
 |MandatoryFieldsMissing, MissingValues |Uživatele nelze vytvořit, protože chybí požadované hodnoty. Opravte chybějící hodnoty atributů ve zdrojovém záznamu, nebo zkontrolujte shodnou konfiguraci atributu, abyste zajistili, že požadovaná pole nebudou vynechána. [Přečtěte si další informace](../app-provisioning/customize-application-attributes.md) o konfiguraci atributů, které se shodují.|
 |SchemaAttributeNotFound |Operaci nelze provést, protože byl zadán atribut, který v cílové aplikaci neexistuje. Přečtěte si [dokumentaci](../app-provisioning/customize-application-attributes.md) k přizpůsobení atributů a ujistěte se, že je konfigurace správná.|
 |InternalError |Došlo k vnitřní chybě služby ve službě Azure AD Provisioning. Žádná akce není k dispozici. Tento pokus se automaticky zopakuje za 40 minut.|
 |InvalidDomain |Operaci nelze provést, protože hodnota atributu obsahuje neplatný název domény. Aktualizujte název domény na uživateli nebo ho přidejte do seznamu povolených aplikací v cílové aplikaci. |
 |Časový limit |Operaci nelze dokončit, protože odpověď trvala příliš dlouho. Žádná akce není k dispozici. Tento pokus se automaticky zopakuje za 40 minut.|
-|LicenseLimitExceeded|V cílové aplikaci nelze vytvořit uživatele, protože pro tohoto uživatele nejsou k dispozici žádné licence. Buď si zajistěte další licence pro cílovou aplikaci, nebo zkontrolujte přiřazení uživatelů a konfiguraci mapování atributů, abyste se ujistili, že správným uživatelům jsou přiřazeny správné atributy.|
+|LicenseLimitExceeded|V cílové aplikaci nelze vytvořit uživatele, protože pro tohoto uživatele nejsou k dispozici žádné licence. Opatřete si další licence pro cílovou aplikaci, nebo zkontrolujte přiřazení uživatelů a konfiguraci mapování atributů, abyste měli jistotu, že jsou správně přiřazené správné atributy.|
 |DuplicateTargetEntries  |Operaci nelze dokončit, protože v cílové aplikaci bylo nalezeno více než jeden uživatel s nakonfigurovanými shodnými atributy. Buď odeberte duplicitního uživatele z cílové aplikace, nebo znovu nakonfigurujte mapování atributů, jak je popsáno [zde](../app-provisioning/customize-application-attributes.md).|
 |DuplicateSourceEntries | Operaci nelze dokončit, protože byl nalezen více než jeden uživatel s nakonfigurovanými shodnými atributy. Odeberte duplicitního uživatele nebo znovu nakonfigurujte mapování atributů, jak je popsáno [zde](../app-provisioning/customize-application-attributes.md).|
 |ImportSkipped | Při vyhodnocování každého uživatele se pokusíme importovat uživatele ze zdrojového systému. K této chybě obvykle dochází v případě, že uživatel, který naimportoval, nemá vlastnost Matching definovanou v mapování atributů. Bez hodnoty přítomné v objektu User pro atribut Matching nemůžeme vyhodnotit rozsahy, shodující se ani exportovat změny. Všimněte si, že přítomnost této chyby neindikuje, že se uživatel nachází v oboru, protože pro uživatele zatím nehodnotili rozsah.|

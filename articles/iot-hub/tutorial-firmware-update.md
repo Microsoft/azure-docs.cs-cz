@@ -1,6 +1,6 @@
 ---
-title: Aktualizace firmwaru zařízení přes službu Azure IoT Hub | Microsoft Docs
-description: Naučte se implementovat proces aktualizace firmwaru zařízení, který se dá aktivovat z back-endové aplikace připojené ke službě IoT Hub.
+title: Kurz – aktualizace firmwaru zařízení prostřednictvím Azure IoT Hub | Microsoft Docs
+description: Kurz – Naučte se implementovat proces aktualizace firmwaru zařízení, který se dá aktivovat z back-endové aplikace připojené ke službě IoT Hub.
 services: iot-hub
 author: wesmc7777
 ms.author: wesmc
@@ -15,12 +15,12 @@ ms.custom:
 - 'Role: IoT Device'
 - devx-track-js
 - devx-track-azurecli
-ms.openlocfilehash: b4de685accf665c7555a454ef247ddf589c6ba5f
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 807de3c41ec8026edd2b2d8859eb70863ae5697b
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572333"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621392"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>Kurz: Implementace procesu aktualizace firmwaru zařízení
 
@@ -38,7 +38,7 @@ V tomto kurzu provedete následující úlohy:
 > * Simulace procesu aktualizace firmwaru na zařízení
 > * Příjem aktualizací stavu ze zařízení v průběhu aktualizace firmwaru
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 

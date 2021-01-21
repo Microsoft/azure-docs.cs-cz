@@ -1,6 +1,6 @@
 ---
-title: Synchronizace stavu zařízení ze služby Azure IoT Hub | Microsoft Docs
-description: Naučte se používat vlákna zařízení ke konfiguraci vašich zařízení z cloudu a získávat data o stavu a dodržování předpisů z vašich zařízení.
+title: Kurz – synchronizace stavu zařízení z Azure IoT Hub | Microsoft Docs
+description: Kurz – Naučte se používat vlákna zařízení ke konfiguraci vašich zařízení z cloudu a získávat data o stavu a dodržování předpisů z vašich zařízení.
 services: iot-hub
 author: wesmc7777
 ms.author: wesmc
@@ -15,12 +15,12 @@ ms.custom:
 - 'Role: IoT Device'
 - devx-track-js
 - devx-track-azurecli
-ms.openlocfilehash: 9ec2c51f01d6b13f33bc2d537a8f73a6721967d4
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 912e59197970e60f57a13c049ffadbd2ad938a9b
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572520"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621408"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 
@@ -39,7 +39,7 @@ V tomto kurzu provedete následující úlohy:
 > * Použití požadovaných vlastností k odeslání informací o stavu do simulovaného zařízení.
 > * Použití ohlášených vlastností k přijetí informací o stavu ze simulovaného zařízení
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 

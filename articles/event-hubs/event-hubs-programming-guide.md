@@ -4,12 +4,12 @@ description: Tento článek poskytuje informace o tom, jak napsat kód pro Azure
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 46bd0c3c1488d6dd7afbae5e88e0b83f56654bb8
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: a299813620ee90591d8c9491991237f75f2e9382
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131232"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98623044"
 ---
 # <a name="net-programming-guide-for-azure-event-hubs-legacy-microsoftazureeventhubs-package"></a>Průvodce programováním v rozhraní .NET pro Azure Event Hubs (starší balíček Microsoft. Azure. EventHubs)
 Tento článek popisuje některé běžné scénáře psaní kódu pomocí Azure Event Hubs. Předpokládá se předběžná znalost služby Event Hubs. Koncepční přehled služby Event Hubs naleznete v tématu [Přehled služby Event Hubs](./event-hubs-about.md).
@@ -57,7 +57,7 @@ Události odesíláte do centra událostí vytvořením instance [EventHubClient
 
 ## <a name="event-serialization"></a>Serializace událostí
 
-Třída [EventData][] má [dva přetížené konstruktory](/dotnet/api/microsoft.azure.eventhubs.eventdata.-ctor) , které přijímají různé parametry, bajty nebo bajtové pole, které reprezentují datovou část dat události. Pokud při práci s třídou [EventData][] používáte JSON, můžete načíst pole bajtů řetězce kódovaného ve formátu JSON pomocí metody **Encoding.UTF8.GetBytes()**. Příklad:
+Třída [EventData][] má [dva přetížené konstruktory](/dotnet/api/microsoft.azure.eventhubs.eventdata.-ctor) , které přijímají různé parametry, bajty nebo bajtové pole, které reprezentují datovou část dat události. Pokud při práci s třídou [EventData][] používáte JSON, můžete načíst pole bajtů řetězce kódovaného ve formátu JSON pomocí metody **Encoding.UTF8.GetBytes()**. Například:
 
 ```csharp
 for (var i = 0; i < numMessagesToSend; i++)
@@ -97,7 +97,7 @@ Jedna dávka nesmí překročit omezení 1 MB události. Kromě toho každá zpr
 
 ## <a name="send-asynchronously-and-send-at-scale"></a>Asynchronní odesílání a škálované odesílání
 
-Události se odesílají do centra událostí asynchronně. Odesílání asynchronně zvyšuje rychlost, s jakou klient může odesílat události. [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) vrátí objekt [Task](/dotnet/api/system.threading.tasks.task?view=netcore-3.1) . K řízení možností opakování klienta můžete použít třídu [RetryPolicy](/dotnet/api/microsoft.servicebus.retrypolicy) na klientovi.
+Události se odesílají do centra událostí asynchronně. Odesílání asynchronně zvyšuje rychlost, s jakou klient může odesílat události. [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) vrátí objekt [Task](/dotnet/api/system.threading.tasks.task) . K řízení možností opakování klienta můžete použít třídu [RetryPolicy](/dotnet/api/microsoft.servicebus.retrypolicy) na klientovi.
 
 ## <a name="event-consumers"></a>Příjemci událostí
 Třída [EventProcessorHost][] zpracovává data z center událostí (Event Hubs). Tuto implementaci byste měli používat při vytváření čtenářů událostí na platformě .NET. Třída [EventProcessorHost][] poskytuje pro implementace zpracovatelů událostí bezpečné prostředí runtime, které umožňuje bezpečné použití vláken a více procesů. Taky poskytuje možnost vytváření kontrolních bodů a správy „půjčování“ oddílu.
@@ -109,7 +109,7 @@ K použití třídy [EventProcessorHost][] může být potřeba implementovat ro
 * [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync)
 * [ProcessErrorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processerrorasync)
 
-Pokud chcete spustit zpracování událostí, vytvořte instanci [EventProcessorHost][]a poskytněte příslušné parametry centra událostí. Příklad:
+Pokud chcete spustit zpracování událostí, vytvořte instanci [EventProcessorHost][]a poskytněte příslušné parametry centra událostí. Například:
 
 > [!NOTE]
 > EventProcessorHost a související třídy jsou k dispozici v balíčku **Microsoft. Azure. EventHubs. Processor** . Přidejte balíček do projektu sady Visual Studio podle pokynů v [tomto článku](event-hubs-dotnet-framework-getstarted-send.md#add-the-event-hubs-nuget-package) nebo vyvoláním následujícího příkazu v okně [konzoly Správce balíčků](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) : `Install-Package Microsoft.Azure.EventHubs.Processor` .

@@ -13,32 +13,28 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/11/2020
+ms.date: 01/20/2021
 ms.author: yelevin
-ms.openlocfilehash: 279f54c3de964580cc37d1288a6e1b7726348e10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9700e5d9179f7c1e33b2371eea89be9bb1c8d08f
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88208614"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621358"
 ---
 # <a name="connect-data-from-azure-active-directory-azure-ad"></a>Připojení dat z Azure Active Directory (Azure AD)
-
-
 
 K shromažďování dat z [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) a jejich streamování do Azure Sentinel můžete použít integrovaný konektor Azure Sentinel. Konektor umožňuje streamovat [protokoly přihlášení](../active-directory/reports-monitoring/concept-sign-ins.md) a [protokoly auditu](../active-directory/reports-monitoring/concept-audit-logs.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-
-- Jakákoli licence Azure AD (Free/O365/P1/P2) je dostatečná pro ingestování přihlašovacích protokolů do služby Azure Sentinel. Pro Azure Monitor (Log Analytics) a Sentinel Azure můžete platit další poplatky za GB.
+- K ingestování přihlašovacích protokolů do Azure Sentinel musíte mít předplatné [Azure AD Premium P2](https://azure.microsoft.com/pricing/details/active-directory/) . Pro Azure Monitor (Log Analytics) a Sentinel Azure můžete platit další poplatky za GB.
 
 - Uživateli musí být přiřazená role přispěvatele Sentinel Azure v pracovním prostoru.
 
 - Uživateli musí být přiřazeni role Globální správce nebo správce zabezpečení v tenantovi, ze kterého chcete protokoly zasílat.
 
 - Aby bylo možné zobrazit stav připojení, musí mít váš uživatel oprávnění ke čtení a zápisu pro nastavení diagnostiky Azure AD. 
-
 
 ## <a name="connect-to-azure-active-directory"></a>Připojení k Azure Active Directory
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 12/04/2020
+ms.date: 01/19/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8dce284c0fffe10fe077fcb6c6713ba65c45751
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 9442489efd2a84ac8a31dfb2efb5718e1fd4f594
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743900"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621789"
 ---
 # <a name="combined-security-information-registration-for-azure-active-directory-overview"></a>Souhrnné informace o registraci informací o zabezpečení pro Azure Active Directory
 
@@ -30,18 +30,18 @@ Tento článek popisuje, jaká kombinovaná registrace zabezpečení je. Informa
 > [!div class="nextstepaction"]
 > [Povolit kombinovanou registraci zabezpečení](howto-registration-mfa-sspr-combined.md)
 
-![Můj profil zobrazující registrované bezpečnostní údaje pro uživatele](media/concept-registration-mfa-sspr-combined/combined-security-info-defualts-registered.png)
+![Můj účet zobrazující registrované bezpečnostní údaje pro uživatele](media/concept-registration-mfa-sspr-combined/combined-security-info-defaults-registered.png)
 
 Než začnete s novým prostředím, přečtěte si dokumentaci k tomuto správci a dokumentaci zaměřenou na uživatele, abyste se ujistili, že jsou funkce a účinky této funkce důležité. Založte školení na [dokumentaci pro uživatele](../user-help/security-info-setup-signin.md) a připravte uživatele na nové prostředí a pomůžou zajistit úspěšné zavedení.
 
 Registrace informací o kombinovaném zabezpečení Azure AD není aktuálně dostupná pro národní cloudy, jako je Azure Německo nebo Azure Čína 21Vianet. Je k dispozici pro vládu Azure USA.
 
 > [!IMPORTANT]
-> Pro uživatele, kteří jsou povoleni pro původní verzi Preview i pro rozšířené kombinované registrační prostředí, se zobrazí nové chování. Uživatelům, kteří jsou povoleni v obou prostředích, uvidí jenom nové prostředí s profilem. Nový *můj profil* se zarovnává s vzhledem a chováním kombinované registrace a poskytuje uživatelům bezproblémové prostředí. Uživatelé můžou profil zobrazit kliknutím na [https://myprofile.microsoft.com](https://myprofile.microsoft.com) .
+> Pro uživatele, kteří jsou povoleni pro původní verzi Preview i pro rozšířené kombinované registrační prostředí, se zobrazí nové chování. Uživatelům, kteří jsou povoleni v obou prostředích, uvidí jenom možnosti můj účet. *Můj účet* se zarovnává s vzhledem a chováním kombinované registrace a poskytuje uživatelům bezproblémové prostředí. Uživatelé uvidí svůj účet tím, že se budou moct podívat na [https://myaccount.microsoft.com](https://myaccount.microsoft.com) .
 >
 > Při pokusu o přístup k možnosti informace o zabezpečení se může zobrazit chybová zpráva, například "litujeme, ale nemůžeme vás přihlásit". Ověřte, že nemáte žádné konfigurační objekty nebo objekt zásad skupiny, který blokuje soubory cookie třetích stran ve webovém prohlížeči.
 
-Stránky s *profilem* jsou lokalizovány na základě nastavení jazyka počítače, který přistupuje k stránce. Microsoft ukládá nejaktuálnější jazyk používaný v mezipaměti prohlížeče, takže následné pokusy o přístup ke stránkám se budou dál vykreslovat v posledním použitém jazyce. Pokud mezipaměť vymažete, stránky se znovu vykreslují.
+Stránky *můj účet* jsou lokalizovány na základě nastavení jazyka počítače, který přistupuje k stránce. Microsoft ukládá nejaktuálnější jazyk používaný v mezipaměti prohlížeče, takže následné pokusy o přístup ke stránkám se budou dál vykreslovat v posledním použitém jazyce. Pokud mezipaměť vymažete, stránky se znovu vykreslují.
 
 Pokud chcete vynutit určitý jazyk, můžete přidat `?lng=<language>` na konec adresy URL, kde `<language>` je kód jazyka, který chcete vykreslit.
 
@@ -116,7 +116,7 @@ Pokud zásady SSPR vyžadují, aby si uživatelé zkontrolovali své bezpečnost
 
 ### <a name="manage-mode"></a>Režim správy
 
-Uživatelé mají přístup ke správě režimu tak, že v něm [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) nebo vyberou **bezpečnostní údaje** z mého profilu. Odtud mohou uživatelé přidávat metody, odstraňovat nebo měnit existující metody, měnit výchozí metodu a další.
+Uživatelé mají přístup ke správě režimu tak, že [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) v něm nebo vyberou **bezpečnostní údaje** z mého účtu. Odtud mohou uživatelé přidávat metody, odstraňovat nebo měnit existující metody, měnit výchozí metodu a další.
 
 ## <a name="key-usage-scenarios"></a>Scénáře použití klíčů
 
@@ -126,17 +126,17 @@ Správce vynutil registraci.
 
 Uživatel nenainstaloval všechny požadované bezpečnostní údaje a přejde na Azure Portal. Po zadání uživatelského jména a hesla se uživateli zobrazí výzva k nastavení bezpečnostních údajů. Uživatel pak podle kroků uvedených v průvodci nastaví požadované bezpečnostní údaje. Pokud to nastavení povoluje, může uživatel zvolit možnost nastavit jiné metody než ty, které jsou ve výchozím nastavení zobrazené. Po dokončení průvodce si uživatelé Prohlédněte metody, které nastavili, a jejich výchozí metodu pro Multi-Factor Authentication. K dokončení procesu instalace uživatel potvrdí informace a pokračuje Azure Portal.
 
-### <a name="set-up-security-info-from-my-profile"></a>Nastavení bezpečnostních údajů z mého profilu
+### <a name="set-up-security-info-from-my-account"></a>Nastavit bezpečnostní údaje z mého účtu
 
 Správce vynutil registraci.
 
-Uživatel, který ještě nevytvořil všechny požadované bezpečnostní údaje, se dostane do [https://myprofile.microsoft.com](https://myprofile.microsoft.com) . Uživatel vybere v levém podokně **informace o zabezpečení** . Odtud se uživatel rozhodne přidat metodu, vybere některou z dostupných metod a postupuje podle pokynů k nastavení této metody. Po dokončení uživatel uvidí metodu, která byla nastavena na stránce informace o zabezpečení.
+Uživatel, který ještě nevytvořil všechny požadované bezpečnostní údaje, se dostane do [https://myaccount.microsoft.com](https://myaccount.microsoft.com) . Uživatel vybere v levém podokně **informace o zabezpečení** . Odtud se uživatel rozhodne přidat metodu, vybere některou z dostupných metod a postupuje podle pokynů k nastavení této metody. Po dokončení uživatel uvidí metodu, která byla nastavena na stránce informace o zabezpečení.
 
-### <a name="delete-security-info-from-my-profile"></a>Odstranit informace o zabezpečení z mého profilu
+### <a name="delete-security-info-from-my-account"></a>Odstranit informace o zabezpečení z mého účtu
 
 Uživatel, který dříve nainstaloval alespoň jednu metodu, přejde na [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) . Uživatel se rozhodne odstranit jednu z dříve registrovaných metod. Po dokončení již uživatel na stránce informace o zabezpečení nevidí tuto metodu.
 
-### <a name="change-the-default-method-from-my-profile"></a>Změna výchozí metody z mého profilu
+### <a name="change-the-default-method-from-my-account"></a>Změna výchozí metody z mého účtu
 
 Uživatel, který dříve nainstaloval alespoň jednu metodu, kterou lze použít pro Multi-Factor Authentication přejít na [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) . Uživatel změní aktuální výchozí metodu na jinou výchozí metodu. Po dokončení uživatel uvidí novou výchozí metodu na stránce bezpečnostní údaje.
 

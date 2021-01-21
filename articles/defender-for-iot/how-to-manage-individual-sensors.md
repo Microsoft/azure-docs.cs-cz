@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 68fa3ea15199ec1d9cc99f92f497847fb029acd6
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 16031c3d67b075e962c73fbb38ada36c7efeddad
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539566"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621210"
 ---
 # <a name="manage-individual-sensors"></a>Správa individuálních senzorů
 
@@ -282,7 +282,7 @@ Při použití příkazu CLI:
 
 Spravujte certifikáty pomocí následujících příkazů:
 
-| Popis | CLI – příkaz |
+| Description | CLI – příkaz |
 |--|--|
 | Vygenerovat nový privátní klíč a žádost o podepsání certifikátu | `openssl req -out CSR.csr -new -newkey rsa:2048 -nodes -keyout privateKey.key` |
 | Vygenerování certifikátu podepsaného svým držitelem | `openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out certificate.crt` |
@@ -292,7 +292,7 @@ Spravujte certifikáty pomocí následujících příkazů:
 
 Pokud potřebujete ověřit informace v rámci certifikátu, CSR nebo privátního klíče, použijte tyto příkazy;
 
-| Popis | CLI – příkaz |
+| Description | CLI – příkaz |
 |--|--|
 | Ověření žádosti o podepsání certifikátu (CSR) | `openssl req -text -noout -verify -in CSR.csr` |
 | Ověřit privátní klíč | `openssl rsa -in privateKey.key -check` |
@@ -300,13 +300,13 @@ Pokud potřebujete ověřit informace v rámci certifikátu, CSR nebo privátní
 
 Pokud se zobrazí chyba, že se soukromý klíč neshoduje s certifikátem, nebo pokud certifikát, který jste nainstalovali do lokality, není důvěryhodný, použijte k opravě chyby tyto příkazy.
 
-| Popis | CLI – příkaz |
+| Description | CLI – příkaz |
 |--|--|
 | Zkontrolujte hodnotu hash MD5 veřejného klíče a ujistěte se, že se shoduje s tím, co je v rámci zástupce nebo privátního klíče. | první. `openssl x509 -noout -modulus -in certificate.crt | openssl md5` <br /> odst. `openssl rsa -noout -modulus -in privateKey.key | openssl md5` <br /> 1. `openssl req -noout -modulus -in CSR.csr | openssl md5 ` |
 
 Chcete-li převést certifikáty a klíče do různých formátů, aby byly kompatibilní s konkrétními typy serverů nebo softwaru, použijte tyto příkazy;
 
-| Popis | CLI – příkaz |
+| Description | CLI – příkaz |
 |--|--|
 | Převod souboru DER (. CRT. cer. der) na PEM  | `openssl x509 -inform der -in certificate.cer -out certificate.pem`  |
 | Převod souboru PEM na DER | `openssl x509 -outform der -in certificate.pem -out certificate.der`  |
@@ -315,7 +315,7 @@ Chcete-li převést certifikáty a klíče do různých formátů, aby byly komp
 
 ## <a name="connect-a-sensor-to-the-management-console"></a>Připojit senzor ke konzole pro správu
 
-Tato část popisuje, jak zajistit připojení mezi senzorem a místní konzolou pro správu. Tento postup proveďte, pokud pracujete v gapped síti a chcete ze senzoru odeslat informace o assetech a výstrahách do konzoly pro správu. Toto připojení také umožňuje, aby konzola pro správu nabízela nastavení systému snímači a prováděla další úlohy správy na senzoru.
+Tato část popisuje, jak zajistit připojení mezi senzorem a místní konzolou pro správu. To je potřeba udělat, když pracujete v gapped síti a chcete odesílat informace o zařízení a výstrahách do konzoly pro správu ze senzoru. Toto připojení také umožňuje, aby konzola pro správu nabízela nastavení systému snímači a prováděla další úlohy správy na senzoru.
 
 Pro připojení:
 
@@ -562,7 +562,7 @@ Přístup k vlastnostem systému:
 
 3. V části **Obecné** vyberte **Vlastnosti systému** .
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 [Analýzy a balíčky pro analýzu hrozeb](how-to-work-with-threat-intelligence-packages.md)
 

@@ -9,19 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/14/2020
+ms.date: 01/13/2021
 ms.author: jeedes
-ms.openlocfilehash: d526a3cef25ad88b1565a71d1f488ab70f28b8c4
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 82ab206db86aace60dca130d8f094a2a19318763
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92308987"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621908"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-adobe-creative-cloud"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s Adobe Creative Cloud
-
-> [!NOTE]
-> Tento článek popisuje vlastní nastavení na bázi SAML v konzole pro správu společnosti Adobe pro Azure Active Directory (Azure AD). Pro branding – nové konfigurace doporučujeme použít [konektor Azure AD](https://helpx.adobe.com/enterprise/using/sso-setup-azure.html). Konektor Azure AD se dá nastavit během několika minut a zkrátí proces deklarace identity domény, nastavení jednotného přihlašování a synchronizaci uživatelů.
 
 V tomto kurzu se naučíte, jak integrovat Adobe Creative Cloud s Azure Active Directory (Azure AD). Když integrujete Adobe Creative Cloud s Azure AD, můžete:
 
@@ -29,9 +26,7 @@ V tomto kurzu se naučíte, jak integrovat Adobe Creative Cloud s Azure Active D
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Adobe Creative Cloud se svými účty Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
-
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -43,25 +38,23 @@ Chcete-li začít, potřebujete následující položky:
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
 * Adobe Creative Cloud podporuje jednotné přihlašování spouštěné přes **SP**
-* Po nakonfigurování Adobe Creative Cloud můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
 
-## <a name="adding-adobe-creative-cloud-from-the-gallery"></a>Přidání Adobe Creative Cloud z Galerie
+## <a name="add-adobe-creative-cloud-from-the-gallery"></a>Přidání Adobe Creative Cloud z Galerie
 
 Pokud chcete nakonfigurovat integraci Adobe Creative Cloud do služby Azure AD, musíte přidat Adobe Creative Cloud z Galerie do svého seznamu spravovaných aplikací SaaS.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
+1. Přihlaste se k Azure Portal pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
 1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
 1. V části **Přidat z Galerie** zadejte do vyhledávacího pole **Adobe Creative Cloud** .
 1. Na panelu výsledků vyberte **Adobe Creative Cloud** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-
 ## <a name="configure-and-test-azure-ad-sso-for-adobe-creative-cloud"></a>Konfigurace a testování jednotného přihlašování služby Azure AD pro Adobe Creative Cloud
 
 Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Adobe Creative Cloud pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Adobe Creative Cloud.
 
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Adobe Creative Cloud, dokončete následující stavební bloky:
+K nakonfigurování a testování jednotného přihlašování služby Azure AD pomocí Adobe Creative Cloud proveďte následující kroky:
 
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
     1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
@@ -74,9 +67,9 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce **Adobe Creative Cloud** integrace aplikací najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. V Azure Portal na stránce **Adobe Creative Cloud** integrace aplikací najděte část **Správa** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu tužky pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -95,7 +88,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho Adobe Creative Cloud aplikace očekává, že se v odpovědi SAML vrátí další atributy, které jsou uvedené dál. Tyto atributy se také předem naplní, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     |----- | --------- |
     | FirstName | User. křestní jméno |
     | LastName | User. příjmení |
@@ -104,7 +97,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     > [!NOTE]
     > Uživatelé musí mít platnou licenci Microsoft 365 ExO pro hodnotu deklarace e-mailu, která se má vyplnit v odpovědi SAML.
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **XML data federace**a pak vyberte **Stáhnout** a Stáhněte si soubor metadat XML a uložte ho do svého počítače.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **XML data federace** a pak vyberte **Stáhnout** a Stáhněte si soubor metadat XML a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
@@ -116,31 +109,25 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k Adobe Creative Cloud.
+V této části povolíte B. Simon použití jednotného přihlašování Azure tím, že udělíte přístup k Adobe Creative Cloud.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**  >  **všechny aplikace**.
 1. V seznamu aplikace vyberte možnost **Adobe Creative Cloud**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
-
-   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
-
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
-
-    ![Odkaz Přidat uživatele](common/add-assign-user.png)
-
-1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
+1. Vyberte možnost **Přidat uživatele**. Pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny**.
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelů položku **B. Simon** . Pak zvolte **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
+1. V dialogovém okně **Přidat přiřazení** vyberte **přiřadit**.
 
 ## <a name="configure-adobe-creative-cloud-sso"></a>Konfigurace Adobe Creative Cloud jednotného přihlašování
 
@@ -164,7 +151,6 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Vyberte **Uložit**.
 
-
 ### <a name="create-adobe-creative-cloud-test-user"></a>Vytvořit Adobe Creative Cloud testovacího uživatele
 
 Aby se uživatelé Azure AD mohli přihlašovat Adobe Creative Cloud, musí se zřídit do Adobe Creative Cloud. V případě Adobe Creative Cloud je zřizování ručním úkolem.
@@ -173,29 +159,23 @@ Aby se uživatelé Azure AD mohli přihlašovat Adobe Creative Cloud, musí se z
 
 1. Přihlaste se k webu [konzoly pro správu Adobe](https://adminconsole.adobe.com) jako správce.
 
-2. Přidejte uživatele do konzoly společnosti Adobe jako federované ID a přiřaďte je k profilu produktu. Podrobné informace o přidávání uživatelů najdete v tématu [Přidání uživatelů v konzole pro správu Adobe](https://helpx.adobe.com/enterprise/using/users.html#Addusers) . 
+2. Přidejte uživatele do konzoly společnosti Adobe jako federované ID a přiřaďte je k profilu produktu. Podrobné informace o přidávání uživatelů najdete v tématu [Přidání uživatelů v konzole pro správu Adobe](https://helpx.adobe.com/enterprise/using/users.html#Addusers).
 
 3. V tomto okamžiku zadejte svou e-mailovou adresu nebo hlavní název uživatele (UPN) do formuláře přihlašování Adobe, stiskněte klávesu TAB a měli byste být federované zpátky do služby Azure AD:
    * Webový přístup: Webová \. adobe.com > přihlášení
    * V rámci nástroje Desktop App > přihlášení
    * V rámci aplikace > Help > přihlášení
 
-## <a name="test-sso"></a>Test SSO 
+## <a name="test-sso"></a>Test SSO
 
-V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí následujících možností. 
 
-Po kliknutí na dlaždici Adobe Creative Cloud na přístupovém panelu byste měli být automaticky přihlášení do Adobe Creative Cloud, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
+* Kliknutím na **test této aplikace** v Azure Portal. Tím se přesměruje na Adobe Creative Cloud adresu URL pro přihlášení, kde můžete spustit tok přihlášení. 
 
-## <a name="additional-resources"></a>Další zdroje informací
+* Přejít na Adobe Creative Cloud adresa URL pro přihlášení přímo a zahájit tok přihlášení.
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
+* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici Adobe Creative Cloud v okně moje aplikace, přesměruje se na Adobe Creative Cloud přihlašovací adresa URL. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>Další kroky
 
-- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
-
-- [Vyzkoušet Adobe Creative Cloud s využitím Azure AD](https://aad.portal.azure.com/)
-
-- [Nastavení identity (adobe.com)](https://helpx.adobe.com/enterprise/using/set-up-identity.html)
-  
-- [Konfigurace Azure pro použití s Adobe SSO (adobe.com)](https://helpx.adobe.com/enterprise/kb/configure-microsoft-azure-with-adobe-sso.html)
+Po nakonfigurování Adobe Creative Cloud můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)

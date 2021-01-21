@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/13/2021
 ms.author: shhazam
-ms.openlocfilehash: f3239434a7ba737bc9323bc4f383afd794800db1
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 66b960bf874cc46985230e488c749663eff0b835
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201467"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621093"
 ---
 # <a name="azure-defender-for-iot-architecture"></a>Azure Defender pro architekturu IoT
 
@@ -81,7 +81,7 @@ Správa Azure Defenderu pro IoT napříč hybridními prostředími se provádí
 - Azure Portal
 
 ### <a name="sensor-console"></a>Konzola senzorů
-Detekce senzorů se zobrazují v konzole senzorů, kde je můžete zobrazit, prošetřit a analyzovat v mapě sítě, inventáři prostředků a v rozsáhlých sestavách, například v sestavách hodnocení rizik, dotazech dolování dat a vektorech útoků. Konzolu nástroje můžete také použít k zobrazení a zpracování hrozeb zjištěných moduly senzorů, předávajících informace partnerským systémům, správě uživatelů a dalších možností.
+Detekce senzorů se zobrazují v konzole senzorů, kde je můžete zobrazit, prošetřit a analyzovat v mapě sítě, inventáři zařízení a v rozsáhlých sestavách, například v sestavách hodnocení rizik, dotazech dolování dat a vektorech útoků. Konzolu nástroje můžete také použít k zobrazení a zpracování hrozeb zjištěných moduly senzorů, předávajících informace partnerským systémům, správě uživatelů a dalších možností.
 
 :::image type="content" source="./media/architecture/sensor-console-v2.png" alt-text="Defender pro konzolu IoT snímač":::
 
@@ -96,7 +96,7 @@ Konzolu pro správu lze nasadit pro konfiguraci s vysokou dostupností, která z
 
 Integrovaná integrace s pracovními postupy SOC a spouštěním knih umožňuje snadnou prioritu aktivit zmírňování a korelace mezi různými pracovišti hrozeb.
 
-- Holistický – zmenšete složitost s jednou sjednocenou platformou pro správu prostředků, riziku a správou ohrožení zabezpečení a také monitorováním hrozeb pomocí reakce na incidenty.
+- Holistický – snižte složitost s jednou sjednocenou platformou pro správu zařízení, riziko a správu ohrožení zabezpečení a také monitorování hrozeb pomocí reakce na incidenty.
 
 - Agregace a korelace – zobrazí, agreguje a analyzuje data a výstrahy shromážděné ze všech lokalit.
 

@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 8/15/2018
+ms.date: 01/20/2021
 ms.author: victorh
-ms.openlocfilehash: 413ae2ee19f0b8e427de9167b52971e413cdf573
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: f0c06a94498f4d2481a6e953b959d766c60415fb
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397208"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98622176"
 ---
 # <a name="renew-application-gateway-certificates"></a>Prodloužit platnost Application Gatewaych certifikátů
 
@@ -20,13 +20,13 @@ V určitém okamžiku budete muset prodloužit platnost certifikátů, pokud jst
 
 Certifikát přidružený k naslouchacímu procesu můžete obnovit pomocí Azure Portal, Azure PowerShell nebo rozhraní příkazového řádku Azure:
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-portal"></a>portál Azure
 
-Pokud chcete obnovit certifikát naslouchacího procesu z portálu, přejděte na naslouchací procesy služby Application Gateway. Klikněte na naslouchací proces s certifikátem, který je třeba obnovit, a potom klikněte na tlačítko **obnovit nebo upravit vybraný certifikát**.
+Pokud chcete obnovit certifikát naslouchacího procesu z portálu, přejděte na naslouchací procesy služby Application Gateway. Vyberte naslouchací proces s certifikátem, který je třeba obnovit, a potom vyberte možnost **obnovit nebo upravit vybraný certifikát**.
 
-![Prodloužit platnost certifikátu](media/renew-certificate/ssl-cert.png)
+:::image type="content" source="media/renew-certificate/ssl-cert.png" alt-text="Prodloužit platnost certifikátu":::
 
-Nahrajte nový certifikát PFX, zadejte jeho název, zadejte heslo a klikněte na **Uložit**.
+Nahrajte nový certifikát PFX, zadejte jeho název, zadejte heslo a pak vyberte **Uložit**.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 

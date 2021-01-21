@@ -15,19 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: f28243be6b4f998e8bdea0ce02da3ceedde23e02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1131c8e79d9df2883dcf7e975af9732c21318a49
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85559117"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621160"
 ---
-# <a name="connect-your-barracuda-appliance"></a>Připojení zařízení Barracuda 
-
-
+# <a name="connect-your-barracuda-waf-appliance"></a>Připojení zařízení Barracuda WAF 
 
 Konektor firewallu webových aplikací Barracuda (WAF) umožňuje snadno připojit protokoly Barracuda ke službě Azure Sentinel, zobrazit řídicí panely, vytvořit vlastní výstrahy a vylepšit šetření. Získáte tak lepší přehled o síti vaší organizace a zlepšíte možnosti vaší operace zabezpečení. Azure Sentinel využívá k zajištění bezproblémové integrace nativní integraci mezi **Barracuda** a agentem Log Analytics. 
-
 
 > [!NOTE]
 > Data budou uložená v geografickém umístění pracovního prostoru, na kterém běží Azure Sentinel.

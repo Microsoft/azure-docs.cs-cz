@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62fb239fd9cb8c1817dea5ab5c22684a65955ed5
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 3a66ad61afe1439a80d750097d3c90d010547539
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98555725"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98622404"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -80,7 +80,7 @@ Uživatelé s touto rolí můžou pro některé uživatele nastavit nebo resetov
 Role [správce privilegovaného ověřování](#privileged-authentication-administrator) má oprávnění k vynucení opakované registrace a ověřování Multi-Factor Authentication pro všechny uživatele.
 
 > [!IMPORTANT]
-> Uživatelé s touto rolí můžou měnit přihlašovací údaje pro uživatele, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna přihlašovacích údajů uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Příklad:
+> Uživatelé s touto rolí můžou měnit přihlašovací údaje pro uživatele, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna přihlašovacích údajů uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Například:
 >
 >* Registrace aplikace a vlastníci podnikových aplikací, kteří můžou spravovat přihlašovací údaje aplikací, které vlastní. Tyto aplikace můžou mít privilegovaná oprávnění ve službě Azure AD a jinde nejsou udělená správcům ověřování. Prostřednictvím této cesty může správce ověřování předpokládat identitu vlastníka aplikace a následně převzít identitu privilegované aplikace tím, že aktualizuje přihlašovací údaje pro aplikaci.
 >* Vlastníci předplatného Azure, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci v Azure.
@@ -268,7 +268,7 @@ Uživatelé s touto rolí můžou měnit hesla, zrušit platnost tokenů aktuali
 * Čtečka sestav
 
 > [!IMPORTANT]
-> Uživatelé s touto rolí můžou měnit hesla pro lidi, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna hesla uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Příklad:
+> Uživatelé s touto rolí můžou měnit hesla pro lidi, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna hesla uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Například:
 >
 >- Registrace aplikace a vlastníci podnikových aplikací, kteří můžou spravovat přihlašovací údaje aplikací, které vlastní. Tyto aplikace můžou mít privilegovaná oprávnění ve službě Azure AD a jinde nejsou udělená správcům helpdesku. Prostřednictvím této cesty může správce helpdesku předpokládat identitu vlastníka aplikace a následně převzít identitu privilegované aplikace tím, že aktualizuje přihlašovací údaje pro aplikaci.
 >- Vlastníci předplatného Azure, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci v Azure.
@@ -512,7 +512,7 @@ Uživatelé s touto rolí můžou vytvářet uživatele a spravovat všechny asp
 | Pouze pro uživatele, kteří nejsou správci, nebo v některé z následujících rolí s omezeným oprávněním správce:<ul><li>Čtečky adresářů<li>Správce skupin<li>Pozvánka hosta<li>Správce helpdesku<li>Čtenář centra zpráv<li>Správce hesel<li>Čtečka sestav<li>Správce uživatelů|<p>Odstranění a obnovení</p><p>Zakázat a povolit</p><p>Zrušit platnost obnovovacích tokenů</p><p>Spravovat všechny vlastnosti uživatele včetně hlavního názvu uživatele</p><p>Resetování hesla</p><p>Aktualizace (FIDO) – klíče zařízení</p>|
 
 > [!IMPORTANT]
-> Uživatelé s touto rolí můžou měnit hesla pro lidi, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna hesla uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Příklad:
+> Uživatelé s touto rolí můžou měnit hesla pro lidi, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna hesla uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Například:
 >
 >- Registrace aplikace a vlastníci podnikových aplikací, kteří můžou spravovat přihlašovací údaje aplikací, které vlastní. Tyto aplikace můžou mít privilegovaná oprávnění ve službě Azure AD a jinde nejsou udělená správcům uživatelů. Prostřednictvím této cesty může správce uživatelů předpokládat identitu vlastníka aplikace a pak dále předpokládat identitu privilegované aplikace tím, že aktualizuje přihlašovací údaje pro aplikaci.
 >- Vlastníci předplatného Azure, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci v Azure.
@@ -1971,6 +1971,7 @@ Vývojář aplikace | Vývojář aplikace | CF1C38E5-3621-4004-A7CB-879624DCED7C
 Správce ověřování | Správce ověřování | c4e39bd9-1100-46d3-8c65-fb160da0071f
 Autor datové části útoku | Autor datové části útoku | 9c6df0f2-1e7c-4dc3-b195-66dfbd24aa8f
 Správce simulace útoků | Správce simulace útoků | c430b396-e693-46cc-96f3-db01bf8bb62a
+Místní správce zařízení připojený k Azure AD | Místní správce zařízení připojený k Azure AD | 9f06204d-73c1-4d4c-880a-6edb90606fd8
 Správce Azure DevOps | Správce Azure DevOps | e3973bdf-4987-49ae-837a-ba8e231c7286
 Správce Azure Information Protection | Správce Azure Information Protection | 7495fdc4-34c4-4d15-a289-98788ce399fd
 B2C IEF, správce sady klíčů | B2C IEF, správce sady klíčů | aaf43236-0c0d-4d5f-883a-6955382ac081
@@ -1978,24 +1979,23 @@ Správce zásad IEF B2C | Správce zásad IEF B2C | 3edaf663-341e-4475-9f94-5c39
 Správce fakturace | Správce fakturace | b0f54661-2d74-4c50-afa3-1ec803f12efe
 Správce cloudové aplikace | Správce cloudové aplikace | 158c047a-c907-4556-b7ef-446551a6b5f7
 Správce cloudového zařízení | Správce cloudového zařízení | 7698a772-787b-4ac8-901f-60d6b08affd2
-Správce společnosti | Globální správce | 62e90394-69f5-4237-9190-012177145e10
 Správce dodržování předpisů | Správce dodržování předpisů | 17315797-102d-40b4-93e0-432062caca18
 Správce dat dodržování předpisů | Správce dat dodržování předpisů | e6d1a23a-da11-4be4-9570-befc86d067a7
 Správce podmíněného přístupu | Správce podmíněného přístupu | b1be1c3e-b65d-4f19-8427-f6fa0d97feb9
-Správce služby CRM | Správce Dynamics 365 | 44367163-eba1-44c3-98af-f5787879f96a
 Schvalovatel přístupu k bezpečnostnímu modulu zákazníka | Schvalovatel přístupu Customer Lockbox | 5c4f9dcd-47dc-4cf7-8c9a-9e4207cbfc91
 Správce Desktop Analytics | Správce Desktop Analytics | 38a96431-2bdf-4b4c-8b6e-5d3d8abac1a4
-Správci služeb | Správci zařízení | 9f06204d-73c1-4d4c-880a-6edb90606fd8
 Připojení zařízení | Zastaralé | 9c094953-4995-41c8-84c8-3ebb9b32c93f
 Správci zařízení | Zastaralé | 2b499bcd-da44-4968-8aec-78e1674fa64d
 Uživatelé zařízení | Zastaralé | d405c6df-0af8-4e3b-95e4-4d06e542189e
 Čtečky adresářů | Čtečky adresářů | 88d8e3e3-8f55-4a1e-953a-9b9898b8876b
 Účty synchronizace adresářů | Nezobrazeno, protože by neměl být použit | d29b2b05-8046-44ba-8758-1e26182fcf32
 Zapisovače adresářů | Zapisovače adresářů | 9360feb5-f418-4baa-8175-e2a00bac4301
-Správce služby Exchange | Správce Exchange | 29232cdf-9323-42fd-ade2-1d097af3e4de
+Správce Dynamics 365 | Správce Dynamics 365 | 44367163-eba1-44c3-98af-f5787879f96a
+Správce Exchange | Správce Exchange | 29232cdf-9323-42fd-ade2-1d097af3e4de
 Správce toku externího ID uživatele | Správce toku externího ID uživatele | 6e591065-9bad-43ed-90f3-e9424366d2f0
 Správce atributů toku uživatele externího ID | Správce atributů toku uživatele externího ID | 0f971eea-41eb-4569-a71e-57bb8a3eff1e
 Správce externích zprostředkovatelů identity | Správce externích zprostředkovatelů identity | be2f45a1-457d-42af-a067-6ec1fa63bc45
+Globální správce | Globální správce | 62e90394-69f5-4237-9190-012177145e10
 Globální čtenář | Globální čtenář | f2ef992c-3afb-46b9-b7cf-a126ee74c451
 Správce skupin | Správce skupin | fdd7a751-b60b-444a-984c-02652fe8fa1c 
 Pozvánka hosta | Pozvánka hosta | 95e79109-95c0-4d8e-aee3-d01accf2d47b
@@ -2003,10 +2003,9 @@ Správce helpdesku | Správce helpdesku | 729827e3-9c14-49f7-bb1b-9608f156bbb8
 Správce hybridní identity | Správce hybridní identity | 8ac3fc64-6eca-42ea-9e69-59f4c7b60eb2
 Správce Insights | Správce Insights | eb1f4a8d-243a-41f0-9fbd-c7cdf6c5ef7c
 Vedoucí firmy pro Insights | Vedoucí firmy pro Insights | 31e939ad-9672-4796-9c2e-873181342d2d
-Správce služby Intune | Správce Intune | 3a2c62db-5318-420d-8d74-23affee5d9d5
+Správce Intune | Správce Intune | 3a2c62db-5318-420d-8d74-23affee5d9d5
 Správce Kaizala | Správce Kaizala | 74ef975b-6605-40af-a5d2-b9539d836353
 Správce licencí | Správce licencí | 4d6ac14f-3453-41d0-bef9-a3e0c569773a
-Správce služby Lync | Správce Skypu pro firmy | 75941009-915a-4869-abe7-691bff18279e
 Čtenář ochrany osobních údajů centra zpráv | Čtenář ochrany osobních údajů centra zpráv | ac16e43d-7b2d-40e0-ac05-243ff356ab5b
 Čtenář centra zpráv | Čtenář centra zpráv | 790c1fb9-7f7d-4f88-86a1-ef1f95c05c1b
 Moderní uživatel pro obchodování | Moderní uživatel pro obchodování | d24aef57-1500-4070-84db-2666f29cf966
@@ -2015,7 +2014,7 @@ Správce aplikací Office | Správce aplikací Office | 2b745bdf-0803-4d80-aa65-
 Podpora partnerů Tier1 | Nezobrazeno, protože by neměl být použit | 4ba39ca4-527c-499a-b93d-d9b492c50246
 Podpora partnerů 2 | Nezobrazeno, protože by neměl být použit | e00e864a-17c5-4a4b-9c06-f5b95a8d5bd8
 Správce hesel | Správce hesel | 966707d0-3269-4727-9be2-8c3a10f19b9d
-Správce služby Power BI | Správce Power BI | a9ea8996-122f-4c74-9520-8edcd192826c
+Správce Power BI | Správce Power BI | a9ea8996-122f-4c74-9520-8edcd192826c
 Správce Power Platform | Správce platforma Power | 11648597-926c-4cf3-9c36-bcebb0ba8dcc
 Správce tiskárny | Správce tiskárny | 644ef478-e28f-4e28-b9dc-3fdde9aa0b1f
 Technik tiskárny | Technik tiskárny | e8cef6f1-e4bd-4ea8-bc07-4b8d950f4477
@@ -2029,14 +2028,15 @@ Operátor zabezpečení | Operátor zabezpečení | 5f2222b1-57c3-48ba-8ad5-d475
 Čtenář zabezpečení | Čtenář zabezpečení | 5d6b6bb7-de71-4623-b4af-96380a352509
 Správce služby Service support | Správce služeb | f023fd81-a637-4b56-95fd-791ac0226033
 Správce služby SharePoint | Správce SharePointu | f28a1f50-f6e7-4571-818b-6a12f2af6b6c
+Správce Skypu pro firmy | Správce Skypu pro firmy | 75941009-915a-4869-abe7-691bff18279e
 Správce komunikace týmů | Správce komunikace týmů | baf37b3a-610e-45da-9e62-d9d1e5e8914b
 Týmy Communications support inženýr | Týmy Communications support inženýr | f70938a0-fc10-4177-9e90-2178f8765737
 Týmy Communications support specialisty | Týmy Communications support specialisty | fcf91098-03e3-41a9-b5ba-6f0ec8188a12
 Správci zařízení Teams | Správci zařízení Teams | 3d762c5a-1b6c-493f-843e-55a3b42923d4
-Správce služby Teams | Správce služby Teams | 69091246-20e8-4a56-aa4d-066075b2a7a8
+Správce týmů | Správce týmů | 69091246-20e8-4a56-aa4d-066075b2a7a8
 Čtečka sestav Souhrn využití | Čtečka sestav Souhrn využití | 75934031-6c7e-415a-99d7-48dbd49e875e
 User | Nezobrazeno, protože nemůže být použit | a0b1b346-4d3e-4e8b-98f8-753987be4970
-Správce účtu uživatele | Správce uživatelů | fe930be7-5e62-47db-91af-98c3a49a38b1
+Správce uživatelů | Správce uživatelů | fe930be7-5e62-47db-91af-98c3a49a38b1
 Připojení zařízení na pracovišti | Zastaralé | c34f683f-4d5a-4403-affd-6615e00e3a7f
 
 ## <a name="deprecated-roles"></a>Zastaralé role
@@ -2057,15 +2057,11 @@ Ne všechny role vracené prostředím PowerShell nebo MS Graph API jsou viditel
 
 Název rozhraní API | Název Azure Portal | Poznámky
 -------- | ------------------- | -------------
-Správce společnosti | Globální správce | [Název se změnil pro lepší přehlednost.](permissions-reference.md#role-template-ids)
-Správce služby CRM | Správce Dynamics 365 | [Odráží aktuální značku produktu.](permissions-reference.md#role-template-ids)
 Připojení zařízení | Zastaralé | [Dokumentace k zastaralým rolím](permissions-reference.md#deprecated-roles)
 Správci zařízení | Zastaralé | [Dokumentace k zastaralým rolím](permissions-reference.md#deprecated-roles)
 Uživatelé zařízení | Zastaralé | [Dokumentace k zastaralým rolím](permissions-reference.md#deprecated-roles)
 Účty synchronizace adresářů | Nezobrazeno, protože by neměl být použit | [Dokumentace k účtům synchronizace adresářů](permissions-reference.md#directory-synchronization-accounts)
-Zapisovače adresářů | Nezobrazeno, protože by neměl být použit | [Dokumentace k modulům pro zápis adresářů](permissions-reference.md#directory-writers)
 Uživatel typu host | Nezobrazeno, protože nemůže být použit  | Není k dispozici
-Správce služby Lync | Správce Skypu pro firmy | [Odráží aktuální značku produktu.](permissions-reference.md#role-template-ids)
 Podpora partnerské vrstvy 1 | Nezobrazeno, protože by neměl být použit | [Dokumentace k podpoře partnerů Tier1](permissions-reference.md#partner-tier1-support)
 Podpora partnerské úrovně 2 | Nezobrazeno, protože by neměl být použit | [Dokumentace k podpoře partnerů 2](permissions-reference.md#partner-tier2-support)
 Omezený uživatel typu Host | Nezobrazeno, protože nemůže být použit | Není k dispozici
