@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: delhan
-ms.openlocfilehash: d7e56fe36af3d841cfd888dd6c1bf05502837cdd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f3e4d51b4d41fa0dc23e9b12ac0251c14215de5c
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87079838"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633006"
 ---
 # <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>Spuštění virtuálního počítače se zablokuje při přípravě Windows. Nevypínejte počítač v Azure
 
@@ -39,6 +39,9 @@ Virtuální počítač s Windows se nespustí. Když pomocí **diagnostiky spou�
 K tomuto problému obvykle dochází, když server provádí konečné restartování po změně konfigurace. Změna konfigurace může být inicializována aktualizacemi systému Windows nebo změnami rolí/funkcí serveru. Pro web Windows Update, pokud je velikost aktualizací velká, operační systém potřebuje více času na změnu konfigurace změn.
 
 ## <a name="collect-an-os-memory-dump"></a>Shromažďování výpisu paměti operačního systému
+
+> [!TIP]
+> Pokud máte nedávno zálohovaný virtuální počítač, můžete zkusit [obnovit virtuální počítač ze zálohy](../../backup/backup-azure-arm-restore-vms.md) a opravit problém při spouštění.
 
 Pokud se problém nevyřeší po čekání na zpracování změn, budete potřebovat shromáždit soubor s výpisem paměti a kontaktovat podporu. Chcete-li shromáždit soubor s výpisem paměti, postupujte podle následujících kroků:
 

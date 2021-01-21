@@ -6,12 +6,12 @@ ms.date: 10/29/2020
 author: kryalama
 ms.custom: devx-track-java
 ms.author: kryalama
-ms.openlocfilehash: 39897e490e4653fbaad7a64ecc0b33f161d1264b
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: c0745dd4069c64292fbcaef666d843ae2d25f7b3
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165786"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632576"
 ---
 # <a name="telemetry-processors-preview---azure-monitor-application-insights-for-java"></a>Procesory telemetrie (Preview) – Azure Monitor Application Insights pro Java
 
@@ -241,7 +241,7 @@ Pro `hash` akci je nutné provést následující akce:
 ### `extract`
 
 > [!NOTE]
-> Tato funkce je pouze v 3.0.1 a novějších.
+> Tato funkce je pouze v 3.0.2 a novějších.
 
 Extrahuje hodnoty pomocí pravidla regulárního výrazu ze vstupního klíče do cílových klíčů zadaných v pravidle. Pokud cílový klíč již existuje, bude přepsán. Chová se podobně jako u nastavení [procesoru span](#extract-attributes-from-span-name) `toAttributes` s existujícím atributem jako se zdrojem.
 

@@ -3,16 +3,16 @@ title: Azure Service Bus syntaxe akce SQL pravidla předplatného | Microsoft Do
 description: Tento článek poskytuje referenci pro syntaxi akce pravidla SQL. Akce jsou napsány v syntaxi založené na jazyku SQL, která je provedena proti zprávě.
 ms.topic: article
 ms.date: 11/24/2020
-ms.openlocfilehash: 7ce3332fb1a2025e89135e5e42e72d4afe1e7a5e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 606281d42d5598d7f73312990d3a19775a202c08
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489390"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632807"
 ---
 # <a name="subscription-rule-sql-action-syntax"></a>Syntaxe akce SQL pravidla předplatného
 
-*Akce SQL* slouží k manipulaci s metadaty zprávy poté, co byla vybrána zpráva pomocí filtru pravidla předplatného. Jedná se o textový výraz, který se zachází na podmnožinu standardu SQL-92. Výrazy akce se používají s `sqlExpression` prvkem vlastnosti ' Action ' Service Bus `Rule` v [šabloně Azure Resource Manager](service-bus-resource-manager-namespace-topic-with-rule.md)nebo v `az servicebus topic subscription rule create` argumentu příkazu rozhraní příkazového řádku Azure CLI [`--action-sql-expression`](/cli/azure/servicebus/topic/subscription/rule?preserve-view=true&view=azure-cli-latest#az_servicebus_topic_subscription_rule_create) a několika funkcemi sady SDK, které umožňují správu pravidel předplatného.
+*Akce SQL* slouží k manipulaci s metadaty zprávy poté, co byla vybrána zpráva pomocí filtru pravidla předplatného. Jedná se o textový výraz, který se zachází na podmnožinu standardu SQL-92. Výrazy akce se používají s `sqlExpression` prvkem vlastnosti ' Action ' Service Bus `Rule` v [šabloně Azure Resource Manager](service-bus-resource-manager-namespace-topic-with-rule.md)nebo v `az servicebus topic subscription rule create` argumentu příkazu rozhraní příkazového řádku Azure CLI [`--action-sql-expression`](/cli/azure/servicebus/topic/subscription/rule#az_servicebus_topic_subscription_rule_create) a několika funkcemi sady SDK, které umožňují správu pravidel předplatného.
   
   
 ```  
@@ -51,7 +51,7 @@ ms.locfileid: "96489390"
     [<scope> .] <property_name>
 ``` 
   
-## <a name="arguments"></a>Arguments  
+## <a name="arguments"></a>Argumenty  
   
 -   `<scope>` je volitelný řetězec, který označuje rozsah `<property_name>` . Platné hodnoty jsou `sys` nebo `user` . `sys`Hodnota označuje rozsah systému, kde `<property_name>` je název veřejné vlastnosti [třídy BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage). `user` označuje obor uživatele, kde `<property_name>` je klíč slovníku [třídy BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) . `user` Obor je výchozím rozsahem, pokud není `<scope>` zadán.  
   
@@ -71,7 +71,7 @@ Pokus o přístup k neexistující systémové vlastnosti je chyba, ale pokus o 
   
 ```  
   
-### <a name="arguments"></a>Arguments  
+### <a name="arguments"></a>Argumenty  
  `<regular_identifier>` je řetězec reprezentovaný následujícím regulárním výrazem:  
   
 ```  
@@ -135,7 +135,7 @@ Pokus o přístup k neexistující systémové vlastnosti je chyba, ale pokus o 
       <integer_constant> | <decimal_constant> | <approximate_number_constant> | <boolean_constant> | NULL  
 ```  
   
-### <a name="arguments"></a>Arguments  
+### <a name="arguments"></a>Argumenty  
   
 -   `<integer_constant>` je řetězec čísel, který není uzavřen v uvozovkách a neobsahuje desetinná místa. Hodnoty se ukládají jako `System.Int64` interně a používají stejný rozsah.  
   

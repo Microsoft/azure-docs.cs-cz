@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 06/17/2020
-ms.openlocfilehash: e85c97df29bbbcc5d446d788cc190f3c90f24024
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: bbad7dcaa1d92df4969c88e4ba86a62987509e39
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602228"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632795"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Pravidla brány firewall pro Azure SQL Database a Azure synapse
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -101,7 +101,9 @@ Když se počítač pokusí připojit k serveru z Internetu, brána firewall nej
 
 ### <a name="connections-from-inside-azure"></a>Připojení z Azure
 
-Pokud chcete aplikacím hostovaným v Azure povolit připojení k vašemu SQL serveru, musí být povolená připojení Azure. Když se aplikace z Azure pokusí připojit k vašemu serveru, brána firewall ověří, jestli jsou povolená připojení Azure. To se dá zapnout přímo z okna Azure Portal nastavením pravidel brány firewall a přepnutím nastavení **Povolit službám a prostředkům Azure přístup k tomuto serveru** **v v nastavení** **brány firewall a virtuální sítě** . Pokud není připojení povolené, požadavek se neshoduje se serverem.
+Pokud chcete aplikacím hostovaným v Azure povolit připojení k vašemu SQL serveru, musí být povolená připojení Azure. Aby bylo možné povolit připojení k Azure, musí existovat pravidlo brány firewall s počátečními a koncovými IP adresami nastavenými na 0.0.0.0.
+
+Když se aplikace z Azure pokusí připojit k serveru, brána firewall zkontroluje, jestli jsou povolená připojení Azure, tím, že ověří, že toto pravidlo firewallu existuje. Dá se zapnout přímo z okna Azure Portal přepnutím možnosti **Povolit službám a prostředkům Azure přístup k tomuto serveru** **v v nastavení** **brány firewall a virtuální sítě** . Nastavení na ON vytvoří pravidlo brány firewall příchozí komunikace pro IP 0.0.0.0-0.0.0.0 s názvem **AllowAllWindowsIP**. Pomocí PowerShellu nebo rozhraní příkazového řádku Azure můžete vytvořit pravidlo brány firewall s počátečními a koncovými IP adresami nastavenou na 0.0.0.0, pokud nepoužíváte portál. 
 
 > [!IMPORTANT]
 > Tato možnost nakonfiguruje bránu firewall tak, aby povolovala všechna připojení z Azure, včetně připojení z předplatných jiných zákazníků. Pokud vyberete tuto možnost, ujistěte se, že vaše přihlašovací a uživatelská oprávnění omezují přístup jenom na autorizované uživatele.
@@ -155,7 +157,7 @@ Otevře se stránka s přehledem pro váš server. Zobrazuje plně kvalifikovan�
 
 ### <a name="use-transact-sql-to-manage-ip-firewall-rules"></a>Správa pravidel brány firewall protokolu IP pomocí jazyka Transact-SQL
 
-| Zobrazení katalogu nebo uložená procedura | Level | Popis |
+| Zobrazení katalogu nebo uložená procedura | Level | Description |
 | --- | --- | --- |
 | [sys.firewall_rules](/sql/relational-databases/system-catalog-views/sys-firewall-rules-azure-sql-database) |Server |Zobrazí aktuální pravidla brány firewall protokolu IP na úrovni serveru. |
 | [sp_set_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database) |Server |Vytvoří nebo aktualizuje pravidla brány firewall protokolu IP na úrovni serveru. |
@@ -189,7 +191,7 @@ EXECUTE sp_delete_firewall_rule @name = N'ContosoFirewallRule'
 > [!IMPORTANT]
 > Modul PowerShell Azure Resource Manager je stále podporován Azure SQL Database, ale pro modul AZ. SQL je teď k dispozici veškerý vývoj. Tyto rutiny naleznete v tématu [AzureRM. SQL](/powershell/module/AzureRM.Sql/). Argumenty příkazů v modulech AZ a AzureRm jsou v podstatě identické.
 
-| Rutina | Level | Popis |
+| Rutina | Level | Description |
 | --- | --- | --- |
 | [Get-AzSqlServerFirewallRule](/powershell/module/az.sql/get-azsqlserverfirewallrule) |Server |Vrátí aktuální pravidla brány firewall na úrovni serveru. |
 | [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) |Server |Vytvoří nové pravidlo brány firewall na úrovni serveru |
@@ -211,7 +213,7 @@ New-AzSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
 
 ### <a name="use-cli-to-manage-server-level-ip-firewall-rules"></a>Použití rozhraní příkazového řádku ke správě pravidel brány firewall protokolu IP na úrovni serveru
 
-| Rutina | Level | Popis |
+| Rutina | Level | Description |
 | --- | --- | --- |
 |[AZ SQL Server Firewall-Rule Create](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create)|Server|Vytvoří pravidlo brány firewall protokolu IP serveru.|
 |[AZ SQL Server Firewall-Rule list](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-list)|Server|Vypíše pravidla brány firewall protokolu IP na serveru.|
@@ -233,7 +235,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 
 ### <a name="use-a-rest-api-to-manage-server-level-ip-firewall-rules"></a>Použití REST API ke správě pravidel brány firewall protokolu IP na úrovni serveru
 
-| Rozhraní API | Level | Popis |
+| Rozhraní API | Level | Description |
 | --- | --- | --- |
 | [Vypsat pravidla brány firewall](/rest/api/sql/firewallrules/listbyserver) |Server |Zobrazí aktuální pravidla brány firewall protokolu IP na úrovni serveru. |
 | [Vytvořit nebo aktualizovat pravidla brány firewall](/rest/api/sql/firewallrules/createorupdate) |Server |Vytvoří nebo aktualizuje pravidla brány firewall protokolu IP na úrovni serveru. |

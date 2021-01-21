@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
-ms.openlocfilehash: 8c3e76f1a7edffefc8773dfa548773ec0932fae6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a937528e3bfd8bea16912d614133988763748bab
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86129850"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632955"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>Při spuštění virtuálního počítače Azure se v systému Windows zobrazí modrá obrazovka "KRITICKá služba neúspěšná"
 Tento článek popisuje chybu "KRITICKá služba neúspěšná", která se může vyskytnout při spuštění virtuálního počítače s Windows v Microsoft Azure. Poskytuje kroky pro řešení potíží, které vám pomůžou tyto problémy vyřešit. 
@@ -38,6 +38,9 @@ Chyby Stop mají různé příčiny. Mezi nejběžnější příčiny patří:
 - Aplikace přistupuje k zakázanému sektoru paměti.
 
 ## <a name="solution"></a>Řešení 
+
+> [!TIP]
+> Pokud máte nedávno zálohovaný virtuální počítač, můžete zkusit [obnovit virtuální počítač ze zálohy](../../backup/backup-azure-arm-restore-vms.md) a opravit problém při spouštění.
 
 Pokud chcete tento problém vyřešit, obraťte se na [podporu a odešlete soubor s výpisem paměti](./troubleshoot-common-blue-screen-error.md#collect-memory-dump-file), který nám pomůže rychle diagnostikovat problém nebo vyzkoušet následující řešení pro samoobslužnou pomoc.
 
@@ -96,7 +99,7 @@ Pokud chcete povolit protokoly výpisu paměti a sériovou konzolu, spusťte ná
 
 2. [Odpojte disk s operačním systémem a pak znovu připojte disk s operačním systémem k ovlivněnému virtuálnímu počítači](troubleshoot-recovery-disks-portal-windows.md). Virtuální počítač se spustí v bezpečném režimu. Pokud stále dochází k chybě, Projděte si volitelný krok.
 3. Otevřete okno **Run** a spusťte **Ověřovač** a spusťte nástroj Správce ověřovače ovladačů.
-4. Vyberte možnost **automaticky vybrat nepodepsané ovladače**a pak klikněte na tlačítko **Další**.
+4. Vyberte možnost **automaticky vybrat nepodepsané ovladače** a pak klikněte na tlačítko **Další**.
 5. Zobrazí se seznam nepodepsaných souborů ovladačů. Zapamatujte si názvy souborů.
 6. Zkopírujte stejné verze těchto souborů z pracovního virtuálního počítače a pak tyto nepodepsané soubory nahraďte. 
 
@@ -115,7 +118,7 @@ Pokud chcete protokoly výpisu paměti analyzovat sami, postupujte takto:
 1. Disk s operačním systémem připojte k virtuálnímu počítači pro obnovení.
 2. Na disku s operačním systémem, který jste připojili, přejděte na **\Windows\System32\Config**. Zkopírujte všechny soubory jako zálohu pro případ, že je vyžadováno vrácení zpět.
 3. Spusťte **Editor registru** (regedit.exe).
-4. Vyberte **HKEY_LOCAL_MACHINE** klíč. V nabídce vyberte položku **File**  >  **podregistr Load**File.
+4. Vyberte **HKEY_LOCAL_MACHINE** klíč. V nabídce vyberte položku   >  **podregistr Load** File.
 5. Přejděte do složky **\windows\system32\config\SYSTEM** na disku s operačním systémem, který jste připojili. Jako název podregistru zadejte **BROKENSYSTEM**. Nový podregistr registru se zobrazí pod klíčem **HKEY_LOCAL_MACHINE** .
 6. Přejděte na **HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Control\CrashControl** a proveďte následující změny:
 
@@ -123,7 +126,7 @@ Pokud chcete protokoly výpisu paměti analyzovat sami, postupujte takto:
 
     CrashDumpEnabled = 2
 7.  Vyberte **BROKENSYSTEM**. V nabídce vyberte **soubor**  >  **Uvolnit podregistr**.
-8.  Upravte nastavení BCD tak, aby se spouštěla do režimu ladění. Z příkazového řádku se zvýšenými oprávněními spusťte následující příkazy:
+8.  Upravte nastavení BCD tak, aby se spouštěla do režimu ladění. Na příkazovém řádku se zvýšenými oprávněními spusťte následující příkazy:
 
     ```cmd
     REM Setup some debugging flags on the boot manager

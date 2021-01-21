@@ -3,16 +3,16 @@ title: Syntaxe filtru SQL pro pravidlo předplatného Azure Service Bus | Micros
 description: Tento článek poskytuje podrobné informace o gramatice filtru SQL. Filtr SQL podporuje podmnožinu standardu SQL-92.
 ms.topic: article
 ms.date: 11/24/2020
-ms.openlocfilehash: 9bff18b2161e419d728c360c9ed950ac2867fea8
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 60f3cb6e85cef7a166c353f78cfb50405b962bdd
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498672"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633167"
 ---
 # <a name="subscription-rule-sql-filter-syntax"></a>Syntaxe filtru SQL pravidla předplatného
 
-*Filtr SQL* je jedním z dostupných typů filtrů pro Service Bus odběry tématu. Jedná se o textový výraz, který se zachází na podmnožinu standardu SQL-92. Výrazy filtru se používají s `sqlExpression` prvkem vlastnosti sqlFilter Service Bus `Rule` v [šabloně Azure Resource Manager](service-bus-resource-manager-namespace-topic-with-rule.md)nebo v `az servicebus topic subscription rule create` argumentu příkazu Azure CLI [`--filter-sql-expression`](/cli/azure/servicebus/topic/subscription/rule?preserve-view=true&view=azure-cli-latest#az_servicebus_topic_subscription_rule_create) a několika funkcemi sady SDK, které umožňují správu pravidel předplatného.
+*Filtr SQL* je jedním z dostupných typů filtrů pro Service Bus odběry tématu. Jedná se o textový výraz, který se zachází na podmnožinu standardu SQL-92. Výrazy filtru se používají s `sqlExpression` prvkem vlastnosti sqlFilter Service Bus `Rule` v [šabloně Azure Resource Manager](service-bus-resource-manager-namespace-topic-with-rule.md)nebo v `az servicebus topic subscription rule create` argumentu příkazu Azure CLI [`--filter-sql-expression`](/cli/azure/servicebus/topic/subscription/rule#az_servicebus_topic_subscription_rule_create) a několika funkcemi sady SDK, které umožňují správu pravidel předplatného.
 
 Service Bus Premium také podporuje [syntaxi selektoru zpráv SQL JMS](https://docs.oracle.com/javaee/7/api/javax/jms/Message.html) prostřednictvím rozhraní JMS 2,0 API.
 
@@ -48,7 +48,7 @@ Service Bus Premium také podporuje [syntaxi selektoru zpráv SQL JMS](https://d
   
 ```  
   
-## <a name="arguments"></a>Arguments  
+## <a name="arguments"></a>Argumenty  
   
 -   `<scope>` je volitelný řetězec, který označuje rozsah `<property_name>` . Platné hodnoty jsou `sys` nebo `user` . `sys`Hodnota označuje rozsah systému, kde `<property_name>` je název veřejné vlastnosti [třídy BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage). `user` označuje obor uživatele, kde `<property_name>` je klíč slovníku [třídy BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) . `user` Obor je výchozím oborem, pokud `<scope>` není zadán.  
   
@@ -68,7 +68,7 @@ Pokus o přístup k neexistující systémové vlastnosti je chyba, zatímco pok
   
 ```  
   
-### <a name="arguments"></a>Arguments  
+### <a name="arguments"></a>Argumenty  
 
  `<regular_identifier>` je řetězec reprezentovaný následujícím regulárním výrazem:  
   
@@ -133,7 +133,7 @@ Tato gramatika znamená libovolný řetězec, který začíná písmenem a násl
       <integer_constant> | <decimal_constant> | <approximate_number_constant> | <boolean_constant> | NULL  
 ```  
   
-### <a name="arguments"></a>Arguments  
+### <a name="arguments"></a>Argumenty  
   
 -   `<integer_constant>` je řetězec čísel, který není uzavřen v uvozovkách a neobsahuje desetinná místa. Hodnoty se ukládají jako `System.Int64` interně a používají stejný rozsah.  
   

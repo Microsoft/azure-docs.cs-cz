@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 1131c8e79d9df2883dcf7e975af9732c21318a49
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: e1462246b95da67591cbdfd1f9ed819220de5764
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621160"
+ms.locfileid: "98633057"
 ---
 # <a name="connect-your-barracuda-waf-appliance"></a>Připojení zařízení Barracuda WAF 
 
@@ -30,12 +30,16 @@ Konektor firewallu webových aplikací Barracuda (WAF) umožňuje snadno připoj
 > Data budou uložená v geografickém umístění pracovního prostoru, na kterém běží Azure Sentinel.
 
 ## <a name="configure-and-connect-barracuda-waf"></a>Konfigurace a připojení Barracuda WAF
-Firewall webových aplikací Barracuda může integrovat a exportovat protokoly přímo do Azure Sentinel prostřednictvím agenta Log Analytics.
-1. Přejděte na [tok konfigurace Barracuda WAF](https://campus.barracuda.com/product/webapplicationfirewall/doc/73696965/configure-the-barracuda-web-application-firewall-to-integrate-with-the-oms-server-and-export-logs/)a podle pokynů nastavte připojení pomocí těchto parametrů:
-    - **ID pracovního prostoru**: na stránce konektoru služby Azure Sentinel Barracuda ZKOPÍRUJTE hodnotu ID vašeho pracovního prostoru.
-    - **Primární klíč**: na stránce konektoru služby Azure Sentinel Barracuda Zkopírujte hodnotu vašeho primárního klíče.
-1. Pokud chcete použít příslušné schéma v Log Analytics pro události Barracuda, vyhledejte **CommonSecurityLog** a **barracuda_CL**.
 
+Firewall webových aplikací Barracuda může integrovat a exportovat protokoly přímo do Azure Sentinel prostřednictvím agenta Log Analytics.
+
+1. Přejděte na [tok konfigurace Barracuda WAF](https://campus.barracuda.com/product/webapplicationfirewall/doc/73696965/configure-the-barracuda-web-application-firewall-to-integrate-with-the-oms-server-and-export-logs/)a podle pokynů nastavte připojení pomocí těchto parametrů:
+
+    - **ID pracovního prostoru**: na stránce konektoru služby Azure Sentinel Barracuda ZKOPÍRUJTE hodnotu ID vašeho pracovního prostoru.
+
+    - **Primární klíč**: na stránce konektoru služby Azure Sentinel Barracuda Zkopírujte hodnotu vašeho primárního klíče.
+
+1. Pokud chcete použít příslušné schéma v Log Analytics pro události Barracuda, vyhledejte **CommonSecurityLog** a **barracuda_CL**.
 
 ## <a name="validate-connectivity"></a>Ověřit připojení
 

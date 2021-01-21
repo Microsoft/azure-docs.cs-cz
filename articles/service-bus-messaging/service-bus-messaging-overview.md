@@ -3,12 +3,12 @@ title: Přehled přenosu zpráv ve službě Azure Service Bus | Dokumentace Micr
 description: Tento článek poskytuje podrobný přehled Azure Service Bus, plně spravovaného zprostředkovatele zpráv Enterprise Integration.
 ms.topic: overview
 ms.date: 11/20/2020
-ms.openlocfilehash: 70e9d966a14f78866d72865eed4cbb2dfd6c18dd
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.openlocfilehash: d9103557eb7b32f376ba6590bbca5f557bf32764
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97755731"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632863"
 ---
 # <a name="what-is-azure-service-bus"></a>Co je Azure Service Bus?
 Microsoft Azure Service Bus je plně spravovaný zprostředkovatel podnikových zpráv s frontami zpráv a tématy pro publikování a odběr. Service Bus slouží k tomu, aby bylo možné oddělit aplikace a služby od sebe od sebe, a nabízí následující výhody:
@@ -138,11 +138,11 @@ Z důvodu ochrany před nežádoucími přenosy Service Bus poskytuje [funkce za
 
 Plně podporované Service Bus klientské knihovny jsou k dispozici prostřednictvím sady Azure SDK.
 
-- [Azure Service Bus pro .NET](/dotnet/api/overview/azure/service-bus?preserve-view=true&view=azure-dotnet)
-- [Knihovny Azure Service Bus pro Java](/java/api/overview/azure/servicebus?preserve-view=true&view=azure-java-stable)
+- [Azure Service Bus pro .NET](/dotnet/api/overview/azure/service-bus?preserve-view=true)
+- [Knihovny Azure Service Bus pro Java](/java/api/overview/azure/servicebus?preserve-view=true)
 - [Poskytovatel Azure Service Bus pro Java JMS 2,0](how-to-use-java-message-service-20.md)
-- [Azure Service Bus moduly pro JavaScript a TypeScript](/javascript/api/overview/azure/service-bus?preserve-view=true&view=azure-node-latest)
-- [Knihovny Azure Service Bus pro Python](/python/api/overview/azure/servicebus?preserve-view=true&view=azure-python)
+- [Azure Service Bus moduly pro JavaScript a TypeScript](/javascript/api/overview/azure/service-bus?preserve-view=true)
+- [Knihovny Azure Service Bus pro Python](/python/api/overview/azure/servicebus?preserve-view=true)
 
 [Azure Service Bus ' primární protokol je AMQP 1,0](service-bus-amqp-overview.md) a dá se použít z libovolného klienta protokolu kompatibilního s AMQP 1,0. Několik Open Source klientů AMQP má ukázky, které explicitně ukazují interoperabilitu Service Bus. Přečtěte si [Průvodce protokolem AMQP 1,0](service-bus-amqp-protocol-guide.md) , který vám pomůže pochopit, jak používat funkce Service Bus s klienty AMQP 1,0 přímo.
 

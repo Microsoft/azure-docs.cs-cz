@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: d3ba7baf79ee972ed7289a1aab93484108da70cf
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 6d06a46d2eaaad362890f1e3e44dbc746fa10898
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724221"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633280"
 ---
 Služba soubory Azure nabízí čtyři různé úrovně úložiště, Premium, transakce optimalizované, horké a studené, aby bylo možné přizpůsobit své sdílené složky na požadavky na výkon a cenu vašeho scénáře:
 
@@ -22,9 +22,9 @@ Služba soubory Azure nabízí čtyři různé úrovně úložiště, Premium, t
 - **Hot**: Hot Shared File nabízejí úložiště optimalizované pro scénáře sdílení souborů pro obecné účely, jako jsou týmové sdílené složky. Hot Shared File jsou nabízeny na standardním hardwaru úložiště, který je zálohovaný pomocí HDD.
 - **Studená**: studená sdílení souborů nabízejí cenově výhodné úložiště optimalizované pro scénáře úložiště online archivace. Studené sdílené složky jsou nabízeny na standardním hardwaru úložiště, který je zálohovaný pomocí HDD.
 
-Soubory úrovně Premium se nasazují v typu **účtu úložiště** souborů a jsou dostupné jenom v modelu zřízené fakturace. Další informace o modelu zřízené fakturace pro sdílené složky Premium najdete v tématu [Principy zřizování pro sdílené složky prémiových souborů](../articles/storage/files/understanding-billing.md#provisioned-billing). Standardní sdílené složky, včetně transakce optimalizované, horké a studené sdílené složky, se nasazují v typu **účtu úložiště pro obecné účely verze 2 (GPv2)** a při fakturaci jsou k dispozici prostřednictvím průběžných plateb. Horké a studené sdílené složky jsou dostupné ve všech veřejných a Azure Government oblastech Azure. Transakce optimalizované pro transakce jsou k dispozici ve všech oblastech Azure, včetně oblastí Azure Čína a Azure Německo.
+Soubory úrovně Premium se nasazují v typu **účtu úložiště** souborů a jsou dostupné jenom v modelu zřízené fakturace. Další informace o modelu zřízené fakturace pro sdílené složky Premium najdete v tématu [Principy zřizování pro sdílené složky prémiových souborů](../articles/storage/files/understanding-billing.md#provisioned-model). Standardní sdílené složky, včetně transakce optimalizované, horké a studené sdílené složky, se nasazují v typu **účtu úložiště pro obecné účely verze 2 (GPv2)** a při fakturaci jsou k dispozici prostřednictvím průběžných plateb. Horké a studené sdílené složky jsou dostupné ve všech veřejných a Azure Government oblastech Azure. Transakce optimalizované pro transakce jsou k dispozici ve všech oblastech Azure, včetně oblastí Azure Čína a Azure Německo.
 
-Při výběru vrstvy úložiště pro vaše úlohy zvažte požadavky na výkon a využití. Pokud vaše úloha vyžaduje latenci s jednou číslicí nebo používáte úložné médium SSD místně, je pravděpodobně nejlepší přizpůsobit úroveň Premium. Pokud se nízká latence nevejde do značné míry, například u týmových sdílených složek, které jsou místně připojené z Azure nebo v místní mezipaměti pomocí Azure File Sync, může být úložiště úrovně Standard lépe vhodné z hlediska nákladů.
+Při výběru vrstvy úložiště pro vaše úlohy zvažte požadavky na výkon a využití. Pokud vaše úloha vyžaduje latenci s jednou číslicí nebo používáte úložné médium SSD místně, je pravděpodobně nejlepší přizpůsobit úroveň Premium. Pokud se nízká latence nevejde do značné míry, například u týmových sdílených složek, které jsou místně připojené z Azure nebo v místní mezipaměti pomocí Synchronizace souborů Azure, může být úložiště úrovně Standard lépe vhodné z hlediska nákladů.
 
 Jakmile vytvoříte sdílenou složku v účtu úložiště, nemůžete ji přesunout do vrstev výhradně na různé typy účtů úložiště. Například pro přesunutí transakce optimalizované sdílené složky do úrovně Premium musíte v účtu úložiště úložiště vytvořit novou sdílenou složku a zkopírovat data z původní sdílené složky do nové sdílené složky v účtu úložiště. K kopírování dat mezi sdílenými složkami Azure doporučujeme používat AzCopy, ale můžete použít také nástroje jako `robocopy` ve Windows nebo `rsync` pro MacOS a Linux. 
 

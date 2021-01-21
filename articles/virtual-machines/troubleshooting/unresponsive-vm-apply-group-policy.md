@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 05/07/2020
 ms.author: v-mibufo
-ms.openlocfilehash: cbf2fe491e1fe0b553eab04ca7190da0413a3ba6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7160ec9564ede21eab0a205b2d66a7d566639506
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86526006"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632652"
 ---
 # <a name="vm-is-unresponsive-when-applying-group-policy-local-users-and-groups-policy"></a>Virtuální počítač nereaguje při použití Zásady skupiny zásady místních uživatelů a skupin.
 
@@ -31,7 +31,7 @@ Když pomocí [diagnostiky spouštění](./boot-diagnostics.md) zobrazíte sním
 
 :::image type="content" source="media//unresponsive-vm-apply-group-policy/applying-group-policy-1.png" alt-text="Snímek obrazovky s použitím Zásady skupiny načítání zásad místních uživatelů a skupin (Windows Server 2012 R2)":::
 
-:::image type="content" source="media/unresponsive-vm-apply-group-policy/applying-group-policy-2.png" alt-text="Snímek obrazovky s použitím Zásady skupiny načítání zásad místních uživatelů a skupin (Windows Server 2012 R2)":::
+:::image type="content" source="media/unresponsive-vm-apply-group-policy/applying-group-policy-2.png" alt-text="Snímek obrazovky s použitím Zásady skupiny načítání zásad místních uživatelů a skupin (Windows Server 2012)":::
 
 ## <a name="cause"></a>Příčina
 
@@ -47,6 +47,9 @@ Tady je problematické zásady:
 ## <a name="resolution"></a>Řešení
 
 ### <a name="process-overview"></a>Přehled procesu
+
+> [!TIP]
+> Pokud máte nedávno zálohovaný virtuální počítač, můžete zkusit [obnovit virtuální počítač ze zálohy](../../backup/backup-azure-arm-restore-vms.md) a opravit problém při spouštění.
 
 1. [Vytvoření a přístup k opravnému virtuálnímu počítači](#step-1-create-and-access-a-repair-vm)
 1. [Zakázat zásadu](#step-2-disable-the-policy)
@@ -64,9 +67,25 @@ Tady je problematické zásady:
 ### <a name="step-2-disable-the-policy"></a>Krok 2: zakázání zásady
 
 1. V okně opravit virtuální počítač otevřete Editor registru.
-1. Vyhledejte klíč **HKEY_LOCAL_MACHINE** a v nabídce **File**vyberte příkaz  >  **načíst** soubor.
+1. Vyhledejte klíč **HKEY_LOCAL_MACHINE** a v nabídce vyberte příkaz  >  **načíst** soubor.
 
-    :::image type="content" source="media/unresponsive-vm-apply-group-policy/registry.png" alt-text="Snímek obrazovky s použitím Zásady skupiny načítání zásad místních uživatelů a skupin (Windows Server 2012 R2)" /v CleanupProfiles /f
+    :::image type="content" source="media/unresponsive-vm-apply-group-policy/registry.png" alt-text="Snímek obrazovky ukazuje zvýrazněný HKEY_LOCAL_MACHINE a nabídku obsahující podregistr Load.":::
+
+    - Pomocí funkce Load podregistr můžete načíst klíče registru z offline systému. V tomto případě je systém poškozeným diskem připojeným k opravnému virtuálnímu počítači.
+    - Nastavení pro systém jsou ukládána na `HKEY_LOCAL_MACHINE` a lze je zkrátit jako HKLM.
+1. Na připojeném disku přejdete do `\windows\system32\config\SOFTWARE` souboru a otevřete ho.
+
+    1. Po zobrazení výzvy k zadání názvu zadejte BROKENSOFTWARE.
+    1. Chcete-li ověřit, zda byl BROKENSOFTWARE načten, rozbalte **HKEY_LOCAL_MACHINE** a vyhledejte přidaný BROKENSOFTWARE klíč.
+1. Přejít na BROKENSOFTWARE a ověřte, jestli v načteném podregistru existuje klíč CleanupProfile.
+
+    1. Pokud klíč existuje, zásada CleanupProfile se nastaví. Jeho hodnota představuje zásady uchovávání informací měřené ve dnech. Pokračujte v odstraňování klíče.
+    1. Pokud klíč neexistuje, zásada CleanupProfile se nenastaví. [Odešlete lístek podpory](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), včetně souboru Memory. dmp umístěného v adresáři systému Windows připojeného disku s operačním systémem.
+
+1. Odstraňte klíč CleanupProfiles pomocí tohoto příkazu:
+
+    ```
+    reg delete "HKLM\BROKENSOFTWARE\Policies\Microsoft\Windows\System" /v CleanupProfiles /f
     ```
 1.  Uvolněte podregistr BROKENSOFTWARE pomocí tohoto příkazu:
 

@@ -13,18 +13,16 @@ ms.workload: infrastructure
 ms.date: 11/20/2020
 ms.author: genli
 ms.custom: has-adal-ref
-ms.openlocfilehash: 00095eed3fe6d143d9ed7a0c748c4702028f4632
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: 87bf311b5199ec187c24c28a42314d9dc6787998
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97832056"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633023"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>Chyby spuštění nástroje BitLocker na virtuálním počítači Azure
 
  Tento článek popisuje chyby nástroje BitLocker, ke kterým může dojít při spuštění virtuálního počítače s Windows v Microsoft Azure.
-
- 
 
 ## <a name="symptom"></a>Příznak
 
@@ -42,6 +40,9 @@ ms.locfileid: "97832056"
 K tomuto problému může dojít, pokud virtuální počítač nemůže najít soubor klíče bek (BitLocker Recovery Key) k dešifrování šifrovaného disku.
 
 ## <a name="solution"></a>Řešení
+
+> [!TIP]
+> Pokud máte nedávno zálohovaný virtuální počítač, můžete zkusit [obnovit virtuální počítač ze zálohy](../../backup/backup-azure-arm-restore-vms.md) a opravit problém při spouštění.
 
 Pokud chcete tento problém vyřešit, zastavte a uvolněte virtuální počítač a potom ho spusťte. Tato operace vynutí, aby virtuální počítač načetl soubor klíče bek z Azure Key Vault a pak ho umístil na zašifrovaný disk. 
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: v-miegge
-ms.openlocfilehash: f83a1820eb931fa075681da7a9661b304059cd2a
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 0c0ec45eee86031e1533b97ccf352de0ecf70e38
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94635701"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633150"
 ---
 # <a name="troubleshoot-os-start-up--windows-update-installation-capacity"></a>Řešení potíží s startem operačního systému – web Windows Update kapacity instalace
 
@@ -38,6 +38,9 @@ V této situaci operační systém (OS) nemůže dokončit instalaci web Windows
 ## <a name="solution"></a>Řešení
 
 ### <a name="process-overview"></a>Přehled procesu:
+
+> [!TIP]
+> Pokud máte nedávno zálohovaný virtuální počítač, můžete zkusit [obnovit virtuální počítač ze zálohy](../../backup/backup-azure-arm-restore-vms.md) a opravit problém při spouštění.
 
 1. Vytvořte a získejte přístup k opravnému virtuálnímu počítači.
 1. Volné místo na disku.
@@ -73,12 +76,12 @@ V závislosti na úrovni fragmentace může defragmentace trvat několik hodin.
 
 ### <a name="enable-the-serial-console-and-memory-dump-collection"></a>Povolení kolekce sériové konzoly a výpisu paměti
 
-**Doporučené** : před opětovným SESTAVENÍM virtuálního počítače povolte kolekci sériového stavu a výpisu paměti spuštěním následujícího skriptu:
+**Doporučené**: před opětovným SESTAVENÍM virtuálního počítače povolte kolekci sériového stavu a výpisu paměti spuštěním následujícího skriptu:
 
 1. Otevřete relaci příkazového řádku se zvýšenými oprávněními jako správce.
 1. Spusťte následující příkazy:
 
-   **Povolte konzolu sériového portu** :
+   **Povolte konzolu sériového portu**:
    
    ```
    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /ems {<BOOT LOADER IDENTIFIER>} ON 
@@ -87,7 +90,7 @@ V závislosti na úrovni fragmentace může defragmentace trvat několik hodin.
 
 1. Ověřte, zda je volné místo na disku s operačním systémem větší než velikost paměti (RAM) na virtuálním počítači.
 
-   Pokud není dostatek místa na disku s operačním systémem, změňte umístění, kde se vytvoří soubor s výpisem paměti, a přečtěte si toto umístění na libovolný datový disk připojený k virtuálnímu počítači, který má dostatek volného místa. Chcete-li změnit umístění, nahraďte **% systemroot%** písmenem jednotky datového disku, například **F:** , v následujících příkazech.
+   Pokud není dostatek místa na disku s operačním systémem, změňte umístění, kde se vytvoří soubor s výpisem paměti, a přečtěte si toto umístění na libovolný datový disk připojený k virtuálnímu počítači, který má dostatek volného místa. Chcete-li změnit umístění, nahraďte **% systemroot%** písmenem jednotky datového disku, například **F:**, v následujících příkazech.
 
    Navrhovaná konfigurace pro povolení výpisu operačního systému:
 
@@ -97,7 +100,7 @@ V závislosti na úrovni fragmentace může defragmentace trvat několik hodin.
    REG LOAD HKLM\BROKENSYSTEM <VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM 
    ```
    
-   **Povolit na CONTROLSET001** :
+   **Povolit na CONTROLSET001**:
 
    ```
    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f 
@@ -105,7 +108,7 @@ V závislosti na úrovni fragmentace může defragmentace trvat několik hodin.
    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
    ```
    
-   **Povolit na ControlSet002** :
+   **Povolit na ControlSet002**:
 
    ```
    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f 
@@ -113,7 +116,7 @@ V závislosti na úrovni fragmentace může defragmentace trvat několik hodin.
    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
    ```
    
-   **Uvolnit poškozený disk s operačním systémem** :
+   **Uvolnit poškozený disk s operačním systémem**:
 
    ```
    REG UNLOAD HKLM\BROKENSYSTEM

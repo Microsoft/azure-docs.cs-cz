@@ -17,12 +17,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 3fe87f94ce05efa4a784ba7e3f65e53abb00fd05
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 7ddc13306f4adb1730169c4811b9d2227dedca33
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914242"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632762"
 ---
 # <a name="automate-management-with-the-sql-server-iaas-agent-extension"></a>Automatizovaná správa pomocí rozšíření agenta SQL Server IaaS
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -115,7 +115,7 @@ Existují tři způsoby, jak s rozšířením zaregistrovat:
 
 ### <a name="named-instance-support"></a>Podpora pojmenovaných instancí
 
-Rozšíření agenta SQL Server IaaS funguje s pojmenovanou instancí SQL Server, pokud je jediná instance SQL Server k dispozici na virtuálním počítači. Instalace rozšíření se nezdařila na virtuálních počítačích, které mají více instancí SQL Server. 
+Rozšíření agenta SQL Server IaaS funguje s pojmenovanou instancí SQL Server, pokud se jedná o jedinou instanci SQL Server dostupnou na virtuálním počítači. Pokud na virtuálním počítači není žádná výchozí instance, rozšíření se nedá nainstalovat na virtuální počítače, které mají víc pojmenovaných instancí SQL Server. 
 
 Pokud chcete použít pojmenovanou instanci SQL Server, nasaďte virtuální počítač Azure, nainstalujte do něj jednu pojmenovanou instanci SQL Server a pak ji Zaregistrujte pomocí [IaaS rozšíření SQL](sql-agent-extension-manually-register-single-vm.md).
 
@@ -228,7 +228,7 @@ No. Aby se virtuální počítač mohl úspěšně zaregistrovat do rozšířen�
 
 **Můžu zaregistrovat virtuální počítač s rozšířením agenta SQL IaaS, pokud existuje více instancí SQL Server?**
 
-Yes. Rozšíření agenta SQL IaaS bude registrovat pouze jednu instanci SQL Server (databázový stroj). Rozšíření agenta SQL IaaS bude v případě více instancí registrovat výchozí instanci SQL Server. Pokud neexistuje žádná výchozí instance, je podporována pouze registrace v režimu prostého režimu. Chcete-li provést upgrade z prostého režimu na režim správy, musí být použita výchozí instance SQL Server, nebo by měl mít virtuální počítač pouze jednu pojmenovanou instanci SQL Server.
+Ano, pokud je na virtuálním počítači výchozí instance. Rozšíření agenta SQL IaaS bude registrovat pouze jednu instanci SQL Server (databázový stroj). Rozšíření agenta SQL IaaS bude v případě více instancí registrovat výchozí instanci SQL Server.
 
 **Můžu u SQL Server instance clusteru s podporou převzetí služeb při selhání zaregistrovat rozšíření agenta SQL IaaS?**
 

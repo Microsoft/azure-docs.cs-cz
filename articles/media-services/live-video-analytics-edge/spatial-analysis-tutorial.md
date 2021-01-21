@@ -3,12 +3,12 @@ title: Analýza živého videa pomocí Počítačové zpracování obrazu pro pr
 description: V tomto kurzu se dozvíte, jak pomocí živé analýzy videí společně s funkcí Počítačové zpracování obrazu prostorová analýza AI z Azure Cognitive Services analyzovat živý kanál videa z (simulované) kamery IP.
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 5b979bfeb6961b285cfeb2287888d8f157608d96
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 1c6fe6e10a91034d794437f31d495b85ef086848
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060176"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632939"
 ---
 # <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-preview"></a>Analýza živého videa pomocí Počítačové zpracování obrazu pro prostorovou analýzu (Preview)
 
@@ -23,7 +23,8 @@ V tomto kurzu provedete tyto kroky:
 > * Monitorování událostí.
  
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
-
+  > [!NOTE]
+  > Budete potřebovat předplatné Azure s oprávněním pro vytváření instančních objektů (Tato **role vlastníka** poskytuje). Pokud nemáte správná oprávnění, obraťte se na správce účtu, abyste vám udělili správná oprávnění. 
 ## <a name="suggested-pre-reading"></a>Navrhované před čtením
 
 Než začnete, přečtěte si tyto články:
@@ -77,7 +78,7 @@ Klíč se používá ke spuštění kontejneru prostorové analýzy a je k dispo
 
 Postupujte podle [těchto kroků](../../databox-online/azure-stack-edge-gpu-deploy-prep.md) a nastavte Azure Stack Edge a pokračujte podle následujících kroků a nasaďte živé video analýzy a moduly prostorové analýzy.
 
-## <a name="set-up-your-development-environment"></a>Nastavení vývojového prostředí
+## <a name="set-up-your-development-environment"></a>Nastavíte vývojové prostředí
 
 1. Klonovat úložiště z tohoto umístění: https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp .
 1. V Visual Studio Code otevřete složku, do které se úložiště stáhlo.
@@ -136,10 +137,10 @@ V souboru šablony nasazení je třeba věnovat pár věcí:
 1. `IpcMode` v modulu lvaEdge a prostorové analýzy createOptions by měl být stejný a nastavený na Host.
 1. Aby simulátor RTSP fungoval, ujistěte se, že jste nastavili rozsahy svazků. Další informace najdete v tématu [nastavení připojení svazku Docker](deploy-azure-stack-edge-how-to.md#optional-setup-docker-volume-mounts).
 
-    1. [Připojte se ke sdílené složce SMB](../../databox-online/azure-stack-edge-deploy-add-shares.md#connect-to-an-smb-share) a zkopírujte [ukázkový videosoubor Bulldozer](https://lvamedia.blob.core.windows.net/public/bulldozer.mkv) do místní sdílené složky.
+    1. [Připojte se ke sdílené složce SMB](../../databox-online/azure-stack-edge-deploy-add-shares.md#connect-to-an-smb-share) a zkopírujte [ukázkový videosoubor Bulldozer](https://lvamedia.blob.core.windows.net/public/bulldozer.mkv) do místní sdílené složky.  
+        > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4Mesi]  
     1. Podívejte se, že modul rtspsim má následující konfiguraci:
-        
-        ```json
+        ```
         "createOptions": {
                             "HostConfig": {
                               "Mounts": [
@@ -159,6 +160,8 @@ V souboru šablony nasazení je třeba věnovat pár věcí:
                             }
                           }
         ```
+        
+
 ## <a name="generate-and-deploy-the-deployment-manifest"></a>Generování a nasazení manifestu nasazení
 
 Manifest nasazení definuje, které moduly jsou nasazeny do hraničního zařízení. Definuje také nastavení konfigurace pro tyto moduly.

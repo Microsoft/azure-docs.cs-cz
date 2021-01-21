@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 06/15/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 6b50bffd1a44c0cf53f15650f5ff4d938f45df4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 047c8afbfe7b489e5c3ac0ccb677f6fc021443a8
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84908101"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632635"
 ---
 # <a name="azure-vm-is-unresponsive-while-applying-security-policy-to-the-system"></a>Virtuální počítač Azure při použití zásad zabezpečení pro systém nereaguje.
 
@@ -33,7 +33,7 @@ Když k zobrazení obrazovky virtuálního počítače použijete [diagnostiku s
 
 :::image type="content" source="media/unresponsive-vm-apply-security-policy/apply-policy.png" alt-text="Obrazovka úvodní obrazovky Windows Serveru 2012 R2 je zablokovaná.":::
 
-:::image type="content" source="media/unresponsive-vm-apply-security-policy/apply-policy-2.png" alt-text="Obrazovka úvodní obrazovky Windows Serveru 2012 R2 je zablokovaná.":::
+:::image type="content" source="media/unresponsive-vm-apply-security-policy/apply-policy-2.png" alt-text="Obrazovka spouštěcí obrazovky OS se zablokuje.":::
 
 ## <a name="cause"></a>Příčina
 
@@ -42,6 +42,9 @@ Existuje spoustu možných příčin tohoto problému. Zdroj nebudete moci znát
 ## <a name="resolution"></a>Řešení
 
 ### <a name="process-overview"></a>Přehled procesu
+
+> [!TIP]
+> Pokud máte nedávno zálohovaný virtuální počítač, můžete zkusit [obnovit virtuální počítač ze zálohy](../../backup/backup-azure-arm-restore-vms.md) a opravit problém při spouštění.
 
 1. [Vytvoření a přístup k opravnému virtuálnímu počítači](#create-and-access-a-repair-vm)
 2. [Povolit kolekci sériového stavu a výpisu paměti](#enable-serial-console-and-memory-dump-collection)
@@ -68,7 +71,54 @@ Pokud chcete povolit shromažďování výpisů paměti a sériovou konzolu, spu
 
         V příkazu nahraďte \<BOOT PARTITON> písmenem oddílu připojeným diskem, který obsahuje spouštěcí složku.
 
-        :::image type="content" source="media/unresponsive-vm-apply-security-policy/store-data.png" alt-text="Obrazovka úvodní obrazovky Windows Serveru 2012 R2 je zablokovaná." /v NMICrashDump /t REG_DWORD /d 1 /f
+        :::image type="content" source="media/unresponsive-vm-apply-security-policy/store-data.png" alt-text="Diagram zobrazuje výstup výpisu úložiště BCD na virtuálním počítači generace 1, který obsahuje seznam pod spouštěcím zavaděčem Windows číslo identifikátoru.":::
+
+     2. U virtuálního počítače 2. generace zadejte následující příkaz a Všimněte si uvedeného identifikátoru:
+
+        ```console
+        bcdedit /store <LETTER OF THE EFI SYSTEM PARTITION>:EFI\Microsoft\boot\bcd /enum
+        ```
+
+        - V příkazu nahraďte \<LETTER OF THE EFI SYSTEM PARTITION> písmenem systémového oddílu EFI.
+        - Může být užitečné spustit konzolu pro správu disků a identifikovat příslušný systémový oddíl označený jako "systémový oddíl EFI".
+        - Identifikátor může být jedinečný identifikátor GUID, nebo může být výchozí "Bootmgr".
+3. Spusťte následující příkazy, aby se aktivovala sériová konzola:
+
+    ```console
+    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /ems {<BOOT LOADER IDENTIFIER>} ON
+    ```
+
+    ```console
+    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200
+    ```
+
+    - V příkazu nahraďte \<VOLUME LETTER WHERE THE BCD FOLDER IS> písmenem složky BCD.
+    - V příkazu nahraďte \<BOOT LOADER IDENTIFIER> identifikátorem, který jste našli v předchozím kroku.
+4. Ověřte, zda je volné místo na disku s operačním systémem větší než velikost paměti (RAM) na virtuálním počítači.
+
+    1. Pokud není dostatek místa na disku s operačním systémem, měli byste změnit umístění, kde se vytvoří soubor s výpisem paměti. Místo vytvoření souboru na disku s operačním systémem ho můžete odkazovat na jakýkoli jiný datový disk připojený k virtuálnímu počítači, který má dostatek volného místa. Chcete-li změnit umístění, nahraďte "% SystemRoot%" písmenem jednotky (například "F:") datového disku v níže uvedených příkazech.
+    2. Zadejte následující příkazy (navrhovaná konfigurace výpisu paměti):
+
+        Načíst poškozený disk s operačním systémem:
+
+        ```console
+        REG LOAD HKLM\BROKENSYSTEM <VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM
+        ```
+
+        Povolit na ControlSet001:
+
+        ```console
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP" /f
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
+        ```
+
+        Povolit na ControlSet002:
+
+        ```console
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP" /f
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
         ```
 
         Uvolnit poškozený disk s operačním systémem:

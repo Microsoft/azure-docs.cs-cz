@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/22/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 8af8d7695c48c6ac682109bb38935e98921fa9e4
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: fc3bd5d2590e969db07e9dffa61b4902ea4604c3
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681903"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632542"
 ---
 # <a name="vm-is-unresponsive-while-waiting-for-the-local-session-manager-service"></a>Virtuální počítač nereaguje při čekání na službu Správce místních relací.
 
@@ -34,6 +34,9 @@ Když k zobrazení snímku výstupu virtuálního počítače použijete [diagno
 Je možné, že virtuální počítač bude zablokovat čekání na správce místní relace, může být několik důvodů. Pokud s tím budou dál problémy, budete muset shromáždit výpis paměti pro účely analýzy.
 
 ## <a name="solution"></a>Řešení
+
+> [!TIP]
+> Pokud máte nedávno zálohovaný virtuální počítač, můžete zkusit [obnovit virtuální počítač ze zálohy](../../backup/backup-azure-arm-restore-vms.md) a opravit problém při spouštění.
 
 V některých případech se tento problém vyřeší pouhým čekáním na dokončení procesu. Pokud váš virtuální počítač neodpovídá a zůstane na obrazovce čekání po dobu více než hodinu, měli byste shromáždit výpis paměti a pak kontaktovat podporu Microsoftu.
 

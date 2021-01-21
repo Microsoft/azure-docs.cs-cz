@@ -9,12 +9,12 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.author: yelevin
-ms.openlocfilehash: b37675d46d501fc43446eafc83d6c0a02f238177
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: bb188aa79015c2123b9d9d8b6baf277dfadf2f9c
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655948"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633040"
 ---
 # <a name="connect-azure-defender-alert-data-from-azure-security-center"></a>Připojit data výstrah v programu Azure Defender z Azure Security Center
 
@@ -39,6 +39,8 @@ Pomocí konektoru výstrah v programu Azure Defender ingestujte výstrahy Azure 
 1. Pokud chcete použít příslušné schéma v Log Analytics pro výstrahy Azure Defenderu, vyhledejte **SecurityAlert**.
 
 ## <a name="next-steps"></a>Další kroky
+
 V tomto dokumentu jste zjistili, jak připojit Azure Defender k Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
+
 - Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
 - Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats-built-in.md).

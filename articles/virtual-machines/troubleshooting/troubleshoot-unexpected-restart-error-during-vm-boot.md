@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 06/22/2020
 ms.author: v-mibufo
-ms.openlocfilehash: cfeb040893ae2be5842959ed8458bd713bebe6ee
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: d8d2ab2bb3f24e1faa4791ebdc1ce3852f6a790e
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512133"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632686"
 ---
 # <a name="os-start-up--computer-restarted-unexpectedly-or-encountered-an-unexpected-error"></a>Spouštění operačního systému – počítač se neočekávaně restartoval nebo narazil na neočekávanou chybu.
 
@@ -52,6 +52,9 @@ Tento problém se nejčastěji vytváří při použití nástroje Sysprep s mí
 ## <a name="solution"></a>Řešení
 
 ### <a name="do-not-use-unattendxml"></a>Nepoužívat Unattend.xml
+
+> [!TIP]
+> Pokud máte nedávno zálohovaný virtuální počítač, můžete zkusit [obnovit virtuální počítač ze zálohy](../../backup/backup-azure-arm-restore-vms.md) a opravit problém při spouštění.
 
 Pokud chcete tento problém vyřešit, postupujte podle pokynů [pro Azure na stránce Příprava/zachycení image](../windows/upload-generalized-managed.md) a Příprava nové generalizované image. Během programu Sysprep **Nepoužívejte `/unattend:<your file’s name>` příznak**. Místo toho použijte pouze následující příznaky:
 

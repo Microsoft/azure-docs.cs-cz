@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 2457952051f575306de46e3e8145cc26678a1ef8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f83f4871d5cde23194ff51a90a22031b526cf91
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86526534"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632559"
 ---
 # <a name="windows-vm-cannot-boot-due-to-windows-boot-manager"></a>Virtuální počítač s Windows se nedá spustit kvůli Správci spouštění Windows.
 
@@ -40,6 +40,9 @@ Obrázek 1
 K této chybě dochází z důvodu příznaku BCD *DISPLAYBOOTMENU* ve Správci spouštění systému Windows. Když je příznak povolený, správce spouštění systému Windows během procesu spouštění vyzve uživatele, aby vybral zavaděč, který chce spustit, což způsobí zpoždění při spuštění. V Azure může tato funkce přičíst k době potřebné ke spuštění virtuálního počítače.
 
 ## <a name="solution"></a>Řešení
+
+> [!TIP]
+> Pokud máte nedávno zálohovaný virtuální počítač, můžete zkusit [obnovit virtuální počítač ze zálohy](../../backup/backup-azure-arm-restore-vms.md) a opravit problém při spouštění.
 
 Přehled procesu:
 

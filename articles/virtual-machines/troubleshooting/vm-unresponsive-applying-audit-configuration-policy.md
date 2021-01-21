@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: v-miegge
-ms.openlocfilehash: ff21975c34c28d7476635467e0c1abb8e6575e35
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: f286542c91ba473d13595d8e8299b1bbd8c93856
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977948"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632601"
 ---
 # <a name="virtual-machine-is-unresponsive-while-applying-audit-policy-configuration-policy"></a>Při použití zásad konfigurace zásad auditu nereaguje virtuální počítač.
 
@@ -45,6 +45,9 @@ Tady je problematické zásady: *počítač \ šablony \ systémové/Uživatel P
 ## <a name="solution"></a>Řešení
 
 ### <a name="process-overview"></a>Přehled procesu
+
+> [!TIP]
+> Pokud máte nedávno zálohovaný virtuální počítač, můžete zkusit [obnovit virtuální počítač ze zálohy](../../backup/backup-azure-arm-restore-vms.md) a opravit problém při spouštění.
 
 1. Vytvořte a získejte přístup k opravnému virtuálnímu počítači.
 1. Zakažte tuto zásadu.

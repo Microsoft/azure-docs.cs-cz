@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: v-mibufo
-ms.openlocfilehash: c04f3b27c7214dcf821c7698796bfaea399b947d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8279aee4a0df8155b23e6f984d259bf92555dc95
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86509099"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632829"
 ---
 # <a name="windows-stop-error---0x000000ef-critical-process-died"></a>Chyba stop systému Windows – #0x000000EF "nepostradatelný proces zemřel"
 
@@ -27,7 +27,7 @@ Tento článek popisuje kroky pro řešení problémů, při kterých během spo
 
 ## <a name="symptom"></a>Příznak
 
-Když pomocí [diagnostiky spouštění](./boot-diagnostics.md) zobrazíte snímek obrazovky virtuálního počítače, uvidíte, že snímek obrazovky zobrazuje chybu *#0x000000EF* se *nezpracovaným nepostradatelným procesem*zprávy.
+Když pomocí [diagnostiky spouštění](./boot-diagnostics.md) zobrazíte snímek obrazovky virtuálního počítače, uvidíte, že snímek obrazovky zobrazuje chybu *#0x000000EF* se *nezpracovaným nepostradatelným procesem* zprávy.
 
 !["Váš počítač byl příčinou problému a je nutné ho restartovat. Jenom shromažďujeme nějaké informace o chybách a pak se můžete restartovat. (# #% dokončeno) Pokud se chcete dozvědět víc, můžete k této chybě vyhledat online v online režimu: 0x000000EF "](media/troubleshoot-guide-critical-process-died/1.jpg)
 
@@ -38,6 +38,9 @@ Obvykle je to kvůli selhání kritického systémového procesu během spoušt�
 ## <a name="solution"></a>Řešení
 
 ### <a name="process-overview"></a>Přehled procesu:
+
+> [!TIP]
+> Pokud máte nedávno zálohovaný virtuální počítač, můžete zkusit [obnovit virtuální počítač ze zálohy](../../backup/backup-azure-arm-restore-vms.md) a opravit problém při spouštění.
 
 1. Vytvořte a získejte přístup k opravnému virtuálnímu počítači.
 2. Opravte poškození operačního systému.
