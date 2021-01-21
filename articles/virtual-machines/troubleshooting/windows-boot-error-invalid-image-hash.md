@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/03/2020
 ms.author: v-miegge
-ms.openlocfilehash: e58e349d7b7385ec913986c39462c17deadcb61d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 22db9c7966b6f988ca0ea799104275f3f86c77ea
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91969598"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629568"
 ---
 # <a name="windows-boot-manager-error---0xc0000428-status-invalid-image-hash"></a>Chyba správce spouštění systému Windows – hodnota 0xC0000428 neplatné hodnoty hash obrázku
 
@@ -65,6 +65,9 @@ Datum ukončení platnosti image verze Preview není možné oddálit. Po vyprš
 - V Azure všechny image pro Windows, ve kterých jsou verze Preview, obsahují poznámku v jejich popisu, že nejsou určené pro produkční prostředí a že jsou k dispozici pro použití jenom pro zadanou zkušební dobu nebo jako verzi Preview.
 
 ## <a name="solution"></a>Řešení
+
+> [!TIP]
+> Pokud máte nedávno zálohovaný virtuální počítač, můžete zkusit [obnovit virtuální počítač ze zálohy](../../backup/backup-azure-arm-restore-vms.md) a opravit problém při spouštění.
 
 Pokud se jedná o image ve verzi Preview, neexistuje žádný způsob, jak pro použitou image rozšíříte datum vypršení platnosti, budete muset [nasadit nový virtuální počítač](../windows/quick-create-portal.md) pomocí Image, která není ve verzi Preview. Následující postup vám pomůže zjistit, jestli jste použili bitovou kopii verze Preview, a poskytnout prostředky, které vám pomůžou při přenosu dat z tohoto virtuálního počítače do nového virtuálního počítače. Pokud jste image označili jako image ve verzi Preview, image se nedá obnovit, protože už vypršela její platnost.
 

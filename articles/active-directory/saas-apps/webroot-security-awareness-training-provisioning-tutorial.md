@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: Zhchia
-ms.openlocfilehash: d374043235d6c09243ea5ecdacccf141a2d4f8b4
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 143c1a183ba697cbf5d9b19d7e0868a638650bc8
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181328"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631974"
 ---
 # <a name="tutorial-configure-webroot-security-awareness-training-for-automatic-user-provisioning"></a>Kurz: Konfigurace školení na vědomí zabezpečení společnosti Webroot pro Automatické zřizování uživatelů
 
@@ -34,7 +34,7 @@ Tento kurz popisuje kroky, které je třeba provést v rámci školicích kurzů
 > * Udržování uživatelských atributů synchronizovaných mezi službou Azure AD a školením o povědomí o zabezpečení služby Webroot
 > * Zřizování skupin a členství ve skupinách ve školicích kurzech zabezpečení společnosti Webroot
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
@@ -120,7 +120,8 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
    |Atribut|Typ|Podporováno pro filtrování|
    |---|---|---|
-   |externalId|Řetězec|&check;|
+   |userName|Řetězec|&check;|
+   |externalId|Řetězec|
    |name.givenName|Řetězec|
    |name.familyName|Řetězec|
    |emails[type eq "work"].value|Řetězec|

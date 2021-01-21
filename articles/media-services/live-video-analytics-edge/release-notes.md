@@ -3,12 +3,12 @@ title: Live video Analytics na IoT Edge – poznámky k verzi – Azure
 description: Toto téma obsahuje poznámky k verzi Live video Analytics o IoT Edge vydáních, vylepšeních, opravách chyb a známých problémech.
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 7f8957d1ec93259cf6defe7980f19298f782ea5e
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 328fe97c4e03f039a1224d13ce6712ccff06b3b7
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121239"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629772"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>Poznámky k verzi pro Live video Analytics na IoT Edge
 
@@ -51,9 +51,12 @@ Tato verze je ve verzi Public Preview k disukázce pro živé video analýzy v I
 * Byla přidána podpora správy místa na disku pro uzly jímky.
 * `MediaGraphGrpcExtension` uzel teď podporuje vlastnost [extensionConfiguration](grpc-extension-protocol.md) pro použití více modelů AI v rámci jednoho serveru gRPC.
 * Přidali jsme podporu shromažďování metriky modulu Live video Analytics ve [formátu Prometheus](https://prometheus.io/docs/practices/naming/). Přečtěte si další informace o tom, jak [shromažďovat metriky a zobrazovat v Azure monitor.](monitoring-logging.md#azure-monitor-collection-via-telegraf) 
+* Byla přidána možnost filtrovat výběr výstupu. K libovolnému uzlu grafu můžete předat jenom **zvuk** nebo **jenom video** nebo **zvuk a video** `outputSelectors` . 
 * Procesor filtru snímkové rychlosti je **zastaralý**.  
     * Správa frekvence snímků je nyní k dispozici v rámci samotného uzlu procesoru rozšíření grafu.
 
+### <a name="visual-studio-code-extension"></a>Rozšíření editoru Visual Studio Code
+* Vydávali jsme [Live video Analytics na IoT Edge](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.live-video-analytics-edge) – Visual Studio Code rozšíření, které vám pomůžou při správě LVAch mediálních grafů. Toto rozšíření spolupracuje s **modulem LVA 2,0** a nabízí úpravy a správu mediálních grafů s velmi elegantním a snadno použitelným grafickým rozhraním.
 ## <a name="september-22-2020"></a>22. září 2020
 
 Tato značka vydání je určena pro 2020 aktualizace modulu v září:

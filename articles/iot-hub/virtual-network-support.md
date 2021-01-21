@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 12/18/2020
 ms.author: jlian
-ms.openlocfilehash: 08f033cbe121135e281379a013e11a33ae962dfb
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 1e28c7767868904fb20ae6d27c6aea9e7077eb62
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97703802"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630289"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>Podpora IoT Hub pro virtuální sítě s privátním odkazem a spravovanou identitou
 
@@ -70,6 +70,9 @@ Privátní koncový bod funguje pro IoT Hub rozhraní API zařízení (jako jsou
 
 :::image type="content" source="media/virtual-network-support/private-built-in-endpoint.png" alt-text="Obrázek zobrazující dva soukromé koncové body, které jsou dány pro každý IoT Hub privátní odkaz":::
 
+[Filtr IP](iot-hub-ip-filtering.md) IoT Hub může volitelně řídit veřejný přístup k předdefinovanému koncovému bodu. 
+
+Chcete-li zcela zablokovat přístup k veřejné síti ke službě IoT Hub, [vypněte přístup k veřejné síti](iot-hub-public-network-access.md) nebo použijte filtr IP k blokování všech IP adres a vyberte možnost použít pravidla pro integrovaný koncový bod.
 
 ### <a name="pricing-for-private-link"></a>Ceny za soukromé odkazy
 

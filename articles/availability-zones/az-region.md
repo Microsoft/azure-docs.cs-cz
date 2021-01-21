@@ -1,5 +1,5 @@
 ---
-title: Služby Azure, které podporují Zóny dostupnosti
+title: Služby Azure, které podporují zóny dostupnosti
 description: Pokud chcete vytvářet vysoce dostupné a odolné aplikace v Azure, Zóny dostupnosti poskytovat fyzicky samostatná umístění, která můžete použít ke spouštění svých prostředků.
 author: cynthn
 ms.service: azure
@@ -7,14 +7,14 @@ ms.topic: article
 ms.date: 12/17/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: 0365a60317538ba31f39928cd30a57e2c969c832
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: ea21a56249c8eaa7c6b329b755e96b21b91ebaa1
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97723030"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632304"
 ---
-# <a name="azure-services-that-support-availability-zones"></a>Služby Azure, které podporují Zóny dostupnosti
+# <a name="azure-services-that-support-availability-zones"></a>Služby Azure, které podporují zóny dostupnosti
 
 Zóny dostupnosti je vysoce dostupná nabídka, která chrání vaše aplikace a data před selháními datových center. Seznam stávajících a nadcházejících oblastí, které podporují Zóny dostupnosti, najdete v tématu [oblasti a zóny dostupnosti v Azure](az-overview.md).  
 
@@ -124,7 +124,7 @@ Pro zajištění komplexní provozní kontinuity v Azure Sestavte architekturu a
 | [Azure Data Explorer](/azure/data-explorer/create-cluster-database-portal) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Azure Database for MySQL – flexibilní Server](../mysql/flexible-server/concepts-high-availability.md) | znak | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Azure Database for PostgreSQL – flexibilní Server](../postgresql/flexible-server/overview.md) | znak | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure SQL Database (Pro obecné účely vrstva)](../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview) | znak | : heavy_check_mark: (Preview) | znak | : heavy_check_mark: (Preview) |
+| [Azure SQL Database (Pro obecné účely vrstva)](../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview) | : heavy_check_mark: (Preview) | : heavy_check_mark: (Preview) | znak | : heavy_check_mark: (Preview) |
 | [Azure SQL Database (úrovně Premium & Pro důležité obchodní informace](../azure-sql/database/high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Analýzy** |  |  |  |  |
 | [Event Hubs](../event-hubs/index.yml) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
@@ -169,7 +169,7 @@ Pro zajištění komplexní provozní kontinuity v Azure Sestavte architekturu a
 | [Azure Data Explorer](/azure/data-explorer/create-cluster-database-portal) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Azure Database for MySQL – flexibilní Server](../mysql/flexible-server/concepts-high-availability.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Azure Database for PostgreSQL – flexibilní Server](../postgresql/flexible-server/overview.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure SQL Database (Pro obecné účely vrstva)](../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview) | znak | : heavy_check_mark: (Preview) | : heavy_check_mark: (Preview) |
+| [Azure SQL Database (Pro obecné účely vrstva)](../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview) | : heavy_check_mark: (Preview) | : heavy_check_mark: (Preview) | : heavy_check_mark: (Preview) |
 | [Azure SQL Database (úrovně Premium & Pro důležité obchodní informace](../azure-sql/database/high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Analýzy** |  |  |  |
 | [Event Hubs](../event-hubs/index.yml) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 06/01/2020
 ms.author: v-miegge
-ms.openlocfilehash: f59903ed111be1fe414f4b3ded250d754c91d323
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75d1cf8638f922bb0275322568eb1399db4f49e8
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87069141"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629721"
 ---
 # <a name="troubleshoot-boot-error---disk-read-error-occurred"></a>Řešení potíží při spuštění – došlo k chybě čtení z disku
 
@@ -38,6 +38,9 @@ Tato chybová zpráva znamená, že je struktura disku poškozená a není čite
 ## <a name="solution"></a>Řešení
 
 ### <a name="process-overview"></a>Přehled procesu
+
+> [!TIP]
+> Pokud máte nedávno zálohovaný virtuální počítač, můžete zkusit [obnovit virtuální počítač ze zálohy](../../backup/backup-azure-arm-restore-vms.md) a opravit problém při spouštění.
 
 1. Vytvořte a získejte přístup k opravnému virtuálnímu počítači.
 1. Vyberte řešení:
@@ -91,7 +94,7 @@ Virtuální počítače 1. generace by měly nejdřív ověřit, že oddíl s op
 
    `chkdsk <DRIVE LETTER>: /f`
 
-   Přidání možnosti příkazu **/f** vyřeší všechny chyby na disku. Nezapomeňte ** >písmeno jednotky< ** nahradit písmenem připojeného virtuálního pevného disku s operačním systémem.
+   Přidání možnosti příkazu **/f** vyřeší všechny chyby na disku. Nezapomeňte **>písmeno jednotky<** nahradit písmenem připojeného virtuálního pevného disku s operačním systémem.
 
 ### <a name="enable-the-serial-console-and-memory-dump-collection"></a>Povolení kolekce sériové konzoly a výpisu paměti
 

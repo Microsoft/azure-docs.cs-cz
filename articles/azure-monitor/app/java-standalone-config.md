@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 98499961f55b55b15687d5742b4d593e3d461e49
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 397c650d1d7a593a855c8f26e61dbf12ec6360fa
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625326"
+ms.locfileid: "98631317"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>Možnosti konfigurace – Azure Monitor Application Insights pro Java
 
@@ -296,7 +296,9 @@ Pokud je vaše aplikace za bránou firewall a nemůže se připojit přímo k Ap
 }
 ```
 
-[//]: # "Poznamenejte si podporu OpenTelemetry, dokud nepodporujeme 0.10.0, která má obrovské zásadní změny od 0.9.0"
+Application Insights Java 3,0 také respektuje globální `-Dhttps.proxyHost` a `-Dhttps.proxyPort` Pokud jsou nastavené.
+
+[//]: # "Poznámka: podpora OpenTelemetry je v privátní verzi Preview, dokud rozhraní OpenTelemetry API nedosáhne 1,0."
 
 [//]: # "Podpora # # pro verze OpenTelemetry API starší než 1,0"
 
@@ -343,6 +345,8 @@ Ve výchozím nastavení Application Insights Java 3,0 protokoluje na úrovni `I
 `maxSizeMb` je maximální velikost souboru protokolu před tím, než se vrátí.
 
 `maxHistory` je počet převedených souborů protokolu, které jsou zachovány (kromě aktuálního souboru protokolu).
+
+Počínaje verzí 3.0.2 můžete také nastavit samoobslužnou diagnostiku `level` pomocí proměnné prostředí `APPLICATIONINSIGHTS_SELF_DIAGNOSTICS_LEVEL` .
 
 ## <a name="an-example"></a>Příklad
 

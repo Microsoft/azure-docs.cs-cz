@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/15/2018
 ms.author: genli
-ms.openlocfilehash: 4c336fe9a65d7bcc44790a4bfb02bed44f028733
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad0ed7e9619f0b789bf8949fe398aa27bc36b9e0
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86500918"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629636"
 ---
 # <a name="windows-reboot-loop-on-an-azure-vm"></a>Smyčka restartování Windows na virtuálním počítači Azure
 Tento článek popisuje smyčku restartování, se kterou se můžete setkat na virtuálním počítači s Windows v Microsoft Azure.
@@ -50,6 +50,9 @@ Může to způsobit poškození systému souborů. Je ale obtížné diagnostiko
 
 ## <a name="solution"></a>Řešení
 
+> [!TIP]
+> Pokud máte nedávno zálohovaný virtuální počítač, můžete zkusit [obnovit virtuální počítač ze zálohy](../../backup/backup-azure-arm-restore-vms.md) a opravit problém při spouštění.
+
 Pokud chcete tento problém vyřešit, [zazálohujte disk s operačním systémem](../windows/snapshot-copy-managed-disk.md)a [Připojte disk s operačním systémem k záchrannému virtuálnímu počítači](./troubleshoot-recovery-disks-portal-windows.md)a podle toho, jaké možnosti řešení chcete použít, nebo zkuste řešení jednu po jedné.
 
 ### <a name="solution-for-cause-1"></a>Řešení 1. příčiny
@@ -62,7 +65,7 @@ Pokud chcete tento problém vyřešit, [zazálohujte disk s operačním systéme
 
 4. Na záchranném virtuálním počítači otevřete Editor registru systému Windows (Regedit).
 
-5. Vyberte **HKEY_LOCAL_MACHINE** klíč a v nabídce vyberte **File**možnost  >  **načíst** soubor.
+5. Vyberte **HKEY_LOCAL_MACHINE** klíč a v nabídce vyberte možnost  >  **načíst** soubor.
 
 6. Přejděte k SYSTÉMOVÉmu souboru ve složce **\Windows\System32\config** .
 

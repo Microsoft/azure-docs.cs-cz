@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/20/2021
 ms.author: yelevin
-ms.openlocfilehash: 9700e5d9179f7c1e33b2371eea89be9bb1c8d08f
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: e84484990725b0c39b132aead51e9b01dbb7e7ef
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621358"
+ms.locfileid: "98632287"
 ---
 # <a name="connect-data-from-azure-active-directory-azure-ad"></a>Připojení dat z Azure Active Directory (Azure AD)
 
@@ -28,7 +28,7 @@ K shromažďování dat z [Azure Active Directory](../active-directory/fundament
 
 ## <a name="prerequisites"></a>Požadavky
 
-- K ingestování přihlašovacích protokolů do Azure Sentinel musíte mít předplatné [Azure AD Premium P2](https://azure.microsoft.com/pricing/details/active-directory/) . Pro Azure Monitor (Log Analytics) a Sentinel Azure můžete platit další poplatky za GB.
+- Jakákoli licence Azure AD (Free/O365/P1/P2) je dostatečná pro ingestování přihlašovacích protokolů do služby Azure Sentinel. Pro Azure Monitor (Log Analytics) a Sentinel Azure můžete platit další poplatky za GB.
 
 - Uživateli musí být přiřazená role přispěvatele Sentinel Azure v pracovním prostoru.
 
@@ -42,11 +42,27 @@ K shromažďování dat z [Azure Active Directory](../active-directory/fundament
 
 1. Z Galerie datových konektorů vyberte **Azure Active Directory** a pak vyberte **Stránka otevřít konektor**.
 
-1. Zaškrtněte políčka vedle protokolů, které chcete streamovat do Azure Sentinel, a klikněte na **připojit**.
+1. Zaškrtněte políčka vedle typů protokolů, které chcete streamovat do Azure Sentinel, a klikněte na **připojit**. Typy protokolů, ze kterých si můžete vybrat:
 
-1. Můžete vybrat, jestli chcete, aby upozornění z Azure AD automaticky generovala incidenty ve službě Azure Sentinel. V části **vytvořit incidenty** vyberte **Povolit** můžete povolit výchozí pravidlo analýzy, které automaticky vytvoří incidenty z výstrah vygenerovaných v připojené službě zabezpečení. Toto pravidlo pak můžete upravit v části **Analýza** a pak na **aktivní pravidla**.
+    - Protokoly přihlašování
+    - Protokoly auditu
+    - Protokoly přihlašování neinteraktivních uživatelů
+    - Protokoly přihlášení instančního objektu
+    - Protokoly přihlašování spravované identity
+    - Protokoly zřizování
 
-1. Pokud chcete použít příslušné schéma v Log Analytics pro dotazování na výstrahy služby Azure AD, zadejte `SigninLogs` nebo `AuditLogs` v okně dotazu.
+## <a name="find-your-data"></a>Hledání dat
+
+Po navázání úspěšného připojení se data objeví v **protokolech** v části **LogManagement** v následujících tabulkách:
+
+- `SigninLogs`
+- `AuditLogs`
+- `AADNonInteractiveUserSignInLogs`
+- `AADServicePrincipalSignInLogs`
+- `AADManagedIdentitySignInLogs`
+- `AADProvisioningLogs`
+
+Pokud chcete zadat dotaz na protokoly služby Azure AD, zadejte odpovídající název tabulky v horní části okna dotazu.
 
 ## <a name="next-steps"></a>Další kroky
 V tomto dokumentu jste zjistili, jak připojit Azure Active Directory ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:

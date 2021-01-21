@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 5cc112767b2204d019cb1b7bd23b1603cefdf416
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 71ee21c971b71c4000a123d1561e7e93d21203e1
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882513"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629143"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Přehled integrace služby Azure Service Bus do služby Event Grid
 
@@ -174,7 +174,7 @@ Odběry služby Event Grid pro obory názvů služby Service Bus můžete vytvo�
 Nový odběr služby Event Grid vytvoříte následovně:
 1. Na webu Azure Portal přejděte do svého oboru názvů.
 2. V levém podokně vyberte **Event Grid**. 
-3. Vyberte **Odběr události**.  
+3. Vyberte **odběr události**.  
 
    Následující obrázek představuje obor názvů obsahující předplatné služby Event Grid:
 
@@ -186,7 +186,7 @@ Nový odběr služby Event Grid vytvoříte následovně:
 
 ## <a name="azure-cli-instructions"></a>Pokyny pro Azure CLI
 
-Nejprve se ujistěte, že máte nainstalované Azure CLI verze 2.0 nebo novější. [Stáhněte instalační program](/cli/azure/install-azure-cli?view=azure-cli-latest). Vyberte **Windows + X** a pak otevřete novou konzolu PowerShellu s oprávněními správce. Případně může použít příkazové prostředí na webu Azure Portal.
+Nejprve se ujistěte, že máte nainstalované Azure CLI verze 2.0 nebo novější. [Stáhněte instalační program](/cli/azure/install-azure-cli). Vyberte **Windows + X** a pak otevřete novou konzolu PowerShellu s oprávněními správce. Případně může použít příkazové prostředí na webu Azure Portal.
 
 Spusťte následující kód:
 

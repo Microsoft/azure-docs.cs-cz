@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/09/2020
 ms.author: v-miegge
-ms.openlocfilehash: bde091b4a4559c3574ee122d74574d1f9477f3fd
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 6cb3467fec99bd12810ed058a61de1be7b39cdd0
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977044"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629585"
 ---
 # <a name="troubleshoot-windows-could-not-finish-configuring-the-system"></a>Řešení potíží s tím, že Windows nemůže dokončit konfiguraci systému
 
@@ -39,5 +39,8 @@ Když pomocí [diagnostiky spouštění](./boot-diagnostics.md) zobrazíte sním
 Tato chyba je způsobena tím, že operační systém (OS) nemůže dokončit [proces Sysprep](/windows-hardware/manufacture/desktop/sysprep-process-overview). K této chybě dojde, když se pokusíte o počáteční spuštění zobecněného virtuálního počítače. Pokud k tomuto problému dojde, znovu vytvořte zobecněnou bitovou kopii, protože bitová kopie je ve stavu undeployed a nelze ji obnovit.
 
 ## <a name="solution"></a>Řešení
+
+> [!TIP]
+> Pokud máte nedávno zálohovaný virtuální počítač, můžete zkusit [obnovit virtuální počítač ze zálohy](../../backup/backup-azure-arm-restore-vms.md) a opravit problém při spouštění.
 
 Pokud chcete tento problém vyřešit, postupujte podle pokynů [pro Azure na stránce Příprava/zachycení image](../windows/upload-generalized-managed.md) a Příprava nové generalizované image.

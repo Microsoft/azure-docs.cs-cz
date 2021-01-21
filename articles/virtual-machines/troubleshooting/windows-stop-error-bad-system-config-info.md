@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: v-miegge
-ms.openlocfilehash: 7d1233c97ec80d5a2efa8b53c68e9e07a823165d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: cbfdb9a73f53e194b43010c0b2d84357aa3e2e5b
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977027"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631981"
 ---
 # <a name="windows-stop-error---0x00000074-bad-system-config-info"></a>Chyba stop systému Windows – 0x00000074 chybné informace o konfiguraci systému
 
@@ -47,6 +47,9 @@ Kód **BAD_SYSTEM_CONFIG_INFO** stop dojde, pokud je podregistr **systémového*
 ## <a name="solution"></a>Řešení
 
 ### <a name="process-overview"></a>Přehled procesu:
+
+> [!TIP]
+> Pokud máte nedávno zálohovaný virtuální počítač, můžete zkusit [obnovit virtuální počítač ze zálohy](../../backup/backup-azure-arm-restore-vms.md) a opravit problém při spouštění.
 
 1. Vytvořte a získejte přístup k opravnému virtuálnímu počítači.
 1. Vyhledejte poškození podregistru.

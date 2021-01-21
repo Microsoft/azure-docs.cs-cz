@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 0c06cb11d916b417cf577b7b8f3578749feddd62
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 3d1e0eb90005abf69d90b46acc59e0258c9914c6
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092223"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630026"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>Konfigurace App Service nebo Azure Functions aplikace pro použití přihlášení Azure AD
 
@@ -77,8 +77,8 @@ Proveďte tyto kroky:
 1. Přihlaste se k [Azure Portal], vyhledejte a vyberte **App Services** a pak vyberte svou aplikaci. Poznamenejte si **adresu URL** vaší aplikace. Použijete ho ke konfiguraci registrace aplikace Azure Active Directory.
 1. Vyberte **Azure Active Directory**  >  **Registrace aplikací**  >  **novou registraci**.
 1. Na stránce **zaregistrovat aplikaci** zadejte **název** registrace vaší aplikace.
-1. V **identifikátoru URI přesměrování** vyberte **Web** a zadejte `<app-url>/.auth/login/aad/callback` . Například, `https://contoso.azurewebsites.net/.auth/login/aad/callback`.
-1. Vyberte **Vytvořit**.
+1. V **identifikátoru URI přesměrování** vyberte **Web** a zadejte `<app-url>/.auth/login/aad/callback` . Například `https://contoso.azurewebsites.net/.auth/login/aad/callback`.
+1. Vyberte **Registrovat**.
 1. Po vytvoření registrace aplikace zkopírujte **ID aplikace (klienta)** a **ID adresáře (tenant)** pro pozdější použití.
 1. Vyberte **Ověřování**. V části **implicitní udělení** povolte **tokeny ID** , aby bylo možné přihlašovat OpenID připojit uživatele z App Service.
 1. Volitelné Vyberte **branding**. Do pole **Adresa URL domovské stránky** zadejte adresu URL vaší aplikace App Service a vyberte **Uložit**.
@@ -102,7 +102,7 @@ Proveďte tyto kroky:
 1. V části **Zprostředkovatelé ověřování** vyberte **Azure Active Directory**.
 1. V **režimu správy** vyberte **upřesnit** a nakonfigurujte App Service ověřování podle následující tabulky:
 
-    |Pole|Popis|
+    |Pole|Description|
     |-|-|
     |ID klienta| Použijte **ID aplikace (klienta)** registrace aplikace. |
     |Adresa URL vydavatele| Pomocí `<authentication-endpoint>/<tenant-id>/v2.0` a nahraďte *\<authentication-endpoint>* [koncovým bodem ověřování pro vaše cloudové prostředí](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) (např. " https://login.microsoftonline.com " pro globální Azure ") nahraďte *\<tenant-id>* **ID adresáře (tenanta)** , ve kterém se vytvořila registrace aplikace. Tato hodnota se používá k přesměrování uživatelů do správného tenanta Azure AD a také ke stažení odpovídajících metadat k určení vhodného podpisového klíče tokenu a hodnoty deklarace vystavitele tokenu. U aplikací, které používají Azure AD V1 a pro aplikace Azure Functions, `/v2.0` v adrese URL vynechejte.|
@@ -119,7 +119,7 @@ Nativní klienty můžete registrovat, aby bylo možné v aplikaci hostovat ově
 
 1. V [Azure Portal]vyberte možnost **Active Directory**  >  **Registrace aplikací**  >  **Nová registrace**.
 1. Na stránce **zaregistrovat aplikaci** zadejte **název** registrace vaší aplikace.
-1. V části **identifikátor URI pro přesměrování** vyberte **veřejný klient (mobilní & Desktop)** a zadejte adresu URL `<app-url>/.auth/login/aad/callback` . Například, `https://contoso.azurewebsites.net/.auth/login/aad/callback`.
+1. V části **identifikátor URI pro přesměrování** vyberte **veřejný klient (mobilní & Desktop)** a zadejte adresu URL `<app-url>/.auth/login/aad/callback` . Například `https://contoso.azurewebsites.net/.auth/login/aad/callback`.
 
     > [!NOTE]
     > V případě aplikace Microsoft Store použijte místo toho identifikátor [SID balíčku](/previous-versions/azure/app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library#package-sid) .

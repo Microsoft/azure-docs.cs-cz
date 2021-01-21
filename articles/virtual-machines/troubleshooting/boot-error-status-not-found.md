@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: v-miegge
-ms.openlocfilehash: ff7d5a4e1181dccedc3584d958038a1d695c57ca
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: a91add684d7b7aaee67e7dd4f4f2d0c6df078132
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657120"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632220"
 ---
 # <a name="troubleshoot-windows-boot-manager-error----0xc0000225-status-not-found"></a>Řešení potíží s Windows Boot Managerem – chyba – 0xC0000225 "status nenalezen"
  
@@ -79,6 +79,9 @@ Poškození podregistru může mít následující příčiny:
 ## <a name="solution"></a>Řešení
 
 ### <a name="process-overview"></a>Přehled procesu
+
+> [!TIP]
+> Pokud máte nedávno zálohovaný virtuální počítač, můžete zkusit [obnovit virtuální počítač ze zálohy](../../backup/backup-azure-arm-restore-vms.md) a opravit problém při spouštění.
 
 1. Vytvořte a získejte přístup k opravnému virtuálnímu počítači.
 1. Vyberte řešení:

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: genli
-ms.openlocfilehash: fe2d444bbdc09ed5ab0205d4139591e3288e3358
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 3090b7b889d914fc0cdb598b8bf29a73c81f50cb
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94734561"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631999"
 ---
 # <a name="azure-vm-startup-is-stuck-at-windows-update"></a>Spuštění virtuálního počítače Azure je zablokované na Windows Update.
 
@@ -37,6 +37,8 @@ Tento článek pomáhá vyřešit problém, když se váš virtuální počíta�
 
 
 ## <a name="solution"></a>Řešení
+> [!TIP]
+> Pokud máte nedávno zálohovaný virtuální počítač, můžete zkusit [obnovit virtuální počítač ze zálohy](../../backup/backup-azure-arm-restore-vms.md) a opravit problém při spouštění.
 
 V závislosti na počtu aktualizací, které jsou instalovány nebo vraceny zpět, může proces aktualizace chvíli trvat. Ponechte virtuální počítač v tomto stavu po dobu 8 hodin. Pokud je virtuální počítač v tomto období stále v tomto stavu, restartujte virtuální počítač z Azure Portal a podívejte se, jestli se může normálně spustit. Pokud tento krok nefunguje, vyzkoušejte následující řešení.
 

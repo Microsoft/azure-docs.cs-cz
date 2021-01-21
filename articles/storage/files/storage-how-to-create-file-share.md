@@ -9,12 +9,12 @@ ms.date: 2/22/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions
-ms.openlocfilehash: 705910a9e2f4ebc80a63ab22ac4edecc5ae03cd0
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 7f72d703e5377f725addc4aa8c52e1cdb0fa571d
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724795"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630747"
 ---
 # <a name="create-an-azure-file-share"></a>Vytvoření sdílené složky Azure
 Pokud chcete vytvořit sdílenou složku Azure, musíte odpovědět na tři otázky týkající se toho, jak ji budete používat:
@@ -172,7 +172,7 @@ Vlastnost **Quota** znamená něco jiného, co se liší od úrovně Premium a s
 
 - U standardních sdílených složek se jedná o horní hranici sdílené složky Azure, nad kterou koncoví uživatelé nemůžou přejít. Hlavním účelem pro kvótu pro standardní sdílenou složku je rozpočtový stav: "Nechci, aby tato sdílená složka překročila rámec tohoto bodu". Pokud není zadaná kvóta, může standardní sdílená složka zahrnovat až 100 TiB (nebo 5 TiB, pokud pro účet úložiště není nastavená vlastnost sdílené složky velkých souborů).
 
-- U sdílených složek úrovně Premium je kvóta přetížená, což znamená **zřízené velikosti**. Zřízená velikost je množství, které se vám bude účtovat bez ohledu na skutečné využití. Když zřizujete sdílenou složku Premium, budete chtít vzít v úvahu dva faktory: 1) budoucí nárůst podílu z perspektivy využití prostoru a 2) IOPS požadované pro vaše zatížení. Každý zřízený GiB vám opravňuje k dodatečnému rezervovanému a roztržení IOPS. Další informace o tom, jak naplánovat pro sdílenou složku Premium, najdete v tématu [zřizování souborů ke sdílení prémiových souborů](understanding-billing.md#provisioned-billing).
+- U sdílených složek úrovně Premium je kvóta přetížená, což znamená **zřízené velikosti**. Zřízená velikost je množství, které se vám bude účtovat bez ohledu na skutečné využití. Když zřizujete sdílenou složku Premium, budete chtít vzít v úvahu dva faktory: 1) budoucí nárůst podílu z perspektivy využití prostoru a 2) IOPS požadované pro vaše zatížení. Každý zřízený GiB vám opravňuje k dodatečnému rezervovanému a roztržení IOPS. Další informace o tom, jak naplánovat pro sdílenou složku Premium, najdete v tématu [zřizování souborů ke sdílení prémiových souborů](understanding-billing.md#provisioned-model).
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 Pokud jste právě vytvořili účet úložiště, můžete na něj přejít z obrazovky nasazení výběrem možnosti **Přejít k prostředku**. Pokud jste už vytvořili účet úložiště, můžete na něj přejít přes skupinu prostředků, která ho obsahuje. V účtu úložiště vyberte dlaždici s názvem **sdílené složky** (můžete také přejít ke **sdíleným složkám souborů** prostřednictvím obsahu pro účet úložiště).
@@ -296,6 +296,6 @@ az storage share-rm update \
 ---
 
 ## <a name="next-steps"></a>Další kroky
-- [Plánování nasazení služby soubory Azure](storage-files-planning.md) nebo [Plánování nasazení Azure File Sync](storage-sync-files-planning.md). 
+- [Plánování nasazení služby soubory Azure](storage-files-planning.md) nebo [Plánování nasazení synchronizace souborů Azure](storage-sync-files-planning.md). 
 - [Přehled sítí](storage-files-networking-overview.md).
 - Připojení a připojení sdílené složky v [systémech Windows](storage-how-to-use-files-windows.md), [MacOS](storage-how-to-use-files-mac.md)a [Linux](storage-how-to-use-files-linux.md).

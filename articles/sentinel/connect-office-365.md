@@ -14,20 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2020
 ms.author: yelevin
-ms.openlocfilehash: 4d3e3615ede7406a3b581171ae759ec0ec53f13e
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 05848eb2761284669e659b3875e96acdfa71f90f
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655366"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632178"
 ---
 # <a name="connect-office-365-logs-to-azure-sentinel"></a>Připojení protokolů Office 365 ke službě Azure Sentinel
 
 Konektor protokolu [Office 365](/office/) přináší do Azure Sentinel informace o probíhajících činnostech uživatelů a správců v **Exchange** a **SharePointu** (včetně **OneDrivu**) a teď i v **týmech** . Tyto informace zahrnují podrobnosti o akcích, jako jsou třeba soubory ke stažení, odeslané požadavky na přístup, změny v událostech skupiny, operace poštovní schránky, týmové události (například události chatu, týmu, člena a kanálu) a také podrobnosti uživatele, který akce provedl. Připojení protokolů Office 365 k Azure Sentinel umožňuje zobrazit a analyzovat tato data v sešitech, dotazovat se na ně a vytvořit vlastní výstrahy a začlenit je ke zvýšení vašeho procesu šetření, což vám poskytne lepší přehled o zabezpečení sady Office 365.
-
-> [!IMPORTANT]
-> Protokoly konektoru protokolu Office 365 **pro Microsoft Teams** Connector jsou momentálně ve verzi Public Preview.
-> Tato funkce se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Požadavky
 

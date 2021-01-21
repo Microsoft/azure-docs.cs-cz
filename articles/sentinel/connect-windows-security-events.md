@@ -1,6 +1,6 @@
 ---
 title: Připojit data událostí zabezpečení systému Windows ke službě Azure Sentinel | Microsoft Docs
-description: Naučte se používat konektory událostí zabezpečení ke streamování všech událostí zabezpečení ze systémů Windows do vašeho pracovního prostoru služby Azure Sentinel. 
+description: Naučte se používat konektory událostí zabezpečení ke streamování všech událostí zabezpečení ze systémů Windows do vašeho pracovního prostoru služby Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: a16afcafa03ef2ab8642316db560e30a473a526b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 226d5a46482d6611fdecf214d040fc27af9ac586
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90883717"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632042"
 ---
 # <a name="connect-windows-security-events"></a>Připojení událostí zabezpečení systému Windows 
 
@@ -52,20 +52,20 @@ Konektor události zabezpečení umožňuje streamovat všechny události zabezp
 
 Shromažďování událostí zabezpečení systému Windows v rámci služby Azure Sentinel:
 
-1. V navigační nabídce Azure Sentinel vyberte **datové konektory**. V seznamu konektorů klikněte na **události zabezpečení**a pak na tlačítku pro **otevření konektoru** na pravé straně. Pak postupujte podle pokynů na obrazovce na kartě **pokyny** , jak je popsáno ve zbývající části tohoto oddílu.
+1. V navigační nabídce Azure Sentinel vyberte **datové konektory**. V seznamu konektorů klikněte na **události zabezpečení** a pak na tlačítku pro **otevření konektoru** na pravé straně. Pak postupujte podle pokynů na obrazovce na kartě **pokyny** , jak je popsáno ve zbývající části tohoto oddílu.
 
-1. Ověřte, zda máte příslušná oprávnění, jak je popsáno v části **požadavky**.
+1. Ověřte, zda máte příslušná oprávnění, jak je popsáno v části **požadavky** na stránce konektor.
 
 1. Stáhněte a nainstalujte [agenta Log Analytics](../azure-monitor/platform/log-analytics-agent.md) (také označovaného jako Microsoft Monitoring Agent nebo MMA) na počítačích, pro které chcete streamovat události zabezpečení do Azure Sentinel.
 
     Pro Azure Virtual Machines:
     
-    1. Klikněte na **nainstalovat agenta na virtuálním počítači Azure s Windows**a pak na odkaz, který se zobrazuje níže.
+    1. Klikněte na **nainstalovat agenta na virtuálním počítači Azure s Windows** a pak na odkaz, který se zobrazuje níže.
     1. Pro každý virtuální počítač, ke kterému se chcete připojit, klikněte na jeho název v seznamu, který se zobrazí na pravé straně, a pak klikněte na **připojit**.
 
     Pro počítače s Windows mimo Azure (fyzický, virtuální Prem nebo Virtual v jiném cloudu):
 
-    1. Klikněte na **nainstalovat agenta na počítači s Windows mimo Azure**a pak na odkaz, který se zobrazuje níže.
+    1. Klikněte na **nainstalovat agenta na počítači s Windows mimo Azure** a pak na odkaz, který se zobrazuje níže.
     1. Klikněte na příslušné odkazy ke stažení, které se zobrazí na pravé straně v části **počítače se systémem Windows**.
     1. Pomocí staženého spustitelného souboru nainstalujte agenta do systémů Windows podle svého výběru a nakonfigurujte ho pomocí **ID a klíčů pracovního prostoru** , které se zobrazí pod výše uvedenými odkazy pro stažení.
 
@@ -73,9 +73,9 @@ Shromažďování událostí zabezpečení systému Windows v rámci služby Azu
     >
     > Pokud chcete, aby systémy Windows bez nezbytného připojení k Internetu pořád mohly streamovat události do služby Azure Sentinel, Stáhněte a nainstalujte **bránu OMS** na samostatném počítači pomocí odkazu v pravém dolním rohu, který bude fungovat jako proxy server.  I nadále bude nutné nainstalovat agenta Log Analytics do každého systému Windows, jehož události chcete shromáždit.
     >
-    > Další informace o tomto scénáři najdete v dokumentaci ke službě [ **Log Analytics Gateway** ](../azure-monitor/platform/gateway.md).
+    > Další informace o tomto scénáři najdete v dokumentaci ke službě [ **Log Analytics Gateway**](../azure-monitor/platform/gateway.md).
 
-    Další možnosti instalace a další podrobnosti najdete v [dokumentaci k **agentovi Log Analytics** ](../azure-monitor/platform/agent-windows.md).
+    Další možnosti instalace a další podrobnosti najdete v [dokumentaci k **agentovi Log Analytics**](../azure-monitor/platform/agent-windows.md).
 
 1. Vyberte, kterou sadu událostí ([všechny, společné nebo minimální](#event-sets)) chcete streamovat.
 
@@ -106,7 +106,7 @@ Azure Sentinel může použít Machine Learning (ML) k datům událostí zabezpe
 
 1. Musíte shromažďovat přihlašovací data protokolu RDP (ID události 4624) prostřednictvím konektoru dat **událostí zabezpečení** . Ujistěte se, že jste pro streamování do Azure Sentinel vybrali [sadu událostí](#event-sets) kromě možnosti žádná.
 
-1. Na portálu Sentinel Azure klikněte na **Analytics**a pak klikněte na kartu **šablony pravidel** . Vyberte pravidlo **zjišťování přihlášení (Preview) neobvyklé protokolu RDP** a přesuňte posuvník **stav** na **povoleno**.
+1. Na portálu Sentinel Azure klikněte na **Analytics** a pak klikněte na kartu **šablony pravidel** . Vyberte pravidlo **zjišťování přihlášení (Preview) neobvyklé protokolu RDP** a přesuňte posuvník **stav** na **povoleno**.
 
     > [!NOTE]
     > Vzhledem k tomu, že algoritmus strojového učení vyžaduje po dobu 30 dnů, aby se vytvořil základní profil chování uživatele, je nutné, aby bylo možné shromáždit data událostí zabezpečení před tím, než bude možné zjistit případné incidenty.

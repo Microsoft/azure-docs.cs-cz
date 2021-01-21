@@ -5,17 +5,18 @@ description: Přečtěte si o kvótách a omezeních pro prostředky Azure Machi
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-author: nishankgu
-ms.author: nigup
+ms.reviewer: jmartens
+author: SimranArora904
+ms.author: siarora
 ms.date: 12/1/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperf-fy20q4, contperf-fy21q2
-ms.openlocfilehash: 3f08f401f24d95431bcd3bba48976641cebb28e9
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 78cc0aa6beb9ab83fea2039b271b071de1662fc1
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98072203"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629176"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>Správa a zvýšení kvót pro prostředky pomocí Azure Machine Learning
 
@@ -123,7 +124,7 @@ Omezení pro virtuální počítače nad rámec hodnot zobrazených v následuj�
 
 Další informace najdete v tématu [omezení Container Instances](../azure-resource-manager/management/azure-subscription-service-limits.md#container-instances-limits).
 
-### <a name="storage"></a>Úložiště
+### <a name="storage"></a>Storage
 Azure Storage má limit 250 účtů úložiště na oblast v rámci jednoho předplatného. Tento limit zahrnuje účty úložiště úrovně Standard i Premium.
 
 Pokud chcete tento limit zvýšit, vytvořte žádost prostřednictvím [podpory Azure](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/). Tým Azure Storage zkontroluje váš případ a může pro oblast schvalovat až 250 účtů úložiště.

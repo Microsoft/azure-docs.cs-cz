@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/08/2020
 ms.author: v-miegge
-ms.openlocfilehash: 4f181a6dee7ed182150bd0cad2b51690b6c77d7a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 6c139398182ca9d875de0d3b21c58afe503bd8a5
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963121"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632270"
 ---
 # <a name="vm-is-unresponsive-while-applying-default-domain-controllers-policy"></a>Virtuální počítač nereaguje při použití výchozích zásad řadičů domén
 
@@ -28,7 +28,7 @@ Tento článek popisuje kroky pro řešení problémů, při kterých výchozí 
 
 ## <a name="symptom"></a>Příznak
 
-Když použijete [diagnostiku spouštění](./boot-diagnostics.md) k zobrazení snímku obrazovky virtuálního počítače, uvidíte, že snímek obrazovky při spuštění s **výchozí zásadou řadičů domény**zobrazuje operační systém přestane reagovat.
+Když použijete [diagnostiku spouštění](./boot-diagnostics.md) k zobrazení snímku obrazovky virtuálního počítače, uvidíte, že snímek obrazovky při spuštění s **výchozí zásadou řadičů domény** zobrazuje operační systém přestane reagovat.
 
   ![Obrázek 1 zobrazuje zablokování operačního systému pomocí výchozí zásady řadičů domény.](./media/vm-unresponsive-domain-controllers-policy/1-default-domain-controllers-policy.png)
 
@@ -37,6 +37,9 @@ Když použijete [diagnostiku spouštění](./boot-diagnostics.md) k zobrazení 
 K tomuto problému může dojít z důvodu nedávných změn v zásadách výchozích řadičů domény. V opačném případě bude nutné provést analýzu souboru výpisu paměti, aby bylo možné zjistit původní příčinu.
 
 ## <a name="solution"></a>Řešení
+
+> [!TIP]
+> Pokud máte nedávno zálohovaný virtuální počítač, můžete zkusit [obnovit virtuální počítač ze zálohy](../../backup/backup-azure-arm-restore-vms.md) a opravit problém při spouštění.
 
 Pokud jste nedávno provedli změny ve výchozích zásadách řadičů domény, možná budete chtít tyto změny zrušit a problém vyřešit. Pokud si nejste jisti, co je příčinou problému, shromážděte výpis paměti a pak odešlete lístek podpory.
 

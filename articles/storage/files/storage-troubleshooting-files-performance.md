@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 960b3c29f97c43e1247018a60f6c6310c7cf02de
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 729c3e46cf329c525ce9204b26d4c6aefa04c89d
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724659"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632491"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Řešení potíží s výkonem Azure File shares
 
@@ -46,7 +46,7 @@ Pokud chcete ověřit, jestli se vaše sdílená složka omezuje, můžete na po
 ### <a name="solution"></a>Řešení
 
 - Pokud používáte standardní sdílení souborů, povolte ve svém účtu úložiště [velké sdílené složky](./storage-files-how-to-create-large-file-share.md?tabs=azure-portal) . Velké sdílené složky podporují až 10 000 vstupně-výstupních operací na sdílenou složku.
-- Pokud používáte prémiovou sdílenou složku, zvyšte velikost zřízené sdílené složky a zvyšte limit IOPS. Další informace najdete v tématu [Principy zřizování pro sdílené složky Premium](./understanding-billing.md#provisioned-billing).
+- Pokud používáte prémiovou sdílenou složku, zvyšte velikost zřízené sdílené složky a zvyšte limit IOPS. Další informace najdete v tématu [Principy zřizování pro sdílené složky Premium](./understanding-billing.md#provisioned-model).
 
 ### <a name="cause-2-metadata-or-namespace-heavy-workload"></a>Příčina 2: silná úloha pro metadata nebo obor názvů
 

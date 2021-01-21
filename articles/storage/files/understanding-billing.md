@@ -4,22 +4,22 @@ description: Přečtěte si, jak interpretovat modely fakturace zřízené a pr�
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/1/2020
+ms.date: 01/20/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 880ec90ce1cf0efffce0cfd6800bdbaed23f8dd0
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: 19ecbea70d9cb6b8cc31c72ed3c1294cd137ce93
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831461"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632474"
 ---
 # <a name="understanding-azure-files-billing"></a>Principy fakturace souborů Azure
 Soubory Azure nabízí dva odlišné modely fakturace: zřízené a průběžné platby. Zřízený model je k dispozici jenom pro sdílené složky Premium, což jsou sdílené složky nasazené v typu **účtu úložiště souborů** . Model průběžných plateb je dostupný jenom pro standardní sdílené složky, což jsou sdílené složky nasazené v typu účtu úložiště pro **obecné účely verze 2 (GPv2)** . Tento článek vysvětluje, jak oba modely pracují, aby vám pomohly pochopit měsíční poplatky za soubory Azure.
 
 Aktuální ceny za službu Azure Files najdete na [stránce s cenami souborů Azure](https://azure.microsoft.com/pricing/details/storage/files/).
 
-## <a name="provisioned-billing"></a>Zřízené fakturace
+## <a name="provisioned-model"></a>Zřízený model
 Azure Files používá zřízený model pro sdílené složky Premium. V zřízeném podnikovém modelu proaktivně zadáte službě soubory Azure požadavky na úložiště, které se místo toho účtují na základě toho, co využijete. To se podobá zakoupenému hardwaru v místním prostředí, v tom, že když zřizujete sdílenou složku Azure s určitou velikostí úložiště, platíte za toto úložiště bez ohledu na to, jestli ho používáte, nebo ne, stejně jako Vy nezačínáte platit náklady na fyzické médium, když začnete používat místo. Na rozdíl od zakoupení fyzických médií je možné zřízené sdílené složky dynamicky škálovat nahoru nebo dolů v závislosti na charakteristikách výkonu úložiště a vstupně-výstupních operací.
 
 Když zřizujete sdílenou složku Premium, určíte, kolik GiBs vaše zatížení vyžaduje. Každý GiB, který zřídíte, opravňuje k dodatečným vstupně-výstupním operacím a propustnosti s pevným poměrem. Kromě standardních hodnot IOPS, pro které jste si jistí, každá z těchto souborů Premium podporuje rozpínání na nejvyšší úsilí. Vzorce pro vstupně-výstupní operace a propustnost jsou následující:
@@ -63,7 +63,7 @@ Sdílené kredity mají tři stavy:
 
 Nové sdílené složky začínají úplným počtem kreditů v rámci svého shlukového intervalu. Kredity shluku se neúčtují, pokud se za vstupně-výstupní operace klesne pod základnu IOPS, a to kvůli omezení serveru.
 
-## <a name="pay-as-you-go-billing"></a>Fakturace s průběžnými platbami
+## <a name="pay-as-you-go-model"></a>Model průběžných plateb
 Soubory Azure používají pro standardní sdílené složky průběžný obchodní model s průběžnými platbami. V obchodním modelu s průběžnými platbami můžete částku, kterou platíte, určit podle toho, kolik skutečně používáte, a ne podle zřízeného množství. Na vysoké úrovni platíte náklady na množství dat uložených na disku a pak další sadu transakcí na základě využití těchto dat. Model s průběžnými platbami může být nákladově efektivní, protože nemusíte převádět do budoucích požadavků na růst nebo výkon nebo zrušit zřízení, pokud se zatížení na data v průběhu času liší. Na druhé straně může být model průběžných plateb v rámci rozpočtového procesu obtížné naplánovat také, protože model fakturace s průběžnými platbami se řídí spotřebou koncového uživatele.
 
 ### <a name="differences-in-standard-tiers"></a>Rozdíly na úrovních Standard
@@ -94,5 +94,5 @@ Existuje pět základních kategorií transakcí: zapsat, vypsat, číst, jiné 
 
 ## <a name="see-also"></a>Viz také
 - [Stránka s cenami souborů Azure](https://azure.microsoft.com/pricing/details/storage/files/)
-- [Plánování nasazení služby soubory Azure](./storage-files-planning.md) a [Plánování nasazení Azure File Sync](./storage-sync-files-planning.md).
-- [Vytvořte sdílenou složku](./storage-how-to-create-file-share.md) a [Nasaďte Azure File Sync](./storage-sync-files-deployment-guide.md).
+- [Plánování nasazení služby soubory Azure](./storage-files-planning.md) a [Plánování nasazení synchronizace souborů Azure](./storage-sync-files-planning.md).
+- [Vytvořte sdílenou složku](./storage-how-to-create-file-share.md) a [Nasaďte synchronizace souborů Azure](./storage-sync-files-deployment-guide.md).

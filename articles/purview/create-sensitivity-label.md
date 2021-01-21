@@ -6,13 +6,13 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 12/03/2020
-ms.openlocfilehash: 003a71f962652b1a1436f5d9875835534090a77a
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.date: 01/19/2021
+ms.openlocfilehash: b376883ab7d8ef0ffd57a271e74862b684788ebd
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196584"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630272"
 ---
 # <a name="automatically-label-your-data-in-azure-purview"></a>Automatické označování dat ve službě Azure dosah
 
@@ -32,18 +32,18 @@ V dosah se klasifikace podobají značkám předmětu a používají se k označ
 
 Dosah používá stejné klasifikace, označované také jako typy citlivých informací, jak Microsoft 365.  Popisky citlivosti MIP se vytvářejí v centru zabezpečení Microsoft 365 Security a dodržování předpisů (SCC). To vám umožní roztáhnout stávající popisky citlivosti napříč prostředky Azure dosah.
 
-> [!NOTE]
-> Klasifikace se shodují přímo, jako je číslo sociálního pojištění, které má klasifikaci **čísla sociálního pojištění**. 
->
-> Na rozdíl od jsou popisky citlivosti aplikovány, když se jedna nebo více klasifikací a podmínek společně nacházejí. V tomto kontextu [podmínky](/microsoft-365/compliance/apply-sensitivity-label-automatically) odkazují na všechny parametry, které můžete definovat pro nestrukturovaná data, jako je například **blízkost jiné klasifikace**, a **spolehlivost%**. 
+**Klasifikace** se shodují přímo, jako je číslo sociálního pojištění, které má klasifikaci **čísla sociálního pojištění**. 
+
+Na rozdíl od jsou **popisky citlivosti** aplikovány, když se jedna nebo více klasifikací a podmínek společně nacházejí. V tomto kontextu [podmínky](/microsoft-365/compliance/apply-sensitivity-label-automatically) odkazují na všechny parametry, které můžete definovat pro nestrukturovaná data, jako je například *blízkost jiné klasifikace*, a *spolehlivost%*. 
 
 Popisky citlivosti ve službě Azure dosah se dají použít k automatickému použití popisků pro soubory a sloupce databáze.
 
-Další informace najdete tady:
+Další informace naleznete v tématu:
 
 - [Informace o popisech citlivosti](/microsoft-365/compliance/sensitivity-labels) v dokumentaci k Microsoft 365
 - [Co jsou pravidla pro popisky?](#what-are-autolabeling-rules)
 - [Podporované datové typy pro popisky citlivosti ve službě Azure dosah](#supported-data-types-for-sensitivity-labels-in-azure-purview)
+- [Označování pro sloupce SQL Database](#labeling-for-sql-database-columns)
 
 #### <a name="what-are-autolabeling-rules"></a>Co jsou pravidla pro popisky?
 
@@ -54,7 +54,6 @@ Pravidla autolabeling jsou podmínky, které zadáte, a určete, kdy má být po
 Při vytváření popisků nezapomeňte definovat pravidla automatických popisků pro [soubory](#define-autolabeling-rules-for-files) i [databázové sloupce](#define-autolabeling-rules-for-database-columns) , abyste mohli popisky použít automaticky při každé kontrole dat. 
 
 Po kontrole dat v dosah můžete popisky zobrazit automaticky v katalogu dosah a v sestavách Insight.
-
 #### <a name="supported-data-types-for-sensitivity-labels-in-azure-purview"></a>Podporované datové typy pro popisky citlivosti ve službě Azure dosah
 
 Popisky citlivosti se v Azure dosah podporují pro následující typy dat:
@@ -62,14 +61,22 @@ Popisky citlivosti se v Azure dosah podporují pro následující typy dat:
 |Datový typ  |zdroje  |
 |---------|---------|
 |Automatické označování souborů     |     – Azure Blob Storage  </br>-Azure Data Lake Storage obecné 1 a 2. generace  |
-|Automatické označování pro sloupce databáze     |  – SQL Server </br>– Azure SQL Database </br>-Azure SQL Database spravované instance   <br> – Azure synapse  <br>-Azure Cosmos DB   |
+|Automatické označování pro sloupce databáze     |  – SQL Server </br>– Azure SQL Database </br>-Azure SQL Database spravované instance   <br> – Azure synapse  <br>-Azure Cosmos DB <br><br>Další informace najdete v části [Popis pro sloupce služby SQL Database](#labeling-for-sql-database-columns) níže.  |
 | | |
+
+#### <a name="labeling-for-sql-database-columns"></a>Označování pro sloupce SQL Database
+
+Kromě dosah popisků pro databázové sloupce podporuje společnost Microsoft také popisky sloupců databáze SQL pomocí klasifikace dat SQL v [SQL Server Management Studio (SSMS)](/sql/ssms/sql-server-management-studio-ssms). I když dosah používá globální [popisky citlivosti MIP](/microsoft-365/compliance/sensitivity-labels), používá SSMS pouze popisky definované místně.
+
+Označení v dosah a popisování v SSMS jsou samostatné procesy, které v současné době vzájemně nespolupracují. Proto popisky použité v SSMS nejsou zobrazeny v dosah a naopak. Pro označování databází SQL doporučujeme dosah Azure, protože používá globální popisky MIP, které je možné použít na více platformách.
+
+Další informace najdete v dokumentaci pro [zjišťování a klasifikaci dat SQL](/sql/relational-databases/security/sql-data-discovery-and-classification).
 
 ## <a name="how-to-create-sensitivity-labels-in-microsoft-365"></a>Vytváření popisků citlivosti v Microsoft 365
 
 Pokud ještě nemáte popisky citlivosti, budete je muset vytvořit a zpřístupnit pro Azure dosah. Existující popisky citlivosti je taky možné upravit tak, aby byly dostupné pro Azure dosah.
 
-Další informace najdete tady:
+Další informace naleznete v tématu:
 
 - [Licenční požadavky](#licensing-requirements)
 - [Rozšíření popisků citlivosti na Azure dosah](#extending-sensitivity-labels-to-azure-purview)
@@ -86,7 +93,7 @@ Ve výchozím nastavení jsou popisky citlivosti MIP dostupné jenom pro prostř
 
 Pokud chcete použít popisky citlivosti MIP na prostředky Azure v Azure dosah, musíte explicitně vyjádřit souhlas s rozšířením popisků a vybrat konkrétní popisky, které chcete mít k dispozici v dosah.
 
-Rozšířením popisků citlivosti MIP do Azure dosah mohou organizace zjišťovat, klasifikovat a získávat přehled o citlivosti v nejrůznějších zdrojích dat a minimalizovat riziko dodržování předpisů.
+Rozšířením popisků citlivosti MIP do Azure dosah můžou organizace zjišťovat, klasifikovat a získávat přehled o citlivosti napříč nejrůznějšími zdroji dat, což minimalizuje riziko dodržování předpisů.
 
 > [!NOTE]
 > Vzhledem k tomu, že Microsoft 365 a Azure dosah jsou samostatné služby, existuje možnost, že budou nasazeny v různých oblastech. Názvy popisků a vlastní citlivé informace jsou považovány za zákaznická data a jsou ve výchozím nastavení uchovávány v rámci stejného GEOGRAFICKého umístění, aby chránily citlivost vašich dat a vyloučily GDPR zákony.
@@ -97,7 +104,7 @@ Rozšířením popisků citlivosti MIP do Azure dosah mohou organizace zjišťov
 
 V Microsoft 365 přejděte na stránku **Information Protection** . V části **rozšiřování popisků na prostředky v Azure dosah** vyberte tlačítko **zapnout** a potom v potvrzovacím dialogovém okně, které se zobrazí, vyberte **Ano** .
 
-Příklad:
+Například:
 
 :::image type="content" source="media/create-sensitivity-label/extend-sensitivity-labels-to-purview-small.png" alt-text="Vyberte * * zapnout * * a rozšíříte tak popisky citlivosti na dosah." lightbox="media/create-sensitivity-label/extend-sensitivity-labels-to-purview.png":::
  
@@ -155,7 +162,7 @@ Definujte pravidla autolabeling pro soubory v průvodci při vytváření nebo �
 
 Na stránce **Automatické označování pro aplikace Office** povolte **Automatické označování pro aplikace Office** a pak definujte podmínky, ve kterých má být popisek automaticky použit pro vaše data.
 
-Příklad:
+Například:
 
 :::image type="content" source="media/create-sensitivity-label/create-auto-labeling-rules-files-small.png" alt-text="Definování pravidel autolabeling pro soubory v centru zabezpečení Microsoft 365 Security a dodržování předpisů" lightbox="media/create-sensitivity-label/create-auto-labeling-rules-files.png":::
  
@@ -171,7 +178,7 @@ V rámci možnosti **Azure dosah assets (Preview)** :
 
 1. Výběrem možnosti **Vyhledat citlivé informace** zvolte typy citlivých informací, které chcete použít u popisku.
 
-Příklad:
+Například:
         
 :::image type="content" source="media/create-sensitivity-label/create-auto-labeling-rules-db-columns-small.png" alt-text="Definování pravidel autolabeling pro sloupce SQL v centru zabezpečení Microsoft 365 a dodržování předpisů" lightbox="media/create-sensitivity-label/create-auto-labeling-rules-db-columns.png":::
 
@@ -194,11 +201,11 @@ Po definování pravidel automatických popisků pro popisky v Microsoft 365 a p
 
 **Zobrazení popisků použitých pro vaše prostředky v katalogu Azure dosah:**
 
-V katalogu Azure dosah použijte možnosti filtrování **popisku** k zobrazení souborů s konkrétními popisky. Příklad: 
+V katalogu Azure dosah použijte možnosti filtrování **popisku** k zobrazení souborů s konkrétními popisky. Například: 
 
 :::image type="content" source="media/create-sensitivity-label/filter-search-results-small.png" alt-text="Hledat prostředky podle popisku" lightbox="media/create-sensitivity-label/filter-search-results.png":::
 
-Příklad:
+Například:
 
 :::image type="content" source="media/create-sensitivity-label/view-labeled-files-blob-storage-small.png" alt-text="Zobrazení označení citlivosti v souboru v Azure Blob Storage" lightbox="media/create-sensitivity-label/view-labeled-files-blob-storage.png":::
 

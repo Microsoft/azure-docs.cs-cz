@@ -4,12 +4,12 @@ description: Jak zajistit maximální možnou dostupnost a konzistenci s Azure E
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 81bacd5507396352bb814310979498234ee35347
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 7b97d76f29ee8b7e44373c865baa09ba5ea4dd23
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96902897"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631915"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>Dostupnost a konzistence ve službě Event Hubs
 
@@ -30,10 +30,10 @@ Event Hubs je postaven na základě děleného datového modelu. Během instalac
 Nejjednodušší způsob, jak začít s Event Hubs, je použít výchozí chování. 
 
 #### <a name="azuremessagingeventhubs-500-or-later"></a>[Azure. Messaging. EventHubs (5.0.0 nebo novější)](#tab/latest)
-Pokud vytvoříte nový objekt **[EventHubProducerClient](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient?view=azure-dotnet)** a použijete metodu **[SendAsync](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient.sendasync?view=azure-dotnet)** , události se automaticky rozdělují mezi oddíly v centru událostí. Toto chování umožňuje pro největší dobu provozu.
+Pokud vytvoříte nový objekt **[EventHubProducerClient](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient)** a použijete metodu **[SendAsync](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient.sendasync)** , události se automaticky rozdělují mezi oddíly v centru událostí. Toto chování umožňuje pro největší dobu provozu.
 
 #### <a name="microsoftazureeventhubs-410-or-earlier"></a>[Microsoft. Azure. EventHubs (4.1.0 nebo starší)](#tab/old)
-Pokud vytvoříte nový objekt **[EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient)** a použijete metodu **[Send](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync?view=azure-dotnet#Microsoft_Azure_EventHubs_EventHubClient_SendAsync_Microsoft_Azure_EventHubs_EventData_)** , vaše události se automaticky rozdělují mezi oddíly v centru událostí. Toto chování umožňuje pro největší dobu provozu.
+Pokud vytvoříte nový objekt **[EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient)** a použijete metodu **[Send](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync#Microsoft_Azure_EventHubs_EventHubClient_SendAsync_Microsoft_Azure_EventHubs_EventData_)** , vaše události se automaticky rozdělují mezi oddíly v centru událostí. Toto chování umožňuje pro největší dobu provozu.
 
 ---
 

@@ -8,12 +8,12 @@ ms.date: 10/06/2020
 ms.topic: reference
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a082ccb62103ab5bd027bf49b9ee05bc48c63115
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 2878d682d0f2025a50f26baf87476f66aa236e2c
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979514"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630612"
 ---
 # <a name="powershell-scripts-for-iot-edge-on-windows"></a>Skripty PowerShellu pro IoT Edge ve Windows
 
@@ -53,7 +53,7 @@ Příkaz Deploy-IoTEdge stáhne a nasadí proces démona zabezpečení IoT Edge 
 | **Proxy server** | Adresa URL proxy serveru | Tento parametr uveďte, pokud vaše zařízení potřebuje k připojení k Internetu projít proxy server. Další informace najdete v tématu [Konfigurace zařízení IoT Edge pro komunikaci prostřednictvím proxy server](how-to-configure-proxy-support.md). |
 | **OfflineInstallationPath** | Cesta k adresáři | Pokud je tento parametr zahrnutý, instalační program zkontroluje uvedený adresář pro soubory IoT Edge CAB a runtime VC, které jsou potřebné pro instalaci. Všechny soubory, které nebyly nalezeny v adresáři, se stáhnou. Pokud jsou oba soubory v adresáři, můžete nainstalovat IoT Edge bez připojení k Internetu. Tento parametr můžete použít také k použití konkrétní verze. |
 | **InvokeWebRequestParameters** | Zatřiďovací tabulka parametrů a hodnot | Během instalace se provedou několik webových požadavků. Pomocí tohoto pole můžete nastavit parametry pro tyto webové požadavky. Tento parametr je vhodný pro konfiguraci přihlašovacích údajů pro proxy servery. Další informace najdete v tématu [Konfigurace zařízení IoT Edge pro komunikaci prostřednictvím proxy server](how-to-configure-proxy-support.md). |
-| **RestartIfNeeded** | Žádná | Tento příznak umožňuje skriptu pro nasazení restartovat počítač bez výzvy, pokud je to nutné. |
+| **RestartIfNeeded** | žádné | Tento příznak umožňuje skriptu pro nasazení restartovat počítač bez výzvy, pokud je to nutné. |
 
 ## <a name="initialize-iotedge"></a>Initialize-IoTEdge
 
@@ -90,19 +90,17 @@ Příkaz Initialize-IoTEdge nakonfiguruje IoT Edge s připojovacím řetězcem z
 | **Proxy server** | Adresa URL proxy serveru | Tento parametr uveďte, pokud vaše zařízení potřebuje k připojení k Internetu projít proxy server. Další informace najdete v tématu [Konfigurace zařízení IoT Edge pro komunikaci prostřednictvím proxy server](how-to-configure-proxy-support.md). |
 | **InvokeWebRequestParameters** | Zatřiďovací tabulka parametrů a hodnot | Během instalace se provedou několik webových požadavků. Pomocí tohoto pole můžete nastavit parametry pro tyto webové požadavky. Tento parametr je vhodný pro konfiguraci přihlašovacích údajů pro proxy servery. Další informace najdete v tématu [Konfigurace zařízení IoT Edge pro komunikaci prostřednictvím proxy server](how-to-configure-proxy-support.md). |
 | **OfflineInstallationPath** | Cesta k adresáři | Pokud je tento parametr zahrnutý, instalační program zkontroluje uvedený adresář pro soubory IoT Edge CAB a runtime VC, které jsou potřebné pro instalaci. Všechny soubory, které nebyly nalezeny v adresáři, se stáhnou. Pokud jsou oba soubory v adresáři, můžete nainstalovat IoT Edge bez připojení k Internetu. Tento parametr můžete použít také k použití konkrétní verze. |
-| **RestartIfNeeded** | Žádná | Tento příznak umožňuje skriptu pro nasazení restartovat počítač bez výzvy, pokud je to nutné. |
+| **RestartIfNeeded** | žádné | Tento příznak umožňuje skriptu pro nasazení restartovat počítač bez výzvy, pokud je to nutné. |
 
 ## <a name="uninstall-iotedge"></a>Uninstall-IoTEdge
 
 | Parametr | Přípustné hodnoty | Komentáře |
 | --------- | --------------- | -------- |
-| **Ode** | Žádná | Tento příznak vynutí odinstalaci v případě neúspěchu předchozího pokusu o odinstalaci.
-| **RestartIfNeeded** | Žádná | Tento příznak umožňuje, aby skript pro odinstalaci restartoval počítač bez výzvy, pokud je to nutné. |
+| **Force** | žádné | Tento příznak vynutí odinstalaci v případě neúspěchu předchozího pokusu o odinstalaci.
+| **RestartIfNeeded** | žádné | Tento příznak umožňuje, aby skript pro odinstalaci restartoval počítač bez výzvy, pokud je to nutné. |
 
 ## <a name="next-steps"></a>Další kroky
 
-Naučte se používat tyto příkazy v následujících článcích:
+Naučte se používat tyto příkazy v následujícím článku:
 
-* [Instalace nebo odinstalace modulu runtime Azure IoT Edge](how-to-install-iot-edge.md)
-* [Zřízení zařízení Azure IoT Edge s ověřováním pomocí symetrického klíče](how-to-manual-provision-symmetric-key.md)
-* [Zřízení zařízení Azure IoT Edge s ověřováním pomocí certifikátu X. 509](how-to-manual-provision-x509.md)
+* [Instalace nebo odinstalace Azure IoT Edge pro Windows](how-to-install-iot-edge-windows-on-windows.md)

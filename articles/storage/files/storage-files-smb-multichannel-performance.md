@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 4f4cd8189c9166ee08c1e4ccd800a1202d3b5893
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: cbded0a9c905bb488e1bae0f92d777e2e7ed7441
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724812"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630849"
 ---
 # <a name="smb-multichannel-performance"></a>Výkon funkce SMB Multichannel
 
@@ -119,7 +119,7 @@ Následující tipy vám mohou přispět k optimalizaci výkonu:
 - Ujistěte se, že váš účet úložiště a váš klient jsou společně umístěné ve stejné oblasti Azure, aby se snížila latence sítě.
 - Používejte vícevláknové aplikace a rozprostření zatížení mezi více souborů.
 - Výhody z hlediska výkonu vícekanálového nárůstu protokolu SMB s počtem souborů distribuují zatížení.
-- Výkon sdílené složky Premium je vázaný na velikost zřízené sdílené složky (IOPS/odchozí/příchozí/příchozí) a omezení na jeden soubor. Podrobnosti najdete v tématu [Principy zřizování pro sdílené složky prémiových souborů](understanding-billing.md#provisioned-billing).
+- Výkon sdílené složky Premium je vázaný na velikost zřízené sdílené složky (IOPS/odchozí/příchozí/příchozí) a omezení na jeden soubor. Podrobnosti najdete v tématu [Principy zřizování pro sdílené složky prémiových souborů](understanding-billing.md#provisioned-model).
 - Maximální výkon jednoho klienta virtuálního počítače je stále vázaný na omezení virtuálních počítačů. [Standard_D32s_v3](../../virtual-machines/dv3-dsv3-series.md) například může podporovat maximální šířku pásma 16 000 MB/s (nebo peering –), odchozí z virtuálního počítače (zápisy do úložiště) se měří, příchozí přenos dat (čtení z úložiště) není. Výkon sdílené složky závisí na omezeních sítě počítačů, procesorech, interních dostupných úložištích šířky pásma sítě, velikostech v/v, paralelismuách a dalších faktorech.
 - Počáteční test je obvykle zahříváním, zrušením jeho výsledků a opakováním testu.
 - Pokud je výkon omezen jedním klientem a zatížení je stále pod zřízenými omezeními sdílení, je možné dosáhnout vyššího výkonu rozšířením zatížení více klientů.

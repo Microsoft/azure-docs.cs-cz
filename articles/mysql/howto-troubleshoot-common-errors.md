@@ -7,16 +7,28 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
-ms.openlocfilehash: 986bc5ef24855ac0014975edc0a26a11a82ec6ca
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: ca75416a66bcf2c90028c7f1dc11fbe23a9a9bd9
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510958"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631363"
 ---
 # <a name="common-errors"></a>Běžné chyby
 
 Azure Database for MySQL je plně spravovaná služba, která využívá komunitu verze MySQL. Prostředí MySQL v prostředí spravované služby se může lišit od spuštění MySQL ve vašem vlastním prostředí. V tomto článku se zobrazí některé běžné chyby, se kterými se uživatelé můžou setkat při prvním pokusu o migraci nebo vývoji služby Azure Database for MySQL.
+
+## <a name="common-connection-errors"></a>Běžné chyby připojení
+
+#### <a name="error-1184-08s01-aborted-connection-22-to-db-db-name-user-user-host-hostip-init_connect-command-failed"></a>Chyba 1184 (08S01): přerušené připojení 22 k databázi: ' DB-name ' uživatel: ' uživatel ' host: ' hostIP ' (init_connect příkaz se nezdařil)
+K výše uvedené chybě dojde po úspěšném přihlášení, ale před spuštěním libovolného příkazu při navázání relace. Výše uvedená zpráva znamená, že jste nastavili nesprávnou hodnotu init_connectho parametru serveru, což způsobuje selhání inicializace relace.
+
+Existují některé parametry serveru, například require_secure_transport, které nejsou podporovány na úrovni relace, a proto se pokusíte změnit hodnoty těchto parametrů pomocí init_connect může dojít k chybě 1184 při připojování k serveru MySQL, jak je uvedeno níže.
+
+MySQL> Zobrazit databáze; Chyba 2006 (HY000): Server MySQL neztratil připojení. Probíhá pokus o opětovné připojení... ID připojení: 64897 aktuální databáze: * * * žádné * * _ chyba 1184 (08S01): přerušené připojení 22 k databázi: ' DB-name ' uživatel: ' uživatel ' ' hostitel ' ' hostIP ' (init_connect příkaz se nezdařil)
+
+_ *Řešení**: v Azure Portal byste měli resetovat init_connect hodnotu na kartě parametry serveru a nastavit jenom podporované parametry serveru pomocí parametru init_connect. 
+
 
 ## <a name="errors-due-to-lack-of-super-privilege-and-dba-role"></a>Chyby z důvodu nedostatku role SUPER Privilege a DBA
 

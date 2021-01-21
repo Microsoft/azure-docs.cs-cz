@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/21/2020
+ms.date: 01/18/2021
 ms.author: jeedes
-ms.openlocfilehash: d7cafdcbbf44f3f501d54c13d1b4549c446ed8c8
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: ebd07990767d91c88f245b4ed7f8a66f93de0b85
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97723962"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631353"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-citrix-sharefile"></a>Kurz: Azure Active Directory integrace s Citrix ShareFile
 
@@ -31,8 +31,8 @@ Integrace Citrix ShareFile s Azure AD poskytuje následující výhody:
 
 Ke konfiguraci integrace služby Azure AD s Citrix ShareFile potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verzi [tady](https://azure.microsoft.com/pricing/free-trial/) .
-* Předplatné s povoleným jedním přihlašováním Citrix ShareFile
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
+* Předplatné Citrix ShareFile s povoleným jednotným přihlašováním.
 
 ## <a name="scenario-description"></a>Popis scénáře
 
@@ -126,7 +126,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
+1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
 ## <a name="configure-citrix-sharefile-sso"></a>Konfigurace Citrix ShareFile SSO
@@ -141,7 +141,7 @@ Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybr
 
 3. Pokud chcete nainstalovat Citrix ShareFile ručně, v jiném okně webového prohlížeče se přihlaste k webu Citrix ShareFile společnosti jako správce.
 
-1. Na **řídicím panelu** klikněte na **Nastavení** a vyberte **Nastavení správce** .
+1. Na **řídicím panelu** klikněte na **Nastavení** a vyberte **Nastavení správce**.
 
     ![Správa](./media/sharefile-tutorial/settings.png)
 
@@ -165,7 +165,9 @@ Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybr
     
     f. Do textového pole **Adresa URL pro odhlášení** vložte hodnotu **adresy URL pro odhlášení** , kterou jste zkopírovali z Azure Portal.
 
-5. Na portálu pro správu Citrix ShareFile klikněte na **Uložit** .
+    například V části **volitelná nastavení** vyberte možnost **ověřovací kontext inicializovaný** jako **uživatelské jméno a heslo** a **přesné**.
+
+5. Klikněte na **Uložit**.
 
 ## <a name="create-citrix-sharefile-test-user"></a>Vytvoření testovacího uživatele Citrix ShareFile
 
