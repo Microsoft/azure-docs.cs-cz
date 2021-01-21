@@ -1,14 +1,35 @@
 ---
-ms.openlocfilehash: c3c5b8ef94b507cad433e587c9ebfc2ec16c0ff9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b1be5e903994f0a2c4a3d457f0c2bb5572a889c3
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91440424"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98663025"
 ---
 ## <a name="add-secret-manager"></a>Přidat správce tajných klíčů
 
 Nástroj s názvem správce tajných dat uchovává citlivá data pro vývojovou práci mimo strom projektu. Tento přístup pomáhá zabránit náhodnému sdílení tajných kódů aplikace ve zdrojovém kódu. Provedením následujících kroků povolíte použití Správce tajných klíčů v projektu ASP.NET Core:
+
+#### <a name="net-5x"></a>[.NET 5. x](#tab/core5x)
+
+Přejděte do kořenového adresáře projektu a spuštěním následujícího příkazu povolte tajné úložiště v projektu:
+
+```dotnetcli
+dotnet user-secrets init
+```
+
+`UserSecretsId`Do souboru *. csproj* se přidá element obsahující identifikátor GUID:
+
+```xml
+<Project Sdk="Microsoft.NET.Sdk.Web">
+    
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <UserSecretsId>79a3edd0-2092-40a2-a04d-dcb46d5ca9ed</UserSecretsId>
+    </PropertyGroup>
+
+</Project>
+```
 
 #### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
 

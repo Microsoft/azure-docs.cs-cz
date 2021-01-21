@@ -1,14 +1,14 @@
 ---
 title: Ukázky dotazů pro začátečníky
 description: Pomocí Azure Resource graphu můžete spouštět některé úvodní dotazy, včetně počítání prostředků, řazení prostředků nebo konkrétní značky.
-ms.date: 10/14/2020
+ms.date: 01/21/2021
 ms.topic: sample
-ms.openlocfilehash: 287de47fff8c76bf05aeacd9ddfca0c48e55f5a0
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: f751481a1596e78a2e04a7cb65403b72924768cd
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882921"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98663846"
 ---
 # <a name="starter-resource-graph-query-samples"></a>Ukázky dotazů na graf počátečních prostředků
 
@@ -27,6 +27,7 @@ Projdeme následující úvodní dotazy:
 - [Počet prostředků, které mají IP adresy nakonfigurované pomocí předplatného](#count-resources-by-ip)
 - [Vypíše prostředky s určitou hodnotou značky.](#list-tag)
 - [Vypíše všechny účty úložiště s určitou hodnotou značky.](#list-specific-tag)
+- [Vypíše všechny značky a jejich hodnoty.](#list-all-tag-values)
 - [Zobrazit nepřidružené skupiny zabezpečení sítě](#unassociated-nsgs)
 - [Získání souhrnu úspory nákladů z Azure Advisor](#advisor-savings)
 - [Počet počítačů v oboru zásad konfigurace hostů](#count-gcmachines)
@@ -460,6 +461,52 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Storage/storageAccou
 
 > [!NOTE]
 > Tento příklad používá `==` pro shodu místo podmínky `=~`. `==` je shoda rozlišující velikost písmen.
+
+## <a name="list-all-tags-and-their-values"></a><a name="list-all-tag-values"></a>Vypíše všechny značky a jejich hodnoty.
+
+Tento dotaz obsahuje seznam značek pro skupiny pro správu, odběry a prostředky spolu s jejich hodnotami.
+Dotaz nejprve omezí na prostředky, kde značky `isnotempty()` , omezí zahrnutá pole tak, že zahrne pouze _značky_ v a `project` `mvexpand` a a `extend` získá spárované data z kontejneru objektů a dat. Potom používá `union` ke zkombinování výsledků z _ResourceContainers_ do stejných výsledků z _prostředků_, což poskytuje rozsáhlé pokrytí, na které se značky načítají. Nakonec omezí výsledky na `distinct` spárované data a vyloučí značky System-Hidden.
+
+```kusto
+ResourceContainers 
+| where isnotempty(tags)
+| project tags
+| mvexpand tags
+| extend tagKey = tostring(bag_keys(tags)[0])
+| extend tagValue = tostring(tags[tagKey])
+| union (
+    resources
+    | where isnotempty(tags)
+    | project tags
+    | mvexpand tags
+    | extend tagKey = tostring(bag_keys(tags)[0])
+    | extend tagValue = tostring(tags[tagKey])
+)
+| distinct tagKey, tagValue
+| where tagKey !startswith "hidden-"
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli-interactive
+az graph query -q "ResourceContainers | where isnotempty(tags) | project tags | mvexpand tags | extend tagKey = tostring(bag_keys(tags)[0]) | extend tagValue = tostring(tags[tagKey]) | union (resources | where notempty(tags) | project tags | mvexpand tags | extend tagKey = tostring(bag_keys(tags)[0]) | extend tagValue = tostring(tags[tagKey]) ) | distinct tagKey, tagValue | where tagKey !startswith "hidden-""
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
+Search-AzGraph -Query "ResourceContainers | where isnotempty(tags) | project tags | mvexpand tags | extend tagKey = tostring(bag_keys(tags)[0]) | extend tagValue = tostring(tags[tagKey]) | union (resources | where notempty(tags) | project tags | mvexpand tags | extend tagKey = tostring(bag_keys(tags)[0]) | extend tagValue = tostring(tags[tagKey]) ) | distinct tagKey, tagValue | where tagKey !startswith "hidden-""
+```
+
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+
+:::image type="icon" source="../media/resource-graph-small.png"::: Vyzkoušejte tento dotaz v Průzkumníku Azure Resource graphu:
+
+- Azure Portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/ResourceContainers%20%0A%7C%20where%20isnotempty%28tags%29%0A%7C%20project%20tags%0A%7C%20mvexpand%20tags%0A%7C%20extend%20tagKey%20%3D%20tostring%28bag_keys%28tags%29%5B0%5D%29%0A%7C%20extend%20tagValue%20%3D%20tostring%28tags%5BtagKey%5D%29%0A%7C%20union%20%28%0A%20%20%20%20resources%0A%20%20%20%20%7C%20where%20isnotempty%28tags%29%0A%20%20%20%20%7C%20project%20tags%0A%20%20%20%20%7C%20mvexpand%20tags%0A%20%20%20%20%7C%20extend%20tagKey%20%3D%20tostring%28bag_keys%28tags%29%5B0%5D%29%0A%20%20%20%20%7C%20extend%20tagValue%20%3D%20tostring%28tags%5BtagKey%5D%29%0A%29%0A%7C%20distinct%20tagKey%2C%20tagValue%0A%7C%20where%20tagKey%20%21startswith%20%22hidden-%22" target="_blank">Portal.Azure.com <span class="docon docon-navigate-external x-hidden-focus"></span> </a>
+- Portál Azure Government: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/ResourceContainers%20%0A%7C%20where%20isnotempty%28tags%29%0A%7C%20project%20tags%0A%7C%20mvexpand%20tags%0A%7C%20extend%20tagKey%20%3D%20tostring%28bag_keys%28tags%29%5B0%5D%29%0A%7C%20extend%20tagValue%20%3D%20tostring%28tags%5BtagKey%5D%29%0A%7C%20union%20%28%0A%20%20%20%20resources%0A%20%20%20%20%7C%20where%20isnotempty%28tags%29%0A%20%20%20%20%7C%20project%20tags%0A%20%20%20%20%7C%20mvexpand%20tags%0A%20%20%20%20%7C%20extend%20tagKey%20%3D%20tostring%28bag_keys%28tags%29%5B0%5D%29%0A%20%20%20%20%7C%20extend%20tagValue%20%3D%20tostring%28tags%5BtagKey%5D%29%0A%29%0A%7C%20distinct%20tagKey%2C%20tagValue%0A%7C%20where%20tagKey%20%21startswith%20%22hidden-%22" target="_blank">Portal.Azure.us <span class="docon docon-navigate-external x-hidden-focus"></span> </a>
+- Portál Azure Čína 21Vianet: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/ResourceContainers%20%0A%7C%20where%20isnotempty%28tags%29%0A%7C%20project%20tags%0A%7C%20mvexpand%20tags%0A%7C%20extend%20tagKey%20%3D%20tostring%28bag_keys%28tags%29%5B0%5D%29%0A%7C%20extend%20tagValue%20%3D%20tostring%28tags%5BtagKey%5D%29%0A%7C%20union%20%28%0A%20%20%20%20resources%0A%20%20%20%20%7C%20where%20isnotempty%28tags%29%0A%20%20%20%20%7C%20project%20tags%0A%20%20%20%20%7C%20mvexpand%20tags%0A%20%20%20%20%7C%20extend%20tagKey%20%3D%20tostring%28bag_keys%28tags%29%5B0%5D%29%0A%20%20%20%20%7C%20extend%20tagValue%20%3D%20tostring%28tags%5BtagKey%5D%29%0A%29%0A%7C%20distinct%20tagKey%2C%20tagValue%0A%7C%20where%20tagKey%20%21startswith%20%22hidden-%22" target="_blank">Portal.Azure.cn <span class="docon docon-navigate-external x-hidden-focus"></span> </a>
+
+---
 
 ## <a name="show-unassociated-network-security-groups"></a><a name="unassociated-nsgs"></a>Zobrazit nepřidružené skupiny zabezpečení sítě
 

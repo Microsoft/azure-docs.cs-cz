@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 11/04/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 1ce594d9e3ffddf781c61717ae4534f0c7bd40f8
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: beb658474e49f9b47900d8481dab0424dae8c5be
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681886"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661387"
 ---
 # <a name="windows-stop-error---0x0000007e-system-thread-exception-not-handled"></a>Chyba stop systému Windows – systémová výjimka systémových vláken nebyla zpracována.
 
@@ -34,6 +34,10 @@ Když pomocí [diagnostiky spouštění](./boot-diagnostics.md) zobrazíte sním
 Tuto příčinu nelze určit, dokud nebude analyzován soubor výpisu paměti. Pokračujte ve shromažďování souboru s výpisem paměti.
 
 ## <a name="solution"></a>Řešení
+
+> [!TIP]
+> Pokud máte nedávno zálohovaný virtuální počítač, můžete zkusit [obnovit virtuální počítač ze zálohy](../../backup/backup-azure-arm-restore-vms.md) a opravit problém při spouštění.
+
 
 Chcete-li tento problém vyřešit, musíte nejprve shromáždit soubor výpisu paměti pro danou chybu a poté odeslat soubor podpoře společnosti Microsoft. Pokud chcete shromáždit soubor s výpisem paměti, postupujte podle pokynů v následujících dvou částech.
 

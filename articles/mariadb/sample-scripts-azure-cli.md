@@ -3,22 +3,22 @@ title: Ukázky v Azure CLI – Azure Database for MariaDB
 description: V tomto článku jsou uvedené ukázky kódů Azure CLI, které jsou k dispozici pro interakci s Azure Database for MariaDB.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 3/18/2020
-ms.openlocfilehash: aa9efba1c49063d40b4df0444fb3bc63b124a0a0
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 5218d087a622c1f651785afd1ab7cb418732b093
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536768"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664595"
 ---
 # <a name="azure-cli-samples-for-azure-database-for-mariadb"></a>Ukázky v Azure CLI pro Azure Database for MariaDB 
 Následující tabulka obsahuje odkazy na ukázkové skripty Azure CLI pro Azure Database for MariaDB.
 
-| Vzorový odkaz | Popis  |
+| Vzorový odkaz | Description  |
 |---|---|
 |**Vytvoření serveru**||
 | [Vytvoření serveru a pravidla brány firewall](./scripts/sample-create-server-and-firewall-rule.md?toc=%2fcli%2fazure%2ftoc.json) | Skript Azure CLI, který vytvoří jeden Azure Database for MariaDB Server a nakonfiguruje pravidlo brány firewall na úrovni serveru. |

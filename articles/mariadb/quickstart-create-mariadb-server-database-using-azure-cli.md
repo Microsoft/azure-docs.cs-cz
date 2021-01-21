@@ -3,17 +3,17 @@ title: 'Rychlý Start: vytvoření serveru – Azure CLI – Azure Database for 
 description: Tento rychlý start popisuje, jak použít Azure CLI k vytvoření serveru Azure Database for MariaDB ve skupině prostředků Azure.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 3/18/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 3279150d0cb7b287f0a78581094a51356033596c
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 2242b0842bda9587915fc949046b8fa7effb725c
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435735"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662156"
 ---
 # <a name="quickstart-create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>Rychlý Start: vytvoření serveru Azure Database for MariaDB pomocí rozhraní příkazového řádku Azure
 
@@ -45,11 +45,11 @@ az group create --name myresourcegroup --location westus
 
 Server Azure Database for MariaDB vytvoříte pomocí příkazu [az mariadb server create](/cli/azure/mariadb/server#az-mariadb-server-create). Server může spravovat více databází. Obvykle se pro jednotlivé projekty nebo uživatele používají samostatné databáze.
 
-Nastavení | Ukázková hodnota | Popis
+Nastavení | Ukázková hodnota | Description
 ---|---|---
 name | **mydemoserver** | Zadejte jedinečný název, který identifikuje váš server Azure Database for MariaDB. Název serveru může obsahovat pouze malá písmena, číslice a znak spojovníku (-). Musí mít 3 až 63 znaků.
 resource-group | **myresourcegroup** | Zadejte název skupiny prostředků Azure.
-sku-name | **GP_Gen5_2** | Název skladové položky. Postupuje podle *pricing tier* konvence \_ *COMPUTE COMPUTE pro výpočet* \_ *virtuální jádra* ve zkrácené úrovni. Další informace o parametru **sku-name** najdete v části pod touto tabulkou.
+sku-name | **GP_Gen5_2** | Název skladové položky. Postupuje podle konvence \_ *COMPUTE COMPUTE pro výpočet* \_ *virtuální jádra* ve zkrácené úrovni. Další informace o parametru **sku-name** najdete v části pod touto tabulkou.
 backup-retention | **7** | Určuje, jak dlouho se mají uchovávat zálohy. Jednotkou jsou dny. Rozsah: 7 až 35. 
 geo-redundant-backup | **Zakázáno** | Určuje, jestli pro tento server mají být povolené geograficky redundantní zálohy. Povolené hodnoty: **Enabled** (Povoleno), **Disabled** (Zakázáno).
 location | **westus** | Lokace Azure pro server.

@@ -3,15 +3,15 @@ title: Replikace dat – Azure Database for MariaDB
 description: Přečtěte si informace o použití replikace dat k synchronizaci z externího serveru do služby Azure Database for MariaDB.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 331e064bcf11af31a778cb8dd06c463712421b7c
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 4f83af5c72529b652b23db53bf9532e87b824ea4
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94533425"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662623"
 ---
 # <a name="replicate-data-into-azure-database-for-mariadb"></a>Replikovat data do Azure Database for MariaDB
 
@@ -37,9 +37,9 @@ V hlavních scénářích, které je potřeba zvážit, je použití Replikace v
 - Pokud je na zdrojovém serveru povolený protokol SSL, ujistěte se, že je v uložené proceduře zahrnutý certifikát certifikační autority SSL zadaný pro tuto doménu `mariadb.az_replication_change_master` . Podívejte se na následující [Příklady](howto-data-in-replication.md#link-the-source-and-replica-servers-to-start-data-in-replication) a `master_ssl_ca` parametr.
 - Zajistěte, aby byla IP adresa zdrojového serveru přidaná do pravidel brány firewall serveru repliky Azure Database for MariaDB. Pomocí webu [Azure Portal](howto-manage-firewall-portal.md) nebo [Azure CLI](howto-manage-firewall-cli.md) aktualizujte pravidla brány firewall.
 - Ujistěte se, že počítač, který hostuje zdrojový server, umožňuje příchozí i odchozí provoz na portu 3306.
-- Ujistěte se, že zdrojový server má **veřejnou IP adresu** , služba DNS je veřejně přístupná nebo má plně kvalifikovaný název domény (FQDN).
+- Ujistěte se, že zdrojový server má **veřejnou IP adresu**, služba DNS je veřejně přístupná nebo má plně kvalifikovaný název domény (FQDN).
 
-### <a name="other"></a>Další
+### <a name="other"></a>Jiné
 - Replikace dat je podporovaná jenom v Pro obecné účely a paměťově optimalizované cenové úrovně.
 
 ## <a name="next-steps"></a>Další kroky

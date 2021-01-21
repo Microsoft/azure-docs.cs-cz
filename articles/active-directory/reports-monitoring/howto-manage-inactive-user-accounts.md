@@ -13,16 +13,16 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 04/07/2020
+ms.date: 01/21/2021
 ms.author: markvi
-ms.reviewer: dhanyahk
+ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b48a84bb69a356815cccd1e33c555eeb667699f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8fb517f8c50ad2c32f23542e60069a0e0a496a2d
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89244717"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660660"
 ---
 # <a name="how-to-manage-inactive-user-accounts-in-azure-ad"></a>Postupy: Správa neaktivních uživatelských účtů v Azure AD
 
@@ -34,7 +34,7 @@ Tento článek vysvětluje způsob zpracování zastaralých uživatelských ú�
 
 Neaktivní účty jsou uživatelské účty, které už členové vaší organizace nevyžadují k získání přístupu k vašim prostředkům. Jeden identifikátor klíče pro neaktivní účty znamená, že se *při* přihlášení k vašemu prostředí zatím nepoužívaly. Vzhledem k tomu, že neaktivní účty jsou svázané s aktivitou přihlašování, můžete použít časové razítko posledního přihlášení, které bylo úspěšně rozpoznáno. 
 
-Výzvou k této metodě je definování toho, co *pro chvíli* znamená v případě vašeho prostředí. Například uživatelé se nemusí k prostředí *během chvilky*přihlašovat, protože jsou na dovolené. Při definování rozdílů pro neaktivní uživatelské účty musíte zvážit všechny oprávněné důvody, proč se přihlašujete k vašemu prostředí. V mnoha organizacích je rozdíl mezi neaktivními uživatelskými účty mezi 90 a 180 dny. 
+Výzvou k této metodě je definování toho, co *pro chvíli* znamená v případě vašeho prostředí. Například uživatelé se nemusí k prostředí *během chvilky* přihlašovat, protože jsou na dovolené. Při definování rozdílů pro neaktivní uživatelské účty musíte zvážit všechny oprávněné důvody, proč se přihlašujete k vašemu prostředí. V mnoha organizacích je rozdíl mezi neaktivními uživatelskými účty mezi 90 a 180 dny. 
 
 Poslední úspěšné přihlášení nabízí potenciálním přehledům, které uživatel potřebuje k přístupu k prostředkům.  Může pomáhat s určením, jestli je členství ve skupině nebo aplikace stále potřeba, nebo odebrat. Pro správu externích uživatelů můžete pochopit, jestli je externí uživatel pořád aktivní v rámci tenanta, nebo by se měl vyčistit. 
 
@@ -62,7 +62,7 @@ Vlastnost **lastSignInDateTime** je vystavena [typem prostředku signInActivity]
 
 ### <a name="is-the-lastsignindatetime-property-available-through-the-get-azureaduser-cmdlet"></a>Je k dispozici vlastnost lastSignInDateTime prostřednictvím rutiny Get-AzureAdUser?
 
-Ne.
+No.
 
 ### <a name="what-edition-of-azure-ad-do-i-need-to-access-the-property"></a>Jakou edici služby Azure AD potřebuji pro přístup k této vlastnosti?
 
@@ -85,7 +85,7 @@ Každé interaktivní přihlášení, které bylo úspěšné, má za následek 
 
 Pokud chcete vygenerovat lastSignInDateTime časové razítko, budete potřebovat úspěšné přihlášení. Vzhledem k tomu, že vlastnost lastSignInDateTime je nová funkce, hodnota vlastnosti lastSignInDateTime může být prázdná, pokud:
 
-- Poslední úspěšné přihlášení uživatele proběhlo před vydáním této funkce (1. prosince 2019).
+- Poslední úspěšné přihlášení uživatele proběhlo před dubna 2020.
 - Ovlivněný uživatelský účet nebyl nikdy použit k úspěšnému přihlášení.
 
 ## <a name="next-steps"></a>Další kroky

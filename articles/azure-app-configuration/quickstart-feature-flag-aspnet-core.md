@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 09/28/2020
 ms.author: alkemper
-ms.openlocfilehash: d465f3c44ede8b4df56ef0da08c5bbbcd477d93f
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: a4890dd93cf77e20aff09ca6fd33ec3434a45a4b
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932132"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98663042"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Rychlý Start: Přidání příznaků funkcí do aplikace ASP.NET Core
 
@@ -20,7 +20,7 @@ V tomto rychlém startu vytvoříte ucelenou implementaci správy funkcí v apli
 
 Knihovny pro správu funkcí .NET Core přesahují rámec s kompletní podporou příznaků funkcí. Tyto knihovny jsou postaveny na systému konfigurace .NET Core. Bez problémů se integrují s konfigurací aplikací prostřednictvím poskytovatele konfigurace .NET Core.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/dotnet) .
 * [Sada .NET Core SDK](https://dotnet.microsoft.com/download)
@@ -75,6 +75,21 @@ dotnet new mvc --no-https --output TestFeatureFlags
     > [!IMPORTANT]
     > `CreateHostBuilder` nahrazuje `CreateWebHostBuilder` v .NET Core 3. x. Vyberte správnou syntaxi na základě vašeho prostředí.
 
+     #### <a name="net-5x"></a>[.NET 5. x](#tab/core5x)
+
+    ```csharp
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =>
+                webBuilder.ConfigureAppConfiguration(config =>
+                {
+                    var settings = config.Build();
+                    var connection = settings.GetConnectionString("AppConfig");
+                    config.AddAzureAppConfiguration(options =>
+                        options.Connect(connection).UseFeatureFlags());
+                }).UseStartup<Startup>());
+    ```
+
     #### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
 
     ```csharp
@@ -116,6 +131,15 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
 1. Aktualizujte `Startup.ConfigureServices` metodu pro přidání podpory příznaků funkcí voláním `AddFeatureManagement` metody. Volitelně můžete zahrnout jakýkoli filtr, který se má použít s příznaky funkcí voláním `AddFeatureFilter<FilterType>()` :
 
+     #### <a name="net-5x"></a>[.NET 5. x](#tab/core5x)
+
+    ```csharp    
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddControllersWithViews();
+        services.AddFeatureManagement();
+    }
+    ```
     #### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
 
     ```csharp    
@@ -217,7 +241,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
     :::image type="content" source="media/quickstarts/aspnet-core-feature-flag-local-before.png" alt-text="Místní aplikace pro rychlý Start před změnou" border="true":::
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky** a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky** a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
 
 1. Vyberte **správce funkcí**. 
 

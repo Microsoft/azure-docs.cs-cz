@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/1/2020
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 1fd495083f5f9be367dd0f125883b181e3bed27b
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 7072720e2600221e7b8ad8d2337577b65b079afb
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96930547"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660679"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Kurz: použití dynamické konfigurace v aplikaci ASP.NET Core
 
@@ -39,7 +39,7 @@ V tomto kurzu se naučíte:
 > * Nastavte svoji aplikaci tak, aby aktualizovala svou konfiguraci v reakci na změny v úložišti konfigurace aplikace.
 > * Vloží nejnovější konfiguraci do řadičů vaší aplikace.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K provedení tohoto kurzu nainstalujte [.NET Core SDK](https://dotnet.microsoft.com/download).
 
@@ -68,28 +68,27 @@ Než budete pokračovat, dokončete nejprve [Vytvoření aplikace ASP.NET Core s
 
 1. Otevřete *program.cs* a aktualizujte `CreateWebHostBuilder` metodu pro přidání `config.AddAzureAppConfiguration()` metody.
 
-    #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
+   #### <a name="net-5x"></a>[.NET 5. x](#tab/core5x)
 
     ```csharp
-    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-        WebHost.CreateDefaultBuilder(args)
-            .ConfigureAppConfiguration((hostingContext, config) =>
-            {
-                var settings = config.Build();
-
-                config.AddAzureAppConfiguration(options =>
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =>
+                webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
                 {
-                    options.Connect(settings["ConnectionStrings:AppConfig"])
-                           .ConfigureRefresh(refresh =>
-                                {
-                                    refresh.Register("TestApp:Settings:Sentinel", refreshAll: true)
-                                           .SetCacheExpiration(new TimeSpan(0, 5, 0));
-                                });
-                });
-            })
-            .UseStartup<Startup>();
-    ```
-
+                    var settings = config.Build();
+                    config.AddAzureAppConfiguration(options =>
+                    {
+                        options.Connect(settings["ConnectionStrings:AppConfig"])
+                               .ConfigureRefresh(refresh =>
+                                    {
+                                        refresh.Register("TestApp:Settings:Sentinel", refreshAll: true)
+                                               .SetCacheExpiration(new TimeSpan(0, 5, 0));
+                                    });
+                    });
+                })
+            .UseStartup<Startup>());
+    ```   
     #### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
 
     ```csharp
@@ -111,6 +110,27 @@ Než budete pokračovat, dokončete nejprve [Vytvoření aplikace ASP.NET Core s
                 })
             .UseStartup<Startup>());
     ```
+    #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
+
+    ```csharp
+    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        WebHost.CreateDefaultBuilder(args)
+            .ConfigureAppConfiguration((hostingContext, config) =>
+            {
+                var settings = config.Build();
+
+                config.AddAzureAppConfiguration(options =>
+                {
+                    options.Connect(settings["ConnectionStrings:AppConfig"])
+                           .ConfigureRefresh(refresh =>
+                                {
+                                    refresh.Register("TestApp:Settings:Sentinel", refreshAll: true)
+                                           .SetCacheExpiration(new TimeSpan(0, 5, 0));
+                                });
+                });
+            })
+            .UseStartup<Startup>();
+    ```
     ---
 
     `ConfigureRefresh`Metoda se používá k určení nastavení, která se použijí k aktualizaci konfiguračních dat pomocí úložiště konfigurace aplikace při aktivaci operace aktualizace. `refreshAll`Parametr `Register` metody označuje, že všechny konfigurační hodnoty by měly být aktualizovány, pokud se změní klíč Sentinel.
@@ -122,7 +142,7 @@ Než budete pokračovat, dokončete nejprve [Vytvoření aplikace ASP.NET Core s
 
     Chcete-li ve skutečnosti aktivovat operaci aktualizace, bude nutné nakonfigurovat middleware aktualizace, aby aplikace aktualizovala konfigurační data, když dojde ke změně. V pozdějším kroku se dozvíte, jak to udělat.
 
-2. Přidejte soubor *Settings.cs* , který definuje a implementuje novou `Settings` třídu.
+2. Přidejte soubor *Settings.cs* do adresáře Controllers, který definuje a implementuje novou `Settings` třídu. Nahraďte obor názvů názvem vašeho projektu. 
 
     ```csharp
     namespace TestAppConfig
@@ -139,6 +159,26 @@ Než budete pokračovat, dokončete nejprve [Vytvoření aplikace ASP.NET Core s
 
 3. Otevřete *Startup.cs* a pomocí `IServiceCollection.Configure<T>` `ConfigureServices` metody navažte konfigurační data ke `Settings` třídě.
 
+    #### <a name="net-5x"></a>[.NET 5. x](#tab/core5x)
+
+    ```csharp
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.Configure<Settings>(Configuration.GetSection("TestApp:Settings"));
+        services.AddControllersWithViews();
+        services.AddAzureAppConfiguration();
+    }
+    ```
+    #### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
+
+    ```csharp
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.Configure<Settings>(Configuration.GetSection("TestApp:Settings"));
+        services.AddControllersWithViews();
+        services.AddAzureAppConfiguration();
+    }
+    ```
     #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
 
     ```csharp
@@ -148,16 +188,6 @@ Než budete pokračovat, dokončete nejprve [Vytvoření aplikace ASP.NET Core s
         services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
     }
     ```
-
-    #### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
-
-    ```csharp
-    public void ConfigureServices(IServiceCollection services)
-    {
-        services.Configure<Settings>(Configuration.GetSection("TestApp:Settings"));
-        services.AddControllersWithViews();
-    }
-    ```
     ---
     > [!Tip]
     > Další informace o vzoru možností při čtení hodnot konfigurace najdete v tématu [vzory možností v ASP.NET Core](/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1).
@@ -165,23 +195,41 @@ Než budete pokračovat, dokončete nejprve [Vytvoření aplikace ASP.NET Core s
 4. Aktualizujte `Configure` metodu přidáním `UseAzureAppConfiguration` middlewaru, který umožní aktualizaci nastavení konfigurace zaregistrovaných pro aktualizaci, když ASP.NET Core webová aplikace nadále přijímá požadavky.
 
 
-    #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
+    #### <a name="net-5x"></a>[.NET 5. x](#tab/core5x)
 
     ```csharp
-    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
-        app.UseAzureAppConfiguration();
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                app.UseHsts();
+            }
 
-        services.Configure<CookiePolicyOptions>(options =>
-        {
-            options.CheckConsentNeeded = context => true;
-            options.MinimumSameSitePolicy = SameSiteMode.None;
-        });
+            // Add the following line:
+            app.UseAzureAppConfiguration();
 
-        app.UseMvc();
+            app.UseHttpsRedirection();
+            
+            app.UseStaticFiles();
+
+            app.UseRouting();
+
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+            });
     }
     ```
-
     #### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
 
     ```csharp
@@ -217,6 +265,22 @@ Než budete pokračovat, dokončete nejprve [Vytvoření aplikace ASP.NET Core s
             });
     }
     ```
+    #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
+
+    ```csharp
+    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+    {
+        app.UseAzureAppConfiguration();
+
+        services.Configure<CookiePolicyOptions>(options =>
+        {
+            options.CheckConsentNeeded = context => true;
+            options.MinimumSameSitePolicy = SameSiteMode.None;
+        });
+
+        app.UseMvc();
+    }
+    ```
     ---
     
     Middleware používá konfiguraci aktualizace zadanou v `AddAzureAppConfiguration` metodě v `Program.cs` k aktivaci aktualizace pro každý požadavek přijatý webovou aplikací ASP.NET Core. Pro každý požadavek se aktivuje operace aktualizace a Klientská knihovna zkontroluje, jestli vypršela platnost hodnoty uložené v mezipaměti pro zaregistrované nastavení konfigurace. Pokud platnost vypršela, aktualizuje se.
@@ -234,32 +298,9 @@ Než budete pokračovat, dokončete nejprve [Vytvoření aplikace ASP.NET Core s
 
 2. Aktualizujte `HomeController` třídu tak, aby se přijímala `Settings` prostřednictvím injektáže závislosti, a využijte její hodnoty.
 
-    #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
+ #### <a name="net-5x"></a>[.NET 5. x](#tab/core5x)
 
-    ```csharp
-    public class HomeController : Controller
-    {
-        private readonly Settings _settings;
-        public HomeController(IOptionsSnapshot<Settings> settings)
-        {
-            _settings = settings.Value;
-        }
-
-        public IActionResult Index()
-        {
-            ViewData["BackgroundColor"] = _settings.BackgroundColor;
-            ViewData["FontSize"] = _settings.FontSize;
-            ViewData["FontColor"] = _settings.FontColor;
-            ViewData["Message"] = _settings.Message;
-
-            return View();
-        }
-    }
-    ```
-
-    #### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
-
-    ```csharp
+```csharp
     public class HomeController : Controller
     {
         private readonly Settings _settings;
@@ -283,8 +324,57 @@ Než budete pokračovat, dokončete nejprve [Vytvoření aplikace ASP.NET Core s
 
         // ...
     }
-    ```
-    ---
+```
+#### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
+
+```csharp
+    public class HomeController : Controller
+    {
+        private readonly Settings _settings;
+        private readonly ILogger<HomeController> _logger;
+
+        public HomeController(ILogger<HomeController> logger, IOptionsSnapshot<Settings> settings)
+        {
+            _logger = logger;
+            _settings = settings.Value;
+        }
+
+        public IActionResult Index()
+        {
+            ViewData["BackgroundColor"] = _settings.BackgroundColor;
+            ViewData["FontSize"] = _settings.FontSize;
+            ViewData["FontColor"] = _settings.FontColor;
+            ViewData["Message"] = _settings.Message;
+
+            return View();
+        }
+
+        // ...
+    }
+```
+#### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
+
+```csharp
+    public class HomeController : Controller
+    {
+        private readonly Settings _settings;
+        public HomeController(IOptionsSnapshot<Settings> settings)
+        {
+            _settings = settings.Value;
+        }
+
+        public IActionResult Index()
+        {
+            ViewData["BackgroundColor"] = _settings.BackgroundColor;
+            ViewData["FontSize"] = _settings.FontSize;
+            ViewData["FontColor"] = _settings.FontColor;
+            ViewData["Message"] = _settings.Message;
+
+            return View();
+        }
+    }
+```
+---
 
 
 
@@ -329,7 +419,7 @@ Než budete pokračovat, dokončete nejprve [Vytvoření aplikace ASP.NET Core s
 
     ![Místní spuštění aplikace pro rychlý Start](./media/quickstarts/aspnet-core-app-launch-local-before.png)
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky** a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky** a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
 
 1. Vyberte **Průzkumník konfigurace** a aktualizujte hodnoty následujících klíčů:
 
@@ -340,7 +430,7 @@ Než budete pokračovat, dokončete nejprve [Vytvoření aplikace ASP.NET Core s
     | TestApp: nastavení: zpráva | Data z konfigurace aplikace Azure – teď s aktualizacemi za provozu! |
     | TestApp: nastavení: Sentinel | 2 |
 
-1. Aktualizujte stránku prohlížeče, aby se zobrazilo nové nastavení konfigurace. Aby se změny projevily, možná budete muset aktualizovat více než jednou.
+1. Aktualizujte stránku prohlížeče, aby se zobrazilo nové nastavení konfigurace. Možná budete muset aktualizovat více než jednou, aby se změny projevily, nebo můžete změnit automatickou obnovovací frekvenci na méně než 5 minut. 
 
     ![Místní spuštění aktualizované aplikace pro rychlý Start](./media/quickstarts/aspnet-core-app-launch-local-after.png)
 

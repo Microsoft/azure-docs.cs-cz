@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 06/26/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 33b4c59e14301e496d0eddafa7bdfdf201b7aa29
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d6e738152e542617046834980d3e7c58e497093
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87005901"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664677"
 ---
 # <a name="windows-stop-error---status-no-memory"></a>Chyba zastavení Windows – stav nedostatku paměti
 
@@ -44,6 +44,9 @@ Disk s operačním systémem je buď plný, moc fragmentován, nebo operační s
 ## <a name="solution"></a>Řešení
 
 ### <a name="process-overview"></a>Přehled procesu:
+
+> [!TIP]
+> Pokud máte nedávno zálohovaný virtuální počítač, můžete zkusit [obnovit virtuální počítač ze zálohy](../../backup/backup-azure-arm-restore-vms.md) a opravit problém při spouštění.
 
 1. Vytvoření a přístup k opravnému virtuálnímu počítači
 1. Uvolněte místo na disku.

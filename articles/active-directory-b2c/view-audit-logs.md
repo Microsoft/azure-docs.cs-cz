@@ -12,12 +12,12 @@ ms.date: 02/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 9485fb09d3ac7684ba91bcd37720a0e55603404b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 04d5a989fcaf3cef3eea3b782842fb3255d4b317
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94952722"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661098"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Přístup k protokolům auditu Azure AD B2C
 
@@ -32,7 +32,7 @@ Události protokolu auditu se uchovávají jenom po dobu **sedmi dnů**. Naplán
 
 Kategorie **B2C** v protokolech auditu obsahuje následující typy aktivit:
 
-|Typ aktivity |Popis  |
+|Typ aktivity |Description  |
 |---------|---------|
 |Autorizace |Aktivity týkající se autorizace uživatele pro přístup k prostředkům B2C (například správce, který přistupuje k seznamu zásad B2C).         |
 |Adresář |Aktivity týkající se atributů adresáře načtené, když se správce přihlásí pomocí Azure Portal. |
@@ -51,7 +51,7 @@ Tento příklad obrázku z Azure Portal zobrazuje data zachycená, když se uži
 
 Panel Podrobnosti o aktivitě obsahuje následující relevantní informace:
 
-|Sekce|Pole|Popis|
+|Sekce|Pole|Description|
 |-------|-----|-----------|
 | Aktivita | Name | Která aktivita trvala. Například *vydejte id_token aplikaci*, která uzavře skutečné přihlášení uživatele. |
 | Iniciované uživatelem (actor) | ObjectId | **ID objektu** aplikace B2C, ke které se uživatel přihlašuje Tento identifikátor není viditelný v Azure Portal, ale je přístupný prostřednictvím rozhraní Microsoft Graph API. |
@@ -223,4 +223,4 @@ Tady je reprezentace JSON ukázkové události aktivity uvedené dříve v člá
 
 ## <a name="next-steps"></a>Další kroky
 
-Můžete automatizovat další úlohy správy, například [spravovat Azure AD B2C uživatelských účtů pomocí Microsoft Graph](manage-user-accounts-graph-api.md).
+Můžete automatizovat další úlohy správy, například [spravovat Azure AD B2C uživatelských účtů pomocí Microsoft Graph](microsoft-graph-operations.md).

@@ -3,16 +3,16 @@ title: 'Rychlý Start: Vytvoření šablony Azure DB pro MariaDB – ARM'
 description: V tomto článku rychlý Start se dozvíte, jak vytvořit Azure Database for MariaDB Server pomocí Azure Resource Manager šablony.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 05/14/2020
-ms.openlocfilehash: de6df8349025c3e87e5b005196008053039fa49f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: b40aa30121bf98e756e26d70b44bc74a500de79f
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94537120"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662069"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mariadb-server"></a>Rychlý Start: použití šablony ARM k vytvoření serveru Azure Database for MariaDB
 
@@ -70,30 +70,30 @@ Vyberte následující odkaz pro nasazení šablony Azure Database for MariaDB s
 
 Na stránce **nasadit Azure Database for MariaDB se sítí VNET** :
 
-1. V poli **Skupina prostředků** vyberte **vytvořit novou** , zadejte název nové skupiny prostředků a vyberte **OK**.
+1. V poli **Skupina prostředků** vyberte **vytvořit novou**, zadejte název nové skupiny prostředků a vyberte **OK**.
 
 2. Pokud jste vytvořili novou skupinu prostředků, vyberte **umístění** pro skupinu prostředků a nový server.
 
-3. Zadejte **název serveru** , **přihlašovací jméno správce** a **přihlašovací heslo správce**.
+3. Zadejte **název serveru**, **přihlašovací jméno správce** a **přihlašovací heslo správce**.
 
     ![Nasazení Azure Database for MariaDB s oknem VNet, šablonou Azure pro rychlý Start, Azure Portal](./media/quickstart-create-mariadb-server-database-arm-template/deploy-azure-database-mariadb-vnet.png)
 
 4. Pokud chcete, změňte další výchozí nastavení:
 
-    * **Předplatné** : předplatné Azure, které chcete použít pro server.
-    * **Kapacita SKU** : kapacita Vcore, která může být *2* (výchozí), *4* , *8* , *16* , *32* nebo *64*.
-    * **Název SKU** : Předpona úrovně SKU, rodina SKU a kapacita skladové položky, které jsou spojeny podtržítky, například *B_Gen5_1* , *GP_Gen5_2* (výchozí) nebo *MO_Gen5_32*.
-    * **Velikost SKU MB** : velikost úložiště pro Azure Database for MariaDB Server (standardně *51200* ) v megabajtech.
-    * **Úroveň SKU** : vrstva nasazení, jako je například *Basic* , *GeneralPurpose* (výchozí), nebo *MemoryOptimized*.
-    * **Rodina SKU** : *COMPUTE GEN4 –* nebo *Gen5* (výchozí), která indikuje generování hardwaru pro nasazení serveru.
-    * **Verze MariaDB** : verze serveru MariaDB, která se má nasadit, například *10,2* nebo *10,3* (výchozí).
-    * **Dny uchovávání záloh** : požadované období pro uchování geograficky redundantního zálohování ve dnech (výchozí *7* ).
-    * **Geograficky redundantní zálohování** : *povoleno* nebo *zakázáno* (výchozí nastavení), v závislosti na geograficky se zotavení po havárii (GEO-Dr).
-    * **Virtual Network název** : název virtuální sítě (výchozí *azure_mariadb_vnet* ).
-    * **Název podsítě** : název podsítě (výchozí *azure_mariadb_subnet* ).
-    * **Virtual Network název pravidla** : název pravidla virtuální sítě, které povoluje podsíť (výchozí *AllowSubnet* ).
-    * **Předpona adresy virtuální** sítě: Předpona adresy virtuální sítě (výchozí *10.0.0.0/16* ).
-    * **Předpona podsítě** : Předpona adresy pro podsíť (výchozí *10.0.0.0/16* ).
+    * **Předplatné**: předplatné Azure, které chcete použít pro server.
+    * **Kapacita SKU**: kapacita Vcore, která může být *2* (výchozí), *4*, *8*, *16*, *32* nebo *64*.
+    * **Název SKU**: Předpona úrovně SKU, rodina SKU a kapacita skladové položky, které jsou spojeny podtržítky, například *B_Gen5_1*, *GP_Gen5_2* (výchozí) nebo *MO_Gen5_32*.
+    * **Velikost SKU MB**: velikost úložiště pro Azure Database for MariaDB Server (standardně *51200*) v megabajtech.
+    * **Úroveň SKU**: vrstva nasazení, jako je například *Basic*, *GeneralPurpose* (výchozí), nebo *MemoryOptimized*.
+    * **Rodina SKU**: *COMPUTE GEN4 –* nebo *Gen5* (výchozí), která indikuje generování hardwaru pro nasazení serveru.
+    * **Verze MariaDB**: verze serveru MariaDB, která se má nasadit, například *10,2* nebo *10,3* (výchozí).
+    * **Dny uchovávání záloh**: požadované období pro uchování geograficky redundantního zálohování ve dnech (výchozí *7*).
+    * **Geograficky redundantní zálohování**: *povoleno* nebo *zakázáno* (výchozí nastavení), v závislosti na geograficky se zotavení po havárii (GEO-Dr).
+    * **Virtual Network název**: název virtuální sítě (výchozí *azure_mariadb_vnet*).
+    * **Název podsítě**: název podsítě (výchozí *azure_mariadb_subnet*).
+    * **Virtual Network název pravidla**: název pravidla virtuální sítě, které povoluje podsíť (výchozí *AllowSubnet*).
+    * **Předpona adresy virtuální** sítě: Předpona adresy virtuální sítě (výchozí *10.0.0.0/16*).
+    * **Předpona podsítě**: Předpona adresy pro podsíť (výchozí *10.0.0.0/16*).
 
 5. Přečtěte si podmínky a ujednání a potom vyberte Souhlasím **s výše uvedenými podmínkami a ujednáními**.
 

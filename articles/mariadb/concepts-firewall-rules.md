@@ -3,15 +3,15 @@ title: Pravidla brány firewall – Azure Database for MariaDB
 description: Přečtěte si, jak pomocí pravidel brány firewall povolit připojení k vašemu Azure Database for MariaDB serveru.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 7/17/2020
-ms.openlocfilehash: 452ef4787812dbdf88eb541cf5a164f2888dddcc
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 2a200f25a42bc10b2e986fb710d1e7bc27a48880
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905430"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662555"
 ---
 # <a name="azure-database-for-mariadb-server-firewall-rules"></a>Pravidla brány firewall serveru Azure Database for MariaDB
 Brány firewall zabraňují všem přístupům k databázovému serveru, dokud neurčíte, které počítače mají oprávnění. Brána firewall uděluje přístup k serveru na základě zdrojové IP adresy jednotlivých požadavků.

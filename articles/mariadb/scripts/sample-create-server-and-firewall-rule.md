@@ -3,17 +3,17 @@ title: Skript CLI – vytvoření serveru – Azure Database for MariaDB
 description: Tento ukázkový skript rozhraní příkazového řádku vytvoří server Azure Database for MariaDB a nakonfiguruje pravidlo brány firewall na úrovni serveru.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 11/28/2018
-ms.openlocfilehash: a9a0ce595da1aecc3cd2ebdc071c99e42944ef9f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 8b414b5d483f4662bf8fdeb144a9cc8ef99d02dd
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536791"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664611"
 ---
 # <a name="create-a-mariadb-server-and-configure-a-firewall-rule-using-the-azure-cli"></a>Vytvoření serveru MariaDB a konfigurace pravidla brány firewall pomocí Azure CLI
 Tento ukázkový skript rozhraní příkazového řádku vytvoří server Azure Database for MariaDB a nakonfiguruje pravidlo brány firewall na úrovni serveru. Po úspěšném spuštění skriptu bude server MariaDB přístupný pro všechny služby Azure a nakonfigurovanou IP adresu.

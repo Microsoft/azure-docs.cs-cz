@@ -4,12 +4,12 @@ description: Popisuje, jak použít Service Bus k optimalizaci výkonu při vým
 ms.topic: article
 ms.date: 01/15/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7bfff1a31365724ed1d1cb6ff1956a4e2ef4f4c0
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 70f2fe88cf363572bcbca71115ba08dc0ed10e6d
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539441"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664694"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Doporučené postupy pro zlepšení výkonu pomocí zasílání zpráv Service Bus
 
@@ -150,8 +150,8 @@ static Task ErrorHandler(ProcessErrorEventArgs args)
 
 static async Task MessageHandler(ProcessMessageEventArgs args)
 {
-Console.WriteLine("Handle message");
-      await args.CompleteMessageAsync(args.Message);
+    Console.WriteLine("Handle message");
+    await args.CompleteMessageAsync(args.Message);
 }
 
 await processor.StartProcessingAsync();
@@ -234,7 +234,7 @@ Funkce dávkování pro sadu .NET Standard SDK zatím nevystavuje vlastnost k ma
 
 Ve výchozím nastavení klient používá interval dávky 20 MS. Interval dávky můžete změnit nastavením vlastnosti [BatchFlushInterval][BatchFlushInterval] před vytvořením objektu pro vytváření zpráv. Toto nastavení má vliv na všechny klienty vytvořené touto továrnou.
 
-Chcete-li zakázat dávkování, nastavte vlastnost [BatchFlushInterval][BatchFlushInterval] na **hodnotu TimeSpan. Zero**. Příklad:
+Chcete-li zakázat dávkování, nastavte vlastnost [BatchFlushInterval][BatchFlushInterval] na **hodnotu TimeSpan. Zero**. Například:
 
 ```csharp
 var settings = new MessagingFactorySettings
@@ -346,6 +346,8 @@ Další informace najdete v následujících `PrefetchCount` vlastnostech:
 
 - [ServiceBusReceiver.PrefetchCount](/dotnet/api/azure.messaging.servicebus.servicebusreceiver.prefetchcount)
 - [ServiceBusProcessor.PrefetchCount](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.prefetchcount)
+
+Hodnoty pro tyto vlastnosti můžete nastavit v [ServiceBusReceiverOptions](/dotnet/api/azure.messaging.servicebus.servicebusreceiveroptions) nebo [ServiceBusProcessorOptions](/dotnet/api/azure.messaging.servicebus.servicebusprocessoroptions).
 
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft. Azure. ServiceBus SDK](#tab/net-standard-sdk)
 

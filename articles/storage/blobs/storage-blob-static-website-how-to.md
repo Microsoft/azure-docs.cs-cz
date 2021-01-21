@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
 ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 8ca670049b49500e6b6310bca25cb78ded31a294
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: a90251097f2b4cced5b30f5d6eea03b6ca0b1c61
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95537845"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664745"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Hostování statického webu v Azure Storage
 
@@ -54,9 +54,9 @@ Hostování statického webu je funkce, kterou musíte povolit v účtu úloži�
 
 <a id="cli"></a>
 
-Můžete povolit hostování statického webu pomocí rozhraní příkazového [řádku Azure Command-Line](/cli/azure/?view=azure-cli-latest).
+Můžete povolit hostování statického webu pomocí rozhraní příkazového [řádku Azure Command-Line](/cli/azure/).
 
-1. Nejdřív otevřete [Azure Cloud Shell](../../cloud-shell/overview.md?view=azure-cli-latest), nebo pokud jste rozhraní příkazového řádku Azure [nainstalovali](/cli/azure/install-azure-cli?view=azure-cli-latest) místně, otevřete konzolovou aplikaci, například Windows PowerShell.
+1. Nejdřív otevřete [Azure Cloud Shell](../../cloud-shell/overview.md), nebo pokud jste rozhraní příkazového řádku Azure [nainstalovali](/cli/azure/install-azure-cli) místně, otevřete konzolovou aplikaci, například Windows PowerShell.
 
 2. Pokud je vaše identita přidružená k více než jednomu předplatnému, nastavte své aktivní předplatné na předplatné účtu úložiště, který bude hostovat váš statický Web.
 

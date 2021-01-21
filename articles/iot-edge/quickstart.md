@@ -10,12 +10,12 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-azurecli
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: f3af2b7839465f886d1edba01eb9988419761dac
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 71e38059aceb7da63f3545610b9acfe48c5d3150
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/21/2021
-ms.locfileid: "98630891"
+ms.locfileid: "98663209"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-windows-device-preview"></a>Rychlý Start: nasazení prvního modulu IoT Edge do zařízení s Windows (Preview)
 
@@ -108,58 +108,69 @@ Nainstalujte do svého zařízení IoT Edge pro Linux ve Windows a nakonfigurujt
 ![Diagram – spuštění IoT Edge runtime na zařízení](./media/quickstart/start-runtime.png)
 
 1. [Stáhněte si centrum pro správu systému Windows](https://aka.ms/WACDownloadEFLOW).
-2. Postupujte podle pokynů Průvodce instalací a nastavte centrum pro správu Windows na svém zařízení.
-3. Až budete v centru pro správu Windows, v pravém horním rohu obrazovky vyberte **ikonu ozubeného kolečka pro nastavení** .  
-4. V nabídce nastavení v části brána vyberte **rozšíření** .
-5. V seznamu **dostupných rozšíření** vyberte **Azure IoT Edge**
-6. **Nainstalovat** rozšíření
 
-7. Po instalaci rozšíření přejděte na hlavní stránku řídicího panelu výběrem **centra pro správu Windows** v levém horním rohu obrazovky.
+1. Postupujte podle pokynů Průvodce instalací a nastavte centrum pro správu Windows na svém zařízení.
 
-8. Zobrazí se připojení místního hostitele představující počítač, na kterém je spuštěný centrum pro správu systému Windows.
+1. Až budete v centru pro správu Windows, v pravém horním rohu obrazovky vyberte **ikonu ozubeného kolečka pro nastavení** .
+
+1. V nabídce nastavení v části brána vyberte **rozšíření** .
+
+1. Vyberte kartu **informační kanály** a vyberte **Přidat**.
+
+1. https://aka.ms/wac-insiders-feedDo textového pole zadejte a vyberte **Přidat**.
+
+1. Po přidání informačního kanálu přejděte na kartu **rozšíření k dispozici** . Aktualizace seznamu rozšíření může chvíli trvat.
+
+1. V seznamu **dostupných rozšíření** vyberte **Azure IoT Edge**
+
+1. **Nainstalovat** rozšíření
+
+1. Po instalaci rozšíření přejděte na hlavní stránku řídicího panelu výběrem **centra pro správu Windows** v levém horním rohu obrazovky.
+
+1. Zobrazí se připojení místního hostitele představující počítač, na kterém je spuštěný centrum pro správu systému Windows.
 
    :::image type="content" source="media/quickstart/windows-admin-center-start-page.png" alt-text="Snímek obrazovky – Úvodní stránka pro správce Windows":::
 
-9. Vyberte **Přidat**.
+1. Vyberte **Přidat**.
 
    :::image type="content" source="media/quickstart/windows-admin-center-start-page-add.png" alt-text="Snímek obrazovky – tlačítko pro přidání úvodní stránky Správce Windows":::
 
-10. Vyhledejte dlaždici Azure IoT Edge a vyberte **vytvořit novou**. Tím se spustí Průvodce instalací nástroje.
+1. Vyhledejte dlaždici Azure IoT Edge a vyberte **vytvořit novou**. Tím se spustí Průvodce instalací nástroje.
 
     :::image type="content" source="media/quickstart/select-tile-screen.png" alt-text="Snímek obrazovky Azure IoT Edge pro Linux v dlaždici Windows":::
 
-11. Pokračujte v Průvodci instalací a přijměte smlouvu EULA a klikněte na tlačítko **Další** .
+1. Pokračujte v Průvodci instalací a přijměte smlouvu EULA a klikněte na tlačítko **Další** .
 
     :::image type="content" source="media/quickstart/wizard-welcome-screen.png" alt-text="Snímek obrazovky – Vítejte v Průvodci":::
 
-12. Vyberte **volitelná diagnostická data** pro poskytování rozšířených diagnostických dat, která pomáhají Microsoft monitorovat a udržovat kvalitu služby a klikněte na **Další: nasadit.**
+1. Vyberte **volitelná diagnostická data** pro poskytování rozšířených diagnostických dat, která pomáhají Microsoft monitorovat a udržovat kvalitu služby a klikněte na **Další: nasadit.**
 
     :::image type="content" source="media/quickstart/diagnostic-data-screen.png" alt-text="Snímek obrazovky – diagnostická data":::
 
-13. Na obrazovce **Vybrat cílové zařízení** vyberte požadované cílové zařízení, aby se ověřilo, že splňuje minimální požadavky. V tomto rychlém startu instalujeme IoT Edge na místní zařízení, takže zvolíte připojení localhost. Po potvrzení klikněte na tlačítko **Další** a pokračujte.
+1. Na obrazovce **Vybrat cílové zařízení** vyberte požadované cílové zařízení, aby se ověřilo, že splňuje minimální požadavky. V tomto rychlém startu instalujeme IoT Edge na místní zařízení, takže zvolíte připojení localhost. Po potvrzení klikněte na tlačítko **Další** a pokračujte.
 
     :::image type="content" source="media/quickstart/wizard-select-target-device-screen.png" alt-text="Snímek obrazovky – výběr cílového zařízení":::
 
-14. Přijměte výchozí nastavení výběrem možnosti **Další**.
+1. Přijměte výchozí nastavení výběrem možnosti **Další**.
 
-15. Na obrazovce nasazení se zobrazuje proces stažení balíčku, instalace balíčku, konfigurace hostitele a konečné nastavení virtuálního počítače Linux.  Úspěšné nasazení bude vypadat takto:
+1. Na obrazovce nasazení se zobrazuje proces stažení balíčku, instalace balíčku, konfigurace hostitele a konečné nastavení virtuálního počítače Linux.  Úspěšné nasazení bude vypadat takto:
 
     :::image type="content" source="media/quickstart/wizard-deploy-success-screen.png" alt-text="Snímek obrazovky – úspěšné nasazení průvodce":::
 
-16. Klikněte na **Další: připojit** a pokračujte posledním krokem, abyste mohli zařízení Azure IoT Edge ZŘÍDIT pomocí ID zařízení z instance služby IoT Hub.
+1. Klikněte na **Další: připojit** a pokračujte posledním krokem, abyste mohli zařízení Azure IoT Edge ZŘÍDIT pomocí ID zařízení z instance služby IoT Hub.
 
-17. Zkopírujte připojovací řetězec ze zařízení do Azure IoT Hub a vložte ho do pole Připojovací řetězec zařízení. Pak zvolte **zřizování s vybranou metodou**.
+1. Zkopírujte připojovací řetězec ze zařízení do Azure IoT Hub a vložte ho do pole Připojovací řetězec zařízení. Pak zvolte **zřizování s vybranou metodou**.
 
     > [!NOTE]
     > Podívejte se na krok 3 v předchozí části [registrace zařízení IoT Edge](#register-an-iot-edge-device), abyste mohli načíst připojovací řetězec.
 
     :::image type="content" source="media/quickstart/wizard-provision.png" alt-text="Snímek obrazovky – zřizování Průvodce":::
 
-18. Až se zřizování dokončí, vyberte **Dokončit** a vraťte se na úvodní obrazovku centra pro správu systému Windows. Vaše zařízení by teď mělo být možné zobrazit jako zařízení IoT Edge.
+1. Až se zřizování dokončí, vyberte **Dokončit** a vraťte se na úvodní obrazovku centra pro správu systému Windows. Vaše zařízení by teď mělo být možné zobrazit jako zařízení IoT Edge.
 
     :::image type="content" source="media/quickstart/windows-admin-center-device-screen.png" alt-text="Snímek obrazovky – centrum pro správu Windows Azure IoT Edge zařízení":::
 
-19. Vyberte zařízení Azure IoT Edge pro zobrazení řídicího panelu. Měli byste vidět, že se v Azure IoT Hub nasadily úlohy ze zařízení, které jsou ve dvojím provozu. **Seznam IoT Edge modul** by měl zobrazovat jeden modul spuštěný **, edgeAgent** a **stav IoT Edge** by se měl zobrazovat jako **aktivní (spuštěný)**.
+1. Vyberte zařízení Azure IoT Edge pro zobrazení řídicího panelu. Měli byste vidět, že se v Azure IoT Hub nasadily úlohy ze zařízení, které jsou ve dvojím provozu. **Seznam IoT Edge modul** by měl zobrazovat jeden modul spuštěný **, edgeAgent** a **stav IoT Edge** by se měl zobrazovat jako **aktivní (spuštěný)**.
 
 Teď je zařízení IoT Edge nakonfigurované. Je připravené na spouštění modulů nasazených v cloudu.
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0a8e08d0045d0520241341cc08fb800468ed6897
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: c3e6c1d6bfa83ef238ef38b25b189510cf142a38
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928609"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661081"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Přehled uživatelských účtů v Azure Active Directory B2C
 
@@ -38,7 +38,7 @@ Když přidáte nový pracovní účet, je nutné vzít v úvahu následující 
 
 - **Jméno** a **uživatelské jméno** – vlastnost **název** obsahuje dané a příjmení uživatele. **Uživatelské jméno** je identifikátor, který uživatel zadá pro přihlášení. Uživatelské jméno zahrnuje úplnou doménu. Část názvu domény uživatelského jména musí být buď počáteční výchozí název domény *Your-Domain.onmicrosoft.com*, nebo ověřený nefederovaný [vlastní název domény](../active-directory/fundamentals/add-custom-domain.md) , například *contoso.com*.
 - **Profil** – účet je nastavený s profilem uživatelských dat. Máte možnost zadat křestní jméno, příjmení, název úlohy a název oddělení. Po vytvoření účtu můžete profil upravit.
-- **Skupiny** – pomocí skupiny můžete provádět úlohy správy, jako je například přiřazení licencí nebo oprávnění k několika uživatelům nebo zařízením najednou. Nový účet můžete umístit do existující [skupiny](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) ve vašem tenantovi.
+- **Skupiny** – pomocí skupin můžete provádět úlohy správy, jako je přiřazení licencí nebo oprávnění mnoha uživatelům nebo zařízením najednou. Nový účet můžete umístit do existující [skupiny](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) ve vašem tenantovi.
 - **Role adresáře** – je třeba zadat úroveň přístupu, který uživatelský účet potřebuje k prostředkům ve vašem tenantovi. K dispozici jsou následující úrovně oprávnění:
 
     - **Uživatel** – uživatelé mají přístup k přiřazeným prostředkům, ale nemůžou spravovat většinu prostředků tenanta.
@@ -70,7 +70,7 @@ K resetování hesla uživatele můžete použít následující informace:
 
 Externí uživatele můžete pozvat do svého tenanta jako uživatel typu Host. Typický scénář pro pozvání uživatele typu Host ke klientovi Azure AD B2C je sdílet odpovědnosti správy. Příklad použití účtu hosta najdete v tématu [vlastnosti Azure Active Directory uživatele spolupráce B2B](../active-directory/external-identities/user-properties.md).
 
-Při pozvání uživatele typu Host k vašemu tenantovi zadáte e-mailovou adresu příjemce a zprávu popisující pozvánku. Odkaz na pozvánku přijímá uživatele na stránce s oznámením o souhlasu, kde je **vybrané tlačítko Začínáme** a kontrola oprávnění je přijatá. Pokud Doručená pošta není připojená k e-mailové adrese, může uživatel přejít na stránku s souhlasem na stránce Microsoftu pomocí pozvaných přihlašovacích údajů. Uživatel pak nuceně uplatňuje pozvánku stejným způsobem jako při kliknutí na odkaz v e-mailu. Příklad: `https://myapps.microsoft.com/B2CTENANTNAME`.
+Při pozvání uživatele typu Host k vašemu tenantovi zadáte e-mailovou adresu příjemce a zprávu popisující pozvánku. Odkaz na pozvánku převezme uživatele na stránku souhlasu. Pokud Doručená pošta není připojená k e-mailové adrese, může uživatel přejít na stránku s souhlasem na stránce Microsoftu pomocí pozvaných přihlašovacích údajů. Uživatel pak nuceně uplatňuje pozvánku stejným způsobem jako při kliknutí na odkaz v e-mailu. Příklad: `https://myapps.microsoft.com/B2CTENANTNAME`.
 
 K pozvání uživatele typu Host můžete použít taky [rozhraní Microsoft Graph API](/graph/api/invitation-post?view=graph-rest-beta) .
 
@@ -78,7 +78,7 @@ K pozvání uživatele typu Host můžete použít taky [rozhraní Microsoft Gra
 
 Uživatel se může přihlásit k aplikacím zabezpečeným pomocí Azure AD B2C, ale nemůže získat přístup k prostředkům Azure, jako je Azure Portal. Uživatel s uživatelským účtem může používat místní účet nebo federované účty, jako je Facebook nebo Twitter. Účet příjemce se vytvoří pomocí [uživatelského toku registrace nebo přihlašování](user-flow-overview.md), pomocí rozhraní Microsoft Graph API nebo pomocí Azure Portal.
 
-Data, která se shromažďují při vytváření uživatelského účtu uživatele, můžete zadat pomocí vlastních uživatelských atributů. Další informace najdete v tématu [definování vlastních atributů v Azure Active Directory B2C](user-flow-custom-attributes.md).
+Můžete zadat data, která se shromažďují při vytváření uživatelského účtu uživatele. Další informace najdete v tématech [Přidání uživatelských atributů a přizpůsobení uživatelského vstupu](configure-user-input.md).
 
 Další informace o správě uživatelských účtů najdete v tématu [správa Azure AD B2C uživatelských účtů pomocí Microsoft Graph](manage-user-accounts-graph-api.md).
 

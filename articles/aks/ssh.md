@@ -4,12 +4,12 @@ description: Naučte se vytvořit připojení SSH s uzly clusteru Azure Kubernet
 services: container-service
 ms.topic: article
 ms.date: 07/31/2019
-ms.openlocfilehash: 50a52584618e505aa2ae7bd9ed7e0a9f6bc330a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c044b552cd0c28a7073364c48b9572045a290331
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87015608"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662869"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>Připojení pomocí SSH k uzlům clusteru Azure Kubernetes Service (AKS) kvůli údržbě nebo řešení potíží
 
@@ -25,7 +25,7 @@ Ve výchozím nastavení se klíče SSH získávají nebo generují a pak se do 
 
 Tento článek také předpokládá, že máte klíč SSH. Můžete vytvořit klíč SSH pomocí [MacOS nebo Linux][ssh-nix] nebo [Windows][ssh-windows]. Použijete-li pro vytvoření páru klíčů gen, uložte dvojici klíčů ve formátu OpenSSH, nikoli jako výchozí formát privátního klíče pro výstup pro výstup (soubor. ppk).
 
-Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.64 nebo novější.  `az --version`Verzi zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
+Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.64 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
 
 ## <a name="configure-virtual-machine-scale-set-based-aks-clusters-for-ssh-access"></a>Konfigurace clusterů AKS založených na škálování virtuálních počítačů pro přístup přes SSH
 
@@ -35,7 +35,7 @@ Pomocí příkazu [AZ AKS show][az-aks-show] Získejte název skupiny prostředk
 
 ```azurecli-interactive
 CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
-SCALE_SET_NAME=$(az vmss list --resource-group $CLUSTER_RESOURCE_GROUP --query [0].name -o tsv)
+SCALE_SET_NAME=$(az vmss list --resource-group $CLUSTER_RESOURCE_GROUP --query '[0].name' -o tsv)
 ```
 
 Výše uvedený příklad přiřadí název skupiny prostředků clusteru pro *myAKSCluster* v *myResourceGroup* pro *CLUSTER_RESOURCE_GROUP*. Příklad následně používá *CLUSTER_RESOURCE_GROUP* k vypsání názvu sady škálování a přiřadí ho do *SCALE_SET_NAME*.

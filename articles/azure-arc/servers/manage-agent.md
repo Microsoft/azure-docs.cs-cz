@@ -1,14 +1,14 @@
 ---
 title: Správa agenta serverů s podporou ARC Azure
 description: Tento článek popisuje různé úlohy správy, které obvykle provedete během životního cyklu serverů s podporou ARC Azure, které jsou agentem počítače připojené.
-ms.date: 12/21/2020
+ms.date: 01/21/2021
 ms.topic: conceptual
-ms.openlocfilehash: f408048f61f76d6b258ea8e063630b4e2aa841af
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 27712dcd30857ca8c677de4f99dc4ed7e2e7b292
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724370"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662122"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Správa a údržba agenta připojeného počítače
 
@@ -34,7 +34,74 @@ U serverů nebo počítačů, které už nechcete spravovat se servery s podporo
 
     * Použití rozhraní příkazového [řádku Azure](../../azure-resource-manager/management/delete-resource-group.md?tabs=azure-cli#delete-resource) nebo [Azure PowerShell](../../azure-resource-manager/management/delete-resource-group.md?tabs=azure-powershell#delete-resource). Pro `ResourceType` použití parametru `Microsoft.HybridCompute/machines` .
 
-3. Odinstalujte agenta z počítače nebo serveru. Postupujte podle následujících kroků.
+3. [Odinstalujte agenta](#remove-the-agent) z počítače nebo serveru podle následujících kroků.
+
+## <a name="renaming-a-machine"></a>Přejmenování počítače
+
+Když změníte název počítače se systémem Linux nebo Windows připojeného k serverům s podporou ARC Azure, nový název se nerozpozná automaticky, protože název prostředku v Azure je neměnný. Stejně jako u jiných prostředků Azure je nutné odstranit prostředek a znovu ho vytvořit, aby bylo možné použít nový název.
+
+Pro servery s povoleným obloukem před přejmenováním počítače je nutné před pokračováním odebrat rozšíření virtuálního počítače.
+
+> [!NOTE]
+> I když jsou nainstalovaná rozšíření i nadále spuštěná a po dokončení tohoto postupu provádějí jejich normální činnost, nebudete je moct spravovat. Pokud se pokusíte znovu nasadit rozšíření na počítači, může docházet k nepředvídatelnému chování.
+
+> [!WARNING]
+> Doporučujeme, abyste se vyhnuli přejmenování názvu počítače počítače a provádět tento postup pouze v případě, že je to nezbytně nutné.
+
+Následující postup shrnuje postup přejmenování počítače.
+
+1. Auditujte rozšíření virtuálních počítačů nainstalované v počítači a poznamenejte si jejich konfiguraci pomocí [Azure CLI](manage-vm-extensions-cli.md#list-extensions-installed) nebo použijte [Azure PowerShell](manage-vm-extensions-powershell.md#list-extensions-installed).
+
+2. Odeberte rozšíření virtuálních počítačů pomocí PowerShellu, rozhraní příkazového řádku Azure nebo z Azure Portal.
+
+    > [!NOTE]
+    > Pokud jste nasadili agenta Azure Monitor pro virtuální počítače (Insights) nebo agenta Log Analytics pomocí Azure Policy zásady konfigurace hosta, agenti se znovu nasadí po dalším [zkušebním cyklu](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers) a po registraci přejmenovaného počítače u serverů s podporou ARC.
+
+3. Odpojte počítač od serverů s podporou ARC pomocí PowerShellu, rozhraní příkazového řádku Azure nebo portálu.
+
+4. Přejmenujte počítač.
+
+5. Připojte počítač k serverům s podporou ARC pomocí `Azcmagent` nástroje k registraci a vytvoření nového prostředku v Azure.
+
+6. Nasadit rozšíření virtuálních počítačů dřív nainstalovaná na cílovém počítači.
+
+K dokončení této úlohy použijte následující postup.
+
+1. Pomocí rozhraní příkazového [řádku Azure](manage-vm-extensions-cli.md#remove-an-installed-extension)nebo pomocí [Azure PowerShell](manage-vm-extensions-powershell.md#remove-an-installed-extension)odeberte rozšíření virtuálních počítačů nainstalovaná z [Azure Portal](manage-vm-extensions-portal.md#uninstall-extension).
+
+2. K odpojení počítače od Arc Azure použijte jednu z následujících metod. Odpojení počítače od serverů s podporou ARC neodebere agenta připojeného počítače a nebudete muset agenta odebírat jako součást tohoto procesu. V průběhu tohoto procesu budou fungovat všechna rozšíření virtuálních počítačů nasazená v počítači.
+
+    # <a name="azure-portal"></a>[Azure Portal](#tab/azure-portal)
+
+    1. V prohlížeči přejdete na [Azure Portal](https://portal.azure.com).
+    1. Na portálu přejděte na **servery – Azure ARC** a ze seznamu vyberte svůj hybridní počítač.
+    1. Z vybraného serveru s povoleným zaregistrovaným obloukem vyberte **Odstranit** z horního panelu a odstraňte prostředek v Azure.
+
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+    
+    ```azurecli
+    az resource delete \
+      --resource-group ExampleResourceGroup \
+      --name ExampleArcMachine \
+      --resource-type "Microsoft.HybridCompute/machines"
+    ```
+
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+    ```powershell
+    Remove-AzResource `
+     -ResourceGroupName ExampleResourceGroup `
+     -ResourceName ExampleArcMachine `
+     -ResourceType Microsoft.HybridCompute/machines
+    ```
+
+3. Přejmenujte název počítače počítače.
+
+### <a name="after-renaming-operation"></a>Po přejmenování operace
+
+Po přejmenování počítače je potřeba agenta připojeného počítače znovu zaregistrovat u serverů s podporou ARC. Spusťte `azcmagent` Nástroj s parametrem [Connect](#connect) a dokončete tento krok.
+
+Znovu nasaďte rozšíření virtuálních počítačů, které byly původně nasazeny do počítače ze serverů s podporou ARC. Pokud jste nasadili agenta Azure Monitor pro virtuální počítače (Insights) nebo agenta Log Analytics pomocí Azure Policy zásady konfigurace hosta, agenti se znovu nasadí po dalším [zkušebním cyklu](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers).
 
 ## <a name="upgrading-agent"></a>Upgrade agenta
 

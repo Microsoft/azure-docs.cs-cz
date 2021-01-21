@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 53093edb1d3c142336f06ec8544aaa7b55e37477
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 138e3ee5272d790130cebfd8a1f61da7bed970d8
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611249"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98663964"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Podporované verze Kubernetes ve službě Azure Kubernetes Service (AKS)
 
@@ -143,7 +143,7 @@ Historii minulých verzí najdete v tématu [Kubernetes](https://en.wikipedia.or
 | 1,18  | Březen – 23-20  | Květen 2020   | Srpna 2020  | 1,21 GA | 
 | 1,19  | Srpna 04-20  | SEP 2020   | Listopadu 2020  | 1,22 GA | 
 | 1,20  | DEC-08-20  | Leden 2021   | Březen 2021  | 1,23 GA |
-| 1,21  | Duben – 08-21 * | Květen 2021   | Července 2021  | 1,24 GA |
+| 1,21  | Duben – 08-21 * | Květen 2021   | Červen 2021  | 1,24 GA |
 
 \* Verze Kubernetes 1,21 pro odesílání nadřazených verzí se může změnit jako nadřazený kalendář, který se ještě dokončuje.
 

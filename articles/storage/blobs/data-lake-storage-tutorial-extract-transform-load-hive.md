@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 7640b7a6053532360da4c908089aecfe163bd3de
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f8210c3bc0437180ace110f8decd9f83e18650ed
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95912650"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661929"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-hdinsight"></a>Kurz: extrakce, transformace a načtení dat pomocí Azure HDInsight
 
@@ -40,7 +40,7 @@ Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný úče
 
 * **Azure SQL Database**: jako cílové úložiště dat používáte Azure SQL Database. Pokud nemáte databázi v SQL Database, přečtěte si téma [Vytvoření databáze v Azure SQL Database v Azure Portal](../../azure-sql/database/single-database-create-quickstart.md).
 
-* **Azure CLI**: Pokud jste nenainstalovali Azure CLI, přečtěte si téma [instalace Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
+* **Azure CLI**: Pokud jste nenainstalovali Azure CLI, přečtěte si téma [instalace Azure CLI](/cli/azure/install-azure-cli).
 
 * **Klient Secure Shell (SSH)**: Další informace naleznete v tématu [připojení ke službě HDInsight (HADOOP) pomocí SSH](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -76,7 +76,7 @@ V této části nahrajete data do clusteru HDInsight a pak tato data zkopírujet
 
    Pokud k ověření přihlášení SSH používáte heslo, zobrazí se výzva k zadání hesla.
 
-   Pokud používáte veřejný klíč, budete pravděpodobně muset použít parametr `-i` k zadání cesty k odpovídajícímu privátnímu klíči. Například, `scp -i ~/.ssh/id_rsa <file_name>.zip <user-name>@<cluster-name>-ssh.azurehdinsight.net:`.
+   Pokud používáte veřejný klíč, budete pravděpodobně muset použít parametr `-i` k zadání cesty k odpovídajícímu privátnímu klíči. Například `scp -i ~/.ssh/id_rsa <file_name>.zip <user-name>@<cluster-name>-ssh.azurehdinsight.net:`.
 
 2. Po dokončení nahrávání se ke clusteru připojte pomocí SSH. Na příkazovém řádku zadejte následující příkaz:
 
@@ -226,7 +226,7 @@ V rámci úlohy Apache Hive naimportujete data ze souboru. CSV do tabulky Apache
 
 Pro tuto operaci budete potřebovat název serveru z SQL Database. Pokud chcete najít název vašeho serveru, proveďte tyto kroky.
 
-1. Přejděte na web [Azure Portal](https://portal.azure.com).
+1. Přejděte na [Azure Portal](https://portal.azure.com).
 
 2. Vyberte **databáze SQL**.
 

@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: overview
-ms.date: 12/03/2020
+ms.date: 01/20/2021
 ms.author: justinha
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 765aa10e57c472d7a1af0952364783bb1d711078
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 194a5420f38e99d45f74241f67ae8cfbbaaee8f4
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861513"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660992"
 ---
 # <a name="what-is-azure-active-directory-domain-services"></a>Co je služba Azure Active Directory Domain Services?
 
@@ -24,10 +24,14 @@ Azure Active Directory Domain Services (služba AD DS) poskytuje spravované dom
 
 Spravovaná doména Azure služba AD DS umožňuje spouštět starší aplikace v cloudu, které nemůžou používat moderní metody ověřování, nebo kde nechcete, aby se prohledávání adresářů vždy vrátilo do místního prostředí služba AD DS. Tyto starší aplikace můžete z místního prostředí napravit a přesunout do spravované domény, aniž byste museli spravovat služba AD DS prostředí v cloudu.
 
-Služba Azure služba AD DS se integruje s vaším stávajícím tenant Azure AD. Tato integrace umožňuje uživatelům přihlásit se ke službě a aplikacím připojeným ke spravované doméně pomocí svých stávajících přihlašovacích údajů. K zabezpečení přístupu k prostředkům můžete použít taky existující skupiny a uživatelské účty. Tyto funkce poskytují plynulejší a posunutí místních prostředků do Azure.
+Služba Azure služba AD DS se integruje s vaším stávajícím tenant Azure AD. Tato integrace umožňuje uživatelům přihlašovat se ke službám a aplikacím připojeným ke spravované doméně pomocí svých stávajících přihlašovacích údajů. K zabezpečení přístupu k prostředkům můžete použít taky existující skupiny a uživatelské účty. Tyto funkce poskytují plynulejší a posunutí místních prostředků do Azure.
 
 > [!div class="nextstepaction"]
 > [Pokud chcete začít, vytvořte spravovanou doménu Azure služba AD DS pomocí Azure Portal][tutorial-create]
+
+Podívejte se na naše krátké video, kde se dozvíte víc o Azure služba AD DS.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4LblD]
 
 ## <a name="how-does-azure-ad-ds-work"></a>Jak funguje Azure služba AD DS?
 

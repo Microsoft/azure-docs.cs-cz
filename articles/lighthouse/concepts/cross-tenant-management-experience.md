@@ -1,14 +1,14 @@
 ---
 title: Prostředí pro správu napříč tenanty
 description: Správa delegovaných prostředků v Azure umožňuje prostředí pro správu mezi klienty.
-ms.date: 01/07/2020
+ms.date: 01/20/2021
 ms.topic: conceptual
-ms.openlocfilehash: a550655b8076a1e3946ff015239715ddf0712236
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 0e380b49f122e63113e790f4e866fed40aa9beac
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131759"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662708"
 ---
 # <a name="cross-tenant-management-experiences"></a>Prostředí pro správu napříč tenanty
 
@@ -173,6 +173,7 @@ U všech scénářů Prosím mějte na paměti následující stávající omeze
 - Přiřazení rolí musí používat [předdefinované role Azure](../../role-based-access-control/built-in-roles.md). Všechny předdefinované role se v současné době podporují se správou delegovaných prostředků Azure s výjimkou vlastníka nebo jakýchkoli integrovaných rolí s [`DataActions`](../../role-based-access-control/role-definitions.md#dataactions) oprávněním. Role správce přístupu uživatelů je podporovaná jenom pro omezené použití při [přiřazování rolí ke spravovaným identitám](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant).  Vlastní role a [role správců pro klasický odběr](../../role-based-access-control/classic-administrators.md) nejsou podporovány.
 - I když můžete připojit odběry, které používají Azure Databricks, uživatelé v tenantovi pro správu nemůžou v současné době spouštět Azure Databricks pracovní prostory na delegovaném předplatném.
 - I když můžete připojit odběry a skupiny prostředků, které mají zámky prostředků, tyto zámky nebudou bránit v provádění akcí uživatelům v tenantovi. [Zakažte přiřazení](../../role-based-access-control/deny-assignments.md) , která chrání systémem spravované prostředky, jako jsou ty, které vytvořily spravované aplikace Azure nebo plány Azure (přiřazení zamítnutí přiřazení systémem), zabrání uživatelům ve správě tenanta na těchto prostředcích. Nicméně v tomto okamžiku nemohou uživatelé v tenantovi zákazníka vytvořit vlastní přiřazení odepřít (přiřazení odepřít uživateli).
+- Delegování předplatných v rámci [národního cloudu](../../active-directory/develop/authentication-national-cloud.md) a veřejného cloudu Azure nebo ve dvou různých národních cloudech se nepodporuje.
 
 ## <a name="next-steps"></a>Další kroky
 

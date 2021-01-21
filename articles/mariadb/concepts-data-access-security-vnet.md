@@ -3,15 +3,15 @@ title: Koncové body služby virtuální sítě – Azure Database for MariaDB
 description: Popisuje způsob fungování koncových bodů služby VNet pro server Azure Database for MariaDB.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 7/17/2020
-ms.openlocfilehash: bd7d08e4f65612b9a76b63e8153603d043209ad3
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 0f90e64f2a20b6455d5a169025230b78e64287cc
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96453381"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662674"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mariadb"></a>Použití koncových bodů služeb virtuální sítě a pravidel pro Azure Database for MariaDB
 
@@ -130,7 +130,7 @@ Aby bylo možné Azure Database for MariaDB komunikaci z okruhu, musíte vytvoř
 
 ## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>Přidání pravidla brány firewall virtuální sítě na server bez zapnutí koncových bodů služby virtuální sítě
 
-Pouze nastavení pravidla brány firewall virtuální sítě nezabezpečuje Server s virtuální sítí. Aby se zabezpečení projevilo, musíte taky **zapnout koncové body** služby virtuální sítě. Při zapnutí koncových bodů služby **ve** vaší virtuální síti dojde k výpadku, dokud se přechod neukončí na **zapnuto**. **Off** To platí zejména v kontextu velkých virtuální sítě. Pomocí příznaku **IgnoreMissingServiceEndpoint** můžete snížit nebo odstranit výpadky během přechodu.
+Pouze nastavení pravidla brány firewall virtuální sítě nezabezpečuje Server s virtuální sítí. Aby se zabezpečení projevilo, musíte taky **zapnout koncové body** služby virtuální sítě. Při zapnutí koncových bodů služby **ve** vaší virtuální síti dojde k výpadku, dokud se přechod neukončí na **zapnuto**.  To platí zejména v kontextu velkých virtuální sítě. Pomocí příznaku **IgnoreMissingServiceEndpoint** můžete snížit nebo odstranit výpadky během přechodu.
 
 Příznak **IgnoreMissingServiceEndpoint** můžete nastavit pomocí Azure CLI nebo portálu.
 

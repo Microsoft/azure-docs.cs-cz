@@ -3,15 +3,15 @@ title: Provozní kontinuita – Azure Database for MariaDB
 description: Přečtěte si o kontinuitě podnikových služeb (obnovení v časovém bodě, výpadku datového centra, geografické obnovení) při používání služby Azure Database for MariaDB.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 7/7/2020
-ms.openlocfilehash: e164930736f7b93e56d9bd4187e72a9c8eb76202
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 6439a63b74b6f627b62741c145f763dc3d9552d3
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541721"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98659848"
 ---
 # <a name="understand-business-continuity-in-azure-database-for-mariadb"></a>Informace o kontinuitě podnikových aplikací v Azure Database for MariaDB
 

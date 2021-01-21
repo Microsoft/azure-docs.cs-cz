@@ -1,5 +1,5 @@
 ---
-title: Správa účtů pro správu pro nouzový přístup – Azure AD | Microsoft Docs
+title: Správa účtů pro správu pro nouzový přístup – Azure AD
 description: Tento článek popisuje, jak používat účty pro nouzový přístup k tomu, aby se zabránilo neúmyslnému uzamčení vaší organizace Azure Active Directory (Azure AD).
 services: active-directory
 author: markwahl-msft
@@ -13,18 +13,18 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10d93b92f3bb0adfe734ad439079afdfcaa6270e
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 6ef8e7ed662d8c0acfc7c43112d6d7edb1cb9a94
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94834434"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660643"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Správa účtů pro nouzový přístup v Azure AD
 
 Je důležité, abyste zabránili nechtěnému uzamčení vaší organizace Azure Active Directory (Azure AD), protože se nemůžete přihlásit nebo aktivovat účet jiného uživatele jako správce. Vytvořením dvou nebo více *účtů pro nouzový přístup* ve vaší organizaci můžete zmírnit dopad náhodného nedostatku oprávnění správce.
 
-Účty pro nouzový přístup jsou vysoce privilegované a nepřiřazují se konkrétním jednotlivcům. Účty pro nouzový přístup jsou omezené na nouzové nebo "oddělovací sklo", kde se nedají použít běžné účty pro správu. Doporučujeme, abyste zachovali cíl omezení používání nouzového účtu jenom na časy, kdy je nezbytně nutné.
+Účty pro nouzový přístup jsou vysoce privilegované a nepřiřazují se konkrétním jednotlivcům. Jejich použití je omezené na nouzové nebo kritické situace, kdy se nedají použít běžné účty pro správu. Doporučujeme, abyste zachovali cíl omezení používání nouzového účtu jenom na časy, kdy je nezbytně nutné.
 
 Tento článek poskytuje pokyny pro správu účtů pro nouzový přístup ve službě Azure AD.
 
@@ -60,7 +60,7 @@ V naléhavosti nechcete, aby zásada pro odstranění problému mohla blokovat v
 
 ## <a name="federation-guidance"></a>Pokyny federace
 
-Další možností pro organizace, které používají službu AD DS (Active Directory Services) a AD FS nebo podobného poskytovatele identity k federovatí do služby Azure AD, je konfigurace účtu pro nouzový přístup, jehož deklarace identity by mohla být poskytnuta zprostředkovatelem identity.  Účet pro nouzový přístup může být například zálohovaný certifikátem a dvojicí klíčů, jako je například jeden uložený na čipové kartě.  Když je tento uživatel ověřený ve službě AD, může služba ADFS dodat deklaraci identity službě Azure AD, která indikuje, že uživatel splnil požadavky MFA.  I s tímto přístupem organizace musí mít stále cloudové účty pro nouzový přístup v případě, že federaci nelze vytvořit. 
+Některé organizace používají služby AD DS a AD FS nebo podobného poskytovatele identity k federovatí do Azure AD. [Neměly by existovat žádné místní účty s oprávněními správce](../fundamentals/protect-m365-from-on-premises-attacks.md). Hlavní a nebo zdrojové ověřování pro účty s oprávněním správce mimo Azure AD přidává zbytečné riziko v případě výpadku nebo ohrožení těchto systémů.
 
 ## <a name="store-account-credentials-safely"></a>Bezpečné ukládání přihlašovacích údajů k účtu
 
@@ -72,7 +72,7 @@ Pokud používáte hesla, ujistěte se, že účty obsahují silná hesla, kter�
 
 Organizace by měly monitorovat aktivitu přihlášení a auditu z mimořádných účtů a aktivovat oznámení ostatním správcům. Když monitorete aktivitu na účtech s oddělovači, můžete ověřit, že tyto účty jsou používány pouze pro účely testování nebo k skutečným mimořádným událostem. Pomocí služby Azure Log Analytics můžete monitorovat protokoly přihlášení a aktivovat e-maily a upozornění serveru SMS vašim správcům, když se přihlásí účty se systémem Break.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 1. [Odešlete přihlašovací protokoly služby Azure AD](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md) , aby se Azure monitor.
 

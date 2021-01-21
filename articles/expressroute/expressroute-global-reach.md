@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 09/18/2020
 ms.author: duau
 ms.custom: references_regions
-ms.openlocfilehash: e3f9105037c049a53f1b7b99da96dd857070fcc7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50679e11697a4227af69b8568c5f3cd23fe26cbe
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90987611"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662793"
 ---
 # <a name="expressroute-global-reach"></a>ExpressRoute Global Reach
 ExpressRoute je soukromý a odolný způsob, jak připojit vaše místní sítě k Microsoft Cloud. K mnoha cloudovým službám Microsoftu, jako je Azure a Microsoft 365, můžete přistupovat z vašeho privátního datového centra nebo vaší firemní sítě. Můžete mít například pobočku v síti San Francisco s okruhem ExpressRoute v silikonovém sedlu a další pobočkou v Londýně s okruhem ExpressRoute ve stejném městě. Obě pobočky mají vysokorychlostní připojení k prostředkům Azure v USA – západ a Velká Británie – jih. Firemní pobočky se ale nemůžou připojit a odesílat data přímo z sebe. Jinými slovy 10.0.1.0/24 může odesílat data do sítě 10.0.3.0/24 a 10.0.4.0/24, ale ne do sítě 10.0.2.0/24.
 
 ![Diagram, který zobrazuje okruhy, které nejsou propojené s Global Reach Express Route][1]
 
-Pomocí **ExpressRoute Global REACH**můžete propojit ExpressRoute okruhy a vytvořit tak soukromou síť mezi místními sítěmi. Ve výše uvedeném příkladu s přidáním ExpressRoute Global Reach vaše síť San Francisco Office (10.0.1.0/24) může přímo vyměňovat data s vaší aplikací v Londýně (10.0.2.0/24) prostřednictvím stávajících okruhů ExpressRoute a přes globální síť Microsoftu. 
+Pomocí **ExpressRoute Global REACH** můžete propojit ExpressRoute okruhy a vytvořit tak soukromou síť mezi místními sítěmi. Ve výše uvedeném příkladu s přidáním ExpressRoute Global Reach vaše síť San Francisco Office (10.0.1.0/24) může přímo vyměňovat data s vaší aplikací v Londýně (10.0.2.0/24) prostřednictvím stávajících okruhů ExpressRoute a přes globální síť Microsoftu. 
 
 ![Diagram, který zobrazuje okruhy propojené s Global Reach Express Route.][2]
 
@@ -47,6 +47,7 @@ ExpressRoute Global Reach se podporují na následujících místech.
 * Nový Zéland
 * Norsko
 * Singapur
+* Jihoafrická Afrika (jenom Johannesburg)
 * Švédsko
 * Švýcarsko
 * Spojené království

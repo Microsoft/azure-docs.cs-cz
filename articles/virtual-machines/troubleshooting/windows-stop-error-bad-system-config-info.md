@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: v-miegge
-ms.openlocfilehash: cbfdb9a73f53e194b43010c0b2d84357aa3e2e5b
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 8d501bcc745ef19d15564951b8c0f29f9e2678ab
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/21/2021
-ms.locfileid: "98631981"
+ms.locfileid: "98661302"
 ---
 # <a name="windows-stop-error---0x00000074-bad-system-config-info"></a>Chyba stop systému Windows – 0x00000074 chybné informace o konfiguraci systému
 
@@ -34,7 +34,7 @@ Když pomocí [diagnostiky spouštění](./boot-diagnostics.md) zobrazíte sním
  *Pokud zavoláte osobu podpory, poskytněte jim tyto informace:* 
  *Stop kód: BAD_SYSTEM_CONFIG_INFO*
 
-  ![Kód systému Windows stop 0x00000074, který je také zobrazen jako "BAD_SYSTEM_CONFIG_INFO". Windows informuje uživatele o tom, že jeho počítač narazil na problém a musí se restartovat.](./media/windows-stop-error-bad-system-config-info/1.png)
+  ![Kód systému Windows stop 0x00000074, který je také zobrazen jako "BAD_SYSTEM_CONFIG_INFO". Windows informuje uživatele o tom, že jeho počítač narazil na problém a musí se restartovat.](./media/windows-stop-error-bad-system-config-info/stop-code-0x00000074.png)
 
 ## <a name="cause"></a>Příčina
 
@@ -56,8 +56,8 @@ Kód **BAD_SYSTEM_CONFIG_INFO** stop dojde, pokud je podregistr **systémového*
 1. Povolte kolekci sériového výpisu a výpisu paměti.
 1. Znovu sestavte virtuální počítač.
 
-> [!NOTE]
-> Při výskytu této chyby není hostovaný operační systém (OS) v provozu. Chcete-li tento problém vyřešit, vyřešte potíže v offline režimu.
+   > [!NOTE]
+   > Při výskytu této chyby není hostovaný operační systém (OS) v provozu. Chcete-li tento problém vyřešit, vyřešte potíže v offline režimu.
 
 ### <a name="create-and-access-a-repair-vm"></a>Vytvoření a přístup k opravnému virtuálnímu počítači
 
@@ -66,8 +66,8 @@ Kód **BAD_SYSTEM_CONFIG_INFO** stop dojde, pokud je podregistr **systémového*
 1. Pomocí Připojení ke vzdálené ploše se připojte k opravnému virtuálnímu počítači.
 1. Zkopírujte `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config` složku a uložte ji buď v dobrém oddílu disku, nebo v jiném bezpečném umístění. Zazálohujte tuto složku jako preventivní, protože budete upravovat důležité soubory registru. 
 
-> [!NOTE]
-> Vytvořte kopii `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config` složky jako zálohu pro případ, že budete potřebovat vrátit zpět všechny změny, které provedete v registru.
+   > [!NOTE]
+   > Vytvořte kopii `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config` složky jako zálohu pro případ, že budete potřebovat vrátit zpět všechny změny, které provedete v registru.
 
 ### <a name="check-for-hive-corruption"></a>Kontrolovat poškození podregistru
 
@@ -80,7 +80,7 @@ Následující pokyny vám pomůžou určit, jestli příčina byla způsobená 
 
    1. Pokud se podregistr nepovede otevřít, nebo pokud je prázdný, je podregistr poškozený. Pokud je podregistr poškozený, [otevřete lístek podpory](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
-     ![Při upozornění, že Editor registru nemůže načíst podregistr, dojde k chybě.](./media/windows-stop-error-bad-system-config-info/2.png)
+      ![Při upozornění, že Editor registru nemůže načíst podregistr, dojde k chybě.](./media/windows-stop-error-bad-system-config-info/cannot-load-hive-error.png)
 
    1. Pokud se podregistr otevře normálně, podregistr se nezavřel správně. Pokračujte krokem 5.
 
@@ -95,7 +95,7 @@ Následující pokyny vám pomůžou určit, jestli příčina byla způsobená 
 
    **Povolte konzolu sériového portu**:
    
-   ```
+   ```ps
    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /ems {<BOOT LOADER IDENTIFIER>} ON 
    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200
    ```
@@ -108,13 +108,13 @@ Následující pokyny vám pomůžou určit, jestli příčina byla způsobená 
 
    **Načíst podregistr registru z poškozeného disku s operačním systémem:**
 
-   ```
+   ```ps
    REG LOAD HKLM\BROKENSYSTEM <VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM
    ```
 
    **Povolit na ControlSet001:**
 
-   ```
+   ```ps
    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f 
    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP" /f 
    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f 
@@ -122,7 +122,7 @@ Následující pokyny vám pomůžou určit, jestli příčina byla způsobená 
 
    **Povolit na ControlSet002:**
 
-   ```
+   ```ps
    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f 
    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP" /f 
    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f 
@@ -130,7 +130,7 @@ Následující pokyny vám pomůžou určit, jestli příčina byla způsobená 
 
    **Uvolnit poškozený disk s operačním systémem:**
 
-   ```
+   ```ps
    REG UNLOAD HKLM\BROKENSYSTEM
    ```
    
