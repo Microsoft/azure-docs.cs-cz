@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 995d10b3c7064e462500e0bec4d5d8aa010afe64
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0ea0db1faf8c452958b8d95c193d45506057777c
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90888772"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673328"
 ---
 # <a name="authenticate-azure-spring-cloud-with-key-vault-in-github-actions"></a>Ověřování Azure jaře cloudu s Key Vault v akcích GitHubu
 
@@ -22,13 +22,14 @@ Trezor klíčů je bezpečné místo pro ukládání klíčů. Podnikoví uživa
 
 ## <a name="generate-credential"></a>Generovat přihlašovací údaje
 Pokud chcete vygenerovat klíč pro přístup k trezoru klíčů, spusťte níže uvedený příkaz na svém místním počítači:
-```
+
+```azurecli
 az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.KeyVault/vaults/<KEY_VAULT> --sdk-auth
 ```
 Rozsah určený `--scopes` parametrem omezuje přístup klíče k prostředku.  Může přistupovat jenom k silnému poli.
 
 S výsledky:
-```
+```output
 {
     "clientId": "<GUID>",
     "clientSecret": "<GUID>",
@@ -50,7 +51,7 @@ V Azure Portal přejděte na řídicí panel **Key Vault** , klikněte na nabíd
 
  ![Nastavení zásad přístupu](./media/github-actions/key-vault1.png)
 
-Zkopírujte název přihlašovacích údajů, například `azure-cli-2020-01-19-04-39-02` . Otevřete nabídku **zásady přístupu** , klikněte na **+ Přidat odkaz zásady přístupu** .  Vyberte možnost `Secret Management` pro **šablonu**a pak vyberte **objekt zabezpečení**. Vložte název přihlašovacích údajů do **objektu zabezpečení** / **Vybrat** vstupní pole:
+Zkopírujte název přihlašovacích údajů, například `azure-cli-2020-01-19-04-39-02` . Otevřete nabídku **zásady přístupu** , klikněte na **+ Přidat odkaz zásady přístupu** .  Vyberte možnost `Secret Management` pro **šablonu** a pak vyberte **objekt zabezpečení**. Vložte název přihlašovacích údajů do **objektu zabezpečení** / **Vybrat** vstupní pole:
 
  ![Vyberte](./media/github-actions/key-vault2.png)
 
@@ -59,12 +60,12 @@ Zkopírujte název přihlašovacích údajů, například `azure-cli-2020-01-19-
 ## <a name="generate-full-scope-azure-credential"></a>Generování přihlašovacích údajů Azure v plném rozsahu
 Toto je hlavní klíč pro otevření všech dveří v budově. Postup je podobný předchozímu kroku, ale v tomto článku změníte obor, který vygeneruje hlavní klíč:
 
-```
+```azurecli
 az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID> --sdk-auth
 ```
 
 Znovu, výsledky:
-```
+```output
 {
     "clientId": "<GUID>",
     "clientSecret": "<GUID>",
@@ -84,7 +85,7 @@ Zkopírujte celý řetězec JSON.  Bo zpátky na **Key Vault** řídicí panel. 
 ## <a name="combine-credentials-in-github-actions"></a>Kombinování přihlašovacích údajů v akcích GitHubu
 Nastavte přihlašovací údaje, které se použijí, když se CICD kanál spustí:
 
-```
+```console
 on: [push]
 
 jobs:

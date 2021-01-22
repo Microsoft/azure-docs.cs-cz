@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 3b61df954e913671eafff4b739e0f53a4d420c28
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 5aefe869041d9fff8112b6aa380961ca6568ae0b
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98117295"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673565"
 ---
 # <a name="guidance-for-designing-distributed-tables-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>Pokyny pro návrh distribuovaných tabulek pomocí vyhrazeného fondu SQL ve službě Azure synapse Analytics
 
@@ -96,7 +96,7 @@ Data uložená v distribučním sloupci lze aktualizovat. Aktualizace dat ve slo
 
 Výběr distribučního sloupce je důležité rozhodnutí o návrhu, protože hodnoty v tomto sloupci určují, jak jsou řádky distribuovány. Nejlepší volba závisí na několika faktorech a obvykle zahrnuje kompromisy. Po výběru distribučního sloupce jej nelze změnit.  
 
-Pokud jste nevybrali nejlepší sloupec poprvé, můžete pomocí [Create Table jako Select (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) znovu vytvořit tabulku s jiným distribučním sloupcem.
+Pokud jste nevybrali nejlepší sloupec poprvé, můžete pomocí [Create Table jako Select (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) znovu vytvořit tabulku s jiným distribučním sloupcem.
 
 ### <a name="choose-a-distribution-column-with-data-that-distributes-evenly"></a>Volba distribučního sloupce s daty, která se rovnoměrně distribuuje
 
@@ -133,7 +133,7 @@ Po načtení dat do tabulky distribuované pomocí algoritmu hash zkontrolujte, 
 
 ### <a name="determine-if-the-table-has-data-skew"></a>Určení, jestli má tabulka zešikmení dat
 
-Rychlý způsob, jak zjistit, zda je možné data zkosit, je použití [příkazu DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest). Následující kód SQL vrátí počet řádků tabulky, které jsou uloženy v každé z distribucí 60. U vyváženého výkonu by se měly řádky v distribuované tabulce rovnoměrně rozložit napříč všemi distribucí.
+Rychlý způsob, jak zjistit, zda je možné data zkosit, je použití [příkazu DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true). Následující kód SQL vrátí počet řádků tabulky, které jsou uloženy v každé z distribucí 60. U vyváženého výkonu by se měly řádky v distribuované tabulce rovnoměrně rozložit napříč všemi distribucí.
 
 ```sql
 -- Find data skew for a distributed table
@@ -183,7 +183,7 @@ Vzhledem k tomu, že nemůžete změnit distribuční sloupec v existující tab
 
 ### <a name="re-create-the-table-with-a-new-distribution-column"></a>Opětovné vytvoření tabulky s novým distribučním sloupcem
 
-V tomto příkladu se používá [Create Table jako vybrat](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) k opětovnému vytvoření tabulky s jiným sloupcem pro distribuci algoritmem hash.
+V tomto příkladu se používá [Create Table jako vybrat](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) k opětovnému vytvoření tabulky s jiným sloupcem pro distribuci algoritmem hash.
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_CustomerKey]
@@ -225,5 +225,5 @@ RENAME OBJECT [dbo].[FactInternetSales_CustomerKey] TO [FactInternetSales];
 
 Chcete-li vytvořit distribuovanou tabulku, použijte jeden z následujících příkazů:
 
-- [CREATE TABLE (vyhrazený fond SQL)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [CREATE TABLE jako SELECT (vyhrazený fond SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [CREATE TABLE (vyhrazený fond SQL)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [CREATE TABLE jako SELECT (vyhrazený fond SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)

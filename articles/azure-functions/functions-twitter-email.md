@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/27/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, mvc, cc996988-fb4f-47
-ms.openlocfilehash: feb6b36f8e5e7bbec83d8882552484f68abfd56d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5750597d7d4d372be975aa64ce8db11859791da2
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537748"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674314"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Vytvoření funkce, která se integruje s Azure Logic Apps
 
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 > * Propojení aplikace logiky s funkcí
 > * Odeslání e-mailu na základě odpovědi z funkce
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 + Aktivní účet na [Twitteru](https://twitter.com/). 
 + Účet [Outlook.com](https://outlook.com/) (pro odesílání oznámení).
@@ -40,14 +40,14 @@ V tomto kurzu se naučíte:
 > [!NOTE]
 > Pokud chcete použít konektor Gmail, můžou tento konektor používat jenom obchodní účty G-Suite bez omezení v Logic Apps. Máte-li účet příjemce Gmail, můžete použít konektor Gmail s pouze konkrétními aplikacemi a službami, které jsou schváleny pro Google, nebo můžete [vytvořit klientskou aplikaci Google, která bude použita pro ověřování v konektoru Gmail](/connectors/gmail/#authentication-and-bring-your-own-application). Další informace najdete v tématu [zásady zabezpečení a ochrany osobních údajů pro konektory Google v Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md).
 
-+ Tento článek využívá jako výchozí bod prostředky, které jste vytvořili v tématu [Vytvoření první funkce na webu Azure Portal](functions-create-first-azure-function.md).
++ Tento článek využívá jako výchozí bod prostředky, které jste vytvořili v tématu [Vytvoření první funkce na webu Azure Portal](./functions-get-started.md).
 Pokud jste tento krok zatím neprovedli, vraťte se k němu a vytvořte aplikaci funkcí.
 
 ## <a name="create-a-cognitive-services-resource"></a>Vytvoření prostředku služeb Cognitive Services
 
 Rozhraní API služeb Cognitive Services jsou v Azure k dispozici jako samostatné prostředky. K rozpoznávání mínění v monitorovaných tweetech použijte rozhraní API pro analýzu textu.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 2. Klikněte na **Vytvořit prostředek** v levém horním rohu webu Azure Portal.
 
@@ -80,7 +80,7 @@ Azure Functions poskytuje skvělý způsob, jak přesměrovat úlohy zpracován�
 
 ## <a name="create-an-http-trigger-function"></a>Vytvoření funkce triggeru HTTP  
 
-1. V levé nabídce okna **Functions (funkce** ) vyberte **funkce**a pak v horní nabídce vyberte **Přidat** .
+1. V levé nabídce okna **Functions (funkce** ) vyberte **funkce** a pak v horní nabídce vyberte **Přidat** .
 
 2. V **novém okně funkce** vyberte **Trigger http**.
 
@@ -126,7 +126,7 @@ Azure Functions poskytuje skvělý způsob, jak přesměrovat úlohy zpracován�
 
     Tento kód funkce vrátí barevnou kategorii na základě skóre mínění přijatého v požadavku. 
 
-5. Pokud chcete funkci otestovat, v horní nabídce vyberte **test** . Na kartě **vstup** zadejte hodnotu `0.2` v **těle**a pak vyberte **Spustit**. V **obsahu odpovědi HTTP** na kartě **výstup** se vrátí hodnota **Red** . 
+5. Pokud chcete funkci otestovat, v horní nabídce vyberte **test** . Na kartě **vstup** zadejte hodnotu `0.2` v **těle** a pak vyberte **Spustit**. V **obsahu odpovědi HTTP** na kartě **výstup** se vrátí hodnota **Red** . 
 
     :::image type="content" source="./media/functions-twitter-email/07-function-test.png" alt-text="Definování nastavení proxy serveru":::
 
@@ -239,7 +239,7 @@ Poslední částí pracovního postupu je aktivace e-mailu, když má skóre mí
     
 | Nastavení      |  Navrhovaná hodnota   | Popis  |
 | ----------------- | ------------ | ------------- |
-| **Záměr** | Zadejte svou e-mailovou adresu. | E-mailová adresa, která přijímá oznámení. |
+| **Do** | Zadejte svou e-mailovou adresu. | E-mailová adresa, která přijímá oznámení. |
 | **Předmět** | Rozpoznáno špatné mínění v tweetu  | Řádek předmětu e-mailového oznámení.  |
 | **Text** | Text tweetu, Umístění | Klikněte na parametry **Text tweetu** a **Umístění**. |
 

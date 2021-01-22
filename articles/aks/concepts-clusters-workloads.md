@@ -4,18 +4,18 @@ description: Seznamte se se základními komponentami clusterů a úloh Kubernet
 services: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 17203123ceb0c196bd8f9011e2962f5022e54698
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 54d6f4529c236c7ff9f6258122b5b49d6d3723e8
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92901299"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674922"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Základní koncepty Kubernetes pro Azure Kubernetes Service (AKS)
 
 Vzhledem k tomu, že vývoj aplikací se přesouvá směrem k přístupu založenému na kontejneru, je potřeba orchestrovat a spravovat prostředky, které jsou důležité. Kubernetes je přední platforma, která poskytuje možnost poskytovat spolehlivé plánování úloh aplikací odolných proti chybám. Služba Azure Kubernetes Service (AKS) je spravovaná Kubernetes nabídka, která dále zjednodušuje nasazování a správu aplikací založených na kontejnerech.
 
-V tomto článku se seznámíte se základními komponentami infrastruktury Kubernetes, jako je například *řídicí plocha* , *uzly* a *fondy uzlů* . Společně s postupem seskupení prostředků do *oborů názvů* se zavádějí i prostředky úlohy, jako jsou *lusky* , *nasazení* a *sady* .
+V tomto článku se seznámíte se základními komponentami infrastruktury Kubernetes, jako je například *řídicí plocha*, *uzly* a *fondy uzlů*. Společně s postupem seskupení prostředků do *oborů názvů* se zavádějí i prostředky úlohy, jako jsou *lusky*, *nasazení* a *sady* .
 
 ## <a name="what-is-kubernetes"></a>Co je Kubernetes?
 
@@ -78,7 +78,6 @@ Prostředky uzlů využívají AKS k zajištění funkce uzlu jako součásti cl
 Chcete-li najít prostředky ALLOCATABLE uzlu, spusťte příkaz:
 ```kubectl
 kubectl describe node [NODE_NAME]
-
 ```
 
 Aby bylo možné udržovat výkon a funkce uzlu, jsou prostředky rezervovány na jednotlivých uzlech pomocí AKS. V případě, že uzel roste větší množství prostředků, rezervace prostředků roste v důsledku většího počtu uživatelů nasazených v části s potřebnou správou lusků.
@@ -86,22 +85,24 @@ Aby bylo možné udržovat výkon a funkce uzlu, jsou prostředky rezervovány n
 >[!NOTE]
 > Použití doplňků AKS, jako je Container Insights (OMS), bude spotřebovávat další prostředky uzlů.
 
+Jsou rezervované dva typy prostředků:
+
 - PROCESOR vyhrazený pro **procesor** závisí na typu uzlu a konfiguraci clusteru, což může způsobit, že by ALLOCATABLE procesor byl v důsledku spuštění dalších funkcí.
 
-| Jádra procesoru na hostiteli | 1    | 2    | 4    | 8    | 16 | 32|64|
-|---|---|---|---|---|---|---|---|
-|Kube – rezervováno (millicores)|60|100|140|180|260|420|740|
+   | Jádra procesoru na hostiteli | 1    | 2    | 4    | 8    | 16 | 32|64|
+   |---|---|---|---|---|---|---|---|
+   |Kube – rezervováno (millicores)|60|100|140|180|260|420|740|
 
 - **Paměť,** kterou využívá AKS, zahrnuje součet dvou hodnot.
 
-1. Démon kubelet je nainstalován na všech uzlech agenta Kubernetes za účelem správy vytváření a ukončování kontejneru. Ve výchozím nastavení má démon následující pravidlo vyřazení: *paměť. k dispozici<750Mi* , což znamená, že uzel musí vždy mít alespoň 750 mi ALLOCATABLE.  Když je hostitel pod touto prahovou hodnotou dostupné paměti, kubelet ukončí jednu z běžících lusků, aby uvolnil paměť na hostitelském počítači a chránil ji. Tato akce se aktivuje až po snížení dostupné paměti za prahovou hodnotu 750Mi.
+   1. Démon kubelet je nainstalován na všech uzlech agenta Kubernetes za účelem správy vytváření a ukončování kontejneru. Ve výchozím nastavení má démon následující pravidlo vyřazení: *paměť. k dispozici<750Mi*, což znamená, že uzel musí vždy mít alespoň 750 mi ALLOCATABLE.  Když je hostitel pod touto prahovou hodnotou dostupné paměti, kubelet ukončí jednu z běžících lusků, aby uvolnil paměť na hostitelském počítači a chránil ji. Tato akce se aktivuje až po snížení dostupné paměti za prahovou hodnotu 750Mi.
 
-2. Druhá hodnota je regresivní míra rezervací paměti pro správnou funkci démona kubelet (Kube – rezervováno).
-    - 25% prvních 4 GB paměti
-    - 20% z dalších 4 GB paměti (až 8 GB)
-    - 10% z dalších 8 GB paměti (až 16 GB)
-    - 6% z dalších 112 GB paměti (až 128 GB)
-    - 2% libovolné paměti nad 128 GB
+   2. Druhá hodnota je regresivní míra rezervací paměti pro správnou funkci démona kubelet (Kube – rezervováno).
+      - 25% prvních 4 GB paměti
+      - 20% z dalších 4 GB paměti (až 8 GB)
+      - 10% z dalších 8 GB paměti (až 16 GB)
+      - 6% z dalších 112 GB paměti (až 128 GB)
+      - 2% libovolné paměti nad 128 GB
 
 Výše uvedená pravidla pro paměť a přidělení procesoru se používají k udržení dobrých uzlů agentů, včetně některých z nich hostujících prostředí, které jsou pro stav clusteru zásadní. Tato pravidla přidělení také způsobí, že uzel hlásí méně ALLOCATABLE paměť a procesor, než by normálně neměl být součástí clusteru Kubernetes. Výše uvedené rezervace prostředků se nedají změnit.
 
@@ -115,7 +116,7 @@ Související osvědčené postupy najdete v tématu [osvědčené postupy pro z
 
 ### <a name="node-pools"></a>Fondy uzlů
 
-Uzly stejné konfigurace jsou seskupeny dohromady do *fondů uzlů* . Cluster Kubernetes obsahuje jeden nebo více fondů uzlů. Počáteční počet uzlů a velikost je definován při vytváření clusteru AKS, který vytváří *výchozí fond uzlů* . Tento výchozí fond uzlů v AKS obsahuje základní virtuální počítače, které spouštějí vaše uzly agentů.
+Uzly stejné konfigurace jsou seskupeny dohromady do *fondů uzlů*. Cluster Kubernetes obsahuje jeden nebo více fondů uzlů. Počáteční počet uzlů a velikost je definován při vytváření clusteru AKS, který vytváří *výchozí fond uzlů*. Tento výchozí fond uzlů v AKS obsahuje základní virtuální počítače, které spouštějí vaše uzly agentů.
 
 > [!NOTE]
 > Chcete-li zajistit spolehlivou činnost clusteru, měli byste spustit alespoň 2 (dva) uzly ve výchozím fondu uzlů.
@@ -128,7 +129,7 @@ Další informace o použití více fondů uzlů v AKS najdete v tématu [Vytvo�
 
 V clusteru AKS, který obsahuje víc fondů uzlů, možná budete muset říct, aby se pro daný prostředek používal příslušný fond uzlů pro Kubernetes Scheduler. Například řadiče příchozího přenosu dat by se neměly spouštět na uzlech Windows serveru. Selektory uzlů umožňují definovat různé parametry, jako je například uzel OS, aby bylo možné určit, kde má být uzel pod naplánován.
 
-Následující základní příklad naplánuje instanci NGINX na uzlu Linux pomocí voliče uzlů *"beta.Kubernetes.IO/OS": Linux* :
+Následující základní příklad naplánuje instanci NGINX na uzlu Linux pomocí voliče uzlů *"beta.Kubernetes.IO/OS": Linux*:
 
 ```yaml
 kind: Pod
@@ -153,7 +154,7 @@ Když vytvoříte pod, můžete definovat *požadavky* na prostředky pro vyžá
 
 Další informace najdete v tématu životní cyklus [Kubernetes lusky][kubernetes-pods] a [Kubernetes pod][kubernetes-pod-lifecycle].
 
-Pod je logický prostředek, ale kontejnery jsou spuštěny úlohami aplikace. Lusky jsou obvykle dočasné a nepoužívané prostředky a samostatně naplánované lusky neposkytují některé z funkcí vysoké dostupnosti a redundance Kubernetes. Místo toho jsou lusky nasazeny a spravovány Kubernetes *řadiči* , jako je například kontrolér nasazení.
+Pod je logický prostředek, ale kontejnery jsou spuštěny úlohami aplikace. Lusky jsou obvykle dočasné a nepoužívané prostředky a samostatně naplánované lusky neposkytují některé z funkcí vysoké dostupnosti a redundance Kubernetes. Místo toho jsou lusky nasazeny a spravovány Kubernetes *řadiči*, jako je například kontrolér nasazení.
 
 ## <a name="deployments-and-yaml-manifests"></a>Nasazení a manifesty YAML
 
@@ -240,7 +241,7 @@ Další informace najdete v tématu [Kubernetes DaemonSets][kubernetes-daemonset
 
 ## <a name="namespaces"></a>Obory názvů
 
-Prostředky Kubernetes, například lusky a nasazení, jsou logicky seskupeny do *oboru názvů* . Tato seskupení poskytují způsob, jak logicky rozdělit cluster AKS a omezit přístup k vytváření, zobrazení nebo správě prostředků. Můžete například vytvořit obory názvů pro oddělení obchodních skupin. Uživatelé můžou pracovat jenom s prostředky v rámci svých přiřazených oborů názvů.
+Prostředky Kubernetes, například lusky a nasazení, jsou logicky seskupeny do *oboru názvů*. Tato seskupení poskytují způsob, jak logicky rozdělit cluster AKS a omezit přístup k vytváření, zobrazení nebo správě prostředků. Můžete například vytvořit obory názvů pro oddělení obchodních skupin. Uživatelé můžou pracovat jenom s prostředky v rámci svých přiřazených oborů názvů.
 
 ![Kubernetes obory názvů pro logicky dělit prostředky a aplikace](media/concepts-clusters-workloads/namespaces.png)
 

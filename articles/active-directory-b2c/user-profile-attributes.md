@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/13/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7b134c4e9e980104a54f6a96d45445ee114556a5
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: f76aecc80537e6db55c8c4f2e5a7a240be6b1415
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178717"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98675742"
 ---
 # <a name="user-profile-attributes"></a>Atributy profilu uživatele
 
@@ -160,7 +160,7 @@ Pokud účty, které chcete migrovat, mají slabší sílu hesla, než je [siln�
 
 ## <a name="mfa-phone-number-attribute"></a>Atribut telefonního čísla MFA
 
-Při použití telefonu pro vícefaktorové ověřování (MFA) se k ověření identity uživatele používá mobilní telefon. Chcete-li [Přidat](https://docs.microsoft.com/graph/api/authentication-post-phonemethods) nové telefonní číslo programově, [aktualizovat](https://docs.microsoft.com/graph/api/b2cauthenticationmethodspolicy-update), [získat](https://docs.microsoft.com/graph/api/b2cauthenticationmethodspolicy-get)nebo [Odstranit](https://docs.microsoft.com/graph/api/phoneauthenticationmethod-delete) telefonní číslo, použijte [metodu ověřování](https://docs.microsoft.com/graph/api/resources/phoneauthenticationmethod)pomocí aplikace MS Graph API Phone.
+Při použití telefonu pro vícefaktorové ověřování (MFA) se k ověření identity uživatele používá mobilní telefon. Chcete-li [Přidat](/graph/api/authentication-post-phonemethods) nové telefonní číslo programově, [aktualizovat](/graph/api/b2cauthenticationmethodspolicy-update), [získat](/graph/api/b2cauthenticationmethodspolicy-get)nebo [Odstranit](/graph/api/phoneauthenticationmethod-delete) telefonní číslo, použijte [metodu ověřování](/graph/api/resources/phoneauthenticationmethod)pomocí aplikace MS Graph API Phone.
 
 V Azure AD B2C [vlastní zásady](custom-policy-overview.md)je telefonní číslo dostupné prostřednictvím `strongAuthenticationPhoneNumber` typu deklarace identity.
 
@@ -175,7 +175,7 @@ Atributy rozšíření [rozšíří schéma](/graph/extensibility-overview#schem
 > - Pokud se aplikace B2C-Extensions odstraní, odeberou se tyto atributy rozšíření od všech uživatelů spolu s libovolnými daty, která obsahují.
 > - Pokud atribut rozšíření odstraní aplikace, odebere se ze všech uživatelských účtů a hodnoty se odstraní.
 
-Atributy rozšíření v Graph API jsou pojmenovány pomocí konvence `extension_ApplicationClientID_AttributeName` , kde `ApplicationClientID` je **ID aplikace (klienta)** `b2c-extensions-app` aplikace (nalezené v **Registrace aplikací**  >  **všech aplikací** v Azure Portal). Všimněte si, že **ID aplikace (klienta)** , jak je znázorněno v názvu atributu rozšíření, neobsahuje spojovníky. Příklad:
+Atributy rozšíření v Graph API jsou pojmenovány pomocí konvence `extension_ApplicationClientID_AttributeName` , kde `ApplicationClientID` je **ID aplikace (klienta)** `b2c-extensions-app` aplikace (nalezené v **Registrace aplikací**  >  **všech aplikací** v Azure Portal). Všimněte si, že **ID aplikace (klienta)** , jak je znázorněno v názvu atributu rozšíření, neobsahuje spojovníky. Například:
 
 ```json
 "extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyNumber": "212342"

@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: e8aabcd1c68272a78b3c1fe88913c5a62496f681
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 753e7503612502cde12f821ea331625406daa7a8
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88225831"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98675973"
 ---
 # <a name="copy-an-image-from-another-gallery-using-the-azure-cli"></a>Kopírování obrázku z jiné galerie pomocí Azure CLI
 
@@ -161,6 +161,6 @@ az sig image-version create \
 
 Vytvořte virtuální počítač z [zobecněné](vm-generalized-image-version-cli.md) nebo [specializované](vm-specialized-image-version-cli.md) verze image.
 
-Také si vyzkoušejte [Azure image Builder (Preview)](./linux/image-builder-overview.md) , které vám pomůžou automatizovat vytváření verzí imagí, můžete ho dokonce použít k aktualizaci a [Vytvoření nové verze image z existující verze image](./linux/image-builder-gallery-update-image-version.md). 
+Také si vyzkoušejte [Azure image Builder (Preview)](./image-builder-overview.md) , které vám pomůžou automatizovat vytváření verzí imagí, můžete ho dokonce použít k aktualizaci a [Vytvoření nové verze image z existující verze image](./linux/image-builder-gallery-update-image-version.md). 
 
 Informace o tom, jak dokoupit informace o plánu nákupu, najdete v tématu [zadání informací o plánu nákupu Azure Marketplace při vytváření imagí](marketplace-images.md).

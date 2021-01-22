@@ -8,12 +8,12 @@ ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
 ms.custom: device-developer, devx-track-azurecli
-ms.openlocfilehash: 2bbf400840c968587de3a0a0951d28c7c35b210f
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: d1a7c94152b611ea0dbea249156add617178d7ca
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94990886"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673230"
 ---
 # <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>Řešení potíží v případě nezobrazování dat ze zařízení v Azure IoT Central
 
@@ -35,11 +35,11 @@ Tato část vám pomůže určit, jestli se vaše data doIoT Central.
 
 Pokud jste to ještě neudělali, nainstalujte `az cli` Nástroj a `azure-iot` rozšíření.
 
-Informace o tom, jak nainstalovat `az cli` , najdete v tématu [instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
+Informace o tom, jak nainstalovat `az cli` , najdete v tématu [instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
 
-Chcete-li [nainstalovat](/cli/azure/azure-cli-reference-for-IoT?view=azure-cli-latest#extension-reference-installation) `azure-iot` rozšíření, spusťte následující příkaz:
+Chcete-li [nainstalovat](/cli/azure/azure-cli-reference-for-IoT#extension-reference-installation) `azure-iot` rozšíření, spusťte následující příkaz:
 
-```cmd/bash
+```azurecli
 az extension add --name azure-iot
 ```
 
@@ -50,20 +50,20 @@ Po instalaci `azure-iot` rozšíření spusťte zařízení, abyste viděli, jes
 
 Pomocí následujících příkazů se přihlaste k předplatnému, kde máte aplikaci IoT Central:
 
-```cmd/bash
+```azurecli
 az login
 az set account --subscription <your-subscription-id>
 ```
 
 K monitorování telemetrie, kterou vaše zařízení odesílá, použijte následující příkaz:
 
-```cmd/bash
+```azurecli
 az iot central diagnostics monitor-events --app-id <app-id> --device-id <device-name>
 ```
 
 Pokud se zařízení úspěšně připojilo k IoT Central, zobrazí se výstup podobný následujícímu:
 
-```cmd/bash
+```output
 Monitoring telemetry.
 Filtering on device: device-001
 {
@@ -82,13 +82,13 @@ Filtering on device: device-001
 
 Pokud chcete monitorovat aktualizace vlastností, které zařízení vyměňuje pomocí IoT Central, použijte následující příkaz Preview:
 
-```cmd/bash
+```azurecli
 az iot central diagnostics monitor-properties --app-id <app-id> --device-id <device-name>
 ```
 
 Pokud zařízení úspěšně odesílá aktualizace vlastností, zobrazí se výstup podobný následujícímu:
 
-```cmd/bash
+```output
 Changes in reported properties:
 version : 32
 {'state': 'true', 'name': {'value': {'value': 'Contoso'}, 'status': 'completed', 'desiredVersion': 7, 'ad': 'completed', 'av': 7, 'ac
@@ -106,7 +106,7 @@ Pokud stále nevidíte žádná data v terminálu, je pravděpodobný, že vaše
 
 Pokud se data na monitoru nezobrazují, ověřte stav zřizování vašeho zařízení spuštěním následujícího příkazu:
 
-```cmd/bash
+```azurecli
 az iot central device registration-info --app-id <app-id> --device-id <device-name>
 ```
 
@@ -130,7 +130,7 @@ https://aka.ms/iotcentral-docs-dps-SAS",
 }
 ```
 
-| Stav zřizování zařízení | Popis | Možné zmírnění |
+| Stav zřizování zařízení | Description | Možné zmírnění |
 | - | - | - |
 | Zřízené | Žádný okamžitě rozpoznatelný problém. | – |
 | Registrované | Zařízení ještě není připojené k IoT Central. | V protokolech zařízení ověřte problémy s připojením. |
@@ -150,7 +150,7 @@ V následujících tabulkách jsou uvedeny běžné kódy chyb a možné akce, k
 
 Pokud se vám zobrazují problémy související s vaším tokem ověřování:
 
-| Kód chyby | Popis | Možné zmírnění |
+| Kód chyby | Description | Možné zmírnění |
 | - | - | - |
 | 400 | Tělo požadavku není platné. Nelze jej například analyzovat nebo objekt nelze ověřit. | Ujistěte se, že posíláte správné tělo žádosti v rámci toku ověření identity, nebo použijete sadu SDK pro zařízení. |
 | 401 | Autorizační token se nedá ověřit. Například vypršela platnost nebo neplatí pro identifikátor URI žádosti. Tento kód chyby se také vrátí do zařízení jako součást toku ověření čipem TPM. | Ujistěte se, že má vaše zařízení správné přihlašovací údaje. |
@@ -176,13 +176,13 @@ Chcete-li zjistit, na kterých kategoriích je váš problém, spusťte nejvhodn
 
 - K ověření telemetrie použijte příkaz Preview:
 
-    ```cmd/bash
+    ```azurecli
     az iot central diagnostics validate-messages --app-id <app-id> --device-id <device-name>
     ```
 
 - Chcete-li ověřit aktualizace vlastností, použijte příkaz Preview
 
-    ```cmd/bash
+    ```azurecli
     az iot central diagnostics validate-properties --app-id <app-id> --device-id <device-name>
     ```
 
@@ -190,7 +190,7 @@ Při prvním spuštění příkazu se může zobrazit výzva k instalaci `uamqp`
 
 Následující výstup ukazuje ukázkovou zprávu o chybách a upozorněních z příkazu ověřit:
 
-```cmd/bash
+```output
 Validating telemetry.
 Filtering on device: v22upeoqx6.
 Exiting after 300 second(s), or 10 message(s) have been parsed (whichever happens first).

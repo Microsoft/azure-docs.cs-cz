@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/10/2020
 ms.author: kenwith
-ms.openlocfilehash: 012038399796a0f2dc87acfb350043542268379a
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: efdbec10c74a6b1892df13b8308538e61f42f679
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936977"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673497"
 ---
 # <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Kurz – přizpůsobení atributů zřizování uživatelů – mapování pro SaaS aplikace v Azure Active Directory
 
@@ -115,7 +115,7 @@ Mezi aplikace a systémy, které podporují přizpůsobení seznamu atributů, p
 
 
 > [!NOTE]
-> Úpravy seznamu podporovaných atributů se doporučují jenom správcům, kteří přizpůsobili schéma svých aplikací a systémů, a mají první znalosti o tom, jak jsou vlastní atributy definované. To někdy vyžaduje znalost rozhraní API a vývojářských nástrojů poskytovaných aplikací nebo systémem. Možnost Upravit seznam podporovaných atributů je ve výchozím nastavení zamčená, ale zákazníci můžou povolit funkci tak, že přejde na následující adresu URL: https://portal.azure.com/?Microsoft_AAD_IAM_forceSchemaEditorEnabled=true . Potom můžete přejít do aplikace a zobrazit seznam atributů, jak je popsáno [výše](https://docs.microsoft.com/azure/active-directory/app-provisioning/customize-application-attributes#editing-the-list-of-supported-attributes). 
+> Úpravy seznamu podporovaných atributů se doporučují jenom správcům, kteří přizpůsobili schéma svých aplikací a systémů, a mají první znalosti o tom, jak jsou vlastní atributy definované. To někdy vyžaduje znalost rozhraní API a vývojářských nástrojů poskytovaných aplikací nebo systémem. Možnost Upravit seznam podporovaných atributů je ve výchozím nastavení zamčená, ale zákazníci můžou povolit funkci tak, že přejde na následující adresu URL: https://portal.azure.com/?Microsoft_AAD_IAM_forceSchemaEditorEnabled=true . Potom můžete přejít do aplikace a zobrazit seznam atributů, jak je popsáno [výše](#editing-the-list-of-supported-attributes). 
 
 Při úpravách seznamu podporovaných atributů jsou k dispozici následující vlastnosti:
 
@@ -128,7 +128,7 @@ Při úpravách seznamu podporovaných atributů jsou k dispozici následující
   - *Odkaz* -atribut obsahuje ID, které odkazuje na hodnotu uloženou v jiné tabulce cílové aplikace.
   - *Řetězcový*  atribut obsahuje textový řetězec.
 - **Primární klíč?** – Určuje, zda je atribut definován jako pole primárního klíče ve schématu cílového objektu.
-- **Požadovanou?** – Určuje, zda je atribut požadován k naplnění cílové aplikace nebo systému.
+- **Požadováno?** – Určuje, zda je atribut požadován k naplnění cílové aplikace nebo systému.
 - **Více hodnot?** – Zda atribut podporuje více hodnot.
 - **Přesný případ?** – Zda jsou hodnoty atributů vyhodnocovány způsobem, který rozlišuje velká a malá písmena.
 - **Výraz rozhraní API** – nepoužívejte, pokud k tomu nejste vyzváni v dokumentaci pro konkrétní zřizovací konektor (například Workday).

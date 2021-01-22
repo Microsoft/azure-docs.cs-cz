@@ -9,12 +9,12 @@ ms.date: 2/22/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions
-ms.openlocfilehash: 7f72d703e5377f725addc4aa8c52e1cdb0fa571d
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 3ff7b3cd29740461a4f94f3c1d433086db119a09
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98630747"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673802"
 ---
 # <a name="create-an-azure-file-share"></a>Vytvoření sdílené složky Azure
 Pokud chcete vytvořit sdílenou složku Azure, musíte odpovědět na tři otázky týkající se toho, jak ji budete používat:
@@ -129,7 +129,7 @@ K vytvoření účtu úložiště pomocí Azure CLI použijeme příkaz AZ Stora
 
 Abychom zjednodušili vytváření účtu úložiště a další sdílené složky, uložíme do proměnných několik parametrů. Obsah proměnné můžete nahradit libovolnými hodnotami, ale Všimněte si, že název účtu úložiště musí být globálně jedinečný.
 
-```bash
+```azurecli
 resourceGroupName="myResourceGroup"
 storageAccountName="mystorageacct$RANDOM"
 region="westus2"
@@ -137,7 +137,7 @@ region="westus2"
 
 K vytvoření účtu úložiště, který podporuje ukládání standardních sdílených složek Azure, použijeme následující příkaz. `--sku`Parametr se vztahuje k typu redundance; Pokud si přejete, aby byl účet geograficky redundantního úložiště nebo geograficky redundantního úložiště, je nutné také odebrat tento `--enable-large-file-share` parametr.
 
-```bash
+```azurecli
 az storage account create \
     --resource-group $resourceGroupName \
     --name $storageAccountName \
@@ -149,7 +149,7 @@ az storage account create \
 
 K vytvoření účtu úložiště, který podporuje ukládání prémiových sdílených složek Azure, použijeme následující příkaz. Všimněte si, že `--sku` parametr se změnil tak, aby zahrnoval i `Premium` požadovanou úroveň redundance místně redundantního ( `LRS` ). `--kind`Parametr je místo toho, aby se `FileStorage` v účtu úložiště úložiště `StorageV2` místo účtu úložiště GPv2 musely vytvořit soubory Premium.
 
-```bash
+```azurecli
 az storage account create \
     --resource-group $resourceGroupName \
     --name $storageAccountName \
@@ -233,7 +233,7 @@ Funkce pro vytvoření nebo přesunutí sdílené složky na určitou úroveň j
 > [!Important]  
 > Pro sdílené složky Premium `--quota` parametr odkazuje na zřízenou velikost sdílené složky. Zřízená velikost sdílené složky je množství, které se vám bude účtovat bez ohledu na využití. Standardní sdílené složky se účtují na základě využití místo zřízené velikosti.
 
-```bash
+```azurecli
 shareName="myshare"
 
 az storage share-rm create \
@@ -285,7 +285,7 @@ Update-AzRmStorageShare `
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 Následující příkaz rozhraní příkazového řádku Azure CLI předpokládá, že jste nastavili `$resourceGroupName` `$storageAccountName` proměnné, a, jak je `$shareName` popsáno v předchozích částech tohoto dokumentu.
 
-```bash
+```azurecli
 az storage share-rm update \
     --resource-group $resourceGroupName \
     --storage-account $storageAccountName \

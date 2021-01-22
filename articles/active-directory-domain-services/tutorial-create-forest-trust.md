@@ -8,22 +8,22 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/06/2020
+ms.date: 01/21/2021
 ms.author: justinha
-ms.openlocfilehash: faa46178262777454d4d67d23bbd0bb013974ab5
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: e381c80dddc4484d541f5f81de6b5df712cff69b
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98208484"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673464"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services"></a>Kurz: Vytvoření vztahu důvěryhodnosti odchozí doménové struktury do místní domény v Azure Active Directory Domain Services
 
-V prostředích, kde nemůžete synchronizovat hodnoty hash hesel, nebo máte uživatele, kteří se výhradně přihlásili pomocí čipových karet, aby si neznali heslo, můžete v Azure Active Directory Domain Services (Azure služba AD DS) použít doménovou strukturu prostředků. Doménová struktura prostředků používá jednosměrný odchozí vztah důvěryhodnosti z Azure služba AD DS do jednoho nebo více místních služba AD DS prostředí. Tento vztah důvěryhodnosti umožňuje uživatelům, aplikacím a počítačům provádět ověřování v místní doméně ze spravované domény Azure služba AD DS. V doménové struktuře prostředků nejsou hodnoty hash místních hesel nikdy synchronizovány.
+V prostředích, kde nemůžete synchronizovat hodnoty hash hesel, nebo pokud se uživatelé výhradně přihlásili pomocí čipových karet a neznají heslo, můžete použít doménovou strukturu prostředků v Azure Active Directory Domain Services (Azure služba AD DS). Doménová struktura prostředků používá jednosměrný odchozí vztah důvěryhodnosti z Azure služba AD DS do jednoho nebo více místních služba AD DS prostředí. Tento vztah důvěryhodnosti umožňuje uživatelům, aplikacím a počítačům provádět ověřování v místní doméně ze spravované domény Azure služba AD DS. V doménové struktuře prostředků nejsou hodnoty hash místních hesel nikdy synchronizovány.
 
 ![Diagram vztahu důvěryhodnosti doménové struktury z Azure služba AD DS do místního služba AD DS](./media/concepts-resource-forest/resource-forest-trust-relationship.png)
 
-V tomto kurzu:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Konfigurace DNS v místním prostředí služba AD DS pro podporu připojení Azure služba AD DS
@@ -84,8 +84,8 @@ Místní služba AD DS doména potřebuje příchozí vztah důvěryhodnosti dom
 
 Pokud chcete nakonfigurovat příchozí vztah důvěryhodnosti v místní doméně služba AD DS, proveďte následující kroky z pracovní stanice pro správu pro místní doménu služba AD DS:
 
-1. Vyberte **Spustit | Nástroje pro správu | Domény a vztahy důvěryhodnosti služby Active Directory**.
-1. Klikněte pravým tlačítkem na doména, jako je *OnPrem.contoso.com*, a pak vyberte **vlastnosti**.
+1. Vyberte možnost **Spustit**  >  **Nástroje pro správu**  >  **domény a vztahy důvěryhodnosti služby Active Directory**.
+1. Klikněte pravým tlačítkem na doménu, jako je *OnPrem.contoso.com*, a pak vyberte **vlastnosti**.
 1. Zvolte kartu **vztahy důvěryhodnosti** a pak **nový vztah důvěryhodnosti**.
 1. Zadejte název domény Azure služba AD DS, například *aaddscontoso.com*, a pak vyberte **Další**.
 1. Vyberte možnost vytvoření **vztahu důvěryhodnosti doménové struktury** a pak vytvořte **jednosměrné: příchozí** vztah důvěryhodnosti.
@@ -93,6 +93,14 @@ Pokud chcete nakonfigurovat příchozí vztah důvěryhodnosti v místní domén
 1. Zvolte možnost použití **ověřování v rámci doménové struktury** a pak zadejte a potvrďte heslo vztahu důvěryhodnosti. Stejné heslo je také zadáno v Azure Portal v další části.
 1. Projděte několik dalších oken s výchozími možnostmi a zvolte možnost **Ne, Nepotvrzujte odchozí vztah důvěryhodnosti**.
 1. Vyberte **Dokončit**.
+
+Pokud pro prostředí už není vztah důvěryhodnosti doménové struktury potřeba, odeberte ho z místní domény provedením následujících kroků:
+
+1. Vyberte možnost **Spustit**  >  **Nástroje pro správu**  >  **domény a vztahy důvěryhodnosti služby Active Directory**.
+1. Klikněte pravým tlačítkem na doménu, jako je *OnPrem.contoso.com*, a pak vyberte **vlastnosti**.
+1. Zvolte kartu **důvěryhodnosti** , potom **domény důvěřující této doméně (příchozí vztahy důvěryhodnosti)**, klikněte na vztah důvěryhodnosti, který chcete odebrat, a poté klikněte na tlačítko **Odebrat**.
+1. Na kartě vztahy důvěryhodnosti v oblasti **domény důvěryhodné v této doméně (odchozí vztahy důvěryhodnosti)** klikněte na vztah důvěryhodnosti, který chcete odebrat, a poté klikněte na tlačítko Odebrat.
+1. Klikněte na tlačítko **Ne, odebrat vztah důvěryhodnosti pouze z místní domény**.
 
 ## <a name="create-outbound-forest-trust-in-azure-ad-ds"></a>Vytvoření odchozího vztahu důvěryhodnosti doménové struktury v Azure služba AD DS
 
@@ -107,11 +115,17 @@ Chcete-li vytvořit odchozí vztah důvěryhodnosti pro spravovanou doménu v Az
    > Pokud nevidíte možnost nabídky **důvěryhodnosti** , zkontrolujte v části **vlastnosti** pro *Typ doménové struktury*. Vztahy důvěryhodnosti můžou vytvářet jenom doménové struktury *prostředků* . Pokud je typem doménové struktury *uživatel*, nemůžete vytvořit vztahy důvěryhodnosti. V současné době neexistuje způsob, jak změnit typ doménové struktury spravované domény. Je nutné odstranit a znovu vytvořit spravovanou doménu jako doménovou strukturu prostředků.
 
 1. Zadejte zobrazovaný název, který identifikuje vaši důvěryhodnost, a pak místní název DNS důvěryhodné doménové struktury, například *OnPrem.contoso.com*.
-1. Zadejte stejné heslo vztahu důvěryhodnosti, které bylo použito při konfiguraci vztahu důvěryhodnosti příchozí doménové struktury pro místní služba AD DS domény v předchozí části.
+1. Zadejte stejné heslo vztahu důvěryhodnosti, které bylo použito ke konfiguraci vztahu důvěryhodnosti příchozí doménové struktury pro místní služba AD DS domény v předchozí části.
 1. Poskytněte pro místní služba AD DS doménu aspoň dva servery DNS, například *10.1.1.4* a *zákazníka 10.1.1.5*.
 1. Až budete připraveni, **uložte** odchozí vztah důvěryhodnosti doménové struktury.
 
     ![Vytvořit vztah důvěryhodnosti odchozí doménové struktury v Azure Portal](./media/tutorial-create-forest-trust/portal-create-outbound-trust.png)
+
+Pokud pro prostředí už není vztah důvěryhodnosti doménové struktury potřeba, odeberte ho z Azure služba AD DS provedením následujících kroků:
+
+1. V Azure Portal vyhledejte a vyberte **Azure AD Domain Services** a pak vyberte spravovanou doménu, například *aaddscontoso.com*.
+1. V nabídce na levé straně spravované domény vyberte možnost **vztahy důvěryhodnosti**, zvolte vztah důvěryhodnosti a klikněte na tlačítko **Odebrat**.
+1. Zadejte stejné heslo vztahu důvěryhodnosti, které bylo použito ke konfiguraci vztahu důvěryhodnosti doménové struktury, a klikněte na tlačítko **OK**.
 
 ## <a name="validate-resource-authentication"></a>Ověření ověřování prostředků
 

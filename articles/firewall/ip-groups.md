@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 07/30/2020
+ms.date: 01/21/2021
 ms.author: victorh
-ms.openlocfilehash: c56298d68bddd326ed2b32215f30a9057fa51e85
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: dc1eb64b5cfb527c10967a1a46525a418fdc37e3
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94653109"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673993"
 ---
 # <a name="ip-groups-in-azure-firewall"></a>Skupiny IP adres v Azure Firewall
 
@@ -26,6 +26,9 @@ Skupiny IP adres umožňují seskupit a spravovat IP adresy pro Azure Firewall p
 Skupina IP adres může mít jednu IP adresu, několik IP adres nebo jeden nebo víc rozsahů IP adres.
 
 Skupiny IP adres se dají znovu použít v Azure Firewall DNAT, síti a pravidel aplikací pro několik bran firewall v rámci oblastí a předplatných v Azure. Názvy skupin musí být jedinečné. Skupinu IP adres můžete nakonfigurovat v Azure Portal, Azure CLI nebo REST API. K dispozici je Ukázková šablona, která vám umožní začít.
+
+> [!NOTE]
+> Skupiny IP adres nejsou v současnosti dostupné v prostředích národních cloudů Azure.
 
 ## <a name="sample-format"></a>Formát ukázky
 

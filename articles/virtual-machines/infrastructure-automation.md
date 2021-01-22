@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 07/17/2020
 ms.author: cynthn
-ms.openlocfilehash: 96c68850cfd8b03f7d1457eb0f1ca9ce5880c926
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: a20c19c3da89801570ca4d74a646e3cf0d8434b6
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197995"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98675898"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>Použití nástrojů pro automatizaci infrastruktury s virtuálními počítači v Azure
 
@@ -87,8 +87,8 @@ Skripty si můžete stáhnout z Azure Storage nebo z libovolného veřejného um
 
 Naučte se:
 
-- [Vytvořte virtuální počítač se systémem Linux pomocí Azure CLI a použijte rozšíření vlastních skriptů](./scripts/virtual-machines-linux-cli-sample-create-vm-nginx.md?toc=%2fcli%2fazure%2ftoc.json).
-- [Vytvořte virtuální počítač s Windows pomocí Azure PowerShell a použijte rozšíření vlastních skriptů](./scripts/virtual-machines-windows-powershell-sample-create-vm-iis.md).
+- [Vytvořte virtuální počítač se systémem Linux pomocí Azure CLI a použijte rozšíření vlastních skriptů](/previous-versions/azure/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-vm-nginx?toc=%2fcli%2fazure%2ftoc.json).
+- [Vytvořte virtuální počítač s Windows pomocí Azure PowerShell a použijte rozšíření vlastních skriptů](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-iis).
 
 
 ## <a name="packer"></a>Packeru
@@ -144,7 +144,7 @@ Naučte se:
 
 - [Nasaďte virtuální počítače s využitím šablony Správce prostředků](./linux/spot-template.md).
 - [Vytvoří virtuální počítač s Windows ze šablony Správce prostředků](./windows/ps-template.md).
-- [Stáhněte si šablonu pro virtuální počítač](./windows/download-template.md).
+- [Stáhněte si šablonu pro virtuální počítač](/previous-versions/azure/virtual-machines/windows/download-template).
 - [Vytvoří šablonu Azure image Builder](./linux/image-builder-json.md).
 
 ## <a name="next-steps"></a>Další kroky

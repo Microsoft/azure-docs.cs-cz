@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 12/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ed477a931ed63c0db378ff84f85544072492ef96
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 644192de74a888daa0391b31dd42eb6028403fd8
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387033"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674470"
 ---
 # <a name="azure-ad-b2c-custom-policy-overview"></a>Přehled Azure AD B2C vlastní zásady
 
@@ -53,7 +53,7 @@ Když se zásada spustí, Azure AD B2C odesílá a přijímá deklarace identity
 
 ### <a name="customize-and-localize-your-ui"></a>Přizpůsobení a lokalizace uživatelského rozhraní
 
-Pokud chcete shromažďovat informace od uživatelů tak, že ve svém webovém prohlížeči prezentujete stránku, použijte [technický profil s vlastním uplatněním](self-asserted-technical-profile.md). Technický profil s vlastním uplatněním můžete upravit [a přidat deklarace identity a přizpůsobit uživatelský vstup](custom-policy-configure-user-input.md).
+Pokud chcete shromažďovat informace od uživatelů tak, že ve svém webovém prohlížeči prezentujete stránku, použijte [technický profil s vlastním uplatněním](self-asserted-technical-profile.md). Technický profil s vlastním uplatněním můžete upravit [a přidat deklarace identity a přizpůsobit uživatelský vstup](./configure-user-input.md).
 
 Chcete-li [přizpůsobit uživatelské rozhraní](customize-ui-with-html.md) pro technický profil s vlastním uplatněním, zadejte adresu URL v prvku [definice obsahu](contentdefinitions.md) s přizpůsobeným obsahem HTML. V technickém profilu s vlastním uplatněním odkazujete na toto ID definice obsahu.
 
@@ -133,11 +133,11 @@ V rámci Azure AD B2C vlastní zásady můžete integrovat vlastní obchodní lo
 
 - Vytvořte logiku v rámci **zásad rozšíření** nebo **zásad předávající strany**. Můžete přidat nové prvky, které nahradí základní zásady odkazem na stejné ID. To vám umožní horizontální navýšení kapacity projektu a pozdější upgrade základních zásad, pokud společnost Microsoft vydává nové úvodní balíčky.
 - V rámci **základních zásad** důrazně doporučujeme vyhnout se jakýmkoli změnám.  V případě potřeby udělejte komentáře, kde byly provedeny změny.
-- Při přepisování elementu, jako jsou metadata technického profilu, se nekopíruje celý technický profil ze základních zásad. Místo toho zkopírujte pouze požadovanou část elementu. Příklad provedení změny najdete v tématu [Zakázání ověřování e-mailem](custom-policy-disable-email-verification.md) .
+- Při přepisování elementu, jako jsou metadata technického profilu, se nekopíruje celý technický profil ze základních zásad. Místo toho zkopírujte pouze požadovanou část elementu. Příklad provedení změny najdete v tématu [Zakázání ověřování e-mailem](./disable-email-verification.md) .
 - Pokud chcete omezit duplicity technických profilů, ve kterých se sdílí základní funkce, použijte [zahrnutí technického profilu](technicalprofiles.md#include-technical-profile).
 - Vyhněte se zápisu do adresáře služby Azure AD během přihlašování, což může vést k omezení problémů.
 - Pokud vaše zásada obsahuje externí závislosti, například REST API, zajistíte vysokou dostupnost.
-- Pro lepší uživatelské prostředí se ujistěte, že vlastní šablony HTML jsou globálně nasazené pomocí [online doručování obsahu](https://docs.microsoft.com/azure/cdn/). Azure Content Delivery Network (CDN) umožňuje zkrátit dobu načítání, ušetřit šířku pásma a zrychlit rychlost odezvy.
+- Pro lepší uživatelské prostředí se ujistěte, že vlastní šablony HTML jsou globálně nasazené pomocí [online doručování obsahu](../cdn/index.yml). Azure Content Delivery Network (CDN) umožňuje zkrátit dobu načítání, ušetřit šířku pásma a zrychlit rychlost odezvy.
 - Pokud chcete provést změnu na cestu uživatele. Zkopírujte veškerou cestu uživatele ze základní zásady na zásadu rozšíření. Zadejte jedinečné ID cesty uživatele pro cestu k uživateli, kterou jste zkopírovali. Pak v [zásadách předávající strany](relyingparty.md)změňte [výchozí prvek cesty uživatele](relyingparty.md#defaultuserjourney) tak, aby odkazoval na novou cestu uživatele.
 
 ## <a name="troubleshooting"></a>Řešení potíží
@@ -168,9 +168,9 @@ Začnete s vlastními zásadami Azure AD B2C:
 
 Po nastavení a otestování zásad Azure AD B2C můžete začít přizpůsobovat zásady. V následujících článcích se dozvíte, jak:
 
-- [Přidání deklarací identity a přizpůsobení uživatelského vstupu](custom-policy-configure-user-input.md) pomocí vlastních zásad. Přečtěte si, jak definovat deklaraci identity, přidání deklarace identity do uživatelského rozhraní úpravou některých technických profilů pro startovní Pack.
+- [Přidání deklarací identity a přizpůsobení uživatelského vstupu](./configure-user-input.md) pomocí vlastních zásad. Přečtěte si, jak definovat deklaraci identity, přidání deklarace identity do uživatelského rozhraní úpravou některých technických profilů pro startovní Pack.
 - [Přizpůsobte uživatelské rozhraní](customize-ui-with-html.md) aplikace pomocí vlastní zásady. Naučte se vytvářet vlastní obsah HTML a přizpůsobovat definici obsahu.
-- [Lokalizovat uživatelské rozhraní](custom-policy-localization.md) aplikace pomocí vlastních zásad. Přečtěte si, jak nastavit seznam podporovaných jazyků a zadat popisky specifické pro jazyk přidáním prvku lokalizovaných prostředků.
-- Během vývoje a testování zásad můžete [zakázat ověřování e-mailů](custom-policy-disable-email-verification.md). Přečtěte si, jak přepsat metadata technického profilu.
-- [Nastavte přihlášení pomocí účtu Google](identity-provider-google-custom.md) pomocí vlastních zásad. Naučte se, jak vytvořit nového zprostředkovatele deklarací identity pomocí OAuth2 Technical Profile. Pak upravte cestu uživatele tak, aby zahrnovala možnost přihlášení Google.
+- [Lokalizovat uživatelské rozhraní](./language-customization.md) aplikace pomocí vlastních zásad. Přečtěte si, jak nastavit seznam podporovaných jazyků a zadat popisky specifické pro jazyk přidáním prvku lokalizovaných prostředků.
+- Během vývoje a testování zásad můžete [zakázat ověřování e-mailů](./disable-email-verification.md). Přečtěte si, jak přepsat metadata technického profilu.
+- [Nastavte přihlášení pomocí účtu Google](./identity-provider-google.md) pomocí vlastních zásad. Naučte se, jak vytvořit nového zprostředkovatele deklarací identity pomocí OAuth2 Technical Profile. Pak upravte cestu uživatele tak, aby zahrnovala možnost přihlášení Google.
 - K diagnostice problémů s vlastními zásadami můžete [shromažďovat protokoly Azure Active Directory B2C pomocí Application Insights](troubleshoot-with-application-insights.md). Naučte se přidávat nové technické profily a konfigurovat zásady předávací strany.

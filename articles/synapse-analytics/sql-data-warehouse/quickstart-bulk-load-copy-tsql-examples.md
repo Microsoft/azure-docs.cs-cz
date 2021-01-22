@@ -9,23 +9,23 @@ ms.subservice: sql-dw
 ms.date: 07/10/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 25c692ea9a2dce4723472f6812ac46d82b2b318d
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 1551e85bd45d4d64861b43bf53dd0c155520861f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120984"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673633"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>Bezpečné načtení dat pomocí synapse SQL
 
-Tento článek popisuje a poskytuje příklady mechanismů zabezpečeného ověřování pro [příkaz Copy](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest). Příkaz COPY je nejpružnější a bezpečný způsob hromadného načítání dat v synapse SQL.
+Tento článek popisuje a poskytuje příklady mechanismů zabezpečeného ověřování pro [příkaz Copy](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true). Příkaz COPY je nejpružnější a bezpečný způsob hromadného načítání dat v synapse SQL.
 ## <a name="supported-authentication-mechanisms"></a>Podporované mechanismy ověřování
 
 Následující matice popisuje podporované metody ověřování pro každý typ souboru a účet úložiště. To platí pro zdrojové umístění úložiště a umístění chybového souboru.
 
 |                          |                CSV                |                      Parquet                       |                        ORC                         |
 | :----------------------: | :-------------------------------: | :------------------------------------------------: | :------------------------------------------------: |
-|  **Úložiště objektů BLOB v Azure**  | SAS/MSI/INSTANČNÍ OBJEKT/KLÍČ/AAD |                      SAS/KLÍČ                       |                      SAS/KLÍČ                       |
+|  **Azure Blob Storage**  | SAS/MSI/INSTANČNÍ OBJEKT/KLÍČ/AAD |                      SAS/KLÍČ                       |                      SAS/KLÍČ                       |
 | **Azure Data Lake Gen2** | SAS/MSI/INSTANČNÍ OBJEKT/KLÍČ/AAD | SAS (BLOB<sup>1</sup>)/MSI (DFS<sup>2</sup>)/Service Principal/Key/AAD | SAS (BLOB<sup>1</sup>)/MSI (DFS<sup>2</sup>)/Service Principal/Key/AAD |
 
 1: pro tuto metodu ověřování je vyžadován koncový bod objektu BLOB (**. blob**. Core.Windows.NET) v cestě k externímu umístění.
@@ -176,5 +176,5 @@ Pokud je váš účet úložiště připojený k virtuální síti, vyžaduje se
 
 ## <a name="next-steps"></a>Další kroky
 
-- Podrobnou syntaxi najdete v článku o [příkazu copy](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax) .
+- Podrobnou syntaxi najdete v článku o [příkazu copy](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#syntax) .
 - V článku [Přehled načítání dat](./design-elt-data-loading.md#what-is-elt) najdete doporučené postupy při načítání.

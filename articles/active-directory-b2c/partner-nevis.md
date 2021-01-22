@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 11/23/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 19aa847ce7ce1a6ba727a4733aefcdfad845e8c6
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 282ec6a25dc381dc51f28534d272bae57d2e792e
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629387"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674989"
 ---
 # <a name="tutorial-to-configure-nevis-with-azure-active-directory-b2c-for-passwordless-authentication"></a>Kurz konfigurace Nevisu pomocí Azure Active Directory B2C pro ověřování bez hesla
 
@@ -30,9 +30,9 @@ Abyste mohli začít, budete potřebovat:
 
 - Předplatné služby Azure AD. Pokud ho nemáte, Získejte [bezplatný účet](https://azure.microsoft.com/free/).
 
-- [Tenant Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant) , který je propojený s vaším předplatným Azure.
+- [Tenant Azure AD B2C](./tutorial-create-tenant.md) , který je propojený s vaším předplatným Azure.
 
-- Nakonfigurované Azure AD B2C prostředí pro použití [vlastních zásad](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started), pokud chcete do svého toku zásad registrace integrovat Nevis.
+- Nakonfigurované Azure AD B2C prostředí pro použití [vlastních zásad](./custom-policy-get-started.md), pokud chcete do svého toku zásad registrace integrovat Nevis.
 
 ## <a name="scenario-description"></a>Popis scénáře
 
@@ -46,7 +46,7 @@ V diagramu se zobrazuje implementace.
 
 ![Tok přihlašování k heslům vysoké úrovně pomocí Azure AD B2C a Nevis](./media/partner-nevis/nevis-architecture-diagram.png)
 
-|Krok | Popis |
+|Krok | Description |
 |:-----| :-----------|
 | 1. | Uživatel se pokusí přihlásit nebo zaregistrovat do aplikace prostřednictvím Azure AD B2C zásady přihlašování a registrace.
 | 2. | Při registraci se aplikace Nevis Access zaregistruje na zařízení uživatele pomocí kódu QR. Na uživatelském zařízení se vygeneruje privátní klíč, který se používá k podepsání uživatelských požadavků.
@@ -104,7 +104,7 @@ Dostanete dvě e-maily:
 
 ### <a name="integrate-azure-ad-b2c-with-nevis"></a>Integrace Azure AD B2C s nástrojem Nevis
 
-1. Otevřete web [Azure Portal](https://portal.azure.com/).
+1. Otevřete [Azure Portal](https://portal.azure.com/).
 
 2. Přepněte na svého tenanta Azure AD B2C. Ujistěte se, že jste vybrali správného tenanta, protože tenant Azure AD B2C obvykle je v samostatném tenantovi.
 
@@ -134,9 +134,9 @@ Dostanete dvě e-maily:
 
 4. **Uložte** změny do souboru.
 
-5. Postupujte podle [pokynů](https://docs.microsoft.com/azure/active-directory-b2c/customize-ui-with-html#2-create-an-azure-blob-storage-account) a nahrajte soubor **nevis.html** do úložiště objektů BLOB v Azure.
+5. Postupujte podle [pokynů](./customize-ui-with-html.md#2-create-an-azure-blob-storage-account) a nahrajte soubor **nevis.html** do úložiště objektů BLOB v Azure.
 
-6. Postupujte podle [pokynů](https://docs.microsoft.com/azure/active-directory-b2c/customize-ui-with-html#3-configure-cors) a povolte sdílení prostředků mezi zdroji (CORS) pro tento soubor.
+6. Postupujte podle [pokynů](./customize-ui-with-html.md#3-configure-cors) a povolte sdílení prostředků mezi zdroji (CORS) pro tento soubor.
 
 7. Po dokončení nahrávání a povolení CORS vyberte v seznamu soubor **nevis.html** .
 
@@ -268,6 +268,6 @@ Dostanete dvě e-maily:
 
 Další informace najdete v následujících článcích.
 
-- [Vlastní zásady v Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Vlastní zásady v Azure AD B2C](./custom-policy-overview.md)
 
-- [Začínáme s vlastními zásadami v Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Začínáme s vlastními zásadami v Azure AD B2C](./custom-policy-get-started.md?tabs=applications)

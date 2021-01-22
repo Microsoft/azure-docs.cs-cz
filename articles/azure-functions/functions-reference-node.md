@@ -5,12 +5,12 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 0b32efe3738dedbe8178889b3e9008964d485b00
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 3e99b156d220b4c24a368886b1c0ca0813ffdc51
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98034913"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674129"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions příručka pro vývojáře JavaScriptu
 
@@ -201,7 +201,7 @@ module.exports = (context) => {
 
 Kontext předaný do funkce zpřístupňuje `executionContext` vlastnost, což je objekt s následujícími vlastnostmi:
 
-| Název vlastnosti  | Typ  | Popis |
+| Název vlastnosti  | Typ  | Description |
 |---------|---------|---------|
 | `invocationId` | Řetězec | Poskytuje jedinečný identifikátor pro konkrétní vyvolání funkce. |
 | `functionName` | Řetězec | Poskytuje název běžící funkce. |
@@ -567,7 +567,7 @@ Přidejte vlastní proměnné prostředí do aplikace Function App v místním i
 
 ### <a name="in-local-development-environment"></a>V místním vývojovém prostředí
 
-Při místním spuštění zahrnuje projekt Functions [ `local.settings.json` soubor](/azure/azure-functions/functions-run-local), kde ukládáte proměnné prostředí do `Values` objektu. 
+Při místním spuštění zahrnuje projekt Functions [ `local.settings.json` soubor](./functions-run-local.md), kde ukládáte proměnné prostředí do `Values` objektu. 
 
 ```json
 {

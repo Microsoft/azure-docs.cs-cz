@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 9520196c8dce9ea511c2f3b799bd12b34c6f988f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: ad3a2ae9fd9a99398b384ef4e4a44820faccf8c7
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499743"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98675881"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Přidání disku do virtuálního počítače s Linuxem
 
@@ -181,5 +181,5 @@ Existují dva způsoby, jak na svém VIRTUÁLNÍm počítači se systémem Linux
 
 ## <a name="next-steps"></a>Další kroky
 
-* Pokud chcete mít jistotu, že je váš virtuální počítač se systémem Linux nakonfigurovaný správně, Projděte si doporučení [optimalizace výkonu počítačů se systémem Linux](optimization.md) .
+* Pokud chcete mít jistotu, že je váš virtuální počítač se systémem Linux nakonfigurovaný správně, Projděte si doporučení [optimalizace výkonu počítačů se systémem Linux](/previous-versions/azure/virtual-machines/linux/optimization) .
 * Kapacitu úložiště můžete rozšířit přidáním dalších disků a [konfigurací RAID](/previous-versions/azure/virtual-machines/linux/configure-raid) pro další výkon.

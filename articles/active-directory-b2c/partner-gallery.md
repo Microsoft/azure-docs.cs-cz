@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 01/11/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 15b4b61fd250dfb7d68c563f9f42c7d288a0019c
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 9aca01bae7911d2b6234d48bedc14b116e911a79
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070860"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98675369"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C partneři ISV
 
@@ -40,6 +40,7 @@ Partneři Microsoftu s následujícím nezávislým výrobcům softwaru pro ově
 |![Snímek obrazovky s logem Experian](./media/partner-gallery/experian-logo.png) | [Experian](./partner-experian.md) je ověření identity a poskytovatel kontroly pravopisu, který provádí hodnocení rizik na základě atributů uživatele, aby se zabránilo podvodům. |
 |![Snímek obrazovky s logem IDology](./media/partner-gallery/idology-logo.png) | [IDology](./partner-idology.md) je ověřování identity a poskytovatel kontroly pravopisu s řešeními ověřování ID, řešení pro ochranu před podvody, řešení dodržování předpisů a další.|
 |![Snímek obrazovky s logem Jumio](./media/partner-gallery/jumio-logo.png) | [Jumio](./partner-jumio.md) je ověřovací služba ID, která umožňuje automatické ověřování ID v reálném čase a zabezpečení zákaznických dat. |
+|![Snímek obrazovky s logem bez klíčů](./media/partner-gallery/keyless-logo.png) | [Bez klíčů](./partner-keyless.md) je ověřovací služba ID, která poskytuje ověřování ve formě biometrické kontroly obličeje a eliminuje podvod, útok phishing a opakované použití přihlašovacích údajů.
 | ![Snímek obrazovky s logem LexisNexis](./media/partner-gallery/lexisnexis-logo.png) | [LexisNexis](./partner-lexisnexis.md) je profilace a zprostředkovatel ověřování identity, který ověřuje identifikaci uživatele a poskytuje komplexní vyhodnocení rizika na základě zařízení uživatele. |
 | ![Snímek obrazovky s logem Onfido](./media/partner-gallery/onfido-logo.png) | [Onfido](./partner-onfido.md) je ID dokumentu a řešení pro ověřování obličeje biometrika, které společnosti umožňuje uspokojit požadavky na *zákazníky* a identitu v reálném čase.  |
 
@@ -78,9 +79,9 @@ Partneři Microsoftu s následujícími nezávislými výrobci softwaru pro zabe
 
 ## <a name="additional-information"></a>Další informace
 
-- [Vlastní zásady v Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Vlastní zásady v Azure AD B2C](./custom-policy-overview.md)
 
-- [Začínáme s vlastními zásadami v Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Začínáme s vlastními zásadami v Azure AD B2C](./custom-policy-get-started.md?tabs=applications)
 
 ## <a name="next-steps"></a>Další kroky
 
