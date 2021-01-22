@@ -9,12 +9,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 9578793c88c069b885f03dd682c47ae9f1f1b0a1
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: bc2f802a902212633fdbc081d33a51407d374e36
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97802622"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696359"
 ---
 # <a name="install-software-and-set-up-resources-for-the-tutorial"></a>Instalace softwaru a nastavení prostředků pro tento kurz
 
@@ -32,7 +32,6 @@ V tomto tříleté kurzu vytvoříte model strojového učení, který bude pře
 5. Nainstalujte nejnovější verzi rozhraní příkazového [řádku Azure CLI](https://github.com/Azure/azure-powershell/releases/tag/v3.5.0-February2020). Následující skripty vyžadují, aby příkaz AZ PowerShell měl nejnovější verzi (3.5.0, únor 2020).
 6. Nainstalujte si prostředí pro ladění, spouštění a testování IoT Edge řešení pomocí [nástroje Azure IoT EdgeHub dev Tool](https://pypi.org/project/iotedgehubdev/).
 7. Nainstalujte Docker.
-8. Stáhněte si soubor DACPAC, který se bude používat v tomto kurzu. 
 
 ## <a name="deploy-azure-resources-using-powershell-script"></a>Nasazení prostředků Azure pomocí skriptu PowerShellu
 

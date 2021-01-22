@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: f04e2aa97cafe2345918e433bcef5e719cee7483
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: eaba099725530f24dcd6aa5da7eb59cb233efd46
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610161"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695641"
 ---
 # <a name="azure-functions-http-trigger"></a>Aktivační událost Azure Functions HTTP
 
@@ -547,13 +547,13 @@ Python nepodporuje atributy.
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `HttpTrigger` atribut.
 
-|function.jsvlastnost | Vlastnost atributu |Description|
+|function.jsvlastnost | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
 | **textový** | Není k dispozici| Požadováno – musí být nastavené na `httpTrigger` . |
 | **směr** | Není k dispozici| Požadováno – musí být nastavené na `in` . |
 | **Jméno** | Není k dispozici| Required – název proměnné použitý v kódu funkce pro text žádosti nebo žádosti. |
 | <a name="http-auth"></a>**authLevel** |  **AuthLevel** |Určuje, které klíče (pokud existují) musí být k žádosti přítomny, aby bylo možné funkci vyvolat. Úroveň autorizace může být jedna z následujících hodnot: <ul><li><code>anonymous</code>&mdash;Není vyžadován žádný klíč rozhraní API.</li><li><code>function</code>&mdash;Klíč rozhraní API specifický pro funkci je povinný. Toto je výchozí hodnota, pokud není zadána žádná.</li><li><code>admin</code>&mdash;Hlavní klíč je povinný.</li></ul> Další informace najdete v části o [autorizačních klíčích](#authorization-keys). |
-| **způsobů** |**Metody** | Pole metod HTTP, na které funkce reaguje. Pokud není zadaný, funkce reaguje na všechny metody HTTP. Viz [přizpůsobení koncového bodu http](#customize-the-http-endpoint). |
+| **methods** |**Způsobů** | Pole metod HTTP, na které funkce reaguje. Pokud není zadaný, funkce reaguje na všechny metody HTTP. Viz [přizpůsobení koncového bodu http](#customize-the-http-endpoint). |
 | **route** | **Cestě** | Definuje šablonu směrování, která řídí, které adresy URL žádostí vaše funkce reaguje. Výchozí hodnota, pokud není zadána, je `<functionname>` . Další informace najdete v tématu [přizpůsobení koncového bodu http](#customize-the-http-endpoint). |
 | **webHookType** | **WebHookType** | _Podporováno pouze pro modul runtime verze 1. x._<br/><br/>Nakonfiguruje Trigger HTTP tak, aby sloužil jako přijímač [Webhooku](https://en.wikipedia.org/wiki/Webhook) pro zadaného zprostředkovatele. `methods`Pokud jste nastavili tuto vlastnost, nenastavujte tuto vlastnost. Typ Webhooku může být jedna z následujících hodnot:<ul><li><code>genericJson</code>&mdash;Koncový bod Webhooku pro obecné účely bez logiky pro konkrétního zprostředkovatele. Toto nastavení omezuje požadavky jenom na ty, které používají HTTP POST a s `application/json` typem obsahu.</li><li><code>github</code>&mdash;Funkce reaguje na [Webhooky GitHubu](https://developer.github.com/webhooks/). Nepoužívejte vlastnost  _authLevel_ s Webhooky GitHubu. Další informace najdete v části Webhooky GitHubu dále v tomto článku.</li><li><code>slack</code>&mdash;Funkce reaguje na [Webhooky časové rezervy](https://api.slack.com/outgoing-webhooks). Nepoužívejte vlastnost _authLevel_ s Webhooky časové rezervy. Další informace najdete v části časová pole webhooků dále v tomto článku.</li></ul>|
 
@@ -749,6 +749,10 @@ Následující konfigurace ukazuje, jak `{id}` je parametr předán do vazby `ro
 }
 ```
 
+Když použijete parametry směrování, `invoke_URL_template` automaticky se vytvoří pro vaši funkci. Vaši klienti mohou pomocí šablony URL pochopit parametry, které musí předat v adrese URL při volání funkce pomocí adresy URL. V [Azure Portal](https://portal.azure.com) přejděte na jednu z funkcí AKTIVOVANÝch protokolem HTTP a vyberte **získat adresu URL funkce**.
+
+K rozhraní můžete programově přistupovat `invoke_URL_template` pomocí rozhraní Azure Resource Manager API pro [funkce seznamu](https://docs.microsoft.com/rest/api/appservice/webapps/listfunctions) nebo [funkce Get](https://docs.microsoft.com/rest/api/appservice/webapps/getfunction).
+
 ## <a name="working-with-client-identities"></a>Práce s identitami klientů
 
 Pokud vaše aplikace Function App používá [App Service ověřování/autorizaci](../app-service/overview-authentication-authorization.md), můžete zobrazit informace o ověřených klientech z vašeho kódu. Tyto informace jsou k dispozici jako [hlavičky požadavků vložené platformou](../app-service/app-service-authentication-how-to.md#access-user-claims).
@@ -846,11 +850,17 @@ Ověřený uživatel je k dispozici prostřednictvím [hlaviček protokolu HTTP]
 
 ## <a name="obtaining-keys"></a>Získání klíčů
 
-Klíče se ukládají jako součást aplikace Function App v Azure a jsou zašifrované v klidovém stavu. Chcete-li zobrazit klíče, vytvořte nové nebo zaveďte klíče k novým hodnotám, v [Azure Portal](https://portal.azure.com) přejděte na jednu z funkcí AKTIVOVANÝch protokolem HTTP a vyberte **Spravovat**.
+Klíče se ukládají jako součást aplikace Function App v Azure a jsou zašifrované v klidovém stavu. Chcete-li zobrazit klíče, vytvořit nové nebo klíče pro nové hodnoty, přejděte na jednu z funkcí aktivovaných protokolem HTTP v [Azure Portal](https://portal.azure.com) a vyberte možnost **klíče funkce**.
 
-![Spravujte klíče funkcí na portálu.](./media/functions-bindings-http-webhook/manage-function-keys.png)
+Můžete také spravovat klíče hostitele. V [Azure Portal](https://portal.azure.com) přejděte do aplikace Function App a vyberte možnost **klíče aplikace**.
 
-Klíče funkcí můžete získat programově pomocí [rozhraní API pro správu klíčů](https://github.com/Azure/azure-functions-host/wiki/Key-management-API).
+Klíče funkce a hostitele můžete získat programově pomocí Azure Resource Manager rozhraní API. Existují rozhraní API k [vypsání klíčů funkcí](/rest/api/appservice/webapps/listfunctionkeys) a [výpisu klíčů hostitele](/rest/api/appservice/webapps/listhostkeys)a při použití slotů pro nasazení ekvivalentní rozhraní API jsou v [seznamu pozice funkcí](/rest/api/appservice/webapps/listfunctionkeysslot) a [seznam klíčů hostitele](/rest/api/appservice/webapps/listhostkeysslot).
+
+Nové klíče funkce a hostitele můžete také vytvořit programově pomocí kódu programu [vytvořit nebo aktualizovat](/rest/api/appservice/webapps/createorupdatefunctionsecret)tajný klíč funkce, [vytvořit](/rest/api/appservice/webapps/createorupdatefunctionsecretslot)nebo aktualizovat tajný klíč [hostitele](/rest/api/appservice/webapps/createorupdatehostsecret) a [vytvořit nebo aktualizovat rozhraní API slotu pro tajný kód hostitele](/rest/api/appservice/webapps/createorupdatehostsecretslot) .
+
+Klíče funkce a hostitele je možné odstranit programově pomocí [funkce Odstranit tajný klíč](/rest/api/appservice/webapps/deletefunctionsecret), odstranit tajný klíč [funkce](/rest/api/appservice/webapps/deletefunctionsecretslot), [Odstranit tajný klíč hostitele](/rest/api/appservice/webapps/deletehostsecret)a odstranit rozhraní API [slotu pro tajný klíč hostitele](/rest/api/appservice/webapps/deletehostsecretslot) .
+
+[K získání klíčů funkcí můžete použít také starší rozhraní API správy klíčů](https://github.com/Azure/azure-functions-host/wiki/Key-management-API), ale místo toho se doporučuje používat rozhraní Azure Resource Manager API.
 
 ## <a name="api-key-authorization"></a>Autorizace klíče rozhraní API
 

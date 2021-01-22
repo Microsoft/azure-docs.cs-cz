@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 0701e9c6428283d45cf4b4a2e24c8de99d9a286b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4bf9a96d7ffc3b939abe8cfb889c5bd49fee09cc
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89265894"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98694583"
 ---
 # <a name="azure-media-services-telemetry"></a>Telemetrie Azure Media Services  
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-v-2-v-3-migration-introduction.md) .
 
-Azure Media Services (AMS) umožňuje přístup k datům telemetrie/metrik pro své služby. Aktuální verze AMS umožňuje shromažďovat data telemetrie pro entity Live **Channel**, **StreamingEndpoint**a Live **Archive** . 
+Azure Media Services (AMS) umožňuje přístup k datům telemetrie/metrik pro své služby. Aktuální verze AMS umožňuje shromažďovat data telemetrie pro entity Live **Channel**, **StreamingEndpoint** a Live **Archive** . 
 
 Telemetrie se zapisuje do tabulky úložiště v Azure Storagem účtu, který zadáte (obvykle byste použili účet úložiště přidružený k vašemu účtu AMS). 
 
@@ -102,7 +102,7 @@ PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab701
 RowKey|RowKey|01688_00199
 Timestamp|Timestamp|Automatické časové razítko z Azure Table 2016 – 09-09T22:43:42.241 Z
 Typ|Typ|StreamingEndpoint
-Name|Name|StreamingEndpointRequestLog
+Název|Název|StreamingEndpointRequestLog
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924 Z
 Idslužby|ID služby|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 Název hostitele|Název hostitele koncového bodu|builddemoserver.origin.mediaservices.windows.net
@@ -121,7 +121,7 @@ PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab701
 RowKey|RowKey|01688_00199
 Timestamp|Timestamp|Automatické časové razítko z tabulky Azure 2016-09-09T22:43:42.241 Z
 Typ|Typ|Kanál
-Name|Name|ChannelHeartbeat
+Název|Název|ChannelHeartbeat
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924 Z
 Idslužby|ID služby|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 TrackType|Typ videa, zvuk/text sledování|Video/zvuk
@@ -146,7 +146,7 @@ PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab701
 RowKey|RowKey|01688_00199
 Timestamp|Timestamp|Automatické časové razítko z tabulky Azure 2016-09-09T22:43:42.241 Z
 Typ|Typ|Archiv
-Name|Name|ArchiveHeartbeat
+Název|Název|ArchiveHeartbeat
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924 Z
 Idslužby|ID služby|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 Manifest|Adresa URL programu|Asset – eb149703-ed0a-483c-91c4-e4066e72cce3/a0a5cfbf-71ec-4BD2-8c01-a92a2b38c9ba. ISM

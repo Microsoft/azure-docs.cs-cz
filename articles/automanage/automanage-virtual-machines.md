@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: ab056e0685264b03d35ee6b95afad7c6362f9db6
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 0d8ce501b951f3543e1baf54c8a52648b13f6e66
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97695783"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695666"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Azure automanage pro virtuální počítače
 
@@ -43,16 +43,16 @@ Před tím, než se pokusíte povolit službu Azure na virtuálních počítač�
 
 - Jenom virtuální počítače s Windows serverem
 - Musí být spuštěny virtuální počítače.
-- Virtuální počítače musí být v podporované oblasti.
+- Virtuální počítače musí být v podporované oblasti (viz odstavec níže).
 - Uživatel musí mít správná oprávnění (viz odstavec níže).
 - Automanage v tuto chvíli nepodporuje odběry izolovaného prostoru (sandbox).
 
-Abyste mohli povolit autosprávu na virtuálních počítačích pomocí stávajícího účtu pro správu, musíte mít ve skupině prostředků, která obsahuje vaše virtuální počítače, roli **Přispěvatel** . Pokud povolujete autosprávu pomocí nového účtu pro autosprávu, budete potřebovat následující oprávnění k vašemu předplatnému: role **vlastníka** nebo **přispěvatele** spolu s rolemi **Správce přístupu uživatele** . 
+Je také důležité si uvědomit, že automanage podporuje jenom virtuální počítače s Windows, které jsou v těchto oblastech: Západní Evropa, Východní USA, Západní USA 2, Kanada – střed, Středozápadní USA, Japonsko – východ.
+
+Abyste mohli povolit autosprávu na virtuálních počítačích pomocí stávajícího účtu pro správu, musíte mít ve skupině prostředků, která obsahuje vaše virtuální počítače, roli **Přispěvatel** . Pokud povolujete autosprávu pomocí nového účtu pro autosprávu, budete potřebovat následující oprávnění k vašemu předplatnému: role **vlastníka** nebo **přispěvatele** spolu s rolemi **Správce přístupu uživatele** .
 
 > [!NOTE]
 > Pokud chcete použít automanage na virtuálním počítači, který je připojený k pracovnímu prostoru v jiném předplatném, musíte mít oprávnění popsaná výše v každém předplatném.
-
-Je také důležité si uvědomit, že automanage podporuje jenom virtuální počítače s Windows, které jsou v těchto oblastech: Západní Evropa, Východní USA, Západní USA 2, Kanada – střed, Středozápadní USA, Japonsko – východ.
 
 ## <a name="participating-services"></a>Zúčastněné služby
 
@@ -102,12 +102,20 @@ Nastavení výchozího konfiguračního profilu můžete upravit pomocí předvo
 
 ## <a name="automanage-account"></a>Účet pro autosprávu
 
-Účet pro automatické spravování je kontext zabezpečení nebo identita, pod kterou dojde k automatickým operacím. Obvykle možnost automatického spravování účtu není pro výběr k dispozici, ale pokud existoval scénář delegování, ve kterém jste chtěli rozdělit automatizovanou správu (třeba mezi dvěma správci systému), tato možnost umožňuje definovat identitu Azure pro každého z těchto správců.
+Účet pro automatické spravování je kontext zabezpečení nebo identita, pod kterou dojde k automatickým operacím. Obvykle možnost automatického spravování účtu není pro výběr k dispozici, ale pokud existoval scénář delegování, kdy jste chtěli rozdělit automatizovanou správu prostředků (třeba mezi dvěma správci systému), tato možnost umožňuje definovat identitu Azure pro každého z těchto správců.
 
 V prostředí Azure Portal máte při povolování funkce automanage na vašich virtuálních počítačích pokročilý rozevírací seznam v okně **Povolit osvědčené postupy pro virtuální počítače Azure** , které vám umožní přiřadit nebo ručně vytvořit účet pro správu.
 
+Účtu automanage budou udělena **role přispěvatelů** a **zásad prostředků přispěvatelům** k předplatným, která obsahují počítače, které chcete spravovat. Stejný účet pro správu můžete použít na počítačích v rámci více předplatných, což udělí oprávnění k autosprávě účtu **přispěvatele** a **zásad prostředků** u všech předplatných.
+
+Pokud je váš virtuální počítač připojený k pracovnímu prostoru Log Analytics v jiném předplatném, bude mít účet pro  správu v tomto jiném předplatném taky **Přispěvatel a přispěvatel zásad prostředků** .
+
+Pokud povolujete autosprávu pomocí nového účtu pro autosprávu, budete potřebovat následující oprávnění k vašemu předplatnému: role **vlastníka** nebo **přispěvatele** spolu s rolemi **Správce přístupu uživatele** .
+
+Pokud povolujete možnost automanage s existujícím účtem pro správu, musíte mít roli **přispěvatele** ve skupině prostředků, která obsahuje vaše virtuální počítače.
+
 > [!NOTE]
-> Musíte mít roli **Přispěvatel** ve skupině prostředků, která obsahuje vaše virtuální počítače, aby bylo možné na virtuálních počítačích povolit autosprávu pomocí stávajícího účtu pro správu. Pokud povolujete autosprávu pomocí nového účtu pro autosprávu, budete potřebovat následující oprávnění k vašemu předplatnému: role **vlastníka** nebo **přispěvatele** spolu s rolemi **Správce přístupu uživatele** .
+> Když zakážete možnosti pro automanage, budete mít i oprávnění účtu automanage u všech přidružených předplatných. Ručně odeberte oprávnění tak, že na stránce IAM předplatného odeberete nebo odstraníte účet pro správu. Účet automanage nelze odstranit, pokud stále spravuje všechny počítače.
 
 
 ## <a name="status-of-vms"></a>Stav virtuálních počítačů
@@ -122,6 +130,7 @@ Sloupec **Status (stav** ) může zobrazit následující stavy:
 - *Probíhá – virtuální* počítač byl právě povolen a probíhá jeho konfigurace.
 - *Nakonfigurováno* – virtuální počítač je nakonfigurovaný a nezjistil se žádný posun.
 - *Selhalo* – virtuální počítač se ztratil a nedokázali jsme ho opravit.
+- *Čeká na vyřízení* – virtuální počítač v tuto chvíli není spuštěný a při příštím spuštění se služba automanage pokusí virtuální počítač zprovoznit nebo ho opravit.
 
 Pokud se **stav** zobrazuje jako *neúspěšný*, můžete řešit problémy s nasazením prostřednictvím skupiny prostředků, ve které se váš virtuální počítač nachází. Přejděte na **skupiny prostředků**, vyberte svoji skupinu prostředků, klikněte na **nasazení** a v části stav *selhání se* zobrazí podrobnosti o chybě.
 
@@ -145,7 +154,6 @@ Než se odsouhlaste s **zakázáním**, důkladně si přečtěte zprávy ve vý
 
 
 První a první, nebudeme virtuální počítač od žádné ze služeb, které jsme připojili a nakonfigurovali, mimo kartu. Všechny poplatky, které tyto služby vznikly, budou i nadále Fakturovatelné. V případě potřeby budete potřebovat mimo panel. Jakékoli chování funkce automanage se okamžitě zastaví. Například už nebudeme monitorovat virtuální počítač pro posun.
-
 
 ## <a name="next-steps"></a>Další kroky
 

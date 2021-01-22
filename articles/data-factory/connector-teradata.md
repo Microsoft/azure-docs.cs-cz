@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/26/2020
+ms.date: 01/22/2021
 ms.author: jingwang
-ms.openlocfilehash: a48ac86e8f9814adef9be2360b2446335d368447
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: 430b9a1e567d9a79093f50ae388b4b69119c057d
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296552"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695869"
 ---
 # <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>Kopírování dat z Teradata Vantage pomocí Azure Data Factory
 
@@ -44,7 +44,7 @@ Konkrétně tento konektor Teradata podporuje:
 - Kopírování dat pomocí ověřování **Basic**, **Windows** a **LDAP** .
 - Paralelní kopírování ze zdroje Teradata. Podrobnosti najdete v části [paralelní kopírování z Teradata](#parallel-copy-from-teradata) .
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -72,6 +72,7 @@ Další vlastnosti připojení můžete nastavit v připojovacím řetězci pro 
 
 | Vlastnost | Popis | Výchozí hodnota |
 |:--- |:--- |:--- |
+| TdmstPortNumber | Číslo portu používaného pro přístup k databázi Teradata.<br>Tuto hodnotu neměňte, pokud k tomu nejste vyzváni technickou podporou. | 1025 |
 | UseDataEncryption | Určuje, jestli se má zašifrovat veškerá komunikace s databází Teradata. Povolené hodnoty jsou 0 nebo 1.<br><br/>- **0 (zakázáno, výchozí)**: šifruje jenom informace o ověřování.<br/>- **1 (povoleno)**: šifruje všechna data předávaná mezi ovladačem a databází. | `0` |
 | CharacterSet | Znaková sada, která se má použít pro relaci. Například `CharacterSet=UTF16` .<br><br/>Tato hodnota může být uživatelsky definovaná znaková sada nebo jedna z následujících předem definovaných znakových sad: <br/>– ASCII<br/>– UTF8<br/>– UTF16<br/>-LATIN1252_0A<br/>-LATIN9_0A<br/>-LATIN1_0A<br/>-Shift-JIS (Windows, kompatibilní s DOS, KANJISJIS_0S)<br/>-EUC (kompatibilní s Unixem, KANJIEC_0U)<br/>– Sálový sálový IBM (KANJIEBCDIC5035_0I)<br/>-KANJI932_1S0<br/>-BIG5 (TCHBIG5_1R0)<br/>-GB (SCHGB2312_1T0)<br/>-SCHINESE936_6R0<br/>-TCHINESE950_8R0<br/>-NetworkKorean (HANGULKSC5601_2R4)<br/>-HANGUL949_7R0<br/>-ARABIC1256_6A0<br/>-CYRILLIC1251_2A0<br/>-HEBREW1255_5A0<br/>-LATIN1250_1A0<br/>-LATIN1254_7A0<br/>-LATIN1258_8A0<br/>-THAI874_4A0 | `ASCII` |
 | MaxRespSize |Maximální velikost vyrovnávací paměti odpovědí pro požadavky SQL, v kilobajtech (aktualizací KB). Například `MaxRespSize=‭10485760‬` .<br/><br/>V případě databáze Teradata verze 16,00 nebo novější je maximální hodnota 7361536. Pro připojení, která používají starší verze, je maximální hodnota 1048576. | `65536` |
@@ -171,7 +172,7 @@ Chcete-li kopírovat data z Teradata, jsou podporovány následující vlastnost
 |:--- |:--- |:--- |
 | typ | Vlastnost Type datové sady musí být nastavena na hodnotu `TeradataTable` . | Ano |
 | database | Název instance Teradata. | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
-| stolu | Název tabulky v instanci Teradata. | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
+| tabulka | Název tabulky v instanci Teradata. | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
 
 **Příklad:**
 
@@ -277,7 +278,7 @@ Pokud povolíte dělenou kopii, Data Factory spustí paralelní dotazy na zdroj 
 
 Navrhnete, abyste umožnili paralelní kopírování s vytvářením oddílů dat, zejména při načítání velkého množství dat z Teradata. Následují Doporučené konfigurace pro různé scénáře. Při kopírování dat do úložiště dat založeného na souborech je znovu zaškrtnuto, aby bylo možné zapisovat do složky jako více souborů (zadejte pouze název složky). v takovém případě je výkon lepší než zápis do jednoho souboru.
 
-| Scénář                                                     | Navrhovaná nastavení                                           |
+| Scenario                                                     | Navrhovaná nastavení                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Úplné načtení z velké tabulky                                   | **Parametr partition**: hash. <br><br/>Během provádění Data Factory automaticky detekuje primární indexový sloupec, aplikuje na něj hodnotu hash a kopíruje data podle oddílů. |
 | Načtení velkého množství dat pomocí vlastního dotazu.                 | **Parametr partition**: hash.<br>**Dotaz**: `SELECT * FROM <TABLENAME> WHERE ?AdfHashPartitionCondition AND <your_additional_where_clause>` .<br>**Sloupec oddílu**: Určete sloupec použitý pro použití oddílu hash. Pokud není zadán, Data Factory automaticky detekuje sloupec PK tabulky, kterou jste zadali v datové sadě Teradata.<br><br>Během provádění se Data Factory nahradí `?AdfHashPartitionCondition` logikou oddílu hash a pošle se do Teradata. |
@@ -323,7 +324,7 @@ Při kopírování dat z Teradata platí následující mapování. Další info
 | ByteInt |Int16 |
 | Char |Řetězec |
 | Datový typ CLOB |Řetězec |
-| Datum |DateTime |
+| Date (Datum) |DateTime |
 | Decimal |Decimal |
 | dvojité |dvojité |
 | Objekty |Nepodporováno Použije explicitní přetypování ve zdrojovém dotazu. |

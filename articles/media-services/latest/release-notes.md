@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: 895b4529a8b99ecc66e3566b4696a0e61c337153
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 37e90eeaef9cb8c8e0bd927dd4d733a737c0c47f
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881901"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693871"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Zpráva k vydání verze Azure Media Services V3
 
@@ -436,7 +436,7 @@ Podívejte se na článek o [komunitě Azure Media Services](media-services-comm
 
 ## <a name="see-also"></a>Viz také
 
-[Pokyny k migraci pro přesun z Media Services V2 na V3](migrate-from-v2-to-v3.md#known-issues).
+[Pokyny k migraci pro přesun z Media Services V2 na V3](migrate-v-2-v-3-migration-introduction.md).
 
 ## <a name="next-steps"></a>Další kroky
 

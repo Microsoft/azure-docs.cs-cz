@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/19/2021
+ms.date: 01/21/2021
 ms.author: b-juche
-ms.openlocfilehash: f50cde2fa67351552d1f31500da09a5f800b2bcc
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 4320222e02f3447dcdff280f04ad26115323e798
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600109"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696141"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Architektury řešení s využitím Azure NetApp Files
 Tento článek poskytuje odkazy na osvědčené postupy, které vám pomůžou pochopit architektury řešení pro použití Azure NetApp Files.  
@@ -92,6 +92,10 @@ Tato část poskytuje odkazy na řešení SAP v Azure.
 * [Azure NetApp Files – SAP HANA přesměrování zálohování pomocí synchronizace cloudu](https://blog.netapp.com/azure-netapp-files-sap-hana)
 * [Urychlení SAP HANA systémových kopií pomocí Azure NetApp Files](https://blog.netapp.com/sap-hana-faster-using-azure-netapp-files/)
 * [Cloudové svazky ONTAP a Azure NetApp Files: Snadná migrace systému SAP HANA](https://blog.netapp.com/cloud-volumes-ontap-and-azure-netapp-files-sap-hana-system-migration-made-easy/)
+
+## <a name="azure-vmware-solutions"></a>Řešení Azure VMware
+
+* [Azure NetApp Files s řešením Azure VMware – připojení operačních systémů hosta](../azure-vmware/net-app-files-with-azure-vmware-solution.md)
 
 ## <a name="virtual-desktop-infrastructure-solutions"></a>Řešení infrastruktury virtuálních klientských počítačů
 

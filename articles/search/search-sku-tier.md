@@ -9,24 +9,27 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2021
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 1a1fc0ce634282ffd4fcf374138fe97a04f32062
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 320f02f6ece106b4d0e14293f95533aa5b4e0743
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539605"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693447"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Výběr cenové úrovně pro Azure Kognitivní hledání
 
-Při [vytváření vyhledávací služby](search-create-service-portal.md)se volí cenová úroveň (nebo SKU), která je pevná pro dobu života služby. Odhadované měsíční náklady se zobrazí na stránce **Vybrat cenovou úroveň** na portálu. Pokud vytváříte službu prostřednictvím PowerShellu nebo rozhraní příkazového řádku Azure CLI, tato vrstva se zadává přes **`-Sku`** parametr.
+Součástí [Vytvoření vyhledávací služby](search-create-service-portal.md) je výběr cenové úrovně (nebo skladové jednotky), která je pevná pro dobu života služby. Ceny – nebo Odhadované měsíční náklady na provoz služby – jsou zobrazené na stránce **Výběr cenové úrovně** na portálu při vytváření služby. Pokud místo toho zřizujete prostřednictvím PowerShellu nebo rozhraní příkazového řádku Azure, je tato úroveň zadaná prostřednictvím **`-Sku`** parametru a měli byste se podívat na [ceny za služby](https://azure.microsoft.com/pricing/details/search/) , abyste se dozvěděli o odhadovaných nákladech.
 
 Vybraná úroveň určuje:
 
-+ Maximální počet indexů a dalších objektů, které můžete vytvořit ve službě
++ Maximální počet indexů a dalších objektů povolených ve službě
 + Velikost a rychlost oddílů (fyzické úložiště)
 + Fakturovatelná sazba jako pevná měsíční cena, ale také přírůstková cena, pokud přidáváte kapacitu
 
 V několika případech úroveň, kterou zvolíte, určuje dostupnost [prémiových funkcí](#premium-features).
+
+> [!NOTE]
+> Hledáte informace o "SKU Azure"? Začněte s [cenami Azure](https://azure.microsoft.com/pricing/) a pak přejděte dolů na odkazy na stránky s cenami za službu.
 
 ## <a name="tier-descriptions"></a>Popisy vrstev
 
@@ -50,7 +53,7 @@ Další informace o různých úrovních najdete na [stránce s cenami](https://
 
 Většina funkcí je dostupná na všech úrovních, včetně úrovně Free. Úroveň, kterou zvolíte, bude mít v několika případech vliv na vaši schopnost implementovat funkci. Následující tabulka popisuje omezení funkcí, která souvisí s úrovní služeb.
 
-| Příznak | Omezení |
+| Funkce | Omezení |
 |---------|-------------|
 | [Indexery](search-indexer-overview.md) | Indexery nejsou k dispozici na S3 HD.  |
 | [Obohacení AI](search-security-manage-encryption-keys.md) | Běží na bezplatné úrovni, ale nedoporučuje se. |
@@ -67,7 +70,7 @@ Funkce náročné na prostředky nemusí fungovat správně, pokud jim neposkytn
 
 ## <a name="partition-size-and-speed"></a>Velikost oddílu a rychlost
 
-Ceny vrstev obsahují podrobnosti o úložišti pro jednotlivé oddíly, které jsou v rozsahu od 2 GB po dobu Basic, až do 2 TB pro úrovně optimalizované pro úložiště (L2). Další hardwarové charakteristiky, jako je například rychlost provozu, latence a přenosové rychlosti, nejsou publikovány, ale úrovně navržené pro konkrétní architektury řešení jsou postaveny na hardwaru, který obsahuje funkce pro podporu těchto scénářů.
+Ceny vrstev obsahují podrobnosti o úložišti pro jednotlivé oddíly, které jsou v rozsahu od 2 GB po dobu Basic, až do 2 TB pro úrovně optimalizované pro úložiště (L2). Další hardwarové charakteristiky, jako je například rychlost provozu, latence a přenosové rychlosti, nejsou publikovány, ale úrovně navržené pro konkrétní architektury řešení jsou postaveny na hardwaru, který obsahuje funkce pro podporu těchto scénářů. Další informace o oddílech najdete v tématu [odhad a správa kapacity](search-capacity-planning.md) a [škálování pro výkon](search-performance-optimization.md).
 
 ## <a name="billing-rates"></a>Fakturační sazby
 

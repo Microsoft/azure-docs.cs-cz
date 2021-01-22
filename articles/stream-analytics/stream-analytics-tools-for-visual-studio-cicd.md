@@ -6,12 +6,12 @@ ms.author: sujie
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/15/2019
-ms.openlocfilehash: 9fe1aaed58d6069cd583f8607f7bd6332f97674e
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 0b4356c74b2e0c1494456d5d1082efd7b8953a15
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019886"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693371"
 ---
 # <a name="use-the-azure-stream-analytics-cicd-nuget-package-for-integration-and-development"></a>Použití balíčku NuGet Azure Stream Analytics CI/CD pro integraci a vývoj 
 Tento článek popisuje, jak použít balíček NuGet Azure Stream Analytics CI/CD, abyste nastavili proces průběžné integrace a nasazování.
@@ -51,7 +51,7 @@ Výchozí parametry v souboru parameters.json jsou z nastavení v projektu sady 
       "value": null
     },
 ```
-Přečtěte si další informace o tom, jak [nasadit pomocí souboru šablony Správce prostředků a Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md). Přečtěte si další informace o [použití objektu jako parametru v šabloně správce prostředků](/azure/architecture/building-blocks/extending-templates/objects-as-parameters).
+Přečtěte si další informace o tom, jak [nasadit pomocí souboru šablony Správce prostředků a Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md). Přečtěte si další informace o [použití objektu jako parametru v šabloně správce prostředků](/azure/architecture/guide/azure-resource-manager/advanced-templates/objects-as-parameters).
 
 Pokud chcete použít spravovanou identitu pro Azure Data Lake Store Gen1 jako výstupní jímku, musíte před nasazením do Azure poskytnout přístup k instančnímu objektu pomocí PowerShellu. Přečtěte si další informace o [nasazení adls Gen1 se správou identity pomocí šablony Správce prostředků](stream-analytics-managed-identities-adls.md#resource-manager-template-deployment).
 

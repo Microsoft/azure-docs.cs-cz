@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8166a77b4e3090619aa4c7fdc3fe4d94af6cddc
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: b83d798d00df674fd4b0502a24681c07875bc3b0
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196363"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98694321"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archivujte, co je nového v Azure Active Directory?
 
@@ -1166,7 +1166,7 @@ Další informace o tom, jak lépe zabezpečit vaši organizaci pomocí automati
  
 Do ledna 2020 jsme do Galerie aplikací přidali tyto 33 nové aplikace s podporou federace: 
 
-[JOSA](../saas-apps/josa-tutorial.md), [Fast Edge Cloud](../saas-apps/fastly-edge-cloud-tutorial.md), [terraformu Enterprise](../saas-apps/terraform-enterprise-tutorial.md), [Spintr SSO](../saas-apps/spintr-sso-tutorial.md), [Abibot Netlogistik](https://azuremarketplace.microsoft.com/marketplace/apps/aad.abibotnetlogistik), [SkyKick](https://login.skykick.com/login?state=g6Fo2SBTd3M5Q0xBT0JMd3luS2JUTGlYN3pYTE1remJQZnR1c6N0aWTZIDhCSkwzYVQxX2ZMZjNUaWxNUHhCSXg2OHJzbllTcmYto2NpZNkgM0h6czk3ZlF6aFNJV1VNVWQzMmpHeFFDbDRIMkx5VEc&client=3Hzs97fQzhSIWUMUd32jGxQCl4H2LyTG&protocol=oauth2&audience=https://papi.skykick.com&response_type=code&redirect_uri=https://portal.skykick.com/callback&scope=openid%20profile%20offline_access), pro, LeaveBot, [](https://appsource.microsoft.com/en-us/product/office/WA200001175) [DataCamp](../saas-apps/datacamp-tutorial.md), [TripActions](../saas-apps/tripactions-tutorial.md), [SMARTWORK](https://www.intumit.com/teams-smartwork/), [DOTCOM-monitor](../saas-apps/dotcom-monitor-tutorial.md), [SSOGEN – Azure AD SSO Gateway pro Oracle E-Business Suite-EBS, PeopleSoft spouštěných místně a jde](../saas-apps/ssogen-tutorial.md), [hostované MyCirqa SSO](../saas-apps/hosted-mycirqa-sso-tutorial.md), [platforma pro správu vlastností yuhu](../saas-apps/yuhu-property-management-platform-tutorial.md), [LumApps](https://sites.lumapps.com/login), [Working Enterprise](../saas-apps/upwork-enterprise-tutorial.md), [Talentsoft](../saas-apps/talentsoft-tutorial.md), [SmartDB pro Microsoft Teams](http://teams.smartdb.jp/login/), [PressPage](../saas-apps/presspage-tutorial.md), [ContractSafe typu Saml2 SSO](../saas-apps/contractsafe-saml2-sso-tutorial.md), [Maxient software Manager](../saas-apps/maxient-conduct-manager-software-tutorial.md), [helpshift](../saas-apps/helpshift-tutorial.md), [PortalTalk 365](https://www.portaltalk.com/), [koview](https://portal.coreview.com/), [squelch Cloud Office 365 Connector](https://laxmi.squelch.io/login), PingFlow [Authentication](https://app-staging.pingview.io/), PrinterLogic [SaaS](../saas-apps/printerlogic-saas-tutorial.md), [Taskize Connect](../saas-apps/taskize-connect-tutorial.md), Sandwai [,](https://app.sandwai.com/) [EZRentOut](../saas-apps/ezrentout-tutorial.md), [AssetSonar](../saas-apps/assetsonar-tutorial.md), [Akari Virtual Assistant](https://akari.io/akari-virtual-assistant/) [](../saas-apps/upshotly-tutorial.md)
+[JOSA](../saas-apps/josa-tutorial.md), [Fast Edge Cloud](../saas-apps/fastly-edge-cloud-tutorial.md), [terraformu Enterprise](../saas-apps/terraform-enterprise-tutorial.md), [Spintr SSO](../saas-apps/spintr-sso-tutorial.md), [Abibot Netlogistik](https://azuremarketplace.microsoft.com/marketplace/apps/aad.abibotnetlogistik), [SkyKick](https://login.skykick.com/login?state=g6Fo2SBTd3M5Q0xBT0JMd3luS2JUTGlYN3pYTE1remJQZnR1c6N0aWTZIDhCSkwzYVQxX2ZMZjNUaWxNUHhCSXg2OHJzbllTcmYto2NpZNkgM0h6czk3ZlF6aFNJV1VNVWQzMmpHeFFDbDRIMkx5VEc&client=3Hzs97fQzhSIWUMUd32jGxQCl4H2LyTG&protocol=oauth2&audience=https://papi.skykick.com&response_type=code&redirect_uri=https://portal.skykick.com/callback&scope=openid%20profile%20offline_access), pro, LeaveBot, [](https://appsource.microsoft.com/en-us/product/office/WA200001175) [DataCamp](../saas-apps/datacamp-tutorial.md), [TripActions](../saas-apps/tripactions-tutorial.md), [SMARTWORK](https://www.intumit.com/teams-smartwork/), [DOTCOM-monitor](../saas-apps/dotcom-monitor-tutorial.md), [SSOGEN – Azure AD SSO Gateway pro Oracle E-Business Suite-EBS, PeopleSoft spouštěných místně a jde](../saas-apps/ssogen-tutorial.md), [hostované MyCirqa SSO](../saas-apps/hosted-mycirqa-sso-tutorial.md), [platforma pro správu vlastností yuhu](../saas-apps/yuhu-property-management-platform-tutorial.md), [LumApps](https://sites.lumapps.com/login), [Working Enterprise](../saas-apps/upwork-enterprise-tutorial.md), [Talentsoft](../saas-apps/talentsoft-tutorial.md), [SmartDB pro Microsoft Teams](http://teams.smartdb.jp/login/), [PressPage](../saas-apps/presspage-tutorial.md), [ContractSafe typu Saml2 SSO](../saas-apps/contractsafe-saml2-sso-tutorial.md), [Maxient software Manager](../saas-apps/maxient-conduct-manager-software-tutorial.md), [helpshift](../saas-apps/helpshift-tutorial.md), [PortalTalk 365](https://www.portaltalk.com/), [koview](https://portal.coreview.com/), squelch Cloud Office 365 Connector, PingFlow [Authentication](https://app-staging.pingview.io/), PrinterLogic [SaaS](../saas-apps/printerlogic-saas-tutorial.md), [Taskize Connect](../saas-apps/taskize-connect-tutorial.md), Sandwai [,](https://app.sandwai.com/) [EZRentOut](../saas-apps/ezrentout-tutorial.md), [AssetSonar](../saas-apps/assetsonar-tutorial.md), [Akari Virtual Assistant](https://akari.io/akari-virtual-assistant/) [](../saas-apps/upshotly-tutorial.md)
 
 Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](../saas-apps/tutorial-list.md). Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../develop/v2-howto-app-gallery-listing.md).
 
@@ -2854,7 +2854,7 @@ Ve schématu auditu se mění následující pole:
 |Název pole|Co se změnilo|Staré hodnoty|Nové hodnoty|
 |----------|------------|----------|----------|
 |Kategorie|Toto bylo pole **název služby** . Teď je to pole **kategorie auditu** . **Název služby** byl přejmenován na pole **loggedByService** .|<ul><li>Zřizování účtů</li><li>Základní adresář</li><li>Samoobslužné resetování hesla</li></ul>|<ul><li>Správa uživatelů</li><li>Správa skupin</li><li>Správa aplikací</li></ul>|
-|targetResources|Zahrnuje **TargetResourceType** na nejvyšší úrovni.|&nbsp;|<ul><li>Zásady</li><li>Aplikace</li><li>User</li><li>Skupina</li></ul>|
+|targetResources|Zahrnuje **TargetResourceType** na nejvyšší úrovni.|&nbsp;|<ul><li>Zásady</li><li>Aplikace</li><li>User</li><li>Group (Skupina)</li></ul>|
 |loggedByService|Poskytuje název služby, která vygenerovala protokol auditu.|Null|<ul><li>Zřizování účtů</li><li>Základní adresář</li><li>Samoobslužné resetování hesla</li></ul>|
 |Výsledek|Poskytuje výsledek protokolů auditu. Dřív byl tento výčet vyhodnocený, ale nyní zobrazujeme skutečnou hodnotu.|<ul><li>0</li><li>1</li></ul>|<ul><li>Success</li><li>Selhání</li></ul>|
 
@@ -3127,7 +3127,7 @@ V seznamu [schválených klientských aplikací](../conditional-access/concept-c
 
 - Microsoft Stream
 
-Další informace najdete tady:
+Další informace naleznete v tématu:
 
 - [Podmíněný přístup na základě aplikace Azure AD](../conditional-access/app-based-conditional-access.md)
 
@@ -3621,7 +3621,7 @@ Další informace o veřejné verzi Preview najdete v tématu [role správy dele
 
 ---
 
-## <a name="may-2018"></a>May 2018
+## <a name="may-2018"></a>Květen 2018
 
 ### <a name="expressroute-support-changes"></a>Změny podpory ExpressRoute
 
@@ -3791,7 +3791,7 @@ Další informace najdete v tématu [Azure AD B2C: vyžádání přístupových 
 
 Při konfiguraci aplikací jednotného přihlašování založeného na SAML budete moci otestovat integraci na stránce konfigurace. Pokud během přihlašování dojde k chybě, můžete zadat chybu v prostředí testování a Azure AD vám poskytne postup řešení pro vyřešení konkrétního problému.
 
-Další informace najdete tady:
+Další informace naleznete v tématu:
 
 - [Konfigurace jednotného přihlašování k aplikacím, které nejsou v galerii aplikací Azure Active Directory](../manage-apps/view-applications-portal.md)
 - [Jak ladit jednotné přihlašování založené na SAML pro aplikace v Azure Active Directory](../manage-apps/debug-saml-sso-issues.md)
@@ -3926,7 +3926,7 @@ Azure AD pošle oznámení, když brzy vyprší platnost certifikátu pro galeri
 
 Někteří uživatelé neobdrželi oznámení pro podnikové aplikace nakonfigurované pro jednotné přihlašování založené na SAML. Tento problém byl vyřešen. Azure AD odesílá oznámení o vypršení platnosti certifikátů do 7, 30 a 60 dnů. Tuto událost můžete zobrazit v protokolech auditu.
 
-Další informace najdete tady:
+Další informace naleznete v tématu:
 
 - [Správa certifikátů pro federované jednotné přihlašování v Azure Active Directory](../manage-apps/manage-certificates-for-federated-single-sign-on.md)
 - [Sestavy aktivit auditu na portálu Azure Active Directory](../reports-monitoring/concept-audit-logs.md)
@@ -3955,7 +3955,7 @@ Další informace najdete v tématu [co je spolupráce B2B Azure AD?](../externa
 
 Další informace najdete v našem [blogovém příspěvku](https://cloudblogs.microsoft.com/enterprisemobility/2018/03/15/the-intune-managed-browser-now-supports-azure-ad-sso-and-conditional-access/).
 
-Další informace najdete tady:
+Další informace naleznete v tématu:
 
 - [Nastavení podmíněného přístupu na základě aplikace](../conditional-access/app-based-conditional-access.md)
 
@@ -4272,7 +4272,7 @@ Do konce února budou přidány následující aplikace:
 
 - Fakturace Microsoftu
 
-Další informace najdete tady:
+Další informace naleznete v tématu:
 
 - [Požadavek na schválenou aplikaci klienta](../conditional-access/concept-conditional-access-conditions.md#client-apps)
 - [Podmíněný přístup na základě aplikace Azure AD](../conditional-access/app-based-conditional-access.md)
@@ -4369,7 +4369,7 @@ Díky obecné dostupnosti nové konzoly pro správu Azure Active Directory a nov
 
 V rámci přechodu na novou konzolu správce jsme vytvořili 2 nová rozhraní API k načtení protokolů aktivit Azure AD. Nová sada rozhraní API nabízí lepší funkce pro filtrování a řazení, které poskytují lepší aktivity auditu a přihlašování. Data dříve dostupná prostřednictvím sestav zabezpečení teď můžou být přístupná prostřednictvím rozhraní API detekce rizik ochrany identity v Microsoft Graph.
 
-Další informace najdete tady:
+Další informace naleznete v tématu:
 
 - [Začínáme s rozhraním API pro vytváření sestav Azure Active Directory](../reports-monitoring/concept-reporting-api.md)
 
@@ -4385,7 +4385,7 @@ Další informace najdete tady:
 
 Teď můžete přejít na přístupový panel a zobrazit si dřív přijaté podmínkami použití.
 
-Postupujte takto:
+Postupujte následovně:
 
 1. Přejít na [portál MyApp](https://myapps.microsoft.com)a přihlásit se.
 
@@ -4530,7 +4530,7 @@ V seznamu [schválených klientských aplikací](../conditional-access/concept-c
 - [Microsoft Kaizala](https://www.microsoft.com/garage/profiles/kaizala/)
 - Microsoft StaffHub
 
-Další informace najdete tady:
+Další informace naleznete v tématu:
 
 - [Požadavek na schválenou aplikaci klienta](../conditional-access/concept-conditional-access-conditions.md#client-apps)
 - [Podmíněný přístup na základě aplikace Azure AD](../conditional-access/app-based-conditional-access.md)
@@ -4612,7 +4612,7 @@ V rámci zásad podmíněného přístupu Azure AD teď můžete zahrnout (nebo 
 - **Zajistěte, aby zařízení macOS vyhovovala zásadám dodržování předpisů vaší organizace definovaným v Intune.** V Intune na Azure Portal teď můžete nastavit zásady dodržování předpisů pro zařízení macOS.
 - **Omezte přístup k aplikacím ve službě Azure AD tak, aby splňovala jenom vyhovující zařízení macOS.** Při vytváření zásad podmíněného přístupu se macOS jako samostatná možnost platformy zařízení. Nyní můžete vytvářet zásady podmíněného přístupu specifické pro macOS pro cílovou aplikaci určenou v Azure.
 
-Další informace najdete tady:
+Další informace naleznete v tématu:
 
 - [Vytvoření zásady dodržování předpisů pro zařízení s macOS pomocí Intune](/mem/intune/protect/compliance-policy-create-mac-os)
 - [Podmíněný přístup ve službě Azure AD](../conditional-access/overview.md)
@@ -4659,7 +4659,7 @@ Do seznamu [schválených klientských aplikací](../conditional-access/concept-
 - Microsoft Planner
 - Azure Information Protection
 
-Další informace najdete tady:
+Další informace naleznete v tématu:
 
 - [Požadavek na schválenou aplikaci klienta](../conditional-access/concept-conditional-access-conditions.md#client-apps)
 - [Podmíněný přístup na základě aplikace Azure AD](../conditional-access/app-based-conditional-access.md)

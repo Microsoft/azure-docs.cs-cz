@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/19/2021
 ms.author: zhchia
-ms.openlocfilehash: f9e462d66e438e42c40b16ba9b818ddd330e9e5a
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 7afcf6c5814917b3356d86e7288fd2920a04cad7
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98614587"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695988"
 ---
 # <a name="tutorial-configure-templafy-openid-connect-for-automatic-user-provisioning"></a>Kurz: Konfigurace Templafy OpenID Connect pro Automatické zřizování uživatelů
 
@@ -133,7 +133,26 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 9. Zkontrolujte atributy uživatele synchronizované z Azure AD do Templafy OpenID Connect v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Templafy OpenID Connect pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
-    ![Atributy uživatele Templafy OpenID Connect](media/templafy-openid-connect-provisioning-tutorial/user-attribute.png)
+   |Atribut|Typ|Podporováno pro filtrování|
+   |---|---|---|
+   |userName|Řetězec|&check;|
+   |active|Logická hodnota|
+   |displayName|Řetězec|
+   |title|Řetězec|
+   |preferredLanguage|Řetězec|
+   |name.givenName|Řetězec|
+   |name.familyName|Řetězec|
+   |phoneNumbers[type eq "work"].value|Řetězec|
+   |phoneNumbers[type eq "mobile"].value|Řetězec|
+   |phoneNumbers [typ EQ "fax"]. hodnota|Řetězec|
+   |externalId|Řetězec|
+   |adresy [typ EQ "Work"].|Řetězec|
+   |adresy [typ EQ "Work"]. postalCode|Řetězec|
+   |adresy [typ EQ "Work"]. region|Řetězec|
+   |adresy [Type EQ "]. streetAddress|Řetězec|
+   |adresy [typ EQ "Work"]. Country|Řetězec|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: oddělení|Řetězec|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Organization|Řetězec|
 
 10. V části **mapování** vyberte **synchronizovat Azure Active Directory skupiny do Templafy**.
 
@@ -141,7 +160,11 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 11. Zkontrolujte atributy skupiny, které jsou synchronizované z Azure AD, do Templafy OpenID Connect v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování skupin v Templafy OpenID Connect pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
-    ![Templafy OpenID Connect – atributy skupiny](media/templafy-openid-connect-provisioning-tutorial/group-attribute.png)
+      |Atribut|Typ|Podporováno pro filtrování|
+      |---|---|---|
+      |displayName|Řetězec|&check;|
+      |členy|Referenční informace|
+      |externalId|Řetězec|      
 
 12. Pokud chcete nakonfigurovat filtry rozsahu, postupujte podle pokynů uvedených v [kurzu k filtrům rozsahu](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 

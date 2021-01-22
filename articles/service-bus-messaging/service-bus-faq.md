@@ -2,13 +2,13 @@
 title: Nejčastější dotazy k Azure Service Bus | Microsoft Docs
 description: Tento článek obsahuje odpovědi na některé nejčastější dotazy týkající se Azure Service Bus.
 ms.topic: article
-ms.date: 09/16/2020
-ms.openlocfilehash: e5bc9aae081868c92e0968c88c8cb6dcfb8ee57c
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.date: 01/20/2021
+ms.openlocfilehash: 3a96cf94ca4a7edd115f12b3e2eded11a5894e04
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/22/2021
-ms.locfileid: "98676370"
+ms.locfileid: "98693392"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Nejčastější dotazy k Azure Service Bus (FAQ)
 
@@ -35,8 +35,11 @@ Konvenční frontu nebo téma zpracovává jeden zprostředkovatel zpráv a ukl�
 
  Dělené entity už nejsou v [SKU úrovně Premium](service-bus-premium-messaging.md)podporované. 
 
-### <a name="where-does-azure-service-bus-store-customer-data"></a><a name="in-region-data-residency"></a>Kam se Azure Service Bus ukládají zákaznická data?
-Azure Service Bus ukládá zákaznická data. Tato data se automaticky ukládají v Service Bus v jedné oblasti, takže tato služba automaticky splňuje požadavky na umístění dat v oblastech, včetně těch, které jsou uvedené v [Centru zabezpečení](https://azuredatacentermap.azurewebsites.net/).
+### <a name="where-does-azure-service-bus-store-data"></a><a name="in-region-data-residency"></a>Kde Azure Service Bus ukládá data?
+Úroveň Standard Azure Service Bus využívá Azure SQL Database pro vrstvu úložiště back-end. U všech oblastí kromě oblasti Brazílie – jih a jihovýchodní Asie je záloha databáze hostována v jiné oblasti (obvykle spárováno s Azure). Pro oblast Brazílie – jih a jihovýchodní Asie se zálohy databází ukládají ve stejné oblasti, aby vyhovovaly požadavkům na umístění dat pro tyto oblasti.
+
+Azure Service Bus úrovně Premium ukládá metadata a data v oblastech, které vyberete. Pokud je pro obor názvů Azure Service Bus Premium nastavená geografická zotavení po havárii, zkopírují se metadata do sekundární oblasti, kterou vyberete.
+
 
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Jaké porty potřebuji v bráně firewall otevřít? 
 K posílání a přijímání zpráv můžete použít následující protokoly s Azure Service Bus:
@@ -119,7 +122,7 @@ Pro obecné informace o cenách Azure můžete také navštívit [Nejčastějš�
 Jakýkoli přenos dat v rámci dané oblasti Azure se poskytuje zdarma, stejně jako všechny příchozí přenosy dat. Přenos dat mimo oblast podléhá poplatkům za výstup, který najdete [tady](https://azure.microsoft.com/pricing/details/bandwidth/).
 
 ### <a name="does-service-bus-charge-for-storage"></a>Účtuje se Service Bus za úložiště?
-No. Za úložiště se neúčtují Service Bus. Existuje však kvóta, která omezuje maximální množství dat, která lze uchovávat pro jednotlivé fronty nebo témata. Podívejte se na další Nejčastější dotazy.
+Ne. Za úložiště se neúčtují Service Bus. Existuje však kvóta, která omezuje maximální množství dat, která lze uchovávat pro jednotlivé fronty nebo témata. Podívejte se na další Nejčastější dotazy.
 
 ### <a name="i-have-a-service-bus-standard-namespace-why-do-i-see-charges-under-resource-group-system"></a>Mám obor názvů Service Bus Standard. Proč se mi v rámci skupiny prostředků ' $system ' účtují poplatky?
 Azure Service Bus nedávno upgradovali komponenty fakturace. V důsledku této změny se může stát, že pokud máte obor názvů Service Bus Standard, můžete zobrazit položky řádku pro prostředek "/Subscriptions/<azure_subscription_id>/resourceGroups/$system/providers/Microsoft.ServiceBus/namespaces/$system" v části Skupina prostředků "$system".
@@ -169,7 +172,7 @@ $res = Find-AzResource -ResourceNameContains mynamespace -ResourceType 'Microsof
 Move-AzResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptionId 'ffffffff-ffff-ffff-ffff-ffffffffffff' -ResourceId $res.ResourceId
 ```
 ## <a name="is-it-possible-to-disable-tls-10-or-11-on-service-bus-namespaces"></a>Je možné zakázat TLS 1,0 nebo 1,1 na Service Bus obory názvů?
-No. Pro Service Bus obory názvů není možné zakázat TLS 1,0 nebo 1,1. V klientských aplikacích připojujících se k Service Bus použijte protokol TLS 1,2 nebo vyšší. Další informace najdete v tématu [vynucování TLS 1,2 s využitím Azure Service Bus-Microsoft Tech Community](https://techcommunity.microsoft.com/t5/messaging-on-azure/enforcing-tls-1-2-use-with-azure-service-bus/ba-p/370912).
+Ne. Pro Service Bus obory názvů není možné zakázat TLS 1,0 nebo 1,1. V klientských aplikacích připojujících se k Service Bus použijte protokol TLS 1,2 nebo vyšší. Další informace najdete v tématu [vynucování TLS 1,2 s využitím Azure Service Bus-Microsoft Tech Community](https://techcommunity.microsoft.com/t5/messaging-on-azure/enforcing-tls-1-2-use-with-azure-service-bus/ba-p/370912).
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o Service Bus najdete v následujících článcích:

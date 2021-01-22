@@ -2,13 +2,13 @@
 title: Nejčastější dotazy – Azure Event Hubs | Microsoft Docs
 description: Tento článek obsahuje seznam nejčastějších dotazů pro Azure Event Hubs a jejich odpovědí.
 ms.topic: article
-ms.date: 10/27/2020
-ms.openlocfilehash: e7a34fe0f2ef04fffeeddc5615d3ac1749467902
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.date: 01/20/2021
+ms.openlocfilehash: e6fd4814e771d03827e51f1cd5ee182c9e432cc5
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955412"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696104"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs nejčastějších dotazech
 
@@ -55,8 +55,8 @@ Můžete nakonfigurovat dobu uchování zachycených dat ve vašem účtu úlož
 ### <a name="how-do-i-monitor-my-event-hubs"></a>Návody monitorovat můj Event Hubs?
 Event Hubs emituje vyčerpávající metriky, které poskytují stav vašich prostředků [Azure monitor](../azure-monitor/overview.md). Také vám umožní vyhodnotit celkový stav služby Event Hubs nejen na úrovni oboru názvů, ale také na úrovni entity. Přečtěte si informace o tom, jaké monitorování se nabízí pro [Azure Event Hubs](event-hubs-metrics-azure-monitor.md).
 
-### <a name="where-does-azure-event-hubs-store-customer-data"></a><a name="in-region-data-residency"></a>Kde Azure Event Hubs ukládá zákaznická data?
-Azure Event Hubs ukládá zákaznická data. Tato data se automaticky ukládají Event Hubs v jedné oblasti, takže tato služba automaticky splňuje požadavky na umístění dat v oblasti, včetně těch, které jsou uvedené v [Centru zabezpečení](https://azuredatacentermap.azurewebsites.net/).
+### <a name="where-does-azure-event-hubs-store-data"></a><a name="in-region-data-residency"></a>Kde Azure Event Hubs ukládá data?
+Azure Event Hubs Standard a vyhrazené úrovně ukládají metadata a data v oblastech, které vyberete. Pokud je pro obor názvů Azure Event Hubs nastaveno geografické zotavení po havárii, zkopírují se metadata do sekundární oblasti, kterou vyberete. Proto tato služba automaticky splňuje požadavky na umístění dat oblastí, včetně těch, které jsou zadány v [Centru zabezpečení](https://azuredatacentermap.azurewebsites.net/).
 
 [!INCLUDE [event-hubs-connectivity](../../includes/event-hubs-connectivity.md)]
 

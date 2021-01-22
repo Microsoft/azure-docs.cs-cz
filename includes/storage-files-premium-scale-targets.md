@@ -4,26 +4,26 @@ ms.service: storage
 ms.topic: include
 ms.date: 08/10/2020
 ms.author: rogarana
-ms.openlocfilehash: 8dcb58499113b0b7ae0814419f0a76965a0ed945
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 86bf4911026e46c997469b956f9e7c75c4f17164
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94680981"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98698021"
 ---
 #### <a name="additional-premium-file-share-level-limits"></a>Další omezení úrovně sdílení souborů Premium
 
-|Oblast  |Cíl  |
+|Plošný  |Cíl  |
 |---------|---------|
 |Minimální velikost – zvýšení a snížení velikosti    |1 GiB      |
-|Směrný IOPS    |1 IOPS na GiB, až do 100 000|
-|Shlukování IOPS    |3x IOPS za GiB, až do 100 000|
+|Směrný IOPS    |400 + 1 IOPS na GiB, až 100 000|
+|Shlukování IOPS    |Max (4000, 3x IOPS na GiB), až 100 000|
 |Míra odchozích dat         |60 MiB/s + 0,06 * zřízené GiB        |
 |Míra příchozího přenosu dat| 40 MiB/s + 0,04 * zřízené GiB |
 
 #### <a name="file-level-limits"></a>Omezení na úrovni souborů
 
-|Oblast  |Standardní soubor  |Soubor úrovně Premium  |
+|Plošný  |Standardní soubor  |Soubor úrovně Premium  |
 |---------|---------|---------|
 |Velikost     |1 TiB         |4 TiB         |
 |Maximální počet vstupně-výstupních operací na soubor      |1 000         |Až 8 000 *         |

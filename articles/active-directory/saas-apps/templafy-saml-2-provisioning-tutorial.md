@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/19/2021
 ms.author: zhchia
-ms.openlocfilehash: 057b437c5d88c4f292e08828482e5dca0d2ca5b4
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 0e7275ee92431e791fec7bd2c9ec07dd623b0f9e
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98614539"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696004"
 ---
 # <a name="tutorial-configure-templafy-saml2-for-automatic-user-provisioning"></a>Kurz: Konfigurace Templafy typu Saml2 pro Automatické zřizování uživatelů
 
@@ -133,7 +133,26 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 9. Zkontrolujte atributy uživatele synchronizované z Azure AD do Templafy typu Saml2 v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Templafy typu Saml2 pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
-    ![Atributy uživatele Templafy typu Saml2](media/templafy-saml-2-provisioning-tutorial/user-attribute.png)
+   |Atribut|Typ|Podporováno pro filtrování|
+   |---|---|---|
+   |userName|Řetězec|&check;|
+   |active|Logická hodnota|
+   |displayName|Řetězec|
+   |title|Řetězec|
+   |preferredLanguage|Řetězec|
+   |name.givenName|Řetězec|
+   |name.familyName|Řetězec|
+   |phoneNumbers[type eq "work"].value|Řetězec|
+   |phoneNumbers[type eq "mobile"].value|Řetězec|
+   |phoneNumbers [typ EQ "fax"]. hodnota|Řetězec|
+   |externalId|Řetězec|
+   |adresy [typ EQ "Work"].|Řetězec|
+   |adresy [typ EQ "Work"]. postalCode|Řetězec|
+   |adresy [typ EQ "Work"]. region|Řetězec|
+   |adresy [Type EQ "]. streetAddress|Řetězec|
+   |adresy [typ EQ "Work"]. Country|Řetězec|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: oddělení|Řetězec|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Organization|Řetězec|
 
 10. V části **mapování** vyberte **synchronizovat Azure Active Directory skupiny do Templafy**.
 
@@ -141,7 +160,12 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 11. Zkontrolujte atributy skupiny synchronizované z Azure AD do Templafy typu Saml2 v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování skupin v Templafy typu Saml2 pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
-    ![Templafy – atributy skupiny typu Saml2](media/templafy-saml-2-provisioning-tutorial/group-attribute.png)
+      |Atribut|Typ|Podporováno pro filtrování|
+      |---|---|---|
+      |displayName|Řetězec|&check;|
+      |členy|Referenční informace|
+      |externalId|Řetězec|      
+
 
 12. Pokud chcete nakonfigurovat filtry rozsahu, postupujte podle pokynů uvedených v [kurzu k filtrům rozsahu](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 

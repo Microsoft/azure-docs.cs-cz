@@ -3,12 +3,12 @@ title: Registr redundantního registru pro vysokou dostupnost
 description: Seznamte se s povolením redundance zóny v Azure Container Registry. Vytvořte registr kontejnerů nebo replikaci v zóně dostupnosti Azure. Redundance zóny je funkcí úrovně Premium Service.
 ms.topic: article
 ms.date: 01/07/2021
-ms.openlocfilehash: 8c03b2bb093f8d0fa70ff5132f7448ce86e8779d
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 7de8ed101d2df9e491c475f522a56580798c49a9
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127344"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696274"
 ---
 # <a name="enable-zone-redundancy-in-azure-container-registry-for-resiliency-and-high-availability"></a>Povolit redundanci zóny v Azure Container Registry pro odolnost a vysokou dostupnost
 
@@ -39,7 +39,7 @@ Pokud chcete pomocí Azure CLI povolit redundanci zóny, potřebujete Azure CLI 
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-V případě potřeby spuštěním příkazu [AZ Group Create](/cli/az/group#az_group_create) vytvořte skupinu prostředků pro registr.
+V případě potřeby spuštěním příkazu [AZ Group Create](/cli/azure/group#az_group_create) vytvořte skupinu prostředků pro registr.
 
 ```azurecli
 az group create --name <resource-group-name> --location <location>
@@ -47,7 +47,7 @@ az group create --name <resource-group-name> --location <location>
 
 ### <a name="create-zone-enabled-registry"></a>Vytvoření registru s povolenými zónami
 
-Spuštěním příkazu [AZ ACR Create](/cli/az/acr#az_acr_create) vytvořte registr redundantní v zóně na úrovni služby Premium. Vyberte oblast, která [podporuje zóny dostupnosti](../availability-zones/az-region.md) pro Azure Container Registry. V následujícím příkladu je v oblasti *eastus* povolená redundance zóny. `az acr create`Další možnosti registru najdete v nápovědě k příkazům.
+Spuštěním příkazu [AZ ACR Create](/cli/azure/acr?view=azure-cli-latest#az_acr_create) vytvořte registr redundantní v zóně na úrovni služby Premium. Vyberte oblast, která [podporuje zóny dostupnosti](../availability-zones/az-region.md) pro Azure Container Registry. V následujícím příkladu je v oblasti *eastus* povolená redundance zóny. `az acr create`Další možnosti registru najdete v nápovědě k příkazům.
 
 ```azurecli
 az acr create \
@@ -69,7 +69,7 @@ Ve výstupu příkazu si poznamenejte `zoneRedundancy` vlastnost registru. Pokud
 
 ### <a name="create-zone-redundant-replication"></a>Vytvoření replikace redundantní v zóně
 
-Spuštěním příkazu [AZ ACR Replication Create](/cli/az/acr/replication#az_acr_replication_create) vytvořte repliku v zóně redundantní v oblasti, která [podporuje zóny dostupnosti](../availability-zones/az-region.md) pro Azure Container Registry, jako je třeba *westus2*. 
+Spuštěním příkazu [AZ ACR Replication Create](/cli/azure/acr/replication?view=azure-cli-latest#az_acr_replication_create) vytvořte repliku v zóně redundantní v oblasti, která [podporuje zóny dostupnosti](../availability-zones/az-region.md) pro Azure Container Registry, jako je třeba *westus2*. 
 
 ```azurecli
 az acr replication create \
@@ -113,7 +113,7 @@ Postup vytvoření replikace redundantní v zóně:
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-V případě potřeby spuštěním příkazu [AZ Group Create](/cli/az/group#az_group_create) vytvořte skupinu prostředků pro registr v oblasti, která [podporuje zóny dostupnosti](../availability-zones/az-region.md) pro Azure Container Registry, jako je například *eastus*. Tuto oblast používá šablona k nastavení umístění registru.
+V případě potřeby spuštěním příkazu [AZ Group Create](/cli/azure/group#az_group_create) vytvořte skupinu prostředků pro registr v oblasti, která [podporuje zóny dostupnosti](../availability-zones/az-region.md) pro Azure Container Registry, jako je například *eastus*. Tuto oblast používá šablona k nastavení umístění registru.
 
 ```azurecli
 az group create --name <resource-group-name> --location eastus
@@ -219,7 +219,7 @@ Zkopírujte následující obsah do nového souboru a uložte ho pomocí názvu 
   }
 ```
 
-Spusťte následující příkaz [AZ Deployment Group Create](/cli/az/deployment#az_group_deployment_create) a vytvořte registr pomocí předchozího souboru šablony. Pokud je uvedeno, zadejte:
+Spusťte následující příkaz [AZ Deployment Group Create](/cli/azure/group/deployment?view=azure-cli-latest#az_group_deployment_create) a vytvořte registr pomocí předchozího souboru šablony. Pokud je uvedeno, zadejte:
 
 * jedinečný název registru nebo šablona se nasadí bez parametrů a pro vás vytvoří jedinečný název.
 * umístění repliky, která podporuje zóny dostupnosti, například *westus2*

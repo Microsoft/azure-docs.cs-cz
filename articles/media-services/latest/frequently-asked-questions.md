@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 50a0fe0fa5dece41ac9e343d5a8939e8d9dc634e
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 9e48d14419e2cd24251f1b00a09fd0289c50c55f
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426883"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693803"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Nejčastější dotazy k Media Services V3
 
@@ -30,7 +30,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Azure
 
 [Azure Portal](https://portal.azure.com/) můžete použít ke správě událostí V3 Live, zobrazení zdrojů a úloh v3, získání informací o přístupu k rozhraním API a k šifrování obsahu. <br/>Pro všechny ostatní úlohy správy (například ke správě transformací a úloh nebo analýze obsahu V3) použijte [REST API](/rest/api/media/accountfilters), [CLI](/cli/azure/ams)nebo jednu z podporovaných [sad SDK](media-services-apis-overview.md#sdks).
 
-Pokud se vaše video dřív nahrálo na účet Media Services pomocí rozhraní Media Services V3 API nebo se obsah vygeneroval na základě živého výstupu, neuvidíte v Azure Portal tlačítka **kódování**, **Analýza**ani **šifrování** . K provedení těchto úloh použijte rozhraní API Media Services V3.  
+Pokud se vaše video dřív nahrálo na účet Media Services pomocí rozhraní Media Services V3 API nebo se obsah vygeneroval na základě živého výstupu, neuvidíte v Azure Portal tlačítka **kódování**, **Analýza** ani **šifrování** . K provedení těchto úloh použijte rozhraní API Media Services V3.  
 
 ### <a name="what-azure-roles-can-perform-actions-on-azure-media-services-resources"></a>Jaké role Azure můžou provádět akce s Azure Media Services prostředky? 
 
@@ -60,7 +60,7 @@ Při použití stránkování byste měli vždy použít další odkaz k zobraze
 
 ### <a name="what-features-are-not-yet-available-in-azure-media-services-v3"></a>Jaké funkce ještě nejsou v Azure Media Services V3 k dispozici?
 
-Podrobnosti najdete v tématu [mezery funkcí v souvislosti s rozhraními API v2](media-services-v2-vs-v3.md#feature-gaps-with-respect-to-v2-apis).
+Podrobnosti najdete [v Průvodci migrací](migrate-v-2-v-3-migration-introduction.md).
 
 ### <a name="what-is-the-process-of-moving-a-media-services-account-between-subscriptions"></a>Jaký je proces přesunutí účtu Media Services mezi předplatnými?  
 
@@ -121,7 +121,7 @@ Správným přístupem je použití služby Secure token Service. V závislosti 
 
 Použijte rozhraní API pro Azure Media Services ke konfiguraci poskytování licencí/klíčů a šifrování prostředků (jak je znázorněno v [této ukázce](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs)).
 
-Další informace naleznete v tématech:
+Další informace naleznete v tématu:
 
 - [Přehled ochrany obsahu](content-protection-overview.md)
 - [Návrh systému ochrany obsahu s více variantami DRM s využitím řízení přístupu](design-multi-drm-system-with-access-control.md)
@@ -169,7 +169,7 @@ Pro všechny ostatní úlohy správy (například [transformace a úlohy](transf
 
 `AssetFile`Koncept se odebral z rozhraní Media Services API a odděluje Media Services od závislosti sady SDK úložiště. Nyní Azure Storage, nikoli Media Services, uchovává informace, které patří do sady Storage SDK. 
 
-Další informace najdete v tématu [migrace na Media Services V3](media-services-v2-vs-v3.md).
+Další informace najdete v tématu [migrace na Media Services V3](migrate-v-2-v-3-migration-introduction.md).
 
 ### <a name="where-did-client-side-storage-encryption-go"></a>Kde se nacházelo šifrování úložiště na straně klienta?
 
