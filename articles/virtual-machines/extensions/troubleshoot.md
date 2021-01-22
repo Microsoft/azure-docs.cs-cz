@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2016
 ms.author: kundanap
-ms.openlocfilehash: b8b7a03d5176f5dbd8500b5ff9044c2f22ecbfc0
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 343ddb109de41a0959533b16b11762841b5b1105
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127137"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676755"
 ---
 # <a name="troubleshooting-azure-windows-vm-extension-failures"></a>Řešení potíží s chybami rozšíření Azure Windows VM
 [!INCLUDE [virtual-machines-common-extensions-troubleshoot](../../../includes/virtual-machines-common-extensions-troubleshoot.md)]
@@ -85,7 +85,7 @@ Tento certifikát se automaticky znovu vygeneruje tím, že se z virtuálního p
 - Klikněte pravým tlačítkem a vyberte Ukončit úlohu. Proces se automaticky restartuje.
 
 
-K virtuálnímu počítači můžete také aktivovat nový GoalState spuštěním příkazu "znovu použít virtuální počítač". [Znovu použít](https://docs.microsoft.com/rest/api/compute/virtualmachines/reapply) virtuální počítač je rozhraní API představené v 2020, které znovu použije stav virtuálního počítače. Tuto možnost doporučujeme provést v okamžiku, kdy můžete tolerovat krátké výpadky virtuálních počítačů. Při opakovaném použití samotného nezpůsobí restartování virtuálního počítače a velká většina pokusů o opakované použití nerestartuje virtuální počítač, existuje velmi malé riziko, že se použije jiná nedokončená aktualizace modelu virtuálního počítače, když se znovu použije Trigger do nového stavu cíle a tato jiná změna by mohla vyžadovat restart. 
+K virtuálnímu počítači můžete také aktivovat nový GoalState spuštěním příkazu "znovu použít virtuální počítač". [Znovu použít](/rest/api/compute/virtualmachines/reapply) virtuální počítač je rozhraní API představené v 2020, které znovu použije stav virtuálního počítače. Tuto možnost doporučujeme provést v okamžiku, kdy můžete tolerovat krátké výpadky virtuálních počítačů. Při opakovaném použití samotného nezpůsobí restartování virtuálního počítače a velká většina pokusů o opakované použití nerestartuje virtuální počítač, existuje velmi malé riziko, že se použije jiná nedokončená aktualizace modelu virtuálního počítače, když se znovu použije Trigger do nového stavu cíle a tato jiná změna by mohla vyžadovat restart. 
 
 Azure Portal:
 

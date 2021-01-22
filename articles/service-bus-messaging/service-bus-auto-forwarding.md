@@ -2,18 +2,21 @@
 title: Automatické předávání Azure Service Bus entit zasílání zpráv
 description: Tento článek popisuje, jak zřetězit frontu Azure Service Bus nebo předplatné do jiné fronty nebo tématu.
 ms.topic: article
-ms.date: 06/23/2020
+ms.date: 01/20/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8f5f93f65871c0b9658a75264ab959dbae7fefe7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80bef52d568130fa800a1da661f4867abb3df02c
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91819566"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678984"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>Zřetězení Service Bus entit pomocí procesu autopřesměrovávání
 
 Funkce *autopřesměrovávání* Service Bus umožňuje řetězit frontu nebo předplatné do jiné fronty nebo tématu, které je součástí stejného oboru názvů. Pokud je povoleno automatické přeposílání, Service Bus automaticky odebere zprávy, které jsou umístěny v první frontě nebo předplatném (zdroj), a umístí je do druhé fronty nebo tématu (cíle). Je stále možné odeslat zprávu cílové entitě přímo.
+
+> [!NOTE]
+> Základní Service Bus úrovně nepodporuje funkci dodávání. Úroveň Standard a Premium tuto funkci podporuje. Rozdíly mezi těmito úrovněmi najdete v tématu [Service Bus ceny](https://azure.microsoft.com/pricing/details/service-bus/).
 
 ## <a name="using-autoforwarding"></a>Použití autopřesměrovávání
 

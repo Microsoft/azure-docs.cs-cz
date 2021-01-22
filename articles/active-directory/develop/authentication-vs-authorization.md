@@ -13,12 +13,12 @@ ms.date: 05/22/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: d4abc9e1bba151f46adf71dd0185ddddad916a38
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 5087278e5c89514cd43b7ca871a58f18e0fa98f2
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98216457"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678142"
 ---
 # <a name="authentication-vs-authorization"></a>Ověřování vs. autorizace
 
@@ -51,7 +51,7 @@ Toto video vysvětluje platformu Microsoft identity a základy moderního ověř
 Tady je porovnání protokolů, které používá platforma Microsoft Identity Platform:
 
 * **OAuth proti OpenID připojení**: platforma pro ověřování používá OAuth pro autorizaci a OpenID Connect (OIDC). OpenID Connect je postavená na OAuth 2,0, takže terminologie a tok jsou mezi nimi podobné. Můžete dokonce ověřit uživatele (prostřednictvím OpenID Connect) a získat autorizaci pro přístup k chráněnému prostředku, který vlastní uživatel (prostřednictvím OAuth 2,0) v jednom požadavku. Další informace najdete v tématu [protokoly OAuth 2,0 a OpenID Connect](active-directory-v2-protocols.md) a [protokol OpenID Connect](v2-protocols-oidc.md).
-* **OAuth proti SAML**: platforma používá OAuth 2,0 k autorizaci a SAML pro ověřování. Další informace o tom, jak tyto protokoly používat při ověřování uživatele a jak získat autorizaci pro přístup k chráněnému prostředku, najdete v tématu [tok kontrolního výrazu SAML pro Microsoft Identity Platform a OAuth 2,0](v2-saml-bearer-assertion.md).
+* **OAuth proti SAML**: platforma používá OAuth 2,0 k autorizaci a SAML pro ověřování. Další informace o tom, jak tyto protokoly používat při ověřování uživatele a jak získat autorizaci pro přístup k chráněnému prostředku, najdete v tématu [tok kontrolního výrazu SAML pro Microsoft Identity Platform a OAuth 2,0](./scenario-token-exchange-saml-oauth.md).
 * **OpenID Connect versus SAML**: platforma používá OpenID Connect i SAML k ověření uživatele a povoluje jednotné přihlašování. Ověřování SAML se běžně používá u zprostředkovatelů identity, jako je Active Directory Federation Services (AD FS) (AD FS) federované do Azure AD, takže se často používá v podnikových aplikacích. OpenID Connect se běžně používá pro aplikace, které jsou čistě v cloudu, jako jsou například mobilní aplikace, weby a webová rozhraní API.
 
 ## <a name="next-steps"></a>Další kroky

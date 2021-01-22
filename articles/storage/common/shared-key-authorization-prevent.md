@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/21/2021
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: 6a24713a6027c38d2b9817928f3a82161bd37314
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: e4a5803b3d04b59316f71e50af24945efc87cb69
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936722"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677559"
 ---
 # <a name="prevent-shared-key-authorization-for-an-azure-storage-account-preview"></a>Zabránit autorizaci sdíleného klíče pro účet Azure Storage (Preview)
 
@@ -239,8 +239,6 @@ Některé nástroje Azure nabízejí možnost použít pro přístup k Azure Sto
 ## <a name="about-the-preview"></a>O verzi Preview
 
 Verze Preview pro povolení autorizace sdíleného klíče je dostupná ve veřejném cloudu Azure. Podporuje se jenom pro účty úložiště, které používají model nasazení Azure Resource Manager. Informace o tom, které účty úložiště používají model nasazení Azure Resource Manager, najdete v tématu [typy účtů úložiště](storage-account-overview.md#types-of-storage-accounts).
-
-Pokud se chcete zaregistrovat ve verzi Preview, přečtěte si téma [Azure Storage povolení přístupu ke sdíleným klíčům omezený Public Preview](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUN1o4TUtUUzZBV0JYVlhKQ1FITDlVUUU0Ui4u).
 
 > [!IMPORTANT]
 > Tato verze Preview je určená jenom pro neprodukční použití.

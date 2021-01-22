@@ -11,12 +11,12 @@ ms.date: 05/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 4c761404ab5a95bc0189407cc97ce779b66356fe
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 1f4d113f3bc6add67dd34a7ef5e3f8cdc08cecf0
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460720"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677517"
 ---
 # <a name="quickstart-create-a-dedicated-sql-pool-workload-classifier-using-the-azure-portal"></a>Rychlý Start: vytvoření vyhrazeného klasifikátoru úloh fondu SQL pomocí Azure Portal
 
@@ -28,12 +28,12 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 > [!NOTE]
 > Vytvoření vyhrazené instance fondu SQL ve službě Azure synapse Analytics může mít za následek novou fakturovatelnou službu.  Další informace najdete v tématu [ceny služby Azure synapse Analytics](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto rychlém startu se předpokládá, že už máte vyhrazenou instanci fondu SQL, ke které máte oprávnění řízení databáze. Pokud ho potřebujete vytvořit, použijte [Vytvoření a připojení – portál](create-data-warehouse-portal.md) pro vytvoření vyhrazeného fondu SQL s názvem **mySampleDataWarehouse**.
 <br><br>
@@ -45,7 +45,7 @@ Skupina úloh `DataLoads` existuje.  Informace o vytvoření skupiny úloh najde
 
 ## <a name="create-a-login-for-eltlogin"></a>Vytvoření přihlašovacích údajů pro ELTLogin
 
-Vytvořte přihlašovací jméno SQL Server ověřování v `master` databázi pomocí [Vytvoření přihlašovacích](/sql/t-sql/statements/create-login-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) údajů pro `ELTLogin` .
+Vytvořte přihlašovací jméno SQL Server ověřování v `master` databázi pomocí [Vytvoření přihlašovacích](/sql/t-sql/statements/create-login-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) údajů pro `ELTLogin` .
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.sql_logins WHERE name = 'ELTLogin')
@@ -57,7 +57,7 @@ END
 
 ## <a name="create-user-and-grant-permissions"></a>Vytvoření uživatele a udělení oprávnění
 
-Po vytvoření přihlášení musí být v databázi vytvořen uživatel.  Pomocí [vytvořit uživatele](/sql/t-sql/statements/create-user-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) vytvořte uživatele SQL `ELTRole` v **mySampleDataWarehouse**.  Vzhledem k tomu, že během tohoto kurzu budeme testovat klasifikaci, udělte jim `ELTLogin` oprávnění k **mySampleDataWarehouse**. 
+Po vytvoření přihlášení musí být v databázi vytvořen uživatel.  Pomocí [vytvořit uživatele](/sql/t-sql/statements/create-user-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) vytvořte uživatele SQL `ELTRole` v **mySampleDataWarehouse**.  Vzhledem k tomu, že během tohoto kurzu budeme testovat klasifikaci, udělte jim `ELTLogin` oprávnění k **mySampleDataWarehouse**. 
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.database_principals WHERE name = 'ELTLogin')
@@ -96,13 +96,13 @@ Klasifikace umožňuje směrovat požadavky na základě sady pravidel na skupin
     ![Klikněte na konfigurace.](./media/quickstart-create-a-workload-classifier-portal/config-wc.png)
 
 ## <a name="verify-and-test-classification"></a>Ověřit a otestovat klasifikaci
-Zkontrolujte zobrazení katalogu [Sys.workload_management_workload_classifiers](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifiers-transact-sql?view=azure-sqldw-latest) a ověřte existenci `ELTLoginDataLoads` třídění.
+Zkontrolujte zobrazení katalogu [Sys.workload_management_workload_classifiers](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifiers-transact-sql?view=azure-sqldw-latest&preserve-view=true) a ověřte existenci `ELTLoginDataLoads` třídění.
 
 ```sql
 SELECT * FROM sys.workload_management_workload_classifiers WHERE name = 'ELTLoginDataLoads'
 ```
 
-Zkontrolujte zobrazení katalogu [Sys.workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?view=azure-sqldw-latest) a ověřte podrobnosti třídění.
+Zkontrolujte zobrazení katalogu [Sys.workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?view=azure-sqldw-latest&preserve-view=true) a ověřte podrobnosti třídění.
 
 ```sql
 SELECT c.[name], c.group_name, c.importance, cd.classifier_type, cd.classifier_value

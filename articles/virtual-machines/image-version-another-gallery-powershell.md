@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 2f26716a4d04b574bf393f502758a725948419da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 85bc6f4468e0365d247b0adc204bd53ce9fa3006
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89299945"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676712"
 ---
 # <a name="copy-an-image-from-another-gallery-using-powershell"></a>Kopírování obrázku z jiné galerie pomocí PowerShellu
 
@@ -127,7 +127,7 @@ Vytvořte verzi Image pomocí [New-AzGalleryImageVersion](/powershell/module/az.
 
 Povolené znaky pro verzi obrázku jsou čísla a tečky. Čísla musí být v rozsahu 32 celé číslo. Formát: *MajorVersion*. *Podverze.* *Oprava*.
 
-V tomto příkladu má cílová Galerie název *myDestinationGallery*ve skupině prostředků *myDestinationRG* v umístění *západní USA* . Verze našeho obrázku je *1.0.0* a my vytvoříme 1 repliku v oblasti *střed USA – jih* a 2 repliky v oblasti *západní USA* . 
+V tomto příkladu má cílová Galerie název *myDestinationGallery* ve skupině prostředků *myDestinationRG* v umístění *západní USA* . Verze našeho obrázku je *1.0.0* a my vytvoříme 1 repliku v oblasti *střed USA – jih* a 2 repliky v oblasti *západní USA* . 
 
 
 ```azurepowershell-interactive
@@ -164,6 +164,6 @@ $job.State
 
 Vytvořte virtuální počítač z [zobecněné](vm-generalized-image-version-powershell.md) nebo [specializované](vm-specialized-image-version-powershell.md) verze image.
 
-[Azure image Builder (Preview)](./linux/image-builder-overview.md) může přispět k automatizaci vytváření verzí image, můžete ji dokonce použít k aktualizaci a [Vytvoření nové verze image z existující verze image](./linux/image-builder-gallery-update-image-version.md). 
+[Azure image Builder (Preview)](./image-builder-overview.md) může přispět k automatizaci vytváření verzí image, můžete ji dokonce použít k aktualizaci a [Vytvoření nové verze image z existující verze image](./linux/image-builder-gallery-update-image-version.md). 
 
 Informace o tom, jak dokoupit informace o plánu nákupu, najdete v tématu [zadání informací o plánu nákupu Azure Marketplace při vytváření imagí](marketplace-images.md).

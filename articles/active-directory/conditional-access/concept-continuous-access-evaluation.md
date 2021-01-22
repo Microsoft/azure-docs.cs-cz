@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7519b6c7e1f3381be77b9a0734ddda250228e7d
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: fd14c7911676768a61d2b2c0e366d2c227455be8
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860299"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678200"
 ---
 # <a name="continuous-access-evaluation"></a>Nepřetržité vyhodnocování přístupu
 
@@ -28,7 +28,7 @@ Včasná reakce na porušení zásad nebo problémy se zabezpečením vyžadují
 
 Počáteční implementace vyhodnocení průběžného přístupu se zaměřuje na Exchange, týmy a SharePoint Online.
 
-Pokud chcete připravit své aplikace na používání CAE, přečtěte si téma [Jak používat rozhraní API s povoleným vyhodnocováním průběžného přístupu ve vašich aplikacích](/azure/active-directory/develop/app-resilience-continuous-access-evaluation).
+Pokud chcete připravit své aplikace na používání CAE, přečtěte si téma [Jak používat rozhraní API s povoleným vyhodnocováním průběžného přístupu ve vašich aplikacích](../develop/app-resilience-continuous-access-evaluation.md).
 
 ### <a name="key-benefits"></a>Klíčové výhody
 
@@ -128,7 +128,7 @@ V následujícím příkladu má správce podmíněného přístupu nakonfigurov
 ## <a name="enable-or-disable-cae-preview"></a>Povolit nebo zakázat CAE (Preview)
 
 1. Přihlaste se k **Azure Portal** jako správce podmíněného přístupu, správce zabezpečení nebo globální správce.
-1. Přejděte na **Azure Active Directory**  >  **Security**  >  **vyhodnocování průběžného přístupu** zabezpečení.
+1. Přejděte na **Azure Active Directory**  >    >  **vyhodnocování průběžného přístupu** zabezpečení.
 1. Vyberte možnost **Povolit náhled**.
 
 Na této stránce můžete volitelně omezit uživatele a skupiny, které budou předmětem verze Preview.

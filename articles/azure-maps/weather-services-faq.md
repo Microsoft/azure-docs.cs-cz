@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8b7726e4e8fee0044a7865c8c494ef6451425676
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 9c8e971b4fda313ffede58455dd6d057d6848ce4
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96903866"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678125"
 ---
 # <a name="azure-maps-weather-services-preview-frequently-asked-questions-faq"></a>Nejčastější dotazy Azure Maps počasí Services (Preview)
 
@@ -21,7 +21,7 @@ ms.locfileid: "96903866"
 > Služba Azure Maps počasí jsou momentálně ve verzi Public Preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Tento článek obsahuje odpovědi na běžné dotazy týkající se Azure Maps dat a funkcí [služby počasí](https://docs.microsoft.com/rest/api/maps/weather) . Jsou pokrytá následující témata:
+Tento článek obsahuje odpovědi na běžné dotazy týkající se Azure Maps dat a funkcí [služby počasí](/rest/api/maps/weather) . Jsou pokrytá následující témata:
 
 * Zdroje dat a datové modely
 * Pokrytí a dostupnost služeb počasí
@@ -59,7 +59,7 @@ Pro formulaci globálních prognóz se využívá řada pomocných systémů př
 
 **Jaký druh pokrytí můžu očekávat u různých zemí nebo oblastí?**
 
-Pokrytí služeb se liší podle země nebo oblasti. Všechny funkce nejsou k dispozici v každé zemi nebo oblasti. Další informace najdete v [dokumentaci k pokrytí](https://docs.microsoft.com/azure/azure-maps/weather-coverage).
+Pokrytí služeb se liší podle země nebo oblasti. Všechny funkce nejsou k dispozici v každé zemi nebo oblasti. Další informace najdete v [dokumentaci k pokrytí](./weather-coverage.md).
 
 ## <a name="data-update-frequency"></a>Frekvence aktualizace dat
 
@@ -79,7 +79,7 @@ Rozhraní API pro Azure Maps prognózy jsou ukládána do mezipaměti až po dob
 
 **Podporuje Azure Maps Web SDK integraci služeb počasí (Preview)?**
 
-Sada Azure Maps Web SDK poskytuje modul služeb. Modul služby je pomocná knihovna usnadňující používání služby Azure Maps REST ve webových nebo Node.jsch aplikacích. pomocí JavaScriptu nebo TypeScript. Informace o tom, jak začít, najdete v naší [dokumentaci](https://docs.microsoft.com/azure/azure-maps/how-to-use-services-module).
+Sada Azure Maps Web SDK poskytuje modul služeb. Modul služby je pomocná knihovna usnadňující používání služby Azure Maps REST ve webových nebo Node.jsch aplikacích. pomocí JavaScriptu nebo TypeScript. Informace o tom, jak začít, najdete v naší [dokumentaci](./how-to-use-services-module.md).
 
 **Podporuje Azure Maps Android SDK nativně podporu integrace s povětrnostními službami (Preview)?**
 
@@ -91,26 +91,26 @@ Plánujeme vytvořit modul služeb pro Java/Android podobně jako modul Web SDK.
 
 **Azure Maps Power BI vizuální podporu Azure Maps počasí?**
 
-Ano. Pokud se chcete dozvědět, jak migrovat paprskové a infračervené satelitní dlaždice na vizuál Microsoft Power BI, přečtěte si téma [Přidání vrstvy dlaždic do Power BI vizuálu](https://docs.microsoft.com/azure/azure-maps/power-bi-visual-add-tile-layer). 
+Yes. Pokud se chcete dozvědět, jak migrovat paprskové a infračervené satelitní dlaždice na vizuál Microsoft Power BI, přečtěte si téma [Přidání vrstvy dlaždic do Power BI vizuálu](./power-bi-visual-add-tile-layer.md). 
 
 **Návody interpretovat barvy používané pro paprskové a satelitní dlaždice?**
 
-Článek Azure Maps [počasí pro předpověď počasí](https://docs.microsoft.com/azure/azure-maps/weather-services-concepts#radar-and-satellite-imagery-color-scale) obsahuje průvodce, který vám pomůže interpretovat barvy používané pro paprskové a satelitní dlaždice. Tento článek se zabývá barevnými ukázkami a HEXADECIMÁLNÍmi kódy barev.
+Článek Azure Maps [počasí pro předpověď počasí](./weather-services-concepts.md#radar-and-satellite-imagery-color-scale) obsahuje průvodce, který vám pomůže interpretovat barvy používané pro paprskové a satelitní dlaždice. Tento článek se zabývá barevnými ukázkami a HEXADECIMÁLNÍmi kódy barev.
  
 **Můžu vytvářet paprskové a satelitní animace dlaždic?**
 
-Ano. Kromě paprskových a satelitních Azure Maps dlaždic v reálném čase si zákazníci můžou vyžádat předchozí a budoucí dlaždice a vylepšit vizualizace dat pomocí překryvů map. To lze provést přímo voláním metody [Get map v2 API](https://aka.ms/AzureMapsWeatherTiles ) nebo vyžádáním dlaždic prostřednictvím Azure Maps Web SDK. Paprskové dlaždice jsou k dispozici po dobu až 1,5 hodin v minulosti a až 2 hodiny v budoucnosti. Dlaždice a jsou k dispozici v intervalech 5 minut. Infračervené dlaždice jsou k dispozici po dobu až 3 hodin v minulosti a jsou dostupné v intervalu 10 minut. Další informace najdete v [Ukázka kódu](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Animated%20tile%20layer)animace Open Source dlaždice s počasí.  
+Yes. Kromě paprskových a satelitních Azure Maps dlaždic v reálném čase si zákazníci můžou vyžádat předchozí a budoucí dlaždice a vylepšit vizualizace dat pomocí překryvů map. To lze provést přímo voláním metody [Get map v2 API](/rest/api/maps/renderv2/getmaptilepreview) nebo vyžádáním dlaždic prostřednictvím Azure Maps Web SDK. Paprskové dlaždice jsou k dispozici po dobu až 1,5 hodin v minulosti a až 2 hodiny v budoucnosti. Dlaždice a jsou k dispozici v intervalech 5 minut. Infračervené dlaždice jsou k dispozici po dobu až 3 hodin v minulosti a jsou dostupné v intervalu 10 minut. Další informace najdete v [Ukázka kódu](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Animated%20tile%20layer)animace Open Source dlaždice s počasí.  
 
 **Nabízíte ikony pro různé povětrnostní podmínky?**
 
-Ano. [Tady](https://docs.microsoft.com/azure/azure-maps/weather-services-concepts#weather-icons)můžete najít ikony a jejich příslušné kódy. Všimněte si, že pouze některá rozhraní API služby počasí (verze Preview), jako je například  [načíst aktuální podmínky rozhraní API](https://aka.ms/azuremapsweathercurrentconditions), vrátí *iconCode* v odpovědi. Další informace naleznete v aktuální ukázce WeatherConditions open source [Code](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Get%20current%20weather%20at%20a%20location).
+Yes. [Tady](./weather-services-concepts.md#weather-icons)můžete najít ikony a jejich příslušné kódy. Všimněte si, že pouze některá rozhraní API služby počasí (verze Preview), jako je například  [načíst aktuální podmínky rozhraní API](/rest/api/maps/weather/getcurrentconditionspreview), vrátí *iconCode* v odpovědi. Další informace naleznete v aktuální ukázce WeatherConditions open source [Code](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Get%20current%20weather%20at%20a%20location).
 
 ## <a name="next-steps"></a>Další kroky
 
 Pokud se vám časté otázky nedotazují, můžete nás kontaktovat prostřednictvím následujících kanálů (v pořadí eskalace):
 
 * Část s poznámkami tohoto článku.
-* [MSFT Q&stránku pro Azure Maps](https://docs.microsoft.com/answers/topics/azure-maps.html).
+* [MSFT Q&stránku pro Azure Maps](/answers/topics/azure-maps.html).
 * podpora Microsoftu. Chcete-li vytvořit novou žádost o podporu, v [Azure Portal](https://portal.azure.com/)na kartě Help klikněte na tlačítko **pomoc** a podpora a pak vyberte **Nová žádost o podporu**.
 * [Azure Maps UserVoice](https://feedback.azure.com/forums/909172-azure-maps) k odeslání žádostí o funkce.
 
@@ -125,4 +125,4 @@ Koncepty Azure Maps počasí Services (Preview):
 Prozkoumejte dokumentaci k rozhraní API služby Azure Maps počasí Services (Preview):
 
 > [!div class="nextstepaction"]
-> [Azure Maps povětrnostní služby](/rest/api/maps/weather)
+> [Služba Azure Maps Weather](/rest/api/maps/weather)

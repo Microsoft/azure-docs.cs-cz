@@ -16,12 +16,12 @@ ms.subservice: hybrid
 ms.reviewer: chmutali
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4cdda52271bc7b9e9d854e0af181e2c8f22ad9a
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 1f39ef611e2ea15ef3bc3dbfcf09e9624cbcf8b3
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98613288"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678217"
 ---
 # <a name="manage-agent-registry-options"></a>Spravovat možnosti registru agenta
 
@@ -34,7 +34,7 @@ Při provádění operací LDAP na konfigurovaných řadičích domény služby 
 System.DirectoryServices.Protocols.LdapException: The operation was aborted because the client side timeout limit was exceeded.
 `
 
-Pokud atribut hledání není indexován, operace vyhledávání LDAP mohou trvat déle. V prvním kroku, pokud se zobrazí výše uvedená chyba, nejprve ověřte, zda je atribut vyhledávání nebo vyhledávání [indexován](https://docs.microsoft.com/windows/win32/ad/indexed-attributes). Pokud jsou atributy vyhledávání indexované a chyba přetrvává, můžete zvýšit časový limit připojení LDAP pomocí následujících kroků: 
+Pokud atribut hledání není indexován, operace vyhledávání LDAP mohou trvat déle. V prvním kroku, pokud se zobrazí výše uvedená chyba, nejprve ověřte, zda je atribut vyhledávání nebo vyhledávání [indexován](/windows/win32/ad/indexed-attributes). Pokud jsou atributy vyhledávání indexované a chyba přetrvává, můžete zvýšit časový limit připojení LDAP pomocí následujících kroků: 
 
 1. Přihlaste se jako správce na Windows serveru, na kterém běží agent zřizování Azure AD Connect.
 1. Použití položky nabídky *Spustit* k otevření editoru registru (regedit.exe) 
@@ -48,7 +48,7 @@ Pokud atribut hledání není indexován, operace vyhledávání LDAP mohou trva
 1. Pokud jste nasadili více zřizovacích agentů, použijte tuto změnu v registru na všechny agenty pro zajištění konzistence. 
 
 ## <a name="configure-referral-chasing"></a>Konfigurace dohledávání odkazů
-Ve výchozím nastavení Azure AD Connect agent zřizování nepodstatou [odkazy](https://docs.microsoft.com/windows/win32/ad/referrals). Možná budete chtít povolit referenční dohledávání, aby podporovaly určité scénáře zajišťování pro příchozí personál, jako například: 
+Ve výchozím nastavení Azure AD Connect agent zřizování nepodstatou [odkazy](/windows/win32/ad/referrals). Možná budete chtít povolit referenční dohledávání, aby podporovaly určité scénáře zajišťování pro příchozí personál, jako například: 
 * Kontrola jedinečnosti hlavního názvu uživatele (UPN) napříč více doménami
 * Překládání odkazů mezi doménovými manažery
 

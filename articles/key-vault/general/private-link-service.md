@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 75f06ae11d308028431202c22338ff4a589acf28
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 8fee7eca780d81dcd5d9fa9359ab59994256db07
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97592292"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678770"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>Integrace služby Key Vault se službou Azure Private Link
 
@@ -23,7 +23,7 @@ Privátní koncový bod Azure je síťové rozhraní, které se připojuje soukr
 
 Další informace najdete v tématu [co je privátní propojení Azure?](../../private-link/private-link-overview.md)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K integraci trezoru klíčů s privátním propojením Azure budete potřebovat následující:
 
@@ -69,7 +69,7 @@ Teď budete moct zobrazit nakonfigurovaný soukromý koncový bod. Teď máte mo
 
 Pokud už máte Trezor klíčů, můžete vytvořit připojení k privátnímu propojení pomocí následujících kroků:
 
-1. Přihlaste se k webu Azure Portal. 
+1. Přihlaste se k portálu Azure. 
 1. Na panelu hledání zadejte "trezory klíčů".
 1. V seznamu vyberte Trezor klíčů, do kterého chcete přidat privátní koncový bod.
 1. V části nastavení vyberte kartu "sítě".
@@ -106,13 +106,13 @@ Existují čtyři stavy zřizování:
 1. Vyberte tlačítko Schválit.
 1. Pokud existují nějaká připojení privátního koncového bodu, která chcete zamítnout, ať už se jedná o nevyřízenou žádost nebo existující připojení, vyberte připojení a klikněte na tlačítko "zamítnout".
 
-    ![Obrázek](../media/private-link-service-7.png)
+    ![Image](../media/private-link-service-7.png)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
 ## <a name="establish-a-private-link-connection-to-key-vault-using-cli-initial-setup"></a>Navázání připojení privátního propojení k Key Vault pomocí rozhraní příkazového řádku (počáteční nastavení)
 
-```console
+```azurecli
 az login                                                         # Login to Azure CLI
 az account set --subscription {SUBSCRIPTION ID}                  # Select your Azure Subscription
 az group create -n {RESOURCE GROUP} -l {REGION}                  # Create a new Resource Group
@@ -136,7 +136,7 @@ az network private-dns link vnet create --resource-group {RG} --virtual-network 
 ```
 
 ### <a name="add-private-dns-records"></a>Přidat záznamy Privátní DNS
-```console
+```azurecli
 # https://docs.microsoft.com/en-us/azure/dns/private-dns-getstarted-cli#create-an-additional-dns-record
 az network private-dns zone list -g $rg_name
 az network private-dns record-set a add-record -g $rg_name -z "privatelink.vaultcore.azure.net" -n $vault_name -a $kv_network_interface_private_ip
@@ -148,18 +148,18 @@ nslookup $vault_name.privatelink.vaultcore.azure.net
 ```
 
 ### <a name="create-a-private-endpoint-automatically-approve"></a>Vytvoření privátního koncového bodu (automaticky schvalovat) 
-```console
+```azurecli
 az network private-endpoint create --resource-group {RG} --vnet-name {vNet NAME} --subnet {subnet NAME} --name {Private Endpoint Name}  --private-connection-resource-id "/subscriptions/{AZURE SUBSCRIPTION ID}/resourceGroups/{RG}/providers/Microsoft.KeyVault/vaults/ {KEY VAULT NAME}" --group-ids vault --connection-name {Private Link Connection Name} --location {AZURE REGION}
 ```
 
 ### <a name="create-a-private-endpoint-manually-request-approval"></a>Vytvoření privátního koncového bodu (žádost o schválení ručně) 
-```console
+```azurecli
 az network private-endpoint create --resource-group {RG} --vnet-name {vNet NAME} --subnet {subnet NAME} --name {Private Endpoint Name}  --private-connection-resource-id "/subscriptions/{AZURE SUBSCRIPTION ID}/resourceGroups/{RG}/providers/Microsoft.KeyVault/vaults/ {KEY VAULT NAME}" --group-ids vault --connection-name {Private Link Connection Name} --location {AZURE REGION} --manual-request
 ```
 
 ### <a name="manage-private-link-connections"></a>Správa připojení privátních odkazů
 
-```console
+```azurecli
 # Show Connection Status
 az network private-endpoint show --resource-group {RG} --name {Private Endpoint Name}
 

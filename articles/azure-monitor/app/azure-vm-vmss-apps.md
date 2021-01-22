@@ -3,12 +3,12 @@ title: Monitorování výkonu na virtuálních počítačích Azure – Azure Ap
 description: Sledování výkonu aplikací pro virtuální počítače Azure a Azure Virtual Machine Scale Sets. Zatížení grafu a doba odezvy, informace o závislostech a nastavení výstrah pro výkon.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 6bc70b3d9a1a7a2d3fffb71ad28f2cf64cbd323b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: ed56bc88a9d2e8a9490331605cd4a72aef6930db
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461719"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677939"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>Nasazení agenta Azure Monitor Application Insights na virtuální počítače Azure a Azure Virtual Machine Scale Sets
 
@@ -17,7 +17,7 @@ Povolení monitorování webových aplikací založených na rozhraní .NET bě�
 Tento článek vás provede povolením Application Insights monitorování pomocí agenta Application Insights a poskytuje předběžné pokyny pro automatizaci procesu pro rozsáhlá nasazení.
 
 > [!IMPORTANT]
-> Agent Azure Application Insights pro aplikace ASP.NET běžící na **virtuálních počítačích Azure a VMSS** je momentálně ve verzi Public Preview. Pokud chcete monitorovat vaše aplikace ASP.Net spuštěné **v místním** prostředí, použijte [agenta Azure Application Insights pro místní servery](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview), které jsou všeobecně dostupné a plně podporované.
+> Agent Azure Application Insights pro aplikace ASP.NET běžící na **virtuálních počítačích Azure a VMSS** je momentálně ve verzi Public Preview. Pokud chcete monitorovat vaše aplikace ASP.Net spuštěné **v místním** prostředí, použijte [agenta Azure Application Insights pro místní servery](./status-monitor-v2-overview.md), které jsou všeobecně dostupné a plně podporované.
 > Verze Preview pro virtuální počítače Azure a VMSS se poskytuje bez smlouvy o úrovni služeb a nedoporučujeme ji pro produkční úlohy. Některé funkce nemusí být podporované a některé můžou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 

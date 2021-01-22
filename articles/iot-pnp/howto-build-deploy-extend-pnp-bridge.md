@@ -7,12 +7,12 @@ ms.date: 12/11/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: ece9f62e64eb64b1f34af46b42d57ec583f8f214
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 43c89b0fac08bf9f2c72f885fbf4788371876b17
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97675833"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678572"
 ---
 # <a name="build-deploy-and-extend-the-iot-plug-and-play-bridge"></a>Sestavování, nasazování a rozšiřování technologie Plug and Play mostu IoT
 
@@ -173,8 +173,8 @@ Adaptéry v mostu povolíte přidáním odkazu do [adapter_manifest. c](https://
 
 | Platforma | Podporováno |
 | :-----------: | :-----------: |
-| Windows |  Ano |
-| Linux | Ano |
+| Windows |  Yes |
+| Linux | Yes |
 
 ### <a name="prerequisites"></a>Požadavky
 
@@ -188,7 +188,7 @@ K dokončení této části je potřeba na váš místní počítač nainstalova
 
 Naklonujte úložiště [IoT technologie Plug and Play mostu](https://github.com/Azure/iot-plug-and-play-bridge) do místního počítače:
 
-```cmd/sh
+```console
 git clone https://github.com/Azure/iot-plug-and-play-bridge.git
 
 cd iot-plug-and-play-bridge
@@ -205,7 +205,7 @@ Očekává, že spuštění předchozího příkazu trvá několik minut.
 
 Otevřete **Developer Command Prompt pro VS 2019** a přejděte do složky, která obsahuje úložiště, které jste naklonoval, a spusťte následující příkazy:
 
-```cmd
+```console
 cd pnpbridge\scripts\windows
 
 build.cmd
@@ -279,7 +279,7 @@ Zkontrolujte zbývající část konfiguračního souboru a podívejte se, kter�
 
 Spusťte most spuštěním příkazu na příkazovém řádku:
 
-```cmd
+```console
 cd iot-plug-and-play-bridge\pnpbridge\cmake\pnpbridge_x86\src\pnpbridge\samples\console
 
 Debug\pnpbridge_bin.exe
@@ -295,8 +295,8 @@ Debug\pnpbridge_bin.exe
 
 | Platforma | Podporováno |
 | :-----------: | :-----------: |
-| Windows |  Ne |
-| Linux | Ano |
+| Windows |  No |
+| Linux | Yes |
 
 ### <a name="prerequisites"></a>Požadavky
 
@@ -330,13 +330,13 @@ Tyto příkazy vytvoří IoT Edge zařízení běžící na virtuálním počít
 
 Pokud chcete ve službě IoT Hub vytvořit registraci zařízení IoT Edge, spusťte ve svém prostředí WSL 2 následující příkazy. Pomocí `az login` příkazu se přihlaste ke svému předplatnému Azure:
 
-```bash
+```azurecli
 az iot hub device-identity create --device-id bridge-edge-device --edge-enabled true --hub-name {your IoT hub name}
 ```
 
 Pokud chcete vytvořit virtuální počítač Azure s nainstalovaným modulem runtime IoT Edge, spusťte následující příkazy. Aktualizujte zástupné symboly pomocí vhodných hodnot:
 
-```bash
+```azurecli
 az group create --name bridge-edge-resources --location eastus
 az deployment group create \
 --resource-group bridge-edge-resources \
@@ -350,7 +350,7 @@ az deployment group create \
 
 Teď je IoT Edge modul runtime spuštěný ve virtuálním počítači. Pomocí následujícího příkazu můžete ověřit, že **$edgeAgent** a **$edgeHub** na zařízení běží:
 
-```bash
+```azurecli
 az iot hub module-identity list --device-id bridge-edge-device -o table --hub-name {your IoT hub name}
 ```
 
@@ -405,7 +405,7 @@ Zařízení IoT Edge stahuje své image modulu z registru kontejneru. Tento př�
 
 Vytvořte službu Azure Container Registry ve skupině prostředků **mostu-Edge--prostředky** . Pak povolte přístup správce k registru kontejneru a získejte přihlašovací údaje, které vaše zařízení IoT Edge potřebuje ke stažení imagí modulu:
 
-```bash
+```azurecli
 az acr create -g bridge-edge-resources --sku Basic -n {your container registry name}
 az acr update --admin-enabled true -n {your container registry name}
 az acr credential show -n {your container registry name}
@@ -517,7 +517,7 @@ V VS Code klikněte pravým tlačítkem na soubor *pnpbridge/config/deployment.a
 
 Chcete-li zobrazit stav modulů v zařízení, spusťte následující příkaz:
 
-```bash
+```azurecli
 az iot hub module-identity list --device-id bridge-edge-device -o table --hub-name {your IoT hub name}
 ```
 
@@ -527,7 +527,7 @@ Seznam spuštěných modulů teď obsahuje modul **ModulePnpBridge** , který je
 
 Pokud chcete virtuální počítač a registr kontejnerů odebrat z předplatného Azure, spusťte následující příkaz:
 
-```bash
+```azurecli
 az group delete -n bridge-edge-resources
 ```
 

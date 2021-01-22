@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.author: alkohli
-ms.openlocfilehash: 8ea0c27fdd64bae1e6fe9443df76c86e0eb89a75
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 54a4a938be18d39993652cecb87b3604e268fcef
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97762910"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678949"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-using-azure-cli-and-python"></a>Nasazení virtuálních počítačů na zařízení GPU Azure Stack Edge pro pomocí Azure CLI a Pythonu
 
@@ -123,7 +123,7 @@ Než začnete vytvářet a spravovat virtuální počítač na zařízení Azure
 
     Následuje ukázkový výstup výše uvedeného příkazu:
 
-    ```powershell
+    ```output
     PS C:\windows\system32> az --version
     azure-cli                         2.0.80
     
@@ -147,7 +147,7 @@ Než začnete vytvářet a spravovat virtuální počítač na zařízení Azure
     PS C:\windows\system32>
     ```
 
-    Pokud nemáte rozhraní příkazového řádku Azure CLI, Stáhněte a nainstalujte rozhraní příkazového [řádku Azure CLI ve Windows](/cli/azure/install-azure-cli-windows?view=azure-cli-latest). Azure CLI můžete spustit pomocí příkazového řádku Windows nebo pomocí Windows PowerShellu.
+    Pokud nemáte rozhraní příkazového řádku Azure CLI, Stáhněte a nainstalujte rozhraní příkazového [řádku Azure CLI ve Windows](/cli/azure/install-azure-cli-windows). Azure CLI můžete spustit pomocí příkazového řádku Windows nebo pomocí Windows PowerShellu.
 
 2. Poznamenejte si umístění Pythonu pro rozhraní příkazového řádku. To je potřeba k určení umístění důvěryhodného kořenového úložiště certifikátů pro Azure CLI.
 
@@ -171,7 +171,7 @@ Než začnete vytvářet a spravovat virtuální počítač na zařízení Azure
 
     Následující vzorový výstup zobrazuje instalaci Haikunator:
 
-    ```powershell
+    ```output
     PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2> .\python.exe -m pip install haikunator
 
     Collecting haikunator
@@ -187,7 +187,7 @@ Než začnete vytvářet a spravovat virtuální počítač na zařízení Azure
 
     Následující vzorový výstup ukazuje instalaci PIP pro `msrestazure` : 
     
-    ```powershell
+    ```output
     PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2> .\python.exe -m pip install msrestazure==0.6.2
     Requirement already satisfied: msrestazure==0.6.2 in c:\program files (x86)\microsoft sdks\azure\cli2\lib\site-packages (0.6.2)
     Requirement already satisfied: msrest<2.0.0,>=0.6.0 in c:\program files (x86)\microsoft sdks\azure\cli2\lib\site-packages (from msrestazure==0.6.2) (0.6.10)
@@ -211,7 +211,7 @@ Než začnete vytvářet a spravovat virtuální počítač na zařízení Azure
     
     Rutina vrátí umístění certifikátu, jak je vidět níže:  
         
-    ```powershell
+    ```output
     PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2> .\python -c "import certifi; print(certifi.where())"
     C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\lib\site-packages\certifi\cacert.pem
     PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2>
@@ -323,7 +323,7 @@ Než začnete vytvářet a spravovat virtuální počítač na zařízení Azure
 
    V následujícím příkladu je uveden vzorový výstup pro úspěšné přihlášení po zadání hesla:  
    
-   ```powershell
+   ```output
    PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2> az login -u EdgeARMuser
    Password:
    [

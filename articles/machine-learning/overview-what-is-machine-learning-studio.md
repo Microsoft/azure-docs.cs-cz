@@ -8,12 +8,12 @@ ms.topic: overview
 author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
-ms.openlocfilehash: f59ed16f98a22f77b2e67ec2bf829f58dccef611
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 4212c76d052fe1f272963003e836425b50d6f105
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740500"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677610"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Co je Azure Machine Learning Studio?
 
@@ -68,7 +68,7 @@ Spravujte své prostředky strojového učení přímo v prohlížeči. Prostře
 - Notebooks
 - Experimenty
 - Spustit protokoly
-- Kanály 
+- Pipelines 
 - Koncové body kanálu
 
 I v případě, že jste zkušený vývojář, může Studio zjednodušit správu prostředků pracovního prostoru.
@@ -87,10 +87,10 @@ Pro nejnovější škálu nástrojů pro datové vědy doporučujeme, aby si pro
 
 Následující tabulka shrnuje hlavní rozdíly mezi ML Studio (Classic) a Azure Machine Learning.
 
-| Funkce | ML Studio (klasický) | Azure Machine Learning |
+| Příznak | ML Studio (klasický) | Azure Machine Learning |
 |---| --- | --- |
 | Rozhraní přetažení | Klasické prostředí | Aktualizované prostředí – [návrhář Azure Machine Learning](concept-designer.md)| 
-| Sady SDK kódu | Nepodporované | Plně integrovaná s [Azure Machine Learning Python](/python/api/overview/azure/ml/) a [R](tutorial-1st-r-experiment.md) SDK |
+| Sady SDK kódu | Nepodporované | Plně integrovaná s [Azure Machine Learning Python](/python/api/overview/azure/ml/) a [R](https://github.com/Azure/azureml-sdk-for-r) SDK |
 | Experiment | Škálovatelné (limit pro školicí data z 10 GB) | Škálování s cílem výpočetního prostředí |
 | Školení výpočetních cílů | Proprietární výpočetní cíl, jenom podpora procesoru | Široké spektrum přizpůsobitelných [výpočetních cílů](concept-compute-target.md#train). Zahrnuje podporu GPU a procesoru. | 
 | Cíle výpočtů nasazení | Speciální formát webové služby, není přizpůsobitelný | Široké škály přizpůsobitelných [výpočetních cílů nasazení](concept-compute-target.md#deploy). Zahrnuje podporu GPU a procesoru. |

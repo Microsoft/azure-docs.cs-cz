@@ -11,16 +11,16 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 4f881dcc0d26589c4029246019119fa0555dcd5d
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 0974e880b75cce69f2b5ac82e3c4b39de53e03ce
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98117771"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677100"
 ---
 # <a name="load-data-from-azure-data-lake-storage-into-dedicated-sql-pools-in-azure-synapse-analytics"></a>Načtení dat z Azure Data Lake Storage do vyhrazených fondů SQL ve službě Azure synapse Analytics
 
-Tato příručka popisuje, jak pomocí [příkazu copy](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) načíst data z Azure Data Lake Storage. Rychlé příklady použití příkazu Kopírovat napříč všemi metodami ověřování najdete v následující dokumentaci: [bezpečné načtení dat pomocí vyhrazených fondů SQL](./quickstart-bulk-load-copy-tsql-examples.md).
+Tato příručka popisuje, jak pomocí [příkazu copy](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) načíst data z Azure Data Lake Storage. Rychlé příklady použití příkazu Kopírovat napříč všemi metodami ověřování najdete v následující dokumentaci: [bezpečné načtení dat pomocí vyhrazených fondů SQL](./quickstart-bulk-load-copy-tsql-examples.md).
 
 > [!NOTE]  
 > Pokud chcete poskytnout zpětnou vazbu nebo ohlásit problémy v příkazu COPY, odešlete e-mail na následující distribuční seznam: sqldwcopypreview@service.microsoft.com .
@@ -34,7 +34,7 @@ Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný úče
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Než začnete s tímto kurzem, stáhněte a nainstalujte nejnovější verzi aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS).
+Než začnete s tímto kurzem, stáhněte a nainstalujte nejnovější verzi aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS).
 
 Pro spuštění tohoto kurzu budete potřebovat:
 
@@ -133,6 +133,6 @@ Načítání dat je prvním krokem k vývoji řešení datového skladu pomocí 
 > [Naučte se vyvíjet tabulky pro datové sklady](sql-data-warehouse-tables-overview.md)
 
 Další příklady a odkazy pro načítání naleznete v následující dokumentaci:
-- [Dokumentace k příkazu COPY reference](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax)
+- [Dokumentace k příkazu COPY reference](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#syntax)
 - [ZKOPÍROVAT příklady pro každou metodu ověřování](./quickstart-bulk-load-copy-tsql-examples.md)
 - [Rychlé spuštění kopírování pro jednu tabulku](./quickstart-bulk-load-copy-tsql.md)

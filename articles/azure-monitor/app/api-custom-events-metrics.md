@@ -4,12 +4,12 @@ description: Pokud chcete sledovat využití a diagnostikovat problémy, vložte
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: d553c192d62baedb93c7f8270c56526fbf8edb62
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 8fecca4875ba291da093bf1eea596eef290f80c8
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233742"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678108"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Rozhraní API služby Application Insights pro vlastní události a metriky
 
@@ -439,7 +439,7 @@ exceptions
 | summarize sum(itemCount) by type
 ```
 
-Většina důležitých informací o zásobníku se už extrahuje do samostatných proměnných, ale pokud chcete získat další informace, můžete si ji stáhnout ze své `details` struktury. Vzhledem k tomu, že je tato struktura dynamická, je vhodné přetypovat výsledek na očekávaný typ. Příklad:
+Většina důležitých informací o zásobníku se už extrahuje do samostatných proměnných, ale pokud chcete získat další informace, můžete si ji stáhnout ze své `details` struktury. Vzhledem k tomu, že je tato struktura dynamická, je vhodné přetypovat výsledek na očekávaný typ. Například:
 
 ```kusto
 exceptions
@@ -502,7 +502,7 @@ Můžete hledat obsah zprávy, ale (na rozdíl od hodnot vlastností) nemůžete
 Omezení velikosti `message` je mnohem vyšší než omezení vlastností.
 Výhodou TrackTrace je, že do zprávy můžete ukládat poměrně dlouhá data. Můžete například zakódovat data POST.  
 
-Kromě toho můžete do zprávy přidat úroveň závažnosti. A podobně jako u jiné telemetrie můžete přidat hodnoty vlastností, které vám pomohou filtrovat nebo vyhledat různé sady trasování. Příklad:
+Kromě toho můžete do zprávy přidat úroveň závažnosti. A podobně jako u jiné telemetrie můžete přidat hodnoty vlastností, které vám pomohou filtrovat nebo vyhledat různé sady trasování. Například:
 
 *C#*
 
@@ -534,7 +534,7 @@ Pokud je [vzorkování](./sampling.md) v provozu, vlastnost vlastnost ItemCount 
 Použijte volání TrackDependency ke sledování doby odezvy a míry úspěšnosti volání do externí části kódu. Výsledky se zobrazí v grafech závislostí na portálu. Následující fragment kódu je nutné přidat všude, kde je provedeno volání závislosti.
 
 > [!NOTE]
-> Pro .NET a .NET Core můžete alternativně použít `TelemetryClient.StartOperation` metodu (rozšíření), která vyplní `DependencyTelemetry` vlastnosti, které jsou potřeba pro korelaci, a některé další vlastnosti, jako je čas spuštění a doba trvání, takže nemusíte vytvářet vlastní časovač, jako v níže uvedených příkladech. Další informace najdete [v části věnované odchozímu sledování závislostí v](https://docs.microsoft.com/azure/azure-monitor/app/custom-operations-tracking#outgoing-dependencies-tracking)tomto článku.
+> Pro .NET a .NET Core můžete alternativně použít `TelemetryClient.StartOperation` metodu (rozšíření), která vyplní `DependencyTelemetry` vlastnosti, které jsou potřeba pro korelaci, a některé další vlastnosti, jako je čas spuštění a doba trvání, takže nemusíte vytvářet vlastní časovač, jako v níže uvedených příkladech. Další informace najdete [v části věnované odchozímu sledování závislostí v](./custom-operations-tracking.md#outgoing-dependencies-tracking)tomto článku.
 
 *C#*
 
@@ -1068,7 +1068,7 @@ var appInsights = window.appInsights || function(config){ ...
 
 ## <a name="telemetrycontext"></a>TelemetryContext
 
-TelemetryClient má kontextovou vlastnost, která obsahuje hodnoty, které jsou odesílány společně se všemi daty telemetrie. Obvykle jsou nastavené standardními moduly telemetrie, ale můžete je také nastavit sami. Příklad:
+TelemetryClient má kontextovou vlastnost, která obsahuje hodnoty, které jsou odesílány společně se všemi daty telemetrie. Obvykle jsou nastavené standardními moduly telemetrie, ale můžete je také nastavit sami. Například:
 
 ```csharp
 telemetry.Context.Operation.Name = "MyOperationName";

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.author: kaib
 ms.date: 03/11/2020
 ms.custom: seodec18, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 7f51aae39c2cb60d8b60d4fb496f74eadb91b33b
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 42b1aed2f6c66dbfc0f04759b232855f3b7f0a2a
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487649"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676814"
 ---
 # <a name="verify-encryption-status-for-linux"></a>Ověření stavu šifrování pro Linux 
 
@@ -70,7 +70,7 @@ Nastavení šifrování můžete zachytit z každého disku pomocí následujíc
 ### <a name="single-pass"></a>Single Pass
 V jednom průchodu se nastavení šifrování vyplní na všech discích (operační systém a data). Nastavení šifrování pro disk s operačním systémem můžete zachytit v jednom průchodu následujícím způsobem:
 
-``` powershell
+```powershell
 $RGNAME = "RGNAME"
 $VMNAME = "VMNAME"
 
@@ -160,7 +160,7 @@ Write-Host "====================================================================
 
 *Obecný* stav šifrování ŠIFROVANÉHO virtuálního počítače můžete ověřit pomocí následujících příkazů Azure CLI:
 
-```bash
+```azurecli
 VMNAME="VMNAME"
 RGNAME="RGNAME"
 az vm encryption show --name ${VMNAME} --resource-group ${RGNAME} --query "substatus"
@@ -170,7 +170,7 @@ az vm encryption show --name ${VMNAME} --resource-group ${RGNAME} --query "subst
 ### <a name="single-pass"></a>Single Pass
 Nastavení šifrování pro každý disk můžete ověřit pomocí následujících příkazů Azure CLI:
 
-```bash
+```azurecli
 az vm encryption show -g ${RGNAME} -n ${VMNAME} --query "disks[*].[name, statuses[*].displayStatus]"  -o table
 ```
 
@@ -203,7 +203,7 @@ done
 
 Datové disky:
 
-```bash
+```azurecli
 RGNAME="RGNAME"
 VMNAME="VMNAME"
 az vm encryption show --name ${VMNAME} --resource-group ${RGNAME} --query "substatus"
@@ -223,7 +223,7 @@ done
 
 ### <a name="dual-pass"></a>Duální průchod
 
-``` bash
+```azurecli
 az vm encryption show --name ${VMNAME} --resource-group ${RGNAME} -o table
 ```
 
@@ -276,7 +276,7 @@ Chcete-li získat podrobnosti o konkrétním disku, je třeba zadat následujíc
 
 Tento příkaz vypíše všechna ID pro všechny vaše účty úložiště:
 
-```bash
+```azurecli
 az storage account list --query [].[id] -o tsv
 ```
 ID účtu úložiště jsou uvedená v následujícím tvaru:
@@ -295,7 +295,7 @@ ConnectionString=$(az storage account show-connection-string --ids $id --query c
 ```
 
 Následující příkaz vypíše všechny kontejnery v rámci účtu úložiště:
-```bash
+```azurecli
 az storage container list --connection-string $ConnectionString --query [].[name] -o tsv
 ```
 Kontejner používaný pro disky se obvykle nazývá "VHD".
@@ -306,7 +306,7 @@ ContainerName="name of the container"
 ```
 
 Tento příkaz slouží k vypsání všech objektů BLOB v konkrétním kontejneru:
-```bash 
+```azurecli 
 az storage blob list -c ${ContainerName} --connection-string $ConnectionString --query [].[name] -o tsv
 ```
 Vyberte disk, na který chcete zadat dotaz, a uložte jeho název do proměnné:
@@ -314,7 +314,7 @@ Vyberte disk, na který chcete zadat dotaz, a uložte jeho název do proměnné:
 DiskName="diskname.vhd"
 ```
 Dotaz na nastavení šifrování disku:
-```bash
+```azurecli
 az storage blob show -c ${ContainerName} --connection-string ${ConnectionString} -n ${DiskName} --query metadata.DiskEncryptionSettings
 ```
 
@@ -323,7 +323,7 @@ Ověří, jestli jsou oddíly datových disků šifrované (a disk s operačním
 
 Když je oddíl nebo disk zašifrovaný, zobrazuje se jako **nešifrovaný** typ. Pokud není šifrovaný, zobrazí se jako typ **součásti nebo disku** .
 
-``` bash
+```bash
 lsblk
 ```
 
@@ -340,11 +340,11 @@ lsblk -o NAME,TYPE,FSTYPE,LABEL,SIZE,RO,MOUNTPOINT
 
 Jako další krok můžete ověřit, jestli datový disk obsahuje nějaké klíče:
 
-``` bash
+```bash
 cryptsetup luksDump /dev/VGNAME/LVNAME
 ```
 
-``` bash
+```bash
 cryptsetup luksDump /dev/sdd1
 ```
 

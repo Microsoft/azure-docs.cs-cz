@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: a3481830a09b183213e84490b5300f2fb38f8d19
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: b5c65035f8b51b53f617d4562fe1982f53f0deec
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625061"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678268"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-by-using-azure-maps"></a>Kurz: implementace prostorových analýz IoT pomocí Azure Maps
 
@@ -161,15 +161,15 @@ IoT Hub umožňuje zabezpečenou a spolehlivou obousměrnou komunikaci mezi apli
 > [!NOTE]
 > Možnost publikovat události telemetrie zařízení v Event Grid je momentálně ve verzi Preview. Tato funkce je dostupná ve všech oblastech kromě následujících: Východní USA, Západní USA, Západní Evropa, Azure Government, Azure Čína 21Vianet a Azure Německo.
 
-Pokud chcete ve skupině prostředků *ContosoRental* vytvořit centrum IoT, postupujte podle kroků v části [Vytvoření služby IoT Hub](https://docs.microsoft.com/azure/iot-hub/quickstart-send-telemetry-dotnet#create-an-iot-hub).
+Pokud chcete ve skupině prostředků *ContosoRental* vytvořit centrum IoT, postupujte podle kroků v části [Vytvoření služby IoT Hub](../iot-hub/quickstart-send-telemetry-dotnet.md#create-an-iot-hub).
 
 ## <a name="register-a-device-in-your-iot-hub"></a>Registrace zařízení ve službě IoT Hub
 
-Zařízení se nemůžou připojit ke službě IoT Hub, pokud se nezaregistrují v registru identit centra IoT. Tady vytvoříte jedno zařízení s názvem, *InVehicleDevice*. Pokud chcete zařízení vytvořit a zaregistrovat v rámci služby IoT Hub, postupujte podle kroků v části [Registrace nového zařízení ve službě IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal#register-a-new-device-in-the-iot-hub). Nezapomeňte zkopírovat primární připojovací řetězec vašeho zařízení. Budete ho potřebovat později.
+Zařízení se nemůžou připojit ke službě IoT Hub, pokud se nezaregistrují v registru identit centra IoT. Tady vytvoříte jedno zařízení s názvem, *InVehicleDevice*. Pokud chcete zařízení vytvořit a zaregistrovat v rámci služby IoT Hub, postupujte podle kroků v části [Registrace nového zařízení ve službě IoT Hub](../iot-hub/iot-hub-create-through-portal.md#register-a-new-device-in-the-iot-hub). Nezapomeňte zkopírovat primární připojovací řetězec vašeho zařízení. Budete ho potřebovat později.
 
 ## <a name="create-a-function-and-add-an-event-grid-subscription"></a>Vytvoření funkce a přidání předplatného Event Grid
 
-Azure Functions je výpočetní služba bez serveru, která umožňuje spustit malé části kódu ("funkce") bez nutnosti explicitně zřizovat nebo spravovat výpočetní infrastrukturu. Další informace najdete v tématu [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview).
+Azure Functions je výpočetní služba bez serveru, která umožňuje spustit malé části kódu ("funkce") bez nutnosti explicitně zřizovat nebo spravovat výpočetní infrastrukturu. Další informace najdete v tématu [Azure Functions](../azure-functions/functions-overview.md).
 
 Funkci spustí určitá událost. Tady vytvoříte funkci, která se aktivuje triggerem Event Grid. Vytvořením odběru událostí pro IoT Hub události telemetrie zařízení vytvořte vztah mezi triggerem a funkcí. Když dojde k události telemetrie zařízení, je funkce volána jako koncový bod a obdrží relevantní data pro zařízení, které jste předtím zaregistrovali v IoT Hub.
 
@@ -223,7 +223,7 @@ Teď nastavte funkci Azure Functions.
 
 ## <a name="filter-events-by-using-iot-hub-message-routing"></a>Filtrování událostí pomocí IoT Hubho směrování zpráv
 
-Když do funkce Azure Function přidáte předplatné Event Grid, v zadaném centru IoT Hub se automaticky vytvoří trasa pro zasílání zpráv. Směrování zpráv umožňuje směrovat různé datové typy do různých koncových bodů. Můžete například směrovat zprávy telemetrie zařízení, události životního cyklu zařízení a události změny zařízení s dvojitou změnou. Další informace najdete v tématu [použití IoT Hub směrování zpráv](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c).
+Když do funkce Azure Function přidáte předplatné Event Grid, v zadaném centru IoT Hub se automaticky vytvoří trasa pro zasílání zpráv. Směrování zpráv umožňuje směrovat různé datové typy do různých koncových bodů. Můžete například směrovat zprávy telemetrie zařízení, události životního cyklu zařízení a události změny zařízení s dvojitou změnou. Další informace najdete v tématu [použití IoT Hub směrování zpráv](../iot-hub/iot-hub-devguide-messages-d2c.md).
 
 :::image type="content" source="./media/tutorial-iot-hub-maps/hub-route.png" alt-text="Snímek obrazovky s směrováním zpráv ve IoT Hub.":::
 
@@ -232,7 +232,7 @@ V ukázkovém scénáři budete chtít dostávat jenom zprávy, když se pronáj
 :::image type="content" source="./media/tutorial-iot-hub-maps/hub-filter.png" alt-text="Snímek obrazovky se zprávami o směrování filtru.":::
 
 >[!TIP]
->Existují různé způsoby, jak zadávat dotazy na zprávy ze zařízení do cloudu IoT. Další informace o syntaxi směrování zpráv najdete v tématu [IoT Hub směrování zpráv](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax).
+>Existují různé způsoby, jak zadávat dotazy na zprávy ze zařízení do cloudu IoT. Další informace o syntaxi směrování zpráv najdete v tématu [IoT Hub směrování zpráv](../iot-hub/iot-hub-devguide-routing-query-syntax.md).
 
 ## <a name="send-telemetry-data-to-iot-hub"></a>Odeslat data telemetrie do IoT Hub
 

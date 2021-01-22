@@ -11,12 +11,12 @@ ms.date: 05/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 302249b7d8490e43b841116c52500e686626433d
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 5773691852ddc723ec84503edee37c678bbbcfd9
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460615"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677500"
 ---
 # <a name="quickstart-configure-dedicated-sql-pool-workload-isolation-using-a-workload-group-in-the-azure-portal"></a>Rychlý Start: Konfigurace vyhrazené úlohy fondu SQL pomocí skupiny úloh v Azure Portal
 
@@ -28,12 +28,12 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 > [!NOTE]
 > Vytvoření vyhrazené instance fondu SQL ve službě Azure synapse Analytics může mít za následek novou fakturovatelnou službu.  Další informace najdete v tématu [ceny služby Azure synapse Analytics](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto rychlém startu se předpokládá, že v synapse SQL už máte vyhrazenou instanci fondu SQL a že máte oprávnění k řízení databáze. Pokud ho potřebujete vytvořit, použijte [rychlý Start: vytvoření vyhrazeného fondu SQL – portál](../quickstart-create-sql-pool-portal.md) pro vytvoření datového skladu s názvem **mySampleDataWarehouse**.
 
@@ -93,7 +93,7 @@ Pomocí těchto kroků vyčistěte prostředky.
 
 ## <a name="next-steps"></a>Další kroky
 
-Chcete-li použít `DataLoads` skupinu úloh, je nutné vytvořit [třídění úloh](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) , aby bylo možné směrovat požadavky do skupiny úloh.  Pokračujte v kurzu [Vytvoření klasifikátoru úloh](quickstart-create-a-workload-classifier-portal.md) a vytvořte třídění úloh pro `DataLoads` .
+Chcete-li použít `DataLoads` skupinu úloh, je nutné vytvořit [třídění úloh](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) , aby bylo možné směrovat požadavky do skupiny úloh.  Pokračujte v kurzu [Vytvoření klasifikátoru úloh](quickstart-create-a-workload-classifier-portal.md) a vytvořte třídění úloh pro `DataLoads` .
 
 ## <a name="see-also"></a>Viz také
 Podrobnosti o tom, jak monitorovat úlohy pro správu úloh, najdete v článku Jak [Spravovat a monitorovat správu úloh](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md) .

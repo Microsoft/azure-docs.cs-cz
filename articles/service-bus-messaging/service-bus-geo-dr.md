@@ -3,12 +3,12 @@ title: Azure Service Bus geograficky zotavení po havárii | Microsoft Docs
 description: Použití geografických oblastí k převzetí služeb při selhání a zotavení po havárii v Azure Service Bus
 ms.topic: article
 ms.date: 01/04/2021
-ms.openlocfilehash: c07721c07923a40da9fe28e0e3116bfd6a52210f
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: b25fd1befded253c79267b1b016cef979005d01e
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862353"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676451"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure Service Bus geografické zotavení po havárii
 
@@ -48,6 +48,8 @@ V tomto článku se používají následující výrazy:
 
 -  *Primární nebo sekundární obor názvů*: obory názvů, které odpovídají aliasu. Primární obor názvů je "aktivní" a přijímá zprávy (může to být existující nebo nový obor názvů). Sekundární obor názvů je "pasivní" a nepřijímá zprávy. Metadata mezi oběma je synchronizována, takže obě můžou bezproblémově přijímat zprávy bez nutnosti změny kódu aplikace nebo připojovacího řetězce. Chcete-li zajistit, že pouze aktivní obor názvů přijímá zprávy, je nutné použít alias. 
 
+    > [!IMPORTANT]
+    > Funkce geografického zotavení po havárii vyžaduje, aby předplatné a skupina prostředků byly stejné pro primární a sekundární obory názvů.
 -  *Metadata*: entity, jako jsou fronty, témata a předplatná; a jejich vlastnosti služby, které jsou přidruženy k oboru názvů. Všimněte si, že se automaticky replikují jenom entity a jejich nastavení. Zprávy nejsou replikovány.
 
 -  *Převzetí služeb při selhání*: proces aktivace sekundárního oboru názvů.
@@ -149,7 +151,7 @@ Zóny dostupnosti můžete povolit jenom pro nové obory názvů pomocí Azure P
 
 ![3][]
 
-## <a name="private-endpoints"></a>Soukromé koncové body
+## <a name="private-endpoints"></a>Privátní koncové body
 V této části najdete další požadavky při použití geografického zotavení po havárii s obory názvů, které používají privátní koncové body. Další informace o používání privátních koncových bodů s Service Bus obecně najdete v tématu věnovaném [integraci Azure Service Bus s privátním odkazem Azure](private-link-service.md).
 
 ### <a name="new-pairings"></a>Nové párování

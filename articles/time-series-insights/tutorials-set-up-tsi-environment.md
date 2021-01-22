@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 01/19/2021
 ms.custom: seodec18
-ms.openlocfilehash: eeb3de2fc3f0e3e0be9c98002f11e470eaf04f8c
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 912dbf48254a8d68b9bf76db04734fd791a3edb9
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95020925"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677050"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-gen2-environment"></a>Kurz: nastavení prostředí Azure Time Series Insights Gen2
 
@@ -119,7 +119,7 @@ Tato část popisuje, jak vytvořit prostředí Azure Time Series Insights Gen2 
    | **Skupina uživatelů IoT Hub** | Vyberte **Nový**, zadejte jedinečný název a potom vyberte **+ Přidat**. Skupina příjemců musí být jedinečnou hodnotou v Azure Time Series Insights Gen2. |
    | **Vlastnost timestamp** | Tato hodnota se používá k identifikaci vlastnosti **časového razítka** ve příchozích datech telemetrie. V tomto kurzu ponechte toto pole prázdné. Simulátor používá příchozí časové razítko z IoT Hub, které Azure Time Series Insights Gen2 výchozí hodnoty. |
 
-1. Vyberte **zkontrolovat + vytvořit**.
+1. Vyberte **Zkontrolovat a vytvořit**.
 
    [![Nakonfigurujte vytvořené centrum IoT jako zdroj události.](media/v2-update-provision/tsi-configure-event-source.png)](media/v2-update-provision/tsi-configure-event-source.png#lightbox)
 
@@ -233,7 +233,7 @@ V této části použijete model ke strukturování dat. Pro dokončení modelu 
         | **Hodnota** | Vyberte možnost z předvolby: vyberte **teplotu (Double)**. <br /> Poznámka: může trvat několik minut, než se **hodnota** automaticky vyplní po Azure Time Series Insights Gen2 spustí přijímání událostí.|
         | **Agregační operace** | Rozbalte položku **Pokročilá nastavení**. <br /> Vyberte **prům**. |
 
-    1. Vyberte **Apply** (Použít). Pak **+ přidat proměnnou** znovu a nastavte následující hodnoty:
+    1. Vyberte **Použít**. Pak **+ přidat proměnnou** znovu a nastavte následující hodnoty:
 
         | Parametr | Akce |
         | --- | --- |
@@ -242,7 +242,7 @@ V této části použijete model ke strukturování dat. Pro dokončení modelu 
         | **Hodnota** | Vyberte možnost z předvolby: vyberte **vibrace (dvojitá)**. <br /> Poznámka: může trvat několik minut, než se **hodnota** automaticky vyplní po Azure Time Series Insights Gen2 spustí přijímání událostí.|
         | **Agregační operace** | Rozbalte položku **Pokročilá nastavení**. <br /> Vyberte **prům**. |
 
-    1. Vyberte **Apply** (Použít). Pak **+ přidat proměnnou** znovu a nastavte následující hodnoty pro třetí a poslední proměnnou:
+    1. Vyberte **Použít**. Pak **+ přidat proměnnou** znovu a nastavte následující hodnoty pro třetí a poslední proměnnou:
 
         | Parametr | Akce |
         | --- | --- |
@@ -254,7 +254,7 @@ V této části použijete model ke strukturování dat. Pro dokončení modelu 
 
         [![Přidejte proměnné typu.](media/v2-update-provision/tsi-add-type-variables.png)](media/v2-update-provision/tsi-add-type-variables.png#lightbox)
 
-    1. Vyberte **Apply** (Použít). 
+    1. Vyberte **Použít**. 
     1. Vyberte **Uložit**. Vytvoří a zobrazí tři proměnné.
 
         [![Po přidání typu si ho přečtěte v zobrazení modelu.](media/v2-update-provision/tsi-add-type-and-view.png)](media/v2-update-provision/tsi-add-type-and-view.png#lightbox)

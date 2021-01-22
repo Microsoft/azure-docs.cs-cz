@@ -8,12 +8,12 @@ ms.date: 10/15/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f2dd7cac8370c261f24f5587e801bd621fbdb0f0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3876b44bc6bb1ddbc5398126421fb9651003838f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016994"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678819"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Ověření podřízeného zařízení pro Azure IoT Hub
 
@@ -71,7 +71,7 @@ Když vytváříte novou identitu zařízení, zadejte následující informace:
 
 K provedení stejné operace taky můžete použít [rozšíření IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension) . V následujícím příkladu se pomocí příkazu [AZ IoT Hub Device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) vytvoří nové zařízení IoT s ověřováním pomocí symetrického klíče a přiřadí se nadřazené zařízení:
 
-```cli
+```azurecli
 az iot hub device-identity create -n {iothub name} -d {new device ID} --pd {existing gateway device ID}
 ```
 
@@ -126,7 +126,7 @@ Pro ověřování X. 509 podepsané svým držitelem, které se někdy označuje
 
 K dokončení stejné operace vytváření zařízení můžete použít také [rozšíření IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension) . V následujícím příkladu se pomocí příkazu [AZ IoT Hub Device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) vytvoří nové zařízení IoT s ověřováním pomocí X. 509 podepsaného svým držitelem a přiřadí se nadřazené zařízení:
 
-```cli
+```azurecli
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_thumbprint --ptp {primary thumbprint} --stp {secondary thumbprint}
 ```
 
@@ -170,7 +170,7 @@ Tato část je založená na pokynech, které jsou popsané v IoT Hub článku [
 
 K dokončení stejné operace vytváření zařízení můžete použít také [rozšíření IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension) . V následujícím příkladu se pomocí příkazu [AZ IoT Hub Device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) vytvoří nové zařízení IoT s ověřováním CA X. 509 s podpisem a přiřadí nadřazené zařízení:
 
-```cli
+```azurecli
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_ca
 ```
 
@@ -191,19 +191,19 @@ Připojovací řetězce pro zařízení pro příjem dat potřebují následují
 
 Celý připojovací řetězec se všemi dohromady vypadá takto:
 
-```
+```console
 HostName=myiothub.azure-devices.net;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz;GatewayHostName=myGatewayDevice
 ```
 
 Ani
 
-```
+```console
 HostName=myiothub.azure-devices.net;DeviceId=myDownstreamDevice;x509=true;GatewayHostName=myGatewayDevice
 ```
 
 Díky relaci nadřazený-podřízený můžete připojovací řetězec zjednodušit voláním brány přímo jako hostitele připojení. Například:
 
-```
+```console
 HostName=myGatewayDevice;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz
 ```
 

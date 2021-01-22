@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 32ce875600bb948e7c3e8479f712e99d25eb6367
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 276dd5b7eba33081c5131eba722df91d8685adff
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624947"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678159"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>Kurz: spojení dat senzorů s daty předpovědi počasí pomocí Azure Notebooks (Python)
 
@@ -27,7 +27,7 @@ Větrná energie je jedním z alternativních zdrojů energie pro fosilní paliv
 V tomto kurzu:
 
 > [!div class="checklist"]
-> * Pracujte s datovými soubory v [Azure Notebooks](../notebooks/index.yml) v cloudu.
+> * Pracujte s datovými soubory v [Azure Notebooks](https://notebooks.azure.com) v cloudu.
 > * Načíst ukázková data ze souboru
 > * V Pythonu volejte Azure Maps rozhraní REST API.
 > * Vykreslení dat umístění na mapě.
@@ -206,4 +206,4 @@ Nejsou k dispozici žádné prostředky, které vyžadují vyčištění.
 Další informace o Azure Notebooks najdete v tématu.
 
 > [!div class="nextstepaction"]
-> [Azure Notebooks](../notebooks/index.yml)
+> [Azure Notebooks](https://notebooks.azure.com)
