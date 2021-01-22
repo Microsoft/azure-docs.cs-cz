@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 11/12/2020
 ms.author: aahi
-ms.openlocfilehash: b19fb3f86be46a5db60fb87f9c7f5c3e28ac6428
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 82c33c038a1f8eaba540c9906efcffa0a9214762
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965138"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98690038"
 ---
 ## <a name="install-the-container"></a>Instalace kontejneru
 
@@ -38,7 +38,7 @@ Spusťte následující `docker run` příkaz. Nahraďte níže uvedené zástup
 | **{API_KEY}** | Klíč pro prostředek Analýza textu. Můžete ji najít na stránce **klíč a koncový bod** prostředku na Azure Portal. |`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`|
 | **{ENDPOINT_URI}** | Koncový bod pro přístup k rozhraní API pro analýzu textu. Můžete ji najít na stránce **klíč a koncový bod** prostředku na Azure Portal. | `https://<your-custom-subdomain>.cognitiveservices.azure.com` |
 | **{IMAGE_ID}** | ID image pro váš kontejner. | `1.1.011300001-amd64-preview` |
-| **{INPUT_DIR}** | Vstupní adresář pro kontejner. | Systému `C:\healthcareMount` <br> Linux/MacOS: `/home/username/input` |
+| **{INPUT_DIR}** | Vstupní adresář pro kontejner. | Windows: `C:\healthcareMount` <br> Linux/MacOS: `/home/username/input` |
 
 ```bash
 docker run --rm -it -p 5000:5000 --cpus 6 --memory 12g \
@@ -84,7 +84,7 @@ Azure [Web App for Containers](https://azure.microsoft.com/services/app-service/
 
 Spuštěním tohoto skriptu PowerShellu pomocí Azure CLI vytvoříte Web App for Containers pomocí svého předplatného a image kontejneru přes HTTPS. Před odesláním první žádosti počkejte, než se skript dokončí (přibližně 25-30 minut).
 
-```bash
+```azurecli
 $subscription_name = ""                    # THe name of the subscription you want you resource to be created on.
 $resource_group_name = ""                  # The name of the resource group you want the AppServicePlan
                                            #    and AppSerivce to be attached to.
@@ -118,7 +118,7 @@ Informace o dostupnosti najdete v článku věnovaném [místní podpoře ACI](.
 > [!NOTE] 
 > Azure Container Instances Nezahrnovat podporu protokolu HTTPS pro předdefinované domény. Pokud potřebujete protokol HTTPS, budete ho muset ručně nakonfigurovat, včetně vytvoření certifikátu a registrace domény. Pokyny k tomu, jak to udělat s NGINX, najdete níže.
 
-```bash
+```azurecli
 $subscription_name = ""                    # The name of the subscription you want you resource to be created on.
 $resource_group_name = ""                  # The name of the resource group you want the AppServicePlan
                                            # and AppService to be attached to.

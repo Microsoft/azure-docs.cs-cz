@@ -1,15 +1,15 @@
 ---
 title: Seznam předdefinovaných definic zásad
 description: Vypíše předdefinované definice zásad pro Azure Policy. Kategorie zahrnují značky, dodržování předpisů, Key Vault, Kubernetes, konfiguraci hostů a další.
-ms.date: 01/08/2021
+ms.date: 01/21/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: ccd310583f003fd381b9ddd48333644f2241ea88
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 3b29a4c86ee61247fa3caeb542e08a4ac24ff8c4
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98047127"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685804"
 ---
 # <a name="azure-policy-built-in-policy-definitions"></a>Azure Policy předdefinované definice zásad
 
@@ -73,7 +73,7 @@ Název každého z vestavěných odkazů na definici zásady v Azure Portal. Pom
 
 [!INCLUDE [azure-policy-reference-policies-cognitive-services](../../../../includes/policy/reference/bycat/policies-cognitive-services.md)]
 
-## <a name="compute"></a>Výpočetní prostředky
+## <a name="compute"></a>Compute
 
 [!INCLUDE [azure-policy-reference-policies-compute](../../../../includes/policy/reference/bycat/policies-compute.md)]
 
@@ -92,6 +92,10 @@ Název každého z vestavěných odkazů na definici zásady v Azure Portal. Pom
 ## <a name="data-box"></a>Data Box
 
 [!INCLUDE [azure-policy-reference-policies-data-box](../../../../includes/policy/reference/bycat/policies-data-box.md)]
+
+## <a name="data-factory"></a>Data Factory
+
+[!INCLUDE [azure-policy-reference-policies-data-factory](../../../../includes/policy/reference/bycat/policies-data-factory.md)]
 
 ## <a name="data-lake"></a>Data Lake
 
@@ -177,7 +181,7 @@ Název každého z vestavěných odkazů na definici zásady v Azure Portal. Pom
 
 [!INCLUDE [azure-policy-reference-policies-sql](../../../../includes/policy/reference/bycat/policies-sql.md)]
 
-## <a name="storage"></a>Úložiště
+## <a name="storage"></a>Storage
 
 [!INCLUDE [azure-policy-reference-policies-storage](../../../../includes/policy/reference/bycat/policies-storage.md)]
 

@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 165fb2937db5edfa4f51f62033afaf87cfff83ef
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 9eb2b916bfe6c73a1535afb077b04fbb081dd5f1
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353098"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685716"
 ---
 # <a name="unique-key-constraints-in-azure-cosmos-db"></a>Omezení jedinečnosti klíčů v Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -22,7 +22,7 @@ Jedinečné klíče přidávají vrstvu integrity dat do kontejneru Azure Cosmos
 
 Po vytvoření kontejneru s jedinečnou zásadou klíče se zabrání vytvoření nové nebo aktualizace existující položky, která má za následek duplikování v rámci logického oddílu, jak je určeno omezením jedinečného klíče. Klíč oddílu v kombinaci s jedinečným klíčem zaručuje jedinečnost položky v rámci rozsahu kontejneru.
 
-Představte si třeba kontejner Azure Cosmos s e-mailovou adresou jako omezení jedinečnosti klíče a `CompanyID` jako klíč oddílu. Když nakonfigurujete e-mailovou adresu uživatele s jedinečným klíčem, každá položka má v rámci dané položky jedinečnou e-mailovou adresu `CompanyID` . Nelze vytvořit dvě položky s duplicitními e-mailovými adresami a stejnou hodnotou klíče oddílu. V rozhraní API ve Azure Cosmos DB SQL (Core) je položka uložená jako hodnota JSON. Tyto hodnoty JSON rozlišují velká a malá písmena. Když vyberete vlastnost jako jedinečný klíč, můžete pro tuto vlastnost vkládat hodnoty pro velká a malá písmena. Například pokud máte jedinečný klíč definovaný pro vlastnost Name, "Gaby" se liší od "Gaby" a můžete do kontejneru vložit obojí.
+Zvažte například kontejner Azure Cosmos s `Email address` jako jedinečné omezení klíče a `CompanyID` jako klíč oddílu. Když nakonfigurujete e-mailovou adresu uživatele s jedinečným klíčem, každá položka má v rámci dané položky jedinečnou e-mailovou adresu `CompanyID` . Nelze vytvořit dvě položky s duplicitními e-mailovými adresami a stejnou hodnotou klíče oddílu. V rozhraní API ve Azure Cosmos DB SQL (Core) je položka uložená jako hodnota JSON. Tyto hodnoty JSON rozlišují velká a malá písmena. Když vyberete vlastnost jako jedinečný klíč, můžete pro tuto vlastnost vkládat hodnoty pro velká a malá písmena. Například pokud máte jedinečný klíč definovaný pro vlastnost Name, "Gaby" se liší od "Gaby" a můžete do kontejneru vložit obojí.
 
 Pokud chcete vytvořit položky se stejnou e-mailovou adresou, ale ne se stejným křestním jménem, posledním jménem a e-mailovou adresou, přidejte další cesty k zásadě jedinečného klíče. Místo vytváření jedinečného klíče na základě e-mailové adresy můžete také vytvořit jedinečný klíč s kombinací křestního jména, příjmení a e-mailové adresy. Tento klíč je známý jako složený jedinečný klíč. V takovém případě je povolena každá jedinečná kombinace tří hodnot v rámci dané položky `CompanyID` . 
 

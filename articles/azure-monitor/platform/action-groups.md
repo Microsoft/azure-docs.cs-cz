@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 72caeb60fc058b88158979d211a0bc38985975c7
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 444b514dfb1798ff810e84fc4e9d50001dbaee1c
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968853"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685784"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Vytváření a správa skupin akcí na webu Azure Portal
 Skupina akcí je kolekce předvoleb oznámení definovaných vlastníkem předplatného Azure. Výstrahy Azure Monitor a Service Health pomocí skupin akcí upozorní uživatele na aktivaci výstrahy. Různé výstrahy můžou v závislosti na požadavcích uživatele používat stejnou skupinu akcí nebo různé skupiny akcí. 
@@ -164,6 +164,7 @@ Ve skupině akcí můžete mít omezený počet akcí aplikace logiky.
 
 > [!NOTE]
 > Použití akce Webhooku vyžaduje, aby cílový koncový bod Webhooku buď nevyžadoval úspěšné fungování výstrahy, nebo mohl analyzovat informace kontextu výstrahy, které jsou k dispozici jako součást operace POST. Pokud koncový bod Webhooku nemůže zpracovat informace kontextu výstrahy sám o sobě, můžete použít řešení jako [akci aplikace logiky](./action-groups-logic-app.md) pro vlastní manipulaci s informacemi v kontextu výstrahy, aby odpovídala očekávanému formátu dat Webhooku.
+> Uživatel by měl být **vlastníkem** instančního objektu Webhooku, aby se zajistilo, že zabezpečení nebude narušeno. Protože každý zákazník Azure má přístup ke všem ID objektů prostřednictvím portálu bez kontroly jeho majitele, může kdokoli přidat zabezpečený Webhook do své vlastní skupiny akcí pro upozornění na upozornění služby Azure monitor, které porušuje zabezpečení.
 
 Akce Webhooku skupin akcí vám umožní využít výhod Azure Active Directory k zabezpečení připojení mezi skupinou akcí a vaším chráněným webovým rozhraním API (koncový bod Webhooku). Celkový pracovní postup pro využití této funkce je popsaný níže. Přehled aplikací a instančních objektů služby Azure AD najdete v tématu [Přehled Microsoft Identity Platform (v 2.0)](../../active-directory/develop/v2-overview.md).
 
@@ -318,11 +319,7 @@ Ceny pro podporované země nebo oblasti najdete na stránce s [cenami Azure mon
 ### <a name="webhook"></a>Webhook
 
 > [!NOTE]
-> Použití akce Webhooku vyžaduje, aby cílový koncový bod Webhooku buď nevyžadoval úspěšné fungování výstrahy, nebo mohl analyzovat informace kontextu výstrahy, které jsou k dispozici jako součást operace POST. 
-
-> Uživatel by měl být **vlastníkem** instančního objektu Webhooku, aby se zajistilo, že zabezpečení nebude narušeno. Protože každý zákazník Azure má přístup ke všem ID objektů prostřednictvím portálu bez kontroly jeho majitele, může kdokoli přidat zabezpečený Webhook do své vlastní skupiny akcí pro upozornění na upozornění služby Azure monitor, které porušuje zabezpečení.
-
-> Pokud koncový bod Webhooku nemůže zpracovat informace kontextu výstrahy sám o sobě, můžete použít řešení jako [akci aplikace logiky](./action-groups-logic-app.md) pro vlastní manipulaci s informacemi v kontextu výstrahy, aby odpovídala očekávanému formátu dat Webhooku.
+> Použití akce Webhooku vyžaduje, aby cílový koncový bod Webhooku buď nevyžadoval úspěšné fungování výstrahy, nebo mohl analyzovat informace kontextu výstrahy, které jsou k dispozici jako součást operace POST. Pokud koncový bod Webhooku nemůže zpracovat informace kontextu výstrahy sám o sobě, můžete použít řešení jako [akci aplikace logiky](./action-groups-logic-app.md) pro vlastní manipulaci s informacemi v kontextu výstrahy, aby odpovídala očekávanému formátu dat Webhooku.
 
 Webhooky se zpracovávají pomocí následujících pravidel.
 - Volání Webhooku se podařilo maximálně třikrát.

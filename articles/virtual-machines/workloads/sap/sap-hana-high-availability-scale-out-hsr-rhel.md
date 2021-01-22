@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 23a5ea2d3ffc1511bea66bb8bc3c4282b6d16cc2
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c97975d6920cd0f04a7d2d4e73c00104a2b13235
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489118"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685608"
 ---
 # <a name="high-availability-of-sap-hana-scale-out-system-on-red-hat-enterprise-linux"></a>Vysoká dostupnost SAP HANA systému škálování na více systémů na Red Hat Enterprise Linux 
 
@@ -165,7 +165,7 @@ Pro konfiguraci prezentovanou v tomto dokumentu nasaďte sedm virtuálních poč
 
     b. Spusťte následující příkazy, aby bylo možné zrychlit sítě pro další síťová rozhraní, která jsou připojena k `inter` `hsr` podsítím a.  
 
-    ```
+    ```azurecli
     az network nic update --id /subscriptions/your subscription/resourceGroups/your resource group/providers/Microsoft.Network/networkInterfaces/hana-s1-db1-inter --accelerated-networking true
     az network nic update --id /subscriptions/your subscription/resourceGroups/your resource group/providers/Microsoft.Network/networkInterfaces/hana-s1-db2-inter --accelerated-networking true
     az network nic update --id /subscriptions/your subscription/resourceGroups/your resource group/providers/Microsoft.Network/networkInterfaces/hana-s1-db3-inter --accelerated-networking true
@@ -256,7 +256,7 @@ Pomocí následujících kroků nakonfigurujte a připravte operační systém:
 
 1. **[A]** Udržujte hostitelské soubory na virtuálních počítačích. Zahrnout položky pro všechny podsítě Do tohoto příkladu byly přidány následující položky `/etc/hosts` .  
 
-    ```
+    ```bash
      # Client subnet
      10.23.0.11 hana-s1-db1
      10.23.0.12 hana-s1-db1
@@ -303,7 +303,7 @@ V tomto příkladu jsou sdílené systémy souborů HANA nasazeny na Azure NetAp
 
 1. **[Ah]** Vytvořte přípojné body pro databázové svazky HANA.  
 
-    ```
+    ```bash
     mkdir -p /hana/shared
     ```
 
@@ -313,7 +313,7 @@ V tomto příkladu jsou sdílené systémy souborů HANA nasazeny na Azure NetAp
     > [!IMPORTANT]
     > Ujistěte se, že jste na virtuálním počítači nastavili doménu systému souborů NFS, `/etc/idmapd.conf` aby odpovídala výchozí konfiguraci domény v Azure NetApp Files: **`defaultv4iddomain.com`** . Pokud dojde k neshodě mezi konfigurací domény v klientovi NFS (tj. virtuálním počítačem) a serverem NFS, tj. konfigurací Azure NetApp, pak se budou zobrazovat oprávnění k souborům na svazcích Azure NetApp, které jsou připojené k virtuálním počítačům `nobody` .  
 
-    ```
+    ```bash
     sudo cat /etc/idmapd.conf
     # Example
     [General]
@@ -326,7 +326,7 @@ V tomto příkladu jsou sdílené systémy souborů HANA nasazeny na Azure NetAp
 3. **[Ah]** Ověřte `nfs4_disable_idmapping` . Měl by být nastaven na **Y**. Pokud chcete vytvořit adresářovou strukturu `nfs4_disable_idmapping` , kde se nachází, spusťte příkaz Mount. V/sys/modules nebudete moct ručně vytvořit adresář, protože přístup je vyhrazený pro jádro nebo ovladače.  
    Tento krok je potřeba jenom v případě, že používáte Azure NetAppFiles NFSv 4.1.  
 
-    ```
+    ```bash
     # Check nfs4_disable_idmapping 
     cat /sys/module/nfs/parameters/nfs4_disable_idmapping
     # If you need to set nfs4_disable_idmapping to Y
@@ -342,20 +342,20 @@ V tomto příkladu jsou sdílené systémy souborů HANA nasazeny na Azure NetAp
 
 4. **[AH1]** Připojte sdílené Azure NetApp Files svazky na virtuálních počítačích databáze SITE1 HANA.  
 
-    ```
+    ```bash
     sudo mount -o rw,vers=4,minorversion=1,hard,timeo=600,rsize=262144,wsize=262144,intr,noatime,lock,_netdev,sec=sys 10.23.1.7:/HN1-shared-s1 /hana/shared
     ```
 
 5. **[AH2]** Připojte sdílené Azure NetApp Files svazky na virtuálních počítačích databáze SITE2 HANA.  
 
-    ```
+    ```bash
     sudo mount -o rw,vers=4,minorversion=1,hard,timeo=600,rsize=262144,wsize=262144,intr,noatime,lock,_netdev,sec=sys 10.23.1.7:/HN1-shared-s2 /hana/shared
     ```
 
 
 10. **[Ah]** Ověřte, jestli `/hana/shared/` jsou odpovídající systémy souborů připojené ke všem virtuálním počítačům databáze Hana s protokolem NFS verze **názvů NFSv4**.  
 
-    ```
+    ```bash
     sudo nfsstat -m
     # Verify that flag vers is set to 4.1 
     # Example from SITE 1, hana-s1-db1
@@ -372,25 +372,25 @@ V uvedené konfiguraci se systémy souborů `/hana/data` a `/hana/log` nasazují
 Nastavení rozložení disku pomocí  **Správce logických svazků (LVM)**. Následující příklad předpokládá, že každý virtuální počítač HANA má připojené tři datové disky, které se používají k vytvoření dvou svazků.
 
 1. **[Ah]** Vypíše všechny dostupné disky:
-    ```
+    ```bash
     ls /dev/disk/azure/scsi1/lun*
     ```
 
    Příklad výstupu:
 
-    ```
+    ```bash
     /dev/disk/azure/scsi1/lun0  /dev/disk/azure/scsi1/lun1  /dev/disk/azure/scsi1/lun2 
     ```
 
 2. **[Ah]** Vytvořte fyzické svazky pro všechny disky, které chcete použít:
-    ```
+    ```bash
     sudo pvcreate /dev/disk/azure/scsi1/lun0
     sudo pvcreate /dev/disk/azure/scsi1/lun1
     sudo pvcreate /dev/disk/azure/scsi1/lun2
     ```
 
 3. **[Ah]** Vytvořte skupinu svazků pro datové soubory. Pro soubory protokolu použijte jednu skupinu svazků a jednu pro sdílený adresář SAP HANA:
-    ```
+    ```bash
     sudo vgcreate vg_hana_data_HN1 /dev/disk/azure/scsi1/lun0 /dev/disk/azure/scsi1/lun1
     sudo vgcreate vg_hana_log_HN1 /dev/disk/azure/scsi1/lun2
     ```
@@ -402,7 +402,7 @@ Nastavení rozložení disku pomocí  **Správce logických svazků (LVM)**. Ná
    > Použijte `-i` přepínač a nastavte jej na číslo základního fyzického svazku, pokud pro každý z nich použijete více fyzických svazků. `-I`Při vytváření prokládaného svazku použijte přepínač k určení velikosti pruhu.  
    > Doporučené konfigurace úložiště, včetně velikosti pruhů a počtu disků, najdete v tématu [SAP HANA konfigurace úložiště virtuálních počítačů](./hana-vm-operations-storage.md) .  
 
-    ```
+    ```bash
     sudo lvcreate -i 2 -I 256 -l 100%FREE -n hana_data vg_hana_data_HN1
     sudo lvcreate -l 100%FREE -n hana_log vg_hana_log_HN1
     sudo mkfs.xfs /dev/vg_hana_data_HN1/hana_data
@@ -410,7 +410,7 @@ Nastavení rozložení disku pomocí  **Správce logických svazků (LVM)**. Ná
     ```
 
 5. **[Ah]** Vytvořte adresáře připojení a zkopírujte identifikátor UUID všech logických svazků:
-    ```
+    ```bash
     sudo mkdir -p /hana/data/HN1
     sudo mkdir -p /hana/log/HN1
     # Write down the ID of /dev/vg_hana_data_HN1/hana_data and /dev/vg_hana_log_HN1/hana_log
@@ -418,20 +418,20 @@ Nastavení rozložení disku pomocí  **Správce logických svazků (LVM)**. Ná
     ```
 
 6. **[Ah]** Vytvořit `fstab` položky pro logické svazky a připojení:
-    ```
+    ```bash
     sudo vi /etc/fstab
     ```
 
    Do souboru vložte následující řádek `/etc/fstab` :
 
-    ```
+    ```bash
     /dev/disk/by-uuid/UUID of /dev/mapper/vg_hana_data_HN1-hana_data /hana/data/HN1 xfs  defaults,nofail  0  2
     /dev/disk/by-uuid/UUID of /dev/mapper/vg_hana_log_HN1-hana_log /hana/log/HN1 xfs  defaults,nofail  0  2
     ```
 
    Připojte nové svazky:
 
-    ```
+    ```bash
     sudo mount -a
     ```
 
@@ -444,27 +444,27 @@ V tomto příkladu pro nasazení SAP HANA v konfiguraci škálování na více i
 1. **[Ah]** Před instalací HANA nastavte kořenové heslo. Po dokončení instalace můžete kořenové heslo zakázat. Spustit jako `root` příkaz `passwd`  
 
 2. **[1, 2]** změnit oprávnění pro `/hana/shared` 
-    ```
+    ```bash
     chmod 775 /hana/shared
     ```
 
 3. **[1]** ověřte, že se můžete přihlásit přes SSH k virtuálním počítačům databáze Hana v této lokalitě **Hana-S1-DB2** a **Hana-S1-DB3**, aniž by se zobrazila výzva k zadání hesla.  
    V takovém případě se klíče Exchange SSH, jak je popsáno v části [použití ověřování založeného na klíčích](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/s2-ssh-configuration-keypairs).  
-    ```
+    ```bash
     ssh root@hana-s1-db2
     ssh root@hana-s1-db3
     ```
 
 4. **[2]** ověřte, že se můžete přihlásit přes SSH k virtuálním počítačům databáze Hana v této lokalitě **: Hana-S2-DB2** a **Hana-S2-DB3**, aniž by se zobrazila výzva k zadání hesla.  
    V takovém případě se klíče Exchange SSH, jak je popsáno v části [použití ověřování založeného na klíčích](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/s2-ssh-configuration-keypairs).  
-    ```
+    ```bash
     ssh root@hana-s2-db2
     ssh root@hana-s2-db3
     ```
 
 5. **[Ah]** Nainstalujte další balíčky, které se vyžadují pro HANA 2,0 SP4. Další informace najdete v tématu SAP Note [2593824](https://launchpad.support.sap.com/#/notes/2593824) for RHEL 7. 
 
-    ```
+    ```bash
     # If using RHEL 7
     yum install libgcc_s1 libstdc++6 compat-sap-c++-7 libatomic1
     # If using RHEL 8
@@ -473,7 +473,7 @@ V tomto příkladu pro nasazení SAP HANA v konfiguraci škálování na více i
 
 
 6. **[A]** dočasně zakáže bránu firewall, aby nebránila instalaci Hana. Po dokončení instalace HANA ji můžete znovu povolit. 
-    ```
+    ```bash
     # Execute as root
     systemctl stop firewalld
     systemctl disable firewalld
@@ -485,7 +485,7 @@ V tomto příkladu pro nasazení SAP HANA v konfiguraci škálování na více i
 
    a. Spusťte program **hdblcm** jako `root` z adresáře instalačního softwaru Hana. Použijte `internal_network` parametr a předejte adresní prostor pro podsíť, který se používá pro interní komunikaci mezi uzly v Hana.  
 
-    ```
+    ```bash
     ./hdblcm --internal_network=10.23.1.128/26
     ```
 
@@ -522,7 +522,7 @@ V tomto příkladu pro nasazení SAP HANA v konfiguraci škálování na více i
 
    Zobrazte global.ini a ujistěte se, že je nastavená konfigurace pro interní SAP HANA komunikace mezi uzly. Ověřte část **komunikace** . Měl by mít adresní prostor pro `inter` podsíť a `listeninterface` měl by být nastaven na `.internal` . Ověřte část **internal_hostname_resolution** . Měl by mít IP adresy pro virtuální počítače HANA, které patří do `inter` podsítě.  
 
-   ```
+   ```bash
      sudo cat /usr/sap/HN1/SYS/global/hdb/custom/config/global.ini
      # Example from SITE1 
      [communication]
@@ -536,7 +536,7 @@ V tomto příkladu pro nasazení SAP HANA v konfiguraci škálování na více i
 
 4. **[1, 2]** Připravte `global.ini` se na instalaci v nesdíleném prostředí, jak je popsáno v tématu SAP Note [2080991](https://launchpad.support.sap.com/#/notes/0002080991).  
 
-   ```
+   ```bash
     sudo vi /usr/sap/HN1/SYS/global/hdb/custom/config/global.ini
     [persistence]
     basepath_shared = no
@@ -544,14 +544,14 @@ V tomto příkladu pro nasazení SAP HANA v konfiguraci škálování na více i
 
 4. **[1, 2]** restartujte SAP HANA, aby se změny aktivovaly.  
 
-   ```
+   ```bash
     sudo -u hn1adm /usr/sap/hostctrl/exe/sapcontrol -nr 03 -function StopSystem
     sudo -u hn1adm /usr/sap/hostctrl/exe/sapcontrol -nr 03 -function StartSystem
    ```
 
 6. **[1, 2]** ověřte, že klientské rozhraní bude používat IP adresy z `client` podsítě pro komunikaci.  
 
-    ```
+    ```bash
     # Execute as hn1adm
     /usr/sap/HN1/HDB03/exe/hdbsql -u SYSTEM -p "password" -i 03 -d SYSTEMDB 'select * from SYS.M_HOST_INFORMATION'|grep net_publicname
     # Expected result - example from SITE 2
@@ -562,13 +562,13 @@ V tomto příkladu pro nasazení SAP HANA v konfiguraci škálování na více i
 
 7. **[Ah]** Změňte oprávnění k adresářům dat a protokolů, aby se zabránilo chybě instalace HANA.  
 
-   ```
+   ```bash
     sudo chmod o+w -R /hana/data /hana/log
    ```
 
 8. **[1]** nainstalujte sekundární uzly Hana. Příklady instrukcí v tomto kroku jsou pro LOKALITu 1.  
    a. Spusťte rezidentský program **hdblcm** jako `root` .    
-    ```
+    ```bash
      cd /hana/shared/HN1/hdblcm
      ./hdblcm 
     ```
@@ -602,21 +602,21 @@ V tomto příkladu pro nasazení SAP HANA v konfiguraci škálování na více i
 
    Zálohujte databáze jako **HN1** ADM:
 
-    ```
+    ```bash
     hdbsql -d SYSTEMDB -u SYSTEM -p "passwd" -i 03 "BACKUP DATA USING FILE ('initialbackupSYS')"
     hdbsql -d HN1 -u SYSTEM -p "passwd" -i 03 "BACKUP DATA USING FILE ('initialbackupHN1')"
     ```
 
    Zkopírujte systémové soubory PKI do sekundární lokality:
 
-    ```
+    ```bash
     scp /usr/sap/HN1/SYS/global/security/rsecssfs/data/SSFS_HN1.DAT hana-s2-db1:/usr/sap/HN1/SYS/global/security/rsecssfs/data/
     scp /usr/sap/HN1/SYS/global/security/rsecssfs/key/SSFS_HN1.KEY  hana-s2-db1:/usr/sap/HN1/SYS/global/security/rsecssfs/key/
     ```
 
    Vytvořit primární lokalitu:
 
-    ```
+    ```bash
     hdbnsutil -sr_enable --name=HANA_S1
     ```
 
@@ -624,7 +624,7 @@ V tomto příkladu pro nasazení SAP HANA v konfiguraci škálování na více i
     
    Zaregistrujte druhou lokalitu a spusťte replikaci systému. Spusťte následující příkaz <hanasid \> ADM:
 
-    ```
+    ```bash
     sapcontrol -nr 03 -function StopWait 600 10
     hdbnsutil -sr_register --remoteHost=hana-s1-db1 --remoteInstance=03 --replicationMode=sync --name=HANA_S2
     sapcontrol -nr 03 -function StartSystem
@@ -634,7 +634,7 @@ V tomto příkladu pro nasazení SAP HANA v konfiguraci škálování na více i
 
    Ověřte stav replikace a počkejte, dokud nebudou všechny databáze synchronizovány.
 
-    ```
+    ```bash
     sudo su - hn1adm -c "python /usr/sap/HN1/HDB03/exe/python_support/systemReplicationStatus.py"
     # | Database | Host          | Port  | Service Name | Volume ID | Site ID | Site Name | Secondary     | Secondary | Secondary | Secondary | Secondary     | Replication | Replication | Replication    |
     # |          |               |       |              |           |         |           | Host          | Port      | Site ID   | Site Name | Active Status | Mode        | Status      | Status Details |
@@ -657,12 +657,12 @@ V tomto příkladu pro nasazení SAP HANA v konfiguraci škálování na více i
 
 4. **[1, 2]** změňte konfiguraci Hana tak, aby se komunikace pro replikaci systému Hana mohla posílat i přes virtuální síťová rozhraní replikace systému Hana.   
    - Zastavení HANA na obou webech
-    ```
+    ```bash
     sudo -u hn1adm /usr/sap/hostctrl/exe/sapcontrol -nr 03 -function StopSystem HDB
     ```
 
    - Upravit global.ini pro přidání mapování hostitele pro replikaci systému HANA: použijte IP adresy z `hsr` podsítě.  
-    ```
+    ```bash
     sudo vi /usr/sap/HN1/SYS/global/hdb/custom/config/global.ini
     #Add the section
     [system_replication_hostname_resolution]
@@ -675,7 +675,7 @@ V tomto příkladu pro nasazení SAP HANA v konfiguraci škálování na více i
     ```
 
    - Spustit HANA na obou webech
-   ```
+   ```bash
     sudo -u hn1adm /usr/sap/hostctrl/exe/sapcontrol -nr 03 -function StartSystem HDB
    ```
 
@@ -683,7 +683,7 @@ V tomto příkladu pro nasazení SAP HANA v konfiguraci škálování na více i
 
 5. **[Ah]** Bránu firewall znovu povolte.  
    - Opětovné povolení brány firewall
-       ```
+       ```bash
        # Execute as root
        systemctl start firewalld
        systemctl enable firewalld
@@ -694,7 +694,7 @@ V tomto příkladu pro nasazení SAP HANA v konfiguraci škálování na více i
        > [!IMPORTANT]
        > Vytvořte pravidla brány firewall, která umožní komunikaci mezi uzly HANA a klientský provoz. Požadované porty jsou uvedené na [portech TCP/IP všech produktů SAP](https://help.sap.com/viewer/ports). Následující příkazy jsou pouze příkladem. V tomto scénáři s použitým systémovým číslem 03.
 
-       ```
+       ```bash
         # Execute as root
         sudo firewall-cmd --zone=public --add-port=30301/tcp --permanent
         sudo firewall-cmd --zone=public --add-port=30301/tcp
@@ -753,19 +753,19 @@ Zahrňte všechny virtuální počítače, včetně většiny maker v clusteru.
 
 1. **[1, 2]** zastavit SAP HANA na obou replikačních lokalitách. Spustit jako <\> ADM SID  
 
-    ```
+    ```bash
     sapcontrol -nr 03 -function StopSystem
     ```
 
 2. **[Ah]** Zrušit připojení systému souborů `/hana/shared` , které bylo dočasně připojeno k instalaci na všechny virtuální počítače Hana DB. Než budete moct zrušit připojení, budete muset zastavit všechny procesy a relace, které používají systém souborů. 
  
-    ```
+    ```bash
     umount /hana/shared 
     ```
 
 3. **[1]** vytvořte prostředky clusteru systému souborů pro `/hana/shared` v zakázaném stavu. Prostředky se vytvoří s možností `--disabled` , protože musíte definovat omezení umístění, než budou připojení povolená.  
 
-    ```
+    ```bash
     # /hana/shared file system for site 1
     pcs resource create fs_hana_shared_s1 --disabled ocf:heartbeat:Filesystem device=10.23.1.7:/HN1-shared-s1  directory=/hana/shared \
     fstype=nfs options='defaults,rw,hard,timeo=600,rsize=262144,wsize=262144,proto=tcp,intr,noatime,sec=sys,vers=4.1,lock,_netdev' op monitor interval=20s on-fail=fence timeout=40s OCF_CHECK_LEVEL=20 \
@@ -787,7 +787,7 @@ Zahrňte všechny virtuální počítače, včetně většiny maker v clusteru.
 
 4. **[1]** nakonfigurujte a ověřte atributy uzlu. Všem uzlům SAP HANA DB v lokalitě replikace 1 jsou přiřazeny atributy `S1` a na všech uzlech SAP HANA DB v replikační lokalitě 2 jsou přiřazeny atributy `S2` .  
 
-    ```
+    ```bash
     # HANA replication site 1
     pcs node attribute hana-s1-db1 NFS_SID_SITE=S1
     pcs node attribute hana-s1-db2 NFS_SID_SITE=S1
@@ -801,7 +801,7 @@ Zahrňte všechny virtuální počítače, včetně většiny maker v clusteru.
     ```
 
 5. **[1]** nakonfigurujte omezení, která určují, kam budou připojené SOUBOROVÉ systémy NFS, a povolte prostředky systému souborů.  
-    ```
+    ```bash
     # Configure the constraints
     pcs constraint location fs_hana_shared_s1-clone rule resource-discovery=never score=-INFINITY NFS_SID_SITE ne S1
     pcs constraint location fs_hana_shared_s2-clone rule resource-discovery=never score=-INFINITY NFS_SID_SITE ne S2
@@ -814,7 +814,7 @@ Zahrňte všechny virtuální počítače, včetně většiny maker v clusteru.
  
 6. **[Ah]** Ověřte, že jsou svazky ANF připojené pod `/hana/shared` na všechny virtuální počítače Hana DB na obou lokalitách.
 
-    ```
+    ```bash
     sudo nfsstat -m
     # Verify that flag vers is set to 4.1 
     # Example from SITE 1, hana-s1-db1
@@ -827,7 +827,7 @@ Zahrňte všechny virtuální počítače, včetně většiny maker v clusteru.
 
 7. **[1]** nakonfigurujte prostředky atributů. Nakonfigurujte omezení, která nastaví atributy na `true` , pokud jsou připojení NFS pro `hana/shared` připojená.  
 
-    ```
+    ```bash
     # Configure the attribure resources
     pcs resource create hana_nfs_s1_active ocf:pacemaker:attribute active_value=true inactive_value=false name=hana_nfs_s1_active
     pcs resource create hana_nfs_s2_active ocf:pacemaker:attribute active_value=true inactive_value=false name=hana_nfs_s2_active
@@ -843,7 +843,7 @@ Zahrňte všechny virtuální počítače, včetně většiny maker v clusteru.
    > Pokud vaše konfigurace zahrnuje další systémy souborů, kromě/ `hana/shared` , které jsou připojené k systému souborů NFS, pak možnost zahrňte, `sequential=false` aby nedocházelo k žádným závislostem mezi systémy souborů. Všechny systémy souborů připojené k systému souborů NFS musí začínat před odpovídajícím prostředkem atributu, ale nemusí být spouštěny v libovolném pořadí, které je vzájemně relativní. Další informace najdete v tématu [návody konfigurace SAP HANA Scale-Out HSR v clusteru Pacemaker, když jsou systémy souborů Hana sdílené složkou NFS](https://access.redhat.com/solutions/5423971).  
 
 8. **[1]** umístěte Pacemaker do režimu údržby a v přípravě na vytvoření prostředků clusteru Hana.  
-    ```
+    ```bash
     pcs property set maintenance-mode=true
     ```
 
@@ -851,7 +851,7 @@ Zahrňte všechny virtuální počítače, včetně většiny maker v clusteru.
 
 1. **[A]** nainstalujte agenta prostředků s možností škálování na více instancí na všechny uzly clusteru, včetně většiny maker.    
 
-    ```
+    ```bash
     yum install -y resource-agents-sap-hana-scaleout 
     ```
 
@@ -862,14 +862,14 @@ Zahrňte všechny virtuální počítače, včetně většiny maker v clusteru.
 2. **[1, 2]** nainstalujte replikačního zavěšení systému Hana. Zavěšení musí být nainstalováno na jednom uzlu databáze HANA na všech lokalitách replikace systému. SAP HANA by měl být stále mimo provoz.        
 
    1. Příprava zavěšení jako `root` 
-    ```
+    ```bash
      mkdir -p /hana/shared/myHooks
      cp /usr/share/SAPHanaSR-ScaleOut/SAPHanaSR.py /hana/shared/myHooks
      chown -R hn1adm:sapsys /hana/shared/myHooks
     ```
 
    2. Tvoř `global.ini`
-    ```
+    ```bash
     # add to global.ini
     [ha_dr_provider_SAPHanaSR]
     provider = SAPHanaSR
@@ -881,7 +881,7 @@ Zahrňte všechny virtuální počítače, včetně většiny maker v clusteru.
     ```
 
 3. **[Ah]** Cluster vyžaduje konfiguraci sudoers na uzlu clusteru pro <\> ADM SID. V tomto příkladu je dosaženo vytvořením nového souboru. Spusťte příkazy jako `root` .    
-    ``` 
+    ```bash
     cat << EOF > /etc/sudoers.d/20-saphana
     # SAPHanaSR-ScaleOut needs for srHook
      Cmnd_Alias SOK = /usr/sbin/crm_attribute -n hana_hn1_glob_srHook -v SOK -t crm_config -s SAPHanaSR
@@ -892,13 +892,13 @@ Zahrňte všechny virtuální počítače, včetně většiny maker v clusteru.
 
 4. **[1, 2]** spusťte SAP HANA na obou replikačních lokalitách. Spustit jako <\> ADM SID  
 
-    ```
+    ```bash
     sapcontrol -nr 03 -function StartSystem 
     ```
 
 5. **[1]** Ověřte instalaci zavěšení. Vykoná se <\> ADM SID na aktivní lokalitě replikace systému Hana.   
 
-    ```
+    ```bash
     cdtrace
      awk '/ha_dr_SAPHanaSR.*crm_attribute/ \
      { printf "%s %s %s %s\n",$2,$3,$5,$16 }' nameserver_*
@@ -917,7 +917,7 @@ Zahrňte všechny virtuální počítače, včetně většiny maker v clusteru.
     
    2. Potom vytvořte prostředek topologie HANA.  
       Při sestavování clusteru RHEL **7. x** použijte následující příkazy:  
-      ```
+      ```bash
       pcs resource create SAPHanaTopology_HN1_HDB03 SAPHanaTopologyScaleOut \
        SID=HN1 InstanceNumber=03 \
        op start timeout=600 op stop timeout=300 op monitor interval=10 timeout=600
@@ -926,7 +926,7 @@ Zahrňte všechny virtuální počítače, včetně většiny maker v clusteru.
       ```
 
       Při sestavování clusteru RHEL **8. x** použijte následující příkazy:  
-      ```
+      ```bash
       pcs resource create SAPHanaTopology_HN1_HDB03 SAPHanaTopology \
        SID=HN1 InstanceNumber=03 meta clone-node-max=1 interleave=true \
        op methods interval=0s timeout=5 \
@@ -940,7 +940,7 @@ Zahrňte všechny virtuální počítače, včetně většiny maker v clusteru.
       > Tento článek obsahuje odkazy na *podřízený* termín, termín, který už Microsoft nepoužívá. Po odebrání termínu ze softwaru ho odebereme z tohoto článku.  
  
       Při sestavování clusteru RHEL **7. x** použijte následující příkazy:    
-      ```
+      ```bash
       pcs resource create SAPHana_HN1_HDB03 SAPHanaController \
        SID=HN1 InstanceNumber=03 PREFER_SITE_TAKEOVER=true DUPLICATE_PRIMARY_TIMEOUT=7200 AUTOMATED_REGISTER=false \
        op start interval=0 timeout=3600 op stop interval=0 timeout=3600 op promote interval=0 timeout=3600 \
@@ -951,7 +951,7 @@ Zahrňte všechny virtuální počítače, včetně většiny maker v clusteru.
       ```
 
       Při sestavování clusteru RHEL **8. x** použijte následující příkazy:  
-      ```
+      ```bash
       pcs resource create SAPHana_HN1_HDB03 SAPHanaController \
        SID=HN1 InstanceNumber=03 PREFER_SITE_TAKEOVER=true DUPLICATE_PRIMARY_TIMEOUT=7200 AUTOMATED_REGISTER=false \
        op demote interval=0s timeout=320 op methods interval=0s timeout=5 \
@@ -965,7 +965,7 @@ Zahrňte všechny virtuální počítače, včetně většiny maker v clusteru.
       > Doporučujeme, abyste jako osvědčený postup nastavili pouze AUTOMATED_REGISTER na **ne** a prováděly důkladné testy pro převzetí služeb při selhání, aby se neúspěšná primární instance automaticky registrovala jako sekundární. Po úspěšném dokončení testů pro převzetí služeb při selhání nastavte AUTOMATED_REGISTER na **Ano**, aby se mohla replikace systému automaticky obnovit. 
 
    4. Vytvoření virtuální IP adresy a přidružených prostředků  
-      ```
+      ```bash
       pcs resource create vip_HN1_03 ocf:heartbeat:IPaddr2 ip=10.23.0.18 op monitor interval="10s" timeout="20s"
       sudo pcs resource create nc_HN1_03 azure-lb port=62503
       sudo pcs resource group add g_ip_HN1_03 nc_HN1_03 vip_HN1_03
@@ -973,7 +973,7 @@ Zahrňte všechny virtuální počítače, včetně většiny maker v clusteru.
 
    5. Vytvoření omezení clusteru  
       Při sestavování clusteru RHEL **7. x** použijte následující příkazy:  
-      ```
+      ```bash
       #Start HANA topology, before the HANA instance
       pcs constraint order SAPHanaTopology_HN1_HDB03-clone then msl_SAPHana_HN1_HDB03
 
@@ -983,7 +983,7 @@ Zahrňte všechny virtuální počítače, včetně většiny maker v clusteru.
       ```
  
       Při sestavování clusteru RHEL **8. x** použijte následující příkazy:  
-      ```
+      ```bash
       #Start HANA topology, before the HANA instance
       pcs constraint order SAPHanaTopology_HN1_HDB03-clone then SAPHana_HN1_HDB03-clone
 
@@ -993,7 +993,7 @@ Zahrňte všechny virtuální počítače, včetně většiny maker v clusteru.
       ```
 
 7. **[1]** umístit cluster do režimu údržby. Ujistěte se, že stav clusteru je OK a že jsou spuštěné všechny prostředky.  
-    ```
+    ```bash
     sudo pcs property set maintenance-mode=false
     #If there are failed cluster resources, you may need to run the next command
     pcs resource cleanup
@@ -1007,7 +1007,7 @@ Zahrňte všechny virtuální počítače, včetně většiny maker v clusteru.
 1. Než začnete s testem, zkontrolujte stav replikace clusteru a SAP HANA systému.  
 
    a. Ověřte, že neexistují žádné neúspěšné akce clusteru.  
-     ```
+     ```bash
      #Verify that there are no failed cluster actions
      pcs status
      # Example
@@ -1044,7 +1044,7 @@ Zahrňte všechny virtuální počítače, včetně většiny maker v clusteru.
 
    b. Ověřte, jestli je replikace systému SAP HANA synchronizovaná.
 
-      ```
+      ```bash
       # Verify HANA HSR is in sync
       sudo su - hn1adm -c "python /usr/sap/HN1/HDB03/exe/python_support/systemReplicationStatus.py"
       #| Database | Host        | Port  | Service Name | Volume ID | Site ID | Site Name | Secondary     | Secondary| Secondary | Secondary | Secondary     | Replication | Replication | Replication    |
@@ -1074,7 +1074,7 @@ Zahrňte všechny virtuální počítače, včetně většiny maker v clusteru.
    **Očekávaný výsledek**: když se znovu připojíte `/hana/shared` jako jen *pro čtení*, operace monitorování, která provádí operaci čtení/zápisu v systému souborů, selže, protože není možné zapisovat do systému souborů a aktivovat převzetí služeb při selhání prostředků Hana. Je očekáván stejný výsledek, pokud váš uzel HANA ztratí přístup ke sdílené složce systému souborů NFS.  
      
    Stav prostředků clusteru můžete zjistit spuštěním `crm_mon` nebo `pcs status` . Stav prostředku před spuštěním testu:
-      ```
+      ```bash
       # Output of crm_mon
       #7 nodes configured
       #45 resources configured
@@ -1103,7 +1103,7 @@ Zahrňte všechny virtuální počítače, včetně většiny maker v clusteru.
       ```
 
    Chcete-li simulovat selhání pro `/hana/shared` některý z primárních virtuálních počítačů lokality replikace, spusťte následující příkaz:
-      ```
+      ```bash
       # Execute as root 
       mount -o ro /hana/shared
       # Or if the above command returns an error
@@ -1114,7 +1114,7 @@ Zahrňte všechny virtuální počítače, včetně většiny maker v clusteru.
          
    Pokud cluster nezačal na virtuálním počítači, který se restartoval, spusťte cluster spuštěním příkazu: 
 
-      ```
+      ```bash
       # Start the cluster 
       pcs cluster start
       ```
@@ -1122,7 +1122,7 @@ Zahrňte všechny virtuální počítače, včetně většiny maker v clusteru.
    Po spuštění clusteru se `/hana/shared` automaticky připojí systém souborů.     
    Pokud nastavíte AUTOMATED_REGISTER = "false", budete muset nakonfigurovat SAP HANA systémová replikace v sekundární lokalitě. V takovém případě můžete spustit tyto příkazy k překonfigurování SAP HANA jako sekundární.   
 
-      ```
+      ```bash
       # Execute on the secondary 
       su - hn1adm
       # Make sure HANA is not running on the secondary site. If it is started, stop HANA
@@ -1135,7 +1135,7 @@ Zahrňte všechny virtuální počítače, včetně většiny maker v clusteru.
 
    Stav prostředků po testu: 
 
-      ```
+      ```bash
       # Output of crm_mon
       #7 nodes configured
       #45 resources configured

@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: jpalma
 ms.date: 11/09/2020
 author: palma21
-ms.openlocfilehash: a1d045e66771026d2b4cf7ad44fd6943d2d407f4
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: c6160d36240b59c60fafa955b916fb6167c2648e
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701598"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685750"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Řízení přenosů dat pro uzly clusteru ve službě Azure Kubernetes (AKS)
 
@@ -745,7 +745,7 @@ voting-storage     ClusterIP      10.41.221.201   <none>        3306/TCP       9
 
 Získejte IP adresu služby spuštěním:
 ```bash
-SERVICE_IP=$(k get svc voting-app -o jsonpath='{.status.loadBalancer.ingress[*].ip}')
+SERVICE_IP=$(kubectl get svc voting-app -o jsonpath='{.status.loadBalancer.ingress[*].ip}')
 ```
 
 Přidejte pravidlo překladu adres (NAT) tak, že spustíte:

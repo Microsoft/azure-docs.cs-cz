@@ -2,13 +2,13 @@
 title: Azure Event Grid koncepty
 description: Popisuje Azure Event Grid a jeho koncepty. Definuje několik klíčových součástí Event Grid.
 ms.topic: conceptual
-ms.date: 10/29/2020
-ms.openlocfilehash: 6cfb8b3aaf16a0080b9864ce5198b8a7232e8bc8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 01/21/2021
+ms.openlocfilehash: 6edc8a3980bfea15f28cfb7114bb9f8350a47a3f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93075105"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685699"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Koncepty v Azure Event Grid
 
@@ -18,10 +18,7 @@ Tento článek popisuje hlavní koncepty v Azure Event Grid.
 
 Událost je nejmenší množství informací, které plně popisuje něco, co se stalo v systému. Každá událost má běžné informace, jako je zdroj události, čas, kdy došlo k události, a jedinečný identifikátor. Každá událost má také konkrétní informace, které jsou relevantní pouze pro konkrétní typ události. Například událost související s vytvářením nového souboru v Azure Storage obsahuje podrobnosti o daném souboru, jako je hodnota `lastTimeModified`. Událost služby Event Hubs zase obsahuje adresu URL souboru Capture. 
 
-K události velikosti až 64 KB se vztahuje Obecná dostupnost (GA) smlouva SLA (SLA). Podpora pro událost velikosti až 1 MB je v současnosti ve verzi Preview. Události větší než 64 KB se účtují v přírůstcích po 64 až KB. 
-
-
-Vlastnosti, které se odesílají v události, najdete v tématu [Azure Event Grid schéma událostí](event-schema.md).
+Maximální povolená velikost pro událost je 1 MB. Události větší než 64 KB se účtují v přírůstcích po 64 až KB. Vlastnosti, které se odesílají v události, najdete v tématu [Azure Event Grid schéma událostí](event-schema.md).
 
 ## <a name="publishers"></a>Vydavatelé
 
@@ -41,7 +38,7 @@ Téma Event Grid poskytuje koncový bod, ve kterém zdroj odesílá události. V
 
 **Vlastní témata** jsou témata aplikací a třetích stran. Po vytvoření vlastního tématu nebo po přiřazení vašeho přístupu k vlastnímu tématu se dané vlastní téma zobrazí ve vašem předplatném. Další informace najdete v tématu [vlastní témata](custom-topics.md). Při navrhování aplikace máte flexibilitu při rozhodování, kolik témat se má vytvořit. Pro velká řešení vytvořte vlastní téma pro každou kategorii souvisejících událostí. Představme si například aplikaci, která odesílá události související s úpravami uživatelských účtů a zpracováním objednávek. Není pravděpodobné, že nějaká obslužná rutina události chce přijímat obě kategorie událostí. Vytvořte dvě vlastní témata a nechte obslužné rutiny událostí odebírat to téma, které je zajímá. Pro malá řešení můžete chtít odeslat všechny události do jednoho tématu. Předplatitelé události mohou filtrovat typy událostí, které chtějí.
 
-K dispozici je jiný typ tématu: **Partnerská část** . Funkce [partnerských událostí](partner-events-overview.md) umožňuje poskytovateli SaaS třetí strany publikovat události ze svých služeb, aby byly dostupné pro uživatele, kteří se můžou přihlásit k odběru těchto událostí. Poskytovatel SaaS zpřístupňuje typ tématu, **Partnerská část** , kterou předplatitelé používají ke spotřebě událostí. Nabízí také čistý model Pub-sub, který odděluje obavy a vlastnictví prostředků, které používají vydavatelé a předplatitelé událostí.
+K dispozici je jiný typ tématu: **Partnerská část**. Funkce [partnerských událostí](partner-events-overview.md) umožňuje poskytovateli SaaS třetí strany publikovat události ze svých služeb, aby byly dostupné pro uživatele, kteří se můžou přihlásit k odběru těchto událostí. Poskytovatel SaaS zpřístupňuje typ tématu, **Partnerská část**, kterou předplatitelé používají ke spotřebě událostí. Nabízí také čistý model Pub-sub, který odděluje obavy a vlastnictví prostředků, které používají vydavatelé a předplatitelé událostí.
 
 ## <a name="event-subscriptions"></a>Odběry událostí
 
@@ -76,10 +73,7 @@ Pokud Event Grid nedokáže potvrdit, že koncový bod předplatitele událost p
 
 ## <a name="batching"></a>Dávkování
 
-Při použití vlastního tématu musí být události vždy publikovány v poli. Může se jednat o dávku jednoho pro scénáře s nízkou propustností, ale pro případy vysokého využití se doporučuje vytvořit dávku několika událostí v rámci publikování, abyste dosáhli vyšší efektivity. Dávky mohou být až 1 MB. Každá událost by neměla být větší než 64 KB (Obecná dostupnost) nebo 1 MB (Preview).
-
-> [!NOTE]
-> K události velikosti až 64 KB se vztahuje Obecná dostupnost (GA) smlouva SLA (SLA). Podpora pro událost velikosti až 1 MB je v současnosti ve verzi Preview. Události větší než 64 KB se účtují v přírůstcích po 64 KB. 
+Při použití vlastního tématu musí být události vždy publikovány v poli. Může se jednat o dávku jednoho pro scénáře s nízkou propustností, ale pro případy vysokého využití se doporučuje vytvořit dávku několika událostí v rámci publikování, abyste dosáhli vyšší efektivity. Dávky mohou mít velikost až 1 MB a maximální velikost události je 1 MB. 
 
 ## <a name="next-steps"></a>Další kroky
 

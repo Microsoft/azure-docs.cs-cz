@@ -4,19 +4,19 @@ description: Popisuje zdroje dat a konektory podporované tabulkami 1200 a vyš�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 08/21/2020
+ms.date: 01/21/2021
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 61efc7719b071ff4e8e5c0e07534b72a2883aff1
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b778cf55ea485d7b3b4d3730d3659750f27b2697
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458866"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685591"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Podporované zdroje dat ve službě Azure Analysis Services
 
-Zdroje dat a konektory zobrazené v průvodci získáním dat nebo importu tabulek v aplikaci Visual Studio s Analysis Services projekty jsou zobrazeny pro Azure Analysis Services i SQL Server Analysis Services. V Azure Analysis Services ale nejsou podporované všechny zdroje dat a konektory. Typy zdrojů dat, ke kterým se můžete připojit, závisí na mnoha faktorech, například na úrovni kompatibility modelů, dostupných datových konektorech, typu ověřování a místní podpoře datových bran. Následující tabulky popisují podporované zdroje dat pro Azure Analysis Services.
+Zdroje dat a konektory zobrazené v průvodci získáním dat nebo importu tabulek v aplikaci Visual Studio s Analysis Services projekty jsou zobrazeny pro Azure Analysis Services i Služba Analysis Services serveru SQL. V Azure Analysis Services ale nejsou podporované všechny zdroje dat a konektory. Typy zdrojů dat, ke kterým se můžete připojit, závisí na mnoha faktorech, například na úrovni kompatibility modelů, dostupných datových konektorech, typu ověřování a místní podpoře datových bran. Následující tabulky popisují podporované zdroje dat pro Azure Analysis Services.
 
 ## <a name="azure-data-sources"></a>Zdroje dat Azure
 
@@ -24,12 +24,12 @@ Zdroje dat a konektory zobrazené v průvodci získáním dat nebo importu tabul
 |---------|---------|---------|---------|
 |Azure SQL Database      |   Yes      |    Yes      |<sup>[2](#azprovider)</sup>, <sup> [3](#azsqlmanaged)</sup>|
 |Azure Synapse Analytics (SQL DW)      |   Yes      |   Yes       |<sup>[odst](#azprovider)</sup>|
-|Azure Blob Storage      |   Yes       |    No      | <sup>[první](#tab1400a)</sup> |
-|Azure Table Storage     |   Yes       |    No      | <sup>[první](#tab1400a)</sup>|
-|Azure Cosmos DB     |  Ano        |  No        |<sup>[první](#tab1400a)</sup> |
-|Azure Data Lake Store Gen1      |   Yes       |    No      |<sup>[první](#tab1400a)</sup> |
+|Azure Blob Storage      |   Yes       |    No      | <sup>[1](#tab1400a)</sup> |
+|Azure Table Storage     |   Yes       |    No      | <sup>[1](#tab1400a)</sup>|
+|Azure Cosmos DB     |  Ano        |  No        |<sup>[1](#tab1400a)</sup> |
+|Azure Data Lake Store Gen1      |   Yes       |    No      |<sup>[1](#tab1400a)</sup> |
 |Azure Data Lake Store Gen2       |   Yes       |    No      |<sup>[1](#tab1400a)</sup>, <sup> [5](#gen2)</sup>|
-|HDFS Azure HDInsight    |     Yes     |   No       |<sup>[první](#tab1400a)</sup> |
+|HDFS Azure HDInsight    |     Yes     |   No       |<sup>[1](#tab1400a)</sup> |
 |Azure HDInsight Spark     |   Ano       |   No       |<sup>[1](#tab1400a)</sup>, <sup> [4](#databricks)</sup>|
 ||||
 
@@ -117,6 +117,14 @@ Pro místní zdroje dat:
 Pro cloudové zdroje dat:
 
 * Pokud používáte ověřování SQL, měl by se jednat o zosobnění účtu služby.
+
+## <a name="service-principal-authentication"></a>Ověřování instančního objektu
+
+Pokud je zadaný jako zdroj dat *zprostředkovatele* , Azure Analysis Services podporuje ověřování instančního objektu služby [MSOLEDBSQL](/sql/connect/oledb/release-notes-for-oledb-driver-for-sql-server) Azure Active Directory pro Azure SQL Database a zdroje dat Azure synapse.
+
+`
+Provider=MSOLEDBSQL;Data Source=[server];Initial Catalog=[database];Authentication=ActiveDirectoryServicePrincipal;User ID=[Application (client) ID];Password=[Application (client) secret];Use Encryption for Data=true
+`
 
 ## <a name="oauth-credentials"></a>Přihlašovací údaje OAuth
 

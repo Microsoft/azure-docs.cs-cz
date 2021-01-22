@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 5aab11b31756ee8430e8ae4d54a2b3de5ea2e136
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 8cd6f6a32071dc7bbd4aaccb92168cda009933a6
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97612628"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98689641"
 ---
 ### <a name="is-azure-virtual-wan-in-ga"></a>Je Azure Virtual WAN v GA?
 
@@ -198,6 +198,9 @@ Když se sítě VPN připojí k rozbočovači, provedou připojení. Virtuální
 ### <a name="what-is-the-total-vpn-throughput-of-a-vpn-tunnel-and-a-connection"></a>Jaká je celková propustnost sítě VPN tunelu VPN a připojení?
 
 Celková propustnost sítě VPN rozbočovače je až 20 GB/s na základě zvolené jednotky škálování služby VPN Gateway. Propustnost sdílí všechna existující připojení. Každé tunelové propojení v rámci připojení může podporovat až 1 GB/s.
+
+### <a name="can-i-use-nat-t-on-my-vpn-connections"></a>Můžu na mých připojeních k síti VPN použít překlad adres (NAT-T)?
+Ano, podporuje se procházení NAT (NAT-T). Virtuální síť WAN VPN Gateway nebude provádět žádné funkce podobné překladu adres (NAT) na vnitřních paketech a z tunelů IPsec. V této konfiguraci zajistěte, aby místní zařízení spouštěla tunel IPSec.
 
 ### <a name="i-dont-see-the-20-gbps-setting-for-the-virtual-hub-in-portal-how-do-i-configure-that"></a>Nevidím nastavení 20 GB/s pro virtuální rozbočovač na portálu. Návody nakonfigurovat?
 

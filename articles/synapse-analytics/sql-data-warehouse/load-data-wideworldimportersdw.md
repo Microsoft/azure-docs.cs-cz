@@ -11,16 +11,16 @@ ms.date: 01/12/2021
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, synapse-analytics
-ms.openlocfilehash: c492ec930cea000e45f7b6f09cc5e9c7a6a0db22
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: bd9d477ed20122b0706e7997ab8922dcce7a59ba
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134496"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685421"
 ---
 # <a name="tutorial-load-data-to--azure-synapse-analytics-sql-pool"></a>Kurz: načtení dat do fondu SQL ve službě Azure synapse Analytics
 
-V tomto kurzu se používá základ k načtení datového skladu WideWorldImportersDW ze služby Azure Blob Storage do datového skladu ve fondu SQL Azure synapse Analytics. Tento kurz používá [Azure Portal](https://portal.azure.com) a aplikaci [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) k:
+V tomto kurzu se používá základ k načtení datového skladu WideWorldImportersDW ze služby Azure Blob Storage do datového skladu ve fondu SQL Azure synapse Analytics. Tento kurz používá [Azure Portal](https://portal.azure.com) a aplikaci [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS) k:
 
 > [!div class="checklist"]
 >
@@ -35,7 +35,7 @@ Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný úče
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Než začnete s tímto kurzem, stáhněte a nainstalujte nejnovější verzi aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS).
+Než začnete s tímto kurzem, stáhněte a nainstalujte nejnovější verzi aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS).
 
 V tomto kurzu se předpokládá, že jste už vytvořili vyhrazený fond SQL z následujícího [kurzu](./create-data-warehouse-portal.md#connect-to-the-server-as-server-admin). 
 
@@ -111,7 +111,7 @@ Spuštěním následujících skriptů SQL zadejte informace o datech, která ch
     CREATE MASTER KEY;
     ```
 
-4. Spuštěním následujícího příkazu [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) definujte umístění objektu blob v Azure. Toto je umístění externích celosvětových dat dovozců.  Pokud chcete spustit příkaz, který jste připojili k oknu dotazu, zvýrazněte příkazy, které chcete spustit, a klikněte na **Provést**.
+4. Spuštěním následujícího příkazu [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) definujte umístění objektu blob v Azure. Toto je umístění externích celosvětových dat dovozců.  Pokud chcete spustit příkaz, který jste připojili k oknu dotazu, zvýrazněte příkazy, které chcete spustit, a klikněte na **Provést**.
 
     ```sql
     CREATE EXTERNAL DATA SOURCE WWIStorage
@@ -122,7 +122,7 @@ Spuštěním následujících skriptů SQL zadejte informace o datech, která ch
     );
     ```
 
-5. Spuštěním následujícího příkazu T-SQL [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) určete charakteristiky a možnosti formátování pro externí datový soubor. Tento příkaz určuje, že jsou externí data uložená jako text a hodnoty jsou oddělené znakem roury („|“).  
+5. Spuštěním následujícího příkazu T-SQL [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) určete charakteristiky a možnosti formátování pro externí datový soubor. Tento příkaz určuje, že jsou externí data uložená jako text a hodnoty jsou oddělené znakem roury („|“).  
 
     ```sql
     CREATE EXTERNAL FILE FORMAT TextFileFormat
@@ -137,7 +137,7 @@ Spuštěním následujících skriptů SQL zadejte informace o datech, která ch
     );
     ```
 
-6. Spuštěním následujících příkazů [CREATE SCHEMA](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) vytvořte schéma pro formát vašeho externího souboru. Schéma ext představuje způsob uspořádání externích tabulek, které se chystáte vytvořit. Schéma wwi uspořádá standardní tabulky, které budou obsahovat data.
+6. Spuštěním následujících příkazů [CREATE SCHEMA](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) vytvořte schéma pro formát vašeho externího souboru. Schéma ext představuje způsob uspořádání externích tabulek, které se chystáte vytvořit. Schéma wwi uspořádá standardní tabulky, které budou obsahovat data.
 
     ```sql
     CREATE SCHEMA ext;
@@ -431,7 +431,7 @@ V této části se používají externí tabulky, které jste definovali pro na�
 > [!NOTE]
 > V tomto kurzu se data načítají přímo do konečné tabulky. V produkčním prostředí budete obvykle používat příkaz CREATE TABLE AS SELECT k načtení dat do pracovní tabulky. Zatímco jsou data v pracovní tabulce, můžete provést všechny potřebné transformace. K připojení dat v pracovní tabulce do provozní tabulky můžete použít příkaz INSERT...SELECT. Další informace najdete v tématu popisujícím [vkládání dat do provozní tabulky](guidance-for-loading-data.md#inserting-data-into-a-production-table).
 
-Tento skript pomocí příkazu T-SQL [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) načítá data z Azure Storage Blob do nových tabulek ve vašem datovém skladu. Příkaz CTAS vytvoří novou tabulku na základě výsledků příkazu SELECT. Nová tabulka obsahuje stejné sloupce a datové typy jako výsledky příkazu SELECT. Když příkaz SELECT vybere z externí tabulky, data se naimportují do relační tabulky v datovém skladu.
+Tento skript pomocí příkazu T-SQL [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) načítá data z Azure Storage Blob do nových tabulek ve vašem datovém skladu. Příkaz CTAS vytvoří novou tabulku na základě výsledků příkazu SELECT. Nová tabulka obsahuje stejné sloupce a datové typy jako výsledky příkazu SELECT. Když příkaz SELECT vybere z externí tabulky, data se naimportují do relační tabulky v datovém skladu.
 
 Tento skript nenačítá data do tabulek wwi.dimension_Date a wwi.fact_Sale. Tyto tabulky se vygenerují v pozdějším kroku, aby mohly obsahovat velké množství řádků.
 

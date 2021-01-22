@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 09/10/2020
-ms.openlocfilehash: 4ba06af98714004e4429fe802a206acdfa8fb148
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 117bc71ba304445e3186b4e633f5888647be9223
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127613"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685625"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Poznámky k verzi Azure Machine Learning
 
@@ -1421,7 +1421,7 @@ Z studia získáte přístup k následujícím webovým nástrojům pro vytvář
 
 ### <a name="r-sdk"></a>R SDK 
  
-Odborníci přes data a vývojáři AI používají [Azure Machine Learning SDK pro R](tutorial-1st-r-experiment.md) k sestavování a spouštění pracovních postupů strojového učení pomocí Azure Machine Learning.
+Odborníci přes data a vývojáři AI používají [Azure Machine Learning SDK pro R](https://github.com/Azure/azureml-sdk-for-r) k sestavování a spouštění pracovních postupů strojového učení pomocí Azure Machine Learning.
 
 Sada Azure Machine Learning SDK pro R používá `reticulate` balíček k vytvoření vazby na sadu Python SDK. Pomocí vazby přímo na Python umožňuje sada SDK pro R přístup k základním objektům a metodám implementovaným v sadě Python SDK z libovolného prostředí jazyka R, které zvolíte.
 
@@ -1597,13 +1597,13 @@ Azure Machine Learning je teď poskytovatel prostředků pro Event Grid, můžet
   + **AzureML-vlak – automl**
     + Vytvoření objektu [experimentu](/python/api/azureml-core/azureml.core.experiment.experiment) Získá nebo vytvoří experiment v pracovním prostoru Azure Machine Learning pro sledování historie spuštění. ID experimentu a archivovaný čas se naplní v objektu experiment při vytváření. Příklad:
 
-        ```py
+        ```python
         experiment = Experiment(workspace, "New Experiment")
         experiment_id = experiment.id
         ```
         [archiv ()](/python/api/azureml-core/azureml.core.experiment.experiment#archive--) a [reactivate ()](/python/api/azureml-core/azureml.core.experiment.experiment#reactivate-new-name-none-) jsou funkce, které lze volat v experimentu pro skrytí a obnovení experimentu v rámci zobrazení v uživatelském rozhraní nebo ve výchozím nastavení ve volání na seznam experimentů. Pokud se vytvoří nový experiment se stejným názvem jako archivovaný experiment, můžete při opětovné aktivaci přejmenovat archivovaný experiment tak, že předáte nový název. Může existovat pouze jeden aktivní experiment se zadaným názvem. Příklad:
 
-        ```py
+        ```python
         experiment1 = Experiment(workspace, "Active Experiment")
         experiment1.archive()
         # Create new active experiment with the same name as the archived.
@@ -1612,7 +1612,7 @@ Azure Machine Learning je teď poskytovatel prostředků pro Event Grid, můžet
         ```
         Seznam statických metod [()](/python/api/azureml-core/azureml.core.experiment.experiment#list-workspace--experiment-name-none--view-type--activeonly---tags-none-) při experimentování může pořizovat filtr názvů a filtr element ViewType. Hodnoty element ViewType jsou "ACTIVE_ONLY", "ARCHIVED_ONLY" a "ALL". Příklad:
 
-        ```py
+        ```python
         archived_experiments = Experiment.list(workspace, view_type="ARCHIVED_ONLY")
         all_first_experiments = Experiment.list(workspace, name="First Experiment", view_type="ALL")
         ```
@@ -1768,7 +1768,7 @@ Karta experiment v [novém portálu pracovního prostoru](https://ml.azure.com) 
     + Přidala se podpora souboru Dockerfile v `environment_definition` parametru v odhady.
     + Zjednodušené parametry distribuovaného školení v odhady.
 
-         ```py
+         ```python
         from azureml.train.dnn import TensorFlow, Mpi, ParameterServer
         ```
 
@@ -1820,14 +1820,14 @@ V době této verze se podporují následující prohlížeče: Chrome, Firefox,
   + **azureml-core**
     + Zaveďte Dataset.get_all (pracovní prostor), která vrátí slovník `TabularDataset` a `FileDataset` objekty s klíčem podle názvu registrace.
 
-    ```py
+    ```python
     workspace = Workspace.from_config()
     all_datasets = Dataset.get_all(workspace)
     mydata = all_datasets['my-data']
     ```
 
     + Zaveďte `parition_format` jako argument do `Dataset.Tabular.from_delimited_files` a `Dataset.Tabular.from_parquet.files` . Informace o oddílu každé cesty k datům budou extrahovány do sloupců v závislosti na zadaném formátu. {column_name} vytvoří sloupec řetězců a {column_name: RRRR/MM/DD/HH/MM/SS} vytvoří sloupec data a času, kde ' yyyy ', ' MM ', ' DD ', ' HH ', ' mm ' a ' ss ' slouží k extrakci roku, měsíce, dne, hodin, minut a sekund pro typ DateTime. Partition_format by měl začít od pozice prvního klíče oddílu až do konce cesty k souboru. Například s ohledem na cestu.. /USA/2019/01/01/data.csv ' kde je oddíl podle země a čas partition_format = '/{Country}/{PartitionDate: RRRR/MM/DD}/data.csv ' vytvoří řetězcový sloupec ' země ' s hodnotou ' USA ' a sloupec DateTime ' PartitionDate ' s hodnotou ' 2019-01-01 '.
-        ```py
+        ```python
         workspace = Workspace.from_config()
         all_datasets = Dataset.get_all(workspace)
         mydata = all_datasets['my-data']
@@ -1934,7 +1934,7 @@ V době této verze se podporují následující prohlížeče: Chrome, Firefox,
   + Výkon `read_parquet` se vylepšil při spuštění ve Sparku.
   + Opravili jsme problém, kdy `column_type_builder` se nezdařil v případě jednoho sloupce s nejednoznačnými formáty data.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>portál Azure
 + **Funkce Preview**
   + Streamování protokolů a výstupních souborů je teď k dispozici na stránkách s podrobnostmi o spuštění. Když je zapnutý přepínač Preview, soubory se budou v reálném čase aktualizovat.
   + Možnost nastavit kvótu na úrovni pracovního prostoru je vydaná ve verzi Preview. Kvóty AmlCompute se přidělují na úrovni předplatného, ale teď vám umožňuje distribuovat tuto kvótu mezi pracovními prostory a přidělit je pro spravedlivé sdílení a zásady správného řízení. Stačí kliknout na okno **používání a kvóty** v levém navigačním panelu pracovního prostoru a vybrat kartu **Konfigurace kvót** . Musíte být správcem předplatného, aby bylo možné nastavit kvóty na úrovni pracovního prostoru, protože se jedná o operaci mezi pracovními prostory.
@@ -2213,7 +2213,7 @@ Sada Azure Machine Learning SDK pro Python v 1.0.30 vydaná.
 
 ## <a name="2019-04-15"></a>2019-04-15
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>portál Azure
   + Existující skript teď můžete znovu odeslat v existujícím vzdáleném výpočetním clusteru.
   + Nyní můžete spustit publikovaný kanál s novými parametry na kartě kanály.
   + Podrobnosti o spuštění teď podporují nový prohlížeč souborů snímků. Po odeslání konkrétního běhu můžete zobrazit snímek adresáře. Můžete si také stáhnout Poznámkový blok, který byl odeslán za účelem spuštění spuštění.
@@ -2239,7 +2239,7 @@ Sada Azure Machine Learning SDK pro Python v 1.0.30 vydaná.
 
 ### <a name="azure-machine-learning-sdk-for-python-v1018"></a>Sada SDK Azure Machine Learning pro Python v 1.0.18
 
- + **Provedeny**
+ + **Změny**
    + Balíček AzureML-tensorboard nahrazuje. AzureML-contrib-tensorboard.
    + V této verzi můžete při vytváření amlcompute (Managed Compute Cluster) nastavit uživatelský účet. To lze provést předáním těchto vlastností v konfiguraci zřizování. Další podrobnosti najdete v [referenční dokumentaci k sadě SDK](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#provisioning-configuration-vm-size-----vm-priority--dedicated---min-nodes-0--max-nodes-none--idle-seconds-before-scaledown-none--admin-username-none--admin-user-password-none--admin-user-ssh-key-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--tags-none--description-none--remote-login-port-public-access--notspecified--).
 
@@ -2271,7 +2271,7 @@ Sada Azure Machine Learning SDK pro Python v 1.0.30 vydaná.
 + **Opravy chyb a vylepšení**
   + Přidali jsme podporu Azure Machine Learningch kanálů pro nastavení vlastnosti source_directory_data_store na požadované úložiště dat (například úložiště objektů BLOB) na [RunConfigurations](/python/api/azureml-core/azureml.core.runconfig.runconfiguration?preserve-view=true&view=azure-ml-py) , které jsou k [PythonScriptStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?preserve-view=true&view=azure-ml-py)dodány. Ve výchozím nastavení se jako záložní úložiště dat používají úložiště souborů Azure, které může narazit na problémy s omezením při současném spuštění velkého počtu kroků.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 + **Nové funkce**
   + Nové možnosti editoru tabulek přetahování pro sestavy. Uživatelé mohou sloupec přetáhnout ze seznamu i do oblasti tabulky, kde se zobrazí náhled tabulky. Sloupce lze změnit jejich uspořádání.

@@ -4,12 +4,12 @@ description: 'Porovnání cloudových služeb Microsoftu, které jsou optimalizo
 ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
-ms.openlocfilehash: 81b143219fd0b53d4cd00761af6b767c173ed88d
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 95167791efe13526b0a70c28fa89771542a9d220
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934862"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685557"
 ---
 # <a name="choose-the-right-integration-and-automation-services-in-azure"></a>Volba správných služeb integrace a automatizace v Azure
 
@@ -79,7 +79,7 @@ Služba Azure Functions je postavená na sadě WebJobs SDK, takže sdílí řadu
 |  | Functions | Služba WebJobs se sadou WebJobs SDK |
 | --- | --- | --- |
 |**[Model aplikace bez serveru](https://azure.microsoft.com/solutions/serverless/) s [automatickým škálováním](event-driven-scaling.md)**|✔||
-|**[Vývoj a testování v prohlížeči](functions-create-first-azure-function.md)** |✔||
+|**[Vývoj a testování v prohlížeči](./functions-get-started.md)** |✔||
 |**[Ceny s platbami za použití](consumption-plan.md)**|✔||
 |**[Integrace s Logic Apps](functions-twitter-email.md)**|✔||
 | **Aktivační události** |[Časovač](functions-bindings-timer.md)<br>[Fronty a objekty blob služby Azure Storage](functions-bindings-storage-blob.md)<br>[Fronty a témata služby Azure Service Bus](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[HTTP/Webhook (GitHub, Slack)](functions-bindings-http-webhook.md)<br>[Azure Event Grid](functions-bindings-event-grid.md)|[Časovač](functions-bindings-timer.md)<br>[Fronty a objekty blob služby Azure Storage](functions-bindings-storage-blob.md)<br>[Fronty a témata služby Azure Service Bus](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[Systém souborů](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Files/FileTriggerAttribute.cs)|
@@ -90,7 +90,7 @@ Služba Azure Functions je postavená na sadě WebJobs SDK, takže sdílí řadu
 
 <sup>2</sup> webové úlohy (bez sady WebJobs SDK) podporují npm a NuGet.
 
-### <a name="summary"></a>Shrnutí
+### <a name="summary"></a>Souhrn
 
 Azure Functions nabízí větší produktivitu vývojářů než Azure App Service WebJobs. Nabízí také více možností pro programovací jazyky, vývojová prostředí, integraci služeb Azure a ceny. Pro většinu scénářů se jedná o nejlepší volbu.
 
@@ -124,4 +124,4 @@ Začněte vytvořením svého prvního toku, aplikace logiky nebo aplikace funkc
 
 * [Začínáme s Power Automate](/power-automate/getting-started)
 * [Vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
-* [Vytvoření první funkce Azure Functions](functions-create-first-azure-function.md)
+* [Vytvoření první funkce Azure Functions](./functions-get-started.md)

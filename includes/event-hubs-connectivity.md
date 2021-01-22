@@ -5,15 +5,15 @@ services: event-hubs
 author: spelluru
 ms.service: event-hubs
 ms.topic: include
-ms.date: 11/19/2020
+ms.date: 01/21/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 7ebb9dbce020086a716872c86221b97b4b7a6653
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 44afd8ea4ef2ab06ec31b7528e9776faebc3b4dc
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97978888"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98690089"
 ---
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Jaké porty potřebuji v bráně firewall otevřít? 
 Pomocí následujících protokolů se službou Azure Event Hubs můžete posílat a přijímat události:
@@ -36,10 +36,10 @@ Oficiální sady Azure SDK obecně používají protokol AMQP pro posílání a 
 
 | Jazyk | Možnost   |
 | -------- | ----- |
-| .NET     | [EventHubConnectionOptions. TransportType](/dotnet/api/azure.messaging.eventhubs.eventhubconnectionoptions.transporttype?view=azure-dotnet&preserve-view=true) – vlastnost s [EventHubsTransportType. AmqpTcp](/dotnet/api/azure.messaging.eventhubs.eventhubstransporttype?view=azure-dotnet&preserve-view=true) nebo [EventHubsTransportType. AmqpWebSockets](/dotnet/api/azure.messaging.eventhubs.eventhubstransporttype?view=azure-dotnet&preserve-view=true) |
-| Java     | [com. Microsoft. Azure. eventhubs. EventProcessorClientBuilder. TransportType](/java/api/com.azure.messaging.eventhubs.eventprocessorclientbuilder.transporttype?view=azure-java-stable&preserve-view=true) s [AmqpTransportType. AMQP](/java/api/com.azure.core.amqp.amqptransporttype?view=azure-java-stable&preserve-view=true) nebo [AmqpTransportType.AMQP_WEB_SOCKETS](/java/api/com.azure.core.amqp.amqptransporttype?view=azure-java-stable&preserve-view=true) |
-| Uzel  | [EventHubConsumerClientOptions](/javascript/api/@azure/event-hubs/eventhubconsumerclientoptions?view=azure-node-latest&preserve-view=true) má `webSocketOptions` vlastnost. |
-| Python | [EventHubConsumerClient.transport_type](/python/api/azure-eventhub/azure.eventhub.eventhubconsumerclient?view=azure-python&preserve-view=true) s [TransportType. AMQP](/python/api/azure-eventhub/azure.eventhub.transporttype?view=azure-python) nebo [TransportType. AmqpOverWebSocket](/python/api/azure-eventhub/azure.eventhub.transporttype?view=azure-python&preserve-view=true) |
+| .NET     | [EventHubConnectionOptions. TransportType](/dotnet/api/azure.messaging.eventhubs.eventhubconnectionoptions.transporttype) – vlastnost s [EventHubsTransportType. AmqpTcp](/dotnet/api/azure.messaging.eventhubs.eventhubstransporttype) nebo [EventHubsTransportType. AmqpWebSockets](/dotnet/api/azure.messaging.eventhubs.eventhubstransporttype) |
+| Java     | [com. Microsoft. Azure. eventhubs. EventProcessorClientBuilder. TransportType](/java/api/com.azure.messaging.eventhubs.eventprocessorclientbuilder.transporttype) s [AmqpTransportType. AMQP](/java/api/com.azure.core.amqp.amqptransporttype) nebo [AmqpTransportType.AMQP_WEB_SOCKETS](/java/api/com.azure.core.amqp.amqptransporttype) |
+| Uzel  | [EventHubConsumerClientOptions](/javascript/api/@azure/event-hubs/eventhubconsumerclientoptions) má `webSocketOptions` vlastnost. |
+| Python | [EventHubConsumerClient.transport_type](/python/api/azure-eventhub/azure.eventhub.eventhubconsumerclient) s [TransportType. AMQP](/python/api/azure-eventhub/azure.eventhub.transporttype) nebo [TransportType. AmqpOverWebSocket](/python/api/azure-eventhub/azure.eventhub.transporttype) |
 
 ### <a name="what-ip-addresses-do-i-need-to-allow"></a>Jaké IP adresy potřebuji povolit?
 Když pracujete s Azure, někdy je potřeba, abyste v podnikové bráně firewall nebo proxy povolili konkrétní rozsahy IP adres nebo adresy URL pro přístup ke všem službám Azure, které používáte nebo se pokoušíte použít. Ověřte, jestli je povolený provoz na IP adresách, které používá Event Hubs. Pro IP adresy, které používá Azure Event Hubs: Přečtěte si téma [rozsahy IP adres Azure a značky služeb – veřejný cloud](https://www.microsoft.com/download/details.aspx?id=56519).
