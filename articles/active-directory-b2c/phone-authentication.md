@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8d41f8959d0a1ec0d6e48cf2fa4711a8ef8d8ae5
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 2600ea3488c643bcf215b058425de42cd439dcff
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178938"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660263"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c"></a>Nastavte si registraci a přihlašování telefonem pomocí vlastních zásad v Azure AD B2C
 
@@ -39,12 +39,12 @@ Když se přihlásíte a přihlásíte telefon, uživatel se může přihlásit 
 >
 > *&lt;Vložit: odkaz na vaše prohlášení o zásadách ochrany osobních údajů&gt;*<br/>*&lt;vložení: odkaz na vaše podmínek služby&gt;*
 
-Pokud chcete přidat vlastní informace o souhlasu, přizpůsobte si následující ukázku a zahrňte ji do LocalizedResources pro ContentDefinition, který používá samoobslužná Stránka s ovládacím prvkem zobrazení (soubor *Phone_Email_Base.xml* v [registračním programu a v úvodní][starter-pack-phone]sadě pro přihlášení k telefonu):
+Chcete-li přidat vlastní informace o souhlasu, upravte následující ukázku. Zahrňte ho do části `LocalizedResources` pro ContentDefinition, kterou používá samoobslužná stránka, s ovládacím prvkem zobrazení (soubor *Phone_Email_Base.xml* v [registračním programu a v úvodní][starter-pack-phone]sadě pro přihlášení k telefonu):
 
 ```xml
 <LocalizedResources Id="phoneSignUp.en">        
     <LocalizedStrings>
-    <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_msg_intro">By providing your phone number, you consent to receiving a one-time passcode sent by text message to help you sign into {insert your application name}. Standard messsage and data rates may apply.</LocalizedString>          
+    <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_msg_intro">By providing your phone number, you consent to receiving a one-time passcode sent by text message to help you sign into {insert your application name}. Standard message and data rates may apply.</LocalizedString>          
     <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_link_1_text">Privacy Statement</LocalizedString>                
     <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_link_1_url">{insert your privacy statement URL}</LocalizedString>          
     <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_link_2_text">Terms and Conditions</LocalizedString>             
@@ -64,7 +64,7 @@ Do telefonního čísla uživatele se pošle jednorázový ověřovací kód. U�
 
 ![Uživatel ověřuje kód při registraci telefonu.](media/phone-authentication/phone-signup-verify-code.png)
 
- Uživatel zadá jakékoli další informace požadované na stránce pro registraci, například **zobrazované jméno**, **křestní jméno** a **příjmení** (země a telefonní číslo zůstávají naplněny). Pokud chce uživatel použít jiné telefonní číslo, může zvolit možnost **změnit číslo** a restartovat registraci. Po dokončení vybere uživatel **pokračovat**.
+Uživatel zadá další informace požadované na stránce pro registraci. Například **zobrazované jméno**, **křestní jméno** a **příjmení** (země a telefonní číslo zůstávají naplněny). Pokud chce uživatel použít jiné telefonní číslo, může zvolit možnost **změnit číslo** a restartovat registraci. Po dokončení vybere uživatel **pokračovat**.
 
 ![Uživatel poskytuje další informace](media/phone-authentication/phone-signup-additional-info.png)
 
@@ -100,8 +100,6 @@ Před nastavením jednorázového hesla budete potřebovat následující prost�
 
 Začněte tím, že aktualizujete soubory vlastních zásad registrace a přihlášení telefon pro práci s vaším klientem Azure AD B2C.
 
-V následujících krocích se předpokládá, že jste splnili [požadavky](#prerequisites) a již jste naklonoval úložiště [Úvodní sady Custom Policy Pack][starter-pack] do místního počítače.
-
 1. V místním klonu úložiště počátečního balíčku Najděte [vlastní soubory zásad pro registraci a přihlašování telefonem][starter-pack-phone] nebo si je Stáhněte přímo. Soubory zásad XML jsou umístěné v následujícím adresáři:
 
     `active-directory-b2c-custom-policy-starterpack/scenarios/`**`phone-number-passwordless`**
@@ -136,15 +134,15 @@ Při nahrávání každého souboru Azure přidá předponu `B2C_1A_` .
 
 ## <a name="get-user-account-by-phone-number"></a>Získat uživatelský účet podle telefonního čísla
 
-Uživatel, který se přihlásí pomocí telefonního čísla, ale neposkytne e-mailovou adresu pro obnovení, se ve vašem Azure AD B2C adresáři zaznamená jejich telefonní číslo jako přihlašovací jméno. Pokud si uživatel přeje změnit své telefonní číslo, musí nejprve najít svůj účet Helpdesk nebo tým podpory a pak aktualizovat jejich telefonní číslo.
+Uživatel, který se zaregistruje pomocí telefonního čísla, se ve vašem Azure AD B2C adresáři zaznamená jeho telefonní číslo jako přihlašovací jméno, a to bez e-mailové adresy pro obnovení. Chcete-li změnit telefonní číslo, vaše oddělení technické podpory nebo tým podpory musí nejprve najít svůj účet a následně aktualizovat jejich telefonní číslo.
 
-Pomocí [Microsoft Graph](manage-user-accounts-graph-api.md)můžete najít uživatele podle jejich telefonního čísla (přihlašovací jméno):
+Pomocí [Microsoft Graph](microsoft-graph-operations.md)můžete najít uživatele podle jejich telefonního čísla (přihlašovací jméno):
 
 ```http
 GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssignedId eq '+{phone number}' and c/issuer eq '{tenant name}.onmicrosoft.com')
 ```
 
-Příklad:
+Například:
 
 ```http
 GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssignedId eq '+450334567890' and c/issuer eq 'contosob2c.onmicrosoft.com')

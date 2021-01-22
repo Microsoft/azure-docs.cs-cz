@@ -4,12 +4,12 @@ description: Dostupnost výpočetních a paměťových prostředků pro službu 
 ms.topic: article
 ms.date: 04/27/2020
 ms.custom: references_regions
-ms.openlocfilehash: 8651a1cc2c2ba41e2c28e9f63dc78c091a6af61d
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: 63ec7c9027f957714108263dcbb4300a3cc68388
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763889"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661370"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Dostupnost prostředků pro Azure Container Instances v oblastech Azure
 
@@ -35,11 +35,12 @@ Následující oblasti a maximální prostředky jsou k dispozici pro skupiny ko
 | Brazil South | 4 | 16 | 2 | 8 | 50 | – |
 | Střední Kanada | 4 | 16 | 4 | 16 | 50 | – |
 | Indie – střed | 4 | 16 | N/A | N/A | 50 | V100 |
-| Střední USA | 4 | 16 | 4 | 16 | 50 | – |
+| USA – střed | 4 | 16 | 4 | 16 | 50 | – |
 | Východní Asie | 4 | 16 | 4 | 16 | 50 | – |
 | East US | 4 | 16 | 4 | 16 | 50 | K80, P100, V100 |
 | USA – východ 2 | 4 | 16 | 4 | 16 | 50 | – |
 | Francie – střed | 4 | 16 | 4 | 16 | 50 | – |
+| Německo – středozápad | 3 | 16 | N/A | N/A | 50 | – |
 | Japan East | 2 | 8 | 4 | 16 | 50 | – |
 | Jižní Korea – střed | 4 | 16 | N/A | N/A | 50 | – |
 | USA – středosever | 2 | 3,5 | 4 | 16 | 50 | K80, P100, V100 |
@@ -48,6 +49,7 @@ Následující oblasti a maximální prostředky jsou k dispozici pro skupiny ko
 | Southeast Asia | 4 | 16 | 4 | 16 | 50 | P100, V100 |
 | Indie – jih | 4 | 16 | N/A | N/A | 50 | – |
 | Spojené království – jih | 4 | 16 | 4 | 16 | 50 | – |
+| Spojené arabské emiráty sever | 3 | 16 | N/A | N/A | 50 | – |
 | USA – středozápad| 4 | 16 | 4 | 16 | 50 | – |
 | West Europe | 4 | 16 | 4 | 16 | 50 | K80, P100, V100 |
 | USA – západ | 4 | 16 | 4 | 16 | 50 | – |
@@ -85,7 +87,7 @@ Následující oblasti a maximální prostředky jsou k dispozici pro skupiny ko
 | Brazil South | 4 | 16 | 4 | 16 | 20 |
 | Střední Kanada | 2 | 8 | 2 | 3,5 | 20 |
 | Indie – střed | 2 | 3,5 | 2 | 3,5 | 20 |
-| Střední USA | 2 | 3,5 | 2 | 3,5 | 20 |
+| USA – střed | 2 | 3,5 | 2 | 3,5 | 20 |
 | Východní Asie | 2 | 3,5 | 2 | 3,5 | 20 |
 | East US | 4 | 16 | 2 | 8 | 20 |
 | USA – východ 2 | 2 | 3,5 | 4 | 16 | 20 |
@@ -114,12 +116,12 @@ Následující oblasti a maximální prostředky jsou k dispozici pro skupiny ko
 | Brazil South | 4 | 16 | 4 | 16 | 20 |
 | Střední Kanada | 4 | 16 | 4 | 16 | 20 |
 | Indie – střed | 4 | 16 | 4 | 16 | 20 |
-| Střední USA | 4 | 16 | 4 | 16 | 20 |
+| USA – střed | 4 | 16 | 4 | 16 | 20 |
 | Východní Asie | 4 | 16 | 4 | 16 | 20 |
 | East US | 4 | 16 | 4 | 16 | 20 |
 | USA – východ 2 | 2 | 3,5 | 2 | 3,5 | 20 |
 | Francie – střed | 4 | 16 | 4 | 16 | 20 |
-| Japan East | N/A | Není k dispozici | 4 | 16 | 20 |
+| Japan East | N/A | N/A | 4 | 16 | 20 |
 | Jižní Korea – střed | 4 | 16 | 4 | 16 | 20 |
 | USA – středosever | 4 | 16 | 4 | 16 | 20 |
 | Severní Evropa | 4 | 16 | 4 | 16 | 20 |

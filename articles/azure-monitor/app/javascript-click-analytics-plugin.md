@@ -8,12 +8,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: lagayhar
-ms.openlocfilehash: 7af26be91ff129e4c968bcb131cc98290cd8d7b9
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: b2e9c267b0a3723c9ac7b3edd49e23b95741962f
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610076"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660449"
 ---
 # <a name="click-analytics-auto-collection-plugin-for-application-insights-javascript-sdk"></a>Klikněte na Analytics modul plug-in pro automatické shromažďování pro Application Insights JavaScript SDK
 
@@ -69,7 +69,7 @@ appInsights.loadAppInsights();
     2. Za účelem zvýšení efektivity používá modul plug-in tuto značku jako příznak, pokud se zjistí, že se zastaví z dalšího zpracování modelu DOM (model DOM (Document Object Model)) nahoru.
     
     > [!CAUTION]
-    > Po `parentDataTag` použití má trvalé vliv na celou aplikaci, a ne pouze HTML element, v němž jste ji použili.
+    > Po `parentDataTag` použití sady SDK začne hledat nadřazené značky napříč celou aplikací a ne jenom HTML element, ve kterém jste ji použili.
 4. `customDataPrefix` uživatel, který poskytuje uživatel, by měl vždycky začínat `data-` například `data-sample-` . V jazyce HTML `data-*` globální atributy tvoří třídu atributů označované jako vlastní atributy dat, které umožňují výměnu speciálních informací mezi HTML a jeho reprezentací DOM pomocí skriptů. Starší prohlížeče (Internet Explorer, Safari) zahodí atributy, které nerozumí, pokud nezačínají na `data-` .
 
     `*`V `data-*` nástroji může být nahrazen libovolným názvem za [produkčním pravidlem názvů XML](https://www.w3.org/TR/REC-xml/#NT-Name) s těmito omezeními:
@@ -314,5 +314,5 @@ appInsights.loadAppInsights();
 
 - Podívejte se na [úložiště GitHub](https://github.com/microsoft/ApplicationInsights-JS/tree/master/extensions/applicationinsights-clickanalytics-js) a [balíček npm](https://www.npmjs.com/package/@microsoft/applicationinsights-clickanalytics-js) pro modul plug-in automatických kolekcí pro analýzu.
 - [Analýza událostí v prostředí používání](usage-segmentation.md) slouží k analýze horních kliknutí a řezů podle dostupných dimenzí.
-- V poli customDimensions v tabulce CustomEvents v [Log Analytics](../log-query/log-analytics-tutorial.md#write-a-query)klikněte na data v oblasti obsah v části atribut.
+- V poli customDimensions v tabulce CustomEvents v [Log Analytics](../log-query/log-analytics-tutorial.md#write-a-query)klikněte na data v oblasti obsah v části atribut. Další pokyny najdete v [ukázkové aplikaci](https://go.microsoft.com/fwlink/?linkid=2152871) .
 - Sestavte [sešit](../platform/workbooks-overview.md) , abyste mohli vytvářet vlastní vizualizace kliknutí na data.

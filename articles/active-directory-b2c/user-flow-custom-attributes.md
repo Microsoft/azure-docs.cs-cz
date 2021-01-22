@@ -12,12 +12,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 9759c1109c7be279520fa187bd3366bcac505d46
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 5552c93c1c65f08f70ed8929d81126035aa2a357
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503739"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661200"
 ---
 # <a name="define-custom-attributes-in-azure-active-directory-b2c"></a>Definování vlastních atributů v Azure Active Directory B2C
 
@@ -31,9 +31,9 @@ Adresář Azure AD B2C obsahuje [integrovanou sadu atributů](user-profile-attri
 * Zprostředkovatel identity má jedinečný identifikátor uživatele **uniqueUserGUID**, který musí být trvale uložený.
 * Vlastní cesta uživatele musí zachovat stav uživatele ( **migrationStatus**) pro další logiku, na které se má pracovat.
 
-Azure AD B2C umožňuje zvětšit sadu atributů uložených v každém uživatelském účtu. Tyto atributy můžete také číst a zapisovat pomocí [rozhraní Microsoft Graph API](manage-user-accounts-graph-api.md).
+Azure AD B2C umožňuje zvětšit sadu atributů uložených v každém uživatelském účtu. Tyto atributy můžete také číst a zapisovat pomocí [rozhraní Microsoft Graph API](microsoft-graph-operations.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
@@ -132,10 +132,10 @@ Mezi integrovanými a vlastními zásadami se sdílí stejné atributy rozšíř
 
 Tyto atributy můžete vytvořit pomocí uživatelského rozhraní portálu před nebo po jejich použití ve vlastních zásadách. Když vytvoříte atribut **loyaltyId** na portálu, je nutné na něj odkazovat následujícím způsobem:
 
-|Název     |Použito v |
+|Name     |Použito v |
 |---------|---------|
 |`extension_loyaltyId`  | Vlastní zásady|
-|`extension_<b2c-extensions-app-guid>_loyaltyId`  | [Microsoft Graph API](manage-user-accounts-graph-api.md)|
+|`extension_<b2c-extensions-app-guid>_loyaltyId`  | [Microsoft Graph API](microsoft-graph-operations.md)|
 
 Následující příklad demonstruje použití vlastních atributů v definici deklarace identity vlastní zásady Azure AD B2C.
 

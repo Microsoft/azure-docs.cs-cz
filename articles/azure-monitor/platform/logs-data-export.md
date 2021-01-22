@@ -7,12 +7,12 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: d9ae9cae1a0a8014f007cd7c4a3d1f97f27128bb
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 4ae69ddeb46d484a64edc4ccabfa6740b36c4264
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610960"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98663260"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Export dat pracovního prostoru Log Analytics v Azure Monitor (Preview)
 Export dat v pracovním prostoru Log Analytics v Azure Monitor umožňuje průběžně exportovat data z vybraných tabulek v pracovním prostoru Log Analytics do účtu služby Azure Storage nebo Event Hubs Azure jako shromážděná. Tento článek poskytuje podrobné informace o této funkci a postupu konfigurace exportu dat ve vašich pracovních prostorech.
@@ -33,7 +33,7 @@ Export dat Log Analytics pracovního prostoru průběžně exportuje data z prac
 - Jednou při exportu do místního počítače pomocí skriptu PowerShellu. Viz [Invoke-AzOperationalInsightsQueryExport](https://www.powershellgallery.com/packages/Invoke-AzOperationalInsightsQueryExport).
 
 
-## <a name="current-limitations"></a>Aktuální omezení
+## <a name="limitations"></a>Omezení
 
 - Konfiguraci lze provést v současnosti pomocí požadavků CLI nebo REST. Azure Portal nebo PowerShell ještě nejsou podporované.
 - Možnost v rozhraní příkazového ```--export-all-tables``` řádku a REST není podporována a bude odebrána. Seznam tabulek v pravidlech exportu byste měli zadat explicitně.

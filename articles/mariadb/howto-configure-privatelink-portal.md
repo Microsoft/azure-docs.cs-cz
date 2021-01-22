@@ -3,21 +3,21 @@ title: Privátní Link-Azure Portal-Azure Database for MariaDB
 description: Postup konfigurace privátního odkazu pro Azure Database for MariaDB z Azure Portal
 author: mksuni
 ms.author: sumuth
-ms.service: mariadb
+ms.service: jroth
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 79b3c3f8eca2fa4442a7845ca4aa3921d0302453
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 127a1c83525c4a9c457f551c05045a63a3c4347a
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005040"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98659620"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-portal"></a>Vytvoření a správa privátního odkazu pro Azure Database for MariaDB pomocí portálu
 
 Privátní koncový bod je základním stavebním blokem privátního propojení v Azure. Umožňuje prostředkům Azure, jako je Virtual Machines (virtuální počítače), komunikovat soukromě s prostředky privátního propojení.  V tomto článku se naučíte, jak pomocí Azure Portal vytvořit virtuální počítač v Azure Virtual Network a Azure Database for MariaDB Server s privátním koncovým bodem Azure.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 > [!NOTE]
 > Funkce privátního odkazu je dostupná jenom pro Azure Database for MariaDB servery v cenové úrovni optimalizované pro Pro obecné účely nebo paměť. Ujistěte se, že je databázový server v jedné z těchto cenových úrovní.
@@ -49,7 +49,7 @@ V této části vytvoříte Virtual Network a podsíť, která bude hostovat vir
 
 ### <a name="create-virtual-machine"></a>Vytvořit virtuální počítač
 
-1. V levé horní části obrazovky Azure Portal vyberte **vytvořit**  >  **Compute**  >  **virtuální počítač** Compute.
+1. V levé horní části obrazovky Azure Portal vyberte **vytvořit**  >    >  **virtuální počítač** Compute.
 
 2. V nástroji **vytvořit virtuální počítač základy** zadejte nebo vyberte tyto informace:
 
@@ -245,7 +245,7 @@ Po vytvoření **myVm** se k němu připojte z Internetu následujícím způsob
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Až budete s použitím privátního koncového bodu, serveru MariaDB a virtuálního počítače, odstraňte skupinu prostředků a všechny prostředky, které obsahuje:
 
-1.  *myResourceGroup*   Do **vyhledávacího** pole v horní části portálu zadejte myResourceGroup a ve výsledcích hledání vyberte  *myResourceGroup*   .
+1.  **   Do **vyhledávacího** pole v horní části portálu zadejte myResourceGroup a ve výsledcích hledání vyberte  *myResourceGroup*   .
 2. Vyberte **Odstranit skupinu prostředků**.
 3. Zadejte myResourceGroup pro **typ název skupiny prostředků** a vyberte **Odstranit**.
 

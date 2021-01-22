@@ -3,15 +3,15 @@ title: Otočení certifikátu pro Azure Database for MariaDB
 description: Seznamte se s nadcházejícími změnami kořenových certifikátů, které budou mít vliv na Azure Database for MariaDB
 author: mksuni
 ms.author: sumuth
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 01/18/2021
-ms.openlocfilehash: ac7019abab1aefaee95c155e34fbc0cb551b4d94
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 66db443c4c52e4994e62a9f83f8a624319b349ab
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98538422"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98659882"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mariadb"></a>Porozumění změnám v kořenové CA se mění Azure Database for MariaDB
 
@@ -133,7 +133,7 @@ Pro konektor používající Integration Runtime v místním prostředí, kde ex
 
 ### <a name="7-do-i-need-to-plan-a-database-server-maintenance-downtime-for-this-change"></a>7. pro tuto změnu potřebuji naplánovat výpadek údržby databázového serveru?
 
-Ne. Vzhledem k tomu, že se změna provede jenom na straně klienta pro připojení k databázovému serveru, pro tuto změnu není potřeba žádné prostoje údržby pro databázový server.
+No. Vzhledem k tomu, že se změna provede jenom na straně klienta pro připojení k databázovému serveru, pro tuto změnu není potřeba žádné prostoje údržby pro databázový server.
 
 ### <a name="8--what-if-i-cant-get-a-scheduled-downtime-for-this-change-before-february-15-2021-02152021"></a>8. co když mi nejde získat plánované výpadky této změny před 15. února 2021 (02/15/2021)?
 
@@ -187,7 +187,7 @@ Chcete-li ověřit, zda používáte připojení SSL pro připojení k serveru, 
 
 ### <a name="14-is-there-an-action-needed-if-i-already-have-the-digicertglobalrootg2-in-my-certificate-file"></a>14. je vyžadována akce, pokud již mám v souboru certifikátu DigiCertGlobalRootG2?
 
-Ne. Pokud soubor certifikátu již má **DigiCertGlobalRootG2**, není nutná žádná akce.
+No. Pokud soubor certifikátu již má **DigiCertGlobalRootG2**, není nutná žádná akce.
 
 ### <a name="15-what-if-i-have-further-questions"></a>15. co když mám další dotazy?
 

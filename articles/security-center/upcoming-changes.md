@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/18/2021
+ms.date: 01/21/2021
 ms.author: memildin
-ms.openlocfilehash: ba9a640c2231c7098e58ad6e29bbfa196436a7f9
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: 6d656dbb3fb50091fc8721ba40431b37f77c4ad6
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562314"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662943"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Důležité nadcházející změny Azure Security Center
 
@@ -33,7 +33,6 @@ Pokud hledáte nejnovější poznámky k verzi, najdete je v [Azure Security Cen
 
 - [Nepoužívá se dvě doporučení pro řízení zabezpečení použít aktualizace systému.](#two-recommendations-from-apply-system-updates-security-control-being-deprecated)
 - [Vylepšení doporučení klasifikace dat SQL](#enhancements-to-sql-data-classification-recommendation)
-- ["Nepoužitelné" prostředky, které se mají ohlásit jako "vyhovující" v Azure Policy posouzení](#not-applicable-resources-to-be-reported-as-compliant-in-azure-policy-assessments)
 - [35 doporučení verze Preview pro zvýšení pokrytí srovnávacího testu zabezpečení Azure](#35-preview-recommendations-being-added-to-increase-coverage-of-azure-security-benchmark)
 
 
@@ -61,15 +60,6 @@ Aktuální verze **citlivých dat v databázích SQL by měla být klasifikován
 - Řízení zabezpečení (použití klasifikace dat) už nebude mít vliv na vaše zabezpečené skóre.
 - Změní se také ID doporučení (aktuálně se b0df6f56-862d-4730-8597-38c0fd4ebd59).
 
-
-
-### <a name="not-applicable-resources-to-be-reported-as-compliant-in-azure-policy-assessments"></a>"Nepoužitelné" prostředky, které se mají ohlásit jako "vyhovující" v Azure Policy posouzení
-
-**Odhadované datum změny:** Leden 2021
-
-V současné době se prostředky vyhodnocené pro doporučení a zjištěné jako nevyhovující **se zobrazí v** Azure Policy jako "nekompatibilní". Žádná akce uživatele nemůže změnit stav na "kompatibilní". Z této plánované změny budou pro lepší přehlednost nahlášeny jako "vyhovující".
-
-Jediný dopad bude zobrazen v Azure Policy, kde se zvýší počet odpovídajících prostředků. Vaše zabezpečené skóre v Azure Security Center nebude nijak ovlivněno.
 
 ### <a name="35-preview-recommendations-being-added-to-increase-coverage-of-azure-security-benchmark"></a>35 doporučených doporučení pro zvýšení pokrytí testu zabezpečení Azure
 

@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/17/2021
+ms.date: 01/21/2021
 ms.author: memildin
-ms.openlocfilehash: 48e7093c30ffb135231f5843cb0767848f242d89
-ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
+ms.openlocfilehash: d171e3a7f1f0d63d0a5d130c6e19b246bf0cd795
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98541375"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661810"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Co je nového v Azure Security Center?
 
@@ -35,27 +35,17 @@ Další informace o *plánovaných* změnách, které už brzy Security Center, 
 
 Aktualizace v prosinci zahrnují:
 
+- [Posouzení ohrožení zabezpečení pro místní a více cloudových počítačů se uvolní pro obecnou dostupnost (GA).](#vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-released-for-general-availability-ga)
+- [Pro obecnou dostupnost se vydává rozhraní API pro stanovení skóre zabezpečení (GA).](#secure-score-api-is-released-for-general-availability-ga)
 - [Export filtrovaných seznamů doporučení CSV](#csv-export-of-filtered-list-of-recommendations)
-- [Posouzení ohrožení zabezpečení pro místní a více cloudových počítačů je všeobecně dostupné.](#vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-generally-available)
+- [Prostředky, které se nepoužívají, teď v Azure Policy posouzení hlásí jako "kompatibilní".](#not-applicable-resources-now-reported-as-compliant-in-azure-policy-assessments)
 
 
-### <a name="csv-export-of-filtered-list-of-recommendations"></a>Export filtrovaných seznamů doporučení CSV 
-
-V listopadu 2020 jsme přidali filtry na stránku doporučení ([teď seznam doporučení obsahuje filtry](#recommendations-list-now-includes-filters)). V prosinci jsme tyto filtry rozšířili ([Stránka doporučení obsahuje nové filtry pro prostředí, závažnost a dostupné odpovědi](#recommendations-page-has-new-filters-for-environment-severity-and-available-responses)). 
-
-V tomto oznámení měníme chování tlačítka **stáhnout do souboru CSV** , aby export sdíleného svazku clusteru zahrnoval jenom doporučení aktuálně zobrazená v seznamu filtrovaných. 
-
-Například na obrázku níže vidíte, že seznam byl filtrován na dvě doporučení. Vygenerovaný soubor CSV obsahuje podrobnosti o stavu všech prostředků ovlivněných těmito dvěma doporučeními.   
-
-:::image type="content" source="media/security-center-managing-and-responding-alerts/export-to-csv-with-filters.png" alt-text="Export filtrovaných doporučení do souboru CSV":::
-
-Další informace najdete v [doporučeních pro zabezpečení v Azure Security Center](security-center-recommendations.md).
-
-### <a name="vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-generally-available"></a>Posouzení ohrožení zabezpečení pro místní a více cloudových počítačů je všeobecně dostupné.
+### <a name="vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-released-for-general-availability-ga"></a>Posouzení ohrožení zabezpečení pro místní a více cloudových počítačů se uvolní pro obecnou dostupnost (GA).
 
 V říjnu jsme oznámili verzi Preview pro kontrolu serverů s podporou ARC Azure pomocí [Azure Defenderu pro](defender-for-servers-introduction.md)integrovaného posuzování ohrožení zabezpečení na serverech (používá se v Qualys).
 
-Je teď všeobecně dostupná. 
+Nově je vydaná pro obecnou dostupnost (GA).
 
 Pokud jste povolili Azure ARC na počítačích mimo Azure, Security Center se bude nabízet k nasazení integrovaného skeneru ohrožení zabezpečení ručně a v rámci škálování.
 
@@ -71,6 +61,36 @@ Hlavní možnosti:
 [Přečtěte si další informace o nasazení integrovaného skeneru ohrožení zabezpečení do hybridních počítačů](deploy-vulnerability-assessment-vm.md#deploy-the-integrated-scanner-to-your-azure-and-hybrid-machines).
 
 [Přečtěte si další informace o serverech s podporou ARC Azure](../azure-arc/servers/index.yml).
+
+
+### <a name="secure-score-api-is-released-for-general-availability-ga"></a>Pro obecnou dostupnost se vydává rozhraní API pro stanovení skóre zabezpečení (GA).
+
+K vašemu skóre teď můžete přistupovat prostřednictvím [rozhraní API pro zabezpečené skóre](/rest/api/securitycenter/securescores/). Metody rozhraní API poskytují flexibilitu pro dotazování na data a vytváření vlastních mechanismů generování sestav v rámci vašich zabezpečených výsledků v průběhu času. Můžete například použít rozhraní API pro **zabezpečení skóre** k získání skóre pro konkrétní předplatné. Kromě toho můžete použít rozhraní API **ovládacích prvků bezpečného řízení skóre** k vypsání ovládacích prvků zabezpečení a aktuálního skóre vašich předplatných.
+
+Příklady externích nástrojů, které jsou dostupné s rozhraním API pro zabezpečené skóre, najdete v části [bezpečné skóre naší komunity GitHubu](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score).
+
+Přečtěte si další informace o [zabezpečeném řízení hodnocení a zabezpečení v Azure Security Center](secure-score-security-controls.md).
+
+
+### <a name="csv-export-of-filtered-list-of-recommendations"></a>Export filtrovaných seznamů doporučení CSV 
+
+V listopadu 2020 jsme přidali filtry na stránku doporučení ([teď seznam doporučení obsahuje filtry](#recommendations-list-now-includes-filters)). V prosinci jsme tyto filtry rozšířili ([Stránka doporučení obsahuje nové filtry pro prostředí, závažnost a dostupné odpovědi](#recommendations-page-has-new-filters-for-environment-severity-and-available-responses)). 
+
+V tomto oznámení měníme chování tlačítka **stáhnout do souboru CSV** , aby export sdíleného svazku clusteru zahrnoval jenom doporučení aktuálně zobrazená v seznamu filtrovaných. 
+
+Například na obrázku níže vidíte, že seznam byl filtrován na dvě doporučení. Vygenerovaný soubor CSV obsahuje podrobnosti o stavu všech prostředků ovlivněných těmito dvěma doporučeními.   
+
+:::image type="content" source="media/security-center-managing-and-responding-alerts/export-to-csv-with-filters.png" alt-text="Export filtrovaných doporučení do souboru CSV":::
+
+Další informace najdete v [doporučeních pro zabezpečení v Azure Security Center](security-center-recommendations.md).
+
+
+### <a name="not-applicable-resources-now-reported-as-compliant-in-azure-policy-assessments"></a>Prostředky, které se nepoužívají, teď v Azure Policy posouzení hlásí jako "kompatibilní".
+
+Dříve byly vyhodnoceny prostředky, které byly vyhodnoceny pro doporučení a v Azure Policy jako "nekompatibilní", **se objevily** jako nevyhovující. Žádné akce uživatele nemohly změnit stav na "kompatibilní". S touto změnou jsou pro lepší přehlednost hlášeny jako "vyhovující".
+
+Jediný dopad bude zobrazen v Azure Policy, kde se zvýší počet odpovídajících prostředků. Vaše zabezpečené skóre v Azure Security Center nebude nijak ovlivněno.
+
 
 
 ## <a name="december-2020"></a>Prosinec 2020
@@ -134,12 +154,12 @@ Přidali jsme dvě nové možnosti ochrany před hrozbami v cloudu pro vaše pro
 
 Tyto nové ochrany významně zvyšují odolnost proti útokům z aktérů hrozeb a významně zvyšují počet prostředků Azure chráněných pomocí Azure Defenderu.
 
-- **Azure Defender pro správce prostředků** – automaticky monitoruje všechny operace správy prostředků provedené ve vaší organizaci. Další informace najdete tady:
+- **Azure Defender pro správce prostředků** – automaticky monitoruje všechny operace správy prostředků provedené ve vaší organizaci. Další informace naleznete v tématu:
     - [Seznámení s Azure Defenderem pro Správce prostředků](defender-for-resource-manager-introduction.md)
     - [Reakce na upozornění Azure Defenderu pro Resource Manager](defender-for-resource-manager-usage.md)
     - [Seznam výstrah, které poskytuje Azure Defender pro Správce prostředků](alerts-reference.md#alerts-resourcemanager)
 
-- **Azure Defender pro DNS** – nepřetržitě monitoruje všechny dotazy DNS z vašich prostředků Azure. Další informace najdete tady:
+- **Azure Defender pro DNS** – nepřetržitě monitoruje všechny dotazy DNS z vašich prostředků Azure. Další informace naleznete v tématu:
     - [Seznámení s Azure Defenderem pro DNS](defender-for-dns-introduction.md)
     - [Reakce na upozornění Azure Defenderu pro DNS](defender-for-dns-usage.md)
     - [Seznam upozornění poskytovaných službou Azure Defender pro DNS](alerts-reference.md#alerts-dns)
@@ -419,7 +439,7 @@ Další informace najdete v [Odebrání standardu z řídicího panelu](update-r
 
 Azure Resource Graph je služba v Azure, která je navržená tak, aby poskytovala efektivní průzkum prostředků s možností škálování v rámci dané sady předplatných, abyste mohli efektivně řídit vaše prostředí. 
 
-Pro Azure Security Center můžete použít ARG a [KQL (Kusto Query Language)](/azure/data-explorer/kusto/query/) k dotazování široké škály dat stav zabezpečení. Příklad:
+Pro Azure Security Center můžete použít ARG a [KQL (Kusto Query Language)](/azure/data-explorer/kusto/query/) k dotazování široké škály dat stav zabezpečení. Například:
 
 - Využití inventáře prostředků (ARG)
 - Popsali jsme vzorový ARGický dotaz pro [identifikaci účtů bez povoleného vícefaktorového ověřování (MFA)](security-center-identity-access.md#identify-accounts-without-multi-factor-authentication-mfa-enabled) .

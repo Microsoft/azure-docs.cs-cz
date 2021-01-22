@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: overview
-ms.date: 07/13/2020
+ms.date: 01/20/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f85b78480e7258780f8dd396431edeb968189e4c
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: ae7ae239493c999d98100bf9dee4f4f0183addf2
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741248"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660809"
 ---
 # <a name="what-is-azure-active-directory-authentication"></a>Co je Azure Active Directory ověřování?
 
@@ -27,6 +27,8 @@ Jednou z hlavních funkcí platformy identity je ověření, nebo *ověření* p
 * Hybridní integrace pro zápis změn hesel zpátky do místního prostředí
 * Hybridní integrace, která vynutila zásady ochrany hesel pro místní prostředí
 * Ověřování bez hesla
+
+Podívejte se na naše krátké video, kde se dozvíte víc o těchto ověřovacích součástech.
 
 ## <a name="improve-the-end-user-experience"></a>Zlepšení činnosti koncového uživatele
 
@@ -80,7 +82,7 @@ Koncovým cílem mnoha prostředí je odebrat použití hesel jako součást př
 
 ![Zabezpečení a pohodlí v rámci procesu ověřování, který vede k bez hesla](./media/concept-authentication-passwordless/passwordless-convenience-security.png)
 
-Když se přihlásíte pomocí metody bez hesla, přihlašovací údaje se poskytují pomocí metod, jako je biometrika s Windows Hello pro firmy, nebo pomocí bezpečnostního klíče FIDO2. Tyto metody ověřování nemůže útočník snadno duplikovat.
+Když se přihlásíte pomocí metody bez hesla, přihlašovací údaje se poskytují pomocí metod, jako je biometrika s Windows Hello pro firmy, nebo klíče zabezpečení FIDO2. Tyto metody ověřování nemůže útočník snadno duplikovat.
 
 Azure AD poskytuje možnosti nativně ověřit pomocí metod nezaložených na neheslech a zjednodušit tak přihlašování uživatelů a snížit riziko útoků.
 

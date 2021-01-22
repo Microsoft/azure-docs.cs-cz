@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: 881309c040f6c1bdff758d17ab7f51e935437192
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: a49258208f7a5945ac71c8f17db56fccfdcd6515
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607877"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661996"
 ---
 # <a name="tutorial-configure-mediusflow-for-automatic-user-provisioning"></a>Kurz: Konfigurace MediusFlow pro Automatické zřizování uživatelů
 
@@ -31,7 +31,7 @@ Tento kurz popisuje kroky, které je třeba provést v MediusFlow i Azure Active
 > * Zřizování skupin a členství ve skupinách v MediusFlow
 > * Jednotné přihlašování k MediusFlow (doporučeno)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
@@ -155,17 +155,25 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 9. Zkontrolujte atributy uživatele synchronizované z Azure AD do MediusFlow v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v MediusFlow pro operace aktualizace. Pokud se rozhodnete změnit [odpovídající cílový atribut](../app-provisioning/customize-application-attributes.md), budete muset zajistit, aby rozhraní MediusFlow API podporovalo filtrování uživatelů na základě tohoto atributu. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
-   |Atribut|Typ|
-   |---|---|
-   |userName|Řetězec|
+   |Atribut|Typ|Podporováno pro filtrování|
+   |---|---|---|
+   |userName|Řetězec|&check;|
    |emails[type eq "work"].value|Řetězec|
    |název. DisplayName|Řetězec|
    |active|Logická hodnota|
    |name.givenName|Řetězec|
    |name.familyName|Řetězec|
    |název. formátovaný|Řetězec|
-   |externalID|Řetězec|
-   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager|Referenční informace|
+   |externalId|Řetězec|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager|Reference|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: medius: 2.0: uživatel: configurationFilter|Řetězec|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: medius: 2.0: uživatel: identityProvider|Řetězec|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: medius: 2.0: uživatel: nameIdentifier|Řetězec|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: medius: 2.0: uživatel: customFieldText1|Řetězec|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: medius: 2.0: uživatel: customFieldText2|Řetězec|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: medius: 2.0: uživatel: customFieldText3|Řetězec|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: medius: 2.0: uživatel: customFieldText4|Řetězec|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: medius: 2.0: uživatel: customFieldText5|Řetězec|
 
 
 10. V části **mapování** vyberte **synchronizovat Azure Active Directory skupiny do MediusFlow**.
@@ -200,6 +208,10 @@ Po dokončení konfigurace zřizování můžete své nasazení monitorovat pomo
 1. S využitím [protokolů zřizování](../reports-monitoring/concept-provisioning-logs.md) můžete zjistit, kteří uživatelé se zřídili úspěšně a kteří neúspěšně.
 2. Pokud chcete zjistit, jaký je stav cyklu zřizování a jak blízko je dokončení, zkontrolujte [indikátor průběhu](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md).
 3. Pokud se zdá, že konfigurace zřizování není v pořádku, aplikace přejde do karantény. Další informace o stavech karantény najdete [tady](../app-provisioning/application-provisioning-quarantine-status.md).
+
+## <a name="change-log"></a>Protokol změn
+
+* 01/21/2021 – Přidali jsme vlastní atributy rozšíření **configurationFilter**, **identityProvider**, **nameIdentifier**, **customFieldText1**, **customFieldText2**, **customFieldText3**, **customFieldText3** a **customFieldText5** .
 
 ## <a name="additional-resources"></a>Další zdroje informací
 

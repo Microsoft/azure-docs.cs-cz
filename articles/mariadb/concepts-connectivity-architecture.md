@@ -3,15 +3,15 @@ title: Architektura připojení – Azure Database for MariaDB
 description: Popisuje architekturu připojení pro server Azure Database for MariaDB.
 author: mksuni
 ms.author: sumuth
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: 98a75cee88a7d30161fc3166bce0eaec855d347c
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 57e14fa4a026dafb085ea636611ab26b6bad7c01
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656712"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661700"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mariadb"></a>Architektura připojení v Azure Database for MariaDB
 Tento článek popisuje architekturu připojení Azure Database for MariaDB a způsob, jakým jsou přenosy směrovány na vaši instanci Azure Database for MariaDB od klientů v rámci i mimo Azure.
@@ -50,7 +50,7 @@ V následující tabulce jsou uvedené IP adresy brány Azure Database for Maria
 | Brazil South |191.233.201.8, 191.233.200.16    |  | 104.41.11.5|
 | Střední Kanada |40.85.224.249  | | |
 | Kanada – východ | 40.86.226.166    | | |
-| Střední USA | 23.99.160.139, 13.67.215.62, 52.182.136.37, 52.182.136.38 | | |
+| USA – střed | 23.99.160.139, 13.67.215.62, 52.182.136.37, 52.182.136.38 | | |
 | Čína – východ | 139.219.130.35    | | |
 | Čína – východ 2 | 40.73.82.1  | | |
 | Čína – sever | 139.219.15.17    | | |

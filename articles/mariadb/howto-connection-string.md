@@ -3,16 +3,16 @@ title: Připojovací řetězce – Azure Database for MariaDB
 description: Tento dokument obsahuje seznam aktuálně podporovaných připojovacích řetězců pro aplikace pro připojení k Azure Database for MariaDB, včetně ADO.NET (C#), JDBC, Node.js, ODBC, PHP, Python a Ruby.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 8119f0bfd1f9007cab0df93ad2c7ef22b4db2199
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 309c8b55910c5223f377571edb7207e5b34bd219
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94533000"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662173"
 ---
 # <a name="how-to-connect-applications-to-azure-database-for-mariadb"></a>Postup připojení aplikací k Azure Database for MariaDB
 Toto téma uvádí typy připojovacích řetězců, které jsou podporovány Azure Database for MariaDB, spolu se šablonami a příklady. V připojovacím řetězci můžete mít různé parametry a nastavení.

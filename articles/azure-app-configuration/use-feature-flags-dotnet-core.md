@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 09/17/2020
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 8c0dd9713c673ad676058acc7dbbb3cb5a65362e
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 1794d5b15c724008d95cfc59b16960b7ae6a0783
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929187"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661565"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Kurz: používání příznaků funkcí v aplikaci ASP.NET Core
 
@@ -37,7 +37,6 @@ V tomto kurzu se naučíte, jak:
 ## <a name="set-up-feature-management"></a>Nastavení správy funkcí
 
 Přidejte odkaz na `Microsoft.FeatureManagement.AspNetCore` `Microsoft.FeatureManagement` balíčky a NuGet, abyste mohli využít správce funkcí .NET Core.
-    
 Správce funkcí .NET Core `IFeatureManager` získá příznaky funkcí z nativního konfiguračního systému rozhraní. V důsledku toho můžete definovat příznaky funkcí vaší aplikace pomocí libovolného zdroje konfigurace, který podporuje .NET Core, včetně místní *appsettings.jsv* proměnných souboru nebo prostředí. `IFeatureManager` spoléhá na vkládání závislostí .NET Core. Služby správy funkcí můžete zaregistrovat pomocí standardních konvencí:
 
 ```csharp
@@ -109,7 +108,7 @@ Nejjednodušší způsob, jak připojit aplikaci ASP.NET Core ke konfiguraci apl
 2. Otevřete *Startup.cs* a aktualizujte `Configure` metodu tak, aby se přidal vestavěný middleware s názvem `UseAzureAppConfiguration` . Tento middleware umožňuje aktualizovat hodnoty příznaků funkcí v opakovaném intervalu, zatímco ASP.NET Core webová aplikace nadále přijímá požadavky.
 
    ```csharp
-   public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+   public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
    {
        app.UseAzureAppConfiguration();
        app.UseMvc();
@@ -173,7 +172,7 @@ public enum MyFeatureFlags
 
 ## <a name="feature-flag-checks"></a>Kontroly příznaků funkcí
 
-Základním vzorem správy funkcí je nejprve zjistit, zda je příznak funkce nastaven na hodnotu *zapnuto*. V takovém případě správce funkcí spustí akce, které funkce obsahuje. Příklad:
+Základním vzorem správy funkcí je nejprve zjistit, zda je příznak funkce nastaven na hodnotu *zapnuto*. V takovém případě správce funkcí spustí akce, které funkce obsahuje. Například:
 
 ```csharp
 IFeatureManager featureManager;
@@ -184,11 +183,13 @@ if (await featureManager.IsEnabledAsync(nameof(MyFeatureFlags.FeatureA)))
 }
 ```
 
-## <a name="dependency-injection"></a>Injektáž závislosti
+## <a name="dependency-injection"></a>Injektáž závislostí
 
 Ve službě ASP.NET Core MVC můžete ke Správci funkcí přistupovat `IFeatureManager` pomocí injektáže závislosti:
 
 ```csharp
+using Microsoft.FeatureManagement;
+
 public class HomeController : Controller
 {
     private readonly IFeatureManager _featureManager;

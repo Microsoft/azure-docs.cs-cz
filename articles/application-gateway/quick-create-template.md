@@ -6,15 +6,15 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 08/27/2020
+ms.date: 01/20/2021
 ms.author: victorh
 ms.custom: mvc, subject-armqs
-ms.openlocfilehash: 3ea5c891a0e3709c1ce469be2e9101a0825acfcb
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 05e7cd8d7018759a3c8670a610b4c98ac0a86a7a
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093867"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660051"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---arm-template"></a>Rychlý Start: směrování webového provozu pomocí šablony Azure Application Gateway – ARM
 

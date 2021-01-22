@@ -4,14 +4,14 @@ description: Běžné problémy se Azure Monitor výstrahami metrik a možnými 
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 01/11/2021
+ms.date: 01/21/2021
 ms.subservice: alerts
-ms.openlocfilehash: e4e876b58c82605df0c005b225dcf2cdbcda1b34
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 11dc71578b3d94ce41fe040557184ff32bcf3240
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070724"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661793"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Řešení potíží s upozorněními na metriky služby Azure Monitor 
 
@@ -24,7 +24,8 @@ Azure Monitor výstrahy proaktivně upozorní na to, že se ve vašich datech mo
 Pokud se domníváte, že výstraha metriky by měla být aktivována, ale nenarazila se na Azure Portal, zkuste provést následující kroky:
 
 1. **Konfigurace** – Zkontrolujte konfiguraci pravidla upozornění metrik, abyste měli jistotu, že je správně nakonfigurované:
-    - Ověřte, že **typ agregace**, **členitost agregace (period)** a **prahová hodnota** nebo **Citlivost** jsou nakonfigurovány podle očekávání.
+    - Ověřte, zda je **typ agregace** a **členitost agregace (period)** konfigurovány podle očekávání. **Typ agregace** určuje, jak jsou agregovány hodnoty metriky (Další informace [zde](./metrics-aggregation-explained.md#aggregation-types)) a **členitost (period)** určuje, jak daleko zpátky vyhodnocení vyhodnocuje hodnoty metrik při každém spuštění pravidla výstrahy.
+    -  Ověřte, zda je **prahová hodnota** nebo **Citlivost** konfigurována podle očekávání.
     - Pro pravidlo upozornění, které používá dynamické prahové hodnoty, ověřte, jestli jsou nakonfigurovaná Pokročilá nastavení, protože **počet porušení** může filtrovat výstrahy a **Ignorovat data, aby** mohl ovlivnit, jak se počítají prahové hodnoty.
 
        > [!NOTE] 
@@ -187,7 +188,7 @@ Pokud dochází k potížím při vytváření, aktualizaci, načítání nebo o
 - Projděte si seznam [běžných chyb nasazení Azure](../../azure-resource-manager/templates/common-deployment-errors.md) a vyřešte případné potíže.
 - V [příkladech výstrahy metriky Azure Resource Manager příklady šablon](./alerts-metric-create-templates.md) , abyste měli jistotu, že předáváte všechny parametry správně.
 
-### <a name="rest-api"></a>Rozhraní REST API
+### <a name="rest-api"></a>REST API
 
 Přečtěte si [průvodce REST API](/rest/api/monitor/metricalerts/) , abyste ověřili, že všechny parametry předáváte správně.
 

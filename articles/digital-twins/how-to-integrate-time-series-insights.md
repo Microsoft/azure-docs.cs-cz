@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 1/19/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 24b4f56e5798acc4d9bd0962be7059a359958645
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: 97f1f5d0f1f351164e05d18b9f80c7f26450f31b
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573237"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661585"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Integrace digitálních vláken Azure s Azure Time Series Insights
 
@@ -65,7 +65,7 @@ Kurz digitálních vláken Azure [*: připojení uceleného řešení*](./tutori
 4. Vytvořte [koncový bod](concepts-route-events.md#create-an-endpoint) digitálních vláken Azure, který propojuje centrum událostí s instancí digitálních vláken Azure.
 
     ```azurecli-interactive
-    az dt endpoint create eventhub --endpoint-name <name for your Event Hubs endpoint> --eventhub-resource-group <resource group name> --eventhub-namespace <Event Hubs namespace from above> --eventhub <Twins event hub name from above> --eventhub-policy <Twins auth rule from above> -n <your Azure Digital Twins instance name>
+    az dt endpoint create eventhub -n <your Azure Digital Twins instance name> --endpoint-name <name for your Event Hubs endpoint> --eventhub-resource-group <resource group name> --eventhub-namespace <Event Hubs namespace from above> --eventhub <Twins event hub name from above> --eventhub-policy <Twins auth rule from above>
     ```
 
 5. Vytvořte [trasu](concepts-route-events.md#create-an-event-route) v Azure Digital Twins k posílání událostí aktualizací dvojčete do vašeho koncového bodu. Filtr v této trase umožní předat do koncového bodu pouze zprávy s dvojitou aktualizací.
@@ -89,11 +89,16 @@ Tato funkce převede tyto události s dvojitou aktualizací z původního formá
 
 Další informace o použití Event Hubs s Azure Functions najdete v tématu [*Trigger služby Azure Event Hubs pro Azure Functions*](../azure-functions/functions-bindings-event-hubs-trigger.md).
 
-V rámci vaší publikované aplikace Function App nahraďte kód funkce následujícím kódem.
+Do publikované aplikace Function App přidejte novou funkci s názvem **ProcessDTUpdatetoTSI** s následujícím kódem.
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/updateTSI.cs":::
 
-Odsud pak funkce pošle objekty JSON, které vytvoří, do druhého centra událostí, ke kterým se připojíte Time Series Insights.
+>[!NOTE]
+>Do projektu možná budete muset přidat balíčky pomocí `dotnet add package` příkazu nebo správce balíčků NuGet sady Visual Studio.
+
+Potom **publikujte** novou funkci Azure Functions. Pokyny k tomu, jak to provést, najdete v tématu [*Postup: nastavení funkce Azure pro zpracování dat*](how-to-create-azure-function.md#publish-the-function-app-to-azure).
+
+Po zobrazení této funkce budou odeslány objekty JSON, které vytvoří, do druhého centra událostí, které se připojíte k Time Series Insights. Toto centrum událostí vytvoříte v další části.
 
 Později nanastavíte také některé proměnné prostředí, které tato funkce použije pro připojení k vlastním centrům událostí.
 
@@ -130,7 +135,7 @@ V dalším kroku budete muset ve své aplikaci Function App nastavovat proměnn�
     az eventhubs eventhub authorization-rule keys list --resource-group <resource group name> --namespace-name <Event Hubs namespace> --eventhub-name <Twins event hub name from earlier> --name <Twins auth rule from earlier>
     ```
 
-2. Pomocí připojovacího řetězce, který získáte jako výsledek, vytvořte nastavení aplikace ve vaší aplikaci funkcí, které bude obsahovat připojovací řetězec:
+2. Použijte hodnotu *primaryConnectionString* z výsledku k vytvoření nastavení aplikace ve vaší aplikaci Function App, která obsahuje váš připojovací řetězec:
 
     ```azurecli-interactive
     az functionapp config appsettings set --settings "EventHubAppSetting-Twins=<Twins event hub connection string>" -g <resource group> -n <your App Service (function app) name>
@@ -152,15 +157,15 @@ V dalším kroku budete muset ve své aplikaci Function App nastavovat proměnn�
 
 ## <a name="create-and-connect-a-time-series-insights-instance"></a>Vytvořit a připojit instanci Time Series Insights
 
-V dalším kroku nastavíte instanci Time Series Insights pro příjem dat z druhého centra událostí. Postupujte podle následujících kroků a podrobnější informace o tomto procesu najdete v tématu [*kurz: nastavení Azure Time Series Insights Gen2 PAYG Environment*](../time-series-insights/tutorials-set-up-tsi-environment.md).
+V dalším kroku nastavíte instanci Time Series Insights pro příjem dat z vašeho druhého centra událostí (TSI). Postupujte podle následujících kroků a podrobnější informace o tomto procesu najdete v tématu [*kurz: nastavení Azure Time Series Insights Gen2 PAYG Environment*](../time-series-insights/tutorials-set-up-tsi-environment.md).
 
-1. V Azure Portal Začněte vytvářet prostředek Time Series Insights. 
+1. V Azure Portal Začněte vytvářet Time Series Insights prostředí. 
     1. Vyberte cenovou úroveň **Gen2 (L1)** .
     2. Pro toto prostředí budete muset zvolit **ID časové řady** . Vaše ID časové řady může mít až tři hodnoty, které použijete k hledání vašich dat v Time Series Insights. Pro tento kurz můžete použít **$dtId**. Přečtěte si další informace o výběru hodnoty ID v tématu [*osvědčené postupy pro výběr ID časové řady*](../time-series-insights/how-to-select-tsid.md).
     
         :::image type="content" source="media/how-to-integrate-time-series-insights/create-twin-id.png" alt-text="UŽIVATELSKÉ rozhraní portálu pro vytváření Time Series Insightsho prostředí. Je vybraná cenová úroveň Gen2 (L1) a název vlastnosti časové řady je $dtId" lightbox="media/how-to-integrate-time-series-insights/create-twin-id.png":::
 
-2. Vyberte **Další: zdroj události** a vyberte Event Hubs informace výše. Budete také muset vytvořit novou Event Hubs skupinu uživatelů.
+2. Vyberte **Další: zdroj události** a z předchozích verzí vyberte informace o centru událostí TSI. Budete také muset vytvořit novou Event Hubs skupinu uživatelů.
     
     :::image type="content" source="media/how-to-integrate-time-series-insights/event-source-twins.png" alt-text="UŽIVATELSKÉ rozhraní portálu pro vytváření Time Series Insightsho zdroje událostí prostředí. Vytváříte zdroj událostí s informacemi z centra událostí výše. Vytváříte také novou skupinu příjemců." lightbox="media/how-to-integrate-time-series-insights/event-source-twins.png":::
 
@@ -174,7 +179,7 @@ Pokud používáte kompletní kurz ([*kurz: připojení kompletního řešení*]
 
 Nyní by data měla být předávána do instance Time Series Insights, která je připravena k analýze. Pomocí následujících kroků můžete prozkoumat data přicházející v.
 
-1. Otevřete instanci Time Series Insights v [Azure Portal](https://portal.azure.com) (můžete vyhledat název instance na panelu hledání na portálu). Přejděte na *adresu URL aplikace Time Series Insights Explorer* zobrazená v přehledu instance.
+1. Otevřete Time Series Insights prostředí v [Azure Portal](https://portal.azure.com) (můžete vyhledat název prostředí na panelu hledání na portálu). Přejděte na *adresu URL aplikace Time Series Insights Explorer* zobrazená v přehledu instance.
     
     :::image type="content" source="media/how-to-integrate-time-series-insights/view-environment.png" alt-text="Na kartě Přehled prostředí Time Series Insights vyberte adresu URL Time Series Insights Exploreru.":::
 

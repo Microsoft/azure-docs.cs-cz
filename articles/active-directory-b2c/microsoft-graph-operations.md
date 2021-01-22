@@ -1,29 +1,31 @@
 ---
-title: Podporované operace Microsoft Graph
+title: Správa prostředků pomocí Microsoft Graph
 titleSuffix: Azure AD B2C
-description: Index operací Microsoft Graph podporovaných pro správu prostředků Azure AD B2C, včetně uživatelů, toků uživatelů, zprostředkovatelů identity, vlastních zásad, klíčů zásad a dalších.
+description: Postup správy prostředků v klientovi Azure AD B2C voláním rozhraní API Microsoft Graph a pomocí identity aplikace k automatizaci procesu.
 services: B2C
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: reference
-ms.date: 10/15/2020
+ms.topic: how-to
+ms.date: 01/21/2021
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.custom: fasttrack-edit
-ms.openlocfilehash: fed1e31380381b864530b3fa0b9e8c0886737d04
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 1dc5b8dc8930d75456f307324ef97bd60e78eca9
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98033604"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660153"
 ---
-# <a name="microsoft-graph-operations-available-for-azure-ad-b2c"></a>Microsoft Graph operace k dispozici pro Azure AD B2C
+# <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Správa Azure AD B2C s využitím Microsoft Graph
 
-Následující operace Microsoft Graph API se podporují pro správu prostředků Azure AD B2C, včetně uživatelů, poskytovatelů identity, toků uživatelů, uživatelských zásad a klíčů zásad.
+Microsoft Graph umožňuje správu prostředků v adresáři Azure AD B2C. Následující operace Microsoft Graph API se podporují pro správu prostředků Azure AD B2C, včetně uživatelů, poskytovatelů identity, toků uživatelů, uživatelských zásad a klíčů zásad. Každé propojení v následujících částech cílí na odpovídající stránku v rámci referenčního Microsoft Graph rozhraní API pro tuto operaci. 
 
-Každé propojení v následujících částech cílí na odpovídající stránku v rámci referenčního Microsoft Graph rozhraní API pro tuto operaci.
+## <a name="perquisites"></a>Možnost
+
+Pokud chcete používat MS Graph API a pracovat s prostředky ve vašem tenantovi Azure AD B2C, budete potřebovat registraci aplikace, která jim uděluje oprávnění. Pokud chcete vytvořit registraci aplikace, kterou může vaše aplikace pro správu používat, postupujte podle pokynů v článku [správa Azure AD B2C s Microsoft Graph](microsoft-graph-get-started.md) . 
 
 ## <a name="user-management"></a>Správa uživatelů
 
@@ -33,16 +35,14 @@ Každé propojení v následujících částech cílí na odpovídající strán
 - [Aktualizace uživatele](/graph/api/user-update)
 - [Odstranění uživatele](/graph/api/user-delete)
 
-Další informace o správě Azure AD B2C uživatelských účtů s rozhraním API Microsoft Graph najdete v tématu [správa Azure AD B2C uživatelských účtů pomocí Microsoft Graph](manage-user-accounts-graph-api.md).
-
 ## <a name="user-phone-number-management"></a>Správa telefonního čísla uživatele
 
 - [Přidat](/graph/api/authentication-post-phonemethods)
-- [Čtěte](/graph/api/b2cauthenticationmethodspolicy-get)
+- [Získat](/graph/api/b2cauthenticationmethodspolicy-get)
 - [Aktualizace](/graph/api/b2cauthenticationmethodspolicy-update)
 - [Odstranit](/graph/api/phoneauthenticationmethod-delete)
 
-Další informace o tom, jak spravovat telefonní číslo přihlášení uživatele pomocí rozhraní Microsoft Graph API, najdete v tématu [metody ověřování B2C](/graph/api/resources/b2cauthenticationmethodspolicy).
+Další informace o tom, jak spravovat telefonní číslo přihlášení uživatele, najdete v tématu [metody ověřování B2C](/graph/api/resources/b2cauthenticationmethodspolicy).
 
 ## <a name="identity-providers-user-flow"></a>Zprostředkovatelé identity (tok uživatelů)
 
@@ -77,7 +77,7 @@ Následující operace umožňují spravovat zásady Azure AD B2C vztahů důvě
 
 Rozhraní identity Experience Framework ukládá tajné kódy, na které se odkazuje ve vlastních zásadách, aby bylo možné navázat vztah důvěryhodnosti mezi komponentami. Tyto tajné klíče můžou být symetrické nebo asymetrické klíče a hodnoty. V Azure Portal se tyto entity zobrazují jako **klíče zásad**.
 
-Prostředek nejvyšší úrovně pro klíče zásad v rozhraní Microsoft Graph API je [sada klíčů pro důvěryhodné rozhraní](/graph/api/resources/trustframeworkkeyset). Každá **sada klíčů** obsahuje alespoň jeden **klíč**. Pokud chcete vytvořit klíč, nejdřív vytvořte prázdnou sadu klíčů a pak vygenerujte klíč v této sadu klíčů. Můžete vytvořit ruční tajný klíč, nahrát certifikát nebo PKCS12 klíč. Klíčem může být vygenerovaný tajný klíč, řetězec, který definujete (například tajný klíč aplikace Facebook), nebo certifikát, který nahrajete. Pokud má sada klíčů více klíčů, je aktivní pouze jeden z klíčů.
+Prostředek nejvyšší úrovně pro klíče zásad v rozhraní Microsoft Graph API je [sada klíčů pro důvěryhodné rozhraní](/graph/api/resources/trustframeworkkeyset). Každá **sada klíčů** obsahuje alespoň jeden **klíč**. Pokud chcete vytvořit klíč, nejdřív vytvořte prázdnou sadu klíčů a pak vygenerujte klíč v této sadu klíčů. Můžete vytvořit ruční tajný klíč, nahrát certifikát nebo PKCS12 klíč. Klíčem může být vygenerovaný tajný klíč, řetězec (například tajný klíč aplikace Facebook) nebo certifikát, který nahrajete. Pokud má sada klíčů více klíčů, je aktivní pouze jeden z klíčů.
 
 ### <a name="trust-framework-policy-keyset"></a>Sada klíčů zásad pro Trust Framework
 
@@ -114,4 +114,93 @@ Azure AD B2C poskytuje adresář, který může obsahovat 100 vlastních atribut
 
 - [Vypsat protokoly auditu](/graph/api/directoryaudit-list)
 
-Další informace o přístupu k protokolům auditu Azure AD B2C pomocí rozhraní API Microsoft Graph najdete v tématu [přístup k protokolům auditu Azure AD B2C](view-audit-logs.md).
+Další informace o přístupu k protokolům auditu Azure AD B2C najdete v tématu [přístup k protokolům auditu Azure AD B2C](view-audit-logs.md).
+
+## <a name="code-sample-how-to-programmatically-manage-user-accounts"></a>Ukázka kódu: jak programově spravovat uživatelské účty
+
+Tato ukázka kódu je Konzolová aplikace .NET Core, která používá [sadu SDK Microsoft Graph](/graph/sdks/sdks-overview) k interakci s rozhraním API Microsoft Graph. Jeho kód ukazuje, jak volat rozhraní API pro programovou správu uživatelů v klientovi Azure AD B2C.
+Můžete [si stáhnout ukázkový archiv](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management/archive/master.zip) (*. zip), [Procházet úložiště](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management) na GitHubu nebo klonovat úložiště:
+
+```cmd
+git clone https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management.git
+```
+
+Po získání ukázky kódu ji nakonfigurujte pro vaše prostředí a pak Sestavte projekt:
+
+1. Otevřete projekt v [aplikaci Visual Studio](https://visualstudio.microsoft.com) nebo [Visual Studio Code](https://code.visualstudio.com).
+1. Otevřete `src/appsettings.json`.
+1. V `appSettings` oddílu nahraďte `your-b2c-tenant` názvem vašeho tenanta a `Application (client) ID` a `Client secret` hodnotami pro registraci aplikace pro správu. Další informace najdete v tématu [Registrace aplikace Microsoft Graph](microsoft-graph-get-started.md).
+1. Otevřete okno konzoly v rámci svého místního klonu úložiště, přejděte do `src` adresáře a sestavte projekt:
+
+    ```console
+    cd src
+    dotnet build
+    ```
+    
+1. Spusťte aplikaci pomocí `dotnet` příkazu:
+
+    ```console
+    dotnet bin/Debug/netcoreapp3.1/b2c-ms-graph.dll
+    ```
+
+Aplikace zobrazí seznam příkazů, které lze spustit. Můžete například získat všechny uživatele, získat jednoho uživatele, odstranit uživatele, aktualizovat heslo uživatele a hromadný import.
+
+### <a name="code-discussion"></a>Diskuze o kódu
+
+Vzorový kód používá [sadu Microsoft Graph SDK](/graph/sdks/sdks-overview), která je navržená tak, aby zjednodušila vytváření vysoce kvalitních, efektivních a odolných aplikací, které přistupují k Microsoft Graph.
+
+Jakýkoli požadavek na rozhraní Microsoft Graph API vyžaduje přístupový token pro ověřování. Řešení využívá balíček NuGet [Microsoft. Graph. auth](https://www.nuget.org/packages/Microsoft.Graph.Auth/) , který poskytuje obálku Microsoft Authentication Library (MSAL) založenou na scénáři ověřování pro použití s Microsoft Graph SDK.
+
+`RunAsync`Metoda v souboru _program.cs_ :
+
+1. Přečte nastavení aplikace z _appsettings.jsv_ souboru.
+1. Inicializuje poskytovatele ověřování pomocí procesu [udělení přihlašovacích údajů klienta OAuth 2,0](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md) . Pomocí toku udělení přihlašovacích údajů klienta může aplikace získat přístupový token pro volání rozhraní Microsoft Graph API.
+1. Nastaví klienta služby Microsoft Graph u poskytovatele ověřování:
+
+    ```csharp
+    // Read application settings from appsettings.json (tenant ID, app ID, client secret, etc.)
+    AppSettings config = AppSettingsFile.ReadFromJsonFile();
+
+    // Initialize the client credential auth provider
+    IConfidentialClientApplication confidentialClientApplication = ConfidentialClientApplicationBuilder
+        .Create(config.AppId)
+        .WithTenantId(config.TenantId)
+        .WithClientSecret(config.ClientSecret)
+        .Build();
+    ClientCredentialProvider authProvider = new ClientCredentialProvider(confidentialClientApplication);
+
+    // Set up the Microsoft Graph service client with client credentials
+    GraphServiceClient graphClient = new GraphServiceClient(authProvider);
+    ```
+
+Inicializovaná *GraphServiceClient* se pak použije v _UserService.cs_ k provádění operací správy uživatelů. Například získání seznamu uživatelských účtů v tenantovi:
+
+```csharp
+public static async Task ListUsers(GraphServiceClient graphClient)
+{
+    Console.WriteLine("Getting list of users...");
+
+    // Get all users (one page)
+    var result = await graphClient.Users
+        .Request()
+        .Select(e => new
+        {
+            e.DisplayName,
+            e.Id,
+            e.Identities
+        })
+        .GetAsync();
+
+    foreach (var user in result.CurrentPage)
+    {
+        Console.WriteLine(JsonConvert.SerializeObject(user));
+    }
+}
+```
+
+[Volání rozhraní API pomocí Microsoft Graph sady SDK](/graph/sdks/create-requests) obsahují informace o tom, jak číst a zapisovat informace z Microsoft Graph, použít `$select` k řízení vrácených vlastností, zadání vlastních parametrů dotazu a použití `$filter` `$orderBy` parametrů dotazu a.
+
+<!-- LINK -->
+
+[graph-objectIdentity]: /graph/api/resources/objectidentity
+[graph-user]: (https://docs.microsoft.com/graph/api/resources/user)

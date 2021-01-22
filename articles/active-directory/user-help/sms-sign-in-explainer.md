@@ -1,5 +1,5 @@
 ---
-title: Uživatelské prostředí přihlašování SMS pro telefonní číslo (Preview) – Azure AD
+title: Uživatelské prostředí přihlašování SMS pro telefonní číslo – Azure AD
 description: Další informace o uživatelském prostředí přihlašování SMS pro nová nebo existující telefonní čísla
 services: active-directory
 author: curtand
@@ -8,18 +8,18 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 04/14/2020
+ms.date: 01/21/2021
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: a4dcb6774990c03ce3d55fb6c519b0600a1086f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a50f2032a978a552205d1bba602249f34f0478a
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91536881"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661584"
 ---
-# <a name="use-your-phone-number-as-a-user-name-preview"></a>Použití telefonního čísla jako uživatelského jména (Preview)
+# <a name="use-your-phone-number-as-a-user-name"></a>Použití telefonního čísla jako uživatelského jména
 
 Registrace zařízení dává vašemu telefonu přístup ke službám vaší organizace a neumožňuje vaší organizaci přístup k vašemu telefonu. Pokud jste správce, najdete další informace v v [konfiguraci a povolení uživatelů pro ověřování pomocí serveru SMS](../authentication/howto-authentication-sms-signin.md).
 
@@ -36,7 +36,7 @@ Pokud získáte nový telefon nebo nové číslo a zaregistrujete ho v organizac
 1. Zobrazí se výzva, která říká SMS ověřený. Váš telefon byl úspěšně zaregistrován. "
 
 > [!Important]
-> Kvůli známému problému ve verzi Preview nebude možné po krátkém Přidání telefonního čísla zaregistrovat číslo pro přihlášení ke službě SMS. Budete se muset přihlásit pomocí přidaného čísla a pak podle pokynů zaregistrovat číslo pro přihlášení ke službě SMS.
+> Kvůli známému problému se po krátké době přidání telefonního čísla nezaregistruje číslo pro přihlášení SMS. Budete se muset přihlásit pomocí přidaného čísla a pak podle pokynů zaregistrovat číslo pro přihlášení ke službě SMS.
 
 ### <a name="when-the-phone-number-is-in-use"></a>Když se telefonní číslo používá
 

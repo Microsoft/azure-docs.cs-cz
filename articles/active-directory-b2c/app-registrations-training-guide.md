@@ -11,12 +11,12 @@ ms.date: 05/25/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7c9e3344ed819f607feeab88ac43a9dc286a61e0
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 430da23986fc36a0e94c049512ef716aff1fed5c
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109092"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660246"
 ---
 # <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>Nové prostředí Registrace aplikací pro Azure Active Directory B2C
 
@@ -66,9 +66,10 @@ Ve starší verzi prostředí se aplikace vždycky vytvořily jako aplikace s p�
 Tuto možnost můžete použít také k použití Azure AD B2C jako poskytovatele služby SAML. [Přečtěte si další informace](identity-provider-adfs.md).
 
 ## <a name="applications-for-devops-scenarios"></a>Aplikace pro scénáře DevOps
+
 Další typy účtů můžete použít k vytvoření aplikace pro správu DevOpsch scénářů, jako je například použití Microsoft Graph k nahrání zásad architektury pro rozhraní identity nebo zřízení uživatelů. Naučte [se, jak registrovat aplikaci Microsoft Graph pro správu prostředků Azure AD B2C](microsoft-graph-get-started.md).
 
-Možná se nezobrazí všechna Microsoft Graph oprávnění, protože mnohé z těchto oprávnění se nevztahují na uživatele Azure B2C Consumer. [Přečtěte si další informace o správě uživatelů pomocí Microsoft Graph](manage-user-accounts-graph-api.md).
+Možná se nezobrazí všechna Microsoft Graph oprávnění, protože mnohé z těchto oprávnění se nevztahují na uživatele Azure B2C Consumer. [Přečtěte si další informace o správě uživatelů pomocí Microsoft Graph](microsoft-graph-operations.md).
 
 ## <a name="admin-consent-and-offline_accessopenid-scopes"></a>Souhlas správce a obory offline_access + OpenID
 <!-- Azure AD B2C doesn't support user consent. That is, when a user signs into an application, the user doesn't see a screen requesting consent for the application permissions. All permissions have to be granted through admin consent.  -->

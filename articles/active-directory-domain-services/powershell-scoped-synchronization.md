@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 01/20/2021
 ms.author: justinha
-ms.openlocfilehash: c078117baf84d7dbfaaaa2b569abb8a5f5c67e6d
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 04c611b8a902d27f40893a05f301898c0111748f
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96619007"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660945"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services-using-azure-ad-powershell"></a>Konfigurace vymezené synchronizace z Azure AD na Azure Active Directory Domain Services pomocí Azure AD PowerShellu
 
@@ -41,15 +41,14 @@ K dokončení tohoto článku potřebujete následující prostředky a oprávn�
 
 Ve výchozím nastavení se všechny uživatele a skupiny z adresáře Azure AD synchronizují do spravované domény. Pokud k spravované doméně potřebuje jenom několik uživatelů, můžete synchronizovat jenom tyto uživatelské účty. Tato synchronizace s vymezeným oborem je založena na skupině. Když nakonfigurujete synchronizaci s rozsahem na základě skupin, budou se do spravované domény synchronizovat jenom uživatelské účty patřící do zadaných skupin. Vnořené skupiny se nesynchronizují, pouze konkrétní skupiny, které vyberete.
 
-Rozsah synchronizace můžete změnit při vytváření spravované domény nebo po jejím nasazení. V existující spravované doméně teď také můžete změnit rozsah synchronizace, aniž byste je museli znovu vytvořit.
+Obor synchronizace můžete změnit před nebo po vytvoření spravované domény. Rozsah synchronizace je definován instančním objektem s identifikátorem aplikace 2565bd9d-DA50-47d4-8B85-4c97f669dc36. Chcete-li zabránit ztrátě rozsahu, neodstraňujte ani neměňte instanční objekt. Pokud je omylem odstraněn, nelze obnovit rozsah synchronizace. 
+
+Při změně rozsahu synchronizace Pamatujte na následující upozornění:
+
+- Dojde k úplné synchronizaci.
+- Objekty, které již nejsou ve spravované doméně požadovány, jsou odstraněny. Ve spravované doméně se vytvoří nové objekty.
 
 Další informace o procesu synchronizace najdete [v tématu pochopení synchronizace v Azure AD Domain Services][concepts-sync].
-
-> [!WARNING]
-> Změna rozsahu synchronizace způsobí, že spravovaná doména znovu synchronizuje všechna data. Platí následující důležité informace:
->
->  * Když změníte rozsah synchronizace pro spravovanou doménu, dojde k úplné opakované synchronizaci.
->  * Objekty, které již nejsou ve spravované doméně požadovány, jsou odstraněny. Ve spravované doméně se vytvoří nové objekty.
 
 ## <a name="powershell-script-for-scoped-synchronization"></a>PowerShellový skript pro vymezenou synchronizaci
 

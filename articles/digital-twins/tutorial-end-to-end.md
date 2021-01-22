@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 09ce611b5bca6c04d55da95a82a8fcd7ae348db3
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 4f68eba8106a20d357fe6d3fb2baac1d1661aa1e
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98049212"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660534"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Kurz: sestavení kompletního řešení
 
@@ -167,11 +167,13 @@ Pokud chcete povolit aplikaci Function App přístup k digitálním úlohám Azu
 
 [!INCLUDE [digital-twins-role-rename-note.md](../../includes/digital-twins-role-rename-note.md)]
 
-V Azure Cloud Shell pomocí následujícího příkazu nastavte nastavení aplikace, které vaše aplikace Function App použije k odkazování na instanci digitálních vláken Azure.
+V Azure Cloud Shell pomocí následujícího příkazu nastavte nastavení aplikace, které vaše aplikace Function App použije k odkazování na instanci digitálních vláken Azure. Zadejte zástupné symboly s podrobnostmi o vašich prostředcích (Nezapomeňte, že adresa URL instance digitálního vlákna Azure představuje název hostitele, kterému předchází *https://*).
 
 ```azurecli-interactive
 az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=<your-Azure-Digital-Twins-instance-URL>"
 ```
+
+Výstupem je seznam nastavení funkce Azure Functions, která by teď měla obsahovat položku s názvem *ADT_SERVICE_URL*.
 
 Pomocí následujícího příkazu vytvořte identitu spravovanou systémem. Poznamenejte si pole *principalId* ve výstupu.
 
@@ -257,7 +259,7 @@ Výstupem jsou informace o vytvořeném zařízení.
 
 ### <a name="configure-and-run-the-simulation"></a>Konfigurace a spuštění simulace
 
-Dále nakonfigurujte simulátor zařízení, aby odesílal data do instance IoT Hub.
+Následně nakonfigurujte simulátor zařízení, aby posílal data do instance IoT Hubu.
 
 Začněte získáním *připojovacího řetězce centra IoT* pomocí tohoto příkazu:
 
@@ -265,7 +267,7 @@ Začněte získáním *připojovacího řetězce centra IoT* pomocí tohoto př�
 az iot hub connection-string show -n <your-IoT-hub-name>
 ```
 
-Pak Získejte *připojovací řetězec zařízení* pomocí tohoto příkazu:
+Pak načtěte *připojovací řetězec zařízení* pomocí tohoto příkazu:
 
 ```azurecli-interactive
 az iot hub device-identity connection-string show --device-id thermostat67 --hub-name <your-IoT-hub-name>

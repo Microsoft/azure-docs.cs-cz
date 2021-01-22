@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/23/2020
 ms.author: wolfma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 68a129f38e9a94a7e381d11ffa3c3d02791b025b
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.openlocfilehash: e48fead4d4364fd84f178388dbfb9158296e687b
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97755765"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98659967"
 ---
 # <a name="how-to-use-batch-transcription"></a>Použití dávkového přepisu
 
@@ -180,7 +180,7 @@ K nakonfigurování přepisu použijte tyto volitelné vlastnosti:
       Volitelná adresa URL s [ad hoc SAS](../../storage/common/storage-sas-overview.md) na zapisovatelný kontejner v Azure. Výsledek je uložen v tomto kontejneru. SAS s uloženými zásadami přístupu **se nepodporuje** . Pokud tento parametr nezadáte, uloží Microsoft výsledky do kontejneru úložiště spravovaného Microsoftem. Když se přepis odstraní voláním [Odstranit přepisu](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription), budou odstraněna také výsledná data.
 :::row-end:::
 
-### <a name="storage"></a>Úložiště
+### <a name="storage"></a>Storage
 
 Batch přepis může číst zvuk z internetového identifikátoru URI, který je veřejně viditelný, a může číst zvuk nebo zapisovat přepisy pomocí identifikátoru URI SAS s [úložištěm objektů BLOB v Azure](../../storage/blobs/storage-blobs-overview.md).
 
@@ -208,7 +208,8 @@ Každý soubor výsledků přepisu má tento formát:
   ],
   "recognizedPhrases": [                // results for each phrase and each channel individually
     {
-      "recognitionStatus": "Success",   // recognition state, e.g. "Success", "Failure"
+      "recognitionStatus": "Success",   // recognition state, e.g. "Success", "Failure"          
+      "speaker": 1,                     // if `diarizationEnabled` is `true`, this is the identified speaker (1 or 2), otherwise this property is not present
       "channel": 0,                     // channel number of the result
       "offset": "PT0.07S",              // offset in audio of this phrase, ISO 8601 encoded duration 
       "duration": "PT1.59S",            // audio duration of this phrase, ISO 8601 encoded duration
@@ -219,7 +220,6 @@ Každý soubor výsledků přepisu má tento formát:
       "nBest": [
         {
           "confidence": 0.898652852,    // confidence value for the recognition of the whole phrase
-          "speaker": 1,                 // if `diarizationEnabled` is `true`, this is the identified speaker (1 or 2), otherwise this property is not present
           "lexical": "hello world",
           "itn": "hello world",
           "maskedITN": "hello world",

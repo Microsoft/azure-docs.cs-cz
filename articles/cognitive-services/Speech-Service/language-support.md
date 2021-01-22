@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: e51354b1c2905d0532ce4eb49236dda8550f98a4
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 83d7263d430ed9dc8f2f61711fc4c1339ba03810
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600080"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662926"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Podpora jazyka a hlasu pro službu rozpoznávání řeči
 
@@ -38,8 +38,8 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 
 | Jazyk                 | Národní prostředí (BCP-47) | Vlastní nastavení  | [Rozpoznávání jazyka](how-to-automatic-language-detection.md) |
 |------------------------------------|--------|---------------------------------------------------|-------------------------------|
-| Arabština (Bahrajn), moderní Standard  | `ar-BH` | Jazykový model                                   | Ano                           | 
-| Arabština (Egypt)                     | `ar-EG` | Jazykový model                                   | Ano                          |
+| Arabština (Bahrajn), moderní Standard  | `ar-BH` | Jazykový model                                   | Yes                           | 
+| Arabština (Egypt)                     | `ar-EG` | Jazykový model                                   | Yes                          |
 | Arabština (Irák)                      | `ar-IQ` | Jazykový model                                   |                           |
 | Arabština (Izrael)                    | `ar-IL` | Jazykový model                                   |                           |
 | Arabština (Jordánsko)                    | `ar-JO` | Jazykový model                                   |                           |
@@ -47,54 +47,54 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | Arabština (Libanon)                   | `ar-LB` | Jazykový model                                   |                           |
 | Arabština (Omán)                      | `ar-OM` | Jazykový model                                   |                           |
 | Arabština (Katar)                     | `ar-QA` | Jazykový model                                   |                           |
-| Arabština (Saúdská Arábie)              | `ar-SA` | Jazykový model                                   | Ano                          |
+| Arabština (Saúdská Arábie)              | `ar-SA` | Jazykový model                                   | Yes                          |
 | Arabština (stav palestinská samospráva)        | `ar-PS` | Jazykový model                                   |                           |
-| Arabština (Sýrie)                     | `ar-SY` | Jazykový model                                   | Ano                          |
+| Arabština (Sýrie)                     | `ar-SY` | Jazykový model                                   | Yes                          |
 | Arabština (Spojené arabské emiráty)      | `ar-AE` | Jazykový model                                   |                           |
 | Bulharština (Bulharsko)               | `bg-BG` | Jazykový model                                   |                           |
-| katalánština (Španělsko)                    | `ca-ES` | Jazykový model                                   | Ano                          |
-| Čínština (kantonština, tradiční)   | `zh-HK` | Akustický model<br>Jazykový model                 |        Ano                   |
-| Čínština (Mandarin, zjednodušená)     | `zh-CN` | Akustický model<br>Jazykový model                 |     Ano                      |
-| Čínština (tchajwanský mandarinka)       | `zh-TW` | Akustický model<br>Jazykový model                 |           Ano                |
+| katalánština (Španělsko)                    | `ca-ES` | Jazykový model                                   | Yes                          |
+| Čínština (kantonština, tradiční)   | `zh-HK` | Akustický model<br>Jazykový model                 |        Yes                   |
+| Čínština (Mandarin, zjednodušená)     | `zh-CN` | Akustický model<br>Jazykový model                 |     Yes                      |
+| Čínština (tchajwanský mandarinka)       | `zh-TW` | Akustický model<br>Jazykový model                 |           Yes                |
 | chorvatština (Chorvatsko)                 | `hr-HR` | Jazykový model                                   |                           |
 | čeština (Česká republika)             | `cs-CZ` | Jazykový model                                   |                           |
-| dánština (Dánsko)                   | `da-DK` | Jazykový model                                   | Ano                          |
-| nizozemština (Nizozemsko)                | `nl-NL` | Jazykový model                                   |    Ano                       |
-| Angličtina (Austrálie)                | `en-AU` | Akustický model<br>Jazykový model                 | Ano                          |
-| Angličtina (Kanada)                   | `en-CA` | Akustický model<br>Jazykový model                 | Ano                          |
+| dánština (Dánsko)                   | `da-DK` | Jazykový model                                   | Yes                          |
+| nizozemština (Nizozemsko)                | `nl-NL` | Jazykový model                                   |    Yes                       |
+| Angličtina (Austrálie)                | `en-AU` | Akustický model<br>Jazykový model                 | Yes                          |
+| Angličtina (Kanada)                   | `en-CA` | Akustický model<br>Jazykový model                 | Yes                          |
 | Angličtina (Hongkong)                | `en-HK` | Jazykový model                                   |                           |
-| Angličtina (Indie)                    | `en-IN` | Akustický model<br>Jazykový model                 | Ano                          |
+| Angličtina (Indie)                    | `en-IN` | Akustický model<br>Jazykový model                 | Yes                          |
 | Angličtina (Irsko)                  | `en-IE` | Jazykový model                                   |                           |
-| Angličtina (Nový Zéland)              | `en-NZ` | Akustický model<br>Jazykový model                 |  Ano                         |
+| Angličtina (Nový Zéland)              | `en-NZ` | Akustický model<br>Jazykový model                 |  Yes                         |
 | Angličtina (Nigérie)                  | `en-NG` | Jazykový model                                   |                           |
 | Angličtina (Filipíny)              | `en-PH` | Jazykový model                                   |                           |
 | Angličtina (Singapur)                | `en-SG` | Jazykový model                                   |                           |
 | Angličtina (Jihoafrická republika)             | `en-ZA` | Jazykový model                                   |                           |
-| Angličtina (Spojené království)           | `en-GB` | Akustický model<br>Jazykový model<br>Výslovnost| Ano                          |
-| Angličtina (Spojené státy)            | `en-US` | Akustický model<br>Jazykový model<br>Výslovnost| Ano                          |
+| Angličtina (Spojené království)           | `en-GB` | Akustický model<br>Jazykový model<br>Výslovnost| Yes                          |
+| Angličtina (Spojené státy)            | `en-US` | Akustický model<br>Jazykový model<br>Výslovnost| Yes                          |
 | Estonština (Estonsko)                  | `et-EE` | Jazykový model                                   |                           |
-| finština (Finsko)                  | `fi-FI` | Jazykový model                                   |     Ano                      |
-| Francouzština (Kanada)                    | `fr-CA` | Akustický model<br>Jazykový model                 |     Ano                      |
-| francouzština (Francie)                    | `fr-FR` | Akustický model<br>Jazykový model<br>Výslovnost|      Ano                     |
-| němčina (Německo)                   | `de-DE` | Akustický model<br>Jazykový model<br>Výslovnost|  Ano                         |
+| finština (Finsko)                  | `fi-FI` | Jazykový model                                   |     Yes                      |
+| Francouzština (Kanada)                    | `fr-CA` | Akustický model<br>Jazykový model                 |     Yes                      |
+| francouzština (Francie)                    | `fr-FR` | Akustický model<br>Jazykový model<br>Výslovnost|      Yes                     |
+| němčina (Německo)                   | `de-DE` | Akustický model<br>Jazykový model<br>Výslovnost|  Yes                         |
 | Řečtina (Řecko)                     | `el-GR` | Jazykový model                                   |                           |
 | Gudžarátština (Indie)                  | `gu-IN` | Jazykový model                                   |                           |
-| hindština (Indie)                      | `hi-IN` | Akustický model<br>Jazykový model                 |     Ano                      |
+| hindština (Indie)                      | `hi-IN` | Akustický model<br>Jazykový model                 |     Yes                      |
 | Maďarština (Maďarsko)                | `hu-HU` | Jazykový model                                   |                           |
 | Irština (Irsko)                     | `ga-IE` | Jazykový model                                   |                           |
-| italština (Itálie)                    | `it-IT` | Akustický model<br>Jazykový model<br>Výslovnost|      Ano                     |
-| japonština (Japonsko)                   | `ja-JP` | Akustický model<br>Jazykový model                 |      Ano                     |
-| korejština (Jižní Korea)                     | `ko-KR` | Akustický model<br>Jazykový model                 |      Ano                     |
+| italština (Itálie)                    | `it-IT` | Akustický model<br>Jazykový model<br>Výslovnost|      Yes                     |
+| japonština (Japonsko)                   | `ja-JP` | Akustický model<br>Jazykový model                 |      Yes                     |
+| korejština (Jižní Korea)                     | `ko-KR` | Akustický model<br>Jazykový model                 |      Yes                     |
 | lotyština (Lotyšsko)                   | `lv-LV` | Jazykový model                                   |                           |
 | litevština (Litva)             | `lt-LT` | Jazykový model                                   |                           |
 | Maltština (Malta)                     | `mt-MT` | Jazykový model                                   |                           |
 | Maráthština (Indie)                    | `mr-IN` | Jazykový model                                   |                           |
-| Norština, Bokmål (Norsko)         | `nb-NO` | Jazykový model                                   |     Ano                      |
-| polština (Polsko)                    | `pl-PL` | Jazykový model                                   |       Ano                    |
-| Portugalština (Brazílie)                | `pt-BR` | Akustický model<br>Jazykový model<br>Výslovnost|          Ano                 |
-| portugalština (Portugalsko)              | `pt-PT` | Jazykový model                                   |             Ano              |
+| Norština, Bokmål (Norsko)         | `nb-NO` | Jazykový model                                   |     Yes                      |
+| polština (Polsko)                    | `pl-PL` | Jazykový model                                   |       Yes                    |
+| Portugalština (Brazílie)                | `pt-BR` | Akustický model<br>Jazykový model<br>Výslovnost|          Yes                 |
+| portugalština (Portugalsko)              | `pt-PT` | Jazykový model                                   |             Yes              |
 | rumunština (Rumunsko)                 | `ro-RO` | Jazykový model                                   |                           |
-| ruština (Rusko)                   | `ru-RU` | Akustický model<br>Jazykový model                 |                Ano           |
+| ruština (Rusko)                   | `ru-RU` | Akustický model<br>Jazykový model                 |                Yes           |
 | slovenština (Slovensko)                  | `sk-SK` | Jazykový model                                   |                           |
 | slovinština (Slovinsko)               | `sl-SI` | Jazykový model                                   |                           |
 | Španělština (Argentina)                | `es-AR` | Jazykový model                                   |                           |
@@ -109,27 +109,25 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | Španělština (Rovníková Guinea)        | `es-GQ` | Jazykový model                                   |                           |
 | Španělština (Guatemala)                | `es-GT` | Jazykový model                                   |                           |
 | Španělština (Honduras)                 | `es-HN` | Jazykový model                                   |                           |
-| Španělština (Mexiko)                   | `es-MX` | Akustický model<br>Jazykový model                 |    Ano                       |
+| Španělština (Mexiko)                   | `es-MX` | Akustický model<br>Jazykový model                 |    Yes                       |
 | Španělština (Nikaragua)                | `es-NI` | Jazykový model                                   |                           |
 | Španělština (Panama)                   | `es-PA` | Jazykový model                                   |                           |
 | Španělština (Paraguay)                 | `es-PY` | Jazykový model                                   |                           |
 | Španělština (Peru)                     | `es-PE` | Jazykový model                                   |                           |
 | Španělština (Portoriko)              | `es-PR` | Jazykový model                                   |                           |
-| Španělština (Španělsko)                    | `es-ES` | Akustický model<br>Jazykový model                 |  Ano                         |
+| Španělština (Španělsko)                    | `es-ES` | Akustický model<br>Jazykový model                 |  Yes                         |
 | Španělština (Uruguay)                  | `es-UY` | Jazykový model                                   |                           |
 | Španělština (USA)                      | `es-US` | Jazykový model                                   |                           |
 | Španělština (Venezuela)                | `es-VE` | Jazykový model                                   |                           |
-| švédština (Švédsko)                   | `sv-SE` | Jazykový model                                   |   Ano                        |
+| švédština (Švédsko)                   | `sv-SE` | Jazykový model                                   |   Yes                        |
 | Tamilština (Indie)                      | `ta-IN` | Jazykový model                                   |                           |
 | Telugština (Indie)                     | `te-IN` | Jazykový model                                   |                           |
-| thajština (Thajsko)                    | `th-TH` | Jazykový model                                   |      Ano                     |
+| thajština (Thajsko)                    | `th-TH` | Jazykový model                                   |      Yes                     |
 | turečtina (Turecko)                   | `tr-TR` | Jazykový model                                   |                           |
 
 ## <a name="text-to-speech"></a>Převod textu na řeč
 
 Sada Microsoft Speech SDK a rozhraní REST API podporují tyto hlasy, z nichž každý podporuje konkrétní jazyk a dialekt identifikovaný národním prostředím. Můžete také získat úplný seznam jazyků a hlasů podporovaných pro každou konkrétní oblast nebo koncový bod prostřednictvím [rozhraní API pro hlasy a seznam](rest-text-to-speech.md#get-a-list-of-voices). 
-
-Pokud se chcete dozvědět, jak můžete konfigurovat a upravovat styly mluveného slova, včetně hlasů neuronové, přečtěte si téma Postupy v tématu [How to](speech-synthesis-markup.md#adjust-speaking-styles) Speeching Markup Language.
 
 > [!IMPORTANT]
 > Ceny se liší pro standardní, vlastní a neuronové hlasy. Další informace najdete na stránce s [cenami](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) .
@@ -289,6 +287,8 @@ Níže jsou hlasy neuronové ve verzi Public Preview.
 
 Další informace o regionální dostupnosti najdete v tématu [oblasti](regions.md#standard-and-neural-voices).
 
+Další informace o tom, jak můžete nakonfigurovat a upravit hlasy neuronové, jako jsou například mluvené styly, najdete v tématu [řeč syntézy kódu](speech-synthesis-markup.md#adjust-speaking-styles).
+
 > [!IMPORTANT]
 > `en-US-JessaNeural`Hlas se změnil na `en-US-AriaNeural` . Pokud jste předtím používali "Jessa", převeďte ho na standard ARIA.
 
@@ -392,30 +392,10 @@ Více než 75 standardních hlasů je k dispozici ve více než 45 jazycích a n
 
 ### <a name="customization"></a>Přizpůsobení
 
-Vlastní hlas je k dispozici v úrovni Standard a neuronové. Podporované jazyky jsou pro tyto dvě úrovně odlišné. 
-
-| Jazyk | Národní prostředí | Standard | Neuronové |
-|--|--|--|--|
-| Čínština (Mandarin, zjednodušená) | `zh-CN` | Ano | Ano |
-| Čínština (Mandarin, zjednodušená), anglické dvojjazyčné | `zh-CN` dvojjazyčný | Ano | Ano |
-| Angličtina (Austrálie) | `en-AU` | Ne | Ano |
-| Angličtina (Indie) | `en-IN` | Ano | Ano |
-| Angličtina (Spojené království) | `en-GB` | Ano | Ano |
-| Angličtina (Spojené státy) | `en-US` | Ano | Ano |
-| Francouzština (Kanada) | `fr-CA` | Ne | Ano |
-| francouzština (Francie) | `fr-FR` | Ano | Ano |
-| němčina (Německo) | `de-DE` | Ano | Ano |
-| italština (Itálie) | `it-IT` | Ano | Ano |
-| japonština (Japonsko) | `ja-JP` | Ne | Ano |
-| korejština (Jižní Korea) | `ko-KR` | Ne | Ano |
-| Portugalština (Brazílie) | `pt-BR` | Ano | Ano |
-| Španělština (Mexiko) | `es-MX` | Ano | Ano |
-| Španělština (Španělsko) | `es-ES` | Ne | Ano |
-
-Vyberte správné národní prostředí, které odpovídá školicím datům, které máte k dispozici pro výuku vlastního hlasového modelu. Například pokud jsou data nahrávání mluveného mluveného zvýraznění v angličtině, vyberte `en-GB` .
+Vlastní nastavení hlasu je k dispozici pro `de-DE` , `en-GB` , `en-IN` , `en-US` , `es-MX` , `fr-FR` , `it-IT` , `pt-BR` a `zh-CN` . Vyberte správné národní prostředí, které odpovídá školicím datům, které máte k dispozici pro výuku vlastního hlasového modelu. Například pokud jsou data nahrávání mluveného mluveného zvýraznění v angličtině, vyberte `en-GB` .
 
 > [!NOTE]
-> V rámci vlastního hlasu nepodporujeme školicí modely pro BI, s výjimkou Chinese-English BI-vícejazyčná. Pokud chcete naučit čínský hlas, který může mluvit i v angličtině, vyberte možnost dvojjazyčně v angličtině. Chinese-English dvojjazyčné školení pomocí metody Standard je k dispozici pouze v Severní Evropa a Střed USA – sever. Vlastní neuronové hlasové školení je k dispozici v Velká Británie – jih a Východní USA. 
+> V rámci vlastního hlasu nepodporujeme školicí modely pro BI, s výjimkou Chinese-English BI-vícejazyčná. Pokud chcete naučit čínský hlas, který může mluvit i v angličtině, vyberte možnost dvojjazyčně v angličtině. Hlasové školení ve všech národních prostředích začíná sadou dat 2000 + projevy, s výjimkou `en-US` a `zh-CN` kde můžete začít s jakoukoli velikostí školicích dat.
 
 ## <a name="speech-translation"></a>Překlad řeči
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: d39d72a79d4b273918986d0d350df4706592c77d
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: c30d8a66cf9deffaa32e5ec0356a9067575b77e8
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95503181"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660698"
 ---
 # <a name="header-based-single-sign-on-for-on-premises-apps-with-azure-ad-app-proxy-preview"></a>Jednotné přihlašování založené na hlavičkách pro místní aplikace s Aplikace Azure AD proxy serverem (Preview)
 
@@ -64,7 +64,7 @@ V následující tabulce jsou uvedeny běžné funkce vyžadované pro aplikace 
     - Hodnota interní adresy URL určuje rozsah aplikace. Pokud nakonfigurujete hodnotu interní adresy URL na kořenové cestě aplikace, pak všechny podřízené cesty pod kořenem budou mít stejnou konfiguraci záhlaví a další konfiguraci aplikace. 
     - Vytvořte novou aplikaci, abyste nastavili jinou konfiguraci hlaviček nebo přiřazení uživatelů pro podrobnější cestu, než je nakonfigurovaná aplikace. V nové aplikaci nakonfigurujte interní adresu URL s konkrétní cestou, kterou potřebujete, a pak nakonfigurujte konkrétní záhlaví potřebná pro tuto adresu URL. Proxy aplikace bude vždycky odpovídat nastavení konfigurace na nejpodrobnější cestu nastavenou pro aplikaci. 
 
-2. Jako metodu předběžného ověření vyberte **Azure Active Directory**   . **pre-authentication method** 
+2. Jako metodu předběžného ověření vyberte **Azure Active Directory**   . **** 
 3. Přiřaďte testovacího uživatele tak, že přejdete na **uživatele a skupiny** a přiřadíte příslušné uživatele a skupiny. 
 4. Otevřete prohlížeč a přejděte na **externí adresu URL**   z nastavení proxy aplikace. 
 5. Ověřte, zda se můžete připojit k aplikaci. I když se můžete připojit, nemáte k této aplikaci přístup, protože hlavičky nejsou nakonfigurované. 
@@ -88,6 +88,10 @@ Až dokončíte všechny tyto kroky, vaše aplikace by měla být spuštěná a 
 1. Otevřete nové okno prohlížeče nebo privátního prohlížeče, abyste měli jistotu, že se předchozí hlavičky v mezipaměti vymažou. Pak z nastavení proxy aplikace přejděte na **externí adresu URL**   .
 2. Přihlaste se pomocí testovacího účtu, který jste přiřadili k aplikaci. Pokud se k aplikaci můžete pomocí jednotného přihlašování (SSO) načíst a přihlásit se k ní, budete připraveni. 
 
+## <a name="considerations"></a>Požadavky
+
+- Proxy aplikací slouží k poskytování vzdáleného přístupu k aplikacím v místním prostředí nebo v privátním cloudu. U proxy aplikací se nedoporučuje zpracovávat přenosy z interní sítě z podnikové sítě.
+- Přístup k aplikacím ověřování na základě hlaviček by měl být omezený jenom na provoz z konektoru nebo na jiné povolené řešení ověřování založené na hlavičkách. To se obvykle provádí díky omezení přístupu k síti na aplikaci pomocí brány firewall nebo omezení IP adresy na aplikačním serveru.
 
 ## <a name="next-steps"></a>Další kroky
 

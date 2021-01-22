@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 30b7788419695db7ee5d4b81714bf55248a41b4a
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: e181b90219f340a29e818801ee2b53f1ccbd9c23
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97108718"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660280"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: nejčastější dotazy (FAQ)
 
@@ -49,7 +49,7 @@ Azure AD B2C také podporuje [vlastní zásady](custom-policy-overview.md). Vlas
 
 ### <a name="can-i-configure-scopes-to-gather-more-information-about-consumers-from-various-social-identity-providers"></a>Můžu nakonfigurovat obory pro shromažďování dalších informací o uživatelích z různých poskytovatelů sociálních identit?
 
-Ne. Výchozí obory používané pro naši podporovanou sadu zprostředkovatelů sociálních identit jsou:
+No. Výchozí obory používané pro naši podporovanou sadu zprostředkovatelů sociálních identit jsou:
 
 * Facebook: e-mail
 * Google +: e-mail
@@ -96,7 +96,7 @@ Informace o uzamčení a heslech účtů najdete v tématu [Správa hrozeb pro p
 
 ### <a name="can-i-use-azure-ad-connect-to-migrate-consumer-identities-that-are-stored-on-my-on-premises-active-directory-to-azure-ad-b2c"></a>Můžu použít Azure AD Connect k migraci identit zákazníků, které jsou uložené v místní službě Active Directory, do Azure AD B2C?
 
-Ne, Azure AD Connect není navržená tak, aby spolupracovala s Azure AD B2C. Pro migraci uživatelů zvažte použití [rozhraní Microsoft Graph API](manage-user-accounts-graph-api.md) . Podrobnosti najdete v [Průvodci migrací uživatelů](user-migration.md) .
+Ne, Azure AD Connect není navržená tak, aby spolupracovala s Azure AD B2C. Pro migraci uživatelů zvažte použití [rozhraní Microsoft Graph API](microsoft-graph-operations.md) . Podrobnosti najdete v [Průvodci migrací uživatelů](user-migration.md) .
 
 ### <a name="can-my-app-open-up-azure-ad-b2c-pages-within-an-iframe"></a>Může moje aplikace otevřít Azure AD B2C stránky v rámci prvku iFrame?
 

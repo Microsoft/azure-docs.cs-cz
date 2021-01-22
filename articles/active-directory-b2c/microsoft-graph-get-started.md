@@ -1,5 +1,5 @@
 ---
-title: Správa prostředků pomocí Microsoft Graph
+title: Registrace aplikace Microsoft Graph
 titleSuffix: Azure AD B2C
 description: Příprava na správu Azure AD B2Cch prostředků pomocí Microsoft Graph registraci aplikace, která má udělena požadovaná oprávnění Graph API.
 services: B2C
@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/14/2020
+ms.date: 01/21/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 61e32f50e02e45487830c5ea7ff476a0571960f6
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 1886a0308f32ed53a1c9f0974715f20823e8bdd5
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953997"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660348"
 ---
-# <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Správa Azure AD B2C s využitím Microsoft Graph
+# <a name="register-a-microsoft-graph-application"></a>Registrace aplikace Microsoft Graph
 
 [Microsoft Graph][ms-graph] vám umožní spravovat spoustu prostředků v rámci vašeho Azure AD B2Cho tenanta, včetně uživatelských účtů zákazníků a vlastních zásad. Při psaní skriptů nebo aplikací, které volají [rozhraní Microsoft Graph API][ms-graph-api], můžete automatizovat úkoly správy klientů, jako například:
 
@@ -83,12 +83,13 @@ Pokud vaše aplikace nebo skript potřebuje odstranit uživatele nebo aktualizov
 1. Vyberte **Přidat**. Aby bylo možné plně šířit oprávnění, může trvat několik minut.
 
 ## <a name="next-steps"></a>Další kroky
+
 Teď, když jste zaregistrovali aplikaci pro správu a udělili jí požadovaná oprávnění, můžou vaše aplikace a služby (například Azure Pipelines) používat své přihlašovací údaje a oprávnění k interakci s rozhraním Microsoft Graph API. 
 
 * [Získání přístupového tokenu z Azure AD](/graph/auth-v2-service#4-get-an-access-token)
 * [Použití přístupového tokenu pro volání Microsoft Graph](/graph/auth-v2-service#4-get-an-access-token)
 * [Operace B2C podporované nástrojem Microsoft Graph](microsoft-graph-operations.md)
-* [Správa Azure AD B2C uživatelských účtů pomocí Microsoft Graph](manage-user-accounts-graph-api.md)
+* [Správa Azure AD B2C uživatelských účtů pomocí Microsoft Graph](microsoft-graph-operations.md)
 * [Získání protokolů auditu pomocí rozhraní API pro vytváření sestav Azure AD](view-audit-logs.md#get-audit-logs-with-the-azure-ad-reporting-api)
 
 <!-- LINKS -->

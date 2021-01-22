@@ -8,20 +8,22 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/10/2020
+ms.date: 01/20/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.custom: contperf-fy21q2
-ms.openlocfilehash: bcb484d62b7c4add7e1ab5562c19417a90cfb7e1
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.custom: contperf-fy21q3
+ms.openlocfilehash: 6b46a5ea71bf8c9705ffc3bc51ea48f4b0c28502
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97587549"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660760"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Kurz: Přidání místní aplikace pro vzdálený přístup prostřednictvím proxy aplikace v Azure Active Directory
 
 Azure Active Directory (Azure AD) obsahuje službu proxy aplikací, která uživatelům umožňuje přístup k místním aplikacím přihlášením pomocí svého účtu Azure AD. Tento kurz připraví vaše prostředí pro použití s proxy aplikací. Až bude vaše prostředí připravené, pomocí Azure Portal přidejte místní aplikaci do svého tenanta Azure AD.
+
+:::image type="content" source="./media/application-proxy-add-on-premises-application/app-proxy-diagram.png" alt-text="Diagram s přehledem proxy aplikací" lightbox="./media/application-proxy-add-on-premises-application/app-proxy-diagram.png":::
 
 Konektory jsou klíčovou součástí proxy aplikace. Další informace o konektorech najdete v tématu [vysvětlení konektorů Azure proxy aplikací služby AD](application-proxy-connectors.md).
 
@@ -34,7 +36,7 @@ V tomto kurzu:
 > * Přidá místní aplikaci do tenanta služby Azure AD.
 > * Ověří, jestli se testovací uživatel může přihlásit k aplikaci pomocí účtu Azure AD.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K přidání místní aplikace do služby Azure AD potřebujete:
 
@@ -108,7 +110,7 @@ Začněte tím, že povolíte komunikaci s datovými centry Azure a připravíte
 
 Otevřete následující porty pro **odchozí** provoz.
 
-   | Číslo portu | Jak se používá |
+   | Číslo portu | K čemu slouží |
    | --- | --- |
    | 80 | Stahování seznamů odvolaných certifikátů (CRL) při ověřování certifikátu TLS/SSL |
    | 443 | Veškerá odchozí komunikace se službou proxy aplikace |
@@ -119,14 +121,18 @@ Pokud brána firewall vynutila provoz na základě pocházejících uživatelů,
 
 Povolte přístup k následujícím adresám URL:
 
-| URL | Port | Jak se používá |
+| URL | Port | K čemu slouží |
 | --- | --- | --- |
 | &ast;. msappproxy.net<br>&ast;. servicebus.windows.net | 443/HTTPS | Komunikace mezi konektorem a cloudovou službou proxy aplikací |
 | crl3.digicert.com<br>crl4.digicert.com<br>ocsp.digicert.com<br>crl.microsoft.com<br>oneocsp.microsoft.com<br>ocsp.msocsp.com<br> | 80/HTTP |Konektor používá tyto adresy URL k ověření certifikátů. |
 | login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>&ast;.microsoftonline.com<br>&ast;. microsoftonline-p.com<br>&ast;. msauth.net<br>&ast;. msauthimages.net<br>&ast;. msecnd.net<br>&ast;. msftauth.net<br>&ast;. msftauthimages.net<br>&ast;. phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com<br>www.microsoft.com/pkiops | 443/HTTPS |Konektor tyto adresy URL používá během procesu registrace. |
 | ctldl.windowsupdate.com | 80/HTTP |Konektor používá tuto adresu URL během procesu registrace. |
 
-&ast; &ast; V případě, že vaše brána firewall nebo proxy server umožní nakonfigurovat seznamy povolených serverů DNS, můžete pro připojení k. msappproxy.NET,. ServiceBus.Windows.NET a dalším adresám URL. V takovém případě je potřeba zpřístupnit přístup k [rozsahům IP adres Azure a veřejným cloudům](https://www.microsoft.com/download/details.aspx?id=56519). Rozsahy IP adres se aktualizují každý týden.
+&ast; &ast; Pokud vaše brána firewall nebo proxy server umožní nakonfigurovat pravidla přístupu na základě přípon domén, můžete pro ně použít připojení k příponám. msappproxy.NET,. ServiceBus.Windows.NET a dalším adresám URL. V takovém případě je potřeba zpřístupnit přístup k [rozsahům IP adres Azure a veřejným cloudům](https://www.microsoft.com/download/details.aspx?id=56519). Rozsahy IP adres se aktualizují každý týden.
+
+### <a name="dns-name-resolution-for-azure-ad-application-proxy-endpoints"></a>Překlad názvů DNS pro koncové body Azure Proxy aplikací služby AD
+
+Veřejné záznamy DNS pro koncové body Azure Proxy aplikací služby AD jsou zřetězené záznamy CNAME ukazující na záznam A. Tím se zajistí odolnost proti chybám a flexibilita. Je zaručeno, že konektor Azure Proxy aplikací služby AD vždycky přistupuje k názvům hostitelů s příponami domény _*. msappproxy.NET_ nebo _*. ServiceBus.Windows.NET_. Během překladu IP adres ale můžou záznamy CNAME obsahovat záznamy DNS s různými názvy hostitelů a příponami.  Z tohoto důvodu je potřeba zajistit, aby zařízení (v závislosti na serveru konektoru pro instalaci, bránu firewall, odchozí proxy server) mohlo vyřešit všechny záznamy v řetězu a umožňovalo připojení k přeloženým IP adresám. Vzhledem k tomu, že se záznamy DNS v řetězu můžou časem změnit, nemůžeme vám poskytnout žádné záznamy DNS seznamu.
 
 ## <a name="install-and-register-a-connector"></a>Instalace a registrace konektoru
 
@@ -207,7 +213,7 @@ Teď, když jste připravili prostředí a nainstalovali konektor, jste připrav
 
 6. V případě potřeby nakonfigurujte **Další nastavení**. U většiny aplikací byste měli tato nastavení zachovat ve svých výchozích stavech. 
 
-    | Pole | Popis |
+    | Pole | Description |
     | :---- | :---------- |
     | **Časový limit aplikace back-endu** | Nastavte tuto hodnotu na **Long** , jenom pokud se vaše aplikace pomalu ověřuje a připojuje. Ve výchozím nastavení má časový limit aplikace back-end délku 85 sekund. Když se nastaví na Long, časový limit pro back-end se zvýší na 180 sekund. |
     | **Použít soubor cookie HTTP-Only** | Nastavte tuto hodnotu na **Ano** , pokud chcete, aby soubory cookie proxy aplikací zahrnovaly příznak HttpOnly v hlavičce HTTP Response. Pokud používáte službu Vzdálená plocha, nastavte tuto hodnotu na **ne**.|

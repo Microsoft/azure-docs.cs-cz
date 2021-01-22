@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/21/2020
 ms.author: v-mibufo
-ms.openlocfilehash: b13b61aff819271ed1722572f251f9a6d14b17ab
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8af656e00c457dfa3d438f0cb104d85ccc687745
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976993"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661234"
 ---
 # <a name="windows-stop-error---0xc000021a-status-system-process-terminated"></a>Chyba stop systému Windows – proces stavu systému 0xC000021A byl ukončen.
 
@@ -48,12 +48,16 @@ K této chybě dochází, pokud se nepovede, když se nejedná o kritický proce
 
 ### <a name="collect-the-memory-dump-file"></a>Shromáždit soubor výpisu paměti
 
+> [!TIP]
+> Pokud máte nedávno zálohovaný virtuální počítač, můžete zkusit [obnovit virtuální počítač ze zálohy](../../backup/backup-azure-arm-restore-vms.md) a opravit problém při spouštění.
+
+
 Chcete-li tento problém vyřešit, bude nutné analyzovat výpis stavu systému. Shromážděte soubor výpisu paměti pro chybu a obraťte se na podporu. Chcete-li shromáždit soubor s výpisem paměti, postupujte podle následujících kroků:
 
 ### <a name="attach-the-os-disk-to-a-new-repair-vm"></a>Připojit disk s operačním systémem k nové opravě virtuálního počítače
 
 1.  Pomocí kroků 1-3 příkazů pro [opravu virtuálního počítače](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) Připravte opravný virtuální počítač.
-2.  Pomocí **připojení ke vzdálené ploše**se připojte k OPRAVNému virtuálnímu počítači.
+2.  Pomocí **připojení ke vzdálené ploše** se připojte k OPRAVNému virtuálnímu počítači.
 
 ### <a name="locate-the-dump-file-and-submit-a-support-ticket"></a>Vyhledejte soubor s výpisem paměti a odešlete lístek podpory.
 
