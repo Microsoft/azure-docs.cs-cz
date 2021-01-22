@@ -1,7 +1,7 @@
 ---
-title: Jak zachovat ochranu dat pomocí balíčků SmartNoise (Preview)
+title: Rozdílové ochrany osobních údajů – SmartNoise (Preview)
 titleSuffix: Azure Machine Learning
-description: Naučte se, jak pomocí balíčků SmartNoise použít pro Azure Machine Learning modelů rozdílové Doporučené postupy ochrany osobních údajů.
+description: Naučte se, jak pomocí SmartNoise Open Source knihoven použít pro Azure Machine Learning modelů rozdílové postupy ochrany osobních údajů.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,17 +10,17 @@ ms.custom: how-to, responsible-ml
 ms.author: slbird
 author: slbird
 ms.reviewer: luquinta
-ms.date: 12/21/2020
-ms.openlocfilehash: ebc14d6c9d0ebaa6e0258578f94771c9f286bdb4
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.date: 01/21/2020
+ms.openlocfilehash: 62a002569696da4ef18e7bd967f027eb8247ef65
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98221931"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681400"
 ---
 # <a name="use-differential-privacy-in-azure-machine-learning-preview"></a>Použití rozdílového soukromí v Azure Machine Learning (Preview)
 
-Naučte se, jak pomocí balíčků SmartNoise Pythonu použít pro Azure Machine Learning modelů rozdílové Doporučené postupy ochrany osobních údajů.
+Naučte se, jak pomocí knihoven Open-Source SmartNoise Pythonu použít pro Azure Machine Learning modelů rozdílové Doporučené postupy ochrany osobních údajů.
 
 Rozdílová ochrana osobních údajů je zlatá standardní definice ochrany osobních údajů. Systémy, které vyhovují této definici ochrany osobních údajů, poskytují silné záruky proti široké škále útoků na obnovu a reidentifikaci dat, včetně útoků nežádoucí osoby, kteří mají pomocné informace. Přečtěte si další informace o [fungování rozdílového soukromí](./concept-differential-privacy.md).
 
@@ -30,7 +30,7 @@ Rozdílová ochrana osobních údajů je zlatá standardní definice ochrany oso
 - Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 - [Python 3](https://www.python.org/downloads/)
 
-## <a name="install-smartnoise-packages"></a>Nainstalovat balíčky SmartNoise
+## <a name="install-smartnoise-python-libraries"></a>Nainstalovat SmartNoise knihovny Pythonu
 
 ### <a name="standalone-installation"></a>Samostatná instalace
 
@@ -51,7 +51,7 @@ import opendp.smartnoise.sql
 
 Pokud importy proběhly úspěšně, knihovny se nainstalují a připravené k použití.
 
-### <a name="docker-image"></a>Image Dockeru
+### <a name="docker-image-installation"></a>Instalace bitové kopie Docker
 
 Balíčky SmartNoise můžete také použít s Docker.
 

@@ -13,12 +13,12 @@ ms.date: 9/18/2019
 ms.author: brianmel
 ms.reviewer: rapong
 ms.custom: aaddev
-ms.openlocfilehash: a8c7ae8de41a01cb07a4bbbcd5943fb6290eced8
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: f87f2e79bd9439fddb52fad82c7ab4712fc68fb9
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131640"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680361"
 ---
 # <a name="use-msal-for-android-with-b2c"></a>Použití MSAL pro Android s B2C
 
@@ -36,7 +36,7 @@ Daná aplikace B2C má dvě zásady:
 
 Konfigurační soubor aplikace by byl deklarován dvakrát `authorities` . Jednu pro každou zásadu. `type`Vlastnost každé autority je `B2C` .
 
->Poznámka: `account_mode` musí být nastavená na **násobek** pro aplikace B2C. Další informace o [veřejných klientských aplikacích s více účty](https://docs.microsoft.com/azure/active-directory/develop/single-multi-account#multiple-account-public-client-application)najdete v dokumentaci.
+>Poznámka: `account_mode` musí být nastavená na **násobek** pro aplikace B2C. Další informace o [veřejných klientských aplikacích s více účty](./single-multi-account.md#multiple-account-public-client-application)najdete v dokumentaci.
 
 ### `app/src/main/res/raw/msal_config.json`
 ```json
@@ -142,7 +142,7 @@ pca.acquireTokenSilentAsync(parameters);
 
 ## <a name="specify-a-policy"></a>Zadat zásadu
 
-Vzhledem k tomu, že zásady v B2C jsou reprezentovány jako samostatné autority, volání jiné jiné než výchozí je dosaženo zadáním `fromAuthority` klauzule při sestavování `acquireToken` nebo `acquireTokenSilent` parametrech.  Příklad:
+Vzhledem k tomu, že zásady v B2C jsou reprezentovány jako samostatné autority, volání jiné jiné než výchozí je dosaženo zadáním `fromAuthority` klauzule při sestavování `acquireToken` nebo `acquireTokenSilent` parametrech.  Například:
 
 ```java
 AcquireTokenParameters parameters = new AcquireTokenParameters.Builder()

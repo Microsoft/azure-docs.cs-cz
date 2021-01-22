@@ -1,16 +1,15 @@
 ---
 ms.topic: include
-ms.date: 04/17/2019
-author: dbradish-microsoft
-ms.author: dbradish
+ms.date: 01/15/2021
+author: mikefrobbins
+ms.author: mirobb
 manager: barbkess
-ms.openlocfilehash: be2242e22ad2815a70be1a56cb77696afbd9a8d3
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 8dbfb60d64123f16dc5198b04ed372e575d9080f
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "95975343"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98250042"
 ---
 > [!NOTE]
-> Tento článek je aktualizovaný a využívá nový modul Az Azure PowerShellu. Můžete dál využívat modul AzureRM, který bude dostávat opravy chyb nejméně do prosince 2020.
-> Další informace o kompatibilitě nového modulu Az a modulu AzureRM najdete v tématu [Seznámení s novým modulem Az Azure PowerShellu](/powershell/azure/new-azureps-module-az?view=azps-3.3.0). Pokyny k instalaci modulu Az najdete v tématu věnovaném [instalaci Azure PowerShellu](/powershell/azure/install-az-ps?view=azps-3.3.0).
+> Tento článek je aktualizovaný, tak aby využíval modul Azure Az PowerShell. Doporučeným modulem PowerShellu pro interakci s Azure je modul Az PowerShell. Pokud chcete začít s modulem Az PowerShell, projděte si téma věnované [instalaci Azure PowerShellu](/powershell/azure/install-az-ps). Informace o tom, jak migrovat na modul Az PowerShell, najdete v tématu [Migrace Azure PowerShellu z AzureRM na Az](https://aka.ms/azpsmigrate).

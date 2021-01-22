@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/14/2021
 ms.author: jamesmantu
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 4e1addc9a5b07f9ae6f119b89b0e7d6f8186f29a
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 58e8fd5006e72465e35912a5b15cade1201d680f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98634451"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680311"
 ---
 # <a name="quickstart-sign-in-and-get-an-access-token-in-a-react-spa-using-the-auth-code-flow"></a>Rychlý Start: přihlášení a získání přístupového tokenu v reakci SPA pomocí toku kódu ověřování
 
@@ -66,6 +66,15 @@ Tento rychlý Start používá MSAL reakci s tokem autorizačního kódu. Podobn
 > 1. Klikněte na tlačítko **Konfigurovat** , aby se změny projevily.
 > 1. V části **konfigurace platformy** rozbalte **jednostránkovou aplikaci**.
 > 1. Ověřte, že u **typů grantů** , které ![ jsou už nakonfigurované ](media/quickstart-v2-javascript/green-check.png) , je váš identifikátor URI pro přesměrování způsobilý pro tok autorizačního kódu s PKCE.
+
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>Krok 1: Konfigurace aplikace v Azure Portal
+> Chcete-li, aby ukázka kódu v tomto rychlém startu fungovala, je nutné přidat `redirectUri` jako `http://localhost:3000/` .
+> > [!div renderon="portal" id="makechanges" class="nextstepaction"]
+> > [Provést tyto změny pro mě]()
+>
+> > [!div id="appconfigured" class="alert alert-info"]
+> > ![Už nakonfigurované](media/quickstart-v2-javascript/green-check.png) Vaše aplikace je nakonfigurovaná s těmito atributy.
 
 #### <a name="step-2-download-the-project"></a>Krok 2: Stažení projektu
 

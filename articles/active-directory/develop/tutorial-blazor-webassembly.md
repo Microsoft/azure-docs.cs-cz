@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: ce854c8f2d1d317c3660aaab9c0a6569aae0bb36
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 4d6401c53071235784a5371a4a6315e4e25a438f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97895967"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680261"
 ---
 # <a name="tutorial-sign-in-users-and-call-a-protected-api-from-a-blazor-webassembly-app"></a>Kurz: přihlášení uživatelů a volání chráněného rozhraní API z aplikace Blazor WebAssembly
 
@@ -26,7 +26,7 @@ V tomto kurzu:
 > * Vytvoření nové aplikace WebAssembly v Blazor, která je nakonfigurovaná tak, aby používala Azure Active Directory (Azure AD) pro [ověřování a autorizaci](authentication-vs-authorization.md) pomocí platformy Microsoft Identity Platform
 > * Načtěte data z chráněného webového rozhraní API, v tomto případě [Microsoft Graph](/graph/overview)
 
-V tomto kurzu se používá .NET Core 3,1. Dokumentace .NET obsahuje pokyny [k zabezpečení Blazor aplikace WebAssembly](https://docs.microsoft.com/aspnet/core/blazor/security/webassembly/graph-api) pomocí ASP.NET Core 5,0. 
+V tomto kurzu se používá .NET Core 3,1. Dokumentace .NET obsahuje pokyny [k zabezpečení Blazor aplikace WebAssembly](/aspnet/core/blazor/security/webassembly/graph-api) pomocí ASP.NET Core 5,0. 
 
 K dispozici je také [kurz pro server Blazor](tutorial-blazor-server.md). 
 
@@ -80,7 +80,7 @@ Součásti této šablony, které povolují přihlášení pomocí služby Azure
 
 [Microsoft Graph](/graph/overview) obsahuje rozhraní API, která poskytují přístup k datům Microsoft 365 pro vaše uživatele, a podporují tokeny vydané platformou Microsoft identity, což umožňuje, aby jako příklad používalo správné chráněné rozhraní API. V této části přidáte kód pro volání Microsoft Graph a zobrazení e-mailů uživatele na stránce načíst data aplikace.
 
-Tato část je napsaná pomocí společného přístupu k volání chráněného rozhraní API pomocí pojmenovaného klienta. Stejnou metodu lze použít pro jiná chráněná rozhraní API, která chcete volat. Pokud však plánujete volat Microsoft Graph z vaší aplikace, můžete použít sadu Graph SDK ke snížení často používaného textu. Dokumentace .NET obsahuje pokyny [k používání sady Graph SDK](https://docs.microsoft.com/aspnet/core/blazor/security/webassembly/graph-api?view=aspnetcore-5.0).
+Tato část je napsaná pomocí společného přístupu k volání chráněného rozhraní API pomocí pojmenovaného klienta. Stejnou metodu lze použít pro jiná chráněná rozhraní API, která chcete volat. Pokud však plánujete volat Microsoft Graph z vaší aplikace, můžete použít sadu Graph SDK ke snížení často používaného textu. Dokumentace .NET obsahuje pokyny [k používání sady Graph SDK](/aspnet/core/blazor/security/webassembly/graph-api?view=aspnetcore-5.0).
 
 Než začnete, odhlaste se od své aplikace, protože budete provádět změny požadovaných oprávnění a váš aktuální token nebude fungovat. Pokud jste to ještě neudělali, spusťte aplikaci znovu a před aktualizací kódu níže vyberte možnost **Odhlásit** se.
 

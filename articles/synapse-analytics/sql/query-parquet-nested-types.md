@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 45e1ae5b8a1084334b7596f62c272e16294c4c14
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 6df8c3238ed6dfeb37fd10d0a7e97aa839e7bf26
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98118757"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681073"
 ---
 # <a name="query-nested-types-in-parquet-and-json-files-by-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Dotazování vnořených typů v souborech Parquet a JSON pomocí neserverového fondu SQL ve službě Azure synapse Analytics
 
@@ -147,7 +147,7 @@ FROM
 
 ## <a name="access-elements-from-repeated-columns"></a>Přístup k prvkům z opakujících se sloupců
 
-Následující dotaz přečte soubor justSimpleArray. Parquet a používá [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) k načtení skalárního prvku v rámci opakujícího se sloupce, jako je například pole nebo mapa:
+Následující dotaz přečte soubor justSimpleArray. Parquet a používá [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) k načtení skalárního prvku v rámci opakujícího se sloupce, jako je například pole nebo mapa:
 
 ```sql
 SELECT
@@ -172,7 +172,7 @@ Výsledek:
 
 ## <a name="access-sub-objects-from-complex-columns"></a>Přístup k dílčím objektům ze složitých sloupců
 
-Následující dotaz přečte soubor mapExample. Parquet a používá [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) k načtení neskalárního prvku z opakujícího se sloupce, jako je například pole nebo mapa:
+Následující dotaz přečte soubor mapExample. Parquet a používá [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) k načtení neskalárního prvku z opakujícího se sloupce, jako je například pole nebo mapa:
 
 ```sql
 SELECT

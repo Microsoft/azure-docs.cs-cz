@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/06/2021
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: e15dce586dc4dd43cf56fd1cbb08b84ebcda1787
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 040f9fa67617b058138926310706f4bc56c4ff62
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232297"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680969"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Aplikace klasické pracovní plochy, která volá webová rozhraní API: získání tokenu
 
@@ -1181,7 +1181,7 @@ Přizpůsobení serializace mezipaměti tokenů pro sdílení stavu jednotného 
 
 ### <a name="simple-token-cache-serialization-msal-only"></a>Jednoduchá serializace mezipaměti tokenů (jenom MSAL)
 
-Následující příklad je Naive implementace vlastního serializace mezipaměti tokenů pro aplikace klasické pracovní plochy. Tady je mezipaměť tokenu uživatele v souboru ve stejné složce jako aplikace, nebo v případě, že je aplikace [zabalená desktopová aplikace](https://docs.microsoft.com/windows/msix/desktop/desktop-to-uwp-behind-the-scenes), a to v případě jednotlivých uživatelů na složku aplikace. Úplný kód naleznete v následující ukázce: [Active-Directory-dotnet-Desktop-MSGraph-v2](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2).
+Následující příklad je Naive implementace vlastního serializace mezipaměti tokenů pro aplikace klasické pracovní plochy. Tady je mezipaměť tokenu uživatele v souboru ve stejné složce jako aplikace, nebo v případě, že je aplikace [zabalená desktopová aplikace](/windows/msix/desktop/desktop-to-uwp-behind-the-scenes), a to v případě jednotlivých uživatelů na složku aplikace. Úplný kód naleznete v následující ukázce: [Active-Directory-dotnet-Desktop-MSGraph-v2](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2).
 
 Po sestavení aplikace povolte serializaci voláním ``TokenCacheHelper.EnableSerialization()`` a předáním aplikace `UserTokenCache` .
 

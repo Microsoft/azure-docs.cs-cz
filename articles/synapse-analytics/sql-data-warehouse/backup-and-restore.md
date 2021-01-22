@@ -11,12 +11,12 @@ ms.date: 11/13/2020
 ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019"
-ms.openlocfilehash: b033fd9c0a7f752cf08d6e679facc9fa27b44037
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: d8c680ec30dcecc56c064f08e4690cbbde9c2377
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120202"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98679909"
 ---
 # <a name="backup-and-restore-in-azure-synapse-dedicated-sql-pool"></a>Zálohování a obnovení ve vyhrazeném fondu SQL ve službě Azure synapse
 
@@ -88,7 +88,7 @@ Další informace o cenách Azure synapse najdete v článku [ceny Azure synapse
 
 Každý snímek vytvoří bod obnovení, který představuje čas spuštění snímku. Chcete-li obnovit datový sklad, vyberte bod obnovení a proveďte příkaz k obnovení.  
 
-Můžete zachovat obnovený datový sklad a stávající a odstranit jeden z nich. Pokud chcete nahradit aktuální datový sklad obnoveným datovým skladem, můžete ho přejmenovat pomocí [příkazu ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) s možností upravit název.
+Můžete zachovat obnovený datový sklad a stávající a odstranit jeden z nich. Pokud chcete nahradit aktuální datový sklad obnoveným datovým skladem, můžete ho přejmenovat pomocí [příkazu ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) s možností upravit název.
 
 Pokud chcete obnovit datový sklad, přečtěte si téma [obnovení vyhrazeného fondu SQL](sql-data-warehouse-restore-points.md#create-user-defined-restore-points-through-the-azure-portal).
 

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 6163f059581c2699d0b2780545c3ad5ec80f2907
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 60da61d094316b29c8fbc5454472bb898d693937
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882411"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681579"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Podpora jazyků a oblastí pro převod textu a řeči
 
@@ -195,24 +195,38 @@ Metoda přepisu podporuje následující jazyky. V "do/z", "<-->" označuje, že
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
 | Arabština | `ar` | Arabština `Arab` | <--> | Znak `Latn` |
 | Bengálština  | `bn` | Bengálština `Beng` | <--> | Znak `Latn` |
+|Běloruština| `be` | B `Cyrl`  | <--> | Znak `Latn` |
+|Bulharština| `bg` | B `Cyrl`  | <--> | Znak `Latn` |
 | Čínština (zjednodušená) | `zh-Hans` | Zjednodušená čínština `Hans`| <--> | Znak `Latn` |
 | Čínština (zjednodušená) | `zh-Hans` | Zjednodušená čínština `Hans`| <--> | Tradiční čínština `Hant`|
 | Čínština (tradiční) | `zh-Hant` | Tradiční čínština `Hant`| <--> | Znak `Latn` |
 | Čínština (tradiční) | `zh-Hant` | Tradiční čínština `Hant`| <--> | Zjednodušená čínština `Hans` |
+|Řečtina| `el` | Řečtina `Grek`  | <--> | Znak `Latn` |
 | Gudžarátština | `gu`  | Gudžarátština `Gujr` | <--> | Znak `Latn` |
 | Hebrejština | `he` | Hebrejština `Hebr` | <--> | Znak `Latn` |
 | Hindština | `hi` | Koncový `Deva` | <--> | Znak `Latn` |
 | Japonština | `ja` | Japonština `Jpan` | <--> | Znak `Latn` |
 | Kannadština | `kn` | Kannadština `Knda` | <--> | Znak `Latn` |
+|Kazaština| `kk` | B `Cyrl`  | <--> | Znak `Latn` |
+|Kyrgyzština| `ky` | B `Cyrl`  | <--> | Znak `Latn` |
+|Makedonie| `mk` | B `Cyrl`  | <--> | Znak `Latn` |
 | Malajalámština | `ml` | Malajalámština `Mlym` | <--> | Znak `Latn` |
 | Maráthština | `mr` | Koncový `Deva` | <--> | Znak `Latn` |
+|Mongolština| `mn` | B `Cyrl`  | <--> | Znak `Latn` |
 | Udijština | `or` | Krí `Orya` | <--> | Znak `Latn` |
+|Perština| `fa` | Arabština `Arab`  | <--> | Znak `Latn` |
 | Paňdžábština | `pa` | Západní `Guru`  | <--> | Znak `Latn`  |
+|Ruština| `ru` | B `Cyrl`  | <--> | Znak `Latn` |
 | Srbština (cyrilice) | `sr-Cyrl` | B `Cyrl`  | --> | Znak `Latn` |
 | Srbština (latinka) | `sr-Latn` | Znak `Latn` | --> | B `Cyrl`|
+|Sindhština| `sd` | Arabština `Arab`  | <--> | Znak `Latn` |
+|Tádžičtina| `tg` | B `Cyrl`  | <--> | Znak `Latn` |
 | Tamilština | `ta` | Tamilština `Taml` | <--> | Znak `Latn` |
+|Tatarština| `tt` | B `Cyrl`  | <--> | Znak `Latn` |
 | Telugština | `te` | Telugština `Telu` | <--> | Znak `Latn` |
 | Thajština | `th` | Thajština `Thai` | --> | Znak `Latn` |
+|Ukrajinština| `uk` | B `Cyrl`  | <--> | Znak `Latn` |
+|Urdština| `ur` | Arabština `Arab`  | <--> | Znak `Latn` |
 
 ### <a name="dictionary"></a>Slovník
 

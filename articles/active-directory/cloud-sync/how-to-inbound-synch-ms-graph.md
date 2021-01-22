@@ -11,12 +11,12 @@ ms.date: 12/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e65569cadd8f778a94f93aa22dd3924c52ff12f8
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 3796b3d86f647e38cf2ff018e8c0c903d9a64e41
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98613382"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682034"
 ---
 # <a name="inbound-synchronization-for-cloud-sync-using-ms-graph-api"></a>Příchozí synchronizace pro cloudovou synchronizaci pomocí MS Graph API
 
@@ -31,7 +31,7 @@ Struktura toho, jak se to provede, se skládá z následujících kroků.  Jsou 
 - [Spustit úlohu synchronizace](#start-sync-job)
 - [Stav kontroly](#review-status)
 
-Pomocí těchto příkazů [modul Microsoft Azure Active Directory pro Windows PowerShell](https://docs.microsoft.com/powershell/module/msonline/) můžete povolit synchronizaci pro produkčního tenanta, což je nezbytný předpoklad pro volání webové služby správy pro tohoto tenanta.
+Pomocí těchto příkazů [modul Microsoft Azure Active Directory pro Windows PowerShell](/powershell/module/msonline/) můžete povolit synchronizaci pro produkčního tenanta, což je nezbytný předpoklad pro volání webové služby správy pro tohoto tenanta.
 
 ## <a name="basic-setup"></a>Základní nastavení
 
@@ -60,7 +60,7 @@ Je nutné použít toto ID aplikace 1a4721b3-e57f-4451-ae87-ef078703ec94. Displa
 ## <a name="create-sync-job"></a>Vytvořit úlohu synchronizace
 Výstup výše uvedeného příkazu vrátí objectId objektu služby, který byl vytvořen. V tomto příkladu je identifikátor objectId 614ac0e9-a59b-481f-bd8f-79a73d167e1c.  Pomocí Microsoft Graph přidejte k objektu služby synchronizationJob.  
 
-Dokumentaci k vytvoření úlohy synchronizace najdete [tady](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-post?view=graph-rest-beta&tabs=http).
+Dokumentaci k vytvoření úlohy synchronizace najdete [tady](/graph/api/synchronization-synchronizationjob-post?tabs=http&view=graph-rest-beta).
 
 Pokud jste výše uvedené ID nezaregistrovali, můžete instanční objekt najít spuštěním následujícího volání MS graphu. K provedení tohoto volání budete potřebovat Directory. Read. All oprávnění:
  
@@ -216,11 +216,11 @@ Tady je zvýrazněná hodnota "doména" je název místní domény služby Activ
 
  `GET https://graph.microsoft.com/beta/servicePrincipals/[SERVICE_PRINCIPAL_ID]/synchronization/jobs/ ` 
 
-Dokumentaci k načítání úloh najdete [tady](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-list?view=graph-rest-beta&tabs=http). 
+Dokumentaci k načítání úloh najdete [tady](/graph/api/synchronization-synchronizationjob-list?tabs=http&view=graph-rest-beta). 
  
 Chcete-li spustit úlohu, vydejte tento požadavek pomocí identifikátoru objektu služby vytvořeného v prvním kroku a identifikátor úlohy vrácený z požadavku, který úlohu vytvořil.
 
-Dokumentaci, jak spustit úlohu, najdete [tady](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-start?view=graph-rest-beta&tabs=http). 
+Dokumentaci, jak spustit úlohu, najdete [tady](/graph/api/synchronization-synchronizationjob-start?tabs=http&view=graph-rest-beta). 
 
  ```
  POST  https://graph.microsoft.com/beta/servicePrincipals/8895955e-2e6c-4d79-8943-4d72ca36878f/synchronization/jobs/AD2AADProvisioning.fc96887f36da47508c935c28a0c0b6da/start
@@ -228,7 +228,7 @@ Dokumentaci, jak spustit úlohu, najdete [tady](https://docs.microsoft.com/graph
 
 Očekávaná odpověď je... HTTP 204/žádný obsah.
 
-[Tady](https://docs.microsoft.com/graph/api/resources/synchronization-synchronizationjob?view=graph-rest-beta)jsou popsané další příkazy pro řízení úlohy.
+[Tady](/graph/api/resources/synchronization-synchronizationjob?view=graph-rest-beta)jsou popsané další příkazy pro řízení úlohy.
  
 Aby bylo možné úlohu restartovat, bude použita jedna z těchto...
 
@@ -254,4 +254,4 @@ V části stav návratového objektu vyhledejte relevantní podrobnosti.
 
 - [Co je Azure AD Connect synchronizace cloudu?](what-is-cloud-sync.md)
 - [Transformace](how-to-transformation.md)
-- [Rozhraní API pro synchronizaci Azure AD](https://docs.microsoft.com/graph/api/resources/synchronization-overview?view=graph-rest-beta)
+- [Rozhraní API pro synchronizaci Azure AD](/graph/api/resources/synchronization-overview?view=graph-rest-beta)

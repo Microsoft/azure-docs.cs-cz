@@ -11,16 +11,16 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 939a74a2bbedf6b00159f0c33a50eeb93595cda4
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 547f697c4f8ffb903006e48e94086433d64225c7
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98116071"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681332"
 ---
 # <a name="quickstart-bulk-load-data-using-the-copy-statement"></a>Rychlý Start: hromadné načtení dat pomocí příkazu COPY
 
-V tomto rychlém startu budete hromadně načítat data do vyhrazeného fondu SQL pomocí jednoduchého a flexibilního [příkazu kopírování](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) pro příjem dat s vysokou propustností. Příkaz COPY je doporučeným nástrojem pro načítání, protože umožňuje hladce a pružně pružně načíst data poskytnutím funkčnosti:
+V tomto rychlém startu budete hromadně načítat data do vyhrazeného fondu SQL pomocí jednoduchého a flexibilního [příkazu kopírování](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) pro příjem dat s vysokou propustností. Příkaz COPY je doporučeným nástrojem pro načítání, protože umožňuje hladce a pružně pružně načíst data poskytnutím funkčnosti:
 
 - Povolení načtení nižších privilegovaných uživatelů bez nutnosti přísného řízení pro datový sklad
 - Využijte jenom jeden příkaz T-SQL, aniž byste museli vytvářet žádné další databázové objekty.

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 7a33cf4e66ce31f8fb8534de25d7564a5784ca3a
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 7341d1f07e8814edcad7b84f6b3b46c7bece3159
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625045"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680328"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Kurz: směrování elektrických vozidel pomocí Azure Notebooks (Python)
 
@@ -27,7 +27,7 @@ V tomto kurzu provedete pomoc s ovladačem, jehož baterie elektrického vozidla
 V tomto kurzu:
 
 > [!div class="checklist"]
-> * Vytvořte a spusťte soubor Jupyter Notebook v [Azure Notebooks](../notebooks/index.yml) v cloudu.
+> * Vytvořte a spusťte soubor Jupyter Notebook v [Azure Notebooks](https://notebooks.azure.com) v cloudu.
 > * V Pythonu volejte Azure Maps rozhraní REST API.
 > * Vyhledejte dosažitelný rozsah založený na modelu spotřeby elektrického vozidla.
 > * Vyhledejte čerpací stanice elektrického vozidla v dosahu dostupného rozsahu nebo isochrone.
@@ -49,7 +49,7 @@ Další informace o ověřování v Azure Maps najdete v tématu [Správa ověř
 
 Chcete-li postupovat spolu s tímto kurzem, je třeba vytvořit projekt Azure Notebooks a stáhnout a spustit Jupyter Notebook soubor. Jupyter Notebook soubor obsahuje kód Pythonu, který implementuje scénář v tomto kurzu. Chcete-li vytvořit projekt Azure Notebooks a nahrát do něj dokument Jupyter Notebook, proveďte následující kroky:
 
-1. Přejít na [Azure Notebooks](https://notebooks.azure.com) a přihlásit se. Další informace najdete v tématu [rychlý Start: přihlášení a nastavení ID uživatele](../notebooks/quickstart-sign-in-azure-notebooks.md).
+1. Přejít na [Azure Notebooks](https://notebooks.azure.com) a přihlásit se. Další informace najdete v tématu [rychlý Start: přihlášení a nastavení ID uživatele](https://notebooks.azure.com).
 1. V horní části stránky veřejného profilu vyberte **Moje projekty**.
 
     ![Tlačítko Moje projekty](./media/tutorial-ev-routing/myproject.png)
@@ -408,4 +408,4 @@ Nejsou k dispozici žádné prostředky, které vyžadují vyčištění.
 Další informace o Azure Notebooks najdete v tématu.
 
 > [!div class="nextstepaction"]
-> [Azure Notebooks](../notebooks/index.yml)
+> [Azure Notebooks](https://notebooks.azure.com)

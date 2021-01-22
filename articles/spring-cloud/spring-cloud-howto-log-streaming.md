@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/14/2019
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: fcfddce568be6c641a5bf5be70c2cd0ad368095f
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 1eeb291c7a058efd8905e95ebf1ea14fed046691
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843600"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680514"
 ---
 # <a name="stream-azure-spring-cloud-app-logs-in-real-time"></a>Streamování protokolů aplikace Azure Spring Cloudu v reálném čase
 
@@ -20,7 +20,7 @@ ms.locfileid: "94843600"
 
 Azure jaře Cloud umožňuje streamování protokolů v Azure CLI a získat tak řešení potíží v protokolech konzoly aplikací v reálném čase. Můžete také [analyzovat protokoly a metriky pomocí nastavení diagnostiky](./diagnostic-services.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Nainstalujte [rozšíření Azure CLI](/cli/azure/install-azure-cli) pro jarní Cloud a minimální verzi 0.2.0.
 * Instance **jarního cloudu Azure** se spuštěnou aplikací, například [jarní cloudová aplikace](./spring-cloud-quickstart.md).
@@ -31,7 +31,7 @@ Azure jaře Cloud umožňuje streamování protokolů v Azure CLI a získat tak 
 ## <a name="use-cli-to-tail-logs"></a>Použít CLI pro protokoly Tail
 
 Abyste se vyhnuli opakovanému zadání vaší skupiny prostředků a názvu instance služby, nastavte výchozí název skupiny prostředků a název clusteru.
-```
+```azurecli
 az configure --defaults group=<service group name>
 az configure --defaults spring-cloud=<service instance name>
 ```
@@ -39,11 +39,11 @@ V následujících příkladech bude v příkazech vynechána skupina prostředk
 
 ### <a name="tail-log-for-app-with-single-instance"></a>Protokol Tail pro aplikaci s jednou instancí
 Pokud má aplikace s názvem auth-Service pouze jednu instanci, můžete zobrazit protokol instance aplikace pomocí následujícího příkazu:
-```
+```azurecli
 az spring-cloud app logs -n auth-service
 ```
 Tato akce vrátí protokoly:
-```
+```output
 ...
 2020-01-15 01:54:40.481  INFO [auth-service,,,] 1 --- [main] o.apache.catalina.core.StandardService  : Starting service [Tomcat]
 2020-01-15 01:54:40.482  INFO [auth-service,,,] 1 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.22]
@@ -58,12 +58,12 @@ Pokud existuje pro aplikaci s názvem více instancí `auth-service` , můžete 
 
 Nejprve můžete získat názvy instancí aplikace pomocí následujícího příkazu.
 
-```
+```azurecli
 az spring-cloud app show -n auth-service --query properties.activeDeployment.properties.instances -o table
 ```
 S výsledky:
 
-```
+```output
 Name                                         Status    DiscoveryStatus
 -------------------------------------------  --------  -----------------
 auth-service-default-12-75cc4577fc-pw7hb  Running   UP
@@ -72,7 +72,7 @@ auth-service-default-12-75cc4577fc-n25mh  Running   UP
 ``` 
 Pak můžete zasílat protokoly instance aplikace s `-i/--instance` možností možnosti:
 
-```
+```azurecli
 az spring-cloud app logs -n auth-service -i auth-service-default-12-75cc4577fc-pw7hb
 ```
 
@@ -81,11 +81,11 @@ Můžete také získat podrobnosti o instancích aplikace z Azure Portal.  Po v�
 ### <a name="continuously-stream-new-logs"></a>Průběžné streamování nových protokolů
 Ve výchozím nastavení `az spring-cloud ap log tail` vytiskne jenom existující protokoly streamované do konzoly App Console a pak se ukončí. Pokud chcete streamovat nové protokoly, přidejte-f (--Sledujte):  
 
-```
+```azurecli
 az spring-cloud app logs -n auth-service -f
 ``` 
 Pro kontrolu všech podporovaných možností protokolování:
-``` 
+```azurecli
 az spring-cloud app logs -h 
 ```
 

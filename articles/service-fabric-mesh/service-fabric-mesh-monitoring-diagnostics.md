@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: srrengar
 ms.custom: mvc, devcenter, devx-track-azurecli
-ms.openlocfilehash: eda0b62729343b0a138d027548d8750b1e0fc74f
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 63c79169646f05cddc7c605c764398bdef7492d4
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844399"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682067"
 ---
 # <a name="monitoring-and-diagnostics"></a>Monitorování a diagnostika
 Azure Service Fabric Mesh je plně spravovaná služba, která vývojářům umožňuje nasazovat aplikace zajišťující mikroslužby, aniž by museli spravovat virtuální počítače, úložiště nebo sítě. Monitorování a diagnostika Service Fabric sítě jsou rozdělené do tří hlavních typů diagnostických dat:
@@ -26,7 +26,7 @@ Tento článek popisuje možnosti monitorování a diagnostiky pro nejnovější
 
 Protokoly Docker můžete zobrazit z nasazených kontejnerů na základě jednotlivých kontejnerů. V modelu aplikace Service Fabric sítě je každý kontejner balíček kódu ve vaší aplikaci. Chcete-li zobrazit přidružené protokoly s balíčkem kódu, použijte následující příkaz:
 
-```cli
+```azurecli
 az mesh code-package-log get --resource-group <nameOfRG> --app-name <nameOfApp> --service-name <nameOfService> --replica-name <nameOfReplica> --code-package-name <nameOfCodePackage>
 ```
 
@@ -35,7 +35,7 @@ az mesh code-package-log get --resource-group <nameOfRG> --app-name <nameOfApp> 
 
 Tady je postup, jak to vypadá při zobrazení protokolů z kontejneru VotingWeb. Code z hlasovací aplikace:
 
-```cli
+```azurecli
 az mesh code-package-log get --resource-group <nameOfRG> --application-name SbzVoting --service-name VotingWeb --replica-name 0 --code-package-name VotingWeb.Code
 ```
 
@@ -74,7 +74,7 @@ Každá dimenze odpovídá různým komponentám [modelu Service Fabric aplikace
 
 ### <a name="azure-monitor-cli"></a>Azure Monitor CLI
 
-Úplný seznam příkazů je k dispozici v [dokumentaci Azure monitor CLI](/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list) , ale obsahujeme několik užitečných příkladů. 
+Úplný seznam příkazů je k dispozici v [dokumentaci Azure monitor CLI](/cli/azure/monitor/metrics#az-monitor-metrics-list) , ale obsahujeme několik užitečných příkladů. 
 
 V každém příkladu ID prostředku následuje tento model.
 
@@ -83,21 +83,21 @@ V každém příkladu ID prostředku následuje tento model.
 
 * Využití procesoru kontejnery v aplikaci
 
-```cli
+```azurecli
     az monitor metrics list --resource <resourceId> --metric "CpuUtilization"
 ```
 * Využití paměti pro každou repliku služby
-```cli
+```azurecli
     az monitor metrics list --resource <resourceId> --metric "MemoryUtilization" --dimension "ServiceReplicaName"
 ``` 
 
 * Restartuje se pro každý kontejner v intervalu 1 hodiny. 
-```cli
+```azurecli
     az monitor metrics list --resource <resourceId> --metric "RestartCount" --start-time 2019-02-01T00:00:00Z --end-time 2019-02-01T01:00:00Z
 ``` 
 
 * Průměrné využití procesoru napříč službami s názvem "VotingWeb" v okně 1 hodiny
-```cli
+```azurecli
     az monitor metrics list --resource <resourceId> --metric "CpuUtilization" --start-time 2019-02-01T00:00:00Z --end-time 2019-02-01T01:00:00Z --aggregation "Average" --filter "ServiceName eq 'VotingWeb'"
 ``` 
 
@@ -118,4 +118,4 @@ In addition to the metrics explorer, we also have a dashboard available out of t
 
 ## <a name="next-steps"></a>Další kroky
 * Další informace o službě Service Fabric Mesh najdete v článku s [přehledem služby Service Fabric Mesh](service-fabric-mesh-overview.md).
-* Další informace o příkazech Azure Monitor metrik naleznete v dokumentaci k rozhraní příkazového [řádku Azure monitor CLI](/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list).
+* Další informace o příkazech Azure Monitor metrik naleznete v dokumentaci k rozhraní příkazového [řádku Azure monitor CLI](/cli/azure/monitor/metrics#az-monitor-metrics-list).

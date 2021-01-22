@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 12/07/2020
+ms.date: 01/21/2021
 ms.author: tisande
-ms.openlocfilehash: 00c80fa311837918a78f26e941f00cb17f1dc279
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 4d2ad9cf6b47d8307d9652419b82de8ffcbcb099
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019172"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681646"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Zásady indexování ve službě Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -35,6 +35,17 @@ Azure Cosmos DB podporuje dva režimy indexování:
 > Azure Cosmos DB také podporuje režim opožděného indexování. Opožděné indexování provádí aktualizace indexu na mnohem nižší úrovni priority v době, kdy modul neprovádí žádnou jinou práci. To může vést k **nekonzistentním nebo neúplným** výsledkům dotazů. Pokud plánujete dotazy na kontejner Cosmos, neměli byste vybírat opožděné indexování. Nové kontejnery nemůžou vybírat opožděné indexování. Můžete požádat o výjimku tím, že se obrátíte na [podporu Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) (s výjimkou případů, kdy používáte účet Azure Cosmos v režimu bez [serveru](serverless.md) , který nepodporuje opožděné indexování).
 
 Ve výchozím nastavení je zásada indexování nastavena na `automatic` . Dosáhnete tím, že nastavíte `automatic` vlastnost v zásadě indexování na `true` . Nastavením této vlastnosti `true` umožníte, aby Azure CosmosDB automaticky indexoval dokumenty při jejich zápisu.
+
+## <a name="index-size"></a><a id="index-size"></a>Velikost indexu
+
+V Azure Cosmos DB celkové spotřebované úložiště je kombinací velikosti dat i velikosti indexu. Následující seznam obsahuje některé funkce velikosti indexu:
+
+* Velikost indexu závisí na zásadách indexování. Pokud jsou všechny vlastnosti indexovány, velikost indexu může být větší než velikost dat.
+* Při odstranění dat jsou indexy komprimovány téměř nepřetržitě. U malých odstranění dat ale nemusíte okamžitě sledovat velikost indexu.
+* Velikost indexu může růst v následujících případech:
+
+  * Doba rozdělení oddílu – index se uvolní po dokončení rozdělení oddílu.
+  * Při rozdělování oddílu se během rozdělení oddílu dočasný prostor zvětšuje. 
 
 ## <a name="including-and-excluding-property-paths"></a><a id="include-exclude-paths"></a>Zahrnutí a vyloučení cest k vlastnostem
 

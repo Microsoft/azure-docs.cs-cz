@@ -4,12 +4,12 @@ description: Seznamte se s různými způsoby, jak můžete nasadit kód pro Azu
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 04d96a09d41ace64bed5667bb9f0fa6e4beed244
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 51a76adcf25d5d1bc4025eab12073df0886fde3d
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936953"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681826"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Technologie nasazení v Azure Functions
 
@@ -33,7 +33,7 @@ Zatímco nasazení konkrétních funkcí používá nejlepší technologii na z�
 
 Azure Functions podporuje místní vývoj a hostování pro různé platformy v systémech Windows a Linux. V současné době jsou k dispozici tři plány hostování:
 
-+ [Consumption](consumption-plan.md)
++ [Využití](consumption-plan.md)
 + [Premium](functions-premium-plan.md)
 + [Vyhrazeno (App Service)](dedicated-plan.md)
 
@@ -181,7 +181,7 @@ Protokol FTP můžete použít k přímému přenosu souborů do Azure Functions
 
 V editoru založeném na portálu můžete přímo upravovat soubory, které jsou ve vaší aplikaci Function App (v podstatě se nasazují při každém uložení změn).
 
->__Jak ji použít:__ Aby bylo možné upravit funkce v Azure Portal, je nutné [vytvořit své funkce na portálu](functions-create-first-azure-function.md). Aby bylo možné zachovat jeden zdroj pravdy, může použití jakékoli jiné metody nasazení fungovat jen pro čtení a zabránit pokračování v úpravách portálu. Chcete-li se vrátit do stavu, ve kterém můžete upravovat soubory v Azure Portal, můžete ručně zapnout režim úprav zpátky `Read/Write` a odebrat všechna nastavení aplikace související s nasazením (například `WEBSITE_RUN_FROM_PACKAGE` ).
+>__Jak ji použít:__ Aby bylo možné upravit funkce v Azure Portal, je nutné [vytvořit své funkce na portálu](./functions-get-started.md). Aby bylo možné zachovat jeden zdroj pravdy, může použití jakékoli jiné metody nasazení fungovat jen pro čtení a zabránit pokračování v úpravách portálu. Chcete-li se vrátit do stavu, ve kterém můžete upravovat soubory v Azure Portal, můžete ručně zapnout režim úprav zpátky `Read/Write` a odebrat všechna nastavení aplikace související s nasazením (například `WEBSITE_RUN_FROM_PACKAGE` ).
 
 >__Kdy ji použít:__ Portál je dobrým způsobem, jak začít s Azure Functions. Pro přesnější vývojovou práci doporučujeme použít jeden z následujících nástrojů klienta:
 >
@@ -210,7 +210,7 @@ Když nasazení provedete, všechna stávající spuštění budou moci být dok
 
 Pokud potřebujete větší kontrolu nad tímto přechodem, měli byste použít sloty nasazení.
 
-## <a name="deployment-slots"></a>Nasazovací sloty
+## <a name="deployment-slots"></a>Sloty nasazení
 
 Když nasadíte aplikaci Function App do Azure, můžete ji nasadit do samostatného slotu pro nasazení místo přímo do produkčního prostředí. Další informace o slotech nasazení najdete v dokumentaci [Azure Functions Deployments](functions-deployment-slots.md) – další podrobnosti.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/17/2016
 ms.author: allensu
-ms.openlocfilehash: a1d94166c6c56a3652dc0ad532bd481c6e792c52
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 0b5e8f28be9960a2bb4e1406a293ab5e03962681
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98217086"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680565"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-cli"></a>Přiřazení více IP adres k virtuálním počítačům pomocí Azure CLI
 
@@ -38,7 +38,7 @@ Následující postup vysvětluje, jak vytvořit ukázkový virtuální počíta
 3. Z příkazového prostředí se přihlaste pomocí příkazu `az login` a vyberte předplatné, které používáte.
 4. Vytvořte virtuální počítač spuštěním skriptu, který následuje na počítači se systémem Linux nebo Mac. Skript vytvoří skupinu prostředků, jednu virtuální síť (VNet), jednu síťovou kartu se třemi konfiguracemi IP adres a virtuální počítač se dvěma síťovými rozhraními, které jsou k němu připojené. Síťové rozhraní, veřejná IP adresa, virtuální síť a prostředky virtuálních počítačů musí existovat ve stejném umístění a předplatném. I když prostředky nemusí všechny existovat ve stejné skupině prostředků, v následujících skriptech.
 
-```bash
+```azurecli
     
 #!/bin/sh
     

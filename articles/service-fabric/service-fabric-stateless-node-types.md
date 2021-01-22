@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: pepogors
-ms.openlocfilehash: 0876891e42ce629a3b088d8068c74386d690492d
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: 3767a16656ac4d11511c0928be8b2703c4e94c7c
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97683196"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680599"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-with-stateless-only-node-types-preview"></a>Nasazení clusteru Azure Service Fabric s nestavovým uzlem bez stavu (Preview)
 Typy uzlů Service Fabric přicházejí s podstatou předpokladem, že v některých časových okamžikech mohou být stavové služby umístěny na uzlech. Bezstavové typy uzlů rozšiřují tento předpoklad pro typ uzlu, což umožňuje, aby typ uzlu používal jiné funkce, jako je rychlejší operace škálování, podpora automatických upgradů operačního systému při bronzové odolnosti a škálování na více než 100 uzlů v jedné sadě škálování virtuálního počítače.
@@ -253,6 +253,8 @@ Chcete-li začít, budete muset přidat nové prostředky do existující šablo
 
 Po dokončení nasazení prostředků můžete začít s zakázáním uzlů v typu uzlu, který chcete odebrat z původního clusteru.
 
+>[!NOTE]
+> Při použití automatického škálování s bezstavovým uzlem NodeType s bronzovou odolností po operaci horizontálního navýšení kapacity se stav uzlu automaticky nevyčistí. Aby bylo možné vyčistit NodeState uzlů během automatického škálování, je doporučeno použití [Service Fabric pomocníka automatického škálování](https://github.com/Azure/service-fabric-autoscale-helper) .
 
 ## <a name="next-steps"></a>Další kroky 
 * [Reliable Services](service-fabric-reliable-services-introduction.md)

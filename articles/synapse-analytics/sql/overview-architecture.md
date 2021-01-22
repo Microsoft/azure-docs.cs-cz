@@ -10,14 +10,14 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: da6c9f6df0e9e74de297cf6c8f655b62e3446bad
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: bd911868028825164cdd9627bf6b5c6d56de7164
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462714"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98679614"
 ---
-# <a name="azure-synapse-sql-architecture"></a>Architektura SQL Azure synapse 
+# <a name="azure-synapse-sql-architecture"></a>Architektura Azure Synapse SQL 
 
 Tento článek popisuje součásti architektury nástroje synapse SQL.
 
@@ -49,7 +49,7 @@ Díky oddělenému úložišti a výpočetnímu prostředí může při použit�
 
 Synapse SQL využívá Azure Storage k zabezpečení vašich uživatelských dat. Vzhledem k tomu, že vaše data jsou uložená a spravovaná pomocí Azure Storage, pro vaši spotřebu úložiště se účtuje samostatně. 
 
-Fond SQL bez serveru vám umožní dotazovat se na soubory v Data Lake způsobem jen pro čtení, zatímco fond SQL umožňuje také ingestovat data. Když se data ingestují do vyhrazeného fondu SQL, data se horizontálně dělené do **distribucí** za účelem optimalizace výkonu systému. Můžete zvolit, který vzor horizontálního dělení se má použít k distribuci dat při definování tabulky. Jsou podporovány tyto horizontálního dělení vzory:
+Fond SQL bez serveru vám umožní dotazovat se na soubory v Data Lake způsobem jen pro čtení, zatímco fond SQL umožňuje také ingestovat data. Když se data ingestují do vyhrazeného fondu SQL, data se horizontálně dělené do **distribucí** za účelem optimalizace výkonu systému. Při definování tabulky můžete zvolit, který model horizontálního dělení se má pro distribuci dat použít. Jsou podporovány tyto horizontálního dělení vzory:
 
 * Hodnoty hash
 * Kruhové dotazování
@@ -67,7 +67,7 @@ Ve fondu SQL bez serveru se modul DQP spouští na řídicím uzlu za účelem o
 
 Výpočetní uzly poskytují výpočetní výkon. 
 
-Ve vyhrazeném fondu SQL se distribuce mapují na výpočetní uzly ke zpracování. Když platíte za více výpočetních prostředků, fond přemapuje distribuci k dostupným výpočetním uzlům. Počet výpočetních uzlů je rozsah od 1 do 60 a je určen úrovní služeb pro vyhrazený fond SQL. Každý výpočetní uzel má ID uzlu, které je viditelné v systémových zobrazeních. ID výpočetního uzlu můžete zobrazit tak, že vyhledáte sloupec node_id v systémových zobrazeních, jejichž názvy začínají na sys.pdw_nodes. Seznam těchto systémových zobrazení najdete v tématu [synapse SQL System views](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=azure-sqldw-latest).
+Ve vyhrazeném fondu SQL se distribuce mapují na výpočetní uzly ke zpracování. Když platíte za více výpočetních prostředků, fond přemapuje distribuci k dostupným výpočetním uzlům. Počet výpočetních uzlů je rozsah od 1 do 60 a je určen úrovní služeb pro vyhrazený fond SQL. Každý výpočetní uzel má ID uzlu, které je viditelné v systémových zobrazeních. ID výpočetního uzlu můžete zobrazit tak, že vyhledáte sloupec node_id v systémových zobrazeních, jejichž názvy začínají na sys.pdw_nodes. Seznam těchto systémových zobrazení najdete v tématu [synapse SQL System views](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=azure-sqldw-latest&preserve-view=true).
 
 V neserverovém fondu SQL je každému výpočetnímu uzlu přiřazen úkol a sada souborů pro spuštění úlohy. Úkol je jednotka provádění distribuovaného dotazu, která je ve skutečnosti součástí odeslaného uživatele dotazu. Automatické škálování je v platnosti, aby se zajistilo, že se k provádění dotazů uživatele využívají dost výpočetních uzlů.
 

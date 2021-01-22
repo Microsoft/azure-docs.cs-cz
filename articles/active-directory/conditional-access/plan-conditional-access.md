@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13756be041f88883d84f9558308c7fe5c9be2d0e
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: da21359b56b9e5b9d6e971032d06f8bae94efce0
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98116003"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682134"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>Plánování nasazení podmíněného přístupu
 
@@ -485,4 +485,4 @@ Jakmile shromáždíte informace, podívejte se na následující zdroje informa
 
 [Další informace o identitě identity](../identity-protection/overview-identity-protection.md)
 
-[Správa zásad podmíněného přístupu pomocí rozhraní Microsoft Graph API](https://docs.microsoft.com/graph/api/resources/conditionalaccesspolicy)
+[Správa zásad podmíněného přístupu pomocí rozhraní Microsoft Graph API](/graph/api/resources/conditionalaccesspolicy)
