@@ -1,4 +1,4 @@
-- name: Dokumentace ke službě IoT Hub
+- name: Dokumentace k IoT Hub
   href: index.yml
 - name: Přehled
   items:
@@ -481,6 +481,8 @@
           href: iot-hub-migrate-to-diagnostics-settings.md
         - name: Vyřazení TLS 1.0 a 1.1
           href: iot-hub-tls-deprecating-1-0-and-1-1.md
+        - name: Klasický filtr IP adres
+          href: iot-hub-ip-filter-classic.md
 - name: Zdroje a prostředky
   items:
     - name: Možnosti pomoci a podpory

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 702a59f768bfe978e1a7708d91c6b6b1bb9c92fe
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 0bd895b0c19293a199b2a9b135915b7dc45b9e5e
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452247"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702493"
 ---
 # <a name="using-azure-data-lake-storage-gen1-for-big-data-requirements"></a>Použití Azure Data Lake Storage Gen1 pro požadavky na velké objemy dat
 
@@ -88,7 +88,7 @@ Velké objemy dat může být uloženo v existujících clusterech Hadoop místn
 Pro nahrání datových sad, které jsou v rozsahu několika terabajtů, můžou použití výše popsaných metod někdy být pomalé a nákladné. V takových případech můžete použít následující možnosti.
 
 * **Pomocí Azure ExpressRoute**. Azure ExpressRoute vám umožňuje vytvářet privátní připojení mezi datacentry Azure a infrastrukturou ve vašich prostorách. To poskytuje spolehlivé možnosti pro přenos velkých objemů dat. Další informace najdete v [dokumentaci ke službě Azure ExpressRoute](../expressroute/expressroute-introduction.md).
-* **"Offline" nahrávání dat**. Pokud z nějakého důvodu není možné používat Azure ExpressRoute, můžete použít [službu import/export v Azure](../storage/common/storage-import-export-service.md) k dodávání pevných disků s daty do datového centra Azure. Vaše data se napřed nahrají do Azure Storage objektů BLOB. Potom můžete pomocí nástroje [Azure Data Factory](../data-factory/connector-azure-data-lake-store.md) nebo [AdlCopy](data-lake-store-copy-data-azure-storage-blob.md) kopírovat data z Azure Storage objektů blob do data Lake Storage Gen1.
+* **"Offline" nahrávání dat**. Pokud z nějakého důvodu není možné používat Azure ExpressRoute, můžete použít [službu import/export v Azure](../import-export/storage-import-export-service.md) k dodávání pevných disků s daty do datového centra Azure. Vaše data se napřed nahrají do Azure Storage objektů BLOB. Potom můžete pomocí nástroje [Azure Data Factory](../data-factory/connector-azure-data-lake-store.md) nebo [AdlCopy](data-lake-store-copy-data-azure-storage-blob.md) kopírovat data z Azure Storage objektů blob do data Lake Storage Gen1.
 
   > [!NOTE]
   > Při použití služby Import/export by velikost souborů na discích, které odesíláte do datového centra Azure, neměla být větší než 195 GB.

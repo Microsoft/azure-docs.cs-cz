@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 06/24/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 8e3f0435d9856d2b602a4f2b6f604aee05e040ba
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: b55ea814214397e12e50e7bc5047988394623940
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505201"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703585"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Seznámení se službou Azure Blob Storage
 
@@ -44,7 +44,7 @@ http://mystorageaccount.blob.core.windows.net
 
 Informace o vytvoření účtu úložiště najdete v tématu [Vytvoření účtu úložiště](../common/storage-account-create.md). Další informace o účtech úložiště najdete v tématu [Přehled účtu Azure Storage](../common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-### <a name="containers"></a>Containers
+### <a name="containers"></a>Kontejnery
 
 Kontejner uspořádá sadu objektů blob, podobně jako adresář v systému souborů. Účet úložiště může zahrnovat neomezený počet kontejnerů a v každém kontejneru může být neomezený počet objektů blob.
 
@@ -70,7 +70,7 @@ Pro migraci stávajících dat do úložiště objektů BLOB existuje několik �
 - **Azure Data Factory** podporuje kopírování dat do a ze služby Blob Storage pomocí klíče účtu, sdíleného přístupového podpisu, instančního objektu nebo spravovaných identit pro prostředky Azure. Další informace najdete v tématu [kopírování dat do nebo z úložiště objektů BLOB v Azure pomocí Azure Data Factory](../../data-factory/connector-azure-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 - **Blobfuse** je ovladač virtuálního systému souborů pro úložiště objektů BLOB v Azure. Blobfuse můžete použít pro přístup k existujícím datům objektů blob bloku v účtu úložiště prostřednictvím systému souborů Linux. Další informace najdete v tématu [Postup připojení úložiště objektů BLOB jako systému souborů pomocí blobfuse](storage-how-to-mount-container-linux.md).
 - Služba **Azure Data box** je k dispozici pro přenos místních dat do úložiště objektů blob, pokud velké datové sady nebo omezení sítě odesílají data prostřednictvím nereálného datového spojení. V závislosti na velikosti dat můžete od Microsoftu požádat o [Azure Data box disk](../../databox/data-box-disk-overview.md), [Azure Data box](../../databox/data-box-overview.md)nebo [Azure Data box Heavy](../../databox/data-box-heavy-overview.md) zařízení. Data pak můžete zkopírovat do těchto zařízení a odeslat je zpátky do Microsoftu, aby se nahráli do úložiště objektů BLOB.
-- **Služba Azure import/export** nabízí způsob, jak importovat nebo exportovat velké objemy dat do a z účtu úložiště pomocí pevných disků, které zadáte. Další informace najdete v tématu [použití služby Microsoft Azure import/export k přenosu dat do úložiště objektů BLOB](../common/storage-import-export-service.md).
+- **Služba Azure import/export** nabízí způsob, jak importovat nebo exportovat velké objemy dat do a z účtu úložiště pomocí pevných disků, které zadáte. Další informace najdete v tématu [použití služby Microsoft Azure import/export k přenosu dat do úložiště objektů BLOB](../../import-export/storage-import-export-service.md).
 
 ## <a name="next-steps"></a>Další kroky
 

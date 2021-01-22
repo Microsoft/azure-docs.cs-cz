@@ -1,0 +1,71 @@
+### YamlMime:Landing
+title: Dokumentace ke službě Import/export v Azure – Online přenos
+summary: Pomocí Azure import/export můžete bezpečně importovat velké objemy dat do služby Azure Blob Storage a souborů Azure pomocí přenosu diskových jednotek do datacentra Azure.
+metadata:
+  title: Dokumentace ke službě Import/export v Azure
+  description: Dokumentace k importu a exportu v Azure pro bezpečné importování a export velkých objemů dat do a z datových center Azure pomocí přenosu fyzických disků.
+  services: storage
+  ms.service: storage
+  ms.subservice: storage
+  ms.topic: landing-page
+  ms.collection: collection
+  author: v-dalc
+  ms.author: alkohli
+  ms.date: 01/08/201
+  ms.openlocfilehash: 5bccc4c64da4493e2f6d5e969949eb13df8bc1e7
+  ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+  ms.translationtype: MT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 01/22/2021
+  ms.locfileid: "98707419"
+landingContent:
+- title: O importu a exportu Azure
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je import/export?
+      url: storage-import-export-service.md
+  - linkListType: architecture
+    links:
+    - text: Volba možností přenosu dat
+      url: /azure/storage/common/storage-choose-data-transfer-solution
+    - text: Použití síťového nebo offline přenosu
+      url: /azure/storage/common/storage-solution-large-dataset-low-network#offline-transfer-or-network-transfer
+- title: Požadavky
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Požadavky
+      url: storage-import-export-requirements.md
+    - text: Nejčastější dotazy
+      url: storage-import-export-service-faq.md
+- title: Nasazení
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Import dat do objektů blob
+      url: storage-import-export-data-to-blobs.md
+    - text: Import dat do souborů
+      url: storage-import-export-data-to-files.md
+    - text: Export dat z objektů blob
+      url: storage-import-export-data-from-blobs.md
+  - linkListType: learn
+    links:
+    - text: Export dat offline pomocí importu a exportu
+      url: /learn/modules/export-data-with-azure-import-export/
+- title: Monitor
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Zobrazení stavu jednotky
+      url: storage-import-export-view-drive-status.md
+    - text: Kontrola stavu úlohy
+      url: storage-import-export-tool-reviewing-job-status-v1.md
+- title: Odstranit potíže
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Odstranit potíže
+      url: storage-import-export-contact-microsoft-support.md
+    - text: Kontaktování podpory
+      url: storage-import-export-contact-microsoft-support.md

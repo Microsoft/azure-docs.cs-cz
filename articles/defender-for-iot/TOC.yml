@@ -73,8 +73,6 @@
           href: concept-baseline.md
         - name: Agregace událostí
           href: event-aggregation.md
-        - name: Ceny a související náklady
-          href: concept-pricing.md
 - name: Návody
   items:
     - name: Řešení bez agentů pro organizace
@@ -252,6 +250,6 @@
         - name: Regionální dostupnost
           href: 'https://azure.microsoft.com/regions/services/'
         - name: Ceny
-          href: 'https://azure.microsoft.com/pricing/details/security-center/'
+          href: 'https://azure.microsoft.com/pricing/details/azure-defender/'
         - name: Videa
           href: 'https://azure.microsoft.com/resources/videos/index/?services=security-center&service=internet-of-things&page=1&sort=newest'

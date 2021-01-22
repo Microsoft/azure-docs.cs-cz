@@ -5,9 +5,9 @@
   items:
     - name: Co je Cognitive Search?
       href: search-what-is-azure-search.md
-    - name: Funkce služby Cognitive Search
+    - name: Seznam funkcí
       href: search-features-list.md
-    - name: Novinky služby Cognitive Search
+    - name: Nově ve vyhledávání
       href: whats-new.md
 - name: Rychlé starty
   items:

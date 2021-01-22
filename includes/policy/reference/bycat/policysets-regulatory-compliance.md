@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/08/2021
+ms.date: 01/21/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 3b537ad0100e285fe02f557b92d67e09ae615def
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 89ab040c7b585a8b85cf1b7eba9f96fcd63d10b0
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98046407"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703950"
 ---
 |Název |Popis |Zásady |Verze |
 |---|---|---|---|
@@ -18,7 +18,7 @@ ms.locfileid: "98046407"
 |[Srovnávací test zabezpečení Azure v1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/asb_audit.json) |Tato iniciativa zahrnuje zásady pro nasazení auditu a rozšíření virtuálních počítačů, které řeší podmnožinu doporučení Azure Security benchmark v1. Další zásady budou přidány v nadcházejících verzích. Další informace najdete na adrese [https://aka.ms/azsecbm](https://aka.ms/azsecbm) . |136 |6.1.1 – Preview |
 |[Azure Security benchmark v2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/asb_v2.json) |Tato iniciativa zahrnuje zásady, které řeší podmnožinu doporučení Azure Security benchmark v2. V nadcházejících verzích se můžou přidat další zásady. Další informace najdete na adrese [https://aka.ms/azsecbm](https://aka.ms/azsecbm) . |181 |1.0.0 – Preview |
 |[Canada Federal PBMM](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CanadaFederalPBMM_audit.json) |Tato iniciativa zahrnuje zásady pro nasazení auditu a rozšíření virtuálních počítačů, které řeší podmnožinu federálních PBMMch ovládacích prvků Kanady. Další zásady budou přidány v nadcházejících verzích. Další informace najdete na adrese [https://aka.ms/canadafederalpbmm-blueprint](https://aka.ms/canadafederalpbmm-blueprint) . |60 |3.0.0 |
-|[Srovnávací test CIS Microsoft Azure Foundations 1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CISv1_1_0_audit.json) |V této iniciativě jsou zásady auditu, které řeší podmnožinu referenčních doporučení pro CIS Microsoft Azurech základů. Další zásady budou přidány v nadcházejících verzích. Další informace najdete na adrese [https://aka.ms/cisazure-blueprint](https://aka.ms/cisazure-blueprint) . |87 |7.1.0 |
+|[Srovnávací test CIS Microsoft Azure Foundations 1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CISv1_1_0.json) |V této iniciativě jsou uvedeny zásady, které řeší podmnožinu referenčních doporučení pro CIS Microsoft Azurech základů. Další zásady budou přidány v nadcházejících verzích. Další informace najdete na adrese [https://aka.ms/cisazure110-initiative](https://aka.ms/cisazure110-initiative) . |91 |8.0.0 |
 |[FedRAMP High](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/FedRAMP_H_audit.json) |Tato iniciativa zahrnuje zásady pro nasazení auditu a rozšíření virtuálních počítačů, které řeší podmnožinu ovládacích prvků FedRAMP H. Další zásady budou přidány v nadcházejících verzích. Další informace najdete na adrese [https://aka.ms/fedramph-blueprint](https://aka.ms/fedramph-blueprint) . |72 |3.0.1 |
 |[FedRAMP Moderate](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/FedRAMP_M_audit.json) |Tato iniciativa zahrnuje zásady pro nasazení auditu a rozšíření virtuálních počítačů, které řeší podmnožinu ovládacích prvků FedRAMP M. Další zásady budou přidány v nadcházejících verzích. Další informace najdete na adrese [https://aka.ms/fedrampm-blueprint](https://aka.ms/fedrampm-blueprint) . |62 |3.0.0 |
 |[HITRUST/HIPAA](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/HIPAA_HITRUST_audit.json) |Tato iniciativa zahrnuje zásady pro nasazení auditu a rozšíření virtuálních počítačů, které řeší podmnožinu ovládacích prvků HITRUST/HIPAA. Další zásady budou přidány v nadcházejících verzích. Další informace najdete na adrese [https://aka.ms/hipaa-blueprint](https://aka.ms/hipaa-blueprint) . |121 |4.1.0 |

@@ -38,7 +38,7 @@
           href: ../containers/index.yml
 - name: Koncepty
   items:
-    - name: Osvědčené postupy rozhraní API pro detekci anomálií
+    - name: Osvědčené postupy rozhraní API detektoru anomálií
       href: concepts/anomaly-detection-best-practices.md
 - name: Referenční informace
   items:

@@ -109,8 +109,8 @@
               href: tutorial-data-flow.md
             - name: Videokurzy mapování toku dat
               href: data-flow-tutorials.md
-        - name: Příprava dat s využitím toků dat transformace
-          href: wrangling-data-flow-tutorial.md
+        - name: Příprava dat pomocí tahání
+          href: wrangling-tutorial.md
         - name: Použití externích služeb
           items:
             - name: HDInsight Spark
@@ -197,12 +197,12 @@
               href: concepts-data-flow-expression-builder.md
             - name: Jazyk výrazů
               href: data-flow-expression-functions.md
-        - name: Příprava dat s využitím toků dat transformace
+        - name: Příprava dat pomocí Power Query tahání dat
           items:
-            - name: Přehled toků dat transformace
-              href: wrangling-data-flow-overview.md
+            - name: Přehled tahání dat
+              href: wrangling-overview.md
             - name: Podporované funkce
-              href: wrangling-data-flow-functions.md
+              href: wrangling-functions.md
     - name: Role a oprávnění
       href: concepts-roles-permissions.md
     - name: Pravidla pojmenování
@@ -464,6 +464,8 @@
       items:
         - name: Aktivita spuštění toku dat
           href: control-flow-execute-data-flow-activity.md
+        - name: Spustit aktivitu Power Query
+          href: control-flow-power-query-activity.md
         - name: Aktivita funkcí Azure
           href: control-flow-azure-function-activity.md
         - name: Vlastní aktivita

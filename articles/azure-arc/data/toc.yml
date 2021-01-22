@@ -50,6 +50,8 @@
           href: create-data-controller-using-azdata.md
         - name: Nástroje pro Kubernetes
           href: create-data-controller-using-kubernetes-native-tools.md
+        - name: Použít SCC (OpenShift)
+          href: how-to-apply-security-context-constraint.md
     - name: Běžná prostředí pro datové služby s podporou služby Azure Arc
       items:
         - name: Monitorování pomocí řídicích panelů (Azure Data Studio)

@@ -210,6 +210,8 @@
           items:
             - name: Obnovení souborů z Azure do Windows Serveru
               href: backup-azure-restore-windows-server.md
+            - name: Obnovit všechny soubory ve svazku
+              href: restore-all-files-volume-mars.md
             - name: Obnovení stavu systému Windows Server
               href: backup-azure-restore-system-state.md
         - name: Spravovat

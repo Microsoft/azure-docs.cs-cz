@@ -58,6 +58,8 @@
       href: fqdn-filtering-network-rules.md
     - name: Standardní hodnoty zabezpečení
       href: security-baseline.md
+    - name: Aktivní podpora FTP
+      href: active-ftp-support.md
 - name: Návody
   items:
     - name: Nasazení s využitím Azure PowerShellu

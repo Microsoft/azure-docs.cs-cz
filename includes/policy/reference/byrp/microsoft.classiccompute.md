@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/08/2021
+ms.date: 01/21/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 77e693dd57309e9b93fea37a74d5f7292b4806e7
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 0f7ab53dae8023f49161aba6120fee30ce24227f
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98044856"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704038"
 ---
-|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Na virtuálních počítačích by mělo být povolené řešení posouzení ohrožení zabezpečení.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F501541f7-f7e7-4cd6-868c-4190fdad3ac9) |Audituje virtuální počítače, aby zjistila, jestli jsou v něm podporované řešení pro posouzení ohrožení zabezpečení. Základní součástí každého internetového rizika a programu zabezpečení je identifikace a analýza ohrožení zabezpečení. Cenová úroveň Standard Azure Security Center zahrnuje kontrolu ohrožení zabezpečení pro vaše virtuální počítače bez dalších poplatků. Security Center taky může tento nástroj automaticky nasadit. |AuditIfNotExists, zakázáno |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_ServerVulnerabilityAssessment_Audit.json) |
 |[V počítačích by měly být povolené Adaptivní řízení aplikací pro definování bezpečných aplikací.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F47a6b606-51aa-4496-8bb7-64b11cf66adc) |Povolit ovládací prvky aplikace, které definují seznam známých bezpečných aplikací spuštěných na vašich počítačích, a upozorní vás, když se spouštějí jiné aplikace. To pomáhá posílit zabezpečení vašich počítačů proti malwaru. Aby bylo možné zjednodušit proces konfigurace a údržby pravidel, Security Center využívá Machine Learning k analýze aplikací spuštěných na jednotlivých počítačích a k návrhu seznamu známých aplikací, které jsou v bezpečí. |AuditIfNotExists, zakázáno |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_AdaptiveApplicationControls_Audit.json) |

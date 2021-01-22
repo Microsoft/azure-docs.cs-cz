@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 03/26/2019
+ms.date: 01/22/2021
 ms.author: mbullwin
-ms.openlocfilehash: 9457c610b256dd4602ef0dc51a47eeffb3c63b49
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: b0869335c386712e6b759bb0ced459ebd1bf383c
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705145"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702722"
 ---
 # <a name="best-practices-for-using-the-anomaly-detector-api"></a>Osvědčené postupy pro používání rozhraní API detektoru anomálií
 
@@ -25,7 +25,7 @@ Rozhraní API pro detekci anomálií je Bezstavová služba pro detekci anomáli
 * Použité parametry rozhraní API detektoru anomálií.
 * Počet datových bodů v žádosti rozhraní API. 
 
-V tomto článku se seznámíte s osvědčenými postupy pro používání rozhraní API, které získává nejlepší výsledky pro vaše data. 
+V tomto článku se seznámíte s osvědčenými postupy pro používání rozhraní API k získání nejlepších výsledků pro vaše data. 
 
 ## <a name="when-to-use-batch-entire-or-latest-last-point-anomaly-detection"></a>Kdy použít detekci anomálií (celý) nebo nejnovější (poslední) bod dávky
 
@@ -95,7 +95,7 @@ Pokud víte, že vaše data časové řady mají sezónní vzor (k tomu docház�
 
 Určení `period` při vytváření požadavku JSON může snížit latenci detekce anomálií až o 50%. `period`Je celé číslo, které určuje zhruba počet datových bodů, které časová řada potřebuje k opakování vzoru. Například časová řada s jedním datovým bodem za den bude mít `period` jako `7` a časová řada s jedním bodem za hodinu (se stejným týdenním vzorem) by měla `period`  `7*24` . Pokud si nejste jisti vzorem vašich dat, nemusíte tento parametr zadávat.
 
-Nejlepších výsledků dosáhnete, když zadáte 4 pro `period` datový bod a navíc ještě další. Například hodinová data s týdenním vzorem, jak je popsáno výše, by měla v textu žádosti () poskytnout 673 datových bodů `7 * 24 * 4 + 1` .
+Nejlepších výsledků dosáhnete, když zadáte čtyři `period` množství datových bodů, a navíc ještě další. Například hodinová data s týdenním vzorem, jak je popsáno výše, by měla v textu žádosti () poskytnout 673 datových bodů `7 * 24 * 4 + 1` .
 
 ### <a name="sampling-data-for-real-time-monitoring"></a>Vzorkování dat pro sledování v reálném čase
 

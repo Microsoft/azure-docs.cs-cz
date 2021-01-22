@@ -1,0 +1,50 @@
+### YamlMime:Landing
+title: Azure AD Connect dokumentace ke cloudové synchronizaci
+summary: Azure AD Connect synchronizace cloudu pomáhá zjednodušit a automatizovat správu uživatelů Azure AD prostřednictvím pravidel spravovaných v cloudu pro synchronizaci těchto uživatelů z existujících doménových struktur AD.
+metadata:
+  author: billmath
+  description: Cloudová synchronizace pomáhá zjednodušit a automatizovat správu uživatelů Azure AD prostřednictvím pravidel spravovaných v cloudu pro synchronizaci těchto uživatelů z existujících doménových struktur AD.
+  ms.author: billmath
+  ms.collection: na
+  ms.date: 09/05/2019
+  ms.service: active-directory
+  ms.subservice: na
+  ms.topic: landing-page
+  services: active-directory
+  ms.openlocfilehash: 52032c39e77fb4ebd6488f25d660428ba59dfbd3
+  ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+  ms.translationtype: MT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 01/20/2021
+  ms.locfileid: "98611735"
+landingContent:
+- title: O synchronizaci cloudu
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Azure AD Connect synchronizace cloudu?
+      url: what-is-cloud-sync.md
+- title: Další informace o implementaci nejlepšího řešení pro správu životního cyklu uživatelů a skupin
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Integrace jedné doménové struktury AD s jedním tenant Azure AD
+      url: tutorial-single-forest.md
+    - text: Integrace stávající doménové struktury a nové doménové struktury s jedním tenantem Azure AD
+      url: tutorial-existing-forest.md
+    - text: Pilotní cloudová synchronizace pro existující synchronizovanou doménovou strukturu AD
+      url: tutorial-pilot-aadc-aadccp.md
+- title: Začínáme se synchronizací cloudu
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Předpoklady pro Azure AD Connect synchronizaci cloudu
+      url: how-to-prerequisites.md
+    - text: Instalace Azure AD Connect synchronizace cloudu
+      url: how-to-install.md
+    - text: Azure AD Connect konfigurace agenta zřizování
+      url: how-to-configure.md
+  - linkListType: reference
+    links:
+    - text: Podporované topologie a scénáře
+      url: plan-cloud-sync-topologies.md

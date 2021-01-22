@@ -14,9 +14,7 @@
           href: Quickstarts/create-publish-knowledge-base.md
         - name: Dotazování znalostní báze
           href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
-    - name: S využitím rozhraní REST
-      href: Quickstarts/quickstart-rest-curl.md
-    - name: S využitím sady SDK
+    - name: Použití klientských knihoven nebo REST API
       href: Quickstarts/quickstart-sdk.md
 - name: Kurzy
   items:

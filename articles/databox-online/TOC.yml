@@ -397,6 +397,11 @@
   items:
     - name: Standardní hodnoty zabezpečení
       href: security-baseline.md
+- name: Reference
+  items:
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Zdroje a prostředky
   items:
     - name: Ukázky modulů Azure Stack Edge Pro v C# (.NET)

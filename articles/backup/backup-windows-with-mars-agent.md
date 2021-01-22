@@ -3,18 +3,18 @@ title: Zálohování počítačů s Windows pomocí agenta MARS
 description: K zálohování počítačů s Windows použijte agenta Microsoft Azure Recovery Services (MARS).
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: d2cdd5d1fa98462a70d72fd9f8723685952b665a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54932192d61633da55657e2ba57adf4e30c4fbc7
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90052218"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702764"
 ---
 # <a name="back-up-windows-server-files-and-folders-to-azure"></a>Zálohování souborů a složek Windows serveru do Azure
 
 Tento článek vysvětluje, jak zálohovat počítače s Windows pomocí služby [Azure Backup](backup-overview.md) a agenta Microsoft Azure Recovery Services (MARS). MARS se také označuje jako agent Azure Backup.
 
-V tomto článku se dozvíte, jak:
+V tomto článku se naučíte:
 
 > [!div class="checklist"]
 >
@@ -40,11 +40,11 @@ Vytvoření zásad zálohování:
 
 1. Po stažení a registraci agenta MARS otevřete konzolu agenta. Najdete ho vyhledáním **Microsoft Azure Backup** ve svém počítači.  
 
-1. V části **Akce**vyberte **naplánovat zálohování**.
+1. V části **Akce** vyberte **naplánovat zálohování**.
 
     ![Naplánování zálohování Windows Serveru](./media/backup-configure-vault/schedule-first-backup.png)
 1. V Průvodci plánováním **zálohování vyberte začít**  >  **dál**.
-1. V části **Vybrat položky k zálohování**vyberte **Přidat položky**.
+1. V části **Vybrat položky k zálohování** vyberte **Přidat položky**.
 
     ![Přidat položky k zálohování](./media/backup-azure-manage-mars/select-item-to-backup.png)
 
@@ -104,7 +104,7 @@ Postup při offline přenosu:
 1. Zápis zálohovaných dat do pracovního umístění.
 1. Pomocí nástroje AzureOfflineBackupDiskPrep zkopírujte data z pracovního umístění na jeden nebo více disků SATA.
 
-    Nástroj vytvoří úlohu importu Azure. Další informace najdete v tématu [co je služba Azure import/export](../storage/common/storage-import-export-service.md).
+    Nástroj vytvoří úlohu importu Azure. Další informace najdete v tématu [co je služba Azure import/export](../import-export/storage-import-export-service.md).
 1. Odešlete disky SATA do datacentra Azure.
 
     V datacentru se data disku zkopírují do účtu služby Azure Storage. Azure Backup zkopíruje data z účtu úložiště do trezoru a naplánují se přírůstkové zálohy.

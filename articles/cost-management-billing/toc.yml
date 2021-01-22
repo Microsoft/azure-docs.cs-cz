@@ -98,7 +98,7 @@
           href: reservations/reserved-instance-windows-software-costs.md?toc=/azure/cost-management-billing/toc.json
         - name: Data o využití pro jednotlivá předplatná
           href: reservations/understand-reserved-instance-usage.md?toc=/azure/cost-management-billing/toc.json
-        - name: Data o využití pro podnikové zákazníky
+        - name: Podniková a zákaznická data o využití smluv Microsoftu
           href: reservations/understand-reserved-instance-usage-ea.md?toc=/azure/cost-management-billing/toc.json
     - name: Fakturace
       items:

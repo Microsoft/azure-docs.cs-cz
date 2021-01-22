@@ -11,16 +11,27 @@ ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
 ms.author: marsma
-ms.openlocfilehash: 4813a71a0bdd14e747aa4cfe51ab5a4191df62a4
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 1ab79c32bfc28f6b4582d5a7d7177d5a9c04d682
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563037"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702671"
 ---
 # <a name="microsoft-identity-platform-docs-whats-new"></a>Microsoft Identity Platform Docs: co je nového
 
 Vítají vás novinky v dokumentaci k platformě Microsoft Identity Platform. V tomto článku jsou uvedené nové dokumenty, které se přidaly, a ty, které měly v posledních třech měsících významné aktualizace.
+
+## <a name="january-2021"></a>Leden 2021
+
+### <a name="updated-articles"></a>Aktualizované články
+
+- [Ověřování vs. autorizace](authentication-vs-authorization.md)
+- [Postupy: omezení aplikace Azure AD na skupinu uživatelů v tenantovi Azure AD](howto-restrict-your-app-to-a-set-of-users.md)
+- [Oprávnění a souhlas v koncovém bodu Microsoft Identity Platform](v2-permissions-and-consent.md)
+- [Konfigurovatelné životnosti tokenů v platformě Microsoft Identity Platform (Preview)](active-directory-configurable-token-lifetimes.md)
+- [Konfigurace zásad životnosti tokenů (Preview)](configure-token-lifetimes.md)
+- [Microsoft Identity Platform a tok autorizačního kódu OAuth 2,0](v2-oauth2-auth-code-flow.md)
 
 ## <a name="december-2020"></a>Prosinec 2020
 
@@ -36,6 +47,7 @@ Vítají vás novinky v dokumentaci k platformě Microsoft Identity Platform. V 
 
 ### <a name="updated-articles"></a>Aktualizované články
 
+- [Rychlý Start: přidání přihlášení do webové aplikace Java pomocí Microsoftu](quickstart-v2-java-webapp.md)
 - [Kurz: sestavení démona s více klienty, který používá platformu Microsoft identity](tutorial-v2-aspnet-daemon-web-app.md)
 - [Webová aplikace, která přihlašuje uživatele: registrace aplikace](scenario-web-app-sign-user-app-registration.md)
 - [Microsoft Identity Platform a implicitní tok udělení](v2-oauth2-implicit-grant-flow.md)
@@ -56,49 +68,3 @@ Vítají vás novinky v dokumentaci k platformě Microsoft Identity Platform. V 
 - [Postupy: poskytnutí volitelných deklarací identity vaší aplikaci](active-directory-optional-claims.md)
 - [Publikování aplikace v galerii aplikací Azure AD](v2-howto-app-gallery-listing.md)
 - [Postupy: Přidání rolí aplikace do aplikace a jejich přijetí v tokenu](howto-add-app-roles-in-azure-ad-apps.md)
-
-## <a name="october-2020"></a>Říjen 2020
-
-### <a name="new-articles"></a>Nové články
-
-- [Rychlý Start: přihlášení uživatelů a získání přístupového tokenu v rámci webové aplikace v uzlu pomocí toku kódu ověřování](quickstart-v2-nodejs-webapp-msal.md)
-- [Postupy: povolení jednotného přihlašování mezi aplikacemi na Androidu pomocí MSAL](msal-android-single-sign-on.md)
-- [Podpora jednotného přihlašování a zásad ochrany aplikací v mobilních aplikacích, které vyvíjíte](mobile-sso-support-overview.md)
-- Microsoft Identity Platform Docs: co je nového (Tento článek)
-- [Kurz: přihlášení uživatelů a volání chráněného rozhraní API z aplikace Blazor WebAssembly](tutorial-blazor-webassembly.md)
-- [Microsoft Identity web Authentication Library](microsoft-identity-web.md)
-
-### <a name="updated-articles"></a>Aktualizované články
-
-- [Konfigurovatelné životnosti tokenů v platformě Microsoft Identity Platform (Preview)](active-directory-configurable-token-lifetimes.md)
-- [Postup: Přihlášení libovolného uživatele služby Azure Active Directory pomocí vzoru aplikace s více tenanty](howto-convert-app-to-be-multi-tenant.md)
-- [Rychlý Start: Změna účtů podporovaných aplikací](quickstart-modify-supported-accounts.md)
-- [Videa k platformě Microsoft Identity Platform](identity-videos.md)
-- [Příručka k migraci ADAL do MSAL pro Android](migrate-android-adal-msal.md)
-- [Rychlý Start: volání webového rozhraní API ASP.NET, které je chráněné technologií Microsoft Identity Platform](quickstart-v2-dotnet-native-aspnet.md)
-- [Přihlašovací údaje ověřovacího certifikátu aplikace Microsoft Identity Platform](active-directory-certificate-credentials.md)
-- [Kurz: přihlášení uživatelů a volání Microsoft Graph z aplikace pro iOS nebo macOS](tutorial-v2-ios.md)
-- [Přihlaste se uživatelům a zavolejte Microsoft Graph API z jednostránkové aplikace v JavaScriptu (SPA).](tutorial-v2-javascript-spa.md)
-- [Kurz: použití režimu sdíleného zařízení v aplikaci pro Android](tutorial-v2-shared-device-mode.md)
-
-## <a name="september-2020"></a>Září 2020
-
-### <a name="new-articles"></a>Nové články
-
-- [Rychlý Start: ochrana ASP.NET Core webového rozhraní API s platformou Microsoft identity](quickstart-v2-aspnet-core-web-api.md)
-- [Kurz: Vytvoření aplikace serveru Blazor, která pro ověřování používá platformu Microsoft Identity Platform](tutorial-blazor-server.md)
-
-### <a name="updated-articles"></a>Aktualizované články
-
-- [Kurz: přihlášení uživatelů a volání rozhraní Microsoft Graph API z aplikace pro Android](tutorial-v2-android.md)
-- [Webová aplikace, která volá webová rozhraní API: Konfigurace kódu](scenario-web-app-call-api-app-configuration.md)
-- [Webová aplikace, která volá webová rozhraní API: volá webové rozhraní API.](scenario-web-app-call-api-call-api.md)
-- [Webové rozhraní API, které volá webová rozhraní API: Konfigurace kódu](scenario-web-api-call-api-app-configuration.md)
-- [Webové rozhraní API, které volá webová rozhraní API: volá rozhraní API.](scenario-web-api-call-api-call-api.md)
-- [Přihlášení uživatelů a volání Microsoft Graph z aplikace pro iOS nebo macOS](tutorial-v2-ios.md)
-- [Rychlý Start: volání webového rozhraní API ASP.NET, které je chráněné technologií Microsoft Identity Platform](quickstart-v2-dotnet-native-aspnet.md)
-- [Rychlý Start: Přidání přihlašování s Microsoftem do webové aplikace ASP.NET Core](quickstart-v2-aspnet-core-webapp.md)
-- [Pokyny pro používání Xamarin iOS s MSAL.NET](msal-net-xamarin-ios-considerations.md)
-- [Rychlý Start: Konfigurace klientské aplikace pro přístup k webovému rozhraní API](quickstart-configure-app-access-web-apis.md)
-- [Rychlý Start: Konfigurace aplikace k vystavení webového rozhraní API](quickstart-configure-app-expose-web-apis.md)
-- [Rychlý Start: registrace aplikace s platformou Microsoft identity](quickstart-register-app.md)

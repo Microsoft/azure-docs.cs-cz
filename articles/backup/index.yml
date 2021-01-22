@@ -9,12 +9,12 @@ metadata:
   author: dcurwin
   ms.author: dacurwin
   ms.date: 12/01/2019
-  ms.openlocfilehash: e2afc60f6fa67c1dc0582839e2d3f7480907facc
-  ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
-  ms.translationtype: HT
+  ms.openlocfilehash: ea54d6e4a08ff5baa2a46051a8ec342128175de3
+  ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 01/18/2021
-  ms.locfileid: "98556490"
+  ms.lasthandoff: 01/21/2021
+  ms.locfileid: "98707249"
 landingContent:
 - title: Přečtěte si o službě Azure Backup
   linkLists:
@@ -40,8 +40,6 @@ landingContent:
       url: quick-backup-vm-cli.md
     - text: Zálohování virtuálního počítače pomocí šablony Resource Manageru
       url: quick-backup-vm-template.md
-- title: Vyzkoušení těchto podrobných kurzů
-  linkLists:
   - linkListType: tutorial
     links:
     - text: Zálohování virtuálních počítačů Azure
@@ -84,6 +82,20 @@ landingContent:
       url: backup-azure-vm-backup-faq.md
     - text: Správa záloh virtuálních počítačů Azure
       url: backup-azure-manage-vms.md
+- title: Zálohování Azure Managed Disks (ve verzi Preview)
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Přehled zálohování disku Azure
+      url: disk-backup-overview.md
+    - text: Matice podpory pro zálohování disku Azure
+      url: disk-backup-support-matrix.md
+    - text: Zálohování Azure Managed Disks
+      url: backup-managed-disks.md
+    - text: Nejčastější dotazy – Azure Managed Disks
+      url: disk-backup-faq.md
+    - text: Řešení potíží se službou Azure Managed Disks Backup
+      url: disk-backup-troubleshoot.md
 - title: Zálohování SQL Serveru na virtuálních počítačích Azure
   linkLists:
   - linkListType: concept

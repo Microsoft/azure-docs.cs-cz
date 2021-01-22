@@ -4,15 +4,15 @@ description: QnA Maker je cloudová služba NLP, která v rámci vašich dat sna
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
-ms.date: 05/26/2020
+ms.date: 01/22/2021
 ms.custom: cog-serv-seo-aug-2020
 keywords: QNA maker, konverzace s nízkým kódem roboty, konverzace s vícenásobným zahnutím
-ms.openlocfilehash: 9655f64da455fb7a7124a97e6dc2d1d8437d05b7
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 16f30801d52aa46184c4eb394f3d1cfebecd4be6
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353132"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98700711"
 ---
 # <a name="what-is-qna-maker"></a>Co je QnA Maker?
 
@@ -63,7 +63,7 @@ Po úpravě znalostní báze publikujte znalostní bázi do funkčního [robota 
 
 Systém QnA Maker je přístup k vrstveným seřazením. Data se ukládají do služby Azure Search, která také slouží jako první vrstva hodnocení. Výsledky z Azure Search se pak předávají QnA Maker pomocí NLP modelu rehodnocení, který vám umožní dosáhnout konečných výsledků a skóre spolehlivosti.
 
-## <a name="multi-turn-conversations"></a>Vícenásobné konverzace
+## <a name="multi-turn-conversations"></a>Rozvinuté konverzace
 
 QnA Maker poskytuje vícenásobné výzvy a aktivní učení, které vám pomůžou vylepšit základní páry otázek a odpovědí.
 
@@ -85,8 +85,6 @@ Nabízíme rychlé zprovoznění ve většině oblíbených programovacích jazy
 
 * [Začínáme s klientskou knihovnou QnA Maker](../quickstarts/quickstart-sdk.md)
 * [Začínáme s portálem QnA Maker](../quickstarts/create-publish-knowledge-base.md)
-* [Začínáme s rozhraními REST API pro QnA Maker](../quickstarts/quickstart-rest-curl.md)
-
 
 ## <a name="next-steps"></a>Další kroky
 QnA Maker poskytuje vše, co potřebujete k sestavování, správě a nasazení vlastní znalostní báze.

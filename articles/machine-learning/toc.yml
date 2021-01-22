@@ -70,10 +70,6 @@
         - name: Označení dat obrázku
           displayName: 'tag, tagging, images'
           href: tutorial-labeling.md
-    - name: R SDK
-      items:
-        - name: Vytvoření prvního experimentu ML (R)
-          href: tutorial-1st-r-experiment.md
     - name: Rozhraní příkazového řádku
       items:
         - name: Trénování a nasazení s využitím CLI

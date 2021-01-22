@@ -55,7 +55,7 @@
               href: manage-vm-extensions-powershell.md
             - name: Nasazení rozšíření pomocí šablony ARM
               href: manage-vm-extensions-template.md
-        - name: Použité spravované identity na serveru
+        - name: Použití spravovaných identit na serveru
           href: managed-identity-authentication.md
         - name: Správa agenta
           href: manage-agent.md
@@ -82,7 +82,7 @@
     - name: .NET
       href: /dotnet/api/overview/azure/hybridcompute/management
     - name: Azure Stack HCI REST
-      href: 'https://docs.microsoft.com/rest/api/stackhci'
+      href: /rest/api/stackhci
     - name: REST
       href: /rest/api/hybridcompute
     - name: Přejít

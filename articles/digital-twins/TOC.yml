@@ -164,9 +164,9 @@
             - name: .NET (C#) SDK – zdrojový kód
               href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins'
             - name: Java SDK – Maven
-              href: 'https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_10_31/azure-mgmt-digitaltwins/1.0.0/jar'
+              href: 'https://search.maven.org/search?q=a:azure-mgmt-digitaltwins'
             - name: Java SDK – zdrojový kód
-              href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/mgmt-v2020_10_31'
+              href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins'
             - name: JavaScript SDK – NPM
               href: 'https://www.npmjs.com/package/@azure/arm-digitaltwins'
             - name: JavaScript SDK – zdrojový kód
@@ -243,8 +243,10 @@
           href: /samples/azure-samples/dtdl-validator/dtdl-validator/
         - name: Specifikace DTMI
           href: 'https://github.com/Azure/digital-twin-model-identifier'
-        - name: Požadavky na zákaznická data
+    - name: Požadavky na zákaznická data
       href: resources-customer-data-requests.md
+    - name: Omezení služby Digital Twins
+      href: reference-service-limits.md
     - name: Ceny a dostupnost
       items:
         - name: Ceny
@@ -253,8 +255,6 @@
           href: 'https://azure.microsoft.com/support/legal/sla/digital-twins'
         - name: Oblasti a dostupnost
           href: 'https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins'
-        - name: Omezení služby Digital Twins
-          href: reference-service-limits.md
     - name: Příběhy zákazníků
       href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20Digital%20Twins%22&ff=&p=0&so=story_publish_date%20desc'
     - name: Videa na webu Channel 9

@@ -89,8 +89,10 @@
       items:
         - name: SQL Serveru do SQL Database
           href: howto-sql-server-to-azure-sql-powershell.md
-        - name: SQL Serveru do SQL Managed Instance
-          href: howto-sql-server-to-azure-sql-mi-powershell.md
+        - name: SQL Server k SQL MI (online)
+          href: howto-sql-server-to-azure-sql-managed-instance-powershell-online.md
+        - name: SQL Server k SQL MI (offline)
+          href: howto-sql-server-to-azure-sql-managed-instance-powershell-offline.md
     - name: Opětovné nasazení balíčku SSIS do
       items:
         - name: Azure SQL Database
@@ -137,17 +139,17 @@
               href: known-issues-dms-hybrid-mode.md
         - name: Známé problémy s migrací
           items:
-            - name: Do SQL Database
+            - name: Databáze SQL
               href: known-issues-azure-sql-online.md
             - name: Spravovaná instance SQL
               href: known-issues-azure-sql-db-managed-instance-online.md
-            - name: Do Azure DB for MySQL
+            - name: Azure DB for MySQL
               href: known-issues-azure-mysql-online.md
-            - name: Z PostgreSQL do Azure DB for PostgreSQL
+            - name: PostgreSQL do Azure DB pro PostgreSQL
               href: known-issues-azure-postgresql-online.md
-            - name: Z Oraclu do Azure DB for PostgreSQL
+            - name: Oracle do Azure DB pro PostgreSQL
               href: known-issues-oracle-azure-postgresql-online.md
-            - name: Z MongoDB do rozhraní API služby Azure Cosmos DB pro MongoDB
+            - name: Azure Cosmos DB MongoDB rozhraní API pro MongoDB
               href: known-issues-mongo-cosmos-db.md
     - name: Videa
       items:

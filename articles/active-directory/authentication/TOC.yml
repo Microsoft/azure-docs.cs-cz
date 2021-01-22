@@ -154,9 +154,9 @@
           href: howto-password-ban-bad-on-premises-faq.md
         - name: Historie verzí agenta
           href: howto-password-ban-bad-on-premises-agent-versions.md
-    - name: Použití ověření na základě SMS (Preview)
+    - name: Použít ověřování pomocí serveru SMS
       href: howto-authentication-sms-signin.md
-    - name: Použití přihlášení s e-mailovou adresou (Preview)
+    - name: Použít přihlášení k e-mailovým adresám
       href: howto-authentication-use-email-signin.md
     - name: Inteligentní uzamykání Azure AD
       href: howto-password-smart-lockout.md

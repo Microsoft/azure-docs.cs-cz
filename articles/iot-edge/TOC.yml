@@ -17,9 +17,9 @@
   items:
     - name: Nastavení vývojového prostředí
       items:
-        - name: Vývoj pro zařízení s Linuxem
+        - name: Vývoj s kontejnery pro Linux
           href: tutorial-develop-for-linux.md
-        - name: Vývoj pro zařízení s Windows
+        - name: Vývoj s kontejnery Windows
           href: tutorial-develop-for-windows.md
     - name: Vývoj modulů vlastního kódu
       items:
@@ -77,6 +77,8 @@
   items:
     - name: Modul runtime IoT Edge
       href: iot-edge-runtime.md
+    - name: IoT Edge pro Linux ve Windows
+      href: iot-edge-for-linux-on-windows.md
     - name: Moduly IoT Edge
       items:
         - name: Vysvětlení modulů Azure IoT Edge
@@ -119,23 +121,25 @@
   items:
     - name: Vytvoříte zařízení IoT Edge.
       items:
-        - name: Instalace modulu runtime
-          href: how-to-install-iot-edge.md
-        - name: Registrace a ověření zařízení
+        - name: Zaregistrovat zařízení v IoT Hub
+          href: how-to-register-device.md
+        - name: Instalace a zřízení IoT Edge
           items:
-            - name: Ověřování symetrickým klíčem
-              href: how-to-manual-provision-symmetric-key.md
-            - name: Ověřování certifikátem X.509
-              href: how-to-manual-provision-x509.md
+            - name: Nainstalovat IoT Edge pro Linux
+              href: how-to-install-iot-edge.md
+            - name: Spuštění IoT Edge pro Linux ve Windows
+              href: how-to-install-iot-edge-on-windows.md
         - name: Aktualizace modulu runtime
           href: how-to-update-iot-edge.md
         - name: Správa certifikátů zařízení
           href: how-to-manage-device-certificates.md
-        - name: Vytvoření testovacích certifikátů
-          href: how-to-create-test-certificates.md
-        - name: IoT Edge na platformě Kubernetes
+    - name: Alternativní scénáře zařízení
+      items:
+        - name: Spuštění IoT Edge s kontejnery Windows
+          href: how-to-install-iot-edge-windows-on-windows.md
+        - name: Spuštění IoT Edge v Kubernetes
           href: how-to-install-iot-edge-kubernetes.md
-        - name: Virtuální počítač s IoT Edge s využitím šablony ARM
+        - name: Nasazení virtuálního počítače s IoT Edge pomocí šablony ARM
           href: how-to-install-iot-edge-ubuntuvm.md
     - name: Automatické zřizování s využitím DPS
       items:
@@ -243,6 +247,8 @@
           href: troubleshoot-common-errors.md
 - name: Referenční informace
   items:
+    - name: Vytvoření testovacích certifikátů
+      href: how-to-create-test-certificates.md
     - name: Skripty správy pro zařízení s Windows
       href: reference-windows-scripts.md
     - name: Azure CLI

@@ -1,0 +1,54 @@
+- name: Dokumentace ke službě Import/export v Azure
+  href: ./index.yml
+- name: Přehled
+  expanded: true
+  items:
+    - name: Co je import/export?
+      href: storage-import-export-service.md
+- name: Koncepty
+  items:
+    - name: Kontrola požadavků
+      href: storage-import-export-requirements.md
+    - name: Nejčastější dotazy
+      href: storage-import-export-service-faq.md
+- name: Postup
+  expanded: true
+  items:
+    - name: Nasazení
+      items:
+        - name: Import dat do objektů blob
+          href: storage-import-export-data-to-blobs.md
+        - name: Import dat do souborů
+          href: storage-import-export-data-to-files.md
+        - name: Export dat z objektů blob
+          href: storage-import-export-data-from-blobs.md
+    - name: Použití klíčů spravovaných zákazníkem
+      href: storage-import-export-encryption-key-portal.md
+    - name: Monitor
+      items:
+        - name: Zobrazení stavu jednotky
+          href: storage-import-export-view-drive-status.md
+        - name: Kontrola stavu úlohy
+          href: storage-import-export-tool-reviewing-job-status-v1.md
+    - name: Řešení potíží
+      items:
+        - name: Opravit běžné chyby
+          href: storage-import-export-tool-troubleshooting-v1.md
+        - name: Opravit úlohu importu
+          href: storage-import-export-tool-repairing-an-import-job-v1.md
+        - name: Oprava úlohy exportu
+          href: storage-import-export-tool-repairing-an-export-job-v1.md
+        - name: Kontaktování podpory
+          href: storage-import-export-contact-microsoft-support.md
+- name: Referenční informace
+  items:
+    - name: REST API
+      href: /rest/api/storageimportexport/jobs
+    - name: Azure PowerShell
+      href: /powershell/module/Az.ImportExport
+- name: Zdroje a prostředky
+  items:
+    - name: Export dat offline
+      href: /learn/modules/export-data-with-azure-import-export
+    - name: Další možnosti offline přenosu
+      href: ../databox/index.yml

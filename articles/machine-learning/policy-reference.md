@@ -1,18 +1,18 @@
 ---
 title: Předdefinované definice zásad pro Azure Machine Learning
 description: Vypíše Azure Policy předdefinované definice zásad pro Azure Machine Learning. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
-ms.date: 01/08/2021
+ms.date: 01/21/2021
 ms.author: larryfr
 author: BlackMist
 ms.topic: reference
 ms.service: machine-learning
 ms.custom: subject-policy-reference
-ms.openlocfilehash: f7f380492d7e261038aab0fba9e775f1eaa28aa9
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 778930d7370496387067823e88aa63f840b46782
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98072288"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703554"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-machine-learning"></a>Azure Policy předdefinované definice zásad pro Azure Machine Learning
 

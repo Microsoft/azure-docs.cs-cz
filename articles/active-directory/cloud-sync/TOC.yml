@@ -1,0 +1,88 @@
+- name: Synchronizace cloudu
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Co je zřizování identit?
+      href: what-is-provisioning.md
+    - name: Co je Azure AD Connect synchronizace cloudu?
+      href: what-is-cloud-sync.md
+      maintainContext: true
+- name: Kurzy
+  expanded: true
+  items:
+    - name: Integrace jedné doménové struktury AD s jedním tenantem Azure AD
+      href: tutorial-single-forest.md
+    - name: Integrace stávající doménové struktury a nové doménové struktury s jedním tenantem Azure AD
+      href: tutorial-existing-forest.md
+    - name: Pilotní cloudová synchronizace pro existující synchronizovanou doménovou strukturu AD
+      href: tutorial-pilot-aadc-aadccp.md
+- name: Koncepty
+  items:
+    - name: Jak to funguje
+      href: concept-how-it-works.md
+    - name: Co je synchronizace hodnot hash hesel?
+      href: ../hybrid/whatis-phs.md?context=%2fazure%2factive-directory%2fcloud-provisioning%2fcontext%2fcloud-provisioning-context
+    - name: 'Seznámení s výrazy, atributy a schématy Azure AD'
+      href: concept-attributes.md
+    - name: Zápis výrazů pro mapování atributů v Azure Active Directory
+      href: reference-expressions.md
+- name: Návody
+  items:
+    - name: Instalace a upgrade
+      items:
+        - name: Požadavky pro instalaci
+          href: how-to-prerequisites.md
+        - name: Instalace agenta zřizování cloudů Azure AD Connect
+          href: how-to-install.md
+        - name: Konfigurace synchronizace cloudu
+          href: how-to-configure.md
+        - name: Zřizování na vyžádání
+          href: how-to-on-demand-provision.md
+        - name: Mapování atributů
+          href: how-to-attribute-mapping.md
+        - name: Použití jednotného přihlašování
+          href: how-to-sso.md
+    - name: Plánování a návrh
+      items:
+        - name: Topologie a scénáře pro Azure AD Connect synchronizaci cloudu
+          href: plan-cloud-sync-topologies.md
+    - name: Spravovat
+      items:
+        - name: Automatický upgrade agentů
+          href: how-to-automatic-upgrade.md
+        - name: Náhodné odstranění
+          href: how-to-accidental-deletes.md
+        - name: Možnosti registru agentů
+          href: how-to-manage-registry-options.md
+        - name: Rutiny PowerShellu pro gMSA agenta
+          href: how-to-gmsa-cmdlets.md
+        - name: Instalace agenta zřizování pomocí prostředí PowerShell
+          href: how-to-install-pshell.md
+    - name: Vývoj
+      items:
+        - name: Transformace
+          href: how-to-transformation.md
+        - name: Příchozí synchronizace s využitím MS Graph API
+          href: how-to-inbound-synch-ms-graph.md
+        - name: Rozhraní API pro synchronizaci s Azure AD
+          href: /graph/api/resources/synchronization-overview
+    - name: Řešení potíží
+      items:
+        - name: Řešení potíží s cloudovou synchronizací
+          href: how-to-troubleshoot.md
+        - name: Duplicitní atributy
+          href: ../hybrid/how-to-connect-syncservice-duplicate-attribute-resiliency.md?context=%2fazure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
+- name: Odkaz
+  items:
+    - name: Historie verzí agenta zřizování cloudů Azure AD Connect
+      href: reference-version-history.md
+    - name: Nejčastější dotazy k synchronizaci cloudu Azure AD Connect
+      href: reference-cloud-sync-faq.md
+    - name: Powershellový modul AADCloudSyncTools
+      href: reference-powershell.md
+    - name: Synchronizované atributy
+      href: ../hybrid/reference-connect-sync-attributes-synchronized.md?context=%2fazure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
+    - name: Kódy a popisy chyb
+      href: reference-error-codes.md
+    - name: Základní prostředí Active Directory a Azure AD
+      href: tutorial-basic-ad-azure.md

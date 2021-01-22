@@ -19,6 +19,8 @@
       href: virtual-machines-custom-preferences.md
     - name: Povolení na virtuálních počítačích přes Azure Policy
       href: virtual-machines-policy-enable.md
+    - name: Řešení chyb při připojování
+      href: common-errors.md
     - name: Oprava poškozeného účtu Automanage
       href: repair-automanage-account.md
 - name: Zdroje a prostředky

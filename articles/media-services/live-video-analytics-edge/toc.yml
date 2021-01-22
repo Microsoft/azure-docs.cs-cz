@@ -59,8 +59,12 @@
   items:
     - name: Ukázky přímých metod v C#
       href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp'
+    - name: Ukázky pro C# SDK
+      href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp-sdk'
     - name: Ukázky přímých metod v Pythonu
       href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-python'
+    - name: Ukázky Python SDK
+      href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-python-sdk'
 - name: Koncepty
   items:
     - name: Graf médií

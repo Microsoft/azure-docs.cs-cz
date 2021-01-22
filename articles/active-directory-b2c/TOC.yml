@@ -238,8 +238,10 @@
           items:
             - name: Mailjet
               href: custom-email-mailjet.md
+              displayName: 'Custom email, Custom verification email, Verification email'
             - name: SendGrid
               href: custom-email-sendgrid.md
+              displayName: 'Custom email, Custom verification email, Verification email'
           displayName: verification
         - name: Přidání vlastní obchodní logiky
           items:
@@ -381,6 +383,8 @@
           href: partner-itsme.md
         - name: Jumio
           href: partner-jumio.md
+        - name: Bez klíčů
+          href: partner-keyless.md
         - name: LexisNexis
           href: partner-lexisnexis.md
         - name: N8 Identity
@@ -415,9 +419,9 @@
         - name: Azure Monitor
           href: azure-monitor.md
           displayName: 'log, logs, logging, usage, events'
-        - name: Správa uživatelů – Microsoft Graph
-          href: manage-user-accounts-graph-api.md
-          displayName: 'account, accounts'
+        - name: Microsoft Graph API
+          href: microsoft-graph-operations.md
+          displayName: 'account, accounts, msgraph, ms graph, graph'
         - name: Nasazení s využitím Azure Pipelines
           href: deploy-custom-policies-devops.md
           displayName: 'azure devops, ci/cd, cicd, custom policy, policies'
@@ -461,8 +465,6 @@
       href: extensions-app.md
     - name: Poznámky k verzi pro vlastní zásady (IEF)
       href: custom-policy-developer-notes.md
-    - name: Operace Microsoft Graph API
-      href: microsoft-graph-operations.md
     - name: Verze rozložení stránky
       href: page-layout.md
     - name: Rezidence dat a dostupnost oblastí

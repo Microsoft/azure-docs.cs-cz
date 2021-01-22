@@ -1,0 +1,1106 @@
+- name: Dokumentace k virtuálním počítačům s Linuxem
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Informace o službě Virtual Machines
+      href: overview.md
+- name: Rychlé starty
+  items:
+    - name: Vytvoření virtuálního počítače – Azure CLI
+      href: quick-create-cli.md
+    - name: Vytvoření virtuálního počítače – portál
+      href: quick-create-portal.md
+    - name: Vytvoření virtuálního počítače – Azure PowerShell
+      href: quick-create-powershell.md
+    - name: Vytvoření virtuálního počítače – šablona ARM
+      displayName: 'Resource Manager, template, json'
+      href: quick-create-template.md
+  expanded: true
+- name: Kurzy
+  items:
+    - name: Vytvoření a správa virtuálních počítačů
+      href: tutorial-manage-vm.md
+    - name: Vytvoření a správa disků
+      href: tutorial-manage-disks.md
+    - name: Automatizace konfigurace
+      href: tutorial-automate-vm-deployment.md
+    - name: Vytvoření imagí virtuálních počítačů
+      href: tutorial-custom-images.md
+    - name: Vysoce dostupné virtuální počítače
+      href: tutorial-availability-sets.md
+    - name: Vytvoření škálovací sady
+      href: tutorial-create-vmss.md
+    - name: Vyrovnávání zatížení virtuálních počítačů
+      href: tutorial-load-balancer.md
+    - name: Správa sítí
+      href: tutorial-virtual-network.md
+    - name: Povolit zotavení po havárii
+      href: tutorial-disaster-recovery.md
+    - name: Správa virtuálních počítačů
+      href: tutorial-govern-resources.md
+    - name: Sledování a aktualizace virtuálních počítačů
+      href: tutorial-config-management.md
+    - name: Monitorování virtuálních počítačů
+      href: tutorial-monitor.md
+    - name: Sestavení pomocí Jenkinse
+      href: /azure/developer/jenkins/pipeline-with-github-and-docker
+    - name: Integrace Jenkinse s Azure DevOps
+      href: /azure/developer/jenkins/deploy-to-linux-vm-using-azure-devops-services
+    - name: Konfigurace strategie postupné implementace
+      href: tutorial-devops-azure-pipelines-classic.md
+    - name: Konfigurovat strategii pro Kanárské nasazení
+      href: tutorial-azure-devops-canary-strategy.md
+    - name: Konfigurace strategie nasazení Blue-Green
+      href: tutorial-azure-devops-blue-green-strategy.md
+    - name: CI/CD s Azure Pipelines (YAML)
+      href: tutorial-build-deploy-azure-pipelines.md
+    - name: Vytvořit sadu svítilen
+      href: tutorial-lamp-stack.md
+    - name: Zabezpečení webového serveru pomocí SSL
+      href: tutorial-secure-web-server.md
+- name: Koncepty
+  items:
+    - name: Obrázky
+      items:
+        - name: Přehled
+          href: imaging.md
+        - name: Zřizování
+          href: provisioning.md
+        - name: Galerie sdílených imagí
+          href: ../shared-image-galleries.md
+        - name: Image Builder
+          href: ../image-builder-overview.md
+    - name: Azure Resource Manager
+      href: ../../azure-resource-manager/management/overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+    - name: Oblasti
+      href: ../regions.md
+    - name: Rozšíření
+      items:
+        - name: Informace o rozšířeních Azure
+          href: ../extensions/overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Agent virtuálního počítače s Linuxem
+          href: ../extensions/agent-linux.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Funkce
+          href: ../extensions/features-linux.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+    - name: Dostupnost a výkon
+      items:
+        - name: Dostupnost
+          href: ../availability.md
+        - name: Společné umístění
+          href: ../co-location.md
+        - name: Výkon sítě
+          href: ../..//virtual-network/virtual-network-optimize-network-bandwidth.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+    - name: Velikosti a typy virtuálních počítačů
+      items:
+        - name: Velikost virtuálních počítačů
+          href: ../sizes.md
+        - name: Virtuální počítače 2. generace
+          href: ../generation-2.md
+        - name: Obecné účely
+          items:
+            - name: Přehled
+              href: ../sizes-general.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Av2-series
+              href: ../av2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: B-Series s možností zvládání výkonových špiček
+              href: ../sizes-b-series-burstable.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Řada DCv2
+              href: ../dcv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Řada Dv2 a DSv2
+              href: ../dv2-dsv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Řada Dv3 a DSv3
+              href: ../dv3-dsv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Řada Dav4 a Dasv4
+              href: ../dav4-dasv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Řada Ddv4 a Ddsv4
+              href: ../ddv4-ddsv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Řada Dv4 a Dsv4
+              href: ../dv4-dsv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Optimalizované z hlediska výpočetních služeb
+          items:
+            - name: Přehled
+              href: ../sizes-compute.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Řada Fsv2
+              href: ../fsv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Optimalizované z hlediska paměti
+          displayName: Esv3 Ev3 M-series GS G-series DSv2 Dv2
+          items:
+            - name: Přehled
+              href: ../sizes-memory.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: 'Řada Dv2 a DSv2, 11–15'
+              href: ../dv2-dsv2-series-memory.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Řada Ev3 a Esv3
+              href: ../ev3-esv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Řada Eav4 a Easv4
+              href: ../eav4-easv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Řada Edv4 a Edsv4
+              href: ../edv4-edsv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Řada Ev4 a Esv4
+              href: ../ev4-esv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Řada M
+              href: ../m-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Řada Mv2
+              href: ../mv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Virtuální procesory s omezením
+              href: ../constrained-vcpu.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Optimalizované z hlediska úložiště
+          items:
+            - name: Přehled
+              href: ../sizes-storage.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Řada Lsv2
+              href: ../lsv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Optimalizace výkonu
+              href: storage-performance.md
+        - name: GPU – zrychlené výpočetní funkce
+          items:
+            - name: Přehled
+              href: ../sizes-gpu.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Řada NC
+              href: ../nc-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Řada NCv2
+              href: ../ncv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Řada NCv3
+              href: ../ncv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Řada NCasT4_v3
+              href: ../nct4-v3-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Řada ND
+              href: ../nd-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Řada NDv2
+              href: ../ndv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Řada NV
+              href: ../nv-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Řada NVv3
+              href: ../nvv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Řada NVv4
+              href: ../nvv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Nastavení ovladačů NVIDIA GPU
+              href: n-series-driver-setup.md
+        - name: Vysokovýkonné výpočetní prostředí
+          displayName: H-series
+          items:
+            - name: Přehled
+              href: ../sizes-hpc.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: H-series
+              href: ../h-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Řada HB
+              href: ../hb-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Řada HBv2
+              href: ../hbv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Řada HC
+              href: ../hc-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Rezervované instance
+          items:
+            - name: Předplacení pro virtuální počítače
+              href: ../prepay-reserved-vm-instances.md
+            - name: Předplacení pro služby Dedicated Host
+              href: ../prepay-dedicated-hosts-reserved-instances.md
+            - name: Co jsou rezervace Azure?
+              href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md?toc=/azure/virtual-machines/linux/toc.json
+            - name: Flexibilita velikosti instance virtuálního počítače
+              href: ../reserved-vm-instance-size-flexibility.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Spotové virtuální počítače
+          displayName: 'pre-empt, preempt, spot'
+          href: ../spot-vms.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Virtuální počítače Azure bez dočasného disku
+          href: ../azure-vms-no-temp-disk.md
+        - name: Zásady vytváření názvů velikostí virtuálních počítačů Azure
+          href: ../vm-naming-conventions.md
+        - name: Předchozí generace
+          href: ../sizes-previous-gen.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Izolované velikosti
+          href: ../isolation.md
+        - name: Výpočetní jednotky Azure (ACU)
+          href: ../acu.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Kvóty virtuálních procesorů
+          href: quotas.md
+        - name: Výsledky srovnávacích testů
+          href: compute-benchmark-scores.md
+    - name: Schválené distribuce
+      href: endorsed-distros.md
+    - name: Údržba a aktualizace
+      href: ../maintenance-and-updates.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+    - name: Diskové úložiště
+      items:
+        - name: Úvod ke spravovaným diskům
+          href: ../managed-disks-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Výběr typu disku pro virtuální počítače IaaS
+          href: ../disks-types.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Šifrování
+          href: ../disk-encryption.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Rezervace služby Disk Storage
+          href: ../../cost-management-billing/reservations/understand-disk-reservations.md
+        - name: Výkon disků a virtuálních počítačů
+          href: ../disks-performance.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Návrh pro vysoký výkon
+          href: ../premium-storage-performance.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Zvládání výkonových špiček disků
+          href: ../disk-bursting.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Cíle škálovatelnosti pro disky
+          href: ../disks-scalability-targets.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Zálohování a zotavení po havárii pro disky
+          href: ../backup-and-disaster-recovery-for-azure-iaas-disks.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Sdílené disky
+          href: ../disks-shared.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Úrovně výkonu disků
+          href: ../disks-change-performance.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Disky OS s kratší platností
+          href: ../ephemeral-os-disks.md
+    - name: Sítě
+      href: ../network-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+    - name: Škálovací sady
+      href: ../../virtual-machine-scale-sets/overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+    - name: Automatizace infrastruktury
+      href: ../infrastructure-automation.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+    - name: Zabezpečení
+      items:
+        - name: Zabezpečení a zásady
+          href: ../security-policy.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Azure Disk Encryption
+          href: disk-encryption-overview.md
+        - name: Mechanismy zabezpečení služby Azure Policy
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ../security-controls-policy.md
+        - name: Standardní hodnoty zabezpečení pro srovnávací test zabezpečení Azure
+          href: security-baseline.md
+        - name: Bastion
+          href: ../../bastion/bastion-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+    - name: Stavy a životní cyklus
+      href: ../states-lifecycle.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+    - name: Volání PUT pro operace vytváření nebo aktualizace
+      href: ../put-calls-create-or-update.md
+      maintainContext: true
+    - name: Monitorování
+      href: ../../azure-monitor/insights/monitor-vm-azure.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+    - name: Diagnostika spouštění
+      href: ../../virtual-machines/boot-diagnostics.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+    - name: Backup a obnovení
+      href: ../backup-recovery.md
+    - name: Architektura přechodu na cloud
+      href: /azure/cloud-adoption-framework/get-started/
+    - name: Centrum architektury
+      href: /azure/architecture/
+    - name: Zvýhodněné hybridní využití Azure
+      href: azure-hybrid-benefit-linux.md
+- name: Návody
+  items:
+    - name: Vytvoření virtuálních počítačů
+      items:
+        - name: Použití rozhraní příkazového řádku
+          href: create-cli-complete.md
+        - name: Použití šablony ARM
+          displayName: Azure Resource Manager
+          href: create-ssh-secured-vm-from-template.md
+        - name: Použití rozhraní REST API
+          href: create-vm-rest-api.md
+        - name: Kopírování nebo klonování virtuálního počítače
+          href: copy-vm.md
+        - name: Využití vyhrazených hostitelů
+          href: ../dedicated-hosts.md
+          items:
+            - name: Rozhraní příkazového řádku
+              href: dedicated-hosts-cli.md
+            - name: Portál
+              href: ../dedicated-hosts-portal.md
+        - name: Nasazení spotových virtuálních počítačů
+          items:
+            - name: Rozhraní příkazového řádku
+              href: spot-cli.md
+            - name: Portál
+              href: ../spot-portal.md?toc=/azure/virtual-machines/linux/toc.json
+            - name: Šablona ARM
+              displayName: Azure Resource Manager
+              href: spot-template.md
+            - name: Kódy chyb
+              href: ../error-codes-spot.md?toc=/azure/virtual-machines/linux/toc.json
+    - name: Migrace z modelu Classic na Azure Resource Manager
+      items:
+        - name: Vyřazování od 1. března 2023
+          href: ../classic-vm-deprecation.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Přehled migrace
+          href: ../migration-classic-resource-manager-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Podrobné informace o migraci
+          href: ../migration-classic-resource-manager-deep-dive.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Plánování migrace
+          href: ../migration-classic-resource-manager-plan.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Migrovat pomocí rozhraní příkazového řádku
+          href: ../migration-classic-resource-manager-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Běžné chyby při migraci
+          href: ../migration-classic-resource-manager-errors.md
+        - name: Komunitní nástroje pro migraci
+          href: ../migration-classic-resource-manager-community-tools.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Nejčastější dotazy
+          href: ../migration-classic-resource-manager-faq.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+    - name: Použití imagí
+      displayName: 'SIG, AMI, image'
+      items:
+        - name: Požadavky pro konkrétní distribuci
+          items:
+            - name: Obecné kroky
+              href: create-upload-generic.md
+            - name: CentOS
+              href: create-upload-centos.md
+            - name: Debian
+              href: debian-create-upload-vhd.md
+            - name: Flatcar Container Linux
+              href: flatcar-create-upload-vhd.md
+            - name: FreeBSD
+              href: freebsd-intro-on-azure.md
+            - name: Oracle Linux
+              href: oracle-create-upload-vhd.md
+            - name: OpenBSD
+              href: create-upload-openbsd.md
+            - name: Red Hat
+              href: redhat-create-upload-vhd.md
+            - name: SUSE
+              href: suse-create-upload-vhd.md
+            - name: Ubuntu
+              href: create-upload-ubuntu.md
+        - name: Použití cloud-init
+          items:
+            - name: Přehled Cloud-init
+              href: using-cloud-init.md
+            - name: Podrobné informace
+              href: cloud-init-deep-dive.md
+            - name: Řešení potíží
+              href: cloud-init-troubleshooting.md
+            - name: Konfigurace názvu hostitele virtuálního počítače
+              href: cloudinit-update-vm-hostname.md
+            - name: Aktualizace balíčků ve virtuálním počítači
+              href: cloudinit-update-vm.md
+            - name: Přidání uživatele ve virtuálním počítači
+              href: cloudinit-add-user.md
+            - name: Konfigurace stránkovacího souboru
+              href: cloudinit-configure-swapfile.md
+            - name: Spuštění existujícího skriptu Bash
+              href: cloudinit-bash-script.md
+            - name: Příprava existujícího virtuálního počítače pro cloud-init
+              href: cloudinit-prepare-custom-image.md
+        - name: Vytváření imagí bez agenta zřizování
+          href: no-agent.md
+        - name: Zákaz zřizování linuxových agentů
+          href: disable-provisioning.md
+        - name: Galerie sdílených imagí
+          items:
+            - name: Rozhraní příkazového řádku
+              items:
+                - name: Vytvoření galerie
+                  href: ../shared-images-cli.md
+                - name: Vytvoření image
+                  items:
+                    - name: Z virtuálního počítače
+                      href: ../image-version-vm-cli.md
+                    - name: Ze spravovaného disku nebo snímku
+                      href: ../image-version-snapshot-cli.md
+                    - name: Klonování spravované image
+                      href: ../image-version-managed-image-cli.md
+                    - name: Kopírování z jiné galerie
+                      href: ../image-version-another-gallery-cli.md
+                - name: Vytvoření virtuálního počítače
+                  items:
+                    - name: Generalizovaná
+                      href: ../vm-generalized-image-version-cli.md
+                    - name: Specializovaná
+                      href: ../vm-specialized-image-version-cli.md
+                - name: Aktualizace prostředků imagí
+                  href: ../update-image-resources-cli.md
+                - name: Registrace aplikace pro sdílení
+                  href: share-images-across-tenants.md
+            - name: PowerShell
+              items:
+                - name: Vytvoření galerie
+                  href: ../shared-images-powershell.md
+                - name: Vytvoření verze image
+                  items:
+                    - name: Z virtuálního počítače
+                      href: ../image-version-vm-powershell.md
+                    - name: Ze spravovaného disku nebo snímku
+                      href: ../image-version-snapshot-powershell.md
+                    - name: Klonování spravované image
+                      href: ../image-version-managed-image-powershell.md
+                    - name: Kopírování z jiné galerie
+                      href: ../image-version-another-gallery-powershell.md
+                - name: Vytvoření virtuálního počítače
+                  items:
+                    - name: Generalizovaná
+                      href: ../vm-generalized-image-version-powershell.md
+                    - name: Specializovaná
+                      href: ../vm-specialized-image-version-powershell.md
+                - name: Aktualizace prostředků imagí
+                  href: ../update-image-resources-powershell.md
+                - name: Registrace aplikace pro sdílení
+                  href: ../windows/share-images-across-tenants.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Portál
+              items:
+                - name: 'Vytvoření galerie, image a virtuálního počítače'
+                  href: shared-images-portal.md
+            - name: Šablony Resource Manageru
+              items:
+                - name: Vytvoření služby Shared Image Gallery
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-create/'
+                - name: Vytvoření definici image v Shared Image Gallery
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/'
+                - name: Vytvoření verze image v Shared Image Gallery
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-version-create/'
+                - name: Vytvoření virtuálního počítače z verze image
+                  href: 'https://azure.microsoft.com/resources/templates/101-vm-from-sig/'
+            - name: Řešení potíží se sdílenými imagemi
+              href: ../troubleshooting-shared-images.md
+            - name: Použití klíčů spravovaných zákazníkem
+              displayName: 'SSE, CMK, encrypt'
+              href: ../image-version-encryption.md
+        - name: Image Builder (Preview)
+          items:
+            - name: Přehled
+              href: image-builder-overview.md
+            - name: Použití Azure CLI
+              href: image-builder.md
+            - name: Použití virtuální sítě – CLI
+              href: image-builder-vnet.md
+            - name: Možnosti sítí
+              href: image-builder-networking.md
+            - name: Konfigurace oprávnění
+              items:
+                - name: CLI
+                  href: image-builder-permissions-cli.md
+                - name: PowerShell
+                  href: image-builder-permissions-powershell.md
+            - name: Úloha DevOps
+              href: image-builder-devops-task.md
+            - name: Referenční informace k šabloně Image Builderu
+              displayName: json
+              href: image-builder-json.md
+            - name: Sestavení pro galerie imagí
+              href: image-builder-gallery.md
+            - name: Aktualizace existující image
+              href: image-builder-gallery-update-image-version.md
+            - name: Řešení potíží
+              href: image-builder-troubleshoot.md
+        - name: Vyhledání a použití imagí
+          href: cli-ps-findimage.md
+        - name: Informace o plánu nákupu
+          href: ../marketplace-images.md
+        - name: Zachycení virtuálního počítače do spravované image
+          href: capture-image.md
+        - name: Sestavení image pomocí Packeru
+          href: build-image-with-packer.md
+        - name: Stažení existujícího disku
+          href: download-vhd.md
+        - name: Spravovaný disk z verze image
+          href: ../managed-disk-from-image-version.md
+    - name: Zabezpečení virtuálních počítačů
+      items:
+        - name: Doporučení
+          href: ../security-recommendations.md
+        - name: Přístup za běhu
+          href: ../../security-center/security-center-just-in-time.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Použití Bastionu
+          items:
+            - name: Vytvoření opevněného hostitelského počítače
+              items:
+                - name: Portál
+                  href: ../../bastion/tutorial-create-host-portal.md
+                - name: PowerShell
+                  href: ../../bastion/bastion-create-host-powershell.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: Rozhraní příkazového řádku
+                  href: ../../bastion/create-host-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Použití Bastionu pro připojení
+              href: ../../bastion/bastion-connect-vm-ssh.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Šifrování
+          items:
+            - name: Scénáře šifrování disků pro Linux
+              href: disk-encryption-linux.md
+            - name: Šifrování virtuálního počítače s využitím Azure CLI
+              href: disk-encryption-cli-quickstart.md
+            - name: Šifrování virtuálního počítače s využitím Azure PowerShellu
+              href: disk-encryption-powershell-quickstart.md
+            - name: Šifrování virtuálního počítače s využitím webu Azure Portal
+              href: disk-encryption-portal-quickstart.md
+            - name: Trezor klíčů pro Azure Disk Encryption
+              href: disk-encryption-key-vault.md
+            - name: Ukázkové skripty pro šifrování disků
+              href: disk-encryption-sample-scripts.md
+            - name: Šifrování disků v izolované síti
+              href: disk-encryption-isolated-network.md
+            - name: Jak ověřit stav šifrování
+              href: how-to-verify-encryption-status.md
+            - name: Jak nakonfigurovat LVM RAID pro šifrování
+              href: how-to-configure-lvm-raid-on-crypt.md
+            - name: Jak změnit velikost zašifrovaných svazků lvm
+              href: how-to-resize-encrypted-lvm.md
+            - name: Řešení potíží s šifrováním disků
+              href: disk-encryption-troubleshooting.md
+            - name: Šifrování disků – nejčastější dotazy
+              href: disk-encryption-faq.md
+            - name: Šifrování disků – předchozí verze
+              items:
+                - name: Přehled
+                  href: disk-encryption-overview-aad.md
+                - name: Trezor klíčů pro Azure Disk Encryption
+                  href: disk-encryption-key-vault-aad.md
+                - name: Scénáře šifrování disků pro Linux
+                  href: disk-encryption-linux-aad.md
+        - name: Použití řízení přístupu
+          href: ../../role-based-access-control/overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Použití zásad
+          href: policy.md
+        - name: Vytvoření trezoru klíčů
+          href: key-vault-setup.md
+        - name: Vytvoření a použití klíčů SSH
+          displayName: ssh keys ssh openssh
+          items:
+            - name: V systému Linux nebo macOS
+              href: mac-create-ssh-keys.md
+            - name: V systému Windows
+              href: ssh-from-windows.md
+            - name: Na portálu
+              href: ../ssh-keys-portal.md
+            - name: Podrobné kroky
+              href: create-ssh-keys-detailed.md
+    - name: Ochrana virtuálních počítačů
+      items:
+        - name: Zotavení po havárii
+          href: ../virtual-machines-disaster-recovery-guidance.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Zálohování virtuálních počítačů
+          href: ../../backup/backup-overview.md?bc=/azure/virtual-machines/linux/breadcrumb/toc.json&toc=/azure/virtual-machines/linux/toc.json
+          items:
+            - name: Zálohování jednoho virtuálního počítače
+              href: ../../backup/quick-backup-vm-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Zálohování několika virtuálních počítačů
+              href: ../../backup/tutorial-backup-vm-at-scale.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Obnovení disku
+              href: ../../backup/tutorial-restore-disk.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Obnovení jednotlivých souborů
+              href: ../../backup/tutorial-restore-files.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Nastavení zotavení po havárii pro virtuální počítače
+          href: ../../site-recovery/site-recovery-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+          items:
+            - name: Povolení zotavení po havárii pro virtuální počítač
+              href: ../../site-recovery/azure-to-azure-tutorial-enable-replication.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Spuštění postupu zotavení po havárii pro virtuální počítač
+              href: ../../site-recovery/azure-to-azure-tutorial-dr-drill.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Převzetí služeb při selhání virtuálního počítače do jiné oblasti
+              href: ../../site-recovery/azure-to-azure-tutorial-failover-failback.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+    - name: Správa virtuálních počítačů
+      items:
+        - name: Využití virtuálních počítačů
+          href: ../vm-usage.md
+        - name: Běžné úlohy rozhraní příkazového řádku
+          href: cli-manage.md
+        - name: Změna velikosti virtuálního počítače
+          href: change-vm-size.md
+        - name: Prohození disku operačního systému
+          href: os-disk-swap.md
+        - name: Časová synchronizace
+          href: time-sync.md
+        - name: Označení virtuálního počítače
+          items:
+            - name: Rozhraní příkazového řádku
+              href: ../tag-cli.md
+            - name: Portál
+              href: ../tag-portal.md
+            - name: PowerShell
+              href: ../tag-powershell.md
+            - name: Template (Šablona)
+              href: ../tag-template.md
+        - name: Spouštění skriptů na virtuálním počítači
+          href: run-scripts-in-vm.md
+          items:
+            - name: Rozšíření vlastních skriptů
+              href: ../extensions/custom-script-linux.md
+            - name: Spuštění příkazu
+              href: run-command.md
+        - name: Použití Vzdálené plochy
+          href: use-remote-desktop.md
+        - name: Připojení virtuálního počítače k Azure Active Directory
+          displayName: Azure AD
+          items:
+            - name: Red Hat Enterprise Linux
+              href: ../../active-directory-domain-services/join-rhel-linux-vm.md
+            - name: CentOS
+              href: ../../active-directory-domain-services/join-centos-linux-vm.md
+            - name: Ubuntu
+              href: ../../active-directory-domain-services/join-ubuntu-linux-vm.md
+        - name: Přihlášení pomocí přihlašovacích údajů Azure Active Directory
+          href: login-using-aad.md
+        - name: Aktualizace a opravy
+          items:
+            - name: Infrastruktura aktualizací Red Hatu
+              href: ../workloads/redhat/redhat-rhui.md
+        - name: Agent virtuálního počítače Azure
+          items:
+            - name: Přehled
+              href: ../extensions/agent-linux.md
+            - name: Aktualizace agenta
+              href: ../extensions/update-linux-agent.md
+        - name: Omezení spekulativního spouštění
+          href: ../mitigate-se.md
+        - name: Monitorování metadat
+          href: instance-metadata-service.md
+        - name: Získat metriky využití s rozhraním REST
+          href: metrics-vm-usage-rest.md
+    - name: Řízení údržby
+      items:
+        - name: Oznámení o údržbě
+          items:
+            - name: Přehled
+              href: ../maintenance-notifications.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Rozhraní příkazového řádku
+              href: ../maintenance-notifications-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Portál
+              href: ../maintenance-notifications-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: PowerShell
+              href: ../maintenance-notifications-powershell.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Údržba platformy
+          items:
+            - name: Přehled
+              href: ../maintenance-control.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Rozhraní příkazového řádku
+              href: ../maintenance-control-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: PowerShell
+              href: ../maintenance-control-powershell.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Portál
+              href: ../maintenance-control-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Naplánované události
+          href: scheduled-events.md
+        - name: Upgrady imagí operačního systému škálovací sady virtuálních počítačů
+          items:
+            - name: Automatické upgrady operačního systému
+              href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Řízení údržby
+              items:
+                - name: Přehled (Preview)
+                  href: ../virtual-machine-scale-sets-maintenance-control.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: PowerShell (Preview)
+                  href: ../virtual-machine-scale-sets-maintenance-control-powershell.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+    - name: Monitorování virtuálních počítačů
+      items:
+        - name: Agenti
+          items:
+            - name: Přehled agentů
+              href: ../../azure-monitor/platform/agents-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Nejčastější dotazy
+              href: ../../azure-monitor/faq.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#agents
+            - name: Rozšíření Azure Diagnostics
+              items:
+                - name: Přehled
+                  href: ../../azure-monitor/platform/diagnostics-extension-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: Rozšíření linuxové diagnostiky
+                  items:
+                    - name: Přehled
+                      href: ../../azure-monitor/../virtual-machines/extensions/diagnostics-linux.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json?toc=/azure/azure-monitor/toc.json
+                    - name: Shromažďování metrik s využitím Telegrafu
+                      href: ../../azure-monitor/platform/collect-custom-metrics-linux-telegraf.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                  displayname: diagnostics extension
+            - name: Agent Log Analytics
+              items:
+                - name: Přehled
+                  href: ../../azure-monitor/platform/log-analytics-agent.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: Agenti systému Linux
+                  href: ../../azure-monitor/platform/agent-linux.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: Brána Log Analytics
+                  href: ../../azure-monitor/platform/gateway.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: Správa agentů
+                  href: ../../azure-monitor/platform/agent-manage.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: Stav agenta
+                  href: ../../azure-monitor/insights/solution-agenthealth.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: Zdroje dat
+                  items:
+                    - name: Přehled
+                      href: ../../azure-monitor/platform/agent-data-sources.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                    - name: Vlastní data JSON
+                      href: ../../azure-monitor/platform/data-sources-json.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                    - name: Shromážděná data o výkonu
+                      href: ../../azure-monitor/platform/data-sources-collectd.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                    - name: Syslog
+                      href: ../../azure-monitor/platform/data-sources-syslog.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                    - name: Čítače výkonu
+                      href: ../../azure-monitor/platform/data-sources-performance-counters.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                    - name: Výkon linuxových aplikací
+                      href: ../../azure-monitor/platform/data-sources-linux-applications.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                    - name: Vlastní protokoly
+                      href: ../../azure-monitor/platform/data-sources-custom-logs.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                    - name: Vlastní pole
+                      href: ../../azure-monitor/platform/custom-fields.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Řešení potíží
+              items:
+                - name: Rozšíření Log Analytics pro virtuální počítače
+                  href: ../../azure-monitor/platform/vmext-troubleshoot.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                  displayname: 'troubleshoot, troubleshooting'
+                - name: Linuxový agent Log Analytics
+                  href: ../../azure-monitor/platform/agent-linux-troubleshoot.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                  displayname: 'troubleshoot, troubleshooting'
+        - name: Azure Monitor pro virtuální počítače
+          items:
+            - name: Přehled
+              href: ../../azure-monitor/insights/vminsights-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Nejčastější dotazy k všeobecné dostupnosti
+              href: ../../azure-monitor/insights/vminsights-ga-release-faq.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Nejčastější dotazy
+              href: ../../azure-monitor/faq.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#azure-monitor-for-vms
+            - name: Povolení monitorování
+              items:
+                - name: Povolení přehledu monitorování
+                  href: ../../azure-monitor/insights/vminsights-enable-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: Povolení pro jeden virtuální počítač Azure
+                  href: ../../azure-monitor/insights/vminsights-enable-portal.md
+                - name: Povolení s využitím Azure Policy
+                  href: ../../azure-monitor/insights/vminsights-enable-policy.md
+                - name: Povolení s využitím Azure Powershellu
+                  href: ../../azure-monitor/insights/vminsights-enable-powershell.md
+                - name: Povolení pro hybridní prostředí
+                  href: ../../azure-monitor/insights/vminsights-enable-hybrid.md
+            - name: Závislosti map
+              href: ../../azure-monitor/insights/vminsights-maps.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Monitorování výkonu
+              href: ../../azure-monitor/insights/vminsights-performance.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Analýza dat s využitím dotazů na protokoly
+              href: ../../azure-monitor/insights/vminsights-log-search.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Vizualizace dat s využitím sešitů
+              href: ../../azure-monitor/insights/vminsights-workbooks.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Vytváření pravidel upozornění
+              href: ../../azure-monitor/insights/vminsights-alerts.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Upgrade agenta závislostí
+              href: ../../azure-monitor/insights/vminsights-dependency-agent-maintenance.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Zákaz monitorování
+              href: ../../azure-monitor/insights/vminsights-optout.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+    - name: Dostupnost a škálování
+      items:
+        - name: Automatické škálování
+          href: ../../virtual-machine-scale-sets/overview.md?bc=/azure/virtual-machines/linux/breadcrumb/toc.json&toc=/azure/virtual-machines/linux/toc.json
+        - name: Vysoká dostupnost
+          href: ../manage-availability.md
+        - name: Změna skupiny dostupnosti
+          href: ../windows/change-availability-set.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Vytvoření skupiny umístění bezkontaktní komunikace
+          displayName: PPG aligned colocation co-location
+          items:
+            - name: Rozhraní příkazového řádku
+              href: proximity-placement-groups.md
+            - name: Portál
+              href: ../windows/proximity-placement-groups-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Vytvoření virtuálního počítače v zóně dostupnosti
+          href: create-cli-availability-zone.md
+    - name: Použití nástrojů automatizace
+      items:
+        - name: Vlastní data
+          href: ../custom-data.md
+        - name: Ansible
+          items:
+            - name: Instalace a konfigurace
+              href: /azure/developer/ansible/install-on-linux-vm
+            - name: Vytvoření virtuálního počítače s Linuxem
+              href: /azure/developer/ansible/vm-configure
+            - name: Správa virtuálního počítače s Linuxem
+              href: /azure/developer/ansible/vm-manage
+        - name: Terraform
+          items:
+            - name: Instalace a konfigurace
+              href: /azure/developer/terraform/install-configure
+            - name: Vytvoření kompletního virtuálního počítače
+              href: /azure/developer/terraform/create-linux-virtual-machine-with-infrastructure
+        - name: Jenkins
+          href: /azure/developer/jenkins/overview
+          items:
+            - name: Vytvoření serveru Jenkins
+              href: /azure/developer/jenkins/configure-on-linux-vm
+            - name: Škálování pomocí agentů virtuálních počítačů
+              href: /azure/developer/jenkins/scale-deployments-using-vm-agents
+            - name: Publikování artefaktů do Storage
+              href: /azure/developer/jenkins/azure-storage-blobs-as-build-artifact-repository
+            - name: Zabezpečení Jenkinse
+              href: 'https://jenkins.io/blog/2017/04/20/secure-jenkins-on-azure/'
+    - name: Spuštění kontejnerů
+      items:
+        - name: Vytvoření hostitele Docker
+          href: 'https://github.com/Azure/azure-docker-extension/blob/master/README.md'
+        - name: Použití Docker Machine
+          href: docker-machine.md
+        - name: Použití Docker Compose
+          href: docker-compose-quickstart.md
+    - name: Spouštění aplikací
+      items:
+        - name: Red Hat
+          href: ../workloads/redhat/overview.md
+        - name: Cloud Foundry
+          href: ../../cloudfoundry/index.yml
+        - name: Cassandra
+          href: /azure/architecture/reference-architectures/n-tier/n-tier-cassandra?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: OpenShift
+          items:
+            - name: Přehled OpenShiftu
+              href: openshift-get-started.md
+            - name: OpenShift Container Platform 4.x
+              href: openshift-container-platform-4x.md
+            - name: Požadavky pro OpenShift Container Platform 3.11
+              href: openshift-container-platform-3x-prerequisites.md
+            - name: OpenShift Container Platform 3.11
+              href: openshift-container-platform-3x.md
+            - name: Marketplace OpenShift Container Platform 3.11 se samosprávou
+              href: openshift-container-platform-3x-marketplace-self-managed.md
+            - name: Azure Stack
+              href: openshift-azure-stack.md
+            - name: Úlohy po nasazení OpenShift Container Platform 3.11
+              href: openshift-container-platform-3x-post-deployment.md
+            - name: Řešení potíží s nasazením OpenShift Container Platform 3.11
+              href: openshift-container-platform-3x-troubleshooting.md
+        - name: SAP v Azure
+          href: ../workloads/sap/get-started.md
+        - name: Oracle
+          href: ../workloads/oracle/oracle-database-quick-create.md
+        - name: Elasticsearch
+          href: tutorial-elasticsearch.md
+        - name: Filtr paketů FreeBSD
+          href: freebsd-pf-nat.md
+        - name: Databáze
+          items:
+            - name: MySQL v SUSE
+              href: mysql-on-opensuse.md
+            - name: MongoDB
+              href: install-mongodb.md
+            - name: PostgreSQL
+              href: postgresql-install.md
+            - name: MS SQL v Linuxu
+              href: /sql/linux/sql-server-linux-azure-virtual-machine
+        - name: Vysokovýkonné výpočetní prostředí (HPC)
+          href: /azure/architecture/topics/high-performance-computing/
+        - name: IBM Db2 pureScale
+          items:
+            - name: Architektura
+              href: ibm-db2-purescale-azure.md
+            - name: Nasazení
+              href: deploy-ibm-db2-purescale-azure.md
+    - name: Správa úložiště
+      items:
+        - name: Přidání disku
+          items:
+            - name: Azure CLI
+              href: add-disk.md
+            - name: portál Azure
+              href: attach-disk-portal.md
+        - name: Změna úrovně disku – PowerShell/CLI
+          href: ../disks-performance-tiers.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Změna úrovně disku – portál
+          href: ../disks-performance-tiers-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Odpojení disku
+          href: detach-disk.md
+        - name: Nasazení disků s využitím šablony ARM
+          displayName: 'Azure Resource Manager, ARM'
+          href: ../using-managed-disks-template-deployments.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Povolení sdílených disků
+          href: ../disks-shared-enable.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Nahrání virtuálního pevného disku na disk – CLI
+          href: disks-upload-vhd-to-managed-disk-cli.md
+        - name: Zabezpečený import/export disku – CLI
+          href: disks-export-import-private-links-cli.md
+        - name: Zabezpečený import/export disku – portál
+          href: ../disks-enable-private-links-for-import-export-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Změna velikosti disku
+          href: expand-disks.md
+        - name: Použití Průzkumníku služby Storage ke správě disků
+          href: ../disks-use-storage-explorer-managed-disks.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Pořízení snímku disku
+          href: snapshot-copy-managed-disk.md
+        - name: Rezervace služby Disk Storage
+          href: ../disks-reserved-capacity.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Vytvoření přírůstkového snímku
+          href: ../disks-incremental-snapshots.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Zálohování nespravovaných disků
+          href: incremental-snapshots.md
+        - name: Šifrování
+          items:
+            - name: Povolení šifrování na hostiteli – CLI
+              href: disks-enable-host-based-encryption-cli.md
+            - name: Povolení šifrování na hostiteli – portál
+              href: ../disks-enable-host-based-encryption-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Povolení klíčů spravovaných zákazníkem – CLI
+              href: disks-enable-customer-managed-keys-cli.md
+            - name: Povolení klíčů spravovaných zákazníkem – portál
+              href: ../disks-enable-customer-managed-keys-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Povolení dvojitého šifrování při nečinnosti – CLI
+              href: disks-enable-double-encryption-at-rest-cli.md
+            - name: Povolení dvojitého šifrování při nečinnosti – portál
+              href: ../disks-enable-double-encryption-at-rest-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Migrace a převod
+          items:
+            - name: Migrace na Premium Storage s Azure Site Recovery
+              href: migrate-to-premium-storage-using-azure-site-recovery.md
+            - name: Převod na Spravované disky
+              href: convert-unmanaged-to-managed-disks.md
+            - name: Převod disku mezi úrovněmi Standard a Premium
+              href: convert-disk-storage.md
+        - name: Kopírování souborů do virtuálního počítače
+          href: copy-files-to-linux-vm-using-scp.md
+        - name: Výkon
+          items:
+            - name: Použití akcelerátoru zápisu
+              href: ../how-to-enable-write-accelerator.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Použití disků Ultra
+              href: ../disks-enable-ultra-ssd.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Srovnávací test disku
+              href: ../disks-benchmarks.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Vyhledání nepřipojených disků – CLI
+          href: find-unattached-disks.md
+        - name: Vyhledání nepřipojených disků – portál
+          href: ../disks-find-unattached-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Mapování disků Azure na disky hostů
+          href: azure-to-guest-disk-mapping.md
+        - name: Použití úložiště souborů
+          href: mount-azure-file-storage-on-linux-using-smb.md
+        - name: Nejčastější dotazy k diskům
+          href: ../faq-for-disks.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+    - name: Správa sítí
+      items:
+        - name: Vytvoření virtuální sítě
+          href: ../../virtual-network/quick-create-cli.md?bc=/azure/virtual-machines/linux/breadcrumb/toc.json&toc=/azure/virtual-machines/linux/toc.json
+        - name: Otevření portů k virtuálnímu počítači
+          href: nsg-quickstart.md
+        - name: Přiřazení veřejných IP adres
+          href: ../../virtual-network/virtual-network-deploy-static-pip-arm-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Použití několika síťových adaptérů
+          href: multiple-nics.md
+        - name: Použití akcelerovaných síťových služeb
+          href: ../../virtual-network/create-vm-accelerated-networking-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Přiřazení veřejného názvu DNS
+          href: ../create-fqdn.md
+        - name: Vyhledání a odstranění nepřipojených síťových adaptérů
+          href: find-unattached-nics.md
+        - name: Překlad DNS
+          href: azure-dns.md
+          items:
+            - name: Použití interního serveru DNS
+              href: static-dns-name-resolution-for-linux-on-azure.md
+    - name: Konfigurace spravovaných identit
+      items:
+        - name: Portál
+          href: ../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Rozhraní příkazového řádku
+          href: ../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: PowerShell
+          href: ../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Šablona Azure Resource Manageru
+          displayName: ARM
+          href: ../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: REST
+          href: ../../active-directory/managed-identities-azure-resources/qs-configure-rest-vm.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Sady Azure SDK
+          href: ../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+    - name: Použití rozšíření virtuálních počítačů
+      items:
+        - name: Omezení instalace rozšíření
+          href: ../extensions/extensions-rmpolicy-howto-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Aktualizace agenta pro Linux
+          href: ../extensions/update-linux-agent.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Export rozšíření
+          href: ../extensions/export-templates.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Řešení potíží
+          href: ../extensions/troubleshoot.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Problémy se systémy Linux s podporou Pythonu 3
+          href: ../extensions/issues-using-vm-extensions-python-3.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Azure Disk Encryption
+          href: ../extensions/azure-disk-enc-linux.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Azure Key Vault
+          href: ../extensions/key-vault-linux.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Vlastní skript
+          href: ../extensions/custom-script-linux.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Snímek virtuálního počítače
+          href: ../extensions/vmsnapshot-linux.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Agent Network Watcher
+          href: ../extensions/network-watcher-linux.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Ovladače NVIDIA GPU
+          href: ../extensions/hpccompute-gpu-linux.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Azure Monitor
+          items:
+            - name: Rozšíření diagnostiky
+              href: ../extensions/diagnostics-linux.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Log Analytics
+              href: ../extensions/oms-linux.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Agent závislostí Azure Monitoru pro Linux
+              href: ../extensions/agent-dependency-linux.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: PowerShell DSC
+          href: ../extensions/dsc-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+          items:
+            - name: DSC a Linux
+              href: ../extensions/dsc-linux.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Zpracování přihlašovacích údajů
+              href: ../extensions/dsc-credentials.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Použití šablon
+              href: ../extensions/dsc-template.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Přístup k virtuálním počítačům
+          href: ../extensions/vmaccess.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Chef
+          href: ../extensions/chef.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Stackify Retrace
+          href: ../extensions/stackify-retrace-linux.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Symantec
+          href: ../extensions/symantec.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+    - name: Přesun a migrace virtuálních počítačů
+      items:
+        - name: Změna předplatného nebo skupiny prostředků
+          href: move-vm.md
+        - name: Přesun virtuálních počítačů do jiné oblasti
+          href: ../../site-recovery/azure-to-azure-tutorial-migrate.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Přesun do zóny dostupnosti
+          href: ../../site-recovery/move-azure-vms-avset-azone.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Přesun konfigurací řízení údržby do jiné oblasti
+          href: ../move-region-maintenance-configuration.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Přesun prostředků konfigurace řízení údržby do jiné oblasti
+          href: ../move-region-maintenance-configuration-resources.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Migrace AWS a místních virtuálních počítačů
+          href: ../windows/on-prem-to-azure.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+          items:
+            - name: Migrace z AWS (Amazon Web Services) do Azure
+              href: ../windows/aws-to-azure.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Nahrání místního virtuálního počítače
+              href: upload-vhd.md
+            - name: Použití Azure Site Recovery
+              href: ../../site-recovery/migrate-overview.md?bc=/azure/virtual-machines/linux/breadcrumb/toc.json&toc=/azure/virtual-machines/linux/toc.json
+        - name: Migrace WebLogic do Azure
+          href: /azure/developer/java/migration/migrate-weblogic-to-virtual-machines
+- name: Referenční informace
+  items:
+    - name: Azure CLI
+      href: /cli/azure/vm
+    - name: PowerShell
+      href: /powershell/azure/
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.management.compute
+    - name: Java
+      href: /java/api
+    - name: Node.js
+      href: 'https://azure.microsoft.com/develop/nodejs/#azure-sdk'
+    - name: Python
+      href: 'https://azure.microsoft.com/develop/python/'
+    - name: REST
+      href: /rest/api/compute
+    - name: Šablona Resource Manageru
+      displayName: ARM
+      href: /azure/templates/microsoft.compute/allversions
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ../policy-reference.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+- name: Zdroje a prostředky
+  items:
+    - name: Otázky a odpovědi
+      href: /answers/topics/azure-virtual-machines.html
+    - name: Vytváření šablon ARM
+      displayName: 'Azure Resource Manager, ARM'
+      href: ../../azure-resource-manager/index.yml
+    - name: Získávání dovedností pomocí Microsoft Learn
+      href: /learn/browse/?products=azure-virtual-machines
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Šablony Azure pro rychlé zprovoznění
+      displayName: 'Azure Resource Manager, ARM'
+      href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/#Linux'
+    - name: Regionální dostupnost
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-virtual-machine'
+    - name: Videa
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines'
+    - name: Nejčastější dotazy
+      href: faq.md
+- name: Řešení potíží
+  href: ../troubleshooting/index.yml
