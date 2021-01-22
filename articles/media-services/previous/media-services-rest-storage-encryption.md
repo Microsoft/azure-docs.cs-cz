@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8a3a51644f61d4a1e118798986f9c6fb6c52d0e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ae1d19ee3da59c43722ca1ea720eb441f6dd484
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89264160"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696206"
 ---
 # <a name="encrypting-your-content-with-storage-encryption"></a>Šifrování obsahu pomocí šifrování úložiště
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> K dokončení tohoto kurzu potřebujete mít účet Azure. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).   > do Media Services V2 se přidávají žádné nové funkce ani funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> K dokončení tohoto kurzu potřebujete mít účet Azure. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).   > do Media Services V2 se přidávají žádné nové funkce ani funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-v-2-v-3-migration-introduction.md) .
 >
 
 Tento článek poskytuje přehled šifrování úložiště AMS a ukazuje, jak nahrát šifrovaný obsah úložiště:
@@ -39,7 +39,7 @@ Tento článek poskytuje přehled šifrování úložiště AMS a ukazuje, jak n
 * Propojte klíč obsahu s Assetem.  
 * Nastavte parametry související s šifrováním v entitách AssetFile.
 
-## <a name="considerations"></a>Důležité informace 
+## <a name="considerations"></a>Požadavky 
 
 Pokud chcete doručovat šifrovaný prostředek úložiště, musíte nakonfigurovat zásady doručování prostředků. Předtím, než bude možné Asset streamovat, server streamování odstraní šifrování úložiště a streamuje obsah pomocí zadaných zásad doručování. Další informace najdete v tématu [Konfigurace zásad doručení assetu](media-services-rest-configure-asset-delivery-policy.md).
 
@@ -47,7 +47,7 @@ Při přístupu k entitám v Media Services musíte nastavit konkrétní pole a 
 
 ### <a name="storage-side-encryption"></a>Šifrování na straně úložiště
 
-|Možnost šifrování|Description|Media Services v2|Media Services v3|
+|Možnost šifrování|Popis|Media Services v2|Media Services v3|
 |---|---|---|---|
 |Media Services šifrování úložiště|Šifrování AES-256, Správa klíčů pomocí Media Services|Podporováno<sup>(1)</sup>|Nepodporováno<sup>(2)</sup>|
 |[Šifrování služby Storage pro neaktivní neaktivní data](../../storage/common/storage-service-encryption.md)|Šifrování na straně serveru, které nabízí Azure Storage, klíč, který spravuje Azure nebo zákazník|Podporováno|Podporováno|
@@ -110,11 +110,11 @@ Níže jsou uvedené obecné kroky pro generování klíčů obsahu, které při
     }
     ```
 
-5. Vytvořte klíč obsahu pomocí **EncryptedContentKey** (převedeno na řetězec kódovaný v kódování Base64), **ProtectionKeyId**, **ProtectionKeyType**, **ContentKeyType**a hodnot **kontrolního součtu** , které jste obdrželi v předchozích krocích.
+5. Vytvořte klíč obsahu pomocí **EncryptedContentKey** (převedeno na řetězec kódovaný v kódování Base64), **ProtectionKeyId**, **ProtectionKeyType**, **ContentKeyType** a hodnot **kontrolního součtu** , které jste obdrželi v předchozích krocích.
 
     Pro šifrování úložiště by měly být v textu požadavku zahrnuty následující vlastnosti.
 
-    Vlastnost textu žádosti    | Description
+    Vlastnost textu žádosti    | Popis
     ---|---
     Id | ID ContentKey se generuje pomocí následujícího formátu: "NB: Kid: UUID: \<NEW GUID> ".
     ContentKeyType | Typ klíče obsahu je celé číslo, které definuje klíč. Pro formát šifrování úložiště je tato hodnota 1.

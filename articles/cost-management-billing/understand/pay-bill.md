@@ -8,14 +8,14 @@ tags: billing, past due, pay now, bill, invoice, pay
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 12/17/2020
+ms.date: 01/13/2021
 ms.author: banders
-ms.openlocfilehash: 2983f870d6ab20dac4da487ba03ebf84905f8dcc
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 8117f3ca70f51f2d9b11c479803ac33b49f416e7
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680316"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98540049"
 ---
 # <a name="how-to-pay-your-bill-for-microsoft-azure"></a>Postup placení vyúčtování služeb Microsoft Azure
 
@@ -24,6 +24,8 @@ Tento článek se týká zákazníků, kteří mají uzavřenou Smlouvu se záka
 [Kontrola přístupu ke smlouvě se zákazníkem Microsoftu](#check-access-to-a-microsoft-customer-agreement)
 
 K dispozici jsou dva způsoby platby vyúčtování za Azure. Můžete platit buď prostřednictvím výchozího způsobu platby pro váš fakturační profil, nebo můžete provést jednorázovou platbu označenou jako **okamžitá úhrada**.
+
+Pokud jste se do Azure zaregistrovali prostřednictvím zástupce společnosti Microsoft, je jako váš výchozí způsob platby vždycky nastavený *šek nebo bankovní převod*.
 
 Pokud máte kredity Azure, automaticky se na fakturu uplatní každé fakturační období.
 

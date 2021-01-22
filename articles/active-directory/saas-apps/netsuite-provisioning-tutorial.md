@@ -10,21 +10,19 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: a5b995fd273fcfa231e101bc77b11d268be728fb
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 294870d3448886b9cea573a0e79b3ac436941f89
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359131"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696485"
 ---
 # <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>Kurz: Konfigurace NetSuite pro Automatické zřizování uživatelů
 
 Cílem tohoto kurzu je Ukázat kroky, které musíte provést v NetSuite OneWorld a Azure AD a automaticky zřizovat a zrušit zřizování uživatelských účtů z Azure AD až po NetSuite.
 
-> [!NOTE]
-> Tato integrace se aktuálně ověřuje pomocí základního ověřování (uživatelské jméno a heslo). NetSuite implementoval požadavek služby Multi-Factor Authentication, který zákazníkům brání v použití této integrace, pokud nezískají výjimku z tohoto požadavku. Spolupracujeme s NetSuite a aktualizujeme tuto integraci na novější metodu ověřování, která zákazníkům umožňuje bez výjimky ho znovu použít. Tento dokument aktualizujeme, jakmile bude k dispozici ETA.
-
-Doporučená akce: Počkejte prosím, než uvolníme aktualizaci chování ověřování pro tuto integraci, nebo se přihlaste k podpoře NetSuite, aby se dotazoval na výjimku pro požadavek služby Multi-Factor Authentication.
+> [!WARNING]
+> Tato zřizování integrace přestanou v únoru 2020 fungovat, protože došlo ke změně rozhraní NetSuite API, které společnost Microsoft používá ke zřízení uživatelů do NetSuite. V důsledku toho se brzy odeberou funkce zřizování aplikace NetSuite v galerii aplikací Azure Active Directory Enterprise. Funkce jednotného přihlašování do aplikace zůstane beze změny. Microsoft spolupracuje s NetSuite, aby vytvořil novou moderní integraci zřizování, ale v současné době se v tuto chvíli nedokončí.
 
 ## <a name="prerequisites"></a>Požadavky
 

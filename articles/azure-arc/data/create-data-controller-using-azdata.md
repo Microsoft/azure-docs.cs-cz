@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 19451fb09919238a04ac953c9c38fc70b4744d16
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 986019ec4de2fc25b6d8714a8c687cc9342f47b8
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955293"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696057"
 ---
 # <a name="create-azure-arc-data-controller-using-the-azure-data-cli-azdata"></a>Vytvořte řadič dat ARC Azure pomocí [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]
 
@@ -266,34 +266,11 @@ Po spuštění příkazu pokračujte a [Monitorujte stav vytváření](#monitori
 
 ### <a name="create-on-azure-red-hat-openshift-aro"></a>Vytvoření v Azure Red Hat OpenShift (ARO)
 
-#### <a name="apply-the-scc"></a>Použít SCC
+Azure Red Hat OpenShift vyžaduje omezení kontextu zabezpečení.
 
-Před vytvořením řadiče dat v Azure Red Hat OpenShift budete muset použít určitá omezení kontextu zabezpečení (SCC). Pro verzi Preview tyto omezení zabezpečení neuvolní. Budoucí vydání budou poskytovat aktualizované SCC.
+#### <a name="apply-the-security-context"></a>Použít kontext zabezpečení
 
-1. Stáhněte si omezení vlastního kontextu zabezpečení (SCC). Použijte jednu z následujících možností: 
-   - [GitHub](https://github.com/microsoft/azure_arc/tree/main/arc_data_services/deploy/yaml/arc-data-scc.yaml) 
-   - ([Raw](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/arc-data-scc.yaml))
-   - `curl` Následující příkaz stáhne oblouk-data-SCC. yaml:
-
-      ```console
-      curl https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/arc-data-scc.yaml -o arc-data-scc.yaml
-      ```
-
-1. Vytvořte SCC.
-
-   ```console
-   oc create -f arc-data-scc.yaml
-   ```
-
-1. Použijte SCC pro účet služby.
-
-   > [!NOTE]
-   > Použijte stejný obor názvů a v `azdata arc dc create` níže uvedeném příkazu. Příklad je `arc` .
-
-   ```console
-   oc adm policy add-scc-to-user arc-data-scc --serviceaccount default --namespace arc
-   ```
-
+[!INCLUDE [apply-security-context-constraint](includes/apply-security-context-constraint.md)]
 
 #### <a name="create-custom-deployment-profile"></a>Vytvořit vlastní profil nasazení
 
@@ -324,33 +301,11 @@ Po spuštění příkazu pokračujte a [Monitorujte stav vytváření](#monitori
 > [!NOTE]
 > Pokud používáte platformu Red Hat OpenShift Container Platform v Azure, doporučuje se použít nejnovější dostupnou verzi.
 
-#### <a name="apply-the-scc"></a>Použít SCC
+Než vytvoříte řadič dat na Red Hat OCP, budete muset použít specifická omezení kontextu zabezpečení. 
 
-Než vytvoříte řadič dat na Red Hat OCP, budete muset použít určitá omezení kontextu zabezpečení (SCC). Pro verzi Preview tyto omezení zabezpečení neuvolní. Budoucí vydání budou poskytovat aktualizované SCC.
+#### <a name="apply-the-security-context-constraint"></a>Použití omezení kontextu zabezpečení
 
-1. Stáhněte si omezení vlastního kontextu zabezpečení (SCC). Použijte jednu z následujících možností: 
-   - [GitHub](https://github.com/microsoft/azure_arc/tree/main/arc_data_services/deploy/yaml/arc-data-scc.yaml) 
-   - ([Raw](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/arc-data-scc.yaml))
-   - `curl` Následující příkaz stáhne oblouk-data-SCC. yaml:
-
-      ```console
-      curl https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/arc-data-scc.yaml -o arc-data-scc.yaml
-      ```
-
-1. Vytvořte SCC.
-
-   ```console
-   oc create -f arc-data-scc.yaml
-   ```
-
-1. Použijte SCC pro účet služby.
-
-   > [!NOTE]
-   > Použijte stejný obor názvů a v `azdata arc dc create` níže uvedeném příkazu. Příklad je `arc` .
-
-   ```console
-   oc adm policy add-scc-to-user arc-data-scc --serviceaccount default --namespace arc
-   ```
+[!INCLUDE [apply-security-context-constraint](includes/apply-security-context-constraint.md)]
 
 #### <a name="determine-storage-class"></a>Určení třídy úložiště
 

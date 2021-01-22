@@ -7,12 +7,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 12/15/2020
 ms.author: banders
-ms.openlocfilehash: b0f17149eb646b6108dc6a81922e6e5b00f143d6
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 045ab35a35aa4caefb1e1bcbbf7bf78b726c09f7
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560538"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601466"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Samoobslužné výměny a vrácení peněz za rezervace Azure
 
@@ -47,7 +47,7 @@ Nejprve Microsoft zruší stávající rezervaci a vrátí za ni přepočítanou
 
 ### <a name="enterprise-agreement-customers"></a>Zákazníci se smlouvou Enterprise
 
-Částka se přidá do peněžního závazku pro výměny a refundace, a to v případě, že původní nákup byl takto proveden. Pokud už není období peněžního závazku využívajícího zakoupenou rezervaci aktivní, kredit se přidá do vašeho aktuálního období peněžního závazku při smlouvě Enterprise. Kredit je platný po dobu 90 dnů od data refundace. Po uplynutí 90 dnů platnost nevyužitého kreditu končí.
+Částka se přidá do Azure Prepaymentu (dřív označovaný jako peněžní závazek) pro výměny a refundace, a to v případě, že původní nákup byl takto proveden. Pokud už období Azure Prepaymentu využívajícího zakoupenou rezervaci není aktivní, kredit se přidá do vašeho aktuálního období Azure Prepaymentu ve smlouvě Enterprise. Kredit je platný po dobu 90 dnů od data refundace. Po uplynutí 90 dnů platnost nevyužitého kreditu končí.
 
 Pokud byl původní nákup provedený jako nadlimitní, původní faktura, na kterou byla rezervace zakoupena, a všechny pozdější faktury se znovu otevřou a upraví. Microsoft vydá pro refundace dobropis.
 

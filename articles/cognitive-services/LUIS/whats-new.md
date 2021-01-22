@@ -4,13 +4,13 @@ description: Tento článek se pravidelně aktualizuje o novinky o Language Unde
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
-ms.date: 01/12/2021
-ms.openlocfilehash: 4bcd25e96aba1ca103737679540cb9ff67674914
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.date: 01/21/2021
+ms.openlocfilehash: 5fdde81d31eae4c50b86a5553742f9b599f32505
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98179125"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693591"
 ---
 # <a name="whats-new-in-language-understanding"></a>Co je nového v Language Understanding
 
@@ -21,6 +21,7 @@ Zjistěte, co je nového ve službě. Mezi tyto položky patří poznámky k ver
 ### <a name="january-2021"></a>Leden 2021
 
 * Prediktivní rozhraní API V3 teď podporuje [rozhraní API pro kontrolu pravopisu Bingu](luis-how-to-publish-app.md#spelling-correction).
+* Regionální portály (au.luis.ai a eu.luis.ai) se konsolidují do jediného portálu a adresy URL. Pokud jste používali některý z těchto portálů, budete automaticky přesměrováni na luis.ai.
 
 ### <a name="december-2020"></a>Prosinec 2020
 

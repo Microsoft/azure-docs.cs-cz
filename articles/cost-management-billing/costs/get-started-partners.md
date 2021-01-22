@@ -3,18 +3,18 @@ title: Začínáme se službou Azure Cost Management pro partnery
 description: V tomto článku je vysvětlené, jak partneři používají funkce služby Azure Cost Management a jak k ní umožní přístup svým zákazníkům.
 author: bandersmsft
 ms.author: banders
-ms.date: 11/16/2020
+ms.date: 01/19/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: cd3ca4d3ddf73469cd1f1fc065eccb369cf765af
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 8a04cb2c590bc4f0104a93ac7c7c2cf7b71a4662
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905670"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602178"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Začínáme se službou Azure Cost Management pro partnery
 
@@ -71,9 +71,9 @@ Jakmile vaši zákazníci uzavřou smlouvu se zákazníkem Microsoftu, budete m�
 
 Rozsah fakturačního účtu můžete použít k zobrazení nákladů před zdaněním u všech svých zákazníků a fakturačních profilů. Fakturované náklady se zobrazují jenom u produktů spotřebovávaných zákazníkem podle smlouvy se zákazníkem Microsoftu. Fakturované náklady se ale zobrazují jak pro zakoupené produkty zákazníků s uzavřenou smlouvou se zákazníkem Microsoftu nebo s nabídkou CSP. V současnosti se k zobrazení nákladů v daném rozsahu jako výchozí měna používá americký dolar. Rozpočty, které jsou nastavené pro rozsah, jsou také v USD.
 
-Bez ohledu na různé měny, ve kterých se fakturuje zákazníkům, používají partneři rozsah fakturačního účtu k nastavení rozpočtů a správě nákladů v USD pro své zákazníky, předplatná, prostředky a skupiny prostředků.
+Bez ohledu na různé měny, ve kterých se používají při fakturaci, používají partneři rozsah fakturačního účtu k nastavení rozpočtů a správě nákladů v USD pro své zákazníky, předplatná, prostředky a skupiny prostředků.
 
-V zobrazení analýzy nákladů partneři také můžou filtrovat náklady podle určité fakturační měny u zákazníků. Pokud chcete zobrazit náklady v podporovaných měnách, ve kterých se fakturuje zákazníkům, vyberte seznam **skutečných nákladů**.
+V zobrazení analýzy nákladů partneři také můžou filtrovat náklady podle určité fakturační měny u zákazníků. Pokud chcete zobrazit náklady v podporovaných měnách, ve kterých se fakturuje, vyberte seznam **skutečných nákladů**.
 
 ![Příklad znázorňuje výběr měn u skutečných nákladů](./media/get-started-partners/actual-cost-selector.png)
 
@@ -83,7 +83,7 @@ Zobrazení [amortizovaných nákladů](quick-acm-cost-analysis.md#customize-cost
 
 Rozsah fakturačního profilu použijte k zobrazení nákladů před zdaněním ve fakturační měně za všechny své zákazníky, produkty a předplatná uvedená na faktuře. K filtrování nákladů ve fakturačním profilu pro určitou fakturu použijte filtr **InvoiceID** (IDfaktury). Filtr zobrazuje náklady na spotřebu a nákup produktu k určité faktuře. Náklady také můžete filtrovat za určitého zákazníka na faktuře, pokud chcete zobrazit náklady před zdaněním.
 
-Jakmile zákazníky přimějete k uzavření smlouvy se zákazníkem Microsoftu, přijde vám faktura, ve které budou všechny poplatky za všechny produkty (spotřeba, nákupy a nároky) těchto zákazníků s uzavřenou smlouvou se zákazníkem Microsoftu. Pokud se fakturuje ve stejné měně, obsahují tyto faktury také poplatky za nárokované a zakoupené produkty, jako je SaaS, Azure Marketplace a rezervace zákazníků, kteří ještě stále využívají nabídku CSP.
+Jakmile zákazníky přimějete k uzavření smlouvy se zákazníkem Microsoftu, přijde vám faktura, ve které budou všechny poplatky za všechny produkty (spotřeba, nákupy a nároky) těchto zákazníků s uzavřenou smlouvou se zákazníkem Microsoftu. Pokud se fakturuje ve stejné měně, obsahují tyto faktury také poplatky za nárokované a zakoupené produkty, jako je SaaS, Azure Marketplace a rezervace zákazníků, kteří ještě stále využívají nabídku klasickou nabídku CSP (nikoli plán Azure).
 
 Aby bylo možné odsouhlasit poplatky s fakturou zákazníka, umožňuje rozsah fakturačního profilu zobrazit všechny náklady kumulované na faktuře za vaše zákazníky. Podobně jako na faktuře jsou i v rozsahu zobrazené náklady za každého zákazníka s novou smlouvou se zákazníkem Microsoftu. Rozsah také zobrazuje všechny poplatky za nárokované produkty zákazníka, které zůstávají aktuální v nabídce CSP.
 
@@ -91,7 +91,7 @@ Rozsahy fakturačního profilu a fakturačního účtu jsou jediné platné rozs
 
 Fakturační profily definují předplatná, která jsou uvedená na faktuře. Fakturační profily funkčně odpovídají registraci smlouvy Enterprise. Fakturační profil je rozsah, za který se generují faktury.
 
-V současnosti se k zobrazení nákladů v rozsahu fakturačního profilu jako výchozí měna používá fakturační měna zákazníka. Rozpočty, které jsou nastavené v rozsahu fakturačního profilu, jsou ve fakturační měně.
+V současnosti se k zobrazení nákladů v rozsahu fakturačního profilu jako výchozí měna používá fakturační měna. Rozpočty, které jsou nastavené v rozsahu fakturačního profilu, jsou ve fakturační měně.
 
 Partneři můžou tento rozsah použít k odsouhlasení faktur. Rozsah také používají k nastavení rozpočtů ve fakturační měně pro následující položky:
 
@@ -220,7 +220,7 @@ Následující datová pole najdete v souborech s podrobnostmi o využití a v r
 | Množství | Koupené nebo spotřebované naměřené množství. Množství spotřebované na daném měřiči ve fakturačním období. | Počet jednotek. Při odsouhlasení ověřte, jestli odpovídá informacím ve vašem fakturačním systému. |
 | unitOfMeasure | Určuje jednotku, po které se služba účtuje. Například GB nebo hodiny. | Určuje jednotku, po které se služba účtuje. Například GB, hodiny nebo desetitisíce. |
 | pricingCurrency | Měna, ve které je definovaná jednotková cena. | Měna v ceníku.|
-| billingCurrency | Měna, ve které se definují fakturované náklady. | Měna v geografické oblasti zákazníka. |
+| billingCurrency | Měna, ve které se definují fakturované náklady. | Měna definovaná jako fakturovaná měna na faktuře. |
 | chargeType | Definuje typ poplatku, kterou náklad představuje ve službě Azure Cost Management. Může jít třeba o nákup nebo refundaci. | Typ poplatku nebo úpravy. Pro aktuální aktivitu není k dispozici. |
 | costinBillingCurrency | Celkové nebo smíšené náklady před zdaněním ve fakturované měně. | – |
 | costinPricingCurrency | Celkové nebo smíšené náklady před zdaněním v ceníkové měně kvůli porovnání cen. | – |

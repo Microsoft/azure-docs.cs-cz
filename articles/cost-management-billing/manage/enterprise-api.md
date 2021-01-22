@@ -8,19 +8,19 @@ ms.subservice: enterprise
 ms.topic: reference
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: b78b046e2991fa4ebfb575e4f6a1cc900df0d298
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: a1c420eed89b7b45ea6c50345737b8615f39ad8c
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686900"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602077"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>Přehled rozhraní API pro vytváření sestav pro podnikové zákazníky
 
 > [!Note]
 > Microsoft už neaktualizuje rozhraní API služby Enterprise Reporting pro fakturaci Azure. Místo toho byste měli využívat rozhraní API služby [Azure Consumption](/rest/api/consumption).
 
-Rozhraní API pro generování sestav umožňují podnikovým zákazníkům Azure programově předávat data o spotřebě a fakturaci do upřednostňovaných nástrojů pro analýzu dat. Podnikoví zákazníci uzavřeli s Azure [smlouvu Enterprise (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/), ve které si vyjednali určité peněžní závazky a která jim poskytuje přístup k vlastním cenám prostředků Azure.
+Rozhraní API pro generování sestav umožňují podnikovým zákazníkům Azure programově předávat data o spotřebě a fakturaci do upřednostňovaných nástrojů pro analýzu dat. Podnikoví zákazníci uzavřeli s Azure [smlouvu Enterprise (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/), ve které si vyjednali Azure Prepayment (dřív označovaný jako peněžní závazek) a která jim poskytuje přístup k vlastním cenám prostředků Azure.
 
 Všechny parametry data a času požadované pro rozhraní API musí být reprezentované jako kombinované hodnoty koordinovaného světového času (UTC). Hodnoty vrácené rozhraními API se zobrazují ve formátu UTC.
 

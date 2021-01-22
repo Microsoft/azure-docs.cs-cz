@@ -5,16 +5,16 @@ author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 11/17/2020
+ms.date: 01/13/2021
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 0cdd25b2937dd1fb2cc70ef7b1c5a9e9ddaef375
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: bd155ea3c98231cf20fa7c62325e3c2ecfb89920
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780599"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185916"
 ---
 # <a name="programmatically-create-azure-enterprise-agreement-subscriptions-with-the-latest-apis"></a>Programové vytváření předplatných Azure se smlouvou Enterprise s využitím nejnovějších rozhraní API
 
@@ -31,7 +31,9 @@ Když vytvoříte předplatné Azure programově, na toto předplatné se vztahu
 K vytvoření předplatného je potřeba, abyste pro registrační účet měli roli vlastníka. Existují dva způsoby, jak tuto roli získat:
 
 * Podnikový správce pro vaši registraci vás [může nastavit jako vlastníka účtu](https://ea.azure.com/helpdocs/addNewAccount) (vyžaduje se přihlášení) a to z vás udělá vlastníka tohoto registračního účtu.
-* [Přístup vám může udělit](grant-access-to-create-subscription.md) stávající vlastník registračního účtu. Podobně platí, že pokud chcete k vytvoření předplatného EA využít instanční objekt, musíte [tomuto instančnímu objektu udělit možnost vytvářet předplatná](grant-access-to-create-subscription.md).
+* [Přístup vám může udělit](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) stávající vlastník registračního účtu. Podobně platí, že pokud chcete k vytvoření předplatného EA využít instanční objekt, musíte [tomuto instančnímu objektu udělit možnost vytvářet předplatná](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put). 
+  > [!NOTE]
+  > Ujistěte se, že používáte správnou verzi rozhraní API pro udělení oprávnění vlastníka registračního účtu. Pro tento článek a rozhraní API, která jsou v něm dokumentovaná, použijte rozhraní API verze [2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put). Pokud migrujete na novější rozhraní API, musíte znovu udělit oprávnění vlastníka s využitím verze [2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put). Předchozí konfigurace vytvořená s verzí [2015-07-01](grant-access-to-create-subscription.md) se automaticky nepřevede na použití s novějšími rozhraními API.
 
 ## <a name="find-accounts-you-have-access-to"></a>Vyhledání účtů, ke kterým máte přístup
 

@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: johndeu
-ms.openlocfilehash: 84e94a431efdc84ff6896de416bd222120784899
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f48a01bb81829ff2bc10b4db1ed543382f992b58
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89264279"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696223"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Přehled Media Servicesch operací REST API
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-v-2-v-3-migration-introduction.md) .
 
 Rozhraní **REST API služby Media Services Operations** se používá k vytváření úloh, prostředků, živých kanálů a dalších prostředků v účtu Media Services. Další informace naleznete v tématu [Media Services operations REST API Reference](/rest/api/media/operations/azure-media-services-rest-api-reference).
 
@@ -35,7 +35,7 @@ Media Services poskytuje REST API, který přijímá formát JSON nebo Atom + Pu
 
 Ověřování u Media Services REST API se provádí prostřednictvím Azure Active Directory ověřování, které je uvedené v článku [použití ověřování Azure AD pro přístup k rozhraní API pro Azure Media Services s REST](media-services-rest-connect-with-aad.md) .
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Požadavky
 
 Při použití REST platí následující požadavky.
 
@@ -62,12 +62,12 @@ Při použití REST platí následující požadavky.
 ## <a name="standard-http-request-headers-supported-by-media-services"></a>Standardní hlavičky požadavků HTTP, které podporuje Media Services
 Pro každé volání, které provedete v Media Services, je k dispozici sada požadovaných hlaviček, kterou musíte zahrnout do žádosti, a také sadu volitelných hlaviček, které byste mohli chtít zahrnout. Následující tabulka uvádí seznam požadovaných hlaviček:
 
-| Záhlaví | Typ | Hodnota |
+| Hlavička | Typ | Hodnota |
 | --- | --- | --- |
 | Autorizace |Bearer |Držitelem je jediný přijatý autorizační mechanismus. Hodnota musí také zahrnovat přístupový token, který poskytuje Azure Active Directory. |
 | x-MS-Version |Decimal |2,17 (nebo novější verze)|
-| DataServiceVersion |Decimal |3,0 |
-| MaxDataServiceVersion |Decimal |3,0 |
+| DataServiceVersion |Decimal |3.0 |
+| MaxDataServiceVersion |Decimal |3.0 |
 
 > [!NOTE]
 > Vzhledem k tomu, že Media Services používá ke zveřejnění rozhraní REST API protokol OData, hlavičky DataServiceVersion a MaxDataServiceVersion by měly být zahrnuté do všech požadavků. Pokud nejsou, ale v současné době Media Services předpokládá, že použitá hodnota DataServiceVersion je 3,0.
@@ -76,9 +76,9 @@ Pro každé volání, které provedete v Media Services, je k dispozici sada po�
 
 Následuje sada volitelných hlaviček:
 
-| Záhlaví | Typ | Hodnota |
+| Hlavička | Typ | Hodnota |
 | --- | --- | --- |
-| Datum |RFC 1123 datum |Časové razítko požadavku |
+| Date (Datum) |RFC 1123 datum |Časové razítko požadavku |
 | Přijmout |Typ obsahu |Požadovaný typ obsahu pro odpověď, například následující:<p> -Application/JSON; OData = verbose<p> – Application/Atom + XML<p> Odpovědi mohou mít jiný typ obsahu, například načtení objektu blob, kde úspěšná odpověď obsahuje datový proud blobu jako datovou část. |
 | Accept-Encoding |GZIP, uprostřed zúžené |Kódování GZIP a DEFLATE, pokud je to možné. Poznámka: u velkých prostředků Media Services může tuto hlavičku ignorovat a vracet nekomprimovaná data. |
 | Accept-Language |"en", "ES" atd. |Určuje preferovaný jazyk pro odpověď. |
@@ -90,11 +90,11 @@ Následuje sada volitelných hlaviček:
 ## <a name="standard-http-response-headers-supported-by-media-services"></a>Standardní hlavičky HTTP odpovědi, které podporuje Media Services
 Následuje sada hlaviček, které mohou být vráceny v závislosti na prostředku, který požadujete, a akci, kterou jste chtěli provést.
 
-| Záhlaví | Typ | Hodnota |
+| Hlavička | Typ | Hodnota |
 | --- | --- | --- |
 | ID žádosti |Řetězec |Jedinečný identifikátor pro aktuální operaci, vygenerovala se služba. |
 | klient-požadavek-ID |Řetězec |Identifikátor určený volajícím v původní žádosti, pokud je k dispozici. |
-| Datum |RFC 1123 datum |Datum a čas zpracování žádosti. |
+| Date (Datum) |RFC 1123 datum |Datum a čas zpracování žádosti. |
 | Typ obsahu |Různé |Typ obsahu textu odpovědi |
 | Kódování obsahu |Různé |Gzip nebo deflate, podle potřeby. |
 

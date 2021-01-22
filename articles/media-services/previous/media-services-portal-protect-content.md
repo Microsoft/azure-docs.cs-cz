@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 061d66f08e79f935c778eb84dd47f71cab1a62d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5ddd31f96ca88a02fa667f8809a00e2a4e3ecc50
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266625"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695420"
 ---
 # <a name="configure-content-protection-policies-by-using-the-azure-portal"></a>Konfigurace zásad ochrany obsahu pomocí Azure Portal
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> K dokončení tohoto kurzu potřebujete mít účet Azure. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).   > do Media Services V2 se přidávají žádné nové funkce ani funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> K dokončení tohoto kurzu potřebujete mít účet Azure. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).   > do Media Services V2 se přidávají žádné nové funkce ani funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-v-2-v-3-migration-introduction.md) .
 >
 
  Pomocí Azure Media Services můžete své médium zabezpečit od okamžiku, kdy počítač opustí úložiště, zpracování a doručování. Media Services můžete použít k dynamickému šifrování obsahu pomocí standard AES (Advanced Encryption Standard) (AES) pomocí 128 bitových šifrovacích klíčů. Můžete ji také použít se společným šifrováním (CENC) pomocí technologie PlayReady nebo Widevine DRM (Správa digitálních práv) a Apple FairPlay. 
@@ -75,7 +75,7 @@ Pokud licenci nakonfigurujete jako trvalou, uloží se do trvalého úložiště
 ## <a name="widevine-license-template"></a>Šablona licencování Widevine
 Šablona licence Widevine nastaví funkce, které jsou povolené na vašich licencích Widevine.
 
-### <a name="basic"></a>Základní
+### <a name="basic"></a>Basic
 Když vyberete **základní**, vytvoří se šablona se všemi výchozími hodnotami.
 
 ### <a name="advanced"></a>Pokročilý
@@ -105,7 +105,7 @@ Když pro prostředek vyberete možnost **šifrování** , zobrazí se dvě mož
 ![Konfigurace šifrování](./media/media-services-portal-content-protection/media-services-content-protection008.png)
 
 #### <a name="drm"></a>DIGITÁLNÍCH
-1. Po výběru **DRM**se zobrazí různé zásady ochrany obsahu (které se musí konfigurovat tímto bodem) a sada protokolů streamování:
+1. Po výběru **DRM** se zobrazí různé zásady ochrany obsahu (které se musí konfigurovat tímto bodem) a sada protokolů streamování:
 
     a. **PlayReady a Widevine s MPEG-pomlčkou** dynamicky šifruje váš datový proud MPEG-spojovník pomocí PlayReady a Widevine několikanásobnou.
 
@@ -117,7 +117,7 @@ Když pro prostředek vyberete možnost **šifrování** , zobrazí se dvě mož
     
     e. **Fairplay jenom s HLS** dynamicky šifruje datový proud HLS pomocí Fairplay.
 
-1. Pokud chcete povolit šifrování FairPlay, v okně **Content Protection globální nastavení** vyberte **Konfigurace Fairplay**. Pak vyberte **certifikát aplikace**a zadejte **tajný klíč aplikace**.
+1. Pokud chcete povolit šifrování FairPlay, v okně **Content Protection globální nastavení** vyberte **Konfigurace Fairplay**. Pak vyberte **certifikát aplikace** a zadejte **tajný klíč aplikace**.
 
     ![Typ šifrování](./media/media-services-portal-content-protection/media-services-content-protection009.png)
 

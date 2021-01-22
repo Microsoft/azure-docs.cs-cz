@@ -4,12 +4,12 @@ ms.service: azure-resource-manager
 ms.topic: include
 ms.date: 09/01/2020
 ms.author: tomfitz
-ms.openlocfilehash: f1e7b33630ea52bb0cb675b81fff9cc738f27980
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 543aa50d72de5a06a9a1c7ac88ac5ecae993bc9d
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95557326"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98698050"
 ---
 | Prostředek | Omezení |
 | --- | --- |
@@ -37,4 +37,4 @@ ms.locfileid: "95557326"
 | Velikost šablony |4 MB |
 | Velikost souboru parametrů |64 kB |
 
-Můžete překročit několik omezení šablon pomocí vnořené šablony. Další informace najdete v tématu [použití propojených šablon při nasazení prostředků Azure](../articles/azure-resource-manager/templates/linked-templates.md). Chcete-li snížit počet parametrů, proměnných nebo výstupů, můžete zkombinovat několik hodnot do objektu. Další informace najdete v tématu [objekty jako parametry](/azure/architecture/building-blocks/extending-templates/objects-as-parameters).
+Můžete překročit několik omezení šablon pomocí vnořené šablony. Další informace najdete v tématu [použití propojených šablon při nasazení prostředků Azure](../articles/azure-resource-manager/templates/linked-templates.md). Chcete-li snížit počet parametrů, proměnných nebo výstupů, můžete zkombinovat několik hodnot do objektu. Další informace najdete v tématu [objekty jako parametry](/azure/architecture/guide/azure-resource-manager/advanced-templates/objects-as-parameters).

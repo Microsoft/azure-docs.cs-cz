@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c6c1dcb0af500c47aabbd8e8193c066bb4a921c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 634b508ca15349152540aca90125575b17943929
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89267764"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696426"
 ---
 # <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>Použití Azure Queue Storage k monitorování Media Servicesch oznámení úloh pomocí .NET
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-v-2-v-3-migration-introduction.md) .
 
 Když spouštíte úlohy kódování, často potřebujete způsob, jak sledovat průběh úloh. Můžete nakonfigurovat Media Services pro doručování oznámení do služby [Azure Queue Storage](../../storage/queues/storage-dotnet-how-to-use-queues.md). Průběh úlohy můžete monitorovat pomocí získání oznámení z úložiště front. 
 
@@ -37,7 +37,7 @@ Jedním z běžných scénářů, jak naslouchat oznámením Media Services, je,
 
 Tento článek ukazuje, jak získat oznamovací zprávy z fronty úložiště.  
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Požadavky
 Při vývoji Media Services aplikací, které používají úložiště Queue, zvažte následující:
 
 * Queue Storage neposkytuje záruku pro objednané doručení FIFO (First-in-first-out). Další informace najdete v tématu [porovnání a srovnání front Azure a front Azure Service Bus](/previous-versions/azure/hh767287(v=azure.100)).

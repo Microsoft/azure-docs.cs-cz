@@ -14,19 +14,19 @@ ms.topic: conceptual
 ms.date: 11/03/2020
 ms.author: inhenkel
 ms.custom: references_regions
-ms.openlocfilehash: cf84e45ff43643c7e9a983b867194a7920aa1b57
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 458927afc78c46ad365d437a574d0b40b32fc11e
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93351875"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695793"
 ---
 # <a name="media-services-regional-availability"></a>Media Services oblast dostupnosti
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. Podívejte se na nejnovější verzi [Media Services V3](../latest/media-services-overview.md). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> Do Media Services v2 se nepřidávají žádné nové funkce. Podívejte se na nejnovější verzi [Media Services V3](../latest/media-services-overview.md). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-v-2-v-3-migration-introduction.md) .
 
 Microsoft Azure Media Services (AMS) umožňuje bezpečně nahrávat, ukládat, kódovat a balit obsah (video nebo zvuk) doručovaný na vyžádání i živě streamovaný různým klientům (například do televizí, počítačů a mobilních zařízení).
 
@@ -40,9 +40,9 @@ Pomocí [produktů Azure podle oblastí](https://azure.microsoft.com/global-infr
 
 ## <a name="streaming-endpoints"></a>Koncové body streamování
 
-Zákazníci Media Services si můžou zvolit koncový bod streamování **Standard** , nebo koncový bod streamování **Premium**.
+Zákazníci Media Services si můžou zvolit koncový bod streamování **Standard**, nebo koncový bod streamování **Premium**.
 
-|Název|Status|Oblast
+|Name|Status|Region (Oblast)
 |---|---|---|
 |Standard|GA|Vše|
 |Premium|GA|Vše|
@@ -67,7 +67,7 @@ Media Analytics je kolekce řečových a vizuálních komponent, které organiza
 > [!NOTE]
 > Některé procesory pro analýzu médií budou vyřazeny. Data o vyřazení najdete v tématu [starší verze součástí](legacy-components.md) .
 
-|Název procesoru médií|Status|Oblast
+|Název procesoru médií|Status|Region (Oblast)
 |---|---|---|
 |Azure Media Face Detector|Preview|Vše|
 |Azure Media Indexer|GA|Vše|

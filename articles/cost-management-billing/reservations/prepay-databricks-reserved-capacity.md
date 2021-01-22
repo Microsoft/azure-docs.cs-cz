@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: b7d7380114046fbeaaf4b6eb2660997d64168715
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 390a8b421a7b34391bde689e4b968fa98cdbaf76
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91368562"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599160"
 ---
 # <a name="optimize-azure-databricks-costs-with-a-pre-purchase"></a>Optimalizace nákladů na Azure Databricks díky předběžnému nákupu
 
@@ -48,7 +48,7 @@ Plány Databricks si můžete zakoupit na webu [Azure Portal](https://portal.azu
 **Postup při nákupu:**
 
 1. Přejděte na [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22Databricks%22%7D).
-1. Vyberte předplatné. V seznamu **Předplatné** vyberte předplatné, které chcete použít k úhradě rezervované kapacity. Náklady na rezervovanou instanci se vyfakturují pomocí způsobu platby vybraného pro dané předplatné. Poplatky se strhávají z peněžního zůstatku v rámci dané registrace nebo se účtují jako nadlimitní využití.
+1. Vyberte předplatné. V seznamu **Předplatné** vyberte předplatné, které chcete použít k úhradě rezervované kapacity. Náklady na rezervovanou instanci se vyfakturují pomocí způsobu platby vybraného pro dané předplatné. Poplatky se strhávají z Azure Prepaymentu (dříve označovaný jako peněžní závazek) příslušné registrace, nebo se účtují jako nadlimitní využití.
 1. Vyberte rozsah. Rozsah předplatného vyberte v seznamu **Rozsah**:
     - Rozsah **Jedna skupina prostředků** – sleva za rezervaci se uplatní jenom u odpovídajících prostředků ve vybrané skupině prostředků.
     - Rozsah **Jedno předplatné** – sleva za rezervaci se uplatní u odpovídajících prostředků ve vybraném předplatném.

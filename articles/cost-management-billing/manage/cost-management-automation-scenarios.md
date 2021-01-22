@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: reference
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 8cef36cf26231758eb839379d0c020484cbe09fb
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: e0a7553269e1223a5e744db967d65814877878ab
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132597"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598274"
 ---
 # <a name="automation-scenarios-for-billing-and-cost-management"></a>Scénáře automatizace pro fakturaci a správu nákladů
 
@@ -103,7 +103,7 @@ Následující rozhraní API jsou určená jenom pro program Enterprise:
 ### <a name="whats-the-difference-between-the-enterprise-reporting-apis-and-the-consumption-apis-when-should-i-use-each"></a>Jaký je rozdíl mezi rozhraními Enterprise Reporting API a rozhraními Consumption API? Kdy mám které použít?
 Tato rozhraní API mají podobnou sadu funkcí a můžou odpovědět na stejné obecné otázky týkající se fakturace a správy nákladů. Mají ale různé cílové skupiny:
 
-- Rozhraní Enterprise Reporting API jsou dostupná zákazníkům, kteří s Microsoftem uzavřeli smlouvu Enterprise, která jim zaručuje přístup ke sjednaným peněžním závazkům a vlastním cenám. Tato rozhraní API vyžadují klíč, který můžete získat na webu [Enterprise Portal](https://ea.azure.com). Popis těchto rozhraní API najdete v tématu [Přehled rozhraní API pro vytváření sestav pro podnikové zákazníky](enterprise-api.md).
+- Rozhraní Enterprise Reporting API jsou dostupná zákazníkům, kteří s Microsoftem uzavřeli smlouvu Enterprise, která jim zaručuje přístup ke sjednanému Azure Prepaymentu (dřív označovaný jako peněžní závazek) a vlastním cenám. Tato rozhraní API vyžadují klíč, který můžete získat na webu [Enterprise Portal](https://ea.azure.com). Popis těchto rozhraní API najdete v tématu [Přehled rozhraní API pro vytváření sestav pro podnikové zákazníky](enterprise-api.md).
 
 - Rozhraní Consumption API jsou s několika výjimkami dostupná všem zákazníkům. Další informace najdete v tématech [Přehled rozhraní API služby Azure Consumption](consumption-api-overview.md) a [Referenční informace o rozhraní Azure Consumption API](/rest/api/consumption/). Poskytnutá API doporučujeme jako řešení pro nejnovější scénáře vývoje.
 
@@ -112,7 +112,7 @@ Tato rozhraní API poskytují zásadně odlišná data:
 
 - [Rozhraní API Podrobnosti využití](/rest/api/consumption/usagedetails) poskytuje informace o nákladech na Azure a využití Azure na instanci měřiče. Poskytnutá data už prošla systémem měření nákladů v Azure a jsou v nich použité náklady společně s jinými možnými změnami:
 
-   - Změny účtu týkající se použití předplacených peněžních závazků
+   - Změny účtu týkající se použití předplaceného Azure Prepaymentu
    - Změny účtu týkající se nesrovnalostí ve využití zjištěných Azure
 
 - Rozhraní [API Využití](/previous-versions/azure/reference/mt219003(v=azure.100)) poskytuje nezpracované informace o využití Azure, které ještě neprošly systémem měření nákladů v Azure. Tato data nemusejí nijak souviset s využitím nebo naúčtovanou částkou, které vyjdou po průchodu systémem měření nákladů v Azure.

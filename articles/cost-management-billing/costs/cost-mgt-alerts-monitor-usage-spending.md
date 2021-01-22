@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: c59bd7f9bc8c5049572afdf93343222b30c0007b
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: d1546ef92d923b9d72c4aca0ddf61d2b93646656
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131900"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602336"
 ---
 # <a name="use-cost-alerts-to-monitor-usage-and-spending"></a>Použití upozornění na náklady ke sledování použití a výdajů
 
@@ -29,7 +29,7 @@ K odesílání e-mailových upozornění v jiném jazyce můžete využít rozhr
 
 ## <a name="credit-alerts"></a>Upozornění kreditu
 
-Upozornění kreditu vás upozorní, když vyčerpáte peněžní závazky kreditu Azure. Měnové závazky jsou určené organizacím se smlouvou Enterprise. Upozornění kreditu se generují automaticky při vyčerpání 90 % a 100 % zůstatku kreditu Azure. Pokaždé, když se vygeneruje upozornění, projeví se v upozorněních na náklady a v e-mailech posílaných vlastníkům účtu.
+Upozornění na kredit dostanete, když se spotřebuje Azure Prepayment (dřív označovaný jako peněžní závazek). Azure Prepayment je určený pro organizace se smlouvami Enterprise. Upozornění na kredit se generují automaticky při 90% a 100% vyčerpání zůstatku kreditu Azure Prepaymentu. Pokaždé, když se vygeneruje upozornění, projeví se v upozorněních na náklady a v e-mailech posílaných vlastníkům účtu.
 
 ## <a name="department-spending-quota-alerts"></a>Upozornění na kvótu útraty oddělení
 

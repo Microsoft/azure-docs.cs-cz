@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/05/2020
+ms.date: 01/21/2020
 ms.author: b-juche
-ms.openlocfilehash: 913d61c506505d18fff416291e7f3b718f1d92f3
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: f680b1ec76200cb4d3bfc90cd83a2c134f379245
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97913494"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696121"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Nejčastější dotazy týkající se Azure NetApp Files
 
@@ -29,7 +29,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Azure
 
 ### <a name="does-the-nfs-data-path-go-over-the-internet"></a>Přechází se přes Internet cestu k datům NFS?  
 
-No. Cesta k datům NFS nepřekračuje Internet. Azure NetApp Files je nativní služba Azure, která je nasazená do Azure Virtual Network (VNet), kde je služba dostupná. Azure NetApp Files používá delegovanou podsíť a zřizuje síťové rozhraní přímo ve virtuální síti. 
+Ne. Cesta k datům NFS nepřekračuje Internet. Azure NetApp Files je nativní služba Azure, která je nasazená do Azure Virtual Network (VNet), kde je služba dostupná. Azure NetApp Files používá delegovanou podsíť a zřizuje síťové rozhraní přímo ve virtuální síti. 
 
 Podrobnosti najdete v tématu [pokyny pro Azure NetApp Files plánování sítě](./azure-netapp-files-network-topologies.md) .  
 
@@ -48,7 +48,7 @@ Ano, pokud vytvoříte požadované položky DNS, můžete. Azure NetApp Files p
 
 ### <a name="can-i-set-or-select-my-own-ip-address-for-an-azure-netapp-files-volume"></a>Můžu u Azure NetApp Filesho svazku nastavit nebo vybrat vlastní IP adresu?  
 
-No. Přiřazení IP adres Azure NetApp Files svazků je dynamické. Přiřazení statických IP adres se nepodporuje. 
+Ne. Přiřazení IP adres Azure NetApp Files svazků je dynamické. Přiřazení statických IP adres se nepodporuje. 
 
 ### <a name="does-azure-netapp-files-support-dual-stack-ipv4-and-ipv6-vnet"></a>Podporuje Azure NetApp Files virtuální síť Dual Stack (IPv4 a IPv6)?
 
@@ -196,7 +196,7 @@ Azure NetApp Files zajišťuje fond kapacit a metriky využití svazků. K monit
 
 ### <a name="can-i-manage-azure-netapp-files-through-azure-storage-explorer"></a>Můžu Azure NetApp Files přes Průzkumník služby Azure Storage spravovat?
 
-No. Průzkumník služby Azure Storage nepodporuje Azure NetApp Files.
+Ne. Průzkumník služby Azure Storage nepodporuje Azure NetApp Files.
 
 ### <a name="how-do-i-determine-if-a-directory-is-approaching-the-limit-size"></a>Návody zjistit, jestli se adresář blíží velikosti limitu?
 
@@ -253,11 +253,21 @@ Požadavky na replikaci Azure NetApp Filesho svazku do jiné oblasti Azure jsou 
 
 ### <a name="is-migration-with-azure-data-box-supported"></a>Je migrace s Azure Data Box podporována?
 
-No. Azure Data Box nepodporuje aktuálně Azure NetApp Files. 
+Ne. Azure Data Box nepodporuje aktuálně Azure NetApp Files. 
 
 ### <a name="is-migration-with-azure-importexport-service-supported"></a>Je migrace pomocí služby Azure import/export podporovaná?
 
-No. Služba Azure import/export nepodporuje Azure NetApp Files aktuálně.
+Ne. Služba Azure import/export nepodporuje Azure NetApp Files aktuálně.
+
+## <a name="product-faqs"></a>Nejčastější dotazy k produktu
+
+### <a name="can-i-use-azure-netapp-files-nfs-or-smb-volumes-with-azure-vmware-solution-avs"></a>Můžu použít Azure NetApp Files systému souborů NFS nebo SMB s řešením Azure VMware (AVS)?
+
+Na virtuální počítače se systémem Windows nebo virtuální počítače se systémem Linux můžete připojit Azure NetApp Files svazky NFS. Azure NetApp Files sdílené složky SMB můžete mapovat na virtuální počítače se systémem Windows AVS. Další podrobnosti najdete v tématu [Azure NetApp Files s využitím řešení Azure VMware]( ../azure-vmware/net-app-files-with-azure-vmware-solution.md).  
+
+### <a name="what-regions-are-supported-for-using-azure-netapp-files-nfs-or-smb-volumes-with-azure-vmware-solution-avs"></a>Jaké oblasti jsou podporované pro použití Azure NetApp Files NFS nebo svazků SMB s řešením Azure VMware (AVS)?
+
+Použití Azure NetApp Files NFS nebo svazků SMB s funkcí AVS je podporované v následujících oblastech: Východní USA, Západní USA, Západní Evropa a Austrálie – východ.
 
 ## <a name="next-steps"></a>Další kroky  
 

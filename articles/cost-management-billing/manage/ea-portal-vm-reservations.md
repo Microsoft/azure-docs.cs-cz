@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 7c8a35e7c8ecd0952f8e02b66c5071253d9b0445
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 072377f98939d996547cb6ee9f9a535b4b32a3dc
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348921"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98597959"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Rezervované instance virtuálních počítačů Azure EA
 
@@ -25,7 +25,7 @@ Rezervaci si můžete vyměnit za jinou rezervaci stejného typu. Rezervaci je t
 
 ### <a name="partial-refunds"></a>Částečné refundace
 
-Částečné refundace vydáváme, když zákazníci EA vrací rezervace zakoupené prostřednictvím nadlimitního využití, nikoli peněžního závazku.
+Částečné refundace vydáváme, když zákazníci EA vrací rezervace zakoupené prostřednictvím nadlimitního využití, nikoli Azure Prepaymentu (dřív označovaný jako peněžní závazek).
 
 Refundace se zobrazí na portálu EA jako záporné vyrovnání v předchozím měsíci a kladné vyrovnání v aktuálním měsíci. Bude vypadat podobně jako výměna rezervací. V dobropisu bude uvedené číslo původní faktury. Proto pokud chcete odsouhlasit původní nákup s dobropisem, použijte číslo původní faktury.
 

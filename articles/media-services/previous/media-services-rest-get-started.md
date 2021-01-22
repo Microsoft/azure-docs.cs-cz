@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: ddad462658465c07624f078e20c224750c5180c9
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: fe35cd39af9b2fe7d547b463b6432b0b54344794
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019473"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696240"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>Začínáme s doručováním obsahu na vyžádání pomocí REST
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)] 
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-v-2-v-3-migration-introduction.md) .
 
 Tento rychlý Start vás provede jednotlivými kroky implementace aplikace pro doručování obsahu videa na vyžádání (VoD) s využitím rozhraní REST API pro Azure Media Services (AMS).
 
@@ -346,14 +346,14 @@ Date: Mon, 19 Jan 2015 03:01:29 GMT
 Jakmile budete mít AccessPolicy a lokátor, vlastní soubor se nahraje do kontejneru úložiště objektů BLOB v Azure pomocí rozhraní REST API Azure Storage. Soubory je třeba nahrát jako objekty blob bloku. Azure Media Services nepodporuje objekty blob stránky.  
 
 > [!NOTE]
-> Je nutné přidat název souboru, který chcete odeslat do hodnoty **cesty** lokátoru přijaté v předchozí části. Například, `https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4?`.
+> Je nutné přidat název souboru, který chcete odeslat do hodnoty **cesty** lokátoru přijaté v předchozí části. Například `https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4?`.
 >
 >
 
 Další informace o práci s objekty blob služby Azure Storage najdete v tématu [REST API služby BLOB](/rest/api/storageservices/blob-service-rest-api).
 
 ### <a name="update-the-assetfile"></a>Aktualizace AssetFile
-Teď, když jste nahráli soubor, aktualizujte informace o velikosti Assetového prostředku (a dalších). Příklad:
+Teď, když jste nahráli soubor, aktualizujte informace o velikosti Assetového prostředku (a dalších). Například:
 
 ```console
 MERGE https://wamsbayclus001rest-hs.cloudapp.net/api/Files('nb%3Acid%3AUUID%3Af13a0137-0a62-9d4c-b3b9-ca944b5142c5') HTTP/1.1
@@ -873,7 +873,7 @@ Jakmile budete mít AccessPolicy a lokátor, můžete soubory stahovat pomocí r
 
 Další informace o práci s objekty blob služby Azure Storage najdete v tématu [REST API služby BLOB](/rest/api/storageservices/blob-service-rest-api).
 
-V důsledku úlohy kódování, kterou jste provedli dříve (při kódování do adaptivní sady souborů MP4), máte více souborů MP4, které můžete postupně stahovat. Příklad:    
+V důsledku úlohy kódování, kterou jste provedli dříve (při kódování do adaptivní sady souborů MP4), máte více souborů MP4, které můžete postupně stahovat. Například:    
 
 * `https://storagetestaccount001.blob.core.windows.net/asset-38058602-a4b8-4b33-b9f0-6880dc1490ea/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4?sv=2012-02-12&sr=c&si=166d5154-b801-410b-a226-ee2f8eac1929&sig=P2iNZJAvAWpp%2Bj9yV6TQjoz5DIIaj7ve8ARynmEM6Xk%3D&se=2015-02-14T01:13:05Z`
 

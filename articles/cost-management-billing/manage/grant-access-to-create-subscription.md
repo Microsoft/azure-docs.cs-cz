@@ -4,20 +4,23 @@ description: Zjistěte, jak dát instančnímu objektu nebo uživateli možnost 
 author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
-ms.reviewer: amberb
+ms.reviewer: andalmia
 ms.topic: conceptual
-ms.date: 08/26/2020
+ms.date: 01/13/2021
 ms.author: banders
-ms.openlocfilehash: c13670df26e5d0f7774b5a2aac81f656de94c960
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 039e728f6518d21ddfb9c7c359a6cf2ec743f232
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844706"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185100"
 ---
 # <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>Udělení přístupu pro vytváření předplatných Azure Enterprise (Preview)
 
 Jako zákazník Azure se [smlouvou Enterprise (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) můžete jinému uživateli nebo instančnímu objektu poskytnout oprávnění pro vytváření předplatných fakturovaných na váš účet. V tomto článku se dozvíte, jak používat [řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) ke sdílení možností vytváření předplatných a jak auditovat vytváření předplatných. Pro účet, který chcete sdílet, musíte mít roli vlastníka.
+
+> [!NOTE]
+> Toto rozhraní API funguje jenom s [rozhraními API pro vytváření předplatných ve verzi Preview](programmatically-create-subscription-preview.md). Pokud chcete použít [obecně dostupnou verzi](programmatically-create-subscription-enterprise-agreement.md), použijte nejnovější verzi API – [2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put). Pokud migrujete na novější rozhraní API, musíte znovu udělit oprávnění vlastníka s využitím verze [2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put). Předchozí konfigurace, která využívá následující rozhraní API, se automaticky nepřevede na použití s novějšími rozhraními API.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

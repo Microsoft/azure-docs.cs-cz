@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/17/2019
 ms.author: hrasheed
-ms.openlocfilehash: 2b6ea68d069b90293ab35024bebf3fbdc8acb592
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: f275064bd4accd0ca12acf3e71713f39d3860be2
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197672"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696451"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Instalace aplikací Apache Hadoop třetích stran v Azure HDInsight
 
@@ -23,9 +23,9 @@ An HDInsight aplikace je aplikace, kterou uživatelé můžou instalovat v clust
 
 Publikované aplikace jsou uvedeny v následujícím seznamu:
 
-|Aplikace |Typy clusteru | Description |
+|Aplikace |Typy clusteru | Popis |
 |---|---|---|
-|[Platforma AtScale Intelligence](https://azuremarketplace.microsoft.com/marketplace/apps/atscaleinc.atscale) |Hadoop |AtScale zapíná cluster HDInsight do serveru OLAP se škálováním na více instancí, což vám umožní interaktivně dotazovat se na miliardy řádků dat pomocí nástrojů BI, které už znáte, vlastníte a máte rádi – od Microsoft Excelu, Power BI, Tableau software až QlikView. |
+|[Platforma AtScale Intelligence](https://aws.amazon.com/marketplace/pp/AtScale-AtScale-Intelligence-Platform/B07BWWHH18) |Hadoop |AtScale zapíná cluster HDInsight do serveru OLAP se škálováním na více instancí, což vám umožní interaktivně dotazovat se na miliardy řádků dat pomocí nástrojů BI, které už znáte, vlastníte a máte rádi – od Microsoft Excelu, Power BI, Tableau software až QlikView. |
 |[CDAP pro HDInsight](https://azuremarketplace.microsoft.com/marketplace/apps/cask.cdap-for-hdinsight) |HBase |CDAP je první sjednocená integrační platforma pro velké objemy dat, která zrychluje dobu na hodnotu Hadoop a umožňuje IT oddělení poskytovat data samoobslužných služeb. Open Source a rozšiřitelné CDAP odstraňují překážky při inovacích. Požadavky: 4 uzly oblasti, min D3 v2. |
 |[Datameer](https://azuremarketplace.microsoft.com/marketplace/apps/datameer.datameer) |Hadoop |Datameerá škálovatelná platforma pro přípravu, prozkoumávání a řízení vašich dat pro účely analýzy urychluje převádění složitých zdrojů dat na cenné informace připravené pro firmy. díky rychlejšímu poskytování lepších informací na podnikové úrovni. |
 |[Dataiku DSS ve službě HDInsight](https://azuremarketplace.microsoft.com/marketplace/apps/dataiku.dss-on-hdi) |Hadoop, Spark |Dataiku DSS pro podnikovou datovou vědeckou platformu, která umožňuje odborníkům přes data a analytikům v oblasti IT efektivněji navrhovat a spouštět nové datové produkty a služby a přepínat nezpracovaná data na ovlivněné předpovědi. |
@@ -51,7 +51,7 @@ Následující postup ukazuje, jak můžete instalovat aplikace HDInsight do exi
 
 **Instalace aplikace HDInsight**
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. V nabídce vlevo přejděte na **všechny služby**  >  **Analytics**  >  **clustery HDInsight**.
 3. Ze seznamu vyberte cluster HDInsight.  Pokud ho ještě nemáte, vytvořte ho.  Viz článek [Vytvoření clusterů](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 4. V kategorii **Nastavení** vyberte **aplikace**. V hlavním okně uvidíte seznam nainstalovaných aplikací. 
@@ -75,7 +75,7 @@ Portál zobrazuje seznam nainstalovaných aplikací HDInsight pro cluster a vlas
 
 **Výpis vlastností aplikace a zobrazení HDInsight**
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. V nabídce vlevo přejděte na **všechny služby**  >  **Analytics**  >  **clustery HDInsight**.
 3. Ze seznamu vyberte cluster HDInsight.
 4. V kategorii **Nastavení** vyberte **aplikace**. V hlavním okně uvidíte seznam nainstalovaných aplikací. 
@@ -89,7 +89,7 @@ Portál zobrazuje seznam nainstalovaných aplikací HDInsight pro cluster a vlas
     |Status |Stav aplikace |
     |Stránku |Adresa URL webové aplikace, kterou jste nasadili na hraničním uzlu. Přihlašovací údaje jsou stejné jako přihlašovací údaje uživatele protokolu HTTP, které jste nakonfigurovali pro cluster. |
     |Koncový bod SSH |Pomocí SSH se můžete připojit k hraničnímu uzlu. Přihlašovací údaje SSH jsou stejné jako přihlašovací údaje uživatele SSH, které jste nakonfigurovali pro cluster. Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md). |
-    |Description | Popis aplikace |
+    |Popis | Popis aplikace |
 
 6. Pokud chcete aplikaci odstranit, klikněte pravým tlačítkem na aplikaci a potom v místní nabídce klikněte na **Odstranit** .
 

@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: dc08e23b6ef040ba5833ffa97f71d8cd1da3bb8a
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 3f9fc9fd1bacce8733949969b496dc03d6c10901
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019796"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695814"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Živé streamování s Azure Media Services V3
 
@@ -62,7 +62,7 @@ Dynamické filtrování se používá k řízení počtu běhů, formátů, pře
 
 ![Diagram znázorňující, jak se ingestují a zpracovávají informační kanály videa a zvuku z předávací živé události.](./media/live-streaming/pass-through.svg)
 
-Při použití předávací **živé události**se spoléháte na váš místní živý kodér a vygenerujete datový proud s více přenosovými rychlostmi a pošlete ho jako kanál příspěvků do živé události (pomocí RTMP nebo fragmentování vstupního protokolu-MP4). Živá událost pak provede přes příchozí streamy videa do dynamického balíčku (koncového bodu streamování) bez dalšího překódování. Taková předávací živá událost je optimalizovaná pro dlouhotrvající živé události nebo 24x365 lineární živé streamování. 
+Při použití předávací **živé události** se spoléháte na váš místní živý kodér a vygenerujete datový proud s více přenosovými rychlostmi a pošlete ho jako kanál příspěvků do živé události (pomocí RTMP nebo fragmentování vstupního protokolu-MP4). Živá událost pak provede přes příchozí streamy videa do dynamického balíčku (koncového bodu streamování) bez dalšího překódování. Taková předávací živá událost je optimalizovaná pro dlouhotrvající živé události nebo 24x365 lineární živé streamování. 
 
 ### <a name="live-encoding"></a>Kódování v reálném čase  
 
@@ -135,4 +135,4 @@ Podívejte se na článek o [komunitě Azure Media Services](media-services-comm
 
 * [Rychlý Start živého streamování](live-events-wirecast-quickstart.md)
 * [Kurz živého streamování](stream-live-tutorial-with-api.md)
-* [Pokyny k migraci pro přesun z Media Services V2 na V3](migrate-from-v2-to-v3.md)
+* [Pokyny k migraci pro přesun z Media Services V2 na V3](migrate-v-2-v-3-migration-introduction.md)

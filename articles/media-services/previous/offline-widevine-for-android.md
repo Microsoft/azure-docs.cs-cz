@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/16/2019
 ms.author: willzhan
 ms.reviewer: dwgeo
-ms.openlocfilehash: 4b3b2b8c39b5b2552b5ce9f508bacd1ea86b2638
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: dc21523d158330d70adfbc33734abe3d49535804
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006353"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696291"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>Streamování Widevine pro Android v offline režimu
 
@@ -31,7 +31,7 @@ ms.locfileid: "96006353"
 > * [Verze 2](offline-widevine-for-android.md)
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-v-2-v-3-migration-introduction.md) .
 
 Kromě ochrany obsahu pro online streamování, předplatné mediálního obsahu a služby pronájmu nabízí obsah ke stažení, který funguje, když nejste připojení k Internetu. Je možné, že budete muset stáhnout obsah na telefon nebo tablet pro přehrávání v režimu v letadle, když se dolétající z sítě. Další scénáře, ve kterých byste mohli chtít stáhnout obsah:
 

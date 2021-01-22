@@ -14,25 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 3ba8ccf3534cbb4a93983f81095b4ef2c20d6498
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: ec14e59e748e74709b909b0590bc750cf5f075b8
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042781"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695488"
 ---
 # <a name="monitor-encoding-job-progress-with-the-azure-portal"></a>Sledujte průběh úlohy kódování pomocí Azure Portal
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-v-2-v-3-migration-introduction.md) .
 
 ## <a name="overview"></a>Přehled
 
 Když spouštíte úlohy, často potřebujete způsob, jak sledovat průběh úloh. 
 
-Pokud chcete monitorovat průběh úlohy kódování, klikněte na **Nastavení** (v horní části stránky) a pak vyberte **Úlohy** .
+Pokud chcete monitorovat průběh úlohy kódování, klikněte na **Nastavení** (v horní části stránky) a pak vyberte **Úlohy**.
 
 ![Snímek obrazovky, který zobrazuje "úlohy" vybrané v nabídce nastavení.](./media/media-services-portal-vod-get-started/media-services-jobs.png)
 

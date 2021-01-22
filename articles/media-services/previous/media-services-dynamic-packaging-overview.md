@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: juliako
-ms.openlocfilehash: 5b570efa54d99380f2beff5441dc40a3a10b902a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c4f099df071bccb8a74f29a98953fe1e0323b12
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269110"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695573"
 ---
 # <a name="dynamic-packaging"></a>Dynamické balení
 
@@ -29,7 +29,7 @@ ms.locfileid: "89269110"
 > * [Verze 2](media-services-dynamic-packaging-overview.md)
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-v-2-v-3-migration-introduction.md) .
 
 Microsoft Azure Media Services lze použít k doručování mnoha mediálních formátů zdrojového souboru, formátů datových proudů médií a formátů ochrany obsahu na nejrůznější technologie klienta (například iOS, XBOX, Silverlight, Windows 8). Tito klienti rozumí různým protokolům, například iOS vyžaduje formát HTTP Live Streaming (HLS) v4 a Silverlight a Xbox vyžadují Smooth Streaming. Pokud máte sadu adaptivních přenosů (s více přenosovými rychlostmi) souborů MP4 (ISO Base Media 14496-12) nebo sadu adaptivní přenosové rychlosti Smooth Streaming soubory, které chcete sloužit klientům, kteří porozuměli formátu MPEG, HLS nebo Smooth Streaming, měli byste využít Media Services dynamické balení.
 

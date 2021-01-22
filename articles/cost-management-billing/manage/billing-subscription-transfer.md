@@ -8,15 +8,15 @@ tags: billing,top-support-issue
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 11/11/2020
+ms.date: 01/06/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: d37225f988cc906bdd92467afcf3f286220eebda
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: ae588708a41c1259628b726a3a471034dba7d131
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027862"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601547"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Převod vlastnictví fakturace předplatného Azure na jiný účet
 
@@ -72,6 +72,18 @@ Pokud jste přijali vlastnictví fakturace předplatného Azure, doporučujeme v
    1. Přístupové klíče pro služby, jako je Storage. Další informace najdete v článku o [účtech Azure Storage](../../storage/common/storage-account-create.md).
    1. Oprávnění pro vzdálený přístup ke službám, jako je Azure Virtual Machines.
 1. Pokud pracujete s partnerem, zvažte u předplatného aktualizaci ID partnera. ID partnera můžete aktualizovat na webu [Azure Portal](https://portal.azure.com). Další informace najdete v článku [Propojení ID partnera s účty Azure](link-partner-id.md).
+
+## <a name="cancel-a-transfer-request"></a>Zrušení žádosti o převod
+
+V každém okamžiku je aktivní vždycky jenom jedna žádost o převod. Platnost žádosti o převod je 15 dnů. Po uplynutí 15 dnů platnost žádosti o převod vyprší.
+
+Zrušení žádosti o převod:
+
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přejděte na **Předplatná**  > vyberte předplatné, po které jste odeslali žádost o převod > vyberte **Převést vlastnictví fakturace**.
+1. V dolní části stránky vyberte **Zrušit žádost o převod**.
+
+:::image type="content" source="./media/billing-subscription-transfer/transfer-billing-owership-cancel-request.png" alt-text="Příklad ukazující okno Převést vlastnictví fakturace s možností Zrušit žádost o převod" lightbox="./media/billing-subscription-transfer/transfer-billing-owership-cancel-request.png" :::
 
 ## <a name="troubleshooting"></a>Poradce při potížích
 

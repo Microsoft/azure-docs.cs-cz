@@ -3,18 +3,18 @@ title: Faktury za smlouvu Azure Enterprise
 description: V tomto článku je vysvětlená správa faktury za Azure Enterprise a její další použití.
 author: bandersmsft
 ms.author: banders
-ms.date: 12/09/2020
+ms.date: 01/19/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: c64127f7ebbb416d9dfebb5e417cd27d51697665
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 90ae9bdcee5f5f4c4281f2c3f931389b2ebf9486
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030718"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598067"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Faktury za smlouvu Azure Enterprise
 
@@ -238,7 +238,7 @@ Informace o základních cenách pro veřejnost, měrných jednotkách, nejčast
 
 ### <a name="enterprise-agreement-units-of-measure"></a>Měrné jednotky smlouvy Enterprise
 
-Měrné jednotky pro smlouvy Enterprise se často liší od jednotek, které znáte z jiných programů, jako je například program Microsoft Online Services Agreement (MOSA). To znamená, že u řady služeb se měrná jednotka agreguje, aby bylo možné poskytovat normalizované ceny. Měrná jednotka, která se na portálu Azure Enterprise Portal zobrazuje v zobrazení Usage Summary (Souhrn využití), je vždy měrnou jednotkou smlouvy Enterprise. Úplný seznam aktuálních měrných jednotek a převodů pro jednotlivé služby najdete v excelovém souboru [Friendly Service Names](https://azurepricing.blob.core.windows.net/supplemental/Friendly_Service_Names.xlsx) (Popisné názvy služeb).
+Měrné jednotky pro smlouvy Enterprise se často liší od jednotek, které znáte z jiných programů, jako je například program Microsoft Online Services Agreement (MOSA). To znamená, že u řady služeb se měrná jednotka agreguje, aby bylo možné poskytovat normalizované ceny. Měrná jednotka, která se na portálu Azure Enterprise Portal zobrazuje v zobrazení Usage Summary (Souhrn využití), je vždy měrnou jednotkou smlouvy Enterprise. Úplný seznam aktuálních měrných jednotek a převodech pro jednotlivé služby získáte odesláním [žádosti o podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ### <a name="conversion-between-usage-detail-report-and-the-usage-summary-page"></a>Převod mezi sestavou podrobností o využití a stránkou souhrnu využití
 
@@ -324,13 +324,6 @@ Pokud ke změně distribučního partnera dojde uprostřed měsíce, zákazník 
 Tyto faktury se vystaví následující měsíc po skončení fakturačního období. V případě měsíční fakturace se faktura za září pro oba partnery vystaví v říjnu. V případě čtvrtletního nebo ročního fakturačního období může zákazník očekávat fakturu za využití v období pod předchozím přidruženým partnerem a zbývající využití se v závislosti na četnosti fakturace bude účtovat pod novým partnerem.
 
 ## <a name="next-steps"></a>Další kroky
-
-- Následující excelové soubory obsahují podrobnosti o službách Azure a aktualizují se 6. a 20. dne každého měsíce:
-
-   | Nadpis | Popis | Název souboru |
-   | --- | --- | --- |
-   | [Friendly Service Names](https://azurepricing.blob.core.windows.net/supplemental/Friendly_Service_Names.xlsx) (Popisné názvy služeb) | Obsahuje seznam všech aktivních služeb a zahrnuje: <br>  <ul><li>kagorii služby</li>   <li>popisný název služby</li>   <li>název zálohy a číslo součásti</li> <li>název spotřeby a číslo součásti</li>   <li>měrné jednotky</li>   <li>faktory převodu mezi vykázaným využitím a využitím zobrazeným na portálu Enterprise</li></ul> | Friendly\_Service\_Names.xlsx |
-   | [Service Download Fields](https://azurepricing.blob.core.windows.net/supplemental/Service_Download_Fields.xlsx) (Pole ve stažených informacích o službách) | Tato tabulka obsahuje seznam všech možných kombinací polí souvisejících se službami v sestavě využití ke stažení. | Service\_Download\_Fields.xlsx |
 
 - Informace, které vysvětlují fakturu a poplatky, najdete v tématu, ve kterém [je vysvětlená faktura ke smlouvě Azure Enterprise](../understand/review-enterprise-agreement-bill.md).
 - Pokud chcete začít používat portál Azure Enterprise Portal, přečtěte si, [jak začít používat portál Azure EA](ea-portal-get-started.md).

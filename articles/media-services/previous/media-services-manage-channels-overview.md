@@ -14,19 +14,19 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: f2e899a9d98d43f826bfa63e62458adf1601f071
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 77c68b3c17b8815c4858e1d73251975a7e00e6eb
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042992"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695700"
 ---
 # <a name="overview-of-live-streaming-using-media-services"></a>Přehled živého streamování pomocí Media Services
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-v-2-v-3-migration-introduction.md) .
 
 ## <a name="overview"></a>Přehled
 
@@ -53,7 +53,7 @@ Pomocí Media Services můžete využít výhod [dynamického balení](media-ser
 
 ## <a name="streaming-endpoints-channels-programs"></a>Koncové body streamování, kanály, programy
 
-Ve službě Azure Media Services se o zpracování všech funkcí živého streamování včetně ingestování, formátování, DVR, zabezpečení, škálovatelnosti a redundance starají **kanály** , **programy** a **koncové body streamování** .
+Ve službě Azure Media Services se o zpracování všech funkcí živého streamování včetně ingestování, formátování, DVR, zabezpečení, škálovatelnosti a redundance starají **kanály**, **programy** a **koncové body streamování**.
 
 **Kanál** představuje cestu pro zpracování obsahu živého streamování. Kanál může přijímat živé vstupní datové proudy následujícími způsoby:
 
@@ -74,18 +74,18 @@ Počínaje verzí Media Services 2,10 můžete při vytváření kanálu určit,
 
 Následující tabulka poskytuje návod pro porovnání dvou typů kanálů podporovaných v Media Services
 
-| Doporučené | Předávací kanál | Kanál Standard |
+| Funkce | Předávací kanál | Kanál Standard |
 | --- | --- | --- |
-| Vstup s jednou přenosovou rychlostí je kódovaný do více přenosových rychlostí v cloudu. |No |Yes |
+| Vstup s jednou přenosovou rychlostí je kódovaný do více přenosových rychlostí v cloudu. |No |Ano |
 | Maximální rozlišení, počet vrstev |1080p, 8 vrstev, 60 + fps |720p, 6 vrstev, 30 snímků za sekundu |
 | Vstupní protokoly |RTMP, Smooth Streaming |RTMP, Smooth Streaming |
 | Cena |Podívejte se na [stránku s cenami](https://azure.microsoft.com/pricing/details/media-services/) a klikněte na kartu živé video. |Zobrazit [stránku s cenami](https://azure.microsoft.com/pricing/details/media-services/) |
 | Maximální doba běhu |non |8 hodin |
-| Podpora pro vložení SLAT |No |Yes |
-| Podpora pro signalizaci AD |No |Yes |
-| Předávací titulky CEA 608/708 |Yes |Yes |
-| Podpora pro neuniformní vstupní GOPs |Yes |Ne – vstup musí být pevně 2sec GOPs. |
-| Podpora pro vstup variabilní frekvence snímků |Yes |Ne – vstupní hodnota musí být pevná snímková frekvence.<br/>Vedlejší variace jsou tolerovány, například při vysokém pohybu scény. Kodér ale nemůže přetahovat na 10 snímků za sekundu. |
+| Podpora pro vložení SLAT |No |Ano |
+| Podpora pro signalizaci AD |No |Ano |
+| Předávací titulky CEA 608/708 |Ano |Ano |
+| Podpora pro neuniformní vstupní GOPs |Ano |Ne – vstup musí být pevně 2sec GOPs. |
+| Podpora pro vstup variabilní frekvence snímků |Ano |Ne – vstupní hodnota musí být pevná snímková frekvence.<br/>Vedlejší variace jsou tolerovány, například při vysokém pohybu scény. Kodér ale nemůže přetahovat na 10 snímků za sekundu. |
 | Automatické shutoff kanálů při ztrátě vstupního kanálu |No |V případě, že není spuštěn žádný program, po 12 hodinách. |
 
 ## <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders-pass-through"></a>Práce s kanály, které přijímají živé datové proudy s více přenosovými rychlostmi z místních kodérů (průchozí)
@@ -142,11 +142,11 @@ Zodpovídáte za zastavování kanálů po dokončení práce s kanálem. Při z
 ### <a name="channel-states-and-how-they-map-to-the-billing-mode"></a><a id="states"></a>Stavy kanálu a jejich mapování na režim fakturace
 Aktuální stav kanálu. Mezi možné hodnoty patří:
 
-* **Zastaveno** . Toto je počáteční stav kanálu po jeho vytvoření (Pokud jste na portálu nevybrali Automatické spuštění). V tomto stavu nedochází k žádnému fakturaci. V tomto stavu je možné aktualizovat vlastnosti kanálu, ale streamování není povoleno.
+* **Zastaveno**. Toto je počáteční stav kanálu po jeho vytvoření (Pokud jste na portálu nevybrali Automatické spuštění). V tomto stavu nedochází k žádnému fakturaci. V tomto stavu je možné aktualizovat vlastnosti kanálu, ale streamování není povoleno.
 * **Spouští** se. Kanál se spouští. V tomto stavu nedochází k žádnému fakturaci. V tomto stavu nejsou povolené žádné aktualizace ani streamování. Pokud dojde k chybě, kanál se vrátí do stavu Zastaveno.
-* **Spuštěno** . Kanál dokáže zpracovávat živé streamy. Nyní je využití fakturace. Aby se zabránilo dalšímu fakturaci, je nutné kanál zastavit.
+* **Spuštěno**. Kanál dokáže zpracovávat živé streamy. Nyní je využití fakturace. Aby se zabránilo dalšímu fakturaci, je nutné kanál zastavit.
 * **Zastavuje** se. Kanál se zastavuje. V tomto přechodném stavu nedochází k žádnému účtování. V tomto stavu nejsou povolené žádné aktualizace ani streamování.
-* **Probíhá odstraňování** . Kanál se odstraňuje. V tomto přechodném stavu nedochází k žádnému účtování. V tomto stavu nejsou povolené žádné aktualizace ani streamování.
+* **Probíhá odstraňování**. Kanál se odstraňuje. V tomto přechodném stavu nedochází k žádnému účtování. V tomto stavu nejsou povolené žádné aktualizace ani streamování.
 
 Následující tabulka ukazuje, jak se stavy kanálu mapují na režim fakturace.
 

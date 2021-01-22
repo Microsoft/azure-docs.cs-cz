@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: d6d0d0a4c4b3328fa50777b5106bac202c9972ef
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: ea1ee2311d8655ce17017c73309bc69e89f4b5f4
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151507"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599107"
 ---
 # <a name="save-on-sap-hana-large-instances-with-an-azure-reservation"></a>Úspory pro Velké instance SAP HANA s využitím rezervace Azure
 
@@ -224,7 +224,7 @@ Následující informace popisují význam jednotlivých polí rezervace.
 
   **Typ rezervovaného prostředku:** `SapHana`
 
-  **Předplatné:** Předplatné použité pro platbu za rezervaci. Náklady na kapacitu se účtují pomocí způsobu platby zvoleného pro toto předplatné. Musí se jednat o předplatné se smlouvou Enterprise (číslo nabídky: MS-AZR-0017P nebo MS-AZR-0148P) nebo se Smlouvou se zákazníkem Microsoftu. Poplatky se strhávají z peněžního zůstatku, pokud je k dispozici, nebo se účtují jako nadlimitní využití.
+  **Předplatné:** Předplatné použité pro platbu za rezervaci. Náklady na kapacitu se účtují pomocí způsobu platby zvoleného pro toto předplatné. Musí se jednat o předplatné se smlouvou Enterprise (číslo nabídky: MS-AZR-0017P nebo MS-AZR-0148P) nebo se Smlouvou se zákazníkem Microsoftu. Poplatky se strhávají z Azure Prepaymentu (dřív označovaný jako peněžní závazek), pokud je k dispozici, nebo se účtují jako nadlimitní využití.
 
   **Rozsah:** Rezervace by měla mít jeden rozsah.
 

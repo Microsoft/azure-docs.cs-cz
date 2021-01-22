@@ -7,24 +7,24 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/15/2020
+ms.date: 01/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: ffb5a78c13413a46565a9c57c87dc8273742fd24
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 49364681f0c5b4b6cc4d5f20778edb61e9f6f5b3
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563445"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695776"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Zabezpečení v Azure Kognitivní hledání – přehled
 
-Tento článek popisuje klíčové funkce zabezpečení v Azure Kognitivní hledání, které mohou chránit obsah a operace.
+Tento článek popisuje funkce zabezpečení v Azure Kognitivní hledání, které chrání obsah a operace.
 
-+ Ve vrstvě úložiště je šifrování v klidovém umístění integrované pro veškerý obsah spravovaný službou uložený na disk, včetně indexů, map synonym a definic indexerů, zdrojů dat a dovednosti. Azure Kognitivní hledání také podporuje přidání klíčů spravovaných zákazníkem (CMK) pro další šifrování indexovaných obsahu. Pro služby vytvořené po 1 2020. srpna se šifrování CMK rozšíří na data na dočasných discích, aby bylo úplné šifrování indexovaného obsahu velmi dvojité.
++ Ve vrstvě úložiště je šifrování dat integrované pro veškerý obsah spravovaný službou uložený na disk, včetně indexů, map synonym a definic indexerů, zdrojů dat a dovednosti. Volitelně můžete přidat klíče spravované zákazníkem (CMK) pro dodatečné šifrování indexovaného obsahu. Pro služby vytvořené po 1 2020. srpna se šifrování CMK rozšíří na data na dočasných discích, pro úplné "dvojité šifrování" indexovaného obsahu.
 
-+ Příchozí zabezpečení chrání koncový bod vyhledávací služby na rostoucí úrovni zabezpečení: od klíčů rozhraní API v žádosti až po příchozí pravidla v bráně firewall až po privátní koncové body, které plně chrání vaše služby před veřejným internetem.
++ Příchozí zabezpečení odkazuje na ochranu na koncovém bodu vyhledávací služby na rostoucí úrovni zabezpečení: od klíčů rozhraní API v žádosti až po příchozí pravidla v bráně firewall až po privátní koncové body, které plně chrání vaše služby před veřejným internetem.
 
-+ Odchozí zabezpečení se vztahuje na indexery, které vyžádají obsah z externích zdrojů. U odchozích požadavků nastavte spravovanou identitu tak, aby při přístupu k datům z Azure Storage, Azure SQL, Cosmos DB nebo jiných zdrojů dat Azure provedla hledání důvěryhodné služby. Spravovaná identita je náhradou za přihlašovací údaje nebo přístupové klíče k připojení. V tomto článku se nezabývá odchozí zabezpečení. Další informace o této funkci najdete v tématu [připojení ke zdroji dat pomocí spravované identity](search-howto-managed-identities-data-sources.md).
++ Odchozí zabezpečení souvisí s indexery, které vyžádají obsah z externích zdrojů. U odchozích požadavků nastavte spravovanou identitu tak, aby při přístupu k datům z Azure Storage, Azure SQL, Cosmos DB nebo jiných zdrojů dat Azure provedla hledání důvěryhodné služby. Spravovaná identita je náhradou za přihlašovací údaje nebo přístupové klíče k připojení. V tomto článku se nezabývá odchozí zabezpečení. Další informace o této funkci najdete v tématu [připojení ke zdroji dat pomocí spravované identity](search-howto-managed-identities-data-sources.md).
 
 Podívejte se na toto video s rychlým tempem, kde se dozvíte přehled architektury zabezpečení a jednotlivých kategorií funkcí.
 
@@ -40,7 +40,7 @@ V Azure Kognitivní hledání začíná šifrování připojení a přenosů a r
 
 V následující tabulce jsou popsány datové [modely](../security/fundamentals/encryption-models.md)pro data, která jsou interně zpracovávána pomocí vyhledávací služby. Některé funkce, jako je znalostní báze, přírůstkové obohacení a indexování založené na indexerech, čtou nebo zapisují do datových struktur v jiných službách Azure. Tyto služby mají svou vlastní úroveň podpory šifrování, která je oddělená od Azure Kognitivní hledání.
 
-| Model | Klíče&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Požadavků&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Omezení | Platí pro |
+| Modelování | Klíče&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Požadavků&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Omezení | Platí pro |
 |------------------|-------|-------------|--------------|------------|
 | šifrování na straně serveru | Klíče spravované Microsoftem | Žádný (integrovaný) | Žádná, k dispozici na všech úrovních ve všech oblastech pro obsah vytvořený po lednu 24 2018. | Obsah (indexy a mapy synonym) a definice (indexery, zdroje dat, dovednosti) |
 | šifrování na straně serveru | klíče spravované zákazníkem | Azure Key Vault | K dispozici pro Fakturovatelné úrovně pro obsah vytvořený po lednu 2019 ve všech oblastech. | Obsah (indexy a mapy synonym) na datových discích |
