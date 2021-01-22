@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: b8738b46359287ce1d4e410292cdce213ab80999
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 9077ce35065b1bf45646496cc4c43d6def82d958
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98115816"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685221"
 ---
 # <a name="what-is-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Co je vyhrazený fond SQL (dřív SQL DW) ve službě Azure synapse Analytics?
 
@@ -29,7 +29,7 @@ Azure Synapse Analytics je analytická služba, která spojuje podnikové datov�
 
 Vyhrazený fond SQL (dříve SQL DW) představuje kolekci analytických prostředků, které jsou zřízené při používání synapse SQL. Velikost vyhrazeného fondu SQL (dříve SQL DW) je určená jednotkami datového skladu (DWU).
 
-Po vytvoření vyhrazeného fondu SQL můžete importovat velké objemy dat pomocí jednoduchých [základních](/sql/relational-databases/polybase/polybase-guide?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) dotazů T-SQL a pak využít sílu modulu distribuovaných dotazů ke spouštění vysoce výkonných analýz. Při integraci a analýze dat se vyhrazený fond SQL (dřív SQL DW) stane jedinou verzí pravdy, kterou vaše firma může počítat pro rychlejší a robustnější přehledy.
+Po vytvoření vyhrazeného fondu SQL můžete importovat velké objemy dat pomocí jednoduchých [základních](/sql/relational-databases/polybase/polybase-guide?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) dotazů T-SQL a pak využít sílu modulu distribuovaných dotazů ke spouštění vysoce výkonných analýz. Při integraci a analýze dat se vyhrazený fond SQL (dřív SQL DW) stane jedinou verzí pravdy, kterou vaše firma může počítat pro rychlejší a robustnější přehledy.
 
 > [!NOTE]
 >Prozkoumejte [dokumentaci ke službě Azure synapse Analytics](../overview-what-is.md).

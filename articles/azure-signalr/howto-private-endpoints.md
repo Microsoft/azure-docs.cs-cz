@@ -8,12 +8,12 @@ ms.service: signalr
 ms.topic: article
 ms.date: 05/06/2020
 ms.author: dayshen
-ms.openlocfilehash: 80369883b84ca30cae475235d41addcfba7e52e1
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 92e93c3746308d2d6c1a489efc6b5c866b0ad2d9
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152333"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682626"
 ---
 # <a name="use-private-endpoints-for-azure-signalr-service"></a>Použití privátních koncových bodů pro službu Azure Signal Service
 
@@ -35,7 +35,7 @@ Aplikace ve virtuální síti se můžou bez problémů připojit ke službě Az
 
 Když vytvoříte privátní koncový bod pro službu Azure Signal Service ve vaší virtuální síti, pošle se žádost o souhlas ke schválení vlastníkem služby signalizace Azure. Pokud je uživatel požadující vytvoření privátního koncového bodu také vlastníkem služby Azure Signaler, je tato žádost o přijetí souhlasu automaticky schválena.
 
-Vlastníci služby signálu v Azure mohou spravovat žádosti o souhlas a soukromé koncové body prostřednictvím karty*privátní koncové body*pro službu Azure Signal Service v [Azure Portal](https://portal.azure.com).
+Vlastníci služby signálu v Azure mohou spravovat žádosti o souhlas a soukromé koncové body prostřednictvím karty *privátní koncové body* pro službu Azure Signal Service v [Azure Portal](https://portal.azure.com).
 
 > [!TIP]
 > Pokud chcete omezit přístup k vaší službě Azure Signal pomocí pouze privátního koncového bodu, [nakonfigurujte Access Control sítě](howto-network-access-control.md#managing-network-access-control) tak, aby odepřela nebo řídit přístup prostřednictvím veřejného koncového bodu.
@@ -126,55 +126,55 @@ Další informace o konfiguraci vlastního serveru DNS pro podporu privátních 
 ### <a name="create-a-private-endpoint-using-azure-cli"></a>Vytvoření privátního koncového bodu pomocí Azure CLI
 
 1. Přihlášení do Azure CLI
-    ```console
+    ```azurecli
     az login
     ```
 1. Vyberte své předplatné Azure.
-    ```console
+    ```azurecli
     az account set --subscription {AZURE SUBSCRIPTION ID}
     ```
 1. Vytvoření nové skupiny prostředků
-    ```console
+    ```azurecli
     az group create -n {RG} -l {AZURE REGION}
     ```
 1. Registrovat Microsoft. SignalRService jako poskytovatele
-    ```console
+    ```azurecli
     az provider register -n Microsoft.SignalRService
     ```
 1. Vytvořit novou službu Azure Signal Service
-    ```console
+    ```azurecli
     az signalr create --name {NAME} --resource-group {RG} --location {AZURE REGION} --sku Standard_S1
     ```
 1. Vytvoření virtuální sítě
-    ```console
+    ```azurecli
     az network vnet create --resource-group {RG} --name {vNet NAME} --location {AZURE REGION}
     ```
 1. Přidání podsítě
-    ```console
+    ```azurecli
     az network vnet subnet create --resource-group {RG} --vnet-name {vNet NAME} --name {subnet NAME} --address-prefixes {addressPrefix}
     ```
 1. Zakázat zásady Virtual Network
-    ```console
+    ```azurecli
     az network vnet subnet update --name {subnet NAME} --resource-group {RG} --vnet-name {vNet NAME} --disable-private-endpoint-network-policies true
     ```
 1. Přidat zónu Privátní DNS
-    ```console
+    ```azurecli
     az network private-dns zone create --resource-group {RG} --name privatelink.service.signalr.net
     ```
 1. Propojit zónu Privátní DNS s Virtual Network
-    ```console
+    ```azurecli
     az network private-dns link vnet create --resource-group {RG} --virtual-network {vNet NAME} --zone-name privatelink.service.signalr.net --name {dnsZoneLinkName} --registration-enabled true
     ```
 1. Vytvoření privátního koncového bodu (automaticky schvalovat)
-    ```console
+    ```azurecli
     az network private-endpoint create --resource-group {RG} --vnet-name {vNet NAME} --subnet {subnet NAME} --name {Private Endpoint Name}  --private-connection-resource-id "/subscriptions/{AZURE SUBSCRIPTION ID}/resourceGroups/{RG}/providers/Microsoft.SignalRService/SignalR/{NAME}" --group-ids signalr --connection-name {Private Link Connection Name} --location {AZURE REGION}
     ```
 1. Vytvoření privátního koncového bodu (žádost o schválení ručně)
-    ```console
+    ```azurecli
     az network private-endpoint create --resource-group {RG} --vnet-name {vNet NAME} --subnet {subnet NAME} --name {Private Endpoint Name}  --private-connection-resource-id "/subscriptions/{AZURE SUBSCRIPTION ID}/resourceGroups/{RG}/providers/Microsoft.SignalRService/SignalR/{NAME}" --group-ids signalr --connection-name {Private Link Connection Name} --location {AZURE REGION} --manual-request
     ```
 1. Zobrazit stav připojení
-    ```console
+    ```azurecli
     az network private-endpoint show --resource-group {RG} --name {Private Endpoint Name}
     ```
 

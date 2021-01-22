@@ -9,18 +9,18 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 1a0bfb79b03b778696faef29597cabbcff47e6df
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: a7b8cb10f75d7a99198ddfdc1a1bbef3c34a03da
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601667"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685102"
 ---
 # <a name="create-an-image-from-a-vm"></a>Vytvoření image z virtuálního počítače
 
 Pokud máte existující virtuální počítač, který byste chtěli použít k vytvoření několika identických virtuálních počítačů, můžete pomocí tohoto virtuálního počítače vytvořit image v galerii sdílených imagí pomocí Azure PowerShell. Můžete také vytvořit image z virtuálního počítače pomocí rozhraní příkazového [řádku Azure CLI](image-version-vm-cli.md).
 
-Pomocí Azure PowerShell můžete zachytit image z [specializovaných i zobecněných](./windows/shared-image-galleries.md#generalized-and-specialized-images) virtuálních počítačů. 
+Pomocí Azure PowerShell můžete zachytit image z [specializovaných i zobecněných](./shared-image-galleries.md#generalized-and-specialized-images) virtuálních počítačů. 
 
 Obrázky v galerii obrázků mají dvě komponenty, které vytvoříme v tomto příkladu:
 - **Definice obrázku** obsahuje informace o imagi a požadavcích na jejich použití. To zahrnuje, zda se jedná o obrázek Windows nebo Linux, specializované nebo zobecněné, poznámky k verzi a minimální a maximální požadavky na paměť. Je definicí typu obrázku. 
@@ -77,7 +77,7 @@ Definice obrázků vytvoří logické seskupení obrázků. Používají se ke s
 
 Při vytváření definice obrázku se ujistěte, že jsou všechny správné informace. Pokud jste virtuální počítač zobecněni (pomocí nástroje Sysprep pro Windows nebo waagent-disvisioning pro Linux), měli byste vytvořit definici Image pomocí `-OsState generalized` . Pokud jste virtuální počítač nezobecněni, vytvořte definici Image pomocí nástroje `-OsState specialized` .
 
-Další informace o hodnotách, které můžete zadat pro definici obrázku, najdete v tématu [definice imagí](./windows/shared-image-galleries.md#image-definitions).
+Další informace o hodnotách, které můžete zadat pro definici obrázku, najdete v tématu [definice imagí](./shared-image-galleries.md#image-definitions).
 
 Vytvořte definici Image pomocí [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion). 
 

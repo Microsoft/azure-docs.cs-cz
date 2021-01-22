@@ -2,14 +2,14 @@
 title: Spuštění systému Linux na výpočetních uzlech virtuálních počítačů
 description: Naučte se zpracovávat paralelní výpočetní úlohy na fondech virtuálních počítačů se systémem Linux v Azure Batch.
 ms.topic: how-to
-ms.date: 11/10/2020
+ms.date: 01/21/2021
 ms.custom: H1Hack27Feb2017, devx-track-python, devx-track-csharp
-ms.openlocfilehash: 0a9c801a13af05f077b87f296992da7f50742e4b
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: c711ec0d035b9b59ec7628a51fe3cff26de358bc
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94533493"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683696"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Zřizování výpočetních uzlů pro Linux ve fondech Batch
 
@@ -17,9 +17,7 @@ K provozování paralelních výpočetních úloh na virtuálních počítačíc
 
 ## <a name="virtual-machine-configuration"></a>Konfigurace virtuálního počítače
 
-Při vytváření fondu výpočetních uzlů ve službě Batch máte dvě možnosti, ze kterých můžete vybrat velikost uzlu a operační systém: Cloud Services konfigurace a konfigurace virtuálního počítače. Většina fondů výpočetních uzlů Windows používá [Cloud Services konfigurace](nodes-and-pools.md#cloud-services-configuration), která určuje, že se fond skládá z uzlů Azure Cloud Services. Tyto fondy poskytují jenom výpočetní uzly Windows.
-
-Naproti tomu [Konfigurace virtuálního počítače](nodes-and-pools.md#virtual-machine-configuration) určuje, že se fond skládá z virtuálních počítačů Azure, které se můžou vytvořit z imagí Linux nebo Windows. Když vytváříte fond s konfigurací virtuálního počítače, musíte zadat [dostupnou velikost výpočetního uzlu](../virtual-machines/sizes.md), odkaz na image virtuálního počítače a SKU agenta uzlu služby Batch (program, který běží na jednotlivých uzlech a poskytuje rozhraní mezi uzlem a službou Batch) a odkaz na image virtuálního počítače, který bude nainstalován na uzlech.
+Při vytváření fondu výpočetních uzlů ve službě Batch máte dvě možnosti, ze kterých můžete vybrat velikost uzlu a operační systém: Cloud Services konfigurace a konfigurace virtuálního počítače. Fondy [konfigurací virtuálních počítačů](nodes-and-pools.md#virtual-machine-configuration) se skládají z virtuálních počítačů Azure, které se dají vytvořit z imagí Linux nebo Windows. Když vytváříte fond s konfigurací virtuálního počítače, zadáte [dostupnou velikost výpočetního uzlu](../virtual-machines/sizes.md), odkaz na bitovou kopii virtuálního počítače, který se má nainstalovat na uzly, a SKU agenta uzlu služby Batch (program, který běží na jednotlivých uzlech a poskytuje rozhraní mezi uzlem a službou Batch).
 
 ### <a name="virtual-machine-image-reference"></a>Odkaz na image virtuálního počítače
 
@@ -35,7 +33,11 @@ Když vytvoříte odkaz na image virtuálního počítače, musíte zadat násle
 | Verze |nejnovější |
 
 > [!TIP]
-> Další informace o těchto vlastnostech a o tom, jak zadat image z Marketplace, najdete v článku o [hledání imagí virtuálních počítačů Linux v Azure Marketplace pomocí Azure CLI](../virtual-machines/linux/cli-ps-findimage.md). Všimněte si, že ne všechny image Marketplace jsou aktuálně kompatibilní se službou Batch.
+> Další informace o těchto vlastnostech a o tom, jak zadat image z Marketplace, najdete v článku o [hledání imagí virtuálních počítačů Linux v Azure Marketplace pomocí Azure CLI](../virtual-machines/linux/cli-ps-findimage.md). Všimněte si, že některé image Marketplace nejsou aktuálně kompatibilní se službou Batch.
+
+### <a name="list-of-virtual-machine-images"></a>Seznam imagí virtuálních počítačů
+
+Ne všechny image na Marketplace jsou kompatibilní s aktuálně dostupnými agenty uzlu Batch. Pokud chcete zobrazit seznam všech podporovaných imagí virtuálních počítačů Marketplace pro službu Batch a jejich odpovídajících SKU agenta uzlu, použijte [list_supported_images](/python/api/azure-batch/azure.batch.operations.AccountOperations#list-supported-images-account-list-supported-images-options-none--custom-headers-none--raw-false----operation-config-) (Python), [ListSupportedImages](/dotnet/api/microsoft.azure.batch.pooloperations.listsupportedimages) (Batch .NET) nebo odpovídající rozhraní API v jiné jazykové sadě SDK.
 
 ### <a name="node-agent-sku"></a>SKU agenta uzlu
 
@@ -44,10 +46,6 @@ Když vytvoříte odkaz na image virtuálního počítače, musíte zadat násle
 - Batch. Node. Ubuntu 18,04
 - Batch. Node. CentOS 7
 - Batch. Node. Windows amd64
-
-### <a name="list-of-virtual-machine-images"></a>Seznam imagí virtuálních počítačů
-
-Ne všechny image na Marketplace jsou kompatibilní s aktuálně dostupnými agenty uzlu Batch. Pokud chcete zobrazit seznam všech podporovaných imagí virtuálních počítačů Marketplace pro službu Batch a jejich odpovídajících SKU agenta uzlu, použijte [list_supported_images](/python/api/azure-batch/azure.batch.operations.AccountOperations#list-supported-images-account-list-supported-images-options-none--custom-headers-none--raw-false----operation-config-) (Python), [ListSupportedImages](/dotnet/api/microsoft.azure.batch.pooloperations.listsupportedimages) (Batch .NET) nebo odpovídající rozhraní API v jiné jazykové sadě SDK.
 
 ## <a name="create-a-linux-pool-batch-python"></a>Vytvoření fondu pro Linux: Batch Python
 
@@ -269,7 +267,7 @@ Místo hesla můžete zadat veřejný klíč SSH při vytváření uživatele v 
 
 ## <a name="pricing"></a>Ceny
 
-Azure Batch je postavená na technologii Azure Cloud Services a platformě Azure Virtual Machines. Samotná služba Batch je bezplatně nabízená, což znamená, že se vám účtují jenom výpočetní prostředky (a související náklady, které zahrnují), které vaše řešení Batch spotřebují. Když zvolíte **konfiguraci virtuálního počítače** , bude se vám účtovat na základě [Virtual Machines cenové](https://azure.microsoft.com/pricing/details/virtual-machines/) struktury.
+Azure Batch je postavená na technologii Azure Cloud Services a platformě Azure Virtual Machines. Samotná služba Batch je bezplatně nabízená, což znamená, že se vám účtují jenom výpočetní prostředky (a související náklady, které zahrnují), které vaše řešení Batch spotřebují. Když zvolíte **konfiguraci virtuálního počítače**, bude se vám účtovat na základě [Virtual Machines cenové](https://azure.microsoft.com/pricing/details/virtual-machines/) struktury.
 
 Pokud nasazujete aplikace do vašich dávkových uzlů pomocí [balíčků aplikací](batch-application-packages.md), účtují se vám také Azure Storage prostředky, které vaše balíčky aplikací spotřebovávají.
 

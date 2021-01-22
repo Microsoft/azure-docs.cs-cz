@@ -4,12 +4,12 @@ description: Naučte se, jak připojit aplikaci Function App k Application Insig
 ms.date: 8/31/2020
 ms.topic: how-to
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 24350eb07481db66907d199cd96f84a02cc98c9e
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 73ed679288d9d03b81a0b01670aa0f574a14839f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937276"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684704"
 ---
 # <a name="how-to-configure-monitoring-for-azure-functions"></a>Postup konfigurace monitorování pro Azure Functions
 
@@ -233,7 +233,7 @@ az functionapp config appsettings delete --name <FUNCTION_APP_NAME> \
 
 Aby aplikace Function App odesílala data Application Insights, musí znát klíč instrumentace prostředku Application Insights. Klíč musí být v nastavení aplikace s názvem **APPINSIGHTS_INSTRUMENTATIONKEY**.
 
-Když vytvoříte aplikaci Function App [v Azure Portal](functions-create-first-azure-function.md), z příkazového řádku pomocí [Azure Functions Core Tools](./create-first-function-cli-csharp.md)nebo pomocí [Visual Studio Code](./create-first-function-vs-code-csharp.md)je ve výchozím nastavení povolená integrace Application Insights. Prostředek Application Insights má stejný název jako aplikace Function App a je vytvořený buď ve stejné oblasti, nebo v nejbližší oblasti.
+Když vytvoříte aplikaci Function App [v Azure Portal](./functions-get-started.md), z příkazového řádku pomocí [Azure Functions Core Tools](./create-first-function-cli-csharp.md)nebo pomocí [Visual Studio Code](./create-first-function-vs-code-csharp.md)je ve výchozím nastavení povolená integrace Application Insights. Prostředek Application Insights má stejný název jako aplikace Function App a je vytvořený buď ve stejné oblasti, nebo v nejbližší oblasti.
 
 ### <a name="new-function-app-in-the-portal"></a>Nová aplikace Function App na portálu
 

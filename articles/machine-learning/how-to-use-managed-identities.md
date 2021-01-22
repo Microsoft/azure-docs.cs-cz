@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 3490e3004e5f5dd99795967f0deb8510200fa50b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b0b0c43039648737b229edc79dd4e0a3dc45f38e
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311042"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683336"
 ---
 # <a name="use-managed-identities-with-azure-machine-learning-preview"></a>Použití spravovaných identit s Azure Machine Learningm (Preview)
 
@@ -33,12 +33,12 @@ V tomto článku se dozvíte, jak používat spravované identity k těmto akcí
 > [!IMPORTANT]
 > Použití spravovaných identit k řízení přístupu k prostředkům pomocí Azure Machine Learning je aktuálně ve verzi Preview. Funkce ve verzi Preview je poskytována tak, jak je, bez záruky podpory nebo smlouvy o úrovni služeb. Další informace najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
  
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
 - [Rozšíření Azure CLI pro službu Machine Learning](reference-azure-machine-learning-cli.md)
 - [Sada SDK Azure Machine Learning Pythonu](/python/api/overview/azure/ml/intro?view=azure-ml-py).
-- Aby bylo možné přiřadit role, přihlášení k předplatnému Azure musí mít roli [spravovaného operátora identity](../role-based-access-control/built-in-roles.md#managed-identity-operator) nebo jinou roli, která uděluje požadované akce (například __vlastník__ ).
+- Aby bylo možné přiřadit role, přihlášení k předplatnému Azure musí mít roli [spravovaného operátora identity](../role-based-access-control/built-in-roles.md#managed-identity-operator) nebo jinou roli, která uděluje požadované akce (například __vlastník__).
 - Musíte být obeznámeni s vytvářením a práci se [spravovanými identitami](../active-directory/managed-identities-azure-resources/overview.md).
 
 ## <a name="configure-managed-identities"></a>Konfigurace spravovaných identit
@@ -59,7 +59,7 @@ Pokud je uživatel s rolí správce ACR zakázaný zásadami předplatného, mě
 [Vytvořte ACR z Azure CLI](../container-registry/container-registry-get-started-azure-cli.md) bez nastavení ```--admin-enabled``` argumentu nebo z Azure Portal bez povolení uživatele s oprávněními správce. Při vytváření pracovního prostoru Azure Machine Learning zadejte ID prostředku Azure pro ACR. Následující příklad ukazuje vytvoření nového pracovního prostoru Azure ML, který používá stávající ACR:
 
 > [!TIP]
-> Hodnotu parametru získáte tak `--container-registry` , že pomocí příkazu [AZ ACR show](/cli/azure/acr?view=azure-cli-latest#az_acr_show) zobrazíte informace pro svůj ACR. `id`Pole obsahuje ID prostředku pro vaši ACR.
+> Hodnotu parametru získáte tak `--container-registry` , že pomocí příkazu [AZ ACR show](/cli/azure/acr#az_acr_show) zobrazíte informace pro svůj ACR. `id`Pole obsahuje ID prostředku pro vaši ACR.
 
 ```azurecli-interactive
 az ml workspace create -w <workspace name> \
@@ -90,7 +90,7 @@ Pokud nepřinesete vlastní ACR, služba Azure Machine Learning ji při provád�
 
     Tento příkaz vrátí hodnotu podobnou následujícímu textu. Přejete si pouze poslední část textu, což je název instance ACR:
 
-    ```text
+    ```output
     /subscriptions/<subscription id>/resourceGroups/<my resource group>/providers/MicrosoftContainerReggistry/registries/<ACR instance name>
     ```
 

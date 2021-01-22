@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d6bf4df1499d919cead0a184054e5ba0db9c06e
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 0620304de1866d24719b137836419502cd25bee9
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97346596"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682233"
 ---
 # <a name="troubleshoot-self-service-password-reset-writeback-in-azure-active-directory"></a>Řešení potíží se zpětným zápisem pro Samoobslužné resetování hesla ve službě Azure Active Directory
 
@@ -43,7 +43,7 @@ U Azure AD Connect verze *verze 1.1.443.0* a vyšší se vyžaduje přístup k *
 * *\*. passwordreset.microsoftonline.com*
 * *\*. servicebus.windows.net*
 
-[Koncové body Azure gov](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure#guidance-for-developers):
+[Koncové body Azure gov](../../azure-government/compare-azure-government-global-azure.md#guidance-for-developers):
 
 * *\*. passwordreset.microsoftonline.us*
 * *\*. servicebus.usgovcloudapi.net*
@@ -137,7 +137,7 @@ Azure AD Connect vyžaduje pro zpětný zápis hesla služba AD DS **resetován�
 
 Při zpětném zápisu hesla se můžou vyskytnout následující problémy, které jsou konkrétnější. Pokud máte jednu z těchto chyb, zkontrolujte navržené řešení a zkontrolujte, jestli zpětný zápis hesla funguje správně.
 
-| Chybová | Řešení |
+| Chyba | Řešení |
 | --- | --- |
 | Služba resetování hesla se nespustí místně. V protokolu událostí aplikace Azure AD Connectho počítače se zobrazí chyba 6800. <br> <br> Po zaregistrování, federovaném, předávacím ověřování nebo heslem synchronizovaným uživatelům nejde resetovat hesla. | Když je povolen zpětný zápis hesla, synchronizační modul zavolá knihovnu zpětného zápisu, aby provedl konfiguraci (připojování) tím, že komunikuje se službou clouding pro registraci. Jakékoli chyby, ke kterým došlo během připojování nebo spuštění koncového bodu služby Windows Communication Foundation (WCF) pro zpětný zápis hesla, mají za následek chyby v protokolu událostí v počítači Azure AD Connect. <br> <br> Při restartování služby Azure AD Sync (ADSync) se při konfiguraci zpětného zápisu spustí koncový bod WCF. Pokud ale po spuštění koncového bodu dojde k chybě, protokoluje se událost 6800 a služba synchronizace se spustí. Přítomnost této události znamená, že se koncový bod zpětného zápisu hesla nespustil. Podrobnosti protokolu událostí pro událost 6800 společně s položkami protokolu událostí generovanými komponentou PasswordResetService určují, proč nelze koncový bod spustit. Zkontrolujte tyto chyby protokolu událostí a pokuste se restartovat Azure AD Connect, pokud zpětný zápis hesla stále nefunguje. Pokud potíže potrvají, zkuste zakázat a znovu povolit zpětný zápis hesla.
 | Když se uživatel pokusí resetovat heslo nebo odemknout účet se zapnutým zpětným zápisem hesla, operace se nezdařila. <br> <br> Kromě toho se v protokolu událostí Azure AD Connect, který obsahuje, zobrazí událost s informacemi o tom, že synchronizační modul vrátil chybu HR = 800700CE, zpráva = název souboru nebo přípona je moc dlouhá, až nastane operace odemknutí. | Vyhledejte účet služby Active Directory pro Azure AD Connect a resetujte heslo, aby neobsahovalo více než 256 znaků. V dalším kroku otevřete **synchronizační službu** z nabídky **Start** . Přejděte ke **konektorům** a najděte **konektor služby Active Directory**. Vyberte ji a pak vyberte **vlastnosti**. Přejděte na stránku **přihlašovací údaje** a zadejte nové heslo. Kliknutím na **tlačítko OK** stránku zavřete. |
@@ -155,7 +155,7 @@ Osvědčeným postupem při odstraňování potíží se zpětným zápisem hesl
 
 ### <a name="if-the-source-of-the-event-is-adsync"></a>Pokud je zdrojem události ADSync
 
-| Kód | Název nebo zpráva | Popis |
+| Kód | Název nebo zpráva | Description |
 | --- | --- | --- |
 | 6329 | BAIL: MMS (4924) 0x80230619: "omezení brání změně hesla na aktuálně zadaný." | K této události dojde, když se služba zpětného zápisu hesla pokusí nastavit heslo v místním adresáři, které nesplňuje stáří hesla, historii, složitost nebo požadavky na filtrování domény. <br> <br> Pokud máte minimální stáří hesla a v časovém intervalu jste nedávno změnili heslo, nebudete moct znovu změnit heslo, dokud nedosáhne zadaného stáří ve vaší doméně. Pro účely testování musí být minimální stáří nastavené na 0. <br> <br> Pokud máte povolené požadavky na historii hesel, musíte vybrat heslo, které se nepoužilo v posledních *n* časech, kde *N* je nastavení historie hesel. Pokud vyberete heslo, které se v posledních *N* časech používalo, zobrazí se v tomto případě chyba. Pro účely testování by měla být historie hesel nastavená na 0. <br> <br> Pokud máte požadavky na složitost hesla, budou všechny tyto zásady vynutily, když se uživatel pokusí změnit nebo resetovat heslo. <br> <br> Pokud máte povolené filtry hesel a uživatel vybere heslo, které nesplňuje kritéria filtrování, operace obnovení nebo změny se nezdařila. |
 | 6329 | MMS (3040): admaexport. cpp (2837): Server neobsahuje ovládací prvek zásad hesel LDAP. | K tomuto problému dochází, pokud se na řadičích domény nepovoluje LDAP_SERVER_POLICY_HINTS_OID Control (1.2.840.113556.1.4.2066). Chcete-li použít funkci zpětného zápisu hesla, je nutné povolit ovládací prvek. K tomu je potřeba, aby řadiče domény byly na Windows serveru 2008 R2 nebo novějším. |
@@ -163,7 +163,7 @@ Osvědčeným postupem při odstraňování potíží se zpětným zápisem hesl
 
 ### <a name="if-the-source-of-the-event-is-passwordresetservice"></a>Pokud je zdrojem události PasswordResetService
 
-| Kód | Název nebo zpráva | Popis |
+| Kód | Název nebo zpráva | Description |
 | --- | --- | --- |
 | 31001 | PasswordResetStart | Tato událost označuje, že místní služba zjistila požadavek na resetování hesla pro federované, předávací ověřování nebo uživatele synchronizující hodnotu hash hesla, které pocházejí z cloudu. Tato událost představuje první událost při každé operaci zpětného zápisu hesla a obnovení. |
 | 31002 | PasswordResetSuccess | Tato událost označuje, že uživatel během operace resetování hesla vybral nové heslo. Zjistili jsme, že toto heslo splňuje požadavky na heslo společnosti. Heslo se úspěšně zapsalo zpátky do místního prostředí Active Directory. |

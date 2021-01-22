@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 52071b964412071d820745b173e8835c6f9e7d0e
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 62f89106538ab7f57047e211fc8715878f889af1
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510987"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684555"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>Dočasné disky s operačním systémem pro virtuální počítače Azure
 
@@ -26,7 +26,7 @@ Klíčové funkce dočasných disků:
 - Nižší latence, podobně jako dočasný disk. 
 - Dočasné disky s operačním systémem jsou bezplatné, neúčtují se žádné náklady na úložiště pro disk s operačním systémem.
 - Jsou k dispozici ve všech oblastech Azure. 
-- [Galerie sdílených imagí](./linux/shared-image-galleries.md)podporuje dočasný disk s operačním systémem. 
+- [Galerie sdílených imagí](./shared-image-galleries.md)podporuje dočasný disk s operačním systémem. 
  
 
  
@@ -40,7 +40,7 @@ Klíčové rozdíly mezi trvalými a dočasnými disky s operačním systémem:
 | **Podpora oblastí**              | Všechny oblasti                                                                                  | Všechny oblasti                              |
 | **Trvalost dat**            | Data disku s operačním systémem zapsaná na disk s operačním systémem se ukládají v Azure Storage                                  | Data zapsaná na disk s operačním systémem se ukládají do místního úložiště virtuálního počítače a neukládají se do Azure Storage. |
 | **Stav zastavení a zrušení přidělení**      | Virtuální počítače a instance sady škálování se dají zastavit – zrušit přidělení a restartovat ze stavu Zastaveno (přidělení). | Virtuální počítače a instance sady škálování nelze zastavit – zrušit přidělení                                  |
-| **Specializovaná podpora disků s operačním systémem** | Ano                                                                                          | Ne                                                                                 |
+| **Specializovaná podpora disků s operačním systémem** | Yes                                                                                          | No                                                                                 |
 | **Změna velikosti disku s operačním systémem**              | Podporováno během vytváření virtuálních počítačů a po zastavení virtuálního počítače – zrušení přidělení                                | Podporováno pouze během vytváření virtuálních počítačů                                                  |
 | **Změna velikosti nového virtuálního počítače**   | Data disku operačního systému se zachovají.                                                                    | Data na disku s operačním systémem se odstraní, operační systém se znovu zřídí.       
 | **Umístění stránkovacího souboru**   | Pro Windows je stránkovací soubor uložený na disku prostředků.                                              | Pro Windows je stránkovací soubor uložený na disku s operačním systémem.   |

@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions, devx-track-azurecli
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef2c9d7e2388d2da7a807fbf6b579360115a8323
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 22a4bdc92ea2a91425c1070a5837c672307de665
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629795"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683772"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Přihlášení k virtuálnímu počítači s Windows v Azure pomocí ověřování Azure Active Directory (Preview)
 
@@ -227,7 +227,7 @@ Nyní jste přihlášeni k virtuálnímu počítači s Windows serverem 2019 Azu
 > [!NOTE]
 > Můžete uložit. Soubor RDP místně ve vašem počítači, aby se spouštěla budoucí připojení vzdálené plochy k virtuálnímu počítači, nemusíte v Azure Portal přejít na stránku Přehled virtuálního počítače a použít možnost připojit.
 
-## <a name="troubleshoot"></a>Odstranit potíže
+## <a name="troubleshoot"></a>Řešení potíží
 
 ### <a name="troubleshoot-deployment-issues"></a>Řešení problémů při nasazování
 
@@ -335,7 +335,7 @@ Pokud se při inicializaci připojení ke vzdálené ploše na virtuální poč�
 Ověřte, že jste pro virtuální počítač [nakonfigurovali zásady Azure RBAC](../../virtual-machines/linux/login-using-aad.md) , které udělí uživateli buď přihlašovací jméno správce virtuálního počítače, nebo roli přihlášení uživatele virtuálního počítače:
 
 > [!NOTE]
-> Pokud máte problémy s přiřazením rolí Azure, přečtěte si téma [řešení potíží s technologií Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/troubleshooting#azure-role-assignments-limit).
+> Pokud máte problémy s přiřazením rolí Azure, přečtěte si téma [řešení potíží s technologií Azure RBAC](../../role-based-access-control/troubleshooting.md#azure-role-assignments-limit).
  
 #### <a name="unauthorized-client"></a>Neautorizovaný klient
 

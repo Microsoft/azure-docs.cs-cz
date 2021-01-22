@@ -8,13 +8,13 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/01/2020
-ms.openlocfilehash: ee13b2fbe4abbaf9bddf4975f8e25d746dc78f5e
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.date: 01/19/2021
+ms.openlocfilehash: 31398a49de871ad44499a796adfef1be618ccab9
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232178"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685170"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure Time Series Insights zdroje událostí Gen2
 
@@ -45,7 +45,7 @@ Po připojení zdroje událostí vaše prostředí Azure Time Series Insights Ge
 
 - Nepřekračuje [limit četnosti propustnosti](./concepts-streaming-ingress-throughput-limits.md) vašeho prostředí ani limit počtu na oddíly.
 
-- Nakonfigurujte [Upozornění](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts) na prodlevu, které bude informovat, pokud vaše prostředí má problémy zpracovávající data. Doporučené podmínky upozornění najdete v tématu [produkční úlohy](./concepts-streaming-ingestion-event-sources.md#production-workloads) níže. 
+- Nakonfigurujte [Upozornění](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts) na prodlevu, které bude informovat, pokud vaše prostředí má problémy zpracovávající data. Doporučené podmínky upozornění najdete v tématu [produkční úlohy](./concepts-streaming-ingestion-event-sources.md#production-workloads) níže.
 
 - Ingestování streamování se dá použít jenom pro téměř v reálném čase i pro poslední data. data streamovaná v historických datech se nepodporují.
 
@@ -55,14 +55,14 @@ Po připojení zdroje událostí vaše prostředí Azure Time Series Insights Ge
 
 ## <a name="production-workloads"></a>Produkční úlohy
 
-Kromě výše uvedených osvědčených postupů doporučujeme, abyste pro důležité pracovní úlohy implementovali následující: 
+Kromě výše uvedených osvědčených postupů doporučujeme, abyste pro důležité pracovní úlohy implementovali následující:
 
 - Zvyšte dobu uchování dat IoT Hub nebo centra událostí na maximálně 7 dní.
 
 - Vytvořte výstrahy prostředí v Azure Portal. Výstrahy založené na [metrikách](https://docs.microsoft.com/azure/time-series-insights/how-to-monitor-tsi-reference#metrics) platforem umožňují ověřit kompletní chování kanálu. [Tady najdete](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency#monitor-latency-and-throttling-with-alerts)pokyny k vytváření a správě výstrah. Navrhované podmínky upozornění:
 
-     - IngressReceivedMessagesTimeLag je větší než 5 minut
-     - IngressReceivedBytes je 0
+  - IngressReceivedMessagesTimeLag je větší než 5 minut
+  - IngressReceivedBytes je 0
 - Zachovejte vyrovnávání zatížení příjmu mezi IoT Hub nebo oddíly centra událostí.
 
 ### <a name="historical-data-ingestion"></a>Ingestování historických dat

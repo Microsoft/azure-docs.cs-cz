@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 43625a80df76ff35b8bb1804df5f5fd1524326c5
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ba66013e37c196c58291a6bcd979be7fb5fa0130
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097528"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684572"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Online zálohování a obnovení dat na vyžádání v Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -52,15 +52,15 @@ Pro změnu výchozích možností zálohování pro existující účet Azure Co
 
    * **Kopie uchovávaných dat** – ve výchozím nastavení se pro dvě záložní kopie vašich dat nabízí zdarma. Pokud potřebujete víc než dvě kopie, účtuje se další poplatek. Informace o přesné ceně za další kopie najdete na stránce s cenami v části [Spotřebované úložiště](https://azure.microsoft.com/pricing/details/cosmos-db/).
 
-   :::image type="content" source="./media/online-backup-and-restore/configure-backup-interval-retention.png" alt-text="Periodické úplné zálohování všech entit Cosmos DB v GRS Azure Storage" border="true":::
+   :::image type="content" source="./media/online-backup-and-restore/configure-backup-interval-retention.png" alt-text="Konfigurace intervalu zálohování a uchování pro existující účet Azure Cosmos" border="true":::
 
-Pokud při vytváření účtu konfigurujete možnosti zálohování, můžete nakonfigurovat **zásady zálohování** , které jsou buď **periodické** , nebo **průběžné** . Pravidelné zásady vám umožní nakonfigurovat interval zálohování a uchovávání záloh. Průběžné zásady jsou aktuálně k dispozici pouze pomocí registrace. Tým Azure Cosmos DB vyhodnotí vaše zatížení a schválí vaši žádost.
+Pokud při vytváření účtu konfigurujete možnosti zálohování, můžete nakonfigurovat **zásady zálohování**, které jsou buď **periodické** , nebo **průběžné**. Pravidelné zásady vám umožní nakonfigurovat interval zálohování a uchovávání záloh. Průběžné zásady jsou aktuálně k dispozici pouze pomocí registrace. Tým Azure Cosmos DB vyhodnotí vaše zatížení a schválí vaši žádost.
 
-:::image type="content" source="./media/online-backup-and-restore/configure-periodic-continuous-backup-policy.png" alt-text="Periodické úplné zálohování všech entit Cosmos DB v GRS Azure Storage" border="true":::
+:::image type="content" source="./media/online-backup-and-restore/configure-periodic-continuous-backup-policy.png" alt-text="Konfigurace pravidelné nebo nepřetržité zásady zálohování pro nové účty Azure Cosmos" border="true":::
 
 ## <a name="request-data-restore-from-a-backup"></a>Požadavek na obnovení dat ze zálohy
 
-Pokud databázi nebo kontejner omylem odstraníte, můžete si [vytvořit lístek podpory](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) nebo [zavolat podporu Azure](https://azure.microsoft.com/support/options/) , která obnoví data z automatických online zálohování. Podpora Azure je dostupná jenom pro vybrané plány, jako je **Standard** , **vývojář** a plány vyšší než. Podpora Azure není k dispozici u plánu **Basic** . Další informace o různých plánech podpory najdete na stránce [plány podpory Azure](https://azure.microsoft.com/support/plans/) .
+Pokud databázi nebo kontejner omylem odstraníte, můžete si [vytvořit lístek podpory](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) nebo [zavolat podporu Azure](https://azure.microsoft.com/support/options/) , která obnoví data z automatických online zálohování. Podpora Azure je dostupná jenom pro vybrané plány, jako je **Standard**, **vývojář** a plány vyšší než. Podpora Azure není k dispozici u plánu **Basic** . Další informace o různých plánech podpory najdete na stránce [plány podpory Azure](https://azure.microsoft.com/support/plans/) .
 
 Aby bylo možné obnovit konkrétní snímek zálohy, Azure Cosmos DB vyžaduje, aby data byla k dispozici po dobu trvání cyklu zálohování pro daný snímek.
 Před vyžádáním obnovení byste měli mít následující podrobnosti:
@@ -81,7 +81,7 @@ Kromě názvu účtu Azure Cosmos, názvů databází a názvů kontejnerů byst
 
 Následující snímek obrazovky ukazuje, jak vytvořit žádost o podporu pro kontejner (kolekce/graf/tabulka) pro obnovení dat pomocí Azure Portal. Zadejte další podrobnosti, jako je například typ dat, účel obnovení, čas odstranění dat, který nám pomůžete určit prioritu žádosti.
 
-:::image type="content" source="./media/online-backup-and-restore/backup-support-request-portal.png" alt-text="Periodické úplné zálohování všech entit Cosmos DB v GRS Azure Storage":::
+:::image type="content" source="./media/online-backup-and-restore/backup-support-request-portal.png" alt-text="Vytvoření žádosti o podporu zálohování pomocí Azure Portal":::
 
 ## <a name="considerations-for-restoring-the-data-from-a-backup"></a>Pokyny pro obnovení dat ze zálohy
 
@@ -115,6 +115,13 @@ Pokud jste data omylem odstranili nebo jste poškodili, měli byste kontaktovat 
 
 Pokud zřizujete propustnost na úrovni databáze, proces zálohování a obnovení v tomto případě proběhne na úrovni celé databáze, nikoli na úrovni jednotlivých kontejnerů. V takových případech nemůžete vybrat podmnožinu kontejnerů k obnovení.
 
+## <a name="required-permissions-to-change-retention-or-restore-from-the-portal"></a>Požadovaná oprávnění ke změně uchovávání nebo obnovení z portálu
+Objekty zabezpečení, které jsou součástí role [CosmosdbBackupOperator](../role-based-access-control/built-in-roles.md#cosmosbackupoperator), Owner nebo přispěvatel, můžou požadovat obnovení nebo změnit dobu uchování.
+
+## <a name="understanding-costs-of-extra-backups"></a>Porozumění nákladům na nadbytečné zálohy
+2 zálohy se poskytují zdarma a dodatečné zálohy se účtují podle cen na základě oblastí pro úložiště zálohování popsané v tématu [ceny za úložiště zálohování](https://azure.microsoft.com/en-us/pricing/details/cosmos-db/). Například pokud uchovávání záloh je nakonfigurované na 240 hodin, tj., 10 dní a interval zálohování na 24 hodin. To zahrnuje 10 kopií zálohovaných dat. Za předpokladu 1 TB dat v Západní USA 2 by byl 1000 × 0,12 ~ $120 pro úložiště zálohování v daném měsíci. 
+
+
 ## <a name="options-to-manage-your-own-backups"></a>Možnosti správy vlastních záloh
 
 Pomocí Azure Cosmos DB účtů rozhraní SQL API můžete také spravovat vlastní zálohy pomocí jednoho z následujících přístupů:
@@ -147,4 +154,3 @@ V dalším kroku se dozvíte, jak obnovit data z účtu Azure Cosmos, nebo se do
 * Pokud chcete vytvořit žádost o obnovení, obraťte se na podporu Azure, poznamenejte si [lístek z Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)
 * K přesunu dat do Azure Cosmos DB [použijte Cosmos DB změnit informační kanál](change-feed.md) .
 * K přesunu dat do Azure Cosmos DB [použijte Azure Data Factory](../data-factory/connector-azure-cosmos-db.md) .
-

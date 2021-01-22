@@ -9,12 +9,12 @@ ms.date: 05/01/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
 ms.reviewer: akjosh
-ms.openlocfilehash: 62cf7c979be83454ae2433befcdbf4f5d8e5524f
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: b12715e299f523d7ace56a72b0098b5d7ffac0ab
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94516539"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683045"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli"></a>Kurz: Vytvoření a použití vlastní image pro škálovací sady virtuálních počítačů pomocí Azure CLI
 Při vytváření škálovací sady zadáte image, která se použije při nasazení instancí virtuálních počítačů. Pokud chcete snížit počet úloh po nasazení instancí virtuálních počítačů, můžete použít vlastní image virtuálního počítače. Tato vlastní image virtuálního počítače obsahuje instalace a konfigurace všech požadovaných aplikací. Všechny instance virtuálních počítačů vytvořené ve škálovací sadě používají vlastní image virtuálního počítače a jsou připravené k obsluze provozu aplikace. Co se v tomto kurzu naučíte:
@@ -35,13 +35,13 @@ Při vytváření škálovací sady zadáte image, která se použije při nasaz
 
 ## <a name="overview"></a>Přehled
 
-[Galerie sdílených imagí](shared-image-galleries.md) zjednodušuje sdílení vlastních imagí v rámci vaší organizace. Vlastní image jsou podobné imagím z marketplace, ale vytváříte je sami. Vlastní image se dají použít ke spouštění konfigurací, jako jsou předběžné načítání aplikací, konfigurace aplikací a další konfigurace operačního systému. 
+[Galerie sdílených imagí](../virtual-machines/shared-image-galleries.md) zjednodušuje sdílení vlastních imagí v rámci vaší organizace. Vlastní image jsou podobné imagím z marketplace, ale vytváříte je sami. Vlastní image se dají použít ke spouštění konfigurací, jako jsou předběžné načítání aplikací, konfigurace aplikací a další konfigurace operačního systému. 
 
 Galerie sdílených imagí umožňuje sdílet vlastní image virtuálních počítačů s ostatními. Vyberte, které Image chcete sdílet, které oblasti mají být v nástroji dostupné a které chcete sdílet s. 
 
 ## <a name="create-and-configure-a-source-vm"></a>Vytvoření a konfigurace zdrojového virtuálního počítače
 
-Nejprve vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group) a pak vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm). Tento virtuální počítač se pak použije jako zdroj image. Následující příklad vytvoří virtuální počítač *myVM* ve skupině prostředků *myResourceGroup* :
+Nejprve vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group) a pak vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm). Tento virtuální počítač se pak použije jako zdroj image. Následující příklad vytvoří virtuální počítač *myVM* ve skupině prostředků *myResourceGroup*:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -63,7 +63,7 @@ Veřejná IP adresa vašeho virtuálního počítače se taky zobrazí ve výstu
 ssh azureuser@<publicIpAddress>
 ```
 
-Teď vlastní virtuální počítač přizpůsobte nainstalováním základního webového serveru. Instance virtuálního počítače po nasazení ve škálovací sadě bude obsahovat všechny požadované balíčky ke spuštění webové aplikace. Následujícím způsobem pomocí příkazu `apt-get` nainstalujte *NGINX* :
+Teď vlastní virtuální počítač přizpůsobte nainstalováním základního webového serveru. Instance virtuálního počítače po nasazení ve škálovací sadě bude obsahovat všechny požadované balíčky ke spuštění webové aplikace. Následujícím způsobem pomocí příkazu `apt-get` nainstalujte *NGINX*:
 
 ```bash
 sudo apt-get install -y nginx
@@ -92,11 +92,11 @@ Názvy definic obrázků mohou být tvořeny velkými a malými písmeny, čísl
 
 Ujistěte se, že je vaše definice image správným typem. Pokud jste virtuální počítač zobecněni (pomocí nástroje Sysprep pro Windows nebo waagent-devisioning pro Linux), měli byste vytvořit zobecněnou definici Image pomocí `--os-state generalized` . Pokud chcete virtuální počítač použít bez odebrání stávajících uživatelských účtů, vytvořte pomocí nástroje specializovanou definici image `--os-state specialized` .
 
-Další informace o hodnotách, které můžete zadat pro definici obrázku, najdete v tématu [definice imagí](../virtual-machines/linux/shared-image-galleries.md#image-definitions).
+Další informace o hodnotách, které můžete zadat pro definici obrázku, najdete v tématu [definice imagí](../virtual-machines/shared-image-galleries.md#image-definitions).
 
 Vytvořte definici obrázku v galerii pomocí [AZ SIG image-definition Create](/cli/azure/sig/image-definition#az-sig-image-definition-create).
 
-V tomto příkladu se definice image jmenuje *myImageDefinition* a je určena pro [specializovanou](../virtual-machines/linux/shared-image-galleries.md#generalized-and-specialized-images) image operačního systému Linux. Pokud chcete vytvořit definici imagí pomocí operačního systému Windows, použijte `--os-type Windows` . 
+V tomto příkladu se definice image jmenuje *myImageDefinition* a je určena pro [specializovanou](../virtual-machines/shared-image-galleries.md#generalized-and-specialized-images) image operačního systému Linux. Pokud chcete vytvořit definici imagí pomocí operačního systému Windows, použijte `--os-type Windows` . 
 
 ```azurecli-interactive 
 az sig image-definition create \
@@ -165,7 +165,7 @@ Vytvoření a konfigurace všech prostředků škálovací sady a virtuálních 
 
 
 ## <a name="test-your-scale-set"></a>Test škálovací sady
-Pokud chcete škálovací sadě povolit příjem provozu a ověřit správné fungování webového serveru, vytvořte pravidlo nástroje pro vyrovnávání zatížení pomocí příkazu [az network lb rule create](/cli/azure/network/lb/rule). Následující příklad vytvoří pravidlo *myLoadBalancerRuleWeb* povolující provoz na portu *TCP**80* :
+Pokud chcete škálovací sadě povolit příjem provozu a ověřit správné fungování webového serveru, vytvořte pravidlo nástroje pro vyrovnávání zatížení pomocí příkazu [az network lb rule create](/cli/azure/network/lb/rule). Následující příklad vytvoří pravidlo *myLoadBalancerRuleWeb* povolující provoz na portu *TCP**80*:
 
 ```azurecli-interactive
 az network lb rule create \

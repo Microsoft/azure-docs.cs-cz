@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 01/15/2021
 ms.custom: generated
-ms.openlocfilehash: 8f44de679c9b0280652b0020d1e454a70f7114a3
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 39385a3ea9dc06875806ac85c06c0df6d5db2698
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98538524"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683789"
 ---
 # <a name="azure-built-in-roles"></a>Předdefinované role Azure
 
@@ -130,7 +130,7 @@ Následující tabulka uvádí stručný popis a jedinečné ID každé předdef
 > | [Přispěvatel Cognitive Services](#cognitive-services-contributor) | Umožňuje vytvářet, číst, aktualizovat, odstraňovat a spravovat klíče Cognitive Services. | 25fbc0a9-bd7c-42a3-aa1a-3b75d497ee68 |
 > | [Čtečka dat Cognitive Services (Preview)](#cognitive-services-data-reader-preview) | Umožňuje číst Cognitive Services data. | b59867f0-fa02-499b-be73-45a86b5b3e1c |
 > | [Cognitive Services uživatel](#cognitive-services-user) | Umožňuje číst a zobrazit seznam klíčů Cognitive Services. | a97b65f3-24c7-4388-baec-2e87135dc908 |
-> | **Mixed realita** |  |  |
+> | **Smíšená realita** |  |  |
 > | [Správce vzdáleného vykreslování](#remote-rendering-administrator) | Poskytuje uživatele s možností převodu, správy relace, vykreslování a diagnostiky pro vzdálené vykreslování Azure. | 3df8b902-2a6f-47c7-8cc5-360e9b272a7e |
 > | [Klient vzdáleného vykreslování](#remote-rendering-client) | Poskytuje uživatele s možností spravovat relaci, vykreslování a diagnostiku pro vzdálené vykreslování Azure. | d39065c4-c120-43c9-ab0a-63eed9795f0a |
 > | [Přispěvatel účtu prostorových kotev](#spatial-anchors-account-contributor) | Umožňuje spravovat prostorové kotvy ve vašem účtu, ale neodstraňovat je. | 8bbe83f1-e2a6-4df7-8cb4-4e04d4e5c827 |
@@ -398,7 +398,7 @@ Umožňuje spravovat přístup uživatelů k prostředkům Azure. [Další infor
 }
 ```
 
-## <a name="compute"></a>Výpočetní prostředky
+## <a name="compute"></a>Compute
 
 
 ### <a name="classic-virtual-machine-contributor"></a>Přispěvatel klasických virtuálních počítačů
@@ -1167,7 +1167,7 @@ Umožňuje správu profilů Traffic Manager, ale neumožňuje řídit, kdo k nim
 }
 ```
 
-## <a name="storage"></a>Úložiště
+## <a name="storage"></a>Storage
 
 
 ### <a name="avere-contributor"></a>Přispěvatel avere
@@ -3075,7 +3075,7 @@ Umožňuje spravovat weby (nikoli webové plány), ale ne přístup k nim.
 }
 ```
 
-## <a name="containers"></a>Containers
+## <a name="containers"></a>Kontejnery
 
 
 ### <a name="acrdelete"></a>AcrDelete
@@ -7413,7 +7413,7 @@ Zobrazit a aktualizovat oprávnění pro Security Center. Stejná oprávnění j
 > | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
 > | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/policyAssignments/* | Vytvoření a správa přiřazení zásad |
 > | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/policyDefinitions/* | Vytváření a Správa definic zásad |
-> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/policyExemptions/* |  |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/policyExemptions/* | Vytváření a Správa výjimek zásad |
 > | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/policySetDefinitions/* | Vytváření a Správa sad zásad |
 > | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
 > | [Microsoft. Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/Read | Vypíše skupiny pro správu ověřeného uživatele. |
@@ -7776,7 +7776,7 @@ Umožňuje vytvořit novou laboratoř v rámci účtů Azure Lab. [Další infor
 }
 ```
 
-## <a name="monitor"></a>Monitorování
+## <a name="monitor"></a>Monitor
 
 
 ### <a name="application-insights-component-contributor"></a>Přispěvatel Application Insights komponent
@@ -9171,7 +9171,7 @@ Uživatelé s právy k vytváření a úpravám zásad prostředků, vytvářen�
 > | */read | Přečte prostředky všech typů s výjimkou tajných klíčů. |
 > | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/policyassignments/* | Vytvoření a správa přiřazení zásad |
 > | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/PolicyDefinitions/* | Vytváření a Správa definic zásad |
-> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/policyexemptions/* |  |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/policyexemptions/* | Vytváření a Správa výjimek zásad |
 > | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/policysetdefinitions/* | Vytváření a Správa sad zásad |
 > | [Microsoft. PolicyInsights](resource-provider-operations.md#microsoftpolicyinsights)/* |  |
 > | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
@@ -9653,7 +9653,7 @@ Umožňuje spravovat značky entit bez poskytnutí přístupu k samotným entit�
 }
 ```
 
-## <a name="other"></a>Další
+## <a name="other"></a>Jiné
 
 
 ### <a name="azure-digital-twins-data-owner"></a>Vlastník dat digitálních vláken Azure

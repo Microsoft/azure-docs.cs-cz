@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Řešení běžných problémů s Kubernetes clustery s podporou ARC.
 keywords: Kubernetes, oblouk, Azure, kontejnery
-ms.openlocfilehash: 42c90708854af6973ed1ef399b9867101a736b07
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 0827386eb6ec089cf7951e8fa513a77fc78aef22
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586155"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684085"
 ---
 # <a name="azure-arc-enabled-kubernetes-troubleshooting-preview"></a>Řešení potíží s Kubernetesem v Azure ARC (Preview)
 
@@ -24,7 +24,7 @@ Tento dokument popisuje některé běžné scénáře řešení potíží s při
 ### <a name="azure-cli-set-up"></a>Nastavení Azure CLI
 Než použijete příkaz AZ connectedk8s nebo AZ k8sconfiguration CLI, zajistěte, aby byl AZ nastavený na práci se správným předplatným Azure.
 
-```console
+```azurecli
 az account set --subscription 'subscriptionId'
 az account show
 ```
@@ -79,7 +79,7 @@ Připojení clusterů k Azure vyžaduje přístup k předplatnému Azure a `clus
 
 Pokud zadaný soubor kubeconfig nemá dostatečná oprávnění k instalaci agentů Azure ARC, příkaz Azure CLI vrátí při pokusu o volání rozhraní API Kubernetes chybu.
 
-```console
+```azurecli
 $ az connectedk8s connect --resource-group AzureArc --name AzureArcCluster
 Command group 'connectedk8s' is in preview. It may be changed/removed in a future release.
 Ensure that you have the latest helm version installed before proceeding to avoid unexpected errors.
@@ -94,7 +94,7 @@ Vlastník clusteru by měl používat uživatele Kubernetes s oprávněními spr
 
 Instalace agenta Azure ARC vyžaduje spuštění sady kontejnerů v cílovém clusteru. Pokud cluster běží přes pomalé připojení k Internetu, může převzetí služeb při selhání image kontejneru trvat déle než vypršení časových limitů Azure CLI.
 
-```console
+```azurecli
 $ az connectedk8s connect --resource-group AzureArc --name AzureArcCluster
 Command group 'connectedk8s' is in preview. It may be changed/removed in a future release.
 Ensure that you have the latest helm version installed before proceeding to avoid unexpected errors.

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: ef2c69409ce3f479338ffc9d418b3469f197ad30
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: db53e4407674abc1e6c81090dc4a50afa784940d
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97679402"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684821"
 ---
 # <a name="tutorial-migrate-a-web-app-from-bing-maps"></a>Kurz: migrace webové aplikace z map Bing
 
@@ -46,7 +46,7 @@ Při vývoji pomocí JavaScriptu rozhraní může být užitečné jeden z násl
 
 ## <a name="prerequisites"></a>Požadavky
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
 2. [Vytvořit účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account)
 3. [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného. Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](how-to-manage-authentication.md).
 
@@ -85,7 +85,7 @@ Azure Maps také obsahuje mnoho dalších [Open Source modulů pro webovou sadu 
 
 Níže jsou uvedeny některé z klíčových rozdílů mezi mapami Bing a Azure Maps Web SDK, na kterých je třeba vědět:
 
-* Kromě poskytování hostovaného koncového bodu pro přístup k Azure Maps webové sadě SDK je k dispozici také balíček NPM pro vložení webové sady SDK do aplikací, pokud jsou preferované. Další informace najdete v této [dokumentaci](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control) , kde najdete další informace. Tento balíček obsahuje také definice TypeScript.
+* Kromě poskytování hostovaného koncového bodu pro přístup k Azure Maps webové sadě SDK je k dispozici také balíček NPM pro vložení webové sady SDK do aplikací, pokud jsou preferované. Další informace najdete v této [dokumentaci](./how-to-use-map-control.md) , kde najdete další informace. Tento balíček obsahuje také definice TypeScript.
 * Mapy Bing poskytují dvě hostované větve své sady SDK. Vydávat a experimentovat. Experimentální větev může obdržet několik aktualizací za den, kdy dojde k vývoji nového vývoje. Azure Maps pouze hostitelskou větev verze, ale experimentální funkce jsou vytvořeny jako vlastní moduly v projektu ukázek Open-Source Azure Maps kódu. Mapy Bing používaly k dispozici zmrazenou větev, která byla aktualizována méně často, čímž se snížilo riziko zásadních změn z důvodu vydání verze. V Azure Maps můžete použít modul NPM a nasměrovat ho na předchozí verzi dílčí verze.
 
 > [!TIP]
@@ -95,7 +95,7 @@ Níže jsou uvedeny některé z klíčových rozdílů mezi mapami Bing a Azure 
 * Obě platformy pro základní mapy používají podobný systém dlaždic, ale dlaždice v mapách Bing jsou v dimenzi 256 pixelů, zatímco dlaždice v Azure Maps jsou v dimenzi 512 pixelů. Aby bylo možné získat stejné zobrazení mapy jako v Azure Maps jako mapy Bing, je třeba v Azure Maps použít úroveň přiblížení ve službě Mapy Bing o jednu odchylku.
 * Souřadnice v mapách Bing se označují jako `latitude, longitude` při použití Azure Maps `longitude, latitude` . Tento formát se zarovnává se standardem `[x, y]` , který následuje po většině platforem GIS.
 
-* Tvary v sadě Azure Maps Web SDK jsou založené na schématu geometrického kódu. Pomocné třídy jsou zpřístupněny prostřednictvím [oboru názvů Atlas. data](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data). Je to také [Atlas. Třída Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape) , která se dá použít ke zalamování objektů a jejich snadné aktualizace a udržování v datové vazbě.
+* Tvary v sadě Azure Maps Web SDK jsou založené na schématu geometrického kódu. Pomocné třídy jsou zpřístupněny prostřednictvím [oboru názvů Atlas. data](/javascript/api/azure-maps-control/atlas.data). Je to také [Atlas. Třída Shape](/javascript/api/azure-maps-control/atlas.shape) , která se dá použít ke zalamování objektů a jejich snadné aktualizace a udržování v datové vazbě.
 * Souřadnice v Azure Maps jsou definovány jako objekty pozice, které lze zadat jako jednoduché pole čísel ve formátu `[longitude, latitude]` nebo `new atlas.data.Position(longitude, latitude)` .
 
 > [!TIP]
@@ -909,7 +909,7 @@ V Azure Maps se data přidávají a spravují zdrojem dat. Vrstvy se připojují
 
 Když je clustering povolený, bude zdroj dat odesílat clusterované a neseskupené datové body do vrstev pro vykreslování. Zdroj dat je schopný clusterovat stovky tisíc datových bodů. Clusterovaný datový bod má následující vlastnosti:
 
-| Název vlastnosti               | Typ    | Popis                                    |
+| Název vlastnosti               | Typ    | Description                                    |
 |-----------------------------|---------|------------------------------------------------|
 | `cluster`                   | boolean | Indikuje, že funkce představuje cluster.     |
 | `cluster_id`                | řetězec  | Jedinečné ID clusteru, které lze použít se `DataSource` třídami `getClusterExpansionZoom` , `getClusterChildren` a `getClusterLeaves` . |
@@ -918,7 +918,7 @@ Když je clustering povolený, bude zdroj dat odesílat clusterované a neseskup
 
 `DataSource`Třída má následující pomocnou funkci pro přístup k dalším informacím o clusteru pomocí `cluster_id` .
 
-| Funkce       | Návratový typ        | Popis     |
+| Funkce       | Návratový typ        | Description     |
 |----------------|--------------------|-----------------|
 | `getClusterChildren(clusterId: number)`                              | `Promise<Feature<Geometry, any> | Shape>` | Načte podřízené objekty daného clusteru na další úrovni přiblížení. Tyto podřízené objekty můžou být kombinací tvarů a podclusterů. Dílčí clustery budou funkcemi s vlastnostmi, které odpovídají vlastnostem clusteru. |
 | `getClusterExpansionZoom(clusterId: number)`                         | `Promise<number>`                            | Vypočítá úroveň přiblížení, kterou cluster začne rozšiřovat nebo se může rozdělovat.    |
@@ -1635,7 +1635,7 @@ V Azure Maps modul nástrojů pro kreslení musí být načten načtením soubor
 -   [Dokumentace](./set-drawing-options.md)
 -   [Ukázky kódu](https://azuremapscodesamples.azurewebsites.net/#Drawing-Tools-Module)
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 Podívejte se na [Open Source moduly Azure Maps Web SDK](open-source-projects.md#open-web-sdk-modules). Tyto moduly poskytují spoustu dalších funkcí a jsou plně přizpůsobitelné.
 

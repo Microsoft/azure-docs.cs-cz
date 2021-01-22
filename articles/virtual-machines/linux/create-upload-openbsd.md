@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 05/24/2017
 ms.author: guybo
-ms.openlocfilehash: 08b18dae6cec3f30ba9ecc69a3537eec428cc9ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: efa38384778bb63857d3c867d74ace7f4f199118
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87372718"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685085"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>Vytvoření a nahrání image OpenBSD disku do Azure
 V tomto článku se dozvíte, jak vytvořit a nahrát virtuální pevný disk (VHD), který obsahuje operační systém OpenBSD. Po nahrání ji můžete použít jako vlastní image k vytvoření virtuálního počítače v Azure prostřednictvím rozhraní příkazového řádku Azure CLI.
@@ -56,7 +56,7 @@ Na virtuálním počítači, na který jste nainstalovali operační systém Ope
     ln -sf /usr/local/bin/python2.7 /usr/local/bin/python
     ln -sf /usr/local/bin/python2.7-2to3 /usr/local/bin/2to3
     ln -sf /usr/local/bin/python2.7-config /usr/local/bin/python-config
-    ln -sf /usr/local/bin/pydoc2.7  /usr/local/bin/pydoc
+    ln -sf /usr/local/bin/pydoc2.7  /usr/local/bin/pydoc
     ```
 
 6. Nejnovější verzi agenta Azure můžete vždycky najít na [GitHubu](https://github.com/Azure/WALinuxAgent/releases). Agenta nainstaluje takto:
@@ -140,7 +140,7 @@ az storage blob upload \
 
 
 ## <a name="create-vm-from-your-vhd"></a>Vytvoření virtuálního počítače z virtuálního pevného disku
-Virtuální počítač můžete vytvořit pomocí [ukázkového skriptu](../scripts/virtual-machines-linux-cli-sample-create-vm-vhd.md) nebo přímo pomocí [AZ VM Create](/cli/azure/vm). K určení nahraného virtuálního pevného disku OpenBSD použijte `--image` parametr následujícím způsobem:
+Virtuální počítač můžete vytvořit pomocí [ukázkového skriptu](/previous-versions/azure/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-vm-vhd) nebo přímo pomocí [AZ VM Create](/cli/azure/vm). K určení nahraného virtuálního pevného disku OpenBSD použijte `--image` parametr následujícím způsobem:
 
 ```azurecli
 az vm create \
@@ -168,4 +168,4 @@ ssh azureuser@<ip address>
 ## <a name="next-steps"></a>Další kroky
 Pokud se chcete dozvědět více o podpoře technologie Hyper-V na OpenBSD 6.1, přečtěte si [OpenBSD 6,1](https://www.openbsd.org/61.html) a [HyperV. 4](https://man.openbsd.org/hyperv.4).
 
-Pokud chcete vytvořit virtuální počítač ze spravovaného disku, přečtěte si [AZ disk](/cli/azure/disk). 
+Pokud chcete vytvořit virtuální počítač ze spravovaného disku, přečtěte si [AZ disk](/cli/azure/disk).

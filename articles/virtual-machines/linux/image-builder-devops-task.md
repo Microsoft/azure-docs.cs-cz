@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 43447454b82b74c10b1d53c41c7883b0b9bef242
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 634fc183cc27db1ae949959c3ae7fae8eda5b644
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196499"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684538"
 ---
 # <a name="azure-image-builder-service-devops-task"></a>Úloha DevOps služby Azure image Builder
 
@@ -57,7 +57,7 @@ Existují dva úlohy DevOps pro sestavovatele bitových kopií virtuálních po�
 
 Vybrat   >  **úpravu** kanálu vydaných verzí
 
-V uživatelském agentovi vyberte, pokud *+* chcete přidat a pak vyhledat **Image Builder**. Vyberte **Add** (Přidat).
+V uživatelském agentovi vyberte, pokud *+* chcete přidat a pak vyhledat **Image Builder**. Vyberte **Přidat**.
 
 Nastavte následující vlastnosti úlohy:
 
@@ -71,10 +71,10 @@ Použijte skupinu prostředků, do které se uloží artefakt šablony dočasné
  
 ### <a name="location"></a>Umístění
 
-Umístění je oblast, kde se spustí Tvůrce imagí. Podporován je pouze nastavený počet [oblastí](../windows/image-builder-overview.md#regions) . V tomto umístění se musí nacházet zdrojové image. Pokud například používáte sdílenou galerii imagí, musí replika existovat v této oblasti.
+Umístění je oblast, kde se spustí Tvůrce imagí. Podporován je pouze nastavený počet [oblastí](../image-builder-overview.md#regions) . V tomto umístění se musí nacházet zdrojové image. Pokud například používáte sdílenou galerii imagí, musí replika existovat v této oblasti.
 
 ### <a name="managed-identity-required"></a>Spravovaná identita (povinné)
-Image Builder vyžaduje spravovanou identitu, kterou používá ke čtení zdrojových vlastních imagí, připojení k Azure Storage a vytváření vlastních imagí. Další podrobnosti najdete [tady](./image-builder-overview.md#permissions).
+Image Builder vyžaduje spravovanou identitu, kterou používá ke čtení zdrojových vlastních imagí, připojení k Azure Storage a vytváření vlastních imagí. Další podrobnosti najdete [tady](../image-builder-overview.md#permissions).
 
 ### <a name="vnet-support"></a>Podpora virtuální sítě
 
@@ -154,7 +154,7 @@ Následující příklad vysvětluje, jak to funguje:
     & 'c:\buildArtifacts\webapp\webconfig.ps1'
     ```
 
-* Linux – v systémech Linux jsou artefakty sestavení vloženy do `/tmp` adresáře. V mnoha systémech Linux OSs se ale při restartování odstraní obsah adresáře adresáře/TMP. Pokud chcete, aby artefakty v imagi existovaly, musíte vytvořit další adresář a zkopírovat je přes.  Příklad:
+* Linux – v systémech Linux jsou artefakty sestavení vloženy do `/tmp` adresáře. V mnoha systémech Linux OSs se ale při restartování odstraní obsah adresáře adresáře/TMP. Pokud chcete, aby artefakty v imagi existovaly, musíte vytvořit další adresář a zkopírovat je přes.  Například:
 
     ```bash
     sudo mkdir /lib/buildArtifacts
@@ -176,7 +176,7 @@ Následující příklad vysvětluje, jak to funguje:
 > Nástroj image Builder automaticky neodebere artefakty sestavení, důrazně doporučujeme, abyste vždy měli kód pro odebrání artefaktů sestavení.
 > 
 
-* Windows – nástroj image Builder nasadí soubory do `c:\buildArtifacts` adresáře. Adresář je trvalý, je nutné odebrat adresář. Můžete ho odebrat ve skriptu, který spustíte. Příklad:
+* Windows – nástroj image Builder nasadí soubory do `c:\buildArtifacts` adresáře. Adresář je trvalý, je nutné odebrat adresář. Můžete ho odebrat ve skriptu, který spustíte. Například:
 
     ```PowerShell
     # Clean up buildArtifacts directory
@@ -186,7 +186,7 @@ Následující příklad vysvětluje, jak to funguje:
     Remove-Item -Path "C:\buildArtifacts" -Force 
     ```
     
-* Linux – artefakty sestavení jsou vloženy do `/tmp` adresáře. V mnoha systémech Linux OSs se ale při restartování `/tmp` odstraní obsah adresáře. Doporučujeme, abyste měli kód pro odebrání obsahu a nespoléhá se na operační systém, aby se obsah odebral. Příklad:
+* Linux – artefakty sestavení jsou vloženy do `/tmp` adresáře. V mnoha systémech Linux OSs se ale při restartování `/tmp` odstraní obsah adresáře. Doporučujeme, abyste měli kód pro odebrání obsahu a nespoléhá se na operační systém, aby se obsah odebral. Například:
 
     ```bash
     sudo rm -R "/tmp/AppsAndImageBuilderLinux"
@@ -298,7 +298,7 @@ Publikování/nabídka/SKU/verze zdrojové image Marketplace:
 Identifikátor URI image – ResourceID distribuované Image:
 * $ (imageUri)
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 ### <a name="can-i-use-an-existing-image-template-i-have-already-created-outside-of-devops"></a>Můžu použít existující šablonu obrázku, kterou už jste vytvořili, mimo DevOps?
 
@@ -312,7 +312,7 @@ No. Použije se jedinečný název šablony, který se pak odstraní.
 
 Pokud dojde k selhání sestavení, úloha DevOps neodstraní pracovní skupinu prostředků. Můžete získat přístup k pracovní skupině prostředků, která obsahuje protokol vlastního nastavení sestavení.
 
-V protokolu DevOps se zobrazí chyba pro úlohu tvůrce imagí virtuálních počítačů a podívejte se na umístění přizpůsobení. log. Příklad:
+V protokolu DevOps se zobrazí chyba pro úlohu tvůrce imagí virtuálních počítačů a podívejte se na umístění přizpůsobení. log. Například:
 
 :::image type="content" source="./media/image-builder-devops-task/devops-task-error.png" alt-text="Ukázková chyba úlohy DevOps, která zobrazuje chybu.":::
 
@@ -335,4 +335,4 @@ Artefakt prostředku šablony obrázku je ve skupině prostředků zadané zpoč
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v tématu [Přehled nástroje Azure image Builder](image-builder-overview.md).
+Další informace najdete v tématu [Přehled nástroje Azure image Builder](../image-builder-overview.md).

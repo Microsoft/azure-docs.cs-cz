@@ -1,25 +1,25 @@
 ---
-title: Implementace rozdílového soukromí pomocí balíčku SmartNoise (Preview)
+title: Rozdílové soukromí ve strojovém učení (Preview)
 titleSuffix: Azure Machine Learning
-description: Přečtěte si, jaká je rozdílová ochrana osobních údajů a jak může balíček SmartNoise pomáhat při implementaci rozdílových privátních systémů, které zachovávají ochranu dat.
+description: Přečtěte si, jaké jsou rozdílové soukromí a jak můžete implementovat rozdílové privátní systémy, které zachovávají ochranu dat.
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 12/21/2020
+ms.date: 01/21/2020
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: responsible-ml
-ms.openlocfilehash: 22ba505a2e13b2f88f212f2fe1b85d07f79f77e5
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 39f4b1a7b9eb1ad7a87097240dd772e4f2dadf17
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218956"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683531"
 ---
-# <a name="preserve-data-privacy-by-using-differential-privacy-and-the-smartnoise-package-preview"></a>Zachování ochrany soukromí dat pomocí rozdílového soukromí a balíčku SmartNoise (Preview)
+# <a name="what-is-differential-privacy-in-machine-learning-preview"></a>Co je rozdílové soukromí ve strojovém učení (Preview)
 
-Přečtěte si, jaké jsou rozdílové ochrany osobních údajů a jak může balíček SmartNoise pomáhat při implementaci rozdílových privátních systémů.
+Přečtěte si o rozdílových zásadách ochrany osobních údajů v strojovém učení a způsobu jejich fungování.
 
 Jak množství dat, které organizace shromažďuje a používá ke analýzám, se zvyšuje na ochranu osobních údajů a zabezpečení. Analýzy vyžadují data. Data, která se používají k učení modelů, jsou typicky přesnější. Pokud se pro tyto analýzy použijí osobní informace, je obzvláště důležité, aby data zůstala soukromá během jejího používání.
 
@@ -28,9 +28,9 @@ Jak množství dat, které organizace shromažďuje a používá ke analýzám, 
 Rozdílová ochrana osobních údajů je sada systémů a postupů, které pomůžou udržet data jednotlivců v bezpečí a soukromí.
 
 > [!div class="mx-imgBorder"]
-> ![Rozdílový proces ochrany osobních údajů](./media/concept-differential-privacy/differential-privacy-process.jpg)
+> ![Proces strojového učení s rozdílovou ochranou osobních údajů](./media/concept-differential-privacy/differential-privacy-machine-learning.jpg)
 
-V tradičních scénářích se nezpracovaná data ukládají do souborů a databází. Když uživatelé analyzují data, obvykle používají nezpracovaná data. To je důležité, protože by mohlo dojít k porušení ochrany osobních údajů jednotlivce. Rozdílové soukromí se snaží s tímto problémem zabývat přidáním "šumu" nebo náhodnosti k datům, aby uživatelé nemohli identifikovat jednotlivé datové body. V takovém případě takový systém poskytuje odepření plausible.
+V tradičních scénářích se nezpracovaná data ukládají do souborů a databází. Když uživatelé analyzují data, obvykle používají nezpracovaná data. To je důležité, protože by mohlo dojít k porušení ochrany osobních údajů jednotlivce. Rozdílové soukromí se snaží s tímto problémem zabývat přidáním "šumu" nebo náhodnosti k datům, aby uživatelé nemohli identifikovat jednotlivé datové body. V takovém případě takový systém poskytuje odepření plausible. Proto soukromí jednotlivců je zachováno s omezeným dopadem na přesnost dat.
 
 V rozdílných privátních systémech se data sdílejí prostřednictvím požadavků nazývaných **dotazy**. Když uživatel odešle dotaz na data, operace označované jako **mechanismy ochrany osobních údajů** přidávají pro požadovaná data šum. Mechanismy ochrany osobních údajů vrátí *aproximaci dat* místo nezpracovaných dat. Tato ochrana osobních údajů – výsledek se zobrazí v **sestavě**. Sestavy se skládají ze dvou částí, z nichž jsou vypočítána skutečná data a popis způsobu, jakým byla data vytvořena.
 
@@ -42,22 +42,22 @@ Hodnoty Epsilon jsou nezáporné. Hodnoty nižší než 1 poskytují plnou plaus
 
 Jiná hodnota, která je přímo v relaci do Epsilon, je **rozdílová**. Rozdíl je míra pravděpodobnosti, že sestava není plně soukromá. Čím vyšší je rozdíl, tím větší je Epsilon. Vzhledem k tomu, že se tyto hodnoty korelují, často se používají Epsilon.
 
-## <a name="privacy-budget"></a>Rozpočet ochrany osobních údajů
+## <a name="limit-queries-with-a-privacy-budget"></a>Omezení dotazů pomocí rozpočtu ochrany osobních údajů
 
-Pro zajištění ochrany osobních údajů v systémech, kde je povoleno více dotazů, rozdílové soukromí definuje omezení přenosové rychlosti. Toto omezení se označuje jako **rozpočet ochrany osobních údajů**. Rozpočty osobních údajů se přidělují na množství Epsilon, obvykle mezi 1 a 3, aby se omezilo riziko přeidentifikace. Po vygenerování sestav mohou rozpočty ochrany osobních údajů sledovat hodnoty Epsilon jednotlivých sestav i agregace pro všechny sestavy. Po vyčerpání nebo poškozování rozpočtu ochrany osobních údajů uživatelé již nebudou mít přístup k datům.  
+Pro zajištění ochrany osobních údajů v systémech, kde je povoleno více dotazů, rozdílové soukromí definuje omezení přenosové rychlosti. Toto omezení se označuje jako **rozpočet ochrany osobních údajů**. Rozpočty ochrany osobních údajů zabraňují opětovnému vytvoření dat prostřednictvím více dotazů. Rozpočty osobních údajů se přidělují na množství Epsilon, obvykle mezi 1 a 3, aby se omezilo riziko přeidentifikace. Po vygenerování sestav mohou rozpočty ochrany osobních údajů sledovat hodnoty Epsilon jednotlivých sestav i agregace pro všechny sestavy. Po vyčerpání nebo poškozování rozpočtu ochrany osobních údajů uživatelé již nebudou mít přístup k datům. 
 
 ## <a name="reliability-of-data"></a>Spolehlivost dat
 
-I když zachování ochrany osobních údajů by mělo být cílem, existují kompromisy, které jsou v důsledku použitelnosti a spolehlivosti dat. V rámci analýzy dat je možné chápat přesnost jako míra nejistoty zavedené chybami vzorkování. Tato nejistota má za následek spadat do určitých mezí. **Přesnost** z rozdílového hlediska ochrany osobních údajů místo toho měří spolehlivost dat, která je ovlivněna nejistotou zavedenou mechanismy ochrany osobních údajů. V krátkém případě je vyšší úroveň hluku nebo ochrany osobních údajů převedená na data, která mají dolní Epsilon, přesnost a spolehlivost. I když jsou data více soukromá, protože nejsou spolehlivá, je pravděpodobnější, že ji lze použít.
+I když zachování ochrany osobních údajů by mělo být cílem, existují kompromisy, které jsou v důsledku použitelnosti a spolehlivosti dat. V rámci analýzy dat je možné chápat přesnost jako míra nejistoty zavedené chybami vzorkování. Tato nejistota má za následek spadat do určitých mezí. **Přesnost** z rozdílového hlediska ochrany osobních údajů místo toho měří spolehlivost dat, která je ovlivněna nejistotou zavedenou mechanismy ochrany osobních údajů. V krátkém případě je vyšší úroveň hluku nebo ochrany osobních údajů převedená na data, která mají dolní Epsilon, přesnost a spolehlivost. 
 
-## <a name="implementing-differentially-private-systems"></a>Implementace rozdílových privátních systémů
+## <a name="open-source-differential-privacy-libraries"></a>Open Source rozdílové knihovny ochrany osobních údajů
 
-Implementace rozdílových privátních systémů je obtížná. SmartNoise je open source projekt, který obsahuje různé komponenty pro vytváření globálních rozdílných privátních systémů. SmartNoise se skládá z následujících komponent nejvyšší úrovně:
+SmartNoise je open source projekt, který obsahuje různé komponenty pro vytváření globálních rozdílných privátních systémů. SmartNoise se skládá z následujících komponent nejvyšší úrovně:
 
-- Jádro
-- Sada SDK
+- Základní knihovna SmartNoise
+- Knihovna SDK SmartNoise
 
-### <a name="core"></a>Jádro
+### <a name="smartnoise-core"></a>Jádro SmartNoise
 
 Základní knihovna nástroje zahrnuje následující mechanismy ochrany osobních údajů pro implementaci rozdílového privátního systému:
 
@@ -68,7 +68,7 @@ Základní knihovna nástroje zahrnuje následující mechanismy ochrany osobní
 |Runtime (Modul runtime)     | Médium pro provedení analýzy. Referenční modul runtime je napsaný v Rust, ale moduly runtime se dají zapisovat pomocí všech výpočetních rozhraní, jako je SQL a Spark, v závislosti na vašich datových potřebách.        |
 |Vazby     | Vazby jazyka a pomocné knihovny pro sestavení analýz Aktuálně SmartNoise poskytuje vazby Pythonu. |
 
-### <a name="sdk"></a>Sada SDK
+### <a name="smartnoise-sdk"></a>Sada SmartNoise SDK
 
 Systémová knihovna poskytuje následující nástroje a služby pro práci s tabulkovými a relačními daty:
 
@@ -80,6 +80,6 @@ Systémová knihovna poskytuje následující nástroje a služby pro práci s t
 
 ## <a name="next-steps"></a>Další kroky
 
-[Zachovat ochranu osobních údajů](how-to-differential-privacy.md) v Azure Machine Learning.
+[Postup vytvoření rozdílového privátního systému](how-to-differential-privacy.md) v Azure Machine Learning.
 
-Další informace o součástech SmartNoise najdete v části úložiště GitHub pro [balíček SmartNoise Core](https://github.com/opendifferentialprivacy/smartnoise-core), [SmartNoise SDK](https://github.com/opendifferentialprivacy/smartnoise-sdk)a [ukázky SmartNoise](https://github.com/opendifferentialprivacy/smartnoise-samples).
+Další informace o součástech SmartNoise najdete v úložištích GitHub pro [SmartNoise Core](https://github.com/opendifferentialprivacy/smartnoise-core), [SmartNoise SDK](https://github.com/opendifferentialprivacy/smartnoise-sdk)a [ukázky SmartNoise](https://github.com/opendifferentialprivacy/smartnoise-samples).

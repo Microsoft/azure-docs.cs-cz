@@ -9,15 +9,14 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 10/30/2017
 ms.author: vikdesai
-ms.openlocfilehash: ffc9c8f3143824dd099aaad3e743398eea4e0f43
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: e6cf097e927c4606885dd3f885de6ab8235bf6be
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602531"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682580"
 ---
 # <a name="save-costs-with-azure-reserved-vm-instances"></a>Úspora nákladů pomocí Azure Reserved VM Instances
-
 
 
 Po potvrzení služby na rezervované instance virtuálního počítače Azure můžete ušetřit peníze. Sleva rezervace se automaticky použije na počet spuštěných virtuálních počítačů, které odpovídají oboru a atributům rezervace. K získání slevy není nutné přiřadit rezervaci k virtuálnímu počítači. Zakoupení rezervované instance pokrývá jenom výpočetní část využití virtuálního počítače. V případě virtuálních počítačů s Windows je měřič využití rozdělen do dvou samostatných měřičů. K dispozici je výpočetní měřič, který je stejný jako měřič pro Linux, a měřič IP adres systému Windows. Poplatky, které se zobrazí při nákupu, budou platit jenom za výpočetní náklady. Poplatky nezahrnují náklady na software systému Windows. Další informace o nákladech na software najdete v části [náklady na software nejsou součástí Azure Reserved VM Instances](../cost-management-billing/reservations/reserved-instance-windows-software-costs.md).
@@ -30,7 +29,7 @@ Před nákupem rezervace byste měli určit velikost virtuálního počítače, 
 
 K určení rezervací, které byste měli koupit, můžete použít doporučení rezervací.
 
-- Doporučení nákupu a doporučené množství se zobrazí při nákupu rezervované instance virtuálního počítače v Azure Portal.
+- Doporučení nákupu a doporučená množství se zobrazí při nákupu rezervované instance virtuálního počítače v Azure Portal.
 - Azure Advisor poskytuje doporučení pro nákup pro jednotlivá předplatná.  
 - Rozhraní API můžete použít k získání doporučení pro nákup jak pro sdílený obor, tak pro obor jednoho předplatného. Další informace najdete v tématu [rozhraní API pro doporučení pro nákup rezervovaných instancí pro podnikové zákazníky](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation).
 - Pro zákazníky smlouva Enterprise (EA) a Microsoft Customer Agreement (MCA) jsou k dispozici doporučení pro sdílení a jednotné rozsahy, které jsou k dispozici v [balíčku obsahu Azure Consumption Insights Power BI](/power-bi/service-connect-to-azure-consumption-insights).

@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 92cae59978b172993c779e9a486ff67d82309800
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 6bf2054a1b9d42529c3917994e5f446b3c50ecf7
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349918"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682711"
 ---
 # <a name="clone-a-managed-image-to-a-shared-image-gallery-image"></a>Naklonování spravované image do image galerie sdílených imagí
 
@@ -54,7 +54,7 @@ Definice obrázků vytvoří logické seskupení obrázků. Používají se ke s
 
 Při vytváření definice obrázku se ujistěte, že jsou všechny správné informace. Vzhledem k tomu, že se spravované image vždycky zobecněny, měli byste nastavit `-OsState generalized` . 
 
-Další informace o hodnotách, které můžete zadat pro definici obrázku, najdete v tématu [definice imagí](./windows/shared-image-galleries.md#image-definitions).
+Další informace o hodnotách, které můžete zadat pro definici obrázku, najdete v tématu [definice imagí](./shared-image-galleries.md#image-definitions).
 
 Vytvořte definici Image pomocí [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion). V tomto příkladu má definice image název *myImageDefinition* a je určena pro zobecněný operační systém Windows. Pokud chcete vytvořit definici imagí pomocí operačního systému Linux, použijte `-OsType Linux` . 
 

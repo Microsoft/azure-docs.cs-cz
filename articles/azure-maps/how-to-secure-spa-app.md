@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
-ms.openlocfilehash: c39104912c99b199d38cf489bb61d64e83b89286
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 3b647a02731a4fa404aab4bb648853eea766d92e
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895592"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684068"
 ---
 # <a name="how-to-secure-a-single-page-application-with-non-interactive-sign-in"></a>Jak zabezpečit jednostránkové aplikaci pomocí neinteraktivního přihlašování
 
@@ -30,7 +30,7 @@ Následující příručka se týká aplikace, která používá Azure Active Di
 
 Vytvořte zabezpečenou aplikaci webové služby, která je zodpovědná za ověřování do služby Azure AD. 
 
-1. Vytvořte funkci v Azure Portal. Další informace najdete v tématu [Vytvoření funkce Azure Functions](../azure-functions/functions-create-first-azure-function.md).
+1. Vytvořte funkci v Azure Portal. Další informace najdete v tématu [Vytvoření funkce Azure Functions](../azure-functions/functions-get-started.md).
 
 2. Nakonfigurujte zásady CORS pro funkci Azure, aby byly přístupné pro webovou aplikaci s jednou stránkou. Tím se zabezpečí klienti prohlížeče na povolených zdrojích vaší webové aplikace. Viz [Přidání funkce CORS](../app-service/app-service-web-tutorial-rest-api.md#add-cors-functionality).
 
@@ -102,14 +102,14 @@ Vytvořte zabezpečenou aplikaci webové služby, která je zodpovědná za ově
 
 ## <a name="grant-role-based-access"></a>Udělení přístupu na základě role
 
-Přístup k *řízení přístupu na základě role Azure udělujete (Azure RBAC)* tím, že přiřadíte identitu přiřazenou systémem k jedné nebo více definicím rolí Azure. Pokud chcete zobrazit definice rolí Azure, které jsou k dispozici pro Azure Maps, přejděte na **řízení přístupu (IAM)** . Vyberte **role** a potom vyhledejte role, které začínají na *Azure Maps* .
+Přístup k *řízení přístupu na základě role Azure udělujete (Azure RBAC)* tím, že přiřadíte identitu přiřazenou systémem k jedné nebo více definicím rolí Azure. Pokud chcete zobrazit definice rolí Azure, které jsou k dispozici pro Azure Maps, přejděte na **řízení přístupu (IAM)**. Vyberte **role** a potom vyhledejte role, které začínají na *Azure Maps*.
 
-1. Přejít na **účet Azure Maps** . Vyberte přiřazení role **řízení přístupu (IAM)**  >  **Role assignment** .
+1. Přejít na **účet Azure Maps**. Vyberte přiřazení role **řízení přístupu (IAM)**  >  .
 
     > [!div class="mx-imgBorder"]
     > ![Udělení přístupu pomocí Azure RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
-2. Na kartě **přiřazení rolí** v části **Role** vyberte předdefinované Azure Maps definice role, jako je **Azure Maps data Reader** nebo **Azure Maps Přispěvatel dat** . V části **přiřadit přístup k** vyberte **Function App** . Vyberte objekt zabezpečení podle názvu. Pak vyberte **Uložit** .
+2. Na kartě **přiřazení rolí** v části **Role** vyberte předdefinované Azure Maps definice role, jako je **Azure Maps data Reader** nebo **Azure Maps Přispěvatel dat**. V části **přiřadit přístup k** vyberte **Function App**. Vyberte objekt zabezpečení podle názvu. Pak vyberte **Uložit**.
 
    * Podívejte se na podrobnosti o [Přidání nebo odebrání přiřazení rolí](../role-based-access-control/role-assignments-portal.md).
 

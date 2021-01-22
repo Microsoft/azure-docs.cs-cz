@@ -7,18 +7,18 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 33b30f29146e446c5525b1bbcfd76af71c557702
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: fa699163fdf445624c918e714fda890a41a67f07
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045308"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682643"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Správa koncových bodů a tras v Azure Digital revláken (rozhraní API a CLI)
 
 [!INCLUDE [digital-twins-route-selector.md](../../includes/digital-twins-route-selector.md)]
 
-V digitálních prostředcích Azure můžete směrovat [oznámení událostí](how-to-interpret-event-data.md) na služby pro příjem dat nebo připojené výpočetní prostředky. To je prováděno napřed nastavením **koncových bodů** , které mohou přijímat události. Pak můžete vytvořit  [**trasy událostí**](concepts-route-events.md) , které určují, které události generované pomocí digitálních vláken Azure jsou doručeny do těch koncových bodů.
+V digitálních prostředcích Azure můžete směrovat [oznámení událostí](how-to-interpret-event-data.md) na služby pro příjem dat nebo připojené výpočetní prostředky. K tomu je potřeba nejprve nastavit **koncové body**, které mohou události přijímat. Pak můžete vytvořit  [**trasy událostí**](concepts-route-events.md) , které určují, které události generované pomocí digitálních vláken Azure jsou doručeny do těch koncových bodů.
 
 Tento článek vás provede procesem vytvoření koncových bodů a tras s [rozhraními API pro směrování událostí](/rest/api/digital-twins/dataplane/eventroutes), [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)a [Azure Digital revlákens CLI](how-to-use-cli.md).
 
@@ -26,10 +26,12 @@ Alternativně můžete také spravovat koncové body a trasy pomocí [Azure Port
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Budete potřebovat **účet Azure** (můžete [si ho nastavit zdarma).](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* V předplatném Azure budete potřebovat **instanci digitálního vlákna Azure** . Pokud instanci již nemáte, můžete ji vytvořit pomocí kroků v tématu [*Postupy: nastavení instance a ověřování*](how-to-set-up-instance-cli.md). Použijte následující hodnoty z instalačního programu užitečné pro pozdější použití v tomto článku:
+- Budete potřebovat **účet Azure** (můžete [si ho nastavit zdarma).](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+- V předplatném Azure budete potřebovat **instanci digitálního vlákna Azure** . Pokud instanci již nemáte, můžete ji vytvořit pomocí kroků v tématu [*Postupy: nastavení instance a ověřování*](how-to-set-up-instance-cli.md). Použijte následující hodnoty z instalačního programu užitečné pro pozdější použití v tomto článku:
     - Název instance
     - Skupina prostředků
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
     
 ## <a name="create-an-endpoint-for-azure-digital-twins"></a>Vytvoření koncového bodu pro digitální vlákna Azure
 
@@ -44,7 +46,7 @@ Aby bylo možné propojit koncový bod s digitálními podsítěmi Azure, musí 
 
 ### <a name="create-an-event-grid-endpoint"></a>Vytvoření koncového bodu Event Grid
 
-Následující příklad ukazuje, jak vytvořit koncový bod Event gridu pomocí rozhraní příkazového řádku Azure CLI. Můžete použít [Azure Cloud Shell](https://shell.azure.com)nebo [místně nainstalovat rozhraní](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)příkazového řádku.
+Následující příklad ukazuje, jak vytvořit koncový bod Event gridu pomocí rozhraní příkazového řádku Azure CLI.
 
 Nejprve vytvořte téma Event Grid. Můžete použít následující příkaz nebo zobrazit kroky podrobněji pomocí postupu v [části *Vytvoření vlastního tématu*](../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic) v rychlém startu Event Grid *vlastních událostí* .
 
@@ -185,7 +187,7 @@ Trasy událostí jsou definované pomocí [rozhraní API roviny dat](how-to-use-
 Definice trasy může obsahovat tyto prvky:
 * Název trasy, kterou chcete použít
 * Název koncového bodu, který chcete použít
-* Filtr definující události odesílané do koncového bodu 
+* Filtr definující události posílané do koncového bodu 
 
 Pokud název trasy neexistuje, žádné zprávy se nesměrují mimo digitální vlákna Azure. Pokud je název trasy a filtr je `true` , všechny zprávy jsou směrovány do koncového bodu. Pokud je k dispozici název trasy a je přidán jiný filtr, budou zprávy na základě filtru filtrovány.
 

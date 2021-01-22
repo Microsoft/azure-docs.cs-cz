@@ -14,12 +14,12 @@ ms.service: azure
 ms.tgt_pltfrm: multiple
 ms.topic: tutorial
 ms.workload: web
-ms.openlocfilehash: 65d8ade438228d7af71de1fc66639e5b6de2edda
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 735c0955a25a3995c94c73bd6471643ce2783df3
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040798"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682610"
 ---
 # <a name="create-a-pivotal-cloud-foundry-cluster-on-azure"></a>Vytvoření Cloud Foundryho clusteru s Pivotem v Azure
 
@@ -42,11 +42,13 @@ Další informace najdete v tématu [použití klíčů ssh s Windows v Azure](.
 
 > [!NOTE]
 >
-> K vytvoření instančního objektu potřebujete oprávnění k účtu vlastníka. Můžete také napsat skript pro automatizaci vytváření instančního objektu. Můžete například použít Azure CLI [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest).
+> K vytvoření instančního objektu potřebujete oprávnění k účtu vlastníka. Můžete také napsat skript pro automatizaci vytváření instančního objektu. Můžete například použít Azure CLI [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp).
 
 1. Přihlaste se ke svému účtu Azure.
 
-    `az login`
+    ```azurecli
+    az login
+    ```
 
     ![Přihlášení Azure CLI](media/deploy/az-login-output.png )
  
@@ -54,11 +56,15 @@ Další informace najdete v tématu [použití klíčů ssh s Windows v Azure](.
 
 2. Nastavte své výchozí předplatné pro tuto konfiguraci.
 
-    `az account set -s {id}`
+    ```azurecli
+    az account set -s {id}
+    ```
 
 3. Vytvořte aplikaci Azure Active Directory pro PCF. Zadejte jedinečné alfanumerické heslo. Uložte heslo jako **clientSecret** pro pozdější použití.
 
-    `az ad app create --display-name "Svc Principal for OpsManager" --password {enter-your-password} --homepage "{enter-your-homepage}" --identifier-uris {enter-your-homepage}`
+    ```azurecli
+    az ad app create --display-name "Svc Principal for OpsManager" --password {enter-your-password} --homepage "{enter-your-homepage}" --identifier-uris {enter-your-homepage}
+    ```
 
     Zkopírujte hodnotu appId ve výstupu jako své **clientID** pro pozdější použití.
 
@@ -68,23 +74,31 @@ Další informace najdete v tématu [použití klíčů ssh s Windows v Azure](.
 
 4. Vytvořte instanční objekt s novým ID aplikace.
 
-    `az ad sp create --id {appId}`
+    ```azurecli
+    az ad sp create --id {appId}
+    ```
 
 5. Nastavte oprávnění vašeho instančního objektu na roli Přispěvatel.
 
-    `az role assignment create --assignee "{enter-your-homepage}" --role "Contributor"`
+    ```azurecli
+    az role assignment create --assignee "{enter-your-homepage}" --role "Contributor"
+    ```
 
     Nebo můžete také použít
 
-    `az role assignment create --assignee {service-principal-name} --role "Contributor"`
+    ```azurecli
+    az role assignment create --assignee {service-principal-name} --role "Contributor"
+    ```
 
     ![Přiřazení role objektu služby](media/deploy/svc-princ.png )
 
 6. Ověřte, že se můžete úspěšně přihlásit k instančnímu objektu pomocí ID aplikace, hesla a ID tenanta.
 
-    `az login --service-principal -u {appId} -p {your-password}  --tenant {tenantId}`
+    ```azurecli
+    az login --service-principal -u {appId} -p {your-password}  --tenant {tenantId}
+    ```
 
-7. Vytvořte soubor. JSON v následujícím formátu. Použijte hodnoty **ID předplatného** , **tenantID** , **clientID** a **clientSecret** , které jste zkopírovali dříve. Uložte soubor.
+7. Vytvořte soubor. JSON v následujícím formátu. Použijte hodnoty **ID předplatného**, **tenantID**, **clientID** a **clientSecret** , které jste zkopírovali dříve. Soubor uložte.
 
     ```json
     {
@@ -98,7 +112,7 @@ Další informace najdete v tématu [použití klíčů ssh s Windows v Azure](.
 ## <a name="get-the-pivotal-network-token"></a>Získání tokenu pro Pivoting Network
 
 1. Zaregistrujte se nebo se přihlaste ke svému účtu [pivoted Network](https://network.pivotal.io) .
-2. V pravém horním rohu stránky vyberte název vašeho profilu. Vyberte **Upravit profil** .
+2. V pravém horním rohu stránky vyberte název vašeho profilu. Vyberte **Upravit profil**.
 3. Posuňte se do dolní části stránky a zkopírujte hodnotu **tokenu starší verze API** . Tato hodnota je hodnota **tokenu vaší kontingenční sítě** , kterou použijete později.
 
 ## <a name="provision-your-cloud-foundry-cluster-on-azure"></a>Zřízení clusteru Cloud Foundry v Azure

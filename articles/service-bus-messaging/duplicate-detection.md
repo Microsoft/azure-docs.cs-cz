@@ -3,12 +3,12 @@ title: Zjišťování duplicitních zpráv Azure Service Bus | Microsoft Docs
 description: Tento článek vysvětluje, jak můžete zjišťovat duplicity v Azure Service Busch zprávách. Duplicitní zprávu lze ignorovat a vyřadit.
 ms.topic: article
 ms.date: 01/13/2021
-ms.openlocfilehash: 29972f756c66f524cc2e4684fcb7afd1ca628820
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 8ff98b3a052be6004a2dc070f10d6f8c9ca0617f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98184675"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684804"
 ---
 # <a name="duplicate-detection"></a>Vyhledávání duplicit
 
@@ -17,6 +17,9 @@ Pokud dojde k selhání aplikace z důvodu závažné chyby hned po odeslání z
 Je také možné, že došlo k chybě na úrovni klienta nebo sítě a odeslání zprávy do fronty se zařadí do fronty s potvrzením, které se neúspěšně vrátilo klientovi. Tento scénář opouští klientovi pochybnosti o výsledku operace odeslání.
 
 Zjišťování duplicitních hodnot trvá z těchto případů pochybnostm, protože umožňuje odesílateli znovu odeslat stejnou zprávu a fronta nebo téma zahodí jakékoli duplicitní kopie.
+
+> [!NOTE]
+> Základní vrstva Service Bus nepodporuje detekci duplicit. Úrovně Standard a Premium podporují detekci duplicit. Rozdíly mezi těmito úrovněmi najdete v tématu [Service Bus ceny](https://azure.microsoft.com/pricing/details/service-bus/).
 
 ## <a name="how-it-works"></a>Jak to funguje? 
 Povolení Detekce duplicitních dat pomáhá sledovat, které zprávy *MessageID* řízené aplikací všech zpráv odeslaných do fronty nebo tématu během zadaného časového období. Pokud se pošle nějaká nová zpráva s parametrem *MessageID* zaznamenaným během časového intervalu, zpráva se nahlásí jako přijatá (operace odeslání se zdaří), ale nově odeslaná zpráva se okamžitě ignoruje a vynechá. Neberou v úvahu žádné jiné části jiné zprávy, než je *MessageID* .

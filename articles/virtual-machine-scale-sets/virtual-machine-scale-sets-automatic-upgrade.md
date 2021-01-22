@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 06/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma, devx-track-azurecli
-ms.openlocfilehash: 4ebb16186e613affdb886a8819240d47f944c42f
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: ff1a29577c0778d6ef88d3523c726f7a48739cdc
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763536"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684606"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Automatické upgrady imagí operačních systémů škálovacích sad virtuálních počítačů
 
@@ -49,7 +49,7 @@ Nástroj Orchestrator pro upgrade operačního systému nástroje pro škálová
 >Automatický upgrade operačního systému neupgraduje SKU referenčních imagí v sadě škálování. Chcete-li změnit skladovou položku (například Ubuntu 16,04-LTS na 18,04-LTS), je nutné aktualizovat [model sady škálování](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-model) přímo s požadovanou SKU image. Vydavatele a nabídku obrázků nelze změnit pro existující sadu škálování.  
 
 ## <a name="supported-os-images"></a>Podporované image operačních systémů
-V současné době jsou podporovány pouze některé image platformy operačního systému. Vlastní image [se podporují](virtual-machine-scale-sets-automatic-upgrade.md#automatic-os-image-upgrade-for-custom-images) , pokud sada škálování používá vlastní image pomocí [Galerie sdílených imagí](shared-image-galleries.md).
+V současné době jsou podporovány pouze některé image platformy operačního systému. Vlastní image [se podporují](virtual-machine-scale-sets-automatic-upgrade.md#automatic-os-image-upgrade-for-custom-images) , pokud sada škálování používá vlastní image pomocí [Galerie sdílených imagí](../virtual-machines/shared-image-galleries.md).
 
 V současné době se podporují následující SKU platforem (a pravidelně se přidávají další):
 
@@ -89,11 +89,11 @@ Zajistěte, aby se nastavení odolnosti neshodovalo s Service Fabric clusterem a
 
 ## <a name="automatic-os-image-upgrade-for-custom-images"></a>Automatický upgrade bitové kopie operačního systému pro vlastní image
 
-Automatický upgrade image operačního systému se podporuje pro vlastní image nasazené pomocí [Galerie sdílených imagí](shared-image-galleries.md). Další vlastní image nejsou podporované pro automatické upgrady imagí operačního systému.
+Automatický upgrade image operačního systému se podporuje pro vlastní image nasazené pomocí [Galerie sdílených imagí](../virtual-machines/shared-image-galleries.md). Další vlastní image nejsou podporované pro automatické upgrady imagí operačního systému.
 
 ### <a name="additional-requirements-for-custom-images"></a>Další požadavky na vlastní image
 - Proces instalace a konfigurace automatického upgradu image operačního systému je stejný pro všechny sady škálování, jak je popsáno v [části Konfigurace](virtual-machine-scale-sets-automatic-upgrade.md#configure-automatic-os-image-upgrade) této stránky.
-- Instance sad škálování nakonfigurované pro automatické upgrady imagí operačního systému se budou upgradovat na nejnovější verzi Image Galerie sdílených imagí, když se publikuje nová verze image a [replikuje](shared-image-galleries.md#replication) se do oblasti této sady škálování. Pokud se nová bitová kopie nereplikuje do oblasti, ve které je rozšíření nasazeno, instance sady škálování nebudou upgradovány na nejnovější verzi. Replikace místních imagí vám umožní řídit zavedení nového obrázku pro sady škálování.
+- Instance sad škálování nakonfigurované pro automatické upgrady imagí operačního systému se budou upgradovat na nejnovější verzi Image Galerie sdílených imagí, když se publikuje nová verze image a [replikuje](../virtual-machines/shared-image-galleries.md#replication) se do oblasti této sady škálování. Pokud se nová bitová kopie nereplikuje do oblasti, ve které je rozšíření nasazeno, instance sady škálování nebudou upgradovány na nejnovější verzi. Replikace místních imagí vám umožní řídit zavedení nového obrázku pro sady škálování.
 - Nová verze Image by se neměla z poslední verze této image galerie vyloučit. Verze imagí vyloučené z poslední verze image galerie se nepočítají do sady škálování prostřednictvím automatického upgradu image operačního systému.
 
 > [!NOTE]

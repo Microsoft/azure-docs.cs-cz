@@ -11,12 +11,12 @@ ms.date: 03/26/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seoapril2019, azure-synapse
-ms.openlocfilehash: 95158193a978702392106c8aa3347de211fd1a3e
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 6750f010e3992a2b76cc688449ad44efa7ec76d0
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98115442"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683269"
 ---
 # <a name="create-table-as-select-ctas"></a>CREATE TABLE JAKO SELECT (CTAS)
 
@@ -24,11 +24,11 @@ Tento článek vysvětluje CREATE TABLE jako příkaz SELECT (CTAS) T-SQL v syna
 
 ## <a name="create-table-as-select"></a>CREATE TABLE AS SELECT
 
-Příkaz [CREATE TABLE AS Select](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (CTAS) je jednou z nejdůležitějších funkcí T-SQL, které jsou k dispozici. CTAS je paralelní operace, která vytvoří novou tabulku na základě výstupu příkazu SELECT. CTAS je nejjednodušší a nejrychlejší způsob, jak vytvořit a vložit data do tabulky jediným příkazem.
+Příkaz [CREATE TABLE AS Select](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (CTAS) je jednou z nejdůležitějších funkcí T-SQL, které jsou k dispozici. CTAS je paralelní operace, která vytvoří novou tabulku na základě výstupu příkazu SELECT. CTAS je nejjednodušší a nejrychlejší způsob, jak vytvořit a vložit data do tabulky jediným příkazem.
 
 ## <a name="selectinto-vs-ctas"></a>VYBRAT... DO vs. CTAS
 
-CTAS je přizpůsobitelná verze [výběru... DO](/sql/t-sql/queries/select-into-clause-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) příkazu.
+CTAS je přizpůsobitelná verze [výběru... DO](/sql/t-sql/queries/select-into-clause-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) příkazu.
 
 Následuje příklad jednoduchého výběru... USKLADNĚN
 
@@ -379,7 +379,7 @@ OPTION (LABEL = 'CTAS : Partition IN table : Create');
 
 Můžete vidět, že konzistence typů a udržování vlastností s hodnotou null na CTAS je osvědčeným postupem. Pomáhá zachovat integritu ve výpočtech a také zajišťuje, že je možné přepínat oddíly.
 
-CTAS je jedním z nejdůležitějších příkazů v synapse SQL. Ujistěte se, že ji důkladně rozumíte. Další informace najdete v [dokumentaci k CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+CTAS je jedním z nejdůležitějších příkazů v synapse SQL. Ujistěte se, že ji důkladně rozumíte. Další informace najdete v [dokumentaci k CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 ## <a name="next-steps"></a>Další kroky
 

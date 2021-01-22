@@ -6,12 +6,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 09/21/2020
 ms.custom: references_regions
-ms.openlocfilehash: 2dd91e5c506f229d653fdf98bc0549c173cec793
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 1e5a53c80aed90e44ba594dcff3c8ca23afc2c4f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93351871"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684770"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes"></a>Vytvoření a konfigurace clusteru Azure Kubernetes Services (AKS) pro použití virtuálních uzlů
 
@@ -48,6 +48,7 @@ Funkce virtuálních uzlů je silně závislá na sadě funkcí ACI. Kromě [kv�
 * Virtuální uzly s privátními clustery.
 * Použití rozsahů IP adres autorizovaných serverem API pro AKS
 * Svazek, ve kterém se namontují sdílené soubory Azure, podporují [obecné účely v1](../storage/common/storage-account-overview.md#types-of-storage-accounts). Postupujte podle pokynů pro připojení [svazku ke sdílené složce služby soubory Azure](azure-files-volume.md) .
+* Použití protokolu IPv6 není podporováno.
 
 ## <a name="next-steps"></a>Další kroky
 

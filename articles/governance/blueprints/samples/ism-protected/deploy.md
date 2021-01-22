@@ -1,14 +1,14 @@
 ---
 title: Ukázková ukázka podrobného plánu podrobného plánu australské vlády ISM
 description: Nasaďte kroky pro ukázku CHRÁNĚNÉho podrobného plánu australské vlády ISM, včetně podrobností parametrů artefaktu podrobného plánu.
-ms.date: 09/11/2020
+ms.date: 01/21/2021
 ms.topic: sample
-ms.openlocfilehash: 4d38a5ad6790b8b2ef09476f4779ef596be9734b
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 354d010442f896728ef9af1e3f372c2abbc58ef3
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91950512"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682275"
 ---
 # <a name="deploy-the-australian-government-ism-protected-blueprint-sample"></a>Nasazení ukázkového podrobného plánu podrobného plánu australské vlády ISM
 
@@ -33,7 +33,7 @@ Nejprve implementujte ukázku podrobného plánu tak, že z ukázky vytvoříte 
 
 1. Zadejte _základní informace_ o ukázce podrobného plánu:
 
-   - **Název**podrobného plánu: zadejte název vaší kopie ukázky chráněného podrobného plánu ISM.
+   - **Název** podrobného plánu: zadejte název vaší kopie ukázky chráněného podrobného plánu ISM.
    - **Umístění definice**: použijte tři tečky a vyberte skupinu pro správu, do které se uloží vaše kopie ukázky.
 
 1. Vyberte kartu _Artefakty_ v horní části stránky nebo **Další: Artefakty** dole na stránce.
@@ -52,7 +52,7 @@ V prostředí máte teď vytvořenou kopii ukázky podrobného plánu. Kopie je 
 
 ## <a name="assign-the-sample-copy"></a>Přiřazení ukázkové kopie
 
-Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji přiřadit k předplatnému v rámci skupiny pro správu, do které byl uložen. V tomto kroku zadáte parametry pro každé nasazení kopie ukázky podrobného plánu.
+Po úspěšném **publikování** kopie ukázky podrobného plánu je možné ji přiřadit k předplatnému v rámci skupiny pro správu, do které byl uložen. V tomto kroku zadáte parametry pro každé nasazení kopie ukázky podrobného plánu.
 
 1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **Podrobné plány**.
 
@@ -68,7 +68,7 @@ Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji 
      - **Název přiřazení**: název je předem vyplněný na základě názvu podrobného plánu.
        Podle potřeby ho změňte nebo ponechte.
      - **Umístění**: Vyberte oblast, ve které se má spravovaná identita vytvořit. Podrobný plán Azure Blueprint používá tuto spravovanou identitu k aplikaci všech artefaktů v přiřazené podrobného plánu. Další informace najdete v tématu [spravované identity pro prostředky Azure](../../../../active-directory/managed-identities-azure-resources/overview.md).
-     - **Verze definice**podrobného plánu: vyberte **publikovanou** verzi vaší kopie ukázky podrobného plánu.
+     - **Verze definice** podrobného plánu: vyberte **publikovanou** verzi vaší kopie ukázky podrobného plánu.
 
    - Zamknout přiřazení
 

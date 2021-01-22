@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6f74f973abc33d809624bd8abd5a514a52ccfe70
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 04ca8d515dbc5a28a7d3a30369d97877928c9dc1
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602693"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683867"
 ---
 # <a name="connect-function-apps-in-azure-for-processing-data"></a>Připojení aplikací Function App v Azure pro zpracování dat
 
@@ -36,7 +36,7 @@ Tady je přehled kroků, které obsahuje:
 
 ## <a name="create-a-function-app-in-visual-studio"></a>Vytvoření aplikace Function App v aplikaci Visual Studio
 
-V aplikaci Visual Studio 2019 vyberte _soubor > nový > projekt_ a vyhledejte šablonu _Azure Functions_ vyberte možnost _Další_.
+V aplikaci Visual Studio 2019 vyberte _soubor > nový > projekt_ a vyhledejte šablonu _Azure Functions_ . Vyberte _Další_.
 
 :::image type="content" source="media/how-to-create-azure-function/create-azure-function-project.png" alt-text="Visual Studio: dialogové okno Nový projekt":::
 
@@ -44,11 +44,11 @@ Zadejte název aplikace Function App a vyberte _vytvořit_.
 
 :::image type="content" source="media/how-to-create-azure-function/configure-new-project.png" alt-text="Visual Studio: konfigurace nového projektu":::
 
-Vyberte typ *triggeru* function App Event Grid a vyberte _vytvořit_.
+Vyberte typ Function App *Event Grid Trigger* a vyberte _vytvořit_.
 
-:::image type="content" source="media/how-to-create-azure-function/eventgridtrigger-function.png" alt-text="Visual Studio: dialogové okno aktivační události Azure Functions projektu":::
+:::image type="content" source="media/how-to-create-azure-function/event-grid-trigger-function.png" alt-text="Visual Studio: dialogové okno aktivační události Azure Functions projektu":::
 
-Po vytvoření aplikace Function App bude mít Visual Studio automaticky vyplněný vzorek kódu v souboru **Function.cs** ve složce projektu. Tato krátká funkce se používá k protokolování událostí.
+Po vytvoření aplikace Function App vytvoří Visual Studio ukázku kódu v souboru **function1.cs** ve složce projektu. Tato krátká funkce se používá k protokolování událostí.
 
 :::image type="content" source="media/how-to-create-azure-function/visual-studio-sample-code.png" alt-text="Visual Studio: okno projektu s ukázkovým kódem":::
 
@@ -56,11 +56,11 @@ Po vytvoření aplikace Function App bude mít Visual Studio automaticky vyplně
 
 Funkci můžete napsat přidáním sady SDK do aplikace Function App. Aplikace Function App komunikuje s digitálními interakcemi Azure pomocí [sady Azure Digital Revlákens SDK pro .NET (C#)](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true). 
 
-Aby bylo možné použít sadu SDK, budete muset do svého projektu zahrnout následující balíčky. Balíčky můžete buď nainstalovat pomocí Správce balíčků NuGet sady Visual Studio, nebo balíčky přidat pomocí `dotnet` nástroje příkazového řádku. Vyberte jednu z těchto metod: 
+Aby bylo možné použít sadu SDK, budete muset do svého projektu zahrnout následující balíčky. Balíčky můžete nainstalovat pomocí Správce balíčků NuGet sady Visual Studio nebo balíčky přidat pomocí `dotnet` nástroje v nástroji příkazového řádku. Použijte následující postup pro upřednostňovanou metodu.
 
 **Možnost 1. Přidat balíčky pomocí Správce balíčků sady Visual Studio:**
     
-To můžete provést tak, že kliknete pravým tlačítkem na projekt a v seznamu vyberete _Spravovat balíčky NuGet_ . Pak v okně, které se otevře, vyberte _Procházet_ kartu a vyhledejte následující balíčky. Vyberte _nainstalovat_ a _přijměte_ licenční smlouvu pro instalaci balíčků.
+Klikněte pravým tlačítkem na projekt a vyberte _Spravovat balíčky NuGet_ ze seznamu. Pak v okně, které se otevře, vyberte kartu _Procházet_ a vyhledejte následující balíčky. Vyberte _nainstalovat_ a _přijměte_ licenční smlouvu pro instalaci balíčků.
 
 * `Azure.DigitalTwins.Core`
 * `Azure.Identity`
@@ -78,15 +78,15 @@ dotnet add package System.Net.Http
 dotnet add package Azure.Core
 ```
 
-Potom ve Visual Studiu Průzkumník řešení otevřete soubor _Function.cs_ , kde máte vzorový kód a přidejte následující příkazy _using_ do funkce. 
+Potom ve Visual Studiu Průzkumník řešení otevřete soubor _function1.cs_ , kde máte vzorový kód a přidejte `using` do funkce následující příkazy. 
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs" id="Function_dependencies":::
 
 ## <a name="add-authentication-code-to-the-function"></a>Přidání ověřovacího kódu do funkce
 
-Nyní deklarujete proměnné na úrovni třídy a přidáte ověřovací kód, který umožní funkci přístup k digitálním Vlákenám Azure. Do své funkce v souboru {název funkce}. cs přidáte následující:
+Nyní deklarujete proměnné na úrovni třídy a přidáte ověřovací kód, který umožní funkci přístup k digitálním Vlákenám Azure. Do souboru _function1.cs_ přidáte následující funkce.
 
-* Načte adresu URL služby ADT jako proměnnou prostředí. Je vhodné si přečíst adresu URL služby z proměnné prostředí, ale nemusíte ji pevně zakódovat do funkce.
+* Kód pro čtení adresy URL služby Azure Digital jako proměnné prostředí Je vhodné si přečíst adresu URL služby z proměnné prostředí, ale nemusíte ji pevně zakódovat do funkce.
 
     :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs" id="ADT_service_URL":::
 
@@ -97,43 +97,24 @@ Nyní deklarujete proměnné na úrovni třídy a přidáte ověřovací kód, k
 * Přihlašovací údaje spravované identity můžete použít v Azure Functions.
     :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs" id="ManagedIdentityCredential":::
 
-* Přidejte místní proměnnou _DigitalTwinsClient_ do vaší funkce, abyste pomohli instanci klienta Azure s digitálními podmnožinami v projektu funkce. Nevytvářejte *tuto* proměnnou v rámci vaší třídy staticky.
+* Přidejte místní proměnnou _DigitalTwinsClient_ do funkce, která bude uchovávat vaši instanci klienta služby Azure Digital revariablees. Nevytvářejte *tuto* proměnnou v rámci vaší třídy staticky.
     :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs" id="DigitalTwinsClient":::
 
-* Přidejte kontrolu null pro _adtInstanceUrl_ a zabalte svou logiku funkcí do bloku try catch pro zachycení jakýchkoli výjimek.
+* Přidejte kontrolu s hodnotou null pro _adtInstanceUrl_ a zabalte svou logiku funkcí do bloku try/catch pro zachycení jakýchkoli výjimek.
 
 Po těchto změnách bude kód vaší funkce podobný následujícímu:
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs":::
 
+Teď, když je vaše aplikace vytvořená, můžete ji publikovat do Azure pomocí kroků v následující části.
+
 ## <a name="publish-the-function-app-to-azure"></a>Publikování aplikace funkcí do Azure
 
-Pokud chcete projekt publikovat do aplikace Function App v Azure, klikněte pravým tlačítkem na projekt funkce (ne řešení) v Průzkumník řešení a zvolte **publikovat**.
-
-> [!IMPORTANT] 
-> Publikování do aplikace Function App v Azure má za následek další poplatky za vaše předplatné bez ohledu na digitální vlákna Azure.
-
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function.png" alt-text="Visual Studio: publikování funkce do Azure":::
-
-Jako cíl publikování vyberte **Azure** a pak vyberte **Další**.
-
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-1.png" alt-text="Visual Studio: dialogové okno Publikovat Azure Functions vyberte Azure. ":::
-
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-2.png" alt-text="Visual Studio: dialogové okno publikování funkce vyberte Azure Function App (Windows) nebo (Linux) na základě vašeho počítače.":::
-
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-3.png" alt-text="Visual Studio: dialogové okno publikování funkce, vytvoření nové funkce Azure Functions":::
-
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-4.png" alt-text="Visual Studio: dialogové okno Publikovat funkci, vyplňte pole a vyberte vytvořit.":::
-
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-5.png" alt-text="Visual Studio: dialogové okno publikování funkce, výběr aplikace Function App ze seznamu a dokončení":::
-
-Na následující stránce zadejte požadovaný název nové aplikace Function App, skupiny prostředků a dalších podrobností.
-Aby aplikace Function App mohla přistupovat k digitálním funkcím Azure, musí mít identitu spravovanou systémem a mít oprávnění pro přístup k instanci digitálních vláken Azure.
-
-V dalším kroku můžete nastavit přístup zabezpečení pro funkci pomocí rozhraní příkazového řádku nebo Azure Portal. Vyberte jednu z těchto metod:
+[!INCLUDE [digital-twins-publish-azure-function.md](../../includes/digital-twins-publish-azure-function.md)]
 
 ## <a name="set-up-security-access-for-the-function-app"></a>Nastavení přístupu zabezpečení pro aplikaci Function App
-Přístup k zabezpečení pro aplikaci Function App můžete nastavit pomocí jedné z těchto možností:
+
+Přístup k zabezpečení pro aplikaci Function App můžete nastavit buď pomocí rozhraní příkazového řádku Azure nebo Azure Portal. Postupujte podle pokynů níže.
 
 ### <a name="option-1-set-up-security-access-for-the-function-app-using-cli"></a>Možnost 1: nastavení přístupu zabezpečení pro aplikaci Function App pomocí rozhraní příkazového řádku
 
@@ -169,7 +150,7 @@ Spravovaná identita přiřazená systémem umožňuje prostředkům Azure ově�
 
 V [Azure Portal](https://portal.azure.com/)vyhledejte _aplikaci Function App_ na panelu hledání s názvem aplikace Function App, kterou jste vytvořili dříve. V seznamu vyberte *Function App* . 
 
-:::image type="content" source="media/how-to-create-azure-function/portal-search-for-functionapp.png" alt-text="Azure Portal: hledání aplikace Function App":::
+:::image type="content" source="media/how-to-create-azure-function/portal-search-for-function-app.png" alt-text="Azure Portal: hledání aplikace Function App":::
 
 V okně Function App vyberte v navigačním panelu vlevo možnost _Identita_ a povolte spravovanou identitu.
 V části _přiřazená systémová_ karta přepněte _stav_ na zapnuto a _uložte_ ho. Zobrazí se automaticky otevírané okno, ve kterém se _povolí spravovaná identita přiřazená systémem_.
@@ -206,31 +187,29 @@ Pak podrobnosti uložte kliknutím na tlačítko _Uložit_ .
 
 Adresu URL instance digitálního vlákna Azure, která je pro vaši funkci přístupná, můžete nastavit tak, že nastavíte proměnnou prostředí. Další informace najdete v tématu [*proměnné prostředí*](/sandbox/functions-recipes/environment-variables). Nastavení aplikace jsou vystavena jako proměnné prostředí pro přístup k instanci digitálního vlákna. 
 
-Budete potřebovat ADT_INSTANCE_URL k vytvoření nastavení aplikace.
-
-Můžete získat ADT_INSTANCE_URL připojením **_https://_** k názvu hostitele instance. V Azure Portal můžete najít název hostitele instance digitálního vlákna, a to tak, že na panelu hledání vyhledáte svou instanci. Pak na levém navigačním panelu vyberte _Přehled_ a zobrazte _název hostitele_. Zkopírujte tuto hodnotu pro vytvoření nastavení aplikace.
+Pokud chcete nastavit proměnnou prostředí s adresou URL vaší instance, načtěte adresu URL tak, že vyhledáte název hostitele instance digitálního vlákna Azure. Na panelu hledání [Azure Portal](https://portal.azure.com) vyhledejte vaši instanci. Pak na levém navigačním panelu vyberte _Přehled_ a zobrazte _název hostitele_. Zkopírujte tuto hodnotu.
 
 :::image type="content" source="media/how-to-create-azure-function/adt-hostname.png" alt-text="Azure Portal: Přehled – > kopírování názvu hostitele, který se má použít v poli _Value_.":::
 
 Nyní můžete vytvořit nastavení aplikace podle následujících kroků:
 
-* Vyhledejte svoji aplikaci pomocí názvu aplikace Function App na panelu hledání a ze seznamu vyberte aplikaci Function App.
-* Vyberte _konfiguraci_ na navigačním panelu vlevo a vytvořte nové nastavení aplikace.
-* Na kartě _nastavení aplikace_ vyberte _+ Nastavení nové aplikace_ .
+1. Vyhledejte svoji aplikaci pomocí názvu aplikace Function App na panelu hledání a ze seznamu vyberte aplikaci Function App.
+1. Vyberte _konfiguraci_ na navigačním panelu vlevo a vytvořte nové nastavení aplikace.
+1. Na kartě _nastavení aplikace_ vyberte _+ Nastavení nové aplikace_ .
 
-:::image type="content" source="media/how-to-create-azure-function/search-for-azure-function.png" alt-text="Azure Portal: hledání existující aplikace Function App":::
+:::image type="content" source="media/how-to-create-azure-function/search-for-azure-function.png" alt-text="Azure Portal: hledání existující aplikace Function App" lightbox="media/how-to-create-azure-function/search-for-azure-function.png":::
 
 :::image type="content" source="media/how-to-create-azure-function/application-setting.png" alt-text="Azure Portal: Konfigurace nastavení aplikace":::
 
-V okně, které se otevře, použijte hodnotu zkopírovanou z výše k vytvoření nastavení aplikace. \
-_Název_  : ADT_SERVICE_URL \
-_Hodnota_ : https://{your-Azure-Digital-zdvojené-hostname}
+V okně, které se otevře, použijte hodnotu název hostitele zkopírovanou výše a vytvořte nastavení aplikace.
+* _Název_ : ADT_SERVICE_URL
+* _Hodnota_: https://{your-Azure-Digital-revláken-Host-Name}
 
 Vyberte _OK_ a vytvořte nastavení aplikace.
 
 :::image type="content" source="media/how-to-create-azure-function/add-application-setting.png" alt-text="Azure Portal: přidejte nastavení aplikace.":::
 
-Nastavení aplikace můžete zobrazit pomocí názvu aplikace v poli _název_ . Pak nastavení aplikace uložte výběrem tlačítka _Uložit_ .
+Nastavení aplikace můžete zobrazit pomocí názvu aplikace v poli _název_ . Pak nastavení aplikace uložte tak, že vyberete tlačítko _Uložit_ .
 
 :::image type="content" source="media/how-to-create-azure-function/application-setting-save-details.png" alt-text="Azure Portal: zobrazení vytvořené aplikace a restartování aplikace":::
 
@@ -244,10 +223,7 @@ Kliknutím na ikonu _oznámení_ můžete zobrazit tato nastavení aplikace. Pok
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste postupovali podle kroků v tématu Nastavení aplikace Function App v Azure pro použití s digitálními podmnožinami Azure. V dalším kroku můžete k přihlášení k odběru funkce Event Grid, aby bylo možné naslouchat na koncovém bodu. Tento koncový bod může být:
-* Event Grid koncový bod připojený k digitálním podprocesům Azure ke zpracování zpráv přicházejících z digitálních vláken Azure (například zpráv o změnách vlastností, zpráv telemetrie generovaných [digitálními](concepts-twins-graph.md) podprocesy ve dvojitých grafech nebo ve zprávách o životním cyklu).
-* Témata systému IoT používaná IoT Hub k posílání telemetrie a dalších událostí zařízení
-* Event Grid koncový bod přijímající zprávy z jiných služeb
+V tomto článku jste postupovali podle kroků v tématu Nastavení aplikace Function App v Azure pro použití s digitálními podmnožinami Azure.
 
 Další informace najdete v tématu postup sestavení na základě základní funkce pro ingestování IoT Hub dat do digitálních vláken Azure:
 * [*Postupy: ingestování telemetrie z IoT Hub*](how-to-ingest-iot-hub-data.md)

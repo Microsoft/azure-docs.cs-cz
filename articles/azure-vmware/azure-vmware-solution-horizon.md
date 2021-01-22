@@ -3,12 +3,12 @@ title: Nasazení horizontu v řešení VMware Azure
 description: Přečtěte si, jak nasadit VMware Horizon do řešení Azure VMware.
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: 6d5d8e12e358e2289128af9840660be18f5f217a
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 2cf6fc5cb7662188650365cb019774d6c778d405
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95537437"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684871"
 ---
 # <a name="deploy-horizon-on-azure-vmware-solution"></a>Nasazení horizontu v řešení VMware Azure 
 
@@ -130,15 +130,35 @@ Metodologie změny velikosti v hostiteli běžícím v řešení Azure VMware je
 
 ### <a name="sizing-tables"></a>Změna velikosti tabulek
 
-V tabulkách jsou uvedeny běžné úlohy pro přihlašovací úlohy a úlohy pracovního procesu VSI pro přihlášení a pracovní procesy Power Worker.
+Specifické požadavky vCPU/vRAM pro virtuální plochy Horizon závisí na profilu konkrétního pracovního vytížení zákazníka.   Spolupracujte se svým prodejním týmem MSFT a VMware, abyste mohli určit požadavky vCPU/vRAM pro virtuální klienty. 
 
-#### <a name="knowledge-worker-workloads"></a>Pracovní procesy ve znalostní bázi
+| vCPU na virtuální počítač | vRAM na virtuální počítač (GB) | Instance | 100 virtuálních počítačů | 200 virtuálních počítačů | 300 virtuálních počítačů | 400 virtuálních počítačů | 500 virtuálních počítačů | 600 virtuálních počítačů | 700 virtuálních počítačů | 800 virtuálních počítačů | 900 virtuálních počítačů | 1000 virtuálních počítačů | 2000 virtuálních počítačů | 3000 virtuálních počítačů | 4000 virtuálních počítačů | 5000 virtuálních počítačů | 6000 virtuálních počítačů | 6400 virtuálních počítačů |
+|:-----------:|:----------------:|:--------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|
+|      2      |        3,5       |    AVS   |    3    |    3    |    4    |    4    |    5    |    6    |    6    |    7    |    8    |     9    |    17    |    25    |    33    |    41    |    49    |    53    |
+|      2      |         4        |    AVS   |    3    |    3    |    4    |    5    |    6    |    6    |    7    |    8    |    9    |     9    |    18    |    26    |    34    |    42    |    51    |    54    |
+|      2      |         6        |    AVS   |    3    |    4    |    5    |    6    |    7    |    9    |    10   |    11   |    12   |    13    |    26    |    38    |    51    |    62    |    75    |    79    |
+|      2      |         8        |    AVS   |    3    |    5    |    6    |    8    |    9    |    11   |    12   |    14   |    16   |    18    |    34    |    51    |    67    |    84    |    100   |    106   |
+|      2      |        12        |    AVS   |    4    |    6    |    9    |    11   |    13   |    16   |    19   |    21   |    23   |    26    |    51    |    75    |    100   |    124   |    149   |    158   |
+|      2      |        16        |    AVS   |    5    |    8    |    11   |    14   |    18   |    21   |    24   |    27   |    30   |    34    |    67    |    100   |    133   |    165   |    198   |    211   |
+|      4      |        3,5       |    AVS   |    3    |    3    |    4    |    5    |    6    |    7    |    8    |    9    |    10   |    11    |    22    |    33    |    44    |    55    |    66    |    70    |
+|      4      |         4        |    AVS   |    3    |    3    |    4    |    5    |    6    |    7    |    8    |    9    |    10   |    11    |    22    |    33    |    44    |    55    |    66    |    70    |
+|      4      |         6        |    AVS   |    3    |    4    |    5    |    6    |    7    |    9    |    10   |    11   |    12   |    13    |    26    |    38    |    51    |    62    |    75    |    79    |
+|      4      |         8        |    AVS   |    3    |    5    |    6    |    8    |    9    |    11   |    12   |    14   |    16   |    18    |    34    |    51    |    67    |    84    |    100   |    106   |
+|      4      |        12        |    AVS   |    4    |    6    |    9    |    11   |    13   |    16   |    19   |    21   |    23   |    26    |    51    |    75    |    100   |    124   |    149   |    158   |
+|      4      |        16        |    AVS   |    5    |    8    |    11   |    14   |    18   |    21   |    24   |    27   |    30   |    34    |    67    |    100   |    133   |    165   |    198   |    211   |
+|      6      |        3,5       |    AVS   |    3    |    4    |    5    |    6    |    7    |    9    |    10   |    11   |    13   |    14    |    27    |    41    |    54    |    68    |    81    |    86    |
+|      6      |         4        |    AVS   |    3    |    4    |    5    |    6    |    7    |    9    |    10   |    11   |    13   |    14    |    27    |    41    |    54    |    68    |    81    |    86    |
+|      6      |         6        |    AVS   |    3    |    4    |    5    |    6    |    7    |    9    |    10   |    11   |    13   |    14    |    27    |    41    |    54    |    68    |    81    |    86    |
+|      6      |         8        |    AVS   |    3    |    5    |    6    |    8    |    9    |    11   |    12   |    14   |    16   |    18    |    34    |    51    |    67    |    84    |    100   |    106   |
+|      6      |        12        |    AVS   |    4    |    6    |    9    |    11   |    13   |    16   |    19   |    21   |    23   |    26    |    51    |    75    |    100   |    124   |    149   |    158   |
+|      6      |        16        |    AVS   |    5    |    8    |    11   |    14   |    18   |    21   |    24   |    27   |    30   |    34    |    67    |    100   |    133   |    165   |    198   |    211   |
+|      8      |        3,5       |    AVS   |    3    |    4    |    6    |    7    |    9    |    10   |    12   |    14   |    15   |    17    |    33    |    49    |    66    |    82    |    98    |    105   |
+|      8      |         4        |    AVS   |    3    |    4    |    6    |    7    |    9    |    10   |    12   |    14   |    15   |    17    |    33    |    49    |    66    |    82    |    98    |    105   |
+|      8      |         6        |    AVS   |    3    |    4    |    6    |    7    |    9    |    10   |    12   |    14   |    15   |    17    |    33    |    49    |    66    |    82    |    98    |    105   |
+|      8      |         8        |    AVS   |    3    |    5    |    6    |    8    |    9    |    11   |    12   |    14   |    16   |    18    |    34    |    51    |    67    |    84    |    100   |    106   |
+|      8      |        12        |    AVS   |    4    |    6    |    9    |    11   |    13   |    16   |    19   |    21   |    23   |    26    |    51    |    75    |    100   |    124   |    149   |    158   |
+|      8      |        16        |    AVS   |    5    |    8    |    11   |    14   |    18   |    21   |    24   |    27   |    30   |    34    |    67    |    100   |    133   |    165   |    198   |    211   |
 
-:::image type="content" source="media/horizon/common-vdi-profiles-vsi-workloads-knowledge.png" alt-text="Tabulka běžných profilů VDI pro úlohy VSI ve znalostní bázi pro přihlášení k programu VMware Horizon" lightbox="media/horizon/common-vdi-profiles-vsi-workloads-knowledge.png" border="false":::
-
-#### <a name="power-worker-workloads"></a>Pracovní procesy Power Worker
-
-:::image type="content" source="media/horizon/common-vdi-profiles-vsi-workloads-power.png" alt-text="Tabulka běžných profilů VDI pro služby VMware Horizon pro přihlašovací úlohy Power Worker VSI" lightbox="media/horizon/common-vdi-profiles-vsi-workloads-power.png" border="false":::
 
 ### <a name="horizon-sizing-inputs"></a>Vstupy pro změnu velikosti – Horizont
 
@@ -189,24 +209,9 @@ Pokud je nasazená v řešení Azure VMware a v místním prostředí, jako u p�
 
 Pracujte s prodejním týmem VMware EUC a určete náklady na licencování horizontu podle vašich potřeb.
 
-### <a name="cost-of-the-horizon-infrastructure-vms-on-azure-virtual-network"></a>Náklady na virtuální počítače infrastruktury horizontu v Azure Virtual Network
+### <a name="azure-instance-types"></a>Typy instancí Azure
 
-V závislosti na standardní architektuře nasazení se virtuální počítače infrastruktury horizontu skládají z připojovacích serverů, UAGs a správců hromadných aplikací. Nasazují se na Virtual Network Azure zákazníka. Další nativní instance Azure jsou nutné pro podporu služeb vysoké dostupnosti (HA), Microsoft SQL nebo služby Microsoft Active Directory (AD) v Azure. Tabulka uvádí instance Azure na základě příkladu nasazení 2 000-Desktop. 
-
->[!NOTE]
->Aby bylo možné zpracovat selhání, nasaďte další server, než je vyžadováno pro počet připojení (n + 1). Minimální doporučený počet instancí serveru pro připojení, UAG a Správce svazků aplikace je 2 a požadovaný počet bude růst na základě množství uživatelů, které bude prostředí podporovat.  Jeden server pro připojení podporuje maximálně 4 000 relací, i když se jako osvědčený postup doporučuje 2 000. U každého z nich se podporuje až sedm serverů s doporučením celkem 12 000 aktivních relací za sekundu. Nejaktuálnější čísla najdete v [článku znalostní báze VMware – omezení velikosti a doporučení pro změny velikosti VMware Horizon](https://kb.vmware.com/s/article/2150348).
-
-| Součást infrastruktury horizontu | Instance Azure | Potřebný počet instancí (pro 2 000-desktopy)    | Komentář  |
-|----------------------------------|----------------|----------------------------------------------------|----------|
-| Server pro připojení                | D4sv3          | 2       | *Viz poznámku výše*                         |    
-| UAG                              | F2sv2          | 2       | *Viz poznámku výše*                         |
-| Správce svazků aplikace              | D4sv3          | 2       | *Viz poznámku výše*                         |
-| Cloudový konektor                  | D4sv3          | 1       |                                          |
-| Řadič služby AD                    | D4sv3          | 2       | *Možnost používat službu MSFT AD v Azure* |
-| MS-SQL Database                  | D4sv3          | 2       | *Možnost používat službu SQL v Azure*     |
-| Sdílená složka systému Windows               | D4sv3          |         | *Volitelné*                               |
-
-Náklady na virtuální počítač infrastruktury se \$ 0,36 na uživatele za měsíc pro nasazení 2 000-desktopu v předchozím příkladu. V tomto příkladu se používá USA – východ ceny Azure instance z června 2020. Ceny se můžou lišit v závislosti na oblasti, vybraných volbách a časování.
+Informace o velikostech virtuálních počítačů Azure, které se budou vyžadovat pro infrastrukturu Horizon, najdete v pokynech VMware, které najdete [tady](https://techzone.vmware.com/resource/horizon-on-azure-vmware-solution-configuration#horizon-installation-on-azure-vmware-solution).
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o VMware Horizon pro řešení Azure VMware najdete v [nejčastějších dotazech ke horizontu](https://www.vmware.com/content/dam/digitalmarketing/vmware/en/pdf/products/horizon/vmw-horizon-on-microsoft-azure-vmware-solution-faq.pdf)VMware.

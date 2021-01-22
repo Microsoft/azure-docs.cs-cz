@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/22/2020
-ms.openlocfilehash: 7acb555ddde20d6512119af85a8db055bcd9eeed
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 5211555102c0a8d29eb05abd7a680935d828f9dc
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701649"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683436"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Co je pracovní prostor služby Azure Machine Learning?
 
@@ -134,6 +134,5 @@ Pokud chcete začít s Azure Machine Learning, přečtěte si:
 + [Vytvoření a Správa pracovního prostoru](how-to-manage-workspace.md)
 + [Kurz: Začínáme s Azure Machine Learning ve vývojovém prostředí](tutorial-1st-experiment-sdk-setup-local.md)
 + [Kurz: Začínáme s vytvářením prvního experimentu ML na výpočetní instanci](tutorial-1st-experiment-sdk-setup.md)
-+ [Kurz: Začínáme s Azure Machine Learning s využitím sady R SDK](tutorial-1st-r-experiment.md)
 + [Kurz: Vytvoření prvního modelu klasifikace pomocí automatizovaného strojového učení](tutorial-first-experiment-automated-ml.md) 
-+ [Kurz: předpověď ceny automobilu pomocí návrháře](tutorial-designer-automobile-price-train-score.md)
++ [Kurz: Predikce ceny automobilů s využitím návrháře](tutorial-designer-automobile-price-train-score.md)

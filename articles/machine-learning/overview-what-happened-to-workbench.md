@@ -10,12 +10,12 @@ ms.custom: how-to
 ms.author: larryfr
 author: BlackMist
 ms.date: 03/05/2020
-ms.openlocfilehash: 812bbb2507310d088c42fa1cf2cad4c330755892
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: ec99be6082e01ea49e75ff29b5fb3c37d56b6dd5
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98072322"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683370"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Co se stalo s aplikací Azure Machine Learning Workbench?
 
@@ -101,7 +101,7 @@ Vytvořte svůj první experiment s upřednostňovanou metodou:
 
   + [Použití vlastního prostředí](tutorial-1st-experiment-sdk-setup-local.md)
   + [Použití poznámkových bloků Pythonu](tutorial-1st-experiment-sdk-setup.md)
-  + [Použít R Markdown](tutorial-1st-r-experiment.md) 
+  + [Použít R Markdown](https://github.com/Azure/azureml-sdk-for-r) 
   + [Použití automatizovaného strojového učení](tutorial-designer-automobile-price-train-score.md) 
   + [Použití možností přetažení &ho návrháře](tutorial-first-experiment-automated-ml.md) 
   + [Použít rozšíření ML pro rozhraní příkazového řádku](tutorial-train-deploy-model-cli.md)

@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/19/2021
-ms.openlocfilehash: f32739b06920f6b20dc87b8e1fbd2884c323a859
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 3d43a532f57feab361c6a3de79269991f46fc55d
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98633922"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684018"
 ---
 # <a name="prepare-data-with-data-wrangling"></a>Příprava dat pomocí tahání dat
 
@@ -33,9 +33,9 @@ Existují dva způsoby, jak vytvořit Power Query v Azure Data Factory. Jedním 
 
 Druhá metoda je v podokně aktivity plátna kanálu. Otevřete **Power Query** přiznávání a přetáhněte aktivitu **Power Query** na plátno.
 
-![Snímek obrazovky, který zvýrazní možnost toku dat tahání](media/data-flow/power-query-activity.png)
+![Snímek obrazovky, který zvýrazní možnost tahání dat](media/data-flow/power-query-activity.png)
 
-## <a name="author-a-wrangling-data-flow"></a>Vytváření tahání toku dat
+## <a name="author-a-power-query-data-wrangling-activity"></a>Vytvoření aktivity Power Query tahání dat
 
 Přidejte **zdrojovou datovou sadu** pro Power Query zpracování. Můžete buď zvolit existující datovou sadu, nebo vytvořit novou. Můžete také vybrat datovou sadu jímky. Můžete zvolit jednu nebo více zdrojových datových sad, ale v tuto chvíli je povolena pouze jedna jímka. Výběr datové sady jímky je nepovinný, ale vyžaduje se aspoň jedna zdrojová datová sada.
 
@@ -45,19 +45,19 @@ Kliknutím na **vytvořit** otevřete Power Query Editor hybridních webových a
 
 ![Snímek obrazovky, který zobrazuje tlačítko vytvořit, které otevře Power Query Editor hybridních webových aplikací v online režimu.](media/wrangling-data-flow/tutorial5.png)
 
-Vytvářejte tahání data Flow pomocí přípravy dat bez kódu. Seznam dostupných funkcí naleznete v tématu [transformační funkce](wrangling-functions.md). ADF překládá ```M``` skript do skriptu toku dat, takže můžete provádět Power Query ve velkém měřítku pomocí prostředí Sparku pro tok dat ADF.
+Vytvořte tahání Power Query pomocí přípravy dat bez kódu. Seznam dostupných funkcí naleznete v tématu [transformační funkce](wrangling-functions.md). ADF překládá skript M do skriptu toku dat, aby bylo možné spouštět Power Query ve velkém měřítku pomocí prostředí Azure Data Factory Flow toku dat.
 
-![Snímek obrazovky, který ukazuje proces vytváření toku dat tahání.](media/wrangling-data-flow/tutorial6.png)
+![Snímek obrazovky, který ukazuje proces vytváření Power Query dat tahání.](media/wrangling-data-flow/tutorial6.png)
 
-## <a name="running-and-monitoring-a-wrangling-data-flow"></a>Spuštění a monitorování toku dat tahání
+## <a name="running-and-monitoring-a-power-query-data-wrangling-activity"></a>Spuštění a monitorování aktivity Power Query tahání dat
 
-Pokud chcete spustit ladění kanálu pro tahání tok dat, klikněte na **ladit** na plátně kanálu. Po publikování toku dat **teď aktivační událost** spustí spuštění posledního publikovaného kanálu na vyžádání. Toky dat tahání se dají naplánovat se všemi existujícími triggery Azure Data Factory.
+Pokud chcete spustit ladění kanálu Power Query aktivity, klikněte na **ladit** na plátně kanálu. Po publikování kanálu **teď aktivační událost** spustí spuštění posledního publikovaného kanálu na vyžádání. U Power Querych kanálů se dají naplánovat všechny existující triggery Azure Data Factory.
 
-![Snímek obrazovky, který ukazuje, jak přidat tok dat tahání](media/wrangling-data-flow/tutorial3.png)
+![Snímek obrazovky, který ukazuje, jak přidat aktivitu Power Query tahání data.](media/wrangling-data-flow/tutorial3.png)
 
-Přechod na kartu **monitorování** a vizualizujte výstup spuštění aktivity toku dat aktivovaného tahání.
+Otevřete kartu **monitorování** a vizualizujte výstup spuštění spouštěného Power Query aktivity.
 
-![Snímek obrazovky, který zobrazuje výstup spuštění aktivity toku dat aktivovaného tahání.](media/wrangling-data-flow/tutorial2.png)
+![Snímek obrazovky, který zobrazuje výstup spouštěné tahání Power Query aktivity.](media/wrangling-data-flow/tutorial2.png)
 
 ## <a name="next-steps"></a>Další kroky
 

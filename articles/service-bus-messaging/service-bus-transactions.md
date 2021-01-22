@@ -4,16 +4,19 @@ description: Tento článek poskytuje přehled zpracování transakcí a funkci 
 ms.topic: article
 ms.date: 10/28/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9162b8578fe4f48cc3740b38d9d84ffaa2f260de
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9a95a200b57d348109884a319b5433f0ffd5dde1
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023597"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684787"
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>Přehled zpracování Service Bus transakcí
 
 Tento článek popisuje možnosti transakce Microsoft Azure Service Bus. Mnohé diskuze jsou znázorněné [AMQP transakcemi s ukázkami Service Bus](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TransactionsAndSendVia/TransactionsAndSendVia/AMQPTransactionsSendVia). Tento článek je omezený na Přehled zpracování transakcí a funkci *Odeslat prostřednictvím* v Service Bus, zatímco je ukázka atomických transakcí v oboru širší a složitější.
+
+> [!NOTE]
+> Základní Service Bus úrovně nepodporuje transakce. Úrovně Standard a Premium podporují transakce. Rozdíly mezi těmito úrovněmi najdete v tématu [Service Bus ceny](https://azure.microsoft.com/pricing/details/service-bus/).
 
 ## <a name="transactions-in-service-bus"></a>Transakce v Service Bus
 

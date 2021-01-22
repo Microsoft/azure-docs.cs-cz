@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 1/5/2021
 ms.author: v-jawe
-ms.openlocfilehash: 07c9bd12664a94c64a0d0b37d638b5668cc7f61e
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: b4035e2039afb6fe66d2658ebfcd3206d46e1de5
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98605439"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682458"
 ---
 # <a name="how-to-mitigate-latency-when-using-the-face-service"></a>Postupy: zmírnění latence při používání služby Face
 
@@ -42,7 +42,11 @@ var faces = await client.Face.DetectWithUrlAsync("https://www.biography.com/.ima
 
 Služba obličeje pak musí stáhnout image ze vzdáleného serveru. Pokud je připojení ze služby obličeje na vzdáleném serveru pomalé, bude to mít vliv na dobu odezvy metody detekce.
 
-Pokud to chcete zmírnit, zvažte [uložení image v Azure Premium BLOB Storage](https://docs.microsoft.com/azure/storage/blobs/storage-upload-process-images?tabs=dotnet).
+Pokud to chcete zmírnit, zvažte [uložení image v Azure Premium BLOB Storage](https://docs.microsoft.com/azure/storage/blobs/storage-upload-process-images?tabs=dotnet). Například:
+
+``` csharp
+var faces = await client.Face.DetectWithUrlAsync("https://csdx.blob.core.windows.net/resources/Face/Images/Family1-Daughter1.jpg");
+```
 
 ### <a name="large-upload-size"></a>Velikost velkého nahrávání
 
@@ -58,7 +62,10 @@ Pokud soubor k nahrání je velký, což bude mít vliv na dobu odezvy `DetectWi
 - Pořizuje službě déle zpracovat soubor v poměru k velikosti souboru.
 
 Hrozeb
-- Zvažte [uložení image v Azure Premium BLOB Storage](https://docs.microsoft.com/azure/storage/blobs/storage-upload-process-images?tabs=dotnet).
+- Zvažte [uložení image v Azure Premium BLOB Storage](https://docs.microsoft.com/azure/storage/blobs/storage-upload-process-images?tabs=dotnet). Například:
+``` csharp
+var faces = await client.Face.DetectWithUrlAsync("https://csdx.blob.core.windows.net/resources/Face/Images/Family1-Daughter1.jpg");
+```
 - Zvažte odeslání menšího souboru.
     - Přečtěte si pokyny týkající se [vstupních dat pro detekci obličeje](https://docs.microsoft.com/azure/cognitive-services/face/concepts/face-detection#input-data) a [vstupní data pro rozpoznávání tváře](https://docs.microsoft.com/azure/cognitive-services/face/concepts/face-recognition#input-data).
     - Pro detekci tváře při použití modelu detekce se při `DetectionModel.Detection01` zmenšování velikosti souboru obrázku zvýší rychlost zpracování. Při použití modelu detekce se `DetectionModel.Detection02` zmenšení velikosti souboru obrázku zvýší jenom na rychlost zpracování, pokud je soubor s obrázkem menší než 1080.

@@ -10,12 +10,12 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 4ff4d5a810eb79fb11e66591cd0b695062b1c9f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 45df700cc1772250e42a0e007fb4ea91b49471ba
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450177"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684199"
 ---
 # <a name="monitor-iot-edge-deployments"></a>Monitorování nasazení IoT Edge
 
@@ -41,12 +41,12 @@ Pokud chcete zobrazit podrobnosti o nasazení a monitorovat zařízení, která 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) a přejděte k IoT Hub.
 1. V nabídce levého podokna vyberte **IoT Edge** .
 1. Vyberte kartu **nasazení IoT Edge** .
-1. Zkontrolujte seznam nasazení.Pro každé nasazení si můžete zobrazit následující podrobnosti:
+1. Zkontrolujte seznam nasazení. Pro každé nasazení si můžete zobrazit následující podrobnosti:
 
     | Sloupec | Popis |
     | --- | --- |
     | ID | Název nasazení. |
-    | Typ | Typ **nasazení, nasazení nebo nasazení** v **vrstveném**prostředí. |
+    | Typ | Typ **nasazení, nasazení nebo nasazení** v **vrstveném** prostředí. |
     | Cílová podmínka | Značka používaná k definování cílových zařízení. |
     | Priorita | Prioritní číslo přiřazené k nasazení. |
     | Systémové metriky | Počet vláken zařízení v IoT Hub, která odpovídají podmínce cíle. **Použito** určuje počet zařízení, u nichž byl obsah nasazení použit pro jejich modul v IoT Hub. |
@@ -54,7 +54,7 @@ Pokud chcete zobrazit podrobnosti o nasazení a monitorovat zařízení, která 
     | Vlastní metriky | Počet IoT Edgech zařízení hlásících data pro všechny metriky, které jste pro nasazení definovali. |
     | Čas vytvoření | Časové razítko od vytvoření nasazení. Toto časové razítko se používá k přerušení vztahů, pokud dvě nasazení mají stejnou prioritu. |
 
-1. Vyberte nasazení, které chcete monitorovat.  
+1. Vyberte nasazení, které chcete monitorovat.  
 1. Na stránce **Podrobnosti nasazení** se posuňte dolů k dolní části a vyberte kartu **cílová podmínka** . Výběrem **Zobrazit zobrazíte** seznam zařízení, která odpovídají cílové podmínce. Můžete změnit podmínku a také **prioritu**. Pokud jste provedli změny, vyberte **Uložit** .
 
    ![Zobrazení cílových zařízení pro nasazení](./media/how-to-monitor-iot-edge-deployments/target-devices.png)
@@ -69,7 +69,7 @@ Chcete-li provést změny v nasazení, přečtěte si téma [Změna nasazení](h
 
 Podrobnosti o jednom nasazení zobrazíte pomocí příkazu [az IoT Edge Deployment show](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-show) :
 
-```cli
+```azurecli
 az iot edge deployment show --deployment-id [deployment id] --hub-name [hub name]
 ```
 
@@ -78,7 +78,7 @@ Příkaz pro zobrazení nasazení má následující parametry:
 * **--Deployment-ID** – název nasazení, které existuje ve službě IoT Hub. Jedná se o požadovaný parametr.
 * **--hub – název** – název centra IoT, ve kterém existuje nasazení. Centrum musí být v aktuálním předplatném. Přepněte na požadované předplatné pomocí příkazu. `az account set -s [subscription name]`
 
-Prozkoumejte nasazení v příkazovém okně.Vlastnost **metriky** uvádí počet pro každou metriku, která je vyhodnocována jednotlivými rozbočovači:
+Prozkoumejte nasazení v příkazovém okně. Vlastnost **metriky** uvádí počet pro každou metriku, která je vyhodnocována jednotlivými rozbočovači:
 
 * **targetedCount** – systémová metrika, která určuje počet vláken zařízení v IoT Hub, které odpovídají podmínce cíle.
 * **appliedCount** – systémová metrika určuje počet zařízení, ve kterých byl obsah nasazení aplikován na vlákna v modulu IoT Hub.
@@ -87,7 +87,7 @@ Prozkoumejte nasazení v příkazovém okně.Vlastnost **metriky** uvádí poče
 
 Pomocí příkazu [az IoT Edge Deployment show-metric](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-show-metric) můžete zobrazit seznam ID zařízení nebo objektů pro každou z těchto metrik:
 
-```cli
+```azurecli
 az iot edge deployment show-metric --deployment-id [deployment id] --metric-id [metric id] --hub-name [hub name]
 ```
 

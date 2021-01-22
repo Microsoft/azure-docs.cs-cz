@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Použití GitOps ke konfiguraci clusteru Kubernetes s povoleným ARC Azure (Preview)
 keywords: GitOps, Kubernetes, K8s, Azure, ARC, Azure Kubernetes Service, AKS, Containers
-ms.openlocfilehash: 906021377cbfd6960769f98f9dbd15a5c430c71f
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 751b274a9cae68f6bc9b1adc45804f2dd2ef4c72
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955327"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684753"
 ---
 # <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Nasazení konfigurací pomocí GitOps v clusteru Kubernetes s podporou Azure Arc (Preview)
 
@@ -48,7 +48,7 @@ Pokud přidružíte soukromé úložiště s nástrojem `sourceControlConfigurat
 
 Pomocí rozšíření Azure CLI pro `k8sconfiguration` můžete propojit připojený cluster s [ukázkovým úložištěm Git](https://github.com/Azure/arc-k8s-demo). Této konfiguraci přiřadíme název `cluster-config` , dáte pokyn agentovi, aby nasadil operátor do `cluster-config` oboru názvů a udělí operátorovi `cluster-admin` oprávnění.
 
-```console
+```azurecli
 az k8sconfiguration create --name cluster-config --cluster-name AzureArcTest1 --resource-group AzureArcTest --operator-instance-name cluster-config --operator-namespace cluster-config --repository-url https://github.com/Azure/arc-k8s-demo --scope cluster --cluster-type connectedClusters
 ```
 
@@ -179,7 +179,7 @@ Další informace najdete v [dokumentaci ke službě tokem](https://aka.ms/Fluxc
 
 Pomocí rozhraní příkazového řádku Azure CLI ověřte, že se `sourceControlConfiguration` úspěšně vytvořil.
 
-```console
+```azurecli
 az k8sconfiguration show --name cluster-config --cluster-name AzureArcTest1 --resource-group AzureArcTest --cluster-type connectedClusters
 ```
 
@@ -351,7 +351,7 @@ Odstraňte `sourceControlConfiguration` pomocí Azure CLI nebo Azure Portal.  Po
 > Po vytvoření sourceControlConfiguration s oborem názvů je možné pro uživatele s `edit` vazbou role v oboru názvů nasadit úlohy v tomto oboru názvů. Pokud se tato akce `sourceControlConfiguration` s oborem názvů odstraní, obor názvů zůstane beze změny a nebude odstraněn, aby nedošlo k porušení těchto ostatních úloh.  V případě potřeby můžete tento obor názvů odstranit ručně pomocí kubectl.
 > Změny v clusteru, které byly výsledkem nasazení ze sledovaného úložiště Git, se při odstranění neodstraní `sourceControlConfiguration` .
 
-```console
+```azurecli
 az k8sconfiguration delete --name cluster-config --cluster-name AzureArcTest1 --resource-group AzureArcTest --cluster-type connectedClusters
 ```
 

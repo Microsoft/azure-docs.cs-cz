@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 11/10/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: e6dc4656e33b55a2cc695874376baf1cd816a838
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 6fb17ead2546875c0f334aae322f8fb070e8f1ea
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97796291"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684900"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>Rozdíly v jazyce T-SQL mezi SQL Server & spravované instance Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -100,7 +100,7 @@ Hlavní rozdíly v `CREATE AUDIT` syntaxi pro auditování do úložiště objek
 - `TO URL`K dispozici je nová syntaxe, kterou můžete použít k zadání adresy URL kontejneru úložiště objektů BLOB v Azure, ve kterém `.xel` jsou soubory umístěné.
 - Syntaxe `TO FILE` není podporována, protože spravovaná instance SQL nemůže přistupovat ke sdíleným složkám souborů systému Windows.
 
-Další informace najdete tady: 
+Další informace naleznete v tématu: 
 
 - [VYTVOŘIT AUDIT SERVERU](/sql/t-sql/statements/create-server-audit-transact-sql) 
 - [ALTER SERVER AUDIT](/sql/t-sql/statements/alter-server-audit-transact-sql)
@@ -277,6 +277,8 @@ Následující možnosti nelze upravit:
 - `SINGLE_USER`
 - `WITNESS`
 
+Některé `ALTER DATABASE` příkazy (například [omezení set](https://docs.microsoft.com/sql/relational-databases/databases/migrate-to-a-partially-contained-database?#converting-a-database-to-partially-contained-using-transact-sql)) můžou být přechodným selháním, například během automatické zálohy databáze nebo hned po vytvoření databáze. V tomto případě `ALTER DATABASE` by se měl opakovat příkaz. Další podrobnosti a informace o souvisejících chybových zprávách najdete v [části poznámky](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true&tabs=sqlpool#remarks-2).
+
 Další informace najdete v tématu [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql-file-and-filegroup-options).
 
 ### <a name="sql-server-agent"></a>Agent SQL Server
@@ -295,7 +297,7 @@ Další informace najdete v tématu [ALTER DATABASE](/sql/t-sql/statements/alter
     - Čtečka fronty není podporována. 
     - Příkazové prostředí se zatím nepodporuje.
   - Spravovaná instance SQL nemá přístup k externím prostředkům, například ke sdíleným složkám sítě prostřednictvím nástroje Robocopy. 
-  - SQL Server Analysis Services se nepodporuje.
+  - Služba Analysis Services serveru SQL se nepodporuje.
 - Oznámení jsou částečně podporovaná.
 - E-mailové oznámení je podporované, i když vyžaduje, abyste nakonfigurovali profil Databázová pošta. Agent SQL Server může používat jenom jeden profil Databázová pošta a musí se volat `AzureManagedInstance_dbmail_profile` . 
   - Pager není podporován.

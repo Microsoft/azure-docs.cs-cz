@@ -12,12 +12,12 @@ ms.date: 12/14/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 37d9c24d58e0dd9fb10db607ef1b96de0a44eb78
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 1f1100c27bb3c02e3d1a5040942509c24bab0e65
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97399362"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683984"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>Publikování aplikace v galerii aplikací Azure AD
 
@@ -69,7 +69,7 @@ Postup publikování aplikace v galerii aplikací Azure AD:
 - Mezi vzájemné zákazníky získáte Podrobný kurz konfigurace.
 - Zákazníci, kteří používají systém pro správu identit mezi doménami ([SCIM](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)), můžou použít zřizování pro stejnou aplikaci.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Budete potřebovat trvalý účet pro testování s alespoň dvěma registrovanými uživateli.
 
@@ -175,7 +175,7 @@ Podpora zřizování [SCIM](https://aka.ms/scimoverview) je nepovinná, ale důr
 Další informace o standardech SCIM a výhodách pro vaše zákazníky najdete v tématu [zřizování pomocí SCIM – Začínáme](https://aka.ms/scimoverview).
 
 ### <a name="understand-the-azure-ad-scim-implementation"></a>Porozumění implementaci Azure AD SCIM
-Další informace o implementaci Azure AD SCIM najdete v tématu [Vytvoření koncového bodu SCIM a konfigurace zřizování uživatelů pomocí Azure AD](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups).
+Další informace o implementaci Azure AD SCIM najdete v tématu [Vytvoření koncového bodu SCIM a konfigurace zřizování uživatelů pomocí Azure AD](../app-provisioning/use-scim-to-provision-users-and-groups.md).
 
 ### <a name="implement-scim"></a>Implementovat SCIM
 Azure AD poskytuje [referenční kód](https://aka.ms/scimoverview) , který vám pomůže vytvořit SCIM koncový bod. K dispozici je také mnoho knihoven a odkazů třetích stran, které najdete na GitHubu.  
@@ -186,7 +186,7 @@ K otestování vaší aplikace budete potřebovat tenanta Azure AD. Informace o 
 
 Další možností je, že tenant služby Azure AD přináší každé předplatné Microsoft 365. Pokud chcete nastavit bezplatné Microsoft 365 vývojové prostředí, přečtěte si téma [zapojení do programu Microsoft 365 Developer](/office/developer-program/microsoft-365-developer-program).
 
-Jakmile budete mít tenanta, budete muset vyzkoušet jednotné přihlašování a [zřizování](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#step-4-integrate-your-scim-endpoint-with-the-azure-ad-scim-client). 
+Jakmile budete mít tenanta, budete muset vyzkoušet jednotné přihlašování a [zřizování](../app-provisioning/use-scim-to-provision-users-and-groups.md#step-4-integrate-your-scim-endpoint-with-the-azure-ad-scim-client). 
 
 V **případě aplikací OIDC nebo Oath** [Zaregistrujte svoji aplikaci](quickstart-register-app.md) jako víceklientské aplikace. V části Podporované typy účtů vyberte účty v možnosti organizační adresář a osobní účet Microsoft.
 
@@ -274,7 +274,7 @@ Pokud chcete přidat aplikaci do seznamu v galerii pomocí jednotného přihlaš
 
 ![Výpis aplikace pro jednotné přihlašování do galerie](./media/howto-app-gallery-listing/passwordsso.png)
 
-Pokud implementujete koncový bod [SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) 2,0 pro zřizování uživatelů, vyberte možnost, jak je zobrazeno. Když zadáváte schéma v žádosti o registraci, postupujte prosím podle [pokynů pro stažení](https://docs.microsoft.com/azure/active-directory/app-provisioning/export-import-provisioning-configuration) schématu. Pro sestavení aplikace Galerie použijeme schéma, které jste nakonfigurovali při testování aplikace mimo galerii. 
+Pokud implementujete koncový bod [SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) 2,0 pro zřizování uživatelů, vyberte možnost, jak je zobrazeno. Když zadáváte schéma v žádosti o registraci, postupujte prosím podle [pokynů pro stažení](../app-provisioning/export-import-provisioning-configuration.md) schématu. Pro sestavení aplikace Galerie použijeme schéma, které jste nakonfigurovali při testování aplikace mimo galerii. 
 
    ![Požadavek na zřizování uživatelů](./media/howto-app-gallery-listing/user-provisioning.png)
 

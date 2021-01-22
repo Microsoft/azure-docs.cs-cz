@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 11/16/2020
 ms.custom: references_regions
-ms.openlocfilehash: 78ce082c6e90cfc9c67ddcfa00926d292b9ed7ea
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 902bcaa97658802b35fb523a1213e6bbd47f357f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740466"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684504"
 ---
 # <a name="enable-azure-monitor-for-vms-guest-health-preview"></a>Povolit stav hosta Azure Monitor pro virtuální počítače (Preview)
 Azure Monitor pro virtuální počítače stav hosta umožňuje zobrazit stav virtuálního počítače podle definice sady měření výkonu, které jsou odebírány v pravidelných intervalech. Tento článek popisuje, jak povolit tuto funkci ve vašem předplatném a jak povolit monitorování hostů pro každý virtuální počítač.
@@ -127,9 +127,9 @@ Nasaďte šablonu pomocí libovolné [metody nasazení pro správce prostředků
 New-AzResourceGroupDeployment -Name GuestHealthDataCollectionRule -ResourceGroupName my-resource-group -TemplateFile Health.DataCollectionRule.template.json -TemplateParameterFile Health.DataCollectionRule.template.parameters.json
 ```
 
-# <a name="cli"></a>[Rozhraní příkazového řádku](#tab/cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-```cli
+```azurecli
 az deployment group create --name GuestHealthDataCollectionRule --resource-group my-resource-group --template-file Health.DataCollectionRule.template.json --parameters Health.DataCollectionRule.template.parameters.json
 ```
 
@@ -267,9 +267,9 @@ Pomocí následujících příkazů můžete například nasadit šablonu a soub
 New-AzResourceGroupDeployment -Name GuestHealthDeployment -ResourceGroupName my-resource-group -TemplateFile azure-monitor-deploy.json -TemplateParameterFile azure-monitor-deploy.parameters.json
 ```
 
-# <a name="cli"></a>[Rozhraní příkazového řádku](#tab/cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-```cli
+```azurecli
 az deployment group create --name GuestHealthDeployment --resource-group my-resource-group --template-file Health.VirtualMachine.template.json --parameters Health.VirtualMachine.template.parameters.json
 ```
 

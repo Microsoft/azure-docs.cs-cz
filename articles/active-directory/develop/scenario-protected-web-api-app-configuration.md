@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: f1277972480f504d9d2df67930d9385cbe8c06b4
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 9ffb77db4f7bcd5a07e25085eed17e8972aa9a33
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063191"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683755"
 ---
 # <a name="protected-web-api-code-configuration"></a>Chráněné webové rozhraní API: Konfigurace kódu
 
@@ -175,7 +175,7 @@ services.AddControllers();
 > - `$"api://{ClientId}` ve všech ostatních případech (pro [přístupové tokeny](access-tokens.md)v 1.0).
 > Podrobnosti najdete v tématu Microsoft. identity. Web [Source Code](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/Resource/RegisterValidAudience.cs#L70-L83).
 
-Předchozí fragment kódu je extrahován z [přírůstkového kurzu ASP.NET Core webového rozhraní API](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/63087e83326e6a332d05fee6e1586b66d840b08f/1.%20Desktop%20app%20calls%20Web%20API/TodoListService/Startup.cs#L23-L28). Podrobnosti o **AddMicrosoftIdentityWebApiAuthentication** jsou k dispozici v [Microsoft. identity. Web](microsoft-identity-web.md). Tato metoda volá [AddMicrosoftIdentityWebAPI](https://docs.microsoft.com/dotnet/api/microsoft.identity.web.microsoftidentitywebapiauthenticationbuilderextensions.addmicrosoftidentitywebapi?view=azure-dotnet-preview&preserve-view=true), která sám instruuje middleware k ověření tokenu.
+Předchozí fragment kódu je extrahován z [přírůstkového kurzu ASP.NET Core webového rozhraní API](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/63087e83326e6a332d05fee6e1586b66d840b08f/1.%20Desktop%20app%20calls%20Web%20API/TodoListService/Startup.cs#L23-L28). Podrobnosti o **AddMicrosoftIdentityWebApiAuthentication** jsou k dispozici v [Microsoft. identity. Web](microsoft-identity-web.md). Tato metoda volá [AddMicrosoftIdentityWebAPI](/dotnet/api/microsoft.identity.web.microsoftidentitywebapiauthenticationbuilderextensions.addmicrosoftidentitywebapi?preserve-view=true&view=azure-dotnet-preview), která sám instruuje middleware k ověření tokenu.
 
 ## <a name="token-validation"></a>Ověření tokenu
 

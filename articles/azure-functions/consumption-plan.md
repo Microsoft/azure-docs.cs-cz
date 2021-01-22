@@ -3,12 +3,12 @@ title: Azure Functions hostování plánu spotřeby
 description: Přečtěte si, jak hostující plán spotřeby funkcí Azure umožňuje spustit kód v prostředí, které se dynamicky škáluje, ale platíte jenom za prostředky použité během provádění.
 ms.date: 8/31/2020
 ms.topic: conceptual
-ms.openlocfilehash: c0619def4687935cd9e403563966b35b84f13c7c
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: ffb556ce48f18702e06fcdb02dda84f41ae5f906
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937666"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684687"
 ---
 # <a name="azure-functions-consumption-plan-hosting"></a>Azure Functions hostování plánu spotřeby
 
@@ -33,10 +33,10 @@ Když vytvoříte aplikaci funkcí v Azure Portal, bude výchozím plánem spot�
 Pomocí následujících odkazů se dozvíte, jak vytvořit aplikaci funkcí bez serveru v plánu spotřeby, a to buď programově, nebo v Azure Portal:
 
 + [Azure CLI](./scripts/functions-cli-create-serverless.md)
-+ [Azure Portal](functions-create-first-azure-function.md)
++ [Azure Portal](./functions-get-started.md)
 + [Šablona Azure Resource Manageru](functions-create-first-function-resource-manager.md)
 
-Můžete také vytvořit aplikace Function App v plánu spotřeby při publikování projektu Functions z [Visual Studio Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure) nebo sady [Visual Studio](functions-create-your-first-function-visual-studio.md#publish-the-project-to-azure).
+Můžete také vytvořit aplikace Function App v plánu spotřeby při publikování projektu Functions z [Visual Studio Code](./create-first-function-vs-code-csharp.md#publish-the-project-to-azure) nebo sady [Visual Studio](functions-create-your-first-function-visual-studio.md#publish-the-project-to-azure).
 
 ## <a name="multiple-apps-in-the-same-plan"></a>Více aplikací ve stejném plánu
 
