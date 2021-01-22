@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 68fdc29edfd41799e2628abf40efa6a9453a90b9
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: e603e99c1aa9c49d20bdb281bbfd96131ae2efdd
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/21/2021
-ms.locfileid: "98633873"
+ms.locfileid: "98663617"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>Instalace a zřízení Azure IoT Edge pro Linux na zařízení s Windows (Preview)
 
@@ -61,6 +61,12 @@ V tomto článku jsou uvedené kroky pro nastavení IoT Edge na zařízení s Wi
       ![Vyberte ikonu ozubeného kolečka v pravém horním rohu řídicího panelu pro přístup k nastavení.](./media/how-to-install-iot-edge-on-windows/select-gear-icon.png)
 
    1. V nabídce **Nastavení** v části **Brána** vyberte **rozšíření**.
+
+   1. Vyberte kartu **informační kanály** a vyberte **Přidat**.
+
+   1. https://aka.ms/wac-insiders-feedDo textového pole zadejte a vyberte **Přidat**.
+
+   1. Po přidání informačního kanálu přejděte na kartu **rozšíření k dispozici** . Aktualizace seznamu rozšíření může chvíli trvat.
 
    1. Na kartě **rozšíření k dispozici** vyhledejte v seznamu rozšíření **Azure IoT Edge** . Zvolte ho a potom na seznam rozšíření vyberte příkazový řádek **instalace** .
 

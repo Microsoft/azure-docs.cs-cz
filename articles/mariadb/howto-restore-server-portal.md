@@ -3,15 +3,15 @@ title: Zálohování a obnovení-Azure Portal-Azure Database for MariaDB
 description: Tento článek popisuje, jak obnovit server v Azure Database for MariaDB pomocí Azure Portal.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: how-to
 ms.date: 6/30/2020
-ms.openlocfilehash: 4a5f2cc4cbf73f5c13533a94f1454022d3538880
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 06da58b5c82af39abbaa1cbc15a217c25d7808f9
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94539621"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664813"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-portal"></a>Postup zálohování a obnovení serveru v Azure Database for MariaDB pomocí Azure Portal
 
@@ -37,7 +37,7 @@ Při vytváření serveru prostřednictvím Azure Portal v okně **cenová úrov
 Další informace o nastavení těchto hodnot během vytváření najdete v [rychlém startu Azure Database for MariaDB serveru](quickstart-create-mariadb-server-database-using-azure-portal.md).
 
 Dobu uchovávání záloh můžete na serveru změnit pomocí následujících kroků:
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 2. Vyberte server Azure Database for MariaDB. Tato akce otevře stránku s **přehledem** .
 
@@ -64,10 +64,10 @@ Následující kroky obnovují ukázkový Server k určitému bodu v čase:
 3. Do formuláře Restore zadejte požadované údaje:
 
    ![Informace o obnovení Azure Database for MariaDB](./media/howto-restore-server-portal/3-restore.png)
-   - **Bod obnovení** : Vyberte bod v čase, který chcete obnovit.
-   - **Cílový server** : zadejte název nového serveru.
-   - **Umístění** : oblast nelze vybrat. Ve výchozím nastavení je stejný jako zdrojový server.
-   - **Cenová úroveň** : při obnovení k určitému bodu v čase nelze tyto parametry změnit. Je stejná jako u zdrojového serveru. 
+   - **Bod obnovení**: Vyberte bod v čase, který chcete obnovit.
+   - **Cílový server**: zadejte název nového serveru.
+   - **Umístění**: oblast nelze vybrat. Ve výchozím nastavení je stejný jako zdrojový server.
+   - **Cenová úroveň**: při obnovení k určitému bodu v čase nelze tyto parametry změnit. Je stejná jako u zdrojového serveru. 
 
 4. Kliknutím na tlačítko **OK** obnovte server, který chcete obnovit do bodu v čase. 
 
@@ -103,19 +103,19 @@ Pokud jste server nakonfigurovali pro geograficky redundantní zálohy, můžete
    
    :::image type="content" source="./media/howto-restore-server-portal/5-select-backup.png" alt-text="Vyberte zálohování.":::
 
-6. Na serveru se nastaví výchozí hodnoty pro počet **virtuální jádra** , **Doba uchování záloh** , **možnost redundance zálohy** , **verze modulu** a **přihlašovací údaje správce**. Vyberte **Pokračovat**. 
+6. Na serveru se nastaví výchozí hodnoty pro počet **virtuální jádra**, **Doba uchování záloh**, **možnost redundance zálohy**, **verze modulu** a **přihlašovací údaje správce**. Vyberte **Pokračovat**. 
    
    :::image type="content" source="./media/howto-restore-server-portal/6-accept-backup.png" alt-text="Pokračujte v zálohování.":::
 
 7. Vyplňte zbytek formuláře vlastními preferencemi. Můžete vybrat libovolné **umístění**.
 
-    Po výběru umístění můžete vybrat **Konfigurovat Server** a aktualizovat **výpočetní generaci** (Pokud je dostupné v oblasti, kterou jste zvolili), počet **virtuální jádra** , **dobu uchování zálohy** a **možnost redundance zálohy**. Změna **cenové úrovně** (Basic, pro obecné účely nebo paměťově optimalizovaná) nebo velikosti **úložiště** během obnovení není podporovaná.
+    Po výběru umístění můžete vybrat **Konfigurovat Server** a aktualizovat **výpočetní generaci** (Pokud je dostupné v oblasti, kterou jste zvolili), počet **virtuální jádra**, **dobu uchování zálohy** a **možnost redundance zálohy**. Změna **cenové úrovně** (Basic, pro obecné účely nebo paměťově optimalizovaná) nebo velikosti **úložiště** během obnovení není podporovaná.
 
    :::image type="content" source="./media/howto-restore-server-portal/7-create.png" alt-text="Vyplnit formulář"::: 
 
 8. Vyberte možnost **zkontrolovat + vytvořit** a zkontrolujte výběr. 
 
-9. Vyberte **Vytvořit** , aby se server zřídil. Tato operace může trvat několik minut.
+9. Vyberte **Vytvořit**, aby se server zřídil. Tato operace může trvat několik minut.
 
 Nový server vytvořený geografickým obnovením má stejné přihlašovací jméno a heslo správce serveru, které bylo platné pro existující server v době zahájení obnovení. Heslo lze změnit na stránce **Přehled** nového serveru.
 

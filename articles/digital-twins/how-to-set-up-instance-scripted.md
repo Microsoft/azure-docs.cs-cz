@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1667c21b9a35b8e93feffb8cf1b37d4409da73c3
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 1552401953a8cba9dda787a0f0e461adb7972920
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98044301"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664448"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Nastavení instance a ověřování Azure pro digitální vlákna (skriptované)
 
@@ -29,11 +29,13 @@ Tato verze tohoto článku dokončí tento postup spuštěním [ukázky **skript
 
 ## <a name="prerequisites-download-the-script"></a>Požadavky: Stáhněte si skript
 
-Vzorový skript je napsán v prostředí PowerShell. Je součástí [**komplexních ukázek Azure pro digitální vlákna**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/), které si můžete stáhnout do svého počítače tak, že přejdete na tento ukázkový odkaz a vyberete tlačítko *Stáhnout ZIP* pod nadpisem.
+Vzorový skript je napsán v prostředí PowerShell. Je součástí [**komplexních ukázek Azure pro digitální vlákna**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/), které si můžete stáhnout do svého počítače tak, že přejdete na tento ukázkový odkaz a vyberete tlačítko *Procházet kód* pod nadpisem. Tím přejdete do úložiště GitHub pro ukázky, které si můžete stáhnout jako *. ZIP* výběrem tlačítka *kód* a *Stáhnout soubor zip*.
 
-Tím se na váš počítač stáhne ukázkový projekt jako _**Azure_Digital_Twins_end_to_end_samples.zip**_. Přejděte do složky na svém počítači a rozbalte ji, abyste soubory rozbalíte.
+:::image type="content" source="media/includes/download-repo-zip.png" alt-text="Podívejte se na úložiště digitálních vláken – Samples na GitHubu. Je vybráno tlačítko kód a vytvoří se malé dialogové okno, ve kterém je zvýrazněno tlačítko Stáhnout ZIP." lightbox="media/includes/download-repo-zip.png":::
 
-Ve složce unzip se skript nasazení nachází v _Azure_Digital_Twins_end_to_end_samples > skripty > **deploy.ps1**_.
+Tím se stáhne *. Složka ZIP* na váš počítač jako **digital-twins-samples-master.zip**. Přejděte do složky na svém počítači a rozbalte ji, abyste soubory rozbalíte.
+
+Ve složce getzip je skript nasazení umístěn na stránce _Digital-revlákens-Samples-Samples-Master > > **deploy.ps1**_.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -56,7 +58,7 @@ Tady je postup, jak spustit skript nasazení v Cloud Shell.
 
     :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="Okno Cloud Shell znázorňující výběr ikony nahrávání":::
 
-    Přejděte na soubor _**deploy.ps1**_ na vašem počítači (v _Azure_Digital_Twins_end_to_end_samples > skripty > **deploy.ps1**_) a stiskněte otevřít. Tím se soubor nahraje do Cloud Shell, abyste ho mohli spustit v okně Cloud Shell.
+    Přejděte na soubor _**deploy.ps1**_ na vašem počítači (ve složce _Digital-revlákens-Samples-Samples-Master > scripts > **deploy.ps1**_) a stiskněte otevřít. Tím se soubor nahraje do Cloud Shell, abyste ho mohli spustit v okně Cloud Shell.
 
 4. Spusťte skript odesláním `./deploy.ps1` příkazu v okně Cloud Shell. Níže uvedený příkaz můžete zkopírovat (pokud ho chcete vložit do Cloud Shell, můžete použít **CTRL + SHIFT + v** v systémech Windows a Linux nebo **Cmd + Shift + v** v MacOS. Můžete také použít nabídku klikněte pravým tlačítkem myši.
 
@@ -102,7 +104,7 @@ Tato stránka obsahuje seznam všech instancí digitálních vláken Azure. V se
 
 Pokud ověření nebylo úspěšné, můžete znovu vytvořit instanci pomocí [portálu](how-to-set-up-instance-portal.md#create-the-azure-digital-twins-instance) nebo rozhraní příkazového [řádku](how-to-set-up-instance-cli.md#create-the-azure-digital-twins-instance).
 
-### <a name="collect-instance-values"></a>Shromáždit hodnoty instance
+### <a name="collect-instance-values"></a>Shromáždění hodnot instance
 
 Vyberte název vaší instance ze [stránky digitálních vláken Azure](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.DigitalTwins%2FdigitalTwinsInstances) a otevřete stránku *Přehled* instance. Poznamenejte si jeho *název*, *skupinu prostředků* a *název hostitele*. Později je budete možná potřebovat k identifikaci a připojení k instanci.
 

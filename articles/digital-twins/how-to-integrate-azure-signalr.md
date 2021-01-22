@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 09/02/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d84acc5501b3d40f6db85d0ee6ee369aec5a6aa4
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 71e74789654d2df91d9a087eaaf8d8f2a2664f7b
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051101"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664108"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>Integrace digitálních vláken Azure s využitím služby Azure Signal
 
@@ -40,7 +40,11 @@ Pomocí níže uvedené cesty budete připojovat službu Azure Signal k digitál
 
 Nejdřív stáhněte požadované ukázkové aplikace. Budete potřebovat obě z těchto možností:
 * [**Komplexní ukázky služby Azure Digital**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)vyplní: Tato ukázka obsahuje *AdtSampleApp* , ve kterém jsou dvě služby Azure Functions pro přesun dat kolem instance digitálních vláken Azure (Další informace o tomto scénáři najdete podrobněji v [*kurzu: připojení kompletních řešení*](tutorial-end-to-end.md)). Obsahuje také ukázkovou aplikaci *DeviceSimulator* , která simuluje zařízení IoT a generuje novou hodnotu teploty každou sekundu. 
-    - Přejděte na vzorový odkaz a stisknutím tlačítka *Stáhnout ZIP* Stáhněte kopii ukázky do vašeho počítače, jak _**Azure_Digital_Twins_end_to_end_samples.zip**_. Rozbalte složku.
+    - Pokud jste už ukázku nestáhli jako součást tohoto kurzu v části [*požadavky*](#prerequisites), přejděte na vzorový odkaz a vyberte tlačítko *Procházet kód* pod nadpisem. Tím přejdete do úložiště GitHub pro ukázky, které si můžete stáhnout jako *. ZIP* výběrem tlačítka *kód* a *Stáhnout soubor zip*.
+
+    :::image type="content" source="media/includes/download-repo-zip.png" alt-text="Podívejte se na úložiště digitálních vláken – Samples na GitHubu. Je vybráno tlačítko kód a vytvoří se malé dialogové okno, ve kterém je zvýrazněno tlačítko Stáhnout ZIP." lightbox="media/includes/download-repo-zip.png":::
+
+    Tím se na váš počítač stáhne kopie ukázkového úložiště, jak **digital-twins-samples-master.zip**. Rozbalte složku.
 * [**Ukázka webové aplikace pro integraci signálů**](/samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/): Jedná se o ukázkovou webovou aplikaci, která bude využívat data telemetrie Azure s digitálními podsítěmi ze služby signalizace Azure.
     -  Přejděte na vzorový odkaz a stisknutím tlačítka *Stáhnout ZIP* Stáhněte kopii ukázky do vašeho počítače, jak _**Azure_Digital_Twins_SignalR_integration_web_app_sample.zip**_. Rozbalte složku.
 
@@ -63,7 +67,7 @@ Nejprve přejdete do prohlížeče, kde je Azure Portal otevřeno, a provedením
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/signalr-keys.png" alt-text="Snímek obrazovky Azure Portal, který zobrazuje stránku klíčů pro instanci signalizace. Zvýrazní se ikona kopírovat do schránky vedle primárního PŘIPOJOVACÍho řetězce." lightbox="media/how-to-integrate-azure-signalr/signalr-keys.png":::
 
-Dále spusťte sadu Visual Studio (nebo jiný Editor kódu dle vašeho výběru) a otevřete řešení Code ve složce *Azure_Digital_Twins_end_to_end_samples > ADTSampleApp* . Potom postupujte podle následujících kroků a vytvořte funkce:
+Dále spusťte sadu Visual Studio (nebo jiný Editor kódu dle vašeho výběru) a otevřete řešení Code v *ADTSampleApp složce Digital-zdvojené-Samples-Samples-> Master* . Potom postupujte podle následujících kroků a vytvořte funkce:
 
 1. Vytvořte novou ostrost C# třídy s názvem **SignalRFunctions.cs** v projektu *SampleFunctionsApp* .
 
@@ -71,7 +75,7 @@ Dále spusťte sadu Visual Studio (nebo jiný Editor kódu dle vašeho výběru)
     
     :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/signalRFunction.cs":::
 
-1. V okně *konzoly Správce balíčků* sady Visual Studio nebo jakémkoli okně příkazového řádku na počítači ve složce *Azure_Digital_Twins_end_to_end_samples \adtsampleapp\samplefunctionsapp* spusťte následující příkaz, který nainstaluje `SignalRService` balíček NuGet do projektu:
+1. V okně *konzoly Správce balíčků* sady Visual Studio nebo jakémkoli příkazovém okně v počítači ve složce *Digital-Twins-Samples-master\AdtSampleApp\SampleFunctionsApp* spusťte následující příkaz, který nainstaluje `SignalRService` balíček NuGet do projektu:
     ```cmd
     dotnet add package Microsoft.Azure.WebJobs.Extensions.SignalRService --version 1.2.0
     ```
@@ -126,7 +130,7 @@ V této části se zobrazí výsledek akce. Nejprve spustíte **ukázkovou aplik
 
 V rámci kompletního předplatného kurzu jste [nakonfigurovali simulátor zařízení](tutorial-end-to-end.md#configure-and-run-the-simulation) , aby odesílal data prostřednictvím IoT Hub a instance digitálních vláken Azure.
 
-Nyní stačí spustit projekt simulátoru, který je umístěn v *Azure_Digital_Twins_end_to_end_samples > DeviceSimulator > DeviceSimulator. sln*. Pokud používáte Visual Studio, můžete projekt otevřít a pak ho spustit pomocí tohoto tlačítka na panelu nástrojů:
+Nyní stačí spustit projekt simulátoru, který je umístěn v rámci *digitálního vlákna-Samples-Samples-master > DeviceSimulator > DeviceSimulator. sln*. Pokud používáte Visual Studio, můžete projekt otevřít a pak ho spustit pomocí tohoto tlačítka na panelu nástrojů:
 
 :::image type="content" source="media/how-to-integrate-azure-signalr/start-button-simulator.png" alt-text="Tlačítko Start pro Visual Studio (projekt DeviceSimulator)":::
 
@@ -188,7 +192,7 @@ Pomocí Azure Cloud Shell nebo místních rozhraní příkazového řádku Azure
 az group delete --name <your-resource-group>
 ```
 
-Nakonec odstraňte ukázkové složky projektu, které jste stáhli do místního počítače (*Azure_Digital_Twins_end_to_end_samples.zip* a *Azure_Digital_Twins_SignalR_integration_web_app_sample.zip*).
+Nakonec odstraňte ukázkové složky projektu, které jste stáhli do místního počítače (*digital-twins-samples-master.zip* a *Azure_Digital_Twins_SignalR_integration_web_app_sample.zip*).
 
 ## <a name="next-steps"></a>Další kroky
 

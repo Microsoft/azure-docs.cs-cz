@@ -3,15 +3,15 @@ title: Odepřít přístup k veřejné síti – Azure Portal-Azure Database for
 description: Naučte se konfigurovat přístup k veřejné síti pomocí Azure Portal pro Azure Database for MariaDB
 author: mksuni
 ms.author: sumuth
-ms.service: mariadb
+ms.service: jroth
 ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 3117ebfd258c72bb97432871c2ea74d30c52f669
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 7925107f4334df7a844b3f3e029f3769eef51a9c
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242186"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98665068"
 ---
 # <a name="deny-public-network-access-in-azure-database-for-mariadb-using-azure-portal"></a>Odepřít přístup k veřejné síti v Azure Database for MariaDB pomocí Azure Portal
 

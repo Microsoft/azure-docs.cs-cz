@@ -3,15 +3,15 @@ title: Protokoly auditu – Azure Database for MariaDB
 description: V této části najdete popis protokolů auditu dostupných v Azure Database for MariaDB a dostupných parametrů pro povolení úrovní protokolování.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 6/24/2020
-ms.openlocfilehash: e66eaf62b54759222421b17ebc7e33b82e018338
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 3032cb8f5ce399822de65c867d1f32da254c9948
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541755"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98663753"
 ---
 # <a name="audit-logs-in-azure-database-for-mariadb"></a>Protokoly auditu v Azure Database for MariaDB
 
@@ -33,7 +33,7 @@ Mezi další parametry, které můžete upravit, patří:
 > [!Note]
 > `audit_log_include_users` má vyšší prioritu `audit_log_exclude_users` . Například pokud `audit_log_include_users`  =  `demouser` a `audit_log_exclude_users`  =  `demouser` , bude uživatel zahrnut v protokolech auditu, protože `audit_log_include_users` má vyšší prioritu.
 
-| **Událostí** | **Popis** |
+| **Událost** | **Popis** |
 |---|---|
 | `CONNECTION` | – Iniciování připojení (úspěšné nebo neúspěšné) <br> – Opakované ověření uživatele s jiným uživatelem nebo heslem během relace <br> – Ukončení připojení |
 | `DML_SELECT`| VYBRAT dotazy |

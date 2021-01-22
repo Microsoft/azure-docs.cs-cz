@@ -3,15 +3,15 @@ title: Konfigurace replikace dat – Azure Database for MariaDB
 description: Tento článek popisuje, jak nastavit Replikace vstupních dat v Azure Database for MariaDB.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: how-to
 ms.date: 01/18/2021
-ms.openlocfilehash: 67e4da13d6954342b9979eb57a35c812cb63bb3e
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: ed1031bd45ca4f1223de9c0bce2053a393e3a2c6
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539994"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98665119"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>Konfigurace Replikace vstupních dat v Azure Database for MariaDB
 
@@ -80,7 +80,7 @@ Následující kroky připravují a konfigurují místně hostovaný Server Mari
       ping <output of step 2b>
       ```
 
-      Příklad:
+      Například:
 
       ```bash
       C:\Users\testuser> ping e299ae56f000.tr1830.westus1-a.worker.database.windows.net

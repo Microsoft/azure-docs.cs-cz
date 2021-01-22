@@ -17,12 +17,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 7ddc13306f4adb1730169c4811b9d2227dedca33
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 481a4ff21c361e4cf82a21d9e98357a4c8b7b1b4
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632762"
+ms.locfileid: "98663668"
 ---
 # <a name="automate-management-with-the-sql-server-iaas-agent-extension"></a>Automatizovaná správa pomocí rozšíření agenta SQL Server IaaS
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -34,7 +34,7 @@ Tento článek poskytuje přehled o rozšíření. Pokud chcete nainstalovat roz
 
 ## <a name="overview"></a>Přehled
 
-Rozšíření agenta SQL Server IaaS poskytuje řadu výhod pro SQL Server na virtuálních počítačích Azure: 
+Rozšíření agenta SQL Server IaaS umožňuje integraci s Azure Portal a v závislosti na režimu správy odemkne řadu výhod funkcí pro SQL Server na virtuálních počítačích Azure: 
 
 - **Výhody funkcí**: rozšíření odzamkne řadu výhod funkce automatizace, jako je Správa portálu, flexibilita licencí, automatizované zálohování, automatizované opravy a další. Podrobnosti najdete v tématu [výhody funkcí](#feature-benefits) dále v tomto článku. 
 
@@ -74,12 +74,13 @@ Následující tabulka popisuje tyto výhody:
 
 | Funkce | Popis |
 | --- | --- |
-| **Správa portálu** | Odemkne [správu na portálu](manage-sql-vm-portal.md), abyste mohli zobrazit všechny SQL Server virtuálních počítačů na jednom místě, abyste mohli povolit a zakázat funkce specifické pro SQL přímo z portálu. 
-| **Automatizované zálohování** |Automatizuje plánování záloh pro všechny databáze, a to buď pro výchozí instanci, nebo pro [správnou nainstalovanou](frequently-asked-questions-faq.md#administration) pojmenovanou instanci SQL Server na virtuálním počítači. Další informace najdete v tématu [automatizované zálohování pro SQL Server ve virtuálních počítačích Azure (Správce prostředků)](automated-backup-sql-2014.md). |
-| **Automatizované opravy** |Nakonfiguruje časový interval pro správu a údržbu, během kterého může probíhat důležité aktualizace zabezpečení Windows a SQL Server pro váš virtuální počítač, takže se můžete vyhnout aktualizacím během špičky pro vaše zatížení. Další informace najdete v tématu [automatizované opravy pro SQL Server ve virtuálních počítačích Azure (Správce prostředků)](automated-patching.md). |
-| **Integrace Azure Key Vault** |Umožňuje automaticky nainstalovat a nakonfigurovat Azure Key Vault na VIRTUÁLNÍm počítači s SQL Server. Další informace najdete v tématu [Konfigurace integrace Azure Key Vault pro SQL Server v Azure Virtual Machines (Správce prostředků)](azure-key-vault-integration-configure.md). |
-| **Flexibilní licencování** | Díky [bezproblémovému převodu](licensing-model-azure-hybrid-benefit-ahb-change.md) z vlastní licence (označované také jako zvýhodněné hybridní využití Azure) do licenčního modelu s průběžnými platbami a obnovením můžete ušetřit náklady. | 
-| **Flexibilní verze/edice** | Pokud se rozhodnete změnit [verzi](change-sql-server-version.md) nebo [edici](change-sql-server-edition.md) SQL Server, můžete metadata v rámci Azure Portal aktualizovat, aniž byste museli znovu nasadit celý virtuální počítač SQL Server.  | 
+| **Správa portálu** | Odemkne [správu na portálu](manage-sql-vm-portal.md), abyste mohli zobrazit všechny SQL Server virtuálních počítačů na jednom místě, abyste mohli povolit a zakázat funkce specifické pro SQL přímo z portálu. <br/> Režim správy: odlehčený & plný|  
+| **Automatizované zálohování** |Automatizuje plánování záloh pro všechny databáze, a to buď pro výchozí instanci, nebo pro [správnou nainstalovanou](frequently-asked-questions-faq.md#administration) pojmenovanou instanci SQL Server na virtuálním počítači. Další informace najdete v tématu [automatizované zálohování pro SQL Server ve virtuálních počítačích Azure (Správce prostředků)](automated-backup-sql-2014.md). <br/> Režim správy: úplný|
+| **Automatizované opravy** |Nakonfiguruje časový interval pro správu a údržbu, během kterého může probíhat důležité aktualizace zabezpečení Windows a SQL Server pro váš virtuální počítač, takže se můžete vyhnout aktualizacím během špičky pro vaše zatížení. Další informace najdete v tématu [automatizované opravy pro SQL Server ve virtuálních počítačích Azure (Správce prostředků)](automated-patching.md). <br/> Režim správy: úplný|
+| **Integrace Azure Key Vault** |Umožňuje automaticky nainstalovat a nakonfigurovat Azure Key Vault na VIRTUÁLNÍm počítači s SQL Server. Další informace najdete v tématu [Konfigurace integrace Azure Key Vault pro SQL Server v Azure Virtual Machines (Správce prostředků)](azure-key-vault-integration-configure.md). <br/> Režim správy: úplný|
+| **Zobrazení využití disku na portálu** | Slouží k zobrazení grafické reprezentace využití disku vašich datových souborů SQL v Azure Portal.  <br/> Režim správy: úplný | 
+| **Flexibilní licencování** | Díky [bezproblémovému převodu](licensing-model-azure-hybrid-benefit-ahb-change.md) z vlastní licence (označované také jako zvýhodněné hybridní využití Azure) do licenčního modelu s průběžnými platbami a obnovením můžete ušetřit náklady. <br/> Režim správy: odlehčený & plný| 
+| **Flexibilní verze/edice** | Pokud se rozhodnete změnit [verzi](change-sql-server-version.md) nebo [edici](change-sql-server-edition.md) SQL Server, můžete metadata v rámci Azure Portal aktualizovat, aniž byste museli znovu nasadit celý virtuální počítač SQL Server.  <br/> Režim správy: odlehčený & plný| 
 
 
 ## <a name="management-modes"></a>Režimy správy

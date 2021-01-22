@@ -3,15 +3,15 @@ title: Zabezpečení – Azure Database for MariaDB
 description: Přehled funkcí zabezpečení v Azure Database for MariaDB.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 8a46f70e3089a8610fa8ca6362bcba6f624e2b1a
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 9e6ca797b1e982e1ef632ba99e9210e3c347a2f1
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541143"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664176"
 ---
 # <a name="security-in-azure-database-for-mariadb"></a>Zabezpečení ve službě Azure Database for MariaDB
 

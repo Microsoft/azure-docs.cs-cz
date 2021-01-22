@@ -3,17 +3,17 @@ title: Správa pravidel brány firewall – Azure CLI – Azure Database for Mar
 description: Tento článek popisuje, jak vytvořit a spravovat Azure Database for MariaDB pravidla brány firewall pomocí příkazového řádku Azure CLI.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ef04e2b4c820c14ea7df6c35ecb0189ef31ef7dc
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: f4ae1f3b736f6d263b8d769e241d969d058a69f4
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540895"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98665034"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-cli"></a>Vytváření a Správa Azure Database for MariaDB pravidel brány firewall pomocí Azure CLI
 Pravidla brány firewall na úrovni serveru se dají použít ke správě přístupu k serveru Azure Database for MariaDB z konkrétní IP adresy nebo rozsahu IP adres. Pomocí pohodlných příkazů rozhraní příkazového řádku Azure můžete vytvářet, aktualizovat, odstraňovat, zobrazovat a zobrazovat pravidla brány firewall pro správu serveru. Přehled Azure Database for MariaDB bran firewall najdete v tématu [pravidla brány firewall pro Azure Database for MariaDB serveru](./concepts-firewall-rules.md).
@@ -28,11 +28,11 @@ Pravidla Virtual Network (VNet) je možné použít také k zabezpečení přís
 Pomocí příkazu **AZ MariaDB server firewall-Rule** se v Azure CLI použijí pravidla firewallu pro vytvoření, odstranění, vypsání, zobrazení a aktualizaci.
 
 Příkaz
-- **vytvořit** : Vytvořte pravidlo brány firewall serveru Azure MariaDB.
-- **Odstranit** : odstranění pravidla brány firewall serveru Azure MariaDB.
-- **seznam** : vypíše pravidla brány firewall serveru Azure MariaDB.
-- **Zobrazit** : zobrazí podrobnosti pravidla brány firewall serveru Azure MariaDB.
-- **aktualizace** : aktualizujte pravidlo brány firewall serveru Azure MariaDB.
+- **vytvořit**: Vytvořte pravidlo brány firewall serveru Azure MariaDB.
+- **Odstranit**: odstranění pravidla brány firewall serveru Azure MariaDB.
+- **seznam**: vypíše pravidla brány firewall serveru Azure MariaDB.
+- **Zobrazit**: zobrazí podrobnosti pravidla brány firewall serveru Azure MariaDB.
+- **aktualizace**: aktualizujte pravidlo brány firewall serveru Azure MariaDB.
 
 ## <a name="sign-in-to-azure-and-list-your-azure-database-for-mariadb-servers"></a>Přihlaste se k Azure a seznamte se s Azure Database for MariaDB servery.
 Pomocí příkazu **AZ Login** připojte Azure CLI k účtu Azure bezpečně.

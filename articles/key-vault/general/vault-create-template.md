@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/5/2020
 ms.author: mbaldwin
-ms.openlocfilehash: e19277aa3639031371e0e8dd28f4dd849efd4597
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 24fef1680c5660a70a20ae727833b045f6c5aa88
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97933927"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664346"
 ---
 # <a name="how-to-create-an-azure-key-vault-and-vault-access-policy-by-using-a-resource-manager-template"></a>Vytvoření trezoru klíčů Azure a zásad přístupu k trezoru pomocí šablony Správce prostředků
 
@@ -150,7 +150,7 @@ Zásady přístupu můžete nasadit do existujícího trezoru klíčů, aniž by
             "permissions": {
               "keys": "[parameters('keysPermissions')]",
               "secrets": "[parameters('secretsPermissions')]",
-              "certificates": [parameters('certificatesPermissions')]
+              "certificates": "[parameters('certificatesPermissions')]"
             }
           }
         ]
@@ -160,6 +160,7 @@ Zásady přístupu můžete nasadit do existujícího trezoru klíčů, aniž by
 }
 
 ```
+
 Další informace o nastavení šablon Key Vault naleznete v tématu [Key Vault na šablonu ARM](/azure/templates/microsoft.keyvault/vaults/accesspolicies).
 
 ## <a name="more-key-vault-resource-manager-templates"></a>Další šablony Key Vault Správce prostředků
@@ -217,6 +218,6 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Zabezpečený přístup k trezoru klíčů](secure-your-key-vault.md)
+- [Zabezpečení přístupu k trezoru klíčů](secure-your-key-vault.md)
 - [Ověřování pro Trezor klíčů](authentication.md)
 - [Průvodce vývojáře pro službu Azure Key Vault](developers-guide.md)

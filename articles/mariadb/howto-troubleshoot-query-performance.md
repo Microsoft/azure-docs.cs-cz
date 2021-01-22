@@ -3,15 +3,15 @@ title: Řešení potíží s výkonem dotazů – Azure Database for MariaDB
 description: Naučte se používat vysvětlení pro řešení potíží s výkonem dotazů v Azure Database for MariaDB.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: troubleshooting
 ms.date: 3/18/2020
-ms.openlocfilehash: 2b7491723ffcff73e4b243fe54ef18608167d636
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 8c996520a77a107017aecad30c221da9ec69137c
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94537233"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664711"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mariadb"></a>Jak používat vysvětlení k profilování výkonu dotazů v Azure Database for MariaDB
 **Vysvětlujeme** užitečný nástroj pro optimalizaci dotazů. Příkaz vysvětlit lze použít k získání informací o tom, jak jsou příkazy jazyka SQL provedeny. Následující výstup ukazuje příklad provedení VYSVĚTLUJÍCÍho příkazu.
@@ -75,7 +75,7 @@ possible_keys: NULL
         Extra: Using where; Using temporary; Using filesort
 ```
 
-Jak je vidět ve výstupu, MariaDB nepoužívá žádné indexy, protože nejsou k dispozici žádné správné indexy. Zobrazuje se také jako *dočasné použití; Pomocí řazení souborů* , což znamená, že MariaDB vytvoří dočasnou tabulku pro splnění klauzule **Group by** .
+Jak je vidět ve výstupu, MariaDB nepoužívá žádné indexy, protože nejsou k dispozici žádné správné indexy. Zobrazuje se také jako *dočasné použití; Pomocí řazení souborů*, což znamená, že MariaDB vytvoří dočasnou tabulku pro splnění klauzule **Group by** .
  
 Vytvoření indexu na samostatném sloupci **C2** nijak neumožňuje žádný rozdíl a MariaDB ještě potřebuje vytvořit dočasnou tabulku:
 

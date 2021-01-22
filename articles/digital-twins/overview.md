@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 49b7bae1a0cc224b92f292b891fae210f2cffa4e
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 91915f204a68d59a603b8bdea383b497a5b33d34
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400603"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664023"
 ---
 # <a name="what-is-azure-digital-twins"></a>Co je služba Azure Digital Twins?
 
@@ -34,13 +34,15 @@ V rámci digitálních vláken Azure definujete digitální entity, které repre
 
 Tyto definice modelu si můžete představit jako specializované SLOVNÍEK pro popis vaší firmy. V případě řešení pro správu budovy můžete například definovat modely, jako je "budova", "patra" a "výtah". Pak můžete vytvořit **digitální vlákna** na základě těchto modelů, které reprezentují konkrétní prostředí.
 
+[!INCLUDE [digital-twins-versus-device-twins](../../includes/digital-twins-versus-device-twins.md)]
+
 Modely jsou definovány v jazyce podobném formátu JSON, který se nazývá [Digital DTDL (digitální vlákna)](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md), a popisují vlákna z pohledu jejich vlastností stavu, událostí telemetrie, příkazů, komponent a vztahů.
 * Modely definují sémantické **vztahy** mezi vašimi entitami, abyste mohli připojit své vlákna ke znalostnímu grafu, který odráží jejich interakce. Modely si můžete představit jako podstatná jména v popisu svého světa a vztahy jako slovesa.
 * Můžete také specializovat vlákna pomocí dědičnosti modelu. Jeden model může dědit z jiného modelu.
 
 DTDL se používá pro datové modely v jiných službách Azure IoT, včetně služby [PnP (IoT technologie Plug and Play)](../iot-pnp/overview-iot-plug-and-play.md) a [Time Series Insights (TSI)](../time-series-insights/overview-what-is-tsi.md). Díky tomu můžete zajistit, aby řešení digitálních vláken Azure bylo propojené a kompatibilní s jinými částmi ekosystému Azure.
 
-### <a name="live-execution-environment"></a>Prostředí pro spuštění v reálném čase
+### <a name="live-execution-environment"></a>Živé spouštěcí prostředí
 
 Digitální modely v rámci digitálních vláken Azure jsou živé a aktuální reprezentace reálného světa. Pomocí vztahů ve vlastních DTDL modelech spojíte vlákna do **živého grafu** představujícího vaše prostředí.
 
@@ -67,11 +69,11 @@ Můžete také řídit digitální vlákna Azure z jiných zdrojů dat pomocí r
 Data v modelu digitálních vláken Azure je možné směrovat do navazujících služeb Azure za účelem dalších analýz nebo úložiště. Tato akce je k dispozici prostřednictvím **tras událostí**, které používají [centrum událostí](../event-hubs/event-hubs-about.md), [Event Grid](../event-grid/overview.md)nebo [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) k řízení požadovaných toků dat.
 
 Mezi trasy událostí můžete dělat tyto věci:
-* Ukládání dat digitálních vláken Azure v [Azure Data Lake](../storage/blobs/data-lake-storage-introduction.md)
-* Analýza dat digitálních dat Azure pomocí [Azure synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)nebo jiných nástrojů Microsoft Data Analytics
+* Ukládání dat Azure Digital Twins v [Azure Data Lake](../storage/blobs/data-lake-storage-introduction.md)
+* Analýza dat Azure Digital Twins pomocí [Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) nebo jiných nástrojů Microsoft pro analýzu dat
 * Integrace větších pracovních postupů s Logic Apps
 * Připojení digitálních vláken Azure k Time Series Insights ke sledování historie časových řad každého vlákna
-* Zarovnání modelu časové řady v Time Series Insights se zdrojem v rámci digitálních vláken Azure
+* Sladění modelu Time Series v Time Series Insights se zdrojem v rámci Azure Digital Twins
 
 To je jiný způsob, jakým se může digitální vlákna Azure připojit k většímu řešení a podporovat vaše vlastní potřeby pro pokračování práce s těmito přehledy.
 

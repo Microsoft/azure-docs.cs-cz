@@ -3,17 +3,17 @@ title: Zálohování a obnovení – Azure CLI – Azure Database for MariaDB
 description: Naučte se zálohovat a obnovovat Server v Azure Database for MariaDB pomocí Azure CLI.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 3/27/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a6e46efd7f998437c3998df9a989ef9e1500e888
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: ceda6c99493818042aa281ab545465e91493a80e
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94539579"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664830"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-cli"></a>Postup zálohování a obnovení serveru v Azure Database for MariaDB pomocí rozhraní příkazového řádku Azure
 
@@ -100,7 +100,7 @@ Pokud chcete server geograficky obnovit, zadejte na příkazovém řádku Azure 
 az mariadb server georestore --resource-group myresourcegroup --name mydemoserver-georestored --source-server mydemoserver --location eastus --sku-name GP_Gen5_8
 ```
 
-Tento příkaz vytvoří nový server s názvem *mydemoserver-geograficky obnovený* v východní USA, který bude patřit do *myresourcegroup*. Je to Pro obecné účelyý Server Gen 5 s 8 virtuální jádra. Server se vytvoří z geograficky redundantní zálohy *mydemoserver* , která je také ve skupině prostředků *myresourcegroup*
+Tento příkaz vytvoří nový server s názvem *mydemoserver-geograficky obnovený* v východní USA, který bude patřit do *myresourcegroup*. Je to Pro obecné účelyý Server Gen 5 s 8 virtuální jádra. Server se vytvoří z geograficky redundantní zálohy *mydemoserver*, která je také ve skupině prostředků *myresourcegroup*
 
 Pokud chcete vytvořit nový server v jiné skupině prostředků z existujícího serveru, pak v `--source-server` parametru, který jste zaznamenali název serveru, jako v následujícím příkladu:
 

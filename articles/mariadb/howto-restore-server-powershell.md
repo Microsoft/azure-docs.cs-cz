@@ -3,17 +3,17 @@ title: Zálohování a obnovení-Azure PowerShell-Azure Database for MariaDB
 description: Naučte se zálohovat a obnovovat Server v Azure Database for MariaDB pomocí Azure PowerShell.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.devlang: azurepowershell
 ms.topic: how-to
 ms.date: 05/26/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0207be2c983fd986d5852403e36462d2d7d2cdda
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 211285a0ae8aaa9b82bca914f3add7fbaa700146
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94539596"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664847"
 ---
 # <a name="how-to-back-up-and-restore-an-azure-database-for-mariadb-server-using-powershell"></a>Postup zálohování a obnovení serveru Azure Database for MariaDB pomocí prostředí PowerShell
 
@@ -41,7 +41,7 @@ Při vytváření serveru můžete vybrat možnost konfigurace serveru pro míst
 > [!NOTE]
 > Po vytvoření serveru se jeho druh redundance, geograficky redundantní vs místně redundantní nedá změnit.
 
-Při vytváření serveru prostřednictvím příkazu se `New-AzMariaDbServer` rozhodne možnost redundance zálohování použít parametr **GeoRedundantBackup** . Pokud je **povoleno** , budou provedeny geograficky redundantní zálohy. Nebo pokud je **zakázaný** , provedou se místně redundantní zálohy.
+Při vytváření serveru prostřednictvím příkazu se `New-AzMariaDbServer` rozhodne možnost redundance zálohování použít parametr **GeoRedundantBackup** . Pokud je **povoleno**, budou provedeny geograficky redundantní zálohy. Nebo pokud je **zakázaný**, provedou se místně redundantní zálohy.
 
 Doba uchovávání záloh je nastavená parametrem **BackupRetentionDay** .
 
@@ -78,7 +78,7 @@ Sada parametrů **PointInTimeRestore** `Restore-AzMariaDbServer` rutiny vyžaduj
 | Nastavení | Navrhovaná hodnota | Popis  |
 | --- | --- | --- |
 | ResourceGroupName |  myresourcegroup |  Skupina prostředků, ve které existuje zdrojový server.  |
-| Název | mydemoserver-restored | Název nového serveru, který se vytvoří příkazem restore. |
+| Name | mydemoserver-restored | Název nového serveru, který se vytvoří příkazem restore. |
 | RestorePointInTime | 2020-03-13T13:59:00Z | Vyberte bod v čase, který chcete obnovit. Tato datum a čas musí být v rámci doby uchovávání záloh zdrojového serveru. Použijte formát data a času ISO8601. Můžete například použít vlastní místní časové pásmo, například **2020-03-13T05:59:00-08:00**. Můžete také použít formát Zulu UTC, například **2018-03-13T13:59:00Z**. |
 | UsePointInTimeRestore | `<SwitchParameter>` | K obnovení použijte režim bodu v čase. |
 
@@ -106,7 +106,7 @@ Get-AzMariaDbServer -Name mydemoserver -ResourceGroupName myresourcegroup |
   Restore-AzMariaDbServer -Name mydemoserver-georestored -ResourceGroupName myresourcegroup -Location eastus -Sku GP_Gen5_8 -UseGeoRestore
 ```
 
-Tento příklad vytvoří nový server s názvem **mydemoserver-geograficky obnovený** v oblasti východní USA, která patří k **myresourcegroup**. Je to Pro obecné účelyý Server Gen 5 s 8 virtuální jádra. Server se vytvoří z geograficky redundantní zálohy **mydemoserver** , a to i v **myresourcegroup** skupiny prostředků.
+Tento příklad vytvoří nový server s názvem **mydemoserver-geograficky obnovený** v oblasti východní USA, která patří k **myresourcegroup**. Je to Pro obecné účelyý Server Gen 5 s 8 virtuální jádra. Server se vytvoří z geograficky redundantní zálohy **mydemoserver**, a to i v **myresourcegroup** skupiny prostředků.
 
 Pokud chcete vytvořit nový server v jiné skupině prostředků z existujícího serveru, zadejte nový název skupiny prostředků pomocí parametru **ResourceGroupName** , jak je znázorněno v následujícím příkladu:
 
@@ -115,12 +115,12 @@ Get-AzMariaDbServer -Name mydemoserver -ResourceGroupName myresourcegroup |
   Restore-AzMariaDbServer -Name mydemoserver-georestored -ResourceGroupName newresourcegroup -Location eastus -Sku GP_Gen5_8 -UseGeoRestore
 ```
 
-Sada **GeoRestore** parametrů pro dopředné obnovení `Restore-AzMariaDbServer` rutiny vyžaduje následující parametry:
+Sada  parametrů pro dopředné obnovení `Restore-AzMariaDbServer` rutiny vyžaduje následující parametry:
 
 | Nastavení | Navrhovaná hodnota | Popis  |
 | --- | --- | --- |
 |ResourceGroupName | myresourcegroup | Název skupiny prostředků, do které nový server patří|
-|Název | mydemoserver – geograficky obnovené | Název nového serveru. |
+|Name | mydemoserver – geograficky obnovené | Název nového serveru. |
 |Umístění | eastus | Umístění nového serveru. |
 |UseGeoRestore | `<SwitchParameter>` | K obnovení použijte geografický režim. |
 

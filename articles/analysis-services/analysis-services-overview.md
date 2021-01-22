@@ -4,16 +4,16 @@ description: Přečtěte si o Azure Analysis Services plně spravovaná platform
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 01/07/2021
+ms.date: 01/20/2021
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: c4a14ab1e5b52eb36a532c6d69713d588864d288
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 542b1ed96025f6bd40cd4da766b434dde3569c25
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019070"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98663770"
 ---
 # <a name="what-is-azure-analysis-services"></a>Co je Azure Analysis Services?
 
@@ -83,13 +83,14 @@ Služba Azure Analysis Services je podporována ve všech zemích/oblastech po c
 |---------|---------|:---------:|
 |Brazil South     |    B1, B2, S0, S1, S2, S4, D1     |     1    |
 |Střední Kanada    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
+|Střední Kanada     |     S8v2, S9v2   |    1    |
 |East US     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
 |USA – východ 2     |     B1, B2, S0, S1, S2, S4, D1   |    7    |
 |USA – východ 2     |     S8v2, S9v2   |    1    |
 |USA – středosever     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
 |USA – středosever     |     S8v2, S9v2    |    1     |
-|Střední USA     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
-|Střední USA     |    S8v2, S9v2     |    1     |
+|USA – střed     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
+|USA – střed     |    S8v2, S9v2     |    1     |
 |Středojižní USA     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |Středojižní USA     |    S8v2, S9v2     |    1     |
 |USA – středozápad   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
@@ -170,7 +171,7 @@ Na úrovni serveru Analysis Services poskytuje bránu firewall, ověřování Az
 
 Brána firewall služby Azure Analysis Services blokuje všechna připojení klientů kromě IP adres zadaných v pravidlech. Ve výchozím nastavení není ochrana brány firewall pro nové servery povolena. Doporučuje se povolit ochranu brány firewall a pravidla se konfigurují jako součást skriptu zřizování serveru nebo na portálu hned po vytvoření serveru. Pravidla můžete konfigurovat zadáním povolených IP adres jednotlivých klientů nebo jejich rozsahu. Povolit nebo blokovat je možné také připojení (služby) Power BI. Pravidla a bránu firewall můžete konfigurovat na portálu nebo pomocí PowerShellu. Další informace najdete v článku o [konfiguraci brány firewall serveru](analysis-services-qs-firewall.md).
 
-### <a name="authentication"></a>Ověřování
+### <a name="authentication"></a>Authentication
 
 Ověřování uživatelů zařizuje služba [Azure Active Directory (AAD)](../active-directory/fundamentals/active-directory-whatis.md). Uživatelé používají při přihlašování identitu účtu organizace s přístupem k databázi založeným na roli. Identity uživatelů musí být členy výchozí služby Azure Active Directory pro předplatné, ve kterém se server nachází. Další informace najdete v článku o [ověřování a uživatelských oprávněních](analysis-services-manage-users.md).
 
@@ -186,7 +187,7 @@ Služba Analysis Services používá [autorizaci na základě rolí](/analysis-s
   
 Koncovým uživatelům (jiným než správcům), kteří se dotazují na data, se udělí přístup prostřednictvím databázových rolí. Databázová role se vytvoří jako samostatný objekt v databázi a použije se pouze na databázi, ve které byla vytvořena. Databázové role jsou definované oprávněními správce, ke čtení a ke čtení a zpracování (v databázi). Uživatelské a skupinové účty se přidají pomocí SSMS nebo PowerShellu.
 
-### <a name="row-level-security"></a>Zabezpečení na úrovni řádku
+### <a name="row-level-security"></a>Zabezpečení na úrovni řádků
 
 Tabulkové modely na všech úrovních kompatibility podporují zabezpečení na úrovni řádků. Zabezpečení na úrovni řádků se konfiguruje v modelu pomocí výrazů DAX, které definují řádky v tabulce a jakékoli řádky v mnoha směrech související tabulky, na které se uživatel může dotazovat. Pro oprávnění pro čtení a pro čtení a zpracování jsou pomocí výrazů DAX definovány filtry řádků. 
 
@@ -245,7 +246,7 @@ Služba Azure Analysis Services také podporuje používání [zobrazení dynami
 
 Konkrétní dokumentace pro službu Azure Analysis Services je uvedená zde. K vyhledání článků použijte obsah na levé straně obrazovky prohlížeče. 
 
-Vzhledem k tomu, že tabulkové modely v Azure Analysis Services jsou v datových sadách SQL Server Analysis Services a Power BI Premium mnohem stejné jako tabelární modely, existuje rozsáhlá knihovna sdílených dat, koncepčních, procedurálních, vývojářských a referenčních článků v [Analysis Services dokumentaci](/analysis-services/?view=azure-analysis-services-current&preserve-view=true). Články v dokumentaci ke sdílenému Analysis Services ukazují, jestli se vztahují také na Azure Analysis Services na hlavičku pod názvem. Můžete také použít selektor verzí nad obsahem a zobrazit jenom ty články, které se vztahují na platformu, kterou používáte.
+Vzhledem k tomu, že tabulkové modely v Azure Analysis Services jsou v datových sadách Služba Analysis Services serveru SQL a Power BI Premium mnohem stejné jako tabelární modely, existuje rozsáhlá knihovna sdílených dat, koncepčních, procedurálních, vývojářských a referenčních článků v [Analysis Services dokumentaci](/analysis-services/?view=azure-analysis-services-current&preserve-view=true). Články v dokumentaci ke sdílenému Analysis Services ukazují, jestli se vztahují také na Azure Analysis Services na hlavičku pod názvem. Můžete také použít selektor verzí nad obsahem a zobrazit jenom ty články, které se vztahují na platformu, kterou používáte.
 
 ![Sdílená dokumentace](./media/analysis-services-overview/aas-overview-applies-to.png)
 

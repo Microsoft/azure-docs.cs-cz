@@ -4,12 +4,12 @@ description: Zjistěte, jak vytvořit privátní cluster služby Azure Kubernete
 services: container-service
 ms.topic: article
 ms.date: 7/17/2020
-ms.openlocfilehash: 87966a9bd2f83916998a724fc6c1c26a91609665
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 2b0cc8a2fe9a45120bf0b74dbad5e107fd860845
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133391"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664363"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Vytvoření privátního clusteru služby Azure Kubernetes
 
@@ -66,23 +66,23 @@ Kde `--enable-private-cluster` je povinný příznak pro soukromý cluster.
 > [!NOTE]
 > Pokud adresa mostu Docker (172.17.0.1/16) koliduje s podsítí CIDR, změňte adresu mostu Docker odpovídajícím způsobem.
 
-### <a name="configure-private-dns-zone"></a>Konfigurovat zónu Privátní DNS
+## <a name="configure-private-dns-zone"></a>Konfigurovat zónu Privátní DNS
 
 Následující parametry lze využít ke konfiguraci Privátní DNS zóny.
 
 1. Výchozí hodnota je "System". Pokud je argument--Private-DNS-Zone vynechán, AKS vytvoří zónu Privátní DNS ve skupině prostředků uzlu.
 2. Možnost None znamená, že AKS nevytvoří zónu Privátní DNS.  To vyžaduje, abyste zanesli vlastní server DNS a nakonfigurovali překlad DNS pro privátní plně kvalifikovaný název domény.  Pokud neprovedete konfiguraci překladu DNS, dá se služba DNS přeložit jenom v rámci uzlů agentů a po nasazení způsobí problémy s clusterem.
-3. Vlastní privátní název zóny DNS by měl být v tomto formátu pro globální cloud Azure: `privatelink.<region>.azmk8s.io` . Identitě přiřazeným uživateli nebo instančnímu objektu musí být udělena alespoň `private dns zone contributor` role k vlastní privátní zóně DNS.
+3. Vlastní privátní název zóny DNS by měl být v tomto formátu pro globální cloud Azure: `privatelink.<region>.azmk8s.io` . Budete potřebovat ID prostředku této zóny Privátní DNS.  Navíc budete potřebovat identitu přiřazenou uživateli nebo instanční objekt s alespoň `private dns zone contributor` rolí k vlastní privátní zóně DNS.
 
-## <a name="no-private-dns-zone-prerequisites"></a>Žádné požadavky na Privátní DNS zóny
+### <a name="prerequisites"></a>Požadavky
 
-* Azure CLI verze 0.4.71 nebo novější
+* Verze Preview verze AKS 0.4.71 nebo novější
 * Rozhraní API verze 2020-11-01 nebo novější
 
-## <a name="create-a-private-aks-cluster-with-private-dns-zone"></a>Vytvoření privátního clusteru AKS s Privátní DNS zónou
+### <a name="create-a-private-aks-cluster-with-private-dns-zone"></a>Vytvoření privátního clusteru AKS s Privátní DNS zónou
 
 ```azurecli-interactive
-az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --private-dns-zone [none|system|custom private dns zone]
+az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone [none|system|custom private dns zone ResourceId]
 ```
 ## <a name="options-for-connecting-to-the-private-cluster"></a>Možnosti připojení k privátnímu clusteru
 
@@ -94,7 +94,7 @@ Koncový bod serveru rozhraní API nemá žádnou veřejnou IP adresu. Pokud chc
 
 Nejjednodušší možností je vytvoření virtuálního počítače ve stejné virtuální síti jako cluster AKS.  Expresní směrování a sítě VPN přidávají náklady a vyžadují další složitost sítě.  Partnerský vztah virtuálních sítí vyžaduje, abyste naplánovali rozsahy směrování sítě, aby se zajistilo, že se překrývají rozsahy.
 
-## <a name="virtual-network-peering"></a>Partnerský vztah virtuální sítě
+## <a name="virtual-network-peering"></a>Peering virtuálních sítí
 
 Jak už bylo zmíněno, partnerský vztah virtuálních sítí je jedním ze způsobů, jak získat přístup k privátnímu clusteru. Pokud chcete použít partnerský vztah virtuálních sítí, musíte nastavit propojení mezi virtuální sítí a privátní zónou DNS.
     

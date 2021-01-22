@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d9a6eb572b1ab870fdb848f8b0989f88e6dbc3c0
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: a4875c2c75b133f0ab4046266d6aac36d5478fe4
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045950"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664040"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>Pochopení digitálních vláken a jejich dvojitých grafů
 
@@ -25,7 +25,9 @@ V řešení digitálních vláken Azure jsou entity ve vašem prostředí reprez
 
 Než budete moct vytvořit digitální dvojitou hodnotu v instanci digitálních vláken Azure, musíte mít do této služby nahraný *model* . Model popisuje sadu vlastností, zpráv telemetrie a vztahy, které mohou mít konkrétní vlákna, mimo jiné. Typy informací, které jsou definovány v modelu, naleznete v tématu [*Koncepty: vlastní modely*](concepts-models.md).
 
-Po vytvoření a nahrání modelu může klientská aplikace vytvořit instanci typu; Jedná se o digitální dvojitou hodnotu. Například po vytvoření modelu *podlahy* můžete vytvořit jednu nebo několik digitálních vláken, která používají tento typ (například dvojitou hodnotu typu *podlah-Floor* s názvem *GroundFloor*, další s názvem *Floor2* atd.). 
+Po vytvoření a nahrání modelu může klientská aplikace vytvořit instanci typu; Jedná se o digitální dvojitou hodnotu. Například po vytvoření modelu *podlahy* můžete vytvořit jednu nebo několik digitálních vláken, která používají tento typ (například dvojitou hodnotu typu *podlah-Floor* s názvem *GroundFloor*, další s názvem *Floor2* atd.).
+
+[!INCLUDE [digital-twins-versus-device-twins](../../includes/digital-twins-versus-device-twins.md)]
 
 ## <a name="relationships-a-graph-of-digital-twins"></a>Relace: graf digitálních vláken
 
@@ -41,7 +43,7 @@ Výsledkem tohoto procesu je sada uzlů (digitální vlákna) propojená přes h
 
 V této části se dozvíte, co vypadá při vytváření digitálních vláken a vztahů z klientské aplikace. Obsahuje příklady kódu .NET, které využívají [rozhraní API DigitalTwins](/rest/api/digital-twins/dataplane/twins), k poskytnutí dalších informací o tom, co se nachází uvnitř každé z těchto konceptů.
 
-### <a name="create-digital-twins"></a>Vytváření digitálních vláken
+### <a name="create-digital-twins"></a>Vytvoření digitálních dvojčat
 
 Níže je fragment kódu klienta, který používá [rozhraní API DigitalTwins](/rest/api/digital-twins/dataplane/twins) k vytvoření instance vlákna typu *pokoj*.
 
@@ -68,7 +70,7 @@ Data z digitálního vlákna a data relace jsou ukládána ve formátu JSON. To 
 
 Při reprezentaci jako objektu JSON zobrazí digitální vlákna následující pole:
 
-| Název pole | Popis |
+| Název pole | Description |
 | --- | --- |
 | `$dtId` | Uživatelem zadaný řetězec představující ID digitálního vlákna |
 | `$etag` | Standardní pole HTTP přiřazené webovým serverem |
@@ -135,7 +137,7 @@ Tady je příklad digitálního vlákna formátovaného jako objekt JSON:
 
 Při reprezentaci jako objektu JSON se v relaci z digitálního vlákna zobrazí následující pole:
 
-| Název pole | Popis |
+| Název pole | Description |
 | --- | --- |
 | `$relationshipId` | Uživatelem zadaný řetězec představující ID tohoto vztahu. Tento řetězec je jedinečný v kontextu zdrojového digitálního vlákna, což také znamená, že `sourceId`  +  `relationshipId` je jedinečný v kontextu instance digitálního vlákna Azure. |
 | `$etag` | Standardní pole HTTP přiřazené webovým serverem |

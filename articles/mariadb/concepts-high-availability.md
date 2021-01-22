@@ -3,15 +3,15 @@ title: Vysoká dostupnost – Azure Database for MariaDB
 description: Tento článek poskytuje informace o vysoké dostupnosti v Azure Database for MariaDB
 author: mksuni
 ms.author: sumuth
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 7/7/2020
-ms.openlocfilehash: 4dcb1ac7ce4b468374993c11578bce553f766a42
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: dc37474a56ddb7d2c48c7acfce881fb812f0b8a4
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93241340"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664329"
 ---
 # <a name="high-availability-in-azure-database-for-mariadb"></a>Vysoká dostupnost v Azure Database for MariaDB
 Služba Azure Database for MariaDB poskytuje zaručenou vysokou úroveň dostupnosti s finančně zálohovanou smlouvou o úrovni služeb (SLA) [99,99%](https://azure.microsoft.com/support/legal/sla/MariaDB) doba provozu. Azure Database for MariaDB poskytuje vysokou dostupnost během plánovaných událostí, jako je například operace COMPUTE initated (User-Scale), a také když dojde k neplánovaným událostem, jako je například základní hardware, software nebo selhání sítě. Azure Database for MariaDB se můžou rychle zotavit z nejdůležitějších okolností, takže při použití této služby prakticky neexistují žádné aplikace.
@@ -24,7 +24,7 @@ Azure Database for MariaDB je vhodný pro provoz důležitých databází, kter�
 | ------------ | ----------- |
 | <b>Server databáze MariaDB | Azure Database for MariaDB poskytuje zabezpečení, izolaci, zabezpečování prostředků a možnost rychlého restartování pro databázové servery. Tyto možnosti usnadňují operace, jako je škálování a operace obnovení databázového serveru, po výpadku, který se má stát v sekundách. <br/> Změny dat na databázovém serveru se většinou vyskytují v kontextu transakce databáze. Všechny změny v databázi se zaznamenávají synchronně ve formě protokolů zápisu předem (ib_log) v Azure Storage, který je připojený k databázovému serveru. Během procesu [kontrolního bodu](https://mariadb.com/kb/innodb-redo-log/#checkpoints) databáze jsou datové stránky z paměti databázového serveru také vyprázdněny do úložiště. |
 | <b>Vzdálené úložiště | Všechny MariaDB fyzické datové soubory a soubory protokolu jsou uloženy na Azure Storage, který je navržen tak, aby ukládal tři kopie dat v rámci oblasti, aby se zajistila redundance dat, dostupnost a spolehlivost. Vrstva úložiště je také nezávislá na databázovém serveru. Dá se odpojit od serveru databáze, který selhal, a během několika sekund se znovu připojí k novému databázovému serveru. Také Azure Storage nepřetržitě monitorovat všechny chyby úložiště. Pokud je zjištěno poškození bloku, je automaticky vyřešen vytvořením instance nové kopie úložiště. |
-| <b>Brány | Brána funguje jako proxy databáze a směruje všechna připojení klientů k databázovému serveru. |
+| <b>brána | Brána funguje jako proxy databáze a směruje všechna připojení klientů k databázovému serveru. |
 
 ## <a name="planned-downtime-mitigation"></a>Omezení zmírňování plánovaných výpadků
 Azure Database for MariaDB je navržena tak, aby poskytovala vysokou dostupnost během plánovaných výpadků. 
@@ -65,7 +65,7 @@ Tady je několik scénářů selhání, které vyžadují akci uživatele při o
 
 
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 Azure Database for MariaDB poskytuje možnost rychlého restartování databázových serverů, redundantního úložiště a efektivního směrování z brány. Pro dodatečnou ochranu dat můžete nakonfigurovat zálohování na geograficky replikované a také nasadit jednu nebo více replik pro čtení v jiných oblastech. Díky funkcím vysoké dostupnosti Azure Database for MariaDB chrání vaše databáze před Nejčastějšími výpadky a nabízí špičkovou smlouvu SLA, která se poskytuje s financemi [99,99% z provozu](https://azure.microsoft.com/support/legal/sla/MariaDB). Všechny tyto možnosti dostupnosti a spolehlivosti umožňují, aby Azure byl ideální platformou pro spouštění důležitých podnikových aplikací.
 

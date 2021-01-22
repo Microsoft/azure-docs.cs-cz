@@ -3,15 +3,15 @@ title: Privátní odkaz – Azure Database for MariaDB
 description: Přečtěte si, jak soukromý odkaz funguje pro Azure Database for MariaDB.
 author: mksuni
 ms.author: sumuth
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: ec43fa995fc9772964db399baa0b6f8c2a7db1db
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 12f52cd497d606fda6bbea9b54f467522373eeb7
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93241493"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98665136"
 ---
 # <a name="private-link-for-azure-database-for-mariadb"></a>Privátní odkaz pro Azure Database for MariaDB
 
@@ -41,7 +41,7 @@ Na konci této instalace se virtuální počítač Azure může připojit pouze 
 
 Pomocí privátního odkazu teď můžete nastavit řízení přístupu k síti, jako je skupin zabezpečení sítě, a omezit tak přístup k privátnímu koncovému bodu. Jednotlivé prostředky Azure PaaS se pak namapují na konkrétní soukromé koncové body. Škodlivý program Insider má přístup jenom k mapovanému prostředku PaaS (například Azure Database for MariaDB) a žádnému jinému prostředku.
 
-## <a name="on-premises-connectivity-over-private-peering"></a>Místní připojení přes soukromý partnerský vztah
+## <a name="on-premises-connectivity-over-private-peering"></a>Místní připojení přes privátní partnerský vztah
 
 Když se připojíte k veřejnému koncovému bodu z místních počítačů, vaše IP adresa musí být přidána do brány firewall založené na protokolu IP pomocí pravidla brány firewall na úrovni serveru. I když tento model funguje dobře a umožňuje přístup k jednotlivým počítačům pro vývoj nebo testování, je obtížné ho spravovat v produkčním prostředí.
 
@@ -114,9 +114,9 @@ Při použití privátního odkazu v kombinaci s pravidly brány firewall jsou m
 
 ## <a name="deny-public-access-for-azure-database-for-mariadb"></a>Odepřít veřejný přístup pro Azure Database for MariaDB
 
-Pokud chcete pro přístup k jejich Azure Database for MariaDB spoléhat jenom na soukromé koncové body, můžete zakázat nastavení všech veřejných koncových bodů ( [pravidla brány firewall](concepts-firewall-rules.md) a [koncových bodů služby virtuální](concepts-data-access-security-vnet.md)sítě) nastavením **Odepřít konfiguraci přístupu k veřejné síti** na databázovém serveru. 
+Pokud chcete pro přístup k jejich Azure Database for MariaDB spoléhat jenom na soukromé koncové body, můžete zakázat nastavení všech veřejných koncových bodů ([pravidla brány firewall](concepts-firewall-rules.md) a [koncových bodů služby virtuální](concepts-data-access-security-vnet.md)sítě) nastavením **Odepřít konfiguraci přístupu k veřejné síti** na databázovém serveru. 
 
-Pokud je toto nastavení nastaveno na *Ano* , budou mít Azure Database for MariaDB pouze připojení prostřednictvím privátních koncových bodů. Pokud je toto nastavení nastaveno na *ne* , klienti se mohou připojit k vašemu Azure Database for MariaDB v závislosti na nastaveních koncových bodů brány firewall nebo služby virtuální sítě. Po nastavení hodnoty přístup k privátní síti můžou zákazníci taky přidávat a aktualizovat existující pravidla brány firewall a pravidla koncových bodů služby virtuální sítě.
+Pokud je toto nastavení nastaveno na *Ano*, budou mít Azure Database for MariaDB pouze připojení prostřednictvím privátních koncových bodů. Pokud je toto nastavení nastaveno na *ne*, klienti se mohou připojit k vašemu Azure Database for MariaDB v závislosti na nastaveních koncových bodů brány firewall nebo služby virtuální sítě. Po nastavení hodnoty přístup k privátní síti můžou zákazníci taky přidávat a aktualizovat existující pravidla brány firewall a pravidla koncových bodů služby virtuální sítě.
 
 > [!Note]
 > Tato funkce je dostupná ve všech oblastech Azure, kde Azure Database for PostgreSQL – jeden server podporuje Pro obecné účely a cenová úroveň optimalizované pro paměť.

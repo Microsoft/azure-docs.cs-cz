@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein
-ms.date: 09/03/2020
-ms.openlocfilehash: 9c09a54daa482d738ded9f7aca1c95c2b640617e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 01/20/2021
+ms.openlocfilehash: 5f9e7e1c96db2b60e41fe0ded69ea562cf8fcea6
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790266"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98663981"
 ---
 # <a name="use-read-only-replicas-to-offload-read-only-query-workloads"></a>Přesměrování zatížení dotazů jen pro čtení pomocí replik jen pro čtení
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -85,7 +85,7 @@ Pokud jste připojeni k replice jen pro čtení, zobrazení dynamické správy (
 
 Běžně používaná zobrazení:
 
-| Název | Účel |
+| Name | Účel |
 |:---|:---|
 |[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Poskytuje metriky využití prostředků za poslední hodinu, včetně CPU, v/v v/v, a využití zápisu do protokolu vzhledem k omezením cíle služby.|
 |[sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)| Poskytuje agregované statistiky čekání pro instanci databázového stroje. |
@@ -115,12 +115,12 @@ Ve výjimečných případech, pokud transakce izolace snímku přistupuje k met
 
 ### <a name="long-running-queries-on-read-only-replicas"></a>Dlouhotrvající dotazy v replikách jen pro čtení
 
-Dotazy, které běží na replikách jen pro čtení, musí mít přístup k metadatům pro objekty, na které se odkazuje v dotazu (tabulky, indexy, statistiky atd.). Ve výjimečných případech platí, že pokud se objekt metadat v primární replice změní, zatímco dotaz drží zámek na stejném objektu repliky jen pro čtení, může dotaz [blokovat](/sql/database-engine/availability-groups/windows/troubleshoot-primary-changes-not-reflected-on-secondary#BKMK_REDOBLOCK) proces, který aplikuje změny z primární repliky do repliky jen pro čtení. Pokud by byl takový dotaz po dlouhou dobu spuštěný, mohl by být replika jen pro čtení výrazně nesynchronizovaná s primární replikou. 
+Dotazy, které běží na replikách jen pro čtení, musí mít přístup k metadatům pro objekty, na které se odkazuje v dotazu (tabulky, indexy, statistiky atd.). Ve výjimečných případech platí, že pokud se objekt metadat v primární replice změní, zatímco dotaz drží zámek na stejném objektu repliky jen pro čtení, může dotaz [blokovat](/sql/database-engine/availability-groups/windows/troubleshoot-primary-changes-not-reflected-on-secondary#BKMK_REDOBLOCK) proces, který aplikuje změny z primární repliky do repliky jen pro čtení. Pokud by byl takový dotaz po dlouhou dobu spuštěný, mohl by být replika jen pro čtení výrazně nesynchronizovaná s primární replikou.
 
-Pokud dlouhotrvající dotaz na repliku, která je jen pro čtení, způsobuje tento typ blokování, bude automaticky ukončen a v relaci se zobrazí chyba 1219, "Vaše relace byla odpojena z důvodu operace DDL s vysokou prioritou".
+Pokud dlouhotrvající dotaz na repliku, která je jen pro čtení, způsobuje tento druh blokování, automaticky se ukončí. V relaci se zobrazí chyba 1219, "Vaše relace byla odpojena z důvodu operace DDL s vysokou prioritou" nebo "Chyba 3947", "transakce byla přerušena, protože sekundární výpočet nedokázal zachytit znovu. Opakujte transakci. "
 
 > [!NOTE]
-> Pokud se zobrazí chyba 3961 nebo chyba 1219 při spouštění dotazů proti replice jen pro čtení, opakujte dotaz.
+> Pokud při spouštění dotazů na repliku jen pro čtení dojde k chybě 3961, 1219 nebo 3947, zkuste dotaz zopakovat.
 
 > [!TIP]
 > V úrovních služby Premium a Pro důležité obchodní informace jsou při připojení k replice jen pro čtení `redo_queue_size` `redo_rate` použity sloupce a v [Sys.dm_database_replica_states](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database) DMV k monitorování procesu synchronizace dat, který slouží jako indikátory latence dat v replice jen pro čtení.
@@ -135,7 +135,7 @@ Můžete zakázat a znovu povolit horizontální navýšení kapacity pro čten�
 > [!NOTE]
 > U izolovaných databází a databází elastických fondů je k dispozici možnost zakázat horizontální navýšení kapacity čtení z důvodu zpětné kompatibility. U Pro důležité obchodní informace spravovaných instancí nelze zakázat horizontální navýšení kapacity čtení.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 V okně **Konfigurovat** databázi můžete spravovat nastavení škálování pro čtení.
 
