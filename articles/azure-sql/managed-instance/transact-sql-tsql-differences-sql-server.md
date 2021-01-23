@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 11/10/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 6fb17ead2546875c0f334aae322f8fb070e8f1ea
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 6634ab3521fee3062ecee465eaf6dcda80ee6ff8
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684900"
+ms.locfileid: "98699510"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>Rozdíly v jazyce T-SQL mezi SQL Server & spravované instance Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -168,7 +168,7 @@ Spravovaná instance SQL nemá přístup k souborům, takže zprostředkovatele 
     - Exportujte databázi ze spravované instance SQL a importujte ji do SQL Database v rámci stejné domény služby Azure AD. 
     - Exportujte databázi z SQL Database a importujte ji do spravované instance SQL ve stejné doméně Azure AD.
     - Exportujte databázi ze spravované instance SQL a importujte ji do SQL Server (verze 2012 nebo novější).
-      - V této konfiguraci se všechny uživatele Azure AD vytvoří jako SQL Server objekty databáze (uživatelé) bez přihlášení. Typ uživatelů je uveden jako `SQL` a je viditelný jako `SQL_USER` v sys.database_principals). Jejich oprávnění a role zůstávají v SQL Server metadatech databáze a lze je použít pro zosobnění. Nedají se ale použít k přístupu k SQL Server a k jejich přihlášení pomocí svých přihlašovacích údajů.
+      - V této konfiguraci jsou všichni uživatelé Azure AD vytvořeni jako SQL Server objekty databáze (uživatelé) bez přihlášení. Typ uživatelů je uveden jako `SQL` a je viditelný jako `SQL_USER` v sys.database_principals). Jejich oprávnění a role zůstávají v SQL Server metadatech databáze a lze je použít pro zosobnění. Nedají se ale použít k přístupu k SQL Server a k jejich přihlášení pomocí svých přihlašovacích údajů.
 
 - Pouze hlavní přihlášení na úrovni serveru, které je vytvořeno procesem zřizování spravované instance SQL, členové rolí serveru, jako je například `securityadmin` nebo `sysadmin` , nebo jiná přihlášení s OPRÁVNĚNÍMI změnit libovolné přihlašovací oprávnění na úrovni serveru, mohou vytvořit objekty zabezpečení serveru Azure AD (přihlášení) v hlavní databázi pro SPRAVOVANOU instanci SQL.
 - Pokud je přihlášení objektem zabezpečení SQL, `sysadmin` můžou k vytvoření přihlašovacích údajů pro účet Azure AD používat jenom přihlášení, která jsou součástí této role.
@@ -277,7 +277,7 @@ Následující možnosti nelze upravit:
 - `SINGLE_USER`
 - `WITNESS`
 
-Některé `ALTER DATABASE` příkazy (například [omezení set](https://docs.microsoft.com/sql/relational-databases/databases/migrate-to-a-partially-contained-database?#converting-a-database-to-partially-contained-using-transact-sql)) můžou být přechodným selháním, například během automatické zálohy databáze nebo hned po vytvoření databáze. V tomto případě `ALTER DATABASE` by se měl opakovat příkaz. Další podrobnosti a informace o souvisejících chybových zprávách najdete v [části poznámky](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true&tabs=sqlpool#remarks-2).
+Některé `ALTER DATABASE` příkazy (například [Nastavení zahrnutí](https://docs.microsoft.com/sql/relational-databases/databases/migrate-to-a-partially-contained-database?#converting-a-database-to-partially-contained-using-transact-sql)) můžou být v přechodném případě neúspěšné, například během automatické zálohy databáze nebo hned po vytvoření databáze. V tomto případě `ALTER DATABASE` by se měl opakovat příkaz. Další informace o souvisejících chybových zprávách najdete v [části poznámky](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true&tabs=sqlpool#remarks-2).
 
 Další informace najdete v tématu [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql-file-and-filegroup-options).
 
@@ -305,7 +305,7 @@ Další informace najdete v tématu [ALTER DATABASE](/sql/t-sql/statements/alter
   - Výstrahy ještě nejsou podporované.
   - Proxy servery nejsou podporovány.
 - Protokol událostí se nepodporuje.
-- Aby bylo možné vytvářet, upravovat nebo spouštět úlohy agenta SQL, musí být uživatel přímo namapován na objekt zabezpečení serveru Azure AD (přihlášení). Uživatelé, kteří nejsou přímo namapováni, například uživatelé, kteří patří do skupiny služby Azure AD s právy k vytváření, úpravám nebo provádění úloh agenta SQL, nebudou moci tyto akce provádět efektivně. Důvodem je zosobnění spravované instance a [spuštění jako omezení](#logins-and-users).
+- Aby bylo možné vytvořit, upravit nebo spustit úlohy agenta SQL, musí být uživatel přímo namapován na objekt zabezpečení serveru Azure AD (přihlášení). Uživatelé, kteří nejsou přímo namapováni, například uživatelé patřící do skupiny Azure AD s právy k vytváření, úpravám nebo provádění úloh agenta SQL, nebudou moci tyto akce provádět efektivně. Důvodem je zosobnění spravované instance a [spuštění jako omezení](#logins-and-users).
 
 Následující funkce agenta SQL momentálně nejsou podporované:
 
@@ -400,12 +400,12 @@ Další informace najdete v tématu [tabulky](/sql/relational-databases/blob/fil
 Propojené servery ve spravované instanci SQL podporují omezený počet cílů:
 
 - Podporované cíle jsou spravované instance SQL, SQL Database, Azure synapse bez SQL [serveru](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/) a vyhrazené fondy a SQL Server instance. 
-- Propojené servery nepodporují distribuované transakce s možností zápisu (MS DTC).
+- Distribuované transakce s možností zápisu jsou možné jenom mezi spravovanými instancemi. Další informace najdete v tématu [distribuované transakce](https://docs.microsoft.com/azure/azure-sql/database/elastic-transactions-overview). Služba MS DTC ale není podporovaná.
 - Nepodporované cíle jsou soubory, Analysis Services a další RDBMS. Zkuste použít nativní Import souborů CSV z Azure Blob Storage použití `BULK INSERT` nebo `OPENROWSET` jako alternativu pro import souborů nebo načtěte soubory pomocí [serveru SQL bez serveru v Azure synapse Analytics](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/).
 
 Operace: 
 
-- Transakce zápisu mezi instancemi nejsou podporované.
+- Transakce zápisu [mezi instancemi](https://docs.microsoft.com/azure/azure-sql/database/elastic-transactions-overview) se podporují jenom pro spravované instance.
 - `sp_dropserver` se podporuje pro vyřazení odkazovaného serveru. Viz [sp_dropserver](/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql).
 - `OPENROWSET`Funkci lze použít ke spouštění dotazů pouze u instancí SQL Server. Můžou být spravované, místní nebo virtuální počítače. Viz [OpenRowset](/sql/t-sql/functions/openrowset-transact-sql).
 - `OPENDATASOURCE`Funkci lze použít ke spouštění dotazů pouze u instancí SQL Server. Můžou být spravované, místní nebo virtuální počítače. Pouze `SQLNCLI` hodnoty, `SQLNCLI11` a `SQLOLEDB` jsou podporovány jako zprostředkovatel. Příklad: `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee`. Viz [OpenDataSource](/sql/t-sql/functions/opendatasource-transact-sql).
@@ -413,7 +413,7 @@ Operace:
 
 ### <a name="polybase"></a>PolyBase
 
-Jedinými dostupnými typy externího zdroje jsou RDBMS (ve verzi Public Preview) do Azure SQL Database, Azure SQL Managed instance a Azure synapse Pool. Můžete použít [externí tabulku, která odkazuje na SQL fond bez serveru v synapse Analytics](https://devblogs.microsoft.com/azure-sql/read-azure-storage-files-using-synapse-sql-external-tables/) jako alternativní řešení pro základní externí tabulky, které přímo čtou z Azure Storage. Ve spravované instanci Azure SQL můžete propojené servery použít pro [neserverový fond SQL ve synapse Analytics](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/) nebo SQL Server ke čtení dat Azure Storage.
+Jediný dostupný typ externího zdroje je RDBMS (ve verzi Public Preview) do služby Azure SQL Database, spravované instance Azure SQL a fondu Azure synapse. Můžete použít [externí tabulku, která odkazuje na SQL fond bez serveru v synapse Analytics](https://devblogs.microsoft.com/azure-sql/read-azure-storage-files-using-synapse-sql-external-tables/) jako alternativní řešení pro základní externí tabulky, které přímo čtou z Azure Storage. Ve spravované instanci Azure SQL můžete propojené servery použít pro [neserverový fond SQL ve synapse Analytics](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/) nebo SQL Server ke čtení dat Azure Storage.
 Informace o bázi základů naleznete v části [základ](/sql/relational-databases/polybase/polybase-guide).
 
 ### <a name="replication"></a>Replikace

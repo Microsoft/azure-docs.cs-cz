@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2021
-ms.openlocfilehash: 4a9a6b61e392ed2efd68cdcb1cf7e53d6bde5ccd
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 8d984a303234a24423ceae100bd139cb484d6495
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98249681"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702781"
 ---
 # <a name="estimate-and-manage-capacity-of-an-azure-cognitive-search-service"></a>Odhad a správa kapacity služby Azure Kognitivní hledání
 
 Než [zřídíte službu vyhledávání](search-create-service-portal.md) a zamknete ji v konkrétní cenové úrovni, pochopíte si, jak kapacita funguje a jak můžete upravovat repliky a oddíly, abyste vyhověli výkyvům úloh.
 
-Kapacita je funkce [úrovně služby](search-sku-tier.md). Úrovně jsou odlišené podle maximálního úložiště, úložiště jednotlivých oddílů a maximálních limitů počtu objektů, které můžete vytvořit. Úroveň Basic je určená pro aplikace, které mají mírné požadavky na úložiště (jenom jeden oddíl), ale mají schopnost běžet v konfiguraci s vysokou dostupností (3 repliky). Jiné úrovně jsou navržené pro konkrétní úlohy nebo vzory, jako je například víceklientská architektura. Služby vytvořené na těchto úrovních využívají interně z hardwaru, který tyto scénáře pomáhá.
+Kapacita je funkce [úrovně služby](search-sku-tier.md), která stanovuje maximální velikost úložiště na službu, na oddíl a maximální limit počtu objektů, které můžete vytvořit. Úroveň Basic je určená pro aplikace, které mají mírné požadavky na úložiště (jenom jeden oddíl), ale mají schopnost běžet v konfiguraci s vysokou dostupností (3 repliky). Jiné úrovně jsou navržené pro konkrétní úlohy nebo vzory, jako je například víceklientská architektura. Služby vytvořené na těchto úrovních využívají interně z hardwaru, který tyto scénáře pomáhá.
 
 Architektura škálovatelnosti v Azure Kognitivní hledání je založená na flexibilních kombinacích replik a oddílů, takže můžete měnit kapacitu v závislosti na tom, jestli potřebujete další dotazy nebo indexování. Po vytvoření služby můžete zvýšit nebo snížit počet replik nebo oddílů nezávisle na sobě. Náklady se budou nacházet s každým dalším fyzickým prostředkem, ale po dokončení rozsáhlých úloh můžete snížit měřítko a snížit tak svůj účet. V závislosti na vrstvě a velikosti úpravy může přidání nebo snížení kapacity trvat až 15 minut až několik hodin.
 

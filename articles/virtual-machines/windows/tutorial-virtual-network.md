@@ -10,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 08/04/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 22993e8a1513ae34b3752ebd80c60761467f396e
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: d61f4be63a2f3b2f75228848e2e4fe18fb27f598
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97912661"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702055"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-windows-virtual-machines-with-azure-powershell"></a>Kurz: Vytváření a správa virtuálních sítí Azure pro virtuální počítače s Windows pomocí Azure PowerShellu
 
@@ -280,7 +280,4 @@ V tomto kurzu jste v souvislosti s virtuálními počítači vytvořili a zabezp
 > * Zabezpečení provozu sítě
 > * Vytvoření back-endového virtuálního počítače
 
-V dalším kurzu se seznámíte s monitorováním zabezpečení dat na virtuálních počítačích pomocí služby Azure Backup.
-
-> [!div class="nextstepaction"]
-> [Zálohování virtuálních počítačů s Windows v Azure](./tutorial-backup-vms.md)
+Další informace o ochraně disků virtuálních počítačů najdete v tématu [zálohování a zotavení po havárii pro disky](backup-and-disaster-recovery-for-azure-iaas-disks.md).

@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5bcc6503af5f5f685ee589ed7671b4715834fef
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 496a8dba9b9ea7fb82ad9016479154d6a61cb767
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779358"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703271"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Jak to funguje: Samoobslužné resetování hesla v Azure AD
 
@@ -137,7 +137,7 @@ Při použití mobilní aplikace jako metody pro resetování hesla, jako je nap
 Uživatelé nemají možnost registrovat svou mobilní aplikaci při registraci pro Samoobslužné resetování hesla [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) . Uživatelé mohou zaregistrovat svou mobilní aplikaci na [https://aka.ms/mfasetup](https://aka.ms/mfasetup) nebo v rámci registrace souhrnných bezpečnostních údajů na adrese [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) .
 
 > [!IMPORTANT]
-> Ověřovací aplikaci nelze vybrat jako jedinou metodu ověřování pouze v případě, že je požadována pouze metoda. Podobně platí, že při vyžadování dvou metod nelze vybrat aplikaci ověřovatele a pouze jednu další metodu.
+> Ověřovací aplikaci nelze vybrat jako jedinou metodu ověřování pouze v případě, že je požadována pouze jedna metoda. Podobně platí, že při vyžadování dvou metod nelze vybrat aplikaci ověřovatele a pouze jednu další metodu.
 >
 > Při konfiguraci zásad SSPR, které obsahují ověřovací aplikaci jako metodu, by měla být vybraná aspoň jedna další metoda, když je potřeba jedna metoda a při konfiguraci dvou metod je potřeba vybrat aspoň dvě další metody.
 >
@@ -149,7 +149,7 @@ Uživatelé nemají možnost registrovat svou mobilní aplikaci při registraci 
 
 Pokud začnete se zásadou, která má jenom jednu požadovanou metodu ověřování pro resetování nebo odemknutí, a změníte ji na dvě metody, co se stane?
 
-| Počet registrovaných metod | Vyžaduje se počet metod. | Result |
+| Počet registrovaných metod | Vyžaduje se počet metod. | Výsledek |
 | :---: | :---: | :---: |
 | 1 nebo více | 1 | **Může** resetovat nebo odemknout |
 | 1 | 2 | **Nejde** resetovat ani odemknout |

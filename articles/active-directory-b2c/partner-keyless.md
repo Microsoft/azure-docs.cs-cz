@@ -11,14 +11,14 @@ ms.topic: how-to
 ms.date: 1/17/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 7e6f19e03eee6fb6ddf946ea79d197a231f5f113
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 2ab1b5ae87cee6265c965c45b706c7fbf10dfe3f
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/22/2021
-ms.locfileid: "98690422"
+ms.locfileid: "98702950"
 ---
-# <a name="tutorial-for-configuring-keyless-with-azure-active-directory-b2c"></a>Kurz pro konfiguraci bez klíčů s využitím Azure Active Directory B2C
+# <a name="tutorial-configure-keyless-with-azure-active-directory-b2c"></a>Kurz: konfigurace bez klíčů pomocí Azure Active Directory B2C
 
 V tomto ukázkovém kurzu poskytujeme pokyny k tomu, jak nakonfigurovat Azure Active Directory (AD) B2C s [bez klíčů](https://keyless.io/). Když Azure AD B2C jako poskytovatel identity, můžete integrovat bez klíčů se všemi vašimi zákaznickými aplikacemi a poskytnout uživatelům tak skutečné ověřování bez hesla.
 
@@ -50,7 +50,7 @@ V následujícím diagramu architektury se zobrazuje implementace.
 
 ![Obrázek znázorňuje diagram architektury bez klíčů](./media/partner-keyless/keyless-architecture-diagram.png)
 
-|Krok | Description |
+|Krok | Popis |
 |:-----| :-----------|
 | 1. | Uživatel dorazí na přihlašovací stránku. Uživatelé vyberou přihlášení, zaregistrují se a vstoupí do uživatelského jména.
 | 2. | Aplikace pošle atributy uživatele Azure AD B2C k ověření identity.

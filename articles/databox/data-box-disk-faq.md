@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: conceptual
 ms.date: 12/17/2020
 ms.author: alkohli
-ms.openlocfilehash: 3df8f75a726639e87157a1aa7fd9ff4d35c0ef4f
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 103e4453ecf848822db0d82bc13e93b0c8c68331
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654621"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702130"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk: nejčastější dotazy
 
@@ -66,7 +66,7 @@ Pokud jste například chtěli přesunout data do svého umístění v Kanadě d
 
 ### <a name="option-1"></a>Možnost 1: 
 
-Dodejte [podporovaný disk](../storage/common/storage-import-export-requirements.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#supported-disks) obsahující data pomocí [služby importu a exportu Azure](../storage/common/storage-import-export-service.md) ze zdrojového umístění v Kanadě do datového centra Azure západní USA.
+Dodejte [podporovaný disk](../import-export/storage-import-export-requirements.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#supported-disks) obsahující data pomocí [služby importu a exportu Azure](../import-export/storage-import-export-service.md) ze zdrojového umístění v Kanadě do datového centra Azure západní USA.
 
 ### <a name="option-2"></a>Možnost 2:
 
@@ -109,7 +109,7 @@ Tyto doby realizace jsou *odhady*. Čas pro každou fázi zpracování objednáv
 ## <a name="configure-and-connect"></a>Konfigurace a připojení
  
 ### <a name="q-can-i-specify-the-number-of-data-box-disks-in-the-order"></a>Otázka: Můžu v objednávce určit počet disků Data Box Disk?
-A.  No. Získáte 8 TB disků (maximálně 5 disků) v závislosti na velikosti dat a dostupnosti disků.  
+A.  Ne. Získáte 8 TB disků (maximálně 5 disků) v závislosti na velikosti dat a dostupnosti disků.  
 
 ### <a name="q-how-do-i-unlock-the-data-box-disks"></a>Otázka: Jak disky Data Box Disk odemknu? 
 A.  Na webu Azure Portal přejděte k vaší objednávce disků Data Box Disk a přejděte na **podrobnosti o zařízení**. Zkopírujte klíč. Stáhněte a rozbalte odemykací nástroj Data Box Disku z webu Azure Portal do operačního systému. Spusťte tento nástroj v počítači s daty, která chcete zkopírovat na disky. Zadejte klíč k odemknutí disků. Stejný klíč odemkne všechny disky. 
@@ -117,13 +117,13 @@ A.  Na webu Azure Portal přejděte k vaší objednávce disků Data Box Disk a 
 Podrobný postup najdete v článku o [odemknutí disků v klientovi pro Windows](data-box-disk-deploy-set-up.md#unlock-disks-on-windows-client) nebo o [odemknutí disků v klientovi pro Linux](data-box-disk-deploy-set-up.md#unlock-disks-on-linux-client).
 
 ### <a name="q-can-i-use-a-linux-host-computer-to-connect-and-copy-the-data-on-to-the-data-box-disks"></a>Otázka: Můžu k připojení a zkopírování dat na disky Data Box Disk použít hostitelský počítač Linux?
-A.  Yes. K připojení a zkopírování dat na Data Box Disky je možné použít klienty pro Linux i Windows. Další informace získáte, když přejdete na seznam [podporovaných operačních systémů](data-box-disk-system-requirements.md) hostitelského počítače.
+A.  Ano. K připojení a zkopírování dat na Data Box Disky je možné použít klienty pro Linux i Windows. Další informace získáte, když přejdete na seznam [podporovaných operačních systémů](data-box-disk-system-requirements.md) hostitelského počítače.
 
 ### <a name="q-my-disks-are-dispatched-but-now-i-want-to-cancel-this-order-why-is-the-cancel-button-not-available"></a>Otázka: Moje disky se odeslaly, ale já teď chci tuto objednávku zrušit. Proč není dostupné tlačítko pro zrušení?
 A.  Objednávku lze po vytvoření zrušit jenom do doby její expedice. Jakmile se disky odešlou, není už možné danou objednávku zrušit. Disky ale můžete vracet za poplatek. 
 
 ### <a name="q-can-i-connect-multiple-data-box-disks-at-the-same-to-the-host-computer-to-transfer-data"></a>Otázka: Můžu pro přenos dat připojit k hostitelskému počítači více disků Data Box Disk současně?
-A. Yes. Pro přenos dat lze k jednomu hostitelskému počítači připojit více disků Data Box Disk a několik úloh kopírování může běžet paralelně.
+A. Ano. Pro přenos dat lze k jednomu hostitelskému počítači připojit více disků Data Box Disk a několik úloh kopírování může běžet paralelně.
 
 ## <a name="track-status"></a>Sledování stavu
 
@@ -134,7 +134,7 @@ A.  Stav objednávky disků Data Box Disk můžete sledovat na webu Azure Portal
 A.  Microsoft přikládá k balíčku s disky Data Box Disk expediční štítek. Připevněte tento štítek k odesílanému balíčku a zavezte zapečetěný balíček na pobočku dopravce. Pokud se tento štítek poškodil nebo ztratil, přejděte na **Přehled > Stáhnout expediční štítek** a stáhněte si nový zpětný expediční štítek.
 
 ### <a name="can-i-pick-up-my-data-box-disk-order-myself-can-i-return-the-disks-via-a-carrier-that-i-choose"></a>Můžu Data Box Disk objednávku vybrat? Můžu disky vrátit přes dopravce, kterého zvolím?
-A. Yes. Microsoft taky nabízí samostatně spravovanou expedici jenom v US Gov oblasti. Při umísťování Data Box Disk pořadí můžete zvolit možnost samostatně spravovaná dodávka. Pokud si chcete Data Box Disk objednávku, proveďte následující kroky:
+A. Ano. Microsoft taky nabízí samostatně spravovanou expedici jenom v US Gov oblasti. Při umísťování Data Box Disk pořadí můžete zvolit možnost samostatně spravovaná dodávka. Pokud si chcete Data Box Disk objednávku, proveďte následující kroky:
     
 1. Po umístění objednávky se zpracuje objednávka a připraví se disky. Pošleme vám e-mail s oznámením, že je vaše objednávka připravená na vyzvednutí. 
 2. Jakmile bude objednávka připravena k vyzvednutí, přejděte do objednávky v Azure Portal a přejděte do okna **Přehled** . 
@@ -185,7 +185,7 @@ A.  Pokud chcete zrychlit proces kopírování:
 - Zkopírujte soubory na disk virtuálního počítače.
 
 ### <a name="q-can-i-use-multiple-storage-accounts-with-data-box-disks"></a>Otázka: Můžu s disky Data Box Disk používat více účtů úložiště?
-A.  No. Pro použití s disky Data Box Disk se momentálně podporuje jenom jeden účet úložiště, obecný nebo klasický. Podporují se horké i studené objekty blob. V současné době jsou podporovány pouze účty úložiště v USA, Západní Evropa a Severní Evropa ve veřejném cloudu Azure.
+A.  Ne. Pro použití s disky Data Box Disk se momentálně podporuje jenom jeden účet úložiště, obecný nebo klasický. Podporují se horké i studené objekty blob. V současné době jsou podporovány pouze účty úložiště v USA, Západní Evropa a Severní Evropa ve veřejném cloudu Azure.
 
 ### <a name="q-what-is-the-toolset-available-for-my-data-with-data-box-disks"></a>Otázka: Jaká je sada nástrojů dostupná pro moje data s Data Box disky?
 A. Sada nástrojů dostupná s Data Box Disk obsahuje tři nástroje:
@@ -197,8 +197,8 @@ Sada nástrojů je k dispozici pro systémy Windows i Linux. Sadu nástrojů si 
 - [Stáhnout sadu nástrojů Data Box Disk pro Windows](https://aka.ms/databoxdisktoolswin) 
 - [Stáhnout sadu nástrojů Data Box Disk pro Linux](https://aka.ms/databoxdisktoolslinux)
  
-### <a name="q-can-i-use-data-box-disk-to-transfer-data-to-azure-files-and-then-use-the-data-with-azure-file-sync"></a>Otázka: Můžu použít Data Box Disk k přenosu dat do souborů Azure a pak data použít s Azure File Sync? 
-A. Soubory Azure jsou podporované v Data Box Disk, ale nebudou fungovat dobře s Azure File Sync. Metadata se nezachovají, pokud se data souboru používají s Azure File Sync.
+### <a name="q-can-i-use-data-box-disk-to-transfer-data-to-azure-files-and-then-use-the-data-with-azure-file-sync"></a>Otázka: Můžu použít Data Box Disk k přenosu dat do souborů Azure a pak data použít s Synchronizace souborů Azure? 
+A. Soubory Azure jsou podporované v Data Box Disk, ale nebudou fungovat dobře s Synchronizace souborů Azure. Metadata se nezachovají, pokud se data souboru používají s Synchronizace souborů Azure.
 
 
 ## <a name="verify-and-upload"></a>Ověření a nahrání
@@ -222,13 +222,13 @@ A.  Po dokončení kopírování dat do Azure se data z disků bezpečně vymaž
 A.  Data Box disky se šifrují pomocí šifrování AES-128 Microsoft BitLocker a k odemčení všech disků a přístupu k datům se vyžaduje jeden klíč.
 
 ### <a name="q-do-i-need-to-rerun-checksum-validation-if-i-add-more-data-to-the-data-box-disks"></a>Otázka: Když na disky Data Box Disk přidám další data, je nutné znovu spustit ověření kontrolním součtem?
-A. Yes. Pokud jste se rozhodli ověřovat data (což doporučujeme), bude nutné po přidání dalších dat na tyto disky znovu spustit ověření.
+A. Ano. Pokud jste se rozhodli ověřovat data (což doporučujeme), bude nutné po přidání dalších dat na tyto disky znovu spustit ověření.
 
 ### <a name="q-i-used-all-my-disks-to-transfer-data-and-need-to-order-more-disks-is-there-a-way-to-quickly-place-the-order"></a>Otázka: Využil(a) jsem k přenosu dat všechny svoje disky a potřebuji objednat další disky. Existuje nějaký rychlý způsob, jak tuto objednávku vytvořit?
 A. Můžete svoji předchozí objednávku naklonovat. Naklonováním se vytvoří stejná objednávka, jako byla ta předchozí. Podrobnosti této objednávky však můžete upravit. Nebudete tedy muset znovu zadávat adresu, kontaktní údaje a podrobnosti o oznámení.
 
 ### <a name="q-i-copied-data-to-the-manageddisk-folder-i-dont-see-any-managed-disks-with-the-resource-group-specified-for-managed-disks-was-my-data-uploaded-to-azure-how-can-i-locate-it"></a>Otázka: Zkopíroval (a) jsem data do složky ManagedDisk. Nevidím žádné spravované disky se skupinou prostředků zadanou pro spravované disky. Nahrála se moje data do Azure? Jak ho můžu najít?
-A. Yes. Vaše data se nahrála do Azure, ale Pokud nevidíte žádné spravované disky se zadanými skupinami prostředků, je pravděpodobnou příčinou to, že data nejsou platná. Pokud jsou objekty blob stránky, objekty blob bloku, soubory Azure nebo spravované disky neplatné, budou přejít do následujících složek:
+A. Ano. Vaše data se nahrála do Azure, ale Pokud nevidíte žádné spravované disky se zadanými skupinami prostředků, je pravděpodobnou příčinou to, že data nejsou platná. Pokud jsou objekty blob stránky, objekty blob bloku, soubory Azure nebo spravované disky neplatné, budou přejít do následujících složek:
  - Objekty blob stránky budou přejít do kontejneru objektů blob bloku počínaje *databoxdisk-invalid-PB-*.
  - Soubory Azure budou přejít do kontejneru objektů blob bloku počínaje *databoxdisk-invalid-AF-*.
  - Spravované disky přejdou do kontejneru objektů blob bloku začínající na *databoxdisk-invalid-MD-*.

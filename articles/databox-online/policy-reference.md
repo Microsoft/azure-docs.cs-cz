@@ -1,19 +1,19 @@
 ---
 title: Předdefinované definice zásad pro Azure Stack Edge
 description: Seznam Azure Policy integrovaných definic zásad pro Azure Stack Edge. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
-ms.date: 01/13/2021
+ms.date: 01/21/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
 ms.service: databox
 ms.subservice: edge
 author: alkohli
 ms.author: alkohli
-ms.openlocfilehash: 111c5f833ea7d3bbe3c2e5e1b323764b9ffdb8d6
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 072916cb59dc50aeb48f77a01237311dc01392b5
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98626307"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98701830"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-stack-edge"></a>Azure Policy předdefinované definice pro Azure Stack Edge
 

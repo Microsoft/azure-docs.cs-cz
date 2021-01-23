@@ -3,12 +3,12 @@ title: Poskytovatelé prostředků podle služeb Azure
 description: Vypíše všechny obory názvů poskytovatele prostředků pro Azure Resource Manager a zobrazí službu Azure pro tento obor názvů.
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: 5e89b2b7cf7c27a501d93f63c74d81d8fb40883c
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: c319a6d06cbbcf5d36178c37207cc13f295a5897
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033540"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702849"
 ---
 # <a name="resource-providers-for-azure-services"></a>Poskytovatelé prostředků pro služby Azure
 
@@ -59,12 +59,12 @@ Poskytovatelé prostředků označených jako **registrované** jsou ve výchoz�
 | Microsoft. Cognitiveservices Account | [Cognitive Services](../../cognitive-services/index.yml) |
 | Microsoft. Commerce – [zaregistrováno](#registration) | Core |
 | Microsoft.Compute | [Virtual Machines](../../virtual-machines/index.yml)<br />[Virtual Machine Scale Sets](../../virtual-machine-scale-sets/index.yml) |
-| Microsoft. spotřeba – [zaregistrováno](#registration) | [Správa nákladů](/azure/cost-management/) |
+| Microsoft. spotřeba – [zaregistrováno](#registration) | [Cost Management](/azure/cost-management/) |
 | Microsoft. ContainerInstance | [Container Instances](../../container-instances/index.yml) |
 | Microsoft. ContainerRegistry | [Container Registry](../../container-registry/index.yml) |
 | Microsoft. ContainerService | [Azure Kubernetes Service (AKS)](../../aks/index.yml) |
-| Microsoft. CostManagement – [registrováno](#registration) | [Správa nákladů](/azure/cost-management/) |
-| Microsoft. CostManagementExports | [Správa nákladů](/azure/cost-management/) |
+| Microsoft. CostManagement – [registrováno](#registration) | [Cost Management](/azure/cost-management/) |
+| Microsoft. CostManagementExports | [Cost Management](/azure/cost-management/) |
 | Microsoft. CustomerLockbox | [Customer Lockbox pro Microsoft Azure](../../security/fundamentals/customer-lockbox-overview.md) |
 | Microsoft. CustomProviders | [Vlastní poskytovatelé Azure](../custom-providers/overview.md) |
 | Microsoft. DataBox | [Azure Data Box](../../databox/index.yml) |
@@ -80,7 +80,7 @@ Poskytovatelé prostředků označených jako **registrované** jsou ve výchoz�
 | Microsoft. DBforMariaDB | [Azure Database for MariaDB](../../mariadb/index.yml) |
 | Microsoft. DBforMySQL | [Azure Database for MySQL](../../mysql/index.yml) |
 | Microsoft. DBforPostgreSQL | [Azure Database for PostgreSQL](../../postgresql/index.yml) |
-| Microsoft. DeploymentManager | [Deployment Manager Azure](../templates/deployment-manager-overview.md) |
+| Microsoft. DeploymentManager | [Správce nasazení Azure](../templates/deployment-manager-overview.md) |
 | Microsoft. DesktopVirtualization | [Windows Virtual Desktop](../../virtual-desktop/index.yml) |
 | Microsoft.Devices | [Azure IoT Hub](../../iot-hub/index.yml)<br />[Služba Azure IoT Hub Device Provisioning](../../iot-dps/index.yml) |
 | Microsoft. DevOps | [Azure DevOps](/azure/devops/) |
@@ -102,7 +102,7 @@ Poskytovatelé prostředků označených jako **registrované** jsou ve výchoz�
 | Microsoft. HybridCompute | [Azure Arc](../../azure-arc/index.yml) |
 | Microsoft. HybridData | [StorSimple](../../storsimple/index.yml) |
 | Microsoft. HybridNetwork  | [Zóny privátního okraje](../../networking/edge-zones-overview.md) |
-| Microsoft. ImportExport | [Azure Import/Export](../../storage/common/storage-import-export-service.md) |
+| Microsoft. ImportExport | [Azure Import/Export](../../import-export/storage-import-export-service.md) |
 | Microsoft. Insights | [Azure Monitor](../../azure-monitor/index.yml) |
 | Microsoft. IoTCentral | [Azure IoT Central](../../iot-central/index.yml) |
 | Microsoft. IoTSpaces | [Azure Digital Twins](../../digital-twins/index.yml) |
@@ -164,7 +164,7 @@ Poskytovatelé prostředků označených jako **registrované** jsou ve výchoz�
 | Microsoft. SoftwarePlan | Licence |
 | Microsoft. Solutions | [Azure Managed Applications](../managed-applications/index.yml) |
 | Microsoft.Sql | [Azure SQL Database](../../azure-sql/database/index.yml)<br /> [Spravovaná instance Azure SQL](../../azure-sql/managed-instance/index.yml) <br />[Azure Synapse Analytics](/azure/sql-data-warehouse/) |
-| Microsoft. SqlVirtualMachine | [SQL Server v Azure Virtual Machines](../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) |
+| Microsoft. SqlVirtualMachine | [SQL Server na Azure Virtual Machines](../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) |
 | Microsoft.Storage | [Storage](../../storage/index.yml) |
 | Microsoft. StorageCache | [Azure HPC Cache](../../hpc-cache/index.yml) |
 | Microsoft. StorageSync | [Storage](../../storage/index.yml) |

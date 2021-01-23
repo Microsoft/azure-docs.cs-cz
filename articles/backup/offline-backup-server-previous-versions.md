@@ -3,12 +3,12 @@ title: Offline zálohování pro Data Protection Manager (DPM) a server pro Micr
 description: Pomocí Azure Backup můžete odesílat data mimo síť pomocí služby Azure import/export. Tento článek vysvětluje pracovní postup offline zálohování pro předchozí verze aplikace DPM a Azure Backup Server.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: b747fd3c682dc1caf7312ba7279470a1e6b38bd5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0405ab66b7714f00349419e94bb064267ca711a6
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88890089"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702181"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-previous-versions"></a>Pracovní postup offline zálohování pro DPM a Azure Backup Server (předchozí verze)
 
@@ -17,7 +17,7 @@ ms.locfileid: "88890089"
 
 Azure Backup má několik předdefinovaných efektivit, které při počátečním úplném zálohování dat do Azure šetří náklady na síť a úložiště. Počáteční úplné zálohování obvykle přenáší velké objemy dat a vyžaduje více šířky pásma sítě ve srovnání s dalšími zálohami, které přenášejí pouze rozdíly a přírůstkové. Azure Backup zkomprimuje počáteční zálohy. Díky procesu offline osazení může Azure Backup použít disky k nahrání komprimovaných počátečních zálohovaných dat offline do Azure.
 
-Proces offline nasazení Azure Backup je úzce integrovaný do [služby Azure import/export](../storage/common/storage-import-export-service.md). Tuto službu můžete použít k přenosu dat do Azure pomocí disků. Pokud máte terabajty (TBs) počátečních zálohovaných dat, která je potřeba přenést po síti s vysokou latencí a malou šířkou pásma, můžete k odeslání prvotní záložní kopie na jednom nebo více pevných discích do datacentra Azure použít pracovní postup offline. Tento článek poskytuje přehled a další kroky, které dokončí tento pracovní postup pro System Center Data Protection Manager (DPM) a server Microsoft Azure Backup (MABS).
+Proces offline nasazení Azure Backup je úzce integrovaný do [služby Azure import/export](../import-export/storage-import-export-service.md). Tuto službu můžete použít k přenosu dat do Azure pomocí disků. Pokud máte terabajty (TBs) počátečních zálohovaných dat, která je potřeba přenést po síti s vysokou latencí a malou šířkou pásma, můžete k odeslání prvotní záložní kopie na jednom nebo více pevných discích do datacentra Azure použít pracovní postup offline. Tento článek poskytuje přehled a další kroky, které dokončí tento pracovní postup pro System Center Data Protection Manager (DPM) a server Microsoft Azure Backup (MABS).
 
 > [!NOTE]
 > Proces offline zálohování agenta Microsoft Azure Recovery Services (MARS) se liší od DPM a MABS. Informace o použití zálohování offline s agentem MARS najdete v tématu [pracovní postup offline zálohování v Azure Backup](backup-azure-backup-import-export.md). Zálohování v režimu offline není podporováno pro zálohy stavu systému pomocí agenta Azure Backup.
@@ -58,15 +58,15 @@ Než spustíte pracovní postup offline zálohování, ujistěte se, že jsou sp
 
     | Oblast cloudu svrchovan | Odkaz na soubor nastavení publikování v Azure |
     | --- | --- |
-    | USA | [Propojit](https://portal.azure.us#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) |
-    | Čína | [Propojit](https://portal.azure.cn/#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) |
+    | USA | [Odkaz](https://portal.azure.us#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) |
+    | Čína | [Odkaz](https://portal.azure.cn/#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) |
 
 * V předplatném, ze kterého jste stáhli soubor nastavení publikování, byl vytvořen účet služby Azure Storage s modelem nasazení Správce prostředků. V účtu úložiště vytvořte nový kontejner objektů blob, který se použije jako cíl.
 
   ![Vytvoření účtu úložiště pomocí Správce prostředkůho vývoje](./media/offline-backup-dpm-mabs-previous-versions/storage-account-resource-manager.png)
 
 * Vytvoří se pracovní umístění, které může být sdílená síťová složka nebo jakákoli další jednotka na počítači, interní nebo externí, s dostatkem místa na disku pro uložení počáteční kopie. Pokud třeba chcete zálohovat souborový server 500-GB, ujistěte se, že pracovní oblast má aspoň 500 GB. (V důsledku komprese se používá menší množství.)
-* U disků odeslaných do Azure zajistěte, aby se používaly interní pevné disky SATA nebo 2,5, 2,5 nebo 3,5. Můžete použít pevné disky až do 10 TB. Nejnovější sadu jednotek, které služba podporuje, najdete v [dokumentaci ke službě Import/export v Azure](../storage/common/storage-import-export-requirements.md#supported-hardware) .
+* U disků odeslaných do Azure zajistěte, aby se používaly interní pevné disky SATA nebo 2,5, 2,5 nebo 3,5. Můžete použít pevné disky až do 10 TB. Nejnovější sadu jednotek, které služba podporuje, najdete v [dokumentaci ke službě Import/export v Azure](../import-export/storage-import-export-requirements.md#supported-hardware) .
 * Jednotky SATA musí být připojené k počítači (označovanému jako *počítač pro kopírování*), ze kterého se provádí Kopírování zálohovaných dat z pracovního umístění na jednotky SATA. Ujistěte se, že je na počítači pro kopírování povolený nástroj BitLocker.
 
 ## <a name="prepare-the-server-for-the-offline-backup-process"></a>Příprava serveru pro proces offline zálohování
@@ -105,10 +105,10 @@ Pomocí těchto kroků ručně Nahrajte certifikát offline zálohování do dř
 
     ![Najít aplikaci na kartě vlastní aplikace](./media/offline-backup-dpm-mabs-previous-versions/owned-applications.png)
 
-1. Vyberte aplikaci. V části **Spravovat** v levém podokně přejdete na **certifikáty & tajných**kódů.
+1. Vyberte aplikaci. V části **Spravovat** v levém podokně přejdete na **certifikáty & tajných** kódů.
 1. Vyhledejte již existující certifikáty nebo veřejné klíče. Pokud žádné nemáte, můžete aplikaci bezpečně odstranit tak, že na stránce **Přehled** aplikace vyberete tlačítko **Odstranit** . Pak můžete opakovat postup pro [přípravu serveru pro offline proces zálohování](#prepare-the-server-for-the-offline-backup-process) a přeskočit následující kroky. V opačném případě pokračujte dále podle těchto kroků z instance aplikace DPM nebo serveru Azure Backup, kde chcete nakonfigurovat offline zálohování.
-1. V **nabídce Start** – **Spusťte**zadejte *Certlm. msc*. V okně **certifikáty – místní počítač** vyberte kartu **certifikáty – místní počítač**  >  **osobní** . vyhledejte certifikát s názvem `CB_AzureADCertforOfflineSeeding_<ResourceId>` .
-1. Vyberte certifikát, klikněte pravým tlačítkem na **všechny úlohy**a pak vyberte **exportovat**bez privátního klíče ve formátu. cer.
+1. V **nabídce Start** – **Spusťte** zadejte *Certlm. msc*. V okně **certifikáty – místní počítač** vyberte kartu **certifikáty – místní počítač**  >  **osobní** . vyhledejte certifikát s názvem `CB_AzureADCertforOfflineSeeding_<ResourceId>` .
+1. Vyberte certifikát, klikněte pravým tlačítkem na **všechny úlohy** a pak vyberte **exportovat** bez privátního klíče ve formátu. cer.
 1. V Azure Portal přejdete do aplikace Azure offline Backup.
 1. Vyberte **Spravovat**  >  **certifikáty & tajných klíčů**  >  **nahrát certifikát**. Nahrajte certifikát exportovaný v předchozím kroku.
 
@@ -116,7 +116,7 @@ Pomocí těchto kroků ručně Nahrajte certifikát offline zálohování do dř
 
 1. Na serveru otevřete registr zadáním příkazu **Regedit** v okně Spustit.
 1. Přejít na položku registru *Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider*.
-1. Klikněte pravým tlačítkem na **CloudBackupProvider**a přidejte novou řetězcovou hodnotu s názvem `AzureADAppCertThumbprint_<Azure User Id>` .
+1. Klikněte pravým tlačítkem na **CloudBackupProvider** a přidejte novou řetězcovou hodnotu s názvem `AzureADAppCertThumbprint_<Azure User Id>` .
 
     >[!NOTE]
     > Pokud chcete najít ID uživatele Azure, proveďte jeden z následujících kroků:
@@ -125,7 +125,7 @@ Pomocí těchto kroků ručně Nahrajte certifikát offline zálohování do dř
     >* Přejít na cestu k registru `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\DbgSettings\OnlineBackup; Name: CurrentUserId;` .
 
 1. Klikněte pravým tlačítkem na řetězec přidaný v předchozím kroku a vyberte **změnit**. V poli hodnota zadejte kryptografický otisk certifikátu, který jste exportovali v kroku 7. Pak vyberte **OK**.
-1. Pokud chcete získat hodnotu kryptografického otisku, poklikejte na certifikát. Vyberte kartu **Podrobnosti** a posuňte se dolů, dokud se nezobrazí pole kryptografický otisk. Vyberte **kryptografický otisk**a zkopírujte hodnotu.
+1. Pokud chcete získat hodnotu kryptografického otisku, poklikejte na certifikát. Vyberte kartu **Podrobnosti** a posuňte se dolů, dokud se nezobrazí pole kryptografický otisk. Vyberte **kryptografický otisk** a zkopírujte hodnotu.
 
     ![Kopírovat hodnotu z pole kryptografický otisk](./media/offline-backup-dpm-mabs-previous-versions/thumbprint-field.png)
 
@@ -133,7 +133,7 @@ Pomocí těchto kroků ručně Nahrajte certifikát offline zálohování do dř
 
 ## <a name="workflow"></a>Pracovní postup
 
-Informace v této části vám pomůžou dokončit pracovní postup offline zálohování, aby se vaše data mohla doručovat do datacentra Azure a nahrály na Azure Storage. Pokud máte dotazy týkající se služby pro import nebo jakéhokoli aspektu procesu, přečtěte si [dokumentaci přehled služby Import služby](../storage/common/storage-import-export-service.md) , na kterou se odkazuje dříve.
+Informace v této části vám pomůžou dokončit pracovní postup offline zálohování, aby se vaše data mohla doručovat do datacentra Azure a nahrály na Azure Storage. Pokud máte dotazy týkající se služby pro import nebo jakéhokoli aspektu procesu, přečtěte si [dokumentaci přehled služby Import služby](../import-export/storage-import-export-service.md) , na kterou se odkazuje dříve.
 
 ### <a name="initiate-offline-backup"></a>Zahájit zálohování offline
 
@@ -271,7 +271,7 @@ Postup kontroly stavu úlohy importu:
 
     ![Zkontroluje stav úlohy importu.](./media/offline-backup-dpm-mabs-previous-versions/import-job-status-reporting.png)<br/>
 
-Další informace o různých stavech úlohy importu Azure najdete v tématu [zobrazení stavu úloh Azure import/export](../storage/common/storage-import-export-view-drive-status.md).
+Další informace o různých stavech úlohy importu Azure najdete v tématu [zobrazení stavu úloh Azure import/export](../import-export/storage-import-export-view-drive-status.md).
 
 ### <a name="finish-the-workflow"></a>Dokončení pracovního postupu
 
@@ -283,4 +283,4 @@ V době příštího plánovaného zálohování Azure Backup provede přírůst
 
 ## <a name="next-steps"></a>Další kroky
 
-* Jakékoli dotazy týkající se pracovního postupu služby Import/export v Azure najdete v tématu [použití služby Microsoft Azure import/export k přenosu dat do úložiště objektů BLOB](../storage/common/storage-import-export-service.md).
+* Jakékoli dotazy týkající se pracovního postupu služby Import/export v Azure najdete v tématu [použití služby Microsoft Azure import/export k přenosu dat do úložiště objektů BLOB](../import-export/storage-import-export-service.md).

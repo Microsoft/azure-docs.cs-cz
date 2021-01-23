@@ -1,24 +1,24 @@
 ---
-title: Princip využití rezervací Azure u smluv Enterprise
-description: Zjistěte, jak číst údaje o využití, abyste měli představu o tom, jak se na vaši prováděcí smlouvu Enterprise uplatňují rezervace Azure.
+title: Pochopení využití rezervací Azure pro smlouva Enterprise a zákaznickou smlouvu Microsoftu
+description: Naučte se číst informace o využití, abyste zjistili, jak se rezervace Azure vztahuje na smlouva Enterprise a používání zákaznických smluv Microsoftu.
 author: bandersmsft
 ms.reviewer: yashar
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 12/02/2020
+ms.date: 01/19/2020
 ms.author: banders
-ms.openlocfilehash: 874d5cb022a38b172bb37009bd86b5e6988f3204
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
-ms.translationtype: HT
+ms.openlocfilehash: 0c69e9533130d6ca70c57422c7cdd5fc75adff72
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96545600"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683713"
 ---
-# <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Získání nákladů na rezervace a jejich využití u smlouvy Enterprise
+# <a name="get-enterprise-agreement-and-microsoft-customer-agreement-reservation-costs-and-usage"></a>Získat smlouva Enterprise a náklady a využití rezervace zákaznických smluv Microsoftu
 
-Náklady na rezervace a údaje o využití jsou zákazníkům se smlouvou Enterprise dostupné na webu Azure Portal a přes rozhraní REST API. Tento článek vám pomůže:
+Rozšířená data pro náklady na rezervaci a využití jsou k dispozici pro smlouva Enterprise (EA) a využití systému Microsoft Customer Agreement (MCA) ve správě nákladů. Tento článek vám pomůže:
 
 - Získat údaje o nákupech rezervací
 - Zjistit, které předplatné, skupina prostředků nebo prostředek rezervaci využil
@@ -61,9 +61,7 @@ Jiné informace dostupné v údajích o využití Azure byly změněny:
 
 Tato data můžete získat přes rozhraní API nebo stáhnout z webu Azure Portal.
 
-Nová data získáte voláním [rozhraní API podrobností využití](/rest/api/consumption/usagedetails/list). Podrobnosti o terminologii najdete v článku s [pojmy souvisejícími s využitím](../understand/understand-usage.md). Volajícím by měl být podnikový správce smlouvy Enterprise, který používá [portál EA](https://ea.azure.com). Tato data mohou získat také podnikoví správci s právy jen pro čtení.
-
-Upozorňujeme, že tato data nejsou dostupná v [rozhraních API pro vytváření sestav pro podnikové zákazníky – podrobnosti o využití](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail).
+Nová data získáte voláním [rozhraní API podrobností využití](/rest/api/consumption/usagedetails/list). Podrobnosti o terminologii najdete v článku s [pojmy souvisejícími s využitím](../understand/understand-usage.md).
 
 Tady je příklad volání rozhraní API Podrobnosti využití:
 
@@ -87,7 +85,7 @@ Informace o metrice a filtru v následující tabulce vám pomohou vyřešit bě
 
 ## <a name="download-the-usage-csv-file-with-new-data"></a>Stažení souboru CSV využití s novými daty
 
-Pokud jste správcem EA, můžete si z webu Azure Portal stáhnout soubor CSV, který obsahuje nová data o využití. Tato data nejsou k dispozici na portálu EA (ea.azure.com), pokud chcete zobrazit nová data, musíte stáhnout soubor využití z webu Azure Portal (portal.azure.com).
+Pokud jste správce služby EA, můžete si stáhnout soubor CSV, který obsahuje nová data o využití z Azure Portal. Tato data nejsou k dispozici na portálu EA (ea.azure.com), pokud chcete zobrazit nová data, musíte stáhnout soubor využití z webu Azure Portal (portal.azure.com).
 
 Na webu Azure Portal přejděte na [Správa nákladů a fakturace](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/BillingAccounts).
 
@@ -150,7 +148,7 @@ Náklady na rezervaci jsou dostupné v [analýze nákladů](https://aka.ms/costa
 
 Při seskupení podle typu poplatku zobrazíte rozpis využití, nákupů a refundací; při seskupení podle rezervace zobrazíte rozpis rezervací a nákladů na vyžádání. Mějte na paměti, že jedinými náklady na rezervaci, které uvidíte při pohledu na skutečné náklady, jsou nákupy; při pohledu na amortizované náklady budou ale náklady přiděleny k jednotlivým prostředkům, které tuto výhodu využily. Při pohledu na amortizované náklady uvidíte také nový poplatek typu **UnusedReservation**.
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás
 
 Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 

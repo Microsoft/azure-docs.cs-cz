@@ -4,12 +4,12 @@ description: Naučte se průběžně sestavovat, testovat a nasazovat šablony A
 ms.date: 08/24/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 8e9f047497f493752947d8115084dcfe86f5e040
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: e7e2cda0524e4d754fbf879c046fee2d43c44cb3
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97588127"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98701708"
 ---
 # <a name="tutorial-continuous-integration-of-arm-templates-with-azure-pipelines"></a>Kurz: průběžná integrace šablon ARM pomocí Azure Pipelines
 
@@ -33,18 +33,18 @@ Tento kurz se zabývá následujícími úkony:
 
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto článku potřebujete:
 
 * **Účet GitHubu**, kde ho použijete k vytvoření úložiště pro šablony. Pokud účet nemáte, můžete si ho [zdarma vytvořit](https://github.com). Další informace o použití úložišť GitHub najdete v tématu [sestavení úložišť GitHubu](/azure/devops/pipelines/repos/github).
 * **Nainstalujte Git**. Tato instrukce kurzu používá *Git bash* nebo *git shell*. Pokyny najdete v tématu [instalace Gitu](https://www.atlassian.com/git/tutorials/install-git).
-* **Organizace Azure DevOps**. Pokud účet nemáte, můžete si ho zdarma vytvořit. Viz [vytvoření organizace nebo kolekce projektů](/azure/devops/organizations/accounts/create-organization?view=azure-devops).
+* **Organizace Azure DevOps**. Pokud účet nemáte, můžete si ho zdarma vytvořit. Viz [vytvoření organizace nebo kolekce projektů](/azure/devops/organizations/accounts/create-organization).
 * volitelné **Visual Studio Code s rozšířením nástrojů Správce prostředků Tools**. Další informace najdete v tématu [rychlý Start: vytvoření šablon ARM pomocí Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
 
 ## <a name="prepare-a-github-repository"></a>Příprava úložiště GitHub
 
-GitHub slouží k uložení zdrojového kódu projektu, včetně šablon Správce prostředků. Další podporovaná úložiště najdete v tématu [úložiště podporovaná službou Azure DevOps](/azure/devops/pipelines/repos/?view=azure-devops).
+GitHub slouží k uložení zdrojového kódu projektu, včetně šablon Správce prostředků. Další podporovaná úložiště najdete v tématu [úložiště podporovaná službou Azure DevOps](/azure/devops/pipelines/repos/).
 
 ### <a name="create-a-github-repository"></a>Vytvoření úložiště GitHub
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: ed79d9fb3be192d300587eda5198d9b153109241
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 605bae706bbc1db2e008b8d050cbba9eacd16933
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209776"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702198"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Příprava dat pro službu Custom Speech
 
@@ -46,9 +46,9 @@ Tato tabulka obsahuje seznam povolených datových typů, kdy se má použít ka
 
 | Datový typ | Používá se pro testování. | Doporučené množství | Používá se pro školení. | Doporučené množství |
 |-----------|-----------------|----------|-------------------|----------|
-| [Zvuk](#audio-data-for-testing) | Yes<br>Použito pro vizuální kontrolu | 5 zvukových souborů | No | Není k dispozici |
-| [Audio + přepisy s popiskem](#audio--human-labeled-transcript-data-for-testingtraining) | Yes<br>Používá se k vyhodnocení přesnosti. | 0,5 – 5 hodin zvukového přenosu | Yes | 1-20 hodin zvukového přenosu |
-| [Související text](#related-text-data-for-training) | No | Není k dispozici | Yes | 1-200 MB souvisejícího textu |
+| [Zvuk](#audio-data-for-testing) | Ano<br>Použito pro vizuální kontrolu | 5 zvukových souborů | No | – |
+| [Audio + přepisy s popiskem](#audio--human-labeled-transcript-data-for-testingtraining) | Ano<br>Používá se k vyhodnocení přesnosti. | 0,5 – 5 hodin zvukového přenosu | Ano | 1-20 hodin zvukového přenosu |
+| [Související text](#related-text-data-for-training) | No | Není k dispozici | Ano | 1-200 MB souvisejícího textu |
 
 Při učení nového modelu začněte s [souvisejícím textem](#related-text-data-for-training). Tato data budou již vylepšit rozpoznávání speciálních pojmů a frází. Školení s textem je mnohem rychlejší než školení na zvuk (minuty vs. dny).
 
@@ -121,7 +121,7 @@ Zvukové soubory mohou mít na začátku a na konci záznamu tiché ukončení. 
 
 Aby bylo možné řešit problémy, jako je odstraňování nebo nahrazování slov, je nutné, aby se vylepšilo rozpoznávání dat s větším množstvím dat. Obecně se doporučuje zadat přepisy slova po slovech přibližně 10 až 20 hodin zvukového přenosu. Přepisy všech souborů WAV by měl obsahovat jediný soubor prostého textu. Každý řádek souboru s přepisem by měl obsahovat název jednoho zvukového souboru a za ním odpovídající přepis. Název souboru a přepis by měly být oddělené tabulátorem (\t).
 
-Příklad:
+Například:
 
 <!-- The following example contains tabs. Don't accidentally convert these into spaces. -->
 
@@ -174,7 +174,7 @@ Pomocí této tabulky zajistěte, aby byl správně naformátován váš souvise
 
 Navíc se budete chtít přihlédnout k následujícím omezením:
 
-* Nepoužívejte opakující se znaky víckrát než čtyřikrát. Například: "AAAA" nebo "uuuu".
+* Vyhněte se opakujícím se znakům, slovům nebo skupinám slov více než třikrát. Například: "AAAA", "Ano Ano Ano Ano", nebo "to je to, to je to, co je to". Služba rozpoznávání řeči může odstranit řádky s příliš mnoha opakováními.
 * Nepoužívejte speciální znaky ani znaky UTF-8 uvedené výše `U+00A1` .
 * Identifikátory URI se odmítnou.
 

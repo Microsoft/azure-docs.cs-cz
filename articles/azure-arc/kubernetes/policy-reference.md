@@ -1,18 +1,18 @@
 ---
 title: Předdefinované definice zásad pro Kubernetes s povoleným ARC Azure
 description: Obsahuje seznam Azure Policy integrovaných definic zásad pro Kubernetes s povoleným ARC Azure. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
-ms.date: 01/08/2021
+ms.date: 01/21/2021
 ms.service: azure-arc
 author: mlearned
 ms.author: mlearned
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 71b380ab2d382160a49f120eb9c5551cb8d05156
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: a5ba88f9508135d75777883715f61eeb817022d0
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98048197"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703292"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-arc-enabled-kubernetes"></a>Azure Policy předdefinované definice pro Azure ARC s povoleným Kubernetes
 

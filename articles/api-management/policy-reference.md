@@ -1,18 +1,18 @@
 ---
 title: Předdefinované definice zásad pro Azure API Management
 description: Seznam Azure Policy integrovaných definic zásad pro Azure API Management. Tyto integrované definice zásad poskytují přístup ke správě prostředků Azure.
-ms.date: 01/08/2021
+ms.date: 01/21/2021
 author: georgewallace
 ms.author: gwallace
 ms.service: api-management
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: d9e4624e755e9e65792b59ee55ce267c8e0b9e08
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: bd2c0baf442a621f4b825c5eb8a4c508f9d8d103
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045359"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98701728"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-api-management"></a>Azure Policy předdefinované definice zásad pro Azure API Management
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: jingwang
-ms.openlocfilehash: ce7c0cba4a231fbdb33679f8cdac7d57c79845f5
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: afcc7ad34807b74fa0b1ddaaa29223d8a6e25584
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968870"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702215"
 ---
 # <a name="schema-and-data-type-mapping-in-copy-activity"></a>Mapování schématu a datového typu v aktivitě kopírování
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -47,7 +47,7 @@ Přečtěte si další informace:
 
 Můžete nakonfigurovat mapování Data Factory vytváření uživatelského rozhraní – > na kartě mapování > aktivity kopírování, nebo programově určit mapování v poli Kopírovat aktivitu – > `translator` vlastnost. Následující vlastnosti jsou podporovány v `translator`  ->  `mappings` objektech > Array-> `source` a `sink` , což odkazuje na konkrétní sloupec nebo pole pro mapování dat.
 
-| Vlastnost | Popis                                                  | Povinné |
+| Vlastnost | Popis                                                  | Vyžadováno |
 | -------- | ------------------------------------------------------------ | -------- |
 | name     | Název sloupce/pole zdroje nebo jímky. Platí pro tabelární zdroj a jímku. | Ano      |
 | řadový  | Index sloupce. Začněte od 1. <br>Použít a vyžádat při použití oddělovače textu bez řádku záhlaví. | No       |
@@ -185,6 +185,9 @@ Toto mapování můžete definovat při vytváření Data Factory uživatelskéh
 2. Vyberte pole, ze kterého chcete iterovat a extrahujte data. Automaticky se vyplní jako **odkaz na kolekci**. Poznámka pro takovou operaci je podporována pouze jedno pole.
 
 3. Namapujte potřebná pole na jímku. Data Factory automaticky určuje odpovídající cesty JSON pro hierarchickou stranu.
+
+> [!NOTE]
+> U záznamů, kde je pole označené jako odkaz na kolekci prázdné a je zaškrtnuté políčko, bude vynechán celý záznam.
 
 ![Mapování hierarchicky na tabelární pomocí uživatelského rozhraní](media/copy-activity-schema-and-type-mapping/map-hierarchical-to-tabular-ui.png)
 

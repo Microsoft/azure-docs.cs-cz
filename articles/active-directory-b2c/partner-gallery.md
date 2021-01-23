@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 01/11/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9aca01bae7911d2b6234d48bedc14b116e911a79
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 6af68f51e76f60c807be2008ae61e27879ebbb11
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/22/2021
-ms.locfileid: "98675369"
+ms.locfileid: "98703203"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C partneři ISV
 
@@ -40,7 +40,6 @@ Partneři Microsoftu s následujícím nezávislým výrobcům softwaru pro ově
 |![Snímek obrazovky s logem Experian](./media/partner-gallery/experian-logo.png) | [Experian](./partner-experian.md) je ověření identity a poskytovatel kontroly pravopisu, který provádí hodnocení rizik na základě atributů uživatele, aby se zabránilo podvodům. |
 |![Snímek obrazovky s logem IDology](./media/partner-gallery/idology-logo.png) | [IDology](./partner-idology.md) je ověřování identity a poskytovatel kontroly pravopisu s řešeními ověřování ID, řešení pro ochranu před podvody, řešení dodržování předpisů a další.|
 |![Snímek obrazovky s logem Jumio](./media/partner-gallery/jumio-logo.png) | [Jumio](./partner-jumio.md) je ověřovací služba ID, která umožňuje automatické ověřování ID v reálném čase a zabezpečení zákaznických dat. |
-|![Snímek obrazovky s logem bez klíčů](./media/partner-gallery/keyless-logo.png) | [Bez klíčů](./partner-keyless.md) je ověřovací služba ID, která poskytuje ověřování ve formě biometrické kontroly obličeje a eliminuje podvod, útok phishing a opakované použití přihlašovacích údajů.
 | ![Snímek obrazovky s logem LexisNexis](./media/partner-gallery/lexisnexis-logo.png) | [LexisNexis](./partner-lexisnexis.md) je profilace a zprostředkovatel ověřování identity, který ověřuje identifikaci uživatele a poskytuje komplexní vyhodnocení rizika na základě zařízení uživatele. |
 | ![Snímek obrazovky s logem Onfido](./media/partner-gallery/onfido-logo.png) | [Onfido](./partner-onfido.md) je ID dokumentu a řešení pro ověřování obličeje biometrika, které společnosti umožňuje uspokojit požadavky na *zákazníky* a identitu v reálném čase.  |
 
@@ -52,6 +51,7 @@ Partneři Microsoftu s následujícím nezávislým výrobcům softwaru pro MFA 
 |:-------------------------|:--------------|
 | ![Snímek obrazovky s logem hypr](./media/partner-gallery/hypr-logo.png) | [Hypr](./partner-hypr.md) je poskytovatel ověřování bez hesla, který nahrazuje hesla s šifrováním pomocí veřejných klíčů, která odstraňují podvod, phishing a opakované použití přihlašovacích údajů. |
 | ![Snímek obrazovky s logem itsme](./media/partner-gallery/itsme-logo.png) | [itsme](./partner-itsme.md) je řešení digitálního ID s elektronickými identifikacemi, ověřováním a důvěryhodnými službami (eiDAS), které uživatelům umožňuje bezpečné přihlášení bez čtecích zařízení, hesel, dvojúrovňového ověřování a více kódů PIN. |
+|![Snímek obrazovky s logem bez klíčů](./media/partner-gallery/keyless-logo.png) | [Bez klíčů](./partner-keyless.md) je zprostředkovatel ověřování bez hesla, který poskytuje ověřování ve formě biometrické kontroly obličeje a eliminuje podvod, útok phishing a opakované použití přihlašovacích údajů.
 | ![Snímek obrazovky s logem Nevis](./media/partner-gallery/nevis-logo.png) | [Nevis](./partner-nevis.md) umožňuje ověřování bez hesla a poskytuje mobilní a plnohodnotné prostředí koncového uživatele s přístupem k aplikacím Nevis pro zajištění silného ověřování zákazníků a dodržování požadavků PSD2 transakcí. |
 | ![Snímek obrazovky s logem trusona](./media/partner-gallery/trusona-logo.png) | Integrace [Trusona](./partner-trusona.md) vám pomůže bezpečně se přihlásit a povolit ověřování bez hesla, MFA a digitální licence. |
 | ![Snímek obrazovky s logem Twilio](./media/partner-gallery/twilio-logo.png) | [Twilio Verify App](./partner-twilio.md) nabízí více řešení pro povolení MFA prostřednictvím jednorázového hesla SMS (jednorázové heslo), časově náročného hesla (TOTP) a nabízených oznámení a pro splnění požadavků SCA pro PSD2. |

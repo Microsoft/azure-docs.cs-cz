@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 01/15/2021
 ms.custom: generated
-ms.openlocfilehash: 36f266a8402721dffecc9e80c4f769bd51b0e172
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: a521623447f4415e35a06c5c60e3723a69b4aa15
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539087"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98700597"
 ---
 # <a name="azure-resource-provider-operations"></a>Operace poskytovatele prostředků Azure
 
@@ -94,7 +94,7 @@ Seznam operací zobrazíte kliknutím na název poskytovatele prostředků v ná
 | [Microsoft. IoTCentral](#microsoftiotcentral) |
 | [Microsoft. NotificationHubs](#microsoftnotificationhubs) |
 | [Microsoft. TimeSeriesInsights](#microsofttimeseriesinsights) |
-| **Mixed realita** |
+| **Smíšená realita** |
 | [Microsoft. IoTSpaces](#microsoftiotspaces) |
 | [Microsoft. MixedReality](#microsoftmixedreality) |
 | **Integrace** |
@@ -122,7 +122,7 @@ Seznam operací zobrazíte kliknutím na název poskytovatele prostředků v ná
 | [Microsoft. DevTestLab](#microsoftdevtestlab) |
 | [Microsoft. LabServices](#microsoftlabservices) |
 | [Microsoft. VisualStudio](#microsoftvisualstudio) |
-| **Migrace** |
+| **Migrate** |
 | [Microsoft. migruje](#microsoftmigrate) |
 | [Microsoft. OffAzure](#microsoftoffazure) |
 | **Monitorování** |
@@ -1369,7 +1369,7 @@ Služba Azure: [Application Gateway](../application-gateway/index.yml), [azure b
 > | Microsoft. Network/vpnsites/DELETE | Odstraní prostředek sítě VPN. |
 > | Microsoft. Network/vpnSites/vpnSiteLinks/Read | Získá odkaz na síť VPN. |
 
-## <a name="storage"></a>Úložiště
+## <a name="storage"></a>Storage
 
 ### <a name="microsoftclassicstorage"></a>Microsoft. ClassicStorage
 
@@ -1464,7 +1464,7 @@ Služba Azure: [Azure Data box](../databox/index.yml)
 
 ### <a name="microsoftimportexport"></a>Microsoft. ImportExport
 
-Služba Azure: [Import/export Azure](../storage/common/storage-import-export-service.md)
+Služba Azure: [Import/export Azure](../import-export/storage-import-export-service.md)
 
 > [!div class="mx-tableFixed"]
 > | Akce | Popis |
@@ -1735,9 +1735,9 @@ Služba Azure: [StorSimple](../storsimple/index.yml)
 > | Microsoft. StorSimple/manažeři/zapisovat | Vytvořit nebo aktualizovat Správce zařízení |
 > | Microsoft. StorSimple/manažeři/configureDevice/Action | Nakonfiguruje zařízení. |
 > | Microsoft. StorSimple/manažeři/migrateClassicToResourceManager/Action | Migrace z modelu nasazení Classic na Resource Manager |
-> | Microsoft. StorSimple/manažeři/listActivationKey/Action | Získá aktivační klíč StorSimple Device Manager. |
-> | Microsoft. StorSimple/manažeři/regenerateActivationKey/Action | Znovu vygenerujte aktivační klíč pro existující Device Manager StorSimple. |
-> | Microsoft. StorSimple/manažeři/listPublicEncryptionKey/Action | Vypíše veřejné šifrovací klíče StorSimple Device Manager. |
+> | Microsoft. StorSimple/manažeři/listActivationKey/Action | Získá aktivační klíč StorSimple Správce zařízení. |
+> | Microsoft. StorSimple/manažeři/regenerateActivationKey/Action | Znovu vygenerujte aktivační klíč pro existující Správce zařízení StorSimple. |
+> | Microsoft. StorSimple/manažeři/listPublicEncryptionKey/Action | Vypíše veřejné šifrovací klíče StorSimple Správce zařízení. |
 > | Microsoft. StorSimple/manažeři/provisionCloudAppliance/Action | Vytvořte nové cloudové zařízení. |
 > | Microsoft. StorSimple/manažeři/zapisovat | Operace vytvořit trezor vytvoří prostředek Azure typu trezor. |
 > | Microsoft. StorSimple/manažeři/číst | Operace získat úložiště Získá objekt, který představuje prostředek Azure typu trezor. |
@@ -2675,7 +2675,7 @@ Služba Azure: [App Service](../app-service/index.yml), [Azure Functions](../azu
 > | Microsoft. Web/staticSites/privateEndpointConnections/DELETE | Odstranění připojení privátního koncového bodu pro statickou lokalitu |
 > | Microsoft. Web/staticSites/privateLinkResources/Read | Získat prostředky privátního propojení |
 
-## <a name="containers"></a>Containers
+## <a name="containers"></a>Kontejnery
 
 ### <a name="microsoftcontainerinstance"></a>Microsoft. ContainerInstance
 
@@ -7255,7 +7255,7 @@ Služba Azure: [Azure DevOps](/azure/devops/)
 > | Microsoft. VisualStudio/Project/DELETE | Odstranit projekt |
 > | Microsoft. VisualStudio/Project/Read | Přečíst projekt |
 
-## <a name="migrate"></a>Migrace
+## <a name="migrate"></a>Migrate
 
 ### <a name="microsoftmigrate"></a>Microsoft. migruje
 
@@ -7730,7 +7730,7 @@ Služba Azure: [Azure Migrate](../migrate/migrate-services-overview.md)
 > | Microsoft. OffAzure/VMwareSites/servery vCenter/Read | Získá vlastnosti VMware vCenter. |
 > | Microsoft. OffAzure/VMwareSites/servery vCenter/Write | Vytvoří nebo aktualizuje VMware vCenter. |
 
-## <a name="monitor"></a>Monitorování
+## <a name="monitor"></a>Monitor
 
 ### <a name="microsoftalertsmanagement"></a>Microsoft. AlertsManagement
 
@@ -10008,7 +10008,7 @@ Služba Azure: přehledy monitorování Microsoftu
 > | Microsoft. Intune/diagnosticsettings/DELETE | Odstranění nastavení diagnostiky |
 > | Microsoft. Intune/diagnosticsettingscategories/Read | Čtení kategorií nastavení diagnostiky |
 
-## <a name="other"></a>Další
+## <a name="other"></a>Jiné
 
 ### <a name="microsoftbingmaps"></a>Microsoft. BingMaps
 
