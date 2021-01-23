@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2018
-ms.openlocfilehash: 2bb1e667758a1430e34d222b9a5c537381c07624
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 40ea367c1298a916df541d362b85e8d485d193f1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505269"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734928"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Doprovodné materiály pro osobní údaje uložené ve službách Log Analytics a Application Insights
 
@@ -91,7 +91,7 @@ Pro požadavky na zobrazení a export dat by se měla použít rozhraní [API pr
 K dispozici jako součást ochrany osobních údajů, která zpracovává cestu rozhraní API pro *vyprázdnění* . Tato cesta by se měla používat zřídka, protože rizika spojená s tím spojené s tím, jaký je potenciální dopad na výkon, a potenciál pro zkosení všech agregací, měření a dalších aspektů vašich Log Analytics dat. Alternativní přístupy k manipulaci s privátními daty najdete v části [strategie pro zpracování osobních údajů](#strategy-for-personal-data-handling) .
 
 > [!NOTE]
-> Po provedení operace vyprázdnění nelze k datům přistupovat, pokud je [stav operace vyprázdnění](https://docs.microsoft.com/rest/api/loganalytics/workspacepurge/getpurgestatus) *čeká na vyřízení*. 
+> Po provedení operace vyprázdnění nelze k datům přistupovat, pokud je [stav operace vyprázdnění](/rest/api/loganalytics/workspacepurge/getpurgestatus) *čeká na vyřízení*. 
 
 Vyprázdnit je vysoce privilegovaná operace, kterou žádná aplikace ani uživatel v Azure (včetně ani vlastníka prostředku) bude mít oprávnění ke spuštění bez explicitního udělení role v Azure Resource Manager. Tato role je modul pro _vyprázdnění dat_ a měla by být řádně delegovaná kvůli možné ztrátě dat. 
 
@@ -129,4 +129,3 @@ Po přiřazení role Azure Resource Manager jsou k dispozici dvě nové cesty ro
 ## <a name="next-steps"></a>Další kroky
 - Další informace o tom, jak se shromažďují, zpracovávají a zabezpečují Log Analytics data, najdete v článku [Log Analytics zabezpečení dat](./data-security.md).
 - Další informace o tom, jak se shromažďují, zpracovávají a zabezpečují Application Insights data, najdete v článku [Application Insights zabezpečení dat](../app/data-retention-privacy.md).
-

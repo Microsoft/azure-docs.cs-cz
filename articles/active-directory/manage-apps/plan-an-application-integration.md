@@ -1,26 +1,22 @@
 ---
-title: Začínáme s integrací Azure AD s aplikacemi | Microsoft Docs
+title: Začínáme s integrací Azure AD s aplikacemi
 description: Tento článek je úvodní příručka pro integraci Azure Active Directory (AD) s místními aplikacemi a cloudových aplikací.
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
 ms.service: active-directory
-ms.subservice: app-mgmt
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2018
 ms.author: kenwith
 ms.reviewer: asteen
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 913b7975de4598bba7240647c1d9e8c81cd1cec9
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: db3d3623e175d582a2fe271d73aa452ca07b8e8d
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659093"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735062"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Průvodce integrací Azure Active Directory s aplikacemi Začínáme
 
@@ -77,9 +73,7 @@ Každá z vašich aplikací může mít různé požadavky na ověřování. Pom
 Pomocí služby Microsoft Azure AD Application proxy můžete zajistit zabezpečený přístup k aplikacím, které se nacházejí v privátní síti, odkudkoli a na jakémkoli zařízení. Po instalaci konektoru proxy aplikací ve vašem prostředí je možné ho snadno nakonfigurovat pomocí Azure AD.
 
 ### <a name="integrating-custom-applications"></a>Integrace vlastních aplikací
-Pokud píšete novou aplikaci a chcete vývojářům pomoct využít sílu služby Azure AD, přečtěte si téma věnovaném vytváření [identifikátorů GUID pro vývojáře](./developer-guidance-for-integrating-applications.md).
-
-Pokud chcete přidat vlastní aplikaci do Galerie aplikací Azure, přečtěte si téma ["Přineste si vlastní aplikaci" pomocí konfigurace služby Azure AD Self-Service SAML](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/).
+Pokud chcete přidat vlastní aplikaci do Galerie aplikací Azure, přečtěte si téma [publikování aplikace v galerii aplikací Azure AD](../develop/v2-howto-app-gallery-listing.md).
 
 ## <a name="managing-access-to-applications"></a>Správa přístupu k aplikacím
 Následující články popisují způsoby, kterými můžete spravovat přístup k aplikacím po integraci s Azure AD pomocí konektorů Azure AD a Azure AD.
@@ -95,7 +89,7 @@ Podrobné informace můžete stáhnout Azure Active Directory plány nasazení z
 
 Stažení plánu nasazení z Azure Portal:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
-2. Vyberte možnost **podnikové aplikace** vybrat  |  **Pick an App**  |  **plán nasazení** aplikace.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+2. Vyberte možnost **podnikové aplikace** vybrat  |    |  **plán nasazení** aplikace.
 
 Poskytněte prosím svůj názor na plány nasazení prostřednictvím [průzkumu plánu nasazení](https://aka.ms/DeploymentPlanFeedback).

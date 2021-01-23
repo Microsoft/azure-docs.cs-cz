@@ -7,15 +7,15 @@ ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 12/02/2020
-ms.openlocfilehash: 1a35b80ceec12b378a01555f42b7a0500b8f6229
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 5671ec68901be289a87c23b6883160f9cda2b651
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060448"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733179"
 ---
 # <a name="cross-resource-query-azure-data-explorer-by-using-azure-monitor"></a>Dotazování mezi prostředky Azure Průzkumník dat pomocí Azure Monitor
-Azure Monitor podporuje dotazy mezi službami mezi Azure Průzkumník dat, [Application Insights](/azure/azure-monitor/app/app-insights-overview)a [Log Analytics](/azure/azure-monitor/platform/data-platform-logs). Pak můžete dotazovat cluster Azure Průzkumník dat pomocí nástrojů pro Log Analytics nebo Application Insights a odkazovat na něj v dotazu mezi službami. V tomto článku se dozvíte, jak vytvořit dotaz na více služeb.
+Azure Monitor podporuje dotazy mezi službami mezi Azure Průzkumník dat, [Application Insights](../app/app-insights-overview.md)a [Log Analytics](./data-platform-logs.md). Pak můžete dotazovat cluster Azure Průzkumník dat pomocí nástrojů pro Log Analytics nebo Application Insights a odkazovat na něj v dotazu mezi službami. V tomto článku se dozvíte, jak vytvořit dotaz na více služeb.
 
 Následující diagram znázorňuje Azure Monitor tok mezi službami:
 
@@ -62,8 +62,8 @@ Mezi službami nejsou podporované dotazy mezi klienty. Jste přihlášení k je
 
 Pokud je prostředek Azure Průzkumník dat v Tenantovi a a Log Analytics pracovní prostor je v Tenantovi B, použijte jednu z následujících metod:
 
-*  Azure Průzkumník dat umožňuje přidávat role pro objekty zabezpečení v různých klientech. Přidejte své ID uživatele v Tenantovi B jako autorizovaného uživatele v clusteru Azure Průzkumník dat. Ověřte, jestli vlastnost [TrustedExternalTenant](https://docs.microsoft.com/powershell/module/az.kusto/update-azkustocluster) v clusteru Azure Průzkumník dat obsahuje tenanta b. Spusťte křížový dotaz, který je plně v tenantovi b.
-*  Pomocí [Lighthouse](https://docs.microsoft.com/azure/lighthouse/) můžete promítnout prostředek Azure monitor do tenanta A.
+*  Azure Průzkumník dat umožňuje přidávat role pro objekty zabezpečení v různých klientech. Přidejte své ID uživatele v Tenantovi B jako autorizovaného uživatele v clusteru Azure Průzkumník dat. Ověřte, jestli vlastnost [TrustedExternalTenant](/powershell/module/az.kusto/update-azkustocluster) v clusteru Azure Průzkumník dat obsahuje tenanta b. Spusťte křížový dotaz, který je plně v tenantovi b.
+*  Pomocí [Lighthouse](../../lighthouse/index.yml) můžete promítnout prostředek Azure monitor do tenanta A.
 
 ## <a name="connect-to-azure-data-explorer-clusters-from-different-tenants"></a>Připojení k clusterům Azure Průzkumník dat z různých tenantů
 
@@ -72,6 +72,6 @@ Průzkumník Kusto se automaticky přihlásí k tenantovi, ke kterému uživatel
 `Data Source=https://ade.applicationinsights.io/subscriptions/SubscriptionId/resourcegroups/ResourceGroupName;Initial Catalog=NetDefaultDB;AAD Federated Security=True;Authority ID=TenantId`
 
 ## <a name="next-steps"></a>Další kroky
-* [Zápis dotazů](https://docs.microsoft.com/azure/data-explorer/write-queries)
-* [Dotazování dat v Azure Monitor pomocí Azure Průzkumník dat](https://docs.microsoft.com/azure/data-explorer/query-monitor-data)
-* [Provádění dotazů protokolu pro více prostředků v Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/cross-workspace-query)
+* [Zápis dotazů](/azure/data-explorer/write-queries)
+* [Dotazování dat v Azure Monitor pomocí Azure Průzkumník dat](/azure/data-explorer/query-monitor-data)
+* [Provádění dotazů protokolu pro více prostředků v Azure Monitor](../log-query/cross-workspace-query.md)

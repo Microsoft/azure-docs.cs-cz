@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: cc88712dd686983baed858de47e11dfa44e85350
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 9190585face277d92ef86c9bfa045d6d8c05b01c
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955514"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734861"
 ---
 # <a name="tutorial-configure-snowflake-for-automatic-user-provisioning"></a>Kurz: Konfigurace Snowflake pro Automatické zřizování uživatelů
 
@@ -164,13 +164,13 @@ Po dokončení konfigurace zřizování můžete své nasazení monitorovat pomo
 
 * **Rozsahy IP adres** 
 
-   Služba zřizování Azure AD aktuálně funguje v rámci určitého rozsahu IP adres. V případě potřeby ale můžete omezit další rozsahy IP adres a přidat tyto konkrétní rozsahy IP adres do povolených vaší aplikace, aby bylo možné do vaší aplikace Povolit tok přenosů ze služby zřizování Azure AD. Přečtěte si dokumentaci v části [rozsahy IP adres](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#ip-ranges).
+   Služba zřizování Azure AD aktuálně funguje v rámci určitého rozsahu IP adres. V případě potřeby ale můžete omezit další rozsahy IP adres a přidat tyto konkrétní rozsahy IP adres do povolených vaší aplikace, aby bylo možné do vaší aplikace Povolit tok přenosů ze služby zřizování Azure AD. Přečtěte si dokumentaci v části [rozsahy IP adres](../app-provisioning/use-scim-to-provision-users-and-groups.md#ip-ranges).
 
 ## <a name="change-log"></a>Protokol změn
 
 * 07/21/2020: Obnovitelné odstranění pro všechny uživatele (prostřednictvím aktivního atributu).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md).
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

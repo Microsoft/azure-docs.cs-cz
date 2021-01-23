@@ -15,12 +15,12 @@ ms.custom:
 - 'Role: IoT Device'
 - devx-track-js
 - devx-track-azurecli
-ms.openlocfilehash: 912e59197970e60f57a13c049ffadbd2ad938a9b
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 7dbc0404679927bcef1647dfdf46ce3360216a79
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621408"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733296"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 
@@ -73,11 +73,11 @@ az extension add --name azure-iot
 # Create a resource group:
 az group create --name tutorial-iot-hub-rg --location $location
 
-# Create your free-tier IoT Hub. You can only have one free IoT Hub per subscription:
-az iot hub create --name $hubname --location $location --resource-group tutorial-iot-hub-rg --sku F1
+# Create your free-tier IoT Hub. You can only have one free IoT Hub per subscription.
+az iot hub create --name $hubname --location $location --resource-group tutorial-iot-hub-rg --partition-count 2 --sku F1
 
 # Make a note of the service connection string, you need it later:
-az iot hub show-connection-string --name $hubname --policy-name service -o table
+az iot hub connection-string show --name $hubname --policy-name service -o table
 
 ```
 
@@ -91,7 +91,7 @@ hubname=tutorial-iot-hub
 az iot hub device-identity create --device-id MyTwinDevice --hub-name $hubname --resource-group tutorial-iot-hub-rg
 
 # Retrieve the device connection string, you need this later:
-az iot hub device-identity show-connection-string --device-id MyTwinDevice --hub-name $hubname --resource-group tutorial-iot-hub-rg -o table
+az iot hub device-identity connection-string show --device-id MyTwinDevice --hub-name $hubname --resource-group tutorial-iot-hub-rg -o table
 
 ```
 
@@ -118,7 +118,7 @@ Následující kód získá z klientského objektu dvojče:
 
 ### <a name="sample-desired-properties"></a>Ukázka požadovaných vlastností
 
-U požadovaných vlastnosti můžete použít jakoukoli strukturu, která vyhovuje potřebám vaší aplikace. V tomto příkladu používáme jednu vlastnost nejvyšší úrovně s názvem **fanOn** a ostatní vlastnosti seskupené do samostatných **součástí**. Následující fragment kódu JSON ukazuje strukturu požadovaných vlastností použitou v tomto kurzu:
+U požadovaných vlastnosti můžete použít jakoukoli strukturu, která vyhovuje potřebám vaší aplikace. V tomto příkladu používáme jednu vlastnost nejvyšší úrovně s názvem **fanOn** a ostatní vlastnosti seskupené do samostatných **součástí**. Následující fragment kódu JSON ukazuje strukturu požadovaných vlastností, které tento kurz používá. Formát JSON je v souboru desired.js.
 
 [!code[Sample desired properties](~/iot-samples-node/iot-hub/Tutorials/DeviceTwins/desired.json "Sample desired properties")]
 

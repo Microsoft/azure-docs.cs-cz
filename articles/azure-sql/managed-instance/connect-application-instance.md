@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, vanto
 ms.date: 11/09/2018
-ms.openlocfilehash: dd5c6527cd6a0beea291dce94ff0e5949ba00671
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 965e765e22a4da8f2ac3b7151337cf62b65be4fe
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791252"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732607"
 ---
 # <a name="connect-your-application-to-azure-sql-managed-instance"></a>Připojení aplikace ke službě Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -56,7 +56,7 @@ Místní aplikaci můžete také připojit k spravované instanci SQL. K spravov
 
 Existují dvě možnosti, jak se připojit k virtuální síti Azure v místním prostředí:
 
-- Připojení VPN typu Site-to-Site ([Azure Portal](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md), [POWERSHELL](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md), [Azure CLI](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md))
+- Připojení VPN typu Site-to-Site ([Azure Portal](../../vpn-gateway/tutorial-site-to-site-portal.md), [POWERSHELL](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md), [Azure CLI](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md))
 - Připojení [Azure ExpressRoute](../../expressroute/expressroute-introduction.md)  
 
 Pokud jste úspěšně navázali připojení místního prostředí k Azure a nemůžete navázat připojení k spravované instanci SQL, ověřte, jestli má brána firewall otevřené odchozí připojení na portu SQL 1433 a také 11000-11999 rozsah portů pro přesměrování.
@@ -69,12 +69,12 @@ Také je možné připojit pole pro vývojáře k spravované instanci SQL. K sp
 
 Dalším scénářem implementovaným zákazníky je, že je Brána VPN nainstalovaná v samostatné virtuální síti a v rámci předplatného, které je hostitelem spravované instance SQL. Tyto dvě virtuální sítě jsou pak partnerského vztahu. Následující příklad diagramu architektury ukazuje, jak to lze provést.
 
-![Partnerský vztah virtuální sítě](./media/connect-application-instance/vnet-peering.png)
+![Peering virtuálních sítí](./media/connect-application-instance/vnet-peering.png)
 
 Jakmile máte nastavenou základní infrastrukturu, budete muset změnit některá nastavení tak, aby brána VPN mohla zobrazit IP adresy ve virtuální síti, která je hostitelem spravované instance SQL. Provedete to tak, že v **Nastavení partnerského vztahu** provedete následující velmi specifické změny.
 
-1. Ve virtuální síti, která hostuje bránu VPN, přejděte do **partnerských vztahů** , přejděte k partnerským připojením virtuální sítě pro SPRAVOVANOU instanci SQL a pak klikněte na možnost **povolení přenosu brány** .
-2. Ve virtuální síti, která je hostitelem spravované instance SQL, přejděte na **partnerské vztahy** , přejděte na připojení s partnerskými virtuálními sítěmi pro bránu VPN a pak klikněte na **použít vzdálené brány** .
+1. Ve virtuální síti, která hostuje bránu VPN, přejděte do **partnerských vztahů**, přejděte k partnerským připojením virtuální sítě pro SPRAVOVANOU instanci SQL a pak klikněte na možnost **povolení přenosu brány**.
+2. Ve virtuální síti, která je hostitelem spravované instance SQL, přejděte na **partnerské vztahy**, přejděte na připojení s partnerskými virtuálními sítěmi pro bránu VPN a pak klikněte na **použít vzdálené brány**.
 
 ## <a name="connect-azure-app-service"></a>Připojit Azure App Service 
 

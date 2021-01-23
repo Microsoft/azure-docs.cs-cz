@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2830d8b82f5b53300d0af3f48e55b573d78ad295
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 268f1c4bff84a2c9ef67c3f6b5749bc8d0b90e85
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91287385"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735177"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Kurz: Vytvoření fondu hostitelů pomocí Azure Portal
 
@@ -22,7 +22,7 @@ Fondy hostitelů jsou kolekce jednoho nebo více identických virtuálních poč
 
 Tento článek vás provede procesem instalace pro vytvoření fondu hostitelů pro prostředí virtuálních ploch Windows prostřednictvím Azure Portal. Tato metoda poskytuje uživatelské rozhraní založené na prohlížeči k vytvoření fondu hostitelů na virtuálním počítači s Windows, vytvoření skupiny prostředků s virtuálními počítači v rámci předplatného Azure, připojení těchto virtuálních počítačů k doméně Azure Active Directory (AD) a registraci virtuálních počítačů pomocí virtuálního počítače s Windows.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro vytvoření fondu hostitelů musíte zadat následující parametry:
 
@@ -77,8 +77,8 @@ Chcete-li začít vytvářet nový fond hostitelů:
 
 9.  Pokud zvolíte **fond**, zadejte následující informace:
 
-     - V poli **maximální počet relací**zadejte maximální počet uživatelů, které mají vyrovnávání zatížení pro jednoho hostitele relace.
-     - Pro **algoritmus vyrovnávání zatížení**vyberte v závislosti na vzoru použití buď možnost šířka – první nebo hloubka – první.
+     - V poli **maximální počet relací** zadejte maximální počet uživatelů, které mají vyrovnávání zatížení pro jednoho hostitele relace.
+     - Pro **algoritmus vyrovnávání zatížení** vyberte v závislosti na vzoru použití buď možnost šířka – první nebo hloubka – první.
 
        > [!div class="mx-imgBorder"]
        > ![Snímek obrazovky s polem typu přiřazení se zvolenými možnostmi ve fondu Uživatel v rozevírací nabídce pro vyrovnávání zatížení najede myší na ukazatel nad pozicí – první.](media/pooled-assignment-type.png)
@@ -95,13 +95,13 @@ Teď, když máme první část, budete muset nastavit virtuální počítač.
 
 Nastavení virtuálního počítače v rámci procesu nastavení fondu hostitelů:
 
-1. V části **Skupina prostředků**vyberte skupinu prostředků, ve které chcete vytvořit virtuální počítače. Může se jednat o jinou skupinu prostředků než tu, kterou jste použili pro fond hostitelů.
+1. V části **Skupina prostředků** vyberte skupinu prostředků, ve které chcete vytvořit virtuální počítače. Může se jednat o jinou skupinu prostředků než tu, kterou jste použili pro fond hostitelů.
 
 2. Vyberte **umístění virtuálního počítače** , kde chcete vytvořit virtuální počítače. Můžou být stejné nebo odlišné od oblasti, kterou jste vybrali pro fond hostitelů.
 
 3. V dalším kroku vyberte **Velikost virtuálního počítače** , kterou chcete použít. Můžete ponechat výchozí velikost tak, jak je, nebo vybrat **změnit velikost** pro změnu velikosti. Pokud vyberete možnost **změnit velikost**, v zobrazeném okně zvolte velikost virtuálního počítače, který je vhodný pro vaše zatížení.
 
-4. V části **počet virtuálních počítačů**zadejte počet virtuálních počítačů, které chcete pro fond hostitelů vytvořit.
+4. V části **počet virtuálních počítačů** zadejte počet virtuálních počítačů, které chcete pro fond hostitelů vytvořit.
 
     >[!NOTE]
     >Proces instalace může během nastavování fondu hostitelů vytvořit až 400 virtuálních počítačů a každý proces nastavení virtuálního počítače vytvoří ve vaší skupině prostředků čtyři objekty. Vzhledem k tomu, že proces vytváření nekontroluje kvótu předplatného, ujistěte se, že zadaný počet virtuálních počítačů je v rámci virtuálních počítačů Azure a omezení rozhraní API pro skupinu prostředků a předplatné. Po dokončení vytváření fondu hostitelů můžete přidat další virtuální počítače.
@@ -118,7 +118,7 @@ Nastavení virtuálního počítače v rámci procesu nastavení fondu hostitel�
       - Windows 10 Enterprise s více relacemi verze 2004
       - Windows 10 Enterprise multi-session verze 2004 + Microsoft 365 Apps
 
-     Pokud nevidíte požadovaný obrázek, vyberte **Procházet všechny image a disky**, které vám umožní vybrat v galerii jiný obrázek nebo obrázek poskytnutý Microsoftem a jinými vydavateli.
+     Pokud nevidíte požadovaný obrázek, vyberte **Procházet všechny image a disky**, které vám umožní vybrat v galerii jiný obrázek nebo obrázek poskytnutý Microsoftem a jinými vydavateli. Ujistěte se, že je zvolená bitová kopie jednou z [podporovaných imagí operačního systému](overview.md#supported-virtual-machine-os-images).
 
      > [!div class="mx-imgBorder"]
      > ![Snímek obrazovky Marketplace se seznamem obrázků ze společnosti Microsoft zobrazených.](media/marketplace-images.png)
@@ -136,7 +136,7 @@ Nastavení virtuálního počítače v rámci procesu nastavení fondu hostitel�
 
 9. Dále vyberte, zda chcete pro virtuální počítače zvolit veřejnou IP adresu. Doporučujeme vybrat možnost **ne** , protože privátní IP adresa je bezpečnější.
 
-10. Vyberte druh skupiny zabezpečení, který chcete: **Basic**, **Advanced**nebo **none**.
+10. Vyberte druh skupiny zabezpečení, který chcete: **Basic**, **Advanced** nebo **none**.
 
     Pokud vyberete **základní**, budete muset vybrat, jestli chcete otevřít libovolný port pro příchozí spojení. Pokud vyberete **Ano**, zvolte ze seznamu standardních portů, pro které chcete povolit příchozí připojení.
 

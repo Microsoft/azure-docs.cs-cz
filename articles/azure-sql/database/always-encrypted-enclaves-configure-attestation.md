@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 01/15/2021
-ms.openlocfilehash: e8cb423d4d700c4b6b6caa30a02eac3e7ef10cb6
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 51431bf0da9145e1b61da708942b675e4c3eea78
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253379"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733810"
 ---
 # <a name="configure-azure-attestation-for-your-azure-sql-logical-server"></a>Konfigurace Azure Attestation pro logický Server Azure SQL
 
@@ -27,7 +27,7 @@ ms.locfileid: "98253379"
 
 [Ověření Microsoft Azure](../../attestation/overview.md) je řešení pro ověřování prostředí důvěryhodných spuštění (TEEs), včetně rozšíření Intel software Guard (Intel SGX) enclaves. 
 
-Pokud chcete použít Azure Attestation k ověření identity Intel SGX enclaves, která [se používá pro Always Encrypted s zabezpečeným enclaves](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-enclaves) v Azure SQL Database, musíte:
+Pokud chcete použít Azure Attestation k ověření identity Intel SGX enclaves, která [se používá pro Always Encrypted s zabezpečeným enclaves](/sql/relational-databases/security/encryption/always-encrypted-enclaves) v Azure SQL Database, musíte:
 
 1. Vytvořte [poskytovatele ověření identity](../../attestation/basic-concepts.md#attestation-provider) a nakonfigurujte ho pomocí doporučených zásad ověření identity.
 
@@ -114,7 +114,7 @@ Během pracovního postupu ověření identity logický Server Azure SQL, který
 
 ### <a name="use-azure-portal-to-assign-permission"></a>Přiřazení oprávnění pomocí Azure Portal
 
-Pokud chcete přiřadit identitu serveru SQL Azure k roli čtenáře ověření identity pro poskytovatele ověření identity, postupujte podle obecných pokynů v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal). Když jste v podokně **Přidat přiřazení role** :
+Pokud chcete přiřadit identitu serveru SQL Azure k roli čtenáře ověření identity pro poskytovatele ověření identity, postupujte podle obecných pokynů v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal](../../role-based-access-control/role-assignments-portal.md). Když jste v podokně **Přidat přiřazení role** :
 
 1. V rozevíracím seznamu **role** vyberte roli **čtenáře ověření identity** .
 1. Do pole **Vybrat** zadejte název vašeho serveru SQL Azure, který chcete vyhledat.
@@ -143,12 +143,12 @@ $attestationResourceGroupName = "<attestation provider resource group name>"
 New-AzRoleAssignment -ObjectId $server.Identity.PrincipalId -RoleDefinitionName "Attestation Reader" -ResourceGroupName $attestationResourceGroupName
 ```
 
-Další informace najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell#add-a-role-assignment).
+Další informace najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md#add-role-assignment-examples).
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Správa klíčů pro funkci Always Encrypted se zabezpečenými enklávami](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-enclaves-manage-keys)
+- [Správa klíčů pro funkci Always Encrypted se zabezpečenými enklávami](/sql/relational-databases/security/encryption/always-encrypted-enclaves-manage-keys)
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 - [Kurz: Začínáme s Always Encrypted s využitím zabezpečených enclaves v Azure SQL Database](always-encrypted-enclaves-getting-started.md)

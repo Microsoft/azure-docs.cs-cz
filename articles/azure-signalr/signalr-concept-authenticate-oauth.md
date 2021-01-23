@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.custom: devx-track-js, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 8dd3c60c3d1b714ab75b496a94ba4bd5aec4e43d
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: cd5b709843ba2d98170aaa58eb5c3cc1ec8883af
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558466"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734677"
 ---
 # <a name="azure-signalr-service-authentication"></a>Ověřování pomocí služby Azure SignalR
 
@@ -41,14 +41,14 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 
 - Účet vytvořený na [GitHubu](https://github.com/)
 - [Git](https://git-scm.com/)
 - [Sada .NET Core SDK](https://www.microsoft.com/net/download/windows)
-- [Azure Cloud Shell](/azure/cloud-shell/quickstart) nakonfigurovaná pro prostředí bash.
+- [Azure Cloud Shell](../cloud-shell/quickstart.md) nakonfigurovaná pro prostředí bash.
 - Stáhněte nebo naklonujte úložiště GitHub [AzureSignalR-Sample](https://github.com/aspnet/AzureSignalR-samples) .
 
 ## <a name="create-an-oauth-app"></a>Vytvoření aplikace OAuth
@@ -546,7 +546,7 @@ Pokud chcete nasadit váš kód, spusťte následující příkazy v Git Shellu.
 
 Poslední věcí, která zbývá, je aktualizace nastavení **Adresa URL domovské stránky** a **Adresa URL zpětného volání autorizace** aplikace OAuth GitHubu, aby odkazovaly na novou hostovanou aplikaci.
 
-1. [https://github.com](https://github.com)V prohlížeči otevřete prohlížeč a přejděte na nastavení vašeho účtu **Settings**  >  **Developer settings**  >  **aplikace OAuth** nastavení pro vývojáře.
+1. [https://github.com](https://github.com)V prohlížeči otevřete prohlížeč a přejděte na nastavení vašeho účtu   >    >  **aplikace OAuth** nastavení pro vývojáře.
 
 2. Klikněte na vaši ověřovací aplikaci a aktualizujte nastavení **Adresa URL domovské stránky** a **Adresa URL zpětného volání autorizace**, jak je uvedeno dál:
 

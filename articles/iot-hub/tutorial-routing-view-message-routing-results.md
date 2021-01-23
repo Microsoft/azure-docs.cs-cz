@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 0db05c8caae8483de3b55448bfbe6b2bcfc23187
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: fdfb2470e83cefaeb6df35115f7bb46149d8ffe6
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625278"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733924"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>Kurz: část 2 – zobrazení směrovaných zpráv
 
@@ -48,7 +48,7 @@ Fronta Service Bus se použije pro příjem zpráv označených jako kritické. 
 
    **Umístění:** Použijte vaše umístění. Tento kurz používá **USA – západ**.
 
-   **Log Analytics:** Tento přepínač by měl být vypnutý.
+   **Povolit Log Analytics**: Tento přepínač by měl být vypnutý.
 
    ![Obrazovka vytvoření aplikace logiky](./media/tutorial-routing-view-message-routing-results/create-logic-app.png)
 
@@ -151,6 +151,8 @@ Pokud chcete zobrazit data ve vizualizaci Power BI, nejprve vytvořte úlohu Str
    **Název datové sady:** Název datové sady, kterou chcete v Power BI použít. Tento kurz používá **contosodataset**. 
 
    **Název tabulky:** Název tabulky, kterou chcete v Power BI použít. Tento kurz používá **contosotable**.
+
+  **Režim ověřování**: vyberte režim, který se má použít.
 
    Pro zbývající pole můžete použít výchozí hodnoty.
 

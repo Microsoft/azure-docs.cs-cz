@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 940915186176efcb39be03efe6673c138132ebd6
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: a8515920985c569df74b1e328d6bfe1c4ec97195
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916299"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735310"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-catchpoint"></a>Kurz: Azure Active Directory integrace s jednotným přihlašováním pomocí záchytný bod
 
@@ -84,24 +84,24 @@ Pokud chcete povolit jednotné přihlašování Azure AD, postupujte podle těch
 
 1. Aplikace záchytný bod očekává kontrolní výrazy SAML v určitém formátu. Přidejte mapování vlastních atributů do vaší konfigurace atributů tokenu SAML. Následující tabulka obsahuje seznam výchozích atributů:
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | ------------ | --------- |
     | GivenName | User. givenneame |
     | příjmení | User. příjmení |
     | EmailAddress | uživatel. pošta |
-    | Název | User. userPrincipalName |
+    | Name | User. userPrincipalName |
     | Jedinečný identifikátor uživatele | User. userPrincipalName |
 
     ![Uživatelské atributy & snímku seznamu deklarací identity](common/default-attributes.png)
 
 1. Také aplikace záchytný bod očekává, že se do odpovědi SAML předává jiný atribut. Podívejte se na následující tabulku. Tento atribut je také předem vyplněný, ale můžete ho zkontrolovat a aktualizovat tak, aby vyhovoval vašim požadavkům.
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | ------------ | --------- |
     | namespace | User. assignedrole |
 
     > [!NOTE]
-    > `namespace`Deklarace identity musí být namapovaná s názvem účtu. Tento název účtu by měl být nastavený s rolí v Azure AD, aby se zpátky v odpovědi SAML. Další informace o rolích ve službě Azure AD najdete v tématu [konfigurace deklarace identity role vydané v tokenu SAML pro podnikové aplikace](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui).
+    > `namespace`Deklarace identity musí být namapovaná s názvem účtu. Tento název účtu by měl být nastavený s rolí v Azure AD, aby se zpátky v odpovědi SAML. Další informace o rolích ve službě Azure AD najdete v tématu [konfigurace deklarace identity role vydané v tokenu SAML pro podnikové aplikace](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview).
 
 1. Přejít na stránku **nastavit jeden Sign-On se** stránkou SAML. V části **podpisový certifikát SAML** Najděte **certifikát (Base64)**. Vyberte **Stáhnout** a uložte certifikát do počítače.
 
@@ -176,7 +176,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 * Klikněte na **testovat tuto aplikaci** v Azure Portal a měli byste se automaticky přihlášeni k záchytný bod, pro které jste nastavili jednotné přihlašování. 
 
-K otestování aplikace v jakémkoli režimu můžete také použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici záchytný bod v nabídce Moje aplikace, pokud je nakonfigurovaná v režimu SP, budete přesměrováni na přihlašovací stránku aplikace pro inicializaci toku přihlášení a pokud je nakonfigurovaná v režimu IDP, měli byste se automaticky přihlásit k záchytný bod, pro které jste nastavili jednotné přihlašování. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+K otestování aplikace v jakémkoli režimu můžete také použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici záchytný bod v nabídce Moje aplikace, pokud je nakonfigurovaná v režimu SP, budete přesměrováni na přihlašovací stránku aplikace pro inicializaci toku přihlášení a pokud je nakonfigurovaná v režimu IDP, měli byste se automaticky přihlásit k záchytný bod, pro které jste nastavili jednotné přihlašování. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](../user-help/my-apps-portal-end-user-access.md).
 
 
 > [!NOTE]

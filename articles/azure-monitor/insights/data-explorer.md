@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 01/05/2021
 author: lgayhardt
 ms.author: lagayhar
-ms.openlocfilehash: 6f25ff02dee16812898d77d0e801f927b354dc78
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 11e21f376ea3b5cf580d54780509529b4536718b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97918130"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734170"
 ---
 # <a name="azure-monitor-for-azure-data-explorer-preview"></a>Azure Monitor pro Azure Průzkumník dat (Preview)
 
@@ -49,7 +49,7 @@ Na kartě **Přehled** u vybraného předplatného zobrazuje tabulka interaktivn
 
 Dlaždice počítadlo v rozevíracím seznamu shrnuje celkový počet clusterů Azure Průzkumník dat ve vybraných předplatných a odráží počet vybraných. Existují podmíněná barevná kódování pro tyto sloupce: udržování naživu, CPU, využití příjmu a využití mezipaměti. Oranžová – kódované buňky mají hodnoty, které nejsou pro cluster udržitelné. 
 
-Abyste lépe pochopili, co jednotlivé metriky představují, doporučujeme si je přečíst v dokumentaci k [Azure Průzkumník dat metrikami](https://docs.microsoft.com/azure/data-explorer/using-metrics#cluster-metrics).
+Abyste lépe pochopili, co jednotlivé metriky představují, doporučujeme si je přečíst v dokumentaci k [Azure Průzkumník dat metrikami](/azure/data-explorer/using-metrics#cluster-metrics).
 
 ### <a name="query-performance-tab"></a>Karta výkon dotazu
 
@@ -81,7 +81,7 @@ Přístup k Azure Monitor pro clustery Azure Průzkumník dat přímo z clusteru
 
 Tato zobrazení jsou přístupná taky tak, že v zobrazení služby Azure Monitor Insights vyberete název prostředku clusteru Azure Průzkumník dat.
 
-Azure Monitor pro Azure Průzkumník dat kombinuje jak protokoly, tak metriky, které poskytují globální řešení monitorování. Zahrnutí vizualizací založených na protokolech vyžaduje, aby uživatelé [povolili protokolování diagnostiky svého clusteru Azure Průzkumník dat a odesílali je do pracovního prostoru Log Analytics.](https://docs.microsoft.com/azure/data-explorer/using-diagnostic-logs?tabs=commands-and-queries#enable-diagnostic-logs) Diagnostické protokoly, které by se měly povolit, jsou: **Command**, **Query**, **TableDetails** a **TableUsageStatistics**.
+Azure Monitor pro Azure Průzkumník dat kombinuje jak protokoly, tak metriky, které poskytují globální řešení monitorování. Zahrnutí vizualizací založených na protokolech vyžaduje, aby uživatelé [povolili protokolování diagnostiky svého clusteru Azure Průzkumník dat a odesílali je do pracovního prostoru Log Analytics.](/azure/data-explorer/using-diagnostic-logs?tabs=commands-and-queries#enable-diagnostic-logs) Diagnostické protokoly, které by se měly povolit, jsou: **Command**, **Query**, **TableDetails** a **TableUsageStatistics**.
 
 ![Snímek obrazovky s modrým tlačítkem, který zobrazuje text "povolit protokoly pro monitorování"](./media/data-explorer/enable-logs.png)
 
@@ -90,7 +90,7 @@ Azure Monitor pro Azure Průzkumník dat kombinuje jak protokoly, tak metriky, k
 
 - Dlaždice metriky zvýrazňují dostupnost a celkový stav clusteru, aby bylo možné rychle vyhodnotit svůj stav.
 
-- Shrnutí doporučení aktivní služby [Advisor](https://docs.microsoft.com/azure/data-explorer/azure-advisor) a stavu [prostředků](https://docs.microsoft.com/azure/data-explorer/monitor-with-resource-health) .
+- Shrnutí doporučení aktivní služby [Advisor](/azure/data-explorer/azure-advisor) a stavu [prostředků](/azure/data-explorer/monitor-with-resource-health) .
 
 - Grafy znázorňující hlavní uživatele CPU a paměti a počet jedinečných uživatelů v průběhu času.
 
@@ -114,7 +114,7 @@ Karta **použití** umožňuje uživatelům hluboko podrobně výkon příkazů 
 
 Karta **tabulky** zobrazuje nejnovější a historické vlastnosti tabulek v clusteru. Můžete zjistit, které tabulky využívají nejvíce místa, sledovat historii růstu podle velikosti tabulky, aktivních dat a počtu řádků v průběhu času.
 
-Karta **mezipaměť** umožňuje uživatelům analyzovat vlastní vzory dotazů a porovnat je s nakonfigurovanými zásadami mezipaměti (pro každou tabulku). Můžete identifikovat tabulky používané nejvíce dotazy a tabulkami, na kterých se nedotazuje vůbec, a odpovídajícím způsobem upravit zásady mezipaměti. Můžete získat konkrétní doporučení zásad mezipaměti pro konkrétní tabulky v Azure Advisor (v současné době jsou doporučení pro mezipaměť dostupná jenom z [hlavního řídicího panelu Azure Advisor](https://docs.microsoft.com/azure/data-explorer/azure-advisor#use-the-azure-advisor-recommendations)) na základě skutečných dotazů v posledních 30 dnech a neoptimalizované zásady mezipaměti pro minimálně 95% dotazů. Doporučení pro snížení velikosti mezipaměti v Azure Advisor jsou dostupná pro clustery, které jsou vázané na data (což znamená, že cluster má nízké využití CPU a nízké příjem dat, ale kvůli vysoké kapacitě dat se nepovedlo škálovat nebo škálovat clustery).
+Karta **mezipaměť** umožňuje uživatelům analyzovat vlastní vzory dotazů a porovnat je s nakonfigurovanými zásadami mezipaměti (pro každou tabulku). Můžete identifikovat tabulky používané nejvíce dotazy a tabulkami, na kterých se nedotazuje vůbec, a odpovídajícím způsobem upravit zásady mezipaměti. Můžete získat konkrétní doporučení zásad mezipaměti pro konkrétní tabulky v Azure Advisor (v současné době jsou doporučení pro mezipaměť dostupná jenom z [hlavního řídicího panelu Azure Advisor](/azure/data-explorer/azure-advisor#use-the-azure-advisor-recommendations)) na základě skutečných dotazů v posledních 30 dnech a neoptimalizované zásady mezipaměti pro minimálně 95% dotazů. Doporučení pro snížení velikosti mezipaměti v Azure Advisor jsou dostupná pro clustery, které jsou vázané na data (což znamená, že cluster má nízké využití CPU a nízké příjem dat, ale kvůli vysoké kapacitě dat se nepovedlo škálovat nebo škálovat clustery).
 
 [![Snímek obrazovky s podrobnostmi o mezipaměti](./media/data-explorer/cache-tab.png)](./media/data-explorer/cache-tab.png#lightbox)
 
@@ -153,7 +153,7 @@ Zobrazujeme jenom předplatná, která obsahují clustery Azure Průzkumník dat
 
 ### <a name="why-do-i-not-see-any-data-for-my-azure-data-explorer-cluster-under-the-usage-tables-or-cache-sections"></a>Proč nevidím v sekcích použití, tabulek nebo mezipaměti žádná data pro svůj cluster Azure Průzkumník dat?
 
-Pokud chcete zobrazit data založená na protokolech, budete muset [Povolit diagnostické protokoly](https://docs.microsoft.com/azure/data-explorer/using-diagnostic-logs?tabs=commands-and-queries#enable-diagnostic-logs) pro každý cluster Azure Průzkumník dat, který chcete monitorovat. To se dá udělat v nastavení diagnostiky pro každý cluster. Data budete potřebovat k odeslání do Log Analytics pracovního prostoru. Diagnostické protokoly, které by se měly povolit, jsou: Command, Query, TableDetails a TableUsageStatistics.
+Pokud chcete zobrazit data založená na protokolech, budete muset [Povolit diagnostické protokoly](/azure/data-explorer/using-diagnostic-logs?tabs=commands-and-queries#enable-diagnostic-logs) pro každý cluster Azure Průzkumník dat, který chcete monitorovat. To se dá udělat v nastavení diagnostiky pro každý cluster. Data budete potřebovat k odeslání do Log Analytics pracovního prostoru. Diagnostické protokoly, které by se měly povolit, jsou: Command, Query, TableDetails a TableUsageStatistics.
 
 ### <a name="i-have-already-enabled-logs-for-my-azure-data-explorer-cluster-why-am-i-still-unable-to-see-my-data-under-commands-and-queries"></a>Už mám Povolené protokoly pro svůj cluster Azure Průzkumník dat, proč se mi v příkazech a dotazech pořád nedají zobrazit data?
 

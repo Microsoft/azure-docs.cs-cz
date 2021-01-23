@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 6599abd6282d0d1eb7cb81002c34ddd5158dab6b
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 4682396f68d6ff1af0b2fb6a5b1a8419d6963529
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511055"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735329"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-awarego"></a>Kurz: Azure Active Directory integrace s jednotným přihlašováním pomocí AwareGo
 
@@ -139,11 +139,9 @@ V této části můžete otestovat konfiguraci jednotného přihlašování Azur
 
 * Přejít na přihlašovací stránku AwareGo přímo a zahájit z něj přihlašovací tok.
 
-* Přejít do složky Microsoft moje aplikace Když v mých aplikacích vyberete dlaždici **AwareGo** , budete přesměrováni na přihlašovací stránku AwareGo. Další informace najdete v tématu [přihlášení a spouštění aplikací na portálu moje aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Přejít do složky Microsoft moje aplikace Když v mých aplikacích vyberete dlaždici **AwareGo** , budete přesměrováni na přihlašovací stránku AwareGo. Další informace najdete v tématu [přihlášení a spouštění aplikací na portálu moje aplikace](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Po nakonfigurování AwareGo můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšíří z Řízení podmíněného přístupu k aplikacím. Další informace najdete v tématu [vymáhání řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
-
-
+Po nakonfigurování AwareGo můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšíří z Řízení podmíněného přístupu k aplikacím. Další informace najdete v tématu [vymáhání řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

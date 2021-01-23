@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 12/03/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: f1e9d65baacb9c712b92ef6f00abda169031b47e
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: d60a241506dbcf3e038f79c99830ef1a81c06b88
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96581869"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735260"
 ---
 # <a name="customize-node-configuration-for-azure-kubernetes-service-aks-node-pools-preview"></a>Přizpůsobení konfigurace uzlů pro fondy uzlů Azure Kubernetes Service (AKS) (Preview)
 
@@ -61,12 +61,12 @@ Podporované parametry Kubelet a přijaté hodnoty jsou uvedeny níže.
 
 | Parametr | Povolené hodnoty/interval | Výchozí | Popis |
 | --------- | ----------------------- | ------- | ----------- |
-| `cpuManagerPolicy` | žádná, statická | Žádná | Statické zásady umožňují kontejnerům v [garantovaných luskech](https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/) s CELOČÍSELNým procesorem požádá o přístup k exkluzivním procesorům na uzlu. |
+| `cpuManagerPolicy` | žádná, statická | žádné | Statické zásady umožňují kontejnerům v [garantovaných luskech](https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/) s CELOČÍSELNým procesorem požádá o přístup k exkluzivním procesorům na uzlu. |
 | `cpuCfsQuota` | true, false | true |  Povolí nebo zakáže vynucení kvót CFS procesoru pro kontejnery, které určují omezení procesoru. | 
 | `cpuCfsQuotaPeriod` | Interval v milisekundách (MS) | `100ms` | Nastaví hodnotu CFS období kvóty procesoru. | 
 | `imageGcHighThreshold` | 0-100 | 85 | Procento využití disku, po kterém je vždy spuštěno uvolňování paměti imagí. Minimální využití **disku, které spustí** uvolňování paměti. Pro zakázání uvolňování paměti imagí nastavte na 100. | 
 | `imageGcLowThreshold` | 0-100, není vyšší než `imageGcHighThreshold` | 80 | Procento využití disku před tím, než se nespustí image pro uvolnění paměti. Minimální využití disku, které **může** aktivovat uvolňování paměti. |
-| `topologyManagerPolicy` | žádné, nejvyšší úsilí, omezení, jeden uzel NUMA-Node | Žádná | Optimalizace zarovnání uzlů NUMA, další informace najdete [tady](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager/). Pouze Kubernetes v 1.18 +. |
+| `topologyManagerPolicy` | žádné, nejvyšší úsilí, omezení, jeden uzel NUMA-Node | žádné | Optimalizace zarovnání uzlů NUMA, další informace najdete [tady](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager/). Pouze Kubernetes v 1.18 +. |
 | `allowedUnsafeSysctls` | `kernel.shm*`, `kernel.msg*`, `kernel.sem`, `fs.mqueue.*`, `net.*` | Žádné | Povolený seznam nebezpečných sysctls nebo nebezpečných vzorů sysctl. | 
 
 ### <a name="linux-os-custom-configuration"></a>Vlastní konfigurace operačního systému Linux
@@ -132,7 +132,7 @@ Níže uvedená nastavení lze použít k ladění provozu subsystému virtuáln
 | `transparentHugePageDefrag` | `always`, `defer`, `defer+madvise`, `madvise`, `never` | `madvise` | Tato hodnota určuje, jestli se má jádro vydávat s lepším využitím komprimace paměti, aby se zajistilo větší `hugepages` dostupnost. | 
 
 > [!IMPORTANT]
-> Pro usnadnění vyhledávání a čitelnosti se nastavení operačního systému zobrazí v tomto dokumentu podle názvu, ale měla by být přidána do konfiguračního souboru JSON nebo do rozhraní AKS API pomocí [konvence CamelCase pro psaní velkých písmen](https://docs.microsoft.com/dotnet/standard/design-guidelines/capitalization-conventions).
+> Pro usnadnění vyhledávání a čitelnosti se nastavení operačního systému zobrazí v tomto dokumentu podle názvu, ale měla by být přidána do konfiguračního souboru JSON nebo do rozhraní AKS API pomocí [konvence CamelCase pro psaní velkých písmen](/dotnet/standard/design-guidelines/capitalization-conventions).
 
 Vytvořte `kubeletconfig.json` soubor s následujícím obsahem:
 

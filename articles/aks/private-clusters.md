@@ -4,12 +4,12 @@ description: Zjistěte, jak vytvořit privátní cluster služby Azure Kubernete
 services: container-service
 ms.topic: article
 ms.date: 7/17/2020
-ms.openlocfilehash: 2b0cc8a2fe9a45120bf0b74dbad5e107fd860845
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 66072032b3fd1ac33bef60922c62f73a8cfb11bd
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98664363"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734660"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Vytvoření privátního clusteru služby Azure Kubernetes
 
@@ -121,18 +121,18 @@ Jak už bylo zmíněno, partnerský vztah virtuálních sítí je jedním ze zp�
 3. Ve scénářích, kdy virtuální síť, která obsahuje váš cluster, má vlastní nastavení DNS (4), nasazení clusteru se nepovede, pokud privátní zóna DNS není propojená s virtuální sítí, která obsahuje vlastní překladače DNS (5). Tento odkaz se dá vytvořit ručně, až se privátní zóna vytvoří během zřizování clusteru nebo přes automatizaci při detekci vytváření zóny pomocí mechanismů nasazení založeného na událostech (například Azure Event Grid a Azure Functions).
 
 > [!NOTE]
-> Pokud používáte [Vlastní směrovací tabulku s kubenet](https://docs.microsoft.com/azure/aks/configure-kubenet#bring-your-own-subnet-and-route-table-with-kubenet) a přineste si vlastní DNS s privátním clusterem, vytvoření clusteru se nezdaří. Aby bylo možné vytvořit úspěšné vytvoření clusteru, bude nutné přidružit [cestu](https://docs.microsoft.com/azure/aks/configure-kubenet#bring-your-own-subnet-and-route-table-with-kubenet) v rámci skupiny prostředků uzlu k podsíti v případě, že se vytvoření clusteru nepovedlo.
+> Pokud používáte [Vlastní směrovací tabulku s kubenet](./configure-kubenet.md#bring-your-own-subnet-and-route-table-with-kubenet) a přineste si vlastní DNS s privátním clusterem, vytvoření clusteru se nezdaří. Aby bylo možné vytvořit úspěšné vytvoření clusteru, bude nutné přidružit [cestu](./configure-kubenet.md#bring-your-own-subnet-and-route-table-with-kubenet) v rámci skupiny prostředků uzlu k podsíti v případě, že se vytvoření clusteru nepovedlo.
 
 ## <a name="limitations"></a>Omezení 
 * Pro koncový bod privátního serveru API se nedají použít rozsahy autorizovaných IP adres, které se vztahují jenom na veřejný server API.
 * [Omezení služby privátního propojení Azure][private-link-service] se vztahují na soukromé clustery.
-* Pro Azure DevOps agenty hostované Microsoftem s privátními clustery není podporována podpora. Zvažte použití [agentů pro samoobslužné hostování](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=azure-devops&tabs=browser&preserve-view=true). 
+* Pro Azure DevOps agenty hostované Microsoftem s privátními clustery není podporována podpora. Zvažte použití [agentů pro samoobslužné hostování](/azure/devops/pipelines/agents/agents?preserve-view=true&tabs=browser&view=azure-devops). 
 * Pro zákazníky, kteří potřebují povolit Azure Container Registry pro práci s privátními AKS, musí mít Container Registry virtuální síť partnerský vztah s virtuální sítí clusteru agenta.
 * Žádná podpora pro převod stávajících clusterů AKS na privátní clustery
 * Odstraněním nebo úpravou privátního koncového bodu v podsíti zákazníka dojde k zastavení fungování clusteru. 
 * Služba Azure Monitor for Containers Live data není v současné době podporovaná.
 * Jakmile si zákazníci aktualizují záznam A na svých vlastních serverech DNS, budou tyto lusky i po migraci dál překládat apiserver plně kvalifikovaný název domény na starší IP adresu, dokud se nerestartují. Zákazníci musí po migraci řídicí plochy restartovat hostNetwork lusky a výchozí-DNSPolicy lusky.
-* V případě údržby na rovině ovládacího prvku se může vaše [IP adresa AKS](https://docs.microsoft.com/azure/aks/limit-egress-traffic#:~:text=By%20default%2C%20AKS%20clusters%20have%20unrestricted%20outbound%20%28egress%29,be%20accessible%20to%20maintain%20healthy%20cluster%20maintenance%20tasks.) změnit. V takovém případě musíte aktualizovat záznam A odkazující na server rozhraní API privátní IP adresu na svém vlastním serveru DNS a restartovat jakékoli vlastní lusky nebo nasazení pomocí hostNetwork.
+* V případě údržby na rovině ovládacího prvku se může vaše [IP adresa AKS](./limit-egress-traffic.md) změnit. V takovém případě musíte aktualizovat záznam A odkazující na server rozhraní API privátní IP adresu na svém vlastním serveru DNS a restartovat jakékoli vlastní lusky nebo nasazení pomocí hostNetwork.
 
 <!-- LINKS - internal -->
 [az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register

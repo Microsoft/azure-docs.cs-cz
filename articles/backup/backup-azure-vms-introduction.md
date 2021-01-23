@@ -3,12 +3,12 @@ title: Informace o zálohování virtuálních počítačů Azure
 description: V tomto článku se dozvíte, jak služba Azure Backup zálohuje virtuální počítače Azure a jak postupovat podle osvědčených postupů.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 291c50d4ac52d34a218b1b7cc76d625da3119d25
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 691fe991ad141696c0c68e915d7225001a1befd0
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968989"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733566"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Přehled zálohování virtuálních počítačů Azure
 
@@ -121,7 +121,7 @@ Při konfiguraci zálohování virtuálních počítačů doporučujeme dodržov
 - Pokud obnovujete virtuální počítače z jednoho trezoru, důrazně doporučujeme, abyste používali jiné [účty úložiště pro obecné účely v2](../storage/common/storage-account-upgrade.md) , abyste zajistili, že cílový účet úložiště nebude omezený. Každý virtuální počítač například musí mít jiný účet úložiště. Pokud se například obnoví 10 virtuálních počítačů, použijte 10 různých účtů úložiště.
 - Pro zálohování virtuálních počítačů, které používají Prémiové úložiště s okamžitým obnovením, doporučujeme přidělit *50%* volného místa celkového přiděleného prostoru úložiště, který se vyžaduje **jenom** pro první zálohování. 50% volného místa není požadavkem na zálohování po dokončení prvního zálohování.
 - Omezení počtu disků na účet úložiště je relativní vzhledem k tomu, jak často k diskům přistupují aplikace, které jsou spuštěné na virtuálním počítači IaaS (infrastruktura jako služba). Obecně platí, že pokud je v jednom účtu úložiště 5 až 10 nebo více disků, měli byste vyrovnat zatížení přesunem některých disků do samostatných účtů úložiště.
-- Pokud chcete obnovit virtuální počítače se spravovanými disky pomocí prostředí PowerShell, zadejte další parametr **_TargetResourceGroupName_* _ a určete skupinu prostředků, do které se budou spravované disky obnovovat. [Další informace najdete tady](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#restore-managed-disks).
+- Pokud chcete obnovit virtuální počítače se spravovanými disky pomocí prostředí PowerShell, zadejte další parametr **_TargetResourceGroupName_* _ a určete skupinu prostředků, do které se budou spravované disky obnovovat. [Další informace najdete tady](./backup-azure-vms-automation.md#restore-managed-disks).
 
 ## <a name="backup-costs"></a>Náklady na zálohování
 

@@ -4,14 +4,14 @@ description: Průvodce rychlým startem pro Application Insights agenta. Monitor
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
-ms.date: 04/23/2019
+ms.date: 01/22/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 690304ecef80d988f9a554cd10ce4689f5c72133
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0c0102f4d0f23fd7f306f431de7e90174796a56
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89070135"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732641"
 ---
 # <a name="get-started-with-azure-monitor-application-insights-agent-for-on-premises-servers"></a>Začínáme s agentem Azure Monitor Application Insights pro místní servery
 
@@ -21,11 +21,18 @@ Tyto příkazy podporují parametr prostředí PowerShell `-Proxy` .
 
 Vysvětlení těchto příkazů, pokyny k přizpůsobení a informace o řešení potíží najdete v [podrobných pokynech](status-monitor-v2-detailed-instructions.md).
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="download-and-install-via-powershell-gallery"></a>Stažení a instalace prostřednictvím Galerie prostředí PowerShell
 
 ### <a name="install-prerequisites"></a>Požadavky na instalaci
+
+> [!NOTE]
+> Od dubna 2020 Galerie prostředí PowerShell zastaralou TLS 1,1 a 1,0.
+>
+> Požadavky na additionnal, které byste mohli potřebovat, najdete v tématu [podpora Galerie prostředí POWERSHELL TLS](https://devblogs.microsoft.com/powershell/powershell-gallery-tls-support).
+>
+
 Spusťte PowerShell jako správce.
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force

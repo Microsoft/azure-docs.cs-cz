@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 01/15/2021
-ms.openlocfilehash: 94923b13181290a290f13339da5b05f6fdddff38
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: d9c2bec575f2c7a948f3eb6e65be6a735a3c03e8
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253732"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733804"
 ---
 # <a name="tutorial-getting-started-with-always-encrypted-with-secure-enclaves-in-azure-sql-database"></a>Kurz: Začínáme s Always Encrypted s využitím zabezpečených enclaves v Azure SQL Database
 
@@ -25,19 +25,19 @@ ms.locfileid: "98253732"
 > [!NOTE]
 > Always Encrypted se zabezpečeným enclaves pro Azure SQL Database je aktuálně ve **verzi Public Preview**.
 
-V tomto kurzu se naučíte, jak začít s [Always Encrypted s využitím zabezpečených enclaves](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-enclaves) v Azure SQL Database. Zobrazí se vám následující:
+V tomto kurzu se naučíte, jak začít s [Always Encrypted s využitím zabezpečených enclaves](/sql/relational-databases/security/encryption/always-encrypted-enclaves) v Azure SQL Database. Zobrazí se vám následující:
 
 > [!div class="checklist"]
 > - Postup vytvoření prostředí pro testování a vyhodnocení Always Encrypted pomocí zabezpečeného enclavesu.
 > - Jak šifrovat data na místě a vydávat bohatě důvěrné dotazy proti šifrovaným sloupcům pomocí SQL Server Management Studio (SSMS).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Tento kurz vyžaduje Azure PowerShell a [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms).
+Tento kurz vyžaduje Azure PowerShell a [SSMS](/sql/ssms/download-sql-server-management-studio-ssms).
 
 ### <a name="powershell-requirements"></a>Požadavky na PowerShell
 
-Informace o tom, jak nainstalovat a spustit Azure PowerShell, najdete v tématu [přehled Azure PowerShell](https://docs.microsoft.com/powershell/azure) . 
+Informace o tom, jak nainstalovat a spustit Azure PowerShell, najdete v tématu [přehled Azure PowerShell](/powershell/azure) . 
 
 Minimální verze AZ modules Required pro podporu operací ověření identity:
 
@@ -66,7 +66,7 @@ Pokud chcete pokračovat v interakci s Galerie prostředí PowerShell, spusťte 
 
 ### <a name="ssms-requirements"></a>Požadavky na SSMS
 
-Informace o tom, jak stáhnout SSMS, najdete v tématu [stažení SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) .
+Informace o tom, jak stáhnout SSMS, najdete v tématu [stažení SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) .
 
 Požadovaná minimální verze SSMS je 18,8.
 
@@ -75,7 +75,7 @@ Požadovaná minimální verze SSMS je 18,8.
 
  V tomto kroku vytvoříte nový Azure SQL Database logický Server a novou databázi pomocí konfigurace hardwaru DC-Series. Always Encrypted se zabezpečeným enclaves v Azure SQL Database používá Intel SGX enclaves, které jsou podporované v konfiguraci hardwaru DC-Series. Další informace najdete v tématu [DC-Series](service-tiers-vcore.md#dc-series).
 
-1. Otevřete konzolu PowerShellu a přihlaste se k Azure. V případě potřeby [přepněte na předplatné](https://docs.microsoft.com/powershell/azure/manage-subscriptions-azureps) , které používáte pro tento kurz.
+1. Otevřete konzolu PowerShellu a přihlaste se k Azure. V případě potřeby [přepněte na předplatné](/powershell/azure/manage-subscriptions-azureps) , které používáte pro tento kurz.
 
   ```PowerShell
   Connect-AzAccount
@@ -356,10 +356,10 @@ Můžete spustit bohatou dotaz na šifrované sloupce. Některé zpracování do
 ## <a name="next-steps"></a>Další kroky
 
 Po dokončení tohoto kurzu můžete přejít k jednomu z následujících kurzů:
-- [Kurz: vývoj aplikace .NET pomocí Always Encrypted se zabezpečeným enclaves](https://docs.microsoft.com/sql/connect/ado-net/sql/tutorial-always-encrypted-enclaves-develop-net-apps)
-- [Kurz: vývoj aplikace .NET Framework pomocí Always Encrypted se zabezpečeným enclaves](https://docs.microsoft.com/sql/relational-databases/security/tutorial-always-encrypted-enclaves-develop-net-framework-apps)
-- [Kurz: vytváření a používání indexů ve sloupcích s povoleným enklávy pomocí náhodného šifrování](https://docs.microsoft.com/sql/relational-databases/security/tutorial-creating-using-indexes-on-enclave-enabled-columns-using-randomized-encryption)
+- [Kurz: vývoj aplikace .NET pomocí Always Encrypted se zabezpečeným enclaves](/sql/connect/ado-net/sql/tutorial-always-encrypted-enclaves-develop-net-apps)
+- [Kurz: vývoj aplikace .NET Framework pomocí Always Encrypted se zabezpečeným enclaves](/sql/relational-databases/security/tutorial-always-encrypted-enclaves-develop-net-framework-apps)
+- [Kurz: vytváření a používání indexů ve sloupcích s povoleným enklávy pomocí náhodného šifrování](/sql/relational-databases/security/tutorial-creating-using-indexes-on-enclave-enabled-columns-using-randomized-encryption)
 
 ## <a name="see-also"></a>Viz také
 
-- [Konfigurace a použití Always Encrypted se zabezpečeným enclaves](https://docs.microsoft.com/sql/relational-databases/security/encryption/configure-always-encrypted-enclaves)
+- [Konfigurace a použití Always Encrypted se zabezpečeným enclaves](/sql/relational-databases/security/encryption/configure-always-encrypted-enclaves)

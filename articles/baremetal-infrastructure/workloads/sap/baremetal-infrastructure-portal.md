@@ -3,12 +3,12 @@ title: Jednotky instancí BareMetal v Azure
 description: Naučte se identifikovat a interagovat s jednotkami instancí BareMetal prostřednictvím Azure Portal.
 ms.topic: how-to
 ms.date: 1/4/2021
-ms.openlocfilehash: 30e1661e82546dbaf6d8dc4288ad896df89f401e
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: b089b45c35ff05f10ae59f8ce793645361be1e9b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861033"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733259"
 ---
 # <a name="manage-baremetal-instances-through-the-azure-portal"></a>Správa instancí BareMetal pomocí webu Azure Portal
  
@@ -97,7 +97,7 @@ Možné hardwarové Revize:
 >[!NOTE]
 >Rev 4,2 je nejnovější přepálená infrastruktura BareMetal s využitím existující architektury Rev 4. Rev 4 poskytuje užší blízkost pro hostitele virtuálních počítačů Azure. Má významná vylepšení latence sítě mezi virtuálními počítači Azure a jednotkami instancí BareMetal nasazenými v razítkech a na řádcích Rev 4. Pomocí Azure Portal můžete přistupovat k instancím služby BareMetal a spravovat je. Další informace najdete v tématu [infrastruktura BareMetal v Azure](baremetal-overview-architecture.md).
  
-Na pravé straně se také nachází název [skupiny umístění s blízkostií Azure](../../../virtual-machines/linux/co-location.md) , který se vytvoří automaticky pro každou nasazenou jednotku instance BareMetal. Pokud nasadíte virtuální počítače Azure, které hostují aplikační vrstvu, odkažte na skupinu umístění blízkosti. Když použijete skupinu umístění blízkosti přidruženou ke jednotce instance BareMetal, zajistíte, že se virtuální počítače Azure nasadí blízko do jednotky instance BareMetal.
+Na pravé straně se také nachází název [skupiny umístění s blízkostií Azure](../../../virtual-machines/co-location.md) , který se vytvoří automaticky pro každou nasazenou jednotku instance BareMetal. Pokud nasadíte virtuální počítače Azure, které hostují aplikační vrstvu, odkažte na skupinu umístění blízkosti. Když použijete skupinu umístění blízkosti přidruženou ke jednotce instance BareMetal, zajistíte, že se virtuální počítače Azure nasadí blízko do jednotky instance BareMetal.
  
 >[!TIP]
 >Pokud chcete vrstvu aplikace najít ve stejném datovém centru Azure jako revizi 4. x, přečtěte si téma [skupiny umístění blízkosti Azure pro optimální latenci sítě](../../../virtual-machines/workloads/sap/sap-proximity-placement-scenarios.md).

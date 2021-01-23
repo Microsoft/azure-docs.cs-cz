@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 444b514dfb1798ff810e84fc4e9d50001dbaee1c
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 8e260ae8310807ef9e0dad7d4fe21df8caad9b48
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685784"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735289"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Vytváření a správa skupin akcí na webu Azure Portal
 Skupina akcí je kolekce předvoleb oznámení definovaných vlastníkem předplatného Azure. Výstrahy Azure Monitor a Service Health pomocí skupin akcí upozorní uživatele na aktivaci výstrahy. Různé výstrahy můžou v závislosti na požadavcích uživatele používat stejnou skupinu akcí nebo různé skupiny akcí. 
@@ -148,7 +148,7 @@ Pokud nepřijímáte oznámení v *primárním e-mailu*, můžete zkusit provés
 Ve skupině akcí můžete mít omezený počet e-mailových akcí. Podívejte se na článek [o omezení rychlosti](./alerts-rate-limiting.md) .
 
 ### <a name="function"></a>Funkce
-Zavolá existující koncový bod HTTP triggeru v [Azure Functions](../../azure-functions/functions-create-first-azure-function.md#create-a-function-app).
+Zavolá existující koncový bod HTTP triggeru v [Azure Functions](../../azure-functions/functions-get-started.md).
 
 Ve skupině akcí můžete mít omezený počet akcí funkce.
 

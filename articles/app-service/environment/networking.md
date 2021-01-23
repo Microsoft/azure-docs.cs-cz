@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 680b1f3b6af186eba27a4dd926016a04cd863760
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 0a1221a8de10fd18768a1a0f0ac08277dc2901d6
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013480"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735029"
 ---
 # <a name="app-service-environment-networking"></a>App Service Environment sítě
 
@@ -27,7 +27,7 @@ ASEv3 používá dvě podsítě.  Pro soukromý koncový bod, který zpracováv�
 ## <a name="addresses"></a>Adresy 
 Při vytváření pomocného nástroje má následující adresy:
 
-| Typ adresy | Popis |
+| Typ adresy | description |
 |--------------|-------------|
 | Příchozí adresa | Příchozí adresa je adresa privátního koncového bodu, kterou používá váš pomocným mechanismem řízení. |
 | Odchozí podsíť | Odchozí podsíť je taky podsíť pomocného mechanismu. Ve verzi Preview se tato podsíť používá jenom pro odchozí přenosy. |
@@ -52,7 +52,7 @@ Na rozdíl od ASEv2 s ASEv3 můžete nastavit skupiny zabezpečení sítě (skup
 
 ## <a name="dns"></a>DNS
 
-Aplikace ve vašem pomocném formuláři budou používat DNS, se kterými je vaše virtuální síť nakonfigurovaná. Postupujte podle pokynů v části [použití App Service Environment](https://docs.microsoft.com/azure/app-service/environment/using#dns-configuration) ke konfiguraci serveru DNS tak, aby odkazoval na váš pokyn pro přihlášení k systému. Pokud chcete, aby některé aplikace používaly jiný server DNS, než je vaše virtuální síť nakonfigurovaná pomocí, můžete ji ručně nastavit na základě aplikace s nastavením aplikace WEBSITE_DNS_SERVER a WEBSITE_DNS_ALT_SERVER. Nastavení aplikace WEBSITE_DNS_ALT_SERVER nakonfiguruje sekundární server DNS. Sekundární server DNS se používá jenom v případě, že není k dispozici žádná odpověď z primárního serveru DNS. 
+Aplikace ve vašem pomocném formuláři budou používat DNS, se kterými je vaše virtuální síť nakonfigurovaná. Postupujte podle pokynů v části [použití App Service Environment](./using.md#dns-configuration) ke konfiguraci serveru DNS tak, aby odkazoval na váš pokyn pro přihlášení k systému. Pokud chcete, aby některé aplikace používaly jiný server DNS, než je vaše virtuální síť nakonfigurovaná pomocí, můžete ji ručně nastavit na základě aplikace s nastavením aplikace WEBSITE_DNS_SERVER a WEBSITE_DNS_ALT_SERVER. Nastavení aplikace WEBSITE_DNS_ALT_SERVER nakonfiguruje sekundární server DNS. Sekundární server DNS se používá jenom v případě, že není k dispozici žádná odpověď z primárního serveru DNS. 
 
 ## <a name="preview-limitation"></a>Omezení verze Preview
 
@@ -61,4 +61,3 @@ Existuje několik funkcí sítě, které nejsou k dispozici v ASEv3.  Mezi věci
 • FTP • vzdálené ladění • nasazení externího nástroje pro vyrovnávání zatížení • schopnost získat přístup k privátnímu registru kontejneru pro nasazení kontejnerů • schopnost volat globálně partnerských virtuální sítě • schopnost zálohovat/obnovit pomocí koncového bodu služby nebo privátního koncového bodu zabezpečeného účet úložiště • schopnost mít odkazy na Trezor klíčů klíčů pro koncové body služby nebo privátního koncového bodu. • schopnost používat BYOS pro koncový bod služby nebo privátní koncový bod zabezpečeného úložiště • použití Network Watcher nebo NSG toku na odchozí provoz
     
     
-

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 472a7f128ea19cdcc9df5a03d171f345c7d601de
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 7a6fc27321fa924b7ef8f9bd39b5824bb6fe3c72
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616826"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732574"
 ---
 # <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Řešení potíží s agentem Application Insights (dříve s názvem Monitorování stavu v2)
 
@@ -55,7 +55,7 @@ Pomocí nástrojů pro řešení potíží se můžete podívat na příznaky ch
 ### <a name="powershell-versions"></a>Verze PowerShellu
 Tento produkt byl napsán a testován pomocí prostředí PowerShell v 5.1.
 Tento modul není kompatibilní s prostředím PowerShell verze 6 nebo 7.
-Doporučujeme používat prostředí PowerShell v 5.1 spolu s novějšími verzemi. Další informace najdete v tématu [použití prostředí PowerShell 7 vedle sebe s prostředím powershell 5,1](https://docs.microsoft.com/powershell/scripting/install/migrating-from-windows-powershell-51-to-powershell-7?view=powershell-7.1#using-powershell-7-side-by-side-with-windows-powershell-51).
+Doporučujeme používat prostředí PowerShell v 5.1 spolu s novějšími verzemi. Další informace najdete v tématu [použití prostředí PowerShell 7 vedle sebe s prostředím powershell 5,1](/powershell/scripting/install/migrating-from-windows-powershell-51-to-powershell-7?view=powershell-7.1#using-powershell-7-side-by-side-with-windows-powershell-51).
 
 ### <a name="conflict-with-iis-shared-configuration"></a>Konflikt se sdílenou konfigurací služby IIS
 

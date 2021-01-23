@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9500d682a99e6345289a83b4b3b2fc29ffe18457
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: b5025aa322ae26f9dd7c683d0e54762fd33eb355
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98676880"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735377"
 ---
 # <a name="query-storage-files-with-serverless-sql-pool-in-azure-synapse-analytics"></a>Dotazování souborů úložiště s neserverovým fondem SQL ve službě Azure synapse Analytics
 
@@ -184,7 +184,7 @@ Ve výchozím nastavení `OPENROWSET` funkce odpovídá názvu a cestě zdrojov�
 - Funkce vrací skalární hodnotu, jako je int, Decimal, a varchar, ze zadaného elementu a v zadané cestě pro všechny typy Parquet, které nejsou ve skupině vnořeného typu.
 - Pokud cesta odkazuje na element, který je vnořeného typu, funkce vrátí fragment JSON od horního prvku na zadané cestě. Fragment kódu JSON je typu varchar (8000).
 - Pokud vlastnost nebyla nalezena v zadaném column_name, funkce vrátí chybu.
-- Pokud vlastnost nelze nalézt v zadaném column_path v závislosti na [režimu cesty](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#PATHMODE), funkce vrátí chybu v režimu Strict nebo null v režimu Lax.
+- Pokud vlastnost nelze nalézt v zadaném column_path v závislosti na [režimu cesty](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true#PATHMODE), funkce vrátí chybu v režimu Strict nebo null v režimu Lax.
 
 V případě ukázek dotazů si přečtěte část přístupové prvky z vnořených sloupců v článku [dotaz Parquet nesteded Types](query-parquet-nested-types.md#read-properties-from-nested-object-columns) .
 
@@ -248,7 +248,7 @@ Ukázková data obsahují následující sady dat:
 - Ukázkové soubory Parquet s vnořenými sloupci
 - Knihy ve formátu JSON
 
-| Cesta ke složce                                                  | Description                                                  |
+| Cesta ke složce                                                  | Popis                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Formát                                                        | Nadřazená složka pro data ve formátu CSV                         |
 | /csv/population/<br />/csv/population-unix/<br />/csv/population-unix-hdr/<br />/csv/population-unix-hdr-escape<br />/csv/population-unix-hdr-quoted | Složky s datovými soubory populace v různých formátech CSV. |

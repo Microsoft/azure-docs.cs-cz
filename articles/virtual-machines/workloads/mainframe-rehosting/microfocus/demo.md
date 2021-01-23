@@ -6,12 +6,12 @@ ms.author: sread
 ms.date: 03/30/2020
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: b2cac7a8310482305467a1cb3ed3127eb18ae416
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 2d48c767b836771600b3491299e0bdb33aacb75b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915772"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733145"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>Nastavení Micro Focus CICS BankDemo pro Micro Enterprise Developer 4,0 v Azure
 
@@ -28,7 +28,7 @@ CICs představuje systém pro řízení informací o zákaznících, platformu t
 
 - [Edice SQL Server 2017 Express](https://www.microsoft.com/sql-server/sql-server-editions-express). Stáhněte ho a nainstalujte na podnikovém virtuálním počítači pro vývojáře. Enterprise Server vyžaduje databázi pro správu CICSch oblastí a aplikace BankDemo používá také databázi SQL Server s názvem BANKDEMO. Tato ukázka předpokládá, že používáte SQL Server Express pro obě databáze. Po instalaci vyberte základní instalaci.
 
-- [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017&preserve-view=true) (SSMS). SSMS se používá ke správě databází a spuštění skriptu T-SQL. Stáhněte ho a nainstalujte na podnikovém virtuálním počítači pro vývojáře.
+- [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS). SSMS se používá ke správě databází a spuštění skriptu T-SQL. Stáhněte ho a nainstalujte na podnikovém virtuálním počítači pro vývojáře.
 
 - [Visual Studio 2019](https://azure.microsoft.com/downloads/) s nejnovější aktualizací Service Pack nebo [Visual Studio Community](https://visualstudio.microsoft.com/vs/community/), kterou si můžete zdarma stáhnout.
 
@@ -268,7 +268,7 @@ Poslední věcí, kterou musíte udělat, je konfigurace relace 3270 pomocí Rum
 ![Úvodní obrazovka zobrazení sálového počítače v sálovém sálovém zobrazení ](media/14-demo.png)
  ![ -Rumba-subsystému](media/15-demo.png)
 
-Blahopřejeme! Nyní máte v Azure spuštěnou aplikaci CICS s využitím podnikového serveru Micro.
+Gratulujeme! Nyní máte v Azure spuštěnou aplikaci CICS s využitím podnikového serveru Micro.
 
 ## <a name="next-steps"></a>Další kroky
 

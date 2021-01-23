@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, sstein
 ms.date: 12/9/2020
-ms.openlocfilehash: d1ba9445441f38c55b40a8f8ca55471ea8b0a06d
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: f50042caf21630c5054ead76825e49b820405c5b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008584"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732690"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-databases-in-azure-sql-database"></a>Elastické fondy vám pomůžou se správou a škálováním více databází v Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -156,7 +156,7 @@ Po dokončení konfigurace fondu můžete kliknout na použít, pojmenovat fond 
 
 V Azure Portal můžete monitorovat využití elastického fondu a databází v rámci tohoto fondu. Můžete také provést sadu změn elastického fondu a odeslat všechny změny ve stejnou dobu. Tyto změny zahrnují přidání nebo odebrání databází, změnu nastavení elastického fondu nebo změnu nastavení databáze.
 
-Můžete použít integrované nástroje pro [monitorování výkonu](https://docs.microsoft.com/azure/azure-sql/database/performance-guidance) a [upozorňování](https://docs.microsoft.com/azure/azure-sql/database/alerts-insights-configure-portal)v kombinaci s hodnocením výkonu.  Kromě toho SQL Database možné [vygenerovat metriky a protokoly prostředků](https://docs.microsoft.com/azure/azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure?tabs=azure-portal) pro snazší monitorování.
+Můžete použít integrované nástroje pro [monitorování výkonu](./performance-guidance.md) a [upozorňování](./alerts-insights-configure-portal.md)v kombinaci s hodnocením výkonu.  Kromě toho SQL Database možné [vygenerovat metriky a protokoly prostředků](./metrics-diagnostic-telemetry-logging-streaming-export-configure.md?tabs=azure-portal) pro snazší monitorování.
 
 ## <a name="customer-case-studies"></a>Zákaznické případové studie
 

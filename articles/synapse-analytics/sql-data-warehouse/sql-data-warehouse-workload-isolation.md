@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: ce2451ddf775b7aff63b43ec02041ecd5440c580
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 506aed16f1b8a6c631a759bb1367aef8242859ac
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678385"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734776"
 ---
 # <a name="azure-synapse-analytics-workload-group-isolation"></a>Izolace skupiny úloh Azure synapse Analytics
 
@@ -37,7 +37,7 @@ Konfigurace izolace úloh implicitně definuje zaručenou úroveň souběžnosti
 [Garantovaná souběžnost] = [ `MIN_PERCENTAGE_RESOURCE` ]/[ `REQUEST_MIN_RESOURCE_GRANT_PERCENT` ]
 
 > [!NOTE]
-> Pro min_percentage_resource existuje určitá minimální hodnota životaschopnosti úrovně služby.  Další informace najdete v tématu [efektivní hodnoty](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#effective-values) pro další podrobnosti.
+> Pro min_percentage_resource existuje určitá minimální hodnota životaschopnosti úrovně služby.  Další informace najdete v tématu [efektivní hodnoty](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json?view=azure-sqldw-latest&preserve-view=true#effective-values) pro další podrobnosti.
 
 V případě neexistence izolace úloh fungují požadavky ve [sdíleném fondu](#shared-pool-resources) prostředků.  Přístup k prostředkům ve sdíleném fondu není zaručen a je přiřazen na základě [důležitosti](sql-data-warehouse-workload-importance.md) .
 

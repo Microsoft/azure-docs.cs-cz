@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: b530fc320f6c29dd7a86a39c5a7019265bb6b724
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: d19190723ebc415e9cf3053b929788dff68aeb0e
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624418"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734535"
 ---
 # <a name="spatial-analysis-operations"></a>Operace prostorových analýz
 
@@ -23,7 +23,7 @@ Prostorová analýza umožňuje analýzu videa streamovaného v reálném čase 
 
 Kontejner prostorových analýz implementuje následující operace:
 
-| Identifikátor operace| Description|
+| Identifikátor operace| Popis|
 |---------|---------|
 | cognitiveservices Account. Vision. spatialanalysis-personcount | Spočítá lidi v určené zóně v poli zobrazení kamery. Aby PersonCount mohl zaznamenat přesný součet, musí být zóna plně pokrytá jednou kamerou. <br> Vygeneruje počáteční událost _personCountEvent_ a pak _personCountEvent_ události při změně počtu.  |
 | cognitiveservices Account. Vision. spatialanalysis-personcrossingline | Sleduje, když osoba v poli zobrazení kamery přeškrtne určený řádek. <br>Vygeneruje událost _personLineEvent_ , když osoba přeškrtne řádek a poskytne směrové informace. 
@@ -32,7 +32,7 @@ Kontejner prostorových analýz implementuje následující operace:
 
 Všechny výše uvedené operace jsou také k dispozici ve `.debug` verzi, které mají schopnost vizualizovat snímky videa při jejich zpracování. Aby `xhost +` bylo možné vizualizaci snímků a událostí videa povolit, bude nutné spustit na hostitelském počítači.
 
-| Identifikátor operace| Description|
+| Identifikátor operace| Popis|
 |---------|---------|
 | cognitiveservices Account. Vision. spatialanalysis-personcount. Debug | Spočítá lidi v určené zóně v poli zobrazení kamery. <br> Vygeneruje počáteční událost _personCountEvent_ a pak _personCountEvent_ události při změně počtu.  |
 | cognitiveservices Account. Vision. spatialanalysis-personcrossingline. Debug | Sleduje, když osoba v poli zobrazení kamery přeškrtne určený řádek. <br>Vygeneruje událost _personLineEvent_ , když osoba přeškrtne řádek a poskytne směrové informace. 
@@ -43,7 +43,7 @@ Prostorová analýza se dá také spustit s [živým video analýzou](../../medi
 
 <!--more details on the setup can be found in the [LVA Setup page](LVA-Setup.md). Below is the list of the operations supported with Live Video Analytics. -->
 
-| Identifikátor operace| Description|
+| Identifikátor operace| Popis|
 |---------|---------|
 | cognitiveservices Account. Vision. spatialanalysis-personcount. livevideoanalytics | Spočítá lidi v určené zóně v poli zobrazení kamery. <br> Vygeneruje počáteční událost _personCountEvent_ a pak _personCountEvent_ události při změně počtu.  |
 | cognitiveservices Account. Vision. spatialanalysis-personcrossingline. livevideoanalytics | Sleduje, když osoba v poli zobrazení kamery přeškrtne určený řádek. <br>Vygeneruje událost _personLineEvent_ , když osoba přeškrtne řádek a poskytne směrové informace. 
@@ -57,11 +57,11 @@ K dispozici jsou také operace živé analýzy videí ve `.debug` verzi (např. 
 
 Jedná se o parametry, které vyžaduje každá z těchto prostorových analytických operací.
 
-| Provozní parametry| Description|
+| Provozní parametry| Popis|
 |---------|---------|
 | ID operace | Identifikátor operace z tabulky výše|
 | enabled | Logická hodnota: true nebo false|
-| VIDEO_URL| Adresa URL služby RTSP pro zařízení kamery (příklad: `rtsp://username:password@url` ) Prostorová analýza podporuje datový proud s kódováním H. 264 pomocí protokolu RTSP, http nebo MP4. Video_URL lze zadat jako zašifrovanou hodnotu řetězce Base64 pomocí šifrování AES a pokud je adresa URL videa zakódována `KEY_ENV` a je `IV_ENV` třeba ji zadat jako proměnné prostředí. Ukázkový nástroj, který vygeneruje klíče a šifrování, najdete [tady](https://docs.microsoft.com/dotnet/api/system.security.cryptography.aesmanaged?view=net-5.0&preserve-view=true). |
+| VIDEO_URL| Adresa URL služby RTSP pro zařízení kamery (příklad: `rtsp://username:password@url` ) Prostorová analýza podporuje datový proud s kódováním H. 264 pomocí protokolu RTSP, http nebo MP4. Video_URL lze zadat jako zašifrovanou hodnotu řetězce Base64 pomocí šifrování AES a pokud je adresa URL videa zakódována `KEY_ENV` a je `IV_ENV` třeba ji zadat jako proměnné prostředí. Ukázkový nástroj, který vygeneruje klíče a šifrování, najdete [tady](/dotnet/api/system.security.cryptography.aesmanaged?preserve-view=true&view=net-5.0). |
 | VIDEO_SOURCE_ID | Popisný název zařízení kamery nebo streamu videa. Tím se vrátí výstup JSON události.|
 | VIDEO_IS_LIVE| True pro zařízení kamery; hodnota false pro zaznamenaná videa|
 | VIDEO_DECODE_GPU_INDEX| Který grafický procesor k dekódování snímku videa. Ve výchozím nastavení je 0. By měl být stejný jako `gpu_index` v jiné konfiguraci uzlu jako `VICA_NODE_CONFIG` , `DETECTOR_NODE_CONFIG` .|
@@ -122,7 +122,7 @@ Toto je příklad parametrů DETECTOR_NODE_CONFIG pro všechny operace prostorov
 }
 ```
 
-| Název | Typ| Description|
+| Název | Typ| Popis|
 |---------|---------|---------|
 | `zones` | list| Seznam zón. |
 | `name` | řetězec| Popisný název této zóny.|
@@ -167,7 +167,7 @@ Toto je příklad vstupu JSON pro parametr SPACEANALYTICS_CONFIG, který konfigu
 }
 ```
 
-| Název | Typ| Description|
+| Název | Typ| Popis|
 |---------|---------|---------|
 | `lines` | list| Seznam řádků|
 | `name` | řetězec| Popisný název tohoto řádku|
@@ -213,7 +213,7 @@ Toto je příklad vstupu JSON pro parametr SPACEANALYTICS_CONFIG, který konfigu
 }
 ```
 
-| Název | Typ| Description|
+| Název | Typ| Popis|
 |---------|---------|---------|
 | `zones` | list| Seznam zón. |
 | `name` | řetězec| Popisný název této zóny.|
@@ -247,7 +247,7 @@ Toto je příklad vstupu JSON pro parametr SPACEANALYTICS_CONFIG, který konfigu
 }
 ```
 
-| Název | Typ| Description|
+| Název | Typ| Popis|
 |---------|---------|---------|
 | `zones` | list| Seznam zón. |
 | `name` | řetězec| Popisný název této zóny.|
@@ -964,7 +964,7 @@ Aby se dosáhlo nejlepšího výkonu a využití GPU, můžete nasadit všechny 
       }
   }
   ```
-| Název | Typ| Description|
+| Název | Typ| Popis|
 |---------|---------|---------|
 | `batch_size` | int | Určuje počet fotoaparátů, které budou použity v operaci. |
 

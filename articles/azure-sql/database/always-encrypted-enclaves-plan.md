@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 01/15/2021
-ms.openlocfilehash: c41856c394166f2e3b8fd3bde794f0f294ef6af9
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 4448ce051b0c9e73865e8057cc4f224c9cbeb571
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253371"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732740"
 ---
 # <a name="plan-for-intel-sgx-enclaves-and-attestation-in-azure-sql-database"></a>Plán pro Intel SGX enclaves a ověření identity v Azure SQL Database
 
@@ -25,7 +25,7 @@ ms.locfileid: "98253371"
 > [!NOTE]
 > Always Encrypted se zabezpečeným enclaves pro Azure SQL Database je aktuálně ve **verzi Public Preview**.
 
-[Always Encrypted se zabezpečeným enclaves](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-enclaves) v Azure SQL Database používá ENCLAVES [Intel SGX (software Guard Extensions)](https://itpeernetwork.intel.com/microsoft-azure-confidential-computing/) a vyžaduje [Microsoft Azure ověření identity](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-enclaves#secure-enclave-attestation).
+[Always Encrypted se zabezpečeným enclaves](/sql/relational-databases/security/encryption/always-encrypted-enclaves) v Azure SQL Database používá ENCLAVES [Intel SGX (software Guard Extensions)](https://itpeernetwork.intel.com/microsoft-azure-confidential-computing/) a vyžaduje [Microsoft Azure ověření identity](/sql/relational-databases/security/encryption/always-encrypted-enclaves#secure-enclave-attestation).
 
 ## <a name="plan-for-intel-sgx-in-azure-sql-database"></a>Plán pro Intel SGX v Azure SQL Database
 
@@ -61,6 +61,6 @@ V produkčních prostředích (zpracovávajících skutečná citlivá data) je 
 
 - [Povolení Intel SGX pro Azure SQL Database](always-encrypted-enclaves-enable-sgx.md)
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 - [Kurz: Začínáme s Always Encrypted s využitím zabezpečených enclaves v Azure SQL Database](always-encrypted-enclaves-getting-started.md)

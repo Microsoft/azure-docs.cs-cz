@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 52c0dd6825c8576d97e10d3f0568ca5fb81e789e
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 3ab1e6011a1c127c9ac5a2c7652a4bf458372e1e
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210815"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733933"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-portal"></a>Rychlý Start: nastavení ověření Azure pomocí Azure Portal
 
@@ -58,7 +58,7 @@ Pomocí následujících kroků můžete spravovat poskytovatele ověření iden
 
     d. **Umístění**: vyberte umístění. 
     
-    e. **Soubor certifikátů podepsaných zásadou**: Pokud chcete nakonfigurovat poskytovatele ověření identity, který má podpisové certifikáty zásad, nahrajte soubor s certifikáty. [Tady](/azure/attestation/policy-signer-examples) najdete příklady. 
+    e. **Soubor certifikátů podepsaných zásadou**: Pokud chcete nakonfigurovat poskytovatele ověření identity, který má podpisové certifikáty zásad, nahrajte soubor s certifikáty. [Tady](./policy-signer-examples.md) najdete příklady. 
 6.  Po zadání požadovaných vstupů klikněte na tlačítko **zkontrolovat + vytvořit** .
 7.  Opravte problémy s ověřováním, pokud nějaké existují, a klikněte na **vytvořit**.
 
@@ -98,7 +98,7 @@ a.  Ověřte počet certifikátů a certifikáty, které se stáhly.
 3.  Vybrat poskytovatele ověření identity a přejít na stránku Přehled
 4.  V nabídce prostředků na levé straně nebo v dolním podokně klikněte na **certifikáty podepisujících zásad** .
 5.  V horní nabídce klikněte na tlačítko **Přidat** (tlačítko bude zakázáno pro poskytovatele ověření identity vytvořené bez požadavku na podepsání zásady).
-6.  Odešlete soubor certifikátu pro podepsání zásad a klikněte na **Přidat**. [Tady](/azure/attestation/policy-signer-examples) najdete příklady.
+6.  Odešlete soubor certifikátu pro podepsání zásad a klikněte na **Přidat**. [Tady](./policy-signer-examples.md) najdete příklady.
 
 ### <a name="delete-policy-signer-certificate"></a>Odstranit certifikát podepsané zásady
 
@@ -107,7 +107,7 @@ a.  Ověřte počet certifikátů a certifikáty, které se stáhly.
 3.  Vybrat poskytovatele ověření identity a přejít na stránku Přehled
 4.  V nabídce prostředků na levé straně nebo v dolním podokně klikněte na **certifikáty podepisujících zásad** .
 5.  V horní nabídce klikněte na **Odstranit** (tlačítko se zakáže pro poskytovatele ověření identity vytvořené bez požadavku na podepsání zásady).
-6.  Odešlete soubor certifikátu pro podepsání zásad a klikněte na **Odstranit**. [Tady](/azure/attestation/policy-signer-examples) najdete příklady. 
+6.  Odešlete soubor certifikátu pro podepsání zásad a klikněte na **Odstranit**. [Tady](./policy-signer-examples.md) najdete příklady. 
 
 ## <a name="attestation-policy"></a>Zásady ověřování identity
 
@@ -132,7 +132,7 @@ a.  Ověřte počet certifikátů a certifikáty, které se stáhly.
 5.  V horní nabídce klikněte na **Konfigurovat** .
 6.  Když se poskytovatel ověření identity vytvoří bez požadavku na podepisování zásad, může uživatel nahrát zásadu v typu **JWT** nebo v **textovém** formátu.
 7.  Vybrat **Formát zásad** jako **JWT**
-8.  Nahrajte soubor zásad s obsahem zásady ve formátu **nepodepsaného nebo podepsaného JWT** a klikněte na **Uložit**. [Tady](/azure/attestation/policy-examples) najdete příklady.
+8.  Nahrajte soubor zásad s obsahem zásady ve formátu **nepodepsaného nebo podepsaného JWT** a klikněte na **Uložit**. [Tady](./policy-examples.md) najdete příklady.
     
     V případě možnosti nahrání souboru se verze Preview zobrazí v textovém formátu a verze Preview není upravitelná.
 
@@ -147,7 +147,7 @@ a.  Ověřte počet certifikátů a certifikáty, které se stáhly.
 5.  V horní nabídce klikněte na **Konfigurovat** .
 6.  Když se poskytovatel ověření identity vytvoří bez požadavku na podepisování zásad, může uživatel nahrát zásadu v typu **JWT** nebo v **textovém** formátu.
 7.  Vybrat **Formát zásad** jako **text**
-8.  Nahrajte soubor zásad s obsahem v **textovém** formátu nebo zadejte obsah zásady do textové oblasti a klikněte na **Uložit**. [Tady](/azure/attestation/policy-examples) najdete příklady.
+8.  Nahrajte soubor zásad s obsahem v **textovém** formátu nebo zadejte obsah zásady do textové oblasti a klikněte na **Uložit**. [Tady](./policy-examples.md) najdete příklady.
 
     V případě možnosti nahrání souboru se verze Preview zobrazí v textovém formátu a verze Preview není upravitelná.
 
@@ -163,20 +163,9 @@ a.  Ověřte počet certifikátů a certifikáty, které se stáhly.
 4.  V nabídce prostředků na levé straně nebo v dolním podokně klikněte na **zásady** .
 5.  V horní nabídce klikněte na **Konfigurovat** .
 6.  Když se poskytovatel ověření identity vytvoří s požadavkem na podepsání zásad, může uživatel nahrávat zásady jenom ve **formátu podepsaného JWT** .
-7.  Nahrání souboru zásad je **podepsaný formátem JWT** a klikněte na **Uložit**. [Tady](/azure/attestation/policy-examples) najdete příklady.
+7.  Nahrání souboru zásad je **podepsaný formátem JWT** a klikněte na **Uložit**. [Tady](./policy-examples.md) najdete příklady.
 
     V případě možnosti nahrání souboru se verze Preview zobrazí v textovém formátu a verze Preview není upravitelná.
     
 8.  Kliknutím na **aktualizovat** zobrazíte nakonfigurovanou zásadu.
-
- 
-
-
-
-
-
-
-
-
-
 

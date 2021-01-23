@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7e7dce7ec4b8d4d55e734487595bb330e97ab18b
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 2ead7291f52f33c271768ae2f470af65aca98030
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120440"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734743"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Použití funkce OPENROWSET s použitím fondu SQL bez serveru ve službě Azure synapse Analytics
 
@@ -171,7 +171,7 @@ WITH (
 )
 ```
 
-json_path = [výraz cesty JSON](/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15) na vlastnost Column nebo Nested. Výchozí [režim cesty](/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15#PATHMODE) je Lax.
+json_path = [výraz cesty JSON](/sql/relational-databases/json/json-path-expressions-sql-server?view=azure-sqldw-latest&preserve-view=true) na vlastnost Column nebo Nested. Výchozí [režim cesty](/sql/relational-databases/json/json-path-expressions-sql-server?view=azure-sqldw-latest&preserve-view=true#PATHMODE) je Lax.
 
 > [!NOTE]
 > Dotaz v striktním režimu se nezdaří s chybou, pokud zadaná cesta neexistuje. Dotaz v režimu LAX bude úspěšný a výraz cesty JSON se vyhodnotí na hodnotu NULL.
@@ -371,7 +371,7 @@ WITH (
 
 ### <a name="specify-columns-using-json-paths"></a>Určení sloupců pomocí cest JSON
 
-Následující příklad ukazuje, jak lze použít [výrazy cesty JSON](/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15) v klauzuli with a ukazuje rozdíl mezi striktními a LAX cestami: 
+Následující příklad ukazuje, jak lze použít [výrazy cesty JSON](/sql/relational-databases/json/json-path-expressions-sql-server?view=azure-sqldw-latest&preserve-view=true) v klauzuli with a ukazuje rozdíl mezi striktními a LAX cestami: 
 
 ```sql
 SELECT 

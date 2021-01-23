@@ -4,12 +4,12 @@ description: Poskytuje souhrn nastavení podpory a omezení zálohování disku 
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 099e83d8a2fb109da862657265dad8be8143f608
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 447283ba1d63267722e4167e0727a827e63d2e0d
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624930"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732975"
 ---
 # <a name="azure-disk-backup-support-matrix-in-preview"></a>Matice podpory Azure disk Backup (ve verzi Preview)
 
@@ -18,7 +18,7 @@ ms.locfileid: "98624930"
 >
 >[Vyplňte tento formulář](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u) a zaregistrujte se do verze Preview.
 
-K ochraně disků Azure můžete použít [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview) . Tento článek shrnuje dostupnost oblasti, podporované scénáře a omezení.
+K ochraně disků Azure můžete použít [Azure Backup](./backup-overview.md) . Tento článek shrnuje dostupnost oblasti, podporované scénáře a omezení.
 
 ## <a name="supported-regions"></a>Podporované oblasti
 
@@ -36,9 +36,9 @@ Další oblasti budou oznámeny, jakmile budou k dispozici.
 
 - V současné době se možnost obnovení Original-Location (OLR) obnoví tak, že nahradíte stávající zdrojové disky, ze kterých se zálohy provedly, a nepodporují se. Můžete obnovit z bodu obnovení a vytvořit nový disk ve stejné skupině prostředků jako zdrojový disk, ze kterého byly zálohy pořízeny nebo v jakékoli jiné skupině prostředků. To se říká Alternate-Location Recovery (ALR).
 
-- Azure Backup pro Managed Disks používá přírůstkové snímky, které jsou omezeny na 200 snímků na disk. Aby bylo možné převzít zálohy na vyžádání z naplánovaných záloh, zásady zálohování omezí celkové zálohy na 180. Přečtěte si další informace o [přírůstkovém snímku](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal#restrictions) pro spravované disky.
+- Azure Backup pro Managed Disks používá přírůstkové snímky, které jsou omezeny na 200 snímků na disk. Aby bylo možné převzít zálohy na vyžádání z naplánovaných záloh, zásady zálohování omezí celkové zálohy na 180. Přečtěte si další informace o [přírůstkovém snímku](../virtual-machines/disks-incremental-snapshots.md#restrictions) pro spravované disky.
 
-- [Limity předplatného a služeb](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#virtual-machine-disk-limits) Azure se vztahují na celkový počet snímků disku na oblast a předplatné.
+- [Limity předplatného a služeb](../azure-resource-manager/management/azure-subscription-service-limits.md#virtual-machine-disk-limits) Azure se vztahují na celkový počet snímků disku na oblast a předplatné.
 
 - Snímky na více discích připojených k virtuálnímu počítači se nepodporují na základě bodu v čase.
 
@@ -58,13 +58,13 @@ Další oblasti budou oznámeny, jakmile budou k dispozici.
 
 - V současné době (ve verzi Preview) není podporováno použití PowerShellu a Azure CLI ke konfiguraci zálohování a obnovení disků.
 
-- Při konfiguraci zálohování musí být vybraný disk, který se má zálohovat, a skupinu prostředků snímku, kde mají být snímky uložené, a to v rámci stejného předplatného. Pro určitý disk nemůžete vytvořit přírůstkový snímek mimo předplatné tohoto disku. Přečtěte si další informace o [přírůstkových snímcích](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal#restrictions) pro spravovaný disk. Další informace o tom, jak zvolit skupinu prostředků snímku, najdete v tématu  [Konfigurace zálohování](backup-managed-disks.md#configure-backup).
+- Při konfiguraci zálohování musí být vybraný disk, který se má zálohovat, a skupinu prostředků snímku, kde mají být snímky uložené, a to v rámci stejného předplatného. Pro určitý disk nemůžete vytvořit přírůstkový snímek mimo předplatné tohoto disku. Přečtěte si další informace o [přírůstkových snímcích](../virtual-machines/windows/disks-incremental-snapshots-portal.md#restrictions) pro spravovaný disk. Další informace o tom, jak zvolit skupinu prostředků snímku, najdete v tématu  [Konfigurace zálohování](backup-managed-disks.md#configure-backup).
 
 - Pro úspěšné operace zálohování a obnovení vyžadují přiřazení role spravovanou identitu trezoru záloh. Používejte jenom definice rolí, které jsou uvedené v dokumentaci. Použití jiných rolí, jako je vlastník, přispěvatel atd., se nepodporuje. Pokud po přiřazení rolí začnete konfigurovat operace zálohování nebo obnovení, můžete se setkat s problémy s oprávněními. Důvodem je to, že platnost přiřazení rolí trvá několik minut.
 
-- Spravované disky umožňují měnit úroveň výkonu při nasazení nebo pak beze změny velikosti disku. Řešení zálohování disku Azure podporuje změny úrovně výkonu na zdrojovém disku, který se zálohuje. Během obnovení bude úroveň výkonu obnoveného disku stejná jako u zdrojového disku v době zálohování. Pokud chcete po operaci obnovení změnit úroveň výkonu [disku, postupujte](https://docs.microsoft.com/azure/virtual-machines/disks-performance-tiers-portal) podle pokynů v dokumentaci.
+- Spravované disky umožňují měnit úroveň výkonu při nasazení nebo pak beze změny velikosti disku. Řešení zálohování disku Azure podporuje změny úrovně výkonu na zdrojovém disku, který se zálohuje. Během obnovení bude úroveň výkonu obnoveného disku stejná jako u zdrojového disku v době zálohování. Pokud chcete po operaci obnovení změnit úroveň výkonu [disku, postupujte](../virtual-machines/disks-performance-tiers-portal.md) podle pokynů v dokumentaci.
 
-- Podpora [privátních odkazů](https://docs.microsoft.com/azure/virtual-machines/disks-enable-private-links-for-import-export-portal) u spravovaných disků umožňuje omezit export a import spravovaných disků tak, aby se staly jenom v rámci vaší virtuální sítě Azure. Azure disk Backup podporuje zálohování disků, které mají povolené soukromé koncové body. Nezahrnuje data záloh nebo snímky, které budou přístupné prostřednictvím privátního koncového bodu.
+- Podpora [privátních odkazů](../virtual-machines/disks-enable-private-links-for-import-export-portal.md) u spravovaných disků umožňuje omezit export a import spravovaných disků tak, aby se staly jenom v rámci vaší virtuální sítě Azure. Azure disk Backup podporuje zálohování disků, které mají povolené soukromé koncové body. Nezahrnuje data záloh nebo snímky, které budou přístupné prostřednictvím privátního koncového bodu.
 
 ## <a name="next-steps"></a>Další kroky
 

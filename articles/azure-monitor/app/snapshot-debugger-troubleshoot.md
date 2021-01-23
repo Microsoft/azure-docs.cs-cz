@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 3e45b5a48f9a7fb66d7539e83f385203ae371ad7
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 6e926211a0d86fef55608ede574dca53487f267c
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673548"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732723"
 ---
 # <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> Řešení potíží s povolením Application Insights Snapshot Debugger nebo zobrazením snímků
 Pokud jste u své aplikace povolili Application Insights Snapshot Debugger, ale nevidíte snímky pro výjimky, můžete tyto pokyny použít k řešení potíží.
@@ -272,4 +272,4 @@ Pokud stále nevidíte výjimku s tímto ID snímku, pak se záznam výjimky nen
 
 Pokud se vaše aplikace připojuje k Internetu prostřednictvím proxy serveru nebo brány firewall, možná budete muset aktualizovat pravidla pro komunikaci se službou Snapshot Debugger.
 
-IP adresy, které používá Application Insights Snapshot Debugger, jsou součástí značky služby Azure Monitor. Další informace najdete v [dokumentaci k značkám služby](https://docs.microsoft.com/azure/virtual-network/service-tags-overview).
+IP adresy, které používá Application Insights Snapshot Debugger, jsou součástí značky služby Azure Monitor. Další informace najdete v [dokumentaci k značkám služby](../../virtual-network/service-tags-overview.md).

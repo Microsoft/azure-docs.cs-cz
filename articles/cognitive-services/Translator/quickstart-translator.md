@@ -12,18 +12,18 @@ ms.date: 09/14/2020
 ms.author: erhopf
 ms.custom: cog-serv-seo-aug-2020
 keywords: Překladatel, služba Translator, překlad textu, přepis textu, rozpoznávání jazyka
-ms.openlocfilehash: 68bbb31ae87ebbb84cda752c2f4a7c1bd1116dda
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 38bd4d28a8ae4c737155cd74bcb39d1acfaf699c
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369524"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733490"
 ---
 # <a name="quickstart-get-started-with-translator"></a>Rychlý Start: Začínáme s překladatelem
 
 V tomto rychlém startu se naučíte používat službu Translator přes REST. Začínáte základními příklady a přejdete na některé základní možnosti konfigurace, které se běžně používají během vývoje, včetně těchto:
 
-* [NAT](#translate-text)
+* [Překlad](#translate-text)
 * [Transkripci](#transliterate-text)
 * [Identifikace/detekce jazyka](#detect-language)
 * [Vypočítat délku věty](#get-sentence-length)
@@ -123,7 +123,7 @@ Když zavoláte službu Translator přes REST, budete muset zajistit, aby každ�
 
 ## <a name="keys-and-endpoints"></a>Keys and endpoints (Klíče a koncové body)
 
-Ukázky na této stránce využívají pevně zakódované klíče a koncové body pro jednoduchost. Nezapomeňte **odebrat klíč z kódu, až budete hotovi** , a **nikdy ho** zveřejnit. V případě produkčního prostředí zvažte použití zabezpečeného způsobu ukládání a přístupu k vašim přihlašovacím údajům. Další informace najdete v článku o [zabezpečení](../cognitive-services-security.md) Cognitive Services.
+Ukázky na této stránce využívají pevně zakódované klíče a koncové body pro jednoduchost. Nezapomeňte **odebrat klíč z kódu, až budete hotovi**, a **nikdy ho** zveřejnit. V případě produkčního prostředí zvažte použití zabezpečeného způsobu ukládání a přístupu k vašim přihlašovacím údajům. Další informace najdete v článku o [zabezpečení](../cognitive-services-security.md) Cognitive Services.
 
 ## <a name="translate-text"></a>Přeložení textu 
 
@@ -968,7 +968,8 @@ Pokud přecházíte do jazyka, který používá jinou abecedu (nebo fonémy) ne
 
 Chcete-li získat mezihodnotu z `translate` koncového bodu, použijte `toScript` parametr.
 
-> ! ZNAČTE Úplný seznam dostupných jazyků a možností pro přeplňování najdete v tématu [Podpora jazyků](language-support.md).
+> [!NOTE]
+> Úplný seznam dostupných jazyků a možností pro přeplňování najdete v tématu [Podpora jazyků](language-support.md).
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -1247,7 +1248,8 @@ Po úspěšném volání by se měla zobrazit následující odpověď. Mějte n
 
 Pomocí `transliterate` koncového bodu můžete také získat mezihodnotu. Při použití koncového bodu mezijazyku musíte zadat zdrojový jazyk ( `language` ), zdrojový skript/abecedu ( `fromScript` ) a výstupní skript/abeceda ( `toScript` ) jako parametry. V tomto příkladu budeme pro สวัสดี získat přenáší. 
 
-> ! ZNAČTE Úplný seznam dostupných jazyků a možností pro přeplňování najdete v tématu [Podpora jazyků](language-support.md).
+> [!NOTE]
+> Úplný seznam dostupných jazyků a možností pro přeplňování najdete v tématu [Podpora jazyků](language-support.md).
 
 # <a name="c"></a>[C#](#tab/csharp)
 

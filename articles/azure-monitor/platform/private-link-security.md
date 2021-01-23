@@ -6,12 +6,12 @@ ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: e8d0dcae81944d5799841c22093585b942934b79
-ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
+ms.openlocfilehash: 5008da99b63cabba41dade9a745fbd5853345737
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97732100"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734962"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Použití Azure Private Linku k bezpečnému propojení sítí k Azure Monitoru
 
@@ -149,7 +149,7 @@ Teď, když máte prostředky připojené k AMPLS, vytvořte privátní koncový
  
    b.    Pro **integraci s privátní zónou DNS** vyberte **Ano** a umožněte tak, aby se automaticky vytvořila nová zóna privátní DNS. Skutečné zóny DNS se mohou lišit od toho, co se zobrazuje na snímku obrazovky níže. 
    > [!NOTE]
-   > Pokud zvolíte **ne** a dáváte přednost ruční správě záznamů DNS, nejprve dokončete nastavení privátního koncového bodu a konfigurace AMPLS. Pak nakonfigurujte DNS podle pokynů v tématu [Konfigurace služby DNS privátního koncového bodu Azure](../../private-link/private-endpoint-dns.md). Ujistěte se, že nechcete vytvářet prázdné záznamy jako přípravu pro nastavení privátního odkazu. Vytvořené záznamy DNS můžou přepsat existující nastavení a ovlivnit vaše připojení k Azure Monitor.
+   > Pokud zvolíte **ne** a dáváte přednost ruční správě záznamů DNS, nejprve dokončete nastavení privátního koncového bodu a konfigurace AMPLS. Pak nakonfigurujte DNS podle pokynů v tématu [Konfigurace DNS privátního koncového bodu Azure](../../private-link/private-endpoint-dns.md). Při přípravě nastavení služby Private Link se ujistěte, že nevytváříte prázdné záznamy. Záznamy DNS, které vytvoříte, můžou přepsat stávající nastavení a ovlivnit vaše možnosti připojení ke službě Azure Monitor.
  
    c.    Klikněte na **Zkontrolovat a vytvořit**.
  
@@ -217,7 +217,7 @@ Přístup tímto způsobem se omezuje jenom na data v prostředku Application In
 
 Proces popsaný výše můžete automatizovat pomocí Azure Resource Manager šablon, REST a rozhraní příkazového řádku.
 
-Pokud chcete vytvořit a spravovat obory privátních odkazů, použijte [REST API](https://docs.microsoft.com/rest/api/monitor/private%20link%20scopes%20(preview)) nebo [Azure CLI (AZ monitor Private-Link-Scope)](/cli/azure/monitor/private-link-scope?view=azure-cli-latest).
+Pokud chcete vytvořit a spravovat obory privátních odkazů, použijte [REST API](/rest/api/monitor/private%20link%20scopes%20(preview)) nebo [Azure CLI (AZ monitor Private-Link-Scope)](/cli/azure/monitor/private-link-scope?view=azure-cli-latest).
 
 Ke správě přístupu k síti použijte příznaky `[--ingestion-access {Disabled, Enabled}]` a `[--query-access {Disabled, Enabled}]` v [Log Analytics pracovní prostory](/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest) nebo [Application Insights součásti](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest).
 
@@ -227,7 +227,7 @@ Ke správě přístupu k síti použijte příznaky `[--ingestion-access {Disabl
 
 Další informace o zavedení vlastního účtu úložiště najdete v tématu [účty úložiště vlastněné zákazníkem pro](private-storage.md) ingestování protokolů.
 
-## <a name="restrictions-and-limitations"></a>Omezení a omezení
+## <a name="restrictions-and-limitations"></a>Omezení a limity
 
 ### <a name="agents"></a>Agenti
 

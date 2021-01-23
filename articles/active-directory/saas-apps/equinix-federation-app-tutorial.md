@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/27/2020
 ms.author: jeedes
-ms.openlocfilehash: 65efc47fcb8c9751342db04b270eb877d10c6886
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: b0c772b3f30b211cf83512ca2ff2f10325fb4bc1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97365015"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735083"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-equinix-federation-app"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s aplikací federace Equinix
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Equinix federační aplikace s Azure A
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Equinix federační aplikace pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -132,11 +132,9 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 * Přejít na adresu URL pro přihlašování k aplikacím federace Equinix a spustit tok přihlášení přímo z tohoto účtu.
 
-* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici aplikace federace Equinix v části Moje aplikace, přesměruje se na adresu URL pro přihlášení Equinix federační aplikace. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici aplikace federace Equinix v části Moje aplikace, přesměruje se na adresu URL pro přihlášení Equinix federační aplikace. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Po nakonfigurování federační aplikace Equinix můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
-
-
+Po nakonfigurování federační aplikace Equinix můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

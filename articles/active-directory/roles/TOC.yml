@@ -11,9 +11,10 @@
     - name: Vytvoření neomezené registrace aplikací
       href: quickstart-app-registration-limits.md
 - name: Kurzy
+  expanded: true
   items:
-    - name: Vytvoření dynamické skupiny
-      href: ../enterprise-users/users-revoke-access.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
+    - name: Přiřazení uživatelů k rolím správce
+      href: ../fundamentals/active-directory-users-assign-role-azure-portal.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
 - name: Koncepty
   expanded: true
   items:
@@ -28,18 +29,6 @@
 - name: Návody
   expanded: true
   items:
-    - name: Uživatelé a role
-      items:
-        - name: Přiřazení uživatelů k rolím správce
-          href: ../fundamentals/active-directory-users-assign-role-azure-portal.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
-        - name: Odvolání přístupu uživatele
-          href: ../enterprise-users/users-revoke-access.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
-        - name: Přiřazení rolí uživatelům typu host
-          href: ../external-identities/add-guest-to-role.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
-        - name: Omezení přístupu uživatelů typu host
-          href: ../enterprise-users/users-restrict-guest-permissions.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
-        - name: Dynamické skupiny a hosté
-          href: ../external-identities/use-dynamic-groups.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
     - name: Role a oprávnění
       expanded: true
       items:
@@ -119,7 +108,7 @@
     - name: Dokumentace k rolím Microsoftu 365
       href: m365-workload-docs.md
     - name: Graph API
-      href: /graph/api/resources/azure-ad-overview?view=graph-rest-1.0
+      href: /graph/api/resources/directoryrole?view=graph-rest-1.0
     - name: Azure AD CLI
       href: /cli/azure/ad
     - name: Azure AD PowerShell pro Graph

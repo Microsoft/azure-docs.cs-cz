@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: KumudD
 ms.author: kumud
 ms.date: 11/25/2020
-ms.openlocfilehash: e4b555f4727d2d1fb5b64814ae07aa15b78da42c
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 4a273170a1f3842a9a11a61d41d4150eb98eace4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510919"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734137"
 ---
 # <a name="azure-monitor-for-networks"></a>Azure Monitor pro sítě
 
-Azure Monitor pro sítě poskytuje komplexní přehled o [stavu](../../service-health/resource-health-checks-resource-types.md) a [metrikách](../platform/metrics-supported.md) pro všechny nasazené síťové prostředky, a to bez nutnosti konfigurace. Poskytuje taky přístup k funkcím monitorování sítě, jako je [monitorování připojení](../../network-watcher/connection-monitor-preview.md), [protokolování toku pro skupiny zabezpečení sítě (skupin zabezpečení sítě)](../../network-watcher/network-watcher-nsg-flow-logging-overview.md), a [Analýza provozu](../../network-watcher/traffic-analytics.md). A poskytuje další funkce [diagnostiky](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics) sítě.
+Azure Monitor pro sítě poskytuje komplexní přehled o [stavu](../../service-health/resource-health-checks-resource-types.md) a [metrikách](../platform/metrics-supported.md) pro všechny nasazené síťové prostředky, a to bez nutnosti konfigurace. Poskytuje taky přístup k funkcím monitorování sítě, jako je [monitorování připojení](../../network-watcher/connection-monitor-overview.md), [protokolování toku pro skupiny zabezpečení sítě (skupin zabezpečení sítě)](../../network-watcher/network-watcher-nsg-flow-logging-overview.md), a [Analýza provozu](../../network-watcher/traffic-analytics.md). A poskytuje další funkce [diagnostiky](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics) sítě.
 
 Azure Monitor pro sítě je členěné kolem těchto klíčových komponent monitorování:
 - [Stav sítě a metriky](#networkhealth)

@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 12/28/2020
 ms.author: jgao
-ms.openlocfilehash: 4d2a55355318a1bf916017fa77026a87a95b7f57
-ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
+ms.openlocfilehash: 574dcf50111c14f4924f009a74ed6f2ac2bb31e9
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97809713"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733836"
 ---
 # <a name="use-deployment-scripts-in-arm-templates"></a>Použití skriptů pro nasazení v šablonách ARM
 
@@ -542,7 +542,7 @@ K provádění skriptů a odstraňování potíží je potřeba účet úložiš
 > [!NOTE]
 > Pro jiné účely se nedoporučuje používat účet úložiště a instanci kontejneru vygenerované službou skriptu. Tyto dva prostředky mohou být odstraněny v závislosti na životním cyklu skriptu.
 
-Instance kontejneru a účet úložiště se odstraní podle `cleanupPreference` . Pokud se ale skript nezdařil a `cleanupPreference` není nastaven na hodnotu **vždy**, proces nasazení automaticky udržuje kontejner spuštěný po dobu jedné hodiny. Tuto hodinu můžete použít k řešení potíží se skriptem. Pokud chcete po úspěšném nasazení zachovat kontejner spuštěný, přidejte do skriptu krok přechodu do režimu spánku. Například na konec skriptu přidejte [Start-Sleep](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep) . Pokud nepřidáte krok spánku, kontejner je nastaven na stav terminálu a nebude k němu mít k dispozici, i když ještě nebyl odstraněn.
+Instance kontejneru a účet úložiště se odstraní podle `cleanupPreference` . Pokud se ale skript nezdařil a `cleanupPreference` není nastaven na hodnotu **vždy**, proces nasazení automaticky udržuje kontejner spuštěný po dobu jedné hodiny. Tuto hodinu můžete použít k řešení potíží se skriptem. Pokud chcete po úspěšném nasazení zachovat kontejner spuštěný, přidejte do skriptu krok přechodu do režimu spánku. Například na konec skriptu přidejte [Start-Sleep](/powershell/module/microsoft.powershell.utility/start-sleep) . Pokud nepřidáte krok spánku, kontejner je nastaven na stav terminálu a nebude k němu mít k dispozici, i když ještě nebyl odstraněn.
 
 ## <a name="run-script-more-than-once"></a>Spustit skript více než jednou
 
