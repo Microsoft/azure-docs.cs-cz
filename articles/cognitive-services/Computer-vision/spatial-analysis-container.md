@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: bb40586a93a40c2aaa3f0f884a0e747f168c324b
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: db21f1170dacbfa1e4367e7f22143ec3d0b0f6e4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98186050"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737332"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>Instalace a spuštění kontejneru prostorové analýzy (Preview)
 
@@ -62,7 +62,7 @@ V tomto článku budete stahovat a instalovat následující softwarové balíč
 * [Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md) runtime.
 
 #### <a name="azure-vm-with-gpu"></a>[Virtuální počítač Azure s grafickým procesorem](#tab/virtual-machine)
-V našem příkladu budeme používat [virtuální počítač řady NC](https://docs.microsoft.com/azure/virtual-machines/nc-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) , který má jeden grafický procesor K80.
+V našem příkladu budeme používat [virtuální počítač řady NC](../../virtual-machines/nc-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , který má jeden grafický procesor K80.
 
 ---
 
@@ -181,7 +181,7 @@ Restartujte počítač a spusťte následující příkaz.
 nvidia-smi
 ```
 
-Měl by se zobrazit následující výstup.
+Měli byste vidět následující výstup.
 
 ![Výstup ovladače NVIDIA](media/spatial-analysis/nvidia-driver-output.png)
 
@@ -309,13 +309,13 @@ V hostitelském počítači otevřeném  `/etc/iotedge/config.yaml` pro úpravy.
 sudo systemctl restart iotedge
 ```
 
-Nasaďte kontejner prostorových analýz jako modul IoT na hostitelském počítači, a to buď z [Azure Portal](../../iot-edge/how-to-deploy-modules-portal.md) nebo prostřednictvím rozhraní příkazového [řádku Azure](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli?tabs=windows). Pokud používáte portál, nastavte identifikátor URI image na umístění vašeho Azure Container Registry. 
+Nasaďte kontejner prostorových analýz jako modul IoT na hostitelském počítači, a to buď z [Azure Portal](../../iot-edge/how-to-deploy-modules-portal.md) nebo prostřednictvím rozhraní příkazového [řádku Azure](../cognitive-services-apis-create-account-cli.md?tabs=windows). Pokud používáte portál, nastavte identifikátor URI image na umístění vašeho Azure Container Registry. 
 
 Pomocí následujících kroků nasaďte kontejner pomocí Azure CLI.
 
 #### <a name="azure-vm-with-gpu"></a>[Virtuální počítač Azure s grafickým procesorem](#tab/virtual-machine)
 
-Virtuální počítač Azure s grafickým procesorem (GPU) se dá použít taky ke spouštění prostorových analýz. Níže uvedený příklad použije virtuální počítač [řady NC](https://docs.microsoft.com/azure/virtual-machines/nc-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) , který má jeden grafický procesor K80.
+Virtuální počítač Azure s grafickým procesorem (GPU) se dá použít taky ke spouštění prostorových analýz. Níže uvedený příklad použije virtuální počítač [řady NC](../../virtual-machines/nc-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , který má jeden grafický procesor K80.
 
 #### <a name="create-the-vm"></a>Vytvoření virtuálního počítače
 
@@ -335,7 +335,7 @@ Pak vyberte buď **NC6** , nebo **NC6_Promo**.
 
 Pak vytvořte virtuální počítač. Po vytvoření přejděte k prostředku virtuálního počítače v Azure Portal a vyberte `Extensions` v levém podokně. Zobrazí se okno rozšíření se všemi dostupnými rozšířeními. Vyberte `NVIDIA GPU Driver Extension` , klikněte na vytvořit a dokončete průvodce.
 
-Po úspěšném použití rozšíření přejděte na hlavní stránku virtuálního počítače v Azure Portal a klikněte na `Connect` . K virtuálnímu počítači se dá přistup přes SSH nebo RDP. Protokol RDP bude užitečný, protože bude umožňovat zobrazení okna Vizualizér (vysvětlení později). Pomocí následujících [kroků](https://docs.microsoft.com/azure/virtual-machines/linux/use-remote-desktop) NAKONFIGURUJTE přístup RDP a otevřete připojení ke vzdálené ploše virtuálního počítače.
+Po úspěšném použití rozšíření přejděte na hlavní stránku virtuálního počítače v Azure Portal a klikněte na `Connect` . K virtuálnímu počítači se dá přistup přes SSH nebo RDP. Protokol RDP bude užitečný, protože bude umožňovat zobrazení okna Vizualizér (vysvětlení později). Pomocí následujících [kroků](../../virtual-machines/linux/use-remote-desktop.md) NAKONFIGURUJTE přístup RDP a otevřete připojení ke vzdálené ploše virtuálního počítače.
 
 ### <a name="verify-graphics-drivers-are-installed"></a>Ověření instalace grafických ovladačů
 
@@ -345,7 +345,7 @@ Spusťte následující příkaz a ověřte, zda byly ovladače grafiky úspěš
 nvidia-smi
 ```
 
-Měl by se zobrazit následující výstup.
+Měli byste vidět následující výstup.
 
 ![Výstup ovladače NVIDIA](media/spatial-analysis/nvidia-driver-output.png)
 
@@ -426,7 +426,7 @@ V následující tabulce jsou uvedeny různé proměnné prostředí používan�
 > [!IMPORTANT]
 > `Eula` `Billing` `ApiKey` Aby bylo možné spustit kontejner, musí být zadány možnosti, a. v opačném případě se kontejner nespustí.  Další informace najdete v tématu [fakturace](#billing).
 
-Když aktualizujete manifest nasazení pro [Azure Stack hraniční zařízení](https://go.microsoft.com/fwlink/?linkid=2142179), [stolní počítač](https://go.microsoft.com/fwlink/?linkid=2152270) nebo [virtuální počítač Azure s grafickým procesorem](https://go.microsoft.com/fwlink/?linkid=2152189) s vlastním nastavením a výběrem operací, můžete k nasazení kontejneru v hostitelském počítači, jako je IoT Edge modul, použít následující příkaz [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli?tabs=windows) .
+Když aktualizujete manifest nasazení pro [Azure Stack hraniční zařízení](https://go.microsoft.com/fwlink/?linkid=2142179), [stolní počítač](https://go.microsoft.com/fwlink/?linkid=2152270) nebo [virtuální počítač Azure s grafickým procesorem](https://go.microsoft.com/fwlink/?linkid=2152189) s vlastním nastavením a výběrem operací, můžete k nasazení kontejneru v hostitelském počítači, jako je IoT Edge modul, použít následující příkaz [Azure CLI](../cognitive-services-apis-create-account-cli.md?tabs=windows) .
 
 ```azurecli
 sudo az login
@@ -457,7 +457,7 @@ K nakonfigurování kontejneru pro použití připojených fotoaparátů, konfig
 
 ## <a name="redeploy-or-delete-the-deployment"></a>Opětovné nasazení nebo odstranění nasazení
 
-Pokud potřebujete nasazení aktualizovat, musíte se ujistit, že jsou předchozí nasazení úspěšně nasazená, nebo potřebujete odstranit nasazení IoT Edge zařízení, která nebyla dokončena. V opačném případě budou tato nasazení pokračovat a systém zůstane v nesprávném stavu. Můžete použít Azure Portal nebo rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli?tabs=windows).
+Pokud potřebujete nasazení aktualizovat, musíte se ujistit, že jsou předchozí nasazení úspěšně nasazená, nebo potřebujete odstranit nasazení IoT Edge zařízení, která nebyla dokončena. V opačném případě budou tato nasazení pokračovat a systém zůstane v nesprávném stavu. Můžete použít Azure Portal nebo rozhraní příkazového [řádku Azure CLI](../cognitive-services-apis-create-account-cli.md?tabs=windows).
 
 ## <a name="use-the-output-generated-by-the-container"></a>Použít výstup generovaný kontejnerem
 
@@ -509,7 +509,7 @@ Kontejner prostorové analýzy odesílá informace o fakturaci do Azure pomocí 
 U kontejnerů Azure Cognitive Services není licencováno běžet bez připojení ke koncovému bodu měření/fakturace. Kontejnerům musíte povolit, aby informace o fakturaci komunikovaly s koncovým bodem fakturace. Kontejnery Cognitive Services neodesílají zákaznická data, jako je video nebo obrázek, který se analyzuje, do Microsoftu.
 
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 V tomto článku jste zjistili koncepty a pracovní postup pro stažení, instalaci a spuštění kontejneru prostorové analýzy. Souhrn:
 

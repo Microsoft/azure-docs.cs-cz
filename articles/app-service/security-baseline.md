@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1ea8f3bccd97e1aaa15a21ae605a163b11c8ae39
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 758f7de46c524406f31a40072250eb7d59745d42
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197927"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736084"
 ---
 # <a name="azure-security-baseline-for-app-service"></a>Základní hodnoty zabezpečení Azure pro App Service
 
@@ -71,7 +71,7 @@ Použijte Azure Firewall k posílání provozu a centrálnímu vytváření, pro
 
 - [Pochopení zabezpečení sítě, které poskytuje Azure Security Center](../security-center/security-center-network-recommendations.md)
 
-- [Postup povolení monitorování a ochrany App Service](/azure/security-center/defender-for-app-service-introduction)
+- [Postup povolení monitorování a ochrany App Service](../security-center/defender-for-app-service-introduction.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -168,7 +168,7 @@ Další informace najdete v odkazovaných odkazech.
 
 - [Jak nakonfigurovat kompletní protokol TLS pomocí Application Gateway s portálem](../application-gateway/end-to-end-ssl-portal.md)
 
-- [Zabezpečte si pomocného mechanismu zabezpečení, jak je popsáno v tématu uzamčení App Service](/azure/app-service/environment/firewall-integration)
+- [Zabezpečte si pomocného mechanismu zabezpečení, jak je popsáno v tématu uzamčení App Service](./environment/firewall-integration.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -205,7 +205,7 @@ Další informace najdete v odkazovaných odkazech.
 
 - [Jak nakonfigurovat kompletní protokol TLS pomocí Application Gateway s portálem](../application-gateway/end-to-end-ssl-portal.md)
 
-- [Zabezpečte si pomocného mechanismu zabezpečení, jak je popsáno v tématu uzamčení App Service](/azure/app-service/environment/firewall-integration)
+- [Zabezpečte si pomocného mechanismu zabezpečení, jak je popsáno v tématu uzamčení App Service](./environment/firewall-integration.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -221,7 +221,7 @@ Použijte některou z vestavěných definic Azure Policy souvisejících s efekt
 
 - [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
-- [Omezení přístupu Azure App Service](/azure/app-service/app-service-ip-restrictions)
+- [Omezení přístupu Azure App Service](./app-service-ip-restrictions.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 

@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/12/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 28b68178b98e53b7a7d4192ad20c05a667344969
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 37cb8f5a2ff0916f53ae50f5750664204ab1ba75
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97356709"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737485"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Připojení k virtuálnímu počítači s SQL Server v Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -42,7 +42,7 @@ Mezi možnosti připojení patří:
 
 | Možnost | Popis |
 |---|---|
-| **Republik** | Připojte se k SQL Server přes Internet. |
+| **Veřejná** | Připojte se k SQL Server přes Internet. |
 | **Privátní** | Připojte se k SQL Server ve stejné virtuální síti. |
 | **Místní** | Připojte se k SQL Server místně na stejném virtuálním počítači. | 
 
@@ -82,7 +82,7 @@ Zvolíte-li možnost **privátní** pro typ **připojení SQL** na portálu, Azu
 > [!IMPORTANT]
 > Image virtuálních počítačů pro edice SQL Server Developer a Express nepovolují automaticky protokol TCP/IP. Pro edice Developer a Express musíte po vytvoření virtuálního počítače [ručně povolit protokol TCP/IP](#manualtcp) pomocí SQL Server Configuration Manager.
 
-Privátní připojení se často používá ve spojení s [virtuální sítí](../../../virtual-network/virtual-networks-overview.md), což umožňuje několik scénářů. Virtuální počítače můžete připojit ve stejné virtuální síti i v případě, že tyto virtuální počítače existují v různých skupinách prostředků. A pomocí [sítě VPN typu Site-to-site](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)můžete vytvořit hybridní architekturu, která propojuje virtuální počítače s místními sítěmi a počítači.
+Privátní připojení se často používá ve spojení s [virtuální sítí](../../../virtual-network/virtual-networks-overview.md), což umožňuje několik scénářů. Virtuální počítače můžete připojit ve stejné virtuální síti i v případě, že tyto virtuální počítače existují v různých skupinách prostředků. A pomocí [sítě VPN typu Site-to-site](../../../vpn-gateway/tutorial-site-to-site-portal.md)můžete vytvořit hybridní architekturu, která propojuje virtuální počítače s místními sítěmi a počítači.
 
 Virtuální sítě taky umožňují připojit virtuální počítače Azure k doméně. Toto je jediný způsob, jak SQL Server pomocí ověřování systému Windows. Ostatní scénáře připojení vyžadují ověřování SQL s uživatelskými jmény a hesly.
 

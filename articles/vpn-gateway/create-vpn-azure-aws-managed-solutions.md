@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: ricmmartins
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 01/15/2021
+ms.date: 01/22/2021
 ms.author: ricmart
-ms.openlocfilehash: 3b9e60eb037182318e9d1ef7336565908a9c8f32
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: a0655ce1d2e9939981bb4fd3280af80e359ea1e1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98664779"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737740"
 ---
 # <a name="create-a-vpn-connection-between-azure-and-aws-using-managed-solutions"></a>Vytvoření připojení VPN mezi Azure a AWS pomocí spravovaných řešení
 
@@ -42,6 +42,8 @@ Vytvořte bránu VPN pro virtuální síť. Pokyny najdete v tématu [kurz: vytv
 
 V tomto článku se používají následující příklady hodnot a nastavení:
 
+* **Název brány:** síť VPN – Azure – AWS
+* **Oblast:** Východní USA
 * **Typ brány:** S2S
 * **Typ sítě VPN:** Založené na trasách
 * **SKU:** VpnGw1
@@ -173,15 +175,13 @@ V této části vytvoříte druhé připojení, abyste zajistili vysokou dostupn
 
    :::image type="content" source="./media/create-vpn-azure-aws-managed-solutions/azure-tunnels.png" alt-text="Stav připojení Azure":::
 
-1. Zobrazení připojení AWS
+1. Zobrazení připojení AWS V tomto příkladu vidíte, že jsou připojení nyní navázána.
 
    :::image type="content" source="./media/create-vpn-azure-aws-managed-solutions/aws-tunnels.png" alt-text="Stav připojení AWS":::
 
-Připojení jsou nyní navázána.
+## <a name="to-test-connections"></a>Testování připojení
 
-## <a name="test-connections"></a>Test připojení
-
-1. Přidejte internetovou bránu do VPC na AWS. Internetová brána je logické připojení mezi serverem Amazon VPN a internetem. Tento prostředek vám umožňuje přes Internet připojit testovací virtuální počítač ze veřejné IP adresy AWS. Tento prostředek není pro připojení VPN vyžadován. Používáme ho pouze k testování.
+1. Přidejte **internetovou bránu** do VPC na AWS. Internetová brána je logické připojení mezi serverem Amazon VPN a internetem. Tento prostředek vám umožňuje přes Internet připojit testovací virtuální počítač ze veřejné IP adresy AWS. Tento prostředek není pro připojení VPN vyžadován. Používáme ho pouze k testování.
 
    :::image type="content" source="./media/create-vpn-azure-aws-managed-solutions/create-igw.png" alt-text="Vytvoření internetové brány":::
 
@@ -201,11 +201,11 @@ Připojení jsou nyní navázána.
 
    :::image type="content" source="./media/create-vpn-azure-aws-managed-solutions/azure-effective-routes.png" alt-text="Kontrolovat efektivní trasy":::
 
-1. Z virtuálního počítače se systémem Linux v Azure je prostředí podobné jako v následujícím příkladu.
+1. Tento test můžete otestovat z virtuálního počítače se systémem Linux v Azure. Výsledek bude vypadat podobně jako v následujícím příkladu.
 
    :::image type="content" source="./media/create-vpn-azure-aws-managed-solutions/azure-overview.png" alt-text="Přehled Azure z virtuálního počítače se systémem Linux":::
 
-1. Z virtuálního počítače se systémem Linux v AWS je prostředí podobné jako v následujícím příkladu.
+1. Můžete ho také otestovat z virtuálního počítače se systémem Linux v AWS. Výsledek bude vypadat podobně jako v následujícím příkladu.
 
    :::image type="content" source="./media/create-vpn-azure-aws-managed-solutions/aws-overview.png" alt-text="Přehled AWS z virtuálního počítače se systémem Linux":::
 

@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: 8343c06992c896986ba26a90171e25f9c8c4f2f8
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 9b8dafa4a69358b3f6f09551ac426b908750e2f4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600096"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735468"
 ---
 # <a name="prepay-for-azure-database-for-postgresql---single-server-compute-resources-with-reserved-capacity"></a>Zaplatit za Azure Database for PostgreSQL výpočetních prostředků na jednom serveru s rezervovanou kapacitou
 
@@ -35,7 +35,7 @@ Podrobnosti o tom, jak se zákazníkům z podnikových zákazníků a průběžn
 
 Velikost rezervace by měla být založená na celkovém množství výpočetních prostředků používaných stávajícími nebo již nasazenými servery v konkrétní oblasti a pomocí stejné úrovně výkonu a generování hardwaru.</br>
 
-Předpokládejme například, že máte spuštěnou Gen5 databázi pro obecné účely – 32 vCore a dvě paměťově optimalizované databáze Gen5 – 16 vCore PostgreSQL. V příštím měsíci byste si měli naplánovat nasadit další Gen5 databázový server pro obecné účely – 32 vCore a jeden paměťově optimalizovaný Gen5 – 16 vCore databázový server. Řekněme, že víte, že tyto prostředky budete potřebovat aspoň jeden rok. V takovém případě byste si měli koupit 64 (2x32) virtuální jádra, jednoletou rezervaci pro izolovanou databázi pro izolovaný účel – Gen5 a 48 (2x16 + 16) vCore rezervaci pro paměť s izolovanými databázemi – Gen5.
+Předpokládejme například, že máte spuštěnou Gen5 databázi pro obecné účely – 32 vCore a dvě paměťově optimalizované databáze Gen5 – 16 vCore PostgreSQL. V příštím měsíci byste tak měli v úmyslu nasadit další Gen5 databázový server pro obecné účely – 8 vCore a jeden paměťově optimalizovaný Gen5 – 32 vCore databázový server. Řekněme, že víte, že tyto prostředky budete potřebovat aspoň jeden rok. V takovém případě byste si měli koupit 40 (32 + 8) virtuální jádra, jednoletou rezervaci pro izolovanou databázi pro obecné účely – Gen5 a 64 (2x16 + 32) vCore za paměť pro izolovanou databázi, která je optimalizována – Gen5
 
 
 ## <a name="buy-azure-database-for-postgresql-reserved-capacity"></a>Koupit Azure Database for PostgreSQL rezervovanou kapacitu
@@ -53,12 +53,12 @@ V následující tabulce jsou popsána povinná pole.
 
 | Pole | Popis |
 | :------------ | :------- |
-| Předplatné   | Předplatné použité pro platbu Azure Database for PostgreSQL rezervované rezervace kapacity. Platební metodou předplatného se účtují náklady na front-end pro rezervaci rezervované kapacity Azure Database for PostgreSQL. Typ předplatného musí být smlouva Enterprise (číslo nabídky: MS-AZR-0017P nebo MS-AZR-0148P) nebo samostatná smlouva s cenami s průběžnými platbami (čísla nabídek: MS-AZR-0003P nebo MS-AZR-0023P). U podnikového předplatného se poplatky odečtou od předplatného Azure v rámci předplatného (dříve nazývaného peněžního závazku), nebo se účtují jako nadlimitní využití. U jednotlivých předplatných s průběžnými platbami se poplatky účtují na základě platební karty nebo platby na faktuře v předplatném.
+| Předplatné   | Předplatné použité pro platbu Azure Database for PostgreSQL rezervované rezervace kapacity. Platební metodou předplatného se účtují náklady na front-end pro rezervaci rezervované kapacity Azure Database for PostgreSQL. Typ předplatného musí být smlouva Enterprise (číslo nabídky: MS-AZR-0017P nebo MS-AZR-0148P) nebo samostatná smlouva s cenami s průběžnými platbami (čísla nabídek: MS-AZR-0003P nebo MS-AZR-0023P). V případě předplatného se smlouvou Enterprise se poplatky strhávají ze zůstatku Azure Prepaymentu (dřív označovaný jako peněžní závazek) v rámci dané registrace nebo se účtují jako nadlimitní využití. U jednotlivých předplatných s průběžnými platbami se poplatky účtují na základě platební karty nebo platby na faktuře v předplatném.
 | Obor | Obor rezervace vCore může zahrnovat jedno nebo víc předplatných (sdílený rozsah). Pokud vyberete: </br></br> **Shared**, Azure Database for PostgreSQL na servery běžící v rámci vašeho fakturačního kontextu se použije sleva za rezervaci Vcore. U podnikových zákazníků je sdíleným oborem registrace a zahrnuje všechna předplatná v rámci registrace. U zákazníků s průběžnými platbami jsou v rozsahu Sdílený všechna předplatná s průběžnými platbami vytvořená správcem účtu.</br></br> Pro Azure Database for PostgreSQL servery v tomto **předplatném** se použije sleva za rezervované Vcore. </br></br> **Jedna skupina prostředků**, použije se sleva rezervace pro Azure Database for PostgreSQL servery ve vybraném předplatném a v rámci daného předplatného.
-| Oblast | Oblast Azure, která je pokrytá rezervací rezervované kapacity Azure Database for PostgreSQL.
+| Region (Oblast) | Oblast Azure, která je pokrytá rezervací rezervované kapacity Azure Database for PostgreSQL.
 | Typ nasazení | Typ prostředku Azure Database for PostgreSQL, pro který chcete zakoupit rezervaci.
 | Úroveň výkonu | Vrstva služby pro servery Azure Database for PostgreSQL.
-| Pojem | Jeden rok
+| Označení | Jeden rok
 | Množství | Množství výpočetních prostředků, které se zakoupí v rámci rezervace rezervované kapacity Azure Database for PostgreSQL. Množství je počet virtuální jádra ve vybrané oblasti Azure a úroveň výkonu, které jsou rezervované, a obdrží fakturační slevu. Pokud například používáte nebo plánujete spustit Azure Database for PostgreSQL servery s celkovou výpočetní kapacitou Gen5 16 virtuální jádra v oblasti Východní USA, pak byste zadali množství na 16, aby se zajistilo zvýšení výhod pro všechny servery.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Zrušení, výměna nebo refundace rezervací
@@ -67,7 +67,8 @@ Rezervace je možné s určitými omezeními zrušit, vyměnit nebo refundovat. 
 
 ## <a name="vcore-size-flexibility"></a>flexibilita velikosti vCore
 
-flexibilita velikosti vCore vám pomůže škálovat směrem nahoru nebo dolů v rámci úrovně výkonu a oblasti, aniž by došlo ke ztrátě výhod vyhrazené kapacity. 
+flexibilita velikosti vCore vám pomůže škálovat směrem nahoru nebo dolů v rámci úrovně výkonu a oblasti, aniž by došlo ke ztrátě výhod vyhrazené kapacity. Pokud budete škálovat na vyšší virtuální jádra, než jakou má Rezervovaná kapacita, bude se vám účtovat nadměrný virtuální jádra s využitím cen průběžných plateb.
+
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás
 

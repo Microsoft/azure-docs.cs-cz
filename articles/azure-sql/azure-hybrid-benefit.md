@@ -5,18 +5,18 @@ description: Pro Azure SQL Database a slevy spravované instance SQL použijte e
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: features
-ms.custom: sqldbrb=4, devx-track-azurecli
+ms.custom: sqldbrb=4
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
 ms.date: 11/13/2019
-ms.openlocfilehash: 872b36eae9142473885885d5bf5ad3fa10ae5ccb
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 51cf4a4d3aa3cb4654b141a98064460a7152fcec
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841593"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737451"
 ---
 # <a name="azure-hybrid-benefit---azure-sql-database--sql-managed-instance"></a>Zvýhodněné hybridní využití Azure-Azure SQL Database & spravované instance SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -89,8 +89,8 @@ Zákazníci SQL Database mají pro SQL Server k Zvýhodněné hybridní využit�
 
 |Nároky na licenci|K čemu Zvýhodněné hybridní využití Azure SQL Server získat přístup?|
 |---|---|
-|Zákazníci se základními edicemi SQL Server Enterprise s SA|<li>Může platit základní sazba pro Pro obecné účely nebo Pro důležité obchodní informace SKLADOVOU položku.</li><br><li>1 jádro v místním prostředí = 4 jádra v Pro obecné účely SKU</li><br><li>1 jádro v místním prostředí = 1 jádro v Pro důležité obchodní informace SKU</li>|
-|Zákazníci se základními edicemi SQL Server Standard s SA|<li>Může platit základní sazba jenom pro Pro obecné účely SKU.</li><br><li>1 jádro v místním prostředí = 1 jádro v Pro obecné účely SKU</li>|
+|Zákazníci se základními edicemi SQL Server Enterprise s SA|<li>Může platit základní sazba na úrovni Pro obecné účely nebo SKU Pro důležité obchodní informace.</li><br><li>1 jádro v místním prostředí = 4 jádra v SKU s škálovatelným škálováním</li><br><li>1 jádro v místním prostředí = 4 jádra v Pro obecné účely SKU</li><br><li>1 jádro v místním prostředí = 1 jádro v Pro důležité obchodní informace SKU</li>|
+|Zákazníci se základními edicemi SQL Server Standard s SA|<li>Může platit základní sazba jenom na úrovni a Pro obecné účely SKU.</li><br><li>1 jádro v místním prostředí = 1 jádro v SKU s škálovatelným škálováním</li><br><li>1 jádro v místním prostředí = 1 jádro v Pro obecné účely SKU</li>|
 |||
 
 

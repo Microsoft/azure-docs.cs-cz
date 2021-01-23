@@ -38,4 +38,4 @@
 - name: Zdroje a prostředky
   items:
     - name: Rychlé zprovoznění služby Azure Arc
-      href: 'https://github.com/microsoft/azure_arc'
+      href: 'https://azurearcjumpstart.io'

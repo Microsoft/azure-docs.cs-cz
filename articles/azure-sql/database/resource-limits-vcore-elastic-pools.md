@@ -10,13 +10,13 @@ ms.topic: reference
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein
-ms.date: 01/15/2021
-ms.openlocfilehash: 2daa07315be85e1fcd543480cd30a57c118d8547
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.date: 01/22/2021
+ms.openlocfilehash: 619f4deee81c97f2d7a0b4359e2b999c476b1ae2
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251484"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737553"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>Omezení prostředků pro elastické fondy pomocí modelu nákupu vCore
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -218,7 +218,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Maximální velikost dat databáze TempDB (GB)|83,25|92,5|111|148|166,5|333|
 |Typ úložiště|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|
 |Latence v/v (přibližná)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|
-|Maximální počet datových IOPS na fond <sup>2</sup>|5760|6400|7680|10240|11520|23040|
+|Maximální počet datových IOPS na fond <sup>2</sup>|5760|6400|7680|10240|11520|12800|
 |Maximální počet protokolů na fond (MB/s)|48|48|48|48|48|48|
 |Maximální počet souběžných pracovních procesů na fond (požadavky) <sup>3</sup>|900|1000|1200|1600|1800|3600|
 |Maximální počet souběžných přihlášení na fond (požadavky) <sup>3</sup>|1800|2000|2400|3200|3600|7200|
@@ -427,7 +427,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Maximální počet souběžných relací|30000|30000|30000|30000|30000|30000|
 |Minimální/maximální vCore elastického fondu – volby pro každou databázi|0-8|0-10|0-12|0-14|0-16|0-18|
 |Počet replik|4|4|4|4|4|4|
-|Více AZ|Ne|Ne|Ne|Ne|Ne|Ne|
+|Více AZ|No|No|No|No|No|No|
 |Škálování čtení|Ano|Ano|Ano|Ano|Ano|Ano|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
 
@@ -460,7 +460,7 @@ Pokud jsou všechny virtuální jádra elastického fondu zaneprázdněné, pak 
 |Maximální počet souběžných přihlášení na fond (požadavky) <sup>3</sup>|2 000|2 400|3 200|6 400|12 800|
 |Maximální počet souběžných relací|30000|30000|30000|30000|30000|
 |Počet replik|4|4|4|4|4|
-|Více AZ|Ne|Ne|Ne|Ne|Ne|
+|Více AZ|No|No|No|No|No|
 |Škálování čtení|Ano|Ano|Ano|Ano|Ano|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
 
@@ -481,7 +481,7 @@ Pokud jsou všechny virtuální jádra elastického fondu zaneprázdněné, pak 
 |Paměť (GB)|9|18|27|36|
 |Maximální počet databáze na fond <sup>1</sup>|50|100|100|100|
 |Podpora columnstore|Ano|Ano|Ano|Ano|
-|Úložiště OLTP v paměti (GB)|1,7|3.7|5.9|8.2|
+|Úložiště OLTP v paměti (GB)|1.7|3.7|5.9|8.2|
 |Maximální velikost dat (GB)|768|768|768|768|
 |Maximální velikost protokolu (GB)|230|230|230|230|
 |Maximální velikost dat databáze TempDB (GB)|64|128|192|256|
@@ -494,7 +494,7 @@ Pokud jsou všechny virtuální jádra elastického fondu zaneprázdněné, pak 
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|
 |Minimální/maximální vCore elastického fondu – volby pro každou databázi|2|2... 4|2... 6|2... 8|
 |Počet replik|4|4|4|4|
-|Více AZ|Ne|Ne|Ne|Ne|
+|Více AZ|No|No|No|No|
 |Škálování čtení|Ano|Ano|Ano|Ano|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
 

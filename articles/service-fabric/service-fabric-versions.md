@@ -3,12 +3,12 @@ title: Podporované verze clusteru v Azure Service Fabric
 description: Přečtěte si o verzích clusterů v Azure Service Fabric, včetně odkazu na nejnovější verze z blogu týmu Service Fabric.
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: c2ea2b53649cf148a19df46835c8936345aa20e5
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 82b90d6b0acf5d83f9509abd9ee4b34cb74d1b48
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234337"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736780"
 ---
 # <a name="supported-service-fabric-versions"></a>Podporované verze Service Fabric
 
@@ -56,10 +56,13 @@ Pro zlepšení zabezpečení a dostupnosti infrastruktura Azure provede změnu, 
  #### <a name="impact-if-not-upgraded-to-supported-versions"></a>Dopad, pokud není upgradován na podporované verze
   Clustery Azure Service Fabric, které **používají funkci [otevřít síť pro kontejnery](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode) pro kontejnery a běží na verzích větších než 6,3** , které neobsahují změny, budou mít za následek ztrátu funkčnosti nebo přerušení služeb, pokud se neupgradují na jednu z podporovaných verzí do **19. ledna 2021**.
  
-  - V **případě clusterů, ve kterých je spuštěná verze Service Fabric větší než 6,3, nepoužívají funkci otevřené sítě**, zůstane cluster funkční, ale funkce otevřít sítě pro clustery kontejnerů přestane fungovat, což by mohlo způsobit přerušení služeb pro vaše úlohy.
+  - V **případě clusterů, ve kterých je spuštěná verze Service Fabric větší než 6,3, se nepoužívá funkce otevřít síť**, zůstane cluster zapnutý.
 
  - **U clusterů, na kterých běží verze Service Fabric větší než 6,3 a využívají [funkci Open Networking pro kontejnery](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode)** , by cluster mohl být nedostupný a přestane fungovat, což by mohlo způsobit přerušení služeb pro vaše úlohy.
-  
+ 
+ -   **Pro clustery s [verzemi windows mezi 7,0 a 7.0.466 (včetně obou verzí)](https://docs.microsoft.com/azure/service-fabric/service-fabric-versions#supported-version-names) a operačním systémem Windows je povolená funkce kontejnerů Windows. Poznámka: verze Linux 7.0.457, 7.0.464 a 7.0.465 nejsou ovlivněny**.
+    - **Dopad**: cluster přestane fungovat, což by mohlo způsobit přerušení služeb pro vaše úlohy.
+       
 #### <a name="required-action"></a>Požadovaná akce
 Upgradujte na Service Fabric podporované verze níže, aby nedocházelo k výpadkům nebo ztrátě funkčnosti souvisejících s touto změnou. Zajistěte, aby byly v clusterech spuštěné alespoň tyto verze, aby nedocházelo k problémům ve vašem prostředí. 
  
@@ -132,26 +135,26 @@ Následující tabulka uvádí názvy verzí Service Fabric a jejich odpovídaj�
 
 | Název verze | Číslo verze Windows | Číslo verze Linux |
 | --- | --- | --- |
-| 5,3 RTO | 5.3.121.9494 | Není k dispozici |
-| 5,3 CU1 | 5.3.204.9494 | Není k dispozici |
-| 5,3 CU2 | 5.3.301.9590 | Není k dispozici |
-| 5,3 CU3 | 5.3.311.9590 | Není k dispozici |
-| 5,4 CU2 | 5.4.164.9494 | Není k dispozici |
-| 5,5 CU1 | 5.5.216.0    | Není k dispozici |
-| 5,5 CU2 | 5.5.219.0    | Není k dispozici |
-| 5,5 CU3 | 5.5.227.0    | Není k dispozici |
-| 5,5 CU4 | 5.5.232.0 | Není k dispozici |
-| 5,6 RTO | 5.6.204.9494 | Není k dispozici |
-| 5,6 CU2 | 5.6.210.9494 | Není k dispozici |
-| 5,6 CU3 | 5.6.220.9494 | Není k dispozici |
-| 5,7 RTO | 5.7.198.9494 | Není k dispozici |
-| 5,7 CU4 | 5.7.221.9494 | Není k dispozici |
+| 5,3 RTO | 5.3.121.9494 | NA |
+| 5,3 CU1 | 5.3.204.9494 | NA |
+| 5,3 CU2 | 5.3.301.9590 | NA |
+| 5,3 CU3 | 5.3.311.9590 | NA |
+| 5,4 CU2 | 5.4.164.9494 | NA |
+| 5,5 CU1 | 5.5.216.0    | NA |
+| 5,5 CU2 | 5.5.219.0    | NA |
+| 5,5 CU3 | 5.5.227.0    | NA |
+| 5,5 CU4 | 5.5.232.0 | NA |
+| 5,6 RTO | 5.6.204.9494 | NA |
+| 5,6 CU2 | 5.6.210.9494 | NA |
+| 5,6 CU3 | 5.6.220.9494 | NA |
+| 5,7 RTO | 5.7.198.9494 | NA |
+| 5,7 CU4 | 5.7.221.9494 | NA |
 | 6,0 RTO | 6.0.211.9494 | 6.0.120.1 |
 | 6,0 CU1 | 6.0.219.9494 | 6.0.127.1 |
 | 6,0 CU2 | 6.0.232.9494 | 6.0.133.1 |
 | 6,1 CU1 | 6.1.456.9494 | 6.1.183.1 |
 | 6,1 CU2 | 6.1.467.9494 | 6.1.185.1 |
-| 6,1 CU3 | 6.1.472.9494 | Není k dispozici |
+| 6,1 CU3 | 6.1.472.9494 | NA |
 | 6,1 CU4 | 6.1.480.9494 | 6.1.187.1 |
 | 6,2 RTO | 6.2.269.9494 | 6.2.184.1 | 
 | 6,2 CU1 | 6.2.274.9494 | 6.2.191.1 |
@@ -161,13 +164,13 @@ Následující tabulka uvádí názvy verzí Service Fabric a jejich odpovídaj�
 | 6,3 CU1 | 6.3.176.9494 | 6.3.124.1 |
 | 6,3 CU1 | 6.3.187.9494 | 6.3.129.1 |
 | 6,4 RTO | 6.4.617.9590 | 6.4.625.1 |
-| 6,4 CU2 | 6.4.622.9590 | Není k dispozici |
+| 6,4 CU2 | 6.4.622.9590 | NA |
 | 6,4 CU3 | 6.4.637.9590 | 6.4.634.1 |
 | 6,4 CU4 | 6.4.644.9590 | 6.4.639.1 |
 | 6,4 CU5 | 6.4.654.9590 | 6.4.649.1 |
-| 6,4 CU6 | 6.4.658.9590 | Není k dispozici |
+| 6,4 CU6 | 6.4.658.9590 | NA |
 | 6,4 CU7 | 6.4.664.9590 | 6.4.661.1 |
-| 6,4 CU8 | 6.4.670.9590 | Není k dispozici |
+| 6,4 CU8 | 6.4.670.9590 | NA |
 | 6,5 RTO | 6.5.639.9590 | 6.5.435.1 |
 | 6,5 CU1 | 6.5.641.9590 | 6.5.454.1 |
 | 6,5 CU2 | 6.5.658.9590 | 6.5.460.1 |
@@ -186,8 +189,8 @@ Následující tabulka uvádí názvy verzí Service Fabric a jejich odpovídaj�
 | 7,1 CU5 | 7.1.458.9590 | 7.1.454.1 |
 | 7,1 CU6 | 7.1.459.9590 | 7.1.455.1 |
 | 7,1 CU8 | 7.1.503.9590 | 7.1.508.1 |
-| 7,2 RTO | 7.2.413.9590 | Není k dispozici |
+| 7,2 RTO | 7.2.413.9590 | NA |
 | 7,2 CU2 | 7.2.432.9590 | 7.2.431.1 |
-| 7,2 CU3 | 7.2.433.9590 | Není k dispozici |
+| 7,2 CU3 | 7.2.433.9590 | NA |
 | 7,2 CU4 | 7.2.445.9590 | 7.2.447.1 |
 

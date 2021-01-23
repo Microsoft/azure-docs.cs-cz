@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/08/2020
 ms.author: jeedes
-ms.openlocfilehash: 3db6fd2e6df96590d7d405157cbb33900c7d8531
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 286dc20ba70c78f8248f611abd75e0acc303c068
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127800"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736184"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s Amazon Web Services (AWS)
 
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte, jak integrovat Amazon Web Services (AWS) s Azure Act
 
 ![Diagram vztahu Azure AD a AWS](./media/amazon-web-service-tutorial/tutorial_amazonwebservices_image.png)
 
-Pro více instancí můžete nakonfigurovat více identifikátorů. Příklad:
+Pro více instancí můžete nakonfigurovat více identifikátorů. Například:
 
 * `https://signin.aws.amazon.com/saml#1`
 
@@ -120,7 +120,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     | SessionDuration | "zadejte hodnotu v rozmezí 900 sekund (15 minut) až 43200 sekund (12 hodin)" |  `https://aws.amazon.com/SAML/Attributes` |
 
     > [!NOTE]
-    > AWS očekává role pro uživatele přiřazené k aplikaci. Nastavte prosím tyto role ve službě Azure AD, aby bylo možné uživatelům přiřadit příslušné role. Informace o tom, jak nakonfigurovat role v Azure AD, najdete [tady](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui) .
+    > AWS očekává role pro uživatele přiřazené k aplikaci. Nastavte prosím tyto role ve službě Azure AD, aby bylo možné uživatelům přiřadit příslušné role. Informace o tom, jak nakonfigurovat role v Azure AD, najdete [tady](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview) .
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v dialogovém okně **podpisový certifikát SAML** (krok 3) vyberte **Přidat certifikát**.
 

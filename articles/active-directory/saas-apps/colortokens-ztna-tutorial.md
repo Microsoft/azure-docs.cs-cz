@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 54386bd7431c2003dd29a905b3b696f69a39d2d9
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: c87eb3b52843f4de39d0c037bdf452160be1ca2b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914429"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735954"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-colortokens-ztna"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s ZTNAem ColorTokens
 
@@ -86,13 +86,13 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho aplikace ColorTokens ZTNA očekává, že se v odpovědi SAML vrátí zpátky několik atributů, které jsou uvedené dál. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | ------------- | --------- |
     | Oddělení | User. userPrincipalName |
-    | Skupina | User. Groups |
+    | Group (Skupina) | User. Groups |
 
     > [!NOTE]
-    > Kliknutím [sem](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui) zobrazíte informace o tom, jak ve službě Azure AD vytvářet role.
+    > Kliknutím [sem](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview) zobrazíte informace o tom, jak ve službě Azure AD vytvářet role.
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **XML metadata federace** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
 
@@ -142,7 +142,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 * Přejít přímo na adresu URL pro přihlášení k ColorTokens ZTNA a zahajte tok přihlášení.
 
-* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici ColorTokens ZTNA v nabídce Moje aplikace, přesměruje se na adresu URL pro přihlášení ColorTokens ZTNA. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici ColorTokens ZTNA v nabídce Moje aplikace, přesměruje se na adresu URL pro přihlášení ColorTokens ZTNA. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Další kroky

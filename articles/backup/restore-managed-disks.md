@@ -3,12 +3,12 @@ title: Obnovit Managed Disks Azure
 description: Přečtěte si, jak obnovit Azure Managed Disks z Azure Portal.
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 848a7476b1c5095d4e4d3156d4c7ce33da777090
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: b9c9a22f25a8003151217bec15b618e3c380e67e
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611130"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737372"
 ---
 # <a name="restore-azure-managed-disks-in-preview"></a>Obnovit Azure Managed Disks (ve verzi Preview)
 
@@ -17,7 +17,7 @@ ms.locfileid: "98611130"
 >
 >[Vyplňte tento formulář](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u) a zaregistrujte se do verze Preview.
 
-Tento článek vysvětluje, jak obnovit [Azure Managed disks](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview) z bodu obnovení vytvořeného pomocí Azure Backup.
+Tento článek vysvětluje, jak obnovit [Azure Managed disks](../virtual-machines/managed-disks-overview.md) z bodu obnovení vytvořeného pomocí Azure Backup.
 
 V současné době se možnost obnovení Original-Location (OLR) obnovuje nahrazením stávajícího zdrojového disku, ze kterého se zálohy provedly, ale nepodporují. Můžete obnovit z bodu obnovení a vytvořit nový disk ve stejné skupině prostředků jako zdrojový disk, ze kterého byly zálohy pořízeny nebo v jakékoli jiné skupině prostředků. Tento postup se označuje Alternate-Location jako ALR Recovery () a pomáhá udržet zdrojový disk i obnovený (nový) disk.
 
@@ -31,7 +31,7 @@ V tomto článku se naučíte:
 
 Úložiště záloh používá spravovanou identitu pro přístup k dalším prostředkům Azure. Pro obnovení ze zálohy vyžaduje spravovaná identita trezoru záloh sadu oprávnění pro skupinu prostředků, do které se má disk obnovit.
 
-Úložiště záloh používá spravovanou identitu přiřazenou systémem, která je omezená na jeden prostředek a je vázaná na životní cyklus tohoto prostředku. Pomocí řízení přístupu na základě role Azure (RBAC) můžete udělit oprávnění ke spravované identitě. Spravovaná identita je instanční objekt speciálního typu, který se dá použít jenom s prostředky Azure. Přečtěte si další informace o [spravovaných identitách](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+Úložiště záloh používá spravovanou identitu přiřazenou systémem, která je omezená na jeden prostředek a je vázaná na životní cyklus tohoto prostředku. Pomocí řízení přístupu na základě role Azure (RBAC) můžete udělit oprávnění ke spravované identitě. Spravovaná identita je instanční objekt speciálního typu, který se dá použít jenom s prostředky Azure. Přečtěte si další informace o [spravovaných identitách](../active-directory/managed-identities-azure-resources/overview.md).
 
 K provedení operace obnovení se vyžadují následující požadavky:
 
@@ -89,7 +89,7 @@ Po splnění požadavků proveďte operaci obnovení pomocí těchto kroků.
     ![Obnovit parametry](./media/restore-managed-disks/restore-parameters.png)
 
     >[!TIP]
-    >Disky, které se zálohují Azure Backup pomocí řešení zálohování na disku, se dají zálohovat taky Azure Backup pomocí řešení zálohování virtuálních počítačů Azure s Recovery Servicesm trezoru. Pokud jste nakonfigurovali ochranu virtuálního počítače Azure, ke kterému je tento disk připojený, můžete taky použít operaci obnovení virtuálního počítače Azure. Můžete se rozhodnout obnovit virtuální počítač nebo disky a soubory nebo složky z bodu obnovení odpovídající instance zálohování virtuálních počítačů Azure. Další informace najdete v tématu [zálohování virtuálních počítačů Azure](https://docs.microsoft.com/azure/backup/about-azure-vm-restore).
+    >Disky, které se zálohují Azure Backup pomocí řešení zálohování na disku, se dají zálohovat taky Azure Backup pomocí řešení zálohování virtuálních počítačů Azure s Recovery Servicesm trezoru. Pokud jste nakonfigurovali ochranu virtuálního počítače Azure, ke kterému je tento disk připojený, můžete taky použít operaci obnovení virtuálního počítače Azure. Můžete se rozhodnout obnovit virtuální počítač nebo disky a soubory nebo složky z bodu obnovení odpovídající instance zálohování virtuálních počítačů Azure. Další informace najdete v tématu [zálohování virtuálních počítačů Azure](./about-azure-vm-restore.md).
 
 1. Po úspěšném ověření vyberte **obnovit** a spusťte operaci obnovení.
 
@@ -109,9 +109,9 @@ Při obnovení se vytvoří nový disk z vybraného bodu obnovení v cílové sk
 
     ![Prohození disků s operačním systémem](./media/restore-managed-disks/swap-os-disks.png)
 
-- V případě virtuálních počítačů s Windows je obnovený disk s datovým diskem, podle pokynů [odpojte původní datový disk](https://docs.microsoft.com/azure/virtual-machines/windows/detach-disk#detach-a-data-disk-using-the-portal) od virtuálního počítače. Pak [Připojte obnovený disk](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal) k virtuálnímu počítači. Podle pokynů [Proměňte disk s operačním systémem](https://docs.microsoft.com/azure/virtual-machines/windows/os-disk-swap) virtuálního počítače pomocí obnoveného disku.
+- V případě virtuálních počítačů s Windows je obnovený disk s datovým diskem, podle pokynů [odpojte původní datový disk](../virtual-machines/windows/detach-disk.md#detach-a-data-disk-using-the-portal) od virtuálního počítače. Pak [Připojte obnovený disk](../virtual-machines/windows/attach-managed-disk-portal.md) k virtuálnímu počítači. Podle pokynů [Proměňte disk s operačním systémem](../virtual-machines/windows/os-disk-swap.md) virtuálního počítače pomocí obnoveného disku.
 
-- V případě virtuálních počítačů se systémem Linux, pokud je obnovený disk datový disk, postupujte podle pokynů k [odpojte původní datový disk](https://docs.microsoft.com/azure/virtual-machines/linux/detach-disk#detach-a-data-disk-using-the-portal) od virtuálního počítače. Pak [Připojte obnovený disk](https://docs.microsoft.com/azure/virtual-machines/linux/attach-disk-portal#attach-an-existing-disk) k virtuálnímu počítači. Podle pokynů [Proměňte disk s operačním systémem](https://docs.microsoft.com/azure/virtual-machines/linux/os-disk-swap) virtuálního počítače pomocí obnoveného disku.
+- V případě virtuálních počítačů se systémem Linux, pokud je obnovený disk datový disk, postupujte podle pokynů k [odpojte původní datový disk](../virtual-machines/linux/detach-disk.md#detach-a-data-disk-using-the-portal) od virtuálního počítače. Pak [Připojte obnovený disk](../virtual-machines/linux/attach-disk-portal.md#attach-an-existing-disk) k virtuálnímu počítači. Podle pokynů [Proměňte disk s operačním systémem](../virtual-machines/linux/os-disk-swap.md) virtuálního počítače pomocí obnoveného disku.
 
 Po úspěšném dokončení operace obnovení se doporučuje odvolat přiřazení role **operátora obnovení disku** ze spravované identity trezoru záloh v **cílové skupině prostředků** .
 

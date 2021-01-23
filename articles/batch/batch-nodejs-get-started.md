@@ -3,18 +3,18 @@ title: Použití klientské knihovny Azure Batch pro Node.js
 description: Informace o základních konceptech služby Azure Batch a vytvoření jednoduchého řešení pomocí Node.js.
 ms.topic: how-to
 ms.date: 10/08/2020
-ms.openlocfilehash: 8d34d5bbb302e3781aabdd697de11d3d492b879a
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 36a127a20014e87554f0d3e3927b05679b6f72f1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97106695"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737282"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>Začínáme se sadou SDK služby Batch pro Node.js
 
 Naučíte se základy vytvoření klienta služby Batch v Node.js pomocí sady [SDK služby Azure Batch pro Node.js](/javascript/api/overview/azure/batch). Pro pochopení scénáře pro aplikaci služby Batch si ho projdeme krok za krokem a pak aplikaci nastavíme pomocí klienta Node.js.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tento článek předpokládá, že máte praktické znalosti Node.js a umíte do jisté míry pracovat s Linuxem. Předpokládá se také, že máte nastavený účet Azure s přístupovými právy k vytvoření služeb Batch a Storage.
 
@@ -38,7 +38,7 @@ Klient Node.js nasadí dávkovou úlohu s přípravným úkolem (podrobně si ho
 
 > [!TIP]
 > Klient Node.js na uvedeném odkazu neobsahuje konkrétní kód umožňující nasadit ho jako aplikaci Azure Function App. Na následujících odkazech najdete pokyny k jejímu vytvoření.
-> - [Vytvoření aplikace funkcí](../azure-functions/functions-create-first-azure-function.md)
+> - [Vytvoření aplikace funkcí](../azure-functions/functions-get-started.md)
 > - [Vytvoření funkce pro aktivaci časovače](../azure-functions/functions-bindings-timer.md)
 
 ## <a name="build-the-application"></a>Sestavení aplikace

@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/01/2020
+ms.date: 01/22/2021
 ms.custom: seodec18
-ms.openlocfilehash: 0c201ce984a216a5cc62e221c0433f83a7eeabae
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 7b37934ff3b867b83c2c958d52bea2dd4db01354
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95021758"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736797"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-gen2"></a>Model časové řady v Azure Time Series Insights Gen2
 
@@ -75,7 +75,7 @@ Tyto součásti jsou kombinovány pro určení modelu časové řady a k uspoř�
 
 [![Graf s přehledem modelu časové řady](media/v2-update-tsm/time-series-model-overview.png)](media/v2-update-tsm/time-series-model-overview.png#lightbox)
 
-Model časových řad se dá vytvořit a spravovat pomocí [Azure Time Series Insights Exploreru](). Nastavení modelu časové řady lze spravovat prostřednictvím [rozhraní API pro nastavení modelu](/rest/api/time-series-insights/reference-model-apis).
+Model časových řad se dá vytvořit a spravovat pomocí [Azure Time Series Insights Exploreru](https://docs.microsoft.com/azure/time-series-insights/concepts-ux-panels). Nastavení modelu časové řady lze spravovat prostřednictvím [rozhraní API pro nastavení modelu](/rest/api/time-series-insights/reference-model-apis).
 
 ## <a name="time-series-model-instances"></a>Instance modelů časových řad
 
@@ -101,7 +101,7 @@ Instance jsou definovány pomocí **timeSeriesId**, **typeId**, **Name**, **Desc
 | --- | ---|
 | timeSeriesId | Jedinečné ID časové řady, ke které je instance přidružena. Ve většině případů jsou instance jednoznačně identifikované vlastností, jako je deviceId nebo assetId. V některých případech lze použít více specifických IDENTIFIKÁTORů s kombinací až tří vlastností. |
 | typeId | Jedinečné ID řetězce s rozlišením velkých a malých písmen pro typ modelu časové řady, ke kterému je instance přidružena. Ve výchozím nastavení se všechny zjištěné nové instance přidružit k výchozímu typu.
-| name | Vlastnost **Name** je volitelná a rozlišuje velká a malá písmena. Pokud není **název** k dispozici, použije se výchozí hodnota **timeSeriesId**. Pokud je zadán název, je **timeSeriesId** stále k dispozici. [well](./concepts-ux-panels.md#4-time-series-well) |
+| name | Vlastnost **Name** je volitelná a rozlišuje velká a malá písmena. Pokud není **název** k dispozici, použije se výchozí hodnota **timeSeriesId**. Pokud je zadán název, je **timeSeriesId** stále k dispozici. [](./concepts-ux-panels.md#4-time-series-well) |
 | description | Textový popis instance. |
 | hierarchyIds | Definuje, do kterých hierarchií patří instance. |
 | instanceFields | Vlastnosti instance a všech statických dat, která definují instanci. Definují hodnoty vlastností hierarchie nebo mimo hierarchii a zároveň podporují indexování k provádění operací vyhledávání. |

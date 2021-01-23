@@ -5,14 +5,14 @@ keywords: Azure App Service, Webová aplikace, mobilní aplikace, aplikace API, 
 ms.topic: article
 ms.date: 08/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: 55ffb2d03a42809a41583e6be25066b0b8e104b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61bffcfa8b98ed666e450c344023258b752e4880
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88961495"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736101"
 ---
-# <a name="security-in-azure-app-service"></a>Zabezpečení v Azure App Service
+# <a name="security-in-azure-app-service"></a>Zabezpečení ve službě Azure App Service
 
 V tomto článku se dozvíte, jak [Azure App Service](overview.md) pomáhá zabezpečit webovou aplikaci, back-end mobilní aplikace, aplikaci API a [aplikaci Function App](../azure-functions/index.yml). Také ukazuje, jak můžete aplikaci dále zabezpečit pomocí integrovaných funkcí App Service.
 
@@ -43,7 +43,7 @@ App Service podporuje FTP i FTPS pro nasazování souborů. Nicméně FTPS by se
 
 Ve výchozím nastavení vaše aplikace App Service přijímá požadavky ze všech IP adres z Internetu, ale můžete tento přístup omezit na malou podmnožinu IP adres. App Service ve Windows vám umožní definovat seznam IP adres, které mají povolený přístup k vaší aplikaci. Seznam povolených adres může zahrnovat jednotlivé IP adresy nebo rozsah IP adres definovaných maskou podsítě. Další informace najdete v tématu [Azure App Service omezení statických IP adres](app-service-ip-restrictions.md).
 
-Pro App Service ve Windows můžete také dynamicky omezit IP adresy tím, že nakonfigurujete _web.config_. Další informace najdete v tématu [dynamické zabezpečení \<dynamicIpSecurity> protokolu IP ](/iis/configuration/system.webServer/security/dynamicIpSecurity/).
+Pro App Service ve Windows můžete také dynamicky omezit IP adresy tím, že nakonfigurujete _web.config_. Další informace najdete v tématu [dynamické zabezpečení \<dynamicIpSecurity> protokolu IP](/iis/configuration/system.webServer/security/dynamicIpSecurity/).
 
 ## <a name="client-authentication-and-authorization"></a>Ověřování a autorizace klienta
 
@@ -85,8 +85,8 @@ Pokud chcete zcela izolovat připojení k prostředkům ze sdílených sítí v 
 K místním prostředkům, jako jsou databáze, můžete bezpečně přistupovat třemi způsoby: 
 
 - [Hybridní připojení](app-service-hybrid-connections.md) – naváže připojení typu Point-to-Point ke vzdálenému prostředku prostřednictvím tunelu TCP. Tunel TCP je vytvořen pomocí klíčů TLS 1,2 s klíči sdíleného přístupového podpisu (SAS).
-- [Virtual Network integrace](web-sites-integrate-with-vnet.md) s VPN typu Site-to-site – jak je popsáno v tématu [prostředky v rámci Azure Virtual Network](#resources-inside-an-azure-virtual-network), ale Virtual Network se dá připojit k místní síti prostřednictvím [sítě VPN typu Site-to-site](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md). V této topologii sítě se může vaše aplikace připojit k místním prostředkům, jako jsou jiné prostředky v Virtual Network.
-- [App Service prostředí](environment/intro.md) s VPN typu Site-to-site – jak je popsáno v tématu [prostředky v rámci Azure Virtual Network](#resources-inside-an-azure-virtual-network), ale Virtual Network se dá připojit k místní síti prostřednictvím [sítě VPN typu Site-to-site](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md). V této topologii sítě se může vaše aplikace připojit k místním prostředkům, jako jsou jiné prostředky v Virtual Network.
+- [Virtual Network integrace](web-sites-integrate-with-vnet.md) s VPN typu Site-to-site – jak je popsáno v tématu [prostředky v rámci Azure Virtual Network](#resources-inside-an-azure-virtual-network), ale Virtual Network se dá připojit k místní síti prostřednictvím [sítě VPN typu Site-to-site](../vpn-gateway/tutorial-site-to-site-portal.md). V této topologii sítě se může vaše aplikace připojit k místním prostředkům, jako jsou jiné prostředky v Virtual Network.
+- [App Service prostředí](environment/intro.md) s VPN typu Site-to-site – jak je popsáno v tématu [prostředky v rámci Azure Virtual Network](#resources-inside-an-azure-virtual-network), ale Virtual Network se dá připojit k místní síti prostřednictvím [sítě VPN typu Site-to-site](../vpn-gateway/tutorial-site-to-site-portal.md). V této topologii sítě se může vaše aplikace připojit k místním prostředkům, jako jsou jiné prostředky v Virtual Network.
 
 ## <a name="application-secrets"></a>Tajné klíče aplikace
 

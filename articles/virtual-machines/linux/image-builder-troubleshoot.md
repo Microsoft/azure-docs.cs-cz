@@ -7,12 +7,12 @@ ms.date: 10/02/2020
 ms.topic: troubleshooting
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 7c937353c645ee5d977a52ec0f8e935eba19a940
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 73984694d764234e9e1ec11e6b189a9ad85d97a8
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91969972"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737400"
 ---
 # <a name="troubleshoot-azure-image-builder-service"></a>Řešení potíží se službou Azure image Builder
 
@@ -152,11 +152,11 @@ Get-AzImageBuilderTemplate -ImageTemplateName  <imageTemplateName> -ResourceGrou
 
 Když je sestavení image spuštěné, vytvoří se protokoly a uloží se do účtu úložiště. Azure image Builder vytvoří účet úložiště v dočasné skupině prostředků při vytváření artefaktu šablony obrázku.
 
-Název účtu úložiště používá následující vzor: **IT_ \<ImageResourceGroupName\> _\<TemplateName\>_ \<GUID\> **
+Název účtu úložiště používá následující vzor: **IT_ \<ImageResourceGroupName\> _\<TemplateName\>_ \<GUID\>**
 
 Například *IT_aibmdi_helloImageTemplateLinux01*.
 
-Vlastní nastavení. účet úložiště můžete zobrazit ve skupině prostředků tak, že vyberete objekty blob **účtu úložiště**  >  **Blobs**  >  `packerlogs` .  Pak vyberte **adresář > přizpůsobení. log**.
+Vlastní nastavení. účet úložiště můžete zobrazit ve skupině prostředků tak, že vyberete objekty blob **účtu úložiště**  >    >  `packerlogs` .  Pak vyberte **adresář > přizpůsobení. log**.
 
 
 ### <a name="understanding-the-customization-log"></a>Princip protokolu přizpůsobení
@@ -320,7 +320,7 @@ Deployment failed. Correlation ID: XXXXXX-XXXX-XXXXXX-XXXX-XXXXXX. Failed in dis
 
 #### <a name="cause"></a>Příčina
 
-Při čekání na přidání a replikaci image do galerie sdílených imagí (SIG) vypršel časový limit tvůrce imagí. Pokud se bitová kopie vloží do SIG, je možné předpokládat, že sestavení obrázku bylo úspěšné. Celkový proces se ale nezdařil, protože tvůrce imagí čekal na galerii sdílených imagí, aby dokončil replikaci. I když se sestavení nezdařilo, replikace pokračuje. Vlastnosti verze image můžete získat tak, že zkontrolujete *runOutput*distribuce.
+Při čekání na přidání a replikaci image do galerie sdílených imagí (SIG) vypršel časový limit tvůrce imagí. Pokud se bitová kopie vloží do SIG, je možné předpokládat, že sestavení obrázku bylo úspěšné. Celkový proces se ale nezdařil, protože tvůrce imagí čekal na galerii sdílených imagí, aby dokončil replikaci. I když se sestavení nezdařilo, replikace pokračuje. Vlastnosti verze image můžete získat tak, že zkontrolujete *runOutput* distribuce.
 
 ```bash
 $runOutputName=<distributionRunOutput>
@@ -586,7 +586,7 @@ Může se jednat o některé případy, kdy potřebujete prozkoumat úspěšná 
 
 Pokud uživatel sestavení nezrušil, byl zrušen uživatelským agentem služby Azure DevOps. V důsledku možností Azure DevOps došlo k nejpravděpodobnějšímu vypršení platnosti 1 hodiny. Pokud používáte privátní projekt a agenta, dostanete 60 minut času sestavení. Pokud sestavení překračuje časový limit, DevOps zruší spuštěnou úlohu.
 
-Další informace o možnostech a omezeních Azure DevOps najdete v tématu [agenti hostované v Microsoftu](/azure/devops/pipelines/agents/hosted?view=azure-devops#capabilities-and-limitations) .
+Další informace o možnostech a omezeních Azure DevOps najdete v tématu [agenti hostované v Microsoftu](/azure/devops/pipelines/agents/hosted#capabilities-and-limitations) .
  
 #### <a name="solution"></a>Řešení
 
@@ -606,7 +606,7 @@ Nejprve v sestavení bitové kopie ověřte, že neexistují žádná nevyříze
  
 ## <a name="vms-created-from-aib-images-do-not-create-successfully"></a>Virtuální počítače vytvořené z imagí AIB se nevytvoří úspěšně.
 
-Ve výchozím *nastavení spouští Azure* image Builder na konci každé fáze přizpůsobení image kód pro stanovení *generalizace* . Generalizace je proces, při kterém je image nastavená tak, aby se znovu použila k vytvoření více virtuálních počítačů, a můžete předat nastavení virtuálního počítače, jako je název hostitele, uživatelské jméno atd. V případě systému Windows spustí Azure image Builder *Nástroj Sysprep*a spustí se pro Linux Azure image Builder `waagent -deprovision` . 
+Ve výchozím *nastavení spouští Azure* image Builder na konci každé fáze přizpůsobení image kód pro stanovení *generalizace* . Generalizace je proces, při kterém je image nastavená tak, aby se znovu použila k vytvoření více virtuálních počítačů, a můžete předat nastavení virtuálního počítače, jako je název hostitele, uživatelské jméno atd. V případě systému Windows spustí Azure image Builder *Nástroj Sysprep* a spustí se pro Linux Azure image Builder `waagent -deprovision` . 
 
 Pro Windows používá Azure image Builder obecný příkaz Sysprep. To však nemusí být vhodné pro každé úspěšné generalizaci Windows. Azure image Builder umožňuje přizpůsobit příkaz Sysprep. Poznámka: Azure image Builder je nástroj pro automatizaci obrazu. Je zodpovědný za úspěšné spuštění příkazu Sysprep. K obnovení obrazu ale můžete potřebovat jiné příkazy nástroje Sysprep. Pro Linux používá Azure image Builder obecný `waagent -deprovision+user` příkaz. Další informace najdete v [dokumentaci k agentovi Microsoft Azure Linux](https://github.com/Azure/WALinuxAgent#command-line-options).
 

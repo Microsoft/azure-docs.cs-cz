@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: f9f37bc27c54971c15db457abf157e04cc5d60e8
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: b28d7ee5d2eeb1015695e32e5918bd94f9051050
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914667"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736664"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-windows-virtual-machine-in-azure"></a>Kurz: monitorování změn a aktualizace virtuálního počítače s Windows v Azure
 
@@ -37,7 +37,7 @@ Můžete také otevřít Cloud Shell na samostatné kartě prohlížeče, a to t
 
 Ke konfiguraci monitorování a správy aktualizací Azure v tomto kurzu budete potřebovat virtuální počítač s Windows v Azure.
 
-Nejdřív pomocí rutiny [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1&preserve-view=true) nastavte uživatelské jméno a heslo správce virtuálního počítače:
+Nejdřív pomocí rutiny [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential) nastavte uživatelské jméno a heslo správce virtuálního počítače:
 
 ```azurepowershell-interactive
 $cred = Get-Credential

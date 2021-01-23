@@ -3,12 +3,12 @@ title: Řešení potíží se zálohováním ve službě Azure disk Backup
 description: Postup řešení potíží se zálohováním ve službě Azure disk Backup
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 3e7c81d70fc898528532a841a484bf6fff8b83a7
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 855c6c5b19b10bdb699a25f89ebc29001b7941ac
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611232"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737723"
 ---
 # <a name="troubleshooting-backup-failures-in-azure-disk-backup-in-preview"></a>Řešení potíží se zálohováním ve službě Azure disk Backup (ve verzi Preview)
 
@@ -115,7 +115,7 @@ Doporučená akce: Udělte spravované identitě úložiště záloh příslušn
 
 Chybová zpráva: operace se nezdařila, protože bylo dosaženo maximálního limitu kvóty disku v rámci předplatného.
 
-Doporučená akce: Další informace najdete v [dokumentaci k předplatnému a omezením předplatného Azure a k kvótě](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) nebo kontaktnímu podpora Microsoftu.
+Doporučená akce: Další informace najdete v [dokumentaci k předplatnému a omezením předplatného Azure a k kvótě](../azure-resource-manager/management/azure-subscription-service-limits.md) nebo kontaktnímu podpora Microsoftu.
 
 ### <a name="error-code-usererrordiskbackuprestorergormsipermissionsnotpresent"></a>Kód chyby: UserErrorDiskBackupRestoreRGOrMSIPermissionsNotPresent
 

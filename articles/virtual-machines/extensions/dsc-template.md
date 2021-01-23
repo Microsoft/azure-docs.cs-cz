@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 10/05/2018
 ms.author: robreed
-ms.openlocfilehash: 01a41e9acccdb40bf198031d13c3ea3f13c079ce
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 8b862238c0c04fae72659d644dbaf882d00cca19
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98180145"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735686"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Požadovaná rozšíření konfigurace stavu pomocí šablon Azure Resource Manager
 
@@ -32,7 +32,7 @@ Tento článek popisuje šablonu Azure Resource Manager pro [obslužnou rutinu r
 
 Následující fragment kódu přejde do části **prostředků** v šabloně.
 Rozšíření DSC dědí výchozí vlastnosti rozšíření.
-Další informace naleznete v tématu [Třída VirtualMachineExtension](/dotnet/api/microsoft.azure.management.compute.models.virtualmachineextension?view=azure-dotnet).
+Další informace naleznete v tématu [Třída VirtualMachineExtension](/dotnet/api/microsoft.azure.management.compute.models.virtualmachineextension).
 
 ```json
 {
@@ -85,7 +85,7 @@ Uzel sady škálování virtuálního počítače má oddíl **vlastností** , k
 V části **rozšíření** přidejte podrobnosti o rozšíření DSC.
 
 Rozšíření DSC dědí výchozí vlastnosti rozšíření.
-Další informace naleznete v tématu [Třída VirtualMachineScaleSetExtension](/dotnet/api/microsoft.azure.management.compute.models.virtualmachinescalesetextension?view=azure-dotnet).
+Další informace naleznete v tématu [Třída VirtualMachineScaleSetExtension](/dotnet/api/microsoft.azure.management.compute.models.virtualmachinescalesetextension).
 
 ```json
 "extensionProfile": {
@@ -178,7 +178,7 @@ Seznam argumentů, které jsou k dispozici pro výchozí konfigurační skript, 
 
 ## <a name="details"></a>Podrobnosti
 
-| Název vlastnosti | Typ | Description |
+| Název vlastnosti | Typ | Popis |
 | --- | --- | --- |
 | Settings. wmfVersion |řetězec |Určuje verzi rozhraní Windows Management Framework (WMF), která má být nainstalována na VIRTUÁLNÍm počítači. Nastavení této vlastnosti na **nejnovější** nainstaluje nejnovější verzi WMF. V současné době jsou jedinou možnou hodnotou této vlastnosti **4,0**, **5,0**, **5,1** a **nejnovější**. Tyto možné hodnoty se vztahují na aktualizace. Výchozí hodnota je **nejnovější**. |
 | settings.configuration. URL |řetězec |Určuje umístění adresy URL, ze kterého se má stáhnout soubor. zip konfigurace DSC. Pokud zadaná adresa URL vyžaduje pro přístup token SAS, nastavte vlastnost **protectedSettings.configurationUrlSasToken** na hodnotu vašeho tokenu SAS. Tato vlastnost je povinná, pokud je definována **settings.configuration. Script** nebo **settings.configuration. Function** . Pokud se pro tyto vlastnosti nezadá žádná hodnota, přípona volá výchozí konfigurační skript pro nastavení Configuration Manageru (LCM) metadata a měly by se zadat argumenty. |
@@ -197,7 +197,7 @@ Seznam argumentů, které jsou k dispozici pro výchozí konfigurační skript, 
 Další informace o následujících hodnotách naleznete v tématu [místní nastavení Configuration Manager Basic](/powershell/scripting/dsc/managing-nodes/metaConfig#basic-settings).
 Můžete použít výchozí konfigurační skript rozšíření DSC ke konfiguraci pouze vlastností LCM, které jsou uvedeny v následující tabulce.
 
-| Název vlastnosti | Typ | Description |
+| Název vlastnosti | Typ | Popis |
 | --- | --- | --- |
 | protectedSettings.configurationArguments. RegistrationKey |PSCredential |Požadovaná vlastnost. Určuje klíč, který se používá pro uzel, který se má zaregistrovat ve službě Azure Automation jako heslo objektu přihlašovacích údajů prostředí PowerShell. Tato hodnota se dá automaticky zjistit pomocí metody **klíče listkey** na účtu Automation.  Podívejte se na [příklad](#example-using-referenced-azure-automation-registration-values). |
 | settings.configurationArguments. RegistrationUrl |řetězec |Požadovaná vlastnost. Určuje adresu URL koncového bodu automatizace, kde se uzel pokusí zaregistrovat. Tato hodnota se může automaticky zjistit pomocí metody **reference** k účtu Automation. |

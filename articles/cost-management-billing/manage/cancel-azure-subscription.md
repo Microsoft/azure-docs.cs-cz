@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: banders
-ms.openlocfilehash: 662e1bf721c93ee1d59946d2fd603551f3f88ad3
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
-ms.translationtype: HT
+ms.openlocfilehash: 0d0dd5342cfc57da776e38ddef3df3b9c2199ac2
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503790"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735771"
 ---
 # <a name="cancel-your-azure-subscription"></a>Zrušení předplatného Azure
 
@@ -79,7 +79,7 @@ Pokud máte bezplatné zkušební předplatné, nemusíte čekat 30 dnů, než s
 
 ## <a name="reactivate-a-subscription"></a>Opětovná aktivace předplatného
 
-Pokud omylem zrušíte své předplatné s průběžnými platbami, můžete [ho znovu aktivovat v Centru účtů](subscription-disabled.md).
+Pokud zrušíte předplatné se svými tarify průběžných plateb omylem, můžete [ho znovu aktivovat v Azure Portal](subscription-disabled.md).
 
 Pokud se nejedná o předplatné s průběžnými platbami, požádejte během 90 dnů od zrušení podporu o opětovnou aktivaci svého předplatného.
 
@@ -101,4 +101,4 @@ Přečtěte si článek [Prodloužení a zrušení](/visualstudio/subscriptions/
 
 ## <a name="next-steps"></a>Další kroky
 
-- V případě potřeby můžete předplatné s průběžnými platbami znovu aktivovat v [Centru účtů](subscription-disabled.md):
+- V případě potřeby můžete v [Azure Portal](subscription-disabled.md)znovu aktivovat předplatné s průběžnými platbami.

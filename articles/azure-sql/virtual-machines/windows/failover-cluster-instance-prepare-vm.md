@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 1b8d88167dac6b2d0b1ba2afc90c443fd80b9e46
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 10f01fd5943928eda1f1e4518f30c8e3ccf56b46
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223155"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737791"
 ---
 # <a name="prepare-virtual-machines-for-an-fci-sql-server-on-azure-vms"></a>Příprava virtuálních počítačů na FCI (SQL Server na virtuálních počítačích Azure)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -44,7 +44,7 @@ Nastavení konfigurace pro virtuální počítač se liší v závislosti na mo�
 
 ## <a name="configure-vm-availability"></a>Konfigurace dostupnosti virtuálního počítače 
 
-Funkce clusteru s podporou převzetí služeb při selhání vyžaduje, aby virtuální počítače byly umístěné ve [skupině dostupnosti](../../../virtual-machines/linux/tutorial-availability-sets.md) nebo v [zóně dostupnosti](../../../availability-zones/az-overview.md#availability-zones). Pokud zvolíte skupiny dostupnosti, můžete k vyhledání virtuálních počítačů blíže použít [skupiny umístění pro Proximity](../../../virtual-machines/windows/co-location.md#proximity-placement-groups) . Ve skutečnosti jsou skupiny umístění s blízkými předpoklady pro používání sdílených disků Azure. 
+Funkce clusteru s podporou převzetí služeb při selhání vyžaduje, aby virtuální počítače byly umístěné ve [skupině dostupnosti](../../../virtual-machines/linux/tutorial-availability-sets.md) nebo v [zóně dostupnosti](../../../availability-zones/az-overview.md#availability-zones). Pokud zvolíte skupiny dostupnosti, můžete k vyhledání virtuálních počítačů blíže použít [skupiny umístění pro Proximity](../../../virtual-machines/co-location.md#proximity-placement-groups) . Ve skutečnosti jsou skupiny umístění s blízkými předpoklady pro používání sdílených disků Azure. 
 
 Pečlivě vyberte možnost dostupnosti virtuálního počítače, která odpovídá vaší zamýšlené konfiguraci clusteru: 
 

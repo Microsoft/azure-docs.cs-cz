@@ -8,19 +8,19 @@ ms.subservice: extensions
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: 66675f77d480ce8d9f21e5ffb507c475337c9dab
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c6a071956565a8bbc31e5be362c41a7c39d8f551
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490726"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98738046"
 ---
 # <a name="azure-backup-for-sql-server-running-in-azure-vm"></a>Azure Backup pro SQL Server běžící na virtuálním počítači Azure
 
 Azure Backup, mimo jiné nabídky, poskytuje podporu pro zálohování úloh, jako je SQL Server spouštění na virtuálních počítačích Azure. Vzhledem k tomu, že aplikace SQL běží v rámci virtuálního počítače Azure, služba zálohování potřebuje oprávnění pro přístup k aplikaci a načtení potřebných podrobností.
 K tomu Azure Backup nainstaluje na virtuální počítač rozšíření **AzureBackupWindowsWorkload** , ve kterém je spuštěná SQL Server během procesu registrace aktivovaného uživatelem.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Seznam podporovaných scénářů najdete v tématu věnovaném [podpoře](../../backup/sql-support-matrix.md#scenario-support) , které podporuje Azure Backup.
 
@@ -102,7 +102,7 @@ K virtuálnímu počítači doporučujeme přidat rozšíření AzureBackupWindo
 
 ## <a name="powershell-deployment"></a>Nasazení PowerShellu
 
-Musíte zaregistrovat virtuální počítač Azure, který obsahuje aplikaci SQL, do trezoru služby Recovery Services. Během registrace se na virtuální počítač nainstaluje rozšíření AzureBackupWindowsWorkload. K registraci virtuálního počítače použijte rutinu [Register-AzRecoveryServicesBackupContainerPS](/powershell/module/az.recoveryservices/register-azrecoveryservicesbackupcontainer?view=azps-1.5.0) .
+Musíte zaregistrovat virtuální počítač Azure, který obsahuje aplikaci SQL, do trezoru služby Recovery Services. Během registrace se na virtuální počítač nainstaluje rozšíření AzureBackupWindowsWorkload. K registraci virtuálního počítače použijte rutinu [Register-AzRecoveryServicesBackupContainerPS](/powershell/module/az.recoveryservices/register-azrecoveryservicesbackupcontainer) .
 
 ```powershell
 $myVM = Get-AzVM -ResourceGroupName <VMRG Name> -Name <VMName>

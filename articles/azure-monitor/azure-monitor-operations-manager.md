@@ -6,29 +6,29 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/11/2021
-ms.openlocfilehash: 877251ba7e0c1f3c33cab37e20d609479b69520c
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: c213a38286de05df5c3be8e3498bcca4ab6e1fbf
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251824"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736140"
 ---
 # <a name="azure-monitor-for-existing-operations-manager-customers"></a>Azure Monitor pro stávající zákazníky Operations Manager
-Tento článek poskytuje pokyny pro zákazníky, kteří aktuálně používají [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/welcome) a plánují přechod [Azure monitor](overview.md) při migraci obchodních aplikací a dalších prostředků do Azure. Předpokládá, že váš konečný cíl je úplným přechodem do cloudu a nahrazuje co nejvíce Operations Manager funkcím Azure Monitor, aniž by to ohrozilo vaše podnikání a provozní požadavky. 
+Tento článek poskytuje pokyny pro zákazníky, kteří aktuálně používají [System Center Operations Manager](/system-center/scom/welcome) a plánují přechod [Azure monitor](overview.md) při migraci obchodních aplikací a dalších prostředků do Azure. Předpokládá, že váš konečný cíl je úplným přechodem do cloudu a nahrazuje co nejvíce Operations Manager funkcím Azure Monitor, aniž by to ohrozilo vaše podnikání a provozní požadavky. 
 
 Konkrétní doporučení učiněná v tomto článku se změní jako Azure Monitor a Operations Manager přidání funkcí. Základní strategii je sice i nadále konzistentní.
 
 > [!IMPORTANT]
 > K implementaci několika Azure Monitor funkcí popsaných tady se účtují náklady, takže byste měli vyhodnotit jejich hodnotu před nasazením v celém prostředí.
 
-## <a name="prerequisites"></a>Předpoklady
-V tomto článku se předpokládá, že už používáte [Operations Manager](https://docs.microsoft.com/system-center/scom) a máte minimálně základní znalost [Azure monitor](overview.md). Úplné porovnání dvou najdete v tématu [Průvodce monitorováním cloudu: Přehled monitorovacích platforem](/azure/cloud-adoption-framework/manage/monitor/platform-overview). Tento článek podrobně popisuje určité rozdíly mezi funkcemi, které vám pomůžou pochopit některá doporučení, která tady provedete. 
+## <a name="prerequisites"></a>Požadavky
+V tomto článku se předpokládá, že už používáte [Operations Manager](/system-center/scom) a máte minimálně základní znalost [Azure monitor](overview.md). Úplné porovnání dvou najdete v tématu [Průvodce monitorováním cloudu: Přehled monitorovacích platforem](/azure/cloud-adoption-framework/manage/monitor/platform-overview). Tento článek podrobně popisuje určité rozdíly mezi funkcemi, které vám pomůžou pochopit některá doporučení, která tady provedete. 
 
 
 ## <a name="general-strategy"></a>Obecná strategie
 Neexistují žádné nástroje pro migraci k převedení prostředků z Operations Manager na Azure Monitor, protože platformy jsou zásadním rozdílem. Místo toho bude vaše migrace představovat [standardní Azure monitor implementace](deploy.md) , zatímco budete nadále používat Operations Manager. Při přizpůsobování Azure Monitor pro splnění požadavků na různé aplikace a komponenty a když získá více funkcí, můžete začít vyřadit různé sady Management Pack a agenty v Operations Manager.
 
-Obecná strategie, která se doporučuje v tomto článku, je stejná jako v [Průvodci monitorováním cloudu](https://docs.microsoft.com/azure/cloud-adoption-framework/manage/monitor/), který doporučuje strategii [monitorování hybridního cloudu](/azure/cloud-adoption-framework/manage/monitor/cloud-models-monitor-overview#hybrid-cloud-monitoring) , která vám umožní postupný přechod do cloudu. I když se některé funkce můžou překrývat, tato strategie vám umožní zachovat stávající obchodní procesy, jako byste se seznámili s novou platformou. Z funkcí Operations Manager jenom opustit, protože ji můžete nahradit Azure Monitor. Používání více nástrojů pro monitorování přináší složitost, ale umožňuje využít výhod Azure Monitor k monitorování zatížení nové generace cloudu a současně zachovat Operations Manager schopnost monitorovat serverový software a součásti infrastruktury, které mohou být místní nebo v jiných cloudech. 
+Obecná strategie, která se doporučuje v tomto článku, je stejná jako v [Průvodci monitorováním cloudu](/azure/cloud-adoption-framework/manage/monitor/), který doporučuje strategii [monitorování hybridního cloudu](/azure/cloud-adoption-framework/manage/monitor/cloud-models-monitor-overview#hybrid-cloud-monitoring) , která vám umožní postupný přechod do cloudu. I když se některé funkce můžou překrývat, tato strategie vám umožní zachovat stávající obchodní procesy, jako byste se seznámili s novou platformou. Z funkcí Operations Manager jenom opustit, protože ji můžete nahradit Azure Monitor. Používání více nástrojů pro monitorování přináší složitost, ale umožňuje využít výhod Azure Monitor k monitorování zatížení nové generace cloudu a současně zachovat Operations Manager schopnost monitorovat serverový software a součásti infrastruktury, které mohou být místní nebo v jiných cloudech. 
 
 
 ## <a name="components-to-monitor"></a>Komponenty, které se mají monitorovat
@@ -37,7 +37,7 @@ Pomáhá roztřídit různé typy úloh, které je třeba monitorovat, aby bylo 
 Před cloudem jste použili Operations Manager k monitorování všech vrstev. Při zahájení přechodu s infrastrukturou jako službou (IaaS) budete nadále používat Operations Manager pro virtuální počítače, ale začít používat Azure Monitor pro vaše cloudové prostředky. Při dalším přechodu na moderní aplikace s využitím platformy jako služby (PaaS) se můžete zaměřit na Azure Monitor a začít vyřadit Operations Manager funkce.
 
 
-![Cloudové modely](https://docs.microsoft.com/azure/cloud-adoption-framework/strategy/media/monitoring-strategy/cloud-models.png)
+![Cloudové modely](/azure/cloud-adoption-framework/strategy/media/monitoring-strategy/cloud-models.png)
 
 Tyto vrstvy lze zjednodušit do následujících kategorií, které jsou dále popsány ve zbývající části tohoto článku. I když se všechny úlohy monitorování ve vašem prostředí nemusí do jedné z těchto kategorií rozčlenit, musí být každý dostatečně blízko konkrétní kategorie, aby se dala použít obecná doporučení.
 

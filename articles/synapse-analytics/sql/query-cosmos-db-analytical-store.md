@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 12/04/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4681039f60154b95eeb7e40196ca33055a192c74
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 2059608faa8ce148e5823e48eff6abf9e71c9b01
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222101"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735429"
 ---
 # <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link-preview"></a>Dotazování na data Azure Cosmos DB pomocí neserverového fondu SQL ve verzi Preview odkazu na Azure synapse
 
@@ -24,7 +24,7 @@ ms.locfileid: "98222101"
 
 Fond SQL bez serveru umožňuje analyzovat data ve vašich Azure Cosmos DBch kontejnerech, které jsou povolené pomocí [Azure synapse s odkazem](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) téměř v reálném čase, aniž by to ovlivnilo výkon transakčních úloh. Nabízí známou syntaxi T-SQL pro dotazování dat z [analytického úložiště](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) a integrovaného připojení k široké škále nástrojů pro Business Intelligence (BI) a ad hoc pro dotazování prostřednictvím rozhraní T-SQL.
 
-Pro dotazování Azure Cosmos DB je podpora celé oblasti [výběru](/sql/t-sql/queries/select-transact-sql?view=sql-server-ver15) plochy podporována prostřednictvím funkce [OpenRowset](develop-openrowset.md) , která zahrnuje většinu [funkcí a operátorů SQL](overview-features.md). Můžete také uložit výsledky dotazu, který čte data z Azure Cosmos DB společně s daty v Azure Blob Storage nebo Azure Data Lake Storage pomocí příkazu [vytvořit externí tabulku jako SELECT](develop-tables-cetas.md#cetas-in-serverless-sql-pool) (CETAS). V současné době nemůžete ukládat výsledky dotazu fondu SQL bez serveru do Azure Cosmos DB pomocí CETAS.
+Pro dotazování Azure Cosmos DB je podpora celé oblasti [výběru](/sql/t-sql/queries/select-transact-sql?view=azure-sqldw-latest&preserve-view=true) plochy podporována prostřednictvím funkce [OpenRowset](develop-openrowset.md) , která zahrnuje většinu [funkcí a operátorů SQL](overview-features.md). Můžete také uložit výsledky dotazu, který čte data z Azure Cosmos DB společně s daty v Azure Blob Storage nebo Azure Data Lake Storage pomocí příkazu [vytvořit externí tabulku jako SELECT](develop-tables-cetas.md#cetas-in-serverless-sql-pool) (CETAS). V současné době nemůžete ukládat výsledky dotazu fondu SQL bez serveru do Azure Cosmos DB pomocí CETAS.
 
 V tomto článku se dozvíte, jak napsat dotaz s neserverovým fondem SQL, který bude dotazovat data z Azure Cosmos DB kontejnerů, které jsou povolené pomocí odkazu Azure synapse. Pak si můžete přečíst další informace o vytváření zobrazení fondu SQL bez serveru nad kontejnery Azure Cosmos DB a jejich propojením s Power BI modely v [tomto kurzu](./tutorial-data-analyst.md).
 

@@ -3,12 +3,12 @@ title: Šifrování zálohovaných dat pomocí klíčů spravovaných zákazník
 description: Přečtěte si, jak Azure Backup umožňuje šifrovat zálohovaná data pomocí klíčů spravovaných zákazníkem (CMK).
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 30bcf907e1a2759c8a9977e50cb4880c2e254ca2
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: d5daa88475e3becde6e513391c555471f80396c5
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562756"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735856"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Šifrování zálohovaných dat pomocí klíčů spravovaných zákazníkem
 
@@ -77,7 +77,7 @@ Azure Backup používá spravovanou identitu přiřazenou systémem k ověření
 
 **S prostředím PowerShell:**
 
-Pomocí příkazu [Update-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/update-azrecoveryservicesvault) povolte spravovanou identitu přiřazenou systémem pro trezor služby Recovery Services.
+Pomocí příkazu [Update-AzRecoveryServicesVault](/powershell/module/az.recoveryservices/update-azrecoveryservicesvault) povolte spravovanou identitu přiřazenou systémem pro trezor služby Recovery Services.
 
 Příklad:
 
@@ -121,7 +121,7 @@ Na **portálu**:
 
 **S prostředím PowerShell**:
 
-Pomocí příkazu [set-AzRecoveryServicesVaultProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultproperty) Povolte šifrování pomocí klíčů spravovaných zákazníkem a přiřaďte nebo aktualizujte šifrovací klíč, který se má použít.
+Pomocí příkazu [set-AzRecoveryServicesVaultProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultproperty) Povolte šifrování pomocí klíčů spravovaných zákazníkem a přiřaďte nebo aktualizujte šifrovací klíč, který se má použít.
 
 Příklad:
 
@@ -290,7 +290,7 @@ Sada šifrování disků je zadaná v části nastavení šifrování v podokně
 
 **S prostředím PowerShell**:
 
-Pomocí příkazu [Get-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) s parametrem [ `-DiskEncryptionSetId <string>` ] [Určete algoritmus DES](https://docs.microsoft.com/powershell/module/az.compute/get-azdiskencryptionset) , který se použije k šifrování obnoveného disku. Další informace o obnovení disků ze zálohy virtuálního počítače najdete v [tomto článku](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#restore-an-azure-vm).
+Pomocí příkazu [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) s parametrem [ `-DiskEncryptionSetId <string>` ] [Určete algoritmus DES](/powershell/module/az.compute/get-azdiskencryptionset) , který se použije k šifrování obnoveného disku. Další informace o obnovení disků ze zálohy virtuálního počítače najdete v [tomto článku](./backup-azure-vms-automation.md#restore-an-azure-vm).
 
 Příklad:
 

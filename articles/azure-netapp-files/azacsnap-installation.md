@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: 5c2182fc80c3745e0238c378c1cade0530393181
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 00aaa5bdc0d48adb735679fc4a71b3431970ef09
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632693"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737163"
 ---
 # <a name="install-azure-application-consistent-snapshot-tool-preview"></a>Nainstalovat nástroj pro vytváření snímků konzistentního vzhledem k aplikacím Azure (Preview)
 
@@ -34,9 +34,9 @@ Samoobslužný instalační program se pokusí určit správné nastavení a ces
 
 Podle pokynů nastavte a spusťte příkazy pro obnovení snímků a zotavení po havárii. Před instalací a používáním nástrojů snímků se doporučuje provést následující kroky jako kořen.
 
-1. **Operační systém je opravený**: informace o [tom, jak nainstalovat a nakonfigurovat SAP Hana (velké instance) v Azure](/azure/virtual-machines/workloads/sap/hana-installation#setting-up-smt-server-for-suse-linux), najdete v tématu věnovaném opravám a SMT instalačnímu programu.
+1. **Operační systém je opravený**: informace o [tom, jak nainstalovat a nakonfigurovat SAP Hana (velké instance) v Azure](../virtual-machines/workloads/sap/hana-installation.md#operating-system), najdete v tématu věnovaném opravám a SMT instalačnímu programu.
 1. **Synchronizace času je nastavena**. Zákazník bude muset poskytnout časový server kompatibilní s protokolem NTP a odpovídajícím způsobem nakonfigurovat operační systém.
-1. **Instalace Hana** : viz pokyny k instalaci Hana v [instalaci SAP NETWEAVER v databázi Hana](https://blogs.msdn.microsoft.com/saponsqlserver/2017/11/21/sap-netweaver-installation-on-hana-database/).
+1. **Instalace Hana** : viz pokyny k instalaci Hana v [instalaci SAP NETWEAVER v databázi Hana](/archive/blogs/saponsqlserver/sap-netweaver-installation-on-hana-database).
 1. **[Povolit komunikaci s úložištěm](#enable-communication-with-storage)** (Další informace najdete v samostatné části): zákazník musí nastavit SSH s dvojicí privátního/veřejného klíče a poskytnout veřejný klíč pro každý uzel, ve kterém se mají spouštět nástroje snímků pro instalaci do back-endu úložiště.
    1. **Pro Azure NetApp Files (podrobnosti najdete v samostatné části)**: zákazník musí vygenerovat soubor pro ověřování instančního objektu.
    1. **Pro velkou instanci Azure (podrobnosti viz samostatný oddíl)**: zákazník musí nastavit SSH s dvojicí privátního/veřejného klíče a poskytnout veřejný klíč pro každý uzel, ve kterém se mají spouštět nástroje snímků pro instalaci do back-endu úložiště Microsoftu.

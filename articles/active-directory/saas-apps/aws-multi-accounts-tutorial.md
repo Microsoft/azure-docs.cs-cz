@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/24/2020
 ms.author: jeedes
-ms.openlocfilehash: e6b4175f4f47c9dd378bec84da2575c079a2079f
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 440fe52689a345eec36c3ac613d6bc2cc2dccc13
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014395"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735452"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws-legacy-tutorial"></a>Kurz: Azure Active Directory Integration with Amazon Web Services (AWS) (kurz starší verze)
 
@@ -119,7 +119,7 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal a n
 
 6. V části **deklarace identity uživatelů** v dialogu **atributy uživatele** NAKONFIGURUJTE atribut tokenu SAML, jak je znázorněno na obrázku výše, a proveďte následující kroky:
 
-    | Název  | Zdrojový atribut  | Obor názvů |
+    | Name  | Zdrojový atribut  | Obor názvů |
     | --------------- | --------------- | --------------- |
     | RoleSessionName | User. userPrincipalName | `https://aws.amazon.com/SAML/Attributes` |
     | Role | User. assignedroles | `https://aws.amazon.com/SAML/Attributes`|
@@ -144,7 +144,7 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal a n
     například Klikněte na **Uložit**.
 
     >[!NOTE]
-    >Další informace o rolích v Azure AD najdete [tady](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui).
+    >Další informace o rolích v Azure AD najdete [tady](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview).
 
 7. Na stránce **nastavit jeden Sign-On se** stránkou SAML klikněte v části **podpisový certifikát SAML** na **Stáhnout** a Stáhněte si **XML federačních metadat** a uložte ho do svého počítače.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/18/2020
 ms.author: jeedes
-ms.openlocfilehash: c3a2f2b04827fac06a0729e45b46765928aedd34
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 8af8d92ca66cfbd3d6223bc9a73125c457164d82
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539796"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735541"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-internet-access-administrator"></a>Kurz: Azure Active Directory integrace s Zscaler Internet Access Administrator
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Zscaler Internet Access Administrator 
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Zscalerí správce internetového přístupu pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Ke konfiguraci integrace služby Azure AD pomocí Správce Zscaler Internet Access potřebujete následující položky:
 
@@ -106,7 +106,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 6. V části **deklarace identity uživatelů** v dialogu **atributy uživatele** NAKONFIGURUJTE atribut tokenu SAML, jak je znázorněno na obrázku výše, a proveďte následující kroky:
 
-    | Název  | Zdrojový atribut  |
+    | Name  | Zdrojový atribut  |
     | ---------| ------------ |
     | Role | User. assignedroles |
 
@@ -119,7 +119,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     d. Klikněte na **Uložit**.
 
     > [!NOTE]
-    > Pokud chcete zjistit, jak nakonfigurovat roli v Azure AD, klikněte prosím [sem](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui) .
+    > Pokud chcete zjistit, jak nakonfigurovat roli v Azure AD, klikněte prosím [sem](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview) .
 
 7. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
@@ -189,7 +189,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 * Klikněte na testovat tuto aplikaci v Azure Portal a měli byste se automaticky přihlášeni k správci internetového přístupu Zscaler, pro který jste nastavili jednotné přihlašování.
 
-* Můžete použít aplikaci Microsoft moje aplikace. Po kliknutí na dlaždici Zscaler Internet Access Administrator v okně moje aplikace byste měli být automaticky přihlášeni k Zscaler správce internetového přístupu, pro který jste nastavili jednotné přihlašování. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Můžete použít aplikaci Microsoft moje aplikace. Po kliknutí na dlaždici Zscaler Internet Access Administrator v okně moje aplikace byste měli být automaticky přihlášeni k Zscaler správce internetového přístupu, pro který jste nastavili jednotné přihlašování. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Další kroky
 

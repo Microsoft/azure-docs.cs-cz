@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/31/2020
 ms.author: robreed
-ms.openlocfilehash: b0502fb05043a54d81d768a7809d19b108cc6248
-ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
+ms.openlocfilehash: d336d38465d601c1cbd4c1e88c0928ab17a1a18f
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97976839"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735709"
 ---
 # <a name="custom-script-extension-for-windows"></a>Rozšíření vlastních skriptů pro virtuální počítače
 
@@ -125,7 +125,7 @@ Tyto položky by měly být považovány za citlivá data a specifikována v kon
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Název | Hodnota/příklad | Typ dat |
+| Name | Hodnota/příklad | Typ dat |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | vydavatel | Microsoft.Compute | řetězec |
@@ -287,7 +287,7 @@ The response content cannot be parsed because the Internet Explorer engine is no
 ```
 ## <a name="virtual-machine-scale-sets"></a>Virtual Machine Scale Sets
 
-Postup nasazení rozšíření vlastních skriptů v sadě škálování najdete v tématu [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension?view=azps-3.3.0) .
+Postup nasazení rozšíření vlastních skriptů v sadě škálování najdete v tématu [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension) .
 
 ## <a name="classic-vms"></a>Klasické virtuální počítače
 
@@ -347,7 +347,7 @@ kde `<n>` je desítkové celé číslo, které se může změnit mezi spouštěn
 
 Při provádění `commandToExecute` příkazu rozšíření nastaví tento adresář (například `...\Downloads\2` ) jako aktuální pracovní adresář. Tento proces umožňuje použití relativních cest k vyhledání souborů stažených prostřednictvím `fileURIs` Vlastnosti. Příklady najdete v následující tabulce.
 
-Vzhledem k tomu, že absolutní cesta ke stažení se může v průběhu času lišit, je lepší vyjádřit výslovný souhlas s relativními cestami Script/File v `commandToExecute` řetězci, kdykoli je to možné. Příklad:
+Vzhledem k tomu, že absolutní cesta ke stažení se může v průběhu času lišit, je lepší vyjádřit výslovný souhlas s relativními cestami Script/File v `commandToExecute` řetězci, kdykoli je to možné. Například:
 
 ```json
 "commandToExecute": "powershell.exe . . . -File \"./scripts/myscript.ps1\""

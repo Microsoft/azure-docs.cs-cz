@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1626ee074d51048dbf45c629f261a550822d746c
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: ea984e527eb526e49c87ce5385ba5715803cc72d
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98200834"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737248"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Základní hodnoty zabezpečení Azure pro automatizaci
 
@@ -556,7 +556,7 @@ Pokud je to možné, postupujte podle Azure Security Center doporučení pro ši
 
 * [Pochopení šifrování při přenosu pomocí Azure](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
-* [Azure Automation vynucení TLS 1,2](/azure/active-directory/hybrid/reference-connect-tls-enforcement)
+* [Azure Automation vynucení TLS 1,2](../active-directory/hybrid/reference-connect-tls-enforcement.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -938,7 +938,7 @@ Při použití funkce Hybrid Runbook Worker je k dispozici několik možností, 
 
 Pro většinu scénářů se může při schůzi a údržbě požadavků na zabezpečení pomáhat šablony základních virtuálních počítačů společnosti Microsoft v kombinaci s konfigurací stavu Azure Automation.
 
-* [Informace o tom, jak stáhnout šablonu virtuálního počítače](../virtual-machines/windows/download-template.md)
+* [Informace o tom, jak stáhnout šablonu virtuálního počítače](/previous-versions/azure/virtual-machines/windows/download-template)
 
 * [Informace o vytváření šablon ARM](../virtual-machines/windows/ps-template.md)
 

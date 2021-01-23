@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 03/06/2019
 ms.author: alkohli
-ms.openlocfilehash: 6e603442bdecf9a627172e24390b06cef573f475
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 10c1680afd6cd6673efe3fe9d2397a0dc6a04859
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96027843"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98738559"
 ---
 V závislosti na operačním systému klienta se postupy pro vzdálené připojení k zařízení liší.
 
@@ -23,6 +23,8 @@ Pomocí těchto kroků se můžete vzdáleně připojit z klienta Windows.
 2. Ujistěte se, že je ve vašem klientovi spuštěná služba Vzdálená správa systému Windows. Na příkazovém řádku zadejte:
 
     `winrm quickconfig`
+
+    Další informace najdete v tématu [instalace a konfigurace pro vzdálená správa systému Windows](/windows/win32/winrm/installation-and-configuration-for-windows-remote-management#quick-default-configuration).
 
 3. Přiřaďte proměnnou k IP adrese zařízení.
 

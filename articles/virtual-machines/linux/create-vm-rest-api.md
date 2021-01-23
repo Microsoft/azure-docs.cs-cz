@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: d6e5195f43991f4d40af57c1ab4b87aaca475b64
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b3eeaf5f343b6026e02d17e4d3bd90dba4b991c4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87373398"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737041"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>Vytvoření virtuálního počítače se systémem Linux, který používá ověřování pomocí protokolu SSH, s REST API
 
@@ -26,7 +26,7 @@ V tomto článku se dozvíte, jak pomocí REST API vytvořit virtuální počít
 Než vytvoříte a odešlete žádost, budete potřebovat:
 
 * `{subscription-id}`Pro vaše předplatné
-  * Pokud máte více předplatných, přečtěte si téma [práce s více předplatnými](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest) .
+  * Pokud máte více předplatných, přečtěte si téma [práce s více předplatnými](/cli/azure/manage-azure-subscriptions-azure-cli) .
 * `{resourceGroupName}`Vytvořili jste předem čas
 * [Virtuální síťové rozhraní](../../virtual-network/virtual-network-network-interface.md) ve stejné skupině prostředků
 * Pár klíčů SSH (můžete [vygenerovat nový](mac-create-ssh-keys.md) , pokud ho ještě nemáte)
@@ -54,7 +54,7 @@ Obecné informace o práci s požadavky na REST API najdete v tématu [komponent
 
 Následující běžné definice se používají k sestavení textu žádosti:
 
-| Name                       | Požaduje se | Typ                                                                                | Description  |
+| Name                       | Požaduje se | Typ                                                                                | Popis  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
 | location                   | True     | řetězec                                                                              | Umístění prostředku. |
 | name                       |          | řetězec                                                                              | Název virtuálního počítače |
@@ -128,7 +128,7 @@ K odeslání tohoto požadavku HTTP můžete použít klienta vaší předvolby.
 
 Existují dvě úspěšné odpovědi, které by mohla operace vytvořit nebo aktualizovat virtuální počítač:
 
-| Název        | Typ                                                                              | Description |
+| Název        | Typ                                                                              | Popis |
 |-------------|-----------------------------------------------------------------------------------|-------------|
 | 200 OK      | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | OK          |
 | 201 vytvořeno | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | Vytvořeno     |

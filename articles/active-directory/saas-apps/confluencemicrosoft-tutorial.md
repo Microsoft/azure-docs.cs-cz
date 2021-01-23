@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/25/2020
 ms.author: jeedes
-ms.openlocfilehash: 939db97a03b69335c9d648c894f453cbb2010edb
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 34365a8bd7a15f502aa89a966adb14807e802cc4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97967051"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736995"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-confluence-saml-sso-by-microsoft"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s Confluence SAML SSO Microsoftu
 
@@ -31,7 +31,7 @@ V tomto kurzu se dozvíte, jak integrovat Confluence SAML SSO Microsoftu pomocí
 
 K povolení jednotného přihlašování použijte účet Microsoft Azure Active Directory se serverem Atlassian Confluence. Díky tomu můžou všichni uživatelé vaší organizace používat přihlašovací údaje Azure AD k přihlášení do aplikace Confluence. Tento modul plug-in používá pro federaci protokol SAML 2,0.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K nakonfigurování integrace služby Azure AD pomocí jednotného přihlašování Confluence SAML od Microsoftu budete potřebovat následující položky:
 
@@ -252,7 +252,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 * Přejít na Confluence jednotné přihlašování SAML pomocí přihlašovací adresy URL Microsoftu přímo a zahájit tok přihlášení.
 
-* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici Confluence SSO SSO Microsoft v části Moje aplikace, přesměruje se na Confluence jednotné přihlašování SAML prostřednictvím přihlašovací adresy URL Microsoftu. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici Confluence SSO SSO Microsoft v části Moje aplikace, přesměruje se na Confluence jednotné přihlašování SAML prostřednictvím přihlašovací adresy URL Microsoftu. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Další kroky

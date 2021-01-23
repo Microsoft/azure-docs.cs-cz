@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 08/03/2020
 ms.author: matjazl
-ms.openlocfilehash: 31ae5b780bf451e29a97f04202f804db27fc387a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: bd6f32213a511987c0508dcc954252b2fd4e48f6
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452932"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737587"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>Nejčastější dotazy k rozhraní Azure API pro FHIR
 
@@ -105,6 +105,12 @@ Níže jsou uvedeny některé příklady:
 ### <a name="what-is-the-default-sort-when-searching-for-resources-in-azure-api-for-fhir"></a>Co je výchozí řazení při hledání prostředků v Azure API pro FHIR?
 
 Podporujeme řazení podle data poslední aktualizace: _sort = _lastUpdated. Další informace o dalších podporovaných parametrech hledání najdete na [stránce podporované funkce](./fhir-features-supported.md#search).
+
+### <a name="does-the-azure-api-for-fhir-support-everything"></a>$Everything podporuje rozhraní API Azure pro FHIR? 
+
+Ne. V tuto chvíli nepodporujeme $everything. Je však možné dosáhnout pomocí dvou volání rozhraní API. Chcete-li například získat pacient $ All, můžete nejprve záznam pacienta pomocí/Patient/[ID] a pak druhé volání načíst všechna data pacienta pomocí/Patient/[ID]/*.
+
+Další podrobnosti najdete v tomto [příspěvku komunity](https://chat.fhir.org/#narrow/stream/179166-implementers/topic/.24everything.20with.20_type). 
 
 ### <a name="how-does-export-work"></a>Jak $export funguje?
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 17b99a9d3fa6b2934705d913170f2f617c856998
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 1655c48eeb9227bf934c7fd9bb37610327b2b98c
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915755"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736267"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-powershell"></a>Nahrání virtuálního pevného disku do Azure nebo zkopírování spravovaného disku do jiné oblasti – Azure PowerShell
 
@@ -44,7 +44,7 @@ Tento druh spravovaného disku má dva jedinečné stavy:
 
 Než budete moct vytvořit prázdný standardní pevný disk pro nahrávání, budete potřebovat velikost souboru virtuálního pevného disku, který chcete nahrát (v bajtech). Ukázkový kód vám poskytne za vás, ale k tomu můžete použít: `$vhdSizeBytes = (Get-Item "<fullFilePathHere>").length` . Tato hodnota se používá při zadání parametru **-UploadSizeInBytes** .
 
-Teď v místním prostředí vytvořte prázdný standardní pevný disk pro nahrávání zadáním nastavení **nahrávání** v parametru **-CreateOption** a také parametru **-UploadSizeInBytes** v rutině [New-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig?view=azps-1.8.0&preserve-view=true) . Pak zavolejte [New-AzDisk](/powershell/module/az.compute/new-azdisk?view=azps-1.8.0&preserve-view=true) a vytvořte disk.
+Teď v místním prostředí vytvořte prázdný standardní pevný disk pro nahrávání zadáním nastavení **nahrávání** v parametru **-CreateOption** a také parametru **-UploadSizeInBytes** v rutině [New-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig) . Pak zavolejte [New-AzDisk](/powershell/module/az.compute/new-azdisk) a vytvořte disk.
 
 Nahraďte `<yourdiskname>` , `<yourresourcegroupname>` a `<yourregion>` poté spusťte následující příkazy:
 

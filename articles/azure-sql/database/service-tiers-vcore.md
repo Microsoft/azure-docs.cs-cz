@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
 ms.date: 01/15/2021
-ms.openlocfilehash: 6589f451d4db8f2ed77ce70a2bdfa9d76927c1e2
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 35cdfdbdc04d0c88bc49c024ea7465537583e0d7
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251212"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735507"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>Přehled modelu vCore – Azure SQL Database a Azure SQL Managed instance 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -34,7 +34,7 @@ Mezi možnosti vrstvy služeb v modelu vCore patří Pro obecné účely, Pro d�
 |-|**Obecné použití**|**Pro důležité obchodní informace**|**Hyperškálování**|
 |---|---|---|---|
 |Nejvhodnější pro|Většina obchodních úloh. Nabízí uživatelsky orientované, vyvážené a škálovatelné možnosti výpočtů a úložiště. |Nabízí podnikovým aplikacím nejvyšší odolnost proti chybám pomocí několika izolovaných replik a poskytuje nejvyšší výkon vstupně-výstupních operací na jednu repliku databáze.|Většina obchodních úloh s vysokou škálovatelností úložiště a požadavky na škálování pro čtení.  Nabízí vyšší odolnost proti chybám tím, že umožňuje konfiguraci více než jedné repliky izolované databáze. |
-|Úložiště|Používá vzdálené úložiště.<br/>**SQL Database zřízené výpočetní** prostředky:<br/>5 GB – 4 TB<br/>**Výpočetní** prostředí bez serveru:<br/>5 GB – 3 TB<br/>**Spravovaná instance SQL**: 32 GB až 8 TB |Používá místní úložiště SSD.<br/>**SQL Database zřízené výpočetní** prostředky:<br/>5 GB – 4 TB<br/>**Spravovaná instance SQL**:<br/>32 GB AŽ 4 TB |Flexibilní autogrow úložiště podle potřeby. Podporuje až 100 TB úložiště. Používá místní úložiště SSD pro místní mezipaměť fondu vyrovnávací paměti a místní úložiště dat. Používá vzdálené úložiště Azure jako konečné dlouhodobé úložiště dat. |
+|Storage|Používá vzdálené úložiště.<br/>**SQL Database zřízené výpočetní** prostředky:<br/>5 GB – 4 TB<br/>**Výpočetní** prostředí bez serveru:<br/>5 GB – 3 TB<br/>**Spravovaná instance SQL**: 32 GB až 8 TB |Používá místní úložiště SSD.<br/>**SQL Database zřízené výpočetní** prostředky:<br/>5 GB – 4 TB<br/>**Spravovaná instance SQL**:<br/>32 GB AŽ 4 TB |Flexibilní autogrow úložiště podle potřeby. Podporuje až 100 TB úložiště. Používá místní úložiště SSD pro místní mezipaměť fondu vyrovnávací paměti a místní úložiště dat. Používá vzdálené úložiště Azure jako konečné dlouhodobé úložiště dat. |
 |IOPS a propustnost (přibližná)|**SQL Database**: Přečtěte si o omezeních prostředků pro izolované [databáze](resource-limits-vcore-single-databases.md) a [elastické fondy](resource-limits-vcore-elastic-pools.md).<br/>**Spravovaná instance SQL**: Přečtěte si téma [Přehled omezení prostředků spravované instance Azure SQL](../managed-instance/resource-limits.md#service-tier-characteristics).|Viz omezení prostředků pro izolované [databáze](resource-limits-vcore-single-databases.md) a [elastické fondy](resource-limits-vcore-elastic-pools.md).|Škálovatelná architektura je Vícevrstvá architektura s ukládáním do mezipaměti na více úrovních. Platnost IOPS a propustnosti budou záviset na zatížení.|
 |Dostupnost|1 replika, žádné repliky na úrovni čtení|3 repliky, 1 [replika pro čtení a škálování](read-scale-out.md)<br/>zóna – redundantní vysoká dostupnost (HA)|1 replika pro čtení i zápis a 0-4 replik v režimu [čtení a škálování](read-scale-out.md)|
 |Zálohování|[Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)](../../storage/common/geo-redundant-design.md), 7-35 dní (ve výchozím nastavení 7 dnů)|[RA-GRS](../..//storage/common/geo-redundant-design.md), 7-35 dní (ve výchozím nastavení 7 dnů)|Zálohování na základě snímků ve vzdáleném úložišti Azure. Obnoví použití těchto snímků pro rychlé obnovení. Zálohy jsou okamžité a neovlivňují výkon vstupně-výstupních operací ve výpočetním prostředí. Obnovení je rychlé a nejedná se o datovou operaci (trvá to jen v minutách).|
@@ -106,7 +106,7 @@ To enable M-series hardware for a subscription and region, a support request mus
 > DC-Series je aktuálně ve **verzi Public Preview**.
 
 - Hardware DC-Series používá procesory Intel s technologií Intel SGX (software Guard Extension).
-- Pro [Always Encrypted s zabezpečeným enclaves](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-enclaves), která není podporovaná pro jiné konfigurace hardwaru, se vyžaduje DC-Series.
+- Pro [Always Encrypted s zabezpečeným enclaves](/sql/relational-databases/security/encryption/always-encrypted-enclaves), která není podporovaná pro jiné konfigurace hardwaru, se vyžaduje DC-Series.
 - DC-Series jsou navržené pro úlohy, které zpracovávají citlivá data a možnosti zpracování důvěrných dotazů, které poskytuje Always Encrypted s využitím zabezpečených enclaves.
 - Hardware DC-Series poskytuje vyvážené výpočetní a paměťové prostředky.
 

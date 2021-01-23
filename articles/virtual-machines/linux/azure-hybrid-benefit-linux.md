@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: 990c396c859477c83e0ef421659a299920ee0c35
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 44d78d9a47f86520a3a4778806c4ddc0f96eec94
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209130"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737893"
 ---
 # <a name="how-azure-hybrid-benefit-applies-for-linux-virtual-machines"></a>Jak Zvýhodněné hybridní využití Azure platí pro virtuální počítače se systémem Linux
 
@@ -227,4 +227,4 @@ V této části jsou uvedené běžné problémy, se kterými se můžete setkat
 | Akce nemohla být dokončena, protože naše záznamy ukazují, že jste v předplatném Azure nepovolili přístup do cloudu Red Hat.... | Pokud chcete využít výhod s virtuálními počítači s RHEL, musíte nejdřív [zaregistrovat vaše předplatná Azure pomocí služby Red Hat Cloud Access](https://access.redhat.com/management/cloud).
 
 ## <a name="next-steps"></a>Další kroky
-* [Naučte se vytvářet a aktualizovat virtuální počítače a přidávat typy licencí (RHEL_BYOS, SLES_BYOS) pro Zvýhodněné hybridní využití Azure pomocí Azure CLI.](/cli/azure/vm?preserve-view=true&view=azure-cli-latest)
+* [Naučte se vytvářet a aktualizovat virtuální počítače a přidávat typy licencí (RHEL_BYOS, SLES_BYOS) pro Zvýhodněné hybridní využití Azure pomocí Azure CLI.](/cli/azure/vm)

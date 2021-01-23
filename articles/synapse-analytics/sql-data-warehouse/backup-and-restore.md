@@ -11,12 +11,12 @@ ms.date: 11/13/2020
 ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019"
-ms.openlocfilehash: d8c680ec30dcecc56c064f08e4690cbbde9c2377
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 842f2f92133664f58ca60d6d30181d48d63271eb
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98679909"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736301"
 ---
 # <a name="backup-and-restore-in-azure-synapse-dedicated-sql-pool"></a>Zálohování a obnovení ve vyhrazeném fondu SQL ve službě Azure synapse
 
@@ -71,8 +71,16 @@ Když vyřadíte vyhrazený fond SQL, vytvoří se konečný snímek a uloží s
 
 Geografické zálohování se vytvoří jednou denně pro [spárované datové centrum](../../best-practices-availability-paired-regions.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). RPO pro geografické obnovení je 24 hodin. Geografickou zálohu můžete obnovit na server v libovolné jiné oblasti, kde je podporovaný vyhrazený fond SQL. Geografická záloha zajišťuje, aby bylo možné obnovit datový sklad pro případ, že nebudete mít přístup k bodům obnovení v primární oblasti.
 
+Pokud nepotřebujete pro vyhrazený fond SQL geografickou zálohu, můžete je zakázat a uložit na náklady na úložiště pro zotavení po havárii. Postup najdete v tématu Návod [: zakázání geografického zálohování pro vyhrazený fond SQL (dřív SQL DW)](disable-geo-backup.md). Pamatujte, že pokud se geografické zálohy zakáže, nebudete moci obnovit vyhrazený fond SQL do vaší spárované oblasti Azure, pokud vaše primární datové centrum Azure není k dispozici. 
+
 > [!NOTE]
 > Pokud pro geografické zálohy vyžadujete kratší cíl bodu obnovení, Hlasujte [sem](https://feedback.azure.com/forums/307516-sql-data-warehouse)tuto možnost. Můžete také vytvořit uživatelem definovaný bod obnovení a obnovit ho z nově vytvořeného bodu obnovení do nového datového skladu v jiné oblasti. Po obnovení máte datový sklad online a můžete ho pozastavit neomezeně, aby se ušetřily náklady na výpočetní výkon. Pozastavená databáze má za následek poplatky za úložiště za Premium Storageou sazbu za Azure. Pokud potřebujete aktivní kopii datového skladu, můžete pokračovat, což by mělo trvat jen několik minut.
+
+## <a name="data-residency"></a>Rezidence dat 
+
+Pokud se spárované datové centrum nachází mimo vaši zeměpisnou hranici, můžete zajistit, aby data zůstala v rámci geografické hranice tím, že se z geograficky redundantního úložiště zachová. To se dá udělat při zřizování vyhrazeného fondu SQL (dřív SQL DW) prostřednictvím možnosti geograficky redundantního úložiště při vytváření nebo obnovování vyhrazeného fondu SQL (dřív SQL DW). 
+
+Pokud se chcete ujistit, že spárované datové centrum je v jiné zemi, podívejte se na [spárované oblasti Azure](../../best-practices-availability-paired-regions.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
 ## <a name="backup-and-restore-costs"></a>Náklady na zálohování a obnovení
 

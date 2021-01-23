@@ -1,15 +1,15 @@
 ---
 title: Uspořádání prostředků pomocí skupin pro správu – zásady správného řízení Azure
 description: Další informace o skupinách pro správu, fungování jejich oprávnění a způsobu jejich využití
-ms.date: 11/17/2020
+ms.date: 01/22/2021
 ms.topic: overview
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 9f23a279733169f17f0f82cb80aa08bfafcd45d0
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: e86501527ff68319fc8d2e942e7ffa977dcecbe6
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030667"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736318"
 ---
 # <a name="what-are-azure-management-groups"></a>Co jsou skupiny pro správu Azure?
 
@@ -92,13 +92,13 @@ Následující diagram ukazuje role a podporované akce pro skupiny pro správu.
 
 | Název role Azure             | Vytvořit | přejmenování | Pøesunout\*\* | Odstranit | Přiřazení přístupu | Přiřazení zásad | Číst  |
 |:-------------------------- |:------:|:------:|:--------:|:------:|:-------------:| :------------:|:-----:|
-|Vlastník                       | X      | X      | X        | X      | X             | X             | X     |
-|Přispěvatel                 | X      | X      | X        | X      |               |               | X     |
-|G Přispěvatel\*            | X      | X      | X        | X      |               |               | X     |
-|Čtenář                      |        |        |          |        |               |               | X     |
-|Čtečka MG\*                 |        |        |          |        |               |               | X     |
-|Přispěvatel zásad prostředků |        |        |          |        |               | X             |       |
-|Správce uživatelských přístupů   |        |        |          |        | X             | X             |       |
+|Vlastník                       | ×      | ×      | ×        | ×      | ×             | ×             | ×     |
+|Přispěvatel                 | ×      | ×      | ×        | ×      |               |               | ×     |
+|G Přispěvatel\*            | ×      | ×      | ×        | ×      |               |               | ×     |
+|Čtenář                      |        |        |          |        |               |               | ×     |
+|Čtečka MG\*                 |        |        |          |        |               |               | ×     |
+|Přispěvatel zásad prostředků |        |        |          |        |               | ×             |       |
+|Správce uživatelských přístupů   |        |        |          |        | ×             | ×             |       |
 
 \*: MG čtenář a g Reader umožňují uživatelům provádět tyto akce pouze v oboru skupiny pro správu.  
 \*\*: Přiřazení rolí u kořenové skupiny pro správu se nevyžadují k přesunu předplatného nebo skupiny pro správu do a z ní. Další informace o přesunu položek v rámci hierarchie najdete v tématu věnovaném [správě prostředků s využitím skupin pro správu](manage.md).
@@ -162,16 +162,16 @@ Tento scénář můžete vyřešit několika různými možnostmi:
 - Před přesunutím předplatného na nový nadřazený prvek MG odeberte přiřazení role z předplatného.
 - Přidejte předplatné do oboru přiřazení definice role.
 - Změňte rozsah přiřazení v rámci definice role. V předchozím příkladu můžete aktualizovat obory přiřazení z marketingu na kořenovou skupinu pro správu, aby definice mohla být dostupná jak v obou větvích hierarchie.  
-- Vytvořte další vlastní roli, která bude definovaná ve druhé větvi. Tato nová role bude vyžadovat, aby se u předplatného změnilo i přiřazení role.  
+- Vytvořte další vlastní roli, která je definovaná ve druhé větvi. Tato nová role vyžaduje, aby přiřazení role pro předplatné bylo také změněno.  
 
 ### <a name="limitations"></a>Omezení  
 
 Existují určitá omezení, která existují při použití vlastních rolí ve skupinách pro správu. 
 
  - V oborech přiřazení nové role můžete definovat jenom jednu skupinu pro správu. Toto omezení je zavedeno, aby se snížil počet situací, kdy se odpojí definice rolí a přiřazení rolí. K této situaci dochází, když se předplatné nebo skupina pro správu s přiřazením role přesune na jiný nadřazený prvek, který nemá definici role.  
- - Akce roviny dat poskytovatele prostředků nelze definovat ve vlastních rolích skupiny pro správu. Toto omezení je zavedeno, protože došlo k potížím s latencí při aktualizaci poskytovatelů prostředků datové roviny.
-   Tato latence se právě zpracovává a tyto akce budou z definice role zakázané, aby se snížila rizika.
- - Azure Resource Manager neověřuje existenci skupiny pro správu v oboru přiřazení definice role. Pokud je v seznamu uvedeno překlep nebo nesprávné ID skupiny pro správu, bude definice role stále vytvořena.
+ - Akce roviny dat poskytovatele prostředků nelze definovat ve vlastních rolích skupiny pro správu. Toto omezení je zavedeno, protože došlo k potížím s latencí při aktualizaci poskytovatelů prostředků datové roviny. Tato latence se právě zpracovává a tyto akce budou z definice role zakázané, aby se snížila rizika.
+ - Azure Resource Manager neověřuje existenci skupiny pro správu v oboru přiřazení definice role. Pokud je v seznamu uveden překlep nebo nesprávné ID skupiny pro správu, je definice role stále vytvořena.
+ - Přiřazení role pro roli s _Dataactions_ se nepodporuje. Místo toho vytvořte přiřazení role v oboru předplatného.
 
 > [!IMPORTANT]
 > Přidání skupiny pro správu do `AssignableScopes` je aktuálně ve verzi Preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí.

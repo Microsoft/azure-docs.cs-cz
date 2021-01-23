@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/21/2020
 ms.author: jeedes
-ms.openlocfilehash: fec95dc033eb5eacaf79f5bbd2b6b294628667b9
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 3d784979876857e94c1e09ffc5b7bef11c0a0d04
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97725068"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735961"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-easysso-for-bamboo"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s EasySSO pro Bamboo
 
@@ -94,7 +94,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho očekává aplikace EasySSO for Bamboo u odpovědi SAML méně dalších atributů, které jsou uvedené dál. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
     
-    | Název | Zdrojový atribut |
+    | Name | Zdrojový atribut |
     | ---------------| --------- |
     | urn: OID: 0.9.2342.19200300.100.1.1 | User. userPrincipalName |
     | urn: OID: 0.9.2342.19200300.100.1.3 | uživatel. pošta |
@@ -199,7 +199,7 @@ Pokud však nechcete povolit Automatické zřizování uživatelů při prvním 
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí mých aplikací.
 
-Když kliknete na dlaždici EasySSO for Bamboo v okně moje aplikace, měli byste se automaticky přihlásit k instanci Bamboo, pro kterou jste nastavili jednotné přihlašování. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když kliknete na dlaždici EasySSO for Bamboo v okně moje aplikace, měli byste se automaticky přihlásit k instanci Bamboo, pro kterou jste nastavili jednotné přihlašování. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](../user-help/my-apps-portal-end-user-access.md).
 
 ### <a name="sp-initiated-workflow"></a>Pracovní postup iniciované v SP
 

@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 09/10/2020
-ms.openlocfilehash: 117bc71ba304445e3186b4e633f5888647be9223
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 38f37ff2fe150a9e1998fbe5e963b8737a6e1533
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685625"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737961"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Poznámky k verzi Azure Machine Learning
 
@@ -36,6 +36,7 @@ V tomto článku se dozvíte o Azure Machine Learning verzích.  Úplný referen
     + Opravený problém služby. Load () pro výběr změn v score.py v místním nasazení.
     + `run.get_details()` obsahuje další pole s názvem "použít", které zobrazuje jméno autora pro tento běh.
     + Upravená dokumentace k metodě model. Register, která uvádí, jak registrovat model přímo v běhu
+    + Opravený problém při zpracování změny stavu připojení IOT-Server.
    
 
 ## <a name="2020-12-31"></a>2020-12-31
@@ -895,7 +896,7 @@ Teď můžete vytvářet, upravovat a sdílet notebooky a soubory ve strojovém 
 
 Z studia získáte přístup k následujícím webovým nástrojům pro vytváření obsahu:
     
-| Webový nástroj  |     Description  |
+| Webový nástroj  |     Popis  |
 |---|---|
 | Notebooky Azure ML Studio   |     První vytváření obsahu pro soubory poznámkových bloků a podpora všech operací, které jsou dostupné v sadě SDK Azure ML Python SDK. | 
 
@@ -1407,7 +1408,7 @@ Z studia můžete provádět výukové, testovací, nasazování a správu Azure
 
 Z studia získáte přístup k následujícím webovým nástrojům pro vytváření obsahu:
 
-| Webový nástroj | Description | 
+| Webový nástroj | Popis | 
 |-|-|-|
 | Virtuální počítač poznámkového bloku (Preview) | Plně spravovaná cloudová pracovní stanice | 
 | [Automatizované Machine Learning](tutorial-first-experiment-automated-ml.md) (Preview) | Neexistují žádné zkušenosti s kódem pro automatizaci vývoje modelů strojového učení. | 

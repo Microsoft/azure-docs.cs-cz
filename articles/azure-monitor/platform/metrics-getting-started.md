@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 2bf56379a32bf8035ea2d0d3fe797776ec6ba40d
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: e31eb8deb3102ab03809f01e33b1e6548113dae4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250396"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736385"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Začínáme s Průzkumníkem metrik Azure
 
@@ -29,7 +29,7 @@ Azure Monitor Průzkumník metrik je součástí portál Microsoft Azure, která
 
 Pokud chcete vytvořit graf metriky, ze svého prostředku, skupiny prostředků, předplatného nebo Azure Monitorho zobrazení, otevřete kartu **metriky** a proveďte následující kroky:
 
-1. Klikněte na tlačítko Vybrat obor a otevřete tak výběr oboru prostředků. To vám umožní vybrat prostředky, pro které chcete zobrazit metriky. Pokud jste v nabídce prostředku spustili průzkumníka metrik, prostředek by se už měl naplnit. Pokud se chcete dozvědět, jak zobrazit metriky napříč více prostředky, [Přečtěte si tento článek](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-dynamic-scope).
+1. Klikněte na tlačítko Vybrat obor a otevřete tak výběr oboru prostředků. To vám umožní vybrat prostředky, pro které chcete zobrazit metriky. Pokud jste v nabídce prostředku spustili průzkumníka metrik, prostředek by se už měl naplnit. Pokud se chcete dozvědět, jak zobrazit metriky napříč více prostředky, [Přečtěte si tento článek](./metrics-dynamic-scope.md).
     > ![Výběr prostředku](./media/metrics-getting-started/scope-picker.png)
 
 2. U některých prostředků je nutné vybrat obor názvů. Obor názvů je jenom způsob, jak uspořádat metriky, abyste je mohli snadno najít. Například účty úložiště mají samostatné obory názvů pro ukládání souborů, tabulek, objektů BLOB a metriky front. Mnoho typů prostředků má pouze jeden obor názvů.

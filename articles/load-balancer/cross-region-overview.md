@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: 4a9663e1356f616ed5f428c993f3367ce67cdbb5
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: fb03d0f8c2dc1f3812d417bc5a5d49857f3c1051
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610908"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737672"
 ---
 # <a name="cross-region-load-balancer-preview"></a>Nástroj pro vyrovnávání zatížení mezi oblastmi (Preview)
 
@@ -35,7 +35,7 @@ Azure Standard Load Balancer podporuje vyrovnávání zatížení mezi oblastmi,
 * [Sestavit v existujícím řešení vyrovnávání zatížení](#build-cross-region-solution-on-existing-azure-load-balancer) bez výukové křivky
 
 > [!IMPORTANT]
-> Nástroj pro vyrovnávání zatížení mezi oblastmi je momentálně ve verzi Preview a je možné ho nasadit na portálu. Přihlaste se, abyste **https://portal.azure.com** mohli tuto funkci Zobrazit a nasadit. </br> </br>
+> Nástroj pro vyrovnávání zatížení mezi oblastmi je momentálně ve verzi Preview a je možné ho nasadit na portálu. Přihlaste se, abyste **https://preview.portal.azure.com** mohli tuto funkci Zobrazit a nasadit. </br> </br>
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Vyrovnávání zatížení mezi oblastmi nabízí stejné výhody vysokého výkonu a nízké latence jako místní Nástroj pro vyrovnávání zatížení (Standard). 
@@ -126,10 +126,10 @@ Nástroj pro vyrovnávání zatížení mezi oblastmi směruje provoz na přísl
 * Spojené království – jih 
 * Southeast Asia 
 * USA – středosever 
-* Japan East 
+* Japonsko – východ 
 * Východní Asie 
 * USA – středozápad 
-* Australia Southeast 
+* Austrálie – jihovýchod 
 * Austrálie – východ 
 * Indie – střed 
 

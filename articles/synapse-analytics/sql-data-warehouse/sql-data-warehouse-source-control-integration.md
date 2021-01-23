@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 56b417c65eae0df9b073cf72fe87ce0002fc2ba0
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 0eeea04cd42498c5ba066a3a3e977c92b2906292
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98115833"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98738029"
 ---
 # <a name="source-control-integration-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Integrace správy zdrojového kódu pro vyhrazený fond SQL ve službě Azure synapse Analytics
 
@@ -51,7 +51,7 @@ V tomto kurzu se naučíte, jak integrovat projekt databáze SSDT (SQL Server Da
 
    ![Klonovat úložiště](./media/sql-data-warehouse-source-control-integration/4-clone-repo.png "Klonovat úložiště")
 
-Další informace o propojení projektů pomocí sady Visual Studio naleznete v tématu [připojení k projektům v Team Explorer](/visualstudio/ide/connect-team-project?view=vs-2019). Pokyny pro klonování úložiště pomocí sady Visual Studio najdete v článku o [klonování a ukončování úložiště Git](/azure/devops/repos/git/clone?tabs=visual-studio&view=azure-devops) . 
+Další informace o propojení projektů pomocí sady Visual Studio naleznete v tématu [připojení k projektům v Team Explorer](/visualstudio/ide/connect-team-project?view=vs-2019&preserve-view=true). Pokyny pro klonování úložiště pomocí sady Visual Studio najdete v článku o [klonování a ukončování úložiště Git](/azure/devops/repos/git/clone?tabs=visual-studio&view=azure-devops&preserve-view=true) . 
 
 ## <a name="create-and-connect-your-project"></a>Vytvoření a připojení projektu
 

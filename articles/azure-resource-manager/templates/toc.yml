@@ -298,8 +298,6 @@
       href: template-best-practices.md
     - name: Nejčastější dotazy
       href: frequently-asked-questions.md
-    - name: Specifikace šablon
-      href: template-specs.md
     - name: Šablony pro konzistenci cloudu
       href: templates-cloud-consistency.md
     - name: Režimy nasazení
@@ -423,6 +421,12 @@
           href: test-toolkit.md
         - name: Testovací případy
           href: test-cases.md
+    - name: Specifikace šablon
+      items:
+        - name: Vytvoření a nasazení specifikace šablony
+          href: template-specs.md
+        - name: Převést galerii šablon portálu
+          href: convert-to-template-spec.md
     - name: CI/CD
       items:
         - name: Šablony ARM s kanály

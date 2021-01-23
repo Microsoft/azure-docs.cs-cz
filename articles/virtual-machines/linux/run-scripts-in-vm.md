@@ -7,12 +7,12 @@ author: bobbytreed
 ms.author: robreed
 ms.date: 05/02/2018
 ms.topic: how-to
-ms.openlocfilehash: 0f91bb33116947312173d8f22929b8548d23a9ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 151bc827cc92c749edd2899cb331eebd22e171a7
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87292272"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737825"
 ---
 # <a name="run-scripts-in-your-linux-vm"></a>Spouštění skriptů na VIRTUÁLNÍm počítači se systémem Linux
 
@@ -33,7 +33,7 @@ Pokud chcete automatizovat úlohy nebo řešit problémy, možná budete muset n
 Funkce [příkazu Run](run-command.md) umožňuje správu virtuálních počítačů a aplikací a odstraňování potíží pomocí skriptů a je k dispozici i v případě, že je počítač nedostupný, například pokud brána firewall hosta nemá otevřený port RDP nebo SSH.
 
 * Spouštění skriptů na virtuálních počítačích Azure.
-* Dá se spustit pomocí [Azure Portal](run-command.md), [REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), [Azure CLI](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke)nebo [PowerShellu](/powershell/module/az.compute/invoke-azvmruncommand) .
+* Dá se spustit pomocí [Azure Portal](run-command.md), [REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), [Azure CLI](/cli/azure/vm/run-command#az_vm_run_command_invoke)nebo [PowerShellu](/powershell/module/az.compute/invoke-azvmruncommand) .
 * Rychlé spuštění skriptu a zobrazení výstupu a opakování podle potřeby v Azure Portal.
 * Skript lze zadat přímo nebo můžete spustit jeden z vestavěných skriptů.
 * Spusťte skript prostředí PowerShell na počítačích s Windows a skriptu bash v počítačích se systémem Linux.

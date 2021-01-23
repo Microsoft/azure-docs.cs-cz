@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: f407f9ee2ea0ca73b29e4fde9d542c005f78a929
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 1e5a04d385ba6c6dda5b52b23fd4793860f991dc
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98200443"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737197"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Osvědčené postupy pro konfiguraci aplikací Azure
 
@@ -92,7 +92,7 @@ Konfigurace aplikace je regionální služba. Pro aplikace s různými konfigura
 
 ## <a name="client-applications-in-app-configuration"></a>Klientské aplikace v konfiguraci aplikace 
 
-Nadměrné požadavky na konfiguraci aplikací můžou mít za následek omezení nebo překročení limitu. Aplikace využívají ukládání do mezipaměti a inteligentní aktualizace aktuálně dostupné k optimalizaci počtu požadavků, které odesílají. Tento proces se dá zrcadlit v klientských aplikacích s vysokým objemem, protože se vyhnete přímým připojením k úložišti konfigurace. Místo toho se klientské aplikace připojí k vlastní službě a tato služba komunikuje s úložištěm konfigurace. Toto řešení proxy může zajistit, aby klientské aplikace nepřístuply k omezení omezení v úložišti konfigurací. Další informace o omezování najdete v [nejčastějších dotazech](https://docs.microsoft.com/azure/azure-app-configuration/faq#are-there-any-limits-on-the-number-of-requests-made-to-app-configuration).  
+Nadměrné požadavky na konfiguraci aplikací můžou mít za následek omezení nebo překročení limitu. Aplikace využívají ukládání do mezipaměti a inteligentní aktualizace aktuálně dostupné k optimalizaci počtu požadavků, které odesílají. Tento proces se dá zrcadlit v klientských aplikacích s vysokým objemem, protože se vyhnete přímým připojením k úložišti konfigurace. Místo toho se klientské aplikace připojí k vlastní službě a tato služba komunikuje s úložištěm konfigurace. Toto řešení proxy může zajistit, aby klientské aplikace nepřístuply k omezení omezení v úložišti konfigurací. Další informace o omezování najdete v [nejčastějších dotazech](./faq.md#are-there-any-limits-on-the-number-of-requests-made-to-app-configuration).  
 
 ## <a name="next-steps"></a>Další kroky
 

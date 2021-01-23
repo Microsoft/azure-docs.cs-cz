@@ -3,12 +3,12 @@ title: Zálohování Azure Managed Disks
 description: Naučte se, jak zálohovat Azure Managed Disks z Azure Portal.
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 2169e2f44e3ffb2c05c674d633efabed2c531878
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: ca86550c4dec4b51c60d9ecdef124e38783a3764
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573118"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98738148"
 ---
 # <a name="back-up-azure-managed-disks-in-preview"></a>Zálohování Azure Managed Disks (ve verzi Preview)
 
@@ -17,7 +17,7 @@ ms.locfileid: "98573118"
 >
 >[Vyplňte tento formulář](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u) a zaregistrujte se do verze Preview.
 
-Tento článek vysvětluje, jak zálohovat službu [Azure Managed disk](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview) z Azure Portal.
+Tento článek vysvětluje, jak zálohovat službu [Azure Managed disk](../virtual-machines/managed-disks-overview.md) z Azure Portal.
 
 V tomto článku se naučíte:
 
@@ -46,7 +46,7 @@ Trezor záloh je entita úložiště v Azure, která uchovává data pro různé
 
    ![Iniciace: vytvořit trezor](./media/backup-managed-disks/initiate-create-vault.png)
 
-1. Na kartě **základy** zadejte předplatné, skupinu prostředků, název trezoru záloh, název oblasti a redundanci záložního úložiště. Pokračujte výběrem možnosti **zkontrolovat + vytvořit**. Přečtěte si další informace o [Vytvoření trezoru záloh](https://docs.microsoft.com/azure/backup/backup-vault-overview#create-a-backup-vault).
+1. Na kartě **základy** zadejte předplatné, skupinu prostředků, název trezoru záloh, název oblasti a redundanci záložního úložiště. Pokračujte výběrem možnosti **zkontrolovat + vytvořit**. Přečtěte si další informace o [Vytvoření trezoru záloh](./backup-vault-overview.md#create-a-backup-vault).
 
    ![Kontrola a vytvoření trezoru](./media/backup-managed-disks/review-and-create.png)
 
@@ -67,7 +67,7 @@ Trezor záloh je entita úložiště v Azure, která uchovává data pro různé
 
    ![Vybrat četnost plánu zálohování](./media/backup-managed-disks/backup-schedule-frequency.png)
 
-   Azure disk Backup nabízí více záloh za den. Pokud potřebujete častější zálohování, vyberte **hodinovou** četnost zálohování s možností provádět zálohování s intervaly každých 4, 6, 8 nebo 12 hodin. Zálohy jsou plánovány na základě zvoleného **časového** intervalu. Pokud například vyberete **každou 4 hodiny**, zálohování se povede přibližně v intervalu každých 4 hodin, aby se zálohy rovnoměrně rozdělují mezi jednotlivé dny. Pokud je zálohování jednou denně dostatečné, zvolte **denní** četnost zálohování. V denní četnosti zálohování můžete zadat čas, kdy se mají zálohy vymezit. Je důležité si uvědomit, že čas dne označuje čas zahájení zálohování a ne čas, kdy se zálohování dokončí. Čas potřebný k dokončení operace zálohování závisí na různých faktorech, včetně velikosti disku, a rychlosti přenosů mezi po sobě jdoucími zálohami. Zálohování disku Azure je ale zálohování bez agentů, které používá [přírůstkové snímky](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal), což nemá vliv na výkon produkčních aplikací.
+   Azure disk Backup nabízí více záloh za den. Pokud potřebujete častější zálohování, vyberte **hodinovou** četnost zálohování s možností provádět zálohování s intervaly každých 4, 6, 8 nebo 12 hodin. Zálohy jsou plánovány na základě zvoleného **časového** intervalu. Pokud například vyberete **každou 4 hodiny**, zálohování se povede přibližně v intervalu každých 4 hodin, aby se zálohy rovnoměrně rozdělují mezi jednotlivé dny. Pokud je zálohování jednou denně dostatečné, zvolte **denní** četnost zálohování. V denní četnosti zálohování můžete zadat čas, kdy se mají zálohy vymezit. Je důležité si uvědomit, že čas dne označuje čas zahájení zálohování a ne čas, kdy se zálohování dokončí. Čas potřebný k dokončení operace zálohování závisí na různých faktorech, včetně velikosti disku, a rychlosti přenosů mezi po sobě jdoucími zálohami. Zálohování disku Azure je ale zálohování bez agentů, které používá [přírůstkové snímky](../virtual-machines/disks-incremental-snapshots.md), což nemá vliv na výkon produkčních aplikací.
 
 1. Na kartě **zásady zálohování** vyberte nastavení uchovávání, která splňují požadavky bodu obnovení (RPO).
 
@@ -80,7 +80,7 @@ Trezor záloh je entita úložiště v Azure, která uchovává data pro různé
    ![Nastavení uchovávání](./media/backup-managed-disks/retention-settings.png)
 
    >[!NOTE]
-   >Azure Backup pro Managed Disks používá přírůstkové snímky, které jsou omezeny na 200 snímků na disk. Aby bylo možné převzít zálohy na vyžádání z naplánovaných záloh, zásady zálohování omezí celkové zálohy na 180. Přečtěte si další informace o [přírůstkových snímcích](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal#restrictions) pro spravovaný disk.
+   >Azure Backup pro Managed Disks používá přírůstkové snímky, které jsou omezeny na 200 snímků na disk. Aby bylo možné převzít zálohy na vyžádání z naplánovaných záloh, zásady zálohování omezí celkové zálohy na 180. Přečtěte si další informace o [přírůstkových snímcích](../virtual-machines/disks-incremental-snapshots.md#restrictions) pro spravovaný disk.
 
 1. Dokončete vytvoření zásady zálohování výběrem možnosti **zkontrolovat + vytvořit**.
 
@@ -88,7 +88,7 @@ Trezor záloh je entita úložiště v Azure, která uchovává data pro různé
 
 Úložiště záloh používá spravovanou identitu pro přístup k dalším prostředkům Azure. Pokud chcete nakonfigurovat zálohování spravovaných disků, spravovaná identita trezoru záloh vyžaduje sadu oprávnění na zdrojových discích a skupinách prostředků, ve kterých se vytvářejí a spravují snímky.
 
-Spravovaná identita přiřazená systémem je omezená na jeden prostředek a je vázaná na životní cyklus tohoto prostředku. Pomocí řízení přístupu na základě role Azure (RBAC) můžete udělit oprávnění ke spravované identitě. Spravovaná identita je instanční objekt speciálního typu, který se dá použít jenom s prostředky Azure. Přečtěte si další informace o [spravovaných identitách](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+Spravovaná identita přiřazená systémem je omezená na jeden prostředek a je vázaná na životní cyklus tohoto prostředku. Pomocí řízení přístupu na základě role Azure (RBAC) můžete udělit oprávnění ke spravované identitě. Spravovaná identita je instanční objekt speciálního typu, který se dá použít jenom s prostředky Azure. Přečtěte si další informace o [spravovaných identitách](../active-directory/managed-identities-azure-resources/overview.md).
 
 Pro konfiguraci zálohování spravovaných disků se vyžadují tyto požadavky:
 
@@ -115,7 +115,7 @@ Pro konfiguraci zálohování spravovaných disků se vyžadují tyto požadavky
 
    - Tuto skupinu prostředků můžete použít k ukládání snímků na více disků, které jsou (nebo jsou plánovány) zálohování.  
 
-   - Pro určitý disk nemůžete vytvořit přírůstkový snímek mimo předplatné tohoto disku. Proto vyberte skupinu prostředků v rámci stejného předplatného, jako má zálohovaný disk. Přečtěte si další informace o [přírůstkovém snímku](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal#restrictions) pro spravované disky.
+   - Pro určitý disk nemůžete vytvořit přírůstkový snímek mimo předplatné tohoto disku. Proto vyberte skupinu prostředků v rámci stejného předplatného, jako má zálohovaný disk. Přečtěte si další informace o [přírůstkovém snímku](../virtual-machines/disks-incremental-snapshots.md#restrictions) pro spravované disky.
 
    K přiřazení role použijte následující postup:
 
@@ -129,8 +129,6 @@ Pro konfiguraci zálohování spravovaných disků se vyžadují tyto požadavky
    >Zadejte název trezoru záloh a vyberte spravovanou identitu trezoru.
 
    ![Přidat roli Přispěvatel snímku disku](./media/backup-managed-disks/disk-snapshot-contributor-role.png)
-
-1. Pokud je zálohovaný disk zašifrovaný pomocí [klíčů spravovaných zákazníkem (CMK)](https://docs.microsoft.com/azure/virtual-machines/disks-enable-customer-managed-keys-portal) nebo pomocí klíčů spravovaných [platformou a klíčů spravovaných zákazníkem](https://docs.microsoft.com/azure/virtual-machines/disks-enable-double-encryption-at-rest-portal), přiřaďte mu oprávnění role **Čtenář** k spravované identitě trezoru záloh na prostředku **sady šifrování disku** .
 
 1. Ověřte, jestli má spravovaná identita trezoru záloh správnou sadu přiřazení rolí na zdrojovém disku a skupině prostředků, která slouží jako úložiště dat snímku.
 
@@ -154,7 +152,7 @@ Pro konfiguraci zálohování spravovaných disků se vyžadují tyto požadavky
    ![Vybrat disk Azure](./media/backup-managed-disks/select-azure-disk.png)
 
    >[!NOTE]
-   >Azure Backup používá [přírůstkové snímky](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal#restrictions) spravovaných disků, které ukládají jenom rozdílové změny disku od posledního snímku HDD úrovně Standard úložiště, bez ohledu na typ úložiště nadřazeného disku. Pro zvýšení spolehlivosti jsou přírůstkové snímky uloženy v zóně redundantního úložiště (ZRS) ve výchozím nastavení v oblastech, které podporují ZRS. V současné době Azure disk Backup podporuje provozní zálohování spravovaných disků, které nekopírují zálohy do úložiště trezorů záloh. Proto se nastavení redundance úložiště zálohování v trezoru služby Backup nevztahuje na body obnovení.
+   >Azure Backup používá [přírůstkové snímky](../virtual-machines/disks-incremental-snapshots.md#restrictions) spravovaných disků, které ukládají jenom rozdílové změny disku od posledního snímku HDD úrovně Standard úložiště, bez ohledu na typ úložiště nadřazeného disku. Pro zvýšení spolehlivosti jsou přírůstkové snímky uloženy v zóně redundantního úložiště (ZRS) ve výchozím nastavení v oblastech, které podporují ZRS. V současné době Azure disk Backup podporuje provozní zálohování spravovaných disků, které nekopírují zálohy do úložiště trezorů záloh. Proto se nastavení redundance úložiště zálohování v trezoru služby Backup nevztahuje na body obnovení.
 
 1. Na kartě **zásady zálohování** vyberte zásadu zálohování.
 

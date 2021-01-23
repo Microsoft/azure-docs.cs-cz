@@ -5,12 +5,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 04/16/2019
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 5e83c599ceed76927f2a313f78c83638d708f1bb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 81005a3032355f566aef2a6794cf2ec5038b0dd8
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90985126"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737112"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>Zálohování virtuálního počítače v Azure pomocí PowerShellu
 
@@ -18,7 +18,7 @@ ms.locfileid: "90985126"
 
 [Azure Backup](backup-overview.md) zálohuje místní počítače a aplikace a virtuální počítače Azure. V tomto článku se dozvíte, jak zálohovat virtuální počítač Azure pomocí modulu AZ Module. Případně můžete zálohovat virtuální počítač pomocí rozhraní příkazového [řádku Azure](quick-backup-vm-cli.md)nebo [Azure Portal](quick-backup-vm-portal.md).
 
-V tomto rychlém startu se povolí zálohování na existujícím virtuálním počítači Azure. Pokud potřebujete vytvořit virtuální počítač, můžete [vytvořit virtuální počítač pomocí Azure PowerShellu](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json).
+V tomto rychlém startu se povolí zálohování na existujícím virtuálním počítači Azure. Pokud potřebujete vytvořit virtuální počítač, můžete [vytvořit virtuální počítač pomocí Azure PowerShellu](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm?toc=%2fpowershell%2fmodule%2ftoc.json).
 
 Tento rychlý Start vyžaduje Azure PowerShell AZ Module verze 1.0.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps).
 
@@ -45,7 +45,7 @@ Tento rychlý Start vyžaduje Azure PowerShell AZ Module verze 1.0.0 nebo nověj
 Při vytváření trezoru postupujte takto:
 
 - Pro skupinu prostředků a umístění zadejte skupinu prostředků a umístění virtuálního počítače, který chcete zálohovat.
-- Pokud jste použili tento [ukázkový skript](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json) k vytvoření virtuálního počítače, skupina prostředků je **myResourceGroup**, virtuální počítač je ***myVM**a prostředky jsou v oblasti **WestEurope** .
+- Pokud jste použili tento [ukázkový skript](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm?toc=%2fpowershell%2fmodule%2ftoc.json) k vytvoření virtuálního počítače, skupina prostředků je **myResourceGroup**, virtuální počítač je **_myVM_* a prostředky jsou v oblasti **WestEurope** .
 - Azure Backup automaticky zpracovává úložiště pro zálohovaná data. Ve výchozím nastavení používá trezor [geograficky redundantní úložiště (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage). Geografická redundance zajišťuje, že zálohovaná data se replikují do sekundární oblasti Azure a stovky kilometrů od primární oblasti.
 
 Teď vytvořte Trezor:
@@ -148,7 +148,7 @@ Spusťte úlohu zálohování na vyžádání následujícím způsobem:
     myvm           ConfigureBackup   Completed    9/18/2017 9:33:18 PM   9/18/2017 9:33:51 PM   fe79c739
     ```
 
-2. Po **dokončení**stavu úlohy je virtuální počítač chráněný a je uložený úplný bod obnovení.
+2. Po **dokončení** stavu úlohy je virtuální počítač chráněný a je uložený úplný bod obnovení.
 
 ## <a name="clean-up-the-deployment"></a>Vyčištění nasazení
 

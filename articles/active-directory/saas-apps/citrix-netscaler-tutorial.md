@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/15/2020
 ms.author: jeedes
-ms.openlocfilehash: e5f1f16ba9a2f276d41373eaf4c819522f2d9e2b
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 75d46edb332fb28132592e414e78bad64e75fef5
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607571"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736402"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-citrix-adc-kerberos-based-authentication"></a>Kurz: Azure Active Directory integrace s jednotným přihlašováním pomocí Citrix ADC (ověřování pomocí protokolu Kerberos)
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat konektor Citrix ADC s Azure Active Dir
 * Umožněte uživatelům, aby se automaticky přihlásili k Citrix ADC pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -440,7 +440,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 * Přejít na adresu URL pro přihlášení k systému Citrix ADC přímo a zahájit tok přihlášení.
 
-* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici Citrix ADC v okně moje aplikace, přesměruje se na adresu URL pro přihlášení k systému Citrix ADC. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici Citrix ADC v okně moje aplikace, přesměruje se na adresu URL pro přihlášení k systému Citrix ADC. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Další kroky

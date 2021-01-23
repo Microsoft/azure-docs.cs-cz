@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 11/10/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 6634ab3521fee3062ecee465eaf6dcda80ee6ff8
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 0a462c7d713ea9285096db48b4a3bb5c5b0d9874
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98699510"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737366"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>Rozdíly v jazyce T-SQL mezi SQL Server & spravované instance Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -508,15 +508,14 @@ Následující proměnné, funkce a zobrazení vrací různé výsledky:
 
 ### <a name="subnet"></a>Podsíť
 -  V podsíti, ve které jste nasadili spravovanou instanci SQL, nemůžete umístit žádné další prostředky (například virtuální počítače). Nasaďte tyto prostředky pomocí jiné podsítě.
-- Podsíť musí mít dostatečný počet dostupných [IP adres](connectivity-architecture-overview.md#network-requirements). Minimum je 16, ale doporučujeme mít minimálně 32 IP adres v podsíti.
-- [Koncové body služby nelze přidružit k podsíti spravované instance SQL](connectivity-architecture-overview.md#network-requirements). Ujistěte se, že je při vytváření virtuální sítě možnost koncové body služby zakázaná.
+- Podsíť musí mít dostatečný počet dostupných [IP adres](connectivity-architecture-overview.md#network-requirements). Minimální je mít minimálně 32 IP adres v podsíti.
 - Počet virtuální jádra a typů instancí, které můžete nasadit v oblasti, mají některá [omezení a omezení](resource-limits.md#regional-resource-limitations).
-- Existují některá [pravidla zabezpečení, která je nutné použít v podsíti](connectivity-architecture-overview.md#network-requirements).
+- Existuje [Konfigurace sítě](connectivity-architecture-overview.md#network-requirements) , kterou je třeba v podsíti použít.
 
 ### <a name="vnet"></a>Virtuální síť
 - Virtuální síť se dá nasadit pomocí modelu prostředků – model klasický pro virtuální síť se nepodporuje.
 - Po vytvoření spravované instance SQL se nepodporují přesunutí spravované instance SQL nebo virtuální sítě do jiné skupiny prostředků nebo předplatného.
-- Některé služby, jako jsou App Service prostředí, Logic Apps a SQL Managed instance (používané pro geografickou replikaci, transakční replikaci nebo přes propojené servery), nemají přístup ke spravované instanci SQL v různých oblastech, pokud jsou jejich virtuální sítě připojené pomocí [globálního partnerského vztahu](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). K těmto prostředkům se můžete připojit prostřednictvím ExpressRoute nebo VNet-to-VNet prostřednictvím bran virtuální sítě.
+- Pro spravované instance SQL hostované ve virtuálních clusterech, které jsou vytvořené před 9/22/2020 [globálním partnerským vztahem](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) , se nepodporuje. K těmto prostředkům se můžete připojit prostřednictvím ExpressRoute nebo VNet-to-VNet prostřednictvím bran virtuální sítě.
 
 ### <a name="failover-groups"></a>Skupiny převzetí služeb při selhání
 Systémové databáze nejsou replikovány do sekundární instance ve skupině převzetí služeb při selhání. Proto by scénáře závislé na objektech ze systémových databází nemohly být na sekundární instanci možné, pokud nejsou objekty ručně vytvořeny na sekundárním objektu.

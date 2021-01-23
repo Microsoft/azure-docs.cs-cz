@@ -8,12 +8,12 @@ ms.custom: REST
 ms.topic: how-to
 ms.date: 06/13/2018
 ms.author: routlaw
-ms.openlocfilehash: 0a448d4b4538d62c1631cf16d88ec0a7e7f2a399
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 9430eaeb3ba22bd0d9fc0675ab97c84944a0cf7c
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97508029"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737842"
 ---
 # <a name="get-virtual-machine-usage-metrics-using-the-rest-api"></a>Získat metriky využití virtuálních počítačů pomocí REST API
 
@@ -42,7 +42,7 @@ Jsou vyžadovány následující hlavičky:
 
 | Název | Popis |
 | :--- | :---------- |
-| subscriptionId | ID předplatného, které identifikuje předplatné Azure. Pokud máte více předplatných, přečtěte si téma [práce s více předplatnými](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). |
+| subscriptionId | ID předplatného, které identifikuje předplatné Azure. Pokud máte více předplatných, přečtěte si téma [práce s více předplatnými](/cli/azure/manage-azure-subscriptions-azure-cli). |
 | resourceGroupName | Název skupiny prostředků Azure přidružené k prostředku. Tuto hodnotu můžete získat z rozhraní Azure Resource Manager API, CLI nebo na portálu. |
 | VMName | Název virtuálního počítače Azure. |
 | metricnames | Čárkami oddělený seznam platných  [metrik Load Balancer](../../load-balancer/load-balancer-standard-diagnostics.md). |

@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 297efa83fb1563e3a360f652a6ac1bc2b1679998
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bd8c079e91a6765dff8ad347085c44d0aa2f8d82
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936446"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737299"
 ---
 # <a name="create-an-azure-arc-data-controller-in-the-azure-portal"></a>Vytvoření řadiče dat ARC Azure v Azure Portal
 
@@ -40,12 +40,16 @@ Pomocí následujících kroků vytvořte řadič dat ARC Azure pomocí Azure Po
 6. Klikněte na tlačítko **Podrobnosti řadiče dat** .
 7. Vyberte předplatné, skupinu prostředků a umístění Azure stejným způsobem jako u jakýchkoli jiných prostředků, které vytvoříte v Azure Portal. V takovém případě bude umístění Azure, které vyberete, místo, kde se budou ukládat metadata o prostředku.  Samotný prostředek se vytvoří na jakékoli zvolené infrastruktuře. Nemusí být v infrastruktuře Azure.
 8. Zadejte název vašeho kontroleru dat.
-9. Ve verzi Preview je aktuálně podporován pouze nepřímo připojený režim.
-10. Vyberte konfigurační profil nasazení.
-11. Klikněte na tlačítko **otevřít v Azure Studio** .
-12. Na další obrazovce se zobrazí souhrn vašich výběrů a poznámkového bloku, který se vygeneruje.  Poznámkový blok si můžete stáhnout kliknutím na tlačítko **Stáhnout zřizovací Poznámkový blok** .
-13. Otevřete Poznámkový blok v Azure Data Studio a klikněte na tlačítko **Spustit vše** v horní části.
-14. Dokončete vytvoření řadiče dat podle pokynů a pokynů v poznámkovém bloku.
+9. Vyberte režim připojení pro řadič dat. Přečtěte si další informace o [režimech připojení a požadavcích](./connectivity.md). 
+
+   > [!NOTE] 
+   > Pokud vyberete režim **přímého** připojení, ujistěte se, že jsou pověření instančního objektu nastavena pomocí proměnných prostředí, jak je popsáno v tématu [Vytvoření instančního objektu](upload-metrics-and-logs-to-azure-monitor.md#create-service-principal). 
+
+1. Vyberte konfigurační profil nasazení.
+1. Klikněte na tlačítko **otevřít v Azure Studio** .
+1. Na další obrazovce se zobrazí souhrn vašich výběrů a poznámkového bloku, který se vygeneruje.  Poznámkový blok si můžete stáhnout kliknutím na tlačítko **Stáhnout zřizovací Poznámkový blok** .
+1. Otevřete Poznámkový blok v Azure Data Studio a klikněte na tlačítko **Spustit vše** v horní části.
+1. Dokončete vytvoření řadiče dat podle pokynů a pokynů v poznámkovém bloku.
 
 ## <a name="monitoring-the-creation-status"></a>Monitorování stavu vytváření
 

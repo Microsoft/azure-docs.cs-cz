@@ -5,19 +5,19 @@ ms.custom: subject-cost-optimization
 ms.service: app-service
 ms.topic: how-to
 ms.date: 01/01/2021
-ms.openlocfilehash: 85035ff894127df4e9eb8334702fd9546d7a63c3
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 9d742606435f62d48446bb8ad56ece7a31b76e47
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598703"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736217"
 ---
 # <a name="plan-and-manage-costs-for-azure-app-service"></a>Plánování a Správa nákladů na Azure App Service
 
 <!-- Check out the following published examples:
-- [https://docs.microsoft.com/azure/cosmos-db/plan-manage-costs](https://docs.microsoft.com/azure/cosmos-db/plan-manage-costs)
-- [https://docs.microsoft.com/azure/storage/common/storage-plan-manage-costs](https://docs.microsoft.com/azure/storage/common/storage-plan-manage-costs)
-- [https://docs.microsoft.com/azure/machine-learning/concept-plan-manage-cost](https://docs.microsoft.com/azure/machine-learning/concept-plan-manage-cost)
+- [https://docs.microsoft.com/azure/cosmos-db/plan-manage-costs](../cosmos-db/plan-manage-costs.md)
+- [https://docs.microsoft.com/azure/storage/common/storage-plan-manage-costs](../storage/common/storage-plan-manage-costs.md)
+- [https://docs.microsoft.com/azure/machine-learning/concept-plan-manage-cost](../machine-learning/concept-plan-manage-cost.md)
 -->
 
 <!-- Note for Azure service writer: Links to Cost Management articles are full URLS with the ?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn campaign suffix. Leave those URLs intact. They're used to measure traffic to Cost Management articles.
@@ -25,7 +25,7 @@ ms.locfileid: "98598703"
 
 <!-- Note for Azure service writer: Modify the following for your service. -->
 
-Tento článek popisuje, jak plánujete a spravovat náklady na Azure App Service. Nejprve pomocí cenové kalkulačky Azure pomůže naplánovat náklady na App Service před tím, než přidáte jakékoli prostředky pro službu, abyste mohli odhadnout náklady. V dalším kroku můžete při přidávání prostředků Azure zkontrolovat odhadované náklady. Po zahájení práce s prostředky App Service použijte funkce [cost management](https://docs.microsoft.com/azure/cost-management-billing/?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) k nastavení rozpočtů a monitorování nákladů. Můžete si také projít předpokládané náklady a identifikovat trendy útraty, které identifikují oblasti, kde můžete chtít pracovat. Náklady na Azure App Service jsou jenom částí měsíčních nákladů na faktuře Azure. I když tento článek vysvětluje, jak naplánovat a spravovat náklady na App Service, účtují se vám všechny služby a prostředky Azure, které se používají ve vašem předplatném Azure, včetně služeb třetích stran.
+Tento článek popisuje, jak plánujete a spravovat náklady na Azure App Service. Nejprve pomocí cenové kalkulačky Azure pomůže naplánovat náklady na App Service před tím, než přidáte jakékoli prostředky pro službu, abyste mohli odhadnout náklady. V dalším kroku můžete při přidávání prostředků Azure zkontrolovat odhadované náklady. Po zahájení práce s prostředky App Service použijte funkce [cost management](../cost-management-billing/index.yml?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) k nastavení rozpočtů a monitorování nákladů. Můžete si také projít předpokládané náklady a identifikovat trendy útraty, které identifikují oblasti, kde můžete chtít pracovat. Náklady na Azure App Service jsou jenom částí měsíčních nákladů na faktuře Azure. I když tento článek vysvětluje, jak naplánovat a spravovat náklady na App Service, účtují se vám všechny služby a prostředky Azure, které se používají ve vašem předplatném Azure, včetně služeb třetích stran.
 
 ## <a name="relevant-costs-for-app-service"></a>Relevantní náklady na App Service
 
@@ -36,10 +36,10 @@ App Service běží na infrastruktuře Azure a účtují náklady. Je důležit�
 V závislosti na tom, jakou funkci používáte v App Service, se můžou vytvořit následující prostředky se snížením nákladů:
 
 - **Plán App Service**  Vyžaduje se pro hostování aplikace App Service.
-- **Izolovaná vrstva**  Pro App Service prostředí se vyžaduje [Virtual Network](/azure/virtual-network/) .
-- **Záložní kopie**  K provedení zálohování je nutný [účet úložiště](/azure/storage/) .
-- **Diagnostické protokoly**  Jako možnost protokolování můžete vybrat možnost [účet úložiště](/azure/storage/) nebo integrovat s [Azure Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md).
-- **App Service certifikátů**  Certifikáty, které zakoupíte v Azure, se musí udržovat v [Azure Key Vault](/azure/key-vault/).
+- **Izolovaná vrstva**  Pro App Service prostředí se vyžaduje [Virtual Network](../virtual-network/index.yml) .
+- **Záložní kopie**  K provedení zálohování je nutný [účet úložiště](../storage/index.yml) .
+- **Diagnostické protokoly**  Jako možnost protokolování můžete vybrat možnost [účet úložiště](../storage/index.yml) nebo integrovat s [Azure Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md).
+- **App Service certifikátů**  Certifikáty, které zakoupíte v Azure, se musí udržovat v [Azure Key Vault](../key-vault/index.yml).
 
 Další nákladové prostředky pro App Service jsou (podrobnosti najdete v tématu [App Service ceny](https://azure.microsoft.com/pricing/details/app-service/) ):
 
@@ -155,7 +155,7 @@ V předchozím příkladu vidíte aktuální náklady za službu. Zobrazují se 
 
 <!-- Note to Azure service writer: Modify the following as needed for your service. -->
 
-Pro účely řízení nákladů můžete vytvořit [rozpočty](../cost-management/tutorial-acm-create-budgets.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) a nastavit [upozornění](../cost-management/cost-mgt-alerts-monitor-usage-spending.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn), která účastníky automaticky upozorňují na anomálie a nebezpečí nadměrných výdajů. Upozornění jsou založena na porovnání útraty s rozpočtem a prahovými hodnotami nákladů. Rozpočty a výstrahy se vytvářejí pro předplatná Azure a skupiny prostředků, takže jsou užitečné v rámci celkové strategie monitorování nákladů. 
+Pro účely řízení nákladů můžete vytvořit [rozpočty](../cost-management-billing/costs/tutorial-acm-create-budgets.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) a nastavit [upozornění](../cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn), která účastníky automaticky upozorňují na anomálie a nebezpečí nadměrných výdajů. Upozornění jsou založena na porovnání útraty s rozpočtem a prahovými hodnotami nákladů. Rozpočty a výstrahy se vytvářejí pro předplatná Azure a skupiny prostředků, takže jsou užitečné v rámci celkové strategie monitorování nákladů. 
 
 Rozpočty je možné vytvořit s filtry pro konkrétní prostředky nebo služby v Azure, pokud chcete mít v monitorování k dispozici větší členitost. Filtry vám pomůžou zajistit, že nechtěně nevytvoříme nové prostředky, které vám budou zajišťovat peníze. Další informace o možnostech filtru dostupných při vytváření rozpočtu najdete v tématu [Možnosti skupiny a filtru](../cost-management-billing/costs/group-filter.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
 
@@ -168,8 +168,8 @@ Rozpočty je možné vytvořit s filtry pro konkrétní prostředky nebo služby
 - Přečtěte si další informace o tom, jak ceny pracují s Azure Storage. Viz [ceny App Service](https://azure.microsoft.com/pricing/details/app-service/).
 - Naučte se [optimalizovat investice do cloudu pomocí Azure cost management](../cost-management-billing/costs/cost-mgt-best-practices.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
 - Přečtěte si další informace o správě nákladů pomocí [analýzy nákladů](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
-- Přečtěte si, jak se [vyhnout neočekávaným nákladům](../cost-management-billing/manage/getting-started.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
-- Využijte kurz učení s asistencí [cost management](https://docs.microsoft.com/learn/paths/control-spending-manage-bills?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) .
+- Přečtěte si, jak se [vyhnout neočekávaným nákladům](../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
+- Využijte kurz učení s asistencí [cost management](/learn/paths/control-spending-manage-bills?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) .
 
 <!-- Insert links to other articles that might help users save and manage costs for you service here.
 

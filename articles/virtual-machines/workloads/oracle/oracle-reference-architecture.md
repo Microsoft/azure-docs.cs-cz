@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/13/2019
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: 83da8cbf3a87570cfb967e0a6c8da3f0f2ed1766
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: bbaf34c977546891c6ac05fbd4b5feb15f333e04
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96486738"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737808"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Referenční architektury pro Oracle Database Enterprise Edition v Azure
 
@@ -207,7 +207,7 @@ Během počátečního požadavku se aplikační server připojí k horizontáln
 
 Při nasazování úloh Oracle do Azure se společnost Microsoft postará o všechny opravy na úrovni operačního systému hostitele. Veškerá plánovaná údržba na úrovni operačního systému je zákazníkům předem sdělena, aby umožnila této plánované údržbě zákazníkům. Dva servery ze dvou různých Zóny dostupnosti se nikdy neopravují současně. Další informace o údržbě virtuálních počítačů a opravách najdete v tématu [Správa dostupnosti virtuálních počítačů](../../manage-availability.md) . 
 
-Opravy operačního systému virtuálního počítače můžete automatizovat pomocí [Azure Automation Update Management](../../../automation/update-management/overview.md). Oprava a údržba databáze Oracle může být automatizovaná a naplánovaná pomocí [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops) nebo [Azure Automation Update Management](../../../automation/update-management/overview.md) k minimalizaci prostojů. Podívejte se na [průběžné doručování a modré/zelené nasazení](/azure/devops/learn/what-is-continuous-delivery) , které vám pomůžou pochopit, jak se dá používat v kontextu databází Oracle.
+Opravy operačního systému virtuálního počítače můžete automatizovat pomocí [Azure Automation Update Management](../../../automation/update-management/overview.md). Oprava a údržba databáze Oracle může být automatizovaná a naplánovaná pomocí [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) nebo [Azure Automation Update Management](../../../automation/update-management/overview.md) k minimalizaci prostojů. Podívejte se na [průběžné doručování a modré/zelené nasazení](/azure/devops/learn/what-is-continuous-delivery) , které vám pomůžou pochopit, jak se dá používat v kontextu databází Oracle.
 
 ## <a name="architecture-and-design-considerations"></a>Požadavky na architekturu a návrh
 

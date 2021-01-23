@@ -4,12 +4,12 @@ description: Získejte odpovědi na běžné dotazy týkající se zálohování
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 7518fc49f7d6d728bd8faa0de4cf0edc1c6d5831
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 56dcf29a5c703a72fd137a5f1bf129f568a03b4b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734109"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735805"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Nejčastější dotazy týkající se SQL Server databází, které běží na zálohování virtuálních počítačů Azure
 
@@ -39,7 +39,7 @@ Automatické zaretušování je ve výchozím nastavení povolené pro všechny 
 
 ## <a name="can-i-control-how-many-concurrent-backups-run-on-the-sql-server"></a>Můžu rozhodnout o tom, kolik souběžných procesů zálohování poběží na SQL Serveru?
 
-Yes. Rychlost, s jakou se zásady zálohování spouštějí, můžete omezit tak, aby se minimalizoval dopad na instanci SQL Server. Postup změny nastavení:
+Ano. Rychlost, s jakou se zásady zálohování spouštějí, můžete omezit tak, aby se minimalizoval dopad na instanci SQL Server. Postup změny nastavení:
 
 1. V SQL Server instanci v adresáři *C:\Program Files\Azure úlohy Backup\bin* vytvořte *ExtensionSettingsOverrides.jsv* souboru.
 2. V *ExtensionSettingsOverrides.jsv* souboru změňte nastavení **DefaultBackupTasksThreshold** na nižší hodnotu (například 5). <br>
@@ -60,7 +60,7 @@ Podle omezení SQL můžete spustit příkaz Kopírovat pouze úplné zálohová
 
 ## <a name="can-i-protect-availability-groups-on-premises"></a>Můžu chránit skupiny dostupnosti místně?
 
-No. Azure Backup chrání SQL Server databáze běžící v Azure. Pokud je skupina dostupnosti (AG) rozložená mezi Azure a místními počítači, může být AG chráněná jenom v případě, že je primární replika spuštěná v Azure. Azure Backup také chrání pouze uzly, které jsou spuštěny ve stejné oblasti Azure jako trezor Recovery Services.
+Ne. Azure Backup chrání SQL Server databáze běžící v Azure. Pokud je skupina dostupnosti (AG) rozložená mezi Azure a místními počítači, může být AG chráněná jenom v případě, že je primární replika spuštěná v Azure. Azure Backup také chrání pouze uzly, které jsou spuštěny ve stejné oblasti Azure jako trezor Recovery Services.
 
 ## <a name="can-i-protect-availability-groups-across-regions"></a>Můžu chránit skupiny dostupnosti napříč různými oblastmi?
 
@@ -68,7 +68,7 @@ Trezor Recovery Services Azure Backup může detekovat a chránit všechny uzly,
 
 ## <a name="do-successful-backup-jobs-create-alerts"></a>Vytvářejí úspěšné úlohy zálohování upozornění?
 
-No. Úspěšné úlohy zálohování negenerují výstrahy. Výstrahy se odesílají jenom pro úlohy zálohování, které selžou. Podrobné chování výstrah na portálu [najdete tady](backup-azure-monitoring-built-in-monitor.md). Pokud vás ale zajímá, že máte výstrahy i pro úspěšné úlohy, můžete použít [monitorování pomocí Azure monitor](backup-azure-monitoring-use-azuremonitor.md).
+Ne. Úspěšné úlohy zálohování negenerují výstrahy. Výstrahy se odesílají jenom pro úlohy zálohování, které selžou. Podrobné chování výstrah na portálu [najdete tady](backup-azure-monitoring-built-in-monitor.md). Pokud vás ale zajímá, že máte výstrahy i pro úspěšné úlohy, můžete použít [monitorování pomocí Azure monitor](backup-azure-monitoring-use-azuremonitor.md).
 
 ## <a name="can-i-see-scheduled-backup-jobs-in-the-backup-jobs-menu"></a>Můžu v nabídce úlohy zálohování Zobrazit naplánované úlohy zálohování?
 
@@ -108,7 +108,7 @@ Ano, Azure Backup podporuje zálohování databází SQL Server nebo serveru s p
 
 ## <a name="does-azure-backup-perform-a-checksum-operation-on-the-data-stream"></a>Provádí Azure Backup operaci kontrolního součtu v datovém proudu?
 
-V datovém proudu provedeme operaci kontrolního součtu. Nebudete je ale měnit pomocí [kontrolního součtu SQL](https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server).
+V datovém proudu provedeme operaci kontrolního součtu. Nebudete je ale měnit pomocí [kontrolního součtu SQL](/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server).
 Zálohování úloh Azure vypočítá kontrolní součet datového proudu a uloží ho explicitně během operace zálohování. Tento datový proud kontrolního součtu se pak povede jako referenční a křížově ověřený pomocí kontrolního součtu datového proudu během operace obnovení, aby se zajistilo konzistence dat.
 
 ## <a name="next-steps"></a>Další kroky

@@ -5,12 +5,12 @@ author: jjbfour
 ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jobreen
-ms.openlocfilehash: 6e11e08d861538ddf395f522495798546e04ca7c
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 55554678047faeedd16b78dea61a42d50fd59491
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91948948"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737316"
 ---
 # <a name="set-up-azure-functions-for-azure-custom-providers"></a>Nastavení Azure Functions pro vlastní zprostředkovatele Azure
 
@@ -21,7 +21,7 @@ Vlastní poskytovatel je kontrakt mezi Azure a koncovým bodem. S vlastními pos
 > [!NOTE]
 > V tomto kurzu vytvoříte jednoduchý koncový bod služby, který používá aplikaci Azure Function App. Vlastní zprostředkovatel ale může používat libovolný veřejně přístupný koncový bod. K alternativám patří Azure Logic Apps, Azure API Management a Web Apps funkce Azure App Service.
 
-Pokud chcete začít tento kurz, měli byste nejdřív postupovat podle kurzu [Vytvoření první aplikace funkce Azure Functions v Azure Portal](../../azure-functions/functions-create-first-azure-function.md). Tento kurz vytvoří funkci Webhooku .NET Core, kterou lze upravit v Azure Portal. Základem pro aktuální kurz je také základ.
+Pokud chcete začít tento kurz, měli byste nejdřív postupovat podle kurzu [Vytvoření první aplikace funkce Azure Functions v Azure Portal](../../azure-functions/functions-get-started.md). Tento kurz vytvoří funkci Webhooku .NET Core, kterou lze upravit v Azure Portal. Základem pro aktuální kurz je také základ.
 
 ## <a name="install-azure-table-storage-bindings"></a>Instalace vazeb Azure Table Storage
 
@@ -42,7 +42,7 @@ Postup při instalaci vazeb úložiště tabulek Azure:
 Pokud chcete nastavit funkci Azure, aby zahrnovala metody žádosti RESTful vlastního zprostředkovatele:
 
 1. Přejít na kartu **integrace** pro HttpTrigger.
-1. V části **vybrané metody HTTP**vyberte **Get**, **post**, **Delete**a **Put**.
+1. V části **vybrané metody HTTP** vyberte **Get**, **post**, **Delete** a **Put**.
 
 ![Přehled vlastního zprostředkovatele zobrazujícího metody HTTP](./media/create-custom-provider/azure-functions-http-methods.png)
 

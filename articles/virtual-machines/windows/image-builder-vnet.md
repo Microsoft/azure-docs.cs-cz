@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
 ms.reviewer: danis
-ms.openlocfilehash: 94e3b95e5e1d3c65550046c5db56e0f783fd60c3
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8ae41167b642be75c7bb99042bca829fd8c1728e
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976279"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736344"
 ---
 # <a name="use-azure-image-builder-for-windows-vms-allowing-access-to-an-existing-azure-vnet"></a>Použití Azure image Builder pro virtuální počítače s Windows, který umožňuje přístup k existující virtuální síti Azure
 
@@ -90,7 +90,7 @@ Vytvořte skupinu prostředků.
 New-AzResourceGroup -Name $imageResourceGroup -Location $location
 ```
 
-## <a name="configure-networking"></a>Konfigurace sítí
+## <a name="configure-networking"></a>Konfigurace sítě
 
 Pokud nemáte existující VNET\Subnet\NSG, vytvořte ho pomocí následujícího skriptu.
 
@@ -258,7 +258,7 @@ $runOutJsonStatus
 ```
 ## <a name="create-a-vm"></a>Vytvoření virtuálního počítače
 
-Nyní se sestavení dokončilo a můžete z image vytvořit virtuální počítač. Použijte příklady v [dokumentaci New-AzVM PowerShellu](/powershell/module/az.compute/new-azvm?view=azps-2.5.0#description).
+Nyní se sestavení dokončilo a můžete z image vytvořit virtuální počítač. Použijte příklady v [dokumentaci New-AzVM PowerShellu](/powershell/module/az.compute/new-azvm#description).
 
 ## <a name="clean-up"></a>Vyčištění
 

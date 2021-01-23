@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 2/1/2019
 ms.author: tamram
 ms.reviewer: twooley
-ms.openlocfilehash: 8de395e34b43a4edad2affa591adb8ab34ff9e66
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 002e8650a5555b70caf09179e03ce1bad1acdef5
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921695"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737536"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>Postup připojení úložiště objektů BLOB jako systému souborů pomocí blobfuse
 
@@ -28,9 +28,9 @@ V této příručce se dozvíte, jak používat blobfuse a jak připojit kontejn
 > 
 
 ## <a name="install-blobfuse-on-linux"></a>Instalace blobfuse v systému Linux
-Blobfuse binární soubory jsou k dispozici v [úložištích softwaru společnosti Microsoft pro Linux](/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software) pro distribuce Ubuntu a RHEL. Pokud chcete na tyto distribuce nainstalovat blobfuse, nakonfigurujte v seznamu jedno z úložišť. Binární soubory ze zdrojového kódu můžete sestavit i v následujících [krocích Azure Storage instalace](https://github.com/Azure/azure-storage-fuse/wiki/1.-Installation#option-2---build-from-source) , pokud pro vaši distribuci nejsou k dispozici žádné binární soubory.
+Blobfuse binární soubory jsou k dispozici v [úložištích softwaru Microsoftu pro Linux](/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software) pro Ubuntu, Debian, SUSE, CentoOS, Oracle Linux a RHEL distribuce. Pokud chcete na tyto distribuce nainstalovat blobfuse, nakonfigurujte v seznamu jedno z úložišť. Binární soubory ze zdrojového kódu můžete sestavit i v následujících [krocích Azure Storage instalace](https://github.com/Azure/azure-storage-fuse/wiki/1.-Installation#option-2---build-from-source) , pokud pro vaši distribuci nejsou k dispozici žádné binární soubory.
 
-Blobfuse podporuje instalaci na Ubuntu 14,04, 16,04, 18,04 a 20,04. Spusťte tento příkaz, abyste se ujistili, že máte nasazenou jednu z těchto verzí:
+Blobfuse podporuje instalaci ve verzích Ubuntu: 16,04, 18,04 a 20,04, RHELversions: 7,5, 7,8, 8,0, 8,1, 8,2, CentOS verze: 7,0, 8,0, Debian verze: 9,0, 10,0, SUSE verze: 15, OracleLinux 8,1. Spusťte tento příkaz, abyste se ujistili, že máte nasazenou jednu z těchto verzí:
 ```
 lsb_release -a
 ```
@@ -38,16 +38,16 @@ lsb_release -a
 ### <a name="configure-the-microsoft-package-repository"></a>Konfigurace úložiště balíčků Microsoftu
 Nakonfigurujte [úložiště balíčků pro Linux pro produkty Microsoftu](/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software).
 
-Například na distribuci Enterprise Linux 6:
+Například na distribuci Enterprise Linux 8:
 ```bash
-sudo rpm -Uvh https://packages.microsoft.com/config/rhel/6/packages-microsoft-prod.rpm
+sudo rpm -Uvh https://packages.microsoft.com/config/rhel/8/packages-microsoft-prod.rpm
 ```
 
 Podobně změňte adresu URL tak, aby `.../rhel/7/...` odkazovala na distribuci Enterprise Linux 7.
 
-Další příklad pro distribuci Ubuntu 14,04:
+Další příklad pro distribuci Ubuntu 20,04:
 ```bash
-wget https://packages.microsoft.com/config/ubuntu/14.04/packages-microsoft-prod.deb
+wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb
 sudo dpkg -i packages-microsoft-prod.deb
 sudo apt-get update
 ```

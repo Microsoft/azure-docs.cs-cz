@@ -4,12 +4,12 @@ description: Přečtěte si o Azure Database for PostgreSQL zálohování s dlou
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: 628f43788c11558185a7b8a735373f0a663fdad1
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 1e2d83d4a5e21ed747ec9d4dcf2fa03d1e3935cc
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98569483"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737568"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>Azure Database for PostgreSQL zálohování s dlouhodobou dobou uchovávání (Preview)
 
@@ -31,7 +31,7 @@ Toto řešení můžete použít nezávisle nebo kromě nativního řešení zá
 
 |Podpora  |Podrobnosti  |
 |---------|---------|
-|Podporovaná nasazení   |  [Azure Database for PostgreSQL – Jeden server](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server)     |
+|Podporovaná nasazení   |  [Azure Database for PostgreSQL – Jeden server](../postgresql/overview.md#azure-database-for-postgresql---single-server)     |
 |Podporované oblasti Azure |  Východní USA, Východní USA 2, Střed USA Střed USA – jih, Západní USA, Západní USA 2, Středozápadní USA, Brazílie – jih, Kanada – střed, Severní Evropa, Západní Evropa, Velká Británie – jih, Velká Británie – západ, Německo – středozápad, Švýcarsko – sever, Švýcarsko – západ, Východní Asie, Jižní Východní Asie, Japonsko – východ, Japonsko – západ, Korea – střed, USA – střed, Spojené arabské emiráty – sever, Kanada – střed, východní Austrálie  |
 |Podporované verze Azure PostgreSQL    |   9,5, 9,6, 10, 11      |
 

@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: 0691411f57944f8203120ec2a6ed19013135458c
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 8db556709f68a1184046989a15fad147542a05a7
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920249"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735737"
 ---
 # <a name="planned-maintenance-notification-in-azure-database-for-postgresql---single-server"></a>Oznámení o plánované údržbě na jednoúčelovém serveru Azure Database for PostgreSQL
 
@@ -25,7 +25,7 @@ Plánovaná údržba je časový interval pro správu a údržbu, když se tyto 
 
 ## <a name="planned-maintenance---duration-and-customer-impact"></a>Plánovaná údržba – doba trvání a dopad na zákazníky
 
-U plánované údržby dané oblasti Azure se obvykle očekává spuštění 15 hodin. Okno také obsahuje dobu ukládání do vyrovnávací paměti pro provedení plánu vrácení zpět, pokud je to nutné. Během plánované údržby může dojít k restartování databázového serveru nebo převzetí služeb při selhání, což může vést k krátké nedostupnosti databázových serverů pro koncové uživatele. Azure Database for PostgreSQL servery běží v kontejnerech, takže restartování databázového serveru je obvykle rychlé, očekává se dokončení obvykle během 60-120 sekund. Veškerá plánovaná událost údržby včetně každého restartování serveru je pečlivě sledována technickým týmem. Doba převzetí služeb serveru při selhání je závislá na čase obnovení databáze, což může způsobit, že databáze bude v době převzetí služeb při selhání fungovat v online režimu, pokud máte velmi transakční aktivitu. Chcete-li se vyhnout delší době restartování, doporučujeme vyhnout se jakýmkoli dlouho běžícím transakcím (hromadnému zatížení) během plánovaných událostí údržby.
+Plánovaná údržba dané oblasti Azure se obvykle očekává do 15 hodin. Tento časový interval také obsahuje dobu ukládání do vyrovnávací paměti pro provedení plánu vrácení zpět, pokud je to nutné. Azure Database for PostgreSQL servery běží v kontejnerech, takže restarty databázového serveru obvykle trvá 60-120 sekund, ale během této 15 hodin nebudete mít k dispozici žádný deterministický způsob, jak váš server ovlivnit. Veškerá plánovaná událost údržby včetně každého restartování serveru je pečlivě sledována technickým týmem. Doba převzetí služeb při selhání serveru závisí na obnovení databáze, což může způsobit, že databáze bude v době převzetí služeb při selhání v případě vysoké transakční aktivity na serveru fungovat online. Chcete-li se vyhnout delší době restartování, doporučujeme vyhnout se jakýmkoli dlouho běžícím transakcím (hromadnému zatížení) během plánovaných událostí údržby.
 
 Ve shrnutí, zatímco plánovaná událost údržby běží 15 hodin, ovlivňuje jednotlivý Server většinou 60 sekund v závislosti na transakční aktivitě na serveru. Oznámení se pošle 72 kalendářních hodin před zahájením plánované údržby a další, zatímco probíhá údržba dané oblasti.
 

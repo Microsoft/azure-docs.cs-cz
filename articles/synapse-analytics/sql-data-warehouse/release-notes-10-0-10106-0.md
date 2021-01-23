@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 6538243cf8fc12131e1480c8578bfa8739c4f561
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: e3ebd83646353e34c239e7d1812e380b9e9d2e26
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98676285"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737519"
 ---
 # <a name="dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-release-notes"></a>Vyhrazený fond SQL (dřív SQL DW) ve službě Azure synapse Analytics – poznámky k verzi
 
@@ -52,7 +52,7 @@ V případě vylepšení nástrojů se ujistěte, že máte ve verzi poznámky k
 | Vylepšení služby | Podrobnosti |
 | --- | --- |
 |**Vložené Table-Valued funkce T-SQL (Preview)**|V této verzi teď můžete vytvářet vložené funkce vracející tabulku pomocí jazyka Transact-SQL a dotazovat se na jejich výsledky jako na tabulku. Tato funkce je aktuálně ve verzi Preview a bude podporována v nástroji v GA. Další informace najdete v tématu věnovaném [Vytvoření funkce (Azure synapse Analytics)](/sql/t-sql/statements/create-function-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true).|
-|**Příkaz MERGE (Náhled)**|Nyní můžete spustit operace vložení, aktualizace nebo odstranění v cílové tabulce z výsledků spojení se zdrojovou tabulkou. Můžete například synchronizovat dvě tabulky vložením, aktualizací nebo odstraněním řádků v jedné tabulce na základě rozdílů, které se nacházejí v druhé tabulce.  Podrobnosti najdete v podrobnostech o [sloučení](/sql/t-sql/statements/merge-transact-sql?view=azuresqldb-current) .|
+|**Příkaz MERGE (Náhled)**|Nyní můžete spustit operace vložení, aktualizace nebo odstranění v cílové tabulce z výsledků spojení se zdrojovou tabulkou. Můžete například synchronizovat dvě tabulky vložením, aktualizací nebo odstraněním řádků v jedné tabulce na základě rozdílů, které se nacházejí v druhé tabulce.  Podrobnosti najdete v podrobnostech o [sloučení](/sql/t-sql/statements/merge-transact-sql??view=azure-sqldw-latest&preserve-view=true) .|
 
 ## <a name="aug-2020"></a>Srpna 2020
 
@@ -68,7 +68,7 @@ V případě vylepšení nástrojů se ujistěte, že máte ve verzi poznámky k
 |**Šifrování na úrovni sloupce (Public Preview)**|Chraňte citlivé informace ve službě Azure synapse Analytics tím, že použijete symetrické šifrování na sloupec dat pomocí jazyka Transact-SQL. Šifrování na úrovni sloupců obsahuje integrované funkce, které můžete použít k šifrování dat pomocí symetrických klíčů, které jsou dále chráněny pomocí certifikátu, hesla, symetrického klíče nebo asymetrického klíče. Další informace najdete v části [šifrování sloupce dat](/sql/relational-databases/security/encryption/encrypt-a-column-of-data?view=azure-sqldw-latest&preserve-view=true).|
 |**Podpora úrovně kompatibility (GA)**|V této verzi teď uživatelé můžou nastavit úroveň kompatibility databáze a získat tak chování jazyka Transact-SQL a zpracování dotazů konkrétní verze synapse modulu SQL. Další informace najdete v tématu [Sys.database_scoped_configurations](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) a [Změna konfigurace s rozsahem databáze](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).|
 |**Zabezpečení na úrovni řádků**|Tato verze zahrnuje vylepšení operací aktualizace a odstranění na řádcích s vydanými RLS. S touto verzí, operace aktualizace a odstranění s vnitřními funkcemi, jako je is_rolemember, budou úspěšné, pokud vnitřní funkce neodkazuje na žádný sloupec v cílové tabulce DML. Před tímto vylepšením tyto operace selhaly kvůli omezení v podkladových operacích DML.|
-|**DBCC SHRINKDATABASE (GA)**|Teď můžete zmenšit velikost souborů dat a protokolů v zadané databázi. Další informace najdete v [dokumentaci](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql?view=sql-server-ver15).|
+|**DBCC SHRINKDATABASE (GA)**|Teď můžete zmenšit velikost souborů dat a protokolů v zadané databázi. Další informace najdete v [dokumentaci](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql?view=azure-sqldw-latest&preserve-view=true).|
 
 ## <a name="may-2020"></a>Květen 2020
 

@@ -3,12 +3,12 @@ title: Řešení potíží se službou Azure VM File Recovery
 description: Řešení potíží při obnovování souborů a složek ze zálohy virtuálního počítače Azure
 ms.topic: troubleshooting
 ms.date: 07/12/2020
-ms.openlocfilehash: aec69b91ad1dae5864e5e8fba61c53e6d15887f4
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: c4d0d233237cb477d72efea0b91d4e5288e2a302
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624502"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735873"
 ---
 # <a name="troubleshoot-issues-in-file-recovery-of-an-azure-vm-backup"></a>Řešení potíží s obnovením souborů zálohování virtuálních počítačů Azure
 
@@ -46,7 +46,7 @@ V této části najdete postup řešení běžných problémů, ke kterým můž
 
 ### <a name="you-cant-download-the-script"></a>Nemůžete stáhnout skript.
 
-1. Ujistěte se, že máte [potřebná oprávnění ke stažení skriptu](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#select-recovery-point-who-can-generate-script).
+1. Ujistěte se, že máte [potřebná oprávnění ke stažení skriptu](./backup-azure-restore-files-from-vm.md#select-recovery-point-who-can-generate-script).
 1. Ověřte připojení k IP adresám cíle Azure. Z příkazového řádku se zvýšenými oprávněními spusťte jeden z následujících příkazů:
 
    `nslookup download.microsoft.com`
@@ -67,7 +67,7 @@ Když spustíte skript Pythonu pro obnovení na úrovni položek (ILR) v SUSE Li
 
 Při připojování k cíli se může zobrazit chybová zpráva "výjimka byla zachycena.
 
-1. Ujistěte se, že počítač, ve kterém je spuštěný skript, splňuje [požadavky na přístup](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#step-4-access-requirements-to-successfully-run-the-script).
+1. Ujistěte se, že počítač, ve kterém je spuštěný skript, splňuje [požadavky na přístup](./backup-azure-restore-files-from-vm.md#step-4-access-requirements-to-successfully-run-the-script).
 1. Ověřte připojení k IP adresám cíle Azure. Z příkazového řádku se zvýšenými oprávněními spusťte jeden z následujících příkazů:
 
    `nslookup download.microsoft.com`

@@ -3,12 +3,12 @@ title: Sdílená složka Azure pro fondy Azure Batch
 description: Jak připojit sdílenou složku služby soubory Azure z výpočetních uzlů ve fondu Linux nebo Windows ve službě Azure Batch.
 ms.topic: how-to
 ms.date: 05/24/2018
-ms.openlocfilehash: 6bbaba20512a17de563e74ba095057c5c3f71f6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5682e7ba853973592c3a650a06ce72615cec7b6
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87986419"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735490"
 ---
 # <a name="use-an-azure-file-share-with-a-batch-pool"></a>Použití sdílené složky Azure s fondem služby Batch
 
@@ -20,7 +20,7 @@ ms.locfileid: "87986419"
 
 * Sdílené složky Azure jsou [nákladově efektivní](https://azure.microsoft.com/pricing/details/storage/files/) a je možné je nakonfigurovat pomocí replikace dat do jiné oblasti, takže jsou globálně redundantní. 
 
-* Sdílenou složku Azure můžete připojit souběžně z místního počítače. Ujistěte se však, že rozumíte [dopadům souběžnosti](../storage/common/storage-concurrency.md) , zejména při použití rozhraní REST API.
+* Sdílenou složku Azure můžete připojit souběžně z místního počítače. Ujistěte se však, že rozumíte [dopadům souběžnosti](../storage/blobs/concurrency-manage.md) , zejména při použití rozhraní REST API.
 
 * Viz také obecné [požadavky plánování](../storage/files/storage-files-planning.md) pro sdílené složky Azure.
 

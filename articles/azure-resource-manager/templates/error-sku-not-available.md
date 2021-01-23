@@ -3,16 +3,16 @@ title: Chyby SKU nejsou k dispozici
 description: Popisuje, jak vyřešit chybu SKU, která není k dispozici při nasazování prostředků pomocí Azure Resource Manager.
 ms.topic: troubleshooting
 ms.date: 02/18/2020
-ms.openlocfilehash: 15df8c5ff45994a03e12731cf3798f7f4c2a295b
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 5b0bbd653907c109eca526af86979013b3137cfa
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91948608"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737146"
 ---
 # <a name="resolve-errors-for-sku-not-available"></a>Řešení chyb kvůli nedostupné skladové položce
 
-Tento článek popisuje, jak vyřešit chybu **SkuNotAvailable** . Pokud nemůžete najít vhodnou skladovou jednotku v této oblasti nebo zóně nebo v alternativní oblasti nebo zóně, která vyhovuje vašim obchodním potřebám, odešlete [požadavek na SKU](../../azure-portal/supportability/sku-series-unavailable.md) do podpory Azure.
+Tento článek popisuje, jak vyřešit chybu **SkuNotAvailable** . Pokud nemůžete najít vhodnou skladovou jednotku v této oblasti nebo zóně nebo v alternativní oblasti nebo zóně, která vyhovuje vašim obchodním potřebám, odešlete [požadavek na SKU](/troubleshoot/azure/general/region-access-request-process) do podpory Azure.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

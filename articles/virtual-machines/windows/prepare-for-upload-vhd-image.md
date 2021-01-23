@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 09/02/2020
 ms.author: genli
-ms.openlocfilehash: 390cda604b71404735b7c14382d30067e154ef70
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e409211c167f7b29128faf9fdfc02aa5c0a7d0e3
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976178"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736250"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Příprava disku VHD nebo VHDX s Windows pro nahrání do Azure
 
@@ -334,7 +334,7 @@ Ujistěte se, že je virtuální počítač v pořádku, zabezpečený a dostupn
 
    Zásada by měla zobrazovat následující skupiny:
 
-   - Správci
+   - Administrators
 
    - Backup Operators
 
@@ -356,7 +356,7 @@ V ideálním případě byste měli udržovat počítač aktualizovaný na *úro
 
 |        Součást        |     Binární     | Windows 7 SP1, Windows Server 2008 R2 SP1 |       Windows 8, Windows Server 2012        | Windows 8.1, Windows Server 2012 R2 | Windows 10 v1607, Windows Server 2016 v1607 |      Windows 10 v1703      | Windows 10 v1709, Windows Server 2016 v1709 | Windows 10 v1803, Windows Server 2016 v1803 |
 | ----------------------- | -------------- | ----------------------------------------- | ------------------------------------------- | ----------------------------------- | ------------------------------------------- | -------------------------- | ------------------------------------------- | ------------------------------------------- |
-| Úložiště                 | disk.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17638 / 6.2.9200.21757 - KB3137061 | 6.3.9600.18203 - KB3137061          | -                                           | -                          | -                                           | -                                           |
+| Storage                 | disk.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17638 / 6.2.9200.21757 - KB3137061 | 6.3.9600.18203 - KB3137061          | -                                           | -                          | -                                           | -                                           |
 |                         | storport.sys   | 6.1.7601.23403 - KB3125574                | 6.2.9200.17188 / 6.2.9200.21306 - KB3018489 | 6.3.9600.18573 - KB4022726          | 10.0.14393.1358 - KB4022715                 | 10.0.15063.332             | -                                           | -                                           |
 |                         | ntfs.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17623 / 6.2.9200.21743 - KB3121255 | 6.3.9600.18654 - KB4022726          | 10.0.14393.1198 - KB4022715                 | 10.0.15063.447             | -                                           | -                                           |
 |                         | Iologmsg.dll   | 6.1.7601.23403 - KB3125574                | 6.2.9200.16384 - KB2995387                  | -                                   | -                                           | -                          | -                                           | -                                           |
@@ -426,14 +426,14 @@ Nástroj Sysprep vyžaduje, aby před provedením plně dešifroval jednotky. Po
 1. V dialogovém okně **Nástroj pro přípravu systému** vyberte možnost spustit **prostředí při spuštění v systému (OOBE)** a ujistěte se, že je zaškrtnuté políčko **generalizace** .
 
     ![Nástroj pro přípravu systému](media/prepare-for-upload-vhd-image/syspre.png)
-1. V **Možnosti vypnutí**vyberte **vypnout**.
+1. V **Možnosti vypnutí** vyberte **vypnout**.
 1. Vyberte **OK**.
 1. Po dokončení programu Sysprep vypněte virtuální počítač. Nepoužívejte **restart** pro vypnutí virtuálního počítače.
 
 Virtuální pevný disk je teď připravený k nahrání. Další informace o tom, jak vytvořit virtuální počítač z zobecněného disku, najdete v tématu [nahrání zobecněného virtuálního pevného disku a jeho použití k vytvoření nového virtuálního počítače v Azure](/previous-versions/azure/virtual-machines/windows/sa-upload-generalized).
 
 >[!NOTE]
-> Vlastní soubor *unattend.xml* není podporován. I když podporujeme vlastnost **additionalUnattendContent** , která poskytuje jenom omezené podpory pro přidání možností [Microsoft-Windows-Shell-setup](/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) do souboru *unattend.xml* , který používá agent zřizování Azure. Můžete použít například [additionalUnattendContent](/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent?view=azure-dotnet&preserve-view=true) k přidání FirstLogonCommands a LogonCommands. Další informace najdete v tématu [AdditionalUnattendContent FirstLogonCommands example](https://github.com/Azure/azure-quickstart-templates/issues/1407).
+> Vlastní soubor *unattend.xml* není podporován. I když podporujeme vlastnost **additionalUnattendContent** , která poskytuje jenom omezené podpory pro přidání možností [Microsoft-Windows-Shell-setup](/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) do souboru *unattend.xml* , který používá agent zřizování Azure. Můžete použít například [additionalUnattendContent](/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent) k přidání FirstLogonCommands a LogonCommands. Další informace najdete v tématu [AdditionalUnattendContent FirstLogonCommands example](https://github.com/Azure/azure-quickstart-templates/issues/1407).
 
 ## <a name="convert-the-virtual-disk-to-a-fixed-size-vhd"></a>Převést virtuální disk na virtuální pevný disk s pevnou velikostí
 

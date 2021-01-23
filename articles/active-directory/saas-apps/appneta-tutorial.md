@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: a00087d557e4244a6551b84623e2c34461623eb3
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: b2558b4b3bcd60acba3bf47d4a973a2b6de7424f
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916537"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736000"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-appneta-performance-monitor"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s monitorováním výkonu AppNeta
 
@@ -94,7 +94,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho očekává aplikace AppNeta Performance Monitor několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy se také předem naplní, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | --------| ----------------|
     | firstName| User. křestní jméno|
     | lastName| User. příjmení|
@@ -106,7 +106,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     | | |
 
     > [!NOTE]
-    > **skupiny** odkazují na skupinu zabezpečení v Appneta, která je namapovaná na **roli** ve službě Azure AD. Podívejte se prosím na [Tento](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui) dokument, který vysvětluje, jak vytvářet vlastní role v Azure AD.
+    > **skupiny** odkazují na skupinu zabezpečení v Appneta, která je namapovaná na **roli** ve službě Azure AD. Podívejte se prosím na [Tento](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview) dokument, který vysvětluje, jak vytvářet vlastní role v Azure AD.
 
     1. Kliknutím na **Přidat novou deklaraci identity** otevřete dialogové okno **Spravovat deklarace identity uživatelů** .
 
@@ -172,9 +172,9 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 * Přejít na adresu URL pro přihlášení ke sledování výkonu AppNeta přímo a zahájit tok přihlášení.
 
-* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici sledování výkonu AppNeta v části Moje aplikace, přesměruje se na adresu URL pro přihlášení ke sledování výkonu AppNeta. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici sledování výkonu AppNeta v části Moje aplikace, přesměruje se na adresu URL pro přihlášení ke sledování výkonu AppNeta. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Po nakonfigurování AppNeta Performance Monitor můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+Po nakonfigurování AppNeta Performance Monitor můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

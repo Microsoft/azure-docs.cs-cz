@@ -366,6 +366,8 @@
           href: sql-data-warehouse-restore-deleted-dw.md
         - name: Obnovení z geografické zálohy
           href: sql-data-warehouse-restore-from-geo-backup.md
+        - name: Zakázat geografické zálohy
+          href: disable-geo-backup.md
     - name: Integrace
       items:
         - name: Použití strojového učení
