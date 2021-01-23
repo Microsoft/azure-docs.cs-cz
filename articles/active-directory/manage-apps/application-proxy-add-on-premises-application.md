@@ -12,12 +12,12 @@ ms.date: 01/20/2021
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 6b46a5ea71bf8c9705ffc3bc51ea48f4b0c28502
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 6f8fdb23222944eab4742d1e972280e1e27e30a3
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98660760"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728510"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Kurz: Přidání místní aplikace pro vzdálený přístup prostřednictvím proxy aplikace v Azure Active Directory
 
@@ -97,7 +97,7 @@ Povolení TLS 1,2:
 1. Restartujte server.
 
 > [!Note]
-> Microsoft aktualizuje služby Azure tak, aby používaly certifikáty TLS z jiné sady kořenových certifikačních autorit (CAs). Tato změna se provádí, protože aktuální certifikáty certifikační autority nejsou v rozporu s jedním z požadavků na základní hodnoty fóra CA nebo prohlížeče. Další informace najdete v tématu [změny certifikátu Azure TLS](https://docs.microsoft.com/azure/security/fundamentals/tls-certificate-changes) .
+> Microsoft aktualizuje služby Azure tak, aby používaly certifikáty TLS z jiné sady kořenových certifikačních autorit (CAs). Tato změna se provádí, protože aktuální certifikáty certifikační autority nejsou v rozporu s jedním z požadavků na základní hodnoty fóra CA nebo prohlížeče. Další informace najdete v tématu [změny certifikátu Azure TLS](../../security/fundamentals/tls-certificate-changes.md) .
 
 ## <a name="prepare-your-on-premises-environment"></a>Příprava místního prostředí
 
@@ -213,7 +213,7 @@ Teď, když jste připravili prostředí a nainstalovali konektor, jste připrav
 
 6. V případě potřeby nakonfigurujte **Další nastavení**. U většiny aplikací byste měli tato nastavení zachovat ve svých výchozích stavech. 
 
-    | Pole | Description |
+    | Pole | Popis |
     | :---- | :---------- |
     | **Časový limit aplikace back-endu** | Nastavte tuto hodnotu na **Long** , jenom pokud se vaše aplikace pomalu ověřuje a připojuje. Ve výchozím nastavení má časový limit aplikace back-end délku 85 sekund. Když se nastaví na Long, časový limit pro back-end se zvýší na 180 sekund. |
     | **Použít soubor cookie HTTP-Only** | Nastavte tuto hodnotu na **Ano** , pokud chcete, aby soubory cookie proxy aplikací zahrnovaly příznak HttpOnly v hlavičce HTTP Response. Pokud používáte službu Vzdálená plocha, nastavte tuto hodnotu na **ne**.|

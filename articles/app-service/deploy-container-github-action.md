@@ -7,12 +7,12 @@ ms.date: 12/04/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: github-actions-azure
-ms.openlocfilehash: 4f5deb33218c336da7a477b4f39cd45f7386debf
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: fec4ba8cba33a1d52d8f330308645fb616921ba4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97604970"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98726796"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>Nasazení vlastního kontejneru pro App Service pomocí akcí GitHubu
 
@@ -28,7 +28,7 @@ Pro pracovní postup kontejneru Azure App Service má soubor tři části:
 |**Sestavení** | 1. Vytvořte prostředí. <br /> 2. Sestavte image kontejneru. |
 |**Nasazení** | 1. Nasaďte image kontejneru. |
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořit účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 - Účet GitHub. Pokud ho ještě nemáte, zaregistrujte se [zdarma](https://github.com/join). K nasazení do Azure App Service musíte mít v úložišti GitHub kód. 
@@ -50,7 +50,7 @@ Profil publikování je přihlašovací údaje na úrovni aplikace. Nastavte sv�
 1. Na stránce **Přehled** vyberte **získat profil publikování**.
 
     > [!NOTE]
-    > Od října 2020 budou webové aplikace pro Linux potřebovat nastavení aplikace `WEBSITE_WEBDEPLOY_USE_SCM` nastavené na hodnotu `true` **před stažením souboru**. Tento požadavek se v budoucnu odebere. Informace o tom, jak nakonfigurovat běžné nastavení webové aplikace, najdete [v tématu Konfigurace aplikace App Service v Azure Portal](/azure/app-service/configure-common).  
+    > Od října 2020 budou webové aplikace pro Linux potřebovat nastavení aplikace `WEBSITE_WEBDEPLOY_USE_SCM` nastavené na hodnotu `true` **před stažením souboru**. Tento požadavek se v budoucnu odebere. Informace o tom, jak nakonfigurovat běžné nastavení webové aplikace, najdete [v tématu Konfigurace aplikace App Service v Azure Portal](./configure-common.md).  
 
 1. Stažený soubor uložte. Pomocí obsahu souboru vytvoříte tajný klíč GitHubu.
 
@@ -88,7 +88,7 @@ V [GitHubu](https://github.com/)přejděte do úložiště, vyberte **Nastavení
 
 Pokud chcete použít [přihlašovací údaje na úrovni aplikace](#generate-deployment-credentials), vložte obsah staženého souboru publikačního profilu do pole hodnota tajného klíče. Pojmenujte tajný klíč `AZURE_WEBAPP_PUBLISH_PROFILE` .
 
-Když nakonfigurujete pracovní postup GitHubu, použijte `AZURE_WEBAPP_PUBLISH_PROFILE` v akci nasazení webové aplikace Azure. Příklad:
+Když nakonfigurujete pracovní postup GitHubu, použijte `AZURE_WEBAPP_PUBLISH_PROFILE` v akci nasazení webové aplikace Azure. Například:
     
 ```yaml
 - uses: azure/webapps-deploy@v2
@@ -102,7 +102,7 @@ V [GitHubu](https://github.com/)přejděte do úložiště, vyberte **Nastavení
 
 Pokud chcete použít [přihlašovací údaje na úrovni uživatele](#generate-deployment-credentials), vložte celý výstup JSON z příkazu Azure CLI do pole hodnota tajného klíče. Zadejte tajný kód jako název `AZURE_CREDENTIALS` .
 
-Když později nakonfigurujete soubor pracovního postupu, použijete tajný klíč pro vstup `creds` Akce přihlášení do Azure. Příklad:
+Když později nakonfigurujete soubor pracovního postupu, použijete tajný klíč pro vstup `creds` Akce přihlášení do Azure. Například:
 
 ```yaml
 - uses: azure/login@v1

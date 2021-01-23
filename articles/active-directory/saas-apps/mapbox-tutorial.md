@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/16/2020
 ms.author: jeedes
-ms.openlocfilehash: fcee52d585d465b06e7b0dc8d70dc35fb66d2615
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: e74018d4b145f8dec44137ca1a3b0713b1b5cadd
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916163"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728548"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mapbox"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Mapbox
 
@@ -85,13 +85,13 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho očekává aplikace Mapbox několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Název   |  Zdrojový atribut|
+    | Name   |  Zdrojový atribut|
     | -----|--------- |
     | role | User. assignedroles |
     | | |
 
     > [!NOTE]
-    > Informace o tom, jak nakonfigurovat role v Azure AD, najdete [tady](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui).
+    > Informace o tom, jak nakonfigurovat role v Azure AD, najdete [tady](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview).
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **certifikát (RAW)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
@@ -163,7 +163,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 * Klikněte na testovat tuto aplikaci v Azure Portal a měli byste se automaticky přihlášeni k Mapbox, pro které jste nastavili jednotné přihlašování.
 
-* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici Mapbox v okně moje aplikace, měli byste se automaticky přihlásit k Mapbox, pro které jste nastavili jednotné přihlašování. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici Mapbox v okně moje aplikace, měli byste se automaticky přihlásit k Mapbox, pro které jste nastavili jednotné přihlašování. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Další kroky

@@ -3,12 +3,12 @@ title: Referenční materiály k nastavení aplikací pro Azure Functions
 description: Referenční dokumentace k nastavení aplikace Azure Functions nebo k proměnným prostředí.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 72b42e392f350a8693ca8a052bdec1d5fd337234
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 80b2daebbd64f08dd4f5d728b2a9a4ee04b8952f
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937106"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728988"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Referenční materiály k nastavení aplikací pro Azure Functions
 
@@ -229,11 +229,13 @@ Hodnota pro tento klíč je zadána ve formátu `<DESTINATION>:<VERBOSITY>` , kt
 
 ## <a name="website_contentazurefileconnectionstring"></a>\_CONTENTAZUREFILECONNECTIONSTRING webu
 
-Pro spotřebu & jenom plánů Premium. Připojovací řetězec pro účet úložiště, ve kterém je uložený kód a konfigurace aplikace Function App Viz [Vytvoření aplikace Function App](functions-infrastructure-as-code.md#create-a-function-app).
+Připojovací řetězec pro účet úložiště, ve kterém je kód a konfigurace aplikace Function App uložený v plánech škálování řízených událostmi, které běží v systému Windows. Další informace najdete v tématu [Vytvoření aplikace Function App](functions-infrastructure-as-code.md#windows).
 
 |Klíč|Ukázková hodnota|
 |---|------------|
 |WEBSITE_CONTENTAZUREFILECONNECTIONSTRING|DefaultEndpointsProtocol = https; Název účtu = [název]; AccountKey = [klíč]|
+
+Používá se jenom při nasazení na plány spotřeby nebo Premium, které běží na Windows. Nepodporováno pro Linux. Změna nebo odebrání tohoto nastavení může způsobit, že se vaše aplikace Function App nespustí. Další informace najdete v [tomto článku o řešení potíží](functions-recover-storage-account.md#storage-account-application-settings-were-deleted). 
 
 ## <a name="website_contentovervnet"></a>\_CONTENTOVERVNET webu
 
@@ -245,11 +247,15 @@ Jenom pro plány Premium. Hodnota `1` umožňuje škálování aplikace Function
 
 ## <a name="website_contentshare"></a>\_CONTENTSHARE webu
 
-Pro spotřebu & jenom plánů Premium. Cesta k souboru s kódem a konfigurací aplikace Function App Používá se s WEBSITE_CONTENTAZUREFILECONNECTIONSTRING. Výchozí hodnota je jedinečný řetězec, který začíná názvem aplikace Function App. Viz [Vytvoření aplikace Function App](functions-infrastructure-as-code.md#create-a-function-app).
+Cesta k souboru s kódem a konfigurací aplikace funkcí v plánu škálování řízeného událostmi ve Windows. Používá se s WEBSITE_CONTENTAZUREFILECONNECTIONSTRING. Výchozí hodnota je jedinečný řetězec, který začíná názvem aplikace Function App. Viz [Vytvoření aplikace Function App](functions-infrastructure-as-code.md#windows).
 
 |Klíč|Ukázková hodnota|
 |---|------------|
 |WEBSITE_CONTENTSHARE|functionapp091999e2|
+
+Používá se jenom aplikace Function App na plánech spotřeby nebo Premium, které běží na Windows. Nepodporováno pro Linux. Změna nebo odebrání tohoto nastavení může způsobit, že se vaše aplikace Function App nespustí. Další informace najdete v [tomto článku o řešení potíží](functions-recover-storage-account.md#storage-account-application-settings-were-deleted).
+
+Při použití Azure Resource Manager k vytvoření aplikace Function App během nasazení nezahrnujte do šablony WEBSITE_CONTENTSHARE. Toto nastavení aplikace se generuje během nasazování. Další informace najdete v tématu [Automatizace nasazení prostředků pro aplikaci Function App](functions-infrastructure-as-code.md#windows).   
 
 ## <a name="website_max_dynamic_application_scale_out"></a>maximální navýšení \_ \_ \_ kapacity dynamické aplikace \_ \_ na webu
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/18/2020
 ms.author: jeedes
-ms.openlocfilehash: 40cb3c6e326cbacfbfb9879cfa92b5780d86fe99
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: cc3ce56ecd17d627001f4925355c055afdc09d22
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724200"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98729607"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-statuspage"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s StatusPage
 
@@ -206,7 +206,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 * Klikněte na testovat tuto aplikaci v Azure Portal a měli byste se automaticky přihlášeni k StatusPage, pro které jste nastavili jednotné přihlašování.
 
-* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici StatusPage v okně moje aplikace, měli byste se automaticky přihlásit k StatusPage, pro které jste nastavili jednotné přihlašování. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici StatusPage v okně moje aplikace, měli byste se automaticky přihlásit k StatusPage, pro které jste nastavili jednotné přihlašování. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/24/2020
 ms.author: jeedes
-ms.openlocfilehash: ceddda54b79f51729d302ba6f435e1ac3cbc8d5c
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 0994126c4e31d880a792904b0c086a56f6bd90fb
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968921"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98727721"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cornerstone-ondemand"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) se základním kamenem OnDemand
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat OnDemand OnDemand pomocí Azure Active
 * Umožněte uživatelům, aby se automaticky přihlásili k platformě OnDemand OnDemand pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -142,7 +142,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 * Přejít přímo na základní adresu URL pro přihlášení k OnDemand-on a spustit tok přihlášení.
 
-* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici OnDemand OnDemand v části Moje aplikace, přesměruje se na přihlašovací adresu URL pro OnDemandal. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici OnDemand OnDemand v části Moje aplikace, přesměruje se na přihlašovací adresu URL pro OnDemandal. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Další kroky
 

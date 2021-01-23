@@ -11,12 +11,12 @@ ms.date: 08/13/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: b6dd2199452837d81c201cf4aef2bcd94b35cda3
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 1207f4856882d8aa0e6d1e41712071536bfecf29
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98677201"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728552"
 ---
 # <a name="convert-resource-classes-to-workload-groups"></a>Převod tříd prostředků na skupiny úloh
 
@@ -90,5 +90,5 @@ SELECT request_id, [label], classifier_name, group_name, command
 
 - [Izolace úloh](sql-data-warehouse-workload-isolation.md)
 - [Postup vytvoření skupiny úloh](quickstart-configure-workload-isolation-tsql.md)
-- [Vytvoření KLASIFIKÁTORu úloh (Transact-SQL)](/sql/t-sql/statements/create-workload-classifier-transact-sql?&view=azure-sqldw-latest)
+- [Vytvoření KLASIFIKÁTORu úloh (Transact-SQL)](/sql/t-sql/statements/create-workload-classifier-transact-sql??view=azure-sqldw-latest&preserve-view=true)
 - [Vytvoření skupiny úloh (Transact-SQL)](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest&preserve-view=true)

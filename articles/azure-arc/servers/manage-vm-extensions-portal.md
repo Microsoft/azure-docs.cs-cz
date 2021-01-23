@@ -1,14 +1,14 @@
 ---
 title: Povolit rozšíření virtuálního počítače z Azure Portal
 description: Tento článek popisuje, jak nasadit rozšíření virtuálních počítačů na servery s podporou ARC Azure běžícími v hybridních cloudových prostředích z Azure Portal.
-ms.date: 11/06/2020
+ms.date: 01/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 48d7d4085dce893d94436fe0c6be32cfeea9cda3
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 43bbcef28b77e7c7112880fdac1bbd4809791cef
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359081"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728941"
 ---
 # <a name="enable-azure-vm-extensions-from-the-azure-portal"></a>Povolit rozšíření virtuálních počítačů Azure z Azure Portal
 
@@ -39,6 +39,18 @@ Rozšíření virtuálních počítačů můžete použít k použití ARC pro s
 
 >[!NOTE]
 >I když je možné dávkovat více rozšíření a zpracovat je, nainstalují se sériově. Po dokončení první instalace rozšíření dojde k pokusu o instalaci dalšího rozšíření.
+
+## <a name="list-extensions-installed"></a>Nainstalovaná rozšíření seznamu
+
+Seznam rozšíření virtuálních počítačů můžete získat na serveru s povoleným ARC z Azure Portal. Pokud je chcete zobrazit, proveďte následující kroky.
+
+1. V prohlížeči přejdete na [Azure Portal](https://portal.azure.com).
+
+2. Na portálu přejděte na **servery – Azure ARC** a ze seznamu vyberte svůj hybridní počítač.
+
+3. Vyberte **rozšíření** a vrátí se seznam nainstalovaných rozšíření.
+
+    ![Vypíše rozšíření virtuálního počítače nasazené na vybraný počítač.](./media/manage-vm-extensions/list-vm-extensions.png)
 
 ## <a name="uninstall-extension"></a>Odinstalace rozšíření
 

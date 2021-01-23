@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: cdb72eb857f60400e8f7c23bbd1af39df802df76
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 5802df8bec8a0d938b132e099dd71fdb1d22a5b7
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968904"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98727462"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kronos"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Kronos
 
@@ -27,7 +27,7 @@ V tomto kurzu se dozvíte, jak integrovat Kronos s Azure Active Directory (Azure
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -147,7 +147,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 * Klikněte na testovat tuto aplikaci v Azure Portal a měli byste se automaticky přihlášeni k Kronos, pro které jste nastavili jednotné přihlašování.
 
-* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici Kronos v okně moje aplikace, měli byste se automaticky přihlásit k Kronos, pro které jste nastavili jednotné přihlašování. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici Kronos v okně moje aplikace, měli byste se automaticky přihlásit k Kronos, pro které jste nastavili jednotné přihlašování. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Další kroky

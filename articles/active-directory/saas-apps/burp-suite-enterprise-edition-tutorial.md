@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/09/2020
 ms.author: jeedes
-ms.openlocfilehash: f071159b8e1a25776fad5e662f4ea18573764a89
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 480e501f8683fad405abc5e07cb43eec8ae8444c
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97365016"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98727851"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-burp-suite-enterprise-edition"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) se sadou BURP Suite Enterprise Edition
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat sadu BURP Suite Enterprise Edition s A
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k BURP Suite Enterprise Edition pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -94,9 +94,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 1. Kromě výše uvedeného aplikace BURP Suite Enterprise Edition očekává, že se v odpovědi SAML zpátky vrátí několik atributů, které jsou uvedené dál. Tyto atributy se také předem naplní, ale můžete je zkontrolovat podle vašich požadavků.
 
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | ---------------| --------------- |    
-    | Skupina | User. Groups |
+    | Group (Skupina) | User. Groups |
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
@@ -144,9 +144,9 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 * Klikněte na testovat tuto aplikaci v Azure Portal a měli byste se automaticky přihlášeni k sadě BURP Suite Enterprise Edition, pro kterou jste nastavili jednotné přihlašování.
 
-* Můžete použít aplikaci Microsoft moje aplikace. Po kliknutí na dlaždici BURP Suite Enterprise Edition v okně moje aplikace byste měli být automaticky přihlášeni k edici BURP Suite Enterprise, pro kterou jste nastavili jednotné přihlašování. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Můžete použít aplikaci Microsoft moje aplikace. Po kliknutí na dlaždici BURP Suite Enterprise Edition v okně moje aplikace byste měli být automaticky přihlášeni k edici BURP Suite Enterprise, pro kterou jste nastavili jednotné přihlašování. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Jakmile nakonfigurujete sadu BURP Suite Enterprise Edition, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+Jakmile nakonfigurujete sadu BURP Suite Enterprise Edition, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

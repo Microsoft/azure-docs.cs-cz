@@ -12,12 +12,12 @@ ms.date: 04/07/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 808357b95f4de904ead0741d848480d548a2e26a
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: b6ecea10c884bffb10c936ca7c619d70d2449467
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030072"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728487"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Práce se stávajícími místními proxy servery
 
@@ -111,7 +111,7 @@ Existují čtyři aspekty, které je třeba vzít v úvahu při použití odchoz
 
 Povolte přístup k následujícím adresám URL:
 
-| URL | Port |  Jak se používá |
+| URL | Port |  K čemu slouží |
 | --- | --- | --- |
 | &ast;. msappproxy.net<br>&ast;. servicebus.windows.net | 443/HTTPS | Komunikace mezi konektorem a cloudovou službou proxy aplikací |
 | crl3.digicert.com<br>crl4.digicert.com<br>ocsp.digicert.com<br>crl.microsoft.com<br>oneocsp.microsoft.com<br>ocsp.msocsp.com<br> | 80/HTTP | Konektor používá tyto adresy URL k ověření certifikátů. |
@@ -169,7 +169,7 @@ Nejlepším způsobem, jak identifikovat a řešit potíže s připojením konek
 Můžete použít nástroj pro monitorování podle vašeho výběru. Pro účely tohoto článku jsme použili Microsoft Message Analyzer.
 
 > [!NOTE]
-> [Služba Microsoft Message Analyzer (MMA) byla vyřazena](https://docs.microsoft.com/openspecs/blog/ms-winintbloglp/dd98b93c-0a75-4eb0-b92e-e760c502394f) a balíčky pro stažení byly z webů Microsoft.com odebrány od listopadu 25 2019.  V současné době teď není ve vývoji žádná náhrada Microsoftu pro Microsoft Message Analyzer.  U podobných funkcí zvažte použití nástroje analyzátoru síťových protokolů od jiného výrobce, jako je třeba Wireshark.
+> [Služba Microsoft Message Analyzer (MMA) byla vyřazena](/openspecs/blog/ms-winintbloglp/dd98b93c-0a75-4eb0-b92e-e760c502394f) a balíčky pro stažení byly z webů Microsoft.com odebrány od listopadu 25 2019.  V současné době teď není ve vývoji žádná náhrada Microsoftu pro Microsoft Message Analyzer.  U podobných funkcí zvažte použití nástroje analyzátoru síťových protokolů od jiného výrobce, jako je třeba Wireshark.
 
 Následující příklady jsou specifické pro analyzátor zpráv, ale zásady je možné použít na jakýkoli nástroj pro analýzu.
 

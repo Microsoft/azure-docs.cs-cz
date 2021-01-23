@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2020
 ms.author: Zhchia
-ms.openlocfilehash: 4eaac716d06b102a07872059af28da4986889caa
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 72e021f47bb8db4dedf0e434d0d94bb2118a4c00
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673432"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728152"
 ---
 # <a name="tutorial-configure-bizagi-studio-for-digital-process-automation-for-automatic-user-provisioning"></a>Kurz: Konfigurace bizagi studia pro automatizaci digitálních procesů pro Automatické zřizování uživatelů
 
-Tento kurz popisuje kroky, které je třeba provést v bizagi studiu pro automatizaci digitálního procesu a Azure Active Directory (Azure AD) ke konfiguraci automatického zřizování uživatelů. Když to uděláte, Azure AD automaticky zřídí a odsouhlasí uživatele a skupiny s [bizagi Studio pro automatizaci digitálních procesů](https://www.bizagi.com/) pomocí služby zřizování Azure AD. Důležité podrobnosti o tom, co tato služba dělá a jak funguje, a odpovědi na nejčastější dotazy najdete v tématu [Automatizace zřizování a rušení zřízení uživatelů pro aplikace SaaS ve službě Azure Active Directory](../manage-apps/user-provisioning.md). 
+Tento kurz popisuje kroky, které je třeba provést v bizagi studiu pro automatizaci digitálního procesu a Azure Active Directory (Azure AD) ke konfiguraci automatického zřizování uživatelů. Když to uděláte, Azure AD automaticky zřídí a odsouhlasí uživatele a skupiny s [bizagi Studio pro automatizaci digitálních procesů](https://www.bizagi.com/) pomocí služby zřizování Azure AD. Důležité podrobnosti o tom, co tato služba dělá a jak funguje, a odpovědi na nejčastější dotazy najdete v tématu [Automatizace zřizování a rušení zřízení uživatelů pro aplikace SaaS ve službě Azure Active Directory](../app-provisioning/user-provisioning.md). 
 
 
 ## <a name="capabilities-supported"></a>Podporované funkce
@@ -32,22 +32,22 @@ Tento kurz popisuje kroky, které je třeba provést v bizagi studiu pro automat
 > * Vytváření uživatelů v bizagi studiu pro automatizaci digitálních procesů
 > * Odebrat uživatele v nástroji bizagi Studio pro automatizaci digitálních procesů, když už nevyžadují přístup
 > * Udržování uživatelských atributů synchronizovaných mezi Azure AD a bizagi Studio pro automatizaci digitálních procesů
-> * [Jednotné přihlašování](https://docs.microsoft.com/azure/active-directory/saas-apps/bizagi-studio-for-digital-process-automation-tutorial) do bizagi studia pro automatizaci digitálního procesu (doporučeno)
+> * [Jednotné přihlašování](./bizagi-studio-for-digital-process-automation-tutorial.md) do bizagi studia pro automatizaci digitálního procesu (doporučeno)
 
 ## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující:
 
-* [Tenanta Azure AD](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
-* Uživatelský účet ve službě Azure AD s [oprávněním](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) ke konfiguraci zřizování. Mezi příklady patří správce aplikace, správce cloudové aplikace, vlastník aplikace nebo globální správce. 
+* [Tenanta Azure AD](../develop/quickstart-create-new-tenant.md) 
+* Uživatelský účet ve službě Azure AD s [oprávněním](../roles/permissions-reference.md) ke konfiguraci zřizování. Mezi příklady patří správce aplikace, správce cloudové aplikace, vlastník aplikace nebo globální správce. 
 * Bizagi Studio pro automatizaci digitálního procesu verze 11.2.4.2 X nebo novější.
 
 ## <a name="plan-your-provisioning-deployment"></a>Plánování nasazení zřizování
 Pro plánování použijte následující postup:
 
-1. Seznamte se s [fungováním služby zřizování](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
-2. Určete, kdo bude [v oboru pro zřizování](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
-3. Určete, jaká data se mají [mapovat mezi Azure AD a bizagi Studio pro automatizaci digitálních procesů](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes). 
+1. Seznamte se s [fungováním služby zřizování](../app-provisioning/user-provisioning.md).
+2. Určete, kdo bude [v oboru pro zřizování](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+3. Určete, jaká data se mají [mapovat mezi Azure AD a bizagi Studio pro automatizaci digitálních procesů](../app-provisioning/customize-application-attributes.md). 
 
 ## <a name="configure-to-support-provisioning-with-azure-ad"></a>Konfigurace pro podporu zřizování s Azure AD
 Pokud chcete nakonfigurovat bizagi Studio pro automatizaci digitálních procesů tak, aby podporovala zřizování s Azure AD, postupujte takto:
@@ -69,17 +69,17 @@ Pokud chcete nakonfigurovat bizagi Studio pro automatizaci digitálních proces�
 
 ## <a name="add-the-application-from-the-azure-ad-gallery"></a>Přidání aplikace z Galerie Azure AD
 
-Pokud chcete začít spravovat zřizování pro bizagi Studio pro automatizaci digitálních procesů, přidejte aplikaci z Galerie aplikací Azure AD. Pokud jste již dříve nastavili bizagi Studio pro automatizaci digitálního procesu jednotného přihlašování, můžete použít stejnou aplikaci. Při počátečním testování integrace byste ale měli vytvořit samostatnou aplikaci. Další informace najdete v tématu [rychlý Start: Přidání aplikace do tenanta Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app). 
+Pokud chcete začít spravovat zřizování pro bizagi Studio pro automatizaci digitálních procesů, přidejte aplikaci z Galerie aplikací Azure AD. Pokud jste již dříve nastavili bizagi Studio pro automatizaci digitálního procesu jednotného přihlašování, můžete použít stejnou aplikaci. Při počátečním testování integrace byste ale měli vytvořit samostatnou aplikaci. Další informace najdete v tématu [rychlý Start: Přidání aplikace do tenanta Azure Active Directory (Azure AD)](../manage-apps/add-application-portal.md). 
 
 ## <a name="define-who-is-in-scope-for-provisioning"></a>Definujte, kdo je v oboru pro zřizování. 
 
-Pomocí služby Azure AD Provisioning můžete nastavit obor, který se zřídí v závislosti na přiřazení aplikace, a to na základě atributů uživatele a skupiny nebo obou. Pokud rozsah zadáte na základě přiřazení, přečtěte si postup přiřazení [nebo zrušení přiřazení uživatelů a skupin pro aplikaci, která používá Graph API](../manage-apps/assign-user-or-group-access-portal.md) k přiřazení uživatelů a skupin k aplikaci. Pokud je obor založený výhradně na atributech uživatele nebo skupiny, můžete použít filtr oborů. Další informace najdete v tématu [zřizování aplikace na základě atributů s filtry oborů](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
+Pomocí služby Azure AD Provisioning můžete nastavit obor, který se zřídí v závislosti na přiřazení aplikace, a to na základě atributů uživatele a skupiny nebo obou. Pokud rozsah zadáte na základě přiřazení, přečtěte si postup přiřazení [nebo zrušení přiřazení uživatelů a skupin pro aplikaci, která používá Graph API](../manage-apps/assign-user-or-group-access-portal.md) k přiřazení uživatelů a skupin k aplikaci. Pokud je obor založený výhradně na atributech uživatele nebo skupiny, můžete použít filtr oborů. Další informace najdete v tématu [zřizování aplikace na základě atributů s filtry oborů](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md). 
 
 Všimněte si následujících bodů o oboru:
 
-* Když přiřazujete uživatele a skupiny do bizagi studia pro automatizaci digitálních procesů, musíte vybrat jinou roli než **výchozí přístup**. Uživatelé s výchozí rolí přístupu jsou vyloučení z zřizování a jsou označeni v protokolech zřizování, které budou označeny jako neefektivně. Pokud je jedinou rolí dostupnou v aplikaci výchozí role přístupu, můžete [aktualizovat manifest aplikace](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) a přidat tak další role. 
+* Když přiřazujete uživatele a skupiny do bizagi studia pro automatizaci digitálních procesů, musíte vybrat jinou roli než **výchozí přístup**. Uživatelé s výchozí rolí přístupu jsou vyloučení z zřizování a jsou označeni v protokolech zřizování, které budou označeny jako neefektivně. Pokud je jedinou rolí dostupnou v aplikaci výchozí role přístupu, můžete [aktualizovat manifest aplikace](../develop/howto-add-app-roles-in-azure-ad-apps.md) a přidat tak další role. 
 
-* Začněte v malém. Než se pustíte do zavádění pro všechny, proveďte testování s malou skupinou uživatelů a skupin. Když je obor pro zřizování nastavený na přiřazené uživatele a skupiny, můžete to řídit přiřazením jednoho nebo dvou uživatelů nebo skupin k aplikaci. Pokud je obor nastaven na všechny uživatele a skupiny, můžete zadat [Filtr oboru založený na atributech](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
+* Začněte v malém. Než se pustíte do zavádění pro všechny, proveďte testování s malou skupinou uživatelů a skupin. Když je obor pro zřizování nastavený na přiřazené uživatele a skupiny, můžete to řídit přiřazením jednoho nebo dvou uživatelů nebo skupin k aplikaci. Pokud je obor nastaven na všechny uživatele a skupiny, můžete zadat [Filtr oboru založený na atributech](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md). 
 
 
 ## <a name="configure-automatic-user-provisioning"></a>Konfigurace automatického zřizování uživatelů 
@@ -105,7 +105,7 @@ Tato část vás provede postupem konfigurace služby zřizování Azure AD pro 
 5. V části **přihlašovací údaje správce** zadejte adresu URL tenanta a tajný token pro bizagi Studio pro automatizaci digitálního procesu. 
 
       * **Adresa URL klienta:** Zadejte koncový bod bizagi SCIM s následující strukturou:  `<Your_Bizagi_Project>/scim/v2/` .
-         Například: `https://my-company.bizagi.com/scim/v2/`.
+         Příklad: `https://my-company.bizagi.com/scim/v2/`.
 
       * **Tajný token:** Tato hodnota se načte z kroku popsaného výše v tomto článku.
 
@@ -121,7 +121,7 @@ Tato část vás provede postupem konfigurace služby zřizování Azure AD pro 
 
 8. V části **mapování** vyberte možnost **synchronizovat Azure Active Directory uživatele a bizagi Studio pro automatizaci digitálních procesů**.
 
-9. V sekci **mapování atributů** zkontrolujte atributy uživatelů synchronizované z Azure AD do bizagi studia pro automatizaci digitálních procesů. Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v nástroji bizagi Studio pro automatizaci digitálních procesů pro operace aktualizace. Pokud změníte [odpovídající cílový atribut](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes), je nutné zajistit, aby rozhraní API pro automatizaci bizagi Studio pro digitální procesy podporovalo filtrování uživatelů na základě tohoto atributu. Vyberte **Uložit** a potvrďte všechny změny.
+9. V sekci **mapování atributů** zkontrolujte atributy uživatelů synchronizované z Azure AD do bizagi studia pro automatizaci digitálních procesů. Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v nástroji bizagi Studio pro automatizaci digitálních procesů pro operace aktualizace. Pokud změníte [odpovídající cílový atribut](../app-provisioning/customize-application-attributes.md), je nutné zajistit, aby rozhraní API pro automatizaci bizagi Studio pro digitální procesy podporovalo filtrování uživatelů na základě tohoto atributu. Vyberte **Uložit** a potvrďte všechny změny.
 
    |Atribut|Typ|Podporováno pro filtrování|
    |---|---|---|
@@ -137,12 +137,12 @@ Tato část vás provede postupem konfigurace služby zřizování Azure AD pro 
    
     ![Upravit seznam atributů](media/bizagi-studio-for-digital-process-automation-provisioning-tutorial/edit.png)  
 
-   Další informace o tom, jak přidat vlastní atributy, najdete v tématu [přizpůsobení atributů aplikace](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes).
+   Další informace o tom, jak přidat vlastní atributy, najdete v tématu [přizpůsobení atributů aplikace](../app-provisioning/customize-application-attributes.md).
 
 > [!NOTE]
 > Jsou podporovány pouze základní vlastnosti typu (například řetězec, celé číslo, logická hodnota, datum a čas atd.). Vlastnosti propojené s tabulkami ukazatelů nebo více typy se ještě nepodporují.
 
-10. Postup konfigurace filtrů oborů najdete v [kurzu filtru oborů](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+10. Postup konfigurace filtrů oborů najdete v [kurzu filtru oborů](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
 11. Pokud chcete povolit službu Azure AD Provisioning pro bizagi Studio pro automatizaci digitálních procesů, v části **Nastavení** změňte **stav zřizování** na **zapnuto**.
 
@@ -161,15 +161,15 @@ Tato operace zahájí cyklus počáteční synchronizace všech uživatelů a sk
 ## <a name="monitor-your-deployment"></a>Monitorování nasazení
 Po dokončení konfigurace zřizování použijte následující prostředky k monitorování nasazení:
 
-- Pomocí [protokolů zřizování](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) určete, kteří uživatelé se úspěšně zřídili nebo neúspěšně zřídili.
-- Podívejte se na [indikátor průběhu](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) , kde se zobrazí stav cyklu zřizování a jak se má dokončit.
-- Pokud je konfigurace zřizování v nesprávném stavu, bude aplikace přejít do karantény. Další informace najdete v tématu [zřizování aplikací ve stavu karantény](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).  
+- Pomocí [protokolů zřizování](../reports-monitoring/concept-provisioning-logs.md) určete, kteří uživatelé se úspěšně zřídili nebo neúspěšně zřídili.
+- Podívejte se na [indikátor průběhu](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) , kde se zobrazí stav cyklu zřizování a jak se má dokončit.
+- Pokud je konfigurace zřizování v nesprávném stavu, bude aplikace přejít do karantény. Další informace najdete v tématu [zřizování aplikací ve stavu karantény](../app-provisioning/application-provisioning-quarantine-status.md).  
 
 ## <a name="additional-resources"></a>Další zdroje informací
 
-* [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Zjistěte, jak procházet protokoly a získat sestavy aktivit zřizování](../manage-apps/check-status-user-account-provisioning.md).
+* [Zjistěte, jak procházet protokoly a získat sestavy aktivit zřizování](../app-provisioning/check-status-user-account-provisioning.md).

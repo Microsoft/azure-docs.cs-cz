@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: drewbat
-ms.openlocfilehash: fbe517c766b3835bf4265a1309b8737a25925b7c
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 4d80c034ab03fed6b9ae2ed0c4c0420afe6f7e32
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914956"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728087"
 ---
 # <a name="pull-settings-to-app-configuration-with-azure-pipelines"></a>Nastavení vyžádání do konfigurace aplikace pomocí Azure Pipelines
 
@@ -47,7 +47,7 @@ Teď, když se vytvoří připojení ke službě, vyhledejte název přiřazené
 
 Přiřaďte správnou roli konfigurace aplikace k připojení služby, které se používá v rámci úlohy, aby mohl úkol získat přístup k úložišti konfigurace aplikace.
 
-1. Přejděte do cílového úložiště konfigurace aplikace. Návod k nastavení úložiště konfigurace aplikace najdete v tématu [Vytvoření úložiště konfigurace aplikace](/azure/azure-app-configuration/quickstart-dotnet-core-app#create-an-app-configuration-store) v některém z rychlých startů konfigurace aplikace Azure.
+1. Přejděte do cílového úložiště konfigurace aplikace. Návod k nastavení úložiště konfigurace aplikace najdete v tématu [Vytvoření úložiště konfigurace aplikace](./quickstart-dotnet-core-app.md#create-an-app-configuration-store) v některém z rychlých startů konfigurace aplikace Azure.
 1. Na levé straně vyberte **řízení přístupu (IAM)**.
 1. V horní části vyberte **+ Přidat** a vyberte **Přidat přiřazení role**.
 1. V části **role** vyberte **čtečka konfiguračních dat aplikace**. Tato role umožňuje, aby úkol četl z úložiště konfigurace aplikace. 

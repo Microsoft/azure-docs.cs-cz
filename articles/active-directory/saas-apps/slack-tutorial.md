@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: d219767f943a432d41796c7d99f0e52253a9dd80
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 6e2428967b8e3b4c677752955ea743c5b7d144e5
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814036"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98729610"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-slack"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s časovou rezervou
 
@@ -109,7 +109,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě výše očekává aplikace s časovou rezervou v odpovědi SAML několik atributů, které jsou uvedené dál. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků. Také je nutné přidat `email` atribut. Pokud uživatel nemá e-mailovou adresu, namapujte **EmailAddress** na **User. userPrincipalName** a namapujte **e-mail** na **User. userPrincipalName**.
 
-    | Název | Zdrojový atribut |
+    | Name | Zdrojový atribut |
     | -----|---------|
     | EmailAddress | User. userPrincipalName |
     | e-mail | User. userPrincipalName |
@@ -210,7 +210,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 * Přejít na adresu URL pro přihlášení k časové rezervě přímo a spustit tok přihlášení.
 
-* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici časová rezerva v části Moje aplikace, přesměruje se na přihlašovací adresu URL časové rezervy. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici časová rezerva v části Moje aplikace, přesměruje se na přihlašovací adresu URL časové rezervy. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Další kroky
 

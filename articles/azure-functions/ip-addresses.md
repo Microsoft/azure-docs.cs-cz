@@ -3,12 +3,12 @@ title: IP adresy v Azure Functions
 description: Přečtěte si, jak najít příchozí a odchozí IP adresy pro aplikace Function App a jaké způsobují jejich změnu.
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.openlocfilehash: 291a1cda7b8a2acc5426ea255519e1c2e58a2d7c
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: fcc92e61e180d25bc67d5ca3f9e2bff4af01fd3f
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936715"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98726727"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>IP adresy v Azure Functions
 
@@ -25,10 +25,9 @@ IP adresy jsou spojené s aplikacemi Function App, ne s jednotlivými funkcemi. 
 
 Každá aplikace Function App má jednu příchozí IP adresu. Zjištění této IP adresy:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. Přejděte do aplikace Function App.
-3. Vyberte **funkce platformy**.
-4. Vyberte **vlastnosti** a v části **virtuální IP adresa** se zobrazí příchozí IP adresa.
+3. V části **Nastavení** vyberte **Vlastnosti**. Příchozí IP adresa se zobrazí v části **virtuální IP adresa**.
 
 ## <a name="function-app-outbound-ip-addresses"></a><a name="find-outbound-ip-addresses"></a>Odchozí IP adresy aplikace Function App
 
@@ -116,7 +115,7 @@ Pokud potřebujete statické a vyhrazené IP adresy, doporučujeme [App Service 
 
 Pokud chcete zjistit, jestli vaše aplikace Function App běží na App Service Environment:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. Přejděte do aplikace Function App.
 3. Vyberte kartu **Přehled**.
 4. Úroveň plánu App Service se zobrazí v části **App Service plán/cenová úroveň**. Cenová úroveň App Service Environment je **izolovaná**.

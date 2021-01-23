@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 6ac9dea5f77a47926e8dec5bda0befc66e4e675b
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 7a706eb120f45fcd08febd0bda9aaaa54a82135a
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97963840"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728164"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bic-cloud-design"></a>Kurz: Azure Active Directory integraci jednotného přihlašování pomocí jednotného přihlašování (SSO) s návrhem cloudu BIC
 
@@ -107,9 +107,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě výše očekává aplikace programu pro vytváření cloudových aplikací BIC v odpovědi SAML méně dalších atributů, které jsou uvedené dál. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | ------------ | --------- |
-    | Název | user.name |
+    | Name | user.name |
     | E-mailová adresa | uživatel. pošta |
     | ID jména | User. userPrincipalName |
     | e-mail | uživatel. pošta |
@@ -159,7 +159,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 * Přejít na adresu URL pro přihlášení k návrhu cloudu BIC přímo a zahájit tok přihlášení.
 
-* Můžete použít aplikaci Microsoft moje aplikace. Po kliknutí na dlaždici návrh nástroje BIC Cloud v části Moje aplikace se tato akce přesměruje na přihlašovací adresu URL návrhu pro cloudovou aplikaci BIC. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Můžete použít aplikaci Microsoft moje aplikace. Po kliknutí na dlaždici návrh nástroje BIC Cloud v části Moje aplikace se tato akce přesměruje na přihlašovací adresu URL návrhu pro cloudovou aplikaci BIC. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Další kroky

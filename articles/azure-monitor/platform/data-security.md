@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/11/2020
-ms.openlocfilehash: 87cdecd29d684c712853970c8246002132d274ac
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: a618a5d94513f7d648d118ae3bebdb34e4f5b1c4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094331"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728855"
 ---
 # <a name="log-analytics-data-security"></a>Zabezpečení dat Log Analytics
 Účelem tohoto dokumentu je poskytnout informace, které jsou specifické pro Log Analytics, což je funkce Azure Monitor, která doplní informace na [Centrum zabezpečení Azure](https://www.microsoft.com/en-us/trust-center?rtc=1).  
@@ -183,11 +183,10 @@ Pomocí těchto dalších funkcí zabezpečení můžete dále zabezpečit vaše
 - [Klíče spravované zákazníkem (zabezpečení)](customer-managed-keys.md) – pomocí klíčů spravovaných zákazníkem můžete šifrovat data odesílaná do vašich Log Analytics pracovních prostorů. Vyžaduje použití Azure Key Vault. 
 - [Soukromé/zákazníkem spravované úložiště](private-storage.md) – spravujte účet úložiště s vlastním šifrováním a sdělte Log Analytics, jak ho používat k ukládání dat monitorování. 
 - [Soukromé odkazy sítě](private-link-security.md) – privátní propojení Azure umožňuje zabezpečené propojení služeb Azure PaaS (včetně Azure monitor) do vaší virtuální sítě pomocí privátních koncových bodů. 
-- [Bezpečnostní modul Azure pro zákazníky](/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-preview) – Customer Lockbox pro Microsoft Azure poskytuje rozhraní pro zákazníky, kteří budou kontrolovat a schvalovat nebo odmítat žádosti o přístup k datům zákazníků. Používá se v případech, kdy technici Microsoftu potřebují získat přístup k datům zákazníků během zpracování žádostí o podporu.
+- [Bezpečnostní modul Azure pro zákazníky](../../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-preview) – Customer Lockbox pro Microsoft Azure poskytuje rozhraní pro zákazníky, kteří budou kontrolovat a schvalovat nebo odmítat žádosti o přístup k datům zákazníků. Používá se v případech, kdy technici Microsoftu potřebují získat přístup k datům zákazníků během zpracování žádostí o podporu.
 
 
 ## <a name="next-steps"></a>Další kroky
 * Naučte se shromažďovat data pomocí Log Analytics pro virtuální počítače Azure po [rychlém startu virtuálního počítače Azure](../learn/quick-collect-azurevm.md).  
 
 *  Pokud chcete shromažďovat data z fyzických nebo virtuálních počítačů se systémem Windows nebo Linux ve vašem prostředí, přečtěte si [rychlý Start pro počítače](../learn/quick-collect-linux-computer.md) se systémem Linux nebo [rychlý Start pro počítače se systémem Windows](../learn/quick-collect-windows-computer.md) .
-
