@@ -1,32 +1,30 @@
 ---
-title: Řešení problémů s nasazením cloudové služby | Microsoft Docs
+title: Řešení potíží s nasazením cloudové služby (Classic) | Microsoft Docs
 description: Při nasazení cloudové služby do Azure je možné, že narazíte na několik běžných problémů. Tento článek poskytuje řešení pro některé z nich.
-services: cloud-services
-documentationcenter: ''
-author: simonxjx
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue
-ms.assetid: a18ae415-0d1c-4bc4-ab6c-c1ddea02c870
+ms.topic: article
 ms.service: cloud-services
-ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: tbd
-ms.date: 06/15/2018
-ms.author: v-six
-ms.openlocfilehash: 0e7cd496f031f76320df5127d7e1aa3f2f7b06c7
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 7b3d7a9a674aab3976da9399f71ff4d8df08eb62
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075072"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741073"
 ---
-# <a name="troubleshoot-cloud-service-deployment-problems"></a>Řešení problémů s nasazením cloudové služby
+# <a name="troubleshoot-azure-cloud-services-classic-deployment-problems"></a>Řešení problémů s nasazením v Azure Cloud Services (Classic)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md) je nový model nasazení založený na Azure Resource Manager pro produkt Azure Cloud Services.V důsledku této změny se Azure Cloud Services běžící na modelu nasazení založeném na Azure Service Manager přejmenovala jako Cloud Services (Classic) a všechna nová nasazení by měla používat [Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md).
+
 Když nasadíte balíček aplikace cloudové služby do Azure, můžete získat informace o nasazení z podokna **vlastnosti** v Azure Portal. Pomocí podrobností v tomto podokně můžete vyřešit problémy s cloudovou službou a při otevření nové žádosti o podporu můžete tyto informace poskytnout podpoře Azure.
 
 Podokno **vlastnosti** můžete najít takto:
 
-* V Azure Portal klikněte na nasazení cloudové služby, klikněte na **všechna nastavení**a potom klikněte na **vlastnosti**.
+* V Azure Portal klikněte na nasazení cloudové služby, klikněte na **všechna nastavení** a potom klikněte na **vlastnosti**.
 
 > [!NOTE]
 > Obsah podokna **vlastnosti** můžete zkopírovat do schránky kliknutím na ikonu v pravém horním rohu podokna.
@@ -65,7 +63,7 @@ Zjistit, jestli vám automatické aktualizace znemožňuje provést prohození V
 4. Pokud probíhá automatická aktualizace, počkejte, než se dokončí, než se pokusíte provést prohození VIP.
 
 ## <a name="problem-a-role-instance-is-looping-between-started-initializing-busy-and-stopped"></a>Problém: instance role je mezi spuštěním, inicializací, zaneprázdněnou a zastavenou smyčkou.
-Tato podmínka by mohla indikovat potíže s kódem aplikace, balíčkem nebo konfiguračním souborem. V takovém případě byste si měli být schopni zobrazit změny stavu každých několik minut a Azure Portal může například dojít k **recyklaci**, **zaneprázdnění**nebo **inicializaci**. To znamená, že u aplikace, která udržuje instanci role v běhu, dochází k nějakému problému.
+Tato podmínka by mohla indikovat potíže s kódem aplikace, balíčkem nebo konfiguračním souborem. V takovém případě byste si měli být schopni zobrazit změny stavu každých několik minut a Azure Portal může například dojít k **recyklaci**, **zaneprázdnění** nebo **inicializaci**. To znamená, že u aplikace, která udržuje instanci role v běhu, dochází k nějakému problému.
 
 Další informace o tom, jak tento problém vyřešit, najdete v blogovém příspěvku [Data diagnostiky Azure PaaS COMPUTE](/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data) a [běžné problémy, které způsobují recyklaci rolí](cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md).
 

@@ -1,28 +1,31 @@
 ---
-title: Zpracování událostí životního cyklu cloudové služby | Microsoft Docs
+title: Zpracování událostí životního cyklu cloudové služby (Classic) | Microsoft Docs
 description: Naučte se používat metody životního cyklu role cloudové služby v .NET, včetně RoleEntryPoint, která poskytuje metody pro reakci na události životního cyklu.
-services: cloud-services
-documentationcenter: .net
-author: tgore03
-ms.service: cloud-services
-ms.custom: devx-track-csharp
 ms.topic: article
-ms.date: 07/18/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: d64414abfbc62e52b172a2c42796ec8d89d1719f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: b5aa4bd061647f63ebcc70109f0ba21b39e814cc
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88930056"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741328"
 ---
 # <a name="customize-the-lifecycle-of-a-web-or-worker-role-in-net"></a>Přizpůsobení životního cyklu webové role nebo role pracovního procesu v .NET
+
+> [!IMPORTANT]
+> [Azure Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md) je nový model nasazení založený na Azure Resource Manager pro produkt Azure Cloud Services.V důsledku této změny se Azure Cloud Services běžící na modelu nasazení založeném na Azure Service Manager přejmenovala jako Cloud Services (Classic) a všechna nová nasazení by měla používat [Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md).
+
 Když vytváříte roli pracovního procesu, rozšíříte třídu [RoleEntryPoint](/previous-versions/azure/reference/ee758619(v=azure.100)) , která poskytuje metody pro přepsání, které umožňují reagovat na události životního cyklu. Pro webové role je tato třída volitelná, takže ji musíte použít k reakci na události životního cyklu.
 
 ## <a name="extend-the-roleentrypoint-class"></a>Rozšiřování třídy RoleEntryPoint
-Třída [RoleEntryPoint](/previous-versions/azure/reference/ee758619(v=azure.100)) zahrnuje metody, které Azure volá při **spuštění**, **spuštění**nebo **zastavení** webové role nebo role pracovního procesu. Volitelně můžete tyto metody přepsat pro správu inicializace rolí, sekvencí vypnutí rolí nebo vlákna spuštění role. 
+Třída [RoleEntryPoint](/previous-versions/azure/reference/ee758619(v=azure.100)) zahrnuje metody, které Azure volá při **spuštění**, **spuštění** nebo **zastavení** webové role nebo role pracovního procesu. Volitelně můžete tyto metody přepsat pro správu inicializace rolí, sekvencí vypnutí rolí nebo vlákna spuštění role. 
 
-Při rozšiřování **RoleEntryPoint**byste měli mít na paměti následující chování metod:
+Při rozšiřování **RoleEntryPoint** byste měli mít na paměti následující chování metod:
 
 * Metoda [OnStart](/previous-versions/azure/reference/ee772851(v=azure.100)) vrátí logickou hodnotu, takže je možné vrátit **hodnotu false** z této metody.
   
@@ -73,7 +76,7 @@ Metodu **Run** můžete přepsat tak, aby pro vaši instanci role implementovala
 Přepsání metody **Run** není vyžadováno; Výchozí implementace spustí vlákno, které je trvale úsporné. Pokud přepíšete metodu **Run** , váš kód by měl blokovat neomezenou dobu. Pokud se metoda **Run** vrátí, role se automaticky recykluje. Jinými slovy, Azure vyvolá událost **zastavení** a zavolá metodu **restop** , aby bylo možné spustit sekvence vypnutí, než bude role přepnuta do režimu offline.
 
 ### <a name="implementing-the-aspnet-lifecycle-methods-for-a-web-role"></a>Implementace metod životního cyklu ASP.NET pro webovou roli
-Pomocí metod životního cyklu ASP.NET můžete kromě těch, které poskytuje třída **RoleEntryPoint** , spravovat inicializační a ukončovací sekvenci webové role. To může být užitečné pro účely kompatibility, Pokud předáváte existující aplikaci ASP.NET do Azure. Metody životního cyklu ASP.NET se volají v rámci metod **RoleEntryPoint** . Metoda ** \_ spuštění aplikace** je volána po dokončení metody **RoleEntryPoint. OnStart** . Metoda ** \_ end aplikace** je volána před voláním metody **RoleEntryPoint... stop** .
+Pomocí metod životního cyklu ASP.NET můžete kromě těch, které poskytuje třída **RoleEntryPoint** , spravovat inicializační a ukončovací sekvenci webové role. To může být užitečné pro účely kompatibility, Pokud předáváte existující aplikaci ASP.NET do Azure. Metody životního cyklu ASP.NET se volají v rámci metod **RoleEntryPoint** . Metoda **\_ spuštění aplikace** je volána po dokončení metody **RoleEntryPoint. OnStart** . Metoda **\_ end aplikace** je volána před voláním metody **RoleEntryPoint... stop** .
 
 ## <a name="next-steps"></a>Další kroky
 Přečtěte si, jak [vytvořit balíček cloudové služby](cloud-services-model-and-package.md).

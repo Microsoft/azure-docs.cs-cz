@@ -1,22 +1,25 @@
 ---
-title: Schéma Azure Cloud Services def. LoadBalancerProbe | Microsoft Docs
+title: Schéma Azure Cloud Services (Classic) def. LoadBalancerProbe | Microsoft Docs
 description: LoadBalancerProbe definovaný zákazníkem je sonda stavu koncových bodů v instancích rolí. Kombinuje s webovými rolemi nebo rolemi pracovního procesu v definičním souboru služby.
-ms.custom: ''
-ms.date: 04/14/2015
-services: cloud-services
+ms.topic: article
 ms.service: cloud-services
-ms.topic: reference
-caps.latest.revision: 14
-author: georgewallace
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 6d0e84b6724d9df4162d4be3e06a9952087a53a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 3dca519f7fb4523ce9d9267f7629c1177cc5e3b6
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79537342"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98739782"
 ---
-# <a name="azure-cloud-services-definition-loadbalancerprobe-schema"></a>LoadBalancerProbe schéma definice Azure Cloud Services
+# <a name="azure-cloud-services-classic-definition-loadbalancerprobe-schema"></a>LoadBalancerProbe schéma definice pro Azure Cloud Services (Classic)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md) je nový model nasazení založený na Azure Resource Manager pro produkt Azure Cloud Services.V důsledku této změny se Azure Cloud Services běžící na modelu nasazení založeném na Azure Service Manager přejmenovala jako Cloud Services (Classic) a všechna nová nasazení by měla používat [Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md).
+
 Test nástroje pro vyrovnávání zatížení je sonda stavu definovaná zákazníkem koncových bodů a koncových bodů UDP v instancích rolí. Nejedná se `LoadBalancerProbe` o samostatný element; v kombinaci s webovou rolí nebo rolí pracovního procesu v definičním souboru služby. `LoadBalancerProbe`Může být použit více než jednou rolí.
 
 Výchozí přípona souboru definice služby je. csdef.

@@ -3,12 +3,12 @@ title: Uzly a fondy v Azure Batch
 description: Přečtěte si o výpočetních uzlech a fondech a o tom, jak se používají v Azure Batch pracovním postupu z hlediska vývoje.
 ms.topic: conceptual
 ms.date: 11/20/2020
-ms.openlocfilehash: c229381ba1019a5a40a4ca6b7db88f534f57de29
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: e55be57968eae2a371a21b214dbd15921641e31f
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934641"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741770"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Uzly a fondy v Azure Batch
 
@@ -114,7 +114,7 @@ Informace o cenách pro uzly s nízkou a vyhrazenou prioritou najdete v tématu 
 
 ## <a name="node-size"></a>Velikost uzlu
 
-Při vytváření fondu Azure Batch máte na výběr téměř ze všech řad a velikostí virtuálních počítačů, které jsou v Azure k dispozici. Azure nabízí řadu velikostí virtuálních počítačů pro různé úlohy, včetně specializovaných velikostí s podporou [prostředí HPC](../virtual-machines/sizes-hpc.md) nebo [grafického procesoru](../virtual-machines/sizes-gpu.md). 
+Při vytváření fondu Azure Batch máte na výběr téměř ze všech řad a velikostí virtuálních počítačů, které jsou v Azure k dispozici. Azure nabízí řadu velikostí virtuálních počítačů pro různé úlohy, včetně specializovaných velikostí s podporou [prostředí HPC](../virtual-machines/sizes-hpc.md) nebo [grafického procesoru](../virtual-machines/sizes-gpu.md). Všimněte si, že velikosti uzlů lze zvolit pouze v době, kdy je fond vytvořen. Jinými slovy, pokud je vytvořen fond, jeho velikost uzlu nelze změnit.
 
 Další informace najdete v tématu [Výběr velikosti virtuálních počítačů pro výpočetní uzly ve fondu Azure Batch](batch-pool-vm-sizes.md).
 

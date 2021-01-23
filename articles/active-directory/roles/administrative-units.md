@@ -3,23 +3,23 @@ title: Jednotky pro správu v Azure Active Directory | Microsoft Docs
 description: Pro podrobnější delegování oprávnění v Azure Active Directory používejte jednotky pro správu.
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.topic: overview
 ms.subservice: roles
 ms.workload: identity
 ms.date: 11/04/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 792e8cd1e70f901385ed3b225a753024e06f2df0
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: e82be52cff824c69dd2fe4ea5e7e1c0d7489be1d
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394590"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740325"
 ---
 # <a name="administrative-units-in-azure-active-directory"></a>Jednotky pro správu v Azure Active Directory
 
@@ -44,7 +44,7 @@ Chcete-li použít jednotky pro správu, potřebujete licenci Azure Active Direc
 
 ## <a name="manage-administrative-units"></a>Spravovat jednotky pro správu
 
-Jednotky pro správu můžete spravovat pomocí Azure Portal, rutin prostředí PowerShell a skriptů nebo Microsoft Graph. Další informace naleznete v tématech:
+Jednotky pro správu můžete spravovat pomocí Azure Portal, rutin prostředí PowerShell a skriptů nebo Microsoft Graph. Další informace naleznete v tématu:
 
 - [Vytváření, odebírání, naplnění a přidávání rolí do jednotek pro správu](admin-units-manage.md): obsahuje kompletní postupy postupů.
 - [Práce s jednotkami pro správu](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0&preserve-view=true): popisuje, jak pracovat s jednotkami pro správu pomocí PowerShellu.
@@ -58,9 +58,9 @@ Kritéria, na kterých se vytvářejí jednotky pro správu, se řídí jedineč
 
 Můžete očekávat, že vytváření jednotek pro správu v organizaci projdete v následujících fázích:
 
-1. **Počáteční přijetí** : vaše organizace začne vytvářet jednotky pro správu na základě počátečních kritérií a počet jednotek pro správu se zvýší, protože jsou tato kritéria Upřesněná.
-1. **Vyřazení** : po definování kritérií se odstraní jednotky pro správu, které už nejsou potřeba.
-1. **Stabilizace** : vaše organizační struktura je definována a počet jednotek pro správu se v krátkém období nemění významně.
+1. **Počáteční přijetí**: vaše organizace začne vytvářet jednotky pro správu na základě počátečních kritérií a počet jednotek pro správu se zvýší, protože jsou tato kritéria Upřesněná.
+1. **Vyřazení**: po definování kritérií se odstraní jednotky pro správu, které už nejsou potřeba.
+1. **Stabilizace**: vaše organizační struktura je definována a počet jednotek pro správu se v krátkém období nemění významně.
 
 ## <a name="currently-supported-scenarios"></a>Aktuálně podporované scénáře
 

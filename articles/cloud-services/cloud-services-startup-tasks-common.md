@@ -1,21 +1,25 @@
 ---
-title: Běžné úlohy po spuštění pro Cloud Services | Microsoft Docs
+title: Běžné úlohy po spuštění pro Cloud Services (Classic) | Microsoft Docs
 description: V této části najdete několik příkladů běžných úloh po spuštění, které můžete chtít provést v rámci webové role nebo role pracovního procesu Cloud Services.
-services: cloud-services
-documentationcenter: ''
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 07/18/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 77cea7ebd333b958675438aaeb5e0e2a326a5866
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: f55b225e615a3e7a5fbcf56b405054883d3b5413
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075174"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741192"
 ---
-# <a name="common-cloud-service-startup-tasks"></a>Běžné úlohy po spuštění cloudové služby
+# <a name="common-cloud-service-classic-startup-tasks"></a>Běžné úlohy po spuštění služby Cloud Service (Classic)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md) je nový model nasazení založený na Azure Resource Manager pro produkt Azure Cloud Services.V důsledku této změny se Azure Cloud Services běžící na modelu nasazení založeném na Azure Service Manager přejmenovala jako Cloud Services (Classic) a všechna nová nasazení by měla používat [Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md).
+
 Tento článek popisuje několik příkladů běžných úloh po spuštění, které můžete chtít provést ve své cloudové službě. Úlohy po spuštění můžete použít k provádění operací před spuštěním role. Operace, které můžete chtít provést, zahrnují instalaci komponenty, registraci komponent modelu COM, nastavení klíčů registru nebo spuštění dlouhotrvajícího procesu. 
 
 V [tomto článku](cloud-services-startup-tasks.md) se seznámíte s tím, jak fungují úlohy při spouštění, a konkrétně jak vytvořit položky definující úlohu po spuštění.
@@ -52,7 +56,7 @@ Proměnné můžou použít taky [platnou hodnotu XPath Azure](cloud-services-ro
 
 
 ## <a name="configure-iis-startup-with-appcmdexe"></a>Konfigurace spouštění služby IIS pomocí AppCmd.exe
-Nástroj příkazového řádku [AppCmd.exe](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj635852(v=ws.11)) můžete použít ke správě nastavení IIS při spuštění v Azure. *AppCmd.exe* poskytuje pohodlný přístup k nastavení konfigurace pro použití v úlohách po spuštění v Azure, a to prostřednictvím příkazového řádku. Pomocí *AppCmd.exe*můžete přidat, upravit nebo odebrat nastavení webu pro aplikace a weby.
+Nástroj příkazového řádku [AppCmd.exe](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj635852(v=ws.11)) můžete použít ke správě nastavení IIS při spuštění v Azure. *AppCmd.exe* poskytuje pohodlný přístup k nastavení konfigurace pro použití v úlohách po spuštění v Azure, a to prostřednictvím příkazového řádku. Pomocí *AppCmd.exe* můžete přidat, upravit nebo odebrat nastavení webu pro aplikace a weby.
 
 K dispozici je ale několik věcí, které můžete využít při použití *AppCmd.exe* jako úlohy po spuštění:
 
@@ -83,7 +87,7 @@ Zde jsou uvedeny relevantní oddíly souboru [ServiceDefinition. csdef] , které
 *Spouštěcí soubor. cmd* batch používá *AppCmd.exe* k přidání kompresního oddílu a položky komprese pro JSON do souboru *Web.config* . Očekávaná hodnota **parametru errorlevel** 183 je nastavena na hodnotu nula pomocí VERIFY.EXE programu příkazového řádku. K StartupErrorLog.txt jsou protokolovány neočekávané ERRORLEVEL.
 
 ```cmd
-REM   *** Add a compression section to the Web.config file. ***
+REM   **_ Add a compression section to the Web.config file. _*_
 %windir%\system32\inetsrv\appcmd set config /section:urlCompression /doDynamicCompression:True /commit:apphost >> "%TEMP%\StartupLog.txt" 2>&1
 
 REM   ERRORLEVEL 183 occurs when trying to add a section that already exists. This error is expected if this
@@ -98,7 +102,7 @@ IF %ERRORLEVEL% NEQ 0 (
     GOTO ErrorExit
 )
 
-REM   *** Add compression for json. ***
+REM   _*_ Add compression for json. _*_
 %windir%\system32\inetsrv\appcmd set config  -section:system.webServer/httpCompression /+"dynamicTypes.[mimeType='application/json; charset=utf-8',enabled='True']" /commit:apphost >> "%TEMP%\StartupLog.txt" 2>&1
 IF %ERRORLEVEL% EQU 183 VERIFY > NUL
 IF %ERRORLEVEL% NEQ 0 (
@@ -106,10 +110,10 @@ IF %ERRORLEVEL% NEQ 0 (
     GOTO ErrorExit
 )
 
-REM   *** Exit batch file. ***
+REM   _*_ Exit batch file. _*_
 EXIT /b 0
 
-REM   *** Log error and exit ***
+REM   _*_ Log error and exit _*_
 :ErrorExit
 REM   Report the date, time, and ERRORLEVEL of the error.
 DATE /T >> "%TEMP%\StartupLog.txt" 2>&1
@@ -125,7 +129,7 @@ Druhá brána firewall řídí připojení mezi virtuálním počítačem a proc
 
 Azure vytvoří pravidla brány firewall pro procesy spuštěné v rámci vašich rolí. Když třeba spustíte službu nebo program, Azure automaticky vytvoří potřebná pravidla firewallu, která této službě umožní komunikovat s internetem. Pokud ale vytvoříte službu, kterou spustí proces mimo vaši roli (třeba službu COM+ nebo plánovanou úlohu Windows), musíte ručně vytvořit pravidlo brány firewall, které umožní přístup k této službě. Tato pravidla brány firewall lze vytvořit pomocí úlohy po spuštění.
 
-Úloha po spuštění, která vytvoří pravidlo brány firewall, musí mít [ExecutionContext][úlohu] se **zvýšenými oprávněními**. Přidejte následující úlohu po spuštění do souboru [ServiceDefinition. csdef] .
+Úloha po spuštění, která vytvoří pravidlo brány firewall, musí mít[úlohu] [ExecutionContext]_ * se zvýšenými oprávněními * *. Přidejte následující úlohu po spuštění do souboru [ServiceDefinition. csdef] .
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -383,7 +387,7 @@ Chcete-li zjednodušit XML, můžete vytvořit soubor *cmd cmd* , který volá v
 
 Může se stát, že na `>> "%TEMP%\StartupLog.txt" 2>&1` konci každé úlohy po spuštění bude aplikace nepříjemné. Protokolování úloh můžete vynutil vytvořit obálku, která vám zpracuje protokolování. Tato obálka volá skutečný dávkový soubor, který chcete spustit. Libovolný výstup z cílového dávkového souboru bude přesměrován do souboru *Startuplog.txt* .
 
-Následující příklad ukazuje, jak přesměrovat všechny výstupy z spouštěcího dávkového souboru. V tomto příkladu vytvoří soubor ServerDefinition. csdef úlohu po spuštění, která volá *logwrap. cmd*. *logwrap. cmd* volá *Startup2. cmd*a přesměruje veškerý výstup do **% TEMP% \\StartupLog.txt**.
+Následující příklad ukazuje, jak přesměrovat všechny výstupy z spouštěcího dávkového souboru. V tomto příkladu vytvoří soubor ServerDefinition. csdef úlohu po spuštění, která volá *logwrap. cmd*. *logwrap. cmd* volá *Startup2. cmd* a přesměruje veškerý výstup do **% TEMP% \\StartupLog.txt**.
 
 ServiceDefinition. cmd:
 
@@ -464,12 +468,12 @@ Ukázkový výstup v souboru **StartupLog.txt** :
 ### <a name="set-executioncontext-appropriately-for-startup-tasks"></a>Nastavte executionContext správně pro úlohy po spuštění.
 Nastavte patřičná oprávnění pro úlohu po spuštění. Někdy se úlohy po spuštění musí spouštět se zvýšenými oprávněními, i když role běží s normálními oprávněními.
 
-Atribut [executionContext][Task] ExecutionContext nastaví úroveň oprávnění pro úlohu po spuštění. Použití `executionContext="limited"` znamená, že úloha po spuštění má stejnou úroveň oprávnění jako role. Použití `executionContext="elevated"` znamená, že úloha po spuštění má oprávnění správce, což umožňuje, aby úloha po spuštění prováděla úlohy správce bez udělení oprávnění správce vaší roli.
+Atribut [][Task] ExecutionContext nastaví úroveň oprávnění pro úlohu po spuštění. Použití `executionContext="limited"` znamená, že úloha po spuštění má stejnou úroveň oprávnění jako role. Použití `executionContext="elevated"` znamená, že úloha po spuštění má oprávnění správce, což umožňuje, aby úloha po spuštění prováděla úlohy správce bez udělení oprávnění správce vaší roli.
 
 Příkladem úlohy po spuštění, která vyžaduje zvýšená oprávnění, je úloha po spuštění, která používá **AppCmd.exe** ke konfiguraci služby IIS. **AppCmd.exe** vyžaduje `executionContext="elevated"` .
 
 ### <a name="use-the-appropriate-tasktype"></a>Použijte odpovídající taskType
-Atribut [taskType][úlohy] taskType určuje způsob, jakým je spouštěn úkol při spuštění. Existují tři hodnoty: **jednoduché**, **pozadí**a **popředí**. Úlohy na pozadí a na popředí jsou spouštěny asynchronně a jednoduché úkoly jsou spouštěny synchronně po jednom.
+Atribut [][úlohy] taskType určuje způsob, jakým je spouštěn úkol při spuštění. Existují tři hodnoty: **jednoduché**, **pozadí** a **popředí**. Úlohy na pozadí a na popředí jsou spouštěny asynchronně a jednoduché úkoly jsou spouštěny synchronně po jednom.
 
 Pomocí **jednoduchých** úloh po spuštění můžete nastavit pořadí, ve kterém jsou úlohy spouštěny v pořadí, ve kterém jsou úlohy uvedeny v souboru ServiceDefinition. csdef. Pokud **Jednoduchá** úloha končí nenulovým ukončovacím kódem, pak se proces spuštění zastaví a role se nespustí.
 
@@ -499,14 +503,14 @@ Přečtěte si další informace o práci s [úkoly](cloud-services-startup-task
 [Vytvořte a nasaďte](cloud-services-how-to-create-deploy-portal.md) balíček cloudové služby.
 
 [ServiceDefinition. csdef]: cloud-services-model-and-package.md#csdef
-[Úloha]: /previous-versions/azure/reference/gg557552(v=azure.100)#Task
+[Úkol]: /previous-versions/azure/reference/gg557552(v=azure.100)#Task
 [Startup]: /previous-versions/azure/reference/gg557552(v=azure.100)#Startup
 [Runtime]: /previous-versions/azure/reference/gg557552(v=azure.100)#Runtime
 [Prostředí]: /previous-versions/azure/reference/gg557552(v=azure.100)#Environment
 [Proměnná]: /previous-versions/azure/reference/gg557552(v=azure.100)#Variable
 [RoleInstanceValue]: /previous-versions/azure/reference/gg557552(v=azure.100)#RoleInstanceValue
 [RoleEnvironment]: /previous-versions/azure/reference/ee773173(v=azure.100)
-[Bod]: /previous-versions/azure/reference/gg557552(v=azure.100)#Endpoints
+[Koncové body]: /previous-versions/azure/reference/gg557552(v=azure.100)#Endpoints
 [LocalStorage]: /previous-versions/azure/reference/gg557552(v=azure.100)#LocalStorage
 [LocalResources]: /previous-versions/azure/reference/gg557552(v=azure.100)#LocalResources
 [RoleInstanceValue]: /previous-versions/azure/reference/gg557552(v=azure.100)#RoleInstanceValue

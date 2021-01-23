@@ -2,23 +2,23 @@
 title: Odebrat přiřazení rolí ze skupiny v Azure Active Directory | Microsoft Docs
 description: Zobrazte si náhled vlastních rolí Azure AD pro delegování správy identit. Spravujte role Azure v Azure Portal, PowerShellu nebo Graph API.
 services: active-directory
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: article
 ms.date: 11/05/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d58465c56be310d3f9d500ab551c7d2b19ffaa83
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 89fa3bb94f72ab04c2ea68641b8d1dff7695aa53
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378376"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741022"
 ---
 # <a name="remove-role-assignments-from-a-group-in-azure-active-directory"></a>Odebrat přiřazení rolí ze skupiny v Azure Active Directory
 
@@ -28,7 +28,7 @@ Tento článek popisuje, jak může správce IT odebrat role Azure AD přiřazen
 
 1. Přihlaste se do [centra pro správu Azure AD](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) pomocí oprávnění správce privilegované role nebo globální správce v organizaci Azure AD.
 
-1. Vyberte **role a správci** > * *_název role_* _.
+1. Vyberte **role a správci** > **_název role_* _.
 
 1. Vyberte skupinu, ze které chcete odebrat přiřazení role, a vyberte _ * odebrat přiřazení * *.
 
@@ -36,7 +36,7 @@ Tento článek popisuje, jak může správce IT odebrat role Azure AD přiřazen
 
 1. Po zobrazení výzvy k potvrzení akce vyberte **Ano**.
 
-## <a name="using-powershell"></a>Použití PowerShellu
+## <a name="using-powershell"></a>Pomocí prostředí PowerShell
 
 ### <a name="create-a-group-that-can-be-assigned-to-role"></a>Vytvoření skupiny, kterou je možné přiřadit roli
 

@@ -1,8 +1,8 @@
 ### YamlMime:Landing
-title: Dokumentace ke službě Azure Cloud Services
+title: Dokumentace k Azure Cloud Services (Classic)
 summary: Naučte se používat Cloud Services k hostování a spouštění vysoce dostupných škálovatelných cloudových aplikací a rozhraní API. Ukazuje, jak spravovat hostitele virtuálních počítačů a konfigurovat, opravovat a instalovat software.
 metadata:
-  title: Dokumentace ke službě Azure Cloud Services
+  title: Dokumentace k Azure Cloud Services (Classic)
   description: Popisuje použití Cloud Services k hostování a spouštění vysoce dostupných a škálovatelných cloudových aplikací a rozhraní API.
   ms.service: cloud-services
   service: cloud-services
@@ -10,22 +10,22 @@ metadata:
   author: tgore03
   ms.author: tagore
   ms.date: 03/06/2020
-  ms.openlocfilehash: 11699a28ab3b5863812c9c171428896aeaaefec1
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-  ms.translationtype: HT
+  ms.openlocfilehash: 596fbac75c93ec36906123ee6ff5c7f13e3706b9
+  ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "78943186"
+  ms.lasthandoff: 01/23/2021
+  ms.locfileid: "98739713"
 landingContent:
-- title: Informace o Cloud Services
+- title: O Cloud Services (Classic)
   linkLists:
   - linkListType: overview
     links:
-    - text: Co je služba Cloud Services?
+    - text: Co je Cloud Services (Classic)?
       url: cloud-services-choose-me.md
   - linkListType: video
     links:
-    - text: Knihovna videí ke službě Cloud Services
+    - text: Knihovna videí pro Cloud Services (Classic)
       url: https://azure.microsoft.com/documentation/videos/index/?services=cloud-services
 - title: Začínáme
   linkLists:
@@ -49,9 +49,9 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Vytvoření a nasazení cloudové služby na portálu
+    - text: Vytvoření a nasazení cloudové služby (klasické) na portálu
       url: cloud-services-how-to-create-deploy-portal.md
-    - text: Vytvoření prázdného kontejneru cloudové služby v PowerShellu
+    - text: Vytvoření prázdného kontejneru cloudové služby (Classic) v PowerShellu
       url: cloud-services-powershell-create-cloud-container.md
 - title: Spravovat
   linkLists:
@@ -59,5 +59,5 @@ landingContent:
     links:
     - text: Běžné úlohy správy
       url: cloud-services-how-to-manage-portal.md
-    - text: Konfigurace cloudové služby
+    - text: Konfigurace cloudové služby (klasické)
       url: cloud-services-how-to-configure-portal.md

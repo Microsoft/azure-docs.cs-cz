@@ -1,21 +1,25 @@
 ---
-title: Cloud Services a certifikáty pro správu | Microsoft Docs
+title: Cloud Services (klasický) a certifikáty pro správu | Microsoft Docs
 description: Přečtěte si, jak vytvořit a nasadit certifikáty pro cloudové služby a ověřit je pomocí rozhraní API pro správu v Azure.
-services: cloud-services
-documentationcenter: .net
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 04/19/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 8650b8670c61cab15b26163dd5108145b8509434
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: c73f9812f344eecf4e51f43405b48693ddfa191b
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072420"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98739730"
 ---
-# <a name="certificates-overview-for-azure-cloud-services"></a>Přehled certifikátů pro Azure Cloud Services
+# <a name="certificates-overview-for-azure-cloud-services-classic"></a>Přehled certifikátů pro Azure Cloud Services (Classic)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md) je nový model nasazení založený na Azure Resource Manager pro produkt Azure Cloud Services.V důsledku této změny se Azure Cloud Services běžící na modelu nasazení založeném na Azure Service Manager přejmenovala jako Cloud Services (Classic) a všechna nová nasazení by měla používat [Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md).
+
 Certifikáty se používají v Azure pro cloudové služby ([certifikáty služeb](#what-are-service-certificates)) a pro ověřování pomocí rozhraní API pro správu ([certifikáty pro správu](#what-are-management-certificates)). Toto téma obsahuje obecný přehled obou typů certifikátů, jak je [vytvořit](#create) a nasadit do Azure.
 
 Certifikáty, které se používají v Azure, jsou certifikáty x. 509 v3 a můžou být podepsané jiným důvěryhodným certifikátem nebo můžou být podepsané svým držitelem. Certifikát podepsaný svým držitelem je podepsaný vlastním tvůrcem, proto není ve výchozím nastavení důvěryhodný. Většina prohlížečů tento problém ignoruje. Certifikáty podepsané svým držitelem byste měli používat jenom při vývoji a testování vašich cloudových služeb. 

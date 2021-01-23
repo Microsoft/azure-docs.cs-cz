@@ -1,8 +1,8 @@
-- name: Dokumentace ke službě Cloud Services
+- name: Dokumentace k Cloud Services (Classic)
   href: index.yml
 - name: Přehled
   items:
-    - name: Co je služba Cloud Services?
+    - name: Co je Cloud Services (Classic)?
       href: cloud-services-choose-me.md
     - name: Balíčky a konfigurační soubory cloudových služeb
       href: cloud-services-model-and-package.md

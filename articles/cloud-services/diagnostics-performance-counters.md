@@ -1,21 +1,24 @@
 ---
-title: Shromažďování informací o čítačích výkonu v Azure Cloud Services | Microsoft Docs
+title: Shromažďování informací o čítačích výkonu v Azure Cloud Services (Classic) | Microsoft Docs
 description: Naučte se zjišťovat, používat a vytvářet čítače výkonu v Cloud Services s Azure Diagnostics a Application Insights.
-services: cloud-services
-documentationcenter: .net
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 02/02/2018
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 39843ad83830a72b5d6b01cc00ecd65269c02e12
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 16b54e8a59eb42c6e2351d37ec0a29d775161493
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078591"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98739832"
 ---
-# <a name="collect-performance-counters-for-your-azure-cloud-service"></a>Shromažďování čítačů výkonu pro cloudovou službu Azure
+# <a name="collect-performance-counters-for-your-azure-cloud-service-classic"></a>Shromažďování čítačů výkonu pro cloudovou službu Azure (Classic)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md) je nový model nasazení založený na Azure Resource Manager pro produkt Azure Cloud Services.V důsledku této změny se Azure Cloud Services běžící na modelu nasazení založeném na Azure Service Manager přejmenovala jako Cloud Services (Classic) a všechna nová nasazení by měla používat [Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md).
 
 Čítače výkonu poskytují způsob, jak sledovat, jak dobře aplikace a hostitel provádí. Windows Server poskytuje mnoho různých čítačů výkonu souvisejících s hardwarem, aplikacemi, operačním systémem a dalšími. Shromažďováním a odesíláním čítačů výkonu do Azure můžete analyzovat tyto informace, které vám pomohou lépe rozhodovat. 
 
@@ -80,7 +83,7 @@ Tyto cesty k jednotlivým čítačům lze přidat do diagnostického rozhraní p
 
 Azure Application Insights pro Cloud Services umožňuje určit čítače výkonu, které chcete shromáždit. Po [přidání Application Insights do projektu](../azure-monitor/app/cloudservices.md#sdk)se do projektu aplikace Visual Studio přidá konfigurační soubor s názvem **ApplicationInsights.config** . Tento konfigurační soubor definuje, jaký typ informací Application Insights shromažďuje a odesílá do Azure.
 
-Otevřete soubor **ApplicationInsights.config** a vyhledejte prvek TelemetryModules **ApplicationInsights**  >  **TelemetryModules** . Každý `<Add>` podřízený prvek definuje typ telemetrie ke shromáždění spolu se svou konfigurací. Typ modulu telemetrie čítače výkonu je `Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.PerformanceCollectorModule, Microsoft.AI.PerfCounterCollector` . Pokud je tento prvek již definován, nepřidávejte jej podruhé. Každý čítač výkonu, který se má shromáždit, je definovaný v uzlu s názvem `<Counters>` . Tady je příklad, který shromažďuje čítače výkonu jednotky:
+Otevřete soubor **ApplicationInsights.config** a vyhledejte prvek TelemetryModules **ApplicationInsights**  >   . Každý `<Add>` podřízený prvek definuje typ telemetrie ke shromáždění spolu se svou konfigurací. Typ modulu telemetrie čítače výkonu je `Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.PerformanceCollectorModule, Microsoft.AI.PerfCounterCollector` . Pokud je tento prvek již definován, nepřidávejte jej podruhé. Každý čítač výkonu, který se má shromáždit, je definovaný v uzlu s názvem `<Counters>` . Tady je příklad, který shromažďuje čítače výkonu jednotky:
 
 ```xml
 <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings">

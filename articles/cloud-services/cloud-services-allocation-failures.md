@@ -1,27 +1,25 @@
 ---
-title: Řešení potíží s přidělením cloudové služby | Microsoft Docs
+title: Řešení chyb přidělení cloudové služby (Classic) | Microsoft Docs
 description: Řešení potíží s přidělením při nasazení služby Azure Cloud Services. Přečtěte si, jak přidělování funguje a proč může přidělení selhat.
-services: azure-service-management, cloud-services
-documentationcenter: ''
-author: simonxjx
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue
-ms.assetid: 529157eb-e4a1-4388-aa2b-09e8b923af74
+ms.topic: article
 ms.service: cloud-services
-ms.workload: na
-ms.tgt_pltfrm: ibiza
-ms.topic: troubleshooting
-ms.date: 06/15/2018
-ms.author: v-six
-ms.openlocfilehash: 1d82b7223c2b392e6b9aebffdc545dc38b38ca2f
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 0c172add9aa49b2ca64d2fb2281d326256e3aec7
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074222"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741583"
 ---
-# <a name="troubleshooting-allocation-failure-when-you-deploy-cloud-services-in-azure"></a>Řešení potíží s přidělením při nasazení Cloud Services v Azure
+# <a name="troubleshooting-allocation-failure-when-you-deploy-cloud-services-classic-in-azure"></a>Řešení potíží s přidělením při nasazení Cloud Services (Classic) v Azure
+
+> [!IMPORTANT]
+> [Azure Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md) je nový model nasazení založený na Azure Resource Manager pro produkt Azure Cloud Services.V důsledku této změny se Azure Cloud Services běžící na modelu nasazení založeném na Azure Service Manager přejmenovala jako Cloud Services (Classic) a všechna nová nasazení by měla používat [Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md).
+
 ## <a name="summary"></a>Souhrn
 Když nasadíte instance do cloudové služby nebo přidáte nové instance webových nebo pracovních rolí, Microsoft Azure přiděluje výpočetní prostředky. Při provádění těchto operací může občas docházet k chybám, a to ještě před dosažením limitů předplatného Azure. Tento článek vysvětluje příčiny některých běžných selhání přidělení a navrhuje možnou nápravu. Tyto informace mohou být užitečné také při plánování nasazení služeb.
 

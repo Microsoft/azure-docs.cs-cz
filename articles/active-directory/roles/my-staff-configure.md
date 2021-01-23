@@ -3,22 +3,22 @@ title: Použití mých zaměstnanců k delegování správy uživatelů (Preview
 description: Delegování správy uživatelů pomocí mých zaměstnanců a jednotek pro správu
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: daveba
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.date: 05/08/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 927d1f6dff9a24fb8427bb9c353e6cc61ac6a1f0
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 304d88dfcf0c72769f27911186df04c66224419e
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92374764"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740138"
 ---
 # <a name="manage-your-users-with-my-staff-preview"></a>Správa uživatelů pomocí mých zaměstnanců (Preview)
 
@@ -54,7 +54,7 @@ K dokončení tohoto článku potřebujete následující prostředky a oprávn�
 Po nakonfigurování jednotky Austrálie můžete tento obor použít pro uživatele, kteří mají přístup k mému zaměstnanci. Přístup k zaměstnancům mají jenom uživatelé, kteří mají přiřazenou roli správce. Pokud chcete povolit Moji zaměstnanci, proveďte následující kroky:
 
 1. Přihlaste se k Azure Portal jako správce uživatele.
-2. Procházením **Azure Active Directory**  >  **uživatelských nastavení**uživatelských  >  **funkcí**  >  **verze Preview spravovat nastavení uživatelských funkcí**.
+2. Procházením **Azure Active Directory**  >  **uživatelských nastavení** uživatelských  >  **funkcí**  >  **verze Preview spravovat nastavení uživatelských funkcí**.
 3. V části **Správci mají přístup k mým pracovníkům**, můžete se rozhodnout povolit pro všechny uživatele, vybrané uživatele nebo žádný přístup uživatelů.
 
 > [!Note]
@@ -91,10 +91,10 @@ Následující role mají oprávnění resetovat heslo uživatele:
 - [Správce privilegovaného ověřování](permissions-reference.md#privileged-authentication-administrator)
 - [Globální správce](permissions-reference.md#global-administrator--company-administrator)
 - [Správce helpdesku](permissions-reference.md#helpdesk-administrator)
-- [Správce uživatele](permissions-reference.md#user-administrator)
+- [Správce uživatelů](permissions-reference.md#user-administrator)
 - [Správce hesel](permissions-reference.md#password-administrator)
 
-V **okně Moji zaměstnanci**otevřete profil uživatele. Vyberte **resetovat heslo**.
+V **okně Moji zaměstnanci** otevřete profil uživatele. Vyberte **resetovat heslo**.
 
 - Pokud je uživatel pouze Cloud, můžete zobrazit dočasné heslo, které můžete uživateli udělit.
 - Pokud je uživatel synchronizovaný z místní služby Active Directory, můžete zadat heslo, které splňuje vaše místní zásady služby AD. Toto heslo pak můžete dát uživateli.
@@ -105,7 +105,7 @@ Uživatel musí změnit heslo při příštím přihlášení.
 
 ## <a name="manage-a-phone-number"></a>Správa telefonního čísla
 
-V **okně Moji zaměstnanci**otevřete profil uživatele.
+V **okně Moji zaměstnanci** otevřete profil uživatele.
 
 - Pokud chcete přidat telefonní číslo pro uživatele, vyberte část **Přidat telefonní číslo** .
 - Pokud chcete změnit telefonní číslo, vyberte **Upravit telefonní číslo** .

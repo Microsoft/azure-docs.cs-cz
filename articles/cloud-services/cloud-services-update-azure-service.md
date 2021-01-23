@@ -1,20 +1,24 @@
 ---
-title: Jak aktualizovat cloudovou službu | Microsoft Docs
+title: Jak aktualizovat cloudovou službu (Classic) | Microsoft Docs
 description: Naučte se aktualizovat cloudové služby v Azure. Zjistěte, jak aktualizace cloudové služby pokračuje, aby se zajistila dostupnost.
-services: cloud-services
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 04/19/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: f12e5b6b0b2902d69936b9cf2695b7ee21db88e2
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 5d85003ca7b4307c308914484502ae03269f66ac
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075038"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741107"
 ---
-# <a name="how-to-update-a-cloud-service"></a>Jak aktualizovat cloudovou službu
+# <a name="how-to-update-an-azure-cloud-service-classic"></a>Jak aktualizovat cloudovou službu Azure (Classic)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md) je nový model nasazení založený na Azure Resource Manager pro produkt Azure Cloud Services.V důsledku této změny se Azure Cloud Services běžící na modelu nasazení založeném na Azure Service Manager přejmenovala jako Cloud Services (Classic) a všechna nová nasazení by měla používat [Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md).
 
 Aktualizace cloudové služby včetně jejích rolí a hostovaného operačního systému je proces tří kroků. Nejdřív je potřeba nahrát binární soubory a konfigurační soubory pro novou cloudovou službu nebo verzi operačního systému. V dalším kroku Azure rezervuje výpočetní a síťové prostředky pro cloudovou službu na základě požadavků nové verze cloudové služby. Nakonec Azure provede postupný upgrade, který klienta postupně aktualizuje na novou verzi nebo hostovaný operační systém a zároveň zachovává vaši dostupnost. Tento článek popisuje podrobnosti tohoto posledního kroku – postupná inovace.
 
@@ -47,18 +51,18 @@ V následující tabulce jsou uvedeny povolené změny služby během aktualizac
 
 | Změny povolené pro hostování, služby a role | Místní aktualizace | Připraveno (prohození VIP) | Odstranit a znovu nasadit |
 | --- | --- | --- | --- |
-| Verze operačního systému |Yes |Yes |Yes |
-| Úroveň důvěryhodnosti .NET |Yes |Yes |Yes |
-| Velikost virtuálního počítače<sup>1</sup> |Ano<sup>2</sup> |Yes |Yes |
-| Nastavení místního úložiště |Zvýšit jenom<sup>2</sup> |Yes |Yes |
-| Přidání nebo odebrání rolí ve službě |Yes |Yes |Yes |
-| Počet instancí konkrétní role |Yes |Yes |Yes |
-| Počet nebo typ koncových bodů pro službu |Ano<sup>2</sup> |No |Yes |
-| Názvy a hodnoty nastavení konfigurace |Yes |Yes |Yes |
-| Hodnoty (ale ne názvy) nastavení konfigurace |Yes |Yes |Yes |
-| Přidat nové certifikáty |Yes |Yes |Yes |
-| Změna existujících certifikátů |Yes |Yes |Yes |
-| Nasadit nový kód |Yes |Yes |Yes |
+| Verze operačního systému |Ano |Ano |Ano |
+| Úroveň důvěryhodnosti .NET |Ano |Ano |Ano |
+| Velikost virtuálního počítače<sup>1</sup> |Ano<sup>2</sup> |Ano |Ano |
+| Nastavení místního úložiště |Zvýšit jenom<sup>2</sup> |Ano |Ano |
+| Přidání nebo odebrání rolí ve službě |Ano |Ano |Ano |
+| Počet instancí konkrétní role |Ano |Ano |Ano |
+| Počet nebo typ koncových bodů pro službu |Ano<sup>2</sup> |No |Ano |
+| Názvy a hodnoty nastavení konfigurace |Ano |Ano |Ano |
+| Hodnoty (ale ne názvy) nastavení konfigurace |Ano |Ano |Ano |
+| Přidat nové certifikáty |Ano |Ano |Ano |
+| Změna existujících certifikátů |Ano |Ano |Ano |
+| Nasadit nový kód |Ano |Ano |Ano |
 
 <sup>1</sup> Změna velikosti omezená na podmnožinu velikostí dostupných pro cloudovou službu.
 
@@ -99,7 +103,7 @@ Kontroler prostředků infrastruktury počká 30 minut, než se každá instance
 
 Při upgradování služby z jedné instance na více instancí bude služba zavedena v době, kdy se upgrade provede v důsledku upgradu služeb Azure. Smlouva o úrovni služeb garantuje dostupnost služby pouze pro služby, které jsou nasazeny s více než jednou instancí. Následující seznam popisuje, jak jsou data na jednotlivých jednotkách ovlivněná jednotlivými scénáři upgradu služby Azure:
 
-|Scénář|Jednotka C|Jednotka D|Jednotka E|
+|Scenario|Jednotka C|Jednotka D|Jednotka E|
 |--------|-------|-------|-------|
 |Restartování virtuálního počítače|Konzervován|Konzervován|Konzervován|
 |Restart portálu|Konzervován|Konzervován|Zneškodněn|

@@ -2,23 +2,23 @@
 title: Oprávnění vlastní role pro přiřazení přístupu k podnikové aplikaci – Azure Active Directory | Microsoft Docs
 description: Vytvořte a přiřaďte vlastní role Azure AD pro přístup k podnikovým aplikacím v Azure Active Directory
 services: active-directory
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: how-to
 ms.date: 11/04/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0932e4b6163264b0b514958e1e898b297e249870
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: d3cb65503ffab610f9545acb313f7284ffb11ed1
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378546"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741141"
 ---
 # <a name="assign-custom-roles-to-manage-enterprise-apps-in-azure-active-directory"></a>Přiřazení vlastních rolí pro správu podnikových aplikací v Azure Active Directory
 
@@ -46,7 +46,7 @@ Udělení oprávnění k aktualizaci se provádí ve dvou krocích:
 > Vlastní role se vytvářejí a spravují na úrovni celé organizace a jsou dostupné jenom ze stránky přehled organizace.
 
 1. Přihlaste se do [centra pro správu Azure AD](https://aad.portal.azure.com) pomocí oprávnění správce privilegované role nebo globální správce ve vaší organizaci.
-1. Vyberte **Azure Active Directory** , vyberte **role a správci** a pak vyberte **Nová vlastní role**.
+1. Vyberte **Azure Active Directory**, vyberte **role a správci** a pak vyberte **Nová vlastní role**.
 
     ![Přidání nové vlastní role ze seznamu rolí v Azure AD](./media/custom-enterprise-apps/new-custom-role.png)
 
@@ -70,7 +70,7 @@ Udělení oprávnění k aktualizaci se provádí ve dvou krocích:
 
     ![Otevřete role a správce a vyhledejte vlastní roli.](./media/custom-enterprise-apps/select-custom-role.png)
 
-1. Vyberte **Přidat přiřazení** , vyberte požadovaného uživatele a pak kliknutím na **Vybrat** přidejte k uživateli přiřazení role.
+1. Vyberte **Přidat přiřazení**, vyberte požadovaného uživatele a pak kliknutím na **Vybrat** přidejte k uživateli přiřazení role.
 
     ![Přidání přiřazení pro vlastní roli uživateli](./media/custom-enterprise-apps/assign-user-to-role.png)
 

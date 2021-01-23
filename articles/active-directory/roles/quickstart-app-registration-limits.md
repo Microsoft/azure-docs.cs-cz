@@ -2,23 +2,23 @@
 title: Odebrání omezení při vytváření registrací aplikací – Azure AD | Microsoft Docs
 description: Přiřazení vlastní role pro udělení neomezených registrací aplikací v Azure AD Active Directory
 services: active-directory
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: quickstart
 ms.date: 11/05/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, devx-track-azurepowershell
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a78296d3fd040b047c2a6cc3761d429883aa9d1
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 260b0621bf204c6d7593b3696c602665c42ad77e
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378784"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740852"
 ---
 # <a name="quickstart-grant-permission-to-create-unlimited-app-registrations"></a>Rychlý Start: udělení oprávnění k vytvoření neomezených registrací aplikací
 
@@ -29,7 +29,7 @@ Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný úče
 ## <a name="create-a-custom-role-using-the-azure-ad-portal"></a>Vytvoření vlastní role pomocí portálu Azure AD
 
 1. Přihlaste se do [centra pro správu Azure AD](https://aad.portal.azure.com) pomocí oprávnění správce privilegované role nebo globální správce v organizaci Azure AD.
-1. Vyberte **Azure Active Directory** , vyberte **role a správci** a pak vyberte **Nová vlastní role**.
+1. Vyberte **Azure Active Directory**, vyberte **role a správci** a pak vyberte **Nová vlastní role**.
 
     ![Vytvoření nebo úprava rolí na stránce role a správci](./media/quickstart-app-registration-limits/new-custom-role.png)
 

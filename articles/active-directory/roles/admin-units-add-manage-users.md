@@ -3,23 +3,23 @@ title: Přidání, odebrání a výpis uživatelů v jednotce pro správu – Az
 description: Správa uživatelů a jejich oprávnění role v jednotce pro správu v Azure Active Directory
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.topic: how-to
 ms.subservice: roles
 ms.workload: identity
 ms.date: 11/04/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b490e03ea7ac0a3bc780fa731629217126b6828a
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: d3dc7b37c96d2d82ae42d9bce32a97beab2d91e9
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93395525"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740512"
 ---
 # <a name="add-and-manage-users-in-an-administrative-unit-in-azure-active-directory"></a>Přidat a spravovat uživatele v jednotce pro správu v Azure Active Directory
 
@@ -49,7 +49,7 @@ Uživatele můžete přiřadit k jednotkám pro správu individuálně nebo jako
 
    1. Přihlaste se k [centru pro správu Azure AD](https://portal.azure.com) pomocí oprávnění správce privilegovaných rolí.
    1. Vyberte **jednotky pro správu** a potom vyberte jednotku pro správu, do které má být uživatel přiřazen.
-   1. Vyberte **Všichni uživatelé** , vyberte **Přidat člena** a potom v podokně **Přidat člena** vyberte jednoho nebo více uživatelů, které chcete přiřadit k jednotce pro správu.
+   1. Vyberte **Všichni uživatelé**, vyberte **Přidat člena** a potom v podokně **Přidat člena** vyberte jednoho nebo více uživatelů, které chcete přiřadit k jednotce pro správu.
 
         ![Snímek obrazovky s podoknem administrativní jednotka pro přiřazení uživatele k jednotce pro správu](./media/admin-units-add-manage-users/assign-to-admin-unit.png)
 

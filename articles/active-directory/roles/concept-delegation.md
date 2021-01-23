@@ -3,7 +3,7 @@ title: Pochopení delegování role správce – Azure Active Directory | Micros
 description: Modely delegování, příklady a zabezpečení rolí v Azure Active Directory
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -11,16 +11,16 @@ ms.workload: identity
 ms.subservice: roles
 ms.topic: conceptual
 ms.date: 11/05/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f4512bea533b6394fcef025ddc19bb7989292a4
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 77ba93b9017fa75f7247bda639880415eda1d280
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378359"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740308"
 ---
 # <a name="delegate-administration-in-azure-active-directory"></a>Delegovat správu v Azure Active Directory
 

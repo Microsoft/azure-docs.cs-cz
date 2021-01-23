@@ -1,20 +1,25 @@
 ---
-title: Cloud Services tabulka tahák XPath pro konfiguraci rolí | Microsoft Docs
+title: Cloud Services (klasický) konfigurace rolí – tahák tabulka XPath | Microsoft Docs
 description: Různá nastavení XPath, která můžete použít v konfiguraci role cloudové služby k vystavování nastavení jako proměnné prostředí.
-services: cloud-services
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 04/19/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 380b0be4e4e4b19d16cb611b0b472294339f2199
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 397bc6845dc8d2d8bc44c00c27f6c12037651337
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75386081"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741379"
 ---
 # <a name="expose-role-configuration-settings-as-an-environment-variable-with-xpath"></a>Vystavit nastavení konfigurace role jako proměnnou prostředí pomocí XPath
+
+> [!IMPORTANT]
+> [Azure Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md) je nový model nasazení založený na Azure Resource Manager pro produkt Azure Cloud Services.V důsledku této změny se Azure Cloud Services běžící na modelu nasazení založeném na Azure Service Manager přejmenovala jako Cloud Services (Classic) a všechna nová nasazení by měla používat [Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md).
+
 V souboru s definicí pracovníka cloudové služby nebo v definičním souboru služby webové role můžete vystavit hodnoty konfigurace modulu runtime jako proměnné prostředí. Podporovány jsou následující hodnoty XPath (které odpovídají hodnotám rozhraní API).
 
 Tyto hodnoty XPath jsou také k dispozici prostřednictvím knihovny [Microsoft. windowsazure. ServiceRuntime](/previous-versions/azure/reference/ee773173(v=azure.100)) . 

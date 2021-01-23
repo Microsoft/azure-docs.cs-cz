@@ -2,7 +2,7 @@
 title: Popis a oprávnění role Azure AD – Azure Active Directory | Microsoft Docs
 description: Role správce může přidávat uživatele, přiřazovat administrativní role, resetovat hesla uživatelů, spravovat uživatelské licence nebo spravovat domény.
 services: active-directory
-author: curtand
+author: rolyon
 manager: daveba
 search.appverid: MET150
 ms.service: active-directory
@@ -10,16 +10,16 @@ ms.workload: identity
 ms.subservice: roles
 ms.topic: reference
 ms.date: 11/05/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a66ad61afe1439a80d750097d3c90d010547539
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 40269f6b1553d73af43b4cf86127eaa97524dd57
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98622404"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740903"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -2061,11 +2061,11 @@ Připojení zařízení | Zastaralé | [Dokumentace k zastaralým rolím](permis
 Správci zařízení | Zastaralé | [Dokumentace k zastaralým rolím](permissions-reference.md#deprecated-roles)
 Uživatelé zařízení | Zastaralé | [Dokumentace k zastaralým rolím](permissions-reference.md#deprecated-roles)
 Účty synchronizace adresářů | Nezobrazeno, protože by neměl být použit | [Dokumentace k účtům synchronizace adresářů](permissions-reference.md#directory-synchronization-accounts)
-Uživatel typu host | Nezobrazeno, protože nemůže být použit  | Není k dispozici
+Uživatel typu host | Nezobrazeno, protože nemůže být použit  | NA
 Podpora partnerské vrstvy 1 | Nezobrazeno, protože by neměl být použit | [Dokumentace k podpoře partnerů Tier1](permissions-reference.md#partner-tier1-support)
 Podpora partnerské úrovně 2 | Nezobrazeno, protože by neměl být použit | [Dokumentace k podpoře partnerů 2](permissions-reference.md#partner-tier2-support)
-Omezený uživatel typu Host | Nezobrazeno, protože nemůže být použit | Není k dispozici
-User | Nezobrazeno, protože nemůže být použit | Není k dispozici
+Omezený uživatel typu Host | Nezobrazeno, protože nemůže být použit | NA
+User | Nezobrazeno, protože nemůže být použit | NA
 Připojení zařízení na pracovišti | Zastaralé | [Dokumentace k zastaralým rolím](permissions-reference.md#deprecated-roles)
 
 ## <a name="next-steps"></a>Další kroky

@@ -3,23 +3,23 @@ title: Přidání, odebrání a výpis skupin v jednotce pro správu – Azure A
 description: Spravujte skupiny a jejich oprávnění role v jednotce pro správu v Azure Active Directory.
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.topic: how-to
 ms.subservice: roles
 ms.workload: identity
 ms.date: 11/04/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 092604429cf5a527d7ee62b412e879ad9991eace
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: d628903f98f96fc205c9a6c9196a90b251e52af2
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394743"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740546"
 ---
 # <a name="add-and-manage-groups-in-an-administrative-unit-in-azure-active-directory"></a>Přidávání a Správa skupin v jednotce pro správu v Azure Active Directory
 
@@ -46,7 +46,7 @@ Jednotce pro správu můžete přiřadit pouze jednotlivé skupiny. Neexistuje m
   1. Vyberte **přiřadit k jednotce pro správu**.
   1. V pravém podokně vyberte jednotku pro správu.
 
-* V podokně všechny skupiny **jednotek pro správu**  >  **All Groups** :
+* V podokně všechny skupiny **jednotek pro správu**  >   :
 
   1. V Azure Portal přejdete do **služby Azure AD**.
   

@@ -8,14 +8,18 @@ ms.topic: conceptual
 ms.date: 08/01/2016
 ms.author: bwren
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 9e16d77c36f382e72d5e9902b07afbbec50b6876
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4962d5f048cf41eca50a77a0dedad3cef48ac1f0
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88723250"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740070"
 ---
 # <a name="store-and-view-diagnostic-data-in-azure-storage"></a>Ukládání a zobrazení diagnostických dat v Azure Storage
+
+> [!IMPORTANT]
+> [Azure Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md) je nový model nasazení založený na Azure Resource Manager pro produkt Azure Cloud Services.V důsledku této změny se Azure Cloud Services běžící na modelu nasazení založeném na Azure Service Manager přejmenovala jako Cloud Services (Classic) a všechna nová nasazení by měla používat [Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md).
+
 Data diagnostiky se neukládají trvale, pokud je nepřenášíte do Emulátor úložiště Microsoft Azure nebo Azure Storage. V úložišti se dá zobrazit s jedním z několika dostupných nástrojů.
 
 ## <a name="specify-a-storage-account"></a>Zadat účet úložiště
@@ -34,13 +38,13 @@ V závislosti na typu diagnostických dat, která se shromažďují, Azure Diagn
 | Zdroj dat | Formát úložiště |
 | --- | --- |
 | Protokoly Azure |Tabulka |
-| Protokoly IIS 7,0 |Blob |
+| Protokoly IIS 7,0 |Objekt blob |
 | Protokolů infrastruktury Azure Diagnostics |Tabulka |
-| Protokoly trasování neúspěšných požadavků |Blob |
+| Protokoly trasování neúspěšných požadavků |Objekt blob |
 | Protokoly událostí systému Windows |Tabulka |
 | Čítače výkonu |Tabulka |
-| Výpisy stavu systému |Blob |
-| Vlastní protokoly chyb |Blob |
+| Výpisy stavu systému |Objekt blob |
+| Vlastní protokoly chyb |Objekt blob |
 
 ## <a name="transfer-diagnostic-data"></a>Přenos diagnostických dat
 V případě sady SDK 2,5 a novějších verzí může být požadavek na přenos diagnostických dat proveden prostřednictvím konfiguračního souboru. Diagnostická data můžete přenést v naplánovaných intervalech, jak je uvedeno v konfiguraci.

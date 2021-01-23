@@ -4,16 +4,16 @@ description: Zjistěte, jak vytvořit privátní cluster Azure Red Hat OpenShift
 ms.service: container-service
 ms.topic: article
 ms.date: 03/12/2020
-author: georgewallace
-ms.author: gwallace
+author: sakthi-vetrivel
+ms.author: suvetriv
 keywords: ARO, OpenShift, AZ ARO, Red Hat, CLI
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 3864d48399f00d5cfbdfa0a94939be0d88a73322
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 6daeb617e7d1922427fe1889b41512a61c5067cf
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92928055"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740920"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-private-cluster"></a>Vytvoření privátního clusteru Azure Red Hat OpenShift 4
 
@@ -23,7 +23,7 @@ V tomto článku připravíte své prostředí, aby se vytvořily privátní clu
 > * Nastavení požadavků a vytvoření požadované virtuální sítě a podsítí
 > * Nasazení clusteru s privátním koncovým bodem serveru API a privátním adaptérem příchozího přenosu dat
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.6.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.6.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -192,7 +192,7 @@ az aro create \
 Po provedení `az aro create` příkazu bude normálně trvat přibližně 35 minut, než se cluster vytvoří.
 
 >[!IMPORTANT]
-> Pokud se rozhodnete zadat vlastní doménu, například **foo.example.com** , konzola OpenShift bude k dispozici na adrese URL `https://console-openshift-console.apps.foo.example.com` , jako je místo v předdefinované doméně `https://console-openshift-console.apps.<random>.<location>.aroapp.io` .
+> Pokud se rozhodnete zadat vlastní doménu, například **foo.example.com**, konzola OpenShift bude k dispozici na adrese URL `https://console-openshift-console.apps.foo.example.com` , jako je místo v předdefinované doméně `https://console-openshift-console.apps.<random>.<location>.aroapp.io` .
 >
 > Ve výchozím nastavení používá OpenShift certifikáty podepsané svým držitelem pro všechny trasy vytvořené v `*.apps.<random>.<location>.aroapp.io` .  Pokud po připojení ke clusteru zvolíte vlastní DNS, budete se muset podle pokynů v dokumentaci k OpenShift [nakonfigurovat vlastní CA pro váš kontroler](https://docs.openshift.com/container-platform/4.3/authentication/certificates/replacing-default-ingress-certificate.html) příchozího přístupu a [vlastní CA pro váš Server API](https://docs.openshift.com/container-platform/4.3/authentication/certificates/api-server.html).
 
@@ -233,9 +233,9 @@ V prohlížeči spusťte adresu URL konzoly a přihlaste se pomocí `kubeadmin` 
 
 ## <a name="install-the-openshift-cli"></a>Instalace rozhraní příkazového řádku OpenShift
 
-Po přihlášení ke webové konzole OpenShift klikněte na **?** v pravém horním rohu a pak na **nástrojích příkazového řádku** . Stáhněte si verzi vhodnou pro váš počítač.
+Po přihlášení ke webové konzole OpenShift klikněte na **?** v pravém horním rohu a pak na **nástrojích příkazového řádku**. Stáhněte si verzi vhodnou pro váš počítač.
 
-![Přihlašovací obrazovka Azure Red Hat OpenShift](media/aro4-download-cli.png)
+![Image zobrazuje přihlašovací obrazovku Azure Red Hat OpenShift](media/aro4-download-cli.png)
 
 Můžete si také stáhnout nejnovější verzi rozhraní příkazového řádku, která je vhodná pro váš počítač <https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/> .
 

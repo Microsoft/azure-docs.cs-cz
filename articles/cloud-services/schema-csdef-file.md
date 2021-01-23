@@ -1,22 +1,25 @@
 ---
-title: Schéma definice Azure Cloud Services (soubor. csdef) | Microsoft Docs
+title: Schéma definice Azure Cloud Services (klasické) (soubor. csdef) | Microsoft Docs
 description: Soubor definice služby (. csdef) definuje model služby pro aplikaci, který obsahuje dostupné role, koncové body a konfigurační hodnoty pro službu.
-ms.custom: ''
-ms.date: 04/14/2015
-services: cloud-services
+ms.topic: article
 ms.service: cloud-services
-ms.topic: reference
-caps.latest.revision: 42
-author: tgore03
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 1896ee8385d1e41feffe7a9f542550ea7f34a8a3
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: de81b6ffb5b4dc944f3d538a116383d06145661b
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072556"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98739792"
 ---
-# <a name="azure-cloud-services-definition-schema-csdef-file"></a>Schéma definice Azure Cloud Services (soubor. csdef)
+# <a name="azure-cloud-services-classic-definition-schema-csdef-file"></a>Schéma definice Azure Cloud Services (Classic) (soubor. csdef)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md) je nový model nasazení založený na Azure Resource Manager pro produkt Azure Cloud Services.V důsledku této změny se Azure Cloud Services běžící na modelu nasazení založeném na Azure Service Manager přejmenovala jako Cloud Services (Classic) a všechna nová nasazení by měla používat [Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md).
+
 Definiční soubor služby definuje model služby pro aplikaci. Soubor obsahuje definice rolí, které jsou k dispozici pro cloudovou službu, určuje koncové body služby a vytváří nastavení konfigurace pro službu. Hodnoty nastavení konfigurace se nastavují v konfiguračním souboru služby, jak je popsáno v tématu [schéma konfigurace cloudové služby (Classic)](/previous-versions/azure/reference/ee758710(v=azure.100)).
 
 Ve výchozím nastavení se soubor konfiguračního schématu Azure Diagnostics nainstaluje do `C:\Program Files\Microsoft SDKs\Windows Azure\.NET SDK\<version>\schemas` adresáře. Nahraďte `<version>` nainstalovanou verzí sady [Azure SDK](https://www.windowsazure.com/develop/downloads/).

@@ -21,8 +21,13 @@
         - name: Použití šablony Resource Manageru
           displayName: Resource Manager
           href: fhir-paas-arm-template-quickstart.md
-    - name: Nasazení konektoru Azure IoT pro FHIR (Preview) – portál
-      href: iot-fhir-portal-quickstart.md
+    - name: Nasazení konektoru Azure IoT pro FHIR (Preview)
+      expanded: false
+      items:
+        - name: Pomocí portálu
+          href: iot-fhir-portal-quickstart.md
+        - name: Použití šablony Resource Manageru
+          href: iot-fhir-arm-template-quickstart.md
 - name: Kurzy
   expanded: false
   items:

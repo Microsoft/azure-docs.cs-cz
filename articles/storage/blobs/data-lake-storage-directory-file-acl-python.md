@@ -3,18 +3,18 @@ title: Azure Data Lake Storage Gen2 Python SDK for Files & seznamy ACL
 description: Pomocí Pythonu spravujte adresáře a seznamy řízení přístupu k souborům a adresářům (ACL) v účtech úložiště, které mají povolený hierarchický obor názvů (HNS).
 author: normesta
 ms.service: storage
-ms.date: 09/10/2020
+ms.date: 01/22/2021
 ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: devx-track-python
-ms.openlocfilehash: 7bbdf7961a934245b71829b7b50fc62c5b069d6b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5036930c7bb49578582fbc1b347b11518579b53e
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95913279"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740614"
 ---
 # <a name="use-python-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Použití Pythonu ke správě adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2
 
@@ -55,16 +55,7 @@ Toto je nejjednodušší způsob, jak se připojit k účtu.
 
 Tento příklad vytvoří instanci **DataLakeServiceClient** pomocí klíče účtu.
 
-```python
-try:  
-    global service_client
-        
-    service_client = DataLakeServiceClient(account_url="{}://{}.dfs.core.windows.net".format(
-        "https", storage_account_name), credential=storage_account_key)
-    
-except Exception as e:
-    print(e)
-```
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/crud_datalake.py" id="Snippet_AuthorizeWithKey":::
  
 - Nahraďte `storage_account_name` hodnotu zástupného symbolu názvem vašeho účtu úložiště.
 
@@ -76,20 +67,7 @@ K ověření vaší aplikace v Azure AD můžete použít [klientskou knihovnu A
 
 Tento příklad vytvoří instanci **DataLakeServiceClient** pomocí ID klienta, tajného klíče klienta a ID tenanta.  Pokud chcete získat tyto hodnoty, přečtěte si téma [získání tokenu z Azure AD pro autorizaci žádostí z klientské aplikace](../common/storage-auth-aad-app.md).
 
-```python
-def initialize_storage_account_ad(storage_account_name, client_id, client_secret, tenant_id):
-    
-    try:  
-        global service_client
-
-        credential = ClientSecretCredential(tenant_id, client_id, client_secret)
-
-        service_client = DataLakeServiceClient(account_url="{}://{}.dfs.core.windows.net".format(
-            "https", storage_account_name), credential=credential)
-    
-    except Exception as e:
-        print(e)
-```
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/crud_datalake.py" id="Snippet_AuthorizeWithAAD":::
 
 > [!NOTE]
 > Další příklady najdete v dokumentaci ke [klientské knihovně Azure identity pro Python](https://pypi.org/project/azure-identity/) .
@@ -100,17 +78,7 @@ Kontejner funguje jako systém souborů pro vaše soubory. Můžete jej vytvoři
 
 Tento příklad vytvoří kontejner s názvem `my-file-system` .
 
-```python
-def create_file_system():
-    try:
-        global file_system_client
-
-        file_system_client = service_client.create_file_system(file_system="my-file-system")
-    
-    except Exception as e:
-        print(e) 
-```
-
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/crud_datalake.py" id="Snippet_CreateContainer":::
 
 ## <a name="create-a-directory"></a>Vytvoření adresáře
 
@@ -118,14 +86,7 @@ Vytvořte odkaz na adresář voláním metody **FileSystemClient.create_director
 
 Tento příklad přidá adresář s názvem `my-directory` do kontejneru. 
 
-```python
-def create_directory():
-    try:
-        file_system_client.create_directory("my-directory")
-    
-    except Exception as e:
-     print(e) 
-```
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/crud_datalake.py" id="Snippet_CreateDirectory":::
 
 ## <a name="rename-or-move-a-directory"></a>Přejmenování nebo přesunutí adresáře
 
@@ -133,19 +94,7 @@ Přejmenujte nebo přesuňte adresář voláním metody **DataLakeDirectoryClien
 
 Tento příklad přejmenuje podadresář na název `my-subdirectory-renamed` .
 
-```python
-def rename_directory():
-    try:
-       
-       file_system_client = service_client.get_file_system_client(file_system="my-file-system")
-       directory_client = file_system_client.get_directory_client("my-directory")
-       
-       new_dir_name = "my-directory-renamed"
-       directory_client.rename_directory(rename_destination=directory_client.file_system_name + '/' + new_dir_name)
-
-    except Exception as e:
-     print(e) 
-```
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/crud_datalake.py" id="Snippet_RenameDirectory":::
 
 ## <a name="delete-a-directory"></a>Odstranění adresáře
 
@@ -153,17 +102,7 @@ Odstraňte adresář voláním metody **DataLakeDirectoryClient.delete_directory
 
 Tento příklad odstraní adresář s názvem `my-directory` .  
 
-```python
-def delete_directory():
-    try:
-        file_system_client = service_client.get_file_system_client(file_system="my-file-system")
-        directory_client = file_system_client.get_directory_client("my-directory")
-
-        directory_client.delete_directory()
-    except Exception as e:
-     print(e) 
-```
-
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/crud_datalake.py" id="Snippet_DeleteDirectory":::
 
 ## <a name="upload-a-file-to-a-directory"></a>Nahrání souboru do adresáře 
 
@@ -171,26 +110,7 @@ Nejprve vytvořte odkaz na soubor v cílovém adresáři vytvořením instance t
 
 Tento příklad nahraje textový soubor do adresáře s názvem `my-directory` .   
 
-```python
-def upload_file_to_directory():
-    try:
-
-        file_system_client = service_client.get_file_system_client(file_system="my-file-system")
-
-        directory_client = file_system_client.get_directory_client("my-directory")
-        
-        file_client = directory_client.create_file("uploaded-file.txt")
-        local_file = open("C:\\file-to-upload.txt",'rb')
-
-        file_contents = local_file.read()
-
-        file_client.append_data(data=file_contents, offset=0, length=len(file_contents))
-
-        file_client.flush_data(len(file_contents))
-
-    except Exception as e:
-      print(e) 
-```
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/crud_datalake.py" id="Snippet_UploadFile":::
 
 > [!TIP]
 > Pokud je velikost souboru velká, váš kód bude muset provést více volání metody **DataLakeFileClient.append_data** . Místo toho zvažte použití metody **DataLakeFileClient.upload_data** . Tímto způsobem můžete nahrát celý soubor v jednom volání. 
@@ -199,72 +119,21 @@ def upload_file_to_directory():
 
 Použijte metodu **DataLakeFileClient.upload_data** pro nahrání velkých souborů, aniž by bylo nutné provádět více volání metody **DataLakeFileClient.append_data** .
 
-```python
-def upload_file_to_directory_bulk():
-    try:
-
-        file_system_client = service_client.get_file_system_client(file_system="my-file-system")
-
-        directory_client = file_system_client.get_directory_client("my-directory")
-        
-        file_client = directory_client.get_file_client("uploaded-file.txt")
-
-        local_file = open("C:\\file-to-upload.txt",'rb')
-
-        file_contents = local_file.read()
-
-        file_client.upload_data(file_contents, overwrite=True)
-
-    except Exception as e:
-      print(e) 
-```
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/crud_datalake.py" id="Snippet_UploadFileBulk":::
 
 ## <a name="download-from-a-directory"></a>Stažení z adresáře 
 
 Otevřete místní soubor pro zápis. Pak vytvořte instanci **DataLakeFileClient** , která představuje soubor, který chcete stáhnout. Zavolejte **DataLakeFileClient.read_file** pro čtení bajtů ze souboru a pak zapište tyto bajty do místního souboru. 
 
-```python
-def download_file_from_directory():
-    try:
-        file_system_client = service_client.get_file_system_client(file_system="my-file-system")
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/crud_datalake.py" id="Snippet_DownloadFromDirectory":::
 
-        directory_client = file_system_client.get_directory_client("my-directory")
-        
-        local_file = open("C:\\file-to-download.txt",'wb')
-
-        file_client = directory_client.get_file_client("uploaded-file.txt")
-
-        download = file_client.download_file()
-
-        downloaded_bytes = download.readall()
-
-        local_file.write(downloaded_bytes)
-
-        local_file.close()
-
-    except Exception as e:
-     print(e)
-```
 ## <a name="list-directory-contents"></a>Výpis obsahu adresáře
 
 Výpis obsahu adresáře voláním metody **FileSystemClient.get_paths** a následným vytvořením výčtu výsledků.
 
 Tento příklad vytiskne cestu každého podadresáře a souboru, který se nachází v adresáři s názvem `my-directory` .
 
-```python
-def list_directory_contents():
-    try:
-        
-        file_system_client = service_client.get_file_system_client(file_system="my-file-system")
-
-        paths = file_system_client.get_paths(path="my-directory")
-
-        for path in paths:
-            print(path.name + '\n')
-
-    except Exception as e:
-     print(e) 
-```
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/crud_datalake.py" id="Snippet_ListFilesInDirectory":::
 
 ## <a name="manage-access-control-lists-acls"></a>Správa seznamů řízení přístupu (ACL)
 
@@ -282,28 +151,7 @@ Získejte seznam řízení přístupu (ACL) adresáře voláním metody **DataLa
 
 Tento příklad načte a nastaví seznam řízení přístupu k adresáři s názvem `my-directory` . Řetězec přiřadí `rwxr-xrw-` vlastnícímu uživateli oprávnění ke čtení, zápisu a spouštění, dává vlastnící skupině pouze oprávnění číst a spouštět a poskytuje všem ostatním oprávnění ke čtení a zápisu.
 
-```python
-def manage_directory_permissions():
-    try:
-        file_system_client = service_client.get_file_system_client(file_system="my-file-system")
-
-        directory_client = file_system_client.get_directory_client("my-directory")
-        
-        acl_props = directory_client.get_access_control()
-        
-        print(acl_props['permissions'])
-        
-        new_dir_permissions = "rwxr-xrw-"
-        
-        directory_client.set_access_control(permissions=new_dir_permissions)
-        
-        acl_props = directory_client.get_access_control()
-        
-        print(acl_props['permissions'])
-    
-    except Exception as e:
-     print(e) 
-```
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/ACL_datalake.py" id="Snippet_ACLDirectory":::
 
 Můžete také získat a nastavit seznam ACL kořenového adresáře kontejneru. Chcete-li získat kořenový adresář, zavolejte metodu **FileSystemClient._get_root_directory_client** .
 
@@ -316,30 +164,7 @@ Získání seznamu řízení přístupu (ACL) souboru voláním metody **DataLak
 
 Tento příklad získá a nastaví seznam řízení přístupu k souboru s názvem `my-file.txt` . Řetězec přiřadí `rwxr-xrw-` vlastnícímu uživateli oprávnění ke čtení, zápisu a spouštění, dává vlastnící skupině pouze oprávnění číst a spouštět a poskytuje všem ostatním oprávnění ke čtení a zápisu.
 
-```python
-def manage_file_permissions():
-    try:
-        file_system_client = service_client.get_file_system_client(file_system="my-file-system")
-
-        directory_client = file_system_client.get_directory_client("my-directory")
-        
-        file_client = directory_client.get_file_client("uploaded-file.txt")
-
-        acl_props = file_client.get_access_control()
-        
-        print(acl_props['permissions'])
-        
-        new_file_permissions = "rwxr-xrw-"
-        
-        file_client.set_access_control(permissions=new_file_permissions)
-        
-        acl_props = file_client.get_access_control()
-        
-        print(acl_props['permissions'])
-
-    except Exception as e:
-     print(e) 
-```
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/ACL_datalake.py" id="Snippet_FileACL":::
 
 ### <a name="set-an-acl-recursively"></a>Rekurzivní nastavení seznamu ACL
 
