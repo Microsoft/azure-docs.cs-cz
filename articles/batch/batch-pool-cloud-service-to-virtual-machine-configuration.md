@@ -3,16 +3,16 @@ title: Migrace konfigurace fondu Batch z Cloud Services na Virtual Machines
 description: Naučte se aktualizovat konfiguraci fondu na nejnovější a doporučenou konfiguraci.
 ms.topic: how-to
 ms.date: 1/6/2021
-ms.openlocfilehash: d987a185efb6593fd541dd14fa74b6c4d3ca41be
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 417738be2c69101129079b8ff3a3d80634f9f99c
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234303"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98731495"
 ---
 # <a name="migrate-batch-pool-configuration-from-cloud-services-to-virtual-machines"></a>Migrace konfigurace fondu Batch z Cloud Services na Virtual Machines
 
-Fondy Batch se dají vytvořit buď pomocí [cloudServiceConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration) , nebo [virtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration). ' virtualMachineConfiguration ' je doporučená konfigurace, protože podporuje všechny funkce dávky. fondy ' cloudServiceConfiguration ' nepodporují všechny funkce a nejsou plánovány žádné nové funkce.
+Fondy Batch se dají vytvořit buď pomocí [cloudServiceConfiguration](/rest/api/batchservice/pool/add#cloudserviceconfiguration) , nebo [virtualMachineConfiguration](/rest/api/batchservice/pool/add#virtualmachineconfiguration). ' virtualMachineConfiguration ' je doporučená konfigurace, protože podporuje všechny funkce dávky. fondy ' cloudServiceConfiguration ' nepodporují všechny funkce a nejsou plánovány žádné nové funkce.
 
 Pokud používáte fondy ' cloudServiceConfiguration ', důrazně doporučujeme, abyste přešli na používání fondů ' virtualMachineConfiguration '. To vám umožní těžit ze všech funkcí služby Batch, jako je rozšířený [Výběr řady virtuálních počítačů](batch-pool-vm-sizes.md), virtuálních počítačů se systémem Linux, [kontejnerů](batch-docker-container-workloads.md), [Azure Resource Manager virtuální sítě](batch-virtual-network.md)a [šifrování disku uzlu](disk-encryption.md).
 
@@ -41,4 +41,4 @@ Při aktualizaci konfigurace fondu byste měli zvážit toto:
 
 - Přečtěte si další informace o [konfiguracích fondu](nodes-and-pools.md#configurations).
 - Přečtěte si další informace o [osvědčených postupech pro fondy](best-practices.md#pools).
-- REST API odkaz na [Přidání fondu](https://docs.microsoft.com/rest/api/batchservice/pool/add) a [virtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration).
+- REST API odkaz na [Přidání fondu](/rest/api/batchservice/pool/add) a [virtualMachineConfiguration](/rest/api/batchservice/pool/add#virtualmachineconfiguration).

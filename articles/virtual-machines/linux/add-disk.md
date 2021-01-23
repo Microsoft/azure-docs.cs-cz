@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: ad3a2ae9fd9a99398b384ef4e4a44820faccf8c7
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 1155b4274b97f540fd97bf39e51fd41c37bc9627
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98675881"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730617"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Přidání disku do virtuálního počítače s Linuxem
 
@@ -21,7 +21,7 @@ V tomto článku se dozvíte, jak ke svému VIRTUÁLNÍmu počítači připojit 
 
 ## <a name="attach-a-new-disk-to-a-vm"></a>Připojení nového disku k virtuálnímu počítači
 
-Pokud na svém VIRTUÁLNÍm počítači chcete přidat nový prázdný datový disk, použijte příkaz [AZ VM disk Attach](/cli/azure/vm/disk?view=azure-cli-latest) s `--new` parametrem. Pokud je váš virtuální počítač v zóně dostupnosti, disk se automaticky vytvoří ve stejné zóně jako virtuální počítač. Další informace najdete v tématu [přehled zóny dostupnosti](../../availability-zones/az-overview.md). Následující příklad vytvoří disk s názvem *myDataDisk* , který má velikost 50 GB:
+Pokud na svém VIRTUÁLNÍm počítači chcete přidat nový prázdný datový disk, použijte příkaz [AZ VM disk Attach](/cli/azure/vm/disk) s `--new` parametrem. Pokud je váš virtuální počítač v zóně dostupnosti, disk se automaticky vytvoří ve stejné zóně jako virtuální počítač. Další informace najdete v tématu [přehled zóny dostupnosti](../../availability-zones/az-overview.md). Následující příklad vytvoří disk s názvem *myDataDisk* , který má velikost 50 GB:
 
 ```azurecli
 az vm disk attach \
@@ -34,7 +34,7 @@ az vm disk attach \
 
 ## <a name="attach-an-existing-disk"></a>Připojení stávajícího disku
 
-Pokud chcete připojit stávající disk, najděte ID disku a předejte ho příkazu [AZ VM disk Attach](/cli/azure/vm/disk?view=azure-cli-latest) . Následující příklady dotazů na disk s názvem *myDataDisk* v *myResourceGroup* ho připojí k virtuálnímu počítači s názvem *myVM*:
+Pokud chcete připojit stávající disk, najděte ID disku a předejte ho příkazu [AZ VM disk Attach](/cli/azure/vm/disk) . Následující příklady dotazů na disk s názvem *myDataDisk* v *myResourceGroup* ho připojí k virtuálnímu počítači s názvem *myVM*:
 
 ```azurecli
 diskId=$(az disk show -g myResourceGroup -n myDataDisk --query 'id' -o tsv)

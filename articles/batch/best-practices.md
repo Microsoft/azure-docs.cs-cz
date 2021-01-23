@@ -3,12 +3,12 @@ title: Osvědčené postupy
 description: Naučte se osvědčené postupy a užitečné tipy pro vývoj Azure Batchch řešení.
 ms.date: 12/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7e2a49c8307af89fb3898f5f2513fb493d0f5d90
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 95dca907f9380de29bd3c9b0e52b120c9114b5ee
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934284"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732407"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch osvědčené postupy
 
@@ -149,7 +149,7 @@ Stejně jako u jiných úloh by měl být [spouštěcí úkol](jobs-and-tasks.md
 
 ### <a name="isolated-nodes"></a>Izolované uzly
 
-Zvažte použití izolovaných velikostí virtuálních počítačů pro úlohy s požadavky na dodržování předpisů nebo zákonných požadavků. Mezi podporované izolované velikosti v režimu konfigurace virtuálních počítačů patří `Standard_E80ids_v4` , `Standard_M128ms` ,, `Standard_F72s_v2` `Standard_G5` , `Standard_GS5` a `Standard_E64i_v3` . Další informace o velikostech izolovaného virtuálního počítače najdete v tématu věnovaném [izolaci virtuálních počítačů v Azure](https://docs.microsoft.com/azure/virtual-machines/isolation).
+Zvažte použití izolovaných velikostí virtuálních počítačů pro úlohy s požadavky na dodržování předpisů nebo zákonných požadavků. Mezi podporované izolované velikosti v režimu konfigurace virtuálních počítačů patří `Standard_E80ids_v4` , `Standard_M128ms` ,, `Standard_F72s_v2` `Standard_G5` , `Standard_GS5` a `Standard_E64i_v3` . Další informace o velikostech izolovaného virtuálního počítače najdete v tématu věnovaném [izolaci virtuálních počítačů v Azure](../virtual-machines/isolation.md).
 
 ### <a name="manage-long-running-services-via-the-operating-system-services-interface"></a>Správa dlouhotrvajících služeb prostřednictvím rozhraní služeb operačního systému
 

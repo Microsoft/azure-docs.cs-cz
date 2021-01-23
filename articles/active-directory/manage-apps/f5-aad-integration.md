@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/12/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5c960c7fbcc29d0aaea7511ba2187c916e84ab3
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: f8210e00824d7680f4eecde2f0b299dfcdc93b90
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935236"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730567"
 ---
 # <a name="f5-big-ip-access-policy-manager-and-azure-active-directory-integration-for-secure-hybrid-access"></a>F5 přístup správce zásad pro BIG-IP Access a Azure Active Directory Integration pro zabezpečený hybridní přístup
 
@@ -29,19 +29,20 @@ Služba SHA adresuje toto nevidomé místo tím, že umožňuje organizacím nad
 
 Přístup k předběžným ověřením Azure AD publikovaným službám BIG-IP přináší spoustu výhod:
 
-- Ověřování bez hesla prostřednictvím klíčů [Windows Hello](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-overview), [MS Authenticator](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install), [Fast identity online (Fido)](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-security-key)a [ověřování na základě certifikátu](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-certificate-based-authentication-get-started)
+- Ověřování bez hesla prostřednictvím klíčů [Windows Hello](/windows/security/identity-protection/hello-for-business/hello-overview), [MS Authenticator](../user-help/user-help-auth-app-download-install.md), [Fast identity online (Fido)](../authentication/howto-authentication-passwordless-security-key.md)a [ověřování na základě certifikátu](../authentication/active-directory-certificate-based-authentication-get-started.md)
 
-- Nepodmíněný [přístup](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) a [Multi-Factor Authentication (MFA)](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks)
+- Nepodmíněný [přístup](../conditional-access/overview.md) a [Multi-Factor Authentication (MFA)](../authentication/concept-mfa-howitworks.md)
 
-- [Ochrana identity](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection#:~:text=Identity%20Protection%20is%20a%20tool%20that%20allows%20organizations,detection%20data%20to%20third-party%20utilities%20for%20further%20analysis) – Adaptivní řízení prostřednictvím profilace rizik uživatelů a relací
+- [Ochrana identity](../identity-protection/overview-identity-protection.md) – Adaptivní řízení prostřednictvím profilace rizik uživatelů a relací
 
-- [Zjištění nevrácených přihlašovacích údajů](https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-risks)
 
-- [Samoobslužné resetování hesla (SSPR)](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-sspr)
+- [Zjištění nevrácených přihlašovacích údajů](../identity-protection/concept-identity-protection-risks.md)
 
-- [Spolupráce s partnery](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-external-users) – Správa nároků pro řízení přístupu k hostům
+- [Samoobslužné resetování hesla (SSPR)](../authentication/tutorial-enable-sspr.md)
 
-- [Cloud App Security (CASB)](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) – pro kompletní zjišťování a řízení aplikací
+- [Spolupráce s partnery](../governance/entitlement-management-external-users.md) – Správa nároků pro řízení přístupu k hostům
+
+- [Cloud App Security (CASB)](/cloud-app-security/what-is-cloud-app-security) – pro kompletní zjišťování a řízení aplikací
 
 - Monitorování hrozeb – [Sentinel Azure](https://azure.microsoft.com/services/azure-sentinel/) pro Advanced Threat Analytics
 
@@ -61,7 +62,7 @@ Jeho místní Traffic Manager (LTM) umožňuje zabezpečené publikování služ
 
 Integrace je založená na standardní federaci federace mezi APM a Azure AD, které jsou běžné pro většinu případů použití algoritmu SHA, které zahrnují [scénář SSL-VPN](f5-aad-password-less-vpn.md). Prostředky Security Assertion Markup Language (SAML), OAuth a Open ID Connect (OIDC) nejsou výjimkou, protože je lze zabezpečit pro vzdálený přístup. V některých případech se může stát, že se u služby BIG-IP pro přístup nulového vztahu důvěryhodnosti ke všem službám, včetně aplikací SaaS, přesytič.
 
-Možnost integrace se službou Azure AD s velkou IP adresou umožňuje integraci protokolu, která je nutná pro zabezpečení starších nebo neazure integrovaných služeb s moderními ovládacími prvky, jako je například [ověřování bez hesla](https://www.microsoft.com/security/business/identity/passwordless) a [podmíněný přístup](https://docs.microsoft.com/azure/active-directory/conditional-access/overview). V tomto scénáři i služba BIG-IP nadále plní svou roli jako reverzní proxy server, přičemž při použití předběžného ověřování a autorizace do služby Azure AD je k dispozici na jednotlivých službách.
+Možnost integrace se službou Azure AD s velkou IP adresou umožňuje integraci protokolu, která je nutná pro zabezpečení starších nebo neazure integrovaných služeb s moderními ovládacími prvky, jako je například [ověřování bez hesla](https://www.microsoft.com/security/business/identity/passwordless) a [podmíněný přístup](../conditional-access/overview.md). V tomto scénáři i služba BIG-IP nadále plní svou roli jako reverzní proxy server, přičemž při použití předběžného ověřování a autorizace do služby Azure AD je k dispozici na jednotlivých službách.
 
 Kroky 1-4 v diagramu znázorňují front-end výměnu před ověřením mezi uživatelem, velkými IP adresami a Azure AD v toku aktivovaném poskytovatelem služby. Kroky 5-6 ukazují následné rozšíření relace APM a jednotné přihlašování pro jednotlivé služby back-end.
 
@@ -71,16 +72,16 @@ Kroky 1-4 v diagramu znázorňují front-end výměnu před ověřením mezi už
 |:------|:-----------|
 | 1. | Uživatel vybere ikonu aplikace na portálu a překládá adresu URL na SAML SP (BIG-IP). |
 | 2. | Služba BIG-IP přesměruje uživatele na SAML IDP (Azure AD) pro předběžné ověření.|
-| 3. | Azure AD zpracovává zásady podmíněného přístupu a [ovládací prvky relace](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-session) pro autorizaci.|
+| 3. | Azure AD zpracovává zásady podmíněného přístupu a [ovládací prvky relace](../conditional-access/concept-conditional-access-session.md) pro autorizaci.|
 | 4. | Přesměruje uživatele zpět na BIG-IP, který prezentuje deklarace SAML vydané službou Azure AD. |
-| 5. | BIG-IP žádosti o další informace o relacích, které se mají zahrnout do služby [SSO](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso) a [řízení přístupu na základě role (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) do publikované služby |
+| 5. | BIG-IP žádosti o další informace o relacích, které se mají zahrnout do služby [SSO](../hybrid/how-to-connect-sso.md) a [řízení přístupu na základě role (RBAC)](../../role-based-access-control/overview.md) do publikované služby |
 | 6. | BIG-IP přepošle požadavek klienta na back-end službu.
 
 ## <a name="user-experience"></a>Uživatelské prostředí
 
 Bez ohledu na to, jestli je už přímý zaměstnanec, přidružená nebo spotřebitel, se s přihlášením k Office 365 už seznámili většina uživatelů, takže přístup ke službám BIG-IP přes SHA zůstane v podstatě známý.
 
-Uživatelé teď naleznou své cloudové služby s velkou IP adresou konsolidovanou v sestavách  [MyApp](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access) nebo [O365](https://o365pp.blob.core.windows.net/media/Resources/Microsoft%20365%20Business/Launchpad%20Overview_for%20Partners_10292019.pdf) spolu s funkcemi samoobslužné služby pro širší sadu služeb bez ohledu na typ zařízení nebo umístění. Uživatelé mohou dokonce i nadále přistupovat k publikovaným službám přímo prostřednictvím BIG-IPs proprietárního portálu Webtop, pokud jsou upřednostňovány. Když se odhlásíte, služba SHA zajišťuje ukončení relace uživatelů na obou koncích, velkých a koncových IP adres a Azure AD, což zajišťuje, že se služby budou plně chránit před neoprávněným přístupem.  
+Uživatelé teď naleznou své cloudové služby s velkou IP adresou konsolidovanou v sestavách  [MyApp](../user-help/my-apps-portal-end-user-access.md) nebo [O365](https://o365pp.blob.core.windows.net/media/Resources/Microsoft%20365%20Business/Launchpad%20Overview_for%20Partners_10292019.pdf) spolu s funkcemi samoobslužné služby pro širší sadu služeb bez ohledu na typ zařízení nebo umístění. Uživatelé mohou dokonce i nadále přistupovat k publikovaným službám přímo prostřednictvím BIG-IPs proprietárního portálu Webtop, pokud jsou upřednostňovány. Když se odhlásíte, služba SHA zajišťuje ukončení relace uživatelů na obou koncích, velkých a koncových IP adres a Azure AD, což zajišťuje, že se služby budou plně chránit před neoprávněným přístupem.  
 
 Dodávané snímky obrazovky jsou z portálu aplikace Azure AD, ke kterým uživatelé přistupují zabezpečeným způsobem, aby našli své publikované služby s velkými IP adresami a spravovaly jejich vlastnosti účtu.  
 
@@ -92,7 +93,7 @@ Dodávané snímky obrazovky jsou z portálu aplikace Azure AD, ke kterým uživ
 
 Role BIG-IP je pro každou firmu zásadní, takže nasazené instance s velkými IP adresami by měly být monitorovány, aby byly publikované služby vysoce dostupné, a to jak na úrovni SHA, tak i i v provozu.
 
-K dispozici je několik možností pro protokolování událostí buď místně, nebo vzdáleně prostřednictvím řešení SIEM (Security Information and Event Management), které umožňuje ukládání mimo špičku a zpracovávání telemetrie. Vysoce efektivní řešení pro monitorování aktivit služby Azure AD a SHA, je použití [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) a [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/overview), společně nabízí:
+K dispozici je několik možností pro protokolování událostí buď místně, nebo vzdáleně prostřednictvím řešení SIEM (Security Information and Event Management), které umožňuje ukládání mimo špičku a zpracovávání telemetrie. Vysoce efektivní řešení pro monitorování aktivit služby Azure AD a SHA, je použití [Azure monitor](../../azure-monitor/overview.md) a [Azure Sentinel](../../sentinel/overview.md), společně nabízí:
 
 - Podrobný přehled vaší organizace, potenciálně v různých cloudech a místních umístění, včetně infrastruktury BIG-IP
 
@@ -126,9 +127,9 @@ Integrace aplikace F5 BIG-IP s Azure AD pro službu SHA má následující poža
 
 - Licencování Azure AD prostřednictvím jedné z následujících možností:
 
-   - [Bezplatné předplatné](https://docs.microsoft.com/windows/client-management/mdm/register-your-free-azure-active-directory-subscription#:~:text=%20Register%20your%20free%20Azure%20Active%20Directory%20subscription,will%20take%20you%20to%20the%20Azure...%20More%20) Azure AD poskytuje minimální základní požadavky pro implementaci služby SHA s ověřováním bez hesla.
+   - [Bezplatné předplatné](/windows/client-management/mdm/register-your-free-azure-active-directory-subscription#:~:text=%20Register%20your%20free%20Azure%20Active%20Directory%20subscription,will%20take%20you%20to%20the%20Azure...%20More%20) Azure AD poskytuje minimální základní požadavky pro implementaci služby SHA s ověřováním bez hesla.
 
-   - [Předplatné Premium](https://azure.microsoft.com/pricing/details/active-directory/) poskytuje celou řadu dalších hodnot, včetně [podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/conditional-access/overview), [MFA](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks)a [Identity Protection](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection) .
+   - [Předplatné Premium](https://azure.microsoft.com/pricing/details/active-directory/) poskytuje celou řadu dalších hodnot, včetně [podmíněného přístupu](../conditional-access/overview.md), [MFA](../authentication/concept-mfa-howitworks.md)a [Identity Protection](../identity-protection/overview-identity-protection.md) .
 
 K implementaci algoritmu SHA je potřeba žádné předchozí zkušenosti ani znalostní báze F5 s velkým objemem IP adres, ale doporučujeme, abyste familiarizingi pomocí terminologie F5 BIG-IP. F5's bohatou [znalostní bázi](https://www.f5.com/services/resources/glossary) je také dobrým místem, kde můžete začít sestavovat znalosti ve velkém protokolu IP.
 
@@ -138,13 +139,13 @@ V následujících kurzech najdete podrobné pokyny k implementaci některých n
 
 - [Názor F5 BIG-IP v nasazení Azure – Projděte si](f5-bigip-deployment-guide.md)
 
-- [Aplikace F5 BIG-IP APM a Azure AD SSO k aplikacím Kerberos](https://docs.microsoft.com/azure/active-directory/saas-apps/kerbf5-tutorial#configure-f5-single-sign-on-for-kerberos-application)
+- [Aplikace F5 BIG-IP APM a Azure AD SSO k aplikacím Kerberos](../saas-apps/kerbf5-tutorial.md#configure-f5-single-sign-on-for-kerberos-application)
 
-- [Služba F5 BIG-IP APM a služba Azure AD SSO pro aplikace založené na hlavičkách](https://docs.microsoft.com/azure/active-directory/saas-apps/headerf5-tutorial#configure-f5-single-sign-on-for-header-based-application)
+- [Služba F5 BIG-IP APM a služba Azure AD SSO pro aplikace založené na hlavičkách](../saas-apps/headerf5-tutorial.md#configure-f5-single-sign-on-for-header-based-application)
 
 - [Zabezpečení F5 BIG-IP SSL-VPN pomocí Azure AD SHA](f5-aad-password-less-vpn.md)
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [Konec hesel, přejít bez hesla](https://www.microsoft.com/security/business/identity/passwordless)
 

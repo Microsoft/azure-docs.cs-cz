@@ -7,17 +7,17 @@ ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 06/12/2020
-ms.openlocfilehash: e60f77495cdb822a0c50be936c2b0d3ac31348f3
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 2b68afcb9d200970ca4ea29b13175223f52c77e0
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98116705"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730985"
 ---
 # <a name="cross-service-query---azure-monitor-and-azure-data-explorer-preview"></a>Dotaz na různé služby – Azure Monitor a Azure Průzkumník dat (Preview)
-Vytvářejte dotazy mezi službami mezi [Azure Průzkumník dat](https://docs.microsoft.com/azure/data-explorer/), [Application Insights](/azure/azure-monitor/app/app-insights-overview)a [Log Analytics](/azure/azure-monitor/platform/data-platform-logs).
+Vytvářejte dotazy mezi službami mezi [Azure Průzkumník dat](/azure/data-explorer/), [Application Insights](../app/app-insights-overview.md)a [Log Analytics](./data-platform-logs.md).
 ## <a name="azure-monitor-and-azure-data-explorer-cross-service-querying"></a>Azure Monitor a Azure Průzkumník dat dotazování mezi službami
-Díky tomuto prostředí můžete [vytvářet dotazy mezi službami Azure Průzkumník dat a Azure monitor](https://docs.microsoft.com/azure/data-explorer/query-monitor-data) a [vytvářet dotazy na více služeb mezi Azure Monitor a Azure Průzkumník dat](https://docs.microsoft.com/azure/azure-monitor/platform/azure-monitor-data-explorer-proxy).
+Díky tomuto prostředí můžete [vytvářet dotazy mezi službami Azure Průzkumník dat a Azure monitor](/azure/data-explorer/query-monitor-data) a [vytvářet dotazy na více služeb mezi Azure Monitor a Azure Průzkumník dat](./azure-monitor-data-explorer-proxy.md).
 
 Například (dotazování Azure Průzkumník dat z Log Analytics):
 ```kusto
@@ -34,15 +34,15 @@ Kde se vnější dotaz dotazuje na tabulku v pracovním prostoru a pak se připo
 
 Export dat z Azure Monitor do účtu úložiště Azure umožňuje snížit náklady a možnost znovu přidělit protokoly různým oblastem.
 
-Použijte Azure Průzkumník dat k dotazování na data, která byla exportována z vašich Log Analytics pracovních prostorů. Po nakonfigurování budou podporované tabulky, které se odesílají z vašich pracovních prostorů do účtu služby Azure Storage, k dispozici jako zdroj dat pro Azure Průzkumník dat. [Dotaz na exportovaná data z Azure monitor pomocí Azure Průzkumník dat (Preview)](https://docs.microsoft.com/azure/azure-monitor/platform/azure-data-explorer-query-storage).
+Použijte Azure Průzkumník dat k dotazování na data, která byla exportována z vašich Log Analytics pracovních prostorů. Po nakonfigurování budou podporované tabulky, které se odesílají z vašich pracovních prostorů do účtu služby Azure Storage, k dispozici jako zdroj dat pro Azure Průzkumník dat. [Dotaz na exportovaná data z Azure monitor pomocí Azure Průzkumník dat (Preview)](./azure-data-explorer-query-storage.md).
 
 :::image type="content" source="media\azure-data-explorer-query-storage\exported-data-query.png" alt-text="Dotaz na Azure Průzkumník dat z toku úložiště":::
 
 >[!tip] 
-> * Pokud chcete exportovat všechna data z vašeho pracovního prostoru Log Analytics do účtu služby Azure Storage nebo centra událostí, použijte funkci exportu dat Log Analytics pracovního prostoru Azure Monitor protokolů. [Viz téma Export dat pracovního prostoru Log Analytics v Azure monitor (Preview)](https://docs.microsoft.com/azure/data-explorer/query-monitor-data).
+> * Pokud chcete exportovat všechna data z vašeho pracovního prostoru Log Analytics do účtu služby Azure Storage nebo centra událostí, použijte funkci exportu dat Log Analytics pracovního prostoru Azure Monitor protokolů. [Viz téma Export dat pracovního prostoru Log Analytics v Azure monitor (Preview)](/azure/data-explorer/query-monitor-data).
 
 ## <a name="next-steps"></a>Další kroky
 Přečtěte si další informace:
-* [Vytvářejte dotazy mezi službami mezi Azure Průzkumník dat a Azure monitor](https://docs.microsoft.com/azure/data-explorer/query-monitor-data). Dotazování na data Azure Monitor z Azure Průzkumník dat
-* [Vytvářejte dotazy mezi službami mezi Azure monitor a Azure Průzkumník dat](https://docs.microsoft.com/azure/azure-monitor/platform/azure-monitor-data-explorer-proxy). Dotazování dat Azure Průzkumník dat z Azure Monitor
-* [Export dat pracovního prostoru Log Analytics v Azure monitor (Preview)](https://docs.microsoft.com/azure/data-explorer/query-monitor-data). Připojení a dotazování účtu služby Azure Blob Storage pomocí Log Analytics exportovaných dat
+* [Vytvářejte dotazy mezi službami mezi Azure Průzkumník dat a Azure monitor](/azure/data-explorer/query-monitor-data). Dotazování na data Azure Monitor z Azure Průzkumník dat
+* [Vytvářejte dotazy mezi službami mezi Azure monitor a Azure Průzkumník dat](./azure-monitor-data-explorer-proxy.md). Dotazování dat Azure Průzkumník dat z Azure Monitor
+* [Export dat pracovního prostoru Log Analytics v Azure monitor (Preview)](/azure/data-explorer/query-monitor-data). Připojení a dotazování účtu služby Azure Blob Storage pomocí Log Analytics exportovaných dat

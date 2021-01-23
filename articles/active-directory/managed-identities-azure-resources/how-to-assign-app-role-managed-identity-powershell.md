@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/10/2020
 ms.author: jodowns
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 409ba7a954830bb2370ce83989b9e8b08b742fe7
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: f2d844054e3744aafa01f43ded354a5b5d9f8b4b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631172"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732060"
 ---
 # <a name="assign-a-managed-identity-access-to-an-application-role-using-powershell"></a>Přiřazení spravované identity přístup k roli aplikace pomocí PowerShellu
 
@@ -36,7 +36,7 @@ V tomto článku se dozvíte, jak přiřadit spravovanou identitu k aplikační 
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
 - Chcete-li spustit ukázkové skripty, máte dvě možnosti:
     - Použijte [Azure Cloud Shell](../../cloud-shell/overview.md), který můžete otevřít pomocí tlačítka **vyzkoušet** v pravém horním rohu bloků kódu.
-    - Spouštět skripty místně pomocí instalace nejnovější verze [Azure AD PowerShellu](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2).
+    - Spouštět skripty místně pomocí instalace nejnovější verze [Azure AD PowerShellu](/powershell/azure/active-directory/install-adv2).
 
 ## <a name="assign-a-managed-identity-access-to-another-applications-app-role"></a>Přiřaďte přístup spravovaných identit k aplikační roli jiné aplikace.
 

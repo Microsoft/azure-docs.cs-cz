@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0fe9b3ddaee41802ced30e1898b46cefa2566771
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 36a15560b88c823ff2ae41f160839796bf21e4f8
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023186"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730781"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Co je Windows Virtual Desktop?
 
@@ -130,20 +130,20 @@ Virtuální počítač s Windows podporuje následující image operačních sys
 * Windows Server 2016
 * Windows Server 2012 R2
 
-Virtuální počítač s Windows nepodporuje image operačního systému x86 (32-bit), Windows 10 Enterprise N nebo Windows 10 Enterprise KN. Windows 7 také nepodporuje žádná profilová řešení založená na VHD nebo VHDX, která jsou hostovaná na spravovaných Azure Storage z důvodu omezení velikosti sektoru.
+Windows Virtual Desktop 32 nepodporuje image operačního systému Windows 10 Enterprise N, Windows 10 pro nebo Windows 10 Enterprise KN. Windows 7 také nepodporuje žádná profilová řešení založená na VHD nebo VHDX, která jsou hostovaná na spravovaných Azure Storage z důvodu omezení velikosti sektoru.
 
 Dostupné možnosti automatizace a nasazení závisí na tom, který operační systém a jakou verzi si zvolíte, jak je znázorněno v následující tabulce:
 
 |Operační systém|Galerie imagí Azure|Ruční nasazení virtuálního počítače|Integrace šablon Azure Resource Manager|Zřizování fondů hostitelů na Azure Marketplace|
 |--------------------------------------|:------:|:------:|:------:|:------:|
-|Windows 10 Enterprise (více relací), verze 2004|Yes|Yes|Yes|Yes|
-|Windows 10 Enterprise (více relací), verze 1909|Yes|Yes|Yes|Yes|
-|Windows 10 Enterprise (více relací), verze 1903|Yes|Yes|Ne|Ne|
-|Windows 10 Enterprise (více relací), verze 1809|Yes|Yes|Ne|Ne|
-|Windows 7 Enterprise|Yes|Yes|Ne|Ne|
-|Windows Server 2019|Yes|Yes|Ne|Ne|
-|Windows Server 2016|Ano|Yes|Yes|Yes|
-|Windows Server 2012 R2|Ano|Yes|Ne|No|
+|Windows 10 Enterprise (více relací), verze 2004|Ano|Ano|Ano|Ano|
+|Windows 10 Enterprise (více relací), verze 1909|Ano|Ano|Ano|Ano|
+|Windows 10 Enterprise (více relací), verze 1903|Ano|Ano|No|No|
+|Windows 10 Enterprise (více relací), verze 1809|Ano|Ano|No|No|
+|Windows 7 Enterprise|Ano|Ano|No|No|
+|Windows Server 2019|Ano|Ano|No|No|
+|Windows Server 2016|Ano|Ano|Ano|Ano|
+|Windows Server 2012 R2|Ano|Ano|No|No|
 
 ## <a name="next-steps"></a>Další kroky
 

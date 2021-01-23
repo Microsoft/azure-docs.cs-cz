@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 71f4cfa9e7b69e51bafa5364f857f8ab689f2ad0
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 928b8118c614d7d16293c8d6e0cec194a270314e
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955463"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98729902"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>Kurz: Konfigurace ServiceNow pro Automatické zřizování uživatelů
 
@@ -155,9 +155,9 @@ Po dokončení konfigurace zřizování můžete své nasazení monitorovat pomo
 
 * **Rozsahy IP adres** 
 
-   Služba zřizování Azure AD aktuálně funguje v rámci určitého rozsahu IP adres. V případě potřeby ale můžete omezit další rozsahy IP adres a přidat tyto konkrétní rozsahy IP adres do povolených vaší aplikace, aby bylo možné do vaší aplikace Povolit tok přenosů ze služby zřizování Azure AD. Přečtěte si dokumentaci v části [rozsahy IP adres](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#ip-ranges).
+   Služba zřizování Azure AD aktuálně funguje v rámci určitého rozsahu IP adres. V případě potřeby ale můžete omezit další rozsahy IP adres a přidat tyto konkrétní rozsahy IP adres do povolených vaší aplikace, aby bylo možné do vaší aplikace Povolit tok přenosů ze služby zřizování Azure AD. Přečtěte si dokumentaci v části [rozsahy IP adres](../app-provisioning/use-scim-to-provision-users-and-groups.md#ip-ranges).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

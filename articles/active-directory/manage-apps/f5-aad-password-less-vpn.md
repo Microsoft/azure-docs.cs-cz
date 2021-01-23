@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2961f3f01f6ea4398fab6144b34fcb4409cdd96f
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: 84e177f1ce55d803f54bb2553078441557e5c191
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317959"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730883"
 ---
 # <a name="tutorial-for-azure-active-directory-single-sign-on-integration-with-f5-big-ip-for-password-less-vpn"></a>Kurz pro Azure Active Directory integraci s jednotným přihlašováním pomocí F5 BIG-IP pro heslo bez hesla – bez VPN
 
@@ -24,13 +24,13 @@ V tomto kurzu se dozvíte, jak integrovat řešení F5's s využitím standardu 
 
 Integrace služby BIG-IP SSL-VPN s Azure AD poskytuje [mnoho klíčových výhod](f5-aad-integration.md), včetně:
 
-- Vylepšené řízení nulové důvěryhodnosti prostřednictvím předběžného [ověřování a autorizace Azure AD](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)
+- Vylepšené řízení nulové důvěryhodnosti prostřednictvím předběžného [ověřování a autorizace Azure AD](../../app-service/overview-authentication-authorization.md)
 
 - [Ověřování bez hesla u služby VPN](https://www.microsoft.com/security/business/identity/passwordless)
 
 - Správa identit a přístupu z jedné roviny ovládacího prvku – [Azure Portal](https://portal.azure.com/#home)
 
-I když tato Skvělé hodnota připadá, klasická síť VPN ale zůstane v predikátech k vystavení síťového obvodu, kde Trusted je na vnitřním a nedůvěryhodném externím místě. Tento model již neplatí pro dosažení skutečného stav nulové důvěryhodnosti, protože firemní prostředky již nejsou omezeny na zdi podnikového datového centra, ale ne napříč více cloudovým prostředím bez pevných hranic. Z tohoto důvodu doporučujeme našim zákazníkům zvážit přechod na další identitu řízený přístup na [základě správy přístupu na jednotlivé aplikace](https://docs.microsoft.com/azure/active-directory/fundamentals/five-steps-to-full-application-integration-with-azure-ad).
+I když tato Skvělé hodnota připadá, klasická síť VPN ale zůstane v predikátech k vystavení síťového obvodu, kde Trusted je na vnitřním a nedůvěryhodném externím místě. Tento model již neplatí pro dosažení skutečného stav nulové důvěryhodnosti, protože firemní prostředky již nejsou omezeny na zdi podnikového datového centra, ale ne napříč více cloudovým prostředím bez pevných hranic. Z tohoto důvodu doporučujeme našim zákazníkům zvážit přechod na další identitu řízený přístup na [základě správy přístupu na jednotlivé aplikace](../fundamentals/five-steps-to-full-application-integration-with-azure-ad.md).
 
 ## <a name="scenario-description"></a>Popis scénáře
 
@@ -47,9 +47,9 @@ Nemusíte ale mít k řadu nebo znalosti velkých IP adres F5, budete potřebova
 
 - [Bezplatné předplatné](https://azure.microsoft.com/trial/get-started-active-directory/) Azure AD nebo novější
 
-- Identity uživatelů by se měly [synchronizovat z místního adresáře](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-whatis) do Azure AD.
+- Identity uživatelů by se měly [synchronizovat z místního adresáře](../hybrid/how-to-connect-sync-whatis.md) do Azure AD.
 
-- Účet s [oprávněními](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#application-administrator) správce aplikace Azure AD
+- Účet s [oprávněními](../roles/permissions-reference.md#application-administrator) správce aplikace Azure AD
 
 - Stávající infrastruktura BIG-IP s směrováním klientského provozu do a z velké IP adresy nebo [nasazení virtuální edice Big-IP do Azure](f5-bigip-deployment-guide.md).
 
@@ -64,7 +64,7 @@ Familiarizing s využitím nástroje [F5 Big-IP terminologie](https://www.f5.com
 
 ## <a name="add-f5-big-ip-from-the-azure-ad-gallery"></a>Přidat F5 BIG-IP z Galerie Azure AD
 
-Nastavení důvěryhodnosti federace SAML mezi velkou IP adresou umožňuje, aby služba Azure AD BIG-IP před udělením přístupu k publikované službě sítě VPN mohla předat předběžné ověřování a [podmíněný přístup](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) k Azure AD.
+Nastavení důvěryhodnosti federace SAML mezi velkou IP adresou umožňuje, aby služba Azure AD BIG-IP před udělením přístupu k publikované službě sítě VPN mohla předat předběžné ověřování a [podmíněný přístup](../conditional-access/overview.md) k Azure AD.
 
 1. Přihlaste se k portálu Azure AD pomocí účtu s právy správce aplikací.
 
@@ -88,7 +88,7 @@ Nastavení důvěryhodnosti federace SAML mezi velkou IP adresou umožňuje, aby
 
    - Udělejte to stejně jako v textovém poli **Adresa URL odpovědi** , včetně cesty koncového bodu SAML. Například `https://ssl-vpn.contoso.com/saml/sp/profile/post/acs`.
 
-   - V této konfiguraci se aplikace jenom v režimu iniciované IDP, kde Azure AD před přesměrováním na službu SAML ve velkém rozhraní SAML vystaví uživateli s kontrolním výrazem SAML. U aplikací, které nepodporují režim iniciované IDP, zadejte **přihlašovací adresu URL** pro službu Big-IP SAML. Například, `https://ssl-vpn.contoso.com`.
+   - V této konfiguraci se aplikace jenom v režimu iniciované IDP, kde Azure AD před přesměrováním na službu SAML ve velkém rozhraní SAML vystaví uživateli s kontrolním výrazem SAML. U aplikací, které nepodporují režim iniciované IDP, zadejte **přihlašovací adresu URL** pro službu Big-IP SAML. Například `https://ssl-vpn.contoso.com`.
 
    - V poli Adresa URL pro odhlášení Zadejte koncový bod služby Single-IP APM Single logout (SLO), který se předoznačené jako nedokončené pomocí hlavičky hostitele publikované služby. Například `https://ssl-vpn.contoso.com/saml/sp/profile/redirect/slr`.
 
@@ -105,7 +105,7 @@ Podívejte se na téma vlastnosti **atributů uživatele & deklarací identity**
 
 ![Image zobrazuje deklarace atributů uživatele](media/f5-sso-vpn/user-attributes-claims.png)
 
-Nemusíte mít k dispozici žádné další konkrétní deklarace, které vaše služba publikování velkých IP adres očekává, a současně se zaznamená, že všechny deklarace definované kromě výchozí sady se vystavují jenom v případě, že existují v Azure AD, jako vyplněné atributy. Stejným způsobem musí taky role adresáře [nebo](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-fed-group-claims) členství ve skupině definovat i pro objekt uživatele v Azure AD, aby se mohly vydávat jako deklarace identity.
+Nemusíte mít k dispozici žádné další konkrétní deklarace, které vaše služba publikování velkých IP adres očekává, a současně se zaznamená, že všechny deklarace definované kromě výchozí sady se vystavují jenom v případě, že existují v Azure AD, jako vyplněné atributy. Stejným způsobem musí taky role adresáře [nebo](../hybrid/how-to-connect-fed-group-claims.md) členství ve skupině definovat i pro objekt uživatele v Azure AD, aby se mohly vydávat jako deklarace identity.
 
 ![Obrázek zobrazuje odkaz na stažení federačních metadat](media/f5-sso-vpn/saml-signing-certificate.png)
 
@@ -165,7 +165,7 @@ Následující postup umožní uživatelům nabízení SSL-VPN nabídnout uživa
 
 1. Přejděte do části **přístup**  >  **k**  >  **seznamům webWebtop seznamů** a vyberte **vytvořit**.
 
-2. Dejte portálu název a nastavte typ na **úplný**. Například, `Contoso_webtop`.
+2. Dejte portálu název a nastavte typ na **úplný**. Například `Contoso_webtop`.
 
 3. Upravte zbývající předvolby a pak vyberte **dokončeno**.
 
@@ -175,7 +175,7 @@ Následující postup umožní uživatelům nabízení SSL-VPN nabídnout uživa
 
 Funkce sítě VPN se skládá z několika prvků, z nichž každá řídí jiný aspekt celkové služby.
 
-1. Přejděte na **přístup přístup** k  >  síti **VPN nebo**  >  k fondu zapůjčení IPv4 **(VPN Network Access)**  >  **IPV4 Lease Pools** a vyberte **vytvořit**.
+1. Přejděte na **přístup přístup** k  >  síti **VPN nebo**  >  k fondu zapůjčení IPv4 **(VPN Network Access)**  >   a vyberte **vytvořit**.
 
 2. Zadejte název fondu IP adres přidělených klientům VPN. Například Contoso_vpn_pool
 
@@ -213,7 +213,7 @@ Seznam přístupu k síti zřídí službu s nastavením IP adresy a DNS z fondu
 
 K nakonfigurování nastavení pro každý typ klienta VPN, který musí služba VPN podporovat, se teď vyžaduje profil připojení BIG-IP. Například Windows, OSX a Android.
 
-1. Přejděte na **přístup**  >  **připojení/** profily připojení k síti VPN  >  **Connectivity**  >  **Profiles** a vyberte **Přidat**.
+1. Přejděte na **přístup**  >  **připojení/** profily připojení k síti VPN  >    >   a vyberte **Přidat**.
 
 2. Zadejte název profilu a nastavte nadřazený profil na **/Common/Connectivity**, například Contoso_VPN_Profile.
 
@@ -273,7 +273,7 @@ U nakonfigurovaných objektů sítě VPN se vyžaduje zásada přístupu, která
 
 Když se zapojí všechna nastavení, APM teď vyžaduje front-end virtuální server, aby naslouchal klientům, kteří se připojují k síti VPN.
 
-1. Vyberte seznam virtuálních serverů **místních přenosů** virtuálního  >  **Virtual Servers**  >  **serveru** a vyberte **vytvořit**.
+1. Vyberte seznam virtuálních serverů **místních přenosů** virtuálního  >    >  **serveru** a vyberte **vytvořit**.
 
 2. Zadejte **název** virtuálního serveru VPN, například **VPN_Listener**.
 
@@ -299,11 +299,11 @@ Když se zapojí všechna nastavení, APM teď vyžaduje front-end virtuální s
 
 - [Konec hesel, přejít bez hesla](https://www.microsoft.com/security/business/identity/passwordless)
 
-- [Co je podmíněný přístup?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup?](../conditional-access/overview.md)
 
 - [Microsoft Zero Trust Framework umožňující vzdálenou práci](https://www.microsoft.com/security/blog/2020/04/02/announcing-microsoft-zero-trust-assessment-tool/)
 
-- [Pět kroků pro úplnou integraci aplikací s Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/five-steps-to-full-application-integration-with-azure-ad)
+- [Pět kroků pro úplnou integraci aplikací s Azure AD](../fundamentals/five-steps-to-full-application-integration-with-azure-ad.md)
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -312,4 +312,4 @@ Otevřete prohlížeč na vzdáleném klientském počítači se systémem Windo
 ![Obrázek znázorňuje spouštěč sítě VPN](media/f5-sso-vpn/vpn-launcher.png)
 
 Po výběru dlaždice VPN se nainstaluje hraniční klient pro velkou IP adresu a naváže se připojení VPN nakonfigurované pro SHA.
-Aplikace F5 VPN by měla být v rámci podmíněného přístupu Azure AD viditelná také jako cílový prostředek. Projděte si naše [doprovodné](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-policies) materiály k sestavování zásad podmíněného přístupu a také povolení [ověřování uživatelů bez hesla](https://www.microsoft.com/security/business/identity/passwordless)Azure AD.
+Aplikace F5 VPN by měla být v rámci podmíněného přístupu Azure AD viditelná také jako cílový prostředek. Projděte si naše [doprovodné](../conditional-access/concept-conditional-access-policies.md) materiály k sestavování zásad podmíněného přístupu a také povolení [ověřování uživatelů bez hesla](https://www.microsoft.com/security/business/identity/passwordless)Azure AD.

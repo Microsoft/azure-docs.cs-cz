@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c03009b08dcf33bf4b84bc91232af96e7ba2c71
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: f962bf131b87f17712186145b8c8b8e6090f7002
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095181"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730652"
 ---
 # <a name="tutorial-to-deploy-f5-big-ip-virtual-edition-vm-in-azure-iaas-for-secure-hybrid-access"></a>Kurz nasazení virtuálního počítače F5 BIG-IP Virtual Edition ve službě Azure IaaS pro zajištění zabezpečeného hybridního přístupu
 
@@ -83,7 +83,7 @@ Provedením následujících kroků nasaďte ve službě BIG-IP z [Azure Marketp
  |Skupina prostředků | Existující skupina prostředků Azure: virtuální počítač BIG-IP se nasadí do služby nebo ho vytvoří. Musí se jednat o stejnou skupinu prostředků pro virtuální počítače DC a IIS.|
  | **Podrobnosti o instancích**|  |
  |Název virtuálního počítače| Příklad BIG-IP-VM |
- |Oblast | Cílová geografická platforma Azure pro virtuální počítače s velkým objemem IP adres |
+ |Region (Oblast) | Cílová geografická platforma Azure pro virtuální počítače s velkým objemem IP adres |
  |Možnosti dostupnosti| Povolit jenom při použití virtuálního počítače v produkčním prostředí|
  |Image| BIG-IP. F5 – vše (BYOL, 2 spouštěcí umístění)|
  |Instance Azure Spot| Ne, ale pokud je to vhodné, můžete to povolit |
@@ -107,11 +107,11 @@ Provedením následujících kroků nasaďte ve službě BIG-IP z [Azure Marketp
  |Skupina zabezpečení sítě NIC| Pokud je podsíť Azure, kterou jste vybrali v předchozích krocích, už přidružená ke skupině zabezpečení sítě (NSG), vyberte možnost žádná. jinak vyberte základní.|
  |Zrychlení sítě| Vypnout |
  |**Vyrovnávání zatížení**|     |
- |Virtuální počítač pro vyrovnávání zatížení| Ne|
+ |Virtuální počítač pro vyrovnávání zatížení| No|
 
 10. Vyberte **Další: Správa** a dokončete tato nastavení.
 
- |Monitorování|    Hodnota |
+ |Sledování|    Hodnota |
  |:---------|:-----|
  |Podrobné sledování| Vypnout|
  |Diagnostika spouštění|Povolte s vlastním účtem úložiště. Pomocí možnosti sériového prostředí v Azure Portal umožňuje připojení k rozhraní Secure Shell pro velké IP adresy (SSH). Vyberte libovolný dostupný účet Azure Storage.|
@@ -216,7 +216,7 @@ Následující postup předpokládá, že zóna DNS veřejné domény používan
  |:-------|:-----------|
  |Předplatné| Stejné předplatné jako virtuální počítač BIG-IP-VM|
  |Zóna DNS| Zóna DNS, která je autoritativní pro ověřenou příponu domény, kterou budou používat vaše publikované weby, například www.contoso.com |
- |Název | Název hostitele, který zadáte, se přeloží na veřejnou IP adresu, která je přidružená k vybrané sekundární IP adrese. Ujistěte se, že jste definovali správné mapování DNS na IP adresu. Viz část poslední obrázek v části Konfigurace sítě, například intranet.contoso.com > 13.77.148.215|
+ |Name | Název hostitele, který zadáte, se přeloží na veřejnou IP adresu, která je přidružená k vybrané sekundární IP adrese. Ujistěte se, že jste definovali správné mapování DNS na IP adresu. Viz část poslední obrázek v části Konfigurace sítě, například intranet.contoso.com > 13.77.148.215|
  | TTL | 1 |
  |Jednotky TTL | Hodiny |
 
@@ -250,7 +250,7 @@ Ve výchozím nastavení jsou Azure virtuální sítě a přidružené podsítě
  |Protokol| TCP |
  |Akce| Povolit|
  |Priorita|Nejnižší dostupná hodnota mezi 100 – 4096|
- |Název | Popisný název, například: `BIG-IP-VM_Web_Services_80_443`|
+ |Name | Popisný název, například: `BIG-IP-VM_Web_Services_80_443`|
 
 3. Vyberte **Přidat** a potvrďte změny a zavřete nabídku **sítě** .
 
@@ -264,19 +264,19 @@ Systém BIG-IP je spravován prostřednictvím jeho uživatelského rozhraní pr
 
 - Z klienta VPN připojeného k interní síti BIG-IP-VM
 
-- Publikováno prostřednictvím [Azure proxy aplikací služby AD](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application)
+- Publikováno prostřednictvím [Azure proxy aplikací služby AD](./application-proxy-add-on-premises-application.md)
 
 Abyste mohli pokračovat ve zbývajících konfiguracích, budete se muset rozhodnout na nejvhodnější metodu. V případě potřeby se můžete přímo připojit ke konfiguraci webu z Internetu, a to tak, že nakonfigurujete primární IP adresu BIG-IP s veřejnou IP adresou. Pak přidejte pravidlo NSG, které povolí přenos 8443 k této primární IP adrese. Nezapomeňte omezit zdroj na vlastní důvěryhodnou IP adresu, jinak se bude moci připojit kdokoli.
 
 Až budete připraveni, potvrďte, že se můžete připojit k webové konfiguraci virtuálního počítače BIG-IP a přihlásit se pomocí přihlašovacích údajů zadaných během nasazování virtuálního počítače:
 
-- Pokud se připojujete z virtuálního počítače v jeho interní síti nebo přes VPN, připojte se přímo k BIG-IPs primární IP adresa a port konfigurace webu. Například, `https://<BIG-IP-VM_Primary_IP:8443`. V prohlížeči se zobrazí výzva k zadání nezabezpečeného připojení, ale můžete ho ignorovat, dokud nebude nakonfigurovaná Velká IP adresa. Pokud prohlížeč zabrání v blokování přístupu, vymažte jeho mezipaměť a akci opakujte.
+- Pokud se připojujete z virtuálního počítače v jeho interní síti nebo přes VPN, připojte se přímo k BIG-IPs primární IP adresa a port konfigurace webu. Například `https://<BIG-IP-VM_Primary_IP:8443`. V prohlížeči se zobrazí výzva k zadání nezabezpečeného připojení, ale můžete ho ignorovat, dokud nebude nakonfigurovaná Velká IP adresa. Pokud prohlížeč zabrání v blokování přístupu, vymažte jeho mezipaměť a akci opakujte.
 
 - Pokud jste publikovali webovou konfiguraci prostřednictvím proxy aplikace, pak použijte adresu URL definovanou pro přístup k webové konfiguraci externě, bez připojení portu, například `https://big-ip-vm.contoso.com` . Interní adresa URL musí být definována pomocí portu webové konfigurace, například `https://big-ip-vm.contoso.com:8443` 
 
 Systém BIG-IP je možné spravovat taky prostřednictvím svého základního prostředí SSH, které se obvykle používá pro úlohy příkazového řádku (CLI) a přístup na úrovni root. Pro připojení k rozhraní příkazového řádku existuje několik možností, včetně:
 
-- [Služba Azure bastionu](https://docs.microsoft.com/azure/bastion/bastion-overview): umožňuje rychlé a zabezpečené připojení k LIBOVOLNÉmu virtuálnímu počítači v rámci virtuální sítě, a to z libovolného místa.
+- [Služba Azure bastionu](../../bastion/bastion-overview.md): umožňuje rychlé a zabezpečené připojení k LIBOVOLNÉmu virtuálnímu počítači v rámci virtuální sítě, a to z libovolného místa.
 
 - Přímé připojení pomocí klienta SSH, jako je například výstup pomocí postupu JIT
 
@@ -423,7 +423,7 @@ Díky současnému zřízení systému BIG-IP doporučujeme, abyste provedli úp
 
 6. Uložte místně archiv pro konfigurační sadu uživatele (UCS) tak, že kliknete na odkaz zálohování a vyberete **Stáhnout**.
 
-V případě volitelného kroku můžete také vytvořit zálohu celého systémového disku pomocí [snímků Azure](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk), což na rozdíl od zálohování webové konfigurace by vedlo k testování mezi TMOS verzemi nebo návratem do nového systému.
+V případě volitelného kroku můžete také vytvořit zálohu celého systémového disku pomocí [snímků Azure](../../virtual-machines/windows/snapshot-copy-managed-disk.md), což na rozdíl od zálohování webové konfigurace by vedlo k testování mezi TMOS verzemi nebo návratem do nového systému.
 
 ```PowerShell
 # Install modules

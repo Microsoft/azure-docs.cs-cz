@@ -3,12 +3,12 @@ title: Co je nového ve službě Azure Backup
 description: Seznamte se s novými funkcemi v Azure Backup.
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.openlocfilehash: 62a6146990863c339917777b2624fee76ebe60d8
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 935c2a806ed3b08f19e680bf1522d98a9ad67666
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98569415"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730285"
 ---
 # <a name="whats-new-in-azure-backup"></a>Co je nového ve službě Azure Backup
 
@@ -37,7 +37,7 @@ Další informace o nových vydaných verzích najdete v tématu popisujícím t
 
 ## <a name="azure-disk-backup-in-preview"></a>Zálohování disku Azure (ve verzi Preview)
 
-Azure disk Backup nabízí řešení klíč, které poskytuje správu životního cyklu snímků pro [Azure Managed disks](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview) automatizací pravidelného vytváření snímků a jejich zachování po nakonfigurované době pomocí zásad zálohování. Můžete spravovat snímky disků s nulovými náklady na infrastrukturu a nemusíte mít vlastní skriptování ani nároky na správu. Jedná se o řešení zálohování konzistentní vzhledem k selháním, které využívá přírůstkové zálohování spravovaného disku pomocí [přírůstkových snímků](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots) s podporou více záloh za den. Je to také řešení bez agentů a nemá vliv na výkon produkčních aplikací. Podporuje zálohování a obnovení disků s operačním systémem i datové disky (včetně sdílených disků), ať už jsou aktuálně připojené ke spuštěnému virtuálnímu počítači Azure.
+Azure disk Backup nabízí řešení klíč, které poskytuje správu životního cyklu snímků pro [Azure Managed disks](../virtual-machines/managed-disks-overview.md) automatizací pravidelného vytváření snímků a jejich zachování po nakonfigurované době pomocí zásad zálohování. Můžete spravovat snímky disků s nulovými náklady na infrastrukturu a nemusíte mít vlastní skriptování ani nároky na správu. Jedná se o řešení zálohování konzistentní vzhledem k selháním, které využívá přírůstkové zálohování spravovaného disku pomocí [přírůstkových snímků](../virtual-machines/disks-incremental-snapshots.md) s podporou více záloh za den. Je to také řešení bez agentů a nemá vliv na výkon produkčních aplikací. Podporuje zálohování a obnovení disků s operačním systémem i datové disky (včetně sdílených disků), ať už jsou aktuálně připojené ke spuštěnému virtuálnímu počítači Azure.
 
 Další informace najdete v tématu [zálohování disku Azure (ve verzi Preview)](disk-backup-overview.md).
 

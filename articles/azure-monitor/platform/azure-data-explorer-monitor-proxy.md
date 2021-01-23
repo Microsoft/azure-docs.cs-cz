@@ -7,16 +7,16 @@ ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: 8942735ed65f8aa0cf6d315568e00412adcb353a
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: a31ef69d84f64e4bcaa46adac26a29d2cc367351
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060533"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98731696"
 ---
 # <a name="query-data-in-azure-monitor-using-azure-data-explorer-preview"></a>Dotazování dat v Azure Monitor pomocí Azure Průzkumník dat (Preview)
 
-Azure Průzkumník dat podporuje dotazy mezi službami mezi Azure Průzkumník dat, [Application Insights (AI)](/azure/azure-monitor/app/app-insights-overview)a [Log Analytics (La)](/azure/azure-monitor/platform/data-platform-logs). Potom můžete do pracovního prostoru Log Analytics/Application Insights zadat dotaz pomocí nástrojů Azure Průzkumník dat a odkazovat na něj v dotazu mezi jednotlivými službami. V tomto článku se dozvíte, jak vytvořit dotaz mezi služby a jak přidat pracovní prostor Log Analytics/Application Insights do webového uživatelského rozhraní služby Azure Průzkumník dat.
+Azure Průzkumník dat podporuje dotazy mezi službami mezi Azure Průzkumník dat, [Application Insights (AI)](../app/app-insights-overview.md)a [Log Analytics (La)](./data-platform-logs.md). Potom můžete do pracovního prostoru Log Analytics/Application Insights zadat dotaz pomocí nástrojů Azure Průzkumník dat a odkazovat na něj v dotazu mezi jednotlivými službami. V tomto článku se dozvíte, jak vytvořit dotaz mezi služby a jak přidat pracovní prostor Log Analytics/Application Insights do webového uživatelského rozhraní služby Azure Průzkumník dat.
 
 Tok dotazů služby Azure Průzkumník dat mezi službami: :::image type="content" source="media\azure-data-explorer-monitor-proxy\azure-data-explorer-monitor-flow.png" alt-text="tok proxy serveru Azure Data Explorer.":::
 
@@ -37,7 +37,7 @@ Tok dotazů služby Azure Průzkumník dat mezi službami: :::image type="conten
     * Pro LA: `https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`
     * Pro AI: `https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>`
 
-    * Vyberte **Add** (Přidat).
+    * Vyberte **Přidat**.
 
 :::image type="content" source="media/azure-data-explorer-monitor-proxy/azure-monitor-proxy-add-cluster.png" alt-text="Přidejte cluster.":::
  
@@ -62,7 +62,7 @@ Dotazy můžete spouštět pomocí klientských nástrojů, které podporují do
 > * Název databáze by měl mít stejný název jako prostředek zadaný v dotazu vzájemné služby. V názvech se rozlišují malá a velká písmena.
 > * V dotazech mezi clustery se ujistěte, že je správně Naming Application Insights aplikace a pracovní prostory Log Analytics.
 > * Pokud názvy obsahují speciální znaky, budou nahrazeny kódováním adresy URL v dotazu vzájemné služby.
-> * Pokud názvy obsahují znaky, které nevyhovují [pravidlům názvů identifikátorů KQL](https://docs.microsoft.com/azure/data-explorer/kusto/query/schema-entities/entity-names), jsou nahrazeny pomlčkou **-** .
+> * Pokud názvy obsahují znaky, které nevyhovují [pravidlům názvů identifikátorů KQL](/azure/data-explorer/kusto/query/schema-entities/entity-names), jsou nahrazeny pomlčkou **-** .
 
 ### <a name="direct-query-on-your-log-analytics-or-application-insights-workspaces-from-azure-data-explorer-client-tools"></a>Přímé dotazování na Log Analytics nebo Application Insights pracovních prostorů z Azure Průzkumník dat klientských nástrojů
 
@@ -90,7 +90,7 @@ union <Azure Data Explorer table>, cluster(CL1).database(<workspace-name>).<tabl
 
 :::image type="content" source="media\azure-data-explorer-monitor-proxy\azure-data-explorer-cross-query-proxy.png" alt-text="Dotaz na vzájemnou službu z Průzkumník dat Azure":::
 
-Použití [ `join` operátoru](https://docs.microsoft.com/azure/data-explorer/kusto/query/joinoperator)namísto sjednocení může vyžadovat, aby se [`hint`](https://docs.microsoft.com/azure/data-explorer/kusto/query/joinoperator#join-hints) spustilo v nativním clusteru Azure Průzkumník dat.
+Použití [ `join` operátoru](/azure/data-explorer/kusto/query/joinoperator)namísto sjednocení může vyžadovat, aby se [`hint`](/azure/data-explorer/kusto/query/joinoperator#join-hints) spustilo v nativním clusteru Azure Průzkumník dat.
 
 ### <a name="join-data-from-an-azure-data-explorer-cluster-in-one-tenant-with-an-azure-monitor-resource-in-another"></a>Připojení dat z clusteru Azure Průzkumník dat v jednom tenantovi s prostředkem Azure Monitor v jiném
 
@@ -98,9 +98,9 @@ Mezi službami nejsou podporované dotazy mezi klienty. Jste přihlášení k je
 
 Pokud je prostředek Azure Průzkumník dat v Tenantovi a a Log Analytics pracovní prostor je v Tenantovi B, použijte jednu z následujících dvou metod:
 
-1. Azure Průzkumník dat umožňuje přidávat role pro objekty zabezpečení v různých klientech. Přidejte své ID uživatele v Tenantovi B jako autorizovaného uživatele v clusteru Azure Průzkumník dat. Ověřte, že vlastnost *[' TrustedExternalTenant '](https://docs.microsoft.com/powershell/module/az.kusto/update-azkustocluster)* v clusteru Azure Průzkumník dat obsahuje tenanta ' B '. Spuštění křížového dotazu je plně v Tenantovi B.
+1. Azure Průzkumník dat umožňuje přidávat role pro objekty zabezpečení v různých klientech. Přidejte své ID uživatele v Tenantovi B jako autorizovaného uživatele v clusteru Azure Průzkumník dat. Ověřte, že vlastnost *[' TrustedExternalTenant '](/powershell/module/az.kusto/update-azkustocluster)* v clusteru Azure Průzkumník dat obsahuje tenanta ' B '. Spuštění křížového dotazu je plně v Tenantovi B.
 
-2. Pomocí [Lighthouse](https://docs.microsoft.com/azure/lighthouse/) můžete promítnout prostředek Azure monitor do tenanta "A".
+2. Pomocí [Lighthouse](../../lighthouse/index.yml) můžete promítnout prostředek Azure monitor do tenanta "A".
 ### <a name="connect-to-azure-data-explorer-clusters-from-different-tenants"></a>Připojení k clusterům Azure Průzkumník dat z různých tenantů
 
 Průzkumník Kusto vás automaticky přihlásí k tenantovi, ke kterému uživatelský účet původně patří. Chcete-li získat přístup k prostředkům v jiných klientech se stejným uživatelským účtem, je `tenantId` nutné explicitně zadat v připojovacím řetězci: `Data Source=https://ade.applicationinsights.io/subscriptions/SubscriptionId/resourcegroups/ResourceGroupName;Initial Catalog=NetDefaultDB;AAD Federated Security=True;Authority ID=` **TenantId**
@@ -134,4 +134,4 @@ Při volání Log Analytics nebo Application Insightsch clusterů jsou k dispozi
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si další informace o [struktuře dat Log Analytics pracovních prostorech a Application Insights](data-platform-logs.md).
-- Naučte se [zapisovat dotazy do Azure Průzkumník dat](https://docs.microsoft.com/azure/data-explorer/write-queries).
+- Naučte se [zapisovat dotazy do Azure Průzkumník dat](/azure/data-explorer/write-queries).

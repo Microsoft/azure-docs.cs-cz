@@ -11,12 +11,12 @@ ms.workload: infrastructure
 ms.date: 1/3/2020
 ms.author: ushan
 ms.custom: devops, devx-track-js
-ms.openlocfilehash: 3d26da693d83fd680c644849d581ea35ca7b49af
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 4ca431290fe168f8fc073908bb3735ecb5992562
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739701"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98731247"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>Kurz: nasazení aplikace do virtuálních počítačů se systémem Linux v Azure pomocí Azure DevOps Services a Azure Pipelines
 
@@ -24,7 +24,7 @@ Průběžná integrace (CI) a průběžné nasazování (CD) tvoří kanál, pom
 
 Azure Pipelines poskytuje kompletní, plně vybavenou sadu nástrojů pro automatizaci CI/CD pro nasazení do virtuálních počítačů, a to v Prem i v jakémkoli cloudu.
 
-V tomto kurzu nastavíte kanál CI/CD založený na YAML, který nasadí vaši aplikaci do [prostředí](/azure/devops/pipelines/process/environments?view=azure-devops) Azure Pipelines s virtuálními počítači Linux jako prostředky, z nichž každý slouží jako webové servery ke spuštění aplikace.
+V tomto kurzu nastavíte kanál CI/CD založený na YAML, který nasadí vaši aplikaci do [prostředí](/azure/devops/pipelines/process/environments) Azure Pipelines s virtuálními počítači Linux jako prostředky, z nichž každý slouží jako webové servery ke spuštění aplikace.
 
 Získáte informace o těchto tématech:
 
@@ -41,7 +41,7 @@ Získáte informace o těchto tématech:
   Můžete si opatřit [bezplatnou organizaci služby Azure DevOps Services](https://go.microsoft.com/fwlink/?LinkId=307137&clcid=0x409&wt.mc_id=o~msft~vscom~home-vsts-hero~27308&campaign=o~msft~vscom~home-vsts-hero~27308).
 
   > [!NOTE]
-  > Další informace najdete v článku o [připojení ke službě Azure DevOps Services](/azure/devops/organizations/projects/connect-to-projects?view=vsts).
+  > Další informace najdete v článku o [připojení ke službě Azure DevOps Services](/azure/devops/organizations/projects/connect-to-projects).
 
 *  Potřebujete linuxový virtuální počítač jako cíl nasazení.  Další informace najdete v článku o [vytvoření a správě linuxových virtuálních počítačů pomocí rozhraní příkazového řádku Azure](./tutorial-manage-vm.md).
 
@@ -222,7 +222,7 @@ Další pokyny najdete v postupu [sestavení aplikace Node.js pomocí Gulp](/azu
        tags: web
    ```
 2. Můžete vybrat konkrétní sady virtuálních počítačů z prostředí pro příjem nasazení zadáním **značek** , které jste definovali pro každý virtuální počítač v prostředí.
-[Tady](/azure/devops/pipelines/yaml-schema?view=azure-devops&tabs=schema#deployment-job) je kompletní schéma YAML pro úlohu nasazení.
+[Tady](/azure/devops/pipelines/yaml-schema?tabs=schema#deployment-job) je kompletní schéma YAML pro úlohu nasazení.
 
 3. Můžete zadat buď `runOnce` `rolling` strategii nasazení, nebo. 
 

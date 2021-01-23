@@ -51,8 +51,6 @@
           href: non-gallery-apps.md
         - name: Plánování nasazení pro Moje aplikace
           href: access-panel-deployment-plan.md
-        - name: Pokyny pro vývojáře
-          href: developer-guidance-for-integrating-applications.md
     - name: Jednotné přihlašování
       items:
         - name: Plánování nasazení jednotného přihlašování

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: c34ca08ae2ede9430804f6b8bb33f2bfcb0b39ab
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 70e1823b30814d7dc29fef69215fcb53a2a2ab96
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632688"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730866"
 ---
 # <a name="disaster-recovery-using-azure-application-consistent-snapshot-tool-preview"></a>Zotavení po havárii pomocí nástroje Snapshot konzistentního pro aplikace Azure (Preview)
 
@@ -40,7 +40,7 @@ Před naplánováním převzetí služeb při selhání pro zotavení po havári
 - Funguje replikace úložiště. Provozní tým Microsoftu provede nastavení replikace úložiště v době automatického zřizování DR. Replikaci úložiště můžete monitorovat pomocí příkazu `azacsnap -c details --details replication` na webu Dr.
 - Nastavili jste a nakonfigurovali snímky úložiště v primárním umístění.
 - Máte instanci HANA nainstalovanou na webu DR pro primární server se stejným identifikátorem SID, jako má primární instance.
-- Přečtěte si a pochopte postup převzetí služeb při selhání zotavení po havárii popsané v [velké instance SAP HANA vysoké dostupnosti a zotavení po havárii v Azure](/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure)
+- Přečtěte si a pochopte postup převzetí služeb při selhání zotavení po havárii popsané v [velké instance SAP HANA vysoké dostupnosti a zotavení po havárii v Azure](../virtual-machines/workloads/sap/hana-failover-procedure.md)
 - Nastavili jste a nakonfigurovali snímky úložiště v umístění pro zotavení po havárii.
 - Konfigurační soubor (například `DR.json` ) byl vytvořen pomocí svazků úložiště Dr a přidružených informací na serveru Dr.
 - Dokončili jste kroky na webu DR pro:

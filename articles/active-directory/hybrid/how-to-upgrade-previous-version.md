@@ -16,18 +16,18 @@ ms.date: 04/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65fc0e84582c005c5796ceac86ee28fc46b2e1d8
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 36b7fce2e2ccb6f331e42e8052ef4fb75d35e831
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094212"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98729986"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect: Upgrade z předchozí verze na nejnovější verzi
 Toto téma popisuje různé metody, které můžete použít k upgradu instalace služby Azure Active Directory (Azure AD) Connect na nejnovější verzi.  Při provádění podstatné změny konfigurace můžete také použít kroky v části kroková [migrace](#swing-migration) .
 
 >[!NOTE]
-> Je důležité, abyste své servery udržovali jako aktuální s nejnovějšími verzemi Azure AD Connect. Neustále provádíme upgrady na AADConnect a tyto upgrady zahrnují opravy chyb zabezpečení a chyb a také vylepšení služby, výkonu a škálovatelnosti. Pokud chcete zjistit, co je to nejnovější verze, a informace o tom, jaké změny se provedly mezi verzemi, přečtěte si [historii verzí pro vydání](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-version-history) .
+> Je důležité, abyste své servery udržovali jako aktuální s nejnovějšími verzemi Azure AD Connect. Neustále provádíme upgrady na AADConnect a tyto upgrady zahrnují opravy chyb zabezpečení a chyb a také vylepšení služby, výkonu a škálovatelnosti. Pokud chcete zjistit, co je to nejnovější verze, a informace o tom, jaké změny se provedly mezi verzemi, přečtěte si [historii verzí pro vydání](./reference-connect-version-history.md) .
 
 >[!NOTE]
 > V současné době se podporuje upgrade z jakékoli verze Azure AD Connect na aktuální verzi. Místní upgrady DirSync nebo ADSync se nepodporují a vyžaduje se migrace.  Pokud chcete upgradovat z DirSync, přečtěte si téma [upgrade z nástroje Azure AD Sync (DirSync)](how-to-dirsync-upgrade-get-started.md) nebo část pro [migraci](#swing-migration) .  </br>V praxi můžou zákazníci s extrémně starými verzemi narazit na problémy, které přímo nesouvisejí s Azure AD Connect. Servery, které byly v produkčním prostředí po dobu několika let, obvykle mají pro ně aplikováno několik oprav, a ne všechny z nich, pro které se dají použít.  Obecně platí, že zákazníci, kteří byli upgradováni v 12-18 měsíců, by měli místo toho vzít v úvahu upgrade, protože se jedná o nejužitečnější a nejnižší rizikové možnosti.
@@ -145,7 +145,7 @@ Následující část obsahuje řešení potíží a informace, které můžete 
 
 Při upgradu Azure AD Connect z předchozí verze se může při zahájení upgradu narazit na následující chybu. 
 
-![Chybová](./media/how-to-upgrade-previous-version/error1.png)
+![Chyba](./media/how-to-upgrade-previous-version/error1.png)
 
 K této chybě dochází, protože konektor Azure Active Directory s identifikátorem b891884f-051e-4A83-95af-2544101c9083 neexistuje v aktuální konfiguraci Azure AD Connect. Pokud chcete ověřit, že se jedná o tento případ, otevřete okno PowerShellu, spusťte rutinu. `Get-ADSyncConnector -Identifier b891884f-051e-4a83-95af-2544101c9083`
 

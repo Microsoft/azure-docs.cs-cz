@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: article
 ms.date: 06/8/2020
 ms.author: chenyl
-ms.openlocfilehash: 4f70cbacf686210c1188cb0a87e6116af8ed4b01
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: dee15977318eda7bcd0b1950286bb33f621221dd
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763140"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98731580"
 ---
 # <a name="managed-identities-for-azure-signalr-service"></a>Spravované identity pro službu Azure Signal Service
 
@@ -44,7 +44,7 @@ Vytvoření instance služby signalizace Azure s uživatelem přiřazenou identi
 
 4. Na kartě **přiřazený uživatel** vyberte **Přidat**.
 
-5. Vyhledejte identitu, kterou jste vytvořili dříve, a vybere ji. Vyberte **Add** (Přidat).
+5. Vyhledejte identitu, kterou jste vytvořili dříve, a vybere ji. Vyberte **Přidat**.
 
     :::image type="content" source="media/signalr-howto-use-managed-identity/user-identity-portal.png" alt-text="Přidání uživatelsky přiřazené identity na portálu":::
 
@@ -104,7 +104,7 @@ Služba signalizace má přístup k Key Vault k získání tajného klíče pomo
 
 1. Přidejte identitu přiřazenou systémem nebo identitu uživatele pro službu Azure Signal.
 
-2. Udělte oprávnění ke čtení pro spravovanou identitu v zásadách přístupu v Key Vault. Viz [přiřazení zásad Key Vault přístupu pomocí Azure Portal](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)
+2. Udělte oprávnění ke čtení pro spravovanou identitu v zásadách přístupu v Key Vault. Viz [přiřazení zásad Key Vault přístupu pomocí Azure Portal](../key-vault/general/assign-access-policy-portal.md)
 
 V současné době se tato funkce dá použít v těchto scénářích:
 

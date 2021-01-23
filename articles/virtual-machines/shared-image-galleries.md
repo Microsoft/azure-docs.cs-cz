@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/14/2020
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 2731a7f263db223c258ddfc434bc84f59632d1f5
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 3022e9c694d70359a90e71ecd1232e9274f92f10
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223359"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730318"
 ---
 # <a name="shared-image-galleries-overview"></a>Přehled Galerie sdílených imagí
 
@@ -150,8 +150,8 @@ Vzhledem k tomu, že je galerie sdílených imagí, definice obrázku a verze im
 
 | Sdíleno s uživatelem     | Sdílená galerie obrázků | Definice image | Verze image |
 |----------------------|----------------------|--------------|----------------------|
-| Sdílená galerie obrázků | Yes                  | Yes          | Yes                  |
-| Definice image     | No                   | Yes          | Yes                  |
+| Sdílená galerie obrázků | Ano                  | Ano          | Ano                  |
+| Definice image     | No                   | Ano          | Ano                  |
 
 Pro nejlepší prostředí doporučujeme sdílení na úrovni galerie. Nedoporučujeme sdílet jednotlivé verze imagí. Další informace o RBAC najdete v tématu [Správa přístupu k prostředkům Azure pomocí RBAC](../role-based-access-control/role-assignments-portal.md).
 
@@ -188,10 +188,10 @@ Verze Image:
 
 Následující sady SDK podporují vytváření galerií sdílených imagí:
 
-- [.NET](/dotnet/api/overview/azure/virtualmachines/management?view=azure-dotnet)
-- [Java](/java/azure/?view=azure-java-stable)
+- [.NET](/dotnet/api/overview/azure/virtualmachines/management)
+- [Java](/java/azure/)
 - [Node.js](/javascript/api/@azure/arm-compute)
-- [Python](/python/api/overview/azure/virtualmachines?view=azure-python)
+- [Python](/python/api/overview/azure/virtualmachines)
 - [Přejít](/azure/go/)
 
 ## <a name="templates"></a>Šablony
