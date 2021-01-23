@@ -1,28 +1,24 @@
 ---
 title: Problémy s nasazením pro Microsoft Azure Cloud Services nejčastější dotazy | Microsoft Docs
 description: V tomto článku jsou uvedené Nejčastější dotazy týkající se nasazení pro Microsoft Azure Cloud Services.
-services: cloud-services
-documentationcenter: ''
-author: genlin
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue
-ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
-ms.service: cloud-services
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 10/31/2018
-ms.author: genli
-ms.openlocfilehash: 63a219078927e9001a8eb4085c722e7ec8d2fac9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.service: cloud-services
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 67c20823d1f80360b2ab23dc3f208673d36a7374
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75980632"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742212"
 ---
-# <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problémy s nasazením pro Azure Cloud Services: nejčastější dotazy
+# <a name="deployment-issues-for-azure-cloud-services-classic-frequently-asked-questions-faqs"></a>Problémy s nasazením pro Azure Cloud Services (Classic): nejčastější dotazy
 
+> [!IMPORTANT]
+> [Azure Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md) je nový model nasazení založený na Azure Resource Manager pro produkt Azure Cloud Services.V důsledku této změny se Azure Cloud Services běžící na modelu nasazení založeném na Azure Service Manager přejmenovala jako Cloud Services (Classic) a všechna nová nasazení by měla používat [Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md).
 Tento článek obsahuje nejčastější dotazy týkající se problémů s nasazením pro [Microsoft Azure Cloud Services](https://azure.microsoft.com/services/cloud-services). Informace o velikosti najdete také na [stránce Cloud Services velikosti virtuálního počítače](cloud-services-sizes-specs.md) .
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
@@ -63,9 +59,9 @@ Velikost virtuálního počítače nasazené cloudové služby nemůžete změni
 
 Další informace najdete v tématu [Postup aktualizace cloudové služby](cloud-services-update-azure-service.md).
 
-## <a name="why-am-i-not-able-to-deploy-cloud-services-through-service-management-apis-or-powershell-when-using-azure-resource-manager-storage-account"></a>Proč nemůžu při použití účtu úložiště Azure Resource Manager nasadit Cloud Services prostřednictvím rozhraní API pro správu služeb nebo PowerShellu? 
+## <a name="why-am-i-not-able-to-deploy-cloud-services-through-service-management-apis-or-powershell-when-using-azure-resource-manager-storage-account"></a>Proč nemůžu při použití účtu úložiště Azure Resource Manager nasadit Cloud Services prostřednictvím rozhraní API pro správu služeb nebo PowerShellu? 
 
-Vzhledem k tomu, že cloudová služba je klasický prostředek, který není přímo kompatibilní s modelem Azure Resource Manager, nemůžete ho přidružit k účtům úložiště Azure Resource Manager. Tady je několik možností: 
+Vzhledem k tomu, že cloudová služba je klasický prostředek, který není přímo kompatibilní s modelem Azure Resource Manager, nemůžete ho přidružit k účtům úložiště Azure Resource Manager. Tady je několik možností: 
 
 - Nasazení prostřednictvím REST API.
 
@@ -73,7 +69,7 @@ Vzhledem k tomu, že cloudová služba je klasický prostředek, který není p�
 
 - Nasazení prostřednictvím [Azure Portal](https://portal.azure.com).
 
-    To bude fungovat z [Azure Portal](https://portal.azure.com) jako volání prostřednictvím proxy nebo překrytí, které umožňuje komunikaci mezi Azure Resource Manager a klasickými prostředky. 
+    To bude fungovat z [Azure Portal](https://portal.azure.com) jako volání prostřednictvím proxy nebo překrytí, které umožňuje komunikaci mezi Azure Resource Manager a klasickými prostředky. 
 
 ## <a name="why-does-azure-portal-require-me-to-provide-a-storage-account-for-deployment"></a>Proč Azure Portal vyžaduje, aby měl účet úložiště pro nasazení?
 

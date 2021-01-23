@@ -1,28 +1,24 @@
 ---
 title: Nejčastější dotazy týkající se konfigurace a správy
-titleSuffix: Azure Cloud Services
 description: V tomto článku jsou uvedeny nejčastější dotazy týkající se konfigurace a správy pro Microsoft Azure Cloud Services.
-services: cloud-services
-documentationcenter: ''
-author: genlin
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue
-ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
-ms.service: cloud-services
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/23/2018
-ms.author: genli
-ms.openlocfilehash: c4497805e64ef303c9d7340c48a49027b3a26bef
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.service: cloud-services
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: c5dd09292897d69f90606e8661b4e6cb28090612
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011013"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742586"
 ---
-# <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problémy s konfigurací a správou pro Azure Cloud Services: nejčastější dotazy
+# <a name="configuration-and-management-issues-for-azure-cloud-services-classic-frequently-asked-questions-faqs"></a>Problémy s konfigurací a správou pro Azure Cloud Services (Classic): nejčastější dotazy
+
+> [!IMPORTANT]
+> [Azure Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md) je nový model nasazení založený na Azure Resource Manager pro produkt Azure Cloud Services.V důsledku této změny se Azure Cloud Services běžící na modelu nasazení založeném na Azure Service Manager přejmenovala jako Cloud Services (Classic) a všechna nová nasazení by měla používat [Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md).
 
 Tento článek obsahuje nejčastější dotazy týkající se problémů s konfigurací a správou pro [Microsoft Azure Cloud Services](https://azure.microsoft.com/services/cloud-services). Informace o velikosti najdete také na [stránce Cloud Services velikosti virtuálního počítače](cloud-services-sizes-specs.md) .
 
@@ -62,7 +58,7 @@ Tento článek obsahuje nejčastější dotazy týkající se problémů s konfi
 
 **Obecné**
 
-- [Návody do svého webu přidat "insniffer"?](#how-do-i-add-nosniff-to-my-website)
+- [Návody přidat `nosniff` na můj web?](#how-do-i-add-nosniff-to-my-website)
 - [Návody přizpůsobení služby IIS pro webovou roli?](#how-do-i-customize-iis-for-a-web-role)
 - [Jaká je maximální kvóta pro cloudovou službu?](#what-is-the-quota-limit-for-my-cloud-service)
 - [Proč jednotka na virtuálním počítači cloudové služby zobrazuje hodně volného místa na disku?](#why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space)
@@ -103,7 +99,7 @@ Select-AzureSubscription -Current -SubscriptionName <your subscription name>
 Get-AzurePublishSettingsFile
 ```
 
-**Příkaz Get-AzurePublishSettingsFile** vytvoří nový certifikát pro správu v certifikátech správy **předplatných**  >  **Management Certificates** v Azure Portal. Název nového certifikátu vypadá jako "YourSubscriptionNam]-[CurrentDate]-přihlašovací údaje".
+**Příkaz Get-AzurePublishSettingsFile** vytvoří nový certifikát pro správu v certifikátech správy **předplatných**  >   v Azure Portal. Název nového certifikátu vypadá jako "YourSubscriptionNam]-[CurrentDate]-přihlašovací údaje".
 
 ### <a name="how-to-automate-the-installation-of-main-tlsssl-certificatepfx-and-intermediate-certificatep7b"></a>Jak automatizovat instalaci hlavního certifikátu TLS/SSL (. pfx) a zprostředkujícího certifikátu (. P7B)?
 
@@ -128,7 +124,7 @@ $cert = New-SelfSignedCertificate -DnsName yourdomain.cloudapp.net -CertStoreLoc
 $password = ConvertTo-SecureString -String "your-password" -Force -AsPlainText
 Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $password
 ```
-K dispozici je možnost zvolit si objekt BLOB nebo místní pro umístění odeslaných souborů csdef a cscfg. Pomocí [New-AzureDeployment](/powershell/module/servicemanagement/azure.service/new-azuredeployment?view=azuresmps-4.0.0)můžete nastavit každou hodnotu umístění.
+K dispozici je možnost zvolit si objekt BLOB nebo místní pro umístění odeslaných souborů csdef a cscfg. Pomocí [New-AzureDeployment](/powershell/module/servicemanagement/azure.service/new-azuredeployment?view=azuresmps-4.0.0&preserve-view=true)můžete nastavit každou hodnotu umístění.
 
 Možnost monitorovat metriky na úrovni instance. Další možnosti monitorování jsou k dispozici v tématu [jak monitorovat Cloud Services](cloud-services-how-to-monitor.md).
 
@@ -148,7 +144,7 @@ Můžete povolit protokolování Windows Azure Diagnostics (WAD) pomocí násled
 2. [Povolit prostřednictvím kódu .NET](./cloud-services-dotnet-diagnostics.md)
 3. [Povolit prostřednictvím PowerShellu](./cloud-services-diagnostics-powershell.md)
 
-Aby bylo možné získat aktuální nastavení WAD vaší cloudové služby, můžete použít příkaz [Get-AzureServiceDiagnosticsExtensions](./cloud-services-diagnostics-powershell.md#get-current-diagnostics-extension-configuration) PS cmd nebo ho můžete zobrazit přes portál z okna rozšíření Cloud Services-->.
+Chcete-li získat aktuální nastavení WAD vaší cloudové služby, můžete použít příkaz [Get-AzureServiceDiagnosticsExtensions](./cloud-services-diagnostics-powershell.md#get-current-diagnostics-extension-configuration) PowerShell cmd nebo ho můžete zobrazit prostřednictvím portálu z okna rozšíření Cloud Services-->.
 
 
 ## <a name="network-configuration"></a>Konfigurace sítě
@@ -254,7 +250,7 @@ Další informace o tom, jak povolit protokolování Azure Diagnostics pro Cloud
 
 ## <a name="generic"></a>Obecné
 
-### <a name="how-do-i-add-nosniff-to-my-website"></a>Návody do svého webu přidat "insniffer"?
+### <a name="how-do-i-add-nosniff-to-my-website"></a>Návody přidat `nosniff` na můj web?
 Chcete-li klientům zabránit v sledování typů MIME, přidejte do souboru *web.config* nastavení.
 
 ```xml
@@ -284,11 +280,11 @@ Viz [omezení pro konkrétní služby](../azure-resource-manager/management/azur
 ### <a name="why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space"></a>Proč jednotka na virtuálním počítači cloudové služby zobrazuje hodně volného místa na disku?
 Jedná se o očekávané chování, které by nemělo způsobovat žádné potíže s vaší aplikací. Deník je zapnutý pro jednotku% AppRoot% ve virtuálních počítačích Azure PaaS, která v podstatě spotřebovává dvojnásobek velikosti místa, které soubory obvykle zabírají. Existuje však několik věcí, které je třeba si uvědomit, že v podstatě tuto chybu zapínají na neproblém.
 
-Velikost jednotky% AppRoot% se počítá jako \<size of .cspkg + max journal size + a margin of free space> nebo 1,5 GB, podle toho, co je větší. Velikost virtuálního počítače nemá žádný vliv na tento výpočet. (Velikost virtuálního počítače ovlivňuje pouze velikost dočasné jednotky C:.) 
+Velikost jednotky% AppRoot% se počítá jako velikost <. cspkg + maximální velikost deníku + okraj volného místa> nebo 1,5 GB, podle toho, co je větší. Velikost virtuálního počítače nemá žádný vliv na tento výpočet. (Velikost virtuálního počítače ovlivňuje pouze velikost dočasné jednotky C:.) 
 
 Zápis na jednotku% AppRoot% není podporován. Pokud píšete do virtuálního počítače Azure, musíte to udělat v dočasném prostředku LocalStorage (nebo jiné možnosti, jako je BLOB Storage, soubory Azure atd.). Takže množství volného místa ve složce% AppRoot% není smysluplné. Pokud si nejste jistí, jestli vaše aplikace zapisuje na jednotku% AppRoot%, můžete vždycky nechat službu běžet po dobu několika dní a pak porovnat velikosti před a po. 
 
-Azure nebude zapisovat do jednotky% AppRoot% vůbec. Až se virtuální pevný disk vytvoří ze souboru. cspkg a připojí se k virtuálnímu počítači Azure, stačí, když do této jednotky zapíšete aplikaci. 
+Azure nebude zapisovat do jednotky% AppRoot% vůbec. Až se virtuální pevný disk vytvoří z počítače `.cspkg` připojeného k virtuálnímu počítači Azure, stačí, když na tuto jednotku zapíšete svou aplikaci. 
 
 Nastavení deníku nejde konfigurovat, takže je nemůžete vypnout.
 
@@ -297,7 +293,7 @@ Nastavení deníku nejde konfigurovat, takže je nemůžete vypnout.
 V úloze po spuštění můžete povolit antimalwarové rozšíření pomocí skriptu PowerShellu. K implementaci použijte postup v těchto článcích: 
  
 - [Vytvoření spouštěcí úlohy PowerShellu](cloud-services-startup-tasks-common.md#create-a-powershell-startup-task)
-- [Set-AzureServiceAntimalwareExtension](/powershell/module/servicemanagement/azure.service/Set-AzureServiceAntimalwareExtension?view=azuresmps-4.0.0 )
+- [Set-AzureServiceAntimalwareExtension](/powershell/module/servicemanagement/azure.service/Set-AzureServiceAntimalwareExtension?view=azuresmps-4.0.0&preserve-view=true)
 
 Další informace o scénářích antimalwarového nasazení a o tom, jak je povolit z portálu, najdete v tématu [scénáře nasazení antimalwaru](../security/fundamentals/antimalware.md#antimalware-deployment-scenarios).
 

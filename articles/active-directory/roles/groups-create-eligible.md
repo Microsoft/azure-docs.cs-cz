@@ -2,23 +2,23 @@
 title: Vytvořte skupinu pro přiřazování rolí v Azure Active Directory | Microsoft Docs
 description: Naučte se vytvořit skupinu s přiřazením rolí ve službě Azure AD. Spravujte role Azure v Azure Portal, PowerShellu nebo Graph API.
 services: active-directory
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: article
 ms.date: 11/05/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc2c42f407ee31a792a6634a813358d428120b46
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 3f06a1e9ea83fc7ad758ad17245ffa5d7ca973f6
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378614"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742094"
 ---
 # <a name="create-a-role-assignable-group-in-azure-active-directory"></a>Vytvoření skupiny s přiřazením rolí v Azure Active Directory
 
@@ -46,7 +46,7 @@ Roli můžete přiřadit jenom skupině, která byla vytvořená s vlastností '
 
 Tato skupina se vytvoří se všemi rolemi, které jste jim mohli přiřadit.
 
-## <a name="using-powershell"></a>Použití PowerShellu
+## <a name="using-powershell"></a>Pomocí prostředí PowerShell
 
 ### <a name="install-the-azure-ad-preview-module"></a>Instalace modulu Azure AD Preview
 

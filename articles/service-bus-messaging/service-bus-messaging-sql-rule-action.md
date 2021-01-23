@@ -1,14 +1,14 @@
 ---
 title: Azure Service Bus syntaxe akce SQL pravidla předplatného | Microsoft Docs
-description: Tento článek poskytuje referenci pro syntaxi akce pravidla SQL. Akce jsou napsány v syntaxi založené na jazyku SQL, která je provedena proti zprávě.
+description: Tento článek poskytuje referenci pro syntaxi akce pravidla SQL. Akce jsou zapsány v syntaxi založené na jazyce SQL, které se provádí na základě zprávy.
 ms.topic: article
 ms.date: 11/24/2020
-ms.openlocfilehash: 606281d42d5598d7f73312990d3a19775a202c08
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: f7b8cdfcccc22508b98a42391d2a0ef9955232d0
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632807"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742674"
 ---
 # <a name="subscription-rule-sql-action-syntax"></a>Syntaxe akce SQL pravidla předplatného
 
@@ -53,11 +53,11 @@ ms.locfileid: "98632807"
   
 ## <a name="arguments"></a>Argumenty  
   
--   `<scope>` je volitelný řetězec, který označuje rozsah `<property_name>` . Platné hodnoty jsou `sys` nebo `user` . `sys`Hodnota označuje rozsah systému, kde `<property_name>` je název veřejné vlastnosti [třídy BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage). `user` označuje obor uživatele, kde `<property_name>` je klíč slovníku [třídy BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) . `user` Obor je výchozím rozsahem, pokud není `<scope>` zadán.  
+-   `<scope>` je volitelný řetězec, který označuje rozsah `<property_name>` . Platné hodnoty jsou `sys` nebo `user` . `sys`Hodnota označuje rozsah systému, kde `<property_name>` je název veřejné vlastnosti [třídy BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage). `user` označuje obor uživatele, kde `<property_name>` je klíč slovníku [třídy BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) . `user` Obor je výchozím oborem, pokud `<scope>` není zadán.  
   
 ### <a name="remarks"></a>Poznámky  
 
-Pokus o přístup k neexistující systémové vlastnosti je chyba, ale pokus o přístup k neexistující vlastnosti uživatele není chyba. Místo toho je vlastnost neexistujícího uživatele interně vyhodnocena jako neznámá hodnota. Neznámá hodnota je zpracována speciálně při vyhodnocování operátoru.  
+Pokus o přístup k neexistující systémové vlastnosti je chyba, zatímco pokus o přístup k neexistující vlastnosti uživatele není chyba. Místo toho je vlastnost neexistujícího uživatele interně vyhodnocena jako neznámá hodnota. Neznámá hodnota je zpracována speciálně při vyhodnocování operátoru.  
   
 ## <a name="property_name"></a>property_name  
   
@@ -94,7 +94,7 @@ Pokus o přístup k neexistující systémové vlastnosti je chyba, ale pokus o 
   
 ```  
   
- `<quoted_identifier>` je libovolný řetězec, který je uzavřený pomocí dvojitých uvozovek. Dvojité uvozovky v identifikátoru jsou reprezentovány dvěma dvojitými uvozovkami. Nedoporučuje se používat identifikátory v uvozovkách, protože je lze snadno zaměňovat pomocí řetězcové konstanty. Pokud je to možné, použijte oddělený identifikátor. Zde je příklad `<quoted_identifier>` :  
+ `<quoted_identifier>` je libovolný řetězec, který je uzavřený pomocí dvojitých uvozovek. Dvojité uvozovky v identifikátoru jsou reprezentovány dvěma dvojitými uvozovkami. Nedoporučuje se používat identifikátory v uvozovkách, protože je možné snadno zaměňovat pomocí řetězcové konstanty. Pokud je to možné, použijte oddělený identifikátor. Zde je příklad `<quoted_identifier>` :  
   
 ```  
 "Contoso & Northwind"  
@@ -148,7 +148,7 @@ Pokus o přístup k neexistující systémové vlastnosti je chyba, ale pokus o 
   
 -   `<decimal_constant>` je řetězec čísel, který není uzavřen v uvozovkách a obsahuje desetinnou čárku. Hodnoty se ukládají jako `System.Double` interně a používají stejný rozsah nebo přesnost.  
   
-     V budoucí verzi může být toto číslo Uloženo v jiném datovém typu, aby podporovalo přesnou sémantiku čísel, takže byste neměli spoléhat na skutečnost, že základní datový typ je `System.Double` `<decimal_constant>` .  
+     V budoucí verzi může být toto číslo Uloženo v jiném datovém typu pro podporu přesné sémantiky čísel, takže byste neměli spoléhat na skutečnost, že základní datový typ je `System.Double` pro `<decimal_constant>` .  
   
      Následují příklady desítkových konstant:  
   
@@ -195,9 +195,11 @@ Logické konstanty jsou reprezentovány klíčovými slovy `TRUE` nebo `FALSE` .
   
 ### <a name="remarks"></a>Poznámky  
 
-`newid()`Funkce vrátí hodnotu **System. GUID** vygenerovanou `System.Guid.NewGuid()` metodou.  
+`newid()`Funkce vrátí `System.Guid` vygenerovanou `System.Guid.NewGuid()` metodou.  
   
 `property(name)`Funkce vrátí hodnotu vlastnosti, na kterou odkazuje `name` . `name`Hodnotou může být libovolný platný výraz, který vrací řetězcovou hodnotu.  
+
+[!INCLUDE [service-bus-filter-examples](../../includes/service-bus-filter-examples.md)]
   
 ## <a name="considerations"></a>Požadavky
 
@@ -205,7 +207,7 @@ Logické konstanty jsou reprezentovány klíčovými slovy `TRUE` nebo `FALSE` .
 - K odebrání vlastnosti se používá odebrání.
 - Pokud je to možné, je nastavení provedeno implicitní převod, pokud je typ výrazu jiný a existující typ vlastnosti.
 - Akce se nezdařila, pokud nebyly odkazovány na neexistující systémové vlastnosti.
-- Akce se nezdařila, pokud nebyly odkazovány na neexistující vlastnosti uživatele.
+- Akce selže, pokud nebyly odkazovány na neexistující vlastnosti uživatele.
 - Neexistující vlastnost uživatele je vyhodnocena jako "neznámá" interně za stejnou sémantikou jako [SQLFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) při vyhodnocování operátorů.
 
 ## <a name="next-steps"></a>Další kroky
@@ -214,5 +216,5 @@ Logické konstanty jsou reprezentovány klíčovými slovy `TRUE` nebo `FALSE` .
 - [SQLRuleAction – třída (.NET Standard)](/dotnet/api/microsoft.azure.servicebus.sqlruleaction)
 - [SqlRuleAction – třída (Java)](/java/api/com.microsoft.azure.servicebus.rules.sqlruleaction)
 - [SqlRuleAction (JavaScript)](/javascript/api/@azure/service-bus/sqlruleaction)
-- [AZ ServiceBus téma Subscription Rule](/cli/azure/servicebus/topic/subscription/rule)
+- [`az servicebus topic subscription rule`](/cli/azure/servicebus/topic/subscription/rule)
 - [New-AzServiceBusRule](/powershell/module/az.servicebus/new-azservicebusrule)

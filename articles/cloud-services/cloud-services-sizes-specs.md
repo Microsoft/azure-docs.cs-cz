@@ -1,21 +1,25 @@
 ---
-title: Velikosti virtuálních počítačů pro Azure Cloud Services | Microsoft Docs
+title: Velikosti virtuálních počítačů pro Azure Cloud Services (Classic) | Microsoft Docs
 description: Zobrazuje seznam různých velikostí virtuálních počítačů (a ID) pro webové a pracovní role Azure Cloud Service.
-services: cloud-services
-documentationcenter: ''
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 07/18/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: b617ba8db8f9dbb1c25ac34aa879613c29c723b7
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 55fa3ab4e5bd4472f7dae9692ae3ac9bcfa8e2b6
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96340284"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743164"
 ---
-# <a name="sizes-for-cloud-services"></a>Velikosti pro Cloud Services
+# <a name="sizes-for-cloud-services-classic"></a>Velikosti pro Cloud Services (klasické)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md) je nový model nasazení založený na Azure Resource Manager pro produkt Azure Cloud Services.V důsledku této změny se Azure Cloud Services běžící na modelu nasazení založeném na Azure Service Manager přejmenovala jako Cloud Services (Classic) a všechna nová nasazení by měla používat [Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md).
+
 Toto téma popisuje dostupné velikosti a možnosti pro instance rolí cloudové služby (webové role a role pracovního procesu). Poskytuje taky požadavky na nasazení, které vám pomají vědět, kdy plánujete tyto prostředky používat. Každá velikost má ID, které jste umístili do [souboru definice služby](cloud-services-model-and-package.md#csdef). Ceny za jednotlivé velikosti jsou k dispozici na stránce [Cloud Services ceny](https://azure.microsoft.com/pricing/details/cloud-services/) .
 
 > [!NOTE]
@@ -58,12 +62,12 @@ Vytvořili jsme koncept výpočetní jednotky Azure (ACU), aby bylo možné poro
 | [A5 – 7](#a-series) |100 |
 | [A8-A11](#a-series) |225* |
 | [A v2](#av2-series) |100 |
-| [D](#d-series) |160 |
+| [Trojrozměrné](#d-series) |160 |
 | [D V2](#dv2-series) |160 – 190 * |
 | [D V3](#dv3-series) |160 – 190 * |
 | [E V3](#ev3-series) |160 – 190 * |
-| [G](#g-series) |180 - 240* |
-| [H](#h-series) |290 - 300* |
+| [Věcn](#g-series) |180 - 240* |
+| [Y](#h-series) |290 - 300* |
 
 Hodnoty ACU s hvězdičkou označují použití technologie Intel® Turbo, která může zvýšit frekvenci procesoru podle aktuální potřeby. Množství nárůst se může lišit v závislosti na velikosti virtuálního počítače, úlohy a dalších úlohách spuštěných na stejném hostiteli.
 

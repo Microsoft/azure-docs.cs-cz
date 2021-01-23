@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/25/2019
 ms.author: genli
-ms.openlocfilehash: 2f242de3bfa6a2bc95dc46b4ca5c10222b755a2f
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 720d25079e1350315c9f403a8215f650db49ceb7
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98200919"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743079"
 ---
 # <a name="reset-remote-desktop-services-or-its-administrator-password-in-a-windows-vm"></a>Resetování služby Vzdálená plocha nebo jejího hesla správce ve virtuálním počítači s Windows
 Pokud se nemůžete připojit k virtuálnímu počítači s Windows (VM), můžete resetovat heslo místního správce nebo Resetovat konfiguraci služby Vzdálená plocha (nepodporuje se na řadičích domény se systémem Windows). Heslo můžete resetovat pomocí webu Azure Portal nebo rozšíření VMAccess v Azure PowerShellu. Po přihlášení k virtuálnímu počítači resetujte heslo příslušného místního správce.  
@@ -90,10 +90,14 @@ Nejdřív se ujistěte, že máte [nainstalovaný a nakonfigurovaný nejnovějš
 
 ## <a name="next-steps"></a>Další kroky
 
-- Pokud rozšíření přístupu k virtuálnímu počítači Azure nereaguje a nemůžete resetovat heslo, můžete [místní heslo systému Windows obnovit offline](reset-local-password-without-agent.md). Tato metoda je pokročilejší a vyžaduje, abyste připojili virtuální pevný disk problematického virtuálního počítače k jinému virtuálnímu počítači. Postupujte podle kroků popsaných v tomto článku a pokuste se použít metodu resetování hesla offline pouze v případě, že tyto kroky nefungují.
+
+- Pokud se nepovede nainstalovat rozšíření přístupu k virtuálnímu počítači Azure, můžete [řešit problémy s rozšířením virtuálního počítače](../extensions/troubleshoot.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+
+- Pokud nemůžete resetovat heslo pomocí rozšíření přístupu k virtuálnímu počítači, můžete [obnovit místní heslo systému Windows offline](reset-local-password-without-agent.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Tato metoda je pokročilejší a vyžaduje, abyste připojili virtuální pevný disk problematického virtuálního počítače k jinému virtuálnímu počítači. Postupujte podle kroků popsaných v tomto článku a pokuste se použít metodu resetování hesla offline pouze v případě, že tyto kroky nefungují.
 
 - [Přečtěte si o funkcích a rozšíření virtuálních počítačů Azure](../extensions/features-windows.md).
 
 - [Připojte se k virtuálnímu počítači Azure pomocí RDP nebo SSH](/previous-versions/azure/dn535788(v=azure.100)).
 
-- [Řešení potíží s připojením vzdálené plochy k virtuálnímu počítači Azure se systémem Windows](troubleshoot-rdp-connection.md).
+
+- [Řešení potíží s připojením vzdálené plochy k virtuálnímu počítači Azure se systémem Windows](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

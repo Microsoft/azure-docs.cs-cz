@@ -1,27 +1,25 @@
 ---
-title: Místní profilování cloudové služby v emulátoru služby COMPUTE | Microsoft Docs
-services: cloud-services
+title: Místní profilování cloudové služby (Classic) v emulátoru služby COMPUTE | Microsoft Docs
 description: Vyšetřete problémy s výkonem v cloudových službách pomocí profileru sady Visual Studio
-documentationcenter: ''
-author: mikejo
-manager: jillfra
-editor: ''
-tags: ''
-ms.assetid: 25e40bf3-eea0-4b0b-9f4a-91ffe797f6c3
-ms.service: cloud-services
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/18/2016
-ms.author: mikejo
-ms.openlocfilehash: 6b5707405879c462a1d919e04730d368332ba68c
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.service: cloud-services
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 2f924d84967c1a1928a47b59fd3a8c28da091130
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077151"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743555"
 ---
-# <a name="testing-the-performance-of-a-cloud-service-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>Místní testování výkonu cloudové služby v emulátoru služby COMPUTE Azure pomocí profileru sady Visual Studio
+# <a name="testing-the-performance-of-a-cloud-service-classic-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>Místní testování výkonu cloudové služby (Classic) v emulátoru služby COMPUTE Azure pomocí profileru sady Visual Studio
+
+> [!IMPORTANT]
+> [Azure Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md) je nový model nasazení založený na Azure Resource Manager pro produkt Azure Cloud Services.V důsledku této změny se Azure Cloud Services běžící na modelu nasazení založeném na Azure Service Manager přejmenovala jako Cloud Services (Classic) a všechna nová nasazení by měla používat [Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md).
+
 K dispozici je celá řada nástrojů a technik pro testování výkonu Cloud Services.
 Když publikujete cloudovou službu do Azure, můžete mít Visual Studio shromažďovat data profilace a pak je analyzovat místně, jak je popsáno v [profilování aplikace Azure][1].
 Pomocí diagnostiky můžete také sledovat nejrůznější čítače výkonu, jak je popsáno v tématu [použití čítačů výkonu v Azure][2].
@@ -30,7 +28,7 @@ Můžete také chtít profilovat aplikaci místně v emulátoru služby COMPUTE,
 Tento článek se věnuje metodě profilování vzorkování procesoru, která se dá provést místně v emulátoru. Vzorkování procesoru je metoda profilování, která není velmi rušivá. V rámci určeného intervalu vzorkování vybere Profiler snímek zásobníku volání. Data se shromažďují v časovém intervalu a zobrazují se v sestavě. Tato metoda profilace představuje v úmyslu označovat, kde je většina práce s PROCESORem náročná na výpočetní výkon.  Díky tomu se můžete soustředit na "horkou cestu", kde je vaše aplikace nejvíc vytráví.
 
 ## <a name="1-configure-visual-studio-for-profiling"></a>1: konfigurace sady Visual Studio pro profilaci
-Nejdřív je několik možností konfigurace sady Visual Studio, které mohou být užitečné při profilaci. Chcete-li mít smysl sestav profilace, budete potřebovat symboly (soubory PDB) pro vaši aplikaci a také symboly pro systémové knihovny. Budete chtít, abyste se ujistili, že budete odkazovat na dostupné servery symbolů. To provedete tak, že v nabídce **nástroje** v aplikaci Visual Studio kliknete na možnost **Možnosti**a pak na položku **ladění**a **symboly**. Ujistěte se, že jsou servery symbolů společnosti Microsoft uvedeny v části **umístění souborů symbolů (. pdb)**.  Můžete také odkazovat https://referencesource.microsoft.com/symbols na, které mohou mít další soubory symbolů.
+Nejdřív je několik možností konfigurace sady Visual Studio, které mohou být užitečné při profilaci. Chcete-li mít smysl sestav profilace, budete potřebovat symboly (soubory PDB) pro vaši aplikaci a také symboly pro systémové knihovny. Budete chtít, abyste se ujistili, že budete odkazovat na dostupné servery symbolů. To provedete tak, že v nabídce **nástroje** v aplikaci Visual Studio kliknete na možnost **Možnosti** a pak na položku **ladění** a **symboly**. Ujistěte se, že jsou servery symbolů společnosti Microsoft uvedeny v části **umístění souborů symbolů (. pdb)**.  Můžete také odkazovat https://referencesource.microsoft.com/symbols na, které mohou mít další soubory symbolů.
 
 ![Možnosti symbolu][4]
 

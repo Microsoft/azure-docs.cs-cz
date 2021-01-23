@@ -1,20 +1,25 @@
 ---
-title: Spouštění úloh po spuštění v Azure Cloud Services | Microsoft Docs
+title: Spuštění úloh po spuštění v Azure Cloud Services (Classic) | Microsoft Docs
 description: Úlohy po spuštění vám pomůžou připravit prostředí cloudové služby pro vaši aplikaci. Naučíte se, jak fungují úlohy při spouštění a jak je udělat
-services: cloud-services
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 07/05/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: f2417389de98f9998c189e7cbbbcdae77fbb8840
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 25190075bdd13bd4b75dd82c97ee06ee60f4c26c
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020700"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743181"
 ---
-# <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>Jak nakonfigurovat a spustit úlohy po spuštění pro cloudovou službu
+# <a name="how-to-configure-and-run-startup-tasks-for-an-azure-cloud-service-classic"></a>Konfigurace a spouštění úloh po spuštění pro cloudovou službu Azure (Classic)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md) je nový model nasazení založený na Azure Resource Manager pro produkt Azure Cloud Services.V důsledku této změny se Azure Cloud Services běžící na modelu nasazení založeném na Azure Service Manager přejmenovala jako Cloud Services (Classic) a všechna nová nasazení by měla používat [Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md).
+
 Úlohy po spuštění můžete použít k provádění operací před spuštěním role. Operace, které můžete chtít provést, zahrnují instalaci komponenty, registraci komponent modelu COM, nastavení klíčů registru nebo spuštění dlouhotrvajícího procesu.
 
 > [!NOTE]
@@ -105,14 +110,14 @@ Následující popis popisuje atributy elementu **Task** v souboru [ServiceDefin
 **taskType** – určuje způsob spuštění spouštěného úkolu.
 
 * **pouh**  
-  Úlohy jsou spouštěny synchronně, po jednom v pořadí určeném v souboru [ServiceDefinition. csdef] . Když jedna **Jednoduchá** úloha po spuštění skončí s **errorlevel** hodnotou nula, spustí se další **jednoduchý** úkol po spuštění. Pokud neexistují žádné **jednoduché** úlohy po spuštění, spustí se tato role.   
+  Úlohy jsou spouštěny synchronně, po jednom v pořadí určeném v souboru [ServiceDefinition. csdef] . Když jedna **Jednoduchá** úloha po spuštění skončí s  hodnotou nula, spustí se další **jednoduchý** úkol po spuštění. Pokud neexistují žádné **jednoduché** úlohy po spuštění, spustí se tato role.   
   
   > [!NOTE]
   > Pokud je **jednoduchý** úkol ukončen s nenulovou hodnotou **errorlevel**, instance bude zablokována. Následné **jednoduché** úvodní úlohy a samotné role se nespustí.
   > 
   > 
   
-    Aby se zajistilo, že dávkový soubor skončí **errorlevel** s hodnotou nula, spusťte příkaz `EXIT /B 0` na konci procesu dávkového souboru.
+    Aby se zajistilo, že dávkový soubor skončí  s hodnotou nula, spusťte příkaz `EXIT /B 0` na konci procesu dávkového souboru.
 * **background**  
   Úlohy jsou spouštěny asynchronně, paralelně s spuštěním role.
 * **zachovat**  

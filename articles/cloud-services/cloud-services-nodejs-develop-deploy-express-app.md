@@ -1,24 +1,24 @@
 ---
-title: Sestavení a nasazení aplikace Node.js Express do Azure Cloud Services
-titleSuffix: Azure Cloud Services
+title: Sestavení a nasazení aplikace Node.js Express do Azure Cloud Services (Classic)
 description: Tento kurz slouží k vytvoření nové aplikace pomocí modulu Express, který poskytuje architekturu MVC pro vytváření Node.js webových aplikací.
-services: cloud-services
-documentationcenter: nodejs
-author: tgore03
-ms.service: cloud-services
-ms.devlang: nodejs
 ms.topic: article
-ms.date: 08/17/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.custom: devx-track-js
-ms.openlocfilehash: 7ecaccf36988e94d0cb1114bd04c5d571d4fe86d
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: e15af589b3a3c496738c97c0c2c6429ba708ba7e
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071859"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743334"
 ---
-# <a name="build-and-deploy-a-nodejs-web-application-using-express-on-an-azure-cloud-services"></a>Sestavení a nasazení webové aplikace Node.js pomocí Expressu v Azure Cloud Services
+# <a name="build-and-deploy-a-nodejs-web-application-using-express-on-an-azure-cloud-services-classic"></a>Sestavení a nasazení webové aplikace Node.js pomocí Expressu v Cloud Services Azure (Classic)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md) je nový model nasazení založený na Azure Resource Manager pro produkt Azure Cloud Services.V důsledku této změny se Azure Cloud Services běžící na modelu nasazení založeném na Azure Service Manager přejmenovala jako Cloud Services (Classic) a všechna nová nasazení by měla používat [Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md).
 
 Node.js obsahuje minimální sadu funkcí v jádru modulu runtime.
 Vývojáři často používají moduly třetích stran k poskytování dalších funkcí při vývoji aplikace Node.js. V tomto kurzu vytvoříte novou aplikaci pomocí modulu [Express](https://github.com/expressjs/express) , který poskytuje architekturu MVC pro vytváření Node.js webových aplikací.
@@ -32,7 +32,7 @@ Snímek obrazovky dokončené aplikace je níže:
 
 Provedením následujících kroků vytvořte nový projekt cloudové služby s názvem ' expressapp ':
 
-1. V **nabídce Start** nebo na **obrazovce Start**vyhledejte **Windows PowerShell**. Nakonec klikněte pravým tlačítkem myši na **Windows PowerShell** a vyberte **Spustit jako správce**.
+1. V **nabídce Start** nebo na **obrazovce Start** vyhledejte **Windows PowerShell**. Nakonec klikněte pravým tlačítkem myši na **Windows PowerShell** a vyberte **Spustit jako správce**.
 
     ![Ikona Azure PowerShell](./media/cloud-services-nodejs-develop-deploy-express-app/azure-powershell-start.png)
 2. Přejděte do adresáře **c: \\ Node** a potom zadejte následující příkazy k vytvoření nového řešení s názvem **expressapp** a webovou roli s názvem **WebRole1**:
@@ -74,7 +74,7 @@ Provedením následujících kroků vytvořte nový projekt cloudové služby s 
     ```
 
    ![Výstup příkazu pro instalaci npm](./media/cloud-services-nodejs-develop-deploy-express-app/node26.png)
-4. K zkopírování souboru **bin/www** do **server.js**použijte následující příkaz. To znamená, že cloudová služba může najít vstupní bod pro tuto aplikaci.
+4. K zkopírování souboru **bin/www** do **server.js** použijte následující příkaz. To znamená, že cloudová služba může najít vstupní bod pro tuto aplikaci.
 
     ```powershell
     PS C:\node\expressapp\WebRole1> copy bin/www server.js
@@ -93,7 +93,7 @@ Provedením následujících kroků vytvořte nový projekt cloudové služby s 
     var app = require('./app');
     ```
 
-   Tato změna je nutná, protože jsme přesunuli soubor (dříve **bin nebo na webové**stránce) do stejného adresáře, ve kterém je požadovaný soubor aplikace. Po provedení této změny uložte soubor **server.js** .
+   Tato změna je nutná, protože jsme přesunuli soubor (dříve **bin nebo na webové** stránce) do stejného adresáře, ve kterém je požadovaný soubor aplikace. Po provedení této změny uložte soubor **server.js** .
 6. Pomocí následujícího příkazu spusťte aplikaci v emulátoru Azure:
 
     ```powershell

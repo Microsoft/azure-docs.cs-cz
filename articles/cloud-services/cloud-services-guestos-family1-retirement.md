@@ -9,14 +9,15 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 5/21/2017
 ms.author: raiye
-ms.openlocfilehash: 6de03969a22c5b699fdfd2be17a6ba65905d23e6
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 7f6d3feee95d4cce654b2cc1547b8bd7f4eb45d2
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92073389"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743011"
 ---
 # <a name="guest-os-family-1-retirement-notice"></a>Oznámení o vyřazení hostovaného operačního systému řady 1 z provozu
+
 Vyřazení řady operačních systémů 1 bylo poprvé oznámeno 1. června 2013.
 
 **Září 2, 2014** Hostovaný operační systém Azure (hostovaný operační systém) řady 1. x, který je založený na operačním systému Windows Server 2008, byl oficiálně vyřazený. Všechny pokusy o nasazení nových služeb nebo upgradování stávajících služeb pomocí řady 1 selžou s chybovou zprávou s oznámením, že řada hostovaného operačního systému 1 je vyřazená.

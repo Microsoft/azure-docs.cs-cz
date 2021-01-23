@@ -2,23 +2,23 @@
 title: Řešení potíží s rolemi přiřazenými ke cloudové skupině Nejčastější dotazy – Azure Active Directory | Microsoft Docs
 description: Seznamte se s některými běžnými dotazy a tipy pro řešení potíží při přiřazování rolí do skupin v Azure Active Directory.
 services: active-directory
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: article
 ms.date: 11/05/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8735a0d34b9fcf5b86b6592980ffc5c7c3e3073c
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 0ff906654dc91c7b1980292efd2a737503e684e9
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861931"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742909"
 ---
 # <a name="troubleshooting-roles-assigned-to-cloud-groups"></a>Řešení potíží s rolemi přiřazenými ke cloudovým skupinám
 
@@ -53,15 +53,15 @@ Odpověď **: uživatel** může narazit na čtečku adresářů pomocí skupiny
 
 Role adresáře Azure AD | Role správy oprávnění | Může přidat skupinu zabezpečení.\* | Může přidat skupinu Microsoft 365.\* | Může přidat aplikaci. | Může přidat web SharePointu Online.
 ----------------------- | --------------------------- | ----------------------- | ------------------------- | ----------- |  -----------------------------
-Globální správce | neuvedeno | ✔️ | ✔️ | ✔️  | ✔️
-Správce uživatelů  | neuvedeno  | ✔️  | ✔️  | ✔️
+Globální správce | Není k dispozici | ✔️ | ✔️ | ✔️  | ✔️
+Správce uživatelů  | Není k dispozici  | ✔️  | ✔️  | ✔️
 Správce Intune | Vlastník katalogu | ✔️  | ✔️  | &nbsp;  | &nbsp;
 Správce Exchange  | Vlastník katalogu  | &nbsp; | ✔️  | &nbsp;  | &nbsp;
 Správce služby Teams | Vlastník katalogu  | &nbsp; | ✔️  | &nbsp;  | &nbsp;
 Správce SharePointu | Vlastník katalogu | &nbsp; | ✔️  | &nbsp;  | ✔️ 
 Správce aplikace | Vlastník katalogu  | &nbsp;  | &nbsp; | ✔️  | &nbsp;
 Správce cloudové aplikace | Vlastník katalogu  | &nbsp;  | &nbsp; | ✔️  | &nbsp;
-Uživatel | Vlastník katalogu | Pouze v případě, že vlastník skupiny | Pouze v případě, že vlastník skupiny | Jenom v případě, že vlastník aplikace  | &nbsp;
+User | Vlastník katalogu | Pouze v případě, že vlastník skupiny | Pouze v případě, že vlastník skupiny | Jenom v případě, že vlastník aplikace  | &nbsp;
 
 \*Skupina není přiřazena role; To znamená, že isAssignableToRole = false. Pokud má skupina přiřazenou roli, musí mít osoba, která vytvořila balíček pro přístup, taky vlastníka skupiny s přiřazením rolí.
 

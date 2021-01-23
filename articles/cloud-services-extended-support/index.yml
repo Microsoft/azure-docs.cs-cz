@@ -1,0 +1,83 @@
+### YamlMime:Landing
+title: Dokumentace k Azure Cloud Services (Rozšířená podpora)
+summary: Naučte se používat Cloud Services k hostování a spouštění vysoce dostupných škálovatelných cloudových aplikací a rozhraní API. Ukazuje, jak spravovat hostitele virtuálních počítačů a konfigurovat, opravovat a instalovat software.
+metadata:
+  title: Dokumentace k Azure Cloud Services (Rozšířená podpora)
+  description: Popisuje použití Cloud Services k hostování a spouštění vysoce dostupných a škálovatelných cloudových aplikací a rozhraní API.
+  ms.service: cloud-services-extended-support
+  service: cloud-services-extended-support
+  ms.topic: landing-page
+  author: mimckitt
+  ms.author: mimckitt
+  ms.date: 03/06/2020
+  ms.openlocfilehash: 8f999851c1566b2a488daa4bdc5da73761f7ce0b
+  ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+  ms.translationtype: MT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 01/23/2021
+  ms.locfileid: "98745243"
+landingContent:
+- title: O Cloud Services (Rozšířená podpora)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Cloud Services (Rozšířená podpora)?
+      url: overview.md
+    - text: Předpoklady pro nasazení
+      url: deploy-prerequisite.md
+    - text: Konfigurační soubory a balíčky
+      url: cloud-services-model-and-package.md
+- title: Kurzy
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Nasazení pomocí PowerShellu
+      url: deploy-powershell.md
+    - text: Nasazení pomocí webu Azure Portal
+      url: deploy-portal.md
+    - text: Nasazení pomocí šablon ARM
+      url: deploy-template.md
+    - text: Nasazení pomocí sady Visual Studio
+      url: deploy-visual-studio.md
+- title: Koncepty
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Dostupné velikosti
+      url: available-sizes.md
+    - text: Nejčastější dotazy
+      url: faq.md
+- title: Návody
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Rozšíření
+      url: extensions.md
+    - text: Povolení upozornění
+      url: enable-alerts.md
+    - text: Konfigurace škálování
+      url: configure-scaling.md
+    - text: Certifikáty
+      url: certificates-and-key-vault.md
+- title: ukázky
+  linkLists:
+  - linkListType: sample
+    links:
+    - text: Vytvoření nasazení cloudové služby
+      url: sample-create-cloud-service.md
+    - text: Načtení informací o nasazení cloudové služby
+      url: sample-get-cloud-service.md
+    - text: Aktualizace nasazení cloudové služby
+      url: sample-update-cloud-service.md
+    - text: Resetování nasazení cloudové služby
+      url: sample-reset-cloud-service.md
+- title: Informace o schématu
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Schéma konfigurace
+      url: schema-cscfg-file.md
+    - text: Schéma definice
+      url: schema-csdef-file.md
+    - text: Schéma role konfigurace
+      url: schema-cscfg-role.md

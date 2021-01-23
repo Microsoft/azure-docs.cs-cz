@@ -2,25 +2,38 @@
 title: Azure Service Bus filtry témat | Microsoft Docs
 description: Tento článek vysvětluje, jak můžou předplatitelé definovat, které zprávy chce přijímat z tématu zadáním filtrů.
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: 04ae585c42f8acfbf338bf23befb32a5521fcf57
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.date: 01/22/2021
+ms.openlocfilehash: 63cf6e67d4fa32c5c7f52f569094e1165554108c
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94889027"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742960"
 ---
 # <a name="topic-filters-and-actions"></a>Akce a filtry témat
 
-Odběratelé mohou definovat zprávy, které chtějí z tématu přijímat. Tyto zprávy se určují ve formě jednoho nebo více pojmenovaných pravidel odběru. Každé pravidlo se skládá z podmínky, která vybere konkrétní zprávy a akci, která vydává poznámku vybrané zprávě. Pro každou odpovídající podmínku pravidla odběr vytvoří kopii zprávy, která může pro každé odpovídající pravidlo obsahovat jiné poznámky.
+Odběratelé mohou definovat zprávy, které chtějí z tématu přijímat. Tyto zprávy se určují ve formě jednoho nebo více pojmenovaných pravidel odběru. Každé pravidlo se skládá z podmínky **filtru** , která vybere konkrétní zprávy, a **volitelně** obsahuje **akci** , která vydává poznámku vybrané zprávě. 
+
+Všechna pravidla **bez akcí** se kombinují pomocí `OR` podmínky a výsledkem je **jediná zpráva** v předplatném, a to i v případě, že máte více pravidel pro porovnání. 
+
+Každé pravidlo **s akcí** vytvoří kopii zprávy. Tato zpráva bude obsahovat vlastnost s názvem, `RuleName` kde hodnota je název odpovídajícího pravidla. Akce může přidat nebo aktualizovat vlastnosti nebo odstranit vlastnosti z původní zprávy a vytvořit zprávu v předplatném. 
+
+Představte si následující scénář:
+
+- Předplatné má pět pravidel.
+- Dvě pravidla obsahují akce.
+- Tři pravidla neobsahují akce.
+
+Pokud v tomto příkladu odešlete jednu zprávu, která odpovídá všem pěti pravidlům, získáte tři zprávy v rámci předplatného. Jedná se o dvě zprávy pro dvě pravidla s akcemi a jednu zprávu pro tři pravidla bez akcí. 
 
 Každé nově vytvořené předplatné tématu má počáteční výchozí pravidlo předplatného. Pokud explicitně neurčíte podmínku filtru pro pravidlo, je použit filtr na **true** , který umožňuje výběr všech zpráv v rámci předplatného. K výchozímu pravidlu není přidružena žádná akce anotace.
 
+## <a name="filters"></a>Filtry
 Service Bus podporuje tři podmínky filtru:
 
--   *Logické filtry* – **TrueFilter** a **FalseFilter** buď způsobí, že se pro odběr vybraly všechny přicházející zprávy (**true**) nebo žádná z doručených zpráv (**false**). Tyto dva filtry jsou odvozeny z filtru SQL. 
-
 -   *Filtry SQL* – **SqlFilter** obsahuje podmíněný výraz podobný SQL, který se vyhodnocuje ve zprostředkovateli proti uživatelsky definovaným vlastnostem a vlastnostem systému. Všechny vlastnosti systému musí být `sys.` v podmíněném výrazu předponou. [Podmnožina jazyka SQL pro podmínky filtru](service-bus-messaging-sql-filter.md) testy pro existenci vlastností ( `EXISTS` ), hodnot null ( `IS NULL` ), logických operátorů not/a/nebo, relačních operátorů, jednoduchého číselného aritmetického zpracování a jednoduchých textových vzorů `LIKE` .
+
+-   *Logické filtry* – **TrueFilter** a **FalseFilter** buď způsobí, že se pro odběr vybraly všechny přicházející zprávy (**true**) nebo žádná z doručených zpráv (**false**). Tyto dva filtry jsou odvozeny z filtru SQL. 
 
 -   *Filtry korelace* – **CorrelationFilter** obsahuje sadu podmínek, které se shodují s jednou nebo více uživateli a vlastnostmi systému, které přicházejí. Běžné použití se shoduje s vlastností **ID korelace** , ale aplikace může také zvolit shodu s následujícími vlastnostmi:
 
@@ -30,7 +43,7 @@ Service Bus podporuje tři podmínky filtru:
      - **ReplyTo**
      - **ReplyToSessionId**
      - **SessionId** 
-     - **Schopn**
+     - **Do**
      - jakékoli uživatelsky definované vlastnosti. 
      
      Shoda existuje, pokud je hodnota doručené zprávy pro vlastnost rovna hodnotě zadané ve filtru korelace. U řetězcových výrazů porovnávání rozlišuje velká a malá písmena. Pokud zadáte více vlastností shody, filtr je zkombinuje jako logický operátor AND, což znamená, že aby se filtr shodoval, všechny podmínky se musí shodovat.
@@ -53,74 +66,8 @@ Vytváření oddílů používá filtry k distribuci zpráv v několika stávaj�
 
 Směrování používá filtry k distribuci zpráv mezi předplatnými tématu, ale ne nutně exkluzivní. Ve spojení s funkcí [automatického předávání](service-bus-auto-forwarding.md) je možné pomocí filtrů v rámci oboru názvů Service Bus v rámci oblasti Azure vytvořit komplexní grafy směrování v rámci oboru názvů pro distribuci zpráv. Když Azure Functions nebo Azure Logic Apps funguje jako most mezi Azure Service Bus obory názvů, můžete vytvořit komplexní globální topologie s přímou integrací do obchodních aplikací.
 
-## <a name="examples"></a>Příklady
+[!INCLUDE [service-bus-filter-examples](../../includes/service-bus-filter-examples.md)]
 
-### <a name="set-rule-action-for-a-sql-filter"></a>Nastavit akci pravidla pro filtr SQL
-
-```csharp
-// instantiate the ManagementClient
-this.mgmtClient = new ManagementClient(connectionString);
-
-// create the SQL filter
-var sqlFilter = new SqlFilter("source = @stringParam");
-
-// assign value for the parameter
-sqlFilter.Parameters.Add("@stringParam", "orders");
-
-// instantiate the Rule = Filter + Action
-var filterActionRule = new RuleDescription
-{
-    Name = "filterActionRule",
-    Filter = sqlFilter,
-    Action = new SqlRuleAction("SET source='routedOrders'")
-};
-
-// create the rule on Service Bus
-await this.mgmtClient.CreateRuleAsync(topicName, subscriptionName, filterActionRule);
-```
-
-### <a name="sql-filter-on-a-system-property"></a>Filtr SQL pro systémovou vlastnost
-
-```csharp
-sys.Label LIKE '%bus%'`
-```
-
-### <a name="using-or"></a>Použití nebo 
-
-```csharp
-sys.Label LIKE '%bus%' OR user.tag IN ('queue', 'topic', 'subscription')
-```
-
-### <a name="using-in-and-not-in"></a>Použití IN a NOT IN
-
-```csharp
-StoreId IN('Store1', 'Store2', 'Store3')"
-
-sys.To IN ('Store5','Store6','Store7') OR StoreId = 'Store8'
-
-sys.To NOT IN ('Store1','Store2','Store3','Store4','Store5','Store6','Store7','Store8') OR StoreId NOT IN ('Store1','Store2','Store3','Store4','Store5','Store6','Store7','Store8')
-```
-
-Ukázku v jazyce C# s použitím těchto filtrů najdete v tématu [ukázky filtrů témat na GitHubu](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Azure.Messaging.ServiceBus/BasicSendReceiveTutorialwithFilters).
-
-### <a name="correlation-filter-using-correlationid"></a>Filtr korelace s použitím ID korelace
-
-```csharp
-new CorrelationFilter("Contoso");
-```
-
-Filtruje zprávy s `CorrelationID` nastavením na `Contoso` . 
-
-### <a name="correlation-filter-using-system-and-user-properties"></a>Filtr korelace pomocí vlastností systému a uživatele
-
-```csharp
-var filter = new CorrelationFilter();
-filter.Label = "Important";
-filter.ReplyTo = "johndoe@contoso.com";
-filter.Properties["color"] = "Red";
-```
-
-Je ekvivalentní: `sys.ReplyTo = 'johndoe@contoso.com' AND sys.Label = 'Important' AND color = 'Red'`
 
 
 > [!NOTE]

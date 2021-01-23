@@ -1,21 +1,25 @@
 ---
-title: Jak vytvořit a nasadit cloudovou službu | Microsoft Docs
+title: Jak vytvořit a nasadit cloudovou službu (Classic) | Microsoft Docs
 description: Naučte se používat metodu rychlého vytvoření k vytvoření cloudové služby a použít k nahrání a nasazení balíčku cloudové služby v Azure.
-services: cloud-services
-documentationcenter: ''
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 05/18/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 66938975784f1de2abdc0ac22e62aaca82279f86
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 879b86714adf50b5a4da4398389405063ac046dc
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164160"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743402"
 ---
-# <a name="how-to-create-and-deploy-a-cloud-service"></a>Jak vytvořit a nasadit cloudovou službu
+# <a name="how-to-create-and-deploy-an-azure-cloud-service-classic"></a>Jak vytvořit a nasadit cloudovou službu Azure (Classic)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md) je nový model nasazení založený na Azure Resource Manager pro produkt Azure Cloud Services.V důsledku této změny se Azure Cloud Services běžící na modelu nasazení založeném na Azure Service Manager přejmenovala jako Cloud Services (Classic) a všechna nová nasazení by měla používat [Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md).
+
 Azure Portal poskytuje dva způsoby, jak vytvořit a nasadit cloudovou službu: *rychlé vytvoření* a *vlastní vytvoření*.
 
 Tento článek vysvětluje, jak pomocí metody rychlého vytvoření vytvořit novou cloudovou službu a pak pomocí **nahrávání** nahrát a nasadit balíček cloudové služby v Azure. Když použijete tuto metodu, Azure Portal zpřístupňuje dostupné praktické odkazy pro dokončení všech požadavků. Pokud jste připravení nasadit cloudovou službu při jejím vytváření, můžete současně použít možnost vlastní vytvoření.
@@ -54,9 +58,10 @@ Chcete-li vytvořit cloudovou službu s nasazením webových rolí nebo rolí pr
 
 ## <a name="create-and-deploy"></a>Vytváření a nasazování
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/).
-2. Klikněte na **vytvořit prostředek > COMPUTE**, přejděte dolů na **cloudovou službu**a klikněte na ni.
+2. Klikněte na **vytvořit prostředek > COMPUTE**, přejděte dolů na **cloudovou službu** a klikněte na ni.
 
-    ![Snímek obrazovky, který zvýrazní možnost cloudové služby v části Vytvoření prostředku > Compute.](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
+    ![Publikování cloudového service1u](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
+
 3. V podokně nová **cloudová služba** zadejte hodnotu pro **název DNS**.
 4. Vytvořte novou **skupinu prostředků** nebo vyberte existující.
 5. Vyberte **umístění**.
@@ -65,22 +70,22 @@ Chcete-li vytvořit cloudovou službu s nasazením webových rolí nebo rolí pr
 8. Klikněte na tlačítko **OK** , čímž se zavře podokno **nahrát balíček** .
 9. Pokud nemáte žádné certifikáty, které by se měly přidat, klikněte na **vytvořit**.
 
-    ![Publikování cloudové služby](media/cloud-services-how-to-create-deploy-portal/select-package.png)
+    ![Publikování cloudového jazyka2u](media/cloud-services-how-to-create-deploy-portal/select-package.png)
 
 ## <a name="upload-a-certificate"></a>Odeslat certifikát
 Pokud byl balíček pro nasazení [nakonfigurovaný tak, aby používal certifikáty](cloud-services-configure-ssl-certificate-portal.md#modify), můžete ho teď nahrát.
 
-1. Vyberte **certifikáty**a v podokně **Přidat certifikáty** vyberte soubor. pfx certifikátu TLS/SSL a pak zadejte **heslo** pro certifikát.
-2. Klikněte na tlačítko **připojit certifikát**a potom v podokně **Přidat certifikáty** klikněte na tlačítko **OK** .
+1. Vyberte **certifikáty** a v podokně **Přidat certifikáty** vyberte soubor. pfx certifikátu TLS/SSL a pak zadejte **heslo** pro certifikát.
+2. Klikněte na tlačítko **připojit certifikát** a potom v podokně **Přidat certifikáty** klikněte na tlačítko **OK** .
 3. V podokně **cloudová služba** klikněte na **vytvořit** . Až nasazení dosáhne stavu **připraveno** , můžete přejít k dalším krokům.
 
-    ![Snímek obrazovky, který zvýrazňuje proces odeslání certifikátu.](media/cloud-services-how-to-create-deploy-portal/attach-cert.png)
+    ![Publikování cloudového service3u](media/cloud-services-how-to-create-deploy-portal/attach-cert.png)
 
 ## <a name="verify-your-deployment-completed-successfully"></a>Ověřte, že nasazení bylo úspěšně dokončeno.
 1. Klikněte na instanci cloudové služby.
 
     Stav by měl ukazovat na to, že je služba **spuštěná**.
-2. V části **základy**klikněte na **adresu URL webu** a otevřete tak cloudovou službu ve webovém prohlížeči.
+2. V části **základy** klikněte na **adresu URL webu** a otevřete tak cloudovou službu ve webovém prohlížeči.
 
     ![CloudServices_QuickGlance](./media/cloud-services-how-to-create-deploy-portal/running.png)
 

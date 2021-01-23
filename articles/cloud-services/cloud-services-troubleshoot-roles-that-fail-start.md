@@ -1,27 +1,25 @@
 ---
 title: Řešení potíží s rolemi, které se nepodařilo spustit | Microsoft Docs
 description: Tady jsou některé běžné důvody, proč se spuštění role cloudové služby nemusí zdařit. Jsou k dispozici také řešení těchto problémů.
-services: cloud-services
-documentationcenter: ''
-author: simonxjx
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue
-ms.assetid: 674b2faf-26d7-4f54-99ea-a9e02ef0eb2f
+ms.topic: article
 ms.service: cloud-services
-ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: tbd
-ms.date: 06/15/2018
-ms.author: v-six
-ms.openlocfilehash: bedf4dd2a955a8ffe648b47c1691e77ac1fdb8f5
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 2453fa2d9b4e78b60d4922e09347799266a84cff
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187795"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743215"
 ---
-# <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>Řešení potíží s rolemi cloudových služeb, které se nedaří spustit
+# <a name="troubleshoot-azure-cloud-service-classic-roles-that-fail-to-start"></a>Řešení potíží s rolemi Azure Cloud Service (Classic), které se nedaří spustit
+
+> [!IMPORTANT]
+> [Azure Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md) je nový model nasazení založený na Azure Resource Manager pro produkt Azure Cloud Services.V důsledku této změny se Azure Cloud Services běžící na modelu nasazení založeném na Azure Service Manager přejmenovala jako Cloud Services (Classic) a všechna nová nasazení by měla používat [Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md).
+
 Tady jsou některé běžné problémy a řešení týkající se rolí Azure Cloud Services, které se nedaří spustit.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
@@ -53,7 +51,7 @@ Zobrazení dalších úplných chyb bez použití funkce Vzdálená plocha:
     ```xml
     <customErrors mode="Off" />
     ```
-4. Uložte soubor.
+4. Soubor uložte.
 5. Znovu zabalit a znovu nasaďte službu.
 
 Po opětovném nasazení služby se zobrazí chybová zpráva s názvem chybějícího sestavení nebo knihovny DLL.
@@ -69,7 +67,7 @@ Pomocí vzdálené plochy můžete získat přístup k roli a vzdáleně zobrazi
 7. Zadejte `IPconfig`.
 8. Poznamenejte si hodnotu adresy IPV4.
 9. Otevřete Internet Explorer.
-10. Zadejte adresu a název webové aplikace. Například, `http://<IPV4 Address>/default.aspx`.
+10. Zadejte adresu a název webové aplikace. Například `http://<IPV4 Address>/default.aspx`.
 
 Když přejdete na web, budou se teď vracet explicitní chybové zprávy:
 
@@ -77,7 +75,7 @@ Když přejdete na web, budou se teď vracet explicitní chybové zprávy:
 * Popis: při provádění aktuálního webového požadavku došlo k neošetřené výjimce. Přečtěte si prosím trasování zásobníku, kde najdete další informace o chybě a kde vznikly v kódu.
 * Podrobnosti výjimky: System. IO. FIleNotFoundException: nelze načíst soubor nebo sestavení Microsoft. WindowsAzure. StorageClient, Version = 1.1.0.0, Culture = neutral, PublicKeyToken = 31bf856ad364e35 nebo jedna z jeho závislostí. Systém nemůže najít zadaný soubor.
 
-Příklad:
+Například:
 
 ![Explicitní chyba serveru v aplikaci/](./media/cloud-services-troubleshoot-roles-that-fail-start/ic503389.png)
 

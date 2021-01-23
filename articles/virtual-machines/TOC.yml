@@ -903,16 +903,14 @@
               href: ./workloads/redhat/redhat-rhui.md
 - name: Obrázky
   items:
-    - name: Image Marketplace
+    - name: Najít Azure Marketplace imagí
       items:
-        - name: Najít Azure Marketplace imagí
-          items:
-            - name: Rozhraní příkazového řádku
-              href: ./linux/cli-ps-findimage.md
-            - name: PowerShell
-              href: ./windows/cli-ps-findimage.md
-            - name: Bitové kopie klientů Windows
-              href: ./windows/client-images.md
+        - name: Rozhraní příkazového řádku
+          href: ./linux/cli-ps-findimage.md
+        - name: PowerShell
+          href: ./windows/cli-ps-findimage.md
+        - name: Bitové kopie klientů Windows
+          href: ./windows/client-images.md
     - name: Vlastní image pro Linux
       items:
         - name: Přehled
@@ -1058,6 +1056,8 @@
           href: image-version-encryption.md
         - name: Spravovaný disk z verze image
           href: managed-disk-from-image-version.md
+        - name: Informace o plánu nákupu
+          href: marketplace-images.md
     - name: Image Builder (Preview)
       items:
         - name: Přehled
@@ -1105,8 +1105,6 @@
           href: ./linux/image-builder-user-assigned-identity.md
         - name: Řešení potíží
           href: ./linux/image-builder-troubleshoot.md
-    - name: Informace o plánu nákupu
-      href: marketplace-images.md
     - name: Sestavení image pomocí Packeru
       items:
         - name: Linux

@@ -1,23 +1,24 @@
 ---
 title: Node.js aplikace s využitím Socket.io – Azure
 description: Pomocí tohoto kurzu se naučíte hostovat soket. Vstupně-výstupní aplikace v Azure na bázi Socket.IO poskytuje komunikaci v reálném čase pro node.js Server a klienty.
-services: cloud-services
-documentationcenter: nodejs
-author: tgore03
-ms.service: cloud-services
-ms.devlang: nodejs
 ms.topic: article
-ms.date: 08/17/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.custom: devx-track-js
-ms.openlocfilehash: ef7325b53f7d6450acdff4664f3e338c31be9612
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: abc02769d7d978e14975d90ae0f98547bdc4faf7
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077214"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743317"
 ---
-# <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>Vytvoření aplikace Node.js chatu pomocí Socket.IO v cloudové službě Azure
+# <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service-classic"></a>Vytvoření aplikace Node.js chatu pomocí Socket.IO v cloudové službě Azure (Classic)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md) je nový model nasazení založený na Azure Resource Manager pro produkt Azure Cloud Services.V důsledku této změny se Azure Cloud Services běžící na modelu nasazení založeném na Azure Service Manager přejmenovala jako Cloud Services (Classic) a všechna nová nasazení by měla používat [Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md).
 
 Socket.IO zajišťuje komunikaci v reálném čase mezi vaším node.js serverem a klienty. Tento kurz vás provede hostováním soketu. Aplikace v/v v Azure na základě konverzace Další informace o Socket.IO najdete v tématu [Socket.IO](https://socket.io).
 
@@ -35,7 +36,7 @@ Ujistěte se, že jsou nainstalovány následující produkty a verze, aby bylo 
 ## <a name="create-a-cloud-service-project"></a>Vytvoření projektu cloudové služby
 Následující kroky vytvoří projekt cloudové služby, který bude hostovat aplikaci Socket.IO.
 
-1. V **nabídce Start** nebo na **obrazovce Start**vyhledejte **Windows PowerShell**. Nakonec klikněte pravým tlačítkem myši na **Windows PowerShell** a vyberte **Spustit jako správce**.
+1. V **nabídce Start** nebo na **obrazovce Start** vyhledejte **Windows PowerShell**. Nakonec klikněte pravým tlačítkem myši na **Windows PowerShell** a vyberte **Spustit jako správce**.
 
     ![Ikona Azure PowerShell][powershell-menu]
 2. Vytvořte adresář nazvaný **c: \\ Node**.
@@ -50,7 +51,7 @@ Následující kroky vytvoří projekt cloudové služby, který bude hostovat a
     PS C:\> cd node
     ```
 
-4. Zadáním následujících příkazů vytvořte nové řešení s názvem **chatapp** a roli pracovního procesu s názvem **WorkerRole1**:
+4. Zadáním následujících příkazů vytvořte nové řešení s názvem `chatapp` a roli pracovního procesu s názvem `WorkerRole1` :
 
     ```powershell
     PS C:\node> New-AzureServiceProject chatapp
@@ -92,16 +93,16 @@ Před testováním aplikace v emulátoru Azure je nutné provést několik menš
 3. Pokud chcete zajistit, aby aplikace naslouchala na správném portu, otevřete server.js v programu Poznámkový blok nebo v oblíbeném editoru a pak změňte následující řádek tak, že nahradíte **3000** **. env. port** , jak je znázorněno níže:
 
     ```js
-    //app.listen(3000, function () {            //Original
+    //app.listen(3000, function () {            //Original
     app.listen(process.env.port, function () {  //Updated
       var addr = app.address();
       console.log('   app listening on http://' + addr.address + ':' + addr.port);
     });
     ```
 
-Po uložení změn do **server.js**pomocí následujících kroků nainstalujte požadované moduly a pak otestujte aplikaci v emulátoru Azure:
+Po uložení změn do **server.js** pomocí následujících kroků nainstalujte požadované moduly a pak otestujte aplikaci v emulátoru Azure:
 
-1. Pomocí **Azure PowerShell**změňte adresáře na adresář **C: \\ node \\ chatapp \\ WorkerRole1** a pomocí následujícího příkazu nainstalujte moduly požadované touto aplikací:
+1. Pomocí **Azure PowerShell** změňte adresáře na adresář **C: \\ node \\ chatapp \\ WorkerRole1** a pomocí následujícího příkazu nainstalujte moduly požadované touto aplikací:
 
     ```powershell
     PS C:\node\chatapp\WorkerRole1> npm install

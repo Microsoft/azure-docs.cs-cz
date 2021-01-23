@@ -1,20 +1,24 @@
 ---
-title: Automatické škálování cloudové služby na portálu | Microsoft Docs
+title: Automatické škálování cloudové služby (klasické) na portálu | Microsoft Docs
 description: Naučte se používat portál ke konfiguraci pravidel automatického škálování webové role nebo role pracovního procesu cloudové služby v Azure.
-services: cloud-services
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 05/18/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 06a0209c2bbd0982054d33c199685d016f405b0c
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: a3e7f72dbe16c51280b922da2b5fc6550dee1d34
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165481"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743351"
 ---
-# <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>Jak nakonfigurovat automatické škálování pro cloudovou službu na portálu
+# <a name="how-to-configure-auto-scaling-for-a-cloud-service-classic-in-the-portal"></a>Jak nakonfigurovat automatické škálování pro cloudovou službu (Classic) na portálu
+
+> [!IMPORTANT]
+> [Azure Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md) je nový model nasazení založený na Azure Resource Manager pro produkt Azure Cloud Services.V důsledku této změny se Azure Cloud Services běžící na modelu nasazení založeném na Azure Service Manager přejmenovala jako Cloud Services (Classic) a všechna nová nasazení by měla používat [Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md).
 
 Můžete nastavit podmínky pro roli pracovního procesu cloudové služby, která spouští operaci horizontálního nebo vyvýšení kapacity. Podmínky role můžou být založené na procesoru, disku nebo síťové zátěži role. Můžete také nastavit podmínku na základě fronty zpráv nebo metriky nějakého jiného prostředku Azure přidruženého k vašemu předplatnému.
 
@@ -34,7 +38,7 @@ Před konfigurací škálování pro aplikaci byste měli zvážit následujíc�
 
 * Pokud chcete povolit vysokou dostupnost vaší aplikace, měli byste zajistit, aby byla nasazená se dvěma nebo více instancemi role. Další informace najdete v tématu [smlouvy o úrovni služeb](https://azure.microsoft.com/support/legal/sla/).
 
-* Automatické škálování se stane pouze v případě, že jsou všechny role ve stavu **připraveno** .  
+* Automatické škálování se stane pouze v případě, že jsou všechny role ve stavu **připraveno** .  
 
 
 ## <a name="where-scale-is-located"></a>Kde se nachází škálování
@@ -53,7 +57,7 @@ Nastavení škálování pro roli můžete nakonfigurovat buď pomocí dvou rež
 
 Nastavte možnost **škálovat podle** na **pravidla plánování a výkon**.
 
-![Snímek obrazovky zobrazující možnost pravidla plánování a výkonu.](./media/cloud-services-how-to-scale-portal/schedule-basics.png)
+![Image Cloud Services – nastavení škálování pomocí profilu a pravidla](./media/cloud-services-how-to-scale-portal/schedule-basics.png)
 
 1. Existující profil.
 2. Přidejte pravidlo pro nadřazený profil.

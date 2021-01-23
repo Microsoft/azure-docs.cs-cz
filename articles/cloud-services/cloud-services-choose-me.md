@@ -1,20 +1,25 @@
 ---
-title: Co je Azure Cloud Services | Microsoft Docs
+title: Co je Azure Cloud Services (Classic) | Microsoft Docs
 description: Přečtěte si, co je Azure Cloud Services, konkrétně je navržená tak, aby podporovala aplikace, které jsou škálovatelné, spolehlivé a nenákladné pro provoz.
-services: cloud-services
-author: tgore03
-ms.service: multiple
 ms.topic: article
-ms.date: 04/19/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 0013a3a29bae9d2dde7896b3ae23d0d358946f2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: cbb9aae57b952c05aa722f81309158a11aef826b
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88224284"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742807"
 ---
-# <a name="overview-of-azure-cloud-services"></a>Přehled služby Azure Cloud Services
+# <a name="overview-of-azure-cloud-services-classic"></a>Přehled služby Azure Cloud Services (Classic)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md) je nový model nasazení založený na Azure Resource Manager pro produkt Azure Cloud Services.V důsledku této změny se Azure Cloud Services běžící na modelu nasazení založeném na Azure Service Manager přejmenovala jako Cloud Services (Classic) a všechna nová nasazení by měla používat [Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md).
+
 Azure Cloud Services je příkladem [platformy jako služby](https://azure.microsoft.com/overview/what-is-paas/) (PaaS). Stejně jako [Azure App Service](../app-service/overview.md)je tato technologie navržena tak, aby podporovala aplikace, které jsou škálovatelné, spolehlivé a nenákladné pro provoz. Stejným způsobem, jako hostuje App Service na virtuálních počítačích, je to také Cloud Services Azure. Máte ale větší kontrolu nad virtuálními počítači. Na virtuální počítače, které používají Azure Cloud Services, můžete nainstalovat vlastní software a k nim můžete přistupovat vzdáleně.
 
 ![Diagram Cloud Services Azure](./media/cloud-services-choose-me/diagram.png)
@@ -38,7 +43,7 @@ S Azure Cloud Services nevytváříte virtuální počítače. Místo toho zadá
 
 Aplikace Azure Cloud Services je obvykle k dispozici uživatelům prostřednictvím procesu se dvěma kroky. Vývojář nejdřív [nahraje aplikaci](cloud-services-how-to-create-deploy-portal.md) do pracovní oblasti platformy. Když je vývojář připravený k zajištění provozu aplikace, používá Azure Portal k prohození pracovní části s produkčním prostředím. Tento [přepínač mezi příchodem a výrobou](cloud-services-how-to-manage-portal.md#swap-deployments-to-promote-a-staged-deployment-to-production) se dá udělat bez výpadků, což umožňuje upgradování běžící aplikace na novou verzi bez narušení jejich uživatelů.
 
-## <a name="monitoring"></a>Monitorování
+## <a name="monitoring"></a>Sledování
 Azure Cloud Services také nabízí monitorování. Stejně jako Virtual Machines detekuje neúspěšný fyzický server a restartuje virtuální počítače, které na tomto serveru běžely na novém počítači. Ale Azure Cloud Services také detekuje neúspěšné virtuální počítače a aplikace, nikoli jenom selhání hardwaru. Na rozdíl od Virtual Machines má agent uvnitř každé webové a pracovní role, takže při selhání může začít nové virtuální počítače a instance aplikace.
 
 PaaS povaha Azure Cloud Services má i jiné důsledky. Jedním z nejdůležitějších z nich je, že aplikace postavené na této technologii by se měly zapsat ke správnému spuštění, když dojde k chybě jakékoli instance webové nebo pracovní role. Aby to bylo možné dosáhnout, aplikace Cloud Services Azure by neměla udržovat stav v systému souborů svých vlastních virtuálních počítačů. Na rozdíl od virtuálních počítačů vytvořených pomocí Virtual Machines nejsou zápisy do virtuálních počítačů Azure Cloud Services trvalé. K dispozici není žádný podobný Virtual Machines datový disk. Místo toho by měla aplikace Cloud Services v Azure explicitně zapisovat všechny stavy do Azure SQL Database, objektů blob, tabulek nebo některých jiných externích úložišť. Sestavování aplikací tímto způsobem usnadňuje škálování a odolnější selhání, což jsou důležité cíle Azure Cloud Services.

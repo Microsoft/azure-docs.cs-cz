@@ -1,25 +1,26 @@
 ---
-title: Jak používat diagnostiku Azure (.NET) s Cloud Servicesem | Microsoft Docs
+title: Jak používat diagnostiku Azure (.NET) s Cloud Services (Classic) | Microsoft Docs
 description: Pomocí diagnostiky Azure můžete shromažďovat data z cloudových služeb Azure pro účely ladění, měření výkonu, monitorování, analýzy provozu a dalších.
-services: cloud-services
-documentationcenter: .net
-author: tgore03
-manager: carmonm
-ms.service: cloud-services
-ms.devlang: dotnet
-ms.custom: devx-track-csharp
 ms.topic: article
-ms.date: 05/22/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 6a015a8d56cf3991d04b212db73d5b752c13a793
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 89ba50b91e8ff2e2d7a05d59f2b738a1f87a5fd2
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077537"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742144"
 ---
-# <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>Povolení Azure Diagnostics v Azure Cloud Services
-Další informace najdete v tématu [přehled Azure Diagnostics](../azure-monitor/platform/diagnostics-extension-overview.md) pro pozadí Azure Diagnostics.
+# <a name="enabling-azure-diagnostics-in-azure-cloud-services-classic"></a>Povolení Azure Diagnostics v Azure Cloud Services (Classic)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md) je nový model nasazení založený na Azure Resource Manager pro produkt Azure Cloud Services.V důsledku této změny se Azure Cloud Services běžící na modelu nasazení založeném na Azure Service Manager přejmenovala jako Cloud Services (Classic) a všechna nová nasazení by měla používat [Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md).
+
+Další informace najdete v tématu [přehled Azure Diagnostics](../azure-diagnostics.md) pro pozadí Azure Diagnostics.
 
 ## <a name="how-to-enable-diagnostics-in-a-worker-role"></a>Postup povolení diagnostiky v roli pracovního procesu
 Tento návod popisuje, jak implementovat roli pracovního procesu Azure, která generuje data telemetrie pomocí třídy EventSource .NET. Azure Diagnostics se používá ke shromažďování dat telemetrie a jejich uložení v účtu úložiště Azure. Při vytváření role pracovního procesu Visual Studio automaticky povolí diagnostiku 1,0 jako součást řešení v sadách Azure SDK pro .NET 2,4 a starší. Následující pokyny popisují proces vytvoření role pracovního procesu, zakázání diagnostiky 1,0 z řešení a nasazení diagnostiky 1,2 nebo 1,3 do role pracovního procesu.
@@ -31,7 +32,7 @@ V tomto článku se předpokládá, že máte předplatné Azure a používáte 
 1. Spusťte **Visual Studio**.
 2. Vytvořte projekt **cloudové služby Azure** ze šablony **cloudu** , která se zaměřuje na .NET Framework 4,5.  Pojmenujte projekt "WadExample" a klikněte na tlačítko OK.
 3. Vyberte **role pracovního procesu** a klikněte na OK. Projekt se vytvoří.
-4. V **Průzkumník řešení**dvakrát klikněte na soubor vlastností **WorkerRole1** .
+4. V **Průzkumník řešení** dvakrát klikněte na soubor vlastností **WorkerRole1** .
 5. Na kartě **Konfigurace** zrušte kontrolu **Povolení diagnostiky** pro zakázání diagnostiky 1,0 (Azure SDK 2,4 a starší).
 6. Sestavte řešení, abyste ověřili, že nedošlo k chybám.
 
@@ -137,7 +138,7 @@ namespace WorkerRole1
     ```powershell
     (Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File -Encoding utf8 -FilePath 'WadConfig.xsd'
     ```
-2. Kliknutím pravým tlačítkem myši na projekt **WorkerRole1** a výběrem **Přidat**novou položku přidejte do projektu **WorkerRole1** soubor XML  ->  **.** -> **Položky**  ->  Visual C# **Data**  ->  **Soubor XML**. Pojmenujte soubor WadExample.xml.
+2. Kliknutím pravým tlačítkem myši na projekt **WorkerRole1** a výběrem **Přidat** novou položku přidejte do projektu **WorkerRole1** soubor XML  ->  **.** -> **Položky**  ->  Visual C# **Data**  ->  **Soubor XML**. Pojmenujte soubor WadExample.xml.
 
    ![CloudServices_diag_add_xml](./media/cloud-services-dotnet-diagnostics/AddXmlFile.png)
 3. Přidružte soubor WadConfig. xsd ke konfiguračnímu souboru. Ujistěte se, že je okno Editor WadExample.xml aktivním oknem. Stisknutím klávesy **F4** otevřete okno **vlastnosti** . V okně **vlastnosti** klikněte na vlastnost **schémata** . Klikněte na **...** ve vlastnosti **schemas** . Klikněte na tlačítko **Přidat...** a přejděte do umístění, kam jste uložili soubor XSD, a vyberte soubor WadConfig. xsd. Klikněte na **OK**.
@@ -183,7 +184,7 @@ Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -Diagnostic
 ```
 
 ### <a name="step-6-look-at-your-telemetry-data"></a>Krok 6: Prohlédněte si data telemetrie
-V **Průzkumník serveru**sady Visual Studio přejděte do účtu úložiště wadexample. Po spuštění cloudové služby přibližně o pěti (5) minutách byste měli vidět tabulky **WADEnumsTable**, **WADHighFreqTable**, **WADMessageTable**, **WADPerformanceCountersTable** a **WADSetOtherTable**. Dvojitým kliknutím na jednu z tabulek zobrazíte shromážděnou telemetrii.
+V **Průzkumník serveru** sady Visual Studio přejděte do účtu úložiště wadexample. Po spuštění cloudové služby přibližně o pěti (5) minutách byste měli vidět tabulky **WADEnumsTable**, **WADHighFreqTable**, **WADMessageTable**, **WADPerformanceCountersTable** a **WADSetOtherTable**. Dvojitým kliknutím na jednu z tabulek zobrazíte shromážděnou telemetrii.
 
 ![CloudServices_diag_tables](./media/cloud-services-dotnet-diagnostics/WadExampleTables.png)
 
