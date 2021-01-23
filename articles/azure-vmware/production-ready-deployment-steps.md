@@ -3,12 +3,12 @@ title: Plánování nasazení řešení Azure VMware
 description: Tento článek popisuje pracovní postup nasazení řešení Azure VMware.  Konečný výsledek je prostředí připravené pro vytváření a migraci virtuálních počítačů.
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 2cc4d40fd8088a632e0c24e3c4b770ebdc9de2e8
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: cdf4ddd6166920fa7461bfd85e01ef0efd6dfbb9
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97912729"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704556"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Plánování nasazení řešení Azure VMware
 
@@ -31,7 +31,7 @@ Identifikujte předplatné, které plánujete použít k nasazení řešení Azu
 
 Identifikujte skupinu prostředků, kterou chcete použít pro vaše řešení Azure VMware.  Obecně platí, že skupina prostředků je vytvořená speciálně pro řešení Azure VMware, ale můžete použít existující skupinu prostředků.
 
-## <a name="region"></a>Oblast
+## <a name="region"></a>Region (Oblast)
 
 Identifikujte oblast, kterou chcete nasadit řešení Azure VMware.  Další informace najdete v tématu [Příručka k produktům Azure, které jsou k dispozici v jednotlivých oblastech](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=azure-vmware).
 
@@ -95,26 +95,32 @@ Pamatujte na to, že:
 
 ## <a name="azure-virtual-network-to-attach-azure-vmware-solution"></a>Azure Virtual Network k připojení řešení Azure VMware
 
-Aby bylo možné získat přístup k privátnímu cloudu řešení Azure VMware, musí se okruh ExpressRoute, který je součástí řešení Azure VMware, připojit k Azure Virtual Network.  Během nasazování můžete definovat novou virtuální síť nebo zvolit existující.
+V tomto kroku identifikujete bránu virtuální sítě ExpressRoute a podporu virtuální sítě Azure, která se používá pro připojení okruhu ExpressRoute Azure VMware Solution.  Okruh ExpressRoute usnadňuje připojení k privátnímu cloudu řešení Azure VMware a z něj do dalších služeb Azure, prostředků Azure a místních prostředí.
 
-Okruh ExpressRoute z řešení Azure VMware se připojuje k bráně ExpressRoute v Azure Virtual Network, kterou definujete v tomto kroku.  
-
->[!IMPORTANT]
->Existující bránu ExpressRoute můžete použít pro připojení k řešení Azure VMware, pokud nepřekračuje limit čtyř ExpressRoute okruhů na jednu virtuální síť.  Pro přístup k řešení Azure VMware z místního prostředí prostřednictvím ExpressRoute ale musíte mít ExpressRoute Global Reach, protože brána ExpressRoute neposkytuje přechodné směrování mezi připojenými okruhy.  
-
-Pokud chcete okruh ExpressRoute připojit z řešení Azure VMware k existující bráně ExpressRoute, můžete to provést po nasazení.  
-
-Proto je třeba v souhrnu propojit řešení Azure VMware s existující bránou Express Route?  
-
-* **Ano** = Identifikujte virtuální síť, která se během nasazení nepoužívá.
-* **No** = Identifikujte existující virtuální síť nebo vytvořte novou během nasazování.
-
-Libovolný způsob, jak dokumentovat, co chcete udělat v tomto kroku.
-
->[!NOTE]
->Tato virtuální síť se zobrazuje v místním prostředí a řešení Azure VMware. proto se ujistěte, že se nepřekrývají žádné segmenty IP používané v této virtuální síti a podsítích.
+Můžete použít *existující* nebo *novou* bránu virtuální sítě ExpressRoute.
 
 :::image type="content" source="media/pre-deployment/azure-vmware-solution-expressroute-diagram.png" alt-text="Identita – Azure Virtual Network pro připojení řešení Azure VMware" border="false":::
+
+### <a name="use-an-existing-expressroute-virtual-network-gateway"></a>Použít existující bránu virtuální sítě ExpressRoute
+
+Pokud použijete *existující* bránu virtuální sítě ExpressRoute, po nasazení privátního cloudu se vytvoří okruh ExpressRoute řešení Azure VMware.  Takže nemusíte naplnit pole **Virtual Network** .  
+
+Poznamenejte si, kterou bránu virtuální sítě ExpressRoute použijete a pokračujte k dalšímu kroku.
+
+### <a name="create-a-new-expressroute-virtual-network-gateway"></a>Vytvořit novou bránu virtuální sítě ExpressRoute
+
+Pokud vytváříte *novou* bránu virtuální sítě ExpressRoute, můžete použít existující službu Azure Virtual Network, nebo můžete vytvořit nový Virtual Network Azure.  
+
+Pokud se rozhodnete použít existující Virtual Network Azure, ověřte, že ve virtuální síti nejsou žádné již existující brány virtuální sítě ExpressRoute a vyberte ji v rozevíracím seznamu Virtual Network obrazovky vytvoření nasazení privátního cloudu.
+
+Pokud se rozhodnete vytvořit novou službu Azure Virtual Network můžete ji vytvořit předem nebo během nasazování kliknutím na možnost vytvořit novou v Virtual Network v části Vytvoření obrazovky pro nasazení privátního cloudu.
+
+Níže je uveden obrázek obrazovky **Vytvoření privátního cloudu** , která je popsána červeně, **Virtual Network** pole Azure, na které bylo odkazováno v celé této části.
+
+:::image type="content" source="media/pre-deployment/azure-vmware-solution-deployment-screen-vnet-circle.png" alt-text="Snímek obrazovky s nasazením řešení Azure VMware s bránou virtuální sítě v kruhu":::
+
+>[!NOTE]
+>Jakékoli virtuální sítě, která se bude používat nebo vytvořit, může vidět vaše místní prostředí a řešení Azure VMware. proto se ujistěte, že se nepřekrývají žádné segmenty IP používané v této virtuální síti a podsítích.
 
 ## <a name="vmware-hcx-network-segments"></a>Segmenty sítě VMware HCX
 

@@ -4,12 +4,12 @@ description: Přečtěte si informace o komponentách offline zálohování. Zah
 ms.topic: conceptual
 ms.date: 1/28/2020
 ms.custom: references_regions
-ms.openlocfilehash: c5e0f4e722e2dd15b7277a484af2a101844344e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c65cf6b36af3057fb06c6a6584fa458b1030c72
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86503621"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704131"
 ---
 # <a name="overview-of-offline-backup"></a>Přehled zálohování offline
 
@@ -45,7 +45,7 @@ Pokud chcete použít offline zálohování na základě Azure Data Box, přečt
 
 ## <a name="offline-backup-based-on-the-azure-importexport-service"></a>Zálohování offline na základě služby Azure import/export
 
-Tuto možnost podporuje Microsoft Azure Backup Server (MABS), aplikace System Center Data Protection Manager (DPM) DPM-A a Agent MARS. Používá [službu Azure import/export](../storage/common/storage-import-export-service.md). Data počátečního zálohování můžete přenést do Azure pomocí vlastních disků a konektorů, které jsou kompatibilní s Azure. Tento přístup vyžaduje zřízení dočasného úložiště označovaného jako pracovní umístění a použití předem připravených nástrojů k formátování a zkopírování zálohovaných dat na disky vlastněné zákazníkem.
+Tuto možnost podporuje Microsoft Azure Backup Server (MABS), aplikace System Center Data Protection Manager (DPM) DPM-A a Agent MARS. Používá [službu Azure import/export](../import-export/storage-import-export-service.md). Data počátečního zálohování můžete přenést do Azure pomocí vlastních disků a konektorů, které jsou kompatibilní s Azure. Tento přístup vyžaduje zřízení dočasného úložiště označovaného jako pracovní umístění a použití předem připravených nástrojů k formátování a zkopírování zálohovaných dat na disky vlastněné zákazníkem.
 
 Zde je uvedena architektura, která popisuje přesun zálohovaných dat pomocí této možnosti.
 
@@ -73,7 +73,7 @@ Následující tabulka porovnává dvě dostupné možnosti, abyste mohli vhodn�
 | Maximální počet zálohovaných dat na server (MARS) nebo na skupinu ochrany (MABS, DPM-A) | [Azure Data box disk](../databox/data-box-disk-overview.md) – 7,2 TB <br> [Azure Data box](../databox/data-box-overview.md) – 80 TB       | 80 TB (až 10 disků o 8 TB)                          |
 | Zabezpečení (data, zařízení a služba)                           | [Data](../databox/data-box-security.md#data-box-data-protection) -AES 256-bit šifrováno <br> [Zařízení](../databox/data-box-security.md#data-box-device-protection) – robustní – proprietární, rozhraní založené na přihlašovacích údajích ke kopírování dat <br> Funkce zabezpečení Azure, které jsou chráněné [službou](../databox/data-box-security.md#data-box-service-protection) | Data – šifrovaný BitLocker                                 |
 | Dočasné zřízení pracovního umístění                     | Nevyžadováno                                                | Větší než nebo rovna odhadované velikosti zálohovaných dat        |
-| Podporované oblasti                                           | [Azure Data Box oblasti disku](../databox/data-box-disk-overview.md#region-availability) <br> [Azure Data Box oblasti](../databox/data-box-disk-overview.md#region-availability) | [Oblasti služeb importu a exportu v Azure](../storage/common/storage-import-export-service.md#region-availability) |
+| Podporované oblasti                                           | [Azure Data Box oblasti disku](../databox/data-box-disk-overview.md#region-availability) <br> [Azure Data Box oblasti](../databox/data-box-disk-overview.md#region-availability) | [Oblasti služeb importu a exportu v Azure](../import-export/storage-import-export-service.md#region-availability) |
 | Expedice mezi země                                     | Nepodporováno  <br>    Zdrojová adresa a cílové datacentrum Azure musí být ve stejné zemi nebo oblasti *. | Podporováno                                                    |
 | Logistika přenosů (doručení, přeprava, vyzvednutí)           | Plně spravované Microsoftem                                     | Spravované zákazníkem                                            |
 | Ceny                                                      | [Ceny Azure Data Box](https://azure.microsoft.com/pricing/details/databox/) <br> [Ceny Azure Data Box disku](https://azure.microsoft.com/pricing/details/databox/disk/) | [Ceny za službu import/export v Azure](https://azure.microsoft.com/pricing/details/storage-import-export/) |

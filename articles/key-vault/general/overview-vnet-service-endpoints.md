@@ -1,5 +1,5 @@
 ---
-title: Koncové body služby virtuální sítě pro Azure Key Vault
+title: Koncové body služby Azure Key Vault pro virtuální síť
 description: Přečtěte si, jak koncové body služby virtuální sítě pro Azure Key Vault umožňují omezit přístup k zadané virtuální síti, včetně scénářů použití.
 services: key-vault
 author: amitbapat
@@ -9,14 +9,14 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 9dcabe10822fd09c8f7a0da6259d81a089c1a042
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 4a817f386d68c144968540dd05f3fa6859bb0acc
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936290"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704165"
 ---
-# <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Koncové body služby virtuální sítě pro Azure Key Vault
+# <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Koncové body služby Azure Key Vault pro virtuální síť
 
 Koncové body služby virtuální sítě pro Azure Key Vault umožňují omezit přístup k zadané virtuální síti. Koncové body také umožňují omezit přístup k seznamu rozsahů adres protokolu IPv4 (Internet Protocol verze 4). Přístup všem uživatelům, kteří se připojují k trezoru klíčů mimo tyto zdroje, má odepřený přístup.
 
@@ -43,7 +43,7 @@ Tady je seznam důvěryhodných služeb, které mají povolený přístup k trez
 | --- | --- |
 |Služba pro nasazení služby Azure Virtual Machines|[Nasazení certifikátů do virtuálních počítačů ze Key Vault spravovaných zákazníky](/archive/blogs/kv/updated-deploy-certificates-to-vms-from-customer-managed-key-vault).|
 |Služba nasazení šablon Azure Resource Manager|[Předání zabezpečených hodnot během nasazení](../../azure-resource-manager/templates/key-vault-parameter.md).|
-|SKU Azure Application Gateway v2|[Ukončení protokolu TLS s certifikáty Key Vault](../../application-gateway/key-vault-certs.md)|
+|SKU Azure Application Gateway v2|[Ukončení šifrování TLS s využitím certifikátů služby Key Vault](../../application-gateway/key-vault-certs.md)|
 |Služba šifrování svazků Azure Disk Encryption|Povolte přístup k klíči nástroje BitLocker (Windows VM) nebo k přístupovému heslu DM (virtuální počítač Linux) a šifrovacímu klíči během nasazování virtuálního počítače. To umožňuje [Azure Disk Encryption](../../security/fundamentals/encryption-overview.md).|
 |Azure Backup|Povolí zálohování a obnovení důležitých klíčů a tajných kódů během zálohování Azure Virtual Machines pomocí [Azure Backup](../../backup/backup-overview.md).|
 |Exchange Online & SharePoint Online|Povolí přístup ke klíči zákazníka pro šifrování Azure Storage služby s [klíčem zákazníka](/microsoft-365/compliance/customer-key-overview).|
@@ -57,7 +57,7 @@ Tady je seznam důvěryhodných služeb, které mají povolený přístup k trez
 |Azure Data Factory|[Načíst přihlašovací údaje úložiště dat v Key Vault z Data Factory](https://go.microsoft.com/fwlink/?linkid=2109491)|
 |Azure Event Hubs|[Povolení přístupu k trezoru klíčů pro základní klíče spravované zákazníkem](../../event-hubs/configure-customer-managed-key.md)|
 |Azure Service Bus|[Povolení přístupu k trezoru klíčů pro základní klíče spravované zákazníkem](../../service-bus-messaging/configure-customer-managed-key.md)|
-|Azure Import/Export| [Použití klíčů spravovaných zákazníkem v Azure Key Vault pro službu import/export](../../storage/common/storage-import-export-encryption-key-portal.md)
+|Azure Import/Export| [Použití klíčů spravovaných zákazníkem v Azure Key Vault pro službu import/export](../../import-export/storage-import-export-encryption-key-portal.md)
 |Azure Container Registry|[Šifrování registru pomocí klíčů spravovaných zákazníkem](../../container-registry/container-registry-customer-managed-keys.md)
 
 > [!NOTE]

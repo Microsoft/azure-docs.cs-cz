@@ -9,12 +9,12 @@ ms.date: 12/08/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 13d1ad0b1b5e32ea2ca86e7556dd910c542bcbe2
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 9032576f3705c360ebf53d8fdb4d6c15f77f450e
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070554"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703500"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurace bran firewall Azure Storage a virtuálních sítí
 
@@ -60,7 +60,7 @@ Nespravované disky můžete použít v účtech úložiště s pravidly sítě 
 
 Pomocí Azure Portal, PowerShellu nebo CLIv2 můžete spravovat výchozí pravidla přístupu k síti pro účty úložiště.
 
-#### <a name="azure-portal"></a>Portál Azure Portal
+#### <a name="azure-portal"></a>portál Azure
 
 1. Přejděte do účtu úložiště, který chcete zabezpečit.
 
@@ -144,7 +144,7 @@ Aby bylo možné použít pravidlo virtuální sítě pro účet úložiště, m
 
 Pravidla virtuální sítě pro účty úložiště můžete spravovat prostřednictvím Azure Portal, PowerShellu nebo CLIv2.
 
-#### <a name="azure-portal"></a>Portál Azure Portal
+#### <a name="azure-portal"></a>portál Azure
 
 1. Přejděte do účtu úložiště, který chcete zabezpečit.
 
@@ -268,7 +268,7 @@ Pokud používáte [ExpressRoute](../../expressroute/expressroute-introduction.m
 
 Pravidla sítě IP pro účty úložiště můžete spravovat pomocí Azure Portal, PowerShellu nebo CLIv2.
 
-#### <a name="azure-portal"></a>Portál Azure Portal
+#### <a name="azure-portal"></a>portál Azure
 
 1. Přejděte do účtu úložiště, který chcete zabezpečit.
 
@@ -379,7 +379,7 @@ Pokud povolíte nastavení **Povolit důvěryhodné služby společnosti Microso
 | Azure Event Hubs         | Microsoft. EventHub         | Archivujte data pomocí Event Hubsho zachycení. [Další informace](../../event-hubs/event-hubs-capture-overview.md) |
 | Synchronizace souborů Azure          | Microsoft. StorageSync      | Umožňuje transformovat souborový server Prem na mezipaměť pro sdílené složky Azure. Povoluje se synchronizace více webů, rychlé zotavení po havárii a zálohování na straně cloudu. [Další informace](../files/storage-sync-files-planning.md) |
 | Azure HDInsight          | Microsoft. HDInsight        | Zřídí počáteční obsah výchozího systému souborů pro nový cluster HDInsight. [Přečtěte si další informace](../../hdinsight/hdinsight-hadoop-use-blob-storage.md). |
-| Export pro import do Azure      | Microsoft. ImportExport     | Umožňuje importovat data Azure Storage nebo exportovat data z Azure Storage pomocí služby Azure Storage import/export. [Přečtěte si další informace](./storage-import-export-service.md).  |
+| Export pro import do Azure      | Microsoft. ImportExport     | Umožňuje importovat data Azure Storage nebo exportovat data z Azure Storage pomocí služby Azure Storage import/export. [Přečtěte si další informace](../../import-export/storage-import-export-service.md).  |
 | Azure Monitor            | Microsoft. Insights         | Povoluje zápis dat monitorování do zabezpečeného účtu úložiště, včetně protokolů prostředků, Azure Active Directory protokolů pro přihlášení a auditu a protokolů Microsoft Intune. [Přečtěte si další informace](../../azure-monitor/platform/roles-permissions-security.md). |
 | Sítě Azure         | Microsoft.Network          | Ukládejte a analyzujte protokoly síťového provozu, včetně služeb Network Watcher a Analýza provozu. [Přečtěte si další informace](../../network-watcher/network-watcher-nsg-flow-logging-overview.md). |
 | Azure Site Recovery      | Microsoft. SiteRecovery     | Povolení replikace pro zotavení po havárii virtuálních počítačů Azure s IaaS při použití mezipaměti, zdrojového nebo cílového účtu úložiště podporujícího bránu firewall  [Přečtěte si další informace](../../site-recovery/azure-to-azure-tutorial-enable-replication.md). |
@@ -398,7 +398,7 @@ Nastavení **Povolit důvěryhodné služby společnosti Microsoft...** umožňu
 | Azure Logic Apps               | Microsoft. Logic/Workflows              | Povoluje Logic Apps přístup k účtům úložiště. [Přečtěte si další informace](../../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity). |
 | Služba Azure Machine Learning | Microsoft.MachineLearningServices      | Autorizované pracovní prostory Azure Machine Learning zapisují výstup, modely a protokoly do úložiště objektů BLOB a čtou data z experimentu. [Přečtěte si další informace](../../machine-learning/how-to-network-security-overview.md#secure-the-workspace-and-associated-resources). | 
 | Azure Synapse Analytics       | Microsoft.Sql                          | Umožňuje importovat a exportovat data z konkrétních databází SQL pomocí příkazu COPY nebo základny. [Přečtěte si další informace](../../azure-sql/database/vnet-service-endpoint-rule-overview.md). |
-| Databáze Azure SQL       | Microsoft.Sql                          | Umožňuje [importovat](/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) data z účtů úložiště a [zapisovat](../../azure-sql/database/audit-write-storage-account-behind-vnet-firewall.md) data auditu do účtů úložiště za bránou firewall. |
+| Azure SQL Database       | Microsoft.Sql                          | Umožňuje [importovat](/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) data z účtů úložiště a [zapisovat](../../azure-sql/database/audit-write-storage-account-behind-vnet-firewall.md) data auditu do účtů úložiště za bránou firewall. |
 | Azure Stream Analytics         | Microsoft. StreamAnalytics             | Umožňuje zapsat data z úlohy streamování do úložiště objektů BLOB. [Přečtěte si další informace](../../stream-analytics/blob-output-managed-identity.md). |
 | Azure Synapse Analytics        | Microsoft. synapse/pracovní prostory          | Umožňuje přístup k datům v Azure Storage z Azure synapse Analytics. |
 
@@ -411,7 +411,7 @@ V některých případech je přístup ke čtení protokolů prostředku a metri
 
 Výjimky síťového pravidla můžete spravovat pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure CLI v2.
 
-#### <a name="azure-portal"></a>Portál Azure Portal
+#### <a name="azure-portal"></a>portál Azure
 
 1. Přejděte do účtu úložiště, který chcete zabezpečit.
 

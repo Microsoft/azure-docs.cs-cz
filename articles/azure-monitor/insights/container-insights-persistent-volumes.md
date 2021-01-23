@@ -3,16 +3,16 @@ title: Konfigurace monitorování PV pomocí Azure Monitor pro kontejnery | Micr
 description: Tento článek popisuje, jak můžete nakonfigurovat monitorování clusterů Kubernetes s trvalými svazky s Azure Monitor pro kontejnery.
 ms.topic: conceptual
 ms.date: 10/20/2020
-ms.openlocfilehash: e7c547c137fc84e6e6dfb2807b871ef0329a3c13
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d7da6bc88e7c8526e3940714502d3c92d2f37dd8
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186843"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704469"
 ---
 # <a name="configure-pv-monitoring-with-azure-monitor-for-containers"></a>Konfigurace monitorování PV pomocí Azure Monitor pro kontejnery
 
-Počínaje agentem verze *ciprod10052020*, integrovaný agent Azure monitor for Containers teď podporuje monitorování využití PV (trvalého objemu).
+Počínaje agentem verze *ciprod10052020* se teď Azure monitor for Containers Integrated Agent podporuje monitorování využití PV (trvalého svazku).
 
 ## <a name="pv-metrics"></a>Metriky PV
 

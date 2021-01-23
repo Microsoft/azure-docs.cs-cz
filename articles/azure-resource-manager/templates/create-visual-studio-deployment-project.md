@@ -3,18 +3,18 @@ title: Vytvoření projektů skupiny prostředků sady Visual Studio pro & nasaz
 description: Pomocí sady Visual Studio vytvořte projekt skupiny prostředků Azure a nasaďte prostředky do Azure.
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: 479dbed1f288148c24fc8464f7895cd3e2b182f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f1a06a3e89c5fd2ea8906ff9a438c170f135d6ec
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372642"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704410"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Vytvoření a nasazení skupiny prostředků Azure pomocí sady Visual Studio
 
 Pomocí sady Visual Studio můžete vytvořit projekt, který nasadí vaši infrastrukturu a kód do Azure. Můžete například nasadit webového hostitele, web a kód webu. Visual Studio poskytuje řadu různých předem připravených šablon pro běžné scénáře nasazení. V tomto článku nasadíte webovou aplikaci.
 
-Tento článek ukazuje, jak používat [Visual Studio 2019 nebo novější s nainstalovanými úlohami vývoje a ASP.NET pro Azure](/visualstudio/install/install-visual-studio?view=vs-2019). Pokud používáte Visual Studio 2017, vaše prostředí je převážně stejné.
+Tento článek ukazuje, jak používat [Visual Studio 2019 nebo novější s nainstalovanými úlohami vývoje a ASP.NET pro Azure](/visualstudio/install/install-visual-studio). Pokud používáte Visual Studio 2017, vaše prostředí je převážně stejné.
 
 ## <a name="create-azure-resource-group-project"></a>Vytvoření projektu skupiny prostředků Azure
 
@@ -41,7 +41,7 @@ V této části vytvoříte projekt skupiny prostředků Azure pomocí šablony 
 
     Vzhledem k tomu, že jste vybrali šablonu webové aplikace, zobrazí se následující soubory:
 
-   | Název souboru | Description |
+   | Název souboru | Popis |
    | --- | --- |
    | Deploy-AzureResourceGroup.ps1 |Skript PowerShellu, který spustí příkazy PowerShellu pro nasazení Azure Resource Manageru. Visual Studio pomocí tohoto skriptu PowerShellu nasadí vaši šablonu. |
    | WebSite.jsna |Šablona Resource Manageru, která definuje infrastrukturu, kterou chcete nasadit do Azure, a parametry, které můžete během nasazení zadat. Definuje také závislosti mezi prostředky, takže je Resource Manager nasadí ve správném pořadí. |
@@ -259,7 +259,7 @@ Nyní otevřete konzolu prostředí PowerShell a spusťte příkaz:
 
 Pro skript modulu AzureRM použijte Visual Studio:
 
-1. Pokud ho chcete znovu nasadit, vyberte **nasadit**a skupinu prostředků, kterou jste předtím nasadili.
+1. Pokud ho chcete znovu nasadit, vyberte **nasadit** a skupinu prostředků, kterou jste předtím nasadili.
 
     ![Znovu nasadit projekt](./media/create-visual-studio-deployment-project/redeploy.png)
 

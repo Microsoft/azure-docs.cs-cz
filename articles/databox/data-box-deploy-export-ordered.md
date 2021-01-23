@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: ac86dfba02b54730773a1d243981e85d563517e7
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: aac1fb8e2da7a3c84b3abff47c8f476b9fb9049c
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183826"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704334"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box"></a>Kurz: vytvoření objednávky exportu pro Azure Data Box
 
@@ -100,7 +100,7 @@ Provedením následujících kroků na webu Azure Portal si objednejte zařízen
     |---------|---------|
     |Účet úložiště     | Účet Azure Storage, ze kterého chcete exportovat data. |
     |Typ exportu     | Určuje typ dat, který se má exportovat ze **všech objektů** a **použít soubor XML**.<ul><li> **Všechny objekty** – určuje, že úloha Exportuje všechna data v závislosti na výběru **možností přenosu**.</li><li> **Použít soubor XML** – určuje soubor XML, který obsahuje sadu cest a předpon pro objekty BLOB a soubory, které mají být exportovány z účtu úložiště. Soubor XML musí být v kontejneru vybraného účtu úložiště a výběr ze sdílených složek se v současné době nepodporuje. Soubor musí být neprázdný soubor. XML.</li></ul>        |
-    |Možnosti přenosu     |  Určuje možnosti přenosu dat z možností **Vybrat vše**, **všechny objekty blob** a **všechny soubory**. <ul><li> **Vybrat vše** – určuje, že se exportují všechny objekty BLOB a soubory Azure. Pokud používáte účet úložiště, který podporuje jenom objekty BLOB (Blob Storage účet), možnost **všechny soubory** nebude možné vybrat.</li><li> **Všechny objekty blob** – určuje, že se exportují jenom objekty blob bloku a stránky.</li><li> **Všechny soubory** – určuje, že všechny soubory jsou exportovány s výjimkou objektů BLOB. Typ účtu úložiště, který máte (GPv1 a GPv2, Premium Storage nebo BLOB Storage), určuje typy dat, která můžete exportovat. Další informace najdete v tématu [podporované účty úložiště pro export](../storage/common/storage-import-export-requirements.md#supported-storage-types).</li></ul>         |
+    |Možnosti přenosu     |  Určuje možnosti přenosu dat z možností **Vybrat vše**, **všechny objekty blob** a **všechny soubory**. <ul><li> **Vybrat vše** – určuje, že se exportují všechny objekty BLOB a soubory Azure. Pokud používáte účet úložiště, který podporuje jenom objekty BLOB (Blob Storage účet), možnost **všechny soubory** nebude možné vybrat.</li><li> **Všechny objekty blob** – určuje, že se exportují jenom objekty blob bloku a stránky.</li><li> **Všechny soubory** – určuje, že všechny soubory jsou exportovány s výjimkou objektů BLOB. Typ účtu úložiště, který máte (GPv1 a GPv2, Premium Storage nebo BLOB Storage), určuje typy dat, která můžete exportovat. Další informace najdete v tématu [podporované účty úložiště pro export](../import-export/storage-import-export-requirements.md#supported-storage-types).</li></ul>         |
     |Zahrnout podrobný protokol     | Určuje, zda má být podrobný soubor protokolu, který obsahuje seznam všech souborů, které byly exportovány úspěšně.        |
 
     > [!NOTE]
@@ -330,7 +330,7 @@ Mezi důležité body v souvislosti se soubory XML:
 
 V následující tabulce jsou uvedeny příklady platných cest objektů BLOB:
 
-   | Volič | Cesta objektu BLOB | Description |
+   | Volič | Cesta objektu BLOB | Popis |
    | --- | --- | --- |
    | Začíná na |/ |Exportuje všechny objekty BLOB v účtu úložiště. |
    | Začíná na |/$root/ |Exportuje všechny objekty BLOB v kořenovém kontejneru. |

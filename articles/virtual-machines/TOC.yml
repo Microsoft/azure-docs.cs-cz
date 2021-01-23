@@ -1,34 +1,1874 @@
 - name: Dokumentace k Virtual Machines
   href: index.yml
-- name: Linux Virtual Machines v Azure
-  href: ./linux/index.yml
-- name: Windows Virtual Machines v Azure
-  href: ./windows/index.yml
-- name: Dokumentace k rozšířením virtuálních počítačů
-  href: ./extensions/overview.md
+- name: Přehled
+  items:
+    - name: O Linux Virtual Machines
+      href: ./linux/overview.md
+    - name: O Windows Virtual Machines
+      href: ./windows/overview.md
+- name: Rychlé starty
+  items:
+    - name: Vytvoření virtuálního počítače s Linuxem
+      items:
+        - name: Rozhraní příkazového řádku
+          href: ./linux/quick-create-cli.md
+        - name: Portál
+          href: ./linux/quick-create-portal.md
+        - name: PowerShell
+          href: ./linux/quick-create-powershell.md
+        - name: Šablona ARM
+          displayName: 'Resource Manager, template, json'
+          href: ./linux/quick-create-template.md
+    - name: Vytvoření virtuálního počítače s Windows
+      items:
+        - name: Rozhraní příkazového řádku
+          href: ./windows/quick-create-cli.md
+        - name: Portál
+          href: ./windows/quick-create-portal.md
+        - name: PowerShell
+          href: ./windows/quick-create-powershell.md
+        - name: Šablona ARM
+          displayName: 'Resource Manager, template, json'
+          href: ./windows/quick-create-template.md
+  expanded: true
+- name: Kurzy
+  items:
+    - name: Linux
+      items:
+        - name: 1. Vytvoření a správa virtuálních počítačů
+          href: ./linux/tutorial-manage-vm.md
+        - name: 2. Vytvoření a správa disků
+          href: ./linux/tutorial-manage-disks.md
+        - name: 3. Automatizace konfigurace
+          href: ./linux/tutorial-automate-vm-deployment.md
+        - name: 4. Vytvoření virtuálního počítače
+          href: ./linux/tutorial-custom-images.md
+        - name: 5. Vysoce dostupné virtuální počítače
+          href: ./linux/tutorial-availability-sets.md
+        - name: 6. Vytvoření škálovací sady
+          href: ./linux/tutorial-create-vmss.md
+        - name: 7. Vyrovnávání zatížení virtuálních počítačů
+          href: ./linux/tutorial-load-balancer.md
+        - name: 8. Správa sítě
+          href: ./linux/tutorial-virtual-network.md
+    - name: Windows
+      items:
+        - name: 1. Vytvoření a správa virtuálního počítače
+          href: ./windows/tutorial-manage-vm.md
+        - name: 2. Vytvoření a správa disků
+          href: ./windows/tutorial-manage-data-disk.md
+        - name: 3. Automatizace konfigurace
+          href: ./windows/tutorial-automate-vm-deployment.md
+        - name: 4. Vytvoření virtuálního počítače
+          href: ./windows/tutorial-custom-images.md
+        - name: 5. Vysoce dostupné virtuální počítače
+          href: ./windows/tutorial-availability-sets.md
+        - name: 6. Vytvoření škálovací sady
+          href: ./windows/tutorial-create-vmss.md
+        - name: 7. Vyrovnávání zatížení virtuálních počítačů
+          href: ./windows/tutorial-load-balancer.md
+        - name: 8. Správa sítě
+          href: ./windows/tutorial-virtual-network.md
 - name: Úlohy
   items:
     - name: Red Hat
       href: ./workloads/redhat/overview.md
-    - name: Vysokovýkonné výpočetní prostředí (HPC)
-      href: ./workloads/hpc/overview.md
-    - name: SAP
-      href: ./workloads/sap/get-started.md
+    - name: Cloud Foundry
+      href: ../cloudfoundry/index.yml
+    - name: Cassandra
+      href: /azure/architecture/reference-architectures/n-tier/n-tier-cassandra
+    - name: OpenShift
+      items:
+        - name: Přehled OpenShiftu
+          href: ./linux/openshift-get-started.md
+        - name: OpenShift Container Platform 4.x
+          href: ./linux/openshift-container-platform-4x.md
+        - name: Požadavky pro OpenShift Container Platform 3.11
+          href: ./linux/openshift-container-platform-3x-prerequisites.md
+        - name: OpenShift Container Platform 3.11
+          href: ./linux/openshift-container-platform-3x.md
+        - name: Marketplace OpenShift Container Platform 3.11 se samosprávou
+          href: ./linux/openshift-container-platform-3x-marketplace-self-managed.md
+        - name: Azure Stack
+          href: ./linux/openshift-azure-stack.md
+        - name: Úlohy po nasazení OpenShift Container Platform 3.11
+          href: ./linux/openshift-container-platform-3x-post-deployment.md
+        - name: Řešení potíží s nasazením OpenShift Container Platform 3.11
+          href: ./linux/openshift-container-platform-3x-troubleshooting.md
+        - name: Nasazení OKD
+          href: ./linux/openshift-okd.md
+    - name: SAP v Azure
+      items:
+        - name: Začínáme
+          href: ./workloads/sap/get-started.md
+        - name: Certifikace
+          href: ./workloads/sap/sap-certifications.md
+        - name: SAP HANA v Azure (velké instance)
+          items:
+            - name: Přehled
+              items:
+                - name: Co je SAP HANA ve velkých instancích Azure?
+                  href: ./workloads/sap/hana-overview-architecture.md
+                - name: Seznámení s podmínkami
+                  href: ./workloads/sap/hana-know-terms.md
+                - name: Certifikace
+                  href: ./workloads/sap/hana-certification.md
+                - name: Dostupné skladové položky pro HLI
+                  href: ./workloads/sap/hana-available-skus.md
+                - name: Velikosti
+                  href: ./workloads/sap/hana-sizing.md
+                - name: Požadavky na onboarding
+                  href: ./workloads/sap/hana-onboarding-requirements.md
+                - name: Rozšiřující uzly a datové vrstvy SAP HANA
+                  href: ./workloads/sap/hana-data-tiering-extension-nodes.md
+                - name: Provozní model a zodpovědnosti
+                  href: ./workloads/sap/hana-operations-model.md
+                - name: Kompatibilní operační systémy
+                  href: ./workloads/sap/os-compatibility-matrix-hana-large-instance.md
+        - name: Architektura
+          items:
+            - name: Obecná architektura
+              href: ./workloads/sap/hana-architecture.md
+            - name: Architektura sítě
+              href: ./workloads/sap/hana-network-architecture.md
+            - name: Architektura úložiště
+              href: ./workloads/sap/hana-storage-architecture.md
+            - name: Podporované scénáře HLI
+              href: ./workloads/sap/hana-supported-scenario.md
+        - name: Infrastruktura a možnosti připojení
+          items:
+            - name: Nasazení HLI
+              href: ./workloads/sap/hana-overview-infrastructure-connectivity.md
+            - name: Připojení virtuálních počítačů Azure k Velkým instancím HANA
+              href: ./workloads/sap/hana-connect-azure-vm-large-instances.md
+            - name: Připojení virtuální sítě k Velkým instancím HANA s využitím ExpressRoute
+              href: ./workloads/sap/hana-connect-vnet-express-route.md
+            - name: Další požadavky na síť
+              href: ./workloads/sap/hana-additional-network-requirements.md
+        - name: Instalace SAP HANA
+          items:
+            - name: Ověření konfigurace
+              href: ./workloads/sap/hana-installation.md
+            - name: Ukázková instalace HANA
+              href: ./workloads/sap/hana-example-installation.md
+        - name: Vysoká dostupnost a zotavení po havárii
+          items:
+            - name: Možnosti a aspekty
+              href: ./workloads/sap/hana-overview-high-availability-disaster-recovery.md
+            - name: Zálohování a obnovení
+              href: ./workloads/sap/hana-backup-restore.md
+            - name: Principy a příprava
+              href: ./workloads/sap/hana-concept-preparation.md
+            - name: Postup převzetí služeb při selhání pro zotavení po havárii
+              href: ./workloads/sap/hana-failover-procedure.md
+        - name: Řešení potíží a monitorování
+          items:
+            - name: Sledování HLI
+              href: ./workloads/sap/troubleshooting-monitoring.md
+            - name: Sledování a řešení potíží na straně HANA
+              href: ./workloads/sap/hana-monitor-troubleshoot.md
+        - name: Postup
+          items:
+            - name: Řízení velkých instancí Azure HANA prostřednictvím webu Azure Portal
+              href: ./workloads/sap/hana-li-portal.md
+            - name: Nastavení vysoké dostupnosti s využitím techniky STONITH
+              href: ./workloads/sap/ha-setup-with-stonith.md
+            - name: Zálohování operačního systému pro SKU typu II
+              href: ./workloads/sap/os-backup-type-ii-skus.md
+            - name: Povolit kdump pro velké instance HANA
+              href: ./workloads/sap/hana-large-instance-enable-kdump.md
+            - name: Upgrade operačního systému pro Velké instance HANA
+              href: ./workloads/sap/os-upgrade-hana-large-instance.md
+            - name: Nastavení serveru SMT pro SUSE Linux
+              href: ./workloads/sap/hana-setup-smt.md
+            - name: Migrace HLI do virtuálního počítače Azure
+              href: ./workloads/sap/hana-large-instance-virtual-machine-migration.md
+            - name: Nákup rezervace pro Velké instance SAP HANA
+              href: ../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md?context=/azure/virtual-machines/context/context
+    - name: SAP HANA ve službě Azure Virtual Machines
+      items:
+        - name: Instalace SAP HANA na virtuálních počítačích Azure
+          href: ./workloads/sap/hana-get-started.md
+        - name: Průvodce nasazením S/4 HANA nebo BW/4 HANA SAP CAL
+          href: ./workloads/sap/cal-s4h.md
+        - name: Konfigurace infrastruktury SAP HANA a operace v Azure
+          href: ./workloads/sap/hana-vm-operations.md
+        - name: Konfigurace úložiště virtuálních počítačů Azure SAP HANA
+          href: ./workloads/sap/hana-vm-operations-storage.md
+        - name: Svazky NFS v4.1 ve službě Azure NetApp Files pro SAP HANA
+          href: ./workloads/sap/hana-vm-operations-netapp.md
+        - name: Dostupnost SAP HANA ve službě Azure Virtual Machines
+          items:
+            - name: Přehled dostupnosti SAP HANA v Azure
+              href: ./workloads/sap/sap-hana-availability-overview.md
+            - name: Dostupnost SAP HANA v Azure v rámci jedné oblasti Azure
+              href: ./workloads/sap/sap-hana-availability-one-region.md
+            - name: Dostupnost SAP HANA v Azure napříč oblastmi Azure
+              href: ./workloads/sap/sap-hana-availability-across-regions.md
+            - name: Nastavení systémové replikace SAP HANA na SLES
+              href: ./workloads/sap/sap-hana-high-availability.md
+            - name: Nastavení systémové replikace SAP HANA na RHEL
+              href: ./workloads/sap/sap-hana-high-availability-rhel.md
+            - name: Nastavení systémové replikace SAP HANA s využitím ANF na RHEL
+              href: ./workloads/sap/sap-hana-high-availability-netapp-files-red-hat.md
+            - name: Řešení potíží se škálováním na více instancí SAP HANA a Pacemaker na SLES
+              href: ./workloads/sap/hana-vm-troubleshoot-scale-out-ha-on-sles.md
+            - name: HSR se škálováním SAP HANA na více instancí s využitím Pacemakeru na RHEL
+              href: ./workloads/sap/sap-hana-high-availability-scale-out-hsr-rhel.md
+            - name: Škálování na více instancí SAP HANA na uzlu v pohotovostním režimu se službou Azure NetApp Files na SLES
+              href: ./workloads/sap/sap-hana-scale-out-standby-netapp-files-suse.md
+            - name: Škálování na více instancí SAP HANA na uzlu v pohotovostním režimu se službou Azure NetApp Files na RHEL
+              href: ./workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel.md
+        - name: Přehled zálohování SAP HANA
+          href: ./workloads/sap/sap-hana-backup-guide.md
+        - name: Zálohování SAP HANA na úrovni souborů
+          href: ./workloads/sap/sap-hana-backup-file-level.md
+    - name: SAP NetWeaver a Business One ve službě Azure Virtual Machines
+      items:
+        - name: Kontrolní seznam pro nasazení a plánování úloh SAP
+          href: ./workloads/sap/sap-deployment-checklist.md
+        - name: Plánování a implementace SAP NetWeaveru v Azure
+          href: ./workloads/sap/planning-guide.md
+          items:
+            - name: Typy služby Azure Storage pro úlohy SAP
+              href: ./workloads/sap/planning-guide-storage.md
+            - name: Podporované scénáře pro úlohy SAP na virtuálních počítačích Azure
+              href: ./workloads/sap/sap-planning-supported-configurations.md
+            - name: Který software SAP se podporuje pro nasazení Azure
+              href: ./workloads/sap/sap-supported-product-on-azure.md
+        - name: Průvodce nasazením SAP NetWeaveru
+          href: ./workloads/sap/deployment-guide.md
+        - name: Průvodci nasazením DBMS pro úlohy SAP
+          items:
+            - name: Nasazení DBMS v obecných počítačích Azure Virtual Machines pro úlohy SAP
+              href: ./workloads/sap/dbms_guide_general.md
+            - name: Nasazení DBMS v počítačích Azure Virtual Machines s SQL Serverem pro úlohy SAP
+              href: ./workloads/sap/dbms_guide_sqlserver.md
+            - name: Nasazení DBMS v počítačích Azure Virtual Machines s Oraclem pro úlohy SAP
+              href: ./workloads/sap/dbms_guide_oracle.md
+            - name: Nasazení DBMS v počítačích Azure Virtual Machines s IBM DB2 pro úlohy SAP
+              href: ./workloads/sap/dbms_guide_ibm.md
+            - name: Vysoká dostupnost IBM DB2 LUW ve virtuálních počítačích Azure na SUSE Linux Enterprise Serveru
+              href: ./workloads/sap/dbms-guide-ha-ibm.md
+            - name: Vysoká dostupnost IBM DB2 LUW ve virtuálních počítačích Azure na linuxovém serveru Red Hat Enterprise
+              href: ./workloads/sap/high-availability-guide-rhel-ibm-db2-luw.md
+            - name: Nasazení DBMS v počítačích Azure Virtual Machines se SAP ASE pro úlohy SAP
+              href: ./workloads/sap/dbms_guide_sapase.md
+            - name: 'Nasazení SAP MaxDB, liveCache a Content Serveru v Azure'
+              href: ./workloads/sap/dbms_guide_maxdb.md
+            - name: Dostupnost SAP HANA ve službě Azure Virtual Machines
+              items:
+                - name: Přehled dostupnosti SAP HANA v Azure
+                  href: ./workloads/sap/sap-hana-availability-overview.md
+                - name: Dostupnost SAP HANA v Azure v rámci jedné oblasti Azure
+                  href: ./workloads/sap/sap-hana-availability-one-region.md
+                - name: Dostupnost SAP HANA v Azure napříč oblastmi Azure
+                  href: ./workloads/sap/sap-hana-availability-across-regions.md
+        - name: SAP Business One ve službě Azure Virtual Machines
+          href: ./workloads/sap/business-one-azure.md
+        - name: Průvodce nasazením SAP IDES na Windows/SQL Server SAP CAL
+          href: ./workloads/sap/cal-ides-erp6-erp7-sp3-sql.md
+        - name: Konektor SAP LaMa pro Azure
+          href: ./workloads/sap/lama-installation.md
+        - name: Vysoká dostupnost (HA) ve Windows a Linuxu
+          items:
+            - name: Přehled
+              href: ./workloads/sap/sap-high-availability-guide-start.md
+            - name: Architektura pro vysokou dostupnost
+              items:
+                - name: Scénáře a architektura pro vysokou dostupnost
+                  href: ./workloads/sap/sap-high-availability-architecture-scenarios.md
+                - name: Scénáře a architektura pro vyšší dostupnost
+                  href: ./workloads/sap/sap-higher-availability-architecture-scenarios.md
+                - name: Konfigurace úloh SAP s využitím služby Zóny dostupnosti Azure
+                  href: ./workloads/sap/sap-ha-availability-zones.md
+                - name: HA ve Windows se sdíleným diskem pro instanci (A)SCS
+                  href: ./workloads/sap/sap-high-availability-guide-wsfc-shared-disk.md
+                - name: HA ve Windows se sdílenou složkou SOFS pro instanci (A)SCS
+                  href: ./workloads/sap/sap-high-availability-guide-wsfc-file-share.md
+                - name: HA pro SAP NetWeaver ve Windows s využitím Azure NetApp Files (SMB)
+                  href: ./workloads/sap/high-availability-guide-windows-netapp-files-smb.md
+                - name: HA v SUSE Linuxu pro instanci (A)SCS
+                  href: ./workloads/sap/high-availability-guide-suse.md
+                - name: HA v SUSE Linuxu pro instanci (A)SCS s využitím Azure NetApp Files
+                  href: ./workloads/sap/high-availability-guide-suse-netapp-files.md
+                - name: Vysoká dostupnost v Red Hat Enterprise Linuxu pro instanci (A)SCS
+                  href: ./workloads/sap/high-availability-guide-rhel.md
+                - name: HA v Red Hat Enterprise Linuxu pro instanci (A)SCS s využitím Azure NetApp Files
+                  href: ./workloads/sap/high-availability-guide-rhel-netapp-files.md
+            - name: Příprava infrastruktury Azure
+              items:
+                - name: Windows se sdíleným diskem pro instanci (A)SCS
+                  href: ./workloads/sap/sap-high-availability-infrastructure-wsfc-shared-disk.md
+                - name: Windows se sdílenou složkou SOFS pro instanci (A)SCS
+                  href: ./workloads/sap/sap-high-availability-infrastructure-wsfc-file-share.md
+                - name: Vysoká dostupnost pro NFS na virtuálních počítačích Azure na SLES
+                  href: ./workloads/sap/high-availability-guide-suse-nfs.md
+                - name: GlusterFS na virtuálních počítačích Azure s Red Hat Enterprise Linuxem pro SAP NetWeaver
+                  href: ./workloads/sap/high-availability-guide-rhel-glusterfs.md
+                - name: Pacemaker na SLES
+                  href: ./workloads/sap/high-availability-guide-suse-pacemaker.md
+                - name: Pacemaker na RHEL
+                  href: ./workloads/sap/high-availability-guide-rhel-pacemaker.md
+                - name: Možnosti připojení veřejných koncových bodů pro virtuální počítače s využitím Azure Standard Load Balanceru ve scénářích SAP s vysokou dostupností
+                  href: ./workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections.md
+            - name: Instalace SAPu
+              items:
+                - name: Windows se sdíleným diskem pro instanci (A)SCS
+                  href: ./workloads/sap/sap-high-availability-installation-wsfc-shared-disk.md
+                - name: Windows se sdílenou složkou SOFS pro instanci (A)SCS
+                  href: ./workloads/sap/sap-high-availability-installation-wsfc-file-share.md
+                - name: HA pro SAP NetWeaver ve Windows s využitím Azure NetApp Files (SMB)
+                  href: ./workloads/sap/high-availability-guide-windows-netapp-files-smb.md
+                - name: SUSE Linux s NFS pro instanci (A)SCS
+                  href: ./workloads/sap/high-availability-guide-suse.md
+                - name: SUSE Linux s NFS pro instanci (A)SCS s využitím Azure NetApp Files
+                  href: ./workloads/sap/high-availability-guide-suse-netapp-files.md
+                - name: Vysoká dostupnost pro SAP NetWeaver na Red Hat Enterprise Linuxu
+                  href: ./workloads/sap/high-availability-guide-rhel.md
+                - name: Red Hat Enterprise Linux s NFS pro instanci (A)SCS s využitím Azure NetApp Files
+                  href: ./workloads/sap/high-availability-guide-rhel-netapp-files.md
+            - name: SAP s několika SID
+              items:
+                - name: Windows se sdíleným diskem Azure pro instanci (A)SCS
+                  href: ./workloads/sap/sap-ascs-ha-multi-sid-wsfc-azure-shared-disk.md
+                - name: Windows se sdíleným diskem pro instanci (A)SCS
+                  href: ./workloads/sap/sap-ascs-ha-multi-sid-wsfc-shared-disk.md
+                - name: Windows se sdílenou složkou SOFS pro instanci (A)SCS
+                  href: ./workloads/sap/sap-ascs-ha-multi-sid-wsfc-file-share.md
+                - name: SLES s několika SID Pacemakeru pro instanci A(SCS)
+                  href: ./workloads/sap/high-availability-guide-suse-multi-sid.md
+                - name: RHEL s několika SID Pacemakeru pro instanci A(SCS)
+                  href: ./workloads/sap/high-availability-guide-rhel-multi-sid.md
+        - name: Azure Site Recovery pro zotavení po havárii SAPu
+          href: ../site-recovery/site-recovery-workload.md#protect-sap
+        - name: Skupiny umístění bezkontaktní komunikace Azure pro optimální latenci sítě s aplikacemi SAP
+          href: ./workloads/sap/sap-proximity-placement-scenarios.md
+        - name: Platforma SAP BusinessObjects Business Intelligence v Azure
+          items:
+            - name: Průvodce plánováním a implementací platformy SAP BusinessObjects BI v Azure
+              href: ./workloads/sap/businessobjects-deployment-guide.md
+            - name: Průvodce nasazením platformy SAP BusinessObjects BI pro Linux v Azure
+              href: ./workloads/sap/businessobjects-deployment-guide-linux.md
+        - name: Integrace Azure AD s aplikacemi SAP
+          items:
+            - name: Zřizování uživatelů ze SAP SuccessFactors do Active Directory
+              href: ../active-directory/saas-apps/sap-successfactors-inbound-provisioning-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: Zřizování uživatelů ze SAP SuccessFactors do Azure AD
+              href: ../active-directory/saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: Zpětný zápis uživatelů z Azure AD do SAP SuccessFactors
+              href: ../active-directory/saas-apps/sap-successfactors-writeback-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: Zřizování uživatelů ve službě SAP Cloud Platform Identity Authentication
+              href: ../active-directory/saas-apps/sap-cloud-platform-identity-authentication-provisioning-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: Konfigurace jednotného přihlašování s využitím služby SAP Cloud Platform Identity Authentication
+              href: ../active-directory/saas-apps/sap-hana-cloud-platform-identity-authentication-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: Konfigurace jednotného přihlašování s využitím SAP SuccessFactors
+              href: ../active-directory/saas-apps/successfactors-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: Konfigurace jednotného přihlašování s využitím SAP Analytics Cloudu
+              href: ../active-directory/saas-apps/sapboc-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: Konfigurace jednotného přihlašování s využitím SAP Fiori
+              href: ../active-directory/saas-apps/sap-fiori-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: Konfigurace jednotného přihlašování s využitím SAP Qualtrics
+              href: ../active-directory/saas-apps/qualtrics-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: Konfigurace jednotného přihlašování s využitím služby SAP Ariba
+              href: ../active-directory/saas-apps/ariba-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: Konfigurace jednotného přihlašování s využitím služby SAP Concur Travel and Expense
+              href: ../active-directory/saas-apps/concur-travel-and-expense-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: Konfigurace jednotného přihlašování s využitím cloudové platformy SAP
+              href: ../active-directory/saas-apps/sap-hana-cloud-platform-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: Konfigurace jednotného přihlašování s využitím SAP NetWeaveru
+              href: ../active-directory/saas-apps/sap-netweaver-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: Konfigurace jednotného přihlašování s využitím SAP Business ByDesignu
+              href: ../active-directory/saas-apps/sapbusinessbydesign-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: Konfigurace jednotného přihlašování s využitím SAP HANA
+              href: ../active-directory/saas-apps/saphana-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: Konfigurace jednotného přihlašování s využitím služby SAP Cloud for Customer
+              href: ../active-directory/saas-apps/sap-customer-cloud-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: Konfigurace jednotného přihlašování s využitím služby SAP Fiori Launchpad
+              href: 'https://blogs.sap.com/2017/02/20/your-s4hana-environment-part-7-fiori-launchpad-saml-single-sing-on-with-azure-ad'
+        - name: Integrace služeb Azure do SAPu
+          items:
+            - name: Použití SAP HANA v Power BI Desktopu
+              href: /power-bi/desktop-sap-hana
+            - name: DirectQuery a SAP HANA
+              href: /power-bi/desktop-directquery-sap-hana
+            - name: Použití konektoru SAP BW v Power BI Desktopu
+              href: /power-bi/desktop-sap-bw-connector
+            - name: Azure Data Factory nabízí integraci dat pro SAP HANA a Business Warehouse
+              href: 'https://azure.microsoft.com/blog/azure-data-factory-offer-sap-hana-and-business-warehouse-data-integration'
+        - name: Azure Monitor for SAP Solutions
+          items:
+            - name: Azure Monitor for SAP Solutions – přehled
+              href: ./workloads/sap/azure-monitor-overview.md
+            - name: Azure Monitor for SAP Solutions – poskytovatelé
+              href: ./workloads/sap/azure-monitor-providers.md
+            - name: Konfigurace Azure Monitoru for SAP Solutions – portál
+              href: ./workloads/sap/azure-monitor-sap-quickstart.md
+            - name: Konfigurace Azure Monitoru for SAP Solutions – Azure PowerShell
+              href: ./workloads/sap/azure-monitor-sap-quickstart-powershell.md
+            - name: Azure Monitor for SAP Solutions – nejčastější dotazy
+              href: ./workloads/sap/azure-monitor-faq.md
+        - name: Referenční informace
+          items:
+            - name: Azure CLI
+              href: /cli/azure/ext/sap-hana/hanainstance
+            - name: Azure PowerShell
+              href: /powershell/module/az.hanaonazure/#sap-hana-on-azure
     - name: Oracle
-      href: ./workloads/oracle/oracle-overview.md
-    - name: Změna hostování mainframů
-      href: ./workloads/mainframe-rehosting/overview.md
-- name: Nasazení Classic
+      href: ./workloads/oracle/oracle-database-quick-create.md
+    - name: Elasticsearch
+      href: ./linux/tutorial-elasticsearch.md
+    - name: Filtr paketů FreeBSD
+      href: ./linux/freebsd-pf-nat.md
+    - name: Databáze
+      items:
+        - name: MySQL v SUSE
+          href: ./linux/mysql-on-opensuse.md
+        - name: MongoDB
+          items:
+            - name: Linux
+              href: ./linux/install-mongodb.md
+            - name: Windows
+              href: ./windows/install-mongodb.md
+        - name: PostgreSQL
+          href: ./linux/postgresql-install.md
+        - name: MS SQL v Linuxu
+          href: /sql/linux/sql-server-linux-azure-virtual-machine
+    - name: Vysokovýkonné výpočetní prostředí (HPC)
+      href: /azure/architecture/topics/high-performance-computing/
+    - name: IBM Db2 pureScale
+      items:
+        - name: Architektura
+          href: ./linux/ibm-db2-purescale-azure.md
+        - name: Nasazení
+          href: ./linux/deploy-ibm-db2-purescale-azure.md
+    - name: Kontejnery
+      items:
+        - name: Vytvoření hostitele Docker
+          href: 'https://github.com/Azure/azure-docker-extension/blob/master/README.md'
+        - name: Použití Docker Machine
+          href: ./linux/docker-machine.md
+        - name: Použití Docker Compose
+          href: ./linux/docker-compose-quickstart.md
+    - name: Visual Studio
+      href: ./windows/using-visual-studio-vm.md
+- name: Instance
   items:
-    - name: Virtuální počítače s Linuxem používající nasazení Classic
-      href: /previous-versions/azure/virtual-machines/linux/classic/
-    - name: Virtuální počítače s Windows používající nasazení Classic
-      href: /previous-versions/azure/virtual-machines/windows/classic/
+    - name: Velikosti
+      items:
+        - name: Přehled
+          href: sizes.md
+        - name: Změna velikosti virtuálního počítače
+          items:
+            - name: Rozhraní příkazového řádku
+              href: ./linux/change-vm-size.md
+            - name: Portál nebo PowerShell
+              href: ./windows/resize-vm.md
+        - name: Virtuální počítače 2. generace
+          href: generation-2.md
+        - name: Obecné účely
+          items:
+            - name: Přehled
+              href: sizes-general.md
+            - name: Av2-series
+              href: av2-series.md
+            - name: B-Series s možností zvládání výkonových špiček
+              href: sizes-b-series-burstable.md
+            - name: Řada DCv2
+              href: dcv2-series.md
+            - name: Řada Dv2 a DSv2
+              href: dv2-dsv2-series.md
+            - name: Řada Dv3 a DSv3
+              href: dv3-dsv3-series.md
+            - name: Řada Dav4 a Dasv4
+              href: dav4-dasv4-series.md
+            - name: Řada Ddv4 a Ddsv4
+              href: ddv4-ddsv4-series.md
+            - name: Řada Dv4 a Dsv4
+              href: dv4-dsv4-series.md
+        - name: Optimalizované z hlediska výpočetních služeb
+          items:
+            - name: Přehled
+              href: sizes-compute.md
+            - name: Řada Fsv2
+              href: fsv2-series.md
+        - name: Optimalizované z hlediska paměti
+          displayName: Esv3 Ev3 Easv4 Eav4 M-series GS G-series DSv2 Dv2
+          items:
+            - name: Přehled
+              href: sizes-memory.md
+            - name: 'Řada Dv2 a DSv2, 11–15'
+              href: dv2-dsv2-series-memory.md
+            - name: Řada Ev3 a Esv3
+              href: ev3-esv3-series.md
+            - name: Řada Eav4 a Easv4
+              href: eav4-easv4-series.md
+            - name: Řada Edv4 a Edsv4
+              href: edv4-edsv4-series.md
+            - name: Řada Ev4 a Esv4
+              href: ev4-esv4-series.md
+            - name: Řada M
+              href: m-series.md
+            - name: Řada Mv2
+              href: mv2-series.md
+            - name: Virtuální procesory s omezením
+              href: constrained-vcpu.md
+        - name: Optimalizované z hlediska úložiště
+          items:
+            - name: Přehled
+              href: sizes-storage.md
+            - name: Řada Lsv2
+              href: lsv2-series.md
+            - name: Optimalizace výkonu
+              items:
+                - name: Linux
+                  href: ./linux/storage-performance.md
+                - name: Windows
+                  href: ./windows/storage-performance.md
+        - name: GPU – zrychlené výpočetní funkce
+          items:
+            - name: Přehled
+              href: sizes-gpu.md?context=/azure/virtual-machines/context/context
+            - name: Řada NC
+              href: nc-series.md
+            - name: Řada NCv2
+              href: ncv2-series.md
+            - name: Řada NCv3
+              href: ncv3-series.md
+            - name: Řada NCasT4_v3
+              href: nct4-v3-series.md
+            - name: Řada ND
+              href: nd-series.md
+            - name: Řada NDv2
+              href: ndv2-series.md
+            - name: Řada NV
+              href: nv-series.md
+            - name: Řada NVv3
+              href: nvv3-series.md
+            - name: Řada NVv4
+              href: nvv4-series.md
+            - name: Nastavení ovladačů NVIDIA GPU
+              items:
+                - name: Linux
+                  href: ./linux/n-series-driver-setup.md
+                - name: Windows
+                  href: ./windows/n-series-driver-setup.md
+            - name: Nastavení ovladačů AMD GPU
+              href: ./windows/n-series-amd-driver-setup.md
+        - name: Vysokovýkonné výpočetní prostředí
+          displayName: H-series
+          items:
+            - name: Přehled
+              href: sizes-hpc.md
+            - name: H-series
+              href: h-series.md
+            - name: Řada HB
+              href: hb-series.md
+            - name: Řada HBv2
+              href: hbv2-series.md
+            - name: Řada HC
+              href: hc-series.md
+        - name: Kvóty virtuálních procesorů
+          items:
+            - name: Rozhraní příkazového řádku
+              href: ./linux/quotas.md
+            - name: PowerShell
+              href: ./windows/quotas.md
+        - name: Virtuální počítače Azure bez dočasného disku
+          href: azure-vms-no-temp-disk.md
+        - name: Zásady vytváření názvů velikostí virtuálních počítačů Azure
+          href: vm-naming-conventions.md
+        - name: Předchozí generace
+          displayName: D-series Ds-series A-series Basic
+          href: sizes-previous-gen.md
+        - name: Izolované velikosti
+          href: isolation.md
+        - name: Výpočetní jednotky Azure (ACU)
+          href: acu.md
+        - name: Výsledky srovnávacích testů
+          items:
+            - name: Linux
+              href: ./linux/compute-benchmark-scores.md
+            - name: Windows
+              href: ./windows/compute-benchmark-scores.md
+    - name: Vyhrazení hostitelé
+      items:
+        - name: Přehled
+          href: ./linux/dedicated-hosts.md
+        - name: Rozhraní příkazového řádku
+          href: ./linux/dedicated-hosts-cli.md
+        - name: Portál
+          href: dedicated-hosts-portal.md
+        - name: PowerShell
+          href: ./windows/dedicated-hosts-powershell.md
+    - name: Možnosti nákupu
+      items:
+        - name: Spotové virtuální počítače
+          displayName: 'pre-empt, preempt, spot'
+          items:
+            - name: Přehled
+              href: spot-vms.md
+            - name: Rozhraní příkazového řádku
+              href: ./linux/spot-cli.md
+            - name: Portál
+              href: spot-portal.md
+            - name: PowerShell
+              href: ./windows/spot-powershell.md
+            - name: Šablona ARM
+              displayName: template ARM
+              href: ./linux/spot-template.md
+            - name: Kódy chyb
+              href: error-codes-spot.md
+        - name: Zvýhodněné hybridní využití Azure
+          items:
+            - name: Linux
+              href: ./linux/azure-hybrid-benefit-linux.md
+            - name: Windows
+              items:
+                - name: Použití licence programu Zvýhodněné hybridní využití Azure
+                  href: ./windows/hybrid-use-benefit-licensing.md
+                - name: Použití práv hostování více klientů pro Windows 10
+                  href: ./windows/windows-desktop-multitenant-hosting-deployment.md
+        - name: Rezervované instance
+          items:
+            - name: Předplacení pro virtuální počítače
+              href: ./linux/prepay-reserved-vm-instances.md
+            - name: Předplacení pro služby Dedicated Host
+              href: prepay-dedicated-hosts-reserved-instances.md
+            - name: Co jsou rezervace Azure?
+              href: ../cost-management-billing/reservations/save-compute-costs-reservations.md?context=/azure/virtual-machines/context/context
+            - name: Flexibilita velikosti instance virtuálního počítače
+              href: reserved-vm-instance-size-flexibility.md
+    - name: Vytvoření virtuálních počítačů se systémem Linux
+      items:
+        - name: Schválené distribuce
+          href: ./linux/endorsed-distros.md
+        - name: Použití rozhraní příkazového řádku
+          href: ./linux/create-cli-complete.md
+        - name: Použití šablony ARM
+          displayName: Azure Resource Manager
+          href: ./linux/create-ssh-secured-vm-from-template.md
+        - name: Použití rozhraní REST API
+          href: ./linux/create-vm-rest-api.md
+        - name: Kopírování virtuálního počítače pomocí rozhraní příkazového řádku
+          href: ./linux/copy-vm.md
+        - name: Sestavení pomocí Jenkinse
+          href: /azure/developer/jenkins/pipeline-with-github-and-docker
+        - name: Integrace Jenkinse s Azure DevOps
+          href: /azure/developer/jenkins/deploy-to-linux-vm-using-azure-devops-services
+        - name: Konfigurace strategie postupné implementace
+          href: ./linux/tutorial-devops-azure-pipelines-classic.md
+        - name: Konfigurovat strategii pro Kanárské nasazení
+          href: ./linux/tutorial-azure-devops-canary-strategy.md
+        - name: Konfigurace strategie nasazení Blue-Green
+          href: ./linux/tutorial-azure-devops-blue-green-strategy.md
+        - name: CI/CD s Azure Pipelines (YAML)
+          href: ./linux/tutorial-build-deploy-azure-pipelines.md
+        - name: Vytvořit sadu svítilen
+          href: ./linux/tutorial-lamp-stack.md
+        - name: Zabezpečení webového serveru pomocí SSL
+          items:
+            - name: Linux
+              href: ./linux/tutorial-secure-web-server.md
+            - name: Windows
+              href: ./windows/tutorial-secure-web-server.md
+    - name: Připojení k virtuálním počítačům s Linuxem
+      items:
+        - name: SSH pro virtuální počítače se systémem Linux
+          items:
+            - name: V systému Linux nebo macOS
+              href: ./linux/mac-create-ssh-keys.md
+            - name: V systému Windows
+              href: ./linux/ssh-from-windows.md
+            - name: Na portálu
+              href: ssh-keys-portal.md
+            - name: Podrobné kroky
+              href: ./linux/create-ssh-keys-detailed.md
+        - name: Vzdálená plocha pro Linux
+          href: ./linux/use-remote-desktop.md
+    - name: Vytvoření virtuálních počítačů s Windows
+      items:
+        - name: Použití jazyka C#
+          href: ../azure-resource-manager/templates/deploy-rest.md?context=/azure/virtual-machines/context/context
+        - name: Použití specializovaného disku
+          items:
+            - name: Portál
+              href: ./windows/create-vm-specialized-portal.md
+            - name: PowerShell
+              href: ./windows/create-vm-specialized.md
+        - name: Vytvoření virtuálního počítače pomocí Chefu
+          href: /azure/developer/chef/windows-vm-configure
+        - name: Použití Javy
+          href: ./windows/java.md
+        - name: Použití Pythonu
+          href: ./windows/python.md
+        - name: Použití šablony ARM
+          displayName: Azure Resource Manager template
+          href: ./windows/ps-template.md
+    - name: Připojení k virtuálním počítačům s Windows
+      href: ./windows/connect-logon.md
+      items:
+        - name: WinRM
+          href: ./windows/winrm.md
+    - name: Rozšíření
+      items:
+        - name: Přehled
+          href: ./extensions/overview.md
+        - name: Linux
+          items:
+            - name: Funkce Linux
+              href: ./extensions/features-linux.md
+            - name: Agent virtuálního počítače s Linuxem
+              href: ./extensions/agent-linux.md
+        - name: Windows
+          items:
+            - name: Funkce Windows
+              href: ./extensions/features-windows.md
+            - name: Agent virtuálního počítače s Windows
+              href: ./extensions/agent-windows.md
+        - name: Azure Disk Encryption
+          items:
+            - name: Linux
+              href: ./extensions/azure-disk-enc-linux.md
+            - name: Windows
+              href: ./extensions/azure-disk-enc-windows.md
+        - name: Azure Key Vault
+          items:
+            - name: Linux
+              href: ./extensions/key-vault-linux.md
+            - name: Windows
+              href: ./extensions/key-vault-windows.md
+        - name: Azure Backup pro SQL Server
+          items:
+            - name: Azure Backup pro SQL Server
+              href: ./extensions/backup-azure-sql-server-running-azure-vm.md
+        - name: Vlastní skript
+          items:
+            - name: Linux – verze 2
+              href: ./extensions/custom-script-linux.md
+            - name: Windows
+              href: ./extensions/custom-script-windows.md
+        - name: Antimalware IaaS pro Windows
+          href: ./extensions/iaas-antimalware-windows.md
+        - name: Snímek virtuálního počítače
+          items:
+            - name: Linux
+              href: ./extensions/vmsnapshot-linux.md
+            - name: Windows
+              href: ./extensions/vmsnapshot-windows.md
+        - name: Rozšíření služby Network Watcher
+          items:
+            - name: Linux
+              href: ./extensions/network-watcher-linux.md
+            - name: Windows
+              href: ./extensions/network-watcher-windows.md
+            - name: Aktualizace na nejnovější verzi
+              href: ./extensions/network-watcher-update.md
+        - name: Ovladače InfiniBand
+          items:
+            - name: Linux
+              href: ./extensions/hpc-compute-infiniband-linux.md
+            - name: Windows
+              href: ./extensions/hpc-compute-infiniband-windows.md
+        - name: Ovladače NVIDIA GPU
+          items:
+            - name: Linux
+              href: ./extensions/hpccompute-gpu-linux.md
+            - name: Windows
+              href: ./extensions/hpccompute-gpu-windows.md
+        - name: Ovladače AMD GPU
+          items:
+            - name: Windows
+              href: ./extensions/hpccompute-amd-gpu-windows.md
+        - name: Azure Monitor
+          items:
+            - name: Agent Azure Monitoru
+              href: ../azure-monitor/platform/azure-monitor-agent-install.md?context=/azure/virtual-machines/context/context
+            - name: Rozšíření diagnostiky
+              href: ../azure-monitor/platform/diagnostics-extension-overview.md?context=/azure/virtual-machines/context/context
+            - name: Log Analytics
+              items:
+                - name: Linux
+                  href: ./extensions/oms-linux.md
+                - name: Windows
+                  href: ./extensions/oms-windows.md
+            - name: Azure Monitor pro virtuální počítače
+              items:
+                - name: Agent závislostí pro Linux
+                  href: ./extensions/agent-dependency-linux.md
+                - name: Agent závislostí pro Windows
+                  href: ./extensions/agent-dependency-windows.md
+        - name: PowerShell DSC
+          href: ./extensions/dsc-overview.md
+          items:
+            - name: DSC a Linux
+              href: ./extensions/dsc-linux.md
+            - name: DSC a Windows
+              href: ./extensions/dsc-windows.md
+            - name: Zpracování přihlašovacích údajů
+              href: ./extensions/dsc-credentials.md
+            - name: Použití šablon
+              href: ./extensions/dsc-template.md
+        - name: Přístup k virtuálním počítačům
+          href: ./extensions/vmaccess.md
+        - name: Rozšíření jiných výrobců
+          items:
+            - name: Chef
+              href: ./extensions/chef.md
+            - name: Stackify Retrace
+              href: ./extensions/stackify-retrace-linux.md
+            - name: Symantec
+              href: ./extensions/symantec.md
+        - name: Omezení instalace rozšíření
+          items:
+            - name: Linux
+              href: ./extensions/extensions-rmpolicy-howto-cli.md
+            - name: Windows
+              href: ./extensions/extensions-rmpolicy-howto-ps.md
+        - name: Aktualizace agenta pro Linux
+          href: ./extensions/update-linux-agent.md
+        - name: Export rozšíření
+          href: ./extensions/export-templates.md
+        - name: Řešení potíží
+          href: ./extensions/troubleshoot.md
+        - name: Problémy se systémy Linux s podporou Pythonu 3
+          href: ./extensions/issues-using-vm-extensions-python-3.md
+    - name: Migrace z modelu Classic na Azure Resource Manager
+      items:
+        - name: Vyřazování od 1. března 2023
+          href: classic-vm-deprecation.md
+        - name: Přehled migrace
+          href: migration-classic-resource-manager-overview.md
+        - name: Podrobné informace o migraci
+          href: migration-classic-resource-manager-deep-dive.md
+        - name: Plánování migrace
+          href: migration-classic-resource-manager-plan.md
+        - name: Migrovat pomocí rozhraní příkazového řádku
+          href: migration-classic-resource-manager-cli.md
+        - name: Migrace pomocí prostředí PowerShell
+          href: migration-classic-resource-manager-ps.md
+        - name: Běžné chyby při migraci
+          href: migration-classic-resource-manager-errors.md
+        - name: Komunitní nástroje pro migraci
+          href: migration-classic-resource-manager-community-tools.md
+        - name: Nejčastější dotazy
+          href: migration-classic-resource-manager-faq.md
+    - name: Základy správy
+      items:
+        - name: Správa prostředků
+          items:
+            - name: Linux
+              href: ./linux/tutorial-govern-resources.md
+            - name: Windows
+              href: ./windows/tutorial-govern-resources.md
+        - name: Časová synchronizace
+          items:
+            - name: Linux
+              href: ./linux/time-sync.md
+            - name: Windows
+              href: ./windows/time-sync.md
+        - name: Spouštění skriptů na virtuálním počítači
+          items:
+            - name: Rozšíření vlastních skriptů
+              items:
+                - name: Linux
+                  href: ./extensions/custom-script-linux.md
+                - name: Windows
+                  href: ./extensions/custom-script-windows.md
+            - name: Spuštění příkazu
+              items:
+                - name: Linux
+                  href: ./linux/run-command.md
+                - name: Windows
+                  href: ./windows/run-command.md
+            - name: Hybrid Runbook Worker
+              href: ../automation/automation-hybrid-runbook-worker.md
+            - name: Konzola sériového portu
+              items:
+                - name: Linux
+                  href: ./troubleshooting/serial-console-linux.md
+                - name: Windows
+                  href: ./troubleshooting/serial-console-windows.md
+        - name: Povolení vnořené virtualizace
+          href: ./windows/nested-virtualization.md
+        - name: File Storage
+          items:
+            - name: Připojení Linux pomocí protokolu SMB
+              href: ./linux/mount-azure-file-storage-on-linux-using-smb.md
+            - name: Kopírování souborů do virtuálního počítače s Linuxem
+              href: ./linux/copy-files-to-linux-vm-using-scp.md
+        - name: Aktualizace a opravy
+          items:
+            - name: Infrastruktura aktualizací Red Hatu
+              href: ./workloads/redhat/redhat-rhui.md
+- name: Obrázky
+  items:
+    - name: Image Marketplace
+      items:
+        - name: Najít Azure Marketplace imagí
+          items:
+            - name: Rozhraní příkazového řádku
+              href: ./linux/cli-ps-findimage.md
+            - name: PowerShell
+              href: ./windows/cli-ps-findimage.md
+            - name: Bitové kopie klientů Windows
+              href: ./windows/client-images.md
+    - name: Vlastní image pro Linux
+      items:
+        - name: Přehled
+          href: ./linux/imaging.md
+        - name: Zřizování Linux
+          href: ./linux/provisioning.md
+        - name: Specifické požadavky na distribuci Linux
+          items:
+            - name: Obecné kroky
+              href: ./linux/create-upload-generic.md
+            - name: CentOS
+              href: ./linux/create-upload-centos.md
+            - name: Debian
+              href: ./linux/debian-create-upload-vhd.md
+            - name: Flatcar Container Linux
+              href: ./linux/flatcar-create-upload-vhd.md
+            - name: FreeBSD
+              href: ./linux/freebsd-intro-on-azure.md
+            - name: Oracle Linux
+              href: ./linux/oracle-create-upload-vhd.md
+            - name: OpenBSD
+              href: ./linux/create-upload-openbsd.md
+            - name: Red Hat
+              href: ./linux/redhat-create-upload-vhd.md
+            - name: SUSE
+              href: ./linux/suse-create-upload-vhd.md
+            - name: Ubuntu
+              href: ./linux/create-upload-ubuntu.md
+        - name: Použití cloud-init
+          items:
+            - name: Přehled Cloud-init
+              href: ./linux/using-cloud-init.md
+            - name: Podrobné informace
+              href: ./linux/cloud-init-deep-dive.md
+            - name: Řešení potíží
+              href: ./linux/cloud-init-troubleshooting.md
+            - name: Konfigurace názvu hostitele virtuálního počítače
+              href: ./linux/cloudinit-update-vm-hostname.md
+            - name: Aktualizace balíčků ve virtuálním počítači
+              href: ./linux/cloudinit-update-vm.md
+            - name: Přidání uživatele ve virtuálním počítači
+              href: ./linux/cloudinit-add-user.md
+            - name: Konfigurace stránkovacího souboru
+              href: ./linux/cloudinit-configure-swapfile.md
+            - name: Spuštění existujícího skriptu Bash
+              href: ./linux/cloudinit-bash-script.md
+            - name: Příprava existujícího virtuálního počítače pro cloud-init
+              href: ./linux/cloudinit-prepare-custom-image.md
+        - name: Vytváření imagí Linux bez agenta zřizování
+          href: ./linux/no-agent.md
+        - name: Zákaz zřizování linuxových agentů
+          href: ./linux/disable-provisioning.md
+        - name: Zachycení virtuálního počítače do spravované image
+          href: ./linux/capture-image.md
+    - name: Vlastní image Windows
+      items:
+        - name: Příprava VHD pro nahrání
+          href: ./windows/prepare-for-upload-vhd-image.md
+        - name: Nahrání virtuálního pevného disku a vytvoření spravované image
+          href: ./windows/upload-generalized-managed.md
+        - name: Zachycení spravované image
+          href: ./windows/capture-image-resource.md
+        - name: Vytvoření virtuálního počítače ze spravované image
+          href: ./windows/create-vm-generalized-managed.md
+    - name: Galerie sdílených imagí
+      items:
+        - name: Přehled
+          href: ./linux/shared-image-galleries.md
+        - name: Rozhraní příkazového řádku
+          items:
+            - name: Vytvoření galerie
+              href: shared-images-cli.md
+            - name: Vytvoření image
+              items:
+                - name: Z virtuálního počítače
+                  href: image-version-vm-cli.md
+                - name: Ze spravovaného disku nebo snímku
+                  href: image-version-snapshot-cli.md
+                - name: Klonování spravované image
+                  href: image-version-managed-image-cli.md
+                - name: Kopírování z jiné galerie
+                  href: image-version-another-gallery-cli.md
+            - name: Vytvoření virtuálního počítače
+              items:
+                - name: Generalizovaná
+                  href: vm-generalized-image-version-cli.md
+                - name: Specializovaná
+                  href: vm-specialized-image-version-cli.md
+            - name: Aktualizace prostředků imagí
+              href: update-image-resources-cli.md
+            - name: Registrace aplikace pro sdílení
+              items:
+                - name: Linux
+                  href: ./linux/share-images-across-tenants.md
+                - name: Windows
+                  href: ./windows/share-images-across-tenants.md
+        - name: PowerShell
+          items:
+            - name: Vytvoření galerie
+              href: shared-images-powershell.md
+            - name: Vytvoření verze image
+              items:
+                - name: Z virtuálního počítače
+                  href: image-version-vm-powershell.md
+                - name: Ze spravovaného disku nebo snímku
+                  href: image-version-snapshot-powershell.md
+                - name: Klonování spravované image
+                  href: image-version-managed-image-powershell.md
+                - name: Kopírování z jiné galerie
+                  href: image-version-another-gallery-powershell.md
+            - name: Vytvoření virtuálního počítače
+              items:
+                - name: Generalizovaná
+                  href: vm-generalized-image-version-powershell.md
+                - name: Specializovaná
+                  href: vm-specialized-image-version-powershell.md
+                - name: Aktualizace prostředků imagí
+                  href: update-image-resources-powershell.md
+                - name: Registrace aplikace pro sdílení
+                  href: windows/share-images-across-tenants.md
+        - name: Portál
+          items:
+            - name: 'Vytvoření galerie, image a virtuálního počítače'
+              items:
+                - name: Linux
+                  href: ./linux/shared-images-portal.md
+                - name: Windows
+                  href: ./windows/shared-images-portal.md
+        - name: Šablony Resource Manageru
+          items:
+            - name: Vytvoření služby Shared Image Gallery
+              href: 'https://azure.microsoft.com/resources/templates/101-sig-create/'
+            - name: Vytvoření definici image v Shared Image Gallery
+              href: 'https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/'
+            - name: Vytvoření verze image v Shared Image Gallery
+              href: 'https://azure.microsoft.com/resources/templates/101-sig-image-version-create/'
+            - name: Vytvoření virtuálního počítače z verze image
+              href: 'https://azure.microsoft.com/resources/templates/101-vm-from-sig/'
+        - name: Řešení potíží se sdílenými imagemi
+          href: troubleshooting-shared-images.md
+        - name: Použití klíčů spravovaných zákazníkem
+          displayName: 'SSE, CMK, encrypt'
+          href: image-version-encryption.md
+        - name: Spravovaný disk z verze image
+          href: managed-disk-from-image-version.md
+    - name: Image Builder (Preview)
+      items:
+        - name: Přehled
+          href: image-builder-overview.md
+        - name: Rozhraní příkazového řádku
+          items:
+            - name: Linux
+              href: ./linux/image-builder.md
+            - name: Windows
+              href: ./windows/image-builder.md
+        - name: PowerShell
+          href: ./windows/image-builder-powershell.md
+        - name: Použití virtuální sítě
+          items:
+            - name: Rozhraní příkazového řádku
+              href: ./linux/image-builder-vnet.md
+            - name: PowerShell
+              href: ./windows/image-builder-vnet.md
+        - name: Možnosti sítí
+          href: ./linux/image-builder-networking.md
+        - name: Konfigurace oprávnění
+          items:
+            - name: CLI
+              href: ./linux/image-builder-permissions-cli.md
+            - name: PowerShell
+              href: ./linux/image-builder-permissions-powershell.md
+        - name: Úloha DevOps
+          href: ./linux/image-builder-devops-task.md
+        - name: Referenční informace k šabloně Image Builderu
+          displayName: json
+          href: ./linux/image-builder-json.md
+        - name: Sestavení pro galerie imagí
+          items:
+            - name: Linux
+              href: ./linux/image-builder-gallery.md
+            - name: Windows
+              href: ./windows/image-builder-gallery.md
+        - name: Aktualizace existující image
+          items:
+            - name: Linux
+              href: ./linux/image-builder-gallery-update-image-version.md
+            - name: Windows
+              href: ./windows/image-builder-gallery-update-image-version.md
+        - name: Ukládání skriptů
+          href: ./linux/image-builder-user-assigned-identity.md
+        - name: Řešení potíží
+          href: ./linux/image-builder-troubleshoot.md
+    - name: Informace o plánu nákupu
+      href: marketplace-images.md
+    - name: Sestavení image pomocí Packeru
+      items:
+        - name: Linux
+          href: ./linux/build-image-with-packer.md
+        - name: Windows
+          href: ./windows/build-image-with-packer.md
+- name: Dostupnost a škálování
+  items:
+    - name: Škálovací sady
+      href: ../virtual-machine-scale-sets/overview.md?context=/azure/virtual-machines/context/context
+    - name: Dostupnost
+      href: availability.md
+    - name: Společné umístění
+      href: ./linux/co-location.md
+    - name: Výkon sítě
+      href: ../virtual-network/virtual-network-optimize-network-bandwidth.md?context=/azure/virtual-machines/context/context
+    - name: Stavy a životní cyklus
+      href: states-lifecycle.md
+    - name: Automatické škálování
+      href: ../virtual-machine-scale-sets/overview.md?context=/azure/virtual-machines/context/context
+    - name: Vysoká dostupnost
+      href: manage-availability.md
+    - name: Skupiny dostupnosti
+      items:
+        - name: Linux
+          href: ./linux/tutorial-availability-sets.md
+        - name: Windows
+          items:
+            - name: Vytvoření skupiny dostupnosti
+              href: ./windows/tutorial-availability-sets.md
+            - name: Změna skupiny dostupnosti
+              href: ./windows/change-availability-set.md
+    - name: Vytvoření skupiny umístění bezkontaktní komunikace
+      displayName: PPG aligned colocation co-location
+      items:
+        - name: Rozhraní příkazového řádku
+          href: ./linux/proximity-placement-groups.md
+        - name: Portál
+          href: ./windows/proximity-placement-groups-portal.md
+        - name: PowerShell
+          href: ./windows/proximity-placement-groups.md
+    - name: Vytvoření virtuálního počítače v zóně dostupnosti
+      href: ./linux/create-cli-availability-zone.md
+- name: Disky
+  items:
+    - name: Úvod ke spravovaným diskům
+      href: managed-disks-overview.md
+    - name: Výběr typu disku pro virtuální počítače IaaS
+      href: disks-types.md
+    - name: Sdílené disky
+      href: disks-shared.md
+    - name: Povolení sdílených disků
+      href: disks-shared-enable.md
+    - name: Šifrování
+      items:
+        - name: Šifrování na straně serveru
+          items:
+            - name: Přehled šifrování na straně serveru
+              href: disk-encryption.md
+            - name: Povolit klíče spravované zákazníkem
+              items:
+                - name: Portál
+                  href: disks-enable-customer-managed-keys-portal.md
+                - name: PowerShell
+                  href: windows/disks-enable-customer-managed-keys-powershell.md
+                - name: Rozhraní příkazového řádku
+                  href: linux/disks-enable-customer-managed-keys-cli.md
+            - name: Povolit šifrování na hostiteli
+              items:
+                - name: Portál
+                  href: disks-enable-host-based-encryption-portal.md
+                - name: PowerShell
+                  href: windows/disks-enable-host-based-encryption-powershell.md
+                - name: Rozhraní příkazového řádku
+                  href: linux/disks-enable-host-based-encryption-cli.md
+            - name: Povolení dvojitého šifrování při nečinnosti
+              items:
+                - name: Portál
+                  href: disks-enable-double-encryption-at-rest-portal.md
+                - name: PowerShell
+                  href: windows/disks-enable-double-encryption-at-rest-powershell.md
+                - name: Rozhraní příkazového řádku
+                  href: linux/disks-enable-double-encryption-at-rest-cli.md
+        - name: Azure Disk Encryption scénáře
+          items:
+            - name: Azure Disk Encryption přehledy
+              items:
+                - name: Windows
+                - name: Linux
+            - name: Linux
+              href: ./linux/disk-encryption-linux.md
+            - name: Windows
+              href: ./windows/disk-encryption-windows.md
+            - name: Rozhraní příkazového řádku
+              items:
+                - name: Linux
+                  href: ./linux/disk-encryption-cli-quickstart.md
+                - name: Windows
+                  href: ./windows/disk-encryption-cli-quickstart.md
+            - name: PowerShell
+              items:
+                - name: Linux
+                  href: ./linux/disk-encryption-powershell-quickstart.md
+                - name: Windows
+                  href: ./windows/disk-encryption-powershell-quickstart.md
+            - name: Portál
+              items:
+                - name: Linux
+                  href: ./linux/disk-encryption-portal-quickstart.md
+                - name: Windows
+                  href: ./windows/disk-encryption-portal-quickstart.md
+            - name: Trezor klíčů pro Azure Disk Encryption
+              items:
+                - name: Linux
+                  href: ./linux/disk-encryption-key-vault.md
+                - name: Windows
+                  href: ./windows/disk-encryption-key-vault.md
+            - name: Ukázkové skripty
+              items:
+                - name: Linux
+                  href: ./linux/disk-encryption-sample-scripts.md
+                - name: Windows
+                  href: ./windows/disk-encryption-sample-scripts.md
+            - name: Azure Disk Encryption v izolované síti
+              href: ./linux/disk-encryption-isolated-network.md
+            - name: Jak ověřit stav šifrování
+              href: ./linux/how-to-verify-encryption-status.md
+            - name: Jak nakonfigurovat LVM RAID pro šifrování
+              href: ./linux/how-to-configure-lvm-raid-on-crypt.md
+            - name: Postup změny velikosti šifrovaných svazků LVM
+              href: ./linux/how-to-resize-encrypted-lvm.md
+            - name: Změna velikosti oddílů operačního systému Linux GPT
+              href: linux/resize-os-disk-gpt-partition.md
+            - name: řešení potíží
+              items:
+                - name: Linux
+                  href: ./linux/disk-encryption-troubleshooting.md
+                - name: Windows
+                  href: ./windows/disk-encryption-troubleshooting.md
+            - name: Nejčastější dotazy
+              items:
+                - name: Linux
+                  href: ./linux/disk-encryption-faq.md
+                - name: Windows
+                  href: ./windows/disk-encryption-faq.md
+            - name: Azure Disk Encryption – předchozí verze
+              items:
+                - name: Přehled
+                  items:
+                    - name: Linux
+                      href: ./linux/disk-encryption-overview-aad.md
+                    - name: Windows
+                      href: ./windows/disk-encryption-overview-aad.md
+                - name: Trezor klíčů pro Azure Disk Encryption
+                  items:
+                    - name: Linux
+                      href: ./linux/disk-encryption-key-vault-aad.md
+                    - name: Windows
+                      href: ./windows/disk-encryption-key-vault-aad.md
+                - name: Scénáře šifrování disků
+                  items:
+                    - name: Linux
+                      href: ./linux/disk-encryption-linux-aad.md
+                    - name: Windows
+                      href: ./windows/disk-encryption-windows-aad.md
+    - name: Optimalizace výkonu a nákladů
+      items:
+        - name: Disky Ultra
+          href: disks-enable-ultra-ssd.md
+        - name: Výkon disků a virtuálních počítačů
+          href: disks-performance.md
+        - name: Rezervace služby Disk Storage
+          href: ../cost-management-billing/reservations/understand-disk-reservations.md?context=/azure/virtual-machines/context/context
+        - name: Rezervace služby Disk Storage
+          href: disks-reserved-capacity.md
+        - name: Návrh pro vysoký výkon
+          href: premium-storage-performance.md
+        - name: Zvládání výkonových špiček disků
+          href: disk-bursting.md
+        - name: Úrovně výkonu disků
+          href: disks-change-performance.md
+        - name: Změnit úroveň výkonu disku
+          items:
+            - name: Rozhraní příkazového řádku a PowerShell
+              href: disks-performance-tiers.md
+            - name: Portál
+              href: disks-performance-tiers-portal.md
+        - name: Povolení akcelerátoru zápisu
+          href: how-to-enable-write-accelerator.md
+        - name: Srovnávací test disku
+          href: disks-benchmarks.md
+    - name: Cíle škálovatelnosti pro disky
+      href: disks-scalability-targets.md
+    - name: Zálohování a ochrana dat
+      items:
+        - name: Zálohování a zotavení po havárii pro disky
+          href: backup-and-disaster-recovery-for-azure-iaas-disks.md
+        - name: Povolit přírůstkové snímky
+          href: disks-incremental-snapshots.md
+        - name: Vytvoření snímku disku – CLI
+          href: ./linux/snapshot-copy-managed-disk.md
+        - name: Vytvoření snímku disku – PowerShell
+          href: ./windows/snapshot-copy-managed-disk.md
+        - name: Zálohování nespravovaných disků
+          href: ./linux/incremental-snapshots.md
+    - name: Disky OS s kratší platností
+      href: ephemeral-os-disks.md
+    - name: Migrace a převod
+      items:
+        - name: Převod disku mezi úrovněmi Standard a Premium
+          items:
+            - name: Rozhraní příkazového řádku
+              href: ./linux/convert-disk-storage.md
+            - name: PowerShell
+              href: ./windows/convert-disk-storage.md
+        - name: Migrace na Premium SSD s Azure Site Recovery
+          items:
+            - name: Linux
+              href: ./linux/migrate-to-premium-storage-using-azure-site-recovery.md
+            - name: Windows
+              href: ./windows/migrate-to-premium-storage-using-azure-site-recovery.md
+        - name: Migrace na spravované disky
+          href: ./windows/migrate-to-managed-disks.md
+        - name: Nespravované virtuální počítače na spravovaného disky
+          items:
+            - name: Rozhraní příkazového řádku
+              href: ./linux/convert-unmanaged-to-managed-disks.md
+            - name: PowerShell
+              href: ./windows/convert-unmanaged-to-managed-disks.md
+    - name: Přidat datový disk
+      items:
+        - name: Linux
+          items:
+            - name: Azure CLI
+              href: ./linux/add-disk.md
+            - name: portál Azure
+              href: ./linux/attach-disk-portal.md
+        - name: Windows
+          items:
+            - name: Azure PowerShell
+              href: ./windows/attach-disk-ps.md
+            - name: portál Azure
+              href: ./windows/attach-managed-disk-portal.md
+            - name: Změnit písmeno jednotky pro dočasné disky
+              href: ./windows/change-drive-letter.md
+    - name: Odpojení disku
+      items:
+        - name: Linux
+          href: ./linux/detach-disk.md
+        - name: Windows
+          href: ./windows/detach-disk.md
+    - name: Rozbalení disku operačního systému
+      items:
+        - name: Linux
+          href: ./linux/expand-disks.md
+        - name: Windows
+          href: ./windows/expand-os-disk.md
+    - name: Správa úložiště
+      items:
+        - name: Nasazení disků s využitím šablony ARM
+          displayName: Azure Resource Manager
+          href: using-managed-disks-template-deployments.md
+        - name: Bezpečně Importovat/exportovat disk
+          items:
+            - name: Konfigurace privátních odkazů pro disky – CLI
+              href: ./linux/disks-export-import-private-links-cli.md
+            - name: Konfigurace privátních odkazů pro disky – portál
+              href: disks-enable-private-links-for-import-export-portal.md
+            - name: Nahrání virtuálního pevného disku na disk – PowerShell
+              href: ./windows/disks-upload-vhd-to-managed-disk-powershell.md
+            - name: Nahrání virtuálního pevného disku na disk – CLI
+              href: ./linux/disks-upload-vhd-to-managed-disk-cli.md
+            - name: Stažení virtuálního pevného disku
+              items:
+                - name: Linux
+                  href: ./linux/download-vhd.md
+                - name: Windows
+                  href: ./windows/download-vhd.md
+        - name: Použití Průzkumníku služby Storage ke správě disků
+          href: disks-use-storage-explorer-managed-disks.md
+        - name: Prohození disku s operačním systémem – rozhraní příkazového řádku
+          href: ./linux/os-disk-swap.md
+        - name: Prohození disku s operačním systémem – PowerShell
+          href: ./windows/os-disk-swap.md
+        - name: Mapování spravovaného disku na disk hosta – Linux
+          href: ./linux/azure-to-guest-disk-mapping.md
+        - name: Mapování spravovaného disku na disk hosta – Windows
+          href: ./windows/azure-to-guest-disk-mapping.md
+        - name: Vyhledání nepřipojených disků
+          items:
+            - name: Rozhraní příkazového řádku
+              href: ./linux/find-unattached-disks.md
+            - name: PowerShell
+              href: ./windows/find-unattached-disks.md
+            - name: Portál
+              href: disks-find-unattached-portal.md
+        - name: Nejčastější dotazy k diskům
+          href: faq-for-disks.md
+    - name: Ukázky kódů
+      items:
+        - name: Rozhraní příkazového řádku
+          items:
+            - name: Vytvoření spravovaného disku z VHD
+              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-managed-disk-from-vhd.md'
+            - name: Vytvoření spravovaného disku ze snímku
+              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-managed-disk-from-snapshot.md'
+            - name: Zkopírování spravovaného disku do stejného nebo jiného předplatného
+              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-to-same-or-different-subscription.md'
+            - name: Zkopírování snímku do stejného nebo jiného předplatného
+              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-snapshot-to-same-or-different-subscription.md'
+            - name: Export snímku jako VHD do účtu úložiště
+              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-snapshot-to-storage-account.md'
+            - name: Export spravovaného disku jako virtuálního pevného disku do účtu úložiště
+              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-vhd.md'
+        - name: PowerShell
+          items:
+            - name: Vytvoření spravovaného disku z VHD
+              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-create-managed-disk-from-vhd.md'
+            - name: Vytvoření spravovaného disku ze snímku
+              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-create-managed-disk-from-snapshot.md'
+            - name: Zkopírování snímku do stejného nebo jiného předplatného
+              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-copy-snapshot-to-same-or-different-subscription.md'
+            - name: Export snímku jako VHD do účtu úložiště
+              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-copy-snapshot-to-storage-account.md'
+            - name: Export spravovaného disku jako virtuálního pevného disku do účtu úložiště
+              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-copy-managed-disks-vhd.md'
+            - name: Vytvoření snímku z VHD
+              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-create-snapshot-from-vhd.md'
+- name: Sítě
+  items:
+    - name: Přehled
+      href: network-overview.md
+    - name: Vytvoření virtuální sítě
+      href: ../virtual-network/quick-create-cli.md?context=/azure/virtual-machines/context/context
+    - name: Otevření portů k virtuálnímu počítači
+      items:
+        - name: Rozhraní příkazového řádku
+          href: ./linux/nsg-quickstart.md
+        - name: PowerShell
+          href: ./windows/nsg-quickstart-powershell.md
+        - name: Portál
+          href: ./windows/nsg-quickstart-portal.md
+    - name: Přiřazení veřejných IP adres
+      href: ../virtual-network/virtual-network-deploy-static-pip-arm-cli.md?context=/azure/virtual-machines/context/context
+    - name: Použití několika síťových adaptérů
+      items:
+        - name: Linux s použitím rozhraní příkazového řádku
+          href: ./linux/multiple-nics.md
+        - name: Windows s použitím PowerShellu
+          href: ./windows/multiple-nics.md
+    - name: Použití akcelerovaných síťových služeb
+      href: ../virtual-network/create-vm-accelerated-networking-cli.md?context=/azure/virtual-machines/context/context
+    - name: Přiřazení veřejného názvu DNS
+      href: create-fqdn.md
+    - name: Vyhledání a odstranění nepřipojených síťových adaptérů
+      href: ./linux/find-unattached-nics.md
+    - name: Překlad DNS
+      href: ./linux/azure-dns.md
+    - name: Použití interního serveru DNS
+      href: ./linux/static-dns-name-resolution-for-linux-on-azure.md
+- name: Zabezpečení
+  items:
+    - name: Azure Security Center
+      href: ../security-center/security-center-introduction.md
+    - name: Základní nastavení zabezpečení
+      items:
+        - name: Linux
+          href: ./linux/security-baseline.md
+        - name: Windows
+          href: ./windows/security-baseline.md
+    - name: Doporučení
+      href: security-recommendations.md
+    - name: Přístup za běhu
+      href: ../security-center/security-center-just-in-time.md
+    - name: Zásady
+      items:
+        - name: Přehled
+          href: security-policy.md
+        - name: Ovládací prvky podle zásad
+          displayName: 'regulatory, compliance, standards, domains'
+          href: security-controls-policy.md
+        - name: referenční příručce o zásadách
+          href: policy-reference.md
+        - name: Použití zásad
+          items:
+            - name: Linux
+              href: ./linux/policy.md
+            - name: Windows
+              href: ./windows/policy.md
+    - name: Bastion
+      items:
+        - name: Přehled
+          href: ../bastion/bastion-overview.md
+        - name: Vytvoření opevněného hostitelského počítače
+          items:
+            - name: Portál
+              href: ../bastion/bastion-create-host-portal.md
+            - name: PowerShell
+              href: ../bastion/bastion-create-host-powershell.md
+            - name: Rozhraní příkazového řádku
+              href: ../bastion/create-host-cli.md
+            - name: Připojení SSH v Bastionu
+              href: ../bastion/bastion-connect-vm-ssh.md
+              items: null
+            - name: Připojení RDP v Bastionu
+              href: ../bastion/bastion-connect-vm-rdp.md
+        - name: Použití řízení přístupu
+          href: ../role-based-access-control/overview.md
+        - name: Vytvoření trezoru klíčů
+          items:
+            - name: Rozhraní příkazového řádku
+              href: ./linux/key-vault-setup.md
+            - name: PowerShell
+              href: ./windows/key-vault-setup.md
+    - name: Omezení spekulativního spouštění
+      href: mitigate-se.md
+    - name: Připojte se k virtuálnímu počítači Linux a Azure Active Directory
+      displayName: Azure AD
+      items:
+        - name: Red Hat Enterprise Linux
+          href: ../active-directory-domain-services/join-rhel-linux-vm.md
+        - name: CentOS
+          href: ../active-directory-domain-services/join-centos-linux-vm.md
+        - name: Ubuntu
+          href: ../active-directory-domain-services/join-ubuntu-linux-vm.md
+    - name: Konfigurace spravovaných identit
+      items:
+        - name: Portál
+          href: ../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md?context=/azure/virtual-machines/context/context
+        - name: Rozhraní příkazového řádku
+          href: ../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md?context=/azure/virtual-machines/context/context
+        - name: PowerShell
+          href: ../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md?context=/azure/virtual-machines/context/context
+        - name: Šablona Azure Resource Manageru
+          displayName: ARM
+          href: ../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md?context=/azure/virtual-machines/context/context
+        - name: REST
+          href: ../active-directory/managed-identities-azure-resources/qs-configure-rest-vm.md?context=/azure/virtual-machines/context/context
+        - name: Sady Azure SDK
+          href: ../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md?context=/azure/virtual-machines/context/context
+    - name: Přihlášení k systému Linux Active Directory
+      href: ./linux/login-using-aad.md
+- name: Údržba a aktualizace
+  items:
+    - name: Přehled
+      href: maintenance-and-updates.md
+    - name: Automatické opravy hosta virtuálního počítače (Preview)
+      href: ./windows/automatic-vm-guest-patching.md
+    - name: Řízení údržby
+      items:
+        - name: Oznámení o údržbě
+          items:
+            - name: Přehled
+              href: maintenance-notifications.md
+            - name: Rozhraní příkazového řádku
+              href: maintenance-notifications-cli.md
+            - name: Portál
+              href: maintenance-notifications-portal.md
+            - name: PowerShell
+              href: maintenance-notifications-powershell.md
+        - name: Údržba platformy
+          items:
+            - name: Přehled
+              href: maintenance-control.md
+            - name: Rozhraní příkazového řádku
+              href: maintenance-control-cli.md
+            - name: PowerShell
+              href: maintenance-control-powershell.md
+            - name: Portál
+              href: maintenance-control-portal.md
+        - name: Naplánované události
+          items:
+            - name: Linux
+              href: ./linux/scheduled-events.md
+            - name: Windows
+              href: ./windows/scheduled-events.md
+        - name: Sledování a aktualizace virtuálních počítačů
+          items:
+            - name: Linux
+              href: ./linux/tutorial-config-management.md
+            - name: Windows
+              href: ./windows/tutorial-config-management.md
+        - name: Upgrady imagí operačního systému škálovací sady virtuálních počítačů
+          items:
+            - name: Automatické upgrady operačního systému
+              href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md?context=/azure/virtual-machines/context/context
+            - name: Řízení údržby
+              items:
+                - name: Přehled (Preview)
+                  href: virtual-machine-scale-sets-maintenance-control.md
+                - name: PowerShell (Preview)
+                  href: virtual-machine-scale-sets-maintenance-control-powershell.md
+- name: Monitorování
+  items:
+    - name: Přehled
+      href: ../azure-monitor/insights/monitor-vm-azure.md?context=/azure/virtual-machines/context/context
+    - name: Monitorování virtuálních počítačů
+      items:
+        - name: Linux
+          href: ./linux/tutorial-monitor.md
+        - name: Windows
+          href: ./windows/tutorial-monitor.md
+    - name: Agenti
+      items:
+        - name: Přehled agentů
+          href: ../azure-monitor/platform/agents-overview.md?context=/azure/virtual-machines/context/context
+        - name: Nejčastější dotazy
+          href: ../azure-monitor/faq.md?context=/azure/virtual-machines/context/context#agents
+        - name: Rozšíření Azure Diagnostics
+          items:
+            - name: Přehled
+              href: ../azure-monitor/platform/diagnostics-extension-overview.md?context=/azure/virtual-machines/context/context
+            - name: Rozšíření linuxové diagnostiky
+              items:
+                - name: Přehled
+                  href: ../virtual-machines/extensions/diagnostics-linux.md?context=/azure/virtual-machines/context/context
+                - name: Shromažďování metrik s využitím Telegrafu
+                  href: ../azure-monitor/platform/collect-custom-metrics-linux-telegraf.md?context=/azure/virtual-machines/context/context
+                  displayname: diagnostics extension
+        - name: Agent Log Analytics
+          items:
+            - name: Přehled
+              href: ../azure-monitor/platform/log-analytics-agent.md?context=/azure/virtual-machines/context/context
+            - name: Agenti systému Linux
+              href: ../azure-monitor/platform/agent-linux.md?context=/azure/virtual-machines/context/context
+            - name: Brána Log Analytics
+              href: ../azure-monitor/platform/gateway.md?context=/azure/virtual-machines/context/context
+            - name: Správa agentů
+              href: ../azure-monitor/platform/agent-manage.md?context=/azure/virtual-machines/context/context
+            - name: Stav agenta
+              href: ../azure-monitor/insights/solution-agenthealth.md?context=/azure/virtual-machines/context/context
+            - name: Zdroje dat
+              items:
+                - name: Přehled
+                  href: ../azure-monitor/platform/agent-data-sources.md?context=/azure/virtual-machines/context/context
+                - name: Vlastní data JSON
+                  href: ../azure-monitor/platform/data-sources-json.md?context=/azure/virtual-machines/context/context
+                - name: Shromážděná data o výkonu
+                  href: ../azure-monitor/platform/data-sources-collectd.md?context=/azure/virtual-machines/context/context
+                - name: Syslog
+                  href: ../azure-monitor/platform/data-sources-syslog.md?context=/azure/virtual-machines/context/context
+                - name: Čítače výkonu
+                  href: ../azure-monitor/platform/data-sources-performance-counters.md?context=/azure/virtual-machines/context/context
+                - name: Výkon linuxových aplikací
+                  href: ../azure-monitor/platform/data-sources-linux-applications.md?context=/azure/virtual-machines/context/context
+                - name: Vlastní protokoly
+                  href: ../azure-monitor/platform/data-sources-custom-logs.md?context=/azure/virtual-machines/context/context
+                - name: Vlastní pole
+                  href: ../azure-monitor/platform/custom-fields.md?context=/azure/virtual-machines/context/context
+        - name: Řešení potíží
+          items:
+            - name: Rozšíření Log Analytics pro virtuální počítače
+              href: ../azure-monitor/platform/vmext-troubleshoot.md?context=/azure/virtual-machines/context/context
+              displayname: 'troubleshoot, troubleshooting'
+            - name: Linuxový agent Log Analytics
+              href: ../azure-monitor/platform/agent-linux-troubleshoot.md?context=/azure/virtual-machines/context/context
+              displayname: 'troubleshoot, troubleshooting'
+        - name: Azure Monitor pro virtuální počítače
+          items:
+            - name: Přehled
+              href: ../azure-monitor/insights/vminsights-overview.md?context=/azure/virtual-machines/context/context
+            - name: Nejčastější dotazy k všeobecné dostupnosti
+              href: ../azure-monitor/insights/vminsights-ga-release-faq.md?context=/azure/virtual-machines/context/context
+            - name: Nejčastější dotazy
+              href: ../azure-monitor/faq.md?context=/azure/virtual-machines/context/context#azure-monitor-for-vms
+            - name: Povolení monitorování
+              items:
+                - name: Povolení přehledu monitorování
+                  href: ../azure-monitor/insights/vminsights-enable-overview.md?context=/azure/virtual-machines/context/context
+                - name: Povolení pro jeden virtuální počítač Azure
+                  href: ../azure-monitor/insights/vminsights-enable-portal.md?context=/azure/virtual-machines/context/context
+                - name: Povolení s využitím Azure Policy
+                  href: ../azure-monitor/insights/vminsights-enable-policy.md?context=/azure/virtual-machines/context/context
+                - name: Povolení s využitím Azure Powershellu
+                  href: ../azure-monitor/insights/vminsights-enable-powershell.md?context=/azure/virtual-machines/context/context
+                - name: Povolení pro hybridní prostředí
+                  href: ../azure-monitor/insights/vminsights-enable-hybrid.md?context=/azure/virtual-machines/context/context
+            - name: Závislosti map
+              href: ../azure-monitor/insights/vminsights-maps.md?context=/azure/virtual-machines/context/context
+            - name: Monitorování výkonu
+              href: ../azure-monitor/insights/vminsights-performance.md?context=/azure/virtual-machines/context/context
+            - name: Analýza dat s využitím dotazů na protokoly
+              href: ../azure-monitor/insights/vminsights-log-search.md?context=/azure/virtual-machines/context/context
+            - name: Vizualizace dat s využitím sešitů
+              href: ../azure-monitor/insights/vminsights-workbooks.md?context=/azure/virtual-machines/context/context
+            - name: Vytváření pravidel upozornění
+              href: ../azure-monitor/insights/vminsights-alerts.md?context=/azure/virtual-machines/context/context
+            - name: Upgrade agenta závislostí
+              href: ../azure-monitor/insights/vminsights-dependency-agent-maintenance.md?context=/azure/virtual-machines/context/context
+            - name: Zákaz monitorování
+              href: ../azure-monitor/insights/vminsights-optout.md?context=/azure/virtual-machines/context/context
+    - name: Využití virtuálních počítačů
+      href: vm-usage.md
+    - name: Označení virtuálního počítače
+      items:
+        - name: Rozhraní příkazového řádku
+          href: tag-cli.md
+        - name: Portál
+          href: tag-portal.md
+        - name: PowerShell
+          href: tag-powershell.md
+        - name: Template (Šablona)
+          href: tag-template.md
+    - name: Monitorování metadat
+      items:
+        - name: Rozhraní příkazového řádku
+          href: ./linux/instance-metadata-service.md
+        - name: PowerShell
+          href: ./windows/instance-metadata-service.md
+    - name: Získat metriky využití s rozhraním REST
+      href: ./linux/metrics-vm-usage-rest.md
+    - name: Diagnostika spouštění
+      href: boot-diagnostics.md
+- name: Backup a obnovení
+  items:
+    - name: Přehled
+      href: backup-recovery.md
+    - name: Přerušení služby
+      href: virtual-machines-disaster-recovery-guidance.md
+    - name: Zálohování virtuálních počítačů
+      items:
+        - name: Přehled
+          href: ../backup/backup-azure-vms-introduction.md
+        - name: Rychlé starty
+          items:
+            - name: Rozhraní příkazového řádku
+              href: ../backup/quick-backup-vm-cli.md
+            - name: PowerShell
+              href: ../backup/quick-backup-vm-powershell.md
+            - name: Portál
+              href: ../backup/quick-backup-vm-portal.md
+            - name: Template (Šablona)
+              href: ../backup/quick-backup-vm-template.md
+        - name: Zálohování několika virtuálních počítačů
+          href: ../backup/tutorial-backup-vm-at-scale.md
+        - name: Možnosti obnovení
+          href: /backup/backup-azure-arm-restore-vms.md
+        - name: Matice podpory
+          href: ../backup/backup-support-matrix-iaas.md
+        - name: Ceny
+          href: ../backup/azure-backup-pricing.md
+        - name: Nejčastější dotazy
+          href: ../backup/backup-azure-vm-backup-faq.md
+    - name: Zotavení po havárii
+      items:
+        - name: Přehled
+          href: ../site-recovery/site-recovery-overview.md
+        - name: Povolit zotavení po havárii
+          items:
+            - name: Linux
+              href: ./linux/tutorial-disaster-recovery.md
+            - name: Windows
+              href: ./windows/tutorial-disaster-recovery.md
+        - name: Povolení zotavení po havárii pro virtuální počítač
+          href: ../site-recovery/azure-to-azure-tutorial-enable-replication.md
+        - name: Spuštění postupu zotavení po havárii pro virtuální počítač
+          href: ../site-recovery/azure-to-azure-tutorial-dr-drill.md
+        - name: Převzetí služeb při selhání virtuálního počítače do jiné oblasti
+          href: ../site-recovery/azure-to-azure-tutorial-failover-failback.md
+    - name: Přesun a migrace virtuálních počítačů
+      items:
+        - name: Změna předplatného nebo skupiny prostředků
+          items:
+            - name: Rozhraní příkazového řádku
+              href: ./linux/move-vm.md
+            - name: PowerShell
+              href: ./windows/move-vm.md
+        - name: Přesun virtuálních počítačů do jiné oblasti
+          href: ../site-recovery/azure-to-azure-tutorial-migrate.md
+        - name: Přesun do zóny dostupnosti
+          href: ../site-recovery/move-azure-vms-avset-azone.md
+        - name: Přesun konfigurací řízení údržby do jiné oblasti
+          href: move-region-maintenance-configuration.md
+        - name: Přesun prostředků konfigurace řízení údržby do jiné oblasti
+          href: move-region-maintenance-configuration-resources.md
+        - name: Migrace AWS a místních virtuálních počítačů
+          href: ./windows/on-prem-to-azure.md
+          items:
+            - name: Migrace z AWS (Amazon Web Services) do Azure
+              href: ./windows/aws-to-azure.md
+            - name: Nahrání místního virtuálního počítače
+              href: ./linux/upload-vhd.md
+            - name: Použití Azure Site Recovery
+              href: ../site-recovery/migrate-overview.md?context=/azure/virtual-machines/context/context
+- name: Automatizace infrastruktury
+  items:
+    - name: Přehled
+      href: infrastructure-automation.md
+    - name: Vlastní data
+      href: custom-data.md
+    - name: Ansible
+      items:
+        - name: Instalace a konfigurace
+          href: /azure/developer/ansible/install-on-linux-vm
+        - name: Vytvoření virtuálního počítače s Linuxem
+          href: /azure/developer/ansible/vm-configure
+        - name: Správa virtuálního počítače s Linuxem
+          href: /azure/developer/ansible/vm-manage
+    - name: Terraform
+      items:
+        - name: Instalace a konfigurace
+          href: /azure/developer/terraform/install-configure
+        - name: Vytvoření kompletního virtuálního počítače
+          href: /azure/developer/terraform/create-linux-virtual-machine-with-infrastructure
+    - name: Jenkins
+      href: /azure/developer/jenkins/overview
+      items:
+        - name: Vytvoření serveru Jenkins
+          href: /azure/developer/jenkins/configure-on-linux-vm
+        - name: Škálování pomocí agentů virtuálních počítačů
+          href: /azure/developer/jenkins/scale-deployments-using-vm-agents
+        - name: Publikování artefaktů do Storage
+          href: /azure/developer/jenkins/azure-storage-blobs-as-build-artifact-repository
+        - name: Zabezpečení Jenkinse
+          href: 'https://jenkins.io/blog/2017/04/20/secure-jenkins-on-azure/'
+    - name: Azure DevOps
+      href: ./linux/tutorial-azure-devops-blue-green-strategy.md
+- name: Řešení potíží
+  href: ./troubleshooting/index.yml
 - name: Zdroje a prostředky
   items:
+    - name: Architektura přechodu na cloud
+      href: /azure/cloud-adoption-framework/get-started/
+    - name: Centrum architektury
+      href: /azure/architecture/
+    - name: Microsoft Q&A
+      href: /answers/topics/azure-virtual-machines.html
+    - name: Šablony Azure pro rychlé zprovoznění
+      href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/#Linux'
+    - name: Regionální dostupnost
+      href: 'https://azure.microsoft.com/regions/services/'
     - name: Získávání dovedností pomocí Microsoft Learn
       href: /learn/browse/?products=azure-virtual-machines
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/?category=compute'
     - name: Cenová kalkulačka
       href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: ukázky
+      items:
+        - name: Úložiště ukázek Azure CLI
+          href: 'https://github.com/Azure-Samples/azure-cli-samples/tree/master/virtual-machine'
+        - name: Úložiště ukázek PowerShellu
+          href: 'https://github.com/Azure/azure-docs-powershell-samples/tree/master/virtual-machine'
+    - name: Běžné příkazy rozhraní příkazového řádku
+      href: ./linux/cli-manage.md
+    - name: Běžné příkazy PowerShellu
+      href: ./windows/ps-common-ref.md
+    - name: Běžné příkazy prostředí PowerShell pro sítě
+      href: ./windows/ps-common-network-ref.md
+    - name: Popis šablony virtuálního počítače
+      href: ./windows/template-description.md
+    - name: Nasazení Classic
+      items:
+        - name: Virtuální počítače s Linuxem používající nasazení Classic
+          href: /previous-versions/azure/virtual-machines/linux/classic/
+        - name: Virtuální počítače s Windows používající nasazení Classic
+          href: /previous-versions/azure/virtual-machines/windows/classic/
+    - name: Nejčastější dotazy
+      items:
+        - name: Linux
+          href: ./linux/faq.md
+        - name: Windows
+          href: ./windows/faq.md

@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e991fb0c60e8f08eb43cb7799027d4200263c9b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bac3f53def6db1038a6dd7e45d7933daa22df9f0
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89659548"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703848"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>Definování strategie ochrany dat pro vaše řešení hybridní identity
 V této úloze definujete strategii ochrany dat pro vaše řešení hybridní identity, aby splňovala obchodní požadavky, které jste definovali v nástroji:
@@ -37,7 +37,7 @@ Jak je vysvětleno v tématu [Určení požadavků na synchronizaci adresářů]
 
 Po ověření se hlavní název uživatele (UPN) přečte z ověřovacího tokenu. Pak autorizační systém určí replikovaný oddíl a kontejner odpovídající doméně uživatele. Informace o existenci, povoleném stavu a roli uživatele pak pomáhají autorizačnímu systému zjistit, jestli je pro uživatele v této relaci autorizovaný přístup k cílovému tenantovi. Některé autorizované akce (konkrétně vytvořit uživatele a resetování hesla) vytvoří záznam pro audit, který správce klienta potom použije ke správě úsilí nebo vyšetřování dodržování předpisů.
 
-Přesouvání dat z místního datacentra do Azure Storage přes připojení k internetu nemusí být vždy proveditelné kvůli objemu dat, dostupnosti šířky pásma nebo jiným hlediskům. [Služba Azure Storage import/export](../../storage/common/storage-import-export-service.md) nabízí hardwarovou možnost pro vkládání a načítání velkých objemů dat v úložišti objektů BLOB. Umožňuje posílat jednotky pevného disku [šifrované bitlockerem](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn306081(v=ws.11)#BKMK_BL2012R2) přímo do datového centra Azure, kde operátoři cloudu odesílají obsah do svého účtu úložiště, nebo si můžou stáhnout vaše data Azure na vaše jednotky a vrátit se na vás. Pro tento proces jsou přijímány pouze šifrované disky (pomocí klíče nástroje BitLocker vygenerovaného službou samotný během nastavení úlohy). Klíč BitLockeru se poskytuje pro Azure samostatně, čímž se zajišťuje sdílení klíčů od sebe.
+Přesouvání dat z místního datacentra do Azure Storage přes připojení k internetu nemusí být vždy proveditelné kvůli objemu dat, dostupnosti šířky pásma nebo jiným hlediskům. [Služba Azure Storage import/export](../../import-export/storage-import-export-service.md) nabízí hardwarovou možnost pro vkládání a načítání velkých objemů dat v úložišti objektů BLOB. Umožňuje posílat jednotky pevného disku [šifrované bitlockerem](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn306081(v=ws.11)#BKMK_BL2012R2) přímo do datového centra Azure, kde operátoři cloudu odesílají obsah do svého účtu úložiště, nebo si můžou stáhnout vaše data Azure na vaše jednotky a vrátit se na vás. Pro tento proces jsou přijímány pouze šifrované disky (pomocí klíče nástroje BitLocker vygenerovaného službou samotný během nastavení úlohy). Klíč BitLockeru se poskytuje pro Azure samostatně, čímž se zajišťuje sdílení klíčů od sebe.
 
 Vzhledem k tomu, že data v přenosech můžou probíhat v různých scénářích, je také důležité znát, že Microsoft Azure používá [virtuální sítě](https://azure.microsoft.com/documentation/services/virtual-network/) k izolaci provozu klientů od sebe, což využívá míry, jako jsou brány firewall na úrovni hostitele a hosta, filtrování paketů IP, blokování portů a koncové body https. Většina interní komunikace v Azure, včetně infrastruktury pro infrastrukturu a z infrastruktury na zákazníka (v místním prostředí), je ale taky šifrovaná. Dalším důležitým scénářem je komunikace v datových centrech Azure. Společnost Microsoft spravuje sítě, aby se zajistilo, že žádný virtuální počítač nemůže zosobnit nebo eavesdrop na IP adrese jiného. TLS/SSL se používá při přístupu k databázím Azure Storage nebo SQL nebo při připojení k Cloud Services. V takovém případě vám správce zákazníka zodpovídá za získání certifikátu TLS/SSL a jeho nasazení do své klientské infrastruktury. Přenos dat mezi Virtual Machines ve stejném nasazení nebo mezi klienty v jednom nasazení prostřednictvím Microsoft Azure Virtual Network se dá chránit prostřednictvím šifrovaných komunikačních protokolů, jako jsou HTTPS, SSL/TLS nebo jiné.
 
@@ -45,8 +45,8 @@ V závislosti na tom, jak jste odpověděli na otázky v části [Určení poža
 
 | Možnosti ochrany dat | V klidovém umístění v cloudu | Místní místní umístění | Při přenosu |
 | --- | --- | --- | --- |
-| BitLocker Drive Encryption |X |X | |
-| SQL Server k šifrování databází |X |X | |
+| BitLocker Drive Encryption |× |× | |
+| SQL Server k šifrování databází |× |× | |
 | Šifrování z virtuálního počítače do virtuálního počítače | | |× |
 | SSL/TLS | | |× |
 | Síť VPN | | |× |

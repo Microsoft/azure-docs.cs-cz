@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: cc373a67ee0f4ed2e900e7b41cbcb96d31d67b34
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: eafdebc795d5bede7fa52a3562d33c806035697f
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98126882"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704427"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>Jak vytvořit přepisy s lidským popiskem
 
@@ -47,6 +47,8 @@ Normalizace textu je transformace slov do konzistentního formátu, který se po
 - Neabecední znaky nebo smíšené alfanumerické znaky by měly být přepisu jako vyslovované.
 - Zkratky, které jsou vyslovované jako slova, by se neměly upravovat (například "paprsky", "Laser", "RAM" nebo "NATO").
 - Odpište zkratky, které jsou vyslovované jako samostatná písmena s každým písmenem oddělené mezerou.
+- Pokud používáte zvuk, přepisovat čísla jako slova, která se shodují se zvukem (například "101" může být VYSLOVNÉ jako "1 0 1" nebo "101").
+- Vyhněte se opakovaným znakům, slovům nebo skupinám slov více než třikrát, například "Ano Ano Ano". V případě, že služba rozpoznávání řeči může vyřadit řádky s takovými opakováními.
 
 Tady je několik příkladů normalizace, které byste měli provést na přepisu:
 

@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: jgao
-ms.openlocfilehash: e5449dc26197a0aa2e2b0da49ad9e5ca4fb19e82
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: fb8cd45842e2f9b64048aa939f7b6adc9b0e6e0a
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185755"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703678"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-powershell"></a>Správa Azure Resource Manager skupin prostředků pomocí Azure PowerShell
 
@@ -69,7 +69,7 @@ Další informace o tom, jak Azure Resource Manager objednává odstranění pro
 
 Viz [nasazení prostředků do existující skupiny prostředků](manage-resources-powershell.md#deploy-resources-to-an-existing-resource-group).
 
-Pokud chcete ověřit nasazení skupiny prostředků, přečtěte si téma [test-AzResourceGroupDeployment](/powershell/module/Az.Resources/Test-AzResourceGroupDeployment?view=azps-1.3.0).
+Pokud chcete ověřit nasazení skupiny prostředků, přečtěte si téma [test-AzResourceGroupDeployment](/powershell/module/Az.Resources/Test-AzResourceGroupDeployment).
 
 ## <a name="deploy-a-resource-group-and-resources"></a>Nasazení skupiny prostředků a prostředků
 

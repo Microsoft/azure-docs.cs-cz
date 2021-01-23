@@ -4,18 +4,18 @@ description: Naučte se, jak můžete pomocí Azure Backup posílat data mimo s�
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.openlocfilehash: f3cf44a34babab79d135923db040630a1c8e3dfe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ea470c2e732b7e0ef46e9e5fa78c744aa30c955
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88892010"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704359"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Pracovní postup offline zálohování v Azure Backup
 
 Azure Backup má několik předdefinovaných efektivit, které při počátečním úplném zálohování dat do Azure šetří náklady na síť a úložiště. Počáteční úplné zálohování obvykle přenáší velké objemy dat a vyžaduje více šířky pásma sítě ve srovnání s dalšími zálohami, které přenášejí pouze rozdíly a přírůstkové. V průběhu režimu offline osazení Azure Backup můžou použít disky k nahrání offline zálohovaných dat do Azure.
 
-Azure Backup procesu offline nasazení je těsně integrovaná se [službou Azure import/export](../storage/common/storage-import-export-service.md). Tuto službu můžete použít k přenosu počátečních zálohovaných dat do Azure pomocí disků. Pokud máte terabajty (TBs) počátečních zálohovaných dat, která je potřeba přenést přes síť s vysokou latencí a malou šířkou pásma, můžete k odeslání prvotní záložní kopie na jednom nebo více pevných discích do datacentra Azure použít pracovní postup offline. Následující obrázek poskytuje přehled kroků v pracovním postupu.
+Azure Backup procesu offline nasazení je těsně integrovaná se [službou Azure import/export](../import-export/storage-import-export-service.md). Tuto službu můžete použít k přenosu počátečních zálohovaných dat do Azure pomocí disků. Pokud máte terabajty (TBs) počátečních zálohovaných dat, která je potřeba přenést přes síť s vysokou latencí a malou šířkou pásma, můžete k odeslání prvotní záložní kopie na jednom nebo více pevných discích do datacentra Azure použít pracovní postup offline. Následující obrázek poskytuje přehled kroků v pracovním postupu.
 
   ![Přehled procesu pracovního postupu offline importu](./media/backup-azure-backup-import-export/offlinebackupworkflowoverview.png)
 
@@ -64,12 +64,12 @@ Než spustíte pracovní postup offline zálohování, proveďte následující 
         ![Registrace poskytovatele prostředků](./media/backup-azure-backup-import-export/registerimportexport.png)
 
 * Vytvoří se pracovní umístění, které může být sdílená síťová složka nebo jakákoli další jednotka na počítači, interní nebo externí, s dostatkem místa na disku pro uložení počáteční kopie. Pokud třeba chcete zálohovat souborový server 500-GB, ujistěte se, že pracovní oblast má aspoň 500 GB. (V důsledku komprese se používá menší množství.)
-* Když odesíláte disky do Azure, používejte jenom 2,5 jednotek SSD nebo 2,5-palce nebo 3,5 – na 3, 5palcové interní pevné disky SATA II/III. Můžete použít pevné disky až do 10 TB. Nejnovější sadu jednotek, které služba podporuje, najdete v [dokumentaci ke službě Import/export v Azure](../storage/common/storage-import-export-requirements.md#supported-hardware) .
+* Když odesíláte disky do Azure, používejte jenom 2,5 jednotek SSD nebo 2,5-palce nebo 3,5 – na 3, 5palcové interní pevné disky SATA II/III. Můžete použít pevné disky až do 10 TB. Nejnovější sadu jednotek, které služba podporuje, najdete v [dokumentaci ke službě Import/export v Azure](../import-export/storage-import-export-requirements.md#supported-hardware) .
 * Jednotky SATA musí být připojené k počítači (označovanému jako *počítač pro kopírování*), ze kterého se provádí Kopírování zálohovaných dat z pracovního umístění na jednotky SATA. Ujistěte se, že je na počítači pro kopírování povolený nástroj BitLocker.
 
 ## <a name="workflow"></a>Pracovní postup
 
-Tato část popisuje pracovní postup offline zálohování, aby bylo možné doručovat data do datacentra Azure a odeslat je do Azure Storage. Pokud máte dotazy týkající se služby pro import nebo jakéhokoli aspektu procesu, přečtěte si [dokumentaci přehled služby Import/export Azure](../storage/common/storage-import-export-service.md).
+Tato část popisuje pracovní postup offline zálohování, aby bylo možné doručovat data do datacentra Azure a odeslat je do Azure Storage. Pokud máte dotazy týkající se služby pro import nebo jakéhokoli aspektu procesu, přečtěte si [dokumentaci přehled služby Import/export Azure](../import-export/storage-import-export-service.md).
 
 ## <a name="initiate-offline-backup"></a>Zahájit zálohování offline
 
@@ -82,7 +82,7 @@ Tato část popisuje pracovní postup offline zálohování, aby bylo možné do
     > [!NOTE]
     > Použijte možnost Azure Data Box k přenosu počátečních zálohovaných dat do režimu offline. Tato možnost uloží úsilí potřebné k zajištění vlastního disku kompatibilního s Azure. Zajišťuje společnosti Microsoft zařízení, která jsou zabezpečená, zabezpečená a Azure Data Box tamperproof, na která je možné přímo zapisovat data záloh pomocí agenta Recovery Services.
 
-1. Vyberte **Další**a pečlivě zadejte pole.
+1. Vyberte **Další** a pečlivě zadejte pole.
 
     ![Zadejte podrobnosti o disku.](./media/backup-azure-backup-import-export/your-disk-details.png)
 
@@ -202,7 +202,7 @@ Doba potřebná ke zpracování úlohy importu do Azure se liší. Doba zpracov�
 
 ### <a name="monitor-azure-import-job-status"></a>Monitorovat stav úlohy Azure import
 
-Stav úlohy importu můžete monitorovat z Azure Portal. Přejít na stránku **úlohy import/export** a vyberte svou úlohu. Další informace o stavu úloh importu najdete v tématu [co je služba Azure import/export?](../storage/common/storage-import-export-service.md).
+Stav úlohy importu můžete monitorovat z Azure Portal. Přejít na stránku **úlohy import/export** a vyberte svou úlohu. Další informace o stavu úloh importu najdete v tématu [co je služba Azure import/export?](../import-export/storage-import-export-service.md).
 
 ### <a name="finish-the-workflow"></a>Dokončení pracovního postupu
 
@@ -218,4 +218,4 @@ Po dokončení prvotního zálohování můžete bezpečně odstranit data impor
 
 ## <a name="next-steps"></a>Další kroky
 
-* Jakékoli dotazy týkající se pracovního postupu služby Import/export v Azure najdete v tématu [použití služby Microsoft Azure import/export k přenosu dat do úložiště objektů BLOB](../storage/common/storage-import-export-service.md).
+* Jakékoli dotazy týkající se pracovního postupu služby Import/export v Azure najdete v tématu [použití služby Microsoft Azure import/export k přenosu dat do úložiště objektů BLOB](../import-export/storage-import-export-service.md).

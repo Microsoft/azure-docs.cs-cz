@@ -9,12 +9,12 @@ author: samkemp
 ms.author: samkemp
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 17418b0255182934045acc9174b34cff2aefff99
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 7726fce7ac69ebfaabf44049abc49c53f8175718
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307443"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704536"
 ---
 # <a name="track-experiments-and-deploy-models-in-azure-machine-learning"></a>Sledovat experimenty a nasazovat modely v Azure Machine Learning
 
@@ -24,13 +24,13 @@ Následující diagram znázorňuje, že se sledováním MLflow sledujete metrik
 
 ![sledovat experimenty](./media/how-to-track-experiments/mlflow-diagram-track.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Musíte [zřídit pracovní prostor Azure Machine Learning](../how-to-manage-workspace.md#create-a-workspace)
 
 ## <a name="create-a-new-notebook"></a>Vytvoření nového poznámkového bloku
 
-Sada Azure Machine Learning a sada MLFlow SDK jsou v Data Science VM předem nainstalovány a lze k nim přistupovat v prostředí * *azureml_py36_ \** _ conda. V Jupyterlab klikněte na spouštěč a vyberte následující jádro:
+Sada Azure Machine Learning a sada MLFlow SDK jsou v Data Science VM předem nainstalovány a lze k nim přistupovat v prostředí **azureml_py36_ \** _ conda. V JupyterLab klikněte na spouštěč a vyberte následující jádro:
 
 ![Výběr jádra](./media/how-to-track-experiments/experiment-tracking-1.png)
 

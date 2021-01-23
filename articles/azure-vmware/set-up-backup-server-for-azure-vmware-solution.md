@@ -3,12 +3,12 @@ title: Nastavení Azure Backup Server pro řešení Azure VMware
 description: Nastavte prostředí pro řešení Azure VMware pro zálohování virtuálních počítačů pomocí Azure Backup Server.
 ms.topic: how-to
 ms.date: 10/23/2020
-ms.openlocfilehash: e71ec19402d22643d51f1435d1abcf56b20a290b
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 7885c0bc73bd5f7cd802e76ed9db470f77eda30d
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517374"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703398"
 ---
 # <a name="set-up-azure-backup-server-for-azure-vmware-solution"></a>Nastavení Azure Backup Server pro řešení Azure VMware
 
@@ -120,7 +120,7 @@ Pokud chcete škálovat nasazení, máte následující možnosti:
 
 - **Horizontální navýšení kapacity**: zvětšete velikost Azure Backup Server virtuálního počítače z řady na řady DS3 a zvyšte místní úložiště.
 - **Přesměrování dat**: odešlete starší data do Azure a zachovejte v úložišti, které je připojené k Azure Backup Servermu počítači, jenom nejnovější data.
-- **Horizontální**navýšení kapacity: přidejte další Azure Backup Server počítače, abyste chránili úlohy.
+- **Horizontální** navýšení kapacity: přidejte další Azure Backup Server počítače, abyste chránili úlohy.
 
 ### <a name="net-framework"></a>.NET Framework
 
@@ -154,7 +154,7 @@ Recovery Services trezor je entita úložiště, která ukládá body obnovení 
 
    Otevře se dialogové okno **Trezor služby Recovery Services**.
 
-1. Zadejte hodnoty pro **název**, **předplatné**, **skupinu prostředků**a **umístění**.
+1. Zadejte hodnoty pro **název**, **předplatné**, **skupinu prostředků** a **umístění**.
 
    ![Nakonfigurujte trezor Recovery Services.](../backup/media/backup-create-rs-vault/create-new-vault-dialog.png)
 
@@ -178,9 +178,9 @@ Možnost replikace úložiště vám umožní vybrat mezi geograficky redundantn
 > [!IMPORTANT]
 > Změna nastavení **typu replikace úložiště místně redundantního/geograficky redundantního** pro Recovery Services trezoru se musí provést před konfigurací záloh v trezoru. Po nakonfigurování záloh je možnost změny zakázaná a typ replikace úložiště nemůžete změnit.
 
-1. V části **trezory Recovery Services**vyberte nový trezor. 
+1. V části **trezory Recovery Services** vyberte nový trezor. 
 
-1. V části **Nastavení** vyberte **Vlastnosti**. V části **Konfigurace zálohování**vyberte **aktualizovat**.
+1. V části **Nastavení** vyberte **Vlastnosti**. V části **Konfigurace zálohování** vyberte **aktualizovat**.
 
 1. Vyberte typ replikace úložiště a vyberte **Uložit**.
 
@@ -218,21 +218,21 @@ Postupujte podle kroků v této části ke stažení, extrakci a instalaci softw
 
    1. V nabídce **kde běží vaše úlohy?** vyberte **místní**.
 
-      :::image type="content" source="media/azure-vmware-solution-backup/deploy-mabs-on-premises-workload.png" alt-text="Azure Backup Server je nasazen jako virtuální počítač IaaS (infrastruktura jako služba) Azure pro ochranu virtuálních počítačů řešení Azure VMware.":::
+      :::image type="content" source="media/azure-vmware-solution-backup/deploy-mabs-on-premises-workload.png" alt-text="Kde běží vaše zatížení?":::
 
    1. V nabídce **co chcete zálohovat?** vyberte úlohy, které chcete chránit pomocí Azure Backup Server.
 
    1. Vyberte **Příprava infrastruktury** pro stažení a instalaci Azure Backup Server a přihlašovací údaje trezoru.
 
-      :::image type="content" source="media/azure-vmware-solution-backup/deploy-mabs-prepare-infrastructure.png" alt-text="Azure Backup Server je nasazen jako virtuální počítač IaaS (infrastruktura jako služba) Azure pro ochranu virtuálních počítačů řešení Azure VMware.":::
+      :::image type="content" source="media/azure-vmware-solution-backup/deploy-mabs-prepare-infrastructure.png" alt-text="Příprava infrastruktury":::
 
 1. V okně **připravit infrastrukturu** , které se otevře:
 
    1. Vyberte odkaz **ke stažení** , který chcete nainstalovat Azure Backup Server.
 
-   1. 1. Vyberte **už jste stáhli nebo používali nejnovější instalaci Azure Backup Server** a pak **si stáhněte** a Stáhněte si přihlašovací údaje k trezoru. Tyto přihlašovací údaje použijete při registraci Azure Backup Server do trezoru Recovery Services. Odkazy vás propojí do služby Stažení softwaru, kde stáhnete softwarový balíček.
+   1. Vyberte **už jste stáhli nebo používali nejnovější instalaci Azure Backup Server** a pak **si stáhněte** a Stáhněte si přihlašovací údaje k trezoru. Tyto přihlašovací údaje použijete při registraci Azure Backup Server do trezoru Recovery Services. Odkazy vás propojí do služby Stažení softwaru, kde stáhnete softwarový balíček.
 
-   :::image type="content" source="media/azure-vmware-solution-backup/deploy-mabs-prepare-infrastructure2.png" alt-text="Azure Backup Server je nasazen jako virtuální počítač IaaS (infrastruktura jako služba) Azure pro ochranu virtuálních počítačů řešení Azure VMware.":::
+   :::image type="content" source="media/azure-vmware-solution-backup/deploy-mabs-prepare-infrastructure2.png" alt-text="Příprava infrastruktury – Azure Backup Server":::
 
 1. Na stránce pro stažení vyberte všechny soubory a vyberte **Další**.
 
@@ -263,7 +263,7 @@ Pokud jste balíček softwaru stáhli na jiný server, zkopírujte soubory do vi
 
 ### <a name="install-the-software-package"></a>Instalace softwarového balíčku
 
-1. V okně nastavení v části **instalovat**vyberte možnost **Microsoft Azure Backup** . otevře se Průvodce instalací nástroje.
+1. V okně nastavení v části **instalovat** vyberte možnost **Microsoft Azure Backup** . otevře se Průvodce instalací nástroje.
 
    ![V okně nastavení v části instalovat vyberte možnost Microsoft Azure Backup. otevře se Průvodce instalací nástroje.](../backup/media/backup-azure-microsoft-azure-backup/launch-screen2.png)
 
@@ -303,9 +303,9 @@ Pokud jste balíček softwaru stáhli na jiný server, zkopírujte soubory do vi
    Pro konfiguraci služby SSRS použijte následující hodnoty:
 
    * **Účet služby**: **použijte předdefinovaný účet** **Network Service**.
-   * **Adresa URL webové služby**: **virtuální adresář** by měl být **ReportServer_ \<SQLInstanceName> **.
+   * **Adresa URL webové služby**: **virtuální adresář** by měl být **ReportServer_ \<SQLInstanceName>**.
    * **Databáze**: **DatabaseName** by měl být **ReportServer \<SQLInstanceName> $**.
-   * **Adresa URL webového portálu**: **virtuální adresář** by měl být **Reports_ \<SQLInstanceName> **.
+   * **Adresa URL webového portálu**: **virtuální adresář** by měl být **Reports_ \<SQLInstanceName>**.
 
    [Přečtěte si další informace](/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode) o konfiguraci služby SSRS.
 
@@ -332,7 +332,7 @@ Pokud jste balíček softwaru stáhli na jiný server, zkopírujte soubory do vi
 
    ![Vyberte, zda chcete vyhledat aktualizace pomocí Microsoft Update a vyberte možnost Další.](../backup/media/backup-azure-microsoft-azure-backup/update-opt-screen2.png)
 
-1. Zkontrolujte **Souhrn nastavení**a vyberte **nainstalovat**.
+1. Zkontrolujte **Souhrn nastavení** a vyberte **nainstalovat**.
 
    Instalace proběhne ve fázích. 
    - První fáze nainstaluje agenta Microsoft Azure Recovery Services.

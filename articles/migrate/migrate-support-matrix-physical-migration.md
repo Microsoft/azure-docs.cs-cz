@@ -6,12 +6,12 @@ ms.author: rahugup
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/14/2020
-ms.openlocfilehash: a3e8b19810a58031b4d11cc6e361215afbc85de2
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: 4ebc363f29ed8956d10e91f41be1d257cbcc492f
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562636"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703882"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>Matice podpory pro migraci fyzických serverů
 
@@ -81,7 +81,7 @@ Architektura hostovaného operačního systému | 64-bit. | Pokud je tato operac
 Velikost disku s operačním systémem | Až 2 048 GB. | Pokud je tato operace Nepodporovaná, ověřte chybu.
 Počet disků s operačním systémem | 1 | Pokud je tato operace Nepodporovaná, ověřte chybu.
 Počet datových disků | 64 nebo méně. | Pokud je tato operace Nepodporovaná, ověřte chybu.
-Velikost datového disku | Až 4 095 GB | Pokud je tato operace Nepodporovaná, ověřte chybu.
+Velikost datového disku | Až 32 TB | Pokud je tato operace Nepodporovaná, ověřte chybu.
 Síťové adaptéry | Podporuje se několik adaptérů. |
 Sdílený virtuální pevný disk | Nepodporováno | Pokud je tato operace Nepodporovaná, ověřte chybu.
 Disk FC | Nepodporováno | Pokud je tato operace Nepodporovaná, ověřte chybu.

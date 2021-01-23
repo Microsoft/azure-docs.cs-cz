@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: b263d3e62ae97914fc8e06580486bddd0cb9b3b7
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 0b671fbdfe16848012ac94671ce68e8a33a8b3e8
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968445"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703865"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>Matice podpory pro migraci VMware
 
@@ -166,7 +166,7 @@ Architektura hostovaného operačního systému | 64-bit.
 Velikost disku s operačním systémem | Až 2 048 GB. 
 Počet disků s operačním systémem | 1 
 Počet datových disků | 64 nebo méně. 
-Velikost datového disku | Až 8 095 GB
+Velikost datového disku | Až 32 TB
 Síťové adaptéry | Podporuje se několik adaptérů.
 Sdílený virtuální pevný disk | Nepodporováno 
 Disk FC | Nepodporováno 

@@ -1,18 +1,18 @@
 ---
 title: Předdefinované definice zásad pro síťové služby Azure
 description: Obsahuje seznam Azure Policy integrovaných definic zásad pro síťové služby Azure. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
-ms.date: 01/08/2021
+ms.date: 01/21/2021
 ms.topic: reference
 author: KumudD
 ms.author: kumud
 ms.service: virtual-network
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 0a65f575ba999bcdbcf1b742b34593fd106fd3e4
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 0c66540553be01ec55b5e2b43a0aeb28d9edb471
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045868"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703699"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-networking-services"></a>Azure Policy předdefinované definice pro síťové služby Azure
 

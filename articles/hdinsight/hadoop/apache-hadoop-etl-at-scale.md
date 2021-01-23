@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: d6c3dbc28da7bee0bc24a6dc24608c78e480c20e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e7a8a72d0669f39cc27c997d83af1e6272d045a6
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462159"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704148"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Extrakce, transformace a načítání (ETL) ve velkém měřítku
 
@@ -27,7 +27,7 @@ Následující části obsahují všechny fáze ETL a jejich přidružené souč
 
 ## <a name="orchestration"></a>Orchestrace
 
-Orchestrace se rozpíná napříč všemi fázemi kanálu ETL. Úlohy ETL v HDInsight často zahrnují více různých produktů, které spolu vzájemně spolupracují. Příklad:
+Orchestrace se rozpíná napříč všemi fázemi kanálu ETL. Úlohy ETL v HDInsight často zahrnují více různých produktů, které spolu vzájemně spolupracují. Například:
 
 - Můžete použít Apache Hive k vyčištění části dat a Apache prasete k vyčištění další části.
 - Pomocí Azure Data Factory můžete načíst data do Azure SQL Database z Azure Data Lake Store.
@@ -82,7 +82,7 @@ Pro nahrávání datových sad v rozsahu terabajtů může být latence sítě v
 
 - **ExpressRoute Azure:** Vytvářejte privátní připojení mezi datacentry Azure a místní infrastrukturou. Tato připojení poskytují spolehlivou možnost pro přenos velkých objemů dat. Další informace najdete v [dokumentaci ke službě Azure ExpressRoute](../../expressroute/expressroute-introduction.md).
 
-- **Nahrávání dat z jednotek pevného disku:** [Službu Azure import/export](../../storage/common/storage-import-export-service.md) můžete použít k dodávání pevných diskových jednotek s daty do datacentra Azure. Vaše data se napřed nahrají do úložiště objektů BLOB v Azure. Pak můžete pomocí Azure Data Factory nebo nástroje AdlCopy kopírovat data ze služby Azure Blob Storage do Data Lake Storage.
+- **Nahrávání dat z jednotek pevného disku:** [Službu Azure import/export](../../import-export/storage-import-export-service.md) můžete použít k dodávání pevných diskových jednotek s daty do datacentra Azure. Vaše data se napřed nahrají do úložiště objektů BLOB v Azure. Pak můžete pomocí Azure Data Factory nebo nástroje AdlCopy kopírovat data ze služby Azure Blob Storage do Data Lake Storage.
 
 ### <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
 

@@ -3,12 +3,12 @@ title: Odpovědi na časté dotazy
 description: 'Odpovědi na běžné dotazy týkající se funkcí služby Azure Backup, včetně trezorů služby Recovery Services, co může zálohovat, jak to funguje, šifrování a omezení. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: bd84ff553b486d200ec4501b89b42335335b223f
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: dbe6ce95427b559c037e38525f9f48195a2a76a4
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98572523"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703415"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – Nejčastější dotazy
 
@@ -18,7 +18,7 @@ V tomto článku najdete odpovědi na běžné dotazy týkající se služby Azu
 
 ### <a name="is-there-any-limit-on-the-number-of-vaults-that-can-be-created-in-each-azure-subscription"></a>Je v rámci předplatného Azure nějak omezený počet trezorů, které lze vytvořit?
 
-Yes. Na jedno předplatné můžete vytvořit až 500 trezorů služby Recovery Services pro každou podporovanou oblast služby Azure Backup. Pokud potřebujete další trezory, vytvořte další předplatné.
+Ano. Na jedno předplatné můžete vytvořit až 500 trezorů služby Recovery Services pro každou podporovanou oblast služby Azure Backup. Pokud potřebujete další trezory, vytvořte další předplatné.
 
 ### <a name="are-there-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault"></a>Je nějak omezený počet serverů nebo počítačů, které lze zaregistrovat k trezoru?
 
@@ -39,11 +39,11 @@ Data serveru, která chcete obnovovat dohromady, by při nastavování zálohov�
 
 ### <a name="can-i-move-my-vault-between-subscriptions"></a>Dá se přesunout trezor mezi předplatnými?
 
-Yes. Informace o přesunu trezoru služby Recovery Services najdete v tomto [článku](backup-azure-move-recovery-services-vault.md).
+Ano. Informace o přesunu trezoru služby Recovery Services najdete v tomto [článku](backup-azure-move-recovery-services-vault.md).
 
 ### <a name="can-i-move-backup-data-to-another-vault"></a>Dají se zálohovaná data přesunout do jiného trezoru?
 
-No. Zálohovaná data uložená v trezoru se nedají přesunout do jiného trezoru.
+Ne. Zálohovaná data uložená v trezoru se nedají přesunout do jiného trezoru.
 
 ### <a name="can-i-change-the-storage-redundancy-setting-after-a-backup"></a>Můžu po zálohování změnit nastavení redundance úložiště?
 
@@ -58,9 +58,9 @@ Pokud jste už zálohu nakonfigurovali a musíte se přesunout z GRS na LRS, př
 - ILR se podporuje pro virtuální počítače Azure zálohované pomocí funkce zálohování virtuálních počítačů Azure. Další informace najdete v tomto [článku](backup-azure-restore-files-from-vm.md).
 - ILR se nepodporuje u online bodů obnovení místních virtuálních počítačů zálohovaných nástrojem Azure Backup Server (MABS) nebo System Center DPM.
 
-### <a name="how-can-i-move-data-from-the-recovery-services-vault-to-on-premises"></a>Jak můžu přesunout data z Recovery Services trezoru do místního prostředí?
+### <a name="how-can-i-move-data-from-the-recovery-services-vault-to-on-premises"></a>Jak můžu přesunout data z trezoru služby Recovery Services do místního prostředí?
 
-Export dat přímo z Recovery Services trezoru do místního prostředí pomocí Data Box není podporován. Data musí být obnovena do účtu úložiště a pak je lze přesunout do místního prostředí prostřednictvím [data box](../databox/data-box-overview.md) nebo [Import/export](../storage/common/storage-import-export-service.md).
+Export dat přímo z Recovery Services trezoru do místního prostředí pomocí Data Box není podporován. Data musí být obnovena do účtu úložiště a pak je lze přesunout do místního prostředí prostřednictvím [data box](../databox/data-box-overview.md) nebo [Import/export](../import-export/storage-import-export-service.md).
 
 ### <a name="what-is-the-difference-between-a-geo-redundant-storage-grs-vault-with-and-without-the-cross-region-restore-crr-capability-enabled"></a>Jaký je rozdíl mezi trezorem geograficky redundantního úložiště (GRS) s povolenou funkcí obnovení mezi oblastmi (CRR) a bez nich?
 
@@ -77,7 +77,7 @@ V případě trezoru [GRS](azure-backup-glossary.md#grs) bez povoleného [crr](a
 
 ### <a name="are-there-limits-on-backup-scheduling"></a>Existují pro plánování zálohování nějaká omezení?
 
-Yes.
+Ano.
 
 - Počítače s Windows Serverem nebo Windows můžete zálohovat až třikrát denně. Pro zásady plánování můžete nastavit denní nebo týdenní plány.
 - DPM můžete zálohovat až dvakrát denně. Pro zásady plánování můžete nastavit denní, týdenní, měsíční nebo roční plány.
@@ -147,7 +147,7 @@ Ne, Azure Backup nepodporuje odstraňování nebo mazání jednotlivých polože
 
 ### <a name="if-i-cancel-a-backup-job-after-it-starts-is-the-transferred-backup-data-deleted"></a>Když zruším úlohu zálohování poté, co už se spustila, dojde k odstranění přenášených dat?
 
-No. Všechna data přenášená do trezoru před zrušením úlohy zálohování zůstanou v trezoru.
+Ne. Všechna data přenášená do trezoru před zrušením úlohy zálohování zůstanou v trezoru.
 
 - Azure Backup používá mechanismus kontrolních bodů k příležitostnému přidávání kontrolních bodů do zálohovaných dat během zálohování.
 - Díky kontrolním bodům v zálohovaných datech je možné při dalším procesu zálohování ověřit integritu souborů.
@@ -167,13 +167,13 @@ Ano, zásady můžete přizpůsobovat. Můžete například nakonfigurovat poža
 
 ### <a name="can-i-use-different-times-for-backup-scheduling-and-retention-policies"></a>Dají se pro plánování zálohování a zásady uchovávání používat jiné časy?
 
-No. Zásady uchovávání informací lze aplikovat pouze na body záloh. Tento obrázek například ukazuje zásady uchovávání informací pro zálohy vytvořené ve 12:00 a 18:00.
+Ne. Zásady uchovávání informací lze aplikovat pouze na body záloh. Tento obrázek například ukazuje zásady uchovávání informací pro zálohy vytvořené ve 12:00 a 18:00.
 
 ![Plánování zálohování a uchovávání](./media/backup-azure-backup-faq/Schedule.png)
 
 ### <a name="if-a-backup-is-kept-for-a-long-time-does-it-take-more-time-to-recover-an-older-data-point"></a>Pokud se záloha uchovává po dlouhou dobu, trvá pak obnovení staršího datového bodu déle?
 
-No. Obnovení nejstaršího i nejnovějšího bodu trvá stejně dlouho. Každý bod obnovení se chová jako úplný bod.
+Ne. Obnovení nejstaršího i nejnovějšího bodu trvá stejně dlouho. Každý bod obnovení se chová jako úplný bod.
 
 ### <a name="if-each-recovery-point-is-like-a-full-point-does-it-impact-the-total-billable-backup-storage"></a>Jestliže se každý bod obnovení chová jako úplný bod, ovlivní to celkové fakturovatelné úložiště zálohování?
 
@@ -196,7 +196,7 @@ Neexistuje žádné omezení počtu obnov z Azure Backup.
 
 ### <a name="when-restoring-data-do-i-pay-for-the-egress-traffic-from-azure"></a>Platí se za výchozí přenos z Azure při obnovování dat?
 
-No. Obnovení je zdarma a výchozí přenos se vám neúčtuje.
+Ne. Obnovení je zdarma a výchozí přenos se vám neúčtuje.
 
 ### <a name="what-happens-when-i-change-my-backup-policy"></a>Co se stane, když změním zásady zálohování?
 
@@ -213,11 +213,11 @@ Když se zálohování zastaví a data se zachovají, stávající pravidla zás
 
 ### <a name="is-the-data-sent-to-azure-encrypted"></a>Jsou data odesílaná do Azure šifrovaná?
 
-Yes. Data se na místním počítači šifrují pomocí AES256. Data se odesílají prostřednictvím zabezpečeného spojení HTTPS. Data přenášená v cloudu jsou propojením HTTPS chráněná jenom mezi úložištěm a službou Recovery Service. Data přenášená mezi službou Recovery Service a uživatelským počítačem zabezpečuje protokol iSCSI. K ochraně tunelu iSCSI se využívá zabezpečené tunelové propojení.
+Ano. Data se na místním počítači šifrují pomocí AES256. Data se odesílají prostřednictvím zabezpečeného spojení HTTPS. Data přenášená v cloudu jsou propojením HTTPS chráněná jenom mezi úložištěm a službou Recovery Service. Data přenášená mezi službou Recovery Service a uživatelským počítačem zabezpečuje protokol iSCSI. K ochraně tunelu iSCSI se využívá zabezpečené tunelové propojení.
 
 ### <a name="is-the-backup-data-on-azure-encrypted-as-well"></a>Jsou šifrovaná i zálohovaná data v Azure?
 
-Yes. Data v Azure jsou v klidovém stavu zašifrovaná.
+Ano. Data v Azure jsou v klidovém stavu zašifrovaná.
 
 - V případě místního zálohování se šifrování v klidovém stavu zajišťuje pomocí hesla, které zadáte při zálohování do Azure.
 - Pro virtuální počítače Azure jsou neaktivní uložená data zašifrovaná pomocí Šifrování služby Storage (SSE).

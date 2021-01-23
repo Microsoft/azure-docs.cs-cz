@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 08/18/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 4cd37128893309be5a1e362671b9e28dcc436b1b
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: f6e9009040d2d02702f8a71c352716491d07d1f7
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97356204"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704300"
 ---
 # <a name="migrate-a-sql-server-database-to-sql-server-on-an-azure-virtual-machine"></a>Migrace databáze SQL Server pro SQL Server na virtuálním počítači Azure
 
@@ -68,7 +68,7 @@ Následující tabulka uvádí jednotlivé metody primární migrace a popisuje,
 | [Proveďte zálohu na adresu URL a obnovte ji do virtuálního počítače Azure z adresy URL.](#backup-to-url-and-restore-from-url) |SQL Server 2012 SP1 CU2 nebo novější | SQL Server 2012 SP1 CU2 nebo novější | < 12,8 TB pro SQL Server 2016, jinak < 1 TB | Tato metoda je jenom dalším způsobem, jak přesunout záložní soubor do virtuálního počítače pomocí služby Azure Storage. |
 | [Odpojení a následné zkopírování souborů dat a protokolů do úložiště objektů BLOB v Azure a připojení k SQL Server na virtuálním počítači Azure z adresy URL](#detach-and-attach-from-a-url) | SQL Server 2005 nebo vyšší |SQL Server 2014 nebo vyšší | [Limit úložiště virtuálních počítačů Azure](../../../index.yml) | Tuto metodu použijte, když plánujete [ukládat tyto soubory pomocí služby Azure Blob Storage](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure) a připojit je k SQL Server běžícímu na virtuálním počítači Azure, zejména u velmi rozsáhlých databází. |
 | [Převod místního počítače na virtuální pevné disky Hyper-V, nahrání do úložiště objektů BLOB v Azure a následné nasazení nového virtuálního počítače pomocí nahraného virtuálního pevného disku](#convert-to-a-vm-upload-to-a-url-and-deploy-as-a-new-vm) |SQL Server 2005 nebo vyšší |SQL Server 2005 nebo vyšší |[Limit úložiště virtuálních počítačů Azure](../../../index.yml) |Při migraci databáze, kterou spustíte ve starší verzi SQL Server nebo při migraci systémových a uživatelských databází v rámci migrace databáze závislé na jiných uživatelových databázích nebo systémových databázích, použijte [k uvedení vlastní licence SQL Server](../../../azure-sql/azure-sql-iaas-vs-paas-what-is-overview.md). |
-| [Dodání pevného disku pomocí služby Windows import/export](#ship-a-hard-drive) |SQL Server 2005 nebo vyšší |SQL Server 2005 nebo vyšší |[Limit úložiště virtuálních počítačů Azure](../../../index.yml) |Použijte [službu import/export systému Windows](../../../storage/common/storage-import-export-service.md) , pokud je metoda ručního kopírování příliš pomalá, například u velmi velkých databází. |
+| [Dodání pevného disku pomocí služby Windows import/export](#ship-a-hard-drive) |SQL Server 2005 nebo vyšší |SQL Server 2005 nebo vyšší |[Limit úložiště virtuálních počítačů Azure](../../../index.yml) |Použijte [službu import/export systému Windows](../../../import-export/storage-import-export-service.md) , pokud je metoda ručního kopírování příliš pomalá, například u velmi velkých databází. |
 | [Použití Průvodce přidáním repliky Azure](/previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-sql-onprem-availability) |SQL Server 2012 nebo vyšší |SQL Server 2012 nebo vyšší |[Limit úložiště virtuálních počítačů Azure](../../../index.yml) |Minimalizuje výpadek, používá se, když máte trvalé nasazení na pracovišti. |
 | [Použití SQL Server transakční replikace](/sql/relational-databases/replication/transactional/transactional-replication) |SQL Server 2005 nebo vyšší |SQL Server 2005 nebo vyšší |[Limit úložiště virtuálních počítačů Azure](../../../index.yml) |Použijte v případě, že potřebujete minimalizovat prostoje a nemáte trvalé nasazení v místním prostředí. |
 
@@ -83,7 +83,7 @@ Zálohujte databázi pomocí komprese, zkopírujte zálohu do virtuálního poč
 
 ## <a name="backup-to-url-and-restore-from-url"></a>Zálohování na adresu URL a obnovení z adresy URL
 
-Místo zálohování do místního souboru můžete použít [zálohování na adresu URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url) a pak obnovit z adresy URL virtuálního počítače. SQL Server 2016 podporuje prokládané zálohovací sklady. Doporučuje se pro výkon a musí překročit omezení velikosti na jeden objekt BLOB. U velmi rozsáhlých databází se doporučuje použít [službu import/export systému Windows](../../../storage/common/storage-import-export-service.md) .
+Místo zálohování do místního souboru můžete použít [zálohování na adresu URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url) a pak obnovit z adresy URL virtuálního počítače. SQL Server 2016 podporuje prokládané zálohovací sklady. Doporučuje se pro výkon a musí překročit omezení velikosti na jeden objekt BLOB. U velmi rozsáhlých databází se doporučuje použít [službu import/export systému Windows](../../../import-export/storage-import-export-service.md) .
 
 ## <a name="detach-and-attach-from-a-url"></a>Odpojení a připojení od adresy URL
 
@@ -106,7 +106,7 @@ Tato metoda slouží k migraci všech systémových a uživatelských databází
 
 ## <a name="ship-a-hard-drive"></a>Dodání pevného disku
 
-Použijte [metodu služby Windows import/export](../../../storage/common/storage-import-export-service.md) k přenosu velkých objemů souborových dat do úložiště objektů BLOB v Azure v situacích, kdy je nahlašování přes síť denáročná nebo neproveditelná. Pomocí této služby odešlete jeden nebo více pevných disků obsahujících tato data do datového centra Azure, kam budou data odeslána do svého účtu úložiště.
+Použijte [metodu služby Windows import/export](../../../import-export/storage-import-export-service.md) k přenosu velkých objemů souborových dat do úložiště objektů BLOB v Azure v situacích, kdy je nahlašování přes síť denáročná nebo neproveditelná. Pomocí této služby odešlete jeden nebo více pevných disků obsahujících tato data do datového centra Azure, kam budou data odeslána do svého účtu úložiště.
 
 ## <a name="next-steps"></a>Další kroky
 

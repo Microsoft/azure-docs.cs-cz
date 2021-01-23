@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e9a5cb463646762c262cc3c8e27123a768ef11d8
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 6c5a89b6a376a5938a42b8ba945cdd5269ca54e4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914735"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730119"
 ---
 # <a name="tutorial---deploy-applications-to-a-windows-virtual-machine-in-azure-with-the-custom-script-extension"></a>Kurz nasazení aplikací na virtuální počítač s Windows v Azure pomocí rozšíření vlastních skriptů
 
@@ -39,7 +39,7 @@ Rozšíření vlastních skriptů můžete použít s virtuálními počítači 
 
 
 ## <a name="create-virtual-machine"></a>Vytvoření virtuálního počítače
-Nastavte uživatelské jméno a heslo správce virtuálního počítače pomocí [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1&preserve-view=true):
+Nastavte uživatelské jméno a heslo správce virtuálního počítače pomocí [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential):
 
 ```azurepowershell-interactive
 $cred = Get-Credential
