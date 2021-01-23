@@ -1,0 +1,97 @@
+- name: Dokumentace k Cloud Services (Rozšířená podpora)
+  href: index.yml
+- name: Přehled
+  items:
+    - name: O Cloud Services (Rozšířená podpora)
+      href: overview.md
+    - name: Předpoklady pro nasazení
+      href: deploy-prerequisite.md
+    - name: Konfigurační soubory a balíčky
+      href: cloud-services-model-and-package.md
+- name: Kurzy
+  items:
+    - name: Nasazení cloudové služby – portál
+      href: deploy-portal.md
+    - name: Nasazení cloudové služby – PowerShell
+      href: deploy-powershell.md
+    - name: Nasazení cloudové služby – šablona
+      href: deploy-template.md
+    - name: Nasazení cloudové služby – Visual Studio
+      href: deploy-visual-studio.md
+  expanded: true
+- name: Koncepty
+  items:
+    - name: Dostupné velikosti virtuálních počítačů
+      href: available-sizes.md
+    - name: Nejčastější dotazy
+      href: faq.md
+    - name: Opravy hostovaného operačního systému
+      href: ../cloud-services/cloud-services-guestos-msrc-releases.md?toc=/azure/cloud-services-extended-support/toc.json&bc=/azure/cloud-services-extended-support/breadcrumb/toc.json
+    - name: Vyřazení hostovaného operačního systému
+      href: ../cloud-services/cloud-services-guestos-retirement-policy.md?toc=/azure/cloud-services-extended-support/toc.json&bc=/azure/cloud-services-extended-support/breadcrumb/toc.json
+    - name: Příspěvky k vydání hostovaného operačního systému
+      href: ../cloud-services/cloud-services-guestos-update-matrix.md?toc=/azure/cloud-services-extended-support/toc.json&bc=/azure/cloud-services-extended-support/breadcrumb/toc.json
+    - name: Schéma XML
+      items:
+        - name: Schéma csdef XML
+          href: schema-csdef-file.md
+        - name: LoadBalancerProbe schéma
+          href: schema-csdef-loadbalancerprobe.md
+        - name: Schéma webrole
+          href: schema-csdef-webrole.md
+        - name: Role pracovního procesu schéma
+          href: schema-csdef-workerrole.md
+        - name: NetworkTrafficRules schéma
+          href: schema-csdef-networktrafficrules.md
+        - name: Cscfg – schéma XML
+          href: schema-cscfg-file.md
+        - name: Schéma role
+          href: schema-cscfg-role.md
+        - name: NetworkConfiguration schéma
+          href: schema-cscfg-networkconfiguration.md
+- name: Postup
+  items:
+    - name: Přehled rozšíření
+      href: extensions.md
+    - name: Použít rozšíření vzdálené plochy
+      href: enable-rdp.md
+    - name: Použít rozšíření WAD
+      href: enable-wad.md
+    - name: Povolení upozornění
+      href: enable-alerts.md
+    - name: Konfigurace škálování
+      href: configure-scaling.md
+    - name: Certifikáty
+      href: certificates-and-key-vault.md
+- name: ukázky
+  items:
+    - name: Vytvořit novou cloudovou službu
+      href: sample-create-cloud-service.md
+    - name: Získat podrobnosti o cloudové službě
+      href: sample-get-cloud-service.md
+    - name: Resetování cloudové služby
+      href: sample-reset-cloud-service.md
+- name: Reference
+  items:
+    - name: AZ. CloudService – modul
+      href: 'https://www.powershellgallery.com/packages/Az.CloudService/0.1.0'
+    - name: Rutiny prostředí PowerShell
+      href: 'https://docs.microsoft.com/powershell/module/az.cloudservice/?view=azps-5.4.0#cloudservice'
+    - name: Odkaz na šablonu ARM
+      href: 'https://docs.microsoft.com/azure/templates/microsoft.compute/cloudservices'
+    - name: REST
+      href: 'https://docs.microsoft.com/rest/api/compute/cloudservices'
+- name: Zdroje a prostředky
+  items:
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/?category=compute'
+    - name: Postup výuky
+      href: /learn/paths/azure-fundamentals/
+    - name: Microsoft Q&A
+      href: 'https://docs.microsoft.com/answers/topics/azure-cloud-services.html'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/cloud-services/'
+    - name: Cenová kalkulačka
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Aktualizace služeb
+      href: 'https://azure.microsoft.com/updates/?product=cloud-services&updatetype=&platform='

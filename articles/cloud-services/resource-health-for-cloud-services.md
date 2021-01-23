@@ -1,20 +1,25 @@
 ---
 title: Resource Health pro Cloud Services (Classic)
 description: Tento článek pojednává o podpoře Resource Health (RHC) pro Microsoft Azure Cloud Services (Classic).
-services: cloud-services
-author: tanmaygore
-ms.service: cloud-services
 ms.topic: article
-ms.date: 9/1/2020
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: f99dd8131df9f8bc5d3e4013d4438faa8c25e53b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 37294e681066eb27ace69bcacee3a813b750b8eb
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072709"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743504"
 ---
 # <a name="resource-health-check-rhc-support-for-azure-cloud-services-classic"></a>Podpora Resource Health (RHC) pro Azure Cloud Services (Classic)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md) je nový model nasazení založený na Azure Resource Manager pro produkt Azure Cloud Services.V důsledku této změny se Azure Cloud Services běžící na modelu nasazení založeném na Azure Service Manager přejmenovala jako Cloud Services (Classic) a všechna nová nasazení by měla používat [Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md).
+
 Tento článek pojednává o podpoře Resource Health (RHC) pro [Microsoft Azure Cloud Services (Classic)](https://azure.microsoft.com/services/cloud-services) .
 
 [Azure Resource Health](../service-health/resource-health-overview.md) pro Cloud Services pomáhá diagnostikovat a získat podporu pro problémy se službami, které mají vliv na nasazení cloudové služby, role & instance rolí. Informuje o aktuálním a minulém stavu vašich cloudových služeb při nasazení, rolích & úrovni instance role.
@@ -47,7 +52,7 @@ Vzhledem k tomu, že instance rolí jsou v podstatě virtuální počítače a p
 ## <a name="cloud-services-deployment-level-annotations--their-meanings"></a>Cloud Services (úroveň nasazení) poznámky & jejich významy
 | Poznámka | Popis | 
 | --- | --- | 
-| K dispozici.| Toto nasazení cloudové služby nemá vliv na žádné známé problémy s platformou Azure. |
+| K dispozici| Toto nasazení cloudové služby nemá vliv na žádné známé problémy s platformou Azure. |
 | Neznámý | V tuto chvíli nemůžeme určit stav tohoto nasazení cloudové služby. | 
 | Nastavení Resource Health | Nastavuje se Resource Health pro tento prostředek. Resource Health sleduje vaše prostředky Azure a poskytuje podrobnosti o probíhajících a minulých událostech, které na ně měly vliv.|
 | Snížený výkon | Vaše nasazení cloudové služby má snížený výkon. Pracujeme na automatickém obnovení vašeho nasazení cloudové služby a na zjištění příčin tohoto problému. V tuto chvíli není potřeba žádná další akce. |
@@ -60,7 +65,7 @@ Vzhledem k tomu, že instance rolí jsou v podstatě virtuální počítače a p
 ## <a name="cloud-services-role-instance-level-annotations--their-meanings"></a>Cloud Services (úroveň instance role) poznámky & jejich významy
 | Poznámka | Popis | 
 | --- | --- | 
-| K dispozici. | Tento virtuální počítač nemá vliv na žádné známé problémy s platformou Azure. | 
+| K dispozici | Tento virtuální počítač nemá vliv na žádné známé problémy s platformou Azure. | 
 | Neznámý | V tuto chvíli nemůžeme určit stav tohoto virtuálního počítače. |
 | Zastaveno a zrušení přidělení | Tento virtuální počítač se zastavuje a uvolňuje na žádost autorizovaného uživatele nebo procesu |
 | Nastavení Resource Health | Nastavuje se Resource Health pro tento prostředek. Resource Health sleduje vaše prostředky Azure a poskytuje podrobnosti o probíhajících a minulých událostech, které na ně měly vliv. |
