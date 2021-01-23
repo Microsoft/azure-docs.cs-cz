@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97893dece068dfdde85159f734095401288231d2
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: ecddb950c06c9f8e61f31e104051f5e3b3640ae5
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201344"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725006"
 ---
 # <a name="protecting-microsoft-365-from-on-premises-attacks"></a>Ochrana Microsoft 365 z místních útoků
 
@@ -60,7 +60,7 @@ Chcete-li vyřešit vektory hrozeb popsané výše, doporučujeme dodržovat ní
 
      *  Dostupné jenom pomocí spravovaných pracovních stanic Azure.
 
-Tyto účty jsou omezené na používání. **V Microsoft 365 by neměly být žádné místní účty s oprávněními správce.** Další informace najdete v tomto [přehledu Microsoft 365 rolí správce](https://docs.microsoft.com/microsoft-365/admin/add-users/about-admin-roles?view=o365-worldwide).
+Tyto účty jsou omezené na používání. **V Microsoft 365 by neměly být žádné místní účty s oprávněními správce.** Další informace najdete v tomto [přehledu Microsoft 365 rolí správce](/microsoft-365/admin/add-users/about-admin-roles?view=o365-worldwide).
 Viz také [role Microsoft 365 v Azure Active Directory](../roles/m365-workload-docs.md).
 
 *  **Správa zařízení z Microsoft 365.** Použijte službu Azure AD JOIN a cloudovou správu mobilních zařízení (MDM), abyste vyloučili závislosti na místní infrastruktuře správy zařízení, která může ohrozit ovládací prvky zařízení a zabezpečení.
@@ -82,7 +82,7 @@ Uživatelé s privilegovanými rolemi, jako jsou správci, jsou ve službě Azur
 
 * Používejte jenom cloudové účty pro Azure AD a Microsoft 365 privilegované role. d
 
-* Nasazení [privilegovaných přístupových zařízení](https://docs.microsoft.com/security/compass/privileged-access-devices#device-roles-and-profiles) pro privilegovaný přístup ke správě Microsoft 365 a Azure AD.
+* Nasazení [privilegovaných přístupových zařízení](/security/compass/privileged-access-devices#device-roles-and-profiles) pro privilegovaný přístup ke správě Microsoft 365 a Azure AD.
 
 *  Nasaďte [Azure AD Privileged Identity Management](../privileged-identity-management/pim-configure.md) (PIM) pro přístup JIT (just in time) ke všem lidským účtům s privilegovanými rolemi a při aktivaci rolí vyžadovat silné ověřování.
 
@@ -92,7 +92,7 @@ Uživatelé s privilegovanými rolemi, jako jsou správci, jsou ve službě Azur
 
 * Nasaďte [účty pro nouzový přístup](../roles/security-emergency-access.md) a nepoužívejte místní trezory hesel k ukládání přihlašovacích údajů.
 
-Další informace najdete v tématu [zabezpečení privilegovaného přístupu](https://aka.ms/SPA), který obsahuje podrobné pokyny k tomuto tématu. Podívejte se také na téma [postupy zabezpečeného přístupu pro správce ve službě Azure AD](../roles/security-planning.md).
+Další informace najdete v tématu [zabezpečení privilegovaného přístupu](/security/compass/overview), který obsahuje podrobné pokyny k tomuto tématu. Podívejte se také na téma [postupy zabezpečeného přístupu pro správce ve službě Azure AD](../roles/security-planning.md).
 
 ### <a name="use-cloud-authentication"></a>Použít cloudové ověřování 
 
@@ -100,15 +100,15 @@ Přihlašovací údaje představují primární vektor útoku. Implementací ná
 
 * [Nasazení ověřování se nehesly](../authentication/howto-authentication-passwordless-deployment.md): Pokud chcete, aby se hesla co nejvíce omezila, nasadíte přihlašovací údaje, které se nepoužívají. Tyto přihlašovací údaje se spravují a ověřují nativně v cloudu. Vybírejte z těchto možností:
 
-   * [Windows Hello pro firmy](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/passwordless-strategy)
+   * [Windows Hello pro firmy](/windows/security/identity-protection/hello-for-business/passwordless-strategy)
 
    * [Aplikace Authenticator](../authentication/howto-authentication-passwordless-phone.md)
 
    * [FIDO2 klíče zabezpečení](../authentication/howto-authentication-passwordless-security-key-windows.md)
 
-* [Nasazení Multi-Factor Authentication](https://aka.ms/deploymentplans/mfa): zřízení [více silných přihlašovacích údajů pomocí Azure AD MFA](../fundamentals/resilience-in-credentials.md). Přístup ke cloudovým prostředkům pak bude vyžadovat přihlašovací údaje, které jsou spravované v Azure AD, a navíc k místnímu heslu, na kterém je možné manipulovat.
+* [Nasazení Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md): zřízení [více silných přihlašovacích údajů pomocí Azure AD MFA](../fundamentals/resilience-in-credentials.md). Přístup ke cloudovým prostředkům pak bude vyžadovat přihlašovací údaje, které jsou spravované v Azure AD, a navíc k místnímu heslu, na kterém je možné manipulovat.
 
-   * Další informace najdete v tématu [vytvoření strategie odolného řízení přístupu pomocí Azure Active Directory](https://aka.ms/resilientaad).
+   * Další informace najdete v tématu [vytvoření strategie odolného řízení přístupu pomocí Azure Active Directory](./resilience-overview.md).
 
 **Omezení a kompromisy**
 
@@ -131,7 +131,7 @@ Zřizování se týká vytváření uživatelských účtů a skupin v aplikací
 
    *  Omezte přístup hosta na skupiny procházení a další vlastnosti v adresáři. Pomocí nastavení externí spolupráce můžete omezit schopnost hosta číst skupiny, které nejsou členy. 
 
-    *   Zablokuje přístup k Azure Portal. Je možné provádět vzácná nezbytná výjimka.  Vytvořte zásady podmíněného přístupu, které zahrnují všechny hosty a externí uživatele, a pak [implementujte zásadu pro blokování přístupu](/azure/role-based-access-control/conditional-access-azure-management). 
+    *   Zablokuje přístup k Azure Portal. Je možné provádět vzácná nezbytná výjimka.  Vytvořte zásady podmíněného přístupu, které zahrnují všechny hosty a externí uživatele, a pak [implementujte zásadu pro blokování přístupu](../../role-based-access-control/conditional-access-azure-management.md). 
 
 * **Odpojené doménové struktury:** Použijte [zřizování cloudu Azure AD](../cloud-provisioning/what-is-cloud-provisioning.md). To vám umožní připojit se k odpojeným doménovým strukturám a eliminovat nutnost navázat připojení mezi doménovými strukturami nebo vztahy důvěryhodnosti, což může rozšířit dopad místního porušení. * 
  
@@ -143,7 +143,7 @@ Zřizování se týká vytváření uživatelských účtů a skupin v aplikací
 
 Cloudové skupiny umožňují oddělit vaše spolupráce a přístup z vaší místní infrastruktury.
 
-* **Spolupráce:** Používejte Microsoft 365 skupiny a Microsoft Teams pro moderní spolupráci. Vyřazení místních distribučních seznamů z provozu a [upgrade distribučních seznamů na Microsoft 365 skupiny v aplikaci Outlook](https://docs.microsoft.com/office365/admin/manage/upgrade-distribution-lists?view=o365-worldwide).
+* **Spolupráce:** Používejte Microsoft 365 skupiny a Microsoft Teams pro moderní spolupráci. Vyřazení místních distribučních seznamů z provozu a [upgrade distribučních seznamů na Microsoft 365 skupiny v aplikaci Outlook](/office365/admin/manage/upgrade-distribution-lists?view=o365-worldwide).
 
 * **Přístup:** K autorizaci přístupu k aplikacím v Azure AD použijte skupiny zabezpečení Azure AD nebo skupiny Microsoft 365.
 * **Licencování Office 365:** Licencování na základě skupin můžete zřídit pro Office 365 s použitím pouze cloudových skupin. Tím se oddělí řízení členství ve skupině z místní infrastruktury.
@@ -156,7 +156,7 @@ Převzetí služeb při selhání zahrnuje přímou manipulaci s členstvím ve 
 
 Pro bezpečnou správu zařízení používejte funkce Azure AD.
 
--   **Použití pracovních stanic s Windows 10:** [Nasaďte zařízení připojená k Azure AD](../devices/azureadjoin-plan.md) pomocí zásad MDM. Povolením automatického [pilotního projektu Windows](https://docs.microsoft.com/mem/autopilot/windows-autopilot) můžete plně automatizovat prostředí pro zřizování.
+-   **Použití pracovních stanic s Windows 10:** [Nasaďte zařízení připojená k Azure AD](../devices/azureadjoin-plan.md) pomocí zásad MDM. Povolením automatického [pilotního projektu Windows](/mem/autopilot/windows-autopilot) můžete plně automatizovat prostředí pro zřizování.
 
     -   Vyřadí Windows 8.1 a starší počítače.
 
@@ -164,7 +164,7 @@ Pro bezpečnou správu zařízení používejte funkce Azure AD.
 
     -   Jako zdroj autority pro všechny úlohy správy zařízení použijte [Microsoft Intune](https://www.microsoft.com/en/microsoft-365/enterprise-mobility-security/microsoft-intune) .
 
--   [**Nasazení privilegovaných přístupových zařízení**](https://docs.microsoft.com/security/compass/privileged-access-devices#device-roles-and-profiles) pro privilegovaný přístup ke správě Microsoft 365 a Azure AD.
+-   [**Nasazení privilegovaných přístupových zařízení**](/security/compass/privileged-access-devices#device-roles-and-profiles) pro privilegovaný přístup ke správě Microsoft 365 a Azure AD.
 
  ## <a name="workloads-applications-and-resources"></a>Úlohy, aplikace a prostředky 
 
@@ -181,38 +181,38 @@ Pro bezpečnou správu zařízení používejte funkce Azure AD.
 
 *  **Aplikace a servery úloh**
 
-   * Aplikace nebo prostředky, které vyžadují servery, se dají migrovat do Azure IaaS a používat [Azure AD Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/overview) (Azure služba AD DS) k odvýšení vztahu důvěryhodnosti a závislostí na místní službě AD. Aby bylo možné toto oddělení využít, virtuální sítě používané pro Azure služba AD DS by neměly mít připojení k podnikovým sítím.
+   * Aplikace nebo prostředky, které vyžadují servery, se dají migrovat do Azure IaaS a používat [Azure AD Domain Services](../../active-directory-domain-services/overview.md) (Azure služba AD DS) k odvýšení vztahu důvěryhodnosti a závislostí na místní službě AD. Aby bylo možné toto oddělení využít, virtuální sítě používané pro Azure služba AD DS by neměly mít připojení k podnikovým sítím.
 
-   * Postupujte podle pokynů pro [vrstvení přihlašovacích údajů](https://aka.ms/TierModel). Aplikační servery se typicky považují za prostředky vrstvy 1.
+   * Postupujte podle pokynů pro [vrstvení přihlašovacích údajů](/security/compass/privileged-access-access-model#ADATM_BM). Aplikační servery se typicky považují za prostředky vrstvy 1.
 
  ## <a name="conditional-access-policies"></a>Zásady podmíněného přístupu
 
-Pomocí podmíněného přístupu Azure AD můžete interpretovat signály a na základě nich provádět rozhodnutí o ověřování. Další informace najdete v tématu [plán nasazení podmíněného přístupu.](https://aka.ms/deploymentplans/ca)
+Pomocí podmíněného přístupu Azure AD můžete interpretovat signály a na základě nich provádět rozhodnutí o ověřování. Další informace najdete v tématu [plán nasazení podmíněného přístupu.](../conditional-access/plan-conditional-access.md)
 
 * [Starší protokoly ověřování](../fundamentals/auth-sync-overview.md): Pokud je to možné, používejte podmíněný přístup k [blokování starších protokolů ověřování](../conditional-access/howto-conditional-access-policy-block-legacy.md) . Kromě toho zakažte starší protokoly ověřování na úrovni aplikace pomocí konfigurace specifické pro aplikaci.
 
-   * Podívejte se na konkrétní podrobnosti pro [Exchange Online](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online#how-basic-authentication-works-in-exchange-online) a [SharePoint Online](https://docs.microsoft.com/powershell/module/sharepoint-online/set-spotenant?view=sharepoint-ps).
+   * Podívejte se na konkrétní podrobnosti pro [Exchange Online](/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online#how-basic-authentication-works-in-exchange-online) a [SharePoint Online](/powershell/module/sharepoint-online/set-spotenant?view=sharepoint-ps).
 
-* Implementujte doporučené [Konfigurace identit a přístupu k zařízením.](https://docs.microsoft.com/microsoft-365/security/office-365-security/identity-access-policies?view=o365-worldwide)
+* Implementujte doporučené [Konfigurace identit a přístupu k zařízením.](/microsoft-365/security/office-365-security/identity-access-policies?view=o365-worldwide)
 
 * Pokud používáte verzi služby Azure AD, která nezahrnuje podmíněný přístup, ujistěte se, že používáte [výchozí nastavení zabezpečení Azure AD](../fundamentals/concept-fundamentals-security-defaults.md).
 
    * Další informace o licencování funkcí služby Azure AD najdete v tématu [Cenová příručka Azure AD](https://azure.microsoft.com/pricing/details/active-directory/).
 
-## <a name="monitoring"></a>Monitorování 
+## <a name="monitoring"></a>Sledování 
 
 Jakmile nakonfigurujete prostředí pro ochranu Microsoft 365 před místním zabezpečením, [proaktivně monitorujte](../reports-monitoring/overview-monitoring.md) prostředí.
 ### <a name="scenarios-to-monitor"></a>Scénáře, které se mají monitorovat
 
 Kromě jakýchkoli scénářů, které jsou specifické pro vaši organizaci, můžete monitorovat následující klíčové scénáře. Například byste měli aktivně monitorovat přístup k důležitým firemním aplikacím a prostředkům.
 
-* **Podezřelá aktivita**: všechny [rizikové události Azure AD](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection#risk-detection-and-remediation) by se měly monitorovat na podezřelé aktivity. [Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection) je nativně integrována s Azure Security Center.
+* **Podezřelá aktivita**: všechny [rizikové události Azure AD](../identity-protection/overview-identity-protection.md#risk-detection-and-remediation) by se měly monitorovat na podezřelé aktivity. [Azure AD Identity Protection](../identity-protection/overview-identity-protection.md) je nativně integrována s Azure Security Center.
 
    * Definujte síťová [umístění s názvem](../reports-monitoring/quickstart-configure-named-locations.md) , abyste se vyhnuli detekci šumu na signálech založených na poloze. 
 *  **Výstrahy analýzy chování entit uživatele (UEBA)** Využijte UEBA k získání přehledů o detekci anomálií.
-   * MCAS (Microsoft Cloud App Discovery) poskytuje [UEBA v cloudu](https://docs.microsoft.com/cloud-app-security/tutorial-ueba).
+   * MCAS (Microsoft Cloud App Discovery) poskytuje [UEBA v cloudu](/cloud-app-security/tutorial-ueba).
 
-   * Můžete [integrovat místní UEBA z Azure ATP](https://docs.microsoft.com/defender-for-identity/install-step2). MCAS čte signály z Azure AD Identity Protection. 
+   * Můžete [integrovat místní UEBA z Azure ATP](/defender-for-identity/install-step2). MCAS čte signály z Azure AD Identity Protection. 
 
 * **Činnost účtů pro nouzový přístup**: je třeba monitorovat jakýkoli přístup pomocí [účtů pro nouzový přístup](../roles/security-emergency-access.md) a vytvořit výstrahy pro šetření. Toto monitorování musí zahrnovat: 
 
@@ -223,7 +223,7 @@ Kromě jakýchkoli scénářů, které jsou specifické pro vaši organizaci, m�
    * Jakékoli aktualizace členství ve skupinách. 
 
    *    Přiřazení aplikací. 
-* **Aktivita privilegované role**: Nakonfigurujte a zkontrolujte výstrahy zabezpečení [generované službou Azure AD PIM](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-how-to-configure-security-alerts?tabs=new#security-alerts).
+* **Aktivita privilegované role**: Nakonfigurujte a zkontrolujte výstrahy zabezpečení [generované službou Azure AD PIM](../privileged-identity-management/pim-how-to-configure-security-alerts.md?tabs=new#security-alerts).
     Monitorování přímého přiřazení privilegovaných rolí mimo PIM tím, že generuje výstrahy vždy, když se uživatel přiřadí přímo.
 * **Konfigurace tenanta Azure AD**: jakákoli změna v konfiguracích na úrovni tenanta by měla generovat výstrahy v systému. Mezi ně patří mimo jiné
   *  Aktualizace vlastních domén  
@@ -254,11 +254,11 @@ Definujte protokol úložiště a strategii uchovávání protokolů, návrh a i
 
    * Rizikové události 
 
-Azure AD poskytuje [integraci Azure monitor](../reports-monitoring/concept-activity-logs-azure-monitor.md) pro protokol aktivit přihlašování a protokoly auditu. Rizikové události se dají ingestovat prostřednictvím [rozhraní Microsoft Graph API](https://aka.ms/AzureADSecuredAzure/32b). Protokoly [Azure AD můžete streamovat do protokolů Azure monitor](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md).
+Azure AD poskytuje [integraci Azure monitor](../reports-monitoring/concept-activity-logs-azure-monitor.md) pro protokol aktivit přihlašování a protokoly auditu. Rizikové události se dají ingestovat prostřednictvím [rozhraní Microsoft Graph API](/graph/api/resources/identityriskevent). Protokoly [Azure AD můžete streamovat do protokolů Azure monitor](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md).
 
 * **Protokoly zabezpečení operačních systémů hybridní infrastruktury** Všechny protokoly operačního systému infrastruktury hybridní identity by měly být archivovány a pečlivě monitorovány jako <br>Systém vrstvy 0, s ohledem na dopady oblasti Surface. Sem patří: 
 
-   *  Azure AD Connect . Aby bylo možné monitorovat synchronizaci identity, je nutné nasadit [Azure AD Connect Health](https://aka.ms/AzureADSecuredAzure/32e) .
+   *  Azure AD Connect . Aby bylo možné monitorovat synchronizaci identity, je nutné nasadit [Azure AD Connect Health](../hybrid/whatis-azure-ad-connect.md) .
 
    *  Agenti proxy aplikací 
 

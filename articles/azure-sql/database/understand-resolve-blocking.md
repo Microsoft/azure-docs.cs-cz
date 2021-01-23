@@ -14,12 +14,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
 ms.date: 1/14/2020
-ms.openlocfilehash: d3bd63566daaf6e1d3e3343b5956d8a8d5fc8ea5
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: b73e72969a851428034499d447ecb162a61aa9ab
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98224482"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725782"
 ---
 # <a name="understand-and-resolve-azure-sql-database-blocking-problems"></a>Pochopení a řešení potíží s blokováním Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -282,12 +282,12 @@ Tabulka níže mapuje běžné příznaky na jejich pravděpodobné příčiny.
 
 `wait_type`Sloupce, `open_transaction_count` a `status` odkazují na informace vrácené [Sys.dm_exec_request](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql), jiné sloupce mohou být vráceny [Sys.dm_exec_sessions](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sessions-transact-sql). "Překládám?" sloupec označuje, zda se bude blokující rozlišení vyřešit sami, nebo zda má být relace ukončena `KILL` příkazem. Další informace naleznete v tématu [Kill (Transact-SQL)](/sql/t-sql/language-elements/kill-transact-sql).
 
-| Scénář | Waittype | Open_Tran | Status | Klád? | Další příznaky |  
+| Scenario | Waittype | Open_Tran | Status | Klád? | Další příznaky |  
 |:-|:-|:-|:-|:-|:-|--|
 | 1 | NENÍ NULL | >= 0 | spustitelný | Ano, když se dotaz dokončí. | V sys.dm_exec_sessions se v průběhu času budou **číst**, **cpu_time** a **memory_usage** sloupce. Doba trvání dotazu bude vysoká, až se dokončí. |
 | 2 | NULL | \>0,8 | režimu spánku | Ne, můžete ale ukončit SPID. | Oznámení se může zobrazit v relaci rozšířené události pro toto ID SPID, která indikuje časový limit dotazu nebo zrušení. |
-| 3 | NULL | \>= 0 | spustitelný | No. Nebude vyřešen, dokud klient nenačte všechny řádky nebo ukončí připojení. SPID může být ukončeno, ale může trvat až 30 sekund. | Pokud open_transaction_count = 0 a SPID udržuje zámky, zatímco je úroveň izolace transakce výchozí (čtení COMMMITTED), je to Pravděpodobná příčina. |  
-| 4 | Různé | \>= 0 | spustitelný | No. Nebude vyřešen, dokud klient zruší dotazy nebo ukončí připojení. SPIDs lze ukončit, ale může trvat až 30 sekund. | Sloupec **hostname** v sys.DM_EXEC_SESSIONS pro SPID na začátku řetězce blokování bude stejný jako jeden z identifikátoru SPID, který blokuje. |  
+| 3 | NULL | \>= 0 | spustitelný | Ne. Nebude vyřešen, dokud klient nenačte všechny řádky nebo ukončí připojení. SPID může být ukončeno, ale může trvat až 30 sekund. | Pokud open_transaction_count = 0 a SPID udržuje zámky, zatímco je úroveň izolace transakce výchozí (čtení COMMMITTED), je to Pravděpodobná příčina. |  
+| 4 | Různé | \>= 0 | spustitelný | Ne. Nebude vyřešen, dokud klient zruší dotazy nebo ukončí připojení. SPIDs lze ukončit, ale může trvat až 30 sekund. | Sloupec **hostname** v sys.DM_EXEC_SESSIONS pro SPID na začátku řetězce blokování bude stejný jako jeden z identifikátoru SPID, který blokuje. |  
 | 5 | NULL | \>0,8 | návrat | Ano. | Oznámení se může zobrazit v relaci rozšířených událostí pro toto ID SPID, která indikuje časový limit dotazu nebo zrušení, nebo byl vydán pouze příkaz ROLLBACK. |  
 | 6 | NULL | \>0,8 | režimu spánku | Takže. Pokud systém Windows NT zjistí, že relace již není aktivní, připojení Azure SQL Database bude přerušeno. | `last_request_start_time`Hodnota v sys.dm_exec_sessions je mnohem starší než aktuální čas. |
 
@@ -345,7 +345,7 @@ Následující scénáře se v těchto scénářích rozšíří.
     Po odeslání dotazu na server musí všechny aplikace okamžitě načíst všechny řádky výsledků, které mají být dokončeny. Pokud aplikace nenačte všechny řádky výsledků, můžou být zámky ponechány na tabulkách a blokují ostatní uživatele. Pokud používáte aplikaci, která transparentně odesílá příkazy SQL na server, aplikace musí načíst všechny řádky výsledků. Pokud není (a nemůžete ho nakonfigurovat tak, aby to provedl), možná nebudete schopni vyřešit problém s blokováním. Chcete-li se tomuto problému vyhnout, můžete omezit nedostatečně chovatcí aplikace na generování sestav nebo databáze podpory rozhodování.
     
     > [!NOTE]
-    > Přečtěte si [pokyny pro logiku opakování](/azure/azure-sql/database/troubleshoot-common-connectivity-issues#retry-logic-for-transient-errors) pro aplikace, které se připojují k Azure SQL Database. 
+    > Přečtěte si [pokyny pro logiku opakování](./troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors) pro aplikace, které se připojují k Azure SQL Database. 
     
     **Řešení**: aplikace musí být přepsána, aby se načetly všechny řádky výsledku do dokončení. Nejedná se o použití [posunu a načtení v klauzuli ORDER by](/sql/t-sql/queries/select-order-by-clause-transact-sql#using-offset-and-fetch-to-limit-the-rows-returned) dotazu k provedení stránkování na straně serveru.
 

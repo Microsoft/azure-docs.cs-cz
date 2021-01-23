@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18036644dc4df51bfacc5019f70ae7694757f753
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 218208891cccb4f606a574a9c1c09f30c4ac0b11
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222237"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725074"
 ---
 # <a name="secure-external-access-to-microsoft-teams-sharepoint-and-onedrive-for-business"></a>Zabezpečení externího přístupu k Microsoft teams, SharePointu a OneDrivu pro firmy 
 
@@ -77,7 +77,7 @@ Omezení spolupráce mají tři možnosti. Vaše obchodní požadavky určují, 
 
 ## <a name="govern-access-in-teams"></a>Řízení přístupu v týmech
 
-[Týmy rozlišují externí uživatele (všichni mimo vaši organizaci) a uživatelé typu Host (s účty hosta)](https://docs.microsoft.com/microsoftteams/communicate-with-users-from-other-organizations?WT.mc_id=TeamsAdminCenterCSH)). Nastavení spolupráce můžete spravovat na [portálu pro správu týmů](https://admin.teams.microsoft.com/company-wide-settings/external-communications) v části nastavení v rámci organizace. 
+[Týmy rozlišují externí uživatele (všichni mimo vaši organizaci) a uživatelé typu Host (s účty hosta)](/microsoftteams/communicate-with-users-from-other-organizations?WT.mc_id=TeamsAdminCenterCSH%e2%80%8b)). Nastavení spolupráce můžete spravovat na [portálu pro správu týmů](https://admin.teams.microsoft.com/company-wide-settings/external-communications) v části nastavení v rámci organizace. 
 
 > [!NOTE]
 > Nastavení spolupráce externích identit v Azure Active Directory řídí efektivní oprávnění. Můžete zvýšit omezení týmů, ale nemusíte je snížit z toho, co je ve službě Azure AD nastaveno.
@@ -88,13 +88,13 @@ Omezení spolupráce mají tři možnosti. Vaše obchodní požadavky určují, 
 
 Další informace o správě externího přístupu v týmech najdete v následujících zdrojích.
 
-* [Správa externího přístupu v Microsoft Teams](https://docs.microsoft.com/microsoftteams/manage-external-access)
+* [Správa externího přístupu v Microsoft Teams](/microsoftteams/manage-external-access)
 
-* [Microsoft 365 modely identity a Azure Active Directory](https://docs.microsoft.com/microsoft-365/enterprise/about-microsoft-365-identity?view=o365-worldwide)
+* [Microsoft 365 modely identity a Azure Active Directory](/microsoft-365/enterprise/about-microsoft-365-identity?view=o365-worldwide)
 
-* [Modely identit a ověřování pro Microsoft Teams](https://docs.microsoft.com/MicrosoftTeams/identify-models-authentication)
+* [Modely identit a ověřování pro Microsoft Teams](/MicrosoftTeams/identify-models-authentication)
 
-* [Popisky citlivosti pro Microsoft Teams](https://docs.microsoft.com/MicrosoftTeams/sensitivity-labels)
+* [Popisky citlivosti pro Microsoft Teams](/MicrosoftTeams/sensitivity-labels)
 
 ## <a name="govern-access-in-sharepoint-and-onedrive"></a>Řízení přístupu na SharePointu a OneDrivu
 
@@ -102,9 +102,9 @@ Správci služby SharePoint mají k dispozici mnoho nastavení pro spolupráci. 
 
 ### <a name="integrating-sharepoint-and-one-drive-with-azure-ad-b2b"></a>Integrace služby SharePoint a jedné jednotky pomocí Azure AD B2B
 
-V rámci celkové strategie pro řízení externí spolupráce doporučujeme, abyste [povolili předběžnou integraci SharePointu a OneDrivu s Azure AD B2B](https://docs.microsoft.com/sharepoint/sharepoint-azureb2b-integration-preview) .
+V rámci celkové strategie pro řízení externí spolupráce doporučujeme, abyste [povolili předběžnou integraci SharePointu a OneDrivu s Azure AD B2B](/sharepoint/sharepoint-azureb2b-integration-preview) .
 
-Azure AD B2B poskytuje ověřování a správu uživatelů typu Host. Díky integraci SharePointu a OneDrivu se používají [jednorázová hesla Azure AD B2B](https://docs.microsoft.com/azure/active-directory/external-identities/one-time-passcode) pro externí sdílení souborů, složek, položek seznamu, knihoven dokumentů a webů. Tato funkce nabízí upgradované prostředí ze stávajícího [uživatelského prostředí pro externí sdílení](https://docs.microsoft.com/sharepoint/what-s-new-in-sharing-in-targeted-release).
+Azure AD B2B poskytuje ověřování a správu uživatelů typu Host. Díky integraci SharePointu a OneDrivu se používají [jednorázová hesla Azure AD B2B](../external-identities/one-time-passcode.md) pro externí sdílení souborů, složek, položek seznamu, knihoven dokumentů a webů. Tato funkce nabízí upgradované prostředí ze stávajícího [uživatelského prostředí pro externí sdílení](/sharepoint/what-s-new-in-sharing-in-targeted-release).
 
 > [!NOTE]
 > Pokud povolíte verzi Preview pro integraci Azure AD B2B, pak se sdílení SharePointu a OneDrive řídí nastavením vztahů organizace Azure AD, jako jsou **členové můžou pozvat** a **pozvat hosty**.
@@ -171,9 +171,9 @@ Nedoporučujeme povolování odkazů na všechny uživatele. Pokud tak učiníte
 
 Další informace o řízení přístupu k externímu přístupu ke službě SharePoint najdete v následujících tématech:
 
-* [Přehled externího sdílení SharePointu](https://docs.microsoft.com/sharepoint/external-sharing-overview)
+* [Přehled externího sdílení SharePointu](/sharepoint/external-sharing-overview)
 
-* [Integrace SharePointu a OneDrivu s Azure AD B2B](https://docs.microsoft.com/sharepoint/sharepoint-azureb2b-integration-preview)
+* [Integrace SharePointu a OneDrivu s Azure AD B2B](/sharepoint/sharepoint-azureb2b-integration-preview)
 
 #### <a name="next-steps"></a>Další kroky
 

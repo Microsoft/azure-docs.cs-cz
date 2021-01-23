@@ -3,12 +3,12 @@ title: Glosář Azure Backup
 description: Tento článek popisuje výrazy užitečné pro použití s Azure Backup.
 ms.topic: conceptual
 ms.date: 12/21/2020
-ms.openlocfilehash: 121258665ab275fdcffd618e7c0cf1b3e0537e70
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 5b575e0f56c9cf39987e9e77850ab1d9b2e80d93
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98661472"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98723910"
 ---
 # <a name="azure-backup-glossary"></a>Glosář Azure Backup
 
@@ -21,7 +21,7 @@ Tento Glosář termínů může být užitečný při použití Azure Backup.
 
 ## <a name="afs-azure-file-shares"></a>AFS (sdílené složky Azure)
 
-Informace najdete v [dokumentaci ke službě soubory Azure](https://docs.microsoft.com/azure/storage/files/storage-files-introduction).
+Informace najdete v [dokumentaci ke službě soubory Azure](../storage/files/storage-files-introduction.md).
 
 ## <a name="alternate-location-recovery"></a>Obnovení alternativního umístění
 
@@ -35,7 +35,7 @@ Zálohování konzistentní s aplikací zaznamenává obsah paměti a probíhaj�
 
 ## <a name="azure-resource-manager-arm-templates"></a>Šablony Azure Resource Manageru (ARM)
 
-Informace najdete v [dokumentaci k šablonám ARM](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview).
+Informace najdete v [dokumentaci k šablonám ARM](../azure-resource-manager/templates/overview.md).
 
 ## <a name="autoprotection-for-databases"></a>AutoProtection (pro databáze)
 
@@ -49,38 +49,38 @@ Azure Backup nabízí tři typy replikace k zajištění vysoké dostupnosti úl
 
 ### <a name="lrs"></a>LRS
 
-[Místně redundantní úložiště (LRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy#locally-redundant-storage) replikuje zálohovaná data třikrát (vytváří tři kopie zálohovaných dat) v jednotce škálování úložiště v datacentru. Všechny kopie zálohovaných dat existují ve stejné oblasti. LRS je cenová možnost pro ochranu zálohovaných dat před selháním místního hardwaru.
+[Místně redundantní úložiště (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) replikuje zálohovaná data třikrát (vytváří tři kopie zálohovaných dat) v jednotce škálování úložiště v datacentru. Všechny kopie zálohovaných dat existují ve stejné oblasti. LRS je cenová možnost pro ochranu zálohovaných dat před selháním místního hardwaru.
 
 ### <a name="grs"></a>GRS
 
-[Geograficky redundantní úložiště (GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy#geo-redundant-storage) je výchozí a doporučená možnost replikace. GRS replikuje data záloh do sekundární oblasti a stovky kilometrů od primárního umístění zdrojových dat. GRS náklady jsou větší než LRS, ale GRS poskytuje vyšší úroveň trvanlivosti pro data záloh, i když dojde k výpadku v regionu.
+[Geograficky redundantní úložiště (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage) je výchozí a doporučená možnost replikace. GRS replikuje data záloh do sekundární oblasti a stovky kilometrů od primárního umístění zdrojových dat. GRS náklady jsou větší než LRS, ale GRS poskytuje vyšší úroveň trvanlivosti pro data záloh, i když dojde k výpadku v regionu.
 
 >[!NOTE]
 >U trezorů GRS, které mají povolenou funkci obnovení mezi oblastmi, se úložiště zálohování upgraduje z GRS na RA-GRS (úložiště pro přístup pro čtení Geo-Redundant).
 
 ### <a name="zrs"></a>ZRS
 
-[Zóna – redundantní úložiště (ZRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy#zone-redundant-storage) replikuje vaše Zálohovaná data do [zón dostupnosti](https://docs.microsoft.com/azure/availability-zones/az-overview#availability-zones)a zaručuje jejich započet a odolnost záložních dat ve stejné oblasti. Důležité úlohy, které vyžadují zastavování [dat](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/) , se dají zálohovat v ZRS.
+[Zóna – redundantní úložiště (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) replikuje vaše Zálohovaná data do [zón dostupnosti](../availability-zones/az-overview.md#availability-zones)a zaručuje jejich započet a odolnost záložních dat ve stejné oblasti. Důležité úlohy, které vyžadují zastavování [dat](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/) , se dají zálohovat v ZRS.
 
 ## <a name="azure-command-line-interface-cli"></a>Rozhraní příkazového řádku Azure (CLI)
 
-Informace najdete v dokumentaci k rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/what-is-azure-cli).
+Informace najdete v dokumentaci k rozhraní příkazového [řádku Azure](/cli/azure/what-is-azure-cli).
 
 ## <a name="azure-policy"></a>Azure Policy
 
-Informace o [Azure Policy](https://docs.microsoft.com/azure/governance/policy/overview)najdete v dokumentaci.
+Informace o [Azure Policy](../governance/policy/overview.md)najdete v dokumentaci.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-Informace o [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)najdete v dokumentaci.
+Informace o [Azure PowerShell](/powershell/azure/)najdete v dokumentaci.
 
 ## <a name="azure-resource-manager-arm"></a>Azure Resource Manager (ARM)
 
-Informace o [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/overview)najdete v dokumentaci.
+Informace o [Azure Resource Manager](../azure-resource-manager/management/overview.md)najdete v dokumentaci.
 
 ## <a name="azure-disk-encryption-ade"></a>Azure Disk Encryption (ADE)
 
-Informace o [Azure Disk Encryption](https://docs.microsoft.com/azure/security/fundamentals/azure-disk-encryption-vms-vmss)najdete v dokumentaci.
+Informace o [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md)najdete v dokumentaci.
 
 ## <a name="backend-storage--cloud-storage--backup-storage"></a>Úložiště back-endu/cloudové úložiště/úložiště zálohování
 
@@ -124,11 +124,11 @@ K snímkům konzistentním se selháním obvykle dochází v případě, že se 
 
 ## <a name="cross-region-restore-crr"></a>Obnovení mezi oblastmi (CRR)
 
-Jedna z [možností obnovení](backup-azure-arm-restore-vms.md#restore-options)(crr) vám umožňuje obnovit zálohované položky v sekundární oblasti, která je [spárována se službou Azure](https://docs.microsoft.com/azure/best-practices-availability-paired-regions#what-are-paired-regions).
+Jedna z [možností obnovení](backup-azure-arm-restore-vms.md#restore-options)(crr) vám umožňuje obnovit zálohované položky v sekundární oblasti, která je [spárována se službou Azure](../best-practices-availability-paired-regions.md#what-are-paired-regions).
 
 ## <a name="data-box"></a>Data box
 
-Informace najdete v [dokumentaci k data box](https://docs.microsoft.com/azure/databox/data-box-overview).
+Informace najdete v [dokumentaci k data box](../databox/data-box-overview.md).
 
 ## <a name="datasource"></a>Zdroj dat
 
@@ -138,11 +138,11 @@ Prostředek (prostředek Azure, prostředek proxy serveru nebo místní prostře
 
 (Termín specifický pro úlohy)
 
-Informace najdete v [dokumentaci k aplikaci DPM](https://docs.microsoft.com/system-center/dpm/dpm-overview).
+Informace najdete v [dokumentaci k aplikaci DPM](/system-center/dpm/dpm-overview).
 
 ## <a name="expressroute"></a>ExpressRoute
 
-Přečtěte si [dokumentaci k ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction).
+Přečtěte si [dokumentaci k ExpressRoute](../expressroute/expressroute-introduction.md).
 
 ## <a name="file-system-consistent-backup"></a>Zálohování konzistentní se systémem souborů
 
@@ -164,7 +164,7 @@ Zásada zálohování GFS (dědečka-otce-syn) je ta, která umožňuje kromě d
 
 ## <a name="iaas-vms--azure-vms"></a>Virtuální počítače s IaaS nebo virtuální počítače Azure
 
-Přečtěte si [dokumentaci k virtuálnímu počítači Azure](https://docs.microsoft.com/azure/virtual-machines/).
+Přečtěte si [dokumentaci k virtuálnímu počítači Azure](../virtual-machines/index.yml).
 
 ## <a name="incremental-backup"></a>Přírůstkové zálohování
 
@@ -196,7 +196,7 @@ Pomocí Azure Backup Server můžete chránit pracovní zatížení aplikací, j
 
 ## <a name="managed-disks"></a>Spravované disky
 
-Informace najdete v [dokumentaci ke službě Managed disks](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
+Informace najdete v [dokumentaci ke službě Managed disks](../virtual-machines/managed-disks-overview.md).
 
 ## <a name="mars-agent"></a>Agent MARS
 
@@ -206,7 +206,7 @@ Označuje se taky jako agent **Azure Backup agenta** nebo agent **Recovery Servi
 
 ## <a name="nsg-network-security-group"></a>NSG (skupina zabezpečení sítě)
 
-Přečtěte si [dokumentaci k NSG](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview).
+Přečtěte si [dokumentaci k NSG](../virtual-network/network-security-groups-overview.md).
 
 ## <a name="offline-seeding"></a>Offline osazení
 
@@ -228,7 +228,7 @@ K šifrování a dešifrování dat se používá přístupové heslo při zálo
 
 ## <a name="private-endpoint"></a>Privátní koncový bod
 
-Přečtěte si [dokumentaci k privátnímu koncovému bodu](https://docs.microsoft.com/azure/private-link/private-endpoint-overview).
+Přečtěte si [dokumentaci k privátnímu koncovému bodu](../private-link/private-endpoint-overview.md).
 
 ## <a name="protected-instance"></a>Chráněná instance
 
@@ -236,7 +236,7 @@ Chráněná instance odkazuje na počítač, fyzický nebo virtuální server, k
 
 ## <a name="rbac-role-based-access-control"></a>RBAC (řízení přístupu na základě role)
 
-Informace najdete v [dokumentaci RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview).
+Informace najdete v [dokumentaci RBAC](../role-based-access-control/overview.md).
 
 ## <a name="recovery-point-restore-point-retention-point--point-in-time-pit"></a>Bod obnovení/bod obnovení/bod uchování/v čase (PECKY)
 
@@ -248,11 +248,11 @@ Azure Resource Manager prostředku typu *Microsoft. RecoveryServices/trezory*. V
 
 ## <a name="resource-group"></a>Skupina prostředků
 
-Informace najdete v [dokumentaci k Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal#what-is-a-resource-group).
+Informace najdete v [dokumentaci k Azure Resource Manager](../azure-resource-manager/management/manage-resource-groups-portal.md#what-is-a-resource-group).
 
 ## <a name="rest-api"></a>REST API
 
-Informace najdete v [dokumentaci k Azure REST API](https://docs.microsoft.com/rest/api/azure/).
+Informace najdete v [dokumentaci k Azure REST API](/rest/api/azure/).
 
 ## <a name="retention-rule"></a>Pravidlo uchovávání informací
 
@@ -272,7 +272,7 @@ RTO označuje maximální možnou dobu, během které mohou být data obnovena k
 
 ## <a name="secondary-region--paired-region"></a>Sekundární oblast/spárovaná oblast
 
-Regionální pár se skládá ze dvou oblastí ve stejné zeměpisné oblasti. Jedna je primární oblastí a druhá je sekundární oblastí. Spárované oblasti jsou používány některými službami Azure (včetně Azure Backup s nastaveními GRS), aby se zajistila Kontinuita podnikových aplikací a chránila před ztrátou dat. [Přečtěte si další informace](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+Regionální pár se skládá ze dvou oblastí ve stejné zeměpisné oblasti. Jedna je primární oblastí a druhá je sekundární oblastí. Spárované oblasti jsou používány některými službami Azure (včetně Azure Backup s nastaveními GRS), aby se zajistila Kontinuita podnikových aplikací a chránila před ztrátou dat. [Přečtěte si další informace](../best-practices-availability-paired-regions.md).
 
 ## <a name="soft-delete"></a>Obnovitelné odstranění
 
@@ -280,11 +280,11 @@ Obnovitelné odstranění je funkce, která pomáhá chránit před náhodným o
 
 ## <a name="snapshot"></a>Snímek
 
-Snímek je úplná kopie virtuálního pevného disku (VHD), která je jen pro čtení, nebo sdílená složka Azure. Další informace o [snímcích snímků disku](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk) a [snímcích souborů](https://docs.microsoft.com/azure/storage/files/storage-snapshots-files).
+Snímek je úplná kopie virtuálního pevného disku (VHD), která je jen pro čtení, nebo sdílená složka Azure. Další informace o [snímcích snímků disku](../virtual-machines/windows/snapshot-copy-managed-disk.md) a [snímcích souborů](../storage/files/storage-snapshots-files.md).
 
 ## <a name="storage-account"></a>Účet úložiště
 
-Informace najdete v [dokumentaci k účtu úložiště](https://docs.microsoft.com/azure/storage/common/storage-account-overview).
+Informace najdete v [dokumentaci k účtu úložiště](../storage/common/storage-account-overview.md).
 
 ## <a name="subscription"></a>Předplatné
 
@@ -302,7 +302,7 @@ Klient představuje organizaci. Jedná se o vyhrazenou instanci Azure AD, kterou
 
 ## <a name="unmanaged-disk"></a>Nespravovaný disk
 
-Informace najdete v [dokumentaci k nespravovaným diskům](https://docs.microsoft.com/azure/storage/common/storage-disaster-recovery-guidance#azure-unmanaged-disks).
+Informace najdete v [dokumentaci k nespravovaným diskům](../storage/common/storage-disaster-recovery-guidance.md#azure-unmanaged-disks).
 
 ## <a name="vault"></a>Trezor
 
@@ -314,11 +314,11 @@ Soubor s přihlašovacími údaji trezoru je certifikát vygenerovaný portálem
 
 ## <a name="vnet-virtual-network"></a>Virtuální síť (Virtual Network)
 
-Přečtěte si [dokumentaci k virtuální](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)síti.
+Přečtěte si [dokumentaci k virtuální](../virtual-network/virtual-networks-overview.md)síti.
 
 ## <a name="vss-windows-volume-shadow-copy-service"></a>VSS (Windows služba Stínová kopie svazku)
 
-Informace najdete v [dokumentaci](https://docs.microsoft.com/windows-server/storage/file-server/volume-shadow-copy-service)ke službě VSS.
+Informace najdete v [dokumentaci](/windows-server/storage/file-server/volume-shadow-copy-service)ke službě VSS.
 
 ## <a name="next-steps"></a>Další kroky
 

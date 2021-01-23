@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7557985b23991f1a53d45f6f2d2283500c0d73f3
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 302e4becd337c8e7b0b425a52ed46d562db5bae4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222407"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725323"
 ---
 # <a name="discover-the-current-state-of-external-collaboration-in-your-organization"></a>Zjištění aktuálního stavu externí spolupráce ve vaší organizaci 
 
@@ -34,11 +34,11 @@ Jednotlivci ve vaší organizaci už pravděpodobně spolupracují s uživateli 
 
 Uživatelé, kteří zahajují externí spolupráci, nejlépe pochopili aplikace, které jsou relevantní pro externí spolupráci, a v případě, že by měl tento přístup končit. Porozumění těmto uživatelům vám pomůže určit, kdo má mít delegovaná oprávnění k pozvání externích uživatelů, vytváření balíčků pro přístup a kompletní kontroly přístupu.
 
-Pokud chcete najít uživatele, kteří aktuálně spolupracují, přečtěte si téma [Microsoft 365 log audit pro aktivity sdílení a žádosti o přístup](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance?view=o365-worldwide#sharing-and-access-request-activities). Můžete si také projít [protokol auditu Azure AD a podrobnější informace o tom, kdo uživatele B2B pozvaní](../external-identities/auditing-and-reporting.md) do vašeho adresáře.
+Pokud chcete najít uživatele, kteří aktuálně spolupracují, přečtěte si téma [Microsoft 365 log audit pro aktivity sdílení a žádosti o přístup](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance?view=o365-worldwide#sharing-and-access-request-activities). Můžete si také projít [protokol auditu Azure AD a podrobnější informace o tom, kdo uživatele B2B pozvaní](../external-identities/auditing-and-reporting.md) do vašeho adresáře.
 
 ## <a name="find-current-collaboration-partners"></a>Najít aktuální partnery pro spolupráci
 
-Externí uživatelé můžou být [Uživatelé Azure AD B2B](../external-identities/what-is-b2b.md) (preferovat) s přihlašovacími údaji spravovanými partnerem nebo externími uživateli s místně zřízenými přihlašovacími údaji. Tito uživatelé jsou obvykle (ale ne vždy) označeny jako UserType Host. Můžete vytvořit výčet uživatelů typu Host prostřednictvím [rozhraní Microsoft Graph API](https://docs.microsoft.com/graph/api/user-list?view=graph-rest-1.0&tabs=http), [powershellu](https://docs.microsoft.com/graph/api/user-list?view=graph-rest-1.0&tabs=http)nebo [Azure Portal](../enterprise-users/users-bulk-download.md).
+Externí uživatelé můžou být [Uživatelé Azure AD B2B](../external-identities/what-is-b2b.md) (preferovat) s přihlašovacími údaji spravovanými partnerem nebo externími uživateli s místně zřízenými přihlašovacími údaji. Tito uživatelé jsou obvykle (ale ne vždy) označeny jako UserType Host. Můžete vytvořit výčet uživatelů typu Host prostřednictvím [rozhraní Microsoft Graph API](/graph/api/user-list?tabs=http&view=graph-rest-1.0), [powershellu](/graph/api/user-list?tabs=http&view=graph-rest-1.0)nebo [Azure Portal](../enterprise-users/users-bulk-download.md).
 
 ### <a name="use-email-domains-and-companyname-property"></a>Použití e-mailových domén a vlastností companyName
 
@@ -55,7 +55,7 @@ Pokud používáte správu nároků, můžete také určit rozsah přístupovýc
 
 ## <a name="find-access-being-granted-to-external-users"></a>Získání přístupu pro externí uživatele
 
-Jakmile budete mít inventář externích uživatelů a organizací, můžete určit přístup k těmto uživatelům pomocí rozhraní Microsoft Graph API, abyste zjistili [členství ve skupině](https://docs.microsoft.com/graph/api/resources/groups-overview?view=graph-rest-1.0) Azure AD nebo [přímé přiřazení aplikací](https://docs.microsoft.com/graph/api/resources/approleassignment?view=graph-rest-1.0) ve službě Azure AD.
+Jakmile budete mít inventář externích uživatelů a organizací, můžete určit přístup k těmto uživatelům pomocí rozhraní Microsoft Graph API, abyste zjistili [členství ve skupině](/graph/api/resources/groups-overview?view=graph-rest-1.0) Azure AD nebo [přímé přiřazení aplikací](/graph/api/resources/approleassignment?view=graph-rest-1.0) ve službě Azure AD.
 
 
 ### <a name="enumerate-application-specific-permissions"></a>Zobrazení výčtu oprávnění specifických pro aplikaci
@@ -65,7 +65,7 @@ Může být také možné provést výčet oprávnění specifický pro aplikaci
 Konkrétně můžete prozkoumat přístup ke všem vašim firemním a důležitým firemním aplikacím, abyste měli plně přehled o všech externích přístupech.
 
 ### <a name="detect-ad-hoc-sharing"></a>Zjistit sdílení ad hoc
-Pokud to vaše e-mailové a síťové plány umožňují, můžete prozkoumat obsah sdílený prostřednictvím e-mailu nebo prostřednictvím neautorizovaných aplikací SaaS (software jako služba). [Ochrana před únikem informací Microsoft 365](https://docs.microsoft.com/microsoft-365/compliance/data-loss-prevention-policies?view=o365-worldwide) pomáhá identifikovat, zabránit a monitorovat náhodné sdílení citlivých informací napříč vaší infrastrukturou Microsoft 365. [Microsoft Cloud App Security](https://www.microsoft.com/microsoft-365/enterprise-mobility-security/cloud-app-security) vám může pomáhat identifikovat používání neautorizovaných aplikací SaaS ve vašem prostředí.
+Pokud to vaše e-mailové a síťové plány umožňují, můžete prozkoumat obsah sdílený prostřednictvím e-mailu nebo prostřednictvím neautorizovaných aplikací SaaS (software jako služba). [Ochrana před únikem informací Microsoft 365](/microsoft-365/compliance/data-loss-prevention-policies?view=o365-worldwide) pomáhá identifikovat, zabránit a monitorovat náhodné sdílení citlivých informací napříč vaší infrastrukturou Microsoft 365. [Microsoft Cloud App Security](https://www.microsoft.com/microsoft-365/enterprise-mobility-security/cloud-app-security) vám může pomáhat identifikovat používání neautorizovaných aplikací SaaS ve vašem prostředí.
 
 ## <a name="next-steps"></a>Další kroky
 

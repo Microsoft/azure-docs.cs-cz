@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: faa334c21e23ecddad287846d34aaf0d72af66cc
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 6d476be7a417cfc31cca76d3409074aaaa281a56
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602180"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724606"
 ---
 # <a name="build-resilience-with-device-states"></a>Odolnost sestavení se stavy zařízení
 
@@ -40,11 +40,11 @@ Pokud se k žádosti o přístup k aplikaci, jejímu zařízení, relaci a dekla
 
   Pokud ve vaší organizaci existují starší verze Windows, upgradujte tato zařízení na použití Windows 10.
 
-* Standardizace přístupu prohlížeče uživatelů k používání [Microsoft Edge](https://docs.microsoft.com/deployedge/microsoft-edge-security-identity) nebo Google Chrome s [podporovanými](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji) [rozšířeními](https://chrome.google.com/webstore/detail/office/ndjpnladcallmjemlbaebfadecfhkepb) , která umožňují bezproblémové přihlašování k webovým aplikacím pomocí PRT.
+* Standardizace přístupu prohlížeče uživatelů k používání [Microsoft Edge](/deployedge/microsoft-edge-security-identity) nebo Google Chrome s [podporovanými](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji) [rozšířeními](https://chrome.google.com/webstore/detail/office/ndjpnladcallmjemlbaebfadecfhkepb) , která umožňují bezproblémové přihlašování k webovým aplikacím pomocí PRT.
 
-* Pro osobní nebo vlastní zařízení s iOS a Androidem nasaďte [aplikaci Microsoft Authenticator](../user-help/user-help-auth-app-overview.md). Kromě funkcí Multi-Factor Authentication a možností přihlašování bez hesla umožňuje Microsoft Authenticator aplikace v rámci zprostředkovaných [ověřování](../develop/brokered-auth.md) jednotné přihlašování s menším počtem výzev k ověřování pro koncové uživatele.
+* Pro osobní nebo vlastní zařízení s iOS a Androidem nasaďte [aplikaci Microsoft Authenticator](../user-help/user-help-auth-app-overview.md). Kromě funkcí Multi-Factor Authentication a možností přihlašování bez hesla umožňuje Microsoft Authenticator aplikace v rámci zprostředkovaných [ověřování](../develop/msal-android-single-sign-on.md) jednotné přihlašování s menším počtem výzev k ověřování pro koncové uživatele.
 
-* U osobních zařízení s iOS a Androidem, která vlastní firma nebo společnost, používá [správu mobilních aplikací](https://docs.microsoft.com/mem/intune/apps/app-management) k zabezpečenému přístupu k prostředkům společnosti s menšími nároky na ověření. 
+* U osobních zařízení s iOS a Androidem, která vlastní firma nebo společnost, používá [správu mobilních aplikací](/mem/intune/apps/app-management) k zabezpečenému přístupu k prostředkům společnosti s menšími nároky na ověření. 
 
 * [Použijte modul plug-in Microsoft Enterprise SSO pro zařízení Apple (Preview)](../develop/apple-sso-plugin.md). Tím se zařízení zaregistruje a poskytuje jednotné přihlašování přes prohlížeč a nativní aplikace služby Azure AD. 
 

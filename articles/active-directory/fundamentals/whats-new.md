@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6da9f27e25fa5543f949716824f54af2b9f1ad1
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 12b5c95b67f8fada29914d3a8de559280e6145f8
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132541"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724216"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Co je nového v Azure Active Directory?
 
@@ -100,7 +100,7 @@ Nyní můžete automatizovat vytváření, aktualizaci a odstraňování uživat
 - [Bizagi Studio for Digital Process Automation](../saas-apps/bizagi-studio-for-digital-process-automation-provisioning-tutorial.md)
 - [CybSafe](../saas-apps/cybsafe-provisioning-tutorial.md)
 - [GroupTalk](../saas-apps/grouptalk-provisioning-tutorial.md)
-- [PaperCut Cloud Print Management](/azure/active-directory/saas-apps/papercut-cloud-print-management-provisioning-tutorial)
+- [PaperCut Cloud Print Management](../saas-apps/papercut-cloud-print-management-provisioning-tutorial.md)
 - [Parsable](../saas-apps/parsable-provisioning-tutorial.md)
 - [Shopify Plus](../saas-apps/shopify-plus-provisioning-tutorial.md)
 
@@ -191,7 +191,7 @@ Pokud chcete zobrazit seznam aplikací v galerii aplikací Azure AD, přečtěte
 **Kategorie služby:** RBAC  
 **Schopnost produktu:** Access Control
  
- [Vlastní role RBAC pro delegovanou správu podnikových aplikací](../users-groups-roles/roles-custom-available-permissions.md) je teď ve verzi Public Preview. Tato nová oprávnění se vytvářejí na vlastní role pro správu registrace aplikací, což umožňuje detailní kontrolu nad tím, jaký má váš správce k přístupu. V průběhu času budou vydána další oprávnění pro delegování správy služby Azure AD.
+ [Vlastní role RBAC pro delegovanou správu podnikových aplikací](../roles/custom-available-permissions.md) je teď ve verzi Public Preview. Tato nová oprávnění se vytvářejí na vlastní role pro správu registrace aplikací, což umožňuje detailní kontrolu nad tím, jaký má váš správce k přístupu. V průběhu času budou vydána další oprávnění pro delegování správy služby Azure AD.
 
 Některé běžné scénáře delegování:
 - přiřazení uživatelů a skupin, které mají přístup k aplikacím jednotného přihlašování založené na SAML
@@ -247,7 +247,7 @@ Nyní můžete automatizovat vytváření, aktualizaci a odstraňování uživat
 - [Tic – Tac – mobilní zařízení](../saas-apps/tic-tac-mobile-provisioning-tutorial.md)
 - [Visibly](../saas-apps/visibly-provisioning-tutorial.md)
 
-Další informace najdete v tématu [Automatizace zřizování uživatelů při SaaS aplikací pomocí Azure AD](../manage-apps/user-provisioning.md).
+Další informace najdete v tématu [Automatizace zřizování uživatelů při SaaS aplikací pomocí Azure AD](../app-provisioning/user-provisioning.md).
  
 ---
 
@@ -301,7 +301,7 @@ Agent zřizování cloudu byl vydán ve verzi Public Preview a je nyní k dispoz
  
 Dřív bylo možné obnovit klíče nástroje BitLocker prostřednictvím koncového bodu/BitLocker. Nakonec už tento koncový bod nebudeme používat a zákazníci by měli začít spotřebovávat rozhraní API, které teď spadá do/informationProtection.. 
 
-Změny v dokumentaci najdete v tématu [rozhraní API pro obnovení nástroje BitLocker](https://docs.microsoft.com/graph/api/resources/bitlockerrecoverykey?view=graph-rest-beta) pro aktualizace dokumentace.
+Změny v dokumentaci najdete v tématu [rozhraní API pro obnovení nástroje BitLocker](/graph/api/resources/bitlockerrecoverykey?view=graph-rest-beta) pro aktualizace dokumentace.
 
 ---
 
@@ -603,7 +603,7 @@ Pro optimální činnost koncového uživatele doporučujeme použít četnost p
  
 Nyní můžete automatizovat vytváření, aktualizaci a odstraňování uživatelských účtů pro tyto nově integrované aplikace:
 
-- [Coda](../saas-apps/coda-provisioning-tutorial.md)
+- [CODA](../saas-apps/coda-provisioning-tutorial.md)
 - [Cofense Recipient Sync](../saas-apps/cofense-provision-tutorial.md)
 - [InVision](../saas-apps/invision-provisioning-tutorial.md)
 - [myday](../saas-apps/myday-provision-tutorial.md)
@@ -1126,4 +1126,3 @@ Pokud vaše organizace používá sadu Azure MFA SDK, je nutné migrovat do 30. 
 
 ---
 
- 

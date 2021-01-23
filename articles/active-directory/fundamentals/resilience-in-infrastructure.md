@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f65ab02e06319519548eaa2c02120691a0ceef02
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 64fe4b8c217ec46cbb6dd046339c3ac65eebb121
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498553"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724673"
 ---
 # <a name="build-resilience-in-your-identity-and-access-management-infrastructure"></a>Odolnost sestavení v infrastruktuře pro správu identit a přístupu
 
@@ -32,7 +32,7 @@ Sada dokumentů je navržena pro
 
 * Týmy pro provoz identity
 
-Podívejte se také na dokumentaci pro [vývojáře aplikací](https://aka.ms/azureadresilience/developer) a pro [Azure AD B2C systémy](resilience-b2c.md).
+Podívejte se také na dokumentaci pro [vývojáře aplikací](./resilience-app-development-overview.md) a pro [Azure AD B2C systémy](resilience-b2c.md).
 
 ## <a name="what-is-resilience"></a>Co je odolnost proti chybám?
 
@@ -44,7 +44,7 @@ Každé volání systému ověřování je ovlivněno přerušením, pokud se n�
 
 V ověřovacím systému založeném na tokenech, jako je Azure AD, musí aplikace uživatele (klient) získat token zabezpečení ze systému identity, aby mohl získat přístup k aplikaci nebo jinému prostředku. Během období platnosti může klient při přístupu k aplikaci použít stejný token několikrát.
 
-Po vypršení platnosti tokenu, který aplikaci prezentuje, aplikace odmítne token a klient musí získat nový token z Azure AD. Získání nového tokenu potenciálně vyžaduje zásah uživatele, například výzvy k zadání přihlašovacích údajů nebo splnění jiných požadavků na ověřovací systém. Omezení frekvence volání ověřování s využitím delších tokenů snižuje nepotřebnou interakci. Je však nutné vyvážit životnost tokenu s rizikem vytvořeným menším počtem vyhodnocení zásad. Další informace o správě životností tokenů najdete v tomto článku o [optimalizaci výzev k opakovanému ověření](https://docs.microsoft.com/azure/active-directory/authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime).
+Po vypršení platnosti tokenu, který aplikaci prezentuje, aplikace odmítne token a klient musí získat nový token z Azure AD. Získání nového tokenu potenciálně vyžaduje zásah uživatele, například výzvy k zadání přihlašovacích údajů nebo splnění jiných požadavků na ověřovací systém. Omezení frekvence volání ověřování s využitím delších tokenů snižuje nepotřebnou interakci. Je však nutné vyvážit životnost tokenu s rizikem vytvořeným menším počtem vyhodnocení zásad. Další informace o správě životností tokenů najdete v tomto článku o [optimalizaci výzev k opakovanému ověření](../authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime.md).
 
 ## <a name="ways-to-increase-resilience"></a>Způsoby, jak zvýšit odolnost
 Následující diagram znázorňuje šest konkrétních způsobů, kterými můžete zvýšit odolnost. Jednotlivé metody jsou podrobně vysvětleny v článcích, které jsou propojeny v dalších krocích tohoto článku.

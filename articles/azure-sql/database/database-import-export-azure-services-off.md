@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/08/2020
-ms.openlocfilehash: be966a651df0c896ac7e1973d7783bb7fb686be3
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 3a02876234d43df2e98a3a4e60453fc3f1f74ef6
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676507"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724165"
 ---
 # <a name="import-or-export-an-azure-sql-database-without-allowing-azure-services-to-access-the-server"></a>Import nebo export Azure SQL Database, aniž by bylo možné povolit službám Azure přístup k serveru
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ V tomto článku se dozvíte, jak importovat nebo exportovat *Azure SQL Database
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-the-azure-virtual-machine"></a>Vytvoření virtuálního počítače Azure
 
@@ -52,16 +52,16 @@ Následující kroky ukazují, jak se připojit k virtuálnímu počítači pomo
 
    ![Formulář RDP](./media/database-import-export-azure-services-off/rdp.png)  
 
-3. Vyberte **Stáhnout soubor RDP** .
+3. Vyberte **Stáhnout soubor RDP**.
 
    > [!NOTE]
    > K připojení k VIRTUÁLNÍmu počítači můžete také použít SSH.
 
 4. Zavřete formulář **připojit k virtuálnímu počítači** .
 5. Chcete-li se připojit k virtuálnímu počítači, otevřete stažený soubor protokolu RDP.
-6. Po zobrazení výzvy vyberte **připojit** . Na počítači Mac budete potřebovat klienta protokolu RDP, jako je například tento [Klient vzdálené plochy](https://apps.apple.com/app/microsoft-remote-desktop-10/id1295203466?mt=12) na Mac App Storu.
+6. Po zobrazení výzvy vyberte **připojit**. Na počítači Mac budete potřebovat klienta protokolu RDP, jako je například tento [Klient vzdálené plochy](https://apps.apple.com/app/microsoft-remote-desktop-10/id1295203466?mt=12) na Mac App Storu.
 
-7. Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače, a pak zvolte **OK** .
+7. Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače, a pak zvolte **OK**.
 
 8. Při přihlášení se může zobrazit upozornění na certifikát. Vyberte **Ano** nebo **pokračovat** a pokračujte v připojování.
 
@@ -77,7 +77,7 @@ Přidejte veřejnou IP adresu virtuálního počítače k bráně firewall serve
 
 Následující postup slouží k vytvoření pravidla brány firewall protokolu IP na úrovni serveru pro veřejnou IP adresu vašeho virtuálního počítače a umožňuje připojení z virtuálního počítače.
 
-1. V nabídce na levé straně vyberte **databáze SQL** a pak na stránce **databáze SQL** vyberte svou databázi. Otevře se stránka s přehledem pro vaši databázi, na které se zobrazí plně kvalifikovaný název serveru (například **servername.Database.Windows.NET** ), který poskytuje možnosti pro další konfiguraci.
+1. V nabídce na levé straně vyberte **databáze SQL** a pak na stránce **databáze SQL** vyberte svou databázi. Otevře se stránka s přehledem pro vaši databázi, na které se zobrazí plně kvalifikovaný název serveru (například **servername.Database.Windows.NET**), který poskytuje možnosti pro další konfiguraci.
 
 2. Zkopírujte tento plně kvalifikovaný název serveru, který se má použít při připojování k serveru a jeho databázím.
 
@@ -89,7 +89,7 @@ Následující postup slouží k vytvoření pravidla brány firewall protokolu 
 
 4. Výběrem možnosti **Přidat IP adresu klienta** na panelu nástrojů přidejte veřejnou IP adresu virtuálního počítače k novému pravidlu brány firewall IP na úrovni serveru. Pravidlo brány firewall protokolu IP na úrovni serveru může otevřít port 1433 pro jednu IP adresu nebo rozsah IP adres.
 
-5. Vyberte **Uložit** . Pro veřejnou IP adresu vašeho virtuálního počítače se vytvoří pravidlo brány firewall IP adresy na úrovni serveru, které na serveru otevírá port 1433.
+5. Vyberte **Uložit**. Pro veřejnou IP adresu vašeho virtuálního počítače se vytvoří pravidlo brány firewall IP adresy na úrovni serveru, které na serveru otevírá port 1433.
 
 6. Zavřete stránku **nastavení brány firewall** .
 
@@ -147,7 +147,7 @@ K dosažení nejlepšího výkonu použijte soubory Azure. SqlPackage pracuje se
 
 Pokud chcete snížit náklady, používejte objekty blob Azure, které jsou nižší než Premium Azure File sdílená složka. Bude však vyžadovat zkopírování [. BACPAC soubor](/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) mezi objektem BLOB a místním systémem souborů před operací import nebo export. Výsledkem bude to, že proces trvá déle.
 
-Pro nahrání nebo stažení. Soubory BACPAC, přečtěte si téma [přenos dat pomocí úložiště AzCopy a objektů BLOB](../../storage/common/storage-use-azcopy-blobs.md)a [přenos dat pomocí AzCopy a souborového úložiště](../../storage/common/storage-use-azcopy-files.md).
+Pro nahrání nebo stažení. Soubory BACPAC, přečtěte si téma [přenos dat pomocí úložiště AzCopy a objektů BLOB](../../storage/common/storage-use-azcopy-v10.md#transfer-data)a [přenos dat pomocí AzCopy a souborového úložiště](../../storage/common/storage-use-azcopy-files.md).
 
 V závislosti na vašem prostředí možná budete muset [nakonfigurovat Azure Storage brány firewall a virtuální sítě](../../storage/common/storage-network-security.md).
 

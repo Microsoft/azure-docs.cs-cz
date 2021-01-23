@@ -13,12 +13,12 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c695466fbd50435a85c63842ceb50ce80765760
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: f6896a812ec173994a1299a28ff2e99a0f351391
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630288"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724437"
 ---
 # <a name="resilient-end-user-experience"></a>Odolné prostředí koncového uživatele
 
@@ -34,19 +34,19 @@ Prostředí pro registraci a přihlášení koncového uživatele se skládá z 
 
 ## <a name="choose-between-user-flow-and-custom-policy"></a>Výběr mezi uživatelským tokem a vlastní zásadou  
 
-Při nastavování nejběžnějších úloh identity vám Azure AD B2C poskytuje předdefinované konfigurovatelné [uživatelské toky](https://docs.microsoft.com/azure/active-directory-b2c/user-flow-overview). Můžete si také vytvořit vlastní [zásady](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview), které vám nabídnou maximální flexibilitu. Doporučuje se ale používat vlastní zásady jenom pro řešení složitých scénářů.
+Při nastavování nejběžnějších úloh identity vám Azure AD B2C poskytuje předdefinované konfigurovatelné [uživatelské toky](../../active-directory-b2c/user-flow-overview.md). Můžete si také vytvořit vlastní [zásady](../../active-directory-b2c/custom-policy-overview.md), které vám nabídnou maximální flexibilitu. Doporučuje se ale používat vlastní zásady jenom pro řešení složitých scénářů.
 
 ### <a name="how-to-decide-between-user-flow-and-custom-policy"></a>Jak se rozhodnout mezi uživatelským tokem a vlastní zásadou
 
 Vyberte předdefinované toky uživatelů, pokud je vaše obchodní požadavky může splnit. Vzhledem k tomu, že je společnost Microsoft rozsáhle testována, můžete minimalizovat testování potřebné k ověření funkčnosti, výkonu nebo škálování těchto uživatelských toků identity na úrovni zásad. Stále potřebujete testovat aplikace pro funkce, výkon a škálování.
 
-Měli byste [zvolit vlastní zásady](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started) z důvodu požadavků vaší firmy. Ujistěte se, že provádíte testování na úrovni zásad pro funkční, výkon nebo škálování kromě testování na úrovni aplikace.
+Měli byste [zvolit vlastní zásady](../../active-directory-b2c/custom-policy-get-started.md) z důvodu požadavků vaší firmy. Ujistěte se, že provádíte testování na úrovni zásad pro funkční, výkon nebo škálování kromě testování na úrovni aplikace.
 
-Přečtěte si článek, který [porovnává uživatelské toky a vlastní zásady](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview#comparing-user-flows-and-custom-policies) , které vám pomůžou při rozhodování.
+Přečtěte si článek, který [porovnává uživatelské toky a vlastní zásady](../../active-directory-b2c/custom-policy-overview.md#comparing-user-flows-and-custom-policies) , které vám pomůžou při rozhodování.
 
 ## <a name="choose-multiple-idps"></a>Zvolit několik zprostředkovatelů identity
 
-Při použití [externího poskytovatele identity](https://docs.microsoft.com/azure/active-directory-b2c/technical-overview#external-identity-providers) , jako je Facebook, se ujistěte, že máte záložní plán pro případ, že externí poskytovatel nebude k dispozici.
+Při použití [externího poskytovatele identity](../../active-directory-b2c/technical-overview.md#external-identity-providers) , jako je Facebook, se ujistěte, že máte záložní plán pro případ, že externí poskytovatel nebude k dispozici.
 
 ### <a name="how-to-set-up-multiple-idps"></a>Jak nastavit více zprostředkovatelů identity
 
@@ -58,11 +58,11 @@ Jako součást procesu registrace externího zprostředkovatele identity zahrňt
 
  2. Nakonfigurujte zásady profilu tak, aby uživatelům umožnily [propojit jinou identitu se svým účtem](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/account-linking) po přihlášení.
 
- 3. Upozorněte a Umožněte uživatelům [Přejít na alternativní IDP](https://docs.microsoft.com/azure/active-directory-b2c/customize-ui-with-html#configure-dynamic-custom-page-content-uri) během výpadku.
+ 3. Upozorněte a Umožněte uživatelům [Přejít na alternativní IDP](../../active-directory-b2c/customize-ui-with-html.md#configure-dynamic-custom-page-content-uri) během výpadku.
 
 ## <a name="availability-of-multi-factor-authentication"></a>Dostupnost aplikace Multi-Factor Authentication
 
-Pokud používáte [telefonní službu pro vícefaktorové ověřování (MFA)](https://docs.microsoft.com/azure/active-directory-b2c/phone-authentication), nezapomeňte zvážit alternativního poskytovatele služeb. Místní výpovědi nebo poskytovatel telefonních služeb může ve své službě dojít k přerušení.
+Pokud používáte [telefonní službu pro vícefaktorové ověřování (MFA)](../../active-directory-b2c/phone-authentication.md), nezapomeňte zvážit alternativního poskytovatele služeb. Místní výpovědi nebo poskytovatel telefonních služeb může ve své službě dojít k přerušení.
 
 ### <a name="how-to-choose-an-alternate-mfa"></a>Jak zvolit alternativní vícefaktorové ověřování  
 

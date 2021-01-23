@@ -11,12 +11,12 @@ author: knicholasa
 ms.author: nichola
 manager: martinco
 ms.date: 11/23/2020
-ms.openlocfilehash: 74bfc9eeeb8375fca2c88a3fd3c31f17e130fc99
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a7b8f893026bb96c8d768d2e6d07d0240ecb81fa
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919627"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724837"
 ---
 # <a name="increase-the-resilience-of-authentication-and-authorization-in-daemon-applications-you-develop"></a>Zvýšení odolnosti při ověřování a autorizaci v aplikacích démona, které vyvíjíte
 
@@ -26,7 +26,7 @@ Tento článek poskytuje pokyny k tomu, jak můžou vývojáři používat platf
 
 ## <a name="use-managed-identities-for-azure-resources"></a>Použití spravovaných identit pro prostředky Azure
 
-Vývojáři, kteří sestavují aplikace démona v Microsoft Azure můžou používat [spravované identity pro prostředky Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview). Spravované identity eliminují potřebu vývojářů spravovat tajné klíče a přihlašovací údaje. Tato funkce zvyšuje odolnost proti chybám při vypršení platnosti certifikátu, chybách rotace nebo vztahu důvěryhodnosti. Má také několik integrovaných funkcí, které byly specificky určeny ke zvýšení odolnosti.
+Vývojáři, kteří sestavují aplikace démona v Microsoft Azure můžou používat [spravované identity pro prostředky Azure](../managed-identities-azure-resources/overview.md). Spravované identity eliminují potřebu vývojářů spravovat tajné klíče a přihlašovací údaje. Tato funkce zvyšuje odolnost proti chybám při vypršení platnosti certifikátu, chybách rotace nebo vztahu důvěryhodnosti. Má také několik integrovaných funkcí, které byly specificky určeny ke zvýšení odolnosti.
 
 Spravované identity používají dlouhodobé přístupové tokeny a informace z identity Microsoftu k proaktivnímu získání nových tokenů ve velkém časovém intervalu, než vyprší platnost existujícího tokenu. Vaše aplikace může pokračovat v běhu při pokusu o získání nového tokenu.
 
@@ -34,11 +34,11 @@ Spravované identity také používají regionální koncové body pro zlepšen�
 
 ## <a name="use-the-microsoft-authentication-library"></a>Použití knihovny Microsoft Authentication Library
 
-Vývojáři aplikací démona, kteří nepoužívají spravované identity, můžou používat [Microsoft Authentication Library (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview), který umožňuje implementaci ověřování a autorizace jednoduché a automaticky používá osvědčené postupy pro odolnost. MSAL zajistí snazší proces poskytování požadovaných přihlašovacích údajů klienta. Například vaše aplikace nemusí při použití přihlašovacích údajů založených na certifikátech implementovat vytváření a podepisování JSON Web Token kontrolních výrazů.
+Vývojáři aplikací démona, kteří nepoužívají spravované identity, můžou používat [Microsoft Authentication Library (MSAL)](../develop/msal-overview.md), který umožňuje implementaci ověřování a autorizace jednoduché a automaticky používá osvědčené postupy pro odolnost. MSAL zajistí snazší proces poskytování požadovaných přihlašovacích údajů klienta. Například vaše aplikace nemusí při použití přihlašovacích údajů založených na certifikátech implementovat vytváření a podepisování JSON Web Token kontrolních výrazů.
 
 ### <a name="use-microsoftidentityweb-for-net-developers"></a>Použití Microsoft. identity. Web pro vývojáře v rozhraní .NET
 
-Vývojáři, kteří sestavují aplikace démona v ASP.NET Core můžou používat knihovnu [Microsoft. identity. Web](https://docs.microsoft.com/azure/active-directory/develop/microsoft-identity-web) . Tato knihovna je postavená na MSAL, aby bylo implementace autorizace ještě snazší pro ASP.NET Core aplikace. Zahrnuje několik strategií [mezipaměti distribuovaných tokenů](https://github.com/AzureAD/microsoft-identity-web/wiki/token-cache-serialization#distributed-token-cache) pro distribuované aplikace, které mohou běžet v několika oblastech.
+Vývojáři, kteří sestavují aplikace démona v ASP.NET Core můžou používat knihovnu [Microsoft. identity. Web](../develop/microsoft-identity-web.md) . Tato knihovna je postavená na MSAL, aby bylo implementace autorizace ještě snazší pro ASP.NET Core aplikace. Zahrnuje několik strategií [mezipaměti distribuovaných tokenů](https://github.com/AzureAD/microsoft-identity-web/wiki/token-cache-serialization#distributed-token-cache) pro distribuované aplikace, které mohou běžet v několika oblastech.
 
 ## <a name="cache-and-store-tokens"></a>Cache a Store – tokeny
 

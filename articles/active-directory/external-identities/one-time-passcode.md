@@ -12,12 +12,12 @@ manager: CelesteDG
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1aebfaa176992b7e20824518bc214a6688ae493
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: a9a0668b3ea651d129dc076e5f2247e38f5ab7d0
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97703581"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725491"
 ---
 # <a name="email-one-time-passcode-authentication"></a>E-mailové ověřování heslem jednorázového hesla
 
@@ -102,7 +102,7 @@ Pokud jste se dříve přihlásili k e-mailu ve verzi Public Preview na e-mail, 
 
 ![Povolit přístup k jednorázovému heslu pro odesílání e-mailů](media/delegate-invitations/enable-email-otp-opted-in.png)
 
-Pokud byste ale chtěli tuto funkci odhlásit a povolit její automatické povolení v březnu 2021, můžete se vrátit k výchozímu nastavení pomocí [typu prostředku konfigurace metody ověřování e-mailu](https://aka.ms/exid-graphemailauth)Microsoft Graph rozhraní API. Až se vrátíte k výchozímu nastavení, v části **e-mail jednorázového hesla pro hosty** budou k dispozici následující možnosti:
+Pokud byste ale chtěli tuto funkci odhlásit a povolit její automatické povolení v březnu 2021, můžete se vrátit k výchozímu nastavení pomocí [typu prostředku konfigurace metody ověřování e-mailu](/graph/api/resources/emailauthenticationmethodconfiguration)Microsoft Graph rozhraní API. Až se vrátíte k výchozímu nastavení, v části **e-mail jednorázového hesla pro hosty** budou k dispozici následující možnosti:
 
 - **Automaticky povolit jednorázové e-mailové heslo pro hosty v březnu 2021**. Výchozí Pokud funkce jednorázového hesla pro e-mail ještě není pro vašeho tenanta povolená, bude automaticky zapnutá v březnu 2021. Pokud chcete povolit funkci v daném čase, není nutná žádná další akce. Pokud jste tuto funkci již povolili nebo zakázali, tato možnost nebude k dispozici.
 

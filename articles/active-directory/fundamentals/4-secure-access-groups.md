@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f83e5584f8f9c6823e1259cb5e6034d8b13ae3a6
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 7eb168610f10ac336084ac04c19679d26fc913e0
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222373"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725240"
 ---
 # <a name="securing-external-access-with-groups"></a>Zabezpečení externího přístupu pomocí skupin 
 
@@ -48,13 +48,13 @@ Při vývoji strategie skupiny pro zabezpečení externího přístupu k vašim 
 
    * *Ve výchozím nastavení může každý člen tenanta vytvořit skupiny zabezpečení Azure AD*. 
 
-      * [Přístup k portálu můžete omezit na portál bez oprávnění správce](../develop/howto-restrict-your-app-to-a-set-of-users.md) a zakázat možnost vytváření skupin v [PowerShellu.](../users-groups-roles/groups-troubleshooting.md) 
+      * [Přístup k portálu můžete omezit na portál bez oprávnění správce](../develop/howto-restrict-your-app-to-a-set-of-users.md) a zakázat možnost vytváření skupin v [PowerShellu.](../enterprise-users/groups-troubleshooting.md) 
 
-      * Můžete také [nastavit samoobslužnou správu skupin v Azure Active Directory](../users-groups-roles/groups-self-service-management.md). 
+      * Můžete také [nastavit samoobslužnou správu skupin v Azure Active Directory](../enterprise-users/groups-self-service-management.md). 
 
    * *Ve výchozím nastavení mohou všichni uživatelé vytvářet skupiny M365 a skupiny jsou otevřeny pro všechny (interní a externí) uživatele ve vašem tenantovi, aby se mohli připojit*. 
 
-      * [Vytvoření skupiny Microsoft 365 můžete omezit](https://docs.microsoft.com/microsoft-365/solutions/manage-creation-of-groups?view=o365-worldwide) na členy určité skupiny zabezpečení. Ke konfiguraci tohoto nastavení použijte Windows PowerShell. 
+      * [Vytvoření skupiny Microsoft 365 můžete omezit](/microsoft-365/solutions/manage-creation-of-groups?view=o365-worldwide) na členy určité skupiny zabezpečení. Ke konfiguraci tohoto nastavení použijte Windows PowerShell. 
 
 * **Kdo by měl být schopný pozvat lidi do skupin?** Mohou všichni členové skupiny přidávat další členy nebo mohou pouze vlastníci skupiny přidat členy?
 
@@ -80,13 +80,13 @@ Dynamické skupiny můžou obsahovat buď uživatele, nebo zařízení, ale ne o
 
 ![Snímek obrazovky s konfigurací dynamických pravidel členství](media/secure-external-access/4-dynamic-membership-rules.png)
 
-Další informace o dynamických skupinách najdete v tématu [Vytvoření nebo aktualizace dynamické skupiny v Azure Active Directory.](../users-groups-roles/groups-create-rule.md)
+Další informace o dynamických skupinách najdete v tématu [Vytvoření nebo aktualizace dynamické skupiny v Azure Active Directory.](../enterprise-users/groups-create-rule.md)
 
 ### <a name="do-not-use-groups-for-multiple-purposes"></a>Nepoužívejte skupiny pro více účelů
 
 Pokud používáte skupiny pro účely zabezpečení nebo přístupu k prostředkům, je důležité, aby měly jednu funkci. Pokud se skupina používá pro udělení přístupu k prostředkům, neměla by se používat k žádným jiným účelům. Pokud se skupina používá pro obecné účely, jako je například definování umístění nebo členství v týmu, neměli byste ji také používat k zabezpečení přístupu. 
 
-Pro skupiny zabezpečení doporučujeme konvence pojmenování, které tento účel znemožňuje vymazat. Příklad:
+Pro skupiny zabezpečení doporučujeme konvence pojmenování, které tento účel znemožňuje vymazat. Například:
 
 * *Secure_access_finance_apps*
 
@@ -117,7 +117,7 @@ Pomocí Microsoft 365 skupin můžete vytvořit a spravovat sadu prostředků Mi
 
 ## <a name="azure-ad-security-groups"></a>Skupiny zabezpečení služby Azure AD 
 
-[Skupiny zabezpečení Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups) můžou obsahovat uživatele nebo zařízení a dají se použít ke správě přístupu k 
+[Skupiny zabezpečení Azure AD](./active-directory-manage-groups.md) můžou obsahovat uživatele nebo zařízení a dají se použít ke správě přístupu k 
 
 * Prostředky Azure, jako jsou aplikace Microsoft 365, vlastní aplikace a aplikace SaaS (software jako služba), jako je ServiceNow Dropboxu.
 
@@ -127,11 +127,11 @@ Pomocí Microsoft 365 skupin můžete vytvořit a spravovat sadu prostředků Mi
 
 Skupiny zabezpečení Azure AD se taky dají použít k těmto akcím:
 
-* Přiřaďte licence pro služby, jako je M365, Dynamics 365 a Enterprise mobility and Security. Další informace najdete v tématu [licencování na základě skupin](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-licensing-whatis-azure-portal).
+* Přiřaďte licence pro služby, jako je M365, Dynamics 365 a Enterprise mobility and Security. Další informace najdete v tématu [licencování na základě skupin](./active-directory-licensing-whatis-azure-portal.md).
 
-* Přiřaďte zvýšená oprávnění. Další informace najdete v tématu [použití skupin cloudu ke správě přiřazení rolí (Preview](https://docs.microsoft.com/azure/active-directory/users-groups-roles/roles-groups-concept)). 
+* Přiřaďte zvýšená oprávnění. Další informace najdete v tématu [použití skupin cloudu ke správě přiřazení rolí (Preview](../roles/groups-concept.md)). 
 
-Pokud chcete vytvořit skupinu [v Azure Portal](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal) přejděte na Azure Active Directory a pak na skupiny. Můžete také vytvořit skupiny zabezpečení Azure AD pomocí [rutin PowerShellu](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-settings-v2-cmdlets). 
+Pokud chcete vytvořit skupinu [v Azure Portal](./active-directory-groups-create-azure-portal.md) přejděte na Azure Active Directory a pak na skupiny. Můžete také vytvořit skupiny zabezpečení Azure AD pomocí [rutin PowerShellu](../enterprise-users/groups-settings-v2-cmdlets.md). 
 
 > [!NOTE]
 > Skupinu zabezpečení je možné použít pro přiřazení až 1500 aplikací, ale ne víc. 
@@ -146,17 +146,17 @@ Pokud chcete vytvořit skupinu [v Azure Portal](https://docs.microsoft.com/azure
 
 Hybridní organizace mají místní infrastrukturu i cloudovou infrastrukturu Azure AD. Řada hybridních organizací, které používají službu Active Directory, vytváří své skupiny zabezpečení místně a synchronizuje je do cloudu. Pomocí této metody lze do skupin zabezpečení přidat pouze uživatele v místním prostředí.
 
-**Chraňte svoji místní infrastrukturu před ohrožením, protože k získání přístupu k vašemu Microsoft 365 tenantovi se dá využít místně porušování**. Pokyny najdete v tématu [ochrana Microsoft 365 z místních útoků](https://aka.ms/protectm365) .
+**Chraňte svoji místní infrastrukturu před ohrožením, protože k získání přístupu k vašemu Microsoft 365 tenantovi se dá využít místně porušování**. Pokyny najdete v tématu [ochrana Microsoft 365 z místních útoků](./protect-m365-from-on-premises-attacks.md) .
 
 ## <a name="microsoft-365-groups"></a>Skupiny Microsoft 365
 
-[Microsoft 365 skupiny](https://docs.microsoft.com/microsoft-365/admin/create-groups/office-365-groups?view=o365-worldwide) představují základní službu pro členství, která se řídí všemi přístupy přes M365. Je možné je vytvořit z [Azure Portal](https://portal.azure.com/)nebo z [portálu M365](https://admin.microsoft.com/). Při vytvoření skupiny M365 udělíte přístup ke skupině prostředků, které se používají ke spolupráci. Úplný seznam těchto prostředků najdete v tématu [Přehled skupin Microsoft 365 pro správce](https://docs.microsoft.com/microsoft-365/admin/create-groups/office-365-groups?view=o365-worldwide) .
+[Microsoft 365 skupiny](/microsoft-365/admin/create-groups/office-365-groups?view=o365-worldwide) představují základní službu pro členství, která se řídí všemi přístupy přes M365. Je možné je vytvořit z [Azure Portal](https://portal.azure.com/)nebo z [portálu M365](https://admin.microsoft.com/). Při vytvoření skupiny M365 udělíte přístup ke skupině prostředků, které se používají ke spolupráci. Úplný seznam těchto prostředků najdete v tématu [Přehled skupin Microsoft 365 pro správce](/microsoft-365/admin/create-groups/office-365-groups?view=o365-worldwide) .
 
 M365 skupiny mají pro své role následující drobné odlišnosti.
 
 * **Vlastníci** – vlastníci skupiny můžou přidávat nebo odebírat členy a mít jedinečná oprávnění, jako je možnost odstraňovat konverzace ze sdílené doručené pošty nebo měnit nastavení skupiny. Vlastníci skupiny můžou přejmenovat skupinu, aktualizovat popis nebo obrázek a další.
 
-* **Členové** – členové mají přístup ke všem ve skupině, ale nemůžou měnit nastavení skupiny. Ve výchozím nastavení mohou členové skupiny pozvat hostům, aby se připojili ke skupině, i když [Toto nastavení můžete řídit](https://docs.microsoft.com/microsoft-365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide).
+* **Členové** – členové mají přístup ke všem ve skupině, ale nemůžou měnit nastavení skupiny. Ve výchozím nastavení mohou členové skupiny pozvat hostům, aby se připojili ke skupině, i když [Toto nastavení můžete řídit](/microsoft-365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide).
 
 * **Hosté** – členové skupiny jsou členy, kteří jsou mimo vaši organizaci. Hosté mají ve výchozím nastavení určitá omezení funkcí v týmech.
 

@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c0d63df3e5525b200723db209d05e5eb5013e23
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 654e1c163a16f427958320ea081c38338e0ab4e1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222356"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725388"
 ---
 # <a name="transition-to-governed-collaboration-with-azure-active-directory-b2b-collaboration"></a>Přechod na upravenou spolupráci s Azure Active Directory spolupráce B2B 
 
@@ -100,7 +100,7 @@ Určete, kdo může pozvat uživatele typu Host pro přístup k prostředkům.
 
 Pokud používáte správu nároků služby Azure AD, můžete nakonfigurovat otázky pro externí uživatele na odpověď. Otázky se pak zobrazí schvalovatelům, aby jim pomohli udělat rozhodnutí. Pro každou [zásadu balíčku přístupu](../governance/entitlement-management-access-package-approval-policy.md) můžete nakonfigurovat různé sady otázek, aby schvalovatelé mohli mít příslušné informace pro přístup, který schválí. Pokud je například jeden balíček pro přístup určen pro přístup od dodavatele, žadatel může požádat o číslo smlouvy dodavatele. Jiný přístupový balíček určený pro dodavatele se může zeptat na jejich zemi původu.
 
-Pokud používáte Samoobslužný portál, můžete k shromažďování dalších atributů uživatelů při registraci použít [konektory rozhraní API](../external-identities/api-connectors-overview.md) . Pak můžete tyto atributy použít k přiřazení přístupu. Například pokud během procesu registrace shromáždíte své ID dodavatele, můžete použít tento atribut k dynamickému přiřazování do skupiny nebo přístupu k balíčku pro daného dodavatele. V Azure Portal můžete vytvořit vlastní atributy a použít je v uživatelských tocích samoobslužné registrace. Tyto atributy můžete také číst a zapisovat pomocí [rozhraní Microsoft Graph API](https://docs.microsoft.com/azure/active-directory-b2c/manage-user-accounts-graph-api). 
+Pokud používáte Samoobslužný portál, můžete k shromažďování dalších atributů uživatelů při registraci použít [konektory rozhraní API](../external-identities/api-connectors-overview.md) . Pak můžete tyto atributy použít k přiřazení přístupu. Například pokud během procesu registrace shromáždíte své ID dodavatele, můžete použít tento atribut k dynamickému přiřazování do skupiny nebo přístupu k balíčku pro daného dodavatele. V Azure Portal můžete vytvořit vlastní atributy a použít je v uživatelských tocích samoobslužné registrace. Tyto atributy můžete také číst a zapisovat pomocí [rozhraní Microsoft Graph API](../../active-directory-b2c/manage-user-accounts-graph-api.md). 
 
 ### <a name="troubleshoot-invitation-redemption-to-azure-ad-users"></a>Řešení potíží s uplatněním pozvánky pro uživatele Azure AD
 
@@ -132,7 +132,7 @@ Pro uživatele typu Host doporučujeme následující omezení.
 
 * **Zablokuje přístup k Azure Portal. Je možné provádět vzácná nezbytná výjimka**. 
 
-   * Vytvořte zásady podmíněného přístupu, které budou zahrnovat všechny uživatele typu Host a externí uživatelé a pak [implementují zásady pro blokování přístupu](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management).
+   * Vytvořte zásady podmíněného přístupu, které budou zahrnovat všechny uživatele typu Host a externí uživatelé a pak [implementují zásady pro blokování přístupu](../../role-based-access-control/conditional-access-azure-management.md).
 
  
 
@@ -185,7 +185,7 @@ Ve výchozím nastavení týmy umožňují externí přístup, což znamená, ž
 
 ### <a name="direct-sharing-through-sharepoint-and-onedrive"></a>Přímé sdílení prostřednictvím SharePointu a OneDrivu
 
-Přímé sdílení prostřednictvím SharePointu a OneDrivu může přidat uživatele mimo proces správy nároků. Podrobný pohled na tyto konfigurace najdete v tématu [Správa přístupu pomocí Microsoft teams, SharePointu a OneDrivu pro firmy](9-secure-access-teams-sharepoint.md) . v případě potřeby můžete také [zablokovat používání osobního OneDrivu uživatele](https://docs.microsoft.com/office365/troubleshoot/group-policy/block-onedrive-use-from-office) .
+Přímé sdílení prostřednictvím SharePointu a OneDrivu může přidat uživatele mimo proces správy nároků. Podrobný pohled na tyto konfigurace najdete v tématu [Správa přístupu pomocí Microsoft teams, SharePointu a OneDrivu pro firmy](9-secure-access-teams-sharepoint.md) . v případě potřeby můžete také [zablokovat používání osobního OneDrivu uživatele](/office365/troubleshoot/group-policy/block-onedrive-use-from-office) .
 
 ### <a name="sending-documents-through-email"></a>Posílání dokumentů e-mailem
 
@@ -197,9 +197,9 @@ Na šířku nástrojů pro spolupráci je velká část. Vaši uživatelé nejsp
 
 Další informace o správě neschválených aplikací najdete v těchto tématech:
 
-* [Řízení připojených aplikací](https://docs.microsoft.com/cloud-app-security/governance-actions)
+* [Řízení připojených aplikací](/cloud-app-security/governance-actions)
 
-* [Schválení a zrušení schválení aplikace.](https://docs.microsoft.com/cloud-app-security/governance-discovery)
+* [Schválení a zrušení schválení aplikace.](/cloud-app-security/governance-discovery)
 
  
 ### <a name="next-steps"></a>Další kroky

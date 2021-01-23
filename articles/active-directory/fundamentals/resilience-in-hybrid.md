@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c45b362bc37df71346fc3b635c8ae4a51f62cdc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: de01788c01d4d6dedd9563faaaac07bff30bbd97
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919430"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724755"
 ---
 # <a name="build-resilience-in-your-hybrid-architecture"></a>Odolnost sestavení v hybridní architektuře
 
@@ -82,7 +82,7 @@ Chcete-li implementovat předávací ověřování, přečtěte si následujíc�
 
 Federace zahrnuje vytvoření vztahu důvěryhodnosti mezi Azure AD a federační službou, což zahrnuje výměnu koncových bodů, podpisových certifikátů tokenů a dalších metadat. Když přijde požadavek do služby Azure AD, načte konfiguraci a přesměruje uživatele do nakonfigurovaných koncových bodů. V tomto okamžiku uživatel komunikuje se službou FS (Federation Service), která vydává kontrolní výraz SAML ověřený službou Azure AD. 
 
-Následující diagram znázorňuje topologii podnikové Active Directory Federation Services (AD FS) (AD FS), nasazení, které zahrnuje redundantní federační a proxy servery webových aplikací v různých místních datových centrech. Tato konfigurace spoléhá na komponenty infrastruktury podnikové sítě, jako je DNS, Vyrovnávání zatížení sítě s možnostmi geografického spřažení, branami firewall atd. Všechny místní komponenty a připojení jsou náchylné k selhání. Další informace najdete v [dokumentaci k plánování kapacity AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/design/planning-for-ad-fs-server-capacity) .
+Následující diagram znázorňuje topologii podnikové Active Directory Federation Services (AD FS) (AD FS), nasazení, které zahrnuje redundantní federační a proxy servery webových aplikací v různých místních datových centrech. Tato konfigurace spoléhá na komponenty infrastruktury podnikové sítě, jako je DNS, Vyrovnávání zatížení sítě s možnostmi geografického spřažení, branami firewall atd. Všechny místní komponenty a připojení jsou náchylné k selhání. Další informace najdete v [dokumentaci k plánování kapacity AD FS](/windows-server/identity/ad-fs/design/planning-for-ad-fs-server-capacity) .
 
 > [!NOTE]
 >  Federace má nejvyšší počet místních závislostí, a proto nejvíce možných bodů selhání. I když tento diagram zobrazuje AD FS, další místní zprostředkovatelé identit podléhají podobným hlediskům návrhu, aby dosáhli vysoké dostupnosti, škálovatelnosti a převzetí služeb při selhání.
@@ -99,9 +99,9 @@ Pokud implementujete strategii federovaného ověřování nebo chcete, aby byla
 
 * [Seznam kompatibilit pro federaci Azure AD](../hybrid/how-to-connect-fed-compatibility.md)
 
-* Dodržujte [AD FS dokumentaci pro plánování kapacity](https://docs.microsoft.com/windows-server/identity/ad-fs/design/planning-for-ad-fs-server-capacity) .
+* Dodržujte [AD FS dokumentaci pro plánování kapacity](/windows-server/identity/ad-fs/design/planning-for-ad-fs-server-capacity) .
 
-* [Nasazení AD FS v Azure IaaS](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/how-to-connect-fed-azure-adfs)
+* [Nasazení AD FS v Azure IaaS](/windows-server/identity/ad-fs/deployment/how-to-connect-fed-azure-adfs)
 
 * [Povolení kosmetice](../hybrid/tutorial-phs-backup.md) spolu s vaší federací
 

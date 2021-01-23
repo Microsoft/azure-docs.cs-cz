@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4b649942a52c51aef0d6edd17b913f75e1fb247b
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: a1b621b5d5601e6d8bffef48e23d217e0eee1d6a
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98674163"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725815"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Automatizace nasazení prostředků pro aplikaci Function App v Azure Functions
 
@@ -137,7 +137,7 @@ Prostředek Function App je definován pomocí prostředku typu **Microsoft. Web
 
 Aplikace Function App musí zahrnovat tato nastavení aplikace:
 
-| Název nastavení                 | Description                                                                               | Příklady hodnot                        |
+| Název nastavení                 | Popis                                                                               | Příklady hodnot                        |
 |------------------------------|-------------------------------------------------------------------------------------------|---------------------------------------|
 | AzureWebJobsStorage          | Připojovací řetězec k účtu úložiště, který modul runtime služby Functions používá pro interní zařazení do fronty | Zobrazit [účet úložiště](#storage)       |
 | FUNCTIONS_EXTENSION_VERSION  | Verze modulu runtime Azure Functions                                                | `~3`                                  |
@@ -212,9 +212,11 @@ Pokud budete plán spotřeby explicitně definovat, budete muset nastavit `serve
 
 ### <a name="create-a-function-app"></a>Vytvoření aplikace funkcí
 
+Nastavení vyžadované aplikací Function App běžícími v plánu spotřeby se odloží mezi systémy Windows a Linux. 
+
 #### <a name="windows"></a>Windows
 
-V systému Windows plán spotřeby vyžaduje dvě další nastavení v konfiguraci lokality: `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` a `WEBSITE_CONTENTSHARE` . Tyto vlastnosti nakonfigurují účet úložiště a cestu k souboru, kde se ukládají kód a konfigurace aplikace Function App.
+V systému Windows plán spotřeby vyžaduje další nastavení v konfiguraci lokality: [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](functions-app-settings.md#website_contentazurefileconnectionstring) . Tato vlastnost konfiguruje účet úložiště, ve kterém se ukládají kódy a konfigurace funkcí aplikace Function App.
 
 ```json
 {
@@ -238,10 +240,6 @@ V systému Windows plán spotřeby vyžaduje dvě další nastavení v konfigura
                     "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]"
                 },
                 {
-                    "name": "WEBSITE_CONTENTSHARE",
-                    "value": "[toLower(variables('functionAppName'))]"
-                },
-                {
                     "name": "FUNCTIONS_WORKER_RUNTIME",
                     "value": "node"
                 },
@@ -259,9 +257,12 @@ V systému Windows plán spotřeby vyžaduje dvě další nastavení v konfigura
 }
 ```
 
+> [!IMPORTANT]
+> Nenastavte [`WEBSITE_CONTENTSHARE`](functions-app-settings.md#website_contentshare) nastavení tak, jak je vygenerováno při prvním vytvoření webu.  
+
 #### <a name="linux"></a>Linux
 
-V systému Linux musí mít aplikace funkcí `kind` nastavenou hodnotu `functionapp,linux` a musí mít `reserved` vlastnost nastavenou na `true` :
+V systému Linux musí mít aplikace funkcí `kind` nastavenou hodnotu `functionapp,linux` a musí mít `reserved` nastavenou vlastnost na hodnotu `true` . 
 
 ```json
 {
@@ -299,8 +300,9 @@ V systému Linux musí mít aplikace funkcí `kind` nastavenou hodnotu `function
 }
 ```
 
-<a name="premium"></a>
+[`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](functions-app-settings.md#website_contentazurefileconnectionstring)Nastavení a [`WEBSITE_CONTENTSHARE`](functions-app-settings.md#website_contentshare) nejsou podporovaná v systému Linux.
 
+<a name="premium"></a>
 ## <a name="deploy-on-premium-plan"></a>Nasazení na plán Premium
 
 Plán Premium nabízí stejné škálování jako plán spotřeby, ale zahrnuje vyhrazené prostředky a další funkce. Další informace najdete v tématu [plán Azure Functions Premium](./functions-premium-plan.md).
@@ -332,7 +334,7 @@ Plán Premium je zvláštní typ prostředku "serverová farma". Můžete ji zad
 
 ### <a name="create-a-function-app"></a>Vytvoření aplikace funkcí
 
-Aplikace funkcí v plánu Premium musí mít `serverFarmId` vlastnost nastavenou na ID prostředku plánu, který jste vytvořili dříve. Plán Premium navíc vyžaduje dvě další nastavení v konfiguraci lokality: `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` a `WEBSITE_CONTENTSHARE` . Tyto vlastnosti nakonfigurují účet úložiště a cestu k souboru, kde se ukládají kód a konfigurace aplikace Function App.
+Aplikace funkcí v plánu Premium musí mít `serverFarmId` vlastnost nastavenou na ID prostředku plánu, který jste vytvořili dříve. Plán Premium navíc vyžaduje další nastavení v konfiguraci lokality: [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](functions-app-settings.md#website_contentazurefileconnectionstring) . Tato vlastnost konfiguruje účet úložiště, ve kterém se ukládají kódy a konfigurace funkcí aplikace Function App.
 
 ```json
 {
@@ -358,10 +360,6 @@ Aplikace funkcí v plánu Premium musí mít `serverFarmId` vlastnost nastavenou
                     "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]"
                 },
                 {
-                    "name": "WEBSITE_CONTENTSHARE",
-                    "value": "[toLower(variables('functionAppName'))]"
-                },
-                {
                     "name": "FUNCTIONS_WORKER_RUNTIME",
                     "value": "node"
                 },
@@ -378,6 +376,8 @@ Aplikace funkcí v plánu Premium musí mít `serverFarmId` vlastnost nastavenou
     }
 }
 ```
+> [!IMPORTANT]
+> Nenastavte [`WEBSITE_CONTENTSHARE`](functions-app-settings.md#website_contentshare) nastavení tak, jak je vygenerováno při prvním vytvoření webu.  
 
 <a name="app-service-plan"></a>
 

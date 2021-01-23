@@ -13,16 +13,16 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ad36c2a7f47948d9362b85e78355e6046cda703
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1a12cc3299fbb5916afba48d2608024f28999634
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919414"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724623"
 ---
 # <a name="build-resilience-by-using-continuous-access-evaluation"></a>Odolnost sestavení pomocí vyhodnocení průběžného přístupu
 
-[Vyhodnocování průběžného přístupu](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-continuous-access-evaluation) (CAE) umožňuje aplikacím Azure AD přihlašovat se k odběru kritických událostí, které je pak možné vyhodnotit a vyhovět. To zahrnuje vyhodnocení následujících událostí:
+[Vyhodnocování průběžného přístupu](../conditional-access/concept-continuous-access-evaluation.md) (CAE) umožňuje aplikacím Azure AD přihlašovat se k odběru kritických událostí, které je pak možné vyhodnotit a vyhovět. To zahrnuje vyhodnocení následujících událostí:
 
 * Uživatelský účet, který se má odstranit nebo zakázat
 
@@ -48,11 +48,11 @@ Microsoft spolupracuje s oborem vytváření [standardů](https://openid.net/wg/
 
 ## <a name="how-do-i-implement-cae"></a>Návody implementovat CAE?
 
-* [Povolte CAE](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-continuous-access-evaluation) v konfiguraci zabezpečení Azure AD.
+* [Povolte CAE](../conditional-access/concept-continuous-access-evaluation.md) v konfiguraci zabezpečení Azure AD.
 
-* Ujistěte se, že vaše organizace používá [kompatibilní verze](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-continuous-access-evaluation) systém Microsoft Office nativních aplikací.
+* Ujistěte se, že vaše organizace používá [kompatibilní verze](../conditional-access/concept-continuous-access-evaluation.md) systém Microsoft Office nativních aplikací.
 
-* [Vyoptimalizujte výzvy k opakovanému ověření](https://docs.microsoft.com/azure/active-directory/authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime).
+* [Vyoptimalizujte výzvy k opakovanému ověření](../authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime.md).
 
  
 ## <a name="next-steps"></a>Další kroky

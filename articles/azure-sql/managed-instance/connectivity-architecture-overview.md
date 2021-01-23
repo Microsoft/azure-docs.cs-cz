@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 10/22/2020
-ms.openlocfilehash: 9a35c0dc8a3b994b015d7a8d64f76f7e10d95a00
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 58563629b30e7be764732a9810162e1a0b1931e6
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97722398"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725832"
 ---
 # <a name="connectivity-architecture-for-azure-sql-managed-instance"></a>Architektura připojení pro službu Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -107,11 +107,11 @@ Nasaďte spravovanou instanci SQL do vyhrazené podsítě uvnitř virtuální s�
 - **Dostatečná IP adresa:** Podsíť spravované instance SQL musí mít minimálně 32 IP adres. Další informace najdete v tématu [Určení velikosti podsítě pro spravovanou instanci SQL](vnet-subnet-determine-size.md). Spravované instance můžete nasadit v [existující síti](vnet-existing-add-subnet.md) poté, co ji nakonfigurujete tak, aby splňovala [požadavky na síť pro spravovanou instanci SQL](#network-requirements). Jinak vytvořte [novou síť a podsíť](virtual-network-subnet-create-arm-template.md).
 
 > [!IMPORTANT]
-> Při vytváření spravované instance se v podsíti použije zásada záměru sítě, aby se zabránilo nekompatibilním změnám nastavení sítě. Po odebrání poslední instance z podsítě se odstraní také zásada záměru sítě. Níže uvedená pravidla se týkají pouze informativních účelů a neměli byste je nasazovat pomocí šablon ARM/PowerShell/CLI. Pokud chcete použít nejnovější oficiální šablonu, můžete [ji kdykoli načíst z portálu](https://docs.microsoft.com/azure/azure-resource-manager/templates/quickstart-create-templates-use-the-portal).
+> Při vytváření spravované instance se v podsíti použije zásada záměru sítě, aby se zabránilo nekompatibilním změnám nastavení sítě. Po odebrání poslední instance z podsítě se odstraní také zásada záměru sítě. Níže uvedená pravidla se týkají pouze informativních účelů a neměli byste je nasazovat pomocí šablon ARM/PowerShell/CLI. Pokud chcete použít nejnovější oficiální šablonu, můžete [ji kdykoli načíst z portálu](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md).
 
 ### <a name="mandatory-inbound-security-rules-with-service-aided-subnet-configuration"></a>Povinná příchozí pravidla zabezpečení s konfigurací podsítě s podporou služby
 
-| Název       |Port                        |Protokol|Zdroj           |Cíl|Akce|
+| Name       |Port                        |Protokol|Zdroj           |Cíl|Akce|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |správa  |9000, 9003, 1438, 1440, 1452|TCP     |SqlManagement    |PODSÍŤ MI  |Povolit |
 |            |9000, 9003                  |TCP     |CorpnetSaw       |PODSÍŤ MI  |Povolit |
@@ -121,14 +121,14 @@ Nasaďte spravovanou instanci SQL do vyhrazené podsítě uvnitř virtuální s�
 
 ### <a name="mandatory-outbound-security-rules-with-service-aided-subnet-configuration"></a>Povinná odchozí pravidla zabezpečení s konfigurací podsítě s podporou služby
 
-| Název       |Port          |Protokol|Zdroj           |Cíl|Akce|
+| Name       |Port          |Protokol|Zdroj           |Cíl|Akce|
 |------------|--------------|--------|-----------------|-----------|------|
 |správa  |443, 12000    |TCP     |PODSÍŤ MI        |AzureCloud |Povolit |
 |mi_subnet   |Všechny           |Všechny     |PODSÍŤ MI        |PODSÍŤ MI  |Povolit |
 
 ### <a name="user-defined-routes-with-service-aided-subnet-configuration"></a>Uživatelem definované trasy s konfigurací podsítě s podporou služby
 
-|Název|Předpona adresy|Další směrování|
+|Name|Předpona adresy|Další směrování|
 |----|--------------|-------|
 |podsíť do vnetlocal|PODSÍŤ MI|Virtuální síť|
 |mi-13-64-11-nexthop-Internet|13.64.0.0/11|Internet|

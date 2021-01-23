@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: chenyl
-ms.openlocfilehash: 33df4410b9dd82fd0b1c732eb03ab5e0e77e9869
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 6752a9564dc0d9351d1c21f5be14eb626186ac0d
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763111"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724052"
 ---
 # <a name="upstream-settings"></a>Nastavení pro upstream
 
@@ -59,7 +59,7 @@ Adresa URL nadřazeného typu není v klidovém umístění šifrování. Pokud 
 
 1. Přidejte identitu přiřazenou systémem nebo identitu přiřazenou uživatelem. Viz [Postup přidání spravované identity na webu Azure Portal](./howto-use-managed-identity.md#add-a-system-assigned-identity) .
 
-2. Udělte oprávnění ke čtení pro spravovanou identitu v zásadách přístupu v Key Vault. Viz [přiřazení zásad Key Vault přístupu pomocí Azure Portal](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)
+2. Udělte oprávnění ke čtení pro spravovanou identitu v zásadách přístupu v Key Vault. Viz [přiřazení zásad Key Vault přístupu pomocí Azure Portal](../key-vault/general/assign-access-policy-portal.md)
 
 3. Nahraďte svůj citlivý text syntaxí `{@Microsoft.KeyVault(SecretUri=<secret-identity>)}` ve vzoru adresy URL pro odesílání.
 
@@ -146,7 +146,7 @@ POST
 |X-ASRS-User-deklarace identity |Skupina deklarací identity připojení klienta.|
 |X-ASRS-User-ID |Identita uživatele klienta, který odesílá zprávu.|
 |X-ASRS-Client-Query |Dotaz na požadavek při připojení klientů ke službě.|
-|Ověřování |Volitelný token při použití `ManagedIdentity` . |
+|Authentication |Volitelný token při použití `ManagedIdentity` . |
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -160,7 +160,7 @@ Typ obsahu: `application/json`
 
 |Název  |Typ  |Popis  |
 |---------|---------|---------|
-|Chybová |řetězec |Chybová zpráva uzavřeného připojení. Prázdné při zavření připojení bez chyby.|
+|Chyba |řetězec |Chybová zpráva uzavřeného připojení. Prázdné při zavření připojení bez chyby.|
 
 #### <a name="invocation-message"></a>Zpráva o vyvolání
 
@@ -170,7 +170,7 @@ Typ obsahu: `application/json` nebo `application/x-msgpack`
 |---------|---------|---------|
 |InvocationId |řetězec | Volitelný řetězec, který představuje zprávu o vyvolání. Hledání podrobností ve [voláních](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocations).|
 |Cíl |řetězec | Totéž jako u události a stejné jako cíl ve [zprávě vyvolání](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding). |
-|Arguments |Pole objektu |Pole obsahující argumenty, které mají být použity pro metodu, na kterou odkazuje `Target` . |
+|Argumenty |Pole objektu |Pole obsahující argumenty, které mají být použity pro metodu, na kterou odkazuje `Target` . |
 
 ### <a name="signature"></a>Podpis
 

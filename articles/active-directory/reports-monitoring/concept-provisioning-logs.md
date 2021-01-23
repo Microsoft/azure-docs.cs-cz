@@ -17,12 +17,12 @@ ms.date: 1/19/2021
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c7d02b48d30fa558f8fd12f92705046dab74057
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: deab3460baf9c46e2a3073eb41b738b0e7ad586f
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624231"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98726297"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Sestavy zřizování na portálu Azure Active Directory (Preview)
 
@@ -48,7 +48,7 @@ Toto téma poskytuje přehled protokolů zřizování. Poskytují odpovědi na o
 ### <a name="who-can-access-the-data"></a>Kdo má přístup k datům?
 * Vlastníci aplikace mohou zobrazovat protokoly pro aplikace, které vlastní.
 * Uživatelé v rolích správce zabezpečení, čtenář zabezpečení, čtenář sestav, Správce aplikací a role správce cloudové aplikace
-* Uživatelé ve vlastní roli s [oprávněním provisioningLogs](https://docs.microsoft.com/azure/active-directory/roles/custom-enterprise-app-permissions#full-list-of-permissions)
+* Uživatelé ve vlastní roli s [oprávněním provisioningLogs](../roles/custom-enterprise-app-permissions.md#full-list-of-permissions)
 * Globální správci
 
 
@@ -102,7 +102,7 @@ Můžete filtrovat data zřizování. Některé hodnoty filtru se dynamicky napl
 Ve výchozím zobrazení můžete vybrat následující filtry:
 
 - Identita
-- Datum
+- Date (Datum)
 - Status
 - Akce
 
@@ -279,7 +279,7 @@ Nyní můžete analyzovat data pro váš scénář. Zde je několik příkladů:
 
 Pomocí následující tabulky můžete lépe pochopit, jak vyřešit chyby, které můžete najít v protokolech zřizování. U všech chybových kódů, které chybí, poskytněte zpětnou vazbu pomocí odkazu v dolní části této stránky. 
 
-|Kód chyby|Description|
+|Kód chyby|Popis|
 |---|---|
 |Konflikt, EntryConflict|Opravte konfliktní hodnoty atributů buď v rámci služby Azure AD, nebo v aplikaci, nebo zkontrolujte shodnou konfiguraci atributu, pokud by byl konfliktní uživatelský účet shodný a převzatý z něj. Další informace o konfiguraci atributů odpovídajícího atributu najdete v následující [dokumentaci](../app-provisioning/customize-application-attributes.md) .|
 |TooManyRequests|Cílová aplikace odmítla tento pokus o aktualizaci uživatele, protože je přetížena a přijímá příliš mnoho požadavků. Žádná akce není k dispozici. Tento pokus bude automaticky vyřazen. Společnost Microsoft si také oznámila tento problém.|

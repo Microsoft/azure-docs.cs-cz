@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8bfc3fb239f30911eddf0aa27496a465e36c486
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 8fed78d7d2250d749ced7fe343689df76329b60d
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919418"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724656"
 ---
 # <a name="build-resilience-in-application-access-with-application-proxy"></a>Odolnost sestavení v přístupu aplikace s proxy aplikací
 
@@ -27,7 +27,7 @@ Proxy aplikací je funkce služby Azure AD, která uživatelům umožňuje pří
 Uživatelé přistupují k místním prostředkům prostřednictvím adresy URL publikované prostřednictvím proxy aplikací. Budou přesměrovány na přihlašovací stránku služby Azure AD. Služba proxy aplikací ve službě Azure AD pak pošle token konektoru proxy aplikací v podnikové síti, který předá token do místní služby Active Directory. ověřený uživatel pak může získat přístup k místnímu prostředku. V následujícím diagramu se [konektory](../manage-apps/application-proxy-connectors.md) zobrazují ve [skupině konektorů](../manage-apps/application-proxy-connector-groups.md).
 
 > [!IMPORTANT]
-> Když publikujete aplikace prostřednictvím proxy aplikace, musíte implementovat [plánování kapacity a odpovídající redundanci pro konektory proxy aplikací](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors#capacity-planning).
+> Když publikujete aplikace prostřednictvím proxy aplikace, musíte implementovat [plánování kapacity a odpovídající redundanci pro konektory proxy aplikací](../manage-apps/application-proxy-connectors.md#capacity-planning).
 
 ![Diagram architektury aplikace y](./media/resilience-on-prem-access/admin-resilience-app-proxy.png))
 

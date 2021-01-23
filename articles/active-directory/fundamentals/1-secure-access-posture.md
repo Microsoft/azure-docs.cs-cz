@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6814cafcf6dafa6f007bdd9d3623d30ef079084
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 37c27e84f15a01a2d8832baae137518685de59a8
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222441"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725437"
 ---
 # <a name="determine-your-security-posture-for-external-access"></a>Určení stav zabezpečení pro externí přístup 
 
@@ -69,7 +69,7 @@ Podle toho, co jste přijali ve vaší organizaci a scénářích, budete potře
 
 * **Řízení přístupu k aplikacím, datům a obsahu**. To je možné dosáhnout různými způsoby v závislosti na vašich verzích [Azure AD](https://azure.microsoft.com/pricing/details/active-directory/) a [Microsoft 365](https://www.microsoft.com/microsoft-365/compare-microsoft-365-enterprise-plans). 
 
-* **Snižte plochu pro útok**. [Privileged Identity Management](../privileged-identity-management/pim-configure.md), [Ochrana před únikem informací (DLP)](https://docs.microsoft.com/exchange/security-and-compliance/data-loss-prevention/data-loss-prevention) a [Možnosti šifrování](https://docs.microsoft.com/exchange/security-and-compliance/data-loss-prevention/data-loss-prevention) snižují prostor pro útoky.
+* **Snižte plochu pro útok**. [Privileged Identity Management](../privileged-identity-management/pim-configure.md), [Ochrana před únikem informací (DLP)](/exchange/security-and-compliance/data-loss-prevention/data-loss-prevention) a [Možnosti šifrování](/exchange/security-and-compliance/data-loss-prevention/data-loss-prevention) snižují prostor pro útoky.
 
 * **Pravidelně kontrolujte protokol aktivit a auditu a potvrďte dodržování předpisů**. Může delegovat rozhodování o přístupu pro vlastníky podniku prostřednictvím správy nároků, zatímco kontroly přístupu poskytují způsob, jak pravidelně potvrdit pokračování přístupu. Automatizovaná klasifikace dat s popisky citlivosti pomáhá automatizovat šifrování citlivého obsahu, aby mohli zaměstnanci koncoví uživatelé snadno dodržovat.
 
@@ -96,4 +96,3 @@ Další informace najdete v následujících článcích o zabezpečení extern�
 9. [Zabezpečený přístup k Microsoft teams, OneDrivu a SharePointu](9-secure-access-teams-sharepoint.md)
  
 
- 

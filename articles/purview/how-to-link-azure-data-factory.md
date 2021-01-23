@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/22/2020
-ms.openlocfilehash: 01af7b251c9ce3bfebb87016c85ea3efd9c0e8ac
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: dbd7937667a3c4d5af9f13e15cdd4ff2081241f0
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928762"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98723876"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>Jak připojit Azure Data Factory a Azure dosah
 
@@ -99,9 +99,9 @@ Integrace mezi Data Factory a dosah podporuje pouze podmnožinu datových systé
 
 | Systém úložiště dat | Podporováno jako zdroj | Podporováno jako jímka |
 | ------------------- | ------------------- | ----------------- |
-| ADLS Gen1 (žádná podpora JSON) | Ano | Ano (pouze bez binární kopie) |
-| ADLS Gen2 (žádná podpora JSON) | Ano | Ano |
-| Azure Blob (žádná podpora JSON) | Ano | Ano |
+| ADLS Gen1 | Ano | Ano (pouze bez binární kopie) |
+| ADLS Gen2 | Ano | Ano |
+| Azure Blob | Ano | Ano |
 | Azure Cosmos DB (SQL API) | Ano | Ano |
 | Azure Cosmos DB (rozhraní API Mongo) | Ano | Ano |
 | Azure Cognitive Search | Ano | Ano |

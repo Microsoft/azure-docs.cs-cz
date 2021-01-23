@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 3ac81e89aaea5bc37297d2f83dce9e2158ae28d8
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 3f66da38d3303b47c2a9b6cefeee19af6bf64ec1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060652"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725486"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workplace-by-facebook"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s pracovištěm na Facebooku
 
@@ -205,7 +205,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 * Přejít na pracovní plochu pomocí přihlašovací adresy URL přímo na Facebooku a spustit tok přihlášení odtud.
 
-* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici pracovní plocha na Facebooku v části Moje aplikace, přesměruje se na pracovní plochu na adrese URL pro přihlášení na Facebooku. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici pracovní plocha na Facebooku v části Moje aplikace, přesměruje se na pracovní plochu na adrese URL pro přihlášení na Facebooku. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="test-sso-for-workplace-by-facebook-mobile"></a>Testování jednotného přihlašování pro pracovní plochu na Facebooku (mobilní zařízení)
 

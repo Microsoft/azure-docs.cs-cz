@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5fd5cf419adb137df5c578e3b17b88749215be5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 399d2f71fa20d63dce89cf3be5c12ffd63264895
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919619"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724706"
 ---
 # <a name="build-resilience-with-credential-management"></a>Odolnost sestavení se správou přihlašovacích údajů
 
@@ -61,7 +61,7 @@ Kromě individuálních odolností uživatelů popsaných v tématu by podniky m
 
 * Zapněte [synchronizaci hodnot hash hesel](../hybrid/whatis-phs.md) u hybridních účtů synchronizovaných ze služby Windows Server Active Directory. Tato možnost se dá povolit souběžně s federačními službami, jako je AD FS, a poskytuje návrat k tomu, aby služba FS (Federation Service) nebyla úspěšná.
 
-* [Analyzujte využití metod Multi-Factor Authentication](https://docs.microsoft.com/samples/azure-samples/azure-mfa-authentication-method-analysis/azure-mfa-authentication-method-analysis/) pro zlepšení zkušeností uživatelů.
+* [Analyzujte využití metod Multi-Factor Authentication](/samples/azure-samples/azure-mfa-authentication-method-analysis/azure-mfa-authentication-method-analysis/) pro zlepšení zkušeností uživatelů.
 
 * [Implementace strategie odolného řízení přístupu](../authentication/concept-resilient-controls.md)
 

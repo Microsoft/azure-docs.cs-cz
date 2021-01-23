@@ -3,12 +3,12 @@ title: Doporučené postupy zabezpečení a dodržování předpisů v dávce
 description: Naučte se osvědčené postupy a užitečné tipy pro zvýšení zabezpečení pomocí Azure Batchch řešení.
 ms.date: 12/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: b9732ffb810a1038a6f402a46fa8b809f180f0a8
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 6ec4a1d89ebaa9318986fc0d51e832652ba51683
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97802282"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98723808"
 ---
 # <a name="batch-security-and-compliance-best-practices"></a>Doporučené postupy zabezpečení a dodržování předpisů v dávce
 
@@ -137,8 +137,8 @@ Výpočetní uzly služby Batch mají ve výchozím nastavení dva disky: disk s
 
 Pro zajištění vyššího zabezpečení Zašifrujte tyto disky pomocí některé z těchto funkcí pro Azure Disk Encryption:
 
-- [Spravované šifrování disků v klidovém umístění pomocí klíčů spravovaných platformou](../virtual-machines/windows/disk-encryption.md#platform-managed-keys)
-- [Šifrování na hostiteli pomocí klíče spravovaného platformou](../virtual-machines/windows/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)
+- [Spravované šifrování disků v klidovém umístění pomocí klíčů spravovaných platformou](../virtual-machines/disk-encryption.md#platform-managed-keys)
+- [Šifrování na hostiteli pomocí klíče spravovaného platformou](../virtual-machines/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)
 - [Azure Disk Encryption](disk-encryption.md)
 
 ## <a name="securely-access-services-from-compute-nodes"></a>Zabezpečený přístup ke službám z výpočetních uzlů

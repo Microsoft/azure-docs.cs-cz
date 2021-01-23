@@ -13,16 +13,16 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba7b8ff2555fd7014cf16f66745721c6425ff868
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: b40918db03c260f899c36d306c892b787cc6371c
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029519"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724887"
 ---
 # <a name="build-resilience-in-your-customer-identity-and-access-management-with-azure-active-directory-b2c"></a>Zajištění odolnosti při správě identit a přístupu zákazníků pomocí Azure Active Directory B2C
 
-[Azure Active Directory (AD) B2C](https://docs.microsoft.com/azure/active-directory-b2c/overview) je platforma pro správu zákaznických identit a přístupu (CIAM), která je navržená tak, aby vám pomohla úspěšně spustit nejdůležitější aplikace pro zákazníky. Máme spoustu integrovaných funkcí pro zajištění [odolnosti](https://azure.microsoft.com/blog/advancing-azure-active-directory-availability/) , které jsou navržené tak, aby vám pomohly škálovat naše potřeby a vylepšili odolnost v situaci, kdy dojde k potenciálním výpadkům. Kromě toho je důležité vzít v úvahu různé prvky návrhu a konfigurace v aplikaci a také způsob konfigurace aplikace v rámci Azure AD B2C, abyste měli jistotu, že máte odolné chování v reakci na scénáře výpadku nebo selhání. V tomto článku se podíváme na některé z osvědčených postupů, které vám pomůžou zvýšit odolnost.
+[Azure Active Directory (AD) B2C](../../active-directory-b2c/overview.md) je platforma pro správu zákaznických identit a přístupu (CIAM), která je navržená tak, aby vám pomohla úspěšně spustit nejdůležitější aplikace pro zákazníky. Máme spoustu integrovaných funkcí pro zajištění [odolnosti](https://azure.microsoft.com/blog/advancing-azure-active-directory-availability/) , které jsou navržené tak, aby vám pomohly škálovat naše potřeby a vylepšili odolnost v situaci, kdy dojde k potenciálním výpadkům. Kromě toho je důležité vzít v úvahu různé prvky návrhu a konfigurace v aplikaci a také způsob konfigurace aplikace v rámci Azure AD B2C, abyste měli jistotu, že máte odolné chování v reakci na scénáře výpadku nebo selhání. V tomto článku se podíváme na některé z osvědčených postupů, které vám pomůžou zvýšit odolnost.
 
 Odolná služba je ta, která dál funguje bez přerušení. Zvýšení odolnosti ve službě můžete zvýšit pomocí:
 
@@ -49,3 +49,6 @@ Při vývoji aplikace doporučujeme zvážit, jak [zvýšit odolnost ověřován
 - [Odolnost sestavení v infrastruktuře ověřování](resilience-in-infrastructure.md)
 
 - [Zvýšení odolnosti při ověřování a autorizaci ve vašich aplikacích](resilience-app-development-overview.md)
+
+Podívejte se na toto video a zjistěte, jak vytvářet odolné a škálovatelné toky pomocí Azure AD B2C.
+>[!Video https://www.youtube.com/embed/8f_Ozpw9yTs]

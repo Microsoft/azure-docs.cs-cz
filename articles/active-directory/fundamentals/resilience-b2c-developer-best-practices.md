@@ -13,12 +13,12 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ecde474abf3c814b7c3afa4ae18d044868785cf5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ff7505e7c47b93f32efd9de60463873026247329
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919670"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724921"
 ---
 # <a name="resilience-through-developer-best-practices"></a>Zajištění odolnosti pomocí osvědčených postupů pro vývojáře
 
@@ -28,7 +28,7 @@ V tomto článku sdílíme několik kurzů, které jsou založené na našich zk
 
 ## <a name="use-the-microsoft-authentication-library-msal"></a>Použití knihovny Microsoft Authentication Library (MSAL)
 
-Knihovna [Microsoft Authentication Library (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview) a [Microsoft Identity web Authentication Library pro ASP.NET](https://docs.microsoft.com/azure/active-directory/develop/reference-v2-libraries) zjednodušuje získávání, správu, ukládání do mezipaměti a aktualizaci tokenů, které aplikace vyžaduje. Tyto knihovny jsou optimalizované speciálně pro podporu identity Microsoftu včetně funkcí, které zlepšují odolnost aplikací.
+Knihovna [Microsoft Authentication Library (MSAL)](../develop/msal-overview.md) a [Microsoft Identity web Authentication Library pro ASP.NET](../develop/reference-v2-libraries.md) zjednodušuje získávání, správu, ukládání do mezipaměti a aktualizaci tokenů, které aplikace vyžaduje. Tyto knihovny jsou optimalizované speciálně pro podporu identity Microsoftu včetně funkcí, které zlepšují odolnost aplikací.
 
 Vývojáři by měli přijmout nejnovější verze MSAL a stále aktuální. Podívejte [se, jak zvýšit odolnost ověřování a autorizace](resilience-app-development-overview.md) ve vašich aplikacích. Pokud je to možné, vyhněte se implementaci vlastního zásobníku pro ověřování a použití dobře zavedených knihoven.
 
@@ -40,7 +40,7 @@ Služba Microsoft Azure AD B2C Directory podporuje miliardy ověřování za den
 
 - **Vyhněte se funkcím zápisu do adresáře při přihlašování**: Nikdy nespouštějte zápis při přihlášení bez předběžných podmínek (if klauzule) ve vlastních zásadách. Jeden případ použití, který vyžaduje zápis při přihlašování, je [migrace uživatelských hesel za běhu](https://github.com/azure-ad-b2c/user-migration/tree/master/seamless-account-migration). Vyhněte se jakémukoli scénáři, který vyžaduje zápis při každém přihlášení.
 
-  - [Předpoklady](https://docs.microsoft.com/azure/active-directory-b2c/userjourneys) v cestě uživatele budou vypadat takto:
+  - [Předpoklady](../../active-directory-b2c/userjourneys.md) v cestě uživatele budou vypadat takto:
 
   ``
   <Precondition Type="ClaimEquals" ExecuteActionsIf="true"> 
@@ -50,7 +50,7 @@ Služba Microsoft Azure AD B2C Directory podporuje miliardy ověřování za den
   ``
   - Odolnost proti sestavování na přihlášení řízené robotem [integrací s CAPTCHA systémem](https://github.com/azure-ad-b2c/samples/tree/master/policies/captcha-integration).
 
-  - K simulaci registrace a přihlašování použijte [ukázku zátěžového testování](https://docs.microsoft.com/azure/active-directory-b2c/best-practices#testing) . 
+  - K simulaci registrace a přihlašování použijte [ukázku zátěžového testování](../../active-directory-b2c/best-practices.md#testing) . 
 
 - **Pochopení omezení**: adresář implementuje pravidla omezení aplikace i klienta. Existují další omezení přenosové rychlosti pro operace čtení/získání, zápisu/odeslání, aktualizace, vložení a odstranění/odstranění a každá operace má jiné limity.
 
@@ -62,11 +62,11 @@ Služba Microsoft Azure AD B2C Directory podporuje miliardy ověřování za den
 
   - Pochopte a naplánujte časovou osu migrace. Při plánování migrace uživatelů na Azure AD B2C pomocí Microsoft Graph zvažte omezení aplikace a tenanta a vypočítejte dobu potřebnou k dokončení migrace uživatelů. Pokud rozdělíte úlohu vytvoření uživatele nebo skript pomocí dvou aplikací, můžete použít limit pro jednotlivé aplikace. Pořád musí zůstat pod prahovou hodnotou pro každého tenanta.
 
-  - Pochopení dopadů úlohy migrace na jiné aplikace. Vezměte v úvahu živý provoz poskytovaný jinými přijímajícími aplikacemi, abyste se ujistili, že nebudete mít na úrovni tenanta omezení a vyčerpání prostředků pro vaši živou aplikaci. Další informace najdete v tématu [pokyny k omezení Microsoft Graph](https://docs.microsoft.com/graph/throttling).
+  - Pochopení dopadů úlohy migrace na jiné aplikace. Vezměte v úvahu živý provoz poskytovaný jinými přijímajícími aplikacemi, abyste se ujistili, že nebudete mít na úrovni tenanta omezení a vyčerpání prostředků pro vaši živou aplikaci. Další informace najdete v tématu [pokyny k omezení Microsoft Graph](/graph/throttling).
   
 ## <a name="extend-token-lifetimes"></a>Prodloužení životnosti tokenů
 
-V nepravděpodobném případě, když služba Azure AD B2C Authentication nemůže dokončit nové registrace a přihlášení, můžete stále poskytovat zmírnění pro uživatele, kteří jsou přihlášení. Pomocí [Konfigurace](https://docs.microsoft.com/azure/active-directory-b2c/configure-tokens)můžete uživatelům, kteří jsou již přihlášeni, pokračovat v používání aplikace bez pozorovaného přerušení, dokud se uživatel z aplikace nebo vypršení platnosti [relace](https://docs.microsoft.com/azure/active-directory-b2c/session-behavior) nestane z důvodu nečinnosti.
+V nepravděpodobném případě, když služba Azure AD B2C Authentication nemůže dokončit nové registrace a přihlášení, můžete stále poskytovat zmírnění pro uživatele, kteří jsou přihlášení. Pomocí [Konfigurace](../../active-directory-b2c/configure-tokens.md)můžete uživatelům, kteří jsou již přihlášeni, pokračovat v používání aplikace bez pozorovaného přerušení, dokud se uživatel z aplikace nebo vypršení platnosti [relace](../../active-directory-b2c/session-behavior.md) nestane z důvodu nečinnosti.
 
 Vaše podnikové požadavky a požadované prostředí pro koncové uživatele budou určovat četnost obnovení tokenu pro webové i jednostránkové aplikace (jednostránkové).
 
@@ -82,7 +82,7 @@ Vaše podnikové požadavky a požadované prostředí pro koncové uživatele b
 
   - Sestavte aplikaci tak, aby jako proxy server používala bránu API. V této konfiguraci se SPA načítá bez ověřování a volání rozhraní API se provádí v bráně API. Brána API odesílá uživatele prostřednictvím procesu přihlášení pomocí [udělení autorizačního kódu](https://oauth.net/2/grant-types/authorization-code/) na základě zásad a ověří uživatele. Následně se relace ověřování mezi bránou API a klientem udržuje pomocí ověřovacího souboru cookie. Rozhraní API se obsluhují z brány API pomocí tokenu, který je získaný bránou API, nebo nějaké jiné metody přímé ověřování, jako jsou certifikáty, přihlašovací údaje klienta nebo klíče rozhraní API.
 
-  - [Migrujte své zabezpečené ověřování na základě implicitního udělení](https://developer.microsoft.com/identity/blogs/msal-js-2-0-supports-authorization-code-flow-is-now-generally-available/) [autorizačního kódu do toku](https://docs.microsoft.com/azure/active-directory-b2c/implicit-flow-single-page-application) pomocí klíčového klíče pro výměnu kódu (PKCE) a podporu sdílení prostředků mezi zdroji (CORS). Migrujte svoji aplikaci z MSAL.js 1. x na MSAL.js 2. x, abyste mohli realizovat odolnost webových aplikací.
+  - [Migrujte své zabezpečené ověřování na základě implicitního udělení](https://developer.microsoft.com/identity/blogs/msal-js-2-0-supports-authorization-code-flow-is-now-generally-available/) [autorizačního kódu do toku](../../active-directory-b2c/implicit-flow-single-page-application.md) pomocí klíčového klíče pro výměnu kódu (PKCE) a podporu sdílení prostředků mezi zdroji (CORS). Migrujte svoji aplikaci z MSAL.js 1. x na MSAL.js 2. x, abyste mohli realizovat odolnost webových aplikací.
 
   - U mobilních aplikací doporučujeme, abyste narozšířili dobu života aktualizačního tokenu i doby platnosti přístupového tokenu.
 
@@ -90,25 +90,25 @@ Vaše podnikové požadavky a požadované prostředí pro koncové uživatele b
 
 ## <a name="configure-single-sign-on"></a>Konfigurace jednotného přihlašování
 
-S [jednotným přihlašováním (SSO)](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)se uživatelé přihlásí jedním účtem a získají přístup k více aplikacím. Aplikace může být webová, mobilní nebo jediná stránková aplikace (SPA), bez ohledu na platformu nebo název domény. Když se uživatel poprvé přihlásí k aplikaci, Azure AD B2C trvá [relaci založenou na souborech cookie](https://docs.microsoft.com/azure/active-directory-b2c/session-overview).
+S [jednotným přihlašováním (SSO)](../manage-apps/what-is-single-sign-on.md)se uživatelé přihlásí jedním účtem a získají přístup k více aplikacím. Aplikace může být webová, mobilní nebo jediná stránková aplikace (SPA), bez ohledu na platformu nebo název domény. Když se uživatel poprvé přihlásí k aplikaci, Azure AD B2C trvá [relaci založenou na souborech cookie](../../active-directory-b2c/session-behavior.md).
 
 Po následné žádosti o ověření Azure AD B2C přečte a ověří relaci založenou na souborech cookie a vydá přístupový token bez vyzvání uživatele k opětovnému přihlášení. Pokud je jednotné přihlašování nakonfigurováno s omezeným oborem v zásadě nebo v aplikaci, bude pozdější přístup k dalším zásadám a aplikacím vyžadovat nové ověřování.
 
 ### <a name="how-to-configure-sso"></a>Postup konfigurace jednotného přihlašování
 
-[NAKONFIGURUJTE jednotné přihlašování](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso-quick-start) na úrovni tenanta (výchozí), aby bylo možné ve vašem tenantovi více aplikací a uživatelských toků sdílet stejnou relaci uživatele. Konfigurace na úrovni tenanta poskytuje nejvyšší odolnost proti novému ověřování.  
+[NAKONFIGURUJTE jednotné přihlašování](../hybrid/how-to-connect-sso-quick-start.md) na úrovni tenanta (výchozí), aby bylo možné ve vašem tenantovi více aplikací a uživatelských toků sdílet stejnou relaci uživatele. Konfigurace na úrovni tenanta poskytuje nejvyšší odolnost proti novému ověřování.  
 
 ## <a name="safe-deployment-practices"></a>Postupy bezpečného nasazení
 
-Nejběžnějšími výpadky služby jsou změny kódu a konfigurace. Přijetí procesů a nástrojů nepřetržité integrace a průběžné doručování (CICD) a nástrojů pro rychlé nasazení ve velkém měřítku a snížení lidských chyb při testování a nasazování do produkčního prostředí. CICD pro snižování a efektivitu chyb a jejich konzistenci. [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/azure/cicd-data-overview) je příkladem CICD.
+Nejběžnějšími výpadky služby jsou změny kódu a konfigurace. Přijetí procesů a nástrojů nepřetržité integrace a průběžné doručování (CICD) a nástrojů pro rychlé nasazení ve velkém měřítku a snížení lidských chyb při testování a nasazování do produkčního prostředí. CICD pro snižování a efektivitu chyb a jejich konzistenci. [Azure Pipelines](/azure/devops/pipelines/apps/cd/azure/cicd-data-overview) je příkladem CICD.
 
 ## <a name="web-application-firewall"></a>Firewall webových aplikací
 
 Chraňte své aplikace proti známým chybám zabezpečení, jako jsou útoky distribuovaných útoků DDoS (Distributed Denial of Service), injektáže SQL, skriptování mezi weby, vzdálené spuštění kódu a mnoho dalších, jak je popsáno v [OWASP prvních 10](https://owasp.org/www-project-top-ten/). Nasazení firewallu webových aplikací (WAF) se může chránit před běžnými zneužitím a ohrožením zabezpečení.
 
-- Využijte Azure [WAF](https://docs.microsoft.com/azure/web-application-firewall/overview), která poskytuje centralizovanou ochranu proti útokům.
+- Využijte Azure [WAF](../../web-application-firewall/overview.md), která poskytuje centralizovanou ochranu proti útokům.
 
-- Využijte WAF s Azure AD [Identity Protection a podmíněný přístup k zajištění vícevrstvé ochrany](https://docs.microsoft.com/azure/active-directory-b2c/conditional-access-identity-protection-overview) při použití Azure AD B2C.  
+- Využijte WAF s Azure AD [Identity Protection a podmíněný přístup k zajištění vícevrstvé ochrany](../../active-directory-b2c/conditional-access-identity-protection-overview.md) při použití Azure AD B2C.  
 
 ## <a name="secrets-rotation"></a>Rotace tajných kódů
 
@@ -116,9 +116,9 @@ Azure AD B2C používá tajné klíče pro aplikace, rozhraní API, zásady a š
 
 ### <a name="how-to-implement-secret-rotation"></a>Jak implementovat rotaci tajných klíčů
 
-- Pro podporované prostředky použijte [spravované identity](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) a ověřte je u jakékoli služby, která podporuje ověřování Azure AD. Pokud používáte spravované identity, můžete prostředky spravovat automaticky, včetně rotace přihlašovacích údajů.
+- Pro podporované prostředky použijte [spravované identity](../managed-identities-azure-resources/overview.md) a ověřte je u jakékoli služby, která podporuje ověřování Azure AD. Pokud používáte spravované identity, můžete prostředky spravovat automaticky, včetně rotace přihlašovacích údajů.
 
-- Vezměte v úvahu inventarizaci všech [klíčů a certifikátů nakonfigurovaných](https://docs.microsoft.com/azure/active-directory-b2c/policy-keys-overview) v Azure AD B2C. Tento seznam bude nejspíš zahrnovat klíče používané ve vlastních zásadách, [rozhraních API](https://docs.microsoft.com/azure/active-directory-b2c/secure-rest-api), tokenu PODPISového identifikátoru a certifikátech pro SAML.
+- Vezměte v úvahu inventarizaci všech [klíčů a certifikátů nakonfigurovaných](../../active-directory-b2c/policy-keys-overview.md) v Azure AD B2C. Tento seznam bude nejspíš zahrnovat klíče používané ve vlastních zásadách, [rozhraních API](../../active-directory-b2c/secure-rest-api.md), tokenu PODPISového identifikátoru a certifikátech pro SAML.
 
 - Pomocí CICD můžete otočit tajné kódy, jejichž platnost brzy vyprší do dvou měsíců od očekávaného období špičky. Doporučené maximum cryptoperiod privátních klíčů přidružených k certifikátu je jeden rok.
 
@@ -130,7 +130,7 @@ V kontextu odolnosti musí testování rozhraní REST API zahrnovat ověřován�
 
 ### <a name="how-to-test-apis"></a>Jak testovat rozhraní API
 
-Doporučujeme, aby váš plán testování zahrnoval [komplexní testy rozhraní API](https://docs.microsoft.com/azure/active-directory-b2c/best-practices#testing). Pokud plánujete, že máte v úmyslu nadcházející nárůst z důvodu propagačního nebo nedovoleného provozu, je nutné zkontrolovat zátěžové testování s novými odhady. Proveďte zátěžové testování vašich rozhraní API a Content Delivery Network (CDN) ve vývojářském prostředí, a ne v produkčním prostředí.
+Doporučujeme, aby váš plán testování zahrnoval [komplexní testy rozhraní API](../../active-directory-b2c/best-practices.md#testing). Pokud plánujete, že máte v úmyslu nadcházející nárůst z důvodu propagačního nebo nedovoleného provozu, je nutné zkontrolovat zátěžové testování s novými odhady. Proveďte zátěžové testování vašich rozhraní API a Content Delivery Network (CDN) ve vývojářském prostředí, a ne v produkčním prostředí.
 
 ## <a name="next-steps"></a>Další kroky
 

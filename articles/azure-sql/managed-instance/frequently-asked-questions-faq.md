@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 09/21/2020
-ms.openlocfilehash: 6b217e77310224779ea3ea840e613e28da6c86a3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 5d15947254d80d97b6a241a717fb7d33a3d5ccb5
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92779862"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724012"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Nejčastější dotazy ke službě Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -118,7 +118,7 @@ Změna názvu spravované instance není podporována.
 
 Ano, výchozí zóna DNS služby Managed instance *. Database.Windows.NET* lze změnit. 
 
-Chcete-li použít jinou zónu DNS namísto výchozího, například *. contoso.com* : 
+Chcete-li použít jinou zónu DNS namísto výchozího, například *. contoso.com*: 
 - Použijte CliConfig k definování aliasu. Nástroj je jenom Obálka nastavení registru, takže se dá dělat taky pomocí zásad skupiny nebo skriptu.
 - Použijte *CNAME* s možností *TrustServerCertificate = true* .
 
@@ -299,7 +299,7 @@ Tento krok není povinný. Můžete buď [vytvořit virtuální síť pro spravo
 
 Ne. V současné době nepodporujeme umístění spravované instance v podsíti, která už obsahuje jiné typy prostředků.
 
-## <a name="connectivity"></a>Možnosti připojení 
+## <a name="connectivity"></a>Připojení 
 
 **Můžu se k spravované instanci připojit pomocí IP adresy?**
 
@@ -339,7 +339,7 @@ Způsob, jak to provést, je partnerský vztah okruhu Express Route. Podpora glo
 > [!IMPORTANT]
 > [V 9/22/2020 jsme oznámili globální partnerské vztahy virtuálních sítí pro nově vytvořené virtuální clustery](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/). To znamená, že globální partnerský vztah virtuálních sítí je podporován pro spravované instance SQL vytvořené v prázdných podsítích po datu oznámení a také pro všechny následné spravované instance vytvořené v těchto podsítích. Pro všechny ostatní podpory partnerského vztahu spravované instance SQL je omezená na sítě ve stejné oblasti v důsledku [omezení globálního partnerského vztahu virtuálních sítí](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints). Další podrobnosti najdete v článku o nejčastějších dotazech v příslušné části [Azure Virtual Networks](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) . 
 
-Pokud není možné partnerské vztahy okruhu Express Route a globální partnerské vztahy virtuálních sítí, stačí, když vytvoříte připojení VPN typu Site-to-Site ([Azure Portal](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md), [POWERSHELL](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)a [Azure CLI](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md)).
+Pokud není možné partnerské vztahy okruhu Express Route a globální partnerské vztahy virtuálních sítí, stačí, když vytvoříte připojení VPN typu Site-to-Site ([Azure Portal](../../vpn-gateway/tutorial-site-to-site-portal.md), [POWERSHELL](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)a [Azure CLI](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md)).
 
 ## <a name="mitigate-data-exfiltration-risks"></a>Zmírnění rizik exfiltrace dat  
 
@@ -410,7 +410,7 @@ TDE Protector pro spravovanou instanci můžete otáčet pomocí Azure Cloud She
 Ano, databázi nemusíte dešifrovat, aby ji bylo možné obnovit ve spravované instanci SQL. Aby bylo možné číst data z šifrovaného záložního souboru, je třeba zadat certifikát nebo klíč, který se používá jako ochrana šifrovacího klíče ve zdrojovém systému do spravované instance SQL. Existují dva možné způsoby, jak to provést:
 
 - *Nahrání certifikátu – ochrana spravované instance SQL* Můžete to udělat jenom pomocí PowerShellu. [Vzorový skript](./tde-certificate-migrate.md) popisuje celý proces.
-- *Nahrání asymetrického klíče-ochrany pro Azure Key Vault a nasměrování spravované instance SQL na ni* . Tento přístup připomíná BYOK případ použití TDE, který také používá integraci Key Vault k uložení šifrovacího klíče. Pokud nechcete používat klíč jako ochranu šifrovacího klíče a chcete ho jenom zpřístupnit pro spravovanou instanci SQL pro obnovení šifrovaných databází, postupujte podle pokynů pro [Nastavení BYOK TDE](../database/transparent-data-encryption-tde-overview.md#manage-transparent-data-encryption)a zrušte zaškrtnutí políčka **nastavit vybraný klíč jako výchozí ochranu TDE** .
+- *Nahrání asymetrického klíče-ochrany pro Azure Key Vault a nasměrování spravované instance SQL na ni*. Tento přístup připomíná BYOK případ použití TDE, který také používá integraci Key Vault k uložení šifrovacího klíče. Pokud nechcete používat klíč jako ochranu šifrovacího klíče a chcete ho jenom zpřístupnit pro spravovanou instanci SQL pro obnovení šifrovaných databází, postupujte podle pokynů pro [Nastavení BYOK TDE](../database/transparent-data-encryption-tde-overview.md#manage-transparent-data-encryption)a zrušte zaškrtnutí políčka **nastavit vybraný klíč jako výchozí ochranu TDE**.
 
 Po zpřístupnění ochrany šifrování pro spravovanou instanci SQL můžete postupovat podle standardního postupu obnovení databáze.
 
@@ -443,7 +443,7 @@ Pokud chcete prozkoumat cenové možnosti spravované instance, podívejte se na
 
 **Jak můžu sledovat náklady na vyúčtování spravované instance?**
 
-Můžete to udělat pomocí [řešení Azure cost management](../../cost-management-billing/index.yml). V [Azure Portal](https://portal.azure.com) přejděte na **předplatná** a vyberte **Analýza nákladů** . 
+Můžete to udělat pomocí [řešení Azure cost management](../../cost-management-billing/index.yml). V [Azure Portal](https://portal.azure.com) přejděte na **předplatná** a vyberte **Analýza nákladů**. 
 
 Použijte možnost **akumulované náklady** a pak filtrujte podle **typu prostředku** jako `microsoft.sql/managedinstances` .
 

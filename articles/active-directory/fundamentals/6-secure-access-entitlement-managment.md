@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9de0ce5e83b33cd793953e2b863f26dffafe58ee
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: f06a54f59405d9833194b2e7d4488bc93d2437ae
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222390"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725174"
 ---
 # <a name="manage-external-access-with-entitlement-management"></a>Správa externího přístupu se správou oprávnění 
 
@@ -94,15 +94,15 @@ Další informace o kontrolách přístupu najdete v tématu [Plánování nasaz
 
 ## <a name="using-automation-in-entitlement-management"></a>Použití automatizace ve správě nároků
 
-[Funkce správy nároků můžete provádět pomocí Microsoft Graph](https://docs.microsoft.com/graph/tutorial-access-package-api), včetně
+[Funkce správy nároků můžete provádět pomocí Microsoft Graph](/graph/tutorial-access-package-api), včetně
 
-* [Spravovat balíčky pro přístup](https://docs.microsoft.com/graph/api/resources/accesspackage?view=graph-rest-beta)
+* [Spravovat balíčky pro přístup](/graph/api/resources/accesspackage?view=graph-rest-beta)
 
-* [Správa kontrol přístupu](https://docs.microsoft.com/graph/api/resources/accessreviewsv2-root?view=graph-rest-beta)
+* [Správa kontrol přístupu](/graph/api/resources/accessreviewsv2-root?view=graph-rest-beta)
 
-* [Správa připojených organizací](https://docs.microsoft.com/graph/api/resources/connectedorganization?view=graph-rest-beta)
+* [Správa připojených organizací](/graph/api/resources/connectedorganization?view=graph-rest-beta)
 
-* [Spravovat nastavení správy nároků](https://docs.microsoft.com/graph/api/resources/entitlementmanagementsettings?view=graph-rest-beta)
+* [Spravovat nastavení správy nároků](/graph/api/resources/entitlementmanagementsettings?view=graph-rest-beta)
 
 ## <a name="recommendations"></a>Doporučení 
 
@@ -112,7 +112,7 @@ Doporučujeme, abyste zvyklí řídit externí přístup se správou nároků.
 
 * Pokud již máte uživatele B2B v adresáři, můžete je také přímo přiřadit k příslušným balíčkům pro přístup.
 
-* Přístup můžete přiřadit v [Azure Portal](../governance/entitlement-management-access-package-assignments.md)nebo prostřednictvím [Microsoft Graph](https://docs.microsoft.com/graph/api/resources/accesspackageassignmentrequest?view=graph-rest-beta).
+* Přístup můžete přiřadit v [Azure Portal](../governance/entitlement-management-access-package-assignments.md)nebo prostřednictvím [Microsoft Graph](/graph/api/resources/accesspackageassignmentrequest?view=graph-rest-beta).
 
 **Pomocí nastavení zásad správného řízení identity Odeberte uživatele z adresáře, když vyprší platnost jejich balíčků pro přístup**.
 
@@ -173,4 +173,3 @@ Další informace najdete v následujících článcích o zabezpečení extern�
 
  
 
- 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 01/12/2021
+ms.date: 01/22/2021
 ms.author: b-juche
-ms.openlocfilehash: 0ae7e8f745a91e080d12a47271057ed90f9bc835
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: fb4233a87231dddb1e3cb2777ac2ef53a61f833e
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134326"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98726611"
 ---
 # <a name="troubleshoot-dual-protocol-volumes"></a>Řešení potíží se svazky se dvěma protokoly
 
@@ -29,7 +29,7 @@ Tento článek popisuje řešení chybových stavů, které můžete mít při v
 
 |     Chybové stavy    |     Řešení    |
 |-|-|
-| Vytvoření svazku s duálním protokolem se nezdařilo s chybou `This Active Directory has no Server root CA Certificate` .    |     Pokud k této chybě dojde při vytváření svazku se dvěma protokoly, ujistěte se, že se certifikát kořenové certifikační autority nahrál v účtu NetApp.    |
+| Protokol LDAP over TLS je povolený a vytvoření svazku se dvěma protokoly se v případě chyby nepovede `This Active Directory has no Server root CA Certificate` .    |     Pokud k této chybě dojde při vytváření svazku se dvěma protokoly, ujistěte se, že se certifikát kořenové certifikační autority nahrál v účtu NetApp.    |
 | Vytvoření svazku s duálním protokolem se nezdařilo s chybou `Failed to validate LDAP configuration, try again after correcting LDAP configuration` .    |  Na serveru DNS může chybět záznam ukazatele (PTR) hostitelského počítače služby AD. Musíte vytvořit zónu zpětného vyhledávání na serveru DNS a pak přidat záznam PTR hostitelského počítače služby AD v této zóně zpětného vyhledávání. <br> Předpokládejme například, že IP adresa počítače AD je `1.1.1.1` , název hostitele počítače služby Active Directory (jak je nalezen pomocí `hostname` příkazu) `AD1` a název domény `contoso.com` .  Záznam PTR přidaný do zóny zpětného vyhledávání by měl být `1.1.1.1`  ->  `contoso.com` .   |
 | Vytvoření svazku s duálním protokolem se nezdařilo s chybou `Failed to create the Active Directory machine account \\\"TESTAD-C8DD\\\". Reason: Kerberos Error: Pre-authentication information was invalid Details: Error: Machine account creation procedure failed\\n [ 434] Loaded the preliminary configuration.\\n [ 537] Successfully connected to ip 1.1.1.1, port 88 using TCP\\n**[ 950] FAILURE` . |  Tato chyba označuje, že heslo služby AD není správné, pokud je služba Active Directory připojena k účtu NetApp. Aktualizujte připojení AD se správným heslem a zkuste to znovu. |
 | Vytvoření svazku s duálním protokolem se nezdařilo s chybou `Could not query DNS server. Verify that the network configuration is correct and that DNS servers are available` . |   Tato chyba označuje, že služba DNS není dostupná. Důvodem může být to, že IP adresa DNS je nesprávná nebo dojde k potížím se sítí. Zkontrolujte IP adresu DNS zadanou v připojení AD a ujistěte se, že je IP adresa správná. <br> Také se ujistěte, že je služba AD a svazek ve stejné oblasti a ve stejné virtuální síti. Pokud jsou v různých virtuální sítě, ujistěte se, že je mezi těmito dvěma virtuální sítěy navázán partnerský vztah virtuálních sítí.|

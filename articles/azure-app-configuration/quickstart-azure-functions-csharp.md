@@ -8,12 +8,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 09/28/2020
 ms.author: alkemper
-ms.openlocfilehash: b5c659a673ece8fd7fbb9566d8bb84201a668a7f
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 9d378b21132e6646329c459401255ef9a3ed9426
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964078"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724233"
 ---
 # <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>Rychlý Start: Vytvoření aplikace Azure Functions s využitím konfigurace aplikace Azure
 
@@ -44,7 +44,7 @@ V tomto rychlém startu zahrňte službu Azure App Configuration Service do apli
 [!INCLUDE [Create a project using the Azure Functions template](../../includes/functions-vstools-create.md)]
 
 ## <a name="connect-to-an-app-configuration-store"></a>Připojení k úložišti konfigurace aplikace
-Tento projekt bude používat [Injektáže závislosti v rozhraní .net Azure Functions](/azure/azure-functions/functions-dotnet-dependency-injection) a přidá konfiguraci aplikace Azure jako další zdroj konfigurace.
+Tento projekt bude používat [Injektáže závislosti v rozhraní .net Azure Functions](../azure-functions/functions-dotnet-dependency-injection.md) a přidá konfiguraci aplikace Azure jako další zdroj konfigurace.
 
 1. Klikněte pravým tlačítkem na projekt a vyberte **Spravovat balíčky NuGet**. Na kartě **Procházet** vyhledejte a přidejte do svého projektu následující balíčky NuGet.
    - [Microsoft.Extensions.Configuration. AzureAppConfiguration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureAppConfiguration/) verze 4.1.0 nebo novější

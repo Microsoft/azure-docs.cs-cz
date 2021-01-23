@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 12/14/2020
+ms.date: 01/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 24b29cfb1f58a61193f67ba924e583d4264dfc51
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 1459dd41fcdc30a29a5f9f93ec9704083767a342
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562119"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725667"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Jaké metody ověřování jsou k dispozici v Azure Active Directory?
 
@@ -40,14 +40,14 @@ Následující tabulka popisuje požadavky na zabezpečení pro dostupné metody
 
 | Metoda ověřování          | Zabezpečení | Použitelnost | Dostupnost |
 |--------------------------------|:--------:|:---------:|:------------:|
-| Windows Hello pro firmy     | Vysoké     | Vysoké      | Vysoké         |
-| Aplikace Microsoft Authenticator    | Vysoké     | Vysoké      | Vysoké         |
-| Klíč zabezpečení FIDO2 (Preview)   | Vysoké     | Vysoké      | Vysoké         |
-| Hardwarové tokeny OATH (Preview) | Střední   | Střední    | Vysoké         |
-| Tokeny softwaru OATH           | Střední   | Střední    | Vysoké         |
+| Windows Hello pro firmy     | Vysoká     | Vysoká      | Vysoká         |
+| Aplikace Microsoft Authenticator    | Vysoká     | Vysoká      | Vysoká         |
+| Klíč zabezpečení FIDO2 (Preview)   | Vysoká     | Vysoká      | Vysoká         |
+| Hardwarové tokeny OATH (Preview) | Střední   | Střední    | Vysoká         |
+| Tokeny softwaru OATH           | Střední   | Střední    | Vysoká         |
 | SMS                            | Střední   | Vysoká      | Střední       |
 | Hlas                          | Střední   | Střední    | Střední       |
-| Heslo                       | Nízká      | Vysoká      | Vysoké         |
+| Heslo                       | Nízká      | Vysoká      | Vysoká         |
 
 Nejnovější informace o zabezpečení najdete v našem blogovém příspěvku:
 
@@ -68,10 +68,10 @@ Následující tabulka popisuje, kdy lze použít metodu ověřování během ud
 | Windows Hello pro firmy     | Ano                    | MFA                       |
 | Aplikace Microsoft Authenticator    | Ano (Preview)          | MFA a SSPR              |
 | Klíč zabezpečení FIDO2 (Preview)   | Ano                    | MFA                       |
-| Hardwarové tokeny OATH (Preview) | Ne                     | MFA                       |
-| Tokeny softwaru OATH           | Ne                     | MFA                       |
-| SMS                            | Ano (Preview)          | MFA a SSPR              |
-| Hlasový hovor                     | Ne                     | MFA a SSPR              |
+| Hardwarové tokeny OATH (Preview) | No                     | MFA                       |
+| Tokeny softwaru OATH           | No                     | MFA                       |
+| SMS                            | Ano                    | MFA a SSPR              |
+| Hlasový hovor                     | No                     | MFA a SSPR              |
 | Heslo                       | Ano                    |                           |
 
 Všechny tyto metody ověřování se dají nakonfigurovat v Azure Portal a stále používají [Microsoft Graph REST API beta verzi](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta).
@@ -83,7 +83,7 @@ Další informace o tom, jak každá metoda ověřování funguje, najdete v ná
 * [Klíč zabezpečení FIDO2 (Preview)](concept-authentication-passwordless.md#fido2-security-keys)
 * [Hardwarové tokeny OATH (Preview)](concept-authentication-oath-tokens.md#oath-hardware-tokens-preview)
 * [Tokeny softwaru OATH](concept-authentication-oath-tokens.md#oath-software-tokens)
-* [Přihlášení k serveru SMS (Preview)](howto-authentication-sms-signin.md) a [ověření](concept-authentication-phone-options.md#mobile-phone-verification)
+* [Přihlášení](howto-authentication-sms-signin.md) a [ověření](concept-authentication-phone-options.md#mobile-phone-verification) SMS
 * [Ověřování hlasových hovorů](concept-authentication-phone-options.md)
 * Heslo
 

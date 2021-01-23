@@ -8,12 +8,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 8/26/2020
 ms.author: alkemper
-ms.openlocfilehash: 6996fdd9dce4314e9365177815d7d310ac80c7cb
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 96efc0ea6300e482ddeeda8fa177847f02b7e126
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98046069"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724243"
 ---
 # <a name="quickstart-add-feature-flags-to-an-azure-functions-app"></a>Rychlý Start: Přidání příznaků funkcí do aplikace Azure Functions
 
@@ -46,7 +46,7 @@ Knihovny pro správu funkcí .NET rozšíří rozhraní s podporou příznaků f
 
 ## <a name="connect-to-an-app-configuration-store"></a>Připojení k úložišti konfigurace aplikace
 
-Tento projekt bude používat [vkládání závislostí v rozhraní .net Azure Functions](/azure/azure-functions/functions-dotnet-dependency-injection). Přidá konfiguraci aplikace Azure jako další zdroj konfigurace, ve kterém jsou uložené vaše příznaky funkcí.
+Tento projekt bude používat [vkládání závislostí v rozhraní .net Azure Functions](../azure-functions/functions-dotnet-dependency-injection.md). Přidá konfiguraci aplikace Azure jako další zdroj konfigurace, ve kterém jsou uložené vaše příznaky funkcí.
 
 1. Klikněte pravým tlačítkem na projekt a vyberte **Spravovat balíčky NuGet**. Na kartě **Procházet** vyhledejte a přidejte do svého projektu následující balíčky NuGet.
    - [Microsoft.Extensions.Configuration. AzureAppConfiguration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureAppConfiguration/) verze 4.1.0 nebo novější
@@ -201,6 +201,6 @@ V tomto rychlém startu jste vytvořili příznak funkce a použili ho v aplikac
 
 - Další informace o [správě funkcí](./concept-feature-management.md)
 - [Správa příznaků funkcí](./manage-feature-flags.md)
-- [Použití příznaků podmíněné funkce](./howto-feature-filters-aspnet-core.md)
+- [Použití příznaků podmíněných funkcí](./howto-feature-filters-aspnet-core.md)
 - [Povolení připraveného zavedení funkcí pro cílové cílové skupiny](./howto-targetingfilter-aspnet-core.md)
 - [Použití dynamické konfigurace v aplikaci Azure Functions](./enable-dynamic-configuration-azure-functions-csharp.md)

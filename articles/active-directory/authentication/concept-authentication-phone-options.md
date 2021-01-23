@@ -5,21 +5,21 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/18/2020
+ms.date: 01/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fdff7e62753e75a14d6711b77dd451603353dae5
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 6a5e8b933f617d767f017f73fb6778a45b5a1ce3
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98012831"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725585"
 ---
 # <a name="authentication-methods-in-azure-active-directory---phone-options"></a>Metody ověřování v Azure Active Directory Možnosti telefonu
 
-Pro přímé ověřování pomocí textové zprávy můžete [nakonfigurovat a povolit uživatele ověřování pomocí serveru SMS (Preview)](howto-authentication-sms-signin.md). Přihlášení pomocí SMS je skvělé pro klientské pracovníky. Při přihlášení pomocí SMS nemusí uživatelé znát uživatelské jméno a heslo pro přístup k aplikacím a službám. Uživatel místo toho zadá své registrované mobilní telefonní číslo, obdrží textovou zprávu s ověřovacím kódem a zadá ho do přihlašovacího rozhraní.
+Pro přímé ověřování pomocí textové zprávy můžete [nakonfigurovat a povolit uživatelům ověřování pomocí serveru SMS](howto-authentication-sms-signin.md). Přihlašování založené na SMS je skvělé pro prvotní pracovníky. Při přihlášení pomocí SMS nemusí uživatelé znát uživatelské jméno a heslo pro přístup k aplikacím a službám. Uživatel místo toho zadá své registrované mobilní telefonní číslo, obdrží textovou zprávu s ověřovacím kódem a zadá ho do přihlašovacího rozhraní.
 
 Uživatelé se také můžou sami ověřit pomocí mobilního telefonu nebo telefonu v kanceláři jako sekundární formulář ověřování, který se používá během Multi-Factor Authentication služby Azure AD nebo Samoobslužné resetování hesla (SSPR).
 

@@ -13,22 +13,22 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71031c7f5db299fbb1b7c99014c30590fec89f03
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 0dcb6d24eacbe594a907f084874e76fea963c561
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222288"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725124"
 ---
 # <a name="control-access-with-sensitivity-labels"></a>Řízení přístupu pomocí popisků citlivosti 
 
-[Popisky citlivosti](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels?view=o365-worldwide) vám pomůžou řídit přístup k vašemu obsahu v aplikacích Office 365 a v kontejnerech, jako jsou Microsoft teams, Microsoft 365 skupiny a sharepointové weby. Můžou chránit svůj obsah, aniž by bránili spolupráci a produkčním schopnostem vašich uživatelů. Popisky citlivosti vám umožňují posílat obsah vaší organizace napříč zařízeními, aplikacemi a službami a přitom chránit vaše data a plnit zásady dodržování předpisů a zabezpečení. 
+[Popisky citlivosti](/microsoft-365/compliance/sensitivity-labels?view=o365-worldwide) vám pomůžou řídit přístup k vašemu obsahu v aplikacích Office 365 a v kontejnerech, jako jsou Microsoft teams, Microsoft 365 skupiny a sharepointové weby. Můžou chránit svůj obsah, aniž by bránili spolupráci a produkčním schopnostem vašich uživatelů. Popisky citlivosti vám umožňují posílat obsah vaší organizace napříč zařízeními, aplikacemi a službami a přitom chránit vaše data a plnit zásady dodržování předpisů a zabezpečení. 
 
 S popisky citlivosti můžete:
 
 * **Klasifikujte obsah bez přidání nastavení ochrany**. K obsahu můžete přiřadit klasifikaci (například nálepku), která bude dál a s vaším obsahem přetrvávat, jak se používá a sdílí. Tato klasifikace umožňuje generovat sestavy využití a pozorovat aktivitu vašeho citlivého obsahu.
 
-* **Vynutili nastavení ochrany, jako je šifrování, vodoznaky a omezení přístupu**. Uživatelé můžou například použít popisek důvěrného dokumentu nebo e-mailu a tento popisek může [Šifrovat obsah](https://docs.microsoft.com/microsoft-365/compliance/encryption-sensitivity-labels?view=o365-worldwide) a přidat vodoznak "důvěrné". Kromě toho můžete [použít popisek citlivosti na kontejner](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide) , jako je například web služby SharePoint, a vymáhat, jestli externí uživatelé mají přístup k obsahu, který obsahuje.
+* **Vynutili nastavení ochrany, jako je šifrování, vodoznaky a omezení přístupu**. Uživatelé můžou například použít popisek důvěrného dokumentu nebo e-mailu a tento popisek může [Šifrovat obsah](/microsoft-365/compliance/encryption-sensitivity-labels?view=o365-worldwide) a přidat vodoznak "důvěrné". Kromě toho můžete [použít popisek citlivosti na kontejner](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide) , jako je například web služby SharePoint, a vymáhat, jestli externí uživatelé mají přístup k obsahu, který obsahuje.
 
 Popisky citlivosti na e-mail a další obsah cestují s obsahem. Popisky citlivosti na kontejnerech mohou omezit přístup ke kontejneru, ale obsah kontejneru nedědí popisek. Uživatel může například převzít obsah z chráněného webu, stáhnout ho a pak ho sdílet bez omezení, pokud obsah také nemá popisek citlivosti.
 
@@ -52,7 +52,7 @@ Jak si myslíte o řízení přístupu k obsahu pro externí přístup, určete 
 
 * Jak budete definovat, co je vysoký, střední nebo malý dopad na firmu (HBI, MBI, LBI)? Pokud jsou konkrétní typy obsahu nevhodně sdíleny, vezměte v úvahu dopad na vaši organizaci.
 
-   * Obsah s konkrétními typy nesouvisejícího [citlivého obsahu](https://docs.microsoft.com/microsoft-365/compliance/apply-sensitivity-label-automatically?view=o365-worldwide), například kreditními kartami nebo čísly Passport
+   * Obsah s konkrétními typy nesouvisejícího [citlivého obsahu](/microsoft-365/compliance/apply-sensitivity-label-automatically?view=o365-worldwide), například kreditními kartami nebo čísly Passport
 
    * Obsah vytvořený konkrétními skupinami nebo lidmi (například vedoucí na dodržování předpisů, finanční důstojníci nebo vedení)
 
@@ -66,21 +66,21 @@ Jak si myslíte o řízení přístupu k obsahu pro externí přístup, určete 
 
 * Jaké výchozí hodnoty má HBI data, weby nebo skupiny Microsoft 365?
 
-* Kde budete používat popisky citlivosti k [označování a monitorování](https://docs.microsoft.com/microsoft-365/compliance/label-analytics?view=o365-worldwide), k [vymáhání šifrování](https://docs.microsoft.com/microsoft-365/compliance/encryption-sensitivity-labels?view=o365-worldwide) nebo k [vymáhání omezení přístupu k kontejneru](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide)?
+* Kde budete používat popisky citlivosti k [označování a monitorování](/microsoft-365/compliance/label-analytics?view=o365-worldwide), k [vymáhání šifrování](/microsoft-365/compliance/encryption-sensitivity-labels?view=o365-worldwide) nebo k [vymáhání omezení přístupu k kontejneru](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide)?
 
 **Pro e-mail a obsah**
 
-* Chcete [automaticky použít popisky citlivosti](https://docs.microsoft.com/microsoft-365/compliance/apply-sensitivity-label-automatically?view=o365-worldwide) k obsahu, nebo to udělat ručně?
+* Chcete [automaticky použít popisky citlivosti](/microsoft-365/compliance/apply-sensitivity-label-automatically?view=o365-worldwide) k obsahu, nebo to udělat ručně?
 
-   * Pokud se rozhodnete tak učinit ručně, chcete [doporučit, aby uživatelé použili popisek](https://docs.microsoft.com/microsoft-365/compliance/apply-sensitivity-label-automatically?view=o365-worldwide)?
+   * Pokud se rozhodnete tak učinit ručně, chcete [doporučit, aby uživatelé použili popisek](/microsoft-365/compliance/apply-sensitivity-label-automatically?view=o365-worldwide)?
 
 **Pro kontejnery**
 
 * Jaká kritéria určí, jestli mají M365 skupiny, týmy nebo weby služby SharePoint vyžadovat přístup k omezení pomocí popisků citlivosti?
 
-* Chcete v těchto kontejnerech přesunout jenom obsah popisku, nebo chcete [automaticky označovat](https://docs.microsoft.com/microsoft-365/compliance/apply-sensitivity-label-automatically?view=o365-worldwide) existující soubory na SharePointu a OneDrivu?
+* Chcete v těchto kontejnerech přesunout jenom obsah popisku, nebo chcete [automaticky označovat](/microsoft-365/compliance/apply-sensitivity-label-automatically?view=o365-worldwide) existující soubory na SharePointu a OneDrivu?
 
-V těchto [běžných scénářích najdete popisky citlivosti](https://docs.microsoft.com/microsoft-365/compliance/get-started-with-sensitivity-labels?view=o365-worldwide) pro další nápady, jak můžete použít popisky citlivosti.
+V těchto [běžných scénářích najdete popisky citlivosti](/microsoft-365/compliance/get-started-with-sensitivity-labels?view=o365-worldwide) pro další nápady, jak můžete použít popisky citlivosti.
 
 ### <a name="sensitivity-labels-on-email-and-content"></a>Popisky citlivosti v e-mailu a obsahu
 
@@ -100,7 +100,7 @@ Když přiřadíte označení citlivosti dokumentu nebo e-mailu, bude to jako ra
 
 ### <a name="sensitivity-labels-on-containers"></a>Popisky citlivosti na kontejnerech
 
-Můžete použít popisky citlivosti na kontejnerech, jako jsou [Microsoft 365 skupiny](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-assign-sensitivity-labels), [Microsoft Teams](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide)a [sharepointové weby](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide). Když použijete tento popisek citlivosti na podporovaný kontejner, popisek automaticky použije nastavení klasifikace a ochrany pro připojenou lokalitu nebo skupinu. Popisky citlivosti na těchto kontejnerech mohou řídit následující aspekty kontejnerů:
+Můžete použít popisky citlivosti na kontejnerech, jako jsou [Microsoft 365 skupiny](../enterprise-users/groups-assign-sensitivity-labels.md), [Microsoft Teams](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide)a [sharepointové weby](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide). Když použijete tento popisek citlivosti na podporovaný kontejner, popisek automaticky použije nastavení klasifikace a ochrany pro připojenou lokalitu nebo skupinu. Popisky citlivosti na těchto kontejnerech mohou řídit následující aspekty kontejnerů:
 
 * **Ochrana osobních údajů**. Můžete zvolit, kdo může zobrazit web: konkrétní uživatele, všechny interní uživatele nebo kdokoli.
 
@@ -116,25 +116,25 @@ Můžete použít popisky citlivosti na kontejnerech, jako jsou [Microsoft 365 s
 
 Když použijete popisek citlivosti na kontejner, jako je například web služby SharePoint, nepoužije se pro obsah: popisky citlivosti v kontejnerech řídí přístup k obsahu v rámci kontejneru. 
 
-* Pokud chcete automaticky použít popisky pro obsah v rámci kontejneru, přečtěte si téma [použití citlivosti na obsah automaticky](https://docs.microsoft.com/microsoft-365/compliance/apply-sensitivity-label-automatically?view=o365-worldwide).
+* Pokud chcete automaticky použít popisky pro obsah v rámci kontejneru, přečtěte si téma [použití citlivosti na obsah automaticky](/microsoft-365/compliance/apply-sensitivity-label-automatically?view=o365-worldwide).
 
-* Pokud chcete, aby uživatelé mohli ručně použít popisky na tento obsah, ujistěte se, že jste [povolili popisky citlivosti pro soubory Office v SharePointu a OneDrivu](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-sharepoint-onedrive-files?view=o365-worldwide).
+* Pokud chcete, aby uživatelé mohli ručně použít popisky na tento obsah, ujistěte se, že jste [povolili popisky citlivosti pro soubory Office v SharePointu a OneDrivu](/microsoft-365/compliance/sensitivity-labels-sharepoint-onedrive-files?view=o365-worldwide).
 
 ### <a name="plan-to-implement-sensitivity-labels"></a>Plánování implementace popisků citlivosti
 
 Jakmile určíte, jak chcete používat popisky citlivosti a na jaký obsah a weby chcete použít, přečtěte si následující dokumentaci, která vám pomůžete provést vaši implementaci.
 
-1. [Začínáme s popisky citlivosti](https://docs.microsoft.com/microsoft-365/compliance/get-started-with-sensitivity-labels?view=o365-worldwide)
+1. [Začínáme s popisky citlivosti](/microsoft-365/compliance/get-started-with-sensitivity-labels?view=o365-worldwide)
 
-2. [Vytvoření strategie nasazení](https://docs.microsoft.com/microsoft-365/compliance/get-started-with-sensitivity-labels?view=o365-worldwide)
+2. [Vytvoření strategie nasazení](/microsoft-365/compliance/get-started-with-sensitivity-labels?view=o365-worldwide)
 
-3. [Vytváření a publikování popisků citlivosti](https://docs.microsoft.com/microsoft-365/compliance/create-sensitivity-labels?view=o365-worldwide)
+3. [Vytváření a publikování popisků citlivosti](/microsoft-365/compliance/create-sensitivity-labels?view=o365-worldwide)
 
-4. [Omezení přístupu k obsahu pomocí popisků citlivosti pro použití šifrování](https://docs.microsoft.com/microsoft-365/compliance/encryption-sensitivity-labels?view=o365-worldwide)
+4. [Omezení přístupu k obsahu pomocí popisků citlivosti pro použití šifrování](/microsoft-365/compliance/encryption-sensitivity-labels?view=o365-worldwide)
 
-5. [Použití popisků citlivosti s týmy, skupinami a weby](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide)
+5. [Použití popisků citlivosti s týmy, skupinami a weby](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide)
 
-6. [Povolit popisky citlivosti pro soubory Office v SharePointu a OneDrivu](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-sharepoint-onedrive-files?view=o365-worldwide)
+6. [Povolit popisky citlivosti pro soubory Office v SharePointu a OneDrivu](/microsoft-365/compliance/sensitivity-labels-sharepoint-onedrive-files?view=o365-worldwide)
 
 ### <a name="next-steps"></a>Další kroky
 

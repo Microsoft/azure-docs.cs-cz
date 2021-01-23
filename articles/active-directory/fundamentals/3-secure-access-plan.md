@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40738f8fcb14c48ccfe3bc7869e5176c4ab63165
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 202f2190e68b89d790c628248ae89f0cb274ff76
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222326"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725207"
 ---
 # <a name="3-create-a-security-plan-for-external-access"></a>3. vytvoření plánu zabezpečení pro externí přístup 
 
@@ -93,7 +93,7 @@ Přihlašovací podmínky se konfigurují v [podmíněném přístupu Azure AD](
 | Vysoké riziko| Vyžadovat vícefaktorové ověřování vždy pro externí uživatele |
 
 
-V současné době můžete [vymáhat službu Multi-Factor Authentication pro uživatele B2B ve vašem tenantovi](https://docs.microsoft.com/azure/active-directory/external-identities/b2b-tutorial-require-mfa). 
+V současné době můžete [vymáhat službu Multi-Factor Authentication pro uživatele B2B ve vašem tenantovi](../external-identities/b2b-tutorial-require-mfa.md). 
 
 **Podmínky přihlášení podle uživatelů a zařízení**.
 
@@ -106,11 +106,11 @@ V současné době můžete [vymáhat službu Multi-Factor Authentication pro u�
 
 Pokud dnes použijete pro zásadu stav zařízení, musí být zařízení zaregistrované nebo připojené k vašemu tenantovi. 
 
-Je možné použít [zásady na základě rizika ochrany identity](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-policy-risk) . Problémy se ale musí zmírnit v domovském tenantovi uživatele.
+Je možné použít [zásady na základě rizika ochrany identity](../conditional-access/howto-conditional-access-policy-risk.md) . Problémy se ale musí zmírnit v domovském tenantovi uživatele.
 
-V případě [síťových umístění](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-policy-location)můžete omezit přístup k libovolnému rozsahu IP adres, který vlastníte. To můžete použít, pokud chcete, aby externí partneři přistupovali k aplikaci pouze v případě, že jsou v lokalitě ve vaší organizaci.
+V případě [síťových umístění](../conditional-access/howto-conditional-access-policy-location.md)můžete omezit přístup k libovolnému rozsahu IP adres, který vlastníte. To můžete použít, pokud chcete, aby externí partneři přistupovali k aplikaci pouze v případě, že jsou v lokalitě ve vaší organizaci.
 
-[Přečtěte si další informace o zásadách podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/conditional-access/overview).
+[Přečtěte si další informace o zásadách podmíněného přístupu](../conditional-access/overview.md).
 
 ## <a name="document-access-review-policies"></a>Zásady kontroly přístupu k dokumentu
 
@@ -126,15 +126,15 @@ I když budou vaše zásady vysoce přizpůsobené vašim potřebám, vezměte v
 
 * Kontroly **přístupu pro správu nároků**. Použití funkcí v rámci správy nároků na
 
-   * [Automatické vypršení platnosti balíčků přístupu](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-access-package-lifecycle-policy)a přístup k nim tedy externí uživatel.
+   * [Automatické vypršení platnosti balíčků přístupu](../governance/entitlement-management-access-package-lifecycle-policy.md)a přístup k nim tedy externí uživatel.
 
-   * Nastavte [požadovanou četnost kontroly](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-access-reviews-create) přístupu.
+   * Nastavte [požadovanou četnost kontroly](../governance/entitlement-management-access-reviews-create.md) přístupu.
 
-   * Pokud používáte [připojené organizace](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-organization) k seskupení všech uživatelů z jednoho partnera, naplánujte pravidelné recenze s vlastníkem firmy a zástupcem partnera.
+   * Pokud používáte [připojené organizace](../governance/entitlement-management-organization.md) k seskupení všech uživatelů z jednoho partnera, naplánujte pravidelné recenze s vlastníkem firmy a zástupcem partnera.
 
-* **Microsoft 365 skupiny** Nastavte [Zásady vypršení platnosti skupiny](https://docs.microsoft.com/microsoft-365/solutions/microsoft-365-groups-expiration-policy?view=o365-worldwide) pro Microsoft 365 skupiny, na které se přizvaní externí uživatelé. 
+* **Microsoft 365 skupiny** Nastavte [Zásady vypršení platnosti skupiny](/microsoft-365/solutions/microsoft-365-groups-expiration-policy?view=o365-worldwide) pro Microsoft 365 skupiny, na které se přizvaní externí uživatelé. 
 
-* **Další možnosti**. Pokud mají externí uživatelé přístup mimo balíčky pro přístup nebo Microsoft 365 skupiny oprávnění pro správu, nastavte obchodní proces na kontrolu, kdy by se měly účty vystavovat jako neaktivní nebo odstraněné. Příklad:
+* **Další možnosti**. Pokud mají externí uživatelé přístup mimo balíčky pro přístup nebo Microsoft 365 skupiny oprávnění pro správu, nastavte obchodní proces na kontrolu, kdy by se měly účty vystavovat jako neaktivní nebo odstraněné. Například:
 
    * Odeberte možnost přihlašování pro libovolný účet, ke kterému nejste přihlášení, a to po dobu 90 dnů.
 
@@ -146,9 +146,9 @@ I když budou vaše zásady vysoce přizpůsobené vašim potřebám, vezměte v
 
 Teď, když víte, ke kterým chcete řídit přístup, jak by se měly tyto prostředky seskupovat pro běžný přístup a požadované zásady přihlašování a přístupu, se můžete rozhodnout, jak tento plán provést. 
 
-Některé funkce, například [Správa nároků](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview), jsou k dispozici pouze s licencemi Azure AD Premium 2 (P2). Licence pro Microsoft 365 E5 a Office 365 E5 zahrnují licence Azure AD P2. 
+Některé funkce, například [Správa nároků](../governance/entitlement-management-overview.md), jsou k dispozici pouze s licencemi Azure AD Premium 2 (P2). Licence pro Microsoft 365 E5 a Office 365 E5 zahrnují licence Azure AD P2. 
 
-Další kombinace Microsoft 365, Office 365 a Azure AD umožňují také některé funkce pro správu externích uživatelů. Další informace najdete v tématu [Information Protection](https://docs.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-365-security-compliance-licensing-guidance) .
+Další kombinace Microsoft 365, Office 365 a Azure AD umožňují také některé funkce pro správu externích uživatelů. Další informace najdete v tématu [Information Protection](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-365-security-compliance-licensing-guidance) .
 
 > [!NOTE]
 > Licence jsou vázané na uživatele. Proto můžete mít konkrétní uživatele, včetně správců a uživatelských vlastníků delegovaný řízení přístupu, na úrovni Azure AD P2 nebo Microsoft 365 E5 bez povolení těchto licencí pro všechny uživatele. Prvních 50 000 externích uživatelů je zdarma. Pokud nepovolíte licence P2 pro ostatní interní uživatele, nebudou moci používat funkce správy nároků, jako jsou balíčky přístupu. 
@@ -159,7 +159,7 @@ Azure AD P2 a Microsoft 365 E5 mají úplnou sadu nástrojů zabezpečení a zá
 
 ### <a name="provisioning-signing-in-reviewing-access-and-deprovisioning-bolded-entries-are-preferred-methods"></a>Zřizování, přihlašování, kontrola přístupu a zrušení zřízení. Tučné položky jsou preferované metody
 
-| Příznak| Zřízení externích uživatelů| Vynutili reqs přihlášení.| Kontrola přístupu| Zrušit zřízení přístupu |
+| Funkce| Zřízení externích uživatelů| Vynutili reqs přihlášení.| Kontrola přístupu| Zrušit zřízení přístupu |
 | - | - | - | - | - |
 | Spolupráce B2B Azure AD| Pozvání prostřednictvím e-mailu, jednorázového hesla, samoobslužné služby| | **Pravidelná kontrola na partnera**| Odebrat účet<br>Omezit přihlášení |
 | Správa nároků| **Přidat uživatele prostřednictvím přiřazení nebo samoobslužného přístupu**| | Kontroly přístupu|**Vypršení platnosti nebo odebrání balíčku přístupu**|
@@ -170,7 +170,7 @@ Azure AD P2 a Microsoft 365 E5 mají úplnou sadu nástrojů zabezpečení a zá
 
  ### <a name="access-to-resources-bolded-entries-are-preferred-methods"></a>Přístup k prostředkům. Tučné položky jsou preferované metody
 
-|Příznak | Přístup k prostředkům aplikace &| Přístup k SharePointu & OneDrive| Přístup k týmům| Zabezpečení dokumentu & e-mailu |
+|Funkce | Přístup k prostředkům aplikace &| Přístup k SharePointu & OneDrive| Přístup k týmům| Zabezpečení dokumentu & e-mailu |
 | - |-|-|-|-|
 | Správa nároků| **Přidat uživatele prostřednictvím přiřazení nebo samoobslužného přístupu**| **Přístupové balíčky**| **Přístupové balíčky**|  |
 | Skupina Office 365| | Přístup k lokalitám (a souvisejícímu obsahu), který je součástí skupiny| Přístup k týmům (a souvisejícímu obsahu), který je součástí skupiny|  |
@@ -180,7 +180,7 @@ Azure AD P2 a Microsoft 365 E5 mají úplnou sadu nástrojů zabezpečení a zá
 
 ### <a name="entitlement-management"></a>Správa nároků 
 
-[Balíčky pro přístup pro správu nároků](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-access-package-create) umožňují zřizování a rušení zajišťování přístupu ke skupinám a týmům, aplikacím a webům SharePointu. Můžete definovat, které připojené organizace mají povolený přístup, jestli jsou žádosti samoobslužné služby povolené a jaké pracovní postupy schvalování jsou vyžadované (pokud nějaké existují) pro udělení přístupu. Aby se zajistilo, že přístup netrvá déle než třeba, můžete definovat zásady vypršení platnosti a kontroly přístupu pro každý balíček přístupu. 
+[Balíčky pro přístup pro správu nároků](../governance/entitlement-management-access-package-create.md) umožňují zřizování a rušení zajišťování přístupu ke skupinám a týmům, aplikacím a webům SharePointu. Můžete definovat, které připojené organizace mají povolený přístup, jestli jsou žádosti samoobslužné služby povolené a jaké pracovní postupy schvalování jsou vyžadované (pokud nějaké existují) pro udělení přístupu. Aby se zajistilo, že přístup netrvá déle než třeba, můžete definovat zásady vypršení platnosti a kontroly přístupu pro každý balíček přístupu. 
 
  
 
@@ -190,7 +190,7 @@ Můžete dosáhnout robustního řízení pomocí Azure AD P1 a Microsoft 365 E3
 ### <a name="provisioning-signing-in-reviewing-access-and-deprovisioning"></a>Zřizování, přihlašování, kontrola přístupu a zrušení zřízení
 
 
-|Příznak | Zřízení externích uživatelů| Vymáhat požadavky na přihlášení| Kontrola přístupu| Zrušit zřízení přístupu |
+|Funkce | Zřízení externích uživatelů| Vymáhat požadavky na přihlášení| Kontrola přístupu| Zrušit zřízení přístupu |
 | - |-|-|-|-|
 | Spolupráce B2B Azure AD| **Pozvání prostřednictvím e-mailu, jednorázového hesla, samoobslužné služby**| Přímá federace B2B| **Pravidelná kontrola na partnera**| Odebrat účet<br>Omezit přihlášení |
 | Skupiny Microsoft nebo Office 365| | | | Vypršení platnosti nebo odstranění skupiny.<br>Odebrání ze skupiny |
@@ -200,7 +200,7 @@ Můžete dosáhnout robustního řízení pomocí Azure AD P1 a Microsoft 365 E3
 
  ### <a name="access-to-resources"></a>Přístup k prostředkům.
 
-|Příznak | Přístup k prostředkům aplikace &| Přístup k SharePointu & OneDrive| Přístup k týmům| Zabezpečení dokumentu & e-mailu |
+|Funkce | Přístup k prostředkům aplikace &| Přístup k SharePointu & OneDrive| Přístup k týmům| Zabezpečení dokumentu & e-mailu |
 | - |-|-|-|-|
 | Skupiny Microsoft nebo Office 365| | **Přístup k lokalitám, které jsou součástí skupiny (a přidruženého obsahu)**|**Přístup k týmům, které jsou součástí Microsoft 365 skupiny (a souvisejícího obsahu)**|  |
 | Popisky citlivosti| | Ruční klasifikace a omezení přístupu| Ruční klasifikace a omezení přístupu.| Ruční klasifikace pro omezení a šifrování |
