@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 12/17/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: ea21a56249c8eaa7c6b329b755e96b21b91ebaa1
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: c63ea4f9cdb961ca492d5dcf22a89627864236cd
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632304"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733196"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>Služby Azure, které podporují zóny dostupnosti
 
@@ -37,7 +37,7 @@ Služby Azure, které podporují Zóny dostupnosti spadají do tří kategorií:
 - **Neregionální služby** – služby, které nemají závislost na konkrétní oblasti Azure, jsou odolné proti výpadkům v rámci zóny a také výpadkům v rámci oblastí.
 
 
-Pro zajištění komplexní provozní kontinuity v Azure Sestavte architekturu aplikace pomocí kombinace Zóny dostupnosti s páry oblastí Azure. Můžete synchronně replikovat aplikace a data pomocí Zóny dostupnosti v oblasti Azure pro zajištění vysoké dostupnosti a asynchronní replikace napříč oblastmi Azure pro ochranu proti havárii. Pokud se chcete dozvědět víc, přečtěte si téma [vytváření řešení pro zajištění vysoké dostupnosti pomocí zóny dostupnosti](https://docs.microsoft.com/azure/architecture/high-availability/building-solutions-for-high-availability). 
+Pro zajištění komplexní provozní kontinuity v Azure Sestavte architekturu aplikace pomocí kombinace Zóny dostupnosti s páry oblastí Azure. Můžete synchronně replikovat aplikace a data pomocí Zóny dostupnosti v oblasti Azure pro zajištění vysoké dostupnosti a asynchronní replikace napříč oblastmi Azure pro ochranu proti havárii. Pokud se chcete dozvědět víc, přečtěte si téma [vytváření řešení pro zajištění vysoké dostupnosti pomocí zóny dostupnosti](/azure/architecture/high-availability/building-solutions-for-high-availability). 
 
 
 ### <a name="azure-services-supporting-availability-zones"></a>Služby Azure podporující Zóny dostupnosti
@@ -140,7 +140,7 @@ Pro zajištění komplexní provozní kontinuity v Azure Sestavte architekturu a
 
 
 
-| **Produkty** | **Japan East** | **Southeast Asia** | **Austrálie – východ** |
+| **Produkty** | **Japonsko – východ** | **Southeast Asia** | **Austrálie – východ** |
 |--|--|--|--|
 | **Výpočetní služby** |  |  |  |
 | [Prostředí App Service (interního nástroje)](../app-service/environment/zone-redundancy.md#how-to-deploy-an-app-service-environment-in-an-availability-zone) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
@@ -205,8 +205,8 @@ Pro virtuální počítače nasazené v zóně dostupnosti se neúčtují žádn
 - [Vytvoření virtuálního počítače](../virtual-machines/windows/create-portal-availability-zone.md)
 - [Přidání spravovaného disku pomocí PowerShellu](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
 - [Vytvoření sady škálování virtuálních počítačů v zóně redundantní](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
-- [Vyrovnávání zatížení virtuálních počítačů napříč zónami pomocí Standard Load Balancer se zónou redundantního front-endu](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-cli?tabs=option-1-create-load-balancer-standard)
-- [Vyrovnávání zatížení virtuálních počítačů v rámci zóny pomocí Standard Load Balancer s oblastí front-endu](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-cli?tabs=option-1-create-load-balancer-standard)
+- [Vyrovnávání zatížení virtuálních počítačů napříč zónami pomocí Standard Load Balancer se zónou redundantního front-endu](../load-balancer/quickstart-load-balancer-standard-public-cli.md?tabs=option-1-create-load-balancer-standard)
+- [Vyrovnávání zatížení virtuálních počítačů v rámci zóny pomocí Standard Load Balancer s oblastí front-endu](../load-balancer/quickstart-load-balancer-standard-public-cli.md?tabs=option-1-create-load-balancer-standard)
 - [Zónově redundantní úložiště](../storage/common/storage-redundancy.md)
 - [SQL Database úroveň pro obecné účely](../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)
 - [Geografické zotavení po havárii služby Event Hubs](../event-hubs/event-hubs-geo-dr.md#availability-zones)
@@ -214,7 +214,7 @@ Pro virtuální počítače nasazené v zóně dostupnosti se neúčtují žádn
 - [Vytvoření zónově redundantní brány virtuální sítě](../vpn-gateway/create-zone-redundant-vnet-gateway.md)
 - [Přidat redundantní oblast zóny pro Azure Cosmos DB](../cosmos-db/high-availability.md#availability-zone-support)
 - [Začínáme Azure cache pro Zóny dostupnosti Redis](https://gist.github.com/JonCole/92c669ea482bbb7996f6428fb6c3eb97#file-redisazgettingstarted-md)
-- [Vytvoření instance Azure Active Directory Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance)
+- [Vytvoření instance Azure Active Directory Domain Services](../active-directory-domain-services/tutorial-create-instance.md)
 - [Vytvoření clusteru služby Azure Kubernetes (AKS), který používá Zóny dostupnosti](../aks/availability-zones.md)
 
 
