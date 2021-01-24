@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: 7336078d1f04b9dcb6c2f229654f1c36d9b3114b
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: bc229974cf14ba364e5e7111dc1d2704e03c3635
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96919961"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746794"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor nejčastějších dotazech
 
@@ -37,7 +37,7 @@ Azure Monitor je povolený okamžik, kdy vytvoříte nové předplatné Azure, a
 Přístup ke všem funkcím Azure Monitor a datům z nabídky **monitor** v Azure Portal. Část **monitorování** v nabídce různých služeb Azure poskytuje přístup ke stejným nástrojům, které obsahují data filtrovaná pro konkrétní prostředek. Data Azure Monitor jsou také přístupná pro celou řadu scénářů pomocí rozhraní příkazového řádku, PowerShellu a REST API.
 
 ### <a name="is-there-an-on-premises-version-of-azure-monitor"></a>Existuje místní verze Azure Monitor?
-No. Azure Monitor je škálovatelná cloudová služba, která zpracovává a ukládá velké objemy dat, i když Azure Monitor může monitorovat místní a jiné cloudové prostředky.
+Ne. Azure Monitor je škálovatelná cloudová služba, která zpracovává a ukládá velké objemy dat, i když Azure Monitor může monitorovat místní a jiné cloudové prostředky.
 
 ### <a name="can-azure-monitor-monitor-on-premises-resources"></a>Může Azure Monitor monitorovat místní prostředky?
 Ano, kromě shromažďování dat monitorování z prostředků Azure Azure Monitor můžou shromažďovat data z virtuálních počítačů a aplikací v jiných cloudech i v místním prostředí. Další informace najdete v tématu [zdroje dat monitorování pro Azure monitor](platform/data-sources.md).
@@ -345,7 +345,9 @@ To je možné, pokud váš kód odesílá taková data. K tomu může dojít tak
 
 Po vyhledání atributů geografického umístění jsou **všechny** oktety klientské webové adresy vždycky nastavené na 0.
 
-### <a name="my-instrumentation-key-is-visible-in-my-web-page-source"></a>Můj klíč instrumentace je viditelný ve zdroji webové stránky. 
+[Sada Application Insights JavaScript SDK](app/javascript.md) ve výchozím nastavení neobsahuje žádné osobní údaje. Některá osobní data, která ve vaší aplikaci používáte, ale mohou být vyzvednuta sadou SDK (například úplné názvy v `window.title` nebo ID účtů v parametrech dotazu adresy URL XHR). Pro vlastní maskování osobních údajů přidejte [inicializátor telemetrie](app/api-filtering-sampling.md#javascript-web-applications).
+
+### <a name="my-instrumentation-key-is-visible-in-my-web-page-source"></a>Můj klíč instrumentace je viditelný ve zdroji webové stránky.
 
 * To je běžný postup při monitorování řešení.
 * Nedá se použít ke krádeži vašich dat.

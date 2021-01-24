@@ -7,23 +7,20 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/09/2020
 ms.author: surmb
-ms.openlocfilehash: 05df2144b892aed764f9606fb19bd6a3242b97f3
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 5e5be79371b640431603409a34b1a7812ed5c2a3
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934896"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746100"
 ---
-<a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Řešení potíží se stavem back-endu v Application Gateway
+<a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Řešení potíží se stavem back-endu ve službě Application Gateway
 ==================================================
 
 <a name="overview"></a>Přehled
 --------
 
 Ve výchozím nastavení služba Azure Application Gateway PROBE back-end serverů a kontroluje jejich stav a kontroluje, jestli jsou připravené na poskytování požadavků. Uživatelé také mohou vytvořit vlastní sondy, které by uváděly název hostitele, cestu k testování a stavové kódy, které budou přijaty jako v pořádku. V obou případech, pokud back-end server neodpoví úspěšně, Application Gateway označí Server jako špatný a přestane předávat požadavky na server. Po úspěšném spuštění serveru Application Gateway pokračuje v předávání požadavků.
-
-> [!NOTE]
-> Tento článek obsahuje odkazy na seznam *povolených* termínů, který už Microsoft nepoužívá. Po odebrání termínu ze softwaru ho odebereme z tohoto článku.
 
 ### <a name="how-to-check-backend-health"></a>Postup kontroly stavu back-endu
 
@@ -160,7 +157,7 @@ Také ověřte, zda jakákoli NSG/UDR/firewall blokuje přístup k IP adrese a p
 
     a.  Otevřete příkazový řádek (Win + R- \> cmd), zadejte `netstat` a vyberte Enter.
 
-    b.  Ověřte, zda server naslouchá na portu, který je nakonfigurován. Příklad:
+    b.  Ověřte, zda server naslouchá na portu, který je nakonfigurován. Například:
     ```
             Proto Local Address Foreign Address State PID
             TCP 0.0.0.0:80 0.0.0.0:0 LISTENING 4
@@ -245,7 +242,7 @@ Další informace o extrakci a nahrání důvěryhodných kořenových certifik�
 
 #### <a name="trusted-root-certificate-mismatch"></a>Neshoda důvěryhodného kořenového certifikátu
 
-**Zpráva:** Kořenový certifikát serveru, který používá back-end, se neshoduje s důvěryhodným kořenovým certifikátem přidaným do aplikační brány. Ujistěte se, že jste přidali správný kořenový certifikát pro přidání do seznamu povolených back-endu.
+**Zpráva:** Kořenový certifikát serveru, který používá back-end, se neshoduje s důvěryhodným kořenovým certifikátem přidaným do aplikační brány. Ujistěte se, že jste přidali správný kořenový certifikát pro povolenýchí back-endu.
 
 **Příčina:** Komplexní protokol SSL s Application Gateway v2 vyžaduje ověření certifikátu back-end serveru, aby bylo možné považovat Server za v pořádku.
 Aby byl certifikát TLS/SSL důvěryhodný, musí být certifikát serveru back-end vydaný certifikační autoritou, která je součástí důvěryhodného úložiště Application Gateway. Pokud certifikát nebyl vydán důvěryhodnou certifikační autoritou (například byl použit certifikát podepsaný svým držitelem), musí uživatelé odeslat certifikát vystavitele do Application Gateway.
@@ -260,7 +257,7 @@ Další informace o extrakci a nahrání důvěryhodných kořenových certifik�
 > [!NOTE]
 > K této chybě může dojít také v případě, že back-end Server nemění úplný řetěz certifikátu, včetně kořenového > zprostředkujícího (Pokud je k dispozici) > list během metody handshake TLS. K ověření můžete použít příkazy OpenSSL z libovolného klienta a připojit se k back-end serveru pomocí nakonfigurovaných nastavení v Application Gateway PROBE.
 
-Příklad:
+Například:
 ```
 OpenSSL> s_client -connect 10.0.0.4:443 -servername www.example.com -showcerts
 ```
@@ -357,8 +354,8 @@ K tomuto chování může dojít z některého z následujících důvodů:
 1.  NSG v podsíti Application Gateway blokuje příchozí přístup k portům 65503-65534 (v1 SKU) nebo 65200-65535 (SKU v2) z Internetu.
 1.  UDR v podsíti Application Gateway je nastavená na výchozí trasu (0.0.0.0/0) a další segment směrování není zadaný jako Internet.
 1.  Výchozí trasa se inzeruje připojením ExpressRoute/VPN k virtuální síti přes protokol BGP.
-1.  Vlastní server DNS je nakonfigurovaný ve virtuální síti, která nemůže přeložit názvy veřejných domén.
-1.  Application Gateway je ve stavu není v pořádku.
+1.  Vlastní server DNS je nakonfigurovaný ve virtuální síti, která nemůže překládat názvy veřejných domén.
+1.  Application Gateway je ve stavu Není v pořádku.
 
 **Řešení:**
 

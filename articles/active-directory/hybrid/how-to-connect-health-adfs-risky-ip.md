@@ -16,12 +16,12 @@ ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57d74272d77183baa2284265aee298967f641250
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: e0b76d2f943f254eb06208e2c190bae4d4088030
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97504878"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746066"
 ---
 # <a name="risky-ip-report-public-preview"></a>Sestava rizikových IP adres (Public Preview)
 Zákazníci AD FS můžou zveřejnit koncové body ověřování hesla pro Internet, aby koncovým uživatelům poskytovali služby ověřování pro přístup k aplikacím SaaS, jako je Microsoft 365. V takovém případě může pochybný aktér zkoušet přihlášení do systému AD FS za účelem uhodnutí hesla koncového uživatele a získání přístupu k prostředkům aplikace. Služba AD FS od verze AD FS ve Windows Serveru 2012 R2 poskytuje funkci uzamčení účtu pro extranet, která brání těmto typům útoku. Pokud používáte nižší verzi, důrazně doporučujeme upgradovat systém AD FS na Windows Server 2016. <br />
@@ -37,9 +37,6 @@ Kromě toho je možné, aby se jedna IP adresa pokoušela o přihlášení za n�
 > Pokud chcete tuto sestavu použít, ujistěte se, že je povolené auditování AD FS. Další informace najdete v článku o [povolení auditování služby AD FS](how-to-connect-health-agent-install.md#enable-auditing-for-ad-fs). <br />
 > Pro přístup k náhledu jsou vyžadována oprávnění Globálního správce nebo [Čtenáře zabezpečení](../../role-based-access-control/built-in-roles.md#security-reader).  
 >
-
-> [!NOTE]
-> Tento článek obsahuje odkazy na seznam *povolených* termínů, který už Microsoft nepoužívá. Po odebrání termínu ze softwaru ho odebereme z tohoto článku.
 
 ## <a name="what-is-in-the-report"></a>Co je v sestavě?
 IP adresy klienta neúspěšného přihlášení jsou agregovány prostřednictvím proxy serverů webových aplikací. Každá položka v sestavě rizikových IP adres ukazuje agregované informace o neúspěšných aktivitách přihlášení ke službě AD FS, které překročí určenou prahovou hodnotu. Obsahuje následující informace: ![ snímek obrazovky, který zobrazuje rizikové zprávy IP se zvýrazněnými záhlavími sloupců.](./media/how-to-connect-health-adfs/report4a.png)

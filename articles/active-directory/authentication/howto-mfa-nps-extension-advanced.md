@@ -11,19 +11,16 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d436414393d77c83acc835110f17e55e491dce1
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 695261ceae9d64be9395e6de082f97be04292078
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503485"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745981"
 ---
 # <a name="advanced-configuration-options-for-the-nps-extension-for-multi-factor-authentication"></a>Rozšířené možnosti konfigurace rozšíření NPS pro službu Multi-Factor Authentication
 
 Rozšíření serveru NPS (Network Policy Server) rozšiřuje vaše cloudové funkce Azure AD Multi-Factor Authentication do vaší místní infrastruktury. V tomto článku se předpokládá, že už máte nainstalované rozšíření, a teď chcete zjistit, jak se rozšíření přizpůsobí vašim potřebám.
-
-> [!NOTE]
-> Tento článek obsahuje odkazy na seznam *povolených* termínů, který už Microsoft nepoužívá. Po odebrání termínu ze softwaru ho odebereme z tohoto článku.
 
 ## <a name="alternate-login-id"></a>Alternativní ID přihlášení
 
@@ -54,7 +51,7 @@ Pokud chcete nakonfigurovat seznam povolených IP adres, použijte `HKLM\SOFTWAR
 > [!NOTE]
 > Tento klíč registru není ve výchozím nastavení vytvořen instalačním programem a při restartování služby se v protokolu AuthZOptCh zobrazí chyba. Tato chyba v protokolu se může ignorovat, ale pokud se tento klíč registru vytvoří a zůstane prázdný, pokud není potřeba, chybová zpráva se nevrátí.
 
-Pokud se žádost dostane z IP adresy, která existuje v rámci `IP_WHITELIST` , bude dvoustupňové ověřování vynecháno. Seznam IP adres se porovnává s IP adresou, která je k dispozici v atributu *ratNASIPAddress* žádosti RADIUS. Pokud žádost RADIUS přichází bez atributu ratNASIPAddress, zapíše se následující upozornění: "P_WHITE_LIST_WARNING:: IP seznam povolených adres se ignoruje, protože v žádosti RADIUS v atributu NasIpAddress chybí zdrojová IP adresa."
+Pokud se žádost dostane z IP adresy, která existuje v rámci `IP_WHITELIST` , bude dvoustupňové ověřování vynecháno. Seznam IP adres se porovnává s IP adresou, která je k dispozici v atributu *ratNASIPAddress* žádosti RADIUS. Pokud požadavek protokolu RADIUS přichází bez atributu ratNASIPAddress, je zaznamenáno upozornění: "IP_WHITE_LIST_WARNING:: IP seznam povolených adres se ignoruje, protože v atributu NasIpAddress Request chybí zdrojová IP adresa.
 
 ## <a name="next-steps"></a>Další kroky
 

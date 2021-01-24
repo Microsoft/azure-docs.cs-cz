@@ -4,12 +4,12 @@ description: Tento článek popisuje oblíbené obecné otázky týkající se A
 ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: add5874dc828f05c7c51f0f378988c94cbd42486
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: ca30f9ba190dfa3c7e224e47b90be4d3bc5d47ae
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109551"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746471"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Obecné dotazy ke službě Azure Site Recovery
 
@@ -344,6 +344,14 @@ Ano, můžete použít obnovení do alternativního umístění pro navrácení 
 
 * [Pro virtuální počítače VMware](concepts-types-of-failback.md#alternate-location-recovery-alr)
 * [Pro virtuální počítače s technologií Hyper-V](hyper-v-azure-failback.md#fail-back-to-an-alternate-location)
+
+### <a name="what-is-the-difference-between-complete-migration-commit-and-disable-replication"></a>Jaký je rozdíl mezi dokončením migrace, potvrzením a zakázáním replikace?
+
+Po převzetí služeb při selhání počítače ze zdrojového umístění do cílového umístění jsou k dispozici tři možnosti, ze kterých si můžete vybrat. Všechny tři různé účely –
+
+1.  **Dokončení migrace** znamená, že se už nebudete moct zpátky do zdrojového umístění. Migrujete se do cílové oblasti a teď jste hotovi. Kliknutím na Dokončit aktivační události migrace potvrďte a pak interně zakažte replikaci. 
+2.  **Potvrzení** znamená, že se nejedná o konec procesu replikace. Položka replikace spolu se všemi konfiguracemi zůstane v platnosti a později můžete znovu zapnout **ochranu** a umožnit tak replikaci vašich počítačů zpátky do zdrojové oblasti. 
+3.  **Vypnutím replikace** zakážete replikaci a odeberete všechny související konfigurace. Nebude to mít vliv na už existující počítač v cílové oblasti.
 
 ## <a name="automation"></a>Automation
 

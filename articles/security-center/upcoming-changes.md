@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/21/2021
+ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: 6d656dbb3fb50091fc8721ba40431b37f77c4ad6
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 1b034c0f1c62eecf8139ed908a5a242060f3e886
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98662943"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746556"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Důležité nadcházející změny Azure Security Center
 
@@ -31,10 +31,40 @@ Pokud hledáte nejnovější poznámky k verzi, najdete je v [Azure Security Cen
 
 ## <a name="planned-changes"></a>Plánované změny
 
+- [Doporučení pro ochranu úloh Kubernetes se brzy uvolní pro obecnou dostupnost (GA).](#kubernetes-workload-protection-recommendations-will-soon-be-released-for-general-availability-ga)
 - [Nepoužívá se dvě doporučení pro řízení zabezpečení použít aktualizace systému.](#two-recommendations-from-apply-system-updates-security-control-being-deprecated)
 - [Vylepšení doporučení klasifikace dat SQL](#enhancements-to-sql-data-classification-recommendation)
 - [35 doporučení verze Preview pro zvýšení pokrytí srovnávacího testu zabezpečení Azure](#35-preview-recommendations-being-added-to-increase-coverage-of-azure-security-benchmark)
 
+
+### <a name="kubernetes-workload-protection-recommendations-will-soon-be-released-for-general-availability-ga"></a>Doporučení pro ochranu úloh Kubernetes se brzy uvolní pro obecnou dostupnost (GA).
+
+**Odhadované datum změny:** Leden 2021
+
+Doporučení pro ochranu úloh Kubernetes, která jsou popsaná v tématu [ochrana úloh Kubernetes](kubernetes-workload-protections.md) , jsou momentálně ve verzi Preview. I když je doporučení ve verzi Preview, nevystavuje prostředek není v pořádku a není zahrnutý do výpočtů vašeho zabezpečeného skóre.
+
+Tato doporučení budou brzy vydána pro obecnou dostupnost (GA), a *proto budou* součástí výpočtu skóre. Pokud jste to ještě neudělali, může to vést ke mírnému dopadu na vaše zabezpečené skóre.
+
+Opravte je všude, kde je to možné (Zjistěte, jak se v [Azure Security Centerují doporučení k nápravě](security-center-remediate-recommendations.md)).
+
+Doporučení pro ochranu úloh Kubernetes jsou:
+
+- V clusterech by měl být nainstalovaný a povolený Azure Policy doplněk pro Kubernetes.
+- Měla by se vyhovět omezení procesoru a paměti kontejneru.
+- Měly by se vyhnout privilegovanému kontejneru
+- Neměnné (jen pro čtení) kořenový systém souborů by měl být vynutil pro kontejnery.
+- Je třeba zabránit kontejneru s eskalací oprávnění.
+- Spuštění kontejnerů jako kořenový uživatel by se mělo vyhnout.
+- Kontejnery sdílející závislé obory názvů hostitele by se měly vyhnout
+- Pro kontejnery by se měly vyhovět aspoň privilegované možnosti pro Linux.
+- Použití ovládacího připojení svazku pod HostPath by mělo být omezené na známý seznam.
+- Kontejnery by měly naslouchat jenom povoleným portům.
+- Služby by měly naslouchat jenom povoleným portům.
+- Používání hostitelských sítí a portů by se mělo omezit.
+- Přepsání nebo zakázání profilu kontejnerů AppArmor by mělo být omezené.
+- Image kontejneru by se měly nasadit jenom z důvěryhodných registrů.             
+
+Přečtěte si další informace o těchto doporučeních v [ochraně vašich Kubernetes úloh](kubernetes-workload-protections.md).
 
 ### <a name="two-recommendations-from-apply-system-updates-security-control-being-deprecated"></a>Nepoužívá se dvě doporučení pro řízení zabezpečení použít aktualizace systému. 
 

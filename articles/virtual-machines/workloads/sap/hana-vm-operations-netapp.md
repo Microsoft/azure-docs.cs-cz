@@ -13,15 +13,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 01/18/2021
+ms.date: 01/23/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2c7ea804e9e85578076969f0ec6bdf90b571bb75
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 906879c44a2d7a3248f3d3ac0c9fec7ced7f2a4f
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570078"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746539"
 ---
 # <a name="nfs-v41-volumes-on-azure-netapp-files-for-sap-hana"></a>Svazky NFS v4.1 ve službě Azure NetApp Files pro SAP HANA
 
@@ -62,7 +62,13 @@ Důležité je pochopit, že se jedná o poměr výkonu a že existují fyzická
 
 Následující tabulka ukazuje, že by mohlo být vhodné vytvořit velký "standardní" svazek pro ukládání záloh a že nemá smysl vytvořit "extrémně" svazek větší než 12 TB, protože by byla překročena kapacita fyzické šířky pásma jednoho LIF. 
 
-Maximální propustnost pro LIF a jednu relaci Linux je mezi 1,2 a 1,4 GB/s. 
+Maximální propustnost pro LIF a jednu relaci Linux je mezi 1,2 a 1,4 GB/s. Pokud požadujete větší propustnost pro/Hana/data, můžete pomocí SAP HANA rozdělit datové svazky rozdělit aktivitu vstupu/výstupu během opětovného načtení dat nebo HANA úložných bodů napříč více datovými soubory HANA, které se nacházejí ve více sdílených složkách systému souborů NFS. Další podrobnosti o prokládaných datových svazcích HANA najdete v těchto článcích:
+
+- [Příručka pro správce HANA](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.05/en-US/40b2b2a880ec4df7bac16eae3daef756.html?q=hana%20data%20volume%20partitioning)
+- [Blog o SAP HANA – dělení datových svazků](https://blogs.sap.com/2020/10/07/sap-hana-partitioning-data-volumes/)
+- [Poznámka ke SAP #2400005](https://launchpad.support.sap.com/#/notes/2400005)
+- [Poznámka ke SAP #2700123](https://launchpad.support.sap.com/#/notes/2700123)
+
 
 | Velikost  | Propustnost Standard | Propustnost – Premium | Propustnost Ultra |
 | --- | --- | --- | --- |

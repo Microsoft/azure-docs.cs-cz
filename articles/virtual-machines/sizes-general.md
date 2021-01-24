@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: mimckitt
-ms.openlocfilehash: 6929c0110dcf9ff9f59c200243e886af1936c22f
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 6f6f98b39f693d2d15b77cdf6de6251e1c264c8a
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018827"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746083"
 ---
 # <a name="general-purpose-virtual-machine-sizes"></a>Velikosti virtuálních počítačů pro obecné účely
 
@@ -23,7 +23,7 @@ Velikosti virtuálních počítačů pro obecné účely poskytují vyvážený 
 - Virtuální počítače [řady Av2-Series](av2-series.md) je možné nasadit na nejrůznější typy hardwaru a procesory. Virtuální počítače řady a-Series mají pro úlohy na vstupní úrovni, jako je vývoj a testování, nejvhodnější konfigurace výkonu a paměti procesoru. Velikost je omezována v závislosti na použitém hardwaru a nabízí konzistentní výkon procesoru pro spuštěné instance bez ohledu na hardware. Pokud chcete zjistit fyzický hardware, na kterém je virtuální počítač dané velikosti nasazený, zadejte dotaz na virtuální hardware přímo z virtuálního počítače. Příklady případů použití zahrnují vývojové a testovací servery, webové servery s nízkým provozem, malé až střední databáze, testování konceptů a úložiště kódu.
 
   > [!NOTE]
-  > Virtuální počítače A8 – A11 jsou plánovány k vyřazení na 3/2021. Další informace najdete v tématu [Průvodce migrací HPC](https://azure.microsoft.com/resources/hpc-migration-guide/).
+  > Virtuální počítače A8, A11 A10 jsou plánovány k vyřazení na 3/2021. Další informace najdete v tématu [Průvodce migrací HPC](https://azure.microsoft.com/resources/hpc-migration-guide/). Tyto velikosti virtuálních počítačů jsou v původní sérii "A_v1", ne "v2".
 
 - [Řady B-Series pro shluky](sizes-b-series-burstable.md) Virtuální počítače jsou ideální pro úlohy, které nepotřebují průběžný výkon procesoru, jako jsou webové servery, malé databáze a vývojové a testovací prostředí. Tyto úlohy mají typicky požadavky na výkon při roztržení. Řada B-Series poskytuje zákazníkům možnost zakoupit si velikost virtuálního počítače pomocí cenového plánu s vědomím cen, který umožňuje instanci virtuálního počítače sestavovat kredity, když virtuální počítač využívá méně než základní výkon. Když se na virtuálním počítači nashromáždil kredit, může virtuální počítač zvýšit kapacitu virtuálního počítače pomocí až 100% procesoru, když vaše aplikace vyžaduje vyšší výkon procesoru.
 
@@ -44,7 +44,7 @@ Velikosti virtuálních počítačů pro obecné účely poskytují vyvážený 
 - [Optimalizované pro výpočty](sizes-compute.md)
 - [Optimalizované pro paměť](sizes-memory.md)
 - [Optimalizované pro úložiště](sizes-storage.md)
-- [Optimalizované z hlediska GPU](sizes-gpu.md)
+- [Optimalizované z hlediska GPU.](sizes-gpu.md)
 - [Vysokovýkonné výpočetní prostředí](sizes-hpc.md)
 - [Předchozí generace](sizes-previous-gen.md)
 

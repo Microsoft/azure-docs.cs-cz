@@ -7,19 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 10/14/2020
-ms.openlocfilehash: 3f55e2a7d62d2f32173d382dc9be0d6eb4f83fae
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.date: 01/23/2021
+ms.openlocfilehash: 57867cc4fb539b07fc1e4117f6e956078c41e2c6
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98249750"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746692"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Rychlé zprovoznění: Vytvoření služby Azure Cognitive Search na portálu
 
-Azure Kognitivní hledání je samostatný prostředek, který slouží k připojení vyhledávacího prostředí do vlastních aplikací. Kognitivní hledání se snadno integruje s jinými službami Azure, aplikacemi na síťových serverech nebo se softwarem běžícím na jiných cloudových platformách.
+[Azure kognitivní hledání](search-what-is-azure-search.md) je prostředek Azure, který se používá k přidání funkce fulltextového vyhledávání do vlastních aplikací. Můžete ji snadno integrovat s jinými službami Azure, které poskytují data nebo další zpracování, s aplikacemi na síťových serverech nebo se softwarem běžícím na jiných cloudových platformách.
 
-V tomto článku se dozvíte, jak vytvořit prostředek v [Azure Portal](https://portal.azure.com/).
+V tomto článku se dozvíte, jak vytvořit vyhledávací službu v [Azure Portal](https://portal.azure.com/).
 
 [![Animovaný GIF](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif)](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
 
@@ -31,7 +31,7 @@ Pro dobu života služby jsou opraveny následující vlastnosti služby – zm�
 
 * Název služby se může nacházet v rámci koncového bodu adresy URL ([recenze tipů](#name-the-service) pro užitečné názvy služeb).
 * [Úroveň služby](search-sku-tier.md) má vliv na fakturaci a nastavuje limit nahoru pro kapacitu. Některé funkce nejsou dostupné na úrovni Free.
-* Oblast služby může určit dostupnost určitých scénářů. Pokud potřebujete [funkce s vysokým zabezpečením](search-security-overview.md) nebo [obohacení AI](cognitive-search-concept-intro.md), budete muset Azure kognitivní hledání umístit do stejné oblasti jako jiné služby nebo v oblastech, které zajišťují konkrétní funkci. 
+* Oblast služby může určit dostupnost určitých scénářů. Pokud potřebujete [funkce s vysokým zabezpečením](search-security-overview.md) nebo [obohacení AI](cognitive-search-concept-intro.md), budete muset vytvořit Azure kognitivní hledání ve stejné oblasti jako jiné služby nebo v oblastech, které tuto funkci poskytují. 
 
 ## <a name="subscribe-free-or-paid"></a>Předplatné (bezplatné nebo placené)
 
@@ -43,7 +43,7 @@ Případně si můžete [aktivovat výhody pro předplatitele MSDN](https://azur
 
 1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
-1. V levém horním rohu klikněte na symbol plus (+ vytvořit prostředek).
+1. V levém horním rohu klikněte na symbol plus (**+ vytvořit prostředek**).
 
 1. Pomocí panelu hledání vyhledejte "Azure kognitivní hledání" nebo přejděte k prostředku prostřednictvím **webu**  >  **Azure kognitivní hledání**.
 

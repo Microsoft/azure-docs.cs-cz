@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: b9a41f4d4bb10599d50e58ad6f08d61aaba7ecfc
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: cd41f740d3cdb8130199a5dda6e73209637d5142
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97608778"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745930"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>Vytvoření kontroleru dat ARC Azure
 
@@ -54,7 +54,7 @@ Bez ohledu na to, kterou možnost zvolíte, budete muset během procesu vytvář
 - **Uživatelské jméno kontroleru dat** – jakékoli uživatelské jméno pro uživatele správce kontroleru dat.
 - **Heslo ke službě data Controller** – heslo pro uživatele správce kontroleru dat.
 - **Název oboru názvů Kubernetes** – název oboru názvů Kubernetes, ve kterém chcete vytvořit řadič dat.
-- **Režim připojení** – [režim připojení](./connectivity.md) vašeho clusteru. V současné době je podporována pouze "nepřímá".
+- **Režim připojení** – režim připojení určuje stupeň připojení z prostředí Azure ARC s povolenými datovými službami do Azure. Verze Preview v současné době podporuje pouze nepřímo připojené a přímo připojené režimy.  Informace najdete v tématu [režim připojení](./connectivity.md). 
 - **ID předplatného Azure** – identifikátor GUID předplatného Azure, kde chcete vytvořit prostředek řadiče dat v Azure.
 - **Název skupiny prostředků Azure** – název skupiny prostředků, ve které chcete vytvořit prostředek řadiče dat v Azure.
 - **Umístění Azure** – umístění Azure, kde se metadata prostředku řadiče dat uloží do Azure. Seznam oblastí, které jsou k dispozici, najdete v tématu [globální infrastruktura/produkty Azure podle oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc).

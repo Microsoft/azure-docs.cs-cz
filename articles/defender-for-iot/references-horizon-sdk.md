@@ -1,5 +1,5 @@
 ---
-title: Sada Horizon SDK
+title: Horizon SDK
 titleSuffix: Azure Defender for IoT
 description: Sada Horizon SDK umožňuje vývojářům v programu Azure Defender navrhovat moduly plug-in, které dekódují síťový provoz, aby je bylo možné zpracovat pomocí automatizovaného Defenderu pro programy analýzy sítě IoT.
 author: shhazam-ms
@@ -8,12 +8,12 @@ ms.author: shhazam
 ms.date: 1/13/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: d6105f65508eff59164246020d9a3f286b68c5a1
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 53aafc4146680c89dd01174ec5fde765f1cc0c01
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210565"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746015"
 ---
 # <a name="horizon-proprietary-protocol-dissector"></a>Nesektorový speciální protokol pro Horizont
 
@@ -320,7 +320,7 @@ Tato část popisuje základní parametry.
 | **sanity_failure_codes** | Jedná se o kódy vrácené z analyzátoru v případě, že dojde ke konfliktu správnosti týkající se identity kódu. Viz ověření Magic Number v sekci C++. | Řetězec |
 | **malformed_codes** | Jedná se o správně identifikované kódy, ale zjištěna chyba. Například pokud je délka pole příliš krátká nebo dlouhá, nebo je hodnota neplatná. | Řetězec |
 | **dissect_as** | Pole definující, kam by měl dorazit určitý provoz protokolu | TCP/UDP, port atd. |
-| **pole** | Deklarace, která pole se extrahují z provozu. Každé pole má své vlastní ID (název) a typ (číslo, řetězec, RAW, pole, komplexní). Například [funkce](https://docs.google.com/document/d/14nm8cyoGiaE0ODOYQd_xjULxVz9U_bjfPKkcDhOFr5Q/edit#bookmark=id.6s1zcxa9184k) pole, která je extrahována v souboru analyzátoru implementace. Pole napsaná v konfiguračním souboru jsou pouze ty, které lze přidat do vrstvy. |  |
+| **fields** | Deklarace, která pole se extrahují z provozu. Každé pole má své vlastní ID (název) a typ (číslo, řetězec, RAW, pole, komplexní). Například [funkce](https://docs.google.com/document/d/14nm8cyoGiaE0ODOYQd_xjULxVz9U_bjfPKkcDhOFr5Q/edit#bookmark=id.6s1zcxa9184k) pole, která je extrahována v souboru analyzátoru implementace. Pole napsaná v konfiguračním souboru jsou pouze ty, které lze přidat do vrstvy. |  |
 
 ### <a name="other-advanced-fields"></a>Další rozšířená pole 
 
@@ -396,7 +396,7 @@ Tím se ověří, že přenášený paket odpovídá parametrům ověření prot
 
 Například použijte prvních 8 bajtů jako *Magic Number*. Pokud správnosti selže, vrátí se odpověď na chybu správnosti.
 
-Příklad:
+Například:
 
 ```C++
   horizon::protocol::ParserResult 
@@ -885,7 +885,7 @@ K extrakci dalších informací můžete také použít hodnoty z dříve analyz
 
 Například pro hodnotu, která je založená na protokolu TCP, můžete použít hodnoty z vrstvy IPv4. Z této vrstvy můžete extrahovat hodnoty, jako je například zdroj paketu, a cíl.
 
-Aby to bylo možné dosáhnout, je nutné aktualizovat konfigurační soubor JSON pomocí `whitelist` Vlastnosti.
+Aby to bylo možné dosáhnout, je nutné aktualizovat konfigurační soubor JSON pomocí `whitelists` Vlastnosti.
 
 ## <a name="allow-list-data-mining-fields"></a>Pole pro povolení seznamu (dolování dat)
 

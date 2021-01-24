@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 09/10/2020
-ms.openlocfilehash: 38f37ff2fe150a9e1998fbe5e963b8737a6e1533
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 11aa739beeb07c3de056d8a2430b556fcc40b178
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737961"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746726"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Poznámky k verzi Azure Machine Learning
 
@@ -493,8 +493,8 @@ Přečtěte si další informace o [označování segmentace instancí imagí](h
     + Uživatelé teď můžou určit četnost časových řad pro úlohy předpovědi pomocí `freq` parametru.
   + **azureml-train-automl-runtime**
     + Vylepšený výstup z konzoly, když se nezdařila nejlepší vysvětlení modelu
-    + Byl přejmenován vstupní parametr "backlist_models" na "blocked_models".
-      + Byl přejmenován vstupní parametr "whitelist_models" na "allowed_models".
+    + Přejmenujte vstupní parametr na "blocked_models" pro odebrání citlivého termínu.
+      + Přejmenujte vstupní parametr na "allowed_models" pro odebrání citlivého termínu.
     + Uživatelé teď můžou určit četnost časových řad pro úlohy předpovědi pomocí `freq` parametru.
 
   

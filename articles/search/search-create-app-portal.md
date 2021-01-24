@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 09/25/2020
-ms.openlocfilehash: b69feec7249c80fc63d803a14f360614bcf880fa
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 01/23/2021
+ms.openlocfilehash: 590afe4c396942c5179826cd831908e37f48c3e4
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91399818"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745746"
 ---
 # <a name="quickstart-create-a-demo-app-in-the-portal-azure-cognitive-search"></a>Rychlý Start: vytvoření ukázkové aplikace na portálu (Azure Kognitivní hledání)
 
@@ -21,7 +21,7 @@ Pomocí průvodce **vytvořením ukázkové aplikace** Azure Portal vygenerujte 
 
 Ukázková aplikace vám pomůže vizualizovat, jak bude index fungovat v klientské aplikaci, ale není určený pro produkční scénáře. Klientské aplikace by měly zahrnovat zabezpečení, zpracování chyb a logiku hostování, kterou neposkytuje vygenerovaná stránka HTML. Až budete připraveni vytvořit klientskou aplikaci, přečtěte si téma [Vytvoření první aplikace pro vyhledávání pomocí sady .NET SDK](tutorial-csharp-create-first-app.md) pro další kroky.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, musíte mít následující:
 
@@ -61,7 +61,7 @@ Průvodce poskytuje základní rozložení pro vykreslené výsledky hledání, 
 
 1. V poli Popis zvolte pole, které poskytuje podrobné informace, které mohou někomu pomáhat při rozhodování, zda kliknout do konkrétního dokumentu.
 
-   :::image type="content" source="media/search-create-app-portal/configure-results.png" alt-text="Stránka zdroje dat pro ukázková data" border="false":::
+   :::image type="content" source="media/search-create-app-portal/configure-results.png" alt-text="Konfigurace výsledků pro ukázková data" border="false":::
 
 ## <a name="add-a-sidebar"></a>Přidat postranní panel
 
@@ -72,8 +72,9 @@ V Azure Kognitivní hledání je nahodnocená navigace kumulativním prostředí
 > [!TIP]
 > Úplné schéma indexu můžete zobrazit na portálu. Vyhledejte odkaz **definice indexu (JSON)** na stránce Přehled v jednotlivých indexech. Pole, která jsou kvalifikována pro přecházení s omezujícími vlastnostmi, mají "filtrovatelné: true" a "FACET: true" atributy.
 
-Přijměte aktuální výběr omezujících vlastností a pokračujte na další stránku.
+1. V průvodci vyberte kartu **boční panel** v horní části stránky. Zobrazí se seznam všech polí, která jsou s atributy filtrovatelné a plošky v indexu.
 
+1. Přijměte aktuální výběr omezujících polí a pokračujte na další stránku.
 
 ## <a name="add-typeahead"></a>Přidat typeahead
 
@@ -83,24 +84,48 @@ Návrhy jsou povolené pro konkrétní definice polí. Průvodce vám nabídne m
 
 Následující snímek obrazovky ukazuje možnosti v průvodci, juxtaposed s vykreslenou stránkou v aplikaci. Můžete vidět, jak se používají výběry polí, a jak se má v návrhu zahrnout nebo vyloučit označení "Zobrazit název pole".
 
-:::image type="content" source="media/search-create-app-portal/suggestions.png" alt-text="Stránka zdroje dat pro ukázková data":::
+:::image type="content" source="media/search-create-app-portal/suggestions.png" alt-text="Konfigurace návrhů dotazů":::
+
+## <a name="add-suggestions"></a>Přidat návrhy
+
+Návrhy odkazují na automatické výzvy dotazů, které jsou připojeny k vyhledávacímu poli. Kognitivní hledání podporuje dvě: *doplňování* částečně zadaného hledaného termínu a *návrhy* na rozevírací seznam potenciálních dokumentů, které jsou na bázi.
+
+Průvodce podporuje návrhy a pole, která mohou poskytnout navrhované výsledky, jsou odvozena z [`Suggesters`](index-add-suggesters.md) konstrukce v indexu:
+
+```JSON
+  "suggesters": [
+    {
+      "name": "sg",
+      "searchMode": "analyzingInfixMatching",
+      "sourceFields": [
+        "number",
+        "street",
+        "city",
+        "region",
+        "postCode",
+        "tags"
+      ]
+```
+
+1. V průvodci vyberte kartu **návrhy** v horní části stránky. Zobrazí se seznam všech polí, která jsou určena ve schématu indexu jako poskytovatelé návrhů.
+
+1. Přijměte aktuální výběr a pokračujte na další stránku.
 
 ## <a name="create-download-and-execute"></a>Vytvoření, stažení a spuštění
 
-1. Vyberte **vytvořit ukázkovou aplikaci** pro vygenerování souboru HTML.
+1. V dolní části stránky vyberte **vytvořit ukázkovou aplikaci** , aby se vygeneroval soubor HTML.
 
 1. Po zobrazení výzvy vyberte **Stáhnout aplikaci** a Stáhněte si soubor.
 
-1. Otevřete tento soubor. Měla by se zobrazit stránka podobná následujícímu snímku obrazovky. Zadejte termín a použijte filtry k zúžení výsledků. 
+1. Otevřete soubor a klikněte na tlačítko Hledat. Tato akce spustí dotaz, což může být prázdný dotaz ( `*` ), který vrací libovolnou sadu výsledků dotazu. Stránka by měla vypadat podobně jako na následujícím snímku obrazovky. Zadejte termín a použijte filtry k zúžení výsledků. 
 
 Základní index se skládá z fiktivních generovaných dat, která byla duplikována v rámci dokumentů, a popisy se někdy neshodují s obrázkem. Pokud vytváříte aplikaci na základě vlastních indexů, můžete očekávat ucelenější prostředí.
 
-:::image type="content" source="media/search-create-app-portal/run-app.png" alt-text="Stránka zdroje dat pro ukázková data":::
-
+:::image type="content" source="media/search-create-app-portal/run-app.png" alt-text="Spuštění aplikace":::
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud pracujete s vlastním předplatným, je vhodné vždy na konci projektu zkontrolovat, jestli budete vytvořené prostředky ještě potřebovat. Prostředky, které necháte běžet, vás stojí peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků, a odstranit tak celou sadu prostředků najednou.
+Pokud pracujete s vlastním předplatným, je vhodné vždy na konci projektu zkontrolovat, jestli budete vytvořené prostředky ještě potřebovat. Prostředky, které necháte běžet, vás stojí peníze. Můžete odstraňovat prostředky jednotlivě nebo odstraněním skupiny prostředků odstranit celou sadu prostředků najednou.
 
 Prostředky můžete najít a spravovat na portálu pomocí odkazu **všechny prostředky** nebo **skupiny prostředků** v levém navigačním podokně.
 
@@ -108,7 +133,7 @@ Pokud používáte bezplatnou službu, pamatujte na to, že jste omezeni na tři
 
 ## <a name="next-steps"></a>Další kroky
 
-I když je výchozí aplikace užitečná při počátečním a malém úkolu, podrobnější informace o rozhraních API vám pomůžou porozumět konceptům a pracovním postupům na hlubší úrovni:
+Ukázková aplikace je užitečná pro vytváření prototypů, protože můžete simulovat činnost koncového uživatele, aniž byste museli psát JavaScript nebo front-end kód. Pokud chcete získat další informace o funkcích front-endu, začněte s omezujícími navigačními prvky:
 
 > [!div class="nextstepaction"]
-> [Vytvoření indexu pomocí sady .NET SDK](./search-get-started-dotnet.md)
+> [Postup sestavení filtru omezující vlastnosti](search-filters-facets.md)

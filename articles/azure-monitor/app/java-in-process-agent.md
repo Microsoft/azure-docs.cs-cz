@@ -6,12 +6,12 @@ ms.date: 03/29/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 931189a6740009bd26472c186057fa0e6ef5fddf
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 249afa361946e85a8c8ff241f07d7aae608949ae
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624888"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745696"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>Azure Monitor monitorování aplikací s kódováním kódu Java Application Insights
 
@@ -143,13 +143,13 @@ Následující tabulka představuje aktuálně podporované vlastní typy teleme
 
 |                     | Mikrometr | Log4j, logback, červenec | 2. x SDK |
 |---------------------|------------|---------------------|---------|
-| **Vlastní události**   |            |                     |  Yes    |
-| **Vlastní metriky**  |  Yes       |                     |  Yes    |
-| **Závislosti**    |            |                     |  Yes    |
-| **Výjimky**      |            |  Yes                |  Yes    |
-| **Page Views**      |            |                     |  Yes    |
-| **Žádosti**        |            |                     |  Yes    |
-| **Trasování**          |            |  Yes                |  Yes    |
+| **Vlastní události**   |            |                     |  Ano    |
+| **Vlastní metriky**  |  Ano       |                     |  Ano    |
+| **Závislosti**    |            |                     |  Ano    |
+| **Výjimky**      |            |  Ano                |  Ano    |
+| **Page Views**      |            |                     |  Ano    |
+| **Žádosti**        |            |                     |  Ano    |
+| **Trasování**          |            |  Ano                |  Ano    |
 
 V tuto chvíli neplánujeme vydání sady SDK pomocí Application Insights 3,0.
 
@@ -323,8 +323,3 @@ import com.microsoft.applicationinsights.web.internal.ThreadContext;
 RequestTelemetry requestTelemetry = ThreadContext.getRequestTelemetryContext().getHttpRequestTelemetry();
 requestTelemetry.setName("myname");
 ```
-
-> [!NOTE]
-> Všechny ostatní operace `RequestTelemetry` načtené z `ThreadContext.getRequestTelemetryContext().getHttpRequestTelemetry()` více než těch, které jsou popsané výše, selžou rychle a vyvolají výjimku, která vám umožní zjistit, že v agentovi 3,0 není definované chování.
->
-> Pokud potřebujete spolupráci pro jakékoli jiné metody `RequestTelemetry` , obraťte se na nás a otevřete problém https://github.com/microsoft/ApplicationInsights-Java/issues .

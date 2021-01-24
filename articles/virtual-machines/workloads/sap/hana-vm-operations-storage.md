@@ -13,15 +13,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/26/2020
+ms.date: 01/23/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8c4aa608e892867daaf954284a9dfce997a9ae1f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 01c6a2eb53e82965dd96deaa1a09afb1e70dda24
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484273"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746743"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>Konfigurace úložiště virtuálních počítačů Azure SAP HANA
 
@@ -63,10 +63,22 @@ V části výběr konfigurace úložiště pro HANA se můžou zobrazit tyto zá
 - Rozhodněte o typu úložiště založeném na [typech Azure Storage pro úlohu SAP](./planning-guide-storage.md) a [Vyberte typ disku](../../disks-types.md) .
 - Celková propustnost vstupně-výstupních operací virtuálních počítačů a omezení IOPS při změně velikosti nebo rozhodování pro virtuální počítač. Celková propustnost úložiště virtuálního počítače je popsána v článku [paměťově optimalizované velikosti virtuálních počítačů](../../sizes-memory.md) .
 - Při rozhodování o konfiguraci úložiště se snažte zůstat pod celkovou propustností virtuálního počítače s konfigurací svazku **/Hana/data** . Zápisem úložných bodů SAP HANA může být agresivní vystavení vstupně-výstupních volání. Při zápisu do uloženého bodu je možné snadno nabídnout až omezení propustnosti **/Hana/data** svazku. Pokud vaše disky, které sestavují svazek **/Hana/data** , mají vyšší propustnost, než umožňuje váš virtuální počítač, můžete se v situacích, kdy propustnost využívané zápisem uloženého bodu, narušovat pomocí propustnosti zápisů protokolů znovu. Situace, která může ovlivnit propustnost aplikace
-- Pokud používáte službu Azure Premium Storage, jedná se o nejlevnějšíou konfiguraci pomocí správců logických svazků k sestavení sad Stripe Sets pro vytváření svazků **/Hana/data** a **/Hana/log** .
+
 
 > [!IMPORTANT]
 > Návrhy pro konfigurace úložiště jsou určené jako pokyny, jak začít s. Spuštění úloh a analýza vzorů využití úložiště vám může znamenat, že nepoužíváte celou šířku pásma úložiště nebo IOPS. Můžete zvážit možnost úložiště a pak. V opačném případě vaše zatížení může potřebovat větší propustnost úložiště než navržené s těmito konfiguracemi. V důsledku toho může být nutné nasadit větší kapacitu, IOPS nebo propustnost. V terénu napětí mezi požadovanou kapacitou úložiště, požadovanou latencí úložiště, propustností úložiště a minimální náročnou konfigurací nabízí Azure dostatek různých typů úložiště s různými možnostmi a různé cenové body, které vám umožní najít a upravit správné ohrožení pro vás a vaše úlohy HANA.
+
+
+## <a name="stripe-sets-versus-sap-hana-data-volume-partitioning"></a>Prokládané sady versus SAP HANA dělení datových svazků
+Pomocí služby Azure Premium Storage se můžete setkat s nejlepším poměrem cen a výkonu při rozložení svazku **/Hana/data** nebo **/Hana/log** na několik disků Azure. Místo toho, abyste nasadili větší diskový svazek, který poskytuje další informace o IOPS nebo propustnosti. Zatím to bylo dosaženo LVM a MDADM správců svazků, které jsou součástí systému Linux. Metoda prokládaného disku je v desítkových a dobře známých. Vzhledem k tomu, že tyto prokládané svazky mají přístup k možnostem IOPS nebo propustnosti, které můžete potřebovat, se při správě těchto prokládaných svazků zvyšují složitosti. Zejména v případech, kdy se svazky potřebují rozšířit o kapacitu. Minimálně pro **/Hana/data** představil SAP alternativní metodu, která dosahuje stejného cíle jako prokládání na více discích Azure. Vzhledem k tomu, že SAP HANA 2,0 SPS03, je IndexServer HANA schopný rozkládat svou aktivitu v/v mezi více datovými soubory HANA, které jsou umístěné na různých discích Azure. Výhodou je, že se nemusíte starat o vytváření a správu prokládaného svazku napříč různými disky Azure. SAP HANA funkce dělení datových svazků je podrobně popsána v těchto částech:
+
+- [Příručka pro správce HANA](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.05/en-US/40b2b2a880ec4df7bac16eae3daef756.html?q=hana%20data%20volume%20partitioning)
+- [Blog o SAP HANA – dělení datových svazků](https://blogs.sap.com/2020/10/07/sap-hana-partitioning-data-volumes/)
+- [Poznámka ke SAP #2400005](https://launchpad.support.sap.com/#/notes/2400005)
+- [Poznámka ke SAP #2700123](https://launchpad.support.sap.com/#/notes/2700123)
+
+Při čtení podrobností je zřejmé, že využití této funkce v sadách odstínů v nástroji Volume Manager trvá. Také zjistíte, že dělení datových svazků HANA nefunguje jenom pro úložiště bloků Azure, jako je Azure Premium Storage. Tuto funkci můžete použít i pro vyložení napříč sdílenými složkami NFS v případě, že tyto sdílené složky mají omezení pro IOPS nebo propustnost.  
+
 
 ## <a name="linux-io-scheduler-mode"></a>Režim plánovače I/O systému Linux
 Linux má několik různých režimů plánování vstupu a výstupu. Běžnými doporučeními pro dodavatele a SAP systému Linux je překonfigurování režimu v/v plánovače u diskových svazků z režimu **MQ-konečný** nebo **kyber** do **NoOp** (non-Queue) nebo **none** for (pro více front). Podrobnosti jsou odkazovány v [#1984787 SAP Note](https://launchpad.support.sap.com/#/notes/1984787). 

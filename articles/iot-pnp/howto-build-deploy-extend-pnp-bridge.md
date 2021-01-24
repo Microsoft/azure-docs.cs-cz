@@ -1,27 +1,26 @@
 ---
-title: Postup sestavení, nasazení a rozšiřování IoT technologie Plug and Play mostu | Microsoft Docs
-description: Identifikujte součásti IoT technologie Plug and Play mostu. Naučte se, jak tento most rozšíříte a jak ho spustit na zařízeních IoT, branách a jako modulu IoT Edge.
+title: Jak sestavit a nasadit IoT technologie Plug and Play most | Microsoft Docs
+description: Identifikujte součásti IoT technologie Plug and Play mostu. Naučte se, jak ji spustit na zařízeních IoT, branách a jako modulu IoT Edge.
 author: usivagna
 ms.author: ugans
-ms.date: 12/11/2020
+ms.date: 1/20/2021
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 43c89b0fac08bf9f2c72f885fbf4788371876b17
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: b7947eab93ebc8e523e163af601893522132e06a
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678572"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745663"
 ---
-# <a name="build-deploy-and-extend-the-iot-plug-and-play-bridge"></a>Sestavování, nasazování a rozšiřování technologie Plug and Play mostu IoT
+# <a name="build-and-deploy-the-iot-plug-and-play-bridge"></a>Sestavení a nasazení mostu IoT technologie Plug and Play
 
-Most IoT technologie Plug and Play umožňuje připojit stávající zařízení připojená k bráně ke službě IoT Hub. Pomocí tohoto mostu namapujete rozhraní IoT technologie Plug and Play na připojená zařízení. Rozhraní IoT technologie Plug and Play definuje telemetrii, kterou zařízení odesílá, vlastnosti synchronizované mezi zařízením a cloudem a příkazy, na které zařízení reaguje. Můžete nainstalovat a nakonfigurovat aplikaci Open-Source mostu v bránách systému Windows nebo Linux.
+[Most iot technologie Plug and Play](concepts-iot-pnp-bridge.md#iot-plug-and-play-bridge-architecture) umožňuje připojit stávající zařízení připojená k bráně ke službě IoT Hub. Pomocí tohoto mostu namapujete rozhraní IoT technologie Plug and Play na připojená zařízení. Rozhraní IoT technologie Plug and Play definuje telemetrii, kterou zařízení odesílá, vlastnosti synchronizované mezi zařízením a cloudem a příkazy, na které zařízení reaguje. Můžete nainstalovat a nakonfigurovat aplikaci Open-Source mostu v bránách systému Windows nebo Linux. Most se navíc dá spustit jako modul modulu runtime Azure IoT Edge.
 
 Tento článek podrobně vysvětluje, jak:
 
 - Nakonfigurujte most.
-- Rozšíří most vytvořením nových adaptérů.
 - Postup sestavení a spuštění mostu v různých prostředích.
 
 Jednoduchý příklad, který ukazuje, jak používat most, najdete v tématu [Postup připojení ukázky služby IoT technologie Plug and Play Bridge, která je spuštěna v systému Linux nebo Windows a IoT Hub](howto-use-iot-pnp-bridge.md).
@@ -78,103 +77,12 @@ K zadání konfiguračního souboru do mostu použijte jednu z následujících 
 
 Když je most spuštěn jako modul IoT Edge v modulu IoT Edge runtime, je konfigurační soubor odeslán z cloudu jako aktualizace `PnpBridgeConfig` požadované vlastnosti. Most počká na aktualizaci této vlastnosti před konfigurací adaptérů a součástí.
 
-## <a name="extend-the-bridge"></a>Rozšiřování mostu
-
-Pro rozšiřování schopností mostu můžete vytvářet vlastní adaptéry mostu.
-
-Most používá adaptéry k těmto akcím:
-
-- Navažte spojení mezi zařízením a cloudem.
-- Povolí tok dat mezi zařízením a cloudem.
-- Povolte správu zařízení z cloudu.
-
-Každý adaptér mostu musí:
-
-- Vytvořte rozhraní Digital vláknas.
-- Pomocí rozhraní můžete navazovat funkce na straně zařízení na cloudové možnosti, jako jsou telemetrie, vlastnosti a příkazy.
-- Navažte řízení a datovou komunikaci s hardwarem nebo firmwarem zařízení.
-
-Každý adaptér mostu komunikuje s konkrétním typem zařízení podle toho, jak se adaptér připojuje a komunikuje se zařízením. I v případě, že komunikace se zařízením používá protokol handshake, může mít adaptér mostu několik způsobů, jak data ze zařízení interpretovat. V tomto scénáři adaptér mostu používá informace pro adaptér v konfiguračním souboru k určení *Konfigurace rozhraní* , které má adaptér použít k analýze dat.
-
-Aby bylo možné komunikovat se zařízením, adaptér mostu používá komunikační protokol podporovaný zařízením a rozhraními API poskytovanými buď základním operačním systémem, nebo dodavatelem zařízení.
-
-Pro interakci s cloudem adaptér mostu používá rozhraní API poskytovaná sadou SDK pro zařízení Azure IoT, která slouží k odesílání telemetrie, vytváření digitálních vlákenných rozhraní, odesílání aktualizací vlastností a vytváření funkcí zpětného volání pro aktualizace vlastností a příkazy.
-
-### <a name="create-a-bridge-adapter"></a>Vytvoření adaptéru mostu
-
-Most očekává, že adaptér mostu implementuje rozhraní API definovaná v rozhraní [_PNP_ADAPTER](https://github.com/Azure/iot-plug-and-play-bridge/blob/9964f7f9f77ecbf4db3b60960b69af57fd83a871/pnpbridge/src/pnpbridge/inc/pnpadapter_api.h#L296) :
-
-```c
-typedef struct _PNP_ADAPTER {
-  // Identity of the IoT Plug and Play adapter that is retrieved from the config
-  const char* identity;
-
-  PNPBRIDGE_ADAPTER_CREATE createAdapter;
-  PNPBRIDGE_COMPONENT_CREATE createPnpComponent;
-  PNPBRIDGE_COMPONENT_START startPnpComponent;
-  PNPBRIDGE_COMPONENT_STOP stopPnpComponent;
-  PNPBRIDGE_COMPONENT_DESTROY destroyPnpComponent;
-  PNPBRIDGE_ADAPTER_DESTOY destroyAdapter;
-} PNP_ADAPTER, * PPNP_ADAPTER;
-```
-
-V tomto rozhraní:
-
-- `PNPBRIDGE_ADAPTER_CREATE` Vytvoří adaptér a nastaví prostředky správy rozhraní. Adaptér může také při vytváření adaptéru spoléhat na globální parametry adaptéru. Tato funkce se volá jednou pro jeden adaptér.
-- `PNPBRIDGE_COMPONENT_CREATE` Vytvoří digitální dvojitá klientská rozhraní a naváže funkce zpětného volání. Adaptér inicializuje komunikační kanál do zařízení. Adaptér může nastavit prostředky, aby umožnily tok telemetrie, ale nespustil telemetrie pro vytváření sestav `PNPBRIDGE_COMPONENT_START` , dokud se nevolá. Tato funkce se volá jednou pro každou součást rozhraní v konfiguračním souboru.
-- `PNPBRIDGE_COMPONENT_START` je volána, aby adaptér mostu mohl začít předávat telemetrii ze zařízení do digitálního vlákna klienta. Tato funkce se volá jednou pro každou součást rozhraní v konfiguračním souboru.
-- `PNPBRIDGE_COMPONENT_STOP` zastaví tok telemetrie.
-- `PNPBRIDGE_COMPONENT_DESTROY` zničí z digitálního vlákna klienta a přidružených prostředků rozhraní. Tato funkce se volá jednou pro každou součást rozhraní v konfiguračním souboru, když se přestanou zpomalit most nebo když dojde k závažné chybě.
-- `PNPBRIDGE_ADAPTER_DESTROY` vyčistí prostředky můstkového adaptéru.
-
-### <a name="bridge-core-interaction-with-bridge-adapters"></a>Přemostění interakce jádra s adaptéry mostu
-
-Následující seznam popisuje, co se stane, když se most spustí:
-
-1. Když se most spustí, správce adaptéru mostu prohledá jednotlivé komponenty rozhraní definované v konfiguračním souboru a zavolá `PNPBRIDGE_ADAPTER_CREATE` příslušný adaptér. Adaptér může použít parametry konfigurace globálního adaptéru k nastavení prostředků pro podporu různých *konfigurací rozhraní*.
-1. Pro každé zařízení v konfiguračním souboru inicializuje správce mostu vytvoření rozhraní voláním `PNPBRIDGE_COMPONENT_CREATE` příslušného můstkového adaptéru.
-1. Adaptér obdrží všechna volitelná nastavení konfigurace adaptéru pro komponentu rozhraní a použije tyto informace k nastavení připojení k zařízení.
-1. Adaptér vytvoří digitální dvojitá klientská rozhraní a naváže funkce zpětného volání pro aktualizace vlastností a příkazy. Navázání připojení zařízení by nemělo po úspěšném vytvoření digitálního vlákna na konci zablokovat návrat zpětných volání. Aktivní připojení zařízení nezávisí na aktivním klientovi rozhraní, který most vytvoří. Pokud dojde k chybě připojení, adaptér předpokládá, že zařízení není aktivní. Adaptér mostu se může rozhodnout pro vytvoření tohoto připojení znovu.
-1. Až správce adaptéru mostu vytvoří všechny součásti rozhraní zadané v konfiguračním souboru, zaregistruje všechna rozhraní s Azure IoT Hub. Registrace je blokující asynchronní volání. Po dokončení volání aktivuje zpětné volání v adaptéru mostu, které umožňuje spustit zpracování vlastností a zpětných volání příkazů z cloudu.
-1. Správce mostu pak zavolá `PNPBRIDGE_INTERFACE_START` na každou součást a adaptér mostu zahájí oznamování telemetrie do digitálního nevlákenního klienta.
-
-### <a name="design-guidelines"></a>Pokyny pro návrh
-
-Při vývoji nového adaptéru mostu postupujte podle těchto pokynů:
-
-- Určete, které možnosti zařízení jsou podporované a jaká definice rozhraní komponent pomocí tohoto adaptéru vypadá jako.
-- Určete, jaké rozhraní a globální parametry je potřeba, aby váš adaptér byl definovaný v konfiguračním souboru.
-- Identifikujte komunikaci zařízení nižší úrovně, která je nutná pro podporu vlastností a příkazů komponenty.
-- Určete, jak má adaptér analyzovat nezpracovaná data ze zařízení a převést je na typy telemetrie, které definuje definice rozhraní IoT technologie Plug and Play.
-- Implementujte rozhraní můstk Adapter popsané výše.
-- Přidejte nový adaptér k manifestu adaptéru a sestavte most.
-
-### <a name="enable-a-new-bridge-adapter"></a>Povolit nový adaptér mostu
-
-Adaptéry v mostu povolíte přidáním odkazu do [adapter_manifest. c](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/src/adapters/src/shared/adapter_manifest.c):
-
-```c
-  extern PNP_ADAPTER MyPnpAdapter;
-  PPNP_ADAPTER PNP_ADAPTER_MANIFEST[] = {
-    .
-    .
-    &MyPnpAdapter
-  }
-```
-
-> [!IMPORTANT]
-> Zpětná volání adaptérů mostu se volají postupně. Adaptér by neměl zablokovat zpětné volání, protože to brání v jádru mostu v průběhu provádění.
-
-### <a name="sample-camera-adapter"></a>Ukázkový adaptér kamery
-
-[Soubor Readme adaptéru kamery](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/src/adapters/src/Camera/readme.md) popisuje ukázkový adaptér kamery, který můžete povolit.
-
 ## <a name="build-and-run-the-bridge-on-an-iot-device-or-gateway"></a>Sestavení a spuštění mostu na zařízení nebo bráně IoT
 
 | Platforma | Podporováno |
 | :-----------: | :-----------: |
-| Windows |  Yes |
-| Linux | Yes |
+| Windows |  Ano |
+| Linux | Ano |
 
 ### <a name="prerequisites"></a>Požadavky
 
@@ -296,7 +204,7 @@ Debug\pnpbridge_bin.exe
 | Platforma | Podporováno |
 | :-----------: | :-----------: |
 | Windows |  No |
-| Linux | Yes |
+| Linux | Ano |
 
 ### <a name="prerequisites"></a>Požadavky
 
@@ -378,7 +286,6 @@ Spusťte VS Code, otevřete paletu příkazů, zadejte *Remote WSL: otevřít sl
 Otevřete soubor *pnpbridge\Dockerfile.amd64* . Upravte definice proměnných prostředí následujícím způsobem:
 
 ```dockerfile
-ENV IOTHUB_DEVICE_CONNECTION_STRING="{Add your device connection string here}"
 ENV PNP_BRIDGE_ROOT_MODEL_ID="dtmi:com:example:RootPnpBridgeSampleDevice;1"
 ENV PNP_BRIDGE_HUB_TRACING_ENABLED="false"
 ENV IOTEDGE_WORKLOADURI="something"

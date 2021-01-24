@@ -8,12 +8,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 01/18/2021
 ms.author: allensu
-ms.openlocfilehash: 3e9ade329d2b26d36763db579b0fcec03e938aad
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: d394a475c5121607f70c03437382e104a5d0cbee
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98555453"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746403"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-the-azure-portal"></a>Rychlý Start: vytvoření služby privátního propojení pomocí Azure Portal
 
@@ -46,7 +46,7 @@ V této části vytvoříte virtuální síť a podsíť pro hostování nástro
     | Skupina prostředků   | Vybrat **CreatePrivLinkService-RG** |
     | **Podrobnosti o instancích** |                                                                 |
     | Name             | Zadejte **myVNet**                                    |
-    | Oblast           | Vyberte **východní USA 2** |
+    | Region (Oblast)           | Vyberte **východní USA 2** |
 
 3. Vyberte kartu **IP adresy** nebo v dolní části stránky vyberte tlačítko **Další: IP adresy** .
 
@@ -84,9 +84,9 @@ Pomocí portálu vytvořte standardní interní nástroj pro vyrovnávání zat�
     | Předplatné               | Vyberte své předplatné.    |    
     | Skupina prostředků         | Vyberte **CreatePrivLinkService-RG** vytvořené v předchozím kroku.|
     | Name                   | Zadejte **myLoadBalancer**                                   |
-    | Oblast         | Vyberte **USA – východ 2**.                                        |
+    | Region (Oblast)         | Vyberte **USA – východ 2**.                                        |
     | Typ          | Vyberte **interní**.                                        |
-    | Skladová položka           | Vybrat **Standard** |
+    | SKU           | Vybrat **Standard** |
     | Virtuální síť | Vyberte **myVNet** vytvořené v předchozím kroku. |
     | Podsíť  | Vyberte **mySubnet** vytvořené v předchozím kroku. |
     | Přiřazení IP adresy | Vyberte **Dynamická**. |
@@ -192,7 +192,7 @@ V této části vytvoříte službu privátního propojení za standardním nás
     | Skupina prostředků | Vyberte **CreatePrivLinkService-RG**. |
     | **Podrobnosti o instancích** |  |
     | Name | Zadejte **myPrivateLinkService**. |
-    | Oblast | Vyberte **USA – východ 2**. |
+    | Region (Oblast) | Vyberte **USA – východ 2**. |
 
 6. Vyberte kartu **odchozí nastavení** nebo vyberte **Další: odchozí nastavení** v dolní části stránky.
 
@@ -217,6 +217,112 @@ V této části vytvoříte službu privátního propojení za standardním nás
 
 12. Na kartě **Revize + vytvořit** vyberte **vytvořit** .
 
+Vaše služba privátního propojení se vytvoří a může přijímat provoz. Pokud chcete zobrazit přenosové toky, nakonfigurujte svoji aplikaci za vaším standardním nástrojem pro vyrovnávání zatížení.
+
+
+## <a name="create-private-endpoint"></a>Vytvořit privátní koncový bod
+
+V této části namapujete službu privátního propojení na soukromý koncový bod. Virtuální síť obsahuje privátní koncový bod pro službu privátního propojení. Tato virtuální síť obsahuje prostředky, které budou mít přístup ke službě privátního propojení.
+
+### <a name="create-private-endpoint-virtual-network"></a>Vytvořit virtuální síť privátního koncového bodu
+
+1. V levém horním rohu obrazovky vyberte **Vytvořit prostředek > Sítě > Virtuální síť** nebo do vyhledávacího pole zadejte **Virtuální síť**.
+
+2. V části **vytvořit virtuální síť** zadejte nebo vyberte tyto informace na kartě **základy** :
+
+    | **Nastavení**          | **Hodnota**                                                           |
+    |------------------|-----------------------------------------------------------------|
+    | **Podrobnosti o projektu**  |                                                                 |
+    | Předplatné     | Vyberte své předplatné Azure.                                  |
+    | Skupina prostředků   | Vybrat **CreatePrivLinkService-RG** |
+    | **Podrobnosti o instancích** |                                                                 |
+    | Name             | Zadejte **myVNetPE**                                    |
+    | Region (Oblast)           | Vyberte **východní USA 2** |
+
+3. Vyberte kartu **IP adresy** nebo v dolní části stránky vyberte tlačítko **Další: IP adresy** .
+
+4. Na kartě **IP adresy** zadejte tyto informace:
+
+    | Nastavení            | Hodnota                      |
+    |--------------------|----------------------------|
+    | Adresní prostor protokolu IPv4 | Zadejte **11.1.0.0/16** |
+
+5. V části **název podsítě** vyberte slovo **výchozí**.
+
+6. V **Upravit podsíť** zadejte tyto informace:
+
+    | Nastavení            | Hodnota                      |
+    |--------------------|----------------------------|
+    | Název podsítě | Zadejte **mySubnetPE** |
+    | Rozsah adres podsítě | Zadejte **11.1.0.0/24** |
+
+7. Vyberte **Uložit**.
+
+8. Vyberte kartu **Revize + vytvořit** nebo vyberte tlačítko **Revize + vytvořit** .
+
+9. Vyberte **Vytvořit**.
+
+### <a name="create-private-endpoint"></a>Vytvořit privátní koncový bod
+
+1. V levé horní části obrazovky na portálu vyberte vytvořit privátní síťové připojení **k prostředkům**  >    >  nebo zadejte do vyhledávacího pole **privátní odkaz**.
+
+2. Vyberte **Vytvořit**.
+
+3. V **centru privátních odkazů** vyberte v nabídce vlevo možnost **privátní koncové body** .
+
+4. V **privátních koncových bodech** vyberte **+ Přidat**.
+
+5. Na kartě **základy** pro **Vytvoření privátního koncového bodu** zadejte nebo vyberte tyto informace:
+
+    | Nastavení | Hodnota |
+    | ------- | ----- |
+    | **Podrobnosti o projektu** | |
+    | Předplatné | Vyberte své předplatné. |
+    | Skupina prostředků | Vyberte **CreatePrivLinkService-RG**. Tuto skupinu prostředků jste vytvořili v předchozí části.|
+    | **Podrobnosti o instancích** |  |
+    | Name  | Zadejte **myPrivateEndpoint**. |
+    | Region (Oblast) | Vyberte **USA – východ 2**. |
+
+6. Vyberte kartu **prostředek** nebo tlačítko **Další: prostředek** ve spodní části stránky.
+    
+7. V **prostředku** zadejte nebo vyberte tyto informace:
+
+    | Nastavení | Hodnota |
+    | ------- | ----- |
+    | Způsob připojení | **V adresáři vyberte připojit k prostředku Azure**. |
+    | Předplatné | Vyberte své předplatné. |
+    | Typ prostředku | Vyberte **Microsoft. Network/privateLinkServices**. |
+    | Prostředek | Vyberte **myPrivateLinkService**. |
+
+8. V dolní části obrazovky vyberte kartu **Konfigurace** nebo tlačítko **Další: Konfigurace** .
+
+9. V **konfiguraci** zadejte nebo vyberte tyto informace:
+
+    | Nastavení | Hodnota |
+    | ------- | ----- |
+    | **Sítě** |  |
+    | Virtual Network | Vyberte **myVNetPE**. |
+    | Podsíť | Vyberte **mySubnetPE**. |
+
+10. Vyberte kartu **Revize + vytvořit** nebo klikněte na tlačítko **Revize + vytvořit** v dolní části obrazovky.
+
+11. Vyberte **Vytvořit**.
+
+### <a name="ip-address-of-private-endpoint"></a>IP adresa privátního koncového bodu
+
+V této části najdete IP adresu privátního koncového bodu, který odpovídá nástroji pro vyrovnávání zatížení a ke službě privátního propojení.
+
+1. V levém sloupci Azure Portal vyberte **skupiny prostředků**.
+
+2. Vyberte skupinu prostředků **CreatePrivLinkService-RG** .
+
+3. Ve skupině prostředků **CreatePrivLinkService-RG** vyberte **myPrivateEndpoint**.
+
+4. Na stránce **Přehled** v **myPrivateEndpoint** vyberte název síťového rozhraní přidruženého k privátnímu koncovému bodu.  Název síťového rozhraní začíná řetězcem **myPrivateEndpoint. nic**.
+
+5. Na stránce **Přehled** karty privátního koncového bodu se IP adresa koncového bodu zobrazuje v **privátní IP adrese**.
+    
+
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Až budete s použitím služby privátního propojení hotovi, odstraňte skupinu prostředků, abyste mohli vyčistit prostředky používané v tomto rychlém startu.
@@ -231,7 +337,8 @@ Až budete s použitím služby privátního propojení hotovi, odstraňte skupi
 V tomto rychlém startu:
 
 * Vytvořila se virtuální síť a interní Azure Load Balancer.
-* Vytvořili jste službu privátního propojení.
+* Byla vytvořena služba privátního propojení.
+* Byla vytvořena virtuální síť a privátní koncový bod pro službu privátního propojení.
 
 Pokud chcete získat další informace o privátním koncovém bodu Azure, přejděte na:
 > [!div class="nextstepaction"]

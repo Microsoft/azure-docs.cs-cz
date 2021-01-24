@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alkohli
-ms.openlocfilehash: 6584b2ecc54efd257bb30c479fd0f22150e8d9e1
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 2b7ddf6423db4c471ee2065635f4e3e89f7eb7b2
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608584"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745729"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>Konfigurace funkce MPIO na hostiteli StorSimple se systémem CentOS
 Tento článek popisuje kroky potřebné ke konfiguraci funkce MPIO (CentOS) na hostitelském serveru s 6,6 v/v. Hostitelský server je připojený k vašemu zařízení Microsoft Azure StorSimple pro zajištění vysoké dostupnosti prostřednictvím iniciátorů iSCSI. Podrobně popisuje automatické zjišťování zařízení s více cestami a konkrétní nastavení jenom pro StorSimple svazky.
@@ -21,10 +21,6 @@ Tento postup platí pro všechny modely zařízení řady StorSimple 8000.
 
 > [!NOTE]
 > Tuto proceduru nelze použít pro StorSimple Cloud Appliance. Další informace najdete v tématu Postup konfigurace hostitelských serverů pro vaše cloudové zařízení.
-
-> [!NOTE]
-> Tento článek obsahuje odkazy na termín nesouhlasný – *termín, který* společnost Microsoft už nepoužívá. Po odebrání termínu ze softwaru ho odebereme z tohoto článku.
-
 
 ## <a name="about-multipathing"></a>O více cestách
 Funkce více cest umožňuje konfigurovat více cest I/O mezi hostitelským serverem a úložným zařízením. Tyto vstupně-výstupní cesty jsou fyzická připojení SAN, která můžou zahrnovat samostatné kabely, přepínače, síťová rozhraní a řadiče. Více cest agreguje cesty I/O pro konfiguraci nového zařízení, které je přidruženo ke všem agregovaným cestám.
@@ -54,7 +50,7 @@ Multipath. conf má pět částí:
 
 - **Výchozí hodnoty na úrovni systému** *(výchozí nastavení)*: můžete přepsat výchozí hodnoty na úrovni systému.
 - **Zakázaná zařízení** *(zakázaná)*: můžete určit seznam zařízení, která by se neměla kontrolovat pomocí mapovače zařízení.
-- **Výjimky zakázané** *(blacklist_exceptions)*: můžete identifikovat konkrétní zařízení, která se budou považovat za zařízení s více zařízeními, i když jsou uvedená v seznamu zakázané.
+- **Výjimky zakázané** *(blacklist_exceptions)*: můžete identifikovat konkrétní zařízení, která se budou považovat za zařízení s více cestami, i když jsou uvedená v seznamu blokovaných.
 - **Konkrétní nastavení řadiče úložiště** *(zařízení)*: můžete zadat nastavení konfigurace, která se použijí na zařízeních, která mají informace o dodavatelích a produktech.
 - **Nastavení specifická pro zařízení** *(více cest)*: v této části můžete vyladit nastavení konfigurace pro jednotlivé logické jednotky (LUN).
 
@@ -63,7 +59,7 @@ Zařízení StorSimple připojené k hostiteli se systémem Linux je možné nak
 
 Následující postup popisuje, jak nakonfigurovat více cest, pokud je zařízení StorSimple se dvěma síťovými rozhraními připojeno k hostiteli se dvěma síťovými rozhraními.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Tato část podrobně popisuje požadavky na konfiguraci pro server CentOS a zařízení StorSimple.
 
 ### <a name="on-centos-host"></a>Na hostiteli CentOS
@@ -215,12 +211,12 @@ Zařízení s podporou více funkcí se dají automaticky zjistit a nakonfigurov
     ```
 
 ### <a name="step-2-configure-multipathing-for-storsimple-volumes"></a>Krok 2: Konfigurace více cest pro StorSimple svazky
-Ve výchozím nastavení jsou všechna zařízení černá uvedená v souboru Multipath. conf a budou se obejít. Budete muset vytvořit výjimky zakázané pro povolení více cest pro svazky ze zařízení StorSimple.
+Ve výchozím nastavení se všechna zařízení blocklisted v souboru Multipath. conf a přeskočí se. Pro povolení více cest pro svazky ze zařízení StorSimple budete muset vytvořit výjimky seznamu blokovaných.
 
 1. Úprava souboru `/etc/mulitpath.conf`. Zadejte:
    
     `vi /etc/multipath.conf`
-1. V souboru Multipath. conf vyhledejte část blacklist_exceptions. Vaše zařízení StorSimple musí být v této části uvedené jako výjimka zakázané. V tomto souboru můžete odkomentovat relevantní řádky a upravit je tak, jak vidíte níže (použijte jenom konkrétní model zařízení, které používáte):
+1. V souboru Multipath. conf vyhledejte část blacklist_exceptions. Vaše zařízení StorSimple musí být v této části uvedené jako výjimka seznamu blokovaných. V tomto souboru můžete odkomentovat relevantní řádky a upravit je tak, jak vidíte níže (použijte jenom konkrétní model zařízení, které používáte):
    
     ```config
     blacklist_exceptions {

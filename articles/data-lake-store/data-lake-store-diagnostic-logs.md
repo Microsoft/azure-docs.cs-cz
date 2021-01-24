@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: aac0139e09866ce44d25989119b2eafb31e76961
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 07bf22cfc683d8c6f2c765364334ed1594e2fdaa
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610450"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745880"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>Přístup k diagnostickým protokolům pro Azure Data Lake Storage Gen1
 Naučte se, jak povolit protokolování diagnostiky pro váš účet Azure Data Lake Storage Gen1 a jak zobrazit protokoly shromážděné pro váš účet.
@@ -106,7 +106,7 @@ Zde je ukázkový záznam v protokolu žádostí ve formátu JSON. Každý objek
         "callerIpAddress": "::ffff:1.1.1.1",
         "correlationId": "4a11c709-05f5-417c-a98d-6e81b3e29c58",
         "identity": "1808bd5f-62af-45f4-89d8-03c5e81bac30",
-        "properties": {"HttpMethod":"GET","Path":"/webhdfs/v1/Samples/Outputs/Drivers.csv","RequestContentLength":0,"ClientRequestId":"3b7adbd9-3519-4f28-a61c-bd89506163b8","StartTime":"2016-07-07T21:02:52.472Z","EndTime":"2016-07-07T21:02:53.456Z"}
+        "properties": {"HttpMethod":"GET","Path":"/webhdfs/v1/Samples/Outputs/Drivers.csv","RequestContentLength":0,"StoreIngressSize":0 ,"StoreEgressSize":4096,"ClientRequestId":"3b7adbd9-3519-4f28-a61c-bd89506163b8","StartTime":"2016-07-07T21:02:52.472Z","EndTime":"2016-07-07T21:02:53.456Z","QueryParameters":"api-version=<version>&op=<operationName>"}
     }
     ,
     . . . .
@@ -115,7 +115,7 @@ Zde je ukázkový záznam v protokolu žádostí ve formátu JSON. Každý objek
 ```
 
 #### <a name="request-log-schema"></a>Schéma protokolu žádostí
-| Název | Typ | Description |
+| Název | Typ | Popis |
 | --- | --- | --- |
 | time |Řetězec |Časové razítko (v UTC) protokolu |
 | resourceId |Řetězec |ID prostředku, na kterém byla operace provedena |
@@ -128,7 +128,7 @@ Zde je ukázkový záznam v protokolu žádostí ve formátu JSON. Každý objek
 | properties |JSON |Podrobnosti najdete níže. |
 
 #### <a name="request-log-properties-schema"></a>Vlastnosti protokolu žádosti – schéma
-| Název | Typ | Description |
+| Název | Typ | Popis |
 | --- | --- | --- |
 | HttpMethod |Řetězec |Metoda HTTP použitá pro operaci Například GET. |
 | Cesta |Řetězec |Cesta, na které byla operace provedena |
@@ -138,6 +138,7 @@ Zde je ukázkový záznam v protokolu žádostí ve formátu JSON. Každý objek
 | EndTime |Řetězec |Čas, kdy server odeslal odpověď |
 | StoreIngressSize |Dlouhou |Velikost v bajtech na Data Lake Store |
 | StoreEgressSize |Dlouhou |Velikost v bajtech, která se nezměnila z Data Lake Store |
+| QueryParameters |Řetězec |Popis: Jedná se o parametry dotazu HTTP. Příklad 1: API-Version = 2014-01-01&op = getfilestatus příklad 2: OP = APPEND&Append = true&syncFlag = DATA&. SessionID = bee3355a-4925-4435-bb4d-ceea52811aeb&leaseID = bee3355a-4925-4435-bb4d-ceea52811aeb&offset = 28313319&API-Version = 2017-08-01 |
 
 ### <a name="audit-logs"></a>Protokoly auditu
 Zde je ukázkový záznam v protokolu auditu ve formátu JSON. Každý objekt BLOB má jeden kořenový objekt nazvaný **záznam** , který obsahuje pole objektů log.
@@ -166,7 +167,7 @@ Zde je ukázkový záznam v protokolu auditu ve formátu JSON. Každý objekt BL
 ```
 
 #### <a name="audit-log-schema"></a>Schéma protokolu auditu
-| Název | Typ | Description |
+| Název | Typ | Popis |
 | --- | --- | --- |
 | time |Řetězec |Časové razítko (v UTC) protokolu |
 | resourceId |Řetězec |ID prostředku, na kterém byla operace provedena |
@@ -179,7 +180,7 @@ Zde je ukázkový záznam v protokolu auditu ve formátu JSON. Každý objekt BL
 | properties |JSON |Podrobnosti najdete níže. |
 
 #### <a name="audit-log-properties-schema"></a>Schéma vlastností protokolu auditu
-| Název | Typ | Description |
+| Název | Typ | Popis |
 | --- | --- | --- |
 | StreamName |Řetězec |Cesta, na které byla operace provedena |
 

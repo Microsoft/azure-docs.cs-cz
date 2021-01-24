@@ -1,23 +1,23 @@
 ---
-title: 'Kurz: vytvoření a nasazení vlastní dovednosti pomocí Azure Machine Learning'
+title: 'Příklad: vytvoření a nasazení vlastní dovednosti pomocí Azure Machine Learning'
 titleSuffix: Azure Cognitive Search
-description: V tomto kurzu se dozvíte, jak pomocí Azure Machine Learning vytvořit a nasadit vlastní dovednost pro kanál rozšíření AI pro Azure Kognitivní hledání.
+description: Tento příklad ukazuje, jak použít Azure Machine Learning k sestavení a nasazení vlastní dovednosti pro kanál rozšíření AI pro Azure Kognitivní hledání.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 09/25/2020
-ms.openlocfilehash: fa961a5a6d3a3b827a082fbac2acc3431ac40949
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 98d8395236bf955eed88f36c03c96981fa0e4b6b
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057599"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745630"
 ---
-# <a name="tutorial-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>Kurz: sestavení a nasazení vlastní dovednosti pomocí Azure Machine Learning 
+# <a name="example-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>Příklad: sestavení a nasazení vlastní dovednosti pomocí Azure Machine Learning 
 
-V tomto kurzu použijete [datovou sadu přezkoumání hotelu](https://www.kaggle.com/datafiniti/hotel-reviews) (distribuovanou v rámci licence Creative-4,0 License [CC-NC-SA](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt)) a vytvoříte [vlastní dovednost](./cognitive-search-aml-skill.md) pomocí Azure Machine Learning k extrakci mínění založených na aspektech z revizí. To umožňuje, aby přiřazení pozitivních a záporných mínění v rámci stejné revize bylo správně přiřazené k identifikovaným entitám, jako jsou například zaměstnanci, místnosti, předsálí nebo fondy.
+V tomto příkladu použijete [datovou sadu přezkoumání hotelu](https://www.kaggle.com/datafiniti/hotel-reviews) (distribuovanou v rámci licence Creative-4,0 License [CC-NC-SA](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt)) a vytvoříte [vlastní dovednost](./cognitive-search-aml-skill.md) pomocí Azure Machine Learning k extrakci mínění založených na aspektech z revizí. To umožňuje, aby přiřazení pozitivních a záporných mínění v rámci stejné revize bylo správně přiřazené k identifikovaným entitám, jako jsou například zaměstnanci, místnosti, předsálí nebo fondy.
 
 Pro výuku modelu mínění založeného na aspektech v Azure Machine Learning budete používat [úložiště recepty NLP](https://github.com/microsoft/nlp-recipes/tree/master/examples/sentiment_analysis/absa). Model se pak nasadí jako koncový bod v clusteru Azure Kubernetes. Po nasazení se koncový bod přidá do kanálu pro rozšíření jako AML dovednost pro použití službou Kognitivní hledání.
 
@@ -38,7 +38,7 @@ Jsou k dispozici dvě datové sady. Pokud chcete model naučit sami sebe, je vy�
 * Předplatné Azure – Získejte [bezplatné předplatné](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Služba Kognitivní hledání](./search-get-started-arm.md)
 * [Prostředek Cognitive Services](../cognitive-services/cognitive-services-apis-create-account.md?tabs=multiservice%2cwindows)
-* [Účet Azure Storage](../storage/common/storage-account-create.md?tabs=azure-portal&toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+* [Účet služby Azure Storage](../storage/common/storage-account-create.md?tabs=azure-portal&toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 * [Pracovní prostor služby Azure Machine Learning](../machine-learning/how-to-manage-workspace.md)
 
 ## <a name="setup"></a>Nastavení
@@ -98,7 +98,7 @@ Po uložení dovednosti přejít na indexer a vybrat odkaz na definici indexeru 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud pracujete s vlastním předplatným, je vhodné vždy na konci projektu zkontrolovat, jestli budete vytvořené prostředky ještě potřebovat. Prostředky, které necháte běžet, vás stojí peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků, a odstranit tak celou sadu prostředků najednou.
+Pokud pracujete s vlastním předplatným, je vhodné vždy na konci projektu zkontrolovat, jestli budete vytvořené prostředky ještě potřebovat. Prostředky, které necháte běžet, vás stojí peníze. Můžete odstraňovat prostředky jednotlivě nebo odstraněním skupiny prostředků odstranit celou sadu prostředků najednou.
 
 Prostředky můžete najít a spravovat na portálu pomocí odkazu **všechny prostředky** nebo **skupiny prostředků** v levém navigačním podokně.
 

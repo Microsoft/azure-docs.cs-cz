@@ -8,19 +8,16 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 890e2b972818cf9805623d94709ce5631b50aaf5
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: e2c88091072921f1ca674868e401c34d354418de
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608601"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746505"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Skupiny pravidel a pravidla pro počítačový rezervační Firewall webových aplikací
 
 Brána Firewall webových aplikací Application Gateway (WAF) chrání webové aplikace před běžnými chybami zabezpečení a zneužitím. To se provádí prostřednictvím pravidel, která jsou definovaná na základě sad pravidel OWASP Core 3,1, 3,0 nebo 2.2.9. Tato pravidla je možné zakázat na základě pravidla podle pravidel. Tento článek obsahuje nabízená současná pravidla a sady pravidel.
-
-> [!NOTE]
-> Tento článek obsahuje odkazy na termín nesouhlasný – *termín, který* společnost Microsoft už nepoužívá. Po odebrání termínu ze softwaru ho odebereme z tohoto článku.
 
 ## <a name="core-rule-sets"></a>Základní sady pravidel
 
@@ -262,7 +259,7 @@ Následující skupiny pravidel a pravidla jsou k dispozici při použití firew
 |941150|Filtr XSS – kategorie 5 = nepovolené atributy HTML|
 |941160|NoScript XSS InjectionChecker: vkládání HTML|
 |941170|NoScript XSS InjectionChecker: injektáže atributu|
-|941180|Node-Validator zakázaná klíčová slova|
+|941180|Node-Validator klíčová slova seznamu blokovaných|
 |941190|XSS pomocí šablon stylů|
 |941200|XSS pomocí snímků VML|
 |941210|XSS pomocí nepoužívaného JavaScriptu|
@@ -490,7 +487,7 @@ Následující skupiny pravidel a pravidla jsou k dispozici při použití firew
 |941130|Filtr XSS – kategorie 3 = vektor atributu|
 |941140|Filtr XSS – kategorie 4 = vektor URI JavaScriptu|
 |941150|Filtr XSS – kategorie 5 = nepovolené atributy HTML|
-|941180|Node-Validator zakázaná klíčová slova|
+|941180|Node-Validator klíčová slova seznamu blokovaných|
 |941190|XSS pomocí šablon stylů|
 |941200|XSS pomocí snímků VML|
 |941210|XSS pomocí nepoužívaného JavaScriptu|

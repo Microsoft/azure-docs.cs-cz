@@ -4,12 +4,12 @@ description: Poskytuje souhrn nastavení podpory a omezení zálohování disku 
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 447283ba1d63267722e4167e0727a827e63d2e0d
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 2030ee3f098317da9cda8b15fec1562f31cae7ee
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98732975"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746032"
 ---
 # <a name="azure-disk-backup-support-matrix-in-preview"></a>Matice podpory Azure disk Backup (ve verzi Preview)
 
@@ -22,7 +22,7 @@ K ochraně disků Azure můžete použít [Azure Backup](./backup-overview.md) .
 
 ## <a name="supported-regions"></a>Podporované oblasti
 
-Azure disk Backup je k dispozici ve verzi Preview v následujících oblastech: Středozápadní USA. 
+Azure disk Backup je k dispozici ve verzi Preview v následujících oblastech: Středozápadní USA, Korea – střed, Korea – jih. 
 
 Další oblasti budou oznámeny, jakmile budou k dispozici.
 

@@ -12,12 +12,12 @@ ms.date: 10/16/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1628d78c9d1e4db1f59982d696dcc886646fe604
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 33504487b6175023e18893812c533950305cb1d3
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132053"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745998"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>Shromažďovat protokoly Azure Active Directory B2C pomocí Application Insights
 
@@ -26,17 +26,17 @@ Tento článek popisuje kroky pro shromažďování protokolů z Active Director
 Podrobné protokoly aktivit popsané tady by měly být povolené **jenom** během vývoje vlastních zásad.
 
 > [!WARNING]
-> `DeploymentMode` `Developer` V produkčních prostředích nenastavujte na. Protokoly shromažďují všechny deklarace identity odeslané do a od zprostředkovatelů identity. Jako vývojář se předpokládá zodpovědnost za jakékoli osobní údaje shromážděné v protokolech Application Insights. Tyto podrobné protokoly se shromažďují jenom v případě, že zásady jsou umístěné v **režimu pro vývojáře**.
+> `DeploymentMode` `Development` V produkčních prostředích nenastavujte na. Protokoly shromažďují všechny deklarace identity odeslané do a od zprostředkovatelů identity. Jako vývojář se předpokládá zodpovědnost za jakékoli osobní údaje shromážděné v protokolech Application Insights. Tyto podrobné protokoly se shromažďují jenom v případě, že zásady jsou umístěné v **režimu pro vývojáře**.
 
 ## <a name="set-up-application-insights"></a>Nastavit Application Insights
 
 Pokud ho ještě nemáte, vytvořte v předplatném instanci Application Insights.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vaše předplatné Azure (ne váš Azure AD B2C adresář).
 1. V navigační nabídce vlevo vyberte **vytvořit prostředek** .
-1. Vyhledejte a vyberte **Application Insights**a pak vyberte **vytvořit**.
-1. Vyplňte formulář, vyberte **zkontrolovat + vytvořit**a pak vyberte **vytvořit**.
+1. Vyhledejte a vyberte **Application Insights** a pak vyberte **vytvořit**.
+1. Vyplňte formulář, vyberte **zkontrolovat + vytvořit** a pak vyberte **vytvořit**.
 1. Po dokončení nasazení vyberte **Přejít k prostředku**.
 1. V nabídce **Konfigurovat** v Application Insights vyberte **vlastnosti**.
 1. Poznamenejte si **klíč instrumentace** pro použití v pozdějším kroku.
@@ -59,7 +59,7 @@ Pokud ho ještě nemáte, vytvořte v předplatném instanci Application Insight
     ```
 
     * `DeveloperMode="true"` dává ApplicationInsights pokyn k urychlení telemetrie prostřednictvím kanálu zpracování. Vhodné pro vývoj, ale omezení na vysoké objemy. V produkčním prostředí nastavte `DeveloperMode` na `false` .
-    * `ClientEnabled="true"` pošle skript ApplicationInsights na straně klienta pro sledování zobrazení stránky a chyby na straně klienta. Můžete je zobrazit v tabulce **browserTimings** na portálu Application Insights. Nastavením `ClientEnabled= "true"` přidáte Application Insights do skriptu stránky a získáte časování načtení stránky a volání AJAX, počty, podrobnosti výjimek prohlížeče a selhání AJAX a počty uživatelů a relací. Toto pole je **volitelné**a je nastavené na `false` výchozí hodnotu.
+    * `ClientEnabled="true"` pošle skript ApplicationInsights na straně klienta pro sledování zobrazení stránky a chyby na straně klienta. Můžete je zobrazit v tabulce **browserTimings** na portálu Application Insights. Nastavením `ClientEnabled= "true"` přidáte Application Insights do skriptu stránky a získáte časování načtení stránky a volání AJAX, počty, podrobnosti výjimek prohlížeče a selhání AJAX a počty uživatelů a relací. Toto pole je **volitelné** a je nastavené na `false` výchozí hodnotu.
     * `ServerEnabled="true"` odešle existující UserJourneyRecorder JSON jako vlastní událost pro Application Insights.
 
     Například:

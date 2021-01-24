@@ -14,15 +14,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 01/18/2021
+ms.date: 01/23/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0b323268c625ed25236cf4a9f9faa17606bd967c
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 0a0f17df13b5b101aebf585b7f1f3fb2a5b48006
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570061"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746049"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Použití Azure k hostování a spouštění scénářů pro úlohy SAP
 
@@ -84,6 +84,7 @@ V této části najdete dokumenty ke službě Microsoft Power BI Integration do 
 
 ## <a name="change-log"></a>Protokol změn
 
+- 01/23/2021: zaveďte funkce dělení datových svazků HANA jako funkce k proložení vstupně-výstupních operací s datovými soubory HANA v různých discích Azure nebo sdílených složkách NFS bez použití Správce diskového svazku v článcích [SAP HANA konfigurace úložiště virtuálních počítačů Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) a [svazcích NFS v 4.1 na Azure NetApp Files pro SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp)
 - 01/18/2021: Přidání podpory souborů NFS Azure NET Apps pro Oracle v [azure Virtual Machines nasazení Oracle DBMS pro úlohy SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_oracle) a nastavení desetinných míst v tabulce v dokumentu [systému souborů NFS v 4.1 na Azure NetApp Files pro SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp)
 - 01/11/2021: drobné změny v [ha pro SAP NW na virtuálních počítačích Azure v RHEL pro aplikace SAP](./high-availability-guide-rhel.md), [ha pro SAP NW na virtuálních počítačích Azure v RHEL s ANF](./high-availability-guide-rhel-netapp-files.md) a [ha pro SAP NW na virtuálních počítačích Azure](./high-availability-guide-rhel-multi-sid.md) v, které umožňují přizpůsobit příkazy pro RHEL8 i RHEL7 a ENSA1 a ENSA2
 - 01/05/2021: změny v [SAP HANA škálování na více instancí s pohotovostním uzlem na virtuálních počítačích Azure s ANF v SLES](./sap-hana-scale-out-standby-netapp-files-suse.md) a SAP HANA škálování na více instancí [s pohotovostním uzlem na virtuálních počítačích Azure s ANF v RHEL](./sap-hana-scale-out-standby-netapp-files-rhel.md), revize Doporučené konfigurace, která povolí agentovi SAP hosta spravovat rozsah místních portů  
