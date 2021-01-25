@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 11/10/2020
 ms.author: pafarley
-ms.openlocfilehash: 7141ebe4e7894c975ba2ee6fb39d5bfd4483ed41
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 88eb9a693efa872af681ab55b3f4381d27b260d1
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999322"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98697893"
 ---
 Začněte s rozpoznáváním obličeje pomocí klientské knihovny pro tvář pro Python. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy. Služba Faceer poskytuje přístup k pokročilým algoritmům pro zjišťování a rozpoznávání lidských plošek na obrázcích.
 
@@ -33,7 +33,7 @@ Pomocí klientské knihovny obličeje pro Python:
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * [Python 3.x](https://www.python.org/)
 * Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" vytvořte prostředek "  target="_blank"> pro vytváření obličeje a vytvořte na Azure Portal prostředek, <span class="docon docon-navigate-external x-hidden-focus"></span> </a> abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
-    * K připojení aplikace k Face API budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Svůj klíč a koncový bod vložíte do níže uvedeného kódu později v rychlém startu.
+    * K připojení aplikace k rozhraní API pro rozpoznávání tváře budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Svůj klíč a koncový bod vložíte do níže uvedeného kódu později v rychlém startu.
     * K vyzkoušení služby můžete použít bezplatnou cenovou úroveň ( `F0` ) a upgradovat ji později na placenou úroveň pro produkční prostředí.
 
 ## <a name="setting-up"></a>Nastavení
@@ -60,7 +60,7 @@ Pak vytvořte proměnné pro koncový bod a klíč Azure prostředku.
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_subvars)]
 
 > [!IMPORTANT]
-> Přejděte na Azure Portal. Pokud prostředek [název produktu], který jste vytvořili v části **předpoklady** , se úspěšně nasadil, klikněte v části **Další kroky** na tlačítko **Přejít k prostředku** . Klíč a koncový bod můžete najít na stránce **klíč a koncový bod** prostředku v části **Správa prostředků**. 
+> Přejděte na Azure Portal. Pokud se prostředek obličeje, který jste vytvořili v části **předpoklady** , nasadil úspěšně, klikněte v části **Další kroky** na tlačítko **Přejít k prostředku** . Klíč a koncový bod můžete najít na stránce **klíč a koncový bod** prostředku v části **Správa prostředků**. 
 >
 > Nezapomeňte odebrat klíč z kódu, až budete hotovi, a nikdy ho zveřejnit. V případě produkčního prostředí zvažte použití zabezpečeného způsobu ukládání a přístupu k vašim přihlašovacím údajům. Například [Trezor klíčů Azure](../../../../key-vault/general/overview.md).
 
@@ -68,7 +68,7 @@ Pak vytvořte proměnné pro koncový bod a klíč Azure prostředku.
 
 Následující třídy a rozhraní zpracovávají některé hlavní funkce klientské knihovny Pythonu pro tváře.
 
-|Název|Description|
+|Název|Popis|
 |---|---|
 |[FaceClient](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.faceclient?view=azure-python) | Tato třída reprezentuje vaši autorizaci používat službu obličeje a potřebujete ji pro všechny funkce obličeje. Vytvoří se jeho instance s informacemi o předplatném a Vy ho použijete k vytvoření instancí jiných tříd. |
 |[FaceOperations](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations?view=azure-python)|Tato třída zpracovává základní úlohy zjišťování a rozpoznávání, které můžete provádět s lidskými obličejemi. |
@@ -166,7 +166,7 @@ Jakmile budete mít k plošky, je nutné, abyste vytvořili svoji **osobu** , ab
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_persongroup_train)]
 
 > [!TIP]
-> Face API běží na sadě předem sestavených modelů, které jsou statické podle povahy (výkon modelu nebude znovu fungovat ani se nevylepšit při spuštění služby). Výsledky, které model vytvoří, se můžou změnit, pokud Microsoft aktualizuje back-end modelu bez migrace na zcela novou verzi modelu. Aby bylo možné využít novější verzi modelu, můžete přeškolit svoji **osobu** a zadat novější model jako parametr se stejnými registračními kopiemi.
+> Rozhraní API pro rozpoznávání tváře běží na sadě předem sestavených modelů, které jsou statické podle povahy (výkon modelu nebude znovu fungovat ani se nevylepšit při spuštění služby). Výsledky, které model vytvoří, se můžou změnit, pokud Microsoft aktualizuje back-end modelu bez migrace na zcela novou verzi modelu. Aby bylo možné využít novější verzi modelu, můžete přeškolit svoji **osobu** a zadat novější model jako parametr se stejnými registračními kopiemi.
 
 ## <a name="identify-a-face"></a>Identifikace obličeje
 
@@ -237,7 +237,7 @@ Pokud jste v tomto rychlém startu vytvořili pole **Person** a chcete ho odstra
 V tomto rychlém startu jste zjistili, jak používat aplikaci Face Client Library pro Python k provádění základních úloh rozpoznávání obličeje. Dále si Prozkoumejte referenční dokumentaci, kde najdete další informace o knihovně.
 
 > [!div class="nextstepaction"]
-> [Odkaz na Face API (Python)](/python/api/azure-cognitiveservices-vision-face/?view=azure-python)
+> [Odkaz na rozhraní API pro rozpoznávání tváře (Python)](/python/api/azure-cognitiveservices-vision-face/?view=azure-python)
 
 * [Co je služba Rozpoznávání tváře?](../../overview.md)
 * Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/Face/FaceQuickstart.py).

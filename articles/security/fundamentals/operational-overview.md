@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: 9dcb1113bb37cb0f5f65c54ae9d6ca76a88330c1
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: c3674b6877438a0dd4fe53569cf6852e872334a7
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698661"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693608"
 ---
 # <a name="azure-operational-security-overview"></a>Přehled služby Azure Operational Security
 
@@ -171,21 +171,21 @@ Modrotisky poskytují deklarativní způsob pro orchestraci nasazení různých 
 
 ## <a name="devops"></a>DevOps
 
-Před vývojem aplikací [(DevOps)](https://www.visualstudio.com/learn/what-is-devops/) byly týmy zpoplatněné shromažďování podnikových požadavků pro softwarový program a psaní kódu. Pak samostatný tým služby QA testoval program v izolovaném vývojovém prostředí. V případě splnění požadavků tým QA uvolnil kód pro operace, které chcete nasadit. Týmy nasazení byly dále rozděleny do skupin, jako jsou sítě a databáze. Pokaždé, když se softwarový program vyvolal přes zeď, do nezávislého týmu, přidal se k němu kritická místa.
+Před vývojem aplikací [(DevOps)](https://azure.microsoft.com/overview/what-is-devops/) byly týmy zpoplatněné shromažďování podnikových požadavků pro softwarový program a psaní kódu. Pak samostatný tým služby QA testoval program v izolovaném vývojovém prostředí. V případě splnění požadavků tým QA uvolnil kód pro operace, které chcete nasadit. Týmy nasazení byly dále rozděleny do skupin, jako jsou sítě a databáze. Pokaždé, když se softwarový program vyvolal přes zeď, do nezávislého týmu, přidal se k němu kritická místa.
 
 DevOps umožňuje týmům dodávat bezpečnější a vyšší kvalitu řešení rychleji a efektivněji. Zákazníci očekávají dynamický a spolehlivý zážitek při využívání softwaru a služeb. Týmy musí rychle iterovat na aktualizace softwaru a měřit dopad aktualizací. Musí rychle reagovat pomocí nových iterací vývoje, aby vyřešily problémy nebo poskytovaly více hodnot.  
 
 Cloudové platformy, jako je Microsoft Azure, odstranily tradiční kritické body a pomohl pomohly infrastrukturu. Vládne softwaru v každé firmě jako klíčové rozlišení a faktor v obchodních výstupech. Pohyb DevOps není možné nebo by se neměl používat žádná organizace, vývojář nebo pracovník IT.
 
-Vyspělí DevOps lékaři přijímají několik z následujících postupů. Tyto postupy [zahrnují osoby](https://www.visualstudio.com/learn/what-is-devops-culture/) , které tvoří strategie založené na obchodních scénářích. Pomocí nástrojů můžete automatizovat různé postupy.
+Vyspělí DevOps lékaři přijímají několik z následujících postupů. Tyto postupy [zahrnují osoby](/azure/devops/learn/what-is-devops-culture) , které tvoří strategie založené na obchodních scénářích. Pomocí nástrojů můžete automatizovat různé postupy.
 
 - Techniky [agilního plánování a řízení projektů](https://www.visualstudio.com/learn/what-is-agile/) slouží k plánování a izolaci práce do sprintů, správě kapacity týmu a pomáhat týmům rychle se přizpůsobit měnícím se potřebám firmy.
-- Správa [verzí, obvykle s Git](https://www.visualstudio.com/learn/what-is-git/), umožňuje týmům umístěným kdekoli na světě sdílet zdroje a integrovat s nástroji pro vývoj softwaru za účelem automatizace kanálu vydávání verzí.
-- [Průběžná integrace](https://www.visualstudio.com/learn/what-is-continuous-integration/) Drive průběžné slučování a testování kódu, který vede k brzkému nalezení vad.  Mezi další výhody patří méně času v boji proti problémům sloučení a rychlé zpětné vazby pro vývojové týmy.
-- [Průběžné doručování](https://www.visualstudio.com/learn/what-is-continuous-delivery/) softwarových řešení do produkčních a testovacích prostředí pomáhá organizacím rychle opravovat chyby a reagovat na neustále se měnící obchodní požadavky.
-- [Monitorování](https://www.visualstudio.com/learn/what-is-monitoring/) spuštěných aplikací – včetně produkčních prostředí pro stav aplikací a zákaznického využití – pomáhá organizacím vytvořit hypotézu a rychle ověřit nebo prokázat strategie.  Bohatá data jsou zachycena a ukládána v různých formátech protokolování.
-- [Infrastruktura jako kód (IAC)](https://www.visualstudio.com/learn/what-is-infrastructure-as-code/) je postup, který umožňuje automatizaci a ověřování vytváření a rozboru sítí a virtuálních počítačů při poskytování zabezpečených a stabilních hostujících platforem aplikací.
-- Architektura [mikroslužeb](https://www.visualstudio.com/learn/what-are-microservices/) se používá k izolaci případů podnikového použití do malých opakovaně použitelných služeb.  Tato architektura umožňuje škálovatelnost a efektivitu.
+- Správa [verzí, obvykle s Git](/azure/devops/learn/git/what-is-git), umožňuje týmům umístěným kdekoli na světě sdílet zdroje a integrovat s nástroji pro vývoj softwaru za účelem automatizace kanálu vydávání verzí.
+- [Průběžná integrace](/azure/devops/learn/what-is-continuous-integration) Drive průběžné slučování a testování kódu, který vede k brzkému nalezení vad.  Mezi další výhody patří méně času v boji proti problémům sloučení a rychlé zpětné vazby pro vývojové týmy.
+- [Průběžné doručování](/azure/devops/learn/what-is-continuous-delivery) softwarových řešení do produkčních a testovacích prostředí pomáhá organizacím rychle opravovat chyby a reagovat na neustále se měnící obchodní požadavky.
+- [Monitorování](/azure/devops/learn/what-is-monitoring) spuštěných aplikací – včetně produkčních prostředí pro stav aplikací a zákaznického využití – pomáhá organizacím vytvořit hypotézu a rychle ověřit nebo prokázat strategie.  Bohatá data jsou zachycena a ukládána v různých formátech protokolování.
+- [Infrastruktura jako kód (IAC)](/azure/devops/learn/what-is-infrastructure-as-code) je postup, který umožňuje automatizaci a ověřování vytváření a rozboru sítí a virtuálních počítačů při poskytování zabezpečených a stabilních hostujících platforem aplikací.
+- Architektura [mikroslužeb](/azure/devops/learn/what-are-microservices) se používá k izolaci případů podnikového použití do malých opakovaně použitelných služeb.  Tato architektura umožňuje škálovatelnost a efektivitu.
 
 ## <a name="next-steps"></a>Další kroky
 

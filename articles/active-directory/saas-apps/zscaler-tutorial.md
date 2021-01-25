@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/18/2020
 ms.author: jeedes
-ms.openlocfilehash: 77b2d41e28f39debea2d28ad8287e9ce2679d8ad
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 84c74d5c1452cf5945aa4f66c3ed3c6af48681b3
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98538604"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98726108"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zscaler"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Zscaler
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Zscaler s Azure Active Directory (Azur
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Zscaler svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -87,7 +87,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě výše očekává aplikace Zscaler několik dalších atributů, které se vrátí zpátky v odpovědi SAML. V části **deklarace identity uživatelů** v dialogovém okně **atributy uživatele** proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulce:
 
-    | Název | Zdrojový atribut |
+    | Name | Zdrojový atribut |
     | ---------| ------------ |
     | memberOf | User. assignedroles |
 
@@ -104,7 +104,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     f. Klikněte na **Uložit**.
 
     > [!NOTE]
-    > Pokud chcete zjistit, jak nakonfigurovat roli v Azure AD, klikněte prosím [sem](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui) .
+    > Pokud chcete zjistit, jak nakonfigurovat roli v Azure AD, klikněte prosím [sem](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview) .
 
 1. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** Najděte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte si certifikát a uložte ho do svého počítače.
 
@@ -233,7 +233,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 * Přejít na adresu URL pro přihlášení k Zscaler přímo a zahájit tok přihlášení.
 
-* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici Zscaler v části Moje aplikace, přesměruje se na přihlašovací adresu Zscaler. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici Zscaler v části Moje aplikace, přesměruje se na přihlašovací adresu Zscaler. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Další kroky

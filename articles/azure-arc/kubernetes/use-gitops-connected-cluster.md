@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Použití GitOps ke konfiguraci clusteru Kubernetes s povoleným ARC Azure (Preview)
 keywords: GitOps, Kubernetes, K8s, Azure, ARC, Azure Kubernetes Service, AKS, Containers
-ms.openlocfilehash: 751b274a9cae68f6bc9b1adc45804f2dd2ef4c72
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: a068ed90ea53b3b25a1f41cebd9a5b8e607afa54
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684753"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737180"
 ---
 # <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Nasazení konfigurací pomocí GitOps v clusteru Kubernetes s podporou Azure Arc (Preview)
 
@@ -138,7 +138,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 > [!NOTE]
 > Privátní ověřování pomocí protokolu HTTPS Helm je podporováno pouze pomocí grafu Helm operator verze >= 1.2.0.  Ve výchozím nastavení se používá 1.2.0 verze.
 > Privátní ověřování pomocí protokolu HTTPS Helm se momentálně nepodporuje pro spravované clustery služeb Azure Kubernetes.
-> Pokud potřebujete tok pro přístup k úložišti Git prostřednictvím proxy serveru, budete muset agenty Azure ARC aktualizovat pomocí nastavení proxy serveru. [Další informace](https://docs.microsoft.com/azure/azure-arc/kubernetes/connect-cluster#connect-using-an-outbound-proxy-server)
+> Pokud potřebujete tok pro přístup k úložišti Git prostřednictvím proxy serveru, budete muset agenty Azure ARC aktualizovat pomocí nastavení proxy serveru. [Další informace](./connect-cluster.md#connect-using-an-outbound-proxy-server)
 
 #### <a name="additional-parameters"></a>Další parametry
 
