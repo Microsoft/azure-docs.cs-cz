@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 01/24/2021
 ms.author: allensu
-ms.openlocfilehash: e8d76e12dea27338e965d8e77871427e9dfabf23
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: d48903a05a4e9b530dcd3e83e0c14c37dcc74797
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746675"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757521"
 ---
 # <a name="create-a-private-link-service-using-azure-powershell"></a>Vytvoření služby privátního propojení pomocí Azure PowerShell
 
@@ -35,7 +35,7 @@ Vytvořte skupinu prostředků pomocí [New-AzResourceGroup](/powershell/module/
 New-AzResourceGroup -Name 'CreatePrivLinkService-rg' -Location 'eastus2'
 
 ```
----
+
 ## <a name="create-an-internal-load-balancer"></a>Vytvořte interní nástroj pro vyrovnávání zatížení.
 
 V této části vytvoříte virtuální síť a interní Azure Load Balancer.
@@ -252,7 +252,7 @@ New-AzPrivateEndpoint @par4 -ByManualRequest
 
 V této části schválíte připojení, které jste vytvořili v předchozích krocích.
 
-* K schválení připojení použijte [příkaz schválit-AzPrivateEndpointConnection](/powershell/module/az.network/approve-azprivateendpointconnnection) .
+* K schválení připojení použijte [příkaz schválit-AzPrivateEndpointConnection](/powershell/module/az.network/approve-azprivateendpointconnection) .
 
 ```azurepowershell-interactive
 ## Place the private link service configuration into variable. ##

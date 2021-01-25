@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: dfbae5144ec19b795463bd44f1e84fcf2516c267
-ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.openlocfilehash: 3b28bc96703fa48e598bfb6f9622237e769119f2
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/25/2021
-ms.locfileid: "98747203"
+ms.locfileid: "98757149"
 ---
 # <a name="create-a-cloud-service-extended-support-using-arm-templates"></a>Vytvoření cloudové služby (Rozšířená podpora) pomocí šablon ARM
 
@@ -178,46 +178,44 @@ V tomto kurzu se dozvíte, jak vytvořit nasazení cloudové služby (rozšíře
                 "capacity": "1" 
               } 
             } 
-        } 
+        }
+    }   
     ```
 
 6. Volitelné Vytvořte profil rozšíření pro přidání rozšíření do cloudové služby. V tomto příkladu přidáme rozšíření Remote Desktop a Windows Azure Diagnostics. 
     
     ```json
-    "extensionProfile": { 
-              "extensions": [ 
-                 { 
-                  "name": "RDPExtension", 
-                  "properties": { 
-                    "autoUpgradeMinorVersion": true, 
-                    "publisher": "Microsoft.Windows.Azure.Extensions", 
-                    "type": "RDP", 
-                    "typeHandlerVersion": "1.2.1", 
-                    "settings": " <PublicConfig>\r\n  <UserName>>[Insert Password]</UserName>\r\n  <Expiration>1/15/2022 12:00:00 AM</Expiration>\r\n</PublicConfig> ", 
-                    "protectedSettings": "<PrivateConfig>\r\n  <Password>[Insert Password]</Password>\r\n</PrivateConfig>" 
-                  } 
-                } 
-              ] 
-            },
-
-    "extensionProfile": { 
-              "extensions": [ 
-                { 
-                  "name": "Microsoft.Insights.VMDiagnosticsSettings_WebRole1", 
-                  "properties": { 
-                    "autoUpgradeMinorVersion": true, 
-                    "publisher": "Microsoft.Azure.Diagnostics", 
-                    "type": "PaaSDiagnostics", 
-                    "typeHandlerVersion": "1.5", 
-                    "settings": "Include PublicConfig XML as a raw string", 
-                    "protectedSettings": "Include PrivateConfig XML as a raw string”", 
-                    "rolesAppliedTo": [ 
-                      "WebRole1" 
-                    ] 
-                  } 
-                }
+        "extensionProfile": {
+              "extensions": [
+                {
+                  "name": "RDPExtension",
+                  "properties": {
+                    "autoUpgradeMinorVersion": true,
+                    "publisher": "Microsoft.Windows.Azure.Extensions",
+                    "type": "RDP",
+                    "typeHandlerVersion": "1.2.1",
+                    "settings": "<PublicConfig>\r\n <UserName>[Insert Username]</UserName>\r\n <Expiration>1/21/2022 12:00:00 AM</Expiration>\r\n</PublicConfig>",
+                    "protectedSettings": "<PrivateConfig>\r\n <Password>[Insert Password]</Password>\r\n</PrivateConfig>"
+                  }
+                },
+                {
+                  "name": "Microsoft.Insights.VMDiagnosticsSettings_WebRole1",
+                  "properties": {
+                    "autoUpgradeMinorVersion": true,
+                    "publisher": "Microsoft.Azure.Diagnostics",
+                    "type": "PaaSDiagnostics",
+                    "typeHandlerVersion": "1.5",
+                    "settings": "[parameters('wadPublicConfig_WebRole1')]",
+                    "protectedSettings": "[parameters('wadPrivateConfig_WebRole1')]",
+                    "rolesAppliedTo": [
+                      "WebRole1"
               ]
             }
+          }
+        ]
+      }
+
+  
     ```    
 
 7. Projděte si úplnou šablonu. 
@@ -263,17 +261,17 @@ V tomto kurzu se dozvíte, jak vytvořit nasazení cloudové služby (rozšíře
             "description": "Roles created in the cloud service application"
           }
         },
-        "rdpPublicConfig": {
+        "wadPublicConfig_WebRole1": {
           "type": "string",
           "metadata": {
-            "description": "Public config of remote desktop extension"
+             "description": "Public configuration of Windows Azure Diagnostics extension"
           }
-        },
-        "rdpPrivateConfig": {
+         },
+        "wadPrivateConfig_WebRole1": {
           "type": "securestring",
           "metadata": {
-            "description": "Private config of remote desktop extension"
-          }
+            "description": "Private configuration of Windows Azure Diagnostics extension"
+         }
         },
         "vnetName": {
           "type": "string",
@@ -416,6 +414,17 @@ V tomto kurzu se dozvíte, jak vytvořit nasazení cloudové služby (rozšíře
         "extensionProfile": {
               "extensions": [
                 {
+                  "name": "RDPExtension",
+                  "properties": {
+                    "autoUpgradeMinorVersion": true,
+                    "publisher": "Microsoft.Windows.Azure.Extensions",
+                    "type": "RDP",
+                    "typeHandlerVersion": "1.2.1",
+                    "settings": "<PublicConfig>\r\n <UserName>[Insert Username]</UserName>\r\n <Expiration>1/21/2022 12:00:00 AM</Expiration>\r\n</PublicConfig>",
+                    "protectedSettings": "<PrivateConfig>\r\n <Password>[Insert Password]</Password>\r\n</PrivateConfig>"
+                  }
+                },
+                {
                   "name": "Microsoft.Insights.VMDiagnosticsSettings_WebRole1",
                   "properties": {
                     "autoUpgradeMinorVersion": true,
@@ -426,25 +435,14 @@ V tomto kurzu se dozvíte, jak vytvořit nasazení cloudové služby (rozšíře
                     "protectedSettings": "[parameters('wadPrivateConfig_WebRole1')]",
                     "rolesAppliedTo": [
                       "WebRole1"
-                    ]
-                  }
-                },
-                {
-                  "name": "RDPExtension",
-                  "properties": {
-                    "autoUpgradeMinorVersion": true,
-                    "publisher": "Microsoft.Windows.Azure.Extensions",
-                    "type": "RDP",
-                    "typeHandlerVersion": "1.2.1",
-                    "settings": "[parameters('rdpPublicConfig')]",
-                    "protectedSettings": "[parameters('rdpPrivateConfig')]"
-                  }
+                  ]
                 }
-              ]
-            }
+              }
+            ]
           }
         }
-      ]
+      }
+    }
     ```
  
 8. Nasaďte šablonu a vytvořte nasazení cloudové služby (rozšířené podpory). 

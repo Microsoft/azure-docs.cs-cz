@@ -21,10 +21,10 @@
   expanded: true
 - name: Koncepty
   items:
+    - name: Rozšíření
+      href: extensions.md
     - name: Dostupné velikosti virtuálních počítačů
       href: available-sizes.md
-    - name: Nejčastější dotazy
-      href: faq.md
     - name: Opravy hostovaného operačního systému
       href: ../cloud-services/cloud-services-guestos-msrc-releases.md?toc=/azure/cloud-services-extended-support/toc.json&bc=/azure/cloud-services-extended-support/breadcrumb/toc.json
     - name: Vyřazení hostovaného operačního systému
@@ -49,10 +49,10 @@
           href: schema-cscfg-role.md
         - name: NetworkConfiguration schéma
           href: schema-cscfg-networkconfiguration.md
+    - name: Nejčastější dotazy
+      href: faq.md
 - name: Postup
   items:
-    - name: Přehled rozšíření
-      href: extensions.md
     - name: Použít rozšíření vzdálené plochy
       href: enable-rdp.md
     - name: Použít rozšíření WAD
@@ -71,7 +71,7 @@
       href: sample-get-cloud-service.md
     - name: Resetování cloudové služby
       href: sample-reset-cloud-service.md
-- name: Reference
+- name: Referenční informace
   items:
     - name: Ukázkové soubory nasazení
       href: 'https://github.com/Azure-Samples/cloud-services-extended-support'
@@ -83,6 +83,8 @@
       href: 'https://docs.microsoft.com/azure/templates/microsoft.compute/cloudservices'
     - name: REST
       href: 'https://docs.microsoft.com/rest/api/compute/cloudservices'
+    - name: Sada SDK
+      href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.Compute/43.0.0-preview'
 - name: Zdroje a prostředky
   items:
     - name: Plány Azure do budoucna

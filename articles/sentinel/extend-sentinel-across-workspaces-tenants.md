@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2020
 ms.author: yelevin
-ms.openlocfilehash: 60e86c7c849bf09b3a5577453a6935466ab447f6
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 4312a819f8fd41805dca095556efdc6189f23af9
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95483909"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757115"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>Rozšíření Azure Sentinelu napříč pracovními prostory a tenanty
 
@@ -94,18 +94,18 @@ Funkce může také zjednodušit běžně používané sjednocení. Můžete nap
 
 Dotaz můžete v obou pracovních prostorech napsat tak, že začnete s `unionSecurityEvent | where ...` .
 
-#### <a name="scheduled-alerts"></a>Naplánované výstrahy
+#### <a name="cross-workspace-analytics-rules"></a>Pravidla analýzy mezi pracovními prostory<a name="scheduled-alerts"></a>
+<!-- Bookmark added for backward compatibility with old heading -->
+Dotazy na více pracovních prostorů teď můžou být zahrnuté do pravidel plánovaných analýz, a to v souladu s těmito omezeními:
 
-Dotazy na více pracovních prostorů teď můžou být zahrnuté do plánovaných upozornění v analytických pravidlech, a to v závislosti na následujících omezeních:
-
-- V jednom dotazu může být zahrnuto až 10 pracovních prostorů.
+- V jednom dotazu může být zahrnuto až 15 pracovních prostorů.
 - U každého pracovního prostoru, na který se odkazuje v dotazu, musí být nasazená Azure Sentinel.
 
 > [!NOTE] 
 > Dotazování na více pracovních prostorů ve stejném dotazu může mít vliv na výkon, a proto je doporučeno pouze v případě, že tato funkce vyžaduje tuto funkci.
 
-### <a name="using-cross-workspace-workbooks"></a>Používání sešitů mezi pracovními prostory
-
+#### <a name="cross-workspace-workbooks"></a>Sešity mezi pracovními prostory<a name="using-cross-workspace-workbooks"></a>
+<!-- Bookmark added for backward compatibility with old heading -->
 Pracovní [panely poskytují řídicí](./overview.md#workbooks) panely a aplikace pro službu Azure Sentinel. Když pracujete s několika pracovními prostory, poskytují monitorování a akce napříč pracovními prostory.
 
 Sešity můžou obsahovat dotazy pro více pracovních prostorů v jedné ze tří metod, z nichž každý má stejný způsob, jakým má platforma pro koncové uživatele různé úrovně znalostí:
@@ -117,7 +117,7 @@ Sešity můžou obsahovat dotazy pro více pracovních prostorů v jedné ze tř
 | Interaktivní úprava sešitu | Pokročilý uživatel, který upravuje existující sešit, může upravit dotazy v něm, vybrat cílové pracovní prostory pomocí výběru pracovního prostoru v editoru. | Tato možnost umožňuje uživateli snadno upravit existující sešity pro práci s více pracovními prostory. |
 |
 
-### <a name="cross-workspace-hunting"></a>Lov mezi pracovními prostory
+#### <a name="cross-workspace-hunting"></a>Lov mezi pracovními prostory
 
 Azure Sentinel poskytuje předem načtené Ukázky dotazů, které vám pomohou začít a seznámit s tabulkami a dotazovacím jazykem. Tyto integrované lovecké dotazy jsou vyvíjené výzkumnými pracovníky Microsoftu, a to tak, že se přidávají nové dotazy a doladí existující dotazy. získáte tak vstupní bod, který bude hledat nové detekce a identifikovat známky vniknutí, které se v nástrojích zabezpečení už nerozpoznaly.  
 

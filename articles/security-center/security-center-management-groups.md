@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/07/2020
 ms.author: memildin
-ms.openlocfilehash: d03177e3224bbd3f53320871efc6a0d6b3ea479d
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 5b257e45a86a7b22e9064fcfc6092b3c946ae99b
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922673"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757629"
 ---
 # <a name="organize-management-groups-subscriptions-and-tenant-wide-visibility"></a>Uspořádání skupin pro správu, předplatných a viditelnosti v nejrůznějších klientech
 
@@ -107,10 +107,40 @@ Přiřazení oprávnění na úrovni tenanta:
 
 1. Jakmile budete mít zvýšený přístup, otevřete nebo aktualizujte Azure Security Center a ověřte si, že máte přehled o všech předplatných v rámci vašeho tenanta Azure AD. 
 
+
+## <a name="request-tenant-wide-permissions-when-yours-are-insufficient"></a>Požádat o oprávnění na úrovni tenanta, pokud není dostatečná
+
+Pokud se přihlásíte k Security Center a zobrazí se informační zpráva s oznámením, že vaše zobrazení je omezené, můžete kliknout na tlačítko pro odeslání žádosti globálnímu správci vaší organizace. V žádosti můžete zahrnout roli, kterou chcete přiřadit, a globální správce provede rozhodnutí o tom, která role se má udělit. 
+
+Jedná se o rozhodnutí globálního správce, jestli chcete tyto žádosti přijmout nebo odmítnout. 
+
+> [!IMPORTANT]
+> Jednu žádost můžete odeslat jenom každých 7 dní.
+
+Chcete-li požádat o zvýšená oprávnění od globálního správce:
+
+1. Z Azure Portal otevřete Azure Security Center.
+
+1. Pokud se zobrazí nápis "zobrazují se omezené informace". vyberte ji.
+
+    :::image type="content" source="media/security-center-management-groups/request-tenant-permissions.png" alt-text="Banner s informující uživatele, který může požádat o oprávnění na úrovni tenanta.":::
+
+1. Ve formuláři podrobný požadavek vyberte požadovanou roli a odůvodnění, proč potřebná oprávnění potřebujete.
+
+    :::image type="content" source="media/security-center-management-groups/request-tenant-permissions-details.png" alt-text="Stránka podrobností pro vyžádání oprávnění na úrovni tenanta od globálního správce Azure":::
+
+1. Vyberte **požádat o přístup**.
+
+    Globálnímu správci se pošle e-mail. E-mail obsahuje odkaz na Security Center, kde může žádost schválit nebo odmítnout.
+
+    :::image type="content" source="media/security-center-management-groups/request-tenant-permissions-email.png" alt-text="E-mail globálnímu správci pro nová oprávnění":::
+
+    Poté, co globální správce vybere **kontrolu žádosti** a dokončí proces, rozhodnutí se odešle e-mailem žádajícímu uživateli. 
+
 ## <a name="assign-azure-roles-to-other-users"></a>Přiřazení rolí Azure jiným uživatelům
 
 ### <a name="assign-azure-roles-to-users-through-the-azure-portal"></a>Přiřaďte role Azure uživatelům prostřednictvím Azure Portal: 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). 
 1. Pokud chcete zobrazit skupiny pro správu, vyberte v hlavní nabídce Azure možnost **všechny služby** a pak vyberte **skupiny pro správu**.
 1.  Vyberte skupinu pro správu a vyberte **Podrobnosti**.
 
@@ -149,6 +179,7 @@ Přiřazení oprávnění na úrovni tenanta:
     ```
 
 ## <a name="remove-elevated-access"></a>Odebrat vyšší úroveň přístupu 
+
 Jakmile role Azure přiřadíte uživatelům, správce tenanta by se měl odebrat z role správce přístupu uživatele.
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) nebo [centru pro správu Azure Active Directory](https://aad.portal.azure.com).

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: f2807501b1e18d4cbffaa34d70bccf8d70565266
-ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.openlocfilehash: b6836eee7e0e6ccbfa2628e0e371152f31ddf9d2
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/25/2021
-ms.locfileid: "98747219"
+ms.locfileid: "98757538"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Klíč spravovaný zákazníkem v Azure Monitoru 
 
@@ -126,7 +126,7 @@ Tato nastavení je možné aktualizovat v Key Vault prostřednictvím rozhraní 
 ## <a name="create-cluster"></a>Vytvoření clusteru
 
 Clustery podporují dva [typy spravovaných identit](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types): přiřazeno systémem a přiřazeno uživateli, zatímco jedna identita může být definována v clusteru v závislosti na vašem scénáři. 
-- Spravovaná identita přiřazená systémem se zjednodušuje a generuje se automaticky s vytvořením clusteru, když `type` je identita nastavená na "*SystemAssigned*". Tuto identitu můžete později použít k udělení přístupu clusteru k vašemu Key Vault. 
+- Spravovaná identita přiřazená systémem se zjednodušuje a generuje se automaticky s vytvořením clusteru, když `type` je identita nastavená na "*SystemAssigned*". Tuto identitu můžete později použít k udělení přístupu úložiště k vašemu Key Vault pro zabalení a rozbalení operací. 
   
   Nastavení identit v clusteru pro spravovanou identitu přiřazenou systémem
   ```json
@@ -137,7 +137,7 @@ Clustery podporují dva [typy spravovaných identit](../../active-directory/mana
   }
   ```
 
-- Pokud chcete nakonfigurovat klíč spravovaný zákazníkem při vytváření clusteru, měli byste mít předem přidělenou klíčovou a uživatelem přiřazenou identitu Key Vault a pak vytvořit cluster s tímto nastavením: identita `type` jako "*UserAssigned*", `UserAssignedIdentities` s ID prostředku identity.
+- Pokud chcete nakonfigurovat klíč spravovaný zákazníkem při vytváření clusteru, měli byste mít předem přidělenou klíčovou a uživatelem přiřazenou identitu Key Vault a pak vytvořit cluster s tímto nastavením: identita `type` jako "*UserAssigned*", `UserAssignedIdentities` s *ID prostředku* vaší identity.
 
   Nastavení identit v clusteru pro spravovanou identitu přiřazenou uživatelem
   ```json
@@ -151,27 +151,7 @@ Clustery podporují dva [typy spravovaných identit](../../active-directory/mana
   ```
 
 > [!IMPORTANT]
-> Pokud je vaše Key Vault v Private-Link (vNet), nemůžete použít klíč spravovaný zákazníkem s uživatelem přiřazenou spravovanou identitou. V tomto scénáři můžete použít spravovanou identitu přiřazenou systémem.
-
-```json
-{
-  "identity": {
-    "type": "SystemAssigned"
-}
-```
- 
-Tímto:
-
-```json
-{
-  "identity": {
-  "type": "UserAssigned",
-    "userAssignedIdentities": {
-      "subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft. ManagedIdentity/UserAssignedIdentities/<user-assigned-managed-identity-name>"
-      }
-}
-```
-
+> Spravovanou identitu přiřazenou uživatelem nemůžete použít, pokud je vaše Key Vault v Private-Link (vNet). V tomto scénáři můžete použít spravovanou identitu přiřazenou systémem.
 
 Postupujte podle postupu popsaného v [článku věnovaném vyhrazeným clusterům](../log-query/logs-dedicated-clusters.md#creating-a-cluster). 
 
@@ -452,7 +432,7 @@ Customer-Managed klíč je k dispozici na vyhrazeném clusteru a tyto operace js
 
   - Pokud je vaše Key Vault v Private-Link (vNet), nemůžete použít klíč spravovaný zákazníkem s uživatelem přiřazenou spravovanou identitou. V tomto scénáři můžete použít spravovanou identitu přiřazenou systémem.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 
 - Chování při Key Vault dostupnosti
   - V normálním provozu – mezipaměť úložiště AEK na krátkou dobu a vrátí se zpět na Key Vault k pravidelnému rozbalení.

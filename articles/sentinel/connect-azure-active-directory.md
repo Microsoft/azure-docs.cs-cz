@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/20/2021
 ms.author: yelevin
-ms.openlocfilehash: e84484990725b0c39b132aead51e9b01dbb7e7ef
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 409a316bd9c4222dd9b8ff30e42e37d23805c38b
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632287"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757758"
 ---
 # <a name="connect-data-from-azure-active-directory-azure-ad"></a>Připojení dat z Azure Active Directory (Azure AD)
 
@@ -44,12 +44,12 @@ K shromažďování dat z [Azure Active Directory](../active-directory/fundament
 
 1. Zaškrtněte políčka vedle typů protokolů, které chcete streamovat do Azure Sentinel, a klikněte na **připojit**. Typy protokolů, ze kterých si můžete vybrat:
 
-    - Protokoly přihlašování
-    - Protokoly auditu
-    - Protokoly přihlašování neinteraktivních uživatelů
-    - Protokoly přihlášení instančního objektu
-    - Protokoly přihlašování spravované identity
-    - Protokoly zřizování
+    - **Protokoly přihlášení**: informace o použití spravovaných aplikací a aktivitách přihlašování uživatelů.
+    - **Protokoly auditu**: informace o činnosti systému týkající se správy uživatelů a skupin, spravovaných aplikací a aktivit adresáře.
+    - **Protokoly přihlášení neinteraktivního uživatele**: informace o přihlášeních prováděných klientem jménem uživatele, které nevyžadují žádnou interakci nebo ověřovací faktor od uživatele.
+    - **Protokoly přihlášení instančního objektu**: informace o přihlášení pomocí aplikací a instančních objektů, které nezahrnují žádného uživatele. V těchto přihlášeních aplikace nebo služba poskytují svým jménem vlastní přihlašovací údaje k ověřování nebo přístupu k prostředkům.
+    - **Protokoly pro přihlašování spravované identity**: přihlášení pomocí prostředků Azure, které mají tajné klíče spravované v Azure.
+    - **Protokoly zřizování**: informace o činnosti systému týkající se uživatelů, skupin a rolí zřízených službou Azure AD Provisioning.
 
 ## <a name="find-your-data"></a>Hledání dat
 

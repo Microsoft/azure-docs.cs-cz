@@ -5,14 +5,14 @@ services: data-factory
 author: lrtoyou1223
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 11/17/2020
+ms.date: 01/25/2021
 ms.author: lle
-ms.openlocfilehash: ccebdbf428180f8ff4ab10dc6007c3ec35a66362
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: e81a12f4c5d817670fe1f7968184bcc97e78a53c
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503569"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757674"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Řešení potíží s místním hostováním Integration runtime
 
@@ -67,31 +67,6 @@ Nová aktivita může vyvolat chybu OOM v případě, že počítač IR vyvolala
 #### <a name="resolution"></a>Řešení
 
 Ověřte využití prostředků a souběžné spouštění aktivit v uzlu IR. Upravte interní a aktivační čas spuštění aktivit, aby nedocházelo k příliš velkému provádění na jednom uzlu IR současně.
-
-
-### <a name="ssltls-certificate-issue"></a>Potíže s certifikátem SSL/TLS
-
-#### <a name="symptoms"></a>Příznaky
-
-Když se pokusíte povolit certifikát TLS (/Transport Layer Security) SSL (Secure Sockets Layer) s protokolem SSL (Advanced) pomocí certifikátu (rozšířené) tak, že zvolíte certifikát (po výběru možnosti **IR Configuration Manager**  >  **vzdálený přístup z intranetu**), zobrazí se tato chyba:
-
-Nastavení vzdáleného přístupu je neplatné. U odchozí zprávy se nepovedlo ověřit kontrolu identity. Očekávaná identita DNS vzdáleného koncového bodu byla ' abc.microsoft.com ', ale vzdálený koncový bod zadal deklaraci identity DNS ' microsoft.com '. Pokud se jedná o legitimní vzdálený koncový bod, můžete problém vyřešit tak, že explicitně zadáte identitu DNS microsoft.com jako vlastnost identity třídy EndpointAddress při vytváření proxy kanálu.
-
-V předchozím příkladu má vybraný certifikát "microsoft.com" připojený k tomuto certifikátu.
-
-#### <a name="cause"></a>Příčina
-
-Jedná se o známý problém v Windows Communication Foundation (WCF). Ověřování WCF SSL/TLS kontroluje jenom pro poslední DNSName v poli **alternativní název subjektu** (San). 
-
-#### <a name="resolution"></a>Řešení
-
-Certifikát se zástupným znakem je podporován v prostředí IR v místním prostředí Azure Data Factory v2. K tomuto problému obvykle dochází, protože certifikát SSL není správný. Poslední DNSName v síti SAN by měl být platný. 
-
-Chcete-li ověřit a opravit DNSName, postupujte takto: 
-
-1. Otevřete konzolu pro správu.
-1. V části **Podrobnosti o certifikátu** dvakrát zaškrtněte pole **Předmět** a **alternativní název předmětu** . Například "DNS Name = microsoft.com.com" není platný název.
-1. Obraťte se na společnost vydávající certifikát, aby se odebraly nesprávné DNSName.
 
 ### <a name="concurrent-jobs-limit-issue"></a>Problém s limitem souběžných úloh
 

@@ -4,12 +4,12 @@ description: Poskytuje souhrn nastavení podpory a omezení pro službu Azure Ba
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: be0c576da6e38233423a79f562f767de806d7640
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 833837c317d22bf031aee4608ff4c93775736a34
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008363"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757436"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Matice podpory pro Azure Backup
 
@@ -56,7 +56,7 @@ Co je se podporuje, pokud chcete zálohovat místní počítače:
 
 ### <a name="azure-vm-limits"></a>Omezení virtuálních počítačů Azure
 
-**Omezení** | **Podrobnosti**
+**Počtu** | **Podrobnosti**
 --- | ---
 **Datové disky virtuálních počítačů Azure** | Podívejte se na [podporu pro zálohování virtuálních počítačů Azure](./backup-support-matrix-iaas.md#vm-storage-support).
 **Velikost datového disku virtuálního počítače Azure** | Velikost jednotlivých disků může být až 32 TB a pro všechny disky ve virtuálním počítači je v kombinaci maximálně 256 TB.
@@ -150,10 +150,10 @@ Azure Backup přidal funkci obnovení mezi oblastmi k posílení dostupnosti dat
 
 | Typ správy zálohování | Podporováno                                                    | Podporované oblasti |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Virtuální počítač Azure               | Ano.   Podporováno pro šifrované virtuální počítače a virtuální počítače s méně než 4 TB disků | Všechny veřejné oblasti Azure.  |
+| Virtuální počítač Azure               | Podporováno pro virtuální počítače Azure se spravovanými i nespravovanými disky. Nepodporuje se u klasických virtuálních počítačů. | Všechny veřejné oblasti Azure.  |
 | SQL/SAP HANA | Ano                                                          | Všechny veřejné oblasti s výjimkou Francie |
-| Agent MARS/místní  | Ne                                                           | –               |
-| AFS (sdílené složky Azure)                 | Ne                                                           | –               |
+| Agent MARS/místní  | No                                                           | –               |
+| AFS (sdílené složky Azure)                 | No                                                           | –               |
 
 ## <a name="next-steps"></a>Další kroky
 

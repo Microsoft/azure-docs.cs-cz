@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: c2eddf75f99b751773220ae677d66fe8c09abb0e
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: f9029a36dc3b778e139b4553524e8e2ca6b4bbad
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98744361"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757165"
 ---
 # <a name="extensions-for-cloud-services-extended-support"></a>Rozšíření pro Cloud Services (Rozšířená podpora)
 
@@ -35,7 +35,7 @@ Díky základnímu monitorování jsou data čítače výkonu z instancí rolí 
 
 S pokročilým monitorováním jsou vzorky a shromážděny další metriky v intervalech 5 minut, 1 hodina a 12 hodin. Agregovaná data jsou uložená v účtu úložiště v tabulkách a vyprázdní se po 10 dnech. Použitý účet úložiště je nakonfigurovaný rolí. pro různé role můžete použít jiné účty úložiště. 
 
-U rozšíření Windows Azure Diagnostics se dá povolit Cloud Services (Rozšířená podpora) prostřednictvím [PowerShellu](deploy-powershell.md) nebo [šablony ARM](deploy-template.md) .
+Další informace najdete v tématu [použití rozšíření Windows Azure Diagnostics v Cloud Services (Rozšířená podpora)](enable-wad.md) .
 
 
 ## <a name="next-steps"></a>Další kroky 

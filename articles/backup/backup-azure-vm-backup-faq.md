@@ -3,12 +3,12 @@ title: Nejčastější dotazy k zálohování virtuálních počítačů Azure
 description: V tomto článku najdete odpovědi na běžné dotazy týkající se zálohování virtuálních počítačů Azure pomocí služby Azure Backup.
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: ba2779305302e91f68cb2664c90f53fdf9a9ca55
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: edc48aaf0a05867de81bd7d5f64f8be4e54ddb8a
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008346"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757504"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Nejčastější dotazy – zálohování virtuálních počítačů Azure
 
@@ -28,7 +28,7 @@ Přestože je celková doba zálohování v případě přírůstkového záloho
 
 ### <a name="is-the-backup-cost-included-in-the-vm-cost"></a>Jsou náklady na zálohování zahrnuty do nákladů na virtuální počítače?
 
-No. Náklady na zálohování jsou oddělené od nákladů na virtuální počítače. Přečtěte si další informace o [cenách Azure Backup](https://azure.microsoft.com/pricing/details/backup/).
+Ne. Náklady na zálohování jsou oddělené od nákladů na virtuální počítače. Přečtěte si další informace o [cenách Azure Backup](https://azure.microsoft.com/pricing/details/backup/).
 
 ### <a name="which-permissions-are-required-to-enable-backup-for-a-vm"></a>Která oprávnění jsou nutná k povolení zálohování pro virtuální počítač?
 
@@ -48,7 +48,7 @@ Pokud má váš Recovery Services trezor a virtuální počítač jiné skupiny 
 
 ### <a name="does-an-on-demand-backup-job-use-the-same-retention-schedule-as-scheduled-backups"></a>Používá úloha zálohování na vyžádání stejný plán uchovávání dat jako plánované zálohy?
 
-No. Zadejte rozsah uchování pro úlohu zálohování na vyžádání. Ve výchozím nastavení se po aktivaci z portálu uchovávají po dobu 30 dnů.
+Ne. Zadejte rozsah uchování pro úlohu zálohování na vyžádání. Ve výchozím nastavení se po aktivaci z portálu uchovávají po dobu 30 dnů.
 
 ### <a name="i-recently-enabled-azure-disk-encryption-on-some-vms-will-my-backups-continue-to-work"></a>Na některých virtuálních počítačích byla nedávno povolena služba Azure Disk Encryption. Budou moje zálohy stále fungovat?
 
@@ -113,6 +113,10 @@ Azure Backup teď podporuje zálohování a obnovení selektivního disku pomoc�
 ### <a name="are-managed-identities-preserved-if-a-tenant-change-occurs-during-backup"></a>Jsou spravované identity zachované, pokud během zálohování dojde ke změně tenanta?
 
 Pokud dojde ke [změnám tenanta](/azure/devops/organizations/accounts/change-azure-ad-connection) , budete muset zakázat a znovu povolit [spravované identity](../active-directory/managed-identities-azure-resources/overview.md) , aby bylo zálohování znovu fungovat.
+
+### <a name="does-azure-backup-support-backing-up-nfs-files-mounted-from-storage"></a>Podporuje Azure Backup zálohování souborů NFS připojených z úložiště?
+
+Azure Backup nepodporuje zálohování souborů NFS, které jsou připojené z úložiště, nebo z jakéhokoli jiného serveru NFS na počítače se systémem Linux nebo Windows. Zálohuje jenom disky, které jsou místně připojené k virtuálnímu počítači.
 
 ## <a name="restore"></a>Obnovení
 
