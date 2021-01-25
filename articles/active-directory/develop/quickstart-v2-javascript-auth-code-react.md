@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/14/2021
 ms.author: jamesmantu
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 58e8fd5006e72465e35912a5b15cade1201d680f
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 323c9e207e5a16ba3e5907862e7a1eba84cc02e6
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98680311"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754194"
 ---
 # <a name="quickstart-sign-in-and-get-an-access-token-in-a-react-spa-using-the-auth-code-flow"></a>Rychlý Start: přihlášení a získání přístupového tokenu v reakci SPA pomocí toku kódu ověřování
 
@@ -40,9 +40,7 @@ Tento rychlý Start používá MSAL reakci s tokem autorizačního kódu. Podobn
 >
 > ### <a name="option-1-express-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Možnost 1 (Express): registrace a Automatická konfigurace aplikace a stažení ukázky kódu
 >
-> 1. Přihlaste se na [Azure Portal](https://portal.azure.com).
-> 1. Pokud vám váš účet poskytne přístup k více než jednomu klientovi, vyberte svůj účet v pravém horním rohu a pak nastavte relaci portálu na tenanta Azure AD, kterého chcete použít.
-> 1. Vyberte [Registrace aplikací](https://aka.ms/AAatrux).
+> 1. Přejít k prostředí rychlý Start pro <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs" target="_blank">Azure Portal registrace aplikací <span class="docon docon-navigate-external x-hidden-focus"></span> </a>
 > 1. Zadejte název své aplikace.
 > 1. V části **podporované typy účtů** vyberte **účty v libovolném organizačním adresáři a osobní účty Microsoft**.
 > 1. Vyberte **Zaregistrovat**.
@@ -52,18 +50,17 @@ Tento rychlý Start používá MSAL reakci s tokem autorizačního kódu. Podobn
 >
 > #### <a name="step-1-register-your-application"></a>Krok 1: Registrace aplikace
 >
-> 1. Přihlaste se na [Azure Portal](https://portal.azure.com).
-> 1. Pokud vám váš účet poskytne přístup k více než jednomu klientovi, vyberte svůj účet v pravém horním rohu a pak nastavte relaci portálu na tenanta Azure AD, kterého chcete použít.
-> 1. Vyberte [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908).
-> 1. Vyberte **Nová registrace**.
+> 1. Přihlaste se <a href="https://portal.azure.com/" target="_blank">k <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>.
+> 1. Máte-li přístup k více klientům, použijte filtr **adresář + odběr** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: v horní nabídce a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
+> 1. Vyhledejte a vyberte **Azure Active Directory**.
+> 1. V části **Spravovat** vyberte **Registrace aplikací**  >  **Nová registrace**.
 > 1. Když se zobrazí stránka **Zaregistrovat aplikaci**, zadejte název pro vaši aplikaci.
 > 1. V části **podporované typy účtů** vyberte **účty v libovolném organizačním adresáři a osobní účty Microsoft**.
 > 1. Vyberte **Zaregistrovat**. Na stránce **Přehled** aplikace si poznamenejte hodnotu **ID aplikace (klienta)** pro pozdější použití.
-> 1. V levém podokně registrované aplikace vyberte **ověřování**.
-> 1. V části **konfigurace platformy** vyberte `Add a platform` .
-> 1. Ve výsledném okně vyberte **jednostránkovou aplikaci**.
+> 1. V části **Spravovat** vyberte **ověřování**.
+> 1. V části **konfigurace platformy** vyberte **Přidat platformu**. V podokně, které se otevře, vyberte **jednostránkovou aplikaci**.
 > 1. Nastavte hodnotu **identifikátorů URI pro přesměrování** na `http://localhost:3000/` . Toto je výchozí port NodeJS, který bude naslouchat na vašem místním počítači. Po úspěšném ověření uživatele vrátíme do tohoto identifikátoru URI odpověď ověřování. 
-> 1. Klikněte na tlačítko **Konfigurovat** , aby se změny projevily.
+> 1. Chcete-li změny použít, vyberte možnost **Konfigurovat** .
 > 1. V části **konfigurace platformy** rozbalte **jednostránkovou aplikaci**.
 > 1. Ověřte, že u **typů grantů** , které ![ jsou už nakonfigurované ](media/quickstart-v2-javascript/green-check.png) , je váš identifikátor URI pro přesměrování způsobilý pro tok autorizačního kódu s PKCE.
 
@@ -179,7 +176,7 @@ Spusťte projekt s webovým serverem pomocí Node.js:
 
 ### <a name="msaljs"></a>msal.js
 
-Knihovna MSAL.js přihlašuje uživatele a požádá o tokeny, které se používají pro přístup k rozhraní API, které je chráněno platformou Microsoft Identity Platform.
+Knihovna MSAL.js přihlašuje uživatele a požádá o tokeny, které se používají pro přístup k rozhraní API, které je chráněno platformou Microsoft identity.
 
 Pokud máte nainstalovanou Node.js, můžete si nejnovější verzi stáhnout pomocí Node.js správce balíčků (npm):
 

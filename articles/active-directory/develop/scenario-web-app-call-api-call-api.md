@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 016a2917c02deaecf35c526426cb2a6dbc89e338
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: b294a56a523adaa2629a5d1e72a7ccef532956e0
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173185"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753279"
 ---
 # <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>Webová aplikace, která volá webová rozhraní API: volá webové rozhraní API.
 

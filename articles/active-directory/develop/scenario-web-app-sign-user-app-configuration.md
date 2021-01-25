@@ -1,5 +1,6 @@
 ---
-title: Konfigurace webové aplikace, která podepisuje uživatele – Microsoft Identity Platform | Azure
+title: Konfigurace webové aplikace, která podepisuje uživatele | Azure
+titleSuffix: Microsoft identity platform
 description: Naučte se, jak vytvořit webovou aplikaci, která přihlašuje uživatele (konfigurace kódu).
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: dad7b0563fd1ca0dbf60403bc6172e7616e278b2
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 45f3a066283a921f60909a4aa3cfdc76f3faad06
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443649"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753277"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>Webová aplikace, která podepisuje uživatele: Konfigurace kódu
 
@@ -202,7 +203,7 @@ SESSION_TYPE = "filesystem"  # So the token cache will be stored in a server-sid
 
 ## <a name="initialization-code"></a>Inicializační kód
 
-Inicializační kód se liší v závislosti na platformě. Pro ASP.NET Core a ASP.NET se podepisování uživatelů přidělí na middleware OpenID Connect. Šablona ASP.NET nebo ASP.NET Core generuje webové aplikace pro koncový bod Azure Active Directory (Azure AD) v 1.0. Některá konfigurace je nutná k jejich přizpůsobení koncovému bodu Microsoft Identity Platform (v 2.0). V případě jazyka Java se v případě, že se jedná o spolupráci aplikace, zpracovává na jaře.
+Inicializační kód se liší v závislosti na platformě. Pro ASP.NET Core a ASP.NET se podepisování uživatelů přidělí na middleware OpenID Connect. Šablona ASP.NET nebo ASP.NET Core generuje webové aplikace pro koncový bod Azure Active Directory (Azure AD) v 1.0. Některá konfigurace je nutná k jejich přizpůsobení platformě Microsoft Identity Platform. V případě jazyka Java se v případě, že se jedná o spolupráci aplikace, zpracovává na jaře.
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
@@ -262,7 +263,7 @@ Ve výše uvedeném kódu:
 - `AddMicrosoftIdentityWebAppAuthentication`Metoda rozšíření je definována v **Microsoft. identity. Web**. Její
   - Přidá ověřovací službu.
   - Konfiguruje možnosti pro čtení konfiguračního souboru (zde z části "AzureAD").
-  - Nakonfiguruje možnosti připojení OpenID, aby autorita byla koncovým bodem Microsoft Identity Platform.
+  - Nakonfiguruje možnosti připojení OpenID, aby autorita byla platformou Microsoft identity.
   - Ověří vystavitele tokenu.
   - Zajistí, aby deklarace odpovídající názvu byly namapovány z `preferred_username` deklarace identity v tokenu ID.
 
@@ -291,7 +292,7 @@ Kód, který se vztahuje k ověřování ve webové aplikaci ASP.NET a webových
   app.UseOpenIdConnectAuthentication(
     new OpenIdConnectAuthenticationOptions
     {
-     // `Authority` represents the identity platform endpoint - https://login.microsoftonline.com/common/v2.0.
+     // Authority` represents the identity platform endpoint - https://login.microsoftonline.com/common/v2.0.
      // `Scope` describes the initial permissions that your app will need.
      //  See https://azure.microsoft.com/documentation/articles/active-directory-v2-scopes/.
      ClientId = clientId,
@@ -316,7 +317,7 @@ Podrobnosti naleznete v `doFilter()` metodě v [AuthFilter. Java](https://github
 > [!NOTE]
 > Kód `doFilter()` je napsán v mírně jiném pořadí, ale tok je popsán.
 
-Podrobnosti o toku autorizačního kódu, který tato metoda aktivuje, najdete v tématu [tok autorizačního kódu Microsoft Identity Platform a OAuth 2,0](v2-oauth2-auth-code-flow.md).
+Podrobnosti o toku autorizačního kódu, který tato metoda aktivuje, najdete v [toku autorizačního kódu platformy Microsoft a OAuth 2,0](v2-oauth2-auth-code-flow.md).
 
 # <a name="python"></a>[Python](#tab/python)
 

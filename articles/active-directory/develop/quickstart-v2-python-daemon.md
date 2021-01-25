@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý Start: volání Microsoft Graph z démona Pythonu | Azure'
 titleSuffix: Microsoft identity platform
-description: V tomto rychlém startu se dozvíte, jak může proces Pythonu získat přístupový token a volat rozhraní API chráněné koncovým bodem Microsoft Identity Platform, pomocí vlastní identity aplikace.
+description: V tomto rychlém startu se dozvíte, jak může proces Pythonu získat přístupový token a volat rozhraní API chráněné platformou Microsoft Identity platformou, a to pomocí vlastní identity aplikace.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/22/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 47aaf67c9ae2402e0445de60de439b77242bd87d
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 04c3497e41aba301d5cf16cd6cc723409d1f4175
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178224"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754061"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>Rychlý Start: získání tokenu a volání Microsoft Graph API z konzolové aplikace Pythonu pomocí identity aplikace
 
@@ -190,7 +190,7 @@ app = msal.ConfidentialClientApplication(
     client_credential=config["secret"])
 ```
 
-> | Kde: |Description |
+> | Kde: |Popis |
 > |---------|---------|
 > | `config["secret"]` | Vytvoří se tajný klíč klienta pro aplikaci na webu Azure Portal. |
 > | `config["client_id"]` | Je **ID aplikace (klienta)**, kterou jste zaregistrovali na webu Azure Portal. Tuto hodnotu najdete na stránce **Přehled** aplikace na webu Azure Portal. |
@@ -211,7 +211,7 @@ if not result:
     result = app.acquire_token_for_client(scopes=config["scope"])
 ```
 
-> |Kde:| Description |
+> |Kde:| Popis |
 > |---------|---------|
 > | `config["scope"]` | Obsahuje požadované obory. U důvěrných klientů by se měla použít formát podobný tomuto jako `{Application ID URI}/.default` k označení toho, že požadované obory jsou staticky definované v sadě objektů aplikace na webu Azure Portal (pro Microsoft Graph, `{Application ID URI}` které odkazují na `https://graph.microsoft.com` ). Pro vlastní webová rozhraní API `{Application ID URI}` se definuje v části **vystavení rozhraní API** v registraci aplikace na webu Azure Portal (Preview). |
 

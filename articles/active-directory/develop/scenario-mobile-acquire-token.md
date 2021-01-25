@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 946908bf28a50bc8b523c4efd853e8720b115c7b
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: c071cb9a8a27964a93e039e4d1536e078730bfc9
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063072"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753628"
 ---
 # <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>Získání tokenu pro mobilní aplikaci, která volá webová rozhraní API
 
@@ -28,7 +28,7 @@ Předtím, než aplikace může volat chráněná webová rozhraní API, potřeb
 
 Když vyžádáte token, budete muset definovat obor. Obor určuje, k jakým datům může aplikace přistupovat.
 
-Nejjednodušší způsob, jak definovat rozsah, je zkombinovat požadované webové rozhraní API `App ID URI` s oborem `.default` . Tato definice instruuje platformu Microsoft identity, kterou vaše aplikace vyžaduje pro všechny obory, které jsou nastavené na portálu.
+Nejjednodušší způsob, jak definovat rozsah, je zkombinovat požadované webové rozhraní API `App ID URI` s oborem `.default` . Tato definice obsahuje informace o platformě Microsoft identity, kterou vaše aplikace vyžaduje pro všechny obory nastavené na portálu.
 
 ### <a name="android"></a>Android
 ```Java
@@ -243,7 +243,7 @@ Třída definuje následující konstanty:
 
 ##### <a name="withextrascopetoconsent"></a>WithExtraScopeToConsent
 
-Použijte `WithExtraScopeToConsent` Modifikátor v rozšířeném scénáři, kde chcete, aby uživatel poskytoval svůj souhlas s několika prostředky. Tento modifikátor můžete použít, když nechcete používat přírůstkový souhlas, který se obvykle používá s MSAL.NET nebo Microsoft Identity Platform 2,0. Další informace najdete v tématu o tom, že [Uživatel souhlasí s několika prostředky](scenario-desktop-production.md#have-the-user-consent-upfront-for-several-resources).
+Použijte `WithExtraScopeToConsent` Modifikátor v rozšířeném scénáři, kde chcete, aby uživatel poskytoval svůj souhlas s několika prostředky. Tento modifikátor můžete použít, když nechcete používat přírůstkový souhlas, který se obvykle používá s MSAL.NET nebo platformou Microsoft identity. Další informace najdete v tématu o tom, že [Uživatel souhlasí s několika prostředky](scenario-desktop-production.md#have-the-user-consent-upfront-for-several-resources).
 
 Zde je příklad kódu:
 

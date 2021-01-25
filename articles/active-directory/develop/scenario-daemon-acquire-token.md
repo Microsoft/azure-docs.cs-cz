@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 9416005c708cafe5adbad2b09ce70c41fae66fd7
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 295897be03a7dd8e397e8202ff1cf10e6d59cdfb
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936018"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753857"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Aplikace démona, která volá webová rozhraní API – získá token.
 
@@ -204,7 +204,7 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 
 Další informace najdete v dokumentaci k protokolu: [Microsoft Identity Platform a tok přihlašovacích údajů klienta OAuth 2,0](v2-oauth2-client-creds-grant-flow.md).
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 
 ### <a name="did-you-use-the-resourcedefault-scope"></a>Použili jste prostředek/. výchozí obor?
 

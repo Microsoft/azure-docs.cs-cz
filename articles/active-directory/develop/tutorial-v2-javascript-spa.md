@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/06/2020
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: 51b548beae57ce1da32006b61dfd222b0a4e6218
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 874488e5de7888edad5310afce1afd1baec4ece0
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98015857"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753067"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Kurz: přihlášení uživatelů a volání rozhraní Microsoft Graph API z jednostránkové aplikace v JavaScriptu (SPA)
 
@@ -45,7 +45,7 @@ V tomto kurzu:
 
 ![Ukazuje, jak ukázková aplikace vygenerovaná tímto kurzem funguje](media/active-directory-develop-guidedsetup-javascriptspa-introduction/javascriptspa-intro.svg)
 
-Ukázková aplikace vytvořená touto příručkou umožňuje, aby se v prostředí JavaScript SPA dotazoval rozhraní API pro Microsoft Graph nebo webové rozhraní API, které přijímá tokeny z koncového bodu Microsoft Identity Platform. V tomto scénáři se po přihlášení uživatele vyžádá přístupový token a přidá se do požadavků HTTP prostřednictvím autorizační hlavičky. Pomocí tohoto tokenu se získá profil uživatele a e-maily přes **MS Graph API**.
+Ukázková aplikace vytvořená touto příručkou umožňuje, aby se pomocí JavaScriptu ZABEZPEČENÉho dotazování Microsoft Graph rozhraní API nebo webové rozhraní API, které přijímá tokeny z platformy Microsoft identity. V tomto scénáři se po přihlášení uživatele vyžádá přístupový token a přidá se do požadavků HTTP prostřednictvím autorizační hlavičky. Pomocí tohoto tokenu se získá profil uživatele a e-maily přes **MS Graph API**.
 
 Získání a obnovení tokenu jsou zpracovávány [knihovnou Microsoft Authentication Library (MSAL) pro jazyk JavaScript](https://github.com/AzureAD/microsoft-authentication-library-for-js).
 
@@ -413,13 +413,13 @@ Zabezpečené ověřování hesla vygenerované touto příručkou volá `acquir
 
 #### <a name="get-a-user-token-interactively"></a>Interaktivní získání tokenu uživatele
 
-Po počátečním přihlášení nechcete požádat uživatele o opětovné ověření pokaždé, když potřebují požádat o token pro přístup k prostředku. *AcquireTokenSilent* by proto mělo být použito většinou v čase k získání tokenů. Existují však situace, kdy potřebujete vynutit, aby uživatelé mohli pracovat s koncovým bodem Microsoft Identity Platform. Mezi příklady patří:
+Po počátečním přihlášení nechcete požádat uživatele o opětovné ověření pokaždé, když potřebují požádat o token pro přístup k prostředku. *AcquireTokenSilent* by proto mělo být použito většinou v čase k získání tokenů. Existují však situace, kdy potřebujete vynutit, aby uživatelé mohli pracovat s platformou Microsoft identity. Mezi příklady patří:
 
 - Uživatelé musí znovu zadat své přihlašovací údaje, protože vypršela platnost hesla.
 - Vaše aplikace požaduje přístup k prostředku a potřebujete souhlas uživatele.
 - Je vyžadováno dvojúrovňové ověřování.
 
-Volání *acquireTokenPopup* otevře automaticky otevírané okno (nebo *acquireTokenRedirect* uživatele přesměruje na koncový bod Microsoft Identity Platform). V tomto okně musí uživatelé pracovat pomocí potvrzení svých přihlašovacích údajů, udělení souhlasu k požadovanému prostředku nebo dokončením dvojúrovňového ověřování.
+Volání *acquireTokenPopup* otevře automaticky otevírané okno (nebo *acquireTokenRedirect* uživatele přesměruje na platformu Microsoft Identity). V tomto okně musí uživatelé pracovat pomocí potvrzení svých přihlašovacích údajů, udělení souhlasu k požadovanému prostředku nebo dokončením dvojúrovňového ověřování.
 
 #### <a name="get-a-user-token-silently"></a>Získání tokenu uživatele bez upozornění
 
@@ -483,7 +483,7 @@ V ukázkové aplikaci vytvořené touto příručkou se `callMSGraph()` Metoda p
    ```
 1. V prohlížeči zadejte **http://localhost:3000** nebo **http://localhost:{port}** , kde *port* je port, na který webový server naslouchá. Měl by se zobrazit obsah souboru *index.html* a **přihlašovací** tlačítko.
 
-Poté, co prohlížeč načte soubor *index.html* , vyberte možnost **Přihlásit** se. Budete vyzváni k přihlášení pomocí koncového bodu Microsoft Identity Platform:
+Poté, co prohlížeč načte soubor *index.html* , vyberte možnost **Přihlásit** se. Budete vyzváni k přihlášení pomocí platformy Microsoft Identity Platform:
 
 ![Přihlašovací okno účtu v jazyce JavaScript SPA](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspascreenshot1.png)
 

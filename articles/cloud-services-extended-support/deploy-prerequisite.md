@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 45f2b75be9a0090b883c5cc62a0886366e81a302
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 28c7f2c0a61150b2014f669f37ac84ee3a94aebf
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98744278"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752158"
 ---
 # <a name="prerequisites-for-deploying-azure-cloud-services-extended-support"></a>Předpoklady pro nasazení služby Azure Cloud Services (Rozšířená podpora)
 
@@ -42,12 +42,12 @@ CloudServices           Microsoft.Compute    Registered
 ## <a name="required-service-configuration-cscfg-file-updates"></a>Požadované aktualizace konfiguračního souboru služby (. cscfg)
 
 ### <a name="1-virtual-network"></a>1) Virtual Network
-Nasazení cloudové služby (Rozšířená podpora) se musí nacházet ve virtuální síti. Virtuální síť se dá vytvořit prostřednictvím [Azure Portal](https://docs.microsoft.com/azure/virtual-network/quick-create-portal), [PowerShellu](https://docs.microsoft.com/azure/virtual-network/quick-create-powershell), [Azure CLI](https://docs.microsoft.com/azure/virtual-network/quick-create-cli) nebo [šablony ARM](https://docs.microsoft.com/azure/virtual-network/quick-create-template). Na virtuální síť a podsítě musí být také odkazováno v konfiguraci služby (. cscfg) v `NetworkConfiguration` části. 
+Nasazení cloudové služby (Rozšířená podpora) se musí nacházet ve virtuální síti. Virtuální síť se dá vytvořit prostřednictvím [Azure Portal](https://docs.microsoft.com/azure/virtual-network/quick-create-portal), [PowerShellu](https://docs.microsoft.com/azure/virtual-network/quick-create-powershell), [Azure CLI](https://docs.microsoft.com/azure/virtual-network/quick-create-cli) nebo [šablony ARM](https://docs.microsoft.com/azure/virtual-network/quick-create-template). V konfiguraci služby (. cscfg) se musí v části [NetworkConfiguration](schema-cscfg-networkconfiguration.md) odkazovat taky na virtuální síť a podsítě. 
 
 Pro virtuální sítě, které patří do stejné skupiny prostředků jako cloudová služba, je pro vás stačit odkaz jenom na název virtuální sítě v souboru konfigurace služby (. cscfg). Pokud jsou virtuální síť a cloudová služba ve dvou různých skupinách prostředků, musí být v souboru konfigurace služby (. cscfg) zadaná úplná Azure Resource Manager ID virtuální sítě.
  
 #### <a name="virtual-network-located-in-same-resource-group"></a>Virtual Network nacházející se ve stejné skupině prostředků
-```json
+```xml
 <VirtualNetworkSite name="<vnet-name>"/> 
 <AddressAssignments> 
 <InstanceAddress roleName="<role-name>"> 
@@ -58,8 +58,8 @@ Pro virtuální sítě, které patří do stejné skupiny prostředků jako clou
 ```
 
 #### <a name="virtual-network-located-in-different-resource-group"></a>Virtuální síť umístěná v jiné skupině prostředků
-```json
-“/subscriptions/<sub-id>/resourceGroups/<rg-name>/providers/Microsoft.Network/virtualNetworks/<vnet-name>/> 
+```xml
+<VirtualNetworkSite name="/subscriptions/<sub-id>/resourceGroups/<rg-name>/providers/Microsoft.Network/virtualNetworks/<vnet-name>"/> 
 <AddressAssignments> 
 <InstanceAddress roleName="<role-name>"> 
 <Subnets> 

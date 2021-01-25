@@ -1,6 +1,6 @@
 ---
 title: 'Rychlý Start: přihlášení uživatelů a volání Microsoft Graph ve Univerzální platforma Windows desktopové aplikaci | Azure'
-description: V tomto rychlém startu se dozvíte, jak může aplikace Windows Desktop .NET (XAML) získat přístupový token a volat rozhraní API chráněné koncovým bodem Microsoft Identity Platform.
+description: V tomto rychlém startu se dozvíte, jak může aplikace Windows Desktop .NET (XAML) získat přístupový token a volat rozhraní API chráněné platformou Microsoft identity.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 1cac8ab4ccf23047bd5eb2d15c174a2009f2864a
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: b54438441b0e34cccda7fbec37dc1d1740101e9e
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178292"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753997"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Rychlý start: Získání tokenu a volání rozhraní API Microsoft Graph z desktopové aplikace Windows
 
@@ -135,7 +135,7 @@ PublicClientApplicationBuilder.Create(ClientId)
                 .Build();
 ```
 
-> |Kde: | Description |
+> |Kde: | Popis |
 > |---------|---------|
 > | `ClientId` | Je **ID aplikace (klienta)**, kterou jste zaregistrovali na webu Azure Portal. Tuto hodnotu najdete na stránce **Přehled** aplikace na webu Azure Portal. |
 
@@ -145,7 +145,7 @@ Knihovna MSAL používá k získání tokenů dvě metody: `AcquireTokenInteract
 
 #### <a name="get-a-user-token-interactively"></a>Interaktivní získání tokenu uživatele
 
-Některé situace vyžadují, aby uživatelé mohli komunikovat s koncovým bodem Microsoft Identity Platform prostřednictvím místního okna a ověřit své přihlašovací údaje nebo udělit souhlas. Možné příklady:
+Některé situace vyžadují, aby uživatelé vynutili interakci s platformou Microsoft identity prostřednictvím místního okna, aby ověřili své přihlašovací údaje nebo udělili souhlas. Možné příklady:
 
 - Při prvním přihlášení uživatele k aplikaci
 - Když je potřeba, aby uživatelé znovu zadali svoje přihlašovací údaje, protože vypršela platnost hesla
@@ -157,7 +157,7 @@ authResult = await App.PublicClientApp.AcquireTokenInteractive(_scopes)
                                       .ExecuteAsync();
 ```
 
-> |Kde:| Description |
+> |Kde:| Popis |
 > |---------|---------|
 > | `_scopes` | Obsahuje požadované obory, například `{ "user.read" }` pro Microsoft Graph nebo `{ "api://<Application ID>/access_as_user" }` pro vlastní webová rozhraní API. |
 
@@ -172,7 +172,7 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
                                       .ExecuteAsync();
 ```
 
-> |Kde: | Description |
+> |Kde: | Popis |
 > |---------|---------|
 > | `scopes` | Obsahuje požadované obory, například `{ "user.read" }` pro Microsoft Graph nebo `{ "api://<Application ID>/access_as_user" }` pro vlastní webová rozhraní API. |
 > | `firstAccount` | Určuje prvního uživatele v mezipaměti (MSAL podporuje více uživatelů v jediné aplikaci). |

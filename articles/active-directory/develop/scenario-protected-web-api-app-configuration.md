@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 9ffb77db4f7bcd5a07e25085eed17e8972aa9a33
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 3a26157949ff6ef69c9c009dfdd40781b47bc761
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98683755"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753572"
 ---
 # <a name="protected-web-api-code-configuration"></a>Chráněné webové rozhraní API: Konfigurace kódu
 
@@ -55,7 +55,7 @@ HttpResponseMessage response = await _httpClient.GetAsync(apiUri);
 ```
 
 > [!IMPORTANT]
-> Klientská aplikace požaduje *pro webové rozhraní API* nosný token pro koncové body Microsoft Identity Platform. Webové rozhraní API je jediná aplikace, která by měla ověřit token a zobrazit deklarace identity, které obsahuje. Klientské aplikace by se nikdy nepokusily kontrolovat deklarace identity v tokenech.
+> Klientská aplikace požaduje token nosiče na platformě identity Microsoftu *pro webové rozhraní API*. Webové rozhraní API je jediná aplikace, která by měla ověřit token a zobrazit deklarace identity, které obsahuje. Klientské aplikace by se nikdy nepokusily kontrolovat deklarace identity v tokenech.
 >
 > V budoucnu může webové rozhraní API vyžadovat, aby byl token zašifrovaný. Tento požadavek by bránil přístupu pro klientské aplikace, které mohou zobrazit přístupové tokeny.
 
@@ -140,7 +140,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
- V současné době šablony ASP.NET Core vytvářejí webová rozhraní API Azure Active Directory (Azure AD), která přihlásí uživatele v rámci vaší organizace nebo v jakékoli organizaci. Nepodepisují uživatele pomocí osobních účtů. Šablony ale můžete změnit tak, aby používaly koncový bod Microsoft Identity Platform pomocí [Microsoft. identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) nahrazující kód v *Startup.cs*:
+ V současné době šablony ASP.NET Core vytvářejí webová rozhraní API Azure Active Directory (Azure AD), která přihlásí uživatele v rámci vaší organizace nebo v jakékoli organizaci. Nepodepisují uživatele pomocí osobních účtů. Šablony však můžete změnit tak, aby používaly platformu Microsoft Identity Platform pomocí [Microsoft. identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) nahrazující kód v *Startup.cs*:
 
 ```csharp
 using Microsoft.Identity.Web;
@@ -195,7 +195,7 @@ Kroky ověření jsou zachyceny ve validátorech, které jsou poskytovány pomoc
 
 Tato tabulka popisuje validátory:
 
-| Hodnocení | Description |
+| Hodnocení | Popis |
 |---------|---------|
 | **ValidateAudience** | Ověří, jestli je token pro aplikaci, která token ověřuje za vás. |
 | **ValidateIssuer** | Zajišťuje, že token byl vydán důvěryhodnou službou STS, což znamená, že je od někoho, kterému důvěřujete. |

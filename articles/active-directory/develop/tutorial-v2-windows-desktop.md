@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 0d759b3af097067ba0c9215b65b212d50474d571
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 5bfdf90ddbd500fd9d1c504bd37ed4ac35d8bf70
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178343"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752763"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>Kurz: volání rozhraní Microsoft Graph API z desktopové aplikace pro Windows
 
@@ -47,7 +47,7 @@ Ukázková aplikace, kterou vytvoříte pomocí této příručky, umožňuje de
 
 ## <a name="handling-token-acquisition-for-accessing-protected-web-apis"></a>Zpracování získání tokenu pro přístup k chráněným webovým rozhraním API
 
-Po ověření uživatele obdrží ukázková aplikace token, který můžete použít k dotazování Microsoft Graph rozhraní API nebo webového rozhraní API, které je zabezpečené platformou Microsoft identity pro vývojáře.
+Po ověření uživatele obdrží ukázková aplikace token, který můžete použít k dotazování Microsoft Graph rozhraní API nebo webového rozhraní API, které je zabezpečené platformou Microsoft identity.
 
 Rozhraní API, například Microsoft Graph, vyžadují token, který umožňuje přístup ke konkrétním prostředkům. Například token je vyžadován ke čtení profilu uživatele, přístupu k kalendáři uživatele nebo k odeslání e-mailu. Vaše aplikace může požádat o přístupový token pomocí MSAL pro přístup k těmto prostředkům zadáním oborů rozhraní API. Tento přístupový token se pak přidá do hlavičky Authorization protokolu HTTP pro každé volání provedené proti chráněnému prostředku.
 
@@ -57,7 +57,7 @@ MSAL spravuje ukládání do mezipaměti a aktualizace přístupových tokenů z
 
 Tato příručka používá následující balíčky NuGet:
 
-|Knihovna|Description|
+|Knihovna|Popis|
 |---|---|
 |[Microsoft. identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Knihovna Microsoft Authentication Library (MSAL.NET)|
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: c4d77d1eb532aa18dcc575ffcc093587b69c94d9
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: f9c9cb3b1891383d4c1f0d579cf5990eee9f7826
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98017438"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754168"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow"></a>Rychlý Start: přihlášení uživatelů a získání přístupového tokenu v ZABEZPEČENÉm kódu v JavaScriptu pomocí toku kódu ověřování
 
@@ -39,9 +39,7 @@ Tento rychlý Start používá MSAL.js 2,0 s tokem autorizačního kódu. Podobn
 >
 > ### <a name="option-1-express-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Možnost 1 (Express): registrace a Automatická konfigurace aplikace a stažení ukázky kódu
 >
-> 1. Přihlaste se <a href="https://portal.azure.com/" target="_blank">k <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>.
-> 1. Pokud vám váš účet poskytne přístup k více než jednomu klientovi, vyberte účet v pravém horním rohu a nastavte relaci portálu na tenanta Azure Active Directory (Azure AD), který chcete použít.
-> 1. Vyberte [Registrace aplikací](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs).
+> 1. Přejít na <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs" target="_blank">Registrace aplikací <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>.
 > 1. Zadejte název své aplikace.
 > 1. V části **podporované typy účtů** vyberte **účty v libovolném organizačním adresáři a osobní účty Microsoft**.
 > 1. Vyberte **Zaregistrovat**.
@@ -58,7 +56,7 @@ Tento rychlý Start používá MSAL.js 2,0 s tokem autorizačního kódu. Podobn
 > 1. Zadejte **název** vaší aplikace. Uživatel vaší aplikace může tento název zobrazit a později ho můžete změnit.
 > 1. V části **podporované typy účtů** vyberte **účty v libovolném organizačním adresáři a osobní účty Microsoft**.
 > 1. Vyberte **Zaregistrovat**. Na stránce **Přehled** aplikace si poznamenejte hodnotu **ID aplikace (klienta)** pro pozdější použití.
-> 1. V levém podokně registrované aplikace vyberte **ověřování**.
+> 1. V části **Spravovat** vyberte **ověřování**.
 > 1. V části **konfigurace platformy** vyberte **Přidat platformu**. V podokně, které se otevře, vyberte **jednostránkovou aplikaci**.
 > 1. Nastavte hodnotu **identifikátoru URI přesměrování** na `http://localhost:3000/` .
 > 1. Vyberte **Konfigurovat**.

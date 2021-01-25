@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 4a888c3ad771e4a7edbd7110ba584050fe68e810
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: b8360a22c815fa28626bb07a1518bd82ba6e3e46
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443785"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753507"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>Webové rozhraní API, které volá webová rozhraní API: Konfigurace kódu
 
@@ -88,7 +88,7 @@ Microsoft. identity. Web nabízí několik způsobů, jak popsat certifikáty, j
 
 ## <a name="startupcs"></a>Startup.cs
 
-Vaše webové rozhraní API bude potřebovat získat token pro rozhraní API pro příjem dat. Zadejte ho přidáním `.EnableTokenAcquisitionToCallDownstreamApi()` řádku po `.AddMicrosoftIdentityWebApi(Configuration)` . Tento řádek zveřejňuje `ITokenAcquisition` službu, kterou můžete použít v akcích kontroleru nebo stránek. Jak vidíte v následujících dvou odrážekch, můžete dokonce dělat jednodušší. Budete také muset zvolit implementaci mezipaměti tokenů, například `.AddInMemoryTokenCaches()` v *Startup.cs* :
+Vaše webové rozhraní API bude potřebovat získat token pro rozhraní API pro příjem dat. Zadejte ho přidáním `.EnableTokenAcquisitionToCallDownstreamApi()` řádku po `.AddMicrosoftIdentityWebApi(Configuration)` . Tento řádek zveřejňuje `ITokenAcquisition` službu, kterou můžete použít v akcích kontroleru nebo stránek. Jak vidíte v následujících dvou odrážekch, můžete dokonce dělat jednodušší. Budete také muset zvolit implementaci mezipaměti tokenů, například `.AddInMemoryTokenCaches()` v *Startup.cs*:
 
 ```csharp
 using Microsoft.Identity.Web;
@@ -252,7 +252,7 @@ Můžete si také prohlédnout příklad implementace toku OBO v [Node.js a Azur
 
 ## <a name="protocol"></a>Protokol
 
-Další informace o protokolu OBO naleznete [v tématu Microsoft Identity Platform a OAuth 2,0 na základě toku](./v2-oauth2-on-behalf-of-flow.md).
+Další informace o protokolu OBO najdete v tématu [Flow Microsoft Identity Platform a OAuth 2,0](./v2-oauth2-on-behalf-of-flow.md).
 
 ## <a name="next-steps"></a>Další kroky
 

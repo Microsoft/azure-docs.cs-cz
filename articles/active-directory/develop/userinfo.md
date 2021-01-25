@@ -13,12 +13,12 @@ ms.date: 09/21/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 8f3fd462a52b035cd5b5447560e5472b41f237fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3bd0621d607b121f19bc47c717343b8e2e39b04f
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653226"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752733"
 ---
 # <a name="microsoft-identity-platform-userinfo-endpoint"></a>Microsoft Identity Platform – UserInfo – koncový bod
 
@@ -28,7 +28,7 @@ Koncový bod UserInfo je součástí [standardu OpenID Connect](https://openid.n
 
 Koncový bod UserInfo můžete programově zjistit pomocí dokumentu zjišťování OpenID Connect v `https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration` . Je uveden v `userinfo_endpoint` poli a tento model lze použít napříč cloudy, aby ukazoval na správný koncový bod.  Nedoporučujeme v aplikaci pevně zakódovat koncový bod UserInfo – použijte k vyhledání tohoto koncového bodu za běhu dokument zjišťování OIDC.
 
-V rámci specifikace OpenID Connect se koncový bod UserInfo často automaticky volá pomocí [knihoven vyhovujících OIDC](https://openid.net/developers/certified/)  , aby se získaly informace o uživateli.  Bez hostování takového koncového bodu by technologie Microsoft Identity Platform nesplňovala standardy a některé knihovny selžou.  V [seznamu deklarací identity identifikovaných ve standardu OIDC](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims) vytvoříme deklarace identity, deklarace identity subjektu a e-mail, pokud jsou dostupné a přijaté pro.  
+V rámci specifikace OpenID Connect se koncový bod UserInfo často automaticky volá pomocí [knihoven vyhovujících OIDC](https://openid.net/developers/certified/)  , aby se získaly informace o uživateli.  Bez hostování takového koncového bodu nedodržuje platforma Microsoft Identity Platform standardy a některé knihovny selžou.  V [seznamu deklarací identity identifikovaných ve standardu OIDC](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims) vytvoříme deklarace identity, deklarace identity subjektu a e-mail, pokud jsou dostupné a přijaté pro.  
 
 ## <a name="consider-use-an-id-token-instead"></a>Zvažte možnost použít místo toho token ID.
 
@@ -48,7 +48,7 @@ K volání rozhraní API pro UserInfo použijte následující [OIDC oprávněn�
 |:--------------------|:---------------------------------------------------------|
 |Delegovaný (pracovní nebo školní účet) | OpenID (povinné), profil, e-mail |
 |Delegovaný (osobní účet Microsoft) | OpenID (povinné), profil, e-mail |
-|Aplikace | Nelze použít |
+|Aplikace | Neuvedeno |
 
 > [!TIP]
 > Zkopírujte tuto adresu URL do prohlížeče, abyste získali token pro koncový bod UserInfo a také [token ID](id-tokens.md) a nahradili ID klienta a identifikátor URI přesměrování vlastními. Všimněte si, že žádá jenom o obory pro OpenID nebo pro obory grafů a nic jiného.  To je nutné, protože nemůžete požadovat oprávnění pro dva různé prostředky v rámci stejné žádosti o token.

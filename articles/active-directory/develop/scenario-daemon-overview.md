@@ -1,5 +1,6 @@
 ---
-title: Sestavení aplikace démona, která volá webová rozhraní API – Microsoft Identity Platform | Azure
+title: Sestavení aplikace démona, která volá webová rozhraní API | Azure
+titleSuffix: Microsoft identity platform
 description: Naučte se vytvářet aplikace démona, která volá webová rozhraní API.
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 01/31/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: e63a948260863c93a92e4241044be5e0baf8afca
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 45af940382a261f1793583e471871b9cceed0a57
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443258"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753826"
 ---
 # <a name="scenario-daemon-application-that-calls-web-apis"></a>Scénář: aplikace démona, která volá webová rozhraní API
 
@@ -45,7 +46,7 @@ Aplikace, které získají token pro vlastní identity:
 
 > [!IMPORTANT]
 >
-> - Uživatelé nemůžou pracovat s aplikací démona. Aplikace démona vyžaduje svoji vlastní identitu. Tento typ aplikace požaduje přístupový token pomocí jeho identity aplikace a předvádí jeho ID aplikace, pověření (heslo nebo certifikátu) a identifikátor URI ID aplikace do služby Azure AD. Po úspěšném ověření dostane démon token přístupu (a obnovovací token) z koncového bodu Microsoft Identity Platform. Pomocí tohoto tokenu se pak zavolá webové rozhraní API (a aktualizuje se podle potřeby).
+> - Uživatelé nemůžou pracovat s aplikací démona. Aplikace démona vyžaduje svoji vlastní identitu. Tento typ aplikace požaduje přístupový token pomocí jeho identity aplikace a předvádí jeho ID aplikace, pověření (heslo nebo certifikátu) a identifikátor URI ID aplikace do služby Azure AD. Po úspěšném ověření dostane démon token přístupu (a obnovovací token) z platformy Microsoft Identity Platform. Pomocí tohoto tokenu se pak zavolá webové rozhraní API (a aktualizuje se podle potřeby).
 > - Vzhledem k tomu, že uživatelé nemůžou pracovat s aplikacemi démona, není možné používat přírůstkový souhlas. Všechna požadovaná oprávnění rozhraní API je potřeba nakonfigurovat při registraci aplikace. Kód aplikace pouze žádá o staticky definovaná oprávnění. To také znamená, že aplikace démona nebude podporovat přírůstkový souhlas.
 
 Pro vývojáře mají koncová prostředí pro tento scénář následující aspekty:

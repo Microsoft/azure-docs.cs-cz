@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2021
 ms.author: memildin
-ms.openlocfilehash: 1e6b66fce6b22dfd12c162d469ce44137c94ab87
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: e881c61d16cd167ace78abb96dca7e714436cfc0
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916367"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752201"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Skóre zabezpečení ve službě Azure Security Center
 
@@ -54,7 +54,7 @@ Celkové výsledky zabezpečení a také skóre na předplatné můžete najít 
 
 ### <a name="get-your-secure-score-from-the-portal"></a>Získat zabezpečené skóre z portálu
 
-Security Center zobrazuje vaše skóre na portálu na portálu: Jedná se o první hlavní dlaždici Security Center stránku s přehledem. Kliknutím na tuto dlaždici přejdete na stránku vyhrazeného zabezpečeného skóre, kde se zobrazí skóre rozdělené podle předplatného. Když vyberete jedno předplatné, zobrazí se podrobný seznam doporučení s upřednostněním a potenciální dopad, který by oprava na skóre předplatného.
+Security Center zobrazuje vaše skóre na portálu na portálu: Jedná se o první hlavní dlaždici Security Center stránku s přehledem. Kliknutím na tuto dlaždici přejdete na stránku vyhrazeného zabezpečeného skóre, kde se zobrazí skóre rozdělené podle předplatného. Když vyberete jedno předplatné, zobrazí se podrobný seznam doporučení s upřednostněním a potenciální dopad, který by oprava na skóre předplatného. 
 
 Rekapitulace se vaše zabezpečené skóre zobrazuje v následujících umístěních na stránkách portálu Security Center.
 
@@ -62,9 +62,14 @@ Rekapitulace se vaše zabezpečené skóre zobrazuje v následujících umístě
 
     :::image type="content" source="./media/secure-score-security-controls/score-on-main-dashboard.png" alt-text="Bezpečné skóre na řídicím panelu Security Center":::
 
-- Na stránce vyhrazené **bezpečné skóre** :
+- Na stránce vyhrazená **Zabezpečená skóre** uvidíte bezpečné skóre pro vaše předplatné a skupiny pro správu:
 
-    :::image type="content" source="./media/secure-score-security-controls/score-on-dedicated-dashboard.png" alt-text="Úroveň zabezpečeného skóre na stránce zabezpečeného skóre Security Center":::
+    :::image type="content" source="./media/secure-score-security-controls/score-on-dedicated-dashboard.png" alt-text="Zabezpečené skóre pro odběry na stránce zabezpečeného skóre Security Center":::
+
+    :::image type="content" source="./media/secure-score-security-controls/secure-score-management-groups.png" alt-text="Zabezpečená skóre pro skupiny pro správu na stránce zabezpečeného skóre Security Center":::
+
+    > [!NOTE]
+    > Všechny skupiny pro správu, pro které nemáte dostatečná oprávnění, zobrazí skóre jako "omezené". 
 
 - V horní části stránky **doporučení** :
 
@@ -125,7 +130,7 @@ Pokud jste Power BI uživatel s účtem pro, můžete pomocí řídicího panelu
 - **Shrnutí prostředků** – poskytuje souhrnná data týkající se stavu vašich prostředků.
 - **Shrnutí bezpečného skóre** – poskytuje souhrnná data týkající se průběhu vašeho skóre. Pomocí grafu "bezpečné skóre v průběhu času na předplatné" zobrazíte změny ve výsledku. Pokud si všimnete výrazné změny skóre, podívejte se do tabulky "zjištěné změny, které mohou ovlivnit vaši zabezpečený počet", a zjistěte možné změny, které by mohly způsobit změnu. Tato tabulka uvádí odstraněné prostředky, nově nasazené prostředky nebo prostředky, u kterých se změnil stav zabezpečení pro některá z doporučení.
 
-:::image type="content" source="./media/secure-score-security-controls/power-bi-secure-score-dashboard.png" alt-text="Volitelné zabezpečené skóre v průběhu času – řídicí panel PowerBI pro sledování zabezpečeného skóre v průběhu času a vyšetřování změn":::
+:::image type="content" source="./media/secure-score-security-controls/power-bi-secure-score-dashboard.png" alt-text="Volitelné zabezpečené skóre v průběhu času Power BI řídicím panelu pro sledování zabezpečeného skóre v průběhu času a vyšetřování změn":::
 
 
 
@@ -152,7 +157,7 @@ Maximální skóre tohoto ovládacího prvku, použít aktualizace systému, je 
 
 ### <a name="calculations---understanding-your-score"></a>Výpočty – princip skóre
 
-|Metrika|Vzorec a příklad|
+|Metric|Vzorec a příklad|
 |-|-|
 |**Aktuální skóre ovládacího prvku zabezpečení**|<br>![Rovnice pro výpočet skóre ovládacího prvku zabezpečení](media/secure-score-security-controls/secure-score-equation-single-control.png)<br><br>Každé individuální řízení zabezpečení přispívá ke skóre zabezpečení. Každý prostředek, na který má vliv doporučení v rámci ovládacího prvku, přispívá k aktuálnímu skóre ovládacího prvku. Aktuální skóre pro každý ovládací prvek je míra stavu prostředků *v rámci* ovládacího prvku.<br>![Popisy tlačítek znázorňující hodnoty použité při výpočtu aktuálního skóre ovládacího prvku zabezpečení](media/secure-score-security-controls/security-control-scoring-tooltips.png)<br>V tomto příkladu je maximální skóre 6 děleno 78, protože to je součet zdravých a špatných prostředků.<br>6/78 = 0,0769<br>Vynásobení tohoto počtu zdravých prostředků (4) má za následek aktuální skóre:<br>0,0769 * 4 = **0,31**<br><br>|
 |**Bezpečnostní skóre**<br>Jedno předplatné|<br>![Rovnice pro výpočet zabezpečeného skóre předplatného](media/secure-score-security-controls/secure-score-equation-single-sub.png)<br><br>![Zabezpečené skóre jednotného předplatného se všemi povolenými ovládacími prvky](media/secure-score-security-controls/secure-score-example-single-sub.png)<br>V tomto příkladu je k dispozici jedno předplatné se všemi dostupnými ovládacími prvky zabezpečení (potenciální maximální skóre 60 bodů). Skóre zobrazuje 28 bodů z možného 60 a zbývající 32 body se projeví v hodnotách "potenciálního nárůstu" v rámci ovládacích prvků zabezpečení.<br>![Seznam ovládacích prvků a možné zvýšení skóre](media/secure-score-security-controls/secure-score-example-single-sub-recs.png)|
@@ -274,10 +279,10 @@ I když je výchozí iniciativa zabezpečení Security Center založená na osv�
 ## <a name="secure-score-faq"></a>Nejčastější dotazy k zabezpečení skóre
 
 ### <a name="if-i-address-only-three-out-of-four-recommendations-in-a-security-control-will-my-secure-score-change"></a>Pokud v ovládacím prvku zabezpečení řeším jenom tři doporučení ze čtyř, bude se můj bezpečnostní skóre měnit?
-No. Nemění se, dokud neopravíte všechna doporučení pro jeden prostředek. Chcete-li získat maximální skóre pro ovládací prvek, je nutné opravit všechna doporučení pro všechny prostředky.
+Ne. Nemění se, dokud neopravíte všechna doporučení pro jeden prostředek. Chcete-li získat maximální skóre pro ovládací prvek, je nutné opravit všechna doporučení pro všechny prostředky.
 
 ### <a name="if-a-recommendation-isnt-applicable-to-me-and-i-disable-it-in-the-policy-will-my-security-control-be-fulfilled-and-my-secure-score-updated"></a>Pokud doporučení neplatí pro mě a je v zásadách zakázané, bude řízení zabezpečení splněné a mé zabezpečené skóre se aktualizovalo?
-Yes. Doporučujeme zakázat doporučení, pokud jsou ve vašem prostředí nepoužitá. Pokyny, jak zakázat konkrétní doporučení, najdete v tématu [zakázání zásad zabezpečení](./tutorial-security-policy.md#disable-security-policies-and-disable-recommendations).
+Ano. Doporučujeme zakázat doporučení, pokud jsou ve vašem prostředí nepoužitá. Pokyny, jak zakázat konkrétní doporučení, najdete v tématu [zakázání zásad zabezpečení](./tutorial-security-policy.md#disable-security-policies-and-disable-recommendations).
 
 ### <a name="if-a-security-control-offers-me-zero-points-towards-my-secure-score-should-i-ignore-it"></a>Pokud řízení zabezpečení nabízí nulové body směrem k mému zabezpečenému skóre, je vhodné je ignorovat?
 V některých případech se zobrazí maximální skóre v rámci ovládacího prvku větší než nula, ale dopad je nula. Když je přírůstkové skóre pro opravu prostředků zanedbatelné, zaokrouhlí se na nulu. Tato doporučení neignorujte, protože stále přinášejí vylepšení zabezpečení. Jedinou výjimkou je ovládací prvek "další osvědčené postupy". Oprava tato doporučení nezvýší vaše skóre, ale zvýší vaše celkové zabezpečení.

@@ -13,12 +13,12 @@ ms.date: 07/09/2020
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: identityplatformtop40, contperf-fy21q2
-ms.openlocfilehash: e5a9292097933ff35eb8b77445f07f10def6e5c3
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 662523b1544fe3ca9e8bda993efa7b578b9f69cc
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029613"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752568"
 ---
 # <a name="what-is-the-microsoft-identity-platform"></a>Co je Microsoft Identity Platform?
 
@@ -78,7 +78,7 @@ Přečtěte si, jak se základní ověřování a koncepce Azure AD vztahují na
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud máte účet Azure, ke kterému už máte Azure Active Directory přístup, ale většina vývojářů platforem Microsoft Identity Platform potřebuje svůj vlastní tenant Azure AD pro použití při vývoji aplikací, "vývojářského tenanta".
+Pokud máte účet Azure, ke kterému už máte Azure Active Directory přístup, ale většina vývojářů platformy Microsoft Identity Platform potřebuje pro použití při vývoji aplikací, které jsou pro vývoj aplikací, jenom vlastního tenanta Azure AD.
 
 Zjistěte, jak vytvořit vlastního tenanta pro použití při sestavování aplikací:
 

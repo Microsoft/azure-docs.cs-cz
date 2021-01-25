@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/07/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
-ms.openlocfilehash: 4610d4d677d2d340340aab5edcddb658ac32e5e4
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 074b64debc0a5aa08967efce69b7e5d14b4d90e4
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178193"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754048"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Rychlý start: Volání rozhraní Microsoft Graph API z aplikace pro Univerzální platformu Windows (UPW)
 
@@ -124,7 +124,7 @@ Jakmile se zobrazí okno aplikace, můžete vybrat tlačítko **rozhraní API pr
 
 ### <a name="msalnet"></a>MSAL.NET
 
-MSAL ([Microsoft. identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)) je knihovna používaná k přihlašování uživatelů a žádosti o tokeny zabezpečení. Tokeny zabezpečení se používají pro přístup k rozhraní API chráněnému platformou Microsoft identity pro vývojáře. MSAL můžete nainstalovat spuštěním následujícího příkazu v *Konzole Správce balíčků* v sadě Visual Studio:
+MSAL ([Microsoft. identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)) je knihovna používaná k přihlašování uživatelů a žádosti o tokeny zabezpečení. Tokeny zabezpečení se používají pro přístup k rozhraní API chráněnému platformou Microsoft identity. MSAL můžete nainstalovat spuštěním následujícího příkazu v *Konzole Správce balíčků* v sadě Visual Studio:
 
 ```powershell
 Install-Package Microsoft.Identity.Client
@@ -155,7 +155,7 @@ MSAL má dvě metody pro získání tokenů v aplikaci pro UWP: `AcquireTokenInt
 
 #### <a name="get-a-user-token-interactively"></a>Interaktivní získání tokenu uživatele
 
-Některé situace vyžadují, aby uživatelé vynutili interakci s koncovým bodem Microsoft Identity Platform prostřednictvím místního okna, aby ověřili své přihlašovací údaje nebo udělili souhlas. Možné příklady:
+Některé situace vyžadují, aby uživatelé vynutili interakci s platformou Microsoft identity prostřednictvím místního okna, aby ověřili své přihlašovací údaje nebo udělili souhlas. Možné příklady:
 
 - První přihlášení uživatelů do aplikace
 - Když je potřeba, aby uživatelé znovu zadali svoje přihlašovací údaje, protože vypršela platnost hesla

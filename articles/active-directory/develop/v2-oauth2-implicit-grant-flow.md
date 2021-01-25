@@ -1,5 +1,5 @@
 ---
-title: Protokol OAuth 2,0 – implicitní udělení udělení – Microsoft Identity Platform | Azure
+title: Postup implicitního udělení OAuth 2,0 – Microsoft Identity Platform | Azure
 description: Používejte k zabezpečení jednostránkovéch aplikací Microsoft Identity Platform implicitní tok.
 services: active-directory
 author: hpsin
@@ -12,12 +12,12 @@ ms.date: 11/30/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 4b5465cc5c1c3447af5303a5c0bfe82874705362
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 97f4642d69d4a432b823bd1cd7cdbdd9fc7f270d
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511184"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752747"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Microsoft Identity Platform a implicitní tok udělení
 
@@ -41,7 +41,7 @@ Následující diagram ukazuje, jak celý tok implicitního přihlašování vyp
 
 ## <a name="send-the-sign-in-request"></a>Odeslat žádost o přihlášení
 
-Pokud chcete uživatele zpočátku podepsat do vaší aplikace, můžete odeslat žádost o ověření [OpenID Connect](v2-protocols-oidc.md) a získat `id_token` od koncového bodu Microsoft Identity Platform.
+Pokud chcete uživatele zpočátku podepsat do vaší aplikace, můžete odeslat žádost o ověření [OpenID Connect](v2-protocols-oidc.md) a získat `id_token` od platformy Microsoft identity.
 
 > [!IMPORTANT]
 > K úspěšnému vyžádání tokenu ID nebo přístupového tokenu musí mít registrace aplikace na stránce [Azure Portal-registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) povolený odpovídající implicitní tok udělení oprávnění, a to tak, že v části **implicitního udělení udělí** možnost **tokeny ID** a **tokeny nebo přístupové tokeny** . Pokud není povolená, vrátí se `unsupported_response` Chyba: **zadaná hodnota pro vstupní parametr ' response_type ' není pro tohoto klienta povolena. Očekávaná hodnota je Code.**
@@ -73,13 +73,13 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `response_mode` | optional |Určuje metodu, která se má použít k odeslání výsledného tokenu zpátky do vaší aplikace. Ve výchozím nastavení se dotazuje pouze na přístupový token, ale fragment, pokud požadavek obsahuje id_token. |
 | `state` | doporučil |Hodnota obsažená v požadavku, která se také vrátí v odpovědi tokenu. Může to být řetězec libovolného obsahu, který chcete. Náhodně vygenerovaná jedinečná hodnota se obvykle používá k [prevenci útoků proti padělání požadavků mezi lokalitami](https://tools.ietf.org/html/rfc6749#section-10.12). Stav se používá také ke kódování informací o stavu uživatele v aplikaci před tím, než došlo k žádosti o ověření, jako je například stránka nebo zobrazení, na kterých se nachází. |
 | `nonce` | vyžadováno |Hodnota obsažená v požadavku, která se vygenerovala aplikací, která se zahrne do výsledného id_token jako deklarace. Aplikace pak může tuto hodnotu ověřit a zmírnit tak útoky na opakované přehrání tokenů. Hodnota je obvykle náhodný jedinečný řetězec, který lze použít k identifikaci původu žádosti. Požadováno pouze v případě, že je požadováno id_token. |
-| `prompt` | optional |Určuje typ interakce uživatele, která je povinná. V tuto chvíli jsou k dispozici pouze platné hodnoty "login," none "," select_account "a" souhlas ". `prompt=login` vynutí, aby uživatel zadal přihlašovací údaje k danému požadavku, přičemž se pro ně použije negace jednotného přihlašování. `prompt=none` je opakem, zajistí, že se uživateli nebude zobrazovat žádná interaktivní výzva. Pokud se žádost nedá v tichém režimu dokončit pomocí jednotného přihlašování, vrátí koncová platforma Microsoft Identity platformu chybu. `prompt=select_account` pošle uživateli výběr účtu, kde se zobrazí všechny účty, které jsou v relaci zapamatovat. `prompt=consent` aktivuje dialog souhlasu OAuth po přihlášení uživatele a vyzve uživatele, aby aplikaci udělil oprávnění. |
+| `prompt` | optional |Určuje typ interakce uživatele, která je povinná. V tuto chvíli jsou k dispozici pouze platné hodnoty "login," none "," select_account "a" souhlas ". `prompt=login` vynutí, aby uživatel zadal přihlašovací údaje k danému požadavku, přičemž se pro ně použije negace jednotného přihlašování. `prompt=none` je opakem, zajistí, že se uživateli nebude zobrazovat žádná interaktivní výzva. Pokud se žádost nedá v tichém režimu dokončit pomocí jednotného přihlašování, bude platforma Microsoft Identity platformou vracet chybu. `prompt=select_account` pošle uživateli výběr účtu, kde se zobrazí všechny účty, které jsou v relaci zapamatovat. `prompt=consent` aktivuje dialog souhlasu OAuth po přihlášení uživatele a vyzve uživatele, aby aplikaci udělil oprávnění. |
 | `login_hint`  |optional |Dá se použít k předvyplnění pole uživatelské jméno a e-mailová adresa uživatele přihlašovací stránky, pokud znáte své uživatelské jméno předem. Aplikace budou často používat tento parametr během opakovaného ověřování, kteří už rozvěděli uživatelské jméno z předchozího přihlášení pomocí `preferred_username` deklarace identity.|
 | `domain_hint` | optional |Pokud se tato možnost zahrne, přeskočí proces zjišťování e-mailu, který uživatel prochází na přihlašovací stránce, což vede k poněkud efektivnějšímu uživatelskému prostředí. Tento parametr se běžně používá pro obchodní aplikace, které pracují v jednom tenantovi, kde budou poskytovat název domény v rámci daného tenanta, který uživatele přesměruje do poskytovatele federace pro tohoto tenanta.  Všimněte si, že tato Nápověda brání hostům v přihlašování k této aplikaci a omezuje použití přihlašovacích údajů cloudu, jako je FIDO.  |
 
-V tomto okamžiku se uživateli zobrazí výzva k zadání přihlašovacích údajů a dokončení ověřování. Koncový bod platformy Microsoft Identity také zajistí, že uživatel souhlasí s oprávněními uvedenými v `scope` parametru dotazu. Pokud uživatel souhlasí s **žádným** z těchto oprávnění, požádá uživatele o souhlas s požadovanými oprávněními. Další informace najdete v tématu [oprávnění, souhlas a víceklientské aplikace](v2-permissions-and-consent.md).
+V tomto okamžiku se uživateli zobrazí výzva k zadání přihlašovacích údajů a dokončení ověřování. Platforma Microsoft Identity také zajistí, že uživatel souhlasí s oprávněními uvedenými v `scope` parametru dotazu. Pokud uživatel souhlasí s **žádným** z těchto oprávnění, požádá uživatele o souhlas s požadovanými oprávněními. Další informace najdete v tématu [oprávnění, souhlas a víceklientské aplikace](v2-permissions-and-consent.md).
 
-Jakmile uživatel ověří a udělí souhlas, koncový bod platformy Microsoft Identity Platform vrátí odpověď do vaší aplikace na uvedené adrese `redirect_uri` pomocí metody zadané v `response_mode` parametru.
+Jakmile se uživatel ověří a udělí souhlas, platforma Microsoftu identity vrátí odpověď do vaší aplikace na uvedené adrese `redirect_uri` pomocí metody uvedené v `response_mode` parametru.
 
 #### <a name="successful-response"></a>Úspěšná odpověď
 
@@ -199,7 +199,7 @@ V prohlížečích, které nepodporují soubory cookie třetích stran, dojde k 
 
 ## <a name="send-a-sign-out-request"></a>Odeslat žádost o odhlášení
 
-OpenID Connect `end_session_endpoint` umožňuje vaší aplikaci odeslat žádost do koncového bodu Microsoft Identity Platform, aby ukončila relaci uživatele a vymazala soubory cookie nastavené koncovým bodem Microsoft Identity Platform. Aby bylo možné uživatele z webové aplikace úplně podepsat, měla by vaše aplikace ukončit svou vlastní relaci s uživatelem (obvykle vymazáním mezipaměti tokenů nebo vyřazení souborů cookie) a pak přesměrovat prohlížeč na:
+OpenID Connect `end_session_endpoint` umožňuje vaší aplikaci odeslat požadavek na platformu Microsoft identity, aby ukončila relaci uživatele a vymazala soubory cookie nastavené platformou Microsoft identity. Aby bylo možné uživatele z webové aplikace úplně podepsat, měla by vaše aplikace ukončit svou vlastní relaci s uživatelem (obvykle vymazáním mezipaměti tokenů nebo vyřazení souborů cookie) a pak přesměrovat prohlížeč na:
 
 ```
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/logout?post_logout_redirect_uri=https://localhost/myapp/
@@ -208,7 +208,7 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/logout?post_logout_redire
 | Parametr | Typ | Popis |
 | --- | --- | --- |
 | `tenant` |vyžadováno |`{tenant}`Hodnotu v cestě k požadavku lze použít k řízení, kdo se může přihlásit k aplikaci. Povolené hodnoty jsou `common` `organizations` `consumers` identifikátory klientů,, a. Další podrobnosti najdete v tématu [základy protokolu](active-directory-v2-protocols.md#endpoints). |
-| `post_logout_redirect_uri` | doporučil | Adresa URL, na kterou se má uživatel vrátit po odhlášení, se dokončí. Tato hodnota musí odpovídat jednomu z registrovaných identifikátorů URI přesměrování pro aplikaci. Pokud tato akce není zahrnutá, zobrazí se uživateli obecná zpráva od koncového bodu Microsoft Identity Platform. |
+| `post_logout_redirect_uri` | doporučil | Adresa URL, na kterou se má uživatel vrátit po odhlášení, se dokončí. Tato hodnota musí odpovídat jednomu z registrovaných identifikátorů URI přesměrování pro aplikaci. Pokud tato součást není zahrnutá, zobrazí se uživateli obecná zpráva platformy Microsoft identity. |
 
 ## <a name="next-steps"></a>Další kroky
 

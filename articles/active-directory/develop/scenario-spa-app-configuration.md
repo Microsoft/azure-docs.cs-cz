@@ -1,5 +1,6 @@
 ---
-title: Konfigurace jednostránkové aplikace – Microsoft Identity Platform | Azure
+title: Konfigurace jednostránkové aplikace | Azure
+titleSuffix: Microsoft identity platform
 description: Naučte se vytvářet jednostránkové aplikace (konfigurace kódu aplikace).
 services: active-directory
 author: navyasric
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 02/11/2020
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 30a9b710ffbf98ebc523217a3b8a7fd9a2640c49
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 5cbb576a7fcfb2daf492a149130aa7c99fe10ac5
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443037"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753615"
 ---
 # <a name="single-page-application-code-configuration"></a>Jednostránkové aplikace: Konfigurace kódu
 

@@ -1,5 +1,6 @@
 ---
-title: Zápis webové aplikace s přihlašováním/vycházejícími uživateli – Microsoft Identity Platform | Azure
+title: Zápis webové aplikace, která se přihlásí uživatelům Azure
+titleSuffix: Microsoft identity platform
 description: Naučte se, jak vytvořit webovou aplikaci, která se přihlásí uživatelům.
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: e7397f6d02d71a6344953b8210b0349b9ee26360
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 5b0b86321f7f2b320c3fea8e7c5bfa45bd936b77
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443547"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753002"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>Webová aplikace, která přihlašuje uživatele: přihlášení a odhlášení
 
@@ -213,7 +214,7 @@ Až se uživatel přihlásí do vaší aplikace, budete ho chtít povolit, aby s
 Odhlášení z webové aplikace zahrnuje více než odebrání informací o přihlášeném účtu ze stavu webové aplikace.
 Webová aplikace musí také přesměrovat uživatele na koncový bod platformy Microsoft identity, `logout` aby se odhlásily.
 
-Když vaše webová aplikace přesměruje uživatele na `logout` koncový bod, tento koncový bod vymaže relaci uživatele z prohlížeče. Pokud vaše aplikace nepřešla do `logout` koncového bodu, uživatel se znovu ověří do vaší aplikace bez zadání přihlašovacích údajů. Důvodem je, že budou mít platnou relaci jednotného přihlašování s koncovým bodem Microsoft Identity Platform.
+Když vaše webová aplikace přesměruje uživatele na `logout` koncový bod, tento koncový bod vymaže relaci uživatele z prohlížeče. Pokud vaše aplikace nepřešla do `logout` koncového bodu, uživatel se znovu ověří do vaší aplikace bez zadání přihlašovacích údajů. Důvodem je, že budou mít platnou relaci jednotného přihlašování s platformou Microsoft identity.
 
 Další informace najdete v části [odeslání žádosti o přihlášení](v2-protocols-oidc.md#send-a-sign-out-request) na [platformě Microsoft Identity Platform a v dokumentaci k protokolu OpenID Connect](v2-protocols-oidc.md) .
 

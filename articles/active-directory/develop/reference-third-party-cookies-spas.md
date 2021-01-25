@@ -13,12 +13,12 @@ ms.date: 05/19/2020
 ms.author: hirsin
 ms.reviewer: kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 064c9a00e1cd7c139f3f42a053dcf8a5db13f161
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: eed4e919684575bb2c63170d91517b661fac4acf
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104576"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753966"
 ---
 # <a name="handle-itp-in-safari-and-other-browsers-where-third-party-cookies-are-blocked"></a>Zpracování ITP v Safari a dalších prohlížečích, kde jsou soubory cookie třetích stran blokované
 
@@ -77,7 +77,7 @@ Běžným vzorem ve webových aplikacích je použití prvku IFRAME pro vložen�
 
 Vydání aktualizačních tokenů do prohlížeče se považuje za bezpečnostní problém. Útoky skriptování XSS (mezi weby) nebo napadené balíčky JS mohou ukrást obnovovací token a používat ho vzdáleně, dokud nevyprší platnost nebo se odvolá. Aby se minimalizovalo riziko odcizených aktualizačních tokenů, jednostránkové se vydávají tokeny platné jenom na 24 hodin. Po 24 hodinách musí aplikace získat nový autorizační kód prostřednictvím rámce nejvyšší úrovně na přihlašovací stránce.
 
-Tento vzor obnovovacího tokenu s omezeným trváním byl vybrán jako rovnováhu mezi zabezpečením a degradované uživatelské prostředí. Bez aktualizačních tokenů nebo souborů cookie třetích stran je tok autorizačního kódu (jak je doporučený [konceptem osvědčených postupů zabezpečení OAuth](https://tools.ietf.org/html/draft-ietf-oauth-security-topics-14)) náročný na to, že se vyžadují nové nebo další tokeny. U každého jediného tokenu je potřeba celá stránka přesměrování nebo místní nabídka, pokaždé, když vyprší platnost tokenu (každou hodinu obvykle pro tokeny platformy Microsoft Identity).
+Tento vzor obnovovacího tokenu s omezeným trváním byl vybrán jako rovnováhu mezi zabezpečením a degradované uživatelské prostředí. Bez aktualizačních tokenů nebo souborů cookie třetích stran je tok autorizačního kódu (jak je doporučený [konceptem osvědčených postupů zabezpečení OAuth](https://tools.ietf.org/html/draft-ietf-oauth-security-topics-14)) náročný na to, že se vyžadují nové nebo další tokeny. U každého jediného tokenu je potřeba úplné přesměrování stránky nebo automaticky otevírané okno, pokaždé, když vyprší platnost tokenu (každou hodinu obvykle pro tokeny platformy Microsoft Identity).
 
 ## <a name="next-steps"></a>Další kroky
 

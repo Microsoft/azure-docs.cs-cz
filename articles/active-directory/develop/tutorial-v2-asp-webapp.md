@@ -12,18 +12,18 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: dcb8675350442274418920bb9439b65643f1b046
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 8b12df62a7080e57e47b52cb79ed8a67e12bd526
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178241"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753104"
 ---
 # <a name="tutorial-add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Kurz: přidání přihlášení do Microsoftu do webové aplikace v ASP.NET
 
 V tomto kurzu vytvoříte webovou aplikaci ASP.NET MVC, která se přihlásí uživatelům pomocí middlewaru Open Web Interface for .NET (OWIN) a platformy Microsoft identity.
 
-Po dokončení této příručky bude aplikace moci přijímat přihlášení osobních účtů z podobných outlook.com a live.com. Pracovní a školní účty z libovolné společnosti nebo organizace, která je integrovaná s platformou Microsoft Identity Platform, se budou moct přihlašovat do vaší aplikace.
+Po dokončení této příručky bude aplikace moci přijímat přihlášení osobních účtů z podobných outlook.com a live.com. Pracovní a školní účty z libovolné společnosti nebo organizace, která je integrovaná s platformou Microsoft identity, se budou moci přihlásit k vaší aplikaci.
 
 V tomto kurzu:
 
@@ -48,7 +48,7 @@ Ukázková aplikace, kterou vytvoříte, je založená na scénáři, ve kterém
 
 Tato příručka používá následující knihovny:
 
-|Knihovna|Description|
+|Knihovna|Popis|
 |---|---|
 |[Microsoft.Owin.Security.OpenIdConnect](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect/)|Middleware, který aplikaci umožňuje použít OpenIdConnect pro ověřování|
 |[Microsoft.Owin.Security.Cookies](https://www.nuget.org/packages/Microsoft.Owin.Security.Cookies)|Middleware, který umožňuje aplikaci udržovat relaci uživatelů pomocí souborů cookie|
@@ -119,7 +119,7 @@ Následující kroky slouží k vytvoření třídy OWIN middleware pro konfigur
         // Tenant is the tenant ID (e.g. contoso.onmicrosoft.com, or 'common' for multi-tenant)
         static string tenant = System.Configuration.ConfigurationManager.AppSettings["Tenant"];
 
-        // Authority is the URL for authority, composed by Microsoft identity platform endpoint and the tenant name (e.g. https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0)
+        // Authority is the URL for authority, composed of the Microsoft identity platform and the tenant name (e.g. https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0)
         string authority = String.Format(System.Globalization.CultureInfo.InvariantCulture, System.Configuration.ConfigurationManager.AppSettings["Authority"], tenant);
 
         /// <summary>
@@ -187,7 +187,7 @@ Pokud chcete vytvořit nový kontroler pro vystavování metod přihlášení a 
 
 1.  Klikněte pravým tlačítkem na složku **řadiče** a vyberte **Přidat**  >  **kontroler**.
 2.  Vyberte **Kontroler MVC (verze .NET) – prázdný**.
-3.  Vyberte **Add** (Přidat).
+3.  Vyberte **Přidat**.
 4.  Pojmenujte ji **HomeController** a pak vyberte **Přidat**.
 5.  Přidat odkazy OWIN do třídy:
 
@@ -279,7 +279,7 @@ Tento kontroler demonstruje použití atributu `[Authorize]` k ochraně kontrole
 
 1.  Klikněte pravým tlačítkem na složku **Controllers** a pak vyberte **Přidat**  >  **kontroler**.
 2.  Vyberte **Kontroler MVC {version} – prázdný**.
-3.  Vyberte **Add** (Přidat).
+3.  Vyberte **Přidat**.
 4.  Pojmenujte ho **ClaimsController**.
 5.  Nahraďte kód třídy kontroleru následujícím kódem. Tím se `[Authorize]` do třídy přidá atribut:
 
@@ -406,14 +406,13 @@ Až budete připraveni spustit test, použijte účet Azure AD (pracovní nebo �
 <br/><br/>
 ![Přihlaste se ke svému účet Microsoft](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin2.png)
 
-#### <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Oprávnění a souhlas v koncovém bodu Microsoft Identity Platform
-
-Aplikace, které se integrují se sadou Microsoft Identity Platform, se řídí autorizačním modelem, který poskytuje uživatelům a správcům kontrolu nad tím, jak budou data dostupná. Po ověření uživatele s Microsoft Identity platformou pro přístup k této aplikaci se zobrazí výzva k vyjádření souhlasu s oprávněními požadovanými aplikací ("zobrazit váš základní profil" a "zachovat přístup k datům, ke kterým jste udělili přístup."). Po přijetí těchto oprávnění bude uživatel pokračovat do výsledků aplikace. Uživatel se ale může místo toho zobrazit na stránce **vyžadovat souhlas správce** , pokud nastane jedna z následujících možností:
+#### <a name="permissions-and-consent-in-the-microsoft-identity-platform"></a>Oprávnění a souhlas na platformě Microsoft identity
+Aplikace, které se integrují s platformou Microsoft identity, se řídí autorizačním modelem, který poskytuje uživatelům a správcům kontrolu nad tím, jak se data dají získat. Po ověření uživatele s platformou Microsoft identity pro přístup k této aplikaci se zobrazí výzva k vyjádření souhlasu s oprávněními požadovanými aplikací ("zobrazit váš základní profil" a "zachovat přístup k datům, ke kterým jste udělili přístup"). Po přijetí těchto oprávnění bude uživatel pokračovat do výsledků aplikace. Uživatel se ale může místo toho zobrazit na stránce **vyžadovat souhlas správce** , pokud nastane jedna z následujících možností:
 
 - Vývojář aplikace přidá jakákoli další oprávnění, která vyžadují **souhlas správce**.
 - Nebo je tenant nakonfigurovaný (v **podnikových aplikacích – > uživatelských nastavení**), kde uživatelé nemůžou udělit souhlas s aplikacemi, které přistupují k firemním datům jejich jménem.
 
-Další informace najdete [v tématu oprávnění a souhlas v koncovém bodě Microsoft Identity Platform](./v2-permissions-and-consent.md).
+Další informace najdete [v tématu oprávnění a souhlas na platformě Microsoft Identity](./v2-permissions-and-consent.md).
 
 ### <a name="view-application-results"></a>Zobrazit výsledky aplikace
 

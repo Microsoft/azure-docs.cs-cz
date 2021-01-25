@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: f60e21f98092df65ef01e68fe9c2e64833a24855
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: a678e8545f761e98abbdf026886afa624f9d2b4e
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063208"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753647"
 ---
 # <a name="scenario-mobile-application-that-calls-web-apis"></a>Scénář: mobilní aplikace, která volá webová rozhraní API
 
@@ -34,7 +34,7 @@ Pokud jste to ještě neudělali, vytvořte svou první aplikaci dokončením ry
 
 ## <a name="overview"></a>Přehled
 
-Pro mobilní aplikace je nezbytné přizpůsobené a bezproblémové uživatelské prostředí.  Platforma Microsoft Identity umožňuje vývojářům v mobilních aplikacích vytvářet prostředí pro uživatele s iOS a Androidem. Vaše aplikace se může přihlašovat Azure Active Directory (Azure AD), uživatelům osobních účet Microsoft a Azure AD B2Cm uživatelům. Může také získat tokeny pro volání webového rozhraní API jménem. K implementaci těchto toků použijeme Microsoft Authentication Library (MSAL). MSAL implementuje oborový standardní [tok autorizačního kódu OAuth 2.0](v2-oauth2-auth-code-flow.md).
+Pro mobilní aplikace je nezbytné přizpůsobené a bezproblémové uživatelské prostředí. Platforma Microsoft Identity umožňuje vývojářům v mobilních aplikacích vytvářet prostředí pro uživatele s iOS a Androidem. Vaše aplikace se může přihlašovat Azure Active Directory (Azure AD), uživatelům osobních účet Microsoft a Azure AD B2Cm uživatelům. Může také získat tokeny pro volání webového rozhraní API jménem. K implementaci těchto toků použijeme Microsoft Authentication Library (MSAL). MSAL implementuje oborový standardní [tok autorizačního kódu OAuth 2.0](v2-oauth2-auth-code-flow.md).
 
 ![Aplikace démonů](./media/scenarios/mobile-app.svg)
 

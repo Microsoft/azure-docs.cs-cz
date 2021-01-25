@@ -13,16 +13,16 @@ ms.date: 05/22/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 71e930898f1f86622357f9e02da69be7bf2f8088
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de1fcdc259de3f72e35feb411bcc836354352eb4
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91256581"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752594"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft Identity Platform a OpenID Connect Protocol
 
-OpenID Connect (OIDC) je ověřovací protokol založený na OAuth 2,0, který můžete použít k bezpečnému přihlášení uživatele do aplikace. Když použijete implementaci OpenID Connect koncového bodu platformy Microsoft identity, můžete k vašim aplikacím přidat přístup a přístup k rozhraní API. Tento článek ukazuje, jak to provést nezávisle na jazyku a popisuje, jak odesílat a přijímat zprávy HTTP bez použití [knihoven Microsoft Open-Source](reference-v2-libraries.md)Library.
+OpenID Connect (OIDC) je ověřovací protokol založený na OAuth 2,0, který můžete použít k bezpečnému přihlášení uživatele do aplikace. Když použijete implementaci OpenID Connect platformy Microsoft identity, můžete do svých aplikací přidat přihlašování a přístup k rozhraní API. Tento článek ukazuje, jak to provést nezávisle na jazyku a popisuje, jak odesílat a přijímat zprávy HTTP bez použití [knihoven Microsoft Open-Source](reference-v2-libraries.md)Library.
 
 [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) rozšiřuje *autorizační* protokol OAuth 2,0 pro použití jako *ověřovací* protokol, aby bylo možné provádět jednotné přihlašování pomocí protokolu OAuth. OpenID Connect zavádí koncept *tokenu ID*, což je token zabezpečení, který umožňuje klientovi ověřit identitu uživatele. Token ID také získá základní informace o profilu uživatele. Zavádí taky [koncový bod UserInfo](userinfo.md), rozhraní API, které vrací informace o uživateli. 
 
@@ -88,7 +88,7 @@ Metadata jsou jednoduchý dokument JavaScript Object Notation (JSON). Příklad 
 
 Pokud vaše aplikace obsahuje vlastní podpisové klíče v důsledku použití funkce [mapování deklarací](active-directory-claims-mapping.md) , musíte připojit `appid` parametr dotazu obsahující ID aplikace, aby bylo možné přejít `jwks_uri` k informacím o podpisovém klíči vaší aplikace. Příklad: `https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e` obsahuje a `jwks_uri` `https://login.microsoftonline.com/{tenant}/discovery/v2.0/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e` .
 
-Obvykle byste tento dokument metadat použili ke konfiguraci knihovny nebo sady SDK OpenID Connect. Knihovna by tato metadata použila k tomu, aby fungovala. Pokud ale nepoužíváte předem vytvořenou knihovnu OpenID Connect, můžete k tomu použít postup ve zbývající části tohoto článku, abyste se mohli přihlásit do webové aplikace pomocí koncového bodu Microsoft Identity Platform.
+Obvykle byste tento dokument metadat použili ke konfiguraci knihovny nebo sady SDK OpenID Connect. Knihovna by tato metadata použila k tomu, aby fungovala. Pokud ale nepoužíváte předem vytvořenou knihovnu OpenID Connect, můžete k tomu použít postup ve zbývající části tohoto článku, abyste se přihlásili do webové aplikace pomocí platformy Microsoft identity.
 
 ## <a name="send-the-sign-in-request"></a>Odeslat žádost o přihlášení
 
@@ -116,7 +116,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &nonce=678910
 ```
 
-| Parametr | Stav | Popis |
+| Parametr | Podmínka | Popis |
 | --- | --- | --- |
 | `tenant` | Povinné | `{tenant}`Hodnotu v cestě k požadavku můžete použít k řízení, kdo se může přihlásit k aplikaci. Povolené hodnoty jsou `common` `organizations` `consumers` identifikátory klientů,, a. Další informace najdete v tématu [základy protokolu](active-directory-v2-protocols.md#endpoints). |
 | `client_id` | Vyžadováno | **ID aplikace (klienta)** , které [Azure Portal – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) prostředí přiřazené k vaší aplikaci. |
@@ -126,13 +126,13 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `nonce` | Vyžadováno | Hodnota obsažená v požadavku, která se vygenerovala aplikací, která se zahrne do výsledné id_token hodnoty jako deklarace. Aplikace může tuto hodnotu ověřit a zmírnit tak útoky na opakované přehrání tokenů. Hodnota je obvykle náhodný jedinečný řetězec, který lze použít k identifikaci původu žádosti. |
 | `response_mode` | Doporučeno | Určuje metodu, která se má použít k odeslání výsledného autorizačního kódu zpátky do vaší aplikace. Může být `form_post` nebo `fragment`. Pro webové aplikace doporučujeme použít `response_mode=form_post` , abyste zajistili nejbezpečnější přenos tokenů do aplikace. |
 | `state` | Doporučeno | Hodnota obsažená v požadavku, která se také vrátí v odpovědi tokenu. Může to být řetězec libovolného obsahu, který chcete. Náhodně generovaná jedinečná hodnota se obvykle používá k [zabránění útokům proti padělání požadavků mezi lokalitami](https://tools.ietf.org/html/rfc6749#section-10.12). Stav se také používá ke kódování informací o stavu uživatele v aplikaci před tím, než k žádosti o ověření dojde, například na stránce nebo zobrazení, na které uživatel byl. |
-| `prompt` | Volitelné | Určuje typ interakce uživatele, která je povinná. Jediné platné hodnoty jsou v tomto okamžiku `login` , `none` a `consent` . `prompt=login`Deklarace identity vynutí, aby uživatel zadal své přihlašovací údaje k této žádosti, který má na starosti jednotné přihlašování. `prompt=none`Deklarace identity je opak. Tato deklarace identity zajišťuje, že uživatel nebude mít žádné interaktivní výzvy na adrese. Pokud se žádost nedá v tichém režimu dokončit pomocí jednotného přihlašování, vrátí koncová platforma Microsoft Identity Platform chybu. `prompt=consent`Deklarace identity aktivuje dialogové okno pro vyjádření souhlasu OAuth, až se uživatel přihlásí. Dialogové okno požádá uživatele o udělení oprávnění k aplikaci. |
+| `prompt` | Volitelné | Určuje typ interakce uživatele, která je povinná. Jediné platné hodnoty jsou v tomto okamžiku `login` , `none` a `consent` . `prompt=login`Deklarace identity vynutí, aby uživatel zadal své přihlašovací údaje k této žádosti, který má na starosti jednotné přihlašování. `prompt=none`Deklarace identity je opak. Tato deklarace identity zajišťuje, že uživatel nebude mít žádné interaktivní výzvy na adrese. Pokud se žádost nedá v tichém režimu dokončit pomocí jednotného přihlašování, vrátí platforma Microsoft Identity Platform chybu. `prompt=consent`Deklarace identity aktivuje dialogové okno pro vyjádření souhlasu OAuth, až se uživatel přihlásí. Dialogové okno požádá uživatele o udělení oprávnění k aplikaci. |
 | `login_hint` | Volitelné | Tento parametr můžete použít k předvyplnění pole uživatelské jméno a e-mailová adresa přihlašovací stránky pro uživatele, pokud znáte uživatelské jméno předem. Aplikace často používají tento parametr během opakovaného ověřování, po již extrakci uživatelského jména z dřívějšího přihlášení pomocí `preferred_username` deklarace identity. |
 | `domain_hint` | Volitelné | Sféra uživatele ve federovaném adresáři.  Tím se přeskočí proces zjišťování na základě e-mailu, který uživatel prochází na přihlašovací stránce, aby bylo poněkud jednodušší uživatelské prostředí. Pro klienty, kteří jsou federované prostřednictvím místního adresáře, jako je AD FS, to často vede k bezproblémovému přihlášení kvůli stávající přihlašovací relaci. |
 
-V tomto okamžiku se uživateli zobrazí výzva k zadání přihlašovacích údajů a dokončení ověřování. Koncový bod platformy Microsoft Identity ověřuje, že uživatel souhlasí s oprávněními uvedenými v `scope` parametru dotazu. Pokud uživatel nesouhlasí s některým z těchto oprávnění, koncový bod platformy Microsoft Identity Platform vyzve uživatele k vyjádření souhlasu s požadovanými oprávněními. Můžete si přečíst další informace o [oprávněních, souhlasu a víceklientské aplikace](v2-permissions-and-consent.md).
+V tomto okamžiku se uživateli zobrazí výzva k zadání přihlašovacích údajů a dokončení ověřování. Platforma Microsoft Identity ověřuje, že uživatel souhlasí s oprávněními uvedenými v `scope` parametru dotazu. Pokud uživatel nesouhlasí s některým z těchto oprávnění, platforma Microsoft Identity Platform vyzve uživatele k vyjádření souhlasu s požadovanými oprávněními. Můžete si přečíst další informace o [oprávněních, souhlasu a víceklientské aplikace](v2-permissions-and-consent.md).
 
-Jakmile se uživatel ověří a udělí souhlas, koncový bod platformy Microsoft Identity vrátí odpověď do vaší aplikace na určeném identifikátoru URI přesměrování pomocí metody zadané v `response_mode` parametru.
+Jakmile se uživatel ověří a udělí souhlas, platforma Microsoftu identity vrátí odpověď do vaší aplikace na určeném identifikátoru URI přesměrování pomocí metody zadané v `response_mode` parametru.
 
 ### <a name="successful-response"></a>Úspěšná odpověď
 
@@ -172,7 +172,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 V následující tabulce jsou popsány chybové kódy, které lze vrátit v `error` parametru chybové odpovědi:
 
-| Kód chyby | Description | Akce klienta |
+| Kód chyby | Popis | Akce klienta |
 | --- | --- | --- |
 | `invalid_request` | Chyba protokolu, například chybějící, povinný parametr. |Opravte a odešlete požadavek znovu. Jedná se o chybu vývoje, která se obvykle zachycuje při počátečním testování. |
 | `unauthorized_client` | Klientská aplikace nemůže požádat o autorizační kód. |K tomu obvykle dochází, když klientská aplikace není registrovaná v Azure AD nebo není přidaná do tenanta Azure AD uživatele. Aplikace může uživatele vyzvat k instalaci aplikace a jejímu přidání do Azure AD. |
@@ -184,7 +184,7 @@ V následující tabulce jsou popsány chybové kódy, které lze vrátit v `err
 
 ## <a name="validate-the-id-token"></a>Ověřit token ID
 
-Pouze příjem id_token není vždy dostačující k ověření uživatele; je také možné, že budete muset ověřit signaturu id_token a ověřit deklarace identity v tokenu podle požadavků vaší aplikace. Stejně jako všechny OIDC platformy používá koncový bod platformy Microsoft Identity Platform [Webtokeny JSON (JWTs)](https://tools.ietf.org/html/rfc7519) a kryptografii s veřejným klíčem k podepisování tokenů ID a k ověření, že jsou platné.
+Pouze příjem id_token není vždy dostačující k ověření uživatele; je také možné, že budete muset ověřit signaturu id_token a ověřit deklarace identity v tokenu podle požadavků vaší aplikace. Stejně jako všechny OIDC platformy Microsoft Identity Platform využívá [webové tokeny JSON (JWTs)](https://tools.ietf.org/html/rfc7519) a kryptografii s veřejným klíčem k podepisování tokenů ID a ověření, že jsou platné.
 
 Ne všechny aplikace mají výhodu při ověřování tokenu ID – nativní aplikace a jednostránkové aplikace, například zřídka se z ověřování tokenu ID nevyužívá.  Někdo s fyzickým přístupem k zařízení (nebo prohlížeči) může obejít ověření mnoha způsoby – od úpravy webového provozu na zařízení, aby poskytovali falešné tokeny a klíče pro jednoduché ladění aplikace, aby bylo možné přeskočit logiku ověřování.  Na druhé straně webové aplikace a rozhraní API, které používají token ID k autorizaci, musí pečlivě ověřit token ID, protože mají přístup k datům.
 
@@ -283,7 +283,7 @@ Přečtěte si [dokumentaci k UserInfo](userinfo.md#calling-the-api) a podívejt
 
 ## <a name="send-a-sign-out-request"></a>Odeslat žádost o odhlášení
 
-Pokud chcete odhlásit uživatele z vaší aplikace, nestačí vymazat soubory cookie vaší aplikace nebo jinak ukončit relaci uživatele. Musíte také přesměrovat uživatele na koncový bod platformy Microsoft identity, abyste se odhlásili. Pokud to neuděláte, uživatel se znovu ověří do vaší aplikace bez zadání přihlašovacích údajů, protože bude mít platnou relaci jednotného přihlašování s koncovým bodem Microsoft Identity Platform.
+Pokud chcete odhlásit uživatele z vaší aplikace, nestačí vymazat soubory cookie vaší aplikace nebo jinak ukončit relaci uživatele. Musíte také přesměrovat uživatele na Microsoft Identity Platform, abyste se odhlásili. Pokud to neuděláte, uživatel se znovu ověří do vaší aplikace bez zadání přihlašovacích údajů, protože bude mít platnou relaci jednotného přihlašování s platformou Microsoft identity.
 
 Uživatele můžete přesměrovat na `end_session_endpoint` uvedené v dokumentu metadat OpenID Connect:
 
@@ -292,13 +292,13 @@ GET https://login.microsoftonline.com/common/oauth2/v2.0/logout?
 post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 ```
 
-| Parametr | Stav | Description |
+| Parametr | Podmínka | Popis |
 | ----------------------- | ------------------------------- | ------------ |
-| `post_logout_redirect_uri` | Doporučeno | Adresa URL, na kterou je uživatel přesměrován po úspěšném odhlášení. Pokud parametr není zahrnutý, zobrazí se uživateli obecná zpráva generovaná koncovým bodem Microsoft Identity Platform. Tato adresa URL se musí shodovat s jedním z identifikátorů URI přesměrování registrovaných pro vaši aplikaci na portálu pro registraci aplikací. |
+| `post_logout_redirect_uri` | Doporučeno | Adresa URL, na kterou je uživatel přesměrován po úspěšném odhlášení. Pokud parametr není zahrnutý, zobrazí se uživateli obecná zpráva generovaná platformou Microsoft identity. Tato adresa URL se musí shodovat s jedním z identifikátorů URI přesměrování registrovaných pro vaši aplikaci na portálu pro registraci aplikací. |
 
 ## <a name="single-sign-out"></a>Jednotné odhlašování
 
-Když uživatele přesměrujete na `end_session_endpoint` , koncová platforma Microsoft Identity Platform vymaže relaci uživatele z prohlížeče. Uživatel však může být stále přihlášený k jiným aplikacím, které používají účty Microsoft pro ověřování. Aby mohly tyto aplikace podepsat uživatele současně, koncovým bodem platformy Microsoft Identity Platform pošle požadavek HTTP GET na zaregistrované `LogoutUrl` všechny aplikace, ke kterým je uživatel aktuálně přihlášený. Aplikace musí na tuto žádost reagovat vymazáním jakékoli relace, která uživatele identifikuje a vrátí `200` odpověď. Pokud chcete v aplikaci podporovat jednotné přihlašování, musíte implementovat takový `LogoutUrl` kód v kódu vaší aplikace. Můžete nastavit na `LogoutUrl` portálu pro registraci aplikací.
+Když uživatele přesměrujete na `end_session_endpoint` , Microsoft Identity Platform vymaže relaci uživatele z prohlížeče. Uživatel však může být stále přihlášený k jiným aplikacím, které používají účty Microsoft pro ověřování. Aby mohly tyto aplikace při současném podepsání uživatele podepsat, platforma identity Microsoftu pošle požadavek HTTP GET na zaregistrované `LogoutUrl` všechny aplikace, ke kterým je uživatel aktuálně přihlášený. Aplikace musí na tuto žádost reagovat vymazáním jakékoli relace, která uživatele identifikuje a vrátí `200` odpověď. Pokud chcete v aplikaci podporovat jednotné přihlašování, musíte implementovat takový `LogoutUrl` kód v kódu vaší aplikace. Můžete nastavit na `LogoutUrl` portálu pro registraci aplikací.
 
 ## <a name="next-steps"></a>Další kroky
 

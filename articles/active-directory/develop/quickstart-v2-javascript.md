@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 532fcc7db849af192ceddb1c239e99f31a2a3088
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: b475d8072c4103e8a532cdf703e2d75b0c8aafa2
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178462"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754154"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Rychlý Start: přihlášení uživatelů a získání přístupového tokenu v ZABEZPEČENÉm kódu JavaScript
 
@@ -54,7 +54,7 @@ Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.
 > 1. Zadejte **název** vaší aplikace. Uživatel vaší aplikace může tento název zobrazit a později ho můžete změnit.
 > 1. V části **podporované typy účtů** vyberte **účty v libovolném organizačním adresáři a osobní účty Microsoft**.
 > 1. Vyberte **Zaregistrovat**. Na stránce **Přehled** aplikace si poznamenejte hodnotu **ID aplikace (klienta)** pro pozdější použití.
-> 1. Tento rychlý Start vyžaduje, aby byl povolený [tok implicitního udělení](v2-oauth2-implicit-grant-flow.md) . V levém podokně registrované aplikace vyberte **ověřování**.
+> 1. Tento rychlý Start vyžaduje, aby byl povolený [tok implicitního udělení](v2-oauth2-implicit-grant-flow.md) . V části **Spravovat** vyberte **ověřování**.
 > 1. V části **konfigurace platformy** vyberte **Přidat platformu**. Panel se otevře vlevo. Vyberte oblast **webové aplikace** .
 > 1. Pořád na levé straně nastavte hodnotu **identifikátoru URI přesměrování** na `http://localhost:3000/` . Pak vyberte **přístupový token** a **token ID**.
 > 1. Vyberte **Konfigurovat**.
@@ -202,7 +202,7 @@ Kód pro rychlý Start také ukazuje, jak inicializovat knihovnu MSAL:
 const myMSALObj = new Msal.UserAgentApplication(msalConfig);
 ```
 
-> |Kde  | Description |
+> |Kde  | Popis |
 > |---------|---------|
 > |`clientId`     | ID aplikace, která je zaregistrována v Azure Portal.|
 > |`authority`    | Volitelné Adresa URL autority, která podporuje typy účtů, jak je popsáno výše v části konfigurace. Výchozí autorita je `https://login.microsoftonline.com/common` . |
@@ -230,7 +230,7 @@ myMSALObj.loginPopup(loginRequest)
 });
 ```
 
-> |Kde  | Description |
+> |Kde  | Popis |
 > |---------|---------|
 > | `scopes`   | Volitelné Obsahuje obory, které jsou požadovány pro souhlas uživatele v době přihlášení. Například `[ "user.read" ]` pro Microsoft Graph nebo `[ "<Application ID URL>/scope" ]` pro vlastní webová rozhraní API (tj `api://<Application ID>/access_as_user` .). |
 
@@ -260,20 +260,20 @@ myMSALObj.acquireTokenSilent(tokenRequest)
     });
 ```
 
-> |Kde  | Description |
+> |Kde  | Popis |
 > |---------|---------|
 > | `scopes`   | Obsahuje požadované obory, které mají být vráceny v přístupovém tokenu pro rozhraní API. Například `[ "mail.read" ]` pro Microsoft Graph nebo `[ "<Application ID URL>/scope" ]` pro vlastní webová rozhraní API (tj `api://<Application ID>/access_as_user` .).|
 
 #### <a name="get-a-user-token-interactively"></a>Interaktivní získání tokenu uživatele
 
-Existují situace, kdy potřebujete vynutit, aby uživatelé mohli pracovat s koncovým bodem Microsoft Identity Platform. Příklad:
+Existují situace, kdy potřebujete vynutit, aby uživatelé mohli pracovat s platformou Microsoft identity. Například:
 * Uživatelé možná budou muset znovu zadat svoje přihlašovací údaje, protože vypršela platnost hesla.
 * Vaše aplikace požaduje přístup k dalším oborům prostředků, ke kterým uživatel musí vyjádřit souhlas.
 * Je vyžadováno dvojúrovňové ověřování.
 
 Obvyklý doporučený vzor pro většinu aplikací je zavolat `acquireTokenSilent` nejprve a pak zachytit výjimku a pak voláním `acquireTokenPopup` (nebo `acquireTokenRedirect` ) spustit interaktivní požadavek.
 
-Volání `acquireTokenPopup` výsledků v překryvném okně pro přihlášení. (Nebo `acquireTokenRedirect` má za následek přesměrování uživatelů na koncový bod Microsoft Identity Platform.) V tomto okně musí uživatelé interaktivně pracovat tím, že potvrdí své přihlašovací údaje, udělí souhlas požadovanému prostředku nebo dokončí ověřování pomocí dvou faktorů.
+Volání `acquireTokenPopup` výsledků v překryvném okně pro přihlášení. (Nebo `acquireTokenRedirect` má za následek přesměrování uživatelů na platformu Microsoft Identity). V tomto okně musí uživatelé interaktivně pracovat tím, že potvrdí své přihlašovací údaje, udělí souhlas požadovanému prostředku nebo dokončí ověřování pomocí dvou faktorů.
 
 ```javascript
 // Add here scopes for access token to be used at MS Graph API endpoints.

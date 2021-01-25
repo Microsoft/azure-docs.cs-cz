@@ -1,5 +1,6 @@
 ---
-title: Rozdíly v ověřování podle podporovaných typů účtů – Microsoft Identity Platform | Azure
+title: Rozdíly v ověřování podle podporovaných typů účtů | Azure
+titleSuffix: Microsoft identity platform
 description: Přečtěte si o rozdílech mezi ověřováním různých vlastností pro různé podporované typy účtů při registraci aplikace pomocí platformy Microsoft identity.
 author: SureshJa
 ms.author: sureshja
@@ -10,12 +11,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: e794e277f6731c7b6e57a4710eea437f65be0340
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77521150e73014c5568003597059a9d32f6e80ee
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87336340"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752967"
 ---
 # <a name="validation-differences-by-supported-account-types-signinaudience"></a>Rozdíly v ověřování podle podporovaných typů účtů (signInAudience)
 

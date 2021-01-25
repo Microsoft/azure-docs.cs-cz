@@ -1,5 +1,6 @@
 ---
-title: Webové rozhraní API, které volá webová rozhraní API – Microsoft Identity Platform | Azure
+title: Webové rozhraní API, které volá webová rozhraní API | Azure
+titleSuffix: Microsoft identity platform
 description: Naučte se vytvářet webové rozhraní API, které volá webová rozhraní API.
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b8eb737752741dc55da24ad6b605b081053b8a11
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 2c69cea7055476bcc4c4a28cea0a0cf8c8f66f88
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443697"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753453"
 ---
 # <a name="a-web-api-that-calls-web-apis-call-an-api"></a>Webové rozhraní API, které volá webová rozhraní API: volá rozhraní API.
 
@@ -26,7 +27,7 @@ Po vytvoření tokenu můžete zavolat chráněné webové rozhraní API. Rozhra
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Pokud používáte *Microsoft. identity. Web* , máte tři scénáře použití:
+Pokud používáte *Microsoft. identity. Web*, máte tři scénáře použití:
 
 - [Možnost 1: volání Microsoft Graph s využitím sady Microsoft Graph SDK](#option-1-call-microsoft-graph-with-the-sdk)
 - [Možnost 2: volání webového rozhraní API pro příjem dat s podpůrnou třídou](#option-2-call-a-downstream-web-api-with-the-helper-class)

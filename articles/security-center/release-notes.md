@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/21/2021
+ms.date: 01/25/2021
 ms.author: memildin
-ms.openlocfilehash: d171e3a7f1f0d63d0a5d130c6e19b246bf0cd795
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 349f0b72ad7f3cb98e8f4ae9105efa9718f0b11b
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98661810"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752261"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Co je nového v Azure Security Center?
 
@@ -33,13 +33,40 @@ Další informace o *plánovaných* změnách, které už brzy Security Center, 
 
 ## <a name="january-2021"></a>Leden 2021
 
-Aktualizace v prosinci zahrnují:
+Aktualizace v lednu zahrnují:
 
+- [Test zabezpečení Azure je teď výchozí iniciativou zásad pro Azure Security Center](#azure-security-benchmark-is-now-the-default-policy-initiative-for-azure-security-center)
 - [Posouzení ohrožení zabezpečení pro místní a více cloudových počítačů se uvolní pro obecnou dostupnost (GA).](#vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-released-for-general-availability-ga)
+- [Ve verzi Preview je teď k dispozici zabezpečené skóre pro skupiny pro správu.](#secure-score-for-management-groups-is-now-available-in-preview)
 - [Pro obecnou dostupnost se vydává rozhraní API pro stanovení skóre zabezpečení (GA).](#secure-score-api-is-released-for-general-availability-ga)
+- [Vícenásobné cloudové konektory se uvolňují pro obecnou dostupnost (GA).](#multi-cloud-connectors-are-released-for-general-availability-ga)
+- [Vyloučit celá doporučení ze zabezpečeného skóre pro předplatná a skupiny pro správu](#exempt-entire-recommendations-from-your-secure-score-for-subscriptions-and-management-groups)
+- [Uživatelé teď můžou vyžádat viditelnost v rámci tenanta od svého globálního správce.](#users-can-now-request-tenant-wide-visibility-from-their-global-administrator)
+- [35 doporučení verze Preview pro zvýšení pokrytí srovnávacího testu zabezpečení Azure](#35-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark)
 - [Export filtrovaných seznamů doporučení CSV](#csv-export-of-filtered-list-of-recommendations)
 - [Prostředky, které se nepoužívají, teď v Azure Policy posouzení hlásí jako "kompatibilní".](#not-applicable-resources-now-reported-as-compliant-in-azure-policy-assessments)
 
+
+### <a name="azure-security-benchmark-is-now-the-default-policy-initiative-for-azure-security-center"></a>Test zabezpečení Azure je teď výchozí iniciativou zásad pro Azure Security Center
+
+Srovnávací test zabezpečení Azure je Microsoftem vytvořená sada pokynů pro zabezpečení a osvědčené postupy na základě běžných architektur dodržování předpisů, které jsou specifické pro Azure. Toto široce uznávané sestavování srovnávacích testů v ovládacích prvcích z [centra pro Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) a [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) se soustředí na zabezpečení zaměřené na Cloud.
+
+V posledních měsících se Security Center seznamu předdefinovaných doporučení pro zabezpečení významně rozšířila naše pokrytí tohoto srovnávacího testu.
+
+V této verzi je srovnávací test základem pro doporučení Security Center a plně integrovaný jako výchozí iniciativa zásad. 
+
+Všechny služby Azure mají v dokumentaci stránku standardních hodnot zabezpečení. [Jedná se například o směrný plán Security Center](security-baseline.md). Tyto směrné plány jsou postavené na základě srovnávacího testu zabezpečení Azure.
+
+Pokud používáte řídicí panel dodržování předpisů pro Security Center, uvidíte dvě instance srovnávacího testu během přechodného období:
+
+:::image type="content" source="media/release-notes/regulatory-compliance-with-azure-security-benchmark.png" alt-text="Řídicí panel dodržování předpisů pro Azure Security Center, který ukazuje srovnávací test zabezpečení Azure":::
+
+Stávající doporučení nejsou ovlivněná a při zvětšování srovnávacích testů se změny automaticky projeví v Security Center. 
+
+Další informace najdete na následujících stránkách:
+
+- [Další informace o testu zabezpečení Azure](../security/benchmarks/introduction.md)
+- [Přizpůsobení sady standardů na řídicím panelu dodržování předpisů](update-regulatory-compliance-packages.md)
 
 ### <a name="vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-released-for-general-availability-ga"></a>Posouzení ohrožení zabezpečení pro místní a více cloudových počítačů se uvolní pro obecnou dostupnost (GA).
 
@@ -63,6 +90,14 @@ Hlavní možnosti:
 [Přečtěte si další informace o serverech s podporou ARC Azure](../azure-arc/servers/index.yml).
 
 
+### <a name="secure-score-for-management-groups-is-now-available-in-preview"></a>Ve verzi Preview je teď k dispozici zabezpečené skóre pro skupiny pro správu.
+
+Stránka bezpečné skóre nyní zobrazuje agregovaná zabezpečená skóre pro skupiny pro správu kromě úrovně předplatného. Takže teď můžete zobrazit seznam skupin pro správu ve vaší organizaci a skóre pro každou skupinu pro správu.
+
+:::image type="content" source="media/secure-score-security-controls/secure-score-management-groups.png" alt-text="Zobrazuje se zabezpečená skóre pro skupiny pro správu.":::
+
+Přečtěte si další informace o [zabezpečeném řízení hodnocení a zabezpečení v Azure Security Center](secure-score-security-controls.md).
+
 ### <a name="secure-score-api-is-released-for-general-availability-ga"></a>Pro obecnou dostupnost se vydává rozhraní API pro stanovení skóre zabezpečení (GA).
 
 K vašemu skóre teď můžete přistupovat prostřednictvím [rozhraní API pro zabezpečené skóre](/rest/api/securitycenter/securescores/). Metody rozhraní API poskytují flexibilitu pro dotazování na data a vytváření vlastních mechanismů generování sestav v rámci vašich zabezpečených výsledků v průběhu času. Můžete například použít rozhraní API pro **zabezpečení skóre** k získání skóre pro konkrétní předplatné. Kromě toho můžete použít rozhraní API **ovládacích prvků bezpečného řízení skóre** k vypsání ovládacích prvků zabezpečení a aktuálního skóre vašich předplatných.
@@ -70,6 +105,87 @@ K vašemu skóre teď můžete přistupovat prostřednictvím [rozhraní API pro
 Příklady externích nástrojů, které jsou dostupné s rozhraním API pro zabezpečené skóre, najdete v části [bezpečné skóre naší komunity GitHubu](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score).
 
 Přečtěte si další informace o [zabezpečeném řízení hodnocení a zabezpečení v Azure Security Center](secure-score-security-controls.md).
+
+
+### <a name="multi-cloud-connectors-are-released-for-general-availability-ga"></a>Vícenásobné cloudové konektory se uvolňují pro obecnou dostupnost (GA).
+
+Cloudové úlohy běžně pokrývá několik cloudových platforem, ale cloudové služby zabezpečení musí provádět stejné.
+
+Azure Security Center chrání úlohy v Azure, Amazon Web Services (AWS) a Google Cloud Platform (GCP).
+
+Připojení účtů AWS nebo GCP integruje své nativní nástroje zabezpečení, jako je AWS Security Center a GCP Security Center do Azure Security Center.
+
+Tato možnost znamená, že Security Center zajišťuje viditelnost a ochranu ve všech hlavních cloudových prostředích. Některé z výhod této integrace:
+
+- Automatické zřizování agentů – Security Center pomocí ARC Azure nasadit agenta Log Analytics do instancí AWS
+- Správa zásad
+- Správa ohrožení zabezpečení
+- Rozpoznání a odpověď vloženého koncového bodu (EDR)
+- Zjišťování nezabezpečených konfigurací zabezpečení
+- Jedno zobrazení, které zobrazuje doporučení pro zabezpečení ze všech poskytovatelů cloudu
+- Zahrňte všechny vaše prostředky do výpočtů zabezpečeného skóre Security Center.
+- Posouzení dodržování předpisů v rámci vašich AWS a GCP prostředků
+
+V nabídce Security Center vyberte **multi cloudové konektory** a uvidíte možnosti pro vytváření nových konektorů:
+
+:::image type="content" source="./media/quickstart-onboard-aws/add-aws-account.png" alt-text="Tlačítko Přidat účet AWS na stránce s více síťovými konektory v Security Center":::
+
+Další informace:
+- [Připojení účtů AWS k Azure Security Center](quickstart-onboard-aws.md)
+- [Připojení účtů GCP k Azure Security Center](quickstart-onboard-gcp.md)
+
+
+### <a name="exempt-entire-recommendations-from-your-secure-score-for-subscriptions-and-management-groups"></a>Vyloučit celá doporučení ze zabezpečeného skóre pro předplatná a skupiny pro správu
+
+Rozšiřujeme možnost výjimky tak, aby obsahovala celá doporučení. Poskytuje další možnosti, které vám pomohou vyladit doporučení zabezpečení, která Security Center provede pro vaše předplatná, skupinu pro správu nebo prostředky.
+
+V některých případech bude prostředek uveden jako špatný, pokud víte, že problém byl vyřešen nástrojem třetí strany, který Security Center nebyl zjištěn. Případně se v oboru, ve kterém se domníváte, že nepatří, se zobrazí doporučení. Doporučení může být pro konkrétní předplatné nevhodné. Nebo možná vaše organizace jednoduše rozhodla přijmout rizika související s konkrétním prostředkem nebo doporučením.
+
+Pomocí této funkce Preview teď můžete vytvořit výjimku pro doporučení:
+
+- Zajistěte **výjimku prostředku** , abyste se ujistili, že v budoucnu není v pořádku, a neovlivní vaše zabezpečené skóre. Prostředek bude uveden jako nepoužitý a důvod bude zobrazen jako vyloučený s konkrétním odůvodněním, které vyberete.
+
+- **Vyloučení předplatného nebo skupiny pro správu** , aby se zajistilo, že doporučení neovlivní vaše zabezpečené skóre a v budoucnu se nebude zobrazovat pro předplatné nebo skupinu pro správu. To se týká existujících prostředků a všech, které v budoucnu vytvoříte. Doporučení bude označeno konkrétním odůvodněním, které jste vybrali pro vybraný obor.
+
+Další informace získáte v [informacích o výjimkách prostředků a doporučení ze zabezpečeného skóre](exempt-resource.md).
+
+
+
+### <a name="users-can-now-request-tenant-wide-visibility-from-their-global-administrator"></a>Uživatelé teď můžou vyžádat viditelnost v rámci tenanta od svého globálního správce.
+
+Pokud uživatel nemá oprávnění k zobrazení Security Centerch dat, uvidí teď oprávnění odkaz na požadavek od globálního správce organizace. Požadavek zahrnuje roli, kterou chcete, a odůvodnění, proč je to nezbytné.
+
+:::image type="content" source="media/security-center-management-groups/request-tenant-permissions.png" alt-text="Banner s informující uživatele, který může požádat o oprávnění na úrovni tenanta.":::
+
+Další informace najdete v [žádosti o oprávnění na úrovni tenanta, pokud to není dostačující](security-center-management-groups.md#request-tenant-wide-permissions-when-yours-are-insufficient) .
+
+
+### <a name="35-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>35 doporučení verze Preview pro zvýšení pokrytí srovnávacího testu zabezpečení Azure
+
+Srovnávací test zabezpečení Azure je výchozí iniciativou zásad v Azure Security Center. 
+
+Pro zvýšení pokrytí tohoto srovnávacího testu byly do Security Center přidány následující doporučení 35 Preview.
+
+> [!TIP]
+> Doporučení pro verzi Preview negenerují prostředek v pořádku a nejsou zahrnutá do výpočtů vašeho zabezpečeného skóre. Opravte je všude, kde je to možné, takže až do doby, kdy období Preview skončí, přispějete k vašemu skóre. Přečtěte si další informace o tom, jak na tato doporučení reagovat v tématu o [opravách doporučení v Azure Security Center](security-center-remediate-recommendations.md).
+
+| Řízení zabezpečení                     | Nová doporučení                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+|--------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Povolit šifrování v klidovém umístění            | -Azure Cosmos DB účty by měly používat klíče spravované zákazníkem k šifrování neaktivních dat<br>– Azure Machine Learning pracovní prostory by měly být zašifrované pomocí klíče spravovaného zákazníkem (CMK)<br>– Zajistěte, aby byla pro servery MySQL povolená ochrana dat klíčů.<br>– Zajistěte, aby byla pro servery PostgreSQL povolená vlastní ochrana dat klíčů.<br>-Cognitive Services účty by měly povolit šifrování dat pomocí klíče spravovaného zákazníkem (CMK).<br>-Registry kontejneru by měly být zašifrované pomocí klíče spravovaného zákazníkem (CMK)<br>– Spravované instance SQL by měly používat klíče spravované zákazníkem k šifrování neaktivních dat<br>– SQL servery by měly používat klíče spravované zákazníky k šifrování neaktivních dat.<br>– Účty úložiště by měly pro šifrování používat klíč spravovaný zákazníkem (CMK)                                                                                                                                                              |
+| Implementace osvědčených postupů zabezpečení    | – Odběry by měly mít kontaktní e-mailovou adresu pro problémy se zabezpečením<br> – Automatické zřizování agenta Log Analytics by mělo být ve vašem předplatném povolené.<br> -E-mailové oznámení pro výstrahy s vysokou závažností by mělo být povolené.<br> -E-mailové oznámení vlastníkovi předplatného pro upozornění s vysokou závažností by mělo být povolené.<br> – Trezory klíčů by měly mít povolenou ochranu vyprázdnění<br> – Trezory klíčů by měly mít povolené obnovitelné odstranění. |
+| Správa přístupu a oprávnění        | – Aplikace Function app by měly mít povolené klientské certifikáty (příchozí klientské certifikáty). |
+| Ochrana aplikací před útoky DDoS | – Brána Firewall webových aplikací (WAF) by měla být povolená pro Application Gateway<br> – Služba brány firewall webových aplikací (WAF) by měla být povolená pro službu Azure front-dveří |
+| Omezit neautorizovaný přístup k síti | – Brána firewall by měla být povolená na Key Vault<br> – Privátní koncový bod by měl být nakonfigurovaný pro Key Vault<br> -Konfigurace aplikace by měla používat privátní odkaz<br> – Mezipaměť Azure pro Redis by se měla nacházet v rámci virtuální sítě.<br> -Azure Event Grid domény by měly používat privátní odkaz<br> -Azure Event Grid témata by měla používat privátní odkaz<br> -Azure Machine Learning pracovní prostory by měly používat privátní odkaz<br> – Služba signalizace Azure by měla používat privátní odkaz<br> – Jarní cloud Azure by měl používat vkládání ze sítě<br> – Registry kontejneru by neměly umožňovat neomezený přístup k síti.<br> -Registry kontejneru by měly používat privátní odkaz<br> – Přístup k veřejné síti by měl být pro MariaDB servery zakázaný.<br> – Přístup k veřejné síti by měl být pro servery MySQL zakázaný.<br> – Přístup k veřejné síti by měl být pro PostgreSQL servery zakázaný.<br> – Účet úložiště by měl používat připojení privátního odkazu.<br> – Účty úložiště by měly omezovat přístup k síti pomocí pravidel virtuální sítě<br> – Šablony pro sestavovatele imagí virtuálních počítačů by měly používat privátní odkaz|
+|                                      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+
+Související odkazy:
+
+- [Další informace o testu zabezpečení Azure](../security/benchmarks/introduction.md)
+- [Další informace o Azure Database for MariaDB](../mariadb/overview.md)
+- [Další informace o Azure Database for MySQL](../mysql/overview.md)
+- [Další informace o Azure Database for PostgreSQL](../postgresql/overview.md)
+
+
 
 
 ### <a name="csv-export-of-filtered-list-of-recommendations"></a>Export filtrovaných seznamů doporučení CSV 
