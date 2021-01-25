@@ -9,16 +9,16 @@ ms.workload: azure-vs
 ms.topic: tutorial
 ms.date: 10/5/2020
 ms.author: ghogen
-ms.openlocfilehash: 1c2264cb76e062f5f22c0460572ec01750086a04
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: b12f8beeee054e547a6b58750d8482d32ee14453
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98744972"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747253"
 ---
 # <a name="create-and-deploy-a-azure-cloud-service-extended-support-using-visual-studio"></a>Vytvoření a nasazení cloudové služby Azure (Rozšířená podpora) pomocí sady Visual Studio
 
-Počínaje verzí Visual Studio 2019 verze 16,9 Preview 1 můžete pracovat s Cloud Services (Rozšířená podpora) pomocí Azure Resource Manager, která významně zjednodušuje a modernizes údržbu a správu prostředků Azure. Existující projekt cloudové služby můžete také převést na projekt cloudové služby s rozšířenými podporami.
+Počínaje [verzí Visual Studio 2019 verze 16,9](https://visualstudio.microsoft.com/vs/preview/) (aktuálně ve verzi Preview) můžete pracovat s cloud services pomocí Azure Resource Manager (ARM), což značně zjednodušuje a modernizes údržbu a správu prostředků Azure. Tato možnost je povolená novou službou Azure, která se označuje jako Cloud Services (Rozšířená podpora). Existující cloudovou službu můžete publikovat na Cloud Services (Rozšířená podpora). Informace o této službě Azure najdete v [dokumentaci Cloud Services (Rozšířená podpora)](overview.md).
 
 > [!IMPORTANT]
 > Cloud Services (Rozšířená podpora) je aktuálně ve verzi Public Preview.

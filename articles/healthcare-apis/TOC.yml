@@ -93,6 +93,11 @@
           href: export-data.md
         - name: Deidentifikovaný export
           href: de-identified-export.md
+    - name: Převod dat
+      expanded: false
+      items:
+        - name: Šablony rozšíření $convert – data a převaděč FHIR
+          href: convert-data.md
     - name: Vyhledání ID objektů identit
       href: find-identity-object-ids.md
     - name: Metriky a protokolování diagnostiky

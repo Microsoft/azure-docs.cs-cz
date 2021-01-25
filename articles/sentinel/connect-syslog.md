@@ -1,6 +1,6 @@
 ---
 title: Připojit data syslogu ke službě Azure Sentinel | Microsoft Docs
-description: Připojte libovolný počítač nebo zařízení, které podporuje syslog, do Azure Sentinel pomocí agenta na počítači se systémem Linux mezi zařízením a Sentinel. 
+description: Připojte libovolný počítač nebo zařízení, které podporuje syslog, do Azure Sentinel pomocí agenta na počítači se systémem Linux mezi zařízením a Sentinel.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 7670d00a2dd25961a51d18c50c102e0f92b30975
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c3cf4c3c135b3f275542af4f531d1071e180ebe
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88566144"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747186"
 ---
 # <a name="collect-data-from-linux-based-sources-using-syslog"></a>Shromažďování dat ze zdrojů se systémem Linux pomocí protokolu syslog
 
@@ -118,17 +118,21 @@ Tato detekce vyžaduje specifickou konfiguraci konektoru dat syslog:
     > [!div class="mx-imgBorder"]
     > ![Zařízení požadovaná pro detekci přihlášení neobvyklé SSH](./media/connect-syslog/facilities-ssh-detection.png)
 
-2. Umožněte shromažďování informací syslogu dostatek času. Pak přejděte do části **Azure Sentinel-logs**a zkopírujte a vložte následující dotaz:
+2. Umožněte shromažďování informací syslogu dostatek času. Pak přejděte do části **Azure Sentinel-logs** a zkopírujte a vložte následující dotaz:
     
-    ```console
-    Syslog |  where Facility in ("authpriv","auth")| extend c = extract( "Accepted\\s(publickey|password|keyboard-interactive/pam)\\sfor ([^\\s]+)",1,SyslogMessage)| where isnotempty(c) | count 
+    ```kusto
+    Syslog
+    | where Facility in ("authpriv","auth")
+    | extend c = extract( "Accepted\\s(publickey|password|keyboard-interactive/pam)\\sfor ([^\\s]+)",1,SyslogMessage)
+    | where isnotempty(c)
+    | count 
     ```
     
     V případě potřeby změňte **časový rozsah** a vyberte **Spustit**.
     
     Pokud je výsledný počet nula, potvrďte konfiguraci konektoru a monitorované počítače mají po dobu, kterou jste zadali pro dotaz, aktivitu úspěšného přihlášení.
     
-    Pokud je výsledný počet větší než nula, data syslogu jsou vhodná pro detekci přihlášení neobvyklé SSH. Toto zjišťování povolíte pomocí **Analytics**  >   **šablon pravidel**analýz  >  **(Preview) neobvyklé zjišťování přihlášení SSH**.
+    Pokud je výsledný počet větší než nula, data syslogu jsou vhodná pro detekci přihlášení neobvyklé SSH. Toto zjišťování povolíte pomocí   >   **šablon pravidel** analýz  >  **(Preview) neobvyklé zjišťování přihlášení SSH**.
 
 ## <a name="next-steps"></a>Další kroky
 V tomto dokumentu jste zjistili, jak připojit místní zařízení syslog ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:

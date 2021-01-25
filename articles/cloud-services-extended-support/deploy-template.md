@@ -8,20 +8,21 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: aeb53e722eae588b7d5e2963afe67f299c2c3565
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: dfbae5144ec19b795463bd44f1e84fcf2516c267
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98744997"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747203"
 ---
 # <a name="create-a-cloud-service-extended-support-using-arm-templates"></a>Vytvoření cloudové služby (Rozšířená podpora) pomocí šablon ARM
+
+V tomto kurzu se dozvíte, jak vytvořit nasazení cloudové služby (rozšířené podpory) pomocí [šablon ARM](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview). 
 
 > [!IMPORTANT]
 > Cloud Services (Rozšířená podpora) je aktuálně ve verzi Public Preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-V tomto kurzu se dozvíte, jak vytvořit nasazení cloudové služby (rozšířené podpory) pomocí [šablon ARM](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview). 
 
 ## <a name="before-you-begin"></a>Než začnete
 1. Projděte si [požadavky nasazení](deploy-prerequisite.md) pro Cloud Services (Rozšířená podpora) a vytvořte přidružené prostředky. 

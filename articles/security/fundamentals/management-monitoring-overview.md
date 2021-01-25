@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2019
+ms.date: 01/24/2021
 ms.author: terrylan
-ms.openlocfilehash: 038f30ee186a5b3a9d87d64054726324051c37b4
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: d85b1fdd433c372bb41adec6e3d33013f19363f0
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842749"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747169"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Přehled správy a monitorování zabezpečení Azure
 Tento článek obsahuje přehled funkcí a služeb zabezpečení, které Azure poskytuje, aby vám pomohly při správě a monitorování cloudových služeb a virtuálních počítačů Azure.
@@ -62,7 +62,7 @@ Další informace:
 
 * [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
 * [Co je Azure AD Multi-Factor Authentication?](../../active-directory/authentication/concept-mfa-howitworks.md)
-* [Jak funguje Multi-Factor Authentication služby Azure AD](../../active-directory/authentication/concept-mfa-howitworks.md)
+* [Jak funguje vícefaktorové ověřování Azure AD](../../active-directory/authentication/concept-mfa-howitworks.md)
 
 ## <a name="expressroute"></a>ExpressRoute
 
@@ -85,7 +85,7 @@ Brány VPN, označované taky jako brány virtuální sítě Azure, se používa
 Další informace:
 
 * [Informace o branách VPN](../../vpn-gateway/vpn-gateway-about-vpngateways.md)
-* [Přehled zabezpečení sítě Azure](network-overview.md)
+* [Přehled zabezpečení sítě v Azure](network-overview.md)
 
 ## <a name="privileged-identity-management"></a>Privileged Identity Management
 
@@ -117,15 +117,18 @@ Další informace:
 
 ## <a name="security-center"></a>Security Center
 
-Azure Security Center pomáhá předcházet hrozbám, zjišťovat je a reagovat na ně. Security Center poskytuje lepší přehled o zabezpečení prostředků Azure a kontrolu nad nimi. Poskytuje integrované monitorování zabezpečení a správu zásad napříč předplatnými Azure. Pomáhá detekovat hrozby, které by jinak neinformovaly, a spolupracuje s širokou ekosystémem řešení zabezpečení.
+Azure Security Center pomáhá předcházet hrozbám, zjišťovat je a reagovat na ně. Security Center poskytuje lepší přehled o zabezpečení prostředků Azure a jejich kontrolu nad zabezpečením vašich prostředků Azure i v hybridním cloudovém prostředí. 
+
+Security Center provádí průběžné vyhodnocování zabezpečení vašich připojených prostředků a porovnává jeho konfiguraci a nasazení s využitím [srovnávacího testu zabezpečení Azure](../benchmarks/introduction.md) za účelem poskytování podrobných doporučení zabezpečení přizpůsobených vašemu prostředí.
 
 Security Center vám pomůže optimalizovat a monitorovat zabezpečení prostředků Azure pomocí těchto akcí:
 
-* Vám umožní definovat zásady pro vaše prostředky předplatného Azure podle těchto pravidel:
-  * Požadavky na zabezpečení vaší společnosti.
-  * Typ aplikací nebo citlivosti dat v každém předplatném.
-* Monitorování stavu virtuálních počítačů, sítí a aplikací Azure.
-* Poskytuje seznam výstrah zabezpečení s určením priorit, včetně výstrah z integrovaných partnerských řešení. Poskytuje také informace, které potřebujete k rychlému prověření útoků a doporučení k tomu, jak je opravit.
+- Vám umožní definovat zásady pro vaše prostředky předplatného Azure podle těchto pravidel:
+    - Požadavky na zabezpečení vaší organizace.
+    - Typ aplikací nebo citlivosti dat v každém předplatném.
+    - Jakékoli oborové nebo regulativní normy nebo srovnávací testy, které se vztahují k předplatným. 
+- Monitorování stavu virtuálních počítačů, sítí a aplikací Azure.
+- Poskytuje seznam výstrah zabezpečení s určením priorit, včetně výstrah z integrovaných partnerských řešení. Poskytuje také informace, které potřebujete k rychlému prověření útoků a doporučení k tomu, jak je opravit.
 
 Další informace:
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: 6061980ec556fccde3de882a291bc390b88c5a24
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: f2807501b1e18d4cbffaa34d70bccf8d70565266
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611079"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747219"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Klíč spravovaný zákazníkem v Azure Monitoru 
 
@@ -125,11 +125,53 @@ Tato nastavení je možné aktualizovat v Key Vault prostřednictvím rozhraní 
 
 ## <a name="create-cluster"></a>Vytvoření clusteru
 
-> [!NOTE]
-> Clustery podporují dva [typy spravovaných identit](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types): přiřazení systémem a přiřazená uživateli a každá můžou být založená na vašem scénáři. Spravovaná identita přiřazená systémem je jednodušší a vytvoří se automaticky s vytvořením clusteru, když `type` je identita nastavená jako "*SystemAssigned*" – Tato identita se dá později použít k udělení přístupu clusteru k vašemu Key Vault. Pokud chcete vytvořit cluster, zatímco je klíč spravovaný zákazníkem definovaný v době vytváření clusteru, měli byste mít předem definovanou klávesu a uživatelem přiřazenou identitu ve Key Vault předem a pak vytvořit cluster s tímto nastavením: identita `type` jako "*UserAssigned*" `UserAssignedIdentities` s ID prostředku identity a `keyVaultProperties` s podrobnostmi o klíči.
+Clustery podporují dva [typy spravovaných identit](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types): přiřazeno systémem a přiřazeno uživateli, zatímco jedna identita může být definována v clusteru v závislosti na vašem scénáři. 
+- Spravovaná identita přiřazená systémem se zjednodušuje a generuje se automaticky s vytvořením clusteru, když `type` je identita nastavená na "*SystemAssigned*". Tuto identitu můžete později použít k udělení přístupu clusteru k vašemu Key Vault. 
+  
+  Nastavení identit v clusteru pro spravovanou identitu přiřazenou systémem
+  ```json
+  {
+    "identity": {
+      "type": "SystemAssigned"
+      }
+  }
+  ```
+
+- Pokud chcete nakonfigurovat klíč spravovaný zákazníkem při vytváření clusteru, měli byste mít předem přidělenou klíčovou a uživatelem přiřazenou identitu Key Vault a pak vytvořit cluster s tímto nastavením: identita `type` jako "*UserAssigned*", `UserAssignedIdentities` s ID prostředku identity.
+
+  Nastavení identit v clusteru pro spravovanou identitu přiřazenou uživatelem
+  ```json
+  {
+  "identity": {
+  "type": "UserAssigned",
+    "userAssignedIdentities": {
+      "subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft. ManagedIdentity/UserAssignedIdentities/<cluster-assigned-managed-identity>"
+      }
+  }
+  ```
 
 > [!IMPORTANT]
-> V současné době nemůžete definovat klíč spravovaný zákazníkem pomocí spravované identity přiřazené uživatelem, pokud se Key Vault nachází v Private-Link (vNet) a v tomto případě můžete použít spravovanou identitu přiřazenou systémem.
+> Pokud je vaše Key Vault v Private-Link (vNet), nemůžete použít klíč spravovaný zákazníkem s uživatelem přiřazenou spravovanou identitou. V tomto scénáři můžete použít spravovanou identitu přiřazenou systémem.
+
+```json
+{
+  "identity": {
+    "type": "SystemAssigned"
+}
+```
+ 
+Tímto:
+
+```json
+{
+  "identity": {
+  "type": "UserAssigned",
+    "userAssignedIdentities": {
+      "subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft. ManagedIdentity/UserAssignedIdentities/<user-assigned-managed-identity-name>"
+      }
+}
+```
+
 
 Postupujte podle postupu popsaného v [článku věnovaném vyhrazeným clusterům](../log-query/logs-dedicated-clusters.md#creating-a-cluster). 
 
@@ -243,15 +285,13 @@ Postupujte podle postupu popsaného v [článku věnovaném vyhrazeným cluster�
 
 ## <a name="key-revocation"></a>Odvolání klíče
 
-Přístup k datům můžete odvolat tím, že klíč zakážete nebo odstraníte zásady přístupu clusteru v Key Vault. 
-
 > [!IMPORTANT]
-> - Pokud je váš cluster nastavený pomocí spravované identity přiřazené uživatelem, nastavení `UserAssignedIdentities` `None` pozastaví cluster a znemožní přístup k vašim datům, ale nemůžete vrátit zpět odvolání a aktivovat cluster bez nutnosti otevřít žádost o podporu. Toto omezení se nepoužije na spravovanou identitu přiřazenou systémem.
-> - Doporučená akce odvolání klíče je vypnutím klíče ve vašem Key Vault.
+> - Doporučeným způsobem, jak odvolat přístup k datům, je zakázat klíč nebo odstranit zásady přístupu v Key Vault.
+> - Když nastavíte cluster `identity` `type` na žádné, odvoláte přístup k datům, ale tento postup se nedoporučuje, protože nemůžete vrátit zpět změny `identity` v clusteru, aniž byste museli otevřít žádost o podporu.
 
-Úložiště clusteru bude vždy respektovat změny klíčových oprávnění během hodiny nebo dřív a úložiště nebude k dispozici. Všechna nová data, která se ingestují do pracovních prostorů propojených s vaším clusterem, se zahodila a nebudou se moct obnovit, data budou nepřístupná a dotazy na tyto pracovní prostory selžou. Dříve přijímaná data zůstanou v úložišti, dokud neodstraníte svůj cluster a vaše pracovní prostory. Nepřístupná data se řídí zásadami uchovávání dat a při dosažení doby uchování se odstraní. Ingestovaná data za posledních 14 dní jsou také uchovávána v Hot cache (zazálohovaně SSD) pro efektivní operaci dotazovacího stroje. Tato operace se odstraní při operaci odvolání klíče a stane se taky nedostupným.
+Úložiště clusteru bude vždy respektovat změny klíčových oprávnění během hodiny nebo dřív a úložiště nebude k dispozici. Všechna nová data, která se ingestují do pracovních prostorů propojených s vaším clusterem, se zahodila a nebudou se moct obnovit, data budou nepřístupná a dotazy na tyto pracovní prostory selžou. Dříve přijímaná data zůstanou v úložišti, dokud neodstraníte svůj cluster a vaše pracovní prostory. Nepřístupná data se řídí zásadami uchovávání dat a při dosažení doby uchování se odstraní. Ingestovaná data za posledních 14 dní jsou také uchovávána v Hot cache (zazálohovaně SSD) pro efektivní operaci dotazovacího stroje. Tím se odstraní operace odvolání klíče a stane se nedostupnými.
 
-Úložiště clusteru se pravidelně dotazuje Key Vault k pokusu o rozbalení šifrovacího klíče a po jeho použití, příjmu dat a obnovení dotazů do 30 minut.
+Úložiště clusteru pravidelně kontroluje Key Vault k pokusu o rozbalení šifrovacího klíče a po jeho použití se v průběhu 30 minut obnoví zpracování a dotazování dat.
 
 ## <a name="key-rotation"></a>Obměna klíčů
 
@@ -259,7 +299,7 @@ Střídání klíčů spravované zákazníkem vyžaduje explicitní aktualizaci
 
 Všechna vaše data zůstanou po operaci střídání klíčů přístupná, protože data vždycky zašifrovaná pomocí šifrovacího klíče účtu (AEK), zatímco AEK se teď šifruje pomocí nového klíče KEK (Key Encryption Key) v Key Vault.
 
-## <a name="customer-managed-key-for-queries"></a>Klíč spravovaný zákazníkem pro dotazy
+## <a name="customer-managed-key-for-saved-queries"></a>Klíč spravovaný zákazníkem pro uložené dotazy
 
 Dotazovací jazyk používaný v Log Analytics je výrazná a může obsahovat citlivé informace v komentářích přidaných do dotazů nebo v syntaxi dotazu. Některé organizace vyžadují, aby tyto informace byly chráněné v souladu se zásadami klíčů spravovanými zákazníkem a vy budete potřebovat uložit dotazy zašifrované s vaším klíčem. Azure Monitor vám umožní ukládat do svého pracovního prostoru dotazy *uložené – prohledávání* a *protokolování výstrah* šifrovaných pomocí vašeho klíče ve vlastním účtu úložiště. 
 
@@ -410,7 +450,7 @@ Customer-Managed klíč je k dispozici na vyhrazeném clusteru a tyto operace js
 
   - Pokud je váš cluster nastavený pomocí spravované identity přiřazené uživatelem, nastavení `UserAssignedIdentities` `None` pozastaví cluster a znemožní přístup k vašim datům, ale nemůžete vrátit zpět odvolání a aktivovat cluster bez nutnosti otevřít žádost o podporu. Toto omezení se vztahuje na spravovanou identitu přiřazenou systémem.
 
-  - V současné době nemůžete definovat klíč spravovaný zákazníkem pomocí spravované identity přiřazené uživatelem, pokud se Key Vault nachází v Private-Link (vNet) a v tomto případě můžete použít spravovanou identitu přiřazenou systémem.
+  - Pokud je vaše Key Vault v Private-Link (vNet), nemůžete použít klíč spravovaný zákazníkem s uživatelem přiřazenou spravovanou identitou. V tomto scénáři můžete použít spravovanou identitu přiřazenou systémem.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 

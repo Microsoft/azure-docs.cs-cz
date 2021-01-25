@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2021
 ms.author: yelevin
-ms.openlocfilehash: 557f53e39781406674b9903dcf0bb3cb536cd804
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: f9fb1c917a0719cb9d250b997329d3415b5872eb
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97897480"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747470"
 ---
 # <a name="step-3-validate-connectivity"></a>Krok 3: ověření připojení
 
@@ -44,7 +44,7 @@ Počítejte s tím, že může trvat přibližně 20 minut, než se vaše protok
 1. Spusťte následující skript na serveru pro přeposílání protokolů (použití ID pracovního prostoru místo zástupného symbolu), abyste zkontrolovali možnosti připojení mezi řešením zabezpečení, serverem pro přeposílání protokolů a službou Azure Sentinel. Tento skript kontroluje, že démon naslouchá na správných portech, že předávání je správně nakonfigurované a že nic neblokuje komunikaci mezi démonem a agentem Log Analytics. Také pošle zprávy typu "TestCommonEventFormat" ke kontrole komplexního připojení. <br>
 
     ```bash
-    sudo wget -O https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]
+    sudo wget -O cef_troubleshoot.py https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]
     ```
 
    - Může se vám zobrazit zpráva s přímým spuštěním příkazu pro opravu problému s **mapováním pole *počítač***. Podrobnosti najdete [v popisu v ověřovacím skriptu](#mapping-command) .

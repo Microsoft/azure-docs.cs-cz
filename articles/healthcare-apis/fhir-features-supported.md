@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 1/21/2021
 ms.author: cavoeg
-ms.openlocfilehash: 43372eb0a9f7c08f6957627950769c1941580bd8
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 28c01e99c0e8708750341b445b4a31f6eaeab3ce
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98745863"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747521"
 ---
 # <a name="features"></a>Funkce
 
@@ -147,12 +147,14 @@ V současné době se povolené akce pro danou roli aplikují *globálně* na ro
 
 Výkon systému závisí na počtu ru, souběžných připojeních a typu operací, které provádíte (Put, post atd.). Níže jsou uvedeny některé obecné rozsahy, co můžete očekávat na základě nakonfigurovaných ru. Obecně platí, že se výkon škáluje lineárně s nárůstem ru:
 
-| počet ru | Prostředky/s |
-|----------|---------------|
-| 400      | 5-10          |
-| 1 000    | 100-150       |
-| 10 000   | 225-400       |
-| 100 000  | 2 500 – 4000   |
+| počet ru | Prostředky/s |    Maximální velikost úložiště (GB) *    |
+|----------|---------------|--------|                 
+| 400      | 5-10          |     40   |
+| 1 000    | 100-150       |      100  |
+| 10 000   | 225-400       |      1 000  |
+| 100 000  | 2 500 – 4000   |      10 000  |
+
+Poznámka: požadavek na Cosmos DB vyžaduje minimální propustnost 10 RU/s za GB úložiště. Další informace najdete v [Cosmos DB kvótách služeb](../cosmos-db/concepts-limits.md).
 
 ## <a name="next-steps"></a>Další kroky
 

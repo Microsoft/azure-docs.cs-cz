@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2021
 ms.author: yelevin
-ms.openlocfilehash: 617599e3eb6dcca74324a7bdfd51e604904a2fa1
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 8261856598a155e97f90ea350cedcd4c10e6893c
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97897497"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747302"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>Krok 1: nasazení serveru pro překládání protokolů
 
@@ -42,6 +42,11 @@ V tomto kroku určíte a nakonfigurujete počítač se systémem Linux, který p
 
 - Před instalací agenta Log Analytics nesmí být počítač se systémem Linux připojen k žádnému pracovnímu prostoru Azure.
 
+- Počítač se systémem Linux musí mít minimálně **4 jádra procesoru a 8 GB paměti RAM**.
+
+    > [!NOTE]
+    > - Jeden počítač pro přeposílání protokolů využívající démon **rsyslog** má podporovanou kapacitu **až 8500 událostí za sekundu (EPS)** .
+
 - V určitém okamžiku tohoto procesu možná budete potřebovat ID pracovního prostoru a primární klíč pracovního prostoru. Můžete je najít v prostředku pracovního prostoru v části **Správa agentů**.
 
 ## <a name="run-the-deployment-script"></a>Spuštění zaváděcího skriptu
@@ -51,7 +56,7 @@ V tomto kroku určíte a nakonfigurujete počítač se systémem Linux, který p
 1. V části **1,2 instalace kolekce CEF na počítači se systémem Linux** zkopírujte odkaz, který je k dispozici v části **spuštění následujícího skriptu pro instalaci a použití kolekce CEF**, nebo z následujícího textu (místo zástupných symbolů použijte ID pracovního prostoru a primární klíč):
 
     ```bash
-    sudo wget -O https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]
+    sudo wget -O cef_installer.py https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]
     ```
 
 1. Když je skript spuštěný, zkontrolujte, že nezískáváte žádné chybové zprávy ani upozornění.
@@ -73,7 +78,7 @@ V tomto kroku určíte a nakonfigurujete počítač se systémem Linux, který p
 > [!NOTE]
 > **Změna zdroje pole TimeGenerated**
 >
-> - Ve výchozím nastavení agent Log Analytics naplní pole *TimeGenerated* ve schématu časem, kdy agent přijal událost z démona syslog. V důsledku toho se čas, kdy se událost vygenerovala ve zdrojovém systému, nezaznamená v Azure Sentinel.
+> - Ve výchozím nastavení agent Log Analytics naplní pole *TimeGenerated* ve schématu časem, kdy agent přijal událost z démona syslog. Proto se ve službě Azure Sentinel nezaznamená čas vygenerování události ve zdrojovém systému.
 >
 > - Můžete ale spustit následující příkaz, který bude stahovat a spouštět `TimeGenerated.py` skript. Tento skript nakonfiguruje agenta Log Analytics k naplnění pole *TimeGenerated* pomocí původního času události v jeho zdrojovém systému místo času, kdy ho agent přijal.
 >
@@ -94,8 +99,8 @@ Zvolením démona syslog zobrazíte příslušný popis.
     - Stáhne instalační skript pro agenta Log Analytics (OMS) Linux.
 
         ```bash
-        wget -O https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/
-            onboard_agent.sh
+        wget -O onboard_agent.sh https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/
+            master/installer/scripts/onboard_agent.sh
         ```
 
     - Nainstaluje agenta Log Analytics.
@@ -160,8 +165,8 @@ Zvolením démona syslog zobrazíte příslušný popis.
     - Stáhne instalační skript pro agenta Log Analytics (OMS) Linux.
 
         ```bash
-        wget -O https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/
-            onboard_agent.sh
+        wget -O onboard_agent.sh https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/
+            master/installer/scripts/onboard_agent.sh
         ```
 
     - Nainstaluje agenta Log Analytics.

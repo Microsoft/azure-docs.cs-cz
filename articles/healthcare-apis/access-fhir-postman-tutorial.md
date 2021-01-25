@@ -9,18 +9,18 @@ ms.reviewer: dseven
 ms.author: matjazl
 author: matjazl
 ms.date: 02/07/2019
-ms.openlocfilehash: 37086a925d65a80f219c8e0a3358c834a2691701
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: b0acfbf9636c2ad1df7df3197a0a1a83ec91b5c3
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145646"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747336"
 ---
 # <a name="access-azure-api-for-fhir-with-postman"></a>Přístup k rozhraní API Azure pro FHIR s využitím post
 
 Klientská aplikace by měla přístup k rozhraní FHIR API prostřednictvím [REST API](https://www.hl7.org/fhir/http.html). Můžete také při sestavování aplikací pracovat přímo se serverem FHIR, například pro účely ladění. V tomto kurzu Vás provedeme kroky potřebnými k použití [metody post](https://www.getpostman.com/) pro přístup k serveru FHIR. Publikování je nástroj, který se často používá pro ladění při sestavování aplikací, které přistupují k rozhraním API.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Koncový bod FHIR v Azure. Můžete ho nastavit pomocí spravovaného rozhraní API Azure pro FHIR nebo open source serveru FHIR pro Azure. Nastavte spravované rozhraní API Azure pro FHIR pomocí [Azure Portal](fhir-paas-portal-quickstart.md), [PowerShellu](fhir-paas-powershell-quickstart.md)nebo rozhraní příkazového [řádku Azure CLI](fhir-paas-cli-quickstart.md).
 - [Klientská aplikace](register-confidential-azure-ad-client-app.md) , kterou budete používat pro přístup ke službě FHIR
@@ -32,7 +32,7 @@ Aby bylo možné použít metodu post, jsou potřeba následující podrobnosti:
 
 - Adresa URL vašeho serveru FHIR, například `https://MYACCOUNT.azurehealthcareapis.com`
 - Poskytovatel identity `Authority` pro váš server FHIR, například `https://login.microsoftonline.com/{TENANT-ID}`
-- Nakonfigurované `audience` . To je obvykle adresa URL serveru FHIR, např. `https://MYACCOUNT.azurehealthcareapis.com` nebo pouze `https://azurehealthcareapis.com` .
+- Nakonfigurované `audience` . To je obvykle adresa URL serveru FHIR, např. `https://<FHIR-SERVER-NAME>.azurehealthcareapis.com` nebo pouze `https://azurehealthcareapis.com` .
 - `client_id`(Nebo ID aplikace) [klientské aplikace](register-confidential-azure-ad-client-app.md) , kterou budete používat pro přístup ke službě FHIR.
 - `client_secret`(Nebo tajný klíč aplikace) klientské aplikace.
 
@@ -72,7 +72,7 @@ Budete potřebovat několik podrobností:
 | ID klienta             | `XXXXXXXX-XXX-XXXX-XXXX-XXXXXXXXXXXX`                                                                            | ID aplikace             |
 | Tajný klíč klienta         | `XXXXXXXX`                                                                                                        | Tajný klíč klienta          |
 | Obor | `<Leave Blank>` |
-| Stav                 | `1234`                                                                                                            |                            |
+| State                 | `1234`                                                                                                            |                            |
 | Ověření klienta | Poslat přihlašovací údaje klienta v těle                                                                                 |                 
 
 Zajděte si "token žádosti" a budete provedeni pomocí Azure Active Directoryho toku ověřování a token se vrátí do post. Pokud narazíte na problémy, otevřete konzolu pro odesílání (z položky nabídky Zobrazit a >zobrazit na konzole pro publikování).
