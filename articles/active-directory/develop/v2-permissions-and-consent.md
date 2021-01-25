@@ -12,16 +12,16 @@ ms.date: 09/23/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
 ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40
-ms.openlocfilehash: 35499810ae13a8ddc5b7bb6306deafef0ef24e0f
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: aa8c00d1ee2a0dc3d019cc75b4e411ede984e74a
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98246787"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756060"
 ---
-# <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Oprávnění a souhlas v koncovém bodu Microsoft Identity Platform
+# <a name="permissions-and-consent-in-the-microsoft-identity-platform"></a>Oprávnění a souhlas na platformě Microsoft identity
 
-Aplikace, které se integrují se sadou Microsoft Identity Platform, se řídí autorizačním modelem, který poskytuje uživatelům a správcům kontrolu nad tím, jak budou data dostupná. Implementace autorizačního modelu byla aktualizována na koncovém bodu Microsoft Identity Platform. Tím se změní způsob, jakým aplikace musí spolupracovat s platformou Microsoft identity. Tento článek se zabývá základními koncepty tohoto autorizačního modelu, včetně oborů, oprávnění a souhlasu.
+Aplikace, které se integrují s platformou Microsoft identity, se řídí autorizačním modelem, který poskytuje uživatelům a správcům kontrolu nad tím, jak se data dají získat. Implementace autorizačního modelu byla aktualizována na platformě Microsoft identity. Tím se změní způsob, jakým aplikace musí spolupracovat s platformou Microsoft identity. Tento článek se zabývá základními koncepty tohoto autorizačního modelu, včetně oborů, oprávnění a souhlasu.
 
 ## <a name="scopes-and-permissions"></a>Obory a oprávnění
 
@@ -53,7 +53,7 @@ Aplikace tyto oprávnění nejčastěji vyžádá zadáním oborů v požadavcí
 
 ## <a name="permission-types"></a>Typy oprávnění
 
-Platforma Microsoft Identity Platform podporuje dva typy oprávnění: *delegovaná oprávnění* a *oprávnění aplikací*.
+Platforma Microsoft identity podporuje dva typy oprávnění: *delegovaná oprávnění* a *oprávnění aplikací*.
 
 * **Delegovaná oprávnění** se používají v aplikacích, které mají přihlášeného uživatele k dispozici. Pro tyto aplikace buď uživatel nebo správce souhlasí s oprávněními, která aplikace požaduje. Aplikace je delegována oprávnění, aby fungovala jako přihlášený uživatel při volání cílového prostředku. 
 
@@ -128,7 +128,7 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
 
 `scope`Parametr je seznam oddělený mezerami delegovaná oprávnění, která aplikace požaduje. Každé oprávnění je určeno připojením hodnoty oprávnění k identifikátoru prostředku (identifikátor URI ID aplikace). V příkladu žádosti potřebuje aplikace oprávnění ke čtení kalendáře uživatele a odeslání pošty jako uživatel.
 
-Jakmile uživatel zadá své přihlašovací údaje, koncový bod platformy Microsoft Identity ověří odpovídající záznam *souhlasu uživatele*. Pokud uživatel nesouhlasí s některým z požadovaných oprávnění v minulosti a pokud správce nesouhlasí s těmito oprávněními jménem celé organizace, koncový bod platformy Microsoft Identity žádá uživatele, aby udělil požadovaná oprávnění.
+Jakmile uživatel zadá své přihlašovací údaje, platforma identity Microsoftu zkontroluje odpovídající záznam *souhlasu uživatele*. Pokud uživatel nesouhlasí s některým z požadovaných oprávnění v minulosti a pokud správce nesouhlasí s těmito oprávněními jménem celé organizace, Microsoft Identity platforme vyzve uživatele, aby udělil požadovaná oprávnění.
 
 V tuto chvíli jsou oprávnění `offline_access` ("udržovat přístup k datům, ke kterým jste udělili přístup k oprávněním) a `user.read` (" přihlašovat a číst váš profil ") automaticky zahrnutá do původního souhlasu aplikace.  Tato oprávnění se obecně vyžadují pro správné fungování aplikací. `offline_access`Oprávnění dává aplikaci přístup k aktualizaci tokenů, které jsou důležité pro nativní aplikace a webové aplikace. `user.read`Oprávnění poskytuje přístup k `sub` deklaraci identity. Umožňuje klientovi nebo aplikaci správně identifikovat uživatele v čase a přistupovat k základní informacím o uživateli.
 
@@ -164,7 +164,7 @@ Pokud aplikace požaduje oprávnění aplikace a správce udělí tato oprávně
 
 Po použití koncového bodu souhlasu správce k udělení souhlasu správce jste hotovi. Uživatelé nemusejí provádět žádné další akce. Po udělení souhlasu správce můžou uživatelé získat přístupový token prostřednictvím typického toku ověřování. Výsledný přístupový token má odsouhlasená oprávnění.
 
-Když správce společnosti používá vaši aplikaci a přesměruje se na koncový bod autorizace, detekuje platforma Microsoftu identitu uživatele. Požádá, pokud správce společnosti chce souhlasit jménem celého tenanta s požadovanými oprávněními. Místo toho můžete pomocí vyhrazeného koncového bodu souhlasu správce proaktivně požádat správce o udělení oprávnění jménem celého tenanta. Tento koncový bod je také nutný pro vyžádání oprávnění aplikace. Oprávnění aplikace nelze požadovat pomocí koncového bodu autorizace.
+Když správce společnosti používá vaši aplikaci a přesměruje na koncový bod autorizace, detekuje platforma Microsoftu roli uživatele. Požádá, pokud správce společnosti chce souhlasit jménem celého tenanta s požadovanými oprávněními. Místo toho můžete pomocí vyhrazeného koncového bodu souhlasu správce proaktivně požádat správce o udělení oprávnění jménem celého tenanta. Tento koncový bod je také nutný pro vyžádání oprávnění aplikace. Oprávnění aplikace nelze požadovat pomocí koncového bodu autorizace.
 
 Pokud budete postupovat podle těchto kroků, může vaše aplikace požádat o oprávnění pro všechny uživatele v tenantovi, včetně rozsahů s omezeným oprávněním správce. Tato operace má vysoké oprávnění. Operaci použijte pouze v případě potřeby pro váš scénář.
 
@@ -335,7 +335,7 @@ response_type=token            //Code or a hybrid flow is also possible here
 
 Tento příklad kódu vytvoří stránku souhlasu pro všechna registrovaná oprávnění, pokud jsou předchozí popisy souhlasu a `/.default` vztahují se k tomuto scénáři. Pak kód vrátí `id_token` místo přístupového tokenu.  
 
-Toto chování vychází ze starších klientů, kteří přecházejí z knihovny Azure AD Authentication Library (ADAL) do knihovny Microsoft Authentication Library (MSAL). Tuto instalaci *by neměli* používat noví klienti, kteří cílí na koncový bod Microsoft Identity Platform.
+Toto chování vychází ze starších klientů, kteří přecházejí ze služby Azure AD Authentication Library (ADAL) do knihovny Microsoft Authentication Library (MSAL). Tuto instalaci *by neměli* používat noví klienti, kteří cílí na platformu Microsoft identity.
 
 ### <a name="client-credentials-grant-flow-and-default"></a>Přihlašovací údaje klienta udělují tok a/.Default  
 
@@ -357,5 +357,5 @@ Postup řešení potíží naleznete v tématu [Neočekávaná chyba při prová
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Tokeny ID v platformě Microsoft Identity Platform](id-tokens.md)
+* [Tokeny ID na platformě Microsoft identity](id-tokens.md)
 * [Přístupové tokeny na platformě Microsoft identity](access-tokens.md)

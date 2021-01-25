@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: ae80ddd9efe8274a29a4b8dd91b7a3c391eefc3a
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 8e54f71ef58b3ea76a5fe55347a1caa173046320
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178683"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754489"
 ---
 # <a name="quickstart-aspnet-core-web-app-that-signs-in-users-and-calls-microsoft-graph-on-their-behalf"></a>Rychlý Start: ASP.NET Core webovou aplikaci, která podepisuje uživatele a volá Microsoft Graph jejich jménem
 
@@ -166,9 +166,9 @@ Middleware *Microsoft. AspNetCore. Authentication* používá `Startup` třídu,
 
 `AddAuthentication()`Metoda nakonfiguruje službu tak, aby přidala ověřování pomocí souborů cookie, které se používá v prohlížečových scénářích a nastavení výzvy pro OpenID připojení.
 
-Řádek, který obsahuje, `.AddMicrosoftIdentityWebApp` přidá do vaší aplikace ověřování platformy Microsoft Identity Platform. K tomu poskytuje [Microsoft. identity. Web](microsoft-identity-web.md). Pak se nakonfiguruje tak, aby se přihlásilo pomocí koncového bodu Microsoft Identity Platform na základě informací v `AzureAD` části *appsettings.jsv* konfiguračním souboru:
+Řádek, který obsahuje `.AddMicrosoftIdentityWebApp` , přidá do vaší aplikace ověřování Microsoft Identity Platform. K tomu poskytuje [Microsoft. identity. Web](microsoft-identity-web.md). Pak se nakonfiguruje tak, aby se přihlásila pomocí platformy Microsoft identity na základě informací v `AzureAD` části *appsettings.jsv* konfiguračním souboru:
 
-| *appsettings.jsna* klíč | Description                                                                                                                                                          |
+| *appsettings.jsna* klíč | Popis                                                                                                                                                          |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `ClientId`             | **ID aplikace (klienta)** aplikace zaregistrované v Azure Portal.                                                                                       |
 | `Instance`             | Koncový bod služby tokenu zabezpečení (STS) pro ověření uživatele. Tato hodnota se obvykle `https://login.microsoftonline.com/` označuje jako veřejný cloud Azure. |

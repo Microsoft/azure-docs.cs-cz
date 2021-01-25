@@ -13,12 +13,12 @@ ms.date: 12/3/2020
 ms.author: hirsin
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: f3222c790ccd0cee936b246253a16b5c434c61c8
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 50a2f56824db67b73199439922e662339ff30872
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602202"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755294"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Přihlašovací údaje ověřovacího certifikátu aplikace Microsoft Identity Platform
 
@@ -134,7 +134,7 @@ Kontrolní výrazy klienta se dají použít všude, kde se použije tajný klí
 | Parametr | Hodnota | Popis|
 |-----------|-------|------------|
 |`client_assertion_type`|`urn:ietf:params:oauth:client-assertion-type:jwt-bearer`| Toto je pevná hodnota, která označuje, že používáte přihlašovací údaje certifikátu. |
-|`client_assertion`| TOKEN |Toto je token JWT vytvořený výše. |
+|`client_assertion`| JWT |Toto je token JWT vytvořený výše. |
 
 ## <a name="next-steps"></a>Další kroky
 

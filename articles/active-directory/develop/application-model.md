@@ -1,7 +1,7 @@
 ---
 title: Aplikační model | Azure
 titleSuffix: Microsoft identity platform
-description: Přečtěte si o procesu registrace aplikace, aby ji bylo možné integrovat s platformou Microsoft identity (v 2.0).
+description: Přečtěte si o procesu registrace aplikace, aby ji bylo možné integrovat s platformou Microsoft identity.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,12 +13,12 @@ ms.date: 04/28/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 5aca96a9c3bc4e8f1061f677e316565b10014ac9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ba41e36d12b58da2e572cf870195716eacaddef
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88117477"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755683"
 ---
 # <a name="application-model"></a>Aplikační model
 
@@ -32,7 +32,7 @@ Aby mohl poskytovatel identity zjistit, jestli má uživatel přístup ke konkr�
 * Rozhodněte se, jestli chcete uživatelům umožnit, aby se přihlásili jenom v případě, že patří do vaší organizace. Toto je jediná klientská aplikace. Nebo Umožněte uživatelům, aby se přihlásili pomocí pracovního nebo školního účtu. Toto je víceklientské aplikace. Můžete také umožnit osobní účty Microsoft nebo sociální účet z LinkedInu, Google atd.
 * Požádat o oprávnění rozsahu. Můžete například požádat o obor "User. Read", který uděluje oprávnění ke čtení profilu přihlášeného uživatele.
 * Definujte obory definující přístup k webovému rozhraní API. Když aplikace chce získat přístup k vašemu rozhraní API, obvykle bude potřebovat požádat o oprávnění k definovaným oborům.
-* Sdílejte tajný klíč s Microsoft Identity platformou, který ukáže identitu aplikace.  To je důležité v případě, kdy je aplikace důvěrná klientská aplikace. Důvěrná klientská aplikace je aplikace, která může bezpečně uchovávat přihlašovací údaje. Pro uložení přihlašovacích údajů vyžadují důvěryhodný back-end Server.
+* Sdílejte tajný klíč s platformou Microsoft identity, který prokáže identitu aplikace.  To je důležité v případě, kdy je aplikace důvěrná klientská aplikace. Důvěrná klientská aplikace je aplikace, která může bezpečně uchovávat přihlašovací údaje. Pro uložení přihlašovacích údajů vyžadují důvěryhodný back-end Server.
 
 Po registraci se aplikaci udělí jedinečný identifikátor, který aplikace sdílí s platformou Microsoft identity při žádosti o tokeny. Pokud je aplikace [důvěrná klientská aplikace](developer-glossary.md#client-application), bude také sdílet tajný klíč nebo veřejný klíč v závislosti na tom, zda byly použity certifikáty nebo tajné klíče.
 
@@ -55,7 +55,7 @@ Platforma Microsoft identity:
 
 ## <a name="multi-tenant-apps"></a>Aplikace s více tenanty
 
-V Microsoft Identity Platform [objekt aplikace](developer-glossary.md#application-object) popisuje aplikaci. V době nasazení aplikace Microsoft Identity Platform používá objekt aplikace jako podrobný plán k vytvoření [instančního](developer-glossary.md#service-principal-object)objektu, který představuje konkrétní instanci aplikace v rámci adresáře nebo tenanta. Instanční objekt definuje, co může aplikace dělat v určitém cílovém adresáři, kdo ho může používat, k jakým prostředkům má přístup, a tak dále. Platforma Microsoft Identity Platform vytvoří instanční objekt z objektu aplikace prostřednictvím [souhlasu](developer-glossary.md#consent).
+Na platformě Microsoft identity je [objekt aplikace](developer-glossary.md#application-object) popisuje aplikaci. V době nasazení používá platforma Microsoft identity objekt aplikace jako podrobný plán k vytvoření [instančního](developer-glossary.md#service-principal-object)objektu, který představuje konkrétní instanci aplikace v rámci adresáře nebo tenanta. Instanční objekt definuje, co může aplikace dělat v určitém cílovém adresáři, kdo ho může používat, k jakým prostředkům má přístup, a tak dále. Platforma Microsoft Identity vytvoří instanční objekt z objektu aplikace prostřednictvím [souhlasu](developer-glossary.md#consent).
 
 Následující diagram znázorňuje zjednodušený postup zřizování platformy Microsoft Identity Platform založený na základě souhlasu. Zobrazuje dva *klienty: a* a *B*.
 
@@ -69,7 +69,7 @@ V tomto toku zřizování:
 1. Uživatel z tenanta B se pokusí přihlásit k aplikaci, koncový bod autorizace požaduje token pro aplikaci.
 1. Přihlašovací údaje uživatele se získávají a ověřují pro ověřování.
 1. Uživatel je vyzván k poskytnutí souhlasu aplikace, aby získal přístup k tenantovi B.
-1. Platforma Microsoft Identity Platform používá aplikační objekt v tenantovi A jako plán pro vytvoření instančního objektu v tenantovi B.
+1. Platforma Microsoft identity používá aplikační objekt v tenantovi A jako plán pro vytvoření instančního objektu v tenantovi B.
 1. Uživatel obdrží požadovaný token.
 
 Tento postup můžete opakovat pro další klienty. Tenant A uchovává podrobný plán aplikace (objekt aplikace). Uživatelům a správcům všech ostatních tenantů, na kterých se aplikace uděluje, si můžete řídit, co může aplikace provádět přes odpovídající objekt instančního objektu v každém tenantovi. Další informace najdete v tématu [aplikační a instanční objekty v platformě Microsoft Identity Platform](app-objects-and-service-principals.md).

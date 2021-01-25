@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/22/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: ca22d4f1ff48222b33030eb44d7feb62b1d154cd
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 7d38ee1782987afce703fbd8b4203186bbcbb505
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011880"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754480"
 ---
 # <a name="quickstart-protect-an-aspnet-core-web-api-with-microsoft-identity-platform"></a>Rychlý Start: ochrana ASP.NET Core webového rozhraní API s platformou Microsoft identity
 
@@ -96,7 +96,7 @@ Middleware *Microsoft. AspNetCore. Authentication* používá `Startup` třídu,
 
 `AddAuthentication()`Metoda nakonfiguruje službu pro přidání ověřování založeného na JwtBearer.
 
-Řádek obsahující `.AddMicrosoftIdentityWebApi` do vašeho webového rozhraní API přidá autorizaci platformy Microsoft Identity Platform. Pak je nakonfigurovaná tak, aby ověřovala přístupové tokeny vydané koncovým bodem platformy Microsoft identity, na základě informací v `AzureAD` části *appsettings.jsv* konfiguračním souboru:
+Řádek, který obsahuje `.AddMicrosoftIdentityWebApi` , přidá do vašeho webového rozhraní API autorizaci platformy Microsoft identity. Pak je nakonfigurovaná tak, aby ověřovala přístupové tokeny vydané platformou Microsoft identity na základě informací v `AzureAD` části *appsettings.jsv* konfiguračním souboru:
 
 | *appsettings.jsna* klíč | Popis                                                                                                                                                          |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|

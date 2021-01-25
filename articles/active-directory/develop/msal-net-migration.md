@@ -13,18 +13,18 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: c6049bf55e379a2629e8cd4ef1427f91fc31d2cd
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: b437efcfa2b0bb2a725929ae0253f48d97d11552
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063599"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754810"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Migrace aplikací do MSAL.NET
 
 K ověřování entit Azure AD a žádosti o tokeny od Azure AD se používají knihovna Microsoft Authentication Library pro .NET (MSAL.NET) i knihovna ověřování Azure AD pro .NET (ADAL.NET). Až do té doby se většina vývojářů pracovala s Azure AD for Developers Platform (verze 1.0) k ověřování identit Azure AD (pracovní a školní účty) tím, že vyžaduje tokeny pomocí služby Azure AD Authentication Library (ADAL). Pomocí MSAL:
 
-- můžete ověřit širší sadu identit Microsoftu (identity Azure AD a účty Microsoft a sociální a místní účty prostřednictvím Azure AD B2C), protože používá koncový bod Microsoft Identity Platform.
+- můžete ověřit širší sadu identit Microsoftu (identity Azure AD a účty Microsoft a sociální a místní účty prostřednictvím Azure AD B2C), protože používá platformu Microsoft identity.
 - vaši uživatelé získají nejlepší možnosti jednotného přihlašování.
 - vaše aplikace může povolit postupný souhlas a podpora podmíněného přístupu je jednodušší.
 - přináší vám výhody inovace.
@@ -35,9 +35,9 @@ Tento článek popisuje rozdíly mezi knihovnou Microsoft Authentication Library
 
 ## <a name="differences-between-adal-and-msal-apps"></a>Rozdíly mezi aplikacemi ADAL a MSAL
 
-Ve většině případů je třeba použít MSAL.NET a koncový bod Microsoft Identity Platform, což je nejnovější generace knihoven ověřování od společnosti Microsoft. Pomocí MSAL.NET získáte tokeny pro uživatele, kteří se přihlásí do vaší aplikace pomocí Azure AD (pracovní a školní účty), účtů Microsoft (osobní) (MSA) nebo Azure AD B2C.
+Ve většině případů chcete používat MSAL.NET a Microsoft Identity Platform, což je nejnovější generace knihoven ověřování od Microsoftu. Pomocí MSAL.NET získáte tokeny pro uživatele, kteří se přihlásí do vaší aplikace pomocí Azure AD (pracovní a školní účty), účtů Microsoft (osobní) (MSA) nebo Azure AD B2C.
 
-Pokud už jste obeznámeni s koncovým bodem Azure AD for Developers (v 1.0) (a ADAL.NET), můžete si přečíst, [co se liší od koncového bodu Microsoft Identity Platform (v 2.0)](../azuread-dev/azure-ad-endpoint-comparison.md).
+Pokud už jste obeznámeni s koncovým bodem Azure AD for Developers (v 1.0) (a ADAL.NET), možná si budete chtít přečíst, [co se liší od platformy Microsoft Identity?](../azuread-dev/azure-ad-endpoint-comparison.md).
 
 Pokud ale vaše aplikace potřebuje přihlašovat uživatele staršími verzemi [Active Directory Federation Services (AD FS) (ADFS)](/windows-server/identity/active-directory-federation-services), musíte i nadále používat ADAL.NET. Další informace najdete v tématu [Podpora služby ADFS](https://aka.ms/msal-net-adfs-support).
 
@@ -266,4 +266,4 @@ Tuto metodu můžete použít také pro různé scénáře integrace, kde máte 
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o oborech v [oborech, oprávněních a jejich souhlasu získáte v koncovém bodě Microsoft Identity Platform](v2-permissions-and-consent.md) .
+Další informace o oborech v [oborech, oprávněních a jejich souhlasu najdete na platformě Microsoft Identity Platform](v2-permissions-and-consent.md) .

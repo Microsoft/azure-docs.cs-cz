@@ -3,12 +3,12 @@ title: Přehled trezorů služby Recovery Services
 description: Přehled trezorů Recovery Services.
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.openlocfilehash: ab6b27bdc7ac9b01385ed43830d0af5900210d43
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0ed37446e1ccf0780f924143c8f063964adf0004
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017317"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755112"
 ---
 # <a name="recovery-services-vaults-overview"></a>Přehled trezorů služby Recovery Services
 
@@ -22,7 +22,7 @@ Tento článek popisuje funkce trezoru Recovery Services. Recovery Services trez
 
 - **Obnovitelné odstranění**: u obnovitelného odstranění, i když škodlivý objekt actor odstraní zálohu (nebo se zálohovaná data nechtěně odstraní), zálohovaná data se uchovávají po dobu 14 dalších dnů, což umožňuje obnovení této zálohované položky bez ztráty dat. Další 14 dní uchovávání zálohových dat ve stavu "obnovitelné odstranění" za vás neúčtují žádné náklady. [Přečtěte si další informace](backup-azure-security-feature-cloud.md).
 
-- **Obnovení mezi oblastmi**: obnovení mezi oblastmi (crr) vám umožňuje obnovení virtuálních počítačů Azure v sekundární oblasti, která je spárována s oblastí Azure. Pokud Azure deklaruje havárie v primární oblasti, data replikovaná v sekundární oblasti jsou dostupná k obnovení v sekundární oblasti, aby se zmírnila Doba výpadku reálného výpadku v primární oblasti pro jejich prostředí. [Přečtěte si další informace](backup-azure-arm-restore-vms.md#cross-region-restore).
+- **Obnovení mezi oblastmi**: obnovení mezi oblastmi (crr) vám umožňuje obnovení virtuálních počítačů Azure v sekundární oblasti, která je spárována s oblastí Azure. Povolením této funkce na [úrovni trezoru](backup-create-rs-vault.md#set-cross-region-restore)můžete kdykoli obnovit replikovaná data v sekundární oblasti, když zvolíte. To vám umožní obnovit data sekundární oblasti pro účely dodržování předpisů pro audit a během výpadků, aniž byste čekali na to, že Azure deklaruje havárií (na rozdíl od nastavení GRS trezoru). [Přečtěte si další informace](backup-azure-arm-restore-vms.md#cross-region-restore).
 
 ## <a name="storage-settings-in-the-recovery-services-vault"></a>Nastavení úložiště v trezoru Recovery Services
 

@@ -13,12 +13,12 @@ ms.date: 08/7/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 8c8167142876dfac0ae0aeff51e85b66c65c607b
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: ff8e03b813e2cb890192667e3466d920eaabc72c
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98208844"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756092"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft Identity Platform a OAuth 2,0 s tokem za chodu
 
@@ -201,7 +201,7 @@ V závislosti na architektuře nebo využití vaší aplikace můžete zvážit 
 
 ### <a name="default-and-combined-consent"></a>/.Default a kombinovaný souhlas
 
-Aplikace střední vrstvy přidá klienta do seznamu známých klientských aplikací ve svém manifestu a klient může aktivovat kombinovaný postup souhlasu pro sebe i pro aplikaci střední vrstvy. Na koncovém bodu Microsoft Identity Platform se to dělá pomocí [ `/.default` oboru](v2-permissions-and-consent.md#the-default-scope). Při aktivaci obrazovky pro vyjádření souhlasu pomocí známých klientských aplikací a `/.default` na obrazovce pro vyjádření souhlasu se zobrazí oprávnění  pro klienta pro rozhraní API střední vrstvy a také si vyžádají jakékoli oprávnění, které jsou vyžadovány rozhraním API střední vrstvy. Uživatel poskytne souhlas obou aplikací a OBO tok funguje.
+Aplikace střední vrstvy přidá klienta do seznamu známých klientských aplikací ve svém manifestu a klient může aktivovat kombinovaný postup souhlasu pro sebe i pro aplikaci střední vrstvy. Na platformě Microsoft identity se to provádí pomocí [ `/.default` oboru](v2-permissions-and-consent.md#the-default-scope). Při aktivaci obrazovky pro vyjádření souhlasu pomocí známých klientských aplikací a `/.default` na obrazovce pro vyjádření souhlasu se zobrazí oprávnění  pro klienta pro rozhraní API střední vrstvy a také si vyžádají jakékoli oprávnění, které jsou vyžadovány rozhraním API střední vrstvy. Uživatel poskytne souhlas obou aplikací a OBO tok funguje.
 
 ### <a name="pre-authorized-applications"></a>Předem autorizované aplikace
 

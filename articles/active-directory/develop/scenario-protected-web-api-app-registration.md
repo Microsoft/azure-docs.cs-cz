@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7a38e2384c5f24bc3a72e1ef8e8f7119b2db0f2f
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: c3d9cd5e710eb263707e87c4afe0f08809b8d50c
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443938"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756467"
 ---
 # <a name="protected-web-api-app-registration"></a>Chráněné webové rozhraní API: registrace aplikace
 
@@ -27,11 +27,11 @@ Běžné kroky k registraci aplikace najdete v tématu [rychlý Start: registrac
 
 ## <a name="accepted-token-version"></a>Verze přijatého tokenu
 
-Koncový bod platformy Microsoft Identity může vydávat tokeny v 1.0 a tokeny v 2.0. Další informace o těchto tokenech najdete v tématu [přístupové tokeny](access-tokens.md).
+Platforma identity Microsoftu může vydávat tokeny v 1.0 a tokeny v 2.0. Další informace o těchto tokenech najdete v tématu [přístupové tokeny](access-tokens.md).
 
 Verze tokenu, kterou vaše rozhraní API může přijmout, závisí na **podporovaných typech účtů** při vytváření registrace aplikace webového rozhraní api v Azure Portal.
 
-- Pokud je hodnota **podporovaných typů účtů** **účty v jakémkoli adresáři organizace a na osobních účtech Microsoft (např. Skype, Xbox, Outlook.com)** , musí být přijatý token verze v 2.0.
+- Pokud je hodnota **podporovaných typů účtů** **účty v jakémkoli adresáři organizace a na osobních účtech Microsoft (např. Skype, Xbox, Outlook.com)**, musí být přijatý token verze v 2.0.
 - V opačném případě může verze přijatého tokenu v 1.0.
 
 Po vytvoření aplikace můžete zjistit nebo změnit verzi přijatého tokenu pomocí následujících kroků:
@@ -40,11 +40,11 @@ Po vytvoření aplikace můžete zjistit nebo změnit verzi přijatého tokenu p
 1. V manifestu Najděte vlastnost **accessTokenAcceptedVersion** .
 1. Hodnota určuje Azure Active Directory (Azure AD), která verze tokenu přijímá webové rozhraní API.
     - Pokud je hodnota 2, webové rozhraní API akceptuje tokeny verze 2.0.
-    - Pokud je hodnota **null** , webové rozhraní API akceptuje tokeny v 1.0.
+    - Pokud je hodnota **null**, webové rozhraní API akceptuje tokeny v 1.0.
 1. Pokud jste změnili verzi tokenu, vyberte **Uložit**.
 
 > [!NOTE]
-> Webové rozhraní API určuje, která verze tokenu přijímá. Když klient požádá o token webového rozhraní API z koncového bodu Microsoft Identity Platform (v 2.0), klient získá token, který indikuje, kterou verzi tokenu webové rozhraní API přijímá.
+> Webové rozhraní API určuje, která verze tokenu přijímá. Když klient požádá o token webového rozhraní API z platformy Microsoft identity, klient získá token, který indikuje, kterou verzi tokenu webové rozhraní API přijímá.
 
 ## <a name="no-redirect-uri"></a>Žádný identifikátor URI pro přesměrování
 
@@ -143,9 +143,9 @@ Přidání tohoto zvýšeného zabezpečení:
 
    > [!IMPORTANT]
    >
-   > Pokud jste nastavili **přiřazení uživatele jako povinné?** Pokud **Ano** , Azure AD zkontroluje přiřazení role aplikace klienta, když požádá o přístupový token webového rozhraní API. Pokud klient není přiřazený k rolím aplikace, Azure AD vrátí chybovou zprávu "invalid_client: AADSTS501051: aplikace není \<application name\> přiřazená k roli pro \<web API\> ".
+   > Pokud jste nastavili **přiřazení uživatele jako povinné?** Pokud **Ano**, Azure AD zkontroluje přiřazení role aplikace klienta, když požádá o přístupový token webového rozhraní API. Pokud klient není přiřazený k rolím aplikace, Azure AD vrátí chybovou zprávu "invalid_client: AADSTS501051: aplikace není \<application name\> přiřazená k roli pro \<web API\> ".
    >
-   > Pokud si zachováte **přiřazení uživatelů?** nastavit na **ne** , Azure AD nebude kontrolovat přiřazení role aplikace, když si klient vyžádá přístupový token pro vaše webové rozhraní API. Každý klient démona, což znamená, že každý klient používající tok přihlašovacích údajů klienta, může získat přístupový token pro rozhraní API jenom tak, že určí cílovou skupinu. Každá aplikace má přístup k rozhraní API bez nutnosti požádat o oprávnění.
+   > Pokud si zachováte **přiřazení uživatelů?** nastavit na **ne**, Azure AD nebude kontrolovat přiřazení role aplikace, když si klient vyžádá přístupový token pro vaše webové rozhraní API. Každý klient démona, což znamená, že každý klient používající tok přihlašovacích údajů klienta, může získat přístupový token pro rozhraní API jenom tak, že určí cílovou skupinu. Každá aplikace má přístup k rozhraní API bez nutnosti požádat o oprávnění.
    >
    > Jak je vysvětleno v předchozí části, vaše webové rozhraní API může vždy ověřit, zda má aplikace správnou roli, která je autorizována správcem tenanta. Rozhraní API provede toto ověření tím, že ověří, že přístupový token má deklaraci identity rolí a že hodnota této deklarace je správná. V předchozím příkladu JSON je hodnota `access_as_application` .
 

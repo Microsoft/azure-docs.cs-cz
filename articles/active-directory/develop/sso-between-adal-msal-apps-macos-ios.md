@@ -1,6 +1,7 @@
 ---
-title: Jednotné přihlašování mezi aplikacemi ADAL & MSAL (iOS/macOS) – Microsoft Identity Platform | Azure
-description: ''
+title: Jednotné přihlašování mezi aplikacemi ADAL & MSAL (iOS/macOS) | Azure
+titleSuffix: Microsoft identity platform
+description: Naučte se sdílet jednotné přihlašování mezi aplikacemi ADAL a MSAL.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -12,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
-ms.openlocfilehash: 7a8a1667ba1ca2a99c053c6941e3ba778299fd53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60189b8ba952bc3315bf514c5d0786601840665a
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80880746"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756212"
 ---
 # <a name="how-to-sso-between-adal-and-msal-apps-on-macos-and-ios"></a>Postupy: jednotné přihlašování mezi aplikacemi ADAL a MSAL v macOS a iOS
 
@@ -48,7 +49,7 @@ Následující tabulka shrnuje rozdíly v identifikátorech účtů mezi ADAL a 
 | Identifikátor účtu                | MSAL                                                         | ADAL 2.7. x      | Starší knihovna ADAL (před ADAL 2.7. x) |
 | --------------------------------- | ------------------------------------------------------------ | --------------- | ------------------------------ |
 | zobrazitelný identifikátor            | `username`                                                   | `userId`        | `userId`                       |
-| jedinečný nezobrazitelný identifikátor | `identifier`                                                 | `homeAccountId` | Není k dispozici                            |
+| jedinečný nezobrazitelný identifikátor | `identifier`                                                 | `homeAccountId` | –                            |
 | Není známé žádné ID účtu.               | Dotazování všech účtů prostřednictvím `allAccounts:` rozhraní API v `MSALPublicClientApplication` | N/A             | N/A                            |
 
 Toto je rozhraní, které `MSALAccount` poskytuje tyto identifikátory:

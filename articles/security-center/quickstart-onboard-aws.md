@@ -3,16 +3,16 @@ title: Připojte svůj účet AWS k Azure Security Center
 description: Monitorování prostředků AWS z Azure Security Center
 author: memildin
 ms.author: memildin
-ms.date: 12/29/2020
+ms.date: 01/24/2021
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 4c919115efb39a8e8c008eab69dc087792f7b105
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 2ad3ab8c39d9f9a29e74bd139fb5ddd1e5faeff9
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814308"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755148"
 ---
 #  <a name="connect-your-aws-accounts-to-azure-security-center"></a>Připojení účtů AWS k Azure Security Center
 
@@ -33,16 +33,16 @@ Při připojování účtu AWS do Security Center se integruje Centrum zabezpeč
 
 Na snímku obrazovky níže vidíte účty AWS zobrazené na řídicím panelu přehled Security Center.
 
-:::image type="content" source="./media/quickstart-onboard-aws/aws-account-in-overview.png" alt-text="3 projekty GCP uvedené na řídicím panelu přehled Security Center" lightbox="./media/quickstart-onboard-gcp/gcp-account-in-overview.png":::
+:::image type="content" source="./media/quickstart-onboard-aws/aws-account-in-overview.png" alt-text="Tři projekty GCP uvedené na řídicím panelu přehled Security Center" lightbox="./media/quickstart-onboard-gcp/gcp-account-in-overview.png":::
 
 ## <a name="availability"></a>Dostupnost
 
 |Aspekt|Podrobnosti|
 |----|:----|
-|Stav vydaných verzí:|Preview<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
+|Stav vydaných verzí:|Obecná dostupnost (GA)|
 |Stanov|Vyžaduje [Azure Defender pro servery](defender-for-servers-introduction.md) .|
 |Požadované role a oprávnění:|**Vlastník** pro příslušné předplatné Azure<br>**Přispěvatel** může připojit účet AWS také v případě, že vlastník poskytne hlavní informace o instančním objektu.|
-|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ne](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
+|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![No](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
 |||
 
 
@@ -136,9 +136,9 @@ AWS Systems Manager se vyžaduje pro automatizaci úloh napříč prostředky AW
 1. Nakonfigurujte možnosti na kartě **ověřování AWS** :
     1. Zadejte **Zobrazovaný název** pro konektor.
     1. Potvrďte, že je předplatné správné. Je to předplatné, které bude zahrnovat doporučení centra zabezpečení konektoru a AWS.
-    1. V závislosti na možnosti ověřování, kterou jste zvolili v [kroku 2. Nastavení ověřování pro Security Center v AWS](#step-2-set-up-authentication-for-security-center-in-aws):
+    1. V závislosti na možnosti ověřování jste zvolili v [kroku 2. Nastavení ověřování pro Security Center v AWS](#step-2-set-up-authentication-for-security-center-in-aws):
         - Vyberte  **předpokládat roli** a vložte ARN z části [Vytvoření Role IAM pro Security Center](#create-an-iam-role-for-security-center).
-            :::image type="content" source="./media/quickstart-onboard-aws/paste-arn-in-portal.png" alt-text="Vložení souboru ARN do příslušného pole Průvodce připojením AWS na webu Azure Portal":::
+            :::image type="content" source="./media/quickstart-onboard-aws/paste-arn-in-portal.png" alt-text="Vložení souboru ARN do příslušného pole Průvodce připojením AWS v Azure Portal":::
 
             NEBO
 

@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-java
 - devx-track-azurecli
-ms.openlocfilehash: 504d3a834760605149c93c0beea84bbe1b59e263
-ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
+ms.openlocfilehash: 5ebb30101d191bb254017db7b0de2f9b8bce145d
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97707550"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755170"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-from-the-command-line"></a>Rychlý Start: vytvoření funkce Java v Azure z příkazového řádku
 
@@ -73,7 +73,7 @@ V Azure Functions je projekt funkce kontejnerem pro jednu nebo více jednotlivý
     ---
 
     > [!IMPORTANT]
-    > + Použijte, `-DjavaVersion=11` Pokud chcete, aby se vaše funkce spouštěly na Java 11. Další informace najdete v tématu [verze Java](functions-reference-java.md#java-versions). 
+    > + Pokud chcete funkce spouštět ve verzi Java 11, použijte `-DjavaVersion=11`. Další informace najdete v tématu [verze Java](functions-reference-java.md#java-versions). 
     > + `JAVA_HOME`Aby bylo možné tento článek dokončit, musí být proměnná prostředí nastavena na umístění instalace správné verze JDK.
 
 1. Maven vás vyzve k zadání hodnot potřebných k dokončení generování projektu při nasazení.   
@@ -113,7 +113,7 @@ Zpráva odpovědi vygeneruje rozhraní API [HttpResponseMessage. Builder](/java/
 
 Nastavení prostředků Azure vytvořených pro hostování vaší aplikace jsou definovaná v **konfiguračním** elementu modulu plug-in s **identifikátorem ID skupiny** `com.microsoft.azure` ve vygenerovaném souboru pom.xml. Například konfigurační prvek níže vydá pokyn nasazení založeného na Maven pro vytvoření aplikace Function App ve `java-functions-group` skupině prostředků v `westus` oblasti. Aplikace Function App se sama spustí ve Windows hostovaném v `java-functions-app-service-plan` plánu, což je ve výchozím nastavení plán spotřeby bez serveru.
 
-:::code language="java" source="~/azure-functions-samples-java/pom.xml" range="62-102":::
+:::code language="java" source="~/azure-functions-samples-java/pom.xml" range="62-107":::
 
 Tato nastavení můžete změnit, abyste mohli řídit, jak se v Azure vytvářejí prostředky, třeba změnou `runtime.os` z `windows` na `linux` před počátečním nasazením. Úplný seznam nastavení podporovaných modulem plug-in Maven najdete v [podrobnostech o konfiguraci](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details).
 

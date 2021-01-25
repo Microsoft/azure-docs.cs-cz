@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 03/03/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 383bdaebaa8a1795a9bfddb7da23e172aea111a0
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: c441d8e9fa5a3375b1ec4cd3e68d92e92738261d
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96762930"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755787"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>Toky ověřování a scénáře aplikací
 
-Koncový bod Microsoft Identity Platform (v 2.0) podporuje ověřování pro různé druhy moderních architektur aplikací. Všechny architektury jsou založené na standardních protokolech [OAuth 2,0 a OpenID Connect](active-directory-v2-protocols.md)v oborech Standard. Pomocí [knihoven ověřování pro platformu Microsoft Identity Platform](reference-v2-libraries.md)aplikace ověřují identity a získávají tokeny pro přístup k chráněným rozhraním API.
+Platforma Microsoft identity podporuje ověřování pro různé druhy moderních architektur aplikací. Všechny architektury jsou založené na standardních protokolech [OAuth 2,0 a OpenID Connect](active-directory-v2-protocols.md)v oborech Standard. Pomocí [knihoven ověřování pro platformu Microsoft Identity Platform](reference-v2-libraries.md)aplikace ověřují identity a získávají tokeny pro přístup k chráněným rozhraním API.
 
 Tento článek popisuje toky ověřování a scénáře aplikací, které jsou používány v nástroji.
 
@@ -79,7 +79,7 @@ Další informace najdete v tématu [podporované typy účtů](v2-supported-acc
 
 ## <a name="application-scenarios"></a>Scénáře aplikací
 
-Koncový bod platformy Microsoft identity podporuje ověřování pro tyto architektury aplikací:
+Platforma Microsoft identity podporuje ověřování pro tyto architektury aplikací:
 
 - Jednostránkové aplikace
 - Webové aplikace
@@ -95,7 +95,7 @@ Aplikace používají k přihlašování uživatelů různé toky ověřování 
 
 Mnohé moderní webové aplikace jsou sestavené jako jednostránkové aplikace na straně klienta. Tyto aplikace používají jazyk JavaScript nebo rozhraní, jako je například úhlová, Vue a reakce. Tyto aplikace běží ve webovém prohlížeči.
 
-Jednostránkové aplikace se liší od tradičních webových aplikací na straně serveru z hlediska charakteristik ověřování. Pomocí Microsoft Identity Platform se můžou jednostránkové aplikace přihlašovat uživatelům a získat tokeny pro přístup k back-endové službě nebo webovým rozhraním API. Platforma Microsoft Identity Platform nabízí dva typy udělení pro aplikace JavaScriptu: 
+Jednostránkové aplikace se liší od tradičních webových aplikací na straně serveru z hlediska charakteristik ověřování. Pomocí Microsoft Identity Platform se můžou jednostránkové aplikace přihlašovat uživatelům a získat tokeny pro přístup k back-endové službě nebo webovým rozhraním API. Platforma Microsoft Identity nabízí dva typy udělení pro aplikace JavaScriptu: 
 
 | MSAL.js (2. x) | MSAL.js (1. x) |
 |---|---|
@@ -160,7 +160,7 @@ Další informace najdete v tématu [mobilní aplikace, která volá webová roz
 
 ### <a name="protected-web-api"></a>Chráněné webové rozhraní API
 
-Pomocí koncového bodu Microsoft Identity Platform můžete zabezpečit webové služby, jako je webové rozhraní API RESTful vaší aplikace. Chráněné webové rozhraní API se volá prostřednictvím přístupového tokenu. Token pomáhá zabezpečit data rozhraní API a ověřovat příchozí požadavky. Volající webového rozhraní API připojí přístupový token v autorizační hlavičce požadavku HTTP.
+Pomocí platformy Microsoft Identity můžete zabezpečit webové služby, jako je webové rozhraní API RESTful vaší aplikace. Chráněné webové rozhraní API se volá prostřednictvím přístupového tokenu. Token pomáhá zabezpečit data rozhraní API a ověřovat příchozí požadavky. Volající webového rozhraní API připojí přístupový token v autorizační hlavičce požadavku HTTP.
 
 Pokud chcete chránit rozhraní API ASP.NET nebo ASP.NET Core webového rozhraní API, musíte ověřit přístupový token. Pro toto ověření použijete middleware ASP.NET JWT. Ověřování provádí [rozšíření IdentityModel pro knihovnu .NET](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) , nikoli MSAL.NET.
 
@@ -192,7 +192,7 @@ Scénáře, které zahrnují získání tokenů, jsou také mapovány na toky ov
 
 <table>
  <thead>
-  <tr><th>Scénář</th> <th>Podrobný návod pro scénář – through</th> <th>Tok OAuth 2,0 a udělení</th> <th>Cílová skupina</th></tr>
+  <tr><th>Scenario</th> <th>Podrobný návod pro scénář – through</th> <th>Tok OAuth 2,0 a udělení</th> <th>Cílová skupina</th></tr>
  </thead>
  <tbody>
   <tr>
@@ -298,7 +298,7 @@ K sestavování aplikací můžete použít také různé jazyky.
 
 Ve sloupci Windows v následující tabulce se pokaždé, když je uvedeno rozhraní .NET Core, je také možné použít .NET Framework. Druhá je vynechána, aby nedocházelo k zbytečnému zaplnění tabulky.
 
-|Scénář  | Windows | Linux | Mac | iOS | Android
+|Scenario  | Windows | Linux | Mac | iOS | Android
 |--|--|--|--|--|--|--|
 | [Jednostránková aplikace](scenario-spa-overview.md) <br/>[![Ověřování jednostránkové aplikace](media/scenarios/spa-app-auth.svg)](scenario-spa-overview.md) | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png) MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js
 | [Jednostránková aplikace](scenario-spa-overview.md) <br/>[![Aplikace s jednou stránkou je implicitní](media/scenarios/spa-app.svg)](scenario-spa-overview.md) | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png) MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js

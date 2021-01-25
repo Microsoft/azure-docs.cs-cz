@@ -11,30 +11,39 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/25/2020
+ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: 115d89783a849a9c4c7adb2fceceaf8d1575c785
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: dbda0aecdadd81da0f7681a5fc9b140157d5e8f3
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97795974"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756807"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Doporučení zabezpečení v Azure Security Center 
+
 V tomto tématu se dozvíte, jak zobrazit a pochopit doporučení v Azure Security Center, která vám pomůžou chránit vaše prostředky Azure.
 
 
 ## <a name="what-are-security-recommendations"></a>Co jsou doporučení zabezpečení?
 
-Doporučení jsou akce, které můžete provést při zabezpečení svých prostředků.
-
 Security Center pravidelně analyzuje stav zabezpečení vašich prostředků Azure, aby se identifikovaly potenciální ohrožení zabezpečení. Pak vám poskytne doporučení k nápravě těchto chyb zabezpečení.
+
+Doporučení jsou akce, které můžete provést při zabezpečení a posílení prostředků. 
 
 Každé doporučení vám poskytne:
 
 - Stručný popis problému
 - Kroky k nápravě, které je potřeba provést, aby bylo možné implementovat doporučení.
 - Ovlivněné prostředky
+
+## <a name="how-does-microsoft-decide-what-needs-securing-and-hardening"></a>Jak Microsoft rozhodne, co potřebuje k zabezpečení a posílení zabezpečení?
+
+Doporučení pro Security Center jsou založená na testu zabezpečení Azure. 
+
+Srovnávací test zabezpečení Azure je Microsoftem vytvořená sada pokynů pro zabezpečení a osvědčené postupy na základě běžných architektur dodržování předpisů, které jsou specifické pro Azure. Toto široce uznávané sestavování srovnávacích testů v ovládacích prvcích z [centra pro Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) a [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) se soustředí na zabezpečení zaměřené na Cloud.
+
+Přečtěte si další informace o [srovnávacím testu zabezpečení Azure](../security/benchmarks/introduction.md).
 
 ## <a name="monitor-recommendations"></a>Doporučení pro monitorování <a name="monitor-recommendations"></a>
 

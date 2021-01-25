@@ -1,6 +1,7 @@
 ---
-title: Řešení potíží s ověřováním vydavatele – Microsoft Identity Platform | Azure
-description: Popisuje řešení potíží s ověřováním vydavatele pro platformu Microsoft Identity voláním Microsoft Graph rozhraní API.
+title: Řešení potíží s ověřováním vydavatele | Azure
+titleSuffix: Microsoft identity platform
+description: Popisuje, jak řešit potíže s ověřováním vydavatele pro platformu Microsoft Identity voláním Microsoft Graph rozhraní API.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,12 +13,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 857659cdd97666dba585c1ec22c750e29bf28879
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 10609f2706d257dbe5d8f43b85da5f06cb986cae
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169167"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756193"
 ---
 # <a name="troubleshoot-publisher-verification"></a>Řešení potíží s ověřením vydavatele
 Pokud se vám nedaří dokončit proces nebo došlo k neočekávanému chování při [ověřování vydavatele](publisher-verification-overview.md), měli byste začít následujícím způsobem, pokud obdržíte chyby nebo neočekávané chování: 

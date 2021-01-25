@@ -13,20 +13,20 @@ ms.date: 12/09/2020
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 9fb5e229882532fed076f2e0d800f32acfcdbf4c
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 0ded249a55e5a59bdcad7407694cbd5ed4cf2352
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013783"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756074"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Postupy: přizpůsobení deklarací identity vystavených v tokenu SAML pro podnikové aplikace
 
-V současné době podporuje Microsoft Identity Platform jednotné přihlašování (SSO) s většinou podnikových aplikací, včetně předem integrovaných aplikací v galerii aplikací Azure AD i vlastních aplikací. Když se uživatel přihlásí k aplikaci prostřednictvím platformy Microsoft Identity Platform pomocí protokolu SAML 2,0, Microsoft Identity Platform do aplikace pošle token (prostřednictvím HTTP POST). A pak aplikace ověří a použije token k přihlášení uživatele místo výzvy k zadání uživatelského jména a hesla. Tyto tokeny SAML obsahují informace o uživateli označovaném jako *deklarace identity*.
+V současné době platforma Microsoft identity podporuje jednotné přihlašování (SSO) s většinou podnikových aplikací, včetně předem integrovaných aplikací v galerii aplikací Azure AD i vlastních aplikací. Když se uživatel k aplikaci přihlašuje přes Microsoft Identity Platform pomocí protokolu SAML 2,0, Microsoft Identity platforme do aplikace pošle token (prostřednictvím HTTP POST). A pak aplikace ověří a použije token k přihlášení uživatele místo výzvy k zadání uživatelského jména a hesla. Tyto tokeny SAML obsahují informace o uživateli označovaném jako *deklarace identity*.
 
 *Deklarace* identity představuje informace o tom, že poskytovatel identity uvádí informace o uživateli v tokenu, který tento uživatel vystavuje. V [tokenu SAML](https://en.wikipedia.org/wiki/SAML_2.0)jsou tato data obvykle obsažena v příkazu atributu SAML. Jedinečné ID uživatele je obvykle reprezentované v předmětu SAML označovaném také jako identifikátor názvu.
 
-Ve výchozím nastavení služba Microsoft Identity Platform vydá token SAML do vaší aplikace, který obsahuje `NameIdentifier` deklaraci identity s hodnotou uživatelského jména uživatele (označovanou také jako hlavní název uživatele) ve službě Azure AD, která může uživatele jednoznačně identifikovat. Token SAML obsahuje taky další deklarace identity, které obsahují e-mailovou adresu uživatele, jméno a příjmení.
+Standardně Microsoft Identity Platform vydá token SAML vaší aplikaci, který obsahuje `NameIdentifier` deklaraci identity s hodnotou uživatelského jména uživatele (označovanou také jako hlavní název uživatele) ve službě Azure AD, která může uživatele jednoznačně identifikovat. Token SAML obsahuje taky další deklarace identity, které obsahují e-mailovou adresu uživatele, jméno a příjmení.
 
 Pokud chcete zobrazit nebo upravit deklarace identity vystavené v tokenu SAML pro aplikaci, otevřete aplikaci v Azure Portal. Pak otevřete oddíl **atributy uživatele & deklarace identity** .
 
@@ -48,9 +48,9 @@ Postup úpravy NameID (hodnota identifikátoru názvu):
 
 ### <a name="nameid-format"></a>Formát NameID
 
-Pokud požadavek SAML obsahuje element NameIDPolicy s určitým formátem, pak bude v žádosti v rámci platformy Microsoft Identity Platform dodržen formát.
+Pokud požadavek SAML obsahuje element NameIDPolicy s konkrétním formátem, pak bude v žádosti v rámci platformy Microsoft Identity Standard dodržen formát.
 
-Pokud požadavek SAML neobsahuje element pro NameIDPolicy, bude platforma Microsoft Identity Platform vystavovat NameID s vámi zadaným formátem. Pokud není zadaný žádný formát, Microsoft Identity Platform použije výchozí formát zdroje přidružený k vybranému zdroji deklarací.
+Pokud požadavek SAML neobsahuje element pro NameIDPolicy, bude platforma identity Microsoftu vystavovat NameID se zadaným formátem. Pokud není zadaný žádný formát, platforma Microsoft Identity Platform použije výchozí formát zdroje přidružený k vybranému zdroji deklarací.
 
 V rozevíracím seznamu **zvolit formát identifikátoru názvu** můžete vybrat jednu z následujících možností.
 
@@ -168,9 +168,9 @@ Přidání podmínky deklarace identity:
 
 Pořadí, ve kterém přidáte podmínky, je důležité. Azure AD vyhodnotí podmínky shora dolů a určí, která hodnota se má v deklaracích generovat. Poslední hodnota, která se shoduje s výrazem, bude v deklaraci identity vygenerována.
 
-Například Britta Simon je uživatel typu Host v tenantovi contoso. Patří do jiné organizace, která používá taky Azure AD. Když se Britta pokusí přihlásit k společnosti Fabrikam níže uvedená konfigurace, aplikace Microsoft Identity Platform vyhodnotí podmínky následujícím způsobem.
+Například Britta Simon je uživatel typu Host v tenantovi contoso. Patří do jiné organizace, která používá taky Azure AD. Když se Britta pokusí přihlásit k společnosti Fabrikam níže uvedeným nastavením, vyhodnotí podmínky v rámci platformy Microsoft identity.
 
-Nejdřív Microsoft Identity Platform ověří, jestli je typ uživatele Britta `All guests` . Od této chvíle platí, že Microsoft Identity Platform přiřadí zdroji deklarace identity `user.extensionattribute1` . Druhý Microsoft Identity Platform ověřuje, jestli je typ uživatele Britta `AAD guests` , protože to má taky hodnotu true, Microsoft Identity Platform přiřadí zdroji deklarace identity `user.mail` . Nakonec se deklarace identity vydává s hodnotou `user.mail` pro Britta.
+Nejprve identita platformy Microsoft ověří, jestli je typ uživatele Britta `All guests` . Od této chvíle platí, že platforma Microsoft Identity Platform přiřadí zdroji deklarace identity `user.extensionattribute1` . Za druhé, platforma identity Microsoftu ověřuje, jestli je typ uživatele Britta `AAD guests` , protože to má taky hodnotu true, ale platforma Microsoft Identity Platform přiřadí zdroji deklarace identity `user.mail` . Nakonec se deklarace identity vydává s hodnotou `user.mail` pro Britta.
 
 ![Podmíněné konfigurace deklarací identity](./media/active-directory-saml-claims-customization/sso-saml-user-conditional-claims.png)
 

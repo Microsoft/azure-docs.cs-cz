@@ -1,7 +1,7 @@
 ---
 title: Konfigurovatelné životnosti tokenů
 titleSuffix: Microsoft identity platform
-description: Naučte se nastavit životnost pro přístup, SAML a tokeny ID vydávané platformou Microsoft Identity Platform.
+description: Naučte se, jak nastavit životnost pro přístup, SAML a tokeny ID vydávané platformou Microsoft identity.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,14 +13,14 @@ ms.date: 01/04/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperf-fy21q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 33dffa40e0236483d641c2e2bbe318bb62a7724d
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: f4ae26a489b823e2347841cf72690d6cd8462611
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678183"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755308"
 ---
-# <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Konfigurovatelné životnosti tokenů v platformě Microsoft Identity Platform (Preview)
+# <a name="configurable-token-lifetimes-in-the-microsoft-identity-platform-preview"></a>Konfigurovatelné životnosti tokenů na platformě Microsoft identity (verze Preview)
 
 Můžete zadat dobu života přístupu, ID nebo tokenu SAML vydaného platformou Microsoft identity. Životnost tokenů je možné nastavit u všech aplikací ve vaší organizaci, u aplikace pro více tenantů nebo pro konkrétní objekt služby ve vaší organizaci. V současné době ale nepodporujeme konfiguraci životností tokenů pro [spravované objekty služby identity](../managed-identities-azure-resources/overview.md).
 
@@ -50,7 +50,7 @@ Klienti používají přístupové tokeny pro přístup k chráněnému prostře
 
 ### <a name="saml-tokens"></a>Tokeny SAML
 
-Tokeny SAML jsou používány mnoha webovými SAAS aplikacemi a jsou získány pomocí koncového bodu protokolu typu Saml2 v systému Azure Active Directory. Využívají je i aplikace, které používají WS-Federation. Výchozí doba platnosti tokenu je 1 hodina. V perspektivě aplikace je doba platnosti tokenu určena hodnotou NotOnOrAfter `<conditions …>` elementu v tokenu. Po ukončení doby platnosti tokenu musí klient iniciovat nový požadavek na ověření, který se často splní bez interaktivního přihlášení v důsledku tokenu relace jednotného přihlašování (SSO).
+Tokeny SAML jsou používány mnoha webovými SaaS aplikacemi a jsou získány pomocí koncového bodu protokolu typu Saml2 v systému Azure Active Directory. Využívají je i aplikace, které používají WS-Federation. Výchozí doba platnosti tokenu je 1 hodina. V perspektivě aplikace je doba platnosti tokenu určena hodnotou NotOnOrAfter `<conditions …>` elementu v tokenu. Po ukončení doby platnosti tokenu musí klient iniciovat nový požadavek na ověření, který se často splní bez interaktivního přihlášení v důsledku tokenu relace jednotného přihlašování (SSO).
 
 Hodnotu NotOnOrAfter lze změnit pomocí `AccessTokenLifetime` parametru v `TokenLifetimePolicy` . Nastaví se na životní cyklus nakonfigurovanou v zásadě, pokud existuje, a koeficient pro zešikmení s hodinami 5 minut.
 
@@ -58,7 +58,7 @@ Potvrzení předmětu NotOnOrAfter zadané v elementu není `<SubjectConfirmatio
 
 ### <a name="id-tokens"></a>Tokeny ID
 
-Tokeny ID jsou předány webům a nativním klientům. Tokeny ID obsahují informace o profilu uživatele. Token ID je vázán na určitou kombinaci uživatele a klienta. Tokeny ID se považují za platné, dokud nevyprší jejich platnost. Obvykle webová aplikace odpovídá době životnosti relace uživatele v aplikaci až po dobu životnosti tokenu ID vydaného pro uživatele. Můžete upravit životnost tokenu ID, abyste mohli určit, jak často webová aplikace vyprší aplikační relaci, a jak často vyžaduje opětovné ověření uživatele s platformou Microsoft identity (ať už tichá nebo interaktivní).
+Tokeny ID jsou předány webům a nativním klientům. Tokeny ID obsahují informace o profilu uživatele. Token ID je vázán na určitou kombinaci uživatele a klienta. Tokeny ID se považují za platné, dokud nevyprší jejich platnost. Obvykle webová aplikace odpovídá době životnosti relace uživatele v aplikaci až po dobu životnosti tokenu ID vydaného pro uživatele. Můžete upravit životnost tokenu ID, abyste mohli určit, jak často webová aplikace vyprší aplikační relaci, a jak často je potřeba, aby se uživatel znovu ověřil s platformou Microsoft identity (ať už v tichém nebo interaktivním).
 
 ### <a name="token-lifetime-policy-properties"></a>Vlastnosti zásad životnosti tokenů
 
@@ -106,7 +106,7 @@ Veřejné klienty nemohou bezpečně ukládat heslo klienta (tajný kód). Např
 Vlastnost maximální stáří představuje dobu, po kterou lze použít jeden token. 
 
 ### <a name="single-sign-on-session-tokens"></a>Tokeny relace jednotného přihlašování
-Když se uživatel ověřuje pomocí platformy Microsoft Identity Platform, je k relaci jednotného přihlašování (SSO) s prohlížečem uživatele a platformou Microsoft identity. Token jednotného přihlašování ve formě souboru cookie představuje tuto relaci. Token relace jednotného přihlašování není vázán na konkrétní prostředek nebo klientskou aplikaci. Tokeny relace jednotného přihlašování se dají odvolat a jejich platnost se kontroluje pokaždé, když se používají.
+Když se uživatel s platformou Microsoft Identity ověřuje, vytvoří se v prohlížeči uživatele a platformě Microsoft Identity jediná přihlašovací relace (SSO). Token jednotného přihlašování ve formě souboru cookie představuje tuto relaci. Token relace jednotného přihlašování není vázán na konkrétní prostředek nebo klientskou aplikaci. Tokeny relace jednotného přihlašování se dají odvolat a jejich platnost se kontroluje pokaždé, když se používají.
 
 Platforma Microsoft Identity Platform používá dva druhy tokenů relace jednotného přihlašování: trvalá a netrvalá. Tokeny trvalé relace jsou v prohlížeči uloženy jako trvalé soubory cookie. Netrvalé tokeny relací se ukládají jako soubory cookie relace. (Soubory cookie relace budou zničeny při zavření prohlížeče.) Obvykle je uložen netrvalý token relace. Když ale při ověřování uživatel vybere zaškrtávací políčko **zůstat přihlášeni** , je uložený token trvalé relace.
 

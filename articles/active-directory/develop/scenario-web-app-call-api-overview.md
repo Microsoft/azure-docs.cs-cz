@@ -1,5 +1,6 @@
 ---
-title: Sestavení webové aplikace, která volá webová rozhraní API – Microsoft Identity Platform | Azure
+title: Sestavení webové aplikace, která volá webová rozhraní API | Azure
+titleSuffix: Microsoft identity platform
 description: Informace o tom, jak vytvořit webovou aplikaci, která volá webová rozhraní API (přehled)
 services: active-directory
 author: jmprieur
@@ -11,18 +12,18 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b4123b0424e52c6a2919de4b60bcc6158062b0f1
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 1fdbdada54320ef28f6a4b04a7f415c835acc9dd
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94442629"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756292"
 ---
 # <a name="scenario-a-web-app-that-calls-web-apis"></a>Scénář: webová aplikace, která volá webová rozhraní API.
 
 Naučte se, jak vytvořit webovou aplikaci, která uživatele podepisuje na platformě Microsoft identity, a pak zavolá webová rozhraní API jménem přihlášeného uživatele.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto scénáři se předpokládá, že jste už dokončili [scénář: webová aplikace, která se přihlásí uživatelům](scenario-web-app-sign-user-overview.md).
 

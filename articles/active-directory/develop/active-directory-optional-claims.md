@@ -12,12 +12,12 @@ ms.date: 1/06/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 6b5c328503a28c6eb92c2c20ca54d4d3d80c9a15
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 6855e8f550c14574795ec00f4fed36762944dca1
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232467"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756034"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Postupy: poskytnutí volitelných deklarací identity vaší aplikaci
 
@@ -26,12 +26,12 @@ Vývojáři aplikací můžou ve svých aplikacích Azure AD použít volitelné
 Volitelné deklarace identity můžete použít k těmto akcím:
 
 - Vyberte další deklarace identity, které chcete zahrnout do tokenů pro vaši aplikaci.
-- Změna chování určitých deklarací identity, které platforma Microsoft Identity Platform vrací v tokenech
+- Změňte chování určitých deklarací identity, které Microsoft Identity platforme vrací v tokenech.
 - Přidejte a získejte přístup k vlastním deklaracím pro vaši aplikaci.
 
 Seznam standardních deklarací identity najdete v dokumentaci [k tokenům](access-tokens.md) a [id_token](id-tokens.md) deklarací identity.
 
-I když jsou volitelné deklarace identity podporované v tokenech formátu v 1.0 i v 2.0 i v tokenech SAML, poskytují většinu jejich hodnoty při přechodu z verze 1.0 do verze 2.0. Jedním z cílů [koncového bodu Microsoft Identity Platform v 2.0](./v2-overview.md) jsou menší velikosti tokenů, aby se zajistil optimální výkon pro klienty. V důsledku toho již v tokenech verze 2.0 nejsou k dispozici několik deklarací, které byly dříve zahrnuty v tokenech Access a ID, a je nutné, abyste byli požádáni o konkrétně na základě jednotlivých aplikací.
+I když jsou volitelné deklarace identity podporované v tokenech formátu v 1.0 i v 2.0 i v tokenech SAML, poskytují většinu jejich hodnoty při přechodu z verze 1.0 do verze 2.0. Jedním z cílů [platformy Microsoft Identity Platform](./v2-overview.md) je menší velikost tokenů, aby se zajistil optimální výkon u klientů. V důsledku toho již v tokenech verze 2.0 nejsou k dispozici několik deklarací, které byly dříve zahrnuty v tokenech Access a ID, a je nutné, abyste byli požádáni o konkrétně na základě jednotlivých aplikací.
 
 **Tabulka 1: použitelnost**
 
@@ -273,7 +273,7 @@ Tato část se zabývá možnostmi konfigurace v části volitelné deklarace id
    - "DirectoryRole"
    - "Skupina aplikací" (Tato možnost zahrnuje jenom skupiny, které jsou přiřazené aplikaci)
 
-   Příklad:
+   Například:
 
     ```json
     "groupMembershipClaims": "SecurityGroup"

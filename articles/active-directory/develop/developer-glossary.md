@@ -12,12 +12,12 @@ ms.date: 04/24/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
-ms.openlocfilehash: b02329d624eda440230fb99e02e08c841c5580f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77a4e7389952b81df13dae929dc1aec664fcc0b7
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90705992"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755654"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft Identity Platform Developer Glosář
 
@@ -89,7 +89,7 @@ Přihlašovací údaje představující [autorizaci](#authorization) [vlastníka
 
 Jak je definováno [autorizačním rozhraním OAuth2][OAuth2-Role-Def], server zodpovědný za vydávání přístupových tokenů [klientovi](#client-application) po úspěšném ověření [vlastníka prostředku](#resource-owner) a získání jeho autorizace. [Klientská aplikace](#client-application) komunikuje s autorizačním serverem za běhu [prostřednictvím svých](#authorization-endpoint) koncových bodů [tokenu](#token-endpoint) , a to v souladu s OAuth2 definovanými [autorizačními uděleními](#authorization-grant).
 
-V případě integrace aplikací Microsoft Identity Platform implementuje Microsoft Identity Platform roli autorizačního serveru pro aplikace Azure AD a rozhraní API služeb Microsoftu, například [Microsoft Graph rozhraní API][Microsoft-Graph].
+V případě integrace aplikací Microsoft Identity Platform implementuje Microsoft Identity Platform role autorizačního serveru pro aplikace Azure AD a rozhraní API služeb Microsoftu, například [Microsoft Graph rozhraní API][Microsoft-Graph].
 
 ## <a name="claim"></a>tvrdit
 
@@ -117,7 +117,7 @@ Další podrobnosti najdete v referenčních informacích k [tokenům platformy 
 
 ## <a name="microsoft-identity-platform"></a>Microsoft Identity Platform
 
-Platforma Microsoft Identity Platform vznikla z platformy pro vývojáře a službu identit Azure Active Directory (Azure AD). Umožňuje vývojářům vytvářet aplikace, které přihlašují všechny identity od Microsoftu a získávají tokeny pro volání Microsoft Graphu, dalších rozhraní API od Microsoftu nebo rozhraní API, která vytvořili vývojáři. Je to plně vybavená platforma, která se skládá ze služby ověřování, knihoven, registrace a konfigurace aplikací, úplné dokumentace pro vývojáře, ukázek kódu a dalšího obsahu pro vývojáře. Microsoft Identity Platform podporuje standardní oborové protokoly, jako jsou OAuth 2.0 a OpenID Connect.
+Platforma Microsoft identity je vývojem služby identity a platformy pro vývojáře Azure Active Directory (Azure AD). Umožňuje vývojářům vytvářet aplikace, které přihlašují všechny identity od Microsoftu a získávají tokeny pro volání Microsoft Graphu, dalších rozhraní API od Microsoftu nebo rozhraní API, která vytvořili vývojáři. Je to plně vybavená platforma, která se skládá ze služby ověřování, knihoven, registrace a konfigurace aplikací, úplné dokumentace pro vývojáře, ukázek kódu a dalšího obsahu pro vývojáře. Microsoft Identity Platform podporuje standardní oborové protokoly, jako jsou OAuth 2.0 a OpenID Connect.
 
 ## <a name="multi-tenant-application"></a>víceklientské aplikace
 
@@ -222,7 +222,7 @@ Typ [klientské aplikace](#client-application) , který spouští veškerý kód
 
 ## <a name="next-steps"></a>Další kroky
 
-[Příručka pro vývojáře Microsoft Identity Platform Developer][AAD-Dev-Guide] je cílová stránka, která se používá pro všechna témata týkající se vývoje platformy Microsoft Identity Platform, včetně přehledu [Integrace aplikací][AAD-How-To-Integrate] a základů [ověřování platformy Microsoft Identity Platform a podporovaných scénářů ověřování][AAD-Auth-Scenarios]. Můžete také najít ukázky kódu & kurzy, jak rychle začít pracovat na [GitHubu](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=).
+[Příručka pro vývojáře Microsoft Identity Platform Developer][AAD-Dev-Guide] je cílová stránka, která se používá pro všechna témata týkající se vývoje platformy Microsoft Identity Platform, včetně přehledu [Integrace aplikací][AAD-How-To-Integrate] a základních [scénářů ověřování platformy Microsoft Identity Platform a podporovaných scénářů ověřování][AAD-Auth-Scenarios]. Můžete také najít ukázky kódu & kurzy, jak rychle začít pracovat na [GitHubu](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=).
 
 Následující komentáře vám poskytnou zpětnou vazbu a nápovědu k vylepšení a obnově obsahu obsahu, včetně požadavků na nové definice nebo aktualizace stávajících.
 
@@ -235,7 +235,7 @@ Následující komentáře vám poskytnou zpětnou vazbu a nápovědu k vylepše
 [AAD-Dev-Guide]:azure-ad-developers-guide.md
 [Graph-Perm-Scopes]: /graph/permissions-reference
 [Graph-App-Resource]: /graph/api/resources/application
-[Graph-Sp-Resource]: /graph/api/resources/serviceprincipal?view=graph-rest-beta
+[Graph-Sp-Resource]: /graph/api/resources/serviceprincipal?view=graph-rest-beta&preserve-view=true
 [Graph-User-Resource]: /graph/api/resources/user
 [AAD-How-Subscriptions-Assoc]:../fundamentals/active-directory-how-subscriptions-associated-directory.md
 [AAD-How-To-Integrate]: ./active-directory-how-to-integrate.md

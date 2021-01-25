@@ -1,5 +1,6 @@
 ---
-title: Registrace webové aplikace, která volá webová rozhraní API – Microsoft Identity Platform | Azure
+title: Registrace webové aplikace, která volá webová rozhraní API | Azure
+titleSuffix: Microsoft identity platform
 description: Zjistěte, jak zaregistrovat webovou aplikaci, která volá webová rozhraní API.
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 863d8d87d5de771293199dd60618128b0ac11bba
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: bb9a1ca6c2c81e3b0d5dbeff06f4de012446cf79
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94442595"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756318"
 ---
 # <a name="a-web-app-that-calls-web-apis-app-registration"></a>Webová aplikace, která volá webová rozhraní API: registrace aplikace
 

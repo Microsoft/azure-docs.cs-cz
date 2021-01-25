@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: c4c7d021c7c3a5a32d537a50fa45449fdee7e817
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 105353598a2af60c407bacf02b4527b2de84e450
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94979925"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756151"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>Kurz: přihlášení uživatelů a volání rozhraní Microsoft Graph API z úhlové aplikace s jednou stránkou
 
@@ -271,7 +271,7 @@ Například:
 
 #### <a name="get-a-user-token-interactively"></a>Interaktivní získání tokenu uživatele
 
-Někdy potřebujete, aby uživatel spolupracoval s koncovým bodem Microsoft Identity Platform. Například:
+Někdy potřebujete, aby uživatel spolupracoval s platformou Microsoft identity. Například:
 
 * Uživatelé možná budou muset znovu zadat svoje přihlašovací údaje, protože vypršela platnost hesla.
 * Vaše aplikace požaduje přístup k dalším oborům prostředků, ke kterým uživatel musí vyjádřit souhlas.
@@ -279,7 +279,7 @@ Někdy potřebujete, aby uživatel spolupracoval s koncovým bodem Microsoft Ide
 
 Doporučený vzor pro většinu aplikací je zavolat jako `acquireTokenSilent` první a pak zachytit výjimku a pak voláním `acquireTokenPopup` (nebo `acquireTokenRedirect` ) spustit interaktivní požadavek.
 
-`acquireTokenPopup`Výsledkem volání je automaticky otevírané okno pro přihlášení. Případně `acquireTokenRedirect` přesměruje uživatele na koncový bod Microsoft Identity Platform. V tomto okně si uživatelé musí potvrdit své přihlašovací údaje, udělit souhlas požadovanému prostředku nebo dokončit dvojúrovňové ověřování.
+`acquireTokenPopup`Výsledkem volání je automaticky otevírané okno pro přihlášení. Případně `acquireTokenRedirect` přesměruje uživatele na platformu Microsoft identity. V tomto okně si uživatelé musí potvrdit své přihlašovací údaje, udělit souhlas požadovanému prostředku nebo dokončit dvojúrovňové ověřování.
 
 ```javascript
   const requestObj = {

@@ -1,7 +1,7 @@
 ---
 title: Tokeny zabezpečení | Azure
 titleSuffix: Microsoft identity platform
-description: Seznamte se se základy tokenů zabezpečení v platformě Microsoft Identity Platform (v 2.0).
+description: Seznamte se se základy tokenů zabezpečení na platformě Microsoft Identity Platform.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,16 +13,16 @@ ms.date: 05/11/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 88dc4bb86459cd0390c4c01deb871aa93e39c6d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9668d3b0b57e36fb95421f8b502b9b743be8eb31
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84266742"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756214"
 ---
 # <a name="security-tokens"></a>Tokeny zabezpečení
 
-Centralizovaný poskytovatel identity je zvláště užitečný pro aplikace, které mají uživatele na celém světě, kteří se nemusí nutně přihlašovat ze sítě Enterprise. Platforma Microsoft Identity Platform ověřuje uživatele a poskytuje tokeny zabezpečení, jako je [přístupový token](developer-glossary.md#access-token), [obnovovací token](developer-glossary.md#refresh-token)a [token ID](developer-glossary.md#id-token), které umožňují [klientské aplikaci](developer-glossary.md#client-application) přístup k chráněným prostředkům na [serveru prostředků](developer-glossary.md#resource-server).
+Centralizovaný poskytovatel identity je zvláště užitečný pro aplikace, které mají uživatele na celém světě, kteří se nemusí nutně přihlašovat ze sítě Enterprise. Platforma Microsoft Identity ověřuje uživatele a poskytuje tokeny zabezpečení, jako je [přístupový token](developer-glossary.md#access-token), [obnovovací token](developer-glossary.md#refresh-token)a [token ID](developer-glossary.md#id-token), které umožňují [klientské aplikaci](developer-glossary.md#client-application) přístup k chráněným prostředkům na [serveru prostředků](developer-glossary.md#resource-server).
 
 **Přístupový token** je token zabezpečení, který je vydaný [autorizačním serverem](developer-glossary.md#authorization-server) jako součást toku [OAuth 2,0](active-directory-v2-protocols.md) . Obsahuje informace o uživateli a aplikaci, pro kterou je token určen. který se dá použít pro přístup k webovým rozhraním API a dalším chráněným prostředkům. Další informace o tom, jak Microsoft Identity Platform vydává přístup k tokenům, najdete v tématu [přístupové tokeny](access-tokens.md).
 

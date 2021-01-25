@@ -13,12 +13,12 @@ ms.date: 03/31/2020
 ms.author: marsma
 ms.reviewer: hahamil
 ms.custom: aaddev, identitypla | Azuretformtop40
-ms.openlocfilehash: fc32b4f583aea2fa9a34ab8b235f3f99fe4def9d
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 85f8b340635354d4bb0f28f2b3d79b617bd897f8
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94562164"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754893"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>Režim sdíleného zařízení pro zařízení s Androidem
 
@@ -40,7 +40,7 @@ Pokud chcete vytvořit sdílenou aplikaci v režimu zařízení, vývojáři a s
 
 ## <a name="single-vs-multiple-account-applications"></a>Jednotlivé aplikace s více účty vs.
 
-Aplikace napsané pomocí sady Microsoft MSAL Library SDK () můžou spravovat jeden nebo víc účtů. Podrobnosti najdete v tématu [režim jednoho účtu nebo režim vícenásobného účtu](single-multi-account.md). Funkce Microsoft Identity Platform, které jsou dostupné pro vaši aplikaci, se liší v závislosti na tom, jestli je aplikace spuštěná v režimu jednoho účtu nebo v režimu vícenásobného účtu.
+Aplikace napsané pomocí sady Microsoft MSAL Library SDK () můžou spravovat jeden nebo víc účtů. Podrobnosti najdete v tématu [režim jednoho účtu nebo režim vícenásobného účtu](single-multi-account.md). Funkce platformy Microsoft identity, které jsou dostupné pro vaši aplikaci, se liší v závislosti na tom, jestli je aplikace spuštěná v režimu jednoho účtu nebo v režimu vícenásobného účtu.
 
 **Aplikace v režimu sdíleného zařízení fungují pouze v režimu s jedním účtem**.
 

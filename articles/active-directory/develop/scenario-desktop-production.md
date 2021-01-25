@@ -1,5 +1,6 @@
 ---
-title: Přesun aplikace klasické pracovní plochy volání webových rozhraní API do produkčního prostředí – Microsoft Identity Platform | Azure
+title: Přesunout desktopovou aplikaci, která volá webová rozhraní API do produkčního prostředí | Azure
+titleSuffix: Microsoft identity platform
 description: Přečtěte si, jak přesunout desktopovou aplikaci, která volá webová rozhraní API do produkčního prostředí.
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 325f95f2830ef021a4ac79de48695dda570f7817
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 05b93848bff66adc49d2855ee98fff6c9b7a2d3d
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629778"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756509"
 ---
 # <a name="desktop-app-that-calls-web-apis-move-to-production"></a>Aplikace klasické pracovní plochy, která volá webová rozhraní API: přesunout do produkčního prostředí
 
@@ -29,9 +30,9 @@ V různých tocích jste se naučili, jak zpracovávat chyby pro tiché toky, ja
 ## <a name="have-the-user-consent-upfront-for-several-resources"></a>Mít souhlas uživatele před několika prostředky
 
 > [!NOTE]
-> Získání souhlasu pro několik prostředků funguje pro Microsoft Identity Platform, ale ne pro Azure Active Directory (Azure AD) B2C. Azure AD B2C podporuje jenom souhlas správce, ne pro vyjádření souhlasu s uživatelem.
+> Získání souhlasu pro několik prostředků funguje pro platformu Microsoft identity, ale ne pro Azure Active Directory (Azure AD) B2C. Azure AD B2C podporuje jenom souhlas správce, ne pro vyjádření souhlasu s uživatelem.
 
-Pomocí koncového bodu Microsoft Identity Platform (v 2.0) nemůžete získat token pro několik prostředků současně. `scopes`Parametr může obsahovat obory pouze pro jeden prostředek. Můžete zajistit, aby uživatel mohl předběžně odeslat několik prostředků pomocí `extraScopesToConsent` parametru.
+Nemůžete získat token pro několik prostředků současně s platformou Microsoft identity. `scopes`Parametr může obsahovat obory pouze pro jeden prostředek. Můžete zajistit, aby uživatel mohl předběžně odeslat několik prostředků pomocí `extraScopesToConsent` parametru.
 
 Například můžete mít dva prostředky, které mají dva obory:
 

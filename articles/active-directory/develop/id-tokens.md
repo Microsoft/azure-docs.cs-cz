@@ -14,12 +14,12 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: eec24ca19af8c41a842b1db3db4b9e16f748f029
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 6a1f4a02ebf42c0f181b595aae0a5fa0bcc9b41d
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653244"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755920"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Tokeny ID platformy Microsoft identity
 
@@ -89,7 +89,7 @@ V tomto seznamu jsou uvedeny deklarace identity JWT, které jsou ve výchozím n
 |`groups:src1`|Objekt JSON | Pro žádosti o tokeny, které nejsou omezené na délku (viz `hasgroups` výše), ale u tokenu je ještě moc velká, se zobrazí odkaz na seznam úplných skupin pro uživatele. Pro JWTs jako distribuovanou deklaraci protokolu SAML jako nové deklarace místo `groups` deklarace identity. <br><br>**Ukázková hodnota JWT**: <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects" }`<br><br> Další informace najdete v tématu neoprávněná [deklarace skupin](#groups-overage-claim).|
 
 > [!NOTE]
-> Id_token v 1.0 a v 2.0 mají rozdíly v množství informací, které budou prováděny podle výše uvedených příkladů. Verze je založena na koncovém bodu, ze kterého byla vyžádána. I když existující aplikace nejspíš používají koncový bod Azure AD, měly by nové aplikace používat koncový bod Microsoft Identity Platform v 2.0.
+> Id_token v 1.0 a v 2.0 mají rozdíly v množství informací, které budou prováděny podle výše uvedených příkladů. Verze je založena na koncovém bodu, ze kterého byla vyžádána. I když existující aplikace nejspíš používají koncový bod Azure AD, měly by nové aplikace používat Microsoft Identity Platform.
 >
 > - v 1.0: koncové body Azure AD: `https://login.microsoftonline.com/common/oauth2/authorize`
 > - v 2.0: koncové body platformy Microsoft identity: `https://login.microsoftonline.com/common/oauth2/v2.0/authorize`

@@ -13,16 +13,16 @@ ms.date: 04/10/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 6894d84f489d3719f1106ba4de79cb85fa45c5ed
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: a1ec8c31681ab6c0ac40ba33e94f33057ee948e7
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064946"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754806"
 ---
 # <a name="differences-between-msaljs-and-adaljs"></a>Rozdíly mezi MSAL.js a ADAL.js
 
-K ověřování entit Azure AD a žádosti o tokeny od Azure AD se používají knihovna ověřování Microsoft pro JavaScript (MSAL.js) i knihovna ověřování Azure AD pro JavaScript (ADAL.js). Až do té doby se většina vývojářů pracovala se službou Azure AD pro vývojáře (v 1.0) k ověřování identit Azure AD (pracovní a školní účty) tím, že žádá o tokeny pomocí ADAL. Teď můžete pomocí MSAL.js ověřit širší sadu identit Microsoftu (identity Azure AD a účty Microsoft a sociální a místní účty prostřednictvím Azure AD B2C) prostřednictvím platformy Microsoft Identity Platform (v 2.0).
+K ověřování entit Azure AD a žádosti o tokeny od Azure AD se používají knihovna ověřování Microsoft pro JavaScript (MSAL.js) i knihovna ověřování Azure AD pro JavaScript (ADAL.js). Až do té doby se většina vývojářů pracovala se službou Azure AD pro vývojáře (v 1.0) k ověřování identit Azure AD (pracovní a školní účty) tím, že žádá o tokeny pomocí ADAL. Teď můžete pomocí MSAL.js ověřit širší sadu identit Microsoftu (identity Azure AD a účty Microsoft a sociální a místní účty prostřednictvím Azure AD B2C) prostřednictvím platformy Microsoft identity.
 
 Tento článek popisuje, jak zvolit mezi knihovnou Microsoft Authentication Library pro JavaScript (MSAL.js) a knihovnou ověřování Azure AD pro JavaScript (ADAL.js) a porovnává dvě knihovny.
 

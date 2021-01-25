@@ -1,5 +1,6 @@
 ---
-title: Konfigurace desktopových aplikací, které volají webová rozhraní API – Microsoft Identity Platform | Azure
+title: Konfigurace desktopových aplikací, které volají webová rozhraní API | Azure
+titleSuffix: Microsoft identity platform
 description: Naučte se konfigurovat kód desktopové aplikace, která volá webová rozhraní API.
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 27c9f2ab8b02c96d016fea66acd2b3840d79d09d
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 5b74c817a974378a7fefc71e4eed67e6564765be
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444117"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756567"
 ---
 # <a name="desktop-app-that-calls-web-apis-code-configuration"></a>Aplikace klasické pracovní plochy, která volá webová rozhraní API: Konfigurace kódu
 

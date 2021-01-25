@@ -1,6 +1,6 @@
 ---
 title: Knihovny ověřování platformy Microsoft identity
-description: Kompatibilní klientské knihovny a knihovny middlewaru serveru společně se související knihovnou, zdrojovou a ukázkovou odkazy pro koncový bod Microsoft Identity Platform
+description: Kompatibilní klientské knihovny a knihovny middlewaru serveru společně se související knihovnou, zdrojovou a ukázkovou linkou pro platformu Microsoft identity
 services: active-directory
 author: negoe
 manager: CelesteDG
@@ -12,16 +12,16 @@ ms.date: 07/25/2019
 ms.author: negoe
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: a7792e989444c87ba80088f8a850cacb4aa0dc3c
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 51b60d7b81d7402f69415b79cd575f51915dc38f
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064534"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756659"
 ---
 # <a name="microsoft-identity-platform-authentication-libraries"></a>Knihovny ověřování platformy Microsoft identity
 
-[Koncový bod platformy Microsoft Identity](../azuread-dev/azure-ad-endpoint-comparison.md) podporuje standardní protokoly OAuth 2,0 a OpenID Connect 1,0. Knihovna Microsoft Authentication Library (MSAL) je navržená tak, aby fungovala s koncovým bodem Microsoft Identity Platform. Můžete také použít Open source knihovny, které podporují OAuth 2,0 a OpenID Connect 1,0.
+[Platforma Microsoft Identity](../azuread-dev/azure-ad-endpoint-comparison.md) podporuje standardní protokoly OAuth 2,0 a OpenID Connect 1,0. Knihovna Microsoft Authentication Library (MSAL) je navržená tak, aby fungovala s platformou Microsoft identity. Můžete také použít Open source knihovny, které podporují OAuth 2,0 a OpenID Connect 1,0.
 
 Doporučujeme, abyste používali knihovny zapsané odborníky na doménu protokolu, kteří používají metodologii SDL (Security Development Lifecycle). Takové metodologie zahrnují [tu, kterou Microsoft sleduje][Microsoft-SDL]. Pokud si zadáte kód pro protokoly, měli byste postupovat podle metodologie, jako je například Microsoft SDL. Věnujte velkou pozornost hlediskům zabezpečení v specifikacích standardů pro jednotlivé protokoly.
 
@@ -30,7 +30,7 @@ Doporučujeme, abyste používali knihovny zapsané odborníky na doménu protok
 
 ## <a name="types-of-libraries"></a>Typy knihoven
 
-Koncový bod Microsoft Identity Platform pracuje se dvěma typy knihoven:
+Microsoft Identity Platform pracuje se dvěma typy knihoven:
 
 * **Klientské knihovny**: nativní klienti a servery používají klientské knihovny k získání přístupových tokenů pro volání prostředku, jako je Microsoft Graph.
 * **Knihovny middlewarů serveru**: webové aplikace používají pro přihlášení uživatele knihovny middlewaru serveru. Webová rozhraní API pomocí knihoven middlewaru serveru ověřují tokeny, které jsou posílány nativními klienty nebo jinými servery.
@@ -40,9 +40,9 @@ Koncový bod Microsoft Identity Platform pracuje se dvěma typy knihoven:
 Knihovny přicházejí ve dvou kategoriích podpory:
 
 * **Microsoft podporuje**: Microsoft poskytuje opravy pro tyto knihovny a na těchto knihovnách dokončila provedenou péči SDL.
-* **Kompatibilní**: Společnost Microsoft testovala tyto knihovny v základních scénářích a potvrzuje, že pracují s koncovým bodem Microsoft Identity Platform. Microsoft neposkytuje opravy pro tyto knihovny a neprovádí revize těchto knihoven. Žádosti o problémy a funkce by měly být směrovány na open source projekt knihovny.
+* **Kompatibilní**: Společnost Microsoft testovala tyto knihovny v základních scénářích a potvrzuje, že pracují s platformou Microsoft identity. Microsoft neposkytuje opravy pro tyto knihovny a neprovádí revize těchto knihoven. Žádosti o problémy a funkce by měly být směrovány na open source projekt knihovny.
 
-Seznam knihoven, které pracují s koncovým bodem Microsoft Identity Platform, najdete v následujících částech.
+Seznam knihoven, které pracují s platformou Microsoft identity, najdete v následujících částech.
 
 ## <a name="microsoft-supported-client-libraries"></a>Klientské knihovny podporované Microsoftem
 
@@ -98,16 +98,16 @@ Další informace najdete v tématu [scénáře podle podporovaných platforem a
 | ![Ruby](media/sample-v2-code/logo_ruby.png) |[OmniAuth](https://github.com/omniauth/omniauth/wiki) |omniauth: 1.3.1<br />omniauth-OAuth2:1.4.0 |[OmniAuth](https://github.com/omniauth/omniauth)<br />[OmniAuth OAuth2](https://github.com/intridea/omniauth-oauth2) |  |
 | iOS, macOS & Android  | [Reakce na nativní ověřování aplikací](https://github.com/FormidableLabs/react-native-app-auth) | [4.2.0 verze](https://github.com/FormidableLabs/react-native-app-auth/releases/tag/v4.2.0) | [Reakce na nativní ověřování aplikací](https://github.com/FormidableLabs/react-native-app-auth) | |
 
-Pro všechny knihovny vyhovující standardům můžete použít koncový bod Microsoft Identity Platform. Je důležité, abyste věděli, kde je potřeba získat podporu:
+Pro všechny knihovny vyhovující standardům můžete použít platformu Microsoft Identity Platform. Je důležité, abyste věděli, kde je potřeba získat podporu:
 
 * Pro problémy a nové žádosti o funkce v kódu knihovny se obraťte na vlastníka knihovny.
 * Problémy a požadavky na nové funkce v rámci implementace protokolu na straně služby vám poskytne společnost Microsoft.
 * Zadáte [žádost o funkci](https://feedback.azure.com/forums/169401-azure-active-directory) pro další funkce, které chcete v protokolu zobrazit.
-* Pokud zjistíte problém, kde koncový bod platformy Microsoft identity není kompatibilní s OAuth 2,0 nebo OpenID Connect 1,0, [vytvořte žádost o podporu](../../azure-portal/supportability/how-to-create-azure-support-request.md) .
+* Pokud zjistíte problém, kde Microsoft Identity Platform nedodržuje OAuth 2,0 nebo OpenID Connect 1,0, [vytvořte žádost o podporu](../../azure-portal/supportability/how-to-create-azure-support-request.md) .
 
 ## <a name="related-content"></a>Související obsah
 
-Další informace o koncovém bodu Microsoft Identity Platform najdete v tématu [Přehled platformy Microsoft Identity][AAD-App-Model-V2-Overview].
+Další informace o platformě Microsoft identity najdete v tématu [Přehled platformy Microsoft Identity][AAD-App-Model-V2-Overview].
 
 <!--Image references-->
 

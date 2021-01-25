@@ -1,7 +1,7 @@
 ---
 title: Ověřování oproti autorizaci | Azure
 titleSuffix: Microsoft identity platform
-description: Seznamte se se základy ověřování a autorizace na platformě Microsoft identity (v 2.0).
+description: Seznamte se se základy ověřování a autorizace na platformě Microsoft identity.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,18 +13,18 @@ ms.date: 05/22/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 5087278e5c89514cd43b7ca871a58f18e0fa98f2
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: b81b34010736bce33085cb1ebf0faa3da6a41bd6
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678142"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755397"
 ---
 # <a name="authentication-vs-authorization"></a>Ověřování vs. autorizace
 
 Tento článek definuje ověřování a autorizaci. Také stručně popisuje, jak můžete pomocí platformy Microsoft Identity ověřovat a autorizovat uživatele ve webových aplikacích, webových rozhraních API nebo aplikacích, které volají chráněná webová rozhraní API. Pokud se vám zobrazí termín, který neznáte, vyzkoušejte si náš [Glosář](developer-glossary.md) nebo naše [videa k platformě Microsoft Identity](identity-videos.md), která se týkají základních konceptů.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Ověřování
 
 *Ověřování* je proces, který prokáže, že jste sami. Někdy se zkracuje na *Authn*. Platforma Microsoft Identity Platform používá ke zpracování ověřování protokol [OpenID Connect](https://openid.net/connect/) .
 

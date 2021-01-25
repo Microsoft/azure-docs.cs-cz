@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 07/08/2020
+ms.date: 01/25/2021
 ms.author: marsma
 ms.reviewer: saeeda
-ms.openlocfilehash: 4a902ed53e92cd073d81626e80bdb3c8629ad072
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78932e5852453fe996e26a278f8a1859a8ecf546
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89437866"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755024"
 ---
 # <a name="authentication-flows"></a>Toky ověřování
 
@@ -53,9 +53,9 @@ V závislosti na tom, jak je vytvořená klientská aplikace, může použít je
 Některé z těchto toků podporují získání interaktivního i neinteraktivního tokenu.
 
   - **Interactive** znamená, že uživatel může být vyzván k zadání vstupu. Například vyzvat uživatele k přihlášení, provést vícefaktorové ověřování (MFA) nebo udělit dalšímu souhlasu k prostředkům.
-  - **Neinteraktivní**nebo *tiché*ověřování se pokusí získat token způsobem, ve kterém přihlašovací server *nemůže* vyzvat uživatele k zadání dalších informací.
+  - **Neinteraktivní** nebo *tiché* ověřování se pokusí získat token způsobem, ve kterém přihlašovací server *nemůže* vyzvat uživatele k zadání dalších informací.
 
-Vaše aplikace založená na MSAL by se nejdřív měla pokusit o získání tokenu v *tichém režimu*a pak interaktivně jenom v případě, že neinteraktivní metoda nefunguje. Další informace o tomto modelu naleznete v tématu [získání a mezipaměť tokenů pomocí knihovny Microsoft Authentication Library (MSAL)](msal-acquire-cache-tokens.md).
+Vaše aplikace založená na MSAL by se nejdřív měla pokusit o získání tokenu v *tichém režimu* a pak interaktivně jenom v případě, že neinteraktivní metoda nefunguje. Další informace o tomto modelu naleznete v tématu [získání a mezipaměť tokenů pomocí knihovny Microsoft Authentication Library (MSAL)](msal-acquire-cache-tokens.md).
 
 ## <a name="authorization-code"></a>Autorizační kód
 
@@ -70,7 +70,7 @@ V předchozím diagramu aplikace:
 1. Požádá o autorizační kód, který je uplatněn pro přístupový token.
 2. Pomocí přístupového tokenu zavolá webové rozhraní API.
 
-### <a name="considerations"></a>Důležité informace
+### <a name="considerations"></a>Požadavky
 
 - Autorizační kód můžete použít jenom jednou pro uplatnění tokenu. Nepokusit se vícekrát získat token se stejným autorizačním kódem, protože je výslovně zakázaný standardní specifikací protokolu. Pokud kód několikrát přiřadíte, ať už úmyslně, nebo vzhledem k tomu, že si nejste vědomi, že to architektura provede za vás, zobrazí se tato chyba:
 
@@ -78,7 +78,7 @@ V předchozím diagramu aplikace:
 
 ## <a name="client-credentials"></a>Přihlašovací údaje klienta
 
-[Tok přihlašovacích údajů klienta OAuth 2](v2-oauth2-client-creds-grant-flow.md) umožňuje přístup k prostředkům hostovaným na webu pomocí identity aplikace. Tento typ grantu se běžně používá pro interakce mezi servery, které musí běžet na pozadí bez okamžité interakce s uživatelem. Tyto typy aplikací se často označují jako démoni nebo účty služeb.
+[Tok přihlašovacích údajů klienta OAuth 2](v2-oauth2-client-creds-grant-flow.md) umožňuje přístup k prostředkům hostovaným na webu pomocí identity aplikace. Tento typ udělení se běžně používá pro interakce mezi servery, které musí běžet na pozadí bez okamžité interakce s uživatelem. Tyto typy aplikací se často označují jako procesy démon nebo účty služeb.
 
 Tok udělení přihlašovacích údajů klienta umožňuje webové službě (důvěrnému klientovi) použít vlastní přihlašovací údaje místo zosobnění uživatele k ověření při volání jiné webové služby. V tomto scénáři je klient většinou webová služba střední vrstvy, služba démona nebo Web. Pro zajištění vyšší úrovně zabezpečení umožňuje volající službě také použít certifikát (namísto sdíleného tajného klíče) jako přihlašovací údaje.
 
@@ -223,7 +223,7 @@ To znamená, že jedna z následujících možností je pravdivá:
 - Poskytli jste způsob, jak uživatelům udělit souhlas s aplikací. Přečtěte si téma [vyžádání souhlasu jednotlivých uživatelů](v2-permissions-and-consent.md#requesting-individual-user-consent).
 - Poskytli jste způsob, jak může správce tenanta pro aplikaci vyjádřit souhlas. viz [souhlas správce](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant).
 
-Tok IWA je povolený pro aplikace .NET Desktop, .NET Core a Windows Universal Platform. V .NET Core musíte zadat uživatelské jméno, které se IWA, protože .NET Core nemůže získat uživatelská jména z operačního systému.
+Tok IWA je povolený pro aplikace .NET Desktop, .NET Core a Windows Universal Platform.
 
 Další informace o souhlasu najdete v tématu [oprávnění a vyjádření souhlasu v 2.0](v2-permissions-and-consent.md).
 

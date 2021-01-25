@@ -14,12 +14,12 @@ ms.date: 11/11/2019
 ms.author: rayluo
 ms.reviewer: marsma, rayluo, nacanuma
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 213184409c9f5ee21ac9f61be1ad138fbbaa3590
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 42ffc7ffba20868b23675fd8613fd3ef11b0924a
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107851"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755044"
 ---
 # <a name="adal-to-msal-migration-guide-for-python"></a>Příručka k migraci ADAL do MSAL pro Python
 
@@ -38,13 +38,13 @@ Podporovaných
   - OAuth v 2.0
   - OpenID Connect (OIDC)
 
-Další podrobnosti najdete v tématu [co se liší od koncového bodu Microsoft Identity Platform (v 2.0)](../azuread-dev/azure-ad-endpoint-comparison.md) .
+Další podrobnosti najdete v tématu [co se liší od platformy Microsoft Identity?](../azuread-dev/azure-ad-endpoint-comparison.md) .
 
 ### <a name="scopes-not-resources"></a>Obory nejsou prostředky
 
 ADAL Python získá tokeny pro prostředky, ale MSAL Python získá tokeny pro obory. Plocha rozhraní API v MSAL Pythonu už nemá parametr prostředků. Je nutné zadat obory jako seznam řetězců, které deklarují požadovaná oprávnění a požadované prostředky. Pokud chcete zobrazit nějaký příklad oborů, přečtěte si téma [Microsoft Graph obory](/graph/permissions-reference).
 
-Do prostředku můžete přidat `/.default` příponu oboru, která vám umožní migrovat vaše aplikace z koncového bodu v 1.0 (ADAL) na koncový bod Microsoft Identity Platform (MSAL). Například pro hodnotu prostředku `https://graph.microsoft.com` je ekvivalentní hodnota oboru `https://graph.microsoft.com/.default` .  Pokud prostředek není ve formátu adresy URL, ale ID prostředku ve formuláři `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX` , můžete i nadále používat hodnotu oboru jako `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default` .
+Do prostředku můžete přidat `/.default` příponu oboru, která vám umožní migrovat aplikace z koncového bodu v 1.0 (ADAL) na Microsoft Identity Platform (MSAL). Například pro hodnotu prostředku `https://graph.microsoft.com` je ekvivalentní hodnota oboru `https://graph.microsoft.com/.default` .  Pokud prostředek není ve formátu adresy URL, ale ID prostředku ve formuláři `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX` , můžete i nadále používat hodnotu oboru jako `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default` .
 
 Další podrobnosti o různých typech oborů najdete v článcích věnovaném [oprávněním a souhlasům na platformě identity Microsoftu](./v2-permissions-and-consent.md) a v [oborech pro webové rozhraní API Přijímám v 1.0 tokeny](./msal-v1-app-scopes.md) .
 
@@ -92,7 +92,7 @@ def get_preexisting_rt_and_their_scopes_from_elsewhere():
     # You may be able to append "/.default" to your v1 resource to form a scope
     # See https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#the-default-scope
 
-    # Or maybe you have an app already talking to Microsoft identity platform v2,
+    # Or maybe you have an app already talking to the Microsoft identity platform,
     # powered by some 3rd-party auth library, and persist its tokens somehow.
 
     # Either way, you need to extract RTs from there, and return them like this.
