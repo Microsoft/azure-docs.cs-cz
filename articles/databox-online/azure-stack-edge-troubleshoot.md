@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 08/11/2020
+ms.date: 01/21/2021
 ms.author: alkohli
-ms.openlocfilehash: f668136713024ba57d72bf5a457cd249742a3b11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09325289dd5cb83bfc26dd26b266d50b622fe098
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91742022"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98763079"
 ---
 # <a name="troubleshoot-your-azure-stack-edge-pro-issues"></a>Řešení potíží s Azure Stack Edge pro
 
@@ -26,6 +26,7 @@ V tomto článku získáte informace o těchto tématech:
 > * Spuštění diagnostiky
 > * Shromáždění balíčku pro podporu
 > * Použití protokolů k řešení potíží
+> * Řešení chyb IoT Edge
 
 ## <a name="run-diagnostics"></a>Spuštění diagnostiky
 
@@ -81,6 +82,10 @@ Veškeré chyby, ke kterým během procesu nahrávání a aktualizace došlo, bu
 3. Pokud se v tomto souboru zobrazí chyba (zvýrazněná v ukázce), poznamenejte si kód chyby, v tomto případě je to 16001. Vyhledejte popis tohoto kódu chyby v následující referenci k chybám.
 
     [!INCLUDE [data-box-edge-edge-upload-error-reference](../../includes/data-box-edge-gateway-upload-error-reference.md)]
+
+## <a name="troubleshoot-iot-edge-errors"></a>Řešení chyb IoT Edge
+
+[!INCLUDE [Troubleshoot IoT Edge runtime](../../includes/azure-stack-edge-iot-troubleshoot-compute.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

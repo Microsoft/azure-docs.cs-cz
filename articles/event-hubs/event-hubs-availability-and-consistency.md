@@ -2,14 +2,14 @@
 title: Dostupnost a konzistence – Azure Event Hubs | Microsoft Docs
 description: Jak zajistit maximální možnou dostupnost a konzistenci s Azure Event Hubs pomocí oddílů.
 ms.topic: article
-ms.date: 06/23/2020
+ms.date: 01/25/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7b97d76f29ee8b7e44373c865baa09ba5ea4dd23
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 5ffa2df992eb0c22aafbbb7436250405998d8073
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98631915"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762812"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>Dostupnost a konzistence ve službě Event Hubs
 
@@ -22,6 +22,11 @@ Věta společnosti pivovar definuje konzistenci a dostupnost následujícím zp�
 * Tolerance oddílu: schopnost systému zpracování dat pokračovat ve zpracování dat, i když dojde k selhání oddílu.
 * Dostupnost: uzel bez selhání vrací rozumnou odpověď v rozumné době (bez chyb nebo časových limitů).
 * Konzistence: pro čtení je zaručeno, že pro daného klienta vrátí nejaktuálnější zápis.
+
+> [!NOTE]
+> Pojem **partition** se používá v různých kontextech v Event HUBS a Cap věta. 
+> - **Event Hubs** uspořádá události do jednoho nebo více oddílů. Oddíly jsou nezávislé a obsahují vlastní posloupnosti dat, která se často rozšiřují různými sazbami. Další informace najdete v tématu [oddíly](event-hubs-features.md#partitions).
+> - V **Cap věta** je oddíl komunikační přerušení v rámci mezi uzly v distribuovaném systému.
 
 ## <a name="partition-tolerance"></a>Tolerance oddílu
 Event Hubs je postaven na základě děleného datového modelu. Během instalace můžete nakonfigurovat počet oddílů v centru událostí, ale tuto hodnotu nemůžete později změnit. Vzhledem k tomu, že je nutné použít oddíly s Event Hubs, musíte učinit rozhodnutí o dostupnosti a konzistenci pro vaši aplikaci.

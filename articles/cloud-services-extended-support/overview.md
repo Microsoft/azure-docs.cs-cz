@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: cf7c4b881697b664403d8c817c3b9e48fb48944d
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 969f60cd92e8c1cbe93f1646cccd08c942ad9923
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746760"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762822"
 ---
 # <a name="about-azure-cloud-services-extended-support"></a>O službě Azure Cloud Services (Rozšířená podpora)
 
@@ -27,9 +27,11 @@ V této změně se model nasazení založený na Azure Service Manager pro Cloud
 
 ## <a name="what-does-not-change"></a>Co se nemění 
 - Vytvoříte kód, definujete konfigurace a nasadíte ho do Azure. Azure nastaví výpočetní prostředí, spustí kód a potom ho monitoruje a zachová za vás.
-- Cloud Services (Rozšířená podpora) také podporuje dva typy rolí, [webů a pracovních procesů](../cloud-services/cloud-services-choose-me.md). 
-- Přenesou se tři komponenty, definice služby (. csdef), konfigurace služby (. cscfg) a balíček služby (. cspkg) cloudové služby a ve svých [formátech](cloud-services-model-and-package.md)se nemění. 
-- Pro běhový kód se nevyžadují žádné změny, protože rovina dat je stejná a řídicí rovina se mění.  
+- Cloud Services (Rozšířená podpora) také podporuje dva typy rolí, [webů a pracovních procesů](../cloud-services/cloud-services-choose-me.md). Neexistují žádné změny v návrhu, architektuře ani součástech webových a pracovních rolí. 
+- K dispozici jsou tři součásti cloudové služby, definice služby (. csdef), konfigurace služby (. cscfg) a balíček služby (. cspkg), a ve svých [formátech](cloud-services-model-and-package.md)se nemění. 
+- Pro běhový kód se nevyžadují žádné změny, protože rovina dat je stejná a řídicí rovina se mění. 
+- Verze Azure GuestOS a přidružené aktualizace jsou zarovnané Cloud Services (Classic).
+- Základní proces aktualizace s ohledem na aktualizace domén, jak upgrade pokračuje, vrácení zpět a povolených změn služby během aktualizace se nemění
 
 ## <a name="changes-in-deployment-model"></a>Změny v modelu nasazení
 

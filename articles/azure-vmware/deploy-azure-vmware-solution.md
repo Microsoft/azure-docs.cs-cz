@@ -2,17 +2,20 @@
 title: Nasazení a konfigurace řešení Azure VMware
 description: Naučte se používat informace shromážděné ve fázi plánování k nasazení privátního cloudu řešení Azure VMware.
 ms.topic: tutorial
-ms.date: 11/09/2020
-ms.openlocfilehash: 7e31b9236a3c75009d15bde35019036b6db55cab
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.date: 12/24/2020
+ms.openlocfilehash: f2b6f3c4ad82117fee96e0c2e5973a7011384d48
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861510"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98760878"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>Nasazení a konfigurace řešení Azure VMware
 
-V tomto článku použijete informace z [části plánování](production-ready-deployment-steps.md) k nasazení řešení Azure VMware. Pokud jste informace nedefinovali, vraťte se zpět do [části plánování](production-ready-deployment-steps.md) a teprve potom pokračujte.
+V tomto článku použijete informace z [části plánování](production-ready-deployment-steps.md) k nasazení řešení Azure VMware. 
+
+>[!IMPORTANT]
+>Pokud jste ještě tyto informace nedefinovali, vraťte se zpět do [části plánování](production-ready-deployment-steps.md) a teprve potom pokračujte.
 
 ## <a name="register-the-resource-provider"></a>Registrace poskytovatele prostředků
 
@@ -40,15 +43,16 @@ Po nasazení řešení Azure VMware vytvoříte pole pro skok virtuální sítě
 
 :::image type="content" source="media/pre-deployment/jump-box-diagram.png" alt-text="Vytvoření pole pro přechod řešení Azure VMware" border="false" lightbox="media/pre-deployment/jump-box-diagram.png":::
 
-Při vytváření virtuálního počítače ve virtuální síti, kterou jste [identifikovali nebo vytvořili v rámci procesu nasazení](production-ready-deployment-steps.md#azure-virtual-network-to-attach-azure-vmware-solution), postupujte podle těchto pokynů: 
+Chcete-li vytvořit virtuální počítač ve virtuální síti, který jste [identifikovali nebo vytvořili v rámci procesu nasazení](production-ready-deployment-steps.md#attach-virtual-network-to-azure-vmware-solution), postupujte podle těchto pokynů: 
 
 [!INCLUDE [create-avs-jump-box-steps](includes/create-jump-box-steps.md)]
 
 ## <a name="connect-to-a-virtual-network-with-expressroute"></a>Připojení k virtuální síti pomocí ExpressRoute
 
-Pokud jste v kroku nasazení nedefinovali virtuální síť a vaším záměrem je připojit ExpressRoute řešení Azure VMware k existující bráně ExpressRoute, postupujte podle následujících kroků.
+>[!IMPORTANT]
+>Pokud jste už virtuální síť definovali na obrazovce nasazení v Azure, přejděte k další části.
 
-Pokud jste už virtuální síť definovali na obrazovce nasazení v Azure, přejděte k další části.
+Pokud jste nedefinovali virtuální síť v kroku nasazení a vaším záměrem je připojit ExpressRoute řešení Azure VMware k existující bráně ExpressRoute, postupujte podle těchto kroků.
 
 [!INCLUDE [connect-expressroute-to-vnet](includes/connect-expressroute-vnet.md)]
 
@@ -81,7 +85,7 @@ Postup vytvoření segmentu sítě NSX-T v řešení Azure VMware najdete v kurz
 
 Vraťte se zpět na krok [ověřit inzerovanou síťovou trasu](#verify-network-routes-advertised) . V seznamu se zobrazí další trasy, které představují segmenty sítě, které jste vytvořili v předchozím kroku.  
 
-Pro virtuální počítače přiřadíte segmenty, které jste vytvořili v kroku [Vytvoření segmentu sítě v Azure VMware](#create-a-network-segment-on-azure-vmware-solution) .  
+V případě virtuálních počítačů přiřadíte segmenty, které jste vytvořili v kroku [Vytvoření síťového segmentu v Azure VMware Solution](#create-a-network-segment-on-azure-vmware-solution) .  
 
 Vzhledem k tomu, že se vyžaduje DNS, určete, jaký server DNS chcete použít.  
 
@@ -110,7 +114,7 @@ V Azure VMware Solution vCenter nasaďte virtuální počítač a použijte ho k
 - Virtuální sítě Azure
 - Místně.  
 
-Virtuální počítač nasaďte stejně jako v jakémkoli prostředí vSphere.  Připojte virtuální počítač k jednomu z segmentů sítě, které jste dříve vytvořili v NSX-T.  
+Virtuální počítač nasaďte stejně jako v jakémkoli prostředí vSphere.  Připojte virtuální počítač k jednomu ze segmentů sítě, které jste dříve vytvořili v NSX-T.  
 
 >[!NOTE]
 >Pokud nastavíte server DHCP, získáte konfiguraci sítě pro virtuální počítač (Nezapomeňte nastavit obor).  Pokud budete konfigurovat staticky, nakonfigurujte jako obvykle.
@@ -120,14 +124,13 @@ Virtuální počítač nasaďte stejně jako v jakémkoli prostředí vSphere.  
 Přihlaste se k virtuálnímu počítači vytvořenému v předchozím kroku a ověřte připojení.
 
 1. Proveďte na internetu test na IP adresu.
-2. Přejít na web Internet přes webový prohlížeč.
+2. Ve webovém prohlížeči přejdete na internetovou stránku.
 3. Otestujte pole s odkazem, které se nachází na Virtual Network Azure.
 
->[!IMPORTANT]
->V tomto okamžiku je řešení Azure VMware spuštěné a běžící a úspěšně jste navázali připojení k a z Azure Virtual Network a Internetu.
+Řešení Azure VMware je teď spuštěné a běžící a úspěšně jste navázali připojení k a z Azure Virtual Network a Internetu.
 
 ## <a name="next-steps"></a>Další kroky
 
-V další části připojíte řešení Azure VMware k místní síti přes ExpressRoute.
+V další části připojíte řešení Azure VMware k místní síti prostřednictvím ExpressRoute.
 > [!div class="nextstepaction"]
 > [Připojení řešení Azure VMware k místnímu prostředí](azure-vmware-solution-on-premises.md)

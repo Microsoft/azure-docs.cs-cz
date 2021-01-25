@@ -1,17 +1,17 @@
 ---
 title: Podpora pro vyhodnocení VMware v Azure Migrate
 description: Přečtěte si o podpoře vyhodnocení virtuálních počítačů VMware pomocí posouzení serveru Azure Migrate.
-author: rashi-ms
-ms.author: rajosh
+author: vineetvikram
+ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 11/10/2020
-ms.openlocfilehash: 02757477ca4a07f4526df0339291122eda57c9b5
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: ce8a1d77ae74a3946174ef58abf9add2e81eb90b
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567423"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762991"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Matice podpory pro vyhodnocení VMware 
 
@@ -37,7 +37,7 @@ Pokud chcete migrovat virtuální počítače VMware do Azure, přečtěte si [m
 **VMware** | **Podrobnosti**
 --- | ---
 **vCenter Server** | Počítače, které chcete zjišťovat a hodnotit, se musí spravovat pomocí vCenter Server verze 5,5, 6,0, 6,5, 6,7 nebo 7,0.<br/><br/> Zjišťování virtuálních počítačů VMware poskytnutím podrobností hostitele ESXi v zařízení není aktuálně podporováno.
-**Oprávnění** | Vyhodnocování serveru vyžaduje pro zjišťování a hodnocení účet vCenter Server jen pro čtení.<br/><br/> Pokud chcete provádět zjišťování aplikací nebo vizualizaci závislostí, účet potřebuje oprávnění povolit pro **Virtual Machines**  >  **operace hostů**.
+**Oprávnění** | Vyhodnocování serveru vyžaduje pro zjišťování a hodnocení účet vCenter Server jen pro čtení.<br/><br/> Pokud chcete provádět zjišťování aplikací nebo vizualizaci závislostí, musí mít účet povolená oprávnění pro **Virtual Machines**  >  **operace hostů**.
 
 ## <a name="vm-requirements"></a>Požadavky na virtuální počítače
 **VMware** | **Podrobnosti**

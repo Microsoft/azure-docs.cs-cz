@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: b-juche
-ms.openlocfilehash: cd2a293ebcc35d4884211f50783738a502dcc7de
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 48ee05eebd91c60fa2cfecc80898d3be54367269
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854821"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762670"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Vytvoření svazku SMB pro Azure NetApp Files
 
@@ -74,7 +74,7 @@ Podsíť musí být delegovaná na Azure NetApp Files.
 
     Viz [návrh topologie lokality](/windows-server/identity/ad-ds/plan/designing-the-site-topology) o lokalitách a službách Active Directory. 
     
-* Šifrování AES pro svazek SMB můžete povolit zaškrtnutím políčka **šifrování AES** v okně [připojit se ke službě Active Directory](#create-an-active-directory-connection) . Azure NetApp Files podporuje typy šifrování DES, Kerberos AES 128 a Kerberos AES 256 (z nejméně zabezpečeného na nejbezpečnější). Pokud povolíte šifrování AES, musí mít přihlašovací údaje uživatele použité pro připojení ke službě Active Directory nejvyšší odpovídající možnost účtu, která bude odpovídat funkcím povoleným pro vaši službu Active Directory.    
+* Šifrování AES pro ověřování AD lze povolit zaškrtnutím políčka **šifrování AES** v okně připojit se [ke službě Active Directory](#create-an-active-directory-connection) . Azure NetApp Files podporuje typy šifrování DES, Kerberos AES 128 a Kerberos AES 256 (z nejméně zabezpečeného na nejbezpečnější). Pokud povolíte šifrování AES, musí mít přihlašovací údaje uživatele použité pro připojení ke službě Active Directory nejvyšší odpovídající možnost účtu, která bude odpovídat funkcím povoleným pro vaši službu Active Directory.    
 
     Pokud má vaše služba Active Directory například jenom možnost AES-128, musíte pro přihlašovací údaje uživatele povolit možnost účet AES-128. Pokud má služba Active Directory schopnost AES-256, musíte povolit možnost účtu AES-256 (která také podporuje AES-128). Pokud vaše služba Active Directory nemá žádnou možnost šifrování protokolu Kerberos, Azure NetApp Files ve výchozím nastavení používá algoritmus DES.  
 

@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d348b8c2325c7bc2cdaa28356151647a9430684f
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 10fe3b895ea5084247822f1c35275e68d80b73fa
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247042"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762983"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Migrace na cloudové ověřování pomocí připraveného zavedení (Preview)
 
@@ -33,7 +33,7 @@ Přehled této funkce najdete v tomto tématu Azure Active Directory: co je post
 
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 -   Máte tenanta Azure Active Directory (Azure AD) se federovanémi doménami.
 
@@ -61,7 +61,10 @@ Následující scénáře jsou podporovány pro připravené zavedení. Funkce f
 - Uživatele, kteří jsou zřízeni ve službě Azure AD pomocí Azure AD Connect. Netýká se pouze cloudových uživatelů.
 
 - Přihlašovací data uživatelů v prohlížečích a v *moderních ověřovacích* klientech. Aplikace nebo cloudové služby, které používají starší verze ověřování, se vrátí do toků federovaného ověřování. Příkladem může být Exchange Online se moderním ověřováním vypnuto nebo Outlook 2010, které nepodporuje moderní ověřování.
+
 - Velikost skupiny je aktuálně omezená na 50 000 uživatelů.  Pokud máte skupiny větší než 50 000 uživatelů, doporučujeme tuto skupinu rozdělit do několika skupin pro připravené zavedení.
+
+- Služba Windows 10 Hybrid JOIN nebo služba Azure AD JOIN primárního obnovovacího tokenu pro Windows 10 verze 1903 a novější, pokud je hlavní název uživatele (UPN) směrování a přípona domény se ověřuje ve službě Azure AD.
 
 ## <a name="unsupported-scenarios"></a>Nepodporované scénáře
 
@@ -87,6 +90,10 @@ Následující scénáře nejsou podporovány pro fáze zavedení:
 - Když poprvé přidáte skupinu zabezpečení pro dvoufázové zavedení, budete omezeni na 200 uživatelů, aby nedocházelo k vypršení časového limitu uživatelského prostředí. Po přidání skupiny můžete podle potřeby přidat do ní další uživatele přímo.
 
 - I když jsou uživatelé v dvoufázové zavedení, pokud je povolená možnost EnforceCloudPasswordPolicyForPasswordSyncedUsers, zásada vypršení platnosti hesla je nastavená na 90 dní bez možnosti vlastního nastavení. 
+
+- Služba Windows 10 Hybrid JOIN nebo Azure AD JOIN pro získání tokenu primární aktualizace pro Windows 10 verze starší než 1903. Tento scénář se vrátí zpátky na WS-Trust koncový bod federačního serveru, i když se uživatel přihlašuje v rozsahu připraveného zavedení.
+
+- Hybridní připojení Windows 10 nebo získání primárního obnovovacího tokenu služby Azure AD JOIN pro všechny verze, když místní hlavní název uživatele (UPN) není směrovatelný. Tento scénář se vrátí do koncového bodu WS-Trust v režimu připraveného zavedení, ale přestane fungovat, když je dokončená migrace připravené a přihlášení uživatele se už nespoléhá na federační server.
 
 
 ## <a name="get-started-with-staged-rollout"></a>Začínáme s fází uvedení do provozu

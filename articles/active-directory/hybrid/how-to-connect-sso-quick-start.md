@@ -16,21 +16,18 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eadb20bc570545356508d82c05e1746424a14b71
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 59cc50274b291c23aeec4620ec7a09312cc0c1fb
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97504385"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762246"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory bezproblémové jednotné přihlašování: rychlý Start
 
 ## <a name="deploy-seamless-single-sign-on"></a>Snadné nasazení jednoduchého Sign-On
 
 Azure Active Directory (Azure AD) bezproblémové jednoduché Sign-On (bezproblémové jednotné přihlašování) se automaticky přihlásí k podnikovým plochám, které jsou připojené k podnikové síti. Bezproblémové jednotné přihlašování poskytuje uživatelům snadný přístup k vašim cloudovým aplikacím bez nutnosti dalších místních komponent.
-
-> [!NOTE]
-> Tento článek obsahuje odkazy na seznam *povolených* termínů, který už Microsoft nepoužívá. Po odebrání termínu ze softwaru ho odebereme z tohoto článku.
 
 Chcete-li nasadit bezproblémové jednotné přihlašování, postupujte podle těchto kroků.
 
@@ -40,7 +37,7 @@ Ujistěte se, že jsou splněné následující požadavky:
 
 * **Nastavení serveru Azure AD Connect**: Pokud jako metodu přihlašování použijete [předávací ověřování](how-to-connect-pta.md) , nevyžaduje se žádná další Kontrola požadavků. Pokud jako metodu přihlašování použijete [synchronizaci hodnot hash hesel](how-to-connect-password-hash-synchronization.md) , a pokud je mezi Azure AD Connect a službou Azure AD brána firewall, zajistěte, aby:
    - Použijete 1.1.644.0 nebo novější verzi Azure AD Connect. 
-   - Pokud vaše brána firewall nebo proxy server povolí, přidejte připojení do seznamu povolených adres URL **\* . msappproxy.NET** přes port 443. V takovém případě povolte přístup k [rozsahům IP adres datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653), které se aktualizují týdně. Tato požadovaná součást platí pouze v případě, že funkci povolíte. Nepožaduje se pro vlastní přihlášení uživatelů.
+   - Pokud vaše brána firewall nebo proxy server povolí, přidejte připojení do seznamu povolených adres URL **\* . msappproxy.NET** přes port 443. Pokud pro konfiguraci proxy serveru vyžadujete určitou adresu URL, ale nemusíte použít zástupný znak, můžete nakonfigurovat **tenantid.Registration.msappproxy.NET**, kde tenantid je identifikátor GUID tenanta, ve kterém tuto funkci konfigurujete. Pokud ve vaší organizaci nejsou možné výjimky proxy serveru založené na adrese URL, můžete místo toho umožnit přístup k [rozsahům IP adres datového centra Azure](https://www.microsoft.com/download/details.aspx?id=41653), které se aktualizují týdně. Tato požadovaná součást platí pouze v případě, že funkci povolíte. Nepožaduje se pro vlastní přihlášení uživatelů.
 
     >[!NOTE]
     >Azure AD Connect verze 1.1.557.0, 1.1.558.0, 1.1.561.0 a 1.1.614.0 mají problém týkající se synchronizace hodnot hash hesel. Pokud nehodláte použít synchronizaci hodnot hash hesel ve spojení s předávacím ověřováním, přečtěte si [poznámky k verzi Azure AD Connect](./reference-connect-version-history.md) , _kde najdete další_ informace.

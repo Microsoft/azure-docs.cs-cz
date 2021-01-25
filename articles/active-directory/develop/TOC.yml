@@ -329,7 +329,7 @@
               href: msal-error-handling-dotnet.md
               displayName: 'handling, catch'
             - name: Protokolování v MSAL.NET
-              href: msal-logging.md?tabs=dotnet
+              href: msal-logging-dotnet.md
             - name: Získání tokenu z mezipaměti
               href: msal-net-acquire-token-silently.md
             - name: Serializace mezipaměti tokenů
@@ -371,7 +371,7 @@
               href: msal-error-handling-js.md
               displayName: 'handling, catch'
             - name: Protokolování v MSAL.js
-              href: msal-logging.md?tabs=javascript
+              href: msal-logging-js.md
         - name: MSAL pro iOS a MacOS
           items:
             - name: Rozdíly v MSAL pro iOS a macOS
@@ -401,7 +401,7 @@
               href: msal-error-handling-ios.md
               displayName: 'handling, catch'
             - name: Protokolování v MSAL pro iOS/macOS
-              href: msal-logging.md?tabs=swift
+              href: msal-logging-ios.md
         - name: MSAL pro Python
           items:
             - name: Serializace mezipaměti vlastních tokenů
@@ -414,7 +414,7 @@
               href: msal-error-handling-python.md
               displayName: 'handling, catch'
             - name: Protokolování v MSAL pro Python
-              href: msal-logging.md?tabs=python
+              href: msal-logging-python.md
         - name: MSAL pro Javu
           items:
             - name: Serializace mezipaměti vlastních tokenů
@@ -429,7 +429,7 @@
               href: msal-error-handling-java.md
               displayName: 'handling, catch'
             - name: Protokolování v MSAL pro Javu
-              href: msal-logging.md?tabs=java
+              href: msal-logging-java.md
         - name: MSAL pro Android
           items:
             - name: Účty a profily tenantů
@@ -449,7 +449,7 @@
               href: msal-android-handling-exceptions.md
               displayName: 'android, mobile, handling, catch'
             - name: Protokolování v MSAL pro Android
-              href: msal-logging.md?tabs=android
+              href: msal-logging-android.md
     - name: Přizpůsobení tokenů a deklarací identity
       items:
         - name: Konfigurace deklarace identity role

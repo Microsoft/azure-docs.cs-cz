@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/05/2020
 ms.author: apimpm
-ms.openlocfilehash: 25356e7101293fc27d4107b3a618cfc481aee969
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 223d119786d99eac611ece597fc0e8de4fcaf6bd
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779579"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762411"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Implementace zotavení po havárii pomocí zálohování a obnovení služby ve službě Azure API Management
 
@@ -55,7 +55,7 @@ Všechny úlohy, které provedete v prostředcích pomocí Azure Resource Manage
 
 ### <a name="create-an-azure-active-directory-application"></a>Vytvoření aplikace Azure Active Directory
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. Pomocí předplatného, které obsahuje vaši instanci služby API Management, přejděte v **Azure Active Directory** na kartu **Registrace aplikací** (Azure Active Directory > spravovat/registrace aplikací).
 
     > [!NOTE]
@@ -221,8 +221,8 @@ Obnovení je dlouhodobá operace, která může trvat až 30 minut, než se doko
 
 ## <a name="what-is-not-backed-up"></a>Co se nezálohuje
 -   **Data o využití** používaná pro vytváření sestav Analytics **nejsou součástí** zálohy. Pomocí služby [Azure API Management REST API][azure api management rest api] pravidelně načítat analytické sestavy pro bezpečné používání.
--   [Vlastní doména TLS/certifikáty SSL](configure-custom-domain.md)
--   [Vlastní certifikát certifikační autority](api-management-howto-ca-certificates.md), který zahrnuje zprostředkující nebo kořenové certifikáty nahrané zákazníkem
+-   [Vlastní doména TLS/certifikáty SSL](configure-custom-domain.md) .
+-   [Vlastní certifikát certifikační autority](api-management-howto-ca-certificates.md), který zahrnuje přechodné nebo kořenové certifikáty odeslané zákazníkem
 -   Nastavení integrace [virtuální sítě](api-management-using-with-vnet.md) .
 -   Konfigurace [spravované identity](api-management-howto-use-managed-service-identity.md)
 -   [Diagnostika Azure monitor](api-management-howto-use-azure-monitor.md) Rozšířeného.

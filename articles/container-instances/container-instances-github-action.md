@@ -4,16 +4,16 @@ description: Nakonfigurujte akci GitHubu, která automatizuje kroky k sestavení
 ms.topic: article
 ms.date: 08/20/2020
 ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: c6c030e05953dc98c82c573704018c3b482d2fea
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 1409d8fc1430cd9bf67bd735d9826a74979d495b
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814274"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762963"
 ---
 # <a name="configure-a-github-action-to-create-a-container-instance"></a>Konfigurace akce GitHubu pro vytvoření instance kontejneru
 
-[Akce GitHubu](https://docs.github.com/en/free-pro-team@latest/actions) je sada funkcí v GitHubu pro automatizaci pracovních postupů vývoje softwaru na stejném místě, kam ukládáte kód a spolupracujete na žádostech o přijetí změn a problémech.
+[Akce GitHubu](https://docs.github.com/en/actions) je sada funkcí v GitHubu pro automatizaci pracovních postupů vývoje softwaru na stejném místě, kam ukládáte kód a spolupracujete na žádostech o přijetí změn a problémech.
 
 K automatizaci nasazení jednoho kontejneru do Azure Container Instances použijte akci [nasadit do Azure Container Instances](https://github.com/azure/aci-deploy) GitHubu. Akce umožňuje nastavit vlastnosti pro instanci kontejneru podobným způsobem jako v příkazu [AZ Container Create][az-container-create] .
 
@@ -177,7 +177,7 @@ Po potvrzení souboru pracovního postupu se spustí pracovní postup. Pokud chc
 
 ![Zobrazit průběh pracovního postupu](./media/container-instances-github-action/github-action-progress.png)
 
-Informace o zobrazení stavu a výsledků jednotlivých kroků v pracovním postupu najdete v tématu [zobrazení historie spuštění pracovního postupu](https://docs.github.com/en/free-pro-team@latest/actions/managing-workflow-runs/viewing-workflow-run-history) . Pokud pracovní postup nedokončíte, přečtěte si téma [zobrazení protokolů pro diagnostiku selhání](https://docs.github.com/en/free-pro-team@latest/actions/managing-workflow-runs/using-workflow-run-logs#viewing-logs-to-diagnose-failures).
+Informace o zobrazení stavu a výsledků jednotlivých kroků v pracovním postupu najdete v tématu [zobrazení historie spuštění pracovního postupu](https://docs.github.com/en/actions/managing-workflow-runs/viewing-workflow-run-history) . Pokud pracovní postup nedokončíte, přečtěte si téma [zobrazení protokolů pro diagnostiku selhání](https://docs.github.com/en/actions/managing-workflow-runs/using-workflow-run-logs#viewing-logs-to-diagnose-failures).
 
 Po úspěšném dokončení pracovního postupu Získejte informace o instanci kontejneru s názvem *ACI-dotazů* spuštěním příkazu [AZ Container show][az-container-show] . Nahraďte název vaší skupiny prostředků: 
 
@@ -237,7 +237,7 @@ az container app up \
 
 ### <a name="command-progress"></a>Průběh příkazu
 
-* Po zobrazení výzvy zadejte svoje přihlašovací údaje k GitHubu nebo poskytněte [token pro GitHubu](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token) , který má *úložiště* a *uživatelské* obory k ověření s vaším účtem GitHubu. Pokud zadáte přihlašovací údaje GitHubu, příkaz vytvoří PAT za vás. Postupujte podle dalších výzev a nakonfigurujte pracovní postup.
+* Po zobrazení výzvy zadejte svoje přihlašovací údaje k GitHubu nebo poskytněte [token pro GitHubu](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token) , který má *úložiště* a *uživatelské* obory k ověření s vaším účtem GitHubu. Pokud zadáte přihlašovací údaje GitHubu, příkaz vytvoří PAT za vás. Postupujte podle dalších výzev a nakonfigurujte pracovní postup.
 
 * Příkaz vytvoří tajné klíče úložiště pro pracovní postup:
 
@@ -258,7 +258,7 @@ Workflow succeeded
 Your app is deployed at:  http://acr-build-helloworld-node.eastus.azurecontainer.io:8080/
 ```
 
-Pokud chcete zobrazit stav pracovního postupu a výsledky jednotlivých kroků v uživatelském rozhraní GitHubu, přečtěte si téma [zobrazení historie spuštění pracovního postupu](https://docs.github.com/en/free-pro-team@latest/actions/managing-workflow-runs/viewing-workflow-run-history).
+Pokud chcete zobrazit stav pracovního postupu a výsledky jednotlivých kroků v uživatelském rozhraní GitHubu, přečtěte si téma [zobrazení historie spuštění pracovního postupu](https://docs.github.com/en/actions/managing-workflow-runs/viewing-workflow-run-history).
 
 ### <a name="validate-workflow"></a>Ověřit pracovní postup
 

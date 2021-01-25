@@ -10,21 +10,21 @@ ms.author: jukullam
 ms.date: 10/19/2020
 ms.topic: conceptual
 ms.custom: github-actions-azure
-ms.openlocfilehash: e7f6066cb7ed5c166d3e2bdc3f895073b05b92b9
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 8bce95b65d9b944505d7f9153159b342e49427cd
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97605021"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762919"
 ---
 # <a name="use-github-actions-with-azure-machine-learning"></a>Použití akcí GitHubu s Azure Machine Learning
 
-Začněte s [akcemi GitHubu](https://docs.github.com/en/free-pro-team@latest/actions) , které vám pomohou naučit model na Azure Machine Learning. 
+Začněte s [akcemi GitHubu](https://docs.github.com/en/actions) , které vám pomohou naučit model na Azure Machine Learning. 
 
 > [!NOTE]
 > Akce GitHubu pro Azure Machine Learning jsou k dispozici tak, jak jsou, a společnost Microsoft je plně nepodporuje. Pokud narazíte na problémy s určitou akcí, otevřete problém pro akci v úložišti. Například pokud narazíte na problém s akcí AML-Deploy, nahlaste problém v [https://github.com/Azure/aml-deploy]( https://github.com/Azure/aml-deploy) úložišti.
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Účet GitHub. Pokud ho ještě nemáte, zaregistrujte se [zdarma](https://github.com/join).  

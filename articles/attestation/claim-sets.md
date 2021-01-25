@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: afe2cf288cd4a15091e8278309b3ecf74a2d35a4
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: eb08bb262806cb662822a75898196546a5c1058e
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98572744"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762547"
 ---
 # <a name="claim-sets"></a>Sady deklarací identity
 
@@ -55,6 +55,12 @@ Pod deklaracemi, které jsou definované [tokenem IETF](https://tools.ietf.org/h
 Pod deklaracemi, které jsou definované [sdružením IETF](https://tools.ietf.org/html/draft-ietf-rats-eat-03#page-9) a kterou používá Azure Attestation v objektu Response:
 - **Hodnota Nonce deklarace (nonce)**
 
+Ve výchozím nastavení jsou deklarace identity vygenerované na základě příchozích deklarací identity.
+- **x-MS-ver**: verze schématu JWT (očekávaná jako "1,0")
+- **x-MS-ověření identity-typ**: řetězcová hodnota představující typ ověření identity 
+- **x-MS-Policy-hash**: hodnota řetězce obsahující SHA256 hash textu zásad vypočítaného BASE64URL (SHA256 (UTF8 (BASE64URL (UTF8 (text zásady))))
+- **x-MS-Policy-Signer**: obsahuje JWK s veřejným klíčem nebo řetěz certifikátů, který se nachází v podepsané hlavičce zásad. x-MS-Policy-Signer se přidá jenom v případě, že je zásada podepsaná.
+
 ## <a name="claims-specific-to-sgx-enclaves"></a>Deklarace identity specifické pro SGX enclaves
 
 ### <a name="incoming-claims-specific-to-sgx-attestation"></a>Příchozí deklarace identity specifické pro ověření identity SGX
@@ -71,7 +77,6 @@ Níže jsou deklarace identity vygenerované službou pro ověření identity SG
 Níže jsou deklarace identity vygenerované službou a zahrnuté do objektu Response pro ověření identity SGX:
 - **x-MS-SGX-je-laditelné**: logická hodnota, která označuje, jestli má enklávy povolený ladění nebo ne.
 - **x-MS-SGX-Product-ID**
-- **x-MS-ver**
 - **x-MS-SGX-mrsigner**: hodnota zakódovaná v poli "mrsigner" v uvozovkách
 - **x-MS-SGX-mrenclave**: hodnota zakódovaná v poli "mrenclave" v uvozovkách
 - **x-MS-SGX-SVN**: číslo verze zabezpečení kódované v uvozovkách 
@@ -99,36 +104,39 @@ maa-ehd | x-MS-SGX-EHD
 AAS – EHD | x-MS-SGX-EHD
 maa-attestationcollateral | x-MS-SGX-prosourozenci
 
-## <a name="claims-issued-specific-to-trusted-platform-module-tpm-attestation"></a>Deklarace identity vydané specificky pro ověření identity TPM (Trusted Platform Module)
+## <a name="claims-specific-to-trusted-platform-module-tpm-vbs-attestation"></a>Deklarace identity specifické pro ověření identity TPM (Trusted Platform Module)/VBS
 
-### <a name="incoming-claims-can-also-be-used-as-outgoing-claims"></a>Příchozí deklarace identity (můžou se taky používat jako odchozí deklarace identity)
+### <a name="incoming-claims-for-tpm-attestation"></a>Příchozí deklarace identity pro ověření TPM
+
+Deklarace identity vydané Azure Attestation pro ověření identity TPM Dostupnost deklarací identity závisí na důkazech poskytnutých pro ověření identity.
 
 - **aikValidated**: logická hodnota obsahující informace, pokud byl ověřený certifikát sady AIK (Attestation Identity Key).
-- **aikPubHash**: řetězec obsahující base64 (SHA256 (veřejný klíč sady AIK ve formátu der)).
-- **tpmVersion**: celočíselná hodnota obsahující hlavní verzi čipu TPM (Trusted Platform Module).
-- **secureBootEnabled**: logická hodnota určující, zda je povoleno zabezpečené spuštění.
-- **iommuEnabled**: logická hodnota určující, zda je povolena jednotka pro správu paměti vstupu a výstupu (IOMMU).
-- **bootDebuggingDisabled**: logická hodnota označující, zda je spouštěcí ladění zakázáno.
-- **notSafeMode**: logická hodnota určující, zda systém Windows není spuštěn v nouzovém režimu.
-- **notWinPE**: logická hodnota označující, zda systém Windows není spuštěn v režimu WinPE.
-- **vbsEnabled**: logická hodnota označující, zda je povolený vbs.
-- **vbsReportPresent**: logická hodnota označující, zda je k dispozici sestava vbs enklávy.
-- **enclaveAuthorId**: hodnota řetězce obsahující Base64Url kódovanou hodnotu ID autora enklávy – identifikátor autora primárního modulu pro enklávy.
-- **enclaveImageId**: hodnota řetězce obsahující Base64Urlou hodnotu ID image enklávy – identifikátor image primárního modulu pro enklávy.
-- **enclaveOwnerId**: hodnota řetězce obsahující Base64Url kódovanou hodnotu ID vlastníka enklávy – identifikátor vlastníka pro enklávy.
-- **enclaveFamilyId**: hodnota řetězce obsahující Base64Url KÓDOVANOU hodnotu ID rodiny enklávy. Identifikátor rodiny primárního modulu pro enklávy.
-- **enclaveSvn**: celočíselná hodnota obsahující číslo verze zabezpečení primární modul pro enklávy.
-- **enclavePlatformSvn**: celočíselná hodnota obsahující číslo verze zabezpečení platformy, která hostuje enklávy.
-- **enclaveFlags**: deklarace EnclaveFlags je celočíselná hodnota obsahující příznaky, které popisují zásady modulu runtime pro enklávy.
-  
-### <a name="outgoing-claims-specific-to-tpm-attestation"></a>Odchozí deklarace identity specifické pro ověření identity čipem TPM
+- **aikPubHash**: řetězec obsahující base64 (SHA256 (veřejný klíč sady AIK ve formátu der))
+- **tpmVersion**: celočíselná hodnota obsahující hlavní verzi čipu TPM (Trusted Platform Module)
+- **secureBootEnabled**: logická hodnota označující, zda je povoleno zabezpečené spouštění
+- **iommuEnabled**: logická hodnota označující, jestli je povolená jednotka pro správu paměti vstupu a výstupu (IOMMU)
+- **bootDebuggingDisabled**: logická hodnota označující, jestli je zakázané spouštěcí ladění
+- **notSafeMode**: logická hodnota určující, zda systém Windows není spuštěn v nouzovém režimu
+- **notWinPE**: logická hodnota označující, že systém Windows není spuštěn v režimu WinPE
+- **vbsEnabled**: logická hodnota označující, jestli je POVOLENý vbs
+- **vbsReportPresent**: logická hodnota označující, zda je k dispozici sestava vbs enklávy
 
-- **policy_hash**: hodnota řetězce obsahující SHA256 hash textu zásad vypočítaného pomocí BASE64URL (SHA256 (BASE64URL (UTF8 (text zásady))).
-- **policy_signer**: obsahuje JWK s veřejným klíčem nebo řetěz certifikátů, který se nachází v podepsané hlavičce zásad.
-- **ver (verze)**: řetězcová hodnota obsahující verzi sestavy. Aktuálně 1,0.
-- **deklarace identity CNF (potvrzení)**: k identifikaci klíče pro kontrolu příznaku se používá deklarace identity CNF. Deklarace identity, jak jsou definované v dokumentu RFC 7800, obsahují veřejnou část enklávy klíče, který je reprezentován jako objekt webového klíče JSON (JWK) (RFC 7517).
-- **rp_data (data předávající strany)**: data předávající strany, pokud jsou zadána v žádosti, používaná předávající stranou jako hodnota nonce k zajištění aktuálnosti sestavy.
-- **deklarace identity JTI (ID JWT)**: deklarace identity JTI (ID JWT) poskytuje jedinečný identifikátor tokenu JWT. Hodnota identifikátoru je přiřazena způsobem, který zajišťuje nezanedbatelnou pravděpodobnost, že stejná hodnota bude omylem přiřazena k jinému datovému objektu.
+### <a name="incoming-claims-for-vbs-attestation"></a>Příchozí deklarace identity pro VBS
+
+Deklarace identity vydané službou Azure Attestation pro VBS pro ověřování VBS jsou kromě deklarací dostupných k dispozici pro ověření identity čipem TPM. Dostupnost deklarací identity závisí na důkazech poskytnutých pro ověření identity.
+
+- **enclaveAuthorId**: hodnota řetězce obsahující Base64Url kódovanou hodnotu ID autora enklávy – identifikátor autora primárního modulu pro enklávy
+- **enclaveImageId**: hodnota řetězce obsahující Base64Urlou hodnotu ID image enklávy – identifikátor image primárního modulu pro enklávy
+- **enclaveOwnerId**: hodnota řetězce obsahující Base64Url kódovanou hodnotu ID vlastníka enklávy – identifikátor vlastníka pro enklávy
+- **enclaveFamilyId**: hodnota řetězce obsahující Base64Url KÓDOVANOU hodnotu ID rodiny enklávy. Identifikátor rodiny primárního modulu pro enklávy
+- **enclaveSvn**: celočíselná hodnota obsahující číslo verze zabezpečení primárního modulu pro enklávy
+- **enclavePlatformSvn**: celočíselná hodnota obsahující číslo verze zabezpečení platformy, která hostuje enklávy
+- **enclaveFlags**: deklarace EnclaveFlags je celočíselná hodnota obsahující příznaky, které popisují zásady modulu runtime pro enklávy
+
+### <a name="outgoing-claims-specific-to-tpm-and-vbs-attestation"></a>Odchozí deklarace identity specifické pro ověření identity TPM a VBS
+
+- **CNF (potvrzení)**: deklarace identity "CNF" se používá k identifikaci klíče pro ověření příznaku. Potvrzovací deklarace definovaná v dokumentu RFC 7800 obsahuje veřejnou část enklávy klíče, který je reprezentován jako objekt webového klíče JSON (JWK) (RFC 7517).
+- **rp_data (data předávající strany)**: data předávající strany, pokud jsou zadána v žádosti, používaná předávající stranou jako hodnota nonce k zajištění aktuálnosti sestavy. rp_data se přidá jenom v případě, že existuje rp_data
 
 ### <a name="property-claims"></a>Deklarace vlastností
 

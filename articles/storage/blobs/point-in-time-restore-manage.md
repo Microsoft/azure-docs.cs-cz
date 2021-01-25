@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/28/2020
+ms.date: 01/15/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 7bd85c60025475e8208847a12ccc2729743a975a
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: f550f96a8bd2e402556089061604654b11d47844
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803914"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762888"
 ---
 # <a name="perform-a-point-in-time-restore-on-block-blob-data"></a>Provedení obnovení k určitému bodu v čase u dat objektů blob bloku
 
@@ -23,7 +23,7 @@ Obnovení k určitému bodu v čase můžete použít k obnovení jedné nebo v�
 Další informace o obnovení k bodu v čase najdete v tématu [obnovení k bodu v čase pro objekty blob bloku](point-in-time-restore-overview.md).
 
 > [!CAUTION]
-> Obnovení k bodu v čase podporuje pouze obnovení operací pouze pro objekty blob bloku. Operace na kontejnerech nelze obnovit. Pokud odstraníte kontejner z účtu úložiště voláním operace [odstranění kontejneru](/rest/api/storageservices/delete-container) , nelze tento kontejner obnovit pomocí operace obnovení. Místo odstranění celého kontejneru odstraňte jednotlivé objekty blob, pokud je budete chtít později obnovit.
+> Obnovení k bodu v čase podporuje pouze obnovení operací pouze pro objekty blob bloku. Operace na kontejnerech nelze obnovit. Pokud odstraníte kontejner z účtu úložiště voláním operace [odstranění kontejneru](/rest/api/storageservices/delete-container) , nelze tento kontejner obnovit pomocí operace obnovení. Místo odstranění celého kontejneru odstraňte jednotlivé objekty blob, pokud je budete chtít později obnovit. Společnost Microsoft také doporučuje povolit obnovitelné odstranění kontejnerů a objektů BLOB k ochraně před náhodným odstraněním. Další informace najdete v tématu [obnovitelné odstranění pro kontejnery (Preview)](soft-delete-container-overview.md) a [obnovitelné odstranění objektů BLOB](soft-delete-blob-overview.md).
 
 ## <a name="enable-and-configure-point-in-time-restore"></a>Povolit a nakonfigurovat obnovení k časovému okamžiku
 
@@ -52,19 +52,16 @@ Následující obrázek ukazuje účet úložiště nakonfigurovaný pro obnoven
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Pokud chcete nakonfigurovat obnovení k bodu v čase pomocí PowerShellu, nejdřív nainstalujte modul [AZ. Storage](https://www.powershellgallery.com/packages/Az.Storage) verze 2.6.0 nebo novější. Potom zavolejte příkaz Enable-AzStorageBlobRestorePolicy a povolte tak obnovení k bodu v čase pro účet úložiště.
+Pokud chcete nakonfigurovat obnovení k bodu v čase pomocí PowerShellu, nejdřív nainstalujte modul [AZ. Storage](https://www.powershellgallery.com/packages/Az.Storage) verze 2.6.0 nebo novější. Pak zavolejte příkaz [Enable-AzStorageBlobRestorePolicy](/powershell/module/az.storage/enable-azstorageblobrestorepolicy) a povolte tak obnovení k bodu v čase pro účet úložiště.
 
-Následující příklad umožňuje obnovitelné odstranění a nastavuje dobu uchovávání obnovitelného odstranění, umožňuje změnit kanál a správu verzí a pak umožňuje obnovení k určitému bodu v čase.    Při spuštění tohoto příkladu Nezapomeňte nahradit hodnoty v lomených závorkách vlastními hodnotami:
+Následující příklad umožňuje obnovitelné odstranění a nastavuje dobu uchovávání obnovitelného odstranění, umožňuje změnit kanál a správu verzí a pak umožňuje obnovení k určitému bodu v čase. Při spuštění tohoto příkladu Nezapomeňte nahradit hodnoty v lomených závorkách vlastními hodnotami:
 
 ```powershell
-# Sign in to your Azure account.
-Connect-AzAccount
-
 # Set resource group and account variables.
 $rgName = "<resource-group>"
 $accountName = "<storage-account>"
 
-# Enable soft delete with a retention of 14 days.
+# Enable blob soft delete with a retention of 14 days.
 Enable-AzStorageBlobDeleteRetentionPolicy -ResourceGroupName $rgName `
     -StorageAccountName $accountName `
     -RetentionDays 14
@@ -87,11 +84,33 @@ Get-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
     -StorageAccountName $accountName
 ```
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Pokud chcete nakonfigurovat obnovení k bodu v čase pomocí rozhraní příkazového řádku Azure, nejdřív nainstalujte Azure CLI verze 2.2.0 nebo novější. Pak zavolejte příkaz [AZ Storage Account BLOB-Service-Properties Update](/cli/azure/ext/storage-blob-preview/storage/account/blob-service-properties#ext_storage_blob_preview_az_storage_account_blob_service_properties_update) , který povolí obnovení k bodu v čase a další požadovaná nastavení ochrany dat pro účet úložiště.
+
+Následující příklad umožňuje obnovitelné odstranění a nastavuje dobu uchování obnovitelného odstranění na 14 dní, umožňuje změnit kanál a správu verzí a umožňuje obnovení k určitému bodu v čase s obdobím obnovení 7 dní. Při spuštění tohoto příkladu Nezapomeňte nahradit hodnoty v lomených závorkách vlastními hodnotami:
+
+```azurecli
+az storage account blob-service-properties update \
+    --resource-group <resource_group> \
+    --account-name <storage-account> \
+    --enable-delete-retention true \
+    --delete-retention-days 14 \
+    --enable-versioning true \
+    --enable-change-feed true \
+    --enable-restore-policy true \
+    --restore-days 7
+```
+
 ---
 
-## <a name="perform-a-restore-operation"></a>Provést operaci obnovení
+## <a name="choose-a-restore-point"></a>Zvolit bod obnovení
 
-Při provádění operace obnovení je nutné zadat bod obnovení jako hodnotu **DateTime** UTC. Kontejnery a objekty blob budou obnoveny do jejich stavu v daný den a čas. Dokončení operace obnovení může trvat několik minut.
+Bod obnovení je datum a čas, kdy se data obnovila. Azure Storage vždy používá hodnotu data a času UTC jako bod obnovení. Azure Portal však umožňuje určit bod obnovení v místním čase a následně převést hodnotu data a času na hodnotu data a času UTC k provedení operace obnovení.
+
+Při provádění operace obnovení pomocí prostředí PowerShell nebo rozhraní příkazového řádku Azure by měl bod obnovení určovat hodnotu data a času UTC. Pokud je bod obnovení zadán s místní časovou hodnotou namísto hodnoty času UTC, operace obnovení se může v některých případech i v některých případech chovat podle očekávání. Pokud je váš místní čas například UTC minus pět hodin, pak se při zadání místní hodnoty času v bodě obnovení, který je starší než hodnota, kterou jste zadali, zobrazí pět hodin. Pokud nebyla provedena žádná změna dat v rozsahu, který má být obnoven během období 5 hodin, operace obnovení vytvoří stejné výsledky bez ohledu na to, jaká časová hodnota byla zadána. Chcete-li se vyhnout neočekávaným výsledkům, je doporučeno zadat čas UTC pro bod obnovení.
+
+## <a name="perform-a-restore-operation"></a>Provést operaci obnovení
 
 Můžete obnovit všechny kontejnery v účtu úložiště, nebo můžete obnovit rozsah objektů BLOB v jednom nebo více kontejnerech. Rozsah objektů BLOB je definován lexikograficky, což znamená v pořadí slovníku. Na operaci obnovení se podporuje až deset rozsahů lexicographical. Začátek rozsahu je včetně a konec rozsahu je exkluzivní.
 
@@ -128,7 +147,7 @@ Pro obnovení všech kontejnerů a objektů BLOB v účtu úložiště pomocí A
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Pokud chcete obnovit všechny kontejnery a objekty BLOB v účtu úložiště pomocí PowerShellu, zavolejte příkaz **Restore-AzStorageBlobRange** . Ve výchozím nastavení se příkaz **Restore-AzStorageBlobRange** spustí asynchronně a vrátí objekt typu **PSBlobRestoreStatus** , který můžete použít ke kontrole stavu operace obnovení.
+Pokud chcete obnovit všechny kontejnery a objekty BLOB v účtu úložiště pomocí PowerShellu, zavolejte příkaz **Restore-AzStorageBlobRange** a poskytněte bod obnovení jako hodnotu data a času UTC. Ve výchozím nastavení se příkaz **Restore-AzStorageBlobRange** spustí asynchronně a vrátí objekt typu **PSBlobRestoreStatus** , který můžete použít ke kontrole stavu operace obnovení.
 
 Následující příklad asynchronně obnoví kontejnery v účtu úložiště do stavu 12 hodin před současným okamžikem a zkontroluje některé vlastnosti operace obnovení:
 
@@ -136,7 +155,7 @@ Následující příklad asynchronně obnoví kontejnery v účtu úložiště d
 # Specify -TimeToRestore as a UTC value
 $restoreOperation = Restore-AzStorageBlobRange -ResourceGroupName $rgName `
     -StorageAccountName $accountName `
-    -TimeToRestore (Get-Date).AddHours(-12)
+    -TimeToRestore (Get-Date).ToUniversalTime().AddHours(-12)
 
 # Get the status of the restore operation.
 $restoreOperation.Status
@@ -153,6 +172,22 @@ Restore-AzStorageBlobRange -ResourceGroupName $rgName `
     -StorageAccountName $accountName `
     -TimeToRestore (Get-Date).AddHours(-12) -WaitForComplete
 ```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Pokud chcete obnovit všechny kontejnery a objekty BLOB v účtu úložiště pomocí Azure CLI, zavolejte příkaz [AZ Storage BLOB Restore](/cli/azure/storage/blob#az_storage_blob_restore) a poskytněte bod obnovení jako hodnotu data/času UTC.
+
+Následující příklad asynchronně obnoví všechny kontejnery v účtu úložiště na stav 12 hodin před zadaným datem a časem. Chcete-li zjistit stav operace obnovení, zavolejte volání [AZ Storage Account show](/cli/azure/storage/account#az_storage_account_show):
+
+```azurecli
+az storage blob restore \
+    --resource-group <resource_group> \
+    --account-name <storage-account> \
+    --time-to-restore 2021-01-14T06:31:22Z \
+    --no-wait
+```
+
+Pokud chcete spustit příkaz **AZ Storage BLOB Restore** synchronně a zablokovat spuštění, dokud se nedokončí operace obnovení, vynechejte `--no-wait` parametr.
 
 ---
 
@@ -245,11 +280,30 @@ $restoreOperation.Parameters.BlobRanges
 
 Chcete-li spustit operaci obnovení synchronně a zablokovat spuštění, dokud není dokončeno, do příkazu zadejte parametr **-WaitForComplete** .
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Chcete-li obnovit rozsah objektů blob, zavolejte příkaz [AZ Storage BLOB Restore](/cli/azure/storage/blob#az_storage_blob_restore) a zadejte lexicographical rozsah kontejnerů a názvů objektů BLOB pro daný `--blob-range` parametr. Chcete-li zadat více rozsahů, zadejte `--blob-range` parametr pro každý rozsah DISTINCT.
+
+Chcete-li například obnovit objekty BLOB v jednom kontejneru s názvem *container1*, můžete zadat rozsah, který začíná na *container1* a končí na *container2*. Neexistuje žádný požadavek na to, aby kontejnery s názvem v rozsahu začátek a konec existovaly. Vzhledem k tomu, že konec rozsahu je exkluzivní, i když účet úložiště obsahuje kontejner s názvem *container2*, obnoví se jenom kontejner s názvem *container1* .
+
+Chcete-li určit podmnožinu objektů BLOB v kontejneru pro obnovení, použijte lomítko (/) k oddělení názvu kontejneru od vzoru předpony objektů BLOB. Následující příklad ukazuje asynchronní obnovení rozsahu objektů BLOB v kontejneru, jejichž názvy začínají písmeny `d` `f` .
+
+```azurecli
+az storage blob restore \
+    --account-name <storage-account> \
+    --time-to-restore 2021-01-14T06:31:22Z \
+    --blob-range container1 container2
+    --blob-range container3/d container3/g
+    --no-wait
+```
+
+Pokud chcete spustit příkaz **AZ Storage BLOB Restore** synchronně a zablokovat spuštění, dokud se nedokončí operace obnovení, vynechejte `--no-wait` parametr.
+
 ---
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Obnovení bodu v čase pro objekty blob bloku](point-in-time-restore-overview.md)
 - [Obnovitelné odstranění](./soft-delete-blob-overview.md)
-- [Změna kanálu](storage-blob-change-feed.md)
+- [Změnit kanál](storage-blob-change-feed.md)
 - [Správa verzí objektů BLOB](versioning-overview.md)

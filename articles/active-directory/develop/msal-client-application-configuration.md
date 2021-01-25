@@ -13,12 +13,12 @@ ms.date: 11/20/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 9ec8a5fe5de751e40ebaa17629ff72c5f6b2adca
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 46626c3ebe9d70600be1cc5f73c43677f67bcd09
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94979979"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98761378"
 ---
 # <a name="application-configuration-options"></a>Možnosti konfigurace aplikace
 
@@ -147,8 +147,20 @@ Pro aplikace démona není nutné zadávat identifikátor URI přesměrování.
 Tato možnost určuje tajný klíč klienta pro důvěrnou klientskou aplikaci. Tento tajný klíč (heslo aplikace) poskytuje portál pro registraci aplikací nebo poskytovaný službě Azure AD během registrace aplikace pomocí PowerShellu AzureAD, PowerShell AzureRM nebo Azure CLI.
 
 ## <a name="logging"></a>protokolování
+Pro pomoc při řešení potíží při ladění a selhání ověřování poskytuje knihovna Microsoft Authentication Library integrovanou podporu protokolování. Protokolování je každá knihovna zahrnuta v následujících článcích:
 
-Další možnosti konfigurace umožňují protokolování a odstraňování potíží. Podrobnosti o tom, jak je používat, najdete v článku [protokolování](msal-logging.md) .
+:::row:::
+    :::column:::
+        - [Protokolování v MSAL.NET](msal-logging-dotnet.md)
+        - [Protokolování v MSAL pro Android](msal-logging-android.md)
+        - [Protokolování v MSAL.js](msal-logging-js.md)
+    :::column-end:::
+    :::column:::
+        - [Protokolování v MSAL pro iOS/macOS](msal-logging-ios.md)
+        - [Protokolování v MSAL pro Javu](msal-logging-java.md)
+        - [Protokolování v MSAL pro Python](msal-logging-python.md)
+    :::column-end:::
+:::row-end:::
 
 ## <a name="next-steps"></a>Další kroky
 

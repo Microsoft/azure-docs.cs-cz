@@ -3,12 +3,12 @@ title: Azure Functions hostování plánu spotřeby
 description: Přečtěte si, jak hostující plán spotřeby funkcí Azure umožňuje spustit kód v prostředí, které se dynamicky škáluje, ale platíte jenom za prostředky použité během provádění.
 ms.date: 8/31/2020
 ms.topic: conceptual
-ms.openlocfilehash: ffb556ce48f18702e06fcdb02dda84f41ae5f906
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: d292a70a8dfaa4cebdb99f2bcb5420c8b8ab9cd8
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684687"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98760536"
 ---
 # <a name="azure-functions-consumption-plan-hosting"></a>Azure Functions hostování plánu spotřeby
 

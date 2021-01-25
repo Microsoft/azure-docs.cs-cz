@@ -82,7 +82,7 @@
           href: about-upgrade-circuit-bandwidth.md
         - name: Přesun okruhů z modelu nasazení Classic do Resource Manager
           href: expressroute-move.md
-    - name: Informace o branách Expressroute
+    - name: Informace o branách ExpressRoute
       href: expressroute-about-virtual-network-gateways.md
     - name: Informace o službě ExpressRoute FastPath
       href: about-fastpath.md

@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/15/2019
-ms.openlocfilehash: a53857061110d5a77ac3d166277e7076f4f7f9c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47b006932aace3149dd94e136e334c1b6e5bfcef
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541369"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762698"
 ---
 # <a name="train-your-active-version-of-the-luis-app"></a>Výuka aktivní verze aplikace LUIS
 
@@ -40,9 +40,15 @@ Datum a čas školení jsou GMT + 2.
 
 ## <a name="train-with-all-data"></a>Naučit se všemi daty
 
-Školení používá malé procento negativního vzorkování. Pokud chcete použít všechna data namísto malého negativního vzorkování, použijte [rozhraní API](#version-settings-api-use-of-usealltrainingdata).
+Školení používá malé procento negativního vzorkování. Všechna dostupná data můžete použít místo toho, když použijete portál nebo rozhraní API. 
 
-### <a name="version-settings-api-use-of-usealltrainingdata"></a>Nastavení verze API použití UseAllTrainingData
+### <a name="using-the-luis-portal"></a>Používání portálu LUIS
+
+Přihlaste se k [portálu Luis](https://www.luis.ai/) a klikněte na svou aplikaci. V horní části obrazovky vyberte **Spravovat** , vyberte **Nastavení** a povolte nebo zakažte možnost **použít deterministické školení** . Pokud je tato možnost zakázaná, bude školení používat všechna dostupná data.
+
+![Tlačítko pro povolení nebo zakázání nedeterministického školení](./media/non-determinstic-training.png)
+
+### <a name="using-the-version-settings-api"></a>Použití rozhraní API pro nastavení verze
 
 Tuto funkci můžete vypnout pomocí [rozhraní API pro nastavení verze](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) s `UseAllTrainingData` nastavením na hodnotu true.
 

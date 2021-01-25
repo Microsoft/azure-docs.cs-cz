@@ -5,16 +5,16 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 96a2fde3e510c6eb7146da9c92d93f69111e8c80
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: cfc10658463888e43ea1a24dfefd3f8939ec8ef7
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92206539"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762776"
 ---
 # <a name="use-azure-blob-storage-for-model-conversion"></a>Použití služby Azure Blob Storage pro převod modelů
 
-Služba [převodu modelů](model-conversion.md) vyžaduje přístup k úložišti objektů BLOB v Azure, aby mohl načíst vstupní data a uložit výstupní data. Tento článek popisuje, jak provést nejběžnější kroky.
+Služba [konverze modelu](model-conversion.md) vyžaduje přístup k Azure Blob Storage tak, aby mohla načíst vstupní data a uložit výstupní data. Tento článek popisuje, jak provést nejběžnější kroky.
 
 ## <a name="prepare-azure-storage-accounts"></a>Příprava účtů Azure Storage
 
@@ -29,7 +29,7 @@ Vytváření účtů úložiště a kontejnerů objektů BLOB se dá udělat jed
 
 - [Azure Portal](https://portal.azure.com)
 - [AZ Command line](/cli/azure/install-azure-cli?view=azure-cli-latest)
-- [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/)
+- [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
 - Sady SDK (C#, Python...)
 
 ## <a name="ensure-azure-remote-rendering-can-access-your-storage-account"></a>Zajistěte, aby vzdálené vykreslování Azure mohlo mít přístup k vašemu účtu úložiště.
@@ -53,7 +53,7 @@ Identifikátor URI SAS může být vygenerován pomocí jednoho z těchto:
 - AZ PowerShell Module
   - Podívejte se na [ukázkové skripty PowerShellu](../../samples/powershell-example-scripts.md)
 - [AZ Command line](/cli/azure/install-azure-cli?view=azure-cli-latest)
-- [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/)
+- [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
   - Klikněte pravým tlačítkem na kontejner získat sdílený přístupový podpis (číst, vypsat přístup pro vstupní kontejner, oprávnění k zápisu pro kontejner výstupu).
 - Sady SDK (C#, Python...)
 

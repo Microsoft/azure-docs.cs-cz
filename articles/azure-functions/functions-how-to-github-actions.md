@@ -6,18 +6,18 @@ ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python, github-actions-azure
-ms.openlocfilehash: bc80a4f5c6c2919f0cb3faa15958fb75eed70270
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: cc356b307a752b10ba6f1c1a7151381c5644ca1e
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98035219"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762729"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Průběžné doručování pomocí akce GitHubu
 
 Pomocí [akcí GitHubu](https://github.com/features/actions) Definujte pracovní postup, který automaticky sestaví a nasadí kód do aplikace Function app v Azure Functions. 
 
-[Pracovní postup](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions#the-components-of-github-actions) v akcích GitHub je automatizovaný proces, který definujete v úložišti GitHub. Tento proces oznamuje GitHubu, jak sestavit a nasadit projekt Function App na GitHubu. 
+[Pracovní postup](https://docs.github.com/en/actions/learn-github-actions/introduction-to-github-actions#the-components-of-github-actions) v akcích GitHub je automatizovaný proces, který definujete v úložišti GitHub. Tento proces oznamuje GitHubu, jak sestavit a nasadit projekt Function App na GitHubu. 
 
 Pracovní postup je definovaný souborem YAML (. yml) v `/.github/workflows/` cestě v úložišti. Tato definice obsahuje různé kroky a parametry, které tvoří pracovní postup. 
 
@@ -40,7 +40,7 @@ V případě pracovního postupu Azure Functions má soubor tři části:
 
 Doporučený způsob ověřování pomocí Azure Functions pro akce GitHubu je použití profilu publikování. Můžete se také ověřit pomocí instančního objektu. Další informace najdete v [tomto úložišti akcí GitHubu](https://github.com/Azure/functions-action). 
 
-Po uložení přihlašovacích údajů profilu publikování jako [tajného kódu GitHubu](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets)použijete tento tajný klíč v rámci pracovního postupu k ověření v Azure. 
+Po uložení přihlašovacích údajů profilu publikování jako [tajného kódu GitHubu](https://docs.github.com/en/actions/reference/encrypted-secrets)použijete tento tajný klíč v rámci pracovního postupu k ověření v Azure. 
 
 #### <a name="download-your-publish-profile"></a>Stáhnout publikační profil
 

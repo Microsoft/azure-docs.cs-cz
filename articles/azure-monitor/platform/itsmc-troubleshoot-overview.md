@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: a4a7b7a4008d5cc4636e2d533c225a618f35af05
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: e43c5fb36c5395e12fd0b9c2c67b787a1137f5d0
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611181"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98761985"
 ---
 # <a name="troubleshooting-problems-in-itsm-connector"></a>Řešení potíží v ITSM konektoru
 
@@ -43,24 +43,23 @@ Pokud používáte Service Map, můžete zobrazit položky oddělení služeb vy
 
 ![Snímek obrazovky zobrazující Log Analytics obrazovku](media/itsmc-overview/itsmc-overview-integrated-solutions.png)
 
-## <a name="troubleshoot-itsm-connections"></a>Řešení potíží s připojením ITSM
-
-- Pokud se připojení nepřipojí k systému ITSM a při ukládání zprávy o připojení dojde k **chybě** , proveďte následující kroky:
-   - Pro připojení ServiceNow, Cherwell a prov:  
-     - Ujistěte se, že jste správně zadali uživatelské jméno, heslo, ID klienta a tajný klíč klienta pro každé připojení.  
-     - Ujistěte se, že máte v odpovídajícím ITSM produktu dostatečná oprávnění pro připojení.  
-   - Pro Service Manager připojení:  
-     - Ujistěte se, že je webová aplikace úspěšně nasazená a že je vytvořené hybridní připojení. Pokud chcete ověřit, jestli se úspěšně navázalo připojení k místnímu Service Managermu počítači, přečtěte si adresu URL webové aplikace, jak je popsáno v dokumentaci pro vytvoření [hybridního připojení](./itsmc-connections-scsm.md#configure-the-hybrid-connection).  
-
-- Pokud se Log Analytics výstrahy aktivují, ale pracovní položky se nevytvoří v produktu ITSM, pokud se položky konfigurace nevytvoří/propojí s pracovními položkami nebo další informace, podívejte se na tyto zdroje:
-   -  ITSMC: řešení zobrazuje [Souhrn připojení](itsmc-dashboard.md), pracovních položek, počítačů a dalších. Vyberte dlaždici, která má popisek **stavu konektoru** . Provedete to tak, že přejdete do **protokolu hledání** pomocí příslušného dotazu. Další informace najdete v záznamech protokolu s `LogType_S` `ERROR` .
-   Můžete zobrazit podrobnosti o zprávách v tabulce – [tady](itsmc-dashboard-errors.md).
-   - Stránka **hledání v protokolu** : zobrazí chyby a související informace přímo pomocí dotazu `*ServiceDeskLog_CL*` .
-
 ## <a name="common-symptoms---how-should-it-be-resolved"></a>Běžné příznaky – jak by se mělo vyřešit?
 
 Níže uvedený seznam obsahuje běžné příznaky a jejich řešení:
 
+* **Příznak**: v případě, že se připojení nepřipojí k systému ITSM a při **ukládání zprávy připojení** se zobrazí chyba.
+
+    **Příčina**: příčinou může být jedna z možností:
+    * Nesprávné přihlašovací údaje
+     * Nedostatečná oprávnění
+     * Webová aplikace by se měla správně nasadit.
+
+    **Řešení**:
+    * Pro připojení ServiceNow, Cherwell a prov:
+        * Ujistěte se, že jste správně zadali uživatelské jméno, heslo, ID klienta a tajný klíč klienta pro každé připojení.  
+        * ServiceNow: Ujistěte se, že máte v odpovídajícím produktu ITSM dostatečná oprávnění k tomu, aby bylo připojení [zadáno](itsmc-connections-servicenow.md#install-the-user-app-and-create-the-user-role).
+  * Pro Service Manager připojení:  
+      * Ujistěte se, že je webová aplikace úspěšně nasazená a že je vytvořené hybridní připojení. Pokud chcete ověřit, jestli se úspěšně navázalo připojení k místnímu Service Managermu počítači, přečtěte si adresu URL webové aplikace, jak je popsáno v dokumentaci pro vytvoření [hybridního připojení](./itsmc-connections-scsm.md#configure-the-hybrid-connection).  
 * **Příznak**: jsou vytvořeny duplicitní pracovní položky.
 
     **Příčina**: příčinou může být jedna ze dvou možností:

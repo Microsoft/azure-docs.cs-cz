@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions, devx-track-azurecli
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22a4bdc92ea2a91425c1070a5837c672307de665
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 3e22e5fc4bc7211d905dbe8775b0ef6e893bd2cc
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98683772"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98760995"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Přihlášení k virtuálnímu počítači s Windows v Azure pomocí ověřování Azure Active Directory (Preview)
 
@@ -350,7 +350,9 @@ Ověřte, že počítač s Windows 10, který používáte k inicializaci připo
 > [!NOTE]
 > Windows 10 Build 20H1 přidal podporu pro počítač se systémem Azure AD, který iniciuje připojení RDP k vašemu VIRTUÁLNÍmu počítači. Při použití registrovaného počítače Azure AD (ne připojeného k Azure AD nebo k hybridnímu Azure AD) jako klienta RDP pro inicializaci připojení k vašemu VIRTUÁLNÍmu počítači musíte zadat přihlašovací údaje ve formátu AzureAD\UPn (např. AzureAD\john@contoso.com ).
 
-Ověřte také, že rozšíření AADLoginForWindows nebylo po dokončení připojení služby Azure AD odinstalováno.
+Ověřte, že rozšíření AADLoginForWindows nebylo po dokončení připojení Azure AD odinstalováno.
+
+Také se ujistěte, že je na serveru *i* klientovi povolena zásada zabezpečení zabezpečení sítě: Povolit PKU2U žádosti o ověření na tento počítač pro použití online identit.
  
 #### <a name="mfa-sign-in-method-required"></a>Vyžaduje se metoda přihlášení MFA.
 

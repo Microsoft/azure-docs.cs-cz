@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 12/07/2020
-ms.openlocfilehash: 7c15b3a854b533d93bc05f7e5302671711da75c2
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.date: 01/22/2021
+ms.openlocfilehash: a4d1543c5c4ce7a44825a879b838e7829b8c84fd
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936120"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98760628"
 ---
 # <a name="overview-azure-logic-apps-preview"></a>Přehled: Azure Logic Apps Preview
 
@@ -139,6 +139,8 @@ Azure Logic Apps Preview zahrnuje mnoho současných a dalších funkcí, např�
 
 * Povolte možnosti protokolování a trasování diagnostiky pro vaši aplikaci logiky pomocí [Application Insights](../azure-monitor/app/app-insights-overview.md) , když to podporuje vaše předplatné Azure a nastavení aplikace logiky.
 
+* Znovu vygenerujte přístupové klíče pro spravovaná připojení používaná jednotlivými pracovními postupy v prostředku **Aplikace logiky (Preview)** . Pro tuto úlohu [použijte stejný postup jako u prostředku **Logic Apps** , ale na úrovni jednotlivých pracovních postupů](logic-apps-securing-a-logic-app.md#regenerate-access-keys), nikoli na úrovni prostředků aplikace logiky.
+
 > [!NOTE]
 > Informace o aktuálních známých problémech najdete na [stránce Logic Apps Public Preview známé problémy v GitHubu](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md).
 
@@ -165,7 +167,7 @@ Další informace o cenových modelech, které se vztahují na tento nový typ p
 
 ## <a name="changed-limited-unavailable-or-unsupported-capabilities"></a>Změněné, omezené, nedostupné nebo nepodporované možnosti
 
-V Azure Logic Apps Preview se tyto možnosti změnily nebo jsou aktuálně omezené, nedostupné nebo nepodporované:
+V Azure Logic Apps ve verzi Preview se tyto možnosti změnily nebo jsou aktuálně omezené, nedostupné nebo nepodporované:
 
 * **Aktivační události a akce**: některé vestavěné triggery nejsou k dispozici, například posuvné okno a dávku. Pokud chcete spustit pracovní postup, použijte [integrované opakování, požadavek, http, Webhook http, Event Hubs nebo aktivační událost Service Bus](../connectors/apis-list.md). Integrované triggery a akce se spouštějí nativně v modulu runtime služby Azure Logic Apps Preview, zatímco spravované konektory se nasazují v Azure. V návrháři se předdefinované triggery a akce zobrazí pod **integrovanou** kartou, zatímco triggery a akce spravovaného konektoru se zobrazí na kartě **Azure** .
 

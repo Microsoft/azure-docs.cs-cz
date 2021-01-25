@@ -7,12 +7,12 @@ ms.author: dobett
 ms.date: 06/26/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: 12ba8526be68d2cb15e37510e66f959ab65c6e99
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5118fa22a198ee6871a4cfb455e88d345d6a44e0
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85802110"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98760855"
 ---
 # <a name="about-your-application"></a>Informace o aplikaci
 
@@ -40,3 +40,5 @@ Chcete-li získat informace o vaší aplikaci IoT Central:
 ## <a name="next-steps"></a>Další kroky
 
 Teď, když víte, jak najít verzi vaší IoT Central aplikace, je navržený další krok, ve kterém můžete dál prozkoumat články s postupy pro správce: [změna IoT Central nastavení aplikace](howto-administer.md).
+
+Pokud máte aplikaci v2, přečtěte si téma [migrace aplikace IoT Central v2 na V3](howto-migrate.md).

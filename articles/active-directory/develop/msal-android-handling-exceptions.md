@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/07/2020
 ms.author: hahamil
 ms.reviewer: marsma
-ms.openlocfilehash: f40c2bb0f529f9e0683c67bea884443458707f4f
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 4185206e92a78c2684ba1690f03700ef2532cc5e
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92206590"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98761391"
 ---
 # <a name="handle-exceptions-and-errors-in-msal-for-android"></a>Zpracování výjimek a chyb v MSAL pro Android
 
@@ -77,4 +77,4 @@ private SilentAuthenticationCallback getAuthSilentCallback() {
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o [chybách protokolování](./msal-logging.md?tabs=android)
+Přečtěte si další informace o [protokolování v MSAL pro Android](msal-logging-android.md).

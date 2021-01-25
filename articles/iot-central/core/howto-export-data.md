@@ -8,12 +8,12 @@ ms.date: 11/05/2020
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperf-fy21q1, contperf-fy21q3
-ms.openlocfilehash: 3079b8384a24642322d6f6eb86e2ca7f0927db15
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 74de0481bf6786d245fb96f5d102ab72a00031c8
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98065384"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98760894"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>Export dat IoT do cloudových cílů pomocí exportu dat
 
@@ -35,6 +35,8 @@ Můžete například:
 ## <a name="prerequisites"></a>Požadavky
 
 Chcete-li používat funkce exportu dat, je nutné mít [aplikaci V3](howto-get-app-info.md)a musíte mít oprávnění k [exportu dat](howto-manage-users-roles.md) .
+
+Pokud máte aplikaci v2, přečtěte si téma [migrace aplikace IoT Central v2 na V3](howto-migrate.md).
 
 ## <a name="set-up-export-destination"></a>Nastavit cíl exportu
 
@@ -94,9 +96,9 @@ Pokud nemáte existující účet úložiště Azure pro export do, postupujte t
 
     |Úroveň výkonu|Typ účtu|
     |-|-|
-    |Standardní|Pro obecné účely v2|
-    |Standardní|Pro obecné účely v1|
-    |Standardní|Blob Storage|
+    |Standard|Pro obecné účely v2|
+    |Standard|Pro obecné účely v1|
+    |Standard|Blob Storage|
     |Premium|Úložiště objektů blob bloku|
 
 1. Pokud chcete vytvořit kontejner v účtu úložiště, klikněte na účet úložiště. V části **BLOB Service** vyberte **Procházet objekty blob**. V horní části vyberte **+ kontejner** a vytvořte nový kontejner.

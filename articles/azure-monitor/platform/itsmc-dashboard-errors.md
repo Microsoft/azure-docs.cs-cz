@@ -6,20 +6,20 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 01/18/2021
-ms.openlocfilehash: 9521c13b21317bb0a782b0bea0b08312ff24b113
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: c3e6408a6a3473380edbe2966eba41970bd73562
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610348"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762769"
 ---
-# <a name="errors-in-the-connector-status"></a>Chyby ve stavu konektoru
+# <a name="errors-in-the-connector-status-section"></a>Chyby v sekci stav konektoru
 
-V seznamu stav konektoru můžete najít chyby, které vám můžou pomoct vyřešit problémy v konektoru ITSM.
+V části seznam stavů konektoru na řídicím panelu najdete chyby, které vám můžou pomoct vyřešit problémy v konektoru ITSM.
 
 ## <a name="status-common-errors"></a>Běžné chyby stavu
 
-v této části najdete běžné chyby, které se zobrazují v části stav konektoru, a způsob jejich řešení:
+V této části najdete běžné chyby, které se zobrazují v části stav konektoru, a způsob jejich řešení:
 
 * **Chyba**: "Neočekávaná odpověď z ServiceNow spolu s kódem stavu úspěch. Odpověď: {"import_set": "{import_set_id}", "staging_table": "x_mioms_microsoft_oms_incident", "Result": [{"transform_map": "incident OMS", "Tabulka": "incident", "stav": "Chyba", "error_message": "{cílový záznam nebyl nalezen | Neplatná tabulka | Neplatná pracovní tabulka "}"
 
@@ -27,7 +27,7 @@ v této části najdete běžné chyby, které se zobrazují v části stav kone
   * Vlastní skript nasazený v instanci ServiceNow způsobí, že se incidenty budou ignorovat.
   * Samotný kód aplikace pro integrátory OMS byl změněn na straně ServiceNow, například skript před.
 
-  **Řešení**: zakažte všechny vlastní skripty nebo změny kódu v cestě pro import dat.
+  **Řešení**: zakažte všechny vlastní skripty nebo změny kódu.
 
 * **Chyba**: "{" Chyba ": {" zpráva ":" operace selhala "," Detail ":" aktualizace výjimky ACL se nezdařila z důvodu omezení zabezpečení "}"
 
@@ -58,7 +58,7 @@ v této části najdete běžné chyby, které se zobrazují v části stav kone
     **Příčina**: konektor ITSM byl odstraněn.
 
     **Řešení**: konektor ITSM byl odstraněn, ale jsou stále definovány skupiny akcí ITSM, které jsou k němu přidruženy. Existují dvě možnosti, jak tento problém vyřešit:
-  * Najde a zakáže nebo odstraní takovou akci.
+  * Najde a zakáže nebo odstraní tyto skupiny akcí.
   * [Překonfigurujte skupinu akcí](./itsmc-definition.md#create-itsm-work-items-from-azure-alerts) tak, aby používala existující konektor ITSM.
   * [Vytvořte nový konektor ITSM](./itsmc-definition.md#create-an-itsm-connection) a [znovu nakonfigurujte skupinu akcí, kterou chcete použít](itsmc-definition.md#create-itsm-work-items-from-azure-alerts).
 

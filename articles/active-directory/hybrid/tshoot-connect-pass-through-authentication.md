@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 07/27/2020
+ms.date: 01/25/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 251f9a2b075189f19b9e943ff660baaba93ec33b
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 9a014bd5c8f1edbfb00019b8541cef552271d65b
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97652037"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762838"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Řešení potíží s předávacím ověřováním služby Azure Active Directory
 
@@ -157,7 +157,7 @@ V případě chyb souvisejících s agentem ověřování otevřete Prohlížeč
 
 Pro podrobnou analýzu Povolte protokol "session" (klikněte pravým tlačítkem myši v aplikaci Prohlížeč událostí, abyste našli tuto možnost). Nespouštějte agenta ověřování s tímto protokolem povoleným během normálního provozu. používá se jenom pro řešení potíží. Obsah protokolu se zobrazí až po opětovném zakázání protokolu.
 
-Manifest události agenta PTA najdete [tady](https://msazure.visualstudio.com/One/_git/AD-AppProxy?path=%2Fsrc%2FProduct%2FMUC%2FPTADiagnosticsResource%2FPTADiagnosticsResource%2FPTAConnectorDiagnosticsResource%2FPTAConnectorEventManifest.man&_a=contents&version=GBmaster).
+
 
 ### <a name="detailed-trace-logs"></a>Podrobné protokoly trasování
 

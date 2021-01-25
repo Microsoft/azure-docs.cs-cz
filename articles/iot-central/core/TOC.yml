@@ -157,6 +157,8 @@
               href: howto-use-app-templates.md
             - name: Monitorování stavu aplikace
               href: howto-monitor-application-health.md
+            - name: Migrovat aplikaci v2 na V3
+              href: howto-migrate.md
             - name: Informace o aplikaci
               href: howto-get-app-info.md
             - name: Zavedení certifikátů X.509
