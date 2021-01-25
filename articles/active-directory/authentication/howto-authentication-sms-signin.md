@@ -11,16 +11,16 @@ author: justinha
 manager: daveba
 ms.reviewer: rateller
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43573b54be6884e01121e404370d2e1d85a3c4e8
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: d9430066ad92b4d0b69bd07c763e3f7b5d6e889a
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98660877"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693532"
 ---
 # <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory"></a>Konfigurace a povolení ověřování založeného na SMS pomocí Azure Active Directory 
 
-Pro zjednodušení a zabezpečení přihlašování k aplikacím a službám nabízí Azure Active Directory (Azure AD) více možností ověřování. Ověřování pomocí serveru SMS umožňuje uživatelům přihlásit se, aniž by museli znát uživatelské jméno a heslo. Po vytvoření účtu správcem identity můžou jejich telefonní číslo zadat na příkazovém řádku pro přihlášení. Obdrží ověřovací kód přes textovou zprávu, kterou můžou poskytnout k dokončení přihlášení. Tato metoda ověřování zjednodušuje přístup k aplikacím a službám, zejména pro pracovníky front-line.
+Pro zjednodušení a zabezpečení přihlašování k aplikacím a službám nabízí Azure Active Directory (Azure AD) více možností ověřování. Ověřování pomocí serveru SMS umožňuje uživatelům přihlásit se, aniž by museli znát uživatelské jméno a heslo. Po vytvoření účtu správcem identity můžou jejich telefonní číslo zadat na příkazovém řádku pro přihlášení. Obdrží ověřovací kód přes textovou zprávu, kterou můžou poskytnout k dokončení přihlášení. Tato metoda ověřování zjednodušuje přístup k aplikacím a službám, zejména pro prvotní pracovní procesy.
 
 V tomto článku se dozvíte, jak povolit ověřování pomocí serveru SMS pro vybrané uživatele nebo skupiny v Azure AD.
 

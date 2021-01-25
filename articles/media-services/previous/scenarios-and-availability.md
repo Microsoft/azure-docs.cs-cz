@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/3/2020
 ms.author: inhenkel
-ms.openlocfilehash: 001c535a2b39898673f2d587ee807d43b4d5f60a
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: d195ad6715c47b9b4c14dc2e65ba1d07ebf79ce8
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348538"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696257"
 ---
 # <a name="microsoft-azure-media-services-common-scenarios"></a>Microsoft Azure Media Services běžných scénářů
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. Podívejte se na nejnovější verzi [Media Services V3](../latest/media-services-overview.md). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> Do Media Services v2 se nepřidávají žádné nové funkce. Podívejte se na nejnovější verzi [Media Services V3](../latest/media-services-overview.md). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-v-2-v-3-migration-introduction.md) .
 
 Microsoft Azure Media Services (AMS) umožňuje bezpečně nahrávat, ukládat, kódovat a balit obsah (video nebo zvuk) doručovaný na vyžádání i živě streamovaný různým klientům (například do televizí, počítačů a mobilních zařízení).
 
@@ -128,11 +128,11 @@ Služba Media Services podporuje integraci s Azure CDN. Informace o povolení Az
 
 Zákazníci AMS můžou ve svých účtech AMS škálovat koncové body streamování, zpracování médií a úložiště.
 
-* Zákazníci Media Services si můžou zvolit koncový bod streamování **Standard** , nebo koncový bod streamování **Premium**. Koncový bod streamování **Standard** je vhodný pro většinu úloh streamování. Zahrnuje stejné funkce jako koncové body streamování **Premium** a automaticky škáluje šířku odchozího pásma.
+* Zákazníci Media Services si můžou zvolit koncový bod streamování **Standard**, nebo koncový bod streamování **Premium**. Koncový bod streamování **Standard** je vhodný pro většinu úloh streamování. Zahrnuje stejné funkce jako koncové body streamování **Premium** a automaticky škáluje šířku odchozího pásma.
 
-    Koncové body streamování **Premium** jsou vhodné pro pokročilé úlohy a poskytují vyhrazenou a škálovatelnou kapacitu šířky pásma. Zákazníci, kteří mají koncový bod streamování **Premium** , ve výchozím nastavení získají jednu jednotku streamování (SU). Koncový bod streamování je možné škálovat přidáním jednotek streamování. Každá jednotka streamování poskytuje aplikaci další kapacitu šířky pásma. Další informace o škálování koncových bodů streamování **Premium** najdete v tématu [Škálování koncových bodů streamování](media-services-portal-scale-streaming-endpoints.md).
+    Koncové body streamování **Premium** jsou vhodné pro pokročilé úlohy a poskytují vyhrazenou a škálovatelnou kapacitu šířky pásma. Zákazníci, kteří mají koncový bod streamování **Premium**, ve výchozím nastavení získají jednu jednotku streamování (SU). Koncový bod streamování je možné škálovat přidáním jednotek streamování. Každá jednotka streamování poskytuje aplikaci další kapacitu šířky pásma. Další informace o škálování koncových bodů streamování **Premium** najdete v tématu [Škálování koncových bodů streamování](media-services-portal-scale-streaming-endpoints.md).
 
-* Účet Media Services je přidružený k typu rezervované jednotky, který určuje rychlost zpracování vašich úloh zpracování médií. Můžete si vybrat mezi následujícími typy rezervovaných jednotek: **S1** , **S2** nebo **S3**. Například stejná úloha kódování bude rychlejší, když použijete typ rezervované jednotky **S2** , než kdybyste použili typ **S1**.
+* Účet Media Services je přidružený k typu rezervované jednotky, který určuje rychlost zpracování vašich úloh zpracování médií. Můžete si vybrat mezi následujícími typy rezervovaných jednotek: **S1**, **S2** nebo **S3**. Například stejná úloha kódování bude rychlejší, když použijete typ rezervované jednotky **S2**, než kdybyste použili typ **S1**.
 
     Kromě určení typu rezervované jednotky můžete určit, že se má účet zřídit pomocí **rezervovaných jednotek** (ru). Počet zřízených RU určuje počet úloh médií, které je možné v daném účtu zpracovávat současně.
 

@@ -3,12 +3,12 @@ title: Osvědčené postupy pro šablony
 description: Popisuje doporučené přístupy k vytváření Azure Resource Manager šablon (šablon ARM). Nabízí návrhy, aby se předešlo běžným problémům při používání šablon.
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: 85d58098508d5ac7cad6c1cb3cb68ad6c7f179f9
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: c0b26c300a9474cc5db0b1a7b732c4416a9e6f5f
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724982"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696342"
 ---
 # <a name="arm-template-best-practices"></a>Osvědčené postupy pro šablonu ARM
 
@@ -26,7 +26,7 @@ Máte také omezení:
 * 64 výstupní hodnoty
 * 24 576 znaků ve výrazu šablony
 
-Můžete překročit několik omezení šablon pomocí vnořené šablony. Další informace najdete v tématu [použití propojených a vnořených šablon při nasazování prostředků Azure](linked-templates.md). Chcete-li snížit počet parametrů, proměnných nebo výstupů, můžete zkombinovat několik hodnot do objektu. Další informace najdete v tématu [objekty jako parametry](/azure/architecture/building-blocks/extending-templates/objects-as-parameters).
+Můžete překročit několik omezení šablon pomocí vnořené šablony. Další informace najdete v tématu [použití propojených a vnořených šablon při nasazování prostředků Azure](linked-templates.md). Chcete-li snížit počet parametrů, proměnných nebo výstupů, můžete zkombinovat několik hodnot do objektu. Další informace najdete v tématu [objekty jako parametry](/azure/architecture/guide/azure-resource-manager/advanced-templates/objects-as-parameters).
 
 ## <a name="resource-group"></a>Skupina prostředků
 
