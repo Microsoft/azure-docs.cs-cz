@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/08/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: d858474eca34243a007d0d0ac1e023a4a0fab8ec
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: 53be2f6795593bf44cafde149242b13ed4fdfe50
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98572336"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790473"
 ---
 # <a name="text-to-speech-rest-api"></a>Rozhraní REST API pro převod textu na řeč
 
@@ -45,10 +45,10 @@ Než začnete používat toto rozhraní API, pochopte:
 
 ### <a name="regions-and-endpoints"></a>Oblasti a koncové body
 
-| Oblast | Koncový bod |
+| Region (Oblast) | Koncový bod |
 |--------|----------|
 | Austrálie – východ | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| Brazil South | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Brazílie – jih | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Střední Kanada | `https://canadacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA – střed | `https://centralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Východní Asie | `https://eastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
@@ -56,15 +56,13 @@ Než začnete používat toto rozhraní API, pochopte:
 | USA – východ 2 | `https://eastus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Francie – střed | `https://francecentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Indie – střed | `https://centralindia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| Japan East | `https://japaneast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Japonsko – východ | `https://japaneast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Jižní Korea – střed | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA – středosever | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Severní Evropa | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| Jižní Afrika – sever | `https://southafricanorth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Středojižní USA | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Southeast Asia | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Spojené království – jih | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| USA – středozápad | `https://westcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | West Europe | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA – západ | `https://westus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Západní USA 2 | `https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
@@ -279,5 +277,5 @@ Pokud je stav HTTP `200 OK` , tělo odpovědi obsahuje zvukový soubor v požado
 ## <a name="next-steps"></a>Další kroky
 
 - [Vytvoření bezplatného účtu Azure](https://azure.microsoft.com/free/cognitive-services/)
-- [Asynchronní syntéza pro dlouhý formát zvuku](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
+- [Asynchronní syntéza pro dlouhý formát zvuku](./long-audio-api.md)
 - [Začínáme se službou Custom Voice](how-to-custom-voice.md)

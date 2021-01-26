@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 11/04/2020
 ms.author: tisande
-ms.openlocfilehash: c78e15a0656abd510bbc241d39ffd026afddfd96
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: c687b5b18c9cf7b0920b23f49e3c7a2607e0a89f
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353659"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791016"
 ---
 # <a name="getting-started-with-sql-queries"></a>Začínáme s příkazy jazyka SQL
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -187,7 +187,7 @@ Předchozí příklady ukazují několik aspektů Cosmos DB dotazovacího jazyka
 
 * Azure Cosmos DB podporuje pouze striktní položky JSON. Systém typů a výrazy jsou omezené tak, aby pracovaly pouze s typy JSON. Další informace najdete v tématu [specifikace JSON](https://www.json.org/).  
 
-* Kontejner Cosmos je kolekce položek JSON bez schématu. Vztahy v rámci a napříč položkami kontejneru jsou implicitně zachyceny omezením, nikoli podle primárního klíče a vztahů cizího klíče. Tato funkce je důležitá pro spojení uvnitř položky, která jsou popsána dále v tomto článku.
+* Kontejner Cosmos je kolekce položek JSON bez schématu. Vztahy v rámci a napříč položkami kontejneru jsou implicitně zachyceny omezením, nikoli podle primárního klíče a vztahů cizího klíče. Tato funkce je důležitá pro spojení uvnitř položky, která jsou popsána v tématu [joins in Azure Cosmos DB](sql-query-join.md).
 
 ## <a name="next-steps"></a>Další kroky
 

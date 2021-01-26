@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 5025c4ad81433b6eb18f5beded860625791ffce5
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 4747c958b5e592458c14bbf4244953564c252678
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445094"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790119"
 ---
 # <a name="about-azure-key-vault"></a>Informace o službě Azure Key Vault
 
@@ -25,7 +25,7 @@ Azure Key Vault pomáhá vyřešit následující problémy:
 - **Správa klíčů** – Azure Key Vault se dá použít taky jako řešení pro správu klíčů. Azure Key Vault usnadňuje vytváření a správu šifrovacích klíčů sloužících k šifrování dat. 
 - **Správa certifikátů** – Azure Key Vault je taky služba, která umožňuje snadno zřídit, spravovat a nasazovat veřejné a soukromé certifikáty TLS/SSL (Transport Layer Security/SSL (Secure Sockets Layer)) pro použití s Azure a vašimi interními připojenými prostředky.
 
-Azure Key Vault má dvě úrovně služeb: Standard, který šifruje pomocí softwarového klíče a úrovně Premium, která zahrnuje klíče chráněné HSM. Porovnání mezi úrovněmi Standard a Premium najdete na [stránce s cenami Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/).
+Azure Key Vault má dvě úrovně služeb: Standard, který šifruje pomocí softwarového klíče a úrovně Premium, která zahrnuje klíče chráněné modulem hardwarového zabezpečení (HSM). Porovnání mezi úrovněmi Standard a Premium najdete na [stránce s cenami Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/).
 
 ## <a name="why-use-azure-key-vault"></a>Proč používat Azure Key Vault?
 

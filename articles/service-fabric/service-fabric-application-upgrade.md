@@ -3,18 +3,18 @@ title: Upgrade aplikace Service Fabric
 description: Tento článek obsahuje úvod k upgradu aplikace Service Fabric, včetně výběru režimů upgradu a provádění kontrol stavu.
 ms.topic: conceptual
 ms.date: 8/5/2020
-ms.openlocfilehash: 8eecd923b009ecbe9f4e607ad57a99b3f20955b9
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: f3fad8d0ede92004706d9a1f4e14353715361b63
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309856"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98792010"
 ---
 # <a name="service-fabric-application-upgrade"></a>Upgrade aplikace Service Fabric
 Aplikace Azure Service Fabric je kolekce služeb. Během upgradu Service Fabric porovná nový [manifest aplikace](service-fabric-application-and-service-manifests.md) s předchozí verzí a určí, které služby v aplikaci vyžadují aktualizace. Service Fabric porovná čísla verzí v manifestech služby s čísly verzí v předchozí verzi. Pokud se služba nezměnila, tato služba se neupgraduje.
 
 > [!NOTE]
-> [ApplicationParameter](/dotnet/api/system.fabric.description.applicationdescription.applicationparameters?view=azure-dotnet#System_Fabric_Description_ApplicationDescription_ApplicationParameters)s se nezachovají v rámci upgradu aplikace. Aby bylo možné zachovat aktuální parametry aplikace, uživatel by měl nejprve načíst parametry a předat je do volání rozhraní API pro upgrade, jak je znázorněno níže:
+> [ApplicationParameter](/dotnet/api/system.fabric.description.applicationdescription.applicationparameters#System_Fabric_Description_ApplicationDescription_ApplicationParameters)s se nezachovají v rámci upgradu aplikace. Aby bylo možné zachovat aktuální parametry aplikace, uživatel by měl nejprve načíst parametry a předat je do volání rozhraní API pro upgrade, jak je znázorněno níže:
 ```powershell
 $myApplication = Get-ServiceFabricApplication -ApplicationName fabric:/myApplication
 $appParamCollection = $myApplication.ApplicationParameters
@@ -52,7 +52,7 @@ Režim, který doporučujeme pro upgrade aplikace, je monitorovaný režim, což
 Nemonitorovaný ruční režim potřebuje ruční zásah po každém upgradu v aktualizační doméně pro zahájení upgradu v další aktualizační doméně. Neprovádí se žádné Service Fabric kontroly stavu. Správce provede kontrolu stavu nebo stavu před zahájením upgradu v další aktualizační doméně.
 
 ## <a name="upgrade-default-services"></a>Upgrade výchozích služeb
-Některé výchozí parametry služby definované v [manifestu aplikace](service-fabric-application-and-service-manifests.md) je také možné upgradovat jako součást upgradu aplikace. V rámci upgradu lze změnit pouze parametry služby, které podporují změnu prostřednictvím [Update-ServiceFabricService](/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) . Chování při změně výchozích služeb během upgradu aplikace je následující:
+Některé výchozí parametry služby definované v [manifestu aplikace](service-fabric-application-and-service-manifests.md) je také možné upgradovat jako součást upgradu aplikace. V rámci upgradu lze změnit pouze parametry služby, které podporují změnu prostřednictvím [Update-ServiceFabricService](/powershell/module/servicefabric/update-servicefabricservice) . Chování při změně výchozích služeb během upgradu aplikace je následující:
 
 1. Vytvoří se výchozí služby v manifestu nové aplikace, které v clusteru ještě neexistují.
 2. Výchozí služby, které existují v předchozích i nových manifestech aplikace, jsou aktualizovány. Parametry výchozí služby v manifestu nové aplikace přepíšou parametry existující služby. Upgrade aplikace bude automaticky vrácen, pokud se nezdaří aktualizace výchozí služby.
@@ -64,14 +64,14 @@ Když se upgrade aplikace vrátí zpátky, výchozí parametry služby se vrát�
 > Nastavení konfigurace clusteru [EnableDefaultServicesUpgrade](service-fabric-cluster-fabric-settings.md) musí mít *hodnotu true* , aby bylo možné povolit pravidla 2) a 3) výše (výchozí aktualizace služby a odstranění). Tato funkce je podporovaná od verze Service Fabric 5,5.
 
 ## <a name="upgrading-multiple-applications-with-https-endpoints"></a>Upgrade více aplikací s koncovými body HTTPS
-Při použití HTTP**S**musíte být opatrní, nepoužívejte **stejný port** pro různé instance stejné aplikace. Důvodem je to, že Service Fabric nebude moci upgradovat certifikát pro jednu z instancí aplikace. Například pokud aplikace 1 nebo aplikace 2 bude chtít upgradovat svůj certifikát 1 na CERT 2. Když dojde k upgradu, Service Fabric pravděpodobně vyčistil registraci certifikátu 1 s http.sys, i když ji jiná aplikace stále používá. Chcete-li tomu zabránit, Service Fabric zjistí, že na portu s certifikátem již je registrována jiná instance aplikace (z důvodu http.sys) a operace se nezdařila.
+Při použití HTTP **S** musíte být opatrní, nepoužívejte **stejný port** pro různé instance stejné aplikace. Důvodem je to, že Service Fabric nebude moci upgradovat certifikát pro jednu z instancí aplikace. Například pokud aplikace 1 nebo aplikace 2 bude chtít upgradovat svůj certifikát 1 na CERT 2. Když dojde k upgradu, Service Fabric pravděpodobně vyčistil registraci certifikátu 1 s http.sys, i když ji jiná aplikace stále používá. Chcete-li tomu zabránit, Service Fabric zjistí, že na portu s certifikátem již je registrována jiná instance aplikace (z důvodu http.sys) a operace se nezdařila.
 
 Proto Service Fabric nepodporuje upgrade dvou různých služeb pomocí **stejného portu** v různých instancích aplikace. Jinými slovy, nemůžete použít stejný certifikát pro různé služby na stejném portu. Pokud potřebujete mít sdílený certifikát na stejném portu, musíte zajistit, aby se služby nastavily na různých počítačích s omezením umístění. Nebo zvažte použití Service Fabric dynamické porty, pokud je to možné pro každou službu v každé instanci aplikace. 
 
 Pokud se zobrazí zpráva o selhání upgradu s protokolem HTTPS, zobrazí se upozornění, že rozhraní API systému Windows HTTP server nepodporuje více certifikátů pro aplikace, které sdílejí port. "
 
 ## <a name="application-upgrade-flowchart"></a>Vývojový diagram upgradu aplikace
-Vývojový diagram následující tento odstavec vám pomůže pochopit proces upgradu aplikace Service Fabric. Tento tok zejména popisuje, jak časové limity, včetně *HealthCheckStableDuration*, *HealthCheckRetryTimeout*a *UpgradeHealthCheckInterval*, pomůžou řídit, kdy se upgrade v jedné aktualizační doméně považuje za úspěšný nebo neúspěšný.
+Vývojový diagram následující tento odstavec vám pomůže pochopit proces upgradu aplikace Service Fabric. Tento tok zejména popisuje, jak časové limity, včetně *HealthCheckStableDuration*, *HealthCheckRetryTimeout* a *UpgradeHealthCheckInterval*, pomůžou řídit, kdy se upgrade v jedné aktualizační doméně považuje za úspěšný nebo neúspěšný.
 
 ![Proces upgradu aplikace Service Fabric][image]
 

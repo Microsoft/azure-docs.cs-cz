@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: e1871df962a26def8c12000f8b8bc0cf31bae9a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1df5d033701195f4fe5f6b7174f3883b84393ab
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86247655"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791269"
 ---
 # <a name="application-logging"></a>Protokolování aplikací
 
@@ -22,7 +22,7 @@ Příklady použití těchto návrhů najdete v tématu [Přidání protokolová
 
 ## <a name="application-insights-sdk"></a>Sada Application Insights SDK
 
-Application Insights má bohatou integraci s Service Fabric vycházejícími z boxu. Uživatelé můžou přidávat balíčky NuGet Service Fabric AI a přijímat data a protokoly vytvořené a shromážděné v Azure Portal. Kromě toho se uživatelům doporučuje přidat vlastní telemetrii, aby bylo možné diagnostikovat a ladit své aplikace a sledovat, které služby a části jejich aplikace jsou používány nejvíc. Třída [TelemetryClient](/dotnet/api/microsoft.applicationinsights.telemetryclient?view=azure-dotnet) v sadě SDK poskytuje mnoho způsobů, jak sledovat telemetrii ve vašich aplikacích. Podívejte se na příklad, jak instrumentovat a přidat Application Insights do aplikace v našem kurzu pro [monitorování a diagnostiku aplikace .NET](service-fabric-tutorial-monitoring-aspnet.md) .
+Application Insights má bohatou integraci s Service Fabric vycházejícími z boxu. Uživatelé můžou přidávat balíčky NuGet Service Fabric AI a přijímat data a protokoly vytvořené a shromážděné v Azure Portal. Kromě toho se uživatelům doporučuje přidat vlastní telemetrii, aby bylo možné diagnostikovat a ladit své aplikace a sledovat, které služby a části jejich aplikace jsou používány nejvíc. Třída [TelemetryClient](/dotnet/api/microsoft.applicationinsights.telemetryclient) v sadě SDK poskytuje mnoho způsobů, jak sledovat telemetrii ve vašich aplikacích. Podívejte se na příklad, jak instrumentovat a přidat Application Insights do aplikace v našem kurzu pro [monitorování a diagnostiku aplikace .NET](service-fabric-tutorial-monitoring-aspnet.md) .
 
 ## <a name="eventsource"></a>EventSource
 

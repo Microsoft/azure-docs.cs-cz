@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
 ms.custom: devx-track-js
-ms.openlocfilehash: fd04e5a7f084de7a95f20b54b99a9e4590f10cd7
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 7df9f7d072af7c5f6523fd1be0432ce51954fa10
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98034760"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791875"
 ---
 # <a name="call-functions-from-azure-logic-apps"></a>Volat funkce z Azure Logic Apps
 
@@ -31,7 +31,7 @@ Chcete-li spustit fragmenty kódu bez použití Azure Functions, přečtěte si,
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
-* Aplikace Function App, která je kontejnerem pro funkci vytvořenou v Azure Functions společně s funkcí, kterou vytvoříte. Pokud nemáte aplikaci Function App, [vytvořte nejdřív aplikaci Function App](../azure-functions/functions-create-first-azure-function.md). Pak můžete vytvořit svou funkci buď mimo vaši aplikaci logiky, v Azure Portal, nebo [z aplikace logiky](#create-function-designer) v návrháři aplikace logiky.
+* Aplikace Function App, která je kontejnerem pro funkci vytvořenou v Azure Functions společně s funkcí, kterou vytvoříte. Pokud nemáte aplikaci Function App, [vytvořte nejdřív aplikaci Function App](../azure-functions/functions-get-started.md). Pak můžete vytvořit svou funkci buď mimo vaši aplikaci logiky, v Azure Portal, nebo [z aplikace logiky](#create-function-designer) v návrháři aplikace logiky.
 
 * Při práci s Logic Apps platí stejné požadavky i pro aplikace Function App a funkce bez ohledu na to, jestli jsou existující nebo nové:
 
@@ -102,9 +102,9 @@ Teď, když jste vytvořili funkci v Azure, postupujte podle pokynů pro [Přid�
 
 ## <a name="create-functions-inside-logic-apps"></a>Vytváření funkcí v Logic Apps
 
-Můžete vytvořit funkce přímo z pracovního postupu aplikace logiky pomocí předdefinované Azure Functions akce v návrháři aplikace logiky, ale tuto metodu lze použít pouze pro funkce napsané v jazyce JavaScript. Pro jiné jazyky můžete vytvářet funkce prostřednictvím Azure Functionsho prostředí v Azure Portal. Další informace najdete v tématu [Vytvoření první funkce v Azure Portal](../azure-functions/functions-create-first-azure-function.md).
+Můžete vytvořit funkce přímo z pracovního postupu aplikace logiky pomocí předdefinované Azure Functions akce v návrháři aplikace logiky, ale tuto metodu lze použít pouze pro funkce napsané v jazyce JavaScript. Pro jiné jazyky můžete vytvářet funkce prostřednictvím Azure Functionsho prostředí v Azure Portal. Další informace najdete v tématu [Vytvoření první funkce v Azure Portal](../azure-functions/functions-get-started.md).
 
-Než ale budete moct vytvořit funkci v Azure, musíte už mít aplikaci funkcí, což je kontejner pro vaše funkce. Pokud nemáte aplikaci Function App, vytvořte nejprve tuto aplikaci Function App. Další informace najdete [v tématu Vytvoření první funkce v Azure Portal](../azure-functions/functions-create-first-azure-function.md).
+Než ale budete moct vytvořit funkci v Azure, musíte už mít aplikaci funkcí, což je kontejner pro vaše funkce. Pokud nemáte aplikaci Function App, vytvořte nejprve tuto aplikaci Function App. Další informace najdete [v tématu Vytvoření první funkce v Azure Portal](../azure-functions/functions-get-started.md).
 
 1. V [Azure Portal](https://portal.azure.com)otevřete aplikaci logiky v návrháři aplikace logiky.
 
@@ -128,7 +128,7 @@ Než ale budete moct vytvořit funkci v Azure, musíte už mít aplikaci funkcí
 
    1. V poli **kód** přidejte svůj kód do šablony funkce, včetně odpovědi a datové části, kterou chcete vrátit do vaší aplikace logiky poté, co byla funkce dokončena. Po dokončení vyberte **Vytvořit**.
 
-   Příklad:
+   Například:
 
    ![Definovat funkci](./media/logic-apps-azure-functions/add-code-function-definition.png)
 

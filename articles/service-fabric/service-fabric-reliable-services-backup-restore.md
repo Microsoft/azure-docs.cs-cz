@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: mcoskun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a60ebff06562c12415b2a106a9a11127feb94dab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2674d1285544e4bc9b6fcb3d0b2e6f4b607786a2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021982"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791607"
 ---
 # <a name="backup-and-restore-reliable-services-and-reliable-actors"></a>Zálohování a obnovení Reliable Services a Reliable Actors
 Azure Service Fabric je platforma s vysokou dostupností, která replikuje stav napříč několika uzly a udržuje tak vysokou dostupnost.  Proto i v případě, že jeden uzel v clusteru dojde k chybě, služby budou nadále k dispozici. I když je tato integrovaná redundance poskytovaná platformou dostatečná, může být v některých případech žádoucí, aby služba mohla zálohovat data (do externího úložiště).
@@ -150,7 +150,7 @@ Například pokud obsahuje úplnou zálohu, první přírůstkové a třetí př
 > 
 
 ## <a name="deleted-or-lost-service"></a>Odstraněná nebo ztracená služba
-Je-li služba odebrána, je nutné nejprve znovu vytvořit službu, aby bylo možné data obnovit.  Je důležité vytvořit službu se stejnou konfigurací, například pomocí schématu dělení, aby bylo možné data snadno obnovit.  Jakmile je služba spuštěná, `OnDataLossAsync` musí se v každém oddílu této služby vyvolávat rozhraní API pro obnovení dat (výše). Jedním ze způsobů, jak toho dosáhnout, je použít [FabricClient. TestManagementClient. StartPartitionDataLossAsync](/dotnet/api/system.fabric.fabricclient.testmanagementclient?view=azure-dotnet#System_Fabric_FabricClient_TestManagementClient_StartPartitionDataLossAsync_System_Guid_System_Fabric_PartitionSelector_System_Fabric_DataLossMode_) na každém oddílu.  
+Je-li služba odebrána, je nutné nejprve znovu vytvořit službu, aby bylo možné data obnovit.  Je důležité vytvořit službu se stejnou konfigurací, například pomocí schématu dělení, aby bylo možné data snadno obnovit.  Jakmile je služba spuštěná, `OnDataLossAsync` musí se v každém oddílu této služby vyvolávat rozhraní API pro obnovení dat (výše). Jedním ze způsobů, jak toho dosáhnout, je použít [FabricClient. TestManagementClient. StartPartitionDataLossAsync](/dotnet/api/system.fabric.fabricclient.testmanagementclient#System_Fabric_FabricClient_TestManagementClient_StartPartitionDataLossAsync_System_Guid_System_Fabric_PartitionSelector_System_Fabric_DataLossMode_) na každém oddílu.  
 
 Od tohoto okamžiku je implementace stejná jako u výše uvedeného scénáře. Každý oddíl musí obnovit poslední relevantní zálohu z externího úložiště. Jedna výstraha znamená, že ID oddílu se teď může změnit, protože modul runtime vytvoří ID oddílů dynamicky. Proto služba potřebuje Uložit příslušné informace o oddílu a název služby k identifikaci správné poslední zálohy pro obnovení pro každý oddíl.
 
@@ -259,5 +259,5 @@ Dokud služba toto rozhraní API úspěšně dokončí (vrátí hodnotu true neb
   - [Rychlý Start Reliable Services](service-fabric-reliable-services-quick-start.md)
   - [Oznámení Reliable Services](service-fabric-reliable-services-notifications.md)
   - [Konfigurace Reliable Services](service-fabric-reliable-services-configuration.md)
-  - [Referenční informace pro vývojáře pro spolehlivé kolekce](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)
+  - [Referenční informace pro vývojáře pro spolehlivé kolekce](/dotnet/api/microsoft.servicefabric.data.collections#microsoft_servicefabric_data_collections)
   - [Pravidelné zálohování a obnovení v Azure Service Fabric](service-fabric-backuprestoreservice-quickstart-azurecluster.md)

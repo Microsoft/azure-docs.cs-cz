@@ -3,12 +3,12 @@ title: Nasazení aplikace .NET v kontejneru do Azure Service Fabric
 description: Podívejte se, jak kontejnerizovat existující aplikaci .NET pomocí sady Visual Studio a jak místně ladit kontejnery v Service Fabricu. Kontejnerizovaná aplikace se odešle do registru kontejneru Azure a nasadí se do clusteru Service Fabricu. Po nasazení do Azure používá aplikace k uchovávání dat databázi SQL Azure.
 ms.topic: tutorial
 ms.date: 07/08/2019
-ms.openlocfilehash: 8be9de495fa6bc5689a2dba5384f5df3112cbb38
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 85e9b553000c52131c04502d496aa050b73d6d8a
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96485515"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791658"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Kurz: Nasazení aplikace .NET v kontejneru Windows do Azure Service Fabricu
 
@@ -25,13 +25,14 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-1. Pokud nemáte předplatné Azure, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
-2. Nainstalujte [Docker CE pro Windows](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description), abyste mohli spouštět kontejnery ve Windows 10.
-3. Nainstalujte [modul runtime Service Fabric 6.2 nebo novější](service-fabric-get-started.md) a [sadu Service Fabric SDK 3.1](service-fabric-get-started.md) nebo novější.
-4. Nainstalujte [Visual Studio 2019 verze 16,1](https://www.visualstudio.com/) nebo novější s úlohami vývoje pro vývoj a **ASP.NET a webový vývoj** pro **Azure** .
-5. Nainstalovat [Azure PowerShell][link-azure-powershell-install]
+1. Pokud nemáte předplatné Azure, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+2. Povolte funkce Windows **Hyper-V** a **kontejnery**.
+3. Nainstalujte [Docker CE pro Windows](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description), abyste mohli spouštět kontejnery ve Windows 10.
+4. Nainstalujte [modul runtime Service Fabric 6.2 nebo novější](service-fabric-get-started.md) a [sadu Service Fabric SDK 3.1](service-fabric-get-started.md) nebo novější.
+5. Nainstalujte [Visual Studio 2019 verze 16,1](https://www.visualstudio.com/) nebo novější s úlohami vývoje pro vývoj a **ASP.NET a webový vývoj** pro **Azure** .
+6. Nainstalovat [Azure PowerShell][link-azure-powershell-install]
 
 ## <a name="download-and-run-fabrikam-fiber-callcenter"></a>Stažení a spuštění aplikace Fabrikam Fiber CallCenter
 
@@ -40,16 +41,6 @@ V tomto kurzu se naučíte:
 2. Ověřte, že se aplikace Fabrikam Fiber CallCenter sestavila a spustila bez chyb.  Spusťte sadu Visual Studio jako **správce** a otevřete soubor [FabrikamFiber.CallCenter.sln][link-fabrikam-github].  Po stisknutí klávesy F5 proběhne ladění a spuštění aplikace.
 
    ![Snímek obrazovky domovské stránky aplikace Fabrikam Fiber CallCenter spuštěné na místním hostiteli. Stránka zobrazuje řídicí panel se seznamem volání podpory.][fabrikam-web-page]
-
-## <a name="containerize-the-application"></a>Kontejnerizace aplikace
-
-1. Klikněte pravým tlačítkem na projekt **FabrikamFiber.Web** > **Přidat** > **Podpora orchestrátoru kontejnerů**.  Vyberte **Service Fabric** jako orchestrátor kontejnerů a klikněte na **OK**.
-
-2. Pokud se zobrazí výzva, klikněte na **Ano** a teď přepnete Docker na kontejnery Windows.
-
-   V řešení se vytvoří nový projekt aplikace Service Fabric **FabrikamFiber.CallCenterApplication**.  Do existujícího projektu **FabrikamFiber.Web** se přidá soubor Docker.  Do projektu **FabrikamFiber.Web** se také přidá adresář **PackageRoot**, který obsahuje manifest služby a nastavení pro novou službu FabrikamFiber.Web.
-
-   Kontejner je teď připravený k sestavení a zabalení do aplikace Service Fabric. Jakmile na svém počítači budete mít sestavenou image kontejneru, můžete ji nasdílet do jakéhokoli registru kontejnerů a stáhnout a spustit na jakémkoli hostiteli.
 
 ## <a name="create-an-azure-sql-db"></a>Vytvoření databáze SQL Azure
 
@@ -120,9 +111,42 @@ Vraťte se do projektu **FabrikamFiber.Web** a aktualizujte připojovací řetě
 >[!NOTE]
 >Pro účely místního ladění můžete použít jakýkoli SQL Server, kterému dáváte přednost, pokud je dostupný z vašeho hostitele. Nicméně **localdb** nepodporuje komunikaci `container -> host`. Pokud při sestavování vaší webové aplikace pro vydání chcete použít jinou databázi SQL, přidejte do souboru *web.release.config* další připojovací řetězec.
 
+## <a name="containerize-the-application"></a>Kontejnerizace aplikace
+
+1. Klikněte pravým tlačítkem na projekt **FabrikamFiber.Web** > **Přidat** > **Podpora orchestrátoru kontejnerů**.  Vyberte **Service Fabric** jako orchestrátor kontejnerů a klikněte na **OK**.
+
+2. Pokud se zobrazí výzva, klikněte na **Ano** a teď přepnete Docker na kontejnery Windows.
+
+   V řešení se vytvoří nový projekt aplikace Service Fabric **FabrikamFiber.CallCenterApplication**.  Do existujícího projektu **FabrikamFiber.Web** se přidá soubor Docker.  Do projektu **FabrikamFiber.Web** se také přidá adresář **PackageRoot**, který obsahuje manifest služby a nastavení pro novou službu FabrikamFiber.Web.
+
+   Kontejner je teď připravený k sestavení a zabalení do aplikace Service Fabric. Jakmile na svém počítači budete mít sestavenou image kontejneru, můžete ji nasdílet do jakéhokoli registru kontejnerů a stáhnout a spustit na jakémkoli hostiteli.
+
 ## <a name="run-the-containerized-application-locally"></a>Místní spuštění kontejnerizované aplikace
 
 Když stisknete klávesu **F5**, proběhne ladění a spuštění aplikace v kontejneru v místním vývojovém clusteru Service Fabricu. Pokud se vám zobrazí okno se zprávou žádající o udělení oprávnění ke čtení a spouštění vašeho adresáře projektu sady Visual Studio pro skupinu ServiceFabricAllowedUsers, klikněte na **Ano**.
+
+Pokud příkaz F5 spustí výjimku, například následující, pak nebyla do brány firewall databáze Azure přidána správná IP adresa.
+
+```text
+System.Data.SqlClient.SqlException
+HResult=0x80131904
+Message=Cannot open server 'fab-fiber-751718376' requested by the login. Client with IP address '123.456.789.012' is not allowed to access the server.  To enable access, use the Windows Azure Management Portal or run sp_set_firewall_rule on the master database to create a firewall rule for this IP address or address range.  It may take up to five minutes for this change to take effect.
+Source=.Net SqlClient Data Provider
+StackTrace:
+<Cannot evaluate the exception stack trace>
+```
+
+Pokud chcete do brány firewall Azure Database přidat příslušnou IP adresu, spusťte následující příkaz.
+
+```powershell
+# The IP address of your development computer that accesses the SQL DB.
+$clientIPNew = "<client IP from the Error Message>"
+
+# Create the firewall rule to allow your development computer to access the server.
+New-AzSqlServerFirewallRule -ResourceGroupName $dbresourcegroupname `
+    -ServerName $servername `
+    -FirewallRuleName "AllowClientNew" -StartIpAddress $clientIPNew -EndIpAddress $clientIPNew
+```
 
 ## <a name="create-a-container-registry"></a>Vytvoření registru kontejneru
 
@@ -144,14 +168,14 @@ $registry = New-AzContainerRegistry -ResourceGroupName $acrresourcegroupname -Na
 
 Aplikace Service Fabric se spouští v clusteru, což je síťově propojená sada virtuálních nebo fyzických počítačů.  Než budete moct nasadit aplikaci do Azure, vytvořte v Azure Cluster Service Fabric.
 
-Máte následující možnosti:
+Další možnosti:
 
 * Vytvořit testovací cluster v sadě Visual Studio. Tato možnost umožňuje vytvořit zabezpečený cluster přímo ze sady Visual Studio s použitím upřednostňované konfigurace.
 * [Vytvořit zabezpečený cluster ze šablony](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 
 V tomto kurzu vytvoříte cluster v sadě Visual Studio, což je nejvhodnější scénář pro účely testování. Pokud vytvoříte cluster jiným způsobem nebo použijete existující cluster, můžete zkopírovat a vložit svůj koncový bod připojení nebo ho zvolit ze svého předplatného.
 
-Než začnete, otevřete FabrikamFiber. Web->PackageRoot->ServiceManifest.xml v Průzkumník řešení. Poznamenejte si port pro webový front-end, který je uvedený v **koncovém bodu**.
+Než začnete, otevřete FabrikamFiber. Web-> PackageRoot-> ServiceManifest.xml v Průzkumník řešení. Poznamenejte si port pro webový front-end, který je uvedený v **koncovém bodu**.
 
 Při vytváření clusteru:
 
@@ -166,6 +190,9 @@ Při vytváření clusteru:
 
     c. Vyberte kartu **certifikát** . Na této kartě zadejte heslo, které chcete použít k zabezpečení certifikátu vašeho clusteru. Tento certifikát pomáhá zabezpečit váš cluster. Můžete také upravit cestu, kam chcete certifikát uložit. Sada Visual Studio může také importovat certifikát za vás, protože se jedná o požadovaný krok pro publikování aplikace do clusteru.
 
+    >[!NOTE]
+    >Poznamenejte si cestu ke složce, do které se tento certifikát naimportuje. Dalším krokem po vytvoření clusteru je import tohoto certifikátu.
+
     d. Vyberte kartu **Podrobnosti o virtuálním počítači** . Zadejte heslo, které chcete použít pro Virtual Machines (virtuální počítač), který tvoří cluster. Pomocí uživatelského jména a hesla je možné se vzdáleně připojit k virtuálním počítačům. Musíte také vybrat velikost virtuálních počítačů a v případě potřeby změnit image virtuálního počítače.
 
     > [!IMPORTANT]
@@ -176,6 +203,12 @@ Při vytváření clusteru:
     f. Až dokončíte úpravy nastavení, vyberte tlačítko **Vytvořit**.
 
 5. Vytvoření trvá několik minut. Po úplném vytvoření clusteru se zobrazí oznámení v okně výstupu.
+
+## <a name="install-the-imported-certificate"></a>Nainstalovat importovaný certifikát
+
+Nainstalujte certifikát importovaný jako součást kroku vytvoření clusteru, do umístění **aktuálního úložiště uživatele** a zadejte heslo k privátnímu klíči, které jste zadali.
+
+Instalaci můžete potvrdit otevřením **možnosti spravovat certifikáty uživatelů** v Ovládacích panelech a potvrzením, že certifikát je nainstalovaný v části **certifikáty –**  ->  **osobní**  ->  **certifikáty** uživatele. Certifikát by měl být jako *[název clusteru]*. *[Umístění clusteru]*. cloudapp.Azure.com, např. *fabrikamfibercallcenter.southcentralus.cloudapp.Azure.com*. 
 
 ## <a name="allow-your-application-running-in-azure-to-access-sql-database"></a>Umožněte aplikaci běžící v Azure přístup k SQL Database
 
@@ -233,9 +266,11 @@ Aplikace je teď připravená a můžete ji nasadit do clusteru v Azure přímo 
 
 ![Publikování aplikace][publish-app]
 
-Postupujte podle pokynů k nasazení v okně výstupu. Po nasazení aplikace otevřete prohlížeč a zadejte adresu clusteru a port aplikace. Například, `https://fabrikamfibercallcenter.southcentralus.cloudapp.azure.com:8659/`.
+Postupujte podle pokynů k nasazení v okně výstupu. Po nasazení aplikace otevřete prohlížeč a zadejte adresu clusteru a port aplikace. Například `http://fabrikamfibercallcenter.southcentralus.cloudapp.azure.com:8659/`.
 
 ![Snímek obrazovky domovské stránky aplikace Fabrikam Fiber CallCenter běžící na azure.com Stránka zobrazuje řídicí panel se seznamem volání podpory.][fabrikam-web-page-deployed]
+
+Pokud se stránka nepovede načíst nebo se nedotazuje na certifikát, zkuste otevřít cestu k Průzkumníkovi, například `https://fabrikamfibercallcenter.southcentralus.cloudapp.azure.com:19080/Explorer` a vyberte nově nainstalovaný certifikát.
 
 ## <a name="set-up-continuous-integration-and-deployment-cicd-with-a-service-fabric-cluster"></a>Nastavení průběžné integrace a nasazování (CI/CD) s využitím clusteru Service Fabric
 

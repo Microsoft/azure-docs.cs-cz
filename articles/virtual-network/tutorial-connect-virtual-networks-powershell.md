@@ -15,16 +15,14 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6ec552ea525abe6a84bb5e34e00ad317cae038bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d93efaedbb0596382b0601a17098311e075618b7
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89077836"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791976"
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-powershell"></a>Propojení virtuálních sítí s využitím partnerského vztahu virtuálních sítí pomocí PowerShellu
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Virtuální sítě můžete mezi sebou propojit s využitím partnerského vztahu virtuálních sítí. Po vytvoření partnerského vztahu virtuálních sítí budou moct prostředky v obou virtuálních sítích komunikovat mezi sebou se stejnou latencí a šířkou pásma, jako kdyby byly ve stejné virtuální síti. V tomto článku získáte informace o těchto tématech:
 
@@ -33,7 +31,7 @@ Virtuální sítě můžete mezi sebou propojit s využitím partnerského vztah
 * Nasazení virtuálního počítače do obou virtuálních sítí
 * Komunikace mezi virtuálními počítači
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -188,7 +186,7 @@ Pokud se chcete připojit k virtuálnímu počítači *myVm2*, zadejte následuj
 mstsc /v:10.1.0.4
 ```
 
-Vzhledem k tomu, že jste povolili příkaz *myVm1*na virtuálním počítači, můžete ho teď pomocí příkazu na základě IP adresy na virtuálním počítači *myVm2* odeslat příkazem na něj
+Vzhledem k tomu, že jste povolili příkaz *myVm1* na virtuálním počítači, můžete ho teď pomocí příkazu na základě IP adresy na virtuálním počítači *myVm2* odeslat příkazem na něj
 
 ```
 ping 10.0.0.4

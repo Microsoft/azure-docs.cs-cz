@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 01/13/2021
 ms.author: alkohli
-ms.openlocfilehash: 91b3e2e86394c889f6fa40f527dd0dd212e1cb57
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 4c44fca7b443a4d289b7ac7e2e507a3c3f305089
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98763095"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790779"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Kurz: Objednání Azure Data Boxu
 
@@ -338,9 +338,9 @@ Chcete-li zařízení objednat, proveďte následující kroky v Azure Portal.
 
 14. Vyberte identitu uživatele, kterou budete používat ke správě přístupu k tomuto prostředku. Zvolte **Vybrat identitu uživatele**. V panelu na pravé straně vyberte předplatné a spravovanou identitu, kterou chcete použít. Pak zvolte **Vybrat**.
 
-    Spravovaná identita přiřazená uživatelem je samostatný prostředek Azure, který se dá použít ke správě několika prostředků. Další informace najdete v tématu [spravované typy identit](/azure/active-directory/managed-identities-azure-resources/overview).  
+    Spravovaná identita přiřazená uživatelem je samostatný prostředek Azure, který se dá použít ke správě několika prostředků. Další informace najdete v tématu [spravované typy identit](../active-directory/managed-identities-azure-resources/overview.md).  
 
-    Pokud potřebujete vytvořit novou spravovanou identitu, postupujte podle pokynů v části [Vytvoření, výpis, odstranění nebo přiřazení role k spravované identitě přiřazené uživatelem pomocí Azure Portal](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal).
+    Pokud potřebujete vytvořit novou spravovanou identitu, postupujte podle pokynů v části [Vytvoření, výpis, odstranění nebo přiřazení role k spravované identitě přiřazené uživatelem pomocí Azure Portal](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md).
     
     ![Vyberte identitu uživatele.](./media/data-box-deploy-ordered/customer-managed-key-10.png)
 

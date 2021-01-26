@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 12/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 9d1d22d57464266239aea96f427020351eb749d5
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 22d7ee518a458143fe25b677b680a964c538904f
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740653"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791557"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v"></a>Kurz: zřízení Azure Data Box Gateway v Hyper-V
 
@@ -83,8 +83,8 @@ K vytvoření virtuálního zařízení potřebujete:
 
 ## <a name="bitlocker-considerations"></a>Požadavky nástroje BitLocker
 
-* Doporučujeme povolit nástroj BitLocker na svém virtuálním počítači s Data Box Gateway. Ve výchozím nastavení není BitLocker povolený. Další informace najdete tady:
-  * [Nastavení podpory šifrování ve Správci technologie Hyper-V](hhttps://docs.microsoft.com/windows-server/virtualization/hyper-v/learn-more/generation-2-virtual-machine-security-settings-for-hyper-v#encryption-support-settings-in-hyper-v-manager)
+* Doporučujeme povolit nástroj BitLocker na svém virtuálním počítači s Data Box Gateway. Ve výchozím nastavení není BitLocker povolený. Další informace naleznete v tématu:
+  * [Nastavení podpory šifrování ve Správci technologie Hyper-V](/windows-server/virtualization/hyper-v/learn-more/generation-2-virtual-machine-security-settings-for-hyper-v#encryption-support-settings-in-hyper-v-manager)
   * [Podpora BitLockeru ve virtuálním počítači](https://kb.vmware.com/s/article/2036142)
 
 ## <a name="provision-a-virtual-device-in-hypervisor"></a>Zřízení virtuálního zařízení v hypervisoru

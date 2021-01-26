@@ -1,5 +1,5 @@
 ---
-title: Aktualizovat nebo odstranit existující Azure Load Balancer používané sadou škálování virtuálních počítačů
+title: Aktualizace nebo odstranění stávajícího Azure Load Balanceru využívaného škálovací sadou virtuálních počítačů
 titleSuffix: Update or delete existing Azure Load Balancer used by Virtual Machine Scale Set
 description: S tímto článkem se naučíte začít s Azure Standard Load Balancer a Virtual Machine Scale Sets.
 services: load-balancer
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/30/2020
 ms.author: irenehua
-ms.openlocfilehash: f8f664375e53a1cef28b0c7b95207770434f67fa
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: d5614490bfd2cfb67b6b7afd7b7b8643bbf754bd
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97893259"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790085"
 ---
 # <a name="how-to-updatedelete-azure-load-balancer-used-by-virtual-machine-scale-sets"></a>Jak aktualizovat nebo odstranit Azure Load Balancer používané v Virtual Machine Scale Sets
 
 ## <a name="how-to-set-up-azure-load-balancer-for-scaling-out-virtual-machine-scale-sets"></a>Jak nastavit Azure Load Balancer pro horizontální navýšení kapacity Virtual Machine Scale Sets
-  * Ujistěte se, že je u Load Balancer nastaven [fond příchozích adres NAT](https://docs.microsoft.com/cli/azure/network/lb/inbound-nat-pool?view=azure-cli-latest) a že sada škálování virtuálního počítače je vložená do back-endu fondu v Load Balancer. Když se do sady škálování virtuálního počítače přidají nové instance virtuálních počítačů, Azure Load Balancer se automaticky vytvoří nová pravidla příchozího překladu adres (NAT) ve fondu příchozích překladů adres (NAT). 
+  * Ujistěte se, že je u Load Balancer nastaven [fond příchozích adres NAT](/cli/azure/network/lb/inbound-nat-pool?view=azure-cli-latest) a že sada škálování virtuálního počítače je vložená do back-endu fondu v Load Balancer. Když se do sady škálování virtuálního počítače přidají nové instance virtuálních počítačů, Azure Load Balancer se automaticky vytvoří nová pravidla příchozího překladu adres (NAT) ve fondu příchozích překladů adres (NAT). 
   * Pokud chcete zjistit, jestli je příchozí fond NAT správně nastavený, 
   1. Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
   
@@ -35,7 +35,7 @@ Pokud se zobrazí v pravém podokně, zobrazí se seznam pravidel vytvořených 
 ## <a name="how-to-add-inbound-nat-rules"></a>Jak přidat pravidla pro příchozí překlad adres (NAT)? 
   * Individuální příchozí pravidlo NAT nelze přidat. Můžete ale přidat sadu pravidel příchozího překladu adres (NAT) s definovaným rozsahem portů front-endu a back-end port pro všechny instance v sadě škálování virtuálního počítače.
   * Pokud chcete pro Virtual Machine Scale Sets přidat celou sadu pravidel příchozího překladu adres (NAT), musíte nejdřív v Load Balancer vytvořit fond příchozího překladu adres (NAT) a pak na fond příchozího překladu adres (NAT) odkázat ze síťového profilu sady škálování virtuálních počítačů. Úplný příklad použití rozhraní příkazového řádku je uveden níže.
-  * Nový fond příchozího překladu adres (NAT) by neměl mít překrývající se rozsah portů front-endu se stávajícími vstupními fondy NAT Pokud chcete zobrazit nastavené stávající fondy NAT, můžete použít tento [příkaz CLI](https://docs.microsoft.com/cli/azure/network/lb/inbound-nat-pool?view=azure-cli-latest#az_network_lb_inbound_nat_pool_list) .
+  * Nový fond příchozího překladu adres (NAT) by neměl mít překrývající se rozsah portů front-endu se stávajícími vstupními fondy NAT Pokud chcete zobrazit nastavené stávající fondy NAT, můžete použít tento [příkaz CLI](/cli/azure/network/lb/inbound-nat-pool?view=azure-cli-latest#az_network_lb_inbound_nat_pool_list) .
 ```azurecli-interactive
 az network lb inbound-nat-pool create 
         -g MyResourceGroup 
@@ -92,7 +92,7 @@ az network lb inbound-nat-pool update
    
 1. Na stránce **Přidat IP adresu front-endu** zadejte hodnoty a vyberte **OK** .
 
-1. Pokud jsou potřeba nová pravidla vyrovnávání zatížení, postupujte podle [kroků 5](https://docs.microsoft.com/azure/load-balancer/load-balancer-multiple-ip#step-5-configure-the-health-probe) a [Krok 6](https://docs.microsoft.com/azure/load-balancer/load-balancer-multiple-ip#step-5-configure-the-health-probe) v tomto kurzu.
+1. Pokud jsou potřeba nová pravidla vyrovnávání zatížení, postupujte podle [kroků 5](./load-balancer-multiple-ip.md#step-5-configure-the-health-probe) a [Krok 6](./load-balancer-multiple-ip.md#step-5-configure-the-health-probe) v tomto kurzu.
 
 1. V případě potřeby vytvořte novou sadu příchozích pravidel NAT pomocí nově vytvořených konfigurací IP adresy front-endu. Příklad najdete tady v [předchozí části].
 

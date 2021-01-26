@@ -17,16 +17,14 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: rdhillon
 ms.custom: ''
-ms.openlocfilehash: 1d4fcc280ba2e34d2fa81584846441ad6fe81431
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8e300c9be8f3e59dc9443bf1f1806e4228992ad
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84708191"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790355"
 ---
 # <a name="manage-data-exfiltration-to-azure-storage-accounts-with-virtual-network-service-endpoint-policies-using-azure-powershell"></a>Správa exfiltrace dat pro Azure Storage účtů pomocí zásad koncového bodu služby virtuální sítě pomocí Azure PowerShell
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Zásady koncového bodu služby virtuální sítě umožňují použít řízení přístupu u účtů Azure Storage v rámci virtuální sítě prostřednictvím koncových bodů služby. Toto je klíč pro zabezpečení úloh, správu, které účty úložiště jsou povolené a kde je povolený exfiltrace dat.
 V tomto článku získáte informace o těchto tématech:
@@ -39,7 +37,9 @@ V tomto článku získáte informace o těchto tématech:
 * Potvrďte přístup k povolenému účtu úložiště z podsítě.
 * Potvrďte, že je přístup k nedovolenému účtu úložiště z podsítě odepřený.
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

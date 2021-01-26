@@ -5,12 +5,12 @@ ms.date: 06/10/2019
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: bb7708514de6a1d68ecad0c142d68c321293d728
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 41aa7f251bc12fd889a71f65da83c4730ebda9a7
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219619"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789629"
 ---
 # <a name="service-fabric-releases"></a>Verze Service Fabric
 
@@ -18,7 +18,7 @@ ms.locfileid: "98219619"
 - <a href="https://github.com/Azure/service-fabric-issues" target="blank">Sledování problémů</a> 
 - <a href="/azure/service-fabric/service-fabric-support" target="blank">Možnosti podpory</a> 
 - <a href="/azure/service-fabric/service-fabric-versions" target="blank">Podporované verze</a> 
-- <a href="https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0" target="blank">Vzorky kódu</a>
+- <a href="https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0" target="blank">Ukázky kódu</a>
 
 V tomto článku najdete další informace o nejnovějších vydáních a aktualizacích Service Fabric runtime a sadách SDK.
 
@@ -117,7 +117,7 @@ Také aktualizujeme naše datum plánované verze, abychom zjistili, že tyto z�
 #### <a name="key-announcements"></a>Oznámení klíčů
  - [**Podpora KeyVaultReference pro aplikační tajné klíče (Preview)**](./service-fabric-keyvault-references.md): Service Fabric aplikace, které mají povolené [spravované identity](./concepts-managed-identity.md) , teď můžou přímo odkazovat na adresu URL Key Vault tajných klíčů jako na proměnnou prostředí, parametr aplikace nebo přihlašovací údaje úložiště kontejnerů. Service Fabric bude tajný klíč automaticky přeložit pomocí spravované identity aplikace. 
      
-- **Vylepšená bezpečnost upgradu pro bezstavové služby**: Pokud chcete zaručit dostupnost během upgradu aplikace, zavedli jsme nové konfigurace, abychom definovali [minimální počet instancí bezstavových služeb](/dotnet/api/system.fabric.description.statelessservicedescription?view=azure-dotnet) , které se budou považovat za dostupné. Dřív byla tato hodnota 1 pro všechny služby a nedá se změnit. Díky této nové kontrole bezpečnosti pro jednotlivé služby můžete zajistit, aby vaše služby během upgradování aplikace, upgrady clusterů a jiné údržby zachovaly minimální počet instancí, a další údržbu, která spoléhá na kontrolu stavu a bezpečnosti Service Fabric.
+- **Vylepšená bezpečnost upgradu pro bezstavové služby**: Pokud chcete zaručit dostupnost během upgradu aplikace, zavedli jsme nové konfigurace, abychom definovali [minimální počet instancí bezstavových služeb](/dotnet/api/system.fabric.description.statelessservicedescription) , které se budou považovat za dostupné. Dřív byla tato hodnota 1 pro všechny služby a nedá se změnit. Díky této nové kontrole bezpečnosti pro jednotlivé služby můžete zajistit, aby vaše služby během upgradování aplikace, upgrady clusterů a jiné údržby zachovaly minimální počet instancí, a další údržbu, která spoléhá na kontrolu stavu a bezpečnosti Service Fabric.
   
 - [**Omezení prostředků pro uživatelské služby**](./service-fabric-resource-governance.md#enforcing-the-resource-limits-for-user-services): uživatelé můžou nastavit omezení prostředků pro uživatelské služby na uzlu, aby se předešlo scénářům, jako je vyčerpání prostředků Service Fabric systémových služeb. 
   

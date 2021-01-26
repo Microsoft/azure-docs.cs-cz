@@ -3,12 +3,12 @@ title: Další informace Azure Policy Kubernetes
 description: Přečtěte si, jak Azure Policy používá Rego a Open Agent zásad ke správě clusterů se systémem Kubernetes v Azure nebo místním prostředí.
 ms.date: 12/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: e2b9253d8ce60d5dc77d406e3c9d0469539f2c77
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: f25b64bc28535d125c7883f16c9e747d6250ca96
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511327"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789734"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>Principy Azure Policy pro clustery Kubernetes
 
@@ -122,7 +122,7 @@ Před instalací doplňku Azure Policy nebo povolením jakékoli funkce služby 
 
 Po dokončení výše uvedených požadovaných kroků nainstalujte doplněk Azure Policy v clusteru AKS, který chcete spravovat.
 
-- Azure Portal
+- Portál Azure Portal
 
   1. Spusťte službu AKS v Azure Portal tím, že vyberete **všechny služby** a pak vyhledáte a vyberete **služby Kubernetes**.
 
@@ -142,7 +142,7 @@ Po dokončení výše uvedených požadovaných kroků nainstalujte doplněk Azu
      > 1. Kliknutím na tlačítko **Povolit doplněk** nainstalujete verzi v2 doplňku.
      > 1. [Přiřaďte verze V2 předdefinovaných zásad zásad v1.](#assign-a-built-in-policy-definition)
 
-- Rozhraní příkazového řádku Azure
+- Azure CLI
 
   ```azurecli-interactive
   # Log in first with az login if you're not using Cloud Shell
@@ -463,7 +463,7 @@ Další informace najdete v tématu [ladění serveru gatekeeper](https://github
 
 ## <a name="troubleshooting-the-add-on"></a>Řešení potíží s doplňkem
 
-Další informace o řešení potíží s doplňkem pro Kubernetes najdete v [části Kubernetes](/azure/governance/policy/troubleshoot/general#add-on-for-kubernetes-general-errors) článku věnovaném řešení potíží s nástrojem Azure Policy.
+Další informace o řešení potíží s doplňkem pro Kubernetes najdete v [části Kubernetes](../troubleshoot/general.md#add-on-for-kubernetes-general-errors) článku věnovaném řešení potíží s nástrojem Azure Policy.
 
 ## <a name="remove-the-add-on"></a>Odebrání doplňku
 
@@ -471,7 +471,7 @@ Další informace o řešení potíží s doplňkem pro Kubernetes najdete v [č
 
 Pokud chcete odebrat doplněk Azure Policy z clusteru AKS, použijte Azure Portal nebo rozhraní příkazového řádku Azure:
 
-- Azure Portal
+- Portál Azure Portal
 
   1. Spusťte službu AKS v Azure Portal tím, že vyberete **všechny služby** a pak vyhledáte a vyberete **služby Kubernetes**.
 
@@ -481,7 +481,7 @@ Pokud chcete odebrat doplněk Azure Policy z clusteru AKS, použijte Azure Porta
 
   1. Na hlavní stránce vyberte tlačítko **zakázat doplněk** .
 
-- Rozhraní příkazového řádku Azure
+- Azure CLI
 
   ```azurecli-interactive
   # Log in first with az login if you're not using Cloud Shell

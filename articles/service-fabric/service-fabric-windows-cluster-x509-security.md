@@ -3,12 +3,12 @@ title: Zabezpečení clusteru ve Windows pomocí certifikátů
 description: Zabezpečená komunikace v rámci samostatného nebo místního clusteru Azure Service Fabric a také mezi klienty a clusterem.
 ms.topic: conceptual
 ms.date: 10/15/2017
-ms.openlocfilehash: 34ba457ce0f39705393962d5c5ec8fa11668f413
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: d75c644be47ea44f6a8a6ccac91b785af0132833
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686119"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791033"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>Zabezpečení samostatného clusteru ve Windows pomocí certifikátů X. 509
 Tento článek popisuje, jak zabezpečit komunikaci mezi různými uzly samostatného clusteru se systémem Windows. Popisuje také způsob ověřování klientů, kteří se připojují k tomuto clusteru pomocí certifikátů X. 509. Ověřování zajišťuje, že přístup ke clusteru a nasazeným aplikacím a provádění úloh správy bude mít jenom autorizovaní uživatelé. V případě vytvoření clusteru by mělo být v clusteru povoleno zabezpečení certifikátů.  
@@ -355,7 +355,7 @@ $ConnectArgs = @{  ConnectionEndpoint = '10.7.0.5:19000';  X509Credential = $Tru
 Connect-ServiceFabricCluster $ConnectArgs
 ```
 
-Pak můžete spustit další příkazy PowerShellu pro práci s tímto clusterem. Pomocí rutiny [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) můžete například zobrazit seznam uzlů v tomto zabezpečeném clusteru.
+Pak můžete spustit další příkazy PowerShellu pro práci s tímto clusterem. Pomocí rutiny [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode) můžete například zobrazit seznam uzlů v tomto zabezpečeném clusteru.
 
 
 Pokud chcete cluster odebrat, připojte se k uzlu v clusteru, do kterého jste stáhli balíček Service Fabric, otevřete příkazový řádek a potom do složky Package (balíček). Nyní spusťte následující příkaz:

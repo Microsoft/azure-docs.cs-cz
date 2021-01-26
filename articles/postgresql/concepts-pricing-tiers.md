@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 16e60b5015107c5f99e63f15bb21c5a375f05340
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 74d2654c54d1ab2ac5d47aa24449c41c20a90b74
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123248"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791134"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Cenové úrovně ve službě Azure Database for PostgreSQL – Jeden server
 
@@ -29,7 +29,7 @@ Pokud chcete zvolit cenovou úroveň, použijte jako výchozí bod následujíc�
 
 | Cenová úroveň | Cílová zátěž |
 |:-------------|:-----------------|
-| Základní | Úlohy, které vyžadují lehký výpočetní výkon a vstupně-výstupní výkon. Mezi příklady patří servery používané pro vývoj nebo testování nebo pro nečasto používané aplikace v malých měřítkech. |
+| Basic | Úlohy, které vyžadují lehký výpočetní výkon a vstupně-výstupní výkon. Mezi příklady patří servery používané pro vývoj nebo testování nebo pro nečasto používané aplikace v malých měřítkech. |
 | Pro obecné účely | Většina obchodních úloh, které vyžadují vyvážené výpočetní prostředky a paměť s škálovatelnou vstupně-výstupní propustností. K příkladům patří servery, které hostují webové, mobilní a další podnikové aplikace.|
 | Optimalizováno pro paměť | Vysoce výkonné databázové úlohy, které vyžadují výkon v paměti pro rychlejší zpracování transakcí a vyšší souběžnost. K příkladům patří servery, které zpracovávají data v reálném čase, a transakční nebo analytické aplikace vyžadující vysoký výkon.|
 
@@ -39,7 +39,7 @@ Po vytvoření serveru se dá v průběhu několika sekund změnit počet virtu�
 
 Výpočetní prostředky se poskytují jako virtuální jádra, což představuje logický procesor základního hardwaru. Čína – východ 1, Čína – sever 1, US DoD – střed a US DoD – východ využití logických procesorů Gen 4, které jsou založené na procesorech Intel E5-2673 V3 (Haswell) 2,4 GHz. Všechny ostatní oblasti využívají logické procesory s Gen 5, které jsou založené na procesorech Intel E5-2673 v4 (Broadwell) 2,3 GHz.
 
-## <a name="storage"></a>Úložiště
+## <a name="storage"></a>Storage
 
 Úložiště, které zřizujete, je množství úložné kapacity dostupné pro váš server Azure Database for PostgreSQL. Úložiště se používá pro soubory databáze, dočasné soubory, transakční protokoly a protokoly serveru PostgreSQL. Celková velikost úložiště, kterou zřizujete, také definuje kapacitu v/v k dispozici pro váš server.
 
@@ -51,7 +51,7 @@ Výpočetní prostředky se poskytují jako virtuální jádra, což představuj
 | IOPS | Proměnná |3 IOPS/GB<br/>Minimální 100 IOPS<br/>Maximální 20 000 IOPS | 3 IOPS/GB<br/>Minimální 100 IOPS<br/>Maximální 20 000 IOPS |
 
 > [!NOTE]
-> Úložiště až do 16TB a 20 000 IOPS se podporuje v následujících oblastech: Východní USA, Východní USA 2, Brazílie – jih, Střed USA, Západní USA, Střed USA – sever, Střed USA – jih, Severní Evropa, Západní Evropa, Velká Británie – jih, Velká Británie – západ, jihovýchodní Asie, Východní Asie, Japonsko – východ, Japonsko – západ, Korea – jih, Austrálie – východ, Austrálie – jih, Západní USA 2, Středozápadní USA , Kanada – východ a Kanada – střed.
+> Úložiště až do 16TB a 20 000 IOPS je podporováno v následujících oblastech: Austrálie – východ, Austrálie – jih, Brazílie – jih, Kanada – střed, Kanada – východ, Střed USA, Čína – východ 2, Čína – sever 2, Východní Asie, Východní USA, východní USA 1, východní USA 2, Japonsko – východ, Japonsko – západ, Korea – jih, střed USA – sever, Severní Evropa, střed USA – jih, jihovýchodní Asie, Švýcarsko – sever , Švýcarsko – západ, US Gov východ, US Gov střed, US Gov indiánský, Velká Británie – jih, Velká Británie – západ, Západní Evropa, Středozápadní USA, Západní USA a Západní USA 2.
 >
 > Všechny ostatní oblasti podporují až 4 TB úložiště a 6000 IOPS.
 >

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: a78bfc2b4f0c372c915647c0afa40263079af8e5
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 8b10e850fd3ae0282785164596f537652148a716
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746070"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790999"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-using-powershell"></a>Vyrovnávání zatížení u více konfigurací IP adres pomocí prostředí PowerShell
 
@@ -46,7 +46,7 @@ Podle následujícího postupu můžete dosáhnout scénáře popsaného v tomto
     $myResourceGroup = "contosofabrikam"
     ```
 
-    Další informace najdete v kroku 2 tématu [Vytvoření skupiny prostředků](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fazure%2fload-balancer%2ftoc.json).
+    Další informace najdete v kroku 2 tématu [Vytvoření skupiny prostředků](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm?toc=%2fazure%2fload-balancer%2ftoc.json).
 
 3. [Vytvořte skupinu dostupnosti](../virtual-machines/windows/tutorial-availability-sets.md?toc=%2fazure%2fload-balancer%2ftoc.json) , která bude obsahovat vaše virtuální počítače. V tomto scénáři použijte následující příkaz:
 
@@ -54,14 +54,14 @@ Podle následujícího postupu můžete dosáhnout scénáře popsaného v tomto
     New-AzAvailabilitySet -ResourceGroupName "contosofabrikam" -Name "myAvailset" -Location "West Central US"
     ```
 
-4. Postupujte podle pokynů 3 až 5 v článku [Vytvoření virtuálního počítače s Windows](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fazure%2fload-balancer%2ftoc.json) a připravte vytváření virtuálního počítače s jedním síťovým adaptérem. Proveďte krok 6,1 a místo kroku 6,2 použijte následující:
+4. Postupujte podle pokynů 3 až 5 v článku [Vytvoření virtuálního počítače s Windows](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm?toc=%2fazure%2fload-balancer%2ftoc.json) a připravte vytváření virtuálního počítače s jedním síťovým adaptérem. Proveďte krok 6,1 a místo kroku 6,2 použijte následující:
 
     ```powershell
     $availset = Get-AzAvailabilitySet -ResourceGroupName "contosofabrikam" -Name "myAvailset"
     New-AzVMConfig -VMName "VM1" -VMSize "Standard_DS1_v2" -AvailabilitySetId $availset.Id
     ```
 
-    Potom dokončete kroky [Vytvoření virtuálního počítače s Windows](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fazure%2fload-balancer%2ftoc.json) 6,3 až 6,8.
+    Potom dokončete kroky [Vytvoření virtuálního počítače s Windows](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm?toc=%2fazure%2fload-balancer%2ftoc.json) 6,3 až 6,8.
 
 5. Přidejte ke každému virtuálnímu počítači druhou konfiguraci protokolu IP. Postupujte podle pokynů v tématu [přiřazení více IP adres k virtuálním počítačům](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md#add) . Použijte následující nastavení konfigurace:
 

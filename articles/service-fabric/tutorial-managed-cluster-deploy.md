@@ -4,12 +4,12 @@ description: V tomto kurzu nasadíte Service Fabric spravovaný cluster pro test
 ms.topic: tutorial
 ms.date: 08/27/2020
 ms.custom: references_regions
-ms.openlocfilehash: 0265a1393c697cbd767de13df1064a5eea957380
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: fd54e6f8c5272c3a8fe0e0162ca2e57968b24642
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92316174"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791707"
 ---
 # <a name="tutorial-deploy-a-service-fabric-managed-cluster-preview"></a>Kurz: nasazení spravovaného clusteru Service Fabric (Preview)
 
@@ -29,7 +29,7 @@ Tato část řady se zabývá těmito postupy:
 > * Nasazení spravovaného clusteru Service Fabric
 > * Přidání typu primárního uzlu do clusteru
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete s tímto kurzem:
 
@@ -37,7 +37,7 @@ Než začnete s tímto kurzem:
 
 * Nainstalujte [sadu Service Fabric SDK a modul prostředí PowerShell](service-fabric-get-started.md).
 
-* Nainstalujte [Azure PowerShell 4.7.0](/powershell/azure/release-notes-azureps?preserve-view=true&view=azps-4.7.0#azservicefabric) (nebo novější).
+* Nainstalujte [Azure PowerShell 4.7.0](/powershell/azure/release-notes-azureps#azservicefabric) (nebo novější).
 
 ## <a name="connect-to-your-azure-account"></a>Připojení k účtu Azure
 

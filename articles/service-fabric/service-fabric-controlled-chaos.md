@@ -6,17 +6,17 @@ ms.topic: conceptual
 ms.date: 02/05/2018
 ms.author: motanv
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9e9127d9776169131c2ed7f4778052646e84f8b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34ec43593d50e359f09059cd3d51522df62cf567
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89013108"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789647"
 ---
 # <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>NaChaos řízených v clusterech Service Fabric
 Rozsáhlé distribuované systémy, jako jsou cloudové infrastruktury, jsou v podstatě nespolehlivé. Azure Service Fabric umožňuje vývojářům psát spolehlivé distribuované služby nad nespolehlivou infrastrukturou. Aby mohli vývojáři psát robustní distribuované služby nad nespolehlivou infrastrukturou, musí být schopni testovat stabilitu svých služeb, zatímco základní nespolehlivá infrastruktura prochází složitými přechody stavu v důsledku chyb.
 
-[Vkládání chyb a služba Analysis Service clusteru](./service-fabric-testability-overview.md) (označované také jako služba analýzy chyb) umožňují vývojářům navolávat chyby při testování svých služeb. Tyto cílené simulované chyby, jako je [restartování oddílu](/powershell/module/servicefabric/start-servicefabricpartitionrestart?view=azureservicefabricps), můžou přispět k provádění nejběžnějších přechodů mezi stavy. Cílené simulované chyby se ale účtují podle definice, takže můžou přijít o chyby, které se zobrazují jenom v pevně předpokládaném, dlouhém a složitém pořadí přechodů mezi stavy. Pro nevyvážené testování můžete použít chaos.
+[Vkládání chyb a služba Analysis Service clusteru](./service-fabric-testability-overview.md) (označované také jako služba analýzy chyb) umožňují vývojářům navolávat chyby při testování svých služeb. Tyto cílené simulované chyby, jako je [restartování oddílu](/powershell/module/servicefabric/start-servicefabricpartitionrestart), můžou přispět k provádění nejběžnějších přechodů mezi stavy. Cílené simulované chyby se ale účtují podle definice, takže můžou přijít o chyby, které se zobrazují jenom v pevně předpokládaném, dlouhém a složitém pořadí přechodů mezi stavy. Pro nevyvážené testování můžete použít chaos.
 
 Chaos simuluje pravidelné, prokládané chyby (jak v rámci celého clusteru jsou bezproblémové i nedarované) po delší dobu. Plynulá chyba se skládá ze sady Service Fabric volání rozhraní API, například restartování repliky je bezproblémové selhání, protože se jedná o blízko následovaný otevřeným na replice. Odebrání repliky, přesunutí primární repliky a přesunutí sekundární repliky jsou další plynulé chyby, na které chaos přichází. Nedarované chyby se ukončí proces, jako je restartování uzlu a restartování balíčku kódu. 
 

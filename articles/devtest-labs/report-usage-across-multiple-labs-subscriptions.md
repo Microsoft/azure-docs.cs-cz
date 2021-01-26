@@ -3,12 +3,12 @@ title: Azure DevTest Labs využití napříč několika cvičeními a předplatn
 description: Naučte se, jak ohlásit Azure DevTest Labs využití napříč několika cvičeními a předplatnými.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 9640dc3fd74095a737f382994201dc5610af921a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: d789b9849ec798a396e99420649792937422470f
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152197"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789934"
 ---
 # <a name="report-azure-devtest-labs-usage-across-multiple-labs-and-subscriptions"></a>Nahlášení využití Azure DevTest Labs napříč několika cvičeními a předplatnými
 
@@ -82,5 +82,5 @@ Až se systém nastaví a data se přesunou do dlouhodobého úložiště, dalš
     Mají uživatelé výběr vysoce výkonných (dražších) velikostí virtuálních počítačů?
 -   Které image Marketplace se používají?
 
-    Jsou vlastní image nejběžnějším základem virtuálních počítačů, které by měly být sestavené jako [Galerie sdílených imagí](../virtual-machines/windows/shared-image-galleries.md) nebo [objekt pro vytváření imagí](image-factory-create.md).
+    Jsou vlastní image nejběžnějším základem virtuálních počítačů, které by měly být sestavené jako [Galerie sdílených imagí](../virtual-machines/shared-image-galleries.md) nebo [objekt pro vytváření imagí](image-factory-create.md).
 -   Které vlastní image se používají nebo které se nepoužívají?

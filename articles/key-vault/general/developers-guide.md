@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: e92b17a5743e983ca3e77ad18c0973b9f056dfbd
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 40ce5f55b4109fee0099110c17f02b33c3eff808
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611164"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791420"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Průvodce vývojáře pro službu Azure Key Vault
 
@@ -74,7 +74,7 @@ Další informace o službě Azure identity Client libarary najdete v těchto t�
 |[Sada Azure identity SDK .NET](/dotnet/api/overview/azure/identity-readme)|[Azure identity SDK Python](/python/api/overview/azure/identity-readme)|[Sada Azure identity SDK Java](/java/api/overview/azure/identity-readme)|[JavaScript sady Azure identity SDK](/javascript/api/overview/azure/identity-readme)|     
 
 >[!Note]
-> [Knihovna ověřování aplikací](https://docs.microsoft.com/dotnet/api/overview/azure/service-to-service-authentication) , která se doporučuje pro sadu Key Vault .NET SDK verze 3, která je aktuálně depracated. Postupujte prosím podle pokynů [AppAuthentication do Azure. pokyny k migraci identit](https://docs.microsoft.com/dotnet/api/overview/azure/app-auth-migration) pro migraci na sadu Key Vault .NET SDK verze 4.
+> [Knihovna ověřování aplikací](/dotnet/api/overview/azure/service-to-service-authentication) , která se doporučuje pro sadu Key Vault .NET SDK verze 3, která je aktuálně depracated. Postupujte prosím podle pokynů [AppAuthentication do Azure. pokyny k migraci identit](/dotnet/api/overview/azure/app-auth-migration) pro migraci na sadu Key Vault .NET SDK verze 4.
 
 Výukové programy, jak ověřit Key Vault v aplikacích, najdete v tématech:
 - [Ověřování pro Key Vault v aplikaci hostované na virtuálním počítači v .NET](./tutorial-net-virtual-machine.md)
@@ -89,7 +89,7 @@ Přístup k klíčům, tajným klíčům a certifikátům je řízen rovinou dat
 
 | Azure CLI | PowerShell | REST API | Resource Manager | .NET | Python | Java | JavaScript |  
 |--|--|--|--|--|--|--|--|
-|[Odkaz](/cli/azure/keyvault/key)<br>[Rychlý start](../keys/quick-create-cli.md)|[Odkaz](/powershell/module/az.keyvault/)<br>[Rychlý start](../keys/quick-create-powershell.md)|[Odkaz](/rest/api/keyvault/#key-operations)|[Odkaz](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults/keys)<br>[Rychlý start](../keys/quick-create-template.md)|[Odkaz](/dotnet/api/azure.security.keyvault.keys)<br>[Rychlý start](../keys/quick-create-net.md)|[Odkaz](/python/api/azure-mgmt-keyvault/azure.mgmt.keyvault)<br>[Rychlý start](../keys/quick-create-python.md)|[Odkaz](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-keys/4.2.0/index.html)<br>[Rychlý start](../keys/quick-create-java.md)|[Odkaz](/javascript/api/@azure/keyvault-keys/)<br>[Rychlý start](../keys/quick-create-node.md)|
+|[Odkaz](/cli/azure/keyvault/key)<br>[Rychlý start](../keys/quick-create-cli.md)|[Odkaz](/powershell/module/az.keyvault/)<br>[Rychlý start](../keys/quick-create-powershell.md)|[Odkaz](/rest/api/keyvault/#key-operations)|[Odkaz](/azure/templates/microsoft.keyvault/vaults/keys)<br>[Rychlý start](../keys/quick-create-template.md)|[Odkaz](/dotnet/api/azure.security.keyvault.keys)<br>[Rychlý start](../keys/quick-create-net.md)|[Odkaz](/python/api/azure-mgmt-keyvault/azure.mgmt.keyvault)<br>[Rychlý start](../keys/quick-create-python.md)|[Odkaz](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-keys/4.2.0/index.html)<br>[Rychlý start](../keys/quick-create-java.md)|[Odkaz](/javascript/api/@azure/keyvault-keys/)<br>[Rychlý start](../keys/quick-create-node.md)|
 
 **Rozhraní API a sady SDK pro certifikáty**
 

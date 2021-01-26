@@ -7,19 +7,19 @@ ms.topic: how-to
 ms.date: 10/15/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: bbb959b6b1d71c81f7b920b3962f693716041e16
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d1d433c7db36a3f4fe5f528b7fbd17549bc08e4a
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016229"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791489"
 ---
 # <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Rozbalení virtuálních pevných disků na virtuálním počítači se systémem Linux pomocí Azure CLI
 
 Tento článek popisuje, jak rozbalit spravované disky pro virtuální počítač se systémem Linux pomocí Azure CLI. Můžete [přidat datové disky](add-disk.md) , které poskytují další prostor úložiště, a můžete také rozšířit existující datový disk. Výchozí velikost virtuálního pevného disku pro operační systém (OS) je obvykle 30 GB na virtuálním počítači Linux v Azure. 
 
 > [!WARNING]
-> Zajistěte, aby byl systém souborů v dobrém stavu, typ tabulky diskového oddílu bude podporovat novou velikost a před provedením operací změny velikosti disku se ujistěte, že jsou vaše data zálohována. Další informace najdete v tématu [zálohování virtuálních počítačů se systémem Linux v Azure](tutorial-backup-vms.md). 
+> Zajistěte, aby byl systém souborů v dobrém stavu, typ tabulky diskového oddílu bude podporovat novou velikost a před provedením operací změny velikosti disku se ujistěte, že jsou vaše data zálohována. Další informace najdete v tématu [rychlý start Azure Backup](../../backup/quick-backup-vm-portal.md). 
 
 ## <a name="expand-an-azure-managed-disk"></a>Rozšíření spravovaného disku Azure
 Ujistěte se, že máte nainstalované nejnovější rozhraní příkazového [řádku Azure](/cli/azure/install-az-cli2) a že jste k účtu Azure přihlášení pomocí [AZ Login](/cli/azure/reference-index#az-login).

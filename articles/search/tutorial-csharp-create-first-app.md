@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 01/26/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ec98762ac5918437e8fdb8426b54b79b1fb5b222
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 961e30cf17bf385647f4482c6f767641c6b891af
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939717"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791674"
 ---
 # <a name="tutorial-create-your-first-search-app-using-the-net-sdk"></a>Kurz: Vytvoření první aplikace pro vyhledávání pomocí sady .NET SDK
 
@@ -77,7 +77,7 @@ Pokud chcete přejít na pracovní aplikaci, postupujte podle následujících k
 
 1. Toto je index hotelů, takže zadejte slova, která můžete použít k hledání hotelů (například "WiFi", "View", "bar", "parkování") a Prohlédněte si výsledky.
 
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-wifi.png" alt-text="Hledání * fondu *" border="true":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-wifi.png" alt-text="Hledání * Wi-Fi *" border="true":::
 
 Snad tento projekt bude pracovat hladce a webová aplikace je spuštěná. Tato jedna aplikace obsahuje mnoho základních komponent pro složitější hledání, takže je vhodné ji projít a znovu vytvořit krok za krokem. Následující části obsahují tyto kroky.
 
@@ -85,19 +85,19 @@ Snad tento projekt bude pracovat hladce a webová aplikace je spuštěná. Tato 
 
 Pokud chcete tento projekt vytvořit úplně od začátku, a tak posílit koncepty Azure Kognitivní hledání na svém mysli, začněte s projektem sady Visual Studio.
 
-1. V aplikaci Visual Studio vyberte **Nový**  >  **projekt**a pak **ASP.NET Core webová aplikace**.
+1. V aplikaci Visual Studio vyberte **Nový**  >  **projekt** a pak **ASP.NET Core webová aplikace**.
 
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-project1.png" alt-text="Hledání * fondu *" border="true":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-project1.png" alt-text="Vytvoření cloudového projektu" border="true":::
 
 1. Dejte projektu název, jako je například "FirstSearchApp" a nastavte umístění. Vyberte **Vytvořit**.
 
 1. Vyberte šablonu projektu **Webová aplikace (model-zobrazení-kontroler)** .
 
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-project2.png" alt-text="Hledání * fondu *" border="true":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-project2.png" alt-text="Vytvoření projektu MVC" border="true":::
 
 1. Nainstalujte klientskou knihovnu. V části **nástroje**  >  **Správce balíčků NuGet**  >  **Spravovat balíčky NuGet pro řešení...**, vyberte **Procházet** a vyhledejte "azure.search.documents". Nainstalujte **Azure.Search.Documents** (verze 11 nebo novější) a přijměte licenční smlouvy a závislosti.
 
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png" alt-text="Hledání * fondu *" border="true":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png" alt-text="Přidání knihoven Azure pomocí NuGet" border="true":::
 
 ### <a name="initialize-azure-cognitive-search"></a>Inicializovat Azure Kognitivní hledání
 
@@ -114,7 +114,7 @@ V této ukázce používáte veřejně dostupná data hotelu. Tato data jsou lib
 
 1. V Průzkumník řešení vyberte soubor a v části Vlastnosti změňte nastavení **Kopírovat do výstupního adresáře** na **Kopírovat, pokud je novější**.
 
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-copy-if-newer.png" alt-text="Hledání * fondu *" border="true":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-copy-if-newer.png" alt-text="Kopírování nastavení aplikace do výstupu" border="true":::
 
 ## <a name="model-data-structures"></a>Modelování datových struktur
 
@@ -122,11 +122,11 @@ Modely (třídy jazyka C#) se používají ke sdělování dat mezi klientem (zo
 
 V tomto kroku napíšete datové struktury indexu vyhledávání a také hledaný řetězec, který se používá v zobrazení nebo komunikaci s řadičem. V indexu hotelů má každý Hotel mnoho místností a každý Hotel má adresu s více částmi. Zcela celá reprezentace hotelu je hierarchická a vnořená struktura dat. Pro vytvoření jednotlivých komponent budete potřebovat tři třídy.
 
-Sada tříd **hotelů**, **Address**a **Room** je známá jako [*komplexní typy*](search-howto-complex-data-types.md), což je důležitou funkcí služby Azure kognitivní hledání. Komplexní typy mohou představovat mnoho úrovní hluboko tříd a podtříd a povolit mnohem složitější datové struktury, které mají být reprezentovány, než použití *jednoduchých typů* (třída obsahující pouze primitivní členy).
+Sada tříd **hotelů**, **Address** a **Room** je známá jako [*komplexní typy*](search-howto-complex-data-types.md), což je důležitou funkcí služby Azure kognitivní hledání. Komplexní typy mohou představovat mnoho úrovní hluboko tříd a podtříd a povolit mnohem složitější datové struktury, které mají být reprezentovány, než použití *jednoduchých typů* (třída obsahující pouze primitivní členy).
 
 1. V Průzkumník řešení klikněte pravým tlačítkem na **modely**  >  **Přidat**  >  **novou položku**.
 
-1. Vyberte**Třída** a pojmenujte ji Hotel.cs. Nahraďte veškerý obsah Hotel.cs následujícím kódem. Všimněte si, že **adresa** a členové **místnosti** třídy, tato pole jsou samotné třídy, takže budete potřebovat také modely pro ně.
+1. Vyberte **Třída** a pojmenujte ji Hotel.cs. Nahraďte veškerý obsah Hotel.cs následujícím kódem. Všimněte si, že **adresa** a členové **místnosti** třídy, tato pole jsou samotné třídy, takže budete potřebovat také modely pro ně.
 
     ```csharp
     using Azure.Search.Documents.Indexes;
@@ -243,7 +243,7 @@ Sada tříd **hotelů**, **Address**a **Room** je známá jako [*komplexní typy
     }
     ```
 
-1. Poslední model, který vytvoříte v tomto kurzu, je třída s názvem **SearchData** , která představuje vstup uživatele (**prohledávanýtext**) a výstup hledání (**resultList**). Typ výstupu je kritický, **searchResults &lt; Hotel &gt; **, protože tento typ přesně odpovídá výsledkům hledání a Vy musíte tento odkaz předat do zobrazení. Nahraďte výchozí šablonu následujícím kódem.
+1. Poslední model, který vytvoříte v tomto kurzu, je třída s názvem **SearchData** , která představuje vstup uživatele (**prohledávanýtext**) a výstup hledání (**resultList**). Typ výstupu je kritický, **searchResults &lt; Hotel &gt;**, protože tento typ přesně odpovídá výsledkům hledání a Vy musíte tento odkaz předat do zobrazení. Nahraďte výchozí šablonu následujícím kódem.
 
     ```csharp
     using Azure.Search.Documents.Models;
@@ -327,7 +327,7 @@ Odstraňte obsah souboru index. cshtml v celém rozsahu a znovu sestavte soubor 
     </body>
     ```
 
-1. Přidejte šablonu stylů. **V aplikaci Visual Studio v souboru** >  **Nový**  >  **soubor**vyberte možnost **Šablona stylů** (se zvýrazněnou možností **Obecné** ).
+1. Přidejte šablonu stylů. **V aplikaci Visual Studio v souboru** >  **Nový**  >  **soubor** vyberte možnost **Šablona stylů** (se zvýrazněnou možností **Obecné** ).
 
    Výchozí kód nahraďte následujícím kódem. Do tohoto souboru nebudeme mít žádné další podrobnosti. Tyto styly jsou standardní HTML.
 
@@ -534,11 +534,11 @@ Teď zkontrolujeme, jestli aplikace funguje správně.
 
 1. Vyberte **ladit**  >  **Spustit bez ladění** nebo stiskněte klávesu **F5**. Pokud aplikace funguje podle očekávání, měli byste získat počáteční zobrazení indexu.
 
-     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-index.png" alt-text="Hledání * fondu *" border="true":::
+     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-index.png" alt-text="Otevírání aplikace" border="true":::
 
 1. Zadejte řetězec dotazu, například "plážový" (nebo libovolný text, který je na mysli), a kliknutím na ikonu hledání odešlete žádost.
 
-     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-beach.png" alt-text="Hledání * fondu *" border="true":::
+     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-beach.png" alt-text="Hledání * pláž *" border="true":::
 
 1. Zkuste zadat "pět hvězdiček". Všimněte si, že tento dotaz nevrací žádné výsledky. Propracovanější hledání má za následek "pět hvězdiček" jako synonymum "luxus" a vrátí tyto výsledky. Podpora [synonym](search-synonyms.md) je dostupná v Azure kognitivní hledání, ale není zahrnutá v této sérii kurzů.
 
@@ -554,7 +554,7 @@ Je důležité ověřit, že naše funkce zpracování chyb fungují tak, jak by
 
 2. Spusťte aplikaci, jako hledaný text zadejte "bar" a klikněte na ikonu hledání. Výjimka by měla být výsledkem zobrazení chyby.
 
-     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-error.png" alt-text="Hledání * fondu *" border="true":::
+     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-error.png" alt-text="Vynutit chybu" border="true":::
 
     > [!Important]
     > Je považováno za bezpečnostní riziko, které vrátí čísla interních chyb na chybové stránce. Pokud je vaše aplikace určena pro obecné použití, proveďte některé šetření na zabezpečené a osvědčené postupy, které se vrátí, když dojde k chybě.

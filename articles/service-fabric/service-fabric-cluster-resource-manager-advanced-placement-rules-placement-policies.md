@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5a4586c9c1be51b0ebbdebcf0c23289fc39f9eda
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 263e45928642aa74d682fc490e424a24deeb8076
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96485497"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790677"
 ---
 # <a name="placement-policies-for-service-fabric-services"></a>Zásady umístění pro služby Service Fabric
 Zásady umístění jsou další pravidla, která se dají použít k řízení umístění služby v některých specifických, méně častých scénářích. Příklady těchto scénářů:
@@ -150,7 +150,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 >
 
 > [!NOTE]
-> V současné době je zásada podporovaná jenom pro bezstavové služby s [režimem aktivace balíčku služby](/dotnet/api/system.fabric.description.servicepackageactivationmode?view=azure-dotnet)ExclusiveProcess.
+> V současné době je zásada podporovaná jenom pro bezstavové služby s [režimem aktivace balíčku služby](/dotnet/api/system.fabric.description.servicepackageactivationmode)ExclusiveProcess.
 >
 
 > [!WARNING]
@@ -158,7 +158,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 >
 
 > [!NOTE]
-> Použití vysoké hodnoty [MinInstanceCount](/dotnet/api/system.fabric.description.statelessservicedescription.mininstancecount?view=azure-dotnet) s touto zásadou umísťování může vést k zablokování upgradů aplikace. Pokud máte například cluster s pěti uzly a nastavíte InstanceCount = 10, budete mít na každém uzlu dvě instance. Pokud nastavíte MinInstanceCount = 9, může se pokus o upgrade aplikace zablokovat. s MinInstanceCount = 8 se to může vyhnout.
+> Použití vysoké hodnoty [MinInstanceCount](/dotnet/api/system.fabric.description.statelessservicedescription.mininstancecount) s touto zásadou umísťování může vést k zablokování upgradů aplikace. Pokud máte například cluster s pěti uzly a nastavíte InstanceCount = 10, budete mít na každém uzlu dvě instance. Pokud nastavíte MinInstanceCount = 9, může se pokus o upgrade aplikace zablokovat. s MinInstanceCount = 8 se to může vyhnout.
 >
 
 ## <a name="next-steps"></a>Další kroky

@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 05/12/2020
 ms.author: victorh
-ms.openlocfilehash: e51cc8905a7b4a88bb7f7dabaf24bb30159ff86c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77e36d5ab98f1177b5a0b89ee10b3e6bd22560c2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83655094"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791455"
 ---
 # <a name="azure-firewall-threat-intelligence-based-filtering"></a>Azure Firewall filtrování na základě logiky hrozeb
 
@@ -27,7 +27,7 @@ Můžete zvolit, že při aktivaci pravidla stačí protokolovat výstrahu, nebo
 
 V režimu výstrahy je ve výchozím nastavení povolené filtrování na základě logiky hrozeb. Tuto funkci nemůžete vypnout nebo změnit režim, dokud nebude v oblasti k dispozici rozhraní portálu.
 
-:::image type="content" source="media/threat-intel/threat-intel-ui.png" alt-text="Analýza hrozeb v bráně firewall":::
+:::image type="content" source="media/threat-intel/threat-intel-ui.png" alt-text="Rozhraní portálu pro filtrování na základě analýzy hrozeb":::
 
 ## <a name="logs"></a>Protokoly
 
@@ -53,6 +53,6 @@ Následující výpis protokolu ukazuje aktivované pravidlo:
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Příklady ukázek Azure Firewall Log Analytics](log-analytics-samples.md)
+- [Příklady ukázek Azure Firewall Log Analytics](./firewall-workbook.md)
 - Zjistěte, jak [nasadit a nakonfigurovat Azure firewall](tutorial-firewall-deploy-portal.md) .
 - Kontrola [sestavy Microsoft Security Intelligence](https://www.microsoft.com/en-us/security/operations/security-intelligence-report)

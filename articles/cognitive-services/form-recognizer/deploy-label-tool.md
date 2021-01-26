@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 985f9e741a1491a812c1d2b20de96381f8af3fa4
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 084ca039e7f388a11e15b29c579606c6ed3086db
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359842"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790423"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>Nasazení ukázkového nástroje pro popisování
 
@@ -37,7 +37,7 @@ Než začneme, je důležité si uvědomit, že existují dva způsoby, jak nasa
 * [Použití webu Azure Portal](#azure-portal)
 * [Použití Azure CLI](#azure-cli)
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure Portal
 
 Pomocí následujících kroků vytvořte nový prostředek pomocí Azure Portal: 
 
@@ -101,7 +101,7 @@ Pomocí následujících kroků vytvořte nový prostředek pomocí Azure Portal
 > Při vytváření webové aplikace můžete taky nakonfigurovat autorizaci a ověřování. Není to nutné pro začátek. 
 
 > [!IMPORTANT]
-> Pro vaši webovou aplikaci možná budete muset povolit TLS, aby se mohla zobrazit na `https` adrese. Postupujte podle pokynů v části [Povolení koncového bodu TLS](https://docs.microsoft.com/azure/container-instances/container-instances-container-group-ssl) pro nastavení kontejneru Webhooku, než pro vaši webovou aplikaci povolíte protokol TLS/SSL.
+> Pro vaši webovou aplikaci možná budete muset povolit TLS, aby se mohla zobrazit na `https` adrese. Postupujte podle pokynů v části [Povolení koncového bodu TLS](../../container-instances/container-instances-container-group-ssl.md) pro nastavení kontejneru Webhooku, než pro vaši webovou aplikaci povolíte protokol TLS/SSL.
 
 ### <a name="azure-cli"></a>Azure CLI
 

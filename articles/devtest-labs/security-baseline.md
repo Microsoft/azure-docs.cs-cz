@@ -3,12 +3,12 @@ title: Základní hodnoty zabezpečení Azure pro Azure DevTest Labs
 description: Základní hodnoty zabezpečení Azure pro Azure DevTest Labs
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: eabb55956f97f40312c894ccabd7a341ecc5688c
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 09b4e28437c79961d53cf07b068e3169d20fe0c4
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202007"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789900"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Základní hodnoty zabezpečení Azure pro Azure DevTest Labs
 
@@ -619,7 +619,7 @@ Azure Marketplace image virtuálních počítačů publikované Microsoftem jsou
 
 - [Implementace doporučení pro posouzení ohrožení zabezpečení Azure Security Center](../security-center/deploy-vulnerability-assessment-vm.md)
 - [Přehled konfigurace stavu Azure Automation](../automation/automation-dsc-overview.md)
-- [Ukázkový skript pro nahrání virtuálního pevného disku do Azure a vytvoření nového virtuálního počítače](../virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script.md)
+- [Ukázkový skript pro nahrání virtuálního pevného disku do Azure a vytvoření nového virtuálního počítače](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script)
 - [Postup vytvoření objektu pro vytváření imagí v DevTest Labs](image-factory-create.md)
 
 **Monitorování Azure Security Center:** Ano

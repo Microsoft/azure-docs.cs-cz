@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: 7d43c128f0f587a32cc4b8673727579043f268eb
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: ed1fe2885b1be28a03251bcfcecd08bdbd35adcf
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629591"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790068"
 ---
 # <a name="set-up-logging-to-monitor-logic-apps-in-azure-security-center"></a>Nastavení protokolování pro monitorování aplikací logiky v Azure Security Center
 
@@ -24,7 +24,7 @@ Když monitorete Logic Apps prostředky v [Microsoft Azure Security Center](../s
 
 * Předplatné Azure. Pokud předplatné nemáte, [Vytvořte si bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * Stávající aplikace logiky s [povolenou diagnostikou protokolování](#enable-diagnostic-logging)
-* Log Analytics pracovní prostor, který je nutný k povolení protokolování pro vaši aplikaci logiky. Pokud nemáte pracovní prostor, [vytvořte nejprve pracovní prostor](/azure/azure-monitor/learn/quick-create-workspace).
+* Log Analytics pracovní prostor, který je nutný k povolení protokolování pro vaši aplikaci logiky. Pokud nemáte pracovní prostor, [vytvořte nejprve pracovní prostor](../azure-monitor/learn/quick-create-workspace.md).
 
 ## <a name="enable-diagnostic-logging"></a>Povolení protokolování diagnostiky
 

@@ -4,12 +4,12 @@ description: Přečtěte si o balení aplikace Service Fabric v Azure a o tom, j
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 11a3fdd5dbaef53af321342952f786ed8119689c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 168e6d6dc7ab5bfeccc4e1dabc7bd50efcbe8f34
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021057"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789698"
 ---
 # <a name="package-an-application"></a>Balení aplikace
 
@@ -75,7 +75,7 @@ D:\Temp> msbuild HelloWorld.sfproj /t:Package
 
 ## <a name="test-the-package"></a>Test balíčku
 
-Strukturu balíčku můžete ověřit místně přes PowerShell pomocí příkazu [test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) .
+Strukturu balíčku můžete ověřit místně přes PowerShell pomocí příkazu [test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage) .
 Tento příkaz zkontroluje problémy s analýzou manifestu a ověří všechny odkazy. Tento příkaz ověřuje pouze strukturální správnost adresářů a souborů v balíčku.
 Neověřuje žádné obsahy obsahu ani balíčku dat mimo kontrolu, zda jsou k dispozici všechny potřebné soubory.
 
@@ -121,7 +121,7 @@ Test-ServiceFabricApplicationPackage .\MyApplicationType
 True
 ```
 
-Pokud má vaše aplikace definované [parametry aplikace](service-fabric-manage-multiple-environment-app-configuration.md) , můžete je předat do [test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) pro správné ověření.
+Pokud má vaše aplikace definované [parametry aplikace](service-fabric-manage-multiple-environment-app-configuration.md) , můžete je předat do [test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage) pro správné ověření.
 
 Pokud znáte cluster, do kterého bude aplikace nasazena, doporučujeme předat `ImageStoreConnectionString` parametr. V tomto případě je balíček také ověřený proti předchozím verzím aplikace, které jsou již spuštěny v clusteru. Ověřování například může zjistit, zda byl balíček se stejnou verzí, ale s jiným obsahem již nasazen.  
 
@@ -135,9 +135,9 @@ Pro komprimovaný balíček aplikace může [nahrávání balíčku aplikace](se
 Mechanismus nasazení je stejný pro komprimované a nekomprimované balíčky. Pokud je balíček komprimovaný, je uložený v úložišti imagí clusteru a před spuštěním aplikace je v uzlu nekomprimovaný.
 Komprese nahradí platný balíček Service Fabric komprimovanou verzí. Složka musí umožňovat oprávnění k zápisu. Spuštění komprese u již komprimovaného balíčku neposkytne žádné změny.
 
-Balíček můžete zkomprimovat spuštěním příkazu PowerShellu [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) s `CompressPackage` přepínačem. Balíček můžete dekomprimovat pomocí příkazu `UncompressPackage` Switch.
+Balíček můžete zkomprimovat spuštěním příkazu PowerShellu [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage) s `CompressPackage` přepínačem. Balíček můžete dekomprimovat pomocí příkazu `UncompressPackage` Switch.
 
-Následující příkaz zkomprimuje balíček bez jeho zkopírování do úložiště imagí. Komprimovaný balíček můžete zkopírovat do jednoho nebo více Service Fabric clusterů, a to podle potřeby pomocí [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) bez `SkipCopy` příznaku.
+Následující příkaz zkomprimuje balíček bez jeho zkopírování do úložiště imagí. Komprimovaný balíček můžete zkopírovat do jednoho nebo více Service Fabric clusterů, a to podle potřeby pomocí [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage) bez `SkipCopy` příznaku.
 Balíček teď obsahuje soubory zip pro `code` `config` balíčky, a `data` . Manifest aplikace a manifesty služby nejsou zip, protože jsou potřeba pro mnoho interních operací. Například sdílení balíčků, název typu aplikace a extrakce verzí pro určitá ověření všechny potřebují přístup k manifestům. Zipování manifesty by tyto operace neefektivně vedly.
 
 ```
@@ -179,7 +179,7 @@ D:\TEMP\MYAPPLICATIONTYPE
 
 ```
 
-Případně můžete balíček zkomprimovat a kopírovat pomocí [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) v jednom kroku.
+Případně můžete balíček zkomprimovat a kopírovat pomocí [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage) v jednom kroku.
 Pokud je balíček velký, poskytněte dostatečně dlouhou časovou prodlevu, aby bylo možné použít kompresi balíčku i odeslání do clusteru.
 
 ```powershell
@@ -212,7 +212,7 @@ S touto možností není nutné zkopírovat balíček aplikace do úložiště i
 `sfpkg`Soubor je zip, který obsahuje počáteční balíček aplikace a má příponu. sfpkg.
 V souboru ZIP může být balíček aplikace komprimovaný nebo nekomprimovaný. Komprese balíčku aplikace uvnitř souboru ZIP je prováděna na úrovni kódu, konfigurace a balíčku dat, jak je [uvedeno výše](service-fabric-package-apps.md#compress-a-package).
 
-Chcete-li vytvořit `sfpkg` , začněte složkou, která obsahuje původní balíček aplikace, komprimovaná nebo ne. Pak použijte libovolný nástroj pro zip složku s příponou ". sfpkg". Použijte například [podřízený ZipFile. CreateFromDirectory](/dotnet/api/system.io.compression.zipfile.createfromdirectory?view=netcore-3.1#System_IO_Compression_ZipFile_CreateFromDirectory_System_String_System_String_System_IO_Compression_CompressionLevel_System_Boolean_).
+Chcete-li vytvořit `sfpkg` , začněte složkou, která obsahuje původní balíček aplikace, komprimovaná nebo ne. Pak použijte libovolný nástroj pro zip složku s příponou ". sfpkg". Použijte například [podřízený ZipFile. CreateFromDirectory](/dotnet/api/system.io.compression.zipfile.createfromdirectory#System_IO_Compression_ZipFile_CreateFromDirectory_System_String_System_String_System_IO_Compression_CompressionLevel_System_Boolean_).
 
 ```csharp
 ZipFile.CreateFromDirectory(appPackageDirectoryPath, sfpkgFilePath);

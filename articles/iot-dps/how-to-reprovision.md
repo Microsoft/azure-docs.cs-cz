@@ -3,30 +3,22 @@ title: Opětovné zřízení zařízení v Azure IoT Hub Device Provisioning Ser
 description: Naučte se, jak znovu zřídit zařízení pomocí instance služby Device Provisioning Service (DPS) a proč to může být nutné.
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/04/2019
+ms.date: 01/25/2021
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: e5cc5b557aa4dff793f7e87093eeb65028da4f8c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d704e8f9687f3987d80018d84b41c0fd519da172
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010941"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791892"
 ---
 # <a name="how-to-reprovision-devices"></a>Postup opětovného zřízení zařízení
 
-Během životního cyklu řešení IoT je běžné přesouvat zařízení mezi centra IoT. Důvody pro tento přesun můžou zahrnovat následující scénáře:
+Během životního cyklu řešení IoT je běžné přesouvat zařízení mezi centra IoT. Toto téma je zapsáno, které pomáhá operátorům řešení nakonfigurovat zásady opětovného zřizování.
 
-* **Geografická poloha**: když se zařízení pohybuje mezi místy, zlepšuje se latence sítě tím, že se zařízení migruje do služby IoT Hub blíž do každého umístění.
-
-* **Víceklientská architektura: zařízení** se dá používat v rámci stejného řešení IoT, ale znovu přiřazeno nebo zapůjčení novému zákazníkovi nebo webu zákazníka. Tento nový zákazník se může obsluhovat pomocí jiného centra IoT.
-
-* **Změna řešení**: zařízení se přesunulo do nového nebo aktualizovaného řešení IoT. Tato změna přiřazení může vyžadovat, aby zařízení komunikovalo s novým službou IoT Hub, která je připojená k ostatním back-endové součásti. 
-
-* **Quarantine**: podobná změně řešení. Zařízení, které je v nefunkčním stavu, ohrožení zabezpečení nebo zastaralá, může být přiřazeno ke centru IoT, kde je vše možné aktualizovat a vrátit se do dodržování předpisů. Jakmile zařízení správně funguje, migruje se zpátky do hlavního centra.
-
-Podrobnější přehled o opětovném zřízení najdete v tématu [IoT Hub konceptů opětovného zřízení zařízení](concepts-device-reprovision.md).
+Podrobnější přehled scénářů opětovného zřízení najdete v tématu [IoT Hub konceptů opětovného zřízení zařízení](concepts-device-reprovision.md).
 
 
 ## <a name="configure-the-enrollment-allocation-policy"></a>Konfigurace zásad přidělení registrace

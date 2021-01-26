@@ -4,12 +4,12 @@ description: Typy uzlů, odolnost, spolehlivost a další věci, které je potř
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: pepogors
-ms.openlocfilehash: 731dcfdf25efc4b2f44669dacd8a400037ed47f4
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 03ec9b411f13f22a74b864a745acfed922e78b12
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576328"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790694"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric požadavky na plánování kapacity clusteru
 
@@ -146,7 +146,7 @@ Tady je doporučení pro výběr úrovně spolehlivosti. Počet počátečních 
 | 7 nebo 8 | Gold |
 | 9 a více | Podpora |
 
-Při zvětšení nebo zmenšení velikosti clusteru (součet instancí virtuálních počítačů ve všech typech uzlů) zvažte aktualizaci spolehlivosti clusteru z jedné úrovně na jinou. Tím se aktivují upgrady clusteru potřebné ke změně počtu sad replik systémových služeb. Před provedením jakýchkoli dalších změn v clusteru, jako je přidání uzlů, počkejte na dokončení probíhajícího upgradu.  Průběh upgradu můžete monitorovat na Service Fabric Explorer nebo spuštěním [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps)
+Při zvětšení nebo zmenšení velikosti clusteru (součet instancí virtuálních počítačů ve všech typech uzlů) zvažte aktualizaci spolehlivosti clusteru z jedné úrovně na jinou. Tím se aktivují upgrady clusteru potřebné ke změně počtu sad replik systémových služeb. Před provedením jakýchkoli dalších změn v clusteru, jako je přidání uzlů, počkejte na dokončení probíhajícího upgradu.  Průběh upgradu můžete monitorovat na Service Fabric Explorer nebo spuštěním [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade)
 
 ### <a name="capacity-planning-for-reliability"></a>Plánování kapacity pro spolehlivost
 

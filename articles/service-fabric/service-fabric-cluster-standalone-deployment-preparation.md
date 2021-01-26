@@ -3,12 +3,12 @@ title: Příprava nasazení samostatného clusteru
 description: Dokumentace týkající se přípravy prostředí a vytvoření konfigurace clusteru, která se má zvážit před nasazením clusteru určeného pro zpracování produkčního zatížení.
 ms.topic: conceptual
 ms.date: 9/11/2018
-ms.openlocfilehash: 277c7e047815b3b4171f7cced203ecbe5b68b155
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 18b8b0ce8c0e877bf9dd274596b19f85b1febe12
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509168"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790948"
 ---
 # <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>Plánování a příprava nasazení samostatného clusteru Service Fabric
 
@@ -57,7 +57,7 @@ Tady jsou doporučené specifikace pro počítače ve Service Fabricm clusteru:
 * Připojení k zabezpečené síti nebo sítím pro všechny počítače
 * Nainstalovaný operační systém Windows Server (platné verze: 2012 R2, 2016, 1709 nebo 1803). Verze Service Fabric 6.4.654.9590 a novější také podporuje servery 2019 a 1809.
 * Úplná instalace [.NET Framework 4.5.1 nebo vyšší](https://www.microsoft.com/download/details.aspx?id=40773)verze
-* [Windows PowerShell 3.0](/powershell/scripting/windows-powershell/install/installing-windows-powershell?view=powershell-7)
+* [Windows PowerShell 3.0](/powershell/scripting/windows-powershell/install/installing-windows-powershell)
 * [Služba RemoteRegistry](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754820(v=ws.11)) by měla běžet na všech počítačích
 * **Instalační jednotka Service Fabric musí být systém souborů NTFS.**
 * ***Protokoly výkonu* služeb systému Windows & výstrahy a *protokol událostí systému Windows* musí [být povoleny](/previous-versions/windows/it-pro/windows-server-2008-r2-and-2008/cc755249(v=ws.11))**.
@@ -79,7 +79,7 @@ Otevřete některý z ClusterConfig.jssouborů z balíčku, který jste stáhli,
 | **Nastavení konfigurace** | **Popis** |
 | --- | --- |
 | **NodeTypes** |Typy uzlů umožňují oddělit uzly clusteru do různých skupin. Cluster musí mít alespoň jeden uzel NodeType. Všechny uzly ve skupině mají tyto společné charakteristiky: <br> **Název** – jedná se o název typu uzlu. <br>**Porty koncového bodu** – jedná se o různé pojmenované koncové body (porty), které jsou přidružené k tomuto typu uzlu. Můžete použít libovolné číslo portu, které chcete, pokud nekoliduje s jakýmkoli jiným v tomto manifestu a nejsou již používány žádnou jinou aplikací spuštěnou v počítači nebo VIRTUÁLNÍm počítači. <br> **Vlastnosti umístění** – tyto popisují vlastnosti tohoto typu uzlu, které používáte jako omezení umístění pro systémové služby nebo služby. Tyto vlastnosti jsou uživatelsky definované páry klíč/hodnota, které poskytují dodatečné meta data pro daný uzel. Mezi příklady vlastností uzlu patří to, jestli má uzel pevný disk nebo grafickou kartu, počet disků v jeho pevném disku, jádrech a dalších fyzických vlastnostech. <br> **Kapacity – kapacity** uzlů definují název a velikost konkrétního prostředku, ke kterému má určitý uzel k dispozici pro spotřebu. Uzel může například definovat, že má kapacitu pro metriku nazvanou "MemoryInMb" a že má ve výchozím nastavení k dispozici 2048 MB. Tyto kapacity se používají za běhu, aby se zajistilo, že služby, které vyžadují konkrétní objemy prostředků, jsou umístěné na uzlech, které mají tyto prostředky k dispozici v požadovaných částkách.<br>**Primární** – Pokud máte definován více než jeden typ NodeType, zajistěte, aby byla vlastnost Primary nastavena na primární s hodnotou *true*, což je, kde jsou spuštěny systémové služby. Všechny ostatní typy uzlů by měly být nastavené na hodnotu *false* . |
-| **Sortiment** |Toto jsou podrobnosti pro každý uzel, který je součástí clusteru (typ uzlu, název uzlu, IP adresa, doména selhání a upgradovací doména uzlu). Počítače, na kterých chcete cluster vytvořit, musí být uvedené tady se svými IP adresami. <br> Pokud pro všechny uzly použijete stejnou IP adresu, vytvoří se cluster s jedním box, který můžete použít pro účely testování. Nepoužívejte clustery s jedním box pro nasazení produkčních úloh. |
+| **Uzly** |Toto jsou podrobnosti pro každý uzel, který je součástí clusteru (typ uzlu, název uzlu, IP adresa, doména selhání a upgradovací doména uzlu). Počítače, na kterých chcete cluster vytvořit, musí být uvedené tady se svými IP adresami. <br> Pokud pro všechny uzly použijete stejnou IP adresu, vytvoří se cluster s jedním box, který můžete použít pro účely testování. Nepoužívejte clustery s jedním box pro nasazení produkčních úloh. |
 
 Po konfiguraci clusteru se všechna nastavení nakonfigurují pro prostředí, která se dají testovat v prostředí clusteru (krok 7).
 

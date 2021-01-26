@@ -3,12 +3,12 @@ title: Konfigurace podpory spravované identity v existujícím clusteru Service
 description: Tady je postup povolení podpory spravovaných identit v existujícím clusteru Azure Service Fabric.
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: 7bcba34e941f6fee038aa475d7c0869eb65aca2e
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: dc341688cae6d98f53be10351e4e4572a3539e4e
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96574696"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790035"
 ---
 # <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster"></a>Konfigurace podpory spravované identity v existujícím clusteru Service Fabric
 
@@ -39,7 +39,7 @@ Chcete-li povolit službu spravovaných tokenů identity v existujícím cluster
 ]
 ```
 
-Aby se změny projevily, budete také muset změnit zásadu upgradu, aby určovala vynucené restartování Service Fabric modulu runtime na každém uzlu, protože upgrade probíhají prostřednictvím clusteru. Tento restart zajistí, že se nově povolená systémová služba spustí a spustí na každém uzlu. V následujícím fragmentu kódu `forceRestart` je základní nastavení pro povolení restartu. Pro zbývající parametry použijte hodnoty popsané níže nebo použijte existující vlastní hodnoty, které už jsou pro prostředek clusteru zadané. Vlastní nastavení zásad upgradu prostředků infrastruktury (upgradeDescription) se dají zobrazit na webu Azure Portal výběrem možnosti upgrady prostředků infrastruktury na prostředku Service Fabric nebo resources.azure.com. Výchozí možnosti pro zásady upgradu (upgradeDescription) není možné zobrazit z PowerShellu ani resources.azure.com. Další informace najdete v tématu [ClusterUpgradePolicy](/dotnet/api/microsoft.azure.management.servicefabric.models.clusterupgradepolicy?view=azure-dotnet) .  
+Aby se změny projevily, budete také muset změnit zásadu upgradu, aby určovala vynucené restartování Service Fabric modulu runtime na každém uzlu, protože upgrade probíhají prostřednictvím clusteru. Tento restart zajistí, že se nově povolená systémová služba spustí a spustí na každém uzlu. V následujícím fragmentu kódu `forceRestart` je základní nastavení pro povolení restartu. Pro zbývající parametry použijte hodnoty popsané níže nebo použijte existující vlastní hodnoty, které už jsou pro prostředek clusteru zadané. Vlastní nastavení zásad upgradu prostředků infrastruktury (upgradeDescription) se dají zobrazit na webu Azure Portal výběrem možnosti upgrady prostředků infrastruktury na prostředku Service Fabric nebo resources.azure.com. Výchozí možnosti pro zásady upgradu (upgradeDescription) není možné zobrazit z PowerShellu ani resources.azure.com. Další informace najdete v tématu [ClusterUpgradePolicy](/dotnet/api/microsoft.azure.management.servicefabric.models.clusterupgradepolicy) .  
 
 ```json
 "upgradeDescription": {

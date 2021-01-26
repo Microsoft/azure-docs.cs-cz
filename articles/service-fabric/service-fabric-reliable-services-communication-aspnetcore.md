@@ -4,12 +4,12 @@ description: Naučte se používat ASP.NET Core v bezstavových a stavových apl
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ba5626d477bbd6aa07d89703cc37b157f4cfd4d5
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: a125c6a1972b51f518175a4c69248119f71ada7c
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576787"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791590"
 ---
 # <a name="aspnet-core-in-azure-service-fabric-reliable-services"></a>ASP.NET Core v Azure Service Fabric Reliable Services
 
@@ -190,7 +190,7 @@ Dynamický port přidělený `Endpoint` konfigurací poskytuje pouze jeden port 
 ## <a name="kestrel-in-reliable-services"></a>Kestrel v Reliable Services
 Pomocí Kestrel můžete v Reliable Services importovat balíček NuGet **Microsoft. ServiceFabric. AspNetCore. Kestrel** . Tento balíček obsahuje `KestrelCommunicationListener` implementaci `ICommunicationListener` . `KestrelCommunicationListener` umožňuje vytvořit ASP.NET Core webhost v rámci spolehlivé služby pomocí Kestrel jako webového serveru.
 
-Kestrel je webový server pro různé platformy pro ASP.NET Core. Na rozdíl od HTTP.sys Kestrel nepoužívá centralizovaného správce koncových bodů. Kestrel také na rozdíl od HTTP.sys nepodporuje sdílení portů mezi několika procesy. Každá instance Kestrel musí používat jedinečný port. Další informace o Kestrel najdete v [podrobnostech implementace](/aspnet/core/fundamentals/servers/kestrel?view=aspnetcore-2.2).
+Kestrel je webový server pro různé platformy pro ASP.NET Core. Na rozdíl od HTTP.sys Kestrel nepoužívá centralizovaného správce koncových bodů. Kestrel také na rozdíl od HTTP.sys nepodporuje sdílení portů mezi několika procesy. Každá instance Kestrel musí používat jedinečný port. Další informace o Kestrel najdete v [podrobnostech implementace](/aspnet/core/fundamentals/servers/kestrel).
 
 ![Diagram Kestrel][4]
 

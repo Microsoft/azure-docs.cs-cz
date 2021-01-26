@@ -4,12 +4,12 @@ description: Vzdálená komunikace Service Fabric umožňuje klientům a služb�
 ms.topic: conceptual
 ms.date: 09/20/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c3659fea73abae3c9c5264f227b90d0af95a93e7
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: a0486a27d76c978a65c4a3cfd81df52a12e4ea1d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576651"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791573"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>Vzdálená komunikace služby v jazyce C# s Reliable Services
 
@@ -160,7 +160,7 @@ Tyto kroky mění kód šablony pro použití zásobníku v2 pomocí explicitní
    </Resources>
    ```
 
-2. Použijte [FabricTransportServiceRemotingListener](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener?view=azure-dotnet) z `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Runtime` oboru názvů.
+2. Použijte [FabricTransportServiceRemotingListener](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener) z `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Runtime` oboru názvů.
 
    ```csharp
    protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -176,7 +176,7 @@ Tyto kroky mění kód šablony pro použití zásobníku v2 pomocí explicitní
     }
    ```
 
-3. Pro vytváření klientů použijte [FabricTransportServiceRemotingClientFactory](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet) z `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Client` oboru názvů.
+3. Pro vytváření klientů použijte [FabricTransportServiceRemotingClientFactory](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory) z `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Client` oboru názvů.
 
    ```csharp
    var proxyFactory = new ServiceProxyFactory((c) =>
@@ -255,7 +255,7 @@ Pomocí těchto kroků můžete přejít na V2_1 Stack.
     }
    ```
 
-3. Přidejte [atribut Assembly](/dotnet/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportserviceremotingproviderattribute?view=azure-dotnet) na rozhraních vzdálené komunikace.
+3. Přidejte [atribut Assembly](/dotnet/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportserviceremotingproviderattribute) na rozhraních vzdálené komunikace.
 
    ```csharp
     [assembly:  FabricTransportServiceRemotingProvider(RemotingListenerVersion=  RemotingListenerVersion.V2_1, RemotingClientVersion= RemotingClientVersion.V2_1)]
@@ -267,7 +267,7 @@ Sestavte sestavení klienta se sestavením rozhraní, abyste se ujistili, že se
 
 ### <a name="use-explicit-remoting-classes-to-create-a-listenerclient-factory-for-the-v2-interface-compatible-version"></a>Použití explicitních tříd vzdálené komunikace k vytvoření naslouchacího procesu/továrny klienta pro verzi v2 (kompatibilní s rozhraním)
 
-Postupujte takto:
+Postupujte následovně:
 
 1. Přidejte prostředek koncového bodu s názvem "ServiceEndpointV2_1" v manifestu služby.
 
@@ -279,7 +279,7 @@ Postupujte takto:
    </Resources>
    ```
 
-2. Použijte [naslouchací proces vzdálené komunikace v2](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener?view=azure-dotnet). Výchozí použitý název prostředku koncového bodu služby je "ServiceEndpointV2_1". Musí být definován v manifestu služby.
+2. Použijte [naslouchací proces vzdálené komunikace v2](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener). Výchozí použitý název prostředku koncového bodu služby je "ServiceEndpointV2_1". Musí být definován v manifestu služby.
 
    ```csharp
    protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -297,7 +297,7 @@ Postupujte takto:
     }
    ```
 
-3. Použijte [klientskou továrnu](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet)v2.
+3. Použijte [klientskou továrnu](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory)v2.
    ```csharp
    var proxyFactory = new ServiceProxyFactory((c) =>
           {
@@ -356,7 +356,7 @@ Tento krok zajistí, že služba naslouchá jenom na naslouchací službě v2.
 ### <a name="use-custom-serialization-with-a-remoting-wrapped-message"></a>Použití vlastní serializace se zprávou zabalené vzdálené komunikace
 
 U zprávy zabalené vzdálené komunikace vytvoříme jeden zabalený objekt se všemi parametry jako pole v něm.
-Postupujte takto:
+Postupujte následovně:
 
 1. Implementujte `IServiceRemotingMessageSerializationProvider` rozhraní k poskytnutí implementace pro vlastní serializaci.
     Tento fragment kódu ukazuje, jak implementace vypadá jako.

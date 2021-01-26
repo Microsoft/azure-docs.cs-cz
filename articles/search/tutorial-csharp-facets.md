@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 10/01/2020
+ms.date: 01/26/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ab15af07c5f63d375d8fdb4fc38e0853e207a0be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44a05ed5b4386f2787a1c84dfeb61a5d539c7cb5
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667278"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789799"
 ---
 # <a name="tutorial-add-faceted-navigation-using-the-net-sdk"></a>Kurz: Přidání naomezující navigace pomocí sady .NET SDK
 
@@ -35,7 +35,7 @@ Hotovou verzi kódu v tomto kurzu najdete v následujícím projektu:
 
 * [4 – Přidání vlastností – navigace (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/4-add-facet-navigation)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [2a – řešení pro přidání stránkování (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/2a-add-paging) . Tento projekt může být vlastní verze sestavená z předchozího kurzu nebo kopie z GitHubu.
 
@@ -45,7 +45,7 @@ Tento kurz byl aktualizován tak, aby používal balíček [Azure.Search.Documen
 
 Aby se vlastnost modelu nacházela v hledání omezující vlastnosti, musí být označená pomocí třídy **Face**.
 
-1. Prověřte třídu **hotelu** . **Kategorie** a **značky**jsou například označeny jako " **Faced**", ale **hotely** a **Description** nejsou. 
+1. Prověřte třídu **hotelu** . **Kategorie** a **značky** jsou například označeny jako " **Faced**", ale **hotely** a **Description** nejsou. 
 
     ```cs
     public partial class Hotel
@@ -111,7 +111,7 @@ Je to úloha kontroleru, která předáte seznam omezujících vlastností do zo
 
 ### <a name="add-the-facet-action-method"></a>Přidání metody akce omezující vlastnosti
 
-Ovladač Home vyžaduje jednu novou akci, **omezující vlastnost**a aktualizace svého existujícího **indexu** a akcí **stránky** a metody **RunQueryAsync** .
+Ovladač Home vyžaduje jednu novou akci, **omezující vlastnost** a aktualizace svého existujícího **indexu** a akcí **stránky** a metody **RunQueryAsync** .
 
 <!-- 1. Open the home controller file, and add the **using** statement, to enable the **List&lt;string&gt;** construct.
 

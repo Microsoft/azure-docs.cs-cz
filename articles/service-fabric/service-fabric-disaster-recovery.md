@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 9c258d8d0a7aa26c96ab4f64017770ebdd153e60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d99b4d1fbf227d850de387b7ca24dcd3fd40646
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86257510"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791151"
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Zotavení po havárii v Azure Service Fabric
 Důležitou součástí poskytování vysoké dostupnosti je zajištění, že služby mohou zachovány všechny různé typy selhání. To je obzvláště důležité pro neplánované chyby a mimo váš ovládací prvek. 
@@ -172,7 +172,7 @@ Následující akce mohou mít za následek ztrátu dat. Před provedením tohot
 >
 
 - Použijte `Repair-ServiceFabricPartition -PartitionId` `System.Fabric.FabricClient.ClusterManagementClient.RecoverPartitionAsync(Guid partitionId)` rozhraní API nebo. Toto rozhraní API umožňuje zadat ID oddílu pro přesunutí ztráty kvora a potenciální ztráty dat.
-- Pokud se v clusteru vyskytují časté chyby, které způsobují, že se služby přestanou do stavu ztráty kvora, a může dojít _ke ztrátě dat_, zadáním příslušné hodnoty [QuorumLossWaitDuration](/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) může vaše služba automaticky obnovit. Service Fabric `QuorumLossWaitDuration` před provedením obnovení počká na poskytnutou hodnotu (výchozí je nekonečno). Tuto metodu *nedoporučujeme* , protože může dojít k neočekávaným ztrátám dat.
+- Pokud se v clusteru vyskytují časté chyby, které způsobují, že se služby přestanou do stavu ztráty kvora, a může dojít _ke ztrátě dat_, zadáním příslušné hodnoty [QuorumLossWaitDuration](/powershell/module/servicefabric/update-servicefabricservice) může vaše služba automaticky obnovit. Service Fabric `QuorumLossWaitDuration` před provedením obnovení počká na poskytnutou hodnotu (výchozí je nekonečno). Tuto metodu *nedoporučujeme* , protože může dojít k neočekávaným ztrátám dat.
 
 ## <a name="availability-of-the-service-fabric-cluster"></a>Dostupnost clusteru Service Fabric
 Obecně platí, že Cluster Service Fabric je vysoce distribuované prostředí bez jednoho bodu selhání. Selhání žádného uzlu nebude způsobovat problémy s dostupností nebo spolehlivostí clusteru, a to hlavně proto, že systémové služby Service Fabric postupují podle výše uvedených pokynů. To znamená, že se ve výchozím nastavení vždycky spouštějí se třemi nebo více replikami a systémové služby, které jsou na všech uzlech bez stavového provozu. 

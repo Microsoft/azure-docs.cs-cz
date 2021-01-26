@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: how-to
 ms.date: 11/10/2020
-ms.openlocfilehash: fe79797aeef2b0c148aece0319d6b340b663b184
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: 96872a067d2414254aec3f212542dadabdf2bd6f
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763719"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791737"
 ---
 # <a name="how-to-use-postman-to-send-requests-to-the-azure-digital-twins-apis"></a>Jak používat metodu POST k posílání žádostí do rozhraní API digitálních vláken Azure
 
@@ -25,7 +25,7 @@ Tento článek popisuje, jak nakonfigurovat [klienta post REST](https://www.getp
 1. Nastavte si kolekci post a nakonfigurujte klienta post REST, aby k ověřování používal váš nosný token.
 1. Použijte nakonfigurovaného Poster k vytvoření a odeslání žádosti do rozhraní API digitálních vláken Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete pokračovat v používání metody post pro přístup k rozhraním API digitálních vláken Azure, musíte nastavit instanci digitálních vláken Azure a stáhnout post. Zbytek této části vás provede následujícími kroky.
 
@@ -52,7 +52,7 @@ V opačném případě můžete otevřít okno [Azure Cloud Shell](https://shell
     az login
     ```
 
-1. V dalším kroku pomocí příkazu [AZ Account Get-Access-token](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest&preserve-view=true#az_account_get_access_token) Získejte nosný token s přístupem ke službě digitálního vlákna Azure.
+1. V dalším kroku pomocí příkazu [AZ Account Get-Access-token](/cli/azure/account?preserve-view=true&view=azure-cli-latest#az_account_get_access_token) Získejte nosný token s přístupem ke službě digitálního vlákna Azure.
 
     ```azurecli-interactive
     az account get-access-token --resource 0b07f429-9f4b-4714-9392-cc5e8e80c8b0

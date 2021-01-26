@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 12/18/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 5fcb3226eebf39ab18fb3bb24f0521a0523748d4
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: bc9601dbea5c73c6909bd658f322c345143a526c
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134173"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790270"
 ---
 # <a name="azure-key-vault-logging"></a>Protokolování v Azure Key Vaultu
 
@@ -59,7 +59,7 @@ Jednotlivé objekty blob jsou uloženy jako text ve formátu JSON blob. Pojďme 
 
 V následující tabulce jsou uvedené názvy a popisy polí:
 
-| Název pole | Description |
+| Název pole | Popis |
 | --- | --- |
 | **interval** |Datum a čas ve standardu UTC. |
 | **Prostředku** |ID prostředku Azure Resource Manager. U protokolů Key Vault se jedná vždy o Key Vault Resource ID. |
@@ -75,7 +75,7 @@ V následující tabulce jsou uvedené názvy a popisy polí:
 | **odcizen** |Identita z tokenu, který byl předložen v žádosti REST API. Obvykle se jedná o "uživatel", "instanční objekt" nebo kombinaci "User + appId", jako v případě požadavku, který je výsledkem rutiny Azure PowerShell. |
 | **vlastnosti** |Informace, které se liší v závislosti na operaci (**OperationName**). Ve většině případů toto pole obsahuje informace o klientovi (uživatelský agent, který předává klient), přesný REST API identifikátor URI žádosti a stavový kód HTTP. Kromě toho, když se vrátí objekt jako výsledek požadavku (například **Vytvoření** nebo **VaultGet**), obsahuje taky identifikátor URI klíče (jako `id` ), identifikátor URI trezoru nebo tajný identifikátor URI. |
 
-Hodnoty polí **OperationName** jsou ve formátu *ObjectVerb* . Příklad:
+Hodnoty polí **OperationName** jsou ve formátu *ObjectVerb* . Například:
 
 * Všechny operace trezoru klíčů mají `Vault<action>` formát, například `VaultGet` a `VaultCreate` .
 * Všechny operace s klíči mají `Key<action>` formát, například `KeySign` a `KeyList` .
@@ -194,7 +194,7 @@ Další informace, včetně postupu nastavení, najdete [v tématu Azure Key Vau
 ## <a name="next-steps"></a>Další kroky
 
 - [Postup povolení protokolování Key Vault](howto-logging.md)
-- [Monitorování Azure](https://docs.microsoft.com/azure/azure-monitor/)
+- [Monitorování Azure](../../azure-monitor/index.yml)
 - Kurz, který používá Azure Key Vault ve webové aplikaci .NET, najdete v tématu [použití Azure Key Vault z webové aplikace](tutorial-net-create-vault-azure-web-app.md).
 - Programátorské reference najdete v [příručce pro vývojáře Azure Key Vault](developers-guide.md).
 - Seznam rutin Azure PowerShell 1,0 pro Azure Key Vault najdete v tématu [rutiny Azure Key Vault](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault).

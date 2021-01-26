@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/19/2020
 ms.author: alkohli
 ms.subservice: pod
-ms.openlocfilehash: 80a6824edb92d8337481f592cbbf5eb23255b383
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: e6b588ddea5bf4b4c92e89d9cebb37b09b9a86af
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185525"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791540"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-azure-data-box"></a>Použití klíčů spravovaných zákazníkem v Azure Key Vault pro Azure Data Box
 
@@ -95,7 +95,7 @@ Pokud chcete povolit klíč spravovaný zákazníkem pro existující pořadí D
 
 7. Vyberte typ identity, který se použije ke správě klíče spravovaného zákazníkem pro tento prostředek. Můžete použít identitu **přiřazenou systémem** , která byla vygenerována během vytváření objednávky nebo zvolit identitu přiřazenou uživatelem.
 
-    Identita přiřazená uživatelem je nezávislý prostředek, který můžete použít ke správě přístupu k prostředkům. Další informace najdete v tématu [spravované typy identit](/azure/active-directory/managed-identities-azure-resources/overview).
+    Identita přiřazená uživatelem je nezávislý prostředek, který můžete použít ke správě přístupu k prostředkům. Další informace najdete v tématu [spravované typy identit](../active-directory/managed-identities-azure-resources/overview.md).
 
     ![Vyberte typ identity.](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-13.png)
 
@@ -103,7 +103,7 @@ Pokud chcete povolit klíč spravovaný zákazníkem pro existující pořadí D
 
     ![Vyberte identitu, kterou chcete použít.](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-14.png)
 
-    Tady nemůžete vytvořit novou identitu uživatele. Pokud chcete zjistit, jak ho vytvořit, přečtěte si téma [Vytvoření, výpis, odstranění nebo přiřazení role k spravované identitě přiřazené uživatelem pomocí Azure Portal](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal).
+    Tady nemůžete vytvořit novou identitu uživatele. Pokud chcete zjistit, jak ho vytvořit, přečtěte si téma [Vytvoření, výpis, odstranění nebo přiřazení role k spravované identitě přiřazené uživatelem pomocí Azure Portal](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md).
 
     Vybraná identita uživatele se zobrazí v nastavení **typu šifrování** .
 
@@ -187,9 +187,9 @@ Pokud obdržíte nějaké chyby týkající se vašeho klíče spravovaného zá
 |-------------|--------------|---------|
 | SsemUserErrorEncryptionKeyDisabled| Nepovedlo se načíst klíč, protože je zakázaný spravovaný klíč zákazníka.| Ano, povolením verze klíče.|
 | SsemUserErrorEncryptionKeyExpired| Nepovedlo se načíst klíč, protože vypršela platnost klíče spravovaného zákazníkem.| Ano, povolením verze klíče.|
-| SsemUserErrorKeyDetailsNotFound| Klíč nešlo načíst, protože se nepovedlo najít spravovaný klíč zákazníka.| Pokud jste odstranili Trezor klíčů, nemůžete obnovit klíč spravovaný zákazníkem.  Pokud jste tento trezor klíčů migrovali do jiného tenanta, přečtěte si téma [Změna ID tenanta trezoru klíčů po přesunu předplatného](../key-vault/general/move-subscription.md). Pokud jste odstranili Trezor klíčů:<ol><li>Ano, pokud je v době trvání ochrany vyprázdnění, postupujte podle kroků v části [obnovení trezoru klíčů](../key-vault/general/soft-delete-powershell.md#recovering-a-key-vault).</li><li>Ne, pokud je mimo dobu trvání ochrany vyprázdnění.</li></ol><br>V opačném případě, pokud Trezor klíčů prošl při migraci tenanta, můžete ho obnovit pomocí jednoho z následujících kroků: <ol><li>Obnovte Trezor klíčů zpátky na starého tenanta.</li><li>Nastavte `Identity = None` a pak nastavte hodnotu zpět na `Identity = SystemAssigned` . Tím se po vytvoření nové identity odstraní a znovu vytvoří identita. Povolte `Get` , `Wrap` a `Unwrap` oprávnění k nové identitě v zásadách přístupu trezoru klíčů.</li></ol> |
+| SsemUserErrorKeyDetailsNotFound| Klíč nešlo načíst, protože se nepovedlo najít spravovaný klíč zákazníka.| Pokud jste odstranili Trezor klíčů, nemůžete obnovit klíč spravovaný zákazníkem.  Pokud jste tento trezor klíčů migrovali do jiného tenanta, přečtěte si téma [Změna ID tenanta trezoru klíčů po přesunu předplatného](../key-vault/general/move-subscription.md). Pokud jste odstranili Trezor klíčů:<ol><li>Ano, pokud je v době trvání ochrany vyprázdnění, postupujte podle kroků v části [obnovení trezoru klíčů](../key-vault/general/key-vault-recovery.md?tabs=azure-powershell#key-vault-powershell).</li><li>Ne, pokud je mimo dobu trvání ochrany vyprázdnění.</li></ol><br>V opačném případě, pokud Trezor klíčů prošl při migraci tenanta, můžete ho obnovit pomocí jednoho z následujících kroků: <ol><li>Obnovte Trezor klíčů zpátky na starého tenanta.</li><li>Nastavte `Identity = None` a pak nastavte hodnotu zpět na `Identity = SystemAssigned` . Tím se po vytvoření nové identity odstraní a znovu vytvoří identita. Povolte `Get` , `Wrap` a `Unwrap` oprávnění k nové identitě v zásadách přístupu trezoru klíčů.</li></ol> |
 | SsemUserErrorKeyVaultBadRequestException | Byl použit klíč spravovaný zákazníkem, ale přístup k klíči nebyl udělen nebo byl odvolán nebo nebylo možné získat přístup k trezoru klíčů, protože je povolená brána firewall. | Přidejte identitu vybranou k vašemu trezoru klíčů, aby bylo možné povolit přístup ke spravovanému klíči zákazníka. Pokud má Trezor klíčů zapnutou bránu firewall, přepněte na identitu přiřazenou systémem a pak přidejte spravovaný klíč zákazníka. Další informace najdete v tématu Jak [klíč povolit](#enable-key). |
-| SsemUserErrorKeyVaultDetailsNotFound| Nepovedlo se načíst klíč, protože se nepovedlo najít přidružený Trezor klíčů pro spravovaný klíč zákazníka. | Pokud jste odstranili Trezor klíčů, nemůžete obnovit klíč spravovaný zákazníkem.  Pokud jste tento trezor klíčů migrovali do jiného tenanta, přečtěte si téma [Změna ID tenanta trezoru klíčů po přesunu předplatného](../key-vault/general/move-subscription.md). Pokud jste odstranili Trezor klíčů:<ol><li>Ano, pokud je v době trvání ochrany vyprázdnění, postupujte podle kroků v části [obnovení trezoru klíčů](../key-vault/general/soft-delete-powershell.md#recovering-a-key-vault).</li><li>Ne, pokud je mimo dobu trvání ochrany vyprázdnění.</li></ol><br>V opačném případě, pokud Trezor klíčů prošl při migraci tenanta, můžete ho obnovit pomocí jednoho z následujících kroků: <ol><li>Obnovte Trezor klíčů zpátky na starého tenanta.</li><li>Nastavte `Identity = None` a pak nastavte hodnotu zpět na `Identity = SystemAssigned` . Tím se po vytvoření nové identity odstraní a znovu vytvoří identita. Povolte `Get` , `Wrap` a `Unwrap` oprávnění k nové identitě v zásadách přístupu trezoru klíčů.</li></ol> |
+| SsemUserErrorKeyVaultDetailsNotFound| Nepovedlo se načíst klíč, protože se nepovedlo najít přidružený Trezor klíčů pro spravovaný klíč zákazníka. | Pokud jste odstranili Trezor klíčů, nemůžete obnovit klíč spravovaný zákazníkem.  Pokud jste tento trezor klíčů migrovali do jiného tenanta, přečtěte si téma [Změna ID tenanta trezoru klíčů po přesunu předplatného](../key-vault/general/move-subscription.md). Pokud jste odstranili Trezor klíčů:<ol><li>Ano, pokud je v době trvání ochrany vyprázdnění, postupujte podle kroků v části [obnovení trezoru klíčů](../key-vault/general/key-vault-recovery.md?tabs=azure-powershell#key-vault-powershell).</li><li>Ne, pokud je mimo dobu trvání ochrany vyprázdnění.</li></ol><br>V opačném případě, pokud Trezor klíčů prošl při migraci tenanta, můžete ho obnovit pomocí jednoho z následujících kroků: <ol><li>Obnovte Trezor klíčů zpátky na starého tenanta.</li><li>Nastavte `Identity = None` a pak nastavte hodnotu zpět na `Identity = SystemAssigned` . Tím se po vytvoření nové identity odstraní a znovu vytvoří identita. Povolte `Get` , `Wrap` a `Unwrap` oprávnění k nové identitě v zásadách přístupu trezoru klíčů.</li></ol> |
 | SsemUserErrorSystemAssignedIdentityAbsent  | Klíč nešlo načíst, protože se nepovedlo najít spravovaný klíč zákazníka.| Ano, zjistit, zda: <ol><li>Trezor klíčů má stále instalační soubor MSI v zásadách přístupu.</li><li>Identita je typu přiřazeno systémem.</li><li>Povolte oprávnění získat, zabalit a zrušit zalomení identity v zásadách přístupu trezoru klíčů.</li></ol>|
 | SsemUserErrorUserAssignedLimitReached | Přidání nové identity přiřazené uživatelem se nepovedlo, protože jste dosáhli limitu celkového počtu identit přiřazených uživateli, které se dají přidat. | Zkuste prosím operaci zopakovat s menším počtem uživatelských identit nebo před opakováním pokusu z prostředku odebrat některé identity přiřazené uživateli. |
 | SsemUserErrorCrossTenantIdentityAccessForbidden | Operace přístupu ke spravované identitě se nezdařila. <br> Poznámka: Jedná se o situaci, kdy se předplatné přesune do jiného tenanta. Zákazník musí ručně přesunout identitu do nového tenanta. Další podrobnosti najdete v PFA mailu. | Přesuňte prosím identitu vybranou na nového tenanta, pod nímž je předplatné k dispozici. Další informace najdete v tématu Jak [klíč povolit](#enable-key). |

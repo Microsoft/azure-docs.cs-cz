@@ -4,12 +4,12 @@ description: V tomto rychlém startu se dozvíte, jak začít s klientskou kniho
 ms.topic: quickstart
 ms.date: 06/18/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 02dc36fb388135c31f639a26264579ab9de75b8c
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: fba4354fb1aae19833790e166474008dc994cd79
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98256482"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98792308"
 ---
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabilní verze)](#tab/version-1)
 
@@ -24,7 +24,7 @@ Pomocí klientské knihovny QnA Maker Node.js:
 * Získat odpověď ze znalostní báze
 * Odstranit znalostní bázi
 
-[Referenční dokumentace](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/?view=azure-node-latest)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-qnamaker)  |  [Balíček (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker)  |  [UkázkyNode.js](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/QnAMaker/sdk/qnamaker_quickstart.js)
+[Referenční dokumentace](/javascript/api/@azure/cognitiveservices-qnamaker/?view=azure-node-latest)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-qnamaker)  |  [Balíček (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker)  |  [UkázkyNode.js](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/QnAMaker/sdk/qnamaker_quickstart.js)
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker spravované (verze Preview)](#tab/version-2)
 
@@ -38,13 +38,13 @@ Pomocí klientské knihovny QnA Maker Node.js:
 * Získat odpověď ze znalostní báze
 * Odstranit znalostní bázi
 
-[Referenční dokumentace](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/?view=azure-node-latest)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-qnamaker)  |  [Balíček (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker)  |  [UkázkyNode.js](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/QnAMaker/sdk/preview-sdk/quickstart.js)
+[Referenční dokumentace](/javascript/api/@azure/cognitiveservices-qnamaker/?view=azure-node-latest)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-qnamaker)  |  [Balíček (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker)  |  [UkázkyNode.js](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/QnAMaker/sdk/preview-sdk/quickstart.js)
 
 ---
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabilní verze)](#tab/version-1)
 
@@ -149,13 +149,13 @@ Vytvořte proměnnou pro klíč Azure prostředku a název prostředku.
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabilní verze)](#tab/version-1)
 
-[QnA maker](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/?view=azure-node-latest) používá dva různé objektové modely:
+[QnA maker](/javascript/api/@azure/cognitiveservices-qnamaker/?view=azure-node-latest) používá dva různé objektové modely:
 * **[QnAMakerClient](#qnamakerclient-object-model)** je objekt, který slouží k vytvoření, správě, publikování a stažení znalostní báze Knowledge Base.
 * **[QnAMakerRuntime](#qnamakerruntimeclient-object-model)** je objekt pro dotazování znalostní báze pomocí rozhraní GenerateAnswer API a posílání nových navrhovaných dotazů pomocí rozhraní API pro vlaky (jako součást [aktivního učení](../concepts/active-learning-suggestions.md)).
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker spravované (verze Preview)](#tab/version-2)
 
-[QnA maker](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/?view=azure-node-latest) používá následující objektový model:
+[QnA maker](/javascript/api/@azure/cognitiveservices-qnamaker/?view=azure-node-latest) používá následující objektový model:
 * **[QnAMakerClient](#qnamakerclient-object-model)** je objekt, který slouží k vytvoření, správě, publikování, stažení a dotazování znalostní báze.
 
 ---
@@ -176,7 +176,7 @@ Předpověď QnA Maker klient je objekt QnAMakerRuntimeClient, který se ověřu
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker spravované (verze Preview)](#tab/version-2)
 
-QnA Maker spravovaný prostředek nevyžaduje použití objektu QnAMakerRuntimeClient. Místo toho zavoláte [generateAnswer](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/knowledgebase?view=azure-node-latest#generateAnswer_string__QueryDTO__msRest_RequestOptionsBase_) přímo na objekt [QnAMakerClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/qnamakerclient?view=azure-node-latest) .
+QnA Maker spravovaný prostředek nevyžaduje použití objektu QnAMakerRuntimeClient. Místo toho zavoláte [generateAnswer](/javascript/api/@azure/cognitiveservices-qnamaker/knowledgebase?view=azure-node-latest#generateAnswer_string__QueryDTO__msRest_RequestOptionsBase_) přímo na objekt [QnAMakerClient](/javascript/api/@azure/cognitiveservices-qnamaker/qnamakerclient?view=azure-node-latest) .
 
 ---
 
@@ -322,7 +322,7 @@ Použijte QnAMakerRuntimeClient k získání odpovědi ze znalostí nebo k odesl
 
 ### <a name="generate-an-answer-from-the-knowledge-base"></a>Vygenerovat odpověď ze znalostní báze Knowledge Base
 
-Vygenerujte odpověď z publikované znalostní báze pomocí metody RuntimeClient. Runtime. generateAnswer. Tato metoda přijímá ID znalostní báze a [QueryDTO](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/querydto). Získejte přístup k dalším vlastnostem QueryDTO, jako je například začátek a kontext, který se má použít v robotu chatu.
+Vygenerujte odpověď z publikované znalostní báze pomocí metody RuntimeClient. Runtime. generateAnswer. Tato metoda přijímá ID znalostní báze a [QueryDTO](/javascript/api/@azure/cognitiveservices-qnamaker/querydto). Získejte přístup k dalším vlastnostem QueryDTO, jako je například začátek a kontext, který se má použít v robotu chatu.
 
 [!code-javascript[Generate an answer from a knowledge base](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/qnamaker_quickstart.js?name=GenerateAnswer)]
 
@@ -330,7 +330,7 @@ Vygenerujte odpověď z publikované znalostní báze pomocí metody RuntimeClie
 
 ### <a name="generate-an-answer-from-the-knowledge-base"></a>Vygenerovat odpověď ze znalostní báze Knowledge Base
 
-Vygenerujte odpověď z publikované znalostní báze pomocí metody QnAMakerClient. knowledgeers. generateAnswer. Tato metoda přijímá ID znalostní báze a [QueryDTO](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/querydto). Získejte přístup k dalším vlastnostem QueryDTO, jako je například začátek a kontext, který se má použít v robotu chatu.
+Vygenerujte odpověď z publikované znalostní báze pomocí metody QnAMakerClient. knowledgeers. generateAnswer. Tato metoda přijímá ID znalostní báze a [QueryDTO](/javascript/api/@azure/cognitiveservices-qnamaker/querydto). Získejte přístup k dalším vlastnostem QueryDTO, jako je například začátek a kontext, který se má použít v robotu chatu.
 
 [!code-javascript[Generate an answer from a knowledge base](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/preview-sdk/quickstart.js?name=GenerateAnswer)]
 

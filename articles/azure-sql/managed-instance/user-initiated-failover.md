@@ -9,13 +9,13 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
-ms.date: 12/16/2020
-ms.openlocfilehash: 4b1c98d8621267b300a82b697bce66a6b94e82f3
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.date: 01/25/2021
+ms.openlocfilehash: c12e1f4b01b0e2dd7fa21808cf33f45f9a5be59b
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825921"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789968"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>Ruční převzetí služeb při selhání iniciované uživatelem ve službě SQL Managed Instance
 
@@ -143,6 +143,7 @@ Nebudete moct zobrazit stejný výstup s úrovní služeb GP, jak je uvedeno vý
 > - V rámci jedné spravované instance se každých **15 minut** může nacházet jedna (1) převzetí služeb při selhání.
 > - Pro instance BC musí existovat kvorum replik pro požadavek převzetí služeb při selhání, které se má přijmout.
 > - U instancí BC není možné určit, která čitelná sekundární replika má iniciovat převzetí služeb při selhání.
+> - Převzetí služeb při selhání nebude povoleno, dokud nebude první úplné zálohování nové databáze dokončeno automatizovanými zálohovacími systémy.
 
 ## <a name="next-steps"></a>Další kroky
 

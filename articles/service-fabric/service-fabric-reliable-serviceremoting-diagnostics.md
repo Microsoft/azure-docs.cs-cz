@@ -5,15 +5,15 @@ author: suchiagicha
 ms.topic: conceptual
 ms.date: 06/29/2017
 ms.author: pepogors
-ms.openlocfilehash: 89a7a545dd334f892ee27b97995de40d7b6416dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c7d466d6e8fd36b4445966b92ee753becf96c64
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86245921"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791757"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Monitorování diagnostiky a výkonu pro vzdálenou komunikaci spolehlivé služby
-ServiceRemoting runtime Reliable vygeneruje  [čítače výkonu](/dotnet/api/system.diagnostics.performancecounter?view=dotnet-plat-ext-3.1). Poskytují přehled o tom, jak ServiceRemoting pracuje a umožňuje řešení potíží a monitorování výkonu.
+ServiceRemoting runtime Reliable vygeneruje  [čítače výkonu](/dotnet/api/system.diagnostics.performancecounter). Poskytují přehled o tom, jak ServiceRemoting pracuje a umožňuje řešení potíží a monitorování výkonu.
 
 
 ## <a name="performance-counters"></a>Čítače výkonu
@@ -36,7 +36,7 @@ Pro kategorii `Service Fabric Service` jsou názvy instancí čítače v násled
 
 `ServiceFabricPartitionID_ServiceReplicaOrInstanceId_ServiceRuntimeInternalID`
 
-*ServiceFabricPartitionID* je řetězcová reprezentace ID oddílu Service Fabric, ke které je instance čítače výkonu přidružena. IDENTIFIKÁTOR oddílu je identifikátor GUID a řetězcová reprezentace je generována prostřednictvím [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) metody s specifikátorem formátu "D".
+*ServiceFabricPartitionID* je řetězcová reprezentace ID oddílu Service Fabric, ke které je instance čítače výkonu přidružena. IDENTIFIKÁTOR oddílu je identifikátor GUID a řetězcová reprezentace je generována prostřednictvím [`Guid.ToString`](/dotnet/api/system.guid.tostring#System_Guid_ToString_System_String_) metody s specifikátorem formátu "D".
 
 *ServiceReplicaOrInstanceId* je řetězcová reprezentace ID repliky nebo instance Service Fabric, ke které je instance čítače výkonu přidružená.
 
@@ -57,7 +57,7 @@ Pro kategorii `Service Fabric Service Method` jsou názvy instancí čítače v 
 
 *ServiceRuntimeMethodId* je řetězcová reprezentace 32ého celého čísla generovaného modulem runtime služby Fabric pro jeho interní použití. Tato hodnota je obsažena v názvu instance čítače výkonu k zajištění jeho jedinečnosti a zabránění konfliktu s jinými názvy instancí čítače výkonu. Uživatelé by se neměli pokoušet interpretovat tuto část názvu instance čítače výkonu.
 
-*ServiceFabricPartitionID* je řetězcová reprezentace ID oddílu Service Fabric, ke které je instance čítače výkonu přidružena. IDENTIFIKÁTOR oddílu je identifikátor GUID a řetězcová reprezentace je generována prostřednictvím [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) metody s specifikátorem formátu "D".
+*ServiceFabricPartitionID* je řetězcová reprezentace ID oddílu Service Fabric, ke které je instance čítače výkonu přidružena. IDENTIFIKÁTOR oddílu je identifikátor GUID a řetězcová reprezentace je generována prostřednictvím [`Guid.ToString`](/dotnet/api/system.guid.tostring#System_Guid_ToString_System_String_) metody s specifikátorem formátu "D".
 
 *ServiceReplicaOrInstanceId* je řetězcová reprezentace ID repliky nebo instance Service Fabric, ke které je instance čítače výkonu přidružená.
 
@@ -74,7 +74,7 @@ V předchozím příkladu `ivoicemailboxservice.leavemessageasync` je název met
 
 Služba Reliable Service runtime zveřejňuje následující čítače výkonu související s prováděním metod služeb.
 
-| Název kategorie | Název čítače | Description |
+| Název kategorie | Název čítače | Popis |
 | --- | --- | --- |
 | Metoda služby Service Fabric |Volání za sekundu |Počet, kolikrát se metoda služby vyvolala za sekundu |
 | Metoda služby Service Fabric |Průměrný počet milisekund na vyvolání |Čas potřebný k provedení metody služby v milisekundách |
@@ -83,7 +83,7 @@ Služba Reliable Service runtime zveřejňuje následující čítače výkonu s
 ### <a name="service-request-processing-performance-counters"></a>Čítače výkonu zpracování žádostí o služby
 Když klient vyvolá metodu prostřednictvím objektu proxy služby, má za následek odeslání zprávy požadavku prostřednictvím sítě do služby vzdálené komunikace. Služba zpracuje zprávu požadavku a pošle odpověď zpět klientovi. Reliable ServiceRemoting runtime zveřejňuje následující čítače výkonu související se zpracováním žádostí o služby.
 
-| Název kategorie | Název čítače | Description |
+| Název kategorie | Název čítače | Popis |
 | --- | --- | --- |
 | Služba Service Fabric |počet nezpracovaných žádostí |Počet požadavků zpracovávaných ve službě |
 | Služba Service Fabric |Průměrný počet milisekund na požadavek |Doba trvání (v milisekundách), po kterou služba zpracovává požadavek |

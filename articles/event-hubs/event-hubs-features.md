@@ -3,12 +3,12 @@ title: Přehled funkcí – Azure Event Hubs | Microsoft Docs
 description: Tento článek obsahuje podrobné informace o funkcích a terminologii Azure Event Hubs.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 60dc964d1b827eec75ee4f65a5776710e57fd6eb
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 8860a8aa83a17b12236dd47d79479a82846fa8a8
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195785"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791942"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Funkce a terminologie ve službě Azure Event Hubs
 
@@ -56,7 +56,7 @@ Publikované události se odeberou z centra událostí na základě konfigurovat
 >
 > [Event Hubs Capture](event-hubs-capture-overview.md) se integruje přímo s Azure Blob Storage a Azure Data Lake Storage a prostřednictvím této integrace taky umožňuje [přesměrovat události přímo do Azure synapse](store-captured-data-data-warehouse.md).
 >
-> Pokud chcete pro vaši aplikaci použít vzor typu [události](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing) , měli byste sjednotit strategii snímků s omezeními uchovávání Event Hubs. Nevytvářejte záměr znovu sestavit materializovaná zobrazení z nezpracovaných událostí počínaje začátkem času. Měli byste se surely na tuto strategii, když je vaše aplikace v produkčním prostředí pro dobu, kdy se používá, a váš tvůrce projekce se při pokusu o zachycení až do nejnovějších a probíhajících změn musí rozniknout během let. 
+> Pokud chcete pro vaši aplikaci použít vzor typu [události](/azure/architecture/patterns/event-sourcing) , měli byste sjednotit strategii snímků s omezeními uchovávání Event Hubs. Nevytvářejte záměr znovu sestavit materializovaná zobrazení z nezpracovaných událostí počínaje začátkem času. Měli byste se surely na tuto strategii, když je vaše aplikace v produkčním prostředí pro dobu, kdy se používá, a váš tvůrce projekce se při pokusu o zachycení až do nejnovějších a probíhajících změn musí rozniknout během let. 
 
 
 ### <a name="publisher-policy"></a>Zásady zdroje

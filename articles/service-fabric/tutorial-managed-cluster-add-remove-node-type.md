@@ -3,12 +3,12 @@ title: Přidání a odebrání typů uzlů Service Fabric spravovaného clusteru
 description: V tomto kurzu se dozvíte, jak přidat a odebrat typy uzlů Service Fabric spravovaného clusteru.
 ms.topic: tutorial
 ms.date: 09/28/2020
-ms.openlocfilehash: 51cc83b4accae5f2791ce378e30f6fa692446b1c
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: bb33512652677fc4e46d8ba3668dca985bbcfe01
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92316210"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791236"
 ---
 # <a name="tutorial-add-and-remove-node-types-from-a-service-fabric-managed-cluster-preview"></a>Kurz: Přidání a odebrání typů uzlů z Service Fabric spravovaného clusteru (Preview)
 
@@ -26,10 +26,10 @@ Tato část řady se zabývá těmito postupy:
 > * Přidat typ uzlu do spravovaného clusteru Service Fabric
 > * Odstranění typu uzlu z Service Fabric spravovaného clusteru
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Service Fabric spravovaný cluster (viz [*nasazení spravovaného clusteru*](tutorial-managed-cluster-deploy.md)).
-* [Azure PowerShell 4.7.0](/powershell/azure/release-notes-azureps?preserve-view=true&view=azps-4.7.0#azservicefabric) nebo novějším (viz [*instalace Azure PowerShell*](/powershell/azure/install-az-ps?preserve-view=true&view=azps-4.7.0)).
+* [Azure PowerShell 4.7.0](/powershell/azure/release-notes-azureps#azservicefabric) nebo novějším (viz [*instalace Azure PowerShell*](/powershell/azure/install-az-ps)).
 
 ## <a name="add-a-node-type-to-a-service-fabric-managed-cluster"></a>Přidat typ uzlu do spravovaného clusteru Service Fabric
 

@@ -3,15 +3,15 @@ title: Použití Galerie sdílených imagí v Azure Lab Services | Microsoft Doc
 description: Naučte se, jak nakonfigurovat účet testovacího prostředí pro použití Galerie sdílených imagí, aby uživatel mohl sdílet image s ostatními a jiný uživatel může image použít k vytvoření virtuálního počítače šablony v testovacím prostředí.
 ms.topic: article
 ms.date: 09/11/2020
-ms.openlocfilehash: d9f4e75163f591680cc8f85ac42c1b6ada5f2365
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 984cb4c47099928ffab327895a728cbe8a8f9604
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94647762"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791386"
 ---
 # <a name="use-a-shared-image-gallery-in-azure-lab-services"></a>Použití Galerie sdílených imagí v Azure Lab Services
-V tomto článku se dozvíte, jak můžou pedagogi/správci testovacího prostředí ukládat image virtuálního počítače šablony do [sdílené Image Galerie](../virtual-machines/windows/shared-image-galleries.md) , aby ji mohli používat ostatní k vytváření Labs. 
+V tomto článku se dozvíte, jak můžou pedagogi/správci testovacího prostředí ukládat image virtuálního počítače šablony do [sdílené Image Galerie](../virtual-machines/shared-image-galleries.md) , aby ji mohli používat ostatní k vytváření Labs. 
 
 > [!IMPORTANT]
 > Při použití Galerie sdílených imagí Azure Lab Services podporuje jenom image s méně než 128 GB místa na disku s operačním systémem. Obrázky s více než 128 GB místa na disku nebo více disků nebudou během vytváření testovacího prostředí zobrazeny v seznamu imagí virtuálních počítačů.
@@ -48,7 +48,7 @@ Po připojení Galerie sdílených imagí může správce účtu testovacího pr
     Po uložení image do galerie sdílených imagí můžete tuto image použít z Galerie při vytváření jiného testovacího prostředí. Můžete také nahrát obrázek do galerie sdílených imagí mimo kontext testovacího prostředí. Další informace najdete v tématu [Přehled Galerie sdílených imagí](../virtual-machines/shared-images-powershell.md). 
 
     > [!IMPORTANT]
-    > Když [uložíte obrázek šablony testovacího prostředí](how-to-use-shared-image-gallery.md#save-an-image-to-the-shared-image-gallery) v Azure Lab Services do galerie sdílených imagí, obrázek se nahraje do galerie jako **speciální obrázek**. [Specializované obrázky](../virtual-machines/windows/shared-image-galleries.md#generalized-and-specialized-images) udržují informace specifické pro počítač a profily uživatelů. Do galerie můžete i nadále přímo nahrát zobecněnou image mimo Azure Lab Services.    
+    > Když [uložíte obrázek šablony testovacího prostředí](how-to-use-shared-image-gallery.md#save-an-image-to-the-shared-image-gallery) v Azure Lab Services do galerie sdílených imagí, obrázek se nahraje do galerie jako **speciální obrázek**. [Specializované obrázky](../virtual-machines/shared-image-galleries.md#generalized-and-specialized-images) udržují informace specifické pro počítač a profily uživatelů. Do galerie můžete i nadále přímo nahrát zobecněnou image mimo Azure Lab Services.    
 
 ## <a name="use-an-image-from-the-shared-image-gallery"></a>Použití obrázku z Galerie sdílených imagí
 Educator může vybrat vlastní image, která je k dispozici v galerii sdílených imagí pro šablonu během nového vytváření testovacího prostředí.
@@ -60,4 +60,4 @@ Educator může vybrat vlastní image, která je k dispozici v galerii sdílený
 
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o galeriích sdílených imagí najdete v tématu [Galerie sdílených imagí](../virtual-machines/windows/shared-image-galleries.md).
+Další informace o galeriích sdílených imagí najdete v tématu [Galerie sdílených imagí](../virtual-machines/shared-image-galleries.md).

@@ -3,12 +3,12 @@ title: 'Rychlý Start: odeslání vlastních událostí do funkce Azure Function
 description: 'Rychlý Start: pomocí Azure Event Grid a Azure CLI nebo portálu můžete publikovat téma a přihlásit se k odběru této události. Pro koncový bod se používá funkce Azure Functions.'
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: aea52bcaa94d6f288e86e44e1a0f294796d8e4a3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4fe4753de41443a0537636933364c7b69b25cb27
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996337"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791723"
 ---
 # <a name="quickstart-route-custom-events-to-an-azure-function-with-event-grid"></a>Rychlý Start: směrování vlastních událostí do funkce Azure pomocí Event Grid
 
@@ -19,7 +19,7 @@ Azure Event Grid je služba zpracování událostí pro cloud. Azure Functions j
 ## <a name="create-azure-function"></a>Vytvoření funkce Azure
 Před přihlášením k odběru vlastního tématu vytvořte funkci pro zpracování událostí. 
 
-1. Vytvořte aplikaci funkcí pomocí pokynů v tématu [Vytvoření aplikace Function App](../azure-functions/functions-create-first-azure-function.md#create-a-function-app).
+1. Vytvořte aplikaci funkcí pomocí pokynů v tématu [Vytvoření aplikace Function App](../azure-functions/functions-get-started.md).
 2. Vytvořte funkci pomocí **triggeru Event Grid**. Pokud tuto aktivační událost použijete poprvé, můžete tuto možnost vybrat kliknutím na nainstalovat a instalaci rozšíření nainstalovat.
     1. Na stránce **Function App** v nabídce vlevo vyberte **funkce** , vyhledejte **Event Grid** v části šablony a potom vyberte **Azure Event Grid Trigger**. 
 

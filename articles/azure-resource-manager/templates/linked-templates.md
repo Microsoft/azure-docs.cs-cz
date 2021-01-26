@@ -2,13 +2,13 @@
 title: Propojení šablon pro nasazení
 description: Popisuje způsob použití propojených šablon v šabloně Azure Resource Manager (šablona ARM) k vytvoření modulárního řešení šablon. Ukazuje, jak předat hodnoty parametrů, určit soubor parametrů a dynamicky vytvořené adresy URL.
 ms.topic: conceptual
-ms.date: 01/20/2021
-ms.openlocfilehash: dd810167e07f1bb23f9563936cb481652953ccd1
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.date: 01/25/2021
+ms.openlocfilehash: 7d4df67b7f69b3e58799f45ad72bd9ed68540dc2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624854"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790931"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Použití propojené a vnořené šablony při nasazování prostředků Azure
 
@@ -111,6 +111,10 @@ Rozsah můžete nastavit pomocí `expressionEvaluationOptions` Vlastnosti. Ve v�
   },
   ...
 ```
+
+> [!NOTE]
+>
+> Pokud je obor nastaven na hodnotu `outer` , nemůžete použít `reference` funkci v části výstupy vnořené šablony pro prostředek, který jste nasadili ve vnořené šabloně. Chcete-li vrátit hodnoty nasazeného prostředku ve vnořené šabloně, buď použijte `inner` rozsah, nebo převeďte vnořenou šablonu na propojenou šablonu.
 
 Následující šablona ukazuje, jak jsou řešeny výrazy šablony podle oboru. Obsahuje proměnnou s názvem `exampleVar` , která je definována v nadřazené šabloně i ve vnořené šabloně. Vrátí hodnotu proměnné.
 
@@ -400,10 +404,6 @@ Následující úryvek ukazuje, které hodnoty jsou zabezpečené a které nejso
 }
 ```
 
-> [!NOTE]
->
-> Pokud je obor nastaven na hodnotu `outer` , nemůžete použít `reference` funkci v části výstupy vnořené šablony pro prostředek, který jste nasadili ve vnořené šabloně. Chcete-li vrátit hodnoty nasazeného prostředku ve vnořené šabloně, buď použijte `inner` rozsah, nebo převeďte vnořenou šablonu na propojenou šablonu.
-
 ## <a name="linked-template"></a>Propojená šablona
 
 Pokud chcete propojit šablonu, přidejte do hlavní šablony [prostředek nasazení](/azure/templates/microsoft.resources/deployments) . Do `templateLink` Vlastnosti zadejte identifikátor URI šablony, která se má zahrnout. Následující příklad odkazuje na šablonu v účtu úložiště.
@@ -500,7 +500,7 @@ Nemůžete použít vložené parametry ani odkaz na soubor parametrů. Nasazen�
 
 Místo udržování vašich propojených šablon v přístupném koncovém bodu můžete vytvořit [specifikaci šablony](template-specs.md) , která zabalí hlavní šablonu a její propojené šablony do jedné entity, kterou můžete nasadit. Specifikace šablony je prostředek ve vašem předplatném Azure. Usnadňuje bezpečné sdílení šablony s uživateli ve vaší organizaci. K udělení přístupu ke specifikaci šablony použijte řízení přístupu na základě role Azure (Azure RBAC). Tato funkce je aktuálně ve verzi Preview.
 
-Další informace najdete tady:
+Další informace naleznete v tématu:
 
 - [Kurz: Vytvoření specifikace šablony s propojenými šablonami](./template-specs-create-linked.md).
 - [Kurz: nasazení specifikace šablony jako propojené šablony](./template-specs-deploy-linked-template.md).
@@ -797,7 +797,7 @@ az deployment group create --resource-group ExampleGroup --template-uri $url?$to
 
 Následující příklady znázorňují běžné použití propojených šablon.
 
-|Hlavní šablona  |Propojená šablona |Description  |
+|Hlavní šablona  |Propojená šablona |Popis  |
 |---------|---------| ---------|
 |[Hello World](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) |[odkazovaná šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json) | Vrátí řetězec z propojené šablony. |
 |[Load Balancer s veřejnou IP adresou](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[odkazovaná šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |Vrátí veřejnou IP adresu z propojené šablony a nastaví tuto hodnotu v nástroji pro vyrovnávání zatížení. |

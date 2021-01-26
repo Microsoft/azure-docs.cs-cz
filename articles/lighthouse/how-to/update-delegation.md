@@ -3,12 +3,12 @@ title: Aktualizace delegování
 description: Přečtěte si, jak aktualizovat delegování pro zákazníka dříve připojeného do Azure Lighthouse.
 ms.date: 12/03/2020
 ms.topic: how-to
-ms.openlocfilehash: e204d1f3546e6e978f91c7e808065a388a4af4b3
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: eec5d1f2d34e8e3c9e0ded59cb111624b1981873
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093413"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791335"
 ---
 # <a name="update-a-delegation"></a>Aktualizace delegování
 
@@ -58,9 +58,9 @@ Po dokončení nasazení [potvrďte, že bylo úspěšné](onboard-customer.md#c
 
 ## <a name="updating-managed-service-offers"></a>Aktualizace nabídek spravovaných služeb
 
-Pokud jste zákazník zavedli prostřednictvím nabídky spravované služby publikované do Azure Marketplace a chcete aktualizovat autorizaci, můžete aktualizovat delegování [publikováním nové verze vaší nabídky](../../marketplace/partner-center-portal/update-existing-offer.md) s [autorizací](../../marketplace/partner-center-portal/create-new-managed-service-offer.md#authorization) , kterou chcete v plánu pro daného zákazníka použít. Zákazník pak bude moct aktualizovat na nejnovější verzi v Azure Portal.
+Pokud jste zákazník zavedli prostřednictvím nabídky spravované služby publikované do Azure Marketplace a chcete aktualizovat autorizaci, můžete aktualizovat delegování [publikováním nové verze vaší nabídky](../../marketplace/partner-center-portal/update-existing-offer.md) s [autorizací](../../marketplace/plan-managed-service-offer.md) , kterou chcete v plánu pro daného zákazníka použít. Zákazník pak bude moct aktualizovat na nejnovější verzi v Azure Portal.
 
-Pokud chcete změnit klienta správy, budete muset [vytvořit a publikovat novou nabídku spravované služby](../../marketplace/partner-center-portal/create-new-managed-service-offer.md) , kterou zákazník přijme.
+Pokud chcete změnit klienta správy, budete muset [vytvořit a publikovat novou nabídku spravované služby](../../marketplace/plan-managed-service-offer.md) , kterou zákazník přijme.
 
 > [!TIP]
 > Jak už bylo zmíněno dříve, doporučujeme, abyste mezi stejným zákazníkem a správou tenanta nepoužívali více různých nabídek. Pokud publikujete novou nabídku pro stejného zákazníka, který používá stejného spravovaného tenanta, ujistěte se, že je předchozí nabídka odebrána, než zákazník nabídne novější nabídku.

@@ -9,12 +9,12 @@ ms.date: 09/08/2020
 ms.topic: how-to
 ms.author: nitinme
 author: nitinme
-ms.openlocfilehash: b8382b76496976054ebb452e39866765d986ccbb
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 8a4b86fb8fa5a87283178d957e07617b908e6286
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368170"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790897"
 ---
 # <a name="sign-in-to-luis-portal"></a>Přihlášení k portálu LUIS
 
@@ -47,11 +47,11 @@ Pomocí tohoto článku můžete začít s portálem LUIS a vytvořit prostřede
     * **Název tenanta** – tenant, ke kterému je předplatné Azure přidružené. Nebudete moci přepnout klienty ze stávajícího okna. Klienty můžete přepnout tak, že toto okno zavřete a v pravém horním rohu obrazovky vyberete miniaturu, která obsahuje vaše iniciály. Vyberte vybrat **jiný prostředek pro vytváření obsahu** v horní části a znovu otevřete okno.
     * **Název skupiny prostředků Azure** – název vlastní skupiny prostředků, kterou jste si zvolili v rámci svého předplatného. Skupiny prostředků umožňují seskupit prostředky Azure pro přístup a správu. Pokud v tomto předplatném nemáte skupinu prostředků, nebudete ji moct vytvořit na portálu LUIS. Přejděte na [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.ResourceGroup) a vytvořte si ho tak, že přejdete na Luis a budete pokračovat v procesu přihlašování.
     * **Název prostředku Azure** – vlastní název, který zvolíte, se používá jako součást adresy URL pro vytváření vašich transakcí. Název prostředku může obsahovat jenom alfanumerické znaky, `-` a nemůže začínat ani končit `-` . Pokud název obsahuje nějaké jiné symboly, vytvoření prostředku se nezdaří.
-    * **Umístění** – volba pro vytváření aplikací v jednom ze [tří umístění pro vytváření obsahu](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions) , která jsou aktuálně podporovaná Luis, včetně: západní USA, západní Evropa a východní Austrálie
-    * **Cenová úroveň** – ve výchozím nastavení je cenová úroveň vytváření F0 vybraná, protože to je doporučené. Pokud hledáte další vrstvu zabezpečení, vytvořte si [klíč spravovaný zákazníkem](https://docs.microsoft.com/azure/cognitive-services/luis/luis-encryption-of-data-at-rest#customer-managed-keys-for-language-understanding) z Azure Portal.
+    * **Umístění** – volba pro vytváření aplikací v jednom ze [tří umístění pro vytváření obsahu](./luis-reference-regions.md) , která jsou aktuálně podporovaná Luis, včetně: západní USA, západní Evropa a východní Austrálie
+    * **Cenová úroveň** – ve výchozím nastavení je cenová úroveň vytváření F0 vybraná, protože to je doporučené. Pokud hledáte další vrstvu zabezpečení, vytvořte si [klíč spravovaný zákazníkem](./luis-encryption-of-data-at-rest.md#customer-managed-keys-for-language-understanding) z Azure Portal.
 8. Teď jste se úspěšně přihlásili k LUIS. Nyní můžete začít vytvářet aplikace.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 
 * Při vytváření nového prostředku se ujistěte, že název prostředku obsahuje pouze alfanumerické znaky, '-' a nemůže začínat ani končit znakem '-'. V opačném případě selže.
 * Ujistěte se, že máte [ve svém předplatném správná oprávnění k vytvoření prostředku Azure](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles). Pokud nemáte příslušná oprávnění, obraťte se na správce předplatného, abyste vám poskytli dostatečná oprávnění.

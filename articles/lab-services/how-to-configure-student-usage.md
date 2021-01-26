@@ -3,12 +3,12 @@ title: Konfigurace nastavení použití v laboratořích Azure Lab Services
 description: Přečtěte si, jak nakonfigurovat počet studentů pro testovací prostředí, jak je zaregistrované v testovacím prostředí, určete počet hodin, po které může virtuální počítač používat, a další.
 ms.topic: article
 ms.date: 12/01/2020
-ms.openlocfilehash: 3b05246445aea708312891ec631a35da3bc1eb8e
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 380a587eecb276c457b93ca3c3f3ac08b2239275
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602627"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791959"
 ---
 # <a name="add-and-manage-lab-users"></a>Přidání a správa uživatelů testovacího prostředí
 
@@ -24,7 +24,7 @@ Tento článek ukazuje, jak přidat uživatele do testovacího prostředí.
 
 Nyní můžete synchronizovat seznam uživatelů testovacího prostředí s existující skupinou Azure Active Directory (Azure AD), abyste nemuseli přidávat ani odstraňovat uživatele ručně. 
 
-Skupinu Azure AD je možné vytvořit v rámci Azure Active Directory vaší organizace a spravovat tak přístup k prostředkům organizace a cloudovým aplikacím. Další informace najdete v tématu [skupiny Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups). Pokud vaše organizace používá systém Microsoft Office 365 nebo služeb Azure, vaše organizace už bude mít správce, kteří spravují vaše Azure Active Directory. 
+Skupinu Azure AD je možné vytvořit v rámci Azure Active Directory vaší organizace a spravovat tak přístup k prostředkům organizace a cloudovým aplikacím. Další informace najdete v tématu [skupiny Azure AD](../active-directory/fundamentals/active-directory-manage-groups.md). Pokud vaše organizace používá systém Microsoft Office 365 nebo služeb Azure, vaše organizace už bude mít správce, kteří spravují vaše Azure Active Directory. 
 
 ### <a name="sync-users-with-azure-ad-group"></a>Synchronizace uživatelů se skupinou Azure AD
 

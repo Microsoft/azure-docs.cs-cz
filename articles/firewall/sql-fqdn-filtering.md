@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 06/18/2020
 ms.author: victorh
-ms.openlocfilehash: 2b1b68b32ccd5a4dda0b71736da4e2d1e2566b6b
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: c65f32cc3ce56ddf3fd235de8c002528e7a3cebd
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97348012"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791438"
 ---
 # <a name="configure-azure-firewall-application-rules-with-sql-fqdns"></a>Konfigurace pravidel aplikace Azure Firewall s využitím plně kvalifikovaných názvů domén SQL
 
@@ -96,7 +96,7 @@ Pokud pro provoz SQL IaaS používáte jiné než výchozí porty, můžete tyto
 3. Přidejte pravidlo aplikace s příslušným protokolem, portem a plně kvalifikovaným názvem domény SQL a pak vyberte **Uložit**.
    ![pravidlo aplikace s plně kvalifikovaným názvem domény SQL](media/sql-fqdn-filtering/application-rule-sql.png)
 4. Přístup k SQL z virtuálního počítače ve virtuální síti, která filtruje přenos přes bránu firewall. 
-5. Ověřte, že je povolený provoz [Azure firewall protokoly](log-analytics-samples.md) .
+5. Ověřte, že je povolený provoz [Azure firewall protokoly](./firewall-workbook.md) .
 
 ## <a name="next-steps"></a>Další kroky
 

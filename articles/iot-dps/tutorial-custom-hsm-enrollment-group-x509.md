@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 25d084b8af148707685b2cbb4368394a12d99db2
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 64064a584681d84eb6ba023c4777c0fdc4e6ec3d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97005303"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791926"
 ---
 # <a name="tutorial-provision-multiple-x509-devices-using-enrollment-groups"></a>Kurz: zřízení více zařízení X. 509 pomocí skupin registrace
 
@@ -46,7 +46,7 @@ V tomto kurzu provedete následující cíle:
 
 Následující požadavky jsou pro vývojové prostředí systému Windows. Informace o systému Linux nebo macOS najdete v příslušné části [Příprava vývojového prostředí](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) v dokumentaci k sadě SDK.
 
-* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 se zapnutou úlohou [vývoj desktopových aplikací v jazyce C++](https://docs.microsoft.com/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) . Podporují se také sady Visual Studio 2015 a Visual Studio 2017.
+* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 se zapnutou úlohou [vývoj desktopových aplikací v jazyce C++](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) . Podporují se také sady Visual Studio 2015 a Visual Studio 2017.
 
 * Nainstalovaná nejnovější verze [Gitu](https://git-scm.com/download/)
 
@@ -56,7 +56,7 @@ V této části připravíte vývojové prostředí použité k sestavení [Azur
 
 1. Stáhněte si [sestavovací systém cmake](https://cmake.org/download/).
 
-    **Před** zahájením instalace je důležité, aby byly na vašem počítači nainstalovány požadavky sady Visual Studio ([Visual Studio](https://visualstudio.microsoft.com/vs/) a ["vývoj desktopových aplikací s C++"](https://docs.microsoft.com/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) ) `CMake` . Jakmile jsou požadované součásti k dispozici a stažený soubor je ověřený, nainstalujte sestavovací systém CMake.
+    **Před** zahájením instalace je důležité, aby byly na vašem počítači nainstalovány požadavky sady Visual Studio ([Visual Studio](https://visualstudio.microsoft.com/vs/) a ["vývoj desktopových aplikací s C++"](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) ) `CMake` . Jakmile jsou požadované součásti k dispozici a stažený soubor je ověřený, nainstalujte sestavovací systém CMake.
 
 2. Vyhledejte název značky pro [nejnovější verzi](https://github.com/Azure/azure-iot-sdk-c/releases/latest) sady Azure IoT C SDK.
 
@@ -87,7 +87,7 @@ V této části připravíte vývojové prostředí použité k sestavení [Azur
     $ cmake -Duse_prov_client:BOOL=ON -Dhsm_custom_lib=/d/azure-iot-sdk-c/cmake/provisioning_client/samples/custom_hsm_example/Debug/custom_hsm_example.lib ..
     ```
 
-    Pokud `cmake` nenajde váš kompilátor C++, můžou se při spuštění výše uvedeného příkazu zobrazit chyby sestavení. Pokud k tomu dojde, zkuste tento příkaz spustit v [příkazovém řádku sady Visual Studio](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs).
+    Pokud `cmake` nenajde váš kompilátor C++, můžou se při spuštění výše uvedeného příkazu zobrazit chyby sestavení. Pokud k tomu dojde, zkuste tento příkaz spustit v [příkazovém řádku sady Visual Studio](/dotnet/framework/tools/developer-command-prompt-for-vs).
 
     Po úspěšném sestavení se ve vašem adresáři vygeneruje řešení Visual Studio `cmake` . Poslední pár výstupních řádků vypadá podobně jako v následujícím výstupu:
 
@@ -351,7 +351,7 @@ Postup aktualizace vlastního kódu stub pro vlastní kód HSM pro tento kurz:
 
 Na zařízeních s jiným systémem než Windows můžete řetěz certifikátů předat z kódu jako úložiště certifikátů.
 
-V zařízeních se systémem Windows je nutné přidat podpisové certifikáty (kořenové a zprostředkující) do [úložiště certifikátů](https://docs.microsoft.com/windows/win32/secauthn/certificate-stores)systému Windows. V opačném případě nebudou podpisové certifikáty přeneseny do DPS pomocí zabezpečeného kanálu s protokolem TLS (Transport Layer Security).
+V zařízeních se systémem Windows je nutné přidat podpisové certifikáty (kořenové a zprostředkující) do [úložiště certifikátů](/windows/win32/secauthn/certificate-stores)systému Windows. V opačném případě nebudou podpisové certifikáty přeneseny do DPS pomocí zabezpečeného kanálu s protokolem TLS (Transport Layer Security).
 
 Postup přidání podpisových certifikátů do úložiště certifikátů v zařízeních se systémem Windows:
 

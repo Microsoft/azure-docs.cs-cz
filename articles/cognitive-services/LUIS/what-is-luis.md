@@ -7,12 +7,12 @@ ms.subservice: language-understanding
 ms.topic: overview
 ms.date: 11/23/2020
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: fb36ab8a86a89d6383f93ad58c23956472841de2
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: f21a2cc8218dde8b0cf7203a1fcb1f5cfb9424a2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95539256"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790863"
 ---
 # <a name="what-is-language-understanding-luis"></a>Co je Language Understanding (LUIS)?
 
@@ -66,7 +66,7 @@ Navrhněte svůj model pomocí kategorií záměrů uživatelů s názvem **[zá
 |`When does your store open?`|StoreHoursAndLocation (Poloha a otevírací doba obchodu)|open|
 |`Schedule a meeting at 1pm with Bob in Distribution`|ScheduleMeeting (Naplánovat schůzku)|1pm, Bob (13:00, Bob)|
 
-Sestavte model pomocí rozhraní API pro [vytváření obsahu](https://go.microsoft.com/fwlink/?linkid=2092087 "vytváření obsahu") nebo pomocí **[portálu Luis](https://www.luis.ai "Portál LUIS")** nebo obou. Přečtěte si další informace o tom, jak sestavovat pomocí [portálu](get-started-portal-build-app.md "portál") a [klientských knihoven SDK](azure-sdk-quickstart.md "Klientské knihovny SDK").
+Sestavte model pomocí rozhraní API pro [vytváření obsahu](https://go.microsoft.com/fwlink/?linkid=2092087 "vytváření obsahu") nebo pomocí **[portálu Luis](https://www.luis.ai "Portál LUIS")** nebo obou. Přečtěte si další informace o tom, jak sestavovat pomocí [portálu](get-started-portal-build-app.md "portál") a [klientských knihoven SDK](./client-libraries-rest-api.md?pivots=rest-api "Klientské knihovny SDK").
 
 ## <a name="step-2-get-the-query-prediction"></a>Krok 2: získání předpovědi dotazu
 
@@ -128,7 +128,7 @@ LUIS poskytuje funkce z Analýza textu jako součást vašich stávajících pro
 
 ## <a name="learn-with-the-quickstarts"></a>Seznamte se s rychlými starty
 
-Seznamte se s LUIS s praktickými rychlými starty pomocí [portálu](get-started-portal-build-app.md "portál") a [klientských knihoven SDK](azure-sdk-quickstart.md "Klientské knihovny SDK").
+Seznamte se s LUIS s praktickými rychlými starty pomocí [portálu](get-started-portal-build-app.md "portál") a [klientských knihoven SDK](./client-libraries-rest-api.md?pivots=rest-api "Klientské knihovny SDK").
 
 
 ## <a name="deploy-on-premises-using-docker-containers"></a>Nasazení místně pomocí kontejnerů Docker
@@ -137,7 +137,7 @@ Seznamte se s LUIS s praktickými rychlými starty pomocí [portálu](get-starte
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Co je nového](whats-new.md "Novinky") u služby a dokumentace
+* [Co je nového](whats-new.md "Co je nového") u služby a dokumentace
 * [Plánování aplikace](luis-how-plan-your-app.md "Plánování aplikace") s využitím [záměrů](luis-concept-intent.md "záměry") a [entit](luis-concept-entity-types.md "podnikům")
 * [Dotaz na koncový bod předpovědi](luis-get-started-get-intent-from-browser.md "Dotazování koncového bodu předpovědi").
 * [Materiály pro vývojáře](developer-reference-resource.md "Materiály pro vývojáře") pro Luis.
