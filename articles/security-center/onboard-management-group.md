@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/10/2020
 ms.author: memildin
-ms.openlocfilehash: 4ecd436b548c29c520a7538970d4d703cc8488d2
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 31472b0a0eedee03d5cfcb6ff47a97033a8c78e0
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027563"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98796070"
 ---
 # <a name="enable-security-center-on-all-subscriptions-in-a-management-group"></a>Povolit Security Center u všech předplatných ve skupině pro správu
 
@@ -25,20 +25,26 @@ Pomocí Azure Policy můžete povolit Azure Security Center na všech předplatn
 
 Připojení skupiny pro správu a všech jejích předplatných:
 
-1. Jako uživatel s oprávněním **Správce zabezpečení** otevřete Azure Policy a vyhledejte definici **Enable Azure Security Center v rámci vašeho předplatného** .
+1. Jako uživatel s oprávněním **Správce zabezpečení** otevřete Azure Policy a vyhledejte definici **Enable Azure Security Center v rámci vašeho předplatného**.
 
     :::image type="content" source="./media/security-center-get-started/enable-security-center-policy.png" alt-text="Definice Azure Policy povolit Azure Security Center ve vašem předplatném":::
 
 1. Vyberte **přiřadit** a ujistěte se, že jste rozsah nastavili na úroveň mg.
 
-    :::image type="content" source="./media/security-center-get-started/assign-policy.png" alt-text="Definice Azure Policy povolit Azure Security Center ve vašem předplatném":::
+    :::image type="content" source="./media/security-center-get-started/assign-policy.png" alt-text="Přiřazení Azure Security Center povolení definice v předplatném":::
 
     > [!TIP]
     > Kromě oboru nejsou vyžadovány žádné parametry.
 
 1. Vyberte **vytvořit úlohu nápravy** , abyste zajistili, že všechna existující předplatná, která nemají Security Center povolená, budou připojená.
 
-    :::image type="content" source="./media/security-center-get-started/remediation-task.png" alt-text="Definice Azure Policy povolit Azure Security Center ve vašem předplatném" všem registrovaným předplatným (bez ohledu na to, jestli mají v Azure Defender zapnutý nebo vypnutý).
+    :::image type="content" source="./media/security-center-get-started/remediation-task.png" alt-text="Vytvoření úlohy nápravy pro povolení definice Azure Policy Azure Security Center ve vašem předplatném":::
+
+1. Při přiřazení definice bude:
+
+    1. Detekuje všechna předplatná v MG, která ještě nejsou zaregistrovaná v Security Center.
+    1. Označte tato předplatná jako nedodržující předpisy.
+    1. Označte "vyhovuje" všem registrovaným předplatným (bez ohledu na to, jestli mají v Azure Defender zapnutý nebo vypnutý).
 
     Úloha nápravy pak umožní Security Center zdarma, a to v nevyhovujících předplatných.
 
@@ -92,4 +98,4 @@ Existují různé způsoby, jak upravit definici Azure Policy:
 Teď, když jste připojili celou skupinu pro správu, můžete povolit rozšířenou ochranu Azure Defenderu. 
 
 > [!div class="nextstepaction"]
-> [Povolit Azure Defender](security-center-pricing.md)
+> [Povolení Azure Defenderu](security-center-pricing.md#enable-azure-defender)

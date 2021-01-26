@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: troubleshooting
-ms.date: 04/19/2019
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: b950f80ba8c2bdbaf7a515dc1ce127b934723177
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17b8d6de198746a79a50c4fbda805b364212e3c4
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85558552"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98796057"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-blob-storage"></a>Řešení potíží souvisejících s Azure Data Box BLOB Storage
 
@@ -65,6 +65,7 @@ Tyto chyby nejsou specifické pro žádnou aplikaci.
 |Chybová zpráva  |Doporučená akce |
 |---------|---------|
 |Vypršel časový limit připojení. |Přihlaste se k zařízení Data Box a ověřte, že je odemčený. Pokaždé, když se zařízení restartuje, zůstane uzamčené, dokud se někdo přihlásí.|
+|Ověřování REST API se nepovedlo s chybou: Server nemohl ověřit požadavek. Ujistěte se, že hodnota hlavičky autorizace je správně vytvořená, včetně signatury. ErrorCode: AuthenticationFailed. |Jedním z důvodů, proč k tomu může dojít, je, že čas zařízení není synchronizovaný s úložištěm Azure. Pokud dojde k velkému časovému zkosení, REST API ověřování dojde při pokusu o kopírování dat do Data Box prostřednictvím REST API. V takové situaci můžete otevřít odchozí port UDP 123, abyste povolili přístup k `time.windows.com` . Jakmile se čas zařízení synchronizuje s Azure, ověřování by mělo být úspěšné. |
 
 ## <a name="next-steps"></a>Další kroky
 

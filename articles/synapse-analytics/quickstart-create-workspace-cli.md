@@ -9,12 +9,12 @@ ms.subservice: workspace
 ms.date: 08/25/2020
 ms.author: alehall
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2658240e670e617f7296881f733ff369b9bf8f87
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: d4beef9383b8e51e1295639c18e745fd0fdf8588
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219007"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98796939"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-with-azure-cli"></a>Rychlý Start: vytvoření pracovního prostoru Azure synapse pomocí Azure CLI
 
@@ -44,37 +44,18 @@ V tomto rychlém startu se naučíte vytvořit pracovní prostor synapse pomocí
     |StorageAccountResourceGroup| Název existující skupiny prostředků účtu úložiště ADLS Gen2 |
     |FileShareName| Název existujícího systému souborů úložiště.|
     |SynapseResourceGroup| Vyberte nový název skupiny prostředků Azure synapse. |
-    |Oblast| Vyberte jednu z [oblastí Azure](https://azure.microsoft.com/global-infrastructure/geographies/#overview). |
+    |Region (Oblast)| Vyberte jednu z [oblastí Azure](https://azure.microsoft.com/global-infrastructure/geographies/#overview). |
     |SynapseWorkspaceName| Vyberte jedinečný název pro nový pracovní prostor Azure synapse. |
     |SqlUser| Vyberte hodnotu pro nové uživatelské jméno.|
     |SqlPassword| Vyberte zabezpečené heslo.|
     |||
 
-2. Vytvořte skupinu prostředků jako kontejner pro váš pracovní prostor Azure synapse:
+1. Vytvořte skupinu prostředků jako kontejner pro váš pracovní prostor Azure synapse:
     ```azurecli
     az group create --name $SynapseResourceGroup --location $Region
     ```
-3. Načtěte klíč účtu úložiště ADLS Gen 2:
-    ```azurecli
-    StorageAccountKey=$(az storage account keys list \
-      --account-name $StorageAccountName \
-      | jq -r '.[0] | .value')
-    ```
-4. Načíst adresu URL koncového bodu úložiště ADLS Gen 2:
-    ```azurecli
-    StorageEndpointUrl=$(az storage account show \
-      --name $StorageAccountName \
-      --resource-group $StorageAccountResourceGroup \
-      | jq -r '.primaryEndpoints | .dfs')
-    ```
 
-5. Volitelné Vždycky můžete kontrolovat, co ADLS Gen2 klíč účtu úložiště a koncový bod:
-    ```azurecli
-    echo "Storage Account Key: $StorageAccountKey"
-    echo "Storage Endpoint URL: $StorageEndpointUrl"
-    ```
-
-6. Vytvořte pracovní prostor Azure synapse:
+1. Vytvořte pracovní prostor Azure synapse:
     ```azurecli
     az synapse workspace create \
       --name $SynapseWorkspaceName \
@@ -86,14 +67,14 @@ V tomto rychlém startu se naučíte vytvořit pracovní prostor synapse pomocí
       --location $Region
     ```
 
-7. Získání webové a vývojářské adresy URL pro pracovní prostor Azure synapse:
+1. Získání webové a vývojářské adresy URL pro pracovní prostor Azure synapse:
     ```azurecli
     WorkspaceWeb=$(az synapse workspace show --name $SynapseWorkspaceName --resource-group $SynapseResourceGroup | jq -r '.connectivityEndpoints | .web')
 
     WorkspaceDev=$(az synapse workspace show --name $SynapseWorkspaceName --resource-group $SynapseResourceGroup | jq -r '.connectivityEndpoints | .dev')
     ```
 
-8. Vytvořte pravidlo brány firewall, které umožní přístup k pracovnímu prostoru Azure synapse z počítače:
+1. Vytvořte pravidlo brány firewall, které umožní přístup k pracovnímu prostoru Azure synapse z počítače:
 
     ```azurecli
     ClientIP=$(curl -sb -H "Accept: application/json" "$WorkspaceDev" | jq -r '.message')
@@ -103,7 +84,7 @@ V tomto rychlém startu se naučíte vytvořit pracovní prostor synapse pomocí
     az synapse workspace firewall-rule create --end-ip-address $ClientIP --start-ip-address $ClientIP --name "Allow Client IP" --resource-group $SynapseResourceGroup --workspace-name $SynapseWorkspaceName
     ```
 
-9. Otevřete adresu URL webu v pracovním prostoru Azure synapse, která je uložená v proměnné prostředí `WorkspaceWeb` pro přístup k vašemu pracovnímu prostoru:
+1. Otevřete adresu URL webu v pracovním prostoru Azure synapse, která je uložená v proměnné prostředí `WorkspaceWeb` pro přístup k vašemu pracovnímu prostoru:
 
     ```azurecli
     echo "Open your Azure Synapse Workspace Web URL in the browser: $WorkspaceWeb"

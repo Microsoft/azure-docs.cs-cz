@@ -12,17 +12,17 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein, danil
 ms.date: 11/13/2020
-ms.openlocfilehash: a70571dcf380fc2186565a40778991ac70a218d6
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 0c3db3b3f22f9f2639012068924708537f9ada77
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97797209"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98795323"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>Obnovení pomocí automatických záloh databáze – Azure SQL Database & spravované instance SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-K dispozici jsou následující možnosti pro obnovení databáze pomocí [automatických záloh databáze](automated-backups-overview.md). Můžete:
+K dispozici jsou následující možnosti pro obnovení databáze pomocí [automatických záloh databáze](automated-backups-overview.md). Další možnosti:
 
 - Vytvoří novou databázi na stejném serveru, která se obnovila k určitému bodu v čase v rámci doby uchování.
 - Vytvoří databázi na stejném serveru, která se obnovila do doby odstraňování odstraněné databáze.
@@ -53,8 +53,8 @@ U jednoho předplatného platí omezení počtu souběžných požadavků na obn
 
 | **Možnost nasazení** | **Maximální počet souběžných požadavků zpracovávaných** | **Maximální počet souběžných požadavků, které jsou odesílány** |
 | :--- | --: | --: |
-|**Samostatná databáze (na předplatné)**|10|60|
-|**Elastický fond (pro každý fond)**|4|200|
+|**Samostatná databáze (na předplatné)**|30|100|
+|**Elastický fond (pro každý fond)**|4|2000|
 
 
 Neexistuje integrovaná metoda pro obnovení celého serveru. Příklad toho, jak tento úkol provést, najdete v tématu [Azure SQL Database: úplné obnovení serveru](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666).
@@ -168,7 +168,7 @@ Dokončete proces vytváření nové databáze ze zálohy. Když v Azure SQL Dat
 
 #### <a name="sql-managed-instance"></a>Spravovaná instance SQL
 
-Chcete-li geograficky obnovit databázi spravované instance z Azure Portal do existující spravované instance v oblasti podle vašeho výběru, vyberte spravovanou instanci, na které chcete databázi obnovit. Postupujte takto:
+Chcete-li geograficky obnovit databázi spravované instance z Azure Portal do existující spravované instance v oblasti podle vašeho výběru, vyberte spravovanou instanci, na které chcete databázi obnovit. Postupujte následovně:
 
 1. Vyberte **Nová databáze**.
 2. Zadejte požadovaný název databáze.
@@ -253,7 +253,7 @@ Chcete-li obnovit databázi pomocí rozhraní příkazového řádku Azure, pře
 
 Pokud chcete obnovit databázi spravované instance pomocí Azure CLI, přečtěte si téma [AZ SQL MIDB Restore](/cli/azure/sql/midb#az-sql-midb-restore).
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 Automatické zálohování chrání vaše databáze před chybami uživatelů a aplikací, náhodným odstraněním databáze a prodlouženými výpadky. Tato integrovaná funkce je k dispozici pro všechny úrovně služeb a výpočetní velikosti.
 

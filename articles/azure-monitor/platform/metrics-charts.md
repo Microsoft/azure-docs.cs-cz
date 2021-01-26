@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: b4feb177abbdbfb9666be0ea0746c8316acdf5ae
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 2f8dc9f53c36f59a152fc34361b3726ea2cc001c
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250753"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797060"
 ---
 # <a name="advanced-features-of-the-azure-metrics-explorer"></a>Rozšířené funkce Průzkumníka metrik Azure
 
@@ -129,16 +129,19 @@ Můžete použít filtry na grafy, jejichž metriky mají rozměry. Představte 
 
    ![Snímek obrazovky zobrazující dimenze (vlastnosti), které můžete filtrovat.](./media/metrics-charts/028.png)
 
-3. Vyberte hodnoty dimenzí, které chcete zahrnout při vykreslení grafu. Následující příklad odfiltruje úspěšné transakce úložiště:
+3. Vyberte operátor, který chcete použít pro dimenzi (vlastnost). Výchozí operátor je = (je rovno).
+
+   ![Snímek obrazovky, který zobrazuje operátor, který můžete použít spolu s filtrem.](./media/metrics-charts/filter-operator.png)
+
+4. Vyberte, které hodnoty dimenze chcete použít pro filtr při vykreslování grafu (Tento příklad ukazuje odfiltrování úspěšných transakcí úložiště):
 
    ![Snímek obrazovky zobrazující úspěšné filtrované transakce úložiště](./media/metrics-charts/029.png)
 
-4. Vyberte mimo **selektor filtru** a zavřete ho. Graf teď zobrazuje, kolik transakcí úložiště selhalo:
+5. Po výběru hodnot filtru klikněte na pryč v selektoru filtru a zavřete ho. Graf teď zobrazuje, kolik transakcí úložiště selhalo:
 
    ![Snímek obrazovky, který ukazuje, kolik transakcí úložiště selhalo.](./media/metrics-charts/030.png)
 
-Opakováním těchto kroků můžete použít více filtrů pro stejné grafy.
-
+6. Opakováním kroků 1-5 můžete použít více filtrů pro stejné grafy.
 
 
 ## <a name="metric-splitting"></a>Rozdělení metriky
@@ -158,9 +161,18 @@ Metriku můžete rozdělit podle dimenzí, abyste vizualizují, jak různé segm
 
    Graf nyní zobrazuje více řádků, jeden pro každý segment dimenze:
 
-   ![Snímek obrazovky zobrazující řádky pro jednotlivé segmenty dimenzí](./media/metrics-charts/032.png)
+   ![Snímek obrazovky, který zobrazuje více řádků, jeden pro každý segment dimenze.](./media/metrics-charts/segment-dimension.png)
+   
+3. Vyberte limit počtu hodnot, který se má zobrazit po rozdělení podle vybrané dimenze. Výchozí limit je 10, jak je znázorněno v předchozím grafu. Rozsah limitu je 1-50.
+   
+   ![Snímek obrazovky zobrazující limit rozdělení, který omezuje počet hodnot po rozdělení.](./media/metrics-charts/segment-dimension-limit.png)
+   
+4. Vyberte pořadí řazení pro segmenty: vzestupně nebo sestupně. Výchozí výběr je sestupně.
+   
+   ![Snímek obrazovky zobrazující pořadí řazení na rozdělených hodnotách](./media/metrics-charts/segment-dimension-sort.png)
 
-3. Vyberte mimo **selektor seskupení** a zavřete ho.
+5. Kliknutím na tlačítko mimo **Výběr seskupení** jej zavřete.
+   
 
    > [!NOTE]
    > Chcete-li skrýt segmenty, které jsou nepodstatné pro váš scénář, a usnadnit čtení grafů, použijte filtrování i rozdělení na stejnou dimenzi.

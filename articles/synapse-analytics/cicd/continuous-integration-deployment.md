@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 7a665bf05167a6bdf20c7325c66a5d0e439aa7f1
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: ba5286b16b6e640e968b50174e39a05328e750a4
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223682"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797298"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Průběžná integrace a doručování pro Azure synapse Workspace
 
@@ -134,3 +134,13 @@ Pokud používáte integraci Git s vaším pracovním prostorem synapse a máte 
 -   **Příprava fondů před migrací artefaktů**. Pokud máte skript SQL nebo Poznámkový blok připojený ke fondům v pracovním prostoru pro vývoj, očekává se stejný název fondů v různých prostředích. 
 -   **Infrastruktura jako kód (IAC)**. Správa infrastruktury (sítí, virtuálních počítačů, nástrojů pro vyrovnávání zatížení a topologie připojení) v popisném modelu používá stejnou verzi jako DevOps tým používá ke zdrojovému kódu. 
 -   **Ostatní**. Podívejte se [na osvědčené postupy pro artefakty ADF](../../data-factory/continuous-integration-deployment.md#best-practices-for-cicd) .
+
+## <a name="troubleshooting-artifacts-deployment"></a>Řešení potíží s nasazením artefaktů 
+
+### <a name="use-the-synapse-workspace-deployment-task"></a>Použití úlohy nasazení v pracovním prostoru synapse
+
+V synapse všechny druhy artefaktů nejsou prostředky ARM, které se liší pomocí ADF. Úlohu nasazení šablony ARM nemůžete použít k nasazení artefaktů synapse.
+ 
+### <a name="unexpected-token-error-in-release"></a>Neočekávaná chyba tokenu ve vydané verzi
+
+Pokud soubor parametrů obsahuje hodnoty parametrů, které nejsou uvozené řídicími znaky, kanál verze by nemohl analyzovat soubor s chybou neočekávaného tokenu. Doporučujeme, abyste pro získání parametrů popsali parametry nebo Trezor klíčů. Jako alternativní řešení můžete také dvojnásobit řídicí znak.

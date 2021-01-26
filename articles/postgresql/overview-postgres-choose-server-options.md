@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 09/21/2020
-ms.openlocfilehash: 8bc303f619d145cc280e6caab65781bd42d1b314
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: db80ae66761e49ce90f25a22f0e74cf8a1300796
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489689"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797235"
 ---
 # <a name="choose-the-right-postgresql-server-option-in-azure"></a>Volba pravého serveru PostgreSQL v Azure
 
@@ -21,7 +21,7 @@ S Azure můžou vaše zatížení serveru PostgreSQL běžet v hostované infras
 Při rozhodování zvažte následující tři možnosti v PaaS nebo na virtuálních počítačích Azure (IaaS).
 - [Jeden server Azure Database for PostgreSQL](./overview-single-server.md)
 - [Azure Database for PostgreSQL – flexibilní Server](./flexible-server/overview.md)
-- [Azure Database for PostgreSQL – škálovatelné škálování (Citus)]()
+- [Azure Database for PostgreSQL – škálovatelné škálování (Citus)](hyperscale/index.yml)
 
 Možnost **PostgreSQL na virtuálních počítačích Azure** spadá do kategorie odvětví IaaS. Pomocí této služby můžete spustit PostgreSQL Server v rámci plně spravovaného virtuálního počítače na cloudové platformě Azure. Na virtuálním počítači s IaaS můžete nainstalovat všechny poslední verze a edice PostgreSQL. V nejvýznamnějších rozdílech od Azure Database for PostgreSQL PostgreSQL na virtuálních počítačích Azure nabízí kontrolu nad databázovým strojem. Tento ovládací prvek ale přichází na zodpovědnost za správu virtuálních počítačů a mnoha úloh správy databází (DBA). Mezi tyto úlohy patří údržba a opravy databázových serverů, obnovení databáze a návrh vysoké dostupnosti.
 

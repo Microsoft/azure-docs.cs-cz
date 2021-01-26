@@ -10,14 +10,17 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 09/06/2020
-ms.openlocfilehash: fd3c8a08e5512d15be4dfb26ca3eff151d08386f
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: e31128687cfcc1f4e32879328ad3227182efb9ce
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651358"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797359"
 ---
 # <a name="use-azure-sentinel-watchlists"></a>Použití Azure Sentinel watchlists
+
+> [!IMPORTANT]
+> Funkce watchlists je aktuálně ve **verzi Preview**. Další právní podmínky, které se vztahují na funkce Azure, které jsou ve verzi beta, Preview nebo jinak ještě nedostupné ve všeobecné dostupnosti, najdete v tématu dodatečné [podmínky použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) Preview.
 
 Azure Sentinel watchlists umožňuje shromažďování dat z externích zdrojů dat pro korelaci s událostmi ve vašem prostředí Azure Sentinel. Po vytvoření můžete watchlists použít ve svých hledáních, pravidlech detekce, loveckí hrozeb a odpovědích playbooky. Watchlists se ukládají do vašeho pracovního prostoru Sentinel Azure jako dvojici název-hodnota a ukládají se do mezipaměti pro optimální výkon dotazů a nízkou latenci.
 
@@ -73,11 +76,43 @@ Obvyklé scénáře použití watchlists zahrnují:
 
     :::image type="content" source="./media/watchlists/sentinel-watchlist-queries-fields.png" alt-text="dotazy s poli seznamu ke zhlédnutí" lightbox="./media/watchlists/sentinel-watchlist-queries-fields.png":::
     
+1. Data z seznamu ke zhlédnutí můžete v libovolné tabulce dotazovat tak, že seznamu ke zhlédnutí jako tabulku pro spojení a vyhledávání.
+
+    ```kusto
+    Heartbeat
+    | lookup kind=leftouter _GetWatchlist('IPlist') 
+     on $left.ComputerIP == $right.IPAddress
+    ```
+    :::image type="content" source="./media/watchlists/sentinel-watchlist-queries-join.png" alt-text="dotazy na seznamu ke zhlédnutí jako vyhledávání":::
+
 ## <a name="use-watchlists-in-analytics-rules"></a>Použití watchlists v pravidlech analýz
 
 Pokud chcete použít watchlists v pravidlech analýzy, přejděte z Azure Portal na **Azure Sentinel**  >  **Configuration**  >  **Analytics** a vytvořte pravidlo pomocí `_GetWatchlist('<watchlist>')` funkce v dotazu.
 
-:::image type="content" source="./media/watchlists/sentinel-watchlist-analytics-rule.png" alt-text="použití watchlists v pravidlech analýz" lightbox="./media/watchlists/sentinel-watchlist-analytics-rule.png":::
+1. V tomto příkladu vytvořte seznamu ke zhlédnutí s názvem "ipwatchlist" s následujícími hodnotami:
+
+    :::image type="content" source="./media/watchlists/create-watchlist.png" alt-text="seznam čtyř položek pro seznamu ke zhlédnutí":::
+
+    :::image type="content" source="./media/watchlists/sentinel-watchlist-new-2.png" alt-text="vytvořit seznamu ke zhlédnutí se čtyřmi položkami":::
+
+1. Dále vytvořte pravidlo analýzy.  V tomto příkladu budeme do seznamu ke zhlédnutí zahrnout jenom události z IP adres:
+
+    ```kusto
+    //Watchlist as a variable
+    let watchlist = (_GetWatchlist('ipwatchlist') | project IPAddress);
+    Heartbeat
+    | where ComputerIP in (watchlist)
+    ```
+    ```kusto
+    //Watchlist inline with the query
+    Heartbeat
+    | where ComputerIP in ( 
+        (_GetWatchlist('ipwatchlist')
+        | project IPAddress)
+    )
+    ```
+
+:::image type="content" source="./media/watchlists/sentinel-watchlist-analytics-rule-2.png" alt-text="použití watchlists v pravidlech analýz":::
 
 ## <a name="view-list-of-watchlists-aliases"></a>Zobrazit seznam aliasů watchlists
 

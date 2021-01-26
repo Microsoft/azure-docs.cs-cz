@@ -7,12 +7,12 @@ ms.date: 01/25/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: c6d62cf7b93255336d87cec1d0fef2c567cde9f2
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 200e1fd7bfffef403fa459d3de13dc31145b8a33
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791827"
+ms.locfileid: "98796637"
 ---
 # <a name="introduction-to-azure-defender-for-app-service"></a>Seznámení s Azure Defenderem pro App Service
 
@@ -28,7 +28,7 @@ Azure App Service je plně spravovaná platforma pro vytváření a hostování 
 |Stav vydaných verzí:|Všeobecně dostupná (GA)|
 |Stanov|[Azure Defender pro App Service](azure-defender.md) se účtuje tak, jak je znázorněno na [stránce s cenami](security-center-pricing.md) .<br>Na stránce ceny a nastavení je uveden počet instancí pro vaše **množství prostředků**. Toto číslo je celkový počet výpočetních instancí ve všech App Service plánech v tomto předplatném, který běží v okamžiku, kdy jste otevřeli stránku s cenovou úrovní.<br>Chcete-li ověřit počet, otevřete **App Service plánů** v Azure Portal a zkontrolujte počet výpočetních instancí používaných jednotlivými plány.|
 |Podporované plány App Service:|![Ano, ](./media/icons/yes-icon.png) Basic, Standard, Premium, izolovaný režim nebo Linux<br>![Žádná ](./media/icons/no-icon.png) volná, sdílená ani spotřebovaná<br>[Další informace o plánech App Service](https://azure.microsoft.com/pricing/details/app-service/plans/)|
-|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![No](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
+|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![No](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-app-service"></a>Jaké jsou výhody Azure Defenderu pro App Service?
@@ -62,9 +62,9 @@ Azure Defender monitoruje mnoho hrozeb pro vaše App Service prostředky. Výstr
 
 ### <a name="dangling-dns-detection"></a>Dangling DNS – detekce
 
-Azure Defender pro App Service taky při vyřazení webu z provozu App Service identifikuje všechny položky DNS, které jsou v registrátoru DNS zbývající – tyto položky se nazývají dangling DNS. V tuto chvíli položka DNS odkazuje na neexistující prostředek a vaše subdoména je zranitelná vůči převzetí. Azure Defender nehledá v případě *existujících* položek DNS v dangling v registrátoru DNS. upozorní vás, když se vyřadí App Service web a jeho vlastní doména (položka DNS) se neodstraní.
+Azure Defender pro App Service taky při vyřazení webu z provozu App Service identifikuje všechny položky DNS, které jsou v registrátoru DNS zbývající – tyto položky se nazývají dangling DNS. Když odeberete web a neodeberete jeho vlastní doménu z registrátora DNS, položka DNS odkazuje na neexistující prostředek a vaše subdoména je zranitelná vůči převzetí. Azure Defender nehledá v případě *existujících* položek DNS v dangling v registrátoru DNS. upozorní vás, když se vyřadí App Service web a jeho vlastní doména (položka DNS) se neodstraní.
 
-Převzetí subdomény jsou společnou vysoce závažnou hrozbou pro organizace. Když objekt actor actor detekuje položku DNS dangling, vytvoří vlastní web na cílové adrese. Provoz určený pro doménu organizace se pak přesměruje na web herců hrozeb a může tento provoz použít pro nejrůznější škodlivou aktivitu. 
+Převzetí subdomény jsou společnou vysoce závažnou hrozbou pro organizace. Když objekt actor actor detekuje položku DNS dangling, vytvoří vlastní web na cílové adrese. Provoz určený pro doménu organizace se pak přesměruje na web herců hrozeb a může tento provoz použít pro nejrůznější škodlivou aktivitu.
 
 Ochrana DNS dangling je dostupná bez ohledu na to, jestli jsou vaše domény spravované pomocí Azure DNS nebo externího registrátora domény a platí pro App Service v systémech Windows i Linux.
 
@@ -100,4 +100,4 @@ Související materiály najdete v následujících článcích:
 - Seznam upozornění na App Service Azure Defenderu najdete v [referenční tabulce výstrah](alerts-reference.md#alerts-azureappserv).
 - Další informace o plánech App Service najdete v tématu [plány App Service](https://azure.microsoft.com/pricing/details/app-service/plans/).
 > [!div class="nextstepaction"]
-> [Povolení Azure Defenderu](security-center-pricing.md)
+> [Povolení Azure Defenderu](security-center-pricing.md#enable-azure-defender)

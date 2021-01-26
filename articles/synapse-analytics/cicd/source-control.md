@@ -8,22 +8,18 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 1f1a74f3a26a079039e68eb8e59fac4c18ff0c32
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 3564609d869bef090f0a3db5e6040ba0f5ad80b0
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219738"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98796956"
 ---
 # <a name="source-control-in-azure-synapse-studio"></a>Správa zdrojového kódu v Azure synapse studiu
 
-Ve výchozím nastavení autoři Azure synapse Studio přímo na službu synapse. Toto prostředí má ale následující omezení:
+Ve výchozím nastavení autoři Azure synapse Studio přímo na službu synapse. Pokud potřebujete spolupráci pomocí Gitu pro správu zdrojového kódu, synapse Studio vám umožní přidružit svůj pracovní prostor k úložišti Git, Azure DevOps nebo GitHubu. 
 
-- Synapse Studio neobsahuje dočasné úložiště pro ukládání vašich změn. Jediný způsob, jak uložit a sdílet změny, je prostřednictvím **publikování** a všechny změny se publikují přímo do služby synapse.
-
-- Synapse Studio není optimalizované pro spolupráci a správu verzí.
-
-Pro zajištění schopnosti správy zdrojového kódu vám synapse Studio umožní přidružit svůj pracovní prostor k úložišti Git, Azure DevOps nebo GitHubu. V tomto článku se dozvíte, jak nakonfigurovat a pracovat v pracovním prostoru synapse s povoleným úložištěm Git. Také zvýrazníme některé osvědčené postupy a Průvodce odstraňováním potíží.
+V tomto článku se dozvíte, jak nakonfigurovat a pracovat v pracovním prostoru synapse s povoleným úložištěm Git. Také zvýrazníme některé osvědčené postupy a Průvodce odstraňováním potíží.
 
 > [!NOTE]
 > Integrace Git Azure synapse Studio není dostupná v cloudu Azure Government.
@@ -112,7 +108,7 @@ V podokně Konfigurace se zobrazí následující nastavení úložiště GitHub
 
 | **Nastavení** | **Popis**  | **Hodnota**  |
 |:--- |:--- |:--- |
-| **Typ úložiště** | Typ úložiště kódu Azure Repos. | GitHubu |
+| **Typ úložiště** | Typ úložiště kódu Azure Repos. | GitHub |
 | **Použití GitHubu Enterprise** | Zaškrtávací políčko pro výběr GitHubu Enterprise | nevybráno (výchozí) |
 | **Adresa URL GitHubu Enterprise** | Kořenová adresa URL pro GitHub Enterprise (musí být HTTPS pro místní server GitHub Enterprise). Příklad: `https://github.mydomain.com`. Požadováno jenom v případě, že je vybraná **možnost použít GitHub Enterprise** | `<your GitHub enterprise url>` |                                                           
 | **Účet GitHub** | Název vašeho účtu GitHubu. Tento název najdete v názvu https: \/ /GitHub.com/{account}/{repository Name}. Když přejdete na tuto stránku, zobrazí se výzva k zadání přihlašovacích údajů GitHubu OAuth do svého účtu GitHubu. | `<your GitHub account name>` |
