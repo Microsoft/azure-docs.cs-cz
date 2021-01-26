@@ -1,17 +1,17 @@
 ---
 title: Předdefinované definice zásad pro vlastní poskytovatele prostředků Azure
 description: Uvádí Azure Policy předdefinované definice zásad pro vlastní poskytovatele prostředků Azure. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
-ms.date: 01/21/2021
+ms.date: 01/25/2021
 ms.topic: reference
 author: jjbfour
 ms.author: jobreen
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 5c52a791b083e5625aa02b76e8cb505b0ba87744
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: d4c97e7ce4fab0a3fb811db021f8131033c98b44
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98704758"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98802324"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-custom-resource-providers"></a>Azure Policy předdefinované definice pro vlastní poskytovatele prostředků Azure
 

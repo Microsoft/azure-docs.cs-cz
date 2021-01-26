@@ -79,7 +79,7 @@
         - name: Nejčastější dotazy k centru zálohování
           href: backup-center-faq.yml
         - name: Nejčastější dotazy k zálohování virtuálních počítačů Azure
-          href: backup-azure-vm-backup-faq.md
+          href: backup-azure-vm-backup-faq.yml
         - name: Nejčastější dotazy k agentům MARS
           href: backup-azure-file-folder-backup-faq.md
         - name: Nejčastější dotazy k zálohování Azure Files

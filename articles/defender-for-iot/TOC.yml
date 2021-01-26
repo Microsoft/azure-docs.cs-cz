@@ -3,13 +3,12 @@
 - name: Přehled
   href: overview.md
   items:
-    - name: Co je nového?
-      href: release-notes.md
     - name: Architektura řešení
       href: architecture.md
-- name: Rychlé starty
-  expanded: true
-  items:
+    - name: Co je nového?
+      href: release-notes.md
+    - name: Rychlé starty
+      expanded: true
     - name: Řešení bez agentů pro organizace
       items:
         - name: Systémové požadavky
@@ -154,6 +153,16 @@
           href: how-to-gain-insight-into-global-regional-and-local-threats.md
         - name: Práce s upozorněními na místní konzole pro správu
           href: how-to-work-with-alerts-on-premises-management-console.md
+        - name: Vytváření sestav
+          items:
+            - name: Vytváření sestav posouzení rizik
+              href: how-to-create-risk-assessment-reports.md
+            - name: Vytváření sestav vektorů útoku
+              href: how-to-create-attack-vector-reports.md
+            - name: Vytváření sestav dolování dat
+              href: how-to-create-data-mining-queries.md
+            - name: Vytváření trendů a statistických sestav
+              href: how-to-create-data-mining-queries.md
         - name: Rozšíření informací o zařízení
           items:
             - name: Práce s oznámeními zařízení
@@ -168,8 +177,6 @@
         - name: Sledování aktivity senzorů
           href: how-to-track-sensor-activity.md
           displayName: 'timeline, time line, time-line, event'
-        - name: Generování sestav
-          href: how-to-generate-reports.md
         - name: Řešení potíží se senzory a místní konzolou pro správu
           href: how-to-troubleshoot-the-sensor-and-on-premises-management-console.md
         - name: Nastavení monitorování SNMP MIB

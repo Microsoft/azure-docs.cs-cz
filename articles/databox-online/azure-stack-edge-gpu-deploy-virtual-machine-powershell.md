@@ -6,18 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 12/23/2020
+ms.date: 01/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 32685207f8d6e81d03c90d01b186337ce79f843a
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 1d286e7661fa14dd63bd55b133c39414e04decc6
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763826"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98802989"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell"></a>Nasazení virtuálních počítačů na zařízení GPU Azure Stack Edge pro pomocí Azure PowerShell
 
-Tento článek popisuje, jak vytvořit a spravovat virtuální počítač na zařízení Azure Stack Edge pro pomocí Azure PowerShell. Tento článek se týká Azure Stackch PROCESORů Edge pro, Azure Stack Edge pro R a Azure Stack hraničních Mini R.
+Tento článek popisuje, jak vytvořit a spravovat virtuální počítač na zařízení Azure Stack Edge pro pomocí Azure PowerShell. Tento článek se týká Azure Stackch PROCESORů Edge pro, Azure Stack Edge pro R a Azure Stack hraničních zařízení R.
 
 ## <a name="vm-deployment-workflow"></a>Pracovní postup nasazení virtuálních počítačů
 
@@ -32,12 +32,12 @@ Pracovní postup nasazení je znázorněný v následujícím diagramu.
 
 ## <a name="query-for-built-in-subscription-on-the-device"></a>Dotaz na integrované předplatné na zařízení
 
-Pro Azure Resource Manager se podporuje jenom jedno uživatelem viditelné pevné předplatné. Toto předplatné je jedinečné pro každé zařízení a tento název předplatného nebo ID předplatného se nedá změnit.
+Pro Azure Resource Manager se podporuje jenom jedno uživatelem viditelné pevné předplatné. Toto předplatné je jedinečné pro každé zařízení a nelze změnit název předplatného nebo ID předplatného.
 
 Toto předplatné obsahuje všechny prostředky, které jsou vytvořené pro vytváření virtuálních počítačů. 
 
 > [!IMPORTANT]
-> Toto předplatné se vytvoří, když povolíte virtuální počítače z Azure Portal a lokálně na svém zařízení.
+> Toto předplatné se vytvoří, když povolíte virtuální počítače z Azure Portal a místně funguje na vašem zařízení.
 
 Toto předplatné se používá k nasazení virtuálních počítačů.
 
@@ -118,7 +118,7 @@ Successfully created Resource Group:rg191113014333
 
 ## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
 
-Vytvořte nový účet úložiště pomocí skupiny prostředků vytvořené v předchozím kroku. Jedná se o **místní účet úložiště** , který se použije k nahrání image virtuálního disku pro virtuální počítač.
+Vytvořte nový účet úložiště pomocí skupiny prostředků vytvořené v předchozím kroku. Tento účet je **místní účet úložiště** , který se použije k nahrání image virtuálního disku pro virtuální počítač.
 
 ```powershell
 New-AzureRmStorageAccount -Name <Storage account name> -ResourceGroupName <Resource group name> -Location DBELocal -SkuName Standard_LRS
@@ -177,7 +177,7 @@ key2 gd34TcaDzDgsY9JtDNMUgLDOItUU0Qur3CBo6Q...
 
 ## <a name="add-blob-uri-to-hosts-file"></a>Přidat do souboru hostitelů identifikátor URI objektu BLOB
 
-Identifikátor URI objektu BLOB jste už přidali v souboru Hosts pro klienta, který používáte pro připojení k úložišti objektů BLOB v oddílu [Úprava souboru hostitele pro překlad názvů koncových bodů](azure-stack-edge-j-series-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution). Toto byla položka pro identifikátor URI objektu BLOB:
+Identifikátor URI objektu BLOB jste už přidali do souboru hostitelů pro klienta, který používáte pro připojení k úložišti objektů BLOB v oddílu [Úprava souboru hostitele pro překlad názvů koncových bodů](azure-stack-edge-j-series-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution). Tato položka se použila k přidání identifikátoru URI objektu BLOB:
 
 \<Azure consistent network services VIP \>\<storage name\>. blob. \<appliance name\> ..\<dnsdomain\>
 
@@ -256,7 +256,7 @@ $DiskConfig = New-AzureRmDiskConfig -Location DBELocal -CreateOption Import –S
 New-AzureRMDisk -ResourceGroupName <Resource group name> -DiskName <Disk name> -Disk $DiskConfig
 ```
 
-Ukázkový výstup najdete níž. Další informace o této rutině najdete na webu [New-AzureRmDisk](/powershell/module/azurerm.compute/new-azurermdisk?view=azurermps-6.13.0).
+Ukázkový výstup najdete níž. Další informace o této rutině najdete na webu [New-AzureRmDisk](/powershell/module/azurerm.compute/new-azurermdisk?view=azurermps-6.13.0&preserve-view=true).
 
 ```powershell
 Tags               :
@@ -296,7 +296,7 @@ Set-AzureRmImageOsDisk -Image $imageConfig -OsType 'Linux' -OsState 'Generalized
 New-AzureRmImage -Image $imageConfig -ImageName <Image name>  -ResourceGroupName <Resource group name>
 ```
 
-Ukázkový výstup najdete níž. Další informace o této rutině najdete na webu [New-AzureRmImage](/powershell/module/azurerm.compute/new-azurermimage?view=azurermps-6.13.0).
+Ukázkový výstup najdete níž. Další informace o této rutině najdete na webu [New-AzureRmImage](/powershell/module/azurerm.compute/new-azurermimage?view=azurermps-6.13.0&preserve-view=true).
 
 ```powershell
 New-AzureRmImage -Image Microsoft.Azure.Commands.Compute.Automation.Models.PSImage -ImageName ig191113014333  -ResourceGroupName rg191113014333
@@ -319,8 +319,8 @@ Před vytvořením a nasazením virtuálního počítače musíte vytvořit jedn
 > [!IMPORTANT]
 > Při vytváření virtuální sítě a rozhraní virtuální sítě platí následující pravidla:
 > - Dá se vytvořit jenom jedna virtuální síť (dokonce i přes skupiny prostředků) a ta se musí přesně shodovat s logickou sítí z hlediska adresního prostoru.
-> -   Ve virtuální síti se povolí jenom jedna podsíť. Podsíť musí být přesně stejný adresní prostor jako virtuální síť.
-> -   Během vytváření vNIC se povolí jenom statická metoda alokace a uživatel musí zadat privátní IP adresu.
+> - Ve virtuální síti se povolí jenom jedna podsíť. Podsíť musí být přesně stejný adresní prostor jako virtuální síť.
+> - Během vytváření vNIC se povolí jenom statická metoda alokace a uživatel musí zadat privátní IP adresu.
 
  
 **Dotaz na automaticky vytvořenou virtuální síť**
@@ -498,7 +498,7 @@ Spuštěním následující rutiny zapněte virtuální počítač běžící na
 `Start-AzureRmVM [-Name] <String> [-ResourceGroupName] <String>`
 
 
-Další informace o této rutině získáte v nabídce [Start-AzureRmVM](/powershell/module/azurerm.compute/start-azurermvm?view=azurermps-6.13.0).
+Další informace o této rutině získáte v nabídce [Start-AzureRmVM](/powershell/module/azurerm.compute/start-azurermvm?view=azurermps-6.13.0&preserve-view=true).
 
 ### <a name="suspend-or-shut-down-the-vm"></a>Pozastavit nebo vypnout virtuální počítač
 
@@ -510,7 +510,7 @@ Stop-AzureRmVM [-Name] <String> [-StayProvisioned] [-ResourceGroupName] <String>
 ```
 
 
-Další informace o této rutině najdete na webu [rutiny Stop-AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm?view=azurermps-6.13.0).
+Další informace o této rutině najdete na webu [rutiny Stop-AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm?view=azurermps-6.13.0&preserve-view=true).
 
 ### <a name="add-a-data-disk"></a>Přidat datový disk
 
@@ -530,10 +530,10 @@ Spuštěním následující rutiny odeberte virtuální počítač z vašeho za�
 Remove-AzureRmVM [-Name] <String> [-ResourceGroupName] <String>
 ```
 
-Další informace o této rutině najdete v [rutině Remove-AzureRmVm](/powershell/module/azurerm.compute/remove-azurermvm?view=azurermps-6.13.0).
+Další informace o této rutině najdete v [rutině Remove-AzureRmVm](/powershell/module/azurerm.compute/remove-azurermvm?view=azurermps-6.13.0&preserve-view=true).
 
 
 
 ## <a name="next-steps"></a>Další kroky
 
-[Rutiny Azure Resource Manager](/powershell/module/azurerm.resources/?view=azurermps-6.13.0)
+[Rutiny Azure Resource Manager](/powershell/module/azurerm.resources/?view=azurermps-6.13.0&preserve-view=true)

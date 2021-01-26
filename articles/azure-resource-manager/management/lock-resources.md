@@ -4,12 +4,12 @@ description: Zabrání uživatelům aktualizovat nebo odstraňovat prostředky A
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 53054f89c992139fbbd4f087d2a0344e26d97efc
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 0e8fc74b2da0c253ec9c5bf34ec7543398aea48f
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610195"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98802450"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Zamknutí prostředků, aby se zabránilo neočekávaným změnám
 
@@ -38,7 +38,7 @@ Použití zámků může vést k neočekávaným výsledkům, protože některé
 
 * Zámek nejde odstranit u **skupiny prostředků** , což zabrání Azure Resource Manager [automatickému odstranění nasazení](../templates/deployment-history-deletions.md) v historii. Pokud v historii dosáhnete nasazení 800, vaše nasazení se nezdaří.
 
-* Zámek nejde odstranit, protože **Skupina prostředků** vytvořená **službou Azure Backup** způsobuje selhání zálohování. Služba podporuje maximálně 18 bodů obnovení. Při uzamčení nemůže služba zálohování vyčistit body obnovení. Další informace najdete v článku [Nejčastější dotazy – zálohování virtuálních počítačů Azure](../../backup/backup-azure-vm-backup-faq.md).
+* Zámek nejde odstranit, protože **Skupina prostředků** vytvořená **službou Azure Backup** způsobuje selhání zálohování. Služba podporuje maximálně 18 bodů obnovení. Při uzamčení nemůže služba zálohování vyčistit body obnovení. Další informace najdete v článku [Nejčastější dotazy – zálohování virtuálních počítačů Azure](../../backup/backup-azure-vm-backup-faq.yml).
 
 * Zámek jen pro čtení u **předplatného** , který brání **Azure Advisor** správné fungování. Poradce nemůže uložit výsledky svých dotazů.
 
