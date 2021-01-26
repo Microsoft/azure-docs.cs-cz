@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 18d36e37554a5d2b37488b7a1525f8290dc03da0
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 50d78e83bbbeb4b0252c83f9f52e94599ea6946c
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763264"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787956"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Monitorování, diagnostika a řešení problémů s Microsoft Azure Storage
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -482,7 +482,7 @@ Pokud vaše klientská aplikace způsobuje chyby HTTP 403 (Zakázáno), pravděp
 | Microsoft. Azure. Storage |Upozornění |2 |85d077ab-... |Během operace došlo k výjimce: vzdálený server vrátil chybu: (403) zakázáno... |
 | Microsoft. Azure. Storage |Informace |3 |85d077ab-... |Kontroluje se, jestli se má operace opakovat. Počet opakování = 0, stavový kód HTTP = 403, výjimka = vzdálený server vrátil chybu: (403) zakázáno... |
 | Microsoft. Azure. Storage |Informace |3 |85d077ab-... |Další umístění bylo nastaveno na primární v závislosti na režimu umístění. |
-| Microsoft. Azure. Storage |Chybová |1 |85d077ab-... |Zásada opakování nepovolovala pokus o opakování. Selhání se vzdáleným serverem vrátilo chybu: (403) zakázáno. |
+| Microsoft. Azure. Storage |Chyba |1 |85d077ab-... |Zásada opakování nepovolovala pokus o opakování. Selhání se vzdáleným serverem vrátilo chybu: (403) zakázáno. |
 
 V tomto scénáři byste měli prozkoumat, proč platnost tokenu SAS vyprší předtím, než klient pošle token na server:
 
@@ -566,7 +566,7 @@ Pokud se klientská aplikace pokusí použít klíč SAS, který neobsahuje pot�
 
 Následující tabulka ukazuje ukázkovou zprávu protokolu na straně serveru ze souboru protokolu protokolování úložiště:
 
-| Název | Hodnota |
+| Name | Hodnota |
 | --- | --- |
 | Čas zahájení požadavku | 2014-05-30T06:17:48.4473697 Z |
 | Typ operace     | GetBlobProperties            |

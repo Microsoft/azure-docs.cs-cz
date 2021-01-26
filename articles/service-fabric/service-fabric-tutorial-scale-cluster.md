@@ -4,12 +4,12 @@ description: V tomto kurzu se dozvíte, jak škálovat Cluster Service Fabric v 
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 063c83818ec2e98491f9062e936b9a1e7b2c4356
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: cdc7ba8d6c83ae72ffb8f1afae3954b3a46dc6ec
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97702170"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787990"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Kurz: Škálování clusteru Service Fabric v Azure
 
@@ -809,7 +809,7 @@ Po vytvoření clusteru Service Fabric můžete škálovat cluster vodorovně od
 > [!WARNING]
 > Použití Remove-AzServiceFabricNodeType k odebrání typu uzlu z produkčního clusteru se nedoporučuje používat na časté bázi. Jedná se o nebezpečný příkaz, protože odstraňuje prostředek sady škálování virtuálního počítače za typem uzlu. 
 
-Chcete-li odebrat typ uzlu, spusťte rutinu [Remove-AzServiceFabricNodeType](/powershell/module/az.servicefabric/remove-azservicefabricnodetype) .  Typ uzlu musí být stříbrná nebo zlatá [úroveň odolnosti][durability]  . rutina odstraní sadu škálování přidruženou k typu uzlu a její dokončení nějakou dobu trvá.  Pak na všech uzlech spusťte rutinu [Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) , která se má odebrat. tím se odstraní stav uzlu a z clusteru se odeberou uzly. Pokud na uzlech existují služby, pak se služby nejprve přesunou na jiný uzel. Pokud Správce clusteru nenašel uzel pro repliku nebo službu, operace je zpožděná nebo blokovaná.
+Chcete-li odebrat typ uzlu, spusťte rutinu [Remove-AzServiceFabricNodeType](/powershell/module/az.servicefabric/remove-azservicefabricnodetype) .  Typ uzlu musí být stříbrná nebo zlatá [úroveň odolnosti][durability]  . rutina odstraní sadu škálování přidruženou k typu uzlu a její dokončení nějakou dobu trvá.  Pak na všech uzlech spusťte rutinu [Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate) , která se má odebrat. tím se odstraní stav uzlu a z clusteru se odeberou uzly. Pokud na uzlech existují služby, pak se služby nejprve přesunou na jiný uzel. Pokud Správce clusteru nenašel uzel pro repliku nebo službu, operace je zpožděná nebo blokovaná.
 
 ```powershell
 $groupname = "sfclustertutorialgroup"

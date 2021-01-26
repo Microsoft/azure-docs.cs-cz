@@ -10,14 +10,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 08/04/2020
+ms.date: 01/25/2021
 tags: azure-synpase
-ms.openlocfilehash: f8d352dac98f953f7f6d8033d0d9e1376c4da313
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 0f92d8dbfe423efa58231831fe012a27e45f9208
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96532240"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787684"
 ---
 # <a name="dynamic-data-masking"></a>Dynamické maskování dat 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -26,15 +26,11 @@ Azure SQL Database, Azure SQL Managed instance a Azure synapse Analytics podporu
 
 Dynamické maskování dat pomáhá předcházet neoprávněnému přístupu k citlivým datům tím, že uživatelům umožňuje určit, kolik citlivých dat se může odhalit, aby to mělo minimální dopad na aplikační vrstvu. Je to funkce zabezpečení založená na zásadách, která skrývá citlivá data v sadě výsledků dotazu nad určenými poli databáze, zatímco data v databázi se nemění.
 
-Například zástupce služby v centru volání může identifikovat volajících několika číslicemi čísla platební karty, ale tyto datové položky by se zástupci služby neměli plně zveřejnit. Je možné definovat pravidlo maskování, které maskuje všechny kromě posledních čtyř číslic čísla platební karty v sadě výsledků dotazu. Dalším příkladem je, že je možné definovat vhodnou masku dat pro ochranu osobních údajů, aby se vývojář mohl dotazovat na produkční prostředí, aniž by narušila předpisy pro dodržování předpisů.
+Například zástupce služby v centru volání může identifikovat volající více číslic e-mailové adresy, ale tyto datové položky by se zástupci služby neměli plně zveřejnit. Je možné definovat pravidlo maskování, které maskuje veškerou e-mailovou adresu v sadě výsledků dotazu. Dalším příkladem je, že je možné definovat vhodnou masku dat pro ochranu osobních údajů, aby se vývojář mohl dotazovat na produkční prostředí, aniž by narušila předpisy pro dodržování předpisů.
 
 ## <a name="dynamic-data-masking-basics"></a>Základy dynamického maskování dat
 
 Zásadu dynamického maskování dat v Azure Portal nastavíte tak, že v podokně Konfigurace SQL Database vyberete okno **Maskování dynamických dat** v části **zabezpečení** . Tuto funkci nelze nastavit pomocí portálu pro spravovanou instanci SQL (použijte PowerShell nebo REST API). Další informace najdete v tématu [dynamické maskování dat](/sql/relational-databases/security/dynamic-data-masking).
-
-### <a name="dynamic-data-masking-permissions"></a>Oprávnění k maskování dynamických dat
-
-Dynamické maskování dat lze konfigurovat pomocí rolí správce Azure SQL Database, správce serveru nebo [Správce zabezpečení systému SQL](../../role-based-access-control/built-in-roles.md#sql-security-manager) .
 
 ### <a name="dynamic-data-masking-policy"></a>Zásady dynamického maskování dat
 
@@ -83,3 +79,11 @@ Pomocí REST API můžete programově spravovat zásady a pravidla maskování d
 
 - [Vytvořit nebo aktualizovat](/rest/api/sql/datamaskingrules/createorupdate): vytvoří nebo aktualizuje pravidlo maskování dat databáze.
 - [Seznam podle databáze](/rest/api/sql/datamaskingrules/listbydatabase): načte seznam pravidel pro maskování dat databáze.
+
+## <a name="permissions"></a>Oprávnění
+
+Dynamické maskování dat může nakonfigurovat správce Azure SQL Database, správce serveru nebo role řízení přístupu na základě role (RBAC) [SQL Security Manager](../../role-based-access-control/built-in-roles.md#sql-security-manager) .
+
+## <a name="next-steps"></a>Další kroky
+
+[Dynamické maskování dat](/sql/relational-databases/security/dynamic-data-masking)

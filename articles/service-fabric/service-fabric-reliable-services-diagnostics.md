@@ -3,15 +3,15 @@ title: Azure Service Fabric stavová Diagnostika Reliable Services
 description: Diagnostické funkce pro stavové Reliable Services v Azure Service Fabric
 ms.topic: conceptual
 ms.date: 8/24/2018
-ms.openlocfilehash: 5a3831dd4f8d5402980fac3daf8c35d9884c852d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 774a771d0c9701076a5d6c070963bf6224a571dd
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840757"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789326"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>Diagnostické funkce pro stavové služby Reliable Services
-Stavová Reliable Services StatefulServiceBase třídy Azure Service Fabric emituje události [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) , které se dají použít k ladění služby, poskytování přehledů o fungování modulu runtime a k řešení potíží.
+Stavová Reliable Services StatefulServiceBase třídy Azure Service Fabric emituje události [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource) , které se dají použít k ladění služby, poskytování přehledů o fungování modulu runtime a k řešení potíží.
 
 ## <a name="eventsource-events"></a>Události EventSource
 Název EventSource pro stavovou Reliable Services třídy StatefulServiceBase je "Microsoft-ServiceFabric-Services". Události z tohoto zdroje událostí se zobrazí v okně [diagnostické události](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md#view-service-fabric-system-events-in-visual-studio) při [ladění služby v aplikaci Visual Studio](service-fabric-debugging-your-application.md).
@@ -19,7 +19,7 @@ Název EventSource pro stavovou Reliable Services třídy StatefulServiceBase je
 Příklady nástrojů a technologií, které vám pomůžou při shromažďování a zobrazování událostí EventSource, jsou [PerfView](https://www.microsoft.com/download/details.aspx?id=28567), [Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md)a [Microsoft TraceEvent Library](https://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent).
 
 ## <a name="events"></a>Události
-| Název události | ID události | Úroveň | Popis události |
+| Název události | ID události | Level | Popis události |
 | --- | --- | --- | --- |
 | StatefulRunAsyncInvocation |1 |Informační |Vygenerováno při spuštění úlohy služby RunAsync |
 | StatefulRunAsyncCancellation |2 |Informační |Vygenerováno při zrušení úlohy RunAsync služby |
@@ -58,7 +58,7 @@ Pro kategorii `Service Fabric Transactional Replicator` jsou názvy instancí č
 
 `ServiceFabricPartitionId:ServiceFabricReplicaId`
 
-*ServiceFabricPartitionId* je řetězcová reprezentace ID oddílu Service Fabric, ke které je instance čítače výkonu přidružena. IDENTIFIKÁTOR oddílu je identifikátor GUID a řetězcová reprezentace je generována pomocí [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) specifikátoru formátu "D".
+*ServiceFabricPartitionId* je řetězcová reprezentace ID oddílu Service Fabric, ke které je instance čítače výkonu přidružena. IDENTIFIKÁTOR oddílu je identifikátor GUID a řetězcová reprezentace je generována pomocí [`Guid.ToString`](/dotnet/api/system.guid.tostring#System_Guid_ToString_System_String_) specifikátoru formátu "D".
 
 *ServiceFabricReplicaId* je ID přidružené k dané replice spolehlivé služby. ID repliky je zahrnuté v názvu instance čítače výkonu, aby se zajistila jeho jedinečnost a nedocházelo ke konfliktu s dalšími instancemi čítače výkonu generovanými stejným oddílem. Další podrobnosti o replikách a jejich roli ve spolehlivých službách najdete [tady](service-fabric-concepts-replica-lifecycle.md).
 
@@ -73,7 +73,7 @@ Pro kategorii `Service Fabric TStore` jsou názvy instancí čítače v následu
 
 `ServiceFabricPartitionId:ServiceFabricReplicaId:StateProviderId_PerformanceCounterInstanceDifferentiator_StateProviderName`
 
-*ServiceFabricPartitionId* je řetězcová reprezentace ID oddílu Service Fabric, ke které je instance čítače výkonu přidružena. IDENTIFIKÁTOR oddílu je identifikátor GUID a řetězcová reprezentace je generována pomocí [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) specifikátoru formátu "D".
+*ServiceFabricPartitionId* je řetězcová reprezentace ID oddílu Service Fabric, ke které je instance čítače výkonu přidružena. IDENTIFIKÁTOR oddílu je identifikátor GUID a řetězcová reprezentace je generována pomocí [`Guid.ToString`](/dotnet/api/system.guid.tostring#System_Guid_ToString_System_String_) specifikátoru formátu "D".
 
 *ServiceFabricReplicaId* je ID přidružené k dané replice spolehlivé služby. ID repliky je zahrnuté v názvu instance čítače výkonu, aby se zajistila jeho jedinečnost a nedocházelo ke konfliktu s dalšími instancemi čítače výkonu generovanými stejným oddílem. Další podrobnosti o replikách a jejich roli ve spolehlivých službách najdete [tady](service-fabric-concepts-replica-lifecycle.md).
 
@@ -93,7 +93,7 @@ V předchozím příkladu `00d0126d-3e36-4d68-98da-cc4f7195d85e` je řetězcové
 
 Modul runtime Reliable Services emituje následující události pod kategorií. `Service Fabric Transactional Replicator`
 
- Název čítače | Description |
+ Název čítače | Popis |
 | --- | --- |
 | Zahájit operace TXN za sekundu | Počet nových transakcí zápisu vytvořených za sekundu.|
 | Operace TXN/s | Počet operací přidání/aktualizace/odstranění provedených na spolehlivých kolekcích za sekundu.|
@@ -106,7 +106,7 @@ Modul runtime Reliable Services emituje následující události pod kategorií.
 
 Modul runtime Reliable Services emituje následující události pod kategorií. `Service Fabric TStore`
 
- Název čítače | Description |
+ Název čítače | Popis |
 | --- | --- |
 | Počet položek | Počet položek v úložišti.|
 | Velikost disku | Celková velikost disku (v bajtech) souborů kontrolních bodů pro úložiště.|

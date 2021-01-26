@@ -3,27 +3,27 @@ title: Konfigurace Galerie sdílených imagí v Azure DevTest Labs | Microsoft D
 description: Naučte se konfigurovat galerii sdílených imagí v Azure DevTest Labs, která uživatelům umožňuje přístup k obrázkům ze sdíleného umístění při vytváření prostředků testovacího prostředí.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 96563b1dcfac171af38b229bb81d12b3afda2e2f
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: febcff640efc29eb4916250366641635f9d8721e
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92327973"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788417"
 ---
 # <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>Konfigurace galerie sdílených imagí v Azure DevTest Labs
-DevTest Labs teď podporuje funkci [Galerie sdílených imagí](../virtual-machines/windows/shared-image-galleries.md) . Umožňuje uživatelům testovacího prostředí přistupovat k obrázkům ze sdíleného umístění při vytváření prostředků testovacího prostředí. Pomůže vám taky vytvářet strukturu a organizaci kolem vašich vlastních imagí virtuálních počítačů spravovaných vaším uživatelem. Funkce Galerie sdílených imagí podporuje:
+DevTest Labs teď podporuje funkci [Galerie sdílených imagí](../virtual-machines/shared-image-galleries.md) . Umožňuje uživatelům testovacího prostředí přistupovat k obrázkům ze sdíleného umístění při vytváření prostředků testovacího prostředí. Pomůže vám taky vytvářet strukturu a organizaci kolem vašich vlastních imagí virtuálních počítačů spravovaných vaším uživatelem. Funkce Galerie sdílených imagí podporuje:
 
 - Spravovaná globální replikace imagí
 - Správa verzí a seskupování imagí pro snadnější správu
 - Zpřístupněte své image vysoce dostupné v rámci účtů zóny redundantního úložiště (ZRS) v oblastech, které podporují zóny dostupnosti. ZRS nabízí lepší odolnost proti chybám v rámci oblast.
 - Sdílení mezi předplatnými a dokonce i mezi klienty pomocí řízení přístupu na základě role Azure (RBAC).
 
-Další informace najdete v [dokumentaci Galerie sdílených imagí](../virtual-machines/windows/shared-image-galleries.md). 
+Další informace najdete v [dokumentaci Galerie sdílených imagí](../virtual-machines/shared-image-galleries.md). 
  
 Pokud máte velký počet spravovaných imagí, které potřebujete udržovat a chtějí je zpřístupnit v celé firmě, můžete použít galerii sdílených imagí jako úložiště, které usnadňuje aktualizaci a sdílení imagí. Jako vlastník testovacího prostředí můžete k testovacímu prostředí připojit stávající sdílenou galerii imagí. Po připojení k této galerii můžou uživatelé testovacího prostředí vytvářet počítače z těchto nejnovějších imagí. Klíčovou výhodou této funkce je, že DevTest Labs teď můžou využít výhod sdílení imagí napříč laboratořemi, mezi předplatnými a v různých oblastech. 
 
 > [!NOTE]
-> Další informace o nákladech souvisejících se službou Galerie sdílených imagí najdete v tématu [fakturace pro galerii sdílených imagí](../virtual-machines/windows/shared-image-galleries.md#billing).
+> Další informace o nákladech souvisejících se službou Galerie sdílených imagí najdete v tématu [fakturace pro galerii sdílených imagí](../virtual-machines/shared-image-galleries.md#billing).
 
 ## <a name="considerations"></a>Požadavky
 - Současně můžete k testovacímu prostředí připojit jenom jednu galerii sdílených imagí. Pokud chcete připojit jinou galerii, budete muset odpojit stávající a připojit další. 
@@ -45,7 +45,7 @@ Pokud máte velký počet spravovaných imagí, které potřebujete udržovat a 
     ![Připojit](./media/configure-shared-image-gallery/attach-options.png)
 1. Až bude Galerie obrázků připojená, vyberte ji, abyste přešli do připojené galerie. Nakonfigurujte galerii pro **Povolení nebo zakázání** sdílených imagí pro vytváření virtuálních počítačů. Vyberte galerii obrázků ze seznamu a nakonfigurujte ji. 
 
-    Ve výchozím nastavení **povolíte použití všech imagí jako základů virtuálních počítačů** na **Ano**. To znamená, že všechny image dostupné v galerii sdílených imagí budou k dispozici pro uživatele testovacího prostředí při vytváření nového testovacího virtuálního počítače. Pokud potřebujete omezit přístup k určitým imagím, změňte možnost **povoluje použití všech imagí jako základů virtuálních počítačů** na **ne**a vyberte Image, které chcete při vytváření virtuálních počítačů použít, a pak vyberte tlačítko **Uložit** .
+    Ve výchozím nastavení **povolíte použití všech imagí jako základů virtuálních počítačů** na **Ano**. To znamená, že všechny image dostupné v galerii sdílených imagí budou k dispozici pro uživatele testovacího prostředí při vytváření nového testovacího virtuálního počítače. Pokud potřebujete omezit přístup k určitým imagím, změňte možnost **povoluje použití všech imagí jako základů virtuálních počítačů** na **ne** a vyberte Image, které chcete při vytváření virtuálních počítačů použít, a pak vyberte tlačítko **Uložit** .
 
     :::image type="content" source="./media/configure-shared-image-gallery/enable-disable.png" alt-text="Povolení nebo zakázání imagí":::
 

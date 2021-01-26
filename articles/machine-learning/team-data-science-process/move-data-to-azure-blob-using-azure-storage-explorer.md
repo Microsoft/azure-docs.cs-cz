@@ -1,6 +1,6 @@
 ---
 title: Přesunutí dat služby Blob Storage pomocí procesu Průzkumník služby Azure Storage – tým pro datové vědy
-description: Naučte se, jak pomocí Průzkumník služby Azure Storage nahrávat a stahovat data z úložiště objektů BLOB v Azure.
+description: Naučte se, jak pomocí Průzkumník služby Azure Storage nahrávat a stahovat data z Azure Blob Storage.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -11,15 +11,15 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c5750132280d69c946ce180c51e4de6507549fcb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 53cb8cdd1c5f9824b07b16b8b6c70648603b9f38
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93318185"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788905"
 ---
 # <a name="move-data-to-and-from-azure-blob-storage-using-azure-storage-explorer"></a>Přesun dat do a z Azure Blob Storage pomocí Průzkumník služby Azure Storage
-Průzkumník služby Azure Storage je bezplatný nástroj od Microsoftu, který umožňuje pracovat s Azure Storagemi daty v systémech Windows, macOS a Linux. Toto téma popisuje, jak ho použít k nahrání a stažení dat z úložiště objektů BLOB v Azure. Nástroj lze stáhnout z [Průzkumník služby Microsoft Azure Storage](https://storageexplorer.com/).
+Průzkumník služby Azure Storage je bezplatný nástroj od Microsoftu, který umožňuje pracovat s Azure Storagemi daty v systémech Windows, macOS a Linux. Toto téma popisuje, jak ho použít k nahrání a stažení dat z Azure Blob Storage. Nástroj lze stáhnout z [Průzkumník služby Microsoft Azure Storage](https://storageexplorer.com/).
 
 [!INCLUDE [blob-storage-tool-selector](../../../includes/machine-learning-blob-storage-tool-selector.md)]
 
@@ -27,11 +27,11 @@ Průzkumník služby Azure Storage je bezplatný nástroj od Microsoftu, který 
 > Pokud používáte virtuální počítač, který jste nastavili pomocí skriptů poskytovaných [virtuálními počítači pro datové vědy v Azure](../data-science-virtual-machine/overview.md), Průzkumník služby Azure Storage je už na virtuálním počítači nainstalovaný.
 > 
 > [!NOTE]
-> Úplný Úvod do úložiště objektů BLOB v Azure najdete v tématu [základy Azure Blob](../../storage/blobs/storage-quickstart-blobs-dotnet.md) a [Služba Azure Blob Service](/rest/api/storageservices/Blob-Service-Concepts).   
+> Úplný Úvod do Azure Blob Storage najdete v tématu [základy Azure Blob](../../storage/blobs/storage-quickstart-blobs-dotnet.md) a [Služba Azure Blob Service](/rest/api/storageservices/Blob-Service-Concepts).   
 > 
 > 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 V tomto dokumentu se předpokládá, že máte předplatné Azure, účet úložiště a odpovídající klíč úložiště pro tento účet. Před nahráním/stažením dat musíte znát název svého účtu Azure Storage a klíč účtu. 
 
 * Pokud chcete nastavit předplatné Azure, přečtěte si [bezplatnou měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).

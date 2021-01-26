@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 2d0b66d2b4d89b512b34cb33a5607b471b7d1e84
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 12e57361b9e275fc441df27a3a1381989d48751c
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040926"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788566"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>Azure Service Bus výstupní vazba pro Azure Functions
 
@@ -87,6 +87,41 @@ public static async Task Run(TimerInfo myTimer, ILogger log, IAsyncCollector<str
 }
 ```
 
+# <a name="java"></a>[Java](#tab/java)
+
+Následující příklad ukazuje funkci jazyka Java, která pošle zprávu do fronty Service Bus, `myqueue` když se aktivuje požadavkem http.
+
+```java
+@FunctionName("httpToServiceBusQueue")
+@ServiceBusQueueOutput(name = "message", queueName = "myqueue", connection = "AzureServiceBusConnection")
+public String pushToQueue(
+  @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
+  final String message,
+  @HttpOutput(name = "response") final OutputBinding<T> result ) {
+      result.setValue(message + " has been sent.");
+      return message;
+ }
+```
+
+ V [knihovně modulu runtime Functions jazyka Java](/java/api/overview/azure/functions/runtime)použijte `@QueueOutput` anotaci u parametrů funkce, jejichž hodnota by byla zapsána do fronty Service Bus.  Typ parametru by měl být `OutputBinding<T>` , kde T je jakýkoliv nativní typ Java typu Pojo.
+
+Funkce jazyka Java mohou také zapisovat do Service Busho tématu. Následující příklad používá `@ServiceBusTopicOutput` anotaci k popisu konfigurace výstupní vazby. 
+
+```java
+@FunctionName("sbtopicsend")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
+            @ServiceBusTopicOutput(name = "message", topicName = "mytopicname", subscriptionName = "mysubscription", connection = "ServiceBusConnection") OutputBinding<String> message,
+            final ExecutionContext context) {
+        
+        String name = request.getBody().orElse("Azure Functions");
+
+        message.setValue(name);
+        return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
+        
+    }
+```
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Následující příklad ukazuje výstupní vazbu Service Bus v *function.js* souboru a [funkci JavaScriptu](functions-reference-node.md) , která používá vazbu. Funkce používá aktivační událost časovače k odeslání zprávy fronty každých 15 sekund.
@@ -139,6 +174,39 @@ module.exports = function (context, myTimer) {
 };
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Následující příklad ukazuje výstupní vazbu Service Bus v *function.js* souboru a [funkci prostředí PowerShell](functions-reference-powershell.md) , která používá vazbu. 
+
+Tady jsou data vazby v *function.js* souboru:
+
+```json
+{
+  "bindings": [
+    {
+      "type": "serviceBus",
+      "direction": "out",
+      "connection": "AzureServiceBusConnectionString",
+      "name": "outputSbMsg",
+      "queueName": "outqueue",
+      "topicName": "outtopic"
+    }
+  ]
+}
+```
+
+Tady je PowerShell, který vytvoří zprávu jako výstup funkce.
+
+```powershell
+param($QueueItem, $TriggerMetadata) 
+
+Push-OutputBinding -Name outputSbMsg -Value @{ 
+    name = $QueueItem.name 
+    employeeId = $QueueItem.employeeId 
+    address = $QueueItem.address 
+} 
+```
+
 # <a name="python"></a>[Python](#tab/python)
 
 Následující příklad ukazuje, jak zapisovat do fronty Service Bus v Pythonu.
@@ -189,41 +257,6 @@ def main(req: func.HttpRequest, msg: func.Out[str]) -> func.HttpResponse:
     return 'OK'
 ```
 
-# <a name="java"></a>[Java](#tab/java)
-
-Následující příklad ukazuje funkci jazyka Java, která pošle zprávu do fronty Service Bus, `myqueue` když se aktivuje požadavkem http.
-
-```java
-@FunctionName("httpToServiceBusQueue")
-@ServiceBusQueueOutput(name = "message", queueName = "myqueue", connection = "AzureServiceBusConnection")
-public String pushToQueue(
-  @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
-  final String message,
-  @HttpOutput(name = "response") final OutputBinding<T> result ) {
-      result.setValue(message + " has been sent.");
-      return message;
- }
-```
-
- V [knihovně modulu runtime Functions jazyka Java](/java/api/overview/azure/functions/runtime)použijte `@QueueOutput` anotaci u parametrů funkce, jejichž hodnota by byla zapsána do fronty Service Bus.  Typ parametru by měl být `OutputBinding<T>` , kde T je jakýkoliv nativní typ Java typu Pojo.
-
-Funkce jazyka Java mohou také zapisovat do Service Busho tématu. Následující příklad používá `@ServiceBusTopicOutput` anotaci k popisu konfigurace výstupní vazby. 
-
-```java
-@FunctionName("sbtopicsend")
-    public HttpResponseMessage run(
-            @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
-            @ServiceBusTopicOutput(name = "message", topicName = "mytopicname", subscriptionName = "mysubscription", connection = "ServiceBusConnection") OutputBinding<String> message,
-            final ExecutionContext context) {
-        
-        String name = request.getBody().orElse("Azure Functions");
-
-        message.setValue(name);
-        return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
-        
-    }
-```
-
 ---
 
 ## <a name="attributes-and-annotations"></a>Atributy a poznámky
@@ -262,17 +295,21 @@ Atribut můžete použít `ServiceBusAccount` k určení Service Bus účtu pro 
 
 Skripty jazyka C# nepodporují atributy.
 
+# <a name="java"></a>[Java](#tab/java)
+
+`ServiceBusQueueOutput`Poznámky a `ServiceBusTopicOutput` jsou k dispozici pro zápis zprávy jako výstup funkce. Parametr upravený pomocí těchto poznámek musí být deklarován jako, `OutputBinding<T>` kde `T` je typ odpovídající typu zprávy.
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Atributy nejsou podporovány jazykem JavaScript.
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell nepodporuje atributy.
+
 # <a name="python"></a>[Python](#tab/python)
 
 Python nepodporuje atributy.
-
-# <a name="java"></a>[Java](#tab/java)
-
-`ServiceBusQueueOutput`Poznámky a `ServiceBusTopicOutput` jsou k dispozici pro zápis zprávy jako výstup funkce. Parametr upravený pomocí těchto poznámek musí být deklarován jako, `OutputBinding<T>` kde `T` je typ odpovídající typu zprávy.
 
 ---
 
@@ -280,11 +317,11 @@ Python nepodporuje atributy.
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `ServiceBus` atribut.
 
-|function.jsvlastnost | Vlastnost atributu |Description|
+|function.jsvlastnost | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**textový** | neuvedeno | Musí být nastavené na "serviceBus". Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal.|
-|**směr** | neuvedeno | Musí být nastavené na "out". Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal. |
-|**name** | neuvedeno | Název proměnné, která představuje zprávu fronty nebo tématu v kódu funkce. Nastavte na "$return", chcete-li odkazovat na návratovou hodnotu funkce. |
+|**textový** | Není k dispozici | Musí být nastavené na "serviceBus". Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal.|
+|**směr** | Není k dispozici | Musí být nastavené na "out". Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal. |
+|**Jméno** | Není k dispozici | Název proměnné, která představuje zprávu fronty nebo tématu v kódu funkce. Nastavte na "$return", chcete-li odkazovat na návratovou hodnotu funkce. |
 |**Proměnné QueueName**|**Proměnné QueueName**|Název fronty  Nastavte pouze v případě, že jsou odesílány zprávy fronty, nikoli téma.
 |**téma**|**Téma**|Název tématu. Nastaveno pouze při posílání zpráv témat, nikoli pro frontu.|
 |**vázán**|**Připojení**|Název nastavení aplikace, které obsahuje připojovací řetězec Service Bus, který se má použít pro tuto vazbu. Pokud název nastavení aplikace začíná řetězcem "AzureWebJobs", můžete zadat pouze zbytek názvu. Například pokud nastavíte `connection` na "MyServiceBus", modul runtime Functions vyhledá nastavení aplikace s názvem "AzureWebJobsMyServiceBus". Pokud necháte `connection` prázdné, modul runtime Functions použije výchozí připojovací řetězec Service Bus v nastavení aplikace s názvem "AzureWebJobsServiceBus".<br><br>Pokud chcete získat připojovací řetězec, postupujte podle kroků uvedených v části [získání přihlašovacích údajů pro správu](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string). Připojovací řetězec musí být pro obor názvů Service Bus, který není omezen na konkrétní frontu nebo téma.|
@@ -330,15 +367,19 @@ Při práci s funkcemi jazyka C#:
 
 * Chcete-li získat přístup k ID relace, připojte se k [`Message`](/dotnet/api/microsoft.azure.servicebus.message) typu a použijte `sessionId` vlastnost.
 
+# <a name="java"></a>[Java](#tab/java)
+
+Místo předdefinované výstupní vazby použijte [sadu Azure Service Bus SDK](../service-bus-messaging/index.yml) .
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Přístup ke frontě nebo tématu pomocí `context.bindings.<name from function.json>` . Můžete přiřadit řetězec, bajtové pole nebo objekt JavaScriptu (deserializovat do formátu JSON) do `context.binding.<name>` .
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Výstup do Service Bus je k dispozici prostřednictvím `Push-OutputBinding` rutiny, kde předáte argumenty, které odpovídají názvu určenému parametrem názvu vazby v *function.jsv* souboru.
+
 # <a name="python"></a>[Python](#tab/python)
-
-Místo předdefinované výstupní vazby použijte [sadu Azure Service Bus SDK](../service-bus-messaging/index.yml) .
-
-# <a name="java"></a>[Java](#tab/java)
 
 Místo předdefinované výstupní vazby použijte [sadu Azure Service Bus SDK](../service-bus-messaging/index.yml) .
 
@@ -346,7 +387,7 @@ Místo předdefinované výstupní vazby použijte [sadu Azure Service Bus SDK](
 
 ## <a name="exceptions-and-return-codes"></a>Výjimky a návratové kódy
 
-| Vazba | Reference |
+| Vazba | Referenční informace |
 |---|---|
 | Service Bus | [Kódy chyb Service Bus](../service-bus-messaging/service-bus-messaging-exceptions.md) |
 | Service Bus | [Omezení Service Bus](../service-bus-messaging/service-bus-quotas.md) |
@@ -384,11 +425,11 @@ Tato část popisuje globální nastavení konfigurace, která jsou k dispozici 
 
 Pokud jste `isSessionsEnabled` nastavili na `true` , `sessionHandlerOptions` bude dodržena.  Pokud jste `isSessionsEnabled` nastavili na `false` , `messageHandlerOptions` bude dodržena.
 
-|Vlastnost  |Výchozí | Description |
+|Vlastnost  |Výchozí | Popis |
 |---------|---------|---------|
 |prefetchCount|0|Získá nebo nastaví počet zpráv, které může příjemce zprávy současně požadovat.|
 |maxAutoRenewDuration|00:05:00|Maximální doba, během které bude zámek zprávy obnoven automaticky.|
-|Zobrazovat|true|Určuje, zda má být aktivační událost automaticky volána po zpracování, nebo pokud kód funkce bude ručně volána možnost Dokončit.<br><br>Nastavení na `false` je podporováno pouze v jazyce C#.<br><br>Je-li nastavena na hodnotu `true` , aktivační událost automaticky dokončí zprávu, pokud se provádění funkce dokončí úspěšně a zpráva se v opačném případě opustí.<br><br>Když nastavíte `false` , zodpovídáte za volání metod [MessageReceiver](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet) k dokončení, zrušení nebo nedoručené zprávě. Pokud je vyvolána výjimka (a není volána žádná z `MessageReceiver` metod), zůstane zámek. Po vypršení platnosti zámku se zpráva znovu zařadí do fronty s `DeliveryCount` přírůstkem a automaticky se obnoví zámek.<br><br>Ve funkcích, které nejsou v jazyce C #, výsledkem výjimek ve funkci jsou volání za běhu `abandonAsync` na pozadí. Pokud nedojde k žádné výjimce, `completeAsync` je volána na pozadí. |
+|Zobrazovat|true|Určuje, zda má být aktivační událost automaticky volána po zpracování, nebo pokud kód funkce bude ručně volána možnost Dokončit.<br><br>Nastavení na `false` je podporováno pouze v jazyce C#.<br><br>Je-li nastavena na hodnotu `true` , aktivační událost automaticky dokončí zprávu, pokud se provádění funkce dokončí úspěšně a zpráva se v opačném případě opustí.<br><br>Když nastavíte `false` , zodpovídáte za volání metod [MessageReceiver](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet&preserve-view=true) k dokončení, zrušení nebo nedoručené zprávě. Pokud je vyvolána výjimka (a není volána žádná z `MessageReceiver` metod), zůstane zámek. Po vypršení platnosti zámku se zpráva znovu zařadí do fronty s `DeliveryCount` přírůstkem a automaticky se obnoví zámek.<br><br>Ve funkcích, které nejsou v jazyce C #, výsledkem výjimek ve funkci jsou volání za běhu `abandonAsync` na pozadí. Pokud nedojde k žádné výjimce, `completeAsync` je volána na pozadí. |
 |maxConcurrentCalls|16|Maximální počet souběžných volání zpětného volání, které by mělo pumpa zpráv iniciovat na úrovni instance. Ve výchozím nastavení aplikace runtime Functions zpracovává více zpráv souběžně.|
 |maxConcurrentSessions|2000|Maximální počet relací, které mohou být zpracovány souběžně podle škálované instance.|
 

@@ -4,12 +4,12 @@ description: Úvod do Vícenásobný přístup pro Service Fabric Reliable Actor
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9578b676e46d21fe5d30de92ad59c852a8b05f70
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 90a8e9146d18d628fbf124307f1b79b912c9cef9
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915874"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789376"
 ---
 # <a name="reliable-actors-reentrancy"></a>Reliable Actors Vícenásobný přístup
 Modul runtime Reliable Actors ve výchozím nastavení umožňuje logický volání Vícenásobný přístup na základě kontextu. To umožňuje, aby se aktéri znovu zavolaly, pokud jsou ve stejném řetězci kontextu volání. Například objekt actor A pošle zprávu objektu actor B, který pošle zprávu objektu actor C. V rámci zpracování zprávy, pokud objekt actor C volá objekt actor A, je zpráva znovu zavolána, takže bude povolena. Všechny ostatní zprávy, které jsou součástí jiného kontextu volání, budou blokovány u objektu actor A do doby, než dokončí zpracování.
@@ -101,4 +101,4 @@ static class Program
 
 
 ## <a name="next-steps"></a>Další kroky
-* Další informace o Vícenásobný přístup najdete v [referenční dokumentaci k rozhraní API actor](/dotnet/api/microsoft.servicefabric.actors?view=azure-dotnet).)
+* Další informace o Vícenásobný přístup najdete v [referenční dokumentaci k rozhraní API actor](/dotnet/api/microsoft.servicefabric.actors).)

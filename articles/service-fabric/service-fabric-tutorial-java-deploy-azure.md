@@ -4,12 +4,12 @@ description: V tomto kurzu se dozvíte, jak nasadit aplikaci Service Fabric v Ja
 ms.topic: tutorial
 ms.date: 02/26/2018
 ms.custom: mvc, devx-track-java, devx-track-azurecli
-ms.openlocfilehash: c2e2b2883bfa01d3a36de5d58425449f6f973010
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 48cb7df49fb918ebd30883edc573cc63b6e35e4a
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97702153"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789393"
 ---
 # <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>Kurz: Nasazení aplikace v Javě do clusteru Service Fabric v Azure
 
@@ -35,7 +35,7 @@ V této sérii kurzů se naučíte:
 Než začnete s tímto kurzem:
 
 * Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
-* [Instalace Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)
+* [Instalace Azure CLI](/cli/azure/install-azure-cli)
 * Nainstalujte sadu Service Fabric SDK pro [Mac](service-fabric-get-started-mac.md) nebo [Linux](service-fabric-get-started-linux.md).
 * [Instalace Pythonu 3](https://wiki.python.org/moin/BeginnersGuide/Download)
 

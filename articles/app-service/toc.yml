@@ -259,6 +259,8 @@
           href: troubleshoot-diagnostic-logs.md
         - name: Získání událostí prostředků
           href: get-resource-events.md
+        - name: Kontrola stavu
+          href: monitor-instances-health-check.md
         - name: Otevření relace SSH pro linuxový kontejner
           href: configure-linux-open-ssh-session.md
     - name: Správa aplikace

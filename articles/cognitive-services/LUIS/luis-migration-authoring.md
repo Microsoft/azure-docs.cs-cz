@@ -11,12 +11,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 12/14/2020
-ms.openlocfilehash: 086bc17938064571e8759ecda633fb5f87d1060f
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 3ff48ff5a3f46d8ec0fbf81b4cd20d20c217344b
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616809"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787633"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Migrace na klíč pro vytváření prostředků Azure
 
@@ -81,7 +81,7 @@ Migraci je potřeba provést z [portálu Luis](https://www.luis.ai). Pokud vytvo
    > ![Exportujte aplikace.](./media/migrate-authoring-key/migration-export-apps.png)
 
 
-4. V okně pro migraci oblastí budete požádáni o migraci vašich aplikací do prostředku Azure ve stejné oblasti, ve které byly vytvořeny. LUIS má tři oblasti vytváření obsahu [a portálů](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-authoring-regions). V okně se zobrazí oblasti, ve kterých byly vytvořené vlastní aplikace. Zobrazené oblasti migrace se můžou lišit v závislosti na místním portálu, který používáte, a aplikacích, které jste vytvořili. 
+4. V okně pro migraci oblastí budete požádáni o migraci vašich aplikací do prostředku Azure ve stejné oblasti, ve které byly vytvořeny. LUIS má tři oblasti vytváření obsahu [a portálů](./luis-reference-regions.md#luis-authoring-regions). V okně se zobrazí oblasti, ve kterých byly vytvořené vlastní aplikace. Zobrazené oblasti migrace se můžou lišit v závislosti na místním portálu, který používáte, a aplikacích, které jste vytvořili. 
 
    > [!div class="mx-imgBorder"]
    > ![Migrace s více oblastmi.](./media/migrate-authoring-key/migration-regional-flow.png)

@@ -5,18 +5,18 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: troubleshooting
 ms.date: 05/06/2020
-ms.openlocfilehash: e803fa393d85f7f0b4849aed96356b7a4e77d83f
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: e4de77a8a56ce21511ad099af59a77e10ab1815d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96000126"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787532"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Nejčastější dotazy ke službě Language Understanding
 
 Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Language Understanding (LUIS).
 
-## <a name="whats-new"></a>Novinky
+## <a name="whats-new"></a>Co je nového
 
 [Přečtěte si další](whats-new.md) informace o novinkách v Language UNDERSTANDING (Luis).
 
@@ -177,7 +177,7 @@ Chyby označují, že mezi štítky a předpovědi z vašich modelů dochází k
 * Chcete-li pomoci LUIS zdokonalit diskriminaci mezi záměry, přidejte další popisky.
 * Pokud chcete LUIS rychleji, přidejte funkce seznamu frází, které zavádějí slovníky specifické pro doménu.
 
-Podívejte se na kurz [dávkového testování](luis-tutorial-batch-testing.md) .
+Podívejte se na kurz [dávkového testování](./luis-how-to-batch-test.md) .
 
 ### <a name="when-an-app-is-exported-then-reimported-into-a-new-app-with-a-new-app-id-the-luis-prediction-scores-are-different-why-does-this-happen"></a>Po exportu aplikace se znovu naimportuje do nové aplikace (s novým ID aplikace) se výsledky předpovědi LUIS liší. Proč k tomu dochází?
 

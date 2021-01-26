@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 10/08/2020
 ms.author: victorh
-ms.openlocfilehash: 6c71d9325ff7c1c5d2e7eff03a587a28335efd72
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 69eaf3ca60378afd810d712d85ea7ef732e41e3e
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94652140"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788226"
 ---
 # <a name="azure-firewall-features"></a>Funkce Azure Firewallu
 
@@ -101,7 +101,7 @@ To umožňuje následující scénáře:
 
 ## <a name="azure-monitor-logging"></a>Protokolování Azure Monitor
 
-Všechny události jsou integrované s Azure Monitor, což umožňuje archivaci protokolů do účtu úložiště, streamování událostí do centra událostí nebo jejich odeslání do protokolů Azure Monitor. Ukázky protokolu Azure Monitor najdete v tématu [protokoly Azure monitor pro Azure firewall](log-analytics-samples.md).
+Všechny události jsou integrované s Azure Monitor, což umožňuje archivaci protokolů do účtu úložiště, streamování událostí do centra událostí nebo jejich odeslání do protokolů Azure Monitor. Ukázky protokolu Azure Monitor najdete v tématu [protokoly Azure monitor pro Azure firewall](./firewall-workbook.md).
 
 Další informace najdete v tématu [kurz: monitorování Azure firewall protokolů a metrik](./firewall-diagnostics.md). 
 
@@ -113,7 +113,7 @@ Azure Firewall můžete nakonfigurovat tak, aby směroval veškerý provoz váza
 
 ## <a name="certifications"></a>Certifikace
 
-Azure Firewall je obor platebních karet (PCI), ovládací prvky SOC (Service Organization Controls), ISO (ISO) a ICSA Labs splňující předpisy. Další informace najdete v tématu [Azure firewall certifikace dodržování předpisů](compliance-certifications.md).
+Azure Firewall je obor platebních karet (PCI), ovládací prvky SOC (Service Organization Controls), Mezinárodní organizace pro normalizaci (ISO) a ICSA Labs splňující předpisy. Další informace najdete v tématu [Azure firewall certifikace dodržování předpisů](compliance-certifications.md).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -3,12 +3,12 @@ title: Práce s Reliable Collections
 description: Seznamte se s osvědčenými postupy pro práci s spolehlivými kolekcemi v rámci aplikace Service Fabric v Azure.
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 2d027dc432d1a0a20888bfca4f59bc41866e358d
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 908f24cc22c969a34a513ff3fd3ceaa788420620
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651902"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787871"
 ---
 # <a name="working-with-reliable-collections"></a>Práce s Reliable Collections
 Service Fabric nabízí stavový programovací model dostupný vývojářům .NET prostřednictvím spolehlivých kolekcí. Konkrétně Service Fabric poskytuje spolehlivé slovníkové a spolehlivé třídy front. Při použití těchto tříd je váš stav rozdělený na oddíly (pro škálovatelnost), replikovaný (pro dostupnost) a v rámci oddílu (pro sémantiku KYSELování). Pojďme se podívat na typické použití objektu spolehlivého slovníku a podívat se, co dělá ve skutečnosti.
@@ -226,4 +226,4 @@ Další informace o osvědčených postupech pro kontrakty dat týkajících se 
 
 Informace o tom, jak implementovat kontrakty dat odolné vůči verzím, najdete v tématu [zpětná volání serializace odolná](/dotnet/framework/wcf/feature-details/version-tolerant-serialization-callbacks)
 
-Informace o tom, jak poskytnout datovou strukturu, která může spolupracovat napříč více verzemi, najdete v tématu [IExtensibleDataObject](/dotnet/api/system.runtime.serialization.iextensibledataobject?view=netcore-3.1) .
+Informace o tom, jak poskytnout datovou strukturu, která může spolupracovat napříč více verzemi, najdete v tématu [IExtensibleDataObject](/dotnet/api/system.runtime.serialization.iextensibledataobject) .

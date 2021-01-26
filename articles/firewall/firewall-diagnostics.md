@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 11/04/2020
 ms.author: victorh
-ms.openlocfilehash: 2dd1b51c6bcdbc531661d9ecf45d3d0282eb5b45
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 52c6ef9edfc42bf1ad3b3279e0fa4e19b4cf502c
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358843"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788260"
 ---
 # <a name="monitor-azure-firewall-logs-and-metrics"></a>Monitorování protokolů a metrik Azure Firewallu
 
@@ -45,7 +45,7 @@ Než se data v protokolech po dokončení tohoto procesu zapnutí protokolován�
 
 3. Vyberte **Přidat nastavení diagnostiky**. Stránka **Nastavení diagnostiky** obsahuje nastavení diagnostických protokolů.
 5. V tomto příkladu protokoly Azure Monitor ukládá do protokolů, takže jako název zadáte **Log Analytics pro firewall** .
-6. V části **protokol** vyberte **AzureFirewallApplicationRule** , **AzureFirewallNetworkRule** , **AzureFirewallThreatIntelLog** a **AzureFirewallDnsProxy** , aby se protokoly shromáždily.
+6. V části **protokol** vyberte **AzureFirewallApplicationRule**, **AzureFirewallNetworkRule**, **AzureFirewallThreatIntelLog** a **AzureFirewallDnsProxy** , aby se protokoly shromáždily.
 7. Vyberte **Odeslat pro Log Analytics** ke konfiguraci pracovního prostoru.
 8. Vyberte své předplatné.
 9. Vyberte **Uložit**.
@@ -104,15 +104,15 @@ Pokud chcete povolit protokolování diagnostiky pomocí Azure CLI, použijte n�
 
 Data protokolu aktivit si můžete zobrazit použitím jedné z následujících metod:
 
-* **Nástroje Azure** : Načtěte informace z protokolu aktivit prostřednictvím Azure PowerShellu, Azure CLI, rozhraní Azure REST API nebo webu Azure Portal. Podrobné pokyny k jednotlivým metodám najdete v článku o [operacích s protokoly aktivit ve Správci prostředků](../azure-resource-manager/management/view-activity-logs.md).
-* **Power BI** : Pokud ještě účet [Power BI](https://powerbi.microsoft.com/pricing) nemáte, můžete ho vyzkoušet zdarma. Díky [balíčku obsahu protokoly aktivit Azure pro Power BI](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/) můžete svá data analyzovat pomocí předkonfigurovaných řídicích panelů, které můžete použít okamžitě nebo si je upravit.
-* **Azure Sentinel** : můžete připojit protokoly Azure firewall ke službě Azure Sentinel a umožnit vám zobrazovat data protokolu v sešitech, použít je k vytvoření vlastních výstrah a začlenit je do lepšího šetření. Konektor dat Azure Firewall v Azure Sentinel je aktuálně ve verzi Public Preview. Další informace najdete v tématu [připojení dat z Azure firewall](../sentinel/connect-azure-firewall.md).
+* **Nástroje Azure**: Načtěte informace z protokolu aktivit prostřednictvím Azure PowerShellu, Azure CLI, rozhraní Azure REST API nebo webu Azure Portal. Podrobné pokyny k jednotlivým metodám najdete v článku o [operacích s protokoly aktivit ve Správci prostředků](../azure-resource-manager/management/view-activity-logs.md).
+* **Power BI**: Pokud ještě účet [Power BI](https://powerbi.microsoft.com/pricing) nemáte, můžete ho vyzkoušet zdarma. Díky [balíčku obsahu protokoly aktivit Azure pro Power BI](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/) můžete svá data analyzovat pomocí předkonfigurovaných řídicích panelů, které můžete použít okamžitě nebo si je upravit.
+* **Azure Sentinel**: můžete připojit protokoly Azure firewall ke službě Azure Sentinel a umožnit vám zobrazovat data protokolu v sešitech, použít je k vytvoření vlastních výstrah a začlenit je do lepšího šetření. Konektor dat Azure Firewall v Azure Sentinel je aktuálně ve verzi Public Preview. Další informace najdete v tématu [připojení dat z Azure firewall](../sentinel/connect-azure-firewall.md).
 
 ## <a name="view-and-analyze-the-network-and-application-rule-logs"></a>Zobrazení a analyzování protokolů pravidel sítě a aplikace
 
 [Protokoly Azure monitor](../azure-monitor/insights/azure-networking-analytics.md) shromáždí údaje o čítačích a souborech protokolu událostí. Zahrnuje vizualizace a výkonné vyhledávací funkce k analýze protokolů.
 
-Ukázkové dotazy Azure Firewall Log Analytics najdete v tématu [Azure firewall ukázek Log Analytics](log-analytics-samples.md).
+Ukázkové dotazy Azure Firewall Log Analytics najdete v tématu [Azure firewall ukázek Log Analytics](./firewall-workbook.md).
 
 [Azure firewall sešit](firewall-workbook.md) nabízí flexibilní plátno pro Azure firewall analýzu dat. Můžete ho použít k vytvoření bohatých vizuálních sestav v rámci Azure Portal. Můžete klepnout na několik bran firewall nasazených v rámci Azure a kombinovat je do sjednocených interaktivních prostředí.
 

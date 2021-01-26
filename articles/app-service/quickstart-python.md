@@ -9,18 +9,16 @@ adobe-target: true
 adobe-target-activity: DocsExp–377467–A/B– Quickstarts/Python App–12.11
 adobe-target-experience: Experience B
 adobe-target-content: ./quickstart-python-1
-ms.openlocfilehash: f60534f7d319bfe0b9e8e7bd4447770bcd6d45e3
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 11e47e83da09699d60ada11539dbb2f000f075db
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134428"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788668"
 ---
 # <a name="quickstart-create-a-python-app-using-azure-app-service-on-linux"></a>Rychlý Start: Vytvoření aplikace v Pythonu pomocí Azure App Service v systému Linux
 
 V tomto rychlém startu nasadíte webovou aplikaci v Pythonu, která se [App Service v systému Linux](overview.md#app-service-on-linux), vysoce škálovatelná služba s automatickými opravami pro hostování webů v Azure. Pomocí místního [rozhraní příkazového řádku Azure (CLI)](/cli/azure/install-azure-cli) na počítači se systémem Mac, Linux nebo Windows nasadíte ukázku s použitím této baňky nebo Djangoch architektur. Webová aplikace, kterou nakonfigurujete, využívá bezplatnou App Serviceovou úroveň, takže v tomto článku nebudete mít žádné náklady.
-
-**Definice běžných termínů** najdete v tématu [Stručná terminologie Azure](/azure/developer/python/cloud-azure-terminology?toc=/azure/app-service/toc.json).
 
 > [!TIP]
 > Pokud raději místo toho použijete Visual Studio Code, postupujte podle našeho **[Visual Studio Codeu pro rychlý start App Service](/azure/developer/python/tutorial-deploy-app-service-on-linux-01)**.

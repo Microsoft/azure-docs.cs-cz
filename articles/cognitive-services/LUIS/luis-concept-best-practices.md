@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/17/2020
-ms.openlocfilehash: fc4475eb64744688e901d2b37e30632d044b0115
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 2f6ed85416cc5d7c3c2baba2b2cfe489e301d7e5
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95019309"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788481"
 ---
 # <a name="best-practices-for-building-a-language-understanding-luis-app"></a>Osvědčené postupy pro sestavování aplikace pro porozumění jazyku (LUIS)
 Pomocí procesu vytváření aplikací sestavte aplikaci LUIS:
@@ -141,7 +141,7 @@ Tento záměr je záložním záměrem, který označuje všechno mimo vaši apl
 
 ## <a name="do-monitor-the-performance-of-your-app"></a>Sledování výkonu aplikace
 
-Sledujte přesnost předpovědi pomocí sady [dávkových testů](luis-concept-batch-test.md) .
+Sledujte přesnost předpovědi pomocí sady [dávkových testů](./luis-how-to-batch-test.md) .
 
 Ponechte samostatnou sadu projevy, která se nepoužívá jako [příklad projevy](luis-concept-utterance.md) nebo Endpoint projevy. Udržujte lepší aplikaci pro sadu testů. Přizpůsobte sadu testů tak, aby odrážela reálného uživatele projevy. Pomocí této sady testů vyhodnoťte každou iteraci nebo verzi aplikace.
 

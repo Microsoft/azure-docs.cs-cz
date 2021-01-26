@@ -3,12 +3,12 @@ title: Nastavení testovacího prostředí v učebně v Azure Lab Services | Mic
 description: V tomto kurzu použijete Azure Lab Services k nastavení testovacího prostředí pro učebnu s virtuálními počítači, které používají studenti ve vaší třídě.
 ms.topic: tutorial
 ms.date: 12/03/2020
-ms.openlocfilehash: 3abbf5221382b46dbf4e73f9f4dc3b639bc5ecbd
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 8093a1fd270cdba8bdccaf48737bf6737bdd394d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602483"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787414"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Kurz: Nastavení testovacího prostředí v učebně 
 V tomto kurzu nastavíte testovací prostředí v učebně pomocí virtuálních počítačů, které používají studenti v učebně.  
@@ -127,7 +127,7 @@ Když přidáváte uživatele, je ve výchozím nastavení zapnutá možnost **o
 
 Seznam uživatelů testovacího prostředí můžete synchronizovat s existující skupinou Azure Active Directory (Azure AD), abyste nemuseli přidávat ani odstraňovat uživatele ručně. 
 
-Skupinu Azure AD je možné vytvořit v rámci Azure Active Directory vaší organizace a spravovat tak přístup k prostředkům organizace a cloudovým aplikacím. Další informace najdete v tématu [skupiny Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups). Pokud vaše organizace používá systém Microsoft Office 365 nebo služeb Azure, vaše organizace už bude mít správce, kteří spravují vaše Azure Active Directory. 
+Skupinu Azure AD je možné vytvořit v rámci Azure Active Directory vaší organizace a spravovat tak přístup k prostředkům organizace a cloudovým aplikacím. Další informace najdete v tématu [skupiny Azure AD](../active-directory/fundamentals/active-directory-manage-groups.md). Pokud vaše organizace používá systém Microsoft Office 365 nebo služeb Azure, vaše organizace už bude mít správce, kteří spravují vaše Azure Active Directory. 
 
 > [!IMPORTANT]
 > Ujistěte se, že seznam uživatelů je prázdný. Pokud v testovacím prostředí existují stávající uživatelé, které jste přidali ručně nebo importem souboru CSV, možnost synchronizace testovacího prostředí do existující skupiny se nezobrazí. 
@@ -204,4 +204,3 @@ V tomto kurzu jste vytvořili testovací prostředí pro třídu v Azure. Pokud 
 
 > [!div class="nextstepaction"]
 > [Připojení k virtuálnímu počítači v testovacím prostředí v učebně](tutorial-connect-virtual-machine-classroom-lab.md)
-

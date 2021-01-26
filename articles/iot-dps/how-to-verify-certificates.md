@@ -7,12 +7,12 @@ ms.date: 02/26/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 50e8dfd2998b50bfff7341e49ac4d0770c115166
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2020205357c68e007a1a375c4853e8c04afd2019
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530858"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789056"
 ---
 # <a name="how-to-do-proof-of-possession-for-x509-ca-certificates-with-your-device-provisioning-service"></a>Jak v rámci služby Device Provisioning udělat důkaz o vlastnictví certifikátů certifikační autority X. 509
 
@@ -40,7 +40,7 @@ Pokud chcete zaregistrovat certifikát certifikační autority se službou zřiz
 
 5. Klikněte na certifikát, který jste přidali v předchozím kroku.
 
-6. V **podrobnostech o certifikátu**klikněte na **Generovat ověřovací kód**.
+6. V **podrobnostech o certifikátu** klikněte na **Generovat ověřovací kód**.
 
 7. Služba zřizování vytvoří **ověřovací kód** , který můžete použít k ověření vlastnictví certifikátu. Zkopírujte kód do schránky. 
 
@@ -58,7 +58,7 @@ Microsoft poskytuje nástroje a ukázky, které vám pomůžou vytvořit certifi
 > [!IMPORTANT]
 > Kromě provádění ověření přístupnosti vám skripty PowerShellu a bash citované dříve také umožňují vytvářet kořenové certifikáty, zprostředkující certifikáty a listové certifikáty, které se dají použít k ověřování a zřizování zařízení. Tyto certifikáty by se měly používat jenom pro vývoj. Nikdy by se neměly používat v produkčním prostředí. 
 
-Skripty PowerShellu a Bash, které jsou uvedené v dokumentaci a sady SDK, spoléhají na [OpenSSL](https://www.openssl.org/). Můžete také použít OpenSSL nebo jiné nástroje třetích stran, které vám pomůžou s prováděním důkazů o vlastnictví. Další informace o nástrojích dodaných se sadami SDK najdete v tématu [Jak používat nástroje](how-to-use-sdk-tools.md), které jsou k dispozici v sadách SDK. 
+Skripty PowerShellu a Bash, které jsou uvedené v dokumentaci a sady SDK, spoléhají na [OpenSSL](https://www.openssl.org/). Můžete také použít OpenSSL nebo jiné nástroje třetích stran, které vám pomůžou s prováděním důkazů o vlastnictví. Příklad použití nástrojů dodaných s sady SDK najdete v tématu [vytvoření řetězu certifikátů X. 509](tutorial-custom-hsm-enrollment-group-x509.md#create-an-x509-certificate-chain). 
 
 
 ## <a name="upload-the-signed-verification-certificate"></a>Nahrát podepsaný ověřovací certifikát

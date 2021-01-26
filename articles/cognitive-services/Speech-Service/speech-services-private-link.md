@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: alexeyo
-ms.openlocfilehash: 61be4b45df94c902c0473b94a6dd83237c72da3c
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 51989a9219cdbfebf833c99849dba67c939cf77a
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196111"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786838"
 ---
 # <a name="use-speech-services-through-a-private-endpoint"></a>Použití služby Speech Services prostřednictvím privátního koncového bodu
 
@@ -293,7 +293,7 @@ Služba Speech Services obsahuje rozhraní REST API pro [Převod řeči na text]
 Převod řeči na text má dvě rozhraní REST API. Každé rozhraní API slouží jiným účelům, používá jiné koncové body a vyžaduje jiný přístup, když ho používáte ve scénáři s povoleným privátním koncovým bodem.
 
 Rozhraní REST API pro text jsou:
-- [Převod řeči na Text REST API v 3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30), který se používá ke [dávkovému přepisu](batch-transcription.md) a [Custom Speech](custom-speech-overview.md). v 3.0 je [následníkem v 2.0](/azure/cognitive-services/speech-service/migrate-v2-to-v3)
+- [Převod řeči na Text REST API v 3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30), který se používá ke [dávkovému přepisu](batch-transcription.md) a [Custom Speech](custom-speech-overview.md). v 3.0 je [následníkem v 2.0](./migrate-v2-to-v3.md)
 - [Převod řeči na Text REST API pro krátký zvuk](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio), který se používá pro online přepis 
 
 Použití REST API řeči na text pro krátké zvuky a REST API převodu textu na řeč ve scénáři privátního koncového bodu je stejné. Odpovídá [případu sady Speech SDK](#speech-resource-with-a-custom-domain-name-and-a-private-endpoint-usage-with-the-speech-sdk) popsanému dále v tomto článku. 

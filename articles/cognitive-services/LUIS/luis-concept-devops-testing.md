@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/3/2020
-ms.openlocfilehash: f002bfdd5aeb784b5b10b549389e663216fa0361
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: cd2fd8dc8c10864089b198db1ca1089f994a3ffb
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561218"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788447"
 ---
 # <a name="testing-for-luis-devops"></a>Testování pro LUIS DevOps
 
@@ -28,7 +28,7 @@ Existují dva různé druhy testování aplikace LUIS, které je třeba provést
 Tento druh testování je podobný [interaktivnímu testování](./luis-concept-test.md) , které můžete provádět na [portálu Luis](https://www.luis.ai/).
 
 - **Dávkové testy** – dávkové testování je ucelený test na vašem aktuálním škole modelu pro měření výkonu. Na rozdíl od jednotkových testů není dávkové testování úspěšné | testování. Očekává se, že při testování dávky není každý test vracet očekávaný záměr a očekávané entity. Místo toho vám Batch test pomůže zobrazit přesnost jednotlivých záměrů a entit ve vaší aplikaci a pomůže vám v průběhu času porovnat při vylepšování.  
-Tento druh testování je stejný jako [dávkové testování](./luis-concept-batch-test.md) , které můžete provádět interaktivně na portálu Luis.
+Tento druh testování je stejný jako [dávkové testování](./luis-how-to-batch-test.md) , které můžete provádět interaktivně na portálu Luis.
 
 Můžete využít testování částí od začátku projektu. Dávkové testování je ve skutečnosti jenom tehdy, když jste vytvořili schéma aplikace LUIS a pracujete na vylepšení jeho přesnosti.
 
@@ -42,7 +42,7 @@ Při psaní sady testů pro každý test, který je třeba definovat:
 * Očekávaný záměr
 * Očekávané entity.
 
-Pomocí [syntaxe dávkového souboru](./luis-concept-batch-test.md#batch-syntax-template-for-intents-with-entities) Luis definujte skupinu testů v souboru ve formátu JSON. Například:
+Pomocí [syntaxe dávkového souboru](./luis-how-to-batch-test.md#batch-syntax-template-for-intents-with-entities) Luis definujte skupinu testů v souboru ve formátu JSON. Například:
 
 ```JSON
 [
@@ -85,7 +85,7 @@ V testování částí je vhodné otestovat, zda klíčové entity byly vráceny
 
 #### <a name="designing-batch-tests"></a>Navrhování dávkových testů
 
-Sady dávkových testů by měly obsahovat velký počet testových případů, které jsou navrženy k testování napříč všemi záměry a všemi entitami v aplikaci LUIS. Informace o definování sady dávkových testů najdete [v tématu testování dávky na portálu Luis](./luis-concept-batch-test.md) .
+Sady dávkových testů by měly obsahovat velký počet testových případů, které jsou navrženy k testování napříč všemi záměry a všemi entitami v aplikaci LUIS. Informace o definování sady dávkových testů najdete [v tématu testování dávky na portálu Luis](./luis-how-to-batch-test.md) .
 
 ### <a name="running-tests"></a>Spouštění testů
 
@@ -93,7 +93,7 @@ Portál LUIS nabízí funkce, které vám pomůžou s interaktivním testování
 
 * [**Interaktivní testování**](./luis-concept-test.md) vám umožňuje odeslat ukázkovou utterance a získat odpověď na LUISé záměry a entity. Úspěšnost testu ověříte vizuální kontrolou.
 
-* [**Dávkové testování**](./luis-concept-batch-test.md) používá jako vstup soubor dávkového testu k ověření, jestli vaše aktivní vyškolená verze měří přesnost předpovědi. Batch test vám pomůže zobrazit přesnost každého záměru a entity v aktivní verzi a zobrazovat výsledky pomocí grafu.
+* [**Dávkové testování**](./luis-how-to-batch-test.md) používá jako vstup soubor dávkového testu k ověření, jestli vaše aktivní vyškolená verze měří přesnost předpovědi. Batch test vám pomůže zobrazit přesnost každého záměru a entity v aktivní verzi a zobrazovat výsledky pomocí grafu.
 
 #### <a name="running-tests-in-an-automated-build-workflow"></a>Spouštění testů v procesu automatizovaného sestavení
 

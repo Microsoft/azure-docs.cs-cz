@@ -4,12 +4,12 @@ description: Získejte odpovědi na běžné dotazy týkající se zálohování
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 56dcf29a5c703a72fd137a5f1bf129f568a03b4b
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: ca785e217da4355a44ffbb26b813d55d942c5c14
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735805"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787616"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Nejčastější dotazy týkající se SQL Server databází, které běží na zálohování virtuálních počítačů Azure
 
@@ -101,7 +101,10 @@ Můžete vybrat databázi, která je teď přejmenovaná, a nakonfigurovat na ni
 Databáze, kterou [přidáte do autoprotected instance](backup-sql-server-database-azure-vms.md#enable-auto-protection) , se nemusí hned zobrazit v části chráněné položky. Důvodem je to, že zjišťování se obvykle spouští každých 8 hodin. Můžete však okamžitě vyhledat a chránit nové databáze, pokud ručně spustíte zjišťování výběrem možnosti znovu **zjistit databáze**, jak je znázorněno na následujícím obrázku:
 
   ![Ruční zjištění nově přidané databáze](./media/backup-azure-sql-database/view-newly-added-database.png)
-  
+
+## <a name="can-i-protect-databases-on-virtual-machines-that-have-azure-disk-encryption-ade-enabled"></a>Můžu chránit databáze na virtuálních počítačích s povoleným Azure Disk Encryption (ADE)?
+Ano, můžete chránit databáze na virtuálních počítačích s povoleným Azure Disk Encryption (ADE).
+
 ## <a name="can-i-protect-databases-that-have-tde-transparent-data-encryption-turned-on-and-will-the-database-stay-encrypted-through-the-entire-backup-process"></a>Můžu chránit databáze, které mají TDE (transparentní šifrování dat) zapnuté a že databáze zůstane zašifrovaná prostřednictvím celého procesu zálohování?
 
 Ano, Azure Backup podporuje zálohování databází SQL Server nebo serveru s povoleným TDE. Zálohování podporuje [TDE](/sql/relational-databases/security/encryption/transparent-data-encryption) pomocí klíčů spravovaných pomocí Azure nebo klíčů spravovaných zákazníkem (BYOK).  Zálohování neprovádí v rámci procesu zálohování žádné šifrování SQL, takže databáze zůstane při zálohování zašifrovaná.

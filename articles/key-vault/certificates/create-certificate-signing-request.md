@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: bbc232ed0bc9e9715f481fef8b7b3a1f8eeebe78
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: aa631f4c505200c2c8abc67d4e22ffbab23e015c
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98059649"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789023"
 ---
 # <a name="create-and-merge-a-csr-in-key-vault"></a>Vytvoření a sloučení CSR v Key Vault
 
@@ -104,7 +104,7 @@ Pomocí těchto kroků přidejte certifikát od certifikačních autorit, které
 ## <a name="add-more-information-to-the-csr"></a>Přidat další informace zástupci oddělení IT
 
 Pokud chcete přidat další informace při vytváření CSR, definujte je v části **Subject**. Můžete chtít přidat informace, jako například:
-- Země
+- Country (Země)
 - Město
 - Kraj
 - Organizace
@@ -123,7 +123,7 @@ Příklad
 
 - Návody monitorování nebo Správa svého CSR?
 
-     Viz téma [monitorování a Správa vytváření certifikátů](https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-scenarios).
+     Viz téma [monitorování a Správa vytváření certifikátů](./create-certificate-scenarios.md).
 
 - Co když se zobrazuje **typ chyby, veřejný klíč certifikátu koncové entity v zadaném obsahu certifikátu X. 509 se neshoduje s veřejnou součástí zadaného privátního klíče. Zkontrolujte prosím, jestli je certifikát platný**?
 

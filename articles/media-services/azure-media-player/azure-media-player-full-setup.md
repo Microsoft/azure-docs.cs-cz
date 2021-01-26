@@ -7,21 +7,26 @@ ms.service: media-services
 ms.topic: how-to
 ms.date: 04/20/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 15f5918748df80cec01ccf89835a0ef51da64529
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13abe333bcf3f67ea1a1ba823c693deaa60bc723
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91296242"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788803"
 ---
 # <a name="azure-media-player-full-setup"></a>Kompletní nastavení Azure Media Playeru #
 
 Nastavení Azure Media Player je snadné. Získání základního přehrávání mediálního obsahu přímo z vašeho účtu Azure Media Services trvá jenom chvíli. [Ukázky](https://github.com/Azure-Samples/azure-media-player-samples) jsou k dispozici také v adresáři Samples této verze.
 
+<!--//aka.ms/ampembed?url=https%3A%2F%2Fxpouyatdemo-euwe.streaming.media.azure.net%2Fc9b6ac82-c187-4882-a3d3-1a67204ac58e%2Fconnect2017-v3.ism%2Fmanifest-->
+
+Tady je příklad videa AMS.
+
+> [!VIDEO https://aka.ms/ampembed?url=https%3A%2F%2Fxpouyatdemo-euwe.streaming.media.azure.net%2Fc9b6ac82-c187-4882-a3d3-1a67204ac58e%2Fconnect2017-v3.ism%2Fmanifest]
 
 ## <a name="step-1-include-the-javascript-and-css-files-in-the-head-of-your-page"></a>Krok 1: zahrnutí souborů JavaScriptu a CSS do hlavičky stránky ##
 
-Pomocí Azure Media Player máte přístup ke skriptům z hostované verze CDN. Často se doporučuje vložit JavaScript před značku konce těla `<body>` místo `<head>` , ale Azure Media Player obsahuje "HTML5 Shiv", který musí být v hlavě pro starší verze IE, aby se jako platný element mohla přicházet k označení videa.
+Pomocí Azure Media Player máte přístup ke skriptům z hostované verze CDN. Často se teď doporučuje vložit JavaScript před značku konce těla `<body>` místo `<head>` , ale Azure Meia Player obsahuje "HTML5 Shiv", který musí být v hlavě pro starší verze IE, aby se mohla považovat značka videa za platný element.
 
 > [!NOTE]
 > Pokud již používáte HTML5 Shiv jako [modernizr](https://modernizr.com/) , můžete Azure Media Player JavaScriptu umístit kamkoli. Ujistěte se však, že vaše verze modernizr zahrnuje Shiv pro video.
@@ -34,7 +39,7 @@ Pomocí Azure Media Player máte přístup ke skriptům z hostované verze CDN. 
 ```
 
 > [!IMPORTANT]
-> Tuto verzi **NOT** byste neměli používat `latest` v produkčním prostředí, protože se tato verze může změnit na vyžádání. Nahraďte `latest` verzí Azure Media Player. Například Nahraďte parametr `latest` `2.1.1` . Z [tohoto místa](azure-media-player-changelog.md)se dá dotazovat na Azure Media Player verze.
+> Tuto verzi  byste neměli používat `latest` v produkčním prostředí, protože se tato verze může změnit na vyžádání. Nahraďte `latest` verzí Azure Media Player. Například Nahraďte parametr `latest` `2.1.1` . Z [tohoto místa](azure-media-player-changelog.md)se dá dotazovat na Azure Media Player verze.
 
 > [!NOTE]
 > Od `1.2.0` verze už není potřeba, aby zahrnovala umístění pro záložní pracovníky (z relativní cesty azuremediaplayer.min.js souboru se automaticky vybralo umístění). Umístění záložních techniků můžete upravit přidáním následujícího skriptu do `<head>` výše uvedených skriptů.

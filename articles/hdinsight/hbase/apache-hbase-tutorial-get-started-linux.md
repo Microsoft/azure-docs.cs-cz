@@ -7,19 +7,19 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 04/14/2020
-ms.openlocfilehash: d24c63e3a2989173e718cd27fa43cecc50181047
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.date: 01/22/2021
+ms.openlocfilehash: 3aff700493fbdc0c2b8a9a3dcb4dbbafe9b10761
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533491"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788770"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>Kurz: použití Apache HBA v Azure HDInsight
 
 V tomto kurzu se dozvíte, jak vytvořit cluster Apache HBA v Azure HDInsight, vytvořit tabulky HBA a dotazovat tabulky pomocí Apache Hive.  Obecné informace o HBase najdete v tématu [Přehled HBase ve službě HDInsight](./apache-hbase-overview.md).
 
-V tomto kurzu:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Vytvoření clusteru Apache HBA
@@ -30,7 +30,7 @@ V tomto kurzu:
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Klient SSH. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Klient SSH. Další informace najdete v tématu [Připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 * Bash. Příklady v tomto článku používají pro příkazy oblé prostředí bash ve Windows 10. Pokyny k instalaci najdete v tématu [Instalační příručka k systému Windows pro Linux pro systém Windows 10](/windows/wsl/install-win10) .  Budou fungovat i další [prostředí UNIX](https://www.gnu.org/software/bash/) .  Příklady složených s některými drobnými úpravami mohou pracovat na příkazovém řádku systému Windows.  Nebo můžete použít rutinu Windows PowerShellu [Invoke-RestMethod](/powershell/module/microsoft.powershell.utility/invoke-restmethod).
 
@@ -50,14 +50,14 @@ Následující postup používá šablonu Azure Resource Manager k vytvoření c
     |Skupina prostředků|Vytvořte skupinu správy prostředků Azure nebo použijte existující.|
     |Umístění|Zadejte umístění skupiny prostředků. |
     |Název clusteru|Zadejte název clusteru HBA.|
-    |Přihlašovací jméno a heslo clusteru|Výchozí přihlašovací jméno je **admin** .|
-    |Uživatelské jméno a heslo SSH|Výchozí uživatelské jméno je **sshuser** .|
+    |Přihlašovací jméno a heslo clusteru|Výchozí přihlašovací jméno je **admin**.|
+    |Uživatelské jméno a heslo SSH|Výchozí uživatelské jméno je **sshuser**.|
 
     Další parametry jsou volitelné.  
 
     Každý cluster obsahuje závislost účtu Azure Storage. Po odstranění clusteru zůstanou tato data v účtu úložiště. Výchozí název účtu úložiště clusteru je název clusteru s připojenou příponou „úložiště“. Je pevně zakódované v části proměnné šablony.
 
-3. Vyberte Souhlasím **s podmínkami a ujednáními uvedenými nahoře** a pak vyberte **koupit** . Vytvoření clusteru trvá přibližně 20 minut.
+3. Vyberte Souhlasím **s podmínkami a ujednáními uvedenými nahoře** a pak vyberte **koupit**. Vytvoření clusteru trvá přibližně 20 minut.
 
 Po odstranění clusteru služby HBase můžete vytvořit jiný cluster HBase pomocí stejného výchozího kontejneru blob. Nový cluster převezme tabulky HBase, které jste vytvořili v původním clusteru. Aby se zabránilo nekonzistencím, doporučujeme zakázat tabulky HBase před odstraněním clusteru.
 
@@ -332,7 +332,7 @@ HBase v HDInsight se dodává s webovým uživatelským rozhraním pro sledován
 
 1. V nabídce vlevo vyberte **HBA** .
 
-1. V horní části stránky vyberte **Rychlé odkazy** , přejděte na aktivní odkaz na uzel Zookeeper a pak vyberte **HBase Master uživatelské rozhraní** .  Uživatelské rozhraní se otevře na nové kartě prohlížeče:
+1. V horní části stránky vyberte **Rychlé odkazy** , přejděte na aktivní odkaz na uzel Zookeeper a pak vyberte **HBase Master uživatelské rozhraní**.  Uživatelské rozhraní se otevře na nové kartě prohlížeče:
 
    ![HMaster uživatelské rozhraní HDInsight Apache HBA](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-hmaster-ui.png)
 
@@ -344,15 +344,21 @@ HBase v HDInsight se dodává s webovým uživatelským rozhraním pro sledován
    - úlohy
    - atributy softwaru
 
+## <a name="cluster-recreation"></a>Rekreace clusteru
+
+Po odstranění clusteru služby HBase můžete vytvořit jiný cluster HBase pomocí stejného výchozího kontejneru blob. Nový cluster převezme tabulky HBase, které jste vytvořili v původním clusteru. Aby ale nedocházelo k nekonzistencím, doporučujeme před odstraněním clusteru zakázat tabulky HBA. 
+
+Můžete použít příkaz HBA `disable 'Contacts'` . 
+
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Aby se zabránilo nekonzistencím, doporučujeme zakázat tabulky HBase před odstraněním clusteru. Můžete použít příkaz HBA `disable 'Contacts'` . Pokud nebudete tuto aplikaci nadále používat, odstraňte cluster HBA, který jste vytvořili, pomocí následujícího postupu:
+Pokud nebudete tuto aplikaci nadále používat, odstraňte cluster HBA, který jste vytvořili, pomocí následujícího postupu:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-1. Do **vyhledávacího** pole v horní části zadejte **HDInsight** .
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Do **vyhledávacího** pole v horní části zadejte **HDInsight**.
 1. V části **služby** vyberte **clustery HDInsight** .
 1. V seznamu clusterů HDInsight, které se zobrazí, klikněte na **...** vedle clusteru, který jste vytvořili pro účely tohoto kurzu.
-1. Klikněte na **Odstranit** . Klikněte na **Ano** .
+1. Klikněte na **Odstranit**. Klikněte na **Ano**.
 
 ## <a name="next-steps"></a>Další kroky
 

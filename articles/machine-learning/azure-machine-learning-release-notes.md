@@ -9,16 +9,45 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 09/10/2020
-ms.openlocfilehash: 11aa739beeb07c3de056d8a2430b556fcc40b178
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 6e92fb39845944898bebf6446c35f0932e13b5b8
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746726"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788871"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Poznámky k verzi Azure Machine Learning
 
 V tomto článku se dozvíte o Azure Machine Learning verzích.  Úplný referenční obsah sady SDK najdete na referenční stránce Azure Machine Learning [**hlavní sadě SDK pro Python**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) .
+
+ ## <a name="2021-01-25"></a>2021-01-25
+
+### <a name="azure-machine-learning-sdk-for-python-v1210"></a>Sada SDK Azure Machine Learning pro Python v 1.21.0
++ **Opravy chyb a vylepšení**
+  + **Azure-CLI-ml**
+    + Pevný text v nápovědě k rozhraní příkazového řádku při použití AmlCompute s identitou UserAssigned
+  + **AzureML-contrib-automl-DNN-Vision**
+    + Tlačítka pro nasazení a stažení se stanou viditelnými pro spuštění AutoMLch zraku a modely se můžou nasadit nebo stáhnout podobně jako ostatní AutoML běhy. Existují dva nové soubory (scoring_file_v_1_0_0. py a conda_env_v_1_0_0. yml), které obsahují skript pro spuštění Inferencing a soubor YML pro opětovné vytvoření prostředí conda. Soubor model. PTH byl také přejmenován, aby používal příponu. pt.
+  + **azureml-core**
+    + Podpora MSI pro Azure-CLI-ml
+    + Podpora spravované identity přiřazené uživatelem
+    + V důsledku této změny by zákazníci měli být schopni poskytnout identitu přiřazenou uživateli, kterou lze použít k načtení klíče z trezoru klíčů zákazníka pro šifrování v klidovém umístění.
+    +  Oprava row_count = 0 pro profil velmi velkých souborů – Oprava chyby v dvojitém převodu pro hodnoty s oddělovači s odsazením mezer
+    + Odebrání experimentálního příznaku pro výstupní datovou sadu GA
+    + Aktualizace dokumentace k načtení konkrétní verze modelu
+    + Umožňuje aktualizovat pracovní prostor pro přístup do smíšeného režimu pro případ privátního propojení.
+    + Oprava pro odebrání další registrace v úložišti dat pro funkci pokračování v běhu
+    + Přidání podpory rozhraní příkazového řádku/sady SDK pro aktualizaci identity přiřazené primárnímu uživateli v pracovním prostoru
+  + **azureml-interpret**
+    + aktualizace AzureML-interpretace na interpretaci 0.16.0 komunity
+    + optimalizace paměti pro vysvětlení klienta v AzureML-interpretace
+  + **azureml-train-automl-runtime**
+    + Povolené streamování pro ADB běhy
+  + **azureml-train-core**
+    + Oprava pro odebrání další registrace v úložišti dat pro funkci pokračování v běhu
+  + **azureml-widgets**
+    + Zákazníci by neměli vidět změny existující vizualizace dat pomocí widgetu a teď budou mít podporu, pokud budou volitelně používat podmíněné parametry.
+    + Pomůcka pro spuštění uživatele teď obsahuje podrobné vysvětlení, proč je běh ve stavu queueed.
 
 
  ## <a name="2021-01-11"></a>2021-01-11
@@ -118,7 +147,7 @@ V tomto článku se dozvíte o Azure Machine Learning verzích.  Úplný referen
 ## <a name="2020-11-30"></a>2020-11-30
 ### <a name="azure-machine-learning-studio-notebooks-experience-november-update"></a>Prostředí poznámkových bloků Azure Machine Learning Studio (listopad Update)
 + **Nové funkce**
-   + Nativní terminál. Uživatelé teď budou mít přístup k integrovanému terminálu i k operaci Git prostřednictvím [integrovaného terminálu.](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#terminal)
+   + Nativní terminál. Uživatelé teď budou mít přístup k integrovanému terminálu i k operaci Git prostřednictvím [integrovaného terminálu.](./how-to-run-jupyter-notebooks.md#terminal)
   + Duplicitní složka 
   + Náklady na vyřazení výpočtů 
   + Offline výpočetní Pylance 
@@ -1935,7 +1964,7 @@ V době této verze se podporují následující prohlížeče: Chrome, Firefox,
   + Výkon `read_parquet` se vylepšil při spuštění ve Sparku.
   + Opravili jsme problém, kdy `column_type_builder` se nezdařil v případě jednoho sloupce s nejednoznačnými formáty data.
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure Portal
 + **Funkce Preview**
   + Streamování protokolů a výstupních souborů je teď k dispozici na stránkách s podrobnostmi o spuštění. Když je zapnutý přepínač Preview, soubory se budou v reálném čase aktualizovat.
   + Možnost nastavit kvótu na úrovni pracovního prostoru je vydaná ve verzi Preview. Kvóty AmlCompute se přidělují na úrovni předplatného, ale teď vám umožňuje distribuovat tuto kvótu mezi pracovními prostory a přidělit je pro spravedlivé sdílení a zásady správného řízení. Stačí kliknout na okno **používání a kvóty** v levém navigačním panelu pracovního prostoru a vybrat kartu **Konfigurace kvót** . Musíte být správcem předplatného, aby bylo možné nastavit kvóty na úrovni pracovního prostoru, protože se jedná o operaci mezi pracovními prostory.
@@ -2214,7 +2243,7 @@ Sada Azure Machine Learning SDK pro Python v 1.0.30 vydaná.
 
 ## <a name="2019-04-15"></a>2019-04-15
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure Portal
   + Existující skript teď můžete znovu odeslat v existujícím vzdáleném výpočetním clusteru.
   + Nyní můžete spustit publikovaný kanál s novými parametry na kartě kanály.
   + Podrobnosti o spuštění teď podporují nový prohlížeč souborů snímků. Po odeslání konkrétního běhu můžete zobrazit snímek adresáře. Můžete si také stáhnout Poznámkový blok, který byl odeslán za účelem spuštění spuštění.
@@ -2272,7 +2301,7 @@ Sada Azure Machine Learning SDK pro Python v 1.0.30 vydaná.
 + **Opravy chyb a vylepšení**
   + Přidali jsme podporu Azure Machine Learningch kanálů pro nastavení vlastnosti source_directory_data_store na požadované úložiště dat (například úložiště objektů BLOB) na [RunConfigurations](/python/api/azureml-core/azureml.core.runconfig.runconfiguration?preserve-view=true&view=azure-ml-py) , které jsou k [PythonScriptStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?preserve-view=true&view=azure-ml-py)dodány. Ve výchozím nastavení se jako záložní úložiště dat používají úložiště souborů Azure, které může narazit na problémy s omezením při současném spuštění velkého počtu kroků.
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure Portal
 
 + **Nové funkce**
   + Nové možnosti editoru tabulek přetahování pro sestavy. Uživatelé mohou sloupec přetáhnout ze seznamu i do oblasti tabulky, kde se zobrazí náhled tabulky. Sloupce lze změnit jejich uspořádání.

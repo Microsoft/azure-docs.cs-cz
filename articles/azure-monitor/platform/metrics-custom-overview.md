@@ -1,18 +1,18 @@
 ---
 title: Vlastní metriky v Azure Monitor (Preview)
 description: Seznamte se s vlastními metrikami v Azure Monitor a způsobu jejich modelování.
-author: ancav
+author: anirudhcavale
 ms.author: ancav
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 06/01/2020
+ms.date: 01/25/2021
 ms.subservice: metrics
-ms.openlocfilehash: 73c9b2bf8cf88ca5e8576c451c9d9ac5f0eae8a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ce081896292ec92c41dabc735df828ed167d86e7
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88639898"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788498"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Vlastní metriky v Azure Monitor (Preview)
 
@@ -45,7 +45,7 @@ Vlastní metriky se uchovávají po [stejnou dobu jako metriky platforem](data-p
 
 Když odesíláte vlastní metriky do Azure Monitor, musí každý datový bod nebo hodnota nahlášené obsahovat následující informace.
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Ověřování
 Aby bylo možné odesílat vlastní metriky Azure Monitor, entita, která odesílá metriku, potřebuje platný token Azure Active Directory (Azure AD) v hlavičce **nosiče** žádosti. Existuje několik podporovaných způsobů získání platného nosných tokenů:
 1. [Spravované identity pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md). Poskytuje identitu samotného prostředku Azure, jako je třeba virtuální počítač. Identita spravované služby (MSI) je navržena tak, aby poskytovala oprávnění k provádění určitých operací. Příklad povoluje prostředku generovat metriky o sobě samým. K prostředku nebo jeho MSI se dá udělit oprávnění pro **monitorování** pro ostatní prostředky. S tímto oprávněním může MSI vysílat metriky i pro jiné prostředky.
 2. [Instanční objekt služby Azure AD](../../active-directory/develop/app-objects-and-service-principals.md). V tomto scénáři může být aplikace nebo služba Azure AD přiřazená oprávnění k vygenerování metriky o prostředku Azure.
@@ -61,7 +61,7 @@ Tato vlastnost zachycuje ID prostředku Azure, pro který je nahlášená vlastn
 > Nemůžete vygenerovat vlastní metriky s ID prostředku skupiny prostředků nebo předplatného.
 
 
-### <a name="region"></a>Oblast
+### <a name="region"></a>Region (Oblast)
 Tato vlastnost zachycuje, co je to oblast Azure, pro kterou je prostředek, pro který vydáváte metriky, nasazený v. Metriky musí být vygenerovány do stejného Azure Monitor oblastní koncový bod jako oblast, ve které je prostředek nasazen. Například vlastní metriky pro virtuální počítač nasazený v Západní USA musí být odesílány do koncového bodu oblastní Azure Monitor WestUS. Informace o oblasti jsou také kódované v adrese URL volání rozhraní API.
 
 > [!NOTE]  
@@ -86,7 +86,7 @@ Dimenze jsou volitelné, ne všechny metriky mohou mít rozměry. Vlastní metri
 Při vytváření sestav datového bodu metriky pro každý klíč dimenze na hlášené metriky existuje odpovídající hodnota dimenze. Můžete například chtít ohlásit paměť využívané ContosoApp na vašem VIRTUÁLNÍm počítači:
 
 * V názvu metriky by se **používaly paměťové bajty**.
-* Bude **zpracován**klíč dimenze.
+* Bude **zpracován** klíč dimenze.
 * Hodnota dimenze by byla **ContosoApp.exe**.
 
 Při publikování hodnoty metriky můžete zadat pouze jednu hodnotu dimenze na klíč dimenze. Pokud shromažďujete stejné využití paměti pro více procesů na virtuálním počítači, můžete pro toto časové razítko vykázat více hodnot metriky. Každá hodnota metriky by určovala jinou hodnotu dimenze pro klíč dimenze **procesu** .
@@ -105,7 +105,6 @@ Pokud jste například během určité minuty do vaší aplikace používali čt
 |Transakce 1|Transakce 2|Transakce 3|Transakce 4|
 |---|---|---|---|
 |7 MS|4 MS|13 MS|16 MS|
-|
 
 Výsledná Azure Monitorová publikace metriky pak bude následující:
 * Minimum: 4
@@ -134,7 +133,8 @@ V následujícím příkladu vytvoříte vlastní metriku nazvanou **paměťové
         "metric": "Memory Bytes in Use",
         "namespace": "Memory Profile",
         "dimNames": [
-          "Process"        ],
+          "Process"
+        ],
         "series": [
           {
             "dimValues": [
@@ -174,44 +174,29 @@ Před tím, než se vygeneruje, není nutné před tím, než bude vygenerována
 Až se vlastní metriky odešlou do Azure Monitor, můžete je procházet pomocí Azure Portal a dotazovat je prostřednictvím rozhraní API REST Azure Monitor. Můžete také vytvořit výstrahy, které vám upozorní na splnění určitých podmínek.
 
 > [!NOTE]
-> Abyste mohli zobrazit vlastní metriky, musíte být čtenář nebo role Přispěvatel.
+> Abyste mohli zobrazit vlastní metriky, musíte být čtenář nebo role Přispěvatel. Viz [monitorování pro monitorování](../../role-based-access-control/built-in-roles.md#monitoring-reader). 
 
 ### <a name="browse-your-custom-metrics-via-the-azure-portal"></a>Procházejte vlastní metriky prostřednictvím Azure Portal
-1.    Přejděte na web [Azure Portal](https://portal.azure.com).
+1.    Přejděte na [Azure Portal](https://portal.azure.com).
 2.    Vyberte podokno **monitorování** .
 3.    Vyberte **Metriky**.
 4.    Vyberte prostředek, pro který jste vygenerovali vlastní metriky.
 5.    Vyberte obor názvů metrik pro vlastní metriku.
 6.    Vyberte vlastní metriku.
 
+> [!NOTE]
+> Další informace o zobrazení metrik v Azure Portal najdete v tématu [Začínáme s Azure Průzkumník metrik](./metrics-getting-started.md) .
+
 ## <a name="supported-regions"></a>Podporované oblasti
-Ve verzi Public Preview je možnost publikovat vlastní metriky k dispozici pouze v podmnožině oblastí Azure. Toto omezení znamená, že metriky lze publikovat pouze pro prostředky v jedné z podporovaných oblastí. Následující tabulka uvádí sadu podporovaných oblastí Azure pro vlastní metriky. Obsahuje také seznam odpovídajících koncových bodů, na které by se měly metriky pro prostředky v těchto oblastech publikovat:
+Ve verzi Public Preview je možnost publikovat vlastní metriky k dispozici pouze v podmnožině oblastí Azure. Toto omezení znamená, že metriky lze publikovat pouze pro prostředky v jedné z podporovaných oblastí. Další informace o oblastech Azure najdete v tématu geografické [grafy Azure](https://azure.microsoft.com/global-infrastructure/geographies/) . Kód oblasti Azure, který se používá v níže uvedených koncových bodech, je jenom název oblasti s odebraným prázdným znakem. v následující tabulce jsou uvedené sady podporovaných oblastí Azure pro vlastní metriky. Obsahuje také seznam odpovídajících koncových bodů, na které by se měly metriky pro prostředky v těchto oblastech publikovat:
 
 |Oblast Azure |Předpona regionálního koncového bodu|
 |---|---|
-| **USA a Kanada** | |
-|USA – středozápad | https: \/ /westcentralus.Monitoring.Azure.com |
-|Západní USA 2       | https: \/ /westus2.Monitoring.Azure.com |
-|USA – středosever | https: \/ /northcentralus.Monitoring.Azure.com
-|Středojižní USA| https: \/ /southcentralus.Monitoring.Azure.com |
-|Střední USA      | https: \/ /centralus.Monitoring.Azure.com |
-|Střední Kanada | https: \/ /canadacentral.Monitoring.Azure.com |
-|East US| https: \/ /eastus.Monitoring.Azure.com |
-|USA – východ 2 | https: \/ /eastus2.Monitoring.Azure.com |
-| **Evropa** | |
-|Severní Evropa    | https: \/ /northeurope.Monitoring.Azure.com |
-|West Europe     | https: \/ /westeurope.Monitoring.Azure.com |
-|Spojené království – jih | https: \/ /uksouth.Monitoring.Azure.com
-|Francie – střed | https: \/ /francecentral.Monitoring.Azure.com |
-| **Afrika** | |
-|Jižní Afrika – sever | https: \/ /southafricanorth.Monitoring.Azure.com |
-| **Asie** | |
-|Indie – střed | https: \/ /centralindia.Monitoring.Azure.com |
-|Austrálie – východ | https: \/ /australiaeast.Monitoring.Azure.com |
-|Japan East | https: \/ /japaneast.Monitoring.Azure.com |
-|Southeast Asia  | https: \/ /southeastasia.Monitoring.Azure.com |
-|Východní Asie | https: \/ /eastasia.Monitoring.Azure.com |
-|Jižní Korea – střed   | https: \/ /koreacentral.Monitoring.Azure.com |
+| Všechny oblasti veřejného cloudu | https://<azure_region_code>. monitoring.azure.com |
+| **Azure Government** | |
+| USA (Gov) – Arizona | https: \/ /usgovarizona.Monitoring.Azure.us |
+| **Čína** | |
+| Čína – východ 2 | https: \/ /chinaeast2.Monitoring.Azure.cn |
 
 ## <a name="latency-and-storage-retention"></a>Latence a uchování úložiště
 

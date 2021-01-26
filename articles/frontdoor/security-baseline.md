@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 77fccf8b2480232debb88136394013941af796c8
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: c922ae19c496d9f377b47ec43d38807f494593bc
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197264"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789124"
 ---
 # <a name="azure-security-baseline-for-azure-front-door"></a>Základní hodnoty zabezpečení Azure pro přední dveře Azure
 
@@ -88,7 +88,7 @@ Používejte vysoce zabezpečené pracovní stanice uživatelů s Azure bastionu
 
 - [Pochopení pracovních stanic s privilegovaným přístupem](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/) 
 
-- [Nasazení pracovní stanice s privilegovaným přístupem](../active-directory/devices/howto-azure-managed-workstation.md)
+- [Nasazení pracovní stanice s privilegovaným přístupem](/security/compass/privileged-access-deployment)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 

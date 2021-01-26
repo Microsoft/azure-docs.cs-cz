@@ -1,19 +1,19 @@
 ---
-title: Přehled možností zálohování pro virtuální počítače se systémem Linux
-description: Přehled možností zálohování virtuálních počítačů Azure pro Linux
+title: Přehled možností zálohování virtuálních počítačů
+description: Přehled možností zálohování virtuálních počítačů Azure.
 author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 8/03/2020
 ms.author: cynthn
-ms.openlocfilehash: c56adc852b504d3a0663a9607b3472cb3348e7a5
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 5a093de0a27c8379cb6eff9c2bc3867dfdc20db5
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972352"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787803"
 ---
-# <a name="backup-and-restore-options-for-linux-virtual-machines-in-azure"></a>Možnosti zálohování a obnovení pro virtuální počítače se systémem Linux v Azure
+# <a name="backup-and-restore-options-for-virtual-machines-in-azure"></a>Možnosti zálohování a obnovení pro virtuální počítače v Azure
 
 Svá data můžete chránit prováděním záloh v pravidelných intervalech. V závislosti na vašem případu použití je pro virtuální počítače k dispozici několik možností zálohování.
 
@@ -21,7 +21,7 @@ Svá data můžete chránit prováděním záloh v pravidelných intervalech. V 
 
 Pro zálohování virtuálních počítačů Azure s provozními úlohami použijte Azure Backup. Azure Backup podporuje zálohování konzistentní vzhledem k aplikacím pro virtuální počítače s Windows i Linux. Azure Backup vytváří body obnovení, které se ukládají v geograficky redundantních trezorech obnovení. Při obnovení z bodu obnovení můžete obnovit celý virtuální počítač nebo jenom určité soubory. 
 
-Jednoduché praktické seznámení s Azure Backup pro virtuální počítače Azure najdete v kurzu zálohování virtuálních počítačů Azure pro [Linux](./linux/tutorial-backup-vms.md) nebo [Windows](./windows/tutorial-backup-vms.md).
+Jednoduché praktické seznámení s Azure Backup pro virtuální počítače Azure najdete v části [rychlý start Azure Backup](../backup/quick-backup-vm-portal.md).
 
 Další informace o tom, jak Azure Backup funguje, najdete v tématu [plánování infrastruktury zálohování virtuálních počítačů v Azure](../backup/backup-azure-vms-introduction.md) .
 
@@ -46,4 +46,4 @@ Další informace o vytváření snímků najdete v těchto tématech:
 
 
 ## <a name="next-steps"></a>Další kroky
-Můžete si vyzkoušet Azure Backup pomocí kurzu zálohování virtuálních počítačů s Windows pro [Linux](./linux/tutorial-backup-vms.md) nebo [Windows](./windows/tutorial-backup-vms.md).
+Azure Backup můžete vyzkoušet pomocí [Azure Backup rychlý Start](../backup/quick-backup-vm-portal.md).

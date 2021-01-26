@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: e8e54a97c13a69fce2e80676fa68d6d795736a83
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: a359c4f0de6dab70b334da7e7d29ad4b273385ab
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98703118"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789275"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Podpora jazyků a oblastí pro převod textu a řeči
 
@@ -91,7 +91,7 @@ Překladatel podporuje pro převod textu na text následující jazyky.
 | Paštština | `ps` |
 | Perština | `fa` |
 | Polština | `pl` |
-| Portugalština (Brazílie) | `pt-br` |
+| Portugalština (Brazílie) | `pt` |
 | portugalština (Portugalsko) | `pt-pt` |
 | Paňdžábština | `pa` |
 | Queretaro Otomi | `otq` |
@@ -343,7 +343,7 @@ Následující jazyky jsou k dispozici pro přizpůsobení nebo z angličtiny po
 | Norština      | `nb`          |
 | Perština      | `fa`          |
 | Polština      | `pl`          |
-| Portugalština (Brazílie) | `pt-br` |
+| Portugalština (Brazílie) | `pt` |
 | Paňdžábština|`pa`|
 | Rumunština      | `ro`          |
 | Ruština      | `ru`          |

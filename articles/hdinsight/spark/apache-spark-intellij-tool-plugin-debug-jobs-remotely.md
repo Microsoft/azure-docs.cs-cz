@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/28/2017
-ms.openlocfilehash: 2e6da1783c3bec4958783494cb6928f5a6a69a58
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 63d46298de2f480d97d25de2ec7e1ec78fbebd8d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822348"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789459"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>Použití Azure Toolkit for IntelliJ k ladění Apache Spark aplikací vzdáleně ve službě HDInsight prostřednictvím sítě VPN
 
@@ -41,7 +41,7 @@ Tento článek poskytuje podrobné pokyny k používání nástrojů HDInsight v
 
 Podle pokynů z následujících odkazů vytvořte virtuální síť Azure a pak ověřte připojení mezi stolním počítačem a virtuální sítí:
 
-* [Vytvoření virtuální sítě s připojením VPN typu Site-to-site pomocí Azure Portal](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+* [Vytvoření virtuální sítě s připojením VPN typu Site-to-site pomocí Azure Portal](../../vpn-gateway/tutorial-site-to-site-portal.md)
 * [Vytvoření virtuální sítě s připojením VPN typu Site-to-site pomocí PowerShellu](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
 * [Konfigurace připojení typu Point-to-site k virtuální síti pomocí PowerShellu](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
 
@@ -177,7 +177,7 @@ Doporučujeme také vytvořit cluster Apache Spark ve službě Azure HDInsight, 
     </property>
     ```
 
-   c. Uložte soubor.
+   c. Soubor uložte.
 
 1. Přidejte do své aplikace hlavní třídu. V **Průzkumníku projektu** klikněte pravým tlačítkem myši **na src**, přejděte na **Nový** a pak vyberte **Třída Scala**.
 

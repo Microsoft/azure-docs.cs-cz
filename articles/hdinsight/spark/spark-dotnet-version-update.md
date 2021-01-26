@@ -6,12 +6,12 @@ ms.author: nidutta
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/05/2021
-ms.openlocfilehash: 4b95e4f164eb2c1d0a881cf9ab14696c3cbed4a7
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: a1602f29a6d0066ec3c99e990532411621652c47
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98122191"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788125"
 ---
 # <a name="updating-net-for-apache-spark-to-version-v10--in-hdinsight"></a>Aktualizace .NET pro Apache Spark na verzi v 1.0 v HDInsight
 
@@ -42,9 +42,9 @@ Pokud nechcete měnit aktuální verzi rozhraní .NET pro Apache Spark v aplikac
 
 2. Stáhněte si skript [install-Worker.sh](https://github.com/dotnet/spark/blob/master/deployment/install-worker.sh) pro instalaci spustitelných souborů pracovních procesů stažených v kroku 1 do všech pracovních uzlů vašeho clusteru HDI.  
 
-3. Výše uvedené soubory nahrajte na účet Azure Storage, ke kterému má váš cluster přístup. Další podrobnosti najdete [v článku věnovaném nasazení rozhraní .NET pro Apache Spark HDI](https://docs.microsoft.com/dotnet/spark/tutorials/hdinsight-deployment#upload-files-to-azure) .
+3. Výše uvedené soubory nahrajte na účet Azure Storage, ke kterému má váš cluster přístup. Další podrobnosti najdete [v článku věnovaném nasazení rozhraní .NET pro Apache Spark HDI](/dotnet/spark/tutorials/hdinsight-deployment#upload-files-to-azure) .
 
-4. Spusťte `install-worker.sh` skript na všech pracovních uzlech clusteru pomocí akcí skriptů. Další informace najdete [v článku věnovaném nasazení rozhraní .NET pro Apache Spark HDI](https://docs.microsoft.com/dotnet/spark/tutorials/hdinsight-deployment#run-the-hdinsight-script-action) .
+4. Spusťte `install-worker.sh` skript na všech pracovních uzlech clusteru pomocí akcí skriptů. Další informace najdete [v článku věnovaném nasazení rozhraní .NET pro Apache Spark HDI](/dotnet/spark/tutorials/hdinsight-deployment#run-the-hdinsight-script-action) .
 
 ### <a name="update-your-application-to-use-specific-version"></a>Aktualizujte aplikaci tak, aby používala konkrétní verzi.
 
@@ -58,4 +58,4 @@ Stávající clustery HDI budou mít i nadále stejnou předchozí verzi pro .NE
 
 ## <a name="next-steps"></a>Další kroky
 
-[Nasazení aplikace .NET pro Apache Spark v HDInsight](https://docs.microsoft.com/dotnet/spark/tutorials/hdinsight-deployment)
+[Nasazení aplikace .NET pro Apache Spark v HDInsight](/dotnet/spark/tutorials/hdinsight-deployment)

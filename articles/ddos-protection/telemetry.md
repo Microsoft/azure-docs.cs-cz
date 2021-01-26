@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 86e4a111be7585373ecf4c2fe9508f2bfca7de16
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: a3f6c14b7ed2686a262f28510efb37068cfb9cb3
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915075"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787294"
 ---
 # <a name="view-and-configure-ddos-protection-telemetry"></a>Zobrazení a konfigurace telemetrie ochrany před útoky DDoS
 
@@ -34,10 +34,10 @@ V tomto kurzu se naučíte:
 > [!NOTE]
 > I když se na Azure Portal zobrazuje více možností **agregace** , pro každou metriku se podporují jenom typy agregace uvedené v následující tabulce. Omlouváme se za tuto nejasnost a pracujeme na jejich řešení.
 
-Pro Azure DDoS Protection Standard jsou k dispozici následující [metriky](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftnetworkpublicipaddresses) . Tyto metriky je také možné exportovat prostřednictvím nastavení diagnostiky (viz [zobrazení a konfigurace diagnostického protokolování DDoS](diagnostic-logging.md)).
+Pro Azure DDoS Protection Standard jsou k dispozici následující [metriky](../azure-monitor/platform/metrics-supported.md#microsoftnetworkpublicipaddresses) . Tyto metriky je také možné exportovat prostřednictvím nastavení diagnostiky (viz [zobrazení a konfigurace diagnostického protokolování DDoS](diagnostic-logging.md)).
 
 
-| Metrika | Zobrazovaný název metriky | Jednotka | Typ agregace | Popis |
+| Metric | Zobrazovaný název metriky | Jednotka | Typ agregace | Popis |
 | --- | --- | --- | --- | --- |
 | ByteCount | Počet bajtů | Počet | Celkem | Celkový počet odeslaných bajtů v časovém období |
 | BytesDroppedDDoS | Příchozí bajty vynechané DDoS | BytesPerSecond | Maximum | Příchozí bajty vynechané DDoS| 

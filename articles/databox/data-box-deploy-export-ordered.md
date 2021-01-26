@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: aac1fb8e2da7a3c84b3abff47c8f476b9fb9049c
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 42476e2689cc503edc19e8e299a01ce922f1bf42
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98704334"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789191"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box"></a>Kurz: vytvoření objednávky exportu pro Azure Data Box
 
@@ -179,7 +179,7 @@ Provedením následujících kroků na webu Azure Portal si objednejte zařízen
 
 15. Vyberte identitu uživatele, kterou budete používat ke správě přístupu k tomuto prostředku. Zvolte **Vybrat identitu uživatele**. V panelu na pravé straně vyberte předplatné a spravovanou identitu, kterou chcete použít. Pak zvolte **Vybrat**.
 
-    Spravovaná identita přiřazená uživatelem je samostatný prostředek Azure, který se dá použít ke správě několika prostředků. Další informace najdete v tématu [spravované typy identit](/azure/active-directory/managed-identities-azure-resources/overview).  
+    Spravovaná identita přiřazená uživatelem je samostatný prostředek Azure, který se dá použít ke správě několika prostředků. Další informace najdete v tématu [spravované typy identit](../active-directory/managed-identities-azure-resources/overview.md).  
 
     Pokud potřebujete vytvořit novou spravovanou identitu, postupujte podle pokynů v části [Vytvoření, výpis, odstranění nebo přiřazení role k spravované identitě přiřazené uživatelem pomocí Azure Portal](../../articles/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md).
     

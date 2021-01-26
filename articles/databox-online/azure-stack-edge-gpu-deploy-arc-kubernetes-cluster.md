@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 11/12/2020
 ms.author: alkohli
-ms.openlocfilehash: 342f6a2c4761104823694f2181b3ffa8726a441e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 53ef73c70f5d20133e7b408ad7af91c3778e5568
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96449424"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787447"
 ---
 # <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-pro-gpu-device"></a>Povolení Azure ARC v clusteru Kubernetes na zařízení GPU Azure Stack Edge pro
 
@@ -22,7 +22,7 @@ V tomto článku se dozvíte, jak povolit Azure ARC v existujícím clusteru Kub
 Tento postup je určený pro uživatele, kteří si zkontrolovali [úlohy Kubernetes na zařízení Azure Stack Edge pro](azure-stack-edge-gpu-kubernetes-workload-management.md) a jsou obeznámeni s koncepty, [co je Azure ARC Enabled Kubernetes (Preview)?](../azure-arc/kubernetes/overview.md).
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než budete moct povolit Azure ARC v clusteru Kubernetes, ujistěte se, že jste na svém zařízení Azure Stack Edge pro a klientovi, kterého budete používat pro přístup k zařízení, dokončili následující požadavky:
 
@@ -39,7 +39,7 @@ Než budete moct povolit Azure ARC v clusteru Kubernetes, ujistěte se, že jste
 
 1. Máte klientský systém Windows, který se bude používat pro přístup k zařízení Azure Stack Edge pro.
   
-    - Na klientovi běží Windows PowerShell 5,0 nebo novější. Nejnovější verzi Windows PowerShellu si stáhnete tak, že přejdete na [nainstalovat Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows).
+    - Na klientovi běží Windows PowerShell 5,0 nebo novější. Nejnovější verzi Windows PowerShellu si stáhnete tak, že přejdete na [nainstalovat Windows PowerShell](/powershell/scripting/install/installing-powershell-core-on-windows).
     
     - Můžete mít i jiné klienty s [podporovaným operačním systémem](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) . Tento článek popisuje postup při použití klienta systému Windows. 
     

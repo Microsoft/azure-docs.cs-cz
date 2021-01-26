@@ -11,16 +11,16 @@ ms.date: 11/23/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: b305a07997ccd2cbab0d963ced2bd23ab7a97690
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 398cbd49f79cbeb5f486e3f8ca33987d5357add6
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98683403"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789442"
 ---
 # <a name="tutorial-load-the-new-york-taxicab-dataset"></a>Kurz: načtení datové sady New York taxislužby města
 
-V tomto kurzu se pomocí [příkazu copy](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) načte datová sada New York taxislužby města z účtu služby Azure Blob Storage. Tento kurz používá [Azure Portal](https://portal.azure.com) a aplikaci [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS) k:
+V tomto kurzu se pomocí [příkazu copy](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) načte datová sada New York taxislužby města z účtu Azure Blob Storage. Tento kurz používá [Azure Portal](https://portal.azure.com) a aplikaci [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS) k:
 
 > [!div class="checklist"]
 >
@@ -90,7 +90,7 @@ Prvním krokem k načítání dat je přihlášení jako LoaderRC20.
 
 ## <a name="create-tables-for-the-sample-data"></a>Vytvořit tabulky pro ukázková data
 
-Teď jste připraveni zahájit proces načítání dat do svého nového datového skladu. V této části kurzu se dozvíte, jak pomocí příkazu COPY načíst datovou sadu CAB New York City taxislužby z objektu blob Azure Storage. Informace o tom, jak získat data do služby Azure Blob Storage nebo jak je načíst přímo ze zdroje, najdete v tématu [Přehled načítání](design-elt-data-loading.md).
+Teď jste připraveni zahájit proces načítání dat do svého nového datového skladu. V této části kurzu se dozvíte, jak pomocí příkazu COPY načíst datovou sadu CAB New York City taxislužby z objektu blob Azure Storage. Další informace o tom, jak získat data do Azure Blob Storage nebo načíst přímo ze zdroje, najdete v tématu [Přehled načítání](design-elt-data-loading.md).
 
 Spusťte následující skripty SQL a zadejte informace o datech, která chcete načíst. Tyto informace zahrnují umístění dat, formát obsahu dat a definici tabulky pro data.
 

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: af9087f0dd45212ec88b620dcd965c895b86bbce
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: baa071c8967c97cb5df2b8f522b3737436bdb359
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108188"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787701"
 ---
 # <a name="manage-qna-maker-resources"></a>Správa prostředků QnA Maker
 
@@ -114,7 +114,7 @@ Služba App Service, která slouží jako modul runtime předpovědi QnA Maker p
 
 Aby se zajistilo, že se aplikace koncového bodu předpovědi načetla i v případě, že nedochází k provozu, nastavte nečinné na Always On.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Vyhledejte a vyberte službu App Service prostředku QnA Maker. Bude mít stejný název jako prostředek QnA Maker, ale bude mít jiný **typ** App Service.
 1. Najděte **Nastavení** a pak vyberte **Konfigurace**.
 1. V podokně Konfigurace vyberte **Obecná nastavení** a pak najít **vždycky zapnuto** **a jako hodnotu** vyberte.
@@ -130,12 +130,12 @@ Přečtěte si další informace o tom, jak nakonfigurovat App Service [Obecná 
 ### <a name="configure-app-service-environment-to-host-qna-maker-app-service"></a>Konfigurace App Service Environment pro hostování QnA Maker App Service
 K hostování služby QnA Maker App Service se dá použít App Service Environment (pomocného mechanismu). Postupujte následovně:
 
-1. Vytvořte App Service Environment a označte ji jako "externí". Pokyny najdete v tomto [kurzu](https://docs.microsoft.com/azure/app-service/environment/create-external-ase) .
+1. Vytvořte App Service Environment a označte ji jako "externí". Pokyny najdete v tomto [kurzu](../../../app-service/environment/create-external-ase.md) .
 2.  Vytvořte službu App Service v rámci App Service Environment.
     * Ověřte konfiguraci služby App Service a jako nastavení aplikace přidejte ' PrimaryEndpointKey '. Hodnota pro ' PrimaryEndpointKey ' by měla být nastavena na hodnotu \<app-name\> -PrimaryEndpointKey. Název aplikace je definovaný v adrese URL služby App Service. Pokud je například adresa URL služby App Service "mywebsite.myase.p.azurewebsite.net", pak název aplikace je "mywebsite". V tomto případě by měla být hodnota pro ' PrimaryEndpointKey ' nastavena na "mywebsite-PrimaryEndpointKey".
     * Vytvořte službu Azure Search.
     * Ujistěte se, že Azure Search a nastavení aplikace jsou správně nakonfigurované. 
-      Postupujte prosím podle tohoto [kurzu](https://docs.microsoft.com/azure/cognitive-services/qnamaker/reference-app-service?tabs=v1#app-service).
+      Postupujte prosím podle tohoto [kurzu](../reference-app-service.md?tabs=v1#app-service).
 3.  Aktualizace skupiny zabezpečení sítě přidružené k App Service Environment
     * Aktualizujte předem vytvořená příchozí pravidla zabezpečení podle vašich požadavků.
     * Přidejte nové příchozí pravidlo zabezpečení se zdrojem jako značkou služby a označením zdrojové služby jako "CognitiveServicesManagement".

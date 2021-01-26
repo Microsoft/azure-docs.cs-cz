@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 12/29/2020
-ms.openlocfilehash: 0834b8f00e4c414b3a36314b80f6c99fb8f2aea2
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: b297330f3562babf9e83d36934827f7b92d5ea35
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955208"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787008"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>Dávkové testování se sadou příkladů projevy
 
@@ -99,7 +99,7 @@ Příklad JSON obsahuje jeden utterance s označenou entitou pro ilustraci toho,
 
 Chcete-li zkontrolovat výsledky dávkového testu, vyberte možnost **Zobrazit výsledky**. Výsledky testu ukazují, jak byl projevy testů předpovězený proti aktivní verzi.
 
-V dávkovém grafu se zobrazí čtyři kvadranty výsledků. Napravo od grafu je filtr. Filtr obsahuje záměry a entity. Když vyberete [část grafu](luis-concept-batch-test.md#batch-test-results) nebo bod v rámci grafu, zobrazí se v grafu odpovídající utterance (y).
+V dávkovém grafu se zobrazí čtyři kvadranty výsledků. Napravo od grafu je filtr. Filtr obsahuje záměry a entity. Když vyberete [část grafu](#review-batch-results-for-intents) nebo bod v rámci grafu, zobrazí se v grafu odpovídající utterance (y).
 
 Při najetí myší na graf může kolečko myši zvětšit nebo zmenšit displej v grafu. To je užitečné v případě, že je graf v grafu seskupen těsně dohromady.
 
@@ -166,7 +166,7 @@ Dva oddíly v grafu zeleně odpovídaly očekávané předpovědi.
 
 ## <a name="batch-testing-using-the-rest-api"></a>Dávkové testování pomocí REST API 
 
-LUIS umožňuje dávkové testování pomocí portálu LUIS a REST API. Koncové body pro REST API jsou uvedeny níže. Informace o dávkovém testování pomocí portálu LUIS najdete v tématu [kurz: dávkové test sady dat](luis-tutorial-batch-testing.md). Použijte níže uvedené úplné adresy URL a nahraďte zástupné hodnoty vlastním klíčem předpovědi LUIS a koncovým bodem. 
+LUIS umožňuje dávkové testování pomocí portálu LUIS a REST API. Koncové body pro REST API jsou uvedeny níže. Informace o dávkovém testování pomocí portálu LUIS najdete v tématu [kurz: dávkové test sady dat](). Použijte níže uvedené úplné adresy URL a nahraďte zástupné hodnoty vlastním klíčem předpovědi LUIS a koncovým bodem. 
 
 Nezapomeňte do hlavičky přidat svůj klíč LUIS `Ocp-Apim-Subscription-Key` a nastavit `Content-Type` na `application/json` .
 
@@ -265,5 +265,3 @@ Pokud testování indikuje, že vaše aplikace LUIS nerozpozná správné zámě
 
 * [Popisek navržený projevy pomocí LUIS](luis-how-to-review-endpoint-utterances.md)
 * [Využijte funkce ke zlepšení výkonu aplikace v LUIS.](luis-how-to-add-features.md)
-* [Vysvětlení dávkového testování pomocí tohoto kurzu](luis-tutorial-batch-testing.md)
-* [Přečtěte si o konceptech dávkového testování](luis-concept-batch-test.md).

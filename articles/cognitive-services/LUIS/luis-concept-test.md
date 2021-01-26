@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
-ms.openlocfilehash: ef63bf68fec592b768986a1329663508443c514b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b33f765e936d7c0db301a5b2fcf38ccaf137f771
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91535844"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787549"
 ---
 # <a name="testing-example-utterances-in-luis"></a>Příklad testu projevy v LUIS
 
@@ -33,7 +33,7 @@ Další informace o skóre předpovědi najdete v tématu Koncepty [skóre před
 Interaktivní testování se provádí na panelu **test** na portálu Luis. Můžete zadat utterance a podívat se, jak se identifikují záměry a entity a jejich skóre. Pokud LUIS nepředpověď záměrů a entit podle očekávání na utterance na panelu testování, zkopírujte ji na stránku **záměru** jako novou utterance. Pak označte části tohoto utterance entit a LUIS. 
 
 ## <a name="batch-testing"></a>Dávkové testování
-Pokud testujete více než jeden utterance najednou, podívejte se na [dávkové testování](luis-concept-batch-test.md) .
+Pokud testujete více než jeden utterance najednou, podívejte se na [dávkové testování](./luis-how-to-batch-test.md) .
 
 ## <a name="endpoint-testing"></a>Testování koncových bodů
 Pomocí [koncového bodu](luis-glossary.md#endpoint) můžete testovat maximálně dvě verze vaší aplikace. V rámci vaší hlavní nebo živé verze vaší aplikace jako **produkčního** koncového bodu přidejte druhou verzi do **pracovního** koncového bodu. Tento přístup poskytuje tři verze utterance: aktuální model v podokně Test webu [Luis](luis-reference-regions.md) a dvě verze na dvou různých koncových bodech. 
