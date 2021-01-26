@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 9999b2fa116a2336f8e50fb166e5d870ae4b5a5f
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: a193ccd060c75cf4031449ddf3318af6e4691436
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165055"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786465"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Úvodní příručka pro vývojáře v Azure
 
@@ -84,7 +84,7 @@ Místo toho, abyste se museli starat o sestavování a správu celé aplikace ne
 
 > **Kdy použít**: použijte Azure Functions, když máte kód aktivovaný jinými službami Azure, webovými událostmi nebo podle plánu. Funkce můžete použít také v případě, že nepotřebujete režii dokončeného hostovaného projektu nebo pokud chcete platit jenom za čas, kdy je kód spuštěný. Další informace najdete v tématu [přehled Azure Functions](../../azure-functions/functions-overview.md).
 >
-> **Začínáme**: postupujte podle kurzu rychlý Start pro funkce a [Vytvořte svoji první funkci](../../azure-functions/functions-create-first-azure-function.md) z portálu.
+> **Začínáme**: postupujte podle kurzu rychlý Start pro funkce a [Vytvořte svoji první funkci](../../azure-functions/functions-get-started.md) z portálu.
 >
 > **Vyzkoušejte teď**: Azure Functions umožňuje spustit kód bez nutnosti registrace účtu Azure. Vyzkoušejte si to teď a [Vytvořte svoji první funkci Azure Functions](https://tryappservice.azure.com/).
 
@@ -94,7 +94,7 @@ Azure Service Fabric je platforma distribuovaných systémů. Tato platforma usn
 
 * Zřizování
 * Nasazení
-* Monitorování
+* Sledování
 * Upgrade/opravy
 * odstraňování
 
@@ -173,7 +173,7 @@ Azure nabízí několik způsobů použití kontejnerů ve vašich aplikacích.
   >
   > **Začínáme**: [použijte vlastní image docker pro App Service v systému Linux](../../app-service/quickstart-custom-container.md?pivots=platform-linux%253fpivots%253dplatform-linux).
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Ověřování
 
 Je velmi důležité nejen zjistit, kdo používá vaše aplikace, ale také k tomu, aby se zabránilo neoprávněnému přístupu k prostředkům. Azure nabízí několik způsobů, jak ověřit klienty aplikace.
 
@@ -191,7 +191,7 @@ Je velmi důležité nejen zjistit, kdo používá vaše aplikace, ale také k t
 
 Další informace o osvědčených postupech zabezpečení v Azure najdete v tématu [osvědčené postupy a vzory zabezpečení Azure](../../security/fundamentals/best-practices-and-patterns.md).
 
-### <a name="monitoring"></a>Monitorování
+### <a name="monitoring"></a>Sledování
 
 Když vaše aplikace běží v Azure, je potřeba monitorovat výkon, sledovat problémy a zjistit, jak zákazníci používají vaši aplikaci. Azure nabízí několik možností monitorování.
 
@@ -208,7 +208,7 @@ Když vaše aplikace běží v Azure, je potřeba monitorovat výkon, sledovat p
 Bez ohledu na to, jestli je zřizování virtuálních počítačů nebo publikování vašich webových aplikací pomocí průběžné integrace, se Azure integruje s většinou oblíbených DevOps nástrojů. Můžete pracovat s nástroji, které už máte, a maximalizovat stávající prostředí s podporou nástrojů jako:
 
 * Jenkins
-* GitHubu
+* GitHub
 * Puppet
 * Chef
 * TeamCity
@@ -248,7 +248,7 @@ Azure poskytuje dva způsoby, jak spravovat aplikace a služby z příkazového 
 
 -   [Azure PowerShell](/powershell/azure/): poskytuje sadu modulů s rutinami, které vám umožní spravovat prostředky Azure pomocí Windows PowerShellu.
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure Portal
 
 [Azure Portal](https://portal.azure.com) je webová aplikace. Pomocí Azure Portal můžete vytvářet, spravovat a odebírat prostředky a služby Azure. Obsahuje:
 

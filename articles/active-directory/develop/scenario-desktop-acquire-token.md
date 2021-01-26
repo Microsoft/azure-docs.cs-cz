@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/06/2021
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: a2048a509bdbe11c948ac8eb2daa6e78013c2fa5
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: c58f4a553073eb3ed062ef9ec2a66c8e4f40e57b
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753781"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785121"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Aplikace klasické pracovní plochy, která volá webová rozhraní API: získání tokenu
 
@@ -451,7 +451,7 @@ V MSAL.NET je nutné použít:
 AcquireTokenByIntegratedWindowsAuth(IEnumerable<string> scopes)
 ```
 
-Obvykle potřebujete pouze jeden parametr ( `scopes` ). V závislosti na tom, jak správce Windows zásady nastavil, nemusí mít aplikace na počítači s Windows povoleno vyhledávání přihlášeného uživatele. V takovém případě použijte druhou metodu `.WithUsername()` a předejte uživatelské jméno přihlášeného uživatele jako formát hlavního názvu uživatele (UPN), například `joe@contoso.com` . V .NET Core je k dispozici pouze přetížení přebírající uživatelské jméno, protože platforma .NET Core nemůže požádat o uživatelské jméno na operační systém.
+Obvykle potřebujete pouze jeden parametr ( `scopes` ). V závislosti na tom, jak správce Windows zásady nastavil, nemusí mít aplikace na počítači s Windows povoleno vyhledávání přihlášeného uživatele. V takovém případě použijte druhou metodu `.WithUsername()` a předejte uživatelské jméno přihlášeného uživatele jako formát hlavního názvu uživatele (UPN), například `joe@contoso.com` .
 
 Následující příklad prezentuje nejaktuálnější případ s vysvětlením druhu výjimek, které můžete získat a jejich zmírnění.
 

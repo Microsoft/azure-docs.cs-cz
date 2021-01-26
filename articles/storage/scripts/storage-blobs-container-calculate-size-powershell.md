@@ -1,7 +1,7 @@
 ---
 title: Výpočet velikosti kontejneru objektů BLOB pomocí prostředí PowerShell
 titleSuffix: Azure Storage
-description: Vypočítejte velikost kontejneru v úložišti objektů BLOB v Azure tím, že se naplní celková velikost všech objektů BLOB.
+description: Vypočítejte velikost kontejneru v Azure Blob Storage celkovým počtem jeho objektů BLOB.
 services: storage
 author: tamram
 ms.service: storage
@@ -11,16 +11,16 @@ ms.topic: sample
 ms.date: 12/04/2019
 ms.author: tamram
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: de275bcca1644750532809b35ae85d954d3cac6d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87ef18530c549396b7d8fe1ec4ff0e08cb8535e8
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89076901"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784271"
 ---
 # <a name="calculate-the-size-of-a-blob-container-with-powershell"></a>Výpočet velikosti kontejneru objektů BLOB pomocí prostředí PowerShell
 
-Tento skript vypočítá velikost kontejneru v úložišti objektů blob v Azure součtem velikostí jednotlivých objektů blob v kontejneru.
+Tento skript vypočítá velikost kontejneru v Azure Blob Storage tím, že se celková velikost objektů BLOB v kontejneru.
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 

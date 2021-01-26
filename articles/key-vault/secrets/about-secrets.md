@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 4ded48fe8f04d2cdba40650974fd5002d659e381
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 78e9c50cb0601f6be69ae61f3a8e02621c7dd808
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705264"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786035"
 ---
 # <a name="about-azure-key-vault-secrets"></a>Informace o Azure Key Vault tajných klíčích
 
@@ -84,15 +84,15 @@ Můžete zadat další metadata specifická pro aplikaci ve formě značek. Key 
 
 ## <a name="azure-storage-account-key-management"></a>Správa klíčů účtu Azure Storage
 
-Key Vault můžou spravovat klíče [účtu úložiště Azure](https://docs.microsoft.com/azure/storage/common/storage-account-overview) :
+Key Vault můžou spravovat klíče [účtu úložiště Azure](../../storage/common/storage-account-overview.md) :
 
 - Interně Key Vault možné vypsat (synchronizovat) klíče s účtem služby Azure Storage. 
 - Key Vault znovu vygeneruje (otáčí) klíče pravidelně.
 - Hodnoty klíče se nikdy nevrátí v reakci na volajícího.
 - Key Vault spravuje klíče účtů úložiště i klasických účtů úložiště.
 
-Další informace najdete tady:
-- [Přístupové klíče účtu úložiště](https://docs.microsoft.com/azure/storage/common/storage-account-keys-manage)
+Další informace naleznete v tématu:
+- [Přístupové klíče účtu úložiště](../../storage/common/storage-account-keys-manage.md)
 - [Správa klíčů účtu úložiště v Azure Key Vault](../secrets/overview-storage-keys.md))
 
 
@@ -133,5 +133,5 @@ Návody k řízení přístupu v Key Vault:
 - [Informace o klíčích, tajných kódech a certifikátech](../general/about-keys-secrets-certificates.md)
 - [Informace o klíčích](../keys/about-keys.md)
 - [Informace o certifikátech](../certificates/about-certificates.md)
-- [Zabezpečený přístup k trezoru klíčů](../general/secure-your-key-vault.md)
+- [Zabezpečení přístupu k trezoru klíčů](../general/secure-your-key-vault.md)
 - [Průvodce vývojáře pro službu Key Vault](../general/developers-guide.md)

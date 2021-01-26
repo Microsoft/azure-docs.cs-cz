@@ -12,14 +12,14 @@ ms.topic: overview
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 1/14/2020
+ms.date: 1/25/2021
 ms.author: allensu
-ms.openlocfilehash: e8d0afab14d02ffe16db535f173456b55ab53d69
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: d5d2f83ddb4f37e1379bb7d60a76ddc70d61f99a
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97860936"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785833"
 ---
 # <a name="what-is-azure-load-balancer"></a>Co je Azure Load Balancer?
 
@@ -56,7 +56,7 @@ Mezi klíčové scénáře, které můžete provádět pomocí Standard Load Bal
 
 - Povolí podporu pro **[Vyrovnávání zatížení](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)** **[IPv6](../virtual-network/ipv6-overview.md)**.
 
-- Standard Load Balancer poskytuje multidimenzionální metriky prostřednictvím [Azure monitor](../azure-monitor/overview.md).  Tyto metriky je možné filtrovat, seskupovat a rozdělit pro danou dimenzi.  Poskytují aktuální a historické poznatky o výkonu a stavu vaší služby.  Podporuje se taky Resource Health. Další podrobnosti najdete v **[diagnostice Standard Load Balancer](load-balancer-standard-diagnostics.md)** .
+- Standard Load Balancer poskytuje multidimenzionální metriky prostřednictvím [Azure monitor](../azure-monitor/overview.md).  Tyto metriky je možné filtrovat, seskupovat a rozdělit pro danou dimenzi.  Poskytují aktuální a historické poznatky o výkonu a stavu vaší služby. [Insights pro Azure Load Balancer] ( https://docs.microsoft.com/azure/load-balancer/load-balancer-insights) nabízí předkonfigurovaný řídicí panel s užitečnými vizualizacemi pro tyto metriky.  Podporuje se taky Resource Health. Další podrobnosti najdete v **[diagnostice Standard Load Balancer](load-balancer-standard-diagnostics.md)** .
 
 - Vyrovnávání zatížení služeb na **[několika portech, několika IP adresách nebo obojím](./load-balancer-multivip-overview.md)**.
 
@@ -75,7 +75,7 @@ Informace o cenách Standard Load Balancer najdete v tématu [Load Balancer ceny
 Load Balancer úrovně Basic se nabízí zdarma.
 Load Balancer najdete v tématu [SLA](https://aka.ms/lbsla). Základní Load Balancer nemá žádnou smlouvu SLA.
 
-## <a name="whats-new"></a>Co je nového?
+## <a name="whats-new"></a>Co je nového
 
 Přihlaste se k odběru informačního kanálu RSS a zobrazte nejnovější Azure Load Balancer aktualizace funkcí na stránce s [aktualizacemi Azure](https://azure.microsoft.com/updates/?category=networking&query=load%20balancer) .
 

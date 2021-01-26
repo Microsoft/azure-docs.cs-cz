@@ -4,12 +4,12 @@ description: Konfigurace certifikátů pro aplikaci pomocí modulu runtime Servi
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: pepogors
-ms.openlocfilehash: a97c8b8315fe3be405aed9c6570004afb8fafd1d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70f9cc38d84681f68c10882889214648a4dd2624
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86258673"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785562"
 ---
 # <a name="certificates-and-security-on-linux-clusters"></a>Certifikáty a zabezpečení v clusterech se systémem Linux
 
@@ -21,7 +21,7 @@ Service Fabric obvykle očekává, že se v adresáři */var/lib/sfcerts* v uzle
 
 U clusterů se systémem Linux Service Fabric očekává, že se certifikáty nacházejí jako soubor. pem, který obsahuje certifikát i privátní klíč, nebo jako soubor. CRT, který obsahuje certifikát a soubor. Key, který obsahuje soukromý klíč. Všechny soubory musí být ve formátu PEM. 
 
-Pokud certifikát nainstalujete z Azure Key Vault pomocí [Správce prostředků šablony](./service-fabric-cluster-creation-create-template.md) nebo příkazů [PowerShellu](/powershell/module/az.servicefabric/?view=azps-2.6.0) , certifikát se nainstaluje do správného formátu v adresáři */var/lib/sfcerts* na každém uzlu. Pokud certifikát nainstalujete pomocí jiné metody, musíte se ujistit, že je certifikát správně nainstalovaný na uzlech clusteru.
+Pokud certifikát nainstalujete z Azure Key Vault pomocí [Správce prostředků šablony](./service-fabric-cluster-creation-create-template.md) nebo příkazů [PowerShellu](/powershell/module/az.servicefabric/) , certifikát se nainstaluje do správného formátu v adresáři */var/lib/sfcerts* na každém uzlu. Pokud certifikát nainstalujete pomocí jiné metody, musíte se ujistit, že je certifikát správně nainstalovaný na uzlech clusteru.
 
 ## <a name="certificates-referenced-in-the-application-manifest"></a>Certifikáty, na které se odkazuje v manifestu aplikace
 
@@ -33,7 +33,7 @@ U některých služeb můžete nakonfigurovat certifikáty X. 509 v [ConfigPacka
 
 ### <a name="using-x509-securitycredentialstype"></a>Použití x509 SecurityCredentialsType
 
-Pomocí sad SDK pro .NET nebo Java můžete zadat **x509** pro **SecurityCredentialsType**. To odpovídá `X509Credentials` typu (.NET Java[.NET](/previous-versions/azure/reference/mt124925(v=azure.100)) / [Java](/java/api/system.fabric.x509credentials)) systému `SecurityCredentials` ([.NET](/previous-versions/azure/reference/mt124894(v=azure.100)) / [Java](/java/api/system.fabric.securitycredentials)).
+Pomocí sad SDK pro .NET nebo Java můžete zadat **x509** pro **SecurityCredentialsType**. To odpovídá `X509Credentials` typu (.NET Java[](/previous-versions/azure/reference/mt124925(v=azure.100)) / [](/java/api/system.fabric.x509credentials)) systému `SecurityCredentials` ([.NET](/previous-versions/azure/reference/mt124894(v=azure.100)) / [Java](/java/api/system.fabric.securitycredentials)).
 
 Odkaz **x509** vyhledá certifikát v úložišti certifikátů. Následující kód XML ukazuje parametry používané k určení umístění certifikátu:
 
@@ -64,7 +64,7 @@ Následující kód XML ukazuje oddíl **TransportSettings** na základě tohoto
 
 ### <a name="using-x509_2-securitycredentialstype"></a>Použití X509_2 SecurityCredentialsType
 
-Pomocí sady Java SDK můžete zadat **X509_2** pro **SecurityCredentialsType**. To odpovídá typu (Java `X509Credentials2` )[Java](/java/api/system.fabric.x509credentials2) `SecurityCredentials` ([Java](/java/api/system.fabric.securitycredentials)). 
+Pomocí sady Java SDK můžete zadat **X509_2** pro **SecurityCredentialsType**. To odpovídá typu (Java `X509Credentials2` )[](/java/api/system.fabric.x509credentials2) `SecurityCredentials` ([Java](/java/api/system.fabric.securitycredentials)). 
 
 Pomocí odkazu na **X509_2** určíte parametr cesty, takže můžete najít certifikát v jiném adresáři než */var/lib/sfcerts*.  Následující kód XML ukazuje parametry používané k určení umístění certifikátu: 
 

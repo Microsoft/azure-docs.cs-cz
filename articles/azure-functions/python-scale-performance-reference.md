@@ -4,12 +4,12 @@ description: Naučte se vyvíjet Azure Functions aplikace pomocí Pythonu, kter�
 ms.topic: article
 ms.date: 10/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: baa362f029678f266f154df912a9178a6626667d
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: e3bbdb8819062d45d071633e0208fb58a003da54
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935865"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786102"
 ---
 # <a name="improve-throughput-performance-of-python-apps-in-azure-functions"></a>Zvyšte výkon propustnosti aplikací v Pythonu v Azure Functions
 
@@ -22,10 +22,10 @@ Ve výchozím nastavení Azure Functions automaticky monitoruje zatížení apli
 
 Výchozí konfigurace jsou vhodné pro většinu Azure Functionsch aplikací. Můžete ale zvýšit výkon propustnosti vašich aplikací tím, že použijete konfigurace na základě vašeho profilu zatížení. Prvním krokem je pochopení typu úlohy, kterou používáte.
 
-|| Vstupně-výstupní úlohy vázané na vstup/výstup | Zatížení vázané na procesor |
-|--| -- | -- |
-|Vlastnosti aplikace Function App| <ul><li>Aplikace potřebuje zpracovat mnoho souběžných volání.</li> <li> Aplikace zpracovává velký počet vstupně-výstupních událostí, jako jsou síťová volání a čtení a zápisy na disk.</li> </ul>| <ul><li>Aplikace provádí dlouhotrvající výpočty, jako je například změna velikosti obrázku.</li> <li>Aplikace provádí transformaci dat.</li> </ul> |
-|Příklady| <ul><li>Webová rozhraní API</li><ul> | <ul><li>Zpracování dat</li><li> Odvození strojového učení</li><ul>|
+| Typ úlohy | Vlastnosti aplikace Function App       | Příklady                                          |
+| ------------- | ---------------------------------- | ------------------------------------------------- |
+| **Vstup/výstup – vázaný**     | • Aplikace potřebuje zpracovat mnoho souběžných volání.<br>• Aplikace zpracovává velký počet vstupně-výstupních událostí, jako jsou síťová volání a čtení a zápisy na disk. | • Webová rozhraní API                                          |
+| **Vázaný na procesor**     | • Aplikace používá dlouhotrvající výpočty, jako je například změna velikosti obrázku.<br>• Aplikace dělá transformaci dat.                                                | • Zpracování dat<br>• Odvození strojového učení<br> |
 
  
 Jelikož jsou úlohy reálného světa tvořeny většinou kombinace vstupně-výstupních operací a procesoru, měli byste aplikaci profilovat v rámci realistického produkčního zatížení.

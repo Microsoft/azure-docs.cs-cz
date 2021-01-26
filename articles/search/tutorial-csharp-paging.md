@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 01/26/2021
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: a08756a1e3153aa69bd0e79dc23e88d4bf211e5d
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: bad4bc4d0016b2898b315bfb9799dc8972be7b12
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91950682"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785866"
 ---
 # <a name="tutorial-add-paging-to-search-results-using-the-net-sdk"></a>Kurz: Přidání stránkování do výsledků hledání pomocí sady .NET SDK
 
@@ -25,7 +25,7 @@ V tomto kurzu získáte informace o těchto tématech:
 > * Rozšiřování aplikace pomocí číslovaného stránkování
 > * Rozšiřování aplikace pomocí nekonečné posouvání
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>Přehled
 
 V tomto kurzu se překrývá stránkovací systém do dříve vytvořeného projektu popsaného v kurzu [Vytvoření prvního vyhledávacího aplikace](tutorial-csharp-create-first-app.md) .
 
@@ -35,7 +35,7 @@ Verze kódu, který budete vyvíjet v tomto kurzu, najdete v následujících pr
 
 * [2b – přidat-nekonečné – Scroll (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/2b-add-infinite-scroll)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [1 – Basic-Search – projekt stránky (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/1-basic-search-page) . Tento projekt může být vlastní verze sestavená z předchozího kurzu nebo kopie z GitHubu.
 
@@ -304,7 +304,7 @@ Otevřete základní řešení pro stránku vyhledávání.
     }
     ```
 
-1. Metoda **RunQueryAsync** , představená v předchozí lekci, potřebuje úpravu k vyřešení chyby syntaxe. Pomocí polí **Skip**, **Size**a **IncludeTotalCount** třídy [**příznacích searchOptions jsou**](/dotnet/api/azure.search.documents.searchoptions) si vyžádáme jenom jednu stránku s výsledky, počínaje nastavením **Skip** . Pro naše zobrazení je také potřeba vypočítat stránkovací proměnné. Nahraďte celou metodu následujícím kódem.
+1. Metoda **RunQueryAsync** , představená v předchozí lekci, potřebuje úpravu k vyřešení chyby syntaxe. Pomocí polí **Skip**, **Size** a **IncludeTotalCount** třídy [**příznacích searchOptions jsou**](/dotnet/api/azure.search.documents.searchoptions) si vyžádáme jenom jednu stránku s výsledky, počínaje nastavením **Skip** . Pro naše zobrazení je také potřeba vypočítat stránkovací proměnné. Nahraďte celou metodu následujícím kódem.
 
     ```csharp
     private async Task<ActionResult> RunQueryAsync(SearchData model, int page, int leftMostPage)
@@ -439,9 +439,9 @@ Chcete-li implementovat nekonečné posouvání, začněte s projektem před př
 
 ### <a name="add-a-vertical-scroll-bar-to-the-view"></a>Přidat svislý posuvník do zobrazení
 
-1. Vyhledejte část souboru index. cshtml, který zobrazuje výsledky (začíná na ** @if (model! = null)**).
+1. Vyhledejte část souboru index. cshtml, který zobrazuje výsledky (začíná na **@if (model! = null)**).
 
-1. Nahraďte oddíl následujícím kódem. Nový oddíl ** &lt; div &gt; ** je okolo oblasti, která by se měla procházet, a přidá jak atribut **přetečení** , tak i **volání funkce pro posouvání s** názvem "scrolled ()", například.
+1. Nahraďte oddíl následujícím kódem. Nový oddíl **&lt; div &gt;** je okolo oblasti, která by se měla procházet, a přidá jak atribut **přetečení** , tak i **volání funkce pro posouvání s** názvem "scrolled ()", například.
 
     ```csharp
     @if (Model != null)
@@ -582,7 +582,7 @@ Existují pouze tři akce, které je třeba odeslat do kontroleru: první spušt
     }
     ```
 
-1. Pokud se zobrazí chyba syntaxe v ** &lt; řetězci &gt; seznamu**, přidejte následující direktivu **using** do hlavičky souboru kontroleru.
+1. Pokud se zobrazí chyba syntaxe v **&lt; řetězci &gt; seznamu**, přidejte následující direktivu **using** do hlavičky souboru kontroleru.
 
     ```csharp
     using System.Collections.Generic;
@@ -597,7 +597,7 @@ Nyní vyberte možnost **Spustit bez ladění** (nebo stiskněte klávesu F5).
     ![Nekonečná posouvání prostřednictvím "fondu" výsledků](./media/tutorial-csharp-create-first-app/azure-search-infinite-scroll.png)
 
     > [!Tip]
-    > Aby se zajistilo, že se na první stránce zobrazí posuvník, první stránka výsledků musí mírně překročit výšku oblasti, ve které se zobrazují. V našem příkladu má **box1** výšku 30 pixelů **. box2** má výšku 100 pixelů _a_ spodní okraj 24 pixelů. Každá položka tedy používá 154 pixelů. Tři položky budou zabírat 3 x 154 = 462 pixelů. Aby se zajistilo, že se zobrazí svislý posuvník, musí být výška na zobrazované oblasti nastavená tak, aby byla menší než 462 pixelů, i když 461 funguje. K tomuto problému dochází pouze na první stránce, poté, co se zobrazí posuvník. Řádek, který se má aktualizovat: ** &lt; div ID = "myDiv" Style = "width: 800px; Height: 450px; přetečení-y: Scroll;" proscroll = "scrolled ( &gt; )"**.
+    > Aby se zajistilo, že se na první stránce zobrazí posuvník, první stránka výsledků musí mírně překročit výšku oblasti, ve které se zobrazují. V našem příkladu má **box1** výšku 30 pixelů **. box2** má výšku 100 pixelů _a_ spodní okraj 24 pixelů. Každá položka tedy používá 154 pixelů. Tři položky budou zabírat 3 x 154 = 462 pixelů. Aby se zajistilo, že se zobrazí svislý posuvník, musí být výška na zobrazované oblasti nastavená tak, aby byla menší než 462 pixelů, i když 461 funguje. K tomuto problému dochází pouze na první stránce, poté, co se zobrazí posuvník. Řádek, který se má aktualizovat: **&lt; div ID = "myDiv" Style = "width: 800px; Height: 450px; přetečení-y: Scroll;" proscroll = "scrolled ( &gt; )"**.
 
 1. Posuňte se dolů k dolnímu okraji výsledků. Všimněte si, že všechny informace jsou nyní na jedné stránce zobrazení. Můžete se přesměrovat zpět na začátek, aniž by se aktivovala žádná volání serveru.
 

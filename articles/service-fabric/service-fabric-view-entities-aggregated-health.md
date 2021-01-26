@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: gwallace
 ms.custom: devx-track-csharp
-ms.openlocfilehash: eeb2fd94e6b98bc9d89be22501406db9a8ba7773
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7127d9906cfe1ba87241bd3810a9567e77bf0391
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89013159"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785494"
 ---
 # <a name="view-service-fabric-health-reports"></a>Zobrazit Service Fabric sestavy o stavu
 Azure Service Fabric zavádí [model stavu](service-fabric-health-introduction.md) s entitami o stavu, na kterých mohou systémové komponenty a sledovací zařízení nahlásit místní podmínky, které monitorují. [Health Store](service-fabric-health-introduction.md#health-store) agreguje všechna data o stavu, abyste zjistili, jestli jsou entity v pořádku.
@@ -37,7 +37,7 @@ K předvedení těchto možností použijte místní cluster s pěti uzly a [apl
 ## <a name="health-in-service-fabric-explorer"></a>Stav v Service Fabric Explorer
 Service Fabric Explorer poskytuje vizuální zobrazení clusteru. Na obrázku níže vidíte, že:
 
-* **Prostředky infrastruktury aplikace:/WORDCOUNT** jsou červené (v případě chyby), protože má událost Error hlášenou **MyWatchdog** pro **dostupnost**vlastnosti.
+* **Prostředky infrastruktury aplikace:/WORDCOUNT** jsou červené (v případě chyby), protože má událost Error hlášenou **MyWatchdog** pro **dostupnost** vlastnosti.
 * Jedna ze služeb **Fabric:/WORDCOUNT/WordCountService** je žlutá (v upozornění). Služba je nakonfigurovaná se sedmi replikami a cluster má pět uzlů, takže nejde umístit dvě repliky. I když tady není zobrazený, oddíl služby je žlutý z důvodu systémové sestavy `System.FM` , kterou říká `Partition is below target replica or instance count` . Žlutý oddíl spustí žlutou službu.
 * Cluster je červený z důvodu červené aplikace.
 
@@ -56,7 +56,7 @@ Zobrazení clusteru s Service Fabric Explorer:
 >
 
 ## <a name="health-queries"></a>Dotazy na stav
-Service Fabric zveřejňuje dotazy na stav pro každý z podporovaných [typů entit](service-fabric-health-introduction.md#health-entities-and-hierarchy). K nim lze přistupovat prostřednictvím rozhraní API pomocí metod na [FabricClient. HealthManager](/dotnet/api/system.fabric.fabricclient.healthmanager?view=azure-dotnet), rutin PowerShellu a REST. Tyto dotazy vrátí kompletní informace o stavu o entitě: agregovaný stav, události stavu entity, podřízené stavy (Pokud je k dispozici), nestavová hodnocení (Pokud entita není v pořádku) a údaje o podřízeném stavu (Pokud je k dispozici).
+Service Fabric zveřejňuje dotazy na stav pro každý z podporovaných [typů entit](service-fabric-health-introduction.md#health-entities-and-hierarchy). K nim lze přistupovat prostřednictvím rozhraní API pomocí metod na [FabricClient. HealthManager](/dotnet/api/system.fabric.fabricclient.healthmanager), rutin PowerShellu a REST. Tyto dotazy vrátí kompletní informace o stavu o entitě: agregovaný stav, události stavu entity, podřízené stavy (Pokud je k dispozici), nestavová hodnocení (Pokud entita není v pořádku) a údaje o podřízeném stavu (Pokud je k dispozici).
 
 > [!NOTE]
 > Entita Health se vrátí, když je plně naplněna v Health Store. Entita musí být aktivní (neodstraněno) a mít systémovou sestavu. Jeho nadřazené entity v řetězci hierarchie musí mít také systémové sestavy. Pokud některá z těchto podmínek není splněná, dotazy na stav vrátí [FabricException](/dotnet/api/system.fabric.fabricexception) s [FabricErrorCode](/dotnet/api/system.fabric.fabricerrorcode) `FabricHealthEntityNotFound` , který ukazuje, proč se entita nevrátí.
@@ -128,7 +128,7 @@ ClusterHealth clusterHealth = await fabricClient.HealthManager.GetClusterHealthA
 ```
 
 ### <a name="powershell"></a>PowerShell
-Rutina pro získání stavu clusteru je [Get-ServiceFabricClusterHealth](/powershell/module/servicefabric/get-servicefabricclusterhealth). Nejdřív se připojte ke clusteru pomocí rutiny [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) .
+Rutina pro získání stavu clusteru je [Get-ServiceFabricClusterHealth](/powershell/module/servicefabric/get-servicefabricclusterhealth). Nejdřív se připojte ke clusteru pomocí rutiny [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster) .
 
 Stav clusteru je pět uzlů, systémová aplikace a Fabric:/WordCount nakonfigurovaný tak, jak je popsáno.
 
@@ -257,7 +257,7 @@ NodeHealth nodeHealth = await fabricClient.HealthManager.GetNodeHealthAsync(quer
 ```
 
 ### <a name="powershell"></a>PowerShell
-Rutina pro získání stavu uzlu je [Get-ServiceFabricNodeHealth](/powershell/module/servicefabric/get-servicefabricnodehealth). Nejdřív se připojte ke clusteru pomocí rutiny [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) .
+Rutina pro získání stavu uzlu je [Get-ServiceFabricNodeHealth](/powershell/module/servicefabric/get-servicefabricnodehealth). Nejdřív se připojte ke clusteru pomocí rutiny [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster) .
 Následující rutina Získá stav uzlu pomocí výchozích zásad stavu:
 
 ```powershell
@@ -343,7 +343,7 @@ ApplicationHealth applicationHealth = await fabricClient.HealthManager.GetApplic
 ```
 
 ### <a name="powershell"></a>PowerShell
-Rutina pro získání stavu aplikace je [Get-ServiceFabricApplicationHealth](/powershell/module/servicefabric/get-servicefabricapplicationhealth?view=azureservicefabricps). Nejdřív se připojte ke clusteru pomocí rutiny [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) .
+Rutina pro získání stavu aplikace je [Get-ServiceFabricApplicationHealth](/powershell/module/servicefabric/get-servicefabricapplicationhealth). Nejdřív se připojte ke clusteru pomocí rutiny [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster) .
 
 Následující rutina vrátí stav aplikace **Fabric:/WORDCOUNT** :
 
@@ -473,7 +473,7 @@ ServiceHealth serviceHealth = await fabricClient.HealthManager.GetServiceHealthA
 ```
 
 ### <a name="powershell"></a>PowerShell
-Rutina pro získání stavu služby je [Get-ServiceFabricServiceHealth](/powershell/module/servicefabric/get-servicefabricservicehealth). Nejdřív se připojte ke clusteru pomocí rutiny [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) .
+Rutina pro získání stavu služby je [Get-ServiceFabricServiceHealth](/powershell/module/servicefabric/get-servicefabricservicehealth). Nejdřív se připojte ke clusteru pomocí rutiny [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster) .
 
 Následující rutina Získá stav služby pomocí výchozích zásad stavu:
 
@@ -531,7 +531,7 @@ PartitionHealth partitionHealth = await fabricClient.HealthManager.GetPartitionH
 ```
 
 ### <a name="powershell"></a>PowerShell
-Rutina pro získání stavu oddílu je [Get-ServiceFabricPartitionHealth](/powershell/module/servicefabric/get-servicefabricpartitionhealth). Nejdřív se připojte ke clusteru pomocí rutiny [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) .
+Rutina pro získání stavu oddílu je [Get-ServiceFabricPartitionHealth](/powershell/module/servicefabric/get-servicefabricpartitionhealth). Nejdřív se připojte ke clusteru pomocí rutiny [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster) .
 
 Následující rutina Získá stav pro všechny oddíly služby **Fabric:/WORDCOUNT/WordCountService** a vyfiltruje stav repliky:
 
@@ -622,7 +622,7 @@ ReplicaHealth replicaHealth = await fabricClient.HealthManager.GetReplicaHealthA
 ```
 
 ### <a name="powershell"></a>PowerShell
-Rutina pro získání stavu repliky je [Get-ServiceFabricReplicaHealth](/powershell/module/servicefabric/get-servicefabricreplicahealth). Nejdřív se připojte ke clusteru pomocí rutiny [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) .
+Rutina pro získání stavu repliky je [Get-ServiceFabricReplicaHealth](/powershell/module/servicefabric/get-servicefabricreplicahealth). Nejdřív se připojte ke clusteru pomocí rutiny [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster) .
 
 Následující rutina načte stav primární repliky pro všechny oddíly služby:
 
@@ -667,7 +667,7 @@ DeployedApplicationHealth health = await fabricClient.HealthManager.GetDeployedA
 ```
 
 ### <a name="powershell"></a>PowerShell
-Rutina pro získání stavu nasazené aplikace je [Get-ServiceFabricDeployedApplicationHealth](/powershell/module/servicefabric/get-servicefabricdeployedapplicationhealth?view=azureservicefabricps). Nejdřív se připojte ke clusteru pomocí rutiny [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) . Chcete-li zjistit, kde je aplikace nasazena, spusťte příkaz [Get-ServiceFabricApplicationHealth](/powershell/module/servicefabric/get-servicefabricapplicationhealth?view=azureservicefabricps) a podívejte se na podřízené objekty nasazené aplikace.
+Rutina pro získání stavu nasazené aplikace je [Get-ServiceFabricDeployedApplicationHealth](/powershell/module/servicefabric/get-servicefabricdeployedapplicationhealth). Nejdřív se připojte ke clusteru pomocí rutiny [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster) . Chcete-li zjistit, kde je aplikace nasazena, spusťte příkaz [Get-ServiceFabricApplicationHealth](/powershell/module/servicefabric/get-servicefabricapplicationhealth) a podívejte se na podřízené objekty nasazené aplikace.
 
 Následující rutina Získá stav aplikace **Fabric:/WORDCOUNT** nasazené na **_Node_2**.
 
@@ -725,7 +725,7 @@ DeployedServicePackageHealth health = await fabricClient.HealthManager.GetDeploy
 ```
 
 ### <a name="powershell"></a>PowerShell
-Rutina pro získání stavu balíčku nasazené služby je [Get-ServiceFabricDeployedServicePackageHealth](/powershell/module/servicefabric/get-servicefabricdeployedservicepackagehealth). Nejdřív se připojte ke clusteru pomocí rutiny [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) . Chcete-li zjistit, kde je aplikace nasazena, spusťte příkaz [Get-ServiceFabricApplicationHealth](/powershell/module/servicefabric/get-servicefabricapplicationhealth?view=azureservicefabricps) a podívejte se na nasazené aplikace. Pokud chcete zjistit, které balíčky služeb jsou v aplikaci, podívejte se na nasazené podřízené balíčky služby ve výstupu [Get-ServiceFabricDeployedApplicationHealth](/powershell/module/servicefabric/get-servicefabricdeployedapplicationhealth?view=azureservicefabricps) .
+Rutina pro získání stavu balíčku nasazené služby je [Get-ServiceFabricDeployedServicePackageHealth](/powershell/module/servicefabric/get-servicefabricdeployedservicepackagehealth). Nejdřív se připojte ke clusteru pomocí rutiny [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster) . Chcete-li zjistit, kde je aplikace nasazena, spusťte příkaz [Get-ServiceFabricApplicationHealth](/powershell/module/servicefabric/get-servicefabricapplicationhealth) a podívejte se na nasazené aplikace. Pokud chcete zjistit, které balíčky služeb jsou v aplikaci, podívejte se na nasazené podřízené balíčky služby ve výstupu [Get-ServiceFabricDeployedApplicationHealth](/powershell/module/servicefabric/get-servicefabricdeployedapplicationhealth) .
 
 Následující rutina načte stav balíčku služby **WordCountServicePkg** v aplikaci **Fabric:/WORDCOUNT** nasazené na **_Node_2**. Entita má **systém. hostování** sestav pro úspěšnou aktivaci Service-Package a vstupní bod a úspěšnou registraci typu služby.
 
@@ -858,7 +858,7 @@ var result = await fabricClient.HealthManager.GetClusterHealthChunkAsync(queryDe
 ```
 
 ### <a name="powershell"></a>PowerShell
-Rutina pro získání stavu clusteru je [Get-ServiceFabricClusterChunkHealth](/powershell/module/servicefabric/get-servicefabricclusterhealthchunk). Nejdřív se připojte ke clusteru pomocí rutiny [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) .
+Rutina pro získání stavu clusteru je [Get-ServiceFabricClusterChunkHealth](/powershell/module/servicefabric/get-servicefabricclusterhealthchunk). Nejdřív se připojte ke clusteru pomocí rutiny [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster) .
 
 Následující kód získá uzly pouze v případě chyby s výjimkou konkrétního uzlu, který by měl být vždy vrácen.
 

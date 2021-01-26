@@ -8,18 +8,18 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: d749c901b21651eec7b3e25ce111fb107e09b754
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 5c414a11085a6a37dee6be522dcf513e8990e5e2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883346"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786347"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Poznámky k verzi Azure HDInsight
 
 Tento článek poskytuje informace **o nejnovějších aktualizacích vydaných** verzí Azure HDInsight. Informace o dřívějších verzích najdete v tématu [archiv zpráv k vydání verze HDInsight](hdinsight-release-notes-archive.md).
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 Azure HDInsight je jednou z nejoblíbenějších služeb pro podnikové zákazníky, kteří se týkají Open Source analýz v Azure.
 
@@ -48,7 +48,7 @@ Od listopadu 16 2020 bude HDInsight zablokuje novým zákazníkům vytváření 
 
 ## <a name="behavior-changes"></a>Změny chování
 ### <a name="add-nsg-rule-checking-before-scaling-operation"></a>Přidat kontrolu pravidel NSG před operací škálování
-HDInsight přidal skupiny zabezpečení sítě (skupin zabezpečení sítě) a uživatelsky definované trasy (udr), která má kontrolu nad operací škálování. Stejné ověřování se provádí pro škálování clusteru Kromě vytváření clusteru. Toto ověření pomáhá zabránit nepředvídatelným chybám. Pokud ověření neprojde, škálování se nezdařilo. Další informace o tom, jak správně nakonfigurovat skupin zabezpečení sítě a udr, najdete v tématu věnovaném [IP adresám správy HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses).
+HDInsight přidal skupiny zabezpečení sítě (skupin zabezpečení sítě) a uživatelsky definované trasy (udr), která má kontrolu nad operací škálování. Stejné ověřování se provádí pro škálování clusteru Kromě vytváření clusteru. Toto ověření pomáhá zabránit nepředvídatelným chybám. Pokud ověření neprojde, škálování se nezdařilo. Další informace o tom, jak správně nakonfigurovat skupin zabezpečení sítě a udr, najdete v tématu věnovaném [IP adresám správy HDInsight](./hdinsight-management-ip-addresses.md).
 
 ## <a name="upcoming-changes"></a>Nadcházející změny
 V nadcházejících verzích dojde k následujícím změnám.
@@ -72,7 +72,7 @@ HDInsight nadále zdokonaluje spolehlivost a výkon clusteru.
 Pro tuto verzi se nezměnila žádná verze součásti. V [tomto dokumentu](./hdinsight-component-versioning.md)najdete aktuální verze komponent pro HDInsight 4,0 a HDInsight 3,6.
 
 ## <a name="known-issues"></a>Známé problémy
-### <a name="prevent-hdinsight-cluster-vms-from-rebooting-periodically"></a>Pravidelně Zabraňte restartování virtuálních počítačů clusteru HDInsight
+### <a name="prevent-hdinsight-cluster-vms-from-rebooting-periodically"></a>Znemožnění pravidelného restartování virtuálních počítačů clusteru HDInsight
 
 Od poloviny listopadu 2020 jste si pravděpodobně všimli, že virtuální počítače clusteru HDInsight se pravidelně restartují. Příčinou může být:
 
@@ -84,4 +84,3 @@ HDInsight nasazuje opravy a aplikuje opravu pro všechny spuštěné clustery pr
 https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/replace_cacert_script.sh
 https://healingscriptssa.blob.core.windows.net/healingscripts/ChangeOOMPolicyAndApplyLatestConfigForClamav.sh
 ```
-

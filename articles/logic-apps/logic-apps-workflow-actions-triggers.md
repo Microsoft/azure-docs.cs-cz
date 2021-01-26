@@ -7,12 +7,12 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 7423f8d8f2a566801048457ad5f5c44f3c1097ec
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: ea4a4a47e91e88c00ca8a4e886d0372a24482907
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920058"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784304"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Referenční příručka schématu pro typy triggerů a akcí v Azure Logic Apps
 
@@ -62,7 +62,7 @@ Triggery mají tyto prvky nejvyšší úrovně, i když jsou některé voliteln�
 |-------|------|-------------| 
 | <*pole s podmínkami*> | Pole | Pole, které obsahuje jednu nebo více [podmínek](#trigger-conditions) , které určují, zda má být pracovní postup spuštěn. K dispozici pouze pro aktivační události. | 
 | <*Runtime – konfigurace – možnosti*> | JSON – objekt | Můžete změnit chování spuštění triggeru nastavením `runtimeConfiguration` vlastností. Další informace najdete v tématu [nastavení konfigurace modulu runtime](#runtime-config-options). | 
-| <*splitOn – výraz*> | Řetězec | U triggerů, které vracejí pole, můžete zadat výraz, který [rozdělí nebo oddělí *debatches*](#split-on-debatch) položky pole na více instancí pracovního postupu pro zpracování. | 
+| <*splitOn – výraz*> | Řetězec | U triggerů, které vracejí pole, můžete zadat výraz, který [rozdělí nebo oddělí  ](#split-on-debatch) položky pole na více instancí pracovního postupu pro zpracování. | 
 | <*operace – možnost*> | Řetězec | Výchozí chování můžete změnit nastavením `operationOptions` Vlastnosti. Další informace najdete v tématu [Možnosti operací](#operation-options). | 
 |||| 
 
@@ -340,8 +340,8 @@ Aby bylo možné v aplikaci logiky dobře fungovat, musí koncový bod splňovat
 | Vlastnost | Povinné | Popis |
 |----------|----------|-------------|
 | Stavový kód | Ano | Stavový kód "200 OK" spustí spuštění. Jakýkoli jiný stavový kód nespustí běh. |
-| Záhlaví opakování – za | Ne | Počet sekund do opětovného dotazování koncového bodu aplikace logiky |
-| Hlavička umístění | Ne | Adresa URL, která má být volána při dalším intervalu dotazování. Pokud není zadaný, použije se původní adresa URL. |
+| Záhlaví opakování – za | No | Počet sekund do opětovného dotazování koncového bodu aplikace logiky |
+| Hlavička umístění | No | Adresa URL, která má být volána při dalším intervalu dotazování. Pokud není zadaný, použije se původní adresa URL. |
 |||| 
 
 *Příklad chování pro různé požadavky*
@@ -819,9 +819,9 @@ Tady jsou některé běžně používané typy akcí:
 
 | Typ akce | Popis | 
 |-------------|-------------| 
-| [**Vytvořit**](#compose-action) | Vytvoří jeden výstup ze vstupů, které mohou mít různé typy. | 
+| [**Sestavit**](#compose-action) | Vytvoří jeden výstup ze vstupů, které mohou mít různé typy. | 
 | [**Spustit JavaScriptový kód**](#run-javascript-code) | Spustí fragmenty kódu JavaScriptu, které se vejdou do konkrétních kritérií. Požadavky na kód a další informace naleznete v tématu [Přidání a spuštění fragmentů kódu s vloženým kódem](../logic-apps/logic-apps-add-run-inline-code.md). |
-| [**Funkce**](#function-action) | Zavolá funkci Azure Function. | 
+| [**Slouží**](#function-action) | Zavolá funkci Azure Function. | 
 | [**HTTP**](#http-action) | Volá koncový bod HTTP. | 
 | [**Zúčastnit**](#join-action) | Vytvoří řetězec ze všech položek v poli a oddělí tyto položky zadaným znakem oddělovače. | 
 | [**Analyzovat JSON**](#parse-json-action) | Vytvoří uživatelsky přívětivé tokeny z vlastností v obsahu JSON. Pak můžete odkazovat na tyto vlastnosti zahrnutím tokenů do aplikace logiky. | 
@@ -829,7 +829,7 @@ Tady jsou některé běžně používané typy akcí:
 | [**Odpověď**](#response-action) | Vytvoří odpověď na příchozí volání nebo požadavek. | 
 | [**Vyberte**](#select-action) | Vytvoří pole s objekty JSON transformací položek z jiného pole na základě zadané mapy. | 
 | [**Tabulka**](#table-action) | Vytvoří z pole tabulku CSV nebo HTML. | 
-| [**Terminate (Ukončení)**](#terminate-action) | Zastaví aktivně běžící pracovní postup. | 
+| [**Ruší**](#terminate-action) | Zastaví aktivně běžící pracovní postup. | 
 | [**Počkej**](#wait-action) | Pozastaví pracovní postup na určitou dobu nebo do zadaného data a času. | 
 | [**Pracovní postup**](#workflow-action) | Vnoření pracovního postupu do jiného pracovního postupu. | 
 ||| 
@@ -854,7 +854,7 @@ Tyto akce vám pomůžou řídit spouštění pracovních postupů a zahrnovat d
 |-------------|-------------| 
 | [**ForEach**](#foreach-action) | Spustí stejné akce ve smyčce pro každou položku v poli. | 
 | [**Přestože**](#if-action) | Spustí akce na základě toho, jestli je zadaná podmínka pravdivá, nebo false. | 
-| [**Rozsah**](#scope-action) | Spustí akce založené na stavu skupiny ze sady akcí. | 
+| [**Scope**](#scope-action) | Spustí akce založené na stavu skupiny ze sady akcí. | 
 | [**Přepínač**](#switch-action) | Spustí akce uspořádané do případů, kdy hodnoty z výrazů, objektů nebo tokenů odpovídají hodnotám určeným každým případem. | 
 | [**Vrátí**](#until-action) | Spustí akce ve smyčce, dokud není zadaná podmínka pravdivá. | 
 |||  
@@ -1126,7 +1126,7 @@ Kód extrahuje e-mailové adresy z vlastnosti triggeru `Body` a vrátí adresy s
 
 ### <a name="function-action"></a>Akce funkce
 
-Tato akce volá dříve vytvořenou [funkci Azure Functions](../azure-functions/functions-create-first-azure-function.md).
+Tato akce volá dříve vytvořenou [funkci Azure Functions](../azure-functions/functions-get-started.md).
 
 ```json
 "<Azure-function-name>": {

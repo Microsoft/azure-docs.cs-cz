@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/25/2021
 ms.author: memildin
-ms.openlocfilehash: 349f0b72ad7f3cb98e8f4ae9105efa9718f0b11b
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: ee9a20d3e5bb6974676d6d7a8285a56247756f64
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98752261"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784939"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Co je nového v Azure Security Center?
 
@@ -39,6 +39,7 @@ Aktualizace v lednu zahrnují:
 - [Posouzení ohrožení zabezpečení pro místní a více cloudových počítačů se uvolní pro obecnou dostupnost (GA).](#vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-released-for-general-availability-ga)
 - [Ve verzi Preview je teď k dispozici zabezpečené skóre pro skupiny pro správu.](#secure-score-for-management-groups-is-now-available-in-preview)
 - [Pro obecnou dostupnost se vydává rozhraní API pro stanovení skóre zabezpečení (GA).](#secure-score-api-is-released-for-general-availability-ga)
+- [Dangling ochrany DNS do Azure Defenderu pro App Service](#dangling-dns-protections-added-to-azure-defender-for-app-service)
 - [Vícenásobné cloudové konektory se uvolňují pro obecnou dostupnost (GA).](#multi-cloud-connectors-are-released-for-general-availability-ga)
 - [Vyloučit celá doporučení ze zabezpečeného skóre pro předplatná a skupiny pro správu](#exempt-entire-recommendations-from-your-secure-score-for-subscriptions-and-management-groups)
 - [Uživatelé teď můžou vyžádat viditelnost v rámci tenanta od svého globálního správce.](#users-can-now-request-tenant-wide-visibility-from-their-global-administrator)
@@ -94,7 +95,7 @@ Hlavní možnosti:
 
 Stránka bezpečné skóre nyní zobrazuje agregovaná zabezpečená skóre pro skupiny pro správu kromě úrovně předplatného. Takže teď můžete zobrazit seznam skupin pro správu ve vaší organizaci a skóre pro každou skupinu pro správu.
 
-:::image type="content" source="media/secure-score-security-controls/secure-score-management-groups.png" alt-text="Zobrazuje se zabezpečená skóre pro skupiny pro správu.":::
+:::image type="content" source="media/secure-score-security-controls/secure-score-management-groups.png" alt-text="Zobrazení bezpečných skóre pro skupiny pro správu.":::
 
 Přečtěte si další informace o [zabezpečeném řízení hodnocení a zabezpečení v Azure Security Center](secure-score-security-controls.md).
 
@@ -107,13 +108,28 @@ Příklady externích nástrojů, které jsou dostupné s rozhraním API pro zab
 Přečtěte si další informace o [zabezpečeném řízení hodnocení a zabezpečení v Azure Security Center](secure-score-security-controls.md).
 
 
+### <a name="dangling-dns-protections-added-to-azure-defender-for-app-service"></a>Dangling ochrany DNS do Azure Defenderu pro App Service
+
+Převzetí subdomény jsou společnou vysoce závažnou hrozbou pro organizace. K převzetí subdomény může dojít, když máte záznam DNS, který odkazuje na oddaný Web. Tyto záznamy DNS se také označují jako položky DNS dangling. Záznamy CNAME jsou pro tuto hrozbu obzvláště zranitelné. 
+
+Převzetí subdomény umožňuje aktérům hrozeb přesměrovat provoz určený pro doménu organizace na lokalitu, která provádí škodlivou aktivitu.
+
+Azure Defender pro App Service nyní detekuje položky DNS dangling při vyřazení webu z provozu App Service. To je okamžik, kdy položka DNS odkazuje na neexistující prostředek a váš web je zranitelný při převzetí subdoménou. Tyto ochrany jsou dostupné bez ohledu na to, jestli jsou vaše domény spravované pomocí Azure DNS nebo externího registrátora domény a platí pro App Service ve Windows i App Service v systému Linux.
+
+Další informace:
+
+- [Tabulka referenčních informací o výstrahách App Service](alerts-reference.md#alerts-azureappserv) – obsahuje dvě nové výstrahy Azure Defenderu, které se aktivují, když se zjistí položka DNS dangling.
+- [Zabránit záznamům DNS v dangling a vyhnout se převzetí subdomény](../security/fundamentals/subdomain-takeover.md) – Přečtěte si o hrozbách převzetí subdomény a aspektu DNS dangling.
+- [Seznámení s Azure Defenderem pro App Service](defender-for-app-service-introduction.md)
+
+
 ### <a name="multi-cloud-connectors-are-released-for-general-availability-ga"></a>Vícenásobné cloudové konektory se uvolňují pro obecnou dostupnost (GA).
 
 Cloudové úlohy běžně pokrývá několik cloudových platforem, ale cloudové služby zabezpečení musí provádět stejné.
 
 Azure Security Center chrání úlohy v Azure, Amazon Web Services (AWS) a Google Cloud Platform (GCP).
 
-Připojení účtů AWS nebo GCP integruje své nativní nástroje zabezpečení, jako je AWS Security Center a GCP Security Center do Azure Security Center.
+Připojení účtů AWS nebo GCP integruje své nativní nástroje zabezpečení jako AWS Security Center a GCP Security Center do Azure Security Center.
 
 Tato možnost znamená, že Security Center zajišťuje viditelnost a ochranu ve všech hlavních cloudových prostředích. Některé z výhod této integrace:
 
@@ -153,7 +169,7 @@ Další informace získáte v [informacích o výjimkách prostředků a doporu�
 
 ### <a name="users-can-now-request-tenant-wide-visibility-from-their-global-administrator"></a>Uživatelé teď můžou vyžádat viditelnost v rámci tenanta od svého globálního správce.
 
-Pokud uživatel nemá oprávnění k zobrazení Security Centerch dat, uvidí teď oprávnění odkaz na požadavek od globálního správce organizace. Požadavek zahrnuje roli, kterou chcete, a odůvodnění, proč je to nezbytné.
+Pokud uživatel nemá oprávnění k zobrazení Security Center dat, uvidí teď odkaz na žádost o oprávnění od globálního správce organizace. Požadavek zahrnuje roli, kterou chcete, a odůvodnění, proč je to nezbytné.
 
 :::image type="content" source="media/security-center-management-groups/request-tenant-permissions.png" alt-text="Banner s informující uživatele, který může požádat o oprávnění na úrovni tenanta.":::
 
@@ -389,7 +405,7 @@ Aktualizace v listopadu zahrnují:
 - [Seznam doporučení nyní obsahuje filtry](#recommendations-list-now-includes-filters)
 - [Vylepšené a rozšířené prostředí pro Automatické zřizování](#auto-provisioning-experience-improved-and-expanded)
 - [Pro průběžný export je teď dostupné zabezpečené skóre (Preview).](#secure-score-is-now-available-in-continuous-export-preview)
-- ["Na vaše počítače by se měly nainstalovat aktualizace systému." teď obsahuje doporučení pro dílčí doporučení](#system-updates-should-be-installed-on-your-machines-recommendation-now-includes-sub-recommendations)
+- ["Na vaše počítače by se měly nainstalovat aktualizace systému." teď obsahuje doporučení](#system-updates-should-be-installed-on-your-machines-recommendation-now-includes-subrecommendations)
 - [Stránka správy zásad v Azure Portal nyní zobrazuje stav přiřazení výchozích zásad](#policy-management-page-in-the-azure-portal-now-shows-status-of-default-policy-assignments)
 
 ### <a name="29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>29 doporučení verze Preview pro zvýšení pokrytí srovnávacích testů zabezpečení Azure
@@ -468,13 +484,13 @@ Díky průběžnému exportu zabezpečeného skóre můžete streamovat změny s
 Přečtěte si další informace o [průběžném exportu Security Center dat](continuous-export.md).
 
 
-### <a name="system-updates-should-be-installed-on-your-machines-recommendation-now-includes-sub-recommendations"></a>"Na vaše počítače by se měly nainstalovat aktualizace systému." teď obsahuje doporučení pro dílčí doporučení
+### <a name="system-updates-should-be-installed-on-your-machines-recommendation-now-includes-subrecommendations"></a>"Na vaše počítače by se měly nainstalovat aktualizace systému." teď obsahuje doporučení
 
-**Aktualizace systému by se měly nainstalovat na vaše doporučení vašich počítačů** . Nová verze zahrnuje dílčí doporučení pro všechny chybějící aktualizace a přináší následující vylepšení:
+**Aktualizace systému by se měly nainstalovat na vaše doporučení vašich počítačů** . Nová verze zahrnuje poddoporučení pro každou chybějící aktualizaci a přináší následující vylepšení:
 
 - Přepracované prostředí na Azure Security Center stránkách Azure Portal. Stránka s podrobnostmi o doporučení pro **aktualizace systému by měla být nainstalovaná na vašich počítačích** obsahuje seznam zjištění, jak je uvedeno níže. Když vyberete jedno hledání, otevře se podokno podrobností s odkazem na informace o opravách a seznam ovlivněných prostředků.
 
-    :::image type="content" source="./media/upcoming-changes/system-updates-should-be-installed-subassessment.png" alt-text="Otevře se jedno z dílčích doporučení v prostředí portálu pro aktualizované doporučení.":::
+    :::image type="content" source="./media/upcoming-changes/system-updates-should-be-installed-subassessment.png" alt-text="Pro aktualizované doporučení se otevře jedno z doporučení v prostředí portálu.":::
 
 - Obohacená data pro doporučení z Azure Resource graphu (ARG). ARG je služba Azure, která je navržená tak, aby poskytovala efektivní průzkum prostředků. ARG můžete použít k dotazování škálování v rámci dané sady předplatných, abyste mohli efektivně řídit vaše prostředí. 
 
@@ -826,7 +842,7 @@ Byla vylepšena následující doporučení zabezpečení související se skupi
 
 Doporučení pro verzi Preview "pod zásadou zabezpečení by se měly definovat na Kubernetes Services", jak je popsáno v dokumentaci ke [službě Azure Kubernetes](../aks/use-pod-security-policies.md) .
 
-Funkce zásady zabezpečení pod (Preview) je nastavena pro vyřazení a nebude již k dispozici po 15. říjnu 2020 ve prospěch Azure Policy pro AKS.
+Funkce zásady zabezpečení pod (Preview) je nastavená pro vyřazení a nebude už dostupná po 15. říjnu 2020 ve prospěch Azure Policy pro AKS.
 
 Po použití zásady zabezpečení (Preview) je zastaralá. tuto funkci je třeba zakázat na všech stávajících clusterech pomocí zastaralé funkce, aby se prováděly budoucí upgrady clusteru a zůstaly v rámci podpory Azure.
 
@@ -973,4 +989,4 @@ Aby se zajistilo, že Kubernetes úlohy jsou zabezpečené ve výchozím nastave
 Tyto zásady můžete bezpečně ignorovat a nebude to mít žádný vliv na vaše prostředí. Pokud je chcete povolit, zaregistrujte si verzi Preview na adrese https://aka.ms/SecurityPrP a vyberte si z těchto možností:
 
 1. **Single Preview** – pro připojení pouze k této privátní verzi Preview. Jako náhled, ke kterému se chcete připojit, výslovně uveďte "ASC průběžné prověřování".
-1. **Probíhající program** – přidaný do tohoto a budoucího privátního náhledu. Budete muset dokončit profil a smlouvu o ochraně osobních údajů.
+1. **Probíhající program** – přidaný do tohoto a budoucího privátního náhledu. Musíte dokončit profil a smlouvu o ochraně osobních údajů.

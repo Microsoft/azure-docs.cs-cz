@@ -8,12 +8,12 @@ ms.author: jehollan
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 03/15/2018
-ms.openlocfilehash: 2fae7d2526e6c95efe83ca8fa742a6d92457b897
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 22e0c7304f7a53a86bc5c6739a2061352d738d29
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86520745"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784808"
 ---
 # <a name="create-a-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Vytvoření řídicího panelu pro streamování zákaznických přehledů pomocí Azure Logic Apps a Azure Functions
 
@@ -54,7 +54,7 @@ K detekci mínění za nějakým textem můžete použít [Azure Cognitive Servi
 
 4. Po zobrazení výzvy zadejte platný klíč Cognitive Services služby Analýza textu.
 
-5. V části text **žádosti**vyberte **textové** pole v poli, které jako vstup pro analýzu poskytne text.
+5. V části text **žádosti** vyberte **textové** pole v poli, které jako vstup pro analýzu poskytne text.
 
 Po získání dat v poli se základními informacemi o promoci teď můžete použít několik dalších relevantních konektorů a jejich akce:
 
@@ -67,7 +67,7 @@ Můžete také vytvořit a funkci Azure Function, abyste mohli provádět vlastn
 
 ## <a name="process-data-with-azure-functions"></a>Zpracování dat pomocí Azure Functions
 
-Před vytvořením funkce vytvořte v předplatném Azure aplikaci Function App. Pro aplikaci logiky, aby přímo volala funkci, musí mít funkce vazbu triggeru HTTP, například pomocí šablony **HttpTrigger** . Naučte [se, jak vytvořit svou první aplikaci funkcí a funkci v Azure Portal](../azure-functions/functions-create-first-azure-function.md).
+Před vytvořením funkce vytvořte v předplatném Azure aplikaci Function App. Pro aplikaci logiky, aby přímo volala funkci, musí mít funkce vazbu triggeru HTTP, například pomocí šablony **HttpTrigger** . Naučte [se, jak vytvořit svou první aplikaci funkcí a funkci v Azure Portal](../azure-functions/functions-get-started.md).
 
 V tomto scénáři jako text žádosti pro funkci Azure použijte text. V kódu funkce definujte logiku, která určuje, zda text příznaku obsahuje klíčové slovo nebo frázi. Tuto funkci nechte v případě potřeby ve scénáři jednoduché nebo složitější.
 Na konci funkce vrátí odpověď do aplikace logiky s některými daty, například jednoduchou logickou hodnotu, jako je například `containsKeyword` nebo složitý objekt.
@@ -83,7 +83,7 @@ Až to budete mít, uložte funkci a pak funkci přidejte jako akci do aplikace 
 
 2. Najděte konektor **Azure Functions** a pak vyberte funkci, kterou jste vytvořili.
 
-3. V části text **žádosti**vyberte **text**.
+3. V části text **žádosti** vyberte **text**.
 
 ![Nakonfigurovaný krok Azure Functions][2]
 

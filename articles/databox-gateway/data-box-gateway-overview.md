@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: overview
 ms.date: 08/21/2019
 ms.author: alkohli
-ms.openlocfilehash: aa68b746ef5c22c97fcfdcca889bf71577c19479
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: adb0e12b81701acbdb33018f055bfe8fda2efc52
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96583846"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786635"
 ---
 # <a name="what-is-azure-data-box-gateway"></a>Co je Azure Data Box Gateway?
 
@@ -89,7 +89,7 @@ Virtuální zařízení Data Box Gateway má následující specifikace:
 
 Data Box Gateway fyzické zařízení, prostředek Azure a cílový účet úložiště, do kterého přenášíte data, nemusí být ve stejné oblasti.
 
-- **Dostupnost prostředků** – seznam všech oblastí, ve kterých je prostředek Azure Data box Gateway k dispozici, najdete v části [produkty Azure dostupné v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=databox). Data Box Gateway taky můžete nasadit v cloudu Azure Government. Další informace najdete v tématu [co je Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome).
+- **Dostupnost prostředků** – seznam všech oblastí, ve kterých je prostředek Azure Data box Gateway k dispozici, najdete v části [produkty Azure dostupné v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=databox). Data Box Gateway taky můžete nasadit v cloudu Azure Government. Další informace najdete v tématu [co je Azure Government?](../azure-government/documentation-government-welcome.md).
 
 - **Cílové účty úložiště** – účty úložiště, do kterých se ukládají data, jsou dostupné ve všech oblastech Azure.
 
@@ -101,4 +101,3 @@ Data Box Gateway fyzické zařízení, prostředek Azure a cílový účet úlo�
 - Přečtěte si [systémové požadavky služby Data Box Gateway](data-box-gateway-system-requirements.md).
 - Seznamte se s [omezeními služby Data Box Gateway](data-box-gateway-limits.md).
 - Rychle nasaďte [Azure Data Box Gateway](data-box-gateway-deploy-prep.md) na webu Azure Portal.
-

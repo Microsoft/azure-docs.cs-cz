@@ -12,35 +12,30 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2020
+ms.date: 01/25/2021
 ms.author: yelevin
-ms.openlocfilehash: 140228a65be166bc172e81267c4449b49621e02c
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 0dccd8ac4f852688bf7e59e7ed96c4458c08d18b
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94425775"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784724"
 ---
 # <a name="enable-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Povolení analýzy chování uživatelů a entit (UEBA) v Azure Sentinel 
 
 > [!IMPORTANT]
 >
-> - Funkce stránek UEBA a entity jsou teď **obecně dostupné** v následujících geografických oblastech a oblastech Azure Sentinel:
->    - USA geografie
->    - Oblast Evropa – západ
->    - Zeměpisná Austrálie
->
-> - Ve všech ostatních geografických oblastech a oblastech jsou tyto funkce pro dobu ve **verzi Preview** stále. Další právní podmínky, které se vztahují na funkce Azure, které jsou ve verzi beta, Preview nebo jinak ještě nedostupné ve všeobecné dostupnosti, najdete v tématu dodatečné [podmínky použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) Preview.
+> - Funkce stránek UEBA a entity jsou teď **obecně dostupné** ve *_všech_* geografických oblastech a oblastech Sentinel Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li povolit nebo zakázat tuto funkci (tyto požadavky nejsou nutné k použití této funkce):
 
 - Uživatel musí být členem Azure Active Directory vaší organizace, a ne uživatelem typu Host.
 
-- Uživateli musí být přiřazeni role **globální správce** nebo **Správce zabezpečení** v Azure AD.
+- Uživateli musí být přiřazeni role správce účtu (*globální správce*) * nebo **Správce zabezpečení** ve službě Azure AD.
 
-- Uživateli musí být přiřazen alespoň jeden z následujících **rolí Azure** ( [Další informace o službě Azure RBAC](roles.md)):
+- Uživateli musí být přiřazen alespoň jeden z následujících **rolí Azure** ([Další informace o službě Azure RBAC](roles.md)):
     - **Přispěvatel Sentinel Azure** na úrovni pracovního prostoru nebo skupiny prostředků.
     - **Přispěvatel Log Analytics** na úrovni skupiny prostředků nebo předplatného.
 

@@ -4,12 +4,12 @@ description: Přečtěte si o Azure Service Fabric serializaci objektů služby 
 ms.topic: conceptual
 ms.date: 5/8/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1d29f5d3391bdea0b21997a392d4d2e053b7ec65
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29bb9a2dfb028d223d63559b35735e78d7e6bcf8
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89018616"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784355"
 ---
 # <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Serializace objektu spolehlivé kolekce v Azure Service Fabric
 Spolehlivé kolekce replikují a uchovávají jejich položky, aby se zajistilo, že jsou odolné proti selhání počítačů a výpadkům napájení.
@@ -20,7 +20,7 @@ Správce Reliable State obsahuje předdefinované serializátory a umožňuje re
 
 ## <a name="built-in-serializers"></a>Předdefinované serializátory
 
-Reliable State Manager obsahuje vestavěný serializátor pro některé běžné typy, aby je bylo možné ve výchozím nastavení serializovat efektivně. Pro jiné typy se Reliable State Manager vrátí k použití třídy [DataContractSerializer](/dotnet/api/system.runtime.serialization.datacontractserializer?view=netcore-3.1).
+Reliable State Manager obsahuje vestavěný serializátor pro některé běžné typy, aby je bylo možné ve výchozím nastavení serializovat efektivně. Pro jiné typy se Reliable State Manager vrátí k použití třídy [DataContractSerializer](/dotnet/api/system.runtime.serialization.datacontractserializer).
 Předdefinované serializace jsou efektivnější, protože znají jejich typy nemůžou být změněny a nemusejí zahrnovat informace o typu, jako je název jeho typu.
 
 Správce Reliable State má vestavěný serializátor pro následující typy: 
@@ -140,7 +140,7 @@ Tímto způsobem může každá verze číst, a to vše, co může, a přejít n
 
 ## <a name="next-steps"></a>Další kroky
   * [Serializace a upgrade](service-fabric-application-upgrade-data-serialization.md)
-  * [Referenční informace pro vývojáře pro spolehlivé kolekce](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)
+  * [Referenční informace pro vývojáře pro spolehlivé kolekce](/dotnet/api/microsoft.servicefabric.data.collections#microsoft_servicefabric_data_collections)
   * [Upgrade aplikace pomocí sady Visual Studio](service-fabric-application-upgrade-tutorial.md) vás provede upgradem aplikace pomocí sady Visual Studio.
   * [Upgrade aplikace pomocí PowerShellu](service-fabric-application-upgrade-tutorial-powershell.md) vás provede upgradem aplikace pomocí PowerShellu.
   * Pomocí [parametrů upgradu](service-fabric-application-upgrade-parameters.md)lze řídit, jak se vaše aplikace upgradují.

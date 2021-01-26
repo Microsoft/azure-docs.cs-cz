@@ -7,12 +7,12 @@ ms.date: 1/20/2021
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: b7947eab93ebc8e523e163af601893522132e06a
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 4612e1236af5fbe47db9a3569e2f4da2378017e2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98745663"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784893"
 ---
 # <a name="build-and-deploy-the-iot-plug-and-play-bridge"></a>Sestavení a nasazení mostu IoT technologie Plug and Play
 
@@ -212,7 +212,7 @@ K dokončení této části potřebujete službu Azure IoT Hub úrovně Free neb
 
 Kroky v této části předpokládají, že máte na počítači s Windows 10 následující vývojové prostředí. Tyto nástroje vám umožní vytvořit a nasadit modul IoT Edge do zařízení IoT Edge:
 
-- Subsystém Windows pro Linux (WSL) 2 se systémem Ubuntu 18,04 LTS. Další informace najdete v [instalační příručce k systému Windows pro Linux pro systém Windows 10](https://docs.microsoft.com/windows/wsl/install-win10).
+- Subsystém Windows pro Linux (WSL) 2 se systémem Ubuntu 18,04 LTS. Další informace najdete v [instalační příručce k systému Windows pro Linux pro systém Windows 10](/windows/wsl/install-win10).
 - Docker Desktop pro Windows nakonfigurovaný tak, aby používal WSL 2. Další informace najdete v tématu [Docker Desktop WSL 2 back-end](https://docs.docker.com/docker-for-windows/wsl/).
 - [Visual Studio Code nainstalované v prostředí Windows](https://code.visualstudio.com/docs/setup/windows) s následujícími třemi nainstalovanými rozšířeními:
 

@@ -7,12 +7,12 @@ ms.reviewer: jehollan, klam, logicappspm
 ms.topic: article
 ms.date: 11/08/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 25f761d85ebfd0ac16f182941c5b5c29636066bf
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a7df9ba1318f40de8af392cfaedbe51d7a5df755
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000330"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784928"
 ---
 # <a name="call-or-trigger-logic-apps-by-using-azure-functions-and-azure-service-bus"></a>Volání nebo spuštění Logic Apps pomocí Azure Functions a Azure Service Bus
 
@@ -24,7 +24,7 @@ Můžete použít [Azure Functions](../azure-functions/functions-overview.md) pr
 
 * Azure Service Bus obor názvů. Pokud obor názvů nemáte, [vytvořte nejprve obor názvů](../service-bus-messaging/service-bus-create-namespace-portal.md).
 
-* Aplikace Function App, což je kontejner pro vaše funkce. Pokud nemáte aplikaci Function App, [nejprve vytvořte aplikaci Function App](../azure-functions/functions-create-first-azure-function.md)a ujistěte se, že jste vybrali .NET jako zásobník modulu runtime.
+* Aplikace Function App, což je kontejner pro vaše funkce. Pokud nemáte aplikaci Function App, [nejprve vytvořte aplikaci Function App](../azure-functions/functions-get-started.md)a ujistěte se, že jste vybrali .NET jako zásobník modulu runtime.
 
 * Základní znalosti o [tom, jak vytvářet aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 

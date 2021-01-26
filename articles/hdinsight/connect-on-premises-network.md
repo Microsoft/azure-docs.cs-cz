@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 03/04/2020
-ms.openlocfilehash: 71ef902e909e552ade5174196f291630bc242ca0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2a7b686bb0aae0b35b25cdd724925bab3c0a2e10
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005363"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786516"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>Připojení HDInsightu k místní síti
 
@@ -52,7 +52,7 @@ V následujícím diagramu jsou zelenými řádky požadavky na prostředky, kte
 
 Pomocí následujících dokumentů se naučíte, jak vytvořit Virtual Network Azure, která je připojená k vaší místní síti:
 
-* [Pomocí webu Azure Portal](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+* [Pomocí webu Azure Portal](../vpn-gateway/tutorial-site-to-site-portal.md)
 * [Použití Azure Powershell](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
 * [Použití Azure CLI](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 
@@ -78,7 +78,7 @@ Tyto kroky používají [Azure Portal](https://portal.azure.com) k vytvoření v
     |Předplatné |Vyberte odpovídající předplatné.|
     |Skupina prostředků |Vyberte skupinu prostředků, která obsahuje dříve vytvořenou virtuální síť.|
     |Název virtuálního počítače | Zadejte popisný název, který identifikuje tento virtuální počítač. V tomto příkladu se používá **DNSProxy**.|
-    |Oblast | Vyberte stejnou oblast jako dříve vytvořenou virtuální síť.  Ne všechny velikosti virtuálních počítačů jsou dostupné ve všech oblastech.  |
+    |Region (Oblast) | Vyberte stejnou oblast jako dříve vytvořenou virtuální síť.  Ne všechny velikosti virtuálních počítačů jsou dostupné ve všech oblastech.  |
     |Možnosti dostupnosti |  Vyberte požadovanou úroveň dostupnosti.  Azure nabízí řadu možností pro správu dostupnosti a odolnosti pro vaše aplikace.  Architekt svého řešení pro použití replikovaných virtuálních počítačů v Zóny dostupnosti nebo skupin dostupnosti k ochraně vašich aplikací a dat před výpadky datacentra a událostmi údržby. V tomto příkladu se **nepožaduje žádná redundance infrastruktury**. |
     |Image | Ponechte na **Ubuntu serveru 18,04 LTS**. |
     |Typ ověřování | __Heslo__ nebo __veřejný klíč SSH__: metoda ověřování pro účet SSH. Doporučujeme používat veřejné klíče, protože jsou bezpečnější. V tomto příkladu se používá **heslo**.  Další informace najdete v dokumentu [Vytvoření a použití klíčů ssh pro virtuální počítače se systémem Linux](../virtual-machines/linux/mac-create-ssh-keys.md) .|

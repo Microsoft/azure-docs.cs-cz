@@ -3,12 +3,12 @@ title: Transakce a režimy zámků ve spolehlivých kolekcích
 description: Azure Service Fabric Reliable State Manager a Reliable Collections – transakce a uzamykání.
 ms.topic: conceptual
 ms.date: 5/1/2017
-ms.openlocfilehash: 57ca46047641b79d5e4c50ede4a27e16dcec5d89
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 5d2cbb517ea5ca45697cd9124b82e9ef13dd32db
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576719"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784338"
 ---
 # <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Transakce a režimy zámků ve službě Azure Service Fabric Reliable Collections
 
@@ -18,7 +18,7 @@ Transakce je posloupnost operací prováděná jako jediná logická jednotka pr
 
 * **Nedělitelnost**: transakce musí být atomická jednotka práce. Jinými slovy, buď dojde k provedení všech úprav dat, nebo žádný z nich není proveden.
 * **Konzistence**: po dokončení transakce musí opustit všechna data v konzistentním stavu. Všechny interní datové struktury musí být na konci transakce správné.
-* **Izolace**: úpravy provedené souběžnými transakcemi musí být izolované od úprav provedených jinými souběžnými transakcemi. Úroveň izolace, která se používá pro operaci v rámci [ITransaction](/dotnet/api/microsoft.servicefabric.data.itransaction?view=azure-dotnet) , je určena [IReliableState](/dotnet/api/microsoft.servicefabric.data.ireliablestate?view=azure-dotnet) , který provádí operaci.
+* **Izolace**: úpravy provedené souběžnými transakcemi musí být izolované od úprav provedených jinými souběžnými transakcemi. Úroveň izolace, která se používá pro operaci v rámci [ITransaction](/dotnet/api/microsoft.servicefabric.data.itransaction) , je určena [IReliableState](/dotnet/api/microsoft.servicefabric.data.ireliablestate) , který provádí operaci.
 * **Trvanlivost**: po dokončení transakce jsou její účinky trvale v systému zavedeny. Úpravy zůstanou zachované i v případě selhání systému.
 
 ### <a name="isolation-levels"></a>Úrovně izolace
@@ -84,4 +84,4 @@ V takovém případě dojde k vypršení časového limitu jedné nebo obou oper
 * [Oznámení Reliable Services](service-fabric-reliable-services-notifications.md)
 * [Reliable Services zálohování a obnovení (zotavení po havárii)](service-fabric-reliable-services-backup-restore.md)
 * [Konfigurace spolehlivého správce stavu](service-fabric-reliable-services-configuration.md)
-* [Referenční informace pro vývojáře pro spolehlivé kolekce](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)
+* [Referenční informace pro vývojáře pro spolehlivé kolekce](/dotnet/api/microsoft.servicefabric.data.collections#microsoft_servicefabric_data_collections)

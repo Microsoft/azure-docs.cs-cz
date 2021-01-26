@@ -4,12 +4,12 @@ description: Pomocí rozhraní FabricClient API můžete nasazovat a odebírat a
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 565e6b8f23f159a5c231295694830917217a3d19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 343a37c983b1d64a4b1986913d9d6fd648a113fe
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89009296"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785545"
 ---
 # <a name="deploy-and-remove-applications-using-fabricclient"></a>Nasazení a odebrání aplikací pomocí FabricClient
 > [!div class="op_single_selector"]
@@ -47,7 +47,7 @@ FabricClient fabricClient = new FabricClient();
 ## <a name="upload-the-application-package"></a>Nahrání balíčku aplikace
 Předpokládejme, že sestavíte a zabalíte aplikaci s názvem *MyApplication* v aplikaci Visual Studio. Ve výchozím nastavení je název typu aplikace uvedený v ApplicationManifest.xml "MyApplicationType".  Balíček aplikace, který obsahuje nezbytný manifest aplikace, manifesty služeb a balíčky Code/config/data, se nachází v části *C:\Users \& lt; UserName &gt; \Documents\Visual Studio 2019 \ Projects\MyApplication\MyApplication\pkg\Debug*.
 
-Nahráním balíčku aplikace se umístí do umístění, které je přístupné pro interní Service Fabric komponenty. Service Fabric ověří balíček aplikace při registraci balíčku aplikace. Pokud však chcete ověřit balíček aplikace místně (tj. před odesláním), použijte rutinu [test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) .
+Nahráním balíčku aplikace se umístí do umístění, které je přístupné pro interní Service Fabric komponenty. Service Fabric ověří balíček aplikace při registraci balíčku aplikace. Pokud však chcete ověřit balíček aplikace místně (tj. před odesláním), použijte rutinu [test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage) .
 
 Rozhraní API [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) odesílá balíček aplikace do úložiště imagí clusteru. 
 
@@ -90,9 +90,9 @@ Pokud už instanci aplikace nepotřebujete, můžete ji trvale odebrat pomocí r
 ## <a name="unregister-an-application-type"></a>Zrušení registrace typu aplikace
 Pokud již určitou verzi typu aplikace nepotřebujete, měli byste zrušit registraci konkrétní verze typu aplikace pomocí rozhraní API pro [zrušení registrace](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.unprovisionapplicationasync) . Rušení registrace nepoužívaných verzí typů aplikací uvolní prostor úložiště používaný úložištěm imagí. U verze typu aplikace se může zrušit registrace, pokud se nevytváří instance žádné aplikace proti této verzi typu aplikace. Také typ aplikace nemůže mít žádné probíhající upgrady aplikace, na které se odkazuje na verzi typu aplikace.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 ### <a name="copy-servicefabricapplicationpackage-asks-for-an-imagestoreconnectionstring"></a>Copy-ServiceFabricApplicationPackage požádá o ImageStoreConnectionString
-Prostředí Service Fabric SDK by již mělo mít nastavené správné výchozí hodnoty. V případě potřeby by ale ImageStoreConnectionString pro všechny příkazy měly odpovídat hodnotě, kterou používá Cluster Service Fabric. ImageStoreConnectionString můžete najít v manifestu clusteru, který jste získali pomocí příkazů [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest?view=azureservicefabricps) a Get-ImageStoreConnectionStringFromClusterManifest:
+Prostředí Service Fabric SDK by již mělo mít nastavené správné výchozí hodnoty. V případě potřeby by ale ImageStoreConnectionString pro všechny příkazy měly odpovídat hodnotě, kterou používá Cluster Service Fabric. ImageStoreConnectionString můžete najít v manifestu clusteru, který jste získali pomocí příkazů [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest) a Get-ImageStoreConnectionStringFromClusterManifest:
 
 ```powershell
 PS C:\> Get-ImageStoreConnectionStringFromClusterManifest(Get-ServiceFabricClusterManifest)

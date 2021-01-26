@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 90ffd1c01411982f56aed3332c499aa0c10b8a94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7af0a4c26a47644973e936eb37e221853d74c03
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86257603"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784659"
 ---
 # <a name="azure-service-fabric-security"></a>Zabezpečení služby Azure Service Fabric 
 
@@ -56,7 +56,7 @@ K nasazení certifikátů z společně umístěného trezoru klíčů do sady š
 
 ## <a name="apply-an-access-control-list-acl-to-your-certificate-for-your-service-fabric-cluster"></a>Použití seznamu Access Control (ACL) pro váš certifikát pro Service Fabric cluster
 
-Rozšíření Microsoft. Azure. ServiceFabric, která slouží ke konfiguraci zabezpečení uzlů, se používá pro [rozšíření sady škálování virtuálního počítače](/cli/azure/vmss/extension?view=azure-cli-latest) .
+Rozšíření Microsoft. Azure. ServiceFabric, která slouží ke konfiguraci zabezpečení uzlů, se používá pro [rozšíření sady škálování virtuálního počítače](/cli/azure/vmss/extension) .
 Pokud chcete použít seznam řízení přístupu pro vaše certifikáty pro procesy Service Fabric clusteru, použijte následující vlastnosti šablony Správce prostředků:
 
 ```json
@@ -207,7 +207,7 @@ cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBS
 ## <a name="windows-security-baselines"></a>Základní hodnoty zabezpečení systému Windows
 Doporučujeme [, abyste implementovali standardní standardní konfiguraci, která je široce známá a dobře testována, jako jsou například standardní hodnoty zabezpečení společnosti Microsoft, a to na rozdíl od vytvoření směrného plánu](/windows/security/threat-protection/windows-security-baselines). možnost, kterou si můžete zřídit v Virtual Machine Scale Sets, je použít obslužnou rutinu rozšíření DSC (Konfigurace požadovaného stavu) Azure ke konfiguraci virtuálních počítačů při jejich práci online, takže běží produkční software.
 
-## <a name="azure-firewall"></a>Brána Azure Firewall
+## <a name="azure-firewall"></a>Azure Firewall
 [Azure firewall je spravovaná cloudová služba zabezpečení sítě, která chrání vaše prostředky Azure Virtual Network. Jedná se o plně stavovou bránu firewall jako službu s integrovanou vysokou dostupností a neomezenou škálovatelností cloudu.](../firewall/overview.md) Díky tomu je možné omezit odchozí přenosy HTTP/S na zadaný seznam plně kvalifikovaných názvů domény (FQDN), včetně zástupných karet. Tato funkce nevyžaduje ukončení protokolu TLS/SSL. Doporučuje se využít [Azure firewall značek plně kvalifikovaného názvu domény](../firewall/fqdn-tags.md) pro aktualizace systému Windows a povolit směrování síťového provozu do Microsoft Web Windows Update koncových bodů prostřednictvím brány firewall. [Nasazení Azure firewall pomocí šablony](../firewall/deploy-template.md) poskytuje ukázku pro definici šablony prostředků Microsoft. Network/azureFirewalls. Mezi pravidla brány firewall společná pro Service Fabric aplikací je umožněno, aby pro virtuální síť clusterů byly následující:
 
 - * download.microsoft.com

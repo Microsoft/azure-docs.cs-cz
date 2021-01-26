@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: alkohli
-ms.openlocfilehash: 730774f33d43754d4ca198ed170159fa4f872e09
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0c35bde40cac9629f084d69d52f119651b5655f7
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90903664"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784473"
 ---
 # <a name="return-your-azure-stack-edge-pro-device"></a>Vrácení zařízení Azure Stack Edge pro
 
@@ -59,7 +59,7 @@ Případně se připojte k rozhraní PowerShell zařízení a pomocí `Reset-Hcs
 
 Chcete-li zahájit proces návratu, proveďte následující kroky.
 
-1. V Azure Portal přejít na prostředek Azure Stack Edge pro/Data Box Gateway. V **přehledu**přejděte na panel příkazů v pravém podokně a vyberte **návratové zařízení**. 
+1. V Azure Portal přejít na prostředek Azure Stack Edge pro/Data Box Gateway. V **přehledu** přejděte na panel příkazů v pravém podokně a vyberte **návratové zařízení**. 
 
     ![Vrátit zařízení 1](media/azure-stack-edge-return-device/return-device-1.png)  
 
@@ -101,7 +101,7 @@ Chcete-li zahájit proces návratu, proveďte následující kroky.
 Chcete-li naplánovat vyzvednutí, proveďte následující kroky.
 
 1. Vypněte zařízení. V místním webovém uživatelském rozhraní přejdete do části **údržba > nastavení napájení**.
-2. Vyberte **vypnout**. Po zobrazení výzvy k potvrzení klikněte na **Ano** a pokračujte. Další informace najdete v tématu [Správa napájení](data-box-gateway-manage-access-power-connectivity-mode.md#manage-power).
+2. Vyberte **vypnout**. Po zobrazení výzvy k potvrzení klikněte na **Ano** a pokračujte. Další informace najdete v tématu [Správa napájení](../databox-gateway/data-box-gateway-manage-access-power-connectivity-mode.md#manage-power).
 3. Odpojte napájecí kabely a odeberte ze zařízení všechny síťové kabely.
 4. Připravte balíček dodávek pomocí vlastního pole nebo prázdného pole, které jste dostali z Azure. Umístěte zařízení a napájecí šňůry, které byly dodávány se zařízením v poli.
 5. Připevněte expediční štítek, který jste dostali z Azure v balíčku.

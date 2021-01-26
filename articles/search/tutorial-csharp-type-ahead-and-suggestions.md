@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 10/05/2020
+ms.date: 01/22/2021
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 202a7f6b01423045fe7c72db5b42c29ae58f648d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 06c0b25bcf64cfce01b4144550ef69da8c96ee0e
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013832"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785850"
 ---
 # <a name="tutorial-add-autocomplete-and-suggestions-using-the-net-sdk"></a>Kurz: přidání automatického dokončování a návrhů pomocí sady .NET SDK
 
@@ -317,7 +317,7 @@ K dispozici jsou knihovny, které nabízejí tuto funkci – často se označuje
 
     Jedna možnost automatického dokončování se vrátí v horní části seznamu **výsledků** , po kterém následují všechny návrhy.
 
-1. V zobrazení nejprve implementujeme štych, aby se v oblasti tučného textu, který uživatel zadal, vykresluje slovo světle šedého automatického dokončování. HTML obsahuje relativní umístění pro tento účel. Změňte příkaz **TextBoxFor** (a jeho okolní &lt; příkazy div &gt; ) na následující, což znamená, že druhé vyhledávací pole identifikované jako v **underneath** rámci našeho normálního vyhledávacího pole je napravo pomocí tohoto vyhledávacího pole 39 pixelů z výchozího umístění!
+1. V zobrazení nejprve implementujeme štych, aby se v oblasti tučného textu, který uživatel zadal, vykresluje slovo světle šedého automatického dokončování. HTML obsahuje relativní umístění pro tento účel. Změňte příkaz **TextBoxFor** (a jeho okolní &lt; příkazy div &gt; ) na následující, což znamená, že druhé vyhledávací pole identifikované jako v  rámci našeho normálního vyhledávacího pole je napravo pomocí tohoto vyhledávacího pole 39 pixelů z výchozího umístění!
 
     ```cs
     <div id="underneath" class="searchBox" style="position: relative; left: 0; top: 0">

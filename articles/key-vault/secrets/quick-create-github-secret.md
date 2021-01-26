@@ -8,12 +8,12 @@ ms.date: 11/24/2020
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: 9509f84b14a42180189a529282b5db348deab279
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c1e8062210de1d7d99f57a4e0b155492f7dfdd9a
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95920281"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785972"
 ---
 # <a name="use-key-vault-secrets-in-github-actions-workflows"></a>Použití Key Vault tajných kódů v pracovních postupech akcí GitHubu
 
@@ -22,10 +22,10 @@ Používejte Key Vault tajných klíčů ve svých [akcích GitHubu](https://hel
 Díky akcím Key Vault a GitHubu máte výhodou nástrojů pro správu centralizovaných tajných klíčů a všech výhod akcí GitHubu. Akce GitHubu jsou sadou funkcí v GitHubu pro automatizaci pracovních postupů vývoje softwaru. Pracovní postupy můžete nasadit na stejném místě, kam ukládáte kód a spolupracujete na žádostech o přijetí změn a potížích. 
 
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 - Účet GitHub. Pokud ho ještě nemáte, zaregistrujte se [zdarma](https://github.com/join).  
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Aplikace Azure připojená k úložišti GitHub. V tomto příkladu [se k Azure App Service používají kontejnery nasazení](https://docs.microsoft.com/azure/developer/javascript/tutorial-vscode-docker-node-01). 
+- Aplikace Azure připojená k úložišti GitHub. V tomto příkladu [se k Azure App Service používají kontejnery nasazení](/azure/developer/javascript/tutorial-vscode-docker-node-01). 
 - Trezor klíčů Azure.  Azure Key Vault můžete vytvořit pomocí Azure Portal, Azure CLI nebo Azure PowerShell.
 
 ## <a name="workflow-file-overview"></a>Přehled souboru pracovního postupu
@@ -39,7 +39,7 @@ Soubor má ověřování pomocí akcí GitHubu dvě části:
 |**Authentication** | 1. Definujte instanční objekt. <br /> 2. Vytvořte tajný klíč GitHubu. <br /> 3. Přidejte přiřazení role. |
 |**Key Vault** | 1. Přidejte akci trezoru klíčů. <br /> 2. odkaz na tajný kód trezoru klíčů |
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Ověřování
 
 [Instanční objekt](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) můžete vytvořit pomocí příkazu [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac&preserve-view=true) v rozhraní příkazového [řádku Azure CLI](/cli/azure/). Spusťte tento příkaz s [Azure Cloud Shell](https://shell.azure.com/) v Azure Portal nebo vyberte tlačítko **vyzkoušet** .
 

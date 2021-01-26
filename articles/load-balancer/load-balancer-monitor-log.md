@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: allensu
-ms.openlocfilehash: fcfd3da30ef9ace723b4204f5924591b1e2717f8
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 59359cdd3e3c035d4cb6789295d41bb3908019bb
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503161"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785816"
 ---
 # <a name="azure-monitor-logs-for-azure-standard-load-balancer"></a>Protokoly Azure Monitor pro Azure Standard Load Balancer
 
@@ -74,7 +74,7 @@ Protokolování aktivit je u každého prostředku Správce prostředků povolen
 
 ## <a name="view-and-analyze-the-activity-log"></a>Zobrazení a analýza protokolu aktivit
 
-Protokol aktivit je ve výchozím nastavení vygenerován. Můžete ji nakonfigurovat tak, aby se vyexportovali na úrovni předplatného, a to podle [pokynů uvedených v tomto článku](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log). Další informace o těchto protokolech najdete v článku [zobrazení protokolů aktivit pro monitorování akcí v prostředcích](../azure-resource-manager/management/view-activity-logs.md) .
+Protokol aktivit je ve výchozím nastavení vygenerován. Můžete ji nakonfigurovat tak, aby se vyexportovali na úrovni předplatného, a to podle [pokynů uvedených v tomto článku](../azure-monitor/platform/activity-log.md). Další informace o těchto protokolech najdete v článku [zobrazení protokolů aktivit pro monitorování akcí v prostředcích](../azure-resource-manager/management/view-activity-logs.md) .
 
 Data protokolu aktivit můžete zobrazit a analyzovat pomocí některé z následujících metod:
 
@@ -112,5 +112,5 @@ Funkce exportu metriky do protokolu pro Azure Load Balancer má následující o
 * Metriky pro použité porty SNAT a přidělené porty SNAT nejsou aktuálně k dispozici pro export jako protokoly.
 
 ## <a name="next-steps"></a>Další kroky
-* [Zkontrolujte dostupné metriky pro nástroj pro vyrovnávání zatížení.](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics)
-* [Vytváření a testování dotazů podle následujících pokynů Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)
+* [Zkontrolujte dostupné metriky pro nástroj pro vyrovnávání zatížení.](./load-balancer-standard-diagnostics.md)
+* [Vytváření a testování dotazů podle následujících pokynů Azure Monitor](../azure-monitor/log-query/log-query-overview.md)

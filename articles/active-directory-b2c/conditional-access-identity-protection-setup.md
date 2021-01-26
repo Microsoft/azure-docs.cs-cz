@@ -1,5 +1,5 @@
 ---
-title: Nastavení Identity Protection a podmíněného přístupu v Azure AD B2C
+title: Nastavení ochrany identit a podmíněného přístupu ve službě Azure AD B2C
 description: Přečtěte si, jak nakonfigurovat ochranu identit a podmíněný přístup pro vás Azure AD B2C tenanta, abyste mohli zobrazit rizikové přihlašování a jiné rizikové události a vytvářet zásady na základě detekce rizik.
 services: active-directory
 ms.service: active-directory
@@ -10,14 +10,14 @@ ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2472183673e5f06f5664a306a69d14c2eaf5f82d
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 654206bccd25bf09fcdc5c3e7ee72ba97c75af2a
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949764"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785477"
 ---
-# <a name="set-up-identity-protection-and-conditional-access-in-azure-ad-b2c"></a>Nastavení Identity Protection a podmíněného přístupu v Azure AD B2C
+# <a name="set-up-identity-protection-and-conditional-access-in-azure-ad-b2c"></a>Nastavení ochrany identit a podmíněného přístupu ve službě Azure AD B2C
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
@@ -94,9 +94,7 @@ Pokud chcete přidat zásady podmíněného přístupu na základě detekce rizi
 
 1. V části **zabezpečení** vyberte **podmíněný přístup (Preview)**. Otevře se stránka **zásady podmíněného přístupu** . 
 
-1. Vyberte **nové zásady** a podle dokumentace podmíněného přístupu Azure AD vytvořte novou zásadu. Například:
-
-   - [Podmíněný přístup na základě rizik přihlašování: povolit pomocí zásad podmíněného přístupu](../active-directory/conditional-access/howto-conditional-access-policy-risk.md#enable-with-conditional-access-policy)
+1. Vyberte **nové zásady** a podle dokumentace podmíněného přístupu Azure AD vytvořte novou zásadu. V případě zásad založených na rizicích budete muset nakonfigurovat samostatné zásady na základě [rizika uživatele](../active-directory/conditional-access/howto-conditional-access-policy-risk-user.md#enable-with-conditional-access-policy) nebo [rizika přihlašování](../active-directory/conditional-access/howto-conditional-access-policy-risk.md#enable-with-conditional-access-policy) v závislosti na tom, jaký typ rizika chcete použít jako podmínku. V rámci jedné zásady nedoporučujeme používat oba typy rizik.
 
    > [!IMPORTANT]
    > Když vybíráte uživatele, pro které chcete zásadu použít, nevybírejte jenom možnost **Všichni uživatelé** , nebo se můžete sami zablokovat přihlášení.

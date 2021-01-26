@@ -12,25 +12,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/19/2020
+ms.date: 01/25/2021
 ms.author: yelevin
-ms.openlocfilehash: 2326746d274c68225cd4c8569df6a20d6050ec1a
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 7944ea48feaca1eb8312e01d876bf9627af429d1
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900888"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784791"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Identifikace pokročilých hrozeb pomocí analýzy chování uživatelů a entit (UEBA) v Azure Sentinel
 
 > [!IMPORTANT]
 >
-> - Funkce stránek UEBA a entity jsou teď **obecně dostupné** v následujících geografických oblastech a oblastech Azure Sentinel:
->    - USA geografie
->    - Oblast Evropa – západ
->    - Zeměpisná Austrálie
->
-> - Ve všech ostatních geografických oblastech a oblastech jsou tyto funkce pro dobu ve **verzi Preview** stále. Další právní podmínky, které se vztahují na funkce Azure, které jsou ve verzi beta, Preview nebo jinak ještě nedostupné ve všeobecné dostupnosti, najdete v tématu dodatečné [**podmínky použití pro Microsoft Azure**](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) Preview.
+> - Funkce stránek UEBA a entity jsou teď **obecně dostupné** ve *_všech_* geografických oblastech a oblastech Sentinel Azure.
 
 ## <a name="what-is-user-and-entity-behavior-analytics-ueba"></a>Co je analýza chování uživatelů a entit (UEBA)?
 
@@ -50,7 +45,7 @@ Když je Azure Sentinel shromažďuje protokoly a výstrahy ze všech připojen�
 
 Nechte inspirovat podle Gartner 's paradigma pro UEBA řešení poskytuje Azure Sentinel přístup "mimo rámec", který je založený na třech rámcích reference:
 
-- **Případy použití:** Díky prioritám relevantních vektorů útoku a scénářů na základě výzkumu zabezpečení zarovnaného na MITRE ATT&CK Framework of taktiku, techniky a dílčí techniky, které do dezaktivačního řetězu umísťují různé entity jako oběti, pachatele nebo body pivotu; Azure Sentinel se zaměřuje konkrétně na nejcennější protokoly, které může každý zdroj dat poskytnout.
+- _ *Případy použití:** stanovením priorit pro relevantní vektory útoku a scénáře založené na výzkumu zabezpečení zarovnaném na MITRE ATT&CK Framework of taktiku, techniky a dílčí techniky, které do dezaktivačního řetězu umísťují různé entity jako oběti, pachatele nebo body pivotu; Azure Sentinel se zaměřuje konkrétně na nejcennější protokoly, které může každý zdroj dat poskytnout.
 
 - **Zdroje dat:** Při prvním a nejpřednější podpoře zdrojů dat Azure si Azure Sentinel Thoughtfully vybírá zdroje dat třetích stran, které poskytují data odpovídající scénářům hrozeb.
 
