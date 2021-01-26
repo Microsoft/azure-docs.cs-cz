@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 10/7/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 2502fdd14acae206b8440fe602639aa49be55f4e
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: eba3958ae5dd307b80b04371d3659a129d5acf89
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045916"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797871"
 ---
 # <a name="write-client-app-authentication-code"></a>Zápis ověřovacího kódu klientské aplikace
 
 Po [Nastavení instance a ověřování digitálních vláken Azure](how-to-set-up-instance-portal.md)můžete vytvořit klientskou aplikaci, kterou použijete k interakci s instancí. Jakmile nastavíte projekt počátečního klienta, budete muset **v této klientské aplikaci napsat kód pro ověření** pomocí instance digitálního vlákna Azure.
 
-Digitální vlákna Azure provádí ověřování pomocí [tokenů zabezpečení Azure AD na základě OAUTH 2,0](../active-directory/develop/security-tokens.md#json-web-tokens-jwts-and-claims). K ověření vaší sady SDK budete muset získat nosný token se správnými oprávněními pro digitální vlákna Azure a předat ho spolu s vaším voláním rozhraní API. 
+Digitální vlákna Azure provádí ověřování pomocí [tokenů zabezpečení Azure AD na základě OAUTH 2,0](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims). K ověření vaší sady SDK budete muset získat nosný token se správnými oprávněními pro digitální vlákna Azure a předat ho spolu s vaším voláním rozhraní API. 
 
 Tento článek popisuje, jak získat pověření pomocí `Azure.Identity` klientské knihovny. Tento článek ukazuje příklady kódu v jazyce C#, například to, co byste napsali pro [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true), můžete použít verzi bez ohledu na to, `Azure.Identity` jakou sadu SDK používáte (Další informace o sadách SDK dostupných pro digitální vlákna Azure najdete v tématu [*Postupy: použití rozhraní API a sad SDK pro digitální vlákna Azure*](how-to-use-apis-sdks.md)).
 

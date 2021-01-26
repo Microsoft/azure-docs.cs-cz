@@ -3,19 +3,19 @@ title: SQL Server SQL Server na virtuálním počítači Azure (Přehled migrace
 description: Přečtěte si o různých strategiích migrace, pokud chcete SQL Server migrovat do SQL Server na virtuálních počítačích Azure.
 ms.custom: ''
 ms.service: virtual-machines-sql
-ms.subservice: ''
+ms.subservice: migration-guide
 ms.devlang: ''
 ms.topic: how-to
 author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: d08cb2761a8d8010c455ff959d6c247e8b64ef20
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: 0eabb48aabcb50557b342385068807eb67a9b165
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746571"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797848"
 ---
 # <a name="migration-overview-sql-server-to-sql-server-on-azure-vms"></a>Přehled migrace: SQL Server pro SQL Server na virtuálních počítačích Azure
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -38,7 +38,7 @@ Migrujte na [SQL Server na Azure Virtual Machines (virtuálních počítačů)](
 Získáním vlastní licence s [modelem zvýhodněné hybridní využití Azure licencování](../../virtual-machines/windows/licensing-model-azure-hybrid-benefit-ahb-change.md) můžete ušetřit náklady tím, že získáte [bezplatné aktualizace zabezpečení](../../virtual-machines/windows/sql-server-2008-extend-end-of-support.md)SQL Server 2008 a SQL Server 2008 R2. 
 
 
-## <a name="choosing-appropriate-target"></a>Výběr vhodného cíle
+## <a name="choose-appropriate-target"></a>Zvolit vhodný cíl
 
 Azure Virtual Machines běžet v mnoha různých oblastech Azure a nabízí také nejrůznější [velikosti počítačů](../../../virtual-machines/sizes.md) a [Možnosti úložiště](../../../virtual-machines/disks-types.md). Při určování správné velikosti virtuálního počítače a úložiště pro SQL Server úlohy, přečtěte si [pokyny pro výkon SQL Server v Azure Virtual Machines.](../../virtual-machines/windows/performance-guidelines-best-practices.md#vm-size-guidance) K určení velikosti virtuálního počítače a požadavků na úložiště pro vaše zatížení. doporučuje se, aby byly velikosti prostřednictvím Performance-Based [Azure Migrate posouzení](../../../migrate/concepts-assessment-calculation.md#types-of-assessments). Pokud tato možnost není dostupná, přečtěte si následující článek o vytvoření vlastního [směrného plánu pro výkon](https://azure.microsoft.com/services/virtual-machines/sql-server/).
 
@@ -65,7 +65,7 @@ Následující tabulka popisuje rozdíly ve dvou strategiích migrace:
 | **Strategie migrace** | **Popis** | **Kdy je použít** |
 | --- | --- | --- |
 | **Přezvednutí & Shift** | Pomocí strategie migrace navýšení a posunutí můžete celý fyzický nebo virtuální SQL Server z jeho aktuálního umístění přesunout do instance SQL Server na VIRTUÁLNÍm počítači Azure bez jakýchkoli změn v operačním systému nebo verze SQL Server. Chcete-li dokončit migraci výtahu a posunutí, přečtěte si téma [Azure Migrate](../../../migrate/migrate-services-overview.md). <br /><br /> Zdrojový server zůstává online a služby, i když zdrojový a cílový server synchronizuje data a umožňuje téměř bezproblémové migrace. | Používejte pro vysoce rozsáhlé migrace, a to i v případě scénářů, jako je třeba ukončení datového centra. <br /><br /> Minimální a žádné změny kódu, které jsou potřeba pro uživatelské databáze nebo aplikace SQL, umožňují rychlejší celkové migrace. <br /><br />Migrace služeb Business Intelligence, jako jsou  [SSIS](/sql/integration-services/sql-server-integration-services), [SSRS](/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports)a [SSAS](/analysis-services/analysis-services-overview), nevyžaduje žádné další kroky. |
-|**Migrace** | Pokud chcete upgradovat cílovou SQL Server nebo verzi operačního systému, použijte strategii migrace. <br /> <br /> Vyberte virtuální počítač Azure z Azure Marketplace nebo připravený SQL Server Image, která odpovídá zdrojové SQL Server verzi. | Použijte v případě, že máte požadavek nebo si přejete použít funkce dostupné v novějších verzích SQL Server, nebo pokud je potřeba upgradovat starší verze SQL Server nebo operačních systémů, které už nejsou podporovány.  <br /> <br /> Může vyžadovat, aby se některé aplikace nebo uživatelské databáze změnily na podporu SQL Server upgradu. <br /><br />Při migraci služeb [Business Intelligence](#business-intelligence) v oboru migrace můžou být potřeba další informace. |
+|**Migrate** | Pokud chcete upgradovat cílovou SQL Server nebo verzi operačního systému, použijte strategii migrace. <br /> <br /> Vyberte virtuální počítač Azure z Azure Marketplace nebo připravený SQL Server Image, která odpovídá zdrojové SQL Server verzi. | Použijte v případě, že máte požadavek nebo si přejete použít funkce dostupné v novějších verzích SQL Server, nebo pokud je potřeba upgradovat starší verze SQL Server nebo operačních systémů, které už nejsou podporovány.  <br /> <br /> Může vyžadovat, aby se některé aplikace nebo uživatelské databáze změnily na podporu SQL Server upgradu. <br /><br />Při migraci služeb [Business Intelligence](#business-intelligence) v oboru migrace můžou být potřeba další informace. |
 
 
 ## <a name="lift-and-shift"></a>Metoda „lift and shift“  
@@ -77,7 +77,7 @@ V následující tabulce najdete podrobnosti o dostupné metodě pro migrační 
 | --- | --- | --- | --- | --- |
 | [Azure Migrate](../../../migrate/index.yml) | SQL Server 2008 SP4| SQL Server 2008 SP4| [Limit úložiště virtuálních počítačů Azure](../../../index.yml) |  Existující SQL Server k přesunu jako instance SQL Server na virtuálním počítači Azure. Může škálovat úlohy migrace až na 35 000 virtuálních počítačů. <br /><br /> Zdrojový server (y) zůstávají online a obsluhují požadavky během synchronizace dat serveru a minimalizují prostoje. <br /><br /> **Automatizace & skriptování**: [Azure Site Recovery skriptů](../../../migrate/how-to-migrate-at-scale.md) a [příkladem migrace na škálované a naplánování pro Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)|
 
-## <a name="migrate"></a>Migrace  
+## <a name="migrate"></a>Migrate  
 
 Vzhledem k usnadnění instalace je doporučený postup pro migraci v místním prostředí SQL Server [zálohování](/sql/t-sql/statements/backup-transact-sql) a následně zkopírování souboru do Azure. Tato metoda podporuje větší databáze (>1 TB) pro všechny verze SQL Server počínaje 2008 a větším zálohováním databáze (>1 TB). Pro databáze od SQL Server 2014, které jsou menší než 1 TB, ale mají dobré připojení k Azure, je lepší přístup [SQL Server zálohování na adresu URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url) . 
 

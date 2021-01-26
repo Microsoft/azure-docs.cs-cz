@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: e73126cfc54294a7b9d54ff62c406d5e686ac470
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a8928f9d52fd8e721ac770dda8f0cbf0162a0f61
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95982704"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797917"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Připojení prostředí Azure-SSIS Integration Runtime k virtuální síti
 
@@ -73,7 +73,10 @@ Pokud vaše balíčky SSIS přistupují k prostředkům Azure, které podporují
 
 ## <a name="access-to-data-sources-protected-by-ip-firewall-rule"></a>Přístup ke zdrojům dat chráněným pravidlem brány firewall protokolu IP
 
-Pokud vaše SSIS balíčky přistupují k úložištím nebo prostředkům, které umožňují pouze konkrétní statické veřejné IP adresy, a chcete zabezpečit přístup k těmto prostředkům z Azure-SSIS IR, můžete použít vlastní [veřejné IP adresy](../virtual-network/virtual-network-public-ip-address.md) pro Azure-SSIS IR při připojení k virtuální síti a pak přidat pravidlo brány firewall protokolu IP k příslušným prostředkům, aby bylo možné přístup z těchto IP adres.
+Pokud vaše balíčky SSIS přístup k úložištím nebo prostředkům, které umožňují pouze konkrétní statické veřejné IP adresy, a chcete zabezpečit přístup k těmto prostředkům z Azure-SSIS IR, můžete přidružit [veřejné IP adresy](../virtual-network/virtual-network-public-ip-address.md) k Azure-SSIS IR při jejich připojení k virtuální síti a pak přidat pravidlo brány firewall protokolu IP k relevantním prostředkům, aby bylo možné přístup z těchto IP adres. Existují dva alternativní způsoby: 
+
+- Při vytváření Azure-SSIS IR můžete přinášet vlastní veřejné IP adresy a zadat je prostřednictvím [uživatelského rozhraní Data Factory nebo sady SDK](#join-the-azure-ssis-ir-to-a-virtual-network). Jenom odchozí připojení k Internetu z Azure-SSIS IR použije vaše poskytnuté veřejné IP adresy a jiná zařízení v podsíti je nepoužije.
+- Můžete také nastavit [Virtual Network překlad adres (NAT)](../virtual-network/nat-overview.md) pro podsíť, ke které se Azure-SSIS IR připojí, a všechna odchozí připojení v této podsíti budou používat vaše zadané veřejné IP adresy.
 
 Ve všech případech se virtuální síť dá nasadit jenom prostřednictvím modelu nasazení Azure Resource Manager.
 

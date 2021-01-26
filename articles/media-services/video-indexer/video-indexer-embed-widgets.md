@@ -8,15 +8,15 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 08/10/2020
+ms.date: 01/25/2021
 ms.author: juliako
 ms.custom: devx-track-js
-ms.openlocfilehash: 1bc751ae293abbb7aa330a99a4b66a917d150906
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b13086e11e1181bba91a3255e68e9f8a32e78450
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994974"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797774"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>Vložení Video Indexer widgetů do aplikací
 
@@ -291,7 +291,7 @@ Ve výchozím nastavení se přehrávač začne přehrávat ve videu. Můžete s
 
 Podívejte se na úložiště [ukázek kódu](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/Embedding%20widgets) , které obsahuje ukázky pro video indexer rozhraní API a widgety:
 
-| Soubor nebo složka                       | Description                                |
+| Soubor nebo složka                       | Popis                                |
 |-----------------------------------|--------------------------------------------|
 | `azure-media-player`              | Načíst video indexerer ve vlastním Azure Media Player.                        |
 | `azure-media-player-vi-insights`  | Vložte VI přehledů s vlastní Azure Media Player.                             |
@@ -303,6 +303,10 @@ Podívejte se na úložiště [ukázek kódu](https://github.com/Azure-Samples/m
 | `embed-both-widgets`              | Vložte VI Player a přehledy a mezi nimi komunikujte.                      |
 | `url-generator`                   | Vygeneruje vlastní adresu URL pro vložení widgetů na základě možností zadaných uživatelem.             |
 | `html5-player`                    | Vložte VI přehledů s výchozím přehrávačem videí HTML5.                           |
+
+## <a name="supported-browsers"></a>Podporované prohlížeče
+
+Další informace najdete v tématu [podporované prohlížeče](video-indexer-overview.md#supported-browsers).
 
 ## <a name="next-steps"></a>Další kroky
 
