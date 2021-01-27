@@ -4,19 +4,19 @@ description: V tomto článku se dozvíte, jak přidat spravovanou identitu do t
 ms.topic: how-to
 ms.date: 11/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: 00e679b07a44b799b6ac6677201bb59eeddcd6cf
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 9edcf75451f43f2a00cd01d5ca7f385704b1ea7f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96841470"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878422"
 ---
 # <a name="add-a-managed-identity-to-a-service-fabric-managed-cluster-node-type-preview"></a>Přidání spravované identity do typu spravovaného uzlu clusteru Service Fabric (Preview)
 
-Každý typ uzlu v Service Fabric spravovaném clusteru je zálohovaný pomocí sady škálování virtuálního počítače. Pokud chcete, aby se spravované identity používaly s typem uzlu spravovaného clusteru, `vmManagedIdentity` přidala se do definic typů uzlů, které obsahují seznam identit, které se dají použít, přidat vlastnost `userAssignedIdentities` . Funkce zrcadlí, jak se spravované identity dají použít v nespravovaných clusterech, jako je například použití spravované identity s [rozšířením Azure Key Vault Virtual Machine Scale set](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
+Každý typ uzlu v Service Fabric spravovaném clusteru je zálohovaný pomocí sady škálování virtuálního počítače. Pokud chcete, aby se spravované identity používaly s typem uzlu spravovaného clusteru, `vmManagedIdentity` přidala se do definic typů uzlů, které obsahují seznam identit, které se dají použít, přidat vlastnost `userAssignedIdentities` . Funkce zrcadlí, jak se spravované identity dají použít v nespravovaných clusterech, jako je například použití spravované identity s [rozšířením Azure Key Vault Virtual Machine Scale set](../virtual-machines/extensions/key-vault-windows.md).
 
 
-Příklad nasazení spravovaného clusteru Service Fabric, který využívá spravovanou identitu pro typ uzlu, najdete v [této šabloně](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/SF-Managed-Standard-SKU-1-NT-MI). Seznam podporovaných oblastí najdete v tématu [Nejčastější dotazy ke spravovanému clusteru](https://docs.microsoft.com/azure/service-fabric/faq-managed-cluster#what-regions-are-supported-in-the-preview).
+Příklad nasazení spravovaného clusteru Service Fabric, který využívá spravovanou identitu pro typ uzlu, najdete v [této šabloně](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/SF-Managed-Standard-SKU-1-NT-MI). Seznam podporovaných oblastí najdete v tématu [Nejčastější dotazy ke spravovanému clusteru](./faq-managed-cluster.md#what-regions-are-supported-in-the-preview).
 
 > [!NOTE]
 > Pro tuto funkci se aktuálně podporují jenom uživatelsky přiřazené identity.
@@ -26,7 +26,7 @@ Příklad nasazení spravovaného clusteru Service Fabric, který využívá spr
 Než začnete:
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
-* Pokud máte v úmyslu používat PowerShell, [nainstalujte](https://docs.microsoft.com/cli/azure/install-azure-cli) rozhraní příkazového řádku Azure CLI, ve kterém se budou spouštět příkazy odkazů CLI.
+* Pokud máte v úmyslu používat PowerShell, [nainstalujte](/cli/azure/install-azure-cli) rozhraní příkazového řádku Azure CLI, ve kterém se budou spouštět příkazy odkazů CLI.
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Vytvoření spravované identity přiřazené uživatelem 
 
@@ -54,7 +54,7 @@ Přidejte přiřazení role ke spravované identitě pomocí Service Fabric apli
 
 V případě potřeby je nutné použít následující hodnoty:
 
-|Název|Odpovídající hodnota poskytovatele prostředků Service Fabric|
+|Name|Odpovídající hodnota poskytovatele prostředků Service Fabric|
 |----|-------------------------------------|
 |ID aplikace|74cb6831-0dbb-4be1-8206-fd4df301cdc2|
 |ID objektu|fbc587f2-66f5-4459-a027-bcd908b9d278|
@@ -131,4 +131,4 @@ V případě nesprávného přidání přiřazení role bude při nasazení spln
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Nasazení aplikace do spravovaného clusteru Service Fabric](https://docs.microsoft.com/azure/service-fabric/tutorial-managed-cluster-deploy-app) 
+> [Nasazení aplikace do spravovaného clusteru Service Fabric](./tutorial-managed-cluster-deploy-app.md)

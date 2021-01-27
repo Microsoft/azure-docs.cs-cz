@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 8e657386c417ce3407aea9b3765419e1d2b70bb9
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 242c0819e916f3ea7912d4d57b7d3e338152e4d9
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97962444"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878506"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>Řešení potíží se soubory Azure v systému Windows (SMB)
 
@@ -111,7 +111,7 @@ TcpTestSucceeded : True
 ### <a name="solution-for-cause-1"></a>Řešení 1. příčiny
 
 #### <a name="solution-1---use-azure-file-sync"></a>1. řešení – Použití Synchronizace souborů Azure
-Azure File Sync může transformovat místní Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru, včetně SMB, NFS a FTPS. Synchronizace souborů Azure funguje na portu 443 a proto ji můžou používat klienti se zablokovaným portem 445 jako alternativní způsob přístupu ke službě Azure Files. [Naučte se, jak nastavit Azure File Sync](./storage-sync-files-extend-servers.md).
+Synchronizace souborů Azure může transformovat místní Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru, včetně SMB, NFS a FTPS. Synchronizace souborů Azure funguje na portu 443 a proto ji můžou používat klienti se zablokovaným portem 445 jako alternativní způsob přístupu ke službě Azure Files. [Naučte se, jak nastavit synchronizace souborů Azure](./storage-sync-files-extend-servers.md).
 
 #### <a name="solution-2---use-vpn"></a>2. řešení – Použití sítě VPN
 Když nastavíte síť VPN na konkrétní účet úložiště, přenos přes Internet prochází zabezpečeným tunelovým propojením na rozdíl od Internetu. Pokud chcete získat přístup ke službě Azure Files z Windows, postupujte podle [pokynů k nastavení sítě VPN](storage-files-configure-p2s-vpn-windows.md).
@@ -263,7 +263,7 @@ Při pokusu o přenos souborů do služby Azure File Service se může zobrazit 
 -   Pokud znáte konečnou velikost souboru, který rozšiřujete o zápisy, a váš software nemá problémy s kompatibilitou, pokud nezapsaný konec souboru obsahuje nuly, nastavte velikost souboru předem místo toho, aby každý zápis nastavil rozšíření zápisu.
 -   Použijte pravou metodu kopírování:
     -   Použijte [AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) pro jakýkoli přenos mezi dvěma sdílenými složkami souborů.
-    -   Použijte příkaz [Robocopy](./storage-files-deployment-guide.md#robocopy) mezi sdílenými složkami na místním počítači.
+    -   Použijte příkaz [Robocopy](./storage-how-to-create-file-share.md) mezi sdílenými složkami na místním počítači.
 
 ### <a name="considerations-for-windows-81-or-windows-server-2012-r2"></a>Předpoklady pro Windows 8.1 nebo Windows Server 2012 R2
 
@@ -406,8 +406,8 @@ Tato rutina provádí následující kontroly v posloupnosti a poskytuje pokyny 
 5. CheckSidHasAadUser: Ověřte, že se přihlášený uživatel služby AD synchronizuje do Azure AD. Pokud chcete vyhledat konkrétního uživatele služby AD, který je synchronizovaný s Azure AD, můžete ve vstupních parametrech zadat-UserName a-Domain. 
 6. CheckGetKerberosTicket: Pokuste se získat lístek protokolu Kerberos pro připojení k účtu úložiště. Pokud není k dispozici platný token protokolu Kerberos, spusťte rutinu příkaz Klist (získat CIFS/Storage-Account-Name. File. Core. Windows. NET a prověřte kód chyby pro hlavní-příčinu selhání načtení lístku.
 7. CheckStorageAccountDomainJoined: Ověřte, jestli je povolené ověřování AD a naplní se vlastnosti Active Directory účtu. Pokud ne, přečtěte si [tady](./storage-files-identity-ad-ds-enable.md) pokyny, abyste povolili služba AD DS ověřování v souborech Azure. 
-8. CheckUserRbacAssignment: Ověřte, jestli má uživatel AD správné přiřazení role RBAC, aby poskytovala oprávnění na úrovni sdílení pro přístup k souborům Azure. Pokud ne, přečtěte si [tady](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-assign-permissions) pokyny ke konfiguraci oprávnění na úrovni sdílené složky. (Podporováno ve verzi AzFilesHybrid v 0.2.3 +)
-9. CheckUserFileAccess: Ověřte, jestli má uživatel AD ke službě Azure Files správný přístup k adresáři nebo souboru (seznamy řízení přístupu systému Windows). Pokud ne, přečtěte si [tady](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-configure-permissions) pokyny ke konfiguraci oprávnění na úrovni adresáře nebo souboru. (Podporováno ve verzi AzFilesHybrid v 0.2.3 +)
+8. CheckUserRbacAssignment: Ověřte, jestli má uživatel AD správné přiřazení role RBAC, aby poskytovala oprávnění na úrovni sdílení pro přístup k souborům Azure. Pokud ne, přečtěte si [tady](./storage-files-identity-ad-ds-assign-permissions.md) pokyny ke konfiguraci oprávnění na úrovni sdílené složky. (Podporováno ve verzi AzFilesHybrid v 0.2.3 +)
+9. CheckUserFileAccess: Ověřte, jestli má uživatel AD ke službě Azure Files správný přístup k adresáři nebo souboru (seznamy řízení přístupu systému Windows). Pokud ne, přečtěte si [tady](./storage-files-identity-ad-ds-configure-permissions.md) pokyny ke konfiguraci oprávnění na úrovni adresáře nebo souboru. (Podporováno ve verzi AzFilesHybrid v 0.2.3 +)
 
 ## <a name="unable-to-configure-directoryfile-level-permissions-windows-acls-with-windows-file-explorer"></a>Nejde nakonfigurovat oprávnění na úrovni adresáře nebo souboru (seznamy řízení přístupu systému Windows) pomocí Průzkumníka souborů Windows.
 

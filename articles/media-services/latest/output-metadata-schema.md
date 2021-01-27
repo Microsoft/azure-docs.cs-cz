@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services schéma metadat pro výstup | Microsoft Docs
+title: Azure Media Services schématu výstupní metadata
 description: Tento článek obsahuje přehled schématu výstupní metadata Azure Media Services V3.
 author: IngridAtMicrosoft
 manager: femila
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: aa6d4edc4348fa850eeb7e8d91ce0791ee4c7170
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a27db81866760bff56c900a908162f356c01a66
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336407"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895199"
 ---
 # <a name="output-metadata"></a>Výstupní metadata
 
@@ -38,7 +38,7 @@ Kolekce záznamů AssetFile pro úlohu kódování.
 
 | Název | Popis |
 | --- | --- |
-| **Prostředky** |Kolekce vstupních/zdrojových mediálních souborů, které byly zpracovány za účelem vytvoření tohoto AssetFile.<br />Příklad: `"Sources": [{"Name": "Ignite-short_1280x720_AACAudio_3551.mp4"}]`|
+| **zdroje** |Kolekce vstupních/zdrojových mediálních souborů, které byly zpracovány za účelem vytvoření tohoto AssetFile.<br />Příklad: `"Sources": [{"Name": "Ignite-short_1280x720_AACAudio_3551.mp4"}]`|
 | **VideoTracks**|Každý fyzický AssetFile může v něm obsahovat nula nebo více videí, které se pronechají v příslušném formátu kontejneru. <br />Viz [VideoTracks](#videotracks). |
 | **AudioTracks**|Každý fyzický AssetFile může v něm obsahovat nula nebo více zvukových stop, které se pronechají v příslušném formátu kontejneru. Toto je kolekce všech těchto zvukových stop.<br /> Další informace najdete v tématu [AudioTracks](#audiotracks). |
 | **Název**<br />Vyžadováno |Název souboru mediálního prostředku <br /><br />Příklad: `"Name": "Ignite-short_1280x720_AACAudio_3551.mp4"`|
@@ -55,8 +55,8 @@ Každý fyzický AssetFile může v něm obsahovat nula nebo více videí, kter�
 | **FourCC**<br />Vyžadováno | Videokodek FourCC kód, který je hlášen pomocí FFmpeg.  <br /><br />Příklad: `"FourCC": "avc1"`|
 | **Profil** |Profil H264 (platí jenom pro kodek H264).  <br /><br />Příklad: `"Profile": "High"` |
 | **Obsah** |Úroveň H264 (platí pouze pro kodek H264).  <br /><br />Příklad: `"Level": "3.2"`|
-| **Délk**<br />Vyžadováno |Zakódovaná Šířka videa v pixelech  <br /><br />Příklad: `"Width": "1280"`|
-| **Výška**<br />Vyžadováno |Výška kódovaného videa v pixelech  <br /><br />Příklad: `"Height": "720"`|
+| **Width (Šířka)**<br />Vyžadováno |Zakódovaná Šířka videa v pixelech  <br /><br />Příklad: `"Width": "1280"`|
+| **Height (Výška)**<br />Vyžadováno |Výška kódovaného videa v pixelech  <br /><br />Příklad: `"Height": "720"`|
 | **DisplayAspectRatioNumerator**<br />Vyžadováno|Čítač zobrazení poměru stran videa  <br /><br />Příklad: `"DisplayAspectRatioNumerator": 16.0`|
 | **DisplayAspectRatioDenominator**<br />Vyžadováno |Jmenovatel poměru stran zobrazení videa  <br /><br />Příklad: `"DisplayAspectRatioDenominator": 9.0`|
 | **Framerate**<br />Vyžadováno |Měřená snímková frekvence videa ve formátu. 3F.  <br /><br />Příklad: `"Framerate": 29.970`|

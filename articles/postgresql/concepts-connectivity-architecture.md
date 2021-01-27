@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.openlocfilehash: d5476bf1bfe2e222e115146c13f46e776d4bb497
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 23847c164ba59a8c46c2fdd5fb954b76ea251148
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657188"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98877675"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Architektura připojení v Azure Database for PostgreSQL
 Tento článek popisuje architekturu připojení Azure Database for PostgreSQL a také způsob, jakým se přesměruje přenos do vaší Azure Database for PostgreSQL instance databáze od klientů v rámci i mimo Azure.
@@ -28,7 +28,7 @@ Když se klient připojí k databázi, řetězec připojení k serveru se přelo
 
 Služba brány je hostovaná ve skupině bezstavových výpočetních uzlů s IP adresou, ke kterým má klient při pokusu o připojení k Azure Database for PostgreSQL serveru nejprve přístup. 
 
-V rámci průběžné údržby služby pravidelně aktualizujeme výpočetní hardware hostující brány, abychom zajistili, že poskytujeme nejbezpečnější a výkonné prostředí. Po obnovení hardwaru brány se nejprve vystaví nový prstenec výpočetních uzlů. Tento nový okruh obsluhuje provoz pro všechny nově vytvořené Azure Database for PostgreSQL servery a bude mít jinou IP adresu než starší prstence brány ve stejné oblasti pro odlišení provozu. Jakmile je nový okruh plně funkční, starší hardware brány obsluhující stávající servery se plánuje na vyřazení z provozu. Před vyřazením hardwaru brány do provozu budou zákazníci, kteří používají své servery a připojení ke starším partnerům brány, dostávat e-mailem a v Azure Portal tři měsíce předem před vyřazením z provozu. Vyřazení bran může mít vliv na připojení k vašim serverům, pokud 
+V rámci průběžné údržby služby pravidelně aktualizujeme výpočetní hardware hostující brány, abychom zajistili, že poskytujeme nejbezpečnější a výkonné prostředí pro připojení. Po obnovení hardwaru brány se nejprve vystaví nový prstenec výpočetních uzlů. Tento nový okruh obsluhuje provoz pro všechny nově vytvořené Azure Database for PostgreSQL servery a bude mít jinou IP adresu než starší prstence brány ve stejné oblasti pro odlišení provozu. Starší hardware brány nadále obsluhuje stávající servery, ale v budoucnu se plánuje vyřadit z provozu. Před vyřazením hardwaru brány do provozu budou zákazníci, kteří používají své servery a připojení ke starším partnerům brány, dostávat e-mailem a v Azure Portal tři měsíce předem před vyřazením z provozu. Vyřazení bran může mít vliv na připojení k vašim serverům, pokud 
 
 * V připojovacím řetězci vaší aplikace můžete zakódovat IP adresy brány. Nedoporučuje se. V připojovacím řetězci pro vaši aplikaci byste měli použít plně kvalifikovaný název domény (FQDN) vašeho serveru ve formátu <servername> . Postgres.Database.Azure.com. 
 * Novější IP adresy brány v bráně firewall na straně klienta neaktualizujete, aby odchozí přenosy umožňovaly přístup k novým okruhům bran.
@@ -46,10 +46,10 @@ V následující tabulce jsou uvedené IP adresy brány Azure Database for Postg
 | Central2 Austrálie     | 20.36.113.0  | | |
 | Austrálie – východ | 13.75.149.87, 40.79.161.1     |  | |
 | Austrálie – jihovýchod |191.239.192.109, 13.73.109.251   |  | |
-| Brazil South |191.233.201.8, 191.233.200.16    |  | 104.41.11.5|
+| Brazílie – jih |191.233.201.8, 191.233.200.16    |  | 104.41.11.5|
 | Střední Kanada |40.85.224.249  | | |
 | Kanada – východ | 40.86.226.166    | | |
-| Střední USA | 23.99.160.139, 13.67.215.62, 52.182.136.37, 52.182.136.38 | | |
+| USA – střed | 23.99.160.139, 13.67.215.62, 52.182.136.37, 52.182.136.38 | | |
 | Čína – východ | 139.219.130.35    | | |
 | Čína – východ 2 | 40.73.82.1  | | |
 | Čína – sever | 139.219.15.17    | | |
@@ -64,7 +64,7 @@ V následující tabulce jsou uvedené IP adresy brány Azure Database for Postg
 | Indie – střed | 104.211.96.159     | | |
 | Indie – jih | 104.211.224.146  | | |
 | Indie – západ | 104.211.160.80    | | |
-| Japan East | 13.78.61.196, 191.237.240.43, 40.79.192.23 | | |
+| Japonsko – východ | 13.78.61.196, 191.237.240.43, 40.79.192.23 | | |
 | Japonsko – západ | 104.214.148.156, 191.238.68.11, 40.74.96.6, 40.74.96.7    | | |
 | Jižní Korea – střed | 52.231.32.42   | | |
 | Jižní Korea – jih | 52.231.200.86    | | |

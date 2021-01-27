@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: jeffpatt
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 2a37c86268d2424971058021044c60185a25348f
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: ed86cc76984388618c177590b3f6358421f09f65
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916452"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878489"
 ---
 # <a name="troubleshoot-azure-nfs-file-shares"></a>Řešení potíží s sdílenými složkami Azure NFS
 
@@ -25,7 +25,7 @@ V tomto článku jsou uvedené některé běžné problémy související se sd�
 Soubory Azure nepovolují alfanumerické UID/GID. Proto musí být idmapping zakázané. 
 
 ### <a name="cause-2-idmapping-was-disabled-but-got-re-enabled-after-encountering-bad-filedir-name"></a>Příčina 2: idmapping byla zakázána, ale byla znovu povolena po zjištění chybného názvu souboru nebo adresáře.
-I v případě, že byl idmapping správně zakázán, nastavení pro zakázání idmapping se v některých případech přepíše. Například když Azure Files narazí na chybný název souboru, pošle zpět chybu. Po zobrazení tohoto konkrétního kódu chyby se klient systému souborů NFS verze 4,1 rozhodne znovu povolit idmapping a budoucí požadavky se odesílají znovu s alfanumerickým UID/GID. Seznam nepodporovaných znaků v souborech Azure najdete v tomto [článku](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#:~:text=The%20Azure%20File%20service%20naming%20rules%20for%20directory,be%20no%20more%20than%20255%20characters%20in%20length). Dvojtečka je jedním z nepodporovaných znaků. 
+I v případě, že byl idmapping správně zakázán, nastavení pro zakázání idmapping se v některých případech přepíše. Například když Azure Files narazí na chybný název souboru, pošle zpět chybu. Po zobrazení tohoto konkrétního kódu chyby se klient systému souborů NFS verze 4,1 rozhodne znovu povolit idmapping a budoucí požadavky se odesílají znovu s alfanumerickým UID/GID. Seznam nepodporovaných znaků v souborech Azure najdete v tomto [článku](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata). Dvojtečka je jedním z nepodporovaných znaků. 
 
 ### <a name="workaround"></a>Alternativní řešení
 Zkontrolujte, jestli je idmapping zakázané a nic znovu nepovolíte, a pak postupujte takto:
@@ -68,7 +68,7 @@ NFS je k dispozici jenom pro účty úložiště s následující konfigurací:
 - Úroveň Premium
 - Druh účtu – úložiště
 - Redundance – LRS
-- Oblasti – [seznam podporovaných oblastí](https://docs.microsoft.com/azure/storage/files/storage-files-how-to-create-nfs-shares?tabs=azure-portal#regional-availability)
+- Oblasti – [seznam podporovaných oblastí](./storage-files-how-to-create-nfs-shares.md?tabs=azure-portal#regional-availability)
 
 #### <a name="solution"></a>Řešení
 
@@ -100,7 +100,7 @@ Následující diagram znázorňuje připojení pomocí veřejných koncových b
 
 :::image type="content" source="media/storage-troubleshooting-files-nfs/connectivity-using-public-endpoints.jpg" alt-text="Diagram připojení k veřejnému koncovému bodu" lightbox="media/storage-troubleshooting-files-nfs/connectivity-using-public-endpoints.jpg":::
 
-- [Soukromý koncový bod](storage-files-networking-endpoints.md#create-a-private-endpoint)
+- [Privátní koncový bod](storage-files-networking-endpoints.md#create-a-private-endpoint)
     - Přístup je bezpečnější než koncový bod služby.
     - Přístup ke sdílené složce systému souborů NFS prostřednictvím privátního propojení je dostupný z oblasti Azure účtu úložiště (mezi oblastmi, místní) a mimo ni.
     - Partnerský vztah virtuální sítě s virtuálními sítěmi hostovanými v privátním koncovém bodu uděluje přístup ke sdílení systému souborů NFS klientům v partnerských virtuálních sítích.

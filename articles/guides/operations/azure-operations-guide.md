@@ -8,12 +8,12 @@ ms.service: azure
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 08/24/2018
-ms.openlocfilehash: 7b9e95c06dd48e78e42244d27d27d063bf5f0be7
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: c0269464352fa333c6447834a56c25348ecb71a3
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92327769"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895250"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Začínáme s operátory IT Azure
 
@@ -140,11 +140,11 @@ Azure je globální cloudová platforma, která je obecně dostupná v mnoha obl
 
 Jednou z výhod používání Azure je to, že můžete své aplikace nasadit do různých Datacenter po celém světě. Oblast, kterou zvolíte, může ovlivnit výkon aplikace. Je optimální zvolit oblast, která je blíže většině vašich zákazníků, aby se snížila latence v případě síťových požadavků. Můžete také vybrat oblast, která bude vyhovovat zákonným požadavkům pro distribuci aplikace v určitých zemích nebo oblastech.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Portál Azure Portal
 
 Azure Portal je webová aplikace, která se dá použít k vytváření, správě a odebírání prostředků a služeb Azure. Azure Portal najdete na adrese [Portal.Azure.com](https://portal.azure.com). Zahrnuje přizpůsobitelný řídicí panel a nástroje pro správu prostředků Azure. Poskytuje také informace o fakturaci a předplatném. Další informace najdete v tématu [přehled portál Microsoft Azure](https://azure.microsoft.com/documentation/articles/azure-portal-overview/) a [Správa prostředků Azure prostřednictvím portálu](../../azure-resource-manager/management/manage-resources-portal.md).
 
-### <a name="resources"></a>Prostředky
+### <a name="resources"></a>Zdroje a prostředky
 
 Prostředky Azure jsou individuální výpočetní prostředí, sítě, data nebo služby hostování aplikací, které se nasadily do předplatného Azure. Mezi běžné prostředky patří virtuální počítače, účty úložiště nebo databáze SQL. Služby Azure se často skládají z několika souvisejících prostředků Azure. Virtuální počítač Azure může například zahrnovat virtuální počítač, účet úložiště, síťový adaptér a veřejnou IP adresu. Tyto prostředky je možné vytvořit, spravovat a odstranit jednotlivě nebo jako skupinu. Prostředky Azure jsou podrobněji popsány dále v této příručce.
 
@@ -214,9 +214,7 @@ Kromě zobrazení fakturace na portálu můžete získat přístup k fakturačn�
 
 - K načtení dat o využití můžete použít rozhraní API využití Azure. Informace o využití fakturace můžete vyladit pomocí označení souvisejících prostředků Azure. Můžete například označit každý z prostředků ve skupině prostředků s názvem oddělení nebo názvem projektu a pak sledovat náklady konkrétně pro tuto jednu značku.
 
-- K vypsání všech dostupných prostředků spolu s informacemi o metadatech a cenách jednotlivých prostředků můžete použít rozhraní API služby Azure Rate Card.
-
-Další informace najdete v článku [Získání přehledu o spotřebě prostředků Microsoft Azure](../../cost-management-billing/manage/usage-rate-card-overview.md).
+- K vypsání všech dostupných prostředků spolu s metadaty můžete použít [Přehled rozhraní API](../../cost-management-billing/manage/consumption-api-overview.md) pro vyrovnávání využití Azure. Další informace o cenách najdete v tématu [Přehled maloobchodních cen Azure](/rest/api/cost-management/retail-prices/azure-retail-prices).
 
 ### <a name="forecast-cost-with-the-pricing-calculator"></a>Náklady na prognózu pomocí cenové kalkulačky
 
@@ -372,7 +370,7 @@ Každý typ úložiště má jiný případ použití.
 
 Azure Storage podporuje tři druhy objektů blob:
 
-- **Objekty blob bloku** se používají pro uchovávání běžných souborů o velikosti až 195 GB (4 MB × 50 000 bloků). Objekty blob bloku se primárně používají pro úložiště souborů, které se čtou od začátku do konce, jako jsou například mediální soubory nebo soubory obrázků pro weby. Jsou pojmenované objekty blob bloku, protože soubory větší než 64 MB se musí nahrát jako malé bloky. Tyto bloky se pak konsolidují (nebo potvrdí) do konečného objektu BLOB.
+- **Objekty blob bloku** se používají pro uchovávání běžných souborů o velikosti až 195 GB (4 MB × 50 000 bloků). Objekty blob bloku se primárně používají pro úložiště souborů, které se čtou od začátku do konce, jako jsou například mediální soubory nebo soubory obrázků pro weby. Jsou pojmenované objekty blob bloku, protože soubory větší než 64 MB se musí nahrát jako malé bloky. Tyto bloky se pak konsolidují (nebo zapíšou) do konečného objektu blob.
 
 - **Objekty blob stránky** se používají k ukládání souborů s náhodným přístupem o velikosti až 1 TB. Objekty blob stránky se používají hlavně jako záložní úložiště pro virtuální pevné disky, které poskytují trvalé disky pro Azure Virtual Machines, výpočetní služby IaaS v Azure. Označují se jako objekty blob stránky, protože poskytují náhodný přístup pro čtení/zápis k 512bajtovým stránkám.
 
@@ -388,7 +386,7 @@ Vzhledem k tomu, že sdílená složka úložiště je standardní sdílená slo
 
 Další informace najdete v tématu Začínáme [se službou Azure File Storage ve Windows](../../storage/files/storage-how-to-use-files-windows.md) nebo [používání služby Azure File Storage se systémem Linux](../../storage/files/storage-how-to-use-files-linux.md).
 
-#### <a name="table-storage"></a>Úložiště Table
+#### <a name="table-storage"></a>Table Storage
 
 Azure Table Storage je služba, která ukládá strukturovaná data typu NoSQL v cloudu. Table Storage je úložiště klíčů/atributů s návrhem bez schématu. Vzhledem k tomu, že je tabulka úložiště bez schématu, je snadné přizpůsobit data, jak se vyvíjí vaše aplikace. Přístup k datům je rychlý a nákladově efektivní pro všechny typy aplikací. Využívání úložiště Table Storage obvykle znamená výrazně nižší náklady než tradiční SQL pro podobné objemy dat.
 

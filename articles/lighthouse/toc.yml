@@ -45,6 +45,14 @@
           href: security-baseline.md
 - name: Návody
   items:
+    - name: Akce zákazníka
+      items:
+        - name: Zobrazení a správa poskytovatelů služeb
+          displayName: 'customer, update, visibility, control'
+          href: ./how-to/view-manage-service-providers.md
+        - name: Zobrazení aktivity poskytovatele služeb
+          displayName: 'monitor, log, customer, visibility, transparency, control'
+          href: ./how-to/view-service-provider-activity.md
     - name: Onboarding zákazníků do služby Azure Lighthouse
       displayName: resource management
       href: ./how-to/onboard-customer.md
@@ -87,14 +95,6 @@
           href: ./how-to/deploy-policy-remediation.md
     - name: Integrace Azure Sentinelu
       href: ./how-to/manage-sentinel-workspaces.md
-    - name: Akce zákazníka
-      items:
-        - name: Zobrazení a správa poskytovatelů služeb
-          displayName: 'customer, update'
-          href: ./how-to/view-manage-service-providers.md
-        - name: Zobrazení aktivity poskytovatele služeb
-          displayName: 'monitor, log'
-          href: ./how-to/view-service-provider-activity.md
 - name: Referenční informace
   items:
     - name: Azure CLI

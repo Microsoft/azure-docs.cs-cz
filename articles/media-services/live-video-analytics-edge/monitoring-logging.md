@@ -3,12 +3,12 @@ title: Monitorování a protokolování – Azure
 description: Tento článek poskytuje přehled monitorování a protokolování v živé analýze videí v IoT Edge.
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: 6a7251b62421642ad9f5dba4f4c2a15ce74cd5cf
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 6dc0a6d499d06c95bdccbc9e386d7f9288971ee8
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900871"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878100"
 ---
 # <a name="monitoring-and-logging"></a>Monitorování a protokolování
 
@@ -163,7 +163,7 @@ V předchozím formátu JSON `lvaEdge` je název živé analýzy videí v modulu
 
 Události pocházejí z hraničního zařízení a dají se spotřebovat na hranici nebo v cloudu. Události generované živou analýzou videa na IoT Edge odpovídají [vzoru zasílání zpráv streamování](../../iot-hub/iot-hub-devguide-messages-construct.md) , který vytváří Azure IoT Hub. Vzor se skládá z vlastností systému, vlastností aplikace a textu.
 
-### <a name="summary"></a>Shrnutí
+### <a name="summary"></a>Souhrn
 
 Každá událost, pokud je pozorována prostřednictvím IoT Hub, má sadu společných vlastností:
 
@@ -269,7 +269,7 @@ Pomocí těchto kroků povolíte shromažďování metrik z živé analýzy vide
 
 1. Pomocí příkazů Docker CLI Sestavte soubor Docker a publikujte image do služby Azure Container Registry.
     
-   Další informace o použití rozhraní příkazového řádku Docker pro vložení do registru kontejneru najdete v tématu [Image Docker push a pull](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-docker-cli). Další informace o Azure Container Registry najdete v [dokumentaci](https://docs.microsoft.com/azure/container-registry/).
+   Další informace o použití rozhraní příkazového řádku Docker pro vložení do registru kontejneru najdete v tématu [Image Docker push a pull](../../container-registry/container-registry-get-started-docker-cli.md). Další informace o Azure Container Registry najdete v [dokumentaci](../../container-registry/index.yml).
 
 
 1. Po dokončení operace Push na Azure Container Registry přidejte do souboru manifestu nasazení následující uzel:
@@ -311,7 +311,7 @@ Pomocí těchto kroků povolíte shromažďování metrik z živé analýzy vide
 
    V takovém případě v Azure Portal v levém podokně vyberte **metriky a vyberte metriky** . Měla by se zobrazit Metrika.
 
-## <a name="logging"></a>Protokolování
+## <a name="logging"></a>protokolování
 
 Stejně jako u jiných IoT Edgech modulů můžete také [prozkoumávat protokoly kontejnerů](../../iot-edge/troubleshoot.md#check-container-logs-for-issues) na hraničním zařízení. Informace, které se zapisují do protokolů, můžete nakonfigurovat pomocí [následujících dvojitých vlastností modulu](module-twin-configuration-schema.md) :
 

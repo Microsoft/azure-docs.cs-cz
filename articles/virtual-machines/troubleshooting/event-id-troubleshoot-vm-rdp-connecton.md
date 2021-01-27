@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
-ms.openlocfilehash: 507cd6cfe9f251dbc304b579d634ff986b001264
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c293945a52dd810975b36144f224278163166ba8
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87088593"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878439"
 ---
 # <a name="troubleshoot-azure-vm-rdp-connection-issues-by-event-id"></a>Řešení potíží s připojením RDP virtuálních počítačů Azure podle ID události 
 
@@ -156,19 +156,19 @@ Start-Service -Name "SessionEnv"
 
 Pokud certifikát nemůžete obnovit, zkuste certifikát odstranit pomocí těchto kroků:
 
-1. Na jiném virtuálním počítači ve stejné virtuální síti otevřete pole **Spustit** , zadejte **MMC**a potom stiskněte **OK**. 
+1. Na jiném virtuálním počítači ve stejné virtuální síti otevřete pole **Spustit** , zadejte **MMC** a potom stiskněte **OK**. 
 
 2. V nabídce **soubor** vyberte **Přidat nebo odebrat modul snap-in**.
 
-3. V seznamu **dostupné moduly snap-in** vyberte **certifikáty**a pak vyberte **Přidat**.
+3. V seznamu **dostupné moduly snap-in** vyberte **certifikáty** a pak vyberte **Přidat**.
 
-4. Vyberte položku **účet počítače**a potom vyberte možnost **Další**.
+4. Vyberte položku **účet počítače** a potom vyberte možnost **Další**.
 
-5. Vyberte **jiný počítač**a pak přidejte IP adresu virtuálního počítače, který obsahuje problémy.
+5. Vyberte **jiný počítač** a pak přidejte IP adresu virtuálního počítače, který obsahuje problémy.
    >[!Note]
    >Zkuste použít interní síť, abyste se vyhnuli používání virtuální IP adresy.
 
-6. Vyberte **Dokončit**a pak vyberte **OK**.
+6. Vyberte **Dokončit** a pak vyberte **OK**.
 
    ![Vybrat počítač](./media/event-id-troubleshoot-vm-rdp-connecton/select-computer.png)
 
@@ -235,7 +235,7 @@ K tomuto problému dochází v důsledku zásad zabezpečení. Pokud jsou starš
 
 Protokol RDP používá jako výchozí protokol TLS 1,0. Protokol se ale může změnit na TLS 1,1, což je nový standard.
 
-Pokud chcete tento problém vyřešit, přečtěte si téma [řešení chyb ověřování při připojení k virtuálnímu počítači Azure pomocí protokolu RDP](troubleshoot-authentication-error-rdp-vm.md#tls-version).
+Pokud chcete tento problém vyřešit, přečtěte si téma [řešení chyb ověřování při připojení k virtuálnímu počítači Azure pomocí protokolu RDP](/troubleshoot/azure/virtual-machines/cannot-connect-rdp-azure-vm#tls-version).
 
 ## <a name="scenario-3"></a>Scénář 3
 

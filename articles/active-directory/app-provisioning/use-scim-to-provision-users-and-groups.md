@@ -12,18 +12,19 @@ ms.date: 01/12/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 63bd44140ea5c355c3bb1a891a21e6c2e73ab041
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: bf1057276a543c18b746bb60b7e7a54bf28dec6f
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98679496"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98892557"
 ---
-# <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Kurz – sestavení koncového bodu SCIM a konfigurace zřizování uživatelů pomocí Azure AD
+# <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint"></a>Kurz: vývoj a plánování zřizování pro koncový bod SCIM
 
 Jako vývojář aplikace můžete použít systém pro rozhraní API pro správu uživatelů mezi doménami (SCIM) a povolit tak Automatické zřizování uživatelů a skupin mezi vaší aplikací a službou Azure AD. Tento článek popisuje, jak vytvořit koncový bod SCIM a jak ho integrovat se službou zřizování Azure AD. Specifikace SCIM poskytuje společné uživatelské schéma pro zřizování. Při použití ve spojení s federačními standardy, jako je SAML nebo OpenID Connect, SCIM poskytuje správcům ucelené řešení založené na standardech pro správu přístupu.
 
-SCIM je standardizovaná definice dvou koncových bodů: bod/Users a koncový bod/groups. Používá běžné operace REST k vytváření, aktualizaci a odstraňování objektů a předdefinované schéma pro běžné atributy, jako je název skupiny, uživatelské jméno, křestní jméno, příjmení a e-mail. Aplikace, které nabízejí SCIM 2,0 REST API můžou snížit nebo eliminovat přehlednost práce s rozhraním API pro správu uživatelů. Například kterýkoli kompatibilní klient SCIM ví, jak vytvořit příspěvek HTTP objektu JSON do koncového bodu/Users a vytvořit tak novou položku uživatele. Místo toho, aby pro stejné základní akce bylo nutné trochu odlišné rozhraní API, můžou aplikace, které odpovídají standardu SCIM, okamžitě využít výhod existujících klientů, nástrojů a kódu. 
+SCIM je standardizovaná definice dvou koncových bodů: `/Users` koncový bod a `/Groups` koncový bod. Používá běžné operace REST k vytváření, aktualizaci a odstraňování objektů a předdefinované schéma pro běžné atributy, jako je název skupiny, uživatelské jméno, křestní jméno, příjmení a e-mail. Aplikace, které nabízejí SCIM 2,0 REST API můžou snížit nebo eliminovat přehlednost práce s rozhraním API pro správu uživatelů. Například libovolný kompatibilní klient SCIM ví, jak vytvořit novou položku uživatele pomocí HTTP POST objektu JSON pro `/Users` koncový bod. Místo toho, aby pro stejné základní akce bylo nutné trochu odlišné rozhraní API, můžou aplikace, které odpovídají standardu SCIM, okamžitě využít výhod existujících klientů, nástrojů a kódu. 
 
 ![Zřizování z Azure AD do aplikace pomocí SCIM](media/use-scim-to-provision-users-and-groups/scim-provisioning-overview.png)
 
@@ -748,7 +749,9 @@ Služba zřizování Azure AD aktuálně funguje pod rozsahy IP adres pro Azurea
 
 Teď, když jste navrhli schéma a rozumíte implementaci Azure AD SCIM, můžete začít s vývojem koncového bodu SCIM. Místo začátku od nuly a sestavení implementace zcela na vlastní, můžete spoléhat na řadu open source knihoven SCIM, které publikovala komunita SCIM.
 
-Open source [referenční kód](https://aka.ms/SCIMReferenceCode) .NET Core publikovaný týmem zřizování Azure AD je jeden takový prostředek, který může přejít k zahájení vývoje. Po vytvoření SCIM koncového bodu ho budete chtít otestovat. Můžete použít kolekci předávacích [testů](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint) , které jsou součástí referenčního kódu, nebo spustit prostřednictvím vzorových požadavků nebo odpovědí uvedených [výše](#user-operations).  
+Pokyny k vytvoření SCIM koncového bodu, včetně příkladů, najdete v tématu [vývoj ukázkového koncového bodu SCIM](use-scim-to-build-users-and-groups-endpoints.md).
+
+[Vzorový ukázkový kód](https://aka.ms/SCIMReferenceCode) .NET Core, který je publikovaný týmem zřizování Azure AD, je jedním z takových prostředků, které můžou začít s vývojem. Po vytvoření SCIM koncového bodu ho budete chtít otestovat. Můžete použít kolekci předávacích [testů](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint) , které jsou součástí referenčního kódu, nebo spustit prostřednictvím vzorových požadavků nebo odpovědí uvedených [výše](#user-operations).  
 
    > [!Note]
    > Referenční kód vám umožňuje začít vytvářet SCIM koncový bod a poskytuje "tak, jak je". Příspěvky z komunity jsou Vítá vás při sestavování a údržbě kódu.
@@ -1127,11 +1130,17 @@ Aplikace, které podporují profil SCIM popsané v tomto článku, se dají při
 
 1. Přihlaste se k [portálu Azure Active Directory](https://aad.portal.azure.com). Všimněte si, že můžete získat přístup k bezplatné zkušební verzi pro Azure Active Directory s licencemi P2, a to tak, že si zaregistrujete [program pro vývojáře](https://developer.microsoft.com/office/dev-program) .
 2. V levém podokně vyberte **podnikové aplikace** . Zobrazí se seznam všech nakonfigurovaných aplikací, včetně aplikací přidaných z galerie.
-3. Vyberte **+ Nová aplikace**  >  **všechny**  >  **aplikace mimo galerii**.
-4. Zadejte název vaší aplikace a vyberte **Přidat** a vytvořte objekt aplikace. Nová aplikace se přidá do seznamu podnikových aplikací a otevře se na obrazovce správy aplikací.
+3. Vyberte **+ Nová aplikace**  >  **+ vytvořit vlastní aplikaci**.
+4. Zadejte název vaší aplikace, zvolte možnost *integrace jakékoli jiné aplikace, kterou v galerii nenajdete*, a vyberte **Přidat** k vytvoření objektu aplikace. Nová aplikace se přidá do seznamu podnikových aplikací a otevře se na obrazovce správy aplikací.
 
-   ![Snímek obrazovky se zobrazením Galerie aplikací Azure AD](media/use-scim-to-provision-users-and-groups/scim-figure-2a.png)<br/>
-   *Galerie aplikací Azure AD*
+   ![Snímek obrazovky se zobrazí v galerii aplikací ](media/use-scim-to-provision-users-and-groups/scim-figure-2b-1.png)
+    *Azure AD* Galerie aplikací Azure AD.
+
+   > [!NOTE]
+   > Pokud používáte staré prostředí Galerie aplikací, postupujte podle pokynů na obrazovce níže.
+   
+   ![Snímek obrazovky se službou Azure AD stará Experience Galerie aplikací Azure ve starém prostředí ](media/use-scim-to-provision-users-and-groups/scim-figure-2a.png)
+    *Galerie*
 
 5. Na obrazovce Správa aplikací vyberte na levém panelu možnost **zřizování** .
 6. V nabídce **režim zřizování** vyberte **automaticky**.
@@ -1235,6 +1244,7 @@ Abychom vám pomohli při zvyšování povědomí a vyžádání naší společn
 
 ## <a name="related-articles"></a>Související články
 
+* [Vývoj ukázkového koncového bodu SCIM](use-scim-to-build-users-and-groups-endpoints.md)
 * [Automatizace zřizování a rušení zřizování uživatelů pro aplikace SaaS](user-provisioning.md)
 * [Přizpůsobení mapování atributů pro zřizování uživatelů](customize-application-attributes.md)
 * [Zápis výrazů pro mapování atributů](functions-for-customizing-application-data.md)

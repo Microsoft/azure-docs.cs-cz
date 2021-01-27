@@ -1,5 +1,5 @@
 ---
-title: Kódování videí pomocí standardu Encoder v Media Services – Azure | Microsoft Docs
+title: Kódování videí pomocí Standard kodéru v Media Services
 description: V tomto tématu se dozvíte, jak používat standardní kodér v Media Services ke kódování vstupního videa s automaticky generovaným žebříkem rychlosti na základě vstupních rozlišení a přenosové rychlosti.
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 05accd69f1868b8b0e0f6dbd4fb5c21ee843ec5e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5b973d17e10f3dbb75f5208d9003b4f8118b37c7
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297711"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98891399"
 ---
 #  <a name="encode-with-an-auto-generated-bitrate-ladder"></a>Kódování pomocí automaticky generovaného žebříku přenosové rychlosti
 
@@ -31,7 +31,7 @@ V tomto článku se dozvíte, jak používat standardní kodér v Media Services
 
 ### <a name="encoding-for-streaming"></a>Kódování pro streamování
 
-Při použití předdefinovaného **AdaptiveStreaming** v **transformaci**získáte výstup, který je vhodný pro doručování přes protokoly streamování, jako je HLS nebo pomlčka. Při použití této předvolby služba inteligentně určuje, kolik vrstev videa se má vygenerovat a jaký přenosová rychlost a řešení. Výstupní obsah obsahuje soubory MP4, kde video s kódováním ve formátu AAC a H. 264 není prokládané.
+Při použití předdefinovaného **AdaptiveStreaming** v **transformaci** získáte výstup, který je vhodný pro doručování přes protokoly streamování, jako je HLS nebo pomlčka. Při použití této předvolby služba inteligentně určuje, kolik vrstev videa se má vygenerovat a jaký přenosová rychlost a řešení. Výstupní obsah obsahuje soubory MP4, kde video s kódováním ve formátu AAC a H. 264 není prokládané.
 
 Příklad toho, jak se tato předvolba používá, najdete v tématu [streamování souboru](stream-files-dotnet-quickstart.md).
 

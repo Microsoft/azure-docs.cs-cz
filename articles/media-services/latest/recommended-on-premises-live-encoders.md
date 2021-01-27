@@ -1,5 +1,5 @@
 ---
-title: Kodéry živého streamování doporučují Media Services – Azure | Microsoft Docs
+title: Kodéry živého streamování doporučují Media Services – Azure
 description: Přečtěte si o službě Live streamování pro místní kodéry Doporučené Media Services
 services: media-services
 keywords: kódování; kodéry; média
@@ -9,12 +9,12 @@ ms.author: johndeu
 ms.date: 11/10/2020
 ms.topic: conceptual
 ms.service: media-services
-ms.openlocfilehash: 88de41ae62e3a81fdb51981afe42135649bf34b4
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 6d54a4167739775d3c09740f25a883314e048c65
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94734306"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895165"
 ---
 # <a name="verified-on-premises-live-streaming-encoders"></a>Ověřená místní kodéry živého streamování
 

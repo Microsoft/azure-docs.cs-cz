@@ -3,12 +3,12 @@ title: Podívejte se na měsíční trend odhadovaných nákladů testovacího p
 description: Tento článek poskytuje informace o tom, jak sledovat náklady na testovací prostředí (měsíční trend odhadovaných nákladů) v Azure DevTest Labs.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 220cbd1bc793e4bcfdf03a184d7463114506e6e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a2a9bef9e54ef7deda123aad34cf0c576fd158f
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87283822"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98892333"
 ---
 # <a name="track-costs-associated-with-a-lab-in-azure-devtest-labs"></a>Sledovat náklady spojené s testovacím prostředím v Azure DevTest Labs
 Tento článek poskytuje informace o tom, jak sledovat náklady na testovací prostředí. Ukazuje, jak zobrazit trend odhadovaných nákladů pro aktuální kalendářní měsíc pro testovací prostředí. Článek také ukazuje, jak zobrazit měsíční náklady na prostředek v testovacím prostředí.
@@ -18,8 +18,8 @@ V této části se dozvíte, jak pomocí grafu **trendu předpokládaných nákl
 
 Chcete-li zobrazit graf trendu odhadovaných nákladů měsíčně, postupujte podle následujících kroků: 
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
-2. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+2. Vyberte **všechny služby** a v seznamu vyberte **DevTest Labs** .
 3. V seznamu cvičení vyberte testovací prostředí.  
 4. V nabídce vlevo vyberte **Konfigurace a zásady** .  
 4. V části **sledování nákladů** v levé nabídce vyberte **trend nákladů** . Následující snímek obrazovky ukazuje příklad nákladového grafu. 
@@ -28,7 +28,7 @@ Chcete-li zobrazit graf trendu odhadovaných nákladů měsíčně, postupujte p
 
     **Odhadovaná hodnota nákladů** je aktuální odhadované náklady v kalendářním měsíci. Předpokládané **náklady** jsou odhadované náklady na celý aktuální kalendářní měsíc, vypočítané pomocí nákladů testovacího prostředí za předchozích pět dnů.
 
-    Náklady se zaokrouhlují na nejbližší celé číslo. Například: 
+    Náklady se zaokrouhlují na nejbližší celé číslo. Příklad: 
 
    * 5,01 zaokrouhlí na 6 
    * 5,50 zaokrouhlí na 6
@@ -38,7 +38,7 @@ Chcete-li zobrazit graf trendu odhadovaných nákladů měsíčně, postupujte p
 
      Kalkulace nákladů *nezahrnuje následující* náklady:
 
-   * Předplatná CSP a DreamSpark se v tuto chvíli nepodporují, protože Azure DevTest Labs používá [rozhraní API pro fakturaci Azure](../cost-management-billing/manage/usage-rate-card-overview.md) k výpočtu nákladů testovacího prostředí, které nepodporují předplatné CSP nebo DreamSpark.
+   * Předplatná CSP a DreamSpark se v tuto chvíli nepodporují, protože Azure DevTest Labs používá rozhraní API pro fakturaci Azure k výpočtu nákladů testovacího prostředí, které nepodporují předplatné CSP nebo DreamSpark.
    * Sazby vaší nabídky. V současné době nemůžete použít sazby nabídek (zobrazené v rámci vašeho předplatného), které jste vyjednali s partnery Microsoftu nebo Microsoftu. Používají se jenom tarify průběžných plateb.
    * Vaše daně
    * Vaše slevy
@@ -66,7 +66,7 @@ DevTest Labs vám umožní lépe spravovat náklady v testovacím prostředí t�
        ![Konfigurovat podokno oznámení](./media/devtest-lab-configure-cost-management/configure-notification-new.png)
 
      - Pokud zadáte **Notify**, musíte zadat adresu URL Webhooku.
-     - Podobně platí, že pokud definujete adresu URL Webhooku, musíte **Notification** nastavit oznámení **v podokně** prahová hodnota nákladů.
+     - Podobně platí, že pokud definujete adresu URL Webhooku, musíte  nastavit oznámení **v podokně** prahová hodnota nákladů.
      - Webhook je nutné vytvořit před jeho zadáním sem.  
 
        Další informace o webhookech najdete v tématu [Vytvoření Webhooku nebo rozhraní API Azure Function](../azure-functions/functions-bindings-http-webhook.md). 
@@ -74,8 +74,8 @@ DevTest Labs vám umožní lépe spravovat náklady v testovacím prostředí t�
 ## <a name="view-cost-by-resource"></a>Zobrazit náklady podle prostředku 
 Funkce trendu měsíčních nákladů v cvičení vám umožní zjistit, kolik jste strávili v aktuálním kalendářním měsíci. Zobrazuje také projekci útraty až do konce měsíce na základě vašich útraty za posledních sedm dní. Abychom vám pomohli pochopit, proč útraty v testovacím prostředí jsou na začátku prahové hodnoty, můžete použít funkci **náklady podle prostředků** , která zobrazuje měsíční náklady na **prostředek** v tabulce.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
-2. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+2. Vyberte **všechny služby** a v seznamu vyberte **DevTest Labs** .
 3. V seznamu cvičení vyberte požadované testovací prostředí.  
 4. V nabídce vlevo vyberte **Konfigurace a zásady** .
 5. V části **sledování nákladů** v levé nabídce vyberte **náklady podle prostředků** . Zobrazí se náklady spojené s každým prostředkem přidruženým k testovacímu prostředí. 

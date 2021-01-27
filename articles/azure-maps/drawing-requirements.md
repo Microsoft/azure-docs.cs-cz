@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: bed5373cbb9967bd1d86bb80bb3a449430c3b6ae
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 2a37e716b7804b11ab396909f746af84294bb4e3
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98044777"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895267"
 ---
 # <a name="drawing-package-requirements"></a>Požadavky balíčku pro kreslení
 
@@ -41,7 +41,7 @@ Tady jsou některé pojmy a definice, které jsou důležité při čtení tohot
 | Vrstva | Vrstva DWG AutoCADu.|
 | Level | Oblast budovy se zvýšenou úrovní oprávnění. Například podlaha budovy. |
 | Odkazy XREF  |Soubor ve formátu DWG AutoCADu (. dwg), připojený k primárnímu výkresu jako externí odkaz.  |
-| Příznak | Objekt, který kombinuje geometrii s dalšími informacemi o metadatech. |
+| Funkce | Objekt, který kombinuje geometrii s dalšími informacemi o metadatech. |
 | Třídy funkcí | Běžný podrobný plán pro funkce. Například *jednotka* je třída funkce a *kancelář* je funkce. |
 
 ## <a name="drawing-package-structure"></a>Vykreslování struktury balíčku
@@ -106,7 +106,7 @@ Bez ohledu na to, kolik kreseb entit je v vnější vrstvě, bude [Výsledná da
 * Vnější musí být vykresleny jako mnohoúhelník, lomená (uzavřená), kolečko nebo elipsa (uzavřeno).
 * Vnějšku se můžou překrývat, ale rozloží se na jednu geometrii.
 * Výsledná funkce úrovně musí být aspoň 4 čtvercové měřiče.
-* Výsledná funkce úrovně nesmí být větší než 400 čtvercových měřičů.
+* Výsledná funkce úrovně nesmí být větší než 400 000 čtvercových měřičů.
 
 Pokud vrstva obsahuje více překrývajících se čar, jsou lomené řádky rozstupné na funkci s jednou úrovní. Případně, pokud vrstva obsahuje více překrývajících se čar, funkce Výsledná úroveň má více mnohoúhelníkových reprezentací.
 
@@ -198,7 +198,7 @@ Další části obsahují podrobnosti o požadavcích na jednotlivé objekty.
 
 ### `directoryInfo`
 
-| Vlastnost  | Typ | Povinné | Popis |
+| Vlastnost  | Typ | Vyžadováno | Popis |
 |-----------|------|----------|-------------|
 | `name`      | řetězec | true   |  Název budovy |
 | `streetAddress`|    řetězec |    false (nepravda)    | Adresa sestavení. |
@@ -219,7 +219,7 @@ Další části obsahují podrobnosti o požadavcích na jednotlivé objekty.
 
 `buildingLevels`Objekt obsahuje pole s JSON úrovněmi budov.
 
-| Vlastnost  | Typ | Povinné | Popis |
+| Vlastnost  | Typ | Vyžadováno | Popis |
 |-----------|------|----------|-------------|
 |`levelName`    |řetězec    |true |    Název popisné úrovně Například: Floor 1, předsálí, Blue parkování nebo Basement.|
 |`ordinal` | integer |    true | Určuje svislé pořadí úrovní. Každé zařízení musí mít úroveň s pořadovým číslem 0. |
@@ -229,7 +229,7 @@ Další části obsahují podrobnosti o požadavcích na jednotlivé objekty.
 
 ### `georeference`
 
-| Vlastnost  | Typ | Povinné | Popis |
+| Vlastnost  | Typ | Vyžadováno | Popis |
 |-----------|------|----------|-------------|
 |`lat`    | numerické |    true |    Desítková reprezentace stupně zeměpisné šířky v počátku kreslení zařízení. Souřadnice zdroje musí být v WGS84 web Mercator ( `EPSG:3857` ).|
 |`lon`    |numerické|    true|    Desítková reprezentace ve stupních délky v počátku kreslení zařízení Souřadnice zdroje musí být v WGS84 web Mercator ( `EPSG:3857` ). |
@@ -237,7 +237,7 @@ Další části obsahují podrobnosti o požadavcích na jednotlivé objekty.
 
 ### `dwgLayers`
 
-| Vlastnost  | Typ | Povinné | Popis |
+| Vlastnost  | Typ | Vyžadováno | Popis |
 |-----------|------|----------|-------------|
 |`exterior`    |pole řetězců|    true|    Názvy vrstev, které definují vnější profil budovy.|
 |`unit`|    pole řetězců|    true|    Názvy vrstev, které definují jednotky.|
@@ -251,7 +251,7 @@ Další části obsahují podrobnosti o požadavcích na jednotlivé objekty.
 
 `unitProperties`Objekt obsahuje pole s vlastnostmi jednotky ve formátu JSON.
 
-| Vlastnost  | Typ | Povinné | Popis |
+| Vlastnost  | Typ | Vyžadováno | Popis |
 |-----------|------|----------|-------------|
 |`unitName`    |řetězec    |true    |Název jednotky, která se má přidružit k tomuto `unitProperty` záznamu. Tento záznam je platný pouze v případě, že `unitName` se v vrstvách nachází shodný popisek `unitLabel` . |
 |`categoryName`|    řetězec|    false (nepravda)    |Název kategorie Úplný seznam kategorií najdete v tématu [kategorie](https://aka.ms/pa-indoor-spacecategories). |
@@ -271,7 +271,7 @@ Další části obsahují podrobnosti o požadavcích na jednotlivé objekty.
 
 `zoneProperties`Objekt obsahuje pole JSON vlastností zóny.
 
-| Vlastnost  | Typ | Povinné | Popis |
+| Vlastnost  | Typ | Vyžadováno | Popis |
 |-----------|------|----------|-------------|
 |Název_zóny        |řetězec    |true    |Název zóny, která se má přidružit k `zoneProperty` záznamu Tento záznam je platný pouze v případě, že `zoneName` se v vrstvě zóny nachází shodný popisek `zoneLabel` .  |
 |categoryName|    řetězec|    false (nepravda)    |Název kategorie Úplný seznam kategorií najdete v tématu [kategorie](https://aka.ms/pa-indoor-spacecategories). |

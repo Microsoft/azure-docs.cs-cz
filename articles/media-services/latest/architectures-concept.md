@@ -1,6 +1,5 @@
 ---
-title: Media Services architektury
-titleSuffix: Azure Media Services
+title: Architektury Media Services
 description: Tento článek popisuje architektury pro Media Services.
 services: media-services
 documentationcenter: ''
@@ -12,14 +11,14 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: inhenkel
-ms.openlocfilehash: c14dbe4253696e01e99111a24319e455c1d551e9
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: ad464eb1c0b6dec694c7c40868a0f95fcfeaf6e8
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533991"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98891484"
 ---
-# <a name="media-services-architectures"></a>Media Services architektury
+# <a name="media-services-architectures"></a>Architektury Media Services
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
@@ -29,7 +28,7 @@ ms.locfileid: "96533991"
 
 Toto řešení je postavené na spravovaných službách Azure: Media Services a Content Delivery Network. Tyto služby běží v prostředí s vysokou dostupností, které jsou opravené a podporované, takže se můžete soustředit na vaše řešení, a ne na prostředí, ve kterém běží.
 
-Podívejte se na [živá streamovaná digitální média](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/digital-media-live-stream) v centru architektury Azure.
+Podívejte se na [živá streamovaná digitální média](/azure/architecture/solution-ideas/articles/digital-media-live-stream) v centru architektury Azure.
 
 ## <a name="video-on-demand-digital-media"></a>Digitální média VoD (Video-on-Demand)
 
@@ -37,13 +36,13 @@ Základní řešení videa na vyžádání, které poskytuje možnost streamová
 
 Toto řešení je postavené na spravovaných službách Azure: Blob Storage, Content Delivery Network a Azure Media Player. Tyto služby běží v prostředí s vysokou dostupností, které jsou opravené a podporované, takže se můžete soustředit na vaše řešení, a ne na prostředí, ve kterém běží.
 
-Podívejte se [na digitální média videa na vyžádání](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/digital-media-video) v centru architektury Azure.
+Podívejte se [na digitální média videa na vyžádání](/azure/architecture/solution-ideas/articles/digital-media-video) v centru architektury Azure.
 
 ## <a name="gridwich-media-processing-system"></a>Systém pro zpracování médií Gridwich
 
 Systém Gridwich přináší osvědčené postupy pro zpracování a poskytování mediálních prostředků v Azure. I když je systém Gridwich specifický pro média, rozhraní pro zpracování zpráv a zpracování událostí se může vztahovat na libovolný stavový pracovní postup zpracování událostí.
 
-Viz [Gridwich Media Processing System](https://docs.microsoft.com/azure/architecture/reference-architectures/media-services/gridwich-architecture) v centru architektury Azure.
+Viz [Gridwich Media Processing System](/azure/architecture/reference-architectures/media-services/gridwich-architecture) v centru architektury Azure.
 
 ## <a name="next-steps"></a>Další kroky
 

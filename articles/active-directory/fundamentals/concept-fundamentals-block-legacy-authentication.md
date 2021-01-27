@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 04/13/2020
+ms.date: 01/26/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: b50c942d2e05d7f5234a17f1cf36137309c7ce97
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 24640254f32270b8c96c790dca7db31e285cc27f
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95973707"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895284"
 ---
 # <a name="blocking-legacy-authentication"></a>Blokování starších verzí ověřování
  
@@ -33,10 +33,11 @@ V současné době většina všech neúspěšných pokusů o přihlášení poc
 Než budete moct v adresáři zablokovat starší verze ověřování, musíte nejdřív pochopit, jestli mají vaši uživatelé aplikace, které používají starší verze ověřování a jak ovlivňují celkový adresář. Protokoly přihlášení k Azure AD se dají použít k pochopení, jestli používáte starší verze ověřování.
 
 1. Přejděte do **Azure Portal**  >  **Azure Active Directory**  >  **přihlášení**.
-1. Pokud není zobrazený, klikněte na  **sloupce** **Client App**   >  **klientská aplikace** a přidejte sloupec aplikace klienta.
+1. Pokud není zobrazený, klikněte na **sloupce**    >  **klientská aplikace** a přidejte sloupec aplikace klienta.
 1. Filtrovat podle **klientské aplikace** > zajděte si uvedené možnosti pro **starší verze klientů ověřování** .
 1. Filtrovat podle **stavu**  >  **úspěch**. 
 1. V případě potřeby rozbalíte rozsah dat pomocí filtru **data** .
+1. Pokud jste aktivovali [nové sestavy aktivit přihlašování ve verzi Preview](../reports-monitoring/concept-all-sign-ins.md), opakujte výše uvedené kroky také na kartě **přihlášení uživatele (neinteraktivní)** .
 
 Filtrování zobrazí jenom úspěšné pokusy o přihlášení, které udělaly vybrané starší protokoly ověřování. Kliknutím na každý jednotlivý pokus o přihlášení zobrazíte další podrobnosti. Sloupec klientské aplikace nebo pole klientské aplikace na kartě Základní informace po výběru jednotlivého řádku dat určuje, který starší verze ověřovacího protokolu se použil. Tyto protokoly určují, kteří uživatelé pořád závisejí na starší verzi ověřování a které aplikace používají starší protokoly k provádění požadavků na ověření. Pro uživatele, kteří se v těchto protokolech nezobrazují a které se potvrzují, že nepoužívají starší verze ověřování, implementujte zásady podmíněného přístupu nebo zapněte zásady standardních hodnot: zablokuje starší ověřování jenom pro tyto uživatele.
 
@@ -100,4 +101,4 @@ Postup povolení moderního ověřování najdete v následujících článcích
 
 - [Jak nakonfigurovat místní Exchange Server tak, aby používal hybridní moderní ověřování](/office365/enterprise/configure-exchange-server-for-hybrid-modern-authentication)
 - [Jak používat moderní ověřování (ADAL) se Skypem pro firmy](/skypeforbusiness/manage/authentication/use-adal)
-- [Blokování starší verze ověřování](../conditional-access/block-legacy-authentication.md)
+- [Blokovat starší verze ověřování](../conditional-access/block-legacy-authentication.md)
