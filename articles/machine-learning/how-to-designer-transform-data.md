@@ -10,12 +10,12 @@ ms.author: peterlu
 ms.date: 06/28/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: be2921f88ad2ecf88c555daf8385f1bd6733e836
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 70f5e17c4cc42201e9aa3d36c9937f6ceb9527d0
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94554011"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880199"
 ---
 # <a name="transform-data-in-azure-machine-learning-designer"></a>Transformace dat v Návrháři Azure Machine Learning
 
@@ -52,11 +52,7 @@ Pomocí následujících kroků importujte ukázkovou datovou sadu.
 
 1. Přetáhněte na plátno datovou sadu **binární klasifikace pro příjem z** odkládacích souborů.
 
-1. Vyberte modul navýšení datové sady **příjmů pro dospělé** .
-
-1. V podokně podrobností, které se zobrazí napravo od plátna, vyberte **výstupy**.
-
-1. Vybrat ikonu vizualizace ![ikona vizualizace](media/how-to-designer-transform-data/visualize-icon.png).
+1. Klikněte pravým tlačítkem na modul **pro příjem dat příjmů z dospělého** a vyberte **vizualizovat**  >  **výstup datové sady** .
 
 1. Pomocí okna náhledu dat můžete prozkoumat datovou sadu. Poznamenejte si zvláštní podobu hodnot sloupců "nativní země".
 
@@ -74,7 +70,7 @@ V této části použijete [modul rozdělit data](algorithm-module-reference/spl
 
 1. V podokně podrobností modulu napravo od plátna nastavte **rozdělovací režim** na **regulární výraz**.
 
-1. Zadejte **regulární výraz** : `\"native-country" United-States` .
+1. Zadejte **regulární výraz**: `\"native-country" United-States` .
 
     Režim **regulárního výrazu** testuje jeden sloupec pro hodnotu. Další informace o modulu Split data najdete na [referenční stránce modulu souvisejícího algoritmu](algorithm-module-reference/split-data.md).
 
@@ -103,13 +99,13 @@ Teď, když je váš kanál nastavený pro rozdělení dat, je potřeba určit, 
 
 1. V podokně podrobností modulu napravo od plátna nastavte následující možnosti:
     
-    **Typ úložiště dat** : Azure Blob Storage
+    **Typ úložiště dat**: Azure Blob Storage
 
-    **Úložiště dat** : Vyberte existující úložiště dat, nebo vyberte nové úložiště dat, abyste ho mohli teď vytvořit.
+    **Úložiště dat**: Vyberte existující úložiště dat, nebo vyberte nové úložiště dat, abyste ho mohli teď vytvořit.
 
-    **Cesta** : `/data/us-income`
+    **Cesta**: `/data/us-income`
 
-    **Formát souboru** : CSV
+    **Formát souboru**: CSV
 
     > [!NOTE]
     > V tomto článku se předpokládá, že máte přístup k úložišti dat registrovanému v aktuálním pracovním prostoru Azure Machine Learning. Pokyny, jak nastavit úložiště dat, najdete v tématu [připojení ke službám Azure Storage](how-to-connect-data-ui.md#create-datastores).
@@ -120,13 +116,13 @@ Teď, když je váš kanál nastavený pro rozdělení dat, je potřeba určit, 
 
 1. V podokně podrobností modulu napravo od plátna nastavte následující možnosti:
     
-    **Typ úložiště dat** : Azure Blob Storage
+    **Typ úložiště dat**: Azure Blob Storage
 
-    **Úložiště dat** : vyberte stejné úložiště dat jako výše.
+    **Úložiště dat**: vyberte stejné úložiště dat jako výše.
 
-    **Cesta** : `/data/non-us-income`
+    **Cesta**: `/data/non-us-income`
 
-    **Formát souboru** : CSV
+    **Formát souboru**: CSV
 
 1. Potvrďte, že je v modulu **Export data** připojené k levému portu **rozdělených dat** **cesta** `/data/us-income` .
 

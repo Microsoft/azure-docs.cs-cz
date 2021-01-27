@@ -8,12 +8,12 @@ ms.author: pafarley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 58f1c2621165a7074c04752832c6560b2fd3e423
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a3b073cdb90e0c427bfbca15c1440b9122672610
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011961"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880131"
 ---
 # <a name="example-create-a-form-recognizer-custom-skill"></a>Příklad: Vytvoření vlastní dovednosti pro rozpoznávání formulářů
 
@@ -30,7 +30,7 @@ V tomto příkladu Azure Kognitivní hledání dovednosti se dozvíte, jak vytvo
 
 ## <a name="train-your-model"></a>Trénování modelu
 
-Předtím, než použijete tuto dovednost, budete muset vytvořit model rozpoznávání formulářů se vstupními formuláři. Postupujte podle pokynů pro [rychlý Start](../cognitive-services/form-recognizer/quickstarts/curl-train-extract.md) a Naučte se naučit model. Můžete použít ukázkové formuláře poskytované v rámci tohoto rychlého startu nebo můžete použít vlastní data. Po vyškolení modelu zkopírujte jeho hodnotu ID do zabezpečeného umístění.
+Předtím, než použijete tuto dovednost, budete muset vytvořit model rozpoznávání formulářů se vstupními formuláři. Postupujte podle pokynů pro [rychlý Start](../cognitive-services/form-recognizer/quickstarts/client-library.md?pivots=programming-language-rest-api) a Naučte se naučit model. Můžete použít ukázkové formuláře poskytované v rámci tohoto rychlého startu nebo můžete použít vlastní data. Po vyškolení modelu zkopírujte jeho hodnotu ID do zabezpečeného umístění.
 
 ## <a name="set-up-the-custom-skill"></a>Nastavení vlastní dovednosti
 

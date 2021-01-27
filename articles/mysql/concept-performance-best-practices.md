@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/23/2020
-ms.openlocfilehash: c29c043a3af46086751629b31ce68217e7226442
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 30176e2df850e6d2794ab9c1542bcb6a89d8f89f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96354957"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880402"
 ---
 # <a name="best-practices-for-optimal-performance-of-your-azure-database-for-mysql---single-server"></a>Osvědčené postupy pro zajištění optimálního výkonu Azure Database for MySQL a jednoho serveru
 
@@ -46,9 +46,9 @@ Vytvoření nového připojení je vždycky náročná a časově náročná úl
 
 Osvědčeným postupem z hlediska výkonu Azure Database for MySQL je přidělit dostatek paměti RAM, abyste pracovní sadu měli skoro kompletně v paměti. 
 
-- Ověřte, jestli je procento využití paměti používané při dosažení [limitů](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers) [za použití metriky pro server MySQL](https://docs.microsoft.com/azure/mysql/concepts-monitoring). 
+- Ověřte, jestli je procento využití paměti používané při dosažení [limitů](./concepts-pricing-tiers.md) [za použití metriky pro server MySQL](./concepts-monitoring.md). 
 - Nastavte výstrahy na těchto číslech, abyste měli jistotu, že když servery dosáhnou omezení, můžete s jejich opravou provádět akce s výzvou. V závislosti na definovaných omezeních ověřte, zda vertikální navýšení kapacity databáze – buď na vyšší výpočetní velikost, nebo na lepší cenovou úroveň, což vede k výraznému nárůstu výkonu. 
-- Horizontální navýšení kapacity až po operaci škálování se už neprojeví. Informace o monitorování metrik instance databáze najdete v tématu [metriky databáze MySQL](https://docs.microsoft.com/azure/mysql/concepts-monitoring#metrics).
+- Horizontální navýšení kapacity až po operaci škálování se už neprojeví. Informace o monitorování metrik instance databáze najdete v tématu [metriky databáze MySQL](./concepts-monitoring.md#metrics).
 
 ## <a name="next-steps"></a>Další kroky
 

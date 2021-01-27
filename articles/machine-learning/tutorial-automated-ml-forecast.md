@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 author: cartacioS
 ms.date: 12/21/2020
 ms.custom: automl
-ms.openlocfilehash: 31e9ff3fd07a7d305c88d28629f3252db5d857c8
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 2653161b5828d89858234a9ca98fe432e0eacb5c
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97695438"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879356"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>Kurz: Předpověď poptávky pomocí automatizovaného strojového učení
 
@@ -126,7 +126,7 @@ Po načtení a konfiguraci dat nastavte vzdálený cíl výpočtů a vyberte, kt
             Název výpočetních prostředků |  Jedinečný název, který identifikuje váš výpočetní kontext. | kolo – COMPUTE
             Minimální/maximální počet uzlů| Chcete-li profilovat data, je nutné zadat 1 nebo více uzlů.|Minimální počet uzlů: 1<br>Maximální počet uzlů: 6
             Počet sekund nečinnosti před horizontálním navýšení kapacity | Doba nečinnosti před tím, než se cluster automaticky škáluje na minimální počet uzlů.|120 (výchozí)
-            Pokročilá nastavení | Nastavení pro konfiguraci a autorizaci virtuální sítě pro svůj experiment.| Žádné 
+            Rozšířená nastavení | Nastavení pro konfiguraci a autorizaci virtuální sítě pro svůj experiment.| Žádné 
   
         1. Pokud chcete získat cíl výpočtů, vyberte **vytvořit** . 
 
@@ -240,7 +240,7 @@ V tomto kurzu jste pomocí automatizovaného ML v sadě Azure Machine Learning S
 Postup vytvoření Power BI podporovaného schématu pro usnadnění spotřeby nově nasazené webové služby najdete v tomto článku:
 
 > [!div class="nextstepaction"]
-> [Využívání webové služby](https://docs.microsoft.com/power-bi/connect-data/service-aml-integrate?context=azure/machine-learning/context/ml-context)
+> [Využívání webové služby](/power-bi/connect-data/service-aml-integrate?context=azure%2fmachine-learning%2fcontext%2fml-context)
 
 + Přečtěte si další informace o [automatizovaném strojovém učení](concept-automated-ml.md).
 + Další informace o metrikách klasifikace a grafech najdete v článku [vysvětlení výsledků automatizovaného strojového učení](how-to-understand-automated-ml.md) .

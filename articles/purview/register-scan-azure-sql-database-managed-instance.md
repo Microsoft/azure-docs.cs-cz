@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 3513ba0cd1a894b55da604d54964affa79b6adf4
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 2391a36c02e0bdfe0ea98be7f19fc64f1fbb676f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98555963"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879928"
 ---
 # <a name="register-and-scan-an-azure-sql-database-managed-instance"></a>Registrace a kontrola Azure SQL Database spravované instance
 
@@ -34,13 +34,13 @@ Azure dosah nepodporuje kontrolu [zobrazení](/sql/relational-databases/views/vi
 
 - Vytvořte nový účet dosah, pokud ho ještě nemáte.
 
-- [Konfigurace veřejného koncového bodu ve spravované instanci Azure SQL](/azure/azure-sql/managed-instance/public-endpoint-configure)
+- [Konfigurace veřejného koncového bodu ve spravované instanci Azure SQL](../azure-sql/managed-instance/public-endpoint-configure.md)
     > [!Note]
     > Vaše organizace musí mít možnost umožnit veřejný koncový bod jako **soukromý koncový bod** , který dosah ještě nepodporuje. Pokud použijete privátní koncový bod, kontrola nebude úspěšná.
 
 ### <a name="setting-up-authentication-for-a-scan"></a>Nastavení ověřování pro kontrolu
 
-Ověřování pro kontrolu Azure SQL Database spravované instance. Pokud potřebujete vytvořit nové ověřování, musíte [autorizovat přístup k databázi pro SQL Database spravovanou instanci](/azure/azure-sql/database/logins-create-manage). Existují tři metody ověřování, které dnes dosah podporuje:
+Ověřování pro kontrolu Azure SQL Database spravované instance. Pokud potřebujete vytvořit nové ověřování, musíte [autorizovat přístup k databázi pro SQL Database spravovanou instanci](../azure-sql/database/logins-create-manage.md). Existují tři metody ověřování, které dnes dosah podporuje:
 
 - Ověřování SQL
 - Instanční objekt
@@ -85,8 +85,8 @@ Chcete-li použít instanční objekt, můžete použít existující nebo vytvo
 ##### <a name="configure-azure-ad-authentication-in-the-database-account"></a>Konfigurace ověřování Azure AD v databázovém účtu
 
 Objekt služby nebo spravovaná identita musí mít oprávnění k získání metadat pro databázi, schémata a tabulky. Musí být také schopné dotazovat tabulky na ukázku pro klasifikaci.
-- [Konfigurace a Správa ověřování Azure AD pomocí Azure SQL](/azure/azure-sql/database/authentication-aad-configure)
-- Pomocí požadavků a kurzu Vytvoření uživatele, který je [namapován na identity Azure AD](/azure/azure-sql/database/authentication-aad-configure?tabs=azure-powershell#create-contained-users-mapped-to-azure-ad-identities) , vytvořte uživatele Azure AD v Azure SQL Database Managed instance.
+- [Konfigurace a Správa ověřování Azure AD pomocí Azure SQL](../azure-sql/database/authentication-aad-configure.md)
+- Pomocí požadavků a kurzu Vytvoření uživatele, který je [namapován na identity Azure AD](../azure-sql/database/authentication-aad-configure.md?tabs=azure-powershell#create-contained-users-mapped-to-azure-ad-identities) , vytvořte uživatele Azure AD v Azure SQL Database Managed instance.
 - Přiřadit `db_owner` (**doporučeno**) oprávnění k identitě
 
 ##### <a name="add-service-principal-to-key-vault-and-purviews-credential"></a>Přidání instančního objektu do trezoru klíčů a přihlašovacích údajů služby dosah

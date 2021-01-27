@@ -3,17 +3,17 @@ title: Vlastní zásady přidělování pomocí Azure IoT Hub Device Provisionin
 description: Jak používat vlastní zásady přidělování pro Azure IoT Hub Device Provisioning Service (DPS)
 author: wesmc7777
 ms.author: wesmc
-ms.date: 11/14/2019
+ms.date: 01/26/2021
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 26615b82bb9dcbc1247bec9b7a06b579dfa1eb2b
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 4931258af0dd50d091bec98824df5da0e91dbf53
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96571636"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895721"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>Postupy používání vlastních zásad přidělování
 
@@ -40,7 +40,7 @@ V tomto článku provedete následující kroky:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Následující požadavky jsou pro vývojové prostředí systému Windows. Informace o systému Linux nebo macOS najdete v příslušné části [Příprava vývojového prostředí](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) v dokumentaci k sadě SDK.
 
@@ -66,7 +66,7 @@ V této části použijete Azure Cloud Shell k vytvoření služby zřizování 
     az group create --name contoso-us-resource-group --location westus
     ```
 
-2. Pomocí Azure Cloud Shell vytvořte službu Device Provisioning pomocí příkazu [AZ IoT DPS Create](/cli/azure/iot/dps#az-iot-dps-create) . Služba zřizování bude přidána do *skupiny contoso-US-Resource-Group*.
+2. Pomocí Azure Cloud Shell vytvořte službu Device Provisioning Service (DPS) pomocí příkazu [AZ IoT DPS Create](/cli/azure/iot/dps#az-iot-dps-create) . Služba zřizování bude přidána do *skupiny contoso-US-Resource-Group*.
 
     Následující příklad vytvoří službu zřizování s názvem *Contoso-Provisioning-Service-1098* v umístění *westus* . Je nutné použít jedinečný název služby. Vytvořte vlastní příponu v názvu služby místo **1098**.
 
@@ -96,11 +96,30 @@ V této části použijete Azure Cloud Shell k vytvoření služby zřizování 
 
     Dokončení tohoto příkazu může trvat několik minut.
 
+5. Centra IoT musí být propojena s prostředkem DPS. 
+
+    Spusťte následující dva příkazy a získejte připojovací řetězce pro rozbočovače, které jste právě vytvořili:
+
+    ```azurecli-interactive 
+    hubToastersConnectionString=$(az iot hub connection-string show --hub-name contoso-toasters-hub-1098 --key primary --query connectionString -o tsv)
+    hubHeatpumpsConnectionString=$(az iot hub connection-string show --hub-name contoso-heatpumps-hub-1098 --key primary --query connectionString -o tsv)
+    ```
+
+    Spuštěním následujících příkazů propojte centra s prostředkem DPS:
+
+    ```azurecli-interactive 
+    az iot dps linked-hub create --dps-name contoso-provisioning-service-1098 --resource-group contoso-us-resource-group --connection-string $hubToastersConnectionString --location westus
+    az iot dps linked-hub create --dps-name contoso-provisioning-service-1098 --resource-group contoso-us-resource-group --connection-string $hubHeatpumpsConnectionString --location westus
+    ```
+
+
+
+
 ## <a name="create-the-custom-allocation-function"></a>Vytvoření vlastní alokační funkce
 
 V této části vytvoříte funkci Azure, která implementuje vaše vlastní zásady přidělování. Tato funkce určuje, ke kterému centru IoT Hub má být zařízení zaregistrováno na základě toho, zda ID registrace obsahuje řetězec **-Contoso-tstrsd-007** nebo **-Contoso-hpsd-088**. Také nastaví počáteční stav vlákna zařízení na základě toho, zda je zařízení informační nebo tepelné čerpadlo.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Na domovské stránce vyberte **+ vytvořit prostředek**.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Na domovské stránce vyberte **+ vytvořit prostředek**.
 
 2. Do vyhledávacího pole *Hledat na Marketplace* zadejte "Function App". V rozevíracím seznamu vyberte **Function App** a pak vyberte **vytvořit**.
 
@@ -114,6 +133,8 @@ V této části vytvoříte funkci Azure, která implementuje vaše vlastní zá
 
     **Zásobník modulu runtime**: v rozevíracím seznamu vyberte **.NET Core** .
 
+    **Verze**: z rozevíracího seznamu vyberte **3,1** .
+
     **Oblast**: Vyberte stejnou oblast jako vaše skupina prostředků. Tento příklad používá **západní USA**.
 
     > [!NOTE]
@@ -123,19 +144,15 @@ V této části vytvoříte funkci Azure, která implementuje vaše vlastní zá
 
 4. Na stránce **Souhrn** vyberte **vytvořit** a vytvořte aplikaci Function App. Nasazení může trvat několik minut. Až se dokončí, vyberte **Přejít k prostředku**.
 
-5. V levém podokně na stránce **Přehled** aplikace Function App vyberte další funkce **+** a přidejte **Functions** novou funkci.
+5. V levém podokně na stránce **Přehled** aplikace Function App klikněte na **funkce** a potom na **+ Přidat** pro přidání nové funkce.
 
-    ![Přidání funkce do Function App](./media/how-to-use-custom-allocation-policies/create-function.png)
+6. Na stránce **Přidat funkci** klikněte na **Trigger http** a pak klikněte na tlačítko **Přidat** .
 
-6. Na stránce **Azure Functions pro rozhraní .NET – Začínáme** v části **Zvolte prostředí nasazení** vyberte dlaždici na **portálu** a pak vyberte **pokračovat**.
+7. Na další stránce klikněte na **kód + test**. To umožňuje upravit kód pro funkci s názvem **HttpTrigger1**. Soubor kódu **Run. csx** by měl být otevřen pro úpravy.
 
-    ![Vyberte vývojové prostředí portálu.](./media/how-to-use-custom-allocation-policies/function-choose-environment.png)
+8. Odkaz na požadované balíčky NuGet. Chcete-li vytvořit počáteční vlákna zařízení, vlastní funkce přidělení používá třídy, které jsou definovány ve dvou balíčcích NuGet, které musí být načteny do hostitelského prostředí. S Azure Functions jsou balíčky NuGet odkazovány pomocí souboru *Function. proj* . V tomto kroku uložíte a nahrajete soubor *Function. proj* pro požadovaná sestavení.  Další informace najdete v tématu [použití balíčků NuGet s Azure Functions](../azure-functions/functions-reference-csharp.md#using-nuget-packages).
 
-7. Na další stránce pro krok **Vytvoření funkce** vyberte dlaždici **WEBHOOK + rozhraní API** a pak vyberte **vytvořit**. Vytvoří se funkce s názvem **HttpTrigger1** a na portálu se zobrazí obsah souboru kódu **Run. csx** .
-
-8. Odkaz na požadované balíčky NuGet. Chcete-li vytvořit počáteční vlákna zařízení, vlastní funkce přidělení používá třídy, které jsou definovány ve dvou balíčcích NuGet, které musí být načteny do hostitelského prostředí. Pomocí Azure Functions jsou na balíčky NuGet odkazovány pomocí souboru *Function. Host* . V tomto kroku uložíte a nahrajete soubor *Function. Host* .
-
-    1. Zkopírujte následující řádky do svého oblíbeného editoru a uložte soubor na počítači jako *Function. Host*.
+    1. Zkopírujte následující řádky do svého oblíbeného editoru a uložte soubor do svého počítače jako *Function. proj*.
 
         ```xml
         <Project Sdk="Microsoft.NET.Sdk">  
@@ -143,21 +160,15 @@ V této části vytvoříte funkci Azure, která implementuje vaše vlastní zá
                 <TargetFramework>netstandard2.0</TargetFramework>  
             </PropertyGroup>  
             <ItemGroup>  
-                <PackageReference Include="Microsoft.Azure.Devices.Provisioning.Service" Version="1.5.0" />  
-                <PackageReference Include="Microsoft.Azure.Devices.Shared" Version="1.16.0" />  
+                <PackageReference Include="Microsoft.Azure.Devices.Provisioning.Service" Version="1.16.3" />
+                <PackageReference Include="Microsoft.Azure.Devices.Shared" Version="1.27.0" />
             </ItemGroup>  
         </Project>
         ```
 
-    2. Na funkci **HttpTrigger1** rozbalte kartu **Zobrazit soubory** na pravé straně okna.
+    2. Klikněte na tlačítko **nahrát** umístěné nad Editor kódu a nahrajte soubor *Function. proj* . Po odeslání vyberte soubor v editoru kódu pomocí rozevíracího seznamu pro ověření obsahu.
 
-        ![Otevřít zobrazení souborů](./media/how-to-use-custom-allocation-policies/function-open-view-files.png)
-
-    3. Vyberte **Odeslat**, přejděte k souboru **Function. proj** a vyberte **otevřít** , aby se soubor nahrál.
-
-        ![Vybrat odeslat soubor](./media/how-to-use-custom-allocation-policies/function-choose-upload-file.png)
-
-9. Nahraďte kód funkce **HttpTrigger1** následujícím kódem a vyberte **Uložit**:
+9. V editoru kódu se ujistěte, že je vybraná možnost *Spustit. csx* pro **HttpTrigger1** . Nahraďte kód funkce **HttpTrigger1** následujícím kódem a vyberte **Uložit**:
 
     ```csharp
     #r "Newtonsoft.Json"
@@ -314,29 +325,15 @@ V této části vytvoříte novou skupinu registrací, která používá vlastn�
 
     **Vyberte, jak chcete přiřadit zařízení k** centrům: vyberte **vlastní (použijte funkci Azure Functions)**.
 
+    **Předplatné**: vyberte předplatné, ve kterém jste službu Azure Function vytvořili.
+
+    **Function App**: Vyberte svoji aplikaci Function App podle názvu. v tomto příkladu se použila **funkce contoso-Function-App-1098** .
+
+    **Funkce**: vyberte funkci **HttpTrigger1** .
+
     ![Přidat vlastní skupinu pro zápis přidělení pro ověření symetrického klíče](./media/how-to-use-custom-allocation-policies/create-custom-allocation-enrollment.png)
 
-4. V části **Přidat skupinu** registrací vyberte **propojit nové centrum IoT** a propojte je s vašimi novými centry IoT Hub.
-
-    Tento krok proveďte pro obě vaše divize IoT Hub.
-
-    **Předplatné**: Pokud máte více předplatných, vyberte předplatné, ve kterém jste vytvořili centra IoT Hub.
-
-    **IoT Hub**: vyberte jedno ze špičkových rozbočovačů, které jste vytvořili.
-
-    **Zásady přístupu**: vyberte **iothubowner**.
-
-    ![Propojte centra IoT v divizi se službou zřizování.](./media/how-to-use-custom-allocation-policies/link-divisional-hubs.png)
-
-5. Když je v nabídce **Přidat skupinu** registrací propojená centra IoT, musíte je vybrat jako skupinu IoT Hub pro skupinu registrací, jak je znázorněno níže:
-
-    ![Vytvoření skupiny oddělení invisioning pro registraci](./media/how-to-use-custom-allocation-policies/enrollment-divisional-hub-group.png)
-
-6. V části **Přidat skupinu** registrací přejděte dolů na část **funkce vybrat Azure** a vyberte aplikaci funkcí, kterou jste vytvořili v předchozí části. Pak vyberte vytvořenou funkci a kliknutím na Uložit uložte skupinu registrace.
-
-    ![Vyberte funkci a uložte skupinu registrace.](./media/how-to-use-custom-allocation-policies/save-enrollment.png)
-
-7. Po uložení registrace ho znovu otevřete a poznamenejte si **primární klíč**. Nejdřív musíte uložit registraci, aby se vygenerovaly klíče. Tento klíč se použije k vygenerování jedinečných klíčů zařízení pro simulovaná zařízení později.
+4. Po uložení registrace ho znovu otevřete a poznamenejte si **primární klíč**. Nejdřív musíte uložit registraci, aby se vygenerovaly klíče. Tento klíč se použije k vygenerování jedinečných klíčů zařízení pro simulovaná zařízení později.
 
 ## <a name="derive-unique-device-keys"></a>Odvodit jedinečné klíče zařízení
 
@@ -386,7 +383,7 @@ Pokud používáte pracovní stanici se systémem Windows, můžete použít Pow
     $REG_ID2='mainbuilding167-contoso-hpsd-088'
 
     $hmacsha256 = New-Object System.Security.Cryptography.HMACSHA256
-    $hmacsha256.key = [Convert]::FromBase64String($key)
+    $hmacsha256.key = [Convert]::FromBase64String($KEY)
     $sig1 = $hmacsha256.ComputeHash([Text.Encoding]::ASCII.GetBytes($REG_ID1))
     $sig2 = $hmacsha256.ComputeHash([Text.Encoding]::ASCII.GetBytes($REG_ID2))
     $derivedkey1 = [Convert]::ToBase64String($sig1)
@@ -559,7 +556,7 @@ Tento ukázkový kód simuluje spouštěcí sekvenci zařízení, která odesíl
 
 V následující tabulce jsou uvedeny očekávané scénáře a kódy chyb výsledků, které se mohou zobrazit. Tato tabulka vám umožní pomoct řešit problémy s chybami vlastního nastavení zásad přidělení s vaším Azure Functions.
 
-| Scénář | Výsledek registrace ze služby zřizování | Zřizování výsledků sady SDK |
+| Scenario | Výsledek registrace ze služby zřizování | Zřizování výsledků sady SDK |
 | -------- | --------------------------------------------- | ------------------------ |
 | Webhook vrátí 200 OK s iotHubHostName nastavenou na platný název hostitele centra IoT Hub. | Stav výsledku: přiřazeno  | Sada SDK vrací PROV_DEVICE_RESULT_OK společně s informacemi z centra |
 | Webhook vrátí 200 OK s ' iotHubHostName ' obsažený v odpovědi, ale nastavte na prázdný řetězec nebo hodnotu null. | Stav výsledku: neúspěšné<br><br> Kód chyby: CustomAllocationIotHubNotSpecified (400208) | Sada SDK vrací PROV_DEVICE_RESULT_HUB_NOT_SPECIFIED |

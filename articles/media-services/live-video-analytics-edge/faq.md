@@ -3,12 +3,12 @@ title: Live video Analytics na IoT Edge Nejčastější dotazy – Azure
 description: Tento článek obsahuje odpovědi na nejčastější dotazy týkající se analýzy živých videí na IoT Edge.
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: f9ef26b9b64bd8a0bad7c83960f2d235ed6461cb
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 0cb378bf614582070dd1bdd0a11706b26437af53
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97762873"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880046"
 ---
 # <a name="live-video-analytics-on-iot-edge-faq"></a>Nejčastější dotazy k analýze videí na IoT Edge
 
@@ -29,7 +29,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se anal�
 
 **Můžu modul Media Edge nasadit do zařízení s Windows 10?**
 
-Yes. Další informace najdete v tématu [kontejnery pro Linux ve Windows 10](/virtualization/windowscontainers/deploy-containers/linux-containers).
+Ano. Další informace najdete v tématu [kontejnery pro Linux ve Windows 10](/virtualization/windowscontainers/deploy-containers/linux-containers).
 
 ## <a name="capture-from-ip-camera-and-rtsp-settings"></a>Zachytit z kamery IP a nastavení protokolu RTSP
 
@@ -57,11 +57,11 @@ Ne, na hraničních zařízeních nepodporujeme zjišťování ONVIF (Open Netwo
 
 **Můžu přejít zpět prostředky zaznamenané do Azure Media Services z okraje pomocí technologie streamování, jako je HLS nebo POMLČKa?**
 
-Yes. Můžete streamovat zaznamenané prostředky jako jakýkoliv jiný Asset v Azure Media Services. Pokud chcete streamovat obsah, musíte mít vytvořený koncový bod streamování a ve stavu spuštěno. Pomocí standardního procesu vytváření lokátoru streamování vám poskytnete přístup k rozhraní Apple HTTP Live Streaming (HLS) nebo dynamickému adaptivnímu streamování přes HTTP (POMLČKu, označované také jako MPEG-POMLČKa) pro streamování do libovolné platformy přehrávače podporující rozhraní. Další informace o vytváření a publikování manifestů HLS nebo SPOJOVNÍKů naleznete v tématu [dynamické balení](../latest/dynamic-packaging-overview.md).
+Ano. Můžete streamovat zaznamenané prostředky jako jakýkoliv jiný Asset v Azure Media Services. Pokud chcete streamovat obsah, musíte mít vytvořený koncový bod streamování a ve stavu spuštěno. Pomocí standardního procesu vytváření lokátoru streamování vám poskytnete přístup k rozhraní Apple HTTP Live Streaming (HLS) nebo dynamickému adaptivnímu streamování přes HTTP (POMLČKu, označované také jako MPEG-POMLČKa) pro streamování do libovolné platformy přehrávače podporující rozhraní. Další informace o vytváření a publikování manifestů HLS nebo SPOJOVNÍKů naleznete v tématu [dynamické balení](../latest/dynamic-packaging-overview.md).
 
 **Můžu u archivovaného assetu použít standardní ochranu obsahu a funkce DRM Media Services?**
 
-Yes. Veškerá standardní funkce pro ochranu obsahu a DRM (Správa digitálních práv) pro dynamické šifrování je k dispozici pro použití u prostředků, které jsou zaznamenávány z mediálního grafu.
+Ano. Veškerá standardní funkce pro ochranu obsahu a DRM (Správa digitálních práv) pro dynamické šifrování je k dispozici pro použití u prostředků, které jsou zaznamenávány z mediálního grafu.
 
 **Jaké přehrávače můžu použít k zobrazení obsahu ze zaznamenaných assetů?**
 
@@ -170,7 +170,7 @@ U rozšíření gRPC je každá relace pro jeden kanál kamery, takže není nut
 
 **Má všechny ProcessMediaStreams na konkrétním kontejneru spustit stejný model AI?** 
 
-No. Spuštění nebo zastavení volání koncového uživatele v instanci grafu představuje relaci, nebo pravděpodobně dojde k odpojení kamery nebo opětovnému připojení. Cílem je zachovat jednu relaci, pokud je kamera streamovaná videem. 
+Ne. Spuštění nebo zastavení volání koncového uživatele v instanci grafu představuje relaci, nebo pravděpodobně dojde k odpojení kamery nebo opětovnému připojení. Cílem je zachovat jednu relaci, pokud je kamera streamovaná videem. 
 
 * Dva kamery odesílající video ke zpracování vytvoří dvě relace. 
 * Jeden fotoaparát do grafu, který má dva uzly rozšíření gRPC, vytvoří dvě relace. 
@@ -226,11 +226,11 @@ Můžete použít jakékoli gRPC funkce na straně serveru za předpokladu, že 
 
 **Můžu na okraji monitorovat mediální graf pomocí Azure Event Grid?**
 
-Yes. Můžete využívat metriky Prometheus a publikovat je do služby Event Grid. 
+Ano. Můžete využívat metriky Prometheus a publikovat je do služby Event Grid. 
 
 **Můžu použít Azure Monitor k zobrazení stavu, metrik a výkonu mých grafů multimédií v cloudu nebo na hraničních zařízeních?**
 
-Ano, podporujeme tento přístup. Další informace najdete v tématu [Přehled metrik Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics).
+Ano, podporujeme tento přístup. Další informace najdete v tématu [Přehled metrik Azure monitor](../../azure-monitor/platform/data-platform-metrics.md).
 
 **Existují nějaké nástroje, které usnadňují monitorování Media Services IoT Edge modulu?**
 

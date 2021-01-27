@@ -7,12 +7,12 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 12/07/2020
-ms.openlocfilehash: 0114c75d99d79041631e5078deb33f77863dc35a
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 84d98eedb3ea6f3faaeaecf832811f9f4c78c7c5
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98043774"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880351"
 ---
 # <a name="migration-of-co-sell-solutions-from-ocp-gtm-to-the-commercial-marketplace"></a>Migrace řešení společného prodeje z OCP GTM na komerční tržiště
 
@@ -44,7 +44,7 @@ Až se zaregistrujete na komerční tržišti, připravte se na migraci řešen�
 
 Před importem řešení z OCP GTM postupujte takto:
 
-1. Navštivte [seznam vydavatelů](https://partner.microsoft.com/dashboard/account/v3/publishers/list)vaší společnosti. Zahrnuje vlastníka účtu, manažery a vývojáře, kteří mají přístup pro publikování. Přečtěte si další informace o [rolích uživatelů partnerského centra](/azure/marketplace/partner-center-portal/manage-account#define-user-roles-and-permissions).
+1. Navštivte [seznam vydavatelů](https://partner.microsoft.com/dashboard/account/v3/publishers/list)vaší společnosti. Zahrnuje vlastníka účtu, manažery a vývojáře, kteří mají přístup pro publikování. Přečtěte si další informace o [rolích uživatelů partnerského centra](./partner-center-portal/manage-account.md#define-user-roles-and-permissions).
 2. Zeptejte se některého z uvedených kontaktů, abyste mohli [Přidat uživatele](https://partner.microsoft.com/dashboard/account/usermanagement) do komerčního tržiště jako *manažeři* nebo *vývojáře*, protože řešení můžou upravovat a publikovat jenom tyto role.
 3. Ve spolupráci s vývojáři můžete svoje řešení přesunout z účtu OCP GTM do komerčního tržiště.
 4. Rozhodněte se, které z následujících možností chcete provést:
@@ -156,4 +156,3 @@ Podrobné pokyny týkající se informací, které je třeba zadat před publiko
 - [Prodej prostřednictvím partnerů CSP](cloud-solution-providers.md)
 - [Jak odeslat materiály pro spoluprodej v partnerském centru](marketplace-co-sell.md#how-to-submit-co-sell-materials-in-partner-center)
 - Zobrazit tyto [Nejčastější dotazy](https://partner.microsoft.com/resources/detail/co-sell-requirements-publish-commercial-marketplace-faq-pdf) (PDF)
-

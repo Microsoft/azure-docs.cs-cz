@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: eb31bb09c1e09e4799715fc5a1cbca4b216b28a2
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 469d7ba9e86751312ebf6a6c82b35f065ee6cb50
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922966"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880368"
 ---
 # <a name="connect-a-vpn-gateway-virtual-network-gateway-to-virtual-wan"></a>Připojit VPN Gateway (bránu virtuální sítě) k virtuální síti WAN
 
@@ -91,7 +91,7 @@ V této části si stáhnete konfigurační soubor sítě VPN pro každý z web�
 
 V této části vytvoříte dvě brány místní sítě Azure VPN Gateway. Konfigurační soubory z předchozího kroku obsahují nastavení konfigurace brány. Pomocí těchto nastavení můžete vytvořit a nakonfigurovat brány místní sítě Azure VPN Gateway.
 
-1. Pomocí těchto nastavení vytvořte bránu místní sítě. Informace o tom, jak vytvořit VPN Gateway bránu místní sítě, najdete v článku VPN Gateway [Vytvoření brány místní sítě](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway).
+1. Pomocí těchto nastavení vytvořte bránu místní sítě. Informace o tom, jak vytvořit VPN Gateway bránu místní sítě, najdete v článku VPN Gateway [Vytvoření brány místní sítě](../vpn-gateway/tutorial-site-to-site-portal.md#LocalNetworkGateway).
 
    * **IP adresa** – použijte IP adresu Instance0 zobrazenou pro *gatewayconfiguration* z konfiguračního souboru.
    * **BGP** – Pokud je připojení přes protokol BGP, vyberte **Konfigurovat nastavení protokolu BGP** a zadejte číslo ASN ' 65515 '. Zadejte IP adresu partnerského uzlu protokolu BGP. Pro *gatewayconfiguration* z konfiguračního souboru použijte Instance0 BgpPeeringAddresses.
@@ -105,7 +105,7 @@ V této části vytvoříte dvě brány místní sítě Azure VPN Gateway. Konfi
 
 ## <a name="5-create-connections"></a><a name="createlocalgateways"></a>5. vytvoření připojení
 
-V této části vytvoříte připojení mezi VPN Gateway brány místní sítě a bránu virtuální sítě. Postup vytvoření připojení VPN Gateway najdete v tématu [Konfigurace připojení](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#CreateConnection).
+V této části vytvoříte připojení mezi VPN Gateway brány místní sítě a bránu virtuální sítě. Postup vytvoření připojení VPN Gateway najdete v tématu [Konfigurace připojení](../vpn-gateway/tutorial-site-to-site-portal.md#CreateConnection).
 
 1. Na portálu přejděte na bránu virtuální sítě a klikněte na **připojení**. V horní části okna Připojení klikněte na **+ Přidat** a otevřete stránku **Přidat připojení**.
 2. Na stránce **Přidat připojení** nakonfigurujte pro připojení následující hodnoty:

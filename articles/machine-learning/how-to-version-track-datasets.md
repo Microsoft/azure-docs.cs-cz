@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 3290574b26abe544c8c749165e22bef41a83ecf3
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: d72d2d094e220bd4e460cfca6b422f0609c083af
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98538150"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880063"
 ---
 # <a name="version-and-track-azure-machine-learning-datasets"></a>Verze a sledování Azure Machine Learning datových sad
 
@@ -27,7 +27,7 @@ Typické scénáře správy verzí:
 * Když jsou nová data dostupná pro přeškolení
 * Při použití různých přístupů k přípravě dat nebo technickému řízení funkcí
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro tento kurz potřebujete:
 
@@ -119,7 +119,7 @@ dataset2.register(workspace = workspace,
 
 Datovou sadu můžete použít jako vstup a výstup jednotlivých kroků [kanálu ml](concept-ml-pipelines.md) . Při opětovném spuštění kanálů bude výstup každého kroku kanálu zaregistrován jako nová verze datové sady.
 
-Kanály ML naplní výstup každého kroku do nové složky pokaždé, když se kanál znovu spustí. Toto chování umožňuje reprodukovat výstupní datové sady verzí. Přečtěte si další informace o [datových sadách v kanálech](how-to-create-your-first-pipeline.md#steps).
+Kanály ML naplní výstup každého kroku do nové složky pokaždé, když se kanál znovu spustí. Toto chování umožňuje reprodukovat výstupní datové sady verzí. Přečtěte si další informace o [datových sadách v kanálech](./how-to-create-machine-learning-pipelines.md#steps).
 
 ```Python
 from azureml.core import Dataset

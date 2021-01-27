@@ -1,25 +1,11 @@
 ---
-title: Šablona ARM účtu Media Services
-titleSuffix: Azure Media Services
-description: V tomto článku se dozvíte, jak pomocí šablony ARM vytvořit účet Media Services.
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: quickstart
-ms.date: 11/24/2020
-ms.author: inhenkel
-ms.custom: subject-armqs
-ms.openlocfilehash: 541a4c17a3212f711be7e2cf096ce3a2d632ee64
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879642"
+title: Media Services šablona ARM účtu: Azure Media Services popis: v tomto článku se dozvíte, jak pomocí šablony ARM vytvořit účet Media Services.
+služby: Media-Services documentationcenter: ' ' Author: IngridAtMicrosoft Manager: femila Editor: ' '
+
+MS. Service: Media-Services MS. rebavování: MS. Subject: rychlý Start MS. Date: 11/24/2020 MS. Author: inhenkel MS. Custom: Subject-armqs
+
 ---
+
 # <a name="quickstart-media-services-account-arm-template"></a>Rychlý Start: Šablona ARM účtu Media Services
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]

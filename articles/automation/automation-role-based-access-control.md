@@ -6,12 +6,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 07/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: efdb195ad41b036f7f470884b3a441de1db7f7f4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 320668f9596376cf7aa12ed97872671404a07658
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003697"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895913"
 ---
 # <a name="manage-role-permissions-and-security"></a>Správa oprávnění rolí a zabezpečení
 
@@ -319,7 +319,7 @@ Můžete odebrat přístupová oprávnění pro uživatele, který účet Automa
 
 Můžete také nakonfigurovat přístup na základě rolí k účtu Automation pomocí následujících [rutin Azure PowerShell](../role-based-access-control/role-assignments-powershell.md):
 
-[Get-AzRoleDefinition](/powershell/module/Az.Resources/Get-AzRoleDefinition?view=azps-3.7.0) vypíše všechny role Azure, které jsou k dispozici v Azure Active Directory. Pomocí této rutiny s `Name` parametrem můžete zobrazit seznam všech akcí, které může konkrétní role provádět.
+[Get-AzRoleDefinition](/powershell/module/Az.Resources/Get-AzRoleDefinition) vypíše všechny role Azure, které jsou k dispozici v Azure Active Directory. Pomocí této rutiny s `Name` parametrem můžete zobrazit seznam všech akcí, které může konkrétní role provádět.
 
 ```azurepowershell-interactive
 Get-AzRoleDefinition -Name 'Automation Operator'
@@ -338,7 +338,7 @@ NotActions       : {}
 AssignableScopes : {/}
 ```
 
-[Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment?view=azps-3.7.0) vypíše přiřazení rolí Azure v zadaném oboru. Bez parametrů Tato rutina vrátí všechna přiřazení rolí provedené v rámci předplatného. `ExpandPrincipalGroups`K vypsání přiřazení přístupu pro zadaného uživatele a také skupin, do kterých uživatel patří, použijte parametr.
+[Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) vypíše přiřazení rolí Azure v zadaném oboru. Bez parametrů Tato rutina vrátí všechna přiřazení rolí provedené v rámci předplatného. `ExpandPrincipalGroups`K vypsání přiřazení přístupu pro zadaného uživatele a také skupin, do kterých uživatel patří, použijte parametr.
 
 **Příklad:** K vypsání všech uživatelů a jejich rolí v rámci účtu Automation použijte následující rutinu.
 
@@ -360,7 +360,7 @@ ObjectId           : 15f26a47-812d-489a-8197-3d4853558347
 ObjectType         : User
 ```
 
-K přiřazení přístupu uživatelům, skupinám a aplikacím do konkrétního oboru použijte [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment?view=azps-3.7.0) .
+K přiřazení přístupu uživatelům, skupinám a aplikacím do konkrétního oboru použijte [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment) .
 
 **Příklad:** K přiřazení role "operátor služby Automation" pro uživatele v rozsahu účtu Automation použijte následující příkaz.
 
@@ -382,7 +382,7 @@ ObjectId           : f5ecbe87-1181-43d2-88d5-a8f5e9d8014e
 ObjectType         : User
 ```
 
-K odebrání přístupu zadaného uživatele, skupiny nebo aplikace z konkrétního oboru použijte [příkaz Remove-AzRoleAssignment](/powershell/module/Az.Resources/Remove-AzRoleAssignment?view=azps-3.7.0) .
+K odebrání přístupu zadaného uživatele, skupiny nebo aplikace z konkrétního oboru použijte [příkaz Remove-AzRoleAssignment](/powershell/module/Az.Resources/Remove-AzRoleAssignment) .
 
 **Příklad:** Pomocí následujícího příkazu Odeberte uživatele z role operátora automatizace v oboru účtu služby Automation.
 

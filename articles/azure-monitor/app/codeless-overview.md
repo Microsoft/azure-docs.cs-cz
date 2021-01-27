@@ -6,12 +6,12 @@ author: MS-jgol
 ms.author: jgol
 ms.date: 05/31/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: aa5c2a0070ea0c3a0963f97fc1a04670eeaa4827
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: efa951ce5a15460e3eacfd4c7abecfac17106b4e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701887"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880504"
 ---
 # <a name="what-is-auto-instrumentation-or-codeless-attach---azure-monitor-application-insights"></a>Co je automatické instrumentace nebo připojení s nekódováním Azure Monitor Application Insights?
 
@@ -23,17 +23,17 @@ Application Insights je integrován s různými poskytovateli prostředků a pra
 
 Po přidání dalších a dalších integrací se matice schopností automatické instrumentace stane složitou. Následující tabulka ukazuje aktuální stav otázky, pokud je to podpora různých poskytovatelů prostředků, jazyků a prostředí.
 
-|Prostředí/poskytovatel prostředků          | .NET            | .NET Core       | Java            | Node.js         |
-|---------------------------------------|-----------------|-----------------|-----------------|-----------------|
-|Azure App Service ve Windows           | GA, OnBD *       | GA, výslovný souhlas      | Privátní verze Preview | Privátní verze Preview |
-|Azure App Service v systému Linux             | –             | Nepodporováno   | Privátní verze Preview | Public Preview  |
-|Azure App Service na AKS               | –             | V návrhu       | V návrhu       | V návrhu       |
-|Azure Functions – Basic                | GA, OnBD *       | GA, OnBD *       | GA, OnBD *       | GA, OnBD *       |
-|Azure Functions závislosti Windows | Nepodporováno   | Nepodporováno   | Public Preview  | Nepodporováno   |
-|Azure Kubernetes Service               | –             | V návrhu       | Prostřednictvím agenta   | V návrhu       |
-|Okna virtuálních počítačů Azure                      | Public Preview  | Nepodporováno   | Nepodporováno   | Nepodporováno   |
-|Okna místních virtuálních počítačů                | GA, výslovný souhlas      | Nepodporováno   | Prostřednictvím agenta   | Nepodporováno   |
-|Samostatný agent – libovolný env.            | Nepodporováno   | Nepodporováno   | GA              | Nepodporováno   |
+|Prostředí/poskytovatel prostředků          | .NET            | .NET Core       | Java            | Node.js         | Python          |
+|---------------------------------------|-----------------|-----------------|-----------------|-----------------|-----------------|
+|Azure App Service ve Windows           | GA, OnBD *       | GA, výslovný souhlas      | Privátní verze Preview | Privátní verze Preview | Nepodporováno   |
+|Azure App Service v systému Linux             | –             | Nepodporováno   | Privátní verze Preview | Public Preview  | Nepodporováno   |
+|Azure App Service na AKS               | –             | V návrhu       | V návrhu       | V návrhu       | Nepodporováno   |
+|Azure Functions – Basic                | GA, OnBD *       | GA, OnBD *       | GA, OnBD *       | GA, OnBD *       | GA, OnBD *       |
+|Azure Functions závislosti Windows | Nepodporováno   | Nepodporováno   | Public Preview  | Nepodporováno   | Nepodporováno   |
+|Azure Kubernetes Service               | –             | V návrhu       | Prostřednictvím agenta   | V návrhu       | Nepodporováno   |
+|Okna virtuálních počítačů Azure                      | Public Preview  | Nepodporováno   | Nepodporováno   | Nepodporováno   | Nepodporováno   |
+|Okna místních virtuálních počítačů                | GA, výslovný souhlas      | Nepodporováno   | Prostřednictvím agenta   | Nepodporováno   | Nepodporováno   |
+|Samostatný agent – libovolný env.            | Nepodporováno   | Nepodporováno   | GA              | Nepodporováno   | Nepodporováno   |
 
 * OnBD ve výchozím nastavení je krátké – Application Insights se po nasazení aplikace do podporovaných prostředí automaticky povolí. 
 

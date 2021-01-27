@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/9/2020
-ms.openlocfilehash: 01a1ded570d20d175b5e8eadb3e6cc8556155a85
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 7adc7f568fb82692f2c96f610575076e397bd99c
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96553159"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896098"
 ---
 # <a name="register-and-scan-azure-data-explorer"></a>Registrace a kontrola Průzkumník dat v Azure
 
@@ -22,7 +22,7 @@ Tento článek popisuje, jak zaregistrovat účet Azure Průzkumník dat v Azure
 
 Azure Průzkumník dat podporuje úplné a přírůstkové kontroly pro zachycení metadat a schématu. Kontroly také automaticky klasifikují data na základě systémových a vlastních pravidel klasifikace.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Před registrací zdrojů dat vytvořte účet Azure dosah. Další informace o vytvoření účtu dosah najdete v tématu [rychlý Start: vytvoření účtu Azure dosah](create-catalog-portal.md).
 - Musíte být správcem zdroje dat služby Azure dosah.
@@ -89,7 +89,7 @@ Na obrazovce **Registrovat zdroje (Azure Průzkumník dat (Kusto))** udělejte t
 
 :::image type="content" source="media/register-scan-azure-data-explorer/register-sources.png" alt-text="Možnosti registrace zdrojů" border="true":::
 
-[!INCLUDE [create and manage scans](includes/manage-scans.md)]
+[!INCLUDE [create and manage scans](includes/manage-scans-azure-data-explorer.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

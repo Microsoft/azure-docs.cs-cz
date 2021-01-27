@@ -1,5 +1,5 @@
 ---
-title: Kurz – nasazení jarního cloudu Azure ve virtuální síti
+title: Nasazení jarního cloudu Azure ve virtuální síti
 description: Nasazení jarního cloudu Azure ve virtuální síti (vkládání virtuální sítě)
 author: MikeDodaro
 ms.author: brendm
@@ -7,14 +7,14 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 9d72d60bd3a1ef23b8122b2bc5ba4f0c5c701254
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 73dd60dba50d3bd29cda0f538462884822054cf9
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97587719"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880591"
 ---
-# <a name="tutorial-deploy-azure-spring-cloud-in-a-virtual-network"></a>Kurz: nasazení jarního cloudu Azure ve virtuální síti
+# <a name="deploy-azure-spring-cloud-in-a-virtual-network"></a>Nasazení jarního cloudu Azure ve virtuální síti
 
 **Tento článek se týká:** ✔️ Java ✔️ C #
 
@@ -26,7 +26,10 @@ Nasazení umožňuje:
 * Interakce s jarním cloudem v Azure se systémy v místních datových centrech nebo službách Azure v jiných virtuálních sítích.
 * Umožňuje zákazníkům řídit příchozí a odchozí síťovou komunikaci pro jarní cloud Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+> [!Note]
+> Virtuální síť Azure si můžete vybrat jenom v případě, že vytvoříte novou instanci služby Azure jaře Cloud Service. Po vytvoření Azure jarního cloudu se nedá změnit na použití jiné virtuální sítě.
+
+## <a name="prerequisites"></a>Požadavky
 
 Podle pokynů v části [registrace poskytovatele prostředků v Azure Portal](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) nebo spuštěním následujícího příkazu rozhraní příkazového řádku Azure Zaregistrujte poskytovatele prostředků jarních cloudů Azure **Microsoft. AppPlatform** a **Microsoft. ContainerService** :
 
@@ -63,7 +66,7 @@ Pokud už máte virtuální síť, která je hostitelem instance jarního cloudu
     |-----------------|--------------------------------------------------|
     |Předplatné     |Vyberte své předplatné.                         |
     |Skupina prostředků   |Vyberte skupinu prostředků nebo vytvořte novou.  |
-    |Název             |Zadejte **Azure-jaře-Cloud-VNet**.                 |
+    |Name             |Zadejte **Azure-jaře-Cloud-VNet**.                 |
     |Umístění         |Vyberte **USA – východ**.                               |
 
 1. Vyberte **Další: IP adresy**.
@@ -77,6 +80,7 @@ Pokud už máte virtuální síť, která je hostitelem instance jarního cloudu
 1. Vyberte **Zkontrolovat a vytvořit**. Ponechte zbytek jako výchozí a vyberte **vytvořit**.
 
 ## <a name="grant-service-permission-to-the-virtual-network"></a>Udělení oprávnění ke službě virtuální síti
+Služba Azure jaře Cloud vyžaduje oprávnění **vlastníka** k vaší virtuální síti, aby bylo možné udělit vyhrazené a dynamické instanční objekty ve virtuální síti k dalšímu nasazení a údržbě.
 
 Vyberte virtuální síť **Azure-jaře-Cloud-VNet** , kterou jste vytvořili dříve.
 
@@ -114,7 +118,7 @@ az role assignment create \
 
 Nasazení instance jarního cloudu Azure ve virtuální síti:
 
-1. Otevřete web [Azure Portal](https://portal.azure.com).
+1. Otevřete [Azure Portal](https://portal.azure.com).
 
 1. V horním vyhledávacím poli vyhledejte **Azure jaře Cloud**. Z výsledku vyberte **Azure jaře Cloud** .
 
@@ -160,9 +164,9 @@ Tyto síťové prostředky jsou připojené k vaší virtuální síti vytvořen
    > [!Important]
    > Skupiny prostředků jsou plně spravované cloudovou službou Azure na jaře. *Neodstraňujte ručně ani* neměňte žádný prostředek uvnitř.
 
-## <a name="limitations"></a>Omezení
+## <a name="using-smaller-subnet-ranges"></a>Používání menších rozsahů podsítí
 
-Rozsah malé podsítě ukládá IP adresy, ale přináší omezení maximálního počtu instancí aplikace, které může instance cloudu pro Azure jaře uchovávat.
+Tato tabulka uvádí maximální počet instancí aplikace, které Azure jaře Cloud podporuje, pomocí menších rozsahů podsítí.
 
 | CIDR podsítě aplikace | Celkový počet IP adres | Dostupné IP adresy | Maximální počet instancí aplikace                                        |
 | --------------- | --------- | ------------- | ------------------------------------------------------------ |

@@ -3,20 +3,20 @@ title: 'Kurz: sestavení aplikace v baňce pro překlad, syntetizování a anal�
 titleSuffix: Azure Cognitive Services
 description: V tomto kurzu vytvoříte webovou aplikaci založenou na baňce pro překlad textu, analýze mínění a syntetizování přeloženého textu na řeč.
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 05/26/2020
-ms.author: swmachan
+ms.author: lajanuar
 ms.custom: devx-track-python, devx-track-js
-ms.openlocfilehash: 1cbe4d44f5e1c8b34a3d7bb9d05b9546f320b81c
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 755e6370883bf39596850b45dc10f7efd3c9b55b
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023461"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896676"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>Kurz: sestavení aplikace v baňce pomocí Azure Cognitive Services
 

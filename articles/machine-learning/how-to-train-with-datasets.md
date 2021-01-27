@@ -12,22 +12,22 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 2d6282c527293abdb8b21e0591548cb51e1339a9
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 688bec24cbcd88130470634abff0688ead8005ef
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539670"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881682"
 ---
 # <a name="train-models-with-azure-machine-learning-datasets"></a>Výuka modelů s Azure Machine Learningmi datovými sadami 
 
 V tomto článku se dozvíte, jak pracovat s [Azure Machine Learningmi datovými sadami](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py) a naučit modely strojového učení.  V místním nebo vzdáleném výpočetním cíli můžete použít datové sady, aniž byste se museli starat o připojovací řetězce nebo cesty k datům. 
 
-Azure Machine Learning datové sady poskytují bezproblémovou integraci s Azure Machine Learning školicími funkcemi, jako jsou [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py), [Hyperdrive](/python/api/azureml-train-core/azureml.train.hyperdrive?preserve-view=true&view=azure-ml-py) a [Azure Machine Learning kanály](how-to-create-your-first-pipeline.md).
+Azure Machine Learning datové sady poskytují bezproblémovou integraci s Azure Machine Learning školicími funkcemi, jako jsou [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py), [Hyperdrive](/python/api/azureml-train-core/azureml.train.hyperdrive?preserve-view=true&view=azure-ml-py) a [Azure Machine Learning kanály](./how-to-create-machine-learning-pipelines.md).
 
 Pokud nejste připraveni k zpřístupnění dat pro školení modelů, ale chcete načíst data do poznámkového bloku pro zkoumání dat, přečtěte si téma Jak [Prozkoumat data v datové sadě](how-to-create-register-datasets.md#explore-data). 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K vytváření a školení s datovými sadami potřebujete:
 
@@ -263,7 +263,7 @@ src.run_config.source_directory_data_store = "workspaceblobstore"
 ## <a name="troubleshooting"></a>Řešení potíží
 
 * **Inicializace datové sady se nezdařila: časový limit čekání na bod připojení vypršel**: 
-  * Pokud nemáte žádná pravidla odchozích [skupin zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview) a používáte `azureml-sdk>=1.12.0` , aktualizujete `azureml-dataset-runtime` a jeho závislosti na nejnovější podverzi, nebo pokud ji používáte v běhu, vytvořte znovu prostředí, aby bylo možné provést nejnovější opravu s opravou. 
+  * Pokud nemáte žádná pravidla odchozích [skupin zabezpečení sítě](../virtual-network/network-security-groups-overview.md) a používáte `azureml-sdk>=1.12.0` , aktualizujete `azureml-dataset-runtime` a jeho závislosti na nejnovější podverzi, nebo pokud ji používáte v běhu, vytvořte znovu prostředí, aby bylo možné provést nejnovější opravu s opravou. 
   * Pokud používáte `azureml-sdk<1.12.0` , upgradujte na nejnovější verzi.
   * Pokud máte odchozí pravidla NSG, ujistěte se, že existuje odchozí pravidlo, které povoluje veškerý provoz pro značku služby `AzureResourceMonitor` .
 
@@ -293,4 +293,4 @@ Pokud používáte sdílenou složku pro jiné úlohy, jako je třeba přenos da
 
 * [Analýza modelů klasifikace obrázků](https://aka.ms/filedataset-samplenotebook) s využitím datových sad
 
-* [Výuka pomocí datových sad, které používají kanály](how-to-create-your-first-pipeline.md).
+* [Výuka pomocí datových sad, které používají kanály](./how-to-create-machine-learning-pipelines.md).

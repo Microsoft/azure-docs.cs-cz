@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: e43c5fb36c5395e12fd0b9c2c67b787a1137f5d0
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: fce20626d5e000c08b8a057671c06a3084534187
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98761985"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896032"
 ---
 # <a name="troubleshooting-problems-in-itsm-connector"></a>Řešení potíží v ITSM konektoru
 
 Tento článek popisuje běžné problémy v konektoru ITSM a jejich řešení.
 
-Azure Monitor výstrahy proaktivně upozorní na to, že se ve vašich datech monitorování nacházejí důležité podmínky. Umožňují identifikovat a řešit problémy předtím, než si ji uživatelé vašeho systému všimnete. Další informace o upozorňování najdete v tématu Přehled výstrah v Microsoft Azure.
+Azure Monitor výstrahy proaktivně upozorní na to, že se ve vašich datech monitorování nacházejí důležité podmínky. Umožňují identifikovat a řešit problémy předtím, než si ji uživatelé vašeho systému všimnete.
 Zákazník může vybrat, jak se má upozornit na výstrahu, ať už se jedná o poštu, SMS, Webhook, nebo i k automatizaci řešení. Další možností upozorňování je použití ITSM.
 ITSM poskytuje možnost odesílat výstrahy do externího systému lístků, jako je například ServiceNow.
 

@@ -4,12 +4,12 @@ description: Naučte se vytvořit funkci Pythonu a potom publikovat místní pro
 ms.topic: quickstart
 ms.date: 11/04/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 9e4ddc479b0adcb88e846b92e6603dfdf3c99baa
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 0d7b98c44b85e17d084994bbcaa285c55c7a5e4d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97967986"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880840"
 ---
 # <a name="quickstart-create-a-function-in-azure-with-python-using-visual-studio-code"></a>Rychlý Start: vytvoření funkce v Azure pomocí Pythonu pomocí Visual Studio Code
 
@@ -29,40 +29,40 @@ Než začnete, ujistěte se, že máte zavedené následující požadavky:
 
 + [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) verze 3. x.
 
-+ [Python 3,8](https://www.python.org/downloads/release/python-381/), [Python 3,7](https://www.python.org/downloads/release/python-375/), [Python 3,6](https://www.python.org/downloads/release/python-368/) jsou podporovány Azure Functions (x64).
++ [Verze Pythonu, které jsou podporovány nástrojem Azure Functions](supported-languages.md#languages-by-runtime-version)
 
-+ [Visual Studio Code](https://code.visualstudio.com/) na některé z [podporovaných platforem](https://code.visualstudio.com/docs/supporting/requirements#_platforms).
++ [Visual Studio Code](https://code.visualstudio.com/) na jedné z [podporovaných platforem](https://code.visualstudio.com/docs/supporting/requirements#_platforms)
 
 + [Přípona Pythonu](https://marketplace.visualstudio.com/items?itemName=ms-python.python) pro Visual Studio Code.  
 
-+ [Azure Functions rozšíření](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) pro Visual Studio Code.
++ [Rozšíření Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) pro Visual Studio Code
 
 ## <a name="create-your-local-project"></a><a name="create-an-azure-functions-project"></a>Vytvořit místní projekt
 
 V této části použijete Visual Studio Code k vytvoření místního projektu Azure Functions v Pythonu. Později v tomto článku publikujete kód funkce do Azure.
 
-1. Zvolte ikonu Azure na řádku aktivity a potom v oblasti **Azure: funkce** vyberte ikonu **vytvořit nový projekt...** .
+1. Zvolte ikonu Azure na panelu Aktivita a pak v oblasti **Azure: Funkce** vyberte ikonu **Vytvořit nový projekt**.
 
-    ![Zvolit vytvořit nový projekt](./media/functions-create-first-function-vs-code/create-new-project.png)
+    ![Volba možnosti Vytvořit nový projekt](./media/functions-create-first-function-vs-code/create-new-project.png)
 
-1. Zvolte umístění adresáře pro váš pracovní prostor projektu a zvolte **možnost vybrat**.
+1. Zvolte umístění adresáře pro váš pracovní prostor projektu a zvolte **Vybrat**.
 
     > [!NOTE]
     > Tyto kroky jsou navržené tak, aby se dokončily mimo pracovní prostor. V tomto případě nevybírejte složku projektu, která je součástí pracovního prostoru.
 
-1. Zadejte následující informace na následujících dotazech:
+1. Podle pokynů na obrazovce zadejte tyto informace:
 
-    + **Vyberte jazyk pro projekt funkce**: zvolte `Python` .
+    + **Vyberte jazyk pro váš projekt funkce:** Zvolte `Python`.
 
     + **Vyberte alias Pythonu pro vytvoření virtuálního prostředí**: Zvolte umístění překladače Pythonu. Pokud se umístění nezobrazuje, zadejte úplnou cestu k binárnímu souboru Pythonu.  
 
-    + **Vyberte šablonu pro funkci prvního projektu**: zvolte `HTTP trigger` .
+    + **Vyberte šablonu pro první funkci projektu:** Zvolte `HTTP trigger`.
 
-    + Zadejte **název funkce**: typ `HttpExample` .
+    + **Zadejte název funkce:** Zadejte příkaz `HttpExample`.
 
     + **Úroveň autorizace**: vyberte `Anonymous` , který umožňuje komukoli zavolat koncový bod funkce. Další informace o úrovni autorizace najdete v tématu [autorizační klíče](functions-bindings-http-webhook-trigger.md#authorization-keys).
 
-    + **Vyberte, jak se má projekt otevřít**: zvolte `Add to workspace` .
+    + **Vyberte způsob, jakým chcete projekt otevírat:** Zvolte `Add to workspace`.
 
 1. Pomocí těchto informací Visual Studio Code generuje Azure Functions projekt pomocí triggeru protokolu HTTP. Můžete zobrazit soubory místních projektů v Průzkumníkovi. Další informace o souborech, které jsou vytvořeny, najdete v tématu [vygenerované soubory projektu](functions-develop-vs-code.md#generated-project-files).
 
@@ -83,13 +83,13 @@ V této části vytvoříte aplikaci funkcí a související prostředky v před
 
     ![Publikování projektu do Azure](./media/functions-create-first-function-vs-code/function-app-publish-project.png)
 
-1. Zadejte následující informace na následujících dotazech:
+1. Podle pokynů na obrazovce zadejte tyto informace:
 
     + **Vyberte složku**: Zvolte složku z pracovního prostoru nebo přejděte k nějakému, který obsahuje vaši aplikaci Function App. Tato funkce se nezobrazuje, pokud už máte spuštěnou platnou aplikaci Function App.
 
     + **Vyberte předplatné**: zvolte předplatné, které chcete použít. Toto se nezobrazí, pokud máte jenom jedno předplatné.
 
-    + **Vyberte Function App v Azure**: zvolte `+ Create new Function App` . (Nevybírejte `Advanced` možnost, která není pokrytá v tomto článku.)
+    + **Výběr aplikace funkcí v Azure:** Zvolte `+ Create new Function App`. (Nevybírejte `Advanced` možnost, která není pokrytá v tomto článku.)
 
     + **Zadejte globálně jedinečný název aplikace Function App**: zadejte název, který je platný v cestě URL. Název, který zadáte, bude ověřený, abyste se ujistili, že je v Azure Functions jedinečný. 
 

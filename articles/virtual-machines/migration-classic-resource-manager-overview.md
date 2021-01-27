@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 137670715af8b90d8a867459fa50249cd9be8e70
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 44b89aae2f446a13207c8e3b586892ad085bd790
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97897112"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879406"
 ---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager-in-linux"></a>Migrace prostředků IaaS podporovaných platformou z klasických na Azure Resource Manager v systému Linux
 
@@ -24,7 +24,7 @@ ms.locfileid: "97897112"
 
 Tento článek poskytuje přehled o nástroji pro migraci, který je podporovaný platformou, jak migrovat prostředky z Azure Service Manager (ASM), označované jako klasické modely nasazení Správce prostředků (ARM), a podrobně popisuje, jak připojit prostředky ze dvou modelů nasazení, které se ve vašem předplatném používají, pomocí bran sítě Site-to-site. Další informace o [funkcích Azure Resource Manager a výhodách](../azure-resource-manager/management/overview.md)najdete v článku. 
 
-ASM podporuje dva různé výpočetní produkty, Azure Virtual Machines (Classic), označované jako IaaS virtuální počítače & [azure Cloud Services (Classic)](https://docs.microsoft.com/azure/cloud-services/) , označované jako PaaS virtuální počítače nebo webové a pracovní role. Tento dokument se týká pouze migrace Virtual Machines Azure (Classic).
+ASM podporuje dva různé výpočetní produkty, Azure Virtual Machines (Classic), označované jako IaaS virtuální počítače & [azure Cloud Services (Classic)](../cloud-services/index.yml) , označované jako PaaS virtuální počítače nebo webové a pracovní role. Tento dokument se týká pouze migrace Virtual Machines Azure (Classic).
 
 ## <a name="goal-for-migration"></a>Cíl migrace
 Správce prostředků umožňuje nasazení složitých aplikací prostřednictvím šablon, konfiguraci virtuálních počítačů pomocí rozšíření virtuálních počítačů a správu přístupu a označování v podniku. Azure Resource Manager zahrnuje škálovatelné paralelní nasazení virtuálních počítačů do skupin dostupnosti. Nový model nasazení také poskytuje životní cyklus pro výpočetní prostředky, síť a úložiště nezávisle. Nakonec se zaměřte na povolení zabezpečení ve výchozím nastavení s vynucením virtuálních počítačů ve virtuální síti.
@@ -34,12 +34,12 @@ Téměř všechny funkce z modelu nasazení Classic jsou podporovány pro výpo�
 ## <a name="supported-resources--configurations-for-migration"></a>Podporované prostředky & konfigurací pro migraci
 
 ### <a name="supported-resources-for-migration"></a>Podporované prostředky pro migraci
-* Virtuální počítače
+* Virtual Machines
 * Skupiny dostupnosti
 * Účty úložiště
 * Virtuální sítě
 * Brány VPN Gateway
-* [Brány Express Route](https://docs.microsoft.com/azure/expressroute/expressroute-howto-move-arm) _(ve stejném předplatném jako Virtual Network)_
+* [Brány Express Route](../expressroute/expressroute-howto-move-arm.md) _(ve stejném předplatném jako Virtual Network)_
 * Network Security Groups (Skupiny zabezpečení sítě)
 * Směrovací tabulky
 * Vyhrazené IP adresy
@@ -90,7 +90,7 @@ Pokud váš účet úložiště nemá žádné přidružené disky nebo Virtual 
 > Model nasazení Správce prostředků nemá koncept klasických imagí a disků. Když se účet úložiště migruje, klasické image a disky se v Správce prostředkůovém zásobníku nezobrazí, ale záložní virtuální pevné disky zůstanou v účtu úložiště.
 
 Následující snímky obrazovky ukazují, jak upgradovat klasický účet úložiště na účet služby Azure Resource Manager Storage pomocí Azure Portal:
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. Přejděte na svůj účet úložiště.
 3. V části **Nastavení** klikněte na možnost **migrovat do ARM**.
 4. Kliknutím na **ověřit** určete proveditelnost migrace.
@@ -118,8 +118,8 @@ Následující funkce se momentálně nepodporují. Volitelně můžete tato nas
 
 | Poskytovatel prostředků | Funkce | Doporučení |
 | --- | --- | --- |
-| Compute | Nepřidružené disky virtuálních počítačů. | Objekty blob VHD na těchto discích se migrují při migraci účtu úložiště. |
-| Compute | Image virtuálních počítačů. | Objekty blob VHD na těchto discích se migrují při migraci účtu úložiště. |
+| Výpočetní prostředky | Nepřidružené disky virtuálních počítačů. | Objekty blob VHD na těchto discích se migrují při migraci účtu úložiště. |
+| Výpočetní prostředky | Image virtuálních počítačů. | Objekty blob VHD na těchto discích se migrují při migraci účtu úložiště. |
 | Síť | Seznamy ACL pro koncové body. | Odeberte seznamy ACL koncových bodů a zkuste migraci zopakovat. |
 | Síť | Application Gateway | Před zahájením migrace odeberte Application Gateway a po dokončení migrace znovu vytvořte Application Gateway. |
 | Síť | Virtuální sítě s využitím partnerského vztahu virtuálních sítí. | Migrujte Virtual Network na Správce prostředků a potom na peer. Přečtěte si další informace o [partnerském vztahu](../virtual-network/virtual-network-peering-overview.md)virtuálních sítí. |
@@ -130,16 +130,16 @@ Následující konfigurace se aktuálně nepodporují.
 | Služba | Konfigurace | Doporučení |
 | --- | --- | --- |
 | Resource Manager |Role-Based Access Control (RBAC) pro klasické prostředky |Vzhledem k tomu, že identifikátor URI prostředků se po migraci upraví, doporučujeme, abyste naplánovali aktualizace zásad RBAC, které se musí provést po migraci. |
-| Compute |Několik podsítí přidružených k virtuálnímu počítači |Aktualizujte konfiguraci podsítě tak, aby odkazovala pouze na jednu podsíť. To může vyžadovat odebrání sekundárního síťového adaptéru (který odkazuje na jinou podsíť) z virtuálního počítače a znovu ho připojit po dokončení migrace. |
-| Compute |Virtuální počítače, které patří do virtuální sítě, ale nemají přiřazenou explicitní podsíť |Volitelně můžete virtuální počítač odstranit. |
-| Compute |Virtuální počítače, které mají výstrahy, zásady automatického škálování |Migrace prochází a tato nastavení se zahozena. Důrazně doporučujeme, abyste před provedením migrace vyhodnotili své prostředí. Případně můžete nastavení výstrahy po dokončení migrace znovu nakonfigurovat. |
-| Compute |Rozšíření virtuálních počítačů XML (BGInfo 1. *, ladicí program sady Visual Studio, Nasazení webu a vzdálené ladění) |Tato funkce není podporovaná. Doporučuje se odebrat tato rozšíření z virtuálního počítače, aby bylo možné pokračovat v migraci, jinak budou během procesu migrace automaticky vyřazeny. |
-| Compute |Diagnostika spouštění s Premium Storage |Před pokračováním v migraci zakažte funkci diagnostiky spouštění pro virtuální počítače. Až se migrace dokončí, můžete znovu povolit diagnostiku spouštění v Správce prostředkůovém zásobníku. Kromě toho by se měly odstranit objekty blob používané pro snímky obrazovky a sériové protokoly, takže už se za tyto objekty blob neúčtují. |
-| Compute | Cloudové služby, které obsahují webové a pracovní role | To se v tuto chvíli nepodporuje. |
-| Compute | Cloudové služby, které obsahují více než jednu skupinu dostupnosti nebo více skupin dostupnosti. |To se v tuto chvíli nepodporuje. Před migrací prosím přesuňte Virtual Machines do stejné skupiny dostupnosti. |
-| Compute | Virtuální počítač s rozšířením Azure Security Center | Azure Security Center do Virtual Machines automaticky nainstaluje rozšíření pro monitorování jejich zabezpečení a vyvolávání výstrah. Tato rozšíření se většinou nainstalují automaticky, pokud je u předplatného povolená zásada Azure Security Center. Pokud chcete migrovat Virtual Machines, zakažte v předplatném zásadu Security Center, která odebere rozšíření monitorování Security Center z Virtual Machines. |
-| Compute | Virtuální počítač s příponou Backup nebo Snapshot | Tato rozšíření jsou nainstalována na virtuálním počítači nakonfigurovaném pomocí služby Azure Backup. I když migrace těchto virtuálních počítačů není podporovaná, postupujte podle pokynů [, abyste](./migration-classic-resource-manager-faq.md#i-backed-up-my-classic-vms-in-a-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault) zachovali zálohy, které byly podniknuty před migrací.  |
-| Compute | Virtuální počítač s rozšířením Azure Site Recovery | Tato rozšíření jsou nainstalována na virtuálním počítači nakonfigurovaném pomocí služby Azure Site Recovery. I když migrace úložiště použitá v Site Recovery funguje, bude to mít vliv na aktuální replikaci. Po migraci úložiště je nutné zakázat a povolit replikaci virtuálního počítače. |
+| Výpočetní prostředky |Několik podsítí přidružených k virtuálnímu počítači |Aktualizujte konfiguraci podsítě tak, aby odkazovala pouze na jednu podsíť. To může vyžadovat odebrání sekundárního síťového adaptéru (který odkazuje na jinou podsíť) z virtuálního počítače a znovu ho připojit po dokončení migrace. |
+| Výpočetní prostředky |Virtuální počítače, které patří do virtuální sítě, ale nemají přiřazenou explicitní podsíť |Volitelně můžete virtuální počítač odstranit. |
+| Výpočetní prostředky |Virtuální počítače, které mají výstrahy, zásady automatického škálování |Migrace prochází a tato nastavení se zahozena. Důrazně doporučujeme, abyste před provedením migrace vyhodnotili své prostředí. Případně můžete nastavení výstrahy po dokončení migrace znovu nakonfigurovat. |
+| Výpočetní prostředky |Rozšíření virtuálních počítačů XML (BGInfo 1. *, ladicí program sady Visual Studio, Nasazení webu a vzdálené ladění) |Tato funkce není podporovaná. Doporučuje se odebrat tato rozšíření z virtuálního počítače, aby bylo možné pokračovat v migraci, jinak budou během procesu migrace automaticky vyřazeny. |
+| Výpočetní prostředky |Diagnostika spouštění s Premium Storage |Před pokračováním v migraci zakažte funkci diagnostiky spouštění pro virtuální počítače. Až se migrace dokončí, můžete znovu povolit diagnostiku spouštění v Správce prostředkůovém zásobníku. Kromě toho by se měly odstranit objekty blob používané pro snímky obrazovky a sériové protokoly, takže už se za tyto objekty blob neúčtují. |
+| Výpočetní prostředky | Cloudové služby, které obsahují webové a pracovní role | To se v tuto chvíli nepodporuje. |
+| Výpočetní prostředky | Cloudové služby, které obsahují více než jednu skupinu dostupnosti nebo více skupin dostupnosti. |To se v tuto chvíli nepodporuje. Před migrací prosím přesuňte Virtual Machines do stejné skupiny dostupnosti. |
+| Výpočetní prostředky | Virtuální počítač s rozšířením Azure Security Center | Azure Security Center do Virtual Machines automaticky nainstaluje rozšíření pro monitorování jejich zabezpečení a vyvolávání výstrah. Tato rozšíření se většinou nainstalují automaticky, pokud je u předplatného povolená zásada Azure Security Center. Pokud chcete migrovat Virtual Machines, zakažte v předplatném zásadu Security Center, která odebere rozšíření monitorování Security Center z Virtual Machines. |
+| Výpočetní prostředky | Virtuální počítač s příponou Backup nebo Snapshot | Tato rozšíření jsou nainstalována na virtuálním počítači nakonfigurovaném pomocí služby Azure Backup. I když migrace těchto virtuálních počítačů není podporovaná, postupujte podle pokynů [, abyste](./migration-classic-resource-manager-faq.md#i-backed-up-my-classic-vms-in-a-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault) zachovali zálohy, které byly podniknuty před migrací.  |
+| Výpočetní prostředky | Virtuální počítač s rozšířením Azure Site Recovery | Tato rozšíření jsou nainstalována na virtuálním počítači nakonfigurovaném pomocí služby Azure Site Recovery. I když migrace úložiště použitá v Site Recovery funguje, bude to mít vliv na aktuální replikaci. Po migraci úložiště je nutné zakázat a povolit replikaci virtuálního počítače. |
 | Síť |Virtuální sítě, které obsahují virtuální počítače a webové role nebo role pracovního procesu |To se v tuto chvíli nepodporuje. Před migrací prosím přesuňte webové a pracovní role do jejich vlastních Virtual Network. Po migraci klasického Virtual Network se migrované Azure Resource Manager Virtual Network můžou navázat s klasickou Virtual Networkou a dosáhnout podobné konfigurace jako předtím.|
 | Síť | Klasické okruhy Express Route |To se v tuto chvíli nepodporuje. Tyto okruhy se musí před zahájením migrace IaaS migrovat na Azure Resource Manager. Další informace najdete v tématu [Přesun okruhů ExpressRoute z modelu nasazení Classic do modelu nasazení Správce prostředků](../expressroute/expressroute-move.md).|
 | Azure App Service |Virtuální sítě obsahující App Service prostředí |To se v tuto chvíli nepodporuje. |

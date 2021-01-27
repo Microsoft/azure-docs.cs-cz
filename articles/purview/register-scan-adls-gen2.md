@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/17/2020
-ms.openlocfilehash: 0232682661387e635e6ce8bfb5fc6e03301d130c
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 4b7f71b5405708cc1988fafa5ca9c4628fe0d80b
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97694797"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882395"
 ---
 # <a name="register-and-scan-azure-data-lake-storage-gen2"></a>Registrovat a kontrolovat Azure Data Lake Storage Gen2
 
@@ -48,7 +48,7 @@ Když zvolíte **spravovanou identitu**, musíte nejdřív účtu dosah poskytno
 1. Nastavte **roli** na **čtečku dat objektů BLOB úložiště** a v části **Vyberte** vstupní pole zadejte název svého účtu Azure dosah. Pak vyberte **Uložit** a udělte tomuto přiřazení role vašemu účtu dosah.
 
 > [!Note]
-> Další podrobnosti najdete v tématu Postup [autorizace přístupu k objektům blob a frontám pomocí Azure Active Directory](https://docs.microsoft.com/azure/storage/common/storage-auth-aad)
+> Další podrobnosti najdete v tématu Postup [autorizace přístupu k objektům blob a frontám pomocí Azure Active Directory](../storage/common/storage-auth-aad.md)
 
 #### <a name="account-key"></a>Klíč účtu
 

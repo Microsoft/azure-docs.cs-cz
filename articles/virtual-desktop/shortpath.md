@@ -6,12 +6,12 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: bfcd8b3c482b4d429a9e3a4d7bc75e27ada63a98
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: c1cdafe2929502293aada32dbae06e342761862b
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134394"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98876694"
 ---
 # <a name="windows-virtual-desktop-rdp-shortpath-preview"></a>Windows Virtual Desktop RDP ShortPath (Preview)
 
@@ -58,7 +58,7 @@ Následující diagram obsahuje podrobný přehled síťového připojení Short
 Aby bylo možné podporovat protokol RDP ShortPath, klient virtuální plochy systému Windows potřebuje přímý dohled nad hostitelem relace. Pomocí jedné z následujících technologií můžete získat přímý přehled o pohledu:
 
 * [Soukromý partnerský vztah ExpressRoute](../expressroute/expressroute-circuit-peerings.md)
-* [Síť VPN typu Site-to-Site (založená na protokolu IPsec)](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+* [Síť VPN typu Site-to-Site (založená na protokolu IPsec)](../vpn-gateway/tutorial-site-to-site-portal.md)
 * [SÍŤ VPN typu Point-to-Site (založená na protokolu IPsec)](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)
 * [Přiřazení veřejné IP adresy](../virtual-network/virtual-network-public-ip-address.md)
 

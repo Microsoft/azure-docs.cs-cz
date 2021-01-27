@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: db4f49c1b788cd7a55fd6fbbd48f845f2c94d757
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: df19f32be41b17e13a9da575e828830e29da4e55
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92073525"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98894758"
 ---
 # <a name="start-a-runbook-from-a-webhook"></a>Spuštění runbooku z webhooku
 
@@ -142,16 +142,16 @@ Po vytvoření Webhooku má období platnosti dobu 10 let, po jehož uplynutí v
 Můžete zvětšit Webhook, který nedosáhl svého času vypršení platnosti. Postup při rozšiřování Webhooku:
 
 1. Přejděte na sadu Runbook, která obsahuje Webhook. 
-2. V části **prostředky**vyberte **Webhooky** . 
+2. V části **prostředky** vyberte **Webhooky** . 
 3. Klikněte na Webhook, který chcete zvětšit. 
 4. Na stránce Webhook vyberte nové datum a čas vypršení platnosti a klikněte na **Uložit**.
 
 ## <a name="sample-runbook"></a>Ukázkový Runbook
 
-Následující ukázkový Runbook akceptuje data Webhooku a spustí virtuální počítače zadané v textu žádosti. Pokud chcete tento Runbook otestovat, v účtu Automation v části **Runbooky**klikněte na **vytvořit Runbook**. Pokud si nejste jisti, jak vytvořit sadu Runbook, přečtěte si téma [Vytvoření Runbooku](automation-quickstart-create-runbook.md).
+Následující ukázkový Runbook akceptuje data Webhooku a spustí virtuální počítače zadané v textu žádosti. Pokud chcete tento Runbook otestovat, v účtu Automation v části **Runbooky** klikněte na **vytvořit Runbook**. Pokud si nejste jisti, jak vytvořit sadu Runbook, přečtěte si téma [Vytvoření Runbooku](automation-quickstart-create-runbook.md).
 
 > [!NOTE]
-> Pro negrafické Runbooky PowerShellu `Add-AzAccount` a `Add-AzureRMAccount` jsou aliasy pro [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0). Tyto rutiny můžete použít nebo můžete [své moduly](automation-update-azure-modules.md) v účtu Automation aktualizovat na nejnovější verze. Vaše moduly možná budete muset aktualizovat i v případě, že jste právě vytvořili nový účet Automation.
+> Pro negrafické Runbooky PowerShellu `Add-AzAccount` a `Add-AzureRMAccount` jsou aliasy pro [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount). Tyto rutiny můžete použít nebo můžete [své moduly](automation-update-azure-modules.md) v účtu Automation aktualizovat na nejnovější verze. Vaše moduly možná budete muset aktualizovat i v případě, že jste právě vytvořili nový účet Automation.
 
 ```powershell
 param

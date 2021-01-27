@@ -1,24 +1,8 @@
 ---
-title: Ukládání Azure Media Servicesch událostí v Azure Log Analytics
-titleSuffix: Azure Media Services
-description: Naučte se ukládat Azure Media Services události do Azure Log Analytics.
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: tutorial
-ms.date: 08/24/2020
-ms.author: inhenkel
-ms.openlocfilehash: cc3060c9253b23b97089ea35625aceb26737baba
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016991"
+title: Azure Media Services události v Azure Log Analytics: Azure Media Services popis: Naučte se ukládat Azure Media Services události do Azure Log Analytics.
+služby: Media-Services documentationcenter: ' ' Author: IngridAtMicrosoft Manager: femila Editor: ' ' MS. Service: Media-Services MS. rebavování: MS. téma: tutorial MS. Date: 08/24/2020 MS. Author: inhenkel
 ---
+
 # <a name="tutorial-store-azure-media-services-events-in-azure-log-analytics"></a>Kurz: ukládání Azure Media Servicesch událostí v Azure Log Analytics
 
 ## <a name="azure-media-services-events"></a>Události Azure Media Services

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 12/03/2020
-ms.openlocfilehash: 2c21f84b9a10db504afb8ead67ae479518a0afba
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 22c69288479e0247e499a33c2e818c19f7edb2ae
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96603312"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879944"
 ---
 # <a name="azure-purview-metrics-in-azure-monitor"></a>Metriky Azure dosah v Azure Monitor
 
@@ -62,7 +62,7 @@ Chcete-li se seznámit s tím, jak používat část metriky v Azure Portal Pře
 
 Následující tabulka obsahuje seznam metrik, které lze prozkoumat v Azure Portal:
 
-| Název metriky | Obor názvů metriky | Typ agregace | Description |
+| Název metriky | Obor názvů metriky | Typ agregace | Popis |
 | ------------------- | ------------------- | ------------------- | ----------------- |
 | Kontrola zrušena | Automatizovaná kontrola | Sum <br> Počet | Agregovat zrušené kontroly zdrojů dat za časové období |
 | Kontrola dokončena | Automatizovaná kontrola | Sum <br> Počet | Agregovat dokončené kontroly zdrojů dat za časové období |
@@ -79,11 +79,11 @@ Postupujte podle pokynů pro vytvoření nastavení diagnostiky pro váš účet
 
    :::image type="content" source="./media/how-to-monitor-with-azure-monitor/step-one-diagnostic-setting.png" alt-text="Snímek obrazovky znázorňující vytvoření diagnostického protokolu" lightbox="./media/how-to-monitor-with-azure-monitor/step-one-diagnostic-setting.png":::
 
-2. Zaprotokolujte události do účtu úložiště. Pro archivaci diagnostických protokolů se doporučuje vyhrazený účet úložiště. V tomto článku [vytvoříte účet úložiště](../storage/common/storage-quickstart-create-account.md?tabs=azure-portal).
+2. Zaprotokolujte události do účtu úložiště. Pro archivaci diagnostických protokolů se doporučuje vyhrazený účet úložiště. V tomto článku [vytvoříte účet úložiště](../storage/common/storage-account-create.md?tabs=azure-portal).
 
    :::image type="content" source="./media/how-to-monitor-with-azure-monitor/step-two-diagnostic-setting.png" alt-text="Snímek obrazovky, který ukazuje přiřazení účtu úložiště pro diagnostický protokol." lightbox="./media/how-to-monitor-with-azure-monitor/step-two-diagnostic-setting.png":::
 
-Počkejte až 15 minut, než začnete přijímat protokoly v nově vytvořeném účtu úložiště. [Viz uchovávání dat a schéma protokolů prostředků v Azure Storage účet](../azure-monitor/platform/resource-logs-collect-storage.md). Po nakonfigurování diagnostických protokolů se události nasměrují do účtu úložiště.
+Počkejte až 15 minut, než začnete přijímat protokoly v nově vytvořeném účtu úložiště. [Viz uchovávání dat a schéma protokolů prostředků v Azure Storage účet](../azure-monitor/platform/resource-logs.md#send-to-azure-storage). Po nakonfigurování diagnostických protokolů se události nasměrují do účtu úložiště.
 
 ### <a name="scanstatuslogevent"></a>ScanStatusLogEvent
 

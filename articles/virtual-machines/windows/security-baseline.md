@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 8c0fbc2c7830961ca8820e874daaffcf0c58faab
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: ef5cddc131e25a1966ca86c3c8650452f73be69e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202109"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879676"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-machines"></a>Základní hodnoty zabezpečení Azure pro Windows Virtual Machines
 
@@ -562,7 +562,7 @@ Microsoft používá protokol TLS (Transport Layer Security) k ochraně dat při
 
 * [Azure RBAC](../../role-based-access-control/overview.md)
 
-* [Předdefinované role v Azure](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)
+* [Předdefinované role Azure](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)
 
 **Monitorování Azure Security Center**: není k dispozici.
 
@@ -845,7 +845,7 @@ Kromě použití Change Tracking ke sledování softwarových aplikací, adaptiv
 
 * [Jak nakonfigurovat a spravovat Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
-* [Informace o tom, jak stáhnout šablonu virtuálního počítače](./download-template.md)
+* [Informace o tom, jak stáhnout šablonu virtuálního počítače](/previous-versions/azure/virtual-machines/windows/download-template)
 
 **Monitorování Azure Security Center**: není k dispozici.
 
@@ -889,7 +889,7 @@ Kromě použití Change Tracking ke sledování softwarových aplikací, adaptiv
 
 Pro většinu scénářů se může při schůzi a údržbě požadavků na zabezpečení pomáhat šablony základních virtuálních počítačů společnosti Microsoft kombinované s Azure Automation konfigurací požadovaného stavu.
 
-* [Informace o tom, jak stáhnout šablonu virtuálního počítače](./download-template.md)
+* [Informace o tom, jak stáhnout šablonu virtuálního počítače](/previous-versions/azure/virtual-machines/windows/download-template)
 
 * [Informace o vytváření šablon ARM](./ps-template.md)
 

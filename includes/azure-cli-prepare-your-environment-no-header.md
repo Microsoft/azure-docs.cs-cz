@@ -5,14 +5,14 @@ author: dbradish-microsoft
 ms.author: dbradish
 manager: barbkess
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: da62842d382cbee6310bc46e15e33b12cc02af43
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
-ms.translationtype: HT
+ms.openlocfilehash: 0a9889c66cfea95c01b329ff7c95f9995e733b2b
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195564"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895704"
 ---
-- Využijte [Azure Cloud Shell](/azure/cloud-shell/quickstart) s využitím prostředí Bash.
+- Využijte [Azure Cloud Shell](../articles/cloud-shell/quickstart.md) s využitím prostředí Bash.
 
    [![Spuštění služby Cloud Shell v novém okně](media/cloud-shell-try-it/hdi-launch-cloud-shell.png)](https://shell.azure.com)   
 - Pokud tomu dáváte přednost, můžete [nainstalovat](/cli/azure/install-azure-cli) Azure CLI a spouštět referenční příkazy CLI.

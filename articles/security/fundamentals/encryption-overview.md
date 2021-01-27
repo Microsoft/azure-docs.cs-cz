@@ -9,12 +9,12 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: ff023ad98c7ffa269223b5d0b4a1cecc5fde1feb
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: d7d438b369c863660a032f101e466b6fadf639fa
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410211"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879710"
 ---
 # <a name="azure-encryption-overview"></a>Přehled šifrování v Azure
 
@@ -45,11 +45,11 @@ Při šifrování na straně klienta nemají Poskytovatelé cloudových služeb 
 
 Tři modely šifrování na straně serveru nabízejí různé charakteristiky správy klíčů, které si můžete vybrat podle svých požadavků:
 
-- **Klíče spravované službou** : poskytuje kombinaci řízení a pohodlí s nízkou režií.
+- **Klíče spravované službou**: poskytuje kombinaci řízení a pohodlí s nízkou režií.
 
-- **Klíče spravované zákazníkem** : poskytuje kontrolu nad klíči, včetně podpory BYOK (Přineste si vlastní klíče), nebo umožňuje vygenerovat nové.
+- **Klíče spravované zákazníkem**: poskytuje kontrolu nad klíči, včetně podpory BYOK (Přineste si vlastní klíče), nebo umožňuje vygenerovat nové.
 
-- **Klíče spravované službou v hardwaru ovládaném zákazníkem** : umožňuje spravovat klíče ve vašem vlastním úložišti, mimo kontrolu společnosti Microsoft. Tato vlastnost se nazývá hostitel vlastního klíče (HYOK). Konfigurace je ale komplexní a většina služeb Azure tento model nepodporuje.
+- **Klíče spravované službou v hardwaru ovládaném zákazníkem**: umožňuje spravovat klíče ve vašem vlastním úložišti, mimo kontrolu společnosti Microsoft. Tato vlastnost se nazývá hostitel vlastního klíče (HYOK). Konfigurace je ale komplexní a většina služeb Azure tento model nepodporuje.
 
 ### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
@@ -179,9 +179,9 @@ Připojení brány VPN typu Site-to-site můžete použít k připojení místn�
 
 Připojení VPN typu Site-to-site k virtuální síti můžete nakonfigurovat pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure CLI.
 
-Další informace najdete tady:
+Další informace naleznete v tématu:
 
-[Vytvoření připojení typu Site-to-site v Azure Portal](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+[Vytvoření připojení typu Site-to-site v Azure Portal](../../vpn-gateway/tutorial-site-to-site-portal.md)
 
 [Vytvoření připojení typu Site-to-site v PowerShellu](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
 
@@ -202,7 +202,7 @@ Díky Key Vaultu organizace nemusí konfigurovat, opravovat a udržovat moduly h
 ## <a name="next-steps"></a>Další kroky
 
 - [Přehled zabezpečení Azure](./overview.md)
-- [Přehled zabezpečení sítě Azure](network-overview.md)
+- [Přehled zabezpečení sítě v Azure](network-overview.md)
 - [Přehled zabezpečení Azure Database](../../azure-sql/database/security-overview.md)
 - [Přehled zabezpečení virtuálních počítačů Azure](virtual-machines-overview.md)
 - [Šifrování v klidovém stavu](encryption-atrest.md)

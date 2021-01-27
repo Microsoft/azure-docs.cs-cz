@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: ac9a1b43ba4ffb537afd658c84edb48ed59a3694
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: a84e4e767092a1507ef0608c21ff1896cb1dde0d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98683478"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880940"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Výuka modelů pomocí Azure Machine Learning
 
@@ -23,7 +23,7 @@ Azure Machine Learning poskytuje několik způsobů, jak proškolit vaše modely
 
 + [Azure Machine Learning SDK pro Python](#python-sdk): sada Python SDK nabízí několik způsobů výuky modelů, z nichž každá má různé možnosti.
 
-    | Způsob školení | Description |
+    | Způsob školení | Popis |
     | ----- | ----- |
     | [Konfigurace spuštění](#run-configuration) | **Typický způsob, jak naučit modely** , je použít školicí skript a spustit konfiguraci. Konfigurace spuštění poskytuje informace potřebné ke konfiguraci školicího prostředí používaného pro výuku modelu. V konfiguraci spuštění můžete zadat školicí skript, cíl výpočtů a prostředí Azure ML a spustit školicí úlohu. |
     | [Automatizované strojové učení](#automated-machine-learning) | Automatizované Machine Learning umožňuje **výukové modely bez rozsáhlých vědeckých znalostí nebo programování**. Pro lidi s datovou vědy a programováním na pozadí poskytuje způsob, jak ušetřit čas a prostředky díky automatizaci výběru algoritmu a ladění parametrů. Při použití automatizovaného strojového učení se nemusíte starat o definování konfigurace spuštění. |
@@ -76,7 +76,7 @@ Definujte iterace, nastavení parametrů, featurization a další nastavení. B�
 Kanály strojového učení můžou používat dřív uvedené metody školení. Kanály jsou více o vytváření pracovního postupu, takže zahrnují více než jenom školení modelů. V kanálu můžete model přeškolit pomocí automatizovaného strojového učení nebo konfigurací spouštění.
 
 * [Co jsou kanály ML v Azure Machine Learning?](concept-ml-pipelines.md)
-* [Vytvoření a spuštění kanálů strojového učení s Azure Machine Learning SDK](how-to-create-your-first-pipeline.md)
+* [Vytvoření a spuštění kanálů strojového učení s Azure Machine Learning SDK](./how-to-create-machine-learning-pipelines.md)
 * [Kurz: použití kanálů Azure Machine Learning pro dávkové vyhodnocování](tutorial-pipeline-batch-scoring-classification.md)
 * [Příklady: příklady Jupyter Notebook pro kanály strojového učení](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines)
 * [Příklady: kanál s automatickým strojovým učením](https://aka.ms/pl-automl)

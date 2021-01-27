@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 04/16/2020
-ms.openlocfilehash: 70dfccb32389d2f1fb492669c9f84a3e6ae77bbb
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 0a3188d5dc2c34c9959ae488ad5a5f962a99f02f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621344"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880266"
 ---
 # <a name="publish-an-integrated-solution"></a>Publikování integrovaného řešení
 
@@ -32,8 +32,8 @@ Přehled programu integrovaných řešení najdete v části [video s přehledem
 ## <a name="eligibility-criteria"></a>Kritéria způsobilosti
 
 * Zúčastnění partneři musí mít ID MPN.
-* Poskytovatelé zúčastněných služeb by měli být [připravení do společného prodeje](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status).
-* Zúčastnění dodavatelé softwaru by měli být [připravení na prodej IP](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status).
+* Poskytovatelé zúčastněných služeb by měli být [připravení do společného prodeje](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status).
+* Zúčastnění dodavatelé softwaru by měli být [připravení na prodej IP](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status).
 * Aspoň jeden zúčastněný partner musí mít zlatou kompetenci v jedné z těchto oblastí:
     - Vývoj aplikací
     - Integrace aplikací
@@ -55,7 +55,7 @@ Partneři, kteří chtějí účast v programu, by měli identifikovat jiné par
 
 ## <a name="develop-an-integrated-solution"></a>Vývoj integrovaného řešení
 
-Po schválení vašeho jmenování použijte prostředky propojeného programu k vývoji integrovaného řešení. Postupujte takto:
+Po schválení vašeho jmenování použijte prostředky propojeného programu k vývoji integrovaného řešení. Postupujte následovně:
 
 1. Dokončete klíčové obchodní a technické diskuze ve formátu dílny, abyste mohli definovat řešení a integrační přístup.
 
@@ -64,7 +64,7 @@ Po schválení vašeho jmenování použijte prostředky propojeného programu k
     * Cílové zákazníky
     * Pozice hodnoty
     * Ceny
-    * Licencování
+    * Licensing
     * podmínky a ujednání
     * Přístup k podpoře
     * Marketingové aktivity
@@ -74,7 +74,7 @@ Po schválení vašeho jmenování použijte prostředky propojeného programu k
     Vaše diskuze o přístupu k integraci by měla zahrnovat tyto body:
     * Body integrace
     * Architektura řešení
-    * Ověřování
+    * Authentication
     * Uživatelské rozhraní
     * Sledování
     * Mechanismus nasazení

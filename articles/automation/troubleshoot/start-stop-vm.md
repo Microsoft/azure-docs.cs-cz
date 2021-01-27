@@ -2,19 +2,15 @@
 title: Řešení potíží s Azure Automation Start/Stop VMs during off-hours
 description: V tomto článku se dozvíte, jak řešit problémy vznikající při použití funkce Start/Stop VMs during off-hours.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 04/04/2019
-ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: bb8fa53fa07d666693ae545c193faaf3d6d0a30c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.topic: troubleshooting
+ms.openlocfilehash: 763e1321556ade73778b82ea70926af21a83f7ec
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187145"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896270"
 ---
 # <a name="troubleshoot-startstop-vms-during-off-hours-issues"></a>Řešení potíží s Start/Stop VMs during off-hours
 
@@ -113,7 +109,7 @@ V následujícím seznamu najdete možná řešení:
   * **ScheduledStartStop_Parent**
   * **SequencedStartStop_Parent**
 
-* Ověřte, že váš [účet Spustit jako](../manage-runas-account.md) má správná oprávnění k virtuálním počítačům, které se pokoušíte spustit nebo zastavit. Informace o tom, jak kontrolovat oprávnění k prostředku, najdete v tématu [rychlý Start: Zobrazení rolí přiřazených uživateli pomocí Azure Portal](../../role-based-access-control/check-access.md). Bude nutné zadat ID aplikace pro instanční objekt používaný účtem spustit jako. Tuto hodnotu můžete načíst tak, že v Azure Portal kliknete na účet Automation. V části **Nastavení účtu**vyberte **účty Spustit jako** a vyberte příslušný účet Spustit jako.
+* Ověřte, že váš [účet Spustit jako](../manage-runas-account.md) má správná oprávnění k virtuálním počítačům, které se pokoušíte spustit nebo zastavit. Informace o tom, jak kontrolovat oprávnění k prostředku, najdete v tématu [rychlý Start: Zobrazení rolí přiřazených uživateli pomocí Azure Portal](../../role-based-access-control/check-access.md). Bude nutné zadat ID aplikace pro instanční objekt používaný účtem spustit jako. Tuto hodnotu můžete načíst tak, že v Azure Portal kliknete na účet Automation. V části **Nastavení účtu** vyberte **účty Spustit jako** a vyberte příslušný účet Spustit jako.
 
 * Pokud jsou virtuální počítače explicitně vyloučené, nemusí se spustit nebo zastavit. Vyloučené virtuální počítače se nastavují v `External_ExcludeVMNames` proměnné v účtu Automation, na který je tato funkce nasazená. Následující příklad ukazuje, jak můžete zadat dotaz na tuto hodnotu pomocí PowerShellu.
 
@@ -154,7 +150,7 @@ V následujícím seznamu najdete možná řešení:
 
 * Aby bylo možné spouštět a zastavovat virtuální počítače, musí mít účet Spustit jako pro účet Automation příslušná oprávnění k tomuto virtuálnímu počítači. Informace o tom, jak kontrolovat oprávnění k prostředku, najdete v tématu [rychlý Start: Zobrazení rolí přiřazených uživateli pomocí Azure Portal](../../role-based-access-control/check-access.md). Bude nutné zadat ID aplikace pro instanční objekt používaný účtem spustit jako. Tuto hodnotu můžete načíst tak, že v Azure Portal kliknete na účet Automation. V části **Nastavení účtu** vyberte **účty Spustit jako** a vyberte příslušný účet Spustit jako.
 * Pokud má virtuální počítač potíže se spouštěním nebo navrácením, může dojít k potížím na samotném virtuálním počítači. Příkladem je aktualizace, která se používá, když se virtuální počítač snaží vypnout, služba, která zamrzne a další. Přejděte na prostředek virtuálního počítače a zkontrolujte **protokoly aktivit** , abyste viděli, jestli jsou v protokolech nějaké chyby. Můžete se taky pokusit přihlásit k virtuálnímu počítači a zjistit, jestli v protokolech událostí nejsou nějaké chyby. Další informace o řešení potíží s vaším VIRTUÁLNÍm počítačem najdete v tématu [řešení potíží s virtuálními počítači Azure](../../virtual-machines/troubleshooting/index.yml).
-* Zkontrolujte [streamy úlohy](../automation-runbook-execution.md#job-statuses) a vyhledejte případné chyby. Na portálu přejdete do svého účtu Automation a v části **Automatizace procesu**vyberete **úlohy** .
+* Zkontrolujte [streamy úlohy](../automation-runbook-execution.md#job-statuses) a vyhledejte případné chyby. Na portálu přejdete do svého účtu Automation a v části **Automatizace procesu** vyberete **úlohy** .
 
 ## <a name="scenario-my-custom-runbook-fails-to-start-or-stop-my-vms"></a><a name="custom-runbook"></a>Scénář: můj vlastní Runbook nedokáže spustit nebo zastavit moje virtuální počítače
 
@@ -164,7 +160,7 @@ Vytvořili jste vlastní Runbook nebo jste si ho stáhli z Galerie prostředí P
 
 ### <a name="cause"></a>Příčina
 
-Může se jednat o mnoho příčin selhání. V Azure Portal na svém účtu Automation a v části **Automatizace procesu**vyberte **úlohy** . Na stránce **úlohy** vyhledejte úlohy z Runbooku a zobrazte případné selhání úloh.
+Může se jednat o mnoho příčin selhání. V Azure Portal na svém účtu Automation a v části **Automatizace procesu** vyberte **úlohy** . Na stránce **úlohy** vyhledejte úlohy z Runbooku a zobrazte případné selhání úloh.
 
 ### <a name="resolution"></a>Řešení
 
@@ -203,13 +199,13 @@ Tento problém může být způsoben nesprávně konfigurovaným nebo vydaným �
 
 ### <a name="resolution"></a>Řešení
 
-Pokud chcete ověřit, že je váš účet Spustit jako správně nakonfigurovaný, Azure Portal v části **Nastavení účtu**vyberte účet Automation a vyberte **účty Spustit jako** . Pokud je účet Spustit jako nesprávně nakonfigurovaný nebo vypršela jeho platnost, stav zobrazuje podmínku.
+Pokud chcete ověřit, že je váš účet Spustit jako správně nakonfigurovaný, Azure Portal v části **Nastavení účtu** vyberte účet Automation a vyberte **účty Spustit jako** . Pokud je účet Spustit jako nesprávně nakonfigurovaný nebo vypršela jeho platnost, stav zobrazuje podmínku.
 
 Pokud je váš účet Spustit jako špatně nakonfigurovaný, odstraňte a znovu vytvořte svůj účet Spustit jako. Další informace najdete v tématu [Správa účtů spustit jako Azure Automation](../manage-runas-account.md).
 
 Pokud vypršela platnost certifikátu pro svůj účet Spustit jako, obnovte certifikát pomocí postupu v části [obnovení certifikátu podepsaného svým držitelem](../manage-runas-account.md#cert-renewal) .
 
-Pokud chybí oprávnění, přečtěte si téma [rychlý Start: Zobrazení rolí přiřazených uživateli pomocí Azure Portal](../../role-based-access-control/check-access.md). Je nutné zadat ID aplikace pro instanční objekt používaný účtem spustit jako. Tuto hodnotu můžete načíst tak, že v Azure Portal kliknete na účet Automation. V části **Nastavení účtu**vyberte **účty Spustit jako** a vyberte příslušný účet Spustit jako.
+Pokud chybí oprávnění, přečtěte si téma [rychlý Start: Zobrazení rolí přiřazených uživateli pomocí Azure Portal](../../role-based-access-control/check-access.md). Je nutné zadat ID aplikace pro instanční objekt používaný účtem spustit jako. Tuto hodnotu můžete načíst tak, že v Azure Portal kliknete na účet Automation. V části **Nastavení účtu** vyberte **účty Spustit jako** a vyberte příslušný účet Spustit jako.
 
 ## <a name="scenario-my-problem-isnt-listed-here"></a><a name="other"></a>Scénář: můj problém tady není uvedený.
 

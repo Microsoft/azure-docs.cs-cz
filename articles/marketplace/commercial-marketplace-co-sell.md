@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
 ms.date: 12/08/2020
-ms.openlocfilehash: b5001898fa18834ce7c04403de70879084df85f1
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: ca090d9bd4f5968b0404cb73af9f8d21197e695d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96904904"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880957"
 ---
 # <a name="co-sell-option-in-the-commercial-marketplace"></a>Možnost spoluprodeje na komerčním marketplace
 
-Poskytování informací o **společném prodeji** na kartě Microsoft je zcela volitelné. Je nutné, abyste dosáhli [motivovaní stavu pro spoluprodejní přípravu a IP](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status). Informace, které poskytnete, budou využívat prodejní týmy Microsoftu k získání dalších informací o vaší nabídce při vyhodnocování svých potřeb pro zákazníky. Není k dispozici přímo pro zákazníky. Další informace najdete v tématu [společný prodej s Microsoftem](https://partner.microsoft.com/membership/co-sell-with-microsoft).
+Poskytování informací o **společném prodeji** na kartě Microsoft je zcela volitelné. Je nutné, abyste dosáhli [motivovaní stavu pro spoluprodejní přípravu a IP](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status). Informace, které poskytnete, budou využívat prodejní týmy Microsoftu k získání dalších informací o vaší nabídce při vyhodnocování svých potřeb pro zákazníky. Není k dispozici přímo pro zákazníky. Další informace najdete v tématu [společný prodej s Microsoftem](https://partner.microsoft.com/membership/co-sell-with-microsoft).
 
 Možnost společného prodeje v partnerském centru je k dispozici pro následující typy nabídek.
 
@@ -58,7 +58,7 @@ Typy řešení usnadňují definování scénářů, na které je vaše nabídka
 
 Můžete přidat až tři oblasti řešení pro vaši nabídku. Pro každou oblast řešení můžete zvolit až dvě podoblasti řešení. Pokud chcete vybrat více podkategorií, použijte `Ctrl` klíč (ve Windows) nebo klíč příkazu (na MacOS).
 
-## <a name="documents"></a>Dokumenty
+## <a name="documents"></a>dokumenty.
 
 Máte možnost poskytnout dokumentaci, kterou Microsoft bude používat k získání dalších informací o vaší nabídce, a vyhodnotit, co vyhovuje vašim potřebám zákazníků.
 

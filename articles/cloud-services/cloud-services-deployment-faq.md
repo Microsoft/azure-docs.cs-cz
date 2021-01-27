@@ -8,12 +8,12 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 67c20823d1f80360b2ab23dc3f208673d36a7374
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: dd7b19a2c9e872b811c1aab6e504accb7de383b2
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742212"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896473"
 ---
 # <a name="deployment-issues-for-azure-cloud-services-classic-frequently-asked-questions-faqs"></a>Problémy s nasazením pro Azure Cloud Services (Classic): nejčastější dotazy
 
@@ -52,7 +52,7 @@ Nasazení cloudové služby může selhat, pokud prostředky, které se musí p�
 
 Můžete také sledovat aktuální využití/kvótu pro vaše předplatné na portálu: Azure Portal => předplatné => \<appropriate subscription>   => "využití + kvóta".
 
-Informace související s využitím prostředků/spotřebou se dají získat taky prostřednictvím rozhraní API pro fakturaci Azure. Viz [rozhraní API využití prostředků Azure (Preview)](../cost-management-billing/manage/usage-rate-card-overview.md#azure-resource-usage-api-preview).
+Informace související s využitím prostředků/spotřebou se dají získat taky prostřednictvím rozhraní API pro fakturaci Azure. Viz [Přehled rozhraní API pro Azure spotřeber](../cost-management-billing/manage/consumption-api-overview.md).
 
 ## <a name="how-can-i-change-the-size-of-a-deployed-cloud-service-vm-without-redeploying-it"></a>Jak můžu změnit velikost nasazeného virtuálního počítače cloudové služby bez opětovného nasazení?
 Velikost virtuálního počítače nasazené cloudové služby nemůžete změnit bez opětovného nasazení. Velikost virtuálního počítače je integrována do lokality CSDEF, kterou lze aktualizovat pouze pomocí opětovného nasazení.

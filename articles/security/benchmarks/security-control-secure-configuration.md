@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 349456b0a4de65520dd633efe0573d24ea1c89c4
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: f945699256b4de9bd87ee4ab7500268302e93089
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409021"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880165"
 ---
 # <a name="security-control-secure-configuration"></a>Řízení zabezpečení: zabezpečená konfigurace
 
@@ -60,7 +60,7 @@ Použijte Azure Security Center doporučení k údržbě konfigurací zabezpeče
 
 | ID Azure | ID služby CI | Zodpovědní |
 |--|--|--|
-| 7.3 | 5,2 | Zákazník |
+| 7.3 | 5.2 | Zákazník |
 
 Použijte Azure Policy [Deny] a [Deploy, pokud neexistuje] pro vymáhání zabezpečených nastavení napříč prostředky Azure.  Kromě toho můžete použít šablony Azure Resource Manager k údržbě konfigurace zabezpečení vašich prostředků Azure, které vaše organizace vyžaduje. 
 
@@ -74,7 +74,7 @@ Použijte Azure Policy [Deny] a [Deploy, pokud neexistuje] pro vymáhání zabez
 
 | ID Azure | ID služby CI | Zodpovědní |
 |--|--|--|
-| 7,4 | 5,2 | Shared |
+| 7,4 | 5.2 | Shared |
 
 Dodržujte doporučení od Azure Security Center při provádění posouzení ohrožení zabezpečení výpočetních prostředků Azure.  Kromě toho můžete použít šablony Azure Resource Manager, vlastní image operačního systému nebo konfiguraci stavu Azure Automation k údržbě konfigurace zabezpečení operačního systému vyžadovaného vaší organizací.   Šablony virtuálních počítačů společnosti Microsoft kombinované s Azure Automation konfigurací požadovaného stavu mohou pomoci při schůzi a údržbě požadavků na zabezpečení. 
 
@@ -88,9 +88,9 @@ Všimněte si také, že Azure Marketplace image virtuálních počítačů publ
 
 - [Vytvoření virtuálního počítače s Windows v Azure Portal](../../virtual-machines/windows/quick-create-portal.md)
 
-- [Informace o tom, jak stáhnout šablonu virtuálního počítače](../../virtual-machines/windows/download-template.md)
+- [Informace o tom, jak stáhnout šablonu virtuálního počítače](/previous-versions/azure/virtual-machines/windows/download-template)
 
-- [Ukázkový skript pro nahrání virtuálního pevného disku do Azure a vytvoření nového virtuálního počítače](../../virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script.md)
+- [Ukázkový skript pro nahrání virtuálního pevného disku do Azure a vytvoření nového virtuálního počítače](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script)
 
 ## <a name="75-securely-store-configuration-of-azure-resources"></a>7,5: Konfigurace prostředků Azure v zabezpečeném úložišti
 
@@ -118,7 +118,7 @@ Pokud používáte vlastní image, použijte řízení přístupu na základě r
 
 - [Jak nakonfigurovat službu Azure RBAC](../../role-based-access-control/quickstart-assign-role-user-portal.md)
 
-- [Přehled Galerie sdílených imagí](../../virtual-machines/windows/shared-image-galleries.md)
+- [Přehled Galerie sdílených imagí](../../virtual-machines/shared-image-galleries.md)
 
 ## <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7,7: nasazení nástrojů pro správu konfigurace pro prostředky Azure
 
@@ -128,7 +128,7 @@ Pokud používáte vlastní image, použijte řízení přístupu na základě r
 
 Definování a implementace standardních konfigurací zabezpečení pro prostředky Azure pomocí Azure Policy. Pomocí aliasů Azure Policy můžete vytvářet vlastní zásady pro auditování nebo prosazování konfigurace sítě vašich prostředků Azure. Můžete také využít integrované definice zásad související s vašimi konkrétními prostředky.  Kromě toho můžete k nasazení změn konfigurace použít Azure Automation.
 
-- [Konfigurace a Správa Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
+- [Jak nakonfigurovat a spravovat Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
 - [Jak používat aliasy](../../governance/policy/concepts/definition-structure.md#aliases)
 
@@ -146,7 +146,7 @@ Konfigurace stavu Azure Automation je služba správy konfigurace pro požadovan
 
 | ID Azure | ID služby CI | Zodpovědní |
 |--|--|--|
-| 7.9 | 5,5 | Zákazník |
+| 7.9 | 5.5 | Zákazník |
 
 Použijte Azure Security Center k provádění kontrol standardních hodnot vašich prostředků Azure.  Kromě toho použijte Azure Policy k upozornění a auditování konfigurace prostředků Azure.
 
@@ -156,7 +156,7 @@ Použijte Azure Security Center k provádění kontrol standardních hodnot vaš
 
 | ID Azure | ID služby CI | Zodpovědní |
 |--|--|--|
-| 7.10 | 5,5 | Zákazník |
+| 7.10 | 5.5 | Zákazník |
 
 Pomocí Azure Security Center můžete provádět kontroly základní hodnoty pro kontejnery a nastavení Docker.
 
@@ -166,7 +166,7 @@ Pomocí Azure Security Center můžete provádět kontroly základní hodnoty pr
 
 | ID Azure | ID služby CI | Zodpovědní |
 |--|--|--|
-| 7.11 | 13,1 | Zákazník |
+| 7.11 | 13.1 | Zákazník |
 
 K zjednodušení a zabezpečení správy tajných kódů pro cloudové aplikace můžete použít Identita spravované služby ve spojení s Azure Key Vault.
 
@@ -194,7 +194,7 @@ Spravované identity použijte k poskytování služeb Azure s automaticky sprav
 |--|--|--|
 | 7,13 | 18,1, 18,7 | Zákazník |
 
-Implementujte kontrolu přihlašovacích údajů pro identifikaci přihlašovacích údajů v rámci kódu. Skener přihlašovacích údajů taky bude povzbudit přesunutí zjištěných přihlašovacích údajů do bezpečnějších umístění, jako je Azure Key Vault. 
+Implementujte kontrolu přihlašovacích údajů pro identifikaci přihlašovacích údajů v rámci kódu. Credential Scanner bude také pobízet k přesunutí odhalených přihlašovacích údajů do bezpečnějších umístění, jako je Azure Key Vault. 
 
 - [Jak nastavit skener přihlašovacích údajů](https://secdevtools.azurewebsites.net/helpcredscan.html)
 

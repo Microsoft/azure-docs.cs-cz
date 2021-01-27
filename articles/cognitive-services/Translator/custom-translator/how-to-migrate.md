@@ -2,19 +2,19 @@
 title: Migrovat pracovní prostor a projekty služby Microsoft Translator hub? – Vlastní Překladatel
 titleSuffix: Azure Cognitive Services
 description: Tento článek vysvětluje, jak migrovat pracovní prostor a projekty centra do Azure Cognitive Services vlastního překladatele.
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 05/26/2020
-ms.author: swmachan
+ms.author: lajanuar
 ms.topic: conceptual
-ms.openlocfilehash: 64c449bdefe6fb067a7c0e26b155b58b6f00c399
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 89658ce88b4f1ac9d5bacac7bd45511b4aa0a1be
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368280"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895707"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Migrace pracovního prostoru centra a projektů do vlastního překladatele
 
@@ -130,7 +130,7 @@ Pokud potřebujete podrobnější zprávu o migraci týkající se vašich proje
 
 Tato tabulka porovnává funkce mezi centrem Microsoft Translator a vlastním překladatelem.
 
-| Příznak | Rozbočovač | Custom Translator |
+| Funkce | Rozbočovač | Custom Translator |
 | ------- | :-: | :---------------: |
 | Stav funkce přizpůsobení    | Obecná dostupnost    | Obecná dostupnost |
 | Verze textového rozhraní API    | V2     | Technologie  |

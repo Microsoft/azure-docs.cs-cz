@@ -8,41 +8,64 @@ ms.topic: include
 ms.date: 04/19/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 367a0b1d17f8d5ebe4f46835ace963b00e75354e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e2abda6e0e3ef3d638952c05c31a50d91d24e88
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68229230"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98900847"
 ---
 Vytvoření IoT Hubu pomocí webu Azure Portal:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
-1. Vyberte **vytvořit prostředek**  >  **Internet věcí**  >  **IoT Hub**.
+1. Na domovské stránce Azure vyberte **vytvořit prostředek** a pak zadejte *IoT Hub* v **části Hledat na Marketplace**.
 
-    ![Výběr instalace služby IoT Hub](media/iot-hub-tutorials-create-free-hub/selectiothub.png)
+1. Ve výsledcích hledání vyberte **IoT Hub** a pak vyberte **vytvořit**.
 
-1. K vytvoření vlastního centra IoT úrovně Free použijte hodnoty v následující tabulce:
+1. Na kartě **základy** vyplňte pole následujícím způsobem:
 
-    | Nastavení | Hodnota |
-    | ------- | ----- |
-    | Předplatné | Z rozevíracího seznamu vyberte své předplatné Azure. |
-    | Skupina prostředků | Vytvořte novou. Tento kurz používá název **tutorials-iot-hub-rg**. |
-    | Oblast | Tento kurz používá **USA – západ**. Vy si můžete vybrat oblast, která je vám nejbližší. |
-    | Name | Následující snímek obrazovky používá název **tutorials-iot-hub**. Když vytváříte své centrum, musíte si zvolit jedinečný název. |
+   - **Předplatné**: vyberte předplatné, které chcete použít pro vaše centrum.
 
-    ![Nastavení centra 1](media/iot-hub-tutorials-create-free-hub/hubdefinition-1.png)
+   - **Skupina prostředků**: vyberte skupinu prostředků nebo vytvořte novou. Pokud chcete vytvořit nový, vyberte **vytvořit novou** a vyplňte název, který chcete použít. Pokud chcete použít existující skupinu prostředků, vyberte tuto skupinu prostředků. Další informace najdete v tématu [Správa skupin prostředků Azure Resource Manager](../articles/azure-resource-manager/management/manage-resource-groups-portal.md). Tento kurz používá název **tutorials-iot-hub-rg**.
 
-    | Nastavení | Hodnota |
-    | ------- | ----- |
-    | Cenová úroveň a úroveň škálování | F1 Free. V jednom předplatném můžete mít pouze jedno centrum úrovně Free. |
-    | Jednotky služby IoT Hub | 1 |
+   - **Oblast**: Vyberte oblast, ve které chcete umístit rozbočovač. Vyberte umístění, které je pro vás nejblíže. Některé funkce, například [datové proudy zařízení IoT Hub](../articles/iot-hub/iot-hub-device-streams-overview.md), jsou k dispozici pouze v konkrétních oblastech. U těchto omezených funkcí je nutné vybrat jednu z podporovaných oblastí. V tomto kurzu se používá oblast **západní USA** .
 
-    ![Nastavení centra 2](media/iot-hub-tutorials-create-free-hub/hubdefinition-2.png)
+   - **IoT Hub název**: zadejte název vašeho centra. Tento název musí být globálně jedinečný. Tento kurz používá **kurzy – IoT-Hub**. Když vytváříte své centrum, musíte si zvolit jedinečný název.
 
-1. Klikněte na **Vytvořit**. Vytvoření centra může trvat několik minut.
+   [!INCLUDE [iot-hub-pii-note-naming-hub](iot-hub-pii-note-naming-hub.md)]
 
-    ![Nastavení centra 3](media/iot-hub-tutorials-create-free-hub/hubdefinition-3.png)
+   ![Vytvoření centra v Azure Portal](media/iot-hub-tutorials-create-free-hub/hub-definition-basics.png)
+
+1. Vyberte **Další: sítě** a pokračujte v vytváření vašeho centra.
+
+   Vyberte koncové body, které se můžou připojit k vašemu IoT Hub. Můžete vybrat výchozí nastavení **veřejný koncový bod (všechny sítě)** nebo zvolit **veřejný koncový bod (vybrané rozsahy IP adres)** nebo **soukromý koncový bod**. Přijměte výchozí nastavení tohoto kurzu.
+
+   ![Výběr koncových bodů, které se můžou připojit](media/iot-hub-tutorials-create-free-hub/hub-definition-networking.png)
+
+1. Vyberte **Další: Správa** pro pokračování ve vytváření vašeho centra.
+
+    ![Nastavení velikosti a měřítka pro nové centrum pomocí Azure Portal](media/iot-hub-tutorials-create-free-hub/hub-definition-management.png)
+
+    Tady můžete přijmout výchozí nastavení. V případě potřeby můžete změnit libovolné z následujících polí:
+
+    - **Úroveň cen a škálování**: vaše vybraná úroveň. Vyberte úroveň Free. Úroveň Free je určena pro testování a vyhodnocení. Umožňuje připojit zařízení 500 k rozbočovači a až 8 000 zpráv za den. Každé předplatné Azure může vytvořit jednu službu IoT Hub v bezplatné úrovni.
+
+    - **IoT Hub jednotky**: počet zpráv povolených na jednotku za den závisí na cenové úrovni vašeho centra. Pokud třeba chcete, aby centrum podporovalo příchozí zprávy 700 000, zvolíte dvě jednotky úrovně S1.
+    Každé předplatné Azure může vytvořit jednu službu IoT Hub v bezplatné úrovni. Podrobnosti o dalších možnostech vrstev najdete v tématu [Volba správné IoT Hub úrovně](../articles/iot-hub/iot-hub-scaling.md).
+
+    - **Defender pro IoT**: tuto funkci zapněte, pokud chcete přidat další vrstvu ochrany před hrozbami do IoT a vašich zařízení. Tato možnost není dostupná pro rozbočovače na úrovni Free. Další informace o této funkci najdete v tématu [Azure Security Center pro IoT](/azure/asc-for-iot/).
+
+    - **Rozšířená nastavení**  >  **Oddíly zařízení-Cloud**: Tato vlastnost spojuje zprávy typu zařízení-Cloud s počtem souběžných čtenářů zpráv. Většina Center potřebuje jenom čtyři oddíly. Rozbočovač úrovně Free je omezený na dva oddíly.
+
+1.  Vyberte **Další: značky** a pokračujte na další obrazovku.
+
+    Značky jsou páry název-hodnota. Stejnou značku můžete přiřadit více prostředkům a skupinám prostředků pro kategorizaci prostředků a konsolidaci fakturace. Další informace najdete v tématu [použití značek k uspořádání prostředků Azure](../articles/azure-resource-manager/management/tag-resources.md).
+
+    ![Přiřaďte značky pro centrum pomocí Azure Portal](media/iot-hub-tutorials-create-free-hub/hub-definition-tags.png)
+
+1.  Vyberte **Další: zkontrolovat + vytvořit** a zkontrolujte své volby. Na této obrazovce vidíte něco podobného, ale s hodnotami, které jste vybrali při vytváření centra.
+
+    ![Přečtěte si informace o vytvoření nového centra.](media/iot-hub-tutorials-create-free-hub/hub-definition-create.png)
 
 1. Poznamenejte si zvolený název centra IoT. Tuto hodnotu budete později v kurzu potřebovat.

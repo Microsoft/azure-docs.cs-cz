@@ -8,12 +8,12 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: 5c545fa7d58d925dfcb9fa98b301c3bb0a20833e
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: f3504ca4a706e92081209f4eaaa86af9f71c52b3
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358567"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880907"
 ---
 # <a name="tutorial-use-video-indexer-with-logic-app-and-power-automate"></a>Kurz: použití Video Indexer s aplikací logiky a automatickým automatickým zapnutím
 
@@ -35,7 +35,7 @@ V tomto kurzu se používá aplikace logiky k tomu, abyste si ukázali, jak:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Abyste mohli začít, budete potřebovat účet Video Indexer společně s [přístupem k rozhraním API přes klíč rozhraní API](video-indexer-use-apis.md). 
 * Budete také potřebovat účet Azure Storage. Poznamenejte si přístupový klíč pro váš účet úložiště. Vytvořte dva kontejnery – jeden pro ukládání videí do a jeden pro uložení přehledů vygenerovaných Video Indexer v.  
@@ -137,4 +137,4 @@ Tento kurz ukázal pouze jeden příklad konektoru Video Indexer. Video Indexer 
 > [!div class="nextstepaction"]
 > [Použití rozhraní API Video Indexeru](video-indexer-use-apis.md)
 
-Další zdroje najdete v tomto dokumentu v části [video indexer.](https://docs.microsoft.com/connectors/videoindexer-v2/)
+Další zdroje najdete v tomto dokumentu v části [video indexer.](/connectors/videoindexer-v2/)

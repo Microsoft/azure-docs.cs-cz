@@ -1,6 +1,6 @@
 ---
 title: Plánování nasazení služby soubory Azure | Microsoft Docs
-description: Vysvětlení plánování nasazení služby soubory Azure Můžete buď přímo připojit sdílenou složku Azure, nebo Uložit do mezipaměti sdílenou složku Azure místně pomocí Azure File Sync.
+description: Vysvětlení plánování nasazení služby soubory Azure Můžete buď přímo připojit sdílenou složku Azure, nebo Uložit do mezipaměti sdílenou složku Azure místně pomocí Synchronizace souborů Azure.
 author: roygara
 ms.service: storage
 ms.topic: conceptual
@@ -8,21 +8,21 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: e1b29d901630156471bbb9cb8b939bb4bb29c836
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 8a96b44a280e0aea15a6d0843f02f4ed16f8fcf4
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724220"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879843"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Plánování nasazení služby Soubory Azure
-[Soubory Azure](storage-files-introduction.md) se dají nasadit dvěma hlavními způsoby: přímým připojením sdílených složek Azure bez serveru nebo ukládáním do mezipaměti sdílených složek Azure v místním prostředí pomocí Azure File Sync. Kterou možnost nasazení zvolíte, změní se to, co je potřeba vzít v úvahu při plánování nasazení. 
+[Soubory Azure](storage-files-introduction.md) se dají nasadit dvěma hlavními způsoby: přímým připojením sdílených složek Azure bez serveru nebo ukládáním do mezipaměti sdílených složek Azure v místním prostředí pomocí synchronizace souborů Azure. Kterou možnost nasazení zvolíte, změní se to, co je potřeba vzít v úvahu při plánování nasazení. 
 
 - **Přímé připojení sdílené složky Azure**: vzhledem k tomu, že soubory Azure poskytují přístup přes protokol SMB (Server Message Block) nebo systém souborů NFS (Network File System), můžete sdílené složky Azure připojit místně nebo v cloudu pomocí standardních klientů SMB nebo NFS, které jsou k dispozici v operačním systému. Vzhledem k tomu, že sdílené složky Azure jsou bez serveru, nasazení pro produkční scénáře nevyžaduje správu souborového serveru nebo zařízení NAS. To znamená, že nemusíte instalovat softwarové opravy ani odpínat fyzické disky. 
 
-- **Ukládání sdílené složky Azure do mezipaměti v místním prostředí pomocí Azure File Sync**: Azure File Sync umožňuje centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zachovat tak flexibilitu, výkon a kompatibilitu místního souborového serveru. Azure File Sync transformuje místní (nebo cloudový) Windows Server na rychlou mezipaměť sdílené složky Azure SMB. 
+- **Ukládání sdílené složky Azure do mezipaměti v místním prostředí pomocí synchronizace souborů Azure**: synchronizace souborů Azure umožňuje centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zachovat tak flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje místní (nebo cloudový) Windows Server na rychlou mezipaměť sdílené složky Azure SMB. 
 
-Tento článek primárně řeší požadavky nasazení na nasazení sdílené složky Azure, aby je bylo možné přímo připojit k místnímu nebo cloudovém klientovi. Chcete-li naplánovat nasazení Azure File Sync, přečtěte si téma [Plánování nasazení Azure File Sync](storage-sync-files-planning.md).
+Tento článek primárně řeší požadavky nasazení na nasazení sdílené složky Azure, aby je bylo možné přímo připojit k místnímu nebo cloudovém klientovi. Chcete-li naplánovat nasazení Synchronizace souborů Azure, přečtěte si téma [Plánování nasazení synchronizace souborů Azure](storage-sync-files-planning.md).
 
 ## <a name="available-protocols"></a>Dostupné protokoly
 
@@ -130,7 +130,7 @@ V mnoha případech nebudete pro vaši organizaci vytvářet novou sdílenou slo
 [Článek Přehled migrace](storage-files-migration-overview.md) stručně popisuje základy a obsahuje tabulku, která vás zavede k migračním průvodcům, které se pravděpodobně týkají vašeho scénáře.
 
 ## <a name="next-steps"></a>Další kroky
-* [Plánování nasazení Azure File Sync](storage-sync-files-planning.md)
-* [Nasazení souborů Azure](storage-files-deployment-guide.md)
-* [Nasazení Azure File Sync](storage-sync-files-deployment-guide.md)
+* [Plánování nasazení Synchronizace souborů Azure](storage-sync-files-planning.md)
+* [Nasazení souborů Azure](./storage-how-to-create-file-share.md)
+* [Nasazení Synchronizace souborů Azure](storage-sync-files-deployment-guide.md)
 * [Podívejte se na článek Přehled migrace, kde najdete Průvodce migrací pro váš scénář.](storage-files-migration-overview.md)

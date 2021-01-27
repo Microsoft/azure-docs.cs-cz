@@ -3,19 +3,19 @@ title: Metoda BreakSentence překladatele
 titleSuffix: Azure Cognitive Services
 description: Metoda BreakSentence překladatele určuje umístění hranic věty v části textu.
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 08/06/2020
-ms.author: swmachan
-ms.openlocfilehash: 27069cf38da2567a3af3ed0fb65baead43665186
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.author: lajanuar
+ms.openlocfilehash: 2da614fe829d0aa82bfa57337baf44491993c68f
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369473"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895539"
 ---
 # <a name="translator-30-breaksentence"></a>Překladatel 3,0: BreakSentence
 

@@ -5,12 +5,12 @@ author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
 ms.date: 12/04/2020
-ms.openlocfilehash: d49f048df7a624dc490acf7cb4c8e5f33aa5f1c6
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: d23294c21d49b1c2ab83c4bf8f110d5d4bc7aafb
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060227"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878286"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>Řešení potíží se službou Live video Analytics na IoT Edge
 
@@ -66,7 +66,7 @@ Pomocí Azure Portal můžete spustit diagnostiku mediálního grafu pomocí př
     * 500 – při IoT Edge modulu runtime došlo k chybě.
 
     > [!TIP]
-    > Pokud dochází k potížím se spouštěním Azure IoT Edgech modulů ve vašem prostředí, použijte jako vodítko pro řešení potíží a diagnostiku **[Azure IoT Edge standardní diagnostické kroky](https://docs.microsoft.com/azure/iot-edge/troubleshoot?view=iotedge-2018-06&preserve-view=true)** .
+    > Pokud dochází k potížím se spouštěním Azure IoT Edgech modulů ve vašem prostředí, použijte jako vodítko pro řešení potíží a diagnostiku **[Azure IoT Edge standardní diagnostické kroky](../../iot-edge/troubleshoot.md?preserve-view=true&view=iotedge-2018-06)** .
 ### <a name="post-deployment-direct-method-error-code"></a>Post Deployment: kód chyby přímé metody
 1. Pokud se zobrazí stav `501 code` , zkontrolujte, zda je název přímé metody přesný. Pokud je název metody a datová část požadavku přesný, měli byste získat výsledky spolu s kódem úspěšnosti = 200. 
 1. Pokud je datová část požadavku nepřesná, získáte stav `400 code` a datovou část odpovědi, která označuje kód chyby a zprávu, která by měla pomáhat s diagnostikou problému s přímým voláním metody.
@@ -96,7 +96,7 @@ Live video Analytics se nasadí jako modul IoT Edge v zařízení IoT Edge a spo
 * [Modul IoT Edge se úspěšně nasazuje a pak zmizí ze zařízení](../../iot-edge/troubleshoot-common-errors.md#iot-edge-module-deploys-successfully-then-disappears-from-device).
 
     > [!TIP]
-    > Pokud dochází k potížím se spouštěním Azure IoT Edgech modulů ve vašem prostředí, použijte jako vodítko pro řešení potíží a diagnostiku **[Azure IoT Edge standardní diagnostické kroky](https://docs.microsoft.com/azure/iot-edge/troubleshoot?view=iotedge-2018-06&preserve-view=true)** .
+    > Pokud dochází k potížím se spouštěním Azure IoT Edgech modulů ve vašem prostředí, použijte jako vodítko pro řešení potíží a diagnostiku **[Azure IoT Edge standardní diagnostické kroky](../../iot-edge/troubleshoot.md?preserve-view=true&view=iotedge-2018-06)** .
 ### <a name="live-video-analytics-working-with-external-modules"></a>Live video Analytics pracuje s externími moduly
 
 Live video Analytics můžou pomocí procesorů rozšíření pro multimediální graf rozšířit mediální graf tak, aby odesílal a přijímal data z jiných IoT Edge modulů pomocí protokolů HTTP nebo gRPC. V takovém [případě](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/httpExtension)může tento mediální graf odesílat snímky videa jako obrázky do externího modulu odvození, jako je Yolo v3, a získávat výsledky analýzy založené na JSON pomocí protokolu HTTP. V takové topologii je cíl pro události většinou centrum IoT. V situacích, kdy se v centru nezobrazuje události odvození, zkontrolujte následující:
@@ -272,7 +272,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 ``` 
 
-[Protokolování a diagnostika v gRPC v rozhraní .NET](https://docs.microsoft.com/aspnet/core/grpc/diagnostics?view=aspnetcore-3.1&preserve-view=true) poskytují pokyny pro shromažďování některých diagnostických protokolů ze serveru gRPC. 
+[Protokolování a diagnostika v gRPC v rozhraní .NET](/aspnet/core/grpc/diagnostics?preserve-view=true&view=aspnetcore-3.1) poskytují pokyny pro shromažďování některých diagnostických protokolů ze serveru gRPC. 
 
 ### <a name="a-failed-grpc-connection"></a>Neúspěšné připojení gRPC 
 
@@ -282,7 +282,7 @@ Pokud je graf aktivní a streamuje z kamery, zachová se připojení ve službě
 
 Live video Analytics nesleduje ani neposkytuje žádné monitorování hardwarových prostředků. Vývojáři budou muset používat řešení monitorování výrobců hardwaru. Pokud ale používáte kontejnery Kubernetes, můžete zařízení monitorovat pomocí [řídicího panelu Kubernetes](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/). 
 
-gRPC v dokumentech .NET Core také sdílí některé cenné informace o [osvědčených postupech výkonu](https://docs.microsoft.com/aspnet/core/grpc/performance?view=aspnetcore-3.1&preserve-view=true) a [Vyrovnávání zatížení](https://docs.microsoft.com/aspnet/core/grpc/performance?view=aspnetcore-3.1#load-balancing&preserve-view=true).  
+gRPC v dokumentech .NET Core také sdílí některé cenné informace o [osvědčených postupech výkonu](/aspnet/core/grpc/performance?preserve-view=true&view=aspnetcore-3.1) a [Vyrovnávání zatížení](/aspnet/core/grpc/performance?preserve-view=true&view=aspnetcore-3.1#load-balancing).  
 
 ### <a name="troubleshooting-an-inference-server-when-it-does-not-receive-any-frames-and-you-are-receiving-an-unknown-protocol-error"></a>Řešení potíží s odvozeným serverem, když neobdrží žádné rámce a přijímáte, Chyba protokolu "Neznámý". 
 
@@ -296,7 +296,7 @@ K dispozici je několik věcí, které vám pomohou získat další informace o 
    ```
 
    Pokud příkaz vypíše krátký řetězec jumbled textu, program Telnet byl úspěšně schopný otevřít připojení k serveru odvození a otevřít binární kanál gRPC. Pokud to nevidíte, odešle protokol Telnet chybu sítě. 
-* V rámci odvozeného serveru můžete povolit další protokolování v knihovně gRPC. To může poskytovat další informace o samotném kanálu gRPC. To se liší podle jazyka, tady jsou pokyny pro [C#](https://docs.microsoft.com/aspnet/core/grpc/diagnostics?view=aspnetcore-3.1&preserve-view=true). 
+* V rámci odvozeného serveru můžete povolit další protokolování v knihovně gRPC. To může poskytovat další informace o samotném kanálu gRPC. To se liší podle jazyka, tady jsou pokyny pro [C#](/aspnet/core/grpc/diagnostics?preserve-view=true&view=aspnetcore-3.1). 
 
 ### <a name="picking-more-images-from-buffer-of-grpc-without-sending-back-result-for-first-buffer"></a>Vybírání dalších imagí z vyrovnávací paměti gRPC bez odeslání výsledku zpět pro první vyrovnávací paměť
 

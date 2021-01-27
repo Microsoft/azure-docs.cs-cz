@@ -2,13 +2,13 @@
 title: Nastavení operací vRealize pro řešení Azure VMware
 description: Naučte se, jak nastavit operace vRealize pro privátní cloud řešení Azure VMware.
 ms.topic: how-to
-ms.date: 09/22/2020
-ms.openlocfilehash: 25469089cf1fef076711bfaf1492fad43edbcf33
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.date: 01/26/2021
+ms.openlocfilehash: c2470ecde0874b46da1236ca6e99e6b0b3eb990d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371779"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880687"
 ---
 # <a name="set-up-vrealize-operations-for-azure-vmware-solution"></a>Nastavení operací vRealize pro řešení Azure VMware
 
@@ -27,8 +27,8 @@ vRealize Operations Manager je platforma pro správu provozu, která správcům 
 * Volitelně si přečtěte dokumentaci k produktu [VRealize Operations Remote Controller](https://docs.vmware.com/en/vRealize-Operations-Manager/8.1/com.vmware.vcom.vapp.doc/GUID-263F9219-E801-4383-8A59-E84F3D01ED6B.html) pro místní operace vRealize, které spravují možnost nasazení řešení Azure VMware. 
 
 
-
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
+* je nainstalovaná [Operations Manager vRealize](https://docs.vmware.com/en/vRealize-Operations-Manager/8.1/com.vmware.vcom.vapp.doc/GUID-7FFC61A0-7562-465C-A0DC-46D092533984.html) .
 * SÍŤ VPN nebo Azure ExpressRoute konfigurovaná mezi místními prostředími a Azure VMware Solution SDDC.
 * V Azure je nasazený privátní cloud řešení Azure VMware.
 
@@ -50,12 +50,13 @@ K rozšiřování funkcí vRealize operací do privátního cloudu řešení Azu
 
 Další možností je nasadit instanci vRealize Operations Manager v clusteru vSphere v privátním cloudu. 
 
-:::image type="content" source="media/vrealize-operations-manager/vrealize-operations-deployment-option-2.png" alt-text="Místní operace vRealize spravující nasazení řešení Azure VMware" border="false":::
+>[!IMPORTANT]
+>Tato možnost v současnosti není podporována VMware.
+
+:::image type="content" source="media/vrealize-operations-manager/vrealize-operations-deployment-option-2.png" alt-text="Operace vRealize běžící na řešení VMware Azure" border="false":::
 
 Po nasazení instance můžete nakonfigurovat operace vRealize pro shromažďování dat z vCenter, ESXi, NSX-T, síti vSAN a HCX. 
 
-> [!TIP]
-> Podrobného průvodce pro instalaci vRealize Operations Manager najdete v [dokumentaci k VMware](https://docs.vmware.com/en/vRealize-Operations-Manager/8.1/com.vmware.vcom.vapp.doc/GUID-7FFC61A0-7562-465C-A0DC-46D092533984.html) .
 
 
 ## <a name="known-limitations"></a>Známá omezení
@@ -68,11 +69,11 @@ Po nasazení instance můžete nakonfigurovat operace vRealize pro shromažďov�
 
 Když připojíte Azure VMware Solution vCenter k vRealize Operations Manager pomocí cloudového účtu vCenter Server, zobrazí se upozornění:
 
-:::image type="content" source="./media/vrealize-operations-manager/warning-adapter-instance-creation-succeeded.png" alt-text="Místní operace vRealize spravující nasazení řešení Azure VMware":::
+:::image type="content" source="./media/vrealize-operations-manager/warning-adapter-instance-creation-succeeded.png" alt-text="Vytvoření instance upozornění se podařilo.":::
 
 K tomuto upozornění dochází, protože **cloudadmin \@ vSphere. místní** uživatel v řešení VMware VMware nemá dostatečná oprávnění k provedení všech akcí vCenter Server požadovaných k registraci. Tato oprávnění jsou nicméně dostačující pro instance adaptéru k shromažďování dat, jak je vidět níže:
 
-:::image type="content" source="./media/vrealize-operations-manager/adapter-instance-to-perform-data-collection.png" alt-text="Místní operace vRealize spravující nasazení řešení Azure VMware":::
+:::image type="content" source="./media/vrealize-operations-manager/adapter-instance-to-perform-data-collection.png" alt-text="Instance adaptéru pro provedení shromažďování dat":::
 
 Další informace najdete v tématu [oprávnění požadovaná pro konfiguraci instance adaptéru vCenter](https://docs.vmware.com/en/vRealize-Operations-Manager/8.1/com.vmware.vcom.core.doc/GUID-3BFFC92A-9902-4CF2-945E-EA453733B426.html).
 

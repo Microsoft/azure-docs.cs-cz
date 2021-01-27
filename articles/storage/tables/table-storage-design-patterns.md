@@ -9,12 +9,12 @@ ms.date: 04/08/2019
 ms.author: tamram
 ms.subservice: tables
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 20e776e649d13e435a7bc9215802fcd89efe0867
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2eb109078728b8a9070b3991733450c1da790d9e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019221"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879591"
 ---
 # <a name="table-design-patterns"></a>Způsoby návrhu tabulek
 Tento článek popisuje některé vzory vhodné pro použití s Table service řešení. Také se dozvíte, jak můžete prakticky vyřešit některé problémy a kompromisy popsané v dalších článcích o návrhu úložiště tabulek. Následující diagram shrnuje vztahy mezi různými vzory:  
@@ -264,7 +264,7 @@ V relační databázi obvykle Normalizujte data pro odebrání duplicit, což ve
 ![Entita oddělení a entita zaměstnance](media/storage-table-design-guide/storage-table-design-IMAGE16.png)
 
 ### <a name="solution"></a>Řešení
-Místo uložení dat ve dvou samostatných entitách denormalizujte data a udržujte kopii podrobností manažera v entitě oddělení. Například:  
+Místo uložení dat ve dvou samostatných entitách denormalizujte data a udržujte kopii podrobností manažera v entitě oddělení. Příklad:  
 
 ![Entita oddělení](media/storage-table-design-guide/storage-table-design-IMAGE17.png)
 
@@ -711,7 +711,7 @@ Výjimky vyvolané v případě, že klientská knihovna pro úložiště spust�
 Měli byste také zvážit, jak váš návrh ovlivňuje způsob, jakým vaše klientská aplikace zpracovává operace souběžnosti a aktualizace.  
 
 ### <a name="managing-concurrency"></a>Správa souběžnosti
-Ve výchozím nastavení služba Table Service implementuje optimistické kontroly souběžnosti na úrovni jednotlivých entit pro operace **vložení**, **sloučení** a **odstranění** , i když je možné, že klient vynutí, aby služba Table Service obcházela tyto kontroly. Další informace o tom, jak služba Table Service spravuje souběžnost, najdete v tématu  [Správa souběžnosti v Microsoft Azure Storage](../../storage/common/storage-concurrency.md).  
+Ve výchozím nastavení služba Table Service implementuje optimistické kontroly souběžnosti na úrovni jednotlivých entit pro operace **vložení**, **sloučení** a **odstranění** , i když je možné, že klient vynutí, aby služba Table Service obcházela tyto kontroly. Další informace o tom, jak služba Table Service spravuje souběžnost, najdete v tématu  [Správa souběžnosti v Microsoft Azure Storage](../blobs/concurrency-manage.md).  
 
 ### <a name="merge-or-replace"></a>Sloučit nebo nahradit
 Metoda **Replace** třídy **TableOperation** vždy nahradí kompletní entitu v Table Service. Pokud do žádosti v případě, že tato vlastnost existuje v uložené entitě, nezahrnete vlastnost, požadavek tuto vlastnost odebere z uložené entity. Pokud nechcete odebrat vlastnost explicitně z uložené entity, musíte do žádosti zahrnout každou vlastnost.  
