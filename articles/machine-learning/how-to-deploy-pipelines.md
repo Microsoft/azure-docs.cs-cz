@@ -11,12 +11,12 @@ author: lobrien
 ms.date: 8/25/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q1
-ms.openlocfilehash: 9eb07721f9d507d69de10b6de6c8c2a358dab020
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 5dc14873f8863332d37a6ced6ce4013e76640dea
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97034084"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879389"
 ---
 # <a name="publish-and-track-machine-learning-pipelines"></a>Publikování a sledování kanálů strojového učení
 
@@ -32,7 +32,7 @@ Kanály strojového učení jsou opakovaně použitelnými pracovními postupy p
 
 * [Nakonfigurujte vývojové prostředí](how-to-configure-environment.md) pro instalaci Azure Machine Learning sady SDK nebo použijte [výpočetní instanci Azure Machine Learning](concept-compute-instance.md) s již nainstalovanou sadou SDK.
 
-* Vytvořte a spusťte kanál strojového učení, například pomocí následujícího [kurzu: sestavení kanálu Azure Machine Learning pro vyhodnocování dávky](tutorial-pipeline-batch-scoring-classification.md). Další možnosti najdete v tématu [Vytvoření a spuštění kanálů strojového učení s Azure Machine Learning SDK](how-to-create-your-first-pipeline.md) .
+* Vytvořte a spusťte kanál strojového učení, například pomocí následujícího [kurzu: sestavení kanálu Azure Machine Learning pro vyhodnocování dávky](tutorial-pipeline-batch-scoring-classification.md). Další možnosti najdete v tématu [Vytvoření a spuštění kanálů strojového učení s Azure Machine Learning SDK](./how-to-create-machine-learning-pipelines.md) .
 
 ## <a name="publish-a-pipeline"></a>Publikování kanálu
 

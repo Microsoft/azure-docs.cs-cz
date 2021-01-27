@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: bc229974cf14ba364e5e7111dc1d2704e03c3635
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 2ca8a814fbaf2d8c257d094f81d17a5c871793b0
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746794"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878931"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor nejčastějších dotazech
 
@@ -380,6 +380,12 @@ Pro všechny komponenty nebo role v jednom podnikovém systému použijte jeden 
 * Pokud není k dispozici žádný skript na straně klienta, můžete [nastavit soubory cookie na serveru](https://apmtips.com/posts/2016-07-09-tracking-users-in-api-apps/).
 * Pokud se vaše lokalita používá v různých prohlížečích nebo v rámci anonymním nebo v různých počítačích, bude se tato síť počítat více než jednou.
 * Chcete-li identifikovat přihlášeného uživatele v počítačích a prohlížečích, přidejte volání [setAuthenticatedUserContext ()](app/api-custom-events-metrics.md#authenticated-users).
+
+### <a name="how-does-application-insights-generate-device-information-browser-os-language-model"></a>Jak Application Insights generovat informace o zařízení (prohlížeč, operační systém, jazyk, model)?
+
+Prohlížeč předá řetězec uživatelského agenta v hlavičce HTTP žádosti a služba ingestování Application Insights používá [analyzátor UA](https://github.com/ua-parser/uap-core) k vygenerování polí zobrazených v tabulkách dat a prostředích. V důsledku toho Application Insights uživatelé nebudou moct tato pole změnit.
+
+V některých případech můžou být tato data chybějící nebo nepřesná, pokud uživatel nebo podnik zakáže odesílání uživatelského agenta v nastavení prohlížeče. Kromě toho [regulární výrazy analyzátoru UA](https://github.com/ua-parser/uap-core/blob/master/regexes.yaml) nemůžou zahrnovat všechny informace o zařízení, nebo Application Insights nepřijali nejnovější aktualizace.
 
 ### <a name="have-i-enabled-everything-in-application-insights"></a><a name="q17"></a> Jsem povolil vše v Application Insights?
 | Co byste měli vidět | Jak ho získat | Proč to chcete |

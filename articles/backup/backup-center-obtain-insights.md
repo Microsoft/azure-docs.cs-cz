@@ -3,16 +3,16 @@ title: Získání přehledů pomocí centra zálohování
 description: Naučte se analyzovat historické trendy a získat hlubší přehled o zálohách pomocí centra zálohování.
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: c0f687ee123abe2f95ad0d23a6fe302f4a5c22e1
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: c5f707ce3bc8d1172805ac14958a50bf59d1412d
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173757"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98893689"
 ---
-# <a name="obtain-insights-using-backup-center"></a>Získání přehledů pomocí centra zálohování
+# <a name="obtain-insights-using-backup-center-preview"></a>Získání přehledů pomocí centra zálohování (Preview)
 
-K analýze historických trendů a získání hlubších přehledů o zálohách poskytuje centrum zálohování rozhraní pro [zálohování sestav](configure-reports.md), které používá [protokoly Azure monitor](../azure-monitor/platform/data-platform-logs.md) a [sešity Azure](../azure-monitor/platform/workbooks-overview.md). Sestavy zálohování nabízí následující možnosti:
+K analýze historických trendů a získání hlubších přehledů o zálohách poskytuje centrum zálohování rozhraní pro [zálohování sestav (Preview)](configure-reports.md), které používá [protokoly Azure monitor](../azure-monitor/platform/data-platform-logs.md) a [sešity Azure](../azure-monitor/platform/workbooks-overview.md). Sestavy zálohování nabízí následující možnosti:
 
 - Přidělování a prognózování spotřebovaného cloudového úložiště.
 
@@ -24,7 +24,7 @@ K analýze historických trendů a získání hlubších přehledů o zálohách
 
 ## <a name="supported-scenarios"></a>Podporované scénáře
 
-- Sestavy zálohování nejsou aktuálně k dispozici pro zálohování Azure Database for PostgreSQL serveru.
+- Sestavy zálohování (Preview) nejsou aktuálně k dispozici pro zálohování Azure Database for PostgreSQL serveru.
 
 - Podrobný seznam podporovaných a nepodporovaných scénářů najdete v tématu věnovaném [matrici podpory](backup-center-support-matrix.md) .
 

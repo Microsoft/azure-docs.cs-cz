@@ -1,5 +1,5 @@
 ---
-title: Kódování vlastní transformace pomocí Media Services V3 REST – Azure | Microsoft Docs
+title: Kódování vlastní transformace pomocí Media Services V3 REST – Azure
 description: V tomto tématu se dozvíte, jak použít Azure Media Services V3 ke kódování vlastní transformace pomocí REST.
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.custom: ''
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 2656bf93cb9c29ded4b9dde49f0caba91c1654b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a2cfc0db2f95b21c872dd2ed0cf4fbf675a8d6f
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89295627"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897607"
 ---
 # <a name="how-to-encode-with-a-custom-transform---rest"></a>Jak kódovat pomocí vlastní transformace – REST
 
@@ -25,7 +25,7 @@ ms.locfileid: "89295627"
 
 Při kódování pomocí Azure Media Services můžete rychle začít s jedním z doporučených integrovaných přednastavení na základě osvědčených postupů, jak je znázorněno v kurzu [streamování souborů](stream-files-tutorial-with-rest.md#create-a-transform) . Můžete také vytvořit vlastní předvolby, která bude cílit na konkrétní scénář nebo požadavky na zařízení.
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Požadavky
 
 Při vytváření vlastních přednastavení platí následující požadavky:
 
@@ -147,7 +147,7 @@ PUT https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:r
 
 Vyberte kartu **tělo** a nahraďte text kódem JSON, který jste [definovali dříve](#define-a-custom-preset). Pokud Media Services chcete použít transformaci na zadané video nebo zvuk, musíte úlohu v rámci této transformace odeslat.
 
-Vyberte **Poslat**. 
+Vyberte **Odeslat**. 
 
 Pokud Media Services chcete použít transformaci na zadané video nebo zvuk, musíte úlohu v rámci této transformace odeslat. Kompletní příklad, který ukazuje, jak odeslat úlohu v rámci transformace, najdete v tématu [kurz: streamování souborů videa – REST](stream-files-tutorial-with-rest.md).
 

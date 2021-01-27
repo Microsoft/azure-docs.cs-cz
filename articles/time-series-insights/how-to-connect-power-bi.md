@@ -8,12 +8,12 @@ services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 12/14/2020
-ms.openlocfilehash: 07e79dbde142400677901ee02903144f9a42cd6b
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: b4ed5a419df97f98b883a07825184122945e092e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740711"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879557"
 ---
 # <a name="visualize-data-from-azure-time-series-insights-in-power-bi"></a>Vizualizace dat z Azure Time Series Insights v Power BI
 
@@ -112,10 +112,10 @@ Teď, když jste data importovali do Power BI, je čas sestavovat sestavu s vizu
 Jakmile sestavu vytvoříte, můžete ji publikovat ve službě Power BI Reporting Services a sdílet s ostatními uživateli ve vaší organizaci.
 
 ## <a name="advanced-editing"></a>Rozšířené úpravy
-Pokud jste již datovou sadu načetli v Power BI, ale chcete upravit dotaz (například parametry data a času nebo ID prostředí), můžete to provést prostřednictvím funkce Rozšířený editor Power BI. Další informace o tom, jak provádět změny pomocí **editoru Power Query**, najdete v [dokumentaci k Power BI](https://docs.microsoft.com/power-bi/desktop-query-overview) . 
+Pokud jste již datovou sadu načetli v Power BI, ale chcete upravit dotaz (například parametry data a času nebo ID prostředí), můžete to provést prostřednictvím funkce Rozšířený editor Power BI. Další informace o tom, jak provádět změny pomocí **editoru Power Query**, najdete v [dokumentaci k Power BI](/power-bi/desktop-query-overview) . 
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si další informace o [Power BI desktopu](https://docs.microsoft.com/power-bi/desktop-query-overview).
+* Přečtěte si další informace o [Power BI desktopu](/power-bi/desktop-query-overview).
 
 * Přečtěte si informace o [dotazování na data](concepts-query-overview.md) v Azure Time Series Insights Gen2.

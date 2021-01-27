@@ -3,19 +3,19 @@ title: Nepodporovaná nasazení jazyků – vlastní Překladatel
 titleSuffix: Azure Cognitive Services
 description: V tomto článku se dozvíte, jak nasadit nepodporované páry jazyků v Azure Cognitive Services vlastního překladatele.
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/24/2019
-ms.author: swmachan
-ms.openlocfilehash: 7498169c2c61b8337a90fbda082729f200f04635
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.author: lajanuar
+ms.openlocfilehash: fb31388647fc6022a2e6670baf7b3e73f345c36a
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369031"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898066"
 ---
 # <a name="unsupported-language-deployments"></a>Nasazení nepodporovaného jazyka
 

@@ -1,29 +1,11 @@
 ---
-title: Přehled služby Azure Media Services v3
-titleSuffix: Azure Media Services
-description: Podrobný přehled Azure Media Services V3 s odkazy na rychlé starty, kurzy a ukázky kódu.
-services: media-services
-documentationcenter: na
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-tags: ''
-keywords: azure media services, stream, všesměrové vysílání, live, režim offline
-ms.service: media-services
-ms.devlang: multiple
-ms.topic: overview
-ms.tgt_pltfrm: multiple
-ms.workload: media
-ms.date: 08/31/2020
-ms.author: inhenkel
-ms.custom: mvc
-ms.openlocfilehash: 01ec0c7c0d2d060bbd930a099fe3db54de6cb150
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308955"
+title: Azure Media Services V3 přehled: Azure Media Services popis: podrobný přehled Azure Media Services V3 s odkazy na rychlé starty, kurzy a ukázky kódu.
+služby: Media-Services documentationcenter: na Author: IngridAtMicrosoft Manager: femila Editor: ' ' Tags: ' ' klíčová slova: Azure Media Services, Stream, Broadcast, Live, offline
+
+MS. Service: Media-Services MS. devlang: více MS. téma: Přehled ms.tgt_pltfrm: více MS. úlohy: Media MS. Date: 08/31/2020 MS. Author: inhenkel MS. Custom: MVC
+#<a name="customer-intent-as-a-developer-or-a-content-provider-i-want-to-encode-stream-on-demand-or-live-analyze-my-media-content-so-that-my-customers-can-view-the-content-on-a-wide-variety-of-browsers-and-devices-gain-valuable-insights-from-recorded-content"></a>Záměr zákazníka: jako vývojář nebo poskytovatel obsahu chci kódovat, streamovat (na vyžádání nebo živě), analyzovat multimediální obsah tak, aby moji zákazníci mohli: zobrazit obsah v nejrůznějších prohlížečích a zařízeních, získat cenné poznatky z zaznamenaného obsahu.
 ---
+
 # <a name="azure-media-services-v3-overview"></a>Přehled služby Azure Media Services v3
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]

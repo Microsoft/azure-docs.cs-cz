@@ -1,25 +1,17 @@
 ---
 title: Příručka Začínáme pro vývojáře v Azure | Microsoft Docs
 description: Tento článek poskytuje základní informace pro vývojáře, kteří chtějí začít používat Microsoft Azure platformu pro potřeby vývoje.
-services: ''
-cloud: ''
-documentationcenter: ''
 author: ggailey777
-manager: erikre
-ms.assetid: ''
 ms.service: azure
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: a193ccd060c75cf4031449ddf3318af6e4691436
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 1c28ed90c041a65b2ff8dd08a3aac799795171eb
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98786465"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897455"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Úvodní příručka pro vývojáře v Azure
 
@@ -48,7 +40,6 @@ Azure poskytuje několik cloudových výpočetních nabídek pro spuštění va�
 Azure nabízí služby, které podporují vývoj a potřeby hostování vaší aplikace. Azure poskytuje infrastrukturu jako službu (IaaS), která vám poskytne plnou kontrolu nad hostováním vaší aplikace. Nabídky platformy Azure jako služby (PaaS) poskytují plně spravované služby, které jsou potřeba pro výkon svých aplikací. V Azure je dokonce i skutečné hostování bez serveru, kde stačí napsat svůj kód.
 
 ![Možnosti hostování aplikací Azure](./media/azure-developer-guide/azure-developer-hosting-options.png)
-
 
 #### <a name="azure-app-service"></a>Azure App Service
 
@@ -110,11 +101,11 @@ Service Fabric podporuje WebAPI s otevřeným webovým rozhraním pro .NET (OWIN
 
 Jarní cloud Azure je platforma pro mikroslužby bez serveru, která umožňuje sestavovat, nasazovat, škálovat a monitorovat vaše aplikace v cloudu. Pomocí jarního cloudu můžete přinášet moderní vzory mikroslužeb pro aplikace využívající pružinu, což eliminuje často používaný kód pro rychlé vytváření robustních aplikací Java.
 
-- Využijte spravované verze nástroje pro zjišťování a konfiguraci jarních cloudových služeb, ale zajistíme, že tyto důležité komponenty budou spuštěné v optimálních podmínkách.
-- Zaměřte se na tvorbu obchodní logiky a my se postaráme o vaše provozní prostředí pomocí oprav zabezpečení, standardů dodržování předpisů a vysoké dostupnosti.
-- Spravujte životní cyklus aplikací (např.: nasadit, spustit, zastavit, škálovat) nad službou Azure Kubernetes.
-- Snadná vazba připojení mezi vašimi aplikacemi a službami Azure, jako je Azure Database for MySQL a Azure cache pro Redis.
-- Monitorování a řešení potíží s mikroslužbami a aplikacemi s využitím jednotných monitorovacích nástrojů na podnikové úrovni, které nabízejí podrobné přehledy o závislostech aplikací a provozní telemetrii.
+* Využijte spravované verze nástroje pro zjišťování a konfiguraci jarních cloudových služeb, ale zajistíme, že tyto důležité komponenty budou spuštěné v optimálních podmínkách.
+* Zaměřte se na tvorbu obchodní logiky a my se postaráme o vaše provozní prostředí pomocí oprav zabezpečení, standardů dodržování předpisů a vysoké dostupnosti.
+* Spravujte životní cyklus aplikací (např.: nasadit, spustit, zastavit, škálovat) nad službou Azure Kubernetes.
+* Snadná vazba připojení mezi vašimi aplikacemi a službami Azure, jako je Azure Database for MySQL a Azure cache pro Redis.
+* Monitorování a řešení potíží s mikroslužbami a aplikacemi s využitím jednotných monitorovacích nástrojů na podnikové úrovni, které nabízejí podrobné přehledy o závislostech aplikací a provozní telemetrii.
 
 > **Kdy použít:** Jako plně spravovaná služba Azure jarní Cloud je vhodná, když minimalizujete provozní náklady na provozování mikroslužeb založených na Pružiných spouštěcích nebo jarních cloudech v Azure. 
 >
@@ -129,19 +120,19 @@ Společně s hostováním aplikací poskytuje Azure nabídky služeb, které moh
 
 Většina aplikací musí ukládat data, takže se ale rozhodnete hostovat svou aplikaci v Azure, vezměte v úvahu jednu nebo více z následujících úložišť a datových služeb.
 
-- **Azure Cosmos DB**: globálně distribuovaná databázová služba pro více modelů. Tato databáze vám umožní elasticky škálovat propustnost a úložiště napříč libovolným počtem geografických oblastí s komplexní smlouvou SLA.
+* **Azure Cosmos DB**: globálně distribuovaná databázová služba pro více modelů. Tato databáze vám umožní elasticky škálovat propustnost a úložiště napříč libovolným počtem geografických oblastí s komplexní smlouvou SLA.
 
   > **Kdy použít:** Když vaše aplikace potřebuje databáze dokumentů, tabulek nebo grafů, včetně databází MongoDB, s několika jasně definovanými modely konzistence.
   >
   > **Začínáme**: [Vytvoření webové aplikace v Azure Cosmos DB](../../cosmos-db/create-sql-api-dotnet.md). Pokud jste vývojář MongoDB, přečtěte si téma [Vytvoření webové aplikace v MongoDB pomocí Azure Cosmos DB](../../cosmos-db/create-mongodb-dotnet.md).
 
-- **Azure Storage**: nabízí trvalé, vysoce dostupné úložiště pro objekty blob, fronty, soubory a další druhy nerelačních dat. Storage poskytuje základ úložiště pro virtuální počítače.
+* **Azure Storage**: nabízí trvalé, vysoce dostupné úložiště pro objekty blob, fronty, soubory a další druhy nerelačních dat. Storage poskytuje základ úložiště pro virtuální počítače.
 
   > **Kdy použít**: když vaše aplikace ukládá nerelační data, například páry klíč-hodnota (tabulky), objekty blob, sdílené soubory nebo zprávy (fronty).
   >
   > **Začínáme**: vyberte jeden z těchto typů úložiště: [objekty blob](../../storage/blobs/storage-quickstart-blobs-dotnet.md), [tabulky](../../cosmos-db/tutorial-develop-table-dotnet.md), [fronty](../../storage/queues/storage-dotnet-how-to-use-queues.md)nebo [soubory](../../storage/files/storage-dotnet-how-to-use-files.md).
 
-- **Azure SQL Database**: verze Microsoft SQL Server modulu založená na Azure pro ukládání relačních tabulkových dat v cloudu. SQL Database poskytuje předvídatelný výkon, škálovatelnost bez výpadků, provozní kontinuitu a ochranu dat.
+* **Azure SQL Database**: verze Microsoft SQL Server modulu založená na Azure pro ukládání relačních tabulkových dat v cloudu. SQL Database poskytuje předvídatelný výkon, škálovatelnost bez výpadků, provozní kontinuitu a ochranu dat.
 
   > **Kdy použít**: když vaše aplikace vyžaduje úložiště dat s referenční integritou, transakční podporou a podporou pro dotazy TSQL.
   >
@@ -157,33 +148,33 @@ Kontejnery Docker, což je forma virtualizace operačního systému, umožňují
 Azure nabízí několik způsobů použití kontejnerů ve vašich aplikacích.
 
 
-- **Služba Azure Kubernetes**: umožňuje vytváření, konfiguraci a správu clusteru virtuálních počítačů, které jsou předem nakonfigurované pro spouštění kontejnerových aplikací. Další informace o službě Azure Kubernetes najdete v tématu [Úvod do služby Azure Kubernetes](../../aks/intro-kubernetes.md).
+* **Služba Azure Kubernetes**: umožňuje vytváření, konfiguraci a správu clusteru virtuálních počítačů, které jsou předem nakonfigurované pro spouštění kontejnerových aplikací. Další informace o službě Azure Kubernetes najdete v tématu [Úvod do služby Azure Kubernetes](../../aks/intro-kubernetes.md).
 
   > **Kdy použít**: když potřebujete vytvořit škálovatelná prostředí pro produkční prostředí, která poskytují další nástroje pro plánování a správu, nebo když nasazujete cluster Docker Swarm.
   >
   > **Začínáme**: [nasazení clusteru služby Kubernetes](../../aks/tutorial-kubernetes-deploy-cluster.md)
 
-- **Docker Machine**: umožňuje nainstalovat a spravovat modul Docker na virtuálních hostitelích pomocí příkazů Docker-Machine.
+* **Docker Machine**: umožňuje nainstalovat a spravovat modul Docker na virtuálních hostitelích pomocí příkazů Docker-Machine.
 
   >**Kdy použít**: když potřebujete rychle vytvořit prototyp aplikace vytvořením jednoho hostitele Docker.
 
-- **Vlastní image Docker pro App Service**: umožňuje použít kontejnery Docker z registru kontejneru nebo kontejneru zákazníka při nasazení webové aplikace v systému Linux.
+* **Vlastní image Docker pro App Service**: umožňuje použít kontejnery Docker z registru kontejneru nebo kontejneru zákazníka při nasazení webové aplikace v systému Linux.
 
   > **Kdy použít**: při nasazení webové aplikace v systému Linux do bitové kopie Docker.
   >
   > **Začínáme**: [použijte vlastní image docker pro App Service v systému Linux](../../app-service/quickstart-custom-container.md?pivots=platform-linux%253fpivots%253dplatform-linux).
 
-### <a name="authentication"></a>Ověřování
+### <a name="authentication"></a>Authentication
 
 Je velmi důležité nejen zjistit, kdo používá vaše aplikace, ale také k tomu, aby se zabránilo neoprávněnému přístupu k prostředkům. Azure nabízí několik způsobů, jak ověřit klienty aplikace.
 
-- **Azure Active Directory (Azure AD)**: cloudová služba pro správu identit a přístupu od Microsoftu pro víceklientské platformy. Integraci s Azure AD můžete přidat k vašim aplikacím pomocí jednotného přihlašování (SSO). K vlastnostem adresáře můžete přistupovat pomocí Graph API Azure AD přímo nebo rozhraní Microsoft Graph API. Můžete integrovat s podporou Azure AD pro autorizační rozhraní OAuth 2.0 a otevřít ID připojit pomocí nativních koncových bodů HTTP/REST a multiplatformní knihoven ověřování Azure AD.
+* **Azure Active Directory (Azure AD)**: cloudová služba pro správu identit a přístupu od Microsoftu pro víceklientské platformy. Integraci s Azure AD můžete přidat k vašim aplikacím pomocí jednotného přihlašování (SSO). K vlastnostem adresáře můžete přistupovat pomocí Graph API Azure AD přímo nebo rozhraní Microsoft Graph API. Můžete integrovat s podporou Azure AD pro autorizační rozhraní OAuth 2.0 a otevřít ID připojit pomocí nativních koncových bodů HTTP/REST a multiplatformní knihoven ověřování Azure AD.
 
   > **Kdy použít**: když chcete poskytnout možnosti jednotného přihlašování, pracovat s daty založenými na grafech nebo ověřovat uživatele založené na doméně.
   >
   > **Začínáme**: Další informace najdete v [příručce pro vývojáře Azure Active Directory](../../active-directory/develop/v2-overview.md).
 
-- **Ověřování App Service**: když zvolíte App Service k hostování vaší aplikace, získáte také integrovanou podporu ověřování pro Azure AD společně se zprostředkovateli sociálních identit, včetně Facebooku, Google, Microsoft a Twitteru.
+* **Ověřování App Service**: když zvolíte App Service k hostování vaší aplikace, získáte také integrovanou podporu ověřování pro Azure AD společně se zprostředkovateli sociálních identit, včetně Facebooku, Google, Microsoft a Twitteru.
 
   > **Kdy použít**: když chcete v aplikaci App Service povolit ověřování pomocí služby Azure AD, poskytovatelů sociálních identit nebo obojího.
   >
@@ -195,13 +186,13 @@ Další informace o osvědčených postupech zabezpečení v Azure najdete v té
 
 Když vaše aplikace běží v Azure, je potřeba monitorovat výkon, sledovat problémy a zjistit, jak zákazníci používají vaši aplikaci. Azure nabízí několik možností monitorování.
 
--   **Application Insights**: rozšiřitelná služba Extensible Analytics hostovaná v Azure, která se integruje se sadou Visual Studio a monitoruje vaše živé webové aplikace. Poskytuje data, která potřebujete k nepřetržitému zlepšení výkonu a použitelnosti aplikací. K tomuto vylepšení dochází bez ohledu na to, jestli hostete své aplikace v Azure.
+* **Application Insights**: rozšiřitelná služba Extensible Analytics hostovaná v Azure, která se integruje se sadou Visual Studio a monitoruje vaše živé webové aplikace. Poskytuje data, která potřebujete k nepřetržitému zlepšení výkonu a použitelnosti aplikací. K tomuto vylepšení dochází bez ohledu na to, jestli hostete své aplikace v Azure.
 
-    >**Začínáme**: postupujte podle [kurzu Application Insights](../../azure-monitor/app/app-insights-overview.md).
+  > **Začínáme**: postupujte podle [kurzu Application Insights](../../azure-monitor/app/app-insights-overview.md).
 
--   **Azure monitor**: služba, která pomáhá vizualizovat metriky a protokoly, které vygenerujete pomocí vaší infrastruktury a prostředků Azure, a pracovat s nimi a vydávat dotazy, směrovat je, archivovat je a reagovat na ně. Monitorování je jeden zdroj pro monitorování prostředků Azure a poskytuje zobrazení dat, která vidíte v Azure Portal.
+* **Azure monitor**: služba, která pomáhá vizualizovat metriky a protokoly, které vygenerujete pomocí vaší infrastruktury a prostředků Azure, a pracovat s nimi a vydávat dotazy, směrovat je, archivovat je a reagovat na ně. Monitorování je jeden zdroj pro monitorování prostředků Azure a poskytuje zobrazení dat, která vidíte v Azure Portal.
 
-    >**Začínáme**: začněte [s Azure monitor](../../azure-monitor/overview.md).
+  > **Začínáme**: začněte [s Azure monitor](../../azure-monitor/overview.md).
 
 ### <a name="devops-integration"></a>Integrace DevOps
 
@@ -218,7 +209,6 @@ Bez ohledu na to, jestli je zřizování virtuálních počítačů nebo publiko
 > **Začínáme**: Pokud si chcete zobrazit DevOps možnosti pro aplikaci App Service, přečtěte si téma [průběžné nasazování do Azure App Service](../../app-service/deploy-continuous-deployment.md).
 >
 > **Vyzkoušejte si to teď:** [Vyzkoušejte některé z DevOps integrací](https://azure.microsoft.com/try/devops/).
-
 
 ## <a name="azure-regions"></a>Oblast Azure
 
@@ -244,9 +234,9 @@ Azure poskytuje bohatou sadu funkcí pro vytváření a správu prostředků, ap
 
 Azure poskytuje dva způsoby, jak spravovat aplikace a služby z příkazového řádku. Můžete použít nástroje, jako je bash, terminál, příkazový řádek nebo vámi zvolený nástroj příkazového řádku. Obvykle můžete provádět stejné úlohy z příkazového řádku jako v Azure Portal, jako je například vytváření a konfigurace virtuálních počítačů, virtuálních sítí, webových aplikací a dalších služeb.
 
--   Rozhraní příkazového řádku [(CLI) pro azure Command-Line](/cli/azure/install-azure-cli): umožňuje připojit se k předplatnému Azure a programovat různé úlohy s prostředky Azure z příkazového řádku.
+* Rozhraní příkazového řádku [(CLI) pro azure Command-Line](/cli/azure/install-azure-cli): umožňuje připojit se k předplatnému Azure a programovat různé úlohy s prostředky Azure z příkazového řádku.
 
--   [Azure PowerShell](/powershell/azure/): poskytuje sadu modulů s rutinami, které vám umožní spravovat prostředky Azure pomocí Windows PowerShellu.
+* [Azure PowerShell](/powershell/azure/): poskytuje sadu modulů s rutinami, které vám umožní spravovat prostředky Azure pomocí Windows PowerShellu.
 
 ### <a name="azure-portal"></a>Portál Azure Portal
 
@@ -264,13 +254,13 @@ Azure je založený na sadě rozhraní REST API, které podporují uživatelské
 
 Spolu s rozhraními REST API vám řada služeb Azure také umožňuje programově spravovat prostředky z vašich aplikací pomocí sad Azure SDK specifických pro konkrétní platformy, včetně sad SDK pro následující vývojové platformy:
 
--   [.NET](/dotnet/api/)
--   [Node.js](/azure/developer/javascript/)
--   [Java](/java/azure)
--   [PHP](https://github.com/Azure/azure-sdk-for-php/blob/master/README.md)
--   [Python](/azure/python/)
--   [Ruby](https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md)
--   [Přejít](/azure/go)
+* [.NET](/dotnet/api/)
+* [Node.js](/azure/developer/javascript/)
+* [Java](/java/azure)
+* [PHP](https://github.com/Azure/azure-sdk-for-php/blob/master/README.md)
+* [Python](/azure/python/)
+* [Ruby](https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md)
+* [Přejít](/azure/go)
 
 Služby jako [Mobile Apps](/previous-versions/azure/app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library) a [Azure Media Services](../../media-services/previous/media-services-dotnet-how-to-use.md) poskytují sady SDK na straně klienta, které umožňují přístup ke službám z webových a mobilních klientských aplikací.
 
@@ -312,7 +302,7 @@ Azure Resource Explorer je skvělý nástroj pro vizualizaci prostředků, kter�
 
 Když povolíte přístup k prostředkům Azure, doporučuje se uživatelům poskytnout nejnižší oprávnění, která jsou potřebná k provedení dané úlohy.
 
-- **Řízení přístupu na základě role v Azure (Azure RBAC)**: v Azure můžete udělit přístup k uživatelským účtům v zadaném oboru: předplatné, skupina prostředků nebo jednotlivé prostředky. Azure RBAC umožňuje nasazení prostředků do skupiny prostředků a udělení oprávnění určitému uživateli nebo skupině. Umožňuje taky omezit přístup jenom na prostředky, které patří do cílové skupiny prostředků. Můžete taky udělit přístup k jednomu prostředku, jako je třeba virtuální počítač nebo virtuální síť. Chcete-li udělit přístup, přiřaďte roli uživateli, skupině nebo objektu služby. Existuje mnoho předdefinovaných rolí a můžete také definovat vlastní role. Další informace najdete v tématu [co je řízení přístupu na základě role Azure (Azure RBAC)?](../../role-based-access-control/overview.md).
+* **Řízení přístupu na základě role v Azure (Azure RBAC)**: v Azure můžete udělit přístup k uživatelským účtům v zadaném oboru: předplatné, skupina prostředků nebo jednotlivé prostředky. Azure RBAC umožňuje nasazení prostředků do skupiny prostředků a udělení oprávnění určitému uživateli nebo skupině. Umožňuje taky omezit přístup jenom na prostředky, které patří do cílové skupiny prostředků. Můžete taky udělit přístup k jednomu prostředku, jako je třeba virtuální počítač nebo virtuální síť. Chcete-li udělit přístup, přiřaďte roli uživateli, skupině nebo objektu služby. Existuje mnoho předdefinovaných rolí a můžete také definovat vlastní role. Další informace najdete v tématu [co je řízení přístupu na základě role Azure (Azure RBAC)?](../../role-based-access-control/overview.md).
 
   > **Kdy použít**: když pro uživatele a skupiny potřebujete jemně odstupňovanou správu přístupu, nebo když potřebujete nastavit uživatele jako vlastníka předplatného.
   >
@@ -342,10 +332,10 @@ V rámci přesunu z místního prostředí do služeb hostovaných v cloudu jsou
 
 Azure poskytuje sadu rozhraní REST API pro fakturaci, která poskytují přístup k informacím o spotřebě prostředků a metadatům pro předplatná Azure. Tyto rozhraní API pro fakturaci poskytují možnost lépe předpovídat a spravovat náklady na Azure. Můžete sledovat a analyzovat útraty v hodinových přírůstcíchch a vytvářet upozornění na útraty. Můžete také předpovědět budoucí fakturaci na základě aktuálních trendů využití.
 
->**Začínáme**: Další informace o používání rozhraní API pro fakturaci najdete v tématu [Přehled využití fakturace Azure a rozhraní RateCard API](../../cost-management-billing/manage/usage-rate-card-overview.md).
+>**Začínáme**: Další informace o používání rozhraní API pro fakturaci najdete v tématu [Přehled rozhraní API pro Azure spotřeber](../../cost-management-billing/manage/consumption-api-overview.md) .
 
 #### <a name="predict-future-costs"></a>Předpověď budoucích nákladů
 
 I když je obtížné odhadnout náklady předem, Azure nabízí nástroje, které vám můžou usnadnit. Má [cenovou kalkulačku](https://azure.microsoft.com/pricing/calculator/) , která vám pomůže odhadnout náklady na nasazené prostředky. K odhadu budoucích nákladů na základě aktuální spotřeby můžete také použít prostředky fakturace na portálu a vyúčtováním rozhraní REST API.
 
->**Začínáme**: Přečtěte si [Přehled využití fakturace Azure a rozhraní RateCard API](../../cost-management-billing/manage/usage-rate-card-overview.md).
+>**Začínáme**: Další informace najdete v tématu [Přehled rozhraní API pro Azure spotřeber](../../cost-management-billing/manage/consumption-api-overview.md).

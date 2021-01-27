@@ -1,5 +1,5 @@
 ---
-title: Ukázkový skript Azure CLI – Resetování přihlašovacích údajů k účtu | Microsoft Docs
+title: Ukázkový skript Azure CLI – resetování přihlašovacích údajů k účtu
 description: Pomocí skriptu Azure CLI můžete resetovat přihlašovací údaje k účtu a získat zpět nastavení app.config.
 services: media-services
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: da997ec71655231876749d9f3aa65ba06fd3a1f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b9b95af79b8aac11f56fe576f860d719b5fb50e
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89295831"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897675"
 ---
 # <a name="azure-cli-example-reset-the-account-credentials"></a>Příklad rozhraní příkazového řádku Azure: resetování přihlašovacích údajů účtu
 

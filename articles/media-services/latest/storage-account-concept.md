@@ -1,24 +1,9 @@
 ---
-title: Účty služby Azure Storage
-titleSuffix: Azure Media Services
-description: Naučte se vytvořit účet služby Azure Storage pro použití s Azure Media Services.
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: conceptual
-ms.date: 01/05/2021
-ms.author: inhenkel
-ms.openlocfilehash: 55a49d48af95c103d2a28d5106af5f3166605514
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98882242"
+# <a name="mandatory-fields-see-more-on-akamsskyeyemeta"></a>Povinná pole. Další informace najdete na aka.ms/skyeye/meta.
+title: účty Azure Storage: Azure Media Services popis: Naučte se, jak vytvořit účet úložiště Azure pro použití s Azure Media Services.
+služby: Media-Services documentationcenter: ' ' Author: IngridAtMicrosoft Manager: femila Editor: ' ' MS. Service: Media-Services MS. rebavování: MS. téma: konceptuální MS. Date: 01/05/2021 MS. Author: inhenkel
 ---
+
 # <a name="azure-storage-accounts"></a>Účty úložiště Azure
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]

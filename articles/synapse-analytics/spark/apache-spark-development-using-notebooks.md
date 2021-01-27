@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: 7bb0b9b4645be7e548fe116d9e9a2c92fae7dc96
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 57999ce53e536d422e6502a77aaccdc66b4c5077
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120950"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898490"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-notebooks-in-azure-synapse-analytics"></a>Vytváření, vývoj a údržba poznámkových bloků synapse Studio v Azure synapse Analytics
 
@@ -33,7 +33,7 @@ Tento článek popisuje, jak používat notebooky v Azure synapse Studio.
 ## <a name="preview-of-the-new-notebook-experience"></a>Náhled nového prostředí poznámkového bloku
 Synapse tým přenesl novou součást poznámkových bloků do synapse studia, aby poskytoval konzistentní prostředí poznámkového bloku pro zákazníky Microsoftu a maximalizoval možnosti zjistitelnosti, produktivity, sdílení a spolupráce. Nové prostředí poznámkového bloku je připravené na verzi Preview. Pokud ho chcete zapnout, podívejte se na tlačítko **funkce ve verzi Preview** na panelu nástrojů Poznámkový blok. Následující tabulka zachycuje porovnání funkcí mezi existujícím poznámkovým blokem (označovaným jako "klasický notebook") s novou verzí Preview.  
 
-|Příznak|Klasický notebook|Náhled poznámkového bloku|
+|Funkce|Klasický notebook|Náhled poznámkového bloku|
 |--|--|--|
 |% běh| Nepodporováno | &#9745;|
 |% Historie| Nepodporováno |&#9745;
@@ -104,7 +104,7 @@ V rozevíracím seznamu na horním panelu příkazů můžete nastavit primárn�
 
 V jednom poznámkovém bloku můžete použít více jazyků zadáním správného příkazu jazyka Magic na začátku buňky. V následující tabulce jsou uvedeny příkazy Magic pro přepínání jazyků buněk.
 
-|Magic – příkaz |Jazyk | Description |  
+|Magic – příkaz |Jazyk | Popis |  
 |---|------|-----|
 |%% pyspark| Python | Spustí dotaz **Pythonu** v kontextu Sparku.  |
 |%% Spark| Scala | Spustí dotaz **Scala** proti kontextu Spark.  |  
@@ -303,6 +303,8 @@ Nepodporováno
 # <a name="preview-notebook"></a>[Náhled poznámkového bloku](#tab/preview)
 
 Pomocí ```%run <notebook path>``` příkazu Magic můžete odkazovat na jiný Poznámkový blok v kontextu aktuálního poznámkového bloku. Všechny proměnné definované v referenčním poznámkovém bloku jsou k dispozici v aktuálním poznámkovém bloku. ```%run``` příkaz Magic podporuje vnořené volání, ale nepodporuje rekurzivní volání. Pokud je hloubka příkazu větší než pět, zobrazí se výjimka. ```%run``` příkaz aktuálně podporuje pouze cestu k poznámkovému bloku jako parametr. 
+
+Příklad: ``` %run /path/notebookA ```.
 
 ---
 

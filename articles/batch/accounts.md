@@ -2,13 +2,13 @@
 title: Účty Batch a účty Azure Storage
 description: Přečtěte si o Azure Batch účtech a způsobu jejich použití z hlediska vývoje.
 ms.topic: conceptual
-ms.date: 05/12/2020
-ms.openlocfilehash: 20a2a28d0eaa2c7997ea93e66d07ecb99bf297a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/26/2021
+ms.openlocfilehash: 83108a265f91c9feef2fab424f1819939c2d58c9
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83791145"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896744"
 ---
 # <a name="batch-accounts-and-azure-storage-accounts"></a>Účty Batch a účty Azure Storage
 
@@ -20,9 +20,10 @@ Veškeré zpracování a prostředky jsou přidruženy k účtu Batch. Pokud va�
 
 V jednom účtu Batch můžete spustit několik úloh Batch. Můžete také distribuovat úlohy mezi účty Batch, které jsou ve stejném předplatném, ale nacházejí se v různých oblastech Azure.
 
+Účet Batch můžete vytvořit pomocí [Azure Portal](batch-account-create-portal.md) nebo programově, například pomocí [knihovny Batch Management .NET](batch-management-dotnet.md). Při vytváření účtu můžete přidružit účet úložiště Azure pro ukládání aplikací nebo vstupních a výstupních dat souvisejících s úlohami.
+
 [!INCLUDE [batch-account-mode-include](../../includes/batch-account-mode-include.md)]
 
-Účet Batch můžete vytvořit pomocí [Azure Portal](batch-account-create-portal.md) nebo programově, například pomocí [knihovny Batch Management .NET](batch-management-dotnet.md). Při vytváření účtu můžete přidružit účet úložiště Azure pro ukládání aplikací nebo vstupních a výstupních dat souvisejících s úlohami.
 
 ## <a name="azure-storage-accounts"></a>Účty úložiště Azure
 
@@ -41,4 +42,5 @@ Další informace o účtech úložiště najdete v tématu [Přehled účtu Azu
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si o [uzlech a fondech](nodes-and-pools.md).
-- Naučte se vytvořit účet Batch pomocí [Azure Portal](batch-account-create-portal.md).
+- Naučte se vytvářet a spravovat účty Batch pomocí [Azure Portal](batch-account-create-portal.md) nebo [rozhraní Batch Management .NET](batch-management-dotnet.md).
+- Naučte se používat [privátní koncové body](private-connectivity.md) s účty Azure Batch.

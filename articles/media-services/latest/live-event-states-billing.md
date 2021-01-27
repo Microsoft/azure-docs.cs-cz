@@ -1,5 +1,5 @@
 ---
-title: Stav živé události a fakturace v Azure Media Services | Microsoft Docs
+title: Stav živé události a fakturace v Azure Media Services
 description: V tomto tématu najdete přehled Azure Media Services stavů a fakturace živých událostí.
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: inhenkel
-ms.openlocfilehash: 2d3d3f5c56bd42aeb148c19fefebc0e7d364cd1c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: c9fa12e1ee3778d0865c75662064bd4067e56d89
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782361"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897811"
 ---
 # <a name="live-event-states-and-billing"></a>Stavy a fakturace živých událostí
 
@@ -26,7 +26,7 @@ ms.locfileid: "92782361"
 
 V Azure Media Services začne živá událost při přechodu stavu na **spuštěný** nebo **pohotovostní** stav účtovat ihned. Bude se vám účtovat i v případě, že se ve službě neprovádí tok videa. Chcete-li zastavit živou událost z fakturace, je nutné zastavit živou událost. Živý přepis se účtuje stejným způsobem jako živá událost.
 
-Když je **LiveEventEncodingType** na [živé události](/rest/api/media/liveevents) nastavené na Standard nebo Premium1080p, Media Services automaticky vypne veškerou živou událost, která je stále ve **spuštěném** stavu, 12 hodin po ztrátě vstupního kanálu a neběží **živý výstup** . Stále se ale bude účtovat čas, kdy byla živá událost ve stavu **spuštěno** .
+Když je **LiveEventEncodingType** na [živé události](/rest/api/media/liveevents) nastavené na Standard nebo Premium1080p, Media Services automaticky vypne veškerou živou událost, která je stále ve **spuštěném** stavu, 12 hodin po ztrátě vstupního kanálu a neběží **živý výstup**. Stále se ale bude účtovat čas, kdy byla živá událost ve stavu **spuštěno** .
 
 > [!NOTE]
 > Průchozí živé události se automaticky nevypnou a musí se explicitně zastavit přes rozhraní API, aby se předešlo nadměrnému vyúčtování.

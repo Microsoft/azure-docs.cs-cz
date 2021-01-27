@@ -101,13 +101,11 @@
   items:
     - name: Správa účtů služby Batch
       items:
-        - name: Správa vašeho účtu
-          href: batch-manage-account-basics.md
-        - name: Správa účtů služby Batch pomocí portálu
+        - name: Správa účtů Batch v Azure Portal
           href: batch-account-create-portal.md
         - name: Správa účtů služby Batch pomocí rozhraní Batch Management .NET
           href: batch-management-dotnet.md
-        - name: Analýza nákladů a rozpočty
+        - name: Získání analýzy nákladů a nastavení rozpočtů
           href: budget.md
         - name: Použití privátních koncových bodů s účty Batch
           href: private-connectivity.md

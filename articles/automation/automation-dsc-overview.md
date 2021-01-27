@@ -7,15 +7,15 @@ ms.service: automation
 ms.subservice: dsc
 author: mgoedtel
 ms.author: magoedte
-ms.date: 06/22/2020
+ms.date: 01/26/2021
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 437a917e0f9b6e7a7370e828c8e3ee95218cea3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 752d7f86941967c218b3a57fa163698b9f502057
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87079736"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897016"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Přehled konfigurace stavu Azure Automation
 
@@ -37,7 +37,7 @@ Pokud nejste připraveni ke správě konfigurace počítače z cloudu, můžete 
 
 Konfigurace stavu Azure Automation poskytuje několik výhod oproti použití DSC mimo Azure. Tato služba umožňuje snadno a rychle využít škálovatelnost v tisících počítačů z centrálního a bezpečného umístění. Můžete snadno povolit počítače, přiřazovat jim deklarativní konfigurace a zobrazovat sestavy, které zobrazují kompatibilitu jednotlivých počítačů s požadovaným stavem, který zadáte.
 
-Služba konfigurace stavu Azure Automation je DSC, které Azure Automation Runbooky využívají ke skriptování prostředí PowerShell. Jinými slovy, a to stejným způsobem, jakým Azure Automation pomáhá spravovat skripty prostředí PowerShell, vám také pomůže spravovat konfigurace DSC. 
+Služba konfigurace stavu Azure Automation je DSC, které Azure Automation Runbooky využívají ke skriptování prostředí PowerShell. Jinými slovy, a to stejným způsobem, jakým Azure Automation pomáhá spravovat skripty prostředí PowerShell, vám také pomůže spravovat konfigurace DSC.
 
 ### <a name="built-in-pull-server"></a>Integrovaný server pro vyžádání obsahu
 
@@ -83,20 +83,11 @@ Pro všechny uzly Linux běžící v Azure se v případě povolení počítač�
 
 ### <a name="configuration-of-private-networks"></a><a name="network-planning"></a>Konfigurace privátních sítí
 
-Pokud jsou uzly umístěny v privátní síti, je nutné zadat následující port a adresy URL. Tyto prostředky poskytují připojení k síti pro spravovaný uzel a umožňují, aby DSC komunikovala s Azure Automation.
-
-* Port: pro odchozí přístup k Internetu se vyžaduje jenom TCP 443.
-* Globální adresa URL: ***. Azure-Automation.NET**
-* Globální adresa URL US Gov – Virginie: ***. Azure-Automation.us**
-* Služba agenta: **https:// \<workspaceId\> . agentsvc.Azure-Automation.NET**
-
-Pokud používáte prostředky DSC, které komunikují mezi uzly, například s [prostředky WAITFOR *](/powershell/scripting/dsc/reference/resources/windows/waitForAllResource), musíte taky u těchto uzlů povolený přenos. Pochopte tyto požadavky na síť v dokumentaci ke každému prostředku DSC.
-
-Informace o požadavcích klienta na TLS 1,2 najdete v tématu [vynucení TLS 1,2 pro Azure Automation](automation-managing-data.md#tls-12-enforcement-for-azure-automation).
+Ověřte [Azure Automation konfiguraci sítě](automation-network-configuration.md#hybrid-runbook-worker-and-state-configuration) , kde najdete podrobné informace o portech, adresách URL a dalších podrobných informacích o sítích vyžadovaných pro uzly v privátní síti.
 
 #### <a name="proxy-support"></a>Podpora proxy serveru
 
-Podpora proxy serveru pro agenta DSC je dostupná ve Windows verze 1809 a novějším. Tato možnost je povolena nastavením hodnot `ProxyURL` `ProxyCredential` vlastností a v [metaconfiguration skriptu](automation-dsc-onboarding.md#generate-dsc-metaconfigurations) , který slouží k registraci uzlů. 
+Podpora proxy serveru pro agenta DSC je dostupná ve Windows verze 1809 a novějším. Tato možnost je povolena nastavením hodnot `ProxyURL` `ProxyCredential` vlastností a v [metaconfiguration skriptu](automation-dsc-onboarding.md#generate-dsc-metaconfigurations) , který slouží k registraci uzlů.
 
 >[!NOTE]
 >Konfigurace stavu Azure Automation neposkytuje podporu proxy serveru DSC pro předchozí verze Windows.
@@ -114,4 +105,4 @@ Při definování výjimek doporučujeme použít adresy uvedené v tabulce [zá
 - Další informace o kompilaci konfigurací DSC, abyste je mohli přiřadit cílovým uzlům, najdete v tématu [kompilace konfigurací DSC v konfiguraci stavu Azure Automation](automation-dsc-compile.md).
 - Příklad použití konfigurace stavu Azure Automation v kanálu nepřetržitého nasazení najdete v tématu [Nastavení průběžného nasazování s čokoládou](automation-dsc-cd-chocolatey.md).
 - Informace o cenách najdete v tématu [Azure Automation ceny konfigurace stavu](https://azure.microsoft.com/pricing/details/automation/).
-- Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).
+- Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](/powershell/module/az.automation).

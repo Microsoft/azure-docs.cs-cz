@@ -1,5 +1,5 @@
 ---
-title: Signály popisné zvukové stopy s Azure Media Services V3 | Microsoft Docs
+title: Signály popisné zvukové stopy s Azure Media Services V3
 description: Podle kroků v tomto kurzu nahrajte soubor, zakódovat video, přidejte popisné zvukové stopy a Streamujte obsah pomocí Media Services V3.
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 0bd2002e8f6f233361dd85cc08cfbd97ca23ed60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 155e79f8d42988d8498c52c0f930bc03bc599cf0
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89291258"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898214"
 ---
 # <a name="signal-descriptive-audio-tracks"></a>Signály popisné zvukové stopy
 

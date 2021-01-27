@@ -1,5 +1,5 @@
 ---
-title: Pomocí rozhraní příkazového řádku můžete vytvářet filtry s Azure Media Services | Microsoft Docs
+title: Pomocí rozhraní příkazového řádku můžete vytvářet filtry pomocí Azure Media Services
 description: V tomto článku se dozvíte, jak pomocí rozhraní příkazového řádku vytvořit filtry s Azure Media Services V3.
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: f86b3fbebfaa2eb6fc35d5373eab2bb296ff5043
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 75df01ff65a0910dab140942b520978cd7728775
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92740607"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897573"
 ---
 # <a name="creating-filters-with-cli"></a>Vytváření filtrů pomocí rozhraní příkazového řádku
 
@@ -34,7 +34,7 @@ V tomto tématu se dozvíte, jak nakonfigurovat filtr pro Asset na vyžádání 
 > [!NOTE]
 > Nezapomeňte zkontrolovat [presentationTimeRange](filters-concept.md#presentationtimerange).
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 
 - [Vytvořte účet Media Services](./create-account-howto.md). Nezapomeňte si pamatovat název skupiny prostředků a název účtu Media Services. 
 

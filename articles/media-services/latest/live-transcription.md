@@ -1,26 +1,9 @@
 ---
-title: Živý přepis
-titleSuffix: Azure Media Services
-description: Přečtěte si o Azure Media Services živý přepis.
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: ne
-ms.topic: how-to
-ms.date: 08/31/2020
-ms.author: inhenkel
-ms.openlocfilehash: c3465e294af104c4d9c3b34960f5e95cf41e7cb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89291411"
+title: Live přepis: Azure Media Services popis: informace o Azure Media Services živý přepis.  
+služby: Media-Services documentationcenter: ' ' Author: IngridAtMicrosoft Manager: femila Editor: ' ' MS. Service: Media-Services MS. rebavování: Media ms.tgt_pltfrm: na MS. devlang: ne MS. kapitola: How-to MS. Date: 08/31/2020 MS. Author: inhenkel
+
 ---
+
 # <a name="live-transcription-preview"></a>Živý přepis (Preview)
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
@@ -39,10 +22,10 @@ Tento článek popisuje, jak povolit živý přepis při streamování živé ud
 - West Europe
 - Severní Evropa
 - East US
-- Střední USA
+- USA – střed
 - Středojižní USA
 - Západní USA 2
-- Brazil South
+- Brazílie – jih
 
 Toto je seznam dostupných jazyků, které je možné přepisu, pomocí kódu jazyka v rozhraní API.
 
@@ -56,7 +39,7 @@ Toto je seznam dostupných jazyků, které je možné přepisu, pomocí kódu ja
 | Angličtina (Spojené království) | en-GB |
 | Angličtina (Indie) | en-IN |
 | Angličtina (Nový Zéland) | EN-NZ |
-| Angličtina (Spojené státy) | cs-CZ |
+| Angličtina (Spojené státy) | en-US |
 | Španělština (Španělsko) | es-ES |
 | Španělština (Mexiko) | ES – MX |
 | finština (Finsko) | fi-FI |

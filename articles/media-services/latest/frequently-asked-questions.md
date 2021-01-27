@@ -1,5 +1,5 @@
 ---
-title: Nejčastější dotazy k Azure Media Services V3 | Microsoft Docs
+title: Nejčastější dotazy k Azure Media Services V3
 description: Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Azure Media Services V3.
 services: media-services
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 9e48d14419e2cd24251f1b00a09fd0289c50c55f
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: a452a056ff2bdbad5d2e461716ee1a56d36c8523
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98693803"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897556"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Nejčastější dotazy k Media Services V3
 

@@ -9,33 +9,29 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/18/2019
+ms.date: 01/22/2021
 ms.author: jeedes
-ms.openlocfilehash: 6d04601cb11e57f50c82680077793aef1b816bfa
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: e8f1bff50c5f163894392a9e5d08cc8451d835fa
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895116"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896406"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-business-bydesign"></a>Kurz: Integrace Azure Active Directory se službou SAP Business ByDesign
 
-V tomto kurzu se dozvíte, jak integrovat SAP Business ByDesign s Azure Active Directory (Azure AD).
-Integrace SAP Business ByDesign s Azure AD poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrovat SAP Business ByDesign s Azure Active Directory (Azure AD). Když integrujete SAP Business ByDesign s Azure AD, můžete:
 
-* Můžete kontrolovat v Azure AD, kteří mají přístup k SAP Business ByDesign.
-* Uživatelům můžete povolit, aby se automaticky přihlásili k SAP Business ByDesign (jednotné přihlašování) pomocí svých účtů Azure AD.
-* Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
+* Řízení ve službě Azure AD, která má přístup k SAP Business ByDesign.
+* Umožněte uživatelům, aby se k SAP Business ByDesign automaticky přihlásili pomocí svých účtů Azure AD.
+* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
-Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
+## <a name="prerequisites"></a>Požadavky
 
-## <a name="prerequisites"></a>Předpoklady
+Chcete-li začít, potřebujete následující položky:
 
-Ke konfiguraci integrace služby Azure AD s SAP Business ByDesign potřebujete následující položky:
-
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/) .
-* Předplatné SAP Business ByDesign s podporou jednotného přihlašování
+* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
+* Předplatné SAP Business ByDesign s podporou jednotného přihlašování (SSO).
 
 ## <a name="scenario-description"></a>Popis scénáře
 
@@ -43,63 +39,41 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 * SAP Business ByDesign podporuje jednotné přihlašování spouštěné v **SP**
 
-## <a name="adding-sap-business-bydesign-from-the-gallery"></a>Přidání SAP Business ByDesign z Galerie
+## <a name="add-sap-business-bydesign-from-the-gallery"></a>Přidání SAP Business ByDesign z Galerie
 
 Pokud chcete nakonfigurovat integraci SAP Business ByDesign do služby Azure AD, musíte do seznamu spravovaných aplikací pro SaaS přidat SAP Business ByDesign z galerie.
 
-**Pokud chcete přidat SAP Business ByDesign z Galerie, proveďte následující kroky:**
+1. Přihlaste se k Azure Portal pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** zadejte do vyhledávacího pole **SAP Business ByDesign** .
+1. Z panelu výsledků vyberte **SAP Business ByDesign** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
+## <a name="configure-and-test-azure-ad-sso"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-    ![Tlačítko Azure Active Directory](common/select-azuread.png)
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí SAP Business ByDesign pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, musíte vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v SAP Business ByDesign.
 
-2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí SAP Business ByDesign, proveďte následující kroky:
 
-    ![Okno podnikové aplikace](common/enterprise-applications.png)
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
+    1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+    1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+1. **[Nakonfigurujte jednotné přihlašování SAP Business ByDesign](#configure-sap-business-bydesign-sso)** – ke konfiguraci nastavení jediného Sign-On na straně aplikace.
+    1. **[Vytvořte testovacího uživatele SAP Business ByDesign](#create-sap-business-bydesign-test-user)** , abyste měli protějšek Britta Simon v SAP Business ByDesign, který je propojený s reprezentací uživatele v Azure AD.
+1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **Nová aplikace** v horní části dialogového okna.
+### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
-    ![Tlačítko Nová aplikace](common/add-new-app.png)
+Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-4. Do vyhledávacího pole zadejte **SAP Business ByDesign** , vyberte **SAP Business ByDesign** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+1. V Azure Portal na stránce integrace aplikace **SAP Business ByDesign** najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu tužky pro **základní konfiguraci SAML** a upravte nastavení.
 
-    ![SAP Business ByDesign v seznamu výsledků](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
-
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí SAP Business ByDesign na základě testovacího uživatele s názvem **Britta Simon** .
-Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v SAP Business ByDesign.
-
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí SAP Business ByDesign, musíte dokončit tyto stavební bloky:
-
-1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte jednotné přihlašování SAP Business ByDesign](#configure-sap-business-bydesign-single-sign-on)** – ke konfiguraci nastavení jediného Sign-On na straně aplikace.
-3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
-4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
-5. **[Vytvořte testovacího uživatele SAP Business ByDesign](#create-sap-business-bydesign-test-user)** , abyste měli protějšek Britta Simon v SAP Business ByDesign, který je propojený s reprezentací uživatele v Azure AD.
-6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
-
-V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
-
-Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí SAP Business ByDesign, proveďte následující kroky:
-
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikace **SAP Business ByDesign** vyberte **jednotné přihlašování** .
-
-    ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
-
-2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
-
-    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
-
-3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
-
-    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
 4. V části **základní konfigurace SAML** proveďte následující kroky:
-
-    ![Informace o jednotném přihlašování k doméně SAP Business ByDesign a adresám URL](common/sp-identifier.png)
 
     a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<servername>.sapbydesign.com`
 
@@ -110,21 +84,22 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí SAP Busi
 
 5. Aplikace SAP Business ByDesign očekává kontrolní výrazy SAML v určitém formátu. Pro tuto aplikaci nakonfigurujte následující deklarace identity. Hodnoty těchto atributů můžete spravovat z oddílu **atributy uživatele** na stránce integrace aplikací. Na stránce **nastavit jeden Sign-On se** stránkou SAML kliknutím na tlačítko **Upravit** otevřete dialogové okno **atributy uživatele** .
 
-    ![Snímek obrazovky, který zobrazuje dialogové okno atributy uživatele s vybraným tlačítkem Upravit.](common/edit-attribute.png)
+    ![image1](common/edit-attribute.png)
 
-6. Kliknutím na ikonu **Upravit** upravíte **hodnotu identifikátoru názvu** .
+6. Kliknutím na ikonu **Upravit** upravíte **hodnotu identifikátoru názvu**.
 
-    ![Snímek obrazovky zobrazující stránku atributy uživatele & deklarace identity se zvolenou ikonou "Upravit".](media/sapbusinessbydesign-tutorial/mail-prefix1.png)
+    ![image2](media/sapbusinessbydesign-tutorial/mail-prefix1.png)
 
-7. V části **Spravovat deklarace identity uživatelů** proveďte následující kroky:  ![ Obrázek](media/sapbusinessbydesign-tutorial/mail-prefix2.png)
+7. V části **Spravovat deklarace identity uživatelů** proveďte následující kroky:
+
+    ![image3](media/sapbusinessbydesign-tutorial/mail-prefix2.png)
 
     a. Jako **zdroj** vyberte **transformovat** .
 
-    b. V rozevíracím seznamu **transformace** vyberte **ExtractMailPrefix ()** .
+    b. V rozevíracím seznamu **transformace** vyberte **ExtractMailPrefix ()**.
 
-    c. V rozevíracím seznamu **parametr 1** vyberte atribut uživatele, který chcete použít pro vaši implementaci. Například pokud chcete použít ČísloZaměstnance jako jedinečný identifikátor uživatele a uloženou hodnotu atributu v ExtensionAttribute2, vyberte User. ExtensionAttribute2.
-
-    d. Klikněte na **Uložit** .
+    > [!NOTE]
+    > Pro mapování uživatele používá ByD ve výchozím nastavení **nespecifikovaný** formát NameId. ByD mapuje NameID kontrolních výrazů SAML na aliasu uživatele ByD. Navíc ByD podporuje formát ID **EmailAddress**. V tomto případě ByD mapuje NameID pro příkaz SAM-assertion na e-mailovou adresu ByD uživatele kontaktní data ByD zaměstnanců. Další podrobnosti najdete na [tomto blogu SAP](https://blogs.sap.com/2017/05/24/single-sign-on-sso-with-sap-business-bydesign/).
 
 8. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
@@ -134,13 +109,32 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí SAP Busi
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-    a. Přihlašovací adresa URL
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
-    b. Identifikátor Azure AD
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-    c. Odhlašovací adresa URL
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
+1. V horní části obrazovky vyberte **Nový uživatel** .
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
+   1. Do pole **Název** zadejte `B.Simon`.  
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například `B.Simon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Klikněte na **Vytvořit**.
 
-### <a name="configure-sap-business-bydesign-single-sign-on"></a>Konfigurace SAP Business ByDesign Single Sign-On
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+
+V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k SAP Business ByDesign.
+
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte **SAP Business ByDesign**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
+
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
+
+## <a name="configure-sap-business-bydesign-sso"></a>Konfigurace jednotného přihlašování SAP Business ByDesign
 
 1. Přihlaste se k portálu SAP Business ByDesign s právy správce.
 
@@ -148,23 +142,23 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí SAP Busi
 
 3. Klikněte na **Nový zprostředkovatel identity** a vyberte soubor XML s metadaty, který jste stáhli z Azure Portal. Po importu metadat systém automaticky odešle požadovaný podpisový certifikát a šifrovací certifikát.
 
-    ![Snímek obrazovky se stránkou konfigurace jednotného přihlašování se zvolenou kartou poskytovatel identity a vybranou akcí "Nový zprostředkovatel identity".](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_54.png)
+    ![Konfigurace jednoho Sign-On1](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_54.png)
 
-4. Pokud chcete do žádosti SAML zahrnout **adresu URL služby pro příjemce kontrolního výrazu** , vyberte **zahrnout adresu URL služby pro příjemce kontrolního výrazu** .
+4. Pokud chcete do žádosti SAML zahrnout **adresu URL služby pro příjemce kontrolního výrazu** , vyberte **zahrnout adresu URL služby pro příjemce kontrolního výrazu**.
 
-5. Klikněte na **aktivovat jednotné přihlašování** .
+5. Klikněte na **aktivovat jednotné přihlašování**.
 
 6. Uložte provedené změny.
 
 7. Klikněte na kartu **můj systém** .
 
-    ![Snímek obrazovky se stránkou konfigurace jednotného přihlašování se zvolenou kartou můj systém.](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_52.png)
+    ![Konfigurace jednoho Sign-On2](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_52.png)
 
 8. V poli **přihlašovací adresa URL pro přihlášení k Azure AD** vložte hodnotu **URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
 
-    ![Konfigurace jednoho Sign-On](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_53.png)
+    ![Konfigurace jednoho Sign-On3](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_53.png)
 
-9. Určete, jestli si zaměstnanec může ručně vybrat přihlášení pomocí ID uživatele a hesla nebo jednotného přihlašování. vybere **Výběr ručního zprostředkovatele identity** .
+9. Určete, jestli si zaměstnanec může ručně vybrat přihlášení pomocí ID uživatele a hesla nebo jednotného přihlašování. vybere **Výběr ručního zprostředkovatele identity**.
 
 10. V části **Adresa URL jednotného přihlašování** zadejte adresu URL, kterou by měl zaměstnanec použít k jednotnéhoí systému.
     V rozevíracím seznamu Adresa URL odeslání na zaměstnanec si můžete vybrat z následujících možností:
@@ -183,56 +177,6 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí SAP Busi
 
 11. Uložte provedené změny.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
-
-Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
-
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory** , vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé** .
-
-    ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
-
-2. V horní části obrazovky vyberte **Nový uživatel** .
-
-    ![Tlačítko pro nového uživatele](common/new-user.png)
-
-3. Ve vlastnostech uživatele proveďte následující kroky.
-
-    ![Uživatelský dialog](common/user-properties.png)
-
-    a. Do pole **název** zadejte **BrittaSimon** .
-  
-    b. Do pole **uživatelské jméno** zadejte `brittasimon@yourcompanydomain.extension` . Například BrittaSimon@contoso.com.
-
-    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
-
-    d. Klikněte na **Vytvořit** .
-
-### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
-
-V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k SAP Business ByDesign.
-
-1. V Azure Portal vyberte možnost **podnikové aplikace** , vyberte možnost **všechny aplikace** a pak vyberte **SAP Business ByDesign** .
-
-    ![Okno Podnikové aplikace](common/enterprise-applications.png)
-
-2. V seznamu aplikace vyberte **SAP Business ByDesign** .
-
-    ![Odkaz SAP Business ByDesign v seznamu aplikací](common/all-applications.png)
-
-3. V nabídce na levé straně vyberte **Uživatelé a skupiny** .
-
-    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
-
-4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
-
-    ![Podokno přidat přiřazení](common/add-assign-user.png)
-
-5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-
-6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-
-7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
-
 ### <a name="create-sap-business-bydesign-test-user"></a>Vytvořit testovacího uživatele SAP Business ByDesign
 
 V této části vytvoříte uživatele s názvem Britta Simon v SAP Business ByDesign. Pokud chcete přidat uživatele na platformě SAP Business ByDesign, obraťte se na [tým podpory klientů SAP Business ByDesign](https://www.sap.com/products/cloud-analytics.support.html) . 
@@ -240,16 +184,16 @@ V této části vytvoříte uživatele s názvem Britta Simon v SAP Business ByD
 > [!NOTE]
 > Ujistěte se prosím, že hodnota NameID by se měla shodovat s polem username v platformě SAP Business ByDesign.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+## <a name="test-sso"></a>Test SSO 
 
-V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí následujících možností. 
 
-Po kliknutí na dlaždici SAP Business ByDesign na přístupovém panelu byste měli být automaticky přihlášení k SAP Business ByDesign, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
+1. Kliknutím na **test této aplikace** v Azure Portal. Tím se přesměruje na adresu URL pro přihlášení SAP Business ByDesign, kde můžete spustit tok přihlášení. 
 
-## <a name="additional-resources"></a>Další zdroje
+2. Přejít na adresu URL pro přihlášení k SAP Business ByDesign přímo a zahájit tok přihlášení.
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
+3. Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici SAP Business ByDesign v části Moje aplikace, přesměruje se na adresu URL pro přihlášení SAP Business ByDesign. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>Další kroky
 
-- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
+* Jakmile nakonfigurujete SAP Business ByDesign, můžete vymáhat ovládací prvky relací, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Ovládací prvky relace se rozšíří z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

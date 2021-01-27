@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/21/2021
 ms.author: b-juche
-ms.openlocfilehash: a8286768dac33e48bc4d7c4dce0d9934da08c319
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: ec6a03673112dfb5397f6fae947f1fbf65fd6791
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736067"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881414"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Nejčastější dotazy týkající se Azure NetApp Files
 
@@ -263,7 +263,7 @@ Ne. Služba Azure import/export nepodporuje Azure NetApp Files aktuálně.
 
 ### <a name="can-i-use-azure-netapp-files-nfs-or-smb-volumes-with-azure-vmware-solution-avs"></a>Můžu použít Azure NetApp Files systému souborů NFS nebo SMB s řešením Azure VMware (AVS)?
 
-Na virtuální počítače se systémem Windows nebo virtuální počítače se systémem Linux můžete připojit Azure NetApp Files svazky NFS. Azure NetApp Files sdílené složky SMB můžete mapovat na virtuální počítače se systémem Windows AVS. Další podrobnosti najdete v tématu [Azure NetApp Files s využitím řešení Azure VMware]( ../azure-vmware/net-app-files-with-azure-vmware-solution.md).  
+Na virtuální počítače se systémem Windows nebo virtuální počítače se systémem Linux můžete připojit Azure NetApp Files svazky NFS. Azure NetApp Files sdílené složky SMB můžete mapovat na virtuální počítače se systémem Windows AVS. Další podrobnosti najdete v tématu [Azure NetApp Files s využitím řešení Azure VMware]( ../azure-vmware/netapp-files-with-azure-vmware-solution.md).  
 
 ### <a name="what-regions-are-supported-for-using-azure-netapp-files-nfs-or-smb-volumes-with-azure-vmware-solution-avs"></a>Jaké oblasti jsou podporované pro použití Azure NetApp Files NFS nebo svazků SMB s řešením Azure VMware (AVS)?
 

@@ -7,15 +7,15 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 01/26/2021
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: e174a0539a75945cc0a2595e28a60d928e10acf4
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
-ms.translationtype: HT
+ms.openlocfilehash: 23e3adad12a726b03f6efe309dde0ec4a93bcd5b
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92166212"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897421"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>Správa přístupu k fakturačním údajům v Azure
 
@@ -38,7 +38,7 @@ Správce účtu může udělit přístup k fakturačním údajům Azure jiným o
 - Čtenář
 - Čtenář fakturace
 
-Tyto role mají přístup k fakturačním údajům na webu [Azure Portal](https://portal.azure.com/). Lidé, kteří mají přiřazené tyto role, můžou také využívat [rozhraní API pro fakturaci](usage-rate-card-overview.md), která umožňují programový přístup k fakturám a informacím o využití.
+Tyto role mají přístup k fakturačním údajům na webu [Azure Portal](https://portal.azure.com/). Lidé, kteří mají přiřazené tyto role, můžou také využívat [rozhraní API pro fakturaci](consumption-api-overview.md#usage-details-api), která umožňují programový přístup k fakturám a informacím o využití.
 
 Pokud chcete přiřazovat role, projděte si téma [Přidání nebo odebrání přiřazení rolí v Azure pomocí webu Azure Portal](../../role-based-access-control/role-assignments-portal.md).
 
@@ -51,15 +51,15 @@ Jakmile správce účtu přiřadí jiným uživatelům příslušné role, musí
 
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com/) jako správce účtu.
 
-1. Vyhledejte **Cost Management a fakturace** .
+1. Vyhledejte **Cost Management a fakturace**.
 
     ![Screenshot zvýrazňující Cost Management + Billing v části Služby](./media/manage-billing-access/billing-search-cost-management-billing.png)
 
-1. V levém podokně vyberte **Předplatná** . V závislosti na způsobu přístupu možná budete muset vybrat rozsah fakturace a potom **Předplatná** .
+1. V levém podokně vyberte **Předplatná**. V závislosti na způsobu přístupu možná budete muset vybrat rozsah fakturace a potom **Předplatná**.
 
     ![Snímek obrazovky znázorňující výběr předplatných](./media/manage-billing-access/billing-select-subscriptions.png)
 
-1. Vyberte **Faktury** a potom **Přístup k fakturám** .
+1. Vyberte **Faktury** a potom **Přístup k fakturám**.
 
     ![Snímek obrazovky znázorňující, jak delegovat přístup k fakturám](./media/manage-billing-access/aa-optin01.png)
 
@@ -77,23 +77,23 @@ Funkce role Čtenář fakturace je ve verzi Preview a ještě nepodporuje jiné 
 
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com/) jako správce účtu.
 
-1. Vyhledejte **Cost Management a fakturace** .
+1. Vyhledejte **Cost Management a fakturace**.
 
     ![Snímek obrazovky znázorňující hledání na webu Azure Portal](./media/manage-billing-access/billing-search-cost-management-billing.png)
 
-1. V levém podokně vyberte **Předplatná** . V závislosti na způsobu přístupu možná budete muset vybrat rozsah fakturace a potom **Předplatná** .
+1. V levém podokně vyberte **Předplatná**. V závislosti na způsobu přístupu možná budete muset vybrat rozsah fakturace a potom **Předplatná**.
 
     ![Snímek obrazovky znázorňující výběr předplatných](./media/manage-billing-access/billing-select-subscriptions.png)
 
 1. Vyberte **Řízení přístupu (IAM)** .
-1. V horní části stránky vyberte **Přidat** .
+1. V horní části stránky vyberte **Přidat**.
 
     ![Snímek obrazovky znázorňující kliknutí na tlačítko Přidat přiřazení role](./media/manage-billing-access/billing-click-add-role-assignment.png)
 
-1. V rozevíracím seznamu **Role** vyberte **Čtenář fakturace** .
+1. V rozevíracím seznamu **Role** vyberte **Čtenář fakturace**.
 1. Do textového pole **Vyberte** zadejte jméno nebo e-mail uživatele, kterého chcete přidat.
 1. Vyberte uživatele.
-1. Vyberte **Uložit** .
+1. Vyberte **Uložit**.
     ![Screenshot zvýrazňující tlačítko Uložit](./media/manage-billing-access/billing-save-role-assignment.png)
 
 1. Po chvíli se uživateli přiřadí k roli Čtenář fakturace pro toto předplatné.

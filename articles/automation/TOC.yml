@@ -43,6 +43,8 @@
       href: automation-runbook-types.md
     - name: PowerShell DSC
       href: /powershell/scripting/dsc/overview/overview
+    - name: Podrobnosti o konfiguraci sítě Automation
+      href: automation-network-configuration.md
     - name: Zabezpečení
       items:
         - name: Mechanismy zabezpečení služby Azure Policy

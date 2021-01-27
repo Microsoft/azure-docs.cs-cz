@@ -8,12 +8,12 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: allensu
-ms.openlocfilehash: 5cbfd90ca65a1fb75c9cbe5602ac2a69741e378f
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 7812d0f2e42dfed6cdd661244b77969297093a5d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96017232"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879169"
 ---
 # <a name="use-azure-firewall-to-inspect-traffic-destined-to-a-private-endpoint"></a>Použití Azure Firewall ke kontrole provozu určeného pro soukromý koncový bod
 
@@ -92,7 +92,7 @@ K implementaci dochází k nějakým omezením: migrace do architektury hub a pa
 Tuto architekturu je možné implementovat, pokud jste nakonfigurovali připojení k místní síti pomocí těchto možností: 
 
 * [ExpressRoute](..\expressroute\expressroute-introduction.md)
-* [Síť k síti VPN](..\vpn-gateway\vpn-gateway-howto-site-to-site-resource-manager-portal.md) 
+* [Síť k síti VPN](../vpn-gateway/tutorial-site-to-site-portal.md) 
 
 Pokud požadavky na zabezpečení vyžadují, aby byly přenosy dat klientů do služeb vystavených prostřednictvím privátních koncových bodů směrovány přes bezpečnostní zařízení, nasaďte tento scénář.
 
@@ -163,7 +163,7 @@ V krocích níže nahraďte následující parametry:
 
 ### <a name="create-virtual-machine"></a>Vytvoření virtuálního počítače
 
-1. V levé horní části obrazovky Azure Portal vyberte **vytvořit**  >  **Compute**  >  **virtuální počítač** Compute.
+1. V levé horní části obrazovky Azure Portal vyberte **vytvořit**  >    >  **virtuální počítač** Compute.
 
 2. V nástroji **vytvořit virtuální počítač základy** zadejte nebo vyberte tyto informace:
 
@@ -174,7 +174,7 @@ V krocích níže nahraďte následující parametry:
     | Skupina prostředků | Vyberte **myResourceGroup**. Tuto skupinu prostředků jste vytvořili v předchozí části.  |
     | **Podrobnosti o instancích** |  |
     | Název virtuálního počítače | Zadejte **myVM**. |
-    | Oblast | Vyberte **(US) Střed USA – jih**. |
+    | Region (Oblast) | Vyberte **(US) Střed USA – jih**. |
     | Možnosti dostupnosti | Nechte výchozí nastavení **bez nutnosti redundance infrastruktury**. |
     | Image | Vyberte **Ubuntu Server 18,04 LTS-Gen1**. |
     | Velikost | Vyberte **Standard_B2s**. |
@@ -208,7 +208,7 @@ V krocích níže nahraďte následující parametry:
 
 ## <a name="deploy-the-firewall"></a>Nasazení brány firewall
 
-1. V nabídce webu Azure Portal nebo na **domovské** stránce vyberte **Vytvořit prostředek**.
+1. V nabídce webu Azure Portal nebo na **domovské stránce** vyberte **Vytvořit prostředek**.
 
 2. Do vyhledávacího pole zadejte **firewall** a stiskněte klávesu **ENTER**.
 
@@ -223,7 +223,7 @@ V krocích níže nahraďte následující parametry:
     | Skupina prostředků | Vyberte **myResourceGroup**.  |
     | **Podrobnosti o instancích** |  |
     | Name | Zadejte **myAzureFirewall**. |
-    | Oblast | Vyberte **střed USA – jih**. |
+    | Region (Oblast) | Vyberte **střed USA – jih**. |
     | Zóna dostupnosti | Nechejte výchozí nastavení **žádné**. |
     | Volba virtuální sítě    |    Vyberte **použít existující**.    |
     | Virtuální síť    |    Vyberte **myAzFwVNet**.    |
@@ -309,7 +309,7 @@ V této části vytvoříte privátní koncový bod pro Azure SQL Database v př
     | Skupina prostředků | Vyberte **myResourceGroup**. |
     | **Podrobnosti o instancích** | |
     | Name | Zadejte **SQLPrivateEndpoint**. |
-    | Oblast | Vyberte **(US) Střed USA – jih.** |
+    | Region (Oblast) | Vyberte **(US) Střed USA – jih.** |
 
 6. Vyberte kartu **prostředek** nebo v dolní části stránky vyberte položku **Další: prostředek** .
 
@@ -483,7 +483,7 @@ V této části vytvoříme směrovací tabulku s vlastní trasou.
 
 Trasa odesílá provoz z podsítě **myVM** do adresního prostoru služby Virtual Network **myPEVNet** prostřednictvím Azure firewall.
 
-1. V nabídce webu Azure Portal nebo na **domovské** stránce vyberte **Vytvořit prostředek**.
+1. V nabídce webu Azure Portal nebo na **domovské stránce** vyberte **Vytvořit prostředek**.
 
 2. Do vyhledávacího pole zadejte **směrovací tabulku** a stiskněte klávesu **ENTER**.
 
@@ -497,7 +497,7 @@ Trasa odesílá provoz z podsítě **myVM** do adresního prostoru služby Virtu
     | Předplatné | Vyberte své předplatné. |
     | Skupina prostředků | Vyberte **myResourceGroup**.  |
     | **Podrobnosti o instancích** |  |
-    | Oblast | Vyberte **střed USA – jih**. |
+    | Region (Oblast) | Vyberte **střed USA – jih**. |
     | Name | Zadejte **VMsubnet-to-AzureFirewall**. |
     | Šíření tras brány | Vyberte **Ne**. |
 
@@ -517,7 +517,7 @@ Trasa odesílá provoz z podsítě **myVM** do adresního prostoru služby Virtu
     | ------- | ----- |
     | Název trasy | Zadejte **myVMsubnet-to-privateendpoint**. |
     | Předpona adresy | Zadejte **10.2.0.0/16**.  |
-    | Typ dalšího segmentu směrování | Vyberte **Virtuální zařízení**. |
+    | Typ dalšího přesměrování | Vyberte **Virtuální zařízení**. |
     | Adresa dalšího segmentu | Zadejte **10.0.0.4**. |
 
 11. Vyberte **OK**.

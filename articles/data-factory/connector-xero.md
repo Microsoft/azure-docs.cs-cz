@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/29/2020
+ms.date: 01/26/2021
 ms.author: jingwang
-ms.openlocfilehash: 342d0aabe2222393f33aa4ce93646da9f29cf1fb
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 3f8c74f36c1c441e00b808954ce7f7710d3fbd52
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92926457"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879961"
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory"></a>Kopírování dat z Xero pomocí Azure Data Factory
 
@@ -35,11 +35,8 @@ Data z Xero můžete kopírovat do libovolného podporovaného úložiště dat 
 
 Konkrétně tento konektor Xero podporuje:
 
-- Xero [privátní aplikace](https://developer.xero.com/documentation/getting-started/getting-started-guide) , ale ne veřejnou aplikaci.
+- Ověřování OAuth 2,0 a OAuth 1,0. Pro OAuth 1,0 konektor podporuje [soukromou aplikaci](https://developer.xero.com/documentation/getting-started/getting-started-guide) Xero, ale ne veřejnou aplikaci.
 - Všechny tabulky Xero (koncové body rozhraní API) s výjimkou "Reports".
-- Ověřování OAuth 1,0 a OAuth 2,0.
-
-Azure Data Factory poskytuje integrovaný ovladač pro povolení připojení, takže nemusíte ručně instalovat žádné ovladače pomocí tohoto konektoru.
 
 ## <a name="getting-started"></a>Začínáme
 
@@ -58,10 +55,10 @@ Pro propojenou službu Xero jsou podporovány následující vlastnosti:
 | **_Pod `connectionProperties` :_* _ | | |
 | Hostitel | Koncový bod serveru Xero ( `api.xero.com` ).  | Yes |
 | authenticationType | Povolené hodnoty jsou `OAuth_2.0` a `OAuth_1.0` . | Yes |
-| consumerKey | Klíč příjemce přidružený k aplikaci Xero Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
-| privateKey | Privátní klíč ze souboru. pem, který byl vygenerován pro vaši privátní aplikaci Xero, najdete v tématu [Vytvoření páru veřejného a privátního klíče](https://developer.xero.com/documentation/auth-and-limits/create-publicprivate-key). Poznámka: _ *vygenerujte PrivateKey. pem s numbits z 512* * using `openssl genrsa -out privatekey.pem 512` , 1024 není podporováno. Zahrňte veškerý text ze souboru. pem, včetně konců řádků systému UNIX (\n), viz ukázka níže.<br/>Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| consumerKey | Pro OAuth 2,0 zadejte *ID klienta* _ * pro vaši aplikaci Xero.<br>V případě OAuth 1,0 zadejte uživatelský klíč přidružený k aplikaci Xero.<br>Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| privateKey | Pro OAuth 2,0 zadejte **tajný klíč klienta** pro vaši aplikaci Xero.<br>V případě OAuth 1,0 zadejte privátní klíč ze souboru. pem, který jste vygenerovali pro privátní aplikaci Xero, v tématu [Vytvoření páru veřejného a privátního klíče](https://developer.xero.com/documentation/auth-and-limits/create-publicprivate-key). Poznámka: pro **vygenerování PrivateKey. pem s numbits 1024 512** se nepodporuje `openssl genrsa -out privatekey.pem 512` . Zahrňte veškerý text ze souboru. pem, včetně konců řádků systému UNIX (\n), viz ukázka níže.<br/><br>Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 | tenantId | ID tenanta přidružené k vaší aplikaci Xero Platí pro ověřování OAuth 2,0.<br>Zjistěte, jak získat ID tenanta z [tématu zjištění klientů, kterým máte oprávnění k přístupu](https://developer.xero.com/documentation/oauth2/auth-flow). | Ano pro ověřování OAuth 2,0 |
-| Refreshtoken kontextového tokenu | Platí pro ověřování OAuth 2,0.<br/>Obnovovací token OAuth 2,0 je přidružen k aplikaci Xero a používá se k aktualizaci přístupového tokenu. platnost přístupového tokenu vyprší po 30 minutách. Přečtěte si, jak funguje autorizační tok Xero a jak získat obnovovací token z [tohoto článku](https://developer.xero.com/documentation/oauth2/auth-flow). Pokud chcete získat obnovovací token, musíte požádat o [obor offline_access](https://developer.xero.com/documentation/oauth2/scopes). <br/>Zjištění **omezení** : Poznámka Xero obnoví obnovovací token po jeho použití pro aktualizaci přístupového tokenu. Pro provozní úlohy před spuštěním každé aktivity kopírování musíte nastavit platný obnovovací token pro použití ADF.<br/>Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano pro ověřování OAuth 2,0 |
+| Refreshtoken kontextového tokenu | Platí pro ověřování OAuth 2,0.<br/>Obnovovací token OAuth 2,0 je přidružen k aplikaci Xero a používá se k aktualizaci přístupového tokenu. platnost přístupového tokenu vyprší po 30 minutách. Přečtěte si, jak funguje autorizační tok Xero a jak získat obnovovací token z [tohoto článku](https://developer.xero.com/documentation/oauth2/auth-flow). Pokud chcete získat obnovovací token, musíte požádat o [obor offline_access](https://developer.xero.com/documentation/oauth2/scopes). <br/>Zjištění **omezení**: Poznámka Xero obnoví obnovovací token po jeho použití pro aktualizaci přístupového tokenu. Pro provozní úlohy před spuštěním každé aktivity kopírování musíte nastavit platný obnovovací token pro použití ADF.<br/>Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano pro ověřování OAuth 2,0 |
 | useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovány pomocí protokolu HTTPS. Výchozí hodnotou je hodnota true.  | No |
 | useHostVerification | Určuje, jestli se v certifikátu serveru vyžaduje název hostitele, který se bude shodovat s názvem hostitele serveru při připojení přes protokol TLS. Výchozí hodnotou je hodnota true.  | No |
 | usePeerVerification | Určuje, jestli se má při připojování přes protokol TLS ověřit identita serveru. Výchozí hodnotou je hodnota true.  | No |
@@ -79,11 +76,11 @@ Pro propojenou službu Xero jsou podporovány následující vlastnosti:
                 "authenticationType":"OAuth_2.0", 
                 "consumerKey": {
                     "type": "SecureString",
-                    "value": "<consumer key>"
+                    "value": "<client ID>"
                 },
                 "privateKey": {
                     "type": "SecureString",
-                    "value": "<private key>"
+                    "value": "<client secret>"
                 },
                 "tenantId": "<tenant ID>", 
                 "refreshToken": {
@@ -139,7 +136,7 @@ Zahrňte veškerý text ze souboru. pem, včetně konců řádků UNIX (\n).
 
 Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [datové sady](concepts-datasets-linked-services.md) . V této části najdete seznam vlastností podporovaných Xero DataSet.
 
-Chcete-li kopírovat data z Xero, nastavte vlastnost Type datové sady na **XeroObject** . Podporovány jsou následující vlastnosti:
+Chcete-li kopírovat data z Xero, nastavte vlastnost Type datové sady na **XeroObject**. Podporovány jsou následující vlastnosti:
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
@@ -169,7 +166,7 @@ Chcete-li kopírovat data z Xero, nastavte vlastnost Type datové sady na **Xero
 
 ### <a name="xero-as-source"></a>Xero as source
 
-Chcete-li kopírovat data z Xero, nastavte typ zdroje v aktivitě kopírování na **XeroSource** . V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
+Chcete-li kopírovat data z Xero, nastavte typ zdroje v aktivitě kopírování na **XeroSource**. V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |

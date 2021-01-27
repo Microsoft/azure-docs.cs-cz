@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b44ea6f55717712cfba4045205e02bd9f2b851df
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 4bda3622c1bb1cb66e83b82df0d13cbfee9e20a3
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202653"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878117"
 ---
 # <a name="azure-security-baseline-for-azure-web-application-firewall"></a>Základní hodnota zabezpečení Azure pro Firewall webových aplikací Azure
 
@@ -406,7 +406,7 @@ Pokud je to možné, postupujte podle Security Center doporučení pro šifrová
 
 Azure WAF v režimu prevence blokuje vniknutí a útoky zjištěné pravidly. Útočník obdrží výjimku "403 neoprávněný přístup" a připojení je zavřené. Režim prevence zaznamenává takové útoky do protokolů WAF.
 
-- [Přehled integrace mezi Application Gateway a Azure Security Center](../application-gateway/application-gateway-integration-security-center.md#overview)
+- [Přehled integrace mezi Application Gateway a Azure Security Center](../security-center/security-center-partner-integration.md)
 
 - [Režimy WAF na Application Gateway](ag/ag-overview.md#waf-modes)
 

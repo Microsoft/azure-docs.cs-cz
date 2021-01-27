@@ -2,18 +2,15 @@
 title: Řešení potíží s Azure Automation sdílenými prostředky
 description: Tento článek popisuje, jak řešit problémy s Azure Automation sdílenými prostředky a řešit potíže.
 services: automation
-author: mgoedtel
-ms.author: magoedte
+ms.subservice: ''
 ms.date: 03/12/2019
-ms.topic: conceptual
-ms.service: automation
-manager: carmonm
-ms.openlocfilehash: c6bdc09d37cf29458346eaea360b4cd9e0d1226f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.topic: troubleshooting
+ms.openlocfilehash: c4ede0bffedc256f4af621d4945ebbbea0f8a4b6
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187162"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896287"
 ---
 # <a name="troubleshoot-shared-resource-issues"></a>Řešení potíží se sdílenými prostředky
 
@@ -33,7 +30,7 @@ Vzhledem k tomu, že import modulů PowerShellu je složitý proces s více krok
 
 #### <a name="resolution"></a>Řešení
 
-Chcete-li tento problém vyřešit, je nutné odebrat modul, který je zablokovaný pomocí rutiny [Remove-AzAutomationModule](/powershell/module/Az.Automation/Remove-AzAutomationModule?view=azps-3.7.0) . Pak můžete modul znovu importovat.
+Chcete-li tento problém vyřešit, je nutné odebrat modul, který je zablokovaný pomocí rutiny [Remove-AzAutomationModule](/powershell/module/Az.Automation/Remove-AzAutomationModule) . Pak můžete modul znovu importovat.
 
 ```azurepowershell-interactive
 Remove-AzAutomationModule -Name ModuleName -ResourceGroupName ExampleResourceGroup -AutomationAccountName ExampleAutomationAccount -Force
@@ -70,7 +67,7 @@ Některé běžné důvody, proč se modul nemusí úspěšně naimportovat do A
 * Struktura neodpovídá struktuře, která je potřebná pro automatizaci.
 * Modul závisí na jiném modulu, který nebyl nasazen do vašeho účtu Automation.
 * V modulu chybí závislosti ve složce.
-* Rutina [New-AzAutomationModule](/powershell/module/Az.Automation/New-AzAutomationModule?view=azps-3.7.0) se používá k nahrání modulu a neposkytli jste úplnou cestu k úložišti, nebo jste modul nespustili pomocí veřejně přístupné adresy URL.
+* Rutina [New-AzAutomationModule](/powershell/module/Az.Automation/New-AzAutomationModule) se používá k nahrání modulu a neposkytli jste úplnou cestu k úložišti, nebo jste modul nespustili pomocí veřejně přístupné adresy URL.
 
 #### <a name="resolution"></a>Řešení
 

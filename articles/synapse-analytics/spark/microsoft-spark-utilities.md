@@ -10,12 +10,12 @@ ms.date: 09/10/2020
 ms.author: ruxu
 ms.reviewer: ''
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: d2e9e306e979f569819568650b25d49278997ede
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 262177d8cde3a5eee2721f2af8a0511c205da9b9
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878523"
+ms.locfileid: "98890525"
 ---
 # <a name="introduction-to-microsoft-spark-utilities"></a>Seznámení s nástroji Microsoft Spark
 
@@ -122,13 +122,45 @@ spark.conf.set(f"fs.azure.sas.$blob_container_name.$blob_account_name.blob.core.
 
 ::: zone-end
 
-<!-- :::zone pivot = "programming-language-csharp"
+:::zone pivot = "programming-language-csharp"
+
+
+### <a name="configure-access-to-azure-blob-storage"></a>Konfigurace přístupu k Azure Blob Storage  
+
+Synapse využívá **sdílený přístupový podpis (SAS)** pro přístup k Azure Blob Storage. Aby nedocházelo k vystavování klíčů SAS v kódu, doporučujeme vytvořit novou propojenou službu v pracovním prostoru synapse do účtu Azure Blob Storage, ke kterému chcete získat přístup.
+
+Pomocí následujících kroků přidejte novou propojenou službu pro účet Azure Blob Storage:
+
+1. Otevřete [Azure synapse Studio](https://web.azuresynapse.net/).
+2. Na levém panelu vyberte **Spravovat** a v části **externí připojení** vyberte **propojené služby** .
+3. Hledejte v **Azure Blob Storage** na pravé straně panelu **propojených služeb** .
+4. Vyberte **Pokračovat**.
+5. Vyberte účet Azure Blob Storage, pro který chcete získat přístup a nakonfigurovat název propojené služby. Navrhněte použití **klíče účtu** pro **metodu ověřování**.
+6. Vyberte možnost **Test připojení** , aby se ověřilo, že jsou nastavení správná.
+7. Vyberte **vytvořit** jako první a kliknutím na **publikovat vše** uložte změny. 
+
+K datům v Azure Blob Storage pomocí synapse Sparku můžete přistupovat pomocí následující adresy URL:
+
+<code>wasb[s]://<container_name>@<storage_account_name>.blob.core.windows.net/<path></code>
+
+Tady je příklad kódu:
 
 ```csharp
+var blob_account_name = "";  // replace with your blob name
+var blob_container_name = "";     // replace with your container name
+var blob_relative_path = "";  // replace with your relative folder path
+var linked_service_name = "";    // replace with your linked service name
+var blob_sas_token = Credentials.GetConnectionStringOrCreds(linked_service_name);
+
+spark.SparkContext.GetConf().Set($"fs.azure.sas.{blob_container_name}.{blob_account_name}.blob.core.windows.net", blob_sas_token);
+
+var wasbs_path = $"wasbs://{blob_container_name}@{blob_account_name}.blob.core.windows.net/{blob_relative_path}";
+
+Console.WriteLine(wasbs_path);
 
 ```
 
-::: zone-end -->
+::: zone-end 
  
 ###  <a name="configure-access-to-azure-key-vault"></a>Konfigurace přístupu k Azure Key Vault
 

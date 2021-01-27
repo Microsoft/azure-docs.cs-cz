@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: b338b8ee93fb24cff54968630d4ff00deca0b64b
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 675751433657a7d630d0c42482716702f520ff82
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97606721"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881380"
 ---
 # <a name="introduction-to-azure-defender-for-storage"></a>Úvod do Azure Defenderu pro úložiště
 
@@ -27,8 +27,8 @@ Výstrahy zabezpečení se spouštějí při výskytu anomálií v aktivitě. Ty
 |----|:----|
 |Stav vydaných verzí:|Všeobecně dostupná (GA)|
 |Stanov|**Azure Defender pro úložiště** se fakturuje, jak je znázorněno na [stránce s cenami](security-center-pricing.md) .|
-|Typy chráněných úložišť:|[Blob Storage](https://azure.microsoft.com/services/storage/blobs/)<br>[Soubory Azure](../storage/files/storage-files-introduction.md)<br>[Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)|
-|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ano](./media/icons/yes-icon.png) US Gov<br>![Ne](./media/icons/no-icon.png) Čína gov, jiné gov|
+|Typy chráněných úložišť:|[Blob Storage](https://azure.microsoft.com/services/storage/blobs/)<br>[Azure Files](../storage/files/storage-files-introduction.md)<br>[Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)|
+|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Čína gov, jiné gov|
 |||
 
 
@@ -54,7 +54,7 @@ Výstrahy zabezpečení se aktivují, když dojde k těmto akcím:
 Výstrahy obsahují podrobnosti o incidentu, který je aktivoval, a doporučení ohledně toho, jak tyto hrozby prozkoumat a opravit. Výstrahy se dají exportovat do Azure Sentinel nebo jakýchkoli jiných SIEM třetích stran nebo jiných externích nástrojů.
 
 > [!TIP]
-> Osvědčeným postupem je [nakonfigurovat Azure Defender pro úložiště](https://docs.microsoft.com/azure/storage/common/azure-defender-storage-configure?tabs=azure-security-center) na úrovni předplatného, ale můžete [ho nakonfigurovat i na jednotlivých účtech úložiště](https://docs.microsoft.com/azure/storage/common/azure-defender-storage-configure?tabs=azure-portal).
+> Osvědčeným postupem je [nakonfigurovat Azure Defender pro úložiště](../storage/common/azure-defender-storage-configure.md?tabs=azure-security-center) na úrovni předplatného, ale můžete [ho nakonfigurovat i na jednotlivých účtech úložiště](../storage/common/azure-defender-storage-configure.md?tabs=azure-portal).
 
 
 ## <a name="what-is-hash-reputation-analysis-for-malware"></a>Co je analýza reputace hodnot hash pro malware?

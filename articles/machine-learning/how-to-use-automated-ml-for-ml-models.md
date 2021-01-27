@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 12/20/2020
 ms.topic: conceptual
 ms.custom: how-to, automl
-ms.openlocfilehash: 4539936007de0b45ab33dbd391baacc8f7d2ce2a
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 1a40fe01240474c2a6df3e028b7d03f3e8bb73fc
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97796053"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879743"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Vytvářejte, kontrolujte a nasaďte automatizované modely strojového učení pomocí Azure Machine Learning
 
@@ -84,7 +84,7 @@ V opačném případě se zobrazí seznam nedávných automatizovaných experime
 
     1. Formulář **schématu** se inteligentně vyplní na základě výběrů ve formuláři **nastavení a náhled** . Tady můžete nakonfigurovat datový typ pro každý sloupec, zkontrolovat názvy sloupců a vybrat, které sloupce nechcete pro svůj experiment **Zahrnout** . 
             
-        Vyberte **Další.**
+        Vyberte **Další**.
 
     1. Formulář **potvrdit podrobnosti** je souhrn informací, které byly dříve vyplněny ve formulářích **základní informace** a **nastavení a náhled** . Máte také možnost vytvořit datový profil pro datovou sadu pomocí výpočetní služby s povoleným profilací. Přečtěte si další informace o [profilování dat](how-to-connect-data-ui.md#profile).
 
@@ -106,7 +106,7 @@ V opačném případě se zobrazí seznam nedávných automatizovaných experime
     Typ virtuálního počítače| Vyberte procesor nebo GPU pro typ virtuálního počítače.
     Velikost virtuálního počítače| Vyberte velikost virtuálního počítače pro výpočetní výkon.
     Minimální/maximální počet uzlů| Chcete-li profilovat data, je nutné zadat 1 nebo více uzlů. Zadejte maximální počet uzlů pro výpočetní výkon. Výchozí hodnota je 6 uzlů pro AML Compute.
-    Pokročilá nastavení | Tato nastavení umožňují nakonfigurovat uživatelský účet a stávající virtuální síť pro svůj experiment. 
+    Rozšířená nastavení | Tato nastavení umožňují nakonfigurovat uživatelský účet a stávající virtuální síť pro svůj experiment. 
     
     Vyberte **Vytvořit**. Vytváření nových výpočetních prostředků může trvat několik minut.
 
@@ -216,7 +216,7 @@ Automatizované strojové učení pomáhá s nasazením modelu bez psaní kódu:
 1. Vyberte **Nasadit**. Dokončení nasazení může trvat přibližně 20 minut.
     Po zahájení nasazení se zobrazí karta **Shrnutí modelu**. Průběh nasazení můžete sledovat v části **Stav nasazení**. 
 
-Teď máte funkční webovou službu pro generování předpovědí. Předpovědi můžete otestovat dotazováním služby s využitím [integrované podpory služby Azure Machine Learning v Power BI](https://docs.microsoft.com/power-bi/connect-data/service-aml-integrate?context=azure/machine-learning/context/ml-context).
+Teď máte funkční webovou službu pro generování předpovědí. Předpovědi můžete otestovat dotazováním služby s využitím [integrované podpory služby Azure Machine Learning v Power BI](/power-bi/connect-data/service-aml-integrate?context=azure%2fmachine-learning%2fcontext%2fml-context).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -4,12 +4,12 @@ description: Jak nasadit a nakonfigurovat síť konsorcia prostředků infrastru
 ms.date: 01/08/2021
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 1ab5b9fadfbb0f1c9c1cdf25ee319c7775a593ed
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: c0e7f3e7ab83f64cebd990de57d48c97891edb7f
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060312"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897254"
 ---
 # <a name="deploy-hyperledger-fabric-consortium-on-azure-kubernetes-service"></a>Nasazení konsorcia prostředků infrastruktury pro hlavní knihu v Azure Kubernetes Service
 
@@ -317,7 +317,7 @@ CC_VERSION=<chaincodeVersion>
 # Language in which chaincode is written. Supported languages are 'node', 'golang', and 'java'  
 # Default value is 'golang'  
 CC_LANG=<chaincodeLanguage>  
-# CC_PATH contains the path where your chaincode is placed.
+# CC_PATH contains the path where your chaincode is placed. This is the absolute path to the chaincode project root directory.
 # If you are using chaincode_example02 to validate then CC_PATH=“/home/<username>/azhlfTool/samples/chaincode/src/chaincode_example02/go”
 CC_PATH=<chaincodePath>  
 # Channel on which chaincode will be instantiated/invoked/queried  
@@ -334,7 +334,7 @@ Spusťte následující příkaz, který nainstaluje chaincode v partnerské org
 ```
 Příkaz nainstaluje chaincode do všech partnerských uzlů sady rovnocenných organizací v sadě s `ORGNAME` proměnnou prostředí. Pokud máte ve vašem kanálu dvě nebo více partnerských organizací a chcete na všechny z nich nainstalovat chaincode, spusťte tento příkaz samostatně pro každou organizaci partnera.  
 
-Postupujte takto:  
+Postupujte následovně:  
 
 1.  Nastavte `ORGNAME` a `USER_IDENTITY` v závislosti na `peerOrg1` a spusťte `./azhlf chaincode install` příkaz.  
 2.  Nastavte `ORGNAME` a `USER_IDENTITY` v závislosti na `peerOrg2` a spusťte `./azhlf chaincode install` příkaz.  

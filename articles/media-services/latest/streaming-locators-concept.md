@@ -1,5 +1,5 @@
 ---
-title: Lokátory streamování v Azure Media Services | Microsoft Docs
+title: Lokátory streamování v Azure Media Services
 description: Tento článek obsahuje vysvětlení toho, co jsou Lokátory streamování a jak se používají Azure Media Services.
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/04/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 68df5256949db44b2b347002570c64d1aa0d55ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b711b9a6923a1923562a282dcaffe7cecb0c58b
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297956"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898134"
 ---
 # <a name="streaming-locators"></a>Lokátory streamování
 
@@ -25,7 +25,7 @@ Pokud chcete, aby videa ve výstupním prostředku byla k dispozici klientům pr
 
 Proces vytvoření **lokátoru streamování** se nazývá publikování. Ve výchozím nastavení je **Lokátor streamování** platný hned po volání rozhraní API a trvá až do odstranění, pokud nenastavíte volitelné počáteční a koncové časy. 
 
-Při vytváření **lokátoru streamování**musíte zadat název **assetu** a název **zásady streamování** . Další informace najdete v následujících tématech:
+Při vytváření **lokátoru streamování** musíte zadat název **assetu** a název **zásady streamování** . Další informace najdete v následujících tématech:
 
 * [Aktiva](assets-concept.md)
 * [Zásady streamování](streaming-policy-concept.md)
@@ -33,7 +33,7 @@ Při vytváření **lokátoru streamování**musíte zadat název **assetu** a n
 
 Můžete také zadat čas zahájení a ukončení na lokátoru streamování, který umožní uživateli přehrávat obsah mezi těmito časy (například mezi 5/1/2019 a 5/5/2019).  
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Požadavky
 
 * **Lokátory streamování** nejde aktualizovat. 
 * Vlastnosti **lokátorů streamování** , které jsou typu DateTime, jsou vždycky ve formátu UTC.
