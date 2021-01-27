@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/10/2020
+ms.date: 01/27/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 84a3ef7b41b17e85c594213246211d45911ac56a
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: a39230cc65db6ef12b6fa4364454aeb434efddf6
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953045"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918208"
 ---
 # <a name="tutorial-register-a-web-application-in-azure-active-directory-b2c"></a>Kurz: registrace webové aplikace v Azure Active Directory B2C
 
@@ -98,6 +98,14 @@ U webové aplikace je třeba vytvořit tajný klíč aplikace. Pomocí tohoto ta
 1. Vyberte **Save (Uložit** ) a zobrazte si klíč. Poznamenejte si hodnotu **Klíč aplikace**. Tuto hodnotu použijete jako tajný klíč aplikace v kódu vaší aplikace.
 
 * * *
+
+## <a name="enable-id-token-implicit-grant"></a>Povolit implicitní udělení tokenu ID
+
+Definováním charakteristiky implicitního udělení je, že tokeny, jako je ID a přístupové tokeny, jsou vráceny přímo z Azure AD B2C do aplikace. U webových aplikací, jako je například ASP.NET Core Web Apps a [https://jwt.ms](https://jwt.ms) , které požadují token ID přímo z koncového bodu autorizace, povolte v registraci aplikace tok implicitního udělení.
+
+1. V nabídce vlevo v části **Spravovat** vyberte **ověřování**.
+1. V části implicitní udělení vyberte zaškrtávací políčka **přístupové tokeny** i **tokeny ID** .
+1. Vyberte **Uložit**.
 
 ## <a name="next-steps"></a>Další kroky
 

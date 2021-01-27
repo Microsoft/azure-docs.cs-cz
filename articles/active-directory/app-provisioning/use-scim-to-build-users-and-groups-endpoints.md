@@ -1,27 +1,22 @@
 ---
-title: Vytvoření koncového bodu SCIM pro zřizování uživatelů pro aplikace ze služby Azure AD
-description: Systém pro správu identit mezi doménami (SCIM) standardizace Automatické zřizování uživatelů. Naučte se vyvíjet SCIM koncový bod, Integrujte své rozhraní SCIM API pomocí Azure Active Directory a začněte automatizovat zřizování uživatelů a skupin do svých cloudových aplikací.
+title: Vytvoření koncového bodu SCIM pro zřizování uživatelů pro aplikace z Azure Active Directory
+description: Systém pro správu identit mezi doménami (SCIM) standardizace Automatické zřizování uživatelů. Naučte se vyvíjet SCIM koncový bod, Integrujte své rozhraní SCIM API pomocí Azure Active Directory a začněte automatizovat zřizování uživatelů a skupin do cloudových aplikací pomocí Azure Active Directory.
 services: active-directory
-documentationcenter: ''
-author: msmimart
+author: kenwith
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/07/2020
-ms.author: mimart
+ms.date: 01/27/2021
+ms.author: kenwith
 ms.reviewer: arvinh
-ms.custom: aaddev;it-pro;seohack1
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ae36af981b113d44ac1b8fd45a1d084760b0294
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 34fa76197c4e08cffd1d8c66d6877b3e427e9fd6
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/27/2021
-ms.locfileid: "98900126"
+ms.locfileid: "98918140"
 ---
 # <a name="tutorial-develop-a-sample-scim-endpoint"></a>Kurz: vývoj ukázkového koncového bodu SCIM
 
@@ -30,68 +25,8 @@ Nikdo nechce vytvořit nový koncový bod od začátku, takže jsme vytvořili p
 V tomto kurzu získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Stažení referenčního kódu
 > * Nasazení koncového bodu SCIM v Azure
 > * Testování koncového bodu SCIM
-
-K dispozici jsou možnosti koncového bodu:
-
-|Koncový bod|Popis|
-|---|---|
-|`/User`|Provádění operací CRUD u prostředku uživatele: **vytvořit**, **aktualizovat**, **Odstranit**, **získat**, **vypsat**, **filtrovat**|
-|`/Group`|Provádění operací CRUD pro prostředek skupiny: **vytvořit**, **aktualizovat**, **Odstranit**, **získat**, **vypsat**, **filtrovat**|
-|`/Schemas`|Načíst jedno nebo více podporovaných schémat.<br/><br/>Sada atributů prostředku podporovaného jednotlivými poskytovateli služeb se může lišit, například poskytovatel služeb A podporuje "název", "title" a "e-maily", zatímco poskytovatel služeb B podporuje "název", "title" a "phoneNumbers" pro uživatele.|
-|`/ResourceTypes`|Načte podporované typy prostředků.<br/><br/>Počet a typy prostředků podporovaných jednotlivými poskytovateli služeb se mohou lišit, například poskytovatel služeb A podporuje uživatele, zatímco poskytovatel služeb B podporuje uživatele a skupiny.|
-|`/ServiceProviderConfig`|Načíst konfiguraci SCIM poskytovatele služeb<br/><br/>Funkce SCIM podporované jednotlivými poskytovateli služeb se můžou lišit, třeba poskytovatel služeb A podporuje operace oprav, zatímco poskytovatel služeb B podporuje operace opravy a zjišťování schématu.|
-
-## <a name="download-the-reference-code"></a>Stažení referenčního kódu
-
-[Referenční kód](https://github.com/AzureAD/SCIMReferenceCode) , který se má stáhnout, zahrnuje následující projekty:
-
-- **Microsoft.SystemForCrossDomainIdentityManagement**, webové rozhraní API .NET Core MVC k sestavení a zřízení rozhraní SCIM API
-- **Microsoft. SCIM. WebHostSample**, pracovní příklad koncového bodu SCIM
-
-Projekty obsahují následující složky a soubory:
-
-|Soubor nebo složka|Popis|
-|-|-|
-|Složka **schémat**| Modely pro **uživatele** a **skupiny** prostředků spolu s některými abstraktními třídami, jako je schematized pro sdílené funkce.<br/><br/> Složka **atributů** , která obsahuje definice třídy pro složité atributy **uživatelů** a **skupin** , jako jsou adresy.|
-|Složka **služby** | Obsahuje logiku pro akce týkající se způsobu dotazování a aktualizace prostředků.<br/><br/> Referenční kód obsahuje služby pro vrácení uživatelů a skupin.<br/><br/>Složka **Controllers** obsahuje různé koncové body SCIM. Řadiče prostředků zahrnují příkazy HTTP pro provádění operací CRUD na prostředku (operace **Get**, **post**, **Put**, **patch**, **Delete**). Řadiče při provádění těchto akcí spoléhají na služby.|
-|Složka **protokolu**|Obsahuje logiku pro akce týkající se způsobu, jakým jsou vráceny prostředky podle specifikace RFC SCIM, například:<br/><ul><li>Vrácení více prostředků jako seznamu.</li><li>Vracení pouze konkrétních prostředků na základě filtru.</li><li>Přepíná dotaz na seznam propojených seznamů s jedním filtry.</li><li>Zapnutím žádosti o opravu na operaci s atributy, které se vztahují k cestě k hodnotě.</li><li>Definování typu operace, kterou lze použít k provedení změn v objektech prostředků.</li></ul>|
-|`Microsoft.SystemForCrossDomainIdentityManagement`| Ukázkový zdrojový kód.|
-|`Microsoft.SCIM.WebHostSample`| Ukázková implementace knihovny SCIM|
-|*. gitignore*|Definujte, co se má ignorovat v době potvrzení.|
-|*CHANGELOG.md*|Seznam změn v ukázce|
-|*CONTRIBUTING.md*|Pokyny pro přispívání k ukázce.|
-|*README.md*|Tento soubor **Readme** .|
-|*PRŮKAZ*|Licence k ukázce|
-
-> [!NOTE]
-> Tento kód je určený k tomu, aby mohl začít sestavovat koncový bod SCIM a je k dispozici **jako**. Zahrnuté odkazy nemají žádnou záruku na aktivní maintainence ani podporu.
->
-> Tento projekt přijal [pravidla chování pro Microsoft Open Source](https://opensource.microsoft.com/codeofconduct/). Protože tyto [příspěvky](https://github.com/AzureAD/SCIMReferenceCode/wiki/Contributing-Overview) od komunity jsou Vítá vás při sestavování a údržbě úložiště a podobně jako jiné Open-Source příspěvky, budete souhlasit s licenční smlouvou přispěvatele (cla). Tato smlouva prohlašuje, že máte a udělujete práva k používání vašeho příspěvku, podrobnosti najdete v tématu [Microsoft Open Source](https://cla.opensource.microsoft.com).
->
-> Další informace najdete v [nejčastějších dotazech k pravidlům chování](https://opensource.microsoft.com/codeofconduct/faq/). V případě jakýchkoli dotazů nebo připomínek kontaktujte [opencode@microsoft.com](mailto:opencode@microsoft.com).
-
-###  <a name="use-multiple-environments"></a>Používání více prostředí
-
-Zahrnutý SCIM kód používá prostředí ASP.NET Core k řízení jeho autorizace pro použití při vývoji a po nasazení, viz [použití více prostředí v ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/environments?view=aspnetcore-3.1).
-
-```csharp
-private readonly IWebHostEnvironment _env;
-...
-
-public void ConfigureServices(IServiceCollection services)
-{
-    if (_env.IsDevelopment())
-    {
-        ...
-    }
-    else
-    {
-        ...
-    }
-```
 
 ## <a name="deploy-your-scim-endpoint-in-azure"></a>Nasazení koncového bodu SCIM v Azure
 
@@ -139,7 +74,7 @@ Nepoužívejte nezabezpečené metody, jako je uživatelské jméno a heslo, a p
 > [!NOTE]
 > Metody autorizace, které jsou k dispozici v úložišti, jsou určené pouze pro testování. Při integraci s Azure AD si můžete projít pokyny k autorizaci, viz [plánování zřizování pro koncový bod SCIM](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#authorization-for-provisioning-connectors-in-the-application-gallery). 
 
-Vývojové prostředí umožňuje, aby byly funkce nebezpečné pro produkční prostředí, například referenční kód pro řízení chování ověření tokenu zabezpečení. Ověřovací kód tokenu je nakonfigurován tak, aby používal token zabezpečení podepsaný svým vlastníkem a podpisový klíč je uložen v konfiguračním souboru, viz parametr **token: IssuerSigningKey** v *appsettings.Development.jsv* souboru.
+Vývojové prostředí umožňuje, aby byly funkce nebezpečné pro produkční prostředí, například referenční kód pro řízení chování ověření tokenu zabezpečení. Ověřovací kód tokenu je nakonfigurován pro použití tokenu zabezpečení podepsaného svým držitelem a podpisový klíč je uložen v konfiguračním souboru, viz parametr **token: IssuerSigningKey** v souboru *appsettings.Development.json* .
 
 ```json
 "Token": {
@@ -164,7 +99,7 @@ Výchozí kód pro ověření tokenu je nakonfigurovaný tak, aby používal tok
 
 ### <a name="use-postman-to-test-endpoints"></a>Použít post k testování koncových bodů
 
-Po nasazení koncového bodu SCIM můžete otestovat, abyste ověřili, že je SCIM RFC kompatibilní. Tento příklad poskytuje sadu testů v nástroji **post** za účelem ověření operací CRUD pro uživatele a skupiny, filtrování, aktualizace členství ve skupinách a zakázání uživatelů.
+Po nasazení koncového bodu SCIM můžete otestovat a ujistit se, že je SCIM kompatibilní se specifikací RFC. Tento příklad poskytuje sadu testů v nástroji **post** za účelem ověření operací CRUD pro uživatele a skupiny, filtrování, aktualizace členství ve skupinách a zakázání uživatelů.
 
 Koncové body jsou umístěné v `{host}/scim/` adresáři a lze je používat s použitím standardních požadavků HTTP. Postup změny `/scim/` trasy naleznete v tématu *ControllerConstant.cs* in **AzureADProvisioningSCIMreference**  >  **ScimReferenceApi**  >  **Controllers**.
 
@@ -206,7 +141,7 @@ A to je vše! Nyní můžete spustit kolekci **post** a otestovat funkci koncov�
 
 ## <a name="next-steps"></a>Další kroky
 
-K vývoji koncového bodu uživatele a skupiny kompatibilního s SCIM s interoperabilitou pro klienta nástroje si přečtěte téma [Implementace klienta SCIM](http://www.simplecloud.info/#Implementations2).
+Informace o vývoji koncového bodu uživatele a skupiny kompatibilního s SCIM s interoperabilitou pro klienta najdete v tématu [implementace klientů SCIM](http://www.simplecloud.info/#Implementations2).
 
 > [!div class="nextstepaction"]
 > [Kurz: vývoj a plánování zřizování pro koncový bod SCIM](use-scim-to-provision-users-and-groups.md) 

@@ -3,12 +3,12 @@ title: Přehled zálohování disku Azure
 description: Přečtěte si o řešení zálohování disku Azure.
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: d73c431fdc2b2906dc1d3d9485bded9449b2f2ba
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 4db2a5f3f02322f18fcf9203c3560905cde86996
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98733026"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98915504"
 ---
 # <a name="overview-of-azure-disk-backup-in-preview"></a>Přehled služby Azure disk Backup (ve verzi Preview)
 
@@ -53,7 +53,7 @@ Službu Azure disk Backup zvažte ve scénářích, kde:
 
 ## <a name="how-the-backup-and-restore-process-works"></a>Jak proces zálohování a obnovení funguje
 
-- Prvním krokem při konfiguraci zálohování sdílených složek Azure je vytvoření [trezoru záloh](backup-vault-overview.md). Trezor poskytuje konsolidované zobrazení záloh konfigurovaných napříč různými úlohami.
+- Prvním krokem při konfiguraci zálohování pro službu Azure Managed disks je vytvoření [trezoru záloh](backup-vault-overview.md). Trezor poskytuje konsolidované zobrazení záloh konfigurovaných napříč různými úlohami.
 
 - Pak vytvořte zásady zálohování, které vám umožní nakonfigurovat četnost zálohování a dobu uchování.
 

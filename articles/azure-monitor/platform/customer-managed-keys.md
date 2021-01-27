@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: b6836eee7e0e6ccbfa2628e0e371152f31ddf9d2
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 9d8d37e1b161dfc8344d7ff03bc0093d23f86101
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757538"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917828"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Klíč spravovaný zákazníkem v Azure Monitoru 
 
@@ -30,9 +30,6 @@ Klíč spravovaný zákazníkem se doručuje na [vyhrazené clustery](../log-que
 Data ingestovaná za posledních 14 dní jsou také uchovávána v Hot cache (zazálohovaně SSD) pro efektivní operaci dotazovacího stroje. Tato data zůstávají zašifrovaná pomocí klíčů Microsoftu bez ohledu na konfiguraci klíče spravované zákazníkem, ale vaše kontrola nad daty SSD dodržuje [odvolání klíčů](#key-revocation). Pracujeme na tom, aby data SSD zašifrovaná pomocí klíče spravovaného zákazníkem v první polovině roku 2021.
 
 Log Analytics vyhrazené clustery používají [cenový model](../log-query/logs-dedicated-clusters.md#cluster-pricing-model) rezervace kapacity od 1000 GB za den.
-
-> [!IMPORTANT]
-> Kvůli dočasnám omezením kapacity vyžadujeme před vytvořením clusteru předem jejich registraci. Použijte své kontakty do Microsoftu nebo otevřete žádost o podporu pro registraci ID předplatných.
 
 ## <a name="how-customer-managed-key-works-in-azure-monitor"></a>Jak klíč spravovaný zákazníkem funguje v Azure Monitor
 
@@ -68,7 +65,6 @@ Platí následující pravidla:
 
 ### <a name="customer-managed-key-provisioning-steps"></a>Customer-Managed kroky zřizování klíčů
 
-1. Registrace předplatného pro povolení vytvoření clusteru
 1. Vytváření Azure Key Vault a ukládání klíče
 1. Vytváření clusteru
 1. Udělování oprávnění vašemu Key Vault
@@ -107,10 +103,6 @@ Authorization: Bearer <token>
 ```
 
 ---
-
-### <a name="allowing-subscription"></a>Povoluje se předplatné
-
-Použijte své kontakty do Microsoftu nebo otevřete žádost o podporu v Log Analytics k zadání ID předplatných.
 
 ## <a name="storing-encryption-key-kek"></a>Ukládání šifrovacího klíče (KEK)
 
@@ -432,7 +424,7 @@ Customer-Managed klíč je k dispozici na vyhrazeném clusteru a tyto operace js
 
   - Pokud je vaše Key Vault v Private-Link (vNet), nemůžete použít klíč spravovaný zákazníkem s uživatelem přiřazenou spravovanou identitou. V tomto scénáři můžete použít spravovanou identitu přiřazenou systémem.
 
-## <a name="troubleshooting"></a>Odstraňování potíží
+## <a name="troubleshooting"></a>Řešení potíží
 
 - Chování při Key Vault dostupnosti
   - V normálním provozu – mezipaměť úložiště AEK na krátkou dobu a vrátí se zpět na Key Vault k pravidelnému rozbalení.

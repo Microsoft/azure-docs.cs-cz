@@ -1,14 +1,14 @@
 ---
 title: 'Kurz: ochrana nových prostředků pomocí zámků'
 description: V tomto kurzu použijete možnosti zámků prostředků Azure modrotisky jen pro čtení a neodstraňujte je k ochraně nově nasazených prostředků.
-ms.date: 08/27/2020
+ms.date: 01/27/2021
 ms.topic: tutorial
-ms.openlocfilehash: 3ed75a1dee925f2a55ac46705a171bec5fc1d30e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c671d641982ba833b54586c1b33979a97747396b
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89048566"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98915403"
 ---
 # <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>Kurz: ochrana nových prostředků pomocí zámků prostředků Azure modrotisky
 
@@ -39,22 +39,22 @@ Nejprve vytvořte definici podrobného plánu.
 
 1. Na kartě **základy** zadejte tyto informace:
 
-   - **Název**podrobného plánu: zadejte název vaší kopie ukázky podrobného plánu. V tomto kurzu použijeme název **uzamčený-storageaccount**.
-   - **Popis**podrobného plánu: přidejte popis definice podrobného plánu. Slouží **k testování uzamykání prostředků podrobného plánu u nasazených prostředků**.
+   - **Název** podrobného plánu: zadejte název vaší kopie ukázky podrobného plánu. V tomto kurzu použijeme název **uzamčený-storageaccount**.
+   - **Popis** podrobného plánu: přidejte popis definice podrobného plánu. Slouží **k testování uzamykání prostředků podrobného plánu u nasazených prostředků**.
    - **Umístění definice**: vyberte tlačítko se třemi tečkami (...) a pak vyberte skupinu pro správu nebo předplatné, do které chcete uložit definici podrobného plánu.
 
 1. V horní části stránky vyberte kartu **artefakty** nebo vyberte **Další: artefakty** v dolní části stránky.
 
 1. Přidat skupinu prostředků na úrovni předplatného:
-   1. V části **předplatné**vyberte řádek **Přidat artefakt** .
-   1. V části **Typ artefaktu**vyberte **Skupina prostředků** .
+   1. V části **předplatné** vyberte řádek **Přidat artefakt** .
+   1. V části **Typ artefaktu** vyberte **Skupina prostředků** .
    1. Nastavte **Zobrazovaný název artefaktu** na **RGtoLock**.
    1. Pole **název skupiny prostředků** a **umístění** ponechte prázdné, ale ujistěte se, že je zaškrtnuté políčko u každé vlastnosti, aby byly **dynamické parametry**.
    1. Vyberte **Přidat** a přidejte artefakt do podrobného plánu.
 
 1. Přidejte šablonu do skupiny prostředků:
    1. V položce **RGtoLock** vyberte řádek **Přidat artefakt** .
-   1. V části **Typ artefaktu**vyberte **šablonu Azure Resource Manager** , nastavte **Zobrazovaný název artefaktu** na **StorageAccount**a nechejte **Popis** prázdný.
+   1. V části **Typ artefaktu** vyberte **šablonu Azure Resource Manager** , nastavte **Zobrazovaný název artefaktu** na **StorageAccount** a nechejte **Popis** prázdný.
    1. Na kartě **Šablona** vložte do pole Editor následující šablonu ARM. Po vložení do šablony vyberte **Přidat** a přidejte artefakt do podrobného plánu.
 
    ```json
@@ -113,7 +113,7 @@ Ve vašem prostředí se teď vytvořila vaše definice podrobného plánu. Je v
 
 1. Vyberte stránku **Definice podrobných plánů** vlevo. Pomocí filtrů vyhledejte definici **storageaccount podrobného** plánu a vyberte ji.
 
-1. Nahoře na stránce vyberte **Publikovat podrobný plán**. V pravém podokně vpravo zadejte **1,0** jako **verzi**. Tato vlastnost je užitečná, pokud provedete změnu později. Zadejte **poznámky ke změnám**, jako je například **první verze publikovaná pro uzamykání prostředků nasazených v podrobném**plánu. Na konci stránky pak vyberte **Publikovat**.
+1. Nahoře na stránce vyberte **Publikovat podrobný plán**. V pravém podokně vpravo zadejte **1,0** jako **verzi**. Tato vlastnost je užitečná, pokud provedete změnu později. Zadejte **poznámky ke změnám**, jako je například **první verze publikovaná pro uzamykání prostředků nasazených v podrobném** plánu. Na konci stránky pak vyberte **Publikovat**.
 
 Tento krok umožňuje přiřadit podrobný plán k předplatnému. Po publikování definice podrobného plánu můžete provádět změny. Pokud provedete změny, je nutné publikovat definici s novou hodnotou verze ke sledování rozdílů mezi verzemi stejné definice podrobného plánu.
 
@@ -137,7 +137,7 @@ Po publikování definice podrobného plánu ji můžete přiřadit k předplatn
      - **Název přiřazení**: název je předem vyplněný na základě názvu definice podrobného plánu. Chceme, aby toto přiřazení představovalo uzamykání nové skupiny prostředků, proto změňte název přiřazení na **přiřazení-Locked-storageaccount-TestingBPLocks**.
      - **Umístění**: Vyberte oblast, ve které chcete vytvořit spravovanou identitu. Podrobný plán Azure Blueprint používá tuto spravovanou identitu k aplikaci všech artefaktů v přiřazené podrobného plánu. Další informace najdete v tématu [spravované identity pro prostředky Azure](../../../active-directory/managed-identities-azure-resources/overview.md).
        Pro tento kurz vyberte **východní USA 2**.
-     - **Verze definice**podrobného plánu: vyberte publikovanou verzi **1,0** definice podrobného plánu.
+     - **Verze definice** podrobného plánu: vyberte publikovanou verzi **1,0** definice podrobného plánu.
 
    - **Zamknout přiřazení**
 
@@ -153,7 +153,7 @@ Po publikování definice podrobného plánu ji můžete přiřadit k předplatn
 
      |Název artefaktu|Typ artefaktu|Název parametru|Hodnota|Popis|
      |-|-|-|-|-|
-     |Skupina prostředků RGtoLock|Skupina prostředků|Název|TestingBPLocks|Definuje název nové skupiny prostředků, na kterou se mají použít zámky podrobného plánu.|
+     |Skupina prostředků RGtoLock|Skupina prostředků|Name|TestingBPLocks|Definuje název nové skupiny prostředků, na kterou se mají použít zámky podrobného plánu.|
      |Skupina prostředků RGtoLock|Skupina prostředků|Umístění|Západní USA 2|Definuje umístění nové skupiny prostředků, na kterou se mají použít zámky podrobného plánu.|
      |StorageAccount|Šablona Resource Manageru|storageAccountType (StorageAccount)|Standard_GRS|SKU úložiště. Výchozí hodnota je _Standard_LRS_.|
 
@@ -187,7 +187,7 @@ Přiřazením se vytvoří skupina prostředků _TestingBPLocks_ a účet úlož
 
 1. Vyberte přiřazení odepřít a na levé straně vyberte stránku **Zamítnutá oprávnění** .
 
-   Přiřazení zamítnutí brání všem operacím s **\*** konfigurací **Akce** a, ale umožňuje přístup pro čtení s výjimkou ** \* /Read** prostřednictvím **NotActions**.
+   Přiřazení zamítnutí brání všem operacím s konfigurací **\* Akce *_ a _*** , ale umožňuje přístup pro čtení s výjimkou **\* /Read** prostřednictvím **NotActions**.
 
 1. V Azure Portal s popisem cesty vyberte **TestingBPLocks-Access Control (IAM)**. Pak na levé straně vyberte stránku **Přehled** a pak klikněte na tlačítko **Odstranit skupinu prostředků** . Zadáním názvu **TestingBPLocks** potvrďte odstranění a potom v dolní části podokna vyberte **Odstranit** .
 

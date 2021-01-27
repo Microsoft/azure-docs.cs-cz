@@ -4,14 +4,13 @@ description: V tomto článku se dozvíte, jak pomocí Update Management spravov
 services: automation
 ms.subservice: update-management
 ms.topic: conceptual
-ms.date: 07/28/2020
-ms.custom: mvc
-ms.openlocfilehash: 24dcb501872aabf9fac3da0cccc2a1af9c9b06ff
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.date: 01/27/2021
+ms.openlocfilehash: c86c9049bc0afc81f5dfd8553d2aa98cfd4b1a46
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92222366"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98915978"
 ---
 # <a name="manage-updates-and-patches-for-your-vms"></a>Správa aktualizací a oprav pro virtuální počítače
 
@@ -35,11 +34,13 @@ Update Management používá v rámci pracovního prostoru konfiguraci oboru pro
 
 Před nasazením aktualizací softwaru do počítačů Zkontrolujte výsledky vyhodnocení dodržování předpisů aktualizací pro povolené počítače. Pro každou aktualizaci softwaru se zaznamená stav dodržování předpisů a po dokončení vyhodnocení se bude shromažďovat a předávány hromadně do Azure Monitor protokolů.
 
-V počítači s Windows se kontrola kompatibility ve výchozím nastavení spouští každých 12 hodin. Kromě plánované kontroly je vyhledávání shody aktualizací zahájeno během 15 minut od agenta Log Analytics pro restartování systému Windows, před instalací aktualizace a po instalaci aktualizace. Je také důležité si projít naše doporučení týkající se [konfigurace web Windows Update klienta](configure-wuagent.md) s Update Management, aby se předešlo problémům, které brání jeho správné správě.
+V počítači s Windows se kontrola kompatibility ve výchozím nastavení spouští každých 12 hodin a inicializuje se do 15 minut od Log Analytics agenta pro Windows se restartuje. Data posouzení se pak předají do pracovního prostoru a **aktualizuje tabulku Updates** . Před a po instalaci aktualizace se provede kontrola dodržování předpisů aktualizací k identifikaci chybějících aktualizací, ale výsledky se nepoužívají k aktualizaci dat posouzení v tabulce.
+
+Je důležité si projít naše doporučení, jak [nakonfigurovat klienta web Windows Update](configure-wuagent.md) s Update Management, aby se předešlo jakýmkoli problémům, které brání jeho správné správě.
 
 U počítače se systémem Linux se kontrola dodržování předpisů provádí ve výchozím nastavení každou hodinu. Pokud je restartován agent Log Analytics pro Linux, zahájí se kontrola kompatibility do 15 minut.
 
-Výsledky dodržování předpisů jsou uvedeny v Update Management pro každý vyhodnocený počítač. Pro nový počítač s povolenou správou může trvat až 30 minut, než se na řídicím panelu zobrazí aktualizovaná data.
+Výsledky dodržování předpisů jsou uvedeny v Update Management pro každý vyhodnocený počítač. Může trvat až 30 minut, než se na řídicím panelu zobrazí aktualizovaná data z nového počítače s povolenou správou.
 
 Informace o tom, jak zobrazit výsledky dodržování předpisů, najdete v tématu [monitorování aktualizací softwaru](view-update-assessments.md) .
 

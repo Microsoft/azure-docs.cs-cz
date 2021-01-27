@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: sttsinar
-ms.openlocfilehash: 14c8584699ddc981fc24cc29b78c187288c6fb57
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 31a65cab7dfdd478560b7babba156cec7645cf33
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98203384"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917247"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>Velikosti virtuálních počítačů řady B-Series
 
@@ -27,8 +27,12 @@ Virtuální počítače řady B-Series jsou ideální pro úlohy, které nepotř
 [Migrace za provozu](maintenance-and-updates.md): podporováno<br>
 [Aktualizace pro zachování paměti](maintenance-and-updates.md): podporováno<br>
 [Podpora generování virtuálních počítačů](generation-2.md): generace 1 a 2<br>
+[Akcelerované síťové služby](../virtual-network/create-vm-accelerated-networking-cli.md): podporované * *<br>
+
+* Virtuální počítače řady B-Series jsou nenáročné, takže ACU čísla se budou lišit v závislosti na úlohách a základním využití.<br>
+* * Akcelerované síťové služby se podporují jenom pro *Standard_B12ms*, *Standard_B16ms* a *Standard_B20ms*.
 <br>
-* Virtuální počítače řady B-Series jsou nenáročné, takže ACU čísla se budou lišit v závislosti na úlohách a základním využití.
+<br>
 
 | Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Základní výkon procesoru virtuálního počítače | Maximální výkon procesoru virtuálního počítače | Počáteční kredity | Kredity v bance za hodinu | Maximální počet bank kreditů | Max. datových disků | Maximální propustnost úložiště v mezipaměti a dočasné úložiště: IOPS/MB/s | Maximální propustnost disku neuloženého v mezipaměti: IOPS/MB/s | Maximální počet síťových karet |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
@@ -59,7 +63,7 @@ Směrný plán: 270%
 
 ![Graf dat hodinových přenosů](./media/b-series-burstable/office-workload.png)
 
-| Scénář | Čas | Využití CPU (%) | Shromážděné kredity<sup>1</sup> | Dostupné kredity |
+| Scenario | Čas | Využití CPU (%) | Shromážděné kredity<sup>1</sup> | Dostupné kredity |
 | --- | --- | --- | --- | --- |
 | Nasazení B16ms | Nasazení | Nasazení  | 480 (počáteční kredity) | 480 |
 | Žádný provoz | 0:00 | 0 | 162 | 642 |
@@ -144,7 +148,7 @@ Odpověď **: B1ls** podporuje pouze systémy Linux a pokud nasazujete jinou bit
 - [Optimalizované pro výpočty](sizes-compute.md)
 - [Optimalizované pro paměť](sizes-memory.md)
 - [Optimalizované pro úložiště](sizes-storage.md)
-- [Optimalizované z hlediska GPU](sizes-gpu.md)
+- [Optimalizované z hlediska GPU.](sizes-gpu.md)
 - [Vysokovýkonné výpočetní prostředí](sizes-hpc.md)
 
 Cenová kalkulačka: [Cenová Kalkulačka](https://azure.microsoft.com/pricing/calculator/)

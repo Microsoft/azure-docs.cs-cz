@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 03/26/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 91edbbda43365b17b8276572804ba788dbee9f13
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: a808e37c0f0aae2816eb536dc43485c125354b81
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426735"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916197"
 ---
 # <a name="use-intellij-to-deploy-azure-spring-cloud-applications"></a>Použití IntelliJ k nasazování aplikací Azure Spring Cloudu
 
@@ -23,8 +23,6 @@ Modul plug-in IntelliJ pro jarní cloud Azure podporuje nasazení aplikací z N�
 Před spuštěním tohoto příkladu můžete vyzkoušet [základní rychlý Start](spring-cloud-quickstart.md).
 
 ## <a name="prerequisites"></a>Požadavky
-* [JDK 8 Azul Zulu](/java/azure/jdk/java-jdk-install?preserve-view=true&view=azure-java-stable)
-* [Maven 3.5.0 +](https://maven.apache.org/download.cgi)
 * [IntelliJ nápad, komunita/Ultimate Edition, verze 2020.1/2020.2](https://www.jetbrains.com/idea/download/#section=windows)
 
 ## <a name="install-the-plug-in"></a>Instalace modulu plug-in
@@ -69,7 +67,7 @@ Aby bylo možné nasadit nástroj do Azure, musíte se přihlásit pomocí účt
 
     ![Nasazení do Azure 2](media/spring-cloud-intellij-howto/deploy-to-azure-2.png)
 
-1. Zadejte **název aplikace**a pak klikněte na **OK**.
+1. Zadejte **název aplikace** a pak klikněte na **OK**.
 
     ![Nasadit do Azure v pořádku](media/spring-cloud-intellij-howto/deploy-to-azure-2a.png)
 
@@ -89,7 +87,7 @@ Aby bylo možné nasadit nástroj do Azure, musíte se přihlásit pomocí účt
 
 ## <a name="show-streaming-logs"></a>Zobrazit protokoly streamování
 Postup získání protokolů:
-1. Vyberte **Azure Explorer**a pak **jarní Cloud**.
+1. Vyberte **Azure Explorer** a pak **jarní Cloud**.
 1. Klikněte pravým tlačítkem na spuštěnou aplikaci.
 1. V rozevíracím seznamu vyberte možnost **protokoly streamování** .
 

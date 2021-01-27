@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: daberry
-ms.openlocfilehash: 07564955e9cfa6931e461df00ef50a237a66b9b3
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 1a0943c9f87960f9fcec074941b6e8ead81d92af
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500678"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917905"
 ---
 # <a name="ev3-and-esv3-series"></a>Řada Ev3 a Esv3
 
@@ -32,6 +32,7 @@ Funkce virtuálního počítače Ev3-Series Hyper-Threading technologie Intel®.
 [Migrace za provozu](maintenance-and-updates.md): podporováno<br>
 [Aktualizace pro zachování paměti](maintenance-and-updates.md): podporováno<br>
 [Podpora generování virtuálních počítačů](generation-2.md): generace 1<br>
+[Akcelerované síťové služby](../virtual-network/create-vm-accelerated-networking-cli.md): podporované<br>
 <br>
 
 | Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště: IOPS / čtení v MB/s / zápis v MB/s | Max. počet NIC / Šířka pásma sítě |
@@ -62,6 +63,7 @@ Funkce virtuálního počítače Esv3-Series Hyper-Threading technologie Intel®
 [Migrace za provozu](maintenance-and-updates.md): podporováno<br>
 [Aktualizace pro zachování paměti](maintenance-and-updates.md): podporováno<br>
 [Podpora generování virtuálních počítačů](generation-2.md): generace 1 a 2<br>
+[Akcelerované síťové služby](../virtual-network/create-vm-accelerated-networking-cli.md): podporované<br>
 <br>
 
 | Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost úložiště v mezipaměti a dočasné úložiště: IOPS/MB/s (velikost mezipaměti v GiB) | Propustnost shluku a dočasného úložiště v mezipaměti: IOPS/MB/s<sup>3</sup> | Maximální propustnost disku neuloženého v mezipaměti: IOPS/MB/s |  Propustnost neuloženého disku s nárůstem zatížení: IOPS/MB/s<sup>3</sup>| Maximální počet síťových karet/očekávaná šířka pásma sítě (MB/s) |
@@ -89,7 +91,7 @@ jsou k dispozici <sup>1</sup> omezené základní velikosti.
 - [Obecné účely](sizes-general.md)
 - [Optimalizované pro paměť](sizes-memory.md)
 - [Optimalizované pro úložiště](sizes-storage.md)
-- [Optimalizované z hlediska GPU](sizes-gpu.md)
+- [Optimalizované z hlediska GPU.](sizes-gpu.md)
 - [Vysokovýkonné výpočetní prostředí](sizes-hpc.md)
 - [Předchozí generace](sizes-previous-gen.md)
 - [Cenová kalkulačka](https://azure.microsoft.com/pricing/calculator/)

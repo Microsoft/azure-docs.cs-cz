@@ -3,12 +3,12 @@ title: Upgrade verze clusteru Azure Service Fabric
 description: Přečtěte si o verzích clusterů v Azure Service Fabric, včetně odkazu na nejnovější verze z blogu týmu Service Fabric.
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: cd9c4be285c68e5482f7276429dd5514c72ae135
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: a99b38a33a5bb83345898769b466ce0cab0a4d4d
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881546"
+ms.locfileid: "98918105"
 ---
 # <a name="upgrade-your-azure-service-fabric-cluster-version"></a>Upgrade verze clusteru Azure Service Fabric
 
@@ -118,10 +118,12 @@ V následující tabulce jsou uvedeny verze Service Fabric a jejich koncová dat
 | 7.1.458.* | 7.0.466.* |Menší nebo rovno verzi 4,1 |31. března 2021 |
 | 7.1.459.* | 7.0.466.* |Menší nebo rovno verzi 4,1 |31. března 2021 |
 | 7.1.503.* | 7.0.466.* |Menší nebo rovno verzi 4,1 |31. března 2021 |
+| 7.1.510.* | 7.0.466.* |Menší nebo rovno verzi 4,1 |31. března 2021 |
 | 7.2.413.* | 7.0.470.* |Menší nebo rovno verzi 4,2 |Aktuální verze, takže bez koncového data |
 | 7.2.432.* | 7.0.470.* |Menší nebo rovno verzi 4,2 |Aktuální verze, takže bez koncového data |
 | 7.2.433.* | 7.0.470.* |Menší nebo rovno verzi 4,2 |Aktuální verze, takže bez koncového data |
 | 7.2.445.* | 7.0.470.* |Menší nebo rovno verzi 4,2 |Aktuální verze, takže bez koncového data |
+| 7.2.452.* | 7.0.470.* |Menší nebo rovno verzi 4,2 |Aktuální verze, takže bez koncového data |
 
 ## <a name="supported-operating-systems"></a>Podporované operační systémy
 
@@ -198,7 +200,9 @@ Následující tabulka uvádí názvy verzí Service Fabric a jejich odpovídaj�
 | 7,1 CU5 | 7.1.458.9590 | 7.1.454.1 |
 | 7,1 CU6 | 7.1.459.9590 | 7.1.455.1 |
 | 7,1 CU8 | 7.1.503.9590 | 7.1.508.1 |
-| 7,2 RTO | 7.2.413.9590 | Neuvedeno|
+| 7,1 CU10 | 7.1.510.9590 | NA |
+| 7,2 RTO | 7.2.413.9590 | NA |
 | 7,2 CU2 | 7.2.432.9590 | 7.2.431.1 |
 | 7,2 CU3 | 7.2.433.9590 | Neuvedeno|
 | 7,2 CU4 | 7.2.445.9590 | 7.2.447.1 |
+| 7,2 CU5 | 7.2.452.9590 | 7.2.454.1 |

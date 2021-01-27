@@ -1,14 +1,14 @@
 ---
 title: 'Kurz: Správa dotazů v Azure Portal'
 description: V tomto kurzu vytvoříte dotaz na diagram prostředku a nasdílíte nový dotaz s ostatními uživateli v Azure Portal.
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: tutorial
-ms.openlocfilehash: 98d4c7d0493686a45bdfef9d85823432cb637a66
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 7240a843cfa041137b28284e396c8a4b62a81926
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057922"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916675"
 ---
 # <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>Kurz: vytvoření a sdílení dotazu na graf Azure Resource v Azure Portal
 
@@ -46,7 +46,7 @@ Soukromé dotazy jsou přístupné a viditelné pouze pro účet, který je vytv
 
    Další informace o tomto dotazu najdete v tématu [ukázky – počet virtuálních počítačů podle typu operačního systému](../samples/starter.md#count-os).
 
-1. Vyberte **Uložit** nebo **Uložit jako**, jako název zadejte **počet virtuálních počítačů podle operačního systému** , ponechte typ jako **soukromý dotaz**a potom v dolní části podokna **Uložit dotaz** vyberte **Uložit** . Název karty se změní z **dotazu 1** na **počet virtuálních počítačů podle operačního systému**.
+1. Vyberte **Uložit** nebo **Uložit jako**, jako název zadejte **počet virtuálních počítačů podle operačního systému** , ponechte typ jako **soukromý dotaz** a potom v dolní části podokna **Uložit dotaz** vyberte **Uložit** . Název karty se změní z **dotazu 1** na **počet virtuálních počítačů podle operačního systému**.
 
 1. Přesuňte se z Průzkumníka grafu prostředků Azure do Azure Portal a vraťte se k němu. Všimněte si, že uložený dotaz již není zobrazen a karta **dotazu 1** vrátila hodnotu.
 
@@ -82,13 +82,13 @@ Na rozdíl od privátního dotazu je sdílený dotaz Správce prostředkůým pr
 
 1. V podokně **Uložit dotaz** zadejte **počet virtuálních počítačů podle operačního systému** pro název.
 
-1. Změňte typ na **Shared Query**, nastavte popis na **počet virtuálních počítačů podle typu operačního systému**a nastavte **předplatné** tak, aby určovalo vytvoření prostředku dotazu.
+1. Změňte typ na **Shared Query**, nastavte popis na **počet virtuálních počítačů podle typu operačního systému** a nastavte **předplatné** tak, aby určovalo vytvoření prostředku dotazu.
 
 1. Nechejte zaškrtnuté políčko **publikovat do skupiny prostředků dotazy Resource-Graph-** a **umístění skupiny prostředků** nastavené na **(US) středozápadní USA**.
 
 1. V dolní části podokna **Uložit dotaz** vyberte **Save (Uložit** ). Název karty se změní z **dotazu 1** na **počet virtuálních počítačů podle operačního systému**. Při prvním použití skupiny prostředků **dotazování prostředků Resource-Graph** trvá uložení déle, než se očekávalo, protože se vytvořila skupina prostředků.
    
-   :::image type="content" source="../media/create-share-query/save-shared-query-window.png" alt-text="Uložte nový dotaz pomocí tlačítka Uložit." border="false":::
+   :::image type="content" source="../media/create-share-query/save-shared-query-window.png" alt-text="Uložit nový dotaz jako sdílený dotaz" border="false":::
 
    > [!NOTE] 
    > Pokud chcete zadat název existující skupiny prostředků, do které se uloží sdílený dotaz, můžete zrušit zaškrtnutí políčka **publikovat do skupiny prostředků dotazy Resource-Query-Query-** Query. Použití výchozí pojmenované skupiny prostředků pro dotazy usnadňuje zjišťování sdílených dotazů. Tím se také poukáže účel této skupiny prostředků. Můžete se ale rozhodnout vybrat existující skupinu prostředků z důvodů zabezpečení na základě stávajících oprávnění.
@@ -97,7 +97,7 @@ Na rozdíl od privátního dotazu je sdílený dotaz Správce prostředkůým pr
 
 1. Vyberte **Otevřít dotaz**. Ověřte, že typ je nastavený na **Shared Query** a že kombinace **předplatného** a **skupiny prostředků** odpovídá umístění, kam jste dotaz uložili. Položka s uloženým **počtem virtuálních počítačů podle operačního systému** se teď zobrazí v seznamu **název dotazu** . Vyberte odkaz na název uloženého dotazu, který chcete načíst na novou kartu s názvem tohoto dotazu. Jako sdílený dotaz zobrazuje na kartě vedle názvu ikonu, která označuje, že je sdílená.
 
-   :::image type="content" source="../media/create-share-query/show-saved-shared-query.png" alt-text="Uložte nový dotaz pomocí tlačítka Uložit." border="false":::
+   :::image type="content" source="../media/create-share-query/show-saved-shared-query.png" alt-text="Zobrazit sdílený dotaz s ikonou" border="false":::
 
    > [!NOTE] 
    > Když je uložený dotaz otevřený a na kartě se zobrazuje jeho název, tlačítko **Uložit** ho aktualizuje o všechny změny, které byly provedeny. Pokud chcete vytvořit nový uložený dotaz, vyberte **Uložit jako** a pokračujte, jako kdybyste ušetřili úplně nový dotaz.

@@ -1,14 +1,14 @@
 ---
 title: Ukázka srovnávacího plánu pro CIS Microsoft Azure Foundation
 description: Přehled ukázky podrobného plánu srovnávacího testu CIS Microsoft Azure Foundations Tento ukázkový podrobný plán pomáhá zákazníkům vyhodnotit konkrétní kontroly.
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: sample
-ms.openlocfilehash: 6c09e539e192db8422b25079264b9f4e8965d994
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fc9e2443cd1e413588487646d6400ae1f2185208
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005601"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918412"
 ---
 # <a name="cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>Ukázka srovnávacího plánu pro CIS Microsoft Azure Foundation
 
@@ -18,7 +18,7 @@ Ukázka podrobného plánu srovnávacího testu CIS Microsoft Azure Foundations 
 
 [Mapování doporučení Azure Policy](../../policy/samples/cis-azure-1-1-0.md) poskytuje podrobné informace o definicích zásad zahrnutých v tomto podrobném plánu a způsobu mapování těchto definic zásad na domény a **ovládací prvky** **dodržování předpisů** v CIS Microsoft Azure Foundation test v 1.1.0. Při přiřazení k architektuře jsou prostředky vyhodnocovány Azure Policym při nedodržení předpisů s přiřazenými definicemi zásad. Další informace najdete v tématu [Azure Policy](../../policy/overview.md).
 
-## <a name="deploy"></a>Nasadit
+## <a name="deploy"></a>Nasazení
 
 Pokud chcete nasadit ukázkovou srovnávací plán pro Azure modrotisky Microsoft Azure Foundation, je potřeba provést tyto kroky:
 

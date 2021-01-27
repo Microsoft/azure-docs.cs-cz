@@ -1,14 +1,14 @@
 ---
 title: Odstraňování běžných chyb
 description: Naučte se řešit problémy s vytvářením definic zásad, různých sad SDK a doplňku pro Kubernetes.
-ms.date: 12/01/2020
+ms.date: 01/26/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 6f31f6e6f8d24f83f44dc14112f1bdc90c8af859
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 0a64346188696cc7cc16d832474ec4ee6befdae2
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897067"
+ms.locfileid: "98917739"
 ---
 # <a name="troubleshoot-errors-with-using-azure-policy"></a>Řešení chyb pomocí Azure Policy
 
@@ -36,13 +36,14 @@ V definici zásad se používá nesprávný nebo neexistující alias.
 
 #### <a name="resolution"></a>Řešení
 
-Nejprve ověřte, zda má vlastnost Správce prostředků alias. Pokud chcete vyhledat dostupné aliasy, přečtěte si [Azure Policy rozšíření pro Visual Studio Code](../how-to/extension-for-vscode.md) nebo sadu SDK. Pokud alias pro vlastnost Správce prostředků neexistuje, vytvořte lístek podpory.
+Nejprve ověřte, zda má vlastnost Správce prostředků alias. Pokud chcete vyhledat dostupné aliasy, přečtěte si [Azure Policy rozšíření pro Visual Studio Code](../how-to/extension-for-vscode.md) nebo sadu SDK.
+Pokud alias pro vlastnost Správce prostředků neexistuje, vytvořte lístek podpory.
 
 ### <a name="scenario-evaluation-details-arent-up-to-date"></a>Scénář: podrobnosti o vyhodnocení nejsou aktuální.
 
 #### <a name="issue"></a>Problém
 
-Prostředek je ve stavu *Nezahájeno* nebo podrobnosti o dodržování předpisů nejsou aktuální.
+Prostředek je ve stavu _Nezahájeno_ nebo podrobnosti o dodržování předpisů nejsou aktuální.
 
 #### <a name="cause"></a>Příčina
 
@@ -90,7 +91,8 @@ Prostředek, na který očekáváte, Azure Policy pracovat, není v [protokolu a
 
 #### <a name="cause"></a>Příčina
 
-Přiřazení zásad bylo nakonfigurováno pro _zakázané_ nastavení [**enforcementMode**](../concepts/assignment-structure.md#enforcement-mode) . I když je **enforcementMode** zakázaný, není uplatnění zásad a v protokolu aktivit není žádný záznam.
+Přiřazení zásad bylo nakonfigurováno pro _zakázané_ nastavení [**enforcementMode**](../concepts/assignment-structure.md#enforcement-mode) .
+I když je **enforcementMode** zakázaný, není uplatnění zásad a v protokolu aktivit není žádný záznam.
 
 #### <a name="resolution"></a>Řešení
 
@@ -186,7 +188,7 @@ Definice zásad, které se dřív používaly v definicích konfigurace hosta De
 
 #### <a name="resolution"></a>Řešení
 
-Definice, které tento problém dříve způsobily, se jeví jako *[zastaralé]* a jsou nahrazené definicemi zásad, které spravují požadavky bez nutnosti odebírat spravované identity přiřazené uživatelem. Je vyžadován ruční krok. Odstraňte všechna existující přiřazení zásad označená jako *[nepoužívané]* a nahraďte je aktualizovanými definicemi zásad požadovaných součástí a zásad, které mají stejný název jako původní.
+Definice, které tento problém dříve způsobily, se jeví jako _\[ zastaralé \]_ a nahrazují definicemi zásad, které spravují požadavky bez nutnosti odebírat spravované identity přiřazené uživatelem. Je vyžadován ruční krok. Odstraňte všechna existující přiřazení zásad, která jsou označená jako _\[ zastaralá \]_, a nahraďte je aktualizovanými iniciativami zásad požadovaných součástí a definicemi zásad, které mají stejný název jako původní.
 
 Podrobný popis najdete v blogovém příspěvku důležité změny, které byly [vydány pro zásady auditu konfigurace hostů](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316).
 
@@ -226,7 +228,7 @@ Doplněk se nemůže připojit ke koncovému bodu služby Azure Policy a vrátí
 K této chybě dochází, pokud je v clusteru nainstalovaný příkaz _Add-pod-identity_ a _Kube – systémová_ lusky nejsou vyloučené v _AAD-pod-identity_.
 
 Lusky NMI (uzel komponenty _AAD-pod-identity_ Managed identity) upraví uzly softwaru iptables tak, aby zachytil volání koncového bodu metadat instance Azure. Tato instalace znamená, že všechny žádosti, které se provedou na koncový bod metadat, jsou zachyceny NMI, a to i v případě, že bod pod nepoužívá _identitu AAD-pod-identity_.
-*AzurePodIdentityException* CUSTOMRESOURCEDEFINITION (CRD) je možné nakonfigurovat tak, aby informovala _AAD-pod-identity_ , že všechny požadavky na koncový bod metadat, které pocházejí z pod, odpovídají popiskům definovaným v CRD by měly být proxy bez jakéhokoli zpracování v NMI.
+_AzurePodIdentityException_ CUSTOMRESOURCEDEFINITION (CRD) je možné nakonfigurovat tak, aby informovala _AAD-pod-identity_ , že všechny požadavky na koncový bod metadat, které pocházejí z pod, odpovídají popiskům definovaným v CRD by měly být proxy bez jakéhokoli zpracování v NMI.
 
 #### <a name="resolution"></a>Řešení
 
@@ -264,11 +266,11 @@ spec:
 Doplněk se může připojit ke koncovému bodu služby Azure Policy, ale v protokolech doplňku se zobrazí jedna z následujících chyb:
 
 - `The resource provider 'Microsoft.PolicyInsights' is not registered in subscription '{subId}'. See
-https://aka.ms/policy-register-subscription for how to register subscriptions.`
+  https://aka.ms/policy-register-subscription for how to register subscriptions.`
 
 - `policyinsightsdataplane.BaseClient#CheckDataPolicyCompliance: Failure responding to request:
-StatusCode=500 -- Original Error: autorest/azure: Service returned an error. Status=500
-Code="InternalServerError" Message="Encountered an internal server error.`
+  StatusCode=500 -- Original Error: autorest/azure: Service returned an error. Status=500
+  Code="InternalServerError" Message="Encountered an internal server error.`
 
 #### <a name="cause"></a>Příčina
 

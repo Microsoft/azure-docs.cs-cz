@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 65aab240dd0be97aafa370883aa953f8eb766cf2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b3419b54fa18058583d81909f7fca0f20dc4b0dd
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91650744"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917129"
 ---
 # <a name="av2-series"></a>Av2-series
 
@@ -24,6 +24,7 @@ Virtuální počítače řady Av2-Series je možné nasadit na nejrůznější t
 [Migrace za provozu](maintenance-and-updates.md): podporováno <br>
 [Aktualizace pro zachování paměti](maintenance-and-updates.md): podporováno <br>
 [Podpora generování virtuálních počítačů](generation-2.md): generace 1 <br>
+[Akcelerované síťové služby](../virtual-network/create-vm-accelerated-networking-cli.md): nepodporováno<br>
 <br>
 
 | Velikost | Virtuální jádro | Paměť: GiB | Dočasné úložiště (SSD): GiB | Maximální propustnost dočasného úložiště: IOPS/čtení MB/s/zápis MB/s | Maximální počet datových disků/propustnost: IOPS | Maximální počet síťových karet | Očekávaná šířka pásma sítě (MB/s)
@@ -43,7 +44,7 @@ Virtuální počítače řady Av2-Series je možné nasadit na nejrůznější t
 - [Obecné účely](sizes-general.md)
 - [Optimalizované pro paměť](sizes-memory.md)
 - [Optimalizované pro úložiště](sizes-storage.md)
-- [Optimalizované z hlediska GPU](sizes-gpu.md)
+- [Optimalizované z hlediska GPU.](sizes-gpu.md)
 - [Vysokovýkonné výpočetní prostředí](sizes-hpc.md)
 - [Předchozí generace](sizes-previous-gen.md)
 

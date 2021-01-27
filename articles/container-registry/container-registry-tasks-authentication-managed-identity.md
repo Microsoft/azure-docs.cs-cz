@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 01/14/2020
 ms.author: danlep
-ms.openlocfilehash: f3294698f6973437a23fab798e8daf5642cc9b49
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8f2749a18a5ac6aed0822553d59beaacc9060228
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77111763"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98915943"
 ---
 # <a name="use-an-azure-managed-identity-in-acr-tasks"></a>Použití identity spravované v Azure v ACR úlohách 
 
@@ -58,7 +58,7 @@ Pokud chcete povolit identitu přiřazenou systémem, předejte `--assign-identi
 az acr task create \
     --image hello-world:{{.Run.ID}} \
     --name hello-world --registry MyRegistry \
-    --context https://github.com/Azure-Samples/acr-build-helloworld-node.git \
+    --context https://github.com/Azure-Samples/acr-build-helloworld-node.git#main \
     --file Dockerfile \
     --commit-trigger-enabled false \
     --assign-identity
@@ -70,7 +70,7 @@ Pokud chcete povolit uživatelsky přiřazenou identitu, předejte jí `--assign
 az acr task create \
     --image hello-world:{{.Run.ID}} \
     --name hello-world --registry MyRegistry \
-    --context https://github.com/Azure-Samples/acr-build-helloworld-node.git \
+    --context https://github.com/Azure-Samples/acr-build-helloworld-node.git#main \
     --file Dockerfile \
     --commit-trigger-enabled false
     --assign-identity <resourceID>
@@ -84,7 +84,7 @@ ID prostředku identity můžete získat spuštěním příkazu [AZ identity sho
 
 ### <a name="3-grant-the-identity-permissions-to-access-other-azure-resources"></a>3. udělte identitám oprávnění k přístupu k dalším prostředkům Azure.
 
-V závislosti na požadavcích úlohy udělte oprávnění identitě přístup k dalším prostředkům Azure. Příklady:
+V závislosti na požadavcích úlohy udělte oprávnění identitě přístup k dalším prostředkům Azure. Mezi příklady patří:
 
 * Přiřaďte spravované identitě roli s oprávněním Pull, push a pull nebo jinými oprávněními k cílovému registru kontejneru v Azure. Úplný seznam rolí registru najdete v tématu [Azure Container Registry role a oprávnění](container-registry-roles.md). 
 * Přiřaďte roli spravované identity pro čtení tajných klíčů v trezoru klíčů Azure.
@@ -115,7 +115,7 @@ az acr task credential add \
     --use-identity [system]
 ```
 
-Chcete-li přidat pověření pro uživatelem přiřazenou identitu pro ověření pomocí registru *targetregistry*, předejte `use-identity` hodnotu *ID klienta* identity. Například:
+Chcete-li přidat pověření pro uživatelem přiřazenou identitu pro ověření pomocí registru *targetregistry*, předejte `use-identity` hodnotu *ID klienta* identity. Příklad:
 
 ```azurecli
 az acr task credential add \

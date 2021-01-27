@@ -1,14 +1,14 @@
 ---
 title: 'Rychlý Start: vytvoření podrobného plánu na portálu'
 description: V tomto rychlém startu použijete Azure modrotisky k vytváření, definování a nasazování artefaktů prostřednictvím Azure Portal.
-ms.date: 08/27/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: bb9aeb4d4b96227f7bf7296854c56df4058fbe69
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 75a4e9deca4859ac8b9f302fcb62ecc1d12dd8c9
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022526"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918326"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Rychlý Start: definování a přiřazení podrobného plánu na portálu
 
@@ -145,7 +145,7 @@ Jako první krok při definování standardního vzoru pro dodržování předpi
 
    :::image type="content" source="./media/create-blueprint-portal/add-resource-manager-template.png" alt-text="Snímek obrazovky s možnostmi artefaktu šablony Správce prostředků pro přidání do definice podrobného plánu" border="false":::
 
-1. Váš konečný plán by měl vypadat podobně jako v následujícím příkladu. Všimněte si, že každý artefakt má ve sloupci **Parameters** **_x_ naplněný parametr _y_** . Dynamické parametry se nastavují při každém přiřazení podrobného plánu.
+1. Váš konečný plán by měl vypadat podobně jako v následujícím příkladu. Všimněte si, že každý artefakt má ve sloupci **Parameters** **naplněný parametr _y_** . Dynamické parametry se nastavují při každém přiřazení podrobného plánu.
 
    :::image type="content" source="./media/create-blueprint-portal/completed-blueprint.png" alt-text="Snímek obrazovky dokončené definice podrobného plánu s každým typem artefaktu" border="false":::
 
@@ -206,7 +206,7 @@ Po publikování se plán dá přiřadit k předplatnému. Přiřaďte podrobný
 
 1. Na stránce **přiřadit podrobný plán** vyberte v rozevíracím seznamu **odběr** odběry, do kterých chcete nasadit tento plán.
 
-   Pokud jsou v rámci [fakturace Azure](../../cost-management-billing/index.yml)dostupné podporované nabídky Enterprise, v poli **předplatné** se aktivuje odkaz **vytvořit nový** . Postupujte takto:
+   Pokud jsou v rámci [fakturace Azure](../../cost-management-billing/index.yml)dostupné podporované nabídky Enterprise, v poli **předplatné** se aktivuje odkaz **vytvořit nový** . Postupujte následovně:
 
    1. Vyberte odkaz **vytvořit nový** pro vytvoření nového předplatného místo výběru stávajících.
 

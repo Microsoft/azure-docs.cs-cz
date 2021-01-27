@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 01/17/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 80e6dbdc02b68c279452127933532106b0f78ab8
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 96a72dbc0e45ebd50a49000ae66e3713cb28aa9a
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654655"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916913"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Registrace aplikace SAML v Azure AD B2C
 
@@ -36,7 +36,7 @@ Azure AD B2C dosahuje interoperability SAML jedním ze dvou způsobů:
 
 Shrnutí dvou scénářů, které nejsou exkluzivní, pomocí SAML:
 
-| Scénář | Role Azure AD B2C | Postupy |
+| Scenario | Role Azure AD B2C | Postupy |
 | -------- | ----------------- | ------- |
 | Moje aplikace očekává pro dokončení ověřování kontrolní výraz SAML. | **Azure AD B2C funguje jako zprostředkovatel identity (IdP).**<br />Azure AD B2C funguje jako IdP SAML pro aplikace. | Tento článek. |
 | Moji uživatelé potřebují jednotné přihlašování pomocí zprostředkovatele identity kompatibilního s SAML, jako je ADFS, Salesforce nebo Shibboleth.  | **Azure AD B2C funguje jako poskytovatel služeb (SP).**<br />Azure AD B2C slouží jako poskytovatel služeb při připojování k poskytovateli identity SAML. Jedná se o federační proxy mezi vaší aplikací a poskytovatelem identity SAML.  | <ul><li>[Nastavení přihlášení pomocí služby ADFS jako IdP SAML pomocí vlastních zásad](identity-provider-adfs.md)</li><li>[Nastavení přihlašování pomocí poskytovatele služby Salesforce SAML pomocí vlastních zásad](identity-provider-salesforce-saml.md)</li></ul> |
@@ -71,28 +71,9 @@ Chcete-li vytvořit vztah důvěryhodnosti mezi vaším poskytovatelem služeb a
 
 Můžete použít certifikát vydaný veřejnou certifikační autoritou nebo pro tento kurz certifikát podepsaný svým držitelem.
 
-### <a name="11-prepare-a-self-signed-certificate"></a>1,1 Příprava certifikátu podepsaného svým držitelem
+### <a name="11-create-a-self-signed-certificate"></a>1,1 Vytvoření certifikátu podepsaného svým držitelem
 
-Pokud ještě certifikát nemáte, můžete pro tento kurz použít certifikát podepsaný svým držitelem. Ve Windows můžete k vygenerování certifikátu použít rutinu [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) prostředí PowerShell.
-
-1. Spuštěním tohoto příkazu PowerShellu Vygenerujte certifikát podepsaný svým držitelem. Upravte `-Subject` argument podle potřeby pro vaši aplikaci a Azure AD B2C název tenanta. Můžete také upravit `-NotAfter` Datum a zadat jiné vypršení platnosti certifikátu.
-
-    ```PowerShell
-    New-SelfSignedCertificate `
-        -KeyExportPolicy Exportable `
-        -Subject "CN=yourappname.yourtenant.onmicrosoft.com" `
-        -KeyAlgorithm RSA `
-        -KeyLength 2048 `
-        -KeyUsage DigitalSignature `
-        -NotAfter (Get-Date).AddMonths(12) `
-        -CertStoreLocation "Cert:\CurrentUser\My"
-    ```
-
-1. Otevřete **Spravovat uživatelské certifikáty**  >  **aktuální uživatel**  >  **osobní**  >  **certifikáty**  >  *YourAppName.yourtenant.onmicrosoft.com* .
-1. Vyberte certifikát > **akci**  >  **všechny úkoly**  >  **exportovat** .
-1. Vyberte **Ano**  >    >  **, další Ano, exportovat privátní klíč**  >  **Další** .
-1. Přijměte výchozí hodnoty pro **Formát souboru pro export** .
-1. Zadejte heslo pro certifikát.
+[!INCLUDE [active-directory-b2c-create-self-signed-certificate](../../includes/active-directory-b2c-create-self-signed-certificate.md)]
 
 ### <a name="12-upload-the-certificate"></a>1,2 Nahrajte certifikát.
 

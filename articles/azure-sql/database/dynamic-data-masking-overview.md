@@ -12,12 +12,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 01/25/2021
 tags: azure-synpase
-ms.openlocfilehash: 0f92d8dbfe423efa58231831fe012a27e45f9208
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: b10b00e724324779eb753bfefccce77a5eb2a39d
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98787684"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918073"
 ---
 # <a name="dynamic-data-masking"></a>Dynamické maskování dat 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -26,7 +26,7 @@ Azure SQL Database, Azure SQL Managed instance a Azure synapse Analytics podporu
 
 Dynamické maskování dat pomáhá předcházet neoprávněnému přístupu k citlivým datům tím, že uživatelům umožňuje určit, kolik citlivých dat se může odhalit, aby to mělo minimální dopad na aplikační vrstvu. Je to funkce zabezpečení založená na zásadách, která skrývá citlivá data v sadě výsledků dotazu nad určenými poli databáze, zatímco data v databázi se nemění.
 
-Například zástupce služby v centru volání může identifikovat volající více číslic e-mailové adresy, ale tyto datové položky by se zástupci služby neměli plně zveřejnit. Je možné definovat pravidlo maskování, které maskuje veškerou e-mailovou adresu v sadě výsledků dotazu. Dalším příkladem je, že je možné definovat vhodnou masku dat pro ochranu osobních údajů, aby se vývojář mohl dotazovat na produkční prostředí, aniž by narušila předpisy pro dodržování předpisů.
+Například zástupce služby v centru volání může identifikovat volající potvrzením několika znaků své e-mailové adresy, ale k zástupci služby by neměl být k dispozici úplná e-mailová adresa. Je možné definovat pravidlo maskování, které maskuje veškerou e-mailovou adresu v sadě výsledků dotazu. Dalším příkladem je, že je možné definovat vhodnou masku dat pro ochranu osobních údajů, aby se vývojář mohl dotazovat na produkční prostředí, aniž by narušila předpisy pro dodržování předpisů.
 
 ## <a name="dynamic-data-masking-basics"></a>Základy dynamického maskování dat
 

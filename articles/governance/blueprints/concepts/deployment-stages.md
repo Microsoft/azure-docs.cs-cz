@@ -1,14 +1,14 @@
 ---
 title: Fáze nasazení podrobného plánu
-description: Seznamte se s postupy souvisejícími se zabezpečením a artefaktem, které procházejí službami Azure modrotisky během vytváření přiřazení podrobného plánu.
-ms.date: 08/27/2020
+description: Seznamte se s kroky souvisejícími s zabezpečením a artefakty, které služby Azure modrotisky procházejí během vytváření přiřazení podrobného plánu.
+ms.date: 01/27/2021
 ms.topic: conceptual
-ms.openlocfilehash: 73d5d67cf77d4ccc48517c895630b8299081e2e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e686dec1c9d79e42dafee17d8a937284aac4fdd6
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89049770"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918547"
 ---
 # <a name="stages-of-a-blueprint-deployment"></a>Fáze nasazení podrobného plánu
 
@@ -35,7 +35,7 @@ Služba Azure Modrotiskys neimplementuje přímo prostředky.
 
 Uživatel, skupina nebo instanční objekt přiřadí k předplatnému plán. Objekt přiřazení existuje na úrovni předplatného, ve které byl plán plánu přiřazen. Prostředky vytvořené nasazením se neprovádí v kontextu nasazování entity.
 
-Při vytváření přiřazení podrobného plánu se zvolí typ [spravované identity](../../../active-directory/managed-identities-azure-resources/overview.md) . Výchozím nastavením je spravovaná identita **přiřazená systémem** . Může být zvolena spravovaná identita **přiřazená uživatelem** . Při použití spravované identity **přiřazené uživatelem** musí být definováno a uděleno oprávnění před vytvořením přiřazení podrobného plánu. Pro vytvoření [Owner](../../../role-based-access-control/built-in-roles.md#owner) [Blueprint Operator](../../../role-based-access-control/built-in-roles.md#blueprint-operator) `blueprintAssignment/write` přiřazení, které používá **uživatelem přiřazenou** identitu, musí mít předdefinované role jak vlastní, tak i operátor podrobného plánu.
+Při vytváření přiřazení podrobného plánu se zvolí typ [spravované identity](../../../active-directory/managed-identities-azure-resources/overview.md) . Výchozím nastavením je spravovaná identita **přiřazená systémem** . Může být zvolena spravovaná identita **přiřazená uživatelem** . Při použití spravované identity **přiřazené uživatelem** musí být definováno a uděleno oprávnění před vytvořením přiřazení podrobného plánu. Pro vytvoření [](../../../role-based-access-control/built-in-roles.md#owner) [](../../../role-based-access-control/built-in-roles.md#blueprint-operator) `blueprintAssignment/write` přiřazení, které používá **uživatelem přiřazenou** identitu, musí mít předdefinované role jak vlastní, tak i operátor podrobného plánu.
 
 ## <a name="optional---azure-blueprints-creates-system-assigned-managed-identity"></a>Volitelné – Azure modrotisky vytvoří spravovanou identitu přiřazenou systémem.
 

@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak vytvořit a nakonfigurovat trezor
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
-ms.openlocfilehash: 3ba9f47da4a4c9719c313ba196ca121f8cde54ad
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 51d095ab68bc9277cb610bd226039ffbde8d7ddf
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387730"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98915722"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Vytvoření a konfigurace trezoru Recovery Services
 
@@ -46,9 +46,9 @@ Možnost obnovení **(crr) pro obnovení mezi oblastmi** vám umožňuje obnovit
 
 Podporuje následující zdroje dat:
 
-- Virtuální počítače Azure
-- Databáze SQL hostované na virtuálních počítačích Azure
-- SAP HANA databází hostovaných na virtuálních počítačích Azure
+- Virtuální počítače Azure (všeobecně dostupné)
+- Databáze SQL hostované na virtuálních počítačích Azure (Preview)
+- SAP HANA databází hostovaných na virtuálních počítačích Azure (Preview)
 
 Použití obnovení mezi oblastmi vám umožní:
 
@@ -65,11 +65,12 @@ Vzhledem k tomu, že tento proces je na úrovni úložiště, jsou k dispozici [
 >Než začnete:
 >
 >- Seznam podporovaných spravovaných typů a oblastí najdete v [matici podpory](backup-support-matrix.md#cross-region-restore) .
->- Funkce obnovení mezi oblastmi (CRR) je teď v současnosti zobrazená ve všech veřejných oblastech Azure.
+>- Funkce obnovení mezi oblastmi (CRR) pro virtuální počítače Azure je teď obecně dostupná ve všech veřejných oblastech Azure.
+>- Obnovení mezi oblastmi pro SQL a SAP HANA databáze je ve verzi Preview ve všech veřejných oblastech Azure.
 >- CRR je funkce výslovných přihlášení na úrovni trezoru pro libovolný trezor GRS (ve výchozím nastavení vypnutý).
 >- Po odsouhlasení může trvat až 48 hodin, než se zálohované položky zpřístupní v sekundárních oblastech.
 >- V současné době se CRR pro virtuální počítače Azure podporují jenom pro virtuální počítače Azure Resource Manageru Azure. Klasické virtuální počítače Azure se nepodporují.  Když další typy správy podporují CRR, pak se **automaticky** zaregistrují.
->- Obnovení mezi oblastmi se v tuto chvíli nedá vrátit zpátky na GRS nebo LRS, jakmile se ochrana poprvé iniciuje.
+>- Obnovení mezi oblastmi se v tuto **chvíli nedá vrátit zpátky** na GRS nebo LRS, jakmile se ochrana poprvé iniciuje.
 
 ### <a name="configure-cross-region-restore"></a>Konfigurace obnovení mezi oblastmi
 

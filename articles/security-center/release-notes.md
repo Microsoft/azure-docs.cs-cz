@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/25/2021
+ms.date: 01/27/2021
 ms.author: memildin
-ms.openlocfilehash: ee9a20d3e5bb6974676d6d7a8285a56247756f64
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 5dd58dd5f43481184b17ca4bdd694a1df76697db
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98784939"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916455"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Co je nového v Azure Security Center?
 
@@ -46,6 +46,7 @@ Aktualizace v lednu zahrnují:
 - [35 doporučení verze Preview pro zvýšení pokrytí srovnávacího testu zabezpečení Azure](#35-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark)
 - [Export filtrovaných seznamů doporučení CSV](#csv-export-of-filtered-list-of-recommendations)
 - [Prostředky, které se nepoužívají, teď v Azure Policy posouzení hlásí jako "kompatibilní".](#not-applicable-resources-now-reported-as-compliant-in-azure-policy-assessments)
+- [Exportovat týdenní snímky bezpečných bodů a dat dodržování předpisů pomocí průběžného exportu (Preview)](#export-weekly-snapshots-of-secure-score-and-regulatory-compliance-data-with-continuous-export-preview)
 
 
 ### <a name="azure-security-benchmark-is-now-the-default-policy-initiative-for-azure-security-center"></a>Test zabezpečení Azure je teď výchozí iniciativou zásad pro Azure Security Center
@@ -224,6 +225,18 @@ Dříve byly vyhodnoceny prostředky, které byly vyhodnoceny pro doporučení a
 Jediný dopad bude zobrazen v Azure Policy, kde se zvýší počet odpovídajících prostředků. Vaše zabezpečené skóre v Azure Security Center nebude nijak ovlivněno.
 
 
+### <a name="export-weekly-snapshots-of-secure-score-and-regulatory-compliance-data-with-continuous-export-preview"></a>Exportovat týdenní snímky bezpečných bodů a dat dodržování předpisů pomocí průběžného exportu (Preview)
+
+Přidali jsme novou funkci Preview do nástrojů [průběžného exportu](continuous-export.md) pro export týdenních snímků zabezpečených bodů a dat dodržování předpisů pro legislativní účely.
+
+Při definování průběžného exportu nastavte četnost exportu:
+
+:::image type="content" source="media/release-notes/export-frequency.png" alt-text="Volba frekvence průběžného exportu":::
+
+- **Streamování** – posouzení se budou posílat v reálném čase, když se aktualizuje stav prostředku (Pokud nedojde k žádným aktualizacím, nebudou se posílat žádná data).
+- **Snímky** – snímek aktuálního stavu všech vyhodnocení dodržování předpisů v legislativě se pošle každý týden (Tato funkce je ve verzi Preview pro týdenní snímky zabezpečených výsledků a dat dodržování předpisů v legislativě).
+
+Další informace o plných schopnostech této funkce při [průběžném exportu Security Center dat](continuous-export.md)
 
 ## <a name="december-2020"></a>Prosinec 2020
 
@@ -571,7 +584,7 @@ Další informace najdete v [Odebrání standardu z řídicího panelu](update-r
 
 Azure Resource Graph je služba v Azure, která je navržená tak, aby poskytovala efektivní průzkum prostředků s možností škálování v rámci dané sady předplatných, abyste mohli efektivně řídit vaše prostředí. 
 
-Pro Azure Security Center můžete použít ARG a [KQL (Kusto Query Language)](/azure/data-explorer/kusto/query/) k dotazování široké škály dat stav zabezpečení. Například:
+Pro Azure Security Center můžete použít ARG a [KQL (Kusto Query Language)](/azure/data-explorer/kusto/query/) k dotazování široké škály dat stav zabezpečení. Příklad:
 
 - Využití inventáře prostředků (ARG)
 - Popsali jsme vzorový ARGický dotaz pro [identifikaci účtů bez povoleného vícefaktorového ověřování (MFA)](security-center-identity-access.md#identify-accounts-without-multi-factor-authentication-mfa-enabled) .
