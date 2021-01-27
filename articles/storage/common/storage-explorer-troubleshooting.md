@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: 4e87e99f16a89cab95f9bd07b75b80f1c13d47f1
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 9a20db58846ca48afb4fb256adae58e1fccdff3a
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900650"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98875732"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Průvodce odstraňováním potíží s Průzkumníkem služby Azure Storage
 
@@ -70,13 +70,13 @@ U jiných typů prostředků momentálně nepoužíváme řešení související
 ### <a name="recommended-azure-built-in-roles"></a>Doporučené předdefinované role Azure
 
 K dispozici je několik předdefinovaných rolí Azure, které mohou poskytnout oprávnění potřebná k použití Průzkumník služby Storage. Některé z těchto rolí:
-- [Vlastník](/azure/role-based-access-control/built-in-roles#owner): Správa všeho, včetně přístupu k prostředkům.
-- [Přispěvatel](/azure/role-based-access-control/built-in-roles#contributor): umožňuje spravovat všechno, kromě přístupu k prostředkům.
-- [Čtenář](/azure/role-based-access-control/built-in-roles#reader): čtení a výpis prostředků
-- [Přispěvatel účtu úložiště](/azure/role-based-access-control/built-in-roles#storage-account-contributor): plná Správa účtů úložiště.
-- [Vlastník dat objektu BLOB úložiště](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner): úplný přístup k Azure Storage kontejnerů a dat objektů BLOB.
-- [Přispěvatel dat objektu BLOB služby Storage](/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor): číst, zapisovat a odstraňovat Azure Storage kontejnery a objekty blob.
-- [Čtečka dat objektů BLOB služby Storage](/azure/role-based-access-control/built-in-roles#storage-blob-data-reader): čtení a výpis Azure Storage kontejnerů a objektů BLOB.
+- [Vlastník](../../role-based-access-control/built-in-roles.md#owner): Správa všeho, včetně přístupu k prostředkům.
+- [Přispěvatel](../../role-based-access-control/built-in-roles.md#contributor): umožňuje spravovat všechno, kromě přístupu k prostředkům.
+- [Čtenář](../../role-based-access-control/built-in-roles.md#reader): čtení a výpis prostředků
+- [Přispěvatel účtu úložiště](../../role-based-access-control/built-in-roles.md#storage-account-contributor): plná Správa účtů úložiště.
+- [Vlastník dat objektu BLOB úložiště](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner): úplný přístup k Azure Storage kontejnerů a dat objektů BLOB.
+- [Přispěvatel dat objektu BLOB služby Storage](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor): číst, zapisovat a odstraňovat Azure Storage kontejnery a objekty blob.
+- [Čtečka dat objektů BLOB služby Storage](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader): čtení a výpis Azure Storage kontejnerů a objektů BLOB.
 
 > [!NOTE]
 > Role přispěvatele vlastník, přispěvatel a účet úložiště udělují přístup k klíči účtu.

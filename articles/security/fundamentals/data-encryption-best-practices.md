@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/09/2020
 ms.author: terrylan
-ms.openlocfilehash: 3808da24c1baf6dd6e3332d4bd26fd176b761c65
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 414445f90c3be4c55166f6a0ecead25074d6ed74
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196074"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98874109"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Osvědčené postupy šifrování a zabezpečení dat v Azure
 Tento článek popisuje osvědčené postupy pro zabezpečení a šifrování dat.
@@ -102,7 +102,7 @@ U dat, která se přesouvají mezi vaší místní infrastrukturou a prostředí
 Níže jsou uvedené osvědčené postupy, které jsou specifické pro používání Azure VPN Gateway, SSL/TLS a HTTPS.
 
 **Osvědčený postup**: zabezpečený přístup z několika pracovních stanic místně umístěných do virtuální sítě Azure.   
-**Podrobnosti**: použijte [VPN typu Site-to-site](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md).
+**Podrobnosti**: použijte [VPN typu Site-to-site](../../vpn-gateway/tutorial-site-to-site-portal.md).
 
 **Osvědčený postup**: zabezpečený přístup z jednotlivých pracovních stanic místně umístěných do virtuální sítě Azure.   
 **Podrobnosti**: použijte [VPN typu Point-to-site](../../vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal.md).

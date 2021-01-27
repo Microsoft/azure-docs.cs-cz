@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/22/2020
-ms.openlocfilehash: 3ba43b83166b5548dee4ea4e52c7411db48d23f5
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 62ca32ab4e348e1488fbb87672e582436b91d05d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567278"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98875005"
 ---
 # <a name="register-and-scan-azure-synapse-analytics"></a>Registrace a kontrola Azure synapse Analytics
 
@@ -45,7 +45,7 @@ Existují tři způsoby, jak nastavit ověřování pro Azure synapse Analytics:
 
 ### <a name="managed-identity-recommended"></a>Spravovaná identita (doporučeno) 
    
-Váš účet dosah má svou vlastní spravovanou identitu, která je v podstatě vaším dosah názvem. Musíte vytvořit uživatele služby Azure AD ve službě Azure synapse Analytics (dříve SQL DW) s přesným názvem spravované identity dosah podle požadavků a kurzu [vytváření uživatelů Azure AD pomocí aplikací Azure AD](/azure/azure-sql/database/authentication-aad-service-principal-tutorial).
+Váš účet dosah má svou vlastní spravovanou identitu, která je v podstatě vaším dosah názvem. Musíte vytvořit uživatele služby Azure AD ve službě Azure synapse Analytics (dříve SQL DW) s přesným názvem spravované identity dosah podle požadavků a kurzu [vytváření uživatelů Azure AD pomocí aplikací Azure AD](../azure-sql/database/authentication-aad-service-principal-tutorial.md).
 
 Příklad syntaxe SQL pro vytvoření uživatele a udělení oprávnění:
 
@@ -87,7 +87,7 @@ Je potřeba získat ID aplikace a tajný kód pro instanční objekt:
 
 #### <a name="granting-the-service-principal-access-to-your-azure-synapse-analytics-formerly-sql-dw"></a>Udělení přístupu instančního objektu ke službě Azure synapse Analytics (dříve SQL DW)
 
-Kromě toho musíte také vytvořit uživatele služby Azure AD ve službě Azure synapse Analytics podle požadavků a kurzu [vytváření uživatelů Azure AD pomocí aplikací Azure AD](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-service-principal-tutorial). Příklad syntaxe SQL pro vytvoření uživatele a udělení oprávnění:
+Kromě toho musíte také vytvořit uživatele služby Azure AD ve službě Azure synapse Analytics podle požadavků a kurzu [vytváření uživatelů Azure AD pomocí aplikací Azure AD](../azure-sql/database/authentication-aad-service-principal-tutorial.md). Příklad syntaxe SQL pro vytvoření uživatele a udělení oprávnění:
 
 ```sql
 CREATE USER [ServicePrincipalName] FROM EXTERNAL PROVIDER
@@ -140,4 +140,3 @@ Na obrazovce **Registrovat zdroje (Azure synapse Analytics)** udělejte toto:
 
 - [Procházet Azure dosah Data Catalog](how-to-browse-catalog.md)
 - [Hledání ve službě Azure dosah Data Catalog](how-to-search-catalog.md)
-

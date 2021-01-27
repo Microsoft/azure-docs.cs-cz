@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 37753265afa7e76e87dbcdc5893595bea66798f4
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 4e9c84efe7b96cf61a69c54e3f5ecbc469ac7d8d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610246"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98874138"
 ---
 # <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>Příprava aplikace pro nasazení v jarním cloudu Azure
 
@@ -151,7 +151,7 @@ Jarní spouštěcí verze | Jarní cloudová verze
 2.4.1 + | 2020.0.0
 
 > [!NOTE]
-> Zjistili jsme problém se jarním spouštěním 2.4.0 při ověřování TLS mezi vašimi aplikacemi a Eureka, použijte prosím 2.4.1 nebo vyšší. Pokud si nejste s používáním 2.4.0, přečtěte si naše [Nejčastější dotazy týkající](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-faq?pivots=programming-language-java#development) se řešení.
+> Zjistili jsme problém se jarním spouštěním 2.4.0 při ověřování TLS mezi vašimi aplikacemi a Eureka, použijte prosím 2.4.1 nebo vyšší. Pokud si nejste s používáním 2.4.0, přečtěte si naše [Nejčastější dotazy týkající](./spring-cloud-faq.md?pivots=programming-language-java#development) se řešení.
 
 ### <a name="dependencies-for-spring-boot-version-2223"></a>Závislosti pro jaře Boot verze 2.2/2.3
 

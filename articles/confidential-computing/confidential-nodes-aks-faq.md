@@ -6,12 +6,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: amgowda
-ms.openlocfilehash: b4b6c04a1e35031387a006b6350ebf6cbe502fee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 51e2095b0df8fdc965926c6c612c45f582c9b9d2
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90995885"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98874480"
 ---
 # <a name="frequently-asked-questions-about-confidential-computing-nodes-on-azure-kubernetes-service-aks"></a>Nejčastější dotazy týkající se důvěrných výpočetních uzlů ve službě Azure Kubernetes (AKS)
 
@@ -24,6 +24,10 @@ Smlouva SLA není k dispozici ve verzi Preview produktu, jak je [zde](https://az
 ## <a name="what-is-attestation-and-how-can-we-do-attestation-of-apps-running-in-enclaves"></a>Co je ověření identity a jak můžeme ověřit platnost aplikací běžících v enclaves? 
 
 Ověření identity je proces demonstrace a ověření, že se na konkrétní hardwarovou platformu správně vytvořila součást softwaru. Zajišťuje také, že je možné prokázat jejich důkaz, aby bylo zajištěno, že je spuštěn na zabezpečené platformě a nebylo manipulováno s. [Přečtěte si další](attestation.md) informace o tom, jak se ověřování provádí pro aplikace enklávy.
+
+## <a name="can-i-enable-accelerated-networking-with-azure-confidential-computing-aks-clusters"></a>Můžu povolit akcelerovanou síť s clustery s důvěrnými výpočetními AKS Azure? 
+
+Ne. Akcelerované sítě se v tajných uzlech na AKS nepodporují. Ujistěte se, že je ve vašem nasazení zakázané urychlené síťové služby. 
 
 ## <a name="can-i-bring-my-existing-containerized-applications-and-run-it-on-aks-with-azure-confidential-computing"></a>Můžu přenášet své stávající aplikace do kontejnerů a spouštět je v AKS s důvěrným výpočetním prostředím Azure? 
 

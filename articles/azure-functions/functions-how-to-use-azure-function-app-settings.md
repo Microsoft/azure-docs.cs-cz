@@ -5,12 +5,12 @@ ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.custom: cc996988-fb4f-47, devx-track-azurecli
-ms.openlocfilehash: 4db6abeb3e6f4a07780268a6455177e0ca237205
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 5080d16a7b14506b24e07e2ee4ba862c645f83a8
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598482"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98875445"
 ---
 # <a name="manage-your-function-app"></a>Správa aplikace Function App 
 
@@ -37,6 +37,8 @@ Nastavení aplikace je možné spravovat z [Azure Portal](functions-how-to-use-a
 Tato nastavení jsou uložená zašifrovaná. Další informace najdete v tématu [zabezpečení nastavení aplikace](security-concepts.md#application-settings).
 
 # <a name="portal"></a>[Azure Portal](#tab/portal)
+
+Nastavení aplikace najdete v tématu Začínáme [v Azure Portal](#get-started-in-the-azure-portal). 
 
 Karta **nastavení aplikace** uchovává nastavení, která používá aplikace Function App. Chcete-li zobrazit hodnoty na portálu, je nutné vybrat možnost **Zobrazit hodnoty** . Chcete-li přidat nastavení na portálu, vyberte možnost **nové nastavení aplikace** a přidejte novou dvojici klíč-hodnota.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: cbc22f9b55f8d20880b43516a2a5bc8f55d389f5
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: b4b2a3bf8c9a3a2e2ec7f1b22785a037f8dedc60
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814495"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98873956"
 ---
 # <a name="azure-security-baseline-for-azure-ddos-protection-standard"></a>Základní hodnoty zabezpečení Azure pro Azure DDoS Protection Standard
 
@@ -164,7 +164,7 @@ Kromě toho můžete použít doporučení z Azure Security Center nebo integrov
 
 **Doprovodné** materiály: Využijte zabezpečenou pracovní stanici spravovanou v Azure se službou azure AD Multi-Factor Authentication (MFA) s povoleným přihlášením a konfigurací vašich požadavků na Azure Customer Lockbox.
 
-- [Nasazení zabezpečené pracovní stanice spravované v Azure](../../active-directory/devices/howto-azure-managed-workstation.md)
+- [Nasazení zabezpečené pracovní stanice spravované v Azure](/security/compass/privileged-access-deployment)
 
 - [Plánování nasazení cloudové služby Azure AD Multi-Factor Authentication](../../active-directory/authentication/howto-mfa-getstarted.md)
 

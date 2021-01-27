@@ -7,20 +7,18 @@ ms.topic: article
 ms.date: 12/17/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: c63ea4f9cdb961ca492d5dcf22a89627864236cd
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 2a2e4ac57eec866d9857f564d6c76ad4a775d223
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98733196"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98874604"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>Služby Azure, které podporují zóny dostupnosti
 
-Zóny dostupnosti je vysoce dostupná nabídka, která chrání vaše aplikace a data před selháními datových center. Seznam stávajících a nadcházejících oblastí, které podporují Zóny dostupnosti, najdete v tématu [oblasti a zóny dostupnosti v Azure](az-overview.md).  
+Microsoft Azure globální infrastruktura je navržená a vytvořená na všech úrovních k zajištění nejvyšší úrovně redundance a odolnosti vůči zákazníkům. Infrastruktura Azure se skládá z geografických oblastí, oblastí a Zóny dostupnosti, které omezují poloměr vysokého poloměru selhání, a proto omezují potenciální dopad na aplikace a data zákazníků. Zóny dostupnosti Azure konstrukce byla vyvinuta tak, aby poskytovala softwarové a síťové řešení pro ochranu před chybami datového centra a poskytovala zákazníkům větší vysokou dostupnost (HA).
 
-V této části jsou uvedené služby Azure, které podporují Zóny dostupnosti. 
-
-Služby, které jsou dostupné v jednotlivých oblastech, společně s nadcházejícím plánem dostupnosti, najdete v [produktech dostupných](https://azure.microsoft.com/global-infrastructure/services/)v jednotlivých oblastech.
+Zóny dostupnosti jsou jedinečná fyzická umístění uvnitř oblasti Azure. Každá zóna se skládá z jednoho nebo více datových center s nezávisle napájením, chlazením a sítí. Fyzické oddělení Zóny dostupnosti v rámci oblasti omezuje dopad na aplikace a data před selháním zóny, jako je například zahlcení velkých objemů, velké množství a přenásobení a další události, které by mohly přerušit přístup k webu, bezpečný průchod, rozšířené nástroje v době provozu a dostupnost prostředků. Zóny dostupnosti a jejich přidružená datová centra jsou navržena tak, aby v případě ohrožení jedné zóny byly služby, kapacity a dostupnost podporovány jinými Zóny dostupnosti v oblasti.
 
 Všechny služby správy Azure jsou navržené tak, aby byly odolné proti selháním na úrovni jednotlivých oblastí. V případě selhání má jedna nebo více selhání zóny dostupnosti v rámci oblasti menší poloměr selhání v porovnání s selháním celé oblasti. Azure se může zotavit z neúspěšného selhání služeb správy v rámci oblasti. Azure provádí kritickou údržbu jedné zóny v čase v rámci určité oblasti, aby nedocházelo k chybám, které mají vliv na prostředky zákazníka nasazené napříč Zóny dostupnosti v rámci oblasti.
 
@@ -34,165 +32,143 @@ Služby Azure, které podporují Zóny dostupnosti spadají do tří kategorií:
 
 - **Redundantní služby v zóně** – platforma Azure replikuje prostředky a data napříč zónami.  Microsoft spravuje doručování vysoké dostupnosti, protože Azure automaticky replikuje a distribuuje instance v rámci dané oblasti.  ZRS například replikuje data ve třech zónách tak, že selhání zóny nemá vliv na HA dat. 
 
-- **Neregionální služby** – služby, které nemají závislost na konkrétní oblasti Azure, jsou odolné proti výpadkům v rámci zóny a také výpadkům v rámci oblastí.
+- **Neregionální služby** – služby jsou vždycky dostupné z geografických oblastí Azure a jsou odolné vůči výpadkům v rámci zóny a také výpadkům v rámci oblastí. 
 
 
 Pro zajištění komplexní provozní kontinuity v Azure Sestavte architekturu aplikace pomocí kombinace Zóny dostupnosti s páry oblastí Azure. Můžete synchronně replikovat aplikace a data pomocí Zóny dostupnosti v oblasti Azure pro zajištění vysoké dostupnosti a asynchronní replikace napříč oblastmi Azure pro ochranu proti havárii. Pokud se chcete dozvědět víc, přečtěte si téma [vytváření řešení pro zajištění vysoké dostupnosti pomocí zóny dostupnosti](/azure/architecture/high-availability/building-solutions-for-high-availability). 
 
+## <a name="azure-services-supporting-availability-zones"></a>Služby Azure podporující Zóny dostupnosti
 
-### <a name="azure-services-supporting-availability-zones"></a>Služby Azure podporující Zóny dostupnosti
+ - Virtuální počítače starší generace nejsou uvedeny. Další informace najdete v tématu [předchozí generace velikostí virtuálních počítačů](../virtual-machines/sizes-previous-gen.md).
+ - Jak je uvedeno v [oblastech a zóny dostupnosti v Azure](az-overview.md), některé služby jsou jiné než regionální. Tyto služby nemají závislost na konkrétní oblasti Azure, protože jsou odolné vůči výpadkům v rámci zóny a také k výpadkům v rámci oblastí.  Seznam neoblastních služeb najdete v [produktech dostupných v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/).
+
+
+## <a name="azure-regions-with-availability-zones"></a>Oblasti Azure s Zóny dostupnosti
+
+
+| Amerika           | Evropa         | Německo              | Afrika              | Asie a Tichomoří   |
+|--------------------|----------------|----------------------|---------------------|----------------|
+|                    |                |                      |                     |                |
+| Střední Kanada     | Francie – střed | Německo – středozápad | Jihoafrická Jižní Afrika – sever * | Japonsko – východ     |
+| USA – střed         | Severní Evropa   |                      |                     | Jihovýchodní Asie |
+| East US            | Spojené království – jih       |                      |                     | Austrálie – východ |
+| USA – východ 2          | West Europe    |                      |                     |                |
+| Střed USA – jih |                |                      |                     |                |
+| US Gov – Virginie * |                |                      |                     |                |
+| Západní USA 2        |                |                      |                     |                |
+
+
+Další informace o podpoře Zóny dostupnosti a dostupných služeb v těchto oblastech vám poskytne zástupce Microsoftu pro prodej nebo zákazníky. Informace o nadcházejících oblastech, které budou podporovat Zóny dostupnosti, najdete v tématu geografické oblasti [Azure](https://azure.microsoft.com/en-us/global-infrastructure/geographies/).
+
+
+## <a name="azure-services-supporting-availability-zones"></a>Služby Azure podporující Zóny dostupnosti
 
 - Virtuální počítače starší generace nejsou uvedeny níže. Další informace najdete v tématu [předchozí generace velikostí virtuálních počítačů](../virtual-machines/sizes-previous-gen.md).
 
 - Některé služby jsou neregionální, další informace najdete v tématu [oblasti a zóny dostupnosti v Azure](az-overview.md) . Tyto služby nemají závislost na konkrétní oblasti Azure, protože jsou odolné vůči výpadkům v rámci zóny a výpadkům v rámci oblastí.  Seznam neoblastních služeb najdete v [produktech dostupných v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/).
 
 
+### <a name="zone-resilient-services"></a>Odolné služby zóny 
 
-## <a name="americas"></a>Amerika
+: globe_with_meridians: neregionální služby jsou vždycky dostupné z geografických oblastí Azure a jsou odolné vůči výpadkům v rámci zóny a také výpadkům v rámci oblastí.
 
-| **Produkty** | **USA – střed** | **East US** | **USA – východ 2** | **Západní USA 2** | **Střední Kanada** |
-|--|--|--|--|--|--|
-| **Výpočetní služby** |  |  |  |  |  |
-| [Prostředí App Service (interního nástroje)](../app-service/environment/zone-redundancy.md#how-to-deploy-an-app-service-environment-in-an-availability-zone) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Service Fabric](../service-fabric/service-fabric-cross-availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Virtual Machines škálování sad](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Virtual Machines](https://azure.microsoft.com/services/virtual-machines/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | 
-| **Containers** |  |  |  |
-| [Azure Kubernetes Service (AKS)](../aks/availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Container Registry](../container-registry/zone-redundancy.md) |  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  | 
-| **Storage** |  |  |  |  |  |
-| [Azure Data Lake Storage Gen2](../storage/common/storage-account-create.md?tabs=azure-portal)  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Úložiště Premium Files](../storage/files/storage-files-planning.md) |  | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
-| [Blob Storage](../storage/blobs/storage-blobs-introduction.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Spravované disky](https://azure.microsoft.com/en-gb/updates/azure-managed-snapshots-images-ga/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Sítě** |  |  |  |  |  |
-| [Application Gateway v2](../application-gateway/application-gateway-autoscaling-zone-redundant.md)  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Trasa Azure Express](../expressroute/designing-for-high-availability-with-expressroute.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Firewall](../firewall/deploy-availability-zone-powershell.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Standardní IP adresa](../virtual-network/public-ip-addresses.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Load Balancer](../load-balancer/load-balancer-standard-availability-zones.md#concepts) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Virtual Network](../vpn-gateway/create-zone-redundant-vnet-gateway.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Virtual Network NAT](../virtual-network/nat-gateway-resource.md#availability-zones) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Virtual WAN](../virtual-wan/virtual-wan-faq.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [VPN Gateway](../vpn-gateway/about-zone-redundant-vnet-gateways.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Databáze** |  |  |  |  |  |
-| [Azure Cache for Redis](../azure-cache-for-redis/cache-overview.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Cosmos DB](../cosmos-db/high-availability.md#availability-zone-support) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Data Explorer](/azure/data-explorer/create-cluster-database-portal) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Database for MySQL – flexibilní Server](../mysql/flexible-server/concepts-high-availability.md) | znak | znak | :heavy_check_mark: | :heavy_check_mark: | znak |
-| [Azure Database for PostgreSQL – flexibilní Server](../postgresql/flexible-server/overview.md) | znak | znak | :heavy_check_mark: | :heavy_check_mark: | znak |
-| [Azure SQL Database (Pro obecné účely vrstva)](../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview) | znak | : heavy_check_mark: (Preview) | : heavy_check_mark: (Preview) | : heavy_check_mark: (Preview) | znak |
-| [Azure SQL Database (úrovně Premium & Pro důležité obchodní informace](../azure-sql/database/high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Analýzy** |  |  |  |  |  |
-| [Event Hubs](../event-hubs/index.yml) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Integrace** |  |  |  |  |  |
-| [Event Grid](../event-grid/index.yml) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Service Bus](../service-fabric/service-fabric-cross-availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Správa a zásady správného řízení** |  |  |  |  |  |
-| [Network Watcher](../network-watcher/frequently-asked-questions.md) | znak | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | znak |
-| **Zabezpečení** |  |  |  |  |  |
-| [Azure Active Directory Domain Services](../active-directory-domain-services/overview.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
+: large_blue_diamond: odolný vůči výpadkům v rámci zóny 
 
-## <a name="europe"></a>Evropa
+**Základní služby**
 
-| **Produkty** | **Francie – střed** | **Severní Evropa** | **Spojené království – jih** | **West Europe** |
-|--|--|--|--|--|
-| **Výpočetní služby** |  |  |  |  |
-| [Prostředí App Service (interního nástroje)](../app-service/environment/zone-redundancy.md#how-to-deploy-an-app-service-environment-in-an-availability-zone) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Kubernetes Service (AKS)](../aks/availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Service Fabric](../service-fabric/service-fabric-cross-availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Virtual Machines škálování sad](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Virtual Machines](https://azure.microsoft.com/services/virtual-machines/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Storage** |  |  |  |  |
-| [Azure Data Lake Storage Gen2](../storage/common/storage-account-create.md?tabs=azure-portal)  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Úložiště Premium Files](../storage/files/storage-files-planning.md) |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Blob Storage](../storage/blobs/storage-blobs-introduction.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Spravované disky](https://azure.microsoft.com/en-gb/updates/azure-managed-snapshots-images-ga/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Sítě** |  |  |  |  |
-| [Application Gateway v2](../application-gateway/application-gateway-autoscaling-zone-redundant.md)  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Trasa Azure Express](../expressroute/designing-for-high-availability-with-expressroute.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Firewall](../firewall/deploy-availability-zone-powershell.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Standardní IP adresa](../virtual-network/public-ip-addresses.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Load Balancer](../load-balancer/load-balancer-standard-availability-zones.md#concepts) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Virtual Network](../vpn-gateway/create-zone-redundant-vnet-gateway.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Virtual Network NAT](../virtual-network/nat-gateway-resource.md#availability-zones) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Virtual WAN](../virtual-wan/virtual-wan-faq.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [VPN Gateway](../vpn-gateway/about-zone-redundant-vnet-gateways.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Databáze** |  |  |  |  |
-| [Azure Cache for Redis](../azure-cache-for-redis/cache-overview.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Cosmos DB](../cosmos-db/high-availability.md#availability-zone-support) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Data Explorer](/azure/data-explorer/create-cluster-database-portal) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Database for MySQL – flexibilní Server](../mysql/flexible-server/concepts-high-availability.md) | znak | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Database for PostgreSQL – flexibilní Server](../postgresql/flexible-server/overview.md) | znak | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure SQL Database (Pro obecné účely vrstva)](../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview) | : heavy_check_mark: (Preview) | : heavy_check_mark: (Preview) | znak | : heavy_check_mark: (Preview) |
-| [Azure SQL Database (úrovně Premium & Pro důležité obchodní informace](../azure-sql/database/high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Analýzy** |  |  |  |  |
-| [Event Hubs](../event-hubs/index.yml) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Integrace** |  |  |  |  |
-| [Event Grid](../event-grid/index.yml) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Service Bus](../service-fabric/service-fabric-cross-availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Správa a zásady správného řízení** |  |  |  |  |
-| [Network Watcher](../network-watcher/frequently-asked-questions.md) | :heavy_check_mark: | :heavy_check_mark: | znak | :heavy_check_mark: |
-| **Zabezpečení** |  |  |  |  |
-| [Azure Active Directory Domain Services](../active-directory-domain-services/overview.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
-
-## <a name="asia-pacific"></a>Asie a Tichomoří
+|     Produkty                                                    | Odolnost             |
+|-----------------------------------------------------------------|:----------------------------:|
+|     Účet úložiště                                           | : large_blue_diamond:  |
+|     Application Gateway (v2)                                  | : large_blue_diamond:  |
+|     Azure Backup                                                | : large_blue_diamond:  |
+|     Azure Cosmos DB                                           | : large_blue_diamond:  |
+|     Azure Data Lake Storage Gen 2                             | : large_blue_diamond:  |
+|     Trasa Azure Express                                       | : large_blue_diamond:  |
+|     Veřejná IP adresa Azure                                           | : large_blue_diamond:  |
+|     Azure SQL Database (Pro obecné účely vrstva)                 | : large_blue_diamond:  |
+|     Azure SQL Database (úroveň Premium & Pro důležité obchodní informace)     | : large_blue_diamond:  |
+|     Disk Storage                                                | : large_blue_diamond:  |
+|     Event Hubs                                                  | : large_blue_diamond:  |
+|     Key Vault                                                   | : large_blue_diamond:  |
+|     Load Balancer                                               | : large_blue_diamond:  |
+|     Service Bus                                                 | : large_blue_diamond:  |
+|     Service Fabric                                            | : large_blue_diamond:  |
+|     Storage: horká a studená Blob Storage vrstva                      | : large_blue_diamond:  |
+|     Úložiště: Managed Disks                                    | : large_blue_diamond:  |
+|     Virtual Machines škálování sad                               | : large_blue_diamond:  |
+|     Virtual Machines                                          | : large_blue_diamond:  |
+|     Virtual Machines: Av2-Series                              | : large_blue_diamond:  |
+|     Virtual Machines: Bs-Series                               | : large_blue_diamond:  |
+|     Virtual Machines: DSv2-Series                             | : large_blue_diamond:  |
+|     Virtual Machines: DSv3-Series                             | : large_blue_diamond:  |
+|     Virtual Machines: Dv2-Series                              | : large_blue_diamond:  |
+|     Virtual Machines: Dv3-Series                              | : large_blue_diamond:  |
+|     Virtual Machines: ESv3-Series                             | : large_blue_diamond:  |
+|     Virtual Machines: Ev3-Series                              | : large_blue_diamond:  |
+|     Virtual Network                                           | : large_blue_diamond:  |
+|     VPN Gateway                                                 | : large_blue_diamond:  |
 
 
+**Běžné služby**
 
-| **Produkty** | **Japonsko – východ** | **Southeast Asia** | **Austrálie – východ** |
-|--|--|--|--|
-| **Výpočetní služby** |  |  |  |
-| [Prostředí App Service (interního nástroje)](../app-service/environment/zone-redundancy.md#how-to-deploy-an-app-service-environment-in-an-availability-zone) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Kubernetes Service (AKS)](../aks/availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Service Fabric](../service-fabric/service-fabric-cross-availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Virtual Machines škálování sad](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Virtual Machines](https://azure.microsoft.com/services/virtual-machines/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Storage** |  |  |  |
-| [Azure Data Lake Storage Gen2](../storage/common/storage-account-create.md?tabs=azure-portal)  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Úložiště Premium Files](../storage/files/storage-files-planning.md) |  | :heavy_check_mark: | :heavy_check_mark: |
-| [Blob Storage](../storage/blobs/storage-blobs-introduction.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Spravované disky](https://azure.microsoft.com/en-gb/updates/azure-managed-snapshots-images-ga/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Sítě** |  |  |  |
-| [Application Gateway v2](../application-gateway/application-gateway-autoscaling-zone-redundant.md)  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Trasa Azure Express](../expressroute/designing-for-high-availability-with-expressroute.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Firewall](../firewall/deploy-availability-zone-powershell.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Standardní IP adresa](../virtual-network/public-ip-addresses.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Load Balancer](../load-balancer/load-balancer-standard-availability-zones.md#concepts) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Virtual Network](../vpn-gateway/create-zone-redundant-vnet-gateway.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Virtual Network NAT](../virtual-network/nat-gateway-resource.md#availability-zones) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Virtual WAN](../virtual-wan/virtual-wan-faq.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [VPN Gateway](../vpn-gateway/about-zone-redundant-vnet-gateways.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Databáze** |  |  |  |
-| [Azure Cache for Redis](../azure-cache-for-redis/cache-overview.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Cosmos DB](../cosmos-db/high-availability.md#availability-zone-support) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Data Explorer](/azure/data-explorer/create-cluster-database-portal) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Database for MySQL – flexibilní Server](../mysql/flexible-server/concepts-high-availability.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Database for PostgreSQL – flexibilní Server](../postgresql/flexible-server/overview.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure SQL Database (Pro obecné účely vrstva)](../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview) | : heavy_check_mark: (Preview) | : heavy_check_mark: (Preview) | : heavy_check_mark: (Preview) |
-| [Azure SQL Database (úrovně Premium & Pro důležité obchodní informace](../azure-sql/database/high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Analýzy** |  |  |  |
-| [Event Hubs](../event-hubs/index.yml) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Integrace** |  |  |  |
-| [Event Grid](../event-grid/index.yml) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Service Bus](../service-fabric/service-fabric-cross-availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Správa a zásady správného řízení** |  |  |  |
-| [Network Watcher](../network-watcher/frequently-asked-questions.md) | :heavy_check_mark: | znak | znak |
-| **Zabezpečení** |  |  |  |
-| [Azure Active Directory Domain Services](../active-directory-domain-services/overview.md) | :heavy_check_mark: | :heavy_check_mark: |  |
+| Produkty                                        | Odolnost |
+|-------------------------------------------------|:------------:|
+| Prostředí App Service                        |      : large_blue_diamond:  |
+| Azure Active Directory Domain Services          |      : large_blue_diamond:  |
+| Azure Bastion                                   |      : large_blue_diamond:  |
+| Azure Cache for Redis                           |      : large_blue_diamond:  |
+| Azure Cognitive Services: Analýza textu        |      : large_blue_diamond:  |
+| Průzkumník dat Azure                             |      : large_blue_diamond:  |
+| Azure Database for MySQL – flexibilní Server      |      : large_blue_diamond:  |
+| Azure Database for PostgreSQL – flexibilní Server |      : large_blue_diamond:  |
+| Azure DDoS Protection                           |      : large_blue_diamond:  |
+| Azure Firewall                                  |      : large_blue_diamond:  |
+| Azure Firewall Manager                          |      : large_blue_diamond:  |
+| Azure Kubernetes Service (AKS)                  |      : large_blue_diamond:  |
+| Azure Private Link                              |      : large_blue_diamond:  |
+| Azure Red Hat OpenShift                         |      : large_blue_diamond:  |
+| Azure Site Recovery                             |      : large_blue_diamond:  |
+| Container Registry                              |      : large_blue_diamond:  |
+| Event Grid                                      |      : large_blue_diamond:  |
+| Network Watcher                                 |      : large_blue_diamond:  |
+| Power BI Embedded                               |      : large_blue_diamond:  |
+| Blob Storage úrovně Premium                            |      : large_blue_diamond:  |
+| Virtual Machines: Ddsv4-Series                  |      : large_blue_diamond:  |
+| Virtual Machines: Ddv4-Series                   |      : large_blue_diamond:  |
+| Virtual Machines: Dsv4-Series                   |      : large_blue_diamond:  |
+| Virtual Machines: Dv4-Series                    |      : large_blue_diamond:  |
+| Virtual Machines: Edsv4-Series                  |      : large_blue_diamond:  |
+| Virtual Machines: Edv4-Series                   |      : large_blue_diamond:  |
+| Virtual Machines: Esv4-Series                   |      : large_blue_diamond:  |
+| Virtual Machines: Ev4-Series                    |      : large_blue_diamond:  |
+| Virtual Machines: Fsv2-Series                   |      : large_blue_diamond:  |
+| Virtual Machines: řada M-Series                      |      : large_blue_diamond:  |
+| Virtual WAN                                     |      : large_blue_diamond:  |
 
 
-## <a name="upcoming-availability-zones"></a>Nadcházející Zóny dostupnosti 
+**Bez regionu**
 
-Azure nabízí podporu Zóny dostupnosti v následujících oblastech:
-- USA (Gov) – Virginia
-- Jižní Afrika – sever
-- Středojižní USA
-- Německo – středozápad
-
-Seznam stávajících a nadcházejících oblastí, které podporují Zóny dostupnosti, najdete [tady](https://azure.microsoft.com/global-infrastructure/geographies/).    
-
-Pokud se chcete dozvědět víc o podpoře Zóny dostupnosti v těchto oblastech, obraťte se na prodejce Microsoftu nebo zákazníka.
+|     Produkty                                  |     Odolnost    |
+|-----------------------------------------------|:-------------------:|
+|     Azure DNS                                 |     : globe_with_meridians:             |
+|     Azure Active Directory                  |     : globe_with_meridians:             |
+|     Azure Advisor                             |     : globe_with_meridians:             |
+|     Azure Bot Services                        |     : globe_with_meridians:             |
+|     Azure Defender pro IoT                  |     : globe_with_meridians:             |
+|     Azure Information Protection            |     : globe_with_meridians:             |
+|     Lighthouse Azure                        |     : globe_with_meridians:             |
+|     Azure Managed Applications              |     : globe_with_meridians:             |
+|     Azure Maps                                |     : globe_with_meridians:             |
+|     Azure Policy                              |     : globe_with_meridians:             |
+|     Graf prostředků Azure                    |     : globe_with_meridians:             |
+|     Azure Stack                               |     : globe_with_meridians:             |
+|     Azure Stack Edge                        |     : globe_with_meridians:             |
+|     Cloud Shell                               |     : globe_with_meridians:             |
+|     Customer Lockbox pro Microsoft Azure    |     : globe_with_meridians:             |
+|     Služba partnerského vztahu Microsoft Azure         |     : globe_with_meridians:             |
+|     portál Microsoft Azure                  |     : globe_with_meridians:             |
+|     Security Center                         |     : globe_with_meridians:             |
+|     Traffic Manager                         |     : globe_with_meridians:             |
 
 
 ## <a name="pricing-for-vms-in-availability-zones"></a>Ceny pro virtuální počítače v Zóny dostupnosti

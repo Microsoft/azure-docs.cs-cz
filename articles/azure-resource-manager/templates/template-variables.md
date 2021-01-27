@@ -2,13 +2,13 @@
 title: Proměnné v šablonách
 description: Popisuje definování proměnných v šabloně Azure Resource Manager (šablona ARM).
 ms.topic: conceptual
-ms.date: 11/24/2020
-ms.openlocfilehash: 7f782f9c7d3107472a74fcab73290c4cebf73693
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.date: 01/26/2021
+ms.openlocfilehash: feecc4b5df77e6a3bf51294cb12aabf44899dde5
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934658"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98874430"
 ---
 # <a name="variables-in-arm-template"></a>Proměnné v šabloně ARM
 
@@ -16,9 +16,11 @@ Tento článek popisuje, jak definovat a používat proměnné v šabloně Azure
 
 Správce prostředků vyřeší proměnné před spuštěním operací nasazení. Všude, kde je proměnná v šabloně použitá, ji Resource Manager nahradí vyřešenou hodnotou.
 
-Formát každé proměnné musí odpovídat jednomu z [datových typů](template-syntax.md#data-types).
-
 ## <a name="define-variable"></a>Definovat proměnnou
+
+Při definování proměnné zadejte hodnotu nebo výraz šablony, který se přeloží na [datový typ](template-syntax.md#data-types). Při vytváření proměnné můžete použít hodnotu z parametru nebo jiné proměnné.
+
+Můžete použít [funkce šablon](template-functions.md) v deklaraci proměnné, ale nemůžete použít [odkazovou](template-functions-resource.md#reference) funkci ani žádnou z funkcí [seznamu](template-functions-resource.md#list) . Tyto funkce získávají běhový stav prostředku a nelze jej provést před nasazením, když jsou proměnné vyřešeny.
 
 Následující příklad ukazuje definici proměnné. Vytvoří hodnotu řetězce pro název účtu úložiště. Používá několik funkcí šablon k získání hodnoty parametru a zřetězuje je do jedinečného řetězce.
 
@@ -27,8 +29,6 @@ Následující příklad ukazuje definici proměnné. Vytvoří hodnotu řetězc
   "storageName": "[concat(toLower(parameters('storageNamePrefix')), uniqueString(resourceGroup().id))]"
 },
 ```
-
-V části nelze použít funkci [reference](template-functions-resource.md#reference) ani žádnou z funkcí [seznamu](template-functions-resource.md#list) `variables` . Tyto funkce získávají běhový stav prostředku a nelze jej provést před nasazením, když jsou proměnné vyřešeny.
 
 ## <a name="use-variable"></a>Použít proměnnou
 
@@ -44,56 +44,20 @@ V šabloně odkazujete na hodnotu parametru pomocí funkce [Variables](template-
 ]
 ```
 
+## <a name="example-template"></a>Příklad šablony
+
+Následující šablona neimplementuje žádné prostředky. Pouze ukazuje několik způsobů, jak deklarovat proměnné.
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/variables.json":::
+
 ## <a name="configuration-variables"></a>Konfigurační proměnné
 
-Můžete definovat proměnné, které uchovávají související hodnoty pro konfiguraci prostředí. Proměnnou definujete jako objekt s hodnotami. Následující příklad ukazuje objekt, který obsahuje hodnoty pro dvě prostředí – **test** a **prod**.
+Můžete definovat proměnné, které uchovávají související hodnoty pro konfiguraci prostředí. Proměnnou definujete jako objekt s hodnotami. Následující příklad ukazuje objekt, který obsahuje hodnoty pro dvě prostředí – **test** a **prod**. Během nasazování předáte jednu z těchto hodnot.
 
-```json
-"variables": {
-  "environmentSettings": {
-    "test": {
-      "instanceSize": "Small",
-      "instanceCount": 1
-    },
-    "prod": {
-      "instanceSize": "Large",
-      "instanceCount": 4
-    }
-  }
-},
-```
-
-V nástroji `parameters` můžete vytvořit hodnotu, která určuje, které hodnoty konfigurace se mají použít.
-
-```json
-"parameters": {
-  "environmentName": {
-    "type": "string",
-    "allowedValues": [
-      "test",
-      "prod"
-    ]
-  }
-},
-```
-
-Chcete-li načíst nastavení pro zadané prostředí, použijte proměnnou a parametr dohromady.
-
-```json
-"[variables('environmentSettings')[parameters('environmentName')].instanceSize]"
-```
-
-## <a name="example-templates"></a>Příklady šablon
-
-Následující příklady ukazují scénáře použití proměnných.
-
-|Template (Šablona)  |Popis  |
-|---------|---------|
-| [Definice proměnných](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variables.json) | Ukazuje různé typy proměnných. Šablona neimplementuje žádné prostředky. Vytvoří proměnné hodnoty a vrátí tyto hodnoty. |
-| [konfigurační proměnná](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variablesconfigurations.json) | Ukazuje použití proměnné definující konfigurační hodnoty. Šablona neimplementuje žádné prostředky. Vytvoří proměnné hodnoty a vrátí tyto hodnoty. |
-| [pravidla zabezpečení sítě](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) a [soubor parametrů](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json) | Sestaví pole ve správném formátu pro přiřazení pravidel zabezpečení do skupiny zabezpečení sítě. |
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/variablesconfigurations.json":::
 
 ## <a name="next-steps"></a>Další kroky
 
 * Další informace o dostupných vlastnostech proměnných najdete v tématu [pochopení struktury a syntaxe šablon ARM](template-syntax.md).
 * Doporučení k vytváření proměnných najdete v tématu [osvědčené postupy – proměnné](template-best-practices.md#variables).
+* Příklad šablony, která přiřazuje pravidla zabezpečení skupině zabezpečení sítě, najdete v tématu [pravidla zabezpečení sítě](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) a [soubor parametrů](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json).

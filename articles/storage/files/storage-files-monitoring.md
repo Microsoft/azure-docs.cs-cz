@@ -10,12 +10,12 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 2af4f5467cb0f604f16d1faf841618a14d292806
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: cc1e4bf44827f82b3ca592e41fc3e6640f36e1bb
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585730"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98875140"
 ---
 # <a name="monitoring-azure-files"></a>Monitorování souborů Azure
 
@@ -71,7 +71,7 @@ Obecné pokyny najdete v tématu [Vytvoření nastavení diagnostiky pro shroma�
 
 ### <a name="azure-portal"></a>[Azure Portal](#tab/azure-portal)
 
-1. Přihlaste se k webu Azure Portal.
+1. Přihlaste se k portálu Azure.
 
 2. Přejděte na svůj účet úložiště.
 
@@ -575,7 +575,7 @@ Azure Monitor výstrahy proaktivně upozorní na to, že se ve vašich datech mo
 
 V následující tabulce jsou uvedeny příklady scénářů, které je třeba monitorovat, a správnou metriku pro použití výstrahy:
 
-| Scénář | Metrika, která se má použít pro upozornění |
+| Scenario | Metrika, která se má použít pro upozornění |
 |-|-|
 | Sdílení souborů je omezené. | Metrika: transakcí<br>Název dimenze: typ odpovědi <br>Název dimenze: sdílená složka (jenom pro sdílení souborů Premium) |
 | Velikost sdílené složky je 80% kapacity. | Metrika: kapacita souboru<br>Název dimenze: sdílená složka (jenom pro sdílení souborů Premium) |
@@ -677,6 +677,6 @@ V následující tabulce jsou uvedeny příklady scénářů, které je třeba m
 - [Monitorování prostředků Azure pomocí Azure Monitor](../../azure-monitor/insights/monitor-azure-resource.md)
 - [Azure Storage migrace metrik](../common/storage-metrics-migration.md)
 - [Plánování nasazení Azure Files](./storage-files-planning.md)
-- [Nasazení služby Azure Files](./storage-files-deployment-guide.md)
+- [Nasazení služby Azure Files](./storage-how-to-create-file-share.md)
 - [Řešení problémů se Soubory Azure ve Windows](./storage-troubleshoot-windows-file-connection-problems.md)
 - [Řešení problémů se Soubory Azure v Linuxu](./storage-troubleshoot-linux-file-connection-problems.md)

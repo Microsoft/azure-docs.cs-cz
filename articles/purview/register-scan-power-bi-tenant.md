@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: 3370215e9a69e62596f214ba4330fc4914a2837f
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 5f42b5f2b2a7660ee0de975068f64572c470503a
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539694"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98874902"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>Registrace a kontrola klienta Power BIu (Preview)
 
@@ -26,7 +26,7 @@ Tento článek popisuje, jak pomocí portálu Azure dosah zaregistrovat a kontro
 Pokud chcete nastavit ověřování, vytvořte skupinu zabezpečení a přidejte do ní spravovanou identitu katalogu.
 
 1. V [Azure Portal](https://portal.azure.com)vyhledejte **Azure Active Directory**.
-1. Vytvořte ve svém Azure Active Directory novou skupinu zabezpečení, a to tak, že [vytvoříte základní skupinu a přidáte členy pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal).
+1. Vytvořte ve svém Azure Active Directory novou skupinu zabezpečení, a to tak, že [vytvoříte základní skupinu a přidáte členy pomocí Azure Active Directory](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
     > [!Tip]
     > Pokud již máte skupinu zabezpečení, kterou chcete použít, můžete tento krok přeskočit.
