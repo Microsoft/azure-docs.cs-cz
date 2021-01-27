@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 4b8141d99d654705450a14767b04ae6265766af9
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 519285f2bad352aa16bdc8d9a1db7a63c2eb04e5
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98807087"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98876389"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Ochrana koncových bodů pomocí integrovaného řešení EDR Security Center: Microsoft Defender pro koncové body
 
@@ -62,7 +62,7 @@ Microsoft Defender pro koncové body poskytuje:
 
 Integrací programu Defender pro koncový bod s Security Center se vám bude vytěžit z následujících dalších možností:
 
-- **Automatizované připojování**. Security Center automaticky povolí Microsoft Defender pro koncové body pro všechny servery Windows monitorované pomocí Security Center. S výjimkou těch, na kterých je spuštěný systém Windows Server 2019, který musí být připojen prostřednictvím místního skriptu, Zásady skupiny objektů (GPO) nebo [Microsoft Endpoint Configuration Manager](https://docs.microsoft.com/mem/configmgr/) (dříve SCCM).
+- **Automatizované připojování**. Security Center automaticky povolí Microsoft Defender pro koncové body pro všechny servery Windows monitorované pomocí Security Center. S výjimkou těch, na kterých je spuštěný systém Windows Server 2019, který musí být připojen prostřednictvím místního skriptu, Zásady skupiny objektů (GPO) nebo [Microsoft Endpoint Configuration Manager](/mem/configmgr/) (dříve SCCM).
 
 - **Jedno podokno skla** Konzola Security Center zobrazí výstrahu programu Microsoft Defender pro koncové body. Pro další zkoumání použijte Microsoft Defender pro vlastní stránky portálu, kde se zobrazí další informace, jako je strom procesu výstrahy a graf incidentu. Můžete se také podívat na podrobnou časovou osu počítače, která zobrazuje každé chování po dobu až šesti měsíců.
 

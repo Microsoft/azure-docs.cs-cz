@@ -3,12 +3,12 @@ title: Spravované identity pro Azure
 description: Seznamte se s používáním spravovaných identit pro Azure s Service Fabric.
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 28c992792d4572a43e12f5d32855f8411b0f4c6f
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 71fa9ef4da8081a167b68553e2e3eac8477e8aee
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96574747"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881716"
 ---
 # <a name="using-managed-identities-for-azure-with-service-fabric"></a>Použití spravovaných identit pro Azure s Service Fabric
 
@@ -56,7 +56,7 @@ Následující scénáře nejsou podporovány nebo nejsou doporučovány. Všimn
 
 - Umožňuje odebrat nebo změnit identity přiřazené k aplikaci. Pokud je nutné provést změny, odešlete samostatné nasazení, abyste přidali nové přiřazení identity a pak odebrali dříve přiřazenou identitu. Odebrání identity z existující aplikace může mít nežádoucí účinky, včetně ukončení aplikace ve stavu, který nelze upgradovat. Zcela odstraní aplikaci, pokud je nutné odebrat identitu. Všimněte si, že se odstraní identita přiřazená systémem (Pokud je definována) přidružená k aplikaci a odstraní všechna přidružení s uživatelsky přiřazenými identitami přiřazenými k aplikaci.
 
-- Service Fabric podpora spravovaných identit v tuto chvíli není integrována do [AzureServiceTokenProvider](../key-vault/general/service-to-service-authentication.md).
+- Service Fabric podpora spravovaných identit v tuto chvíli není integrována do [AzureServiceTokenProvider](/dotnet/api/overview/azure/service-to-service-authentication).
 
 ## <a name="next-steps"></a>Další kroky
 

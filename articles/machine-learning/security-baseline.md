@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 380aa826030df14b4b88b86ac2962c988796c0f9
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 025a94cf7d163d41486ef218e70d9eb48e93d31c
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202636"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881312"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>Základní hodnoty zabezpečení Azure pro Azure Machine Learning
 
@@ -879,9 +879,9 @@ Všimněte si, že Azure Marketplace image virtuálních počítačů publikovan
 
 - [Vytvoření virtuálního počítače s Windows v Azure Portal ](../virtual-machines/windows/quick-create-portal.md)
 
-- [Informace o tom, jak stáhnout šablonu virtuálního počítače](../virtual-machines/windows/download-template.md)
+- [Informace o tom, jak stáhnout šablonu virtuálního počítače](/previous-versions/azure/virtual-machines/windows/download-template)
 
-- [Ukázkový skript pro nahrání virtuálního pevného disku do Azure a vytvoření nového virtuálního počítače](../virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script.md)
+- [Ukázkový skript pro nahrání virtuálního pevného disku do Azure a vytvoření nového virtuálního počítače](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -911,7 +911,7 @@ Azure Machine Learning plně podporuje úložiště Git pro sledování práce; 
 
 - [Jak nakonfigurovat službu Azure RBAC](../role-based-access-control/quickstart-assign-role-user-portal.md)
 
-- [Přehled Galerie sdílených imagí](../virtual-machines/windows/shared-image-galleries.md)
+- [Přehled Galerie sdílených imagí](../virtual-machines/shared-image-galleries.md)
 
 - [Použití Azure RBAC pro autorizaci Kubernetes](../aks/manage-azure-rbac.md)
 

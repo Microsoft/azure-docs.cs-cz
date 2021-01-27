@@ -4,12 +4,12 @@ description: Naučte se zabezpečit cluster pomocí rozsahu IP adres pro příst
 services: container-service
 ms.topic: article
 ms.date: 09/21/2020
-ms.openlocfilehash: 9828682fa71d023356b174d528c2137ed29f368d
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: ca6e1c06b3ad90ef12c9bf375bae50d46c5f7c37
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682498"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98890628"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Zabezpečený přístup k serveru rozhraní API pomocí rozsahů povolených IP adres ve službě Azure Kubernetes Service (AKS)
 
@@ -69,7 +69,7 @@ az aks create \
 
 ### <a name="specify-the-outbound-ips-for-the-standard-sku-load-balancer"></a>Zadejte odchozí IP adresy pro nástroj pro vyrovnávání zatížení Standard SKU.
 
-Pokud při vytváření clusteru AKS zadáte odchozí IP adresy nebo předpony pro cluster, jsou povoleny také tyto adresy nebo předpony. Například:
+Pokud při vytváření clusteru AKS zadáte odchozí IP adresy nebo předpony pro cluster, jsou povoleny také tyto adresy nebo předpony. Příklad:
 
 ```azurecli-interactive
 az aks create \
@@ -121,7 +121,7 @@ Při zadání parametru můžete použít taky *0.0.0.0/32* , *`--api-server-aut
 
 ## <a name="disable-authorized-ip-ranges"></a>Zakázat autorizované rozsahy IP adres
 
-Pokud chcete zakázat rozsahy povolených IP adres, použijte příkaz [AZ AKS Update][az-aks-update] a zadáním prázdného rozsahu zakažte rozsahy IP adres autorizovaných serverem API. Například:
+Pokud chcete zakázat rozsahy povolených IP adres, použijte příkaz [AZ AKS Update][az-aks-update] a zadáním prázdného rozsahu zakažte rozsahy IP adres autorizovaných serverem API. Příklad:
 
 ```azurecli-interactive
 az aks update \
@@ -130,11 +130,28 @@ az aks update \
     --api-server-authorized-ip-ranges ""
 ```
 
+## <a name="find-existing-authorized-ip-ranges"></a>Najít stávající rozsahy povolených IP adres
+
+Chcete-li zjistit, jaké rozsahy IP adres byly autorizovány, použijte příkaz [AZ AKS show][az-aks-show] a zadejte název clusteru a skupinu prostředků. Příklad:
+
+```azurecli-interactive
+az aks show \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --query apiServerAccessProfile.authorizedIpRanges'
+```
+
+## <a name="update-disable-and-find-authorized-ip-ranges-using-azure-portal"></a>Aktualizace, zakázání a vyhledání autorizovaných rozsahů IP adres pomocí Azure Portal
+
+Výše uvedené operace přidávání, aktualizace, vyhledávání a zakazování autorizovaných rozsahů IP adres lze provádět také v Azure Portal. Přístup získáte tak, že v části **Nastavení** v okně prostředku clusteru přejdete na **síť** .
+
+:::image type="content" source="media/api-server-authorized-ip-ranges/ip-ranges-specified.PNG" alt-text="V prohlížeči se zobrazí stránka nastavení sítě prostředku clusteru Azure Portal. Jsou zvýrazněné možnosti nastavit zadaný rozsah IP adres a zadané rozsahy IP adres.":::
+
 ## <a name="how-to-find-my-ip-to-include-in---api-server-authorized-ip-ranges"></a>Jak najít moji IP adresu, kterou chcete zahrnout do `--api-server-authorized-ip-ranges` ?
 
 Aby bylo možné získat přístup k serveru rozhraní API z této služby, musíte přidat své vývojové počítače, nástroje nebo IP adresy automatizace do seznamu clusterů AKS se schválenými rozsahy IP adres. 
 
-Další možností je nakonfigurovat JumpBox s potřebnými nástroji v samostatné podsíti ve virtuální síti brány firewall. Předpokládá se, že vaše prostředí má bránu firewall s příslušnou sítí a že jste do autorizovaných rozsahů přidali IP adresy brány firewall. Podobně platí, že pokud máte vynucené tunelování z podsítě AKS do podsítě brány firewall, nemusíte mít k dispozici také JumpBox v podsíti clusteru.
+Další možností je nakonfigurovat JumpBox s potřebnými nástroji v samostatné podsíti ve virtuální síti brány firewall. Předpokládá se, že vaše prostředí má bránu firewall s příslušnou sítí a že jste do autorizovaných rozsahů přidali IP adresy brány firewall. Podobně platí, že pokud máte vynucené tunelování z podsítě AKS do podsítě brány firewall, než je JumpBox v podsíti clusteru.
 
 Pomocí následujícího příkazu přidejte další IP adresu ke schváleným rozsahům.
 
@@ -170,6 +187,7 @@ Další informace najdete v tématu [koncepty zabezpečení pro aplikace a clust
 <!-- LINKS - internal -->
 [az-aks-update]: /cli/azure/ext/aks-preview/aks#ext-aks-preview-az-aks-update
 [az-aks-create]: /cli/azure/aks#az-aks-create
+[az-aks-show]: /cli/azure/aks#az_aks_show
 [az-network-public-ip-list]: /cli/azure/network/public-ip#az-network-public-ip-list
 [concepts-clusters-workloads]: concepts-clusters-workloads.md
 [concepts-security]: concepts-security.md

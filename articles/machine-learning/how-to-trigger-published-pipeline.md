@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 12/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 9038d6bc9cd061200ef4553242889776f30d2dc1
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: a006dfd4f78f90ed323e5780b173cffb6daeac4a
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964554"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881733"
 ---
 # <a name="trigger-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>Aktivace kanálů strojového učení s Azure Machine Learning SDK pro Python
 
@@ -27,7 +27,7 @@ V tomto článku se dozvíte, jak programově naplánovat spuštění kanálu v 
 
 * Prostředí Pythonu, ve kterém je nainstalovaná sada Azure Machine Learning SDK pro Python. Další informace najdete v tématu [vytváření a Správa opakovaně použitelných prostředí pro školení a nasazení pomocí Azure Machine Learning.](how-to-use-environments.md)
 
-* Machine Learning pracovní prostor s publikovaným kanálem. V sadě Azure Machine Learning SDK můžete použít jeden z vestavěných [kanálů pro vytváření a spouštění strojového učení](how-to-create-your-first-pipeline.md).
+* Machine Learning pracovní prostor s publikovaným kanálem. V sadě Azure Machine Learning SDK můžete použít jeden z vestavěných [kanálů pro vytváření a spouštění strojového učení](./how-to-create-machine-learning-pipelines.md).
 
 ## <a name="initialize-the-workspace--get-data"></a>Inicializujte pracovní prostor & získat data
 
@@ -142,7 +142,7 @@ Pokud pak znovu spustíte `Schedule.list(ws)` , měli byste mít prázdný sezna
 
 S využitím [Aplikace logiky Azure](../logic-apps/logic-apps-overview.md)se dá vytvořit složitější pravidla triggeru nebo chování.
 
-Pokud chcete použít aplikaci logiky Azure k aktivaci kanálu Machine Learning, budete potřebovat koncový bod REST pro publikovaný Machine Learning kanál. [Vytvořte a publikujte svůj kanál](how-to-create-your-first-pipeline.md). Pak vyhledejte koncový bod REST s `PublishedPipeline` použitím ID kanálu:
+Pokud chcete použít aplikaci logiky Azure k aktivaci kanálu Machine Learning, budete potřebovat koncový bod REST pro publikovaný Machine Learning kanál. [Vytvořte a publikujte svůj kanál](./how-to-create-machine-learning-pipelines.md). Pak vyhledejte koncový bod REST s `PublishedPipeline` použitím ID kanálu:
 
 ```python
 # You can find the pipeline ID in Azure Machine Learning studio
@@ -219,7 +219,7 @@ Po zřízení aplikace logiky můžete pomocí těchto kroků nakonfigurovat akt
 
 V tomto článku jste použili sadu SDK Azure Machine Learning pro Python k naplánování kanálu dvěma různými způsoby. Jeden plán se opakuje na základě uplynulých časových taktů. Druhý plán se spustí, pokud je soubor změněn na zadaném `Datastore` nebo v adresáři v daném úložišti. Zjistili jste, jak použít portál k prohlédnutí kanálu a jednotlivých spuštění. Zjistili jste, jak zakázat plán, aby kanál přestal běžet. Nakonec jste vytvořili aplikaci logiky Azure, která aktivuje kanál. 
 
-Další informace najdete tady:
+Další informace naleznete v tématu:
 
 > [!div class="nextstepaction"]
 > [Použití Azure Machine Learningch kanálů pro dávkové vyhodnocování](tutorial-pipeline-batch-scoring-classification.md)

@@ -9,12 +9,12 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/19/2021
-ms.openlocfilehash: 31398a49de871ad44499a796adfef1be618ccab9
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: ae07f51a91745acdaf2601d3a50bf282129dac71
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685170"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881801"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure Time Series Insights zdroje událostí Gen2
 
@@ -59,7 +59,7 @@ Kromě výše uvedených osvědčených postupů doporučujeme, abyste pro důle
 
 - Zvyšte dobu uchování dat IoT Hub nebo centra událostí na maximálně 7 dní.
 
-- Vytvořte výstrahy prostředí v Azure Portal. Výstrahy založené na [metrikách](https://docs.microsoft.com/azure/time-series-insights/how-to-monitor-tsi-reference#metrics) platforem umožňují ověřit kompletní chování kanálu. [Tady najdete](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency#monitor-latency-and-throttling-with-alerts)pokyny k vytváření a správě výstrah. Navrhované podmínky upozornění:
+- Vytvořte výstrahy prostředí v Azure Portal. Výstrahy založené na [metrikách](./how-to-monitor-tsi-reference.md#metrics) platforem umožňují ověřit kompletní chování kanálu. [Tady najdete](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts)pokyny k vytváření a správě výstrah. Navrhované podmínky upozornění:
 
   - IngressReceivedMessagesTimeLag je větší než 5 minut
   - IngressReceivedBytes je 0

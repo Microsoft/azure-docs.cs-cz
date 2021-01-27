@@ -3,12 +3,12 @@ title: Upgrade verze clusteru Azure Service Fabric
 description: Přečtěte si o verzích clusterů v Azure Service Fabric, včetně odkazu na nejnovější verze z blogu týmu Service Fabric.
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: c9a29a97238164b9f6daf9dda66a1f314a7673ce
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: cd9c4be285c68e5482f7276429dd5514c72ae135
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98804238"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881546"
 ---
 # <a name="upgrade-your-azure-service-fabric-cluster-version"></a>Upgrade verze clusteru Azure Service Fabric
 
@@ -55,7 +55,7 @@ Upgrade na podporovanou verzi Service Fabric, aby nedocházelo k výpadkům nebo
 
 ### <a name="upgrade-alert-for-versions-later-than-63"></a>Výstraha upgradu pro verze novější než 6,3
 
-Pro zlepšení zabezpečení a dostupnosti infrastruktura Azure provedla změnu, která by mohla ovlivnit Service Fabric zákazníky. Tato změna bude mít vliv na všechny Service Fabric clusterů, které používají [režim otevřené sítě pro kontejnery](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode) a verze 6,3 až 7,0 nebo nekompatibilních podporovaných verzí později než 7,0. Aktualizace modulu runtime Service Fabric je k dispozici pro všechny podporované verze Service Fabric ve všech oblastech.
+Pro zlepšení zabezpečení a dostupnosti infrastruktura Azure provedla změnu, která by mohla ovlivnit Service Fabric zákazníky. Tato změna bude mít vliv na všechny Service Fabric clusterů, které používají [režim otevřené sítě pro kontejnery](./service-fabric-networking-modes.md#set-up-open-networking-mode) a verze 6,3 až 7,0 nebo nekompatibilních podporovaných verzí později než 7,0. Aktualizace modulu runtime Service Fabric je k dispozici pro všechny podporované verze Service Fabric ve všech oblastech.
 
 #### <a name="if-you-dont-upgrade-to-a-supported-version"></a>Pokud neprovádíte upgrade na podporovanou verzi
 

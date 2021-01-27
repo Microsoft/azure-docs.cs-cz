@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 01/15/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: f799ed5c18537b862a4971075ae9107b7a722fdd
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 2be1c7f76055cad1cf8b51938a65c7bbe6b2917e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251501"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881074"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Nejčastější dotazy k aplikaci Microsoft Authenticator
 
@@ -32,12 +32,6 @@ Aplikace Microsoft Authenticator nahradila Azure Authenticator aplikaci a při p
 **Otázka**: zaregistruji zařízení, které přijímá přístup společnosti nebo služby k zařízení?
 
 Odpověď **: registrace** zařízení dává vašemu zařízení přístup ke službám vaší organizace a neumožňuje vaší organizaci přístup k vašemu zařízení.
-
-### <a name="too-many-app-permissions"></a>Příliš mnoho oprávnění aplikace
-
-**Otázka**: Proč aplikace požaduje mnoho oprávnění?
-
-Odpověď **: zde** je úplný seznam oprávnění, která mohou být požádána o jejich použití v aplikaci. Konkrétní oprávnění, která vidíte, budou záviset na typu telefonu, který máte. Někdy vaše organizace chce znát vaše **umístění** , než vám umožní přístup k určitým prostředkům. Aplikace bude požadovat toto oprávnění pouze v případě, že vaše organizace má zásady vyžadující umístění.
 
 ### <a name="error-adding-account"></a>Chyba při přidávání účtu
 
@@ -144,7 +138,7 @@ Odpověď **: klepněte** na dlaždici účtu pro účet, který chcete odebrat 
 
 **Otázka**: Proč aplikace požaduje mnoho oprávnění?
 
-Odpověď **: zde** je úplný seznam oprávnění, která mohou být požádána o jejich použití v aplikaci. Konkrétní oprávnění, která vidíte, budou záviset na typu telefonu, který máte.<ul><li>**Použijte biometrického hardwaru.** Některé pracovní a školní účty vyžadují další kód PIN, kdykoli ověříte svoji identitu. Aplikace vyžaduje váš souhlas s použitím biometriky nebo rozpoznávání obličeje místo zadání kódu PIN.</li><li>**Kamery.** Používá se ke skenování kódů QR při přidávání pracovní, školní nebo neúčet Microsoft.</li><li>**Kontakty a telefon.** Aplikace vyžaduje toto oprávnění k hledání pracovních nebo školních účtů Microsoft na telefonu a jejich přidání do aplikace za vás.</li><li>**SMS.** Slouží k zajištění, že telefonní číslo odpovídá číslu záznamu při prvním přihlášení pomocí osobního účet Microsoft. Pošleme textovou zprávu na telefon, na který jste nainstalovali aplikaci, která obsahuje ověřovací kód 6-8 číslic. Nemusíte tento kód najít a zadat, protože ověřovatel ho v textové zprávě automaticky najde.</li><li>**Nakreslete přes jiné aplikace.** Oznámení, které ověřuje vaši identitu, se zobrazí také v jakékoli jiné spuštěné aplikaci.</li><li>**Příjem dat z Internetu.** Toto oprávnění je vyžadováno pro odesílání oznámení.</li><li>**Zabránit telefonu v režimu spánku.** Pokud zaregistrujete zařízení ve vaší organizaci, může vaše organizace tuto zásadu na telefonu změnit.</li><li>**Řízení vibrací.** Můžete zvolit, jestli chcete, aby se při každém přijetí oznámení k ověření vaší identity zobrazily vibrace.</li><li>**Použijte hardware otisku prstu.** Některé pracovní a školní účty vyžadují další kód PIN, kdykoli ověříte svoji identitu. Abychom to usnadnili, umožní vám místo zadávání kódu PIN používat otisk prstu.</li><li> **Zobrazit síťová připojení.** Když přidáte účet Microsoft, vyžaduje aplikace připojení k síti nebo Internetu.</li><li>**Přečtěte si obsah svého úložiště**. Toto oprávnění se používá jenom v případě, že budete Nahlásit technický problém prostřednictvím nastavení aplikace. K diagnostice tohoto problému se shromažďují nějaké informace z vašeho úložiště.</li><li>**Úplný přístup k síti** Toto oprávnění je vyžadováno k odesílání oznámení k ověření vaší identity.</li><li>**Spustit při spuštění.** Když restartujete telefon, toto oprávnění zajistí, že budete pokračovat v doručování oznámení, abyste ověřili svoji identitu.</li></ul>
+Odpověď **: zde** je úplný seznam oprávnění, která mohou být požádána o jejich použití v aplikaci. Konkrétní oprávnění, která vidíte, budou záviset na typu telefonu, který máte.<ul><li>**Umístění:** Někdy vaše organizace chce znát vaše umístění, než vám umožní přístup k určitým prostředkům. Aplikace bude požadovat toto oprávnění pouze v případě, že vaše organizace má zásady vyžadující umístění.</li><li>**Použijte biometrického hardwaru.** Některé pracovní a školní účty vyžadují další kód PIN, kdykoli ověříte svoji identitu. Aplikace vyžaduje váš souhlas s použitím biometriky nebo rozpoznávání obličeje místo zadání kódu PIN.</li><li>**Kamery.** Používá se ke skenování kódů QR při přidávání pracovní, školní nebo neúčet Microsoft.</li><li>**Kontakty a telefon.** Aplikace vyžaduje toto oprávnění k hledání pracovních nebo školních účtů Microsoft na telefonu a jejich přidání do aplikace za vás.</li><li>**SMS.** Slouží k zajištění, že telefonní číslo odpovídá číslu záznamu při prvním přihlášení pomocí osobního účet Microsoft. Pošleme textovou zprávu na telefon, na který jste nainstalovali aplikaci, která obsahuje ověřovací kód 6-8 číslic. Nemusíte tento kód najít a zadat, protože ověřovatel ho v textové zprávě automaticky najde.</li><li>**Nakreslete přes jiné aplikace.** Oznámení, které ověřuje vaši identitu, se zobrazí také v jakékoli jiné spuštěné aplikaci.</li><li>**Příjem dat z Internetu.** Toto oprávnění je vyžadováno pro odesílání oznámení.</li><li>**Zabránit telefonu v režimu spánku.** Pokud zaregistrujete zařízení ve vaší organizaci, může vaše organizace tuto zásadu na telefonu změnit.</li><li>**Řízení vibrací.** Můžete zvolit, jestli chcete, aby se při každém přijetí oznámení k ověření vaší identity zobrazily vibrace.</li><li>**Použijte hardware otisku prstu.** Některé pracovní a školní účty vyžadují další kód PIN, kdykoli ověříte svoji identitu. Abychom to usnadnili, umožní vám místo zadávání kódu PIN používat otisk prstu.</li><li> **Zobrazit síťová připojení.** Když přidáte účet Microsoft, vyžaduje aplikace připojení k síti nebo Internetu.</li><li>**Přečtěte si obsah svého úložiště**. Toto oprávnění se používá jenom v případě, že budete Nahlásit technický problém prostřednictvím nastavení aplikace. K diagnostice tohoto problému se shromažďují nějaké informace z vašeho úložiště.</li><li>**Úplný přístup k síti** Toto oprávnění je vyžadováno k odesílání oznámení k ověření vaší identity.</li><li>**Spustit při spuštění.** Když restartujete telefon, toto oprávnění zajistí, že budete pokračovat v doručování oznámení, abyste ověřili svoji identitu.</li></ul>
 
 ### <a name="approve-requests-without-unlocking"></a>Schvalovat žádosti bez odemknutí
 

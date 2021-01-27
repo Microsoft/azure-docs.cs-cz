@@ -3,12 +3,12 @@ title: Přehled přenosu zpráv ve službě Azure Service Bus | Dokumentace Micr
 description: Tento článek poskytuje podrobný přehled Azure Service Bus, plně spravovaného zprostředkovatele zpráv Enterprise Integration.
 ms.topic: overview
 ms.date: 11/20/2020
-ms.openlocfilehash: d9103557eb7b32f376ba6590bbca5f557bf32764
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 7453e8dd300ad754fb58489f059670af209314ab
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632863"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881597"
 ---
 # <a name="what-is-azure-service-bus"></a>Co je Azure Service Bus?
 Microsoft Azure Service Bus je plně spravovaný zprostředkovatel podnikových zpráv s frontami zpráv a tématy pro publikování a odběr. Service Bus slouží k tomu, aby bylo možné oddělit aplikace a služby od sebe od sebe, a nabízí následující výhody:
@@ -32,7 +32,7 @@ Mezi běžné scénáře zasílání zpráv patří:
     2. Vystavení výsledků zpracování do jedné nebo více různých front.
     3. Přesune vstupní zprávu z původní fronty. 
     
-    Výsledky budou viditelné pro příjemce pro příjem dat, a to i po úspěšném dokončení, včetně úspěšného vyrovnání vstupní zprávy a umožňující jenom sémantiku zpracování jenom jednou. Tento model transakce je robustní základ pro vzor [kompenzačních transakcí](https://docs.microsoft.com/azure/architecture/patterns/compensating-transaction) v kontextu většího řešení. 
+    Výsledky budou viditelné pro příjemce pro příjem dat, a to i po úspěšném dokončení, včetně úspěšného vyrovnání vstupní zprávy a umožňující jenom sémantiku zpracování jenom jednou. Tento model transakce je robustní základ pro vzor [kompenzačních transakcí](/azure/architecture/patterns/compensating-transaction) v kontextu většího řešení. 
 * *Relace zpráv*. Implementace vysoce škálovatelné koordinace pracovních postupů a multiplexových přenosů, které vyžadují striktní řazení zpráv nebo odložení zpráv.
 
 Pokud jste obeznámeni s dalšími zprostředkovateli zpráv, jako je Apache ActiveMQ, Service Bus koncepce podobné těm, co znáte. Jelikož je Service Bus nabídka typu platforma jako služba (PaaS), jedná se o klíčový rozdíl, který se nemusíte starat o následující akce. Azure se za vás postará o tyto rutinní. 

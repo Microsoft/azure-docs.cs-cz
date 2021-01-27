@@ -8,12 +8,12 @@ ms.date: 05/14/2019
 ms.author: normesta
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: eddee58d70cf621bd6c82d54fe75434f4e596d9e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 682394329205d74859c1af0c0a68a37539da7872
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498162"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881024"
 ---
 #  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-with-azcopy"></a>Kurz: migrace místních dat do cloudového úložiště pomocí AzCopy
 
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete tento kurz dokončit, Stáhněte si nejnovější verzi AzCopy. Viz Začínáme [s AzCopy](storage-use-azcopy-v10.md).
 
@@ -108,7 +108,7 @@ azcopy sync "<local-folder-path>" "https://<storage-account-name>.blob.core.wind
 
 * `<container-name>`Zástupný symbol nahraďte názvem kontejneru, který jste vytvořili.
 
-Další informace o příkazu najdete `sync` v tématu [synchronizace souborů](storage-use-azcopy-blobs.md#synchronize-files).
+Další informace o příkazu najdete `sync` v tématu [synchronizace souborů](./storage-use-azcopy-v10.md#transfer-data).
 
 ## <a name="create-a-scheduled-task"></a>Vytvoření plánované úlohy
 
@@ -182,7 +182,7 @@ Další informace o AzCopy najdete v některém z těchto článků:
 
 * [Začínáme s nástrojem AzCopy](storage-use-azcopy-v10.md)
 
-* [Přenos dat pomocí AzCopy a BLOB Storage](storage-use-azcopy-blobs.md)
+* [Přenos dat pomocí AzCopy a BLOB Storage](./storage-use-azcopy-v10.md#transfer-data)
 
 * [Přenos dat s použitím AzCopy a úložiště souborů](storage-use-azcopy-files.md)
 

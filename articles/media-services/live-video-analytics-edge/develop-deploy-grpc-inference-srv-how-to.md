@@ -3,12 +3,12 @@ title: Vývoj a nasazení gRPC odvozeného serveru – Azure
 description: Tento článek poskytuje pokyny pro vývoj a nasazení gRPC odvozeného serveru.
 ms.topic: how-to
 ms.date: 12/02/2020
-ms.openlocfilehash: 3f732a7432dacebeeefddd1822fec7d95dfbaa97
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 6184a369e73c26d3a8a716f9daf1c0420a5239fe
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97425798"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881648"
 ---
 # <a name="how-to-guide--develop-and-deploy-a-grpc-inference-server"></a>Návod – vývoj a nasazení gRPC odvozeného serveru
 
@@ -24,11 +24,11 @@ V tomto článku se dozvíte, jak můžete zabalit model AI podle vašeho výbě
 * [Úvod do gRPC](https://www.grpc.io/docs/what-is-grpc/introduction/)
 * [Průvodce jazyky proto3](https://developers.google.com/protocol-buffers/docs/proto3)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Zařízení s platformou X86-64 nebo ARM64, které používá některý z [podporovaných operačních systémů Linux](https://docs.microsoft.com/azure/iot-edge/support#operating-systems) nebo počítače s Windows.
+* Zařízení s platformou X86-64 nebo ARM64, které používá některý z [podporovaných operačních systémů Linux](../../iot-edge/support.md#operating-systems) nebo počítače s Windows.
 * [Nainstalujte do počítače Docker](https://docs.docker.com/desktop/#download-and-install) .
-* Nainstalujte [modul runtime IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge?tabs=linux).
+* Nainstalujte [modul runtime IoT Edge](../../iot-edge/how-to-install-iot-edge.md?tabs=linux).
 
 ## <a name="grpc-implementation-steps"></a>Postup implementace gRPC
 
@@ -197,7 +197,7 @@ Teď, když jsme nakonfigurovali a inicializoval připojení portů serveru gRPC
         1. Převeďte obrázek v bajtovém poli ke zpracování. Viz metoda: `GetBytes(Bitmap image)`
         
             Vzorový procesor, který používáme, podporuje jenom obrázek s kódováním JPG a žádný jako pixelový formát. V případě, že vlastní procesor podporuje jiné kódování a/nebo formát, aktualizujte `IsMediaFormatSupported` metodu třídy procesor.
-        1. Pomocí [třídy ColorMatrix](https://docs.microsoft.com/dotnet/api/system.drawing.imaging.colormatrix?redirectedfrom=MSDN&view=dotnet-plat-ext-3.1&preserve-view=true)Převeďte obrázek na šedý stupnici. Viz metoda: `ToGrayScale(Image source)` .
+        1. Pomocí [třídy ColorMatrix](/dotnet/api/system.drawing.imaging.colormatrix?preserve-view=true&view=dotnet-plat-ext-3.1)Převeďte obrázek na šedý stupnici. Viz metoda: `ToGrayScale(Image source)` .
         1. Až získáme obrázek se šedým škálováním, vypočítáme průměrnou velikost šedých bajtů.
         1. Pokud průměrná hodnota < 127, klasifikujeme Image jako "tmavě", jinak je klasifikujme jako "Light" s hodnotou spolehlivosti jako 1,0. Viz metoda: `ProcessImage(List<Image> images)` .
 
@@ -213,7 +213,7 @@ Teď, když jsme nakonfigurovali a inicializoval připojení portů serveru gRPC
 
 Teď, když jste vytvořili modul rozšíření gRPC, teď vytvoříme a nasadíme topologii mediálního grafu.
 
-1. Pomocí Visual Studio Code se přihlaste k Docker podle [těchto pokynů](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux#build-and-push-your-solution) .
+1. Pomocí Visual Studio Code se přihlaste k Docker podle [těchto pokynů](../../iot-edge/tutorial-develop-for-linux.md#build-and-push-your-solution) .
 1. V Visual Studio Code, přejít na src/Edge. Zobrazí se soubor. ENV a některé soubory šablon nasazení.
 
     Šablona nasazení odkazuje na manifest nasazení hraničního zařízení. Obsahuje některé zástupné hodnoty. Soubor. env obsahuje hodnoty pro tyto proměnné.
@@ -309,4 +309,3 @@ V této fázi se spustilo nasazení hraničních modulů do zařízení IoT Edge
 ## <a name="next-steps"></a>Další kroky
 
 Postupujte podle kroků **Příprava na monitorování událostí** zmíněných v části [Analýza živého videa pomocí](use-your-model-quickstart.md) rychlého startu modelu a spusťte ukázku a interpretujte výsledky. Podívejte se také na naše ukázkové topologie gRPC: [gRPCExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/grpcExtension/topology.json), [CVRWithGrpcExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/cvr-with-grpcExtension/topology.json), [EVRtoAssetsByGrpcExtension a [EVROnMotionPlusGrpcExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/motion-with-grpcExtension/topology.json).
-

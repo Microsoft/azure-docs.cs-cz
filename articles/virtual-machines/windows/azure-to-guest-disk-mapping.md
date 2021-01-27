@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: tibasham
-ms.openlocfilehash: f16e34f372016f284d4af79443e84d9d5cdea957
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 373fd26c36bf2f77de6a376f738bd3caaf735f00
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96523476"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881868"
 ---
 # <a name="how-to-map-azure-disks-to-windows-vm-guest-disks"></a>Postup mapování disků Azure na disky hosta virtuálních počítačů s Windows
 
@@ -29,11 +29,11 @@ Pro naše cvičení stačí použít logickou jednotku (LUN).
 
 ## <a name="finding-the-lun"></a>Hledání logické jednotky (LUN)
 
-Existují dvě metody, jak najít logickou jednotku (LUN), kterou si vyberete, bude záviset na tom, zda používáte [prostory úložiště](https://docs.microsoft.com/windows-server/storage/storage-spaces/overview) nebo ne.
+Existují dvě metody, jak najít logickou jednotku (LUN), kterou si vyberete, bude záviset na tom, zda používáte [prostory úložiště](/windows-server/storage/storage-spaces/overview) nebo ne.
 
 ### <a name="disk-management"></a>Správa disků
 
-Pokud nepoužíváte fondy úložiště, můžete logickou jednotku najít pomocí [nástroje Správa disků](https://docs.microsoft.com/windows-server/storage/disk-management/overview-of-disk-management) .
+Pokud nepoužíváte fondy úložiště, můžete logickou jednotku najít pomocí [nástroje Správa disků](/windows-server/storage/disk-management/overview-of-disk-management) .
 
 1. Připojte se k virtuálnímu počítači a otevřete správu disků a. Klikněte na tlačítko Start pravým tlačítkem myši a vyberte "Správa disků" a. Můžete také zadat `diskmgmt.msc` do pole Zahájit hledání.
 1. V dolním podokně klikněte pravým tlačítkem na některý z disků a vyberte vlastnosti.
@@ -55,7 +55,7 @@ Logickou jednotku (LUN) pro disk Azure můžete najít pomocí Azure Portal, Azu
 1. Vybrat virtuální počítač
 1. Vybrat disky
 1. Vyberte datový disk ze seznamu připojených disků.
-1. Logická jednotka disku se zobrazí v podokně Podrobnosti o disku. Logická jednotka zobrazená tady koreluje s logickými jednotkami, které byly vyhledány v hostu pomocí Device Manager nebo Správce serveru.
+1. Logická jednotka disku se zobrazí v podokně Podrobnosti o disku. Logická jednotka zobrazená tady koreluje s logickými jednotkami, které byly vyhledány v hostu pomocí Správce zařízení nebo Správce serveru.
 
 ### <a name="finding-an-azure-disks-lun-using-azure-cli-or-azure-powershell"></a>Vyhledání logické jednotky disku Azure pomocí rozhraní příkazového řádku Azure nebo Azure PowerShell
 

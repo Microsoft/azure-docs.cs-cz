@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: cd272e0c6ce76ff69e3e58417845836fe2f55b39
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 522ba95a5d6d97a8fde242274b1b0af969af20a5
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98744987"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881497"
 ---
 # <a name="retrieve-information-about-your-azure-cloud-service-extended-support-deployments"></a>Načtěte informace o nasazeních služby Azure Cloud Service (Rozšířená podpora).
 
@@ -99,4 +99,5 @@ Statuses                    : {{
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o službě Azure Cloud Services (Rozšířená podpora) najdete v tématu [Přehled azure Cloud Services (Rozšířená podpora)](overview.md).
+- Další informace o službě Azure Cloud Services (Rozšířená podpora) najdete v tématu [Přehled azure Cloud Services (Rozšířená podpora)](overview.md).
+- Navštivte [úložiště ukázek Cloud Services (rozšířené podpory)](https://github.com/Azure-Samples/cloud-services-extended-support) .

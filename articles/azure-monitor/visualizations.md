@@ -5,20 +5,20 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/17/2020
-ms.openlocfilehash: f9f95a5e85ec4eebf82cca707476750595331d73
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.date: 01/25/2021
+ms.openlocfilehash: bc59c639856de6a5ce5adda1f78266eb7e4d5dd3
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522664"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881227"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Vizualizace dat z Azure Monitoru
 Tento článek poskytuje souhrn dostupných metod pro vizualizaci dat protokolů a metrik uložených v Azure Monitor.
 
 Vizualizace, jako jsou grafy a grafy, vám pomohou analyzovat data monitorování, aby bylo možné rozlišit problémy a identifikovat vzory. V závislosti na nástroji, který použijete, můžete také sdílet vizualizace s ostatními uživateli v rámci vaší organizace i mimo ni.
 
-## <a name="workbooks"></a>Sešity
+## <a name="workbooks"></a>Workbooks
 [Sešity](./platform/workbooks-overview.md) jsou interaktivní dokumenty, které poskytují podrobné přehledy o vašich datech, vyšetřování a spolupráci v rámci týmu. Konkrétní příklady, kde jsou sešity užitečné, jsou průvodci odstraňováním potíží a Postmortem incidentů.
 
 ![Diagram znázorňuje snímky obrazovky několika stránek ze sešitu, včetně analýzy zobrazení stránky, využití a času stráveného na stránce.](media/visualizations/workbook.png)
@@ -46,9 +46,9 @@ Tady je video s návodem k vytváření řídicích panelů.
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4AslH]
 
 ### <a name="advantages"></a>Výhody
-- Hluboká integrace do Azure Vizualizace je možné připnout na řídicí panely z více stránek Azure, včetně Průzkumník metrik, Log Analytics a Application Insights.
+- Hluboká integrace do Azure Vizualizace je možné připnout na řídicí panely z více stránek Azure, včetně [Průzkumník metrik](platform/metrics-charts.md), [Log Analytics](log-query/log-analytics-overview.md)a [Application Insights](app/app-insights-overview.md).
 - Podporuje obě metriky a protokoly.
-- Kombinovat data z různých zdrojů, včetně výstupu z [Průzkumníka metrik](platform/metrics-charts.md), [dotazů protokolu](log-query/log-query-overview.md)a [map](app/app-map.md) a dostupnosti v Application Insights.
+- Kombinovat data z různých zdrojů, včetně výstupu z [Průzkumník metrik](platform/metrics-charts.md), [dotazů protokolu](log-query/log-query-overview.md)a [map](app/app-map.md) a dostupnosti v [Application Insights](app/app-insights-overview.md).
 - Možnost pro osobní nebo sdílené řídicí panely. Integrováno s [řízením přístupu na základě role Azure (Azure RBAC)](../role-based-access-control/overview.md).
 - Automatická aktualizace Aktualizace metrik závisí na časovém rozsahu, který je minimálně pět minut. Protokoly se aktualizují každou hodinu s možností ruční aktualizace na vyžádání kliknutím na ikonu aktualizovat v dané vizualizaci nebo aktualizací úplného řídicího panelu.
 - Parametry a řídicí panely metriky s parametry s časovým razítkem a vlastními parametry.
@@ -57,7 +57,7 @@ Tady je video s návodem k vytváření řídicích panelů.
 
 
 ### <a name="limitations"></a>Omezení
-- Omezená kontrola nad vizualizacemi protokolu bez podpory tabulek dat. Celkový počet datových řad je omezený na 10 s další datovou řadou seskupenou v _jiném_ intervalu.
+- Omezená kontrola nad vizualizacemi protokolu bez podpory tabulek dat. Celkový počet datových řad je omezen na 50 s další datovou řadou seskupenou v _jiném_ intervalu.
 - Nepodporují se žádné vlastní parametry pro grafy protokolů.
 - Grafy protokolů jsou omezené na posledních 30 dní.
 - Grafy protokolů je možné připnout pouze na sdílené řídicí panely.
@@ -140,8 +140,9 @@ K datům v protokolech a datech metrik v Azure Monitor prostřednictvím rozhran
 ## <a name="next-steps"></a>Další kroky
 - Seznamte se s [daty shromažďovanými nástrojem Azure monitor](platform/data-platform.md).
 - Přečtěte si o [řídicích panelech Azure](../azure-portal/azure-portal-dashboards.md).
-- Přečtěte si o [zobrazeních v Azure monitor](platform/view-designer.md).
+- Informace o [Průzkumník metrik](platform/metrics-getting-started.md)
 - Seznamte se se [sešity](./platform/workbooks-overview.md).
 - Přečtěte si informace o [importu dat protokolu do Power BI](./platform/powerbi.md).
 - Seznamte se s [modulem plug-in zdroje dat Grafana Azure monitor](./platform/grafana-plugin.md).
+- Přečtěte si o [zobrazeních v Azure monitor](platform/view-designer.md).
 

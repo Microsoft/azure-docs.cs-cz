@@ -8,12 +8,12 @@ ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: df3dd8b5b18ec2997ee20ad4955ffd7bc1dc573d
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 2f49ec0fef5aa79c602e561746eb0f6dba16cb33
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955004"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98876593"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Co je nového ve virtuálním počítači s Windows?
 
@@ -193,7 +193,7 @@ Další informace o nových funkcích najdete v [tomto blogovém příspěvku](h
 
 Nejnovější verze nástroje pro automatické škálování, který je ve verzi Preview, je teď všeobecně dostupná. Tento nástroj používá účet Azure Automation a aplikaci logiky Azure k automatickému vypnutí a restartování virtuálních počítačů hostitele relace v rámci fondu hostitelů, což snižuje náklady na infrastrukturu. Další informace najdete v informacích o [škálování hostitelů relací pomocí Azure Automation](set-up-scaling-script.md).
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure Portal
 
 Pomocí Azure Portal ve virtuální ploše Windows teď můžete provádět následující akce: 
 
@@ -232,7 +232,7 @@ Tady je tato změna pro vás:
 
 - V této aktualizaci už nemusíte spouštět Azure Marketplace nebo šablonu GitHubu opakovaně, abyste mohli rozšířit fond hostitelů. K rozšíření fondu hostitelů stačí přejít do fondu hostitelů v Azure Portal a vybrat **+ Přidat** pro nasazení dalších hostitelů relací.
 
-- Nasazení fondu hostitelů je teď plně integrované s [galerií sdílených imagí Azure](../virtual-machines/windows/shared-image-galleries.md). Galerie sdílených imagí je samostatná služba Azure, která ukládá definice imagí virtuálních počítačů (VM), včetně správy verzí imagí. K kopírování a posílání imagí do jiných oblastí Azure pro místní nasazení můžete použít taky globální replikaci.
+- Nasazení fondu hostitelů je teď plně integrované s [galerií sdílených imagí Azure](../virtual-machines/shared-image-galleries.md). Galerie sdílených imagí je samostatná služba Azure, která ukládá definice imagí virtuálních počítačů (VM), včetně správy verzí imagí. K kopírování a posílání imagí do jiných oblastí Azure pro místní nasazení můžete použít taky globální replikaci.
 
 - Funkce monitorování, které se použily k provedení prostřednictvím PowerShellu nebo webové aplikace diagnostické služby, se teď přesunuly na Log Analytics v Azure Portal. Nyní máte dvě možnosti vizualizace vašich sestav. Můžete spouštět dotazy Kusto a používat sešity k vytváření vizuálních sestav.
 

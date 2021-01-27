@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 26ef07269c9451c2e9d05d42e2247fbfcdae4844
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 7e93c659ad58db8d82e68380ab6a0855af27e1bf
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201956"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882378"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: návrh pro vysoký výkon
 
@@ -35,8 +35,8 @@ Tyto pokyny poskytujeme konkrétně pro Premium Storage, protože úlohy spušt�
 >
 > Pokud chcete otestovat srovnávací testy disku, přečtěte si naše články o testování disku:
 >
-> * Pro Linux: [srovnávací testy vaší aplikace v Azure Disk Storage](linux/disks-benchmarks.md)
-> * Pro Windows: [srovnávací testy disku](windows/disks-benchmarks.md).
+> * Pro Linux: [srovnávací testy vaší aplikace v Azure Disk Storage](./disks-benchmarks.md)
+> * Pro Windows: [srovnávací testy disku](./disks-benchmarks.md).
 >
 > Pokud váš virtuální počítač podporuje akcelerované síťové služby, měli byste se ujistit, že je povolený. Pokud není povolená, můžete ji povolit na již nasazených virtuálních počítačích v [systému Windows](../virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms) i [Linux](../virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms).
 
@@ -104,7 +104,7 @@ Dále změřte maximální požadavky na výkon vaší aplikace během své živ
 | Průměrná latence | | | |
 | Max. Procesor | | | |
 | Průměrný procesor | | | |
-| Max. Paměť | | | |
+| Max. Memory (Paměť) | | | |
 | Průměrná paměť | | | |
 | Hloubka fronty | | | |
 
@@ -119,7 +119,7 @@ Nejlepším způsobem, jak změřit požadavky na výkon vaší aplikace, je pou
 
 Čítače výkonu jsou k dispozici pro procesor, paměť a každý logický disk a fyzický disk serveru. Když použijete disky Premium Storage s virtuálním počítačem, čítače fyzického disku jsou pro každý disk Storage úrovně Premium a čítače logických disků jsou pro každý svazek vytvořený na discích úložiště úrovně Premium. Je nutné zachytit hodnoty pro disky, které hostují zatížení vaší aplikace. Pokud existuje mapování mezi logickými a fyzickými disky, můžete se podívat na čítače fyzického disku. v opačném případě se podívejte na čítače logických disků. V systému Linux příkaz iostat vygeneruje sestavu využití procesoru a disku. Sestava využití disku poskytuje statistiku pro každé fyzické zařízení nebo oddíl. Pokud máte databázový server s daty a protokoly na samostatných discích, shromážděte tato data pro oba disky. Následující tabulka popisuje čítače pro disky, procesory a paměť:
 
-| Čítač | Description | PerfMon | Iostat |
+| Čítač | Popis | PerfMon | Iostat |
 | --- | --- | --- | --- |
 | **Počet vstupně-výstupních operací za sekundu** |Počet vstupně-výstupních požadavků vydaných na disk úložiště za sekundu. |Čtení z disku/s <br> Zápisy na disk/s |TPS <br> r/s <br> w/s |
 | **Čtení a zápisy na disk** |% operací čtení a zápisu provedených na disku. |% Doby čtení disku <br> % Času zápisu na disk |r/s <br> w/s |
@@ -201,7 +201,7 @@ Když začnete navrhovat aplikaci, jednou z nich, kterou je třeba udělat, je, 
 
 Virtuální počítače s vysokým rozsahem jsou k dispozici v různých velikostech s různými počty PROCESORových jader, paměti, operačním systémem a dočasné velikosti disku. Každá velikost virtuálního počítače má také maximální počet datových disků, které můžete připojit k virtuálnímu počítači. Vybraná velikost virtuálního počítače proto bude mít vliv na to, kolik je pro vaši aplikaci k dispozici zpracování, paměť a kapacita úložiště. Ovlivňuje také náklady na výpočetní prostředky a úložiště. Níže jsou uvedené například specifikace největšího počtu virtuálních počítačů v řadě DS a řady GS:
 
-| Velikost virtuálního počítače | Procesorová jádra | Paměť | Velikosti disků virtuálních počítačů | Max. datové disky | Velikost mezipaměti | IOPS | Omezení v/v mezipaměti šířky pásma |
+| Velikost virtuálního počítače | Procesorová jádra | Memory (Paměť) | Velikosti disků virtuálních počítačů | Max. datové disky | Velikost mezipaměti | IOPS | Omezení v/v mezipaměti šířky pásma |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS14 |16 |112 GB |OS = 1023 GB <br> Místní SSD = 224 GB |32 |576 GB |50 000 IOPS <br> 512 MB za sekundu |4 000 IOPS a 33 MB za sekundu |
 | Standard_GS5 |32 |448 GB |OS = 1023 GB <br> Místní SSD = 896 GB |64 |4224 GB |80 000 IOPS <br> 2 000 MB za sekundu |5 000 IOPS a 50 MB za sekundu |
@@ -380,8 +380,8 @@ Azure Premium Storage zřídí zadaný počet vstupně-výstupních operací za 
 
 Pokud chcete otestovat srovnávací testy disku, přečtěte si naše články o testování disku:
 
-* Pro Linux: [srovnávací testy vaší aplikace v Azure Disk Storage](linux/disks-benchmarks.md)
-* Pro Windows: [srovnávací testy disku](windows/disks-benchmarks.md).
+* Pro Linux: [srovnávací testy vaší aplikace v Azure Disk Storage](./disks-benchmarks.md)
+* Pro Windows: [srovnávací testy disku](./disks-benchmarks.md).
 
 Další informace o dostupných typech disků:
 

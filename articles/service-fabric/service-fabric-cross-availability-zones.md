@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: 82161a8f66dd717a9dc448a743b818a9ab9938db
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 3db31431c24edd3377f6299046cc31067310b2ef
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250974"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98876206"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Nasazení clusteru Azure Service Fabric napříč Zóny dostupnosti
 Zóny dostupnosti v Azure je nabídka s vysokou dostupností, která chrání vaše aplikace a data při selhání datacentra. Zóna dostupnosti je jedinečné fyzické umístění vybavené nezávislým napájením, chlazením a sítí v oblasti Azure.
@@ -345,7 +345,7 @@ Pokud chcete povolit zóny v sadě škálování virtuálního počítače, mus�
 
 * První hodnotou je vlastnost **Zones** , která určuje zóny dostupnosti přítomná v sadě škálování virtuálního počítače.
 * Druhá hodnota je vlastnost "singlePlacementGroup", která musí být nastavena na hodnotu true. **Sada škálování rozložené přes 3 AZ může škálovat virtuální počítače až 300 i s "singlePlacementGroup = true".**
-* Třetí hodnota je "zoneBalance", která zajišťuje striktní vyrovnávání zóny, pokud je nastavena hodnota true. Doporučujeme tuto možnost nastavit na true, aby nedošlo k nevyvážené distribuci virtuálních počítačů napříč zónami. Přečtěte si o [zoneBalancing](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones#zone-balancing).
+* Třetí hodnota je "zoneBalance", která zajišťuje striktní vyrovnávání zóny, pokud je nastavena hodnota true. Doporučujeme tuto možnost nastavit na true, aby nedošlo k nevyvážené distribuci virtuálních počítačů napříč zónami. Přečtěte si o [zoneBalancing](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md#zone-balancing).
 * Přepsání FaultDomain a UpgradeDomain není nutné konfigurovat.
 
 ```json
@@ -416,9 +416,9 @@ Pro podporu více zón dostupnosti musí být povolený Service Fabric nodeType.
 
 ### <a name="migration-to-the-node-type-with-multiple-availability-zones"></a>Migrace na typ uzlu s více Zóny dostupnosti
 Pro všechny scénáře migrace je nutné přidat nový uzel nodeType, který bude mít podporu více zón dostupnosti. Existující uzel nodeType nejde migrovat na podporu více zón.
-V [tomto](https://docs.microsoft.com/azure/service-fabric/service-fabric-scale-up-primary-node-type ) článku se dozvíte o podrobných krocích při přidávání nového NodeType a také o přidání dalších prostředků potřebných pro nový typ NodeType, jako jsou prostředky IP a disrovnávání zatížení sítě. Stejný článek také popisuje, jak teď vyřadit existující uzel nodeType po přidání uzlu nodeType s více zónami dostupnosti do clusteru.
+V [tomto](./service-fabric-scale-up-primary-node-type.md) článku se dozvíte o podrobných krocích při přidávání nového NodeType a také o přidání dalších prostředků potřebných pro nový typ NodeType, jako jsou prostředky IP a disrovnávání zatížení sítě. Stejný článek také popisuje, jak teď vyřadit existující uzel nodeType po přidání uzlu nodeType s více zónami dostupnosti do clusteru.
 
-* Migrace z protokolu nodeType, který používá základní prostředky a a IP: Tento postup je již [zde](https://docs.microsoft.com/azure/service-fabric/service-fabric-cross-availability-zones#migrate-to-using-availability-zones-from-a-cluster-using-a-basic-sku-load-balancer-and-a-basic-sku-ip) popsán pro řešení s jedním typem uzlu na AZ. 
+* Migrace z protokolu nodeType, který používá základní prostředky a a IP: Tento postup je již [zde](#migrate-to-using-availability-zones-from-a-cluster-using-a-basic-sku-load-balancer-and-a-basic-sku-ip) popsán pro řešení s jedním typem uzlu na AZ. 
     V případě nového typu uzlu jediným rozdílem je, že je k dispozici pouze 1 sada škálování virtuálního počítače a 1 uzel NodeType pro všechny AZ 's 1 a New na AZ.
 * Migrace z uzlu nodeType, který používá standardní skladové položky SKU a prostředků IP s NSG: postupujte stejným způsobem jako v případě, že není nutné přidávat nové prostředky s jednotkou, IP a NSG a že se stejné prostředky dají znovu použít v novém uzlu nodeType.
 

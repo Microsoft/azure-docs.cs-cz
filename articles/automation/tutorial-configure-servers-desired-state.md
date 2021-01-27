@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.openlocfilehash: 55c7522ad1dc6c7f91fae608a777dab3cd67d2ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e09607dde118ce25e5d2e5311e7614f2f18a590
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86183166"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98890726"
 ---
 # <a name="configure-machines-to-a-desired-state"></a>Konfigurace počítačů do požadovaného stavu
 
@@ -42,7 +42,7 @@ Další informace o tom, jak týmy můžou spolupracovat pro spolupráci se serv
 
 ## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
 
-Přihlaste se k předplatnému Azure pomocí rutiny [Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount?view=azps-3.7.0) a postupujte podle pokynů na obrazovce.
+Přihlaste se k předplatnému Azure pomocí rutiny [Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount) a postupujte podle pokynů na obrazovce.
 
 ```powershell
 Connect-AzAccount
@@ -68,7 +68,7 @@ configuration TestConfig {
 > [!NOTE]
 > V pokročilejších scénářích, kdy potřebujete importovat více modulů, které poskytují prostředky DSC, se ujistěte, že má každý modul jedinečný `Import-DscResource` řádek v konfiguraci.
 
-Voláním rutiny [Import-AzAutomationDscConfiguration](/powershell/module/Az.Automation/Import-AzAutomationDscConfiguration?view=azps-3.7.0) nahrajte konfiguraci do svého účtu Automation.
+Voláním rutiny [Import-AzAutomationDscConfiguration](/powershell/module/Az.Automation/Import-AzAutomationDscConfiguration) nahrajte konfiguraci do svého účtu Automation.
 
 ```powershell
  Import-AzAutomationDscConfiguration -SourcePath 'C:\DscConfigs\TestConfig.ps1' -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount' -Published
@@ -78,7 +78,7 @@ Voláním rutiny [Import-AzAutomationDscConfiguration](/powershell/module/Az.Aut
 
 Konfigurace DSC musí být zkompilována do konfigurace uzlu před tím, než může být přiřazena k uzlu. Viz [Konfigurace DSC](/powershell/scripting/dsc/configurations/configurations).
 
-Zavolejte rutinu [Start-AzAutomationDscCompilationJob](/powershell/module/Az.Automation/Start-AzAutomationDscCompilationJob?view=azps-3.7.0) pro zkompilování `TestConfig` Konfigurace do konfigurace uzlu s názvem `TestConfig.WebServer` v účtu Automation.
+Zavolejte rutinu [Start-AzAutomationDscCompilationJob](/powershell/module/Az.Automation/Start-AzAutomationDscCompilationJob) pro zkompilování `TestConfig` Konfigurace do konfigurace uzlu s názvem `TestConfig.WebServer` v účtu Automation.
 
 ```powershell
 Start-AzAutomationDscCompilationJob -ConfigurationName 'TestConfig' -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount'
@@ -88,7 +88,7 @@ Start-AzAutomationDscCompilationJob -ConfigurationName 'TestConfig' -ResourceGro
 
 Konfiguraci stavu Azure Automation můžete použít ke správě virtuálních počítačů Azure (klasických i Správce prostředků), místních virtuálních počítačů, počítačů se systémem Linux, virtuálních počítačů s AWS a místních fyzických počítačů. V tomto tématu se zabýváme registrací jenom Azure Resource Manager virtuálních počítačů. Informace o registraci jiných typů počítačů najdete v tématu věnovaném [připojování počítačů ke správě podle konfigurace stavu Azure Automation](automation-dsc-onboarding.md).
 
-Voláním rutiny [Register-AzAutomationDscNode](/powershell/module/Az.Automation/Register-AzAutomationDscNode?view=azps-3.7.0) ZAREGISTRUJETE virtuální počítač s konfigurací stavu Azure Automation jako spravovaný uzel. 
+Voláním rutiny [Register-AzAutomationDscNode](/powershell/module/Az.Automation/Register-AzAutomationDscNode) ZAREGISTRUJETE virtuální počítač s konfigurací stavu Azure Automation jako spravovaný uzel. 
 
 ```powershell
 Register-AzAutomationDscNode -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount' -AzureVMName 'DscVm'
@@ -125,7 +125,7 @@ Tím se přiřadí konfigurace uzlu s názvem `TestConfig.WebServer` k zaregistr
 
 ## <a name="check-the-compliance-status-of-a-managed-node"></a>Zkontroluje stav dodržování předpisů spravovaného uzlu.
 
-Pomocí rutiny [Get-AzAutomationDscNodeReport](/powershell/module/Az.Automation/Get-AzAutomationDscNodeReport?view=azps-3.7.0) můžete získat sestavy o stavu dodržování předpisů spravovaného uzlu.
+Pomocí rutiny [Get-AzAutomationDscNodeReport](/powershell/module/Az.Automation/Get-AzAutomationDscNodeReport) můžete získat sestavy o stavu dodržování předpisů spravovaného uzlu.
 
 ```powershell
 # Get the ID of the DSC node
@@ -146,9 +146,9 @@ Pokud se rozhodnete odebrat uzel ze služby, můžete tak učinit buď pomocí A
 > [!NOTE]
 > Zrušení registrace uzlu ze služby nastaví pouze nastavení místního Configuration Manager, aby se uzel již nepřipojoval k této službě.
 > To neplatí pro konfiguraci, která je aktuálně použita pro uzel.
-> Pokud chcete odebrat aktuální konfiguraci, použijte [PowerShell](/powershell/module/psdesiredstateconfiguration/remove-dscconfigurationdocument?view=powershell-5.1) nebo odstraňte místní konfigurační soubor (Toto je jediná možnost pro uzly Linux).
+> Pokud chcete odebrat aktuální konfiguraci, použijte [PowerShell](/powershell/module/psdesiredstateconfiguration/remove-dscconfigurationdocument) nebo odstraňte místní konfigurační soubor (Toto je jediná možnost pro uzly Linux).
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure Portal
 
 V Azure Automation klikněte v obsahu na **Konfigurace stavu (DSC)** .
 Dalším kliknutím na **uzly** zobrazíte seznam uzlů, které jsou zaregistrované ve službě.
@@ -157,7 +157,7 @@ V zobrazení uzlu, které se otevře, klikněte na **zrušit registraci**.
 
 ### <a name="powershell"></a>PowerShell
 
-Pokud chcete zrušit registraci uzlu ze služby konfigurace stavu Azure Automation pomocí prostředí PowerShell, postupujte podle dokumentace k rutině [Unregister-AzAutomationDscNode](/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-2.0.0).
+Pokud chcete zrušit registraci uzlu ze služby konfigurace stavu Azure Automation pomocí prostředí PowerShell, postupujte podle dokumentace k rutině [Unregister-AzAutomationDscNode](/powershell/module/az.automation/unregister-azautomationdscnode).
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -166,4 +166,4 @@ Pokud chcete zrušit registraci uzlu ze služby konfigurace stavu Azure Automati
 - Další informace o kompilaci konfigurací DSC, abyste je mohli přiřadit cílovým uzlům, najdete v tématu [kompilace konfigurací DSC v konfiguraci stavu Azure Automation](automation-dsc-compile.md).
 - Příklad použití konfigurace stavu Azure Automation v kanálu nepřetržitého nasazení najdete v tématu [Nastavení průběžného nasazování s čokoládou](automation-dsc-cd-chocolatey.md).
 - Informace o cenách najdete v tématu [Azure Automation ceny konfigurace stavu](https://azure.microsoft.com/pricing/details/automation/).
-- Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).
+- Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](/powershell/module/az.automation).

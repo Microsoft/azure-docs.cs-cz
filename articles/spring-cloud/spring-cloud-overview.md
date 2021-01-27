@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 12/02/2020
 ms.author: brendm
 ms.custom: devx-track-java, contperf-fy21q2
-ms.openlocfilehash: fc3f78131518b4d8740c25ab37c48d4444deef10
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: b7f5d4206140bf2101c10b1cd4ac46d80bdd3342
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563139"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881699"
 ---
 # <a name="what-is-azure-spring-cloud"></a>Co je Azure Spring Cloud?
 
@@ -20,14 +20,14 @@ Jarní cloud Azure usnadňuje nasazení aplikací mikroslužeb s pružinou v sys
 
 ## <a name="why-use-azure-spring-cloud"></a>Proč používat jarní cloud Azure?
 
-Nasazení aplikací do Azure Pramenitého cloudu má spoustu výhod.  Máte následující možnosti:
+Nasazení aplikací do Azure Pramenitého cloudu má spoustu výhod.  Další možnosti:
 * Efektivně Migrujte stávající jarní aplikace a spravujte škálování a náklady v cloudu.
 * Modernizovat aplikace pomocí jarních vzorů cloudu, abyste vylepšili flexibilitu a rychlost doručování.
 * Spouštějte Java v cloudovém měřítku a vyšší využití bez komplikované infrastruktury.
 * Rychle vyvíjet a nasazovat bez závislostí kontejneru
 * Sledujte provozní úlohy efektivně a snadno.
 
-Jarní cloud Azure podporuje aplikace v jazyce Java pro [spouštění](https://spring.io/projects/spring-boot) a ASP.NET Core [Steeltoe](https://steeltoe.io/) . Podpora Steeltoe se v tuto chvíli nabízí jako verze Public Preview. Nabídky verze Public Preview vám umožní experimentovat s novými funkcemi před jejich oficiální verzí. Funkce a služby verze Public Preview nejsou určeny pro produkční použití. Další informace najdete v tématu [Nejčastější dotazy](https://azure.microsoft.com/support/faq/) nebo soubor a [support Request](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request).
+Jarní cloud Azure podporuje aplikace v jazyce Java pro [spouštění](https://spring.io/projects/spring-boot) a ASP.NET Core [Steeltoe](https://steeltoe.io/) . Podpora Steeltoe se v tuto chvíli nabízí jako verze Public Preview. Nabídky verze Public Preview vám umožní experimentovat s novými funkcemi před jejich oficiální verzí. Funkce a služby verze Public Preview nejsou určeny pro produkční použití. Další informace najdete v tématu [Nejčastější dotazy](https://azure.microsoft.com/support/faq/) nebo soubor a [support Request](../azure-portal/supportability/how-to-create-azure-support-request.md).
 
 ## <a name="service-overview"></a>Přehled služby
 
@@ -64,7 +64,7 @@ Tato dokumentace obsahuje oddíly, které vysvětlují, jak začít a využívat
     * [Integrace s jinými službami Azure](spring-cloud-tutorial-bind-cosmos.md): místo ruční konfigurace aplikací pro spouštění pružiny můžete automaticky svázat vybrané služby Azure s vašimi aplikacemi, například vytvořit vazbu aplikace k databázi Azure Cosmos DB.
     * [Automatizace](spring-cloud-howto-cicd.md): nástroje pro průběžnou integraci a průběžné doručování vám umožní rychle nasadit aktualizace stávajících aplikací s minimálním úsilím a rizikem. Azure DevOps pomáhá organizovat a řídit tyto klíčové úlohy. 
     * [Řešení potíží](spring-cloud-howto-self-diagnose-solve.md): Diagnostika Azure jaře cloudu poskytuje interaktivní možnosti, které vám pomůžou při řešení potíží s aplikacemi. Není nutná žádná konfigurace. Když najdete problémy, diagnostika cloudu Azure vyhledá problémy a provede vás s informacemi, které vám pomohou vyřešit problémy.
-    * [Migrace](https://docs.microsoft.com/azure/developer/java/migration/migrate-spring-boot-to-azure-spring-cloud): jak migrovat existující jarní cloudová aplikace nebo aplikace pro spouštění pružiny do provozu v Azure jaře cloudu.
+    * [Migrace](/azure/developer/java/migration/migrate-spring-boot-to-azure-spring-cloud): jak migrovat existující jarní cloudová aplikace nebo aplikace pro spouštění pružiny do provozu v Azure jaře cloudu.
 
 ## <a name="next-steps"></a>Další kroky
 

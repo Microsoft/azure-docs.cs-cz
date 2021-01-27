@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/13/2019
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: bbaf34c977546891c6ac05fbd4b5feb15f333e04
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 27a1c57c234d3450cee606c4ffb7484f7b63e732
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737808"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882293"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Referenční architektury pro Oracle Database Enterprise Edition v Azure
 
@@ -216,7 +216,7 @@ Opravy operačního systému virtuálního počítače můžete automatizovat po
 - Pomocí zón dostupnosti můžete dosáhnout vysoké dostupnosti v oblasti.
 - Zvažte použití disků Ultra (Pokud je k dispozici) nebo prémiových disků pro vaši databázi Oracle.
 - Zvažte nastavení pohotovostní databáze Oracle v jiné oblasti Azure pomocí ochrany dat Oracle.
-- Pokud chcete snížit latenci mezi aplikací a databázovou vrstvou, zvažte použití [skupin umístění blízkosti](../../../virtual-machines/linux/co-location.md#proximity-placement-groups) .
+- Pokud chcete snížit latenci mezi aplikací a databázovou vrstvou, zvažte použití [skupin umístění blízkosti](../../co-location.md#proximity-placement-groups) .
 - Nastavte [podnikového správce Oracle](https://docs.oracle.com/en/enterprise-manager/) pro správu, monitorování a protokolování.
 - Zvažte použití funkce Oracle pro správu úložiště (ASM) pro zjednodušenou správu úložiště pro vaši databázi.
 - Pomocí [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) můžete spravovat opravy a aktualizace databáze bez výpadků.

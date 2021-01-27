@@ -3,12 +3,12 @@ title: Spravované identity pro prostředky Azure s Service Bus
 description: Tento článek popisuje, jak používat spravované identity pro přístup k Azure Service Bus entit (fronty, témata a předplatná).
 ms.topic: article
 ms.date: 01/21/2021
-ms.openlocfilehash: 22be57a0108b6a8511a64165ad365675d006fb8f
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: dac12820adf863a7e51457d34f9180543089fc7b
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98808250"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881563"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Ověření spravované identity pomocí Azure Active Directory pro přístup k prostředkům Azure Service Bus
 [Spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md) je funkce mezi Azure, která umožňuje vytvořit zabezpečenou identitu přidruženou k nasazení, ve kterém se spouští kód aplikace. Tuto identitu pak můžete přidružit k rolím řízení přístupu, které udělují vlastní oprávnění pro přístup ke konkrétním prostředkům Azure, které vaše aplikace potřebuje.
@@ -137,7 +137,7 @@ Chcete-li odesílat nebo přijímat zprávy, zadejte název oboru názvů a náz
 
 
 > [!NOTE]
-> - Spravovaná identita funguje jenom v prostředí Azure, ve službě App Services, na virtuálních počítačích Azure a v sadách škálování. V případě aplikací .NET poskytuje knihovna Microsoft. Azure. Services. AppAuthentication, která je používána balíčkem Service Bus NuGet, abstrakci prostřednictvím tohoto protokolu a podporuje místní vývojové prostředí. Tato knihovna také umožňuje testovat kód místně na vašem vývojovém počítači pomocí uživatelského účtu ze sady Visual Studio, Azure CLI 2,0 nebo integrovaného ověřování služby Active Directory. Další informace o možnostech místního vývoje s touto knihovnou najdete v tématu [ověřování služba-služba pro Azure Key Vault pomocí rozhraní .NET](../key-vault/general/service-to-service-authentication.md).  
+> - Spravovaná identita funguje jenom v prostředí Azure, ve službě App Services, na virtuálních počítačích Azure a v sadách škálování. V případě aplikací .NET poskytuje knihovna Microsoft. Azure. Services. AppAuthentication, která je používána balíčkem Service Bus NuGet, abstrakci prostřednictvím tohoto protokolu a podporuje místní vývojové prostředí. Tato knihovna také umožňuje testovat kód místně na vašem vývojovém počítači pomocí uživatelského účtu ze sady Visual Studio, Azure CLI 2,0 nebo integrovaného ověřování služby Active Directory. Další informace o možnostech místního vývoje s touto knihovnou najdete v tématu [ověřování služba-služba pro Azure Key Vault pomocí rozhraní .NET](/dotnet/api/overview/azure/service-to-service-authentication).  
 > 
 > - Spravované identity v současné době nefungují s App Service sloty nasazení.
 

@@ -4,12 +4,12 @@ description: Informace o řešení potíží s agentem Java pro Azure Monitor Ap
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 788eea17cabbea46578d0f59919ae95a59f2223f
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 90e0ceb6ba9d696eb446d607ed2f2f134733618e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625343"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881123"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>Průvodce odstraňováním potíží: Azure Monitor Application Insights pro Java
 
@@ -49,36 +49,66 @@ Další podrobnosti najdete v tématu [Automatická shromážděná konfigurace 
 
 ## <a name="import-ssl-certificates"></a>Importovat certifikáty SSL
 
-Pokud používáte výchozí úložiště klíčů Java, bude už mít všechny kořenové certifikáty certifikační autority. Nemusíte potřebovat naimportovat víc certifikátů SSL.
+Tato část vám pomůže vyřešit a případně opravit výjimky týkající se certifikátů SSL při použití agenta Java.
 
-Pokud používáte vlastní úložiště klíčů Java, možná budete muset importovat do něj certifikáty Application Insights koncového bodu SSL.
+Existují dvě různé cesty pro řešení tohoto problému.
 
-### <a name="key-terminology"></a>Klíčová terminologie
-*Úložiště klíčů* je úložiště certifikátů, veřejných klíčů a privátních klíčů. Distribuce sady Java Development Kit obvykle obsahuje spustitelný soubor, který je spravuje: `keytool` .
+### <a name="if-using-a-default-java-keystore"></a>Pokud používáte výchozí úložiště klíčů Java:
 
-Následující příklad představuje jednoduchý příkaz pro import certifikátu protokolu SSL do úložiště klíčů:
+Výchozí úložiště klíčů Java už bude mít všechny kořenové certifikáty certifikační autority. Může však dojít k nějakým výjimkám, například certifikát koncového bodu ingestování může být podepsán jiným kořenovým certifikátem. Proto pro vyřešení tohoto problému doporučujeme následující tři kroky:
 
-`keytool -importcert -alias your_ssl_certificate -file "your downloaded SSL certificate name".cer -keystore "Your KeyStore name" -storepass "Your keystore password" -noprompt`
+1.  Ověřte, zda je kořenový certifikát použitý k podepsání Application Insightsho koncového bodu ve výchozím úložišti klíčů již přítomen. Certifikáty důvěryhodné certifikační autority jsou ve výchozím nastavení uloženy v `$JAVA_HOME/jre/lib/security/cacerts` . Chcete-li zobrazit seznam certifikátů v úložišti klíčů Java, použijte následující příkaz:
+    > `keytool -list -v -keystore $PATH_TO_KEYSTORE_FILE`
+ 
+    Výstup můžete přesměrovat na dočasný soubor (bude se snadno vyhledávat později).
+    > `keytool -list -v -keystore $JAVA_HOME/jre/lib/security/cacerts > temp.txt`
 
-### <a name="steps-to-download-and-add-an-ssl-certificate"></a>Postup stažení a přidání certifikátu SSL
+2. Až budete mít seznam certifikátů, postupujte podle těchto [kroků](#steps-to-download-ssl-certificate) a stáhněte kořenový certifikát, který se použil k podepsání Application Insightsho koncového bodu.
+
+    Po stažení certifikátu vygenerujte na certifikátu hodnotu hash SHA-1 pomocí příkazu níže:
+    > `keytool -printcert -v -file "your_downloaded_root_certificate.cer"`
+ 
+    Zkopírujte hodnotu SHA-1 a ověřte, jestli se tato hodnota nachází v souboru temp.txt, který jste předtím uložili.  Pokud nemůžete najít hodnotu SHA-1 v dočasném souboru, znamená to, že ve výchozím úložišti klíčů Java chybí stažený kořenový certifikát.
+
+
+3. Naimportujte kořenový certifikát do výchozího úložiště klíčů Java pomocí následujícího příkazu:
+    >   `keytool -import -file "the cert file" -alias "some meaningful name" -keystore "path to cacerts file"`
+ 
+    V takovém případě bude
+ 
+    > `keytool -import -file "your downloaded root cert file" -alias "some meaningful name" $JAVA_HOME/jre/lib/security/cacerts`
+
+
+### <a name="if-using-a-custom-java-keystore"></a>Pokud používáte vlastní úložiště klíčů Java:
+
+Pokud používáte vlastní úložiště klíčů Java, možná budete muset do něj naimportovat kořenových certifikátů SSL (Application Insights).
+K vyřešení tohoto problému doporučujeme následující dva kroky:
+1. Pomocí těchto [kroků](#steps-to-download-ssl-certificate) stáhnete kořenový certifikát z Application Insightsho koncového bodu.
+2. Pomocí následujícího příkazu naimportujte kořenový certifikát SSL do vlastního úložiště klíčů Java:
+    > `keytool -importcert -alias your_ssl_certificate -file "your downloaded SSL certificate name.cer" -keystore "Your KeyStore name" -storepass "Your keystore password" -noprompt`
+
+### <a name="steps-to-download-ssl-certificate"></a>Postup stažení certifikátu SSL
 
 1.  Otevřete oblíbený prohlížeč a pokračujte na `IngestionEndpoint` adresu URL v připojovacím řetězci, který se používá k instrumentaci vaší aplikace.
 
-    :::image type="content" source="media/java-ipa/troubleshooting/ingestion-endpoint-url.png" alt-text="Snímek obrazovky zobrazující připojovací řetězec Application Insights":::
+    :::image type="content" source="media/java-ipa/troubleshooting/ingestion-endpoint-snippet.png" alt-text="Snímek obrazovky zobrazující připojovací řetězec Application Insights" lightbox="media/java-ipa/troubleshooting/ingestion-endpoint-snippet.png":::
 
 2.  Vyberte ikonu **Zobrazit informace o lokalitě** (uzamknout) v prohlížeči a pak vyberte možnost **certifikát** .
 
-    :::image type="content" source="media/java-ipa/troubleshooting/certificate-icon-capture.png" alt-text="Snímek obrazovky s možností certifikátu v informacích o lokalitě":::
+    :::image type="content" source="media/java-ipa/troubleshooting/certificate-icon-capture.png" alt-text="Snímek obrazovky s možností certifikátu v informacích o lokalitě" lightbox="media/java-ipa/troubleshooting/certificate-icon-capture.png":::
 
-3.  Přejít na kartu **Podrobnosti** a vyberte **Kopírovat do souboru**.
-4.  Klikněte na tlačítko **Další** a vyberte **kódovaný znak X. 509 s kódováním Base-64 (. CER)** a pak znovu vyberte **Další** .
+3.  Místo stažení certifikátu list byste si měli stáhnout kořenový certifikát, jak je znázorněno níže. Později musíte kliknout na "cesta k certifikátu" – > vybrat kořenový certifikát-> klikněte na Zobrazit certifikát. Tím se otevře nabídka nový certifikát a můžete si stáhnout certifikát z nabídky nový.
 
-    :::image type="content" source="media/java-ipa/troubleshooting/certificate-export-wizard.png" alt-text="Snímek obrazovky Průvodce exportem certifikátu s vybraným formátem":::
+    :::image type="content" source="media/java-ipa/troubleshooting/root-certificate-selection.png" alt-text="Snímek obrazovky s postupem výběru kořenového certifikátu" lightbox="media/java-ipa/troubleshooting/root-certificate-selection.png":::
 
-5.  Zadejte soubor, do kterého chcete uložit certifikát SSL. Pak vyberte **Další**  >  **Dokončit**. Měla by se zobrazit zpráva o úspěšném exportu.
-6.  Po vytvoření certifikátu je čas importovat certifikát do úložiště klíčů Java. K importu certifikátů použijte [předchozí příkaz](#key-terminology) .
+4.  Přejít na kartu **Podrobnosti** a vyberte **Kopírovat do souboru**.
+5.  Klikněte na tlačítko **Další** a vyberte **kódovaný znak X. 509 s kódováním Base-64 (. CER)** a pak znovu vyberte **Další** .
+
+    :::image type="content" source="media/java-ipa/troubleshooting/certificate-export-wizard.png" alt-text="Snímek obrazovky Průvodce exportem certifikátu s vybraným formátem" lightbox="media/java-ipa/troubleshooting/certificate-export-wizard.png":::
+
+6.  Zadejte soubor, do kterého chcete uložit certifikát SSL. Pak vyberte **Další**  >  **Dokončit**. Měla by se zobrazit zpráva o úspěšném exportu.
 
 > [!WARNING]
 > Chcete-li získat nový certifikát před vypršením platnosti aktuálního certifikátu, je nutné tento postup opakovat. Informace o vypršení platnosti najdete na kartě **Podrobnosti** v dialogovém okně **certifikát** .
 >
-> :::image type="content" source="media/java-ipa/troubleshooting/certificate-details.png" alt-text="Snímek obrazovky zobrazující podrobnosti certifikátu SSL":::
+> :::image type="content" source="media/java-ipa/troubleshooting/certificate-details.png" alt-text="Snímek obrazovky zobrazující podrobnosti certifikátu SSL" lightbox="media/java-ipa/troubleshooting/certificate-details.png":::

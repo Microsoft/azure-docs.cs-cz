@@ -1,6 +1,6 @@
 ---
-title: Vytvoření cloudové služby Azure (Rozšířená podpora) – šablony
-description: Vytvoření cloudové služby Azure (Rozšířená podpora) pomocí šablon ARM
+title: Nasazení cloudové služby Azure (Rozšířená podpora) – šablony
+description: Nasazení cloudové služby Azure (Rozšířená podpora) pomocí šablon ARM
 ms.topic: tutorial
 ms.service: cloud-services-extended-support
 author: gachandw
@@ -8,14 +8,14 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 3b28bc96703fa48e598bfb6f9622237e769119f2
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: f86b2a50040704aac2827c463a362a04f78ba34f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757149"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881818"
 ---
-# <a name="create-a-cloud-service-extended-support-using-arm-templates"></a>Vytvoření cloudové služby (Rozšířená podpora) pomocí šablon ARM
+# <a name="deploy-a-cloud-service-extended-support-using-arm-templates"></a>Nasazení cloudové služby (rozšířené podpory) pomocí šablon ARM
 
 V tomto kurzu se dozvíte, jak vytvořit nasazení cloudové služby (rozšířené podpory) pomocí [šablon ARM](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview). 
 
@@ -39,7 +39,7 @@ V tomto kurzu se dozvíte, jak vytvořit nasazení cloudové služby (rozšíře
     - Přidružená Key Vault pro musí být povolená příslušná oprávnění, aby prostředek Cloud Services (Rozšířená podpora) mohl načíst certifikát z Key Vault. Další informace najdete v tématu [certifikáty a Key Vault](certificates-and-key-vault.md)
     - Do trezoru klíčů se musí odkazovat v části OsProfile šablony ARM zobrazené v následujících krocích.
 
-## <a name="create-a-cloud-service-extended-support"></a>Vytvoření cloudové služby (Rozšířená podpora) 
+## <a name="deploy-a-cloud-service-extended-support"></a>Nasazení cloudové služby (Rozšířená podpora) 
 1. Vytvořte virtuální síť. Název virtuální sítě musí odpovídat odkazům v souboru konfigurace služby (. cscfg). Pokud používáte existující virtuální síť, vynechejte tento oddíl ze šablony ARM.
 
     ```json
@@ -454,3 +454,4 @@ V tomto kurzu se dozvíte, jak vytvořit nasazení cloudové služby (rozšíře
 ## <a name="next-steps"></a>Další kroky 
 - Přečtěte si [Nejčastější dotazy](faq.md) k Cloud Services (Rozšířená podpora).
 - Nasaďte cloudovou službu (rozšířenou podporu) pomocí [Azure Portal](deploy-portal.md), [PowerShellu](deploy-powershell.md), [šablony](deploy-template.md) nebo sady [Visual Studio](deploy-visual-studio.md).
+- Navštivte [úložiště ukázek Cloud Services (rozšířené podpory)](https://github.com/Azure-Samples/cloud-services-extended-support) .
