@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/21/2021
+ms.date: 01/25/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 722c02dc47dfea1376f216e7f5335051aea85af6
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: bedb152a8fecfdb1ee699f431e4e43ef3ceed564
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98701312"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806130"
 ---
 |Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
@@ -19,3 +19,4 @@ ms.locfileid: "98701312"
 |[Měla by být povolená virtuální síť spravovaného pracovního prostoru v pracovních prostorech Azure synapse.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2d9dbfa3-927b-4cf0-9d0f-08747f971650) |Povolením virtuální sítě spravovaného pracovního prostoru zajistíte, aby byl váš pracovní prostor v síti izolovaný od ostatních pracovních prostorů. Prostředky pro integraci dat a Spark nasazené v této virtuální síti také poskytují izolaci na úrovni uživatele pro aktivity Sparku. |Audit, zamítnutí, zakázáno |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/SynapseWorkspaceManagedVnet_Audit.json) |
 |[V pracovních prostorech Azure synapse by se měla povolit připojení privátního koncového bodu.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F72d11df1-dd8a-41f7-8925-b05b960ebafc) |Privátní koncové body se dají nakonfigurovat tak, aby se připojovaly soukromě k pracovnímu prostoru Azure synapse. Slouží k vymáhání zabezpečeného komunikačního kanálu k pracovnímu prostoru Azure synapse. |Audit, zakázáno |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/SynapseWorkspaceUsePrivateLinks_Audit.json) |
 |[Spravované privátní koncové body synapse by se měly připojovat jenom k prostředkům ve schválených Azure Active Directory tenantech.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3a003702-13d2-4679-941b-937e58c443f0) |Chraňte svůj pracovní prostor synapse tím, že povolíte připojení k prostředkům ve schválených klientech Azure Active Directory (Azure AD). Schválené klienty služby Azure AD lze definovat během přiřazování zásad. |Audit, zakázáno, odepřít |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/Workspace_DataExfiltrationPrevention_Deny.json) |
+|[V pracovních prostorech synapse by mělo být povolené posouzení ohrožení zabezpečení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0049a6b3-a662-4f3e-8635-39cf44ace45a) |Prohlédněte si, sledujte a opravte potenciální slabá místa, a nakonfigurujete opakované prověřování testů zranitelnosti SQL v pracovních prostorech synapse. |AuditIfNotExists, zakázáno |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/ASC_SQLVulnerabilityAssessmentOnSynapse_Audit.json) |

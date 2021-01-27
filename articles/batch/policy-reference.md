@@ -1,15 +1,15 @@
 ---
 title: Předdefinované definice zásad pro Azure Batch
 description: Vypíše Azure Policy předdefinované definice zásad pro Azure Batch. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
-ms.date: 01/21/2021
+ms.date: 01/25/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 835079db7e5338e00651a5276572c25943309935
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 3290e5ea74fc16427234e220961a2cf720a0c591
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98704186"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98807968"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-batch"></a>Azure Policy předdefinované definice pro Azure Batch
 

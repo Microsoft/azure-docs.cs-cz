@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 977213480bfd5dfa85acd34df30071cc486e5c63
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: d9e348d456d517cd20e899648b9e92b3cd802ffb
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98727758"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806310"
 ---
 # <a name="tutorial-integrate-bynder-with-azure-active-directory"></a>Kurz: integrace Bynder s Azure Active Directory
 
@@ -81,7 +81,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     
     Výchozí doména:  `https://<company name>.getbynder.com`
     
-    Vlastní doména:  `https;//<subdomain>.<domain>.com`
+    Vlastní doména:  `https://<subdomain>.<domain>.com`
 
     b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:
     

@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 12/04/2020
 ms.author: baanders
-ms.openlocfilehash: e06e660a43aaa0ff5eb79bc00bd8a5d2c61c6580
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: d93f484e318c10489eb1db3e9c65c6e0c7479c90
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045307"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98859944"
 ---
 | Název filtru | Popis | Filtrovat schéma textu | Podporované hodnoty | 
 | --- | --- | --- | --- |
@@ -22,10 +22,6 @@ ms.locfileid: "98045307"
 | Typ obsahu | Typ obsahu hodnoty dat | `datacontenttype = '<contentType>'` | Typ obsahu je `application/json` |
 | Specifikace verze | Verze schématu události, kterou používáte | `specversion = '<version>'` | Verze musí být `1.0` . To označuje schéma CloudEvents verze 1,0. |
 | Tělo oznámení | Odkaz na libovolnou vlastnost v `data` poli oznámení | `$body.<property>` | Příklady oznámení naleznete v tématu [*How to: rerozuměl data události*](../articles/digital-twins/how-to-interpret-event-data.md) . Na libovolnou vlastnost v `data` poli se dá odkazovat pomocí `$body`
-
-Všimněte si, že můžete přidat více filtrů k žádosti, jako je tato: 
-
-:::code language="json" source="~/digital-twins-docs-samples/api-requests/filter-multiple.json":::
 
 Následující datové typy jsou podporovány jako hodnoty vrácené odkazy na výše uvedená data:
 

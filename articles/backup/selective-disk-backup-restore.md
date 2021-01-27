@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte o selektivním zálohování a obnoven
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: references_regions , devx-track-azurecli
-ms.openlocfilehash: 1f4d27563cf292632c6b14c82e36542b86c5d356
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 38ead1591bf2ecadc8bfca5875ac1fa3e69d56ef
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127715"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806375"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>Selektivní zálohování a obnovení disku pro virtuální počítače Azure
 
@@ -337,4 +337,4 @@ Funkce zálohování na základě selektivního disku je funkce poskytovaná nad
 ## <a name="next-steps"></a>Další kroky
 
 - [Matice podpory pro zálohování virtuálních počítačů Azure](backup-support-matrix-iaas.md)
-- [Nejčastější dotazy – zálohování virtuálních počítačů Azure](backup-azure-vm-backup-faq.md)
+- [Nejčastější dotazy – zálohování virtuálních počítačů Azure](backup-azure-vm-backup-faq.yml)

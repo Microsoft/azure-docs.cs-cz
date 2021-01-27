@@ -1,18 +1,18 @@
 ---
 title: Předdefinované definice zásad pro Azure Cosmos DB
 description: Vypíše Azure Policy předdefinované definice zásad pro Azure Cosmos DB. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
-ms.date: 01/21/2021
+ms.date: 01/25/2021
 ms.topic: reference
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.custom: subject-policy-reference
-ms.openlocfilehash: ca937818e06b8aab349ab24213569f52c1228bb3
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 587b301e7e92603f83aaed1a8e1e7099cd277b1c
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98702361"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806205"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-cosmos-db"></a>Azure Policy předdefinované definice pro Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]

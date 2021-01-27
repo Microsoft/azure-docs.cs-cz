@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 0542d7e0ea204d1e9279e89c9f36b9bc6c6c88fa
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: c34410fcb5e1992f8b7a358801a354a1e1cf190c
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165854"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98808005"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database migrace provozu na novější brány
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -27,6 +27,13 @@ Zákazníci budou upozorňováni e-mailem a v Azure Portal předem o jakékoli z
 ## <a name="status-updates"></a>Aktualizace stavu
 
 # <a name="in-progress"></a>[Rozpracované](#tab/in-progress-ip)
+## <a name="february-2021"></a>Únor 2021
+Nové brány SQL se přidávají do následujících oblastí:
+
+- Střed USA: 13.89.169.20
+
+Tyto brány SQL začnou přijímat zákaznická data od 28. února 2021.
+
 ## <a name="january-2021"></a>Leden 2021
 Nové brány SQL se přidávají do následujících oblastí:
 
@@ -101,17 +108,17 @@ Nové brány SQL se přidávají do následujících oblastí:
 Tyto brány SQL začnou přijímat provoz zákazníků 10. srpna 2020. 
 
 ### <a name="october-2019"></a>Říjen 2019
-- Brazil South
+- Brazílie – jih
 - USA – západ
 - West Europe
 - East US
-- Střední USA
+- USA – střed
 - Jihovýchodní Asie
 - Středojižní USA
 - Severní Evropa
 - USA – středosever
 - Japonsko – západ
-- Japan East
+- Japonsko – východ
 - USA – východ 2
 - Východní Asie
 

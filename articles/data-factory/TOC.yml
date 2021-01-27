@@ -796,6 +796,10 @@
       href: /python/api/overview/azure/datafactory
 - name: Zdroje a prostředky
   items:
+    - name: Přehled rezervované kapacity toku dat
+      href: data-flow-reserved-capacity-overview.md
+    - name: Tok dat – vysvětlení poplatků za rezervace
+      href: data-flow-understand-reservation-charges.md
     - name: Dokumenty white paper
       href: whitepapers.md
     - name: Nejčastější dotazy

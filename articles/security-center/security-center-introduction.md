@@ -12,14 +12,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/24/2021
+ms.date: 01/26/2021
 ms.author: memildin
-ms.openlocfilehash: 3ed290cc35195dfb02db9fbb72f092f6f4688291
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 9f39988375f58f75dad2b623cd3d937022a072e7
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757301"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806186"
 ---
 # <a name="what-is-azure-security-center"></a>Co je Azure Security Center?
 
@@ -105,9 +105,8 @@ Ochrana před hrozbami Security Center zahrnuje analýzu dezaktivačního řetě
 
 ### <a name="integration-with-microsoft-defender-for-endpoint"></a>Integrace s Microsoft Defenderem pro koncový bod
 
-Security Center zahrnuje automatickou nativní integraci s Microsoft Defenderem pro koncový bod. To znamená, že bez jakékoli konfigurace jsou počítače s Windows a Linux plně integrované s doporučeními a posouzením Security Center.
+Azure Defender pro servery zahrnuje automatickou nativní integraci s Microsoft Defenderem pro koncový bod. Další informace, [Ochrana koncových bodů pomocí integrovaného řešení EDR Security Center: Microsoft Defender pro koncové](security-center-wdatp.md) body
 
-Security Center navíc umožňuje automatizovat zásady řízení aplikací v prostředích serveru. Adaptivní řízení aplikací v Security Center umožňuje, aby se v rámci serverů Windows nastalo úplný seznam schválení aplikací. Nemusíte vytvářet pravidla a kontrolovat porušení, je to vše hotovo automaticky za vás.
 
 ### <a name="protect-paas"></a>Ochrana PaaS
 

@@ -2,13 +2,13 @@
 title: Spravované identity pro prostředky Azure s Service Bus
 description: Tento článek popisuje, jak používat spravované identity pro přístup k Azure Service Bus entit (fronty, témata a předplatná).
 ms.topic: article
-ms.date: 10/21/2020
-ms.openlocfilehash: 1efcd3c48e7e4a431a0c72c4b3b84531b44e973e
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.date: 01/21/2021
+ms.openlocfilehash: 22be57a0108b6a8511a64165ad365675d006fb8f
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425516"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98808250"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Ověření spravované identity pomocí Azure Active Directory pro přístup k prostředkům Azure Service Bus
 [Spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md) je funkce mezi Azure, která umožňuje vytvořit zabezpečenou identitu přidruženou k nasazení, ve kterém se spouští kód aplikace. Tuto identitu pak můžete přidružit k rolím řízení přístupu, které udělují vlastní oprávnění pro přístup ke konkrétním prostředkům Azure, které vaše aplikace potřebuje.
@@ -45,7 +45,7 @@ Než do objektu zabezpečení přiřadíte roli Azure, určete rozsah přístupu
 
 Následující seznam popisuje úrovně, na jejichž základě můžete nastavit rozsah přístupu k prostředkům Service Bus, počínaje nejužším rozsahem:
 
-- **Zařazení do fronty**, **tématu**nebo **předplatného**: přiřazení role se vztahuje na konkrétní entitu Service Bus. V současné době Azure Portal nepodporuje přiřazování uživatelů/skupin/spravovaných identit do Service Bus rolí Azure na úrovni předplatného. Tady je příklad použití příkazu Azure CLI: [AZ-role-Assignment-Create](/cli/azure/role/assignment?#az-role-assignment-create) k přiřazení identity k Service Bus role Azure: 
+- **Zařazení do fronty**, **tématu** nebo **předplatného**: přiřazení role se vztahuje na konkrétní entitu Service Bus. V současné době Azure Portal nepodporuje přiřazování uživatelů/skupin/spravovaných identit do Service Bus rolí Azure na úrovni předplatného. Tady je příklad použití příkazu Azure CLI: [AZ-role-Assignment-Create](/cli/azure/role/assignment?#az-role-assignment-create) k přiřazení identity k Service Bus role Azure: 
 
     ```azurecli
     az role assignment create \
@@ -107,18 +107,20 @@ Chcete-li přiřadit roli k oboru názvů Service Bus, přejděte na obor názv�
 1. V Azure Portal přejděte na svůj obor názvů Service Bus a zobrazte **Přehled** oboru názvů. 
 1. V nabídce vlevo vyberte **Access Control (IAM)** a zobrazte nastavení řízení přístupu pro obor názvů Service Bus.
 1.  Vyberte kartu **přiřazení rolí** a zobrazte seznam přiřazení rolí.
-3.  Pokud chcete přidat novou roli, vyberte **Přidat** .
-4.  Na stránce **Přidat přiřazení role** vyberte role Azure Service Bus, které chcete přiřadit. Pak vyhledejte identitu služby, kterou jste zaregistrovali pro přiřazení role.
-    
-    ![Přidat stránku přiřazení role](./media/service-bus-managed-service-identity/add-role-assignment-page.png)
-5.  Vyberte **Uložit**. Identita, ke které jste přiřadili roli, se zobrazí v seznamu v rámci této role. Například následující obrázek ukazuje, že identita služby má Azure Service Bus vlastníka dat.
-    
-    ![Identita přiřazená k roli](./media/service-bus-managed-service-identity/role-assigned.png)
+3.  Vyberte **Přidat** a pak vyberte **Přidat přiřazení role**.
+4.  Na stránce **Přidat přiřazení role** použijte následující postup:
+    1. Jako **role** vyberte roli Service Bus, kterou chcete přiřadit. V tomto příkladu je **Azure Service Bus vlastník dat**.
+    1. V poli **přiřadit přístup k** vyberte **App Service** v části **spravovaná identita přiřazená systémem**. 
+    1. Vyberte **předplatné** , ve kterém se vytvořila spravovaná identita pro webovou aplikaci.
+    1. Vyberte **spravovanou identitu** pro webovou aplikaci, kterou jste vytvořili. Výchozí název identity je stejný jako název webové aplikace. 
+    1. Pak vyberte **Uložit**.
+        
+        ![Přidat stránku přiřazení role](./media/service-bus-managed-service-identity/add-role-assignment-page.png)
 
-Po přiřazení role bude webová aplikace mít přístup k entitám Service Bus v rámci definovaného oboru. 
+    Po přiřazení role bude webová aplikace mít přístup k entitám Service Bus v rámci definovaného oboru. 
 
-
-
+    > [!NOTE]
+    > Seznam služeb, které podporují spravované identity, najdete v tématu [služby, které podporují spravované identity prostředků Azure](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md).
 
 ### <a name="run-the-app"></a>Spuštění aplikace
 Nyní upravte výchozí stránku aplikace ASP.NET, kterou jste vytvořili. Můžete použít kód webové aplikace z [tohoto úložiště GitHub](https://github.com/Azure-Samples/app-service-msi-servicebus-dotnet).  

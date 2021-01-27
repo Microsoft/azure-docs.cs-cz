@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 09/07/2020
+ms.date: 01/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 54a4a938be18d39993652cecb87b3604e268fcef
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: daf44afbb322cb30ab3a663dce4e935aefa7be13
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678949"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98808053"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-using-azure-cli-and-python"></a>Nasazení virtuálních počítačů na zařízení GPU Azure Stack Edge pro pomocí Azure CLI a Pythonu
 
@@ -29,7 +29,7 @@ Pracovní postup nasazení je znázorněný v následujícím diagramu.
 
 ![Pracovní postup nasazení virtuálních počítačů](media/azure-stack-edge-gpu-deploy-virtual-machine-powershell/vm-workflow-r.svg)
 
-Shrnutí nejvyšší úrovně pracovního postupu nasazení je následující:
+Souhrnný přehled pracovního postupu nasazení je následující:
 
 1. Připojení k Azure Resource Manager
 2. Vytvoření skupiny prostředků
@@ -70,9 +70,9 @@ Než začnete vytvářet a spravovat virtuální počítač na zařízení Azure
 
 3. Vytvořili jste a nainstalovali jste všechny certifikáty na zařízení Azure Stack Edge pro a v důvěryhodném úložišti klienta. Postupujte podle postupu popsaného v části [Krok 2: vytvoření a instalace certifikátů](azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates).
 
-4. Vytvořili jste certifikát *. cer* s kódováním Base-64 (formát PEM) pro zařízení Azure Stack Edge pro. Tato služba je už na zařízení nahraná jako podpisový řetěz a nainstalovala se do důvěryhodného kořenového úložiště na vašem klientovi. Tento certifikát je také vyžadován ve formátu *PEM* , aby Python mohl pracovat na tomto klientovi.
+4. Vytvořili jste certifikát *. cer* s kódováním Base-64 (formát PEM) pro zařízení Azure Stack Edge pro. Tento certifikát je už nahraný jako podpisový řetězec na zařízení a nainstalovaný v důvěryhodném kořenovém úložišti na vašem klientovi. Tento certifikát je také vyžadován ve formátu *PEM* , aby Python mohl pracovat na tomto klientovi.
 
-    Tento certifikát převeďte do formátu PEM pomocí `certutil` příkazu. Tento příkaz musíte spustit v adresáři, který obsahuje váš certifikát.
+    Tento certifikát převeďte na `pem` formát pomocí `certutil` příkazu. Tento příkaz musíte spustit v adresáři, který obsahuje váš certifikát.
 
     ```powershell
     certutil.exe <SourceCertificateName.cer> <DestinationCertificateName.pem>
@@ -86,9 +86,9 @@ Než začnete vytvářet a spravovat virtuální počítač na zařízení Azure
     CertUtil: -encode command completed successfully.
     PS C:\Certificates>
     ```    
-    Tento PEM můžete také přidat do úložiště Python později.
+    Můžete to také později přidat `pem` do obchodu Python.
 
-5. IP adresu zařízení jste přiřadili na stránce **síť** v místním webovém uživatelském rozhraní zařízení. Tuto IP adresu musíte přidat do:
+5. IP adresu zařízení jste přiřadili na stránce **síť** v místním webovém uživatelském rozhraní zařízení. Přidat tuto IP adresu do:
 
     - Hostitelský soubor na klientovi, nebo,
     - Konfigurace serveru DNS
@@ -117,11 +117,11 @@ Než začnete vytvářet a spravovat virtuální počítač na zařízení Azure
 
 ### <a name="verify-profile-and-install-azure-cli"></a>Ověřit profil a nainstalovat rozhraní příkazového řádku Azure
 
-<!--1. Verify the API profile of the client and identify which version of the modules and libraries to include on your client. In this example, the client system will be running Azure Stack 1904 or later. For more information, see [Azure Resource Manager API profiles](/azure-stack/user/azure-stack-version-profiles?view=azs-1908#azure-resource-manager-api-profiles).-->
+<!--1. Verify the API profile of the client and identify which version of the modules and libraries to include on your client. In this example, the client system will be running Azure Stack 1904 or later. For more information, see [Azure Resource Manager API profiles](/azure-stack/user/azure-stack-version-profiles?view=azs-1908&preserve-view=true#azure-resource-manager-api-profiles).-->
 
 1. Nainstalujte rozhraní příkazového řádku Azure CLI do svého klienta. V tomto příkladu se nainstalovalo rozhraní příkazového řádku Azure CLI 2.0.80. Pokud chcete ověřit verzi rozhraní příkazového řádku Azure CLI, spusťte `az --version` příkaz.
 
-    Následuje ukázkový výstup výše uvedeného příkazu:
+    Následuje příklad výstupu z výše uvedeného příkazu:
 
     ```output
     PS C:\windows\system32> az --version
@@ -149,7 +149,7 @@ Než začnete vytvářet a spravovat virtuální počítač na zařízení Azure
 
     Pokud nemáte rozhraní příkazového řádku Azure CLI, Stáhněte a nainstalujte rozhraní příkazového [řádku Azure CLI ve Windows](/cli/azure/install-azure-cli-windows). Azure CLI můžete spustit pomocí příkazového řádku Windows nebo pomocí Windows PowerShellu.
 
-2. Poznamenejte si umístění Pythonu pro rozhraní příkazového řádku. To je potřeba k určení umístění důvěryhodného kořenového úložiště certifikátů pro Azure CLI.
+2. Poznamenejte si umístění Pythonu pro rozhraní příkazového řádku. K určení umístění důvěryhodného kořenového úložiště certifikátů pro rozhraní příkazového řádku Azure potřebujete umístění Pythonu.
 
 3. Pro spuštění ukázkového skriptu používaného v tomto článku budete potřebovat následující verze knihovny Pythonu:
 
@@ -266,7 +266,7 @@ Než začnete vytvářet a spravovat virtuální počítač na zařízení Azure
     $ENV:ADAL_PYTHON_SSL_NO_VERIFY = 1
     ```
 
-2. Nastavte proměnné prostředí pro skript pro Azure Resource Manager koncový bod, umístění, kde se prostředky vytvářejí, a cestu k umístění zdrojového virtuálního pevného disku. Umístění prostředků je pevně na všech zařízeních Azure Stack Edge pro a je nastavené na `dbelocal` . Musíte také zadat předpony adres a privátní IP adresu. Všechny následující proměnné prostředí jsou hodnoty založené na hodnotách s výjimkou `AZURE_RESOURCE_LOCATION` , která by měla být pevně zakódované na `"dbelocal"` .
+2. Nastavte proměnné prostředí pro skript pro Azure Resource Manager koncový bod, umístění, kde se prostředky vytvářejí, a cestu k umístění zdrojového virtuálního pevného disku. Umístění prostředků je pevně na všech zařízeních Azure Stack Edge pro a je nastavené na `dbelocal` . Musíte také zadat předpony adres a privátní IP adresu. Všechny následující proměnné prostředí jsou hodnoty založené na hodnotách, s výjimkou `AZURE_RESOURCE_LOCATION` , který by měl být pevně zakódované na `"dbelocal"` .
 
     ```powershell
     $ENV:ARM_ENDPOINT = "https://management.team3device.teatraining1.com"
@@ -342,7 +342,7 @@ Než začnete vytvářet a spravovat virtuální počítač na zařízení Azure
    ]
    PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2>
    ```
-   Poznamenejte si `id` `tenantId` hodnoty a tak, aby odpovídaly vašemu ID předplatného Azure Resource Manager a Azure Resource Manager ID tenanta a budou se používat v pozdějším kroku.
+   Poznamenejte si `id` `tenantId` hodnoty a, protože tyto hodnoty odpovídají vašemu ID předplatného Azure Resource Manager a Azure Resource Manager ID tenanta a budou se používat v pozdějším kroku.
        
    Následující proměnné prostředí je třeba nastavit tak, aby fungovaly jako *instanční objekt*:
 

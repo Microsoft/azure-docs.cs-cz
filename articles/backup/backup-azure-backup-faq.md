@@ -3,12 +3,12 @@ title: Odpovědi na časté dotazy
 description: 'Odpovědi na běžné dotazy týkající se funkcí služby Azure Backup, včetně trezorů služby Recovery Services, co může zálohovat, jak to funguje, šifrování a omezení. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: dbe6ce95427b559c037e38525f9f48195a2a76a4
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: f819440001180a3c446f366e61e3ac0f983fa67f
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98703415"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806647"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – Nejčastější dotazy
 
@@ -70,7 +70,7 @@ V případě trezoru [GRS](azure-backup-glossary.md#grs) bez povoleného [crr](a
 
 ### <a name="where-can-i-find-common-questions-about-the-azure-backup-agent-for-azure-vm-backup"></a>Kde najdu běžné otázky týkající se agenta služby Azure Backup pro zálohování virtuálních počítačů Azure?
 
-- Informace o agentovi spuštěném na virtuálních počítačích Azure najdete v těchto [nejčastějších dotazech](backup-azure-vm-backup-faq.md).
+- Informace o agentovi spuštěném na virtuálních počítačích Azure najdete v těchto [nejčastějších dotazech](backup-azure-vm-backup-faq.yml).
 - Informace o agentovi použitém k zálohování složek Azure Files najdete v těchto [nejčastějších dotazech](backup-azure-file-folder-backup-faq.md).
 
 ## <a name="general-backup"></a>Obecné zálohování
@@ -236,5 +236,5 @@ Klíč, pomocí kterého se šifrují zálohovaná data, je k dispozici jenom u 
 
 Přečtěte si další nejčastější dotazy:
 
-- [Běžné dotazy](backup-azure-vm-backup-faq.md) týkající se zálohování virtuálních počítačů Azure
+- [Běžné dotazy](backup-azure-vm-backup-faq.yml) týkající se zálohování virtuálních počítačů Azure
 - [Běžné dotazy](backup-azure-file-folder-backup-faq.md) týkající se agenta Azure Backup

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: ac4763a2d79059eb2608595b616c945af274627e
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 88d44f4f8cedbad604eb59cde91f4eed79918c0f
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928507"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806664"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Co je privátní koncový bod Azure?
 
@@ -78,7 +78,7 @@ Prostředek privátního propojení je cílovým cílem daného privátního kon
 |**Azure Event Grid** | Microsoft. EventGrid/témata    | téma |
 |**Azure Event Grid** | Microsoft. EventGrid/domény    | doména |
 |**Azure App Service** | Microsoft. Web/weby    | místa |
-|**Azure Machine Learning** | Microsoft. MachineLearningServices/pracovní prostory    | pracovní prostor |
+|**Azure Machine Learning** | Microsoft. MachineLearningServices/pracovní prostory    | amlworkspace |
 |**SignalR** | Microsoft. SignalRService/Signaler    | signalR |
 |**Azure Monitor** | Microsoft. Insights/privateLinkScopes    | azuremonitor |
 |**Cognitive Services** | (Microsoft. Cognitiveservices Account/účty    | account |

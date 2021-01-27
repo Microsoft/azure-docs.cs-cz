@@ -1,16 +1,16 @@
 ---
 title: Možnosti sítí Azure Functions
 description: Přehled všech možností sítě, které jsou k dispozici v Azure Functions.
-author: jeffhollan
+author: cachai2
 ms.topic: conceptual
-ms.date: 10/27/2020
-ms.author: jehollan
-ms.openlocfilehash: f4d7611f285535680469f3a334ab889b0b644bfe
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.date: 1/21/2021
+ms.author: cachai
+ms.openlocfilehash: 2c3f207e98f574bb6c43f87d34b0a404e263e83c
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936855"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806986"
 ---
 # <a name="azure-functions-networking-options"></a>Možnosti sítí Azure Functions
 
@@ -85,12 +85,9 @@ Pokud chcete zajistit vyšší úroveň zabezpečení, můžete omezit počet sl
 
 Další informace najdete v tématu [koncové body služby virtuální sítě](../virtual-network/virtual-network-service-endpoints-overview.md).
 
-## <a name="restrict-your-storage-account-to-a-virtual-network-preview"></a>Omezení účtu úložiště na virtuální síť (Preview)
+## <a name="restrict-your-storage-account-to-a-virtual-network"></a>Omezení účtu úložiště na virtuální síť 
 
-Když vytváříte aplikaci Function App, musíte vytvořit nebo propojit s účtem Azure Storage pro obecné účely, který podporuje objekty blob, Queue a Table Storage.  Tento účet úložiště můžete nahradit takovým, který je zabezpečený pomocí koncových bodů služby nebo privátního koncového bodu.  Tato funkce Preview v současnosti funguje jenom s plány Windows Premium v Západní Evropa.  Pokud chcete nastavit funkci s účtem úložiště omezeným na soukromou síť:
-
-> [!NOTE]
-> Omezení účtu úložiště aktuálně funguje na prémiových funkcích pomocí Windows v Západní Evropa
+Když vytváříte aplikaci Function App, musíte vytvořit nebo propojit s účtem Azure Storage pro obecné účely, který podporuje objekty blob, Queue a Table Storage.  Tento účet úložiště můžete nahradit takovým, který je zabezpečený pomocí koncových bodů služby nebo privátního koncového bodu.  Tato funkce aktuálně funguje jenom s plány Windows Premium.  Pokud chcete nastavit funkci s účtem úložiště omezeným na soukromou síť:
 
 1. Vytvořte funkci s účtem úložiště bez povolených koncových bodů služby.
 1. Nakonfigurujte funkci pro připojení k vaší virtuální síti.

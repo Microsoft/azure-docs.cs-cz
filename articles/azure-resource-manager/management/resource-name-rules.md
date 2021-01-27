@@ -2,13 +2,13 @@
 title: Omezení pojmenování prostředků
 description: Zobrazuje pravidla a omezení pro pojmenování prostředků Azure.
 ms.topic: conceptual
-ms.date: 12/29/2020
-ms.openlocfilehash: bd8ba72d43b7e3e5a9145d756741436f0a49e18b
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.date: 01/26/2021
+ms.openlocfilehash: d298688dbd13cc32c9cca078b5e20e6a5f054450
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762479"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806885"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Omezení a pravidla pojmenování prostředků Azure
 
@@ -635,7 +635,7 @@ V následujících tabulkách pojem alfanumerický označuje:
 > | --- | --- | --- | --- |
 > | managedInstances | global | 1–63 | Malá písmena, číslice a spojovníky.<br><br>Nelze začínat ani končit spojovníkem. <br><br> Nemůže obsahovat žádné speciální znaky, například `@` . |
 > | servery | global | 1–63 | Malá písmena, číslice a spojovníky.<br><br>Nelze začínat ani končit spojovníkem. |
-> | servery/správci | server |  | Musí být `ActiveDirectory` . <br><br> Nemůže obsahovat žádné speciální znaky, například `@` .|
+> | servery/správci | server |  | Musí být `ActiveDirectory` . |
 > | servery/databáze | server | 1-128 | Nejde použít:<br>`<>*%&:\/?`<br><br>Nemůže končit tečkou nebo mezerou. |
 > | servery/databáze/syncGroups | database | 1-150 | Alfanumerické znaky, spojovníky a podtržítka. |
 > | servery/elasticPools | server | 1-128 | Nejde použít:<br>`<>*%&:\/?`<br><br>Nemůže končit tečkou nebo mezerou. |
