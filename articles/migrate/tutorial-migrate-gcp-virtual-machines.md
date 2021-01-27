@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 892b731f662af57916d067c562d48f4ec25e2210
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 12b8e30b0107b6b008cbd6467ada7c2d44f5e6d6
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233045"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98871634"
 ---
 # <a name="discover-assess-and-migrate-google-cloud-platform-gcp-vms-to-azure"></a>Zjišťování, vyhodnocení a migrace virtuálních počítačů Google Cloud Platform (GCP) do Azure
 
@@ -61,7 +61,7 @@ I když doporučujeme, abyste si vyzkoušeli posouzení, provádění posouzení
 
 
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 
 - Zajistěte, aby virtuální počítače s GCP, které chcete migrovat, používaly podporovanou verzi operačního systému. Virtuální počítače s GCP se považují za účely migrace jako fyzické. Přečtěte si [podporované operační systémy a verze jádra](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines) pro pracovní postup migrace fyzického serveru. Ke kontrole verzí operačního systému a jádra pro virtuální počítače se systémem Linux můžete použít standardní příkazy, jako je *hostnamectl* nebo *uname-a* .  Doporučujeme provést test, abyste ověřili, jestli virtuální počítač funguje podle očekávání, než budete pokračovat v rámci aktuální migrace.
 - Zajistěte, aby virtuální počítače s GCP splňovaly [podporované konfigurace](./migrate-support-matrix-physical-migration.md#physical-server-requirements) pro migraci do Azure.
@@ -77,7 +77,7 @@ Připravte Azure pro migraci pomocí Azure Migrate: Server Migration Tool.
 
 **Úkol** | **Podrobnosti**
 --- | ---
-**Vytvoření projektu Azure Migrate** | Váš účet Azure potřebuje oprávnění Přispěvatel nebo Owner k [Vytvoření nového projektu](https://docs.microsoft.com/azure/migrate/create-manage-projects).
+**Vytvoření projektu Azure Migrate** | Váš účet Azure potřebuje oprávnění Přispěvatel nebo Owner k [Vytvoření nového projektu](./create-manage-projects.md).
 **Ověření oprávnění pro účet Azure** | Váš účet Azure potřebuje oprávnění k vytvoření virtuálního počítače a zápis na spravovaný disk Azure.
 
 ### <a name="assign-permissions-to-create-project"></a>Přiřadit oprávnění k vytvoření projektu
@@ -252,7 +252,7 @@ Na zdrojovém virtuálním počítači GCP musí být nainstalovaný agent služ
     - Dvojité šifrování pomocí klíčů spravovaných platformou a zákaznických klíčů
 
    > [!NOTE]
-   > Pokud chcete replikovat virtuální počítače s CMK, musíte v cílové skupině prostředků [vytvořit sadu Disk Encryption](https://go.microsoft.com/fwlink/?linkid=2151800) . Objekty pro nastavení šifrování disku – mapování Managed Disks na Key Vault obsahující CMK, který se má použít pro SSE.
+   > Pokud chcete replikovat virtuální počítače s CMK, musíte v cílové skupině prostředků [vytvořit sadu Disk Encryption](../virtual-machines/disks-enable-customer-managed-keys-portal.md#set-up-your-disk-encryption-set) . Objekty pro nastavení šifrování disku – mapování Managed Disks na Key Vault obsahující CMK, který se má použít pro SSE.
   
 12. V části **Zvýhodněné hybridní využití Azure**:
 

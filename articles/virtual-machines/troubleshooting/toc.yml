@@ -39,8 +39,6 @@
       href: restart-resize-error-troubleshooting.md
     - name: 'Restartování, vypnutí nebo zastavení služeb'
       href: boot-error-troubleshoot-windows.md
-    - name: Problémy s plným diskem s operačním systémem na linuxovém virtuálním počítači
-      href: os-disk-full-linux.md
 - name: Neočekávané restartování
   items:
     - name: Neočekávaná restartování virtuálních počítačů s připojenými virtuálními pevnými disky
@@ -153,7 +151,7 @@
         - name: Řešení potíží s obecnou chybou
           href: troubleshoot-rdp-general-error.md
         - name: Řešení chyb ověřování
-          href: troubleshoot-authentication-error-rdp-vm.md
+          href: /troubleshoot/azure/virtual-machines/cannot-connect-rdp-azure-vm
         - name: Řešení potíží s připojením RDP virtuálních počítačů Azure podle ID události
           href: event-id-troubleshoot-vm-rdp-connecton.md
         - name: Řešení chyby protokolu RDP na virtuálním počítači kvůli statické adrese IP

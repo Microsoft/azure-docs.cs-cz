@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/01/2020
 ms.author: radeltch
-ms.openlocfilehash: 525c705db81dc0f152c8dbc55de5ebac841e5d57
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 62b235fa9ea84409a5c29609a5dc0fde1671684c
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201735"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878761"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>Připojení k veřejnému koncovému bodu pro Virtual Machines používání Azure Standard Load Balancer ve scénářích SAP pro vysokou dostupnost
 
@@ -45,8 +45,8 @@ Systémy SAP často obsahují citlivá podniková data. Je zřídka přijatelné
 
 Příklady scénářů, které vyžadují přístup k veřejnému koncovému bodu Azure, jsou:  
 - Agent Azure plot vyžaduje přístup k **Management.Azure.com** a **Login.microsoftonline.com**  
-- [Azure Backup](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#set-up-network-connectivity)
-- [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-urls)  
+- [Azure Backup](../../../backup/tutorial-backup-sap-hana-db.md#set-up-network-connectivity)
+- [Azure Site Recovery](../../../site-recovery/azure-to-azure-about-networking.md#outbound-connectivity-for-urls)  
 - Použití veřejného úložiště pro opravy operačního systému
 - Tok dat aplikace SAP může vyžadovat odchozí připojení k veřejnému koncovému bodu.
 
@@ -165,7 +165,7 @@ Architektura by vypadala takto:
    Pravidlo brány firewall by vypadalo takto: ![ diagram, který ukazuje, jak by brána firewall vypadala jako.](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-firewall-rule.png)
 
 6. Vytvořte uživatelsky definovanou trasu z podsítě vašich virtuálních počítačů do privátní IP adresy **MyAzureFirewall**.
-   1. V případě, že jste umístění umístili do směrovací tabulky, klikněte na trasy. Vyberte Add (Přidat). 
+   1. V případě, že jste umístění umístili do směrovací tabulky, klikněte na trasy. Vyberte Přidat. 
    1. Název trasy: ToMyAzureFirewall, předpona adresy: **0.0.0.0/0**. Typ dalšího segmentu směrování: vyberte virtuální zařízení. Adresa dalšího segmentu směrování: zadejte privátní IP adresu brány firewall, kterou jste nakonfigurovali: **11.97.1.4**.  
    1. Uložit
 

@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 11/24/2020
 ms.author: inhenkel
 ms.custom: subject-armqs
-ms.openlocfilehash: 6a23c3a20e79fe6fff7de8faccf4e4ef78f02585
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 541a4c17a3212f711be7e2cf096ce3a2d632ee64
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185028"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879642"
 ---
 # <a name="quickstart-media-services-account-arm-template"></a>Rychlý Start: Šablona ARM účtu Media Services
 
@@ -41,7 +41,7 @@ V tomto článku se dozvíte, jak pomocí šablony Azure Resource Manager (šabl
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-Pokud jste ještě nikdy nenainstalovali šablonu ARM, je vhodné si přečíst o [šablonách Azure ARM](https://docs.microsoft.com/azure/azure-resource-manager/templates/) a Projděte si [kurz](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-tutorial-create-first-template?tabs=azure-powershell).
+Pokud jste ještě nikdy nenainstalovali šablonu ARM, je vhodné si přečíst o [šablonách Azure ARM](../../azure-resource-manager/templates/index.yml) a Projděte si [kurz](../../azure-resource-manager/templates/template-tutorial-create-first-template.md?tabs=azure-powershell).
 
 ## <a name="review-the-template"></a>Kontrola šablony
 
@@ -118,8 +118,8 @@ The syntax for the JSON code fence is:
 
 V šabloně jsou definovány tři typy prostředků Azure:
 
-- [Microsoft. Media/MediaServices](https://docs.microsoft.com/azure/templates/microsoft.media/mediaservices): vytvoření účtu Media Services
-- [Microsoft. Storage/storageAccounts](https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts): vytvoření účtu úložiště
+- [Microsoft. Media/MediaServices](/azure/templates/microsoft.media/mediaservices): vytvoření účtu Media Services
+- [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts): vytvoření účtu úložiště
 
 ## <a name="set-the-account"></a>Nastavení účtu
 
@@ -277,4 +277,4 @@ az group delete --name {name of the resource group}
 Pokud se chcete dozvědět víc o použití šablony ARM pomocí procesu vytvoření šablony s parametry, proměnnými a dalšími, zkuste
 
 > [!div class="nextstepaction"]
-> [Kurz: vytvoření a nasazení první šablony ARM](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+> [Kurz: vytvoření a nasazení první šablony ARM](../../azure-resource-manager/templates/template-tutorial-create-first-template.md)

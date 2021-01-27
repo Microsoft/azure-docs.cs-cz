@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 01/17/2021
-ms.openlocfilehash: aede7e3dec886d6a6213c64b386cacd725dd74f5
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: 1b2e914057aa72934524cc4977e3d2292394d0b7
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562790"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882038"
 ---
 # <a name="how-to-manually-fix-sync-problems"></a>Ruční oprava problémů s synchronizací
 
@@ -22,16 +22,16 @@ K opětovné aktivaci připojení a aktualizaci tokenu použijte následující 
 
 1. Vyhledejte řešení v horním banneru hledání a pak vyberte relevantní řešení.
 
-    ![Snímek obrazovky, který zobrazuje horní hlavičku hledání a kde vybrat relevantní řešení.](media/itsmc-resync-servicenow/solution-search-8bit.png)
+    ![Snímek obrazovky, který zobrazuje horní hlavičku hledání a kde vybrat relevantní řešení.](media/itsmc-resync-servicenow/solution-search-8-bit.png)
 
 1. Na obrazovce řešení zvolte v filtru předplatného možnost Vybrat vše a potom filtr podle "partnera".
 
-    ![Snímek obrazovky, který ukazuje, kde vybrat vše a kde filtrovat podle partnera](media/itsmc-resync-servicenow/solutions-list-8bit.png)
+    ![Snímek obrazovky, který ukazuje, kde vybrat vše a kde filtrovat podle partnera](media/itsmc-resync-servicenow/solutions-list-8-bit.png)
 
 1. Vyberte řešení pro připojení ITSM.
 1. V nápisu vlevo vyberte připojení ITSM.
 
-    ![Snímek obrazovky, který ukazuje, kde vybrat připojení ITSM](media/itsmc-resync-servicenow/itsm-connector-8bit.png)
+    ![Snímek obrazovky, který ukazuje, kde vybrat připojení ITSM](media/itsmc-resync-servicenow/itsm-connector-8-bit.png)
 
 1. Vyberte jednotlivé konektory ze seznamu. 
     1. Klikněte na název konektoru, aby se nakonfiguroval.
@@ -41,10 +41,10 @@ K opětovné aktivaci připojení a aktualizaci tokenu použijte následující 
 
     1. Klikněte na synchronizovat.
 
-       ![Snímek obrazovky, který zvýrazní tlačítko synchronizovat.](media/itsmc-resync-servicenow/resync-8bit2.png)
+       ![Snímek obrazovky, který zvýrazní tlačítko synchronizovat.](media/itsmc-resync-servicenow/resync-8-bit-2.png)
 
     1. Klikněte na Uložit.
 
-        ![Nové připojení](media/itsmc-resync-servicenow/save-8bit.png)
+        ![Nové připojení](media/itsmc-resync-servicenow/save-8-bit.png)
 
 f.    Zkontrolujte oznámení a zjistěte, jestli proces začal.

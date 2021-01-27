@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/23/2018
 ms.author: akjosh
-ms.openlocfilehash: 66e4ea622f546981d1f0651b20368590e59056d3
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 33bd7c82568f836e498a05411d2b3cf1c6a950b9
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201616"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878625"
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>Řešení potíží s připojením ke vzdálené ploše virtuálního počítače Azure
 Připojení RDP (Remote Desktop Protocol) k vašemu virtuálnímu počítači Azure s Windows může z různých důvodů selhat a vy tak k němu můžete ztratit přístup. Problém může být ve službě Vzdálená plocha na virtuálním počítači, v síťovém připojením nebo v klientovi vzdálené plochy na hostitelském počítači. Tento článek vás provede několika nejběžnějšími metodami řešení potíží s připojením RDP. 
@@ -46,7 +46,7 @@ Po každém kroku řešení potíží se pokuste znovu připojit k virtuálnímu
 Pokud potřebujete podrobnější kroky a vysvětlení, pokračujte ve čtení. Ověřte, že místní síťové zařízení, jako jsou směrovače a brány firewall, neblokuje odchozí port TCP 3389, jak je uvedeno v [podrobných scénářích řešení potíží s](detailed-troubleshoot-rdp.md)protokolem RDP.
 
 > [!TIP]
-> Pokud je tlačítko **připojit** pro váš virtuální počítač na portálu šedé a nejste připojeni k Azure prostřednictvím [expresního postupu](../../expressroute/expressroute-introduction.md) nebo připojení [VPN typu Site-to-site](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) , musíte před použitím protokolu RDP vytvořit a přiřadit virtuální počítač k veřejné IP adrese. Podle potřeby si můžete přečíst další informace o [veřejných IP adresách v Azure](../../virtual-network/public-ip-addresses.md).
+> Pokud je tlačítko **připojit** pro váš virtuální počítač na portálu šedé a nejste připojeni k Azure prostřednictvím [expresního postupu](../../expressroute/expressroute-introduction.md) nebo připojení [VPN typu Site-to-site](../../vpn-gateway/tutorial-site-to-site-portal.md) , musíte před použitím protokolu RDP vytvořit a přiřadit virtuální počítač k veřejné IP adrese. Podle potřeby si můžete přečíst další informace o [veřejných IP adresách v Azure](../../virtual-network/public-ip-addresses.md).
 
 
 ## <a name="ways-to-troubleshoot-rdp-issues"></a>Způsoby řešení potíží s protokolem RDP
@@ -245,7 +245,7 @@ Při pokusu o připojení k VIRTUÁLNÍmu počítači přes RDP se může objevi
 * [Chyba zabezpečení systému Windows: vaše přihlašovací údaje nefungovaly](troubleshoot-specific-rdp-errors.md#wincred).
 * [Tento počítač se nemůže připojit ke vzdálenému počítači](troubleshoot-specific-rdp-errors.md#rdpconnect).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 Pokud nedošlo k žádné z těchto chyb a stále se nemůžete připojit k virtuálnímu počítači přes vzdálenou plochu, přečtěte si podrobný [Průvodce odstraňováním potíží pro vzdálenou plochu](detailed-troubleshoot-rdp.md).
 * Postup řešení potíží při přístupu k aplikacím běžícím na virtuálním počítači najdete v tématu [řešení potíží s přístupem k aplikaci spuštěné na virtuálním počítači Azure](./troubleshoot-app-connection.md?toc=/azure/virtual-machines/linux/toc.json).
 * Pokud máte problémy s použitím Secure Shell (SSH) pro připojení k virtuálnímu počítači se systémem Linux v Azure, přečtěte si téma [řešení potíží s připojením SSH k virtuálnímu počítači se systémem Linux v Azure](./troubleshoot-ssh-connection.md?toc=/azure/virtual-machines/linux/toc.json).

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: quickstart
 ms.date: 11/23/2020
-ms.openlocfilehash: 7db546ec9038403bd9e34f637e9d9de368277d52
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 0698295688a4587a704e8cdba0a4796e8d1e6fcd
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400298"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879995"
 ---
 # <a name="quickstart-create-an-azure-purview-account-using-azure-powershellazure-cli"></a>Rychlý Start: vytvoření účtu Azure dosah pomocí Azure PowerShell/Azure CLI
 
@@ -21,15 +21,15 @@ ms.locfileid: "97400298"
 
 V tomto rychlém startu vytvoříte účet Azure dosah pomocí Azure PowerShell/Azure CLI.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 * Uživatelský účet, který použijete pro přihlášení k Azure, musí být členem role přispěvatel nebo vlastník nebo správcem předplatného Azure.
 
-* Vlastní [klient Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant).
+* Vlastní [klient Azure Active Directory](../active-directory/fundamentals/active-directory-access-create-new-tenant.md).
 
-* Nainstalujte do klientského počítače Azure PowerShell nebo rozhraní příkazového řádku Azure CLI a nasaďte šablonu: [nasazení z příkazového řádku](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-tutorial-create-first-template?tabs=azure-cli#command-line-deployment) .
+* Nainstalujte do klientského počítače Azure PowerShell nebo rozhraní příkazového řádku Azure CLI a nasaďte šablonu: [nasazení z příkazového řádku](../azure-resource-manager/templates/template-tutorial-create-first-template.md?tabs=azure-cli#command-line-deployment) .
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 

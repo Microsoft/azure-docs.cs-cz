@@ -1,5 +1,5 @@
 ---
-title: Migrace z odhady na ScriptRunConfig
+title: Migrace z estimátorů do ScriptRunConfig
 titleSuffix: Azure Machine Learning
 description: Průvodce migrací pro migraci z odhady do ScriptRunConfig pro konfiguraci školicích úloh.
 services: machine-learning
@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 12/14/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 64c03b1c9fc18a4e78af9914b893599683069ced
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: d603a12f851dac5b7cefc5bad728d42967bb27dc
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632777"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878591"
 ---
 # <a name="migrating-from-estimators-to-scriptrunconfig"></a>Migrace z odhady na ScriptRunConfig
 
@@ -30,7 +30,7 @@ Tento článek se věnuje běžným hlediskům při migraci z odhady na ScriptRu
 > Pokud chcete migrovat na ScriptRunConfig z odhady, ujistěte se, že používáte >= 1.15.0 sady Python SDK.
 
 ## <a name="scriptrunconfig-documentation-and-samples"></a>Dokumentace a ukázky ScriptRunConfig
-Dokumentace a ukázky Azure Machine Learning byly aktualizovány tak, aby používaly [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig?view=azure-ml-py&preserve-view=true) pro konfiguraci a odeslání úlohy.
+Dokumentace a ukázky Azure Machine Learning byly aktualizovány tak, aby používaly [ScriptRunConfig](/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig?preserve-view=true&view=azure-ml-py) pro konfiguraci a odeslání úlohy.
 
 Informace o použití ScriptRunConfig najdete v následující dokumentaci:
 * [Konfigurace a odesílání trénovacích spuštění](how-to-set-up-training-targets.md)
@@ -104,10 +104,10 @@ src.run_config.data_references = {data_ref.data_reference_name: data_ref.to_conf
 ```
 
 Další informace o používání dat pro školení najdete v těchto tématech:
-* [Výuka s datovými sadami v Azure ML](https://docs.microsoft.com/azure/machine-learning/how-to-train-with-datasets)
+* [Výuka s datovými sadami v Azure ML](./how-to-train-with-datasets.md)
 
 ## <a name="distributed-training"></a>Distribuované trénování
-Pokud potřebujete nakonfigurovat distribuovanou úlohu pro školení, udělejte to tak, že zadáte `distributed_job_config` parametr v konstruktoru ScriptRunConfig. Předejte [MpiConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py&preserve-view=true), [PyTorchConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?view=azure-ml-py&preserve-view=true)nebo [TensorflowConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?view=azure-ml-py&preserve-view=true) pro distribuované úlohy příslušných typů.
+Pokud potřebujete nakonfigurovat distribuovanou úlohu pro školení, udělejte to tak, že zadáte `distributed_job_config` parametr v konstruktoru ScriptRunConfig. Předejte [MpiConfiguration](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?preserve-view=true&view=azure-ml-py), [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py)nebo [TensorflowConfiguration](/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?preserve-view=true&view=azure-ml-py) pro distribuované úlohy příslušných typů.
 
 V následujícím příkladu je nakonfiguruje školicí úkol PyTorch pro použití distribuovaného školení s MPI/Horovod:
 ```python
@@ -120,7 +120,7 @@ src = ScriptRunConfig(source_directory='.',
                       distributed_job_config=MpiConfiguration(node_count=2, process_count_per_node=2))
 ```
 
-Další informace najdete tady:
+Další informace naleznete v tématu:
 * [Distribuované trénování s využitím PyTorchu](how-to-train-pytorch.md#distributed-training)
 * [Distribuované školení pomocí TensorFlow](how-to-train-tensorflow.md#distributed-training)
 

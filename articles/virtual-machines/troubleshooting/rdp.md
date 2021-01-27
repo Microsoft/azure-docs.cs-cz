@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 12/13/2018
 ms.author: genli
-ms.openlocfilehash: 2fd2efa9de3deff1fcf983ac0fa45e412357d312
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 512130928c8e18aad90bce351e3be85d6fbe03f0
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "71057275"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878642"
 ---
 # <a name="troubleshoot-rdp-issues"></a>Řešení potíží s protokolem RDP
 
@@ -36,7 +36,7 @@ V této části jsou uvedené následující problémy při vytváření připoj
 - [Řešení potíží s vnitřní chybou](Troubleshoot-rdp-internal-error.md)
 - [Řešení potíží s častým odpojováním připojení](troubleshoot-rdp-intermittent-connectivity.md)
 - [Řešení potíží s obecnou chybou](troubleshoot-rdp-general-error.md)
-- [Řešení chyb ověřování](troubleshoot-authentication-error-rdp-vm.md)
+- [Řešení chyb ověřování](/troubleshoot/azure/virtual-machines/cannot-connect-rdp-azure-vm)
 - [Řešení potíží s připojením RDP virtuálních počítačů Azure podle ID události](event-id-troubleshoot-vm-rdp-connecton.md)
 - [Řešení chyby protokolu RDP na virtuálním počítači kvůli statické adrese IP](troubleshoot-rdp-static-ip.md)
 - [Řešení chyby protokolu RDP na virtuálním počítači kvůli zablokování síťové karty](troubleshoot-rdp-nic-disabled.md)
@@ -46,4 +46,3 @@ V této části jsou uvedené následující problémy při vytváření připoj
 - [Brána firewall hostovaného operačního systému blokuje příchozí provoz](guest-os-firewall-blocking-inbound-traffic.md)
 - [Brána firewall hostovaného operačního systému je chybně nakonfigurovaná](guest-os-firewall-misconfigured.md) 
 - [Řešení chyby protokolu RDP způsobené netvsc.sys](troubleshoot-rdp-driver-netvsc.md)
-
