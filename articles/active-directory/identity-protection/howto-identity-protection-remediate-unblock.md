@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: how-to
-ms.date: 10/06/2020
+ms.date: 01/25/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6dd918aef85deefc23771413c3eb7b92f1189d39
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: e322f78468c89a549955a01f73952e8cde7a13c8
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94835794"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98872820"
 ---
 # <a name="remediate-risks-and-unblock-users"></a>Oprava rizik a odblokování uživatelů
 
@@ -91,7 +91,9 @@ Aby správci odblokoval účet na základě rizika přihlašování, mají násl
 
 ## <a name="powershell-preview"></a>PowerShell Preview
 
-Pomocí modulu Microsoft Graph PowerShell SDK Preview můžou organizace spravovat rizika pomocí PowerShellu. Moduly a ukázkový kód verze Preview najdete v [úložišti GitHub Azure AD](https://github.com/AzureAD/IdentityProtectionTools).
+Pomocí modulu Microsoft Graph PowerShell SDK Preview můžou organizace spravovat rizika pomocí PowerShellu. Moduly a ukázkový kód verze Preview najdete v [úložišti GitHub Azure AD](https://github.com/AzureAD/IdentityProtectionTools). 
+
+`Invoke-AzureADIPDismissRiskyUser.ps1`Skript zahrnutý do úložiště umožňuje organizacím zrušit všechny rizikové uživatele ve svém adresáři.
 
 ## <a name="next-steps"></a>Další kroky
 

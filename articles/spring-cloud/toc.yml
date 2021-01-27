@@ -33,8 +33,6 @@
       href: spring-cloud-tutorial-custom-domain.md
     - name: Použití spravované identity pro připojení Key Vaultu k aplikaci Azure Spring Cloud
       href: spring-cloud-tutorial-managed-identities-key-vault.md
-    - name: Nasazení Azure Spring Cloudu ve virtuální síti
-      href: spring-cloud-tutorial-deploy-in-azure-virtual-network.md
     - name: Použití spravované identity k vyvolání Azure Functions z aplikace Azure Spring Cloud
       href: spring-cloud-tutorial-managed-identities-functions.md
 - name: Koncepty
@@ -101,6 +99,18 @@
           href: spring-cloud-howto-application-insights.md
         - name: Metriky jističe Resilience4J
           href: spring-cloud-howto-circuit-breaker-metrics.md
+    - name: Síť
+      items:
+        - name: Nasazení jarního cloudu Azure ve virtuální síti
+          href: spring-cloud-tutorial-deploy-in-azure-virtual-network.md
+        - name: Přístup k aplikaci v privátní síti
+          href: spring-cloud-access-app-virtual-network.md
+        - name: Zveřejňujte aplikace na internetu.
+          href: spring-cloud-expose-apps-gateway-azure-firewall.md
+        - name: 'Zodpovědnost za Zákazníky, kteří spouštějí Azure jaře Cloud ve virtuální síti'
+          href: spring-cloud-vnet-customer-responsibilities.md
+        - name: Řešení potíží s jarním cloudem Azure ve virtuálních sítích
+          href: spring-cloud-troubleshooting-vnet.md
     - name: Zabezpečení
       items:
         - name: Povolení spravované identity přiřazené systémem
@@ -140,7 +150,7 @@
         - name: Spring Boot
           href: /azure/developer/java/migration/migrate-spring-boot-to-azure-spring-cloud
         - name: Tomcat
-          href: 'https://docs.microsoft.com/azure/developer/java/migration/migrate-tomcat-to-azure-spring-cloud'
+          href: /azure/developer/java/migration/migrate-tomcat-to-azure-spring-cloud
 - name: Nasazení DevOps
   items:
     - name: CI/CD s využitím Azure DevOps

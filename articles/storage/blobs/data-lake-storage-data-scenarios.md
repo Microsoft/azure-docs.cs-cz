@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: eea7fb073cdf99ee1f4257f6824375a6502a4fad
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bffa7894f7603f95c4840019be5e5670797881df
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95913619"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98873242"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Použití Azure Data Lake Storage Gen2 pro požadavky na velké objemy dat
 
@@ -141,5 +141,5 @@ Tady je seznam nástrojů, pomocí kterých můžete stahovat data z Data Lake S
 |---|--|
 |Azure Data Factory | [Aktivita kopírování ve službě Azure Data Factory](../../data-factory/copy-activity-overview.md) |
 |Apache DistCp | [Použití DistCp ke kopírování dat mezi objekty blob Azure Storage a Azure Data Lake Storage Gen2](./data-lake-storage-use-distcp.md) |
-|Azure Storage Explorer|[Správa adresářů, souborů a seznamů ACL ve službě Azure Data Lake Storage Gen2 pomocí Průzkumníka služby Azure Storage](data-lake-storage-explorer.md)|
-|Nástroj AzCopy|[Přenos dat pomocí AzCopy a BLOB Storage](../common/storage-use-azcopy-blobs.md)|
+|Průzkumník služby Azure Storage|[Správa adresářů, souborů a seznamů ACL ve službě Azure Data Lake Storage Gen2 pomocí Průzkumníka služby Azure Storage](data-lake-storage-explorer.md)|
+|Nástroj AzCopy|[Přenos dat pomocí AzCopy a BLOB Storage](../common/storage-use-azcopy-v10.md#transfer-data)|

@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: cherylmc
-ms.openlocfilehash: 2fc12385c78135269b6a73038fd0ad810ebaedd6
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 73a7d76de34d29b2d51c54569b234cd8221b08f8
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576156"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98872175"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>Konfigurace průchodu bránou VPN pro partnerský vztah virtuální sítě
 
@@ -35,7 +35,7 @@ V tomto článku jsou dva scénáře:
 > Pokud provedete změnu topologie sítě a máte klienty VPN se systémem Windows, musí se balíček klienta VPN pro klienty se systémem Windows stáhnout a nainstalovat znovu, aby se změny projevily u klienta.
 >
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ověřte, zda máte následující virtuální sítě a oprávnění:
 
@@ -43,9 +43,9 @@ Než začnete, ověřte, zda máte následující virtuální sítě a oprávně
 
 |Virtuální síť|Model nasazení| Brána virtuální sítě|
 |---|---|---|---|
-| Hub-RM| [Resource Manager](vpn-gateway-howto-site-to-site-resource-manager-portal.md)| [Ano](tutorial-create-gateway-portal.md)|
-| Paprskový – RM | [Resource Manager](vpn-gateway-howto-site-to-site-resource-manager-portal.md)| Ne |
-| Spoke-Classic | [Klasický](vpn-gateway-howto-site-to-site-classic-portal.md#CreatVNet) | Ne |
+| Hub-RM| [Resource Manager](./tutorial-site-to-site-portal.md)| [Ano](tutorial-create-gateway-portal.md)|
+| Paprskový – RM | [Resource Manager](./tutorial-site-to-site-portal.md)| No |
+| Spoke-Classic | [Standardním](vpn-gateway-howto-site-to-site-classic-portal.md#CreatVNet) | No |
 
 ### <a name="permissions"></a><a name="permissions"></a>Oprávnění
 

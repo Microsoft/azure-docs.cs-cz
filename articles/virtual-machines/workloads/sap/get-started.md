@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0a0f17df13b5b101aebf585b7f1f3fb2a5b48006
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 992115a65ec015ca04990135975e0d4020764184
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746049"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98873769"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Použití Azure k hostování a spouštění scénářů pro úlohy SAP
 
@@ -48,7 +48,7 @@ Pokud máte konkrétní otázky, budeme v této části úvodní stránky ukazov
 - Funguje rámec HA třetí strany, kromě Windows a Pacemaker? Zkontrolujte dolní část [poznámky k podpoře SAP #1928533](https://launchpad.support.sap.com/#/notes/1928533)
 - Co je Azure Storage pro můj scénář nejvhodnější? Číst [Azure Storage typy pro úlohy SAP](./planning-guide-storage.md)
 - Je jádro Red Hat v Oracle Enterprise Linux podporované systémem SAP? Přečtěte [si poznámku o podpoře SAP sap #1565179](https://launchpad.support.sap.com/#/notes/1565179)
-- Proč jsou rodiny virtuálních počítačů Azure [da (s) v4](https://docs.microsoft.com/azure/virtual-machines/dav4-dasv4-series) / [(](https://docs.microsoft.com/azure/virtual-machines/eav4-easv4-series) s) necertifikované pro SAP HANA? Rodiny virtuálních počítačů Azure Das/EAS jsou založené na hardwaru založeném na procesorech AMD. SAP HANA nepodporuje procesory AMD, a to ani ve virtualizovaných scénářích.
+- Proč jsou rodiny virtuálních počítačů Azure [da (s) v4](../../dav4-dasv4-series.md) / [(](../../eav4-easv4-series.md) s) necertifikované pro SAP HANA? Rodiny virtuálních počítačů Azure Das/EAS jsou založené na hardwaru založeném na procesorech AMD. SAP HANA nepodporuje procesory AMD, a to ani ve virtualizovaných scénářích.
 - Proč se mi pořád zobrazuje zpráva: příznaky CPU pro instrukci RDTSCP nebo příznaky CPU pro constant_tsc nebo nonstop_tsc nejsou nastavené nebo current_clocksource a available_clocksource nejsou správně nakonfigurované s SAP HANA, i když jsou na tom, že běží nejnovější jádra pro Linux. Odpověď najdete v [poznámce SAP support #2791572](https://launchpad.support.sap.com/#/notes/2791572)
 - Kde najdu architektury pro nasazení SAP Fiori v Azure? Podívejte se na blog [SAP v Azure: Application Gateway nastavení brány firewall webových aplikací (WAF) v2 pro internetové aplikace SAP Fiori](https://blogs.sap.com/2020/12/03/sap-on-azure-application-gateway-web-application-firewall-waf-v2-setup-for-internet-facing-sap-fiori-apps/) 
 
@@ -84,14 +84,14 @@ V této části najdete dokumenty ke službě Microsoft Power BI Integration do 
 
 ## <a name="change-log"></a>Protokol změn
 
-- 01/23/2021: zaveďte funkce dělení datových svazků HANA jako funkce k proložení vstupně-výstupních operací s datovými soubory HANA v různých discích Azure nebo sdílených složkách NFS bez použití Správce diskového svazku v článcích [SAP HANA konfigurace úložiště virtuálních počítačů Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) a [svazcích NFS v 4.1 na Azure NetApp Files pro SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp)
-- 01/18/2021: Přidání podpory souborů NFS Azure NET Apps pro Oracle v [azure Virtual Machines nasazení Oracle DBMS pro úlohy SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_oracle) a nastavení desetinných míst v tabulce v dokumentu [systému souborů NFS v 4.1 na Azure NetApp Files pro SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp)
+- 01/23/2021: zaveďte funkce dělení datových svazků HANA jako funkce k proložení vstupně-výstupních operací s datovými soubory HANA v různých discích Azure nebo sdílených složkách NFS bez použití Správce diskového svazku v článcích [SAP HANA konfigurace úložiště virtuálních počítačů Azure](./hana-vm-operations-storage.md) a [svazcích NFS v 4.1 na Azure NetApp Files pro SAP HANA](./hana-vm-operations-netapp.md)
+- 01/18/2021: Přidání podpory souborů NFS Azure NET Apps pro Oracle v [azure Virtual Machines nasazení Oracle DBMS pro úlohy SAP](./dbms_guide_oracle.md) a nastavení desetinných míst v tabulce v dokumentu [systému souborů NFS v 4.1 na Azure NetApp Files pro SAP HANA](./hana-vm-operations-netapp.md)
 - 01/11/2021: drobné změny v [ha pro SAP NW na virtuálních počítačích Azure v RHEL pro aplikace SAP](./high-availability-guide-rhel.md), [ha pro SAP NW na virtuálních počítačích Azure v RHEL s ANF](./high-availability-guide-rhel-netapp-files.md) a [ha pro SAP NW na virtuálních počítačích Azure](./high-availability-guide-rhel-multi-sid.md) v, které umožňují přizpůsobit příkazy pro RHEL8 i RHEL7 a ENSA1 a ENSA2
 - 01/05/2021: změny v [SAP HANA škálování na více instancí s pohotovostním uzlem na virtuálních počítačích Azure s ANF v SLES](./sap-hana-scale-out-standby-netapp-files-suse.md) a SAP HANA škálování na více instancí [s pohotovostním uzlem na virtuálních počítačích Azure s ANF v RHEL](./sap-hana-scale-out-standby-netapp-files-rhel.md), revize Doporučené konfigurace, která povolí agentovi SAP hosta spravovat rozsah místních portů  
-- 01/04/2021: přidejte nové oblasti Azure podporované službou HLI do [toho, co je SAP HANA v Azure (velké instance)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) .
-- 12/29/2020: přidejte doporučení architektury pro konkrétní oblasti Azure v [konfiguracích úloh SAP pomocí zóny dostupnosti Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ha-availability-zones)
+- 01/04/2021: přidejte nové oblasti Azure podporované službou HLI do [toho, co je SAP HANA v Azure (velké instance)](./hana-overview-architecture.md) .
+- 12/29/2020: přidejte doporučení architektury pro konkrétní oblasti Azure v [konfiguracích úloh SAP pomocí zóny dostupnosti Azure](./sap-ha-availability-zones.md)
 - 12/21/2020: přidejte nové certifikace do SKU velkých instancí HANA v části [dostupné SKU pro HLI](./hana-available-skus.md) .
-- 12/12/2020: byl přidán ukazatel na poznámku ke službě SAP poznámky objasňující podrobnosti o podpoře Oracle Enterprise Linux podle SAP pro to, [co je software SAP podporován pro nasazení Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure#oracle-dbms-support) .
+- 12/12/2020: byl přidán ukazatel na poznámku ke službě SAP poznámky objasňující podrobnosti o podpoře Oracle Enterprise Linux podle SAP pro to, [co je software SAP podporován pro nasazení Azure](./sap-supported-product-on-azure.md#oracle-dbms-support) .
 - 11/26/2020: Přizpůsobte [SAP HANA konfigurací úložiště virtuálních počítačů Azure](./hana-vm-operations-storage.md) a [Azure Storage typů pro úlohy SAP](./planning-guide-storage.md) na změnu jednoho [virtuálního počítače SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines)
 - 11/05/2020: Změna odkazu na nové poznámky SAP týkající se typů systému souborů podporovaných systémem HANA v [SAP HANA konfiguracích úložiště virtuálních počítačů Azure](./hana-vm-operations-storage.md) 
 - 10/26/2020: Změna některých tabulek pro konfiguraci služby Azure Premium Storage za účelem objasnění zajištěné a propustnosti v [SAP HANA konfiguracích úložiště virtuálních počítačů Azure](./hana-vm-operations-storage.md)

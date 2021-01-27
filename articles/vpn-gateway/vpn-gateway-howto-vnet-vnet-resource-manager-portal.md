@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/19/2020
 ms.author: cherylmc
-ms.openlocfilehash: fe0280e302882fd5e50830950b531ea9ca169618
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 465d877da48e0d7027dbba6615302af32c6bb154
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660538"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98872396"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>Konfigurace připojení brány VPN typu VNet-to-VNet pomocí Azure Portal
 
@@ -44,7 +44,7 @@ Při vytváření připojení typu VNet-to-VNet se automaticky vytvoří a napln
 
 ### <a name="site-to-site-ipsec"></a>Site-to-Site (IPsec)
 
-Pokud pracujete se složitou konfigurací sítě, můžete raději připojit virtuální sítě pomocí [připojení typu Site-to-site](vpn-gateway-howto-site-to-site-resource-manager-portal.md) . Když budete postupovat podle pokynů protokolu IPsec pro lokalitu, vytvoříte a nakonfigurujete brány místní sítě ručně. Brána místní sítě pro každou virtuální síť zpracovává jiné virtuální sítě jako místní síť. Tyto kroky umožňují zadat další adresní prostory pro bránu místní sítě pro směrování provozu. Pokud se adresní prostor pro virtuální síť změní, musíte ručně aktualizovat odpovídající bránu místní sítě.
+Pokud pracujete se složitou konfigurací sítě, můžete raději připojit virtuální sítě pomocí [připojení typu Site-to-site](./tutorial-site-to-site-portal.md) . Když budete postupovat podle pokynů protokolu IPsec pro lokalitu, vytvoříte a nakonfigurujete brány místní sítě ručně. Brána místní sítě pro každou virtuální síť zpracovává jiné virtuální sítě jako místní síť. Tyto kroky umožňují zadat další adresní prostory pro bránu místní sítě pro směrování provozu. Pokud se adresní prostor pro virtuální síť změní, musíte ručně aktualizovat odpovídající bránu místní sítě.
 
 ### <a name="vnet-peering"></a>Partnerské vztahy virtuálních sítí
 
@@ -76,7 +76,7 @@ V tomto článku se dozvíte, jak připojit virtuální sítě pomocí typu při
 * **Nastavení virtuální sítě**
   * **Název**: VNet1
   * **Adresní prostor**: 10.1.0.0/16
-  * **Předplatné**: vyberte předplatné, které chcete použít.
+  * **Předplatné:** Vyberte předplatné, které chcete použít.
   * **Skupina prostředků**: TestRG1
   * **Umístění**: východní USA
   * **Podsíť**
@@ -104,7 +104,7 @@ V tomto článku se dozvíte, jak připojit virtuální sítě pomocí typu při
 * **Nastavení virtuální sítě**
   * **Název**: VNet4
   * **Adresní prostor**: 10.41.0.0/16
-  * **Předplatné**: vyberte předplatné, které chcete použít.
+  * **Předplatné:** Vyberte předplatné, které chcete použít.
   * **Skupina prostředků**: TestRG4
   * **Umístění**: západní USA
   * **Podsíť**
@@ -200,7 +200,7 @@ Potom vytvořte připojení z VNet4 k VNet1. Na portálu vyhledejte bránu virtu
 
 ## <a name="add-additional-connections"></a>Přidat další připojení
 
-Pokud chcete přidat další připojení, přejděte k bráně virtuální sítě, ze které chcete vytvořit připojení, a pak vyberte **připojení**. Můžete vytvořit další připojení VNet-to-VNet nebo vytvořit připojení IPsec Site-to-Site k místnímu umístění. Nezapomeňte upravit **Typ připojení** tak, aby odpovídal typu připojení, které chcete vytvořit. Než vytvoříte další připojení, ověřte, že se adresní prostor pro virtuální síť nepřekrývá s žádným z adresních prostorů, ke kterým se chcete připojit. Postup vytvoření připojení Site-to-Site najdete v tématu [Vytvoření připojení typu Site-to-Site](vpn-gateway-howto-site-to-site-resource-manager-portal.md).
+Pokud chcete přidat další připojení, přejděte k bráně virtuální sítě, ze které chcete vytvořit připojení, a pak vyberte **připojení**. Můžete vytvořit další připojení VNet-to-VNet nebo vytvořit připojení IPsec Site-to-Site k místnímu umístění. Nezapomeňte upravit **Typ připojení** tak, aby odpovídal typu připojení, které chcete vytvořit. Než vytvoříte další připojení, ověřte, že se adresní prostor pro virtuální síť nepřekrývá s žádným z adresních prostorů, ke kterým se chcete připojit. Postup vytvoření připojení Site-to-Site najdete v tématu [Vytvoření připojení typu Site-to-Site](./tutorial-site-to-site-portal.md).
 
 ## <a name="vnet-to-vnet-faq"></a>Nejčastější dotazy týkající se propojení VNet-to-VNet
 

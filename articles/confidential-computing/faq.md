@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: workloads
 ms.date: 4/17/2020
 ms.author: jencook
-ms.openlocfilehash: 9df3d9771029e6d72e9d0092a129cddc27be6cd7
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 38bf12b46002e767bba50cf833637e2c8ace078f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94564102"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98872328"
 ---
 # <a name="frequently-asked-questions-for-azure-confidential-computing"></a>Nejčastější dotazy týkající se důvěrného výpočetního prostředí Azure
 
@@ -37,13 +37,21 @@ Ne. Virtuální počítače se dají nasadit jenom na operační počítače gen
 **Virtuální počítače s DCsv2 jsou na portálu zobrazeny šedě a nelze je vybrat.**
 
 Na základě informačního bublinového rámečku u virtuálního počítače je potřeba vzít v úvahu různé akce:
-   -    **UnsupportedGeneration** : Změňte generaci image virtuálního počítače na "Gen2".
-   -    **NotAvailableForSubscription** : oblast zatím není pro vaše předplatné k dispozici. Vyberte dostupnou oblast.
-   -    **InsufficientQuota** : [vytvořte žádost o podporu, která zvýší vaši kvótu](../azure-portal/supportability/per-vm-quota-requests.md). Bezplatné zkušební předplatné nemají kvótu pro virtuální počítače s důvěrnými výpočetními prostředími. 
+   -    **UnsupportedGeneration**: Změňte generaci image virtuálního počítače na "Gen2".
+   -    **NotAvailableForSubscription**: oblast zatím není pro vaše předplatné k dispozici. Vyberte dostupnou oblast.
+   -    **InsufficientQuota**: [vytvořte žádost o podporu, která zvýší vaši kvótu](../azure-portal/supportability/per-vm-quota-requests.md). Bezplatné zkušební předplatné nemají kvótu pro virtuální počítače s důvěrnými výpočetními prostředími. 
 
 **Virtuální počítače s DCsv2 se při pokusu o jejich hledání v selektoru velikosti portálu nezobrazí.**
 
 Ujistěte se, že jste vybrali oblast, která je [k dispozici](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines). Také se ujistěte, že v selektoru velikosti vyberete možnost zrušit všechny filtry. 
+
+**Můžu povolit akcelerované síťové služby s důvěrným výpočetním prostředím Azure?**
+
+ Ne. Akcelerované síťové služby se na virtuálních počítačích DC-Series nebo DCsv2-Series nepodporují. Akcelerované síťové služby se nedají povolit pro jakékoli nasazení s důvěrnými výpočetními počítači nebo nasazení clusteru služby Azure Kubernetes spuštěné na důvěrné výpočetní platformě.
+
+**Můžu s těmito počítači použít vyhrazeného hostitele Azure?**
+
+Ano. Vyhrazený hostitel Azure podporuje virtuální počítače řady DCsv2-Series. Vyhrazený hostitel Azure poskytuje fyzický server s jedním klientem ke spouštění virtuálních počítačů na serveru. Uživatelé obvykle používají vyhrazeného hostitele Azure k řešení požadavků na dodržování předpisů v případě fyzického zabezpečení, integrity dat a monitorování. 
 
 **Zobrazila se chyba při selhání nasazení šablony Azure Resource Manager: operace nemohla být dokončena, protože má za následek překročení schválené kvóty jader řady Standard DcsV2.**
 
