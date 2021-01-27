@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 12/29/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7418e5578450367e9fa37a87adb6e7036619877b
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.openlocfilehash: e098256a43add6df026ab136bcd6a6b549c147e7
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827444"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98871311"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>Konfigurace úloh SAP s využitím služby Zóny dostupnosti Azure
 Kromě nasazení různých vrstev architektury SAP v Azure Availability Sets se vám nedávno zavedené [zóny dostupnosti Azure](../../../availability-zones/az-overview.md) taky dají použít i pro nasazení úloh SAP. Zóna dostupnosti Azure je definovaná jako: "jedinečná fyzická umístění v rámci oblasti. Každá zóna se skládá z jednoho nebo více datových center vybavených nezávislým napájením, chlazením a sítěmi. Zóny dostupnosti Azure nejsou k dispozici ve všech oblastech. Pro oblasti Azure, které poskytují Zóny dostupnosti, se podívejte na [mapu oblastí Azure](https://azure.microsoft.com/global-infrastructure/geographies/). Tato mapa vám ukáže, které oblasti poskytují nebo jsou oznámeny k poskytování Zóny dostupnosti. 
@@ -56,7 +56,7 @@ Když nasadíte virtuální počítače Azure napříč Zóny dostupnosti a vytv
 
 - Při nasazení do Zóny dostupnosti Azure je nutné použít [Azure Managed disks](https://azure.microsoft.com/services/managed-disks/) . 
 - Mapování výčtů zóny na fyzické zóny je vyřešeno na základě předplatného Azure. Pokud k nasazení systémů SAP používáte různá předplatná, musíte pro každé předplatné definovat ideální zóny.
-- Skupiny dostupnosti Azure nemůžete nasadit v rámci zóny dostupnosti Azure, pokud nepoužíváte [skupinu umístění s použitím Azure Proximity](../../linux/co-location.md). Způsob nasazení vrstvy SAP DBMS a centrálních služeb v různých zónách a zároveň nasazení vrstvy aplikace SAP pomocí skupin dostupnosti a zajištění bezprostřední blízkosti virtuálních počítačů je popsána v článku [skupiny umístění blízkosti Azure pro optimální latenci sítě s aplikacemi SAP](sap-proximity-placement-scenarios.md). Pokud nepoužíváte skupiny umístění v blízkosti Azure, musíte zvolit jednu nebo druhou jako architekturu nasazení pro virtuální počítače.
+- Skupiny dostupnosti Azure nemůžete nasadit v rámci zóny dostupnosti Azure, pokud nepoužíváte [skupinu umístění s použitím Azure Proximity](../../co-location.md). Způsob nasazení vrstvy SAP DBMS a centrálních služeb v různých zónách a zároveň nasazení vrstvy aplikace SAP pomocí skupin dostupnosti a zajištění bezprostřední blízkosti virtuálních počítačů je popsána v článku [skupiny umístění blízkosti Azure pro optimální latenci sítě s aplikacemi SAP](sap-proximity-placement-scenarios.md). Pokud nepoužíváte skupiny umístění v blízkosti Azure, musíte zvolit jednu nebo druhou jako architekturu nasazení pro virtuální počítače.
 - K vytvoření řešení clusteru s podporou převzetí služeb při selhání založeného na clusteringu Windows Server s podporou převzetí služeb při selhání nebo Linux Pacemaker nejde použít [Azure Basic Load Balancer](../../../load-balancer/load-balancer-overview.md) . Místo toho je potřeba použít [SKU Azure Standard Load Balancer](../../../load-balancer/load-balancer-standard-availability-zones.md).
 
 
@@ -119,7 +119,7 @@ Oblasti Azure, ve kterých se tato architektura nasazení SAP mezi zónami nedop
 - Francie – střed 
 - Jižní Afrika – sever
 - Střední Kanada
-- Japan East
+- Japonsko – východ
 
 V závislosti na tom, co jste ochotni tolerovat za běhu, se liší i jiné oblasti, které zde nejsou uvedené.
 
@@ -130,7 +130,7 @@ Zjednodušené schéma aktivního/aktivního nasazení ve dvou zónách může v
 
 Pro tuto konfiguraci platí následující požadavky:
 
-- Nepoužíváte [skupinu umístění blízkosti Azure](../../linux/co-location.md), považujete zóny dostupnosti Azure jako chybu a aktualizační domény pro všechny virtuální počítače, protože skupiny dostupnosti nejde nasadit v zóny dostupnosti Azure.
+- Nepoužíváte [skupinu umístění blízkosti Azure](../../co-location.md), považujete zóny dostupnosti Azure jako chybu a aktualizační domény pro všechny virtuální počítače, protože skupiny dostupnosti nejde nasadit v zóny dostupnosti Azure.
 - Pokud chcete kombinovat nasazení prostředí pro vrstvu DBMS a centrální služby, ale chcete použít skupiny dostupnosti Azure pro aplikační vrstvu, je nutné použít skupiny Azure Proximity, jak je popsáno v článku [skupiny umístění blízkosti Azure pro optimální latenci sítě s aplikacemi SAP](sap-proximity-placement-scenarios.md).
 - Pro nástroje pro vyrovnávání zatížení clusterů s podporou převzetí služeb při selhání v centrálních službách SAP a ve vrstvě DBMS musíte použít [standardní SKU Azure Load Balancer](../../../load-balancer/load-balancer-standard-availability-zones.md). Základní Load Balancer nebudou v různých zónách fungovat.
 - Virtuální síť Azure, kterou jste nasadili pro hostování systému SAP, spolu s jejími podsítěmi, je roztažena v různých zónách. Pro každou zónu nepotřebujete samostatné virtuální sítě.
@@ -161,7 +161,7 @@ Oblasti Azure, ve kterých může být vhodnější tento typ architektury nasaz
 - Jižní Afrika – sever
 - Francie – střed 
 - Střední Kanada
-- Japan East
+- Japonsko – východ
 
 
 Základní rozložení architektury vypadá takto:

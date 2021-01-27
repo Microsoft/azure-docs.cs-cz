@@ -10,12 +10,12 @@ ms.author: laobri
 author: lobrien
 ms.date: 01/12/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: a6ee4c08a7ecf9bcfcbc9cf6f630efe126248e9f
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: e3f92f445068b98c12069577ddf61a71568e403b
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185702"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98871549"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Co jsou kanály Azure Machine Learning?
 
@@ -118,7 +118,7 @@ pipeline_run = experiment.submit(pipeline)
 pipeline_run.wait_for_completion()
 ```
 
-Fragment kódu začíná běžnými Azure Machine Learning objekty, a `Workspace` , a `Datastore` , [ComputeTarget](/python/api/azureml-core/azureml.core.computetarget?preserve-view=true&view=azure-ml-py)a `Experiment` . Kód potom vytvoří objekty, které mají být uloženy `input_data` a `output_data` . `input_data`Je instancí třídy typu [DataSet](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py&preserve-view=true) a `output_data` je instancí třídy [OutputFileDatasetConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true). `OutputFileDatasetConfig`Výchozí chování je zkopírovat výstup do `workspaceblobstore` úložiště dat pod cestou `/dataset/{run-id}/{output-name}` , kde `run-id` je ID běhu a `output-name` je automaticky generovaná hodnota, pokud vývojář neurčí.
+Fragment kódu začíná běžnými Azure Machine Learning objekty, a `Workspace` , a `Datastore` , [ComputeTarget](/python/api/azureml-core/azureml.core.computetarget?preserve-view=true&view=azure-ml-py)a `Experiment` . Kód potom vytvoří objekty, které mají být uloženy `input_data` a `output_data` . `input_data`Je instancí třídy typu [DataSet](/python/api/azureml-core/azureml.data.filedataset?preserve-view=true&view=azure-ml-py) a `output_data` je instancí třídy [OutputFileDatasetConfig](/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py). `OutputFileDatasetConfig`Výchozí chování je zkopírovat výstup do `workspaceblobstore` úložiště dat pod cestou `/dataset/{run-id}/{output-name}` , kde `run-id` je ID běhu a `output-name` je automaticky generovaná hodnota, pokud vývojář neurčí.
 
 Pole `steps` obsahuje jeden prvek, `PythonScriptStep` který bude používat datové objekty a běží na `compute_target` . Kód potom vytvoří instanci objektu, který předává `Pipeline` do pole pracovní prostor a kroky. Volání `experiment.submit(pipeline)` zahájí běh kanálu Azure ml. Volání do `wait_for_completion()` bloků až do dokončení kanálu. 
 
@@ -136,7 +136,7 @@ Při vizuálním návrhu kanálů jsou vstupy a výstupy kroku zobrazeny viditel
 
 Mezi klíčové výhody použití kanálů pro pracovní postupy machine learningu patří:
 
-|Výhoda klíče|Description|
+|Výhoda klíče|Popis|
 |:-------:|-----------|
 |**Bezobslužné &nbsp; běhy**|Naplánujte kroky paralelně nebo v rámci spolehlivého a bezobslužného zpracování. Příprava a modelování dat může mít poslední dny nebo týdny a kanály vám umožní soustředit se na další úlohy, když je proces spuštěný. |
 |**Heterogenní COMPUTE**|Používejte více kanálů, které jsou spolehlivě koordinované napříč heterogenními a škálovatelnými výpočetními prostředky a umístěními úložiště. Využijte k efektivnímu využití dostupných výpočetních prostředků spuštěním jednotlivých kroků kanálu na různých výpočetních cílech, jako je HDInsight, GPU pro datové vědy GPU a datacihly.|
@@ -149,7 +149,7 @@ Mezi klíčové výhody použití kanálů pro pracovní postupy machine learnin
 
 Azure Machine Learning kanály jsou výkonné zařízení, které začíná dodávat hodnoty ve fázích předčasného vývoje. Hodnota se zvyšuje při zvětšování týmu a projektu. Tento článek vysvětluje, jak se zadává kanály s Azure Machine Learning Python SDK a orchestruje se v Azure. Viděli jste nějaký jednoduchý zdrojový kód a zavedli jsme několik `PipelineStep` dostupných tříd. Měli byste mít představu o tom, kdy používat kanály Azure Machine Learning a jak je Azure spouští. 
 
-+ Naučte se, jak [vytvořit první kanál](how-to-create-your-first-pipeline.md).
++ Naučte se, jak [vytvořit první kanál](./how-to-create-machine-learning-pipelines.md).
 
 + Naučte se [spouštět Batch předpovědi pro velké objemy dat](tutorial-pipeline-batch-scoring-classification.md ).
 

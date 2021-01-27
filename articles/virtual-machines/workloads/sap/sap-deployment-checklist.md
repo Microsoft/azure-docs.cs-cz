@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ca2a844364d11dbb5ac2a244945e07d8ca725c1c
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 944e687c27d46a9cf3250cb21024b4e5a52dc62c
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98728436"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98871515"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Úlohy SAP v Azure: kontrolní seznam pro plánování a nasazení
 
@@ -137,7 +137,7 @@ Doporučujeme, abyste nastavili a ověřili úplné řešení HADR a návrh zabe
         - Otestujte a vyhodnoťte latenci sítě mezi virtuálními počítači aplikační vrstvy SAP a virtuálními počítači DBMS podle poznámky k podpoře SAP [#500235](https://launchpad.support.sap.com/#/notes/500235) a [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E). Vyhodnoťte výsledky na základě pokynů pro latenci sítě v části [SAP Support note #1100926](https://launchpad.support.sap.com/#/notes/1100926/E). Latence sítě by měla být v mírném nebo dobrém rozsahu. Výjimky se vztahují na provoz mezi virtuálními počítači a velkými jednotkami instancí, jak je uvedeno v [tomto článku](./hana-network-architecture.md#networking-architecture-for-hana-large-instance).
         - Ujistěte se, že nasazení interního nástroje jsou nastavená tak, aby používala přímé vrácení serveru. Toto nastavení omezí latenci při použití Azure ILBs pro konfigurace s vysokou dostupností na vrstvě DBMS.
         - Pokud používáte Azure Load Balancer společně s hostovanými operačními systémy Linux, ověřte, zda je parametr sítě Linux **net.IPv4.tcp_timestamps** nastaven na **hodnotu 0**. Toto doporučení je v konfliktu s doporučeními ve starších verzích [SAP note #2382421](https://launchpad.support.sap.com/#/notes/2382421). Poznámka SAP je nyní aktualizována na stav, že tento parametr musí být nastaven na **hodnotu 0** , aby fungoval se službou Azure Load Balancer.
-        - Pokud chcete dosáhnout optimální latence sítě, zvažte použití [skupin umístění blízkosti Azure](../../linux/co-location.md) . Další informace najdete v tématu [skupiny umístění blízkosti Azure pro optimální latenci sítě s aplikacemi SAP](sap-proximity-placement-scenarios.md).
+        - Pokud chcete dosáhnout optimální latence sítě, zvažte použití [skupin umístění blízkosti Azure](../../co-location.md) . Další informace najdete v tématu [skupiny umístění blízkosti Azure pro optimální latenci sítě s aplikacemi SAP](sap-proximity-placement-scenarios.md).
    4. Nasazení s vysokou dostupností a zotavením po havárii.
         - Pokud nasadíte vrstvu aplikace SAP bez definování konkrétní zóny dostupnosti Azure, ujistěte se, že všechny virtuální počítače, na kterých běží instance dialogových oken SAP nebo instance middlewaru s jedním systémem SAP, jsou nasazené ve [skupině dostupnosti](../../manage-availability.md).
         - Pokud nepotřebujete vysokou dostupnost pro centrální služby SAP a DBMS, můžete tyto virtuální počítače nasadit do stejné skupiny dostupnosti jako aplikační vrstva SAP.
@@ -209,7 +209,7 @@ Během této fáze obvykle nasazujete vývojové systémy, systémy testování 
 8.  Podívejte [se na web SAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) pro nové SKU s certifikací Hana v Azure. Porovnejte ceny nových SKU s těmi, které jste naplánovali použít. Nakonec proveďte potřebné změny, abyste mohli používat ty, které mají nejlepší poměr ceny a výkonu.
 9.  Přizpůsobte skripty pro nasazení a použijte nové typy virtuálních počítačů a zahrňte nové funkce Azure, které chcete použít.
 10. Po nasazení infrastruktury otestujete a vyhodnoťte latenci sítě mezi virtuálními počítači aplikační vrstvy SAP a virtuálními počítači DBMS podle poznámky podpory SAP [#500235](https://launchpad.support.sap.com/#/notes/500235) a [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E). Vyhodnoťte výsledky na základě pokynů pro latenci sítě v části [SAP Support note #1100926](https://launchpad.support.sap.com/#/notes/1100926/E). Latence sítě by měla být v mírném nebo dobrém rozsahu. Výjimky se vztahují na provoz mezi virtuálními počítači a velkými jednotkami instancí, jak je uvedeno v [tomto článku](./hana-network-architecture.md#networking-architecture-for-hana-large-instance). Ujistěte se, že žádná omezení uvedená v části [požadavky týkající se nasazení Azure Virtual Machines DBMS pro úlohy SAP](./dbms_guide_general.md#azure-network-considerations) a [Konfigurace infrastruktury SAP Hana a operací v Azure](./hana-vm-operations.md) se vztahují na vaše nasazení.
-11. Zajistěte, aby byly virtuální počítače nasazené do správné [skupiny umístění služby Azure Proximity](../../linux/co-location.md), jak je popsáno v tématu [skupiny umístění v blízkosti Azure pro optimální latenci sítě s aplikacemi SAP](sap-proximity-placement-scenarios.md).
+11. Zajistěte, aby byly virtuální počítače nasazené do správné [skupiny umístění služby Azure Proximity](../../co-location.md), jak je popsáno v tématu [skupiny umístění v blízkosti Azure pro optimální latenci sítě s aplikacemi SAP](sap-proximity-placement-scenarios.md).
 11. Před použitím úlohy proveďte všechny další kontroly uvedené pro fázi ověření konceptu.
 12. Jak zatížení platí, zaznamenejte spotřebu prostředků systémů v Azure. Porovnejte tuto spotřebu se záznamy z vaší staré platformy. Pokud zjistíte, že máte velké rozdíly, upravte velikost virtuálních počítačů v budoucích nasazeních. Pamatujte na to, že když se klidnějších, úložiště a šířka pásma sítě virtuálních počítačů, sníží se i.
     - [Velikosti virtuálních počítačů s Windows v Azure](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
@@ -251,7 +251,7 @@ V této fázi můžete shromažďovat, co jste se seznámili a zjistili během n
     - Žádná [virtuální síťová zařízení Azure](https://azure.microsoft.com/solutions/network-appliances/) nejsou v komunikačních cestách mezi aplikací SAP a vrstvou DBMS systémů SAP založenou na SAP NetWeaver, Hybris nebo S/4HANA.
     - Pravidla skupiny zabezpečení aplikace a skupiny zabezpečení sítě umožňují komunikaci podle potřeby a plánované a zablokování komunikace v případě potřeby.
     - Nastavení časového limitu je správně nastaveno, jak je popsáno výše.
-    - Virtuální počítače se nasazují do správné [skupiny umístění služby Azure Proximity](../../linux/co-location.md), jak je popsáno v tématu [skupiny umístění pro Azure v blízkosti pro optimální latenci sítě s aplikacemi SAP](sap-proximity-placement-scenarios.md).
+    - Virtuální počítače se nasazují do správné [skupiny umístění služby Azure Proximity](../../co-location.md), jak je popsáno v tématu [skupiny umístění pro Azure v blízkosti pro optimální latenci sítě s aplikacemi SAP](sap-proximity-placement-scenarios.md).
     - Latence sítě mezi virtuálními počítači aplikační vrstvy SAP a virtuálními počítači DBMS se testuje a ověřuje, jak je popsáno v tématu poznámky k podpoře SAP [#500235](https://launchpad.support.sap.com/#/notes/500235) a [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E). Vyhodnoťte výsledky na základě pokynů pro latenci sítě v části [SAP Support note #1100926](https://launchpad.support.sap.com/#/notes/1100926/E). Latence sítě by měla být v mírném nebo dobrém rozsahu. Výjimky se vztahují na provoz mezi virtuálními počítači a velkými jednotkami instancí, jak je uvedeno v [tomto článku](./hana-network-architecture.md#networking-architecture-for-hana-large-instance).
     - Šifrování bylo implementováno tam, kde je to nutné, a s odpovídající metodou šifrování.
     - Rozhraní a další aplikace mohou připojit nově nasazenou infrastrukturu.

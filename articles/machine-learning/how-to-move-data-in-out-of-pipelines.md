@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 01/11/2021
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy20q4, devx-track-python, data4ml
-ms.openlocfilehash: 7285ab338e978f0de467f79bbce1d41409683b1e
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 80a995b488f335ac2eb60ae18621acb2b1df58e2
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132949"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98871532"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>Přesun dat kroků kanálu ML a mezi nimi (Python)
 
@@ -53,7 +53,7 @@ Budete potřebovat:
 
 - Některá již existující data. V tomto článku se krátce zobrazuje použití [kontejneru objektů BLOB v Azure](../storage/blobs/storage-blobs-overview.md).
 
-- Volitelné: existující kanál strojového učení, který je popsaný v tématu [Vytvoření a spuštění kanálů strojového učení s Azure Machine Learning SDK](how-to-create-your-first-pipeline.md).
+- Volitelné: existující kanál strojového učení, který je popsaný v tématu [Vytvoření a spuštění kanálů strojového učení s Azure Machine Learning SDK](./how-to-create-machine-learning-pipelines.md).
 
 ## <a name="use-dataset-objects-for-pre-existing-data"></a>Použít `Dataset` objekty pro již existující data 
 
@@ -154,7 +154,7 @@ ds = Dataset.get_by_name(workspace=ws, name='mnist_opendataset')
 
 ## <a name="use-outputfiledatasetconfig-for-intermediate-data"></a>Použít `OutputFileDatasetConfig` pro mezilehlé data
 
-Přestože `Dataset` objekty reprezentují pouze trvalá data, [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) lze objekty použít pro dočasný výstup dat z kroků kanálu **a** trvalých výstupních dat. `OutputFileDatasetConfig` podporuje zápis dat do úložiště objektů blob, sdílené složky, adlsgen1 nebo adlsgen2. Podporuje režim připojení i režim odesílání. V režimu připojení se soubory zapsané do připojeného adresáře trvale ukládají při zavření souboru. V režimu nahrávání se soubory zapsané do výstupního adresáře odešlou na konci úlohy. Pokud úloha selže nebo se zruší, výstupní adresář nebude nahrán.
+Přestože `Dataset` objekty reprezentují pouze trvalá data, [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) lze objekty použít pro dočasný výstup dat z kroků kanálu **a** trvalých výstupních dat. `OutputFileDatasetConfig` podporuje zápis dat do úložiště objektů blob, sdílené složky, adlsgen1 nebo adlsgen2. Podporuje režim připojení i režim odesílání. V režimu připojení se soubory zapsané do připojeného adresáře trvale ukládají při zavření souboru. V režimu nahrávání se soubory zapsané do výstupního adresáře odešlou na konci úlohy. Pokud úloha selže nebo se zruší, výstupní adresář nebude nahrán.
 
  `OutputFileDatasetConfig` výchozí chování objektu je zapisovat do výchozího úložiště dat pracovního prostoru. Předejte své `OutputFileDatasetConfig` objekty do objektu `PythonScriptStep` pomocí `arguments` parametru.
 
@@ -184,7 +184,7 @@ OutputFileDatasetConfig(name="clean_data", destination=blob_store).as_upload(ove
 
 ### <a name="use-outputfiledatasetconfig-as-outputs-of-a-training-step"></a>Použít `OutputFileDatasetConfig` jako výstupy krok školení
 
-V rámci vašeho kanálu `PythonScriptStep` můžete načíst dostupné výstupní cesty pomocí argumentů programu. Pokud je tento krok první a Inicializuje výstupní data, je nutné vytvořit adresář v zadané cestě. Pak můžete napsat libovolné soubory, které chcete zahrnout do `OutputFileDatasetConfig` .
+V rámci kroku `PythonScriptStep` kanálu můžete načíst dostupné výstupní cesty pomocí argumentů programu. Pokud je tento krok prvním krokem, ve kterém se inicializují výstupní data, musíte v zadané cestě vytvořit adresář. Pak můžete napsat libovolné soubory, které chcete zahrnout do `OutputFileDatasetConfig` .
 
 ```python
 parser = argparse.ArgumentParser()
@@ -244,4 +244,4 @@ step1_output_ds = step1_output_data.register_on_complete(name='processed_data',
 ## <a name="next-steps"></a>Další kroky
 
 * [Vytvoření datové sady služby Azure Machine Learning](how-to-create-register-datasets.md)
-* [Vytvoření a spuštění kanálů strojového učení s Azure Machine Learning SDK](how-to-create-your-first-pipeline.md)
+* [Vytvoření a spuštění kanálů strojového učení s Azure Machine Learning SDK](./how-to-create-machine-learning-pipelines.md)

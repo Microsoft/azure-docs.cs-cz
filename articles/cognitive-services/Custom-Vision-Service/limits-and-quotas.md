@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: pafarley
-ms.openlocfilehash: 8a8ea8d5f13f72b0da1e11a27b69da2570eda543
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 3392cc5f3ee9daef1ae8397f6829f4ca7a42373a
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97913477"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98871396"
 ---
 # <a name="limits-and-quotas"></a>Omezení a kvóty
 
@@ -42,6 +42,9 @@ Pro projekty S0 se očekává, že počet školicích obrázků na projekt a zna
 |Maximální výška a šířka obrázku v pixelech|10 240|10 240|
 |Maximální velikost obrázku (školicí obrázek při nahrávání) |6 MB|6 MB|
 |Maximální velikost obrázku (předpověď)|4 MB|4 MB|
-|Maximální počet oblastí na školicí obrázek detekce objektu|300|300|
-|Maximální počet značek na obrázek klasifikace|100|100|
+|Maximální počet oblastí na obrázek (detekce objektu)|300|300|
+|Maximální počet značek na obrázek (klasifikace)|100|100|
 
+> [!NOTE]
+> Obrázky menší než 256 pixelů budou přijímány, ale budou zvětšeny.
+> Poměr stran obrázku by neměl být větší než 25.

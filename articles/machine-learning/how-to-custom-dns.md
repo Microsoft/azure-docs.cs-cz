@@ -11,12 +11,12 @@ author: jhirono
 ms.date: 11/20/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 8d3145639d2d4fb64bdb374f1dea0a7b70e4151c
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 2215c47fcd250a9ac1d6621f7e4b434bd33b3832
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724710"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98871091"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>Používání pracovního prostoru s vlastním serverem DNS
 
@@ -116,4 +116,4 @@ Informace vrácené ze všech metod jsou stejné; seznam plně kvalifikovaného 
 
 Další informace o použití Azure Machine Learning s virtuální sítí najdete v tématu [Přehled virtuální sítě](how-to-network-security-overview.md).
 
-Další informace o integraci privátních koncových bodů do konfigurace DNS najdete v tématu [Konfigurace DNS privátního koncového bodu Azure](https://docs.microsoft.com/azure/private-link/private-endpoint-dns).
+Další informace o integraci privátních koncových bodů do konfigurace DNS najdete v tématu [Konfigurace DNS privátního koncového bodu Azure](../private-link/private-endpoint-dns.md).
