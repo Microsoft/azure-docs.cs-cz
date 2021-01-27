@@ -601,24 +601,24 @@
           href: dedicated-hosts-portal.md
         - name: PowerShell
           href: ./windows/dedicated-hosts-powershell.md
+    - name: Virtual Machines na místě
+      displayName: 'pre-empt, preempt, spot'
+      items:
+        - name: Přehled
+          href: spot-vms.md
+        - name: Rozhraní příkazového řádku
+          href: ./linux/spot-cli.md
+        - name: Portál
+          href: spot-portal.md
+        - name: PowerShell
+          href: ./windows/spot-powershell.md
+        - name: Šablona ARM
+          displayName: template ARM
+          href: ./linux/spot-template.md
+        - name: Kódy chyb
+          href: error-codes-spot.md
     - name: Možnosti nákupu
       items:
-        - name: Spotové virtuální počítače
-          displayName: 'pre-empt, preempt, spot'
-          items:
-            - name: Přehled
-              href: spot-vms.md
-            - name: Rozhraní příkazového řádku
-              href: ./linux/spot-cli.md
-            - name: Portál
-              href: spot-portal.md
-            - name: PowerShell
-              href: ./windows/spot-powershell.md
-            - name: Šablona ARM
-              displayName: template ARM
-              href: ./linux/spot-template.md
-            - name: Kódy chyb
-              href: error-codes-spot.md
         - name: Zvýhodněné hybridní využití Azure
           items:
             - name: Linux
@@ -1747,7 +1747,7 @@
         - name: Ceny
           href: ../backup/azure-backup-pricing.md
         - name: Nejčastější dotazy
-          href: ../backup/backup-azure-vm-backup-faq.md
+          href: ../backup/backup-azure-vm-backup-faq.yml
     - name: Zotavení po havárii
       items:
         - name: Přehled

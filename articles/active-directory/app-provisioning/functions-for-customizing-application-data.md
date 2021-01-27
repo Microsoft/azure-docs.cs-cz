@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/05/2020
 ms.author: kenwith
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 462f60bbae9fd7b61993a2ccccd40fa5ca4ccc28
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: e87211789280c3439d71d8fa63da09416eaaf18e
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98012963"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805141"
 ---
 # <a name="reference-for-writing-expressions-for-attribute-mappings-in-azure-ad"></a>Referenční informace pro zápis výrazů pro mapování atributů v Azure AD
 
@@ -49,7 +49,7 @@ Syntaxe výrazů pro mapování atributů je Reminiscent funkcí jazyk Visual Ba
 
 **Ukazatelů**
 
-| Název | Požadováno/opakování | Typ | Poznámky |
+| Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
 | **Zdrojová** |Vyžadováno |Řetězec |Obvykle název atributu ze zdrojového objektu. |
 | **auditování** |Vyžadováno |Řetězec |Řetězec, který chcete připojit ke konci zdrojové hodnoty. |
@@ -67,7 +67,7 @@ Jinými slovy, vrátí 0 ve všech případech s výjimkou toho, že odpovídaj�
 
 **Ukazatelů** 
 
-| Název | Požadováno/opakování | Typ | Poznámky |
+| Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
 | **Hodnota1** |Vyžadováno |num |Číselná hodnota, která by měla být AND'ed s hodnota2|
 | **Argument** |Vyžadováno |num |Číselná hodnota, která má být AND'ed s hodnota1|
@@ -87,7 +87,7 @@ Jinými slovy, vrátí 0 ve všech případech s výjimkou toho, že odpovídaj�
 
 **Ukazatelů** 
 
-| Název | Požadováno/opakování | Typ | Poznámky |
+| Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
 | **expression** |Vyžadováno | expression | Libovolný platný výraz |
 
@@ -103,7 +103,7 @@ Vrátí hodnotu true, pokud mají oba atributy stejnou hodnotu.
 
 **Ukazatelů** 
 
-| Název | Požadováno/opakování | Typ | Poznámky |
+| Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
 | **source1 ... sourceN** | Vyžadováno | Řetězec |Povinný, proměnlivý počet opakování. Obvykle název atributu ze zdrojového objektu. |
 | **Hodnot** | Volitelné | Řetězec | Výchozí hodnota, která se má použít, pokud jsou všechny zdrojové hodnoty NULL. Může být prázdný řetězec ("").
@@ -116,7 +116,7 @@ Vrátí hodnotu true, pokud mají oba atributy stejnou hodnotu.
 
 **Ukazatelů** 
 
-| Název | Požadováno/opakování | Typ | Poznámky |
+| Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
 | **Zdrojová** |Vyžadováno |Řetězec |Řetězec, který má být převeden na základní 64|
 
@@ -133,7 +133,7 @@ Vrátí "SABlAGwAbABvACAAdwBvAHIAbABkACEA"
 
 **Ukazatelů** 
 
-| Název | Požadováno/opakování | Typ | Poznámky |
+| Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
 | **Zdrojová** |Vyžadováno |Řetězec |Řetězec, který se má převést na UTF8 hex|
 
@@ -150,7 +150,7 @@ Vrátí 48656C6C6F20776F726C6421
 
 **Ukazatelů** 
 
-| Název | Požadováno/opakování | Typ | Poznámky |
+| Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
 | **přidělen** |Vyžadováno |– atribut |Vícehodnotový atribut, který bude obsahovat elementy počítané|
 
@@ -162,7 +162,7 @@ Vrátí 48656C6C6F20776F726C6421
 
 **Ukazatelů** 
 
-| Název | Požadováno/opakování | Typ | Poznámky |
+| Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
 | **value** |Vyžadováno | Číselná, odkazová nebo logická hodnota | Může to být číselná hodnota, odkazový atribut nebo logická hodnota. |
 
@@ -179,9 +179,9 @@ Vrátí "CN = Jan, DC = contoso, DC = com"
 
 **Ukazatelů** 
 
-| Název | Požadováno/opakování | Typ | Poznámky |
+| Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
-| **value** |Vyžadováno | Datum | Datum reklamy, které má být převedeno na typ DateTime |
+| **value** |Vyžadováno | Date (Datum) | Datum reklamy, které má být převedeno na typ DateTime |
 
 **Případě**
 `DateFromNum([lastLogonTimestamp])`
@@ -198,7 +198,7 @@ Vrátí hodnotu DateTime představující 1. ledna 2012 v hodnotě 11:13:00.
 
 **Ukazatelů** 
 
-| Název | Požadováno/opakování | Typ | Poznámky |
+| Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
 | **Zdrojová** |Vyžadováno |Řetězec |Obvykle název atributu ze zdrojového objektu. |
 | **inputFormat** |Vyžadováno |Řetězec |Byl očekáván formát zdrojové hodnoty. Podporované formáty najdete v tématu [/dotnet/Standard/Base-Types/Custom-Date-and-Time-Format-Strings](/dotnet/standard/base-types/custom-date-and-time-format-strings). |
@@ -218,7 +218,7 @@ Vrátí hodnotu DateTime představující 1. ledna 2012 v hodnotě 11:13:00.
 
 **Ukazatelů** 
 
-| Název | Požadováno/opakování | Typ | Poznámky |
+| Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
 | **pomocné** |Vyžadováno |Proměnná nebo výraz |Libovolná hodnota nebo výraz, který lze vyhodnotit na hodnotu true nebo false. |
 | **valueIfTrue** |Vyžadováno |Proměnná nebo řetězec | Pokud je podmínka vyhodnocena jako true, vrácená hodnota. |
@@ -235,7 +235,7 @@ Vrátí hodnotu DateTime představující 1. ledna 2012 v hodnotě 11:13:00.
 
 **Ukazatelů** 
 
-| Název | Požadováno/opakování | Typ | Poznámky |
+| Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
 | **Hodnota1** |Vyžadováno |Řetězec |Řetězec, který má být prohledán |
 | **Argument** |Vyžadováno |Řetězec |Řetězec, který se má najít |
@@ -259,7 +259,7 @@ Vyhodnotí na 7
 
 **Ukazatelů** 
 
-| Název | Požadováno/opakování | Typ | Poznámky |
+| Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
 | **expression** |Vyžadováno |expression |Výraz, který se má vyhodnotit |
 
@@ -277,7 +277,7 @@ Inverzní část této funkce je pojmenována jako.
 
 **Ukazatelů** 
 
-| Název | Požadováno/opakování | Typ | Poznámky |
+| Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
 | **expression** |Vyžadováno |expression |Výraz, který se má vyhodnotit |
 
@@ -294,7 +294,7 @@ Vrátí hodnotu true, pokud atribut není přítomen, nebo je prázdný řetěze
 
 **Ukazatelů** 
 
-| Název | Požadováno/opakování | Typ | Poznámky |
+| Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
 | **expression** |Vyžadováno |expression |Výraz, který se má vyhodnotit |
 
@@ -309,7 +309,7 @@ Vrátí hodnotu true, pokud atribut není přítomen, nebo je prázdný řetěze
 
 **Ukazatelů** 
 
-| Název | Požadováno/opakování | Typ | Poznámky |
+| Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
 | **expression** |Vyžadováno |expression |Výraz, který se má vyhodnotit |
 
@@ -321,7 +321,7 @@ Vrátí hodnotu true, pokud atribut není přítomen, nebo je prázdný řetěze
 
 **Ukazatelů** 
 
-| Název | Požadováno/opakování | Typ | Poznámky |
+| Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
 | **přidělen** |Vyžadováno |Atribut |Vícehodnotový atribut, který má být prohledán |
 | **indexovacím** |Vyžadováno |Integer | Index položky v řetězci s více hodnotami|
@@ -339,7 +339,7 @@ Pokud je jednou ze zdrojových hodnot atribut s více hodnotami, pak se všechny
 
 **Ukazatelů** 
 
-| Název | Požadováno/opakování | Typ | Poznámky |
+| Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
 | **oddělování** |Vyžadováno |Řetězec |Řetězec, který se používá k oddělení zdrojových hodnot při zřetězení do jednoho řetězce. Může být "", pokud není vyžadován oddělovač. |
 | **source1 ... sourceN** |Povinný, proměnlivý počet pokusů |Řetězec |Řetězcové hodnoty, které se mají spojit dohromady. |
@@ -355,7 +355,7 @@ Pokud řetězec obsahuje méně znaků než číslo zadané v numChars, vrátí 
 
 **Ukazatelů** 
 
-| Název | Požadováno/opakování | Typ | Poznámky |
+| Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
 | **Řetězec** |Vyžadováno |Atribut | Řetězec, ze kterého se mají vracet znaky |
 | **NumChars** |Vyžadováno |Integer | Číslo určující počet znaků, které mají být vráceny od začátku (vlevo) řetězce|
@@ -373,7 +373,7 @@ Vrátí "Joh".
 
 **Ukazatelů** 
 
-| Název | Požadováno/opakování | Typ | Poznámky |
+| Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
 | **Zdrojová** |Vyžadováno |Řetězec |Obvykle název atributu. |
 | **Čína** |Vyžadováno |integer |Index ve **zdrojovém** řetězci, ve kterém by měl být spuštěný dílčí řetězec První znak v řetězci bude mít index 1, druhý znak bude mít index 2 atd. |
@@ -387,7 +387,7 @@ Vrátí "Joh".
 
 **Ukazatelů** 
 
-| Název | Požadováno/opakování | Typ | Poznámky |
+| Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
 | **Zdrojová** |Vyžadováno |Řetězec | Obvykle se jedná o křestní jméno nebo název atributu příjmení. |
 
@@ -399,7 +399,7 @@ Vrátí "Joh".
 
 **Ukazatelů** 
 
-| Název | Požadováno/opakování | Typ | Poznámky |
+| Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
 | **Zdrojová** |Vyžadováno |Logický řetězec |Očekávané **zdrojové** hodnoty jsou "true" nebo "false". |
 
@@ -411,7 +411,7 @@ Vrátí "Joh".
 
 **Ukazatelů** 
 
-| Název | Požadováno/opakování | Typ | Poznámky |
+| Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
 | **value** |Vyžadováno | Řetězec | Řetězec data a času v podporovaném formátu. Podporované formáty naleznete v tématu https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx . |
 
@@ -431,7 +431,7 @@ Vrátí "Joh".
 
 **Ukazatelů** 
 
-| Název | Požadováno/opakování | Typ | Poznámky |
+| Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
 | **přidělen** |Vyžadováno |Vícehodnotový atribut |Vícehodnotový atribut, který bude mít odebrané duplicity|
 
@@ -463,7 +463,7 @@ Vrátí "Joh".
 
 **Ukazatelů** 
 
-| Název | Požadováno/opakování | Typ | Poznámky |
+| Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
 | **Zdrojová** |Vyžadováno |Řetězec |Obvykle název atributu ze **zdrojového** objektu. |
 | **oldValue** |Volitelné |Řetězec |Hodnota, která má být nahrazena ve **zdroji** nebo **šabloně**. |
@@ -483,12 +483,12 @@ Vrátí "Joh".
  - Toto je funkce nejvyšší úrovně, nemůže být vnořená.
  - Tuto funkci nelze použít pro atributy, které mají odpovídající prioritu.   
  - Tato funkce je určena pouze pro vytváření záznamů. Při použití s atributem nastavte vlastnost **použít mapování** na **pouze při vytváření objektu**.
- - Tato funkce je momentálně podporovaná jenom pro zřizování uživatelů z Workday do služby Active Directory. Nedá se použít s jinými zřizovacími aplikacemi. 
+ - Tato funkce je momentálně podporovaná jenom pro zřizování uživatelů z Workday do služby Active Directory a SuccessFactors se na zřizování uživatelů služby Active Directory. Nedá se použít s jinými zřizovacími aplikacemi. 
 
 
 **Ukazatelů** 
 
-| Název | Požadováno/opakování | Typ | Poznámky |
+| Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
 | **uniqueValueRule1 ... uniqueValueRuleN** |Vyžaduje se aspoň 2, bez horní meze. |Řetězec | Seznam pravidel generování jedinečných hodnot, které se mají vyhodnotit |
 
@@ -501,7 +501,7 @@ Vrátí "Joh".
 
 **Ukazatelů** 
 
-| Název | Požadováno/opakování | Typ | Poznámky |
+| Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
 | **AppRoleAssignments** |Vyžadováno |Řetězec |objekt **[appRoleAssignments]** . |
 
@@ -513,10 +513,10 @@ Vrátí "Joh".
 
 **Ukazatelů** 
 
-| Název | Požadováno/opakování | Typ | Poznámky |
+| Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
 | **Zdrojová** |Vyžadováno |Řetězec |**zdrojová** hodnota, která se má aktualizovat |
-| **Oddělovač** |Vyžadováno |Řetězec |Určuje znak, který bude použit k rozdělení řetězce (například: ","). |
+| **oddělovač** |Vyžadováno |Řetězec |Určuje znak, který bude použit k rozdělení řetězce (například: ","). |
 
 ---
 ### <a name="stripspaces"></a>StripSpaces
@@ -526,7 +526,7 @@ Vrátí "Joh".
 
 **Ukazatelů** 
 
-| Název | Požadováno/opakování | Typ | Poznámky |
+| Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
 | **Zdrojová** |Vyžadováno |Řetězec |**zdrojová** hodnota, která se má aktualizovat |
 
@@ -538,7 +538,7 @@ Vrátí "Joh".
 
 **Ukazatelů** 
 
-| Název | Požadováno/opakování | Typ | Poznámky |
+| Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
 | **Zdrojová** |Vyžadováno |Řetězec |**Zdrojová** hodnota, která se má aktualizovat |
 | **Hodnot** |Volitelné |Řetězec |Výchozí hodnota, která se má použít, pokud zdroj neodpovídá žádným klíčům Může být prázdný řetězec (""). |
@@ -553,7 +553,7 @@ Vrátí "Joh".
 
 **Ukazatelů** 
 
-| Název | Požadováno/opakování | Typ | Poznámky |
+| Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
 | **Zdrojová** |Vyžadováno |Řetězec |Obvykle název atributu ze zdrojového objektu |
 | **jazykových** |Volitelné |Řetězec |Formát pro název jazykové verze založený na RFC 4646 je *languagecode2-Country/regioncode2*, kde *languagecode2* je kód jazyka dvou písmen a *země/regioncode2* je kód subjazykové verze se dvěma písmeny. Mezi příklady patří ja-JP pro japonštinu (Japonsko) a EN-US pro angličtinu (USA). V případech, kdy kód jazyka se dvěma písmeny není k dispozici, je použit kód o třech písmenech odvozený z ISO 639-2.|
@@ -566,7 +566,7 @@ Vrátí "Joh".
 
 **Ukazatelů** 
 
-| Název | Požadováno/opakování | Typ | Poznámky |
+| Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
 | **Zdrojová** |Vyžadováno |Řetězec |Obvykle název atributu ze zdrojového objektu. |
 | **jazykových** |Volitelné |Řetězec |Formát pro název jazykové verze založený na RFC 4646 je *languagecode2-Country/regioncode2*, kde *languagecode2* je kód jazyka dvou písmen a *země/regioncode2* je kód subjazykové verze se dvěma písmeny. Mezi příklady patří ja-JP pro japonštinu (Japonsko) a EN-US pro angličtinu (USA). V případech, kdy kód jazyka se dvěma písmeny není k dispozici, je použit kód o třech písmenech odvozený z ISO 639-2.|
@@ -583,7 +583,7 @@ Pokud řetězec obsahuje méně než čísla slov nebo řetězec neobsahuje žá
 
 **Ukazatelů** 
 
-| Název | Požadováno/opakování | Typ | Poznámky |
+| Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
 | **Řetězec** |Vyžadováno |Vícehodnotový atribut |Řetězec, ze kterého se má vrátit slovo|
 | **WordNumber** |Vyžadováno | Integer | Číslo určující, které číslo slova se má vrátit|

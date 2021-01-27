@@ -12,18 +12,18 @@ ms.date: 01/21/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1dc5b8dc8930d75456f307324ef97bd60e78eca9
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 96772020e70aeb32fa1a8ae18bf3818396887877
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98660153"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805243"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Správa Azure AD B2C s využitím Microsoft Graph
 
 Microsoft Graph umožňuje správu prostředků v adresáři Azure AD B2C. Následující operace Microsoft Graph API se podporují pro správu prostředků Azure AD B2C, včetně uživatelů, poskytovatelů identity, toků uživatelů, uživatelských zásad a klíčů zásad. Každé propojení v následujících částech cílí na odpovídající stránku v rámci referenčního Microsoft Graph rozhraní API pro tuto operaci. 
 
-## <a name="perquisites"></a>Možnost
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete používat MS Graph API a pracovat s prostředky ve vašem tenantovi Azure AD B2C, budete potřebovat registraci aplikace, která jim uděluje oprávnění. Pokud chcete vytvořit registraci aplikace, kterou může vaše aplikace pro správu používat, postupujte podle pokynů v článku [správa Azure AD B2C s Microsoft Graph](microsoft-graph-get-started.md) . 
 

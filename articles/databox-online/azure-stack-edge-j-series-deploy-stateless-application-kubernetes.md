@@ -6,26 +6,26 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 01/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 6356089daed02270a14903639afee8001153b195
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b199fdbac4aca7637e07a18383cc7e254f702019
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447385"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98804843"
 ---
 # <a name="deploy-a-kubernetes-stateless-application-via-kubectl-on-your-azure-stack-edge-pro-gpu-device"></a>Nasazení bezstavové aplikace Kubernetes přes kubectl na zařízení GPU Azure Stack Edge pro
 
 Tento článek popisuje, jak nasadit bezstavovou aplikaci pomocí příkazů kubectl v existujícím clusteru Kubernetes. Tento článek vás také provede procesem vytvoření a nastavení lusků v bezstavových aplikacích.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než budete moct vytvořit cluster Kubernetes a použít `kubectl` Nástroj příkazového řádku, musíte zajistit, aby:
 
 - Máte přihlašovací údaje pro přihlášení k zařízení Azure Stack Edge pro s jedním uzlem.
 
-- Prostředí Windows PowerShell 5,0 nebo novější je nainstalováno v klientském systému Windows pro přístup k zařízení Azure Stack Edge pro. Můžete mít i jiné klienty s podporovaným operačním systémem. Tento článek popisuje postup při použití klienta systému Windows. Pokud si chcete stáhnout nejnovější verzi Windows PowerShellu, přečtěte si část [instalace Windows PowerShellu](/powershell/scripting/install/installing-windows-powershell?view=powershell-7).
+- Prostředí Windows PowerShell 5,0 nebo novější je nainstalováno v klientském systému Windows pro přístup k zařízení Azure Stack Edge pro. Můžete mít i jiné klienty s podporovaným operačním systémem. Tento článek popisuje postup při použití klienta systému Windows. Pokud si chcete stáhnout nejnovější verzi Windows PowerShellu, přečtěte si část [instalace Windows PowerShellu](/powershell/scripting/install/installing-windows-powershell?view=powershell-7&preserve-view=true).
 
 - Na zařízení Azure Stack Edge pro je povolené výpočetní prostředky. Pokud chcete povolit výpočetní prostředky, v místním uživatelském rozhraní zařízení se dostanete na stránku **COMPUTE** . Pak vyberte síťové rozhraní, které chcete povolit pro výpočetní prostředky. Vyberte **Povolit**. Povolení výpočetních výsledků při vytváření virtuálního přepínače na zařízení v tomto síťovém rozhraní. Další informace najdete v tématu [Povolení služby COMPUTE Network na Azure Stack Edge pro](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md).
 
@@ -55,7 +55,7 @@ Chcete-li zjistit verzi nástroje `kubectl` :
    kubectl version
    ```
     
-   Tady je příklad výstupu:
+   Příklad výstupu je uveden níže:
     
    ```powershell
    PS C:\WINDOWS\system32> C:\windows\system32\kubectl.exe version
@@ -63,7 +63,7 @@ Chcete-li zjistit verzi nástroje `kubectl` :
    Server Version: version.Info{Major:"1", Minor:"15", GitVersion:"v1.15.1", GitCommit:"4485c6f18cee9a5d3c3b4e523bd27972b1b53892", GitTreeState:"clean", BuildDate:"2019-07-18T09:09:21Z", GoVersion:"go1.12.5", Compiler:"gc", Platform:"linux/amd64"}
    ```
 
-   V takovém případě je verze klienta kubectl v 1.15.2 a je kompatibilní, aby bylo možné pokračovat.
+   V tomto případě je klientská verze kubectl v 1.15.2 a je kompatibilní, aby pokračovala.
 
 2. Získejte seznam lusků spuštěných v clusteru Kubernetes. Pod je kontejner aplikace nebo proces spuštěný v clusteru Kubernetes.
 
@@ -71,7 +71,7 @@ Chcete-li zjistit verzi nástroje `kubectl` :
    kubectl get pods -n <namespace-string>
    ```
     
-   Tady je příklad použití příkazu:
+   Příklad použití příkazu je uveden níže:
     
    ```powershell
    PS C:\WINDOWS\system32> kubectl get pods -n "test1"
@@ -103,7 +103,7 @@ Chcete-li zjistit verzi nástroje `kubectl` :
 
 ### <a name="create-a-stateless-application-using-a-deployment"></a>Vytvoření bezstavové aplikace pomocí nasazení
 
-Teď, když jste ověřili, že verze příkazového řádku kubectl je správná a že má požadované konfigurační soubory, můžete vytvořit bezstavové nasazení aplikace.
+Nyní, když jste ověřili, že je verze příkazového řádku kubectl správná a že máte požadované konfigurační soubory, můžete vytvořit bezstavové nasazení aplikace.
 
 Pod je základní jednotkou spuštění aplikace Kubernetes, nejmenší a nejjednodušší jednotka v objektovém modelu Kubernetes, který vytvoříte nebo nasadíte. Objekt pod také zapouzdřuje prostředky úložiště, jedinečnou IP adresu sítě a možnosti, které určují, jak by měly být kontejnery spuštěny.
 
@@ -123,7 +123,7 @@ Pomocí těchto kroků vytvořte nasazení Nginx:
 
    V tomto příkladu je cesta k souboru YAML aplikace externím zdrojem.
 
-   Tady je ukázka použití příkazu a výstupu:
+   Toto je ukázkové použití příkazu a jeho výstup:
 
    ```powershell
    PS C:\WINDOWS\system32> kubectl apply -f https://k8s.io/examples/application/deployment.yaml -n "test1"
@@ -131,7 +131,7 @@ Pomocí těchto kroků vytvořte nasazení Nginx:
    deployment.apps/nginx-deployment created
    ```
 
-   Alternativně můžete uložit následující Markdownu do místního počítače a nahradit cestu a název souboru v parametru *-f* . Například "C:\Kubernetes\deployment.yaml". Tady je konfigurace nasazení aplikace:
+   Alternativně můžete uložit následující Markdownu do místního počítače a nahradit cestu a název souboru v parametru *-f* . Například "C:\Kubernetes\deployment.yaml". Konfigurace pro nasazení aplikace by byla:
 
    ```markdown
    apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
@@ -163,7 +163,7 @@ Pomocí těchto kroků vytvořte nasazení Nginx:
    kubectl describe deployment nginx-deployment -n <namespace-string>
    ```
 
-   Zde je ukázka použití příkazu a výstupu:
+   Ukázkové použití příkazu s výstupem je uvedeno níže:
     
    ```powershell
    PS C:\Users\user> kubectl describe deployment nginx-deployment -n "test1"
@@ -203,13 +203,13 @@ Pomocí těchto kroků vytvořte nasazení Nginx:
      Normal  ScalingReplicaSet  2m22s  deployment-controller  Scaled up replica set nginx-deployment-5754944d6c to 2
    ```
 
-   Pokud přesně hledáte v nastavení *repliky* , zobrazí se:
+   V nastavení *repliky* se zobrazí:
     
    ```powershell
    Replicas:               2 desired | 2 updated | 2 total | 2 available | 0 unavailable
    ```
 
-   Nastavení *repliky* určuje, že vaše specifikace nasazení vyžadovala dvě lusky, přičemž tyto lusky se vytvořily a aktualizovaly a že jsou připravené k použití.
+   Nastavení *repliky* určuje, že vaše specifikace nasazení vyžaduje dvě lusky a že byly vytvořeny a aktualizovány a jsou připravené k použití.
 
    > [!NOTE]
    > Sada replik nahrazuje lusky, které se z nějakého důvodu odstraňují nebo ukončí, například v případě selhání uzlu zařízení nebo při upgradu na rušivý stav zařízení. Z tohoto důvodu doporučujeme použít sadu replik i v případě, že vaše aplikace vyžaduje jenom jedno pod.
@@ -220,7 +220,7 @@ Pomocí těchto kroků vytvořte nasazení Nginx:
    kubectl get pods -l app=nginx -n <namespace-string>
    ```
     
-   Zde je ukázka použití příkazu a výstupu:
+   Ukázkové použití příkazu s výstupem je uvedeno níže:
     
    ```powershell
    PS C:\Users\user> kubectl get pods -l app=nginx -n "test1"
@@ -238,7 +238,7 @@ Pomocí těchto kroků vytvořte nasazení Nginx:
    kubectl describe pod <podname-string> -n <namespace-string>
    ```
 
-   Zde je ukázka použití příkazu a výstupu:
+  Ukázkové použití příkazu s výstupem je uvedeno níže:
 
    ```powershell
    PS C:\Users\user> kubectl describe pod "nginx-deployment-5754944d6c-7wqjd" -n "test1"
@@ -295,14 +295,14 @@ Pomocí těchto kroků vytvořte nasazení Nginx:
 
 ### <a name="rescale-the-application-deployment-by-increasing-the-replica-count"></a>Škálovat nasazení aplikace zvýšením počtu replik
 
-Každé z nich je určeno ke spuštění jedné instance dané aplikace. Pokud chcete aplikaci škálovat vodorovně a spustit více instancí, můžete zvýšit počet lusků, jeden pro každou instanci. V Kubernetes se tento postup označuje jako replikace.
+Každé z nich je určeno ke spuštění jedné instance dané aplikace. Pokud chcete aplikaci škálovat vodorovně a spustit více instancí, můžete pro každou instanci zvýšit počet lusků na jednu. V Kubernetes se tento postup označuje jako replikace.
 Počet lusků v nasazení aplikace můžete zvýšit použitím nového souboru YAML. Soubor YAML změní nastavení replik na 4, což zvyšuje počet lusků v nasazení na čtyři lusky. Pokud chcete zvýšit počet lusků od 2 do 4:
 
 ```powershell
 PS C:\WINDOWS\system32> kubectl apply -f https://k8s.io/examples/application/deployment-scale.yaml -n "test1"
 ```
 
-Alternativně můžete uložit následující Markdownu na místním počítači a nahradit cestu a název souboru pro parametr *-f* pro `kubectl apply` . Například "C:\Kubernetes\deployment-scale.yaml". Tady je konfigurace pro škálování nasazení aplikace:
+Alternativně můžete uložit následující Markdownu na místním počítači a nahradit cestu a název souboru pro parametr *-f* pro `kubectl apply` . Například "C:\Kubernetes\deployment-scale.yaml". Konfigurace pro škálování nasazení aplikace by byla:
 
 ```markdown
 apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
@@ -332,7 +332,7 @@ Chcete-li ověřit, zda má nasazení čtyři lusky:
 kubectl get pods -l app=nginx
 ```
 
-Tady je příklad výstupu pro změnu měřítka v nasazení ze dvou na čtyři lusky:
+Příklad výstupu pro nasazení změny měřítka ze dvou na čtyři lusky je uveden níže:
 
 ```powershell
 PS C:\WINDOWS\system32> kubectl get pods -l app=nginx
@@ -354,7 +354,7 @@ Chcete-li odstranit nasazení, včetně všech lusků, je třeba spustit `kubect
    kubectl delete deployment nginx-deployment -n <namespace-string>
    ```
 
-Tady je příklad použití příkazů a výstupu:
+Příklad použití příkazu s výstupem je uveden níže:
 
 ```powershell
 PS C:\Users\user> kubectl delete deployment nginx-deployment -n "test1"

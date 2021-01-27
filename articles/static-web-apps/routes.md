@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 8abbe575e855347714c19c40155d890af484d5d6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0cece3f531d50356fdefb81a598109d7c067c5ed
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91822324"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805955"
 ---
 # <a name="routes-in-azure-static-web-apps-preview"></a>Trasy ve službě Azure static Web Apps Preview
 
@@ -36,7 +36,7 @@ Následující tabulka uvádí vhodné umístění pro vložení _routes.js_ do 
 
 |Architektura/knihovna | Umístění  |
 |---------|----------|
-| Úhlová | _hmot_   |
+| Angular | _prostředky_   |
 | React   | _public_  |
 | Svelte  | _public_   |
 | Vue     | _public_ |
@@ -50,8 +50,8 @@ Trasy jsou definovány v _routes.jsv_ souboru jako pole pravidel směrování pr
 
 | Vlastnost pravidla  | Vyžadováno | Výchozí hodnota | Komentář                                                      |
 | -------------- | -------- | ------------- | ------------------------------------------------------------ |
-| `route`        | Yes      | neuvedeno          | Vzor trasy požadovaný volajícím.<ul><li>[Zástupné znaky](#wildcards) jsou podporovány na konci cest směrování. Například _správce tras/ \* _ odpovídá libovolné trase v cestě _správce_ .<li>Výchozí soubor trasy je _index.html_.</ul>|
-| `serve`        | No       | neuvedeno          | Definuje soubor nebo cestu vrácenou z požadavku. Cesta k souboru a název se mohou lišit od požadované cesty. Pokud není `serve` definována hodnota, použije se požadovaná cesta. Parametry QueryString nejsou podporovány; `serve` hodnoty musí ukazovat na skutečné soubory.  |
+| `route`        | Yes      | Není k dispozici          | Vzor trasy požadovaný volajícím.<ul><li>[Zástupné znaky](#wildcards) jsou podporovány na konci cest směrování. Například _správce tras/ \*_ odpovídá libovolné trase v cestě _správce_ .<li>Výchozí soubor trasy je _index.html_.</ul>|
+| `serve`        | No       | Není k dispozici          | Definuje soubor nebo cestu vrácenou z požadavku. Cesta k souboru a název se mohou lišit od požadované cesty. Pokud není `serve` definována hodnota, použije se požadovaná cesta. Parametry QueryString nejsou podporovány; `serve` hodnoty musí ukazovat na skutečné soubory.  |
 | `allowedRoles` | No       | Anonymous     | Pole názvů rolí <ul><li>Mezi platné znaky patří `a-z` , `A-Z` , `0-9` a `_` .<li>Předdefinovaná role `anonymous` platí pro všechny neověřené uživatele.<li>Předdefinovaná role `authenticated` se vztahuje na všechny přihlášené uživatele.<li>Uživatelé musí patřit do alespoň jedné role.<li>Role se shodují na _nebo_ bázi. Pokud je uživatel v některé z uvedených rolí, pak je udělen přístup.<li>Jednotliví uživatelé jsou přidruženi k rolím prostřednictvím [pozvánk](authentication-authorization.md).</ul> |
 | `statusCode`   | No       | 200           | Odpověď [kódu stavu HTTP](https://wikipedia.org/wiki/List_of_HTTP_status_codes) pro požadavek. |
 
@@ -210,7 +210,7 @@ Zadáním hodnoty pro záhlaví buď přidáte nebo změníte hlavičku. Zadán�
 }
 ```
 
-V předchozím příkladu `content-security-policy` je přidána nová hlavička, `cache-control` mění se výchozí hodnota serveru a `x-dns-prefectch-control` Hlavička je odebrána.
+V předchozím příkladu `content-security-policy` je přidána nová hlavička, `cache-control` mění se výchozí hodnota serveru a `x-dns-prefetch-control` Hlavička je odebrána.
 
 Při práci s hlavičkami jsou důležité následující důležité informace:
 
@@ -222,7 +222,7 @@ Při práci s hlavičkami jsou důležité následující důležité informace:
 
 ## <a name="example-route-file"></a>Příklad souboru směrování
 
-Následující příklad ukazuje, jak vytvořit pravidla směrování pro statický obsah a rozhraní API v _routes.js_ v souboru. Některé trasy používají [systémovou složku _/.auth_ ](authentication-authorization.md) , která přistupuje k koncovým bodům souvisejícím s ověřováním.
+Následující příklad ukazuje, jak vytvořit pravidla směrování pro statický obsah a rozhraní API v _routes.js_ v souboru. Některé trasy používají [systémovou složku _/.auth_](authentication-authorization.md) , která přistupuje k koncovým bodům souvisejícím s ověřováním.
 
 ```json
 {
@@ -292,7 +292,7 @@ Následující příklady popisují, co se stane, když požadavek odpovídá pr
 | _/Profile_ | Ověřeným uživatelům se obsluhuje soubor _/profile/index.html_ . Neověření uživatelé přesměrováni na _/Login_. |
 | _/admin/reports_ | Ověřeným uživatelům v roli _správců_ se obsluhuje soubor _/admin/Reports/index.html_ . Ověřeným uživatelům, kteří nejsou v roli _Administrators_ , se doplní chybová zpráva 401.<sup>2</sup>. Neověření uživatelé přesměrováni na _/Login_. |
 | _/api/admin_ | Žádosti od ověřených uživatelů v roli _Administrators_ se odesílají do rozhraní API. Ověřeným uživatelům, kteří nejsou v roli _správců_ a neověřeným uživatelům, je zpracována chyba 401. |
-| _/customers/contoso_ | Ověřeným uživatelům, kteří patří do rolí _správců nebo správců_ _ \_ společnosti Contoso_ , je dodáván soubor _/Customers/contoso/index.html_ <sup>2</sup>. U ověřených uživatelů, kteří nejsou ve _skupině Administrators_ nebo _Customers role \_ Contoso_ , se doplní chyba 401. Neověření uživatelé přesměrováni na _/Login_. |
+| _/customers/contoso_ | Ověřeným uživatelům, kteří patří do rolí _správců nebo správců_ _\_ společnosti Contoso_ , je dodáván soubor _/Customers/contoso/index.html_ <sup>2</sup>. U ověřených uživatelů, kteří nejsou ve _skupině Administrators_ nebo _Customers role \_ Contoso_ , se doplní chyba 401. Neověření uživatelé přesměrováni na _/Login_. |
 | _/Login_ | Neověření uživatelé mají k ověření pomocí GitHubu výzvy. |
 | _/.auth/login/twitter_ | Autorizace pomocí Twitteru je zakázaná. Server odpoví chybou 404. |
 | _/logout_ | Uživatelé se odhlásí od jakéhokoli poskytovatele ověřování. |

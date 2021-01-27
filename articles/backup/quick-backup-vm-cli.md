@@ -5,12 +5,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 01/31/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 27294f91fd6c79b10a85678a7acd60de56cf1ca4
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 1a1b11d517fdfea0aa3a0f553b63276bc20f90be
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94562334"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805461"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-the-azure-cli"></a>Zálohování virtuálního počítače v Azure pomocí Azure CLI
 
@@ -28,8 +28,8 @@ Trezor služby Recovery Services je logický kontejner, který uchovává záloh
 
 Vytvořte trezor služby Recovery Services pomocí příkazu [az backup vault create](/cli/azure/backup/vault#az-backup-vault-create). Zadejte stejnou skupinu prostředků a umístění, jako má virtuální počítač, který chcete chránit. Pokud jste použili [rychlý úvod k virtuálním počítačům](../virtual-machines/linux/quick-create-cli.md), pak jste vytvořili:
 
-- skupinu prostředků *myResourceGroup* ,
-- virtuální počítač *myVM* ,
+- skupinu prostředků *myResourceGroup*,
+- virtuální počítač *myVM*,
 - prostředky v umístění *eastus*.
 
 ```azurecli-interactive
@@ -71,7 +71,7 @@ az backup protection enable-for-vm \
 ```
 
 > [!IMPORTANT]
-> Při použití rozhraní příkazového řádku pro povolení zálohování několika virtuálních počítačů najednou zajistěte, aby k jedné zásadě nedošlo k více než 100 virtuálním počítačům. Toto je [doporučený postup](./backup-azure-vm-backup-faq.md#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy). V současné době klient PowerShellu explicitně neblokuje, pokud existuje více než 100 virtuálních počítačů, ale tato kontrolní rutina se plánuje do budoucna přidat.
+> Při použití rozhraní příkazového řádku pro povolení zálohování několika virtuálních počítačů najednou zajistěte, aby k jedné zásadě nedošlo k více než 100 virtuálním počítačům. Toto je [doporučený postup](./backup-azure-vm-backup-faq.yml#is-there-a-limit-on-number-of-vms-that-can-be-associated-with-the-same-backup-policy). V současné době klient PowerShellu explicitně neblokuje, pokud existuje více než 100 virtuálních počítačů, ale tato kontrolní rutina se plánuje do budoucna přidat.
 
 ## <a name="start-a-backup-job"></a>Spuštění úlohy zálohování
 
@@ -81,7 +81,7 @@ Pro zálohování virtuálního počítače se používají následující param
 
 - `--container-name` je název vašeho virtuálního počítače.
 - `--item-name` je název vašeho virtuálního počítače.
-- Hodnota `--retain-until` by měla být nastavená na poslední datum požadované dostupnosti bodu obnovení ve formátu času UTC ( **dd-mm-yyyy** ).
+- Hodnota `--retain-until` by měla být nastavená na poslední datum požadované dostupnosti bodu obnovení ve formátu času UTC (**dd-mm-yyyy**).
 
 Následující příklad zálohuje virtuální počítač *myVM* a nastaví vypršení platnosti bodu obnovení na 18. října 2017:
 

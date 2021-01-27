@@ -3,12 +3,12 @@ title: Upgrade verze clusteru Azure Service Fabric
 description: Přečtěte si o verzích clusterů v Azure Service Fabric, včetně odkazu na nejnovější verze z blogu týmu Service Fabric.
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: b7234a60c98c42716e5b294c356062ec7001aef7
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: c9a29a97238164b9f6daf9dda66a1f314a7673ce
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762644"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98804238"
 ---
 # <a name="upgrade-your-azure-service-fabric-cluster-version"></a>Upgrade verze clusteru Azure Service Fabric
 
@@ -60,13 +60,14 @@ Pro zlepšení zabezpečení a dostupnosti infrastruktura Azure provedla změnu,
 #### <a name="if-you-dont-upgrade-to-a-supported-version"></a>Pokud neprovádíte upgrade na podporovanou verzi
 
 Clustery Azure Service Fabric, které běží na nezměněných verzích později než 6,3, budou mít za následek ztrátu funkčnosti nebo přerušení služeb, pokud nebyly upgradovány na podporovanou verzi 19. ledna 2021.
-
-Přerušení služby mohou zahrnovat následující:
-
-- Verze, *které* nepoužívají režim **Open** : cluster zůstane v provozu, ale režim **otevření** přestane fungovat, což by mohlo způsobit přerušení služeb pro vaše úlohy.
-
-- Verze používající *režim* **otevření** : cluster může být nedostupný a přestane fungovat, což by mohlo způsobit přerušení služeb pro vaše úlohy.
   
+  - V **případě clusterů, ve kterých je spuštěná verze Service Fabric větší než 6,3, se nepoužívá funkce otevřít síť**, zůstane cluster zapnutý.
+
+ - **U clusterů, na kterých běží verze Service Fabric větší než 6,3 a využívají [funkci Open Networking pro kontejnery](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode)** , by cluster mohl být nedostupný a přestane fungovat, což by mohlo způsobit přerušení služeb pro vaše úlohy.
+ 
+ -   **Pro clustery s [verzemi Windows mezi 7.0.457 a 7.0.466 (včetně obou verzí)](https://docs.microsoft.com/azure/service-fabric/service-fabric-versions#supported-version-names) a operačním systémem Windows je povolená funkce kontejnerů Windows. Poznámka: verze Linux 7.0.457, 7.0.464 a 7.0.465 nejsou ovlivněny**.
+    - **Dopad**: cluster přestane fungovat, což by mohlo způsobit přerušení služeb pro vaše úlohy.
+    
 #### <a name="required-action"></a>Požadovaná akce
 
 Aby nedocházelo k výpadkům nebo ztrátě funkčnosti, zajistěte, aby v clusterech běžela jedna z následujících verzí.

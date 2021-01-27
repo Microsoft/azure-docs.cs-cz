@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: c2a14c12baac29d73754bb17e3ca386cc48e1ba0
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 5704f88d8099966eedcb7143085130ad1376d742
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96449234"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98804904"
 ---
 # <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-a-persistentvolume-on-your-azure-stack-edge-pro-device"></a>Použití kubectl ke spuštění stavové aplikace Kubernetes s PersistentVolume na zařízení Azure Stack Edge pro
 
@@ -24,9 +24,9 @@ Tento postup je určený pro uživatele, kteří si zkontrolovali [Kubernetes ú
 Azure Stack Edge pro podporuje taky spouštění kontejnerů Azure SQL Edge a ty se dají nasadit podobným způsobem, jak je popsáno zde pro MySQL. Další informace najdete v tématu [Azure SQL Edge](../azure-sql-edge/overview.md).
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Než budete moct nasadit stavovou aplikaci, ujistěte se, že jste na svém zařízení dokončili následující požadavky a klienta, který budete používat pro přístup k zařízení:
+Než budete moct nasadit stavovou aplikaci, proveďte na svém zařízení a klientovi, který budete používat pro přístup k zařízení, následující požadavky:
 
 ### <a name="for-device"></a>Zařízení
 
@@ -37,7 +37,7 @@ Než budete moct nasadit stavovou aplikaci, ujistěte se, že jste na svém zař
 ### <a name="for-client-accessing-the-device"></a>Pro klientský přístup k zařízení
 
 - Máte klientský systém Windows, který se bude používat pro přístup k zařízení Azure Stack Edge pro.
-    - Na klientovi běží Windows PowerShell 5,0 nebo novější. Nejnovější verzi Windows PowerShellu si stáhnete tak, že přejdete na [nainstalovat Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7).
+    - Na klientovi běží Windows PowerShell 5,0 nebo novější. Nejnovější verzi Windows PowerShellu si stáhnete tak, že přejdete na [nainstalovat Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7&preserve-view=true).
     
     - Můžete mít i jiné klienty s [podporovaným operačním systémem](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) . Tento článek popisuje postup při použití klienta systému Windows. 
     
@@ -50,7 +50,7 @@ Než budete moct nasadit stavovou aplikaci, ujistěte se, že jste na svém zař
     - Ujistěte se, že `kubectl` verze klienta není ve verzi Kubernetes Master spuštěná na vašem zařízení Azure Stack Edge pro. 
         - Slouží `kubectl version` ke kontrole verze kubectl spuštěné v klientovi. Poznamenejte si plnou verzi.
         - V místním uživatelském rozhraní zařízení Azure Stack Edge pro se podívejte na **Přehled** a poznamenejte si číslo Kubernetes softwaru. 
-        - Ověřte, že tyto dvě verze mají kompatibilitu z mapování uvedeného v podporované verzi Kubernetes. <!-- insert link-->. 
+        - Ověřte, že tyto dvě verze mají kompatibilitu z mapování uvedeného v podporované verzi Kubernetes.<!-- insert link--> 
 
 
 Jste připraveni nasadit stavovou aplikaci na zařízení Azure Stack Edge pro. 
@@ -335,15 +335,15 @@ deployment.apps "mysql" deleted
 service "mysql" deleted
 C:\Users\user>
 ```
-Tady je ukázkový výstup při odstranění trvalého připojení k virtuálnímu okruhu.
+Zde je ukázkový výstup při odstranění trvalého připojení k virtuálnímu okruhu.
 
 ```powershell
 C:\Users\user>kubectl delete pvc mysql-pv-claim -n userns1
 persistentvolumeclaim "mysql-pv-claim" deleted
 C:\Users\user>
-```                                                                                         
+```
 
-Souč_hod již není vázán na okruh PVC, protože byl odstraněn okruh PVC. Vzhledem k tom, že byla tato PV vytvořena, bude nutné sdílenou složku odstranit. Postupujte takto:
+Souč_hod již není vázán na okruh PVC, protože byl odstraněn okruh PVC. Vzhledem k tom, že byla tato PV vytvořena, bude nutné sdílenou složku odstranit. Postupujte následovně:
 
 1. Odpojte sdílenou složku. V Azure Portal přejděte na **prostředek Azure Stack Edge > sdílené složky** a vyberte a klikněte na sdílenou složku, kterou chcete odpojit. Vyberte **Odpojit** a potvrďte operaci. Počkejte, než se sdílená složka odpojí. Odpojování uvolní sdílenou složku (a tudíž přidruženou PersistentVolume) z clusteru Kubernetes. 
 

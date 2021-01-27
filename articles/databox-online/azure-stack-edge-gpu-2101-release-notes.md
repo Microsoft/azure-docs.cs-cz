@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 01/19/2021
 ms.author: alkohli
-ms.openlocfilehash: d0b7f871b2ea62c810a6d20f6e20a5e8d3f6306e
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 8158868a39bf8a1fe03a620f37e4dcb1c9adc14e
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791909"
+ms.locfileid: "98805187"
 ---
 # <a name="azure-stack-edge-2101-release-notes"></a>Zpráva k vydání verze Azure Stack Edge 2101
 
@@ -44,13 +44,13 @@ Následující tabulka poskytuje souhrn známých problémů verze 2101.
 | --- | --- | --- | --- |
 |**1.**|Funkce ve verzi Preview |V této verzi jsou k dispozici tyto funkce: místní Azure Resource Manager, virtuální počítače, Správa cloudu virtuálních počítačů, Kubernetes Azure ARC, VPN pro Azure Stack Edge pro R a Azure Stack hraniční Mini R, multi-procesní služba (MPS) pro grafický procesor Azure Stack Edge pro, je dostupná ve verzi Preview.  |Tyto funkce budou všeobecně dostupné v pozdějších verzích. |
 |**2.**|Řídicí panel Kubernetes | Koncový bod *https* pro řídicí panel Kubernetes s certifikátem SSL se nepodporuje. | |
-|**3.**|Kubernetes |Registr kontejneru Edge nefunguje, pokud je povolen webový proxy server.|Tato funkce bude k dispozici v budoucí verzi. |
+|**3.**|Kubernetes |Pokud je povolen webový proxy server, nefunguje registr kontejneru Edge.|Tato funkce bude k dispozici v budoucí verzi. |
 |**4.**|Kubernetes |Registr kontejneru Edge nefunguje s moduly IoT Edge.| |
 |**čl.**|Kubernetes |Kubernetes nepodporuje ":" v názvech proměnných prostředí, které jsou používány aplikacemi .NET. To je také vyžadováno pro fungování modulu Event Grid IoT Edge, aby fungovalo na Azure Stack hraničních zařízeních a dalších aplikacích. Další informace najdete v [dokumentaci ke službě ASP.NET Core](/aspnet/core/fundamentals/configuration/?tabs=basicconfiguration&view=aspnetcore-3.1&preserve-view=true#environment-variables).|Nahraďte ":" dvojitým podtržítkem. Další informace najdete v tématu [problém Kubernetes](https://github.com/kubernetes/kubernetes/issues/53201) .|
-|**6.** |Cluster Azure ARC + Kubernetes |Ve výchozím nastavení platí, že při `yamls` odstranění prostředku z úložiště Git se odpovídající prostředky neodstraní z clusteru Kubernetes.  |Je nutné nastavit `--sync-garbage-collection` v Arc OperatorParams, aby bylo možné odstranit prostředky při jejich odstranění z úložiště Git. Další informace najdete v tématu [Odstranění konfigurace](../azure-arc/kubernetes/use-gitops-connected-cluster.md#additional-parameters). |
-|**čl.**|NFS |Aplikace, které používají připojení ke sdílené složce NFS na vašem zařízení k zápisu dat, by měly používat exkluzivní zápis. Použití exkluzivního zápisu zajistí, že se zápisy zapisují na disk.| |
+|**6.** |Cluster Azure ARC + Kubernetes |Ve výchozím nastavení platí, že při `yamls` odstranění prostředku z úložiště Git se odpovídající prostředky neodstraní z clusteru Kubernetes.  |Musíte nastavit `--sync-garbage-collection`  v Arc OperatorParams, aby bylo možné odstranit prostředky při odstranění z úložiště Git. Další informace najdete v tématu [Odstranění konfigurace](../azure-arc/kubernetes/use-gitops-connected-cluster.md#additional-parameters). |
+|**čl.**|NFS |Aplikace, které používají připojení ke sdílené složce NFS na vašem zařízení k zápisu dat, by měly používat exkluzivní zápis. Tím se zajistí, že se zápisy zapisují na disk.| |
 |**8.**|Konfigurace výpočtů |Konfigurace výpočtů se nezdařila v konfiguracích sítě, kde brány nebo přepínače nebo směrovače reagují na žádosti protokolu ARP (Address Resolution Protocol) pro systémy, které v síti neexistují.| |
-|**9.**|COMPUTE a Kubernetes |Pokud je na zařízení Kubernetes nastavený první, vyplní všechny dostupné GPU. Proto není možné vytvořit Azure Resource Manager virtuální počítače pomocí GPU po nastavení Kubernetes. |Pokud má vaše zařízení 2 GPU, můžete vytvořit jeden virtuální počítač, který používá GPU, a pak nakonfigurovat Kubernetes. V takovém případě Kubernetes použije zbývající dostupný grafický procesor (1 GPU). |
+|**9.**|COMPUTE a Kubernetes |Pokud je na zařízení Kubernetes nastavený první, vyplní všechny dostupné GPU. Proto není možné vytvářet Azure Resource Manager virtuální počítače pomocí GPU po nastavení Kubernetes. |Pokud má vaše zařízení 2 GPU, můžete vytvořit jeden virtuální počítač, který používá GPU, a pak nakonfigurovat Kubernetes. V takovém případě Kubernetes použije zbývající dostupný grafický procesor (1 GPU). |
 
 
 ## <a name="known-issues-from-previous-releases"></a>Známé problémy z předchozích verzí

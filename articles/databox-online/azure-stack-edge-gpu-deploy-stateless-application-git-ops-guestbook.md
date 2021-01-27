@@ -1,31 +1,31 @@
 ---
-title: Nasazení aplikace PHP v knize webkniha na Kubernetes s povoleným obloukem na zařízení GPU pro Azure Stack Edge | Microsoft Docs
-description: Popisuje, jak nasadit bezstavovou aplikaci PHP v programu pro vytváření souborů s Redis pomocí GitOps v clusteru Kubernetes s povoleným ARC pro vaše zařízení Azure Stack Edge pro.
+title: Nasadit `PHP Guestbook` aplikaci na Kubernetes s povoleným obloukem na zařízení s grafickým procesorem pro Azure Stack Edge | Microsoft Docs
+description: Popisuje, jak nasadit `Guestbook` bezstavovou aplikaci php s Redis pomocí GitOps v clusteru Kubernetes s povoleným ARC pro vaše zařízení Azure Stack Edge pro.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/25/2020
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 4e974d93b5b7550081abcd7e251c7eda265a2397
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: ba72617444a2c7ec30e4d1d25afe1edcda16ff35
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882955"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98804884"
 ---
-# <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>Nasazení bezstavové aplikace v jazyce PHP s Redisem v clusteru Kubernetes s povoleným obloukem na Azure Stack Edge pro GPU
+# <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>Nasazení `Guestbook` bezstavové aplikace PHP s Redis na clusteru Kubernetes s povoleným obloukem na Azure Stack Edge pro GPU
 
 V tomto článku se dozvíte, jak sestavit a nasadit jednoduchou vícevrstvou webovou aplikaci s využitím Kubernetes a ARC Azure. Tento příklad se skládá z následujících součástí:
 
-- Redis hlavní server s jednou instancí pro ukládání položek knihy návštěv
+- Jedna instance Redis Master pro ukládání `guestbook` položek
 - Více replikovaných instancí Redis, které slouží ke čtení
 - Víc instancí webu front-endu
 
 Nasazení se provádí pomocí GitOps na clusteru Kubernetes s povoleným ARC na vašem zařízení Azure Stack Edge pro. 
 
-Tento postup je určený pro uživatele, kteří zkontrolovali [úlohy Kubernetes na zařízení Azure Stack Edge pro](azure-stack-edge-gpu-kubernetes-workload-management.md) a jsou obeznámeni s koncepty, [co je Azure ARC Enabled Kubernetes (Preview)](../azure-arc/kubernetes/overview.md).
+Tento postup je určený pro lidi, kteří zkontrolovali [úlohy Kubernetes na zařízení Azure Stack Edge pro](azure-stack-edge-gpu-kubernetes-workload-management.md) a jsou obeznámeni s koncepty, [co je Azure ARC Enabled Kubernetes (Preview)](../azure-arc/kubernetes/overview.md).
 
 > [!NOTE]
 > Tento článek obsahuje odkazy na podřízený termín, termín, který už Microsoft nepoužívá. Po odebrání termínu ze softwaru ho odebereme z tohoto článku.
@@ -49,18 +49,18 @@ Než budete moct nasadit bezstavovou aplikaci, ujistěte se, že jste na svém z
 
 1. Máte klientský systém Windows, který se bude používat pro přístup k zařízení Azure Stack Edge pro.
   
-    - Na klientovi běží Windows PowerShell 5,0 nebo novější. Nejnovější verzi Windows PowerShellu si stáhnete tak, že přejdete na [nainstalovat Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7).
+    - Na klientovi běží Windows PowerShell 5,0 nebo novější. Nejnovější verzi Windows PowerShellu si stáhnete tak, že přejdete na [nainstalovat Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7&preserve-view = true).
     
     - Můžete mít i jiné klienty s [podporovaným operačním systémem](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) . Tento článek popisuje postup při použití klienta systému Windows. 
     
 1. Dokončili jste postup popsaný v tématu [přístup ke clusteru Kubernetes na zařízení Azure Stack Edge pro](azure-stack-edge-gpu-create-kubernetes-cluster.md). Máte:
     
-    - Nainstalováno `kubectl` na klienta  <!--and saved the `kubeconfig` file with the user configuration to C:\\Users\\&lt;username&gt;\\.kube. -->
+    - Nainstalováno `kubectl` na klienta. <!--and saved the `kubeconfig` file with the user configuration to C:\\Users\\&lt;username&gt;\\.kube. -->
     
     - Ujistěte se, že `kubectl` verze klienta není ve verzi Kubernetes Master spuštěná na vašem zařízení Azure Stack Edge pro. 
       - Slouží `kubectl version` ke kontrole verze kubectl spuštěné v klientovi. Poznamenejte si plnou verzi.
       - V místním uživatelském rozhraní zařízení Azure Stack Edge pro se podívejte na **Přehled** a poznamenejte si číslo Kubernetes softwaru. 
-      - Ověřte, že tyto dvě verze mají kompatibilitu z mapování uvedeného v podporované verzi Kubernetes. <!--insert link-->.
+      - Ověřte, že tyto dvě verze mají kompatibilitu z mapování uvedeného v podporované verzi Kubernetes. <!--insert link-->
 
 1. Máte [konfiguraci GitOps, kterou můžete použít ke spuštění nasazení ARC Azure](https://github.com/kagoyal/dbehaikudemo). V tomto příkladu použijete následující `yaml` soubory k nasazení na zařízení Azure Stack Edge pro.
 
@@ -86,18 +86,18 @@ Pomocí těchto kroků nakonfigurujete prostředek Azure ARC k nasazení konfigu
 
     ![Snímek obrazovky ukazuje cluster Kubernetes s povoleným nastavením Přidat konfiguraci.](media/azure-stack-edge-gpu-connect-powershell-interface/select-configurations-1.png)
 
-1. V části **Přidat konfiguraci** zadejte odpovídající hodnoty pro pole a vyberte **použít**.
+1. V části **Přidat konfiguraci** zadejte odpovídající hodnoty pro pole a pak vyberte **použít**.
 
     |Parametr  |Popis |
     |---------|---------|
     |Název konfigurace     | Název prostředku konfigurace.        |
     |Název instance operátoru     |Název instance operátoru, který identifikuje konkrétní konfiguraci. Název je řetězec o maximální 253 znaků, který musí být malými písmeny, alfanumerické znaky, spojovníky a tečky.         |
-    |Obor názvů operátoru     | Nastavte na **demotestguestbook** , protože se shoduje s oborem názvů zadaným v nasazení `yaml` . <br> Pole definuje obor názvů, ve kterém je operátor nainstalován. Název je řetězec o maximální 253 znaků, který musí být malými písmeny, alfanumerické znaky, spojovníky a tečky.         |
+    |Obor názvů operátoru     | Nastavte na **demotestguestbook** , aby odpovídaly oboru názvů zadanému v nasazení `yaml` . <br> Pole definuje obor názvů, ve kterém je operátor nainstalován. Název je řetězec o maximální 253 znaků, který musí být malými písmeny, alfanumerické znaky, spojovníky a tečky.         |
     |Adresa URL úložiště     |<br>Cesta k úložišti Git v `http://github.com/username/repo` nebo ve `git://github.com/username/repo` formátu, kde se nachází konfigurace GitOps         |
-    |Rozsah operátoru     | Vyberte **obor názvů**. <br>Tato definice definuje rozsah, ve kterém je operátor nainstalován. Vyberte tento obor názvů. Váš operátor se nainstaluje do oboru názvů určeného v souborech YAML nasazení.       |
-    |Typ operátoru     | Ponechte ve výchozím nastavení. <br>Určuje typ operátoru, ve výchozím nastavení nastaven jako tok.        |
-    |Params operátorů     | Ponechte toto nastavení prázdné. <br>Toto pole obsahuje parametry, které se mají předat operátoru toku.        |
-    |Helm     | Nastavte tuto hodnotu jako **zakázanou**. <br>Tuto možnost povolte, pokud budete provádět nasazení na základě grafů.        |
+    |Rozsah operátoru     | Vyberte **obor názvů**. <br>Tento parametr definuje rozsah, ve kterém je operátor nainstalován. Vyberte obor názvů pro instalaci operátora v oboru názvů zadaném v souborech YAML nasazení.       |
+    |Typ operátoru     | Ponechte ve výchozím nastavení. <br>Tento parametr určuje typ operátoru, který je ve výchozím nastavení nastaven jako tok.        |
+    |Params operátorů     | Ponechte toto nastavení prázdné. <br>Tento parametr obsahuje parametry pro předání operátoru toku.        |
+    |Helm     | Nastavte tento parametr na **disabled**. <br>Tuto možnost povolte, pokud budete provádět nasazení na základě grafu.        |
 
 
     ![Přidání konfigurace](media/azure-stack-edge-gpu-connect-powershell-interface/add-configuration-1.png)
@@ -136,7 +136,7 @@ Nasazení prostřednictvím konfigurace GitOps vytvoří `demotestguestbook` obo
     [10.128.44.240]: PS>
     ```  
 
-1. V tomto příkladu byla služba front-end nasazena jako typ: Vyrovnávání zatížení. Pokud chcete zobrazit knihu návštěv, budete muset najít IP adresu této služby. Spusťte následující příkaz.
+1. V tomto příkladu byla služba front-end nasazena jako typ: Vyrovnávání zatížení. Chcete-li zobrazit, bude nutné najít IP adresu této služby `guestbook` . Spusťte následující příkaz.
 
     `kubectl get service -n <your-namespace>`
     
@@ -149,13 +149,13 @@ Nasazení prostřednictvím konfigurace GitOps vytvoří `demotestguestbook` obo
     redis-slave    ClusterIP      10.104.215.146   <none>          6379/TCP       85m
     [10.128.44.240]: PS>
     ```
-1. Služba front-end `type:LoadBalancer` má externí IP adresu. Tato IP adresa pochází z rozsahu IP adres, který jste zadali pro externí služby při konfiguraci nastavení výpočetního sítě v zařízení. Pomocí této IP adresy můžete zobrazit knihu návštěv na adrese URL: `https://<external-IP-address>` .
+1. Služba front-end `type:LoadBalancer` má externí IP adresu. Tato IP adresa pochází z rozsahu IP adres, který jste zadali pro externí služby při konfiguraci nastavení výpočetního sítě v zařízení. Pomocí této IP adresy můžete zobrazit `guestbook` adresu URL na adrese: `https://<external-IP-address>` .
 
     ![Zobrazit knihu návštěv](media/azure-stack-edge-gpu-connect-powershell-interface/view-guestbook-1.png)
 
 ## <a name="delete-deployment"></a>Odstranit nasazení
 
-Chcete-li odstranit nasazení, můžete odstranit konfiguraci z Azure Portal. Tím se odstraní objekty vytvořené včetně nasazení a služeb.
+Chcete-li odstranit nasazení, můžete odstranit konfiguraci z Azure Portal. Odstraněním konfigurace se odstraní objekty, které byly vytvořeny, včetně nasazení a služeb.
 
 1. V Azure Portal otevřete > konfigurace prostředků ARC Azure. 
 1. Vyhledejte konfiguraci, kterou chcete odstranit. Vyberte... Chcete-li vyvolat kontextovou nabídku a vybrat možnost **Odstranit**.

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 69d5a0a69bcd820fd59da0a18b3838b65a6a0460
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 66d537b79819aecab4ce88a56ed465679363f421
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763421"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805202"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-templates"></a>Nasazení virtuálních počítačů na zařízení GPU Azure Stack Edge pro prostřednictvím šablon
 
@@ -29,7 +29,7 @@ Pokud chcete nasadit Azure Stack hraničních počítačů pro celou řadu zař�
 
 Shrnutí vysoké úrovně pracovního postupu nasazení pomocí šablon je následující:
 
-1. **Nakonfigurovat požadavky** – existují 3 typy požadavků; zařízení, klient a virtuální počítač.
+1. **Nakonfigurovat požadavky** – existují tři typy požadavků: zařízení, klient a virtuální počítač.
 
     1. **Požadavky na zařízení**
 
@@ -47,7 +47,7 @@ Shrnutí vysoké úrovně pracovního postupu nasazení pomocí šablon je násl
         1. Vytvořte v umístění zařízení skupinu prostředků, která bude obsahovat všechny prostředky virtuálních počítačů.
         1. Vytvořte účet úložiště, který odešle virtuální pevný disk použitý k vytvoření image virtuálního počítače.
         1. Přidejte identifikátor URI místního účtu úložiště do souboru DNS nebo hostitelů na klientském počítači, který přistupuje k vašemu zařízení.
-        1. Nainstalujte do zařízení certifikát BLOB Storage a také v místním klientovi, který přistupuje k vašemu zařízení. Volitelně nainstalujte certifikát BLOB Storage do Průzkumník služby Storage.
+        1. Nainstalujte do zařízení certifikát BLOB Storage a v místním klientovi Přihlaste se k vašemu zařízení. Volitelně nainstalujte certifikát BLOB Storage do Průzkumník služby Storage.
         1. Vytvořte a nahrajte virtuální pevný disk do účtu úložiště, který jste vytvořili dříve.
 
 2. **Vytvoření virtuálního počítače ze šablon**
@@ -71,7 +71,7 @@ Nakonfigurujte tyto požadavky na klienta, který se použije pro přístup k za
 
 ## <a name="vm-prerequisites"></a>Požadavky na virtuální počítač
 
-Tyto požadavky nakonfigurujte pro vytváření prostředků, které se budou potřebovat pro vytváření virtuálních počítačů. 
+Nakonfigurujte tyto požadavky pro vytvoření prostředků potřebných k vytvoření virtuálního počítače. 
 
     
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
@@ -101,7 +101,7 @@ PS C:\windows\system32>
 
 ### <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
 
-Vytvořte nový účet úložiště pomocí skupiny prostředků vytvořené v předchozím kroku. Jedná se o **místní účet úložiště** , který se použije k nahrání image virtuálního disku pro virtuální počítač.
+Vytvořte nový účet úložiště pomocí skupiny prostředků vytvořené v předchozím kroku. Tento účet je **místní účet úložiště** , který se použije k nahrání image virtuálního disku pro virtuální počítač.
 
 ```powershell
 New-AzureRmStorageAccount -Name <Storage account name> -ResourceGroupName <Resource group name> -Location DBELocal -SkuName Standard_LRS
@@ -195,7 +195,7 @@ Zkopírujte všechny bitové kopie disků, které se mají použít, do objektů
 
 7. Zkontrolujte **Souhrn připojení** a vyberte **připojit**.
 
-8. Účet úložiště se zobrazí v levém podokně. Vyberte a rozbalte účet úložiště. Vyberte **kontejnery objektů BLOB**, klikněte pravým tlačítkem a vyberte **vytvořit kontejner objektů BLOB**. Zadejte název kontejneru objektů BLOB.
+8. Účet úložiště se zobrazí v levém podokně. Vyberte a rozbalte účet úložiště. Vyberte **kontejnery objektů BLOB**, klikněte pravým tlačítkem myši a vyberte **vytvořit kontejner objektů BLOB**. Zadejte název kontejneru objektů BLOB.
 
 9. Vyberte kontejner, který jste právě vytvořili, a v pravém podokně vyberte **nahrát > nahrát soubory**. 
 
@@ -209,7 +209,7 @@ Zkopírujte všechny bitové kopie disků, které se mají použít, do objektů
 
     ![Nahrát soubor VHD 3](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/upload-vhd-file-3.png)
 
-12. Zkopírujte a uložte **identifikátor URI** , protože ho použijete v pozdějších krocích.
+12. Zkopírujte a uložte **identifikátor URI**, který budete používat v pozdějších krocích.
 
     ![Kopírovat identifikátor URI](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/copy-uri-1.png)
 
@@ -237,7 +237,7 @@ Soubor `CreateImage.parameters.json` má následující parametry:
     }
 ```
 
-Upravte soubor `CreateImage.parameters.json` tak, aby obsahoval následující pro zařízení Azure Stack Edge pro:
+Upravte soubor `CreateImage.parameters.json` tak, aby obsahoval následující hodnoty pro zařízení Azure Stack Edge pro:
 
 1. Zadejte typ operačního systému odpovídající virtuálnímu pevnému disku, který budete nahrávat. Typ operačního systému může být Windows nebo Linux.
 
@@ -250,16 +250,17 @@ Upravte soubor `CreateImage.parameters.json` tak, aby obsahoval následující p
 
 2. Změňte identifikátor URI image na identifikátor URI obrázku, který jste nahráli v předchozím kroku:
 
-    ```json
-    "imageUri": {
-        "value": "https://myasegpusavm.blob.myasegpu1.wdshcsso.com/windows/WindowsServer2016Datacenter.vhd"
-        },
-    ```
-    Pokud používáte *protokol HTTP* s Průzkumník služby Storage, změňte ho na URI *http* .
+   ```json
+   "imageUri": {
+       "value": "https://myasegpusavm.blob.myasegpu1.wdshcsso.com/windows/WindowsServer2016Datacenter.vhd"
+       },
+   ```
+
+   Pokud používáte *protokol HTTP* s Průzkumník služby Storage, změňte identifikátor URI na URI *http* .
 
 3. Zadejte jedinečný název obrázku. Tento obrázek slouží k vytvoření virtuálního počítače v pozdějších krocích. 
 
-    Tady je ukázkový kód JSON, který se používá v tomto článku.
+   Tady je ukázkový kód JSON, který se používá v tomto článku.
 
     ```json
     {
@@ -278,6 +279,7 @@ Upravte soubor `CreateImage.parameters.json` tak, aby obsahoval následující p
       }
     }
     ```
+
 5. Uložte soubor parametrů.
 
 
@@ -588,4 +590,4 @@ Pomocí těchto kroků se připojte k virtuálnímu počítači se systémem Lin
 
 ## <a name="next-steps"></a>Další kroky
 
-[Rutiny Azure Resource Manager](/powershell/module/azurerm.resources/?view=azurermps-6.13.0)
+[Rutiny Azure Resource Manager](/powershell/module/azurerm.resources/?view=azurermps-6.13.0&preserve-view=true)

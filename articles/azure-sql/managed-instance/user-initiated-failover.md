@@ -9,13 +9,13 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
-ms.date: 01/25/2021
-ms.openlocfilehash: c12e1f4b01b0e2dd7fa21808cf33f45f9a5be59b
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.date: 01/26/2021
+ms.openlocfilehash: 7588ce055ce0df89a7dca87a75a38c8acccf6d46
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789968"
+ms.locfileid: "98806092"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>Ruční převzetí služeb při selhání iniciované uživatelem ve službě SQL Managed Instance
 
@@ -125,7 +125,7 @@ Stav operace se dá sledovat prostřednictvím revizí odpovědí rozhraní API 
 
 ## <a name="monitor-the-failover"></a>Monitorování převzetí služeb při selhání
 
-Chcete-li monitorovat průběh uživatelem iniciované ruční převzetí služeb při selhání, spusťte následující dotaz T-SQL ve vašem oblíbeném klientovi (například SSMS) na spravované instanci SQL. Přečte zobrazení systému sys.dm_hadr_fabric_replica_states a repliky sestav, které jsou k dispozici na instanci. Po zahájení ručního převzetí služeb při selhání aktualizujte stejný dotaz.
+Pokud chcete monitorovat průběh převzetí služeb při selhání uživatelem iniciované instance BC, spusťte následující dotaz T-SQL ve vašem oblíbeném klientovi (například SSMS) na spravované instanci SQL. Přečte zobrazení systému sys.dm_hadr_fabric_replica_states a repliky sestav, které jsou k dispozici na instanci. Po zahájení ručního převzetí služeb při selhání aktualizujte stejný dotaz.
 
 ```T-SQL
 SELECT DISTINCT replication_endpoint_url, fabric_replica_role_desc FROM sys.dm_hadr_fabric_replica_states
@@ -133,7 +133,13 @@ SELECT DISTINCT replication_endpoint_url, fabric_replica_role_desc FROM sys.dm_h
 
 Před zahájením převzetí služeb při selhání bude výstup označovat aktuální primární repliku ve vrstvě služby BC obsahující jednu primární a tři sekundární prostředí ve skupině dostupnosti AlwaysOn. Po provedení převzetí služeb při selhání bude nutné znovu spustit tento dotaz, aby označoval změnu primárního uzlu.
 
-Nebudete moct zobrazit stejný výstup s úrovní služeb GP, jak je uvedeno výše pro BC. Je to proto, že úroveň služby GP je založená jenom na jednom uzlu. Výstup dotazu T-SQL pro úroveň služby GP zobrazí pouze jeden uzel před a po převzetí služeb při selhání. Ztráta připojení z klienta během převzetí služeb při selhání, obvykle trvalá za minutu, bude znamenat provedení převzetí služeb při selhání.
+Nebudete moct zobrazit stejný výstup s úrovní služeb GP, jak je uvedeno výše pro BC. Je to proto, že úroveň služby GP je založená jenom na jednom uzlu. Můžete použít alternativní dotaz T-SQL ukazující čas spuštění procesu SQL na uzlu pro instanci vrstvy služby GP:
+
+```T-SQL
+SELECT sqlserver_start_time, sqlserver_start_time_ms_ticks FROM sys.dm_os_sys_info
+```
+
+Krátkodobá ztráta připojení z klienta během převzetí služeb při selhání, obvykle trvalá za minutu, bude znamenat provedení převzetí služeb při selhání bez ohledu na úroveň služby.
 
 > [!NOTE]
 > Dokončení procesu převzetí služeb při selhání (nejedná se o skutečnou krátkou nedostupnost) může v případě úloh s **vysokou mírou svítivosti** trvat v čase několik minut. Důvodem je to, že instance Engine se stará o všechny aktuální transakce na primárním a zachytit v sekundárním uzlu před převzetím služeb při selhání.

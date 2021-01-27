@@ -144,7 +144,7 @@
               items:
                 - name: Přehled
                   href: sample-data.md
-                - name: Použití služby Blob Storage
+                - name: Použít Blob Storage
                   href: sample-data-blob.md
                 - name: Použití SQL Serveru
                   href: sample-data-sql-server.md

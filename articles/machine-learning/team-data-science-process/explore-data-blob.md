@@ -1,5 +1,5 @@
 ---
-title: Zkoumání dat ve službě Azure Blob Storage pomocí procesu PANDAS-Team data vědu
+title: Zkoumání dat v Azure Blob Storage s využitím procesu PANDAS – tým pro datové vědy
 description: Jak prozkoumat data uložená v kontejneru objektů BLOB v Azure pomocí balíčku Pythonu PANDAS
 services: machine-learning
 author: marktab
@@ -11,24 +11,24 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 3d80ff9f5f96bbc642aed6598c86cb682d606695
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 855998b887f1d446ee8d196ff4628e066cb5d675
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410670"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805678"
 ---
-# <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Zkoumání dat v úložišti objektů BLOB v Azure pomocí PANDAS
+# <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Zkoumání dat v Azure Blob Storage pomocí PANDAS
 
 Tento článek popisuje, jak prozkoumat data uložená v kontejneru objektů BLOB v Azure pomocí balíčku Pythonu [PANDAS](https://pandas.pydata.org/) .
 
 Tento úkol je krok v rámci [vědeckého procesu týmového zpracování dat](overview.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 V tomto článku se předpokládá, že máte následující:
 
 * Vytvořili jste účet úložiště Azure. Pokud potřebujete pokyny, přečtěte si téma [Vytvoření účtu Azure Storage](../../storage/common/storage-account-create.md) .
-* Vaše data se ukládají v účtu služby Azure Blob Storage. Pokud potřebujete pokyny, přečtěte si téma [přesun dat do a z Azure Storage](../../storage/common/storage-choose-data-transfer-solution.md)
+* Data uložená v účtu Azure Blob Storage. Pokud potřebujete pokyny, přečtěte si téma [přesun dat do a z Azure Storage](../../storage/common/storage-choose-data-transfer-solution.md)
 
 ## <a name="load-the-data-into-a-pandas-dataframe"></a>Načtení dat do PANDAS dataframe
 Chcete-li prozkoumat a manipulovat s datovou sadou, je nutné ji nejprve stáhnout ze zdroje objektu blob do místního souboru, který lze poté načíst do PANDAS dataframe. Postup je následující:

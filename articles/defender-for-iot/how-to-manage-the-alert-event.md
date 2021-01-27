@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.service: azure
 ms.topic: how-to
-ms.openlocfilehash: 023b33732b80198c4ed187328e8d18314f385f94
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: ad09bcb1ea4aa32bdd04af47d3503f74c850a10b
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97838697"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98803508"
 ---
 # <a name="manage-alert-events"></a>Správa událostí výstrah
 
@@ -38,7 +38,7 @@ Zjištěné události se dají zjistit. Když senzor zjistí události, znovu ak
 
 ## <a name="about-acknowledging-and-unacknowledging-events"></a>O potvrzování a nepotvrzujících událostech
 
-V některých situacích možná nebudete chtít, aby se senzor dozvěděl o zjištěné události, nebo aby tato možnost nebyla k dispozici. Místo toho může incident vyžadovat zmírnění. Například:
+V některých situacích možná nebudete chtít, aby se senzor dozvěděl o zjištěné události, nebo aby tato možnost nebyla k dispozici. Místo toho může incident vyžadovat zmírnění. Příklad:
 
 - **Zmírnění síťové konfigurace nebo zařízení**: zobrazí se výstraha oznamující, že v síti bylo zjištěno nové zařízení. Při šetření zjistíte, že zařízení je neautorizované síťové zařízení. Incident můžete zpracovat odpojením zařízení od sítě.
 - **Aktualizace konfigurace senzoru**: zobrazí se výstraha oznamující, že server inicializoval nadměrné množství vzdálených připojení. Tato výstraha se aktivovala, protože prahové hodnoty anomálií snímače byly definované tak, aby během jedné minuty aktivovaly výstrahy nad určitým počtem relací. Incident můžete zpracovat tak, že aktualizujete prahové hodnoty.
@@ -57,7 +57,7 @@ Pokud je potřeba další šetření, Nepotvrzujte výstrahy.
 
 ## <a name="about-muting-and-unmuting-events"></a>O ztlumení a odztlumení událostí
 
-Za určitých okolností můžete chtít, aby váš senzor mohl ignorovat konkrétní scénář ve vaší síti. Například:
+Za určitých okolností můžete chtít, aby váš senzor mohl ignorovat konkrétní scénář ve vaší síti. Příklad:
 
   - Modul **anomálií** aktivuje výstrahu ve špičkě šířky pásma mezi dvěma zařízeními, ale špička je pro tato zařízení platná.
 
@@ -108,6 +108,4 @@ Pokud je událost ztlumená, ignoruje se vždy, když zdroj pošle hlavičku HTT
 
 ## <a name="see-also"></a>Viz také
 
-[Generování sestav](how-to-generate-reports.md)
-
-[Řízení sledování provozu](how-to-control-what-traffic-is-monitored.md)
+[Určení, který provoz se monitoruje](how-to-control-what-traffic-is-monitored.md)

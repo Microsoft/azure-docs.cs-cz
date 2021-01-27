@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/14/2019
+ms.date: 01/25/2021
 ms.author: allensu
-ms.openlocfilehash: 90443a898ffdebf33a0c967719ba25a2ccc6f9a7
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 43d83d994c9a4ee3cf89b584f6c3835a62fa2cfe
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/26/2021
-ms.locfileid: "98792095"
+ms.locfileid: "98806002"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Diagnostika služby Standard Load Balancer s metrikami, upozorněními a stavem prostředků
 
@@ -26,7 +26,6 @@ Azure Standard Load Balancer zpřístupňuje následující diagnostické možno
 * Multidimenzionální **metriky a upozornění**: poskytuje multidimenzionální diagnostické možnosti prostřednictvím [Azure monitor](../azure-monitor/overview.md) pro standardní konfigurace nástroje pro vyrovnávání zatížení. Můžete monitorovat, spravovat a řešit potíže s prostředky standardního nástroje pro vyrovnávání zatížení.
 
 * **Resource Health**: stav Resource Health Load Balancer je k dispozici na stránce Resource Health pod položkou monitor. Tato automatická rezervace vás informuje o aktuální dostupnosti vašeho prostředku Load Balancer.
-
 Tento článek poskytuje rychlou prohlídku těchto funkcí a nabízí způsoby jejich použití pro Standard Load Balancer. 
 
 ## <a name="multi-dimensional-metrics"></a><a name = "MultiDimensionalMetrics"></a>Multidimenzionální metriky
@@ -73,7 +72,7 @@ Chcete-li zobrazit metriky pro prostředky Standard Load Balancer:
 
 ### <a name="retrieve-multi-dimensional-metrics-programmatically-via-apis"></a>Načtěte multidimenzionální metriky prostřednictvím rozhraní API.
 
-Pokyny k rozhraní API pro načítání multidimenzionálních definic a hodnot naleznete v tématu [návod k Azure Monitoring REST API](../azure-monitor/platform/rest-api-walkthrough.md#retrieve-metric-definitions-multi-dimensional-api). Tyto metriky se dají zapsat do účtu úložiště jenom pomocí možnosti všechny metriky. 
+Pokyny k rozhraní API pro načítání multidimenzionálních definic a hodnot naleznete v tématu [návod k Azure Monitoring REST API](../azure-monitor/platform/rest-api-walkthrough.md#retrieve-metric-definitions-multi-dimensional-api). Tyto metriky se dají zapsat do účtu úložiště přidáním [nastavení diagnostiky](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) pro kategorii všechny metriky. 
 
 ### <a name="configure-alerts-for-multi-dimensional-metrics"></a>Konfigurace upozornění na multidimenzionální metriky ###
 
@@ -85,9 +84,6 @@ Konfigurace upozornění:
     1.  Konfigurace podmínky výstrahy
     1.  Volitelné Přidat skupinu akcí pro automatizovanou opravu
     1.  Přiřazení závažnosti, názvu a popisu výstrahy, která umožňuje intuitivní reakci
-
-  >[!NOTE]
-  >Okno Konfigurace podmínky výstrahy zobrazí časové řady pro historii signálu. K dispozici je možnost filtrovat tuto časovou řadu podle dimenzí, jako je například IP adresa back-endu. Tato akce bude filtrovat graf časové řady, ale **ne** samotnou výstrahu. Nemůžete konfigurovat výstrahy pro konkrétní IP adresy back-endu.
 
 ### <a name="common-diagnostic-scenarios-and-recommended-views"></a><a name = "DiagnosticScenarios"></a>Běžné diagnostické scénáře a doporučená zobrazení
 
@@ -147,7 +143,7 @@ Svazek neúspěšných připojení, který je větší než nula, indikuje vyče
 
 Získání statistiky připojení SNAT:
 1. Vyberte **připojení SNAT** typ metriky a **součet** jako agregaci. 
-2. Seskupit podle **stavu připojení** pro úspěšné a neúspěšné počty připojení SNAT, které jsou reprezentovány různými řádky. 
+2. Seskupit podle **stavu připojení** pro úspěšné a neúspěšné počty připojení SNAT, které mají být reprezentovány různými řádky. 
 
 ![Připojení SNAT](./media/load-balancer-standard-diagnostics/LBMetrics-SNATConnection.png)
 
@@ -202,7 +198,7 @@ Metriky čítače bajtů a paketů popisují objem bajtů a paketů, které vaš
 Pro většinu scénářů použijte **součet** jako agregaci.
 
 Postup získání statistiky počtu bajtů nebo paketů:
-1. Vyberte typ metriky **počet bajtů** nebo **počet paketů** s **průměrem** jako agregaci. 
+1. Vyberte typ metriky **počet bajtů** nebo **počet paketů** a **součet** jako agregaci. 
 2. Proveďte jednu z následujících akcí:
    * Použijte filtr na konkrétní IP adresu front-endu, front-end port, back-end IP adresu nebo back-end port.
    * Získejte celkové statistiky prostředku nástroje pro vyrovnávání zatížení bez jakéhokoli filtrování.
@@ -239,8 +235,8 @@ Stav prostředků Standard Load Balancer se zveřejňuje prostřednictvím stáv
 | Stav prostředku | Popis |
 | --- | --- |
 | K dispozici | Váš prostředek standardního nástroje pro vyrovnávání zatížení je v pořádku a dostupný. |
-| Snížený výkon | Váš standardní nástroj pro vyrovnávání zatížení má platformy nebo uživatelem iniciované události, které mají vliv na výkon. Metrika dostupnosti cesty k datům hlásila stav mezi 25 % a 90 % po dobu alespoň dvou minut. Dosáhnete středně silného dopadu na výkon. [Postupujte podle pokynů pro řešení potíží s RHC](./troubleshoot-rhc.md) a zjistěte, jestli neexistují uživatelem iniciované události, které by měly vliv na dostupnost.
-| Neaktivní | Váš prostředek standardního nástroje pro vyrovnávání zatížení není v pořádku. Metrika dostupnosti DataPath ohlásila méně než 25% stavu minimálně pro dvě minuty. Pro příchozí připojení budete mít výrazný dopad na výkon nebo nedostatečná dostupnost. Mohou existovat události uživatele nebo platformy, které způsobují nedostupnost. [Postupujte podle pokynů pro řešení potíží s RHC](./troubleshoot-rhc.md) , abyste zjistili, jestli neexistují uživatelem iniciované události, které mají vliv na dostupnost. |
+| Snížený výkon | Váš standardní nástroj pro vyrovnávání zatížení má platformy nebo uživatelem iniciované události, které mají vliv na výkon. Metrika dostupnosti cesty k datům hlásila stav mezi 25 % a 90 % po dobu alespoň dvou minut. Dosáhnete středně silného dopadu na výkon. [Postupujte podle pokynů pro řešení potíží s RHC](https://docs.microsoft.com/azure/load-balancer/troubleshoot-rhc) a zjistěte, jestli neexistují uživatelem iniciované události, které by měly vliv na dostupnost.
+| Neaktivní | Váš prostředek standardního nástroje pro vyrovnávání zatížení není v pořádku. Metrika dostupnosti DataPath ohlásila méně než 25% stavu minimálně pro dvě minuty. Pro příchozí připojení budete mít výrazný dopad na výkon nebo nedostatečná dostupnost. Mohou existovat události uživatele nebo platformy, které způsobují nedostupnost. [Postupujte podle pokynů pro řešení potíží s RHC](https://docs.microsoft.com/azure/load-balancer/troubleshoot-rhc) , abyste zjistili, jestli neexistují uživatelem iniciované události, které mají vliv na dostupnost. |
 | Neznámý | Stav prostředku pro prostředek standardního nástroje pro vyrovnávání zatížení se ještě neaktualizoval nebo nepřijal informace o dostupnosti cesty k datům za posledních 10 minut. Tento stav by měl být přechodný a jakmile se přijmou data, měl by odrážet správný stav. |
 
 Zobrazení stavu prostředků veřejné Standard Load Balancer:
@@ -267,6 +263,7 @@ Popis obecného stavu prostředku je k dispozici v [dokumentaci k RHC](../servic
 
 ## <a name="next-steps"></a>Další kroky
 
+- Přečtěte si o používání [přehledů](https://docs.microsoft.com/azure/load-balancer/load-balancer-insights) k zobrazení těchto metrik, které jsou pro vaše Load Balancer předem nakonfigurované.
 - Přečtěte si další informace o [Standard Load Balancer](./load-balancer-overview.md).
 - Přečtěte si další informace o [odchozím připojení k nástroji pro vyrovnávání zatížení](./load-balancer-outbound-connections.md).
 - Přečtěte si o [Azure monitor](../azure-monitor/overview.md).

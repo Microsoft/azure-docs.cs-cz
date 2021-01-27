@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: knihovna úložiště objektů BLOB v Azure V12 – Xamarin'
+title: 'Rychlý Start: knihovna Azure Blob Storage V12 – Xamarin'
 description: V tomto rychlém startu se naučíte používat klientskou knihovnu Azure Blob Storage verze 12 s Xamarin k vytvoření kontejneru a objektu BLOB v úložišti objektů BLOB (objekt). V dalším kroku se dozvíte, jak stáhnout objekt blob do mobilního zařízení a jak zobrazit seznam všech objektů BLOB v kontejneru.
 author: codemillmatt
 ms.author: masoucou
@@ -8,18 +8,18 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 641117414c855a044d3ed55004b6e6ea15b259ac
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: dab938a526aa89f6fe5a014e10869bd8da8b475d
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96004734"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98802349"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v12-with-xamarin"></a>Rychlý Start: Klientská knihovna pro úložiště objektů BLOB v Azure V12 s využitím Xamarin
+# <a name="quickstart-azure-blob-storage-client-library-v12-with-xamarin"></a>Rychlý Start: V12 klientské knihovny Azure Blob Storage pomocí Xamarin
 
-Začínáme s klientskou knihovnou služby Azure Blob Storage V12 s využitím Xamarin. Azure Blob Storage je řešení úložiště objektů pro cloud od Microsoftu. Postupujte podle kroků a nainstalujte balíček a vyzkoušejte ukázkový kód pro základní úlohy. Služba Blob Storage je optimalizovaná pro ukládání velkých objemů nestrukturovaných dat.
+Začínáme s klientskou knihovnou Azure Blob Storage V12 s Xamarin. Azure Blob Storage je řešení úložiště objektů od Microsoftu pro Cloud. Postupujte podle kroků a nainstalujte balíček a vyzkoušejte ukázkový kód pro základní úlohy. Služba Blob Storage je optimalizovaná pro ukládání velkých objemů nestrukturovaných dat.
 
-Použijte klientskou knihovnu služby Azure Blob Storage V12 s Xamarin na:
+Pomocí V12 klientské knihovny Azure Blob Storage s Xamarin to:
 
 * Vytvoření kontejneru
 * Nahrání objektu blob do Azure Storage
@@ -44,7 +44,7 @@ Odkazy odkazů:
 
 ## <a name="setting-up"></a>Nastavení
     
-Tato část vás provede přípravou projektu pro práci s knihovnou klienta služby Azure Blob Storage V12 s využitím Xamarin.
+V této části se seznámíte s přípravou projektu pro práci s klientskou knihovnou Azure Blob Storage V12 s Xamarin.
     
 ### <a name="create-the-project"></a>Vytvoření projektu
 
@@ -80,7 +80,7 @@ Z adresáře **BlobQuickstartV12** :
 
 ## <a name="object-model"></a>Objektový model
 
-Úložiště objektů BLOB v Azure je optimalizované pro ukládání obrovských objemů nestrukturovaných dat. Jde o data, která nevyhovují konkrétnímu datovému modelu nebo definici, například textová nebo binární data. Úložiště objektů BLOB nabízí tři typy prostředků:
+Azure Blob Storage je optimalizovaná pro ukládání obrovských objemů nestrukturovaných dat. Jde o data, která nevyhovují konkrétnímu datovému modelu nebo definici, například textová nebo binární data. Úložiště objektů BLOB nabízí tři typy prostředků:
 
 * Účet úložiště
 * Kontejner v účtu úložiště
@@ -110,7 +110,7 @@ Tyto ukázkové fragmenty kódu ukazují, jak provádět následující úlohy p
 
 ### <a name="create-class-level-variables"></a>Vytvořit proměnné úrovně třídy
 
-Následující kód deklaruje několik proměnných úrovně třídy. Jsou nutné pro komunikaci se službou Azure Blob Storage v celé zbývající části této ukázky.
+Následující kód deklaruje několik proměnných úrovně třídy. Pro komunikaci se službou Azure Blob Storage v celé zbývající části této ukázky.
 
 Jsou to kromě připojovacího řetězce pro účet úložiště nastaveného v části [Konfigurace připojovacího řetězce úložiště](#configure-your-storage-connection-string) .
 
@@ -269,12 +269,12 @@ Po ověření hodnot potvrďte výzvu k odstranění kontejneru a dokončete uk�
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste zjistili, jak nahrávat, stahovat a vypisovat objekty BLOB pomocí klientské knihovny Azure Blob Storage V12 pomocí Xamarin.
+V tomto rychlém startu jste zjistili, jak nahrávat, stahovat a vypisovat objekty BLOB pomocí Azure Blob Storage klientské knihovny V12 pomocí Xamarin.
 
 Pokud chcete zobrazit ukázkové aplikace služby Blob Storage, pokračujte:
 
 > [!div class="nextstepaction"]
-> [Ukázka Xamarin pro Azure Blob Storage SDK V12](https://github.com/Azure-Samples/storage-blobs-xamarin-quickstart)
+> [Ukázka sady Azure Blob Storage SDK V12 Xamarin](https://github.com/Azure-Samples/storage-blobs-xamarin-quickstart)
 
 * Kurzy, ukázky, rychlé starty a další dokumentace najdete na webu [Azure pro vývojáře mobilních](/azure/mobile-apps)aplikací.
 * Další informace o Xamarin najdete v tématu [Začínáme s Xamarin](/xamarin/get-started/).

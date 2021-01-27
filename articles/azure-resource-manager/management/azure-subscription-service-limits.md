@@ -3,12 +3,12 @@ title: Omezení a kvóty předplatného Azure
 description: Poskytuje seznam běžných limitů, kvót a omezení předplatného a služeb Azure. Tento článek obsahuje informace o tom, jak zvýšit limity spolu s maximálními hodnotami.
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 20de08ee30deae74954f2857b4de756b8cf46f08
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: baef641a741d12185029436e5a74039427c69f68
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964183"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98802903"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity, kvóty a omezení předplatného a služeb Azure
 
@@ -381,7 +381,7 @@ Další informace o omezeních souborů Azure najdete v tématu [škálovatelnos
 
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 
-### <a name="azure-file-sync-limits"></a>Omezení Azure File Sync
+### <a name="azure-file-sync-limits"></a>Omezení Synchronizace souborů Azure
 
 [!INCLUDE [storage-sync-files-scale-targets](../../../includes/storage-sync-files-scale-targets.md)]
 
@@ -402,7 +402,7 @@ Další informace najdete v tématu [velikosti virtuálních počítačů](../..
 
 #### <a name="disk-encryption-sets"></a>Sady šifrování disků
 
-U každého předplatného je omezení 50 sad Disk Encryption pro jednotlivé oblasti. Další informace najdete v dokumentaci k šifrování pro virtuální počítače se systémem [Linux](../../virtual-machines/disk-encryption.md#restrictions) nebo [Windows](../../virtual-machines/disk-encryption.md#restrictions) . Pokud potřebujete tuto kvótu zvýšit, obraťte se na podporu Azure.
+U každého předplatného je omezení 1000 sad Disk Encryption pro jednotlivé oblasti. Další informace najdete v dokumentaci k šifrování pro virtuální počítače se systémem [Linux](../../virtual-machines/disk-encryption.md#restrictions) nebo [Windows](../../virtual-machines/disk-encryption.md#restrictions) . Pokud potřebujete tuto kvótu zvýšit, obraťte se na podporu Azure.
 
 ### <a name="managed-virtual-machine-disks"></a>Spravované disky virtuálních počítačů
 

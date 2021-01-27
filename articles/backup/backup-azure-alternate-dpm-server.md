@@ -3,12 +3,12 @@ title: Obnovení dat z Azure Backup Server
 description: Obnovte data, která jste chránili do trezoru Recovery Services, z jakéhokoli Azure Backup Server zaregistrovaného v tomto trezoru.
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.openlocfilehash: 0cce45fbaaedad4cfcee0cda768aae2fa294312b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ed8c937f97ec7a74662a8b46a354b0a6db39a2b0
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002966"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806020"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>Obnovení dat z Azure Backup Serveru
 
@@ -89,5 +89,5 @@ Postup obnovení dat z Azure Backup Server:
 
 Přečtěte si další nejčastější dotazy:
 
-* [Běžné dotazy](backup-azure-vm-backup-faq.md) k zálohování virtuálních počítačů Azure
+* [Běžné dotazy](backup-azure-vm-backup-faq.yml) k zálohování virtuálních počítačů Azure
 * [Běžné dotazy](backup-azure-file-folder-backup-faq.md) týkající se agenta Azure Backup

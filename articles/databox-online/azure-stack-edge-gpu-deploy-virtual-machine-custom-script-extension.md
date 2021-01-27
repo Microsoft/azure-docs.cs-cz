@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 01/05/2021
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: d601c6191da9d555e54c1d58c122420510d288fc
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 8b233211f47250d4742d35cd0782cdd241839496
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955548"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98804860"
 ---
 # <a name="deploy-custom-script-extension-on-vms-running-on-your-azure-stack-edge-pro-device"></a>Nasazení rozšíření vlastních skriptů na virtuálních počítačích běžících na zařízení Azure Stack Edge pro
 
@@ -31,7 +31,7 @@ Rozšíření vlastních skriptů se integruje s Azure Resource Manager šablona
 
 #### <a name="supported-os-for-custom-script-extension-on-windows"></a>Podporovaný operační systém pro rozšíření vlastních skriptů ve Windows
 
-Rozšíření vlastních skriptů pro Windows se spustí v následujících OSs. Jiné verze mohou fungovat, ale nebyly na nich testovány na virtuálních počítačích běžících na zařízeních Azure Stack Edge pro.
+Rozšíření vlastních skriptů pro Windows se spustí v následujících OSs. Jiné verze mohou fungovat, ale nebyly testovány na virtuálních počítačích běžících na zařízeních Azure Stack Edge pro.
 
 | Distribuce | Verze |
 |---|---|
@@ -40,7 +40,7 @@ Rozšíření vlastních skriptů pro Windows se spustí v následujících OSs.
 
 #### <a name="supported-os-for-custom-script-extension-on-linux"></a>Podporovaný operační systém pro rozšíření vlastních skriptů v systému Linux
 
-Rozšíření vlastních skriptů pro Linux se spustí v následujících OSs. Jiné verze mohou fungovat, ale nebyly na nich testovány na virtuálních počítačích běžících na zařízeních Azure Stack Edge pro.
+Rozšíření vlastních skriptů pro Linux se spustí v následujících OSs. Jiné verze mohou fungovat, ale nebyly testovány na virtuálních počítačích běžících na zařízeních Azure Stack Edge pro.
 
 | Distribuce | Verze |
 |---|---|
@@ -62,13 +62,13 @@ If your script is on a local server, then you may still need additional firewall
 
 ## <a name="prerequisites"></a>Požadavky
 
-1. [Stáhněte si šablony virtuálních počítačů a soubory parametrů](https://aka.ms/ase-vm-templates) do klientského počítače. Rozbalte ho do adresáře, který použijete jako pracovní adresář.
+1. [Stáhněte si šablony virtuálních počítačů a soubory parametrů](https://aka.ms/ase-vm-templates) do klientského počítače. Rozbalte stáhnout do adresáře, který budete používat jako pracovní adresář.
 
 1. V zařízení byste měli mít vytvořený a nasazený virtuální počítač. Pokud chcete vytvořit virtuální počítače, postupujte podle všech kroků v části [nasazení virtuálního počítače na Azure Stack Edge pro pomocí šablon](azure-stack-edge-gpu-deploy-virtual-machine-templates.md).
 
-    Pokud potřebujete stáhnout skript externě, například z GitHubu nebo Azure Storage, při konfiguraci výpočetní sítě povolte pro výpočetní prostředí port, který je připojený k Internetu. To vám umožní stáhnout skript.
+    Pokud potřebujete stáhnout skript, jako je například z GitHubu nebo Azure Storage externě, při konfiguraci výpočetní sítě povolte port, který je připojen k Internetu pro výpočetní výkon. To vám umožní stáhnout skript.
 
-    Tady je příklad, kdy byl port 2 připojen k Internetu a byl použit k povolení výpočetní sítě. Pokud jste zjistili, že v předchozím kroku není potřeba Kubernetes, můžete přeskočit přiřazení IP adresy uzlu Kubernetes a externích služeb.    
+    V následujícím příkladu byl port 2 připojen k Internetu a byl použit k povolení výpočetní sítě. Pokud jste v předchozím kroku zjistili, že Kubernetes není potřeba, můžete přeskočit přiřazení IP adresy uzlu Kubernetes a externích služeb.
 
     ![Povolit výpočetní nastavení na portu připojeném k Internetu](media/azure-stack-edge-gpu-deploy-gpu-virtual-machine/enable-compute-network-1.png)
 
@@ -115,7 +115,7 @@ Soubor `addCSExtWindowsVM.parameters.json` má následující parametry:
 ```
 Zadejte název virtuálního počítače, název rozšíření a příkaz, který chcete spustit.
 
-Tady je ukázkový soubor s parametry, který se použil v tomto článku. 
+Zde je ukázkový soubor s parametrem, který byl použit v tomto článku.
 
 ```powershell
 {
@@ -396,4 +396,4 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 
 ## <a name="next-steps"></a>Další kroky
 
-[Rutiny Azure Resource Manager](/powershell/module/azurerm.resources/?view=azurermps-6.13.0)
+[Rutiny Azure Resource Manager](/powershell/module/azurerm.resources/?view=azurermps-6.13.0&preserve-view=true)

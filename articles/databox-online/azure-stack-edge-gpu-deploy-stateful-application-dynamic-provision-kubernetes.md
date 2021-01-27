@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/26/2020
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 81a52b26c5291f788ac81caeb2ca5416a2f58d36
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e009369f6223e171984d1142419101fdd82879b0
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448865"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98804919"
 ---
 # <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-storageclass-on-your-azure-stack-edge-pro-gpu-device"></a>Použití kubectl ke spuštění stavové aplikace Kubernetes s StorageClass na zařízení GPU Azure Stack Edge pro
 
@@ -22,9 +22,9 @@ V tomto článku se dozvíte, jak nasadit stavovou aplikaci s jednou instancí v
 Tento postup je určený pro uživatele, kteří si zkontrolovali [Kubernetes úložiště na zařízení Azure Stack Edge pro](azure-stack-edge-gpu-kubernetes-storage.md) a jsou obeznámeni s koncepty [úložiště Kubernetes](https://kubernetes.io/docs/concepts/storage/).
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Než budete moct nasadit stavovou aplikaci, ujistěte se, že jste na svém zařízení dokončili následující požadavky a klienta, který budete používat pro přístup k zařízení:
+Než budete moct nasadit stavovou aplikaci, proveďte na svém zařízení a klientovi, který budete používat pro přístup k zařízení, následující požadavky:
 
 ### <a name="for-device"></a>Zařízení
 
@@ -35,7 +35,7 @@ Než budete moct nasadit stavovou aplikaci, ujistěte se, že jste na svém zař
 ### <a name="for-client-accessing-the-device"></a>Pro klientský přístup k zařízení
 
 - Máte klientský systém Windows, který se bude používat pro přístup k zařízení Azure Stack Edge pro.
-    - Na klientovi běží Windows PowerShell 5,0 nebo novější. Nejnovější verzi Windows PowerShellu si stáhnete tak, že přejdete na [nainstalovat Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7).
+    - Na klientovi běží Windows PowerShell 5,0 nebo novější. Nejnovější verzi Windows PowerShellu si stáhnete tak, že přejdete na [nainstalovat Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7&preserve-view=true).
     
     - Můžete mít i jiné klienty s [podporovaným operačním systémem](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) . Tento článek popisuje postup při použití klienta systému Windows. 
     
@@ -157,7 +157,7 @@ Všechny `kubectl` příkazy, které použijete k vytvoření a správě stavov�
     persistentvolumeclaim/mysql-pv-claim-sc created
     C:\Users\user>
     ```
-   Poznamenejte si název virtuálního okruhu, který jste vytvořili, tady je `mysql-pv-claim-sc` . Budete ho používat v pozdějším kroku. 
+   Poznamenejte si název virtuálního okruhu, který byl vytvořen v tomto příkladu `mysql-pv-claim-sc` . Budete ho používat v pozdějším kroku.
 
 4. Nasaďte obsah `mysql-deployment.yml` souboru.
 
@@ -315,7 +315,7 @@ deployment.apps "mysql" deleted
 service "mysql" deleted
 C:\Users\user>
 ```
-Tady je ukázkový výstup při odstranění trvalého připojení k virtuálnímu okruhu.
+Zde je ukázkový výstup při odstranění trvalého připojení k virtuálnímu okruhu.
 
 ```powershell
 C:\Users\user>kubectl delete pvc mysql-pv-claim-sc -n userns1

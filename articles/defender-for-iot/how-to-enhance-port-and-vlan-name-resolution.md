@@ -1,5 +1,5 @@
 ---
-title: Vylepšení rozlišení portů a sítě VLAN
+title: Vylepšení rozlišování názvů sítě VLAN a portů
 description: Přizpůsobte názvy portů a sítí VLAN na senzorech k rozšíření rozlišení zařízení.
 author: shhazam-ms
 manager: rkarlin
@@ -7,14 +7,14 @@ ms.author: shhazam
 ms.date: 12/13/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 1747af77468ebe41f59892dea4bb49ce24757f37
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 9c976671bccb420ae24d8def7a6574098d86ce6d
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97838924"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98803581"
 ---
-# <a name="enhance-port-and-vlan-name-resolution"></a>Vylepšení rozlišení portů a sítě VLAN
+# <a name="enhance-port-and-vlan-name-resolution"></a>Vylepšení rozlišování názvů sítě VLAN a portů
 
 Můžete přizpůsobit porty a názvy sítí VLAN na senzorech a rozšířit tak rozlišení zařízení.
 
@@ -84,7 +84,8 @@ Konfigurace sítí VLAN:
 
 ## <a name="next-steps"></a>Další kroky
 
-Zobrazit rozšířené informace o zařízení v sestavách inventáře zařízení a dolování dat:
+Zobrazit rozšířené informace o zařízení v různých sestavách:
 
-- [Prozkoumat detekci senzorů v inventáři zařízení](how-to-investigate-sensor-detections-in-a-device-inventory.md)
-- [Generování sestav](how-to-generate-reports.md)
+- [Prošetření detekovaných senzorů v inventáři zařízení](how-to-investigate-sensor-detections-in-a-device-inventory.md)
+- [Trendy senzorů a statistiky sestav](how-to-create-trends-and-statistics-reports.md)
+- [Dotazy dolování dat ze senzorů](how-to-create-data-mining-queries.md)

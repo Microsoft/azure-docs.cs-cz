@@ -7,18 +7,18 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: 4ae69ddeb46d484a64edc4ccabfa6740b36c4264
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: bb4987550e4962ba044e0a6aafbfd00145319e94
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98663260"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98804950"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Export dat pracovního prostoru Log Analytics v Azure Monitor (Preview)
 Export dat v pracovním prostoru Log Analytics v Azure Monitor umožňuje průběžně exportovat data z vybraných tabulek v pracovním prostoru Log Analytics do účtu služby Azure Storage nebo Event Hubs Azure jako shromážděná. Tento článek poskytuje podrobné informace o této funkci a postupu konfigurace exportu dat ve vašich pracovních prostorech.
 
 ## <a name="overview"></a>Přehled
-Po nakonfigurování exportu dat pro váš pracovní prostor Log Analytics se všechna nová data odesílaná do vybraných tabulek v pracovním prostoru automaticky exportují do svého účtu úložiště v reálném čase, nebo do centra událostí.
+Po nakonfigurování exportu dat pro váš pracovní prostor Log Analytics se všechna nová data odesílaná do vybraných tabulek v pracovním prostoru automaticky exportují do vašeho účtu úložiště nebo do centra událostí téměř v reálném čase.
 
 ![Přehled exportu dat](media/logs-data-export/data-export-overview.png)
 
@@ -67,7 +67,7 @@ Pro funkci exportu dat se momentálně neúčtují žádné další poplatky. Ce
 ## <a name="export-destinations"></a>Exportovat cíle
 
 ### <a name="storage-account"></a>Účet úložiště
-Data se odesílají do účtů úložiště každou hodinu. Konfigurace exportu dat vytvoří kontejner pro každou tabulku v účtu úložiště s názvem, pod *kterým následuje název* tabulky. Například tabulka *SecurityEvent* by se poslala do kontejneru s názvem *am-SecurityEvent*.
+Data se odesílají do účtů úložiště téměř v reálném čase, když dosáhnou Azure Monitor. Konfigurace exportu dat vytvoří kontejner pro každou tabulku v účtu úložiště s názvem, pod *kterým následuje název* tabulky. Například tabulka *SecurityEvent* by se poslala do kontejneru s názvem *am-SecurityEvent*.
 
 Cesta k objektu BLOB účtu úložiště je *WorkspaceResourceId =/Subscriptions/Subscription-ID/ResourceGroups/ \<resource-group\> /providers/Microsoft.operationalinsights/Workspaces/ \<workspace\> /y = \<four-digit numeric year\> /m = \<two-digit numeric month\> /d = \<two-digit numeric day\> /h = \<two-digit 24-hour clock hour\> /m = 00/PT1H.jsna*. Vzhledem k tomu, že se doplňovací objekty blob omezí na 50 tis zápisy do úložiště, počet exportovaných objektů BLOB může být prodloužený, pokud je počet připojení vysoký. Vzor pro pojmenování objektů BLOB v takovém případě by byl PT1H_ #. JSON, kde # je přírůstkový počet objektů BLOB.
 

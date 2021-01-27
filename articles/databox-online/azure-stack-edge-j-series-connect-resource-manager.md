@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 6bf0da8716233178889d47ec3d57e9b29bc2658f
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 54aad90cf86f1a20d76f04f3a829f29c47023558
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763213"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805802"
 ---
 # <a name="connect-to-azure-resource-manager-on-your-azure-stack-edge-pro-device"></a>Připojení k Azure Resource Manager na zařízení Azure Stack Edge pro
 
@@ -138,9 +138,9 @@ Váš klient Windows musí splňovat následující požadavky:
 
     Porovnejte **Hlavní** verzi a ujistěte se, že je 5,0 nebo novější.
 
-    Pokud máte zastaralou verzi, přečtěte si [Upgrade existujícího Windows PowerShellu](/powershell/scripting/install/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell).
+    Pokud máte zastaralou verzi, přečtěte si [Upgrade existujícího Windows PowerShellu](/powershell/scripting/install/installing-windows-powershell?view=powershell-6&preserve-view=true#upgrading-existing-windows-powershell).
 
-    Pokud nemáte \' prostředí PowerShell 5,0, postupujte podle pokynů k [instalaci prostředí Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-6).
+    Pokud nemáte \' prostředí PowerShell 5,0, postupujte podle pokynů k [instalaci prostředí Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-6&preserve-view=true).
 
     Ukázkový výstup najdete níž.
 
@@ -156,7 +156,7 @@ Váš klient Windows musí splňovat následující požadavky:
     
 2. Můžete získat přístup k Galerie prostředí PowerShell.
 
-    Spusťte PowerShell jako správce. Ověřte, zda je PSGallery registrován jako úložiště.
+    Spusťte PowerShell jako správce. Ověřte, zda `PSGallery` je aplikace registrována jako úložiště.
 
     ```powershell
     Import-Module -Name PowerShellGet -ErrorAction Stop
@@ -175,7 +175,7 @@ Váš klient Windows musí splňovat následující požadavky:
     PSGallery                 Trusted              https://www.powershellgallery.com/api/v2
     ```
     
-Pokud vaše úložiště není důvěryhodné nebo potřebujete další informace, přečtěte si téma [ověření dostupnosti Galerie prostředí PowerShell](/azure-stack/operator/azure-stack-powershell-install?view=azs-1908#2-validate-the-powershell-gallery-accessibility).
+Pokud vaše úložiště není důvěryhodné nebo potřebujete další informace, přečtěte si téma [ověření dostupnosti Galerie prostředí PowerShell](/azure-stack/operator/azure-stack-powershell-install?view=azs-1908&preserve-view=true&preserve-view=true#2-validate-the-powershell-gallery-accessibility).
 
 ## <a name="step-4-set-up-azure-powershell-on-the-client"></a>Krok 4: nastavení Azure PowerShell na klientovi 
 
@@ -327,7 +327,7 @@ Nastavte prostředí Azure Resource Manager a ověřte, že zařízení komuniku
     Set-AzureRMEnvironment -Name <Environment Name>
     ```
     
-    Další informace najdete na webu [set-AzureRMEnvironment](/powershell/module/azurerm.profile/set-azurermenvironment?view=azurermps-6.13.0).
+    Další informace najdete na webu [set-AzureRMEnvironment](/powershell/module/azurerm.profile/set-azurermenvironment?view=azurermps-6.13.0&preserve-view=true).
 
     - Definujte prostředí vložené pro každou rutinu, kterou spustíte. Tím zajistíte, že všechna volání rozhraní API procházejí přes správné prostředí. Ve výchozím nastavení by volání procházela přes Azure Public, ale chcete, aby procházela s prostředím, které jste nastavili pro Azure Stack hraniční zařízení pro.
 
