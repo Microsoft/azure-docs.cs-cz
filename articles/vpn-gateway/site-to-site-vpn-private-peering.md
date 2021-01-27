@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 11/16/2020
 ms.author: cherylmc
-ms.openlocfilehash: 62ceafad0210065700e5c9734cfe9a055208ef35
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 01d87bcb5697326fa87b25b20354897049900d9d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657886"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880521"
 ---
 # <a name="configure-a-site-to-site-vpn-connection-over-expressroute-private-peering"></a>Konfigurace připojení VPN typu Site-to-site přes privátní partnerský vztah ExpressRoute
 
@@ -72,7 +72,7 @@ V obou těchto příkladech pošle Azure provoz do 10.0.1.0/24 přes připojení
 
 ## <a name="portal-steps"></a><a name="portal"></a>Kroky portálu
 
-1. Nakonfigurujte připojení typu Site-to-site. Postup najdete v článku věnovaném [konfiguraci site-to-site](vpn-gateway-howto-site-to-site-resource-manager-portal.md) . Ujistěte se, že jste pro bránu vybrali SKU redundantní brány v zóně. 
+1. Nakonfigurujte připojení typu Site-to-site. Postup najdete v článku věnovaném [konfiguraci site-to-site](./tutorial-site-to-site-portal.md) . Ujistěte se, že jste pro bránu vybrali SKU redundantní brány v zóně. 
 
    Záložní sklady v zóně mají na konci SKU "AZ". Například **VpnGw1AZ**. Redundantní brány v zóně jsou dostupné jenom v oblastech, kde je služba zóny dostupnosti k dispozici. Informace o oblastech, ve kterých podporujeme zóny dostupnosti, najdete v tématu [oblasti, které podporují zóny dostupnosti](../availability-zones/az-region.md).
 
@@ -80,7 +80,7 @@ V obou těchto příkladech pošle Azure provoz do 10.0.1.0/24 přes připojení
 1. Povolte v bráně privátní IP adresy. Vyberte **Konfigurace** a pak nastavte **soukromé IP adresy brány** na **povoleno**. Vyberte **Uložit** a uložte tak provedené změny.
 1. Na stránce **Přehled** vyberte **Zobrazit další** a ZOBRAZTE tak soukromou IP adresu. Zapište tyto informace pro pozdější použití v krocích konfigurace.
 
-   :::image type="content" source="media/site-to-site-vpn-private-peering/gateway-overview.png" alt-text="Stránka Přehled" lightbox="media/site-to-site-vpn-private-peering/gateway-overview.png":::
+   :::image type="content" source="media/site-to-site-vpn-private-peering/gateway-overview.png" alt-text="Stránka přehledu" lightbox="media/site-to-site-vpn-private-peering/gateway-overview.png":::
 1. Pokud chcete pro připojení povolit **používání privátní IP adresy Azure** , vyberte  **Konfigurace**. Nastavte **použít privátní IP adresu Azure** na **povoleno** a pak vyberte **Uložit**.
 
    :::image type="content" source="media/site-to-site-vpn-private-peering/connection.png" alt-text="Privátní IP adresy brány – povoleno":::
@@ -89,7 +89,7 @@ V obou těchto příkladech pošle Azure provoz do 10.0.1.0/24 přes připojení
 
 ## <a name="powershell-steps"></a><a name="powershell"></a>Kroky PowerShellu
 
-1. Nakonfigurujte připojení typu Site-to-site. Postup najdete v článku [Konfigurace sítě Site-to-Site VPN](vpn-gateway-howto-site-to-site-resource-manager-portal.md) . Ujistěte se, že jste pro bránu vybrali SKU redundantní brány v zóně. Záložní sklady v zóně mají na konci SKU "AZ". Například VpnGw1AZ.
+1. Nakonfigurujte připojení typu Site-to-site. Postup najdete v článku [Konfigurace sítě Site-to-Site VPN](./tutorial-site-to-site-portal.md) . Ujistěte se, že jste pro bránu vybrali SKU redundantní brány v zóně. Záložní sklady v zóně mají na konci SKU "AZ". Například VpnGw1AZ.
 1. Pomocí následujících příkazů PowerShellu nastavte příznak pro použití privátní IP adresy v bráně:
 
    ```azurepowershell-interactive

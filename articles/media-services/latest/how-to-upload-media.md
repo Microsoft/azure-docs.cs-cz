@@ -1,24 +1,10 @@
 ---
-title: Nahrávání médií
-titleSuffix: Azure Media Services
-description: Naučte se nahrávat multimédia pro streamování nebo kódování.
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: how-to
-ms.date: 08/31/2020
-ms.author: inhenkel
-ms.openlocfilehash: 3040369e655ab91f56f271313dc4d2613f02be06
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015840"
+title: nahrání multimédií: Azure Media Services popis: Naučte se nahrávat multimédia pro streamování nebo kódování.
+služby: Media-Services documentationcenter: ' ' Author: IngridAtMicrosoft Manager: femila Editor: ' '
+
+MS. Service: Media-Services MS. rebavování: MS. téma: How-to MS. Date: 08/31/2020 MS. Author: inhenkel
 ---
+
 # <a name="upload-media-for-streaming-or-encoding"></a>Nahrání média pro streamování nebo kódování
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]

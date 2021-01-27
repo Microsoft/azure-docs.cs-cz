@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: f112d0e96c6ff0caf3c5e3762304158f70963f14
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 42416b1fc06ff59a68a6f5044b8bcca5dc7f035f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98787025"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880182"
 ---
 # <a name="prerequisites-for-deploying-azure-cloud-services-extended-support"></a>Předpoklady pro nasazení služby Azure Cloud Services (Rozšířená podpora)
 
@@ -126,3 +126,4 @@ Key Vault slouží k ukládání certifikátů, které jsou přidruženy k Cloud
 - Přečtěte si [požadavky na nasazení](deploy-prerequisite.md) pro Cloud Services (Rozšířená podpora).
 - Nasaďte cloudovou službu (rozšířenou podporu) pomocí [Azure Portal](deploy-portal.md), [PowerShellu](deploy-powershell.md), [šablony](deploy-template.md) nebo sady [Visual Studio](deploy-visual-studio.md).
 - Přečtěte si [Nejčastější dotazy](faq.md) k Cloud Services (Rozšířená podpora).
+- Navštivte [úložiště ukázek Cloud Services (rozšířené podpory)](https://github.com/Azure-Samples/cloud-services-extended-support) .

@@ -3,115 +3,76 @@ title: Azure Service Fabric – použití Service Fabricch odkazů na Trezor kl�
 description: Tento článek vysvětluje, jak používat podporu KeyVaultReference Service-Fabric pro tajné klíče pro aplikace.
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: f2221bb3e8e3ee3181b2cff70107dccc203954cf
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: a0e4ef0decae8cc9ab4dc5f8c69dfef854af81f3
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92313793"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898592"
 ---
-# <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>Podpora KeyVaultReference pro aplikace Service Fabric (Preview)
+# <a name="keyvaultreference-support-for-azure-deployed-service-fabric-applications"></a>Podpora KeyVaultReference pro aplikace Service Fabric nasazené v Azure
 
-Běžným problémem při sestavování cloudových aplikací je bezpečné ukládání tajných kódů vyžadovaných vaší aplikací. Můžete například chtít uložit přihlašovací údaje úložiště kontejnerů do trezoru klíčů a odkazovat na něj v manifestu aplikace. Service Fabric KeyVaultReference používá Service Fabric spravovanou identitu a usnadňuje referenční informace trezoru klíčů. Zbývající část tohoto článku podrobně popisuje, jak používat Service Fabric KeyVaultReference a obsahuje některé typické využití.
-
-> [!IMPORTANT]
-> Použití této funkce Preview se v produkčních prostředích nedoporučuje.
+Běžným problémem při sestavování cloudových aplikací je postup bezpečné distribuce tajných kódů do vašich aplikací. Například můžete chtít nasadit klíč databáze do aplikace bez vystavení klíče během kanálu nebo operátoru. Service Fabric podpora KeyVaultReference usnadňuje nasazení tajných kódů do aplikací jednoduše odkazem na adresu URL tajného kódu, který je uložený v Key Vault. Service Fabric pořídí načtení tohoto tajného klíče jménem spravované identity vaší aplikace a aktivace aplikace s tajným klíčem.
 
 > [!NOTE]
-> Funkce náhledu odkazu na Trezor klíčů podporuje jenom tajné klíče se [správou verzí](../key-vault/general/about-keys-secrets-certificates.md#objects-identifiers-and-versioning) . Tajné kódy bez verzí nejsou podporovány.
+> Podpora KeyVaultReference pro aplikace Service Fabric je GA (Předběžná verze Preview) od Service Fabric verze 7,2 CU5. Před použitím této funkce doporučujeme provést upgrade na tuto verzi.
 
-## <a name="prerequisites"></a>Předpoklady
+> [!NOTE]
+> Podpora KeyVaultReference pro aplikace Service Fabric podporuje pouze tajné kódy s [verzemi](../key-vault/general/about-keys-secrets-certificates.md#objects-identifiers-and-versioning) . Tajné kódy bez verzí nejsou podporovány. Key Vault musí být ve stejném předplatném jako cluster Service Fabric. 
 
-- Spravovaná identita pro aplikaci (MIT)
-    
-    Podpora Service Fabric KeyVaultReference používá spravovanou identitu aplikace, takže aplikace, které plánuje používat KeyVaultReferences, by měly používat spravovanou identitu. Podle tohoto [dokumentu](concepts-managed-identity.md) povolte spravovanou identitu pro vaši aplikaci.
+## <a name="prerequisites"></a>Požadavky
+
+- Spravovaná identita pro aplikace Service Fabric
+
+    Podpora Service Fabric KeyVaultReference používá ke čtení tajných kódů jménem aplikace spravovanou identitu aplikace, takže vaše aplikace musí být nasazená přes a přiřazená spravovaná identita. Podle tohoto [dokumentu](concepts-managed-identity.md) povolte spravovanou identitu pro vaši aplikaci.
 
 - Úložiště centrálních tajných kódů (CSS).
 
-    Úložiště centrálních tajných kódů (CSS) je Service Fabric šifrované mezipaměti místních tajných klíčů. CSS je místní mezipaměť úložiště tajných klíčů, která uchovává citlivá data, například heslo, tokeny a klíče, zašifrované v paměti. KeyVaultReference, po načtení, jsou ukládány do mezipaměti v šablonách stylů CSS.
+    Úložiště centrálních tajných kódů (CSS) je Service Fabric šifrované mezipaměti místních tajných klíčů. Tato funkce používá šablony stylů CSS k ochraně a zachování tajných kódů po jejich načtení z Key Vault. Povolení této volitelné systémové služby je také vyžadováno pro využívání této funkce. Podle tohoto [dokumentu](service-fabric-application-secret-store.md) povolte a nakonfigurujte šablony stylů CSS.
 
-    Níže přidejte do konfigurace clusteru v části `fabricSettings` , abyste povolili všechny požadované funkce pro podporu KeyVaultReference.
-
-    ```json
-    "fabricSettings": 
-    [
-        ...
-    {
-                "name":  "CentralSecretService",
-                "parameters":  [
-                {
-                    "name":  "IsEnabled",
-                    "value":  "true"
-                },
-                {
-                    "name":  "MinReplicaSetSize",
-                    "value":  "3"
-                },
-                {
-                    "name":  "TargetReplicaSetSize",
-                    "value":  "3"
-                }
-                ]
-            },
-            {
-                "name":  "ManagedIdentityTokenService",
-                "parameters":  [
-                {
-                    "name":  "IsEnabled",
-                    "value":  "true"
-                }
-                ]
-            }
-            ]
-    ```
-
-    > [!NOTE] 
-    > Pro šablony stylů CSS doporučujeme použít samostatný šifrovací certifikát. Můžete ho přidat pod oddíl "CentralSecretService".
-    
-
-    ```json
-        {
-            "name": "EncryptionCertificateThumbprint",
-            "value": "<EncryptionCertificateThumbprint for CSS>"
-        }
-    ```
-Aby se změny projevily, budete také muset změnit zásadu upgradu, aby určovala vynucené restartování Service Fabric modulu runtime na každém uzlu, protože upgrade probíhají prostřednictvím clusteru. Tento restart zajistí, že se nově povolená systémová služba spustí a spustí na každém uzlu. V následujícím fragmentu kódu je forceRestart základním nastavením; pro zbývající část nastavení použijte existující hodnoty.
-```json
-"upgradeDescription": {
-    "forceRestart": true,
-    "healthCheckRetryTimeout": "00:45:00",
-    "healthCheckStableDuration": "00:05:00",
-    "healthCheckWaitDuration": "00:05:00",
-    "upgradeDomainTimeout": "02:00:00",
-    "upgradeReplicaSetCheckTimeout": "1.00:00:00",
-    "upgradeTimeout": "12:00:00"
-}
-```
 - Udělení oprávnění přístupu spravované identitě aplikace do trezoru klíčů
 
-    Odkaz na tento [dokument](how-to-grant-access-other-resources.md) vám umožní zjistit, jak udělit spravované identitě přístup k trezoru klíčů. Všimněte si také, že pokud používáte spravovanou identitu přiřazenou systémem, je spravovaná identita vytvořena až po nasazení aplikace.
+    Odkaz na tento [dokument](how-to-grant-access-other-resources.md) vám umožní zjistit, jak udělit spravované identitě přístup k trezoru klíčů. Všimněte si také, že pokud používáte spravovanou identitu přiřazenou systémem, je spravovaná identita vytvořena až po nasazení aplikace. To může vytvořit časování časování, ve kterém se aplikace pokusí o přístup ke tajnému kódu, než může být identita udělena přístup k trezoru. Název identity přiřazené systémem bude `{cluster name}/{application name}/{service name}` .
+    
+## <a name="use-keyvaultreferences-in-your-application"></a>Použití KeyVaultReferences ve vaší aplikaci
+KeyVaultReferences lze spotřebovat různými způsoby
+- [Jako proměnná prostředí](#as-an-environment-variable)
+- [Připojeno jako soubor do kontejneru](#mounted-as-a-file-into-your-container)
+- [Jako odkaz na heslo úložiště kontejneru](#as-a-reference-to-a-container-repository-password)
 
-## <a name="keyvault-secret-as-application-parameter"></a>Tajný klíč trezoru klíčů jako parametr aplikace
-Řekněme, že aplikace potřebuje číst heslo back-end databáze uloženou v trezoru klíčů, Service Fabric podpora KeyVaultReference to usnadňuje. Níže uvedený příklad přečte `DBPassword` tajný kód z trezoru klíčů pomocí podpory Service Fabric KeyVaultReference.
+### <a name="as-an-environment-variable"></a>Jako proměnná prostředí
+
+```xml
+<EnvironmentVariables>
+      <EnvironmentVariable Name="MySecret" Type="KeyVaultReference" Value="<KeyVaultURL>"/>
+</EnvironmentVariables>
+```
+
+```C#
+string secret =  Environment.GetEnvironmentVariable("MySecret");
+```
+
+### <a name="mounted-as-a-file-into-your-container"></a>Připojeno jako soubor do kontejneru
 
 - Přidání oddílu do settings.xml
 
-    Definovat `DBPassword` parametr s typem `KeyVaultReference` a hodnotou `<KeyVaultURL>`
+    Definovat `MySecret` parametr s typem `KeyVaultReference` a hodnotou `<KeyVaultURL>`
 
     ```xml
-    <Section Name="dbsecrets">
-        <Parameter Name="DBPassword" Type="KeyVaultReference" Value="https://vault200.vault.azure.net/secrets/dbpassword/8ec042bbe0ea4356b9b171588a8a1f32"/>
+    <Section Name="MySecrets">
+        <Parameter Name="MySecret" Type="KeyVaultReference" Value="<KeyVaultURL>"/>
     </Section>
     ```
+
 - Odkázat na nový oddíl v ApplicationManifest.xml `<ConfigPackagePolicies>`
 
     ```xml
     <ServiceManifestImport>
         <Policies>
-        <IdentityBindingPolicy ServiceIdentityRef="WebAdmin" ApplicationIdentityRef="ttkappuser" />
+        <IdentityBindingPolicy ServiceIdentityRef="MyServiceMI" ApplicationIdentityRef="MyApplicationMI" />
         <ConfigPackagePolicies CodePackageRef="Code">
             <!--Linux container example-->
-            <ConfigPackage Name="Config" SectionName="dbsecrets" EnvironmentVariableName="SecretPath" MountPoint="/var/secrets"/>
+            <ConfigPackage Name="Config" SectionName="MySecrets" EnvironmentVariableName="SecretPath" MountPoint="/var/secrets"/>
             <!--Windows container example-->
             <!-- <ConfigPackage Name="Config" SectionName="dbsecrets" EnvironmentVariableName="SecretPath" MountPoint="C:\secrets"/> -->
         </ConfigPackagePolicies>
@@ -119,49 +80,31 @@ Aby se změny projevily, budete také muset změnit zásadu upgradu, aby určova
     </ServiceManifestImport>
     ```
 
-- Použití KeyVaultReference ve vaší aplikaci
+- Využívání tajných kódů z kódu služby
 
-    Service Fabric při vytváření instance služby vyřeší parametr KeyVaultReference pomocí spravované identity aplikace. Každý parametr uvedený v části `<Section  Name=dbsecrets>` bude soubor ve složce, na kterou odkazuje objekt EnvironmentVariable SecretPath. Pod fragmentem kódu v jazyce C# ukazují, jak číst DBPassword ve vaší aplikaci.
+    Každý parametr uvedený v části `<Section  Name=MySecrets>` bude soubor ve složce, na kterou odkazuje objekt EnvironmentVariable SecretPath. Níže uvedený fragment kódu jazyka C# ukazuje, jak číst MySecret z aplikace.
 
     ```C#
     string secretPath = Environment.GetEnvironmentVariable("SecretPath");
-    using (StreamReader sr = new StreamReader(Path.Combine(secretPath, "DBPassword"))) 
+    using (StreamReader sr = new StreamReader(Path.Combine(secretPath, "MySecret"))) 
     {
-        string dbPassword =  sr.ReadToEnd();
-        // dbPassword to connect to DB
+        string secret =  sr.ReadToEnd();
     }
     ```
     > [!NOTE] 
-    > Pro scénář kontejneru můžete použít přípojný bod k určení, kam bude `secrets` připojen.
+    > Přípojný bod řídí složku, do které budou připojeny soubory obsahující tajné hodnoty.
 
-## <a name="keyvault-secret-as-environment-variable"></a>Tajný klíč trezoru klíčů jako proměnná prostředí
+### <a name="as-a-reference-to-a-container-repository-password"></a>Jako odkaz na heslo úložiště kontejneru
 
-Service Fabric proměnných prostředí teď podporuje typ KeyVaultReference, nižší příklad ukazuje, jak vytvořit instanci proměnné prostředí s tajným kódem uloženým v trezoru klíčů.
-
-```xml
-<EnvironmentVariables>
-      <EnvironmentVariable Name="EventStorePassword" Type="KeyVaultReference" Value="https://ttkvault.vault.azure.net/secrets/clustercert/e225bd97e203430d809740b47736b9b8"/>
-</EnvironmentVariables>
-```
-
-```C#
-string eventStorePassword =  Environment.GetEnvironmentVariable("EventStorePassword");
-```
-## <a name="keyvault-secret-as-container-repository-password"></a>Tajný klíč trezoru klíčů jako heslo úložiště kontejneru
-KeyVaultReference je podporovaný typ pro RepositoryCredentials kontejneru, níže ukazuje, jak použít odkaz trezoru klíčů jako heslo úložiště kontejnerů.
 ```xml
  <Policies>
       <ContainerHostPolicies CodePackageRef="Code">
-        <RepositoryCredentials AccountName="user1" Type="KeyVaultReference" Password="https://ttkvault.vault.azure.net/secrets/containerpwd/e225bd97e203430d809740b47736b9b8"/>
+        <RepositoryCredentials AccountName="MyACRUser" Type="KeyVaultReference" Password="<KeyVaultURL>"/>
       </ContainerHostPolicies>
 ```
-## <a name="faq"></a>Nejčastější dotazy
-- Pro podporu KeyVaultReference je potřeba povolit spravovanou identitu, aktivace vaší aplikace selže, pokud se KeyVaultReference použije bez povolení spravované identity.
-
-- Pokud používáte identitu přiřazenou systémem, je vytvořena až po nasazení aplikace a tím se vytvoří cyklická závislost. Jakmile je vaše aplikace nasazená, můžete k trezoru klíčů udělit oprávnění k přístupu k identitě přidělené systémem. Identitu přiřazenou systémem můžete najít podle názvu {cluster}/{Application Name}/{ServiceName}
-
-- Trezor klíčů musí být ve stejném předplatném jako cluster Service Fabric. 
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Dokumentace k trezoru klíčů Azure](../key-vault/index.yml)
+* [Další informace o úložišti centrálních tajných klíčů](service-fabric-application-secret-store.md)
+* [Informace o spravované identitě pro aplikace Service Fabric](concepts-managed-identity.md)

@@ -3,14 +3,14 @@ title: Přehled Azure Automation Change Tracking a inventáře
 description: Tento článek popisuje funkci Change Tracking a inventáře, která vám pomůže identifikovat změny softwaru a služeb Microsoftu ve vašem prostředí.
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 11/10/2020
+ms.date: 01/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: b5390e4b3dc6d77390c3fca6323cbd52544c638a
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 0ef821634669739ff5aed58e4404d7c21b8d8222
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445417"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896625"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>Přehled Change Tracking a inventáře
 
@@ -32,7 +32,7 @@ Change Tracking a inventář využívá [Azure Security Center sledování integ
 - Služby společnosti Microsoft
 - Procesy démon systému Linux
 
-Povolení všech funkcí, které jsou součástí Change Tracking a inventáře, může způsobit další poplatky. Než budete pokračovat, přečtěte si téma [ceny služby Automation](https://azure.microsoft.com/pricing/details/automation/) a [ceny Azure monitor](https://azure.microsoft.com/pricing/details/monitor/). 
+Povolení všech funkcí, které jsou součástí Change Tracking a inventáře, může způsobit další poplatky. Než budete pokračovat, přečtěte si téma [ceny služby Automation](https://azure.microsoft.com/pricing/details/automation/) a [ceny Azure monitor](https://azure.microsoft.com/pricing/details/monitor/).
 
 Change Tracking a inventář předávají data do protokolů Azure Monitor a Tato shromážděná data se ukládají do Log Analyticsho pracovního prostoru. Funkce monitoring integrity souborů (FIM) je dostupná jenom v případě, že je **Azure Defender pro servery** povolený. Další informace najdete v tématu Azure Security Center [ceny](../../security-center/security-center-pricing.md) . FIM nahraje data do stejného Log Analytics pracovního prostoru jako ten vytvořený pro ukládání dat z Change Tracking a inventáře. Doporučujeme monitorovat svůj propojený pracovní prostor Log Analytics, abyste mohli sledovat přesné využití. Další informace o analýze využití dat protokolů Azure Monitor najdete v tématu [Správa využití a nákladů](../../azure-monitor/platform/manage-cost-storage.md).
 
@@ -74,16 +74,7 @@ Spustitelný soubor python2 musí mít alias na *Python*.
 
 ## <a name="network-requirements"></a>Požadavky sítě
 
-Následující adresy jsou vyžadovány konkrétně pro Change Tracking a inventář. Komunikace s těmito adresami probíhá přes port 443.
-
-|Veřejný partnerský vztah Azure  |Azure Government  |
-|---------|---------|
-|*.ods.opinsights.azure.com    | *. ods.opinsights.azure.us         |
-|*.oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |
-|*.blob.core.windows.net | *. blob.core.usgovcloudapi.net|
-|*.azure-automation.net | *. azure-automation.us|
-
-Když vytvoříte pravidla zabezpečení skupiny sítě nebo nakonfigurujete Azure Firewall, aby povolovala přenosy do služby Automation Service a do pracovního prostoru Log Analytics, použijte [tag Service](../../virtual-network/service-tags-overview.md#available-service-tags) **GuestAndHybridManagement** a **AzureMonitor**. Tím se zjednoduší průběžná správa pravidel zabezpečení sítě. Pokud se chcete připojit ke službě Automation z vašich virtuálních počítačů Azure bezpečně a soukromě, přečtěte si téma [použití privátního odkazu Azure](../how-to/private-link-security.md). Pokud chcete získat aktuální informace o značce služby a rozsahu, které mají být zahrnuty v rámci místních konfigurací brány firewall, přečtěte si téma [Stažení souborů JSON](../../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files).
+Podrobné informace o portech, adresách URL a dalších podrobných informacích o sítích vyžadovaných pro Change Tracking a inventář najdete v [Azure Automation konfiguraci sítě](../automation-network-configuration.md#update-management-and-change-tracking-and-inventory) .
 
 ## <a name="enable-change-tracking-and-inventory"></a>Povolení řešení Change Tracking a Inventory
 
@@ -129,7 +120,7 @@ Change Tracking a inventář umožňuje sledovat změny klíčů registru Window
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Drivers32` | Monitoruje 32 ovladačů přidružených k wavemapper, wave1 a wave2, MSACM. imaadpcm,. msadpcm,. msgsm610 a vidc. Podobně jako oddíl [Drivers] v souboru **system.ini** .
 > |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32` | Monitoruje 32 ovladačů přidružených k wavemapper, wave1 a wave2, MSACM. imaadpcm,. msadpcm,. msgsm610 a vidc pro 32 aplikace spuštěné v počítačích s 64--bit. Podobně jako oddíl [Drivers] v souboru **system.ini** .
 > |`HKEY\LOCAL\MACHINE\System\CurrentControlSet\Control\Session Manager\KnownDlls` | Monitoruje seznam známých nebo běžně používaných systémových knihoven DLL. Monitorování brání lidem v zneužití slabých oprávnění adresáře aplikace tím, že vyřadí verze systémových knihoven DLL pro trojského koně.
-> |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify` | Monitoruje seznam balíčků, které mohou přijímat oznámení o událostech z **winlogon.exe** , což je model podpory interaktivního přihlašování pro systém Windows.
+> |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify` | Monitoruje seznam balíčků, které mohou přijímat oznámení o událostech z **winlogon.exe**, což je model podpory interaktivního přihlašování pro systém Windows.
 
 ## <a name="recursion-support"></a>Podpora rekurze
 

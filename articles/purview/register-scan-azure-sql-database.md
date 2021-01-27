@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: 36781e7f975ee9d4a03cf899650701bf2d3940ac
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: b3503dead21eeca32d82e896f889b99d11435642
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98555946"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879727"
 ---
 # <a name="register-and-scan-an-azure-sql-database"></a>Registrace a kontrola Azure SQL Database
 
@@ -39,7 +39,7 @@ Azure dosah nepodporuje kontrolu [zobrazení](/sql/relational-databases/views/vi
 
 ### <a name="set-up-authentication-for-a-scan"></a>Nastavení ověřování pro kontrolu
 
-Ověřování pro kontrolu Azure SQL Database. Pokud potřebujete vytvořit nové ověřování, musíte [autorizovat přístup k databázi SQL Database](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage). Existují tři metody ověřování, které dnes dosah podporuje:
+Ověřování pro kontrolu Azure SQL Database. Pokud potřebujete vytvořit nové ověřování, musíte [autorizovat přístup k databázi SQL Database](../azure-sql/database/logins-create-manage.md). Existují tři metody ověřování, které dnes dosah podporuje:
 
 - Ověřování SQL
 - Instanční objekt
@@ -88,8 +88,8 @@ Chcete-li použít instanční objekt, můžete použít existující nebo vytvo
 
 Objekt služby nebo spravovaná identita musí mít oprávnění k získání metadat pro databázi, schémata a tabulky. Musí být také schopné dotazovat tabulky na ukázku pro klasifikaci.
 
-- [Konfigurace a Správa ověřování Azure AD pomocí Azure SQL](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure)
-- Pokud používáte spravovanou identitu, účet dosah má svou vlastní spravovanou identitu, která je v podstatě vaším dosah názvem. Musíte vytvořit uživatele služby Azure AD v Azure SQL Database s přesnou identitou spravované dosah nebo vlastním instančním objektem, a to pomocí kurzu [Vytvoření uživatele instančního objektu v Azure SQL Database](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-service-principal-tutorial#create-the-service-principal-user-in-azure-sql-database). K identitě musíte přiřadit správné oprávnění (například `db_owner` nebo `db_datareader` ). Příklad syntaxe SQL pro vytvoření uživatele a udělení oprávnění:
+- [Konfigurace a Správa ověřování Azure AD pomocí Azure SQL](../azure-sql/database/authentication-aad-configure.md)
+- Pokud používáte spravovanou identitu, účet dosah má svou vlastní spravovanou identitu, která je v podstatě vaším dosah názvem. Musíte vytvořit uživatele služby Azure AD v Azure SQL Database s přesnou identitou spravované dosah nebo vlastním instančním objektem, a to pomocí kurzu [Vytvoření uživatele instančního objektu v Azure SQL Database](../azure-sql/database/authentication-aad-service-principal-tutorial.md#create-the-service-principal-user-in-azure-sql-database). K identitě musíte přiřadit správné oprávnění (například `db_owner` nebo `db_datareader` ). Příklad syntaxe SQL pro vytvoření uživatele a udělení oprávnění:
 
     ```sql
     CREATE USER [Username] FROM EXTERNAL PROVIDER

@@ -1,6 +1,5 @@
 ---
 title: Použití časových posunutí a živých výstupů k vytvoření přehrávání videa na vyžádání
-titleSuffix: Azure Media Services
 description: Tento článek popisuje, jak používat časová posunutí a živé výstupy k nahrávání živých streamů a k vytváření přehrávání na vyžádání.
 services: media-services
 documentationcenter: ''
@@ -14,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 11485ebac449cbde0a4f31e2a099a153476577b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5b475f15a5dc751de154965e3d1e78a85fbd4c9
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89289507"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897862"
 ---
 # <a name="use-time-shifting-and-live-outputs-to-create-on-demand-video-playback"></a>Použití časových posunutí a živých výstupů k vytvoření přehrávání videa na vyžádání
 
@@ -47,7 +46,7 @@ I po zastavení a odstranění události můžou uživatelé streamovat archivov
 
 Pokud jste publikovali Asset svého živého výstupu pomocí lokátoru streamování, bude se dál zobrazovat živá událost (až do délky okna DVR), dokud nevyprší platnost nebo odstranění lokátoru streamování, podle toho, co nastane dřív.
 
-Další informace naleznete v tématech:
+Další informace naleznete v tématu:
 
 - [Přehled živého streamování](live-streaming-overview.md)
 - [Kurz živého streamování](stream-live-tutorial-with-api.md)

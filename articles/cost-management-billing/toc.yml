@@ -393,7 +393,7 @@
     - name: Scénáře automatizace služby Billing
       href: manage/cost-management-automation-scenarios.md
     - name: Přehled rozhraní API služby Azure Billing
-      href: manage/usage-rate-card-overview.md
+      href: /rest/api/cost-management/retail-prices/azure-retail-prices
     - name: Rozhraní REST API služby Azure Billing
       href: /rest/api/billing
     - name: Přehled rozhraní API služby Azure Consumption

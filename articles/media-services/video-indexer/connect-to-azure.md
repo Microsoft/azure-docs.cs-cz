@@ -8,16 +8,16 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 10/21/2020
+ms.date: 01/14/2021
 ms.author: juliako
-ms.openlocfilehash: 82dc9aa9615ef86c878fb75df6650dcc1f904a8f
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 8e110ba9818b48d66c5f17bb524bada567d808ab
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97702605"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897152"
 ---
-# <a name="create-a-video-indexer-account-connected-to-azure"></a>Vytvoření účtu Video Indexer připojeného k Azure
+# <a name="create-a-video-indexer-account"></a>Vytvoření účtu Video Indexer
 
 Při vytváření účtu Video Indexeru můžete zvolit účet bezplatné zkušební verze (ve kterém získáte určitý počet minut indexování zdarma) nebo placenou variantu (ve které nejste omezení kvótou). V bezplatné zkušební verzi Video Indexer poskytuje až 600 minut bezplatného indexování pro webové uživatele a až 2 400 minut bezplatného indexování pro uživatele rozhraní API. Pomocí placené možnosti vytvoříte účet Video Indexer, který je připojený k vašemu předplatnému Azure. Platíte za minuty, další informace najdete v tématu [Media Services ceny](https://azure.microsoft.com/pricing/details/media-services/).
 
@@ -25,7 +25,9 @@ Tento článek ukazuje, jak vytvořit účet Video Indexer propojený s předpla
 
 Pokud přecházíte ze *zkušební verze* na *placený* účet video indexer, můžete si vybrat, jestli chcete zkopírovat všechna videa a přizpůsobení modelu na nový účet, jak je popsáno v části [Import obsahu z zkušebního účtu](#import-your-content-from-the-trial-account) .
 
-## <a name="prerequisites"></a>Požadavky
+Článek také popisuje [propojení video indexer účtu s Azure Government](#video-indexer-in-azure-government).
+
+## <a name="prerequisites-for-connecting-to-azure"></a>Předpoklady pro připojení k Azure
 
 * Předplatné Azure.
 
@@ -37,7 +39,7 @@ Pokud přecházíte ze *zkušební verze* na *placený* účet video indexer, m�
 
     Tento uživatel by měl být uživatelem služby Azure AD, který má pracovní nebo školní účet. Nepoužívejte osobní účet, například outlook.com, live.com nebo hotmail.com.
 
-    ![Všichni uživatelé AAD](./media/create-account/all-aad-users.png)
+    ![Všichni uživatelé Azure AD](./media/create-account/all-aad-users.png)
 
 ### <a name="additional-prerequisites-for-automatic-flow"></a>Další předpoklady pro automatický tok
 
@@ -59,7 +61,7 @@ Pokud přecházíte ze *zkušební verze* na *placený* účet video indexer, m�
 
     ![EventGrid](./media/create-account/event-grid.png)
 
-## <a name="create-a-new-account"></a>Vytvoření nového účtu
+## <a name="create-a-new-account-on-azure"></a>Vytvoření nového účtu v Azure 
 
 > [!NOTE]
 > Pokud vaše předplatné Azure používá vícefaktorové ověřování založené na certifikátech, je velmi důležité, abyste na zařízení s nainstalovanými požadovanými certifikáty prováděli následující kroky.
@@ -155,7 +157,7 @@ V dialogovém okně zadejte následující informace:
 |ID aplikace|ID aplikace Azure AD (s oprávněním pro zadaný účet Media Services), který jste vytvořili v předchozí části.|
 |Klíč aplikace|Klíč aplikace služby Azure AD, který jste vytvořili v předchozí části. |
 
-## <a name="import-your-content-from-the-trial-account"></a>Import obsahu z *zkušebního* účtu
+### <a name="import-your-content-from-the-trial-account"></a>Import obsahu z *zkušebního* účtu
 
 Při vytváření nového účtu máte možnost importovat obsah z *zkušebního* účtu do nového účtu. Pokud v dialogovém okně **vytvořit nový účet v předplatném Azure** vyberete možnost *Import* , všechna vlastní nastavení médií a modelu obsahu se z *zkušebního* účtu zkopírují do nového účtu.
 
@@ -163,16 +165,10 @@ Možnost importu obsahu je platná pro automatizované i ruční postupy popsan�
 
 > [!NOTE]
 > Obsah se dá z každého účtu importovat jenom jednou.
+>
+> *Zkušební* účet není availagle v cloudu Azure Government.
 
-## <a name="delete-the-account"></a>Odstranit účet
-
-Pokud později chcete odstranit účet, můžete účet odstranit z webu Video Indexer. Pokud chcete účet odstranit, musíte být vlastníkem.
-
-Vyberte nastavení účtu->   ->  **Odstranit tento účet**. 
-
-Účet se trvale odstraní během 90 dnů.
-
-## <a name="considerations"></a>Požadavky
+## <a name="azure-media-services-considerations"></a>Azure Media Services hlediska
 
 Platí následující Azure Media Services související s požadavky:
 
@@ -201,9 +197,52 @@ K automatizaci vytváření účtu se jedná o proces dvou kroků:
     Podívejte se na příklad [šablony pro vytvoření účtu Media Services](https://github.com/Azure-Samples/media-services-v3-arm-templates).
 1. [Pomocí Media Services a aplikace Azure AD zavolejte vytvořit účet](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Paid-Account).
 
+## <a name="video-indexer-in-azure-government"></a>Video Indexer v Azure Government
+
+### <a name="prerequisites-for-connecting-to-azure-government"></a>Předpoklady pro připojení k Azure Government
+
+-   Předplatné Azure v [Azure Government](https://docs.microsoft.com/azure/azure-government/).
+- Účet Azure AD v Azure Government.
+- Všechny předběžné požadavky oprávnění a prostředků, jak je popsáno výše v části [požadavky pro připojení k Azure](#prerequisites-for-connecting-to-azure).
+
+### <a name="create-new-account-via-the-azure-government-portal"></a>Vytvoření nového účtu prostřednictvím portálu Azure Government
+
+> [!NOTE]
+> Azure Government Cloud nezahrnuje *zkušební* verzi video indexer.
+
+Vytvoření placeného účtu prostřednictvím portálu Video Indexer:
+
+1. Přejděte na https://videoindexer.ai.azure.us. 
+1. Přihlaste se pomocí Azure Government účtu Azure AD.
+1.  Pokud v Azure Government nemáte žádné účty Video Indexer, se kterými jste vlastníkem nebo přispěvatelem, získáte prázdné prostředí, ze kterého můžete začít vytvářet svůj účet. 
+
+    Zbývající část toku je popsaná výše, jenom oblasti, ze kterých se vybere, se budou stát státními oblastmi, ve kterých je video indexer k dispozici. 
+
+    Pokud již jste přispěvatelem nebo správcem existujícího účtu Video Indexer v Azure Government, bude se vám přicházet k tomuto účtu a odtud můžete v případě potřeby začít postupovat podle pokynů k vytvoření dalšího účtu, jak je popsáno výše.
+    
+### <a name="create-new-account-via-the-api-on-azure-government"></a>Vytvořit nový účet prostřednictvím rozhraní API na Azure Government
+
+Pokud chcete vytvořit placený účet v Azure Government, postupujte podle pokynů v části [Vytvoření-placeného účtu](https://api-portal.videoindexer.ai.azure.us/docs/services/Operations/operations/Create-Paid-Account). Tento koncový bod rozhraní API zahrnuje jenom oblasti cloudu státní správy.
+
+### <a name="limitations-of-video-indexer-on-azure-government"></a>Omezení Video Indexer v Azure Government
+
+*   V cloudu pro státní správu nejsou k dispozici žádné moderování ručního obsahu. 
+
+    Pokud se ve veřejném cloudu na základě Moderování obsahu považuje obsah za urážlivý, může zákazník požádat uživatele, aby tento obsah vypadal a mohl by toto rozhodnutí vrátit zpátky.  
+*   Žádné zkušební účty. 
+* Popis Bingu – v cloudu gov nebudeme mít k dispozici popis identifikovaných celebrit a jmenovaných entit. Toto je pouze schopnost uživatelského rozhraní. 
+
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Po dokončení tohoto kurzu odstraňte prostředky, které neplánujete použít.
+
+### <a name="delete-a-video-indexer-account"></a>Odstranit účet Video Indexer
+
+Pokud chcete odstranit účet Video Indexer, můžete účet odstranit z webu Video Indexer. Pokud chcete účet odstranit, musíte být vlastníkem.
+
+Vyberte nastavení účtu->   ->  **Odstranit tento účet**. 
+
+Účet se trvale odstraní během 90 dnů.
 
 ## <a name="next-steps"></a>Další kroky
 

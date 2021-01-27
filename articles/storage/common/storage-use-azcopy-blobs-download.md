@@ -8,12 +8,12 @@ ms.date: 12/11/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 382adb36712fbf4bee83044c8b2d096223eb6269
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 20da05399eed4cb9c5a4b69a82b0b1e799997751
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630033"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880114"
 ---
 # <a name="download-blobs-from-azure-blob-storage-by-using-azcopy-v10"></a>Stažení objektů BLOB ze služby Azure Blob Storage pomocí AzCopy v10 za účelem
 
@@ -28,7 +28,7 @@ V článku Začínáme [s AzCopy](storage-use-azcopy-v10.md) si můžete stáhno
 > [!NOTE] 
 > V příkladech v tomto článku se předpokládá, že jste zadali autorizační přihlašovací údaje pomocí Azure Active Directory (Azure AD).
 >
-> Pokud místo toho chcete použít token SAS k autorizaci přístupu k datům objektu blob, můžete tento token připojit k adrese URL prostředku v každém příkazu AzCopy. Například: `'https://<storage-account-name>.blob.core.windows.net/<container-name><SAS-token>'`.
+> Pokud místo toho chcete použít token SAS k autorizaci přístupu k datům objektu blob, můžete tento token připojit k adrese URL prostředku v každém příkazu AzCopy. Příklad: `'https://<storage-account-name>.blob.core.windows.net/<container-name><SAS-token>'`.
 
 ## <a name="download-a-blob"></a>Stažení objektu blob
 
@@ -131,7 +131,7 @@ Podrobné informace najdete v referenčních dokumentech ke [kopírování AzCop
 
 Pokud jste povolili [správu verzí objektů BLOB](../blobs/versioning-enable.md), můžete stáhnout jednu nebo více předchozích verzí objektu BLOB. 
 
-Nejdřív vytvořte textový soubor, který obsahuje seznam [ID verzí](../blobs/versioning-overview.md). Každé ID verze se musí nacházet na samostatném řádku. Například: 
+Nejdřív vytvořte textový soubor, který obsahuje seznam [ID verzí](../blobs/versioning-overview.md). Každé ID verze se musí nacházet na samostatném řádku. Příklad: 
 
 ```
 2020-08-17T05:50:34.2199403Z
@@ -143,7 +143,7 @@ Pak použijte příkaz [AzCopy Copy](storage-ref-azcopy-copy.md) s `--list-of-ve
 
 #### <a name="download-a-blob-snapshot"></a>Stažení snímku objektu BLOB
 
-[Snímek objektu BLOB](/azure/storage/blobs/snapshots-overview) si můžete stáhnout tak, že odkazujete na hodnotu **DateTime** snímku objektu BLOB. 
+[Snímek objektu BLOB](../blobs/snapshots-overview.md) si můžete stáhnout tak, že odkazujete na hodnotu **DateTime** snímku objektu BLOB. 
 
 |    |     |
 |--------|-----------|
@@ -152,13 +152,13 @@ Pak použijte příkaz [AzCopy Copy](storage-ref-azcopy-copy.md) s `--list-of-ve
 | **Příklad** (hierarchický obor názvů) | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myTextFile.txt?sharesnapshot=2020-09-23T08:21:07.0000000Z' 'C:\myDirectory\myTextFile.txt'` |
 
 > [!NOTE]
-> Pokud k autorizaci přístupu k datům objektu BLOB používáte token SAS, potom po tokenu SAS přidejte **hodnotu DateTime** snímku. Například: `'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D&sharesnapshot=2020-09-23T08:21:07.0000000Z'`.
+> Pokud k autorizaci přístupu k datům objektu BLOB používáte token SAS, potom po tokenu SAS přidejte **hodnotu DateTime** snímku. Příklad: `'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D&sharesnapshot=2020-09-23T08:21:07.0000000Z'`.
 
 ## <a name="download-with-optional-flags"></a>Stáhnout s volitelnými příznaky
 
 Operaci stahování můžete upravit pomocí volitelných příznaků. Tady je několik příkladů.
 
-|Scénář|Příznak|
+|Scenario|Příznak|
 |---|---|
 |Automatické dekomprimace souborů|**--dekomprese**|
 |Určete, jak chcete, aby byly položky protokolu související s kopírováním.|**--úroveň protokolu** = \[ \| \| informace o chybě upozornění \| none\]|

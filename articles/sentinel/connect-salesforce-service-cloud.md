@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/17/2021
 ms.author: yelevin
-ms.openlocfilehash: d323af2695a41e685e722c98603cf5df09866a15
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 152fee2e4e72cee6a7bc1c768c0a8ca7b031ec39
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567911"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878914"
 ---
 # <a name="connect-your-salesforce-service-cloud-to-azure-sentinel"></a>Připojení cloudu služby Salesforce k Azure Sentinel
 
@@ -37,7 +37,7 @@ Tento článek vysvětluje, jak připojit vaše cloudové řešení služby Sale
 
 - Pro pracovní prostor musíte mít oprávnění ke čtení sdílených klíčů. [Přečtěte si další informace o klíčích pracovních prostorů](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key).
 
-- Abyste mohli Azure Functions vytvořit Function App, musíte mít oprávnění ke čtení a zápisu. [Přečtěte si další informace o Azure Functions](/azure/azure-functions/).
+- Abyste mohli Azure Functions vytvořit Function App, musíte mít oprávnění ke čtení a zápisu. [Přečtěte si další informace o Azure Functions](../azure-functions/index.yml).
 
 - Musíte mít následující přihlašovací údaje pro Salesforce REST API: **uživatelské jméno SALESFORCE API**, **heslo Salesforce API**, **token zabezpečení Salesforce**, **klíč příjemce Salesforce**, **tajný klíč uživatele Salesforce**. [Přečtěte si další informace o REST API Salesforce](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/quickstart.htm).
 

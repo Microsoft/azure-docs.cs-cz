@@ -1,25 +1,9 @@
 ---
-title: Šifrování videa pomocí AES-128
-titleSuffix: Azure Media Services
-description: Naučte se šifrovat video pomocí AES 128-bit Encryption a jak používat službu doručování klíčů v Azure Media Services.
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: tutorial
-ms.date: 08/31/2020
-ms.author: inhenkel
-ms.openlocfilehash: 5347479d32dc9f4909483dc63891e8057fd7ff86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89289320"
+title: Zašifrujte video pomocí AES-128: Azure Media Services popis: Naučte se šifrovat video pomocí šifrování AES 128-bit a jak používat službu pro doručování klíčů v Azure Media Services.
+služby: Media-Services documentationcenter: ' ' Author: IngridAtMicrosoft Manager: femila Editor: ' '
+
+MS. Service: Media-Services MS. rebavování: Media ms.tgt_pltfrm: na MS. devlang: na MS. téma: tutorial MS. Date: 08/31/2020 MS. Author: inhenkel
+
 ---
 # <a name="tutorial-encrypt-video-with-aes-128-and-use-the-key-delivery-service"></a>Kurz: šifrování videa pomocí AES-128 a používání služby pro doručování klíčů
 

@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: da136c1f3ce36bf85592c3c73c9e8f92c41c7442
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: ea274914ac70540d5763884bbd01e41e349a530d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97357904"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879826"
 ---
 # <a name="change-the-license-model-for-a-sql-virtual-machine-in-azure"></a>Změna licenčního modelu virtuálního počítače SQL v Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -37,7 +37,7 @@ Existují tři licenční modely pro virtuální počítač Azure, který je hos
 
 Zvýhodněné hybridní využití Azure umožňuje použití licencí SQL Server se Software Assurance ("kvalifikovaná licence") na virtuálních počítačích Azure. U Zvýhodněné hybridní využití Azure se zákazníkům neúčtují použití licence SQL Server na virtuálním počítači. Ale pořád musí platit za náklady na základní cloudové výpočetní prostředky (tj. základní sazba), úložiště a zálohy. Musí také platit za vstupně-výstupní operace spojené s jejich používáním služeb (podle potřeby).
 
-Podle podmínek pro produkty společnosti Microsoft: "zákazníci musí značit, že používají Azure SQL Database (spravované instance, Elastický fond a Izolovaná databáze), Azure Data Factory, služba SSIS (SQL Server Integration Services) nebo SQL Server Virtual Machines v oblasti Zvýhodněné hybridní využití Azure pro SQL Server při konfiguraci úloh v Azure."
+Podle [podmínek pro produkty](https://www.microsoft.com/licensing/terms/productoffering/MicrosoftAzureServices/EAEAS)společnosti Microsoft: "zákazníci musí značit, že používají Azure SQL Database (spravované Instance, Elastický fond a izolovaná databáze), Azure Data Factory, služba SSIS (SQL Server Integration Services) nebo SQL Server Virtual Machines v oblasti Zvýhodněné hybridní využití Azure pro SQL Server při konfiguraci úloh v Azure."
 
 Chcete-li určit použití Zvýhodněné hybridní využití Azure pro SQL Server na virtuálním počítači Azure a kompatibilní, máte tři možnosti:
 
@@ -47,7 +47,7 @@ Chcete-li určit použití Zvýhodněné hybridní využití Azure pro SQL Serve
 
 Typ licence SQL Server se dá nakonfigurovat při zřizování virtuálního počítače, nebo kdykoli později. Přepínání modelů licencí nepředstavuje žádné výpadky, nerestartuje virtuální počítač ani službu SQL Server, nepřidá žádné další náklady a okamžitě se projeví. Aktivace Zvýhodněné hybridní využití Azure *snižuje* náklady.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Změna modelu licencování virtuálního počítače s SQL Server má následující požadavky: 
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: b8da0b5c55b291af42d9a30db23d6f55f7c0bf2d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 8c5281b4fe596cf9807d6f0dacb844562dc152dc
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022781"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880620"
 ---
 # <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>Zotavení po havárii pro databázi Oracle Database 12c v prostředí Azure
 
@@ -100,4 +100,4 @@ Toto je souhrn nastavení Azure:
 ## <a name="next-steps"></a>Další kroky
 
 - [Kurz: Vytvoření virtuálních počítačů s vysokou dostupností](../../linux/create-cli-complete.md)
-- [Ukázky ukázek Azure CLI pro nasazení virtuálních počítačů](../../linux/cli-samples.md)
+- [Ukázky ukázek Azure CLI pro nasazení virtuálních počítačů](https://github.com/Azure-Samples/azure-cli-samples/tree/master/virtual-machine)

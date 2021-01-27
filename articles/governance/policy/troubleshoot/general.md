@@ -1,26 +1,26 @@
 ---
 title: Odstraňování běžných chyb
-description: Naučte se řešit problémy s vytvářením definic zásad, různých SDK a doplňku pro Kubernetes.
+description: Naučte se řešit problémy s vytvářením definic zásad, různých sad SDK a doplňku pro Kubernetes.
 ms.date: 12/01/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: b88d00575adb571c59b562d25067c4a1716fb50f
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 6f31f6e6f8d24f83f44dc14112f1bdc90c8af859
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882972"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897067"
 ---
-# <a name="troubleshoot-errors-using-azure-policy"></a>Řešení chyb pomocí Azure Policy
+# <a name="troubleshoot-errors-with-using-azure-policy"></a>Řešení chyb pomocí Azure Policy
 
-Při vytváření definic zásad, práci se sadou SDK nebo nastavení [Azure Policy pro doplněk Kubernetes](../concepts/policy-for-kubernetes.md) můžete narazit na chyby. Tento článek popisuje různé obecné chyby, ke kterým může dojít, a způsob jejich řešení.
+Když vytváříte definice zásad, pracujete se sadami SDK nebo nastavíte [Azure Policy pro doplněk Kubernetes](../concepts/policy-for-kubernetes.md) , může dojít k chybám. Tento článek popisuje různé obecné chyby, ke kterým může dojít, a navrhuje způsoby, jak je vyřešit.
 
-## <a name="finding-error-details"></a>Hledání podrobností o chybě
+## <a name="find-error-details"></a>Najít podrobnosti o chybě
 
-Umístění podrobností o chybě závisí na akci, která způsobuje chybu.
+Umístění podrobností o chybě závisí na tom, s jakými aspekty Azure Policy pracujete.
 
-- Pokud pracujete s vlastními zásadami, zkuste to v Azure Portal, abyste získali zpětnou vazbu ke schématu nebo zkontrolovali výsledná [data dodržování předpisů](../how-to/get-compliance-data.md) , abyste viděli, jak byly vyhodnoceny prostředky.
-- Při práci s různými SDK poskytuje sada SDK podrobné informace o tom, proč se funkce nezdařila.
-- Při práci s doplňkem pro Kubernetes začněte [protokolováním](../concepts/policy-for-kubernetes.md#logging) clusteru.
+- Pokud pracujete s vlastními zásadami, přejděte na Azure Portal a získejte zpětnou vazbu ke schématu nebo si přečtěte výsledná [data o dodržování předpisů](../how-to/get-compliance-data.md) , abyste viděli, jak byly vyhodnoceny prostředky.
+- Pokud pracujete s některou z různých sad SDK, poskytuje sada SDK podrobné informace o tom, proč se funkce nezdařila.
+- Pokud pracujete s doplňkem pro Kubernetes, začněte s [protokolováním](../concepts/policy-for-kubernetes.md#logging) v clusteru.
 
 ## <a name="general-errors"></a>Obecné chyby
 
@@ -28,7 +28,7 @@ Umístění podrobností o chybě závisí na akci, která způsobuje chybu.
 
 #### <a name="issue"></a>Problém
 
-Azure Policy používá k mapování Azure Resource Manager vlastností [aliasy](../concepts/definition-structure.md#aliases) .
+V definici zásad se používá nesprávný nebo neexistující alias. Azure Policy používá k mapování Azure Resource Manager vlastností [aliasy](../concepts/definition-structure.md#aliases) .
 
 #### <a name="cause"></a>Příčina
 
@@ -36,47 +36,49 @@ V definici zásad se používá nesprávný nebo neexistující alias.
 
 #### <a name="resolution"></a>Řešení
 
-Nejprve ověřte, zda má vlastnost Správce prostředků alias. K vyhledání dostupných aliasů použijte [rozšíření Azure Policy pro Visual Studio Code](../how-to/extension-for-vscode.md) nebo SDK. Pokud alias pro vlastnost Správce prostředků neexistuje, vytvořte lístek podpory.
+Nejprve ověřte, zda má vlastnost Správce prostředků alias. Pokud chcete vyhledat dostupné aliasy, přečtěte si [Azure Policy rozšíření pro Visual Studio Code](../how-to/extension-for-vscode.md) nebo sadu SDK. Pokud alias pro vlastnost Správce prostředků neexistuje, vytvořte lístek podpory.
 
-### <a name="scenario-evaluation-details-not-up-to-date"></a>Scénář: podrobnosti vyhodnocení nejsou aktuální.
-
-#### <a name="issue"></a>Problém
-
-Prostředek je ve stavu "nespuštěno" nebo podrobnosti o dodržování předpisů nejsou aktuální.
-
-#### <a name="cause"></a>Příčina
-
-Použití nového přiřazení zásady nebo iniciativy trvá přibližně 30 minut. Nové nebo aktualizované prostředky v rozsahu stávajícího přiřazení budou k dispozici přibližně 15 minut později. Standardní kontrola dodržování předpisů proběhne každých 24 hodin. Další informace najdete v tématu [aktivační události vyhodnocení](../how-to/get-compliance-data.md#evaluation-triggers).
-
-#### <a name="resolution"></a>Řešení
-
-Nejdřív počkejte odpovídající dobu, než se vyhodnocení dokončí, a výsledky dodržování předpisů budou k dispozici v Azure Portal nebo SDK. Chcete-li zahájit novou zkušební kontrolu pomocí Azure PowerShell nebo REST API, přečtěte si téma [Kontrola vyhodnocení na vyžádání](../how-to/get-compliance-data.md#on-demand-evaluation-scan).
-
-### <a name="scenario-compliance-not-as-expected"></a>Scénář: dodržování předpisů podle očekávání
+### <a name="scenario-evaluation-details-arent-up-to-date"></a>Scénář: podrobnosti o vyhodnocení nejsou aktuální.
 
 #### <a name="issue"></a>Problém
 
-Prostředek není ve stavu vyhodnocení, buď _kompatibilní_ , nebo _nekompatibilní_, který je pro tento prostředek očekávaný.
+Prostředek je ve stavu *Nezahájeno* nebo podrobnosti o dodržování předpisů nejsou aktuální.
 
 #### <a name="cause"></a>Příčina
 
-Prostředek není ve správném oboru pro přiřazení zásady nebo definice zásady nefunguje tak, jak má.
+Nové přiřazení zásad nebo iniciativ trvá přibližně 30 minut. Nové nebo aktualizované prostředky v rozsahu stávajícího přiřazení budou k dispozici přibližně po dobu 15 minut. Standardní kontrola dodržování předpisů probíhá každých 24 hodin. Další informace najdete v tématu [aktivační události vyhodnocení](../how-to/get-compliance-data.md#evaluation-triggers).
 
 #### <a name="resolution"></a>Řešení
 
-Pomocí těchto kroků můžete vyřešit potíže s definicí zásad:
+Nejdřív počkejte odpovídající dobu, než se vyhodnocení dokončí, a výsledky dodržování předpisů budou k dispozici v Azure Portal nebo sadě SDK. Chcete-li zahájit novou zkušební kontrolu pomocí Azure PowerShell nebo REST API, přečtěte si téma [Kontrola vyhodnocení na vyžádání](../how-to/get-compliance-data.md#on-demand-evaluation-scan).
 
-1. Nejdřív počkejte odpovídající dobu, než se vyhodnocení dokončí, a výsledky dodržování předpisů budou k dispozici v Azure Portal nebo SDK. Chcete-li zahájit novou zkušební kontrolu pomocí Azure PowerShell nebo REST API, přečtěte si téma [Kontrola vyhodnocení na vyžádání](../how-to/get-compliance-data.md#on-demand-evaluation-scan).
-1. Ověřte, zda jsou parametry přiřazení a rozsah přiřazení nastaveny správně.
+### <a name="scenario-compliance-isnt-as-expected"></a>Scénář: dodržování předpisů není podle očekávání
+
+#### <a name="issue"></a>Problém
+
+Prostředek není v _odpovídajícím_ nebo _nekompatibilním_ stavu vyhodnocení, který je pro tento prostředek očekávaný.
+
+#### <a name="cause"></a>Příčina
+
+Prostředek není ve správném oboru pro přiřazení zásady, jinak definice zásady nefunguje tak, jak má.
+
+#### <a name="resolution"></a>Řešení
+
+Pokud chcete řešit potíže s definicí zásad, udělejte toto:
+
+1. Nejdřív počkejte odpovídající dobu, než se vyhodnocení dokončí, a výsledky dodržování předpisů budou k dispozici v Azure Portal nebo SDK. 
+
+1. Chcete-li zahájit novou zkušební kontrolu pomocí Azure PowerShell nebo REST API, přečtěte si téma [Kontrola vyhodnocení na vyžádání](../how-to/get-compliance-data.md#on-demand-evaluation-scan).
+1. Ujistěte se, že parametry přiřazení a rozsah přiřazení jsou nastaveny správně.
 1. Zkontrolujte [režim definice zásad](../concepts/definition-structure.md#mode):
-   - Režim All pro všechny typy prostředků.
-   - Režim "indexovaný", pokud definice zásad kontroluje značky nebo umístění.
-1. Ověřte, že obor prostředku není [vyloučený](../concepts/assignment-structure.md#excluded-scopes) nebo má [výjimku](../concepts/exemption-structure.md).
+   - Režim by měl být `all` pro všechny typy prostředků.
+   - Tento režim by měl být v `indexed` případě, že definice zásad kontroluje značky nebo umístění.
+1. Ujistěte se, že obor prostředku není vyloučený nebo [je](../concepts/exemption-structure.md) [vyloučený](../concepts/assignment-structure.md#excluded-scopes) .
 1. Pokud dodržování předpisů pro přiřazení zásady zobrazuje `0/0` prostředky, neurčily se v rámci oboru přiřazení žádné prostředky, které by bylo možné použít. Ověřte definici zásad i obor přiřazení.
-1. U nekompatibilního prostředku, u kterého se očekává, že bude kompatibilní, ověřte, že [nedodržujete důvody pro nedodržení předpisů](../how-to/determine-non-compliance.md). Porovnání definice s hodnotou vyhodnocené vlastnosti indikuje, proč prostředek nebyl kompatibilní.
+1. U nekompatibilního prostředku, u kterého se očekávalo dodržování předpisů, najdete informace v tématu [určení důvodů nedodržení předpisů](../how-to/determine-non-compliance.md). Porovnání definice s hodnotou vyhodnocené vlastnosti indikuje, proč prostředek nebyl kompatibilní.
    - Pokud je **cílová hodnota** špatná, upravte definici zásady.
    - Pokud je **aktuální hodnota** chybná, ověřte datovou část prostředku prostřednictvím `resources.azure.com` .
-1. Podívejte se na [řešení potíží: vynucování není podle očekávání](#scenario-enforcement-not-as-expected) pro jiné běžné problémy a řešení.
+1. Další běžné problémy a řešení najdete v tématu věnovaném [řešení potíží: vynucování neočekávaným způsobem](#scenario-enforcement-not-as-expected).
 
 Pokud stále máte problém s vámi vytvořenou duplicitou a přizpůsobenou definicí předdefinované zásady nebo vlastní definice, vytvořte lístek podpory v části **vytváření zásad** pro správné směrování problému.
 
@@ -84,24 +86,26 @@ Pokud stále máte problém s vámi vytvořenou duplicitou a přizpůsobenou def
 
 #### <a name="issue"></a>Problém
 
-Prostředek, na kterém se očekává, Azure Policy není a v [protokolu aktivit Azure](../../../azure-monitor/platform/platform-logs-overview.md)neexistuje žádný záznam.
+Prostředek, na který očekáváte, Azure Policy pracovat, není v [protokolu aktivit Azure](../../../azure-monitor/platform/platform-logs-overview.md)žádný záznam.
 
 #### <a name="cause"></a>Příčina
 
-Přiřazení zásad bylo nakonfigurováno pro [EnforcementMode](../concepts/assignment-structure.md#enforcement-mode) _zakázané_. V době, kdy je režim vynucení zakázaný, není účinek zásad vynucený a v protokolu aktivit není žádný záznam.
+Přiřazení zásad bylo nakonfigurováno pro _zakázané_ nastavení [**enforcementMode**](../concepts/assignment-structure.md#enforcement-mode) . I když je **enforcementMode** zakázaný, není uplatnění zásad a v protokolu aktivit není žádný záznam.
 
 #### <a name="resolution"></a>Řešení
 
-Pomocí těchto kroků můžete vyřešit vynucení přiřazení zásad:
+Řešení potíží s vynucováním zásad pomocí následujícího postupu:
 
-1. Nejdřív počkejte odpovídající dobu, než se vyhodnocení dokončí, a výsledky dodržování předpisů budou k dispozici v Azure Portal nebo SDK. Chcete-li zahájit novou zkušební kontrolu pomocí Azure PowerShell nebo REST API, přečtěte si téma [Kontrola vyhodnocení na vyžádání](../how-to/get-compliance-data.md#on-demand-evaluation-scan).
-1. Ověřte, zda jsou parametry přiřazení a rozsah přiřazení správně nastaveny a zda je _povolená_ možnost **enforcementMode** .
+1. Nejdřív počkejte odpovídající dobu, než se vyhodnocení dokončí a výsledky dodržování předpisů budou k dispozici v Azure Portal nebo sadě SDK. 
+
+1. Chcete-li zahájit novou zkušební kontrolu pomocí Azure PowerShell nebo REST API, přečtěte si téma [Kontrola vyhodnocení na vyžádání](../how-to/get-compliance-data.md#on-demand-evaluation-scan).
+1. Ujistěte se, že parametry přiřazení a rozsah přiřazení jsou správně nastaveny a že je _povolená_ možnost **enforcementMode** .
 1. Zkontrolujte [režim definice zásad](../concepts/definition-structure.md#mode):
-   - Režim All pro všechny typy prostředků.
-   - Režim "indexovaný", pokud definice zásad kontroluje značky nebo umístění.
-1. Ověřte, že obor prostředku není [vyloučený](../concepts/assignment-structure.md#excluded-scopes) nebo má [výjimku](../concepts/exemption-structure.md).
-1. Ověřte, že datová část prostředku odpovídá logice zásad. To se dá udělat [zachycením trasování Har](../../../azure-portal/capture-browser-trace.md) nebo kontrolou vlastností šablony ARM.
-1. Podívejte [se na řešení potíží: dodržování předpisů](#scenario-compliance-not-as-expected) pro další běžné problémy a řešení podle očekávání.
+   - Režim by měl být `all` pro všechny typy prostředků.
+   - Tento režim by měl být v `indexed` případě, že definice zásad kontroluje značky nebo umístění.
+1. Ujistěte se, že obor prostředku není vyloučený nebo [je](../concepts/exemption-structure.md) [vyloučený](../concepts/assignment-structure.md#excluded-scopes) .
+1. Ověřte, zda datová část prostředku odpovídá logice zásad. To se dá udělat [zachycením trasování http (Har)](../../../azure-portal/capture-browser-trace.md) nebo kontrolou vlastností šablony pro Azure Resource Manager (šablona ARM).
+1. Další běžné problémy a řešení najdete v tématu věnovaném [řešení potíží: dodržování předpisů neočekávaným způsobem](#scenario-compliance-isnt-as-expected).
 
 Pokud stále máte problém s vámi vytvořenou duplicitou a přizpůsobenou definicí předdefinované zásady nebo vlastní definice, vytvořte lístek podpory v části **vytváření zásad** pro správné směrování problému.
 
@@ -113,7 +117,7 @@ Vytvoření nebo aktualizace prostředku se zamítly.
 
 #### <a name="cause"></a>Příčina
 
-Přiřazení zásady do oboru, ve kterém je nový nebo aktualizovaný prostředek, splňuje kritéria definice zásady s efektem [odepření](../concepts/effects.md#deny) . Zdroje informací o těchto definicích je znemožněno vytvářet ani aktualizovat.
+Přiřazení zásady k oboru nového nebo aktualizovaného prostředku splňuje kritéria definice zásady s efektem [odepření](../concepts/effects.md#deny) . Prostředky, které splňují tyto definice, se nebudou vytvářet ani aktualizovat.
 
 #### <a name="resolution"></a>Řešení
 
@@ -125,40 +129,40 @@ Chybová zpráva z přiřazení zásady odepření zahrnuje ID přiřazení defi
 
 #### <a name="issue"></a>Problém
 
-Azure Policy podporuje řadu funkcí a funkcí šablony Azure Resource Manager (šablony ARM), které jsou k dispozici pouze v definici zásady. Správce prostředků tyto funkce zpracovává jako součást nasazení, ne jako součást definice zásady.
+Azure Policy podporuje řadu funkcí šablon ARM a funkcí, které jsou k dispozici pouze v definici zásady. Správce prostředků tyto funkce zpracovává jako součást nasazení, ne jako součást definice zásady.
 
 #### <a name="cause"></a>Příčina
 
-Použití podporovaných funkcí, jako je například `parameter()` nebo `resourceGroup()` , vede ke zpracování výsledku funkce v době nasazení místo ukončení funkce pro účely definice zásad a Azure Policyho stroje.
+Použití podporovaných funkcí, jako je například `parameter()` nebo `resourceGroup()` , vede ke zpracování výsledku funkce v době nasazení místo toho, aby se povolila funkce pro definici zásad a Azure Policymu modulu.
 
 #### <a name="resolution"></a>Řešení
 
-Chcete-li předat funkci až po součást definice zásady, vydejte celý řetězec `[` tak, aby vlastnost vypadala jako `[[resourceGroup().tags.myTag]` . Řídicí znak způsobí, že Správce prostředků při zpracování šablony zacházet s hodnotou jako s řetězcem. Azure Policy pak funkci umístí do definice zásady, což umožní její dynamické fungování podle očekávání. Další informace najdete v tématu [syntaxe a výrazy v šablonách Azure Resource Manager](../../../azure-resource-manager/templates/template-expressions.md).
+Pokud chcete funkci předat jako součást definice zásady, vydejte celý řetězec `[` tak, aby vlastnost vypadala jako `[[resourceGroup().tags.myTag]` . Řídicí znak způsobí, že Správce prostředků při zpracovávání šablony zacházet s hodnotou jako s řetězcem. Azure Policy pak funkci umístí do definice zásady, která umožňuje její dynamické fungování podle očekávání. Další informace najdete v tématu [syntaxe a výrazy v šablonách Azure Resource Manager](../../../azure-resource-manager/templates/template-expressions.md).
 
 ## <a name="add-on-for-kubernetes-installation-errors"></a>Chyba instalace doplňku pro Kubernetes
 
-### <a name="scenario-install-using-helm-chart-fails-on-password"></a>Scénář: instalace pomocí grafu Helm v hesle se nezdařila
+### <a name="scenario-installation-by-using-a-helm-chart-fails-because-of-a-password-error"></a>Scénář: instalace pomocí grafu Helm se nezdařila kvůli chybě hesla.
 
 #### <a name="issue"></a>Problém
 
-`helm install azure-policy-addon`Příkaz se nezdařil s jednou z následujících zpráv:
+`helm install azure-policy-addon`Příkaz se nezdařil a vrátí jednu z následujících chyb:
 
 - `!: event not found`
 - `Error: failed parsing --set data: key "<key>" has no value (cannot end with ,)`
 
 #### <a name="cause"></a>Příčina
 
-Vygenerované heslo obsahuje čárku ( `,` ), na které se Helm graf.
+Vygenerované heslo obsahuje čárku ( `,` ), na které se rozděluje graf Helm.
 
 #### <a name="resolution"></a>Řešení
 
-`,`Při spuštění `helm install azure-policy-addon` s zpětným lomítkem () zařídí čárku () v hodnotě hesla `\` .
+Když spouštíte `helm install azure-policy-addon` , můžete `,` v hodnotě hesla zadat znak čárky () pomocí zpětného lomítka ( `\` ).
 
-### <a name="scenario-install-using-helm-chart-fails-as-name-already-exists"></a>Scénář: instalace pomocí grafu Helm se nezdařila, protože název už existuje.
+### <a name="scenario-installation-by-using-a-helm-chart-fails-because-the-name-already-exists"></a>Scénář: instalace pomocí grafu Helm se nezdařila, protože tento název už existuje.
 
 #### <a name="issue"></a>Problém
 
-`helm install azure-policy-addon`Příkaz se nezdařil s následující zprávou:
+`helm install azure-policy-addon`Příkaz se nezdařil a vrátí následující chybu:
 
 - `Error: cannot re-use a name that is still in use`
 
@@ -168,29 +172,27 @@ Graf Helm s názvem `azure-policy-addon` již byl nainstalován nebo částečn�
 
 #### <a name="resolution"></a>Řešení
 
-Postupujte podle pokynů k [odebrání Azure Policy pro doplněk Kubernetes](../concepts/policy-for-kubernetes.md#remove-the-add-on)a pak znovu spusťte `helm install azure-policy-addon` příkaz.
+Podle pokynů [odeberte Azure Policy pro doplněk Kubernetes](../concepts/policy-for-kubernetes.md#remove-the-add-on)a pak znovu spusťte `helm install azure-policy-addon` příkaz.
 
 ### <a name="scenario-azure-virtual-machine-user-assigned-identities-are-replaced-by-system-assigned-managed-identities"></a>Scénář: uživatelsky přiřazené identity virtuálních počítačů Azure se nahrazují spravovanými identitami přiřazenými systémem.
 
 #### <a name="issue"></a>Problém
 
-Po přiřazení iniciativ zásad konfigurace hosta k auditování nastavení v počítačích se už nepřiřazují uživatelsky spravované identity přiřazené k počítači. Přiřadí se jenom spravovaná identita přiřazená systémem.
+Po přiřazení iniciativ zásad konfigurace hosta k auditování nastavení v počítači již nejsou přiřazeny uživatelem přiřazené spravované identity, které byly přiřazeny k počítači. Přiřadí se jenom spravovaná identita přiřazená systémem.
 
 #### <a name="cause"></a>Příčina
 
-Definice zásad, které se dřív používaly v definicích konfigurace hosta DeployIfNotExists, zajistí, že se počítači přiřadí identita přiřazená systémem, ale také odebrala přiřazení identit přiřazená uživatelem.
+Definice zásad, které se dřív používaly v definicích konfigurace hosta DeployIfNotExists, musí mít k počítači přiřazenou identitu přiřazenou systémem, ale také odebrali přiřazení identity přiřazená uživatelem.
 
 #### <a name="resolution"></a>Řešení
 
-Definice, které tento problém dříve způsobily, se jeví jako \[ zastaralé \] a nahrazují definicemi zásad, které spravují požadavky bez nutnosti odebrání spravované identity přiřazené uživatelem. Je vyžadován ruční krok. Odstraňte všechna existující přiřazení zásad, která jsou označena jako \[ zastaralá, \] a nahraďte je aktualizovanými iniciativami zásad požadovaných součástí a definicemi zásad, které mají stejný název jako původní.
+Definice, které tento problém dříve způsobily, se jeví jako *[zastaralé]* a jsou nahrazené definicemi zásad, které spravují požadavky bez nutnosti odebírat spravované identity přiřazené uživatelem. Je vyžadován ruční krok. Odstraňte všechna existující přiřazení zásad označená jako *[nepoužívané]* a nahraďte je aktualizovanými definicemi zásad požadovaných součástí a zásad, které mají stejný název jako původní.
 
-Podrobný popis najdete v tomto blogovém příspěvku:
-
-[Důležitá změna vydaná pro zásady auditu konfigurace hosta](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316)
+Podrobný popis najdete v blogovém příspěvku důležité změny, které byly [vydány pro zásady auditu konfigurace hostů](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316).
 
 ## <a name="add-on-for-kubernetes-general-errors"></a>Doplněk pro obecné chyby Kubernetes
 
-### <a name="scenario-add-on-is-unable-to-reach-the-azure-policy-service-endpoint-due-to-egress-restrictions"></a>Scénář: doplněk se nemůže spojit s koncovým bodem služby Azure Policy, protože neplatí omezení pro výstup.
+### <a name="scenario-the-add-on-is-unable-to-reach-the-azure-policy-service-endpoint-because-of-egress-restrictions"></a>Scénář: doplněk se nemůže připojit ke koncovému bodu služby Azure Policy kvůli omezením na odchozí data
 
 #### <a name="issue"></a>Problém
 
@@ -201,16 +203,16 @@ Doplněk se nemůže připojit ke koncovému bodu služby Azure Policy a vrátí
 
 #### <a name="cause"></a>Příčina
 
-K těmto potížím dochází, když dojde k uzamčení odchozího clusteru.
+K tomuto problému dochází, když je výstup clusteru uzamčený.
 
 #### <a name="resolution"></a>Řešení
 
-Ujistěte se, že jsou otevřené domény a porty v následujících článcích:
+Ujistěte se, že jsou otevřené domény a porty uvedené v následujících článcích:
 
-- [Požadovaná odchozí síťová pravidla a plně kvalifikované názvy domény pro clustery AKS](../../../aks/limit-egress-traffic.md#required-outbound-network-rules-and-fqdns-for-aks-clusters)
-- [Instalace doplňku Azure Policy pro Azure ARC s povoleným Kubernetes (Preview)](../concepts/policy-for-kubernetes.md#install-azure-policy-add-on-for-azure-arc-enabled-kubernetes)
+- [Požadovaná odchozí síťová pravidla a plně kvalifikované názvy domény (FQDN) pro clustery AKS](../../../aks/limit-egress-traffic.md#required-outbound-network-rules-and-fqdns-for-aks-clusters)
+- [Instalace doplňku Azure Policy pro Kubernetes s podporou ARC Azure (Preview)](../concepts/policy-for-kubernetes.md#install-azure-policy-add-on-for-azure-arc-enabled-kubernetes)
 
-### <a name="scenario-add-on-is-unable-to-reach-the-azure-policy-service-endpoint-due-to-aad-pod-identity-configuration"></a>Scénář: doplněk se nemůže spojit s koncovým bodem služby Azure Policy z důvodu konfigurace AAD-pod-identity.
+### <a name="scenario-the-add-on-is-unable-to-reach-the-azure-policy-service-endpoint-because-of-the-aad-pod-identity-configuration"></a>Scénář: doplněk se nemůže spojit s koncovým bodem služby Azure Policy, protože konfigurace AAD-pod-identity
 
 #### <a name="issue"></a>Problém
 
@@ -221,18 +223,18 @@ Doplněk se nemůže připojit ke koncovému bodu služby Azure Policy a vrátí
 
 #### <a name="cause"></a>Příčina
 
-K této chybě dochází, když je v clusteru nainstalovaný příkaz _Add-pod-identity_ a _Kube – systémová_ lusky nejsou vyloučené v _AAD-pod-identity_.
+K této chybě dochází, pokud je v clusteru nainstalovaný příkaz _Add-pod-identity_ a _Kube – systémová_ lusky nejsou vyloučené v _AAD-pod-identity_.
 
-Lusky spravované identity (NMI) v poli _AAD-pod-identity_ mění uzly softwaru iptables tak, aby zachytil volání koncového bodu metadat instance Azure. Tato instalace znamená, že všechny požadavky na koncový bod metadat jsou zachyceny NMI i v případě, že pole pod nepoužívá _identitu AAD-pod-identity_.
-**AzurePodIdentityException** CRD je možné nakonfigurovat tak, aby informovala _AAD-pod-identity_ , že všechny požadavky na koncový bod metadat pocházející z objektu pod, který odpovídá popiskům definovaným v CRD, by měly být proxy bez jakéhokoli zpracování v NMI.
+Lusky NMI (uzel komponenty _AAD-pod-identity_ Managed identity) upraví uzly softwaru iptables tak, aby zachytil volání koncového bodu metadat instance Azure. Tato instalace znamená, že všechny žádosti, které se provedou na koncový bod metadat, jsou zachyceny NMI, a to i v případě, že bod pod nepoužívá _identitu AAD-pod-identity_.
+*AzurePodIdentityException* CUSTOMRESOURCEDEFINITION (CRD) je možné nakonfigurovat tak, aby informovala _AAD-pod-identity_ , že všechny požadavky na koncový bod metadat, které pocházejí z pod, odpovídají popiskům definovaným v CRD by měly být proxy bez jakéhokoli zpracování v NMI.
 
 #### <a name="resolution"></a>Řešení
 
-Pomocí konfigurace AzurePodIdentityException CRD vylučte systém lusky pomocí `kubernetes.azure.com/managedby: aks` popisku v oboru názvů _Kube-System_ v _AAD-pod-identity_ . 
+Pomocí konfigurace AzurePodIdentityException CRD vylučte systémové lusky, které mají `kubernetes.azure.com/managedby: aks` popisek v oboru názvů _Kube-System_ v _AAD-pod-identity_ . 
 
-Další informace najdete v tématu [zakázání identity AAD pod u konkrétního typu pod/aplikací](https://azure.github.io/aad-pod-identity/docs/configure/application_exception).
+Další informace najdete v tématu [zakázání identity Azure Active Directory (Azure AD) pod identitou pro konkrétní pod/aplikaci](https://azure.github.io/aad-pod-identity/docs/configure/application_exception).
 
-Chcete-li konfigurovat výjimku, přečtěte si tento příklad:
+Chcete-li konfigurovat výjimku, postupujte podle tohoto příkladu:
 
 ```yaml
 apiVersion: "aadpodidentity.k8s.io/v1"
@@ -261,26 +263,20 @@ spec:
 
 Doplněk se může připojit ke koncovému bodu služby Azure Policy, ale v protokolech doplňku se zobrazí jedna z následujících chyb:
 
-```
-The resource provider 'Microsoft.PolicyInsights' is not registered in subscription '{subId}'. See
-https://aka.ms/policy-register-subscription for how to register subscriptions.
-```
+- `The resource provider 'Microsoft.PolicyInsights' is not registered in subscription '{subId}'. See
+https://aka.ms/policy-register-subscription for how to register subscriptions.`
 
-nebo
-
-```
-policyinsightsdataplane.BaseClient#CheckDataPolicyCompliance: Failure responding to request:
+- `policyinsightsdataplane.BaseClient#CheckDataPolicyCompliance: Failure responding to request:
 StatusCode=500 -- Original Error: autorest/azure: Service returned an error. Status=500
-Code="InternalServerError" Message="Encountered an internal server error."
-```
+Code="InternalServerError" Message="Encountered an internal server error.`
 
 #### <a name="cause"></a>Příčina
 
-`Microsoft.PolicyInsights`Poskytovatel prostředků není zaregistrován a musí být zaregistrován pro doplněk, aby získal definice zásad a vracel data o dodržování předpisů.
+Poskytovatel prostředků Microsoft. PolicyInsights není zaregistrován. Aby mohl doplněk získat definice zásad a vracet data o dodržování předpisů, musí být zaregistrován.
 
 #### <a name="resolution"></a>Řešení
 
-Zaregistrujte `Microsoft.PolicyInsights` poskytovatele prostředků v rámci předplatného clusteru. Pokyny najdete v tématu [registrace poskytovatele prostředků](../../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider).
+Zaregistrujte poskytovatele prostředků Microsoft. PolicyInsights v rámci předplatného clusteru. Pokyny najdete v tématu [registrace poskytovatele prostředků](../../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider).
 
 ### <a name="scenario-the-subscription-is-disabled"></a>Scénář: předplatné je zakázané.
 
@@ -288,9 +284,7 @@ Zaregistrujte `Microsoft.PolicyInsights` poskytovatele prostředků v rámci př
 
 Doplněk se může připojit ke koncovému bodu služby Azure Policy, ale zobrazí se následující chyba:
 
-```
-The subscription '{subId}' has been disabled for azure data-plane policy. Please contact support.
-```
+`The subscription '{subId}' has been disabled for azure data-plane policy. Please contact support.`
 
 #### <a name="cause"></a>Příčina
 
@@ -298,12 +292,12 @@ Tato chyba znamená, že předplatné bylo zjištěno problematické a přidal s
 
 #### <a name="resolution"></a>Řešení
 
-Obraťte se na tým funkcí, `azuredg@microsoft.com` aby mohl tento problém prozkoumat a vyřešit.
+Pokud chcete tento problém prozkoumat a vyřešit, [obraťte se na tým funkcí](mailto:azuredg@microsoft.com).
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
+Pokud váš problém není uvedený v tomto článku nebo ho nemůžete vyřešit, Získejte podporu na jednom z následujících kanálů:
 
 - Získejte odpovědi od odborníků prostřednictvím [Microsoft Q&A](/answers/topics/azure-policy.html).
-- Spojte se s nástrojem [@AzureSupport](https://twitter.com/azuresupport) – oficiální Microsoft Azure účet pro zlepšení zkušeností zákazníků tím, že propojíte komunitu Azure s správnými zdroji: odpověďmi, podporou a odborníky.
-- Pokud potřebujete další pomoc, můžete zasouborovat incident podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**.
+- Připojte se pomocí [@AzureSupport](https://twitter.com/azuresupport) . Tento oficiální Microsoft Azure prostředek na Twitteru pomáhá zlepšit uživatelské prostředí tím, že propojuje komunitu Azure se správnými odpověďmi, podporou a odborníky.
+- Pokud stále potřebujete pomoc, navštivte [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **Odeslat žádost o podporu**.

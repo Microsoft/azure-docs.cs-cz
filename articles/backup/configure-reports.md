@@ -3,14 +3,14 @@ title: Konfigurace sestav Azure Backup
 description: Konfigurace a zobrazení sestav pro Azure Backup pomocí Log Analytics a sešitů Azure
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 2565fa1183635c10e45b247f723788b6fe371c14
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 39d1aa17c5e92eccd34013738937e49890109561
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325243"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897271"
 ---
-# <a name="configure-azure-backup-reports"></a>Konfigurace sestav Azure Backup
+# <a name="configure-azure-backup-reports-preview"></a>Konfigurace sestav Azure Backup (Preview)
 
 Běžným požadavkem pro správce zálohování je získat přehled o zálohách na základě dat, která jsou delší dobu. Případy použití takového řešení zahrnují:
 
@@ -73,7 +73,7 @@ Kliknutím na tento odkaz otevřete sešit zálohované sestavy.
 
 Sestava obsahuje různé karty:
 
-##### <a name="summary"></a>Shrnutí
+##### <a name="summary"></a>Souhrn
 
 Tato karta vám umožní získat podrobný přehled o vaší nemovitosti k zálohování. Můžete získat rychlý přehled o celkovém počtu zálohovaných položek, celkovém využitém cloudovém úložišti, počtu chráněných instancí a četnosti úspěšnosti úlohy na jeden typ pracovního vytížení. Podrobnější informace o konkrétním typu artefaktu zálohování získáte, když přejdete na příslušné karty.
 

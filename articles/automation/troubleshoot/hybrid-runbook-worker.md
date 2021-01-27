@@ -2,19 +2,15 @@
 title: Řešení potíží s Azure Automation Hybrid Runbook Worker
 description: V tomto článku se dozvíte, jak řešit problémy, které vznikají Azure Automation procesy Hybrid Runbook Worker.
 services: automation
-ms.service: automation
 ms.subservice: ''
-author: mgoedtel
-ms.author: magoedte
 ms.date: 11/25/2019
-ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 1386dd820b10b63862ddab38c441f251bea1d83d
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.topic: troubleshooting
+ms.openlocfilehash: 214501c447632232dc00b61643ea21083bd0e4ac
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428397"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896490"
 ---
 # <a name="troubleshoot-hybrid-runbook-worker-issues"></a>Řešení problémů s funkcí Hybrid Runbook Worker
 
@@ -46,7 +42,7 @@ Níže jsou uvedené možné příčiny:
 
 #### <a name="resolution"></a>Řešení
 
-Ověřte, zda má počítač odchozí přístup k ** \* . Azure-Automation.NET** na portu 443.
+Ověřte, zda má počítač odchozí přístup k **\* . Azure-Automation.NET** na portu 443.
 
 Počítače, na kterých běží Hybrid Runbook Worker, by měly splňovat minimální požadavky na hardware před tím, než se pracovní proces nakonfiguruje na hostování této funkce. Runbooky a procesy na pozadí, které používají, by mohly způsobit, že se systém přeužije a dojde ke zpoždění nebo vypršení platnosti úlohy Runbooku.
 
@@ -58,7 +54,7 @@ V protokolu událostí **Microsoft-SMA** vyhledejte odpovídající událost s p
 
 #### <a name="issue"></a>Problém
 
-Hybrid Runbook Worker přijímá událost 15011, která značí, že výsledek dotazu není platný. Následující chyba se zobrazí, když se pracovní proces pokusí otevřít připojení k [serveru signalizace](/aspnet/core/signalr/introduction?view=aspnetcore-3.1).
+Hybrid Runbook Worker přijímá událost 15011, která značí, že výsledek dotazu není platný. Následující chyba se zobrazí, když se pracovní proces pokusí otevřít připojení k [serveru signalizace](/aspnet/core/signalr/introduction).
 
 ```error
 [AccountId={c7d22bd3-47b2-4144-bf88-97940102f6ca}]
@@ -194,7 +190,7 @@ Pokud agent neběží, spusťte následující příkaz, který službu spustí:
 
 ### <a name="scenario-the-specified-class-doesnt-exist"></a><a name="class-does-not-exist"></a>Scénář: Zadaná třída neexistuje.
 
-Pokud se v/var/opt/Microsoft/omsconfig/omsconfig.log zobrazí chybová `The specified class does not exist..` zpráva **/var/opt/microsoft/omsconfig/omsconfig.log**, je nutné aktualizovat agenta Log Analytics pro Linux. Spusťte následující příkaz pro přeinstalaci agenta.
+Pokud se v/var/opt/Microsoft/omsconfig/omsconfig.log zobrazí chybová `The specified class does not exist..` zpráva , je nutné aktualizovat agenta Log Analytics pro Linux. Spusťte následující příkaz pro přeinstalaci agenta.
 
 ```bash
 wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <WorkspaceID> -s <WorkspaceKey>
@@ -226,7 +222,7 @@ V protokolu událostí **Application and Services Logs\Operations Manager** uvid
 
 #### <a name="cause"></a>Příčina
 
-Důvodem může být to, že proxy server nebo brána firewall sítě blokuje komunikaci s Microsoft Azure. Ověřte, zda má počítač odchozí přístup k ** \* . Azure-Automation.NET** na portu 443.
+Důvodem může být to, že proxy server nebo brána firewall sítě blokuje komunikaci s Microsoft Azure. Ověřte, zda má počítač odchozí přístup k **\* . Azure-Automation.NET** na portu 443.
 
 #### <a name="resolution"></a>Řešení
 
@@ -238,7 +234,7 @@ Hybridní pracovní procesy odesílají [výstup a zprávy Runbooku](../automati
 
 #### <a name="issue"></a>Problém
 
-Skript spuštěný ve Windows Hybrid Runbook Worker se nemůže připojit podle očekávání, aby Microsoft 365 v izolovaném prostoru (sandbox) Orchestrator. Skript používá pro připojení [příkaz Connect-MsolService](/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) . 
+Skript spuštěný ve Windows Hybrid Runbook Worker se nemůže připojit podle očekávání, aby Microsoft 365 v izolovaném prostoru (sandbox) Orchestrator. Skript používá pro připojení [příkaz Connect-MsolService](/powershell/module/msonline/connect-msolservice) . 
 
 Pokud upravíte **Orchestrator.Sandbox.exe.config** nastavíte proxy server a seznam pro obejití, izolovaný prostor (sandbox) se stále nepřipojí správně. **Powershell_ise.exe.config** soubor se stejným nastavením proxy serveru a seznamu obcházení se zdá fungovat podle očekávání. Protokoly Service Management Automation (SMA) a protokoly prostředí PowerShell neposkytují žádné informace týkající se proxy serveru.
 
@@ -250,7 +246,7 @@ Připojení k Active Directory Federation Services (AD FS) (AD FS) na serveru ne
 
 Problém pro izolovaný prostor pro Orchestrator můžete vyřešit migrací skriptu tak, aby používal moduly Azure Active Directory místo modulu MSOnline pro rutiny prostředí PowerShell. Další informace najdete v tématu [migrace z nástroje Orchestrator na Azure Automation (beta)](../automation-orchestrator-migration.md).
 
-Pokud chcete i nadále používat rutiny modulu MSOnline, změňte skript tak, aby používal [příkaz Invoke-Command](/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7). Zadejte hodnoty `ComputerName` `Credential` parametrů a. 
+Pokud chcete i nadále používat rutiny modulu MSOnline, změňte skript tak, aby používal [příkaz Invoke-Command](/powershell/module/microsoft.powershell.core/invoke-command). Zadejte hodnoty `ComputerName` `Credential` parametrů a. 
 
 ```powershell
 $Credential = Get-AutomationPSCredential -Name MyProxyAccessibleCredential

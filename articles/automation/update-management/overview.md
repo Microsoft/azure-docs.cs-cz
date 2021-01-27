@@ -3,14 +3,14 @@ title: Přehled Azure Automation Update Management
 description: Tento článek poskytuje přehled funkce Update Management, která implementuje aktualizace pro počítače se systémem Windows a Linux.
 services: automation
 ms.subservice: update-management
-ms.date: 01/13/2021
+ms.date: 01/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: d66d4d32c788317d8b0781f9f24120fbce2f6f8f
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 718e812a8193797ad350fa61444bb05fe5a4b724
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185610"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896897"
 ---
 # <a name="update-management-overview"></a>Přehled Update Managementu
 
@@ -167,7 +167,7 @@ Další informace o aktualizacích sad Management Pack najdete v tématu [připo
 
 Následující tabulka popisuje připojené zdroje, které Update Management podporuje:
 
-| Připojený zdroj | Podporováno | Description |
+| Připojený zdroj | Podporováno | Popis |
 | --- | --- | --- |
 | Agenti systému Windows |Yes |Update Management shromažďuje informace o aktualizacích systému z agentů Windows a potom spustí instalaci požadovaných aktualizací. |
 | Agenti systému Linux |Yes |Update Management shromažďuje informace o aktualizacích systému z agentů Linux a potom spustí instalaci požadovaných aktualizací v podporovaných distribucích. |
@@ -185,16 +185,7 @@ Průměrné využití dat pomocí Azure Monitor protokolů pro počítač použ�
 
 ## <a name="network-planning"></a><a name="ports"></a>Plánování sítě
 
-Následující adresy jsou vyžadovány konkrétně pro Update Management. Komunikace s těmito adresami probíhá přes port 443.
-
-|Veřejný partnerský vztah Azure  |Azure Government  |
-|---------|---------|
-|`*.ods.opinsights.azure.com`    | `*.ods.opinsights.azure.us`        |
-|`*.oms.opinsights.azure.com`     | `*.oms.opinsights.azure.us`        |
-|`*.blob.core.windows.net` | `*.blob.core.usgovcloudapi.net`|
-|`*.azure-automation.net` | `*.azure-automation.us`|
-
-Když vytvoříte pravidla zabezpečení skupiny sítě nebo nakonfigurujete Azure Firewall, aby povolovala přenosy do služby Automation Service a do pracovního prostoru Log Analytics, použijte [tag Service](../../virtual-network/service-tags-overview.md#available-service-tags) **GuestAndHybridManagement** a **AzureMonitor**. Tím se zjednoduší průběžná správa pravidel zabezpečení sítě. Pokud se chcete připojit ke službě Automation z vašich virtuálních počítačů Azure bezpečně a soukromě, přečtěte si téma [použití privátního odkazu Azure](../how-to/private-link-security.md). Pokud chcete získat aktuální informace o značce služby a rozsahu, které mají být zahrnuty v rámci místních konfigurací brány firewall, přečtěte si téma [Stažení souborů JSON](../../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files).
+Podrobné informace o portech, adresách URL a dalších podrobných informacích o sítích požadovaných pro Update Management najdete v [Azure Automation konfiguraci sítě](../automation-network-configuration.md#hybrid-runbook-worker-and-state-configuration) .
 
 U počítačů s Windows musíte taky u všech koncových bodů vyžadovaných nástrojem web Windows Update umožňovat provoz. Aktualizovaný seznam požadovaných koncových bodů najdete v [problémech souvisejících s HTTP/proxy serverem](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy). Pokud máte místní [web Windows Update Server](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment), musíte taky na serveru, který určíte v [klíči služby WSUS](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry), povolený provoz.
 
@@ -216,7 +207,7 @@ Následující tabulka definuje klasifikace, které Update Management podporuje 
 |Balíčky funkcí     | Nové funkce produktu distribuované mimo vydání produktu.        |
 |Aktualizace Service Pack     | Kumulativní sada oprav hotfix, které se aplikují na aplikaci.        |
 |Aktualizace definic     | Aktualizace virů nebo jiných definičních souborů.        |
-|nástroje     | Nástroj nebo funkce, které pomáhají dokončit jednu nebo více úloh.        |
+|Nástroje     | Nástroj nebo funkce, které pomáhají dokončit jednu nebo více úloh.        |
 |Aktualizace     | Aktualizace aplikace nebo souboru, který je aktuálně nainstalován.        |
 
 Následující tabulka definuje podporované klasifikace aktualizací pro Linux.
@@ -227,11 +218,14 @@ Následující tabulka definuje podporované klasifikace aktualizací pro Linux.
 |Další aktualizace     | Všechny ostatní aktualizace, které nejsou v podstatě důležité nebo které nejsou aktualizacemi zabezpečení.        |
 
 >[!NOTE]
->Klasifikace aktualizací pro počítače se systémem Linux je k dispozici pouze při použití v podporovaných oblastech veřejného cloudu Azure. Při použití Update Management v následujících národních oblastech cloudu:
+>Klasifikace aktualizací pro počítače se systémem Linux je k dispozici pouze při použití v podporovaných oblastech veřejného cloudu Azure. Při použití Update Management v následujících národních cloudových oblastech není k dispozici žádná klasifikace aktualizací pro Linux:
+>
 >* Azure pro vládu USA
 >* 21Vianet v Číně
 >
-> neexistují žádné klasifikace aktualizací pro Linux a jsou hlášeny v kategorii **ostatní aktualizace** . Update Management používá data publikovaná v podporovaných distribucích, konkrétně v jejich vydaných [oválech](https://oval.mitre.org/) (otevřené soubory zabezpečení a posouzení). Vzhledem k tomu, že přístup k Internetu je z těchto národních cloudů omezený, Update Management nemůže získat přístup k těmto souborům a využívat je.
+> Místo klasifikace se aktualizace nahlásí v kategorii **ostatní aktualizace** .
+>
+> Update Management používá data publikovaná v podporovaných distribucích, konkrétně v jejich vydaných [oválech](https://oval.mitre.org/) (otevřené soubory zabezpečení a posouzení). Vzhledem k tomu, že přístup k Internetu je z těchto národních cloudů omezený, Update Management nemá přístup k souborům.
 
 V případě systému Linux může Update Management rozlišovat mezi důležitými aktualizacemi a aktualizacemi zabezpečení v cloudu pod položkou **zabezpečení** klasifikace a **ostatními** a současně zobrazuje data vyhodnocení v důsledku rozšíření dat v cloudu. Pro opravy Update Management spoléhá na data klasifikace, která jsou k dispozici v počítači. Na rozdíl od jiných distribucí nemá CentOS tyto informace dostupné ve verzi RTM. Pokud máte počítače CentOS nakonfigurované tak, aby vracely data zabezpečení pro následující příkaz, Update Management se může opravit na základě klasifikací.
 

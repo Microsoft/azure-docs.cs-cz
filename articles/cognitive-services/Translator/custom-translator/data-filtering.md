@@ -2,19 +2,19 @@
 title: Filtrování dat – vlastní Překladatel
 titleSuffix: Azure Cognitive Services
 description: Když odesíláte dokumenty, které se mají použít pro školení vlastního systému, provedou dokumenty řadu kroků zpracování a filtrování, které se připraví na školení.
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 08/17/2020
-ms.author: swmachan
+ms.author: lajanuar
 ms.topic: conceptual
-ms.openlocfilehash: 1076a4fe3a460fa07e061e9ec0ec41b088ec7eca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 53dea20e356f735a521dec8c22edf8cb2aa7122d
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88507259"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895862"
 ---
 # <a name="data-filtering"></a>Filtrování dat
 

@@ -1,5 +1,5 @@
 ---
-title: Streamování videosouborů pomocí služby Azure Media Services – .NET | Microsoft Docs
+title: Streamování videosouborů pomocí Azure Media Services – .NET
 description: Postupujte podle kroků v tomto kurzu a pomocí .NET vytvořte nový účet Azure Media Services, zakódovat soubor a Streamujte ho do Azure Media Player.
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 530089b9c6b9544201b0f07368cac3d1a695a4f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc6b240a2d97e0b4aa313f858b3965f241dd0b08
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91268685"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898185"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---net"></a>Kurz: kódování vzdáleného souboru na základě adresy URL a streamu pro video – .NET
 
@@ -54,7 +54,7 @@ Ve staženém projektu otevřete [appsettings.js](https://github.com/Azure-Sampl
 Tato ukázka provede následující akce:
 
 1. Vytvoří **transformaci** (nejprve zkontroluje, zda zadaná transformace existuje). 
-2. Vytvoří výstupní **Asset** , který se používá jako výstup **úlohy**kódování.
+2. Vytvoří výstupní **Asset** , který se používá jako výstup **úlohy** kódování.
 3. Vytvoří vstup **úlohy**, který je založen na adrese URL https.
 4. Odešle **úlohu** kódování pomocí vstupu a výstupu, který byl vytvořen dříve.
 5. Zkontroluje stav úlohy.

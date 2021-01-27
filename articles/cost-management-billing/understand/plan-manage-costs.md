@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: c640478170049bd06e11f7f89b1e213b7b305642
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
-ms.translationtype: HT
+ms.openlocfilehash: 210f7daa9305f2fb343dfae050354264e2fd823e
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032809"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898558"
 ---
 # <a name="plan-to-manage-azure-costs"></a>Plánování správy nákladů na Azure
 
@@ -125,7 +125,7 @@ Absolvujte výukový kurz [Optimalizace nákladů na základě doporučení](../
 
 ## <a name="integrate-with-billing-and-consumption-apis"></a>Integrace s využitím rozhraní API pro fakturaci a spotřebu
 
-Pomocí rozhraní API pro [fakturaci](/rest/api/billing/) a [spotřebu](/rest/api/consumption/) Azure můžete fakturační údaje a data o nákladech získat programově. Využití, které je vám účtováno, získáte zkombinováním rozhraní RateCard API a Usage API. Další informace najdete v článku [Získání přehledu o spotřebě prostředků Microsoft Azure](../manage/usage-rate-card-overview.md).
+Pomocí rozhraní API pro [fakturaci](/rest/api/billing/) a [spotřebu](/rest/api/consumption/) Azure můžete fakturační údaje a data o nákladech získat programově. Využití, které je vám účtováno, získáte zkombinováním rozhraní RateCard API a Usage API. Další informace najdete v článku [Získání přehledu o spotřebě prostředků Microsoft Azure](../manage/consumption-api-overview.md#usage-details-api).
 
 ## <a name="additional-resources-and-special-cases"></a><a name="other-offers"></a> Další prostředky a speciální případy
 

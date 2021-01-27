@@ -3,23 +3,23 @@ title: Reference k překladateli V 3.0
 titleSuffix: Azure Cognitive Services
 description: Referenční dokumentace pro překladatele V 3.0 Verze 3 překladatele nabízí moderní webové rozhraní API založené na formátu JSON.
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 8/11/2020
-ms.author: swmachan
-ms.openlocfilehash: f8175cbd469c8a3933526d01f433e1def714783b
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.author: lajanuar
+ms.openlocfilehash: 021a65ba69b9d1909df4a86d92b660c0c1033a3b
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024496"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895454"
 ---
 # <a name="translator-v30"></a>Překladatel v 3.0
 
-## <a name="whats-new"></a>Co je nového?
+## <a name="whats-new"></a>Co je nového
 
 Verze 3 překladatele nabízí moderní webové rozhraní API založené na formátu JSON. Zlepšuje použitelnost a výkon tím, že konsoliduje stávající funkce do menšího počtu operací a poskytuje nové funkce.
 
@@ -39,9 +39,9 @@ Microsoft Translator se obsluhuje z více umístění datových center. V souča
 
 Žádosti překladače Microsoftu jsou ve většině případů zpracovávány v datacentru, které je nejblíže místu, kde požadavek vznikl. V případě selhání datacentra se může žádost směrovat mimo zeměpisnou oblast Azure.
 
-Pokud chcete vynutit zpracování žádosti konkrétními geografickými oblastmi Azure, změňte globální koncový bod v požadavku rozhraní API na požadovaný oblastní koncový bod:
+Pokud chcete vynutit zpracování žádosti konkrétními geografickými oblastmi Azure, změňte globální koncový bod v požadavku rozhraní API na požadovaný geografický koncový bod:
 
-|Popis|Geografické Azure|Základní adresa URL|
+|Popis|Geografické Azure|Základní adresa URL (zeměpisný koncový bod)|
 |:--|:--|:--|
 |Azure|Globální (mimo oblast)|   api.cognitive.microsofttranslator.com|
 |Azure|USA|   api-nam.cognitive.microsofttranslator.com|

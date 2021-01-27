@@ -11,12 +11,12 @@ ms.custom: references_regions
 ms.topic: how-to
 ms.date: 12/07/2020
 ms.author: juliako
-ms.openlocfilehash: 1ee179efbe936c742f1eb51b998c10f9349c14fb
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 29dbdb896d1a6063fec277afa33327c84cb2f0cd
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763383"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880923"
 ---
 # <a name="use-the-animated-character-detection-preview-with-portal-and-api"></a>Použití animovaného rozpoznávání znaků (Preview) s portálem a rozhraním API 
 
@@ -35,7 +35,7 @@ Pokud vlastníte Video Indexer placený účet, musíte nejdřív připojit úč
 > [!NOTE]
 > Oba účty musí být ve stejné oblasti. Integrace Custom Vision v současnosti není v oblasti Japonsko podporována.
 
-Placené účty, které mají přístup ke svému účtu Custom Vision, můžou v něm vidět modely a označené obrázky. Přečtěte si další informace o [vylepšení klasifikátoru v Custom Vision](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier). 
+Placené účty, které mají přístup ke svému účtu Custom Vision, můžou v něm vidět modely a označené obrázky. Přečtěte si další informace o [vylepšení klasifikátoru v Custom Vision](../../cognitive-services/custom-vision-service/getting-started-improving-your-classifier.md). 
 
 Všimněte si, že školení modelu by se mělo provádět jenom prostřednictvím Video Indexer, a ne prostřednictvím Custom Vision webu. 
 
@@ -108,7 +108,7 @@ Před označením a školením modelu budou všechny animované znaky pojmenová
 1. Jenom placené účty: Projděte si skupiny v Custom Vision 
 
     > [!NOTE]
-    > Placené účty, které mají přístup ke svému účtu Custom Vision, můžou v něm vidět modely a označené obrázky. Přečtěte si další informace o [vylepšení klasifikátoru v Custom Vision](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier). Je důležité si uvědomit, že školení modelu by se mělo provádět jenom prostřednictvím Video Indexer (jak je popsáno v tomto topid), nikoli prostřednictvím Custom Vision webu. 
+    > Placené účty, které mají přístup ke svému účtu Custom Vision, můžou v něm vidět modely a označené obrázky. Přečtěte si další informace o [vylepšení klasifikátoru v Custom Vision](../../cognitive-services/custom-vision-service/getting-started-improving-your-classifier.md). Je důležité si uvědomit, že školení modelu by se mělo provádět jenom prostřednictvím Video Indexer (jak je popsáno v tomto topid), nikoli prostřednictvím Custom Vision webu. 
 
     1. Na stránce **vlastní modely** v video indexer klikněte na kartu **animované znaky** . 
     1. Klikněte na tlačítko Upravit pro model, na kterém pracujete, abyste ho mohli spravovat v Custom Vision. 

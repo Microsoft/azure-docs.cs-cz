@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: ramamill
-ms.openlocfilehash: 90862a74e5fb6521a95292d50fc5cc11bd0082b5
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 8c90427e2dd4ecf23cb803c4f75dbee34c38f992
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547652"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898575"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>O službě mobility pro virtuální počítače VMware a fyzické servery
 
@@ -52,7 +52,7 @@ Během nabízené instalace služby mobility se provádí následující kroky:
    - Pokud jsou splněné všechny požadavky, spustí se instalace.
    - Instalace se nezdařila, pokud není splněna jedna nebo více [požadavků](vmware-physical-azure-support-matrix.md) .
 1. V rámci instalace agenta se nainstalují poskytovatel služba Stínová kopie svazku (VSS) pro Azure Site Recovery. Zprostředkovatel služby Stínová kopie svazku se používá ke generování bodů obnovení konzistentních vzhledem k aplikacím. Pokud instalace poskytovatele služby VSS neproběhne úspěšně, tento krok se přeskočí a instalace agenta bude pokračovat.
-1. Pokud je instalace agenta úspěšná, ale instalace poskytovatele služby VSS selže, bude stav úlohy označen jako **varování** . To nemá vliv na generování bodu obnovení konzistentního vzhledem k chybě.
+1. Pokud je instalace agenta úspěšná, ale instalace poskytovatele služby VSS selže, bude stav úlohy označen jako **varování**. To nemá vliv na generování bodu obnovení konzistentního vzhledem k chybě.
 
     - Pokud chcete vygenerovat body obnovení konzistentní vzhledem k aplikacím, přečtěte si [naše doprovodné](vmware-physical-manage-mobility-service.md#install-site-recovery-vss-provider-on-source-machine) materiály, abyste dokončili ruční instalaci poskytovatele služby VSS Site Recovery.
     - Pokud nechcete generovat body obnovení konzistentní vzhledem k aplikacím, [upravte zásady replikace](vmware-azure-set-up-replication.md#create-a-policy) tak, aby byly vypnuty body obnovení konzistentní vzhledem k aplikacím.
@@ -78,22 +78,22 @@ Během nabízené instalace služby mobility se provádí následující kroky:
 > Nepoužívejte metodu instalace uživatelského rozhraní, pokud provádíte replikaci virtuálního počítače infrastruktury Azure jako služby (IaaS) z jedné oblasti Azure do jiné. Použijte instalaci [příkazového řádku](#install-the-mobility-service-using-command-prompt) .
 
 1. Zkopírujte instalační soubor do počítače a spusťte ho.
-1. V **Možnosti instalace** vyberte **nainstalovat službu mobility** .
-1. Zvolte umístění instalace a vyberte **nainstalovat** .
+1. V **Možnosti instalace** vyberte **nainstalovat službu mobility**.
+1. Zvolte umístění instalace a vyberte **nainstalovat**.
 
     :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility1.png" alt-text="Stránka možností instalace služby mobility":::
 
-1. Sledujte instalaci v **průběhu instalace** . Po dokončení instalace vyberte **pokračovat ke konfiguraci** pro registraci služby na konfiguračním serveru.
+1. Sledujte instalaci v **průběhu instalace**. Po dokončení instalace vyberte **pokračovat ke konfiguraci** pro registraci služby na konfiguračním serveru.
 
-    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility3.png" alt-text="Stránka možností instalace služby mobility":::
+    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility3.png" alt-text="Snímek obrazovky, který zobrazuje průběh instalace a tlačítko aktivní pokračovat ke konfiguraci po dokončení instalace.":::
 
 1. V části **Podrobnosti konfiguračního serveru** zadejte IP adresu a heslo, které jste nakonfigurovali.
 
-    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility4.png" alt-text="Stránka možností instalace služby mobility":::
+    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility4.png" alt-text="Registrační stránka služby mobility":::
 
 1. Kliknutím na **Registrovat** dokončete registraci.
 
-    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility5.png" alt-text="Stránka možností instalace služby mobility":::
+    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility5.png" alt-text="Finální stránka registrace služby mobility":::
 
 ## <a name="install-the-mobility-service-using-command-prompt"></a>Instalace služby mobility pomocí příkazového řádku
 
@@ -104,7 +104,7 @@ Během nabízené instalace služby mobility se provádí následující kroky:
 
 ### <a name="windows-machine"></a>Počítač s Windows
 
-- Z příkazového řádku spusťte následující příkazy ke zkopírování instalačního programu do místní složky (například _C:\Temp_ ) na serveru, který chcete chránit. Nahraďte název souboru instalačního programu skutečným názvem souboru.
+- Z příkazového řádku spusťte následující příkazy ke zkopírování instalačního programu do místní složky (například _C:\Temp_) na serveru, který chcete chránit. Nahraďte název souboru instalačního programu skutečným názvem souboru.
 
   ```cmd
   cd C:\Temp
@@ -134,7 +134,7 @@ Syntax | `UnifiedAgent.exe /Role \<MS/MT> /InstallLocation \<Install Location> /
 Instalační protokoly | `%ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log`
 `/Role` | Povinný parametr instalace Určuje, jestli má být nainstalovaná služba mobility (MS) nebo hlavní cíl (MT).
 `/InstallLocation`| Volitelný parametr. Určuje umístění instalace služby mobility (všechny složky).
-`/Platform` | Povinné. Určuje platformu, na které je nainstalovaná služba mobility: <br/> **VMware** pro virtuální počítače VMware nebo fyzické servery. <br/> **Azure** pro virtuální počítače Azure.<br/><br/> Pokud pracujete s virtuálními počítači Azure jako s fyzickými počítači, zadejte **VMware** .
+`/Platform` | Povinné. Určuje platformu, na které je nainstalovaná služba mobility: <br/> **VMware** pro virtuální počítače VMware nebo fyzické servery. <br/> **Azure** pro virtuální počítače Azure.<br/><br/> Pokud pracujete s virtuálními počítači Azure jako s fyzickými počítači, zadejte **VMware**.
 `/Silent`| Nepovinný parametr. Určuje, jestli se má spustit instalační program v tichém režimu.
 
 #### <a name="registration-settings"></a>Nastavení registrace
@@ -187,12 +187,12 @@ Syntax | `cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh -i \<CS
 
 ## <a name="azure-virtual-machine-agent"></a>Agent virtuálního počítače Azure
 
-- **Virtuální počítače s Windows** : od verze 9.7.0.0 služby mobility se [Agent virtuálního počítače Azure](../virtual-machines/extensions/features-windows.md#azure-vm-agent) nainstaluje pomocí instalačního programu služby mobility. Tím se zajistí, že při převzetí služeb při selhání počítače do Azure bude virtuální počítač Azure splňovat požadavky na instalaci agenta pro použití libovolného rozšíření virtuálního počítače.
-- **Virtuální počítače se systémem Linux** :  [WALinuxAgent](../virtual-machines/extensions/update-linux-agent.md) musí být po převzetí služeb při selhání na virtuálním počítači Azure nainstalovaný ručně.
+- **Virtuální počítače s Windows**: od verze 9.7.0.0 služby mobility se [Agent virtuálního počítače Azure](../virtual-machines/extensions/features-windows.md#azure-vm-agent) nainstaluje pomocí instalačního programu služby mobility. Tím se zajistí, že při převzetí služeb při selhání počítače do Azure bude virtuální počítač Azure splňovat požadavky na instalaci agenta pro použití libovolného rozšíření virtuálního počítače.
+- **Virtuální počítače se systémem Linux**:  [WALinuxAgent](../virtual-machines/extensions/update-linux-agent.md) musí být po převzetí služeb při selhání na virtuálním počítači Azure nainstalovaný ručně.
 
 ## <a name="locate-installer-files"></a>Vyhledání instalačních souborů
 
-Na konfiguračním serveru přejdete do složky _%ProgramData%\ASR\home\svsystems\pushinstallsvc\repository_ . V závislosti na operačním systému Zjistěte, který instalační program potřebujete. Následující tabulka shrnuje soubory instalačního programu pro každý virtuální počítač VMware a operační systém fyzického serveru. Než začnete, můžete si projít [podporované operační systémy](vmware-physical-azure-support-matrix.md#replicated-machines).
+Na konfiguračním serveru přejdete do složky _%ProgramData%\ASR\home\svsystems\pushinstallsvc\repository_. V závislosti na operačním systému Zjistěte, který instalační program potřebujete. Následující tabulka shrnuje soubory instalačního programu pro každý virtuální počítač VMware a operační systém fyzického serveru. Než začnete, můžete si projít [podporované operační systémy](vmware-physical-azure-support-matrix.md#replicated-machines).
 
 > [!NOTE]
 > Názvy souborů používají syntaxi zobrazenou v následující tabulce s _verzí_ a _datem_ jako zástupné symboly pro reálné hodnoty. Skutečné názvy souborů budou vypadat podobně jako v těchto příkladech:
@@ -228,7 +228,7 @@ Instalační soubor | Operační systém (pouze 64 bitů)
 **K aktualizaci nebo ochraně počítačů SUSE Linux Enterprise Server 11 SP3** z verze 9,36 a vyšší je potřeba:
 
 1. Zajistěte stažení nejnovějšího instalačního programu agenta mobility z webu Microsoft Download Center a umístění do úložiště nabízeného instalátoru na konfiguračním serveru a všech procesových serverech se škálováním
-2. [Stáhněte si](site-recovery-whats-new.md) nejnovější verzi instalačního programu agenta SUSE Linux Enterprise Server 11 SP3. Nejnovější verze agenta mobility je [9,37](https://support.microsoft.com/help/4582666/) .
+2. [Stáhněte](site-recovery-whats-new.md) si nejnovější instalační program agenta SUSE Linux Enterprise Server 11 SP3.
 3. Přejděte na konfigurační server, zkopírujte instalační program agenta SUSE Linux Enterprise Server 11 SP3 na cestě INSTALL_DIR \home\svsystems\pushinstallsvc\repository
 1. Po zkopírování nejnovějšího instalačního programu restartujte službu InMage PushInstall. 
 1. Nyní přejděte na související procesní servery se škálováním na více instancí, opakujte krok 3 a krok 4.
@@ -240,7 +240,7 @@ Instalační soubor | Operační systém (pouze 64 bitů)
 Za **předpokladu, že chcete aktualizovat nebo chránit počítače s RHEL 5** od verze 9,36 a vyšší:
 
 1. Zajistěte stažení nejnovějšího instalačního programu agenta mobility z webu Microsoft Download Center a umístění do úložiště nabízeného instalátoru na konfiguračním serveru a všech procesových serverech se škálováním
-2. [Stáhněte si](site-recovery-whats-new.md) nejnovější instalační program agenta RHEL 5 nebo CentOS 5. Nejnovější verze agenta mobility je [9,37](https://support.microsoft.com/help/4582666/) .
+2. [Stáhněte](site-recovery-whats-new.md) si nejnovější instalační program agenta RHEL 5 nebo CentOS 5. 
 3. Přejděte na konfigurační server, zkopírujte instalační program agenta RHEL 5 nebo CentOS 5 na cestu-INSTALL_DIR \home\svsystems\pushinstallsvc\repository
 1. Po zkopírování nejnovějšího instalačního programu restartujte službu InMage PushInstall. 
 1. Nyní přejděte na související procesní servery se škálováním na více instancí, opakujte krok 3 a krok 4.
@@ -252,7 +252,7 @@ Za **předpokladu, že chcete aktualizovat nebo chránit počítače s RHEL 5** 
 Za **předpokladu, že chcete aktualizovat nebo chránit počítače s Debian 7** od verze 9,36 a vyšší:
 
 1. Zajistěte stažení nejnovějšího instalačního programu agenta mobility z webu Microsoft Download Center a umístění do úložiště nabízeného instalátoru na konfiguračním serveru a všech procesových serverech se škálováním
-2. [Stáhněte si](site-recovery-whats-new.md) nejnovější instalační program agenta Debian 7. Nejnovější verze agenta mobility je [9,37](https://support.microsoft.com/help/4582666/) .
+2. [Stáhněte](site-recovery-whats-new.md) si nejnovější instalační program agenta Debian 7.
 3. Přejděte na konfigurační server, zkopírujte instalační program agenta Debian 7 v cestě-INSTALL_DIR \home\svsystems\pushinstallsvc\repository
 1. Po zkopírování nejnovějšího instalačního programu restartujte službu InMage PushInstall. 
 1. Nyní přejděte na související procesní servery se škálováním na více instancí, opakujte krok 3 a krok 4.

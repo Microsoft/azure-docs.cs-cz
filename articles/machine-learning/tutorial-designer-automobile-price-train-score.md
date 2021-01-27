@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 09/28/2020
 ms.custom: designer
-ms.openlocfilehash: 2e46da1657a7473d3ff8cdf4ac43e5341b143455
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 46098b2b7ebbf219a3c17b4fa40e1fd52344f683
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97796104"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879793"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer"></a>Kurz: Predikce ceny automobilů s využitím návrháře
 
@@ -103,7 +103,7 @@ Návrhář obsahuje několik ukázkových datových sad, které můžete experim
 
 Můžete vizualizovat data a pochopit datovou sadu, kterou budete používat.
 
-1. Klikněte pravým tlačítkem myši na **data o cenách automobilu (hrubá)** a vyberte **vizualizovat**.
+1. Klikněte pravým tlačítkem myši na **data o cenách automobilu (RAW)** a vyberte **vizualizovat**  >  **výstup datové sady**.
 
 1. Výběrem různých sloupců v okně data zobrazíte informace o každém z nich.
 
@@ -284,7 +284,7 @@ Teď, když je váš kanál všechna nastavení, můžete odeslat spuštění ka
 
 Po dokončení běhu můžete zobrazit výsledky spuštění kanálu. Nejprve se podívejte na předpovědi vygenerovaný regresním modelem.
 
-1. Klikněte pravým tlačítkem na modul **bodového modelu** a vyberte **vizualizovat** a zobrazte jeho výstup.
+1. Klikněte pravým tlačítkem myši na modul **bodového modelu** a vyberte **vizualizovat**  >  **vyhodnocenou datovou sadu** , abyste zobrazili její výstup.
 
     Tady vidíte předpovězené ceny a skutečné ceny z testovacích dat.
 
@@ -294,7 +294,7 @@ Po dokončení běhu můžete zobrazit výsledky spuštění kanálu. Nejprve se
 
 Pomocí **modelu vyhodnocení** můžete zjistit, jak dobře byl vyškolený model proveden na testovací datové sadě.
 
-1. Klikněte pravým tlačítkem na modul **vyhodnotit model** a výběrem **vizualizovat** zobrazte jeho výstup.
+1. Klikněte pravým tlačítkem na modul **vyhodnotit model** a výběrem **vizualizace**  >  **výsledky vyhodnocení** zobrazte jeho výstup.
 
 Pro váš model se zobrazí následující statistiky:
 

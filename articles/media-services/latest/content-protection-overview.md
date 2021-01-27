@@ -1,6 +1,5 @@
 ---
 title: Chraňte svůj obsah pomocí dynamického šifrování Media Services V3
-titleSuffix: Azure Media Services
 description: Přečtěte si o ochraně obsahu s dynamickým šifrováním, protokoly streamování a typy šifrování v Azure Media Services.
 services: media-services
 documentationcenter: ''
@@ -15,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 5d6530cf7b8d8611ff23a3517112cb0aa7442d6d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: edea46e86475f1731ecfae465f969ca45d63f0a2
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95971186"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897624"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>Ochrana obsahu pomocí Media Services dynamického šifrování
 
@@ -244,7 +243,7 @@ Následující šablony použijte, pokud chcete zadat jinou službu pro doručov
 * `StreamingPolicyWidevineConfiguration.CustomLicenseAcquisitionUrlTemplate`: Totéž jako předchozí šablona, pouze pro Widevine. 
 * `StreamingPolicyFairPlayConfiguration.CustomLicenseAcquisitionUrlTemplate`: Totéž jako předchozí šablona, pouze pro FairPlay.  
 
-Například:
+Příklad:
 
 ```csharp
 streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://mykeyserver.hostname.com/envelopekey/{AlternativeMediaId}/{ContentKeyId}";

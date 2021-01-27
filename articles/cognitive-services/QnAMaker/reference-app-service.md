@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/9/2020
-ms.openlocfilehash: e7dfc6db50432b19d515671fabe26edf9cfb45ef
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: c35306d3e0d874218b9ea03fbfeaaff722eacf76
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96345664"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896456"
 ---
 # <a name="service-configuration"></a>Konfigurace služeb
 
@@ -34,6 +34,7 @@ Jednotlivá nastavení můžete nastavit buď prostřednictvím seznamu nastaven
 |UserAppInsightsAppId|Protokol a telemetrie chatu|
 |UserAppInsightsKey|Protokol a telemetrie chatu|
 |UserAppInsightsName|Protokol a telemetrie chatu|
+|QNAMAKER_EXTENSION_VERSION|Vždycky nastavte na _nejnovější_. Toto nastavení inicializuje rozšíření webu Qnamakerem v App Service.|
 
 Až provedete změny, budete muset službu **restartovat** ze stránky **Přehled** Azure Portal.
 

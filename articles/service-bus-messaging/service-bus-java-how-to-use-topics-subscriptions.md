@@ -4,12 +4,12 @@ description: V tomto rychlém startu napíšete kód Java pomocí balíčku Azur
 ms.devlang: Java
 ms.topic: quickstart
 ms.date: 11/09/2020
-ms.openlocfilehash: cd95b84c4b55279b40f95eef65cb2490a55d1780
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 46dc6bed7e51a5157d7eb42dac75c0240d440780
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630237"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881614"
 ---
 # <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-subscriptions-to-the-topic-java"></a>Odeslání zpráv do Azure Service Bus tématu a příjem zpráv z předplatných do tématu (Java)
 V tomto rychlém startu napíšete kód Java pomocí balíčku Azure-Messaging-ServiceBus k posílání zpráv do Azure Service Busho tématu a potom dostanete zprávy z odběrů do tohoto tématu.
@@ -225,7 +225,7 @@ Po výběru předplatného na této stránce se dostanete na stránku **Service 
 Podívejte se na následující dokumentaci a ukázky:
 
 - [Klientská knihovna Azure Service Bus pro Java – soubor Readme](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/servicebus/azure-messaging-servicebus/README.md)
-- [Ukázky na GitHubu](https://docs.microsoft.com/samples/azure/azure-sdk-for-java/servicebus-samples/)
+- [Ukázky na GitHubu](/samples/azure/azure-sdk-for-java/servicebus-samples/)
 - [Referenční dokumentace k rozhraní API v Javě](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-messaging-servicebus/7.0.0/index.html)
 
 

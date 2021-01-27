@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 598f925d939694ea47605b0e8ea2e63872db7811
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 3f16589765752a2a635ccd055e7d55de8b9ce330
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201242"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880012"
 ---
 # <a name="azure-security-baseline-for-network-watcher"></a>Základní hodnoty zabezpečení Azure pro Network Watcher
 
@@ -429,7 +429,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 * [Podporované parametry protokolu IPSec pro Azure VPN Gateway](./network-watcher-diagnose-on-premises-connectivity.md)
 
-* [Jak nakonfigurovat připojení typu Site-to-site v Azure Portal](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+* [Jak nakonfigurovat připojení typu Site-to-site v Azure Portal](../vpn-gateway/tutorial-site-to-site-portal.md)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 

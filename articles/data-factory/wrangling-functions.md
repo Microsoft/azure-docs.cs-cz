@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/19/2021
-ms.openlocfilehash: a88f9fab2b10271aa7856a6d0b5ee114f46cfb49
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 659f6527d43e1b45a11fddf774050ca6d42bfe12
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98633928"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896659"
 ---
 # <a name="transformation-functions-in-power-query-for-data-wrangling"></a>Transformační funkce v Power Query pro tahání dat
 
@@ -24,7 +24,7 @@ Data tahání v Azure Data Factory umožňují provádět přípravu agilních d
 
 V současné době nejsou všechny funkce Power Query M podporovány pro tahání dat, přestože jsou k dispozici při vytváření obsahu. Při sestavování zpracování se zobrazí výzva s následující chybovou zprávou, pokud funkce není podporována:
 
-`The Wrangling Data Flow is invalid. Expression.Error: The transformation logic is not supported. Please try a simpler expression.`
+`UserQuery : Expression.Error: The transformation logic is not supported as it requires dynamic access to rows of data, which cannot be scaled out.`
 
 Níže je uvedený seznam podporovaných funkcí Power Query M.
 
@@ -96,7 +96,7 @@ Zachovat a odebrat horní, zachovat rozsah (odpovídající funkce M, jenom poč
 | Table.Distinct | Odstranění duplicitních řádků není podporováno. |
 | Table.RemoveLastN | Odebrat dolní řádky nejsou podporovány. |
 | Table.RowCount | Nepodporováno, ale lze je dosáhnout přidáním vlastního sloupce obsahujícího hodnotu 1 a následným agregacím tohoto sloupce se seznamem. Sum. Tabulka. Group je podporována. | 
-| Zpracování chyb na úrovni řádků | Zpracování chyb na úrovni řádků se momentálně nepodporuje. Chcete-li například vyfiltrovat nečíselné hodnoty ze sloupce, může být jedním z přístupů převod textového sloupce na číslo. Každá buňka, která se nedokáže transformovat, bude v chybovém stavu a bude nutné ji filtrovat. Tento scénář není možný v toku dat tahání. |
+| Zpracování chyb na úrovni řádků | Zpracování chyb na úrovni řádků se momentálně nepodporuje. Chcete-li například vyfiltrovat nečíselné hodnoty ze sloupce, může být jedním z přístupů převod textového sloupce na číslo. Každá buňka, která se nedokáže transformovat, bude v chybovém stavu a bude nutné ji filtrovat. Tento scénář není možné škálovat M. |
 | Table.Transpose | Nepodporováno |
 | Table.Pivot | Nepodporováno |
 

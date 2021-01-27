@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f66c710901b129cb6b138fff126e67615c790714
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 34bbf34d53c44dcef7b8e128a93ee64201423c3e
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183664"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897033"
 ---
 # <a name="integrate-with-azure-monitor-logs"></a>Integrace s protokoly Azure Monitor
 
@@ -30,7 +30,7 @@ Protokoly Azure Monitor poskytují větší provozní viditelnost dat konfigurac
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít odesílat sestavy konfigurace stavu automatizace do Azure Monitor protokolů, budete potřebovat:
 
@@ -196,7 +196,7 @@ Diagnostika Azure Automation v protokolech Azure Monitor vytvořit dvě kategori
 - Přehled najdete v tématu [Přehled konfigurace stavu Azure Automation](automation-dsc-overview.md).
 - Informace o tom, jak začít, najdete v tématu Začínáme [s konfigurací stavu Azure Automation](automation-dsc-getting-started.md).
 - Další informace o kompilaci konfigurací DSC, abyste je mohli přiřadit cílovým uzlům, najdete v tématu [kompilace konfigurací DSC v konfiguraci stavu Azure Automation](automation-dsc-compile.md).
-- Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).
+- Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](/powershell/module/az.automation).
 - Informace o cenách najdete v tématu [Azure Automation ceny konfigurace stavu](https://azure.microsoft.com/pricing/details/automation/).
 - Příklad použití konfigurace stavu Azure Automation v kanálu nepřetržitého nasazení najdete v tématu [Nastavení průběžného nasazování s čokoládou](automation-dsc-cd-chocolatey.md).
 - Další informace o tom, jak vytvořit různé vyhledávací dotazy a zkontrolovat protokoly konfigurace stavu automatizace pomocí protokolů Azure Monitor, najdete [v tématu prohledávání protokolů v protokolech Azure monitor](../azure-monitor/log-query/log-query-overview.md).

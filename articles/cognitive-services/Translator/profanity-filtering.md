@@ -3,19 +3,19 @@ title: Filtrování vulgárních výrazů – Translator
 titleSuffix: Azure Cognitive Services
 description: Pomocí filtrování vulgárních výrazů můžete určit úroveň vulgárních výrazů v textu ve službě Azure Cognitive Services Translator.
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.author: swmachan
-ms.openlocfilehash: 7ebfe766e6362a3f62e70db8bf2dcae370aceee3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: lajanuar
+ms.openlocfilehash: 9f389d669e69dbfa6ec6d4d0b4716d2367443f17
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83996155"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896795"
 ---
 # <a name="add-profanity-filtering-with-the-translator"></a>Přidání filtrování vulgárních výrazů pomocí překladatele
 

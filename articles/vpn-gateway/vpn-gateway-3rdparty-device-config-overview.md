@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 01ceb067f589ef04b04ff0bf05e2971ee30f407c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 484dad65310efaa60e8744b2f122b5e44ae13565
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89400156"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880148"
 ---
 # <a name="overview-of-partner-vpn-device-configurations"></a>Přehled konfigurací partnerských zařízení sítě VPN
 Tento článek poskytuje přehled konfigurace místních zařízení VPN pro připojení ke službě Azure VPN Gateway. Ukázková instalace Azure Virtual Network a brány VPN se používá k zobrazení způsobu připojení k různým konfiguracím místních zařízení VPN pomocí stejných parametrů.
@@ -27,7 +27,7 @@ První konfigurace v ukázce se skládá z jednoho tunelu VPN S2S mezi službou 
 
 ![Diagram jednoho tunelového propojení S2S VPN](./media/vpn-gateway-3rdparty-device-config-overview/singletunnel.png)
 
-Podrobné pokyny k nastavení jediného tunelu VPN najdete v tématu [Konfigurace připojení typu Site-to-site](vpn-gateway-howto-site-to-site-resource-manager-portal.md). V následujících částech jsou uvedeny parametry připojení pro ukázkovou konfiguraci a zadání skriptu prostředí PowerShell, který vám může pomáhat začít.
+Podrobné pokyny k nastavení jediného tunelu VPN najdete v tématu [Konfigurace připojení typu Site-to-site](./tutorial-site-to-site-portal.md). V následujících částech jsou uvedeny parametry připojení pro ukázkovou konfiguraci a zadání skriptu prostředí PowerShell, který vám může pomáhat začít.
 
 ### <a name="connection-parameters"></a>Parametry připojení
 V této části jsou uvedeny parametry pro příklady, které jsou popsány v předchozích částech.
@@ -150,4 +150,3 @@ Když vytvoříte připojení S2S VPN, můžete volitelně použít protokol [BG
 
 ## <a name="next-steps"></a>Další kroky
 Podrobné pokyny k nastavení bran VPN typu aktivní-aktivní najdete v tématu [Konfigurace bran VPN typu aktivní-aktivní pro připojení mezi různými místy a připojení typu VNet-to-VNet](vpn-gateway-activeactive-rm-powershell.md).
-

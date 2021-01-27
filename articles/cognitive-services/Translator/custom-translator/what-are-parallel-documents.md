@@ -2,19 +2,19 @@
 title: Co jsou paralelní dokumenty? – Vlastní Překladatel
 titleSuffix: Azure Cognitive Services
 description: Paralelní dokumenty jsou páry dokumentů, kde jeden je převod druhé. Jeden dokument ve dvojici obsahuje ve zdrojovém jazyce věty a druhý dokument obsahuje tyto věty přeložené do cílového jazyka.
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 08/17/2020
-ms.author: swmachan
+ms.author: lajanuar
 ms.topic: conceptual
-ms.openlocfilehash: 6477432636db9592d9b0d9c1f90f5eee7d6e00db
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 64192014c9dfe5bb958e730dae62e504f0976fa1
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368997"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895590"
 ---
 # <a name="what-are-parallel-documents"></a>Co jsou paralelní dokumenty?
 

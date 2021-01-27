@@ -1,5 +1,5 @@
 ---
-title: Kódování vlastní transformace pomocí Media Services V3 .NET – Azure | Microsoft Docs
+title: Kódování vlastní transformace pomocí Media Services V3 .NET – Azure
 description: V tomto tématu se dozvíte, jak použít Azure Media Services V3 ke kódování vlastní transformace pomocí .NET.
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: b5bb505df3cad7856e0b08f04949c2e56ccec1ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 035afd43b49c05f51149ad568a0eb16991dbaf85
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89295610"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897169"
 ---
 # <a name="how-to-encode-with-a-custom-transform---net"></a>Jak kódovat pomocí vlastní transformace – .NET
 
@@ -25,7 +25,7 @@ ms.locfileid: "89295610"
 
 Při kódování pomocí Azure Media Services můžete rychle začít s jedním z doporučených integrovaných přednastavení na základě doporučených osvědčených postupů, jak je znázorněno v kurzu [streamování souborů](stream-files-tutorial-with-api.md) . Můžete také vytvořit vlastní předvolby, která bude cílit na konkrétní scénář nebo požadavky na zařízení.
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Požadavky
 
 Při vytváření vlastních přednastavení platí následující požadavky:
 

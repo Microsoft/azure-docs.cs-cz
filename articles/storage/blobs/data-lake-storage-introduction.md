@@ -8,12 +8,12 @@ ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 5f2f3cfc5ccbdd6a3d3d3ede5bb39a3f6f548b19
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1c4d04e25bf8f7d981c998baafb468f04b66eaf1
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95913092"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879894"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Úvod do Azure Data Lake Storage Gen2
 
@@ -39,7 +39,7 @@ Data Lake Storage Gen2 je taky velmi nákladově efektivní, protože je postave
 
 ## <a name="key-features-of-data-lake-storage-gen2"></a>Klíčové funkce Data Lake Storage Gen2
 
--   **Přístup** s platformou hadoop: Data Lake Storage Gen2 umožňuje správu a přístup k datům stejně, jako byste použili [systém souborů DFS (DISTRIBUTED File System) Hadoop (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Nový [ovladač ABFS](data-lake-storage-abfs-driver.md) (používaný pro přístup k datům) je k dispozici ve všech Apache Hadoop prostředích. Mezi tato prostředí patří [Azure HDInsight](../../hdinsight/index.yml)*,* [Azure Databricks](/azure/databricks/)a [Azure synapse Analytics](/azure/synapse-analytics).
+-   **Přístup** s platformou hadoop: Data Lake Storage Gen2 umožňuje správu a přístup k datům stejně, jako byste použili [systém souborů DFS (DISTRIBUTED File System) Hadoop (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Nový [ovladač ABFS](data-lake-storage-abfs-driver.md) (používaný pro přístup k datům) je k dispozici ve všech Apache Hadoop prostředích. Mezi tato prostředí patří [Azure HDInsight](../../hdinsight/index.yml)*,* [Azure Databricks](/azure/databricks/)a [Azure synapse Analytics](../../synapse-analytics/index.yml).
 
 -   **Nadmnožina oprávnění POSIX**: model zabezpečení pro data Lake Gen2 podporuje oprávnění ACL a POSIX spolu s některými dalšími podrobnostmi, které jsou specifické pro data Lake Storage Gen2. Nastavení lze nakonfigurovat prostřednictvím Průzkumník služby Storage nebo prostřednictvím architektury jako podregistr a Spark.
 

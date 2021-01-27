@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 456a7e4f07b2416e1d2037205574f2e7149e70e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 03f1f1659d120a2aa1b827063cb2bc84138f3655
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86185938"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896066"
 ---
 # <a name="deploy-an-amazon-web-services-vm-with-a-runbook"></a>Nasazení virtuálního počítače s Amazon Web Services pomocí Runbooku
 
@@ -49,11 +49,11 @@ Po nasazení modulu AWS PowerShellu teď můžete vytvořit Runbook pro automati
    Save-Script -Name New-AwsVM -Path <path>
    ```
    <br>
-2. Z Azure Portal otevřete svůj účet Automation a v části **Automatizace procesu**vyberte **Runbooky** .  
+2. Z Azure Portal otevřete svůj účet Automation a v části **Automatizace procesu** vyberte **Runbooky** .  
 3. Na stránce sady Runbook vyberte **Přidat sadu Runbook**.
 4. V podokně Přidat Runbook vyberte **rychlé vytvoření** a vytvořte novou sadu Runbook.
 5. V podokně vlastnosti Runbooku zadejte název Runbooku.
-6. V rozevíracím seznamu **typ Runbooku** vyberte **PowerShell**a pak klikněte na **vytvořit**.<br><br> ![Vytvořit podokno Runbooku](./media/automation-scenario-aws-deployment/runbook-quickcreate-properties.png)
+6. V rozevíracím seznamu **typ Runbooku** vyberte **PowerShell** a pak klikněte na **vytvořit**.<br><br> ![Vytvořit podokno Runbooku](./media/automation-scenario-aws-deployment/runbook-quickcreate-properties.png)
 7. Když se zobrazí stránka upravit PowerShellový Runbook, zkopírujte a vložte PowerShellový skript na plátno pro tvorbu runbooků.<br><br> ![Skript Runbooku PowerShellu](./media/automation-scenario-aws-deployment/runbook-powershell-script.png)<br>
    
     Při práci s ukázkovým skriptem prostředí PowerShell Pamatujte na následující:
@@ -103,4 +103,4 @@ Ujistěte se, že se modul AWS PowerShell importoval do Azure Automation.
 * Informace o práci se sadami Runbook najdete [v tématu Správa runbooků v Azure Automation](manage-runbooks.md).
 * Podrobnosti o PowerShellu najdete v tématu [dokumentace k PowerShellu](/powershell/scripting/overview).
 * Podporu skriptů najdete v tématu [Podpora nativních skriptů PowerShellu v Azure Automation](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/).
-* Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).
+* Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](/powershell/module/az.automation).

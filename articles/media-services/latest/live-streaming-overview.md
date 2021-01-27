@@ -1,5 +1,5 @@
 ---
-title: Přehled živého streamování s Azure Media Services V3 | Microsoft Docs
+title: Přehled živého streamování s Azure Media Services V3
 description: Tento článek obsahuje přehled živého streamování pomocí Azure Media Services V3.
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 3f9fc9fd1bacce8733949969b496dc03d6c10901
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: ad3a14cff13395f4d59ab2ed59ae1cc26eaad866
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695814"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896778"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Živé streamování s Azure Media Services V3
 

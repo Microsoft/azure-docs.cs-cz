@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 08/01/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c51ef23e27cd63d3706c104d1e39a14bf61c258e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d6b786ffaf309e147de27e8cd8be314a3d8a5fb
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86186346"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896982"
 ---
 # <a name="edit-textual-runbooks-in-azure-automation"></a>Upravit textové Runbooky v Azure Automation
 
@@ -29,7 +29,7 @@ Tento článek poskytuje podrobné pokyny pro provádění různých funkcí v t
 ## <a name="edit-a-runbook-with-the-azure-portal"></a>Úprava Runbooku pomocí Azure Portal
 
 1. V Azure Portal vyberte svůj účet Automation.
-2. V části **Automatizace procesu**vyberte **Runbooky** a otevřete seznam runbooků.
+2. V části **Automatizace procesu** vyberte **Runbooky** a otevřete seznam runbooků.
 3. Zvolte sadu Runbook, kterou chcete upravit, a klikněte na tlačítko **Upravit**.
 4. Upravte sadu Runbook.
 5. Po dokončení úprav klikněte na **Uložit** .
@@ -57,7 +57,7 @@ Tento článek poskytuje podrobné pokyny pro provádění různých funkcí v t
 1. V ovládacím prvku plátno textového editoru umístěte kurzor na místo, kam chcete umístit kód pro podřízený Runbook.
 2. Rozbalte uzel **assets (prostředky** ) v ovládacím prvku knihovna.
 3. Rozbalte uzel pro požadovaný typ prostředku.
-4. Klikněte pravým tlačítkem na název assetu, který chcete vložit, a vyberte **Přidat na plátno**. V případě [variabilních prostředků](./shared-resources/variables.md)vyberte **Přidat "získat proměnnou" na plátno** nebo **Přidat "nastavit proměnnou" na plátno**v závislosti na tom, zda chcete získat nebo nastavit proměnnou.
+4. Klikněte pravým tlačítkem na název assetu, který chcete vložit, a vyberte **Přidat na plátno**. V případě [variabilních prostředků](./shared-resources/variables.md)vyberte **Přidat "získat proměnnou" na plátno** nebo **Přidat "nastavit proměnnou" na plátno** v závislosti na tom, zda chcete získat nebo nastavit proměnnou.
 5. Všimněte si, že kód pro Asset je vložen do sady Runbook.
 
 ## <a name="edit-an-azure-automation-runbook-using-windows-powershell"></a>Úprava Azure Automation sady Runbook pomocí prostředí Windows PowerShell
@@ -101,4 +101,4 @@ Publish-AzAutomationRunbook -Name $runbookName -AutomationAccountName $automatio
 * [Přihlašovací údaje](./shared-resources/credentials.md).
 * [Plány](./shared-resources/schedules.md).
 * [Proměnné](./shared-resources/variables.md).
-* [Reference k rutinám prostředí PowerShell](/powershell/module/az.automation/?view=azps-3.7.0#automation).
+* [Reference k rutinám prostředí PowerShell](/powershell/module/az.automation).

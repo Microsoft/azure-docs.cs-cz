@@ -1,28 +1,28 @@
 ---
-title: Migrace pro Linux na Azure File Sync
-description: Naučte se migrovat soubory z umístění serveru Linux do hybridního cloudu s Azure File Sync a sdílenými složkami Azure.
+title: Migrace pro Linux na Synchronizace souborů Azure
+description: Naučte se migrovat soubory z umístění serveru Linux do hybridního cloudu s Synchronizace souborů Azure a sdílenými složkami Azure.
 author: fauhse
 ms.service: storage
 ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 46bcfd48d8fdfb228670b87df166c1ad8de61e52
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 0ef4faf14ec01a25419fd22ba8c73a8a033b4172
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94626346"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879978"
 ---
-# <a name="migrate-from-linux-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Migrace ze systému Linux na nasazení do hybridního cloudu pomocí Azure File Sync
+# <a name="migrate-from-linux-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Migrace ze systému Linux na nasazení do hybridního cloudu pomocí Synchronizace souborů Azure
 
-Azure File Sync funguje na instancích Windows serveru s přímým připojeným úložištěm (DAS). Nepodporuje synchronizaci do a z klientů se systémem Linux nebo sdílené složky protokolu SMB (Server Message Block) nebo sdílené složky systému souborů NFS (Network File System).
+Synchronizace souborů Azure funguje na instancích Windows serveru s přímým připojeným úložištěm (DAS). Nepodporuje synchronizaci do a z klientů se systémem Linux nebo sdílené složky protokolu SMB (Server Message Block) nebo sdílené složky systému souborů NFS (Network File System).
 
 Výsledkem je, že transformace souborové služby do hybridního nasazení vede k tomu, že je potřeba migrovat na Windows Server. Tento článek vás provede plánováním a prováděním této migrace.
 
 ## <a name="migration-goals"></a>Cíle migrace
 
-Cílem je přesunout sdílené složky, které máte na serveru Linux Samba, do instance Windows serveru. Pak použijte Azure File Sync pro hybridní nasazení v cloudu. Tato migrace se musí udělat způsobem, který zaručuje integritu produkčních dat i dostupnost během migrace. Ta ta vyžaduje udržení minimálního výpadku, aby bylo možné se přizpůsobit nebo jen mírně překročit pravidelná časová období údržby.
+Cílem je přesunout sdílené složky, které máte na serveru Linux Samba, do instance Windows serveru. Pak použijte Synchronizace souborů Azure pro hybridní nasazení v cloudu. Tato migrace se musí udělat způsobem, který zaručuje integritu produkčních dat i dostupnost během migrace. Ta ta vyžaduje udržení minimálního výpadku, aby bylo možné se přizpůsobit nebo jen mírně překročit pravidelná časová období údržby.
 
 ## <a name="migration-overview"></a>Přehled migrace
 
@@ -39,7 +39,7 @@ Pokud na serveru Linux nepoužíváte službu Samba a místo toho chcete migrova
 * Vytvořte instanci Windows serveru 2019 jako virtuální počítač nebo fyzický server. Minimálním požadavkem je Windows Server 2012 R2. Podporuje se i cluster s podporou převzetí služeb při selhání se systémem Windows Server.
 * Zřídit nebo přidat přímo připojené úložiště (DAS). Úložiště připojené k síti (NAS) není podporováno.
 
-  Velikost úložiště, kterou zřídíte, může být menší než v současnosti na serveru Linux Samba, pokud používáte funkci Azure File Syncho [cloudového vrstvení](storage-sync-cloud-tiering.md) . Když ale kopírujete soubory z většího prostoru serveru Linux Samba na menší svazek Windows serveru v pozdější fázi, budete muset pracovat v dávkách:
+  Velikost úložiště, kterou zřídíte, může být menší než v současnosti na serveru Linux Samba, pokud používáte funkci Synchronizace souborů Azureho [cloudového vrstvení](storage-sync-cloud-tiering.md) . Když ale kopírujete soubory z většího prostoru serveru Linux Samba na menší svazek Windows serveru v pozdější fázi, budete muset pracovat v dávkách:
 
   1. Přesuňte sadu souborů, které se vejdou na disk.
   2. Umožněte synchronizaci souborů a vrstvení cloudu.
@@ -54,7 +54,7 @@ Konfigurace prostředků (COMPUTE a RAM) instance Windows serveru, kterou nasazu
 > [!NOTE]
 > Dříve propojený článek prezentuje tabulku s rozsahem pro paměť serveru (RAM). Můžete se orientovat směrem k menšímu počtu serverů, ale očekávat, že počáteční synchronizace může trvat delší dobu.
 
-## <a name="phase-3-deploy-the-azure-file-sync-cloud-resource"></a>Fáze 3: nasazení cloudového prostředku Azure File Sync
+## <a name="phase-3-deploy-the-azure-file-sync-cloud-resource"></a>Fáze 3: nasazení cloudového prostředku Synchronizace souborů Azure
 
 [!INCLUDE [storage-files-migration-deploy-afs-sss](../../../includes/storage-files-migration-deploy-azure-file-sync-storage-sync-service.md)]
 
@@ -64,18 +64,18 @@ V této fázi si Projděte tabulku mapování z fáze 1 a použijte ji ke zříz
 
 [!INCLUDE [storage-files-migration-provision-azfs](../../../includes/storage-files-migration-provision-azure-file-share.md)]
 
-## <a name="phase-5-deploy-the-azure-file-sync-agent"></a>Fáze 5: nasazení agenta Azure File Sync
+## <a name="phase-5-deploy-the-azure-file-sync-agent"></a>Fáze 5: nasazení agenta Synchronizace souborů Azure
 
 [!INCLUDE [storage-files-migration-deploy-afs-agent](../../../includes/storage-files-migration-deploy-azure-file-sync-agent.md)]
 
-## <a name="phase-6-configure-azure-file-sync-on-the-windows-server-deployment"></a>Fáze 6: konfigurace Azure File Sync na nasazení Windows serveru
+## <a name="phase-6-configure-azure-file-sync-on-the-windows-server-deployment"></a>Fáze 6: Konfigurace Synchronizace souborů Azure na nasazení Windows serveru
 
 Zaregistrovaná místní instance Windows serveru musí být pro tento proces připravená a připojená k Internetu.
 
 [!INCLUDE [storage-files-migration-configure-sync](../../../includes/storage-files-migration-configure-sync.md)]
 
 > [!IMPORTANT]
-> Vrstvení cloudu je funkce Azure File Sync, která umožňuje místnímu serveru mít méně úložnou kapacitu, než je uložený v cloudu, ale má úplný obor názvů k dispozici. Místně zajímavá data se ukládají také místně do mezipaměti pro výkon s rychlým přístupem. Vrstva cloudu je volitelná funkce pro každý koncový bod serveru Azure File Sync.
+> Vrstvení cloudu je funkce Synchronizace souborů Azure, která umožňuje místnímu serveru mít méně úložnou kapacitu, než je uložený v cloudu, ale má úplný obor názvů k dispozici. Místně zajímavá data se ukládají také místně do mezipaměti pro výkon s rychlým přístupem. Vrstva cloudu je volitelná funkce pro každý koncový bod serveru Synchronizace souborů Azure.
 
 > [!WARNING]
 > Pokud jste na svazcích Windows serveru zřídili méně úložiště než vaše data, která se používají na serveru Linux Samba, je vrstva cloudu povinná. Pokud nepovolíte vrstvení cloudu, váš server nebude mít volné místo pro uložení všech souborů. Nastavte zásady vrstvení dočasně pro migraci na 99% volného místa pro svazek. Po dokončení migrace se ujistěte, že se vrátíte k nastavení vrstvení cloudu a v dlouhodobém období nastavte zásady na užitečnější úroveň.
@@ -84,16 +84,16 @@ Opakujte kroky při vytváření skupiny synchronizace a přidání odpovídají
 
 Po vytvoření všech koncových bodů serveru synchronizace funguje. Můžete vytvořit testovací soubor a vidět jeho synchronizaci z umístění na serveru s připojenou sdílenou složkou Azure (jak popisuje koncový bod cloudu ve skupině synchronizace).
 
-Obě umístění, složky serveru a sdílené složky Azure jsou jinak prázdná a čekají na data. V dalším kroku začnete kopírovat soubory do instance Windows serveru, aby se Azure File Sync přesunuly do cloudu. Pokud jste povolili vrstvení cloudu, server pak začne na úrovni souborů, pokud na místních svazcích dojde k nedostatku kapacity.
+Obě umístění, složky serveru a sdílené složky Azure jsou jinak prázdná a čekají na data. V dalším kroku začnete kopírovat soubory do instance Windows serveru, aby se Synchronizace souborů Azure přesunuly do cloudu. Pokud jste povolili vrstvení cloudu, server pak začne na úrovni souborů, pokud na místních svazcích dojde k nedostatku kapacity.
 
 ## <a name="phase-7-robocopy"></a>Fáze 7: Robocopy
 
-Základní postup migrace je použití nástroje Robocopy ke kopírování souborů a použití Azure File Sync k synchronizaci.
+Základní postup migrace je použití nástroje Robocopy ke kopírování souborů a použití Synchronizace souborů Azure k synchronizaci.
 
 Spusťte první místní kopii do cílové složky Windows serveru:
 
 1. Identifikujte první umístění na serveru Linux Samba.
-1. Identifikujte odpovídající složku na instanci Windows serveru, která už je Azure File Sync nakonfigurovaná.
+1. Identifikujte odpovídající složku na instanci Windows serveru, která už je Synchronizace souborů Azure nakonfigurovaná.
 1. Spusťte kopii pomocí nástroje Robocopy.
 
 Následující příkaz Robocopy zkopíruje soubory ze svého úložiště serveru Linux Samba do cílové složky Windows serveru. Windows Server ho synchronizuje se sdílenými složkami Azure. 
@@ -177,12 +177,12 @@ Pozadí
 
 Při prvním spuštění příkazu Robocopy budou uživatelé a aplikace pořád používat soubory na serveru Linux Samba a můžou je měnit. Je možné, že Robocopy zpracovaly adresář a přesune se k dalšímu a pak uživatel ve zdrojovém umístění (Linux) přidá, změní nebo odstraní soubor, který se teď v aktuálním běhu nástroje Robocopy nezpracovává. Jde o očekávané chování.
 
-Prvním spuštěním je o přesunu velkých objemů dat do instance Windows serveru a do cloudu prostřednictvím Azure File Sync. Tato první kopie může trvat dlouhou dobu, v závislosti na:
+Prvním spuštěním je o přesunu velkých objemů dat do instance Windows serveru a do cloudu prostřednictvím Synchronizace souborů Azure. Tato první kopie může trvat dlouhou dobu, v závislosti na:
 
 * Šířku pásma pro stažení.
 * Šířka pásma nahrávání.
 * Rychlost místní sítě a počet, jak optimálně se počet vláken v prostředí Robocopy shoduje.
-* Počet položek (soubory a složky), které nástroje Robocopy a Azure File Sync potřebují zpracovat.
+* Počet položek (soubory a složky), které nástroje Robocopy a Synchronizace souborů Azure potřebují zpracovat.
 
 Po dokončení počátečního běhu znovu spusťte příkaz.
 
@@ -213,12 +213,12 @@ Umožněte synchronizaci v průběhu a vrstvení cloudu uvolněte místo na disk
 
 Pokud má vaše instance Windows serveru dostatek dostupné kapacity, problém vyřešíte tak, že znovu spustíte příkaz. Po obdržení této situace se nic neukončí a můžete se s jistotou přesunout vpřed. Komplikace při opakovaném spuštění příkazu jsou pouze v důsledku.
 
-Pokud chcete řešit potíže s Azure File Sync problémy, podívejte se na odkaz v následující části.
+Pokud chcete řešit potíže s Synchronizace souborů Azure problémy, podívejte se na odkaz v následující části.
 
 ## <a name="next-steps"></a>Další kroky
 
-K dispozici je více informací o sdílených složkách a Azure File Sync Azure. Následující články obsahují pokročilé možnosti, osvědčené postupy a pomoc při odstraňování potíží. Tyto články v případě potřeby odkazují na [dokumentaci ke sdílení souborů Azure](storage-files-introduction.md) .
+K dispozici je více informací o sdílených složkách a Synchronizace souborů Azure Azure. Následující články obsahují pokročilé možnosti, osvědčené postupy a pomoc při odstraňování potíží. Tyto články v případě potřeby odkazují na [dokumentaci ke sdílení souborů Azure](storage-files-introduction.md) .
 
-* [Přehled Azure File Sync](./storage-sync-files-planning.md)
-* [Průvodce nasazením Azure File Sync](storage-files-deployment-guide.md)
+* [Přehled Synchronizace souborů Azure](./storage-sync-files-planning.md)
+* [Průvodce nasazením Synchronizace souborů Azure](./storage-how-to-create-file-share.md)
 * [Řešení potíží se službou Synchronizace souborů Azure](storage-sync-files-troubleshoot.md)

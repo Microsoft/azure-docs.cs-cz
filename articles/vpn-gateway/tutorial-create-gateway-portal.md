@@ -6,12 +6,12 @@ ms.author: cherylmc
 ms.service: vpn-gateway
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 933b71d75eacdca015a38524870f25a345e76d22
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 820482a268af038737557c517ccda086cd65d943
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746161"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880555"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-azure-portal"></a>Kurz: vytvoření a Správa služby VPN Gateway pomocí Azure Portal
 
@@ -30,7 +30,7 @@ Následující diagram ukazuje virtuální síť a bránu VPN vytvořené v rám
 
 :::image type="content" source="./media/tutorial-create-gateway-portal/gateway-diagram.png" alt-text="Diagram virtuální sítě a brány VPN":::
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Účet Azure s aktivním předplatným. Pokud ho ještě nemáte, [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
@@ -74,7 +74,7 @@ Vytvořte bránu virtuální sítě pomocí následujících hodnot:
 
 Veřejnou IP adresu brány si můžete zobrazit na stránce **Přehled** pro vaši bránu.
 
-:::image type="content" source="./media/tutorial-create-gateway-portal/address.png" alt-text="Stránka Přehled":::
+:::image type="content" source="./media/tutorial-create-gateway-portal/address.png" alt-text="Stránka přehledu":::
 
 Chcete-li zobrazit další informace o objektu veřejné IP adresy, klikněte na odkaz název/IP adresa vedle **veřejné IP adresy**.
 
@@ -103,7 +103,7 @@ Pokud nebudete tuto aplikaci nadále používat nebo se k dalšímu kurzu chcete
 Jakmile budete mít bránu VPN, můžete nakonfigurovat připojení. Články níže vám pomůžou vytvořit několik nejběžnějších konfigurací:
 
 > [!div class="nextstepaction"]
-> [Připojení VPN typu Site-to-site](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+> [Připojení VPN typu Site-to-site](./tutorial-site-to-site-portal.md)
 
 > [!div class="nextstepaction"]
 > [Připojení VPN typu Point-to-site](vpn-gateway-howto-point-to-site-resource-manager-portal.md)

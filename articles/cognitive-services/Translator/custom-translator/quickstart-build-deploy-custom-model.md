@@ -2,19 +2,19 @@
 title: 'Rychlý Start: sestavení, nasazení a použití vlastního modelu – vlastní Překladatel'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu projdete podrobný postup sestavení systému překladu pomocí vlastního překladatele.
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 12/09/2019
-ms.author: swmachan
+ms.author: lajanuar
 ms.topic: quickstart
-ms.openlocfilehash: 4fbac2c2d77d838ac7fc4f3caaa73983633c3e03
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: ae417006903c8d2478126f928f05647361bad1b9
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94366039"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896202"
 ---
 # <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>Rychlý Start: sestavení, nasazení a použití vlastního modelu pro překlad
 

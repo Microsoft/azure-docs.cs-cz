@@ -10,12 +10,12 @@ ms.date: 01/15/2021
 author: dcstwh
 ms.author: weetok
 manager: anandsub
-ms.openlocfilehash: e463328df195b5a91db8ce272d138f980d000e79
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: c3c126a96c0eb2214f63a56120d0966b9a97efed
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232059"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895386"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>Parametrizovat propojené služby v Azure Data Factory
 
@@ -27,6 +27,9 @@ K parametrizovat propojených služeb můžete použít uživatelské rozhraní 
 
 > [!TIP]
 > Doporučujeme, abyste neparametrizovati hesla ani tajné klíče. Místo toho uložte všechny připojovací řetězce v Azure Key Vault a parametrizovat *název tajného klíče*.
+
+> [!Note]
+> Otevřená chyba pro použití "-" v názvech parametrů – doporučujeme použít názvy bez "-", dokud se chyba nevyřeší.
 
 Pokud chcete tuto funkci seznámit a předvedení této funkce, podívejte se na následující video:
 

@@ -3,19 +3,19 @@ title: Metoda překladu překladatele
 titleSuffix: Azure Cognitive Services
 description: Seznamte se s parametry, hlavičkami a zprávami zprávy pro metodu přeložit služby Azure Cognitive Services Translator pro překlad textu.
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 08/06/2020
-ms.author: swmachan
-ms.openlocfilehash: 15f20bab91a4feab056a9f8cd6b012792f036be2
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.author: lajanuar
+ms.openlocfilehash: d46fef0159b983f2685be40e2a0ab5471b96883b
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95016543"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895437"
 ---
 # <a name="translator-30-translate"></a>Překladatel 3,0: překlad
 
@@ -391,7 +391,7 @@ V případě <code>ProfanityMarker=Tag</code> vulgárních slov jsou slova ohran
   </tr>
 </table> 
 
-Například:
+Příklad:
 
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'This is a freaking good idea.'}]"

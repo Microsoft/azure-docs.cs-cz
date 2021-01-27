@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 10/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: b73fa80085cc0491c8b4d0856d0baacfef1b51c0
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 4a080505f780e724bfd2ab997f5c823e467c4bec
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96301528"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896965"
 ---
 # <a name="run-runbooks-on-a-hybrid-runbook-worker"></a>Spouštění runbooků ve funkci Hybrid Runbook Worker
 
@@ -22,7 +22,7 @@ Když vytváříte Runbook ke spuštění na Hybrid Runbook Worker, měli byste 
 
 Azure Automation zpracovává úlohy pro procesy Hybrid Runbook Worker jinak než úlohy spuštěné v izolovaném prostoru Azure. Pokud máte dlouho běžící sadu Runbook, ujistěte se, že je možné restartovat počítač. Podrobnosti o chování úlohy najdete v tématu [Hybrid Runbook Worker úlohy](automation-hybrid-runbook-worker.md#hybrid-runbook-worker-jobs).
 
-Úlohy pro procesy Hybrid Runbook Worker běží pod účtem místní **systém** ve Windows nebo v účtu **Nxautomation** v systému Linux. V případě systému Linux ověřte, zda má účet **nxautomation** přístup k umístění, kde jsou uloženy moduly sady Runbook. Když použijete rutinu [install-Module](/powershell/module/powershellget/install-module) , nezapomeňte pro parametr zadat AllUsers, aby `Scope` se zajistilo, že má účet **nxautomation** přístup. Další informace o PowerShellu v systému Linux najdete v tématu [známé problémy pro prostředí PowerShell na platformách jiných než Windows](/powershell/scripting/whats-new/what-s-new-in-powershell-70?view=powershell-7.1).
+Úlohy pro procesy Hybrid Runbook Worker běží pod účtem místní **systém** ve Windows nebo v účtu **Nxautomation** v systému Linux. V případě systému Linux ověřte, zda má účet **nxautomation** přístup k umístění, kde jsou uloženy moduly sady Runbook. Když použijete rutinu [install-Module](/powershell/module/powershellget/install-module) , nezapomeňte pro parametr zadat AllUsers, aby `Scope` se zajistilo, že má účet **nxautomation** přístup. Další informace o PowerShellu v systému Linux najdete v tématu [známé problémy pro prostředí PowerShell na platformách jiných než Windows](/powershell/scripting/whats-new/what-s-new-in-powershell-70).
 
 ## <a name="configure-runbook-permissions"></a>Konfigurace oprávnění sady Runbook
 
@@ -327,4 +327,4 @@ V rámci řešení potíží se sadami Runbook, které běží na Hybrid Runbook
 
 * Pokud vaše Runbooky nejsou úspěšně dokončeny, přečtěte si příručku Poradce při potížích s [chybami spuštění sady Runbook](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails).
 * Další informace o PowerShellu, včetně referenčních modulů jazyka a výukových modulů, najdete v tématu [dokumentace k PowerShellu](/powershell/scripting/overview).
-* Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](/powershell/module/az.automation#automation).
+* Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](/powershell/module/az.automation).

@@ -9,12 +9,12 @@ ms.date: 01/06/2021
 ms.author: normesta
 ms.reviewer: jamsbak
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: cc63a9787a3611f28e6466564735d029bf65b757
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 0340ab0a13d7c639d5e5bba49b3cdd445bad5a83
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968394"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879877"
 ---
 # <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration"></a>Filtrování dat pomocí Azure Data Lake Storage akcelerace dotazů
 
@@ -22,7 +22,7 @@ V tomto článku se dozvíte, jak pomocí akcelerace dotazů načíst podmnožin
 
 Zrychlení dotazů umožňuje aplikacím a analytickým architekturám významně optimalizovat zpracování dat tím, že načte jenom data, která potřebují k provedení dané operace. Další informace najdete v tématu [Azure Data Lake Storage zrychlení dotazů](data-lake-storage-query-acceleration.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Pokud chcete získat přístup k Azure Storage, budete potřebovat předplatné Azure. Pokud ještě předplatné nemáte, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -32,7 +32,7 @@ Zrychlení dotazů umožňuje aplikacím a analytickým architekturám významn�
 
   ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-  Není
+  Neuvedeno
 
   ### <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -236,7 +236,7 @@ Nainstalujte Data Lake klientské knihovny pro JavaScript tak, že otevřete okn
 
 #### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Není
+Neuvedeno
 
 #### <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -437,7 +437,7 @@ def dump_query_csv(blob: BlobClient, query: str, headers: bool):
 
 ### <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-Tento příklad odešle dotaz do rozhraní API akcelerace dotazů a potom streamuje výsledky zpět. `blob`Objekt předaný do `queryHemingway` pomocné funkce je typu [BlockBlobClient](https://docs.microsoft.com/javascript/api/@azure/storage-blob/blockblobclient). Další informace o tom, jak získat objekt [BlockBlobClient](https://docs.microsoft.com/javascript/api/@azure/storage-blob/blockblobclient) , najdete [v tématu rychlý Start: Správa objektů BLOB pomocí JavaScriptu v12 SDK v Node.js](storage-quickstart-blobs-nodejs.md).
+Tento příklad odešle dotaz do rozhraní API akcelerace dotazů a potom streamuje výsledky zpět. `blob`Objekt předaný do `queryHemingway` pomocné funkce je typu [BlockBlobClient](/javascript/api/@azure/storage-blob/blockblobclient). Další informace o tom, jak získat objekt [BlockBlobClient](/javascript/api/@azure/storage-blob/blockblobclient) , najdete [v tématu rychlý Start: Správa objektů BLOB pomocí JavaScriptu v12 SDK v Node.js](storage-quickstart-blobs-nodejs.md).
 
 ```javascript
 async function queryHemingway(blob)

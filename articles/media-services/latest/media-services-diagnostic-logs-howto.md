@@ -1,5 +1,5 @@
 ---
-title: Monitorování diagnostických protokolů Media Services přes Azure Monitor | Microsoft Docs
+title: Monitorování diagnostických protokolů Media Services přes Azure Monitor
 description: Tento článek ukazuje, jak směrovat a zobrazovat diagnostické protokoly prostřednictvím Azure Monitor.
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e756ff0133e3d3f0f86ea2f592005f2f2986488e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c666228a8a82083c319aa6c2d7fd161f7e623f4
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707757"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897964"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>Monitorování diagnostických protokolů Media Services
 
@@ -37,7 +37,7 @@ V tomto článku se dozvíte, jak směrovat data do účtu úložiště a pak je
 ## <a name="route-data-to-the-storage-account-using-the-portal"></a>Směrování dat do účtu úložiště pomocí portálu
 
 1. Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
-1. Přejděte na účet Media Services v části **monitorování**a klikněte na **nastavení diagnostiky** . Tady se zobrazí seznam všech prostředků ve vašem předplatném, které generují data monitorování prostřednictvím služby Azure Monitor.
+1. Přejděte na účet Media Services v části **monitorování** a klikněte na **nastavení diagnostiky** . Tady se zobrazí seznam všech prostředků ve vašem předplatném, které generují data monitorování prostřednictvím služby Azure Monitor.
 
     ![Snímek obrazovky, který zvýrazní nastavení diagnostiky v části monitorování.](media/media-services-diagnostic-logs/logs01.png)
 
@@ -76,7 +76,7 @@ az monitor diagnostic-settings create --name <diagnostic name> \
     }]'
 ```
 
-Například:
+Příklad:
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --name amsv3diagnostic \
@@ -94,7 +94,7 @@ Na zobrazení události v účtu úložiště možná budete muset počkat až p
 
 1. Na portálu přejděte do části **Účty úložiště**, kterou najdete v levém navigačním panelu.
 1. Identifikujte účet úložiště, který jste vytvořili v předchozí části, a klikněte na něj.
-1. Klikněte na **objekty blob**a potom na kontejneru s názvem **Insights-logs-keydeliveryrequests**. Toto je kontejner, který obsahuje vaše protokoly. Data monitorování se rozdělí do kontejnerů podle ID prostředku a pak podle data a času.
+1. Klikněte na **objekty blob** a potom na kontejneru s názvem **Insights-logs-keydeliveryrequests**. Toto je kontejner, který obsahuje vaše protokoly. Data monitorování se rozdělí do kontejnerů podle ID prostředku a pak podle data a času.
 1. Kliknutím na kontejnery pro ID prostředku, datum a čas přejděte k souboru PT1H.json. Klikněte na soubor PT1H.json a pak klikněte na **Stáhnout**.
 
  Teď můžete zobrazit událost JSON, která se uložila do účtu úložiště.
@@ -183,7 +183,7 @@ Na zobrazení události v účtu úložiště možná budete muset počkat až p
 
 ## <a name="see-also"></a>Viz také
 
-* [Azure Monitor metriky](../../azure-monitor/platform/data-platform.md)
+* [Metriky Azure Monitoru](../../azure-monitor/platform/data-platform.md)
 * [Protokoly diagnostiky Azure Monitor](../../azure-monitor/platform/platform-logs-overview.md)
 * [Jak shromažďovat a využívat data protokolu z vašich prostředků Azure](../../azure-monitor/platform/platform-logs-overview.md)
 

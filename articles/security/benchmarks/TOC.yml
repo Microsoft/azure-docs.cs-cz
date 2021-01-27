@@ -194,9 +194,9 @@
     - name: Standardní hodnoty zabezpečení pro Logic Apps
       href: ../../logic-apps/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Microsoft Cloud App Security
-      href: 'https://docs.microsoft.com/cloud-app-security/security-baseline'
+      href: /cloud-app-security/security-baseline
     - name: Standardní hodnoty zabezpečení pro Microsoft Defender for Identity
-      href: 'https://docs.microsoft.com/defender-for-identity/security-baseline'
+      href: /defender-for-identity/security-baseline
     - name: Standardní hodnoty zabezpečení pro Network Watcher
       href: ../../network-watcher/security-baseline.md
     - name: Standardní hodnoty pro Power BI

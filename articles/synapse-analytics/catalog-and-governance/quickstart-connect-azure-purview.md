@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 12/16/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: cb6a63e4ead45d7751d1d3442793478cfdcd71c0
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 55f0d2e8df36cc11f26c5ff6259ebe2215aaffc6
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98676336"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880538"
 ---
 # <a name="quickstartconnect-an-azure-purview-account-to-a-synapse-workspace"></a>Rychlý Start: připojení účtu Azure dosah k pracovnímu prostoru synapse 
 
@@ -36,7 +36,7 @@ Přejdete do  [https://web.azuresynapse.net](https://web.azuresynapse.net) sv�
 
 ## <a name="permissions-for-connecting-an-azure-purview-account"></a>Oprávnění k připojení účtu Azure dosah 
 
-- K připojení účtu Azure dosah k pracovnímu prostoru synapse potřebujete roli **Přispěvatel** v pracovním prostoru Synapse z Azure Portal IAM a potřebujete přístup k tomuto účtu Azure dosah.
+- K připojení účtu Azure dosah k pracovnímu prostoru synapse potřebujete roli **Přispěvatel** v pracovním prostoru Synapse z Azure Portal IAM a potřebujete přístup k tomuto účtu Azure dosah. Další podrobnosti najdete v tématu věnovaném [oprávněním Azure dosah](../../purview/catalog-permissions.md).
 
 ## <a name="connect-an-azure-purview-account"></a>Připojení účtu Azure Purview  
 

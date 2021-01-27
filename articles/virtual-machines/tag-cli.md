@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 11/11/2020
 ms.author: cynthn
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 48f906bf0025bda03df226f32db1a0d6afdb9cee
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 32d15730557c96362602b5e324254c76637ecb55
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94594966"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897438"
 ---
 # <a name="how-to-tag-a-vm-using-the-cli"></a>Označení virtuálního počítače pomocí rozhraní příkazového řádku
 
@@ -46,8 +46,7 @@ az vm update \
 
 Teď, když jsme použili značky pro naše prostředky rozhraní příkazového řádku Azure CLI a portál, se podíváme na podrobnosti o využití a zobrazíme značky na fakturačním portálu.
 
-
-**Další kroky**
+### <a name="next-steps"></a>Další kroky
 
 - Další informace o označování vašich prostředků Azure najdete v tématu [přehled Azure Resource Manager přehledu](../azure-resource-manager/management/overview.md) a [použití značek k uspořádání prostředků Azure](../azure-resource-manager/management/tag-resources.md).
-- Pokud chcete zjistit, jak vám značky pomůžou spravovat vaše používání prostředků Azure, přečtěte si článek [Princip fakturace Azure](../cost-management-billing/understand/review-individual-bill.md) a [Získejte přehled o využití prostředků Microsoft Azure](../cost-management-billing/manage/usage-rate-card-overview.md).
+- Informace o tom, jak značky vám pomůžou při správě používání prostředků Azure, najdete v tématu [Princip fakturace Azure](../cost-management-billing/understand/review-individual-bill.md).

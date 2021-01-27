@@ -11,12 +11,12 @@ ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 12/21/2020
 ms.custom: automl
-ms.openlocfilehash: 90c827774f38f07b9791a6399a53b0304bbe28c8
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: ff9bd328dd98fbd614a3bb63a1edddc2027d97b2
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97695207"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879777"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>Kurz: vytvoření klasifikačního modelu pomocí automatizovaného ML v Azure Machine Learning
 
@@ -141,7 +141,7 @@ Po načtení a konfiguraci dat můžete nastavit experiment. Tato instalace zahr
             Název výpočetních prostředků |  Jedinečný název, který identifikuje váš výpočetní kontext. | automl – COMPUTE
             Minimální/maximální počet uzlů| Chcete-li profilovat data, je nutné zadat 1 nebo více uzlů.|Minimální počet uzlů: 1<br>Maximální počet uzlů: 6
             Počet sekund nečinnosti před horizontálním navýšení kapacity | Doba nečinnosti před tím, než se cluster automaticky škáluje na minimální počet uzlů.|120 (výchozí)
-            Pokročilá nastavení | Nastavení pro konfiguraci a autorizaci virtuální sítě pro svůj experiment.| Žádné               
+            Rozšířená nastavení | Nastavení pro konfiguraci a autorizaci virtuální sítě pro svůj experiment.| Žádné               
 
         1. Vyberte **vytvořit** a vytvořte tak cíl služby Compute. 
 
@@ -252,7 +252,7 @@ Soubory nasazení jsou větší než data a experimenty, takže se o jejich ulo�
 V tomto kurzu automatizovaného strojového učení jste pomocí automatizovaného rozhraní ML Azure Machine Learning vytvořili a nasadili klasifikační model. Další informace a další kroky najdete v těchto článcích:
 
 > [!div class="nextstepaction"]
-> [Využívání webové služby](https://docs.microsoft.com/power-bi/connect-data/service-aml-integrate?context=azure/machine-learning/context/ml-context)
+> [Využívání webové služby](/power-bi/connect-data/service-aml-integrate?context=azure%2fmachine-learning%2fcontext%2fml-context)
 
 + Přečtěte si další informace o [automatizovaném strojovém učení](concept-automated-ml.md).
 + Další informace o metrikách klasifikace a grafech najdete v článku [vysvětlení výsledků automatizovaného strojového učení](how-to-understand-automated-ml.md) .

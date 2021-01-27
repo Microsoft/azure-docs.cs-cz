@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 16f903e34c64214d54fc01fa621f561f1786de08
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.openlocfilehash: 81ae46a7b6c19557eeadd2d5b28ad2fa46e77115
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97755986"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881363"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>Seznámení se službou Azure Defender pro SQL
 
@@ -27,7 +27,7 @@ Azure Defender pro SQL zahrnuje dva plány Azure Defenderu, které rozšiřuje [
 |----|:----|
 |Stav vydaných verzí:|**Azure Defender pro servery Azure SQL Database** – všeobecně dostupné (GA)<br>**Azure Defender pro SQL servery na počítačích** – všeobecně dostupné (GA) |
 |Stanov|Dva plány, které tvoří **Azure Defender pro SQL** , se účtují, jak je znázorněno na [stránce s cenami](security-center-pricing.md) .|
-|Chráněné verze SQL:|[SQL na virtuálních počítačích Azure](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)<br>[Servery SQL s podporou ARC Azure](https://docs.microsoft.com/sql/sql-server/azure-arc/overview)<br>Místní SQL servery na počítačích s Windows bez ARC Azure<br>[Jednoduché databáze](../azure-sql/database/single-database-overview.md) a [elastické fondy](../azure-sql/database/elastic-pool-overview.md) Azure SQL<br>[Spravovaná instance Azure SQL](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)<br>[Vyhrazený fond SQL Azure synapse Analytics (dříve SQL DW)](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)|
+|Chráněné verze SQL:|[SQL na virtuálních počítačích Azure](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)<br>[Servery SQL s podporou ARC Azure](/sql/sql-server/azure-arc/overview)<br>Místní SQL servery na počítačích s Windows bez ARC Azure<br>[Jednoduché databáze](../azure-sql/database/single-database-overview.md) a [elastické fondy](../azure-sql/database/elastic-pool-overview.md) Azure SQL<br>[Spravovaná instance Azure SQL](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)<br>[Vyhrazený fond SQL Azure synapse Analytics (dříve SQL DW)](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)|
 |Cloud|![Ano ](./media/icons/yes-icon.png) komerční cloudy<br>![Ano ](./media/icons/yes-icon.png) US gov<br>![Ano ](./media/icons/yes-icon.png) Čína gov (**částečný**: podmnožina výstrah a posouzení ohrožení zabezpečení pro servery SQL. Ochrana proti hrozbám v případě chování není k dispozici.)|
 |||
 
@@ -43,7 +43,7 @@ Azure Defender pro SQL zahrnuje dva plány Azure Defenderu, které rozšiřuje [
 - **Azure Defender pro servery SQL na počítačích** rozšiřuje ochranu pro vaše servery SQL nativní pro Azure tak, aby plně podporovala hybridní prostředí a chránila SQL servery (všechny podporované verze) hostované v Azure, v jiných cloudových prostředích a dokonce i v místních počítačích:
     - [SQL Server na virtuálních počítačích](https://azure.microsoft.com/services/virtual-machines/sql-server/)
     - Místní SQL servery:
-        - [SQL Server s podporou služby Azure Arc (Preview)](https://docs.microsoft.com/sql/sql-server/azure-arc/overview)
+        - [SQL Server s podporou služby Azure Arc (Preview)](/sql/sql-server/azure-arc/overview)
         - [SQL Server běžící na počítačích s Windows bez ARC Azure](../azure-monitor/platform/agent-windows.md)
 
 

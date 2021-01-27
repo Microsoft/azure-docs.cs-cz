@@ -1,6 +1,5 @@
 ---
 title: Filtrování manifestů pomocí dynamického balíčku
-titleSuffix: Azure Media Services
 description: Naučte se vytvářet filtry pomocí dynamického balíčku pro filtrování a selektivní streamování manifestů.
 services: media-services
 documentationcenter: ''
@@ -14,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: acb30c1659c4c29e0af83da5594bdd9a7e3465d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ffdb41752630e0e5e22303ff58ecd798595a890
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89299027"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897658"
 ---
 # <a name="filter-your-manifests-using-dynamic-packager"></a>Filtrování manifestů pomocí dynamického balíčku
 
@@ -141,7 +140,7 @@ Další informace najdete v [tomto blogovém příspěvku](https://azure.microso
 
 ## <a name="considerations-and-limitations"></a>Důležité informace a omezení
 
-- Pro filtr VOD by se neměly nastavit hodnoty pro **forceEndTimestamp**, **presentationWindowDuration**a **liveBackoffDuration** . Používají se jenom pro scénáře živého filtru.
+- Pro filtr VOD by se neměly nastavit hodnoty pro **forceEndTimestamp**, **presentationWindowDuration** a **liveBackoffDuration** . Používají se jenom pro scénáře živého filtru.
 - Dynamický manifest funguje v hranicích skupinu GOP (klíčové snímky), takže ořezávání má skupinu GOPou přesnost.
 - Pro účty a filtry assetů můžete použít stejný název filtru. Filtry prostředků mají vyšší prioritu a přepíšou filtry účtu.
 - Pokud filtr aktualizujete, může trvat až 2 minuty, než koncový bod streamování aktualizuje pravidla. Pokud jste použili filtry pro poskytování obsahu (a ukládáte obsah do mezipaměti v proxy serverech a v mezipamětech CDN), může aktualizace těchto filtrů způsobit selhání přehrávače. Doporučujeme, abyste po aktualizaci filtru vymazali mezipaměť. Pokud tato možnost není možná, zvažte použití jiného filtru.

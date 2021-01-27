@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 7ebe56b95b0c4b938c31c0ece04d27fd1b234b05
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 1861a4e75f34cfd7fe386c094cce3a638b3e1a1e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98729908"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880789"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Služby, které podporují spravované identity prostředků Azure
 
@@ -159,8 +159,6 @@ Pokud chcete nakonfigurovat spravovanou identitu pro Azure Data Factory v2 (v ob
 - [REST](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-rest-api)
 - [SADĚ](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-sdk)
 
-
-
 ### <a name="azure-event-grid"></a>Azure Event Grid
 
 Typ spravované identity |Vše je všeobecně dostupné<br>Globální oblasti Azure | Azure Government | Azure Germany | Azure (Čína) 21Vianet |
@@ -168,13 +166,12 @@ Typ spravované identity |Vše je všeobecně dostupné<br>Globální oblasti Az
 | Přiřazená systémem | Preview | Preview | Není k dispozici | Preview |
 | Přiřazená uživatelem | Není k dispozici | Není k dispozici  | Není k dispozici  | Není k dispozici |
 
+### <a name="azure-firewall-policy"></a>Zásady Azure Firewall
 
-
-
-
-
-
-
+Typ spravované identity |Vše je všeobecně dostupné<br>Globální oblasti Azure | Azure Government | Azure Germany | Azure (Čína) 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| Přiřazená systémem | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici |
+| Přiřazená uživatelem | Preview | Není k dispozici  | Není k dispozici  | Není k dispozici |
 
 ### <a name="azure-functions"></a>Azure Functions
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/14/2018
 ms.topic: conceptual
-ms.openlocfilehash: f175e495af8e925c0d5a6c61669a5e2f44f73ae7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 483d4c16f1b77bf7328857eb25e1571a741d144e
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86185992"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896914"
 ---
 # <a name="learn-powershell-workflow-for-azure-automation"></a>Informace o pracovním postupu PowerShellu pro Azure Automation
 
@@ -290,7 +290,7 @@ workflow CreateTestVms
 ```
 
 > [!NOTE]
-> Pro negrafické Runbooky PowerShellu `Add-AzAccount` a `Add-AzureRMAccount` jsou aliasy pro [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0). Tyto rutiny můžete použít nebo můžete [své moduly](automation-update-azure-modules.md) v účtu Automation aktualizovat na nejnovější verze. Vaše moduly možná budete muset aktualizovat i v případě, že jste právě vytvořili nový účet Automation. Pokud ověřujete pomocí účtu Spustit jako nakonfigurovaného s instančním objektem, není použití těchto rutin nutné.
+> Pro negrafické Runbooky PowerShellu `Add-AzAccount` a `Add-AzureRMAccount` jsou aliasy pro [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount). Tyto rutiny můžete použít nebo můžete [své moduly](automation-update-azure-modules.md) v účtu Automation aktualizovat na nejnovější verze. Vaše moduly možná budete muset aktualizovat i v případě, že jste právě vytvořili nový účet Automation. Pokud ověřujete pomocí účtu Spustit jako nakonfigurovaného s instančním objektem, není použití těchto rutin nutné.
 
 Další informace o kontrolních bodech najdete v tématu [Přidání kontrolních bodů do pracovního postupu skriptu](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj574114(v=ws.11)).
 

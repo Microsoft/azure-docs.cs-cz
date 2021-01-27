@@ -7,12 +7,12 @@ ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 12/07/2020
-ms.openlocfilehash: 118fe70abf52a6c96f4f2dc47e3ad23a388f3598
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: c71c13701d064110be0ef976920c0cc01f2fa308
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96853743"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879760"
 ---
 # <a name="geographic-availability-and-currency-support-for-the-commercial-marketplace"></a>Geografická dostupnost a podpora měny pro komerční tržiště
 
@@ -108,7 +108,7 @@ Nabídky komerčních webů na webu Marketplace si můžete koupit v 141 zeměpi
 | Mongolsko                            | MN        | USD          | EUR, MNT, USD |
 | Černá Hora                          | ME        | USD          | EUR, USD |
 | Maroko                             | MA        | USD          | EUR, MAD –, USD |
-| Namibie                             | Není k dispozici        | USD          | EUR, NAD, USD, ZAR |
+| Namibie                             | NA        | USD          | EUR, NAD, USD, ZAR |
 | Nepál                               | NP        | USD          | EUR, NPR, USD |
 | Nizozemsko                         | NL        | EUR          | EUR, USD |
 | Nový Zéland                         | NZ        | NZD          | EUR, NZD, USD |
@@ -195,13 +195,13 @@ Jednotlivé ceny (v závislosti na tom, jak byly nastaveny) mohou být ovlivněn
 Podrobnosti o tom, jak zadat ceny pro konkrétní typy nabídek, najdete v těchto článcích:
 
 - [Vytvoření nabídky aplikací Azure](create-new-azure-apps-offer.md)
-- [Vytvoření nabídky kontejneru Azure](partner-center-portal/create-azure-container-offer.md)
+- [Vytvoření nabídky kontejneru Azure](./create-azure-container-offer.md)
 - [Vytvoření nabídky virtuálních počítačů Azure](azure-vm-create.md)
 - [Vytvoření nabídky konzultačních služeb](./create-consulting-service-offer.md)
 - [Vytvoření nabídky Dynamics 365 for Customer Engagement a PowerApps](partner-center-portal/create-new-customer-engagement-offer.md)
 - [Vytvoření nabídky Dynamics 365 for Operations](partner-center-portal/create-new-operations-offer.md)
 - [Vytvoření nabídky Dynamics 365 Business Central](partner-center-portal/create-new-business-central-offer.md)
 - [Vytvoření nabídky modulu IoT Edge](partner-center-portal/azure-iot-edge-module-creation.md)
-- [Vytvoření nabídky spravované služby](partner-center-portal/create-new-managed-service-offer.md)
+- [Vytvoření nabídky spravované služby](./plan-managed-service-offer.md)
 - [Vytvoření aplikace Power BI](partner-center-portal/create-power-bi-app-offer.md)
 - [Vytvoření nabídky SaaS](./create-new-saas-offer.md)

@@ -8,12 +8,12 @@ ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 23c62562299768afb5f5d87bbcf4f7b19b3235ce
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 1a319c728b918dbad7dd5f240bc7a0bfeb0c4c09
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97897854"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881040"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurace, optimalizace a řešení potíží s AzCopy
 
@@ -22,7 +22,7 @@ AzCopy je nástroj příkazového řádku, pomocí kterého můžete kopírovat 
 > [!NOTE]
 > Pokud hledáte obsah, který vám pomůžete začít s AzCopy, přečtěte si některé z následujících článků:
 > - [Začínáme s nástrojem AzCopy](storage-use-azcopy-v10.md)
-> - [Přenos dat pomocí AzCopy a BLOB Storage](storage-use-azcopy-blobs.md)
+> - [Přenos dat pomocí AzCopy a BLOB Storage](./storage-use-azcopy-v10.md#transfer-data)
 > - [Přenos dat s použitím AzCopy a úložiště souborů](storage-use-azcopy-files.md)
 > - [Přenos dat pomocí kontejnerů AzCopy a Amazon S3](storage-use-azcopy-s3.md)
 
@@ -220,5 +220,3 @@ Dostupné úrovně protokolu jsou: `NONE` , `DEBUG` , `INFO` , `WARNING` , `ERRO
 Pokud chcete ze svého místního počítače odebrat všechny soubory plánu a protokolu, aby se ušetřilo místo na disku, použijte `azcopy jobs clean` příkaz.
 
 Chcete-li odebrat plán a soubory protokolu spojené pouze s jednou úlohou, použijte `azcopy jobs rm <job-id>` . `<job-id>`Zástupný symbol v tomto příkladu nahraďte ID úlohy úlohy.
-
-

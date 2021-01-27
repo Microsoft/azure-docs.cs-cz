@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: f872159e538dc85121a7a6d4d6503fd18a263628
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b851e52141cf93aba4aab9b2768658f0aac4660f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87543040"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879911"
 ---
 # <a name="frequently-asked-questions"></a>Nejčastější dotazy
 Máte nějaké otázky? Další informace najdete v následujících nejčastějších dotazech.
@@ -163,7 +163,7 @@ Následující zdroje vám pomůžou bezpečně spravovat tajné klíče a přis
  - [Služba Azure AD Identita spravované služby (MSI)](https://azure.microsoft.com/blog/keep-credentials-out-of-code-introducing-azure-ad-managed-service-identity/)
  - [Spravované identity pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md)
  - [Spravované identity v Azure App Service a Azure Functions](../../app-service/overview-managed-identity.md)
- - [Knihovna AppAuthentication](../../key-vault/general/service-to-service-authentication.md)
+ - [Knihovna AppAuthentication](/dotnet/api/overview/azure/service-to-service-authentication)
 
 
 Další informace najdete v blogovém příspěvku, který je [bezpečný pro správu tajných kódů v cloudu](https://devblogs.microsoft.com/visualstudio/managing-secrets-securely-in-the-cloud/).

@@ -4,15 +4,15 @@ description: Pokud chcete vytvářet vysoce dostupné a odolné aplikace v Azure
 author: cynthn
 ms.service: azure
 ms.topic: article
-ms.date: 12/17/2020
+ms.date: 01/26/2021
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: 2a2e4ac57eec866d9857f564d6c76ad4a775d223
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 5883dc8b34cd1aa00ba1c5de25a09a017a130c0a
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/27/2021
-ms.locfileid: "98874604"
+ms.locfileid: "98896880"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>Služby Azure, které podporují zóny dostupnosti
 
@@ -58,7 +58,7 @@ Pro zajištění komplexní provozní kontinuity v Azure Sestavte architekturu a
 | Západní USA 2        |                |                      |                     |                |
 
 
-Další informace o podpoře Zóny dostupnosti a dostupných služeb v těchto oblastech vám poskytne zástupce Microsoftu pro prodej nebo zákazníky. Informace o nadcházejících oblastech, které budou podporovat Zóny dostupnosti, najdete v tématu geografické oblasti [Azure](https://azure.microsoft.com/en-us/global-infrastructure/geographies/).
+\* Další informace o podpoře Zóny dostupnosti a dostupných služeb v těchto oblastech vám poskytne zástupce Microsoftu pro prodej nebo zákazníky. Informace o nadcházejících oblastech, které budou podporovat Zóny dostupnosti, najdete v tématu geografické oblasti [Azure](https://azure.microsoft.com/en-us/global-infrastructure/geographies/).
 
 
 ## <a name="azure-services-supporting-availability-zones"></a>Služby Azure podporující Zóny dostupnosti

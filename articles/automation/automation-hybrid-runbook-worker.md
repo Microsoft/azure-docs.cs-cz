@@ -3,14 +3,14 @@ title: Přehled Azure Automation Hybrid Runbook Worker
 description: Tento článek poskytuje přehled Hybrid Runbook Worker, které můžete použít ke spouštění Runbooků na počítačích v místním datovém centru nebo poskytovateli cloudu.
 services: automation
 ms.subservice: process-automation
-ms.date: 01/11/2021
+ms.date: 01/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: a23d30047a13b1d176b086a9923e140e7f8d3e45
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 7cf18b6b677daaf97d425c86a0cad91b3abcb225
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98072135"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896948"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>Přehled funkce Hybrid Runbook Worker
 
@@ -20,7 +20,7 @@ Runbooky v Azure Automation nemusí mít přístup k prostředkům v jiných clo
 
 Existují dva typy pracovních procesů Runbooku – systém a uživatel. Rozdíly mezi nimi jsou popsány v následující tabulce.
 
-|Typ | Description |
+|Typ | Popis |
 |-----|-------------|
 |**Systém** |Nástroj podporuje sadu skrytých runbooků používaných funkcí Update Management, které jsou určeny k instalaci aktualizací určených uživatelem na počítačích se systémem Windows a Linux.<br> Tento typ Hybrid Runbook Worker není členem skupiny Hybrid Runbook Worker, a proto nespouští Runbooky, které cílí na skupinu Runbook Worker. |
 |**Uživatel** |Podporuje uživatelsky definované Runbooky, které mají být spouštěny přímo na počítači s Windows a Linux, které jsou členy jedné nebo více skupin Runbook Worker. |
@@ -54,16 +54,7 @@ Doporučenou metodou instalace pro počítač s Windows je použití sady Runboo
 
 ## <a name="network-planning"></a><a name="network-planning"></a>Plánování sítě
 
-Aby se mohl systém i uživatel Hybrid Runbook Worker připojit k Azure Automation a zaregistrovat se v ní, musí mít přístup k číslu portu a adresám URL popsaným v této části. Pracovní proces musí mít také přístup k [portům a adresám URL vyžadovaným pro Log Analytics agenta](../azure-monitor/platform/agent-windows.md) pro připojení k pracovnímu prostoru Azure monitor Log Analytics.
-
-Pro Hybrid Runbook Worker jsou vyžadovány následující porty a adresy URL:
-
-* Port: pro odchozí přístup k Internetu se vyžaduje jenom TCP 443.
-* Globální adresa URL: `*.azure-automation.net`
-* Globální adresa URL US Gov – Virginie: `*.azure-automation.us`
-* Služba agenta: `https://<workspaceId>.agentsvc.azure-automation.net`
-
-Pokud máte účet Automation, který je definovaný pro konkrétní oblast, můžete Hybrid Runbook Worker komunikaci omezit na příslušné oblastní datové centrum. Zkontrolujte [záznamy DNS používané Azure Automation](how-to/automation-region-dns-records.md) pro požadované záznamy DNS.
+Podrobné informace o portech, adresách URL a dalších podrobných informacích o sítích požadovaných pro Hybrid Runbook Worker najdete v [Azure Automation konfiguraci sítě](automation-network-configuration.md#network-planning-for-hybrid-runbook-worker) .
 
 ### <a name="proxy-server-use"></a>Použití proxy serveru
 
@@ -94,7 +85,7 @@ Azure Automation Hybrid Runbook Worker lze v Azure Government použít pro podpo
 * [Vyhrazené hostitele Azure](../azure-government/documentation-government-impact-level-5.md#azure-dedicated-host), které poskytují fyzické servery, které mohou hostovat jeden nebo více virtuálních počítačů vyhrazených pro jedno předplatné Azure.
 
 >[!NOTE]
->Výpočetní izolaci prostřednictvím role Hybrid Runbook Worker je k dispozici pro cloudy Azure komerčních i státních úřadů USA. 
+>Výpočetní izolaci prostřednictvím role Hybrid Runbook Worker je k dispozici pro cloudy Azure komerčních i státních úřadů USA.
 
 ### <a name="update-management-addresses-for-hybrid-runbook-worker"></a>Update Management adres pro Hybrid Runbook Worker
 

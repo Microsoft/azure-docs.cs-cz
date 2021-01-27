@@ -1,5 +1,5 @@
 ---
-title: Kódování vlastní transformace pomocí Media Services V3 Azure CLI | Microsoft Docs
+title: Kódování vlastní transformace pomocí Media Services V3 Azure CLI
 description: V tomto tématu se dozvíte, jak použít Azure Media Services V3 ke kódování vlastní transformace pomocí rozhraní příkazového řádku Azure CLI.
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.custom: devx-track-azurecli
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: c61ac8c7cf85b1fae4c9b531f16b951dd2b80876
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9758ed7403e11ca30732377a65bbde1944368cb2
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89295780"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897186"
 ---
 # <a name="how-to-encode-with-a-custom-transform---azure-cli"></a>Jak kódovat pomocí vlastní transformace – Azure CLI
 
@@ -25,7 +25,7 @@ ms.locfileid: "89295780"
 
 Při kódování pomocí Azure Media Services můžete rychle začít s jedním z doporučených integrovaných přednastavení, a to na základě doporučených postupů v oboru, jak je znázorněno v rychlém startu [souborů streamování](stream-files-cli-quickstart.md#create-a-transform-for-adaptive-bitrate-encoding) . Můžete také vytvořit vlastní předvolby, která bude cílit na konkrétní scénář nebo požadavky na zařízení.
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Požadavky
 
 Při vytváření vlastních přednastavení platí následující požadavky:
 

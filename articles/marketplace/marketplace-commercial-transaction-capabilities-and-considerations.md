@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 5a2a7abf0227812826428557b86c4468f7693c82
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: b8c9af31243d8bb58a58fbc687cad68130f64f7e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600395"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880738"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Možnosti Transact-The pro komerční web Marketplace
 
@@ -90,7 +90,7 @@ Tato možnost umožňuje vyšší nebo nižší ceny než veřejně dostupná na
 
 Pokud si zákazníci koupí svou nabídku jazyka Transact z komerčního tržiště, účtujeme vám i 20% standardního poplatku za službu Store. Podrobnosti o tomto poplatku najdete v části 5c [smlouvy Microsoft Publisher](https://go.microsoft.com/fwlink/?LinkID=699560).
 
-U některých nabídek, které jsou publikovány na komerčním webu Marketplace, můžete získat nárok na omezený poplatek za službu úložiště o 10%. Aby byla nabídka oprávněná, musí ji Microsoft jmenovat jako spoluprodejní motivovaní Azure. Nárok na získání omezeného poplatku za služby Marketplace vyžaduje splnění alespoň pěti pracovních dnů před koncem každého kalendářního měsíce. Po splnění nároku na vyřízení je snížený poplatek za službu udělen všem transakcím platným první den v následujícím měsíci, dokud nebude motivovaní stav společného prodeje Azure IP. Podrobnosti o způsobilosti spoluprodejních IP adres najdete v tématu [požadavky na stav společného prodeje](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status).
+U některých nabídek, které jsou publikovány na komerčním webu Marketplace, můžete získat nárok na omezený poplatek za službu úložiště o 10%. Aby byla nabídka oprávněná, musí ji Microsoft jmenovat jako spoluprodejní motivovaní Azure. Nárok na získání omezeného poplatku za služby Marketplace vyžaduje splnění alespoň pěti pracovních dnů před koncem každého kalendářního měsíce. Po splnění nároku na vyřízení je snížený poplatek za službu udělen všem transakcím platným první den v následujícím měsíci, dokud nebude motivovaní stav společného prodeje Azure IP. Podrobnosti o způsobilosti spoluprodejních IP adres najdete v tématu [požadavky na stav společného prodeje](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status).
 
 Snížený poplatek za službu Marketplace se vztahuje na Azure IP spoluprodejní motivovaní SaaS, virtuální počítače, spravované aplikace a všechna další kvalifikovaná IaaS řešení, která jsou dostupná prostřednictvím komerčního tržiště. Placené nabídky SaaS jsou spojené s jednou aplikací Microsoft Teams nebo aspoň dvěma Microsoft 365mi doplňky (Excel, PowerPoint, Word, Outlook a SharePoint) a publikované do Microsoft AppSource také dostanou slevu.
 
