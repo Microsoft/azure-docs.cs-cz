@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/18/2020
 ms.author: yushwang
-ms.openlocfilehash: eda920640667abc6620c5c90ee7d04a44789353e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b298185866d16da02fe8d3b3fdb41f0b0b1f726
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90995314"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878540"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections-azure-portal"></a>Konfigurace zásad IPsec/IKE pro připojení S2S VPN nebo VNet-to-VNet: Azure Portal
 
@@ -25,13 +25,11 @@ Protokol IPsec a IKE standard podporuje široké spektrum kryptografických algo
 
 Tento článek poskytuje pokyny k vytvoření a konfiguraci zásad IPsec/IKE a použije se pro nové nebo existující připojení VPN Gateway.
 
-### <a name="considerations"></a>Důležité informace
+### <a name="considerations"></a>Požadavky
 
 * Zásady IPsec/IKE fungují jenom na následujících SKU brány:
-  * ***VpnGw1 ~ 5 a VpnGw1AZ ~ 5AZ***
-  * ***Standard*** a ***HighPerformance***
-* Pro jedno připojení můžete zadat pouze ***jednu*** kombinaci zásad.
-* Je nutné zadat všechny algoritmy a parametry pro protokol IKE (hlavní režim) i pro protokol IPsec (rychlý režim). Zadání částečných zásad není povoleno.
+  * ***VpnGw1 ~ 5 a VpnGw1AZ ~ 5AZ** _ _ ***Standard** _ a _*_HighPerformance_*_ _ pro dané připojení můžete zadat pouze ***jednu** kombinaci zásad.
+  _ Musíte zadat všechny algoritmy a parametry pro protokol IKE (hlavní režim) i pro protokol IPsec (rychlý režim). Zadání částečných zásad není povoleno.
 * Pokud chcete zajistit, aby se zásady na místních zařízeních VPN podporovaly, kontaktujte specifikace dodavatele zařízení VPN. Připojení S2S nebo VNet-to-VNet nelze nastavit, pokud jsou zásady nekompatibilní.
 
 ## <a name="workflow"></a><a name ="workflow"></a>Pracovní postup
@@ -116,27 +114,27 @@ Další podrobnosti najdete v článcích týkajících se [RFC3526](https://too
 
 V této části se seznámíte s postupem vytvoření připojení VPN typu Site-to-site pomocí zásad IPsec/IKE. Následující postup vytvoří připojení, jak je znázorněno na následujícím diagramu:
 
-:::image type="content" source="./media/ipsec-ike-policy-howto/site-to-site-diagram.png" alt-text="Diagram zásad IPsec/IKE" border="false":::
+:::image type="content" source="./media/ipsec-ike-policy-howto/site-to-site-diagram.png" alt-text="Zásady pro site-to-site" border="false":::
 
 ### <a name="step-1---create-the-virtual-network-vpn-gateway-and-local-network-gateway"></a><a name="createvnet1"></a>Krok 1 – vytvoření virtuální sítě, brány sítě VPN a brány místní sítě
 
-Vytvořte následující prostředky, jak je znázorněno na snímcích obrazovky níže. Postup najdete v tématu [vytvoření připojení VPN typu Site-to-site](vpn-gateway-howto-site-to-site-resource-manager-portal.md).
+Vytvořte následující prostředky, jak je znázorněno na snímcích obrazovky níže. Postup najdete v tématu [vytvoření připojení VPN typu Site-to-site](./tutorial-site-to-site-portal.md).
 
 * **Virtuální síť:**  Virtuální sítě testvnet1
 
-   :::image type="content" source="./media/ipsec-ike-policy-howto/testvnet-1.png" alt-text="Diagram zásad IPsec/IKE":::
+   :::image type="content" source="./media/ipsec-ike-policy-howto/testvnet-1.png" alt-text="Sítě":::
 
 * **Brána sítě VPN:** VNet1GW
 
-   :::image type="content" source="./media/ipsec-ike-policy-howto/vnet-1-gateway.png" alt-text="Diagram zásad IPsec/IKE":::
+   :::image type="content" source="./media/ipsec-ike-policy-howto/vnet-1-gateway.png" alt-text="brána":::
 
 * **Brána místní sítě:** Site6
 
-   :::image type="content" source="./media/ipsec-ike-policy-howto/lng-site-6.png" alt-text="Diagram zásad IPsec/IKE":::
+   :::image type="content" source="./media/ipsec-ike-policy-howto/lng-site-6.png" alt-text="Web":::
 
 * **Připojení:** VNet1 na Site6
 
-    :::image type="content" source="./media/ipsec-ike-policy-howto/connection-site-6.png" alt-text="Diagram zásad IPsec/IKE":::
+    :::image type="content" source="./media/ipsec-ike-policy-howto/connection-site-6.png" alt-text="Připojení":::
 
 ### <a name="step-2---configure-ipsecike-policy-on-the-s2s-vpn-connection"></a><a name="s2sconnection"></a>Krok 2 – konfigurace zásad IPsec/IKE u připojení S2S VPN
 
@@ -147,15 +145,15 @@ V této části nakonfigurujte zásadu IPsec/IKE s následujícími algoritmy a 
 
 1. V Azure Portal přejděte na prostředek připojení a **VNet1toSite6**. Vyberte **konfigurační** stránku a vyberte **vlastní** zásady IPSec/IKE, abyste zobrazili všechny možnosti konfigurace. Níže uvedený snímek obrazovky ukazuje konfiguraci podle seznamu:
 
-    :::image type="content" source="./media/ipsec-ike-policy-howto/policy-site-6.png" alt-text="Diagram zásad IPsec/IKE":::
+    :::image type="content" source="./media/ipsec-ike-policy-howto/policy-site-6.png" alt-text="Lokalita 6":::
 
 1. Pokud pro protokol IPsec používáte GCMAES, musíte použít stejný algoritmus GCMAES a délku klíče pro šifrování a integritu protokolu IPsec. Například následující snímek obrazovky určuje GCMAES128 pro šifrování protokolu IPsec a integritu protokolu IPsec:
 
-   :::image type="content" source="./media/ipsec-ike-policy-howto/gcmaes.png" alt-text="Diagram zásad IPsec/IKE":::
+   :::image type="content" source="./media/ipsec-ike-policy-howto/gcmaes.png" alt-text="GCMAES pro protokol IPsec":::
 
 1. Volitelně můžete vybrat **Povolit** pro možnost **použít zásady provozu na základě zásad** pro povolení služby Azure VPN Gateway k místnímu připojení k zařízením VPN založeným na zásadách, jak je popsáno výše.
 
-   :::image type="content" source="./media/ipsec-ike-policy-howto/policy-based-selector.png" alt-text="Diagram zásad IPsec/IKE":::
+   :::image type="content" source="./media/ipsec-ike-policy-howto/policy-based-selector.png" alt-text="Výběr provozu na základě zásad":::
 
 1. Po výběru všech možností vyberte **Uložit** a potvrďte změny prostředku připojení. Zásada bude vynutila přibližně minutu.
 
@@ -170,13 +168,13 @@ V této části nakonfigurujte zásadu IPsec/IKE s následujícími algoritmy a 
 
 Postup vytvoření připojení typu VNet-to-VNet se zásadami IPsec/IKE je podobný jako u připojení S2S VPN.
 
-:::image type="content" source="./media/ipsec-ike-policy-howto/vnet-policy.png" alt-text="Diagram zásad IPsec/IKE" border="false":::
+:::image type="content" source="./media/ipsec-ike-policy-howto/vnet-policy.png" alt-text="Diagram zásad VNet-to-VNet" border="false":::
 
 1. Pomocí kroků v článku [vytvoření připojení typu VNet-to-VNet](vpn-gateway-vnet-vnet-rm-ps.md) vytvořte připojení typu VNet-to-VNet.
 
 2. Po dokončení kroků se zobrazí dvě připojení VNet-to-VNet, jak je znázorněno na snímku obrazovky níže v prostředku VNet2GW:
 
-   :::image type="content" source="./media/ipsec-ike-policy-howto/vnet-vnet-connections.png" alt-text="Diagram zásad IPsec/IKE":::
+   :::image type="content" source="./media/ipsec-ike-policy-howto/vnet-vnet-connections.png" alt-text="Připojení typu VNet-to-VNet":::
 
 3. Přejděte na prostředek připojení a na portálu přejděte na stránku **Konfigurace** . Pokud chcete zobrazit možnosti vlastní zásady, vyberte v **zásadách IPSec/IKE** možnost **vlastní** . Vyberte kryptografické algoritmy s odpovídajícími délkami klíčů.
 
@@ -184,7 +182,7 @@ Postup vytvoření připojení typu VNet-to-VNet se zásadami IPsec/IKE je podob
    * IKE: AES128, SHA1, DHGroup14, DPD timeout 45 sekund
    * IPsec: GCMAES128, GCMAES128, PFS14, životnost SA 14400 sekund & 102400000KB
 
-   :::image type="content" source="./media/ipsec-ike-policy-howto/vnet-vnet-policy.png" alt-text="Diagram zásad IPsec/IKE":::
+   :::image type="content" source="./media/ipsec-ike-policy-howto/vnet-vnet-policy.png" alt-text="Zásady připojení":::
 
 4. Vyberte **Uložit** a použijte tak změny zásad v prostředku připojení.
 
@@ -203,7 +201,7 @@ Postup vytvoření připojení typu VNet-to-VNet se zásadami IPsec/IKE je podob
 
 2. V možnosti **zásady IPSec/IKE** vyberte **výchozí** . Tím se odeberou všechny vlastní zásady, které jste dříve zadali v připojení, a obnovíte výchozí nastavení protokolu IPsec/IKE v tomto připojení:
 
-   :::image type="content" source="./media/ipsec-ike-policy-howto/delete-policy.png" alt-text="Diagram zásad IPsec/IKE":::
+   :::image type="content" source="./media/ipsec-ike-policy-howto/delete-policy.png" alt-text="Odstranit zásadu":::
 
 3. Výběrem možnosti **Uložit** odeberte vlastní zásadu a obnovte výchozí nastavení protokolu IPSec/IKE na připojení.
 

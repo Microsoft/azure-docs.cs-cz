@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 10/06/2020
-ms.openlocfilehash: 2191a4df5b319ec16a4a6116aa99cfac50c87d9b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3be967b611f6b75705a60bfa14523832b0652931
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462919"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879220"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Průvodce publikováním podle typu nabídky
 
@@ -36,7 +36,7 @@ V následující tabulce jsou uvedeny typy nabídek z komerčního tržiště v 
 | [**Konzultační služba**](./plan-consulting-service-offer.md) | Konzultační služby usnadňují propojení zákazníků se službami pro podporu a rozšiřování jejich používání služeb Azure, Dynamics 365 nebo Power Suite.|
 | [**Dynamics 365**](appsource-offer-publishing-guide.md) | Můžete publikovat nabídky AppSource, které sestavují nebo rozšířily Dynamics 365 Business Central, Dynamics 365 Customer Engagement, Power Apps a finance a provozní aplikace.|
 | [**Modul IoT Edge**](iot-edge-module.md) | Azure IoT Edge moduly jsou nejmenší výpočetní jednotky spravované IoT Edge a můžou obsahovat služby Microsoftu (například Azure Stream Analytics), služby třetích stran nebo vlastní kód specifický pro řešení. |
-| [**Spravovaná služba**](partner-center-portal/create-new-managed-service-offer.md) | Můžete vytvářet nabídky spravované služby a spravovat předplatné nebo skupiny prostředků delegované zákazníky prostřednictvím [Azure Lighthouse](../lighthouse/overview.md).|
+| [**Spravovaná služba**](./plan-managed-service-offer.md) | Můžete vytvářet nabídky spravované služby a spravovat předplatné nebo skupiny prostředků delegované zákazníky prostřednictvím [Azure Lighthouse](../lighthouse/overview.md).|
 | [**Aplikace Power BI** <br/> **Microsoft 365**](appsource-offer-publishing-guide.md) | Můžete publikovat AppSource nabídky, které sestaví nebo rozšířily Power BI a Microsoft 365.|
 | [**Software jako služba**](plan-saas-offer.md) | Pomocí typu nabídky software jako služba (SaaS) můžete zákazníkům umožnit, aby si koupili své technické řešení založené na SaaS jako předplatné. Informace o požadavcích na jednotné přihlašování pro nabídky SaaS najdete v tématu [Azure AD a SaaS nabídky na komerčním webu Marketplace](azure-ad-saas.md). |
 

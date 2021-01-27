@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: e364578cdec8696688cf19e14fd0529f1ca3fbb3
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 223fdc215bc391bea5cad5d4cb9999b9d14ba570
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842613"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878778"
 ---
 # <a name="bringing-and-creating-linux-images-in-azure"></a>Zavedení a vytváření imagí pro Linux v Azure
 
@@ -29,7 +29,7 @@ Azure umožňuje převést virtuální pevný disk na platformu, použít ho jak
 
 Azure Managed disks jsou jediné virtuální pevné disky. Můžete buď převzít existující virtuální pevný disk a vytvořit z něj spravovaný disk, nebo vytvořit prázdný spravovaný disk od začátku. Virtuální počítače můžete vytvořit ze spravovaných disků tak, že disk připojíte k virtuálnímu počítači, ale můžete použít jenom virtuální pevný disk s jedním virtuálním počítačem. Nemůžete změnit žádné vlastnosti operačního systému, Azure se jenom pokusí zapnout virtuální počítač a spustit ho pomocí tohoto disku. 
 
-Image Azure můžou být tvořené několika disky s operačním systémem a datovými disky. Když použijete spravovanou bitovou kopii k vytvoření virtuálního počítače, platforma vytvoří kopii image a použije ji k vytvoření virtuálního počítače, takže spravovaná podpora spravovaných imagí znovu používá stejnou image pro víc virtuálních počítačů. Azure poskytuje taky pokročilé možnosti správy imagí, jako je globální replikace, a správa verzí prostřednictvím [Galerie sdílených imagí](shared-image-galleries.md). 
+Image Azure můžou být tvořené několika disky s operačním systémem a datovými disky. Když použijete spravovanou bitovou kopii k vytvoření virtuálního počítače, platforma vytvoří kopii image a použije ji k vytvoření virtuálního počítače, takže spravovaná podpora spravovaných imagí znovu používá stejnou image pro víc virtuálních počítačů. Azure poskytuje taky pokročilé možnosti správy imagí, jako je globální replikace, a správa verzí prostřednictvím [Galerie sdílených imagí](../shared-image-galleries.md). 
 
 
 
@@ -37,7 +37,7 @@ Image Azure můžou být tvořené několika disky s operačním systémem a dat
 
 Azure nabízí dva hlavní typy obrázků, generalizované a specializované. Výrazy generalizované a specializované jsou původními podmínkami Windows, které se migrují do Azure. Tyto typy definují, jak platforma zpracuje virtuální počítač, když ho zapne. Oba typy mají výhody a nevýhody a požadavky. Než začnete, musíte znát, který typ obrázku budete potřebovat. Níže jsou shrnuté scénáře a typ, které byste si měli vybrat:
 
-| Scénář      | Typ image  | Možnosti úložiště |
+| Scenario      | Typ image  | Možnosti úložiště |
 | ------------- |:-------------:| :-------------:| 
 | Vytvořte image, která se dá nakonfigurovat tak, aby se použila pro víc virtuálních počítačů, a můžu nastavit název hostitele, přidat uživatele správce a provádět další úkoly během prvního spuštění. | Generalizovaná | Galerie sdílených imagí nebo samostatné spravované image |
 | Vytvoření image z snímku virtuálního počítače nebo zálohování | Specializovaná |Galerie sdílených imagí nebo spravovaný disk |
@@ -65,7 +65,7 @@ Zřizovací agenti se pro tyto image nevyžadují, ale možná budete chtít mí
 Při načítání image pro Linux máte dvě možnosti:
 
 - Spravované image pro jednoduché vytváření virtuálních počítačů ve vývojovém a testovacím prostředí.
-- [Galerie sdílených imagí](shared-image-galleries.md) pro vytváření a sdílení imagí v měřítku.
+- [Galerie sdílených imagí](../shared-image-galleries.md) pro vytváření a sdílení imagí v měřítku.
 
 
 ### <a name="managed-images"></a>Spravované image
@@ -76,7 +76,7 @@ Spravované Image je možné použít pro vývojová a testovací prostředí, k
 
 ### <a name="azure-shared-image-gallery-sig"></a>Galerie sdílených imagí Azure (SIG)
 
-[Galerie sdílených imagí](shared-image-galleries.md) se doporučují pro vytváření, správu a sdílení imagí ve velkém měřítku. Galerie sdílených imagí vám pomůžou sestavovat strukturu a organizaci kolem imagí.  
+[Galerie sdílených imagí](../shared-image-galleries.md) se doporučují pro vytváření, správu a sdílení imagí ve velkém měřítku. Galerie sdílených imagí vám pomůžou sestavovat strukturu a organizaci kolem imagí.  
 
 - Podpora zobecněných i specializovaných imagí.
 - Podpora imagí pro Image generace 1 a 2.

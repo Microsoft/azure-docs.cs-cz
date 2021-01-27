@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: cynthn
-ms.openlocfilehash: cd3ff3fce80e66d7cd61636b4416cb2fc28f5e77
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 61af1f1a97e0ffad0332a34034f5dd1d007d1a5c
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97956546"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98900854"
 ---
 | Prostředek | Omezení |
 | --- | --- |
@@ -19,13 +19,13 @@ ms.locfileid: "97956546"
 | Virtuální počítač na řadu, například Dv2 a F, jader na [předplatné](https://azure.microsoft.com/pricing/) |20<sup>1</sup> na oblast. Pokud chcete zvýšit limit, obraťte se na podporu. |
 | [Skupiny dostupnosti](../articles/virtual-machines/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) na předplatné |2 500 na oblast |
 | Virtuální počítače na skupinu dostupnosti | 200 |
-| [Skupiny umístění blízkosti](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups-portal) na [skupinu prostředků](../articles/azure-resource-manager/management/overview.md#resource-groups) | 800 | 
+| [Skupiny umístění blízkosti](../articles/virtual-machines/windows/proximity-placement-groups-portal.md) na [skupinu prostředků](../articles/azure-resource-manager/management/overview.md#resource-groups) | 800 | 
 | Počet certifikátů na skupinu dostupnosti | 199<sup>2</sup> |
 | Certifikáty na předplatné |Neomezeno<sup>3</sup> |
 
 <sup>1</sup> výchozí omezení se liší podle typu kategorie nabídky, jako je bezplatná zkušební verze a průběžné platby a podle řad, například Dv2, F a G. Například výchozí hodnota pro smlouva Enterprise předplatná je 350.
 
-<sup>2</sup> vlastnosti, jako jsou například veřejné klíče SSH, jsou také vloženy jako certifikáty a počítají se k tomuto limitu. Pokud chcete tento limit obejít, nainstalujte certifikáty pomocí [rozšíření Azure Key Vault pro Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows) nebo [rozšíření Azure Key Vault pro Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux) .
+<sup>2</sup> vlastnosti, jako jsou například veřejné klíče SSH, jsou také vloženy jako certifikáty a počítají se k tomuto limitu. Pokud chcete tento limit obejít, nainstalujte certifikáty pomocí [rozšíření Azure Key Vault pro Windows](../articles/virtual-machines/extensions/key-vault-windows.md) nebo [rozšíření Azure Key Vault pro Linux](../articles/virtual-machines/extensions/key-vault-linux.md) .
 
 <sup>3</sup> s Azure Resource Manager jsou certifikáty uložené v Azure Key Vault. Počet certifikátů je pro předplatné neomezený. Pro každé nasazení je povolený limit 1 MB, který se skládá z jednoho virtuálního počítače nebo skupiny dostupnosti.
 

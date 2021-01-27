@@ -1,24 +1,11 @@
 ---
-title: Transformace a úlohy v Media Services
-titleSuffix: Azure Media Services
-description: Naučte se, jak vytvořit transformace, které popisují pravidla pro zpracování videí v Azure Media Services.
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: conceptual
-ms.date: 08/19/2019
-ms.author: inhenkel
-ms.openlocfilehash: 4cb4bcf5eb205d27cbca764d5ec16890a23be5c6
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426786"
+# <a name="mandatory-fields-see-more-on-akamsskyeyemeta"></a>Povinná pole. Další informace najdete na aka.ms/skyeye/meta.
+title: transformes a Jobs v Media Services: Azure Media Services Description: Naučte se vytvořit transformace, které popisují pravidla pro zpracování videí v Azure Media Services.
+služby: Media-Services documentationcenter: ' ' Author: IngridAtMicrosoft Manager: femila Editor: ' '
+
+MS. Service: Media-Services MS. rebavování: MS. téma: konceptuální MS. Date: 08/19/2019 MS. Author: inhenkel
 ---
+
 # <a name="transforms-and-jobs-in-media-services"></a>Transformace a úlohy v Media Services
 
 Toto téma obsahuje podrobné informace o [transformacích](/rest/api/media/transforms) a [úlohách](/rest/api/media/jobs) a vysvětluje vztah mezi těmito entitami.

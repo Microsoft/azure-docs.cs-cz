@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
-ms.openlocfilehash: e188c74c6eba5e4182f7b72277db8dd8e08db8d4
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 714b7bccea9b1e0c18ad78a4d98ed3526a279f5f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97913923"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879254"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>Postup plánování nabídky SaaS pro komerční tržiště
 
@@ -113,10 +113,10 @@ Pokud vaše nabídka SaaS je řešení IT (Azure Marketplace *) i obchodní* ře
 
 | Měřené fakturace | Veřejný plán | Soukromý plán | K dispozici v: |
 |---|---|---|---|
-| Ano             | Ano         | Ne           | Azure Marketplace a Azure Portal |
-| Ano             | Ano         | Ano          | Azure Marketplace a Azure Portal * |
-| Ano             | Ne          | Ano          | Pouze Azure Portal |
-| Ne              | Ne          | Ano          | Pouze Azure Portal |
+| Yes             | Yes         | No           | Azure Marketplace a Azure Portal |
+| Yes             | Yes         | Yes          | Azure Marketplace a Azure Portal * |
+| Yes             | No          | Yes          | Pouze Azure Portal |
+| No              | No          | Yes          | Pouze Azure Portal |
 |||||
 
 &#42; soukromý plán této nabídky bude k dispozici pouze prostřednictvím Azure Portal
@@ -149,10 +149,10 @@ Když [vytvoříte novou nabídku SaaS](create-new-saas-offer.md) v partnerském
 5. Podmínky použití
 6. Zásady ochrany osobních údajů
 7. Název nabídky
-8. Shrnutí
+8. Souhrn
 9. Popis
 10. Snímky obrazovky a videa
-11. Dokumenty
+11. dokumenty.
 
 Následující příklad ukazuje seznam nabídek v Azure Portal.
 
@@ -202,7 +202,7 @@ Abyste mohli snadněji vytvořit nabídku, připravte si některé z těchto pol
   - soubor. png
   - Musí obsahovat titulek
 - **Média – videa** (volitelné): můžete přidat až čtyři videa s následujícími požadavky, které předvádí vaši nabídku:
-  - Název
+  - Name
   - Adresa URL: musí být hostována pouze na YouTube nebo Vimeo.
   - Miniatura: soubor 1280 x 720. png
 
@@ -250,7 +250,7 @@ Následující příklad ukazuje vzorový rozpis nákladů a výběrů k předve
 | Společnost Microsoft vám zaplatí 80% vašich licenčních nákladů.<br>`*` Pro kvalifikované aplikace SaaS přináší společnost Microsoft 90% vašich licenčních nákladů.| $80,00 za měsíc<br>``*`` $90,00 za měsíc |
 |||
 
-**`*` Omezený poplatek za službu Marketplace** – u některých nabídek SaaS, které jste publikovali na komerčním tržišti, společnost Microsoft sníží poplatek za službu Marketplace z 20% (jak je popsáno v tématu smlouva Microsoft Publisher Agreement) na 10%. Aby vaše nabídky získaly nárok, vaše nabídky musí být určené společností Microsoft jako spoluprodejní motivovaní Azure. Nárok na získání omezeného poplatku za služby Marketplace vyžaduje splnění alespoň pěti (5) pracovních dnů před koncem každého kalendářního měsíce. Po splnění nároku bude snížený poplatek za službu udělen všem transakcím platným první den v následujícím měsíci a bude nadále platit až do chvíle, kdy se motivovaní stav společného prodeje Azure IP. Podrobnosti o způsobilosti spoluprodejních IP adres najdete v tématu [požadavky na stav společného prodeje](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status). Snížený poplatek za službu Marketplace platí také pro virtuální počítače Azure s motivovaní, spravované aplikace a jakékoli další kvalifikované IaaS nabídky, které jsou k dispozici prostřednictvím komerčního tržiště.
+**`*` Omezený poplatek za službu Marketplace** – u některých nabídek SaaS, které jste publikovali na komerčním tržišti, společnost Microsoft sníží poplatek za službu Marketplace z 20% (jak je popsáno v tématu smlouva Microsoft Publisher Agreement) na 10%. Aby vaše nabídky získaly nárok, vaše nabídky musí být určené společností Microsoft jako spoluprodejní motivovaní Azure. Nárok na získání omezeného poplatku za služby Marketplace vyžaduje splnění alespoň pěti (5) pracovních dnů před koncem každého kalendářního měsíce. Po splnění nároku bude snížený poplatek za službu udělen všem transakcím platným první den v následujícím měsíci a bude nadále platit až do chvíle, kdy se motivovaní stav společného prodeje Azure IP. Podrobnosti o způsobilosti spoluprodejních IP adres najdete v tématu [požadavky na stav společného prodeje](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status). Snížený poplatek za službu Marketplace platí také pro virtuální počítače Azure s motivovaní, spravované aplikace a jakékoli další kvalifikované IaaS nabídky, které jsou k dispozici prostřednictvím komerčního tržiště.
 
 ## <a name="additional-sales-opportunities"></a>Další prodejní příležitosti
 
@@ -258,7 +258,7 @@ Můžete si vybrat, jestli se chcete zúčastnit marketingových a prodejních k
 
 - **Prodávejte dál prostřednictvím CSP**: tuto možnost použijte, pokud chcete, aby partneři poskytovatelé řešení Microsoft Cloud mohli své řešení znovu prodávat jako součást zahrnuté nabídky. Další informace o tomto programu najdete v tématu [program Cloud Solution Provider](cloud-solution-providers.md).
 
-- **Spoluprodejní s Microsoftem**: Tato možnost umožňuje prodejcům Microsoftu zvážit, jaké řešení se svým zákazníkům nabízí při vyhodnocování vašich potřeb zákazníků. Podrobnosti o způsobilosti společného prodeje najdete v tématu [požadavky na stav společného prodeje](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status). Podrobné informace o tom, jak připravit vaši nabídku k vyhodnocení, najdete v tématu [možnost společného prodeje v partnerském centru](commercial-marketplace-co-sell.md).
+- **Spoluprodejní s Microsoftem**: Tato možnost umožňuje prodejcům Microsoftu zvážit, jaké řešení se svým zákazníkům nabízí při vyhodnocování vašich potřeb zákazníků. Podrobnosti o způsobilosti společného prodeje najdete v tématu [požadavky na stav společného prodeje](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status). Podrobné informace o tom, jak připravit vaši nabídku k vyhodnocení, najdete v tématu [možnost společného prodeje v partnerském centru](commercial-marketplace-co-sell.md).
 
 ## <a name="next-steps"></a>Další kroky
 

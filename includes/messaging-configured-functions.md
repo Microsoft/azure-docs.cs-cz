@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/12/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: b487dcad83ccbc31adf2d7ec2dd77c490db2c68e
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 9bc641d680d927c44814f6814ebf6a6dde958c9e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935188"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98900848"
 ---
 Azure Functions umožňuje vytvářet úlohy replikace pouze pro konfiguraci, které jsou zabudovány na předem připraveném vstupním bodu. [Ukázky replikace založené na konfiguraci pro Azure Functions](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config) ilustrují, jak využít [předem připravené](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/src/Azure.Messaging.Replication) obslužné rutiny ve vlastním kódu nebo vyhnout se neplnění kódu a jenom používat konfiguraci.
 
@@ -218,13 +218,12 @@ Následující tabulka poskytuje správné hodnoty pro kombinace zdrojů a cíl�
 
 ### <a name="retry-policy"></a>Zásady opakování
 
-Pokud chcete nakonfigurovat zásady opakování, přečtěte si informace o [Azure Functions v dokumentaci k pokusům o](/azure/azure-functions/functions-bindings-error-pages) opakování. Nastavení zásad zvolené v rámci projektů v tomto úložišti konfigurují exponenciální strategii omezení rychlosti s intervaly opakování 5 sekund až 5 minut a nekonečné opakování, aby nedošlo ke ztrátě dat.
+Pokud chcete nakonfigurovat zásady opakování, přečtěte si informace o [Azure Functions v dokumentaci k pokusům o](../articles/azure-functions/functions-bindings-error-pages.md) opakování. Nastavení zásad zvolené v rámci projektů v tomto úložišti konfigurují exponenciální strategii omezení rychlosti s intervaly opakování 5 sekund až 5 minut a nekonečné opakování, aby nedošlo ke ztrátě dat.
 
-Pokud Service Bus, přečtěte si část ["použití možnosti opakování v horní části odolnosti triggeru"](/azure/azure-functions/functions-bindings-error-pages#using-retry-support-on-top-of-trigger-resilience) , abyste pochopili interakci triggerů a maximální počet doručení definovaný pro frontu.
+Pokud Service Bus, přečtěte si část ["použití možnosti opakování v horní části odolnosti triggeru"](../articles/azure-functions/functions-bindings-error-pages.md#using-retry-support-on-top-of-trigger-resilience) , abyste pochopili interakci triggerů a maximální počet doručení definovaný pro frontu.
 
 ### <a name="build-deploy-and-configure"></a>Sestavování, nasazování a konfigurace
 
 I když se zaměříte na konfiguraci, úlohy stále vyžadují sestavení nasaditelné aplikace a konfiguraci Azure Functions hostitelů tak, aby měly všechny požadované informace pro připojení k daným koncovým bodům. 
 
 To je znázorněno společně s opakovaně použitelnými skripty v [ukázkách replikace na základě konfigurace pro Azure Functions](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config).
-

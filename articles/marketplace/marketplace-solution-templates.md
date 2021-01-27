@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: msjogarrig
 ms.author: jogarrig
 ms.date: 04/22/2020
-ms.openlocfilehash: 475a8615e9233def091edc03fe91c82ea63cdc27
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: c7074981c8491460d6f2a8e7d40d086f261dfeb3
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96433535"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879339"
 ---
 # <a name="publishing-guide-for-azure-applications-solution-template-offers"></a>Průvodce publikováním pro nabídky šablon řešení pro aplikace Azure
 
@@ -32,7 +32,7 @@ Možnost výpisu, kterou zákazník uvidí pro tento typ nabídky, *teď získá
 |Fakturace a měření    |  Nabídky šablony řešení nejsou nabídky transakcí, ale dají se použít k nasazení placených nabídek virtuálních počítačů, které se účtují prostřednictvím komerčního tržiště Microsoftu. Prostředky, které jsou nasazené šablonou ARM řešení, se nastavují v předplatném Azure zákazníka. Virtuální počítače s průběžnými platbami se účtují u zákazníka prostřednictvím Microsoftu a účtují se prostřednictvím předplatného Azure zákazníka.<br/> V případě fakturace s využitím vlastní licence (BYOL), i když Microsoft účtuje náklady na infrastrukturu, které se účtují v rámci předplatného zákazníka, vyúčtujete poplatky za licence na software přímo pro zákazníka.   |
 |Virtuální pevný disk kompatibilní s Azure (VHD)  |   Virtuální počítače musí být postavené na Windows nebo Linux. Další informace naleznete v tématu: <ul> <li>[Vytvořte nabídku aplikace Azure](./create-new-azure-apps-offer.md) (pro virtuální pevné disky Windows).</li><li>[Distribuce systému Linux schválená v Azure](../virtual-machines/linux/endorsed-distros.md) (pro virtuální pevné disky se systémem Linux).</li></ul> |
 | Přisuzování využití ze strany zákazníků | U všech šablon řešení, které jsou publikovány na Azure Marketplace, je nutné povolit přidělení zákaznického využití. Další informace o přidaných zákaznických využití a o tom, jak ji povolit, najdete v tématu věnovaném [přidělení zákaznického využívání Azure partnerovi](./azure-partner-customer-usage-attribution.md).  |
-| Použití spravovaných disků | [Managed disks](../virtual-machines/managed-disks-overview.md) je výchozí možností pro trvalé disky virtuálních počítačů infrastruktury jako služby (IaaS) v Azure. Spravované disky je nutné použít v šablonách řešení. <ul><li>Pokud chcete aktualizovat šablony řešení, postupujte podle pokynů v části [použití spravovaných disků v šablonách Azure Resource Manager](../virtual-machines/using-managed-disks-template-deployments.md)a použijte uvedené [ukázky](https://github.com/Azure/azure-quickstart-templates).<br><br> </li><li>Pokud chcete publikovat VHD jako image v Azure Marketplace, importujte základní virtuální pevný disk spravovaných disků do účtu úložiště pomocí některé z následujících metod:<ul><li>[Azure PowerShell](../virtual-machines/scripts/virtual-machines-powershell-sample-copy-managed-disks-vhd.md) </li> <li> [Azure CLI](../virtual-machines/scripts/virtual-machines-cli-sample-copy-managed-disks-vhd.md) </li> </ul></ul> |
+| Použití spravovaných disků | [Managed disks](../virtual-machines/managed-disks-overview.md) je výchozí možností pro trvalé disky virtuálních počítačů infrastruktury jako služby (IaaS) v Azure. Spravované disky je nutné použít v šablonách řešení. <ul><li>Pokud chcete aktualizovat šablony řešení, postupujte podle pokynů v části [použití spravovaných disků v šablonách Azure Resource Manager](../virtual-machines/using-managed-disks-template-deployments.md)a použijte uvedené [ukázky](https://github.com/Azure/azure-quickstart-templates).<br><br> </li><li>Pokud chcete publikovat VHD jako image v Azure Marketplace, importujte základní virtuální pevný disk spravovaných disků do účtu úložiště pomocí některé z následujících metod:<ul><li>[Azure PowerShell](/previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-copy-managed-disks-vhd) </li> <li> [Azure CLI](/previous-versions/azure/virtual-machines/scripts/virtual-machines-cli-sample-copy-managed-disks-vhd) </li> </ul></ul> |
 
 ## <a name="next-steps"></a>Další kroky
 

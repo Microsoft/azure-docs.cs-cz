@@ -8,12 +8,12 @@ ms.date: 12/11/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 6390aafca4937a480e4d92ff04003a294b9c0e20
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: c4e85195ace0a24aa11d4a03b8f429f2714399b0
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97356170"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879152"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -37,7 +37,7 @@ Další informace najdete v části Příklady tohoto článku.
 ## <a name="related-conceptual-articles"></a>Související koncepční články
 
 - [Začínáme s nástrojem AzCopy](storage-use-azcopy-v10.md)
-- [Přenos dat pomocí AzCopy a BLOB Storage](storage-use-azcopy-blobs.md)
+- [Přenos dat pomocí AzCopy a BLOB Storage](./storage-use-azcopy-v10.md#transfer-data)
 - [Přenos dat s použitím AzCopy a úložiště souborů](storage-use-azcopy-files.md)
 - [Konfigurace, optimalizace a řešení potíží s AzCopy](storage-use-azcopy-configure.md)
 
@@ -284,7 +284,7 @@ Přenos souborů a adresářů do Azure Storage účtu a nastavení daných zna�
 
 **--include – řetězec vzoru** zahrne při kopírování jenom tyto soubory. Tato možnost podporuje zástupné znaky (*). Oddělte soubory pomocí `;` .
 
-**--list-of-** Versions určuje soubor, ve kterém je každé ID verze uvedené na samostatném řádku. Ujistěte se, že zdroj musí ukazovat na jeden objekt BLOB a že všechna ID verzí zadaná v souboru, který tento příznak používá, musí patřit pouze do zdrojového objektu BLOB. AzCopy stáhne zadané verze do zadané cílové složky. Další informace najdete v tématu [stažení předchozích verzí objektu BLOB](storage-use-azcopy-blobs.md#download-previous-versions-of-a-blob).
+**--list-of-** Versions určuje soubor, ve kterém je každé ID verze uvedené na samostatném řádku. Ujistěte se, že zdroj musí ukazovat na jeden objekt BLOB a že všechna ID verzí zadaná v souboru, který tento příznak používá, musí patřit pouze do zdrojového objektu BLOB. AzCopy stáhne zadané verze do zadané cílové složky. Další informace najdete v tématu [stažení předchozích verzí objektu BLOB](./storage-use-azcopy-v10.md#transfer-data).
 
 **--řetězec na úrovni protokolu** definuje podrobnosti protokolu pro soubor protokolu, dostupné úrovně: informace (všechny požadavky a odpovědi), upozornění (pomalé odezvy), chyby (pouze neúspěšné žádosti) a žádné (žádné protokoly výstupu). (výchozí `INFO` ). 
 
@@ -324,6 +324,6 @@ Přenos souborů a adresářů do Azure Storage účtu a nastavení daných zna�
 
 **--Trusted – řetězec Microsoft-přípony** Určuje další přípony domén, kde se můžou odesílat přihlašovací tokeny Azure Active Directory.  Výchozí formát je `*.core.windows.net;*.core.chinacloudapi.cn;*.core.cloudapi.de;*.core.usgovcloudapi.net`. Zde uvedené jsou přidány do výchozího nastavení. Z důvodu zabezpečení byste měli sem umístit jenom Microsoft Azure domény. Více položek oddělte středníkem.
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 - [AzCopy](storage-ref-azcopy.md)

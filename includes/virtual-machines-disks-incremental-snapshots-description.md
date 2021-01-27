@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: edec192009b9cc9b71114287e705c161183273dc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 39750a86ccf781a10109e299e27a55a03173acb6
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95992918"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98900834"
 ---
 Přírůstkové snímky jsou zálohy v čase pro spravované disky, které při pořízení sestávají pouze změny od posledního snímku. Při obnovení disku z přírůstkového snímku systém rekonstruuje celý disk, který představuje bod v čase zálohování disku při pořízení přírůstkového snímku. Tato nová funkce pro snímky spravovaných disků potenciálně umožňuje získat cenově výhodnější, protože pokud se nerozhodnete, nebudete muset celý disk ukládat na jednotlivé snímky. Stejně jako úplné snímky lze přírůstkové snímky použít buď k vytvoření úplného spravovaného disku, nebo úplného snímku.
 
-Existuje několik rozdílů mezi přírůstkovým snímkem a úplným snímkem. Přírůstkové snímky budou vždy používat standardní úložiště HDD bez ohledu na typ úložiště disku, zatímco úplné snímky mohou používat Premium SSD. Pokud k horizontálnímu navýšení kapacity nasazení virtuálních počítačů používáte úplné snímky Premium Storage, doporučujeme v [galerii sdílených imagí](../articles/virtual-machines/linux/shared-image-galleries.md)používat vlastní image ve službě Storage úrovně Standard. Pomůže vám dosáhnout větší obrovské škály s nižšími náklady. Navíc přírůstkové snímky potenciálně nabízejí lepší spolehlivost pomocí [redundantního úložiště](../articles/storage/common/storage-redundancy.md) (ZRS) zóny. Pokud je ve vybrané oblasti k dispozici ZRS, přírůstkový snímek bude automaticky používat ZRS. Pokud ZRS není v této oblasti k dispozici, bude mít tento snímek výchozí [místně redundantní úložiště](../articles/storage/common/storage-redundancy.md) (LRS). Toto chování můžete přepsat a vybrat ho ručně, ale nedoporučujeme to.
+Existuje několik rozdílů mezi přírůstkovým snímkem a úplným snímkem. Přírůstkové snímky budou vždy používat standardní úložiště HDD bez ohledu na typ úložiště disku, zatímco úplné snímky mohou používat Premium SSD. Pokud k horizontálnímu navýšení kapacity nasazení virtuálních počítačů používáte úplné snímky Premium Storage, doporučujeme v [galerii sdílených imagí](../articles/virtual-machines/shared-image-galleries.md)používat vlastní image ve službě Storage úrovně Standard. Pomůže vám dosáhnout větší obrovské škály s nižšími náklady. Navíc přírůstkové snímky potenciálně nabízejí lepší spolehlivost pomocí [redundantního úložiště](../articles/storage/common/storage-redundancy.md) (ZRS) zóny. Pokud je ve vybrané oblasti k dispozici ZRS, přírůstkový snímek bude automaticky používat ZRS. Pokud ZRS není v této oblasti k dispozici, bude mít tento snímek výchozí [místně redundantní úložiště](../articles/storage/common/storage-redundancy.md) (LRS). Toto chování můžete přepsat a vybrat ho ručně, ale nedoporučujeme to.
 
 Přírůstkové snímky také nabízí rozdílovou možnost, která je k dispozici pouze pro spravované disky. Umožňují získat změny dvou přírůstkových snímků stejných spravovaných disků na úrovni bloku. Tuto možnost můžete použít ke snížení objemu dat při kopírování snímků napříč oblastmi.  Například můžete stáhnout první přírůstkový snímek jako základní objekt BLOB v jiné oblasti. Pro následné přírůstkové snímky můžete kopírovat pouze změny od posledního snímku do základního objektu BLOB. Po zkopírování změn můžete pořizovat snímky základního objektu blob, který představuje bod v čase zálohování disku v jiné oblasti. Disk můžete obnovit buď ze základního objektu blob, nebo z snímku na základním objektu BLOB v jiné oblasti.
 

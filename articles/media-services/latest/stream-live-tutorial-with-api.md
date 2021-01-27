@@ -1,27 +1,11 @@
 ---
-title: Živé streamování s Media Services V3
-titleSuffix: Azure Media Services
-description: Naučte se, jak streamovat živě pomocí Azure Media Services V3.
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: tutorial
-ms.custom: mvc, devx-track-csharp
-ms.date: 06/13/2019
-ms.author: inhenkel
-ms.openlocfilehash: b2e456474a9d052d9515c8169ce233e9577a5c53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89256561"
+title: Stream Live s Media Services V3: Azure Media Services popis: Naučte se streamovat živě pomocí Azure Media Services V3.
+služby: Media-Services documentationcenter: ' ' Author: IngridAtMicrosoft Manager: femila Editor: ' '
+
+MS. Service: Media-Services MS. rebavování: Media ms.tgt_pltfrm: na MS. devlang: na MS. téma: kurz MS. Custom: MVC, DevX-Track-CSharp "MS. Date: 06/13/2019 MS. Author: inhenkel
+
 ---
+
 # <a name="tutorial-stream-live-with-media-services"></a>Kurz: živé streamování pomocí Media Services
 
 > [!NOTE]

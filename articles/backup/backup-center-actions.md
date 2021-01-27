@@ -3,14 +3,14 @@ title: Provádění akcí pomocí centra zálohování
 description: Tento článek vysvětluje, jak provádět akce pomocí centra zálohování.
 ms.topic: conceptual
 ms.date: 09/07/2020
-ms.openlocfilehash: 65ac6374b1a9571d0415bc097a6ee957874d3d44
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 06229eb0b8cb76482035d3dfe1949c3ab8354f17
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91854422"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98894571"
 ---
-# <a name="perform-actions-using-backup-center"></a>Provádění akcí pomocí centra zálohování
+# <a name="perform-actions-using-backup-center-preview"></a>Provádění akcí pomocí centra zálohování (Preview)
 
 Centrum zálohování umožňuje provádět akce související se zálohováním klíče z centrálního rozhraní, aniž by bylo nutné přecházet do individuálního trezoru. Některé akce, které můžete provést ze služby Backup Center, jsou:
 
@@ -23,26 +23,28 @@ Centrum zálohování umožňuje provádět akce související se zálohováním
 
 ## <a name="supported-scenarios"></a>Podporované scénáře
 
-* Centrum zálohování se v současné době podporuje pro zálohování virtuálních počítačů Azure a zálohování serveru Azure Database for PostgreSQL.
+* Centrum zálohování se v současné době podporuje pro zálohování virtuálních počítačů Azure, SQL v zálohování virtuálních počítačů Azure, SAP HANA v zálohování virtuálních počítačů Azure, zálohování souborů Azure a zálohování serveru Azure Database for PostgreSQL.
 * Podrobný seznam podporovaných a nepodporovaných scénářů najdete v tématu věnovaném [matrici podpory](backup-center-support-matrix.md) .
 
 ## <a name="configure-backup"></a>Konfigurace zálohování
 
+Pokud zálohujete virtuální počítače Azure, SQL ve virtuálních počítačích Azure, SAP HANA ve virtuálních počítačích Azure nebo ve službě soubory Azure, měli byste použít trezor Recovery Services. Pokud zálohujete databáze Azure pro server PostgreSQL, měli byste použít úložiště záloh. 
+
 V závislosti na typu zdroje dat, který chcete zálohovat, postupujte podle příslušných pokynů, jak je popsáno níže.
 
-### <a name="configure-backup-for-azure-virtual-machines"></a>Konfigurace zálohování virtuálních počítačů Azure
+### <a name="configure-backup-to-a-recovery-services-vault"></a>Konfigurace zálohování do trezoru Recovery Services
 
 1. Přejděte do centra zálohování a v horní části karty **Přehled** vyberte **+ záloha** .
 
     ![Přehled služby Backup Center](./media/backup-center-actions/backup-center-overview-configure-backup.png)
 
-2. Vyberte typ zdroje dat, který chcete zálohovat (v tomto případě virtuální počítač Azure).
+2. Vyberte typ zdroje dat, který chcete zálohovat.
 
     ![Vyberte zdroj dat pro konfiguraci zálohování virtuálního počítače.](./media/backup-center-actions/backup-select-datasource-vm.png)
 
 3. Zvolte trezor Recovery Services a vyberte **pokračovat**. To vás vede k prostředí Konfigurace zálohování, které je stejné jako dostupné z trezoru Recovery Services. [Přečtěte si další informace o tom, jak nakonfigurovat zálohování virtuálních počítačů Azure pomocí trezoru Recovery Services](tutorial-backup-vm-at-scale.md).
 
-### <a name="configure-backup-for-azure-database-for-postgresql-server"></a>Konfigurace zálohování pro Azure Database for PostgreSQL Server
+### <a name="configure-backup-to-a-backup-vault"></a>Konfigurace zálohování do trezoru záloh
 
 1. Přejděte do centra zálohování a v horní části karty **Přehled** vyberte **+ záloha** .
 2. Vyberte typ zdroje dat, který chcete zálohovat (Azure Database for PostgreSQL Server v tomto případě).
@@ -55,19 +57,19 @@ V závislosti na typu zdroje dat, který chcete zálohovat, postupujte podle př
 
 V závislosti na typu zdroje dat, který chcete obnovit, postupujte podle příslušných pokynů, jak je popsáno níže.
 
-### <a name="if-youre-restoring-an-azure-virtual-machine"></a>Pokud obnovujete virtuální počítač Azure
+### <a name="if-youre-restoring-from-a-recovery-services-vault"></a>Pokud obnovujete z Recovery Servicesového trezoru
 
 1. Přejděte do centra záloh a v horní části karty **Přehled** vyberte **obnovit** .
 
     ![Přehled služby Backup pro obnovení virtuálního počítače](./media/backup-center-actions/backup-center-overview-restore.png)
 
-2. Vyberte typ zdroje dat, který chcete obnovit (v tomto případě Azure Virtual Machine).
+2. Vyberte typ zdroje dat, který chcete obnovit.
 
     ![Výběr zdroje dat pro obnovení virtuálního počítače](./media/backup-center-actions/restore-select-datasource-vm.png)
 
 3. Zvolte instanci zálohování a vyberte **pokračovat**. To vede k nastavení obnovení, které je stejné jako dostupné z trezoru Recovery Services. [Přečtěte si další informace o tom, jak obnovit virtuální počítač Azure pomocí trezoru Recovery Services](backup-azure-arm-restore-vms.md#before-you-start).
 
-### <a name="if-youre-restoring-an-azure-database-for-postgresql-server"></a>Pokud obnovujete Azure Database for PostgreSQL Server
+### <a name="if-youre-restoring-from-a-backup-vault"></a>Pokud obnovujete z trezoru služby Backup
 
 1. Přejděte do centra záloh a v horní části karty **Přehled** vyberte **obnovit** .
 2. Vyberte typ zdroje dat, který chcete obnovit (Azure Database for PostgreSQL Server v tomto případě).
@@ -89,19 +91,19 @@ Nový trezor můžete vytvořit tak, že přejdete do centra zálohování a v h
 
 V závislosti na typu zdroje dat, který chcete zálohovat, postupujte podle příslušných pokynů popsaných níže.
 
-### <a name="if-youre-backing-up-an-azure-virtual-machine"></a>Pokud zálohujete virtuální počítač Azure
+### <a name="if-youre-backing-up-to-a-recovery-services-vault"></a>Pokud zálohujete na Recovery Services trezor
 
 1. Přejděte do centra zálohování a v horní části karty **Přehled** vyberte **+ zásada** .
 
     ![Přehled centra záloh pro zásady zálohování](./media/backup-center-actions/backup-center-overview-policy.png)
 
-2. Vyberte typ zdroje dat, který chcete zálohovat (v tomto případě virtuální počítač Azure).
+2. Vyberte typ zdroje dat, který chcete zálohovat.
 
     ![Vyberte zdroj dat pro zásady zálohování virtuálního počítače](./media/backup-center-actions/policy-select-datasource-vm.png)
 
 3. Zvolte trezor služby Recovery Services a vyberte **pokračovat**. To vás vede k prostředí pro vytváření zásad, které je stejné jako dostupné z trezoru Recovery Services. [Přečtěte si další informace o tom, jak vytvořit nové zásady zálohování pro virtuální počítač Azure pomocí trezoru služby Recovery Services](backup-azure-arm-vms-prepare.md#create-a-custom-policy).
 
-### <a name="if-youre-backing-up-an-azure-database-for-postgresql-server"></a>Pokud zálohujete Azure Database for PostgreSQL Server
+### <a name="if-youre-backing-up-to-a-backup-vault"></a>Pokud zálohujete do trezoru služby Backup
 
 1. Přejděte do centra zálohování a v horní části karty **Přehled** vyberte **+ zásada** .
 2. Vyberte typ zdroje dat, který chcete zálohovat (Azure Database for PostgreSQL Server v tomto případě).

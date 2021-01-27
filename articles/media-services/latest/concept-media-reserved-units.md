@@ -1,5 +1,5 @@
 ---
-title: Rezervované jednotky médií – Azure | Microsoft Docs
+title: Rezervované jednotky médií – Azure
 description: Rezervované jednotky médií umožňují škálovat proces média a určovat rychlost úloh zpracování médií.
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: inhenkel
-ms.openlocfilehash: df691f5b9e74432f683e52fbb896dd4d44efe2aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e0cfc47b546c31e6b93d224e64de20b79baacfd9
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91622058"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98891291"
 ---
 # <a name="media-reserved-units"></a>Rezervované jednotky médií
 
@@ -32,7 +32,7 @@ Azure Media Services vám umožní škálovat zpracování médií správou reze
 
 Následující tabulka vám pomůže při rozhodování o tom, jak určit různé rychlosti kódování.  Zobrazuje dobu trvání kódování po dobu 7 minut, 1080p v závislosti na použitém použitém seznamu.
 
-|Typ RU|Scénář|Příklady výsledků pro video o 7 min. |
+|Typ RU|Scenario|Příklady výsledků pro video o 7 min. |
 |---|---|---|
 | **S1**|Kódování s jednou přenosovou rychlostí. <br/>Soubory na SD nebo pod rozlišením, nezávislá na čase, nízké náklady.|Kódování souboru MP4 s jednou přenosovou rychlostí SD pomocí "H264 s jednou přenosovou rychlostí" 16x9 "trvá přibližně 7 minut.|
 | **S2**|Jedna přenosová rychlost a s více přenosovými rychlostmi.<br/>Normální použití pro kódování SD i HD.|Kódování s přednastavenou H264 Single přenosovou rychlostí 720p trvá přibližně 6 minut.<br/><br/>Kódování s přednastaveným H264 Multiple přenosovou rychlostí 720p trvá přibližně 12 minut.|
@@ -41,7 +41,7 @@ Následující tabulka vám pomůže při rozhodování o tom, jak určit různ�
 > [!NOTE]
 > Pokud jste pro svůj účet nezřídili, budou se vaše mediální úlohy zpracovávat s výkonem seznamu S1 a úlohy se budou postupně vyzvednout. Žádná kapacita zpracování není vyhrazená, takže čekací doba mezi dokončením jednoho úkolu a dalším počátkem bude záviset na dostupnosti prostředků v systému.
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Požadavky
 
 * Pro analýzy zvuku a úlohy analýzy videí, které se spouštějí Media Services V3 nebo Video Indexer, se důrazně doporučuje zřídit účet s deseti jednotkami S3. Pokud potřebujete více než 10 S3 MRUs, otevřete lístek podpory pomocí [Azure Portal](https://portal.azure.com/).
 * Pro úlohy kódování, které nemají MRUs, není k dispozici horní mez doby, kterou mohou úlohy ve stavu zařazeny do fronty, a současně bude spuštěna pouze jedna úloha.

@@ -7,19 +7,19 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 01/19/2020
-ms.openlocfilehash: 6075027124352746a3adbb8f6937d3787eb22b9d
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: a1726b29c153bf680d29fe821ac34aa958064335
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602591"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879237"
 ---
 # <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>Podpora programu komerčního tržiště v partnerském centru
 
 Společnost Microsoft poskytuje podporu pro širokou škálu produktů a služeb. Hledání správného týmu podpory je důležité pro zajištění vhodné a včasné reakce. Vezměte v úvahu následující scénáře, které vám pomůžou směrovat dotaz na příslušný tým:
 
 - Pokud jste Vydavatel a máte dotaz od zákazníka, požádejte zákazníka, aby požádal o podporu pomocí odkazů na podporu v [Azure Portal](https://portal.azure.com/).
-- Pokud jste Vydavatel a zjistili jste problémy se zabezpečením aplikace spuštěné v Azure, přečtěte si téma [Jak protokolovat lístek podpory událostí zabezpečení](/azure/security/fundamentals/event-support-ticket). Vydavatelé musí ohlásit podezřelé události zabezpečení, včetně bezpečnostních incidentů a ohrožení zabezpečení jejich Azure Marketplace softwaru a služeb, a to nejdřívějším příležitostí.
+- Pokud jste Vydavatel a zjistili jste problémy se zabezpečením aplikace spuštěné v Azure, přečtěte si téma [Jak protokolovat lístek podpory událostí zabezpečení](../security/fundamentals/event-support-ticket.md). Vydavatelé musí ohlásit podezřelé události zabezpečení, včetně bezpečnostních incidentů a ohrožení zabezpečení jejich Azure Marketplace softwaru a služeb, a to nejdřívějším příležitostí.
 - Pokud jste Vydavatel a máte dotaz týkající se vaší aplikace nebo služby, Projděte si následující možnosti podpory.
 
 ## <a name="get-help-or-open-a-support-ticket"></a>Získání pomoci nebo otevření lístku podpory

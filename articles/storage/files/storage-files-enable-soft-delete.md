@@ -8,12 +8,12 @@ ms.date: 12/01/2020
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: ea98b2d9812fb5c848c7e13b94d46a4142595cd4
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 22e4d0998cde14d4461141a53f05cbc19d1ab671
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492161"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878965"
 ---
 # <a name="enable-soft-delete-on-azure-file-shares"></a>Povolit obnovitelné odstranění u sdílených složek Azure
 
@@ -25,7 +25,7 @@ V následujících částech se dozvíte, jak povolit a použít obnovitelné od
 
 ## <a name="getting-started"></a>Začínáme
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 1. Přejděte do svého účtu úložiště a v části **Souborová služba** vyberte možnost **obnovitelné odstranění** .
 1. Pro **částečný DELETE pro sdílení souborů** vyberte **povoleno** .
 1. Vyberte možnost **Doba uchování sdílené složky ve dnech** a zadejte číslo, které si zvolíte.
@@ -35,7 +35,7 @@ V následujících částech se dozvíte, jak povolit a použít obnovitelné od
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Rutiny obnovitelného odstranění jsou k dispozici ve verzi 2.1.3 a novějším [modulu CLI Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+Rutiny obnovitelného odstranění jsou k dispozici ve verzi 2.1.3 a novějším [modulu CLI Azure](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="getting-started-with-cli"></a>Začínáme s rozhraním příkazového řádku
 

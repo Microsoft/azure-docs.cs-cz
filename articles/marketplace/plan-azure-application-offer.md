@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: 45bc3aaf5217c626e2593b4eda861eaace2a8be2
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: f98f128e56810e3dd710ce454c8dc34b333690d1
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620405"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879288"
 ---
 # <a name="plan-an-azure-application-offer-for-the-commercial-marketplace"></a>Plánování nabídky aplikací Azure pro komerční tržiště
 
@@ -64,7 +64,7 @@ Vyberte jedno z následujících skriptovacích prostředí, které vám pomůž
 
 Do vývojového prostředí doporučujeme přidat následující nástroje:
 
-- [Průzkumník služby Azure Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md)
+- [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md)
 - [Visual Studio Code](https://code.visualstudio.com/) s následujícími příponami:
     - Rozšíření: [Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
     - Přípona: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
@@ -177,7 +177,7 @@ Abyste mohli snadněji vytvořit nabídku, připravte si některé z těchto pol
   - soubor. png
   - Musí obsahovat titulek
 - **Média – videa** (volitelné): můžete přidat až pět videí s následujícími požadavky, které demonstrují vaši nabídku:
-  - Název
+  - Name
   - Adresa URL: musí být hostována pouze na YouTube nebo Vimeo.
   - Miniatura: soubor 1280 x 720. png
 
@@ -200,7 +200,7 @@ U spravovaných aplikací, které generují události měření pomocí [rozhran
 Tato konfigurace je nutná, pokud chcete použít [událost dávkového použití](partner-center-portal/marketplace-metering-service-apis.md#metered-billing-batch-usage-event). V případě, že chcete odeslat [událost použití](partner-center-portal/marketplace-metering-service-apis.md#metered-billing-single-usage-event), můžete také použít [službu metadat instance](../active-directory/managed-identities-azure-resources/overview.md) a získat [token nosiče tokenu JSON webového tokenu (Jwt)](partner-center-portal/pc-saas-registration.md#how-to-get-the-publishers-authorization-token).
 
 - **Azure Active Directory ID tenanta** (povinné): uvnitř Azure Portal musíte [vytvořit aplikaci Azure Active Directory (AD)](../active-directory/develop/howto-create-service-principal-portal.md) , abychom mohli ověřit připojení mezi našimi dvěma službami za ověřenou komunikací. Pokud chcete najít [ID tenanta](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) pro vaši aplikaci Azure Active Directory (Azure AD), klikněte na okno [Registrace aplikací](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) ve vašem Azure Active Directory. Ve sloupci **Zobrazovaný název** vyberte aplikaci. Pak vyhledejte **vlastnosti** a pak pro **ID adresáře (tenant)** (například `50c464d3-4930-494c-963c-1e951d15360e` ).
-- **ID aplikace Azure Active Directory** (povinné): budete také potřebovat [ID aplikace](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) a ověřovací klíč. Pokud chcete najít ID aplikace, v Azure Active Directory v okně Registrace aplikací klikněte na okno [App registrations](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) . Ve sloupci **Zobrazovaný název** vyberte aplikaci a pak vyhledejte **ID aplikace (třeba klienta)** (například `50c464d3-4930-494c-963c-1e951d15360e` ). Ověřovací klíč najdete tak, že přejdete na **Nastavení** a vyberete **klíče**. Budete muset zadat popis a dobu trvání a pak zadat číselnou hodnotu.
+- **ID aplikace Azure Active Directory** (povinné): budete také potřebovat [ID aplikace](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) a ověřovací klíč. Pokud chcete najít ID aplikace, v Azure Active Directory v okně Registrace aplikací klikněte na okno [](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) . Ve sloupci **Zobrazovaný název** vyberte aplikaci a pak vyhledejte **ID aplikace (třeba klienta)** (například `50c464d3-4930-494c-963c-1e951d15360e` ). Ověřovací klíč najdete tak, že přejdete na **Nastavení** a vyberete **klíče**. Budete muset zadat popis a dobu trvání a pak zadat číselnou hodnotu.
 
 > [!NOTE]
 > ID aplikace Azure bude přidruženo k vašemu ID vydavatele a bude možné ho znovu použít jenom v rámci tohoto účtu vydavatele.
@@ -210,7 +210,7 @@ Tato konfigurace je nutná, pokud chcete použít [událost dávkového použit�
 Můžete si vybrat, jestli se chcete zúčastnit marketingových a prodejních kanálů podporovaných společností Microsoft. Při vytváření vaší nabídky v partnerském centru se zobrazí dvě karty na konec procesu:
 
 - **Prodávejte dál prostřednictvím CSP**: tuto možnost použijte, pokud chcete, aby partneři poskytovatelé řešení Microsoft Cloud mohli své řešení znovu prodávat jako součást zahrnuté nabídky. Další informace najdete v tématu [program Cloud Solution Provider](./cloud-solution-providers.md) .
-- **Spoluprodejní s Microsoftem**: Tato možnost umožňuje prodejcům Microsoftu zvážit, jaké řešení se svým zákazníkům nabízí při vyhodnocování vašich potřeb zákazníků. Podrobné informace o tom, jak připravit vaši nabídku k vyhodnocení, najdete v tématu [možnost společného prodeje na komerčním webu Marketplace](commercial-marketplace-co-sell.md). Podrobnosti o požadavcích na společný prodej IP adres najdete v tématu [požadavky na stav společného prodeje](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status). Další informace o marketingu vaší nabídky prostřednictvím kanálů partnerů Microsoft CSP najdete v tématu [poskytovatelé Cloud Solution Provider](cloud-solution-providers.md).
+- **Spoluprodejní s Microsoftem**: Tato možnost umožňuje prodejcům Microsoftu zvážit, jaké řešení se svým zákazníkům nabízí při vyhodnocování vašich potřeb zákazníků. Podrobné informace o tom, jak připravit vaši nabídku k vyhodnocení, najdete v tématu [možnost společného prodeje na komerčním webu Marketplace](commercial-marketplace-co-sell.md). Podrobnosti o požadavcích na společný prodej IP adres najdete v tématu [požadavky na stav společného prodeje](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status). Další informace o marketingu vaší nabídky prostřednictvím kanálů partnerů Microsoft CSP najdete v tématu [poskytovatelé Cloud Solution Provider](cloud-solution-providers.md).
 
 Další informace najdete v tématu věnovaném [růstu cloudového podnikání pomocí Azure Marketplace](https://azuremarketplace.microsoft.com/sell).
 

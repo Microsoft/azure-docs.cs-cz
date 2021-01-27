@@ -8,12 +8,12 @@ author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.reviewer: anbene
 ms.date: 12/23/2020
-ms.openlocfilehash: a504969d23fce8000119aadf9e45d599da0894f0
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 57a6883a2c4fff14507df27b55ac0f6621306bf5
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97918116"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879271"
 ---
 # <a name="how-to-plan-a-managed-service-offer-for-the-microsoft-commercial-marketplace"></a>Postup plánování nabídky spravované služby pro komerční tržiště Microsoftu
 
@@ -25,7 +25,7 @@ Spravované služby jsou Azure Marketplace nabídky, které umožňují správu 
 
 Pokud chcete publikovat spravovanou službu, musíte mít na cloudové platformě vytvořenou zlatou nebo stříbrné kompetence Microsoftu. Tato kompetence znázorňuje vaše znalosti pro zákazníky. Další informace najdete v tématu [Microsoft Partner Network kompetence](https://partner.microsoft.com/membership/competencies).
 
-Nabídky musí splňovat všechny použitelné [zásady certifikace komerčního tržiště](https://docs.microsoft.com/legal/marketplace/certification-policies) , které se mají publikovat na Azure Marketplace.
+Nabídky musí splňovat všechny použitelné [zásady certifikace komerčního tržiště](/legal/marketplace/certification-policies) , které se mají publikovat na Azure Marketplace.
 
 ## <a name="customer-leads"></a>Potenciální zákazníci
 
@@ -46,7 +46,7 @@ Když vytvoříte nabídku spravované služby v partnerském centru, zadáte te
 **Popisy volání**
 
 1. Logo
-1. Název
+1. Name
 1. Krátký popis
 1. Kategorie
 1. Právní smlouvy a zásady ochrany osobních údajů

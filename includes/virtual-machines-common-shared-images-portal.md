@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/06/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 1af80f208c72af9434d596f2c1219c08c0e3f719
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e7a4af2c18bfc2b8fbd6149dab12c0bcfc665341
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96015981"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878815"
 ---
 ## <a name="create-an-image-gallery"></a>Vytvoření galerie imagí
 
@@ -35,7 +35,7 @@ Následující příklad vytvoří galerii s názvem *myGallery* ve skupině pro
 
 ## <a name="create-an-image-definition"></a>Vytvoření definice obrázku 
 
-Definice obrázků vytvoří logické seskupení obrázků. Slouží ke správě informací o verzích imagí, které jsou v nich vytvořeny. Názvy definic obrázků mohou být tvořeny velkými a malými písmeny, číslicemi, tečkami, pomlčkami a tečkami. Další informace o hodnotách, které můžete zadat pro definici obrázku, najdete v tématu [definice imagí](../articles/virtual-machines/windows/shared-image-galleries.md#image-definitions).
+Definice obrázků vytvoří logické seskupení obrázků. Slouží ke správě informací o verzích imagí, které jsou v nich vytvořeny. Názvy definic obrázků mohou být tvořeny velkými a malými písmeny, číslicemi, tečkami, pomlčkami a tečkami. Další informace o hodnotách, které můžete zadat pro definici obrázku, najdete v tématu [definice imagí](../articles/virtual-machines/shared-image-galleries.md#image-definitions).
 
 Vytvořte definici image galerie v galerii. V tomto příkladu má image galerie název *myImageDefinition*.
 
@@ -44,7 +44,7 @@ Vytvořte definici image galerie v galerii. V tomto příkladu má image galerie
 1. Jako **název definice obrázku** zadejte *myImageDefinition*.
 1. V části **operační systém** vyberte správnou možnost v závislosti na vašem ZDROJovém virtuálním počítači.  
 1. V případě **generování virtuálních počítačů** vyberte možnost na základě vašeho zdrojového virtuálního počítače. Ve většině případů to bude 1. *generace*. Další informace najdete v tématu [Podpora pro virtuální počítače 2. generace](../articles/virtual-machines/generation-2.md).
-1. V části **stav operačního systému** vyberte možnost v závislosti na vašem ZDROJovém virtuálním počítači. Další informace naleznete v tématu [generalizovaná a specializovaná](../articles/virtual-machines/linux/shared-image-galleries.md#generalized-and-specialized-images).
+1. V části **stav operačního systému** vyberte možnost v závislosti na vašem ZDROJovém virtuálním počítači. Další informace naleznete v tématu [generalizovaná a specializovaná](../articles/virtual-machines/shared-image-galleries.md#generalized-and-specialized-images).
 1. Pro **vydavatele** zadejte *myPublisher*. 
 1. Pro **nabídku** zadejte *myOffer*.
 1. Jako **SKU** zadejte *mySKU*.
@@ -93,7 +93,7 @@ Replikace obrázku do všech cílových oblastí může chvíli trvat.
 
 Doporučujeme sdílet přístup na úrovni Galerie imagí. Následující postup vás provede sdílením galerie, kterou jste právě vytvořili.
 
-1. Otevřete web [Azure Portal](https://portal.azure.com).
+1. Otevřete [Azure Portal](https://portal.azure.com).
 1. V nabídce vlevo vyberte **skupiny prostředků**. 
 1. V seznamu skupin prostředků vyberte **myGalleryRG**. Otevře se okno pro vaši skupinu prostředků.
 1. V nabídce na levé straně stránky **myGalleryRG** vyberte **řízení přístupu (IAM)**. 

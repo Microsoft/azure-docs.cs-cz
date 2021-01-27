@@ -11,12 +11,12 @@ ms.author: siarora
 ms.date: 12/1/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperf-fy20q4, contperf-fy21q2
-ms.openlocfilehash: 78cc0aa6beb9ab83fea2039b271b071de1662fc1
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: aa25a81068b25b7b8696a7472eb04542e8bb1a60
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98629176"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878948"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>Správa a zvýšení kvót pro prostředky pomocí Azure Machine Learning
 
@@ -82,7 +82,7 @@ Dostupné prostředky:
 + Počet **clusterů na oblast** má výchozí limit 200. Tyto jsou sdíleny mezi školicím clusterem a výpočetní instancí. (Výpočetní instance se považuje za cluster s jedním uzlem pro účely kvóty.)
 
 > [!TIP]
-> Další informace o tom, kterou rodinu virtuálních počítačů požádat o zvýšení kvóty, najdete [v Azure na velikostech virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machines/sizes). U rodin virtuálních počítačů GPU se například v názvu rodiny začíná znakem "N" (např. NCv3 Series)
+> Další informace o tom, kterou rodinu virtuálních počítačů požádat o zvýšení kvóty, najdete [v Azure na velikostech virtuálních počítačů](../virtual-machines/sizes.md). U rodin virtuálních počítačů GPU se například v názvu rodiny začíná znakem "N" (např. NCv3 Series)
 
 V následující tabulce jsou uvedena další omezení platformy. Pokud si chcete vyžádat výjimku, obraťte se na tým produktu AzureML prostřednictvím lístku **technické** podpory.
 

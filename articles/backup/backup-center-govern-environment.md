@@ -3,14 +3,14 @@ title: Řízení infrastruktury zálohování s využitím centra zálohování
 description: Naučte se řídit prostředí Azure a zajistit, aby všechny vaše prostředky vyhovovaly z perspektivy zálohování pomocí centra zálohování.
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: ebb4d72c3a3377072e185251bd642762f6876c03
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 67b0591c7d7146d162687018854365d338105d76
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173809"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98893842"
 ---
-# <a name="govern-your-backup-estate-using-backup-center"></a>Řízení infrastruktury zálohování s využitím centra zálohování
+# <a name="govern-your-backup-estate-using-backup-center-preview"></a>Správa záloh pomocí centra zálohování (Preview)
 
 Centrum zálohování vám pomůže řídit vaše prostředí Azure a zajistit, aby všechny vaše prostředky vyhovovaly z perspektivy zálohování. Níže jsou uvedené některé možnosti zásad správného řízení služby Backup Center:
 
@@ -43,6 +43,11 @@ Kliknutím na položku nabídky Kompatibilita záloh můžete zobrazit [dodržov
 Výběr položky nabídky **chránitelné zdroje dat** umožňuje zobrazit všechny zdroje dat, které nejsou nakonfigurované pro zálohování. Seznam můžete filtrovat podle předplatného zdroje dat, skupiny prostředků, umístění, typu a značek. Jakmile identifikujete zdroj dat, který je třeba zálohovat, můžete kliknout pravým tlačítkem na odpovídající položku mřížky a vybrat **zálohování** a nakonfigurovat zálohování pro daný prostředek.
 
 ![Nabídka chránitelné zdroje dat](./media/backup-center-govern-environment/protectable-datasources.png)
+
+> [!NOTE]
+> Pokud jako typ zdroje dat vyberete **SQL na virtuálním počítači Azure** , v zobrazení **chránitelné zdroje dat** se zobrazí seznam všech virtuálních počítačů galerie, které nemají žádné databáze SQL, které byly nakonfigurovány pro zálohování.
+> Pokud jako typ zdroje dat vyberete možnost **Azure Storage (soubory Azure)** , zobrazí se v zobrazení **chráněných zdrojů** dat seznam všech účtů úložiště (které podporují sdílené složky), které nemají žádné sdílené složky, které byly nakonfigurovány pro zálohování.
+
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -11,23 +11,23 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/17/2020
 ms.author: axelg
-ms.openlocfilehash: 247324c30bbe0edaef78c0b0d5e6a6d593e8cac9
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 62b462d8e75fc291ac599ac99dbe4fb3a74fde2b
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586393"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878693"
 ---
 # <a name="troubleshoot-the-azure-linux-agent"></a>Řešení potíží s agentem Azure Linux
 
-[Agent Azure Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) umožňuje virtuálnímu počítači komunikovat s řadičem prostředků infrastruktury (základní fyzický server, na kterém je virtuální počítač hostovaný) na IP adrese 168.63.129.16.
+[Agent Azure Linux](../extensions/agent-linux.md) umožňuje virtuálnímu počítači komunikovat s řadičem prostředků infrastruktury (základní fyzický server, na kterém je virtuální počítač hostovaný) na IP adrese 168.63.129.16.
 
 >[!NOTE]
 >Tato IP adresa je virtuální veřejná IP adresa, která usnadňuje komunikaci a neměla by být blokovaná. Další informace najdete v tématu [co je IP adresa 168.63.129.16?](../../virtual-network/what-is-ip-address-168-63-129-16.md).
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
-Zkontrolujte stav agenta a jeho verzi, abyste se ujistili, že je stále podporovaná. Podívejte se na podporu [Minimální verze pro agenty virtuálních počítačů v Azure](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/support-extensions-agent-version) , abyste zkontrolovali podporu verzí, nebo si Projděte [WALinuxAgent Nejčastější dotazy](https://github.com/Azure/WALinuxAgent/wiki/FAQ#what-does-goal-state-agent-mean-in-waagent---version-output) , kde najdete postup pro vyhledání stavu a verze.
+Zkontrolujte stav agenta a jeho verzi, abyste se ujistili, že je stále podporovaná. Podívejte se na podporu [Minimální verze pro agenty virtuálních počítačů v Azure](/troubleshoot/azure/virtual-machines/support-extensions-agent-version) , abyste zkontrolovali podporu verzí, nebo si Projděte [WALinuxAgent Nejčastější dotazy](https://github.com/Azure/WALinuxAgent/wiki/FAQ#what-does-goal-state-agent-mean-in-waagent---version-output) , kde najdete postup pro vyhledání stavu a verze.
 
 ## <a name="troubleshoot-a-not-ready-status"></a>Řešení potíží se stavem Nepřipraveno
 
@@ -64,7 +64,7 @@ Zkontrolujte stav agenta a jeho verzi, abyste se ujistili, že je stále podporo
    AutoUpdate.Enabled=y
    ```
 
-   Další informace o tom, jak aktualizovat agenta Azure Linux, najdete v tématu [Postup aktualizace agenta Azure Linux na virtuálním počítači](https://docs.microsoft.com/azure/virtual-machines/extensions/update-linux-agent).
+   Další informace o tom, jak aktualizovat agenta Azure Linux, najdete v tématu [Postup aktualizace agenta Azure Linux na virtuálním počítači](../extensions/update-linux-agent.md).
 
 1. Ujistěte se, že se virtuální počítač může připojit k řadiči prostředků infrastruktury. Pomocí nástroje, jako je například kudrlinkou, otestujte, jestli se virtuální počítač může připojit k 168.63.129.16 na portech 80, 443 a 32526. Pokud se virtuální počítač nepřipojí podle očekávání, ověřte, jestli je v místní bráně firewall na VIRTUÁLNÍm počítači otevřená odchozí komunikace přes porty 80, 443 a 32526. Pokud je tato IP adresa zablokovaná, může se agent virtuálního počítače zobrazit neočekávané chování.
 

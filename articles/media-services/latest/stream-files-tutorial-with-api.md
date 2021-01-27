@@ -1,25 +1,10 @@
 ---
-title: Nahrávání, kódování a streamování pomocí Media Services V3
-titleSuffix: Azure Media Services
-description: Kurz ukazující, jak nahrát soubor, zakódovat video a streamovat obsah pomocí Azure Media Services V3.
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: tutorial
-ms.custom: mvc
-ms.date: 08/31/2020
-ms.author: inhenkel
-ms.openlocfilehash: eedbb63f4928c0397150b40a47fdc7c3e87d1991
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89256761"
+title: nahrání, kódování a streamování pomocí Media Services V3: Azure Media Services Description: kurz ukazující, jak nahrát soubor, zakódovat video a streamovat obsah pomocí Azure Media Services V3.
+služby: Media-Services documentationcenter: ' ' Author: IngridAtMicrosoft Manager: femila Editor: ' '
+
+MS. Service: Media-Services MS. rebavování: MS. téma: kurz MS. Custom: MVC MS. Date: 08/31/2020 MS. Author: inhenkel
 ---
+
 # <a name="tutorial-upload-encode-and-stream-videos-with-media-services-v3"></a>Kurz: nahrávání, kódování a streamování videí pomocí Media Services V3
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
@@ -67,7 +52,7 @@ Tato část popisuje funkce definované v souboru [Program.cs](https://github.co
 Tato ukázka provede následující akce:
 
 1. Vytvoří novou **transformaci** (nejprve zkontroluje, jestli Zadaná transformace existuje).
-2. Vytvoří výstupní **Asset** , který se používá jako výstup **úlohy**kódování.
+2. Vytvoří výstupní **Asset** , který se používá jako výstup **úlohy** kódování.
 3. Vytvoří vstupní **Asset** a nahraje zadaný místní videosoubor do souboru. Prostředek se použije jako vstup úlohy.
 4. Odešle úlohu kódování pomocí vytvořeného vstupu a výstupu.
 5. Zkontroluje stav úlohy.

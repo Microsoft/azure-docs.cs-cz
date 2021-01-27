@@ -7,16 +7,16 @@ ms.date: 05/05/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
-ms.openlocfilehash: 6699db280c4d82867d5559255eab08fd6b55b65a
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: e3a7ea2cd696f54b032a3f17eceff466a6201436
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201514"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878676"
 ---
 # <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>Verze Preview: vytvoření bitové kopie systému Windows a její distribuce do galerie sdílených imagí 
 
-V tomto článku se dozvíte, jak můžete použít nástroj Azure image Builder a Azure PowerShell k vytvoření verze image v [galerii sdílených imagí](shared-image-galleries.md), a pak můžete bitovou kopii distribuovat globálně. Můžete to udělat taky pomocí [Azure CLI](../linux/image-builder-gallery.md).
+V tomto článku se dozvíte, jak můžete použít nástroj Azure image Builder a Azure PowerShell k vytvoření verze image v [galerii sdílených imagí](../shared-image-galleries.md), a pak můžete bitovou kopii distribuovat globálně. Můžete to udělat taky pomocí [Azure CLI](../linux/image-builder-gallery.md).
 
 K nakonfigurování image budeme používat šablonu. JSON. Soubor. JSON, který používáme, je tady: [armTemplateWinSIG.js](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/armTemplateWinSIG.json). Budeme stahovat a upravovat místní verzi šablony, takže tento článek je napsaný pomocí místní relace PowerShellu.
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 01/11/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6af68f51e76f60c807be2008ae61e27879ebbb11
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 5012e90aae316897454ffc7933efc88d83afdf6e
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98703203"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98893371"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C partneři ISV
 
@@ -74,6 +74,7 @@ Partneři Microsoftu s následujícími nezávislými výrobci softwaru pro zabe
 | Partner ISV | Návody pro popis a integraci |
 |:-------------------------|:--------------|
 | ![Snímek obrazovky s logem Arkose Lab](./media/partner-gallery/arkose-logo.png) | [Arkose Labs](./partner-arkose-labs.md) je poskytovatel řešení prevence podvodů, který pomáhá organizacím chránit proti útokům na roboty, útokům na převzetí účtů a podvodné otevírání účtů. |
+| ![Snímek obrazovky s logem nástroje test a odpověď](./media/partner-gallery/ping-logo.png) | [Příkaz Testovat identitu](./partner-ping-identity.md) umožňuje zabezpečený hybridní přístup k místním starším aplikacím v několika cloudech. |
 | ![Snímek obrazovky s logem vrstev](./media/partner-gallery/strata-logo.png) | [Vrstvy](./partner-strata.md) poskytují zabezpečený hybridní přístup k místním aplikacím vyvynucováním konzistentních zásad přístupu, udržováním synchronizovaných identit a zjednodušují přechod aplikací ze starších systémů identit do ověřování založeného na standardech a řízení přístupu, které poskytuje Azure AD B2C. |
 | ![Snímek obrazovky s logem Zscaler](./media/partner-gallery/zscaler-logo.png) | [Zscaler](./partner-zscaler.md) zajišťuje zabezpečený přístup k soukromým aplikacím a prostředkům na základě zásad, aniž by došlo k nákladům, nepříjemnostem nebo bezpečnostním rizikům sítě VPN. |
 

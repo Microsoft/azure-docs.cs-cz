@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/18/2020
 ms.author: yushwang
-ms.openlocfilehash: f52d684d1e6ef63fdf4287c610608061f30395f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db19b1ae017fa7981747b0e7b4c82e97efc61ed3
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90995369"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878880"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways"></a>Postup konfigurace protokolu BGP u bran Azure VPN Gateway
 
@@ -45,19 +45,19 @@ V této části vytvoříte a nakonfigurujete virtuální síť, vytvoříte a n
 
 **Diagram 2**
 
-:::image type="content" source="./media/bgp-howto/bgp-gateway.png" alt-text="Diagram znázorňující architekturu a nastavení sítě" border="false":::
+:::image type="content" source="./media/bgp-howto/bgp-gateway.png" alt-text="Diagram znázorňující nastavení pro bránu virtuální sítě" border="false":::
 
 ### <a name="1-create-and-configure-testvnet1"></a>1. vytvoření a konfigurace virtuální sítě testvnet1
 
-V tomto kroku vytvoříte a nakonfigurujete virtuální sítě testvnet1. Pomocí kroků v [kurzu Vytvoření brány](vpn-gateway-tutorial-create-gateway-powershell.md) vytvořte a nakonfigurujte službu Azure Virtual Network a bránu VPN. Použijte referenční nastavení na snímcích obrazovky níže.
+V tomto kroku vytvoříte a nakonfigurujete virtuální sítě testvnet1. Pomocí kroků v [kurzu Vytvoření brány](./tutorial-create-gateway-portal.md) vytvořte a nakonfigurujte službu Azure Virtual Network a bránu VPN. Použijte referenční nastavení na snímcích obrazovky níže.
 
 * Virtuální síť:
 
-   :::image type="content" source="./media/bgp-howto/testvnet-1.png" alt-text="Diagram znázorňující architekturu a nastavení sítě":::
+   :::image type="content" source="./media/bgp-howto/testvnet-1.png" alt-text="Virtuální sítě testvnet1 s odpovídajícími předponami adres":::
 
 * Podsítě:
 
-   :::image type="content" source="./media/bgp-howto/testvnet-1-subnets.png" alt-text="Diagram znázorňující architekturu a nastavení sítě":::
+   :::image type="content" source="./media/bgp-howto/testvnet-1-subnets.png" alt-text="Virtuální sítě testvnet1 podsítě":::
 
 ### <a name="2-create-the-vpn-gateway-for-testvnet1-with-bgp-parameters"></a>2. Vytvoření brány VPN Gateway pro virtuální sítě testvnet1 s parametry BGP
 
@@ -67,11 +67,11 @@ V tomto kroku vytvoříte bránu VPN s odpovídajícími parametry protokolu BGP
 
 1. Zadejte parametry, jak je znázorněno níže:
 
-   :::image type="content" source="./media/bgp-howto/create-gateway-1.png" alt-text="Diagram znázorňující architekturu a nastavení sítě":::
+   :::image type="content" source="./media/bgp-howto/create-gateway-1.png" alt-text="Vytvořit VNG1":::
 
 1. V části zvýrazněná **Konfigurace protokolu BGP** na stránce nakonfigurujte následující nastavení:
 
-   :::image type="content" source="./media/bgp-howto/create-gateway-1-bgp.png" alt-text="Diagram znázorňující architekturu a nastavení sítě":::
+   :::image type="content" source="./media/bgp-howto/create-gateway-1-bgp.png" alt-text="Konfigurace protokolu BGP":::
 
    * Vyberte možnost **Konfigurovat protokol BGP**  -  **povoleno** pro zobrazení oddílu konfigurace protokolu BGP.
 
@@ -96,7 +96,7 @@ Po vytvoření brány můžete získat IP adresy partnerského uzlu BGP v brán�
 
 1. Přejděte do prostředku brány virtuální sítě a výběrem stránky **Konfigurace** zobrazte informace o konfiguraci protokolu BGP, jak je znázorněno na následujícím snímku obrazovky. Na této stránce můžete zobrazit všechny informace o konfiguraci protokolu BGP v bráně Azure VPN Gateway: ASN, veřejnou IP adresu a odpovídající IP adresy partnerského uzlu protokolu BGP na straně Azure (výchozí a APIPa).
 
-   :::image type="content" source="./media/bgp-howto/vnet-1-gw-bgp.png" alt-text="Diagram znázorňující architekturu a nastavení sítě":::
+   :::image type="content" source="./media/bgp-howto/vnet-1-gw-bgp.png" alt-text="Brána BGP":::
 
 1. Na stránce **Konfigurace** můžete provést následující změny konfigurace:
 
@@ -107,17 +107,17 @@ Po vytvoření brány můžete získat IP adresy partnerského uzlu BGP v brán�
 
 ## <a name="part-2-configure-bgp-on-cross-premises-s2s-connections"></a><a name ="crosspremises"></a>Část 2: Konfigurace protokolu BGP u připojení S2S mezi místními lokalitami
 
-K navázání připojení mezi různými místy musíte vytvořit *bránu místní sítě* , která bude představovat vaše místní zařízení VPN, a *připojení* k připojení brány VPN k bráně místní sítě, jak je vysvětleno v tématu [vytvoření připojení typu Site-to-site](vpn-gateway-howto-site-to-site-resource-manager-portal.md). Tento článek obsahuje další vlastnosti, které jsou potřeba k určení parametrů konfigurace protokolu BGP.
+K navázání připojení mezi různými místy musíte vytvořit *bránu místní sítě* , která bude představovat vaše místní zařízení VPN, a *připojení* k připojení brány VPN k bráně místní sítě, jak je vysvětleno v tématu [vytvoření připojení typu Site-to-site](./tutorial-site-to-site-portal.md). Tento článek obsahuje další vlastnosti, které jsou potřeba k určení parametrů konfigurace protokolu BGP.
 
 **Diagram 3**
 
-:::image type="content" source="./media/bgp-howto/bgp-crosspremises.png" alt-text="Diagram znázorňující architekturu a nastavení sítě" border="false":::
+:::image type="content" source="./media/bgp-howto/bgp-crosspremises.png" alt-text="Diagram znázorňující protokol IPsec" border="false":::
 
 ### <a name="1-configure-bgp-on-the-local-network-gateway"></a>1. konfigurace protokolu BGP v bráně místní sítě
 
 V tomto kroku nakonfigurujete protokol BGP v bráně místní sítě. Jako příklad použijte následující snímek obrazovky. Snímek obrazovky zobrazuje bránu místní sítě (site5) s parametry určenými v diagramu 3.
 
-:::image type="content" source="./media/bgp-howto/create-local-bgp.png" alt-text="Diagram znázorňující architekturu a nastavení sítě":::
+:::image type="content" source="./media/bgp-howto/create-local-bgp.png" alt-text="Konfigurace protokolu BGP pro bránu místní sítě":::
 
 #### <a name="important-configuration-considerations"></a>Důležité informace o konfiguraci
 
@@ -130,7 +130,7 @@ V tomto kroku nakonfigurujete protokol BGP v bráně místní sítě. Jako pří
 
 V tomto příkladu se jako místní IP adresa partnerského uzlu BGP používá adresa APIPa (169.254.100.1):
 
-:::image type="content" source="./media/bgp-howto/local-apipa.png" alt-text="Diagram znázorňující architekturu a nastavení sítě":::
+:::image type="content" source="./media/bgp-howto/local-apipa.png" alt-text="APIPa a BGP brány místní sítě":::
 
 ### <a name="2-configure-a-s2s-connection-with-bgp-enabled"></a>2. Konfigurace připojení S2S s povoleným protokolem BGP
 
@@ -140,13 +140,13 @@ V tomto kroku vytvoříte nové připojení s povoleným protokolem BGP. Pokud u
 
 Pokud chcete vytvořit nové připojení s povoleným protokolem BGP, zadejte na stránce **Přidat připojení** hodnoty a pak zaškrtněte políčko **Povolit protokol BGP** , aby se pro toto připojení povolil protokol BGP. Výběrem možnosti **OK** vytvořte připojení.
 
-:::image type="content" source="./media/bgp-howto/ipsec-connection-bgp.png" alt-text="Diagram znázorňující architekturu a nastavení sítě":::
+:::image type="content" source="./media/bgp-howto/ipsec-connection-bgp.png" alt-text="Připojení přes protokol IPsec mezi místními místy pomocí protokolu BGP":::
 
 #### <a name="to-update-an-existing-connection"></a><a name ="update"></a>Aktualizace existujícího připojení
 
 Pokud chcete změnit možnost protokolu BGP u připojení, přejděte na stránku **Konfigurace** prostředku připojení a pak přepněte možnost **protokolu BGP** tak, jak je zvýrazněno v následujícím příkladu. Výběrem **Uložit** uložte změny.
 
-:::image type="content" source="./media/bgp-howto/update-bgp.png" alt-text="Diagram znázorňující architekturu a nastavení sítě":::
+:::image type="content" source="./media/bgp-howto/update-bgp.png" alt-text="Aktualizace protokolu BGP pro připojení":::
 
 ## <a name="part-3-configure-bgp-on-vnet-to-vnet-connections"></a><a name ="v2v"></a>Část 3: Konfigurace protokolu BGP u připojení VNet-to-VNet
 
@@ -160,7 +160,7 @@ V případě kontextu, který odkazuje na **diagram 4**, by se protokol BGP mezi
 
 **Diagram 4**
 
-:::image type="content" source="./media/bgp-howto/bgp-crosspremises-v2v.png" alt-text="Diagram znázorňující architekturu a nastavení sítě" border="false":::
+:::image type="content" source="./media/bgp-howto/bgp-crosspremises-v2v.png" alt-text="Diagram znázorňující úplnou síť" border="false":::
 
 ## <a name="next-steps"></a>Další kroky
 
