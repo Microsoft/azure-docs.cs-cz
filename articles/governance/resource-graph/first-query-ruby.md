@@ -1,14 +1,14 @@
 ---
 title: 'Rychlý Start: váš první dotaz na Ruby'
 description: V tomto rychlém startu budete postupovat podle pokynů pro povolení grafu prostředků Gem pro Ruby a spuštění prvního dotazu.
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: 4ffd7f33fb83b7a1f247f687b77dd2ef9c8e5bc9
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 41769359eaa1f930d34b0a182f35da38a6f5109d
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057259"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920033"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-ruby"></a>Rychlý Start: spuštění prvního dotazu na graf prostředku pomocí Ruby
 

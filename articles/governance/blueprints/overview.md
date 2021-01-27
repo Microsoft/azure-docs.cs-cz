@@ -1,14 +1,14 @@
 ---
 title: Přehled Azure Blueprints
 description: Pochopte, jak služba Azure Modrotiskys umožňuje vytvářet, definovat a nasazovat artefakty v prostředí Azure.
-ms.date: 09/30/2020
+ms.date: 01/27/2021
 ms.topic: overview
-ms.openlocfilehash: 0dbf5ab54b694399c9d15cce84e8eca34a5d924e
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: f4ba77f5fcb376bf600d94997b0d6ba569f04f82
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91892723"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919338"
 ---
 # <a name="what-is-azure-blueprints"></a>Co je Azure Blueprints?
 
@@ -31,7 +31,7 @@ Skoro všechno, co chcete zahrnout do nasazení v Azure modrotisky, se dá uděl
 
 V Azure modrotisky se zachová vztah mezi definicí podrobného plánu (co _by měl být_ nasazený) a přiřazení podrobného plánu (co _se_ nasadilo). Toto propojení podporuje vylepšené sledování a auditování nasazení. Azure modrotisky můžou také upgradovat několik předplatných, která se řídí stejným plánem.
 
-Není nutné volit mezi šablonou ARM a podrobným plánem. Každý podrobný plán se může skládat z nuly nebo více _artefaktů_šablon ARM. Tato podpora znamená, že předchozí úsilí pro vývoj a údržbu knihoven šablon ARM je možné znovu použít v plánech Azure.
+Není nutné volit mezi šablonou ARM a podrobným plánem. Každý podrobný plán se může skládat z nuly nebo více _artefaktů_ šablon ARM. Tato podpora znamená, že předchozí úsilí pro vývoj a údržbu knihoven šablon ARM je možné znovu použít v plánech Azure.
 
 ## <a name="how-its-different-from-azure-policy"></a>Odlišnosti od Azure Policy
 
@@ -47,7 +47,7 @@ V definici podrobného plánu může být zásada obsažena jako jeden z mnoha _
 
 Podrobný plán se skládá z _artefaktů_. Plány Azure v současné době podporují následující zdroje jako artefakty:
 
-|Prostředek  | Možnosti hierarchie| Description  |
+|Prostředek  | Možnosti hierarchie| Popis  |
 |---------|---------|---------|
 |Skupiny prostředků | Předplatné | Vytvořte novou skupinu prostředků pro použití jinými artefakty v rámci podrobného plánu.  Tyto zástupné skupiny prostředků umožňují organizovat prostředky přesně tak, jak chcete, aby byly strukturované a poskytovaly omezení oboru pro zahrnuté artefakty a přiřazení rolí a šablony ARM. |
 |Šablona ARM | Předplatné, skupina prostředků | Šablony, včetně vnořených a propojených šablon, slouží k vytváření složitých prostředí. Příklady prostředí: farma SharePointu, konfigurace stavu Azure Automation nebo pracovní prostor služby Log Analytics. |
@@ -108,7 +108,7 @@ Pokud chcete podrobný plán přiřadit nebo zrušit jeho přiřazení, váš ú
 
 K dispozici jsou následující předdefinované role:
 
-|Role Azure | Description |
+|Role Azure | Popis |
 |-|-|
 |[Vlastník](../../role-based-access-control/built-in-roles.md#owner) | Kromě dalších oprávnění zahrnuje všechna Azure Blueprint související oprávnění. |
 |[Přispěvatel](../../role-based-access-control/built-in-roles.md#contributor) | Kromě dalších oprávnění může vytvořit a odstranit definice podrobného plánu, ale nemá oprávnění k přiřazení podrobného plánu. |

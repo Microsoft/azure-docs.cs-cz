@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: rohink
-ms.openlocfilehash: 3adbf34e4c19a76c2b5b2b1968c7821f37965929
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: c72e17e601ebf87b0f344a4723159ae22abc81d1
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965625"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919863"
 ---
 # <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>Konfigurace reverzního DNS pro služby hostované v Azure
 
@@ -33,7 +33,7 @@ Před čtením tohoto článku byste měli být obeznámeni s tímto [přehledem
 V Azure DNS jsou k dispozici výpočetní prostředky (například virtuální počítače, sady škálování virtuálních počítačů nebo clustery Service Fabric) prostřednictvím prostředku PublicIpAddress. Reverzní vyhledávání DNS se konfigurují pomocí vlastnosti ' ReverseFqdn ' objektu PublicIpAddress.
 
 
-Reverzní DNS se v současnosti pro Azure App Service nepodporuje.
+Reverzní DNS se v současné době pro Azure App Service a Application Gateway nepodporuje.
 
 ## <a name="validation-of-reverse-dns-records"></a>Ověření reverzních záznamů DNS
 

@@ -1,14 +1,14 @@
 ---
 title: Ukázky dotazů pro pokročilé
 description: Pomocí Azure Resource graphu můžete spouštět některé rozšířené dotazy, včetně práce se sloupci, použitými značkami a porovnáním prostředků s regulárními výrazy.
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: sample
-ms.openlocfilehash: dff4b06cc5cf4385820c7f6251efaae792d9c22d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b0a13fb798a9403b240c97fb207bf9b76e01028f
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005397"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918865"
 ---
 # <a name="advanced-resource-graph-query-samples"></a>Ukázky dotazů v rozšířeném grafu prostředků
 
@@ -34,7 +34,7 @@ Projdeme následující rozšířené dotazy:
 - [Dotaz na podrobnosti sestav přiřazení konfigurace hostů](#query-gcreports)
 - [Najde všechny důvody, proč počítač nesplňuje požadavky na přiřazení konfigurace hostů.](#query-gcmachinedetails)
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free).
 
 ## <a name="language-support"></a>Podpora jazyků
 

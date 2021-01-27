@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: ba971919037230cb6c09e627fde448647063b5b9
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: a08b5db19aab19402aa3c93cfa23ce7b39a0a838
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498417"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918684"
 ---
 # <a name="lsv2-series"></a>Řada Lsv2
 
@@ -32,6 +32,7 @@ Funkce Lsv2-Series s vysokou propustností, nízkou latencí a přímo namapovan
 [Aktualizace pro zachování paměti](maintenance-and-updates.md): nepodporováno<br>
 [Podpora generování virtuálních počítačů](generation-2.md): generace 1 a 2<br>
 Shluking: podporováno<br>
+[Akcelerované síťové služby](../virtual-network/create-vm-accelerated-networking-cli.md): podporované<br>
 <br>
 
 | Velikost | Virtuální procesory | Paměť (GiB) | Dočasný disk<sup>1</sup> (GIB) | Disky NVMe<sup>2</sup> | Propustnost disku NVMe<sup>3</sup> (čtení za sekundu/s) | Propustnost datového disku neuloženého v mezipaměti (IOPs/MB/s)<sup>4</sup> | Maximální propustnost datového disku neuloženého shluku (IOPs/MB/s)<sup>5</sup>| Maximální počet datových disků | Maximální počet síťových karet | Očekávaná šířka pásma sítě (MB/s) |
@@ -78,7 +79,7 @@ Shluking: podporováno<br>
 - [Obecné účely](sizes-general.md)
 - [Optimalizované pro paměť](sizes-memory.md)
 - [Optimalizované pro úložiště](sizes-storage.md)
-- [Optimalizované z hlediska GPU](sizes-gpu.md)
+- [Optimalizované z hlediska GPU.](sizes-gpu.md)
 - [Vysokovýkonné výpočetní prostředí](sizes-hpc.md)
 - [Předchozí generace](sizes-previous-gen.md)
 

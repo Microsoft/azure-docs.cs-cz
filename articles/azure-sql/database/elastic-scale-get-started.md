@@ -11,12 +11,12 @@ author: anumjs
 ms.author: anjangsh
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 423fd0f91de3e936e2920d57e5bc606bb86a2437
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 74343b2f05bb4a59e475449c87524ff66cdd605d
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92786713"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919540"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Začínáme s nástroji pro Elastic Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ Tento dokument vás seznámí s vývojářským prostředím pro [klientskou kni
 
 ## <a name="elastic-database-tools-for-java"></a>Elastic Database Tools for Java
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 * Sada Java Developer Kit (JDK), verze 1,8 nebo novější
 * [Maven](https://maven.apache.org/download.cgi)
@@ -58,7 +58,7 @@ Chcete-li vytvořit soubory JAR a začít s ukázkovým projektem, postupujte n�
 
     ![Průběh – Java][5]
 
-Blahopřejeme vám. Úspěšně jste vytvořili a spustili svou první aplikaci horizontálně dělené pomocí nástrojů Elastic Database v Azure SQL Database. Pomocí sady Visual Studio nebo SQL Server Management Studio se připojte k databázi a Prohlédněte si horizontálních oddílů, kterou ukázka vytvořila. Všimnete si nových ukázkových databází horizontálních oddílů a databáze správce map horizontálních oddílů, kterou vytvořila ukázka.
+Gratulujeme! Úspěšně jste vytvořili a spustili svou první aplikaci horizontálně dělené pomocí nástrojů Elastic Database v Azure SQL Database. Pomocí sady Visual Studio nebo SQL Server Management Studio se připojte k databázi a Prohlédněte si horizontálních oddílů, kterou ukázka vytvořila. Všimnete si nových ukázkových databází horizontálních oddílů a databáze správce map horizontálních oddílů, kterou vytvořila ukázka.
 
 Chcete-li přidat knihovnu klienta do vlastního projektu Maven, přidejte do souboru POM následující závislost:
 
@@ -72,7 +72,7 @@ Chcete-li přidat knihovnu klienta do vlastního projektu Maven, přidejte do so
 
 ## <a name="elastic-database-tools-for-net"></a>Elastic Database nástroje pro .NET
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 * Visual Studio 2012 nebo novější s C#. Stáhněte si bezplatnou verzi na webu [Stažení sady Visual Studio](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx).
 * NuGet 2,7 nebo novější. Pokud chcete získat nejnovější verzi, přečtěte si téma [instalace NuGet](https://docs.nuget.org/docs/start-here/installing-nuget).
@@ -85,36 +85,38 @@ Chcete-li stáhnout a spustit ukázku, postupujte podle následujících kroků:
 
 1. Stáhněte si [ukázku nástrojů elastické databáze pro Azure SQL-Začínáme](https://github.com/Azure/elastic-db-tools). Rozbalte ukázku do zvoleného umístění.
 
-2. Chcete-li vytvořit projekt, otevřete řešení *ElasticScaleStarterKit. sln* z adresáře *jazyka C#* .
+2. Chcete-li vytvořit projekt, otevřete řešení *ElasticDatabaseTools. sln* z adresáře *elastické databáze-Tools-Master* . 
 
-3. V řešení pro ukázkový projekt otevřete soubor *app.config* . Pak podle pokynů v souboru přidejte název svého serveru a přihlašovací údaje (uživatelské jméno a heslo).
+3. Nastavte projekt *ElasticScaleStarterKit* jako spouštěný projekt.
 
-4. Sestavte a spusťte aplikaci. Po zobrazení výzvy umožněte aplikaci Visual Studio obnovit balíčky NuGet řešení. Tato akce stáhne nejnovější verzi klientské knihovny elastické databáze z NuGetu.
+4. V projektu *ElasticScaleStarterKit* otevřete soubor *App.config* . Pak podle pokynů v souboru přidejte název svého serveru a přihlašovací údaje (uživatelské jméno a heslo).
 
-5. Chcete-li získat další informace o možnostech klientské knihovny, Experimentujte s různými možnostmi. Poznamenejte si kroky, které aplikace převezme ve výstupu konzoly, a nebojte se prozkoumat kód na pozadí.
+5. Sestavte a spusťte aplikaci. Po zobrazení výzvy umožněte aplikaci Visual Studio obnovit balíčky NuGet řešení. Tato akce stáhne nejnovější verzi klientské knihovny elastické databáze z NuGetu.
+
+6. Chcete-li získat další informace o možnostech klientské knihovny, Experimentujte s různými možnostmi. Poznamenejte si kroky, které aplikace převezme ve výstupu konzoly, a nebojte se prozkoumat kód na pozadí.
 
    ![Průběh][4]
 
-Blahopřejeme vám. Úspěšně jste vytvořili a spustili svou první aplikaci horizontálně dělené pomocí nástrojů Elastic Database v SQL Database. Pomocí sady Visual Studio nebo SQL Server Management Studio se připojte k databázi a Prohlédněte si horizontálních oddílů, kterou ukázka vytvořila. Všimnete si nových ukázkových databází horizontálních oddílů a databáze správce map horizontálních oddílů, kterou vytvořila ukázka.
+Gratulujeme! Úspěšně jste vytvořili a spustili svou první aplikaci horizontálně dělené pomocí nástrojů Elastic Database v SQL Database. Pomocí sady Visual Studio nebo SQL Server Management Studio se připojte k databázi a Prohlédněte si horizontálních oddílů, kterou ukázka vytvořila. Všimnete si nových ukázkových databází horizontálních oddílů a databáze správce map horizontálních oddílů, kterou vytvořila ukázka.
 
 > [!IMPORTANT]
 > Doporučujeme vždy používat nejnovější verzi Management Studio, abyste měli stále synchronizovaný s aktualizacemi Azure a SQL Database. [Aktualizovat aplikaci SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms).
 
 ## <a name="key-pieces-of-the-code-sample"></a>Klíčové části Ukázky kódu
 
-* **Správa map horizontálních oddílů a horizontálních oddílů** : kód ukazuje, jak pracovat s horizontálních oddílů, rozsahy a mapováními v souboru *ShardManagementUtils.cs* . Další informace najdete v tématu horizontální navýšení [kapacity databází pomocí Správce map horizontálních oddílů](https://go.microsoft.com/?linkid=9862595).  
+* **Správa map horizontálních oddílů a horizontálních oddílů**: kód ukazuje, jak pracovat s horizontálních oddílů, rozsahy a mapováními v souboru *ShardManagementUtils.cs* . Další informace najdete v tématu horizontální navýšení [kapacity databází pomocí Správce map horizontálních oddílů](https://go.microsoft.com/?linkid=9862595).  
 
-* **Směrování závislé na datech** : směrování transakcí do pravého horizontálních oddílůu je zobrazeno v souboru *DataDependentRoutingSample.cs* . Další informace najdete v tématu [Směrování závislé na datech](https://go.microsoft.com/?linkid=9862596).
+* **Směrování závislé na datech**: směrování transakcí do pravého horizontálních oddílůu je zobrazeno v souboru *DataDependentRoutingSample.cs* . Další informace najdete v tématu [Směrování závislé na datech](https://go.microsoft.com/?linkid=9862596).
 
-* **Dotazování na více horizontálních oddílů** : dotazování napříč horizontálních oddílů je znázorněno v souboru *MultiShardQuerySample.cs* . Další informace najdete v tématu [dotazování multi-horizontálních oddílů](https://go.microsoft.com/?linkid=9862597).
+* **Dotazování na více horizontálních oddílů**: dotazování napříč horizontálních oddílů je znázorněno v souboru *MultiShardQuerySample.cs* . Další informace najdete v tématu [dotazování multi-horizontálních oddílů](https://go.microsoft.com/?linkid=9862597).
 
-* **Přidání prázdných horizontálních oddílů** : iterativní přidání nového prázdného horizontálních oddílů je provedeno kódem v souboru *CreateShardSample.cs* . Další informace najdete v tématu horizontální navýšení [kapacity databází pomocí Správce map horizontálních oddílů](https://go.microsoft.com/?linkid=9862595).
+* **Přidání prázdných horizontálních oddílů**: iterativní přidání nového prázdného horizontálních oddílů je provedeno kódem v souboru *CreateShardSample.cs* . Další informace najdete v tématu horizontální navýšení [kapacity databází pomocí Správce map horizontálních oddílů](https://go.microsoft.com/?linkid=9862595).
 
 ## <a name="other-elastic-scale-operations"></a>Jiné operace elastického škálování
 
-* **Rozdělení stávajícího horizontálních oddílů** : schopnost rozdělit horizontálních oddílů je poskytována nástrojem pro dělení na více koncových sloučených. Další informace najdete v tématu [přesun dat mezi vysoce škálovatelnými cloudových databází](elastic-scale-overview-split-and-merge.md).
+* **Rozdělení stávajícího horizontálních oddílů**: schopnost rozdělit horizontálních oddílů je poskytována nástrojem pro dělení na více koncových sloučených. Další informace najdete v tématu [přesun dat mezi vysoce škálovatelnými cloudových databází](elastic-scale-overview-split-and-merge.md).
 
-* **Sloučení existujících horizontálních oddílů** : sloučení horizontálních oddílů se také provádí pomocí nástroje pro dělení na více koncových sloučených. Další informace najdete v tématu [přesun dat mezi vysoce škálovatelnými cloudových databází](elastic-scale-overview-split-and-merge.md).
+* **Sloučení existujících horizontálních oddílů**: sloučení horizontálních oddílů se také provádí pomocí nástroje pro dělení na více koncových sloučených. Další informace najdete v tématu [přesun dat mezi vysoce škálovatelnými cloudových databází](elastic-scale-overview-split-and-merge.md).
 
 ## <a name="cost"></a>Náklady
 

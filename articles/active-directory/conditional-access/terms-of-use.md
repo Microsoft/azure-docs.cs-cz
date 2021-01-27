@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: compliance
 ms.topic: how-to
-ms.date: 12/02/2020
+ms.date: 01/27/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3e64b0af455ab1f84653093b26654530ee3dfab
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 95fe70c774b933113c94125d227976e32a9e353f
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232773"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919625"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory podmínek použití
 
@@ -26,7 +26,7 @@ Zásady podmínek použití Azure AD poskytují jednoduchou metodu, kterou můž
 
 ## <a name="overview-videos"></a>Přehled videí
 
-Následující video poskytuje rychlý přehled podmínek používání zásad použití.
+Následující video poskytuje rychlý přehled zásad podmínky použití.
 
 >[!VIDEO https://www.youtube.com/embed/tj-LK0abNao]
 
@@ -52,7 +52,7 @@ Zásady podmínek použití Azure AD mají tyto možnosti:
 - Zobrazit protokol aktivity zásad použití pro dodržování předpisů a audit.
 - Vytvářejte a spravujte zásady použití pomocí [rozhraní Microsoft Graph API](/graph/api/resources/agreement?view=graph-rest-beta) (aktuálně ve verzi Preview).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete použít a nakonfigurovat zásady používání podmínek použití Azure AD, musíte mít:
 
@@ -183,7 +183,7 @@ Pokud chcete začít s protokoly auditu Azure AD, použijte následující postu
 
 ## <a name="what-terms-of-use-looks-like-for-users"></a>Jaké pojem použití vypadá pro uživatele
 
-Jakmile se vytvoří a vynutila zásada použití, uživatelé, kteří jsou v oboru, uvidí během přihlašování následující obrazovku.
+Jakmile se vytvoří a vynutila zásada podmínky použití, uživatelé, kteří jsou v oboru, uvidí během přihlašování následující obrazovku.
 
 ![Příklady podmínek použití, které se zobrazí, když se uživatel přihlásí](./media/terms-of-use/user-tou.png)
 
@@ -191,7 +191,7 @@ Uživatelé mohou zobrazit zásady podmínek použití a v případě potřeby p
 
 ![Zobrazení podmínek použití s tlačítky zvětšení](./media/terms-of-use/zoom-buttons.png)
 
-Na následující obrazovce se dozvíte, jak se zásady podmínek použití hledají na mobilních zařízeních.
+Na následující obrazovce vidíte, jak zásady podmínky použití vypadají na mobilních zařízeních.
 
 ![Příklady podmínek použití, které se zobrazí, když se uživatel přihlásí k mobilnímu zařízení](./media/terms-of-use/mobile-tou.png)
 
@@ -226,7 +226,7 @@ Můžete upravit některé podrobnosti podmínek použití, ale nemůžete uprav
     - Tisk Můžete **aktualizovat existující dokument podmínek použití**
     - Do existujícího podmínky použití můžete přidat jazyk.
 
-   Pokud existují další nastavení, která byste chtěli změnit, třeba dokument PDF, vyžadovat, aby uživatelé souhlasili na každém zařízení, souhlas s vypršenou platností, doba před přijetím nebo zásady podmíněného přístupu, musíte vytvořit nové podmínky použití zásad.
+   Pokud existují další nastavení, která byste chtěli změnit, třeba dokument PDF, vyžadovat, aby uživatelé souhlasili na každém zařízení, souhlas s vypršenou platností, doba před přijetím nebo zásady podmíněného přístupu, musíte vytvořit novou zásadu podmínky použití.
 
     ![Upravit zobrazení různých možností jazyka ](./media/terms-of-use/edit-terms-use.png)
 
@@ -249,7 +249,7 @@ Můžete upravit některé podrobnosti podmínek použití, ale nemůžete uprav
 7.  Jakmile nahrajete nový soubor PDF a rozhodnete se o jeho přijetí, klikněte na tlačítko Přidat v dolní části podokna.
 8.  Ve sloupci dokumentu se teď zobrazí nejnovější verze.
 
-## <a name="view-previous-versions-of-a-terms-of-use"></a>Zobrazit předchozí verze podmínek použití
+## <a name="view-previous-versions-of-a-tou"></a>Zobrazit předchozí verze podmínky použití
 
 1.  Přihlaste se k Azure a přejděte na stránku funkce **Terms of Use** na adrese https://aka.ms/catou.
 2.  Vyberte zásady podmínek použití, pro které chcete zobrazit historii verzí.
@@ -266,12 +266,12 @@ Můžete upravit některé podrobnosti podmínek použití, ale nemůžete uprav
 2.  Pokud chcete zjistit, kdo podmínky použití aktuálně přijal, klikněte na číslo ve sloupci **přijato** pro podmínky použití, který chcete.
 3.  Ve výchozím nastavení na další stránce se zobrazí aktuální stav všech uživatelů, kteří přijmou podmínky použití.
 4.  Chcete-li zobrazit předchozí události souhlasu, můžete vybrat možnost **vše** z rozevíracího seznamu **aktuální stav** . Nyní uvidíte jednotlivé události uživatelů v podrobnostech o každé verzi a o tom, co se stalo.
-5.  Případně můžete vybrat konkrétní verzi z rozevírací nabídky **verze**  , abyste viděli, kdo tuto konkrétní verzi přijal.
+5.  Případně můžete vybrat konkrétní verzi z rozevíracího seznamu **verze**  a zjistit, kdo tuto konkrétní verzi přijal.
 
 
-## <a name="add-a-terms-of-use-language"></a>Přidat jazyk podmínek použití
+## <a name="add-a-tou-language"></a>Přidat podmínky použití jazyk
 
-Následující postup popisuje, jak přidat jazyk podmínek použití.
+Následující postup popisuje, jak přidat podmínky použití jazyk.
 
 1. Přihlaste se k Azure a přejděte na stránku funkce **Terms of Use** na adrese [https://aka.ms/catou](https://aka.ms/catou).
 1. Vyberte zásady podmínek použití, které chcete upravit.
@@ -293,12 +293,12 @@ Možnost **vyžadovat, aby si uživatelé můžou udělit souhlas s každým nas
 Tady je seznam podporovaných platforem a softwaru.
 
 > [!div class="mx-tableFixed"]
-> |  | iOS | Android | Windows 10 | Další |
+> |  | iOS | Android | Windows 10 | Jiné |
 > | --- | --- | --- | --- | --- |
-> | **Native app** | Ano | Ano | Ano |  |
-> | **Microsoft Edge** | Ano | Ano | Ano |  |
-> | **Internet Explorer** | Ano | Ano | Ano |  |
-> | **Chrome (s příponou)** | Ano | Ano | Ano |  |
+> | **Native app** | Yes | Yes | Yes |  |
+> | **Microsoft Edge** | Yes | Yes | Yes |  |
+> | **Internet Explorer** | Yes | Yes | Yes |  |
+> | **Chrome (s příponou)** | Yes | Yes | Yes |  |
 
 Podmínky použití podle zařízení mají následující omezení:
 
@@ -344,9 +344,13 @@ Pomocí následujícího postupu můžete odstranit stará pravidla použití.
 
    Nemusíte už zobrazovat vaše zásady používání podmínek použití.
 
-## <a name="deleted-users-and-active-terms-of-use"></a>Odstraněné uživatele a aktivní podmínek použití
+## <a name="user-acceptance-record-deletion"></a>Odstranění záznamu přijetí uživateli
 
-Ve výchozím nastavení zůstane odstraněný uživatel ve službě Azure AD v odstraněném stavu po dobu 30 dnů, během kterých ho v případě potřeby může správce obnovit. Po 30 dnech je tento uživatel odstraněn trvale. Kromě toho může globální správce pomocí portálu Azure Active Directory explicitně [trvale odstranit nedávno odstraněného uživatele](../fundamentals/active-directory-users-restore.md) ještě před dosažením tohoto časového období. Jeden uživatel se trvale odstranil. další data o tomto uživateli se odeberou z aktivních zásad použití. Informace o auditování o odstraněných uživatelích zůstávají v protokolu auditu.
+Odstraněné záznamy o přijetí uživateli:
+
+- Když správce explicitně odstraní podmínky použití. V takovém případě se odstraní také všechny záznamy o přijetí přidružené k tomuto konkrétnímu podmínky použití.
+- Když klient ztratí svou licenci Azure Active Directory Premium.
+- Když se tenant odstraní.
 
 ## <a name="policy-changes"></a>Změny zásad
 

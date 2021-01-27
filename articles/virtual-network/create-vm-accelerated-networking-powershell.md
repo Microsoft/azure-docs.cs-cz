@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 04/15/2020
 ms.author: gsilva
-ms.openlocfilehash: b3728a2b67529bab0900d42b3e39140d9329bc83
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: b0ebb75530858a589c3166e21261e2f737fff50d
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223631"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919965"
 ---
 # <a name="create-a-windows-vm-with-accelerated-networking-using-azure-powershell"></a>Vytvoření virtuálního počítače s Windows a akcelerovanými síťovými službami pomocí Azure PowerShellu
 
@@ -61,11 +61,9 @@ Následující distribuce jsou podporovány přímo z Galerie Azure:
 
 ### <a name="supported-vm-instances"></a>Podporované instance virtuálních počítačů
 
-Akcelerované sítě se podporují na většině účelových a výpočetních instancí s optimálním využitím dvou nebo více virtuálních procesorů (vCPU).  Podporované řady jsou: Dv2/DSv2 a F/FS.
+Akcelerované sítě se podporují na většině účelových a výpočetních instancí optimalizovaných pro výpočty s 2 nebo více vCPU. Na instancích, které podporují multithreading, se zrychluje síť pro instance virtuálních počítačů se 4 nebo více vCPU. 
 
-Na instancích podporujících multithreading se podporuje akcelerované sítě pro instance virtuálních počítačů se čtyřmi nebo více vCPU. Podporované řady jsou: D/Dsv3, D/Dsv4, da/Dasv4, E/Esv3, EA/Easv4, Fsv2, Lsv2, MS/MMS a MS/Mmsv2.
-
-Další informace o instancích virtuálních počítačů najdete v tématu [velikosti pro virtuální počítače s Windows v Azure](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Podporu pro akcelerované síťové služby najdete v dokumentaci jednotlivých [velikostí virtuálních počítačů](../virtual-machines/sizes.md) . 
 
 ### <a name="custom-images"></a>Vlastní image
 
@@ -252,13 +250,13 @@ Po vytvoření virtuálního počítače v Azure se připojte k virtuálnímu po
 
 5. Otevřete soubor. RDP a přihlaste se k virtuálnímu počítači pomocí přihlašovacích údajů, které jste zadali v části [Vytvoření virtuálního počítače a připojení k síťovému rozhraní](#create-a-vm-and-attach-the-network-interface) . Pokud jste se nikdy nepřipojili k VIRTUÁLNÍmu počítači s Windows v Azure, přečtěte si téma [připojení k virtuálnímu počítači](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#connect-to-virtual-machine).
 
-6. Po zobrazení relace vzdálené plochy pro váš virtuální počítač klikněte pravým tlačítkem na tlačítko Start Windows a vyberte **Device Manager**.
+6. Po zobrazení relace vzdálené plochy pro váš virtuální počítač klikněte pravým tlačítkem na tlačítko Start Windows a vyberte **Správce zařízení**.
 
-7. V okně **Device Manager** rozbalte uzel **síťové adaptéry** .
+7. V okně **Správce zařízení** rozbalte uzel **síťové adaptéry** .
 
 8. Potvrďte, že se zobrazuje **adaptér Ethernet virtuální funkce Mellanox ConnectX-3** , jak je znázorněno na následujícím obrázku:
 
-    ![Mellanox ConnectX-3 virtuální funkce Ethernet Adapter, nový síťový adaptér pro akcelerované síťové služby, Device Manager](./media/create-vm-accelerated-networking/device-manager.png)
+    ![Mellanox ConnectX-3 virtuální funkce Ethernet Adapter, nový síťový adaptér pro akcelerované síťové služby, Správce zařízení](./media/create-vm-accelerated-networking/device-manager.png)
 
 Pro váš virtuální počítač je teď povolená akcelerovaná síť.
 

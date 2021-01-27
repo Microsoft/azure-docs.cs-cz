@@ -225,7 +225,7 @@
           href: livestream.md
     - name: Odebrání Azure Sentinelu
       href: offboard.md
-- name: Referenční informace (novinka!)
+- name: Reference
   items:
     - name: Role Azure RBAC
       items:
@@ -241,10 +241,20 @@
           href: hunting-with-rest-api.md
         - name: Správa watchlists pomocí REST API
           href: watchlist-with-rest-api.md
+    - name: Odkaz na data Azure Monitor
+      href: /azure/azure-monitor/reference/
     - name: Konektor Azure Sentinel Logic Apps
       href: /connectors/azuresentinel/
     - name: Schéma normalizace sítě
       href: normalization-schema.md
+    - name: Referenční dokumentace schématu zdroje dat
+      href: data-source-schema-reference.md
+    - name: Dotazovací jazyk Kusto
+      items:
+        - name: Přehled dotazu Kusto
+          href: /azure/data-explorer/kusto/query/
+        - name: Rychlý přehled jazyka dotazů Kusto
+          href: /azure/data-explorer/kql-quick-reference
     - name: Rozšiřování UEBA
       href: ueba-enrichments.md
 - name: Zdroje a prostředky

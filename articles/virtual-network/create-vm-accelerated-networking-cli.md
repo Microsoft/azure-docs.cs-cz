@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 5b91d6e58f4ae93bbf020f202991f878e7773114
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 643a52c9be04fb325b8e1d088faeb68e473aa673
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222951"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919948"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>Vytvoření virtuálního počítače s Linuxem a akcelerovanými síťovými službami pomocí Azure CLI
 
@@ -56,11 +56,9 @@ Z Galerie Azure se podporují následující distribuce:
 ## <a name="limitations-and-constraints"></a>Omezení a omezení
 
 ### <a name="supported-vm-instances"></a>Podporované instance virtuálních počítačů
-Akcelerované sítě se podporují na většině účelových a výpočetních instancí optimalizovaných pro výpočty s 2 nebo více vCPU.  Tyto podporované řady: D/DSv2 a F/FS
+Akcelerované sítě se podporují na většině účelových a výpočetních instancí optimalizovaných pro výpočty s 2 nebo více vCPU. Na instancích, které podporují multithreading, se zrychluje síť pro instance virtuálních počítačů se 4 nebo více vCPU. 
 
-Na instancích, které podporují multithreading, se zrychluje síť pro instance virtuálních počítačů se 4 nebo více vCPU. Podporované řady jsou: D/Dsv3, D/Dsv4, DD/Ddv4, da/Dasv4, E/Esv3, E/Esv4, Ed/Edsv4, EA/Easv4, Fsv2, Lsv2, MS/MMS a MS/Mmsv2.
-
-Další informace o instancích virtuálních počítačů najdete v tématu [velikosti virtuálních počítačů se systémem Linux](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Podporu pro akcelerované síťové služby najdete v dokumentaci jednotlivých [velikostí virtuálních počítačů](../virtual-machines/sizes.md) . 
 
 ### <a name="custom-images"></a>Vlastní image
 Pokud používáte vlastní image a vaše image podporuje akcelerované síťové služby, ujistěte se, že máte požadované ovladače pro práci s Mellanox ConnectX a ConnectX-4 LX síťových adaptérů v Azure.

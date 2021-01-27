@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 02/02/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1c5bc4400e99fb1c24e321e623aaee523b9c7383
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e1565d4f7792dca5242965d11c58faa90e2222d3
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85210979"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920371"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>Použití plánů údržby ke správě aktualizací a údržby služby
 
@@ -38,7 +38,7 @@ Integrace s Service Healthmi oznámeními a monitorováním Resource Health kont
 24hodinové předběžné oznámení předchází všem událostem údržby, které nejsou pro DWC400c a nižší úrovně.
 
 > [!NOTE]
-> V případě, že je nutné nasadit časově důležitou aktualizaci, může být rozšířená doba oznámení výrazně omezená.
+> V případě, že je nutné nasadit časově důležitou aktualizaci, může být rozšířená doba oznámení výrazně omezená. K tomu může dojít mimo identifikované okno údržby z důvodu kritického charakteru aktualizace.
 
 Pokud jste obdrželi předběžné oznámení o tom, že údržba proběhne, ale během časového období v oznámení nelze provést údržbu, obdržíte oznámení o zrušení. Údržba pak bude pokračovat během příští plánované doby údržby.
 
@@ -54,7 +54,7 @@ Ve výchozím nastavení mají všechny nově vytvořené instance datového skl
 
 Chcete-li zobrazit plán údržby, který byl použit pro váš synapse fond SQL, proveďte následující kroky:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 2. Vyberte synapse fond SQL, který chcete zobrazit.
 3. Vybraný synapse fond SQL se otevře v okně Přehled. Plán údržby, který se použije pro datový sklad, se zobrazí pod **plánem údržby**.
 
@@ -70,7 +70,7 @@ Primární a sekundární systém Windows musí mít oddělené rozsahy dnů. P�
 
 Chcete-li změnit plán údržby pro synapse fond SQL, proveďte následující kroky:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 2. Vyberte synapse fond SQL, který chcete aktualizovat. Otevře se stránka s přehledem.
 Kliknutím na odkaz **Souhrn plánu údržby** v okně Přehled otevřete stránku nastavení plánu údržby. Případně vyberte možnost **plán údržby** v nabídce na levé straně prostředku.
 

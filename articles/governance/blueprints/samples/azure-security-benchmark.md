@@ -1,18 +1,18 @@
 ---
 title: Ukázka podrobného plánu srovnávacího testu zabezpečení Azure
 description: Přehled ukázky podrobného plánu srovnávacího testu zabezpečení Azure. Tento ukázkový podrobný plán pomáhá zákazníkům vyhodnotit konkrétní kontroly.
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: sample
-ms.openlocfilehash: 6b147ffd4efbf814b6119f5d7e90dc7af2ea2687
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 38a50970999965b6a86b8ce8882006c169f2dc5a
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057582"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919235"
 ---
 # <a name="azure-security-benchmark-blueprint-sample"></a>Ukázka Azure Security test details
 
-Ukázka podrobného plánu srovnávacího testu zabezpečení Azure poskytuje ochranné mantinely zásad správného řízení s využitím [Azure Policy](../../policy/overview.md), které pomáhají vyhodnotit specifické kontroly [srovnávacího testu zabezpečení Azure](../../../security/benchmarks/overview.md). Tento podrobný plán pomáhá zákazníkům nasadit základní sadu zásad pro libovolnou architekturu nasazenou v Azure, ve které chtějí implementovat kontroly srovnávacího testu zabezpečení Azure.
+Ukázka Azure Security test Details poskytuje bezpečnostní zábradlí pomocí [Azure Policy](../../policy/overview.md) , které vám pomůžou vyhodnotit konkrétní kontrolu [zabezpečení Azure Security test v1](../../../security/benchmarks/overview.md) . Tento podrobný plán pomáhá zákazníkům nasadit základní sadu zásad pro libovolnou architekturu nasazenou v Azure, ve které chtějí implementovat kontroly srovnávacího testu zabezpečení Azure.
 
 ## <a name="control-mapping"></a>Mapování kontrol
 
@@ -37,11 +37,11 @@ Nejprve implementujte ukázku podrobného plánu tak, že z ukázky vytvoříte 
 
 1. Vlevo na stránce **Začínáme** vyberte tlačítko **Vytvořit** v části _Vytvořit podrobný plán_.
 
-1. V části _Další ukázky_ Najděte ukázku **Azure Security test** Details a vyberte název pro výběr této ukázky.
+1. V části _Další ukázky_ Najděte ukázku plán **Azure Security test v1** a vyberte název pro výběr této ukázky.
 
 1. Zadejte _základní informace_ o ukázce podrobného plánu:
 
-   - **Název**podrobného plánu: zadejte název vaší kopie ukázky testu výkonnosti Azure Security test.
+   - **Název** podrobného plánu: zadejte název vaší kopie ukázky testu výkonnosti Azure Security test.
    - **Umístění definice**: použijte tři tečky a vyberte skupinu pro správu, do které se uloží vaše kopie ukázky.
 
 1. Vyberte kartu _Artefakty_ v horní části stránky nebo **Další: Artefakty** dole na stránce.
@@ -60,7 +60,7 @@ V prostředí máte teď vytvořenou kopii ukázky podrobného plánu. Kopie je 
 
 ### <a name="assign-the-sample-copy"></a>Přiřazení ukázkové kopie
 
-Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji přiřadit k předplatnému v rámci skupiny pro správu, do které byl uložen. V tomto kroku zadáte parametry pro každé nasazení kopie ukázky podrobného plánu.
+Po úspěšném **publikování** kopie ukázky podrobného plánu je možné ji přiřadit k předplatnému v rámci skupiny pro správu, do které byl uložen. V tomto kroku zadáte parametry pro každé nasazení kopie ukázky podrobného plánu.
 
 1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **Podrobné plány**.
 
@@ -76,7 +76,7 @@ Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji 
      - **Název přiřazení**: název je předem vyplněný na základě názvu podrobného plánu.
        Podle potřeby ho změňte nebo ponechte.
      - **Umístění**: Vyberte oblast, ve které se má spravovaná identita vytvořit. Podrobný plán Azure Blueprint používá tuto spravovanou identitu k aplikaci všech artefaktů v přiřazené podrobného plánu. Další informace najdete v tématu [spravované identity pro prostředky Azure](../../../active-directory/managed-identities-azure-resources/overview.md).
-     - **Verze definice**podrobného plánu: vyberte **publikovanou** verzi vaší kopie ukázky podrobného plánu.
+     - **Verze definice** podrobného plánu: vyberte **publikovanou** verzi vaší kopie ukázky podrobného plánu.
 
    - Zamknout přiřazení
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: a5cbbed3881433121f5ab811082969bc3c6c4f7f
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: adcc894db630bba11e84e2f277705d2f31caf7dc
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98609940"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920219"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor protokolovat vyhrazené clustery
 
@@ -25,9 +25,6 @@ Mezi možnosti, které vyžadují vyhrazené clustery, patří:
 - **[Více pracovních prostorů](../log-query/cross-workspace-query.md)** – Pokud zákazník používá více než jeden pracovní prostor pro produkční prostředí, může být vhodné použít vyhrazený cluster. Dotazy mezi jednotlivými pracovními prostory budou spouštěny rychleji, pokud jsou všechny pracovní prostory ve stejném clusteru. Je také možné, že používání vyhrazeného clusteru je výhodnější, protože přidělené úrovně rezervace kapacity berou v úvahu veškerou kombinaci clusterů a platí pro všechny pracovní prostory, i když jsou některé z nich malé a nemají nárok na slevu za rezervaci kapacity.
 
 Vyhrazené clustery vyžadují, aby se zákazníci zavázali využívat kapacitu alespoň 1 TB příjmu dat za den. Migrace do vyhrazeného clusteru je jednoduchá. Nedochází ke ztrátě dat nebo přerušení služeb. 
-
-> [!IMPORTANT]
-> Vyhrazené clustery jsou schválené a plně podporované pro produkční nasazení. Vzhledem k dočasným omezením kapacity ale vyžadujeme, aby se tato funkce používala v předběžném registru. Pomocí kontaktů do Microsoftu poskytněte ID předplatných.
 
 ## <a name="management"></a>Správa 
 

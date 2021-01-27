@@ -6,16 +6,16 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: 161e3e7fbc5b343ee73142f0e968367c3cbfaa6b
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 7245b0c0fb1e96959ef5dca4992cf52a38accb58
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927409"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920286"
 ---
 # <a name="azure-functions-binding-expression-patterns"></a>Azure Functions vzorů výrazů vazeb
 
-Jednou z nejúčinnějších funkcí [triggerů a vazeb](./functions-triggers-bindings.md) jsou *výrazy vazby* . V *function.jsna* soubor a v parametrech funkce a kódu můžete použít výrazy, které se předají na hodnoty z různých zdrojů.
+Jednou z nejúčinnějších funkcí [triggerů a vazeb](./functions-triggers-bindings.md) jsou *výrazy vazby*. V *function.jsna* soubor a v parametrech funkce a kódu můžete použít výrazy, které se předají na hodnoty z různých zdrojů.
 
 Většina výrazů je označena a tím, že je zabalena ve složených závorkách. Například ve funkci triggeru fronty se `{queueTrigger}` překládá na text zprávy fronty. Pokud `path` je vlastnost pro výstupní vazbu objektu BLOB `container/{queueTrigger}` a funkce se aktivuje ve zprávě fronty `HelloWorld` , vytvoří se objekt BLOB s názvem `HelloWorld` .
 
@@ -164,6 +164,7 @@ Například aktivační událost Azure Queue Storage podporuje následující vl
 Tyto hodnoty metadat jsou dostupné v *function.js* vlastností souboru. Předpokládejme například, že používáte Trigger fronty a zpráva Queue obsahuje název objektu blob, který chcete číst. V *function.jsv* souboru můžete ve `queueTrigger` vlastnosti objektu BLOB použít vlastnost metadata `path` , jak je znázorněno v následujícím příkladu:
 
 ```json
+{
   "bindings": [
     {
       "name": "myQueueItem",
@@ -179,6 +180,7 @@ Tyto hodnoty metadat jsou dostupné v *function.js* vlastností souboru. Předpo
       "connection": "MyStorageConnection"
     }
   ]
+}
 ```
 
 Podrobnosti o vlastnostech metadat pro jednotlivé triggery jsou popsány v odpovídajícím referenčním článku. Příklad najdete v tématu [metadata triggeru ve frontě](functions-bindings-storage-queue-trigger.md#message-metadata). Dokumentace je také k dispozici na kartě **integrace** na portálu v části **dokumentace** pod oblastí konfigurace vazby.  
@@ -292,7 +294,7 @@ public class BlobName
 
 ## <a name="create-guids"></a>Vytvořit GUID
 
-`{rand-guid}`Výraz vazby vytvoří identifikátor GUID. Následující cesta objektu BLOB v `function.json` souboru vytvoří objekt BLOB s názvem, jako *50710cb5-84b9-4d87-9d83-a03d6976a682.txt* .
+`{rand-guid}`Výraz vazby vytvoří identifikátor GUID. Následující cesta objektu BLOB v `function.json` souboru vytvoří objekt BLOB s názvem, jako *50710cb5-84b9-4d87-9d83-a03d6976a682.txt*.
 
 ```json
 {
@@ -305,7 +307,7 @@ public class BlobName
 
 ## <a name="current-time"></a>Aktuální čas
 
-Výraz vazby se `DateTime` překládá na `DateTime.UtcNow` . Následující cesta objektu BLOB v `function.json` souboru vytvoří objekt BLOB s názvem, jako *2018-02-16T17-59-55Z.txt* .
+Výraz vazby se `DateTime` překládá na `DateTime.UtcNow` . Následující cesta objektu BLOB v `function.json` souboru vytvoří objekt BLOB s názvem, jako *2018-02-16T17-59-55Z.txt*.
 
 ```json
 {

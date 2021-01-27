@@ -3,12 +3,12 @@ title: Změnit nastavení clusteru Azure Service Fabric
 description: Tento článek popisuje nastavení prostředků infrastruktury a zásady upgradu prostředků infrastruktury, které můžete přizpůsobit.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: c055ad1dad8b9574c8d811284a34619ee3648a10
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 34a63a86bc10a787ef077b9067c3fba5a9e4da25
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095266"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919778"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Přizpůsobení nastavení clusteru Service Fabric
 Tento článek popisuje různá nastavení prostředků infrastruktury pro váš Service Fabric cluster, který můžete přizpůsobit. Pro clustery hostované v Azure můžete nastavení přizpůsobit prostřednictvím [Azure Portal](https://portal.azure.com) nebo pomocí Azure Resource Manager šablony. Další informace najdete v tématu [Upgrade konfigurace clusteru Azure](service-fabric-cluster-config-upgrade-azure.md). Pro samostatné clustery přizpůsobíte nastavení tím, že aktualizujete *ClusterConfig.jsna* soubor a provádíte upgrade konfigurace v clusteru. Další informace najdete v tématu [Upgrade konfigurace samostatného clusteru](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -521,7 +521,7 @@ Následuje seznam nastavení prostředků infrastruktury, která lze přizpůsob
 |AutoDetectAvailableResources|logická hodnota, výchozí hodnota je TRUE.|Static|Tato konfigurace aktivuje automatickou detekci dostupných prostředků v uzlu (procesor a paměť), pokud je tato konfigurace nastavená na hodnotu true. Pokud uživatel zadal chybné kapacity uzlů nebo pokud je tato konfigurace nastavená na false, načtou se skutečné kapacity a opraví. Pokud je tato konfigurace nastavená na false, budeme sledovat upozornění, že uživatel zadal chybné kapacity uzlů. ale nebudeme je opravovat. To znamená, že uživatel chce mít zadané kapacity jako >, než má uzel skutečně má, nebo pokud nejsou definovány kapacity; bude předpokládat neomezenou kapacitu. |
 |BalancingDelayAfterNewNode | Čas v sekundách, výchozí hodnota je 120. |Dynamická|Zadejte časový interval v sekundách. Po přidání nového uzlu nespouštějte vyrovnávání aktivit v tomto období. |
 |BalancingDelayAfterNodeDown | Čas v sekundách, výchozí hodnota je 120. |Dynamická|Zadejte časový interval v sekundách. Nepovolujte vyvážení aktivit v rámci této doby po událostech uzlu. |
-|BlockNodeInUpgradeConstraintPriority | Int, výchozí hodnota je 0 |Dynamická|Určuje prioritu omezení kapacity: 0: tvrdý; 1: soft; negativní: ignorovat  |
+|BlockNodeInUpgradeConstraintPriority | Int, výchozí hodnota je-1. |Dynamická|Určuje prioritu omezení kapacity: 0: tvrdý; 1: soft; negativní: ignorovat  |
 |CapacityConstraintPriority | Int, výchozí hodnota je 0 | Dynamická|Určuje prioritu omezení kapacity: 0: tvrdý; 1: soft; negativní: ignoruje se. |
 |ConsecutiveDroppedMovementsHealthReportLimit | Int, výchozí hodnota je 20 | Dynamická|Definuje počet po sobě jdoucích pohybů vydaných ResourceBalancer před provedením diagnostiky a vygenerování upozornění na stav. Záporné: za touto podmínkou nejsou vygenerována žádná upozornění. |
 |ConstraintFixPartialDelayAfterNewNode | Čas v sekundách, výchozí hodnota je 120. |Dynamická| Zadejte časový interval v sekundách. Po přidání nového uzlu DDo v tomto období neopravit FaultDomain a porušení omezení UpgradeDomain. |

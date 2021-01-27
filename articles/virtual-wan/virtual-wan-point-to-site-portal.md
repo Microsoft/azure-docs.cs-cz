@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: tutorial
 ms.date: 11/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: e7e65d5d2941765df98b3bf3b7fb8ff2e89b7e9f
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 1876ab86e6f4c46edc23361dd884d8b32328f36c
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94411197"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919058"
 ---
 # <a name="tutorial-create-a-user-vpn-connection-using-azure-virtual-wan"></a>Kurz: vytvoření připojení VPN uživatele pomocí Azure Virtual WAN
 
@@ -24,6 +24,7 @@ V tomto kurzu se naučíte:
 > * Vytvoření virtuální sítě WAN
 > * Vytvoření konfigurace P2S
 > * Vytvořit virtuální rozbočovač
+> * Zvolit fondy adres klientů
 > * Zadat servery DNS
 > * Generovat konfigurační balíček profilu klienta VPN
 > * Konfigurace klientů VPN
@@ -31,7 +32,7 @@ V tomto kurzu se naučíte:
 
 ![Diagram virtuální sítě WAN](./media/virtual-wan-about/virtualwanp2s.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [Before beginning](../../includes/virtual-wan-before-include.md)]
 
@@ -48,6 +49,11 @@ Konfigurace Point-to-Site (P2S) definuje parametry pro připojení vzdálených 
 ## <a name="create-virtual-hub-and-gateway"></a><a name="hub"></a>Vytvořit virtuální rozbočovač a bránu
 
 [!INCLUDE [Create hub](../../includes/virtual-wan-p2s-hub-include.md)]
+
+
+## <a name="choose-p2s-client-address-pools"></a><a name="chooseclientpools"></a> Zvolit fondy adres klienta P2S
+
+[!INCLUDE [Choose pools](../../includes/virtual-wan-allocating-p2s-pools.md)]
 
 ## <a name="specify-dns-server"></a><a name="dns"></a>Zadat server DNS
 
@@ -73,6 +79,8 @@ Po dokončení konfigurace klienta se můžete připojit.
 1. Přejděte na virtuální síť WAN.
 1. Na stránce **Přehled** představuje každý bod na mapě rozbočovač.
 1. V části **centra a připojení** můžete zobrazit stav centra, lokalitu, oblast, stav připojení VPN a v a v bajtech.
+
+
 
 ## <a name="clean-up-resources"></a><a name="cleanup"></a>Vyčištění prostředků
 

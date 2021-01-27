@@ -1,14 +1,14 @@
 ---
 title: Přehled služby Azure Resource Graph
 description: Seznamte se s tím, jak služba Azure Resource Graph umožňuje složitý dotazování na prostředky ve velkém rozsahu napříč předplatnými a klienty.
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: overview
-ms.openlocfilehash: 8e61dadc44a2b07066f7bac761c366c746cef1f1
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: b5df124d07b8ecfb20f5dec08830d8156e8df2cd
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057769"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919137"
 ---
 # <a name="what-is-azure-resource-graph"></a>Co je Azure Resource Graph?
 
@@ -22,8 +22,8 @@ Azure Resource Graph je služba v Azure, která je navržená tak, aby rozšíř
 V této dokumentaci si podrobně projdete jednotlivé funkce.
 
 > [!NOTE]
-> Azure Resource Graph – pravomoci Azure Portal vyhledávací panel, nové možnosti procházet všechny prostředky a [Change history](../policy/how-to/determine-non-compliance.md#change-history) 
->  _vizuální rozdíly_v historii změn Azure Policy. Je navržena tak, aby zákazníkům pomohla spravovat rozsáhlá prostředí.
+> Azure Resource Graph – pravomoci Azure Portal vyhledávací panel, nové možnosti procházet všechny prostředky a [](../policy/how-to/determine-non-compliance.md#change-history) 
+>  _vizuální rozdíly_ v historii změn Azure Policy. Je navržena tak, aby zákazníkům pomohla spravovat rozsáhlá prostředí.
 
 [!INCLUDE [azure-lighthouse-supported-service](../../../includes/azure-lighthouse-supported-service.md)]
 

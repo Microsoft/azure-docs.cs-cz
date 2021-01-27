@@ -1,14 +1,14 @@
 ---
 title: 'Rychlý Start: váš první dotaz na portálu'
 description: V tomto rychlém startu budete postupovat podle pokynů ke spuštění prvního dotazu z Azure Portal pomocí Průzkumníka Azure Resource Graph.
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: b5f5203b3842ebc3edbd97bca1ca3c101f47e397
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: cb62a1ae3a29a7aae793fcee6fd896fe0260dc10
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057378"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920092"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Rychlý Start: spuštění prvního dotazu na graf prostředku pomocí Průzkumníka Azure Resource graphu
 
@@ -47,7 +47,7 @@ Když se konečný dotaz několikrát spustí, předpokládá se, že se nic ve 
 Prohlížeč schématu je umístěný v levém podokně Průzkumníka grafu prostředků. Tento seznam prostředků zobrazuje všechny _typy_ prostředků Azure, které podporuje Azure Resource Graph a které existují v tenantovi, ke kterému máte přístup. Rozbalením typu prostředku nebo podvlastnostmi se zobrazí podřízené vlastnosti, které lze použít k vytvoření dotazu grafu prostředku.
 
 Výběr typu prostředku umístí `where type =="<resource type>"` do pole dotazu. Výběrem jedné z podřízených vlastností přidáte `where <propertyName> == "INSERT_VALUE_HERE"` do pole dotazu.
-Prohlížeč schémat je skvělým způsobem, jak zjistit vlastnosti pro použití v dotazech. Nezapomeňte nahradit _vloženou \_ hodnotu \_ _ vlastní hodnotou, upravit dotaz pomocí podmínek, operátorů a funkcí, abyste dosáhli zamýšlených výsledků.
+Prohlížeč schémat je skvělým způsobem, jak zjistit vlastnosti pro použití v dotazech. Nezapomeňte nahradit _vloženou \_ hodnotu \__ vlastní hodnotou, upravit dotaz pomocí podmínek, operátorů a funkcí, abyste dosáhli zamýšlených výsledků.
 
 ## <a name="create-a-chart-from-the-resource-graph-query"></a>Vytvoření grafu z dotazu na graf prostředků
 
@@ -94,7 +94,7 @@ Chcete-li poskytnout příklady dotazů na grafy prostředků a jak lze použít
 
 - [Průzkumník grafu prostředků – ukázkový #2 řídicího panelu](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-2/resourcegraphexplorer-sample-2.json)
 
-  :::image type="content" source="./media/arge-sample2-small.png" alt-text="Příklad obrázku pro ukázkový řídicí panel #1" lightbox="./media/arge-sample2-large.png":::
+  :::image type="content" source="./media/arge-sample2-small.png" alt-text="Příklad obrázku pro ukázkový řídicí panel #2" lightbox="./media/arge-sample2-large.png":::
 
 > [!NOTE]
 > Počty a grafy ve výše uvedených ukázkových snímcích obrazovky řídicího panelu se liší v závislosti na prostředí Azure.
@@ -103,7 +103,7 @@ Chcete-li poskytnout příklady dotazů na grafy prostředků a jak lze použít
 
 1. V Azure Portal v levém podokně vyberte **řídicí panel** .
 
-1. Vyberte **nahrát**a pak vyhledejte a vyberte stažený ukázkový soubor řídicího panelu. Pak vyberte **otevřít**.
+1. Vyberte **nahrát** a pak vyhledejte a vyberte stažený ukázkový soubor řídicího panelu. Pak vyberte **otevřít**.
 
 Automaticky se zobrazí importovaný řídicí panel. Protože teď existuje ve vašem Azure Portal, můžete podle potřeby prozkoumat a dělat změny nebo vytvořit nové řídicí panely z tohoto příkladu a sdílet je s vašimi týmy. Další informace o práci s řídicími panely najdete v tématu [Vytvoření a sdílení řídicích panelů v Azure Portal](../../azure-portal/azure-portal-dashboards.md).
 

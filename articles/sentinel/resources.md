@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/02/2019
+ms.date: 01/27/2021
 ms.author: yelevin
-ms.openlocfilehash: 2465cf74dbf4fbf074aed8f8e4097a236e628425
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 11c5c77623fcc693210d5a42bf94c968e884fec3
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660640"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920016"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>Užitečné prostředky pro práci s Sentinel Azure
 
@@ -28,7 +28,7 @@ ms.locfileid: "94660640"
 
 V tomto článku najdete seznam prostředků, které vám pomůžou získat další informace o práci s Sentinel Azure Sentinel.
 
-Konektory Azure Logic Apps: <https://docs.microsoft.com/connectors/>
+- **Konektory Azure Logic Apps**: <https://docs.microsoft.com/connectors/>
 
 
 ## <a name="auditing-and-reporting"></a>Auditování a vytváření sestav
@@ -80,16 +80,31 @@ Tato data můžete zobrazit jejich streamování z protokolu aktivit Azure do sl
 
 | **Dodavatel**  | **Použít incident v Azure Sentinel** | **Odkaz**|
 |----|----|----|
-| GitHubu| Používá se pro přístup ke stránce komunity.| <https://github.com/Azure/Azure-Sentinel> |
+| GitHub| Používá se pro přístup ke stránce komunity.| <https://github.com/Azure/Azure-Sentinel> |
 | PaloAlto| Konfigurace CEF| <https://www.paloaltonetworks.com/documentation/misc/cef.html>|
 | PluralSight | Kurz dotazovacího jazyka Kusto| [https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch](https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch)|
 
 ## <a name="blogs-and-forums"></a>Blogy a fóra
 
-Vystavte své dotazy na [TechCommunity místo](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bd-p/AzureSentinel) pro Azure Sentinel.
+Rádi uslyšíme vaše uživatele!
 
-Prohlédněte si blogové příspěvky Azure Sentinel z [TechCommunity](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bg-p/AzureSentinelBlog) a [Microsoft Azure](https://azure.microsoft.com/blog/tag/azure-sentinel/).
+- **Vystavte své dotazy** na [TechCommunity místo](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bd-p/AzureSentinel) pro Azure Sentinel. 
+
+- **Pošlete návrhy na vylepšení** pomocí našeho [hlasového](https://feedback.azure.com/forums/920458-azure-sentinel) programu pro uživatele.
+
+- **Zobrazit a komentovat** příspěvky na blogu Azure Sentinel:
+
+    - [TechCommunity](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bg-p/AzureSentinelBlog) 
+    - [Microsoft Azure](https://azure.microsoft.com/blog/tag/azure-sentinel/)
+
+Další informace o zabezpečení a dodržování předpisů v Azure najdete v [blogu Microsoft Azure zabezpečení a dodržování předpisů](https://techcommunity.microsoft.com/t5/microsoft-security-and/bg-p/MicrosoftSecurityandCompliance).
 
 
 ## <a name="next-steps"></a>Další kroky
-V tomto dokumentu máte seznam prostředků, které jsou užitečné, když pracujete s ověřovacími službami Azure. Další informace o zabezpečení a dodržování předpisů Azure najdete na [blogu Microsoft Azure zabezpečení a dodržování předpisů](/archive/blogs/azuresecurity/).
+
+> [!div class="nextstepaction"]
+> [Získat certifikaci](/learn/paths/security-ops-sentinel/)
+
+> [!div class="nextstepaction"]
+> [Přečíst příběhy o případech použití zákazníků](https://customers.microsoft.com/en-us/search?sq=%22Azure%20Sentinel%20%22&ff=&p=0&so=story_publish_date%20desc)
+

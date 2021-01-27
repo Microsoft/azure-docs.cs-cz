@@ -2,13 +2,13 @@
 title: Kurz – partnerské místní prostředí do privátního cloudu
 description: Naučte se, jak vytvořit partnerský vztah ExpressRoute Global Reach k privátnímu cloudu v řešení Azure VMware.
 ms.topic: tutorial
-ms.date: 1/5/2021
-ms.openlocfilehash: 613aece6ed548f70840349e017de4416883d6cf3
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.date: 01/27/2021
+ms.openlocfilehash: e7b1e349f67fe63f63183c0ff6d1522498c65f8c
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97913154"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918717"
 ---
 # <a name="tutorial-peer-on-premises-environments-to-a-private-cloud"></a>Kurz: partnerských místních prostředí do privátního cloudu
 
@@ -33,7 +33,7 @@ Než povolíte připojení mezi dvěma okruhy ExpressRoute pomocí ExpressRoute 
 - Navázalo se připojení k privátnímu cloudu řešení Azure VMware pomocí okruhu ExpressRoute s použitím brány ExpressRoute ve službě Azure Virtual Network (VNet) – což je _okruh 2_ od procedur partnerských vztahů.  
 - Samostatný fungující okruh ExpressRoute, který slouží k připojení místních prostředí k Azure – což je _okruh 1_ z perspektivy postupy partnerských vztahů.
 - A/29 překrývající se [blok síťových adres](../expressroute/expressroute-routing.md#ip-addresses-used-for-peerings) pro ExpressRoute Global REACH partnerský vztah.
-- Ujistěte se, že všechny směrovače, včetně služby poskytovatele ExpressRoute, podporují 4 bajty autonomního systému (ASN). Řešení Azure VMware využívá ke inzerci tras 4 čísla ASN Public.
+- Zajistěte, aby všechny brány, včetně služby poskytovatele ExpressRoute, podporovaly číslo autonomního systému (ASN) na 4 bajtech. Řešení Azure VMware používá pro reklamní trasy 4 čísla ASN veřejné služby.
 
 > [!TIP]
 > V souvislosti s těmito požadavky je váš místní okruh ExpressRoute _okruhem 1_ a váš ExpressRoute okruh privátního cloudu je v jiném předplatném a _okruhu_ s popiskem 2. 

@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 1792535fab79ed20bdf77f96b4fc39f13b0c7bbb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2578b47d27ef062d83ba8621a49e9a8f439897c
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90015992"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919021"
 ---
 # <a name="reference---choose-a-communication-protocol"></a>Referenční informace – volba komunikačního protokolu
 
@@ -42,7 +42,7 @@ Následující tabulka uvádí doporučení nejvyšší úrovně pro výběr pro
 
 Při volbě protokolu pro komunikaci na straně zařízení Vezměte v úvahu následující body:
 
-* **Vzor typu cloud-zařízení**. Protokol HTTPS nemá účinný způsob implementace nabízených oznámení serveru. Pokud například používáte protokol HTTPS, zařízení se IoT Hub dotazování na zprávy typu cloud-zařízení. Tento přístup je neefektivní pro zařízení i IoT Hub. V rámci aktuálních pokynů protokolu HTTPS by se každé zařízení mělo dotazovat na zprávy každých 25 minut nebo i déle. MQTT a AMQP nabízená oznámení serveru podporují při přijímání zpráv z cloudu na zařízení. Umožňují okamžité vložení zpráv z IoT Hub do zařízení. Pokud je latence doručení obavou, MQTT nebo AMQP jsou nejlepší protokoly, které se mají použít. Pro zřídka připojená zařízení funguje i HTTPS.
+* **Vzor typu cloud-zařízení**. Protokol HTTPS nemá účinný způsob implementace nabízených oznámení serveru. Pokud například používáte protokol HTTPS, zařízení se IoT Hub dotazování na zprávy typu cloud-zařízení. Tento přístup je neefektivní pro zařízení i IoT Hub. V rámci aktuálních pokynů protokolu HTTPS by se každé zařízení mělo dotazovat na zprávy každých 25 minut nebo i déle. Výsledkem vydávání většího protokolu HTTPS je IoT Hub omezování požadavků. MQTT a AMQP nabízená oznámení serveru podporují při přijímání zpráv z cloudu na zařízení. Umožňují okamžité vložení zpráv z IoT Hub do zařízení. Pokud je latence doručení obavou, MQTT nebo AMQP jsou nejlepší protokoly, které se mají použít. Pro zřídka připojená zařízení funguje i HTTPS.
 
 * **Brány polí**. MQTT a HTTPS podporují jenom jednu identitu zařízení (ID zařízení plus přihlašovací údaje) na připojení TLS. Z tohoto důvodu se tyto protokoly nepodporují u [scénářů pro pole brány](iot-hub-devguide-endpoints.md#field-gateways) , které vyžadují multiplexování zpráv pomocí více identit zařízení v rámci jednoho nebo více fondů nadřazených připojení k IoT Hub. Takové brány můžou používat protokol, který podporuje více identit zařízení na připojení, jako je AMQP, pro jejich nadřazený provoz.
 

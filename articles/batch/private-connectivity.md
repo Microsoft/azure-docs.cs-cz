@@ -4,12 +4,12 @@ description: Naučte se připojit soukromě k účtu Azure Batch pomocí soukrom
 ms.topic: how-to
 ms.date: 09/28/2020
 ms.custom: references_regions
-ms.openlocfilehash: 38d92d787a8d01dd3f87e1cdcacd336982c8c910
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: d2e9d36e9e964f2e9f9a5a986fbf55d19b3069d8
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579551"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919999"
 ---
 # <a name="use-private-endpoints-with-azure-batch-accounts"></a>Použití privátních koncových bodů s účty Azure Batch
 
@@ -20,11 +20,11 @@ Pomocí [privátního propojení Azure](../private-link/private-link-overview.md
 Privátní odkaz umožňuje uživatelům přístup k účtu Azure Batch z virtuální sítě nebo z jakékoli partnerské virtuální sítě. Prostředky namapované na soukromé odkazy jsou k dispozici i místně přes privátní partnerský vztah prostřednictvím sítě VPN nebo [Azure ExpressRoute](../expressroute/expressroute-introduction.md). K účtu Azure Batch nakonfigurovanému pomocí privátního propojení se můžete připojit pomocí [metody automatického nebo ručního schválení](../private-link/private-endpoint-overview.md#access-to-a-private-link-resource-using-approval-workflow).
 
 > [!IMPORTANT]
-> Podpora pro privátní připojení v Azure Batch je aktuálně dostupná pro všechny veřejné oblasti kromě oblasti Německo – střed a Německo – severovýchod.
+> Podpora pro privátní připojení v Azure Batch je aktuálně dostupná pro všechny oblasti kromě oblasti Německo – střed, Německo – severovýchod, Čína – východ, Čína – východ 2, Čína – sever a Čína – sever 2.
 
 Tento článek popisuje kroky pro vytvoření privátního účtu Batch a přístup k němu pomocí privátního koncového bodu.
 
-## <a name="azure-portal"></a>portál Azure
+## <a name="azure-portal"></a>Portál Azure Portal
 
 Pomocí následujícího postupu vytvořte pomocí Azure Portal privátní účet Batch:
 
@@ -37,12 +37,12 @@ Pomocí následujícího postupu vytvořte pomocí Azure Portal privátní úče
 6. V podokně **prostředek** nastavte **typ prostředku** na **Microsoft.Batch/batchAccounts**. Vyberte účet privátní dávky, ke kterému chcete získat přístup, a potom vyberte **Další: Konfigurace**.
    :::image type="content" source="media/private-connectivity/create-private-endpoint.png" alt-text="Vytvoření privátního koncového bodu – podokno prostředků":::
 7. V podokně **Konfigurace** zadejte nebo vyberte tyto informace:
-   - **Virtuální síť** : Vyberte svou virtuální síť.
-   - **Podsíť** : Vyberte svou podsíť.
-   - **Integrace s privátní zónou DNS** : vyberte **Ano**. Abyste mohli soukromě propojit s vaším soukromým koncovým bodem, budete potřebovat záznam DNS. Doporučujeme integrovat privátní koncový bod s privátní zónou DNS. Můžete také použít vlastní servery DNS nebo vytvořit záznamy DNS pomocí hostitelských souborů na virtuálních počítačích.
-   - **Privátní DNS zóna** : vyberte privatelink. \<region\> . batch.azure.com. Privátní zóna DNS je určena automaticky. Nemůžete ho změnit pomocí Azure Portal.
+   - **Virtuální síť**: Vyberte svou virtuální síť.
+   - **Podsíť**: Vyberte svou podsíť.
+   - **Integrace s privátní zónou DNS**: vyberte **Ano**. Abyste mohli soukromě propojit s vaším soukromým koncovým bodem, budete potřebovat záznam DNS. Doporučujeme integrovat privátní koncový bod s privátní zónou DNS. Můžete také použít vlastní servery DNS nebo vytvořit záznamy DNS pomocí hostitelských souborů na virtuálních počítačích.
+   - **Privátní DNS zóna**: vyberte privatelink. \<region\> . batch.azure.com. Privátní zóna DNS je určena automaticky. Nemůžete ho změnit pomocí Azure Portal.
 8. Vyberte **zkontrolovat + vytvořit** a potom počkejte, než Azure ověří vaši konfiguraci.
-9. Jakmile se zobrazí zpráva **Ověření proběhlo úspěšně** , vyberte **Vytvořit**.
+9. Jakmile se zobrazí zpráva **Ověření proběhlo úspěšně**, vyberte **Vytvořit**.
 
 Po zřízení privátního koncového bodu můžete k účtu Batch přistupovat z virtuálních počítačů ve stejné virtuální síti pomocí privátního koncového bodu.
 

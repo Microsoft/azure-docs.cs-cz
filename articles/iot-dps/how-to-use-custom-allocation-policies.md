@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 4931258af0dd50d091bec98824df5da0e91dbf53
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 14a405dbab0460f841a5e9104dbfeff101568f44
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/27/2021
-ms.locfileid: "98895721"
+ms.locfileid: "98919170"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>Postupy používání vlastních zásad přidělování
 
@@ -78,8 +78,11 @@ V této části použijete Azure Cloud Shell k vytvoření služby zřizování 
 
 3. Pomocí Azure Cloud Shell můžete pomocí příkazu [AZ IoT Hub Create](/cli/azure/iot/hub#az-iot-hub-create) vytvořit **informační centrum společnosti Contoso s oddělením** IoT Hub. Centrum IoT se přidá do *skupiny contoso-US-Resource-Group*.
 
-    Následující příklad vytvoří centrum IoT s názvem contoso- *-hub-1098* v umístění *westus* . Je nutné použít jedinečný název centra. Vytvořte vlastní příponu v názvu centra místo **1098**. Vzorový kód pro vlastní zásady přidělování vyžaduje `-toasters-` název centra.
+    Následující příklad vytvoří centrum IoT s názvem contoso- *-hub-1098* v umístění *westus* . Je nutné použít jedinečný název centra. Vytvořte vlastní příponu v názvu centra místo **1098**. 
 
+    > [!CAUTION]
+    > Ukázkový kód funkce Azure pro vlastní zásadu přidělení vyžaduje podřetězec `-toasters-` v názvu centra. Nezapomeňte použít název, který obsahuje požadovaný podřetězec informačních zpráv.
+    
     ```azurecli-interactive 
     az iot hub create --name contoso-toasters-hub-1098 --resource-group contoso-us-resource-group --location westus --sku S1
     ```
@@ -88,7 +91,10 @@ V této části použijete Azure Cloud Shell k vytvoření služby zřizování 
 
 4. Pomocí Azure Cloud Shell vytvořte pomocí příkazu [AZ IoT Hub Create](/cli/azure/iot/hub#az-iot-hub-create) vytvořit centrum IoT pro **tepelné pumpy společnosti Contoso** . Toto centrum IoT se taky přidá do *skupiny contoso-US-Resource-Group*.
 
-    Následující příklad vytvoří centrum IoT s názvem *Contoso-heatpumps-hub-1098* v umístění *westus* . Je nutné použít jedinečný název centra. Vytvořte vlastní příponu v názvu centra místo **1098**. Vzorový kód pro vlastní zásady přidělování vyžaduje `-heatpumps-` název centra.
+    Následující příklad vytvoří centrum IoT s názvem *Contoso-heatpumps-hub-1098* v umístění *westus* . Je nutné použít jedinečný název centra. Vytvořte vlastní příponu v názvu centra místo **1098**. 
+
+    > [!CAUTION]
+    > Ukázkový kód funkce Azure pro vlastní zásadu přidělení vyžaduje podřetězec `-heatpumps-` v názvu centra. Nezapomeňte použít název, který obsahuje požadovaný podřetězec heatpumps.
 
     ```azurecli-interactive 
     az iot hub create --name contoso-heatpumps-hub-1098 --resource-group contoso-us-resource-group --location westus --sku S1
@@ -98,14 +104,14 @@ V této části použijete Azure Cloud Shell k vytvoření služby zřizování 
 
 5. Centra IoT musí být propojena s prostředkem DPS. 
 
-    Spusťte následující dva příkazy a získejte připojovací řetězce pro rozbočovače, které jste právě vytvořili:
+    Spusťte následující dva příkazy a získejte připojovací řetězce pro rozbočovače, které jste právě vytvořili. Názvy prostředků centra nahraďte názvy, které jste zvolili v každém příkazu:
 
     ```azurecli-interactive 
     hubToastersConnectionString=$(az iot hub connection-string show --hub-name contoso-toasters-hub-1098 --key primary --query connectionString -o tsv)
     hubHeatpumpsConnectionString=$(az iot hub connection-string show --hub-name contoso-heatpumps-hub-1098 --key primary --query connectionString -o tsv)
     ```
 
-    Spuštěním následujících příkazů propojte centra s prostředkem DPS:
+    Spuštěním následujících příkazů propojte centra s prostředkem DPS. Nahraďte název prostředku DPS názvem, který jste zvolili v každém příkazu:
 
     ```azurecli-interactive 
     az iot dps linked-hub create --dps-name contoso-provisioning-service-1098 --resource-group contoso-us-resource-group --connection-string $hubToastersConnectionString --location westus
@@ -346,56 +352,59 @@ Pro příklad v tomto článku použijte následující dvě ID registrace zař�
 * **breakroom499-contoso-tstrsd-007**
 * **mainbuilding167-contoso-hpsd-088**
 
-### <a name="linux-workstations"></a>Pracovní stanice Linux
 
-Pokud používáte pracovní stanici se systémem Linux, můžete použít OpenSSL k vygenerování odvozených klíčů zařízení, jak je znázorněno v následujícím příkladu.
-
-1. Nahraďte hodnotu **klíče** **primárním klíčem** , který jste si poznamenali dříve.
-
-    ```bash
-    KEY=oiK77Oy7rBw8YB6IS6ukRChAw+Yq6GC61RMrPLSTiOOtdI+XDu0LmLuNm11p+qv2I+adqGUdZHm46zXAQdZoOA==
-
-    REG_ID1=breakroom499-contoso-tstrsd-007
-    REG_ID2=mainbuilding167-contoso-hpsd-088
-
-    keybytes=$(echo $KEY | base64 --decode | xxd -p -u -c 1000)
-    devkey1=$(echo -n $REG_ID1 | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | base64)
-    devkey2=$(echo -n $REG_ID2 | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | base64)
-
-    echo -e $"\n\n$REG_ID1 : $devkey1\n$REG_ID2 : $devkey2\n\n"
-    ```
-
-    ```bash
-    breakroom499-contoso-tstrsd-007 : JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=
-    mainbuilding167-contoso-hpsd-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
-    ```
-
-### <a name="windows-based-workstations"></a>Pracovní stanice založené na systému Windows
+# <a name="windows"></a>[Windows](#tab/windows)
 
 Pokud používáte pracovní stanici se systémem Windows, můžete použít PowerShell k vygenerování odvozeného klíče zařízení, jak je znázorněno v následujícím příkladu.
 
-1. Nahraďte hodnotu **klíče** **primárním klíčem** , který jste si poznamenali dříve.
+Nahraďte hodnotu **klíče** **primárním klíčem** , který jste si poznamenali dříve.
 
-    ```powershell
-    $KEY='oiK77Oy7rBw8YB6IS6ukRChAw+Yq6GC61RMrPLSTiOOtdI+XDu0LmLuNm11p+qv2I+adqGUdZHm46zXAQdZoOA=='
+```powershell
+$KEY='oiK77Oy7rBw8YB6IS6ukRChAw+Yq6GC61RMrPLSTiOOtdI+XDu0LmLuNm11p+qv2I+adqGUdZHm46zXAQdZoOA=='
 
-    $REG_ID1='breakroom499-contoso-tstrsd-007'
-    $REG_ID2='mainbuilding167-contoso-hpsd-088'
+$REG_ID1='breakroom499-contoso-tstrsd-007'
+$REG_ID2='mainbuilding167-contoso-hpsd-088'
 
-    $hmacsha256 = New-Object System.Security.Cryptography.HMACSHA256
-    $hmacsha256.key = [Convert]::FromBase64String($KEY)
-    $sig1 = $hmacsha256.ComputeHash([Text.Encoding]::ASCII.GetBytes($REG_ID1))
-    $sig2 = $hmacsha256.ComputeHash([Text.Encoding]::ASCII.GetBytes($REG_ID2))
-    $derivedkey1 = [Convert]::ToBase64String($sig1)
-    $derivedkey2 = [Convert]::ToBase64String($sig2)
+$hmacsha256 = New-Object System.Security.Cryptography.HMACSHA256
+$hmacsha256.key = [Convert]::FromBase64String($KEY)
+$sig1 = $hmacsha256.ComputeHash([Text.Encoding]::ASCII.GetBytes($REG_ID1))
+$sig2 = $hmacsha256.ComputeHash([Text.Encoding]::ASCII.GetBytes($REG_ID2))
+$derivedkey1 = [Convert]::ToBase64String($sig1)
+$derivedkey2 = [Convert]::ToBase64String($sig2)
 
-    echo "`n`n$REG_ID1 : $derivedkey1`n$REG_ID2 : $derivedkey2`n`n"
-    ```
+echo "`n`n$REG_ID1 : $derivedkey1`n$REG_ID2 : $derivedkey2`n`n"
+```
 
-    ```powershell
-    breakroom499-contoso-tstrsd-007 : JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=
-    mainbuilding167-contoso-hpsd-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
-    ```
+```powershell
+breakroom499-contoso-tstrsd-007 : JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=
+mainbuilding167-contoso-hpsd-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
+```
+
+# <a name="linux"></a>[Linux](#tab/linux)
+
+Pokud používáte pracovní stanici se systémem Linux, můžete použít OpenSSL k vygenerování odvozených klíčů zařízení, jak je znázorněno v následujícím příkladu.
+
+Nahraďte hodnotu **klíče** **primárním klíčem** , který jste si poznamenali dříve.
+
+```bash
+KEY=oiK77Oy7rBw8YB6IS6ukRChAw+Yq6GC61RMrPLSTiOOtdI+XDu0LmLuNm11p+qv2I+adqGUdZHm46zXAQdZoOA==
+
+REG_ID1=breakroom499-contoso-tstrsd-007
+REG_ID2=mainbuilding167-contoso-hpsd-088
+
+keybytes=$(echo $KEY | base64 --decode | xxd -p -u -c 1000)
+devkey1=$(echo -n $REG_ID1 | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | base64)
+devkey2=$(echo -n $REG_ID2 | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | base64)
+
+echo -e $"\n\n$REG_ID1 : $devkey1\n$REG_ID2 : $devkey2\n\n"
+```
+
+```bash
+breakroom499-contoso-tstrsd-007 : JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=
+mainbuilding167-contoso-hpsd-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
+```
+
+---
 
 Simulovaná zařízení budou používat odvozené klíče zařízení s každým registračním ID k provedení ověření symetrického klíče.
 

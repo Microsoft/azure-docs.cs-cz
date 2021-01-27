@@ -1,14 +1,14 @@
 ---
 title: Funkce Azure modrotisky
 description: Popisuje funkce, které jsou k dispozici pro použití s artefakty podrobného plánu v definicích a přiřazeních Azure modrotisky.
-ms.date: 08/27/2020
+ms.date: 01/27/2021
 ms.topic: reference
-ms.openlocfilehash: fe984ee7664b0d50fb891d946f9f40a200ccce09
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 92cb906e87179073b7a69aa0bd4eab22c77087f9
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89050756"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919270"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>Funkce pro použití s plány Azure
 
@@ -34,7 +34,7 @@ Vrátí objekt vlastností naplněný pomocí tohoto výstupu artefaktů podrobn
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Description |
+| Parametr | Povinné | Typ | Popis |
 |:--- |:--- |:--- |:--- |
 | artefakt |Yes |řetězec |Název artefaktu podrobného plánu |
 
@@ -123,7 +123,7 @@ Kombinuje více řetězcových hodnot a vrátí zřetězený řetězec.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Description |
+| Parametr | Povinné | Typ | Popis |
 |:--- |:--- |:--- |:--- |
 | řetězec1 |Yes |řetězec |První hodnota pro zřetězení |
 | Další argumenty |No |řetězec |Další hodnoty v sekvenčním pořadí pro zřetězení |
@@ -148,7 +148,7 @@ Vrátí hodnotu parametru podrobného plánu. Zadaný název parametru musí bý
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Description |
+| Parametr | Povinné | Typ | Popis |
 |:--- |:--- |:--- |:--- |
 | parameterName |Yes |řetězec |Název parametru, který se má vrátit. |
 
@@ -269,7 +269,7 @@ Vrátí objekt, který představuje zadaný artefakt skupiny prostředků. Na ro
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Description |
+| Parametr | Povinné | Typ | Popis |
 |:--- |:--- |:--- |:--- |
 | zástupný znak |Yes |řetězec |Zástupný název artefaktu skupiny prostředků, který se má vrátit |
 

@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: quickstart
-ms.date: 09/17/2020
+ms.date: 01/27/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to quickly deploy Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 200e7f191cb19588fa79ba685c91a75dabd0156a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2d1bd7d2a4f066311ea01046a8d71e6ecb52c3f5
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91348945"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919798"
 ---
 # <a name="quickstart-get-started-with-azure-stack-edge-pro-with-gpu"></a>Rychlý Start: Začínáme s Azure Stack Edge pro s grafickým procesorem 
 
@@ -23,7 +23,7 @@ Tento rychlý Start podrobně popisuje požadavky a kroky potřebné k nasazení
 Celkový postup by měl trvat přibližně 1,5 hodin. Podrobné pokyny najdete v tématu [kurz: Příprava na nasazení Azure Stack pro grafický procesor Edge pro](azure-stack-edge-gpu-deploy-prep.md#deployment-configuration-checklist). 
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před nasazením se ujistěte, že jsou splněné následující předpoklady:
 
@@ -45,7 +45,7 @@ Před nasazením se ujistěte, že jsou splněné následující předpoklady:
 
 2. **Connect**: Nakonfigurujte nastavení IPv4 na adaptéru Ethernet v počítači se statickou IP adresou **192.168.100.5** a podsítí **255.255.255.0**. Otevřete prohlížeč a připojte se k místnímu webovému uživatelskému rozhraní zařízení v https://192.168.100.10 . Může to trvat několik minut. Po zobrazení upozornění na certifikát zabezpečení přejděte na webovou stránku.
 
-3. **Přihlásit**se: Přihlaste se k zařízení s výchozím *Heslo1*hesla. Změňte heslo správce zařízení. Heslo musí obsahovat 8 až 16 znaků a 3 velká písmena, malá písmena, číslice a speciální znaky.
+3. **Přihlásit** se: Přihlaste se k zařízení s výchozím *Heslo1* hesla. Změňte heslo správce zařízení. Heslo musí obsahovat 8 až 16 znaků a 3 velká písmena, malá písmena, číslice a speciální znaky.
 
 4. **Konfigurace sítě**: přijměte výchozí konfiguraci DHCP pro připojený datový port, pokud máte server DHCP ve vaší síti. V takovém případě zadejte IP adresu, server DNS a výchozí bránu. Další informace o [nastavení sítě](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md#configure-network)najdete v tématu.
 
@@ -71,7 +71,7 @@ Před nasazením se ujistěte, že jsou splněné následující předpoklady:
     1. V Azure Portal najdete v části **Přehled prostředků Azure Stack Edge > > nastavení zařízení > aktivovat > vygenerovat klíč**. Zkopírujte klíč. 
     1. V místním webovém uživatelském rozhraní přejdete na **začínáme > aktivovat** a zadáte aktivační klíč. Při použití klíče trvá aktivace zařízení několik minut. `<device-serial-number>`Po zobrazení výzvy k bezpečnému ukládání klíčů zařízení potřebných pro budoucí obnovení Stáhněte soubor. JSON. 
 
-12. **Konfigurace výpočtů**: v Azure Portal najdete **Přehled > zařízení**. Ověřte, že je zařízení **online**. V levém podokně přejdete na **Edge compute > začínáme > konfigurace hraničních výpočtů > výpočetních**prostředků. Poskytněte existující nebo novou službu IoT Hub a počkejte asi 20 minut, než se výpočetní prostředí nakonfiguruje. Přečtěte si další informace o [kurzu: Konfigurace výpočtů na zařízeních GPU Azure Stack Edge pro](azure-stack-edge-gpu-deploy-configure-compute.md)
+12. **Konfigurace výpočtů**: v Azure Portal najdete **Přehled > zařízení**. Ověřte, že je zařízení **online**. V levém podokně přejdete na **Edge compute > začínáme > konfigurace hraničních výpočtů > výpočetních** prostředků. Poskytněte existující nebo novou službu IoT Hub a počkejte asi 20 minut, než se výpočetní prostředí nakonfiguruje. Přečtěte si další informace o [kurzu: Konfigurace výpočtů na zařízeních GPU Azure Stack Edge pro](azure-stack-edge-gpu-deploy-configure-compute.md)
 
 Do svého zařízení jste připraveni nasadit výpočetní úlohy [prostřednictvím IoT Edge](azure-stack-edge-gpu-deploy-sample-module-marketplace.md), [prostřednictvím `kubectl` ](azure-stack-edge-gpu-create-kubernetes-cluster.md) nebo [prostřednictvím Kubernetes s povoleným obloukem Azure](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md). Pokud při instalaci dojde k problémům, Projděte si témata [řešení]()potíží se zařízeními [, problémy s výkonem,](azure-stack-edge-gpu-troubleshoot.md) [problémy s certifikáty](azure-stack-edge-j-series-certificate-troubleshooting.md)nebo Kubernetes problémy. 
 

@@ -1,14 +1,14 @@
 ---
 title: 'Rychlý Start: vytvoření podrobného plánu pomocí Azure CLI'
 description: V tomto rychlém startu použijete Azure modrotisky k vytváření, definování a nasazování artefaktů pomocí Azure CLI.
-ms.date: 01/26/2021
+ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: a0e44925bdec78b8b02a50c8b3f91db0bb764976
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 6ce3031c93f973c2efb251fad371a6f3750ae0fd
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/27/2021
-ms.locfileid: "98875190"
+ms.locfileid: "98920236"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-azure-cli"></a>Rychlý Start: definování a přiřazení Azure Blueprint pomocí Azure CLI
 
@@ -167,6 +167,9 @@ Jako první krok při definování standardního vzoru pro dodržování předpi
         --parameters artifacts\policyTags.json
      ```
 
+     > [!NOTE]
+     > Při použití `az blueprint` v Macu nahraďte hodnotou `\` `/` parametru, která zahrnuje cestu. V tomto případě se hodnota pro **parametry** přestanou `artifacts/policyTags.json` .
+
 1. Přidejte do předplatného další přiřazenou zásadu pro značku úložiště (znovu použijte parametr _storageAccountType_). Tento další artefakt přiřazené zásady ukazuje, že parametr definovaný v podrobném plánu může používat více artefaktů. V tomto příklad se parametr **storageAccountType** používá k nastavení značky u skupiny prostředků. Tato hodnota poskytuje informace o účtu úložiště, který se vytvoří v dalším kroku. V tomto příkladu se používá _značka Apply a její výchozí hodnota pro předdefinované zásady skupin prostředků_ s identifikátorem GUID `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71` .
 
    - Soubor JSON – artifacts\policyStorageTags.jsna
@@ -193,6 +196,9 @@ Jako první krok při definování standardního vzoru pro dodržování předpi
         --description 'Apply storage tag and the parameter also used by the template to resource groups' \
         --parameters artifacts\policyStorageTags.json
      ```
+
+     > [!NOTE]
+     > Při použití `az blueprint` v Macu nahraďte hodnotou `\` `/` parametru, která zahrnuje cestu. V tomto případě se hodnota pro **parametry** přestanou `artifacts/policyStorageTags.json` .
 
 1. Přidejte pod skupinu prostředků šablonu. Parametr **šablony** pro šablonu ARM obsahuje normální komponenty JSON šablony. Šablona také znovu používá parametry podrobného plánu **storageAccountType**, **tagName** a **tagValue**, které se šabloně předávají. Parametry podrobného plánu jsou k dispozici pro šablonu pomocí **parametrů** parametrů a uvnitř šablony JSON, kterou používá pár klíč-hodnota k vložení hodnoty. Název parametru podrobného plánu a šablony může být stejný.
 
@@ -276,6 +282,9 @@ Jako první krok při definování standardního vzoru pro dodržování předpi
         --parameters artifacts\templateStorageParams.json \
         --resource-group-art 'storageRG'
      ```
+
+     > [!NOTE]
+     > Při použití `az blueprint` v Macu nahraďte hodnotou `\` `/` parametru, která zahrnuje cestu. V tomto případě se hodnota pro **šablonu** přestanou `artifacts/templateStorage.json` a **parametry** se budou nacházet `artifacts/templateStorageParams.json` .
 
 1. Přidejte pod skupinu prostředků přiřazení role. Jde o podobné přiřazení jako při předchozím přiřazení role. V následujícím příkladu se identifikátor definice použije pro roli **Owner** (Vlastník), který jí z podrobného plánu nabídne jiný parametr. V tomto příkladu se používá předdefinovaná role _Owner_ s identifikátorem GUID `8e3af657-a8ff-443c-a75c-2fe8c4bcb635` .
 
