@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 11/02/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro device so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 04ba9777fe9e8470e6f02c83f3996d098023e05e
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: a48abb34a201928185130fbe8fdf9592e77492d9
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763451"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944949"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-the-azure-portal"></a>Nasazení virtuálních počítačů na zařízení GPU Azure Stack Edge pro pomocí Azure Portal
 
@@ -22,6 +22,9 @@ Můžete vytvářet a spravovat virtuální počítače na Azure Stack hraničn�
 
 Tento článek se týká Azure Stackch PROCESORů Edge pro, Azure Stack Edge pro R a Azure Stack hraničních zařízení R. 
 
+> [!IMPORTANT] 
+> Doporučujeme povolit vícefaktorové ověřování pro uživatele, který spravuje virtuální počítače nasazené v zařízení z cloudu.
+        
 ## <a name="vm-deployment-workflow"></a>Pracovní postup nasazení virtuálních počítačů
 
 Souhrnný přehled pracovního postupu nasazení je následující:
@@ -79,7 +82,7 @@ Pomocí těchto kroků můžete na zařízení Azure Stack Edge vytvořit virtu�
 
     ![Přidat image virtuálního počítače 3](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-image-3.png)
 
-1. V okně **Přidat obrázek** zadejte následující parametry. Vyberte **Add** (Přidat).
+1. V okně **Přidat obrázek** zadejte následující parametry. Vyberte **Přidat**.
 
 
     |Parametr  |Popis  |

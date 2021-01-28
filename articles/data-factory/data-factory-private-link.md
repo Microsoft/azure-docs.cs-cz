@@ -1,5 +1,5 @@
 ---
-title: Privátní odkaz Azure pro Azure Data Factory
+title: Azure Private Link pro Azure Data Factory
 description: Přečtěte si, jak funguje privátní propojení Azure v Azure Data Factory.
 services: data-factory
 ms.author: abnarain
@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
-ms.openlocfilehash: 5d13a6a77ede6277eebc7fdab7cd42165cb602fa
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 6fb460c65d37723b03c1dfd4fba2c353c19455bd
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746339"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944580"
 ---
-# <a name="azure-private-link-for-azure-data-factory"></a>Privátní odkaz Azure pro Azure Data Factory
+# <a name="azure-private-link-for-azure-data-factory"></a>Azure Private Link pro Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-xxx-md.md)]
 
@@ -67,7 +67,7 @@ Povolení služby privátního propojení pro každý z předchozích komunikač
 > Když vytvoříte propojenou službu, ujistěte se, že vaše přihlašovací údaje jsou uložené v trezoru klíčů Azure. Jinak přihlašovací údaje nebudou fungovat, když povolíte privátní odkaz v Azure Data Factory.
 
 ## <a name="dns-changes-for-private-endpoints"></a>Změny DNS u privátních koncových bodů
-Při vytváření privátního koncového bodu se záznam prostředku CNAME DNS pro Data Factory aktualizuje na alias v subdoméně s předponou ' privatelink '. Ve výchozím nastavení vytvoříme také [privátní ZÓNU DNS](https://docs.microsoft.com/azure/dns/private-dns-overview), která odpovídá subdoméně privatelink, a záznamy prostředků DNS pro privátní koncové body.
+Při vytváření privátního koncového bodu se záznam prostředku CNAME DNS pro Data Factory aktualizuje na alias v subdoméně s předponou ' privatelink '. Ve výchozím nastavení vytvoříme také [privátní ZÓNU DNS](../dns/private-dns-overview.md), která odpovídá subdoméně privatelink, a záznamy prostředků DNS pro privátní koncové body.
 
 Při překladu adresy URL koncového bodu objektu pro vytváření dat mimo virtuální síť s privátním koncovým bodem se přeloží na veřejný koncový bod služby Data Factory. Při překladu z virtuální sítě hostující soukromý koncový bod se adresa URL koncového bodu úložiště přeloží na IP adresu privátního koncového bodu.
 
@@ -89,8 +89,8 @@ Záznamy o prostředcích DNS pro objekt DataFactory, pokud jsou vyřešené ve 
 Pokud ve vaší síti používáte vlastní server DNS, klienti musí být schopni přeložit plně kvalifikovaný název domény pro Data Factory koncový bod na IP adresu privátního koncového bodu. Server DNS byste měli nakonfigurovat tak, aby delegoval subdoménu privátního propojení s privátní zónou DNS pro virtuální síť, nebo aby byly nakonfigurovány záznamy A pro objekt DataFactory. {region}. privatelink. DataFactory. Azure. NET s IP adresou privátního koncového bodu.
 
 Další informace o konfiguraci vlastního serveru DNS pro podporu privátních koncových bodů najdete v následujících článcích:
-- [Překlad názvů pro prostředky ve virtuálních sítích Azure](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
-- [Konfigurace DNS pro privátní koncové body](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration)
+- [Překlad názvů pro prostředky ve virtuálních sítích Azure](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)
+- [Konfigurace DNS pro privátní koncové body](../private-link/private-endpoint-overview.md#dns-configuration)
 
 
 ## <a name="set-up-private-link-for-azure-data-factory"></a>Nastavit privátní odkaz pro Azure Data Factory

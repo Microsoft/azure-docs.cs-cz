@@ -7,12 +7,12 @@ ms.author: cherylmc
 ms.service: vpn-gateway
 ms.topic: tutorial
 ms.date: 12/04/2020
-ms.openlocfilehash: d078d4b106136c95d67eb467bc16e22e2bb91c5c
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: ccb43c3e7efb9289450ad9a71c003f54e5362b66
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96747354"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945206"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-in-the-azure-portal"></a>Kurz: vytvoření připojení typu Site-to-site v Azure Portal
 
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 > * Ověření připojení
 > * Připojení k virtuálnímu počítači
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure s aktivním předplatným. Pokud ho ještě nemáte, [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 * Ujistěte se, že máte kompatibilní zařízení VPN a někoho, kdo jej umí nakonfigurovat. Další informace o kompatibilních zařízeních VPN a konfiguraci zařízení najdete v tématu [Informace o zařízeních VPN](vpn-gateway-about-vpn-devices.md).
@@ -85,7 +85,7 @@ Vytvořte bránu VPN pomocí následujících hodnot:
 
 Veřejnou IP adresu brány si můžete zobrazit na stránce **Přehled** pro vaši bránu.
 
-:::image type="content" source="./media/tutorial-create-gateway-portal/address.png" alt-text="Stránka Přehled":::
+:::image type="content" source="./media/tutorial-create-gateway-portal/address.png" alt-text="Stránka přehledu":::
 
 Chcete-li zobrazit další informace o objektu veřejné IP adresy, klikněte na odkaz název/IP adresa vedle **veřejné IP adresy**.
 
@@ -153,7 +153,7 @@ Resetování brány Azure VPN je užitečné v případě ztráty připojení VP
 
 [!INCLUDE [reset a gateway](../../includes/vpn-gateway-reset-gw-portal-include.md)]
 
-### <a name="additional-configuration-considerations"></a><a name="connectVM"></a>Další pokyny ke konfiguraci
+### <a name="additional-configuration-considerations"></a><a name="additional"></a>Další pokyny ke konfiguraci
 
 Konfigurace S2S je možné přizpůsobit různými způsoby. Další informace najdete v následujících článcích:
 

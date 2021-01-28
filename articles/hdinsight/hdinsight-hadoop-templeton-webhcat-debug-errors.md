@@ -1,19 +1,16 @@
 ---
 title: Pochopení a řešení chyb WebHCat ve službě HDInsight – Azure
 description: Naučte se o běžných chybách vrácených WebHCat ve službě HDInsight a o tom, jak je vyřešit.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
-ms.openlocfilehash: 951dba6e64561301dc7dbb6ebd6fd6b641c90a47
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: ce7a21a2b5401c68c6b58bc934fb20b0225ba8ad
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285679"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945462"
 ---
 # <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>Seznámení s chybami přijatými z WebHCatu v HDInsightu a jejich řešení
 
@@ -39,7 +36,7 @@ Pokud dojde k překročení následujících výchozích hodnot, může dojít k
 
 ## <a name="too-many-requests"></a>Příliš mnoho žádostí
 
-**Stavový kód HTTP** : 429
+**Stavový kód HTTP**: 429
 
 | Příčina | Řešení |
 | --- | --- |
@@ -47,7 +44,7 @@ Pokud dojde k překročení následujících výchozích hodnot, může dojít k
 
 ## <a name="server-unavailable"></a>Server není k dispozici
 
-**Stavový kód HTTP** : 503
+**Stavový kód HTTP**: 503
 
 | Příčina | Řešení |
 | --- | --- |
@@ -55,7 +52,7 @@ Pokud dojde k překročení následujících výchozích hodnot, může dojít k
 
 ## <a name="bad-request-content-could-not-find-job"></a>Chybný obsah žádosti: nepovedlo se najít úlohu.
 
-**Stavový kód HTTP** : 400
+**Stavový kód HTTP**: 400
 
 | Příčina | Řešení |
 | --- | --- |
@@ -65,7 +62,7 @@ Pokud dojde k překročení následujících výchozích hodnot, může dojít k
 
 ## <a name="bad-gateway"></a>Chybná brána
 
-**Stavový kód HTTP** : 502
+**Stavový kód HTTP**: 502
 
 | Příčina | Řešení |
 | --- | --- |

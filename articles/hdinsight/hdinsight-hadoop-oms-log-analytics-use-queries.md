@@ -1,19 +1,16 @@
 ---
 title: Dotazování protokolů Azure Monitor pro monitorování clusterů Azure HDInsight
 description: Naučte se spouštět dotazy na protokoly Azure Monitor pro monitorování úloh spuštěných v clusteru HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/02/2019
-ms.openlocfilehash: c2ddcd8ea3524b4afdfa7f70d21f0cba96975f72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9213f36ec33939c3df3b56d21822aa3b6a17c03
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86085357"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945618"
 ---
 # <a name="query-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Dotazování protokolů Azure Monitor pro monitorování clusterů HDInsight
 
@@ -44,7 +41,7 @@ Naučte se hledat konkrétní metriky pro cluster HDInsight.
 
 1. V nabídce vlevo vyberte kartu **Filtr** .
 
-1. V části **typ**vyberte **prezenční signál**. Pak vyberte **použít & spustit**.
+1. V části **typ** vyberte **prezenční signál**. Pak vyberte **použít & spustit**.
 
     ![metriky specifické pro hledání v Log Analytics](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-specific-metrics.png "Vyhledat konkrétní metriky")
 
@@ -55,7 +52,7 @@ Naučte se hledat konkrétní metriky pro cluster HDInsight.
     | where Type == "Heartbeat"
     ```
 
-1. Můžete Dig hlouběji pomocí možností dostupných v levé nabídce. Například:
+1. Můžete Dig hlouběji pomocí možností dostupných v levé nabídce. Příklad:
 
     - Postup zobrazení protokolů z konkrétního uzlu:
 
@@ -115,13 +112,13 @@ Prvním krokem k vytvoření výstrahy je doručení dotazu, na základě které
 
 1. Z Azure Portal otevřete Log Analytics pracovní prostor.
 
-1. V nabídce vlevo v části **monitorování**vyberte **výstrahy**.
+1. V nabídce vlevo v části **monitorování** vyberte **výstrahy**.
 
 1. V horní části vyberte **Spravovat pravidla výstrah**.
 
 1. Vyberte výstrahu, kterou chcete upravit nebo odstranit.
 
-1. Máte následující možnosti: **Uložit**, **Zahodit**, **Zakázat**a **Odstranit**.
+1. Máte následující možnosti: **Uložit**, **Zahodit**, **Zakázat** a **Odstranit**.
 
     ![Protokoly Azure Monitor HDInsight upozornění odstranit úpravu](media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-edit-alert.png)
 

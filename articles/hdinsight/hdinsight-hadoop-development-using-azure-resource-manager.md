@@ -1,26 +1,23 @@
 ---
 title: Migrace na Azure Resource Manager nástroje pro HDInsight
 description: Postup migrace na Azure Resource Manager vývojové nástroje pro clustery HDInsight
-ms.reviewer: jasonh
-author: hrasheed-msft
-ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.topic: how-to
 ms.date: 02/21/2018
-ms.openlocfilehash: 57dec799cbda03e20717a402a88f1d818d9acd92
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: 2ff62f4feba44a1c706ab85db1be3f7f654e6135
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92629472"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945770"
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>Migrace na vývojové nástroje založené na Azure Resource Manager pro clustery HDInsight
 
 HDInsight používá nástroje pro HDInsight založené na službě Azure Service Manager (ASM). Pokud jste používali Azure PowerShell, rozhraní příkazového řádku Azure Classic nebo sadu HDInsight .NET SDK pro práci s clustery HDInsight, doporučujeme, abyste používali Azure Resource Manager verze PowerShellu, CLI a sady .NET SDK. Tento článek poskytuje odkazy na postupy, jak migrovat na nový přístup založený na Správce prostředků. Pokud je to možné, tento dokument popisuje rozdíly mezi ASM a Správce prostředků přístupy pro HDInsight.
 
 > [!IMPORTANT]  
-> Podpora PowerShellu, CLI a .NET SDK založeného na ASM skončí **1. ledna 2017** .
+> Podpora PowerShellu, CLI a .NET SDK založeného na ASM skončí **1. ledna 2017**.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -83,7 +80,7 @@ Informace o dalších způsobech, jak spustit Apache Hadoop MapReduce, Apache Hi
 ## <a name="migrating-azure-powershell-to-azure-resource-manager"></a>Migrace Azure PowerShell do Azure Resource Manager
 Obecné informace o Azure PowerShell v režimu Azure Resource Manager najdete v části [použití Azure PowerShell s Azure Resource Manager](../azure-resource-manager/management/manage-resources-powershell.md).
 
-Rutiny Azure PowerShell Správce prostředků lze nainstalovat souběžně s rutinami ASM. Rutiny ze dvou režimů lze odlišit podle jejich názvů.  Režim Správce prostředků *AzHDInsight* v názvech rutin v porovnání s *AzureHDInsight* ve starším režimu správy služby Azure.  Například *New-AzHDInsightCluster* vs. *New-AzureHDInsightCluster* . Parametry a přepínače mohou mít názvy zpráv a k dispozici je mnoho nových parametrů při použití Správce prostředků.  Například několik rutin vyžaduje nový přepínač *s názvem-ResourceGroupName* .
+Rutiny Azure PowerShell Správce prostředků lze nainstalovat souběžně s rutinami ASM. Rutiny ze dvou režimů lze odlišit podle jejich názvů.  Režim Správce prostředků *AzHDInsight* v názvech rutin v porovnání s *AzureHDInsight* ve starším režimu správy služby Azure.  Například *New-AzHDInsightCluster* vs. *New-AzureHDInsightCluster*. Parametry a přepínače mohou mít názvy zpráv a k dispozici je mnoho nových parametrů při použití Správce prostředků.  Například několik rutin vyžaduje nový přepínač *s názvem-ResourceGroupName*.
 
 Než budete moct použít rutiny HDInsight, musíte se připojit k účtu Azure a vytvořit novou skupinu prostředků:
 
@@ -134,17 +131,17 @@ Níže jsou uvedené nové rutiny, které jsou k dispozici pouze v režimu Sprá
 
 **Rutiny související s akcemi skriptu:**
 
-* **Get-AzHDInsightPersistedScriptAction** : Získá trvalé akce skriptu pro cluster a zobrazí je v chronologickém pořadí nebo získá podrobnosti o zadané trvalé akci skriptu. 
-* **Get-AzHDInsightScriptActionHistory** : Získá historii akcí skriptu pro cluster a zobrazí ho v opačném chronologickém pořadí nebo získá podrobné informace o dříve provedené akci skriptu. 
-* **Remove-AzHDInsightPersistedScriptAction** : Odebere trvalou akci skriptu z clusteru HDInsight.
-* **Set-AzHDInsightPersistedScriptAction** : nastaví dříve spouštěnou akci skriptu jako trvalou akci skriptu.
-* **Submit-AzHDInsightScriptAction** : odešle novou akci skriptu do clusteru Azure HDInsight. 
+* **Get-AzHDInsightPersistedScriptAction**: Získá trvalé akce skriptu pro cluster a zobrazí je v chronologickém pořadí nebo získá podrobnosti o zadané trvalé akci skriptu. 
+* **Get-AzHDInsightScriptActionHistory**: Získá historii akcí skriptu pro cluster a zobrazí ho v opačném chronologickém pořadí nebo získá podrobné informace o dříve provedené akci skriptu. 
+* **Remove-AzHDInsightPersistedScriptAction**: Odebere trvalou akci skriptu z clusteru HDInsight.
+* **Set-AzHDInsightPersistedScriptAction**: nastaví dříve spouštěnou akci skriptu jako trvalou akci skriptu.
+* **Submit-AzHDInsightScriptAction**: odešle novou akci skriptu do clusteru Azure HDInsight. 
 
 Další informace o použití najdete v tématu [Přizpůsobení clusterů HDInsight se systémem Linux pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md).
 
 **Rutiny související s identitou clusteru:**
 
-* **Add-AzHDInsightClusterIdentity** : přidá identitu clusteru do objektu konfigurace clusteru, aby cluster HDInsight mohl získat přístup k Azure Data Lake Storage. Přečtěte si téma [Vytvoření clusteru HDInsight s Data Lake Storage pomocí Azure PowerShell](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md).
+* **Add-AzHDInsightClusterIdentity**: přidá identitu clusteru do objektu konfigurace clusteru, aby cluster HDInsight mohl získat přístup k Azure Data Lake Storage. Přečtěte si téma [Vytvoření clusteru HDInsight s Data Lake Storage pomocí Azure PowerShell](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md).
 
 ### <a name="examples"></a>Příklady
 **Vytvoření clusteru**

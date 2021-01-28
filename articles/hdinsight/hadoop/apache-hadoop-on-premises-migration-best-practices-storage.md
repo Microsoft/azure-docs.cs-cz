@@ -1,19 +1,17 @@
 ---
 title: 'Úložiště: migrace místních Apache Hadoop do Azure HDInsight'
 description: Naučte se osvědčené postupy úložiště pro migraci místních clusterů Hadoop do Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/10/2019
-ms.openlocfilehash: 0594774533f306421f6f3d1260d074bd92b9c919
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 8d87d2164a5131b71a2000243c37553610497750
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544864"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944858"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight"></a>Migrace místních Apache Hadoopových clusterů do Azure HDInsight
 
@@ -100,13 +98,13 @@ V minulosti se cloudové analýzy musely napadnout v oblasti výkonu, správy a 
 
 - **Přístup** s platformou hadoop: Azure Data Lake Storage Gen2 umožňuje správu a přístup k datům stejně, jako byste použili [systém souborů DFS (DISTRIBUTED File System) Hadoop (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Nový [ovladač ABFS](../../storage/blobs/data-lake-storage-abfs-driver.md) je dostupný ve všech Apache Hadoop prostředích, která jsou součástí [Azure HDInsight](../index.yml). Tento ovladač vám umožní získat přístup k datům uloženým v Data Lake Storage Gen2.
 
-- **Nadmnožina oprávnění POSIX** : model zabezpečení pro data Lake Gen2 plně podporuje oprávnění ACL a POSIX spolu s některými dalšími podrobnostmi, které jsou specifické pro data Lake Storage Gen2. Nastavení lze nakonfigurovat prostřednictvím nástrojů pro správu nebo prostřednictvím architektury, jako je například podregistr a Spark.
+- **Nadmnožina oprávnění POSIX**: model zabezpečení pro data Lake Gen2 plně podporuje oprávnění ACL a POSIX spolu s některými dalšími podrobnostmi, které jsou specifické pro data Lake Storage Gen2. Nastavení lze nakonfigurovat prostřednictvím nástrojů pro správu nebo prostřednictvím architektury, jako je například podregistr a Spark.
 
-- **Cenově výhodné** : Data Lake Storage Gen2 funkce s nízkými náklady na kapacitu úložiště a transakce. Když se data pohybují prostřednictvím celého životního cyklu, změna sazeb se změní na minimalizaci nákladů prostřednictvím integrovaných funkcí, jako je [životní cyklus úložiště objektů BLOB v Azure](../../storage/blobs/storage-lifecycle-management-concepts.md).
+- **Cenově výhodné**: Data Lake Storage Gen2 funkce s nízkými náklady na kapacitu úložiště a transakce. Když se data pohybují prostřednictvím celého životního cyklu, změna sazeb se změní na minimalizaci nákladů prostřednictvím integrovaných funkcí, jako je [životní cyklus úložiště objektů BLOB v Azure](../../storage/blobs/storage-lifecycle-management-concepts.md).
 
-- **Spolupracuje s nástroji, architekturami a aplikacemi služby Blob Storage** : Data Lake Storage Gen2 nadále pracovat se spoustou nástrojů, platforem a aplikací, které existují v dnešní době pro úložiště objektů BLOB.
+- **Spolupracuje s nástroji, architekturami a aplikacemi služby Blob Storage**: Data Lake Storage Gen2 nadále pracovat se spoustou nástrojů, platforem a aplikací, které existují v dnešní době pro úložiště objektů BLOB.
 
-- **Optimalizovaný ovladač** : ovladač systému souborů objektů BLOB v Azure (ABFS) je [optimalizován speciálně](../../storage/blobs/data-lake-storage-abfs-driver.md) pro analýzu velkých objemů dat. Odpovídající rozhraní REST API se procházejí prostřednictvím koncového bodu DFS dfs.core.windows.net.
+- **Optimalizovaný ovladač**: ovladač systému souborů objektů BLOB v Azure (ABFS) je [optimalizován speciálně](../../storage/blobs/data-lake-storage-abfs-driver.md) pro analýzu velkých objemů dat. Odpovídající rozhraní REST API se procházejí prostřednictvím koncového bodu DFS dfs.core.windows.net.
 
 Pro přístup k datům, která jsou uložená v ADLS Gen2, se dá použít jeden z následujících formátů:
 - `abfs:///`: Přístup k výchozímu Data Lake Storage clusteru.
@@ -173,11 +171,11 @@ Ve výchozím nastavení má služba HDInsight úplný přístup k datům v úč
 
 6. Pro pole **klíč** a **hodnota** použijte následující hodnoty:
 
-    **Key** : `fs.azure.sas.YOURCONTAINER.YOURACCOUNT.blob.core.windows.net` **hodnota** : klíč SAS vrácený aplikací Pythonu z kroku 4 výše.
+    **Key**: `fs.azure.sas.YOURCONTAINER.YOURACCOUNT.blob.core.windows.net` **hodnota**: klíč SAS vrácený aplikací Pythonu z kroku 4 výše.
 
-7. Kliknutím na tlačítko **Přidat** uložte tento klíč a hodnotu a potom kliknutím na tlačítko **Uložit** uložte změny konfigurace. Po zobrazení výzvy přidejte popis změny (například "Přidání přístupu k úložišti SAS") a pak klikněte na **Uložit** .
+7. Kliknutím na tlačítko **Přidat** uložte tento klíč a hodnotu a potom kliknutím na tlačítko **Uložit** uložte změny konfigurace. Po zobrazení výzvy přidejte popis změny (například "Přidání přístupu k úložišti SAS") a pak klikněte na **Uložit**.
 
-8. Ve webovém uživatelském rozhraní Ambari vyberte ze seznamu na levé straně HDFS a pak vyberte **restartovat všechny ovlivněné** v rozevíracím seznamu akce služby na pravé straně. Po zobrazení výzvy vyberte **Potvrdit restartování vše** .
+8. Ve webovém uživatelském rozhraní Ambari vyberte ze seznamu na levé straně HDFS a pak vyberte **restartovat všechny ovlivněné** v rozevíracím seznamu akce služby na pravé straně. Po zobrazení výzvy vyberte **Potvrdit restartování vše**.
 
 9. Tento postup opakujte pro MapReduce2 a PŘÍZe.
 

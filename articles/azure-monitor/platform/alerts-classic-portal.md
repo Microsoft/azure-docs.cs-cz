@@ -5,12 +5,12 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/18/2018
-ms.openlocfilehash: 613620ddf4889efb7cf3df95150be97f79724a98
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4b0d3acda56c3f45128d1cc7cefcc4eb938281a0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013101"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943790"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Vytváření, zobrazování a Správa klasických výstrah metrik pomocí Azure Monitor
 
@@ -26,7 +26,7 @@ Klasické výstrahy metrik v Azure Monitor poskytují způsob, jak dostávat ozn
 
 2. V části **monitorování** vyberte **výstrahy (klasické)**. Text a ikona se mohou mírně lišit pro různé prostředky. Pokud tady nenajdete **upozornění (Classic)** , můžete ho najít v okně **výstrahy** nebo **pravidla výstrah**.
 
-    ![Monitorování](media/alerts-classic-portal/AlertRulesButton.png)
+    ![Sledování](media/alerts-classic-portal/AlertRulesButton.png)
 
 3. Vyberte příkaz **Přidat výstrahu metriky (Classic)** a potom vyplňte pole.
 
@@ -56,7 +56,7 @@ Po vytvoření výstrahy ji můžete vybrat a provést jednu z následujících 
 
 ## <a name="with-azure-cli"></a>S využitím rozhraní příkazového řádku Azure
 
-Předchozí části popisují, jak vytvářet, zobrazovat a spravovat pravidla upozornění metrik pomocí Azure Portal. V této části se dozvíte, jak to samé provést pomocí [Azure CLI](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)pro různé platformy. Nejrychlejší způsob, jak začít používat Azure CLI, je prostřednictvím [Azure Cloud Shell](../../cloud-shell/overview.md?view=azure-cli-latest).
+Předchozí části popisují, jak vytvářet, zobrazovat a spravovat pravidla upozornění metrik pomocí Azure Portal. V této části se dozvíte, jak to samé provést pomocí [Azure CLI](/cli/azure/get-started-with-azure-cli)pro různé platformy. Nejrychlejší způsob, jak začít používat Azure CLI, je prostřednictvím [Azure Cloud Shell](../../cloud-shell/overview.md).
 
 ### <a name="get-all-classic-metric-alert-rules-in-a-resource-group"></a>Načíst všechna klasická pravidla upozornění na metriky ve skupině prostředků
 

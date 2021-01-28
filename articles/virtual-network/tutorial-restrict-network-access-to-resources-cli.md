@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: kumud
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: b4f9dcf6fd43749cdf71098b3cd0da8a42020f6d
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 5c23259a9cb1f3c409ad437a1e91151b5f401129
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98221761"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946286"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>Omezení síťového přístupu k prostředkům PaaS pomocí koncových bodů služby virtuální sítě pomocí Azure CLI
 
@@ -158,7 +158,7 @@ az network nsg rule create \
 
 Kroky potřebné k omezení síťového přístupu k prostředkům vytvořeným prostřednictvím služeb Azure povolených v koncových bodech se u jednotlivých služeb liší. Konkrétní kroky pro jednotlivé služby najdete v dokumentaci příslušné služby. Zbývající část tohoto článku obsahuje kroky pro omezení síťového přístupu pro účet Azure Storage jako příklad.
 
-### <a name="create-a-storage-account"></a>vytvořit účet úložiště
+### <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
 
 Vytvořte účet úložiště Azure pomocí [AZ Storage Account Create](/cli/azure/storage/account). Nahraďte `<replace-with-your-unique-storage-account-name>` názvem, který je jedinečný v rámci všech umístění Azure, mezi 3-24 znaků a číslicí a malými písmeny.
 
@@ -326,7 +326,7 @@ Přístup je odepřený a zobrazí se `mount error(13): Permission denied` Chyba
 
 Ukončete relaci SSH na virtuálním počítači s *myVmPublic* .
 
-Z počítače se pokuste zobrazit sdílené složky ve vašem účtu úložiště pomocí [AZ Storage Share list](/cli/azure/storage/share?view=azure-cli-latest). Nahraďte `<account-name>` a `<account-key>` názvem účtu úložiště a klíčem z části [Vytvoření účtu úložiště](#create-a-storage-account):
+Z počítače se pokuste zobrazit sdílené složky ve vašem účtu úložiště pomocí [AZ Storage Share list](/cli/azure/storage/share). Nahraďte `<account-name>` a `<account-key>` názvem účtu úložiště a klíčem z části [Vytvoření účtu úložiště](#create-a-storage-account):
 
 ```azurecli-interactive
 az storage share list \

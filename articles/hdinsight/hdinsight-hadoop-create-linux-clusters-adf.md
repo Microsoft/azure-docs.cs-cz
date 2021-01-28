@@ -1,19 +1,16 @@
 ---
 title: 'Kurz: clustery na vyžádání v Azure HDInsight s Data Factory'
 description: Kurz – Naučte se vytvářet clustery Apache Hadoop na vyžádání v HDInsight pomocí Azure Data Factory.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: ea4f8c33a906bff96ea93f9a7aea3e6f625556cb
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 762938ebb4785a54224771e96c5bca274721dc30
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900899"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945972"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Kurz: vytvoření clusterů Apache Hadoop na vyžádání v HDInsight pomocí Azure Data Factory
 
@@ -35,7 +32,7 @@ Tento kurz se zabývá následujícími úkony:
 
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Prostředí PowerShell [AZ Module](/powershell/azure/) installed.
 
@@ -51,13 +48,13 @@ V této části se používá skript Azure PowerShell k vytvoření účtu úlo�
 2. Vytvoří skupinu prostředků Azure.
 3. Vytvoří účet služby Azure Storage.
 4. Vytvoří v účtu úložiště kontejner objektů BLOB.
-5. Zkopíruje vzorový skript HiveQL ( **partitionweblogs. HQL** ) do kontejneru objektů BLOB. Skript je k dispozici na adrese [https://hditutorialdata.blob.core.windows.net/adfhiveactivity/script/partitionweblogs.hql](https://hditutorialdata.blob.core.windows.net/adfhiveactivity/script/partitionweblogs.hql) . Ukázkový skript je již k dispozici v jiném veřejném kontejneru objektů BLOB. Níže uvedený skript PowerShellu vytvoří kopii těchto souborů na účet Azure Storage, který vytvoří.
+5. Zkopíruje vzorový skript HiveQL (**partitionweblogs. HQL**) do kontejneru objektů BLOB. Skript je k dispozici na adrese [https://hditutorialdata.blob.core.windows.net/adfhiveactivity/script/partitionweblogs.hql](https://hditutorialdata.blob.core.windows.net/adfhiveactivity/script/partitionweblogs.hql) . Ukázkový skript je již k dispozici v jiném veřejném kontejneru objektů BLOB. Níže uvedený skript PowerShellu vytvoří kopii těchto souborů na účet Azure Storage, který vytvoří.
 
 ### <a name="create-storage-account-and-copy-files"></a>Vytvoření účtu úložiště a kopírování souborů
 
 > [!IMPORTANT]  
 > Zadejte názvy pro skupinu prostředků Azure a účet úložiště Azure, který bude skript vytvořit.
-> Zapište **název skupiny prostředků** , **název účtu úložiště** a **klíč účtu úložiště** , který je vydaný skriptem. V další části je budete potřebovat.
+> Zapište **název skupiny prostředků**, **název účtu úložiště** a **klíč účtu úložiště** , který je vydaný skriptem. V další části je budete potřebovat.
 
 ```powershell
 $resourceGroupName = "<Azure Resource Group Name>"
@@ -155,12 +152,12 @@ Write-host "`nScript completed" -ForegroundColor Green
 ### <a name="verify-storage-account"></a>Ověřit účet úložiště
 
 1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
-1. Vlevo přejděte na **všechny služby**  >  **Obecné**  >  **skupiny prostředků** .
+1. Vlevo přejděte na **všechny služby**  >  **Obecné**  >  **skupiny prostředků**.
 1. Vyberte název skupiny prostředků, který jste vytvořili ve svém skriptu PowerShellu. Pokud máte v seznamu příliš mnoho skupin prostředků, použijte filtr.
 1. V zobrazení **Přehled** uvidíte jeden prostředek uvedený, pokud nesdílíte skupinu prostředků s jinými projekty. Tento prostředek je účet úložiště s názvem, který jste zadali dříve. Vyberte název účtu úložiště.
 1. Vyberte dlaždici **kontejnery** .
 1. Vyberte kontejner **adfgetstarted** . Zobrazí se složka s názvem **`hivescripts`** .
-1. Otevřete složku a ujistěte se, že obsahuje ukázkový soubor skriptu **partitionweblogs. HQL** .
+1. Otevřete složku a ujistěte se, že obsahuje ukázkový soubor skriptu **partitionweblogs. HQL**.
 
 ## <a name="understand-the-azure-data-factory-activity"></a>Pochopení aktivity Azure Data Factory
 
@@ -177,8 +174,8 @@ V tomto článku nakonfigurujete aktivitu podregistru tak, aby se vytvořil clus
 
 2. Vstupní data jsou zpracována spuštěním skriptu HiveQL v clusteru. V tomto kurzu provede skript HiveQL přidružený k aktivitě podregistru tyto akce:
 
-    * Použije existující tabulku ( *hivesampletable* ) k vytvoření další tabulky **HiveSampleOut** .
-    * Naplní tabulku **HiveSampleOut** o pouze konkrétní sloupce z původních *hivesampletable* .
+    * Použije existující tabulku (*hivesampletable*) k vytvoření další tabulky **HiveSampleOut**.
+    * Naplní tabulku **HiveSampleOut** o pouze konkrétní sloupce z původních *hivesampletable*.
 
 3. Po dokončení zpracování se cluster HDInsight Hadoop odstraní a cluster se po nakonfigurované době nečinný (nastavení timeToLive). Pokud je k dispozici další datový řez pro zpracování v této timeToLive době nečinnosti, použije se stejný cluster ke zpracování řezu.  
 
@@ -186,7 +183,7 @@ V tomto článku nakonfigurujete aktivitu podregistru tak, aby se vytvořil clus
 
 1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
-2. V nabídce vlevo přejděte na **`+ Create a resource`**  >  **Analytics**  >  **Data Factory** .
+2. V nabídce vlevo přejděte na **`+ Create a resource`**  >  **Analytics**  >  **Data Factory**.
 
     ![Azure Data Factory na portálu](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-azure-portal.png "Azure Data Factory na portálu")
 
@@ -195,15 +192,15 @@ V tomto článku nakonfigurujete aktivitu podregistru tak, aby se vytvořil clus
     |Vlastnost  |Hodnota  |
     |---------|---------|
     |Název | Zadejte název objektu pro vytváření dat. Tento název musí být globálně jedinečný.|
-    |Verze | Ponechte v **v2** . |
+    |Verze | Ponechte v **v2**. |
     |Předplatné | Vyberte své předplatné Azure. |
     |Skupina prostředků | Vyberte skupinu prostředků, kterou jste vytvořili pomocí skriptu PowerShellu. |
-    |Umístění | Umístění je automaticky nastaveno na umístění, které jste zadali během vytváření skupiny prostředků. Pro tento kurz je umístění nastavené na **východní USA** . |
+    |Umístění | Umístění je automaticky nastaveno na umístění, které jste zadali během vytváření skupiny prostředků. Pro tento kurz je umístění nastavené na **východní USA**. |
     |Povolit GIT|Zrušte toto políčko.|
 
     ![Vytvoření Azure Data Factory pomocí Azure Portal](./media/hdinsight-hadoop-create-linux-clusters-adf/azure-portal-create-data-factory.png "Vytvoření Azure Data Factory pomocí Azure Portal")
 
-4. Vyberte **Vytvořit** . Vytváření datové továrny může trvat 2 až 4 minuty.
+4. Vyberte **Vytvořit**. Vytváření datové továrny může trvat 2 až 4 minuty.
 
 5. Po vytvoření objektu pro vytváření dat se zobrazí oznámení o **úspěšném nasazení** s tlačítkem **Přejít na prostředek** .  Vyberte **Přejít k prostředku** a otevřete Data Factory výchozí zobrazení.
 
@@ -215,8 +212,8 @@ V tomto článku nakonfigurujete aktivitu podregistru tak, aby se vytvořil clus
 
 V této části vytvoříte ve vaší datové továrně dvě propojené služby.
 
-* **Propojená služba Azure Storage** , která propojí účet služby Azure Storage s datovou továrnou. Toto úložiště používá cluster HDInsight na vyžádání. Obsahuje také skript pro podregistr, který je spuštěn v clusteru.
-* **Propojená služba HDInsight na vyžádání** . Azure Data Factory automaticky vytvoří cluster HDInsight a spustí skript pro podregistr. Až bude cluster HDInsight zadanou dobu nečinný, odstraní ho.
+* **Propojená služba Azure Storage**, která propojí účet služby Azure Storage s datovou továrnou. Toto úložiště používá cluster HDInsight na vyžádání. Obsahuje také skript pro podregistr, který je spuštěn v clusteru.
+* **Propojená služba HDInsight na vyžádání**. Azure Data Factory automaticky vytvoří cluster HDInsight a spustí skript pro podregistr. Až bude cluster HDInsight zadanou dobu nečinný, odstraní ho.
 
 ### <a name="create-an-azure-storage-linked-service"></a>Vytvoření propojené služby Azure Storage
 
@@ -224,11 +221,11 @@ V této části vytvoříte ve vaší datové továrně dvě propojené služby.
 
     ![Vytvoření propojené služby Azure Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-edit-tab.png "Vytvoření propojené služby Azure Data Factory")
 
-2. V levém dolním rohu okna vyberte **připojení** a pak vyberte **+ Nový** .
+2. V levém dolním rohu okna vyberte **připojení** a pak vyberte **+ Nový**.
 
     ![Vytvoření připojení v Azure Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-create-new-connection.png "Vytvoření připojení v Azure Data Factory")
 
-3. V dialogovém okně **Nová propojená služba** vyberte **Azure Blob Storage** a pak vyberte **pokračovat** .
+3. V dialogovém okně **Nová propojená služba** vyberte **Azure Blob Storage** a pak vyberte **pokračovat**.
 
     ![Vytvořit propojenou službu Azure Storage pro Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-storage-linked-service.png "Vytvořit propojenou službu Azure Storage pro Data Factory")
 
@@ -240,7 +237,7 @@ V této části vytvoříte ve vaší datové továrně dvě propojené služby.
     |Předplatné Azure |V rozevíracím seznamu vyberte své předplatné.|
     |Název účtu úložiště |Vyberte účet Azure Storage, který jste vytvořili jako součást skriptu prostředí PowerShell.|
 
-    Vyberte možnost **Testovat připojení** a v případě úspěchu a pak vyberte **vytvořit** .
+    Vyberte možnost **Testovat připojení** a v případě úspěchu a pak vyberte **vytvořit**.
 
     ![Zadejte název pro propojenou službu Azure Storage.](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-storage-linked-service-details.png "Zadejte název pro propojenou službu Azure Storage.")
 
@@ -250,7 +247,7 @@ V této části vytvoříte ve vaší datové továrně dvě propojené služby.
 
 2. V okně **Nová propojená služba** vyberte kartu **COMPUTE** .
 
-3. Vyberte **Azure HDInsight** a pak vyberte **pokračovat** .
+3. Vyberte **Azure HDInsight** a pak vyberte **pokračovat**.
 
     ![Vytvořit propojenou službu HDInsight pro Azure Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-linked-service.png "Vytvořit propojenou službu HDInsight pro Azure Data Factory")
 
@@ -259,7 +256,7 @@ V této části vytvoříte ve vaší datové továrně dvě propojené služby.
     | Vlastnost | Hodnota |
     | --- | --- |
     | Název | Zadejte `HDInsightLinkedService`.|
-    | Typ | Vyberte **HDInsight na vyžádání** . |
+    | Typ | Vyberte **HDInsight na vyžádání**. |
     | Propojená služba Azure Storage | Vyberte `HDIStorageLinkedService`. |
     | Typ clusteru | Vyberte **Hadoop** |
     | Hodnota TTL (Time to Live) | Zadejte dobu, po kterou má být cluster HDInsight k dispozici, než se automaticky odstraní.|
@@ -273,13 +270,13 @@ V této části vytvoříte ve vaší datové továrně dvě propojené služby.
     | Typ operačního systému/uživatelské jméno clusteru | Zadejte uživatelské jméno clusteru, obvykle `admin` . |
     | Typ operačního systému/heslo clusteru | Zadejte heslo pro uživatele clusteru. |
 
-    Potom vyberte **Vytvořit** .
+    Potom vyberte **Vytvořit**.
 
     ![Zadejte hodnoty pro propojenou službu HDInsight.](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-linked-service-details.png "Zadejte hodnoty pro propojenou službu HDInsight.")
 
 ## <a name="create-a-pipeline"></a>Vytvoření kanálu
 
-1. Vyberte **+** tlačítko (plus) a pak vyberte **kanál** .
+1. Vyberte **+** tlačítko (plus) a pak vyberte **kanál**.
 
     ![Vytvoření kanálu v Azure Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-create-pipeline.png "Vytvoření kanálu v Azure Data Factory")
 
@@ -315,7 +312,7 @@ V této části vytvoříte ve vaší datové továrně dvě propojené služby.
 
 ## <a name="trigger-a-pipeline"></a>Aktivace kanálu
 
-1. Z panelu nástrojů na návrhové ploše vyberte **Přidat**  >  **aktivační událost nyní** .
+1. Z panelu nástrojů na návrhové ploše vyberte **Přidat**  >  **aktivační událost nyní**.
 
     ![Aktivace kanálu Azure Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-trigger-pipeline.png "Aktivace kanálu Azure Data Factory")
 
@@ -323,11 +320,11 @@ V této části vytvoříte ve vaší datové továrně dvě propojené služby.
 
 ## <a name="monitor-a-pipeline"></a>Monitorování kanálu
 
-1. Vlevo přepněte na kartu **Monitorování** . V seznamu **Spuštění kanálu** se zobrazí spuštění kanálu. Všimněte si stavu běhu ve sloupci **stav** .
+1. Vlevo přepněte na kartu **Monitorování**. V seznamu **Spuštění kanálu** se zobrazí spuštění kanálu. Všimněte si stavu běhu ve sloupci **stav** .
 
     ![Monitorování kanálu Azure Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-monitor-pipeline.png "Monitorování kanálu Azure Data Factory")
 
-1. Seznam můžete aktualizovat kliknutím na **Aktualizovat** .
+1. Seznam můžete aktualizovat kliknutím na **Aktualizovat**.
 
 1. Můžete také vybrat ikonu **Zobrazit spuštění aktivit** a zobrazit tak spuštění aktivit spojené s tímto kanálem. Na následujícím snímku obrazovky vidíte jenom jednu spuštěnou aktivitu, protože kanál, který jste vytvořili, je jenom jedna aktivita. Chcete-li přejít zpět k předchozímu zobrazení, vyberte **kanály** v horní části stránky.
 
@@ -357,11 +354,11 @@ Nebo můžete odstranit celou skupinu prostředků, kterou jste pro tento kurz v
 1. V levém podokně vyberte **skupiny prostředků** .
 1. Vyberte název skupiny prostředků, který jste vytvořili ve svém skriptu PowerShellu. Pokud máte v seznamu příliš mnoho skupin prostředků, použijte filtr. Otevře se skupina prostředků.
 1. Na dlaždici **prostředky** máte k dispozici výchozí účet úložiště a datovou továrnu, pokud nesdílíte skupinu prostředků s jinými projekty.
-1. Vyberte **Odstranit skupinu prostředků** . Tím se odstraní účet úložiště a data uložená v účtu úložiště.
+1. Vyberte **Odstranit skupinu prostředků**. Tím se odstraní účet úložiště a data uložená v účtu úložiště.
 
     ![Azure Portal odstranit skupinu prostředků](./media/hdinsight-hadoop-create-linux-clusters-adf/delete-resource-group.png "Odstranění skupiny prostředků")
 
-1. Zadáním názvu skupiny prostředků potvrďte odstranění a pak vyberte **Odstranit** .
+1. Zadáním názvu skupiny prostředků potvrďte odstranění a pak vyberte **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 

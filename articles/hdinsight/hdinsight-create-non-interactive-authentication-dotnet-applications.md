@@ -1,19 +1,16 @@
 ---
 title: Aplikace .NET bez interaktivního ověřování – Azure HDInsight
 description: Naučte se vytvářet neinteraktivní ověřování aplikací Microsoft .NET v Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/23/2019
-ms.openlocfilehash: a696ba4f7bab85f2353e80d028220688531b3b69
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 121c5850ef47999f54d206b95b69e10775d3e5c9
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021761"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946095"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>Vytvoření aplikace .NET HDInsight bez interaktivního ověřování
 
@@ -35,7 +32,7 @@ Přiřaďte aplikaci Azure AD [roli](../role-based-access-control/built-in-roles
 
 **Přidání role vlastníka do aplikace Azure AD**
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Přejděte do skupiny prostředků, která obsahuje cluster HDInsight, na kterém spustíte dotaz na podregistr později v tomto článku. Pokud máte velký počet skupin prostředků, můžete použít filtr a vyhledat ten, který chcete.
 1. V nabídce skupina prostředků vyberte **řízení přístupu (IAM)**.
 1. Kliknutím na kartu **přiřazení rolí** zobrazíte aktuální přiřazení rolí.

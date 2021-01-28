@@ -1,19 +1,16 @@
 ---
 title: Vytváření virtuálních sítí pro clustery Azure HDInsight
 description: Naučte se, jak vytvořit Virtual Network Azure pro připojení HDInsight k ostatním cloudovým prostředkům nebo prostředkům ve vašem datovém centru.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 04/16/2020
-ms.openlocfilehash: 4f604ba2edcc63a245a5e87d3dcb6fdd16a9d050
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 43d57eac94cabb5c648183911e0c0bf72889946d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741439"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946065"
 ---
 # <a name="create-virtual-networks-for-azure-hdinsight-clusters"></a>Vytváření virtuálních sítí pro clustery Azure HDInsight
 
@@ -289,7 +286,7 @@ Na vlastním serveru DNS ve virtuální síti:
     
     * Hodnotu nahraďte `192.168.0.1` IP adresou vašeho místního serveru DNS. Tato položka směruje všechny ostatní požadavky DNS na místní server DNS.
 
-1. Chcete-li použít konfiguraci, restartujte službu BIND. Například, `sudo service bind9 restart`.
+1. Chcete-li použít konfiguraci, restartujte službu BIND. Například `sudo service bind9 restart`.
 
 1. Přidejte podmíněný Server pro směrování do místního serveru DNS. Nakonfigurujte podmíněný Server pro přeposílání tak, aby odesílal požadavky na příponu DNS z kroku 1 na vlastní server DNS.
 

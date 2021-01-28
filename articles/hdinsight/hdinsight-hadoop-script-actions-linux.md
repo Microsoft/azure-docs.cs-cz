@@ -1,18 +1,15 @@
 ---
 title: Vývoj akcí skriptů pro přizpůsobení clusterů Azure HDInsight
 description: Naučte se používat skripty bash k přizpůsobení clusterů HDInsight. Akce skriptu umožňují spouštět skripty během nebo po vytvoření clusteru, aby bylo možné změnit nastavení konfigurace clusteru nebo nainstalovat další software.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/28/2019
-ms.openlocfilehash: f7959b639b75d912d44670c8b00a7327cb7857d6
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: b6705728fddc9a5a3c9cb8eb2f1811412fb3a290
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92629438"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945482"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Vývoj akcí skriptů pomocí HDInsight
 
@@ -26,7 +23,7 @@ Akce skriptu lze použít prostřednictvím následujících metod:
 
 | Tuto metodu použijte, chcete-li použít skript... | Během vytváření clusteru... | Ve spuštěném clusteru... |
 | --- |:---:|:---:|
-| Azure Portal |✓ |✓ |
+| Portál Azure Portal |✓ |✓ |
 | Azure PowerShell |✓ |✓ |
 | Azure Classic CLI |&nbsp; |✓ |
 | Sada HDInsight .NET SDK |✓ |✓ |
@@ -290,7 +287,7 @@ Skripty používané k přizpůsobení clusteru musí být uloženy v jednom z n
 
 * __Další účet úložiště__ spojený s clusterem.
 
-* __Veřejně čitelný identifikátor URI__ . Například adresa URL pro data uložená na OneDrivu, Dropboxu nebo jiné službě hostování souborů.
+* __Veřejně čitelný identifikátor URI__. Například adresa URL pro data uložená na OneDrivu, Dropboxu nebo jiné službě hostování souborů.
 
 * __Účet Azure Data Lake Storage__ , který je spojený s clusterem HDInsight. Další informace o použití Azure Data Lake Storage se službou HDInsight najdete v tématu [rychlý Start: nastavení clusterů ve službě HDInsight](./hdinsight-hadoop-provision-linux-clusters.md).
 
@@ -317,7 +314,7 @@ Tady jsou kroky, které je potřeba provést při přípravě nasazení skriptu:
 
 Pomocí akcí skriptů můžete přizpůsobit clustery HDInsight následujícími způsoby:
 
-* Azure Portal
+* portál Azure
 * Azure PowerShell
 * Šablony Azure Resource Manageru
 * Sada SDK pro HDInsight .NET.
@@ -332,13 +329,13 @@ Společnost Microsoft poskytuje ukázkové skripty pro instalaci komponent do cl
 
 V následujícím seznamu jsou chyby, které se můžou při používání skriptů, které jste vyvinuli, nacházet:
 
-**Chyba** : `$'\r': command not found` . Někdy následováno `syntax error: unexpected end of file` .
+**Chyba**: `$'\r': command not found` . Někdy následováno `syntax error: unexpected end of file` .
 
-*Příčina* : Tato chyba je způsobena tím, že řádky ve skriptu končí znakem CRLF. Systémy UNIX očekávají jako konec řádku pouze LF.
+*Příčina*: Tato chyba je způsobena tím, že řádky ve skriptu končí znakem CRLF. Systémy UNIX očekávají jako konec řádku pouze LF.
 
 K tomuto problému často dochází, když je skript vytvořen v prostředí systému Windows, protože znak CRLF je obvyklým řádkem, který končí mnoho textových editorů v systému Windows.
 
-*Řešení* : Pokud se jedná o možnost v textovém editoru, vyberte pro konec řádku možnost formát systému UNIX nebo LF. V systému UNIX můžete také použít následující příkazy, abyste změnili znak CRLF na LF:
+*Řešení*: Pokud se jedná o možnost v textovém editoru, vyberte pro konec řádku možnost formát systému UNIX nebo LF. V systému UNIX můžete také použít následující příkazy, abyste změnili znak CRLF na LF:
 
 > [!NOTE]  
 > Následující příkazy jsou přibližně stejné jako v tom, že by měly změnit čáru CRLF zakončení na LF. Vyberte jednu z nástrojů, které jsou k dispozici ve vašem systému.
@@ -350,11 +347,11 @@ K tomuto problému často dochází, když je skript vytvořen v prostředí sys
 | `perl -pi -e 's/\r\n/\n/g' INFILE` | Upraví soubor přímo. |
 | ```sed 's/$'"/`echo \\\r`/" INFILE > OUTFILE``` |SOUBOR s informacemi o verzi obsahuje jenom konce LF. |
 
-**Chyba** : `line 1: #!/usr/bin/env: No such file or directory` .
+**Chyba**: `line 1: #!/usr/bin/env: No such file or directory` .
 
-*Příčina* : k této chybě dochází, když byl skript uložen jako UTF-8 s označením pořadí bajtů (BOM).
+*Příčina*: k této chybě dochází, když byl skript uložen jako UTF-8 s označením pořadí bajtů (BOM).
 
-*Řešení* : Uložte soubor buď jako ASCII, nebo jako UTF-8 bez kusovníku. V systému Linux nebo UNIX můžete také použít následující příkaz k vytvoření souboru bez tohoto kusovníku:
+*Řešení*: Uložte soubor buď jako ASCII, nebo jako UTF-8 bez kusovníku. V systému Linux nebo UNIX můžete také použít následující příkaz k vytvoření souboru bez tohoto kusovníku:
 
 ```bash
 awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE

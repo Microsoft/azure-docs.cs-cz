@@ -1,19 +1,16 @@
 ---
 title: Co je Apache Hadoop a MapReduce – Azure HDInsight
 description: Úvod do služby HDInsight a Apache Hadoop a součásti technologie.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.date: 02/27/2020
-ms.openlocfilehash: ef1914499765beff9913f9735cf55736135f9d96
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 1e3fc23dd220a8d9764a64c453e9fb856307ac47
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92899632"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946515"
 ---
 # <a name="what-is-apache-hadoop-in-azure-hdinsight"></a>Co je Apache Hadoop ve službě Azure HDInsight?
 
@@ -27,9 +24,9 @@ Komponenty technologie Hadoop dostupné ve službě HDInsight najdete v tématu 
 
 [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html) je softwarové rozhraní pro psaní úloh, které zpracovávají velké objemy dat. Vstupní data jsou rozdělená do nezávislých bloků dat. Jednotlivé bloky dat se zpracovávají paralelně napříč uzly ve vašem clusteru. Úloha MapReduce se skládá ze dvou funkcí:
 
-* **Mapper** : používá vstupní data, analyzuje je (obvykle pomocí operací filtrování a řazení) a generuje řazené kolekce členů (páry klíč-hodnota).
+* **Mapper**: používá vstupní data, analyzuje je (obvykle pomocí operací filtrování a řazení) a generuje řazené kolekce členů (páry klíč-hodnota).
 
-* **Redukce** : spotřebovává řazené kolekce členů generovaných mapovačem a provede souhrnnou operaci, která vytvoří menší, kombinovaný výsledek z dat mapovače.
+* **Redukce**: spotřebovává řazené kolekce členů generovaných mapovačem a provede souhrnnou operaci, která vytvoří menší, kombinovaný výsledek z dat mapovače.
 
 Příkladem MapReduce úlohy Basic Count (počet slov) je znázorněný v následujícím diagramu:
 
@@ -44,7 +41,7 @@ MapReduce je možné implementovat v různých jazycích. Java je nejběžnějš
 
 ## <a name="development-languages"></a>Vývojové jazyky
 
-Jazyky nebo architektury založené na jazyce Java a prostředí Java Virtual Machine mohou být spuštěny přímo jako [úloha MapReduce](..//hadoop/submit-apache-hadoop-jobs-programmatically.md). Příkladem použitým v tomto dokumentu je aplikace Java MapReduce. Jazyky mimo jazyk Java, jako je C#, Python nebo samostatné spustitelné soubory, musí využívat **streamování Hadoop** .
+Jazyky nebo architektury založené na jazyce Java a prostředí Java Virtual Machine mohou být spuštěny přímo jako [úloha MapReduce](..//hadoop/submit-apache-hadoop-jobs-programmatically.md). Příkladem použitým v tomto dokumentu je aplikace Java MapReduce. Jazyky mimo jazyk Java, jako je C#, Python nebo samostatné spustitelné soubory, musí využívat **streamování Hadoop**.
 
 Streamování Hadoop komunikuje s mapovačem a redukcí přes STDIN a STDOUT. Mapovač a zmenšování čtou data na řádek ze standardního vstupu a zápis výstupu do STDOUT. Každý řádek načtený nebo vygenerovaný mapovačem a redukcí musí být ve formátu dvojice klíč/hodnota, oddělený znakem tabulátoru:
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: d36cf2344891bb70ab5499e77699b111429a936b
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: bffff099e8df2b944cbef50a074ef625267ed238
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96121832"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944628"
 ---
 # <a name="how-to-connect-devices-with-x509-certificates-using-nodejs-device-sdk-for-iot-central-application"></a>Postup připojení zařízení pomocí certifikátů X. 509 pomocí sady SDK pro Node.js zařízení pro IoT Central aplikace
 
@@ -21,7 +21,7 @@ IoT Central podporuje certifikáty sdíleného přístupu (SAS) i X. 509 k zabez
 
 Tento článek ukazuje dva způsoby použití registrů X. 509- [Group](how-to-connect-devices-x509.md#use-a-group-enrollment) , které se obvykle používají v produkčním prostředí, a [jednotlivé registrace](how-to-connect-devices-x509.md#use-an-individual-enrollment) užitečné pro testování.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Dokončení [Vytvoření a připojení klientské aplikace do kurzu Azure IoT Central Application (JavaScript)](./tutorial-connect-device.md) .
 - [Git](https://git-scm.com/download/).
@@ -199,7 +199,7 @@ Zařízení je teď zřízené pomocí certifikátu X. 509.
 
 1. Zkopírujte soubory _mytestselfcertprimary_key. pem_ a _mytestselfcertprimary_cert. pem_ do složky _Azure-IoT-SDK-Node/Device/Samples/pnp_ , která obsahuje aplikaci **simple_thermostat.js** . Tuto aplikaci jste použili po dokončení [kurzu připojit zařízení (JavaScript)](./tutorial-connect-device.md).
 
-1. Upravte proměnné prostředí, které jste použili v následujícím příkladu:
+1. Upravte proměnné prostředí, které jste použili v ukázce výše, takto:
 
     ```cmd/sh
     set IOTHUB_DEVICE_DPS_DEVICE_ID=mytestselfcertprimary

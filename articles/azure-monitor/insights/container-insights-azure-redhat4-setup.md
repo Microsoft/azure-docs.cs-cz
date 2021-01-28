@@ -3,12 +3,12 @@ title: Konfigurace Azure Red Hat OpenShift v4. x s Azure Monitor for Containers 
 description: Tento článek popisuje, jak nakonfigurovat monitorování pro cluster Kubernetes s Azure Monitor hostovaným v Azure Red Hat OpenShift verze 4 nebo novější.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: e9f31d1b71122c53a67dc40af31d33255e2e98d8
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 8cd551a028f2fc67c26f8e32d59c0e0650aa1e54
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994538"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944523"
 ---
 # <a name="configure-azure-red-hat-openshift-v4x-with-azure-monitor-for-containers"></a>Konfigurace Azure Red Hat OpenShift v4. x s Azure Monitor for Containers
 
@@ -20,7 +20,7 @@ Azure Monitor for Containers poskytuje bohatou monitorovací prostředí pro clu
 
 Pomocí podporovaných metod popsaných v tomto článku můžete povolit Azure Monitor pro kontejnery pro jedno nebo více existujících nasazení Azure Red Hat OpenShift v4. x.
 
-V případě existujícího clusteru spusťte tento [skript bash v rozhraní příkazového řádku Azure CLI](/cli/azure/openshift?view=azure-cli-latest#az-openshift-create&preserve-view=true).
+V případě existujícího clusteru spusťte tento [skript bash v rozhraní příkazového řádku Azure CLI](/cli/azure/openshift#az-openshift-create&preserve-view=true).
 
 ## <a name="supported-and-unsupported-features"></a>Podporované a nepodporované funkce
 
@@ -111,7 +111,7 @@ Pokud nemáte pracovní prostor, který byste mohli zadat, můžete přeskočit 
     az resource list --resource-type Microsoft.OperationalInsights/workspaces -o json
     ```
 
-1. Ve výstupu vyhledejte název pracovního prostoru a zkopírujte úplné ID prostředku, které Log Analytics pracovní prostor pod **ID**pole.
+1. Ve výstupu vyhledejte název pracovního prostoru a zkopírujte úplné ID prostředku, které Log Analytics pracovní prostor pod **ID** pole.
 
 1. Chcete-li povolit monitorování, spusťte následující příkaz. Nahraďte hodnoty `azureAroV4ClusterResourceId` `logAnalyticsWorkspaceResourceId` parametrů, a `kubeContext` .
 
@@ -133,7 +133,7 @@ V této části povolíte monitorování pro cluster Azure Red Hat OpenShift v4.
 
 V tomto příkladu není nutné předem vytvořit nebo zadat existující pracovní prostor. Tento příkaz zjednodušuje proces vytvořením výchozího pracovního prostoru ve výchozí skupině prostředků v rámci předplatného clusteru, pokud už v oblasti neexistuje.
 
-Výchozí vytvořený pracovní prostor má formát *DefaultWorkspace- \<GUID> - \<Region> *.  
+Výchozí vytvořený pracovní prostor má formát *DefaultWorkspace- \<GUID> - \<Region>*.  
 
 Nahraďte hodnoty `azureAroV4ClusterResourceId` `kubeContext` parametrů a.
 
@@ -152,7 +152,7 @@ Po povolení monitorování může trvat přibližně 15 minut, než budete moct
 
 Zobrazení více clusterů v Azure Monitor pro kontejnery zvýrazňuje clustery Azure Red Hat OpenShift, které nemají povolené monitorování na kartě **nemonitorované clustery** . Možnost **Povolit** u vašeho clusteru neinicializuje připojování monitorování z portálu. Budete přesměrováni na tento článek, abyste mohli monitorování povolit ručně podle kroků uvedených výše v tomto článku.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 1. V levém podokně nebo na domovské stránce vyberte **Azure monitor**.
 

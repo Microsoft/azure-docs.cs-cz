@@ -1,18 +1,15 @@
 ---
 title: Migrace Azure HDInsight 3,6 Apache Storm do HDInsight 4,0 Apache Spark
 description: Rozdíly a tok migrace pro migraci Apache Storm úloh do streamování Sparku nebo strukturovaného streamování Sparku.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/16/2019
-ms.openlocfilehash: e1262a4699bc42cb5b9a4398be2254854c5d5ff2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa57c01558cfdcf069b17fad9e86f7640553dcfd
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86081192"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944781"
 ---
 # <a name="migrate-azure-hdinsight-36-apache-storm-to-hdinsight-40-apache-spark"></a>Migrace Azure HDInsight 3,6 Apache Storm do HDInsight 4,0 Apache Spark
 
@@ -35,7 +32,7 @@ Tento dokument poskytuje návod pro migraci z Apache Storm na streamování Spar
 
 Apache Storm můžete poskytovat různé úrovně zaručeného zpracování zprávy. Například základní aplikace pro zaplavení může zaručit alespoň jedno zpracování a [Trident](https://storm.apache.org/releases/current/Trident-API-Overview.html) může zaručit přesně jedno zpracování. Datové proudy Spark a strukturované streamování Sparku zaručují, že jakákoli vstupní událost je zpracována přesně jednou, i když dojde k selhání uzlu. Operace displave má model, který zpracovává každou jednotlivou událost, a můžete také použít model mikrodávkování pomocí Trident. Streamování Sparku a strukturované streamování Spark poskytují model Micro-Batchho zpracování.
 
-|  |Bouře |Streamování Sparku | Strukturované streamování Sparku|
+|  |Storm |Streamování Sparku | Strukturované streamování Sparku|
 |---|---|---|---|
 |**Záruka zpracování událostí**|Aspoň jednou <br> Právě jednou (Trident) |[Právě jednou](https://spark.apache.org/docs/latest/streaming-programming-guide.html)|[Právě jednou](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)|
 |**Model zpracování**|Reálný čas <br> Micro Batch (Trident) |Mikrodávka |Mikrodávka |
@@ -67,7 +64,7 @@ Topologie Storm se skládají z několika součástí, které jsou uspořádány
 
 Přetvoření se skládá z následujících tří démonů, které udržují cluster pro zaplavení fungovat.
 
-|Proces |Description |
+|Proces |Popis |
 |---|---|
 |Nimbus|Podobně jako Hadoop JobTracker je zodpovědný za distribuci kódu v rámci clusteru a přiřazování úloh do počítačů a sledování selhání.|
 |Zookeeper|Používá se pro koordinaci clusteru.|

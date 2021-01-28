@@ -1,19 +1,16 @@
 ---
 title: Použití .NET se systémem Hadoop MapReduce v HDInsight na platformě Linux – Azure
 description: Naučte se používat aplikace .NET pro streamování MapReduce na HDInsight se systémem Linux.
-author: hrasheed-msft
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 02/27/2018
-ms.author: hrasheed
-ms.openlocfilehash: a6e9bea5d600771a7754142a4df4c0af503ccf5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ceb5d323ecfed54b4e01d13d66c640769a224ee
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86075480"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945605"
 ---
 # <a name="migrate-net-solutions-for-windows-based-hdinsight-to-linux-based-hdinsight"></a>Migrace řešení .NET pro HDInsight se systémem Windows na HDInsight se systémem Linux
 
@@ -34,7 +31,7 @@ Další informace o kompatibilitě mezi mono a .NET naleznete v tématu [Kompati
 
 1. Nainstalujte [analyzátor přenositelnosti .NET](https://marketplace.visualstudio.com/items?itemName=ConnieYau.NETPortabilityAnalyzer). Během instalace vyberte verzi sady Visual Studio, která se má použít.
 
-2. V aplikaci Visual Studio 2015 vyberte možnost __Analýza__  >  __Nastavení analyzátoru přenositelnosti__a ujistěte se, že je v části __mono__ zaškrtnuto políčko __4,5__ .
+2. V aplikaci Visual Studio 2015 vyberte možnost __Analýza__  >  __Nastavení analyzátoru přenositelnosti__ a ujistěte se, že je v části __mono__ zaškrtnuto políčko __4,5__ .
 
     ![4,5 pro nastavení analyzátoru se vrátil oddíl mono.](./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-settings.png)
 
@@ -42,7 +39,7 @@ Další informace o kompatibilitě mezi mono a .NET naleznete v tématu [Kompati
 
 3. Vyberte možnost __analyzovat__  >  __analýzu přenositelnosti sestavení__. Vyberte sestavení, které obsahuje vaše řešení, a pak vyberte __otevřít__ pro zahájení analýzy.
 
-4. Po dokončení analýzy vyberte __analyzovat__  >  __zobrazení sestavy analýzy__. Ve __výsledcích analýzy přenositelnosti__otevřete sestavu výběrem __otevřít sestavu__ .
+4. Po dokončení analýzy vyberte __analyzovat__  >  __zobrazení sestavy analýzy__. Ve __výsledcích analýzy přenositelnosti__ otevřete sestavu výběrem __otevřít sestavu__ .
 
     ![Dialogové okno výsledků analyzátoru přenositelnosti](./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-results.png)
 

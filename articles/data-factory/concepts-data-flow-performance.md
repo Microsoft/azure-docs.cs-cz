@@ -7,12 +7,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 12/18/2020
-ms.openlocfilehash: d23b2f65f25b704beaee12c53e47706653dcc208
-ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
+ms.openlocfilehash: 9706bee07f028c36b4d03311a7abbb969a1be685
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97858568"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944981"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Průvodce optimalizací výkonu a ladění toků dat
 
@@ -161,7 +161,7 @@ Azure SQL Database má jedinečnou možnost dělení s názvem source partitioni
 
 #### <a name="isolation-level"></a>Úroveň izolace
 
-Úroveň izolace čtení ve zdrojovém systému Azure SQL má vliv na výkon. Pokud zvolíte číst nepotvrzené, získáte nejrychlejší výkon a znemožníte zámkům v databázi. Další informace o úrovních izolace SQL najdete v tématu [Principy úrovní izolace](https://docs.microsoft.com/sql/connect/jdbc/understanding-isolation-levels).
+Úroveň izolace čtení ve zdrojovém systému Azure SQL má vliv na výkon. Pokud zvolíte číst nepotvrzené, získáte nejrychlejší výkon a znemožníte zámkům v databázi. Další informace o úrovních izolace SQL najdete v tématu [Principy úrovní izolace](/sql/connect/jdbc/understanding-isolation-levels).
 
 #### <a name="read-using-query"></a>Číst pomocí dotazu
 
@@ -208,7 +208,7 @@ Je možné je nativně provádět pomocí skriptů před a po SQL v rámci služ
 ![Zakázat indexy](media/data-flow/disable-indexes-sql.png "Zakázat indexy")
 
 > [!WARNING]
-> Při zakázání indexů je tok dat efektivně přebírat řízení databáze a dotazy jsou v tuto chvíli pravděpodobně neúspěšné. V důsledku toho se řada úloh ETL aktivuje v noci uprostřed noční, aby se předešlo tomuto konfliktu. Další informace získáte v informacích o [omezeních zakazování indexů](https://docs.microsoft.com/sql/relational-databases/indexes/disable-indexes-and-constraints) .
+> Při zakázání indexů je tok dat efektivně přebírat řízení databáze a dotazy jsou v tuto chvíli pravděpodobně neúspěšné. V důsledku toho se řada úloh ETL aktivuje v noci uprostřed noční, aby se předešlo tomuto konfliktu. Další informace získáte v informacích o [omezeních zakazování indexů](/sql/relational-databases/indexes/disable-indexes-and-constraints) .
 
 #### <a name="scaling-up-your-database"></a>Škálování databáze
 
@@ -216,7 +216,7 @@ Naplánujte změnu velikosti zdroje a jímky Azure SQL DB a DW před spuštění
 
 ### <a name="azure-synapse-analytics-sinks"></a>Jímky Azure synapse Analytics
 
-Když zapisujete do služby Azure synapse Analytics, ujistěte se, že **možnost Povolit přípravu** je nastavená na hodnotu true. To umožňuje ADF zapisovat pomocí [příkazu SQL Copy](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql) , který efektivně načítá data hromadně. Při použití přípravy budete muset pro přípravu dat na účet Azure Data Lake Storage Gen2 nebo Azure Blob Storage.
+Když zapisujete do služby Azure synapse Analytics, ujistěte se, že **možnost Povolit přípravu** je nastavená na hodnotu true. To umožňuje ADF zapisovat pomocí [příkazu SQL Copy](/sql/t-sql/statements/copy-into-transact-sql) , který efektivně načítá data hromadně. Při použití přípravy budete muset pro přípravu dat na účet Azure Data Lake Storage Gen2 nebo Azure Blob Storage.
 
 Kromě přípravy se stejné osvědčené postupy vztahují i na Azure synapse Analytics jako Azure SQL Database.
 

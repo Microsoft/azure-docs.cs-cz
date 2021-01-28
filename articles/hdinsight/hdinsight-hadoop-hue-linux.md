@@ -1,19 +1,16 @@
 ---
 title: Odstín pomocí Hadoop v clusterech se systémem HDInsight Linux – Azure
 description: Naučte se instalovat odstín v clusterech HDInsight a pomocí tunelového propojení směrovat požadavky do odstínu. Pomocí odstínu můžete procházet úložiště a spustit podregistr nebo prase.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 03/31/2020
-ms.openlocfilehash: e80df5d1c3d2b2195e76622964406cc65c933a63
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 8d4663aac6af4abb8d9855d2f972965e997d9c92
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546190"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945684"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>Instalace a použití odstínu v clusterech HDInsight Hadoop
 
@@ -45,7 +42,7 @@ Pro akci skriptu použijte informace v následující tabulce. Konkrétní pokyn
 |Vlastnost |Hodnota |
 |---|---|
 |Typ skriptu:|– Vlastní|
-|Název|Nainstalovat odstín|
+|Name|Nainstalovat odstín|
 |Identifikátor URI skriptu bash|`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`|
 |Typ (typy) uzlů:|Head|
 
@@ -91,7 +88,7 @@ V pravidelných clusterech můžete mít jenom jeden uživatelský účet s odst
 
     ![Portál pro odstíny HDInsight – použití editoru podregistru](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-use-hive.png "Použít podregistr")
 
-2. Na kartě **pomoc** v části **databáze** by se měla zobrazit **hivesampletable** . Toto je ukázková tabulka, která se dodává se všemi clustery Hadoop v HDInsight. Do pravého podokna zadejte ukázkový dotaz a na kartě **výsledky** v podokně níže se zobrazí výstup, jak je znázorněno na snímku obrazovky.
+2. Na kartě **pomoc** v části **databáze** by se měla zobrazit **hivesampletable**. Toto je ukázková tabulka, která se dodává se všemi clustery Hadoop v HDInsight. Do pravého podokna zadejte ukázkový dotaz a na kartě **výsledky** v podokně níže se zobrazí výstup, jak je znázorněno na snímku obrazovky.
 
     ![Dotaz na podregistr na portálu pro odstíny HDInsight](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-hive-query.png "Spustit dotaz na podregistr")
 
@@ -125,7 +122,7 @@ V pravidelných clusterech můžete mít jenom jeden uživatelský účet s odst
 
    Důvodem je známý problém. Jako alternativní řešení upravte Ambari tak, aby se aktivní Správce prostředků taky spouštěla na primárním hlavnímu uzlu.
 
-1. Odstín rozumí WebHDFS, zatímco clustery HDInsight používají Azure Storage pomocí `wasbs://` . Vlastní skript, který se používá pro akci skriptu, nainstaluje WebWasb, což je služba kompatibilní s WebHDFS pro komunikaci s WASB. Takže i když se na portálu pro odstíny říká HDFS (například když přesunete myš přes **Prohlížeč souborů** ), mělo by se interpretovat jako WASB.
+1. Odstín rozumí WebHDFS, zatímco clustery HDInsight používají Azure Storage pomocí `wasbs://` . Vlastní skript, který se používá pro akci skriptu, nainstaluje WebWasb, což je služba kompatibilní s WebHDFS pro komunikaci s WASB. Takže i když se na portálu pro odstíny říká HDFS (například když přesunete myš přes **Prohlížeč souborů**), mělo by se interpretovat jako WASB.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,19 +1,16 @@
 ---
 title: Porty používané službami Hadoop ve službě HDInsight – Azure
 description: Tento článek poskytuje seznam portů používaných Apache Hadoop službami spuštěnými ve službě Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: d0d990bc273c33e94b82b597753b29361b1665e1
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: b5dadb886078f701bb01447efd606c862ee73073
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97821855"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945532"
 ---
 # <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>Porty používané službou Apache Hadoop Services ve službě HDInsight
 
@@ -55,7 +52,7 @@ Pro konkrétní typy clusterů jsou k dispozici následující:
 | Storm |443 |HTTPS |Storm |Webové uživatelské rozhraní. Viz [nasazení a Správa topologií Apache Storm v HDInsight](storm/apache-storm-deploy-monitor-topology-linux.md) . |
 | Kafka REST proxy |443 |HTTPS |Kafka |Kafka REST API. Viz [interakce s clustery Apache Kafka ve službě Azure HDInsight pomocí proxy REST](kafka/rest-proxy.md) |
 
-### <a name="authentication"></a>Ověřování
+### <a name="authentication"></a>Authentication
 
 Všechny služby veřejně vystavené na internetu musí být ověřené:
 
@@ -166,7 +163,7 @@ Příklady:
 | --- | --- | --- | --- | --- | --- |
 | Servery Spark Thrift |Hlavní uzly |10002 |Thrift | &nbsp; | Služba pro připojení k Spark SQL (Thrift/JDBC) |
 | Server Livy | Hlavní uzly | 8998 | HTTP | &nbsp; | Služba pro spouštění příkazů, úloh a aplikací |
-| Jupyter Notebook | Hlavní uzly | 8001 | HTTP | &nbsp; | Jupyter Notebook Web |
+| Jupyter Notebooks | Hlavní uzly | 8001 | HTTP | &nbsp; | Jupyter Notebook Web |
 
 Příklady:
 

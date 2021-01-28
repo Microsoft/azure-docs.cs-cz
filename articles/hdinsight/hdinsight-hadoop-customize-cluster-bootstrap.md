@@ -1,19 +1,16 @@
 ---
 title: Přizpůsobení konfigurací clusteru Azure HDInsight pomocí Bootstrap
 description: Přečtěte si, jak pomocí šablon .NET, PowerShell a Správce prostředků přizpůsobit konfiguraci clusteru HDInsight prostřednictvím kódu programu.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/01/2020
-ms.openlocfilehash: 246c5600da3b554ba65872780f0719a58f3f4be2
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 306ebcf7db3c11f783af8cf4c1779bd3d1a013a4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547482"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945742"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>Přizpůsobení clusterů HDInsight pomocí Bootstrap
 
@@ -21,7 +18,7 @@ Spouštěcí skripty umožňují programově instalovat a konfigurovat komponent
 
 Existují tři přístupy k nastavení konfiguračního souboru při vytváření clusteru HDInsight:
 
-* Použití Azure PowerShellu
+* Použití Azure Powershell
 * Použití sady .NET SDK
 * Použití šablony Azure Resource Manager
 
@@ -50,7 +47,7 @@ Informace o instalaci dalších komponent v clusteru HDInsight během vytvářen
 
 * Pokud používáte PowerShell, budete potřebovat [AZ Module](/powershell/azure/).
 
-## <a name="use-azure-powershell"></a>Použití Azure PowerShellu
+## <a name="use-azure-powershell"></a>Použití Azure Powershell
 
 Následující kód PowerShellu přizpůsobí konfiguraci [Apache Hive](https://hive.apache.org/) :
 
@@ -86,9 +83,9 @@ New-AzHDInsightCluster `
 **Ověření změny:**
 
 1. Přejděte na `https://CLUSTERNAME.azurehdinsight.net/` místo, kde `CLUSTERNAME` je název vašeho clusteru.
-1. V nabídce vlevo přejděte na konfigurace **podregistru**  >  **Configs**  >  **Upřesnit** .
-1. Rozbalte položku **pokročilý podregistr – lokalita** .
-1. Vyhledejte **podregistr. metastore. Client. Socket. Timeout** a potvrďte, že hodnota je **90** .
+1. V nabídce vlevo přejděte na konfigurace **podregistru**  >    >  **Upřesnit**.
+1. Rozbalte položku **pokročilý podregistr – lokalita**.
+1. Vyhledejte **podregistr. metastore. Client. Socket. Timeout** a potvrďte, že hodnota je **90**.
 
 Další ukázky přizpůsobení dalších konfiguračních souborů:
 

@@ -1,32 +1,29 @@
 ---
 title: Tipy pro použití Hadoop v HDInsight založené na Linux – Azure
 description: Získejte tipy k implementaci pro používání clusterů HDInsight se systémem Linux (Hadoop) na známém prostředí Linux běžící v cloudu Azure.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 04/29/2020
-ms.openlocfilehash: 0f0073c72c28395d89cec74a489cbc36a8f3ffe7
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 2d2619c7bd7bc09eeab3845599758db7134b4134
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546105"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945644"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informace o používání HDInsightu v Linuxu
 
 Clustery Azure HDInsight poskytují Apache Hadoop v známém prostředí pro Linux běžící v cloudu Azure. Pro většinu věcí by měla fungovat přesně stejně jako všechny ostatní instalace systému Hadoop-Linux. Tento dokument volá konkrétní rozdíly, o kterých byste měli vědět.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Mnohé z kroků v tomto dokumentu používají následující nástroje, které může být potřeba nainstalovat do systému.
 
 * [oblý](https://curl.haxx.se/) – slouží ke komunikaci s webovými službami.
-* **JQ** , procesor JSON příkazového řádku.  Viz [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/) .
+* **JQ**, procesor JSON příkazového řádku.  Viz [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/) .
 * [Azure CLI](/cli/azure/install-azure-cli) – slouží k vzdálené správě služeb Azure.
-* **Klient SSH** . Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
+* **Klient SSH**. Další informace najdete v tématu [Připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="users"></a>Uživatelé
 
@@ -92,8 +89,8 @@ Další informace najdete v tématu [porty používané službou Apache Hadoop S
 
 Soubory související se systémem Hadoop lze nalézt na uzlech clusteru na adrese `/usr/hdp` . Tento adresář obsahuje následující podadresáře:
 
-* **2.6.5.3009-43** : název adresáře je verze platformy Hadoop, kterou používá HDInsight. Číslo v clusteru se může lišit od výše uvedeného.
-* **Current** : Tento adresář obsahuje odkazy na podadresáře v adresáři **2.6.5.3009-43** . Tento adresář existuje, takže si nemusíte pamatovat číslo verze.
+* **2.6.5.3009-43**: název adresáře je verze platformy Hadoop, kterou používá HDInsight. Číslo v clusteru se může lišit od výše uvedeného.
+* **Current**: Tento adresář obsahuje odkazy na podadresáře v adresáři **2.6.5.3009-43** . Tento adresář existuje, takže si nemusíte pamatovat číslo verze.
 
 Příklady dat a souborů JAR najdete v systém souborů DFS (Distributed File System) Hadoop v `/example` a `/HdiSamples` .
 
@@ -183,13 +180,13 @@ Informace o úložišti můžete také najít pomocí Azure Portal pomocí násl
 
 1. Z [Azure Portal](https://portal.azure.com/)vyberte svůj cluster HDInsight.
 
-2. V části **vlastnosti** vyberte **účty úložiště** . Zobrazí se informace o úložišti pro cluster.
+2. V části **vlastnosti** vyberte **účty úložiště**. Zobrazí se informace o úložišti pro cluster.
 
 ### <a name="how-do-i-access-files-from-outside-hdinsight"></a>Návody přístup k souborům mimo HDInsight
 
 Existují různé způsoby, jak získat přístup k datům mimo cluster HDInsight. Následuje několik odkazů na nástroje a sady SDK, které lze použít pro práci s daty:
 
-Pokud používáte __úložiště objektů BLOB v Azure__ , přečtěte si následující odkazy, které vám umožní získat přístup k datům:
+Pokud používáte __úložiště objektů BLOB v Azure__, přečtěte si následující odkazy, které vám umožní získat přístup k datům:
 
 * [Azure CLI](/cli/azure/install-az-cli2): příkazy rozhraní Command-Line pro práci s Azure. Po instalaci použijte `az storage` příkaz pro nápovědu k používání úložiště nebo `az storage blob` pro příkazy pro objekty blob.
 * [blobxfer.py](https://github.com/Azure/blobxfer): skript Pythonu pro práci s objekty blob v Azure Storage.
@@ -203,7 +200,7 @@ Pokud používáte __úložiště objektů BLOB v Azure__ , přečtěte si násl
     * [.NET](https://github.com/Azure/azure-sdk-for-net)
     * [Rozhraní REST API pro službu Storage](/rest/api/storageservices/Blob-Service-REST-API)
 
-Pokud používáte __Azure Data Lake Storage Gen1__ , přečtěte si následující odkazy, které vám umožní získat přístup k datům:
+Pokud používáte __Azure Data Lake Storage Gen1__, přečtěte si následující odkazy, které vám umožní získat přístup k datům:
 
 * [Webový prohlížeč](../data-lake-store/data-lake-store-get-started-portal.md)
 * [PowerShell](../data-lake-store/data-lake-store-get-started-powershell.md)

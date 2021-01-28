@@ -1,19 +1,16 @@
 ---
 title: Extrakce, transformace a načítání (ETL) ve velkém měřítku – Azure HDInsight
 description: Přečtěte si, jak se v HDInsight s Apache Hadoop používá extrakce, transformace a načtení.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: e7a8a72d0669f39cc27c997d83af1e6272d045a6
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: fc488cecb762ff13bcb2999bb06521ebb70b44fb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98704148"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946583"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Extrakce, transformace a načítání (ETL) ve velkém měřítku
 
@@ -27,7 +24,7 @@ Následující části obsahují všechny fáze ETL a jejich přidružené souč
 
 ## <a name="orchestration"></a>Orchestrace
 
-Orchestrace se rozpíná napříč všemi fázemi kanálu ETL. Úlohy ETL v HDInsight často zahrnují více různých produktů, které spolu vzájemně spolupracují. Například:
+Orchestrace se rozpíná napříč všemi fázemi kanálu ETL. Úlohy ETL v HDInsight často zahrnují více různých produktů, které spolu vzájemně spolupracují. Příklad:
 
 - Můžete použít Apache Hive k vyčištění části dat a Apache prasete k vyčištění další části.
 - Pomocí Azure Data Factory můžete načíst data do Azure SQL Database z Azure Data Lake Store.

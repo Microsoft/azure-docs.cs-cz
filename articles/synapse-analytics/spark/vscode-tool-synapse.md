@@ -2,19 +2,19 @@
 title: Kurz – nástroje Spark & podregistr pro VSCode (aplikace Spark)
 description: Kurz – použití nástrojů pro podregistr Spark & pro VSCode k vývoji aplikací Spark, které jsou napsané v Pythonu, a jejich odeslání do fondu Apache Spark bez serveru.
 services: synapse-analytics
-author: hrasheed-msft
+author: jejiang
 ms.author: jejiang
 ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 09/03/2020
-ms.openlocfilehash: eb4a4c2c8d1d52690a07b784640d20d96ff2d600
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e5d335ee14709ec330405419f5be8ac5fbd6ce75
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96445682"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943771"
 ---
 # <a name="tutorial-create-an-apache-spark-applications-with-vscode-using-a-synapse-workspace"></a>Kurz: vytvoření Apache Sparkch aplikací pomocí VSCode pomocí pracovního prostoru synapse
 
@@ -22,7 +22,7 @@ Naučte se používat nástroje Apache Spark & podregistr pro Visual Studio Code
 
 Nástroje Spark & podregistr je možné nainstalovat na platformy, které Visual Studio Code podporuje. Všimněte si následujících požadavků pro různé platformy.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení kroků v tomto článku jsou vyžadovány následující položky:
 
@@ -52,7 +52,7 @@ Po splnění požadavků můžete nainstalovat nástroje Spark & pro Visual Stud
 
 Chcete-li otevřít pracovní složku a vytvořit soubor v Visual Studio Code, postupujte podle následujících kroků:
 
-1. V řádku nabídek přejděte do **File**  >  **složky otevřít soubor...**  >  **C:\HD\Synaseexample** a pak vyberte tlačítko **Vybrat složku** . Složka se zobrazí v zobrazení **Průzkumník** na levé straně.
+1. V řádku nabídek přejděte do   >  **složky otevřít soubor...**  >  **C:\HD\Synaseexample** a pak vyberte tlačítko **Vybrat složku** . Složka se zobrazí v zobrazení **Průzkumník** na levé straně.
 
 2. V zobrazení **Průzkumník** vyberte složku **Synaseexample** a pak vyberte ikonu **nového souboru** vedle pracovní složky:
 
@@ -130,7 +130,7 @@ for (word, count) in sortedCollection:
 
      ![nainstalovat jádro pyspark](./media/vscode-tool-synapse/install-the-pyspark-kernel.png)
 
-5. Pokud ho potřebujete nainstalovat později, můžete přejít na **File**  >  **Preference**  >  **Nastavení** předvoleb souborů a pak zrušit kontrolu **HDInsight: Povolit v nastavení Přeskočit instalaci Pyspark** . 
+5. Pokud ho potřebujete nainstalovat později, můžete přejít na   >    >  **Nastavení** předvoleb souborů a pak zrušit kontrolu **HDInsight: Povolit v nastavení Přeskočit instalaci Pyspark** . 
     
      ![Povolit instalaci Skip pyspark](./media/vscode-tool-synapse/enable-skip-pyspark-installation.png)
 

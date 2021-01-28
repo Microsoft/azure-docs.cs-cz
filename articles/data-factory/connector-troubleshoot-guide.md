@@ -9,12 +9,12 @@ ms.date: 01/07/2021
 ms.author: jingwang
 ms.reviewer: craigg
 ms.custom: has-adal-ref
-ms.openlocfilehash: 68547b8fb673cd54b7c21963ede122553bbbc390
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 4b586b95232af2a154993523402f81ee88a22cda
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97967119"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946149"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Řešení potíží s konektory služby Azure Data Factory
 
@@ -121,7 +121,7 @@ Tento článek popisuje běžné metody řešení potíží pro konektory v Azur
 
 - **Příčina**: problém CosmosDbSqlApi operace.
 
-- **Doporučení**: Podrobnosti najdete v podrobnostech o chybě. Podívejte se na [dokument s CosmosDb Help](https://docs.microsoft.com/azure/cosmos-db/troubleshoot-dot-net-sdk). Pokud potřebujete, obraťte se na tým CosmosDb.
+- **Doporučení**: Podrobnosti najdete v podrobnostech o chybě. Podívejte se na [dokument s CosmosDb Help](../cosmos-db/troubleshoot-dot-net-sdk.md). Pokud potřebujete, obraťte se na tým CosmosDb.
 
 
 ## <a name="azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1
@@ -198,7 +198,7 @@ Tento článek popisuje běžné metody řešení potíží pro konektory v Azur
 
     - Zkontrolujte, jestli existuje nějaké zvláštní nastavení sítě, jako je třeba ExpressRoute, a ujistěte se, že má síť dostatečnou šířku pásma. Doporučujeme, abyste snížili nastavení místních souběžných úloh IR v místním prostředí, když je celková šířka pásma nízká, což se může vyhnout konkurenci síťových prostředků napříč několika souběžnými úlohami.
 
-    - Pro nebinární kopírování použijte menší velikost bloku pro zmírnění takové chyby vypršení časového limitu, pokud je velikost souboru střední nebo malá. Přečtěte si [BLOB Storage blok vložení](https://docs.microsoft.com/rest/api/storageservices/put-block).
+    - Pro nebinární kopírování použijte menší velikost bloku pro zmírnění takové chyby vypršení časového limitu, pokud je velikost souboru střední nebo malá. Přečtěte si [BLOB Storage blok vložení](/rest/api/storageservices/put-block).
 
        Chcete-li určit velikost vlastního bloku, můžete upravit vlastnost v editoru. JSON:
         ```
@@ -260,7 +260,7 @@ Tento článek popisuje běžné metody řešení potíží pro konektory v Azur
 
 - **Příčina**: Pokud chybová zpráva obsahuje "SqlException", SQL Database vyvolá chybu oznamující, že některá konkrétní operace selhala.
 
-- **Doporučení**: Pokud chyba SQL není jasná, zkuste prosím změnit databázi na nejnovější úroveň kompatibility 150. Může vyvolat nejnovější verzi chyb SQL. Přečtěte si [dokument s podrobnostmi](/sql/t-sql/statements/alter-database-transact-sql-compatibility-level#backwardCompat).
+- **Doporučení**: Pokud chyba SQL není jasná, zkuste prosím změnit databázi na nejnovější úroveň kompatibility 150. Na této úrovni kompatibility je možné vyvolávat chyby z nejnovější verze SQL. Přečtěte si [dokument s podrobnostmi](/sql/t-sql/statements/alter-database-transact-sql-compatibility-level#backwardCompat).
 
     Pokud chcete řešit potíže s SQL serverem, vyhledejte v tomto referenčním dokumentu kód chyby SQL, kde najdete další podrobnosti: https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors . Pokud potřebujete další pomoc, obraťte se na podporu Azure SQL.
 
@@ -486,7 +486,7 @@ Tento článek popisuje běžné metody řešení potíží pro konektory v Azur
 
 - **Řešení**: zkuste problém vyřešit podle následujících kroků:
 
-    1. Použijte odolnost [proti chybám](https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance)jímky SQL, obzvláště "redirectIncompatibleRowSettings", abyste mohli řešit, které řádky mají problém.
+    1. Použijte odolnost [proti chybám](./copy-activity-fault-tolerance.md)jímky SQL, obzvláště "redirectIncompatibleRowSettings", abyste mohli řešit, které řádky mají problém.
 
         > [!NOTE]
         > Upozorňujeme, že odolnost proti chybám může zavést další dobu spuštění, což by mohlo vést k vyšším nákladům.

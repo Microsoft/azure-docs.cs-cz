@@ -1,19 +1,16 @@
 ---
 title: Možnosti výpočetního kontextu pro služby ML ve službě HDInsight – Azure
 description: Seznamte se s různými možnostmi výpočetního kontextu, které jsou dostupné pro uživatele se službami ML ve službě HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 21781015aa91c9c953d716b9b3399851f25be9b5
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 71ce0d87faa33bd7d533242edfcf3b131c8f7e47
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92536330"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943962"
 ---
 # <a name="compute-context-options-for-ml-services-on-hdinsight"></a>Možnosti výpočetního kontextu pro služby ML v HDInsight
 
@@ -29,8 +26,8 @@ Hraniční uzel clusteru poskytuje vhodné místo pro připojení ke clusteru a 
 
 Obecně platí, že skript R, který je spuštěn v clusteru služby ML na hraničním uzlu, je spuštěn v překladači R na tomto uzlu. Výjimkou jsou kroky, které volají funkci RevoScaleR. Volání RevoScaleR se spouštějí ve výpočetním prostředí, které je určeno nastavením výpočetního kontextu RevoScaleR.  Při spuštění skriptu R z hraničního uzlu jsou možné hodnoty kontextu Compute:
 
-- místní sekvenční ( *místní* )
-- místní paralelní ( *localpar* )
+- místní sekvenční (*místní*)
+- místní paralelní (*localpar*)
 - Zmenšit mapování
 - Spark
 
@@ -59,8 +56,8 @@ V následujících částech jsou uvedené některé obecné pravidla pro výbě
 
 ### <a name="local"></a>Místní
 
-- Pokud je objem dat k analýze malý a nevyžaduje opakovanou analýzu, pak ji Streamujte přímo do analytické rutiny pomocí *místních* nebo *localpar* .
-- Pokud je množství dat k analýze malé nebo středně velké a vyžaduje opakovanou analýzu, zkopírujte ji do místního systému souborů, importujte ji do XDF a analyzujte ji prostřednictvím *místních* nebo *localpar* .
+- Pokud je objem dat k analýze malý a nevyžaduje opakovanou analýzu, pak ji Streamujte přímo do analytické rutiny pomocí *místních* nebo *localpar*.
+- Pokud je množství dat k analýze malé nebo středně velké a vyžaduje opakovanou analýzu, zkopírujte ji do místního systému souborů, importujte ji do XDF a analyzujte ji prostřednictvím *místních* nebo *localpar*.
 
 ### <a name="apache-spark"></a>Apache Spark
 

@@ -1,19 +1,16 @@
 ---
 title: Optimalizace dotazů na podregistry ve službě Azure HDInsight
 description: Tento článek popisuje, jak optimalizovat dotazy Apache Hive ve službě Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 10/28/2020
-ms.openlocfilehash: 840c481a54451e1f8374aec4799df10b96fb2e4d
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: a15c3e0fb3550c6e50b3fba2279611fdba25bc84
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92910878"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945559"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Optimalizace dotazů Apache Hivu v Azure HDInsightu
 
@@ -53,11 +50,11 @@ Další informace o škálování HDInsight najdete v tématu [škálování clu
 
 Tez je rychlejší z těchto důvodů:
 
-* **Spusťte acyklického graf (DAG) jako jednu úlohu v modulu MapReduce** . DAG vyžaduje, aby na každé sadě mapovačů následovala jedna sada reduktorů. Tento požadavek způsobí, že pro každý dotaz na podregistr se má vypínat více úloh MapReduce. Tez nemá takové omezení a může zpracovat komplexní DAG jako jednu úlohu, která minimalizuje náklady na spuštění úlohy.
-* **Nepoužívejte zbytečné zápisy** . Ke zpracování stejného dotazu podregistru v modulu MapReduce se používá víc úloh. Výstup každé úlohy MapReduce se zapisuje do HDFS pro mezilehlé údaje. Vzhledem k tomu, že tez minimalizuje počet úloh pro každý dotaz na podregistr, je možné vyhnout se zbytečnému zápisu.
-* **Minimalizuje prodlevy při spuštění** . Tez je lepším řešením pro minimalizaci počáteční prodlevy tím, že snižuje počet mapovačů, které musí spustit, a také zlepšuje optimalizaci v celém systému.
-* Znovu **použije kontejnery** . Kdykoli je to možné, tez znovu použije kontejnery, aby se snížila latence od spuštění kontejnerů.
-* **Techniky plynulé optimalizace** . Během fáze kompilace byla provedena tradičně optimalizace. K dispozici jsou ale další informace o vstupech, které umožňují lepší optimalizaci během běhu. Tez využívá techniky kontinuální optimalizace, které umožňují IT optimalizaci plánu dále do fáze modulu runtime.
+* **Spusťte acyklického graf (DAG) jako jednu úlohu v modulu MapReduce**. DAG vyžaduje, aby na každé sadě mapovačů následovala jedna sada reduktorů. Tento požadavek způsobí, že pro každý dotaz na podregistr se má vypínat více úloh MapReduce. Tez nemá takové omezení a může zpracovat komplexní DAG jako jednu úlohu, která minimalizuje náklady na spuštění úlohy.
+* **Nepoužívejte zbytečné zápisy**. Ke zpracování stejného dotazu podregistru v modulu MapReduce se používá víc úloh. Výstup každé úlohy MapReduce se zapisuje do HDFS pro mezilehlé údaje. Vzhledem k tomu, že tez minimalizuje počet úloh pro každý dotaz na podregistr, je možné vyhnout se zbytečnému zápisu.
+* **Minimalizuje prodlevy při spuštění**. Tez je lepším řešením pro minimalizaci počáteční prodlevy tím, že snižuje počet mapovačů, které musí spustit, a také zlepšuje optimalizaci v celém systému.
+* Znovu **použije kontejnery**. Kdykoli je to možné, tez znovu použije kontejnery, aby se snížila latence od spuštění kontejnerů.
+* **Techniky plynulé optimalizace**. Během fáze kompilace byla provedena tradičně optimalizace. K dispozici jsou ale další informace o vstupech, které umožňují lepší optimalizaci během běhu. Tez využívá techniky kontinuální optimalizace, které umožňují IT optimalizaci plánu dále do fáze modulu runtime.
 
 Další informace o těchto konceptech najdete v článku [Apache tez](https://tez.apache.org/).
 
@@ -71,7 +68,7 @@ set hive.execution.engine=tez;
 
 Vstupně-výstupní operace jsou zásadním kritickým bodem pro spouštění dotazů na podregistr. Výkon lze zvýšit, pokud množství dat, která je třeba číst, může být sníženo. Ve výchozím nastavení dotazy na podregistr prohledají celé tabulky podregistru. V případě dotazů, které potřebují pouze prohledávání malých objemů dat (například dotazů s filtrováním), ale toto chování vytváří zbytečné režijní náklady. Dělení podregistru umožňuje dotazům na podregistr přístup pouze k potřebným objemům dat v tabulkách podregistru.
 
-Dělení oddílů se implementuje změnou uspořádání nezpracovaných dat do nových adresářů. Každý oddíl má svůj vlastní adresář souborů. Dělení je definováno uživatelem. Následující diagram znázorňuje rozdělení tabulky podregistru podle sloupce *year* . Vytvoří se nový adresář pro každý rok.
+Dělení oddílů se implementuje změnou uspořádání nezpracovaných dat do nových adresářů. Každý oddíl má svůj vlastní adresář souborů. Dělení je definováno uživatelem. Následující diagram znázorňuje rozdělení tabulky podregistru podle sloupce *year*. Vytvoří se nový adresář pro každý rok.
 
 ![Apache Hive vytváření oddílů v HDInsight](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-partitioning.png)
 
@@ -132,9 +129,9 @@ Další informace najdete v tématu [dělené tabulky](https://cwiki.apache.org/
 
 Podregistr podporuje různé formáty souborů. Příklad:
 
-* **Text** : výchozí formát souboru a funguje ve většině scénářů.
-* **Avro** : funguje dobře pro scénáře interoperability.
-* **ORC/Parquet** : nejvhodnější pro výkon.
+* **Text**: výchozí formát souboru a funguje ve většině scénářů.
+* **Avro**: funguje dobře pro scénáře interoperability.
+* **ORC/Parquet**: nejvhodnější pro výkon.
 
 ORC (optimalizovaný sloupcový řádek) je vysoce účinný způsob, jak ukládat data z podregistru. Ve srovnání s jinými formáty ORC má následující výhody:
 
@@ -143,7 +140,7 @@ ORC (optimalizovaný sloupcový řádek) je vysoce účinný způsob, jak uklád
 * indexuje každých 10 000 řádků, což povoluje přeskočení řádků.
 * významné přerušení spuštění.
 
-Pokud chcete povolit formát ORC, musíte nejdřív vytvořit tabulku s klauzulí *uloženou jako ORC* :
+Pokud chcete povolit formát ORC, musíte nejdřív vytvořit tabulku s klauzulí *uloženou jako ORC*:
 
 ```sql
 CREATE TABLE lineitem_orc_part
@@ -199,7 +196,7 @@ Existuje více metod optimalizace, které je možné zvážit, například:
 
 * Sestavování **podregistru:** technika, která umožňuje clusteru a segmentovat velké sady dat pro optimalizaci výkonu dotazů.
 * **Optimalizace spojení:** optimalizace plánování spouštění dotazů na podregistr pro zlepšení efektivity spojení a omezení nutnosti pomocného parametru pro uživatele. Další informace najdete v tématu věnovaném [optimalizaci spojení](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+JoinOptimization#LanguageManualJoinOptimization-JoinOptimization).
-* **Zvyšte reduktorů** .
+* **Zvyšte reduktorů**.
 
 ## <a name="next-steps"></a>Další kroky
 

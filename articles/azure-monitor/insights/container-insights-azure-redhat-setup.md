@@ -3,12 +3,12 @@ title: Konfigurace Azure Red Hat OpenShift v3. x s Azure Monitor for Containers 
 description: Tento článek popisuje, jak nakonfigurovat monitorování clusteru Kubernetes s Azure Monitor hostovaným na Azure Red Hat OpenShift verze 3 a vyšší.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 5141ef3a96d39f16a2a9f005dd580b952046e7bf
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: f21a338a06d4a0947e2623854d828c720fb2d4bb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97695674"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944541"
 ---
 # <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>Konfigurace Azure Red Hat OpenShift V3 pomocí Azure Monitor for Containers
 
@@ -30,7 +30,7 @@ Azure Monitor for Containers poskytuje bohatou monitorovací prostředí pro clu
 Azure Monitor for Containers je možné povolit pro nové nebo jedno nebo více stávajících nasazení Azure Red Hat OpenShift pomocí následujících podporovaných metod:
 
 - Pro existující cluster z Azure Portal nebo pomocí šablony Azure Resource Manager.
-- Pro nový cluster pomocí šablony Azure Resource Manager nebo při vytváření nového clusteru pomocí rozhraní příkazového [řádku Azure CLI](/cli/azure/openshift?view=azure-cli-latest#az-openshift-create).
+- Pro nový cluster pomocí šablony Azure Resource Manager nebo při vytváření nového clusteru pomocí rozhraní příkazového [řádku Azure CLI](/cli/azure/openshift#az-openshift-create).
 
 ## <a name="supported-and-unsupported-features"></a>Podporované a nepodporované funkce
 

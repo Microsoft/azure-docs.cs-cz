@@ -1,23 +1,20 @@
 ---
 title: Použití škálování a Sparku v Azure HDInsight
 description: Použití škálování a Sparku pro manipulaci s daty a vývoj modelů pomocí služeb ML ve službě Azure HDInsight
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/26/2019
-ms.openlocfilehash: c12398ceacf8495a05037422a6501dc8138abc10
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: 95fcca289b0776cc19464b13eb7d243ca4f8d5ed
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92628690"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945505"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>Kombinování škály a Sparku v HDInsight
 
-V tomto dokumentu se dozvíte, jak předpovědět prodlevy při příchodu letu pomocí **modelu logistické** regrese. V příkladu se používá zpoždění letu a data o počasí připojená pomocí **Sparku** .
+V tomto dokumentu se dozvíte, jak předpovědět prodlevy při příchodu letu pomocí **modelu logistické** regrese. V příkladu se používá zpoždění letu a data o počasí připojená pomocí **Sparku**.
 
 I když oba balíčky běží na spouštěcím modulu Spark Apache Hadoop, jsou blokované ze sdílení dat v paměti, protože každý z nich vyžaduje své vlastní relace Sparku. Dokud se tento problém nevyřeší v nadcházející verzi ml Server, doporučujeme, abyste zachovali překrývající se relace Spark a mohli data Exchange obejít prostřednictvím zprostředkujících souborů. Zde uvedené pokyny ukazují, že tyto požadavky je jednoduché dosáhnout.
 

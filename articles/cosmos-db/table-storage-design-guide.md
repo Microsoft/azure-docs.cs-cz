@@ -8,12 +8,12 @@ ms.date: 06/19/2020
 author: sakash279
 ms.author: akshanka
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 709b83ad3e71a932202cebb9c9cb6187feae4ed7
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 812d4976a0c6afe646c329ee483be20c33416381
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93080001"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943897"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Průvodce návrhem tabulek v Azure Table Storage: Škálovatelné a výkonné tabulky
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
@@ -124,7 +124,7 @@ Následující příklad ukazuje jednoduchý návrh tabulky pro ukládání enti
 </table>
 
 
-Tento návrh se zatím bude podobat tabulce v relační databázi. Hlavní rozdíly jsou povinné sloupce a možnost ukládat více typů entit do stejné tabulky. Kromě toho má každý z uživatelem definovaných vlastností, jako je například **FirstName** nebo **věk** , datový typ, jako je například celé číslo nebo řetězec, stejně jako sloupec v relační databázi. Na rozdíl od relační databáze ale bez schématu pro úložiště tabulek je to, že vlastnost nemusí mít stejný datový typ pro každou entitu. Pro uložení složitých datových typů do jediné vlastnosti je nutné použít serializovaný formát, jako je JSON nebo XML. Další informace najdete v tématu [Principy datového modelu Table Storage](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model).
+Tento návrh se zatím bude podobat tabulce v relační databázi. Hlavní rozdíly jsou povinné sloupce a možnost ukládat více typů entit do stejné tabulky. Kromě toho má každý z uživatelem definovaných vlastností, jako je například **FirstName** nebo **věk**, datový typ, jako je například celé číslo nebo řetězec, stejně jako sloupec v relační databázi. Na rozdíl od relační databáze ale bez schématu pro úložiště tabulek je to, že vlastnost nemusí mít stejný datový typ pro každou entitu. Pro uložení složitých datových typů do jediné vlastnosti je nutné použít serializovaný formát, jako je JSON nebo XML. Další informace najdete v tématu [Principy datového modelu Table Storage](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model).
 
 Vaše volba `PartitionKey` a `RowKey` je zásadní pro dobrý návrh tabulek. Každá entita uložená v tabulce musí mít jedinečnou kombinaci `PartitionKey` a `RowKey` . Stejně jako u klíčů v tabulce relační databáze `PartitionKey` `RowKey` jsou hodnoty a indexovány, aby se vytvořil clusterovaný index, který umožňuje rychlé vyhledávání. Table Storage ale nevytváří žádné sekundární indexy, takže se jedná o jediné dvě indexované vlastnosti (některé ze vzorů popsaných později ukazují, jak můžete toto zjevné omezení obejít).  
 
@@ -138,7 +138,7 @@ V tabulkovém úložišti má jednotlivé uzly služby jednoho nebo více úpln�
 Další informace o interních podrobnostech úložiště tabulek a zejména o tom, jak spravuje oddíly, najdete v tématu [Microsoft Azure Storage: vysoce dostupnou cloudovou službu cloudového úložiště se silnými konzistencí](/archive/blogs/windowsazurestorage/sosp-paper-windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency).  
 
 ### <a name="entity-group-transactions"></a>Transakce skupiny entit
-V úložišti tabulek jsou transakce skupin entit (EGTs) jediným integrovaným mechanismem pro provádění atomických aktualizací v několika entitách. EGTs se také označují jako *transakce Batch* . EGTs může pracovat pouze s entitami uloženými ve stejném oddílu (sdílení stejného klíče oddílu v konkrétní tabulce), takže kdykoli budete potřebovat atomické transakční chování napříč více entitami, ujistěte se, že jsou tyto entity ve stejném oddílu. To je často důvod pro udržení více typů entit ve stejné tabulce (a oddílu) a nepoužívá více tabulek pro různé typy entit. Jeden EGT může pracovat s maximálně 100 entitami.  Pokud odešlete více souběžných EGTs ke zpracování, je důležité zajistit, aby tyto EGTs nespolupracovaly s entitami, které jsou společné napříč EGTs. V opačném případě riskujete zpracování zpoždění.
+V úložišti tabulek jsou transakce skupin entit (EGTs) jediným integrovaným mechanismem pro provádění atomických aktualizací v několika entitách. EGTs se také označují jako *transakce Batch*. EGTs může pracovat pouze s entitami uloženými ve stejném oddílu (sdílení stejného klíče oddílu v konkrétní tabulce), takže kdykoli budete potřebovat atomické transakční chování napříč více entitami, ujistěte se, že jsou tyto entity ve stejném oddílu. To je často důvod pro udržení více typů entit ve stejné tabulce (a oddílu) a nepoužívá více tabulek pro různé typy entit. Jeden EGT může pracovat s maximálně 100 entitami.  Pokud odešlete více souběžných EGTs ke zpracování, je důležité zajistit, aby tyto EGTs nespolupracovaly s entitami, které jsou společné napříč EGTs. V opačném případě riskujete zpracování zpoždění.
 
 EGTs také zavede potenciální kompromis k vyhodnocení v návrhu. Použití více oddílů zvyšuje škálovatelnost vaší aplikace, protože Azure nabízí více příležitostí pro žádosti o vyrovnávání zatížení napříč uzly. To ale může omezit schopnost vaší aplikace provádět atomické transakce a udržovat velkou konzistenci pro vaše data. Kromě toho existují konkrétní cíle škálovatelnosti na úrovni oddílu, která může omezit propustnost transakcí, které můžete očekávat pro jeden uzel.
 
@@ -206,12 +206,12 @@ V následujících příkladech se předpokládá, že Table Storage ukládá en
 Tady jsou některé obecné pokyny pro navrhování dotazů na úložiště tabulek. Syntaxe filtru použitá v následujících příkladech je z tabulkového úložiště REST API. Další informace najdete v tématu věnovaném [dotazování entit](/rest/api/storageservices/Query-Entities).  
 
 * *Dotaz na bod* je nejúčinnější vyhledávání, které se má použít, a doporučuje se pro vyhledávání ve velkém objemu nebo vyhledávání vyžadující nejnižší latenci. Takový dotaz může pomocí indexů snadno vyhledat jednotlivou entitu zadáním `PartitionKey` `RowKey` hodnot a. Příklad: `$filter=(PartitionKey eq 'Sales') and (RowKey eq '2')`.  
-* Druhý nejlepší je *dotaz na rozsah* . Pomocí `PartitionKey` filtrů a na základě rozsahu `RowKey` hodnot vrátí více než jednu entitu. `PartitionKey`Hodnota identifikuje konkrétní oddíl a `RowKey` hodnoty identifikují podmnožinu entit v tomto oddílu. Příklad: `$filter=PartitionKey eq 'Sales' and RowKey ge 'S' and RowKey lt 'T'`.  
-* Třetí nejlepší je *Kontrola oddílu* . Používá `PartitionKey` filtry, a pro jinou neklíčovou vlastnost a může vracet více než jednu entitu. `PartitionKey`Hodnota určuje konkrétní oddíl a hodnoty vlastností se vyberou pro podmnožinu entit v tomto oddílu. Příklad: `$filter=PartitionKey eq 'Sales' and LastName eq 'Smith'`.  
+* Druhý nejlepší je *dotaz na rozsah*. Pomocí `PartitionKey` filtrů a na základě rozsahu `RowKey` hodnot vrátí více než jednu entitu. `PartitionKey`Hodnota identifikuje konkrétní oddíl a `RowKey` hodnoty identifikují podmnožinu entit v tomto oddílu. Příklad: `$filter=PartitionKey eq 'Sales' and RowKey ge 'S' and RowKey lt 'T'`.  
+* Třetí nejlepší je *Kontrola oddílu*. Používá `PartitionKey` filtry, a pro jinou neklíčovou vlastnost a může vracet více než jednu entitu. `PartitionKey`Hodnota určuje konkrétní oddíl a hodnoty vlastností se vyberou pro podmnožinu entit v tomto oddílu. Příklad: `$filter=PartitionKey eq 'Sales' and LastName eq 'Smith'`.  
 * *Prohledávání tabulky* nezahrnuje `PartitionKey` a je neefektivní, protože vyhledává všechny oddíly, které tvoří tabulku pro všechny odpovídající entity. Provede prohledávání tabulky bez ohledu na to, zda filtr používá `RowKey` . Příklad: `$filter=LastName eq 'Jones'`.  
 * Dotazy služby Azure Table Storage, které vracejí více entit, je seřadí v `PartitionKey` `RowKey` pořadí a. Chcete-li se vyhnout vyřazování entit v klientovi, vyberte `RowKey` , který definuje nejběžnější pořadí řazení. Výsledky dotazu vrácené službou Azure rozhraní API pro tabulky v Azure Cosmos DB nejsou seřazené podle klíče oddílu nebo klíče řádku. Podrobný seznam rozdílů funkcí najdete v tématu [rozdíly mezi rozhraní API pro tabulky v Azure Cosmos DB a v úložišti tabulek Azure](table-api-faq.md#table-api-vs-table-storage).
 
-Použití " **nebo** " k určení filtru založeného na `RowKey` hodnotách má za následek kontrolu oddílu a nepovažuje se za dotaz na rozsah. Proto se vyhněte dotazům, které používají filtry jako: `$filter=PartitionKey eq 'Sales' and (RowKey eq '121' or RowKey eq '322')` .  
+Použití "**nebo**" k určení filtru založeného na `RowKey` hodnotách má za následek kontrolu oddílu a nepovažuje se za dotaz na rozsah. Proto se vyhněte dotazům, které používají filtry jako: `$filter=PartitionKey eq 'Sales' and (RowKey eq '121' or RowKey eq '322')` .  
 
 Příklady kódu na straně klienta, který používá klientskou knihovnu pro úložiště ke spouštění efektivních dotazů, najdete v těchto tématech:  
 
@@ -253,7 +253,7 @@ Table Storage vrátí výsledky dotazu seřazené vzestupně podle `PartitionKey
 > [!NOTE]
 > Výsledky dotazu vrácené službou Azure rozhraní API pro tabulky v Azure Cosmos DB nejsou seřazené podle klíče oddílu nebo klíče řádku. Podrobný seznam rozdílů funkcí najdete v tématu [rozdíly mezi rozhraní API pro tabulky v Azure Cosmos DB a v úložišti tabulek Azure](table-api-faq.md#table-api-vs-table-storage).
 
-Klíče v úložišti tabulek jsou řetězcové hodnoty. Chcete-li zajistit, aby číselné hodnoty byly správně řazeny, je nutné je převést na pevnou délku a doplnit je nulami. Pokud například hodnota ID zaměstnance, kterou použijete, `RowKey` je celočíselná hodnota, měli byste převést ID zaměstnance **123** na **00000123** . 
+Klíče v úložišti tabulek jsou řetězcové hodnoty. Chcete-li zajistit, aby číselné hodnoty byly správně řazeny, je nutné je převést na pevnou délku a doplnit je nulami. Pokud například hodnota ID zaměstnance, kterou použijete, `RowKey` je celočíselná hodnota, měli byste převést ID zaměstnance **123** na **00000123**. 
 
 Mnoho aplikací má požadavky na použití dat seřazených v různých objednávkách: například řazení zaměstnanců podle názvu nebo připojení k datu. Následující vzory [vzorů návrhu tabulek](#table-design-patterns) popisují, jak alternativní objednávky řazení pro vaše entity:  
 
@@ -321,7 +321,7 @@ Tento příklad také ukazuje entitu oddělení a její související entity zam
 
 Alternativním řešením je denormalizovat data a ukládat pouze entity zaměstnanců s denormalizovanými daty oddělení, jak je znázorněno v následujícím příkladu. V tomto konkrétním scénáři nemusí být tento denormalizovaný přístup nejlepší, pokud máte požadavek, abyste mohli změnit podrobnosti o manažerovi oddělení. K tomu je potřeba aktualizovat každého zaměstnance v oddělení.  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE02.png" alt-text="Obrázek znázorňující entitu oddělení a entitu zaměstnance":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE02.png" alt-text="Obrázek entity zaměstnanci, který ukazuje, jak odnormalizovat data a ukládat pouze entity zaměstnanců s denormalizovanými daty oddělení.":::
 
 Další informace naleznete v části [vzory denormalizace](#denormalization-pattern) dále v této příručce.  
 
@@ -398,18 +398,18 @@ Například pokud máte malé tabulky obsahující data, která se nemění čas
 ### <a name="inheritance-relationships"></a>Vztahy dědičnosti
 Pokud vaše klientská aplikace používá sadu tříd, které tvoří část vztahu dědičnosti k reprezentaci obchodních entit, můžete tyto entity snadno uchovat v úložišti tabulek. Například můžete mít následující sadu tříd, které jsou definovány v klientské aplikaci, kde `Person` je abstraktní třída.
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE03.png" alt-text="Obrázek znázorňující entitu oddělení a entitu zaměstnance":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE03.png" alt-text="Diagram vztahů dědičnosti":::
 
 Instance dvou konkrétních tříd v úložišti tabulek můžete zachovat pomocí jedné `Person` tabulky. Použijte entity, které vypadají jako následující:  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE04.png" alt-text="Obrázek znázorňující entitu oddělení a entitu zaměstnance":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE04.png" alt-text="Obrázek znázorňující entitu zákazníka a zaměstnance":::
 
 Další informace o práci s více typy entit ve stejné tabulce v kódu klienta najdete v části [práce s heterogenními typy entit](#work-with-heterogeneous-entity-types) dále v této příručce. V této části najdete příklady, jak rozpoznat typ entity v kódu klienta.  
 
 ## <a name="table-design-patterns"></a>Způsoby návrhu tabulek
 V předchozích částech jste se dozvěděli o tom, jak optimalizovat návrh tabulky pro načítání dat entity pomocí dotazů, a pro vkládání, aktualizaci a odstraňování dat entit. Tato část popisuje některé vzory vhodné pro použití s tabulkovým úložištěm. Kromě toho se dozvíte, jak můžete prakticky vyřešit některé problémy a kompromisy, které byly vyvolány dříve v této příručce. Následující diagram shrnuje vztahy mezi různými vzory:  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE05.png" alt-text="Obrázek znázorňující entitu oddělení a entitu zaměstnance":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE05.png" alt-text="Diagram vzorů návrhu tabulky":::
 
 Mapa vzorů zvýrazňuje některé vztahy mezi vzory (modré) a antipatterns (oranžová), které jsou popsány v tomto průvodci. Existuje samozřejmě mnoho dalších vzorů, které je potřeba zvážit. Jedním z klíčových scénářů pro úložiště tabulek je například použití [schématu materializované zobrazení](/previous-versions/msp-n-p/dn589782(v=pandp.10)) ze vzoru [oddělení zodpovědnosti dotazu příkazu](/previous-versions/msp-n-p/jj554200(v=pandp.10)) .  
 
@@ -419,14 +419,14 @@ Více kopií každé entity uložte pomocí různých `RowKey` hodnot (ve stejn�
 #### <a name="context-and-problem"></a>Kontext a problém
 Table Storage automaticky indexuje entity pomocí `PartitionKey` hodnot a `RowKey` . To umožňuje klientské aplikaci efektivně načíst entitu pomocí těchto hodnot. Například pomocí následující struktury tabulky může klientská aplikace použít dotaz typu Point k načtení konkrétní entity zaměstnance pomocí názvu oddělení a ID zaměstnance ( `PartitionKey` `RowKey` hodnoty a). Klient může také načíst entity seřazené podle ID zaměstnance v rámci každého oddělení.
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE06.png" alt-text="Obrázek znázorňující entitu oddělení a entitu zaměstnance":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE06.png" alt-text="Obrázek entity zaměstnance, kde klientská aplikace může použít dotaz na bod k načtení jednotlivé entity zaměstnance pomocí názvu oddělení a ID zaměstnance (hodnoty PartitionKey a RowKey).":::
 
 Pokud chcete také vyhledat entitu zaměstnance na základě hodnoty jiné vlastnosti, jako je například e-mailová adresa, je třeba použít méně efektivní kontrolu oddílů a vyhledat shodu. Důvodem je to, že služba Table Storage neposkytuje sekundární indexy. Kromě toho neexistuje možnost vyžádat si seznam zaměstnanců seřazených v jiném pořadí než v `RowKey` pořadí.  
 
 #### <a name="solution"></a>Řešení
 Pokud chcete obejít nedostatku sekundárních indexů, můžete uložit více kopií každé entity s každou kopií s použitím jiné `RowKey` hodnoty. Pokud uložíte entitu s následujícími strukturami, můžete efektivně načíst entity zaměstnanců na základě e-mailové adresy nebo ID zaměstnance. Hodnoty předpony pro `RowKey` , `empid_` a `email_` umožňují dotazovat se na jednoho zaměstnance nebo na určitou škálu zaměstnanců pomocí rozsahu e-mailových adres nebo ID zaměstnanců.  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE07.png" alt-text="Obrázek znázorňující entitu oddělení a entitu zaměstnance":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE07.png" alt-text="Obrázek znázorňující entitu zaměstnance s různými RowKey hodnotami":::
 
 Následující dvě kritéria filtru (jedno vyhledávání podle ID zaměstnance a jedna z nich hledají e-mailovou adresu) určují obě dotazy na bod:  
 
@@ -450,7 +450,7 @@ Když se budete rozhodovat, jak tento model implementovat, měli byste vzít v �
 * Vyplňování číselných hodnot v `RowKey` (například zaměstnance s ID 000223) umožňuje správné řazení a filtrování na základě horních a dolních mezí.  
 * Nemusíte nutně Duplikovat všechny vlastnosti vaší entity. Pokud například dotazy, které hledají entity pomocí e-mailové adresy `RowKey` , nikdy nepotřebují věk zaměstnance, můžou mít tyto entity následující strukturu:
 
-  :::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE08.png" alt-text="Obrázek znázorňující entitu oddělení a entitu zaměstnance":::
+  :::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE08.png" alt-text="Obrázek entity zaměstnance":::
 
 * Obvykle je lepší ukládat duplicitní data a zajistit, že všechna data, která potřebujete, můžete načíst pomocí jediného dotazu, než můžete použít jeden dotaz k vyhledání entity a jiné pro vyhledání požadovaných dat.  
 
@@ -477,7 +477,7 @@ Více kopií každé entity uložte pomocí různých `RowKey` hodnot v samostat
 #### <a name="context-and-problem"></a>Kontext a problém
 Table Storage automaticky indexuje entity pomocí `PartitionKey` hodnot a `RowKey` . To umožňuje klientské aplikaci efektivně načíst entitu pomocí těchto hodnot. Například pomocí následující struktury tabulky může klientská aplikace použít dotaz typu Point k načtení konkrétní entity zaměstnance pomocí názvu oddělení a ID zaměstnance ( `PartitionKey` `RowKey` hodnoty a). Klient může také načíst entity seřazené podle ID zaměstnance v rámci každého oddělení.  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE09.png" alt-text="Obrázek znázorňující entitu oddělení a entitu zaměstnance"::: 9
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE09.png" alt-text="Obrázek struktury entity zaměstnanců, která při použití může klientská aplikace použít dotaz na bod k načtení jednotlivé entity zaměstnance pomocí názvu oddělení a ID zaměstnance (hodnoty PartitionKey a RowKey)."::: 9
 
 Pokud chcete také vyhledat entitu zaměstnance na základě hodnoty jiné vlastnosti, jako je například e-mailová adresa, je třeba použít méně efektivní kontrolu oddílů a vyhledat shodu. Důvodem je to, že služba Table Storage neposkytuje sekundární indexy. Kromě toho neexistuje možnost vyžádat si seznam zaměstnanců seřazených v jiném pořadí než v `RowKey` pořadí.  
 
@@ -486,7 +486,7 @@ Očekáváte velký objem transakcí na těchto entitách a chcete minimalizovat
 #### <a name="solution"></a>Řešení
 Pokud chcete vymezit nedostatku sekundárních indexů, můžete ukládat víc kopií každé z těchto entit s každou kopií pomocí různých `PartitionKey` `RowKey` hodnot a. Pokud uložíte entitu s následujícími strukturami, můžete efektivně načíst entity zaměstnanců na základě e-mailové adresy nebo ID zaměstnance. Hodnoty předpony pro `PartitionKey` , `empid_` a `email_` umožňují určit, který index chcete použít pro dotaz.  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE10.png" alt-text="Obrázek znázorňující entitu oddělení a entitu zaměstnance":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE10.png" alt-text="Obrázek znázorňující entitu zaměstnance s primárním indexem a entitou zaměstnance se sekundárním indexem":::
 
 Následující dvě kritéria filtru (jedno vyhledávání podle ID zaměstnance a jedna z nich hledají e-mailovou adresu) určují obě dotazy na bod:  
 
@@ -495,7 +495,7 @@ Následující dvě kritéria filtru (jedno vyhledávání podle ID zaměstnance
 
 Pokud se dotazuje na rozsah entit zaměstnanců, můžete určit rozsah seřazený v pořadí podle ID zaměstnance nebo rozsah seřazený v e-mailové adrese. Dotaz na entity s odpovídající předponou v `RowKey` .  
 
-* Chcete-li najít všechny zaměstnance v rámci prodejního oddělení s ID zaměstnance v rozsahu **000100** až **000199** , seřazené v pořadí ID zaměstnanců, použijte: $Filter = (PartitionKey EQ ' empid_Sales ') a (RowKey GE ' 000100 ') a (RowKey Le ' 000199 ')  
+* Chcete-li najít všechny zaměstnance v rámci prodejního oddělení s ID zaměstnance v rozsahu **000100** až **000199**, seřazené v pořadí ID zaměstnanců, použijte: $Filter = (PartitionKey EQ ' empid_Sales ') a (RowKey GE ' 000100 ') a (RowKey Le ' 000199 ')  
 * Chcete-li najít všechny zaměstnance v prodejním oddělení pomocí e-mailové adresy, která začíná na "a" seřazené v e-mailové adrese, použijte: $filter = (PartitionKey EQ ' email_Sales ') a (RowKey GE ' a ') a (RowKey lt ' b ')  
 
 Všimněte si, že syntaxe filtru použitá v předchozích příkladech je z tabulkového úložiště REST API. Další informace najdete v tématu věnovaném [dotazování entit](/rest/api/storageservices/Query-Entities).  
@@ -509,7 +509,7 @@ Když se budete rozhodovat, jak tento model implementovat, měli byste vzít v �
 * Vyplňování číselných hodnot v `RowKey` (například zaměstnance s ID 000223) umožňuje správné řazení a filtrování na základě horních a dolních mezí.  
 * Nemusíte nutně Duplikovat všechny vlastnosti vaší entity. Pokud například dotazy, které hledají entity pomocí e-mailové adresy `RowKey` , nikdy nepotřebují věk zaměstnance, můžou mít tyto entity následující strukturu:
   
-  :::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE11.png" alt-text="Obrázek znázorňující entitu oddělení a entitu zaměstnance":::
+  :::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE11.png" alt-text="Obrázek znázorňující entitu zaměstnance se sekundárním indexem":::
 
 * Obvykle je lepší ukládat duplicitní data a zajistit, abyste mohli načíst všechna potřebná data s jediným dotazem, než použijete jeden dotaz k vyhledání entity pomocí sekundárního indexu a další pro vyhledání požadovaných dat v primárním indexu.  
 
@@ -549,7 +549,7 @@ Pro ilustraci tohoto přístupu Předpokládejme, že máte požadavek na to, ab
 
 K provádění těchto dvou operací ale nemůžete použít EGT. Aby nedocházelo k riziku, že selhání způsobilo, že se entita objevila v obou nebo ani v tabulkách, musí být operace archivu nakonec konzistentní. Následující sekvenční diagram popisuje kroky v této operaci.  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE12.png" alt-text="Obrázek znázorňující entitu oddělení a entitu zaměstnance":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE12.png" alt-text="Diagram řešení pro případnou konzistenci":::
 
 Klient inicializuje operaci archivu tím, že umístí zprávu do fronty Azure (v tomto příkladu pro archivaci #456 zaměstnanců). Role pracovního procesu se dotazuje fronty na nové zprávy; Když ho najde, přečte zprávu a ponechá ve frontě skrytou kopii. Role pracovního procesu Next načte kopii entity z **aktuální** tabulky, vloží kopii do **archivní** tabulky a odstraní původní z **aktuální** tabulky. Nakonec, pokud z předchozích kroků nedošlo k chybám, role pracovního procesu odstraní skrytou zprávu z fronty.  
 
@@ -589,7 +589,7 @@ Udržujte entity indexu, abyste umožnili efektivní hledání, které vrací se
 #### <a name="context-and-problem"></a>Kontext a problém
 Table Storage automaticky indexuje entity pomocí `PartitionKey` hodnot a `RowKey` . To umožňuje klientské aplikaci efektivně načíst entitu pomocí dotazu na bod. Například pomocí následující struktury tabulek může klientská aplikace efektivně načíst jednotlivou entitu zaměstnance pomocí názvu oddělení a ID zaměstnance ( `PartitionKey` a `RowKey` ).  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE13.png" alt-text="Obrázek znázorňující entitu oddělení a entitu zaměstnance":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE13.png" alt-text="Obrázek struktury entity zaměstnanců, kde klientská aplikace může efektivně načíst jednotlivou entitu zaměstnance pomocí názvu oddělení a ID zaměstnance (PartitionKey a RowKey).":::
 
 Pokud chcete mít také přístup k seznamu entit zaměstnanců v závislosti na hodnotě jiné nejedinečné vlastnosti, jako je například příjmení, je nutné použít méně efektivní kontrolu oddílů. Tato kontrola vyhledá shodu a místo toho použije index k jejich přímému vyhledání. Důvodem je to, že služba Table Storage neposkytuje sekundární indexy.  
 
@@ -608,13 +608,29 @@ Možnost 2: vytvoření entit indexu ve stejném oddílu
 
 Použijte entity indexů, které ukládají následující data:  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE14.png" alt-text="Obrázek znázorňující entitu oddělení a entitu zaměstnance" a `RowKey` hodnot ze seznamu zaměstnanců, které jste získali v kroku 2.  
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE14.png" alt-text="Obrázek znázorňující entitu zaměstnance s řetězcem, který obsahuje seznam ID zaměstnanců se stejným posledním jménem":::
+
+`EmployeeIDs`Vlastnost obsahuje seznam ID zaměstnanců pro zaměstnance s posledním jménem uloženým v `RowKey` .  
+
+Následující kroky popisují postup, který byste měli provést při přidávání nového zaměstnance. V tomto příkladu přidáme zaměstnance s ID 000152 a názvem Novotný do oddělení Sales:  
+
+1. Načtěte indexovou entitu s `PartitionKey` hodnotou Sales a `RowKey` hodnotou "Novotný". Uložte značku ETag této entity, která se použije v kroku 2.  
+2. Vytvoření transakce skupiny entit (tj. operace dávky), která vloží novou entitu zaměstnance ( `PartitionKey` hodnota prodej a `RowKey` hodnota "000152") a aktualizuje entitu indexu ( `PartitionKey` hodnota prodej a `RowKey` hodnota "Novotný"). EGT to dělá přidáním nového ID zaměstnance do seznamu v poli ČísloZaměstnance. Další informace o EGTs najdete v tématu [transakce skupiny entit](#entity-group-transactions).  
+3. Pokud se EGT nepovede kvůli optimistické chybě souběžnosti (to znamená, že entita indexu změnila někdo jiný), pak je potřeba začít znovu v kroku 1.  
+
+Pokud používáte druhou možnost, můžete použít podobný přístup k odstranění zaměstnance. Změna příjmení zaměstnance je mírně složitější, protože potřebujete spustit EGT, který aktualizuje tři entity: entita zaměstnance, indexová entita pro staré příjmení a entitu indexu pro nové příjmení. Musíte načíst každou entitu před provedením jakýchkoli změn, aby bylo možné načíst hodnoty ETag, které pak můžete použít k provedení aktualizací pomocí optimistické souběžnosti.  
+
+Následující kroky popisují postup, který byste měli provést, pokud potřebujete vyhledat všechny zaměstnance s určitým jménem v oddělení. V tomto příkladu prohledáváme všechny zaměstnance s názvem Novotný v oddělení Sales (prodej):  
+
+1. Načtěte indexovou entitu s `PartitionKey` hodnotou Sales a `RowKey` hodnotou "Novotný".  
+2. Analyzovat seznam ID zaměstnanců v `EmployeeIDs` poli.  
+3. Pokud potřebujete další informace o každém z těchto zaměstnanců (například jejich e-mailové adresy), načtěte každou entitu zaměstnance pomocí `PartitionKey` hodnoty "prodej" a `RowKey` hodnot ze seznamu zaměstnanců, které jste získali v kroku 2.  
 
 Možnost 3: vytvoření entit indexu v samostatném oddílu nebo tabulce  
 
 Pro tuto možnost použijte entity indexů, které ukládají následující data:  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE15.png" alt-text="Obrázek znázorňující entitu oddělení a entitu zaměstnance":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE15.png" alt-text="Snímek obrazovky zobrazující entitu indexu zaměstnance obsahující seznam ID zaměstnanců pro zaměstnance s posledním jménem uloženým v RowKey a PartitionKey.":::
 
 `EmployeeIDs`Vlastnost obsahuje seznam ID zaměstnanců pro zaměstnance s posledním jménem uloženým v `RowKey` a `PartitionKey` .  
 
@@ -646,12 +662,12 @@ Kombinování souvisejících dat společně v jedné entitě vám umožní nač
 #### <a name="context-and-problem"></a>Kontext a problém
 V relační databázi obvykle Normalizujte data pro odstranění duplicit, ke kterým dochází, když dotazy načítají data z více tabulek. Pokud normalizete data v tabulkách Azure, je potřeba provést několik přenosů od klienta k serveru, aby se načetla vaše související data. Například s následující strukturou tabulky potřebujete dvě zpáteční cesty pro získání podrobností o oddělení. Jedna cesta načte entitu oddělení, která zahrnuje ID manažera, a druhá cesta načte podrobnosti správce v entitě zaměstnanec.  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE16.png" alt-text="Obrázek znázorňující entitu oddělení a entitu zaměstnance":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE16.png" alt-text="Grafika entity oddělení a entit zaměstnanců":::
 
 #### <a name="solution"></a>Řešení
-Místo uložení dat ve dvou samostatných entitách denormalizujte data a udržujte kopii podrobností manažera v entitě oddělení. Například:  
+Místo uložení dat ve dvou samostatných entitách denormalizujte data a udržujte kopii podrobností manažera v entitě oddělení. Příklad:  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE17.png" alt-text="Obrázek znázorňující entitu oddělení a entitu zaměstnance":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE17.png" alt-text="Obrázek denormalizované a kombinované entity oddělení":::
 
 S entitami oddělení uloženými s těmito vlastnostmi teď můžete načíst všechny podrobnosti, které potřebujete o oddělení, pomocí dotazu na bod.  
 
@@ -679,18 +695,18 @@ V relační databázi je použití spojení v dotazech k vrácení související
 
 Předpokládejme, že ukládáte entity zaměstnanců do úložiště tabulek pomocí následující struktury:  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE18.png" alt-text="Obrázek znázorňující entitu oddělení a entitu zaměstnance":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE18.png" alt-text="Grafika struktury entit zaměstnanců, kterou byste měli použít k ukládání entit zaměstnanců do úložiště tabulek.":::
 
 Je také potřeba ukládat historická data týkající se kontrol a výkonu každého roku, který zaměstnanec pracoval pro vaši organizaci, a vy budete mít přístup k těmto informacím po rocích. Jednou z možností je vytvořit další tabulku, která obsahuje entity s následující strukturou:  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE19.png" alt-text="Obrázek znázorňující entitu oddělení a entitu zaměstnance":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE19.png" alt-text="Obrázek entity kontroly zaměstnance":::
 
 S tímto přístupem se můžete rozhodnout duplikovat některé informace (například křestní jméno a příjmení) v nové entitě, abyste mohli data načíst pomocí jediného požadavku. Nemůžete ale zachovat silnou konzistenci, protože nemůžete použít EGT k tomu, aby se tyto dvě entity používaly atomicky.  
 
 #### <a name="solution"></a>Řešení
 Uložte do původní tabulky nový typ entity pomocí entit s následující strukturou:  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE20.png" alt-text="Obrázek znázorňující entitu oddělení a entitu zaměstnance":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE20.png" alt-text="Obrázek entity zaměstnance se složeným klíčem":::
 
 Všimněte si `RowKey` , jak je nyní složený klíč, který se skládá z ID zaměstnance a roku revizních dat. Díky tomu můžete načíst výkon a zkontrolovat data pomocí jediné žádosti pro jednu entitu.  
 
@@ -701,7 +717,7 @@ $filter = (PartitionKey EQ ' Sales ') a (RowKey GE ' empid_000123 ') a (RowKey l
 #### <a name="issues-and-considerations"></a>Problémy a důležité informace
 Když se budete rozhodovat, jak tento model implementovat, měli byste vzít v úvahu následující skutečnosti:  
 
-* Měli byste použít vhodný oddělovací znak, který usnadňuje analýzu `RowKey` hodnoty: například **000123_2012** .  
+* Měli byste použít vhodný oddělovací znak, který usnadňuje analýzu `RowKey` hodnoty: například **000123_2012**.  
 * Tuto entitu ukládáte i do stejného oddílu jako jiné entity, které obsahují související data pro stejného zaměstnance. To znamená, že můžete pomocí EGTs zachovat silnou konzistenci.
 * Měli byste zvážit, jak často budete zadávat dotazy na data, abyste zjistili, jestli je tento model vhodný. Například pokud ke kontrole dat přistupujete nečasto a hlavním datům zaměstnanců, měli byste je uchovávat jako samostatné entity.  
 
@@ -762,7 +778,7 @@ Mnoho aplikací odstraní stará data, která už nejsou k dispozici pro klients
 
 Jedním z možných návrhů je použití data a času žádosti o přihlášení v `RowKey` :  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE21.png" alt-text="Obrázek znázorňující entitu oddělení a entitu zaměstnance":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE21.png" alt-text="Obrázek entity pokus o přihlášení":::
 
 Tento přístup zabraňuje dělení hotspotů, protože aplikace může vkládat a odstraňovat přihlašovací entity pro každého uživatele v samostatném oddílu. Tento přístup ale může být nákladný a časově náročný, pokud máte velký počet entit. Nejprve je třeba provést prohledávání tabulky, aby bylo možné identifikovat všechny entity, které chcete odstranit, a pak musíte odstranit každou starou entitu. Můžete snížit počet zpátečních cest k serveru nutnému k odstranění starých entit dávkování více žádostí o odstranění do EGTs.  
 
@@ -792,14 +808,14 @@ Uložte kompletní datové řady do jedné entity, abyste minimalizovali počet 
 #### <a name="context-and-problem"></a>Kontext a problém
 Běžným scénářem je, že aplikace ukládá řadu dat, která obvykle potřebují k načtení všech najednou. Například vaše aplikace může zaznamenat, kolik zpráv IM každý zaměstnanec odesílá každou hodinu, a pak tyto informace použít k vykreslení počtu zpráv, které každý uživatel poslal za předchozích 24 hodin. Jeden návrh může být ukládat 24 entit pro každého zaměstnance:  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE22.png" alt-text="Obrázek znázorňující entitu oddělení a entitu zaměstnance":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE22.png" alt-text="Obrázek entity statistiky zprávy":::
 
 S tímto návrhem můžete snadno vyhledat a aktualizovat entitu, která se má aktualizovat pro každého zaměstnance, kdykoli aplikace potřebuje aktualizovat hodnotu počet zpráv. Chcete-li však načíst informace pro vykreslení grafu aktivity za předchozích 24 hodin, je nutné načíst 24 entit.  
 
 #### <a name="solution"></a>Řešení
 Použijte následující návrh s samostatnou vlastností pro uložení počtu zpráv pro každou hodinu:  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE23.png" alt-text="Obrázek znázorňující entitu oddělení a entitu zaměstnance":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE23.png" alt-text="Obrázek znázorňující entitu statistiky zprávy s oddělenými vlastnostmi":::
 
 S tímto návrhem můžete pomocí operace sloučení aktualizovat počet zpráv zaměstnance na určitou hodinu. Nyní můžete načíst všechny informace potřebné k vykreslení grafu pomocí žádosti o jednu entitu.  
 
@@ -828,7 +844,7 @@ Jednotlivá entita nemůže mít více než 252 vlastností (kromě povinných v
 #### <a name="solution"></a>Řešení
 Pomocí služby Table Storage můžete ukládat více entit, které reprezentují jeden velký obchodní objekt s více než 252 vlastnostmi. Pokud například chcete uložit počet zpráv IM odesílaných jednotlivými zaměstnanci po dobu posledních 365 dní, můžete použít následující návrh, který používá dvě entity s různými schématy:  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE24.png" alt-text="Obrázek znázorňující entitu oddělení a entitu zaměstnance":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE24.png" alt-text="Obrázek znázorňující entitu statistiky zprávy s Rowkey 01 a entitou Statistika zprávy s Rowkey 02":::
 
 Pokud potřebujete provést změnu, která vyžaduje aktualizaci obou entit, aby byla vzájemně synchronizovaná, můžete použít EGT. V opačném případě můžete použít jednu operaci sloučení k aktualizaci počtu zpráv pro určitý den. Chcete-li načíst všechna data pro jednotlivé zaměstnance, je nutné načíst obě entity. To lze provést pomocí dvou efektivních požadavků, které používají `PartitionKey` a i `RowKey` .  
 
@@ -855,7 +871,7 @@ Jednotlivé entity nemůžou ukládat celkem víc než 1 MB dat. Pokud jedna neb
 #### <a name="solution"></a>Řešení
 Pokud má vaše entita velikost větší než 1 MB, protože jedna nebo více vlastností obsahuje velké množství dat, můžete ukládat data v úložišti objektů BLOB a potom uložit adresu objektu blob do vlastnosti v entitě. Můžete například uložit fotografii zaměstnance v úložišti objektů BLOB a Uložit odkaz na fotografii ve `Photo` vlastnosti vaší entity zaměstnance:  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE25.png" alt-text="Obrázek znázorňující entitu oddělení a entitu zaměstnance":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE25.png" alt-text="Obrázek znázorňující entitu zaměstnance s řetězcem pro fotografii ukazující na úložiště objektů BLOB":::
 
 #### <a name="issues-and-considerations"></a>Problémy a důležité informace
 Když se budete rozhodovat, jak tento model implementovat, měli byste vzít v úvahu následující skutečnosti:  
@@ -880,12 +896,12 @@ Když máte velký objem vložení, zvyšte škálovatelnost tím, že rozšíř
 #### <a name="context-and-problem"></a>Kontext a problém
 Nedokončené nebo připojené entity k uloženým entitám obvykle způsobí, že aplikace přidává nové entity do prvního nebo posledního oddílu sekvence oddílů. V tomto případě jsou všechna vložení v jakémkoli čase prováděna ve stejném oddílu a vytváří hotspot. Tím se zabrání tomu, aby úložiště tabulek z vyrovnávání zátěže vytvářely mezi více uzly, a případně způsobí, že aplikace dosáhne cílů škálovatelnosti pro oddíl. Zvažte například případ aplikace, která protokoluje přístup zaměstnanců k síti a prostředkům. Struktura entity, jako je například následující, může způsobit, že se oddíl aktuální hodiny stane aktivním rozsahem, pokud objem transakcí dosáhne cíle škálovatelnosti pro jednotlivé oddíly:  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE26.png" alt-text="Obrázek znázorňující entitu oddělení a entitu zaměstnance":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE26.png" alt-text="Obrázek struktury entity, která může mít za následek, že se oddíl aktuální hodiny stane aktivním rozsahem, pokud objem transakcí dosáhne cíle škálovatelnosti pro jednotlivé oddíly.":::
 
 #### <a name="solution"></a>Řešení
 Následující alternativní struktura entity zabraňuje hotspotu v jakémkoli konkrétním oddílu, protože aplikace protokoluje události:  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE27.png" alt-text="Obrázek znázorňující entitu oddělení a entitu zaměstnance":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE27.png" alt-text="Obrázek znázorňující entitu zaměstnance s RowKeyem složeným z kódu pro rok, měsíc, den, hodinu a ID události":::
 
 V tomto příkladu si všimněte, jak `PartitionKey` `RowKey` jsou složené klíče a. K `PartitionKey` distribuci protokolování mezi více oddíly používá oddělení i ID zaměstnance.  
 
@@ -911,13 +927,13 @@ K ukládání dat protokolu obvykle byste měli místo tabulkového úložiště
 #### <a name="context-and-problem"></a>Kontext a problém
 Běžný případ použití pro data protokolu je načtení výběru položek protokolu pro určitý rozsah data a času. Například chcete najít všechny chybové a kritické zprávy, které aplikace zaznamenala mezi 15:04 a 15:06 v konkrétní datum. Nechcete pomocí data a času zprávy protokolu určit oddíl, do kterého ukládáte entity protokolu. To má za následek, že v libovolném konkrétním čase budou všechny entity protokolu sdílet stejnou `PartitionKey` hodnotu (viz [předplatná/připojit anti-Pattern](#prepend-append-anti-pattern)). Například následující schéma entity pro zprávu protokolu má za následek aktivní oddíl, protože aplikace zapisuje všechny zprávy protokolu do oddílu aktuálního data a hodiny:  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE28.png" alt-text="Obrázek znázorňující entitu oddělení a entitu zaměstnance":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE28.png" alt-text="Obrázek, který zobrazuje schéma entit pro zprávu protokolu, má za následek aktivní oddíl.":::
 
 V tomto příkladu `RowKey` obsahuje datum a čas zprávy protokolu, aby se zajistilo, že se zprávy protokolu v pořadí podle data a času řadí. `RowKey`Zahrnuje také ID zprávy, v případě, že více zpráv protokolu sdílí stejné datum a čas.  
 
 Další možností je použít `PartitionKey` , který zajišťuje, že aplikace zapisuje zprávy do celé řady oddílů. Pokud například zdroj zprávy protokolu poskytuje způsob, jak distribuovat zprávy v mnoha oddílech, můžete použít následující schéma entity:  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE29.png" alt-text="Obrázek znázorňující entitu oddělení a entitu zaměstnance":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE29.png" alt-text="Obrázek entity zprávy protokolu":::
 
 Problém s tímto schématem je však, že k načtení všech zpráv protokolu pro určité časové období je nutné v tabulce vyhledat všechny oddíly.
 
@@ -1093,7 +1109,7 @@ Výjimky, které jsou vyvolány, když klientská knihovna pro úložiště spus
 Měli byste také zvážit, jak váš návrh ovlivňuje způsob, jakým vaše klientská aplikace zpracovává operace souběžnosti a aktualizace.  
 
 #### <a name="managing-concurrency"></a>Správa souběžnosti
-Ve výchozím nastavení implementuje úložiště tabulek při operacích vložení, sloučení a odstranění optimistické kontroly souběžnosti na úrovni jednotlivých entit, i když je možné, že klient vynutí obejít tyto kontroly v úložišti tabulek. Další informace najdete v tématu [Správa souběžnosti v Microsoft Azure Storage](../storage/common/storage-concurrency.md).  
+Ve výchozím nastavení implementuje úložiště tabulek při operacích vložení, sloučení a odstranění optimistické kontroly souběžnosti na úrovni jednotlivých entit, i když je možné, že klient vynutí obejít tyto kontroly v úložišti tabulek. Další informace najdete v tématu [Správa souběžnosti v Microsoft Azure Storage](../storage/blobs/concurrency-manage.md).  
 
 #### <a name="merge-or-replace"></a>Sloučit nebo nahradit
 `Replace`Metoda `TableOperation` třídy vždy nahrazuje kompletní entitu v úložišti tabulek. Pokud do žádosti v případě, že tato vlastnost existuje v uložené entitě, nezadáte vlastnost, požadavek tuto vlastnost odebere z uložené entity. Pokud nechcete odebrat vlastnost explicitně z uložené entity, musíte do žádosti zahrnout každou vlastnost.  

@@ -7,12 +7,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 19c27dc80f9af013c458663c9c7afb0033683acd
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: d8944c9e49bde8c452a10a1886cae316a0f7a33f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97348063"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945065"
 ---
 # <a name="create-luis-resources"></a>Vytvoření prostředků LUIS
 
@@ -115,7 +115,7 @@ Vlastník a všichni přispěvatelé mají přístup k vytváření aplikací.
 |Importovat verzi||
 |Nastavit aplikaci jako veřejnou|Když je aplikace veřejná, může dotazovat aplikace kdokoli, kdo má klíč pro vytváření nebo klíč koncového bodu.|
 |Upravit model|
-|Publikování|
+|Publikovat|
 |Kontrola služby Endpoint projevy pro [aktivní učení](luis-how-to-review-endpoint-utterances.md)|
 |Trénování|
 
@@ -125,7 +125,7 @@ Vlastník a všichni přispěvatelé mají přístup k vytváření aplikací.
 
 Přístup pro dotazování koncového bodu předpovědi je řízen nastavením na stránce **informace o aplikaci** v části **Spravovat** .
 
-|[Soukromý koncový bod](#runtime-security-for-private-apps)|[Veřejný koncový bod](#runtime-security-for-public-apps)|
+|[Privátní koncový bod](#runtime-security-for-private-apps)|[Veřejný koncový bod](#runtime-security-for-public-apps)|
 |:--|:--|
 |K dispozici pro vlastníka a přispěvatele|Dostupné pro vlastníka, přispěvatele a někoho jiného, kdo ví, že ID aplikace|
 
@@ -173,7 +173,7 @@ Můžete určit, kdo může zobrazit klíč koncového bodu LUIS předpovědi, v
 
 ### <a name="create-resources-in-the-azure-cli"></a>Vytváření prostředků v Azure CLI
 
-Pomocí rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli?view=azure-cli-latest) můžete jednotlivé prostředky vytvořit jednotlivě.
+Pomocí rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) můžete jednotlivé prostředky vytvořit jednotlivě.
 
 Prostředek `kind` :
 

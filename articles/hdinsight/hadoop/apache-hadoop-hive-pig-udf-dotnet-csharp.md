@@ -1,19 +1,16 @@
 ---
 title: C#, Apache Hive & Apache prasete v Apache Hadoop – Azure HDInsight
 description: Naučte se používat uživatelsky definované funkce jazyka C# s Apache Hive a Apache vepřovým streamem v Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/06/2019
-ms.openlocfilehash: e99d68d31f1da4dcb3ef1086a2bbd90f0ab30410
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 97b23a2b9e3b95a5ea0efcd27d0ec185b1c456f1
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023121"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946553"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-on-apache-hadoop-in-hdinsight"></a>Použití uživatelem definovaných funkcí jazyka C# s Apache Hive a Apache prasetem v Apache Hadoop ve službě HDInsight
 
@@ -160,7 +157,7 @@ Vytvoření projektu v jazyce C# pro Apache Hive systému souborů UDF:
 
     Tento kód analyzuje řádky odesílané z prasete a znovu formátuje řádky, které začínají na `java.lang.Exception` .
 
-6. V řádku nabídek vyberte sestavení sestavit **Build**  >  **řešení** a sestavte projekt.
+6. V řádku nabídek vyberte sestavení sestavit   >  **řešení** a sestavte projekt.
 
 7. Řešení nechte otevřené.
 

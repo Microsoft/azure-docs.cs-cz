@@ -1,19 +1,16 @@
 ---
 title: Porovnání možností úložiště pro použití s clustery Azure HDInsight
 description: Poskytuje přehled o typech úložišť a jejich spolupráci s Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 34eeeed2b3c44336cd4aa1219d54b1811c6988f5
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: b6dd0fd95280a65615d38ab11a2f9814f58586f5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94952314"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945844"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Porovnání možností úložiště pro použití s clustery Azure HDInsight
 
@@ -50,15 +47,15 @@ Clustery můžete vytvářet pomocí kombinací služeb pro primární a volitel
 | Verze HDInsight | Primární úložiště | Sekundární úložiště | Podporováno |
 |---|---|---|---|
 | 3,6 & 4,0 | Pro obecné účely V1, Pro obecné účely v2 | Pro obecné účely V1, Pro obecné účely v2, BlobStorage (objekty blob bloku) | Yes |
-| 3,6 & 4,0 | Pro obecné účely V1, Pro obecné účely v2 | Data Lake Storage Gen2 | Ne |
+| 3,6 & 4,0 | Pro obecné účely V1, Pro obecné účely v2 | Data Lake Storage Gen2 | No |
 | 3,6 & 4,0 | Data Lake Storage Gen2 * | Data Lake Storage Gen2 | Yes |
 | 3,6 & 4,0 | Data Lake Storage Gen2 * | Pro obecné účely V1, Pro obecné účely v2, BlobStorage (objekty blob bloku) | Yes |
-| 3,6 & 4,0 | Data Lake Storage Gen2 | Data Lake Storage Gen1 | Ne |
+| 3,6 & 4,0 | Data Lake Storage Gen2 | Data Lake Storage Gen1 | No |
 | 3,6 | Data Lake Storage Gen1 | Data Lake Storage Gen1 | Yes |
 | 3,6 | Data Lake Storage Gen1 | Pro obecné účely V1, Pro obecné účely v2, BlobStorage (objekty blob bloku) | Yes |
-| 3,6 | Data Lake Storage Gen1 | Data Lake Storage Gen2 | Ne |
-| 4,0 | Data Lake Storage Gen1 | Libovolný | Ne |
-| 4,0 | Pro obecné účely V1, Pro obecné účely v2 | Data Lake Storage Gen1 | Ne |
+| 3,6 | Data Lake Storage Gen1 | Data Lake Storage Gen2 | No |
+| 4,0 | Data Lake Storage Gen1 | Libovolný | No |
+| 4,0 | Pro obecné účely V1, Pro obecné účely v2 | Data Lake Storage Gen1 | No |
 
 * = Může to být jeden nebo několik Data Lake Storage Gen2, pokud všechna nastavení používají stejnou spravovanou identitu pro přístup k clusteru.
 

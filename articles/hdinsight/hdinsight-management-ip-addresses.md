@@ -1,19 +1,16 @@
 ---
 title: IP adresy pro správu Azure HDInsight
 description: Zjistěte, které IP adresy musíte povolit pro příchozí provoz, aby bylo možné správně nakonfigurovat skupiny zabezpečení sítě a uživatelem definované trasy pro virtuální sítě pomocí Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/11/2020
-ms.openlocfilehash: 9fa38e045bbe29e5d45587adf0d277c1414fee4c
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 89d749a04c22967198be217350ff38751336fe67
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96549034"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944113"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>IP adresy pro správu služby HDInsight
 
@@ -59,8 +56,8 @@ Povolte provoz z IP adres uvedených pro služby stavu a správy Azure HDInsight
 | Asie | Východní Asie | 23.102.235.122</br>52.175.38.134 | \*: 443 | Příchozí |
 | &nbsp; | Southeast Asia | 13.76.245.160</br>13.76.136.249 | \*: 443 | Příchozí |
 | Austrálie | Austrálie – východ | 104.210.84.115</br>13.75.152.195 | \*: 443 | Příchozí |
-| &nbsp; | Australia Southeast | 13.77.2.56</br>13.77.2.94 | \*: 443 | Příchozí |
-| Brazílie | Brazil South | 191.235.84.104</br>191.235.87.113 | \*: 443 | Příchozí |
+| &nbsp; | Austrálie – jihovýchod | 13.77.2.56</br>13.77.2.94 | \*: 443 | Příchozí |
+| Brazílie | Brazílie – jih | 191.235.84.104</br>191.235.87.113 | \*: 443 | Příchozí |
 | Kanada | Kanada – východ | 52.229.127.96</br>52.229.123.172 | \*: 443 | Příchozí |
 | &nbsp; | Střední Kanada | 52.228.37.66</br>52.228.45.222 |\*: 443 | Příchozí |
 | Čína | Čína – sever | 42.159.96.170</br>139.217.2.219</br></br>42.159.198.178</br>42.159.234.157 | \*: 443 | Příchozí |
@@ -80,7 +77,7 @@ Povolte provoz z IP adres uvedených pro služby stavu a správy Azure HDInsight
 | &nbsp; | Jižní Korea – jih | 52.231.203.16</br>52.231.205.214 | \*: 443 | Příchozí
 | Spojené království | Spojené království – západ | 51.141.13.110</br>51.141.7.20 | \*: 443 | Příchozí |
 | &nbsp; | Spojené království – jih | 51.140.47.39</br>51.140.52.16 | \*: 443 | Příchozí |
-| Spojené státy | Střední USA | 13.89.171.122</br>13.89.171.124 | \*: 443 | Příchozí |
+| USA | USA – střed | 13.89.171.122</br>13.89.171.124 | \*: 443 | Příchozí |
 | &nbsp; | East US | 13.82.225.233</br>40.71.175.99 | \*: 443 | Příchozí |
 | &nbsp; | USA – středosever | 157.56.8.38</br>157.55.213.99 | \*: 443 | Příchozí |
 | &nbsp; | USA – středozápad | 52.161.23.15</br>52.161.10.167 | \*: 443 | Příchozí |

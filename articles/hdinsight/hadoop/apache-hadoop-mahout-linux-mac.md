@@ -1,19 +1,16 @@
 ---
 title: Generování doporučení pomocí Apache Mahout ve službě Azure HDInsight
 description: Naučte se používat knihovnu Machine Learning pro Apache Mahout ke generování filmových doporučení v HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/14/2020
-ms.openlocfilehash: a4e4a45519526dd0eeb938a3b83e737d82589c1e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c31ffaf094801bdd49e5800bd338a15d8b8315f6
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86207675"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946488"
 ---
 # <a name="generate-recommendations-using-apache-mahout-in-azure-hdinsight"></a>Generování doporučení pomocí Apache Mahout ve službě Azure HDInsight
 
@@ -33,11 +30,11 @@ Jednou z funkcí, které poskytuje Mahout, je modul doporučení. Tento modul p�
 
 Následující pracovní postup je zjednodušený příklad, který používá data filmu:
 
-* **Navracení**: Jana, Alice a Bob mají všechny *konflikty hvězdiček*, *Empire se*přestará zpět a *vrátí Jedi*. Mahout určuje, že uživatelé, kteří jako kterýkoli z těchto filmů líbí jeden z těchto filmů, mají také další dva.
+* **Navracení**: Jana, Alice a Bob mají všechny *konflikty hvězdiček*, *Empire se* přestará zpět a *vrátí Jedi*. Mahout určuje, že uživatelé, kteří jako kterýkoli z těchto filmů líbí jeden z těchto filmů, mají také další dva.
 
-* **Společný výskyt**: Bob a Alice se také staly *fiktivním Menace*, *útokem klonů*a *Revengeem Sith*. Mahout určuje, že uživatelé, kteří se k předchozím třem filmům líbí, stejně jako tyto tři filmy.
+* **Společný výskyt**: Bob a Alice se také staly *fiktivním Menace*, *útokem klonů* a *Revengeem Sith*. Mahout určuje, že uživatelé, kteří se k předchozím třem filmům líbí, stejně jako tyto tři filmy.
 
-* **Doporučení na podobnost**: vzhledem k tomu, že Jana se líbí prvnímu třimu videu, Mahout vyhledá filmy, které s podobnými preferencemi líbí, ale Jana se nesleduje (líbí se nebo hodnotil). V tomto případě Mahout doporučuje *fiktivní Menace*, *útok klonů*a *Revengey Sith*.
+* **Doporučení na podobnost**: vzhledem k tomu, že Jana se líbí prvnímu třimu videu, Mahout vyhledá filmy, které s podobnými preferencemi líbí, ale Jana se nesleduje (líbí se nebo hodnotil). V tomto případě Mahout doporučuje *fiktivní Menace*, *útok klonů* a *Revengey Sith*.
 
 ### <a name="understanding-the-data"></a>Porozumění datům
 
@@ -160,7 +157,7 @@ Data obsažená v `user-ratings.txt` mají strukturu `userID` , `movieID` , `use
    print "------------------------"
    ```
 
-    Data uložíte tak, že stisknete **CTRL + X**, **Y**a nakonec **ENTER** .
+    Data uložíte tak, že stisknete **CTRL + X**, **Y** a nakonec **ENTER** .
 
 4. Spusťte skript Pythonu. Následující příkaz předpokládá, že jste v adresáři, do kterého se stáhly všechny soubory:
 

@@ -3,12 +3,12 @@ title: Vytvořit nový prostředek služby Azure Application Insights | Microsof
 description: Ručně nastavte Application Insights monitorování pro novou živou aplikaci.
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 3fd05e6bd68be89b964fe1ad32029bf44f3352ea
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 2924ccbbf591020d7872d3e9cca62a9c271db7c0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96906365"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944590"
 ---
 # <a name="create-an-application-insights-resource"></a>Vytvořte prostředek Application Insights
 
@@ -94,7 +94,7 @@ SamplingPercentage :
 TenantId           : {subid}
 ```
 
-Úplnou dokumentaci k prostředí PowerShell pro tuto rutinu a informace o tom, jak načíst klíč instrumentace, najdete v [dokumentaci Azure PowerShell](/powershell/module/az.applicationinsights/new-azapplicationinsights?view=azps-2.5.0).
+Úplnou dokumentaci k prostředí PowerShell pro tuto rutinu a informace o tom, jak načíst klíč instrumentace, najdete v [dokumentaci Azure PowerShell](/powershell/module/az.applicationinsights/new-azapplicationinsights).
 
 ### <a name="azure-cli-preview"></a>Rozhraní příkazového řádku Azure (Preview)
 
@@ -151,7 +151,7 @@ az monitor app-insights component create --app demoApp --location eastus --kind 
 }
 ```
 
-Úplnou dokumentaci k Azure CLI pro tento příkaz a informace o tom, jak načíst klíč instrumentace, najdete v dokumentaci k rozhraní příkazového [řádku Azure CLI](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-create).
+Úplnou dokumentaci k Azure CLI pro tento příkaz a informace o tom, jak načíst klíč instrumentace, najdete v dokumentaci k rozhraní příkazového [řádku Azure CLI](/cli/azure/ext/application-insights/monitor/app-insights/component#ext-application-insights-az-monitor-app-insights-component-create).
 
 ## <a name="next-steps"></a>Další kroky
 * [Diagnostické hledání](./diagnostic-search.md)

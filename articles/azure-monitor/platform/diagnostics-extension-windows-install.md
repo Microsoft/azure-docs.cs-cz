@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: bwren
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: e6ccba27fb599cb26da86e94d3500f4f806ecb76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14f37d0779f245301b3750329658a580dc3f9e42
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328866"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946216"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>Instalace a konfigurace rozšíření Windows Azure Diagnostics (WAD)
 [Rozšíření Azure Diagnostics](diagnostics-extension-overview.md) je agent v Azure monitor, který shromažďuje data monitorování z hostovaného operačního systému a úloh virtuálních počítačů Azure a dalších výpočetních prostředků. Tento článek poskytuje podrobné informace o instalaci a konfiguraci rozšíření diagnostiky systému Windows a popis způsobu, jakým jsou data uložena v a Azure Storage účtu.
@@ -65,7 +65,7 @@ Diagnostické rozšíření můžete nainstalovat a nakonfigurovat na samostatn�
    
    ![Spravovaná entita](media/diagnostics-extension-windows-install/managed-entity.png)
 
-9. V **agentovi**můžete změnit účet úložiště, nastavit diskovou kvótu a určit, jestli se mají shromažďovat protokoly diagnostické infrastruktury.  
+9. V **agentovi** můžete změnit účet úložiště, nastavit diskovou kvótu a určit, jestli se mají shromažďovat protokoly diagnostické infrastruktury.  
 
    ![Snímek obrazovky s možností nastavení účtu úložiště zobrazuje kartu Agent.](media/diagnostics-extension-windows-install/agent.png)
 
@@ -78,7 +78,7 @@ Diagnostické rozšíření můžete nainstalovat a nakonfigurovat na samostatn�
 V tématu [použití monitorování a diagnostiky pomocí virtuálního počítače s Windows a Azure Resource Manager šablon](../../virtual-machines/extensions/diagnostics-template.md) při nasazení rozšíření diagnostiky pomocí šablon Azure Resource Manager. 
 
 ## <a name="azure-cli-deployment"></a>Nasazení Azure CLI
-Rozhraní příkazového řádku Azure můžete použít k nasazení rozšíření Azure Diagnostics do existujícího virtuálního počítače pomocí příkazů [AZ VM Extension set](/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-set) , jak je uvedeno v následujícím příkladu. 
+Rozhraní příkazového řádku Azure můžete použít k nasazení rozšíření Azure Diagnostics do existujícího virtuálního počítače pomocí příkazů [AZ VM Extension set](/cli/azure/vm/extension#az-vm-extension-set) , jak je uvedeno v následujícím příkladu. 
 
 ```azurecli
 az vm extension set \
@@ -192,19 +192,19 @@ Další informace najdete [v tématu použití PowerShellu k povolení Azure Dia
 V následující tabulce jsou uvedeny různé typy dat shromážděných z rozšíření pro diagnostiku a zda jsou uloženy jako tabulka nebo objekt BLOB. Data uložená v tabulkách je také možné ukládat do objektů BLOB v závislosti na [Nastavení StorageType](diagnostics-extension-schema-windows.md#publicconfig-element) ve vaší veřejné konfiguraci.
 
 
-| Data | Typ úložiště | Description |
+| Data | Typ úložiště | Popis |
 |:---|:---|:---|
 | WADDiagnosticInfrastructureLogsTable | Tabulka | Diagnostické monitorování a změny konfigurace. |
 | WADDirectoriesTable | Tabulka | Adresáře, které monitoruje monitorování diagnostiky.  Patří sem protokoly IIS, protokoly neúspěšných požadavků služby IIS a vlastní adresáře.  Umístění souboru protokolu objektu BLOB je zadáno v poli kontejneru a název objektu BLOB je uveden v poli RelativePath.  Pole AbsolutePath označuje umístění a název souboru, který se nachází na virtuálním počítači Azure. |
 | WadLogsTable | Tabulka | Protokoly napsané v kódu pomocí naslouchacího procesu trasování. |
 | WADPerformanceCountersTable | Tabulka | Čítače výkonu. |
 | WADWindowsEventLogsTable | Tabulka | Protokoly událostí systému Windows. |
-| WAD – IIS – failedreqlogfiles | Blob | Obsahuje informace z protokolů neúspěšných požadavků služby IIS. |
-| WAD – IIS – soubory protokolů | Blob | Obsahuje informace o protokolech služby IIS. |
-| Uživatelská | Blob | Vlastní kontejner založený na konfiguraci adresářů monitorovaných monitorováním diagnostiky.  Název tohoto kontejneru objektů BLOB se určí v WADDirectoriesTable. |
+| WAD – IIS – failedreqlogfiles | Objekt blob | Obsahuje informace z protokolů neúspěšných požadavků služby IIS. |
+| WAD – IIS – soubory protokolů | Objekt blob | Obsahuje informace o protokolech služby IIS. |
+| Uživatelská | Objekt blob | Vlastní kontejner založený na konfiguraci adresářů monitorovaných monitorováním diagnostiky.  Název tohoto kontejneru objektů BLOB se určí v WADDirectoriesTable. |
 
 ## <a name="tools-to-view-diagnostic-data"></a>Nástroje pro zobrazení diagnostických dat
-K dispozici je několik nástrojů, které vám umožní zobrazit data po přenosu do úložiště. Například:
+K dispozici je několik nástrojů, které vám umožní zobrazit data po přenosu do úložiště. Příklad:
 
 * Průzkumník serveru v aplikaci Visual Studio – Pokud jste nainstalovali nástroje Azure pro Microsoft Visual Studio, můžete použít uzel Azure Storage v Průzkumník serveru k zobrazení dat objektů BLOB jen pro čtení a tabulek z vašich účtů úložiště Azure. Můžete zobrazit data z místního účtu emulátoru úložiště a taky z účtů úložiště, které jste vytvořili pro Azure. Další informace najdete v tématu [procházení a Správa prostředků úložiště pomocí Průzkumník serveru](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage).
 * [Průzkumník služby Microsoft Azure Storage](../../vs-azure-tools-storage-manage-with-storage-explorer.md) je samostatná aplikace, která umožňuje snadnou práci s Azure Storagemi daty v systémech Windows, OSX a Linux.

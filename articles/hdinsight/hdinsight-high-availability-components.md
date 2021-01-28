@@ -1,18 +1,15 @@
 ---
 title: Komponenty vysoké dostupnosti ve službě Azure HDInsight
 description: Přehled různých komponent vysoké dostupnosti používaných clustery HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 1ff7932f0afb128f6e7568ecdae602c6471db0bd
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 336fe91174a8fc6d73d6e45c5fd1e2bf244eda52
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539713"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945302"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Služby vysoké dostupnosti podporované službou Azure HDInsight
 
@@ -49,7 +46,7 @@ Následující části poskytují další podrobnosti o tom, jak tyto služby sp
 
 ## <a name="hdinsight-high-availability-services"></a>Služby HDInsight s vysokou dostupností
 
-Společnost Microsoft poskytuje podporu pro čtyři služby Apache v následující tabulce v clusterech HDInsight. Aby je bylo možné odlišit od služeb s vysokou dostupností, které jsou podporovány součástmi z Apache, označují se jako *služby HDInsight ha* .
+Společnost Microsoft poskytuje podporu pro čtyři služby Apache v následující tabulce v clusterech HDInsight. Aby je bylo možné odlišit od služeb s vysokou dostupností, které jsou podporovány součástmi z Apache, označují se jako *služby HDInsight ha*.
 
 | Služba | Uzly clusteru | Typy clusterů | Účel |
 |---|---|---|---|
@@ -65,7 +62,7 @@ Společnost Microsoft poskytuje podporu pro čtyři služby Apache v následují
 
 Každý cluster HDInsight má dva hlavních v aktivním a pohotovostním režimu. Služby HDInsight HA běží jenom na hlavních. Tyto služby by měly být vždy spuštěné na aktivním hlavnímu uzlu a zastaveny a přepnuty do režimu údržby v pohotovostním hlavnímu uzlu.
 
-Aby se zajistilo správné stavy služeb HA a poskytovaly rychlé převzetí služeb při selhání, využívá služba HDInsight Apache ZooKeeper, což je koordinační služba pro distribuované aplikace, která umožňuje aktivní volby hlavnímu uzlu. HDInsight také zřizuje několik procesů Java na pozadí, které koordinují postup převzetí služeb při selhání pro služby HDInsight HA. Jedná se o následující služby: hlavní kontroler převzetí služeb při selhání, podřízený řadič pro převzetí služeb při selhání, *hlavní-ha-Service* a *podřízený-ha-Service* .
+Aby se zajistilo správné stavy služeb HA a poskytovaly rychlé převzetí služeb při selhání, využívá služba HDInsight Apache ZooKeeper, což je koordinační služba pro distribuované aplikace, která umožňuje aktivní volby hlavnímu uzlu. HDInsight také zřizuje několik procesů Java na pozadí, které koordinují postup převzetí služeb při selhání pro služby HDInsight HA. Jedná se o následující služby: hlavní kontroler převzetí služeb při selhání, podřízený řadič pro převzetí služeb při selhání, *hlavní-ha-Service* a *podřízený-ha-Service*.
 
 ### <a name="apache-zookeeper"></a>Apache ZooKeeper
 

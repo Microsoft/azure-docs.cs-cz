@@ -1,19 +1,16 @@
 ---
 title: Správa protokolů pro cluster HDInsight – Azure HDInsight
 description: Určete typy, velikosti a zásady uchovávání souborů protokolu aktivit HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/05/2020
-ms.openlocfilehash: c2aa33ac9e92f6763c0d89f0a049409c1a6a4049
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 0a6e837284917129bb56c6230e68927b79e95dac
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546020"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945282"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>Správa protokolů pro cluster HDInsight
 
@@ -77,11 +74,11 @@ Typický cluster HDInsight používá několik služeb a open source softwarový
 
 Apache Ambari zjednodušuje správu, konfiguraci a monitorování clusteru HDInsight poskytnutím webového uživatelského rozhraní a REST API. Ambari je součástí clusterů HDInsight se systémem Linux. Výběrem podokna **řídicí panel clusteru** na stránce Azure Portal HDInsight otevřete stránku odkazy na **řídicí panely clusteru** .  V dalším kroku vyberte podokno **řídicí panel clusteru HDInsight** a otevřete uživatelské rozhraní Ambari.  Zobrazí se výzva k zadání přihlašovacích údajů clusteru.
 
-Chcete-li otevřít seznam zobrazení služeb, vyberte podokno **zobrazení Ambari** na stránce Azure Portal pro HDInsight.  Tento seznam se liší v závislosti na tom, které knihovny jste nainstalovali.  Můžete například zobrazit správce front PŘÍZ, zobrazení podregistru a tez zobrazení.  Kliknutím na libovolný odkaz služby zobrazíte informace o konfiguraci a službě.  Stránka zásobník uživatelského rozhraní **a verze** Ambari poskytuje informace o historii konfigurace a verze služby clusterových služeb. Pokud chcete přejít do této části uživatelského rozhraní Ambari, vyberte nabídku **správce** a pak nastavte **zásobníky a verze** .  Kliknutím na kartu **verze** zobrazíte informace o verzi služby.
+Chcete-li otevřít seznam zobrazení služeb, vyberte podokno **zobrazení Ambari** na stránce Azure Portal pro HDInsight.  Tento seznam se liší v závislosti na tom, které knihovny jste nainstalovali.  Můžete například zobrazit správce front PŘÍZ, zobrazení podregistru a tez zobrazení.  Kliknutím na libovolný odkaz služby zobrazíte informace o konfiguraci a službě.  Stránka zásobník uživatelského rozhraní **a verze** Ambari poskytuje informace o historii konfigurace a verze služby clusterových služeb. Pokud chcete přejít do této části uživatelského rozhraní Ambari, vyberte nabídku **správce** a pak nastavte **zásobníky a verze**.  Kliknutím na kartu **verze** zobrazíte informace o verzi služby.
 
 ![Sada pro správu Apache Ambari a verze](./media/hdinsight-log-management/ambari-stack-versions.png)
 
-Pomocí uživatelského rozhraní Ambari můžete stáhnout konfiguraci pro všechny (nebo všechny) služby, které běží na konkrétním hostiteli (nebo uzlu) v clusteru.  Vyberte nabídku **hostitelé** a potom odkaz na hostitele, který vás zajímá. Na stránce tohoto hostitele vyberte tlačítko **akce hostitele** a pak **Stáhněte konfigurace klienta** .
+Pomocí uživatelského rozhraní Ambari můžete stáhnout konfiguraci pro všechny (nebo všechny) služby, které běží na konkrétním hostiteli (nebo uzlu) v clusteru.  Vyberte nabídku **hostitelé** a potom odkaz na hostitele, který vás zajímá. Na stránce tohoto hostitele vyberte tlačítko **akce hostitele** a pak **Stáhněte konfigurace klienta**.
 
 ![Konfigurace klientů hostitele pro stažení Apache Ambari](./media/hdinsight-log-management/download-client-configs.png)
 
@@ -144,7 +141,7 @@ Uživatelské rozhraní Správce prostředků PŘÍZe běží na hlavním uzlu c
 
 1. Ve webovém prohlížeči přejděte na adresu `https://CLUSTERNAME.azurehdinsight.net`. Nahraďte CLUSTERNAME názvem clusteru HDInsight.
 2. V seznamu služeb vlevo vyberte možnost PŘÍZe.
-3. V rozevíracím seznamu rychlé odkazy vyberte jeden z hlavních uzlů clusteru a pak vyberte **protokoly ResourceManager** . Zobrazí se seznam odkazů na záznamy PŘÍZe.
+3. V rozevíracím seznamu rychlé odkazy vyberte jeden z hlavních uzlů clusteru a pak vyberte **protokoly ResourceManager**. Zobrazí se seznam odkazů na záznamy PŘÍZe.
 
 ## <a name="step-4-forecast-log-volume-storage-sizes-and-costs"></a>Krok 4: velikost a náklady úložiště svazků protokolů prognózy
 

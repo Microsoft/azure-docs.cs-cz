@@ -1,19 +1,16 @@
 ---
 title: Použití tunelového propojení SSH pro přístup k Azure HDInsight
 description: Naučte se používat tunel SSH k bezpečnému procházení webových prostředků hostovaných na uzlech HDInsight se systémem Linux.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
-ms.openlocfilehash: 09fef350a0ff8cc8c2481acd7b8f74cee15d1b9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5bbc770fa6ae5ac69b2aa939f9d2c70bb01f5403
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86075548"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945293"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-uis"></a>Použití tunelového propojení SSH pro přístup k webovému uživatelskému rozhraní Apache Ambari, JobHistory, NameNode, Apache Oozie a dalším uživatelská rozhraní
 
@@ -42,7 +39,7 @@ Služby nainstalované s akcemi skriptu, které zveřejňují webovou službu, b
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Klient SSH. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
+* Klient SSH. Další informace najdete v tématu [Připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 * Webový prohlížeč, který se dá nakonfigurovat tak, aby používal proxy server SOCKS5.
 
@@ -97,7 +94,7 @@ Po dokončení příkazu se provoz odeslaný do portu 9876 v místním počíta�
 
     ![Relace vytvoření výstupu HDInsight](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-create-putty-session.png)
 
-1. V části **kategorie** nalevo od dialogu rozbalte položku **připojení**, rozbalte položku **SSH**a potom vyberte možnost **tunely**.
+1. V části **kategorie** nalevo od dialogu rozbalte položku **připojení**, rozbalte položku **SSH** a potom vyberte možnost **tunely**.
 
 1. Zadejte následující informace o **možnostech řízení formuláře předávání portů SSH** :
 

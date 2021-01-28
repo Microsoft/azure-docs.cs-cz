@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 01/05/2021
 ms.author: lle
 ms.reviewer: craigg
-ms.openlocfilehash: 3b7b405e34b6ca82da593507ad6103d360c5df1e
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 70e4d0c1a9f26f83924c1343e4e8e51c5595b324
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968581"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944512"
 ---
 # <a name="troubleshoot-azure-data-factory-security-and-access-control-issues"></a>Řešení potíží s Azure Data Factory zabezpečení a řízení přístupu
 
@@ -49,13 +49,13 @@ Problém je obvykle způsoben jedním z následujících faktorů:
 
 * Pokud používáte místní prostředí **IR**, ověřte nastavení proxy serveru, brány firewall a sítě, protože připojení ke stejnému úložišti dat by mohlo být úspěšné, pokud používáte Azure IR. Řešení potíží s tímto scénářem najdete v těchto tématech:
 
-   * [Porty IR a brány firewall pro místní hostování](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#ports-and-firewalls)
-   * [Konektor Azure Data Lake Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-store)
+   * [Porty IR a brány firewall pro místní hostování](./create-self-hosted-integration-runtime.md#ports-and-firewalls)
+   * [Konektor Azure Data Lake Storage](./connector-azure-data-lake-store.md)
   
 * Pokud používáte **Azure IR**, zkuste zakázat nastavení brány firewall úložiště dat. Tento přístup může vyřešit problémy v následujících dvou situacích:
   
-   * [Azure IR IP adresy](https://docs.microsoft.com/azure/data-factory/azure-integration-runtime-ip-addresses) nejsou v seznamu povolených adres.
-   * Možnost *Povolit důvěryhodné služby Microsoftu pro přístup k tomuto účtu úložiště* je vypnutá pro [Azure Blob Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#supported-capabilities) a [Azure Data Lake Storage Gen 2](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#supported-capabilities).
+   * [Azure IR IP adresy](./azure-integration-runtime-ip-addresses.md) nejsou v seznamu povolených adres.
+   * Možnost *Povolit důvěryhodné služby Microsoftu pro přístup k tomuto účtu úložiště* je vypnutá pro [Azure Blob Storage](./connector-azure-blob-storage.md#supported-capabilities) a [Azure Data Lake Storage Gen 2](./connector-azure-data-lake-storage.md#supported-capabilities).
    * Pro Azure Data Lake Storage Gen1 není povolené nastavení *Povolit přístup ke službám Azure* .
 
 Pokud žádná z předchozích metod nefunguje, požádejte o nápovědu Microsoft.
@@ -88,7 +88,7 @@ Chcete-li ověřit, zda je Data Factory plně kvalifikovaný název domény (FQD
 #### <a name="resolution"></a>Řešení
 
 Chcete-li tento problém vyřešit, postupujte takto:
-- Informace najdete v tématu věnovaném [privátním odkazům na Azure Azure Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-private-link#dns-changes-for-private-endpoints) . Instrukce je určena pro konfiguraci privátní zóny DNS nebo serveru k překladu Data Factory plně kvalifikovaného názvu domény na privátní IP adresu.
+- Informace najdete v tématu věnovaném [privátním odkazům na Azure Azure Data Factory](./data-factory-private-link.md#dns-changes-for-private-endpoints) . Instrukce je určena pro konfiguraci privátní zóny DNS nebo serveru k překladu Data Factory plně kvalifikovaného názvu domény na privátní IP adresu.
 
 - Jako dlouhodobé řešení doporučujeme používat vlastní DNS. Pokud ale nechcete nakonfigurovat privátní zónu nebo server DNS, vyzkoušejte následující dočasné řešení:
 
@@ -120,7 +120,7 @@ Problém může být způsoben virtuálním počítačem, ve kterém se pokouš�
  
 Chcete-li tento problém vyřešit, postupujte takto:
 
-1. Přejít na stránku [továrny – aktualizace](https://docs.microsoft.com/rest/api/datafactory/Factories/Update) .
+1. Přejít na stránku [továrny – aktualizace](/rest/api/datafactory/Factories/Update) .
 
 1. V pravém horním rohu vyberte tlačítko **vyzkoušet** .
 1. V části **parametry** vyplňte požadované informace. 
@@ -146,7 +146,7 @@ Chcete-li tento problém vyřešit, postupujte takto:
 
 **Řešení 2**
 
-Problém vyřešíte tak, že přejdete do [privátního odkazu Azure pro Azure Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-private-link).
+Problém vyřešíte tak, že přejdete do [privátního odkazu Azure pro Azure Data Factory](./data-factory-private-link.md).
 
 Zkuste povolit přístup k veřejné síti v uživatelském rozhraní, jak je znázorněno na následujícím snímku obrazovky:
 

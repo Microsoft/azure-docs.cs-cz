@@ -2,25 +2,22 @@
 title: Použití Apache Pigu
 titleSuffix: Azure HDInsight
 description: Naučte se používat prase s Apache Hadoop v HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 01/28/2020
-ms.openlocfilehash: 9474a1845898e3fda0c810314f41f6f4deabc96b
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 7b74a41f7d6b636dddce0388d5ee0e0a12658d52
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92538727"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944609"
 ---
 # <a name="use-apache-pig-with-apache-hadoop-on-hdinsight"></a>Použití systému Apache prasete s Apache Hadoop v HDInsight
 
 Naučte se používat [Apache prasete](https://pig.apache.org/) s HDInsight.
 
-Apache prasete je platforma pro vytváření programů pro Apache Hadoop pomocí jazyka procedurálního, který se označuje jako *prasečí Latin* . Prasete je alternativou k Java pro vytváření řešení *MapReduce* a je součástí Azure HDInsight. Pomocí následující tabulky můžete zjistit různé způsoby, kterými se dá pomocí HDInsight použít.
+Apache prasete je platforma pro vytváření programů pro Apache Hadoop pomocí jazyka procedurálního, který se označuje jako *prasečí Latin*. Prasete je alternativou k Java pro vytváření řešení *MapReduce* a je součástí Azure HDInsight. Pomocí následující tabulky můžete zjistit různé způsoby, kterými se dá pomocí HDInsight použít.
 
 ## <a name="why-use-apache-pig"></a><a id="why"></a>Proč používat Apache prasete
 
@@ -30,11 +27,11 @@ Prase umožňuje definovat zpracování jako řadu transformací, které data pr
 
 Jazyk latince pro vepřové písmo umožňuje popsat tok dat z nezpracovaného vstupu přes jednu nebo více transformací, aby vznikl požadovaný výstup. Programy v latince pro vepřové písmo dodržují tento obecný vzor:
 
-* **Načíst** : číst data, která se mají manipulovat ze systému souborů.
+* **Načíst**: číst data, která se mají manipulovat ze systému souborů.
 
-* **Transformace** : manipulace s daty.
+* **Transformace**: manipulace s daty.
 
-* **Vypsat nebo uložit** : výstupní data na obrazovku nebo je uložit ke zpracování.
+* **Vypsat nebo uložit**: výstupní data na obrazovku nebo je uložit ke zpracování.
 
 ### <a name="user-defined-functions"></a>Uživatelsky definované funkce
 

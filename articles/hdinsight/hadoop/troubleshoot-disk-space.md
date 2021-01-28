@@ -1,18 +1,15 @@
 ---
 title: Správa místa na disku ve službě Azure HDInsight
 description: Postup řešení potíží a možná řešení pro správu potíží s místem na disku při komunikaci s clustery Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 02/17/2020
-ms.openlocfilehash: 82044796cca3e135c15e750d6706fe504622ebdb
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 7164494cb08c4b419b9e4d96075ace3e52187497
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92540342"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944819"
 ---
 # <a name="manage-disk-space-in-azure-hdinsight"></a>Správa místa na disku ve službě Azure HDInsight
 
@@ -22,7 +19,7 @@ Tento článek popisuje postup řešení potíží a možná řešení potíží
 
 1. Z webového prohlížeče přejděte do `https://CLUSTERNAME.azurehdinsight.net` umístění, kde `CLUSTERNAME` je název vašeho clusteru.
 
-1. Přejděte na **podregistry**  >  **Konfigurace**  >  **Pokročilé**  >  **Pokročilé podregistru-log4j** . Zkontrolujte následující nastavení:
+1. Přejděte na **podregistry**  >  **Konfigurace**  >  **Pokročilé**  >  **Pokročilé podregistru-log4j**. Zkontrolujte následující nastavení:
 
     * `hive.root.logger=DEBUG,RFA`. Jedná se o výchozí hodnotu, upravte [úroveň protokolu](https://logging.apache.org/log4j/2.x/log4j-api/apidocs/org/apache/logging/log4j/Level.html) na, `INFO` aby se vytiskly položky s nižšími protokoly.
 
@@ -38,7 +35,7 @@ Zkontrolujte následující konfigurace:
 
     1. Z webového prohlížeče přejděte do `https://CLUSTERNAME.azurehdinsight.net` umístění, kde `CLUSTERNAME` je název vašeho clusteru.
 
-    1. Přejděte do **Konfigurace podregistru**  >  **Configs**  >  **Rozšířené**  >  **Správce prostředků** . Ujistěte se, že je zaškrtnuté políčko **Povolit agregaci protokolů** . Pokud je tato akce zakázaná, názvy uzlů budou uchovávat místní protokoly a nemusí je agregovat do vzdáleného úložiště při dokončování nebo ukončování aplikace.
+    1. Přejděte do **Konfigurace podregistru**  >    >  **Rozšířené**  >  **Správce prostředků**. Ujistěte se, že je zaškrtnuté políčko **Povolit agregaci protokolů** . Pokud je tato akce zakázaná, názvy uzlů budou uchovávat místní protokoly a nemusí je agregovat do vzdáleného úložiště při dokončování nebo ukončování aplikace.
 
 * Ujistěte se, že velikost clusteru odpovídá zatížení. Je možné, že se úlohy změnily v poslední době, jinak se změnila velikost clusteru. [Horizontální](../hdinsight-scaling-best-practices.md) navýšení kapacity clusteru tak, aby odpovídaly vyššímu zatížení.
 

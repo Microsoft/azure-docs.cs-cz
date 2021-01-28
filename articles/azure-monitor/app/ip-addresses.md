@@ -1,17 +1,17 @@
 ---
-title: IP adresy, které používá Application Insights a Log Analytics | Microsoft Docs
+title: IP adresy, které používá Azure Monitor
 description: Výjimky brány firewall serveru vyžadované Application Insights
 ms.topic: conceptual
-ms.date: 09/15/2020
-ms.openlocfilehash: eb0739cb44b9f67258069a574ed0bedb95eac5a4
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.date: 01/27/2020
+ms.openlocfilehash: 5a6cc190f84b74cc8a1d4ff24d10cbfa07f3c2fb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625178"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945058"
 ---
-# <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>IP adresy používané službami Application Insights a Log Analytics
-Služba [Azure Application Insights](./app-insights-overview.md) používá několik IP adres. Pokud je aplikace, kterou sledujete, hostovaná za bránou firewall, může být potřeba tyto adresy znát.
+# <a name="ip-addresses-used-by-azure-monitor"></a>IP adresy, které používá Azure Monitor
+[Azure monitor](../overview.md) používá několik IP adres. Azure Monitor se skládá z metrik základní platformy a přihlašování k Log Analytics a Application Insights. Pokud je aplikace nebo infrastruktura, kterou sledujete, hostována za bránou firewall, může být potřeba tyto adresy znát.
 
 > [!NOTE]
 > I když jsou tyto adresy statické, je možné, že je budete muset kdykoli změnit. Veškerý provoz Application Insights představuje odchozí provoz s výjimkou monitorování dostupnosti a webhooků, které vyžadují pravidla brány firewall pro příchozí připojení.

@@ -7,12 +7,12 @@ ms.date: 12/15/2020
 ms.topic: troubleshooting
 ms.author: susabat
 ms.reviewer: susabat
-ms.openlocfilehash: 0ceee3c65e8c4df5d843bb441fb6426a0f4eb696
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 1a5f665627da1b08ec57b04863a58f227c673af4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98220248"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944908"
 ---
 # <a name="troubleshoot-pipeline-orchestration-and-triggers-in-azure-data-factory"></a>Řešení potíží s orchestrací kanálu a triggery v Azure Data Factory
 
@@ -60,7 +60,7 @@ Chybová zpráva:
 Type=Microsoft.DataTransfer.Execution.Core.ExecutionException,Message=There are substantial concurrent MappingDataflow executions which is causing failures due to throttling under Integration Runtime 'AutoResolveIntegrationRuntime'.
 `
 
-**Příčina**: dosáhli jste limitu kapacity prostředí Integration runtime. Je možné, že budete provozovat velké množství toku dat pomocí stejného prostředí Integration runtime ve stejnou dobu. Podrobnosti najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#version-2) .
+**Příčina**: dosáhli jste limitu kapacity prostředí Integration runtime. Je možné, že budete provozovat velké množství toku dat pomocí stejného prostředí Integration runtime ve stejnou dobu. Podrobnosti najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](../azure-resource-manager/management/azure-subscription-service-limits.md#version-2) .
 
 **Řešení**:
  
@@ -76,13 +76,13 @@ Azure Data Factory vyhodnocuje výsledek všech aktivit na úrovni listu. Výsle
 **Řešení**
 
 1. Implementujte kontroly na úrovni aktivity podle následujících pokynů, [jak zpracovat selhání a chyby kanálu](https://techcommunity.microsoft.com/t5/azure-data-factory/understanding-pipeline-failures-and-error-handling/ba-p/1630459).
-1. Pomocí Azure Logic Apps můžete sledovat kanály v pravidelných intervalech po [dotazech podle továrny](https://docs.microsoft.com/rest/api/datafactory/pipelineruns/querybyfactory).
+1. Pomocí Azure Logic Apps můžete sledovat kanály v pravidelných intervalech po [dotazech podle továrny](/rest/api/datafactory/pipelineruns/querybyfactory).
 
 ## <a name="monitor-pipeline-failures-in-regular-intervals"></a>Monitorování selhání kanálu v pravidelných intervalech
 
 Možná budete muset monitorovat neúspěšné Data Factory kanály v intervalech, 5 minut. Pomocí koncového bodu se můžete dotazovat a filtrovat spouštění kanálů z datové továrny. 
 
-Nastavte aplikaci logiky Azure pro dotazování všech neúspěšných kanálů každých 5 minut, jak je popsáno v tématu [dotazování podle továrny](https://docs.microsoft.com/rest/api/datafactory/pipelineruns/querybyfactory). Potom můžete hlásit incidenty do našeho systému lístků.
+Nastavte aplikaci logiky Azure pro dotazování všech neúspěšných kanálů každých 5 minut, jak je popsáno v tématu [dotazování podle továrny](/rest/api/datafactory/pipelineruns/querybyfactory). Potom můžete hlásit incidenty do našeho systému lístků.
 
 Další informace najdete v [části odesílání oznámení z Data Factory, část 2](https://www.mssqltips.com/sqlservertip/5962/send-notifications-from-an-azure-data-factory-pipeline--part-2/).
 

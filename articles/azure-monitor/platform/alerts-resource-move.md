@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/26/2020
 ms.subservice: alerts
-ms.openlocfilehash: 4ea5c8552d35db67a1d2caf20c0143c74cdd642e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36cf5882913426062e281194b61a8c760141512a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86505478"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944158"
 ---
 # <a name="how-to-update-alert-rules-or-action-rules-when-their-target-resource-moves-to-a-different-azure-region"></a>Jak aktualizovat pravidla upozornění nebo pravidla akcí, když se jejich cílový prostředek přesune do jiné oblasti Azure
 
@@ -76,7 +76,7 @@ Pokud se přesunuly **jenom některé** prostředky v oboru, je potřeba odebrat
 ### <a name="change-scope-of-a-rule-from-the-azure-portal"></a>Změna rozsahu pravidla z Azure Portal
 
 1. Kliknutím na něj otevřete pravidlo, které jste identifikovali v předchozím kroku.
-2. V části **prostředek**klikněte na **Upravit** a podle potřeby upravte rozsah.
+2. V části **prostředek** klikněte na **Upravit** a podle potřeby upravte rozsah.
 3. Podle potřeby upravte další vlastnosti pravidla.
 4. Klikněte na **Uložit**.
 
@@ -88,7 +88,7 @@ Pokud se přesunuly **jenom některé** prostředky v oboru, je potřeba odebrat
    1. Přejděte do části skupiny prostředků na portálu a otevřete skupinu prostředků, která pravidlo obsahuje.
    2. V části Přehled zaškrtněte políčko **Zobrazit skrytý typ** a proveďte filtrování podle příslušného typu pravidla.
    3. Vyberte příslušné pravidlo a zobrazte jeho podrobnosti.
-   4. V části **Nastavení**vyberte **Exportovat šablonu**.
+   4. V části **Nastavení** vyberte **Exportovat šablonu**.
 2. Upravte šablonu. V případě potřeby ho rozdělte do dvou pravidel (v některých případech upozornění na metriky, jak je uvedeno výše).
 3. Znovu nasaďte šablonu.
 
@@ -106,7 +106,7 @@ Pokud se přesunuly **jenom některé** prostředky v oboru, je potřeba odebrat
 
 ### <a name="change-the-scope-of-a-rule-using-azure-cli"></a>Změna rozsahu pravidla pomocí Azure CLI
 
-1.  Získá stávající pravidlo ([výstrahy metrik](/cli/azure/monitor/metrics/alert?view=azure-cli-latest#az-monitor-metrics-alert-show), [výstrahy protokolu aktivit](/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list)).
+1.  Získá stávající pravidlo ([výstrahy metrik](/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-show), [výstrahy protokolu aktivit](/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list)).
 2.  Přímo aktualizovat rozsah pravidla ([výstrahy metrik](/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-update), [výstrahy protokolu aktivit](/cli/azure/monitor/activity-log/alert/scope))
 3.  V případě potřeby ho rozdělte do dvou pravidel (v některých případech upozornění na metriky, jak je uvedeno výše).
 

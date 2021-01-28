@@ -1,19 +1,16 @@
 ---
 title: 'Rychlý Start: Vytvoření clusteru interaktivních dotazů pomocí šablony – Azure HDInsight'
 description: V tomto rychlém startu se dozvíte, jak pomocí šablony Správce prostředků vytvořit interaktivní cluster dotazů ve službě Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/13/2020
-ms.openlocfilehash: 969aadbe342dbfd345930082d56e0af93eea37d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4872dd29442a1503e04672a7c42fd7b49a0c506c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91854371"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945239"
 ---
 # <a name="quickstart-create-interactive-query-cluster-in-azure-hdinsight-using-arm-template"></a>Rychlý Start: Vytvoření clusteru interaktivních dotazů ve službě Azure HDInsight pomocí šablony ARM
 
@@ -61,7 +58,7 @@ V šabloně jsou definované dva prostředky Azure:
 
     ![Nasazení Správce prostředků šablon HBA](./media/quickstart-resource-manager-template/resource-manager-template-hive.png)
 
-1. Přečtěte si podmínky **a ujednání**. Pak vyberte Souhlasím **s výše uvedenými podmínkami a ujednáními a**pak na **koupit**. Obdržíte oznámení, že vaše nasazení probíhá. Vytvoření clusteru trvá přibližně 20 minut.
+1. Přečtěte si podmínky **a ujednání**. Pak vyberte Souhlasím **s výše uvedenými podmínkami a ujednáními a** pak na **koupit**. Obdržíte oznámení, že vaše nasazení probíhá. Vytvoření clusteru trvá přibližně 20 minut.
 
 ## <a name="review-deployed-resources"></a>Kontrola nasazených prostředků
 

@@ -1,23 +1,20 @@
 ---
 title: Seznámení se službami ML ve službě Azure HDInsight
 description: Naučte se používat služby ML v HDInsight k vytváření aplikací pro analýzu velkých objemů dat.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: b3a6fc2ff45d61d63118edc23f40f69f16db9131
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 87f4181e820b1c6ecdeb0fda85a88e80db248dd2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92536143"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943915"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>Co je služba ML Services ve službě Azure HDInsight
 
-Microsoft Machine Learning Server je k dispozici jako možnost nasazení při vytváření clusterů HDInsight v Azure. Typ clusteru, který poskytuje tuto možnost, se nazývá **ml Services** . Tato funkce poskytuje přístup na vyžádání pro adaptivní distribuované metody analýzy v HDInsight.
+Microsoft Machine Learning Server je k dispozici jako možnost nasazení při vytváření clusterů HDInsight v Azure. Typ clusteru, který poskytuje tuto možnost, se nazývá **ml Services**. Tato funkce poskytuje přístup na vyžádání pro adaptivní distribuované metody analýzy v HDInsight.
 
 Služba ML Services v HDInsight poskytuje nejnovější funkce pro analýzy založené na jazyce R v datových sadách prakticky libovolné velikosti. Datové sady se dají načíst do objektu blob Azure nebo do úložiště Data Lake. Vaše aplikace založené na jazyce R můžou používat balíčky R 8000 + open-source. K dispozici jsou také rutiny nástroje pro škálování a analýzu velkých objemů dat od Microsoftu.
 
@@ -112,7 +109,7 @@ Další balíčky lze nainstalovat pomocí akce skriptu po vytvoření clusteru.
 
 Dostupná paměť pro služby ML se dá upravit při spuštění úlohy MapReduce. Pro úpravu clusteru použijte uživatelské rozhraní Apache Ambari pro váš cluster. Pokyny k uživatelskému rozhraní Ambari najdete v tématu [Správa clusterů HDInsight pomocí webového uživatelského rozhraní Ambari](../hdinsight-hadoop-manage-ambari.md).
 
-Dostupnou paměť pro služby ML lze změnit pomocí přepínačů Hadoop v volání **RxHadoopMR** :
+Dostupnou paměť pro služby ML lze změnit pomocí přepínačů Hadoop v volání **RxHadoopMR**:
 
 ```r
 hadoopSwitches = "-libjars /etc/hadoop/conf -Dmapred.job.map.memory.mb=6656"

@@ -1,19 +1,16 @@
 ---
 title: Monitorování a Správa Azure HDInsight pomocí webového uživatelského rozhraní Ambari
 description: Naučte se používat uživatelské rozhraní Apache Ambari k monitorování a správě clusterů HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 01/12/2021
-ms.openlocfilehash: 8195cffed077a77c0ad66fda1126e2f3ea53d5f0
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 087f284bed7ab0c9eb551c1629ab4f9196c80d76
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98179142"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945704"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>Správa clusterů HDInsight pomocí webového uživatelského rozhraní Apache Ambari
 
@@ -61,7 +58,7 @@ Po otevření stránky si poznamenejte pruh v horní části. Tento panel obsahu
 |správce|Softwarový zásobník/služby, které jsou nainstalovány v clusteru, informace o účtu služby a zabezpečení protokolu Kerberos.|
 |Tlačítko Správce|Správa Ambari, uživatelské nastavení a odhlášení.|
 
-## <a name="monitoring"></a>Monitorování
+## <a name="monitoring"></a>Sledování
 
 ### <a name="alerts"></a>Výstrahy
 

@@ -2,19 +2,16 @@
 title: Oprava chyby nedostatku paměti u registru ve službě Azure HDInsight
 description: Oprava chyby nedostatku paměti u registru v HDInsight Scénář zákazníka je dotaz napříč mnoha velkými tabulkami.
 keywords: Chyba při nedostatku paměti, OOM, nastavení podregistru
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive
 ms.date: 11/28/2019
-ms.openlocfilehash: d91da1aa6f7079069541ac955fce8331591a3bc6
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c0810d33f3ac939b9382bf321448ed72b6d87474
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546173"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945710"
 ---
 # <a name="fix-an-apache-hive-out-of-memory-error-in-azure-hdinsight"></a>Oprava chyby nedostatku paměti Apache Hive ve službě Azure HDInsight
 
@@ -91,7 +88,7 @@ Naše technické podpory a technické týmy společně nalezly jeden z problém�
 
 "Při každém podregistru. auto. Convert. Join. noconditionaltask = true kontrolujeme noconditionaltask. Size a Pokud součet velikostí tabulek ve spojení map je menší než noconditionaltask. velikost plánu by generovala spojení s mapou, problém s tímto je tím, že výpočet nebere v úvahu režii, kterou zavedla jiná implementace zatřiďovací tabulky, jako výsledky, pokud je součet vstupních velikostí menší než velikost noconditionaltask na dotazech malého okraje, budou mít OOM."
 
-**Podregistr. auto. Convert. Join. noconditionaltask** v souboru hive-site.xml byl nastaven na **hodnotu true** :
+**Podregistr. auto. Convert. Join. noconditionaltask** v souboru hive-site.xml byl nastaven na **hodnotu true**:
 
 ```xml
 <property>
@@ -109,10 +106,10 @@ Je pravděpodobnější, že připojení k mapě je příčinou chyby nedostatku
 
 ![Paměťový diagram kontejneru tez: chyba nedostatek paměti v podregistru](./media/hdinsight-hadoop-hive-out-of-memory-error-oom/hive-out-of-memory-error-oom-tez-container-memory.png)
 
-Jak ukazuje Blogový příspěvek, definuje následující dvě nastavení paměti paměť kontejneru pro haldu: **podregistr. TEZ. Container. Size** a **podregistr. TEZ. Java. výslovný** . Z našeho prostředí neznamená výjimka nedostatku paměti, že velikost kontejneru je příliš malá. Znamená to, že velikost haldy Java (podregistr. TEZ. Java. výslovný) je moc malá. Takže kdykoli se zobrazí nedostatek paměti, můžete se pokusit zvětšit **podregistr. TEZ. Java. výslovný** . V případě potřeby možná budete muset zvětšit **podregistr. TEZ. Container. Size** . Nastavení **Java. výslovný** by mělo být přibližně 80% **kontejneru. Size** .
+Jak ukazuje Blogový příspěvek, definuje následující dvě nastavení paměti paměť kontejneru pro haldu: **podregistr. TEZ. Container. Size** a **podregistr. TEZ. Java. výslovný**. Z našeho prostředí neznamená výjimka nedostatku paměti, že velikost kontejneru je příliš malá. Znamená to, že velikost haldy Java (podregistr. TEZ. Java. výslovný) je moc malá. Takže kdykoli se zobrazí nedostatek paměti, můžete se pokusit zvětšit **podregistr. TEZ. Java. výslovný**. V případě potřeby možná budete muset zvětšit **podregistr. TEZ. Container. Size**. Nastavení **Java. výslovný** by mělo být přibližně 80% **kontejneru. Size**.
 
 > [!NOTE]  
-> Nastavení **podregistr. TEZ. Java. výslovný** musí být vždy menší než **podregistr. TEZ. Container. Size** .
+> Nastavení **podregistr. TEZ. Java. výslovný** musí být vždy menší než **podregistr. TEZ. Container. Size**.
 
 Vzhledem k tomu, že počítač s D12 má 28 GB paměti, rozhodli jste se použít velikost kontejneru 10 GB (10240 MB) a přiřadit 80% k Java. výslovný:
 

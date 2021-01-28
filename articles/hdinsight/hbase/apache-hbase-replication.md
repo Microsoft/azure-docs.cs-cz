@@ -1,19 +1,16 @@
 ---
 title: HBA replikace clusteru ve virtuálních sítích – Azure HDInsight
 description: Naučte se, jak nastavit replikaci HBA z jedné verze HDInsight na jinou pro vyrovnávání zatížení, vysokou dostupnost, migraci a aktualizace s nulovými výpadky a zotavení po havárii.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 12/06/2019
-ms.openlocfilehash: 8fc5ba2280b5ad68a40f4992adc170408e80e5a6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: cfcb3a5a601afadb9f3fcd71c24e18a9d7f27b9e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021788"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946406"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Nastavení replikace clusteru Apache HBA v Azure Virtual Networks
 
@@ -78,7 +75,7 @@ Některé pevně zakódované hodnoty v šabloně:
 | Název brány | vnet1gw |
 | Typ brány | Vpn |
 | Typ sítě VPN brány | RouteBased |
-| SKU brány | Základní |
+| SKU brány | Basic |
 | IP adresa brány | vnet1gwip |
 
 **Virtuální síť 2**
@@ -95,7 +92,7 @@ Některé pevně zakódované hodnoty v šabloně:
 | Název brány | vnet2gw |
 | Typ brány | Vpn |
 | Typ sítě VPN brány | RouteBased |
-| SKU brány | Základní |
+| SKU brány | Basic |
 | IP adresa brány | vnet1gwip |
 
 ## <a name="setup-dns"></a>Nastavení DNS
@@ -104,7 +101,7 @@ V poslední části šablona vytvoří virtuální počítač s Ubuntu v každé
 
 Aby bylo možné službu BIND nainstalovat, Yon musí najít veřejnou IP adresu dvou virtuálních počítačů DNS.
 
-1. Otevřete web [Azure Portal](https://portal.azure.com).
+1. Otevřete [Azure Portal](https://portal.azure.com).
 2. Otevřete virtuální počítač DNS tak, že vyberete **skupiny prostředků > [název skupiny prostředků] > [vnet1DNS]**.  Název skupiny prostředků je ten, který vytvoříte v posledním postupu. Výchozí názvy virtuálních počítačů DNS jsou *vnet1DNS* a *vnet2NDS*.
 3. Výběrem **vlastnosti** otevřete stránku vlastností virtuální sítě.
 4. Zapište si **veřejnou IP adresu** a taky ověřte **privátní IP adresu**.  Privátní IP adresa musí být **10.1.0.4** pro vnet1DNS a **10.2.0.4** pro vnet2DNS.  
@@ -309,7 +306,7 @@ Následující postup popisuje, jak volat skript akce skriptu z Azure Portal. In
 
 Požadované argumenty:
 
-|Název|Description|
+|Název|Popis|
 |----|-----------|
 |-s,--src-cluster | Určuje název DNS zdrojového clusteru HBA. Příklad:-s hbsrccluster,--src-cluster = hbsrccluster |
 |-d,--DST-cluster | Určuje název DNS cílového clusteru (repliky) HBA. Příklad:-s dsthbcluster,--src-cluster = dsthbcluster |
@@ -318,7 +315,7 @@ Požadované argumenty:
 
 Nepovinné argumenty:
 
-|Název|Description|
+|Název|Popis|
 |----|-----------|
 |-Su,--src-Ambari-User | Určuje uživatelské jméno správce pro Ambari ve zdrojovém clusteru HBA. Výchozí hodnota je **admin (správce**). |
 |-du,--DST-Ambari-User | Určuje uživatelské jméno správce pro Ambari v cílovém clusteru HBA. Výchozí hodnota je **admin (správce**). |

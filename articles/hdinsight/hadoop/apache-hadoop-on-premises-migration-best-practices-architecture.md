@@ -1,19 +1,17 @@
 ---
 title: 'Architektura: místní Apache Hadoop do Azure HDInsight'
 description: Naučte se osvědčené postupy pro migraci místních clusterů Hadoop do Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: af9b1f42140c5656c5f55a98c2d635d59e130db5
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: eb01f2fabb89c6928dc4919987efa27df36a8a7a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533729"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946454"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>Migrace místních Apache Hadoop clusterů do Azure HDInsight – osvědčené postupy pro architekturu
 
@@ -39,10 +37,10 @@ V následující tabulce jsou uvedeny různé metody, které lze použít k vytv
 |Nástroj|Založené na prohlížeči|Příkazový řádek|REST API|Sada SDK|
 |---|---|---|---|---|
 |[Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md)|×||||
-|[Azure Data Factory](../hdinsight-hadoop-create-linux-clusters-adf.md)|X|X|X|X|
+|[Azure Data Factory](../hdinsight-hadoop-create-linux-clusters-adf.md)|×|×|×|×|
 |[Rozhraní příkazového řádku Azure (ver 1,0)](../hdinsight-hadoop-create-linux-clusters-azure-cli.md)||×|||
 |[Azure PowerShell](../hdinsight-hadoop-create-linux-clusters-azure-powershell.md)||×|||
-|[cURL](../hdinsight-hadoop-create-linux-clusters-curl-rest.md)||X|X||
+|[cURL](../hdinsight-hadoop-create-linux-clusters-curl-rest.md)||×|×||
 |[.NET SDK](/dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true)||||×|
 |[Python SDK](/python/api/overview/azure/hdinsight)||||×|
 |[Java SDK](/java/api/overview/azure/hdinsight)||||×|
@@ -103,7 +101,7 @@ Mezi osvědčené postupy metastore Hive HDInsight patří následující:
 - Pravidelně zálohujte vlastní metastore.
 - Udržujte cluster metastore a HDInsight ve stejné oblasti.
 - Monitorujte metastore o výkonu a dostupnosti pomocí nástrojů pro monitorování Azure SQL Database, jako jsou protokoly Azure Portal nebo Azure Monitor.
-- Spusťte `ANALYZE TABLE` příkaz podle potřeby a vygenerujte statistiku pro tabulky a sloupce. Například, `ANALYZE TABLE [table_name] COMPUTE STATISTICS`.
+- Spusťte `ANALYZE TABLE` příkaz podle potřeby a vygenerujte statistiku pro tabulky a sloupce. Například `ANALYZE TABLE [table_name] COMPUTE STATISTICS`.
 
 ## <a name="best-practices-for-different-workloads"></a>Osvědčené postupy pro různé úlohy
 
