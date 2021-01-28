@@ -1,18 +1,15 @@
 ---
 title: Spouštění Azure Machine Learning úloh v Apache Spark ve službě HDInsight
 description: Naučte se spouštět úlohy Azure Machine Learning pomocí automatizovaného strojového učení (AutoML) v Apache Spark ve službě Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/13/2019
-ms.openlocfilehash: 3397c57f793c6994847786ff8247e5ccfa453ec0
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 4087341a9a96ae56c00972f886ce3cc8891750a5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97821243"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929729"
 ---
 # <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-on-apache-spark-in-hdinsight"></a>Spouštění Azure Machine Learning úloh pomocí automatizovaného strojového učení na Apache Spark ve službě HDInsight
 

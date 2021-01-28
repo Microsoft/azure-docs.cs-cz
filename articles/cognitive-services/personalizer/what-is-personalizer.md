@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 08/27/2020
 ms.custom: cog-serv-seo-aug-2020
 keywords: přizpůsobování, přizpůsobování v Azure, Machine Learning
-ms.openlocfilehash: 33c1770c5c8722a55d8f1df4aff9b1637d903977
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 913b4d989865a50b23d58c5493368997248f8db8
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028773"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928541"
 ---
 # <a name="what-is-personalizer"></a>Co je služba Personalizace?
 
@@ -94,7 +94,7 @@ Vzhledem k tomu, že přidaný modul používá k vrácení jediné nejlepší p
     |--|--|
     |Uživatel zvolil nejlepší, jednu položku _obsahu_ (ID akce pro odměnu).|**1**|
     |Uživatel vybral jiný obsah.|**0**|
-    |Uživatel byl pozastaven, je před tím nerozhodující, aby bylo možné vybrat nejlepší, jednu položku _obsahu_ (ID akce odměna).|**0.5**|
+    |Uživatel byl pozastaven, je před tím nerozhodující, aby bylo možné vybrat nejlepší, jednu položku _obsahu_ (ID akce odměna).|**0,5**|
 
     1. Přidejte volání **odměňování** , které posílá skóre odměňování od 0 do 1.
         * Hned po zobrazení obsahu
@@ -115,10 +115,10 @@ Až budete mít možnost začít se službou pro přizpůsobování, vyzkoušejt
 
 ## <a name="reference"></a>Reference 
 
-* [Sada/.NET SDK pro přizpůsobení C#](/dotnet/api/overview/azure/cognitiveservices/client/personalizer?view=azure-dotnet)
+* [Sada/.NET SDK pro přizpůsobení C#](/dotnet/api/overview/azure/cognitiveservices/client/personalizer)
 * [Sada SDK pro přizpůsobování](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview)
-* [Sada přizpůsobování JavaScript SDK](/javascript/api/@azure/cognitiveservices-personalizer/?view=azure-node-latest)
-* [Sada SDK pro přizpůsobování Pythonu](/python/api/overview/azure/cognitiveservices/personalizer?view=azure-python)
+* [Sada přizpůsobování JavaScript SDK](/javascript/api/@azure/cognitiveservices-personalizer/)
+* [Sada SDK pro přizpůsobování Pythonu](/python/api/overview/azure/cognitiveservices/personalizer)
 * [Rozhraní REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank)
 
 ## <a name="next-steps"></a>Další kroky

@@ -3,17 +3,16 @@ title: Správa závislostí aplikací Spark v Azure HDInsight
 description: Tento článek poskytuje Úvod do správy závislostí Spark v clusteru HDInsight Spark pro aplikace PySpark a Scala.
 author: yanancai
 ms.author: yanacai
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: b2cd50b1b35b87b1a11301ddc36ac355bef20dc4
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: f0673523c74a0ea298e7d2d520952c3e98877e91
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780611"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98930050"
 ---
 # <a name="manage-spark-application-dependencies"></a>Správa závislostí sparkových aplikací
 

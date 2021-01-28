@@ -1,18 +1,15 @@
 ---
 title: Výjimka při spouštění dotazů ze zobrazení podregistru Apache Ambari ve službě Azure HDInsight
 description: Postup řešení potíží při spouštění Apache Hive dotazů prostřednictvím zobrazení podregistru Apache Ambari ve službě Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 12/23/2019
-ms.openlocfilehash: aeedda5c26a2e9dc0fa2b228285cfda45d880d29
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 40ef380cd2bd4743b92daf44a0a5b70ade1cbb35
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547380"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933009"
 ---
 # <a name="exception-when-running-queries-from-apache-ambari-hive-view-in-azure-hdinsight"></a>Výjimka při spouštění dotazů ze zobrazení podregistru Apache Ambari ve službě Azure HDInsight
 
@@ -54,13 +51,13 @@ Některá obecná doporučení pro zlepšení situace:
 
 * Pokud používáte externí podregistr metastore, zkontrolujte metriky databáze a ujistěte se, že databáze není přetížená. Zvažte možnost škálování vrstvy databáze metastore.
 
-* Ujistěte se, že je paralelní operace zapnutá (to umožňuje paralelní spouštění vláken obslužných rutin HTTP). Pokud chcete ověřit hodnotu, spusťte [Apache Ambari](../hdinsight-hadoop-manage-ambari.md) a **přejděte k části Konfigurace podregistru**  >  **Configs**  >  **Upřesnit**  >  **vlastní podregistr – lokalita** . Hodnota `hive.server2.parallel.ops.in.session` by měla být `true` .
+* Ujistěte se, že je paralelní operace zapnutá (to umožňuje paralelní spouštění vláken obslužných rutin HTTP). Pokud chcete ověřit hodnotu, spusťte [Apache Ambari](../hdinsight-hadoop-manage-ambari.md) a **přejděte k části Konfigurace podregistru**  >    >  **Upřesnit**  >  **vlastní podregistr – lokalita**. Hodnota `hive.server2.parallel.ops.in.session` by měla být `true` .
 
 * Ujistěte se, že SKU virtuálního počítače clusteru není pro zatížení příliš malá. Zvažte rozdělení práce mezi několik clusterů. Další informace najdete v tématu [Výběr typu clusteru](../hdinsight-capacity-planning.md#choose-a-cluster-type).
 
 * Pokud je v clusteru nainstalovaný Ranger, zkontrolujte prosím, jestli je pro každý dotaz moc velký počet Ranger zásad, které je potřeba vyhodnotit. Vyhledejte duplicitní nebo nepotřebné zásady.
 
-* Ověřte hodnotu **velikosti haldy HiveServer2** z Ambari. Přejděte k **Hive**  >  **Configs**  >  **optimalizaci nastavení** konfigurace podregistru  >  **Optimization** . Ujistěte se, že hodnota je větší než 10 GB. Upravte podle potřeby pro optimalizaci výkonu.
+* Ověřte hodnotu **velikosti haldy HiveServer2** z Ambari. Přejděte k   >    >  **optimalizaci nastavení** konfigurace podregistru  >  . Ujistěte se, že hodnota je větší než 10 GB. Upravte podle potřeby pro optimalizaci výkonu.
 
 * Ujistěte se, že dotaz na podregistr je dobře laděný. Další informace najdete v tématu věnovaném [optimalizaci Apache Hive dotazů ve službě Azure HDInsight](../hdinsight-hadoop-optimize-hive-query.md).
 

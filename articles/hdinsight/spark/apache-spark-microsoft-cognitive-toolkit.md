@@ -1,19 +1,16 @@
 ---
 title: Microsoft Cognitive Toolkit s Apache Spark – Azure HDInsight
 description: Seznamte se s tím, jak se dá získat školicí Microsoft Cognitive Toolkit model hloubkového učení použít pro datovou sadu pomocí rozhraní Spark Python API v clusteru Azure HDInsight Spark.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/14/2020
-ms.openlocfilehash: 7fa3355ff7e61d624d57da68d0f835faa7ca3736
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: cddbc4b6a5c7a2c787c8305fdf703e34543746f8
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505422"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929976"
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>Použití Microsoft Cognitive Toolkit modelu hloubkového učení s clusterem Azure HDInsight Spark
 
@@ -23,7 +20,7 @@ V tomto článku provedete následující kroky.
 
 2. Nahrajte [Jupyter notebook](https://jupyter.org/) do clusteru [Apache Spark](https://spark.apache.org/) , abyste zjistili, jak použít školicí model Microsoft Cognitive Toolkit hloubkového učení do souborů v účtu Azure Blob Storage pomocí [rozhraní Spark Python API (PySpark)](https://spark.apache.org/docs/latest/api/python/index.html) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Cluster Apache Spark ve službě HDInsight. Viz [Vytvoření clusteru Apache Spark](./apache-spark-jupyter-spark-sql-use-portal.md).
 
@@ -61,7 +58,7 @@ Pokyny, jak pomocí Azure Portal spustit akci skriptu, najdete v tématu [Přizp
 |Vlastnost |Hodnota |
 |---|---|
 |Typ skriptu|– Vlastní|
-|Název| Nainstalovat MCT|
+|Name| Nainstalovat MCT|
 |Identifikátor URI skriptu bash|`https://raw.githubusercontent.com/Azure-Samples/hdinsight-pyspark-cntk-integration/master/cntk-install.sh`|
 |Typ (typy) uzlů:|Vedoucí pracovník|
 |Parametry|Žádné|

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
-ms.openlocfilehash: 70fb502e45a6cdcc196f5fb97ee4c8c59ba6c27d
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 4d2f339f5a1339b5f249172170fed54c91f1dc24
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223529"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927194"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-azure-cli"></a>Rychlý Start: vytvoření veřejné IP adresy pomocí Azure CLI
 
@@ -30,7 +30,7 @@ V tomto článku se dozvíte, jak vytvořit prostředek veřejné IP adresy pomo
 
 Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
-Vytvořte skupinu prostředků pomocí [AZ Group Create](/cli/azure/group?view=azure-cli-latest#az-group-create) s názvem **myResourceGroup** v umístění **eastus2** .
+Vytvořte skupinu prostředků pomocí [AZ Group Create](/cli/azure/group#az-group-create) s názvem **myResourceGroup** v umístění **eastus2** .
 
 ```azurecli-interactive
   az group create \
@@ -46,7 +46,7 @@ Vytvořte skupinu prostředků pomocí [AZ Group Create](/cli/azure/group?view=a
 >[!NOTE]
 >Následující příkaz funguje pro rozhraní API verze 2020-08-01 nebo novější.  Další informace o aktuálně používané verzi rozhraní API najdete v tématu [poskytovatelé a typy prostředků](../azure-resource-manager/management/resource-providers-and-types.md).
 
-Pomocí [AZ Network Public-IP Create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) vytvoříte standardní zónu – redundantní veřejnou IP adresu s názvem **myStandardZRPublicIP** v **myResourceGroup**.
+Pomocí [AZ Network Public-IP Create](/cli/azure/network/public-ip#az-network-public-ip-create) vytvoříte standardní zónu – redundantní veřejnou IP adresu s názvem **myStandardZRPublicIP** v **myResourceGroup**.
 
 ```azurecli-interactive
   az network public-ip create \
@@ -76,7 +76,7 @@ Všimněte si, že výše uvedené možnosti pro zóny jsou pouze výběr platn�
 >[!NOTE]
 >Následující příkaz funguje pro rozhraní API verze 2020-08-01 nebo novější.  Další informace o aktuálně používané verzi rozhraní API najdete v tématu [poskytovatelé a typy prostředků](../azure-resource-manager/management/resource-providers-and-types.md).
 
-Pomocí [AZ Network Public-IP Create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) vytvořte standardní veřejnou IP adresu jako prostředek mimo oblast s názvem **myStandardPublicIP** v **myResourceGroup**.
+Pomocí [AZ Network Public-IP Create](/cli/azure/network/public-ip#az-network-public-ip-create) vytvořte standardní veřejnou IP adresu jako prostředek mimo oblast s názvem **myStandardPublicIP** v **myResourceGroup**.
 
 ```azurecli-interactive
   az network public-ip create \
@@ -88,7 +88,7 @@ Tento výběr je platný ve všech oblastech a je výchozí volbou pro standardn
 
 # <a name="basic-sku"></a>[**Základní SKU**](#tab/option-create-public-ip-basic)
 
-Použijte [AZ Network Public-IP Create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) k vytvoření základní statické veřejné IP adresy s názvem **myBasicPublicIP** v **myResourceGroup**.  Základní veřejné IP adresy nemají koncept zón dostupnosti.
+Použijte [AZ Network Public-IP Create](/cli/azure/network/public-ip#az-network-public-ip-create) k vytvoření základní statické veřejné IP adresy s názvem **myBasicPublicIP** v **myResourceGroup**.  Základní veřejné IP adresy nemají koncept zón dostupnosti.
 
 ```azurecli-interactive
   az network public-ip create \

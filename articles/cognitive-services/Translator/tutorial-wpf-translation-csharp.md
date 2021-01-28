@@ -11,16 +11,16 @@ ms.topic: tutorial
 ms.date: 05/26/2020
 ms.author: lajanuar
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9ebcbadbc8b502121b25393c7761794bcd3f07e8
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: dd5b83908ae7c6d62acd3391933028685facf755
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897101"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927484"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>Kurz: Vytvoření aplikace pro překlad pomocí WPF
 
-V tomto kurzu sestavíte aplikaci [Windows Presentation Foundation (WPF)](/visualstudio/designers/getting-started-with-wpf?view=vs-2019) , která používá Azure Cognitive Services pro překlad textu, rozpoznávání jazyka a kontrolu pravopisu s použitím jediného klíče předplatného. Konkrétně vaše aplikace bude volat rozhraní API z překladatele a [Kontrola pravopisu Bingu](https://azure.microsoft.com/services/cognitive-services/spell-check/).
+V tomto kurzu sestavíte aplikaci [Windows Presentation Foundation (WPF)](/visualstudio/designers/getting-started-with-wpf) , která používá Azure Cognitive Services pro překlad textu, rozpoznávání jazyka a kontrolu pravopisu s použitím jediného klíče předplatného. Konkrétně vaše aplikace bude volat rozhraní API z překladatele a [Kontrola pravopisu Bingu](https://azure.microsoft.com/services/cognitive-services/spell-check/).
 
 Co je WPF (Windows Presentation Foundation)? Jedná se o architekturu uživatelského rozhraní, která vytváří klientské aplikace pro stolní počítače. Vývojová platforma WPF podporuje širokou škálu funkcí pro vývoj aplikací, včetně modelu aplikace, prostředků, ovládacích prvků, grafiky, rozložení, datových vazeb, dokumentů a zabezpečení. Je to podmnožina .NET Framework, takže pokud jste dříve vytvořili aplikace s .NET Framework pomocí ASP.NET nebo model Windows Forms, je vhodné seznámit se s programováním v prostředí. WPF používá jazyk XAML (Extensible App Markup Language) k poskytnutí deklarativního modelu pro programování aplikací, který si projdeme v nadcházejících částech.
 
@@ -90,7 +90,7 @@ Pojďme do našeho projektu přidat sestavení k serializaci a deserializaci obj
 1. Po přidání těchto odkazů do projektu můžete kliknutím na tlačítko **OK** zavřít **Správce odkazů**.
 
 > [!NOTE]
-> Pokud se chcete dozvědět více o odkazech na sestavení, přečtěte si téma [Postup: Přidání nebo odebrání odkazu pomocí Správce odkazů](/visualstudio/ide/how-to-add-or-remove-references-by-using-the-reference-manager?view=vs-2019).
+> Pokud se chcete dozvědět více o odkazech na sestavení, přečtěte si téma [Postup: Přidání nebo odebrání odkazu pomocí Správce odkazů](/visualstudio/ide/how-to-add-or-remove-references-by-using-the-reference-manager).
 
 ### <a name="install-newtonsoftjson"></a>Nainstalovat NewtonSoft.Jsna
 

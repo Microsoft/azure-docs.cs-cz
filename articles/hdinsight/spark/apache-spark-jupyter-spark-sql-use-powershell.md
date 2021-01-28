@@ -1,19 +1,16 @@
 ---
 title: 'Rychlý Start: Vytvoření clusteru Apache Spark v Azure HDInsight pomocí Azure PowerShell'
 description: V tomto rychlém startu se dozvíte, jak pomocí Azure PowerShellu vytvořit cluster Apache Spark v Azure HDInsight a jak spustit jednoduchý dotaz Spark SQL.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 06/12/2019
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 14b6dd8f8db00469be49c2f57e12d3c15302f8a6
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 7a04d65d5032e37433fb61c73e5f64fe89bb2d2c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822212"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98930497"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-powershell"></a>Rychlý Start: Vytvoření clusteru Apache Spark ve službě Azure HDInsight pomocí prostředí PowerShell
 

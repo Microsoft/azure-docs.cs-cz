@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: 6201a4e0551f0f75dde65b2bc4b8b560a0f5ea20
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d424a22a26119dcb3ef6a0e5c4f3dc0c13b1aa4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87007992"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927582"
 ---
 # <a name="azure-diagnostics-extension-overview"></a>Přehled rozšíření Azure Diagnostics
 Azure Diagnostics rozšíření je [Agent v Azure monitor](agents-overview.md) , který shromažďuje data monitorování z hostovaného operačního systému výpočetních prostředků Azure, včetně virtuálních počítačů. Tento článek obsahuje přehled rozšíření Azure Diagnostics, včetně specifických funkcí, které podporuje, a možností instalace a konfigurace. 
@@ -44,13 +44,13 @@ V následujících tabulkách najdete seznam dat, která se můžou shromažďov
 
 ### <a name="windows-diagnostics-extension-wad"></a>Rozšíření Windows Diagnostics (WAD)
 
-| Zdroj dat | Description |
+| Zdroj dat | Popis |
 | --- | --- |
 | Protokoly událostí systému Windows   | Události z protokolu událostí systému Windows. |
 | Čítače výkonu | Číselné hodnoty, které měří výkon různých aspektů operačního systému a zatížení. |
 | Protokoly IIS             | Informace o použití pro weby služby IIS běžící v hostovaném operačním systému. |
 | Protokoly aplikací     | Sleduje zprávy zapsané vaší aplikací. |
-| Protokoly EventSource .NET |Psaní kódu pro události pomocí třídy [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) .NET |
+| Protokoly EventSource .NET |Psaní kódu pro události pomocí třídy [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource) .NET |
 | [Protokoly ETW založené na manifestech](/windows/desktop/etw/about-event-tracing) |Trasování událostí pro události systému Windows generované jakýmkoli procesem. |
 | Výpisy stavu systému (protokoly)   | Informace o stavu procesu, pokud dojde k chybě aplikace. |
 | Protokoly založené na souborech    | Protokoly vytvořené vaší aplikací nebo službou. |
@@ -59,11 +59,11 @@ V následujících tabulkách najdete seznam dat, která se můžou shromažďov
 
 ### <a name="linux-diagnostics-extension-lad"></a>Diagnostické rozšíření pro Linux (LAD)
 
-| Zdroj dat | Description |
+| Zdroj dat | Popis |
 | --- | --- |
 | Syslog | Události odeslané do systému protokolování událostí pro Linux.   |
 | Čítače výkonu  | Číselné hodnoty, které měří výkon různých aspektů operačního systému a zatížení. |
-| Soubory protokolů | Záznamy odesílané do protokolu založeného na souborech.  |
+| Soubory protokolu | Záznamy odesílané do protokolu založeného na souborech.  |
 
 ## <a name="data-destinations"></a>Cíle dat
 Diagnostické rozšíření Azure pro systémy Windows i Linux vždy shromažďuje data do účtu Azure Storage. Přečtěte si téma [instalace a konfigurace rozšíření Windows Azure Diagnostics (WAD)](diagnostics-extension-windows-install.md) a [použijte diagnostické rozšíření systému Linux k monitorování metrik a protokolů](../../virtual-machines/extensions/diagnostics-linux.md) pro seznam konkrétních tabulek a objektů blob, kde jsou tato data shromažďována.
@@ -72,9 +72,9 @@ Nakonfigurujte jednu nebo více *datových umyvadel* pro odesílání dat do dal
 
 ### <a name="windows-diagnostics-extension-wad"></a>Rozšíření Windows Diagnostics (WAD)
 
-| Cíl | Description |
+| Cíl | Popis |
 |:---|:---|
-| Azure Monitor metriky | Shromažďovat údaje o výkonu pro Azure Monitor metriky. Viz [odeslání metriky hostovaného operačního systému do databáze metriky Azure monitor](collect-custom-metrics-guestos-resource-manager-vm.md).  |
+| Metriky Azure Monitoru | Shromažďovat údaje o výkonu pro Azure Monitor metriky. Viz [odeslání metriky hostovaného operačního systému do databáze metriky Azure monitor](collect-custom-metrics-guestos-resource-manager-vm.md).  |
 | Event Hubs | K posílání dat mimo Azure použijte Azure Event Hubs. Přečtěte si téma [streamování dat Azure Diagnostics do Event Hubs](diagnostics-extension-stream-event-hubs.md) |
 | Objekty blob Azure Storage | Zápis do dat do objektů BLOB v Azure Storage kromě tabulek. |
 | Application Insights | Shromažďovat data z aplikací běžících ve vašem VIRTUÁLNÍm počítači a Application Insights je integrovat s ostatními monitorováním aplikací. Viz [odeslání diagnostických dat do Application Insights](diagnostics-extension-to-application-insights.md). |
@@ -85,11 +85,11 @@ Data WAD můžete také shromažďovat z úložiště do pracovního prostoru Lo
 ### <a name="linux-diagnostics-extension-lad"></a>Diagnostické rozšíření pro Linux (LAD)
 LAD zapisuje data do tabulek v Azure Storage. Podporuje jímky v následující tabulce.
 
-| Cíl | Description |
+| Cíl | Popis |
 |:---|:---|
 | Event Hubs | K posílání dat mimo Azure použijte Azure Event Hubs. |
 | Objekty blob Azure Storage | Zápis do dat do objektů BLOB v Azure Storage kromě tabulek. |
-| Azure Monitor metriky | Kromě LAD nainstalujte agenta telegraf. Viz [shromáždění vlastních metrik pro virtuální počítač se systémem Linux pomocí agenta InfluxData telegraf](collect-custom-metrics-linux-telegraf.md).
+| Metriky Azure Monitoru | Kromě LAD nainstalujte agenta telegraf. Viz [shromáždění vlastních metrik pro virtuální počítač se systémem Linux pomocí agenta InfluxData telegraf](collect-custom-metrics-linux-telegraf.md).
 
 
 ## <a name="installation-and-configuration"></a>Instalace a konfigurace

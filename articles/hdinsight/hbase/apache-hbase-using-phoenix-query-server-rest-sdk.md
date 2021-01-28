@@ -1,19 +1,16 @@
 ---
 title: Phoenix Query Server REST SDK – Azure HDInsight
 description: Nainstalujte a použijte sadu REST SDK pro Phoenix Query Server ve službě Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 01/01/2020
-ms.openlocfilehash: 051d7b37f5f78ce28134fa7c4ee188f3dde81812
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5ce459e2820cfd2ea5cacb036f5d6885c9c5afa0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89504838"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933366"
 ---
 # <a name="apache-phoenix-query-server-rest-sdk"></a>Sada SDK REST sady Apache Phoenix dotazů serveru
 
@@ -92,7 +89,7 @@ Tady jsou `TransactionIsolation` hodnoty:
 | 4 | Znemožňují se čtení neopakujících se čtením, ale může dojít k fiktivnímu čtení. |
 | 8 | Nezměněné čtení, čtení bez opakování a čtení s fiktivními záznamy jsou zabráněno. |
 
-## <a name="create-a-new-table"></a>Vytvořit novou tabulku
+## <a name="create-a-new-table"></a>Vytvoření nové tabulky
 
 HBA, stejně jako jakékoli jiné RDBMS, ukládají data v tabulkách. Phoenix používá standardní dotazy SQL k vytváření nových tabulek a při definování primárních typů klíčů a sloupců.
 

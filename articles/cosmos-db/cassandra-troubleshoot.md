@@ -7,17 +7,17 @@ ms.subservice: cosmosdb-mongo
 ms.topic: troubleshooting
 ms.date: 12/01/2020
 ms.author: thvankra
-ms.openlocfilehash: c969e4fac3ae30088cfe47a7b0edff22c578cb8b
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 75ce307056d24f84e9f72f746eb77b09b89e21b2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97802350"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927499"
 ---
 # <a name="troubleshoot-common-issues-in-azure-cosmos-db-cassandra-api"></a>Řešení běžných problémů v Azure Cosmos DB rozhraní API Cassandra
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
-Rozhraní API Cassandra v Azure Cosmos DB je vrstva kompatibility, která poskytuje [podporu drátového protokolu](cassandra-support.md) pro oblíbenou Open zdrojovou databázi Apache Cassandra a využívá ji [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/introduction). Jako plně spravovaná cloudová služba Azure Cosmos DB poskytuje [záruky dostupnosti, propustnosti a konzistence](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/) rozhraní API Cassandra. Tyto záruky nejsou možné ve starších implementacích Apache Cassandra. Rozhraní API Cassandra také usnadňuje operace s platformami s nulovou údržbou a opravami bez výpadků. V takovém případě se mnohé z back-endové operace liší od Apache Cassandra, takže doporučujeme konkrétní nastavení a postupy, abyste předešli běžným chybám. 
+Rozhraní API Cassandra v Azure Cosmos DB je vrstva kompatibility, která poskytuje [podporu drátového protokolu](cassandra-support.md) pro oblíbenou Open zdrojovou databázi Apache Cassandra a využívá ji [Azure Cosmos DB](./introduction.md). Jako plně spravovaná cloudová služba Azure Cosmos DB poskytuje [záruky dostupnosti, propustnosti a konzistence](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/) rozhraní API Cassandra. Tyto záruky nejsou možné ve starších implementacích Apache Cassandra. Rozhraní API Cassandra také usnadňuje operace s platformami s nulovou údržbou a opravami bez výpadků. V takovém případě se mnohé z back-endové operace liší od Apache Cassandra, takže doporučujeme konkrétní nastavení a postupy, abyste předešli běžným chybám. 
 
 Tento článek popisuje běžné chyby a řešení pro aplikace využívající Azure Cosmos DB rozhraní API Cassandra.
 
@@ -97,4 +97,3 @@ datastax-java-driver {
 
 - Přečtěte si o [podporovaných funkcích](cassandra-support.md) v Azure Cosmos DB rozhraní API Cassandra.
 - Naučte se [migrovat z nativního Apache Cassandra na Azure Cosmos DB rozhraní API Cassandra](cassandra-migrate-cosmos-db-databricks.md)
-

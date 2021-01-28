@@ -1,19 +1,16 @@
 ---
 title: Použití Apache Kafka v HDInsight s Azure IoT Hub
 description: Naučte se používat Apache Kafka v HDInsight s Azure IoT Hub. Projekt Kafka Connect Azure IoT Hub poskytuje konektor pro zdroj a jímku pro Kafka. Zdrojový konektor může číst data z IoT Hub a konektor jímky zapisuje do IoT Hub.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/26/2019
-ms.openlocfilehash: 0722119b35ecebf3ed1e7a377707de02a6c127bf
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 7980003dd63e5e51d87f85542029a1f25e7223df
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825195"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932878"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>Použití Apache Kafka v HDInsight s Azure IoT Hub
 
@@ -122,7 +119,7 @@ V rámci připojení SSH k hraničnímu uzlu pomocí následujících kroků nak
     |---|---|---|
     |`bootstrap.servers=localhost:9092`|Nahraďte `localhost:9092` hodnotu hostiteli zprostředkovatele z předchozího kroku.|Nakonfiguruje samostatnou konfiguraci pro hraniční uzel, aby bylo možné najít zprostředkovatele Kafka.|
     |`key.converter=org.apache.kafka.connect.json.JsonConverter`|`key.converter=org.apache.kafka.connect.storage.StringConverter`|Tato změna umožňuje testovat pomocí výrobce konzoly, který je součástí Kafka. Pro ostatní výrobce a zákazníky budete možná potřebovat jiné převaděče. Informace o použití jiných hodnot převaděče naleznete v tématu [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md) .|
-    |`value.converter=org.apache.kafka.connect.json.JsonConverter`|`value.converter=org.apache.kafka.connect.storage.StringConverter`|Stejné jako výše.|
+    |`value.converter=org.apache.kafka.connect.json.JsonConverter`|`value.converter=org.apache.kafka.connect.storage.StringConverter`|Platí to samé jako výše.|
     |–|`consumer.max.poll.records=10`|Přidat ke konci souboru Tato změna umožňuje zabránit vypršení časových limitů v konektoru jímky tím, že je omezí na 10 záznamů najednou. Další informace najdete na webu [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md).|
 
 1. Pokud chcete soubor uložit, použijte __CTRL + X__, __Y__ a pak __Zadejte__.
@@ -157,7 +154,7 @@ Chcete-li získat informace o službě IoT Hub používané konektorem, použijt
 
          * __Název kompatibilní s centrem událostí__
          * __Koncový bod kompatibilní s centrem událostí__
-         * __Oddíly__
+         * __Disk__
 
         > [!IMPORTANT]  
         > Hodnota koncového bodu z portálu může obsahovat navíc text, který v tomto příkladu není potřeba. Extrahujte text, který odpovídá tomuto vzoru `sb://<randomnamespace>.servicebus.windows.net/` .

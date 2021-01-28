@@ -2,26 +2,20 @@
 title: Konfigurace vlastního klíče pro šifrování Azure Service Busch dat v klidovém prostředí
 description: Tento článek poskytuje informace o tom, jak nakonfigurovat vlastní klíč pro šifrování Azure Service Bus data REST.
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: 3e8f3a599ee5fe40c85a93dd58d36e6cd611c9ea
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.date: 01/26/2021
+ms.openlocfilehash: 132ee3883b818dcc5a5d8e0cc7b372daee41e273
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98631762"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928086"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>Konfigurace klíčů spravovaných zákazníkem pro šifrování Azure Service Bus dat v klidovém formátu pomocí Azure Portal
-Azure Service Bus Premium poskytuje šifrování neaktivních dat pomocí šifrování služby Azure Storage (Azure SSE). Service Bus Premium spoléhá na Azure Storage uložení dat a ve výchozím nastavení se všechna data uložená pomocí Azure Storage šifrují pomocí klíčů spravovaných Microsoftem. 
+Azure Service Bus Premium poskytuje šifrování neaktivních dat pomocí šifrování služby Azure Storage (Azure SSE). Service Bus Premium používá k ukládání dat Azure Storage. Všechna data uložená pomocí Azure Storage se šifrují pomocí klíčů spravovaných Microsoftem. Pokud používáte vlastní klíč (také označovaný jako Bring Your Own Key (BYOK) nebo klíč spravovaný zákazníkem), data se pořád šifrují pomocí klíče spravovaného společností Microsoft, ale navíc klíč spravovaný společností Microsoft bude zašifrovaný pomocí klíče spravovaného zákazníkem. Tato funkce umožňuje vytvořit, otočit, zakázat a odvolat přístup k klíčům spravovaným zákazníkem, které se používají k šifrování klíčů spravovaných společností Microsoft. Povolení funkce BYOK je jednorázovým procesem nastavení v oboru názvů.
 
-## <a name="overview"></a>Přehled
-Azure Service Bus teď podporuje možnost šifrování neaktivních dat buď pomocí klíčů spravovaných Microsoftem nebo klíčů spravovaných zákazníkem (Bring Your Own Key-BYOK). Tato funkce umožňuje vytvořit, otočit, zakázat a odvolat přístup k klíčům spravovaným zákazníkem, které se používají k šifrování Azure Service Bus v klidovém umístění.
-
-Povolení funkce BYOK je jednorázovým procesem nastavení v oboru názvů.
-
-> [!NOTE]
-> Pro šifrování na straně služby jsou k dispozici určitá upozornění ke spravovanému klíči zákazníka. 
->   * Tuto funkci podporuje Azure Service Bus úrovně [Premium](service-bus-premium-messaging.md) . Nedá se povolit pro obory názvů Service Bus úrovně Standard.
->   * Šifrování lze povolit pouze pro nové nebo prázdné obory názvů. Pokud obor názvů obsahuje nějaké fronty nebo témata, operace šifrování se nezdaří.
+Pro šifrování na straně služby jsou k dispozici určitá upozornění ke spravovanému klíči zákazníka. 
+- Tuto funkci podporuje Azure Service Bus úrovně [Premium](service-bus-premium-messaging.md) . Nedá se povolit pro obory názvů Service Bus úrovně Standard.
+- Šifrování lze povolit pouze pro nové nebo prázdné obory názvů. Pokud obor názvů obsahuje nějaké fronty nebo témata, operace šifrování se nezdaří.
 
 Pomocí Azure Key Vault můžete spravovat klíče a auditovat používání klíčů. Můžete buď vytvořit vlastní klíče a uložit je do trezoru klíčů, nebo můžete použít rozhraní API Azure Key Vault k vygenerování klíčů. Další informace o Azure Key Vault najdete v tématu [co je Azure Key Vault?](../key-vault/general/overview.md)
 
@@ -70,13 +64,13 @@ Po povolení klíčů spravovaných zákazníkem je potřeba přidružit spravov
         > [!NOTE]
         > Pro zajištění redundance můžete přidat až 3 klíče. V případě, že jedna z klíčů vypršela, nebo k ní nelze získat přístup, budou použity jiné klíče pro šifrování.
         
-    1. Zadejte podrobnosti pro klíč a klikněte na **Vybrat**. Tím se povolí Šifrování neaktivních dat v oboru názvů pomocí klíče spravovaného zákazníkem. 
+    1. Zadejte podrobnosti pro klíč a klikněte na **Vybrat**. Tím se povolí šifrování klíče spravovaného společností Microsoft s klíčem (klíč spravovaný zákazníkem). 
 
 
     > [!IMPORTANT]
-    > Pokud chcete použít spravovaný klíč zákazníka spolu s geografickým zotavením po havárii, přečtěte si níže 
+    > Pokud chcete použít spravovaný klíč zákazníka spolu s geografickým zotavením po havárii, přečtěte si prosím tuto část. 
     >
-    > Pokud chcete povolit šifrování v klidovém formátu pomocí spravovaného klíče zákazníka, nastaví se [zásada přístupu](../key-vault/general/secure-your-key-vault.md) pro spravovanou identitu Service Bus v zadaném úložišti klíčů Azure. Tím se zajistí řízený přístup k trezoru klíčů Azure z oboru názvů Azure Service Bus.
+    > Pokud chcete povolit šifrování klíče spravovaného Microsoftem pomocí spravovaného klíče zákazníka, nastaví se [zásada přístupu](../key-vault/general/secure-your-key-vault.md) pro spravovanou identitu Service Bus v zadaném úložišti klíčů Azure. Tím se zajistí řízený přístup k trezoru klíčů Azure z oboru názvů Azure Service Bus.
     >
     > Z tohoto důvodu:
     > 

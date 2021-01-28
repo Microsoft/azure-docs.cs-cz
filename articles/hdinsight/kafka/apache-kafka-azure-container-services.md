@@ -1,19 +1,16 @@
 ---
 title: Použití služby Azure Kubernetes s Kafka ve službě HDInsight
 description: Naučte se používat Kafka v HDInsight z imagí kontejnerů hostovaných ve službě Azure Kubernetes Service (AKS).
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
-ms.openlocfilehash: ab87f181f78158d2ea0dd6575a30e6087600f60c
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: d807b591229644984f6658cdacd0bf447759f292
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92485677"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933034"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>Použití služby Azure Kubernetes s Apache Kafka v HDInsight
 
@@ -69,7 +66,7 @@ Pokud ještě nemáte cluster AKS, použijte jeden z následujících dokumentů
 
 2. Ze skupiny prostředků vyberte prostředek __virtuální sítě__ . Tento název si poznamenejte pro pozdější použití.
 
-3. V části **Nastavení**vyberte __adresní prostor__. Všimněte si adresního prostoru uvedeného v seznamu.
+3. V části **Nastavení** vyberte __Adresní prostor__. Všimněte si adresního prostoru uvedeného v seznamu.
 
 ### <a name="create-virtual-network"></a>Vytvoření virtuální sítě
 
@@ -150,7 +147,7 @@ Pomocí následujících kroků nakonfigurujte Kafka, aby inzerovala IP adresy m
 
 11. Chcete-li zakázat režim údržby, použijte tlačítko __Akce služby__ a vyberte možnost __vypnout režim údržby__. Kliknutím na **tlačítko OK** dokončete tuto operaci.
 
-## <a name="test-the-configuration"></a>Otestování konfigurace
+## <a name="test-the-configuration"></a>Otestujte konfiguraci.
 
 V tomto okamžiku Kafka a služba Azure Kubernetes komunikují prostřednictvím partnerských virtuálních sítí. K otestování tohoto připojení použijte následující postup:
 

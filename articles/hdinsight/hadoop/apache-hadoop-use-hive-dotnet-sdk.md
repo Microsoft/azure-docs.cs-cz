@@ -1,19 +1,16 @@
 ---
 title: Spouštění dotazů Apache Hive pomocí rozhraní HDInsight .NET SDK – Azure
 description: Naučte se odesílat Apache Hadoop úlohy do Azure HDInsight Apache Hadoop pomocí sady HDInsight .NET SDK.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/24/2019
-ms.openlocfilehash: 3f815754c099e1e085fb0692285b9e690d68194e
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 17264fc2a7d0a51de545e329ccf12ad45ad49d46
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487666"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927233"
 ---
 # <a name="run-apache-hive-queries-using-hdinsight-net-sdk"></a>Spouštění dotazů Apache Hive pomocí sady HDInsight .NET SDK
 
@@ -24,7 +21,7 @@ Naučte se odesílat Apache Hive dotazy pomocí sady HDInsight .NET SDK. Napíš
 > [!NOTE]  
 > Kroky v tomto článku je třeba provést z klienta systému Windows. Informace o použití klienta se systémem Linux, OS X nebo UNIX pro práci s podregistrem získáte pomocí voliče karet zobrazeného v horní části článku.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete tento článek, musíte mít následující položky:
 

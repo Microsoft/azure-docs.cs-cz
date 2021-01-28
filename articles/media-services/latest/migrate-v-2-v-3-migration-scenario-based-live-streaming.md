@@ -1,5 +1,5 @@
 ---
-title: Pokyny ke scénáři migrace z Media Services V2 na v3 pro živé streamování
+title: Pokyny k migraci z Media Services V2 na v3 pro živé streamování
 description: Tento článek vám poskytne návod na základě scénářů živého streamování, který vám pomůže při minimální migraci z Azure Media Services V2 na v3.
 services: media-services
 author: IngridAtMicrosoft
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: 65b1c8906463002e144ee520855121ce18693e03
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 02ae0f7e8723e9c4543a4ef681e3a1164b183a7a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98898269"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927116"
 ---
 # <a name="live-streaming-scenario-based-migration-guidance"></a>Průvodce migrací na základě scénáře živého streamování
 

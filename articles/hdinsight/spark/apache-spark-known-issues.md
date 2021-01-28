@@ -1,19 +1,16 @@
 ---
 title: Řešení potíží s Apache Sparkm clusterem v Azure HDInsight
 description: Přečtěte si o problémech souvisejících s Apache Spark clustery ve službě Azure HDInsight a o tom, jak tyto problémy obejít.
-author: hrasheed-msft
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.author: hrasheed
-ms.openlocfilehash: 65163225853037ac4cb97a02c0bdaf554b509fb1
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: c92b55d3ac7f4476b7b74d25b40150a74c6ea1cf
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822195"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98930153"
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>Známé problémy pro cluster Apache Spark v HDInsight
 

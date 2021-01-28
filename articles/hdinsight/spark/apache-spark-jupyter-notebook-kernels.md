@@ -1,19 +1,16 @@
 ---
 title: Jádra pro Jupyter Notebook v clusterech Spark v Azure HDInsight
 description: Přečtěte si o jádrech PySpark, PySpark3 a Spark pro Jupyter Notebook k dispozici v clusterech Spark v Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: b1139ce2358d5e5b3b52376892524e7ee0dd5611
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: a16ec623d7475a80e546df43495db1a357a5fa66
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822229"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98930395"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Jádra pro Jupyter Notebook v clusterech Apache Spark ve službě Azure HDInsight
 
@@ -78,7 +75,7 @@ Tady je několik výhod používání nových jader s Jupyter Notebook v cluster
    | sql |`%%sql -o <variable name>`<br> `SHOW TABLES` |Spustí dotaz na podregistr pro kontext SqlContext. Pokud `-o` je předán parametr, výsledek dotazu je trvalý v kontextu%% Local Python jako [PANDAS](https://pandas.pydata.org/) dataframe. |
    | local |`%%local`<br>`a=1` |Veškerý kód v pozdějších řádcích se spustí místně. Kód musí být platný kód Python2 bez ohledu na to, kterou jádro používáte. Takže i když jste při vytváření poznámkového bloku vybrali jádro **PySpark3** nebo **Spark** , v případě, `%%local` že jste v buňce použili Magic, musí mít tato buňka platný Python2 kód. |
    | Protokoly |`%%logs` |Vytvoří výstup protokolů pro aktuální relaci Livy. |
-   | delete |`%%delete -f -s <session number>` |Odstraní konkrétní relaci aktuálního koncového bodu Livy. Nemůžete odstranit relaci, která je spuštěná pro samotný jádro. |
+   | odstranění |`%%delete -f -s <session number>` |Odstraní konkrétní relaci aktuálního koncového bodu Livy. Nemůžete odstranit relaci, která je spuštěná pro samotný jádro. |
    | Vyčištění |`%%cleanup -f` |Odstraní všechny relace pro aktuální koncový bod Livy, včetně relace tohoto poznámkového bloku. Příznak Force-f je povinný. |
 
    > [!NOTE]  

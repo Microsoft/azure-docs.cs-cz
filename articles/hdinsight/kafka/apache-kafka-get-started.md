@@ -1,19 +1,16 @@
 ---
 title: 'Rychlý Start: nastavení Apache Kafka ve službě HDInsight pomocí Azure Portal'
 description: V tomto rychlém startu se dozvíte, jak vytvořit cluster Apache Kafka v Azure HDInsight pomocí portálu Azure Portal. Dozvíte se také o tématech, předplatitelích a konzumentech platformy Kafka.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/29/2020
-ms.openlocfilehash: 3f0b3da7d225e4b2adca3f2d4b08cff9b56e2520
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 9bb981b5a1d6ecb9e0c20748983a36ef3acfa001
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534596"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932900"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>Rychlý Start: Vytvoření clusteru Apache Kafka ve službě Azure HDInsight pomocí Azure Portal
 
@@ -25,19 +22,19 @@ V tomto rychlém startu se dozvíte, jak vytvořit cluster Apache Kafka pomocí 
 
 Rozhraní Apache Kafka API je přístupné jenom pro prostředky ve stejné virtuální síti. V tomto rychlém startu získáte přímý přístup ke clusteru pomocí SSH. Pokud chcete k platformě Apache Kafka připojit jiné služby, sítě nebo virtuální počítače, musíte nejprve vytvořit virtuální síť a pak v síti vytvořit prostředky. Další informace najdete v dokumentu [Připojení k platformě Apache Kafka pomocí virtuální sítě](apache-kafka-connect-vpn-gateway.md). Obecnější informace o plánování virtuálních sítí pro HDInsight najdete v tématu [plánování virtuální sítě pro Azure HDInsight](../hdinsight-plan-virtual-network-deployment.md).
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Klient SSH. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
+Klient SSH. Další informace najdete v tématu [Připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="create-an-apache-kafka-cluster"></a>Vytvoření clusteru Apache Kafka
 
 Pokud chcete vytvořit cluster Apache Kafka v HDInsight, použijte následující postup:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
-1. V horní nabídce vyberte **+ vytvořit prostředek** .
+1. V horní nabídce vyberte **+ vytvořit prostředek**.
 
     ![Azure Portal vytvoření prostředku HDInsight](./media/apache-kafka-get-started/azure-portal-create-resource.png)
 
@@ -53,15 +50,15 @@ Pokud chcete vytvořit cluster Apache Kafka v HDInsight, použijte následujíc�
     |Region (Oblast)    | V rozevíracím seznamu vyberte oblast, ve které se cluster vytvoří.  Vyberte oblast blíže pro lepší výkon. |
     |Typ clusteru| Vyberte **Vybrat typ clusteru** a otevřete seznam. V seznamu vyberte jako typ clusteru **Kafka** .|
     |Verze|Bude zadána výchozí verze typu clusteru. V rozevíracím seznamu vyberte, pokud chcete zadat jinou verzi.|
-    |Přihlašovací uživatelské jméno a heslo clusteru    | Výchozí přihlašovací jméno je **admin** . Heslo musí mít minimálně 10 znaků a musí obsahovat aspoň jedno číslo, jedno velké písmeno a jedno malé písmeno, jeden jiný než alfanumerický znak (kromě znaků) \) . Ujistěte se, že **nezadáváte** běžné heslo, jako je například Pass@word1.|
-    |Uživatelské jméno Secure Shell (SSH) | Výchozí uživatelské jméno je **sshuser** .  Pro uživatelské jméno SSH můžete zadat jiný název. |
+    |Přihlašovací uživatelské jméno a heslo clusteru    | Výchozí přihlašovací jméno je **admin**. Heslo musí mít minimálně 10 znaků a musí obsahovat aspoň jedno číslo, jedno velké písmeno a jedno malé písmeno, jeden jiný než alfanumerický znak (kromě znaků) \) . Ujistěte se, že **nezadáváte** běžné heslo, jako je například Pass@word1.|
+    |Uživatelské jméno Secure Shell (SSH) | Výchozí uživatelské jméno je **sshuser**.  Pro uživatelské jméno SSH můžete zadat jiný název. |
     |Použít heslo přihlášení clusteru pro SSH| Toto políčko zaškrtněte, pokud chcete pro uživatele SSH použít stejné heslo jako ten, který jste zadali pro uživatele přihlášení clusteru.|
 
    ![Základy vytváření clusterů Azure Portal](./media/apache-kafka-get-started/azure-portal-cluster-basics.png)
 
-    Každá oblast Azure (umístění) poskytuje _domény selhání_ . Doména selhání je logické seskupení základního hardwaru v datovém centru Azure. Všechny domény selhání sdílí společný zdroje napájení a síťový přepínač. Virtuální počítače a spravované disky, které implementují uzly v clusteru služby HDInsight, jsou distribuované napříč těmito doménami selhání. Tato architektura omezuje potenciální dopad selhání fyzického hardwaru.
+    Každá oblast Azure (umístění) poskytuje _domény selhání_. Doména selhání je logické seskupení základního hardwaru v datovém centru Azure. Všechny domény selhání sdílí společný zdroje napájení a síťový přepínač. Virtuální počítače a spravované disky, které implementují uzly v clusteru služby HDInsight, jsou distribuované napříč těmito doménami selhání. Tato architektura omezuje potenciální dopad selhání fyzického hardwaru.
 
-    Pro zajištění vysoké dostupnosti dat vyberte oblast (umístění), které obsahuje __tři domény selhání__ . Informace o počtu domén selhání v oblasti najdete v dokumentu popisujícím [dostupnost Linuxových virtuálních počítačů](../../virtual-machines/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set).
+    Pro zajištění vysoké dostupnosti dat vyberte oblast (umístění), které obsahuje __tři domény selhání__. Informace o počtu domén selhání v oblasti najdete v dokumentu popisujícím [dostupnost Linuxových virtuálních počítačů](../../virtual-machines/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set).
 
     Vyberte kartu **Další: úložiště >>** , abyste mohli přejít k nastavení úložiště.
 
@@ -69,9 +66,9 @@ Pokud chcete vytvořit cluster Apache Kafka v HDInsight, použijte následujíc�
 
     |Vlastnost  |Popis  |
     |---------|---------|
-    |Typ primárního úložiště|Použijte výchozí hodnotu **Azure Storage** .|
-    |Metoda výběru|Použijte výchozí hodnotu **vybrat ze seznamu** .|
-    |Účet primárního úložiště|Pomocí rozevíracího seznamu vyberte existující účet úložiště, nebo vyberte **vytvořit novou** . Pokud vytvoříte nový účet, musí mít název délku 3 až 24 znaků a může obsahovat jenom číslice a malá písmena.|
+    |Typ primárního úložiště|Použijte výchozí hodnotu **Azure Storage**.|
+    |Metoda výběru|Použijte výchozí hodnotu **vybrat ze seznamu**.|
+    |Účet primárního úložiště|Pomocí rozevíracího seznamu vyberte existující účet úložiště, nebo vyberte **vytvořit novou**. Pokud vytvoříte nový účet, musí mít název délku 3 až 24 znaků a může obsahovat jenom číslice a malá písmena.|
     |Kontejner|Použijte automaticky vyplněnou hodnotu.|
 
     ![Začínáme s HDInsight Linux poskytují hodnoty úložiště clusteru](./media/apache-kafka-get-started/azure-portal-cluster-storage.png "Zadejte hodnoty úložiště pro vytvoření clusteru HDInsight.")
@@ -80,7 +77,7 @@ Pokud chcete vytvořit cluster Apache Kafka v HDInsight, použijte následujíc�
 
 1. Pro tento rychlý Start ponechte výchozí nastavení zabezpečení. Další informace o Balíčku zabezpečení podniku najdete v tématu [Konfigurace clusteru HDInsight s Balíčkem zabezpečení podniku pomocí služby Azure Active Directory Domain Services](../domain-joined/apache-domain-joined-configure-using-azure-adds.md). Informace o tom, jak používat vlastní klíč k šifrování Apache Kafka disku, najdete v tématu [šifrování klíčového disku spravovaného zákazníky](../disk-encryption.md) .
 
-   Pokud chcete svůj cluster připojit k virtuální síti, vyberte virtuální síť v rozevíracím seznamu **Virtuální síť** .
+   Pokud chcete svůj cluster připojit k virtuální síti, vyberte virtuální síť v rozevíracím seznamu **Virtuální síť**.
 
    ![Přidání clusteru do virtuální sítě](./media/apache-kafka-get-started/azure-portal-cluster-security-networking-kafka-vnet.png)
 
@@ -200,7 +197,7 @@ V této části získáte informace o hostiteli z REST API Apache Ambari v clust
 
 ## <a name="manage-apache-kafka-topics"></a>Správa témat Apache Kafka
 
-Kafka ukládá datové proudy do *témat* . Témata můžete spravovat pomocí nástroje `kafka-topics.sh`.
+Kafka ukládá datové proudy do *témat*. Témata můžete spravovat pomocí nástroje `kafka-topics.sh`.
 
 * **K vytvoření tématu** použijte tento příkaz v připojení SSH:
 
@@ -208,7 +205,7 @@ Kafka ukládá datové proudy do *témat* . Témata můžete spravovat pomocí n
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 3 --partitions 8 --topic test --zookeeper $KAFKAZKHOSTS
     ```
 
-    Tento příkaz se připojí k hostiteli Zookeeper s použitím informací uložených v proměnné `$KAFKAZKHOSTS`. Pak vytvoří téma Apache Kafka s názvem **test** .
+    Tento příkaz se připojí k hostiteli Zookeeper s použitím informací uložených v proměnné `$KAFKAZKHOSTS`. Pak vytvoří téma Apache Kafka s názvem **test**.
 
     * Data uložená v tomto tématu jsou rozdělená mezi osm oddílů.
 
@@ -257,7 +254,7 @@ Další informace o příkazech, které jsou k dispozici v nástroji `kafka-topi
 
 ## <a name="produce-and-consume-records"></a>Produkce a konzumace záznamů
 
-Kafka ukládá *záznamy* v tématech. Záznamy jsou vytvářeny *producenty* a spotřebovávány *konzumenty* . Producenti a konzumenti komunikují se službou *zprostředkovatele Kafka* . Každý pracovní uzel v clusteru HDInsight je hostitelem zprostředkovatele Apache Kafka.
+Kafka ukládá *záznamy* v tématech. Záznamy jsou vytvářeny *producenty* a spotřebovávány *konzumenty*. Producenti a konzumenti komunikují se službou *zprostředkovatele Kafka*. Každý pracovní uzel v clusteru HDInsight je hostitelem zprostředkovatele Apache Kafka.
 
 Pokud chcete uložit záznamy do dříve vytvořeného tématu test a pak je načíst pomocí konzumenta, použijte následující postup:
 
@@ -281,7 +278,7 @@ Pokud chcete uložit záznamy do dříve vytvořeného tématu test a pak je na�
 
     Pokud používáte starší verzi Kafka, nahraďte `--bootstrap-server $KAFKABROKERS` za `--zookeeper $KAFKAZKHOSTS`.
 
-4. Konzumenta zastavíte stisknutím __Ctrl+C__ .
+4. Konzumenta zastavíte stisknutím __Ctrl+C__.
 
 Můžete také programově vytvořit producenty a spotřebitele. Příklad použití tohoto rozhraní API najdete v dokumentu [rozhraní API pro Apache Kafka výrobce a příjemce s](apache-kafka-producer-consumer-api.md) využitím služby HDInsight.
 
@@ -291,7 +288,7 @@ Pokud chcete vyčistit prostředky vytvořené v tomto rychlém startu, můžete
 
 Odebrání skupiny prostředků pomocí webu Azure Portal:
 
-1. Na webu Azure Portal rozbalením nabídky na levé straně otevřete nabídku služeb a pak zvolte __Skupiny prostředků__ . Zobrazí se seznam skupin prostředků.
+1. Na webu Azure Portal rozbalením nabídky na levé straně otevřete nabídku služeb a pak zvolte __Skupiny prostředků__. Zobrazí se seznam skupin prostředků.
 2. Vyhledejte skupinu prostředků, kterou chcete odstranit, a klikněte pravým tlačítkem na tlačítko __Další__ (...) na pravé straně seznamu.
 3. Vyberte __Odstranit skupinu prostředků__ a potvrďte tuto akci.
 

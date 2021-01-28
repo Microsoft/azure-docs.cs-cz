@@ -1,19 +1,16 @@
 ---
 title: Architektury Azure HDInsight pro provozní kontinuitu
 description: Tento článek popisuje různé možné architektury podnikového kontinuity pro HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 keywords: vysoká dostupnost Hadoop
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 0275fa4cc46dff8781d73563fd250b1ec62ddd56
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: f74309370f1489714013344116e7feb9551fbfd5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96344109"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933445"
 ---
 # <a name="azure-hdinsight-business-continuity-architectures"></a>Architektury Azure HDInsight pro provozní kontinuitu
 

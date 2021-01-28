@@ -1,19 +1,16 @@
 ---
 title: Vysoce dostupné úlohy streamování Sparku v VLÁKNech – Azure HDInsight
 description: Jak nastavit streamování Apache Spark pro scénář s vysokou dostupností ve službě Azure HDInsight
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: 2ec0bf460a73f95e18e2e9221e8cbd8d4e14ff77
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3eb761a793c41c2e2cc2cb952e4fb9f241b41ab6
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086207"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929704"
 ---
 # <a name="create-high-availability-apache-spark-streaming-jobs-with-yarn"></a>Vytváření úloh streamování s vysokou dostupností Apache Spark s využitím PŘÍZe
 
@@ -37,7 +34,7 @@ Strukturované streamování Sparku bylo zavedeno v Spark 2,0 jako analytický m
 
 ![Strukturované streamování Sparku](./media/apache-spark-streaming-high-availability/structured-streaming.png)
 
-Ve strukturovaném streamování přicházejí data do systému a okamžitě se ingestují do vstupní tabulky. Zapisujete dotazy, které provádějí operace s touto vstupní tabulkou. Výstup dotazu vydává jinou tabulku, která se nazývá tabulka výsledků. Tabulka výsledků obsahuje výsledky dotazu, ze kterého kreslíte data pro odeslání do externího úložiště dat, jako je relační databáze. *Interval triggeru* nastavuje časování pro zpracování dat ze vstupní tabulky. Ve výchozím nastavení strukturované streamování zpracovává data hned po doručení. Můžete ale také nakonfigurovat Trigger tak, aby běžel v delším intervalu, takže streamovaná data se zpracují v dávkách založených na čase. Data v tabulce výsledků se můžou aktualizovat pokaždé, když jsou nová data, takže budou zahrnovat všechna výstupní data od začátku dotazu na streamování (*režim*připojení), nebo může obsahovat jenom data, která jsou od posledního zpracování dotazu (*režim připojení*) nová.
+Ve strukturovaném streamování přicházejí data do systému a okamžitě se ingestují do vstupní tabulky. Zapisujete dotazy, které provádějí operace s touto vstupní tabulkou. Výstup dotazu vydává jinou tabulku, která se nazývá tabulka výsledků. Tabulka výsledků obsahuje výsledky dotazu, ze kterého kreslíte data pro odeslání do externího úložiště dat, jako je relační databáze. *Interval triggeru* nastavuje časování pro zpracování dat ze vstupní tabulky. Ve výchozím nastavení strukturované streamování zpracovává data hned po doručení. Můžete ale také nakonfigurovat Trigger tak, aby běžel v delším intervalu, takže streamovaná data se zpracují v dávkách založených na čase. Data v tabulce výsledků se můžou aktualizovat pokaždé, když jsou nová data, takže budou zahrnovat všechna výstupní data od začátku dotazu na streamování (*režim* připojení), nebo může obsahovat jenom data, která jsou od posledního zpracování dotazu (*režim připojení*) nová.
 
 ## <a name="create-fault-tolerant-spark-streaming-jobs"></a>Vytváření úloh streamování Spark odolných proti chybám
 

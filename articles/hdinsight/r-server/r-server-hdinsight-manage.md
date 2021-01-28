@@ -1,19 +1,16 @@
 ---
 title: Správa clusteru služeb ML v HDInsight – Azure
 description: Naučte se spravovat různé úlohy v clusteru služby ML Services ve službě Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/19/2019
-ms.openlocfilehash: 898a02796d578d76f9b45d167f4e92a4bf9831ba
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: e4c9124ebd0b61b8db1b1da964355a3c36b5bba5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92536279"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98930557"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Správa clusteru služeb ML v Azure HDInsight
 
@@ -21,7 +18,7 @@ V tomto článku se dozvíte, jak spravovat existující cluster služeb ML v Az
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Cluster služeb ML v HDInsight. Přečtěte si téma [vytvoření Apache Hadoop clusterů pomocí Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) a výběr **služeb ml** pro **typ clusteru** .
+* Cluster služeb ML v HDInsight. Přečtěte si téma [vytvoření Apache Hadoop clusterů pomocí Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) a výběr **služeb ml** pro **typ clusteru**.
 
 * Klient Secure Shell (SSH): Klient SSH slouží k vzdálenému připojení ke clusteru HDInsight a spouštění příkazů přímo v clusteru. Další informace najdete v tématu [Použití SSH se službou HDInsight.](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -74,7 +71,7 @@ Po zobrazení výzvy k zadání hesla "aktuální heslo protokolu Kerberos", sta
 
 Přístup k RStudio z `https://CLUSTERNAME.azurehdinsight.net/rstudio/` . Pokud se přihlašujete poprvé po vytvoření clusteru, zadejte přihlašovací údaje Správce clusteru a přihlašovací údaje uživatele SSH, které jste vytvořili. Pokud se nejedná o vaše první přihlášení, zadejte pouze pověření pro uživatele SSH, kterého jste vytvořili.
 
-Můžete se také přihlásit pomocí původních přihlašovacích údajů (ve výchozím nastavení je *sshuser* ) souběžně z jiného okna prohlížeče.
+Můžete se také přihlásit pomocí původních přihlašovacích údajů (ve výchozím nastavení je *sshuser*) souběžně z jiného okna prohlížeče.
 
 Všimněte si také, že nově přidaní uživatelé nemají v systému Linux kořenová oprávnění, ale mají stejný přístup ke všem souborům ve vzdáleném úložišti HDFS a WASB.
 
@@ -197,17 +194,17 @@ Pokud chcete nainstalovat balíčky R na pracovní uzly clusteru, musíte použ�
 
 3. Pro **akci odeslání skriptu** zadejte následující informace:
 
-   * Jako **typ skriptu** vyberte **vlastní** .
+   * Jako **typ skriptu** vyberte **vlastní**.
 
    * Do pole **název** zadejte název akce skriptu.
 
      * V případě **identifikátoru URI bash skriptu** zadejte  `https://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh` . Toto je skript, který do pracovního uzlu nainstaluje další balíčky R.
 
-   * Zaškrtněte políčko pouze pro **pracovní proces** .
+   * Zaškrtněte políčko pouze pro **pracovní proces**.
 
    * **Parametry:** Balíčky R určené k instalaci. Například `bitops stringr arules`.
 
-   * Zaškrtněte políčko, pokud chcete **zachovat tuto akci skriptu** .  
+   * Zaškrtněte políčko, pokud chcete **zachovat tuto akci skriptu**.  
 
    > [!NOTE]
    > 1. Ve výchozím nastavení jsou všechny balíčky R nainstalované ze snímku úložiště Microsoft MRAN, který je v souladu s nainstalovanou verzí ML Server. Pokud chcete nainstalovat novější verze balíčků, vystavujete se riziku nekompatibility. Tento typ instalace však můžete provést zadáním `useCRAN` jako prvního prvku seznamu balíčků, například `useCRAN bitops, stringr, arules`.  

@@ -3,17 +3,14 @@ title: Řešení potíží s registrací pomocí Azure HDInsight
 description: Získejte odpovědi na běžné otázky týkající se práce s Apache Hive a Azure HDInsight.
 keywords: Azure HDInsight, podregistr, nejčastější dotazy, Průvodce odstraňováním potíží, běžné otázky
 ms.service: hdinsight
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: f1a26e3323e4d1db2e9b2bda9afaa2756307749b
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: a76974b8daddf225b0d9b8b581475d657322847e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288957"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931441"
 ---
 # <a name="troubleshoot-apache-hive-by-using-azure-hdinsight"></a>Řešení potíží s Apache Hivem s využitím Azure HDInsightu
 
@@ -120,17 +117,17 @@ Kód v krocích řešení předpokládá, že cesty k datům v novém clusteru j
    Jako první argument musíte zadat vzorový program.
 
    Platné názvy programů zahrnují:
-    - **ContainerReuseAnalyzer** : tisk podrobností o opětovném použití kontejneru v Dag
-    - **CriticalPath** : vyhledejte kritickou cestu pro DAG.
-    - **LocalityAnalyzer** : podrobnosti o místním tisku v Dag
-    - **ShuffleTimeAnalyzer** : analyzovat podrobnosti času náhodného přehrávání v Dag
-    - **SkewAnalyzer** : analyzovat podrobnosti zkosení v Dag
-    - **SlowNodeAnalyzer** : tisk podrobností uzlu v Dag
-    - **SlowTaskIdentifier** : tisk pomalých úloh v Dag
-    - **SlowestVertexAnalyzer** : vytiskněte nejpomalejší podrobnosti vrcholu v Dag
-    - **SpillAnalyzer** : tisk podrobností o rozlití v Dag
-    - **TaskConcurrencyAnalyzer** : tisk podrobností o souběžnosti úkolu v Dag
-    - **VertexLevelCriticalPathAnalyzer** : najít kritickou cestu na úrovni vrcholu v Dag
+    - **ContainerReuseAnalyzer**: tisk podrobností o opětovném použití kontejneru v Dag
+    - **CriticalPath**: vyhledejte kritickou cestu pro DAG.
+    - **LocalityAnalyzer**: podrobnosti o místním tisku v Dag
+    - **ShuffleTimeAnalyzer**: analyzovat podrobnosti času náhodného přehrávání v Dag
+    - **SkewAnalyzer**: analyzovat podrobnosti zkosení v Dag
+    - **SlowNodeAnalyzer**: tisk podrobností uzlu v Dag
+    - **SlowTaskIdentifier**: tisk pomalých úloh v Dag
+    - **SlowestVertexAnalyzer**: vytiskněte nejpomalejší podrobnosti vrcholu v Dag
+    - **SpillAnalyzer**: tisk podrobností o rozlití v Dag
+    - **TaskConcurrencyAnalyzer**: tisk podrobností o souběžnosti úkolu v Dag
+    - **VertexLevelCriticalPathAnalyzer**: najít kritickou cestu na úrovni vrcholu v Dag
 
 ### <a name="additional-reading"></a>Další materiály ke čtení
 

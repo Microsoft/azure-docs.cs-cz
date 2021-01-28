@@ -1,19 +1,16 @@
 ---
 title: 'Rychlý Start: Vytvoření clusteru Spark ve službě HDInsight pomocí Azure Portal'
 description: V tomto rychlém startu se dozvíte, jak pomocí Azure Portal vytvořit cluster Apache Spark ve službě Azure HDInsight a spustit dotaz Spark SQL.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/25/2020
-ms.openlocfilehash: 6554d112e494a129fa2cc811c2acf1959ff79f8b
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 18225703b2a390f64b4bebd58b0167dd77c454d0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822263"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98930382"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-azure-portal"></a>Rychlý Start: Vytvoření clusteru Apache Spark ve službě Azure HDInsight pomocí Azure Portal
 
@@ -49,7 +46,7 @@ Pomocí Azure Portal vytvoříte cluster HDInsight, který jako úložiště clu
     |Předplatné  | V rozevíracím seznamu vyberte předplatné Azure, které se používá pro cluster. |
     |Skupina prostředků | V rozevíracím seznamu vyberte existující skupinu prostředků nebo vyberte **vytvořit novou**.|
     |Název clusteru | Zadejte globálně jedinečný název.|
-    |Oblast   | V rozevíracím seznamu vyberte oblast, ve které se cluster vytvoří. |
+    |Region (Oblast)   | V rozevíracím seznamu vyberte oblast, ve které se cluster vytvoří. |
     |Typ clusteru| Vyberte vybrat typ clusteru a otevřete seznam. V seznamu vyberte možnost **Spark**.|
     |Verze clusteru|Po výběru typu clusteru bude toto pole automaticky vyplněno výchozí verzí.|
     |Uživatelské jméno přihlášení clusteru| Zadejte uživatelské jméno přihlášení clusteru.  Výchozí název je **admin**. Pomocí tohoto účtu se přihlásíte k Jupyter Notebook později v rychlém startu. |
