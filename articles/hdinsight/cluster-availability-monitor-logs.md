@@ -1,18 +1,15 @@
 ---
 title: Jak monitorovat dostupnost clusteru pomocí protokolů Azure Monitor v HDInsight
 description: Naučte se používat protokoly Azure Monitor k monitorování stavu a dostupnosti clusteru.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 08/12/2020
-ms.openlocfilehash: f86b2166ea9bd2a547a29a777d6b709877036161
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: d52cb1c5f3b1dd1b23adb39f2f65d0e66968e482
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92542535"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946956"
 ---
 # <a name="how-to-monitor-cluster-availability-with-azure-monitor-logs-in-hdinsight"></a>Jak monitorovat dostupnost clusteru pomocí protokolů Azure Monitor v HDInsight
 
@@ -26,7 +23,7 @@ Za předpokladu budete potřebovat Log Analytics pracovní prostor pro ukládán
 
 ## <a name="enable-hdinsight-azure-monitor-logs-integration"></a>Povolit integraci protokolů Azure Monitor HDInsight
 
-Na stránce prostředek clusteru HDInsight na portálu vyberte **Azure monitor** . Pak vyberte **Povolit** a v rozevíracím seznamu vyberte svůj pracovní prostor Log Analytics.
+Na stránce prostředek clusteru HDInsight na portálu vyberte **Azure monitor**. Pak vyberte **Povolit** a v rozevíracím seznamu vyberte svůj pracovní prostor Log Analytics.
 
 ![Sada HDInsight Operations Management Suite](media/cluster-availability-monitor-logs/azure-portal-monitoring.png)
 
@@ -34,7 +31,7 @@ Ve výchozím nastavení se nainstaluje agent OMS na všechny uzly clusteru s v�
 
 ## <a name="query-metrics-and-logs-tables"></a>Tabulky metrik a protokolů dotazů
 
-Jakmile je integrace protokolu Azure Monitor povolená (může to trvat několik minut), přejděte do prostředku **pracovního prostoru Log Analytics** a vyberte **protokoly** .
+Jakmile je integrace protokolu Azure Monitor povolená (může to trvat několik minut), přejděte do prostředku **pracovního prostoru Log Analytics** a vyberte **protokoly**.
 
 ![Protokoly Log Analytics pracovního prostoru](media/cluster-availability-monitor-logs/hdinsight-portal-logs.png)
 
@@ -70,11 +67,11 @@ Pokud jsou k dispozici všechny uzly, tento dotaz by nyní měl vracet nulový v
 ![Nové pravidlo výstrahy Log Analytics pracovního prostoru](media/cluster-availability-monitor-logs/portal-logs-new-alert-rule.png)
 
 Existují tři komponenty výstrahy: *prostředek* , pro který chcete vytvořit pravidlo (Log Analytics pracovní prostor v tomto případě), *podmínku* pro aktivaci výstrahy a *skupiny akcí* , které určují, co se stane, když se výstraha aktivuje.
-Klikněte na **název podmínky** , jak je znázorněno níže, a dokončete konfiguraci logiky signálu.
+Klikněte na **název podmínky**, jak je znázorněno níže, a dokončete konfiguraci logiky signálu.
 
 ![Podmínka vytvoření pravidla pro upozornění na portál](media/cluster-availability-monitor-logs/portal-condition-title.png)
 
-Tím se otevře **Konfigurace signálu** .
+Tím se otevře **Konfigurace signálu**.
 
 Nastavte oddíl **Alert Logic** následujícím způsobem:
 
@@ -94,16 +91,16 @@ Pokud ještě nemáte existující skupinu akcí, klikněte na **vytvořit nový
 
 ![Pravidlo výstrahy vytvoří novou skupinu akcí.](media/cluster-availability-monitor-logs/portal-create-new-action-group.png)
 
-Otevře se okno **Přidat skupinu akcí** . Vyberte **název skupiny akcí** , **krátké jméno** , **předplatné** a **skupinu prostředků.** V části **Akce** zvolte **název akce** a jako **typ akce** vyberte **e-mail/SMS/odeslat/hlas** .
+Otevře se okno **Přidat skupinu akcí**. Vyberte **název skupiny akcí**, **krátké jméno**, **předplatné** a **skupinu prostředků.** V části **Akce** zvolte **název akce** a jako **typ akce** vyberte **e-mail/SMS/odeslat/hlas** .
 
 > [!NOTE]
 > K dispozici je několik dalších akcí, které se můžou aktivovat kromě e-mailu, SMS/nabízeného/hlasu, jako je Azure Functions, LogicApp, Webhook, ITSM a Automation Runbook. [Víc se uč.](../azure-monitor/platform/action-groups.md#action-specific-information)
 
-Tím se otevře **e-mail/SMS/nabízený/hlas** . Vyberte **jméno** příjemce, **zaškrtněte** políčko **e-mail** a zadejte e-mailovou adresu, na kterou chcete odeslat výstrahu. V **e-mailu/SMS/Push/Voice** vyberte **OK** a potom do **Přidat skupinu akcí** dokončete konfiguraci skupiny akcí.
+Tím se otevře **e-mail/SMS/nabízený/hlas**. Vyberte **jméno** příjemce, **zaškrtněte** políčko **e-mail** a zadejte e-mailovou adresu, na kterou chcete odeslat výstrahu. V **e-mailu/SMS/Push/Voice** vyberte **OK** a potom do **Přidat skupinu akcí** dokončete konfiguraci skupiny akcí.
 
 ![Pravidlo výstrahy vytvoří přidat skupinu akcí.](media/cluster-availability-monitor-logs/portal-add-action-group.png)
 
-Po zavření těchto oken by se měla zobrazit vaše skupina akcí uvedená v části **skupiny akcí** . Nakonec dokončete část **Podrobnosti výstrahy** zadáním názvu a **popisu** **pravidla výstrahy** a zvolením **závažnosti** . Kliknutím na **vytvořit pravidlo výstrahy** dokončete.
+Po zavření těchto oken by se měla zobrazit vaše skupina akcí uvedená v části **skupiny akcí** . Nakonec dokončete část **Podrobnosti výstrahy** zadáním názvu a **popisu** **pravidla výstrahy** a zvolením **závažnosti**. Kliknutím na **vytvořit pravidlo výstrahy** dokončete.
 
 ![Portál vytvoří dokončení pravidla výstrahy.](media/cluster-availability-monitor-logs/portal-create-alert-rule-finish.png)
 

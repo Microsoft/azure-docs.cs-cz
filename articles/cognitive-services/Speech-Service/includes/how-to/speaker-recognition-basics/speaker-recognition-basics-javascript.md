@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 10/07/2020
 ms.author: v-jawe
 ms.custom: references_regions
-ms.openlocfilehash: a8a34a483390e12ba49123e26d2071d3aa667c89
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 08e4dbb4d16317efe33b308474ce5c32a7c47862
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94424943"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947701"
 ---
 V tomto rychlém startu se naučíte základní vzory návrhu pro rozpoznávání mluvčího pomocí sady Speech SDK, včetně těchto:
 
@@ -24,7 +24,7 @@ Základní informace o konceptech rozpoznávání řeči najdete v článku [Př
 
 Pokud chcete přeskočit přímý na vzorový kód, přečtěte si [ukázky rychlý Start JavaScriptu](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/fa6428a0837779cbeae172688e0286625e340942/quickstart/javascript/node/speaker-recognition) na GitHubu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto článku se předpokládá, že máte účet Azure a předplatné služby Speech. Pokud účet a předplatné nemáte, [Vyzkoušejte službu Speech Service zdarma](../../../overview.md#try-the-speech-service-for-free).
 
@@ -84,7 +84,7 @@ Přidejte následující funkci pomocníka pro čtení zvukových souborů do da
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/speech/speaker-recognition.js" id="helpers":::
 
-V této funkci použijete metody [AudioInputStream. createPushStream](/javascript/api/microsoft-cognitiveservices-speech-sdk/audioinputstream?preserve-view=true&view=azure-node-latest#createpushstream-audiostreamformat-) a [AudioConfig. fromStreamInput](/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?preserve-view=true&view=azure-node-latest#fromstreaminput-audioinputstream---pullaudioinputstreamcallback-) k vytvoření objektu [AudioConfig](/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?preserve-view=true&view=azure-node-latest) . Tento `AudioConfig` objekt představuje zvukový datový proud. `AudioConfig`V následujících úlohách použijete několik těchto objektů.
+V této funkci použijete metody [AudioInputStream. createPushStream](/javascript/api/microsoft-cognitiveservices-speech-sdk/audioinputstream#createpushstream-audiostreamformat-) a [AudioConfig. fromStreamInput](/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig#fromstreaminput-audioinputstream---pullaudioinputstreamcallback-) k vytvoření objektu [AudioConfig](/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig) . Tento `AudioConfig` objekt představuje zvukový datový proud. `AudioConfig`V následujících úlohách použijete několik těchto objektů.
 
 ## <a name="text-dependent-verification"></a>Ověřování závislé na textu
 
@@ -96,7 +96,7 @@ Začněte vytvořením `TextDependentVerification` funkce.
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/speech/speaker-recognition.js" id="text_dependent_verification":::
 
-Tato funkce vytvoří objekt [VoiceProfile](/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofile?preserve-view=true&view=azure-node-latest) s metodou [VoiceProfileClient. createProfileAsync](/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?preserve-view=true&view=azure-node-latest#createprofileasync-voiceprofiletype--string---e--voiceprofile-----void---e--string-----void-) . Všimněte si, že existují tři [typy](/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofiletype?preserve-view=true&view=azure-node-latest) `VoiceProfile` :
+Tato funkce vytvoří objekt [VoiceProfile](/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofile) s metodou [VoiceProfileClient. createProfileAsync](/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient#createprofileasync-voiceprofiletype--string---e--voiceprofile-----void---e--string-----void-) . Všimněte si, že existují tři [typy](/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofiletype) `VoiceProfile` :
 
 - TextIndependentIdentification
 - TextDependentVerification
@@ -104,7 +104,7 @@ Tato funkce vytvoří objekt [VoiceProfile](/javascript/api/microsoft-cognitives
 
 V tomto případě předáte `VoiceProfileType.TextDependentVerification` `VoiceProfileClient.createProfileAsync` .
 
-Pak zavoláte dvě pomocné funkce, které definujete jako další, `AddEnrollmentsToTextDependentProfile` a `SpeakerVerify` . Nakonec zavolejte [VoiceProfileClient. deleteProfileAsync](/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?preserve-view=true&view=azure-node-latest#deleteprofileasync-voiceprofile---response--voiceprofileresult-----void---e--string-----void-) a odstraňte profil.
+Pak zavoláte dvě pomocné funkce, které definujete jako další, `AddEnrollmentsToTextDependentProfile` a `SpeakerVerify` . Nakonec zavolejte [VoiceProfileClient. deleteProfileAsync](/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient#deleteprofileasync-voiceprofile---response--voiceprofileresult-----void---e--string-----void-) a odstraňte profil.
 
 ### <a name="addenrollmentstotextdependentprofile-function"></a>AddEnrollmentsToTextDependentProfile – funkce
 
@@ -112,7 +112,7 @@ Zadejte následující funkci pro zápis hlasového profilu.
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/speech/speaker-recognition.js" id="add_enrollments_dependent":::
 
-V této funkci zavoláte `GetAudioConfigFromFile` funkci, kterou jste definovali dříve, a vytvoříte `AudioConfig` objekty ze vzorků zvuku. Tyto zvukové vzorky obsahují přístupové heslo, například "můj hlas je můj účet Passport, ověřit mě." Tyto ukázky zvuku pak zaregistrujete pomocí metody [VoiceProfileClient. enrollProfileAsync](/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?preserve-view=true&view=azure-node-latest#enrollprofileasync-voiceprofile--audioconfig---e--voiceprofileenrollmentresult-----void---e--string-----void-) .
+V této funkci zavoláte `GetAudioConfigFromFile` funkci, kterou jste definovali dříve, a vytvoříte `AudioConfig` objekty ze vzorků zvuku. Tyto zvukové vzorky obsahují přístupové heslo, například "můj hlas je můj účet Passport, ověřit mě." Tyto ukázky zvuku pak zaregistrujete pomocí metody [VoiceProfileClient. enrollProfileAsync](/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient#enrollprofileasync-voiceprofile--audioconfig---e--voiceprofileenrollmentresult-----void---e--string-----void-) .
 
 ### <a name="speakerverify-function"></a>SpeakerVerify – funkce
 
@@ -120,9 +120,9 @@ Definujte `SpeakerVerify` následujícím způsobem.
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/speech/speaker-recognition.js" id="speaker_verify":::
 
-V této funkci vytvoříte objekt [SpeakerVerificationModel](/javascript/api/microsoft-cognitiveservices-speech-sdk/speakerverificationmodel?preserve-view=true&view=azure-node-latest) s metodou [SpeakerVerificationModel. FromProfile](/javascript/api/microsoft-cognitiveservices-speech-sdk/speakerverificationmodel?preserve-view=true&view=azure-node-latest#fromprofile-voiceprofile-) předáním objektu [VoiceProfile](/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofile?preserve-view=true&view=azure-node-latest) , který jste vytvořili dříve.
+V této funkci vytvoříte objekt [SpeakerVerificationModel](/javascript/api/microsoft-cognitiveservices-speech-sdk/speakerverificationmodel) s metodou [SpeakerVerificationModel. FromProfile](/javascript/api/microsoft-cognitiveservices-speech-sdk/speakerverificationmodel#fromprofile-voiceprofile-) předáním objektu [VoiceProfile](/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofile) , který jste vytvořili dříve.
 
-Dále zavoláte metodu [SpeechRecognizer. recognizeOnceAsync](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?preserve-view=true&view=azure-node-latest#recognizeonceasync--e--speechrecognitionresult-----void---e--string-----void-) , která ověří ukázku zvuku, která obsahuje stejné heslo jako ukázky zvuku, které jste předtím zaregistrovali. `SpeechRecognizer.recognizeOnceAsync` Vrátí objekt [SpeakerRecognitionResult](/javascript/api/microsoft-cognitiveservices-speech-sdk/speakerrecognitionresult?preserve-view=true&view=azure-node-latest) , jehož `score` vlastnost obsahuje skóre podobnosti v rozsahu od 0,0 do 1,0. `SpeakerRecognitionResult`Objekt obsahuje také `reason` vlastnost typu [ResultReason](/javascript/api/microsoft-cognitiveservices-speech-sdk/resultreason?preserve-view=true&view=azure-node-latest). Pokud bylo ověření úspěšné, `reason` vlastnost by měla mít hodnotu `RecognizedSpeaker` .
+Dále zavoláte metodu [SpeechRecognizer. recognizeOnceAsync](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer#recognizeonceasync--e--speechrecognitionresult-----void---e--string-----void-) , která ověří ukázku zvuku, která obsahuje stejné heslo jako ukázky zvuku, které jste předtím zaregistrovali. `SpeechRecognizer.recognizeOnceAsync` Vrátí objekt [SpeakerRecognitionResult](/javascript/api/microsoft-cognitiveservices-speech-sdk/speakerrecognitionresult) , jehož `score` vlastnost obsahuje skóre podobnosti v rozsahu od 0,0 do 1,0. `SpeakerRecognitionResult`Objekt obsahuje také `reason` vlastnost typu [ResultReason](/javascript/api/microsoft-cognitiveservices-speech-sdk/resultreason). Pokud bylo ověření úspěšné, `reason` vlastnost by měla mít hodnotu `RecognizedSpeaker` .
 
 ## <a name="text-independent-verification"></a>Ověřování nezávislé na textu
 
@@ -137,11 +137,11 @@ Začněte vytvořením `TextIndependentVerification` funkce.
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/speech/speaker-recognition.js" id="text_independent_verification":::
 
-Podobně jako `TextDependentVerification` funkce Tato funkce vytvoří objekt [VoiceProfile](/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofile?preserve-view=true&view=azure-node-latest) s metodou [VoiceProfileClient. createProfileAsync](/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?preserve-view=true&view=azure-node-latest#createprofileasync-voiceprofiletype--string---e--voiceprofile-----void---e--string-----void-) .
+Podobně jako `TextDependentVerification` funkce Tato funkce vytvoří objekt [VoiceProfile](/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofile) s metodou [VoiceProfileClient. createProfileAsync](/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient#createprofileasync-voiceprofiletype--string---e--voiceprofile-----void---e--string-----void-) .
 
 V tomto případě předáte `VoiceProfileType.TextIndependentVerification` `createProfileAsync` .
 
-Potom zavolejte dvě pomocné funkce: `AddEnrollmentsToTextIndependentProfile` , které definujete další, a `SpeakerVerify` , které jste již definovali. Nakonec zavolejte [VoiceProfileClient. deleteProfileAsync](/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?preserve-view=true&view=azure-node-latest#deleteprofileasync-voiceprofile---response--voiceprofileresult-----void---e--string-----void-) a odstraňte profil.
+Potom zavolejte dvě pomocné funkce: `AddEnrollmentsToTextIndependentProfile` , které definujete další, a `SpeakerVerify` , které jste již definovali. Nakonec zavolejte [VoiceProfileClient. deleteProfileAsync](/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient#deleteprofileasync-voiceprofile---response--voiceprofileresult-----void---e--string-----void-) a odstraňte profil.
 
 ### <a name="addenrollmentstotextindependentprofile"></a>AddEnrollmentsToTextIndependentProfile
 
@@ -149,11 +149,11 @@ Zadejte následující funkci pro zápis hlasového profilu.
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/speech/speaker-recognition.js" id="add_enrollments_independent":::
 
-V této funkci zavoláte `GetAudioConfigFromFile` funkci, kterou jste definovali dříve, a vytvoříte `AudioConfig` objekty ze vzorků zvuku. Tyto ukázky zvuku pak zaregistrujete pomocí metody [VoiceProfileClient. enrollProfileAsync](/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?preserve-view=true&view=azure-node-latest#enrollprofileasync-voiceprofile--audioconfig---e--voiceprofileenrollmentresult-----void---e--string-----void-) .
+V této funkci zavoláte `GetAudioConfigFromFile` funkci, kterou jste definovali dříve, a vytvoříte `AudioConfig` objekty ze vzorků zvuku. Tyto ukázky zvuku pak zaregistrujete pomocí metody [VoiceProfileClient. enrollProfileAsync](/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient#enrollprofileasync-voiceprofile--audioconfig---e--voiceprofileenrollmentresult-----void---e--string-----void-) .
 
 ## <a name="speaker-identification"></a>Identifikace mluvčího
 
-Identifikace mluvčího slouží k určení toho **, kdo** z dané skupiny zaregistrovaných hlasů mluví. Tento proces se podobá **ověřování nezávisle na textu** , s hlavním rozdílem, který je schopný ověřit u několika hlasových profilů najednou, a ne u jednoho profilu.
+Identifikace mluvčího slouží k určení toho **, kdo** z dané skupiny zaregistrovaných hlasů mluví. Tento proces se podobá **ověřování nezávisle na textu**, s hlavním rozdílem, který je schopný ověřit u několika hlasových profilů najednou, a ne u jednoho profilu.
 
 ### <a name="textindependentidentification-function"></a>TextIndependentIdentification – funkce
 
@@ -161,11 +161,11 @@ Začněte vytvořením `TextIndependentIdentification` funkce.
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/speech/speaker-recognition.js" id="text_independent_indentification":::
 
-Podobně jako `TextDependentVerification` `TextIndependentVerification` funkce a vytvoří tato funkce objekt [VoiceProfile](/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofile?preserve-view=true&view=azure-node-latest) s metodou [VoiceProfileClient. createProfileAsync](/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?preserve-view=true&view=azure-node-latest#createprofileasync-voiceprofiletype--string---e--voiceprofile-----void---e--string-----void-) .
+Podobně jako `TextDependentVerification` `TextIndependentVerification` funkce a vytvoří tato funkce objekt [VoiceProfile](/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofile) s metodou [VoiceProfileClient. createProfileAsync](/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient#createprofileasync-voiceprofiletype--string---e--voiceprofile-----void---e--string-----void-) .
 
 V tomto případě předáte `VoiceProfileType.TextIndependentIdentification` `VoiceProfileClient.createProfileAsync` .
 
-Potom zavolejte dvě pomocné funkce: `AddEnrollmentsToTextIndependentProfile` , které jste již definovali a `SpeakerIdentify` které definujete další. Nakonec zavolejte [VoiceProfileClient. deleteProfileAsync](/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?preserve-view=true&view=azure-node-latest#deleteprofileasync-voiceprofile---response--voiceprofileresult-----void---e--string-----void-) a odstraňte profil.
+Potom zavolejte dvě pomocné funkce: `AddEnrollmentsToTextIndependentProfile` , které jste již definovali a `SpeakerIdentify` které definujete další. Nakonec zavolejte [VoiceProfileClient. deleteProfileAsync](/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient#deleteprofileasync-voiceprofile---response--voiceprofileresult-----void---e--string-----void-) a odstraňte profil.
 
 ### <a name="speakeridentify-function"></a>SpeakerIdentify – funkce
 
@@ -173,10 +173,10 @@ Definujte `SpeakerIdentify` funkci následujícím způsobem.
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/speech/speaker-recognition.js" id="speaker_identify":::
 
-V této funkci vytvoříte objekt [SpeakerIdentificationModel](/javascript/api/microsoft-cognitiveservices-speech-sdk/speakeridentificationmodel?preserve-view=true&view=azure-node-latest) s metodou [SpeakerIdentificationModel. fromProfiles](/javascript/api/microsoft-cognitiveservices-speech-sdk/speakeridentificationmodel?preserve-view=true&view=azure-node-latest#fromprofiles-voiceprofile---) předáním objektu [VoiceProfile](/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofile?preserve-view=true&view=azure-node-latest) , který jste vytvořili dříve.
+V této funkci vytvoříte objekt [SpeakerIdentificationModel](/javascript/api/microsoft-cognitiveservices-speech-sdk/speakeridentificationmodel) s metodou [SpeakerIdentificationModel. fromProfiles](/javascript/api/microsoft-cognitiveservices-speech-sdk/speakeridentificationmodel#fromprofiles-voiceprofile---) předáním objektu [VoiceProfile](/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofile) , který jste vytvořili dříve.
 
-Dále zavoláte metodu [SpeechRecognizer. recognizeOnceAsync](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?preserve-view=true&view=azure-node-latest#recognizeonceasync--e--speechrecognitionresult-----void---e--string-----void-) a předáte ukázku zvuku.
-`SpeechRecognizer.recognizeOnceAsync` pokusí se identifikovat hlas pro tuto ukázku zvuku na základě `VoiceProfile` objektů, které jste použili k vytvoření `SpeakerIdentificationModel` . Vrátí objekt [SpeakerRecognitionResult](/javascript/api/microsoft-cognitiveservices-speech-sdk/speakerrecognitionresult?preserve-view=true&view=azure-node-latest) , jehož `profileId` vlastnost identifikuje odpovídající `VoiceProfile` , pokud existuje, zatímco `score` vlastnost obsahuje skóre podobnosti v rozsahu od 0,0 do 1,0.
+Dále zavoláte metodu [SpeechRecognizer. recognizeOnceAsync](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer#recognizeonceasync--e--speechrecognitionresult-----void---e--string-----void-) a předáte ukázku zvuku.
+`SpeechRecognizer.recognizeOnceAsync` pokusí se identifikovat hlas pro tuto ukázku zvuku na základě `VoiceProfile` objektů, které jste použili k vytvoření `SpeakerIdentificationModel` . Vrátí objekt [SpeakerRecognitionResult](/javascript/api/microsoft-cognitiveservices-speech-sdk/speakerrecognitionresult) , jehož `profileId` vlastnost identifikuje odpovídající `VoiceProfile` , pokud existuje, zatímco `score` vlastnost obsahuje skóre podobnosti v rozsahu od 0,0 do 1,0.
 
 ## <a name="main-function"></a>Main – funkce
 
@@ -184,4 +184,4 @@ Nakonec definujte funkci následujícím `main` způsobem.
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/speech/speaker-recognition.js" id="main":::
 
-Tato funkce vytvoří objekt [VoiceProfileClient](/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?preserve-view=true&view=azure-node-latest) , který se používá k vytváření, registraci a odstraňování hlasových profilů. Potom volá dříve definované funkce.
+Tato funkce vytvoří objekt [VoiceProfileClient](/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient) , který se používá k vytváření, registraci a odstraňování hlasových profilů. Potom volá dříve definované funkce.

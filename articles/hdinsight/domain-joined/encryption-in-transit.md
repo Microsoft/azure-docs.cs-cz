@@ -1,18 +1,15 @@
 ---
 title: Šifrování Azure HDInsight při přenosu
 description: Přečtěte si o funkcích zabezpečení, které zajišťují šifrování při přenosu pro cluster Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/24/2020
-ms.openlocfilehash: 88a7a0240a4711bebad0ea9007caf6590436e371
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: fb3761ce7839cb4450997da094646b6604aeb895
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98049775"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946850"
 ---
 # <a name="ipsec-encryption-in-transit-for-azure-hdinsight"></a>Šifrování IPSec při přenosu pro Azure HDInsight
 
@@ -28,7 +25,7 @@ Azure HDInsight nabízí celou řadu funkcí zabezpečení pro zabezpečení pod
 
 ## <a name="enable-encryption-in-transit"></a>Povolit šifrování při přenosu
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure Portal
 
 Chcete-li vytvořit nový cluster se šifrováním při přenosu povoleno pomocí Azure Portal, proveďte následující kroky:
 

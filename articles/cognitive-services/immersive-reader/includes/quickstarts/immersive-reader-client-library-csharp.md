@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/14/2020
 ms.author: nitinme
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: cef5aaae58797e38745b3f5164c171581a005562
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 080b9dac8dad099f2901f2b820da58501310471b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94371615"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947552"
 ---
 [Moderní čtečka](https://www.onenote.com/learningtools) je často navržený nástroj, který implementuje osvědčené techniky pro zlepšení porozumění čtení pro nové čtenáře, jazyky jazyků a lidi s rozdíly v učení, jako je dyslexia. Pomocí moderního čtecího zařízení ve svých aplikacích můžete izolovat text a vylepšit tak fokus, zobrazit obrázky pro běžně používaná slova, zvýraznit části řeči, číst vybraný text hlasitě, překládat slova a fráze v reálném čase a další.
 
@@ -42,7 +42,7 @@ Vytvořte nový projekt v aplikaci Visual Studio pomocí šablony ASP.NET Core w
 
 ### <a name="configure-authentication-values"></a>Konfigurovat hodnoty ověřování
 
-V _Průzkumník řešení_ klikněte pravým tlačítkem myši na projekt a vyberte možnost **spravovat tajné klíče uživatele**. Tím se otevře soubor s názvem _secrets.js_. Tento soubor není zkontrolován do správy zdrojového kódu. Další informace najdete [tady](/aspnet/core/security/app-secrets?preserve-view=true&tabs=windows&view=aspnetcore-3.1). Nahraďte obsah _secrets.jsv_ následujícím textu zadejte hodnoty, které jste zadali při vytváření prostředku pro moderní čtečku.
+V _Průzkumník řešení_ klikněte pravým tlačítkem myši na projekt a vyberte možnost **spravovat tajné klíče uživatele**. Tím se otevře soubor s názvem _secrets.js_. Tento soubor není zkontrolován do správy zdrojového kódu. Další informace najdete [tady](/aspnet/core/security/app-secrets?tabs=windows). Nahraďte obsah _secrets.jsv_ následujícím textu zadejte hodnoty, které jste zadali při vytváření prostředku pro moderní čtečku.
 
 ```json
 {
@@ -292,7 +292,7 @@ V dolní části _Views\Home\Index.cshtml_ přidejte následující kód:
 
 ## <a name="build-and-run-the-app"></a>Sestavte a spusťte aplikaci.
 
-V řádku nabídek vyberte možnost **ladění > spustit ladění** , nebo stiskněte klávesu **F5** a spusťte aplikaci.
+V řádku nabídek vyberte možnost **ladění > spustit ladění**, nebo stiskněte klávesu **F5** a spusťte aplikaci.
 
 V prohlížeči byste měli vidět:
 

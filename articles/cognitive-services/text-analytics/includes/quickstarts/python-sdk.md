@@ -5,18 +5,18 @@ ms.subservice: text-analytics
 ms.topic: include
 ms.date: 12/11/2020
 ms.author: aahi
-ms.openlocfilehash: 1f99eb203cf4124f3249ab1b74989708bea93c51
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 15c8a517c1fd56964f46b72f9c1902efde90eb5b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97820429"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948128"
 ---
 <a name="HOLTop"></a>
 
 # <a name="version-31-preview"></a>[Verze 3,1 Preview](#tab/version-3-1)
 
-[Referenční dokumentace](/python/api/azure-ai-textanalytics/azure.ai.textanalytics?preserve-view=true&view=azure-python-preview)  |  verze 3.1 [zdrojový kód](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics)  |  knihovny v 3.1 [balíček verze 3.1 (PiPy)](https://pypi.org/project/azure-ai-textanalytics/)  |  [ukázky v 3.1](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples)
+[Referenční dokumentace](/python/api/azure-ai-textanalytics/azure.ai.textanalytics)  |  verze 3.1 [zdrojový kód](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics)  |  knihovny v 3.1 [balíček verze 3.1 (PiPy)](https://pypi.org/project/azure-ai-textanalytics/)  |  [ukázky v 3.1](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples)
 
 # <a name="version-30"></a>[Verze 3,0](#tab/version-3)
 
