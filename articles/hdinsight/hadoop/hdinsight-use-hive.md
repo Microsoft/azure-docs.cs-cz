@@ -1,19 +1,16 @@
 ---
 title: Co je Apache Hive a HiveQL – Azure HDInsight
 description: Apache Hive je systém datového skladu pro Apache Hadoop. Můžete zadávat dotazy na data uložená v podregistru pomocí HiveQL, který se podobá jazyku Transact-SQL. V tomto dokumentu se dozvíte, jak používat podregistr a HiveQL v Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/28/2020
-ms.openlocfilehash: d2e59b35a30bd838eab2b05dcacf83d8b2c21236
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 4e8c6b25055dfc38d56509e1744b8c7fcac40700
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92540393"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944285"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Co je Apache Hive a HiveQL ve službě Azure HDInsight?
 
@@ -72,14 +69,14 @@ Další informace o formátech souborů podporovaných podregistru najdete v té
 
 Existují dva typy tabulek, které lze vytvořit s podregistru:
 
-* __Interní__ : data jsou uložená v datovém skladu podregistru. Datový sklad se nachází ve `/hive/warehouse/` výchozím úložišti pro daný cluster.
+* __Interní__: data jsou uložená v datovém skladu podregistru. Datový sklad se nachází ve `/hive/warehouse/` výchozím úložišti pro daný cluster.
 
     Použijte interní tabulky, pokud platí jedna z následujících podmínek:
 
     * Data jsou dočasná.
     * Chcete, aby podregistr spravoval životní cyklus tabulky a dat.
 
-* __Externí__ : data se ukládají mimo datový sklad. Data je možné ukládat do libovolného úložiště přístupného clusterem.
+* __Externí__: data se ukládají mimo datový sklad. Data je možné ukládat do libovolného úložiště přístupného clusterem.
 
     Externí tabulky použijte v případě, že platí jedna z následujících podmínek:
 
@@ -92,7 +89,7 @@ Další informace najdete v blogovém příspěvku v [interních a externích ta
 
 ## <a name="user-defined-functions-udf"></a>Uživatelsky definované funkce (UDF)
 
-Podregistr se dá taky rozšířit prostřednictvím **uživatelsky definovaných funkcí (UDF)** . Systém souborů UDF umožňuje implementovat funkce nebo logiku, které nejsou v HiveQL snadno modelované. Příklad použití UDF s podregistrem najdete v následujících dokumentech:
+Podregistr se dá taky rozšířit prostřednictvím **uživatelsky definovaných funkcí (UDF)**. Systém souborů UDF umožňuje implementovat funkce nebo logiku, které nejsou v HiveQL snadno modelované. Příklad použití UDF s podregistrem najdete v následujících dokumentech:
 
 * [Použití uživatelsky definované funkce Java s Apache Hive](../hadoop/apache-hadoop-hive-java-udf.md)
 
@@ -137,7 +134,7 @@ V předchozím příkladu příkazy HiveQL provádějí následující akce:
 |VYTVOŘIT EXTERNÍ TABULKU|Vytvoří novou **externí** tabulku v podregistru. Externí tabulky ukládají pouze definici tabulky v podregistru. Data zůstanou v původním umístění a v původním formátu.|
 |FORMÁT ŘÁDKU|Instruuje podregistr, jak jsou data formátovaná. V tomto případě jsou pole v každém protokolu oddělená mezerou.|
 |ULOŽENO JAKO UMÍSTĚNÍ TEXTFILE|Říká podregistru, ve kterém jsou data uložená ( `example/data` adresář) a je uložený jako text. Data mohou být v jednom souboru nebo rozložena mezi více souborů v rámci adresáře.|
-|SELECT|Vybere počet všech řádků, ve kterých sloupec **T4** obsahuje hodnotu **[Chyba]** . Tento příkaz vrátí hodnotu **3** , protože existují tři řádky, které obsahují tuto hodnotu.|
+|SELECT|Vybere počet všech řádků, ve kterých sloupec **T4** obsahuje hodnotu **[Chyba]**. Tento příkaz vrátí hodnotu **3** , protože existují tři řádky, které obsahují tuto hodnotu.|
 |INPUT__FILE__NAME jako je%. log|Podregistr se pokusí použít schéma pro všechny soubory v adresáři. V tomto případě adresář obsahuje soubory, které neodpovídají schématu. Aby se zabránilo uvolňování dat ve výsledcích, tento příkaz oznamuje podregistru, že by mělo vracet pouze data ze souborů končících log. log.|
 
 > [!NOTE]  
@@ -168,7 +165,7 @@ Tyto příkazy provádějí následující akce:
 |---|---|
 |CREATE TABLE, POKUD NEEXISTUJE|Pokud tabulka neexistuje, vytvořte ji. Vzhledem k tomu, že se klíčové slovo **External** nepoužívá, vytvoří tento příkaz interní tabulku. Tabulka je uložená v datovém skladu podregistru a je plně spravovaná podregistrem.|
 |ULOŽENO JAKO ORC|Ukládá data ve formátu optimalizovaného řádku (ORC). ORC je vysoce optimalizovaný a efektivní formát pro ukládání dat z podregistru.|
-|VLOŽIT PŘEPSÁNÍ... VYBRALI|Vybere řádky z tabulky **log4jLogs** , která obsahuje **[Error]** , a pak data vloží **do tabulky chyb** .|
+|VLOŽIT PŘEPSÁNÍ... VYBRALI|Vybere řádky z tabulky **log4jLogs** , která obsahuje **[Error]**, a pak data vloží **do tabulky chyb** .|
 
 > [!NOTE]  
 > Vyřazení interní tabulky na rozdíl od externích tabulek odstraní také podkladová data.

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c065b7a7269c8da42493ede50466f44f7dd2658
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 5f0a84af0c7a4105327405cfb809f5101ab42931
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219942"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938387"
 ---
 # <a name="conditional-access-grant"></a>Podmíněný přístup: udělení
 
@@ -121,7 +121,9 @@ V rámci zásad podmíněného přístupu můžete vyžadovat, aby v klientské 
 
 Aby bylo možné tento ovládací prvek udělit, podmíněný přístup vyžaduje, aby zařízení bylo zaregistrované v Azure Active Directory, které vyžaduje použití aplikace zprostředkovatele. Zprostředkující aplikací může být buď Microsoft Authenticator pro zařízení s iOSem, nebo Portál společnosti Microsoft pro zařízení s Androidem. Pokud při pokusu uživatele o ověření není v zařízení nainstalovaná aplikace zprostředkovatele, uživatel se přesměruje do obchodu s aplikacemi a nainstaluje aplikaci zprostředkovatele.
 
-Toto nastavení platí pro následující klientské aplikace:
+Aby se aplikace **Intune SDK** s implementací **zásad zabezpečení** implementovala a splňovaly některé další požadavky na podporu tohoto nastavení, musí být aplikace. Vývojáři implementující aplikace pomocí sady Intune SDK můžou najít další informace v dokumentaci k sadě SDK týkající se těchto požadavků.
+
+Následující klientské aplikace byly potvrzeny pro podporu tohoto nastavení:
 
 - Microsoft Cortana
 - Microsoft Edge

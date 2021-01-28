@@ -4,12 +4,12 @@ description: Nastavení testů webu ve službě Application Insights. Zasílán�
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 1b51c70dcebbfad5417a8478f4a956fb5d0608b1
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: b0f66608c6e0f23b861e207d0dea07a546b41c2a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98198658"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937420"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Monitorování dostupnosti jakéhokoli webu
 
@@ -23,12 +23,12 @@ Existují tři typy testů dostupnosti:
 
 * [Testování ping adresy URL](#create-a-url-ping-test): jednoduchý test, který můžete vytvořit na portálu Azure.
 * [Webový test s více kroky](availability-multistep.md): záznam sekvence webových požadavků, které je možné přehrát zpětně testovat složitější scénáře. Webové testy s více kroky jsou vytvořeny v Visual Studio Enterprise a nahrány na portál pro provádění.
-* [Testy dostupnosti vlastních stop](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet): Pokud se rozhodnete vytvořit vlastní aplikaci pro spuštění testů dostupnosti, `TrackAvailability()` lze použít metodu k odeslání výsledků do Application Insights.
+* [Testy dostupnosti vlastních stop](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability): Pokud se rozhodnete vytvořit vlastní aplikaci pro spuštění testů dostupnosti, `TrackAvailability()` lze použít metodu k odeslání výsledků do Application Insights.
 
 **Pro každý prostředek Application Insights můžete vytvořit testy dostupnosti až 100.**
 
 > [!IMPORTANT]
-> [Test příkazového testu adresy URL](#create-a-url-ping-test) a [webový test na více kroků](availability-multistep.md) se spoléhá na veřejnou internetovou infrastrukturu DNS k překladu názvů domén testovaných koncových bodů. To znamená, že pokud používáte Privátní DNS, musíte buď zajistit, aby všechny názvy domén testu byly přeložitelnými servery veřejných domén, nebo pokud není možné, můžete místo toho použít [vlastní sledovací testy dostupnosti](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet) .
+> [Test příkazového testu adresy URL](#create-a-url-ping-test) a [webový test na více kroků](availability-multistep.md) se spoléhá na veřejnou internetovou infrastrukturu DNS k překladu názvů domén testovaných koncových bodů. To znamená, že pokud používáte Privátní DNS, musíte buď zajistit, aby všechny názvy domén testu byly přeložitelnými servery veřejných domén, nebo pokud není možné, můžete místo toho použít [vlastní sledovací testy dostupnosti](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) .
 
 ## <a name="create-an-application-insights-resource"></a>Vytvořte prostředek Application Insights
 
@@ -94,13 +94,13 @@ Po nasazení testu adresy URL dostupnosti pomocí Azure Resource Manager se dá 
 | Zobrazovaný název                           | Název souboru   |
 |----------------------------------------|-------------------|
 | Austrálie – východ                         | Evropa – au – SYD – Edge  |
-| Brazil South                           | LATAM-br – Gru – Edge |
-| Střední USA                             | US-FL – Mia – Edge    |
+| Brazílie – jih                           | LATAM-br – Gru – Edge |
+| USA – střed                             | US-FL – Mia – Edge    |
 | Východní Asie                              | APAC-HK-hkn-AZR   |
 | East US                                | US-VA-popel – AZR     |
 | Francie – jih (dříve Francie – střed) | oblast EMEA-ch-ZRH-Edge  |
 | Francie – střed                         | Evropa – fr – pra – Edge  |
-| Japan East                             | APAC – JP – KAW – Edge  |
+| Japonsko – východ                             | APAC – JP – KAW – Edge  |
 | Severní Evropa                           | oblast EMEA-GB-DB3-AZR   |
 | USA – středosever                       | US-Il-CH1-AZR     |
 | Středojižní USA                       | US-TX-SN1-AZR     |

@@ -6,12 +6,12 @@ author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
 ms.date: 11/01/2018
-ms.openlocfilehash: bb5caafea944d21547a904b99f9043aef63a6ffa
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: df3ed451776f30e8b7c13b95618f1a7f0c7688db
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656462"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937544"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk-not-recommended"></a>Použití mikroměřiče s Azure Application Insights Java SDK (nedoporučuje se)
 
@@ -281,4 +281,4 @@ Do konfiguračního souboru přidejte následující kód vazby:
 ## <a name="next-steps"></a>Další kroky
 
 * Další informace o mikroměřiči najdete v oficiální [dokumentaci k mikroměřiči](https://micrometer.io/docs).
-* Další informace o jaře v Azure najdete v [dokumentaci k oficiální jaře na platformě Azure](/java/azure/spring-framework/?view=azure-java-stable).
+* Další informace o jaře v Azure najdete v [dokumentaci k oficiální jaře na platformě Azure](/java/azure/spring-framework/).

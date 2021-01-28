@@ -1,19 +1,16 @@
 ---
 title: Použití služby Azure Data Lake Storage Gen2 s clustery Azure HDInsight
 description: Naučte se používat Azure Data Lake Storage Gen2 s clustery Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020, devx-track-azurecli
 ms.date: 04/24/2020
-ms.openlocfilehash: cc17cd23ae197db25fed440eb249f2cf069d4859
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 2bbfbd2d953ea663453f0092ff366e95f6dd5ea7
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744593"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945377"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Použití služby Azure Data Lake Storage Gen2 s clustery Azure HDInsight
 
@@ -66,19 +63,19 @@ Pokud chcete nastavit oprávnění pro uživatele k dotazování na data, použi
 
 Existuje několik způsobů, jak můžete přistupovat k souborům v Data Lake Storage Gen2 z clusteru HDInsight.
 
-* **Pomocí plně kvalifikovaného názvu** . S tímto přístupem zadáváte úplnou cestu k souboru, ke kterému chcete získat přístup.
+* **Pomocí plně kvalifikovaného názvu**. S tímto přístupem zadáváte úplnou cestu k souboru, ke kterému chcete získat přístup.
 
     ```
     abfs://<containername>@<accountname>.dfs.core.windows.net/<file.path>/
     ```
 
-* **Pomocí zkráceného formátu cesty** . Pomocí tohoto přístupu nahradíte cestu až ke kořenu clusteru:
+* **Pomocí zkráceného formátu cesty**. Pomocí tohoto přístupu nahradíte cestu až ke kořenu clusteru:
 
     ```
     abfs:///<file.path>/
     ```
 
-* **Pomocí relativní cesty** . S tímto přístupem zadáváte pouze relativní cestu k souboru, ke kterému chcete získat přístup.
+* **Pomocí relativní cesty**. S tímto přístupem zadáváte pouze relativní cestu k souboru, ke kterému chcete získat přístup.
 
     ```
     /<file.path>/

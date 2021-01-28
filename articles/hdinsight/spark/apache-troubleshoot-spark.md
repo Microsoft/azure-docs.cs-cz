@@ -2,18 +2,16 @@
 title: Řešení potíží s Apache Spark ve službě Azure HDInsight
 description: Získejte odpovědi na běžné otázky týkající se práce s Apache Spark a Azure HDInsight.
 ms.service: hdinsight
-author: hrasheed-msft
-ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4cfcc860e40415403952efeda13bac513a2c6347
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: af488cd253e8a8ebedd838aa5286185ea556f69d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822144"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942499"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>Řešení potíží s Apache Sparkem s využitím služby Azure HDInsight
 

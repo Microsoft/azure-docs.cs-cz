@@ -3,7 +3,7 @@ title: Kurz – vytvoření balíčku pro přístup – Správa nároků Azure A
 description: Podrobný návod, jak vytvořit první balíček přístupu v Azure Active Directory správě nároků.
 services: active-directory
 documentationCenter: ''
-author: barclayn
+author: ajburnle
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.subservice: compliance
 ms.date: 09/30/2020
-ms.author: barclayn
+ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e8d68643b5cc0002467f738dd60343fb2c42dc6
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 2625b1e0ccc4c3129f412eff144f47d9dc97b961
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631277"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937900"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Kurz: vytvoření prvního balíčku přístupu ve správě nároků Azure AD
 
@@ -67,10 +67,10 @@ Adresář prostředků má jeden nebo více prostředků ke sdílení. V tomto k
 
 1. Vytvořte nebo nakonfigurujte následující dva uživatele. Můžete použít tyto názvy nebo jiné názvy. **Admin1** může být uživatel, ke kterému jste aktuálně přihlášení.
 
-    | Název | Role adresáře |
+    | Name | Role adresáře |
     | --- | --- |
     | **Uživateli** | Globální správce<br/>-nebo-<br/>Správce uživatelů |
-    | **Requestor1** | Uživatel |
+    | **Requestor1** | User |
 
 1. Vytvořte skupinu zabezpečení Azure AD s názvem **marketingové zdroje** s **přiřazeným** typem členství.
 
@@ -119,7 +119,7 @@ Adresář prostředků má jeden nebo více prostředků ke sdílení. V tomto k
     ![Nový balíček přístupu – karta role prostředků](./media/entitlement-management-access-package-first/resource-roles.png)
 
     >[!IMPORTANT]
-    >Skupiny role, které přiřadíte do balíčku přístupu, budou označeny pomocí podtypu, který **lze přiřadit k rolím**. Další podrobnosti o skupinách, které je možné přiřadit k rolím Azure AD, najdete v tématu [Vytvoření skupiny s přiřazením rolí](../roles/groups-create-eligible.md) v Azure Active Directory. Pokud nevidíte skupinu přiřazenou rolí, kterou chcete přidat, nebo ji nemůžete přidat, ujistěte se, že máte požadovanou roli Azure AD a správu oprávnění k provedení této operace. Možná budete muset požádat někoho s požadovanými rolemi přidat prostředek do katalogu. Další informace najdete v tématu [požadované role pro přidání prostředků do katalogu](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog).
+    >Skupiny role, které přiřadíte do balíčku přístupu, budou označeny pomocí podtypu, který **lze přiřadit k rolím**. Další podrobnosti o skupinách, které je možné přiřadit k rolím Azure AD, najdete v tématu [Vytvoření skupiny s přiřazením rolí](../roles/groups-create-eligible.md) v Azure Active Directory. Mějte na paměti, že jakmile se skupina, která je přiřazena rolí, nachází v katalogu balíků přístupu, bude moct administrativní uživatelé, kteří můžou spravovat správu nároků, včetně globálních správců, správců uživatelů a vlastníků katalogu katalogu, řídit balíčky pro přístup v katalogu a umožnit jim zvolit, kdo může být do těchto skupin přidaný. Pokud nevidíte skupinu přiřazenou rolí, kterou chcete přidat, nebo ji nemůžete přidat, ujistěte se, že máte požadovanou roli Azure AD a správu oprávnění k provedení této operace. Možná budete muset požádat někoho s požadovanými rolemi přidat prostředek do katalogu. Další informace najdete v tématu [požadované role pro přidání prostředků do katalogu](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog).
 
     >[!NOTE]
     > Při použití [dynamických skupin](../enterprise-users/groups-create-rule.md) se kromě vlastníka nezobrazí žádné další role. Toto chování je úmyslné.

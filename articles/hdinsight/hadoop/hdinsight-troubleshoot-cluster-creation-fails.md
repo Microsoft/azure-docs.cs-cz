@@ -1,19 +1,16 @@
 ---
 title: Řešení chyb při vytváření clusteru s Azure HDInsight
 description: Naučte se řešit problémy s vytvářením clusteru Apache pro Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 04/14/2020
-ms.openlocfilehash: b8be230044d868cc3ec03f6dc3fc2d21e102f121
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e12b96883ae26b6c10e3622c35914ce498afca48
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856292"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944434"
 ---
 # <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>Řešení chyb při vytváření clusteru s Azure HDInsight
 
@@ -21,7 +18,7 @@ Následující problémy jsou nejběžnější hlavní příčiny selhání při
 
 - Problémy s oprávněním
 - Omezení zásad prostředků
-- Firewally
+- brány firewall,
 - Zámky prostředků
 - Nepodporované verze součástí
 - Omezení názvu účtu úložiště
@@ -45,7 +42,7 @@ Obecně platí, že následující zásady mohou ovlivnit vytváření clusteru:
 * Zásada brání vytvoření účtu úložiště.
 * Zásady zabraňující odstraňování síťových prostředků (IP adres/Load vyrovnávání zatížení).
 
-## <a name="firewalls"></a>Firewally
+## <a name="firewalls"></a>brány firewall,
 
 Brány firewall ve vaší virtuální síti nebo účtu úložiště můžou odepřít komunikaci s IP adresami správy HDInsight.
 

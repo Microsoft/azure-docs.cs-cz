@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/21/2021
+ms.date: 01/27/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 96772020e70aeb32fa1a8ae18bf3818396887877
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 50042b749c917752d08198c31ada3c73a5ef540b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805243"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938483"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Správa Azure AD B2C s využitím Microsoft Graph
 
@@ -35,18 +35,29 @@ Pokud chcete používat MS Graph API a pracovat s prostředky ve vašem tenantov
 - [Aktualizace uživatele](/graph/api/user-update)
 - [Odstranění uživatele](/graph/api/user-delete)
 
-## <a name="user-phone-number-management"></a>Správa telefonního čísla uživatele
+## <a name="user-phone-number-management-beta"></a>Správa telefonního čísla uživatele (beta verze)
+
+Telefonní číslo, které může uživatel použít k přihlášení pomocí [SMS nebo hlasových hovorů](identity-provider-local.md#phone-sign-in-preview)nebo [vícefaktorového ověřování](multi-factor-authentication.md). Další informace najdete v tématu [rozhraní API metody ověřování Azure AD](/graph/api/resources/phoneauthenticationmethod).
 
 - [Přidat](/graph/api/authentication-post-phonemethods)
-- [Získat](/graph/api/b2cauthenticationmethodspolicy-get)
-- [Aktualizace](/graph/api/b2cauthenticationmethodspolicy-update)
+- [Seznam](/graph/api/authentication-list-phonemethods)
+- [Získat](/graph/api/phoneauthenticationmethod-get)
+- [Aktualizace](/graph/api/phoneauthenticationmethod-update)
 - [Odstranit](/graph/api/phoneauthenticationmethod-delete)
 
-Další informace o tom, jak spravovat telefonní číslo přihlášení uživatele, najdete v tématu [metody ověřování B2C](/graph/api/resources/b2cauthenticationmethodspolicy).
+## <a name="self-service-password-reset-email-address-beta"></a>E-mailová adresa pro Samoobslužné resetování hesla (beta verze)
 
-## <a name="identity-providers-user-flow"></a>Zprostředkovatelé identity (tok uživatelů)
+E-mailová adresa, kterou může uživatel použít k nastavení hesla pro [přihlašovací účet uživatelského jména](identity-provider-local.md#username-sign-in). Další informace najdete v tématu [rozhraní API metody ověřování Azure AD](/graph/api/resources/emailauthenticationmethod).
 
-Spravujte zprostředkovatele identity, kteří jsou k dispozici vašim uživatelským tokům v Azure AD B2Cm tenantovi.
+- [Přidat](/graph/api/emailauthenticationmethod-post)
+- [Seznam](/graph/api/emailauthenticationmethod-list)
+- [Získat](/graph/api/emailauthenticationmethod-get)
+- [Aktualizace](/graph/api/emailauthenticationmethod-update)
+- [Odstranit](/graph/api/emailauthenticationmethod-delete)
+
+## <a name="identity-providers"></a>Zprostředkovatelé identit
+
+Spravujte [zprostředkovatele identity, kteří](add-identity-provider.md) jsou k dispozici vašim uživatelským tokům v Azure AD B2Cm tenantovi.
 
 - [Seznam zprostředkovatelů identity registrovaných v tenantovi Azure AD B2C](/graph/api/identityprovider-list)
 - [Vytvoření zprostředkovatele identity](/graph/api/identityprovider-post-identityproviders)
@@ -62,6 +73,13 @@ Nakonfigurujte předem připravené zásady pro registraci, přihlašování, ko
 - [Vytvoření toku uživatele](/graph/api/identitycontainer-post-b2cuserflows)
 - [Získání toku uživatele](/graph/api/b2cidentityuserflow-get)
 - [Odstranění toku uživatele](/graph/api/b2cidentityuserflow-delete)
+
+## <a name="user-flow-authentication-methods-beta"></a>Metody ověřování toku uživatele (beta verze)
+
+Vyberte mechanismus, který umožní uživatelům registraci prostřednictvím místních účtů. Místní účty jsou účty, kde Azure AD řídí kontrolní výraz identity. Další informace najdete v tématu [typ prostředku b2cAuthenticationMethodsPolicy](/graph/api/resources/b2cauthenticationmethodspolicy).
+
+- [Získat](/graph/api/b2cauthenticationmethodspolicy-get)
+- [Aktualizace](/graph/api/b2cauthenticationmethodspolicy-update)
 
 ## <a name="custom-policies"></a>Vlastní zásady
 

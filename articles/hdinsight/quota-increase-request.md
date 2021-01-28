@@ -1,19 +1,16 @@
 ---
 title: Požadavek na zvýšení kvóty jádra procesoru – Azure HDInsight
 description: Naučte se, jak požádat o zvýšení počtu PROCESORových jader přidělených vašemu předplatnému.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 05/07/2020
-ms.openlocfilehash: 93c07b47e03bde20d494feb1c86179cd9a24ba26
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a539acc423feeab500830fb33262d1b824101072
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539407"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935830"
 ---
 # <a name="requesting-quota-increases-for-azure-hdinsight"></a>Vyžádání zvýšení kvóty pro Azure HDInsight
 
@@ -28,27 +25,27 @@ Pokud jste obdrželi chybu s oznámením, že jste dosáhli limitu kvóty, použ
 1. Určete požadovanou velikost virtuálního počítače clusteru, škálování a typ.
 1. Ověřte aktuální limity kapacity kvót vašeho předplatného. Chcete-li zjistit dostupné jádra, proveďte následující kroky:
 
-    1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+    1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
     1. Přejděte na stránku **Přehled** pro cluster HDInsight.
-    1. V nabídce vlevo vyberte **omezení kvóty** . Na stránce se zobrazí počet používaných jader, počet dostupných jader a celkový počet jader.
+    1. V nabídce vlevo vyberte **omezení kvóty**. Na stránce se zobrazí počet používaných jader, počet dostupných jader a celkový počet jader.
 
 Chcete-li požádat o zvýšení kvóty, proveďte následující kroky:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 1. V levé dolní části stránky vyberte **help + support** .
 
     ![tlačítko pro pomoc a podporu](./media/quota-increase-request/help-support-button.png)
 
-1. Vyberte **Nová žádost o podporu** .
+1. Vyberte **Nová žádost o podporu**.
 1. Na stránce **Nová žádost o podporu** na kartě **Základní informace** vyberte následující možnosti:
 
-   - **Typ problému** : **omezení služby a předplatného (kvóty)**
-   - **Předplatné** : předplatné, které chcete upravit.
-   - **Typ kvóty** : **HDInsight**
+   - **Typ problému**: **omezení služby a předplatného (kvóty)**
+   - **Předplatné**: předplatné, které chcete upravit.
+   - **Typ kvóty**: **HDInsight**
 
      ![Vytvoření žádosti o podporu pro zvýšení kvóty jádra HDInsight](./media/quota-increase-request/hdinsight-quota-support-request.png)
 
-1. Vyberte **Další: řešení >>** .
+1. Vyberte **Další: řešení >>**.
 1. Na stránce **Podrobnosti** zadejte popis problému, vyberte závažnost problému, upřednostňovanou metodu kontaktu a další povinná pole. Použijte níže uvedenou šablonu, abyste zajistili, že budete poskytovat potřebné informace. Žádosti o zvýšení kvóty jsou vyhodnocovány týmem Azure Capacity, nikoli produktovým týmem HDInsight. Podrobnější informace, které zadáte, bude pravděpodobně vaše žádost schválena.
 
     ```
@@ -61,8 +58,8 @@ Chcete-li požádat o zvýšení kvóty, proveďte následující kroky:
 
     ![Podrobnosti o problému](./media/quota-increase-request/problem-details.png)
 
-1. Vyberte **Další: zkontrolovat + vytvořit >>** .
-1. Na kartě **Revize + vytvořit** vyberte **vytvořit** .
+1. Vyberte **Další: zkontrolovat + vytvořit >>**.
+1. Na kartě **Revize + vytvořit** vyberte **vytvořit**.
 
 > [!NOTE]  
 > Pokud potřebujete zvýšit kvótu jádra HDInsight v soukromé oblasti, [odešlete žádost o schválení seznamu](https://aka.ms/canaryintwhitelist).

@@ -3,12 +3,12 @@ title: Konfigurace Hybrid Kubernetes clusterů pomocí Azure Monitor pro kontejn
 description: Tento článek popisuje, jak můžete nakonfigurovat Azure Monitor pro kontejnery, abyste mohli monitorovat clustery Kubernetes hostované v Azure Stack nebo jiném prostředí.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: d481af07013c0a5b4c5a381527c6f555400a2559
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 12901b1d2d7edd85fbe1650600856d09105c15b2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92890458"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936406"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>Konfigurace Hybrid Kubernetes clusterů pomocí Azure Monitor pro kontejnery
 
@@ -21,7 +21,7 @@ Následující konfigurace jsou oficiálně podporované Azure Monitor for Conta
 - Environment
 
     - Místní Kubernetes
-    - AKS Engine v Azure a Azure Stack. Další informace najdete v tématu [AKS Engine on Azure Stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908&preserve-view=true)
+    - AKS Engine v Azure a Azure Stack. Další informace najdete v tématu [AKS Engine on Azure Stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview)
     - [OpenShift](https://docs.openshift.com/container-platform/4.3/welcome/index.html) verze 4 a vyšší, místní nebo jiná cloudová prostředí.
 
 - Verze Kubernetes a zásad podpory jsou stejné jako verze [podporovaných AKS](../../aks/supported-kubernetes-versions.md).
@@ -32,7 +32,7 @@ Následující konfigurace jsou oficiálně podporované Azure Monitor for Conta
 
 - Podpora řízení přístupu: Kubernetes RBAC a non-RBAC
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že máte následující:
 
@@ -108,7 +108,7 @@ Abyste nejdřív identifikovali úplné ID prostředku Log Analytics pracovního
     Microsoft Azure                       AzureCloud   0fb60ef2-03cc-4290-b595-e71108e8f4ce  Enabled  True
     ```
 
-    Zkopírujte hodnotu pro **SubscriptionId** .
+    Zkopírujte hodnotu pro **SubscriptionId**.
 
 2. Přepněte do předplatného hostujícího Log Analytics pracovní prostor pomocí následujícího příkazu:
 
@@ -202,7 +202,7 @@ Abyste nejdřív identifikovali úplné ID prostředku Log Analytics pracovního
     }
     ```
 
-7. Upravte hodnoty pro **workspaceResourceId** pomocí hodnoty, kterou jste zkopírovali v kroku 3, a pro **WorkspaceRegion** Zkopírujte hodnotu **oblasti** po spuštění příkazu Azure CLI [AZ monitor Log-Analytics pracovní prostor zobrazit](/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest#az-monitor-log-analytics-workspace-list&preserve-view=true).
+7. Upravte hodnoty pro **workspaceResourceId** pomocí hodnoty, kterou jste zkopírovali v kroku 3, a pro **WorkspaceRegion** Zkopírujte hodnotu **oblasti** po spuštění příkazu Azure CLI [AZ monitor Log-Analytics pracovní prostor zobrazit](/cli/azure/monitor/log-analytics/workspace#az-monitor-log-analytics-workspace-list&preserve-view=true).
 
 8. Uložte tento soubor jako containerSolutionParams.jsdo místní složky.
 
@@ -258,7 +258,7 @@ V této části nainstalujete agenta s kontejnery pro Azure Monitor pro kontejne
 
     `az monitor log-analytics workspace list --resource-group <resourceGroupName>`
 
-    Ve výstupu vyhledejte pod **názvem** pole název pracovního prostoru a zkopírujte ID pracovního prostoru Log Analytics pracovního prostoru pod pole **KódZákazníka** .
+    Ve výstupu vyhledejte pod **názvem** pole název pracovního prostoru a zkopírujte ID pracovního prostoru Log Analytics pracovního prostoru pod pole **KódZákazníka**.
 
 2. Pro identifikaci primárního klíče pracovního prostoru spusťte následující příkaz:
 
@@ -303,7 +303,7 @@ V této části nainstalujete agenta s kontejnery pro Azure Monitor pro kontejne
 
 Doplněk můžete zadat v souboru JSON specifikace clusteru AKS Engine, označovaný také jako model rozhraní API. V tomto doplňku zadejte verzi kódovaného kódu base64 `WorkspaceGUID` a `WorkspaceKey` Log Analytics pracovní prostor, ve kterém jsou shromážděná data monitorování uložená. Můžete najít `WorkspaceGUID` a `WorkspaceKey` pomocí kroků 1 a 2 v předchozí části.
 
-Podporované definice rozhraní API pro cluster centra Azure Stack najdete v tomto příkladu – [kubernetes-container-monitoring_existing_workspace_id_and_key.jsna](https://github.com/Azure/aks-engine/blob/master/examples/addons/container-monitoring/kubernetes-container-monitoring_existing_workspace_id_and_key.json). Konkrétně Najděte vlastnost **Doplňky** v **kubernetesConfig** :
+Podporované definice rozhraní API pro cluster centra Azure Stack najdete v tomto příkladu – [kubernetes-container-monitoring_existing_workspace_id_and_key.jsna](https://github.com/Azure/aks-engine/blob/master/examples/addons/container-monitoring/kubernetes-container-monitoring_existing_workspace_id_and_key.json). Konkrétně Najděte vlastnost **Doplňky** v **kubernetesConfig**:
 
 ```json
 "orchestratorType": "Kubernetes",
@@ -349,7 +349,7 @@ Hodnota konfigurace proxy má následující syntaxi: `[protocol://][user:passwo
 
 Příklad: `omsagent.proxy=http://user01:password@proxy01.contoso.com:8080`
 
-Pokud zadáte protokol jako **http** , požadavky HTTP se vytvoří pomocí zabezpečeného připojení SSL/TLS. Vaše proxy server musí podporovat protokoly SSL/TLS.
+Pokud zadáte protokol jako **http**, požadavky HTTP se vytvoří pomocí zabezpečeného připojení SSL/TLS. Vaše proxy server musí podporovat protokoly SSL/TLS.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 

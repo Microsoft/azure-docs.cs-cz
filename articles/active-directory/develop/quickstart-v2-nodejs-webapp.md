@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-js
-ms.openlocfilehash: bd750a05f34a18a1260226fb979a82cc620dfbfb
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: ab3677ede2805fc8ecb076e8a40da605c038b54b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178275"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937936"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Rychlý Start: přidání přihlášení pomocí OpenID připojení k webové aplikaci Node.js
 
@@ -37,20 +37,20 @@ V tomto rychlém startu si stáhnete a spustíte ukázku kódu, která ukazuje, 
 1. Zadejte **název** vaší aplikace, například `MyWebApp` . Uživatel vaší aplikace může tento název zobrazit a později ho můžete změnit.
 1. V části **podporované typy účtů** vyberte **účty v libovolném organizačním adresáři a v osobních účtech Microsoft (např. Skype, Xbox, Outlook.com)**.
 
-    Pokud existuje více identifikátorů URI přesměrování, budete je muset přidat z karty **ověřování** později po úspěšném vytvoření aplikace.
+    Pokud je k dispozici více identifikátorů URI přesměrování, přidejte je na kartě **ověřování** později po úspěšném vytvoření aplikace.
 
 1. Pokud chcete vytvořit aplikaci, vyberte **zaregistrovat** .
 1. Na stránce **Přehled** aplikace vyhledejte hodnotu **ID aplikace (klienta)** a zaznamenejte ji pro pozdější použití. Tuto hodnotu budete potřebovat ke konfiguraci aplikace později v tomto projektu.
 1. V části **Spravovat** vyberte **ověřování**.
 1. Vyberte **Přidat**  >  **Web** platformy. 
 1. V části **identifikátory URI pro přesměrování** zadejte `http://localhost:3000/auth/openid/return` .
-1. Zadejte **adresu URL pro odhlášení** `https://localhost:3000` .
+1. Zadejte **adresu URL pro odhlášení front-Channel** `https://localhost:3000` .
 1. V části implicitní udělení **ID ověřte tokeny** , protože tato ukázka vyžaduje, aby byl [tok implicitního udělení](./v2-oauth2-implicit-grant-flow.md) povolen pro přihlášení uživatele.
 1. Vyberte **Konfigurovat**.
 1. V části **Spravovat** vyberte **certifikáty & tajných klíčů**  >  **nový tajný klíč klienta**.
 1. Zadejte popis klíče (např. tajný klíč aplikace).
 1. Vyberte dobu trvání klíče buď **v 1 roce, 2 roky,** nebo **nikdy nevyprší**.
-1. Vyberte **Add** (Přidat). Hodnota klíče se zobrazí. Zkopírujte hodnotu klíče a uložte ji v bezpečném umístění pro pozdější použití.
+1. Vyberte **Přidat**. Hodnota klíče se zobrazí. Zkopírujte hodnotu klíče a uložte ji v bezpečném umístění pro pozdější použití.
 
 
 ## <a name="download-the-sample-application-and-modules"></a>Stažení ukázkové aplikace a modulů

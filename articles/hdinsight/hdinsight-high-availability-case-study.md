@@ -1,19 +1,16 @@
 ---
 title: Případová studie architektury řešení Azure HDInsight s vysokou dostupností
 description: Tento článek je fiktivní případovou studii možné architektury řešení Azure HDInsight s vysokou dostupností.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 keywords: vysoká dostupnost Hadoop
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2020
-ms.openlocfilehash: 4b98b03c2d7eb4a0403b4595c1376656ed42511b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0616694d05e3fc9d2255ad97647ebe3bce545a93
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91855034"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945361"
 ---
 # <a name="azure-hdinsight-highly-available-solution-architecture-case-study"></a>Případová studie architektury řešení Azure HDInsight s vysokou dostupností
 
@@ -68,7 +65,7 @@ Je důležité určit minimální obchodní funkčnost, kterou budete potřebova
 
 Následující obrázek ukazuje architekturu zotavení po havárii s vysokou dostupností v maloobchodní síti společnosti Contoso.
 
-:::image type="content" source="./media/hdinsight-high-availability-case-study/contoso-solution.png" alt-text="Maloobchodní architektura společnosti Contoso":::
+:::image type="content" source="./media/hdinsight-high-availability-case-study/contoso-solution.png" alt-text="Řešení společnosti Contoso":::
 
 **Kafka** používá [aktivní – pasivní](hdinsight-business-continuity-architecture.md#apache-kafka) replikaci k zrcadlení témat Kafka z primární oblasti do sekundární oblasti. Alternativou k Kafka replikace může být vytváření Kafka v obou oblastech.
 

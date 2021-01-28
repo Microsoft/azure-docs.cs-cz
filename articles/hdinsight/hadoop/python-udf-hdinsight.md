@@ -1,19 +1,16 @@
 ---
 title: Python UDF s Apache Hive a Apache prasete – Azure HDInsight
 description: Naučte se používat uživatelsky definované funkce jazyka Python (UDF) z Apache Hive a Apache prasete v HDInsight, Apache Hadoop technologie v Azure.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/15/2019
 ms.custom: H1Hack27Feb2017,hdinsightactive, devx-track-python
-ms.openlocfilehash: 0179fd10e75af0ced55b4bb41f9525dc26b3efe5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 593b809813f949cd1d0bcc17e1d1b7255ea19130
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023070"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944271"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>Použití uživatelem definovaných funkcí Pythonu (UDF) s Apache Hive a Apache prasetem v HDInsight
 
@@ -100,7 +97,7 @@ Tento skript provede následující akce:
 1. Přečte řádek dat ze standardního vstupu.
 2. Koncový znak nového řádku se odebere pomocí `string.strip(line, "\n ")` .
 3. Při zpracování datového proudu obsahuje jeden řádek všechny hodnoty se znakem tabulátoru mezi každou hodnotou. Takže `string.split(line, "\t")` se dá použít k rozdělení vstupu na jednotlivých kartách a vrácení pouze polí.
-4. Po dokončení zpracování musí být výstup zapsán do STDOUT jako jeden řádek, přičemž karta mezi jednotlivými poli. Například, `print "\t".join([clientid, phone_label, hashlib.md5(phone_label).hexdigest()])`.
+4. Po dokončení zpracování musí být výstup zapsán do STDOUT jako jeden řádek, přičemž karta mezi jednotlivými poli. Například `print "\t".join([clientid, phone_label, hashlib.md5(phone_label).hexdigest()])`.
 5. `while`Smyčka se opakuje `line` , dokud není přečtena žádná.
 
 Výstup skriptu je zřetězení vstupních hodnot pro a a hodnotu `devicemake` `devicemodel` hash zřetězené hodnoty.

@@ -3,16 +3,13 @@ title: Nepodařilo se spustit Apache HBase Master ve službě Azure HDInsight
 description: Službu Apache HBase Master (HMaster) se nepodařilo spustit ve službě Azure HDInsight.
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 08/14/2019
-ms.openlocfilehash: 032c25969bf477e1163b8db2aca631044c457939
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c30077d0d8f359e93745b53755f9dae998073d4d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539968"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936896"
 ---
 # <a name="apache-hbase-master-hmaster-fails-to-start-in-azure-hdinsight"></a>Službu Apache HBase Master (HMaster) se nepodařilo spustit ve službě Azure HDInsight.
 
@@ -83,7 +80,7 @@ K tomuto problému může dojít, pokud máte spoustu tabulek a oblastí, které
 
 ### <a name="resolution"></a>Řešení
 
-1. Z uživatelského rozhraní Apache Ambari přejdete do části **HBA**  >  **Konfigurace** . Do vlastního `hbase-site.xml` souboru přidejte následující nastavení:
+1. Z uživatelského rozhraní Apache Ambari přejdete do části **HBA**  >  **Konfigurace**. Do vlastního `hbase-site.xml` souboru přidejte následující nastavení:
 
     ```
     Key: hbase.master.namespace.init.timeout Value: 2400000  
@@ -113,7 +110,7 @@ Uzly jsou pravidelně restartovány. V protokolech serveru oblastí se můžou z
 
 Změňte časový limit relace Zookeeper, ne pouze `hbase-site` nastavení, `zookeeper.session.timeout` ale také `zoo.cfg` `maxSessionTimeout` je třeba změnit nastavení Zookeeper.
 
-1. Přístup k uživatelskému rozhraní Ambari, přejděte na **adaptéry HBA-> konfigurace-> nastavení** , v části časové limity změňte hodnotu časový limit relace Zookeeper.
+1. Přístup k uživatelskému rozhraní Ambari, přejděte na **adaptéry HBA-> konfigurace-> nastavení**, v části časové limity změňte hodnotu časový limit relace Zookeeper.
 
 1. Přístup k uživatelskému rozhraní Ambari, přejděte na **Zookeeper-> config-> Custom** `zoo.cfg` , přidejte nebo změňte následující nastavení. Ujistěte se, že hodnota je stejná jako HBA `zookeeper.session.timeout` .
 

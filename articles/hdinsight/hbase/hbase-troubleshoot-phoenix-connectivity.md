@@ -3,16 +3,13 @@ title: Problémy s připojením Apache Phoenix ve službě Azure HDInsight
 description: Problémy s připojením mezi Apache HBA a Apache Phoenix ve službě Azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 08/14/2019
-ms.openlocfilehash: ed12c9629506fa8defb23b987fe672bb3b384418
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 2cc6556f681ece170bdfe02b985f56274c0faa1e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92540087"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936962"
 ---
 # <a name="scenario-apache-phoenix-connectivity-issues-in-azure-hdinsight"></a>Scénář: Apache Phoenix problémy s připojením ve službě Azure HDInsight
 
@@ -28,7 +25,7 @@ Nesprávná IP adresa aktivního uzlu Zookeeper
 
 ### <a name="resolution"></a>Řešení
 
-IP adresu aktivního uzlu Zookeeper můžete identifikovat z uživatelského rozhraní Ambari pomocí odkazů na **adaptéry** pro  >  **Rychlé odkazy**  >  **ZK (aktivní)**  >  **Zookeeper informace** . Opravte IP adresu podle potřeby.
+IP adresu aktivního uzlu Zookeeper můžete identifikovat z uživatelského rozhraní Ambari pomocí odkazů na **adaptéry** pro  >  **Rychlé odkazy**  >  **ZK (aktivní)**  >  **Zookeeper informace**. Opravte IP adresu podle potřeby.
 
 ---
 
@@ -50,7 +47,7 @@ ERROR: org.apache.hadoop.hbase.NotServingRegionException: Region SYSTEM.CATALOG,
 
 V uživatelském rozhraní Apache Ambari proveďte následující kroky a restartujte službu HMaster na všech uzlech ZooKeeper:
 
-1. V části **Souhrn** adaptérů HBA, přejít na **HBA**  >  **aktivní HBase Master** .
+1. V části **Souhrn** adaptérů HBA, přejít na **HBA**  >  **aktivní HBase Master**.
 
 1. V části **součásti** restartujte službu HBase Master.
 

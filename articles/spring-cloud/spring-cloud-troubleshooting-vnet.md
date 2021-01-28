@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/19/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: c2b0488663233546411b3a1b5ac1b1eb6c0b899c
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 8491eb02fd61f291904d57990b3785ce93239964
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98887165"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935255"
 ---
 # <a name="troubleshooting-azure-spring-cloud-in-virtual-networks"></a>Řešení potíží s jarním cloudem Azure ve virtuálních sítích
 
@@ -39,7 +39,7 @@ Pokud chcete nastavit instanci služby jarní cloudovou službu Azure pomocí š
 |------|------|
 | Prostředky vytvořené pomocí služby Azure jaře Cloud byly zásadami zakázané. | Při nasazení služby jarního cloudu Azure ve vaší vlastní virtuální síti se vytvoří síťové prostředky. Zkontrolujte prosím, jestli máte [Azure Policy](https://docs.microsoft.com/azure/governance/policy/overview) definované k blokování těchto vytváření. Nepovedlo se vytvořit prostředky, které se dají najít v chybové zprávě. |
 | Zadané podsítě mají přidružené k tabulkám směrování, ale zrušte jejich přidružení. | V současné době není podporováno nasazování jarního cloudu Azure v podsíti přidružené k existujícím směrovacím tabulkám. zrušte prosím jejich přidružení a zkuste to znovu. |
-| Požadovaný provoz není povolený. | Pokud chcete zajistit, aby byl požadovaný provoz povolený, podívejte se prosím na [zodpovědnost zákazníků při provozování jarního cloudu Azure ve virtuální](spring-cloud-vnet-customer-responsibilities.md) síti. |
+| Požadovaný provoz není allowlisted. | Pokud chcete zajistit, aby se allowlisted potřebný provoz, podívejte se prosím na [zodpovědnost zákazníků při provozování jarního cloudu Azure ve virtuální](spring-cloud-vnet-customer-responsibilities.md) síti. |
 
 ## <a name="my-application-cant-be-registered"></a>Moje aplikace se nedá zaregistrovat.
 

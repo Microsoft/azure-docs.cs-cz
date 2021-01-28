@@ -1,18 +1,15 @@
 ---
 title: Pokyny pro Apache Spark v Azure HDInsight
 description: Přečtěte si pokyny pro použití Apache Spark ve službě Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: a93b3e0da7b881b80f7613907e40af509bffadbd
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: f81435abbedec25cb8abe0b958065a493c15ce4c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545561"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938811"
 ---
 # <a name="apache-spark-guidelines"></a>Pokyny pro Apache Spark
 
@@ -20,7 +17,7 @@ Tento článek poskytuje různé pokyny k používání Apache Spark v Azure HDI
 
 ## <a name="how-do-i-run-or-submit-spark-jobs"></a>Návody spustit nebo odeslat úlohy Spark?
 
-| Možnost | Dokumenty |
+| Možnost | dokumenty. |
 |---|---|
 | VSCode | [Použití nástrojů pro podregistr Spark & pro Visual Studio Code](../hdinsight-for-vscode.md) |
 | Poznámkové bloky Jupyter | [Kurz: Načítání dat a spouštění dotazů v clusteru Apache Spark ve službě Azure HDInsight](./apache-spark-load-data-run-query.md) |
@@ -35,7 +32,7 @@ Tento článek poskytuje různé pokyny k používání Apache Spark v Azure HDI
 
 ## <a name="how-do-i-monitor-and-debug-spark-jobs"></a>Návody monitorovat a ladit úlohy Spark?
 
-| Možnost | Dokumenty |
+| Možnost | dokumenty. |
 |---|---|
 | Sada Azure Toolkit for IntelliJ | [Selhání ladění úloh Sparku pomocí Azure Toolkit for IntelliJ (Preview)](apache-spark-intellij-tool-failure-debug.md) |
 | Azure Toolkit for IntelliJ přes SSH | [Místní nebo vzdálené ladění aplikací Apache Spark v clusteru HDInsight pomocí sady Azure Toolkit for IntelliJ přes SSH](apache-spark-intellij-tool-debug-remotely-through-ssh.md) |
@@ -44,23 +41,23 @@ Tento článek poskytuje různé pokyny k používání Apache Spark v Azure HDI
 
 ## <a name="how-do-i-make-my-spark-jobs-run-more-efficiently"></a>Návody chcete, aby se moje úlohy Sparku spouštěly efektivněji?
 
-| Možnost | Dokumenty |
+| Možnost | dokumenty. |
 |---|---|
 | Vstupně-výstupní mezipaměť | [Zvýšení výkonu Apache Spark úloh pomocí Azure HDInsight v/v cache (Preview)](./apache-spark-improve-performance-iocache.md) |
 | Možnosti konfigurace | [Optimalizace úloh Apache Spark](./apache-spark-perf.md) |
 
 ## <a name="how-do-i-connect-to-other-azure-services"></a>Návody se připojit k jiným službám Azure?
 
-| Možnost | Dokumenty |
+| Možnost | dokumenty. |
 |---|---|
 | Apache Hive ve službě HDInsight | [Integrace Apache Spark a Apache Hive s konektorem skladu podregistru](../interactive-query/apache-hive-warehouse-connector.md) |
 | Apache HBase ve službě HDInsight | [Použití Apache Sparku ke čtení a zápisu dat Apache HBase](../hdinsight-using-spark-query-hbase.md) |
 | Apache Kafka ve službě HDInsight | [Kurz: Použití strukturovaného streamování Apache Sparku se systémem Apache Kafka ve službě HDInsight](../hdinsight-apache-kafka-spark-structured-streaming.md) |
-| Azure Cosmos DB | [Odkaz na Azure synapse pro Azure Cosmos DB](../../cosmos-db/synapse-link.md) |
+| Azure Cosmos DB | [Azure Synapse Link pro Azure Cosmos DB](../../cosmos-db/synapse-link.md) |
 
 ## <a name="what-are-my-storage-options"></a>Jaké jsou možnosti mého úložiště?
 
-| Možnost | Dokumenty |
+| Možnost | dokumenty. |
 |---|---|
 | Azure Data Lake Storage Gen2 | [Použití služby Azure Data Lake Storage Gen2 s clustery Azure HDInsight](../hdinsight-hadoop-use-data-lake-storage-gen2.md) |
 | Azure Data Lake Storage Gen1 | [Použití Azure Data Lake Storage Gen1 s clustery Azure HDInsight](../hdinsight-hadoop-use-data-lake-storage-gen1.md) |

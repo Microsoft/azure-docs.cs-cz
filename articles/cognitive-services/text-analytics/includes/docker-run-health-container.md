@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 11/12/2020
 ms.author: aahi
-ms.openlocfilehash: 82c33c038a1f8eaba540c9906efcffa0a9214762
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: af8fec56c32b52e2af584e59f08db6cc7129c9c5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98690038"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947204"
 ---
 ## <a name="install-the-container"></a>Instalace kontejneru
 
@@ -62,7 +62,7 @@ Tento příkaz:
 > [!NOTE]
 > Tato ukázka je k dispozici pouze u Analýza textu pro kontejner Health.
 
-Kontejner poskytuje rozhraní API prediktivního koncového bodu pro dotazy založené na REST.  K dispozici jsme také nástroj pro vizualizaci v kontejneru, který je přístupný připojením `/demo` ke koncovému bodu kontejneru. Například:
+Kontejner poskytuje rozhraní API prediktivního koncového bodu pro dotazy založené na REST.  K dispozici jsme také nástroj pro vizualizaci v kontejneru, který je přístupný připojením `/demo` ke koncovému bodu kontejneru. Příklad:
 
 ```
 http://<serverURL>:5000/demo
@@ -112,7 +112,7 @@ az webapp config appsettings set -g $resource_group_name -n $appservice_name --s
 
 K jednoduššímu nasazení můžete použít také službu Azure Container instance (ACI). ACI je prostředek, který umožňuje spouštět kontejnery Docker na vyžádání ve spravovaném prostředí Azure bez serveru. 
 
-Postup nasazení prostředku ACI pomocí Azure Portal najdete v tématu [použití Azure Container Instances](../how-tos/text-analytics-how-to-use-container-instances.md) . Pomocí rozhraní příkazového řádku Azure můžete také použít skript prostředí PowerShell, který vytvoří ACI na vašem předplatném pomocí Image kontejneru.  Před odesláním první žádosti počkejte, než se skript dokončí (přibližně 25-30 minut).  V důsledku omezení maximálního počtu procesorů na prostředek ACI tuto možnost nevybírejte, pokud očekáváte, že budete odesílat více než 5 velkých dokumentů (přibližně 5000 znaků) na jednu žádost.
+Postup nasazení prostředku ACI pomocí Azure Portal najdete v tématu [použití Azure Container Instances](../../containers/azure-container-instance-recipe.md) . Pomocí rozhraní příkazového řádku Azure můžete také použít skript prostředí PowerShell, který vytvoří ACI na vašem předplatném pomocí Image kontejneru.  Před odesláním první žádosti počkejte, než se skript dokončí (přibližně 25-30 minut).  V důsledku omezení maximálního počtu procesorů na prostředek ACI tuto možnost nevybírejte, pokud očekáváte, že budete odesílat více než 5 velkých dokumentů (přibližně 5000 znaků) na jednu žádost.
 Informace o dostupnosti najdete v článku věnovaném [místní podpoře ACI](../../../container-instances/container-instances-region-availability.md) . 
 
 > [!NOTE] 
@@ -213,4 +213,3 @@ docker-compose up
 ```
 
 Další informace najdete v dokumentaci k NGINX o [ukončení Nginx SSL](https://docs.nginx.com/nginx/admin-guide/security-controls/terminating-ssl-http/).
-

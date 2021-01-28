@@ -1,17 +1,17 @@
 ---
-title: Použití Azure Portal k použití klíčů spravovaných zákazníkem nebo BYOK s Media Services
+title: Použití klíčů spravovaných zákazníkem nebo BYOK v Azure Portal
 description: V tomto kurzu pomocí Azure Portal povolíte klíče spravované zákazníkem nebo Přineste vlastní klíč (BYOK) s účtem úložiště Azure Media Services.
 author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: tutorial
 ms.date: 10/18/2020
-ms.openlocfilehash: 003b8e066a6161baedbc70e9becbca23566813ef
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 61df4b3424a4d73eca7a946c6bd8e5160fd6c529
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "96013217"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935378"
 ---
 # <a name="tutorial-use-the-azure-portal-to-use-customer-managed-keys-or-byok-with-media-services"></a>Kurz: použití Azure Portal k použití klíčů spravovaných zákazníkem nebo BYOK s Media Services
 

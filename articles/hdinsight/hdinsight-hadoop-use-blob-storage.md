@@ -1,19 +1,16 @@
 ---
 title: Dotazy na data z úložiště Azure kompatibilního se systémem HDFS – Azure HDInsight
 description: Naučte se, jak zadávat dotazy na data z Azure Storage a Azure Data Lake Storage ukládat výsledky analýzy.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: ead9b775b8c61d0d89abd4821bef2b1aaaea0d76
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: cedc0ff1b3c2aa64f32445eabc800748a753981d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547431"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945423"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Použití úložiště Azure s clustery Azure HDInsight
 
@@ -31,9 +28,9 @@ V tomto článku se dozvíte, jak služba Azure Storage pracuje s clustery HDIns
 
 | Druh účtu úložiště | Podporované služby | Podporované úrovně výkonu |Nepodporované úrovně výkonu| Podporované úrovně přístupu |
 |----------------------|--------------------|-----------------------------|---|------------------------|
-| StorageV2 (obecné účely v2)  | Blob     | Standard                    |Premium| Horká, studená, archivní\*   |
-| Úložiště (obecné účely v1)   | Blob     | Standard                    |Premium| Není k dispozici                    |
-| Blob Storage                    | Blob     | Standard                    |Premium| Horká, studená, archivní\*   |
+| StorageV2 (obecné účely v2)  | Objekt blob     | Standard                    |Premium| Horká, studená, archivní\*   |
+| Úložiště (obecné účely v1)   | Objekt blob     | Standard                    |Premium| –                    |
+| Blob Storage                    | Objekt blob     | Standard                    |Premium| Horká, studená, archivní\*   |
 
 Pro ukládání obchodních dat nedoporučujeme používat výchozí kontejner objektů BLOB. Ideální postup je výchozí kontejner objektů blob po každém použití odstranit a snížit tak náklady na úložiště. Výchozí kontejner obsahuje protokoly aplikací a systému. Než odstraníte kontejner, nezapomeňte tyto protokoly načíst.
 
@@ -44,23 +41,23 @@ Sdílení jednoho kontejneru objektů BLOB jako výchozího systému souborů pr
 
 ## <a name="access-files-from-within-cluster"></a>Přístup k souborům v rámci clusteru
 
-Existuje několik způsobů, jak můžete přistupovat k souborům v Data Lake Storage z clusteru HDInsight. Schéma identifikátoru URI poskytuje nešifrovaný přístup (s *wasb:* prefix) a ŠIFROVANÝ přístup TLS (s *wasbs* ). Doporučujeme používat *wasbs* kdykoli je to možné, i v případě přístupu k datům, umístěným uvnitř stejné oblasti v Azure.
+Existuje několik způsobů, jak můžete přistupovat k souborům v Data Lake Storage z clusteru HDInsight. Schéma identifikátoru URI poskytuje nešifrovaný přístup (s *wasb:* prefix) a ŠIFROVANÝ přístup TLS (s *wasbs*). Doporučujeme používat *wasbs* kdykoli je to možné, i v případě přístupu k datům, umístěným uvnitř stejné oblasti v Azure.
 
-* **Pomocí plně kvalifikovaného názvu** . S tímto přístupem zadáváte úplnou cestu k souboru, ke kterému chcete získat přístup.
+* **Pomocí plně kvalifikovaného názvu**. S tímto přístupem zadáváte úplnou cestu k souboru, ke kterému chcete získat přístup.
 
     ```
     wasb://<containername>@<accountname>.blob.core.windows.net/<file.path>/
     wasbs://<containername>@<accountname>.blob.core.windows.net/<file.path>/
     ```
 
-* **Pomocí zkráceného formátu cesty** . Pomocí tohoto přístupu nahradíte cestu až ke kořenu clusteru:
+* **Pomocí zkráceného formátu cesty**. Pomocí tohoto přístupu nahradíte cestu až ke kořenu clusteru:
 
     ```
     wasb:///<file.path>/
     wasbs:///<file.path>/
     ```
 
-* **Pomocí relativní cesty** . S tímto přístupem zadáváte pouze relativní cestu k souboru, ke kterému chcete získat přístup.
+* **Pomocí relativní cesty**. S tímto přístupem zadáváte pouze relativní cestu k souboru, ke kterému chcete získat přístup.
 
     ```
     /<file.path>/
@@ -170,7 +167,7 @@ Při vytváření clusteru HDInsight zadáváte účet služby Azure Storage, kt
 
 V tomto článku jste zjistili, jak používat HDFS kompatibilní úložiště Azure se službou HDInsight. Toto úložiště umožňuje vytvářet přizpůsobitelná a dlouhodobá řešení pro získávání archivovaných dat a používat HDInsight k odemčení informací uvnitř uložených strukturovaných a nestrukturovaných dat.
 
-Další informace naleznete v tématech:
+Další informace naleznete v tématu:
 
 * [Rychlý Start: Vytvoření clusteru Apache Hadoop](hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md)
 * [Kurz: vytváření clusterů HDInsight](hdinsight-hadoop-provision-linux-clusters.md)

@@ -3,16 +3,13 @@ title: Chyba sledovacího procesoru s provizorním zamrznutím chyby z clusteru 
 description: V protokolu syslogs z clusteru Azure HDInsight se objevuje procesor s provizorním zamrznutím chyb v jádrech.
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 08/05/2019
-ms.openlocfilehash: 33990e40507f088962fd8d8efd241de5d2fcc63b
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 5d9d7b0fc21660dd22ff92bbe2de38c759c440ec
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289070"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944347"
 ---
 # <a name="scenario-watchdog-bug-soft-lockup---cpu-error-from-an-azure-hdinsight-cluster"></a>Scénář: "sledovací: Chyba: měkké uzamčení-CPU" z clusteru Azure HDInsight
 
@@ -39,7 +36,7 @@ Použijte opravu jádra. Skript níže upgraduje jádro Linux a restartuje poč�
     | Vlastnost | Hodnota |
     | --- | --- |
     | Typ skriptu | – Vlastní |
-    | Název |Oprava potíží s provizorním zámkem jádra |
+    | Name |Oprava potíží s provizorním zámkem jádra |
     | Identifikátor URI skriptu bash |`https://raw.githubusercontent.com/hdinsight/hdinsight.github.io/master/ClusterCRUD/KernelSoftLockFix/scripts/KernelSoftLockIssue_FixAndReboot.sh` |
     | Typ (typy) uzlů |Pracovní proces, Zookeeper |
     | Parametry |– |

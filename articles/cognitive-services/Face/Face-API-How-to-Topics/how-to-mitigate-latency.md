@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 1/5/2021
 ms.author: v-jawe
-ms.openlocfilehash: b4035e2039afb6fe66d2658ebfcd3206d46e1de5
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: e7f4293955772697ddeea5fce9daac4b04755274
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98682458"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937282"
 ---
 # <a name="how-to-mitigate-latency-when-using-the-face-service"></a>Postupy: zmírnění latence při používání služby Face
 
@@ -34,7 +34,7 @@ V tomto tématu se seznámíte s možnými příčinami latence, které se týka
 
 ### <a name="slow-connection-between-the-cognitive-service-and-a-remote-url"></a>Pomalé připojení mezi službu pro rozpoznávání a vzdálenou adresou URL
 
-Některé služby Azure Cognitive Services poskytují metody, které získávají data ze vzdálené adresy URL, kterou zadáte. Například při volání [metody DetectWithUrlAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_Face_FaceOperationsExtensions_DetectWithUrlAsync_Microsoft_Azure_CognitiveServices_Vision_Face_IFaceOperations_System_String_System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_Collections_Generic_IList_System_Nullable_Microsoft_Azure_CognitiveServices_Vision_Face_Models_FaceAttributeType___System_String_System_Nullable_System_Boolean__System_String_System_Threading_CancellationToken_) služby Face můžete zadat adresu URL obrázku, ve kterém se služba pokusí rozpoznat obličeje.
+Některé služby Azure Cognitive Services poskytují metody, které získávají data ze vzdálené adresy URL, kterou zadáte. Například při volání [metody DetectWithUrlAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync#Microsoft_Azure_CognitiveServices_Vision_Face_FaceOperationsExtensions_DetectWithUrlAsync_Microsoft_Azure_CognitiveServices_Vision_Face_IFaceOperations_System_String_System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_Collections_Generic_IList_System_Nullable_Microsoft_Azure_CognitiveServices_Vision_Face_Models_FaceAttributeType___System_String_System_Nullable_System_Boolean__System_String_System_Threading_CancellationToken_) služby Face můžete zadat adresu URL obrázku, ve kterém se služba pokusí rozpoznat obličeje.
 
 ```csharp
 var faces = await client.Face.DetectWithUrlAsync("https://www.biography.com/.image/t_share/MTQ1MzAyNzYzOTgxNTE0NTEz/john-f-kennedy---mini-biography.jpg");
@@ -42,7 +42,7 @@ var faces = await client.Face.DetectWithUrlAsync("https://www.biography.com/.ima
 
 Služba obličeje pak musí stáhnout image ze vzdáleného serveru. Pokud je připojení ze služby obličeje na vzdáleném serveru pomalé, bude to mít vliv na dobu odezvy metody detekce.
 
-Pokud to chcete zmírnit, zvažte [uložení image v Azure Premium BLOB Storage](https://docs.microsoft.com/azure/storage/blobs/storage-upload-process-images?tabs=dotnet). Například:
+Pokud to chcete zmírnit, zvažte [uložení image v Azure Premium BLOB Storage](https://docs.microsoft.com/azure/storage/blobs/storage-upload-process-images?tabs=dotnet). Příklad:
 
 ``` csharp
 var faces = await client.Face.DetectWithUrlAsync("https://csdx.blob.core.windows.net/resources/Face/Images/Family1-Daughter1.jpg");
@@ -50,7 +50,7 @@ var faces = await client.Face.DetectWithUrlAsync("https://csdx.blob.core.windows
 
 ### <a name="large-upload-size"></a>Velikost velkého nahrávání
 
-Některé služby Azure Cognitive Services poskytují metody, které získávají data ze souboru, který nahráváte. Například při volání [metody DetectWithStreamAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_Face_FaceOperationsExtensions_DetectWithStreamAsync_Microsoft_Azure_CognitiveServices_Vision_Face_IFaceOperations_System_IO_Stream_System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_Collections_Generic_IList_System_Nullable_Microsoft_Azure_CognitiveServices_Vision_Face_Models_FaceAttributeType___System_String_System_Nullable_System_Boolean__System_String_System_Threading_CancellationToken_) služby Face můžete nahrát obrázek, ve kterém se služba pokusí rozpoznat obličeje.
+Některé služby Azure Cognitive Services poskytují metody, které získávají data ze souboru, který nahráváte. Například při volání [metody DetectWithStreamAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync#Microsoft_Azure_CognitiveServices_Vision_Face_FaceOperationsExtensions_DetectWithStreamAsync_Microsoft_Azure_CognitiveServices_Vision_Face_IFaceOperations_System_IO_Stream_System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_Collections_Generic_IList_System_Nullable_Microsoft_Azure_CognitiveServices_Vision_Face_Models_FaceAttributeType___System_String_System_Nullable_System_Boolean__System_String_System_Threading_CancellationToken_) služby Face můžete nahrát obrázek, ve kterém se služba pokusí rozpoznat obličeje.
 
 ```csharp
 using FileStream fs = File.OpenRead(@"C:\images\face.jpg");
@@ -62,7 +62,7 @@ Pokud soubor k nahrání je velký, což bude mít vliv na dobu odezvy `DetectWi
 - Pořizuje službě déle zpracovat soubor v poměru k velikosti souboru.
 
 Hrozeb
-- Zvažte [uložení image v Azure Premium BLOB Storage](https://docs.microsoft.com/azure/storage/blobs/storage-upload-process-images?tabs=dotnet). Například:
+- Zvažte [uložení image v Azure Premium BLOB Storage](https://docs.microsoft.com/azure/storage/blobs/storage-upload-process-images?tabs=dotnet). Příklad:
 ``` csharp
 var faces = await client.Face.DetectWithUrlAsync("https://csdx.blob.core.windows.net/resources/Face/Images/Family1-Daughter1.jpg");
 ```
@@ -97,4 +97,4 @@ V této příručce jste zjistili, jak zmírnit latenci při používání služ
 ## <a name="related-topics"></a>Související témata
 
 - [Referenční dokumentace (REST)](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)
-- [Referenční dokumentace (.NET SDK)](/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet)
+- [Referenční dokumentace (.NET SDK)](/dotnet/api/overview/azure/cognitiveservices/client/faceapi)

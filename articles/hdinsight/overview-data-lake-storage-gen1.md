@@ -1,19 +1,16 @@
 ---
 title: Přehled Azure Data Lake Storage Gen1 v HDInsight
 description: Přehled Data Lake Storage Gen1 v HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: b598494500124ca4a70e8e2d7bfef023fbf7d498
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 4ac1a48733d104e7674acbc13bfbb1e7a4cf02b4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92328772"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938885"
 ---
 # <a name="azure-data-lake-storage-gen1-overview-in-hdinsight"></a>Přehled Azure Data Lake Storage Gen1 v HDInsight
 
@@ -57,7 +54,7 @@ Data Lake Storage Gen1 používá pro ověřování Azure Active Directory a ke 
 
 | **Funkce** | **Popis** |
 | --- | --- |
-| Ověřování |Data Lake Storage Gen1 se integruje s Azure Active Directory (Azure AD) pro správu identit a přístupu pro všechna data uložená v Data Lake Storage Gen1. Kvůli integraci Data Lake Storage Gen1 výhody ze všech funkcí služby Azure AD. Mezi tyto funkce patří: vícefaktorového ověřování, podmíněný přístup a řízení přístupu na základě role v Azure. Také monitorování využití aplikací, monitorování zabezpečení a výstrahy a tak dále. Data Lake Storage Gen1 podporuje protokol OAuth 2,0 pro ověřování v rámci rozhraní REST. Viz [ověřování v rámci Azure Data Lake Storage Gen1 pomocí Azure Active Directory](../data-lake-store/data-lakes-store-authentication-using-azure-active-directory.md)|
+| Authentication |Data Lake Storage Gen1 se integruje s Azure Active Directory (Azure AD) pro správu identit a přístupu pro všechna data uložená v Data Lake Storage Gen1. Kvůli integraci Data Lake Storage Gen1 výhody ze všech funkcí služby Azure AD. Mezi tyto funkce patří: vícefaktorového ověřování, podmíněný přístup a řízení přístupu na základě role v Azure. Také monitorování využití aplikací, monitorování zabezpečení a výstrahy a tak dále. Data Lake Storage Gen1 podporuje protokol OAuth 2,0 pro ověřování v rámci rozhraní REST. Viz [ověřování v rámci Azure Data Lake Storage Gen1 pomocí Azure Active Directory](../data-lake-store/data-lakes-store-authentication-using-azure-active-directory.md)|
 | Řízení přístupu |Data Lake Storage Gen1 poskytuje řízení přístupu podporou oprávnění ve stylu POSIX, která jsou vystavená protokolem WebHDFS. Seznamy ACL je možné povolit pro kořenovou složku, podsložky a jednotlivé soubory. Další informace o fungování seznamů ACL v kontextu Data Lake Storage Gen1 najdete v tématu [řízení přístupu v Data Lake Storage Gen1](../data-lake-store/data-lake-store-access-control.md). |
 | Šifrování |Data Lake Storage Gen1 taky poskytuje šifrování pro data, která jsou uložená v účtu. Nastavení šifrování určíte při vytváření účtu Data Lake Storage Gen1. Můžete se rozhodnout, že vaše data budou zašifrovaná nebo se můžou rozhodnout bez šifrování. Další informace najdete v tématu [šifrování v Data Lake Storage Gen1](../data-lake-store/data-lake-store-encryption.md). Pokyny k poskytnutí konfigurace související s šifrováním najdete v tématu Začínáme [s Azure Data Lake Storage Gen1 pomocí Azure Portal](../data-lake-store/data-lake-store-get-started-portal.md). |
 

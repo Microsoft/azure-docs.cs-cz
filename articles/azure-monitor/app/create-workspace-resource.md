@@ -3,12 +3,12 @@ title: Vytvoření nového prostředku založeného na pracovním prostoru Azure
 description: Přečtěte si o krocích požadovaných k povolení nových Azure Monitorch Application Insightsch prostředků založených na pracovních prostorech.
 ms.topic: conceptual
 ms.date: 10/06/2020
-ms.openlocfilehash: ecbac02bcb4d9b4f0db36eab854a91366c774d6c
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 9d1ef158b8096c12c36673b62f87e1d02be69175
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95536910"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936460"
 ---
 # <a name="workspace-based-application-insights-resources"></a>Prostředky Application Insights založené na pracovním prostoru
 
@@ -112,7 +112,7 @@ az monitor app-insights component create --app
 az monitor app-insights component create --app demoApp --location eastus --kind web -g my_resource_group --workspace "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test1234/providers/microsoft.operationalinsights/workspaces/test1234555"
 ```
 
-Úplnou dokumentaci k Azure CLI pro tento příkaz najdete v dokumentaci k rozhraní příkazového [řádku Azure CLI](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-create).
+Úplnou dokumentaci k Azure CLI pro tento příkaz najdete v dokumentaci k rozhraní příkazového [řádku Azure CLI](/cli/azure/ext/application-insights/monitor/app-insights/component#ext-application-insights-az-monitor-app-insights-component-create).
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 

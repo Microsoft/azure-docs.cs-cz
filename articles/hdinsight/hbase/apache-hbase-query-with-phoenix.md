@@ -1,31 +1,28 @@
 ---
 title: 'Rychlý Start: Apache HBA & Apache Phoenix – Azure HDInsight'
 description: V tomto rychlém startu se dozvíte, jak používat Apache Phoenix v HDInsight. Přečtěte si také, jak nainstalovat a nastavit SQLLine na počítači pro připojení k clusteru HBA v HDInsight.
-author: hrasheed-msft
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.author: hrasheed
-ms.openlocfilehash: 1c400e41c4c10023d2595bde8c0d62e26184cf05
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6b9196d9ad5cf07cd210726bc1af7121c08094a8
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "79370317"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935996"
 ---
 # <a name="quickstart-query-apache-hbase-in-azure-hdinsight-with-apache-phoenix"></a>Rychlý Start: dotazování Apache HBA ve službě Azure HDInsight pomocí Apache Phoenix
 
 V tomto rychlém startu se dozvíte, jak používat Apache Phoenix ke spouštění dotazů HBA v Azure HDInsight. Apache Phoenix je dotazovací modul SQL pro Apache HBA. Je přístupný jako ovladač JDBC a umožňuje dotazování a správu tabulek HBase pomocí SQL. [SQLLine](http://sqlline.sourceforge.net/) je nástroj příkazového řádku pro spuštění SQL.
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Cluster Apache HBA. V tématu [Vytvoření clusteru](../hadoop/apache-hadoop-linux-tutorial-get-started.md) vytvořte cluster HDInsight.  Ujistěte se, že jste vybrali typ clusteru **HBA** .
 
-* Klient SSH. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Klient SSH. Další informace najdete v tématu [Připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="identify-a-zookeeper-node"></a>Identifikujte uzel ZooKeeper
 

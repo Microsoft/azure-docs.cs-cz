@@ -1,19 +1,16 @@
 ---
 title: Instalace vlastních aplikací Apache Hadoop ve službě Azure HDInsight
 description: Naučte se instalovat aplikace HDInsight pro Apache Hadoop clustery ve službě Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: dca248d217f4fb90d41c0a98a42b5eda4783913f
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 9591551b7d5657803e770bd71b47acb141b40fb6
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825212"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942684"
 ---
 # <a name="install-custom-apache-hadoop-applications-on-azure-hdinsight"></a>Instalace vlastních aplikací Apache Hadoop ve službě Azure HDInsight
 
@@ -75,7 +72,7 @@ Stav aplikace můžete zkontrolovat na portálu Azure a ověřit tak instalaci a
 
 Pro **odstín** můžete použít následující kroky:
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure Portal
 
 1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Vyberte cluster, do kterého jste nainstalovali aplikaci.
@@ -123,7 +120,7 @@ Pokud se instalace aplikace nezdařila, můžete zobrazit chybové zprávy a inf
 
 ## <a name="remove-hdinsight-applications"></a>Odstranění aplikací HDInsight
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure Portal
 
 1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Vyberte cluster, do kterého jste nainstalovali aplikaci.

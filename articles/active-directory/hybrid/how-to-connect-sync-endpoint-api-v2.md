@@ -12,12 +12,12 @@ ms.date: 12/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0067ed618f95e7f83fc041fe214bbc4d715a504f
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 0ecfd277f2cc86102d59b201e7b43fa8519bdd3a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567625"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937600"
 ---
 # <a name="azure-ad-connect-sync-v2-endpoint-api"></a>Rozhraní API koncového bodu synchronizace služby Azure AD Connect v2 
 Společnost Microsoft nasadila nový koncový bod (rozhraní API) pro Azure AD Connect, který vylepšuje výkon operací synchronizační služby Azure Active Directory. Díky použití nového koncového bodu v2 budete mít při exportu a importu do Azure AD patrné zvýšení výkonu. Tento nový koncový bod podporuje následující:
@@ -176,7 +176,7 @@ Pokud jste povolili koncový bod v2 a potřebujete provést vrácení zpět, pos
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy  
  
 **Kdy se nový koncový bod stane výchozím nastavením pro upgrady a nové instalace?**  
-</br>Plánujeme nové vydání AADConnect pro publikování ke stažení v lednu 2021. Tato verze ve výchozím nastavení použije koncový bod v2 a umožní synchronizaci skupin větších než 50 tis bez jakékoli další konfigurace. Tato verze bude následně publikována pro automatický upgrade na opravňující servery.
+</br>Plánujeme nové vydání AADConnect pro publikování ke stažení v únoru 2021. Tato verze ve výchozím nastavení použije koncový bod v2 a umožní synchronizaci skupin větších než 50 tis bez jakékoli další konfigurace. Tato verze bude následně publikována pro automatický upgrade na opravňující servery.
  
 ## <a name="next-steps"></a>Další kroky
 

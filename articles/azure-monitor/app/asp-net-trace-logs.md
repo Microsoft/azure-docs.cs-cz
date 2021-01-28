@@ -4,12 +4,12 @@ description: Hledání v protokolech vygenerovaných trasováním, NLog nebo Log
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/08/2019
-ms.openlocfilehash: 90777da4d0b67587afebaa7111e3503af2afcb9a
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 083ddbd06561550f89e414d6c679cdc6433fa338
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920344"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937560"
 ---
 # <a name="explore-netnet-core-and-python-trace-logs-in-application-insights"></a>Prozkoumejte protokoly trasování .NET/.NET Core a Python v Application Insights
 
@@ -85,7 +85,7 @@ Pokud dáváte přednost log4net nebo NLog, použijte:
 ```
 
 ## <a name="use-eventsource-events"></a>Použití událostí EventSource
-Můžete nakonfigurovat události [System. Diagnostics. Tracing. EventSource](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) pro odeslání do Application Insights jako trasování. Nejdřív nainstalujte `Microsoft.ApplicationInsights.EventSourceListener` balíček NuGet. Pak upravte `TelemetryModules` část souboru [ApplicationInsights.config](./configuration-with-applicationinsights-config.md) .
+Můžete nakonfigurovat události [System. Diagnostics. Tracing. EventSource](/dotnet/api/system.diagnostics.tracing.eventsource) pro odeslání do Application Insights jako trasování. Nejdřív nainstalujte `Microsoft.ApplicationInsights.EventSourceListener` balíček NuGet. Pak upravte `TelemetryModules` část souboru [ApplicationInsights.config](./configuration-with-applicationinsights-config.md) .
 
 ```xml
     <Add Type="Microsoft.ApplicationInsights.EventSourceListener.EventSourceTelemetryModule, Microsoft.ApplicationInsights.EventSourceListener">
@@ -198,12 +198,12 @@ V případě instrumentace bez kódu Java (doporučeno) protokoly se shromažďu
 Pokud používáte sadu Java SDK, použijte [adaptéry protokolu Java](./java-trace-logs.md).
 
 ### <a name="theres-no-application-insights-option-on-the-project-context-menu"></a>V místní nabídce projektu není žádná možnost Application Insights
-* Ujistěte se, že je ve vývojovém počítači nainstalován Developer Analytics Tools. V **Tools**  >  **rozšířeních a aktualizacích** nástrojů sady Visual Studio vyhledejte **Developer Analytics Tools**. Pokud není na kartě **nainstalované** , otevřete **online** kartu a nainstalujte ji.
+* Ujistěte se, že je ve vývojovém počítači nainstalován Developer Analytics Tools. V   >  **rozšířeních a aktualizacích** nástrojů sady Visual Studio vyhledejte **Developer Analytics Tools**. Pokud není na kartě **nainstalované** , otevřete **online** kartu a nainstalujte ji.
 * Může to být typ projektu, který Developer Analytics Tools nepodporuje. Použijte [ruční instalaci](#manual-installation).
 
 ### <a name="theres-no-log-adapter-option-in-the-configuration-tool"></a>V konfiguračním nástroji není žádná možnost adaptéru protokolu.
 * Nejdřív nainstalujte rozhraní protokolování.
-* Pokud používáte System. Diagnostics. Trace, ujistěte se, že je [v *web.config* nakonfigurovaný](/dotnet/api/system.diagnostics.eventlogtracelistener?view=dotnet-plat-ext-3.1).
+* Pokud používáte System. Diagnostics. Trace, ujistěte se, že je [v *web.config* nakonfigurovaný](/dotnet/api/system.diagnostics.eventlogtracelistener).
 * Ujistěte se, že máte nejnovější verzi Application Insights. V aplikaci Visual Studio, přejít na **nástroje**  >  **rozšíření a aktualizace** a otevřete kartu **aktualizace** . Pokud tam **Developer Analytics Tools** , vyberte ho a aktualizujte ho.
 
 ### <a name="i-get-the-instrumentation-key-cannot-be-empty-error-message"></a><a name="emptykey"></a>Zobrazí se chybová zpráva "klíč instrumentace nemůže být prázdný"

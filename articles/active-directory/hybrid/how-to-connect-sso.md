@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e50b9e5dc683eb30452dbb96d82c9f66de93763
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 88eae702782e2f1af9c20797676214db458c2adc
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408001"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937629"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Bezproblémové jednotné přihlašování s Azure Active Directory
 
@@ -35,8 +35,13 @@ Bezproblémové jednotné přihlašování se dá kombinovat buď se [synchroniz
 
 ![Bezproblémové jednoduché Sign-On](./media/how-to-connect-sso/sso1.png)
 
->[!IMPORTANT]
->Bezproblémové jednotné přihlašování vyžaduje, aby zařízení uživatele bylo jenom **připojené k doméně** , ale nepoužívá se pro zařízení připojená k [Azure AD](../devices/concept-azure-ad-join.md) nebo pro zařízení [připojená k hybridní službě Azure AD](../devices/concept-azure-ad-join-hybrid.md) . Jednotné přihlašování k Azure AD, připojené k hybridní službě Azure AD a zařízení registrovaná službou Azure AD funguje na základě [primárního obnovovacího tokenu](../devices/concept-primary-refresh-token.md).
+## <a name="sso-via-primary-refresh-token-vs-seamless-sso"></a>Jednotné přihlašování prostřednictvím tokenu primární aktualizace vs. bezproblémové jednotné přihlašování
+
+Pro Windows 10 se doporučuje použít jednotné přihlašování prostřednictvím primárního obnovovacího tokenu (PRT). U systémů Windows 7 a 8,1 se doporučuje používat bezproblémové jednotné přihlašování.
+Bezproblémové jednotné přihlašování vyžaduje, aby zařízení uživatele bylo připojené k doméně, ale nepoužívá se na [zařízeních připojených](../devices/concept-azure-ad-join.md) k Windows 10 Azure AD ani na [zařízeních připojených k hybridní službě Azure AD](../devices/concept-azure-ad-join-hybrid.md). Jednotné přihlašování k Azure AD, připojené k hybridní službě Azure AD a zařízení registrovaná službou Azure AD funguje na základě [primárního obnovovacího tokenu (PRT)](../devices/concept-primary-refresh-token.md) .
+
+Jednotné přihlašování prostřednictvím PRT funguje, když jsou zařízení zaregistrovaná ve službě Azure AD pro připojení k hybridní službě Azure AD, připojené k Azure AD nebo osobní registrovaná zařízení prostřednictvím Přidat pracovní nebo školní účet. Další informace o tom, jak jednotné přihlašování funguje s Windows 10 pomocí PRT, najdete v tématech [primární aktualizační token (PRT) a Azure AD](../devices/concept-primary-refresh-token.md) .
+
 
 ## <a name="key-benefits"></a>Klíčové výhody
 
@@ -63,11 +68,11 @@ Bezproblémové jednotné přihlašování se dá kombinovat buď se [synchroniz
 
 | OS\Browser |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|Ano\*|Ano|Ano|Ano\*\*\*|Není k dispozici
-|Windows 8.1|Ano\*|Odpoví\*\*\*|Ano|Ano\*\*\*|Není k dispozici
-|Windows 8|Ano\*|Není k dispozici|Ano|Ano\*\*\*|Není k dispozici
-|Windows 7|Ano\*|Není k dispozici|Ano|Ano\*\*\*|Není k dispozici
-|Windows Server 2012 R2 nebo novější|Ano\*\*|Není k dispozici|Ano|Ano\*\*\*|Není k dispozici
+|Windows 10|Ano\*|Yes|Yes|Ano\*\*\*|–
+|Windows 8.1|Yes\*|Odpoví\*\*\*|Yes|Ano\*\*\*|–
+|Windows 8|Yes\*|Není k dispozici|Ano|Ano\*\*\*|–
+|Windows 7|Ano\*|Není k dispozici|Ano|Ano\*\*\*|–
+|Windows Server 2012 R2 nebo novější|Ano\*\*|Není k dispozici|Ano|Ano\*\*\*|–
 |Mac OS X|N/A|N/A|Ano\*\*\*|Ano\*\*\*|Ano\*\*\*
 
 
@@ -78,9 +83,6 @@ Bezproblémové jednotné přihlašování se dá kombinovat buď se [synchroniz
 \*\*\*Vyžaduje [Další konfiguraci](how-to-connect-sso-quick-start.md#browser-considerations).
 
 \*\*\*\*Vyžaduje Microsoft Edge verze 77 nebo novější.
-
->[!NOTE]
->V případě Windows 10 doporučujeme použít službu [Azure AD JOIN](../devices/concept-azure-ad-join.md) k optimálnímu jednotnému přihlašování v Azure AD.
 
 ## <a name="next-steps"></a>Další kroky
 

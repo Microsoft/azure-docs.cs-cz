@@ -1,18 +1,15 @@
 ---
 title: Řízení síťového provozu ve službě Azure HDInsight
 description: Naučte se techniky řízení příchozího a odchozího provozu do clusterů Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 348b9b80c74f085ce31ecce93753a253782fe3ea
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 0cbda0b533a64e627bfeef9589ab95c4163ae73e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92543164"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943373"
 ---
 # <a name="control-network-traffic-in-azure-hdinsight"></a>Řízení síťového provozu ve službě Azure HDInsight
 
@@ -40,7 +37,7 @@ Pokud plánujete používat **skupiny zabezpečení sítě** k řízení síťov
 
 3. Vytvořte nebo upravte skupiny zabezpečení sítě pro podsíť, do které plánujete nainstalovat HDInsight.
 
-    * __Skupiny zabezpečení sítě__ : povolí __příchozí__ provoz na portu __443__ z IP adres. Tím se zajistí, že se služby HDInsight Management budou moci spojit s clusterem mimo virtuální síť. U clusterů s povoleným __Kafka REST__ povolte i __příchozí__ přenosy na portu __9400__ . Tím se zajistí, že proxy server Kafka REST je dosažitelný.
+    * __Skupiny zabezpečení sítě__: povolí __příchozí__ provoz na portu __443__ z IP adres. Tím se zajistí, že se služby HDInsight Management budou moci spojit s clusterem mimo virtuální síť. U clusterů s povoleným __Kafka REST__ povolte i __příchozí__ přenosy na portu __9400__ . Tím se zajistí, že proxy server Kafka REST je dosažitelný.
 
 Další informace o skupinách zabezpečení sítě najdete v tématu [Přehled skupin zabezpečení sítě](../virtual-network/network-security-groups-overview.md).
 

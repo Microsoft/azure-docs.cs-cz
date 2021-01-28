@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 7d34039a5d56feb42473b1a2b24def5244ec3e04
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 984b85ff831146060f1642b9eeec7079ff966db3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756141"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937823"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>Kurz: sestavení démona s více klienty, který používá platformu Microsoft identity
 
@@ -109,7 +109,7 @@ Pokud nechcete používat automatizaci, postupujte podle kroků v následující
 1. Výběrem možnosti **Registrovat** aplikaci vytvořte.
 1. Na stránce **Přehled** aplikace vyhledejte hodnotu **ID aplikace (klienta)** a zaznamenejte ji pro pozdější použití. Budete ho potřebovat ke konfiguraci konfiguračního souboru sady Visual Studio pro tento projekt.
 1. V části **Spravovat** vyberte **ověřování**.
-1. Nastavte **adresu URL pro odhlášení** `https://localhost:44316/Account/EndSession` .
+1. Nastavte **adresu URL pro odhlášení front-Channel** na `https://localhost:44316/Account/EndSession` .
 1. V části **implicitní udělení** **přístupu vyberte přístupové tokeny** a **tokeny ID**. Tato ukázka vyžaduje, aby byl [tok implicitního udělení](v2-oauth2-implicit-grant-flow.md) povolen pro přihlášení uživatele a volání rozhraní API.
 1. Vyberte **Uložit**.
 1. V části **Správa** vyberte **Certifikáty a tajné kódy**.
@@ -227,7 +227,7 @@ Visual Studio projekt zveřejní a automaticky otevře prohlížeč na adrese UR
 1. Vraťte se na <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 1. V levém podokně vyberte službu **Azure Active Directory** a pak vyberte **Registrace aplikací**.
 1. Vyberte aplikaci **dotnet-web-démon-v2** .
-1. Na stránce **ověřování** pro vaši aplikaci aktualizujte pole **Adresa URL pro odhlášení** pomocí adresy vaší služby. Například použijte `https://dotnet-web-daemon-v2-contoso.azurewebsites.net` .
+1. Na stránce **ověřování** pro vaši aplikaci aktualizujte pole **Adresa URL pro odhlášení front-Channel** adresou vaší služby. Například použijte `https://dotnet-web-daemon-v2-contoso.azurewebsites.net/Account/EndSession` .
 1. V nabídce **značky** aktualizujte adresu **URL domovské stránky** na adresu vaší služby. Například použijte `https://dotnet-web-daemon-v2-contoso.azurewebsites.net` .
 1. Konfiguraci uložte.
 1. V seznamu hodnot v   >  nabídce **identifikátory URI přesměrování** ověřování přidejte stejnou adresu URL. Pokud máte více adres URL pro přesměrování, ujistěte se, že je k dispozici nová položka, která pro každou adresu URL přesměrování používá identifikátor URI služby App Service.

@@ -5,25 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 12/04/2020
+ms.date: 01/27/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29a577b50a561cb5b829e453c523e0bd18a70e1a
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: dcfaef2f518028762958477a5b0d326acc237d1f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741673"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938428"
 ---
 # <a name="enable-combined-security-information-registration-in-azure-active-directory"></a>Povolit registraci kombinovaných informací o zabezpečení v Azure Active Directory
 
 Před kombinovanou registrací uživatelé zaregistrovali metody ověřování pro Azure AD Multi-Factor Authentication a Samoobslužné resetování hesla (SSPR) samostatně. Lidem se zaznamenalo, že se podobné metody používaly pro Azure AD Multi-Factor Authentication a SSPR, ale musely se zaregistrovat pro obě funkce. Teď se při kombinované registraci můžou uživatelé zaregistrovat jednou a získat výhody pro Azure AD Multi-Factor Authentication a SSPR.
 
 > [!NOTE]
-> Od 15. srpna 2020 budou všichni noví klienti Azure AD automaticky povoleni pro kombinovanou registraci. Od prosince 14 2020 budou všechny klienty Azure AD s jedním uživatelem automaticky povoleni pro kombinovanou registraci.
+> Od 15. srpna 2020 budou všichni noví klienti Azure AD automaticky povoleni pro kombinovanou registraci. 
 
 Aby bylo zajištěno, že před povolením nového prostředí rozumíte funkcím a efektům, přečtěte si téma věnované [principům registrace informací o zabezpečení](concept-registration-mfa-sspr-combined.md).
 
@@ -77,7 +77,7 @@ Provedením následujících kroků vytvoříte zásadu, která bude platit pro 
 
     ![Vytvoření zásady podmíněného přístupu pro řízení registrace bezpečnostních údajů](media/howto-registration-mfa-sspr-combined/require-registration-from-trusted-location.png)
 
-1. V **Conditions** části  >  **umístění** podmínek nakonfigurujte následující možnosti:
+1. V části  >  **umístění** podmínek nakonfigurujte následující možnosti:
    1. Nakonfigurujte **Ano**.
    1. Uveďte **libovolné umístění**.
    1. Vylučte **všechna důvěryhodná umístění**.

@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 01/22/2021
 ms.author: mbullwin
-ms.openlocfilehash: b0869335c386712e6b759bb0ced459ebd1bf383c
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 43ccde054a9630b251aa6c206028d29c7c699316
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98702722"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936206"
 ---
 # <a name="best-practices-for-using-the-anomaly-detector-api"></a>Osvědčené postupy pro používání rozhraní API detektoru anomálií
 
@@ -52,7 +52,7 @@ Níže je stejná datová sada používající detekci anomálií v dávce. Mode
 
 ## <a name="data-preparation"></a>Příprava dat
 
-Rozhraní API detektoru anomálií akceptuje data časové řady formátovaná do objektu žádosti JSON. Časová řada může být jakákoli číselná data zaznamenaná v průběhu času v sekvenčním pořadí. Můžete odesílat okna dat časových řad do koncového bodu rozhraní API detektoru anomálií, aby se zlepšil výkon rozhraní API. Minimální počet datových bodů, které můžete odeslat, je 12 a maximum je 8640 bodů. [Členitost](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.granularity?view=azure-dotnet-preview) je definována jako sazba, na kterou jsou data Navzorkovaná. 
+Rozhraní API detektoru anomálií akceptuje data časové řady formátovaná do objektu žádosti JSON. Časová řada může být jakákoli číselná data zaznamenaná v průběhu času v sekvenčním pořadí. Můžete odesílat okna dat časových řad do koncového bodu rozhraní API detektoru anomálií, aby se zlepšil výkon rozhraní API. Minimální počet datových bodů, které můžete odeslat, je 12 a maximum je 8640 bodů. [Členitost](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.granularity) je definována jako sazba, na kterou jsou data Navzorkovaná. 
 
 Datové body odesílané do rozhraní API detektoru anomálií musí mít platný koordinovaný světový čas (UTC) a číselnou hodnotu. 
 

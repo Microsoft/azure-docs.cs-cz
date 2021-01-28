@@ -1,19 +1,16 @@
 ---
 title: Podpora open source softwaru ve službě Azure HDInsight
 description: Microsoft Azure poskytuje obecnou úroveň podpory pro open source technologie.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: fe9ccc50d6196997863fbf228fbb76913a0d0330
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fec4cff974031982c782c9265a7d3186d6bb0233
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013866"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942558"
 ---
 # <a name="open-source-software-support-in-azure-hdinsight"></a>Podpora open source softwaru ve službě Azure HDInsight
 
@@ -48,7 +45,7 @@ Jako uživatel clusteru můžete v rámci své úlohy nainstalovat nebo použít
 
 Služba HDInsight nabízí několik způsobů použití vlastních komponent. Stejná úroveň podpory platí bez ohledu na to, jak se součást používá nebo je v clusteru nainstalovaná. Následující tabulka popisuje nejběžnější způsoby použití vlastních komponent v clusterech HDInsight:
 
-|Využití |Description |
+|Využití |Popis |
 |---|---|
 |Odeslání úlohy|Cluster Hadoop nebo jiné typy úloh, které spouštějí nebo používají vlastní komponenty, lze odeslat do clusteru.|
 |Přizpůsobení clusteru|Během vytváření clusteru můžete zadat další nastavení a vlastní součásti, které jsou nainstalované na uzlech clusteru.|

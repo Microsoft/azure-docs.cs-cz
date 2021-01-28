@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: ryanwi
 ROBOTS: NOINDEX
-ms.openlocfilehash: 222c961f9e5587cd5526778e6ef1c800f5085a69
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 6da6187e59bf028101eac2ea6f09fb1530821bfd
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064296"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937855"
 ---
 # <a name="azure-portal-registration-fields-for-custom-developed-apps"></a>Registrační pole na webu Azure Portal pro aplikace vyvinuté na míru
 
@@ -45,29 +45,29 @@ Jakmile vyplníte výše uvedená pole, aplikace je zaregistrována v Azure Port
 
 ### <a name="overview"></a>Přehled
 
-| Pole           | Description        |
+| Pole           | Popis        |
 |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ID aplikace  | Když zaregistrujete aplikaci, Azure AD přiřadí vaší aplikaci ID aplikace. ID aplikace se dá použít k jednoznačné identifikaci vaší aplikace v požadavcích na ověření ve službě Azure AD a také k přístupu k prostředkům, jako je Graph API.                                                          |
 | Identifikátor URI ID aplikace      | Mělo by se jednat o jedinečný identifikátor URI, většinou ve tvaru název **&lt; \_ aplikace název klienta https:// &gt; / &lt; \_ &gt; .** Tento postup se používá během autorizačního toku autorizace jako jedinečný identifikátor k určení prostředku, pro který má být token vydán. Také se z vydaného přístupového tokenu stala deklarací ' AUD '. |
 
 ### <a name="branding"></a>Značka
 
-| Pole           | Description        |
+| Pole           | Popis        |
 |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Nahrát nové logo | Tuto možnost můžete použít k nahrání loga aplikace. Logo musí být ve formátu. bmp,. jpg nebo. png a velikost souboru by měla být menší než 100 KB. Rozměry obrázku by měly být 215x215 pixely s rozměry centrálního obrazu 94x94 pixelů.|
 | Adresa URL domovské stránky   | Toto je přihlašovací adresa URL zadaná při registraci aplikace.|
 
-### <a name="authentication"></a>Ověřování
+### <a name="authentication"></a>Authentication
 
-| Pole           | Description        |
+| Pole           | Popis        |
 |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Odhlašovací adresa URL      | Toto je adresa URL pro odhlášení jednotného odhlášení. Pokud uživatel vymaže svou relaci s Azure AD pomocí jakékoli jiné registrované aplikace, odešle Azure AD na tuto adresu URL žádost o odhlášení.|
+| Adresa URL pro odhlášení front-Channel      | Toto je adresa URL pro odhlášení jednotného odhlášení. Pokud uživatel vymaže svou relaci s Azure AD pomocí jakékoli jiné registrované aplikace, odešle Azure AD na tuto adresu URL žádost o odhlášení.|
 | Podporované typy účtu  | Tento přepínač určuje, zda lze aplikaci použít ve více klientech. Obvykle to znamená, že externí organizace můžou aplikaci používat tak, že ji zaregistruje ve svém tenantovi a udělí přístup k datům organizace.|
 | Adresy URL pro přesměrování      | Adresa URL přesměrování nebo odpověď jsou koncové body, kde Azure AD vrací jakékoli tokeny, které vaše aplikace požaduje. Pro nativní aplikace se uživateli pošle po úspěšné autorizaci. Azure AD kontroluje, že identifikátor URI pro přesměrování, který vaše aplikace dodá v žádosti OAuth 2,0, odpovídá jedné z registrovaných hodnot na portálu.|
 
 ### <a name="certificates-and-secrets"></a>Certifikáty a tajné klíče
 
-| Pole           | Description        |
+| Pole           | Popis        |
 |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Tajné kódy klienta            | Můžete vytvářet klientské tajné klíče nebo klíče pro programové přístup k webovým rozhraním API zabezpečeným službou Azure AD bez zásahu uživatele. Na stránce **nový tajný klíč klienta** zadejte popis klíče a datum vypršení platnosti a klikněte na Uložit, aby se klíč vygeneroval. Ujistěte se, že je uložíte někam v bezpečí, protože k němu nebudete mít přístup později.             |
 

@@ -296,8 +296,8 @@
         - name: Azure Monitor pro kontejnery
           href: ../azure-monitor/insights/container-insights-overview.md
           maintainContext: true
-        - name: Zobrazení protokolů hlavních komponent
-          href: view-master-logs.md
+        - name: Zobrazit protokoly komponenty roviny ovládacího prvku
+          href: view-control-plane-logs.md
         - name: Zobrazení protokolů Kubelet
           href: kubelet-logs.md
         - name: Zobrazení dat kontejnerů v reálném čase

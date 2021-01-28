@@ -1,19 +1,16 @@
 ---
 title: Příklady spuštění Apache Hadoop MapReduce na HDInsight – Azure
 description: Začněte používat Ukázky MapReduce v souborech jar obsažených v HDInsight. Pomocí SSH se připojte ke clusteru a potom pomocí příkazu Hadoop spusťte ukázkové úlohy.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/12/2019
-ms.openlocfilehash: cc0918f3d9739a214e682d7faa460b6cc519cb0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e75a39b1f9e8503097914b0c9e735915f9ae667
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86207835"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943225"
 ---
 # <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>Spuštění příkladů MapReduce obsažených v HDInsight
 
@@ -25,7 +22,7 @@ Naučte se spouštět příklady MapReduceů, které jsou součástí Apache Had
 
 * Cluster Apache Hadoop v HDInsight. Viz Začínáme [se službou HDInsight v systému Linux](./apache-hadoop-linux-tutorial-get-started.md).
 
-* Klient SSH. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Klient SSH. Další informace najdete v tématu [Připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="the-mapreduce-examples"></a>Příklady MapReduce
 

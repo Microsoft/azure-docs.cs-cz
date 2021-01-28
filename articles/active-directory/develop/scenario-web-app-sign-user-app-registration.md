@@ -12,20 +12,20 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b6240f88d309cbf4f26375c5f961d716b472755d
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 7f7be27e67bfa266c368927227f1b8d1083a5124
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756269"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937882"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>Webová aplikace, která přihlašuje uživatele: registrace aplikace
 
-Tento článek vysvětluje konkrétní registraci aplikace pro webovou aplikaci, která se podepisuje uživatelům.
+Tento článek vysvětluje kroky registrace aplikací pro webovou aplikaci, která se přihlašuje uživatelům.
 
 K registraci aplikace můžete použít:
 
-- [Webové aplikace jsou rychlé starty](#register-an-app-by-using-the-quickstarts). Kromě skvělého prvního prostředí při vytváření aplikace budou rychlé starty v Azure Portal obsahovat tlačítko s názvem **udělat tuto změnu pro mě**. Pomocí tohoto tlačítka můžete nastavit vlastnosti, které potřebujete, i pro existující aplikaci. Hodnoty těchto vlastností budete muset přizpůsobit na vlastní případ. Konkrétně adresa URL webového rozhraní API vaší aplikace se pravděpodobně liší od navrhované výchozí, což ovlivní také identifikátor URI pro odhlášení.
+- [Webové aplikace jsou rychlé starty](#register-an-app-by-using-the-quickstarts). Kromě skvělého prvního prostředí při vytváření aplikace budou rychlé starty v Azure Portal obsahovat tlačítko s názvem **udělat tuto změnu pro mě**. Pomocí tohoto tlačítka můžete nastavit vlastnosti, které potřebujete, i pro existující aplikaci. Hodnoty těchto vlastností můžete přizpůsobit na vlastní případ. Konkrétně adresa URL webového rozhraní API vaší aplikace se pravděpodobně liší od navrhované výchozí, což ovlivní také identifikátor URI pro odhlášení.
 - Azure Portal k [registraci aplikace ručně](#register-an-app-by-using-the-azure-portal).
 - PowerShell a nástroje příkazového řádku.
 
@@ -56,8 +56,8 @@ Pomocí těchto odkazů můžete spustit vytvoření webové aplikace:
    1. Vyberte **Zaregistrovat**.
 1. V části **Spravovat** vyberte **ověřování** a přidejte následující informace:
    1. V části **Web** přidejte `https://localhost:44321/signin-oidc` jako **identifikátor URI přesměrování**.
-   1. Přidejte `https://localhost:44321/signout-oidc` jako **adresu URL pro odhlášení**.
-   1. V části **Implicitní udělení** vyberte **Tokeny ID**.
+   1. V **části Adresa URL pro odhlášení front-Channel** zadejte `https://localhost:44321/signout-oidc` .
+   1. V části **implicitní udělení a hybridní toky** vyberte **tokeny ID**.
    1. Vyberte **Uložit**.
    
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
@@ -65,10 +65,10 @@ Pomocí těchto odkazů můžete spustit vytvoření webové aplikace:
 1. Jakmile se zobrazí **Stránka Registrovat aplikaci** , zadejte informace o registraci vaší aplikace:
    1. Zadejte **název** vaší aplikace, například `MailApp-openidconnect-v2` . Uživatel vaší aplikace může tento název zobrazit a později ho můžete změnit.
    1. Vyberte podporované typy účtů pro vaši aplikaci. (Viz [podporované typy účtů](./v2-supported-account-types.md).)
-   1. V části **identifikátor URI přesměrování (volitelné)** vyberte v poli se seznamem možnost **Web** a zadejte následující identifikátor URI pro přesměrování: **https://localhost:44326/** .
+   1. V části **identifikátor URI přesměrování (volitelné)** vyberte možnost **Web** v poli se seznamem a zadejte **identifikátor URI přesměrování** `https://localhost:44326/` .
    1. Výběrem možnosti **Registrovat** aplikaci vytvořte.
 1. V části **Spravovat** vyberte **ověřování**.
-1. V části **implicitní udělení** vyberte možnost **tokeny ID**. Tato ukázka vyžaduje, aby byl [tok implicitního udělení](v2-oauth2-implicit-grant-flow.md) povolen pro přihlášení uživatele.
+1. V části **implicitní udělení a hybridní toky** vyberte **tokeny ID**. Tato ukázka vyžaduje, aby byl [tok implicitního udělení](v2-oauth2-implicit-grant-flow.md) povolen pro přihlášení uživatele.
 1. Vyberte **Uložit**.
 
 # <a name="java"></a>[Java](#tab/java)
@@ -81,10 +81,10 @@ Pomocí těchto odkazů můžete spustit vytvoření webové aplikace:
 1. Vyberte **Web**.
 1. Pro **identifikátor URI přesměrování** zadejte stejný hostitel a číslo portu následovaný `/msal4jsample/secure/aad` přihlašovací stránkou. 
 1. Vyberte **Konfigurovat**.
-1. V části **Web** použijte hostitele a číslo portu následované **/msal4jsample/Graph/me** jako **identifikátor URI přesměrování** pro stránku informace o uživateli.
+1. V části **Web** použijte hostitele a číslo portu následované `/msal4jsample/graph/me` jako **identifikátor URI přesměrování** pro stránku informace o uživateli.
 Ve výchozím nastavení ukázka používá:
-   - **http://localhost:8080/msal4jsample/secure/aad**
-   - **http://localhost:8080/msal4jsample/graph/me**
+   - `http://localhost:8080/msal4jsample/secure/aad`
+   - `http://localhost:8080/msal4jsample/graph/me`
 
 1. Vyberte **Uložit**.
 1. V části **Správa** vyberte **Certifikáty a tajné kódy**.
@@ -100,7 +100,7 @@ Ve výchozím nastavení ukázka používá:
 1. Jakmile se zobrazí **Stránka Registrovat aplikaci** , zadejte informace o registraci vaší aplikace:
    1. Zadejte **název** vaší aplikace, například `python-webapp` . Uživatel vaší aplikace může tento název zobrazit a později ho můžete změnit.
    1. Změňte **podporované typy účtů** na **účty v jakémkoli adresáři organizace a na osobních účtech Microsoft (např. Skype, Xbox, Outlook.com)**.
-   1. V části **identifikátor URI přesměrování (volitelné)** vyberte v poli se seznamem možnost **Web** a zadejte následující identifikátor URI pro přesměrování: **http://localhost:5000/getAToken** .
+   1. V části **identifikátor URI přesměrování (volitelné)** vyberte v poli se seznamem možnost **Web** a zadejte následující identifikátor URI pro přesměrování: `http://localhost:5000/getAToken` .
    1. Výběrem možnosti **Registrovat** aplikaci vytvořte.
 1. Na stránce **Přehled** aplikace vyhledejte hodnotu **ID aplikace (klienta)** a zaznamenejte ji pro pozdější použití. Budete ho potřebovat ke konfiguraci konfiguračního souboru sady Visual Studio pro tento projekt.
 1. V části **Správa** vyberte **Certifikáty a tajné kódy**.

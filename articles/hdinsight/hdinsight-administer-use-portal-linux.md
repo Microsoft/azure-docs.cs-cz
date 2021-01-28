@@ -1,19 +1,16 @@
 ---
 title: Správa clusterů Apache Hadoop ve službě HDInsight pomocí Azure Portal
 description: Naučte se vytvářet a spravovat clustery Azure HDInsight pomocí Azure Portal.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/24/2020
-ms.openlocfilehash: 7c644583e994e51f11bdf7991755a6ea94b01e76
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5d308bfbe605e5ec3bed3bf5d6506ccafc53836e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012799"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942830"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Správa clusterů Apache Hadoop ve službě HDInsight pomocí Azure Portal
 
@@ -61,7 +58,7 @@ Vyberte název vašeho clusteru ze stránky [**clustery HDInsight**](#showCluste
     |Značky|Umožňuje nastavit páry klíč/hodnota pro definování vlastní taxonomie vašich cloudových služeb. Můžete například vytvořit klíč s názvem **Project** a potom použít společnou hodnotu pro všechny služby přidružené ke konkrétnímu projektu.|
     |Diagnostikovat a řešit problémy|Zobrazit informace o řešení potíží.|
     |Rychlé zprovoznění|Zobrazuje informace, které vám pomůžou začít používat HDInsight.|
-    |nástroje|Informace o nápovědě k nástrojům souvisejícím s HDInsight|
+    |Nástroje|Informace o nápovědě k nástrojům souvisejícím s HDInsight|
 
   - **Nabídka Nastavení**  
 

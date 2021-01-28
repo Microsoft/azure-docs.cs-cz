@@ -3,16 +3,16 @@ title: Úloha DevOps služby Azure image Builder
 description: Úloha Azure DevOps k vložení artefaktů sestavení do image virtuálního počítače, abyste mohli nainstalovat a nakonfigurovat svoji aplikaci a operační systém.
 author: danielsollondon
 ms.author: danis
-ms.date: 08/10/2020
+ms.date: 01/27/2021
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 634fc183cc27db1ae949959c3ae7fae8eda5b644
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: df97ecd1668dcc0e21408b7d39b0973e8f0d8fbf
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684538"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98934279"
 ---
 # <a name="azure-image-builder-service-devops-task"></a>Úloha DevOps služby Azure image Builder
 
@@ -154,7 +154,13 @@ Následující příklad vysvětluje, jak to funguje:
     & 'c:\buildArtifacts\webapp\webconfig.ps1'
     ```
 
-* Linux – v systémech Linux jsou artefakty sestavení vloženy do `/tmp` adresáře. V mnoha systémech Linux OSs se ale při restartování odstraní obsah adresáře adresáře/TMP. Pokud chcete, aby artefakty v imagi existovaly, musíte vytvořit další adresář a zkopírovat je přes.  Například:
+   Můžete odkazovat na více skriptů nebo přidávat další příkazy, například:
+
+       ```PowerShell
+       & 'c:\buildArtifacts\webapp\webconfig.ps1'
+       & 'c:\buildArtifacts\webapp\installAgent.ps1'
+       ```
+* Linux – v systémech Linux jsou artefakty sestavení vloženy do `/tmp` adresáře. V mnoha systémech Linux OSs se ale při restartování odstraní obsah adresáře adresáře/TMP. Pokud chcete, aby artefakty v imagi existovaly, musíte vytvořit další adresář a zkopírovat je přes.  Příklad:
 
     ```bash
     sudo mkdir /lib/buildArtifacts
@@ -176,7 +182,7 @@ Následující příklad vysvětluje, jak to funguje:
 > Nástroj image Builder automaticky neodebere artefakty sestavení, důrazně doporučujeme, abyste vždy měli kód pro odebrání artefaktů sestavení.
 > 
 
-* Windows – nástroj image Builder nasadí soubory do `c:\buildArtifacts` adresáře. Adresář je trvalý, je nutné odebrat adresář. Můžete ho odebrat ve skriptu, který spustíte. Například:
+* Windows – nástroj image Builder nasadí soubory do `c:\buildArtifacts` adresáře. Adresář je trvalý, je nutné odebrat adresář. Můžete ho odebrat ve skriptu, který spustíte. Příklad:
 
     ```PowerShell
     # Clean up buildArtifacts directory
@@ -186,7 +192,7 @@ Následující příklad vysvětluje, jak to funguje:
     Remove-Item -Path "C:\buildArtifacts" -Force 
     ```
     
-* Linux – artefakty sestavení jsou vloženy do `/tmp` adresáře. V mnoha systémech Linux OSs se ale při restartování `/tmp` odstraní obsah adresáře. Doporučujeme, abyste měli kód pro odebrání obsahu a nespoléhá se na operační systém, aby se obsah odebral. Například:
+* Linux – artefakty sestavení jsou vloženy do `/tmp` adresáře. V mnoha systémech Linux OSs se ale při restartování `/tmp` odstraní obsah adresáře. Doporučujeme, abyste měli kód pro odebrání obsahu a nespoléhá se na operační systém, aby se obsah odebral. Příklad:
 
     ```bash
     sudo rm -R "/tmp/AppsAndImageBuilderLinux"
@@ -306,13 +312,13 @@ V současné době není aktuálně k dispozici.
 
 ### <a name="can-i-specify-the-image-template-name"></a>Můžu zadat název šablony obrázku?
 
-No. Použije se jedinečný název šablony, který se pak odstraní.
+Ne. Použije se jedinečný název šablony, který se pak odstraní.
 
 ### <a name="the-image-builder-failed-how-can-i-troubleshoot"></a>Tvůrce imagí se nezdařil. Jak můžu řešit potíže?
 
 Pokud dojde k selhání sestavení, úloha DevOps neodstraní pracovní skupinu prostředků. Můžete získat přístup k pracovní skupině prostředků, která obsahuje protokol vlastního nastavení sestavení.
 
-V protokolu DevOps se zobrazí chyba pro úlohu tvůrce imagí virtuálních počítačů a podívejte se na umístění přizpůsobení. log. Například:
+V protokolu DevOps se zobrazí chyba pro úlohu tvůrce imagí virtuálních počítačů a podívejte se na umístění přizpůsobení. log. Příklad:
 
 :::image type="content" source="./media/image-builder-devops-task/devops-task-error.png" alt-text="Ukázková chyba úlohy DevOps, která zobrazuje chybu.":::
 

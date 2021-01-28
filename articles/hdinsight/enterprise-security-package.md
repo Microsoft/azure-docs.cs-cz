@@ -1,18 +1,15 @@
 ---
 title: Balíček zabezpečení podniku pro Azure HDInsight
 description: Přečtěte si informace o komponentách a verzích Balíček zabezpečení podniku ve službě Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: d77d9877fbc49fbb147965b30e299b75b60ccce3
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 442c21c92ef2124ebef1889f99a8d2b806c8ce10
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546649"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943303"
 ---
 # <a name="enterprise-security-package-for-azure-hdinsight"></a>Balíček zabezpečení podniku pro Azure HDInsight
 
@@ -22,7 +19,7 @@ Enterprise Security je volitelný balíček, který můžete přidat do clusteru
 
     V minulosti jste vytvořili clustery HDInsight s místními uživateli a místními uživateli SSH. Místní uživatel správce má přístup ke všem souborům, složkám, tabulkám a sloupcům.  Pomocí Balíček zabezpečení podniku můžete povolit řízení přístupu na základě role Azure integrací služby HDInsight s vašimi Azure Active Directory Domain Services.
 
-    Další informace naleznete v tématech:
+    Další informace naleznete v tématu:
 
     * [Úvod do zabezpečení Apache Hadoop s využitím clusterů HDInsight připojených k doméně](./domain-joined/hdinsight-security-overview.md)
 

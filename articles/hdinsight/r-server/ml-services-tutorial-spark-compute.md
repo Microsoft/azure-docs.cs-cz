@@ -1,19 +1,16 @@
 ---
 title: 'Kurz: použití R v výpočetním kontextu Sparku ve službě Azure HDInsight'
 description: Kurz – Začínáme s R a Sparkem v clusteru Azure HDInsight Machine Learning Services.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/21/2019
-ms.openlocfilehash: 6e727bc7ad8b7f0b8a04c48f3abd1f1ac0806c66
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: bd6015529fb521e3b157e46ee808aea43e993dee
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545901"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935663"
 ---
 # <a name="tutorial-use-r-in-a-spark-compute-context-in-azure-hdinsight"></a>Kurz: použití R v výpočetním kontextu Sparku ve službě Azure HDInsight
 
@@ -33,7 +30,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Cluster služby Azure HDInsight Machine Learning Services. V [části vytvořit Apache Hadoop clustery pomocí Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) a pro **typ clusteru** vyberte **služby ml** .
+* Cluster služby Azure HDInsight Machine Learning Services. V [části vytvořit Apache Hadoop clustery pomocí Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) a pro **typ clusteru** vyberte **služby ml**.
 
 ## <a name="connect-to-rstudio-server"></a>Připojení k RStudio Serveru
 
@@ -43,7 +40,7 @@ RStudio server běží na hraničním uzlu clusteru. V následujícím webu (kde
 https://CLUSTERNAME.azurehdinsight.net/rstudio/
 ```
 
-Při prvním přihlášení se dvakrát ověří. Na výzvu k prvnímu ověření zadejte uživatelské jméno a heslo správce clusteru (výchozí nastavení je *admin* ). Na druhé výzvě pro ověření zadejte uživatelské jméno a heslo SSH (výchozí hodnota je *sshuser* ). Další přihlášení vyžadují jenom přihlašovací údaje SSH.
+Při prvním přihlášení se dvakrát ověří. Na výzvu k prvnímu ověření zadejte uživatelské jméno a heslo správce clusteru (výchozí nastavení je *admin*). Na druhé výzvě pro ověření zadejte uživatelské jméno a heslo SSH (výchozí hodnota je *sshuser*). Další přihlášení vyžadují jenom přihlašovací údaje SSH.
 
 ## <a name="download-the-sample-data-to-local-storage"></a>Stažení ukázkových dat do místního úložiště
 
@@ -57,7 +54,7 @@ Při prvním přihlášení se dvakrát ověří. Na výzvu k prvnímu ověřen�
     remoteDir <- "https://packages.revolutionanalytics.com/datasets/AirOnTimeCSV2012" # location of data
     ```
 
-1. V pravém podokně vyberte kartu **prostředí** . Proměnné se zobrazí v části **hodnoty** .
+1. V pravém podokně vyberte kartu **prostředí** . Proměnné se zobrazí v části **hodnoty**.
 
     ![Webová konzola HDInsight R Studio](./media/ml-services-tutorial-spark-compute/hdinsight-rstudio-image.png)
 

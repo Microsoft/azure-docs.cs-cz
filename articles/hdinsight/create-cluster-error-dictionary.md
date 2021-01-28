@@ -3,17 +3,16 @@ title: Azure HDInsight – vytvoření clusteru – chybový slovník
 description: Naučte se řešit chyby, ke kterým dochází při vytváření clusterů Azure HDInsight.
 author: karkrish
 ms.author: v-todmc
-ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 08/24/2020
-ms.openlocfilehash: 97cad12ad1854df37b54ff663385fe79ca15b7c2
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 6b8c0069d619d3ebd87e3c54b4f653812199f590
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92543096"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943328"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight: Chyby při vytváření clusteru
 
@@ -24,7 +23,7 @@ Tento článek popisuje řešení chyb, ke kterým může dojít při vytvářen
 
 ## <a name="error-codedeploymentdocument-csmdocument_2_0-failed-the-validation"></a>Kód chyby: DeploymentDocument ' CsmDocument_2_0 ' se nepodařilo ověřit
 
-**Chyba** : "umístění akce skriptu nelze přistupovat k identifikátoru URI: \<SCRIPT ACTION URL\> "
+**Chyba**: "umístění akce skriptu nelze přistupovat k identifikátoru URI: \<SCRIPT ACTION URL\> "
 
 ### <a name="error-message-1"></a>Chybová zpráva 1
 
@@ -161,7 +160,7 @@ Nezadali jste oprávnění potřebná ke správě identity. Spravovaná identita
 
 1. Otevřete web Azure Portal.
 1. Přejít na účet úložiště.
-1. Podívejte se na **Access Control (IAM)** .
+1. Podívejte se na **Access Control (IAM)**.
 1. Ujistěte se, že má uživatel přiřazenou roli Přispěvatel dat objektu BLOB úložiště nebo přiřazenou roli vlastníka dat objektu BLOB úložiště.
 
 Další informace najdete v tématu [Nastavení oprávnění pro spravovanou identitu na účtu Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md).

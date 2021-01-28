@@ -4,12 +4,12 @@ ms.author: areddish
 ms.service: cognitive-services
 ms.date: 10/26/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 2867fd3a777242218495f8759611178130ae0c17
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 70890488ecfddc8cb9877c128c79eedd684ea193
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98256217"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947289"
 ---
 Tato příručka poskytuje pokyny a ukázkový kód, který vám pomůže začít používat Custom Vision klientské knihovny pro Node.js k sestavení modelu klasifikace imagí. Vytvoříte projekt, přidáte značky, provedete projekt a použijete adresu URL koncového bodu předpovědi projektu pro programové testování. Tento příklad použijte jako šablonu pro vytvoření vlastní aplikace pro rozpoznávání imagí.
 
@@ -25,9 +25,9 @@ Pomocí klientské knihovny Custom Vision pro .NET:
 * Publikovat aktuální iteraci
 * Testování koncového bodu předpovědi
 
-Referenční dokumentace [(školení)](/javascript/api/@azure/cognitiveservices-customvision-training/?view=azure-node-latest) [(předpověď)](/javascript/api/@azure/cognitiveservices-customvision-prediction/?view=azure-node-latest) | Zdrojový kód knihovny [(školení)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-customvision-training) [(předpověď)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-customvision-prediction) | Ukázky balíčku (npm) ( [školení](https://www.npmjs.com/package/@azure/cognitiveservices-customvision-training) ) [(předpovědi)](https://www.npmjs.com/package/@azure/cognitiveservices-customvision-prediction)  |  [](/samples/browse/?products=azure&terms=custom%20vision&languages=javascript)
+Referenční dokumentace [(školení)](/javascript/api/@azure/cognitiveservices-customvision-training/) [(předpověď)](/javascript/api/@azure/cognitiveservices-customvision-prediction/) | Zdrojový kód knihovny [(školení)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-customvision-training) [(předpověď)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-customvision-prediction) | Ukázky balíčku (npm) ( [školení](https://www.npmjs.com/package/@azure/cognitiveservices-customvision-training) ) [(předpovědi)](https://www.npmjs.com/package/@azure/cognitiveservices-customvision-prediction)  |  [](/samples/browse/?products=azure&terms=custom%20vision&languages=javascript)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * Aktuální verze [Node.js](https://nodejs.org/)
@@ -88,9 +88,9 @@ Pro asynchronní volání přidejte také pole pro název projektu a parametr Ti
 
 |Název|Popis|
 |---|---|
-|[TrainingAPIClient](/javascript/api/@azure/cognitiveservices-customvision-training/trainingapiclient?view=azure-node-latest) | Tato třída zpracovává vytváření, školení a publikování vašich modelů. |
-|[PredictionAPIClient](/javascript/api/@azure/cognitiveservices-customvision-prediction/predictionapiclient?view=azure-node-latest)| Tato třída zpracovává dotazování vašich modelů pro klasifikaci imagí předpovědi.|
-|[Předpověď](/javascript/api/@azure/cognitiveservices-customvision-prediction/prediction?view=azure-node-latest)| Toto rozhraní definuje jednu předpověď na jednom obrázku. Obsahuje vlastnosti pro ID a název objektu a hodnocení spolehlivosti.|
+|[TrainingAPIClient](/javascript/api/@azure/cognitiveservices-customvision-training/trainingapiclient) | Tato třída zpracovává vytváření, školení a publikování vašich modelů. |
+|[PredictionAPIClient](/javascript/api/@azure/cognitiveservices-customvision-prediction/predictionapiclient)| Tato třída zpracovává dotazování vašich modelů pro klasifikaci imagí předpovědi.|
+|[Předpovědi](/javascript/api/@azure/cognitiveservices-customvision-prediction/prediction)| Toto rozhraní definuje jednu předpověď na jednom obrázku. Obsahuje vlastnosti pro ID a název objektu a hodnocení spolehlivosti.|
 
 ## <a name="code-examples"></a>Příklady kódu
 
@@ -106,7 +106,7 @@ Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí Cust
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
-Vytvořte instanci objektů klienta s vaším koncovým bodem a klíčem. Vytvořte objekt **ApiKeyCredentials** s klíčem a použijte ho u svého koncového bodu k vytvoření objektu [TrainingAPIClient](/javascript/api/@azure/cognitiveservices-customvision-training/trainingapiclient?view=azure-node-latest) a [PredictionAPIClient](/javascript/api/@azure/cognitiveservices-customvision-prediction/predictionapiclient?view=azure-node-latest) .
+Vytvořte instanci objektů klienta s vaším koncovým bodem a klíčem. Vytvořte objekt **ApiKeyCredentials** s klíčem a použijte ho u svého koncového bodu k vytvoření objektu [TrainingAPIClient](/javascript/api/@azure/cognitiveservices-customvision-training/trainingapiclient) a [PredictionAPIClient](/javascript/api/@azure/cognitiveservices-customvision-prediction/predictionapiclient) .
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ImageClassification/CustomVisionQuickstart.js?name=snippet_auth)]
 
@@ -201,5 +201,5 @@ Nyní jste viděli, jak se každý krok procesu detekce objektů dá provést v 
 
 * [Co je Custom Vision?](../../overview.md)
 * Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/CustomVision/ImageClassification/CustomVisionQuickstart.js) .
-* [Referenční dokumentace k sadě SDK (školení)](/javascript/api/@azure/cognitiveservices-customvision-training/?view=azure-node-latest)
-* [Referenční dokumentace k sadě SDK (předpovědi)](/javascript/api/@azure/cognitiveservices-customvision-prediction/?view=azure-node-latest)
+* [Referenční dokumentace k sadě SDK (školení)](/javascript/api/@azure/cognitiveservices-customvision-training/)
+* [Referenční dokumentace k sadě SDK (předpovědi)](/javascript/api/@azure/cognitiveservices-customvision-prediction/)

@@ -3,17 +3,16 @@ title: Vytvoření Azure HDInsight – Azure Data Lake Storage Gen2 – portál
 description: Naučte se používat Azure Data Lake Storage Gen2 s clustery Azure HDInsight pomocí portálu.
 author: guyhay
 ms.author: guyhay
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 09/17/2020
-ms.openlocfilehash: 104424c1e3bd1df69106db7da45b744755b51e82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d54c005ffb17571be172b5716723febb742253a3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91858764"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945398"
 ---
 # <a name="create-a-cluster-with-data-lake-storage-gen2-using-the-azure-portal"></a>Vytvoření clusteru s Data Lake Storage Gen2 pomocí Azure Portal
 
@@ -21,7 +20,7 @@ Azure Portal je webový nástroj pro správu služeb a prostředků hostovaných
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 Pokud chcete vytvořit cluster HDInsight, který používá Data Lake Storage Gen2 pro úložiště, postupujte podle těchto kroků a nakonfigurujte účet úložiště, který má hierarchický obor názvů.
 
@@ -29,7 +28,7 @@ Pokud chcete vytvořit cluster HDInsight, který používá Data Lake Storage Ge
 
 Vytvořte spravovanou identitu přiřazenou uživatelem, pokud ji ještě nemáte.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. V levém horním rohu klikněte na **vytvořit prostředek**.
 1. Do vyhledávacího pole zadejte **přiřazený uživatel** a klikněte na položku **spravovaná identita přiřazená uživateli**.
 1. Klikněte na **Vytvořit**.
@@ -44,7 +43,7 @@ Další informace o tom, jak spravované identity fungují ve službě Azure HDI
 
 Vytvořte účet úložiště pro použití s Azure Data Lake Storage Gen2.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. V levém horním rohu klikněte na **vytvořit prostředek**.
 1. Do vyhledávacího pole zadejte **Storage** a klikněte na **účet úložiště**.
 1. Klikněte na **Vytvořit**.
@@ -52,7 +51,7 @@ Vytvořte účet úložiště pro použití s Azure Data Lake Storage Gen2.
     1. Vyberte správné předplatné a skupinu prostředků.
     1. Do Data Lake Storage Gen2 zadejte název svého účtu úložiště.
     1. Klikněte na kartu **Upřesnit** .
-    1. V části **Data Lake Storage Gen2**klikněte na **povoleno** vedle **hierarchického oboru názvů** .
+    1. V části **Data Lake Storage Gen2** klikněte na **povoleno** vedle **hierarchického oboru názvů** .
     1. Klikněte na **Zkontrolovat a vytvořit**.
     1. Klikněte na **Vytvořit**.
 
@@ -77,10 +76,10 @@ Přiřaďte spravovanou identitu k roli **vlastníka dat objektů BLOB úložiš
 1. Vyberte **Uložit**. Uživatelem přiřazená identita, kterou jste vybrali, je teď uvedená v seznamu vybraná role.
 1. Po dokončení tohoto počátečního nastavení můžete cluster vytvořit prostřednictvím portálu. Cluster musí být ve stejné oblasti Azure jako účet úložiště. Na kartě **úložiště** v nabídce vytvoření clusteru vyberte následující možnosti:
 
-    * Jako **typ primárního úložiště**vyberte **Azure Data Lake Storage Gen2**.
-    * V části **primární účet úložiště**vyhledejte a vyberte nově vytvořený účet úložiště s úložištěm Data Lake Storage Gen2.
+    * Jako **typ primárního úložiště** vyberte **Azure Data Lake Storage Gen2**.
+    * V části **primární účet úložiště** vyhledejte a vyberte nově vytvořený účet úložiště s úložištěm Data Lake Storage Gen2.
 
-    * V části **Identita**vyberte nově vytvořenou spravovanou identitu přiřazenou uživatelem.
+    * V části **Identita** vyberte nově vytvořenou spravovanou identitu přiřazenou uživatelem.
 
         ![Nastavení úložiště pro použití Data Lake Storage Gen2 se službou Azure HDInsight](./media/hdinsight-hadoop-use-data-lake-storage-gen2/azure-portal-cluster-storage-gentwo.png)
 

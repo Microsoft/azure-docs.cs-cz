@@ -1,19 +1,16 @@
 ---
 title: Analýza & procesu JSON pomocí Apache Hive – Azure HDInsight
 description: Naučte se používat dokumenty JSON a analyzovat je pomocí Apache Hive ve službě Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 9a7d3992ecd2c74947eaa1071b97b2032000c749
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 5bc9acea219e5d111700840149a26c127b47514d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547601"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943060"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>Zpracování a analýza dokumentů JSON pomocí Apache Hive ve službě Azure HDInsight
 
@@ -129,7 +126,7 @@ K dispozici jsou omezení get_json_object systému souborů UDF:
 * Vzhledem k tomu, že každé pole v dotazu vyžaduje přeanalýzu dotazu, má vliv na výkon.
 * **Získat \_ JSON_OBJECT ()** vrátí řetězcovou reprezentaci pole. Chcete-li převést toto pole na pole podregistru, je nutné použít regulární výrazy k nahrazení hranatých závorek "[" a "]" a pak je také nutné volat rozdělení pro získání pole.
 
-Tento převod představuje důvody, proč wiki v podregistru doporučuje použít **json_tuple** .  
+Tento převod představuje důvody, proč wiki v podregistru doporučuje použít **json_tuple**.  
 
 ### <a name="use-the-json_tuple-udf"></a>Použití json_tuple UDF
 
@@ -146,7 +143,7 @@ Výstup tohoto skriptu v konzole podregistru:
 
 ![Apache Hive výsledků dotazu JSON](./media/using-json-in-hive/hdinsight-json-tuple.png)
 
-`json_tuple`Systém UDF používá syntaxi [zobrazení](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) v podregistru, která umožňuje \_ řazené kolekci členů JSON vytvořit virtuální tabulku použitím funkce UDT na každý řádek původní tabulky. Komplexní JSON se přestanou nepraktický z důvodu opakovaného použití **bočního zobrazení** . **JSON_TUPLE** navíc nemůže zpracovat vnořené JSON.
+`json_tuple`Systém UDF používá syntaxi [zobrazení](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) v podregistru, která umožňuje \_ řazené kolekci členů JSON vytvořit virtuální tabulku použitím funkce UDT na každý řádek původní tabulky. Komplexní JSON se přestanou nepraktický z důvodu opakovaného použití **bočního zobrazení**. **JSON_TUPLE** navíc nemůže zpracovat vnořené JSON.
 
 ### <a name="use-a-custom-serde"></a>Použití vlastního SerDe
 
@@ -154,7 +151,7 @@ SerDe je nejlepší volbou pro analýzu vnořených dokumentů JSON. Umožňuje 
 
 ## <a name="summary"></a>Souhrn
 
-Typ operátoru JSON v podregistru, který zvolíte, závisí na vašem scénáři. Pomocí jednoduchého dokumentu JSON a jednoho pole, které se má vyhledat, vyberte **Get_json_object** podregistr UDF. Pokud máte více než jeden klíč k vyhledání, můžete použít **json_tuple** . U vnořených dokumentů použijte **SerDe JSON** .
+Typ operátoru JSON v podregistru, který zvolíte, závisí na vašem scénáři. Pomocí jednoduchého dokumentu JSON a jednoho pole, které se má vyhledat, vyberte **Get_json_object** podregistr UDF. Pokud máte více než jeden klíč k vyhledání, můžete použít **json_tuple**. U vnořených dokumentů použijte **SerDe JSON**.
 
 ## <a name="next-steps"></a>Další kroky
 

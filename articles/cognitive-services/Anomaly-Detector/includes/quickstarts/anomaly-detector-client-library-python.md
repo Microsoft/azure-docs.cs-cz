@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 11/25/2020
 ms.author: mbullwin
-ms.openlocfilehash: ccfb6f767a977ed9af1019d736aa23c5f8e9950c
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: f6206ad2f88983396fa7d0be323daad327e4d235
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96356172"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947501"
 ---
 Začněte s klientskou knihovnou anomálií pro Python. Pomocí těchto kroků nainstalujete balíček Start s použitím algoritmů poskytovaných službou. Služba detektoru anomálií umožňuje v datech časových řad najít neobvyklé typy, a to díky tomu, že automaticky používá nejvhodnější modely, bez ohledu na obor, scénář nebo objem dat.
 
@@ -52,7 +52,7 @@ from azure.core.credentials import AzureKeyCredential
 import pandas as pd
 ```
 
-Vytvořte proměnné pro klíč jako proměnnou prostředí, cestu k datovému souboru časové řady a umístění Azure vašeho předplatného. Například, `westus2`.
+Vytvořte proměnné pro klíč jako proměnnou prostředí, cestu k datovému souboru časové řady a umístění Azure vašeho předplatného. Například `westus2`.
 
 ```python
 SUBSCRIPTION_KEY = os.environ["ANOMALY_DETECTOR_KEY"]
@@ -74,7 +74,7 @@ Klient detektoru anomálií je objekt [AnomalyDetectorClient](https://github.com
 
 Data časové řady se odesílají jako série objektů [TimeSeriesPoints](https://github.com/Azure/azure-sdk-for-python/blob/bf9d44f2a50aea46a59c4cb83ccfccaff5e2b218/sdk/anomalydetector/azure-ai-anomalydetector/azure/ai/anomalydetector/models/_models_py3.py#L370) . `DetectRequest`Objekt obsahuje vlastnosti pro popsání dat `TimeGranularity` , například parametry pro detekci anomálií.
 
-Odezva detektoru anomálií je objekt [LastDetectResponse](/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.lastdetectresponse?view=azure-python), [EntireDetectResponse](/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.entiredetectresponse?view=azure-python)nebo [ChangePointDetectResponse](https://github.com/Azure/azure-sdk-for-python/blob/bf9d44f2a50aea46a59c4cb83ccfccaff5e2b218/sdk/anomalydetector/azure-ai-anomalydetector/azure/ai/anomalydetector/models/_models_py3.py#L107) v závislosti na použité metodě.
+Odezva detektoru anomálií je objekt [LastDetectResponse](/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.lastdetectresponse), [EntireDetectResponse](/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.entiredetectresponse)nebo [ChangePointDetectResponse](https://github.com/Azure/azure-sdk-for-python/blob/bf9d44f2a50aea46a59c4cb83ccfccaff5e2b218/sdk/anomalydetector/azure-ai-anomalydetector/azure/ai/anomalydetector/models/_models_py3.py#L107) v závislosti na použité metodě.
 
 ## <a name="code-examples"></a>Příklady kódu
 
@@ -112,7 +112,7 @@ for index, row in data_file.iterrows():
     series.append(TimeSeriesPoint(timestamp=row[0], value=row[1]))
 ```
 
-Vytvořte `DetectRequest` objekt s časovou řadou a `TimeGranularity` (nebo periodicitou) svých datových bodů. Například, `TimeGranularity.daily`.
+Vytvořte `DetectRequest` objekt s časovou řadou a `TimeGranularity` (nebo periodicitou) svých datových bodů. Například `TimeGranularity.daily`.
 
 ```python
 request = DetectRequest(series=series, granularity=TimeGranularity.daily)
@@ -120,7 +120,7 @@ request = DetectRequest(series=series, granularity=TimeGranularity.daily)
 
 ## <a name="detect-anomalies-in-the-entire-data-set"></a>Detekovat anomálie v celé sadě dat
 
-Zavolejte rozhraní API pro detekci anomálií prostřednictvím celých dat časových řad pomocí metody klienta `detect_entire_series` . Uložte vrácený objekt [EntireDetectResponse](/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.entiredetectresponse?view=azure-python) . Iterujte v seznamu odpovědí `is_anomaly` a vytiskněte index všech `true` hodnot. Tyto hodnoty odpovídají indexu datových bodů neobvyklé, pokud byly nalezeny.
+Zavolejte rozhraní API pro detekci anomálií prostřednictvím celých dat časových řad pomocí metody klienta `detect_entire_series` . Uložte vrácený objekt [EntireDetectResponse](/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.entiredetectresponse) . Iterujte v seznamu odpovědí `is_anomaly` a vytiskněte index všech `true` hodnot. Tyto hodnoty odpovídají indexu datových bodů neobvyklé, pokud byly nalezeny.
 
 ```python
 print('Detecting anomalies in the entire time series.')

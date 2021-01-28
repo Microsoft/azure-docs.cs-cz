@@ -1,18 +1,15 @@
 ---
 title: Nepovedlo se přečíst protokol Apache nitě v Azure HDInsight.
 description: Kroky řešení potíží a možná řešení pro problémy při komunikaci s clustery Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/23/2020
-ms.openlocfilehash: b6bd7d807916ef53177b11df6ed9ce0b22f530be
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 02a79de8aee169f5f702d5fae67194c62363e8c4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533338"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943047"
 ---
 # <a name="scenario-unable-to-read-apache-yarn-log-in-azure-hdinsight"></a>Scénář: nejde číst protokol Apache nitě v Azure HDInsight.
 
@@ -34,7 +31,7 @@ Protokol Apache nitě je agregovaný do `IndexFile` formátu, který analyzátor
 
 1. Z webového prohlížeče přejděte do `https://CLUSTERNAME.azurehdinsight.net` umístění, kde `CLUSTERNAME` je název vašeho clusteru.
 
-1. V uživatelském rozhraní Ambari přejděte do **Konfigurace příze**  >  **Configs**  >  **Upřesnit** Upřesnit  >  **nitě-site** .
+1. V uživatelském rozhraní Ambari přejděte do **Konfigurace příze**  >    >  **Upřesnit** Upřesnit  >  **nitě-site**.
 
 1. Pro úložiště WASB: výchozí hodnota pro `yarn.log-aggregation.file-formats` je `IndexedFormat,TFile` . Změňte hodnotu na `TFile` .
 

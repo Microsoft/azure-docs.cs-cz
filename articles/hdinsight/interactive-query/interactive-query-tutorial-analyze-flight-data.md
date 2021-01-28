@@ -1,19 +1,16 @@
 ---
 title: 'Kurz: operace ETL s interaktivním dotazem – Azure HDInsight'
 description: Kurz – Zjistěte, jak extrahovat data z nezpracované sady dat CSV. Transformuje ho pomocí interaktivního dotazu na HDInsight. Pak načtěte transformovaná data do Azure SQL Database pomocí Apache Sqoop.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc
 ms.date: 07/02/2019
-ms.openlocfilehash: 730a6bfa627eafcab799fc811db4e20a1d4cec48
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 13b6b8658aa2d896ec154cfa3c7a961e37df6cbf
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534579"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935906"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>Kurz: extrakce, transformace a načtení dat pomocí interaktivního dotazu ve službě Azure HDInsight
 
@@ -30,11 +27,11 @@ Tento kurz se zabývá následujícími úkony:
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Interaktivní cluster dotazů v HDInsight. Přečtěte si téma [vytvoření Apache Hadoop clusterů pomocí Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) a výběr **interaktivního dotazu** pro **typ clusteru** .
+* Interaktivní cluster dotazů v HDInsight. Přečtěte si téma [vytvoření Apache Hadoop clusterů pomocí Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) a výběr **interaktivního dotazu** pro **typ clusteru**.
 
 * Databáze v Azure SQL Database. Tuto databázi použijete jako cílové úložiště dat. Pokud nemáte databázi v Azure SQL Database, přečtěte si téma [Vytvoření databáze v Azure SQL Database v Azure Portal](../../azure-sql/database/single-database-create-quickstart.md).
 
-* Klient SSH. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Klient SSH. Další informace najdete v tématu [Připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="download-the-flight-data"></a>Stažení letových údajů
 
@@ -42,13 +39,13 @@ Tento kurz se zabývá následujícími úkony:
 
 2. Na stránce zrušte zaškrtnutí všech polí a pak vyberte následující hodnoty:
 
-   | Název | Hodnota |
+   | Name | Hodnota |
    | --- | --- |
    | Filter Year (Filtr roku) |2019 |
    | Filter Period (Filtr období) |January (Leden) |
    | Pole |`Year, FlightDate, Reporting_Airline, DOT_ID_Reporting_Airline, Flight_Number_Reporting_Airline, OriginAirportID, Origin, OriginCityName, OriginState, DestAirportID, Dest, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay`. |
 
-3. Vyberte **Stáhnout** . Získáte soubor .zip s vybranými datovými poli.
+3. Vyberte **Stáhnout**. Získáte soubor .zip s vybranými datovými poli.
 
 ## <a name="upload-data-to-an-hdinsight-cluster"></a>Nahrání dat do clusteru HDInsight
 
@@ -97,7 +94,7 @@ Do úložiště přidruženého ke clusteru HDInsight můžete data nahrát mnoh
 
 V rámci úlohy Hive provedete import dat ze souboru .csv do tabulky Hive s názvem **Delays** (Zpoždění).
 
-1. Z příkazového řádku SSH, který už máte pro cluster HDInsight, použijte následující příkaz k vytvoření a úpravě nového souboru s názvem **flightdelays. HQL** :
+1. Z příkazového řádku SSH, který už máte pro cluster HDInsight, použijte následující příkaz k vytvoření a úpravě nového souboru s názvem **flightdelays. HQL**:
 
     ```bash
     nano flightdelays.hql
@@ -165,7 +162,7 @@ V rámci úlohy Hive provedete import dat ze souboru .csv do tabulky Hive s náz
     FROM delays_raw;
     ```
 
-3. Soubor uložíte tak, že stisknete **kombinaci kláves CTRL + X** , pak **y** a pak zadáte.
+3. Soubor uložíte tak, že stisknete **kombinaci kláves CTRL + X**, pak **y** a pak zadáte.
 
 4. Spusťte Hive a soubor **flightdelays.hql** pomocí následujícího příkazu:
 
