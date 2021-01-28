@@ -3,12 +3,12 @@ title: Použití Azure Backup Server k zálohování úloh
 description: V tomto článku se dozvíte, jak připravit prostředí pro ochranu a zálohování úloh pomocí Microsoft Azure Backup serveru (MABS).
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 1be2af43f4d923a27fd96c5c0888a234725775a3
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: d476c228a619f03f798c1a2cd6854a8d603c3637
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056697"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98987018"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Instalace a upgrade Azure Backup Server
 
@@ -85,7 +85,7 @@ Možnost replikace úložiště umožňuje výběr mezi geograficky redundantní
 Chcete-li upravit nastavení replikace úložiště:
 
 1. V podokně **Recovery Services trezory** vyberte nový trezor. V části **Nastavení** vyberte  **vlastnosti**.
-2. V části **vlastnosti**v části **Konfigurace zálohování**vyberte **aktualizovat**.
+2. V části **vlastnosti** v části **Konfigurace zálohování** vyberte **aktualizovat**.
 
 3. Vyberte typ replikace úložiště a vyberte **Uložit**.
 
@@ -95,7 +95,7 @@ Chcete-li upravit nastavení replikace úložiště:
 
 ### <a name="downloading-the-software-package"></a>Stažení softwarového balíčku
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 2. Pokud už máte otevřený trezor Recovery Services, pokračujte krokem 3. Pokud nemáte otevřený trezor Recovery Services, ale nachází se v Azure Portal, vyberte v hlavní nabídce možnost **Procházet**.
 
    * V seznamu prostředků zadejte **Recovery Services**.
@@ -243,7 +243,7 @@ MABS používá agenta ochrany Data Protection Manager System Center. [Tady je p
 
 Následující části popisují, jak aktualizovat agenty ochrany pro klientské počítače.
 
-1. V konzole správce záložního serveru vyberte **Management**  >  **agenti**pro správu.
+1. V konzole správce záložního serveru vyberte   >  **agenti** pro správu.
 
 2. V podokně zobrazení vyberte klientské počítače, pro které chcete aktualizovat agenta ochrany.
 
@@ -303,13 +303,18 @@ Jakmile budete znát stav připojení Azure a předplatného Azure, můžete pom
 
 ### <a name="recovering-from-loss-of-connectivity"></a>Obnovování ze ztráty připojení
 
-Pokud máte bránu firewall nebo proxy server, který brání přístupu k Azure, je potřeba v profilu brány firewall/proxy serveru povolený následující adresy domény:
+Pokud má počítač omezený přístup k Internetu, zajistěte, aby nastavení brány firewall na počítači nebo proxy umožňovalo následující adresy URL a IP adresy:
 
-* `http://www.msftncsi.com/ncsi.txt`
-* \*.Microsoft.com
-* \*.WindowsAzure.com
-* \*.microsoftonline.com
-* \*.windows.net
+* Adresy URL
+  * `www.msftncsi.com`
+  * `*.Microsoft.com`
+  * `*.WindowsAzure.com`
+  * `*.microsoftonline.com`
+  * `*.windows.net`
+  * `www.msftconnecttest.com`
+* IP adresy
+  * 20.190.128.0/18
+  * 40.126.0.0/18
 
 Pokud používáte partnerský vztah Microsoftu ExpressRoute, vyberte následující služby nebo oblasti:
 
@@ -325,7 +330,7 @@ Po obnovení připojení k Azure na Azure Backup Server počítač se operace, k
 
 Je možné převzít předplatné Azure ze stavu s *ukončenou platností* nebo *zrušenou* stavem do *aktivního* stavu. To ale má vliv na chování produktu, když stav není *aktivní*:
 
-* *Zrušení zřízené* předplatné ztratí funkčnost v období, ve kterém je zrušeno. Při zapínání na *aktivní*se funkce zálohování a obnovení obnovená. Záložní data na místním disku můžete také načíst, pokud byla držena s dostatečně velkým obdobím uchovávání. Data záloh v Azure se ale irretrievably ztratí, jakmile předplatné vstoupí do stavu *zrušeno* .
+* *Zrušení zřízené* předplatné ztratí funkčnost v období, ve kterém je zrušeno. Při zapínání na *aktivní* se funkce zálohování a obnovení obnovená. Záložní data na místním disku můžete také načíst, pokud byla držena s dostatečně velkým obdobím uchovávání. Data záloh v Azure se ale irretrievably ztratí, jakmile předplatné vstoupí do stavu *zrušeno* .
 * Předplatné, *jehož platnost vypršela* , pouze ztratí funkčnost, dokud nebude znovu *aktivováno* . U všech záloh naplánovaných po dobu, kdy *vypršela platnost* předplatného, se nespustí.
 
 ## <a name="upgrade-mabs"></a>Upgradovat MABS
@@ -356,7 +361,7 @@ K upgradu MABS použijte následující postup:
 
 3. Aktualizujte agenty ochrany na chráněných serverech.
 4. Zálohování by mělo pokračovat bez nutnosti restartovat provozní servery.
-5. Teď můžete začít chránit svoje data. Pokud provádíte upgrade na Moderní úložiště zálohování a zároveň chráníte, můžete také vybrat svazky, ve kterých chcete ukládat zálohy, a v části zřízené místo ověřit. [Další informace](backup-mabs-add-storage.md).
+5. Teď můžete začít chránit svoje data. Pokud provádíte upgrade na Moderní úložiště zálohování a zároveň chráníte, můžete také vybrat svazky, ve kterých chcete ukládat zálohy, a v části zřízené místo ověřit. [Přečtěte si další informace](backup-mabs-add-storage.md).
 
 ## <a name="troubleshooting"></a>Řešení potíží
 

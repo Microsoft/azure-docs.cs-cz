@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 05/21/2018
+ms.date: 01/28/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 0b7fee330f93097b561714ecc938eaf3fee8f2b5
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 04c26609b046f7525c513796622be74633a20e91
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657325"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986764"
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>Potíže při instalaci konektoru agenta proxy aplikací
 
@@ -24,7 +24,7 @@ Microsoft Azure Active Directory konektor proxy aplikací je interní doménová
 
 ## <a name="general-problem-areas-with-connector-installation"></a>Obecné oblasti problému s instalací konektoru
 
-V případě selhání instalace konektoru je hlavní příčinou obvykle jedna z následujících oblastí:
+V případě selhání instalace konektoru je hlavní příčinou obvykle jedna z následujících oblastí. **Jako ukazatel na případné řešení potíží nezapomeňte konektor restartovat.**
 
 1.  **Připojení** – aby bylo možné dokončit úspěšnou instalaci, musí nový konektor registrovat a navázat budoucí vlastnosti důvěryhodnosti. To se provádí připojením ke cloudové službě Proxy aplikací služby Azure Active Directory.
 

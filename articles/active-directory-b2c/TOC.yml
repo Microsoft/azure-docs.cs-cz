@@ -452,6 +452,8 @@
           href: user-migration.md
 - name: Referenční informace
   items:
+    - name: Limity a omezení služeb
+      href: service-limits.md
     - name: Registrace aplikací
       href: app-registrations-training-guide.md
     - name: Model fakturace

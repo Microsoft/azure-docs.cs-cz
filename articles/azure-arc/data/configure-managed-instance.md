@@ -9,12 +9,12 @@ ms.author: vinsonyu
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 6e2443014f6788504a11784945078187a5a72de4
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 37ba4f10365fca4292171c3bd2d9a3e7d00045bb
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92311130"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98985865"
 ---
 # <a name="configure-azure-arc-enabled-sql-managed-instance"></a>Konfigurace spravované instance serveru SQL s podporou ARC Azure
 
@@ -60,13 +60,13 @@ Chcete-li změnit kterékoli z těchto nastavení, postupujte takto:
    traceflag0 = 1204
    ```
 
-1. Kopírovat `mssql-custom.conf` soubor do `/var/opt/mssql` `mssql-miaa` kontejneru v poli `master-0` pod. Nahraďte `<namespaceName>` názvem clusteru pro velké objemy dat.
+1. Kopírovat `mssql-custom.conf` soubor do `/var/opt/mssql` `arc-sqlmi` kontejneru v poli `master-0` pod. Nahraďte `<namespaceName>` oborem názvů, ve kterém je tato instance nasazená.
 
    ```bash
    kubectl cp mssql-custom.conf master-0:/var/opt/mssql/mssql-custom.conf -c mssql-server -n <namespaceName>
    ```
 
-1. Restartujte instanci SQL Server.  Nahraďte `<namespaceName>` názvem clusteru pro velké objemy dat.
+1. Restartujte spravovanou instanci SQL.  Nahraďte `<namespaceName>` oborem názvů, ve kterém je tato instance nasazená.
 
    ```bash
    kubectl exec -it master-0  -c mssql-server -n <namespaceName> -- /bin/bash

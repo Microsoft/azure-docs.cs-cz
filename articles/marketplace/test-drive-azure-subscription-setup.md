@@ -7,12 +7,12 @@ ms.topic: article
 author: trkeya
 ms.author: trkeya
 ms.date: 11/09/2020
-ms.openlocfilehash: 6f74f3b1f5aad153903ba5d290a290973203a875
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 60eeceac916a7f8c64214b7a74a8cf60fd1ec8ac
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489382"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986120"
 ---
 # <a name="set-up-an-azure-marketplace-subscription-for-hosted-test-drives"></a>Nastavení předplatného Azure Marketplace pro hostované testovací jednotky
 
@@ -65,12 +65,12 @@ Tento článek vysvětluje, jak nastavit předplatné Azure Marketplace a **dyna
     15. Pro vygenerování tajného klíče pro Aplikace Azure AD:
         1. V **možnosti spravovat aplikaci** vyberte **certifikát a tajné klíče**.
         2. V části tajné klíče klienta vyberte **nový tajný klíč klienta**.
-        3. Zadejte popis, jako je například *testovací jednotka* , a vyberte vhodnou dobu trvání. Po vypršení platnosti klíče se testovací jednotka pozastaví, a to tak, že budete muset vygenerovat a zadat AppSource nový klíč.
+        3. Zadejte popis, jako je například *testovací jednotka*, a vyberte vhodnou dobu trvání. Po vypršení platnosti klíče se testovací jednotka pozastaví, a to tak, že budete muset vygenerovat a zadat AppSource nový klíč.
         4. Výběrem **Přidat** vygenerujete tajný klíč aplikace Azure. Tuto hodnotu zkopírujte, protože bude skrytá, jakmile lave toto okno. Tuto hodnotu budete potřebovat později při konfiguraci testovacího disku.
 
             :::image type="content" source="./media/test-drive/add-client-secret.png" alt-text="Přidání tajného klíče klienta.":::
 
-5. V některých případech trvá synchronizace uživatele ze služby Azure AD s instancí CRM déle, než se očekávalo. Pro pomoc s tímto jsme přidali proces vynucení synchronizace, ale vyžaduje, aby aplikace Azure AD byla povolená partnerským centrem. Provedete to tak, že si přečtěte téma [synchronizace uživatelů s instancí Engagement zákazníka](https://github.com/microsoft/AppSource/blob/master/Microsoft%20Hosted%20Test%20Drive/CDS_Utility_to_ForceUserSync_in_CRM_Instance.md).
+5. V některých případech trvá synchronizace uživatele ze služby Azure AD s instancí CRM déle, než se očekávalo. Pro pomoc s tímto jsme přidali proces pro vynucení synchronizace, ale vyžaduje, aby se aplikace Azure AD allowlisted prostřednictvím partnerského centra. Provedete to tak, že si přečtěte téma [synchronizace uživatelů s instancí Engagement zákazníka](https://github.com/microsoft/AppSource/blob/master/Microsoft%20Hosted%20Test%20Drive/CDS_Utility_to_ForceUserSync_in_CRM_Instance.md).
 6. Přidejte do aplikace roli instančního objektu, aby aplikace Azure AD mohla odebrat uživatele z vašeho tenanta Azure.
     1. Otevřete příkazový řádek PowerShellu na úrovni správy.
     2. Install-Module MSOnline (Pokud není nainstalován MSOnline, spusťte tento příkaz).
@@ -83,7 +83,7 @@ Tento článek vysvětluje, jak nastavit předplatné Azure Marketplace a **dyna
 
 7. Přidejte výše vytvořenou aplikaci Azure jako uživatele aplikace do instance služby Test Drive CRM.
     1. Přidat nového uživatele v **Azure Active Directory**. K vytvoření tohoto uživatele se vyžadují jenom hodnoty **název** a **uživatelské jméno** (patřící ke stejnému tenantovi) a ostatní pole ponechte jako výchozí. Zkopírujte hodnotu uživatelské jméno.
-    2. Přihlaste se do **instance CRM** a vyberte **Nastavení**  >  **Security**  >  **Uživatelé** zabezpečení.
+    2. Přihlaste se do **instance CRM** a vyberte **Nastavení**  >    >  **Uživatelé** zabezpečení.
     3. Změňte zobrazení na **uživatele aplikace**.
 
         :::image type="content" source="./media/test-drive/application-users.png" alt-text="Nastavení informací o účtu pro uživatele.":::
@@ -135,7 +135,7 @@ Tento článek vysvětluje, jak nastavit předplatné Azure Marketplace a **dyna
     14. Pro vygenerování tajného klíče pro Aplikace Azure AD:
         1. V **možnosti spravovat aplikaci** vyberte **certifikát a tajné klíče**.
         2. V části tajné klíče klienta vyberte **nový tajný klíč klienta**.
-        3. Zadejte popis, jako je například *testovací jednotka* , a vyberte vhodnou dobu trvání. Po vypršení platnosti klíče se testovací jednotka pozastaví, a to tak, že budete muset vygenerovat a zadat AppSource nový klíč.
+        3. Zadejte popis, jako je například *testovací jednotka*, a vyberte vhodnou dobu trvání. Po vypršení platnosti klíče se testovací jednotka pozastaví, a to tak, že budete muset vygenerovat a zadat AppSource nový klíč.
         4. Výběrem **Přidat** vygenerujete tajný klíč aplikace Azure. Tuto hodnotu zkopírujte, protože bude skrytá, jakmile lave toto okno. Tuto hodnotu budete potřebovat později při konfiguraci testovacího disku.
 
             :::image type="content" source="./media/test-drive/add-client-secret.png" alt-text="Přidání tajného klíče klienta.":::

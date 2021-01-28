@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: b8c9af31243d8bb58a58fbc687cad68130f64f7e
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 59768e4fc04613a5ecac6a76059382499b7aaa86
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880738"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986458"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Možnosti Transact-The pro komerční web Marketplace
 
@@ -84,7 +84,7 @@ V případě scénářů publikování v jazyce Transact můžete zpřístupnit 
 
 Kromě používání typů nabídek a modelů fakturace k monetizovatí nabídky můžete použít pro transakce soukromou nabídku, která se doplní s použitím vyjednané ceny, ceny specifické pro konkrétní obchodování nebo vlastní konfigurace. Soukromé nabídky jsou podporovány všemi třemi možnostmi publikování v transakčním režimu.
 
-Tato možnost umožňuje vyšší nebo nižší ceny než veřejně dostupná nabídka. Soukromé nabídky můžete použít k zlevnění nebo přidání prémie do nabídky. K dispozici máte přístup k soukromým nabídkám pro jednoho nebo více zákazníků, a to bílým uvedením předplatného Azure na úrovni nabídky.
+Tato možnost umožňuje vyšší nebo nižší ceny než veřejně dostupná nabídka. Soukromé nabídky můžete použít k zlevnění nebo přidání prémie do nabídky. K dispozici máte přístup k soukromým nabídkám pro jednoho nebo více zákazníků tím, že allowlisting své předplatné Azure na úrovni nabídky.
 
 ### <a name="commercial-marketplace-service-fees"></a>Poplatky za služby komerčního tržiště
 

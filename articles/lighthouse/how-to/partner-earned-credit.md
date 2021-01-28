@@ -1,18 +1,18 @@
 ---
 title: Propojte své ID partnera a sledujte svůj dopad na delegovaných prostředcích.
 description: Přečtěte si, jak přidružit ID partnera pro příjem kreditu (PEC) pro zákaznické prostředky, které spravujete prostřednictvím Azure Lighthouse.
-ms.date: 10/30/2020
+ms.date: 01/28/2021
 ms.topic: how-to
-ms.openlocfilehash: fcbcc70e380116b8e9f9b1c1e365dee1adb87a99
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 46338b925b1ad44019c9cc95e4b7f8c0963c07c4
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93080273"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98985967"
 ---
 # <a name="link-your-partner-id-to-track-your-impact-on-delegated-resources"></a>Propojte své ID partnera a sledujte svůj dopad na delegovaných prostředcích. 
 
-Pokud jste členem [Microsoft Partner Network](https://partner.microsoft.com/), můžete propojit ID partnera s přihlašovacími údaji použitými ke správě prostředků delegovaných zákazníků. Odkaz pro správce pro partnery (PAL) umožňuje Microsoftu identifikovat a rozpoznávat partnery, kteří dodají zákazníky Azure na úspěch. Tento odkaz taky umožňuje partnerům [CSP (Cloud Solution Provider)](/partner-center/csp-overview) přijímat [kredity s získanými partnery pro spravované služby (PEC)](/partner-center/partner-earned-credit) pro zákazníky, kteří [podepsali smlouvu o zákaznících Microsoftu (MCA)](/partner-center/confirm-customer-agreement) a jsou [v rámci plánu Azure](/partner-center/azure-plan-get-started).
+Pokud jste členem [Microsoft Partner Network](https://partner.microsoft.com/), můžete propojit ID partnera s přihlašovacími údaji, které jste použili ke správě delegovaných prostředků zákazníků, a umožnit tak Microsoftu identifikovat a rozpoznávat partnery, kteří chtějí zákazníky v Azure řídit. Tento odkaz taky umožňuje partnerům [CSP (Cloud Solution Provider)](/partner-center/csp-overview) přijímat [kredity s získanými partnery pro spravované služby (PEC)](/partner-center/partner-earned-credit) pro zákazníky, kteří [podepsali smlouvu o zákaznících Microsoftu (MCA)](/partner-center/confirm-customer-agreement) a jsou [v rámci plánu Azure](/partner-center/azure-plan-get-started).
 
 Pokud připojíte [zákazníky k nabídkám spravovaných služeb v Azure Marketplace](publish-managed-services-offers.md), propojí se automaticky pomocí ID MPN přidruženého k účtu partnerského centra používaného k publikování nabídek. Žádná další akce není nutná k tomu, aby bylo možné sledovat váš dopad na tyto zákazníky.
 
@@ -20,7 +20,7 @@ Pokud připojíte [zákazníky pomocí šablon správy prostředků Azure](onboa
 
 ## <a name="associate-your-partner-id-when-you-onboard-new-customers"></a>Přidružte své ID partnera při připojování nových zákazníků.
 
-Při připojování zákazníků prostřednictvím šablon Azure Resource Manager (šablony ARM) použijte následující postup, který propojí ID partnera (a pokud je k dispozici možnost Povolit získaný partnerský kredit). K provedení těchto kroků budete muset znát [ID partnera MPN](/partner-center/partner-center-account-setup#locate-your-mpn-id) . Nezapomeňte použít **přidružené ID MPN** , které je uvedené ve vašem partnerském profilu.
+Při připojování zákazníků prostřednictvím šablon Azure Resource Manager (šablony ARM) použijte následující postup, který propojí ID partnera (a pokud je k dispozici možnost Povolit získaný partnerský kredit). K provedení těchto kroků budete muset znát [ID partnera MPN](/partner-center/partner-center-account-setup#locate-your-mpn-id) . Nezapomeňte použít **přidružené ID MPN**, které je uvedené ve vašem partnerském profilu.
 
 Pro zjednodušení doporučujeme vytvořit v tenantovi účet instančního objektu, propojit ho s **přidruženým ID MPN** a pak mu udělit přístup ke každému zákazníkovi, který zařadíte pomocí [předdefinované role Azure, která má nárok na pec](/partner-center/azure-roles-perms-pec).
 
@@ -30,7 +30,7 @@ Pro zjednodušení doporučujeme vytvořit v tenantovi účet instančního obje
 
 Pomocí těchto kroků se každý tenant zákazníka, který spravujete, přidruží k vašemu ID partnera. Účet Automation zprostředkovatele nemusí v tenantovi zákazníka ověřovat ani provádět žádné akce.
 
-:::image type="content" source="../media/lighthouse-pal.jpg" alt-text="Diagram znázorňující proces PAL s Azure Lighthouse":::
+:::image type="content" source="../media/lighthouse-pal.jpg" alt-text="Diagram znázorňující proces propojení ID partnera s Azure Lighthouse.":::
 
 ## <a name="add-your-partner-id-to-previously-onboarded-customers"></a>Přidat ID partnera k dříve připojeným zákazníkům
 

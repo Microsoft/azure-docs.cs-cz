@@ -3,12 +3,12 @@ title: Příprava serveru DPM pro zálohování úloh
 description: V tomto článku se dozvíte, jak připravit zálohy aplikace System Center Data Protection Manager (DPM) do Azure pomocí služby Azure Backup.
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 0089c3d86eb36b82287570ecdfd6e8c782e6fb8a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 823b23d99959df5f2eed20cf4136254e1702fe89
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002851"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98985627"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>Příprava zálohování úloh do Azure pomocí System Center DPM
 
@@ -48,7 +48,7 @@ Podporované typy souborů | Tyto typy souborů je možné zálohovat pomocí Az
 Nepodporované typy souborů | <li>Servery se systémy souborů s rozlišováním velkých a malých písmen<li> pevné odkazy (vynecháno)<li> body rozboru (přeskočeny)<li> šifrované a komprimované (vynechané)<li> šifrované a zhuštěné (přeskočené)<li> Komprimovaný datový proud<li> analyzovat datový proud
 Místní úložiště | Každý počítač, který chcete zálohovat, musí mít místní volné úložiště, které má nejméně 5% velikosti zálohovaných dat. Například zálohování 100 GB dat vyžaduje minimálně 5 GB volného místa v umístění od začátku.
 Úložiště trezoru | Neexistuje žádné omezení na množství dat, která můžete zálohovat do trezoru Azure Backup, ale velikost zdroje dat (například virtuální počítač nebo databáze) by neměla překročit 54 400 GB.
-Azure ExpressRoute | Data můžete zálohovat přes Azure ExpressRoute s veřejným partnerským vztahem (k dispozici pro staré okruhy) a partnerským vztahem Microsoftu. Zálohování přes soukromý partnerský vztah se nepodporuje.<br/><br/> **S veřejným partnerským vztahem**: Zajistěte přístup k následujícím doménám nebo adresám:<br/><br/>- `http://www.msftncsi.com/ncsi.txt` <br/><br/>- `microsoft.com` <br/><br/>-`.WindowsAzure.com`<br/><br/>-`.microsoftonline.com`<br/><br/>-`.windows.net`<br/><br/> **S partnerským vztahem Microsoftu** vyberte následující služby nebo oblasti a příslušné hodnoty komunity:<br/><br/>-Azure Active Directory (12076:5060)<br/><br/>-Microsoft Azure oblasti (podle umístění vašeho trezoru Recovery Services)<br/><br/>-Azure Storage (podle umístění vašeho trezoru Recovery Services)<br/><br/>Další informace najdete v tématu [požadavky na směrování ExpressRoute](../expressroute/expressroute-routing.md).<br/><br/>**Poznámka**: veřejný partnerský vztah je pro nové okruhy zastaralý.
+Azure ExpressRoute | Data můžete zálohovat přes Azure ExpressRoute s veřejným partnerským vztahem (k dispozici pro staré okruhy) a partnerským vztahem Microsoftu. Zálohování přes soukromý partnerský vztah se nepodporuje.<br/><br/> **S veřejným partnerským vztahem**: Zajistěte přístup k následujícím doménám nebo adresám:<br/><br/> Adrese<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>`www.msftconnecttest.com`<br><br>IP adresy<br>  20.190.128.0/18 <br>  40.126.0.0/18<br> <br/>**S partnerským vztahem Microsoftu** vyberte následující služby nebo oblasti a příslušné hodnoty komunity:<br/><br/>-Azure Active Directory (12076:5060)<br/><br/>-Microsoft Azure oblasti (podle umístění vašeho trezoru Recovery Services)<br/><br/>-Azure Storage (podle umístění vašeho trezoru Recovery Services)<br/><br/>Další informace najdete v tématu [požadavky na směrování ExpressRoute](../expressroute/expressroute-routing.md).<br/><br/>**Poznámka**: veřejný partnerský vztah je pro nové okruhy zastaralý.
 Agent Azure Backup | Je-li aplikace DPM spuštěna v produktu System Center 2012 SP1, nainstalujte kumulativní aktualizaci 2 nebo novější pro aplikaci DPM SP1. To je vyžadováno pro instalaci agenta.<br/><br/> Tento článek popisuje, jak nasadit nejnovější verzi agenta Azure Backup, označovaného také jako agent služby Microsoft Azure Recovery Services (MARS). Pokud máte nasazenou starší verzi, aktualizujte na nejnovější verzi, abyste zajistili, že zálohování funguje podle očekávání.
 
 Než začnete, potřebujete účet Azure s povolenou funkcí Azure Backup. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Přečtěte si o [cenách Azure Backup](https://azure.microsoft.com/pricing/details/backup/).

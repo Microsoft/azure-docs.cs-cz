@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 12/02/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 63fbac0919e06b29377afacaaa5708d195c6b319
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 5ecf9e49887eb584269f724d5199cbfb014351e0
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98887193"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986849"
 ---
 # <a name="customer-responsibilities-for-running-azure-spring-cloud-in-vnet"></a>Odpovědnosti zákazníků při provozování jarního cloudu Azure ve virtuální síti
 Tento dokument obsahuje specifikace pro používání jarního cloudu Azure ve virtuální síti.
@@ -57,6 +57,9 @@ Azure Firewall poskytuje plně kvalifikovaný název domény (FQDN) **AzureKuber
   | <i>login.microsoftonline.com</i> | HTTPS: 443 | Ověřování Azure Active Directory. |
   |<i>packages.microsoft.com</i>    | HTTPS: 443 | Úložiště balíčků Microsoftu. |
   | <i>acs-mirror.azureedge.net</i> | HTTPS: 443 | Úložiště potřebné k instalaci požadovaných binárních souborů, jako je kubenet a Azure CNI. |
+  | *mscrl.microsoft.com* | HTTPS: 80 | Požadované cesty řetězení certifikátů společnosti Microsoft. |
+  | *crl.microsoft.com* | HTTPS: 80 | Požadované cesty řetězení certifikátů společnosti Microsoft. |
+  | *crl3.digicert.com* | HTTPS: 80 | Cesty řetěz certifikátů SSL třetích stran. |
 
 ## <a name="see-also"></a>Viz také
 * [Přístup k aplikaci v privátní síti](spring-cloud-access-app-virtual-network.md)

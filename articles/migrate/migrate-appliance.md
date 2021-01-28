@@ -6,12 +6,12 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: f3357fcc070ca4ca2212cf0424e4baf8208a3ca1
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 17ac10fd4e48043b79db5448fad2f29c5eb3f2a3
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754126"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986815"
 ---
 # <a name="azure-migrate-appliance"></a>Zařízení Azure Migrate
 
@@ -45,7 +45,7 @@ Následující tabulka shrnuje požadavky na zařízení Azure Migrate pro VMwar
 
 **Požadavek** | **VMware** 
 --- | ---
-**Oprávnění** | Pokud chcete přistupovat k webové aplikaci místně nebo vzdáleně, musíte být správcem domény nebo místním správcem na počítači zařízení.
+**Oprávnění** | Chcete-li přistupovat k webové aplikaci místně nebo vzdáleně, je nutné mít místní nebo doménový uživatelský účet s oprávněními správce na serveru zařízení.
 **Součásti zařízení** | Zařízení má následující součásti:<br/><br/> - **Aplikace pro správu**: Toto je webová aplikace pro vstup uživatele během nasazování zařízení. Používá se při posuzování počítačů pro migraci do Azure.<br/> - **Agent zjišťování**: Agent shromáždí data konfigurace počítače. Používá se při posuzování počítačů pro migraci do Azure.<br/>- **Agent kolektoru**: Agent shromažďuje údaje o výkonu. Používá se při posuzování počítačů pro migraci do Azure.<br/>- **Služba automatické aktualizace**: aktualizuje součásti zařízení (spouští se každých 24 hodin).<br/>- **Agent DRA**: orchestruje replikaci virtuálních počítačů a koordinuje komunikaci mezi replikovanými počítači a Azure. Používá se jenom při replikaci virtuálních počítačů VMware do Azure pomocí migrace bez agentů.<br/>- **Brána**: odesílá replikovaná data do Azure. Používá se jenom při replikaci virtuálních počítačů VMware do Azure pomocí migrace bez agentů.
 **Podporované nasazení** | Nasaďte jako virtuální počítač VMware pomocí šablony vajíček.<br/><br/> Nasaďte jako virtuální počítač VMware nebo fyzický počítač pomocí instalačního skriptu PowerShellu.
 **Podpora projektu** |  Zařízení může být přidruženo k jednomu projektu. <br/> K jednomu projektu může být přidružen libovolný počet zařízení.<br/> 
@@ -65,7 +65,7 @@ Následující tabulka shrnuje požadavky na zařízení Azure Migrate pro VMwar
 
 **Požadavek** | **Hyper-V** 
 --- | ---
-**Oprávnění** | Pokud chcete přistupovat k webové aplikaci místně nebo vzdáleně, musíte být správcem domény nebo místním správcem na počítači zařízení.
+**Oprávnění** | Chcete-li přistupovat k webové aplikaci místně nebo vzdáleně, je nutné mít místní nebo doménový uživatelský účet s oprávněními správce na serveru zařízení.
 **Součásti zařízení** | Zařízení má následující součásti:<br/><br/>- **Aplikace pro správu**: Toto je webová aplikace pro vstup uživatele během nasazování zařízení. Používá se při posuzování počítačů pro migraci do Azure.<br/> - **Agent zjišťování**: Agent shromáždí data konfigurace počítače. Používá se při posuzování počítačů pro migraci do Azure.<br/>- **Agent kolektoru**: Agent shromažďuje údaje o výkonu. Používá se při posuzování počítačů pro migraci do Azure.<br/>- **Služba automatické aktualizace**: aktualizuje součásti zařízení (spouští se každých 24 hodin).
 **Podporované nasazení** | Nasaďte jako virtuální počítač Hyper-V pomocí šablony VHD.<br/><br/> Nasaďte jako virtuální počítač Hyper-V nebo fyzický počítač pomocí instalačního skriptu PowerShellu.
 **Podpora projektu** |  Zařízení může být přidruženo k jednomu projektu. <br/> K jednomu projektu může být přidružen libovolný počet zařízení.<br/> 
@@ -82,7 +82,7 @@ _ *Požadavky technologie Hyper-V** | Pokud nasadíte zařízení se šablonou V
 
 **Požadavek** | **Fyzické** 
 --- | ---
-**Oprávnění** | Pokud chcete přistupovat k webové aplikaci místně nebo vzdáleně, musíte být správcem domény nebo místním správcem na počítači zařízení.
+**Oprávnění** | Chcete-li přistupovat k webové aplikaci místně nebo vzdáleně, je nutné mít místní nebo doménový uživatelský účet s oprávněními správce na serveru zařízení.
 **Součásti zařízení** | Zařízení má následující součásti: <br/><br/> - **Aplikace pro správu**: Toto je webová aplikace pro vstup uživatele během nasazování zařízení. Používá se při posuzování počítačů pro migraci do Azure.<br/> - **Agent zjišťování**: Agent shromáždí data konfigurace počítače. Používá se při posuzování počítačů pro migraci do Azure.<br/>- **Agent kolektoru**: Agent shromažďuje údaje o výkonu. Používá se při posuzování počítačů pro migraci do Azure.<br/>- **Služba automatické aktualizace**: aktualizuje součásti zařízení (spouští se každých 24 hodin).
 **Podporované nasazení** | Nasaďte jako vyhrazený fyzický počítač nebo virtuální počítač pomocí instalačního skriptu PowerShellu. Skript je k dispozici ke stažení na portálu.
 **Podpora projektu** |  Zařízení může být přidruženo k jednomu projektu. <br/> K jednomu projektu může být přidružen libovolný počet zařízení.<br/> 
@@ -183,7 +183,7 @@ IPv6 adresy | vm.Guest.Net
 Propustnost čtení (MB za sekundu) | NET. Received. Average
 Propustnost zápisu (MB za sekundu) | NET. přenášeno. Average
 **Podrobnosti o cestě inventáře** | 
-Název | vnitřního. GetType (). Jméno
+Name | vnitřního. GetType (). Jméno
 Typ podřízeného objektu | vnitřního. ChildType
 Referenční informace | vnitřního. MoRef
 Podrobnosti nadřazené položky | Kontejner. Parent
@@ -230,7 +230,7 @@ Tady jsou funkce data, která zařízení shromažďuje z každého virtuálníh
 
 **Data**  | **Rutina PowerShellu** | **Vlastnost**
 --- | --- | ---
-Název  | Get-WindowsFeature  | Název
+Name  | Get-WindowsFeature  | Name
 Typ funkce | Get-WindowsFeature  | FeatureType
 Nadřazený  | Get-WindowsFeature  | Nadřazený
 
@@ -240,7 +240,7 @@ Tady jsou metadata SQL serveru, která zařízení shromažďuje z virtuálních
 
 **Data**  | **Umístění registru**  | **Klíč**
 --- | --- | ---
-Název  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server\Instance Names\SQL  | installedInstance
+Name  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server\Instance Names\SQL  | installedInstance
 Edice  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | Edice 
 Aktualizace Service Pack  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | SP
 Verze  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | Verze 
@@ -251,7 +251,7 @@ Zde jsou data operačního systému, která zařízení shromažďují každý v
 
 Data  | Třída WMI  | Vlastnost třídy WMI
 --- | --- | ---
-Název  | Win32_operatingsystem  | Titulek
+Name  | Win32_operatingsystem  | Titulek
 Verze  | Win32_operatingsystem  | Verze
 Architektura  | Win32_operatingsystem  | OSArchitecture
 
@@ -261,7 +261,7 @@ Tady je nainstalovaná data aplikace, která zařízení shromažďuje z každé
 
 Data  | Příkaz
 --- | --- 
-Název | ot./min., bázi dpkg – dotaz, přichycení
+Name | ot./min., bázi dpkg – dotaz, přichycení
 Verze | ot./min., bázi dpkg – dotaz, přichycení
 Poskytovatel | ot./min., bázi dpkg – dotaz, přichycení
 
@@ -271,7 +271,7 @@ Zde jsou data operačního systému, která zařízení shromažďují každý v
 
 **Data**  | **Příkaz** 
 --- | --- | ---
-Název <br/> verze | Shromážděno z jednoho nebo více následujících souborů:<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version 
+Name <br/> verze | Shromážděno z jednoho nebo více následujících souborů:<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version 
 Architektura | uname
 
 
@@ -510,7 +510,7 @@ Pokud používáte starší verzi nějaké součásti, musíte službu odinstalo
 
 1. Chcete-li vyhledat nejnovější verze služby zařízení, [stáhněte](https://aka.ms/latestapplianceservices) LatestComponents.jsv souboru.
 2.    Po stažení otevřete LatestComponents.jsv souboru poznámkového bloku.
-3. Vyhledejte nejnovější verzi služby v souboru a odkaz pro stažení. Například:
+3. Vyhledejte nejnovější verzi služby v souboru a odkaz pro stažení. Příklad:
 
     "Name": "ASRMigrationWebApp"; "DownloadLink": " https://download.microsoft.com/download/f/3/4/f34b2eb9-cc8d-4978-9ffb-17321ad9b7ed/MicrosoftAzureApplianceConfigurationManager.msi ", "Version": "6.0.211.2", "Md5Hash": "e00a742acc35e78a64a6a81e75469b84"
 
@@ -521,7 +521,7 @@ Pokud používáte starší verzi nějaké součásti, musíte službu odinstalo
 
 5. Ověřte, že výstup příkazu odpovídá položce hodnoty hash pro službu v souboru (například hodnota hash MD5 výše).
 6. Nyní spusťte instalační službu MSI a nainstalujte ji. Je to tichá instalace a po dokončení se okno instalace zavře.
-7. Po dokončení instalace ověřte verzi služby v části **Control panel**  >  **programy a funkce** v Ovládacích panelech. Verze služby by teď měla být upgradována na nejnovější verzi uvedenou v souboru JSON.
+7. Po dokončení instalace ověřte verzi služby v části   >  **programy a funkce** v Ovládacích panelech. Verze služby by teď měla být upgradována na nejnovější verzi uvedenou v souboru JSON.
 
 
 

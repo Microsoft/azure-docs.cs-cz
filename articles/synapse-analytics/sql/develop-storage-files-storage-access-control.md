@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9e3fe0f8c14fdcfa9b3e97a02331d777abca2600
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: e884ceab652136c505ce7032f0e78588fb20be89
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954255"
+ms.locfileid: "98986950"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Řízení přístupu k účtu úložiště pro fond SQL bez serveru ve službě Azure synapse Analytics
 
@@ -102,9 +102,10 @@ Chcete-li získat přístup k úložišti chráněnému bránou firewall prostř
 Pomocí těchto kroků můžete nakonfigurovat bránu firewall účtu úložiště a přidat výjimku pro pracovní prostor synapse.
 
 1. Otevřít PowerShell nebo [nainstalovat PowerShell](/powershell/scripting/install/installing-powershell-core-on-windows?preserve-view=true&view=powershell-7.1)
-2. Nainstalujte aktualizovaný AZ. Modul úložiště: 
+2. Nainstalujte modul AZ. Storage 3.0.1 a AZ. synapse 0.7.0: 
     ```powershell
     Install-Module -Name Az.Storage -RequiredVersion 3.0.1-preview -AllowPrerelease
+    Install-Module -Name Az.Synapse -RequiredVersion 0.7.0
     ```
     > [!IMPORTANT]
     > Ujistěte se, že používáte **verzi 3.0.1**. Verzi AZ. Storage můžete ověřit spuštěním tohoto příkazu:  
@@ -121,16 +122,23 @@ Pomocí těchto kroků můžete nakonfigurovat bránu firewall účtu úložišt
     - Název skupiny prostředků – najdete ho v Azure Portal přehledu pracovního prostoru synapse.
     - Název účtu – název účtu úložiště, který je chráněný pravidly brány firewall.
     - ID tenanta – najdete ho v Azure Portal Azure Active Directory v informacích o tenantovi.
-    - ID prostředku – najdete ho v Azure Portal v části Přehled pracovního prostoru synapse.
+    - Název pracovního prostoru – název pracovního prostoru synapse.
 
     ```powershell
         $resourceGroupName = "<resource group name>"
         $accountName = "<storage account name>"
         $tenantId = "<tenant id>"
-        $resourceId = "<Synapse workspace resource id>"
+        $workspaceName = "<synapse workspace name>"
+        
+        $workspace = Get-AzSynapseWorkspace -Name $workspaceName
+        $resourceId = $workspace.Id
+        $index = $resourceId.IndexOf("/resourceGroups/", 0)
+        # Replace G with g - /resourceGroups/ to /resourcegroups/
+        $resourceId = $resourceId.Substring(0,$index) + "/resourcegroups/" + $resourceId.Substring($index + "/resourceGroups/".Length)
+        $resourceId
     ```
     > [!IMPORTANT]
-    > Ujistěte se, že ID prostředku odpovídá této šabloně.
+    > Ujistěte se, že ID prostředku odpovídá této šabloně v tisku proměnné resourceId.
     >
     > Je důležité psát **ResourceGroups** malými písmeny.
     > Příklad jednoho ID prostředku: 
@@ -145,7 +153,14 @@ Pomocí těchto kroků můžete nakonfigurovat bránu firewall účtu úložišt
 6. Ověřte, že se pravidlo použilo v účtu úložiště: 
     ```powershell
         $rule = Get-AzStorageAccountNetworkRuleSet -ResourceGroupName $resourceGroupName -Name $accountName
-        $rule.ResourceAccessRules
+        $rule.ResourceAccessRules | ForEach-Object { 
+        if ($_.ResourceId -cmatch "\/subscriptions\/(\w\-*)+\/resourcegroups\/(.)+") { 
+            Write-Host "Storage account network rule is successfully configured." -ForegroundColor Green
+            $rule.ResourceAccessRules
+        } else {
+            Write-Host "Storage account network rule is not configured correctly. Remove this rule and follow the steps in detail." -ForegroundColor Red
+            $rule.ResourceAccessRules
+        }
     ```
 
 #### <a name="managed-identity"></a>Spravovaná identita

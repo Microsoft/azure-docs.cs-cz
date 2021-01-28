@@ -96,6 +96,8 @@
       items:
         - name: Co je hyperškálování PostgreSQL s podporou služby Azure Arc
           href: what-is-azure-arc-enabled-postgres-hyperscale.md
+        - name: Omezení
+          href: limitations-postgresql-hyperscale.md
     - name: Rychlé starty
       items:
         - name: Podporované verze

@@ -13,12 +13,12 @@ ms.date: 01/04/2021
 ms.author: ryanwi
 ms.custom: aaddev, content-perf, FY21Q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 2529c6c3b0f9d188e1ce8062c05f62f3e980ef50
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 19330af5e4c0e4962993d0ed89ec9bcd4a50514a
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805221"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986409"
 ---
 # <a name="configure-token-lifetime-policies-preview"></a>Konfigurace zásad životnosti tokenů (Preview)
 Můžete zadat dobu života přístupu, SAML nebo ID tokenu vydaného platformou Microsoft identity. Životnost tokenů je možné nastavit u všech aplikací ve vaší organizaci, u aplikace pro více tenantů nebo pro konkrétní objekt služby ve vaší organizaci. Další informace najdete v tématu [konfigurovatelné životnosti tokenů](active-directory-configurable-token-lifetimes.md).
@@ -38,7 +38,7 @@ Začněte tím, že provedete následující kroky:
 1. Chcete-li zobrazit všechny zásady, které byly vytvořeny ve vaší organizaci, spusťte rutinu [Get-AzureADPolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) .  Všechny výsledky s definovanými hodnotami vlastností, které se liší od výše uvedených výchozích hodnot, jsou v rozsahu vyřazení.
 
     ```powershell
-    Get-AzureADPolicy -All
+    Get-AzureADPolicy -All $true
     ```
 
 1. Pokud chcete zjistit, které aplikace a instanční objekty jsou propojené s konkrétní zásadou, kterou jste zjistili, spusťte následující rutinu [Get-AzureADPolicyAppliedObject](/powershell/module/azuread/get-azureadpolicyappliedobject?view=azureadps-2.0-preview&preserve-view=true) nahrazením **1a37dad8-5da7-4cc8-87c7-efbc0326cf20** pomocí libovolných identifikátorů vašich zásad. Pak se můžete rozhodnout, jestli chcete nakonfigurovat četnost přihlášení podmíněného přístupu, nebo zachovat výchozí nastavení služby Azure AD.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: 7ea871428fffe685cc9d43dd698bfefb8d8a511a
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 19128f0372f9a5bda0d16155167a507eccaf436a
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756673"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986583"
 ---
 # <a name="manage-security-policies"></a>Správa zásad zabezpečení
 
@@ -54,7 +54,7 @@ Zobrazení zásad zabezpečení ve službě Security Center:
 
 1. Zobrazí se stránka zásady zabezpečení pro toto předplatné nebo skupinu pro správu. Zobrazuje dostupné a přiřazené zásady.
 
-   ![Stránka zásad](./media/tutorial-security-policy/security-policy-page.png)
+    :::image type="content" source="./media/tutorial-security-policy/security-policy-page.png" alt-text="Stránka zásad zabezpečení Security Center" lightbox="./media/tutorial-security-policy/security-policy-page.png":::
 
     > [!NOTE]
     > Pokud je popisek "g Zděděný" společně s výchozí zásadou, znamená to, že zásada byla přiřazena skupině pro správu a zděděna předplatným, které si prohlížíte.
@@ -102,7 +102,7 @@ Další informace o doporučeních najdete v tématu [Správa doporučení zabez
 
 1. V Security Center v části **zásady & dodržování předpisů** vyberte **zásady zabezpečení**.
 
-   ![Správa zásad](./media/tutorial-security-policy/policy-management.png)
+    :::image type="content" source="./media/tutorial-security-policy/policy-management.png" alt-text="Spouští se proces správy zásad v Azure Security Center.":::
 
 2. Vyberte předplatné nebo skupinu pro správu, pro které chcete doporučení zakázat.
 
@@ -111,7 +111,7 @@ Další informace o doporučeních najdete v tématu [Správa doporučení zabez
 
 1. Vyberte **Zobrazit efektivní zásady**.
 
-   ![Zobrazit zásady](./media/tutorial-security-policy/view-effective-policy.png)
+    :::image type="content" source="./media/tutorial-security-policy/view-effective-policy.png" alt-text="Postup otevření efektivních zásad přiřazených k vašemu předplatnému":::
 
 1. Vyberte přiřazenou zásadu.
 
@@ -126,10 +126,8 @@ Další informace o doporučeních najdete v tématu [Správa doporučení zabez
    > [!NOTE]
    > Změny zásad, které se projeví, můžou trvat až 12 hodin.
 
-
-
 ## <a name="next-steps"></a>Další kroky
-Tento článek vysvětluje zásady zabezpečení. Související informace najdete v následujících článcích:
+Tato stránka vysvětluje zásady zabezpečení. Související informace najdete na následujících stránkách:
 
 - [Naučte se nastavovat zásady pomocí PowerShellu.](../governance/policy/assign-policy-powershell.md) - 
 - [Naučte se, jak upravit zásady zabezpečení v Azure Policy](../governance/policy/tutorials/create-and-manage.md) - 

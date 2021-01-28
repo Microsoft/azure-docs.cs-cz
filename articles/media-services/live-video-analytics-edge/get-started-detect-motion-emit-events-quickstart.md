@@ -3,12 +3,12 @@ title: Začínáme se službou Live video Analytics v IoT Edge – Azure
 description: V tomto rychlém startu se dozvíte, jak začít pracovat se službou Live video Analytics na IoT Edge. Naučte se detekovat pohyb v živém streamu videa.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 2ae8292375c0b85cc4c771c1fe7d853c5fcd3afd
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: fde82dde7df3fa9756c145940178f35ed255ce37
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955762"
+ms.locfileid: "98986543"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Rychlý Start: Začínáme – Live video Analytics na IoT Edge
 
@@ -31,7 +31,7 @@ Můžete si prohlédnout následující video s podrobnými kroky, jak začít s
   > Budete potřebovat předplatné Azure s oprávněním pro vytváření instančních objektů (Tato **role vlastníka** poskytuje). Pokud nemáte správná oprávnění, obraťte se na správce účtu, abyste vám udělili správná oprávnění.  
 
 * [Visual Studio Code](https://code.visualstudio.com/) ve vývojovém počítači. Ujistěte se, že máte [rozšíření Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
-* Ujistěte se, že je síť, ke které je připojený váš vývojový počítač, povolená prostřednictvím portu 5671 rozšířený Protokol AMQP (Message Queueing Protocol). Tato instalace umožňuje, aby nástroje Azure IoT komunikovaly se službou Azure IoT Hub.
+* Ujistěte se, že je síť, ke které je připojený váš vývojový počítač, povolená prostřednictvím portu 5671 pro odchozí přenosy prostřednictvím protokolu AMQP (Message Queueing Protocol). Tato instalace umožňuje, aby nástroje Azure IoT komunikovaly se službou Azure IoT Hub.
 
 > [!TIP]
 > Při instalaci rozšíření Azure IoT Tools se může zobrazit výzva k instalaci Docker. Bez obav tuto výzvu ignorujte.
@@ -67,7 +67,7 @@ Pro tento rychlý Start doporučujeme, abyste k nasazení požadovaných prostř
     1. **Síťové rozhraní** – umožňuje virtuálnímu počítači Azure komunikovat s internetem, Azure a dalšími prostředky.
     1. **Připojení bastionu** – to vám umožní připojit se k virtuálnímu počítači pomocí prohlížeče a Azure Portal.
     1. **Veřejná IP adresa** – umožňuje prostředkům Azure komunikovat s internetem a veřejně přístupnými službami Azure.
-    1. **Virtuální síť** – Tato možnost umožňuje mezi sebou zabezpečit mnoho typů prostředků Azure, jako je třeba virtuální počítač, aby bylo možné bezpečně komunikovat mezi sebou, internetem a místními sítěmi. Další informace o [virtuálních sítích](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
+    1. **Virtuální síť** – Tato možnost umožňuje mezi sebou zabezpečit mnoho typů prostředků Azure, jako je třeba virtuální počítač, aby bylo možné bezpečně komunikovat mezi sebou, internetem a místními sítěmi. Přečtěte si další informace o [virtuálních sítích](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview).
     1. **IoT Hub** – slouží jako centrální Centrum zpráv pro obousměrnou komunikaci mezi aplikací IoT, IoT Edge moduly a zařízeními, která spravuje.
     1. **Účet Media Service** – to pomáhá se správou a streamování mediálního obsahu v Azure.
     1. **Účet úložiště** – musíte mít jeden primární účet úložiště a k vašemu Media Services účtu můžete mít k dispozici libovolný počet sekundárních účtů úložiště. Další informace najdete v tématu [účty Azure Storage s účty Azure Media Services](https://docs.microsoft.com/azure/media-services/latest/storage-account-concept).
@@ -165,7 +165,7 @@ Chcete-li vytvořit výčet všech [topologií grafu](media-graph-concept.md#med
 
 ### <a name="invoke-graphtopologyset"></a>Vyvolat GraphTopologySet
 
-Pomocí kroků pro vyvolání `GraphTopologyList` můžete vyvolat `GraphTopologySet` pro nastavení [topologie grafu](media-graph-concept.md#media-graph-topologies-and-instances). Jako datovou část použijte následující JSON.
+Stejně jako předtím jsme teď mohli vyvolat `GraphTopologySet` nastavení [topologie grafu](media-graph-concept.md#media-graph-topologies-and-instances). Jako datovou část použijte následující JSON.
 
 ```
 {

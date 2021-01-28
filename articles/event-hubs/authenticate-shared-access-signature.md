@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak ověřit přístup k prostředků
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 26c921213168e1028f311eabaa417efdb76f5c97
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: ff141fc1bb681e2356a4471dfdc808d622fd76b5
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510086"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986490"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Ověřování přístupu k prostředkům Event Hubs pomocí sdílených přístupových podpisů (SAS)
 Sdílený přístupový podpis (SAS) poskytuje podrobnější kontrolu nad typem přístupu, který udělíte klientům, kteří mají sdílený přístupový podpis. Tady jsou některé ovládací prvky, které můžete nastavit v SAS: 
@@ -203,7 +203,7 @@ Pokud chcete například definovat autorizační pravidla s rozsahem, aby se ode
 
 
 > [!NOTE]
-> I když se to nedoporučuje, je možné zařízení s tokeny, která udělují přístup k centru událostí nebo k oboru názvů, nabavit. Jakékoli zařízení, které obsahuje tento token, může odesílat zprávy přímo do tohoto centra událostí. Zařízení se navíc nedá od odeslání do tohoto centra událostí vyvažovat za zakázané.
+> I když se to nedoporučuje, je možné zařízení s tokeny, která udělují přístup k centru událostí nebo k oboru názvů, nabavit. Jakékoli zařízení, které obsahuje tento token, může odesílat zprávy přímo do tohoto centra událostí. Zařízení se navíc nedá blocklisted z odesílání do tohoto centra událostí.
 > 
 > Vždy doporučujeme zadat konkrétní a podrobné obory.
 

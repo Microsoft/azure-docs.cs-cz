@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 17c0e63b02d61b3aecf70624bc97a468d18f66fe
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 10f21067f48155a394ac20337d77e3e82aae64d8
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607503"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98985933"
 ---
 # <a name="what-is-azure-arc-enabled-postgresql-hyperscale"></a>Co je rozšíření Azure ARC povolené PostgreSQL.
 
@@ -26,7 +26,7 @@ PostgreSQL s povoleným rozšířením Azure ARC je jedna z databázových služ
 - Podpora odpojeného scénáře
 
 Další podrobnosti najdete na adrese:
-- [Co jsou datové služby s podporou služby Azure Arc](overview.md)
+- [Co jsou datové služby s podporou ARC Azure](overview.md)
 - [Režimy připojení a požadavky](connectivity.md)
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
@@ -48,13 +48,13 @@ Toto je faktor formy Postgres databázového stroje, který je k dispozici jako 
 Toto je faktor formuláře pro škálování Postgres databázového stroje, který je dostupný pro datové služby s podporou ARC Azure. Je také napájený pomocí rozšíření Citus, které umožňuje prostředí s technologií škálování. V tomto formuláři poskytují naši zákazníci infrastrukturu, která je hostitelem systémů a pracuje s nimi.
 
 ## <a name="next-steps"></a>Další kroky
-- **Vytvořit**
-   > **Chcete něco vyzkoušet? Nemáte k dispozici cluster Kubernetes? Poskytujeme vám izolovaný prostor:**  
-   > Začněte rychle s využitím [Azure ARC rychlé zprovoznění](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/) ve službě Azure Kubernetes Service (AKS), AWS elastické KUBERNETES (EKS), Google Cloud Kubernetes Engine (GKE) nebo na virtuálním počítači Azure.
+- **Vyzkoušejte** si to. Začněte rychle s využitím [Azure ARC rychlé zprovoznění](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services) ve službě Azure Kubernetes Service (AKS), AWS elastické KUBERNETES (EKS), Google Cloud Kubernetes Engine (GKE) nebo na virtuálním počítači Azure. 
 
-   - **Vytvořeny**
-      - [Instalace klientských nástrojů](install-client-tools.md)
-      - [Vytvoření řadiče dat ARC Azure](create-data-controller.md) (nejprve vyžaduje instalaci nástrojů klienta)
-      - [Vytvořte Azure Database for PostgreSQL skupinu serverů s škálovatelným škálováním na ARC Azure](create-postgresql-hyperscale-server-group.md) (vyžaduje nejdřív vytvoření řadiče dat ARC Azure).
-- [**Další informace o datových službách s podporou ARC Azure**](https://azure.microsoft.com/services/azure-arc/hybrid-data-services)
-- [**Přečtěte si o ARC Azure**](https://aka.ms/azurearc)
+- **Vytvořte si vlastní.** Pomocí těchto kroků vytvořte vlastní cluster Kubernetes: 
+   1. [Instalace klientských nástrojů](install-client-tools.md)
+   2. [Vytvoření kontroleru dat ARC Azure](create-data-controller.md)
+   3. [Vytvoření Azure Database for PostgreSQL skupiny serverů s škálovatelným škálováním na ARC Azure](create-postgresql-hyperscale-server-group.md) 
+
+- **Learn**
+   - [Další informace o datových službách s podporou ARC Azure](https://azure.microsoft.com/services/azure-arc/hybrid-data-services)
+   - [Přečtěte si o ARC Azure](https://aka.ms/azurearc)

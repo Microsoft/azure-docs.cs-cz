@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: d750b3a85741bb4761b640848f01e5917760b5aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75332498ac59dc46a7a079eff4c25e02b2a6cb9b
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91261086"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986933"
 ---
 # <a name="use-the-new-authentication-for-your-storsimple"></a>Použití nového ověřování pro StorSimple
 
@@ -19,7 +19,7 @@ ms.locfileid: "91261086"
 
 [!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
 
-Služba StorSimple Device Manager běží v Microsoft Azure a připojuje se k několika virtuálním polím StorSimple. Do data Služba StorSimple Device Manager používala službu Access Control (ACS) k ověření služby na zařízení StorSimple. Mechanismus ACS bude brzy zastaralý a nahrazený ověřováním Azure Active Directory (AAD).
+Služba StorSimple Správce zařízení běží v Microsoft Azure a připojuje se k několika virtuálním polím StorSimple. Do data Služba StorSimple Správce zařízení používala službu Access Control (ACS) k ověření služby na zařízení StorSimple. Mechanismus ACS bude brzy zastaralý a nahrazený ověřováním Azure Active Directory (AAD).
 
 Informace obsažené v tomto článku se vztahují jenom na virtuální pole řady StorSimple 1200. Tento článek popisuje podrobné informace o ověřování AAD a přidruženém novém registračním klíči služby a úpravách pravidel brány firewall, které platí pro zařízení StorSimple.
 
@@ -53,14 +53,14 @@ Pokud používáte virtuální pole StorSimple, pomocí následující tabulky u
 
 | Pokud je vaše zařízení spuštěné  | Proveďte následující akci                                    |
 |----------------------------|--------------------------------------------------------------|
-| Aktualizace 1,0 nebo novější a je offline. <br> Zobrazí se upozornění, že adresa URL není povolená.| 1. Upravte pravidla brány firewall tak, aby zahrnovala adresu URL ověřování. Viz [adresy URL pro ověřování](#url-changes-for-aad-authentication). <br> 2. [Získejte registrační klíč AAD ze služby](#aad-based-registration-keys). <br> 3. proveďte kroky 1-5 pro [připojení k rozhraní Windows PowerShell virtuálního pole](storsimple-virtual-array-deploy2-provision-hyperv.md#step-2-provision-a-virtual-array-in-hypervisor).<br> 4. pomocí `Invoke-HcsReRegister` rutiny zaregistrujete zařízení přes Windows PowerShell. Zadejte klíč, který jste získali v předchozím kroku.|
+| Aktualizace 1,0 nebo novější a je offline. <br> Zobrazí se upozornění, že adresa URL není allowlisted.| 1. Upravte pravidla brány firewall tak, aby zahrnovala adresu URL ověřování. Viz [adresy URL pro ověřování](#url-changes-for-aad-authentication). <br> 2. [Získejte registrační klíč AAD ze služby](#aad-based-registration-keys). <br> 3. proveďte kroky 1-5 pro [připojení k rozhraní Windows PowerShell virtuálního pole](storsimple-virtual-array-deploy2-provision-hyperv.md#step-2-provision-a-virtual-array-in-hypervisor).<br> 4. pomocí `Invoke-HcsReRegister` rutiny zaregistrujete zařízení přes Windows PowerShell. Zadejte klíč, který jste získali v předchozím kroku.|
 | Aktualizace 1,0 nebo novější a zařízení je online.| Nevyžaduje se žádná akce.                                       |
 | Aktualizace 0,6 nebo starší verze a zařízení je offline. | 1. [Stáhněte aktualizaci 1,0 prostřednictvím katalogu serveru](storsimple-virtual-array-install-update-1.md#download-the-update-or-the-hotfix).<br>2. [použijte aktualizaci 1,0 prostřednictvím místního webového uživatelského rozhraní](storsimple-virtual-array-install-update-1.md#install-the-update-or-the-hotfix).<br>3. [Získejte registrační klíč AAD ze služby](#aad-based-registration-keys). <br>4. proveďte kroky 1-5 pro [připojení k rozhraní Windows PowerShell virtuálního pole](storsimple-virtual-array-deploy2-provision-hyperv.md#step-2-provision-a-virtual-array-in-hypervisor).<br>5. pomocí `Invoke-HcsReRegister` rutiny zaregistrujete zařízení přes Windows PowerShell. Zadejte klíč, který jste získali v předchozím kroku.|
 | Aktualizace 0,6 nebo starší verze a zařízení je online | Upravte pravidla brány firewall tak, aby zahrnovala adresu URL ověřování.<br> Nainstalujte aktualizaci 1,0 prostřednictvím Azure Portal. |
 
 ## <a name="aad-based-registration-keys"></a>Registrační klíče založené na AAD
 
-Počínaje aktualizací 1,0 pro virtuální pole StorSimple se použijí nové registrační klíče založené na AAD. Pomocí registračních klíčů zaregistrujete službu StorSimple Device Manager se zařízením.
+Počínaje aktualizací 1,0 pro virtuální pole StorSimple se použijí nové registrační klíče založené na AAD. Pomocí registračních klíčů zaregistrujete službu StorSimple Správce zařízení se zařízením.
 
 Pokud používáte virtuální pole StorSimple se systémem Update 0,6 nebo starším, nemůžete použít nové registrační klíče služby AAD. Je nutné znovu vygenerovat registrační klíč služby. Po opětovném vygenerování klíče se nový klíč použije k registraci všech dalších zařízení. Starý klíč již není platný.
 
@@ -72,7 +72,7 @@ K vygenerování registračního klíče služby AAD proveďte následující kr
 
 #### <a name="to-generate-the-aad-service-registration-key"></a>Vygenerování registračního klíče služby AAD
 
-1. V **StorSimple Device Manager**přejít na **klíče** **pro &gt; správu** .
+1. V **StorSimple Správce zařízení** přejít na **klíče** **pro &gt; správu** .
     
     ![Přejít k klíčům](./media/storsimple-virtual-array-aad-registration-key/aad-registration-key1.png)
 

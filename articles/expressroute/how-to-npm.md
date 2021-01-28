@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 01/25/2019
 ms.author: duau
-ms.openlocfilehash: c8127a60a4685a615bc07e21a1efb4dd216c5b8c
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 837d1f78a9fde72137383e6c22adb8870997dc9b
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201048"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986035"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>Konfigurace Network Performance Monitoru pro ExpressRoute
 
@@ -59,7 +59,7 @@ Vytvořte pracovní prostor v předplatném, který má odkaz virtuální sítě
 
    ![portál](./media/how-to-npm/3.png)<br><br>
 2. V dolní části stránky hlavní **Network Performance Monitor** klikněte na **vytvořit** . otevře se stránka **Network Performance Monitor-vytvořit nové řešení** . Klikněte na **Log Analytics pracovní prostor – vyberte pracovní prostor** a otevřete stránku pracovní prostory. Kliknutím na **+ vytvořit nový pracovní prostor** otevřete stránku pracovní prostor.
-3. Na stránce **Log Analytics pracovní prostor** vyberte **vytvořit novou**a pak nakonfigurujte následující nastavení:
+3. Na stránce **Log Analytics pracovní prostor** vyberte **vytvořit novou** a pak nakonfigurujte následující nastavení:
 
    * Log Analytics pracovní prostor – zadejte název pracovního prostoru.
    * Předplatné – Pokud máte více předplatných, vyberte tu, kterou chcete přidružit k novému pracovnímu prostoru.
@@ -104,7 +104,7 @@ Doporučujeme nainstalovat alespoň dva agenty na každou stranu připojení Exp
    * Pokud se rozhodnete připojit k **Azure Log Analytics**, vložte do předchozího oddílu **ID pracovního prostoru** a **klíč pracovního prostoru** (primární klíč), který jste zkopírovali do poznámkového bloku. Pak klikněte na tlačítko **Další**.
 
      ![ID a klíč](./media/how-to-npm/8.png)
-   * Pokud se rozhodnete připojit k **Operations Manager**, na stránce **Konfigurace skupiny pro správu** zadejte **název skupiny pro**správu, **Server pro správu**a **port serveru pro správu**. Pak klikněte na tlačítko **Další**.
+   * Pokud se rozhodnete připojit k **Operations Manager**, na stránce **Konfigurace skupiny pro správu** zadejte **název skupiny pro** správu, **Server pro správu** a **port serveru pro správu**. Pak klikněte na tlačítko **Další**.
 
      ![Operations Manager](./media/how-to-npm/9.png)
    * Na stránce **účet akce agenta** vyberte účet **místní systém** nebo  **účet domény nebo místního počítače**. Pak klikněte na tlačítko **Další**.
@@ -169,7 +169,7 @@ Další informace o NSG najdete v tématu [skupiny zabezpečení sítě](../virt
 
 ## <a name="step-4-discover-peering-connections"></a><a name="setupmonitor"></a>Krok 4: zjištění připojení partnerských vztahů
 
-1. Přejděte na stránku s přehledem Network Performance Monitor tak, že přejdete na stránku **všechny prostředky** a potom kliknete na npm pracovní prostor na seznamu povolených.
+1. Přejděte na stránku s přehledem Network Performance Monitor tak, že přejdete na stránku **všechny prostředky** a potom kliknete na pracovní prostor allowlisted npm.
 
    ![pracovní prostor npm](./media/how-to-npm/npm.png)
 2. Řídicí panel zobrazíte kliknutím na dlaždici s přehledem **Network Performance Monitor** . Řídicí panel obsahuje stránku ExpressRoute, která ukazuje, že ExpressRoute je ve stavu Unconfigured. Kliknutím na **Nastavení funkcí** otevřete stránku konfigurace Network Performance Monitor.
@@ -184,11 +184,11 @@ Další informace o NSG najdete v tématu [skupiny zabezpečení sítě](../virt
             
 ## <a name="step-5-configure-monitors"></a><a name="configmonitor"></a>Krok 5: Konfigurace monitorování
 
-V této části nakonfigurujete monitorování. Postupujte podle kroků pro typ partnerského vztahu, který chcete monitorovat: **privátní partnerské vztahy**nebo **partnerské vztahy Microsoftu**.
+V této části nakonfigurujete monitorování. Postupujte podle kroků pro typ partnerského vztahu, který chcete monitorovat: **privátní partnerské vztahy** nebo **partnerské vztahy Microsoftu**.
 
 ### <a name="private-peering"></a>Soukromý partnerský vztah
 
-U privátního partnerského vztahu se po dokončení zjišťování zobrazí pravidla pro jedinečný **název okruhu** a **název virtuální**sítě. Zpočátku jsou tato pravidla zakázaná.
+U privátního partnerského vztahu se po dokončení zjišťování zobrazí pravidla pro jedinečný **název okruhu** a **název virtuální** sítě. Zpočátku jsou tato pravidla zakázaná.
 
 ![pravidla](./media/how-to-npm/14.png)
 
@@ -199,7 +199,7 @@ U privátního partnerského vztahu se po dokončení zjišťování zobrazí pr
 5. Uložte nastavení.
 6. Po povolení pravidel a výběru hodnot a agentů, které chcete monitorovat, je k dispozici počkat přibližně 30-60 minut, než se hodnoty začnou naplňovat, a dlaždice **monitorování ExpressRoute** budou k dispozici.
 
-### <a name="microsoft-peering"></a>Partnerský vztah Microsoftu
+### <a name="microsoft-peering"></a>Partnerský vztah s Microsoftem
 
 U partnerského vztahu Microsoftu klikněte na partnerské vztahy Microsoftu, které chcete monitorovat, a nakonfigurujte nastavení.
 
