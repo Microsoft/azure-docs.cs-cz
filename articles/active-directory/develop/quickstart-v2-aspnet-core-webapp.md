@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/11/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: c20685c0c392ece68dc80b57afc6680f2efd9e35
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 05e14b5bdc2f603ffe802b12ed33b7b57be25b69
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754504"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938198"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Rychlý Start: Přidání přihlašování s Microsoftem do webové aplikace ASP.NET Core
 
@@ -56,13 +56,13 @@ Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.
 > 1. Vyberte **Zaregistrovat**.
 > 1. V části **Spravovat** vyberte **ověřování**.
 > 1. V části **identifikátory URI pro přesměrování** vyberte **Přidat URI** a pak zadejte `https://localhost:44321/signin-oidc` .
-> 1. Zadejte **adresu URL pro odhlášení** `https://localhost:44321/signout-oidc` .
+> 1. Zadejte **adresu URL pro odhlášení front-Channel** `https://localhost:44321/signout-oidc` .
 > 1. V části **Implicitní udělení** vyberte **Tokeny ID**.
 > 1. Vyberte **Uložit**.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>Krok 1: Konfigurace aplikace v Azure Portal
-> Aby ukázka kódu pro tento rychlý Start fungovala, je třeba přidat adresy URL odpovědi jako `https://localhost:44321/` a `https://localhost:44321/signin-oidc` , přidat adresu URL pro odhlášení `https://localhost:44321/signout-oidc` a vyžádat tokeny ID, které budou vydány koncovým bodem autorizace.
+> Vzorový kód tohoto rychlého startu vyžaduje **identifikátor URI přesměrování** `https://localhost:44321/` a `https://localhost:44321/signin-oidc` **adresu URL pro odhlášení front-Channel** `https://localhost:44321/signout-oidc` . Koncový bod autorizace vydá tokeny ID žádosti.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Udělat změnu za mě]()
 >

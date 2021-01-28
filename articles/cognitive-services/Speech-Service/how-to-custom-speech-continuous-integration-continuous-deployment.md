@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.author: kaprochi
-ms.openlocfilehash: d37fca06a3d2eafa0af9e31c3a30ac66be5404f0
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: f7f11ef097d3abee2b4c18c32a1cb215d9fe8ce8
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98020600"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939900"
 ---
 # <a name="cicd-for-custom-speech"></a>CI/CD pro Custom Speech
 
@@ -73,7 +73,7 @@ Většina týmů vyžaduje ruční kontrolu a proces schvalování pro nasazení
 
 K dispozici jsou následující nástroje pro postupy CI/CD Automation pro Custom Speech:
 
-- [Azure CLI](/cli/azure/?view=azure-cli-latest) pro vytvoření ověřování instančního objektu Azure, dotazování předplatných Azure a uložení výsledků testů v objektu blob Azure.
+- [Azure CLI](/cli/azure/) pro vytvoření ověřování instančního objektu Azure, dotazování předplatných Azure a uložení výsledků testů v objektu blob Azure.
 - [Azure Speech CLI](spx-overview.md) pro interakci se službou Speech z příkazového řádku nebo automatizovaného pracovního postupu.
 
 ## <a name="devops-solution-for-custom-speech-using-github-actions"></a>Řešení DevOps pro Custom Speech s využitím akcí GitHubu

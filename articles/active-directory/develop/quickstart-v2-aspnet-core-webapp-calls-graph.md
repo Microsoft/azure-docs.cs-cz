@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 8e54f71ef58b3ea76a5fe55347a1caa173046320
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 675a5526bfd741876de16fe41c969c09a4ed0ad7
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754489"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938229"
 ---
 # <a name="quickstart-aspnet-core-web-app-that-signs-in-users-and-calls-microsoft-graph-on-their-behalf"></a>Rychlý Start: ASP.NET Core webovou aplikaci, která podepisuje uživatele a volá Microsoft Graph jejich jménem
 
@@ -55,7 +55,7 @@ Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.
 > 1. Zadejte **identifikátor URI přesměrování** `https://localhost:44321/signin-oidc` .
 > 1. Vyberte **Zaregistrovat**.
 > 1. V části **Spravovat** vyberte **ověřování**.
-> 1. Zadejte **adresu URL pro odhlášení** `https://localhost:44321/signout-oidc` .
+> 1. Zadejte **adresu URL pro odhlášení front-Channel** `https://localhost:44321/signout-oidc` .
 > 1. Vyberte **Uložit**.
 > 1. V části **Spravovat** vyberte **certifikáty & tajných klíčů**  >  **nový tajný klíč klienta**.
 > 1. Zadejte **Popis**, například `clientsecret1` .
@@ -64,7 +64,7 @@ Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>Krok 1: Konfigurace aplikace v Azure Portal
-> Chcete-li, aby ukázka kódu pro tento rychlý Start fungovala, je nutné přidat adresy URL odpovědi jako `https://localhost:44321/signin-oidc` . přidejte adresu URL pro odhlášení `https://localhost:44321/signout-oidc` .
+> Vzorový kód v rychlém startu vyžaduje **identifikátor URI přesměrování** `https://localhost:44321/signin-oidc` **adresy URL pro odhlášení front-Channel** `https://localhost:44321/signout-oidc` v registraci aplikace.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Udělat změnu za mě]()
 >

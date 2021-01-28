@@ -1,19 +1,16 @@
 ---
 title: Použití MapReduce a kudrlinkou s Apache Hadoop ve službě HDInsight – Azure
 description: Naučte se vzdáleně spouštět úlohy MapReduce pomocí Apache Hadoop ve službě HDInsight pomocí funkce kudrlinkou.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/13/2020
-ms.openlocfilehash: 407db727f521ea7731f0cbdbdd05c4338c9f452e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e90dc2c7220caf5bd72b7086adc275934652e150
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86207725"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939687"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>Spouštění úloh MapReduce s využitím Apache Hadoop ve službě HDInsight pomocí REST
 
@@ -26,7 +23,7 @@ Naučte se používat REST API Apache Hive WebHCat ke spouštění úloh MapRedu
 
 * Cluster Apache Hadoop v HDInsight. Další informace najdete v tématu [Vytvoření clusterů Apache Hadoop pomocí Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md).
 
-Buď:
+Jednu z těchto možností:
   * Prostředí Windows PowerShell nebo
   * [Otočení](https://curl.haxx.se/) pomocí [JQ](https://stedolan.github.io/jq/)
 

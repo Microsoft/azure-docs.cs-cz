@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 122e76e4bde96823ff18207bc24df4a8e91afb1c
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 8e51d7d00120f6facb0fb53a8e379d157ae79ea4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517964"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938566"
 ---
 # <a name="scenario-route-traffic-through-nvas-by-using-custom-settings"></a>Scénář: směrování provozu prostřednictvím síťová virtuální zařízení pomocí vlastního nastavení
 
@@ -32,7 +32,7 @@ Následující tabulka shrnuje připojení podporovaná v tomto scénáři:
 | Z          | Záměr|Paprsky|Virtuální síť služby|Větve|Internet|
 |---|---|:---:|:---:|:---:|:---:|:---:|
 | **Paprsky**| ->| přímých |přímých | přes virtuální síť služby |přes hraniční síť VNet |
-| **Virtuální síť služby**| ->| přímých |neuvedeno| přímých | |
+| **Virtuální síť služby**| ->| přímých |Není k dispozici| přímých | |
 | **Větve** | ->| přes virtuální síť služby |přímých| přímých |  |
 
 Každá z buněk v matici připojení popisuje, jestli jsou toky připojení přímo přes virtuální síť WAN nebo přes jednu z virtuálních sítí s síťové virtuální zařízení. 
@@ -57,6 +57,9 @@ Existují tři rozdílné vzory připojení, které se přeloží na tři směro
 * Zřizování
   * Přidružená tabulka směrování: **výchozí**
   * Rozšiřování do směrovacích tabulek: **RT_SHARED** a **výchozí**
+
+> [!NOTE] 
+> Ujistěte se prosím, že paprskový virtuální sítě nešíří do výchozího popisku. Tím se zajistí přeposílání provozu z větví na paprskový virtuální sítě do síťová virtuální zařízení.
 
 Tyto statické trasy zajišťují, aby přenosy dat do a z virtuální sítě a větve procházely přes síťové virtuální zařízení ve virtuální síti služby (virtuální síť 4):
 
@@ -120,7 +123,7 @@ Pokud chcete nastavit směrování přes síťové virtuální zařízení, tady
 
    * **Šíření z:** Ujistěte se, že je vybraná možnost pro větve (VPN/ER/P2S), aby se zajistilo, že místní připojení šíří trasy do výchozí směrovací tabulky.
 
-:::image type="content" source="./media/routing-scenarios/nva-custom/figure-2.png" alt-text="Diagram síťové architektury" lightbox="./media/routing-scenarios/nva-custom/figure-2.png":::
+:::image type="content" source="./media/routing-scenarios/nva-custom/figure-2.png" alt-text="Diagram pracovního postupu" lightbox="./media/routing-scenarios/nva-custom/figure-2.png":::
 
 ## <a name="next-steps"></a>Další kroky
 

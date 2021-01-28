@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/24/2020
+ms.date: 01/27/2021
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 228595bf633ef0545a13abe19308e49da82cf75a
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 38978982baea41d23958a857b19a1edf2e454f37
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844008"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938731"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>Změna způsobu replikace účtu úložiště
 
@@ -39,16 +39,17 @@ Následující tabulka poskytuje přehled toho, jak přepínat mezi jednotlivým
 
 | Přepínání | ... do LRS | ... na GRS/RA – GRS | ... do ZRS | ... na GZRS/RA – GZRS |
 |--------------------|----------------------------------------------------|---------------------------------------------------------------------|----------------------------------------------------|---------------------------------------------------------------------|
-| <b>... z LRS</b> | – | Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku můžete změnit nastavení replikace<sup>1</sup> . | Provedení ruční migrace <br /><br /> NEBO <br /><br /> Vyžádání migrace za provozu | Provedení ruční migrace <br /><br /> NEBO <br /><br /> Nejprve přepněte na GRS/RA-GRS a pak požádejte o migraci za provozu<sup>1</sup> . |
+| <b>... z LRS</b> | – | Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku můžete změnit nastavení replikace<sup>1, 2</sup> . | Provedení ruční migrace <br /><br /> NEBO <br /><br /> Vyžádání migrace za provozu | Provedení ruční migrace <br /><br /> NEBO <br /><br /> Nejprve přepněte na GRS/RA-GRS a pak požádejte o migraci za provozu<sup>1</sup> . |
 | <b>... z GRS/RA – GRS</b> | Nastavení replikace změníte pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku. | – | Provedení ruční migrace <br /><br /> NEBO <br /><br /> Nejprve přepněte na LRS a pak požádejte o migraci za provozu. | Provedení ruční migrace <br /><br /> NEBO <br /><br /> Vyžádání migrace za provozu |
-| <b>... z ZRS</b> | Provedení ruční migrace | Provedení ruční migrace | – | Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku můžete změnit nastavení replikace<sup>1, 2</sup> . |
+| <b>... z ZRS</b> | Provedení ruční migrace | Provedení ruční migrace | – | Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku můžete změnit nastavení replikace<sup>1, 3</sup> . |
 | <b>... z GZRS/RA – GZRS</b> | Provedení ruční migrace | Provedení ruční migrace | Nastavení replikace změníte pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku. | – |
 
 <sup>1</sup> dojde k jednorázovému výstupnímu poplatku.<br />
-<sup>2</sup> převod z ZRS na GZRS/RA-GZRS nebo naopak není podporován v následujících oblastech: USA – východ 2, USA – východ, Evropa – západ.
+<sup>2</sup> migrace z LRS na GRS není podporovaná, pokud účet úložiště obsahuje objekty BLOB v archivní úrovni.<br />
+<sup>3</sup> převod z ZRS na GZRS/RA-GZRS nebo naopak se nepodporuje v následujících oblastech: USA – východ 2, USA – východ, Evropa – západ.
 
 > [!CAUTION]
-> Pokud jste provedli [převzetí služeb při selhání u účtu](storage-disaster-recovery-guidance.md) (RA-) GRS nebo (RA-) GZRS, účet se po převzetí služeb při selhání místně redundantní v nové primární oblasti. Migrace za provozu na ZRS nebo GZRS pro účet LRS, který vyplývají z převzetí služeb při selhání, se nepodporuje. To platí i v případě, že se říká operace navrácení služeb po obnovení. Pokud třeba provedete převzetí služeb při selhání z RA-GZRS do LRS v sekundární oblasti a pak ji znovu nakonfigurujete na RA-GRS a provedete jiné převzetí služeb při selhání do původní primární oblasti, nebudete moct kontaktovat podporu pro původní migraci za provozu do RA-GZRS v primární oblasti. Místo toho budete muset provést ruční migraci na ZRS nebo GZRS.
+> Pokud jste provedli [převzetí služeb při selhání účtu](storage-disaster-recovery-guidance.md) (RA-) GRS nebo (RA-) GZRS, účet je místně redundantní (LRS) v nové primární oblasti po převzetí služeb při selhání. Migrace za provozu na ZRS nebo GZRS pro účet LRS, který vyplývají z převzetí služeb při selhání, se nepodporuje. To platí i v případě, že se říká operace navrácení služeb po obnovení. Pokud třeba provedete převzetí služeb při selhání z RA-GZRS do LRS v sekundární oblasti a pak ji znovu nakonfigurujete na RA-GRS a provedete jiné převzetí služeb při selhání do původní primární oblasti, nebudete moct kontaktovat podporu pro původní migraci za provozu do RA-GZRS v primární oblasti. Místo toho budete muset provést ruční migraci na ZRS nebo GZRS.
 
 ## <a name="change-the-replication-setting"></a>Změna nastavení replikace
 

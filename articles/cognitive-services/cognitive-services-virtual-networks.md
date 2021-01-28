@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 12/04/2020
+ms.date: 01/27/2021
 ms.author: aahi
-ms.openlocfilehash: 3b6c2a5a50cedadd8818eae735df55b661e794ef
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 8fa10164ae2d697f68156777f224b92f0562475f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97034016"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98940042"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Konfigurace virtuálních sítí služeb Azure Cognitive Services
 
@@ -341,9 +341,6 @@ Zadejte povolené rozsahy internetových adres pomocí [zápisu CIDR](https://to
 
 Pravidla sítě IP jsou povolená jenom pro **veřejné internetové** IP adresy. Rozsahy IP adres rezervované pro privátní sítě (definované v [dokumentu RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)) nejsou povolené v pravidlech protokolu IP. Soukromé sítě obsahují adresy, které začínají `10.*` na, `172.16.*`  -  `172.31.*` a `192.168.*` .
 
-   > [!NOTE]
-   > Pravidla sítě IP neovlivňují požadavky pocházející ze stejné oblasti Azure jako prostředek Cognitive Services. Použijte [pravidla virtuální sítě](#grant-access-from-a-virtual-network) a povolte tak požadavky stejné oblasti.
-
 V tuto chvíli se podporují jenom IPV4 adresy. Každý prostředek Cognitive Services podporuje až 100 pravidel sítě IP, která se můžou kombinovat s [pravidly virtuální sítě](#grant-access-from-a-virtual-network).
 
 ### <a name="configuring-access-from-on-premises-networks"></a>Konfigurace přístupu z místních sítí
@@ -502,7 +499,7 @@ Když vytvoříte privátní koncový bod pro prostředek Cognitive Services ve 
 
 Cognitive Services vlastníci prostředků mohou spravovat žádosti o souhlas a soukromé koncové body prostřednictvím karty *privátní koncové body* pro prostředek Cognitive Services v [Azure Portal](https://portal.azure.com).
 
-### <a name="private-endpoints"></a>Soukromé koncové body
+### <a name="private-endpoints"></a>Privátní koncové body
 
 Při vytváření privátního koncového bodu je nutné zadat prostředek Cognitive Services, ke kterému se připojuje. Další informace o vytváření privátního koncového bodu najdete v těchto tématech:
 

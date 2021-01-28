@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 10/14/2020
 ms.author: alkohli
-ms.openlocfilehash: aaa75988e1177590a0ff6f4ca2e00f92de68789f
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 0c0ef6157ebf70c896fbac5ff692246e4fad2c14
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96583402"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937200"
 ---
 # <a name="tutorial-transfer-data-with-azure-data-box-gateway"></a>Kurz: přenos dat pomocí Azure Data Box Gateway
 
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte:
 > * Přidání sdílené složky
 > * Připojení ke sdílené složce
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před přidáním sdílených složek do služby Data Box Gateway se ujistěte, že:
 
@@ -57,7 +57,7 @@ Chcete-li vytvořit sdílenou složku, postupujte podle následujících pokynů
 
     3. Zadejte účet úložiště, ve kterém se sdílená složka bude nacházet. Pokud ještě neexistuje, v účtu úložiště se vytvoří kontejner s názvem nové sdílené složky. Pokud už kontejner existuje, použije se tento kontejner.
        > [!IMPORTANT]
-       > Ujistěte se, že účet Azure Storage, který používáte, nemá nastavené zásady neměnnosti, pokud ho používáte se zařízením Data Box Gateway. Další informace najdete v tématu [nastavení a Správa zásad neměnnosti pro úložiště objektů BLOB](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage).
+       > Ujistěte se, že účet Azure Storage, který používáte, nemá nastavené zásady neměnnosti, pokud ho používáte se zařízením Data Box Gateway. Další informace najdete v tématu [nastavení a Správa zásad neměnnosti pro úložiště objektů BLOB](../storage/blobs/storage-blob-immutability-policies-manage.md).
     
     4. V části **Služba úložiště** zvolte Objekt blob bloku, Objekt blob stránky nebo Soubory. Zvolený typ služby závisí na tom, v jakém formátu chcete ukládat data v Azure. Například v tomto případě chceme data v Azure ukládat jako objekty blob bloku, proto vybereme Objekt blob bloku. Pokud zvolíte Objekt blob stránky, musíte zajistit, aby vaše data byla zarovnaná na 512 bajtů. Například formát VHDX je vždy zarovnaný na 512 bajtů.
    

@@ -1,19 +1,16 @@
 ---
 title: Přehled Azure Storage v HDInsight
 description: Přehled Azure Storage v HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 40e1fdae5cdb1ec806e67dcacc70510a63093a82
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: f171ab9619f2bcb8ecf15c4bfb3b17146ab5a0ff
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539458"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938954"
 ---
 # <a name="azure-storage-overview-in-hdinsight"></a>Přehled Azure Storage v HDInsight
 
@@ -21,7 +18,7 @@ Azure Storage je robustní řešení úložiště pro obecné účely, které se
 
 Pro vaše výchozí úložiště clusteru a firemní data doporučujeme používat samostatné kontejnery úložiště. Oddělení IT izoluje protokoly HDInsight a dočasné soubory z vlastních obchodních dat. Doporučujeme také odstranit výchozí kontejner objektů blob, který obsahuje protokoly aplikací a systému, a to po každém použití ke snížení nákladů na úložiště. Než odstraníte kontejner, nezapomeňte tyto protokoly načíst.
 
-Pokud se rozhodnete zabezpečit svůj účet úložiště s omezeními **bran firewall a virtuální sítě** u **vybraných sítí** , Nezapomeňte povolit výjimku **Povolit důvěryhodné služby společnosti Microsoft...** . Výjimkou je to, že HDInsight má přístup k vašemu účtu úložiště.
+Pokud se rozhodnete zabezpečit svůj účet úložiště s omezeními **bran firewall a virtuální sítě** u **vybraných sítí**, Nezapomeňte povolit výjimku **Povolit důvěryhodné služby společnosti Microsoft...**. Výjimkou je to, že HDInsight má přístup k vašemu účtu úložiště.
 
 ## <a name="hdinsight-storage-architecture"></a>Architektura úložiště HDInsight
 

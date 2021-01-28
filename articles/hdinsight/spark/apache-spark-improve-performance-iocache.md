@@ -1,18 +1,15 @@
 ---
 title: Apache Spark výkon – Azure HDInsight v/v cache (Preview)
 description: Přečtěte si o službě Azure HDInsight v/v cache a o tom, jak je používat ke zvýšení výkonu Apache Spark.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/23/2019
-ms.openlocfilehash: 3e724e6336163a092c9b4385324b1aa037295bb6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 32f0756e59f81ad2c5d155581feed8c4fef09808
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86081753"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98940126"
 ---
 # <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>Zvýšení výkonu Apache Spark úloh pomocí Azure HDInsight v/v cache
 
@@ -67,7 +64,7 @@ Po povolení vstupně-výstupních operací můžete získat chyby místa na dis
 
 1. V pravém horním rohu vyberte **Uložit** .
 
-1. Vyberte **znovu**restartovat  >  **všechny ovlivněné**.
+1. Vyberte **znovu** restartovat  >  **všechny ovlivněné**.
 
     ![Apache Ambari restartuje všechny ovlivněné](./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "Restartovat všechny ovlivněné")
 

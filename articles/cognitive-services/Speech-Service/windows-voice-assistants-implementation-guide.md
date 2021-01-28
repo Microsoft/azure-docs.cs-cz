@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0503e0bf2fe152296ca6890e14503d05bd3bbeef
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 92ab043d4fccbe0764e361eac6f71ef69a5963cb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024768"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939863"
 ---
 # <a name="implementing-voice-assistants-on-windows"></a>Implementace hlasových asistentů ve Windows
 
@@ -30,7 +30,7 @@ Po [nastavení prostředí](how-to-windows-voice-assistants-get-started.md) a u�
 
 #### <a name="ensure-that-the-microphone-is-available-and-accessible-then-monitor-its-state"></a>Ujistěte se, že je mikrofon dostupný a přístupný, a sledujte jeho stav.
 
-MVA potřebuje k dispozici mikrofon, aby bylo možné detekovat aktivaci hlasu. Použijte třídy [AppCapability](/uwp/api/windows.security.authorization.appcapabilityaccess.appcapability?view=winrt-18362), [DeviceWatcher](/uwp/api/windows.devices.enumeration.devicewatcher?view=winrt-18362)a [MediaCapture](/uwp/api/windows.media.capture.mediacapture?view=winrt-18362) ke kontrole přístupu k ochraně osobních údajů mikrofonu, přítomnosti zařízení a stavu zařízení (například hlasitosti a ztlumení).
+MVA potřebuje k dispozici mikrofon, aby bylo možné detekovat aktivaci hlasu. Použijte třídy [AppCapability](/uwp/api/windows.security.authorization.appcapabilityaccess.appcapability), [DeviceWatcher](/uwp/api/windows.devices.enumeration.devicewatcher)a [MediaCapture](/uwp/api/windows.media.capture.mediacapture) ke kontrole přístupu k ochraně osobních údajů mikrofonu, přítomnosti zařízení a stavu zařízení (například hlasitosti a ztlumení).
 
 ### <a name="register-the-application-with-the-background-service"></a>Registrace aplikace ve službě na pozadí
 
@@ -38,7 +38,7 @@ Aby MVA spouštěla aplikaci na pozadí, musí být aplikace zaregistrovaná ve 
 
 ### <a name="unlock-the-limited-access-feature"></a>Odemknout funkci omezený přístup
 
-K odemknutí funkce hlasového asistenta použijte klíč funkce pro omezený přístup poskytnutý společností Microsoft. K tomu použijte třídu [LimitedAccessFeature](/uwp/api/windows.applicationmodel.limitedaccessfeatures?view=winrt-18362) z Windows SDK.
+K odemknutí funkce hlasového asistenta použijte klíč funkce pro omezený přístup poskytnutý společností Microsoft. K tomu použijte třídu [LimitedAccessFeature](/uwp/api/windows.applicationmodel.limitedaccessfeatures) z Windows SDK.
 
 ### <a name="register-the-keyword-for-the-application"></a>Registrace klíčového slova pro aplikaci
 
@@ -86,7 +86,7 @@ Jakmile je aplikace hlasového agenta aktivována hlasem, dalším krokem je ov�
 
 ### <a name="retrieve-activation-audio"></a>Načíst zvuk aktivace
 
-Vytvořte [AudioGraph](/uwp/api/windows.media.audio.audiograph) a předejte ho do `CreateAudioDeviceInputNodeAsync` `ConversationalAgentSession` . Tím se načte zvuková vyrovnávací paměť grafu se zvukem *začínajícím přibližně 3 sekundy, než bylo zjištěno klíčové slovo*. Tento dodatečný úvodní zvuk je zahrnutý k přizpůsobení široké škály délek klíčových slov a rychlosti mluvčího. Pak zpracujte událost [QuantumStarted](/uwp/api/windows.media.audio.audiograph.quantumstarted?view=winrt-18362) z zvukového grafu, aby se načetla zvuková data.
+Vytvořte [AudioGraph](/uwp/api/windows.media.audio.audiograph) a předejte ho do `CreateAudioDeviceInputNodeAsync` `ConversationalAgentSession` . Tím se načte zvuková vyrovnávací paměť grafu se zvukem *začínajícím přibližně 3 sekundy, než bylo zjištěno klíčové slovo*. Tento dodatečný úvodní zvuk je zahrnutý k přizpůsobení široké škály délek klíčových slov a rychlosti mluvčího. Pak zpracujte událost [QuantumStarted](/uwp/api/windows.media.audio.audiograph.quantumstarted) z zvukového grafu, aby se načetla zvuková data.
 
 ```csharp
 var inputNode = await agentSession.CreateAudioDeviceInputNodeAsync(audioGraph);

@@ -1,18 +1,15 @@
 ---
 title: Optimalizace Apache Hive s Apache Ambari v Azure HDInsight
 description: Ke konfiguraci a optimalizaci Apache Hive použijte webové uživatelské rozhraní Apache Ambari.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: 33c2ee7bc477d3c9d3823642dbdd974650017822
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 349f58720e6fff52191dfff65108cd1320e41eed
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86084354"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939255"
 ---
 # <a name="optimize-apache-hive-with-apache-ambari-in-azure-hdinsight"></a>Optimalizace Apache Hive s Apache Ambari v Azure HDInsight
 
@@ -100,7 +97,7 @@ Podregistr zpracovává řádek data řádku. Rozvektorování směruje podregis
 
 Ve výchozím nastavení používá podregistr sadu pravidel pro vyhledání jednoho optimálního plánu spuštění dotazu. Optimalizace na základě nákladů (CBO) vyhodnocuje více plánů pro spuštění dotazu. A přiřadí každému plánu náklady a pak určí plán nejlevnější pro spuštění dotazu.
 
-Pokud chcete povolit CBO, přejděte na nastavení konfigurace **podregistru**  >  **Configs**  >  **Settings** a vyhledejte **optimalizaci na základě nákladů**a pak přepněte přepínací tlačítko na **zapnuto**.
+Pokud chcete povolit CBO, přejděte na nastavení konfigurace **podregistru**  >    >   a vyhledejte **optimalizaci na základě nákladů** a pak přepněte přepínací tlačítko na **zapnuto**.
 
 ![Optimalizátor založený na cenách HDInsight](./media/optimize-hive-ambari/hdinsight-cbo-config.png)
 
@@ -137,7 +134,7 @@ K dispozici jsou tyto typy komprese:
 | GZIP | GZIP | DEFLATE | `.gz` | No |
 | Bzip2 | Bzip2 | Bzip2 |`.bz2` | Yes |
 | LZO | `Lzop` | LZO | `.lzo` | Ano, pokud je indexovaný |
-| Snappy | Není k dispozici | Snappy | Snappy | No |
+| Snappy | – | Snappy | Snappy | No |
 
 Jako obecné pravidlo je důležité mít rozdělenou část kompresní metody, jinak se vytvoří několik mapovačů. Pokud jsou vstupní data text, `bzip2` je to nejlepší možnost. V případě formátu ORC je přichycení nejrychlejší možnost komprese.
 
@@ -152,7 +149,7 @@ Jako obecné pravidlo je důležité mít rozdělenou část kompresní metody, 
 
 1. Přidání vlastního nastavení:
 
-    a. Přejděte ke **konfiguraci podregistru**  >  **Configs**  >  **Upřesnit**  >  **vlastní podregistr – lokalita**.
+    a. Přejděte ke **konfiguraci podregistru**  >    >  **Upřesnit**  >  **vlastní podregistr – lokalita**.
 
     b. V dolní části podokna vlastní podregistr-web vyberte **Přidat vlastnost...**
 

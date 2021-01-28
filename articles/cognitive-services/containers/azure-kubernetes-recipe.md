@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 2a6e7ee125cac66b48e666a766c39813aa38fb1a
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 6918218d8434c06f59b0738e60cad53b94b0a0b5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968498"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939837"
 ---
 # <a name="deploy-the-text-analytics-language-detection-container-to-azure-kubernetes-service"></a>Nasazení kontejneru rozpoznávání jazyka Analýza textu do služby Azure Kubernetes
 
@@ -25,9 +25,9 @@ Přečtěte si, jak nasadit kontejner rozpoznávání jazyka. Tento postup vám 
 
 Tento postup vyžaduje několik nástrojů, které je třeba nainstalovat a spustit místně. Nepoužívejte Azure Cloud Shell.
 
-* Použijte předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services).
+* Použijte předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services).
 * [Git](https://git-scm.com/downloads) pro váš operační systém, abyste mohli klonovat [ukázku](https://github.com/Azure-Samples/cognitive-services-containers-samples) použitou v tomto postupu.
-* Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli?view=azure-cli-latest)
+* Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli)
 * [Modul Docker](https://www.docker.com/products/docker-engine) a ověří, že rozhraní příkazového řádku Docker funguje v okně konzoly.
 * [kubectl](https://storage.googleapis.com/kubernetes-release/release/v1.13.1/bin/windows/amd64/kubectl.exe).
 * Prostředek Azure se správnou cenovou úrovní. Ne všechny cenové úrovně v tomto kontejneru fungují:
