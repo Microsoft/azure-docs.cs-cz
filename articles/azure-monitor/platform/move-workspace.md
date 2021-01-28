@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/12/2020
-ms.openlocfilehash: 8d7fde6661a4a133f689016559f010767c662417
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 4915fd69940450f22548ae326879b5729b687248
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94699742"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942090"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Přesunutí pracovního prostoru Log Analytics do jiného předplatného nebo skupiny prostředků
 
@@ -66,7 +66,7 @@ K odebrání řešení pomocí Azure Portal použijte následující postup:
 
 ### <a name="delete-using-powershell"></a>Odstranění pomocí PowerShellu
 
-Pokud chcete řešení odebrat pomocí prostředí PowerShell, použijte rutinu [Remove-AzResource](/powershell/module/az.resources/remove-azresource?view=azps-2.8.0) , jak je znázorněno v následujícím příkladu:
+Pokud chcete řešení odebrat pomocí prostředí PowerShell, použijte rutinu [Remove-AzResource](/powershell/module/az.resources/remove-azresource) , jak je znázorněno v následujícím příkladu:
 
 ``` PowerShell
 Remove-AzResource -ResourceType 'Microsoft.OperationsManagement/solutions' -ResourceName "ChangeTracking(<workspace-name>)" -ResourceGroupName <resource-group-name>
@@ -85,7 +85,7 @@ Chcete-li odebrat řešení **Spustit nebo zastavit virtuální počítače** , 
    - ScheduledStartStop_Parent
    - SequencedStartStop_Parent
 
-    ![Odstranit pravidla](media/move-workspace/delete-rules.png)
+    ![Odstraňování pravidel](media/move-workspace/delete-rules.png)
 
 ## <a name="unlink-automation-account"></a>Zrušit propojení účtu Automation
 Pomocí následujícího postupu odpojte účet Automation z pracovního prostoru pomocí Azure Portal:
@@ -98,7 +98,7 @@ Pomocí následujícího postupu odpojte účet Automation z pracovního prostor
 
 ## <a name="move-your-workspace"></a>Přesunout pracovní prostor
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure Portal
 Pomocí následujícího postupu můžete přesunout svůj pracovní prostor pomocí Azure Portal:
 
 1. Otevřete nabídku **pracovní prostory Log Analytics** a pak vyberte svůj pracovní prostor.

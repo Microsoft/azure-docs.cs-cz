@@ -1,19 +1,16 @@
 ---
 title: Zobrazení dat podregistru interaktivního dotazu pomocí Power BI ve službě Azure HDInsight
 description: Použití Microsoft Power BI k vizualizaci dat podregistru interaktivních dotazů z Azure HDInsight
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/17/2019
-ms.openlocfilehash: 92e94c911acb701b1ccf8e39636d152cc5bfb575
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 7f249bb0e81bf3a371b8743a304ef49baffaed7a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534800"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941385"
 ---
 # <a name="visualize-interactive-query-apache-hive-data-with-microsoft-power-bi-using-direct-query-in-hdinsight"></a>Vizualizace interaktivních dotazů Apache Hive dat pomocí Microsoft Power BI pomocí přímého dotazování v HDInsight
 
@@ -26,8 +23,8 @@ Pomocí [ovladače Apache Hive ODBC](../hadoop/apache-hadoop-connect-hive-power-
 ## <a name="prerequisites"></a>Požadavky
 Před provedením tohoto článku musíte mít následující položky:
 
-* **Cluster HDInsight** . Cluster může být buď cluster HDInsight s Apache Hive, nebo nově vydaným clusterem interaktivních dotazů. Informace o vytváření clusterů najdete v tématu [Vytvoření clusteru](../hadoop/apache-hadoop-linux-tutorial-get-started.md).
-* **[Microsoft Power BI Desktop](https://powerbi.microsoft.com/desktop/)** . Kopii si můžete stáhnout z webu [Stažení softwaru](https://www.microsoft.com/download/details.aspx?id=45331).
+* **Cluster HDInsight**. Cluster může být buď cluster HDInsight s Apache Hive, nebo nově vydaným clusterem interaktivních dotazů. Informace o vytváření clusterů najdete v tématu [Vytvoření clusteru](../hadoop/apache-hadoop-linux-tutorial-get-started.md).
+* **[Microsoft Power BI Desktop](https://powerbi.microsoft.com/desktop/)**. Kopii si můžete stáhnout z webu [Stažení softwaru](https://www.microsoft.com/download/details.aspx?id=45331).
 
 ## <a name="load-data-from-hdinsight"></a>Načtení dat ze služby HDInsight
 
@@ -35,29 +32,29 @@ Před provedením tohoto článku musíte mít následující položky:
 
 1. Spusťte Power BI Desktop.
 
-2. V řádku nabídek přejděte na **Domů**  >  **získat data**  >  **Další..** ..
+2. V řádku nabídek přejděte na **Domů**  >  **získat data**  >  **Další..**..
 
     ![HDInsight Power BI získat data více](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-open-odbc.png)
 
 3. V okně **získat data** zadejte do vyhledávacího pole **HDInsight** .  
 
-4. Ve výsledcích hledání vyberte možnost **HDInsight Interactive Query** a pak vyberte **připojit** .  Pokud nevidíte **interaktivní dotaz HDInsight** , musíte aktualizovat Power BI Desktop na nejnovější verzi.
+4. Ve výsledcích hledání vyberte možnost **HDInsight Interactive Query** a pak vyberte **připojit**.  Pokud nevidíte **interaktivní dotaz HDInsight**, musíte aktualizovat Power BI Desktop na nejnovější verzi.
 
 5. Vyberte **pokračovat** a zavřete tak dialogové okno **připojení ke službě třetí strany** .
 
-6. V okně **dotaz interaktivního dotazu HDInsight** zadejte následující informace a pak vyberte **OK** :
+6. V okně **dotaz interaktivního dotazu HDInsight** zadejte následující informace a pak vyberte **OK**:
 
     |Vlastnost | Hodnota |
     |---|---|
-    |Server |Zadejte název clusteru, například *myiqcluster.azurehdinsight.NET* .|
-    |Databáze |Zadejte **výchozí nastavení** tohoto článku.|
+    |Server |Zadejte název clusteru, například *myiqcluster.azurehdinsight.NET*.|
+    |databáze |Zadejte **výchozí nastavení** tohoto článku.|
     |Režim připojení dat |Pro tento článek vyberte **DirectQuery** .|
 
     ![Interaktivní dotaz HDInsight Power BI DirectQuery Connect](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-interactive-query-power-bi-connect.png)
 
-7. Zadejte přihlašovací údaje HTTP a pak vyberte **připojit** . Výchozí uživatelské jméno je **admin** .
+7. Zadejte přihlašovací údaje HTTP a pak vyberte **připojit**. Výchozí uživatelské jméno je **admin**.
 
-8. V okně **navigátor** v levém podokně vyberte **hivesampletale** .
+8. V okně **navigátor** v levém podokně vyberte **hivesampletale**.
 
 9. V hlavním okně vyberte **načíst** .
 
@@ -67,11 +64,11 @@ Před provedením tohoto článku musíte mít následující položky:
 
 Pokračujte od posledního postupu.
 
-1. V podokně vizualizace vyberte **Mapa** , ikona zeměkoule. V hlavním okně se pak zobrazí obecná mapa.
+1. V podokně vizualizace vyberte **Mapa**, ikona zeměkoule. V hlavním okně se pak zobrazí obecná mapa.
 
     ![Sestava přizpůsobení Power BI HDInsight](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-customize.png)
 
-2. V podokně pole vyberte Country ( **země** ) a **devicemake** (země). Mapa světa s datovými body se po chvíli objeví v hlavním okně.
+2. V podokně pole vyberte Country ( **země** ) a **devicemake**(země). Mapa světa s datovými body se po chvíli objeví v hlavním okně.
 
 3. Rozbalte mapu.
 

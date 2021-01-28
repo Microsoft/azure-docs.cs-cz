@@ -1,19 +1,16 @@
 ---
 title: 'Rychlý Start: Apache Kafka pomocí Azure Resource Manager-HDInsight'
 description: V tomto rychlém startu se dozvíte, jak vytvořit cluster Apache Kafka v Azure HDInsight pomocí šablony Azure Resource Manager. Dozvíte se také o tématech, předplatitelích a konzumentech platformy Kafka.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/13/2020
-ms.openlocfilehash: 12988feeb26bc5821e8f08db3e688a2e1c429e19
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 1bd4a3bfc2ba208371ed71720cc8c89a796ad9a2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92532624"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98940802"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-arm-template"></a>Rychlý Start: Vytvoření clusteru Apache Kafka ve službě Azure HDInsight pomocí šablony ARM
 
@@ -23,7 +20,7 @@ V tomto rychlém startu použijete šablonu Azure Resource Manager (šablona ARM
 
 Rozhraní API Kafka je přístupné jenom pro prostředky ve stejné virtuální síti. V tomto rychlém startu budete ke clusteru přistupovat přímo pomocí SSH. Pokud chcete k platformě Kafka připojit jiné služby, sítě nebo virtuální počítače, musíte nejprve vytvořit virtuální síť a pak v síti vytvořit prostředky. Další informace najdete v dokumentu [Připojení k platformě Apache Kafka pomocí virtuální sítě](apache-kafka-connect-vpn-gateway.md).
 
-Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure** . Šablona se otevře v prostředí Azure Portal.
+Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
 
 [![Nasazení do Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-kafka%2Fazuredeploy.json)
 
@@ -53,17 +50,17 @@ V šabloně jsou definované dva prostředky Azure:
     |Vlastnost |Popis |
     |---|---|
     |Předplatné|V rozevíracím seznamu vyberte předplatné Azure, které se používá pro cluster.|
-    |Skupina prostředků|V rozevíracím seznamu vyberte existující skupinu prostředků nebo vyberte **vytvořit novou** .|
+    |Skupina prostředků|V rozevíracím seznamu vyberte existující skupinu prostředků nebo vyberte **vytvořit novou**.|
     |Umístění|Hodnota bude automaticky vyplněna umístěním použitým pro skupinu prostředků.|
     |Název clusteru|Zadejte globálně jedinečný název. Pro tuto šablonu použijte jenom malá písmena a čísla.|
-    |Uživatelské jméno přihlášení clusteru|Zadejte uživatelské jméno, výchozí nastavení je **admin** .|
+    |Uživatelské jméno přihlášení clusteru|Zadejte uživatelské jméno, výchozí nastavení je **admin**.|
     |Heslo přihlášení clusteru|Zadejte heslo. Heslo musí mít minimálně 10 znaků a musí obsahovat aspoň jedno číslo, jedno velké písmeno a jedno malé písmeno, jeden jiný než alfanumerický znak (kromě znaků). |
     |Uživatelské jméno SSH|Zadejte uživatelské jméno, výchozí hodnota je **sshuser**|
     |Heslo SSH|Zadejte heslo.|
 
     ![Snímek obrazovky vlastností šablony](./media/apache-kafka-quickstart-resource-manager-template/resource-manager-template-kafka.png)
 
-1. Přečtěte si podmínky **a ujednání** . Pak vyberte Souhlasím **s výše uvedenými podmínkami a ujednáními a** pak na **koupit** . Obdržíte oznámení, že vaše nasazení probíhá. Vytvoření clusteru trvá přibližně 20 minut.
+1. Přečtěte si podmínky **a ujednání**. Pak vyberte Souhlasím **s výše uvedenými podmínkami a ujednáními a** pak na **koupit**. Obdržíte oznámení, že vaše nasazení probíhá. Vytvoření clusteru trvá přibližně 20 minut.
 
 ## <a name="review-deployed-resources"></a>Kontrola nasazených prostředků
 
@@ -133,7 +130,7 @@ V této části získáte informace o hostiteli z rozhraní REST API Ambari v cl
 
 ## <a name="manage-apache-kafka-topics"></a>Správa témat Apache Kafka
 
-Kafka ukládá datové proudy do *témat* . Témata můžete spravovat pomocí nástroje `kafka-topics.sh`.
+Kafka ukládá datové proudy do *témat*. Témata můžete spravovat pomocí nástroje `kafka-topics.sh`.
 
 * **K vytvoření tématu** použijte tento příkaz v připojení SSH:
 
@@ -141,7 +138,7 @@ Kafka ukládá datové proudy do *témat* . Témata můžete spravovat pomocí n
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 3 --partitions 8 --topic test --zookeeper $KAFKAZKHOSTS
     ```
 
-    Tento příkaz se připojí k hostiteli Zookeeper s použitím informací uložených v proměnné `$KAFKAZKHOSTS`. Pak vytvoří téma Kafka s názvem **test** .
+    Tento příkaz se připojí k hostiteli Zookeeper s použitím informací uložených v proměnné `$KAFKAZKHOSTS`. Pak vytvoří téma Kafka s názvem **test**.
 
     * Data uložená v tomto tématu jsou rozdělená mezi osm oddílů.
 
@@ -190,7 +187,7 @@ Další informace o příkazech, které jsou k dispozici v nástroji `kafka-topi
 
 ## <a name="produce-and-consume-records"></a>Produkce a konzumace záznamů
 
-Kafka ukládá *záznamy* v tématech. Záznamy jsou vytvářeny *producenty* a spotřebovávány *konzumenty* . Producenti a konzumenti komunikují se službou *zprostředkovatele Kafka* . Každý pracovní uzel v clusteru HDInsight je hostitelem zprostředkovatele Kafka.
+Kafka ukládá *záznamy* v tématech. Záznamy jsou vytvářeny *producenty* a spotřebovávány *konzumenty*. Producenti a konzumenti komunikují se službou *zprostředkovatele Kafka*. Každý pracovní uzel v clusteru HDInsight je hostitelem zprostředkovatele Kafka.
 
 Pokud chcete uložit záznamy do dříve vytvořeného tématu test a pak je načíst pomocí konzumenta, použijte následující postup:
 
@@ -214,7 +211,7 @@ Pokud chcete uložit záznamy do dříve vytvořeného tématu test a pak je na�
 
     Pokud používáte starší verzi Kafka, nahraďte `--bootstrap-server $KAFKABROKERS` `--zookeeper $KAFKAZKHOSTS` .
 
-1. Konzumenta zastavíte stisknutím __Ctrl+C__ .
+1. Konzumenta zastavíte stisknutím __Ctrl+C__.
 
 Můžete také programově vytvořit producenty a spotřebitele. Příklad použití tohoto rozhraní API najdete v dokumentu [rozhraní API pro Apache Kafka výrobce a příjemce s](apache-kafka-producer-consumer-api.md) využitím služby HDInsight.
 
@@ -222,11 +219,11 @@ Můžete také programově vytvořit producenty a spotřebitele. Příklad použ
 
 Po dokončení rychlého startu možná budete chtít cluster odstranit. Ve službě HDInsight jsou vaše data uložená v Azure Storage, takže můžete cluster bezpečně odstranit, pokud se nepoužívá. Účtují se vám také poplatky za cluster HDInsight, a to i v případě, že se už nepoužívá. Vzhledem k tomu, že se poplatky za cluster mnohokrát účtují rychleji než poplatky za úložiště, má ekonomický smysl odstraňovat clustery, když se nepoužívají.
 
-Z Azure Portal přejděte do svého clusteru a vyberte **Odstranit** .
+Z Azure Portal přejděte do svého clusteru a vyberte **Odstranit**.
 
 ![Správce prostředků šablony HBA](./media/apache-kafka-quickstart-resource-manager-template/azure-portal-delete-kafka.png)
 
-Můžete také výběrem názvu skupiny prostředků otevřít stránku skupiny prostředků a pak vybrat **Odstranit skupinu prostředků** . Odstraněním skupiny prostředků odstraníte cluster HDInsight i výchozí účet úložiště.
+Můžete také výběrem názvu skupiny prostředků otevřít stránku skupiny prostředků a pak vybrat **Odstranit skupinu prostředků**. Odstraněním skupiny prostředků odstraníte cluster HDInsight i výchozí účet úložiště.
 
 ## <a name="next-steps"></a>Další kroky
 

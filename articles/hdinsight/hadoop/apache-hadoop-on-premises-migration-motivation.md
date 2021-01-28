@@ -1,19 +1,17 @@
 ---
 title: 'Výhody: migrace místních Apache Hadoop do Azure HDInsight'
 description: Seznamte se s motivací a výhodami migrace místních clusterů Hadoop do Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/15/2019
-ms.openlocfilehash: 595bf6f921265e9e8dbc0e0e065fe835efea14bc
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 975d72df32027888e217d5da9171dba0ba61f257
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331647"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943259"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>Migrace místních Apache Hadoop clusterů do Azure HDInsight – motivace a výhody
 
@@ -101,18 +99,18 @@ V této části jsou uvedeny dotazníky šablon, které vám pomůžou shromáž
 |Konfigurace hlavního uzlu|m/y, CPU, disk atd.|
 |Konfigurace datových uzlů|m/y, CPU, disk atd.|
 |Konfigurace hraničních uzlů|m/y, CPU, disk atd.|
-|Šifrování HDFS?|Ano|
+|Šifrování HDFS?|Yes|
 |Vysoká dostupnost|HDFS HA, metastore HA|
 |Zotavení po havárii/zálohování|Zálohovat cluster?|  
 |Systémy, které jsou závislé na clusteru|SQL Server, Teradata, Power BI, MongoDB|
 |Integrace třetích stran|Tableau, GridGain, Qubole, Informatica, Splunk|
 |**Téma**: **zabezpečení**|||
-|Zabezpečení hraničních|Firewally|
+|Zabezpečení hraničních|brány firewall,|
 |Ověřování clusteru & autorizaci|Active Directory, Ambari, Cloudera Manager, bez ověřování|
 |HDFS – Access Control|  Ruční, uživatelé SSH|
 |Ověřování podregistru & autorizaci|Sentry, LDAP, AD s protokolem Kerberos, Ranger|
 |Auditování|Ambari, Cloudera Navigator, Ranger|
-|Monitorování|Grafit, Collect, statd, telegraf, InfluxDB|
+|Sledování|Grafit, Collect, statd, telegraf, InfluxDB|
 |Zobrazení výstrah|Kapacitor, Prometheus, služby Datadog|
 |Doba uchovávání dat| 3 roky, 5 let|
 |Správci clusteru|Jeden správce, více správců|
@@ -167,8 +165,8 @@ V této části jsou uvedeny dotazníky šablon, které vám pomůžou shromáž
 |---|---|---|
 |**Téma**: **infrastruktura** |||
 | Upřednostňovaná oblast|USA – východ||
-|Upřednostňovaná virtuální síť?|Ano||
-|Je potřeba HA/DR?|Ano||
+|Upřednostňovaná virtuální síť?|Yes||
+|Je potřeba HA/DR?|Yes||
 |Integraci s dalšími Cloud Services?|ADF, CosmosDB||
 |**Téma**:   **přesun dat**  |||
 |Předvolba počátečního zatížení|DistCp, data box, ADF, WANDisco||
@@ -177,25 +175,25 @@ V této části jsou uvedeny dotazníky šablon, které vám pomůžou shromáž
 |**Téma**:   **monitorování výstrah &** |||
 |Použití monitorování Azure & upozorňování a integrace monitorování třetích stran|Použití upozorňování & monitorování Azure||
 |**Téma**:   **Předvolby zabezpečení** |||
-|Privátní a chráněný datový kanál?|Ano||
-|Cluster připojený k doméně (ESP)?|     Ano||
-|Místní AD Sync ke cloudu?|     Ano||
+|Privátní a chráněný datový kanál?|Yes||
+|Cluster připojený k doméně (ESP)?|     Yes||
+|Místní AD Sync ke cloudu?|     Yes||
 |Počet uživatelů služby AD, které se mají synchronizovat?|          100||
-|Chcete synchronizovat hesla do cloudu?|    Ano||
-|Jenom uživatelé cloudu?|                 Ano||
-|Je potřeba MFA?|                       Ne|| 
-|Požadavky na autorizaci dat?|  Ano||
-|Řízení přístupu na základě role?|        Ano||
-|Je vyžadováno auditování?|                  Ano||
-|Šifrování dat v klidovém umístění?|          Ano||
-|Šifrování dat při přenosu?|       Ano||
+|Chcete synchronizovat hesla do cloudu?|    Yes||
+|Jenom uživatelé cloudu?|                 Yes||
+|Je potřeba MFA?|                       No|| 
+|Požadavky na autorizaci dat?|  Yes||
+|Řízení přístupu na základě role?|        Yes||
+|Je vyžadováno auditování?|                  Yes||
+|Šifrování dat v klidovém umístění?|          Yes||
+|Šifrování dat při přenosu?|       Yes||
 |**Téma**:   **Předvolby opětovné architektury** |||
 |Jeden cluster vs konkrétní typy clusterů|Konkrétní typy clusterů||
 |Společně umístěné úložiště vs – vzdálené úložiště?|Vzdálené úložiště||
 |Menší velikost clusteru jako data se ukládají vzdáleně?|Menší velikost clusteru||
 |Použít více menších clusterů místo jednoho velkého clusteru?|Použití více menších clusterů||
-|Používáte vzdálenou metastore?|Ano||
-|Sdílet metaúložiště mezi různými clustery?|Ano||
+|Používáte vzdálenou metastore?|Yes||
+|Sdílet metaúložiště mezi různými clustery?|Yes||
 |Dekonstruovat úlohy?|Výměna úloh podregistru pomocí úloh Spark||
 |Chcete použít ADF pro orchestraci dat?|No||
 

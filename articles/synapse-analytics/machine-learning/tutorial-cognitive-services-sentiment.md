@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: analýza mínění pomocí Cognitive Services'
-description: Kurz, jak využít Cognitive Services pro analýzu mínění v synapse
+description: Naučte se používat Cognitive Services k analýze mínění ve službě Azure synapse Analytics.
 services: synapse-analytics
 ms.service: synapse-analytics
 ms.subservice: machine-learning
@@ -9,100 +9,106 @@ ms.reviewer: jrasnick, garye
 ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 6a4833cf0d73939e01fd3e3e7263c6cba3c0a28a
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 08d5e53facce172c2287c2e341895f0ee38571f0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222186"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943696"
 ---
 # <a name="tutorial-sentiment-analysis-with-cognitive-services-preview"></a>Kurz: analýza mínění pomocí Cognitive Services (Preview)
 
-V tomto kurzu se naučíte, jak snadno rozšířit data v Azure synapse pomocí [Cognitive Services](../../cognitive-services/index.yml). K provedení analýzy mínění použijeme funkce [Analýza textu](../../cognitive-services/text-analytics/index.yml) . Uživatel ve službě Azure synapse může jednoduše vybrat tabulku obsahující textový sloupec, který se má rozšířit pomocí zabarvení. Tyto zabarvení mohou být kladné, záporné, smíšené nebo neutrální a bude vrácena i pravděpodobnost.
+V tomto kurzu se naučíte, jak snadno rozšířit data ve službě Azure synapse Analytics pomocí [azure Cognitive Services](../../cognitive-services/index.yml). K provedení analýzy mínění použijete funkce [Analýza textu](../../cognitive-services/text-analytics/index.yml) . 
+
+Uživatel ve službě Azure synapse může jednoduše vybrat tabulku obsahující textový sloupec, který se má rozšířit pomocí zabarvení. Tyto zabarvení můžou být kladné, záporné, smíšené nebo neutrální. Vrátí se také pravděpodobnost.
 
 Tento kurz zahrnuje:
 
 > [!div class="checklist"]
-> - Postup získání datové sady Sparku obsahující textový sloupec pro analýzu mínění
-> - Využijte možnosti průvodce v Azure Synapse k rozšíření dat pomocí Analýza textu Cognitive Services.
+> - Postup získání datové sady pro tabulku Spark obsahující textový sloupec pro analýzu mínění
+> - Použití Průvodce v prostředí Azure Synapse k rozšíření dat pomocí Analýza textu v Cognitive Services.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet před tím, než začnete](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
-- [Pracovní prostor Azure synapse Analytics](../get-started-create-workspace.md) s účtem úložiště adls Gen2 nakonfigurovaný jako výchozí úložiště. Musíte být **přispěvatelem dat objektů BLOB úložiště** adls Gen2 systému souborů, se kterými pracujete.
+- [Pracovní prostor Azure synapse Analytics](../get-started-create-workspace.md) s účtem úložiště Azure Data Lake Storage Gen2 nakonfigurovaný jako výchozí úložiště. Musíte být *přispěvatelem dat objektů BLOB úložiště* Data Lake Storage Gen2 systému souborů, se kterým pracujete.
 - V pracovním prostoru Azure synapse Analytics je fond Spark. Podrobnosti najdete v tématu [Vytvoření fondu Spark ve službě Azure synapse](../quickstart-create-sql-pool-studio.md).
-- Než budete moct použít tento kurz, musíte taky dokončit kroky před konfigurací popsanou v tomto kurzu. [Nakonfigurujte Cognitive Services v Azure synapse](tutorial-configure-cognitive-services-synapse.md).
+- Kroky před konfigurací popsané v tomto kurzu [konfigurují Cognitive Services v Azure synapse](tutorial-configure-cognitive-services-synapse.md).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
+Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-spark-table"></a>Vytvoření tabulky Spark
 
 Pro tento kurz budete potřebovat tabulku Spark.
 
-1. Stáhněte si následující soubor CSV obsahující datovou sadu pro analýzu textu: [FabrikamComments.csv](https://github.com/Kaiqb/KaiqbRepo0731190208/blob/master/CognitiveServices/TextAnalytics/FabrikamComments.csv)
+1. Stáhněte soubor [FabrikamComments.csv](https://github.com/Kaiqb/KaiqbRepo0731190208/blob/master/CognitiveServices/TextAnalytics/FabrikamComments.csv) , který obsahuje datovou sadu pro text Analytics. 
 
-1. Nahrajte soubor do svého účtu úložiště Azure synapse ADLSGen2.
-![Nahrání dat](media/tutorial-cognitive-services/tutorial-cognitive-services-sentiment-00a.png)
+1. Nahrajte soubor do svého účtu úložiště Azure synapse v Data Lake Storage Gen2.
+  
+   ![Snímek obrazovky zobrazující výběry pro nahrávání dat](media/tutorial-cognitive-services/tutorial-cognitive-services-sentiment-00a.png)
 
-1. Vytvořte tabulku Spark ze souboru. csv tak, že kliknete pravým tlačítkem na soubor a vyberete **Nový Poznámkový blok – > vytvořit tabulku Spark**.
-![Vytvořit tabulku Spark](media/tutorial-cognitive-services/tutorial-cognitive-services-sentiment-00b.png)
+1. Vytvořte tabulku Spark ze souboru. csv tak, že kliknete pravým tlačítkem na soubor a vyberete **Nový Poznámkový blok**  >  **vytvořit tabulku Spark**.
 
-1. Pojmenujte tabulku v buňce kódu a spusťte Poznámkový blok ve fondu Spark. Nezapomeňte nastavit "Header = true".
-![Spustit Poznámkový blok](media/tutorial-cognitive-services/tutorial-cognitive-services-sentiment-00c.png)
+   ![Snímek obrazovky zobrazující výběry pro vytvoření tabulky Spark](media/tutorial-cognitive-services/tutorial-cognitive-services-sentiment-00b.png)
 
-```python
-%%pyspark
-df = spark.read.load('abfss://default@azuresynapsesa.dfs.core.windows.net/data/FabrikamComments.csv', format='csv'
-## If header exists uncomment line below
-, header=True
-)
-df.write.mode("overwrite").saveAsTable("default.YourTableName")
-```
+1. Pojmenujte tabulku v buňce kódu a spusťte Poznámkový blok ve fondu Spark. Nezapomeňte nastavit `header=True` .
 
-## <a name="launch-cognitive-services-wizard"></a>Spustit Průvodce Cognitive Services
+   ![Snímek obrazovky, který ukazuje spuštění poznámkového bloku](media/tutorial-cognitive-services/tutorial-cognitive-services-sentiment-00c.png)
 
-1. Klikněte pravým tlačítkem na tabulku Spark vytvořenou v předchozím kroku. Chcete-li spustit průvodce, vyberte možnost "Machine Learning-> rozšířit s existujícím modelem".
-![Spustit Průvodce bodování](media/tutorial-cognitive-services/tutorial-cognitive-services-sentiment-00d.png)
+   ```python
+   %%pyspark
+   df = spark.read.load('abfss://default@azuresynapsesa.dfs.core.windows.net/data/FabrikamComments.csv', format='csv'
+   ## If a header exists, uncomment the line below
+   , header=True
+   )
+   df.write.mode("overwrite").saveAsTable("default.YourTableName")
+   ```
 
-2. Zobrazí se panel konfigurace a zobrazí se výzva k výběru Cognitive Servicesho modelu. Vyberte analýza textu-Analýza mínění.
+## <a name="open-the-cognitive-services-wizard"></a>Otevření Průvodce Cognitive Services
 
-![Spustit Průvodce vyhodnocování – krok 1](media/tutorial-cognitive-services/tutorial-cognitive-services-sentiment-00e.png)
+1. Klikněte pravým tlačítkem na tabulku Spark vytvořenou v předchozím postupu. Pro otevření průvodce vyberte **Machine Learning**  >  **obohacení s existujícím modelem** .
+
+   ![Snímek obrazovky zobrazující výběry pro otevření Průvodce bodování](media/tutorial-cognitive-services/tutorial-cognitive-services-sentiment-00d.png)
+
+2. Zobrazí se panel konfigurace a zobrazí se výzva k výběru Cognitive Servicesho modelu. Vyberte **Analýza textu-analýza mínění**.
+
+   ![Snímek obrazovky zobrazující výběr Cognitive Servicesho modelu](media/tutorial-cognitive-services/tutorial-cognitive-services-sentiment-00e.png)
 
 ## <a name="provide-authentication-details"></a>Zadejte podrobnosti ověřování.
 
-Aby bylo možné provést ověření pro Cognitive Services, je nutné odkazovat na tajný kód pro použití v Key Vault. Níže uvedené vstupy jsou závislé na [nezbytných krocích](tutorial-configure-cognitive-services-synapse.md) , které byste měli před tímto krokem dokončit.
+Aby bylo možné provést ověření pro Cognitive Services, musíte odkazovat na tajný klíč vašeho trezoru klíčů. Následující vstupy závisejí na [požadovaných krocích](tutorial-configure-cognitive-services-synapse.md) , které byste měli před tímto bodem dokončit.
 
 - **Předplatné Azure**: vyberte předplatné Azure, do kterého patří Trezor klíčů.
-- **Účet Cognitive Services**: Jedná se o prostředek analýza textu, ke kterému se budete připojovat.
-- **Azure Key Vault propojená služba**: jako součást nezbytných kroků jste vytvořili propojenou službu s vaším prostředkem analýza textu. Vyberte prosím tuto položku.
-- **Název tajného** kódu: Jedná se o název tajného klíče v trezoru klíčů obsahující klíč, který se má ověřit pro váš Cognitive Services prostředek.
+- **Cognitive Services účet**: zadejte prostředek analýza textu, ke kterému se připojíte.
+- **Azure Key Vault propojená služba**: jako součást požadovaných kroků jste vytvořili propojenou službu s vaším prostředkem analýza textu. Vyberte ho sem.
+- **Název tajného** kódu: zadejte název tajného klíče do trezoru klíčů, který obsahuje klíč, který se má ověřit pro váš Cognitive Services prostředek.
 
-![Zadejte Azure Key Vault podrobnosti.](media/tutorial-cognitive-services/tutorial-cognitive-services-sentiment-00f.png)
+![Snímek obrazovky zobrazující podrobnosti o ověřování pro Trezor klíčů](media/tutorial-cognitive-services/tutorial-cognitive-services-sentiment-00f.png)
 
-## <a name="configure-sentiment-analysis"></a>Konfigurace Analýza mínění
+## <a name="configure-sentiment-analysis"></a>Konfigurace analýzy mínění
 
-Dále je nutné nakonfigurovat analýzu mínění. Vyberte prosím následující podrobnosti:
-- **Jazyk**: Vyberte jazyk textu, na kterém chcete provést analýzu mínění. Vyberte možnost **EN**.
-- **Textový sloupec**: Jedná se o textový sloupec ve vaší datové sadě, který chcete analyzovat pro určení mínění. Vyberte **Komentář** k sloupci tabulky.
+Dále nakonfigurujte analýzu mínění. Vyberte následující podrobnosti:
+- **Jazyk**: vyberte **angličtinu** jako jazyk textu, na kterém chcete provést analýzu mínění.
+- **Textový sloupec**: vyberte možnost **Komentář (řetězec)** jako textový sloupec ve vaší datové sadě, který chcete analyzovat pro určení mínění.
 
-Až budete hotovi, klikněte na **otevřít poznámkový blok**. Tím se vygeneruje Poznámkový blok s PySpark kódem, který provede analýzu mínění pomocí Azure Cognitive Services.
+Až skončíte, vyberte **otevřít poznámkový blok**. Tím se vygeneruje Poznámkový blok s PySpark kódem, který provede analýzu mínění pomocí Azure Cognitive Services.
 
-![Konfigurace Analýza mínění](media/tutorial-cognitive-services/tutorial-cognitive-services-sentiment-00g.png)
+![Snímek obrazovky zobrazující výběry pro konfiguraci analýzy mínění](media/tutorial-cognitive-services/tutorial-cognitive-services-sentiment-00g.png)
 
-## <a name="open-notebook-and-run"></a>Otevřete Poznámkový blok a spusťte
+## <a name="run-the-notebook"></a>Spuštění poznámkového bloku
 
-Poznámkový blok, který jste právě otevřeli, používá [knihovnu mmlspark](https://github.com/Azure/mmlspark) k připojení ke službě rozpoznávání.
+Poznámkový blok, který jste právě otevřeli, používá [knihovnu mmlspark](https://github.com/Azure/mmlspark) pro připojení k Cognitive Services. Azure Key Vault podrobnosti, které jste zadali, vám umožní bezpečně odkázat na tajné klíče z tohoto prostředí bez jejich odhalení.
 
-Informace o Azure Key Vault, které jste zadali, vám umožní bezpečně odkázat na tajné kódy z tohoto prostředí bez jejich odhalení.
+Nyní můžete spouštět všechny buňky pro obohacení dat pomocí zabarvení. Vyberte **Spustit vše**. 
 
-Nyní můžete **spouštět všechny** buňky pro obohacení dat pomocí zabarvení. Zabarvení bude vrácen jako kladný/záporný/neutrální/smíšený a získáte pravděpodobnost pro mínění. Přečtěte si další informace o [Cognitive Services mínění analýze](../../cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md).
+Zabarvení jsou vraceny jako **kladné**, **záporné**, **neutrální** nebo **smíšené**. Získáte také pravděpodobnost na mínění. [Přečtěte si další informace o mínění analýze v Cognitive Services](../../cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md).
 
-![Spustit Analýza mínění](media/tutorial-cognitive-services/tutorial-cognitive-services-sentiment-00h.png)
+![Snímek obrazovky zobrazující analýzu mínění](media/tutorial-cognitive-services/tutorial-cognitive-services-sentiment-00h.png)
 
 ## <a name="next-steps"></a>Další kroky
 - [Kurz: detekce anomálií s využitím Azure Cognitive Services](tutorial-cognitive-services-sentiment.md)
 - [Kurz: bodování modelu Machine Learning ve vyhrazených fondech SQL Azure synapse](tutorial-sql-pool-model-scoring-wizard.md)
-- [Funkce Machine Learning v Azure Azure synapse Analytics](what-is-machine-learning.md)
+- [Funkce Machine Learning ve službě Azure synapse Analytics](what-is-machine-learning.md)

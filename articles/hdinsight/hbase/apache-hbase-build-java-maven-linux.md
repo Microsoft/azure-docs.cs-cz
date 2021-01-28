@@ -1,19 +1,16 @@
 ---
 title: Použití Apache Maven k vytvoření klienta Java HBA pro Azure HDInsight
 description: Naučte se používat Apache Maven k vytváření aplikací Apache HBA založených na jazyce Java a pak ji nasadit do HBA v Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seodec18, devx-track-java
 ms.date: 12/24/2019
-ms.openlocfilehash: 61b8aaf9ea61ebe85eac6708d7390c386dea2696
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 13616cf99db39ec4dac1d13e3dcd2cefc5a44614
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547907"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942956"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Vytváření aplikací Java pro Apache HBA
 
@@ -21,7 +18,7 @@ Naučte se vytvořit aplikaci [Apache HBA](https://hbase.apache.org/) v jazyce J
 
 Kroky v tomto dokumentu používají [Apache Maven](https://maven.apache.org/) k vytvoření a sestavení projektu. Maven je nástroj pro správu a porozumění projektů softwaru, který umožňuje sestavovat software, dokumentaci a sestavy pro projekty v jazyce Java.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Cluster Apache HBA v HDInsight. Přečtěte si téma Začínáme [s Apache HBA](./apache-hbase-tutorial-get-started-linux.md).
 
@@ -29,7 +26,7 @@ Kroky v tomto dokumentu používají [Apache Maven](https://maven.apache.org/) k
 
 * [Apache Maven](https://maven.apache.org/download.cgi) správně [nainstalované](https://maven.apache.org/install.html) v souladu s Apache.  Maven je systém sestavení projektu pro projekty v jazyce Java.
 
-* Klient SSH. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Klient SSH. Další informace najdete v tématu [Připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 * Pokud používáte PowerShell, budete potřebovat [AZ Module](/powershell/azure/).
 
@@ -48,7 +45,7 @@ cd C:\HDI
 
 ## <a name="create-a-maven-project"></a>Vytvoření projektu Maven
 
-1. Zadejte následující příkaz a vytvořte tak projekt Maven s názvem **hbaseapp** :
+1. Zadejte následující příkaz a vytvořte tak projekt Maven s názvem **hbaseapp**:
 
     ```cmd
     mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=hbaseapp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false

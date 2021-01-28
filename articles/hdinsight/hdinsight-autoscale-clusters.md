@@ -1,19 +1,16 @@
 ---
 title: Automatické škálování clusterů Azure HDInsight
 description: Pomocí funkce automatického škálování můžete automaticky škálovat clustery Azure HDInsight na základě plánu nebo metriky výkonu.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: contperf-fy21q1, contperf-fy21q2
 ms.date: 12/14/2020
-ms.openlocfilehash: 2b23b4256e79723ce0b5edafd59186dc345eb791
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 130a5a58fc7dab6f94c011cf9764743f9114e48a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629251"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942633"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Automatické škálování clusterů Azure HDInsight
 
@@ -73,10 +70,10 @@ Následující tabulka popisuje typy clusterů a verze, které jsou kompatibiln�
 
 | Verze | Spark | Hive | Interaktivní dotaz | HBase | Kafka | Storm | ML |
 |---|---|---|---|---|---|---|---|
-| HDInsight 3,6 bez protokolu ESP | Ano | Ano | Ano | Ano* | Ne | Ne | Ne |
-| HDInsight 4,0 bez protokolu ESP | Ano | Ano | Ano | Ano* | Ne | Ne | Ne |
-| HDInsight 3,6 s ESP | Ano | Ano | Ano | Ano* | Ne | Ne | Ne |
-| HDInsight 4,0 s ESP | Ano | Ano | Ano | Ano* | Ne | Ne | Ne |
+| HDInsight 3,6 bez protokolu ESP | Yes | Yes | Yes | Ano* | No | No | No |
+| HDInsight 4,0 bez protokolu ESP | Yes | Yes | Yes | Ano* | No | No | No |
+| HDInsight 3,6 s ESP | Yes | Yes | Yes | Ano* | No | No | No |
+| HDInsight 4,0 s ESP | Yes | Yes | Yes | Ano* | No | No | No |
 
 \* Clustery clusterů se dají konfigurovat jenom pro škálování na základě plánu, nikoli na základě zatížení.
 

@@ -3,12 +3,12 @@ title: Export do SQL z Azure Application Insights | Microsoft Docs
 description: Průběžně exportujte Application Insights data do SQL pomocí Stream Analytics.
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.openlocfilehash: 90aab1794a9b412de2498edcc4d221f4bcc86968
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5fb7093dd9945893b17f1b8f5e596cfe5181c3b6
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979456"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942415"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Návod: Export do jazyka SQL z Application Insights pomocí Stream Analytics
 Tento článek popisuje, jak přesunout data telemetrie z [Azure Application Insights][start] do Azure SQL Database pomocí [průběžného exportu][export] a [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/). 
@@ -64,7 +64,7 @@ Průběžný export vždycky ukládá data do účtu Azure Storage, takže nejd�
 1. Nechte si shromažďovat data. Nasaďte se zpátky a umožněte lidem, aby na chvíli používali vaši aplikaci. Telemetrie se objeví v a v [diagnostickém vyhledávání](./diagnostic-search.md)uvidíte statistické grafy v [Průzkumníkovi metrik](../platform/metrics-charts.md) a jednotlivé události. 
    
     Data budou také exportována do vašeho úložiště. 
-2. Zkontrolujte exportovaná data, a to buď na portálu – zvolte **Procházet**, vyberte svůj účet úložiště a pak **kontejnery** – nebo v aplikaci Visual Studio. V aplikaci Visual Studio vyberte možnost **Zobrazit/Cloud Průzkumník**a otevřete Azure/úložiště. (Pokud nemáte tuto možnost nabídky, musíte nainstalovat sadu Azure SDK: otevřete dialogové okno Nový projekt a otevřete Visual C#/Cloud/získat Microsoft Azure SDK pro .NET.)
+2. Zkontrolujte exportovaná data, a to buď na portálu – zvolte **Procházet**, vyberte svůj účet úložiště a pak **kontejnery** – nebo v aplikaci Visual Studio. V aplikaci Visual Studio vyberte možnost **Zobrazit/Cloud Průzkumník** a otevřete Azure/úložiště. (Pokud nemáte tuto možnost nabídky, musíte nainstalovat sadu Azure SDK: otevřete dialogové okno Nový projekt a otevřete Visual C#/Cloud/získat Microsoft Azure SDK pro .NET.)
    
     ![V aplikaci Visual Studio otevřete Prohlížeč serveru, Azure, úložiště](./media/code-sample-export-sql-stream-analytics/087-explorer.png)
    
@@ -72,7 +72,7 @@ Průběžný export vždycky ukládá data do účtu Azure Storage, takže nejd�
 
 Události se zapisují do souborů BLOB ve formátu JSON. Každý soubor může obsahovat jednu nebo více událostí. Proto bychom chtěli číst data událostí a vyfiltrovat požadovaná pole. Existují nejrůznější věci, které jsme s daty mohli dělat, ale náš plán dnes je použít Stream Analytics k přesunu dat do SQL Database. Díky tomu bude snadné spouštět spoustu zajímavých dotazů.
 
-## <a name="create-an-azure-sql-database"></a>Vytvoření Azure SQL Database
+## <a name="create-an-azure-sql-database"></a>Vytvoření databáze Azure SQL Database
 Až se znovu rozhodnete z předplatného v [Azure Portal][portal], vytvořte databázi (a nový server, pokud jste ho ještě nezískali), na který budete data zapisovat.
 
 ![Nová data, SQL](./media/code-sample-export-sql-stream-analytics/090-sql.png)
@@ -82,7 +82,7 @@ Ujistěte se, že server umožňuje přístup ke službám Azure:
 ![Procházení, servery, server, nastavení, brána firewall, povolení přístupu k Azure](./media/code-sample-export-sql-stream-analytics/100-sqlaccess.png)
 
 ## <a name="create-a-table-in-azure-sql-database"></a>Vytvořit tabulku v Azure SQL Database
-Připojte se k databázi vytvořené v předchozí části pomocí preferovaného nástroje pro správu. V tomto návodu použijeme [SQL Server Management Tools](/sql/ssms/sql-server-management-studio-ssms?view=sql-server-ver15) (SSMS).
+Připojte se k databázi vytvořené v předchozí části pomocí preferovaného nástroje pro správu. V tomto návodu použijeme [SQL Server Management Tools](/sql/ssms/sql-server-management-studio-ssms) (SSMS).
 
 ![Připojení k Azure SQL Database](./media/code-sample-export-sql-stream-analytics/31-sql-table.png)
 

@@ -1,18 +1,15 @@
 ---
 title: Jak používat replikaci Apache Hive v clusterech Azure HDInsight
 description: Naučte se používat replikaci podregistru v clusterech HDInsight k replikaci metastore Hive a Azure Data Lake Storage Gen 2 pro data Lake.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2020
-ms.openlocfilehash: af74392b3368a25e5d238f774292c80de5f91c65
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3dd894a46b666703f64e44336c0bf022da8a063a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91857737"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941332"
 ---
 # <a name="how-to-use-apache-hive-replication-in-azure-hdinsight-clusters"></a>Jak používat replikaci Apache Hive v clusterech Azure HDInsight
 
@@ -140,7 +137,7 @@ Přírůstková replikace se řídí stejným procesem a vyžaduje jako vstup ID
 
 Replikace se obvykle konfiguruje jednosměrovým způsobem mezi primárním a sekundárním, přičemž primární rozhraní pro čtení a zápis požadavků. Sekundární clustery pro stravování mají pouze požadavky na čtení. Zápisy jsou povoleny na sekundárním počítači, pokud dojde k havárii, ale zpětná replikace musí být nakonfigurována zpět na primární.
 
-:::image type="content" source="media/apache-hive-replication/replication-pattern.png" alt-text="Diagram replikace podregistru":::
+:::image type="content" source="media/apache-hive-replication/replication-pattern.png" alt-text="Vzor replikace podregistru":::
 
 Replikace podregistru je vhodná pro celou řadu schémat, včetně primárního – sekundárního, centrálního a paprskového a přenosového.
 

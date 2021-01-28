@@ -1,19 +1,16 @@
 ---
 title: Spouštění úloh Apache Sqoop pomocí PowerShellu a Azure HDInsight
 description: Naučte se používat Azure PowerShell z pracovní stanice ke spouštění služby Apache Sqoop import a export mezi Apache Hadoopm clusterem a Azure SQL Database.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/14/2020
-ms.openlocfilehash: 781c19edb9261b13f31bebecb6bc74bf2b616b47
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 7d1f0a4982402a7854841f17c1915625e2f01cc1
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546972"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943124"
 ---
 # <a name="run-apache-sqoop-jobs-with-azure-powershell-in-hdinsight"></a>Spouštění úloh Apache Sqoop pomocí Azure PowerShell ve službě HDInsight
 
@@ -21,7 +18,7 @@ ms.locfileid: "92546972"
 
 Naučte se používat Azure PowerShell ke spouštění úloh Apache Sqoop v Azure HDInsight k importu a exportu dat mezi clusterem HDInsight a Azure SQL Database nebo SQL Server.  Tento článek je pokračováním [v použití Apache Sqoop se systémem Hadoop ve službě HDInsight](./hdinsight-use-sqoop.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Pracovní stanice s Azure PowerShell [AZ Module](/powershell/azure/) installed.
 

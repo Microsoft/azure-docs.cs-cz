@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 12/16/2019
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bc0caaf30db0384da3fa9c5abea6360206a3fb8e
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: 5194dab21842e47d2bf2445c69ccaeec3cb78e4f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831971"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943418"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-sdk-for-c"></a>Rychlý Start: Kontrola pravopisu pomocí sady Kontrola pravopisu Bingu SDK pro jazyk C #
 
@@ -110,4 +110,4 @@ Sestavte a spusťte projekt. Pokud používáte Visual Studio, můžete soubor l
 > [Vytvoření jednostránkové webové aplikace](tutorials/spellcheck.md)
 
 - [Co je rozhraní API pro kontrolu pravopisu Bingu?](overview.md)
-- [Referenční příručka k sadě Kontrola pravopisu Bingu C# SDK](/dotnet/api/overview/azure/cognitiveservices/bing-spell-check-readme?view=azure-dotnet)
+- [Referenční příručka k sadě Kontrola pravopisu Bingu C# SDK](/dotnet/api/overview/azure/cognitiveservices/bing-spell-check-readme)

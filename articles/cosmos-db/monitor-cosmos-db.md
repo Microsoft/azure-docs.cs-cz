@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: sngun
 ms.custom: subject-monitoring
-ms.openlocfilehash: f7cc9d4062ad9a49ff84db6ac035ff53934ae0a0
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: d5cfdca24193b899926bd30995063ed55b3dd3eb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96532053"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943447"
 ---
 # <a name="monitor-azure-cosmos-db"></a>Monitorování služby Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -67,7 +67,7 @@ Azure Cosmos DB shromažďuje stejné typy dat monitorování jako jiné prostř
 
 Stránka **Přehled** v Azure Portal pro každou databázi Azure Cosmos obsahuje stručný přehled využití databáze, včetně jejich žádosti a hodinového využití fakturace. Tyto informace jsou užitečné, ale k dispozici je jen malé množství dat monitorování. Některá z těchto dat jsou shromažďována automaticky a k dispozici pro analýzu, jakmile vytvoříte databázi, zatímco můžete povolit další shromažďování dat s určitou konfigurací.
 
-:::image type="content" source="media/monitor-cosmos-db/overview-page.png" alt-text="Stránka Přehled":::
+:::image type="content" source="media/monitor-cosmos-db/overview-page.png" alt-text="Stránka přehledu":::
 
 ## <a name="collection-and-routing"></a>Shromažďování a směrování
 
@@ -90,7 +90,7 @@ Všechny metriky pro Azure Cosmos DB jsou v oboru názvů **Cosmos DB Standardn�
 * Název kolekce
 * DatabaseName
 * Typ operace
-* Oblast
+* Region (Oblast)
 * StatusCode
 
 Pro referenci se zobrazí seznam [všech metrik prostředků, které jsou podporované v Azure monitor](../azure-monitor/platform/metrics-supported.md).
@@ -129,7 +129,7 @@ Data v Azure Monitor protokoly se ukládají v tabulkách, ve kterých každá t
 
 Všechny protokoly prostředků v Azure Monitor mají stejná pole následovaná poli pro konkrétní služby. Společné schéma je popsáno v [Azure monitor schéma protokolu prostředků](../azure-monitor/platform/resource-logs-schema.md#top-level-common-schema). Seznam typů protokolů prostředků shromážděných pro Azure Cosmos DB naleznete v tématu [Monitoring Azure Cosmos DB data reference](monitor-cosmos-db-reference.md#resource-logs).
 
-[Protokol aktivit](/azure/azure-monitor/platform/activity-log) je přihlášení k platformě Azure, které poskytuje přehled o událostech na úrovni předplatného. Můžete ji zobrazit nezávisle nebo ji směrovat do Azure Monitor protokolů, kde můžete provádět mnohem složitější dotazy pomocí Log Analytics.  
+[Protokol aktivit](../azure-monitor/platform/activity-log.md) je přihlášení k platformě Azure, které poskytuje přehled o událostech na úrovni předplatného. Můžete ji zobrazit nezávisle nebo ji směrovat do Azure Monitor protokolů, kde můžete provádět mnohem složitější dotazy pomocí Log Analytics.  
 
 Azure Cosmos DB ukládá data v následujících tabulkách.
 

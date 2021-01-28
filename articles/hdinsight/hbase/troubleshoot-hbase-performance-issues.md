@@ -1,18 +1,15 @@
 ---
 title: Řešení potíží s výkonem Apache HBase ve službě Azure HDInsight
 description: Různé pokyny k ladění výkonu Apache HBA a tipy pro získání optimálního výkonu v Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 09/24/2019
-ms.openlocfilehash: 5be3f02a80524d9c4b633e1e34d581fc26bfd32d
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 466fac524601e2d569bfa0ccf90179fe9419210d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547890"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942899"
 ---
 # <a name="troubleshoot-apache-hbase-performance-issues-on-azure-hdinsight"></a>Řešení potíží s výkonem Apache HBase ve službě Azure HDInsight
 
@@ -73,9 +70,9 @@ Níže jsou uvedené některé další konkrétní parametry, které jsme proved
 
 - Zvětšete `memstore` Velikost z výchozích 128 MB na 256 MB. Toto nastavení se obvykle doporučuje pro těžké scénáře zápisu.
 
-- Zvyšte počet podprocesů, které jsou vyhrazeny pro komprimaci, od výchozího nastavení **1** až **4** . Toto nastavení je relevantní, pokud sledujeme časté drobné komprimace.
+- Zvyšte počet podprocesů, které jsou vyhrazeny pro komprimaci, od výchozího nastavení **1** až **4**. Toto nastavení je relevantní, pokud sledujeme časté drobné komprimace.
 
-- Vyhněte se zablokování `memstore` vyprázdnění kvůli limitu úložiště. Pokud chcete tuto vyrovnávací paměť zadat, zvyšte `Hbase.hstore.blockingStoreFiles` nastavení na **100** .
+- Vyhněte se zablokování `memstore` vyprázdnění kvůli limitu úložiště. Pokud chcete tuto vyrovnávací paměť zadat, zvyšte `Hbase.hstore.blockingStoreFiles` nastavení na **100**.
 
 - K řízení vyprázdnění použijte následující nastavení:
 
@@ -104,13 +101,13 @@ Níže jsou uvedené některé další konkrétní parametry, které jsme proved
 - Vypršení časových limitů RPC: **3 minuty**
 
    - Vypršení časových limitů RPC zahrnuje vypršení časového limitu pro adaptéry služby HBA, časový limit pro klientský skener a časový limit dotazů v Phoenixu. 
-   - Ujistěte se, že `hbase.client.scanner.caching` je parametr nastavený na stejnou hodnotu na konci serveru i na konci klienta. Pokud nejsou totožné, toto nastavení vede k chybám na konci klienta, které souvisejí s `OutOfOrderScannerException` . Toto nastavení by mělo být pro velké kontroly nastaveno na nízkou hodnotu. Nastavíme tuto hodnotu na **100** .
+   - Ujistěte se, že `hbase.client.scanner.caching` je parametr nastavený na stejnou hodnotu na konci serveru i na konci klienta. Pokud nejsou totožné, toto nastavení vede k chybám na konci klienta, které souvisejí s `OutOfOrderScannerException` . Toto nastavení by mělo být pro velké kontroly nastaveno na nízkou hodnotu. Nastavíme tuto hodnotu na **100**.
 
 ## <a name="other-considerations"></a>Další důležité informace
 
 Níže jsou uvedené další parametry pro zvážení ladění:
 
-- `Hbase.rs.cacheblocksonwrite` – ve výchozím nastavení je v HDI toto nastavení nastaveno na **hodnotu true** .
+- `Hbase.rs.cacheblocksonwrite` – ve výchozím nastavení je v HDI toto nastavení nastaveno na **hodnotu true**.
 
 - Nastavení, které umožňuje odložit menší komprimaci na později.
 

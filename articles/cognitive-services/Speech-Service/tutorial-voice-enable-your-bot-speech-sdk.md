@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6b231b5af208a51cbe8f4370c2dc532be1ba3af9
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 9ee7116efe931d101a1505bc2d9d866d8ea5b92a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024921"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943432"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Kurz: hlas – povolení robota pomocí sady Speech SDK
 
@@ -167,7 +167,7 @@ Teď, když jste vytvořili nějaké prostředky, pojďme vytvořit robota. Bude
 1. Nainstalujte [emulátor systému bot Framework](https://github.com/Microsoft/BotFramework-Emulator/releases/latest) verze 4.3.0 nebo novější.
 2. Spusťte emulátor rozhraní bot Framework a otevřete robota:
    * **Soubor**  ->  **Otevřete robot**.
-3. Zadejte adresu URL pro robota. Například:
+3. Zadejte adresu URL pro robota. Příklad:
 
    ```
    http://localhost:3978/api/messages
@@ -234,7 +234,7 @@ Budete muset udělat malou změnu konfigurace, aby robot mohl komunikovat s př�
 
 ## <a name="create-a-channel-registration"></a>Vytvoření registrace kanálu
 
-Teď, když jste vytvořili Azure App Service pro hostování robota, je dalším krokem vytvoření **registrace kanálů robota**. Vytvoření registrace kanálu je předpokladem pro registraci robota s kanály pro bot Framework, včetně kanálu Direct line Speech. Pokud se chcete dozvědět víc o tom, jak roboty používají kanály, přečtěte si téma [připojení robota k kanálům](/azure/bot-service/bot-service-manage-channels?view=azure-bot-service-4.0).
+Teď, když jste vytvořili Azure App Service pro hostování robota, je dalším krokem vytvoření **registrace kanálů robota**. Vytvoření registrace kanálu je předpokladem pro registraci robota s kanály pro bot Framework, včetně kanálu Direct line Speech. Pokud se chcete dozvědět víc o tom, jak roboty používají kanály, přečtěte si téma [připojení robota k kanálům](/azure/bot-service/bot-service-manage-channels).
 
 1. <a href="https://ms.portal.azure.com/#create/Microsoft.BotServiceConnectivityGalleryPackage" target="_blank">Vytvoření registrace kanálů pro Azure bot <span class="docon docon-navigate-external x-hidden-focus"></span></a>
 2. Zobrazí se výzva k zadání některých informací:
@@ -244,7 +244,7 @@ Teď, když jste vytvořili Azure App Service pro hostování robota, je další
    * V **oblasti umístění** vyberte **západní USA**.
      * V případě **cenové úrovně** vyberte **F0**.
      * Do pole **koncový bod pro zasílání zpráv** zadejte adresu URL webové aplikace s cestou, která je `/api/messages` připojena na konci. Příklad: Pokud byl váš globálně jedinečný název aplikace **EchoBot20190805125647**, koncový bod pro zasílání zpráv by byl: `https://EchoBot20190805125647.azurewebsites.net/api/messages/` .
-     * V případě služby **Application Insights** můžete tuto možnost nastavit na **vypnuto**. Další informace najdete v tématu věnovaném [analýze robotů](/azure/bot-service/bot-service-manage-analytics?view=azure-bot-service-4.0).
+     * V případě služby **Application Insights** můžete tuto možnost nastavit na **vypnuto**. Další informace najdete v tématu věnovaném [analýze robotů](/azure/bot-service/bot-service-manage-analytics).
      * Ignoruje **Automatické vytvoření ID a heslo aplikace**.
 5. V dolní části okna **registrace kanálů robota** klikněte na **vytvořit**.
 
@@ -298,7 +298,7 @@ Teď je čas zaregistrovat robota pomocí kanálu Direct line Speech. Tento kan�
    * Klikněte na **Uložit**.
 
 > [!TIP]
-> Pokud se chcete dozvědět víc, přečtěte si téma [připojení robota k přímému line Speech](/azure/bot-service/bot-service-channel-connect-directlinespeech?view=azure-bot-service-4.0). Tato stránka obsahuje další informace a známé problémy.
+> Pokud se chcete dozvědět víc, přečtěte si téma [připojení robota k přímému line Speech](/azure/bot-service/bot-service-channel-connect-directlinespeech). Tato stránka obsahuje další informace a známé problémy.
 
 ## <a name="run-the-windows-voice-assistant-client"></a>Spustit klienta Windows Voice Assistant
 
@@ -323,7 +323,7 @@ Klient hlasového asistenta systému Windows má jednoduché uživatelské rozhr
 
 Pokud se zobrazí chybová zpráva v hlavním okně aplikace, použijte tuto tabulku k identifikaci a řešení potíží s chybou:
 
-| Chyba | Co byste měli udělat? |
+| Chyba | Co byste měli dělat? |
 |-------|----------------------|
 |Chyba (AuthenticationFailure): upgrade protokolu WebSocket se nezdařil s chybou ověřování (401). Vyhledat správný klíč předplatného (nebo autorizační token) a název oblasti| Na stránce nastavení aplikace se ujistěte, že jste zadali správný klíč předplatného pro rozpoznávání řeči a jeho oblast.<br>Ujistěte se, že klíč řeči a klíčová oblast byly zadány správně. |
 |Chyba (ConnectionFailure): připojení bylo ukončeno vzdáleným hostitelem. Kód chyby: 1011. Podrobnosti o chybě: před odesláním zprávy se nepovedlo připojit k robotovi. | Ujistěte se, že jste [zaškrtli políčko Povolit koncový bod streamování](#register-the-direct-line-speech-channel) nebo na zapnuté [ **webové zásuvky**](#enable-web-sockets) .<br>Ujistěte se, že je spuštěný Azure App Service. Pokud je to, zkuste restartovat App Service.|
@@ -412,7 +412,7 @@ Pomocí těchto kroků můžete vytvořit model klíčových slov, nakonfigurova
 
 Ve zdrojovém kódu klienta Windows Voice Assistant si prohlédněte tyto soubory a zkontrolujte kód, který se používá k povolení rozpoznávání klíčových slov:
 
-1. [`VoiceAssistantClient\Models.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/Models.cs) obsahuje volání metody sady Speech SDK [`KeywordRecognitionModel.fromFile()`](/javascript/api/microsoft-cognitiveservices-speech-sdk/keywordrecognitionmodel?preserve-view=true&view=azure-node-latest#fromfile-string-) , která se používá k vytvoření instance modelu z místního souboru na disku.
+1. [`VoiceAssistantClient\Models.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/Models.cs) obsahuje volání metody sady Speech SDK [`KeywordRecognitionModel.fromFile()`](/javascript/api/microsoft-cognitiveservices-speech-sdk/keywordrecognitionmodel#fromfile-string-) , která se používá k vytvoření instance modelu z místního souboru na disku.
 1. [`VoiceAssistantClient\MainWindow.xaml.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/MainWindow.xaml.cs) obsahuje volání metody sady Speech SDK [`DialogServiceConnector.StartKeywordRecognitionAsync()`](/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.startkeywordrecognitionasync) , které aktivuje funkci zjišťování nepřetržitého klíčového slova.
 
 ## <a name="optional-change-the-language-and-bot-voice"></a>Volitelné Změna jazyka a hlasu robota
@@ -478,7 +478,7 @@ Pokud nebudete nadále používat službu echo-bot nasazenou v tomto kurzu, mů�
 * Nasazení do [oblasti Azure, která podporuje hlasy vysoké kvality neuronové TTS](./regions.md#standard-and-neural-voices)
 * Ceny spojené s kanálem Direct line Speech:
   * [Ceny služby bot Service](https://azure.microsoft.com/pricing/details/bot-service/)
-  * [Služba Speech](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)
+  * [Služba řeči](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)
 * Sestavování a nasazování vlastního robota s povoleným hlasem:
-  * Sestavte [robota bot Framework](https://dev.botframework.com/). Zaregistrujte si ho pomocí [kanálu Direct line Speech](/azure/bot-service/bot-service-channel-connect-directlinespeech?view=azure-bot-service-4.0) a [Přizpůsobte si robota pro hlas](/azure/bot-service/directline-speech-bot?view=azure-bot-service-4.0) .
+  * Sestavte [robota bot Framework](https://dev.botframework.com/). Zaregistrujte si ho pomocí [kanálu Direct line Speech](/azure/bot-service/bot-service-channel-connect-directlinespeech) a [Přizpůsobte si robota pro hlas](/azure/bot-service/directline-speech-bot) .
   * Prozkoumejte stávající [řešení pro robotická rozhraní](https://microsoft.github.io/botframework-solutions/index): vytvoření [virtuálního asistenta](https://microsoft.github.io/botframework-solutions/overview/virtual-assistant-solution/) a [jeho rozšiřování na přímé čáry – řeč](https://microsoft.github.io/botframework-solutions/clients-and-channels/tutorials/enable-speech/1-intro/)

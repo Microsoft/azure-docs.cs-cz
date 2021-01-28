@@ -1,19 +1,16 @@
 ---
 title: Autorizace uživatelů pro zobrazení Ambari – Azure HDInsight
 description: Jak spravovat oprávnění uživatelů a skupin Ambari pro clustery HDInsight s povoleným ESP.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: b1cd6d93ff45d7fb40ae7ca1874343486bd0b8cb
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 0b6d4dacf43d80f371a2a4d286af1972198c3be3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547924"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942715"
 ---
 # <a name="authorize-users-for-apache-ambari-views"></a>Autorizace uživatelů pro zobrazení Apache Ambari
 
@@ -32,17 +29,17 @@ Pokud se chcete dostat na **stránku správy Ambari** ve [webovém uživatelské
 
 ![Správa řídicího panelu Apache Ambari](./media/hdinsight-authorize-users-to-ambari/manage-apache-ambari.png)
 
-## <a name="add-users"></a>Přidávání uživatelů
+## <a name="add-users"></a>Přidání uživatelů
 
 ### <a name="add-users-through-the-portal"></a>Přidávání uživatelů prostřednictvím portálu
 
-1. Na stránce Správa vyberte možnost **Uživatelé** .
+1. Na stránce Správa vyberte možnost **Uživatelé**.
 
     ![Uživatelé stránky správy Apache Ambari](./media/hdinsight-authorize-users-to-ambari/apache-ambari-management-page-users.png)
 
-1. Vyberte **+ vytvořit místního uživatele** .
+1. Vyberte **+ vytvořit místního uživatele**.
 
-1. Zadejte **uživatelské jméno** a **heslo** . Vyberte **Uložit** .
+1. Zadejte **uživatelské jméno** a **heslo**. Vyberte **Uložit**.
 
 ### <a name="add-users-through-powershell"></a>Přidávání uživatelů přes PowerShell
 
@@ -167,7 +164,7 @@ curl -k -u $user:$userPassword -H "X-Requested-By: ambari" \
 
 ## <a name="grant-permissions-to-apache-hive-views"></a>Udělení oprávnění Apache Hive zobrazení
 
-Ambari obsahuje instance zobrazení pro [Apache Hive](https://hive.apache.org/) a [Apache tez](https://tez.apache.org/), mimo jiné. Chcete-li udělit přístup k jedné nebo více instancím zobrazení podregistru, přejděte na **stránku Správa Ambari** .
+Ambari obsahuje instance zobrazení pro [Apache Hive](https://hive.apache.org/) a [Apache tez](https://tez.apache.org/), mimo jiné. Chcete-li udělit přístup k jedné nebo více instancím zobrazení podregistru, přejděte na **stránku Správa Ambari**.
 
 1. Na stránce Správa vyberte odkaz **zobrazení** v záhlaví nabídky **zobrazení** na levé straně.
 
@@ -191,14 +188,14 @@ Ambari obsahuje instance zobrazení pro [Apache Hive](https://hive.apache.org/) 
 
    * Vyberte nebo dokončete zadávání uživatelského jména. Chcete-li přidat toto uživatelské jméno jako nový uživatel, vyberte tlačítko **Nový** .
 
-   * Změny uložíte tak, že vyberete **modré zaškrtávací políčko** .
+   * Změny uložíte tak, že vyberete **modré zaškrtávací políčko**.
 
      ![Apache Ambari – udělení uživatelských oprávnění](./media/hdinsight-authorize-users-to-ambari/user-entered-permissions.png)
 
 1. Chcete-li přidat skupinu, vyberte tlačítko **Přidat skupinu** .
 
    * Začněte psát název skupiny. Proces výběru existujícího názvu skupiny nebo přidání nové skupiny je stejný jako při přidávání uživatelů.
-   * Změny uložíte tak, že vyberete **modré zaškrtávací políčko** .
+   * Změny uložíte tak, že vyberete **modré zaškrtávací políčko**.
 
      ![Udělení oprávnění Apache Ambari](./media/hdinsight-authorize-users-to-ambari/ambari-group-entered.png)
 

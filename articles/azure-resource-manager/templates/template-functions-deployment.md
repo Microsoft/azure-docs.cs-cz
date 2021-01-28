@@ -2,13 +2,13 @@
 title: Funkce šablon – nasazení
 description: Popisuje funkce, které se použijí v šabloně Azure Resource Manager (šablona ARM) pro načtení informací o nasazení.
 ms.topic: conceptual
-ms.date: 11/18/2020
-ms.openlocfilehash: e63caef669a2c28d29cd0bbd649b0997cea14ee1
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.date: 01/27/2021
+ms.openlocfilehash: 438afc947b07ac7425de365a2d63c427cf53e2ff
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920505"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943473"
 ---
 # <a name="deployment-functions-for-arm-templates"></a>Funkce nasazení pro šablony ARM
 
@@ -33,6 +33,7 @@ Vrátí informace o aktuální operaci nasazení.
 
 Tato funkce vrací objekt, který je předán během nasazování. Vlastnosti vráceného objektu se liší v závislosti na tom, zda jste:
 
+* nasazení šablony nebo specifikace šablony.
 * nasazení šablony, která je místní soubor nebo nasazení šablony, která je vzdáleným souborem, ke kterému se přistupoval prostřednictvím identifikátoru URI.
 * nasazení do skupiny prostředků nebo nasazení do jednoho z dalších oborů ([předplatné Azure](deploy-to-subscription.md), [skupina pro správu](deploy-to-management-group.md)nebo [tenant](deploy-to-tenant.md)).
 
@@ -66,6 +67,31 @@ Když nasazujete vzdálenou šablonu do skupiny prostředků: funkce vrátí ná
   "properties": {
     "templateLink": {
       "uri": ""
+    },
+    "template": {
+      "$schema": "",
+      "contentVersion": "",
+      "parameters": {},
+      "variables": {},
+      "resources": [],
+      "outputs": {}
+    },
+    "templateHash": "",
+    "parameters": {},
+    "mode": "",
+    "provisioningState": ""
+  }
+}
+```
+
+Při nasazování specifikace šablony do skupiny prostředků: funkce vrátí následující formát:
+
+```json
+{
+  "name": "",
+  "properties": {
+    "templateLink": {
+      "id": ""
     },
     "template": {
       "$schema": "",
@@ -297,7 +323,7 @@ Vrátí hodnotu parametru. Zadaný název parametru musí být definován v odd�
 
 | Parametr | Povinné | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| parameterName |Ano |řetězec |Název parametru, který se má vrátit. |
+| parameterName |Yes |řetězec |Název parametru, který se má vrátit. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 

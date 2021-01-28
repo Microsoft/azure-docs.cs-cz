@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2020
-ms.openlocfilehash: 2a4f24da51b9e9e78c3df3e7d1437a380306e300
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 571dcd41da9be578e69d9a8ad40ed05784ae26a8
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95975564"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941979"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Připojit Operations Manager k Azure Monitor
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Pokud chcete zachovat stávající investice do [System Center Operations Manager](/system-center/scom/key-concepts?view=sc-om-1807) a využívat rozšířené možnosti s Azure monitor, můžete Operations Manager s pracovním prostorem Log Analytics integrovat. Díky tomu můžete využívat možnosti protokolů v Azure Monitor a přitom dál používat Operations Manager k těmto akcím:
+Pokud chcete zachovat stávající investice do [System Center Operations Manager](/system-center/scom/key-concepts) a využívat rozšířené možnosti s Azure monitor, můžete Operations Manager s pracovním prostorem Log Analytics integrovat. Díky tomu můžete využívat možnosti protokolů v Azure Monitor a přitom dál používat Operations Manager k těmto akcím:
 
 * Monitorování stavu vašich IT služeb pomocí nástroje Operations Manager
 * Údržba integrace s vašimi řešeními ITSM pro podporu správy incidentů a problémů
@@ -71,7 +71,7 @@ Níže uvedené informace uvádějí informace o konfiguraci proxy serveru a br�
 
 |Prostředek | Číslo portu| Obejití kontroly protokolu HTTP|  
 |---------|------|-----------------------|  
-|**Agent**|||  
+|**Agenta**|||  
 |\*.ods.opinsights.azure.com| 443 |Yes|  
 |\*.oms.opinsights.azure.com| 443|Yes|  
 |\*.blob.core.windows.net| 443|Yes|  

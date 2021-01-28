@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: troubleshooting
 ms.date: 01/21/2021
 ms.subservice: alerts
-ms.openlocfilehash: 11dc71578b3d94ce41fe040557184ff32bcf3240
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: f7425e1cf34348b7742b739ef5440a5cb0355077
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98661793"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942091"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Řešení potíží s upozorněními na metriky služby Azure Monitor 
 
@@ -107,7 +107,7 @@ Při odstranění prostředku Azure nedojde k automatickému odstranění souvis
 
 ## <a name="make-metric-alerts-occur-every-time-my-condition-is-met"></a>Vytváření upozornění na metriky při každém splnění podmínky
 
-Výstrahy metriky jsou ve výchozím stavu stav, a proto se další výstrahy nespustí, pokud je v dané časové řadě již aktivována výstraha. Pokud chcete nastavit konkrétní pravidlo upozornění na metriku bez stavů a upozornit na každé vyhodnocení, ve kterém je podmínka výstrahy splněná, vytvořte pravidlo výstrahy programově (například prostřednictvím [Správce prostředků](./alerts-metric-create-templates.md), [PowerShellu](/powershell/module/az.monitor/?view=azps-3.6.1), [REST](/rest/api/monitor/metricalerts/createorupdate), [CLI](/cli/azure/monitor/metrics/alert?view=azure-cli-latest)) a nastavte vlastnost *autozmírňovat* na false.
+Výstrahy metriky jsou ve výchozím stavu stav, a proto se další výstrahy nespustí, pokud je v dané časové řadě již aktivována výstraha. Pokud chcete nastavit konkrétní pravidlo upozornění na metriku bez stavů a upozornit na každé vyhodnocení, ve kterém je podmínka výstrahy splněná, vytvořte pravidlo výstrahy programově (například prostřednictvím [Správce prostředků](./alerts-metric-create-templates.md), [PowerShellu](/powershell/module/az.monitor/), [REST](/rest/api/monitor/metricalerts/createorupdate), [CLI](/cli/azure/monitor/metrics/alert)) a nastavte vlastnost *autozmírňovat* na false.
 
 > [!NOTE] 
 > Když se pravidlo upozornění na metriku nevrátí, zaaktivuje se nevyřešené výstrahy, takže i po nesplnění podmínky zůstane aktivované výstrahy v aktivovaném stavu, dokud nebude doba uchování 30 dnů.
@@ -175,9 +175,9 @@ Chcete-li zjistit aktuální využití pravidel upozornění metriky, postupujte
 
 ### <a name="from-api"></a>Pomocí rozhraní API
 
-- PowerShell – [Get-AzMetricAlertRuleV2](/powershell/module/az.monitor/get-azmetricalertrulev2?view=azps-3.7.0)
+- PowerShell – [Get-AzMetricAlertRuleV2](/powershell/module/az.monitor/get-azmetricalertrulev2)
 - Rozhraní REST API – [Seznam podle předplatného](/rest/api/monitor/metricalerts/listbysubscription)
-- Azure CLI – [az monitor metrics alert list](/cli/azure/monitor/metrics/alert?view=azure-cli-latest#az-monitor-metrics-alert-list)
+- Azure CLI – [az monitor metrics alert list](/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-list)
 
 ## <a name="managing-alert-rules-using-resource-manager-templates-rest-api-powershell-or-azure-cli"></a>Správa pravidel výstrah pomocí Správce prostředků šablon, REST API, PowerShellu nebo rozhraní příkazového řádku Azure
 
@@ -196,14 +196,14 @@ Přečtěte si [průvodce REST API](/rest/api/monitor/metricalerts/) , abyste ov
 
 Ujistěte se, že používáte správné rutiny PowerShellu pro výstrahy metrik:
 
-- Rutiny PowerShellu pro upozornění metrik jsou k dispozici v [modulu Az.Monitor](/powershell/module/az.monitor/?view=azps-3.6.1).
-- Nezapomeňte použít rutiny končící na v2 pro nové (neklasické) výstrahy metriky (například [Add-AzMetricAlertRuleV2](/powershell/module/az.monitor/add-azmetricalertrulev2?view=azps-3.6.1)).
+- Rutiny PowerShellu pro upozornění metrik jsou k dispozici v [modulu Az.Monitor](/powershell/module/az.monitor/).
+- Nezapomeňte použít rutiny končící na v2 pro nové (neklasické) výstrahy metriky (například [Add-AzMetricAlertRuleV2](/powershell/module/az.monitor/add-azmetricalertrulev2)).
 
 ### <a name="azure-cli"></a>Azure CLI
 
 Ujistěte se, že používáte pro výstrahy metrik správné příkazy rozhraní příkazového řádku:
 
-- Příkazy rozhraní příkazového řádku pro upozornění metrik začínají na `az monitor metrics alert`. Projděte si [referenční dokumentaci k Azure CLI](/cli/azure/monitor/metrics/alert?view=azure-cli-latest) a seznamte se se syntaxí.
+- Příkazy rozhraní příkazového řádku pro upozornění metrik začínají na `az monitor metrics alert`. Projděte si [referenční dokumentaci k Azure CLI](/cli/azure/monitor/metrics/alert) a seznamte se se syntaxí.
 - Můžete si prohlédnout [ukázku použití rozhraní příkazového řádku pro upozornění metrik](./alerts-metric.md#with-azure-cli).
 - Pokud chcete nastavit upozorňování na vlastní metriku, nezapomeňte jako předponu názvu metriky použít odpovídající obor názvů metriky: OBOR_NÁZVŮ.METRIKA
 
@@ -253,7 +253,7 @@ Při použití dimenzí v pravidle výstrahy, které obsahuje více podmínek, v
 - V rámci každé podmínky můžete vybrat jenom jednu hodnotu na dimenzi.
 - Nemůžete použít možnost vybrat všechny aktuální a budoucí hodnoty (vybrat \* ).
 - Pokud metriky, které jsou konfigurovány v různých podmínkách, podporují stejnou dimenzi, pak musí být nakonfigurovaná hodnota dimenze explicitně nastavena stejným způsobem pro všechny tyto metriky (v příslušných podmínkách).
-Například:
+Příklad:
     - Vezměte v úvahu pravidlo upozornění metriky, které je definováno v účtu úložiště, a monitorujte dvě podmínky:
         * Celkový počet **transakcí** > 5
         * Průměrná **SuccessE2ELatency** > 250 ms

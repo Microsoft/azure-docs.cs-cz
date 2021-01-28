@@ -6,12 +6,12 @@ ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: 5008da99b63cabba41dade9a745fbd5853345737
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 637e66956eadf57199d2e5191368d6355e2cd118
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734962"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941899"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Použití Azure Private Linku k bezpečnému propojení sítí k Azure Monitoru
 
@@ -217,13 +217,13 @@ Přístup tímto způsobem se omezuje jenom na data v prostředku Application In
 
 Proces popsaný výše můžete automatizovat pomocí Azure Resource Manager šablon, REST a rozhraní příkazového řádku.
 
-Pokud chcete vytvořit a spravovat obory privátních odkazů, použijte [REST API](/rest/api/monitor/private%20link%20scopes%20(preview)) nebo [Azure CLI (AZ monitor Private-Link-Scope)](/cli/azure/monitor/private-link-scope?view=azure-cli-latest).
+Pokud chcete vytvořit a spravovat obory privátních odkazů, použijte [REST API](/rest/api/monitor/private%20link%20scopes%20(preview)) nebo [Azure CLI (AZ monitor Private-Link-Scope)](/cli/azure/monitor/private-link-scope).
 
-Ke správě přístupu k síti použijte příznaky `[--ingestion-access {Disabled, Enabled}]` a `[--query-access {Disabled, Enabled}]` v [Log Analytics pracovní prostory](/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest) nebo [Application Insights součásti](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest).
+Ke správě přístupu k síti použijte příznaky `[--ingestion-access {Disabled, Enabled}]` a `[--query-access {Disabled, Enabled}]` v [Log Analytics pracovní prostory](/cli/azure/monitor/log-analytics/workspace) nebo [Application Insights součásti](/cli/azure/ext/application-insights/monitor/app-insights/component).
 
 ## <a name="collect-custom-logs-over-private-link"></a>Shromažďovat vlastní protokoly přes privátní propojení
 
-Účty úložiště se používají v procesu přijímání vlastních protokolů. Ve výchozím nastavení se používají účty úložiště spravované službou. Pokud ale chcete ingestovat vlastní protokoly na soukromých odkazech, musíte použít vlastní účty úložiště a přidružit je k Log Analyticsm pracovním prostorům. Další informace o tom, jak tyto účty nastavit pomocí [příkazového řádku](/cli/azure/monitor/log-analytics/workspace/linked-storage?view=azure-cli-latest), najdete v tématu.
+Účty úložiště se používají v procesu přijímání vlastních protokolů. Ve výchozím nastavení se používají účty úložiště spravované službou. Pokud ale chcete ingestovat vlastní protokoly na soukromých odkazech, musíte použít vlastní účty úložiště a přidružit je k Log Analyticsm pracovním prostorům. Další informace o tom, jak tyto účty nastavit pomocí [příkazového řádku](/cli/azure/monitor/log-analytics/workspace/linked-storage), najdete v tématu.
 
 Další informace o zavedení vlastního účtu úložiště najdete v tématu [účty úložiště vlastněné zákazníkem pro](private-storage.md) ingestování protokolů.
 
@@ -246,13 +246,13 @@ $ sudo /opt/microsoft/omsagent/bin/omsadmin.sh -X
 $ sudo /opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <workspace key>
 ```
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure Portal
 
 Chcete-li použít Azure Monitor portálu, jako je Application Insights a Log Analytics, je nutné, aby byla rozšíření Azure Portal a Azure Monitor dostupná v privátních sítích. Do skupiny zabezpečení sítě přidejte [značky služby](../../firewall/service-tags.md) **azureactivedirectory selhala**, **AzureResourceManager**, **AzureFrontDoor. FirstParty** a **AzureFrontDoor. front-endu** .
 
 ### <a name="programmatic-access"></a>Programový přístup
 
-Pokud chcete použít REST API, [CLI](/cli/azure/monitor?view=azure-cli-latest) nebo PowerShell s Azure monitor v privátních sítích, přidejte do brány firewall [značky služby](../../virtual-network/service-tags-overview.md)  **azureactivedirectory selhala** a **AzureResourceManager** .
+Pokud chcete použít REST API, [CLI](/cli/azure/monitor) nebo PowerShell s Azure monitor v privátních sítích, přidejte do brány firewall [značky služby](../../virtual-network/service-tags-overview.md)  **azureactivedirectory selhala** a **AzureResourceManager** .
 
 Přidání těchto značek vám umožní provádět akce, jako je například dotazování dat protokolu, vytváření a Správa Log Analyticsch pracovních prostorů a komponent AI.
 

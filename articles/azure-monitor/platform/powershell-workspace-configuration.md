@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: d0bbde0ee4fd0eaf7387abaf6d548dc563e5b715
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34ece92e4603c0c74190003745d55be0aea5cdb0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86515440"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941751"
 ---
 # <a name="create-and-configure-a-log-analytics-workspace-in-azure-monitor-using-powershell"></a>Vytvoření a konfigurace pracovního prostoru Log Analytics v Azure Monitor pomocí prostředí PowerShell
 Tento článek obsahuje dva ukázky kódu, které ukazují, jak vytvořit a nakonfigurovat Log Analytics pracovní prostor v Azure Monitor.  
@@ -193,7 +193,7 @@ New-AzOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -
 ```
 
 > [!NOTE]
-> Formát parametru **CustomLogRawJson** , který definuje konfiguraci vlastního protokolu, může být složitý. K načtení konfigurace pro existující vlastní protokol použijte [příkaz Get-AzOperationalInsightsDataSource](/powershell/module/az.operationalinsights/get-azoperationalinsightsdatasource?view=azps-3.2.0) . Vlastnost **Properties** je konfigurace požadovaná pro parametr **CustomLogRawJson** .
+> Formát parametru **CustomLogRawJson** , který definuje konfiguraci vlastního protokolu, může být složitý. K načtení konfigurace pro existující vlastní protokol použijte [příkaz Get-AzOperationalInsightsDataSource](/powershell/module/az.operationalinsights/get-azoperationalinsightsdatasource) . Vlastnost **Properties** je konfigurace požadovaná pro parametr **CustomLogRawJson** .
 
 Ve výše uvedeném příkladu byl regexDelimiter definován jako \\ n pro nový řádek. Oddělovač protokolu může být také časovým razítkem.  Podporované formáty:
 
@@ -216,7 +216,7 @@ Když vytvoříte pracovní prostor, který byl odstraněn za posledních 14 dn�
 1. Pokud zadáte stejný název pracovního prostoru, skupinu prostředků, předplatné a oblast jako v odstraněném pracovním prostoru, váš pracovní prostor se obnoví včetně dat, konfigurace a připojených agentů.
 2. Pokud použijete stejný název pracovního prostoru, ale v jiné skupině prostředků, předplatném nebo oblasti dojde k chybě, zobrazí se chyba název pracovního prostoru *"pracovní prostor" Name "není jedinečný nebo je v* *konfliktu*. Chcete-li přepsat obnovitelné odstranění a trvale odstranit pracovní prostor a vytvořit nový pracovní prostor se stejným názvem, postupujte podle následujících kroků a obnovte nejprve pracovní prostor a proveďte trvalé odstranění:
    * [Obnovení](./delete-workspace.md#recover-workspace) pracovního prostoru
-   * [Trvale odstranit](./delete-workspace.md#permanent-workspace-delete) pracovní prostor
+   * [Trvalé odstranění](./delete-workspace.md#permanent-workspace-delete) pracovního prostoru
    * Vytvoří nový pracovní prostor s použitím stejného názvu pracovního prostoru.
 
 

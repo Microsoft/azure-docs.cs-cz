@@ -2,19 +2,16 @@
 title: Dotaz Apache Hive s ovladačem ODBC & PowerShell – Azure HDInsight
 description: K dotazování Apache Hive clusterů v Azure HDInsight použijte Microsoft podregistr ODBC Driver a PowerShell.
 keywords: podregistr, ODBC v podregistru, PowerShell
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 06/27/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 211b23db56b6deebb519b9eaac4164ea83edabac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a6274ce36878af6cfbae04be935485c462bc86a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89078567"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941366"
 ---
 # <a name="tutorial-query-apache-hive-with-odbc-and-powershell"></a>Kurz: dotazování Apache Hive pomocí rozhraní ODBC a prostředí PowerShell
 
@@ -43,13 +40,13 @@ Stáhněte a nainstalujte [Microsoft Hive ODBC Driver](https://www.microsoft.com
 
 Následující kroky ukazují, jak vytvořit zdroj dat Apache Hive ODBC.
 
-1. V systému Windows přejděte k **Start**  >  **Možnosti spustit nástroje pro správu systému Windows**  >  **ODBC zdroje dat (32bitová verze)/(64bitová verze)**.  Otevře se okno **Správce zdrojů dat ODBC** .
+1. V systému Windows přejděte k   >  **Možnosti spustit nástroje pro správu systému Windows**  >  **ODBC zdroje dat (32bitová verze)/(64bitová verze)**.  Otevře se okno **Správce zdrojů dat ODBC** .
 
     ![Správce zdroje dat OBDC](./media/apache-hive-query-odbc-driver-powershell/hive-odbc-driver-dsn-setup.png "Konfigurace DSN pomocí Správce zdrojů dat ODBC")
 
 1. Na kartě **uživatelský název DSN** vyberte **Přidat** a otevřete tak okno **vytvořit nový zdroj dat** .
 
-1. Vyberte **Microsoft Hive ODBC Driver**a pak vyberte **Dokončit** a otevřete tak okno **nastavení Microsoft Hive ODBC Driver DSN** .
+1. Vyberte **Microsoft Hive ODBC Driver** a pak vyberte **Dokončit** a otevřete tak okno **nastavení Microsoft Hive ODBC Driver DSN** .
 
 1. Zadejte nebo vyberte tyto hodnoty:
 

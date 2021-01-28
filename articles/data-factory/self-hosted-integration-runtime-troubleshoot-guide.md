@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 01/25/2021
 ms.author: lle
-ms.openlocfilehash: e81a12f4c5d817670fe1f7968184bcc97e78a53c
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 8a722550d12d019e25ff39de27cc0df2c2762a01
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757674"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942045"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Řešení potíží s místním hostováním Integration runtime
 
@@ -118,14 +118,14 @@ Když pracujete s případy, které souvisejí s metodou handshake SSL/TLS, mů�
         Certutil -verify -urlfetch    <certificate path>   >     <output txt file path> 
         ```
 
-        Například:
+        Příklad:
 
         ```
         Certutil -verify -urlfetch c:\users\test\desktop\servercert02.cer > c:\users\test\desktop\Certinfo.txt
         ```
     4. Vyhledejte chyby ve výstupním souboru TXT. Souhrn chyb najdete na konci souboru TXT.
 
-        Například: 
+        Příklad: 
 
         ![Snímek obrazovky s shrnutím chyb na konci souboru TXT](media/self-hosted-integration-runtime-troubleshoot-guide/error-summary.png)
 
@@ -198,7 +198,7 @@ V následující chybě můžete jasně zjistit, že chybí sestavení *System. 
  
 " \<LogProperties> \<ErrorInfo> [{" Code ": 0," Message ":" inicializátor typu pro ' Npgsql. PoolManager ' vyvolal výjimku. "," EventType ": 0," kategorie ": 5," data ": {} ," MsgId ": null," typvýjimky ":" System. TypeInitializationException "," Source ":" Npgsql "," trasování zásobníku ":" "," InnerEventInfos ": [{" Code ": 0," Message ":" nelze načíst soubor nebo sestavení ' System. ValueTuple, Version = 4.0.2.0, Culture = neutral, PublicKeyToken = XXXXXXXXX ' nebo jednu z jeho závislostí. Systém nemůže najít zadaný soubor. "," EventType ": 0," kategorie ": 5," data ": {} ," MsgId":null,"ExceptionType":"System. IO. FileNotFoundException "," Source ":" Npgsql "," trasování zásobníku ":" "," InnerEventInfos ": []}]}] \</ErrorInfo> \</LogProperties> "
  
-Další informace o mezipaměti GAC naleznete v tématu [globální mezipaměť sestavení](https://docs.microsoft.com/dotnet/framework/app-domains/gac)(GAC).
+Další informace o mezipaměti GAC naleznete v tématu [globální mezipaměť sestavení](/dotnet/framework/app-domains/gac)(GAC).
 
 
 ### <a name="self-hosted-integration-runtime-authentication-key-is-missing"></a>Chybí ověřovací klíč prostředí Integration runtime pro místní hostování.

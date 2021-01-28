@@ -2,31 +2,28 @@
 title: 'Rychlý Start: dotazování Apache HBA v prostředí Azure HDInsight – HBA'
 description: V tomto rychlém startu se dozvíte, jak používat prostředí Apache HBA pro spouštění dotazů Apache HBA.
 keywords: HDInsight, Hadoop, HBA
-author: hrasheed-msft
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.author: hrasheed
-ms.openlocfilehash: 572262cbece26171f9a67bf073906fa2dfd4d8e1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 358e058667cb1750a6fc97dffebcbfb2c6e06f84
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "79371065"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942922"
 ---
 # <a name="quickstart-query-apache-hbase-in-azure-hdinsight-with-hbase-shell"></a>Rychlý Start: dotazování Apache HBA ve službě Azure HDInsight pomocí prostředí HBA
 
 V tomto rychlém startu se dozvíte, jak pomocí prostředí Apache HBA vytvořit tabulku HBA, vkládat data a pak dotazovat tabulku.
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Cluster Apache HBA. V tématu [Vytvoření clusteru](../hadoop/apache-hadoop-linux-tutorial-get-started.md) vytvořte cluster HDInsight.  Ujistěte se, že jste vybrali typ clusteru **HBA** .
 
-* Klient SSH. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Klient SSH. Další informace najdete v tématu [Připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="create-a-table-and-manipulate-data"></a>Vytvoření tabulky a manipulace s daty
 

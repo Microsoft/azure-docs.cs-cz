@@ -1,5 +1,5 @@
 - name: Dokumentace k nabídce Azure Data Box Gateway
-  href: /azure/databox-gateway/
+  href: ./index.yml
 - name: Přehled
   Expanded: true
   items:

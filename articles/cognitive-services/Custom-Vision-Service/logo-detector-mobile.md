@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: e5e344aa84bfc6912266720083f0cd15f575883c
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 76e7b061670f603007cefd6d7aed503e0e0d3d6b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95740246"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941779"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Kurz: rozpoznání loga služeb Azure v obrázcích fotoaparátu
 
@@ -36,7 +36,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný úče
 - [Visual Studio 2017 nebo novější](https://www.visualstudio.com/downloads/)
 - Úlohy Xamarin pro Visual Studio (viz [instalace Xamarin](/xamarin/cross-platform/get-started/installation/windows))
 - Emulátor pro iOS nebo Android pro Visual Studio
-- Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli-windows?view=azure-cli-latest) (volitelné)
+- Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli-windows) (volitelné)
 
 ## <a name="get-the-source-code"></a>Získání zdrojového kódu
 

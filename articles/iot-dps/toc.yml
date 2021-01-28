@@ -116,10 +116,16 @@
       href: concepts-device-oem-security-practices.md
 - name: Návody
   items:
-    - name: Připojení sady MXChip IoT DevKit ke službě IoT Hub
-      href: how-to-connect-mxchip-iot-devkit.md
-    - name: Zřizování zařízení s využitím vlastních zásad přidělování
-      href: how-to-use-custom-allocation-policies.md
+    - name: Vývoj
+      items:
+        - name: Připojení sady MXChip IoT DevKit ke službě IoT Hub
+          href: how-to-connect-mxchip-iot-devkit.md
+        - name: Jak odesílat další data ze zařízení
+          href: how-to-send-additional-data.md
+        - name: Zřizování zařízení s využitím vlastních zásad přidělování
+          href: how-to-use-custom-allocation-policies.md
+        - name: Komunikace s DPS pomocí protokolu MQTT
+          href: iot-dps-mqtt-support.md
     - name: Správa služby zřizování zařízení
       items:
         - name: Správa registrací – portál
@@ -138,8 +144,6 @@
           href: how-to-control-access.md
         - name: Konfigurace filtrování IP
           href: iot-dps-ip-filtering.md
-        - name: Konfigurace služby zřizování zařízení s využitím Azure CLI
-          href: how-to-manage-dps-with-cli.md
     - name: Zřízení zařízení IoT Edge
       items:
         - name: Linux
@@ -148,12 +152,8 @@
         - name: Windows
           href: ../iot-edge/how-to-auto-provision-simulated-device-windows.md
           maintainContext: true
-    - name: Jak odesílat další data ze zařízení
-      href: how-to-send-additional-data.md
     - name: Řešení potíží
       href: how-to-troubleshoot-dps.md
-    - name: Komunikace s DPS pomocí protokolu MQTT
-      href: iot-dps-mqtt-support.md
 - name: Referenční informace
   items:
     - name: REST API
