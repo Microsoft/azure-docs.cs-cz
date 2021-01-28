@@ -3,14 +3,14 @@ author: msmimart
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
-ms.date: 01/18/2021
+ms.date: 01/27/2021
 ms.author: mimart
-ms.openlocfilehash: f94076f06fb13bae2a26e8ab6003d7574a2dacfd
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 73216b1b089444c1dc92bbe73ed07895de3711b2
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98674221"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98951514"
 ---
 ## <a name="configure-the-relying-party-policy"></a>Konfigurace zásady předávající strany
 
@@ -33,11 +33,5 @@ V následujícím příkladu `CustomSignUpOrSignIn` je pro cestu uživatele **Re
 1. V části **zásady** vyberte **Architektura prostředí identity**.
 1. Vyberte **Odeslat vlastní zásadu** a pak nahrajte dva soubory zásad, které jste změnili v následujícím pořadí: zásady rozšíření, například `TrustFrameworkExtensions.xml` zásady předávající strany, například `SignUpSignIn.xml` .
 
-## <a name="test-your-custom-policy"></a>Testování vlastních zásad
 
-1. Vyberte zásady předávající strany, například `B2C_1A_signup_signin`
-1. V případě **aplikace** vyberte webovou aplikaci, kterou jste předtím zaregistrovali. Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
-1. Vyberte tlačítko **Spustit** .
-
-Pokud je proces přihlášení úspěšný, je váš prohlížeč přesměrován na `https://jwt.ms` , který zobrazuje obsah tokenu vrácený Azure AD B2C.
 

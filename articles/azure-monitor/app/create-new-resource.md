@@ -3,12 +3,12 @@ title: Vytvořit nový prostředek služby Azure Application Insights | Microsof
 description: Ručně nastavte Application Insights monitorování pro novou živou aplikaci.
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 2924ccbbf591020d7872d3e9cca62a9c271db7c0
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: adc40db493c701a21fd30d10a4452edee1b87ab9
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944590"
+ms.locfileid: "98951258"
 ---
 # <a name="create-an-application-insights-resource"></a>Vytvořte prostředek Application Insights
 
@@ -36,6 +36,7 @@ Přihlaste se k [Azure Portal](https://portal.azure.com)a vytvořte prostředek 
 
 Zadejte příslušné hodnoty do požadovaných polí a potom vyberte **zkontrolovat + vytvořit**.
 
+[!div class="mx-imgBorder"]
 ![Zadejte hodnoty do požadovaných polí a potom vyberte "zkontrolovat + vytvořit".](./media/create-new-resource/review-create.png)
 
 Po vytvoření aplikace se otevře nové podokno. V tomto podokně vidíte data o výkonu a využití monitorovaných aplikací. 

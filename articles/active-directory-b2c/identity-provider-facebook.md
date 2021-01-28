@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 64a4404fa881181f92d442a73e5da4c16ae87ae3
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: e0e71bc0e3a81b5ab2f455224ed2ed4281532d55
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598880"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98952670"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení pomocí účtu Facebook pomocí Azure Active Directory B2C
 
@@ -84,6 +84,21 @@ Pokud chcete povolit přihlášení pro uživatele s účtem Facebook v Azure Ac
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
+
+## <a name="create-a-policy-key"></a>Vytvoření klíče zásad
+
+Je potřeba uložit tajný klíč aplikace, který jste předtím nahráli ve svém tenantovi Azure AD B2C.
+
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+2. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD B2C. V horní nabídce vyberte filtr **adresář + odběr** a zvolte adresář, který obsahuje vašeho tenanta.
+3. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
+4. Na stránce Přehled vyberte možnost **Architektura prostředí identity**.
+5. Vyberte **klíče zásad** a pak vyberte **Přidat**.
+6. Pro **Možnosti** vyberte možnost `Manual` .
+7. Zadejte **název** klíče zásad. Například `FacebookSecret`. Předpona `B2C_1A_` se automaticky přidá do názvu vašeho klíče.
+8. Do **tajného klíče** zadejte tajný kód aplikace, který jste předtím nahráli.
+9. Pro **použití klíče** vyberte `Signature` .
+10. Klikněte na **Vytvořit**.
 
 ## <a name="configure-a-facebook-account-as-an-identity-provider"></a>Konfigurace účtu Facebook jako zprostředkovatele identity
 

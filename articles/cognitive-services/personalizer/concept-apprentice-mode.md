@@ -1,16 +1,16 @@
 ---
 title: Režim učni – Přizpůsobte si
-description: ''
+description: Naučte se, jak pomocí režimu učni získat důvěru v modelu beze změny kódu.
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: f793535f04b36d231cec384b7acd66e38a7eb039
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2b9f6dfe60aa50eb4ec6da76fe8781ecd8a1f13
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91253526"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98951323"
 ---
 # <a name="use-apprentice-mode-to-train-personalizer-without-affecting-your-existing-application"></a>Použití režimu učně ke školení přizpůsobené aplikace bez ovlivnění vaší stávající aplikace
 
@@ -32,7 +32,7 @@ V režimu učni máte důvěru v rámci služby přizpůsobeného a funkce machi
 
 K použití režimu učni mají dva hlavní důvody:
 
-* Zmírnění **studeného**startu: režim učni pomáhá spravovat a vyhodnocovat náklady na "nový" školicí čas modelu – Pokud nevrací nejlepší akci a nedosáhli uspokojivé úrovně efektivity přibližně 60-80%.
+* Zmírnění **studeného** startu: režim učni pomáhá spravovat a vyhodnocovat náklady na "nový" školicí čas modelu – Pokud nevrací nejlepší akci a nedosáhli uspokojivé úrovně efektivity přibližně 60-80%.
 * **Ověřování funkcí akcí a kontextu**: funkce odesílané v akcích a kontextu mohou být nedostatečné nebo nepřesné, příliš málo, jsou příliš velké, nesprávné nebo příliš specifické pro přizpůsobení výuky, aby dosáhli ideální míry účinnosti. Pomocí [hodnocení funkcí](concept-feature-evaluation.md) můžete vyhledat a opravit problémy s funkcemi.
 
 ## <a name="when-should-you-use-apprentice-mode"></a>Kdy byste měli použít režim učni?
@@ -59,7 +59,7 @@ Režim učni je užitečný pro vývojáře, odborníky na data a pracovníky pr
 
 Naučíte se, když se v režimu učni liší od režimu online následujícími způsoby.
 
-|Oblast|Začátečnický režim|Online režim|
+|Plošný|Začátečnický režim|Online režim|
 |--|--|--|
 |Dopad na činnost koncového uživatele|Stávající chování uživatelů můžete použít ke školení přizpůsobeného uživatele tím, že mu umožníte sledovat (neovlivňuje), co vaše **výchozí akce** bude, a to, jakou má získaná měna. To znamená, že budou mít vliv na uživatelské prostředí a jejich obchodní výsledky.|Zobrazit horní akci vrácenou z volání pořadí, která ovlivní chování uživatele|
 |Rychlost učení|Přizpůsobování se v režimu učně pomaleji, než když se naučíte v online režimu. V režimu učni se můžete seznámit jenom s tím, že se vyhodnotí ceny získané **výchozí akcí**, což omezuje rychlost učení, protože není možné provádět průzkum.|Rychleji se naučí, protože může využít aktuální model a prozkoumat nové trendy.|

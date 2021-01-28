@@ -1,5 +1,5 @@
 ---
-title: Rozdíly v přístupu k rozhraní API pro Azure Media Services V2 na V3
+title: Přístup k rozhraní API pro Media Services V2 vs V3
 description: Tento článek popisuje rozdíly v přístupu k rozhraní API mezi Azure Media Services v2 až v3.
 services: media-services
 documentationcenter: na
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: 59347d2ff797cbbd2f91410c3ec713b544d7fd08
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 831bc737fbd54685cdc8358642bc37e7b2df2c42
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/28/2021
-ms.locfileid: "98928208"
+ms.locfileid: "98953712"
 ---
 # <a name="api-access-differences-between-azure-media-services-v2-to-v3-api"></a>Rozdíly v přístupu k rozhraní API mezi Azure Media Services v2 až V3 API
 

@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 01/28/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 50042b749c917752d08198c31ada3c73a5ef540b
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: a7e9e523d3aae7cf1444c048c023ca1d85fde41f
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/28/2021
-ms.locfileid: "98938483"
+ms.locfileid: "98952222"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Správa Azure AD B2C s využitím Microsoft Graph
 
@@ -45,9 +45,13 @@ Telefonní číslo, které může uživatel použít k přihlášení pomocí [S
 - [Aktualizace](/graph/api/phoneauthenticationmethod-update)
 - [Odstranit](/graph/api/phoneauthenticationmethod-delete)
 
+Všimněte si, že operace [list](/graph/api/authentication-list-phonemethods) vrátí jenom telefonní čísla, která jsou povolená. Následující telefonní číslo by mělo být povoleno pro použití se seznamem operací. 
+
+![Povolit přihlašování telefonem](./media/microsoft-graph-operations/enable-phone-sign-in.png)
+
 ## <a name="self-service-password-reset-email-address-beta"></a>E-mailová adresa pro Samoobslužné resetování hesla (beta verze)
 
-E-mailová adresa, kterou může uživatel použít k nastavení hesla pro [přihlašovací účet uživatelského jména](identity-provider-local.md#username-sign-in). Další informace najdete v tématu [rozhraní API metody ověřování Azure AD](/graph/api/resources/emailauthenticationmethod).
+E-mailová adresa, kterou může [účet pro přihlášení k uživatelskému jménu](identity-provider-local.md#username-sign-in) použít k resetování hesla. Další informace najdete v tématu [rozhraní API metody ověřování Azure AD](/graph/api/resources/emailauthenticationmethod).
 
 - [Přidat](/graph/api/emailauthenticationmethod-post)
 - [Seznam](/graph/api/emailauthenticationmethod-list)

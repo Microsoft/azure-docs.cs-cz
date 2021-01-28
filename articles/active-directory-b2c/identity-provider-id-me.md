@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/15/2021
+ms.date: 01/27/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: c7d43a55878a07e424ce1b6f55782502c244239c
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: baf02c6da2b3c54b5a459ec6a5dbcb5dd939f2af
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98537933"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98952592"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-idme-account-using-azure-active-directory-b2c"></a>Nastavte si registraci a přihlaste se pomocí účtu ID.me pomocí Azure Active Directory B2C
 
@@ -32,7 +32,7 @@ ms.locfileid: "98537933"
 ::: zone pivot="b2c-custom-policy"
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites-custom-policy](../../includes/active-directory-b2c-customization-prerequisites-custom-policy.md)]
 
@@ -45,7 +45,7 @@ Pokud chcete povolit přihlášení pro uživatele s účtem ID.me v Azure Activ
 1. Vyberte **Zobrazit moje aplikace** a vyberte **pokračovat**.
 1. Vyberte, že chcete **vytvořit novou** IP adresu.
     1. Zadejte **název** a **zobrazované jméno**.
-    1. Do zadejte **identifikátor URI pro přesměrování** `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Nahraďte `your-tenant-name` názvem vašeho tenanta. 
+    1. V **identifikátoru URI přesměrování** zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Nahraďte `your-tenant-name` názvem vašeho tenanta. 
 1. Klikněte na **Pokračovat**.
 1. Zkopírujte hodnoty **ID klienta** a **tajný klíč klienta**. K přidání poskytovatele identity k vašemu tenantovi potřebujete obojí.
 
@@ -64,9 +64,9 @@ Je potřeba uložit tajný klíč klienta, který jste předtím nahráli ve sv�
 9. Pro **použití klíče** vyberte `Signature` .
 10. Klikněte na **Vytvořit**.
 
-## <a name="add-a-claims-provider"></a>Přidat zprostředkovatele deklarací identity
+## <a name="configure-idme-as-an-identity-provider"></a>Konfigurace ID.me jako zprostředkovatele identity
 
-Pokud chcete, aby se uživatelé přihlásili pomocí účtu ID.me, musíte účet definovat jako zprostředkovatele deklarací identity, se kterým Azure AD B2C můžou komunikovat prostřednictvím koncového bodu. Koncový bod poskytuje sadu deklarací, které používá Azure AD B2C k ověření, že konkrétní uživatel byl ověřen.
+Pokud chcete uživatelům povolit, aby se přihlásili pomocí účtu ID.me, musíte účet definovat jako zprostředkovatele deklarací identity, se kterým Azure AD B2C můžou komunikovat prostřednictvím koncového bodu. Koncový bod poskytuje sadu deklarací, které používá Azure AD B2C k ověření, že konkrétní uživatel byl ověřen.
 
 Účet ID.me můžete definovat jako zprostředkovatele deklarací tak, že ho přidáte do elementu **ClaimsProviders** v souboru rozšíření zásady.
 
@@ -79,7 +79,7 @@ Pokud chcete, aby se uživatelé přihlásili pomocí účtu ID.me, musíte úč
       <Domain>id.me</Domain>
       <DisplayName>ID.me</DisplayName>
       <TechnicalProfiles>
-        <TechnicalProfile Id="IdMe-OAUTH2">
+        <TechnicalProfile Id="IdMe-OAuth2">
           <DisplayName>IdMe</DisplayName>
           <Protocol Name="OAuth2" />
           <Metadata>
@@ -141,61 +141,29 @@ V dalším kroku budete potřebovat transformaci deklarací identity, abyste moh
 </ClaimsTransformations>
 ```
 
-### <a name="upload-the-extension-file-for-verification"></a>Nahrajte soubor rozšíření pro ověření.
+[!INCLUDE [active-directory-b2c-add-identity-provider-to-user-journey](../../includes/active-directory-b2c-add-identity-provider-to-user-journey.md)]
 
-Teď jste nakonfigurovali zásady tak, aby Azure AD B2C vědět, jak komunikovat s účtem ID.me. Zkuste nahrát soubor s příponou zásady jenom tak, aby se ověřilo, že zatím nemá žádné problémy.
 
-1. Na stránce **vlastní zásady** ve vašem tenantovi Azure AD B2C vyberte **Odeslat zásadu**.
-2. Pokud existuje, zapněte **zásadu přepsat** a pak vyhledejte a vyberte soubor *TrustFrameworkExtensions.xml* .
-3. Klikněte na **Odeslat**.
-
-## <a name="register-the-claims-provider"></a>Registrace zprostředkovatele deklarací identity
-
-V tuto chvíli je poskytovatel identity nastavený, ale není k dispozici na žádném z obrazovek pro registraci a přihlašování. Aby byl k dispozici, vytvořte duplikát existující cesty uživatele šablony a pak ji upravte, aby měl také poskytovatele identity ID.me.
-
-1. Otevřete soubor *TrustFrameworkBase.xml* z úvodní sady.
-2. Vyhledejte a zkopírujte celý obsah prvku **UserJourney** , který obsahuje `Id="SignUpOrSignIn"` .
-3. Otevřete *TrustFrameworkExtensions.xml* a vyhledejte element **userjourney** . Pokud element neexistuje, přidejte jej.
-4. Vložte celý obsah elementu **UserJourney** , který jste zkopírovali jako podřízený prvek **userjourney** elementu.
-5. Přejmenujte ID cesty pro uživatele. Například `SignUpSignInIdMe`.
-
-### <a name="display-the-button"></a>Zobrazit tlačítko
-
-Element **claimsproviderselection.** se podobá tlačítku poskytovatele identity na obrazovce pro registraci a přihlašování. Pokud přidáte element **claimsproviderselection.** pro účet ID.me, zobrazí se nové tlačítko, když se uživatel na stránce zařadí.
-
-1. Vyhledejte element **OrchestrationStep** , který obsahuje `Order="1"` cestu k uživateli, kterou jste vytvořili.
-2. Pod **ClaimsProviderSelects** přidejte následující element. Nastavte hodnotu **TargetClaimsExchangeId** na odpovídající hodnotu, například `IdMeExchange` :
-
-    ```xml
+```xml
+<OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsignin">
+  <ClaimsProviderSelections>
+    ...
     <ClaimsProviderSelection TargetClaimsExchangeId="IdMeExchange" />
-    ```
+  </ClaimsProviderSelections>
+  ...
+</OrchestrationStep>
 
-### <a name="link-the-button-to-an-action"></a>Propojit tlačítko s akcí
+<OrchestrationStep Order="2" Type="ClaimsExchange">
+  ...
+  <ClaimsExchanges>
+    <ClaimsExchange Id="IdMeExchange" TechnicalProfileReferenceId="IdMe-OAuth2" />
+  </ClaimsExchanges>
+</OrchestrationStep>
+```
 
-Teď, když máte tlačítko na místě, musíte ho propojit s akcí. Tato akce je v tomto případě určena pro Azure AD B2C ke komunikaci s účtem ID.me pro získání tokenu.
+[!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-1. Najděte **OrchestrationStep** , který obsahuje `Order="2"` cestu k uživateli.
-2. Přidejte následující prvek **ClaimsExchange** a ujistěte se, že používáte stejnou hodnotu pro ID, které jste použili pro **TargetClaimsExchangeId**:
+[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
 
-    ```xml
-    <ClaimsExchange Id="IdMeExchange" TechnicalProfileReferenceId="IdMe-OAUTH2" />
-    ```
-
-    Aktualizujte hodnotu **TechnicalProfileReferenceId** na ID technického profilu, který jste vytvořili dříve. Například `IdMe-OAUTH2`.
-
-3. Uložte soubor *TrustFrameworkExtensions.xml* a znovu ho nahrajte pro účely ověření.
-
-## <a name="update-and-test-the-relying-party-file"></a>Aktualizace a testování souboru předávající strany
-
-Aktualizujte soubor předávající strany (RP), který iniciuje cestu uživatele, kterou jste vytvořili.
-
-1. Vytvořte kopii *SignUpOrSignIn.xml* v pracovním adresáři a přejmenujte ji. Přejmenujte ho například na *SignUpSignInIdMe.xml*.
-1. Otevřete nový soubor a aktualizujte hodnotu atributu **PolicyId** pro **TrustFrameworkPolicy** s jedinečnou hodnotou. Například `SignUpSignIdMe`.
-1. Aktualizujte hodnotu **PUBLICPOLICYURI** identifikátorem URI pro zásadu. Například`http://contoso.com/B2C_1A_signup_signin_IdMe`
-1. Aktualizujte hodnotu atributu **ReferenceId** v **DefaultUserJourney** tak, aby odpovídala ID nové cesty uživatele, kterou jste vytvořili (SignUpSignIdMe).
-1. Uložte změny a nahrajte soubor.
-1. V části **vlastní zásady** vyberte **B2C_1A_signup_signin**.
-1. V části **Vybrat aplikaci** vyberte webovou aplikaci s názvem *testapp1* , kterou jste předtím zaregistrovali. Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
-1. Vyberte **Spustit nyní** a vyberte ID.me, abyste se přihlásili pomocí ID.me a otestujte vlastní zásady.
 
 ::: zone-end

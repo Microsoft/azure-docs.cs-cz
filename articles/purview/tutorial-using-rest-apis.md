@@ -7,18 +7,18 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/03/2020
-ms.openlocfilehash: fcc3e487d949a9450f792a6cc230b64e7dbe950a
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: bfb808c634ba946e1a4825d7828db6df8963352c
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202942"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98951239"
 ---
 # <a name="tutorial-use-the-rest-apis"></a>Kurz: použití rozhraní REST API
 
 V tomto kurzu se naučíte používat rozhraní REST API pro Azure dosah. Každý, kdo chce odesílat data do katalogu Azure dosah, zahrnout katalog jako součást automatizovaného procesu nebo vytvořit vlastní uživatelské prostředí v katalogu, můžete k tomu použít rozhraní REST API.
 
-V tomto kurzu:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 >
@@ -39,7 +39,7 @@ Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný úče
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se na web [Azure Portal](https://portal.azure.com).
+Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-a-service-principal-application"></a>Vytvoření instančního objektu (aplikace)
 
@@ -92,7 +92,7 @@ Konfigurace Azure dosah, aby důvěřovala vašemu novému instančnímu objektu
 
 1. Pro **přiřazení přístupu k** ponechání výchozího, **uživatelského, skupinového nebo instančního objektu**
 
-1. V poli **Vyberte** zadejte jméno uživatele, Azure Active Directory skupiny nebo instančního objektu, který chcete přiřadit, a potom v podokně výsledků klikněte na jeho název.
+1. V poli **Vyberte** zadejte název Previosly vytvořeného objektu služby, který chcete přiřadit, a potom v podokně výsledků klikněte na jeho název.
 
 1. Klikněte na **Uložit**.
 

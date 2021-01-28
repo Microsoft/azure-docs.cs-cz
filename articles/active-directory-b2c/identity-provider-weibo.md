@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/15/2021
+ms.date: 01/27/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 36b7618fbacc18ec506f12eabc642246d3148ce0
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 26c4e154deec02b0642e6c131ced50acb02f9899
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98537924"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98951515"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-weibo-account-using-azure-active-directory-b2c"></a>Nastavte si registraci a přihlaste se pomocí účtu Weibo pomocí Azure Active Directory B2C
 
@@ -26,7 +26,7 @@ ms.locfileid: "98537924"
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
@@ -57,7 +57,7 @@ Pokud chcete povolit přihlášení pro uživatele s účtem Weibo v Azure Activ
 
 ::: zone pivot="b2c-user-flow"
 
-## <a name="configure-a-weibo-account-as-an-identity-provider"></a>Konfigurace účtu Weibo jako zprostředkovatele identity
+## <a name="configure-weibo-as-an-identity-provider"></a>Konfigurace Weibo jako zprostředkovatele identity
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) jako globální správce vašeho tenanta Azure AD B2C.
 1. Ujistěte se, že používáte adresář, který obsahuje Azure AD B2C tenanta, a to tak, že v horní nabídce vyberete filtr **adresář + předplatné** a zvolíte adresář, který obsahuje vašeho tenanta.
@@ -67,6 +67,16 @@ Pokud chcete povolit přihlášení pro uživatele s účtem Weibo v Azure Activ
 1. Pro **ID klienta** zadejte klíč aplikace aplikace Weibo, kterou jste vytvořili dříve.
 1. Pro **tajný klíč klienta** zadejte tajný kód aplikace, který jste si poznamenali.
 1. Vyberte **Uložit**.
+
+## <a name="add-weibo-identity-provider-to-a-user-flow"></a>Přidání poskytovatele identity Weibo do toku uživatele 
+
+1. Ve vašem tenantovi Azure AD B2C vyberte **toky uživatelů**.
+1. Klikněte na tok uživatele, který chcete přidat poskytovatele identity Weibo.
+1. V části **Zprostředkovatelé sociální identity** vyberte **Weibo**.
+1. Vyberte **Uložit**.
+1. Pokud chcete zásady testovat, vyberte **Spustit tok uživatele**.
+1. V poli **aplikace** vyberte webovou aplikaci s názvem *testapp1* , kterou jste předtím zaregistrovali. Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
+1. Klikněte na **Spustit tok uživatele** .
 
 ::: zone-end
 
@@ -87,9 +97,9 @@ Je potřeba uložit tajný klíč klienta, který jste předtím nahráli ve sv�
 9. Pro **použití klíče** vyberte `Signature` .
 10. Klikněte na **Vytvořit**.
 
-## <a name="add-a-claims-provider"></a>Přidat zprostředkovatele deklarací identity
+## <a name="configure-weibo-as-an-identity-provider"></a>Konfigurace Weibo jako zprostředkovatele identity
 
-Pokud chcete, aby se uživatelé přihlásili pomocí účtu Weibo, musíte účet definovat jako zprostředkovatele deklarací identity, se kterým Azure AD B2C můžou komunikovat prostřednictvím koncového bodu. Koncový bod poskytuje sadu deklarací, které používá Azure AD B2C k ověření, že konkrétní uživatel byl ověřen.
+Pokud chcete uživatelům povolit, aby se přihlásili pomocí účtu Weibo, musíte účet definovat jako zprostředkovatele deklarací identity, se kterým Azure AD B2C můžou komunikovat prostřednictvím koncového bodu. Koncový bod poskytuje sadu deklarací, které používá Azure AD B2C k ověření, že konkrétní uživatel byl ověřen.
 
 Účet Weibo můžete definovat jako zprostředkovatele deklarací tak, že ho přidáte do elementu **ClaimsProviders** v souboru rozšíření zásady.
 
@@ -99,49 +109,10 @@ Pokud chcete, aby se uživatelé přihlásili pomocí účtu Weibo, musíte úč
 
     ```xml
     <ClaimsProvider>
-      <Domain>Weibo.com</Domain>
-      <DisplayName>Weibo</DisplayName>
-      <TechnicalProfiles>
-        <TechnicalProfile Id="Weibo-OAUTH">
-          <DisplayName>Weibo</DisplayName>
-          <Protocol Name="OAuth2" />
-          <Metadata>
-            <Item Key="ProviderName">Weibo</Item>
-            <Item Key="authorization_endpoint">https://accounts.Weibo.com/o/oauth2/auth</Item>
-            <Item Key="AccessTokenEndpoint">https://accounts.Weibo.com/o/oauth2/token</Item>
-            <Item Key="ClaimsEndpoint">https://www.Weiboapis.com/oauth2/v1/userinfo</Item>
-            <Item Key="scope">email profile</Item>
-            <Item Key="HttpBinding">POST</Item>
-            <Item Key="UsePolicyInRedirectUri">false</Item>
-            <Item Key="client_id">Your Weibo application ID</Item>
-          </Metadata>
-          <CryptographicKeys>
-            <Key Id="client_secret" StorageReferenceId="B2C_1A_WeiboSecret" />
-          </CryptographicKeys>
-          <OutputClaims>
-            <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="id" />
-            <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="email" />
-            <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="given_name" />
-            <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="family_name" />
-            <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name" />
-            <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="Weibo.com" />
-            <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" />
-          </OutputClaims>
-          <OutputClaimsTransformations>
-            <OutputClaimsTransformation ReferenceId="CreateRandomUPNUserName" />
-            <OutputClaimsTransformation ReferenceId="CreateUserPrincipalName" />
-            <OutputClaimsTransformation ReferenceId="CreateAlternativeSecurityId" />
-            <OutputClaimsTransformation ReferenceId="CreateSubjectClaimFromAlternativeSecurityId" />
-          </OutputClaimsTransformations>
-          <UseTechnicalProfileForSessionManagement ReferenceId="SM-SocialLogin" />
-        </TechnicalProfile>
-      </TechnicalProfiles>
-    </ClaimsProvider>
-    <ClaimsProvider>
       <Domain>weibo.com</Domain>
       <DisplayName>Weibo (Preview)</DisplayName>
       <TechnicalProfiles>
-        <TechnicalProfile Id="Weibo-OAUTH">
+        <TechnicalProfile Id="Weibo-OAuth2">
           <DisplayName>Weibo</DisplayName>
           <Protocol Name="OAuth2" />
           <Metadata>
@@ -212,79 +183,28 @@ Technický profil GitHub vyžaduje, aby byly transformace deklarací **CreateIss
 </BuildingBlocks>
 ```
 
-### <a name="upload-the-extension-file-for-verification"></a>Nahrajte soubor rozšíření pro ověření.
+[!INCLUDE [active-directory-b2c-add-identity-provider-to-user-journey](../../includes/active-directory-b2c-add-identity-provider-to-user-journey.md)]
 
-Teď jste nakonfigurovali zásady tak, aby Azure AD B2C vědět, jak komunikovat s účtem Weibo. Zkuste nahrát soubor s příponou zásady jenom tak, aby se ověřilo, že zatím nemá žádné problémy.
 
-1. Na stránce **vlastní zásady** ve vašem tenantovi Azure AD B2C vyberte **Odeslat zásadu**.
-2. Pokud existuje, zapněte **zásadu přepsat** a pak vyhledejte a vyberte soubor *TrustFrameworkExtensions.xml* .
-3. Klikněte na **Odeslat**.
-
-## <a name="register-the-claims-provider"></a>Registrace zprostředkovatele deklarací identity
-
-V tuto chvíli je poskytovatel identity nastavený, ale není k dispozici na žádném z obrazovek pro registraci a přihlašování. Aby byl k dispozici, vytvořte duplikát existující cesty uživatele šablony a pak ji upravte, aby měl také poskytovatele identity Weibo.
-
-1. Otevřete soubor *TrustFrameworkBase.xml* z úvodní sady.
-2. Vyhledejte a zkopírujte celý obsah prvku **UserJourney** , který obsahuje `Id="SignUpOrSignIn"` .
-3. Otevřete *TrustFrameworkExtensions.xml* a vyhledejte element **userjourney** . Pokud element neexistuje, přidejte jej.
-4. Vložte celý obsah elementu **UserJourney** , který jste zkopírovali jako podřízený prvek **userjourney** elementu.
-5. Přejmenujte ID cesty pro uživatele. Například `SignUpSignInWeibo`.
-
-### <a name="display-the-button"></a>Zobrazit tlačítko
-
-Element **claimsproviderselection.** se podobá tlačítku poskytovatele identity na obrazovce pro registraci a přihlašování. Pokud přidáte element **claimsproviderselection.** pro účet Weibo, zobrazí se nové tlačítko, když se uživatel na stránce zařadí.
-
-1. Vyhledejte element **OrchestrationStep** , který obsahuje `Order="1"` cestu k uživateli, kterou jste vytvořili.
-2. Pod **ClaimsProviderSelects** přidejte následující element. Nastavte hodnotu **TargetClaimsExchangeId** na odpovídající hodnotu, například `WeiboExchange` :
-
-    ```xml
+```xml
+<OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsignin">
+  <ClaimsProviderSelections>
+    ...
     <ClaimsProviderSelection TargetClaimsExchangeId="WeiboExchange" />
-    ```
+  </ClaimsProviderSelections>
+  ...
+</OrchestrationStep>
 
-### <a name="link-the-button-to-an-action"></a>Propojit tlačítko s akcí
+<OrchestrationStep Order="2" Type="ClaimsExchange">
+  ...
+  <ClaimsExchanges>
+    <ClaimsExchange Id="WeiboExchange" TechnicalProfileReferenceId="Weibo-OAuth2" />
+  </ClaimsExchanges>
+</OrchestrationStep>
+```
 
-Teď, když máte tlačítko na místě, musíte ho propojit s akcí. Tato akce je v tomto případě určena pro Azure AD B2C ke komunikaci s účtem Weibo pro získání tokenu.
+[!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-1. Najděte **OrchestrationStep** , který obsahuje `Order="2"` cestu k uživateli.
-2. Přidejte následující prvek **ClaimsExchange** a ujistěte se, že používáte stejnou hodnotu pro ID, které jste použili pro **TargetClaimsExchangeId**:
-
-    ```xml
-    <ClaimsExchange Id="WeiboExchange" TechnicalProfileReferenceId="Weibo-OAuth" />
-    ```
-
-    Aktualizujte hodnotu **TechnicalProfileReferenceId** na ID technického profilu, který jste vytvořili dříve. Například `Weibo-OAuth`.
-
-3. Uložte soubor *TrustFrameworkExtensions.xml* a znovu ho nahrajte pro účely ověření.
-
-::: zone-end
-
-::: zone pivot="b2c-user-flow"
-
-## <a name="add-weibo-identity-provider-to-a-user-flow"></a>Přidání poskytovatele identity Weibo do toku uživatele 
-
-1. Ve vašem tenantovi Azure AD B2C vyberte **toky uživatelů**.
-1. Klikněte na tok uživatele, který chcete přidat poskytovatele identity Weibo.
-1. V části **Zprostředkovatelé sociální identity** vyberte **Weibo**.
-1. Vyberte **Uložit**.
-1. Pokud chcete zásady testovat, vyberte **Spustit tok uživatele**.
-1. V poli **aplikace** vyberte webovou aplikaci s názvem *testapp1* , kterou jste předtím zaregistrovali. Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
-1. Klikněte na **Spustit tok uživatele** .
-
-::: zone-end
-
-::: zone pivot="b2c-custom-policy"
-
-## <a name="update-and-test-the-relying-party-file"></a>Aktualizace a testování souboru předávající strany
-
-Aktualizujte soubor předávající strany (RP), který iniciuje cestu uživatele, kterou jste vytvořili.
-
-1. Vytvořte kopii *SignUpOrSignIn.xml* v pracovním adresáři a přejmenujte ji. Přejmenujte ho například na *SignUpSignInWeibo.xml*.
-1. Otevřete nový soubor a aktualizujte hodnotu atributu **PolicyId** pro **TrustFrameworkPolicy** s jedinečnou hodnotou. Například `SignUpSignInWeibo`.
-1. Aktualizujte hodnotu **PUBLICPOLICYURI** identifikátorem URI pro zásadu. Například`http://contoso.com/B2C_1A_signup_signin_Weibo`
-1. Aktualizujte hodnotu atributu **ReferenceId** v **DefaultUserJourney** tak, aby odpovídala ID nové cesty uživatele, kterou jste vytvořili (SignUpSignWeibo).
-1. Uložte změny a nahrajte soubor.
-1. V části **vlastní zásady** vyberte **B2C_1A_signup_signin**.
-1. V části **Vybrat aplikaci** vyberte webovou aplikaci s názvem *testapp1* , kterou jste předtím zaregistrovali. Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
-1. Vyberte **Spustit nyní** a vyberte Weibo, abyste se přihlásili pomocí Weibo a otestujte vlastní zásady.
+[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
 
 ::: zone-end

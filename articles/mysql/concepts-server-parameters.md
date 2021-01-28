@@ -1,17 +1,17 @@
 ---
 title: Parametry serveru – Azure Database for MySQL
 description: Toto téma poskytuje pokyny pro konfiguraci parametrů serveru v Azure Database for MySQL.
-author: savjani
-ms.author: pariks
+author: Bashar-MSFT
+ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 6/25/2020
-ms.openlocfilehash: 0fddc1e8f80e257548d0dda91758273eb8c8ac78
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.date: 1/26/2021
+ms.openlocfilehash: 9485d346384344bd7c35d0577245419ca1f56574
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94534904"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98951306"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Parametry serveru v Azure Database for MySQL
 
@@ -69,8 +69,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MySQL](https://dev.
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|**Maximální hodnota (v bajtech)**|
 |---|---|---|---|---|
-|Základní|1|872415232|134217728|872415232|
-|Základní|2|2684354560|134217728|2684354560|
+|Basic|1|872415232|134217728|872415232|
+|Basic|2|2684354560|134217728|2684354560|
 |Pro obecné účely|2|3758096384|134217728|3758096384|
 |Pro obecné účely|4|8053063680|134217728|8053063680|
 |Pro obecné účely|8|16106127360|134217728|16106127360|
@@ -87,8 +87,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MySQL](https://dev.
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|**Maximální hodnota (v bajtech)**|
 |---|---|---|---|---|
-|Základní|1|872415232|134217728|872415232|
-|Základní|2|2684354560|134217728|2684354560|
+|Basic|1|872415232|134217728|872415232|
+|Basic|2|2684354560|134217728|2684354560|
 |Pro obecné účely|2|7516192768|134217728|7516192768|
 |Pro obecné účely|4|16106127360|134217728|16106127360|
 |Pro obecné účely|8|32212254720|134217728|32212254720|
@@ -116,8 +116,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MySQL](https://dev.
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|**Maximální hodnota (v bajtech)**|
 |---|---|---|---|---|
-|Základní|1|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
-|Základní|2|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
+|Basic|1|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
+|Basic|2|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
 |Pro obecné účely|2|262144|128|268435455|
 |Pro obecné účely|4|262144|128|536870912|
 |Pro obecné účely|8|262144|128|1073741824|
@@ -134,8 +134,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MySQL](https://dev.
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota**|**Min. hodnota**|**Max. hodnota**|
 |---|---|---|---|---|
-|Základní|1|50|10|50|
-|Základní|2|100|10|100|
+|Basic|1|50|10|50|
+|Basic|2|100|10|100|
 |Pro obecné účely|2|300|10|600|
 |Pro obecné účely|4|625|10|1250|
 |Pro obecné účely|8|1250|10|2500|
@@ -165,8 +165,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MySQL](https://dev.
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|**Maximální hodnota (v bajtech)**|
 |---|---|---|---|---|
-|Základní|1|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
-|Základní|2|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
+|Basic|1|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
+|Basic|2|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
 |Pro obecné účely|2|16777216|16384|268435455|
 |Pro obecné účely|4|16777216|16384|536870912|
 |Pro obecné účely|8|16777216|16384|1073741824|
@@ -190,8 +190,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MySQL](https://dev.
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|* * Maximální hodnota * *|
 |---|---|---|---|---|
-|Základní|1|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
-|Základní|2|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
+|Basic|1|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
+|Basic|2|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
 |Pro obecné účely|2|0|0|16777216|
 |Pro obecné účely|4|0|0|33554432|
 |Pro obecné účely|8|0|0|67108864|
@@ -228,8 +228,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MySQL](https://dev.
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|**Maximální hodnota (v bajtech)**|
 |---|---|---|---|---|
-|Základní|1|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
-|Základní|2|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
+|Basic|1|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
+|Basic|2|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
 |Pro obecné účely|2|524288|32768|4194304|
 |Pro obecné účely|4|524288|32768|8388608|
 |Pro obecné účely|8|524288|32768|16777216|
@@ -248,8 +248,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MySQL](https://dev.
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|**Maximální hodnota (v bajtech)**|
 |---|---|---|---|---|
-|Základní|1|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
-|Základní|2|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
+|Basic|1|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
+|Basic|2|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
 |Pro obecné účely|2|16777216|1024|67108864|
 |Pro obecné účely|4|16777216|1024|134217728|
 |Pro obecné účely|8|16777216|1024|268435456|
@@ -261,6 +261,18 @@ Další informace o tomto parametru najdete v [dokumentaci k MySQL](https://dev.
 |Optimalizováno pro paměť|8|16777216|1024|536870912|
 |Optimalizováno pro paměť|16|16777216|1024|1073741824|
 |Optimalizováno pro paměť|32|16777216|1024|1073741824|
+
+### <a name="innodb-buffer-pool-warmup"></a>InnoDB fondu vyrovnávací paměti zahřívání
+Po restartování serveru Azure Database for MySQL server se data, která jsou umístěna na disku, načtou při dotazování tabulek. To vede ke zvýšení latence a zpomalení výkonu při prvním spuštění dotazů. To nemusí být přijatelné pro úlohy citlivé na latenci. Použití fondu vyrovnávacích pamětí InnoDB zahřívání zkrátí dobu zahřívání tím, že znovu načte stránky disku, které byly ve fondu vyrovnávací paměti před restartováním, nikoli čekáním na operace DML nebo SELECT pro přístup k odpovídajícím řádkům.
+
+Po restartování serveru Azure Database for MySQL, který představuje výhodu výkonu, můžete zkrátit dobu zahřívání konfigurací [parametrů serveru fondu vyrovnávací paměti InnoDB](https://dev.mysql.com/doc/refman/8.0/en/innodb-preload-buffer-pool.html). InnoDB uloží procento naposledy použitých stránek pro každý fond vyrovnávacích pamětí při vypnutí serveru a obnoví tyto stránky při spuštění serveru.
+
+Je také důležité si uvědomit, že vyšší výkon je poskytován na úkor delšího času spuštění serveru. Pokud je tento parametr povolený, očekává se, že se čas spuštění a restartování serveru zvýší v závislosti na IOPS zřízené na serveru. Doporučujeme, abyste si vyzkoušeli a monitoroval čas restartování, abyste měli jistotu, že je možné spustit i restartovat výkon, protože server během této doby není dostupný. Tento parametr není doporučeno používat, pokud je zřízená IOPS menší než 1000 IOPS (nebo jinými slovy, pokud je zřízené úložiště menší než 335GB).
+
+Chcete-li uložit stav fondu vyrovnávací paměti na serveru, nastavte parametr serveru `innodb_buffer_pool_dump_at_shutdown` na hodnotu `ON` . Podobně nastavte parametr serveru `innodb_buffer_pool_load_at_startup` na `ON` Obnovit stav fondu vyrovnávací paměti při spuštění serveru. Dopad při spuštění/restartování můžete ovlivnit snížením a vyladěním hodnoty parametru serveru `innodb_buffer_pool_dump_pct` , ve výchozím nastavení je tento parametr nastaven na hodnotu `25` .
+
+> [!Note]
+> Parametry zahřívání fondu vyrovnávací paměti InnoDB se podporují jenom v serverech úložiště pro obecné účely s úložištěm o velikosti až 16 TB. Další informace o [možnostech úložiště Azure Database for MySQL najdete tady](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage).
 
 ### <a name="time_zone"></a>time_zone
 

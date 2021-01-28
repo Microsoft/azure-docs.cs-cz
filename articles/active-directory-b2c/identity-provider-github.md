@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/15/2021
+ms.date: 01/27/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 38eee59ecffa0c09403f47678e588b678e038413
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 22548703b456eb28a30c2d210d21f810d7b3ae6e
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98537977"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98952694"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-github-account-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení pomocí účtu GitHubu pomocí Azure Active Directory B2C
 
@@ -32,7 +32,7 @@ ms.locfileid: "98537977"
 
 ::: zone-end
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
@@ -49,7 +49,7 @@ Pokud chcete povolit přihlášení pomocí účtu GitHubu v Azure Active Direct
 
 ::: zone pivot="b2c-user-flow"
 
-## <a name="configure-a-github-account-as-an-identity-provider"></a>Konfigurace účtu GitHub jako zprostředkovatele identity
+## <a name="configure-github-as-an-identity-provider"></a>Konfigurace GitHubu jako poskytovatele identity
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) jako globální správce vašeho tenanta Azure AD B2C.
 1. Ujistěte se, že používáte adresář, který obsahuje Azure AD B2C tenanta, a to tak, že v horní nabídce vyberete filtr **adresář + předplatné** a zvolíte adresář, který obsahuje vašeho tenanta.
@@ -59,6 +59,16 @@ Pokud chcete povolit přihlášení pomocí účtu GitHubu v Azure Active Direct
 1. Pro **ID klienta** zadejte ID klienta aplikace GitHub, kterou jste vytvořili dříve.
 1. Pro **tajný klíč klienta** zadejte tajný klíč klienta, který jste si poznamenali.
 1. Vyberte **Uložit**.
+
+## <a name="add-github-identity-provider-to-a-user-flow"></a>Přidání poskytovatele identity GitHubu do toku uživatele 
+
+1. Ve vašem tenantovi Azure AD B2C vyberte **toky uživatelů**.
+1. Klikněte na tok uživatele, který chcete přidat poskytovatele identity GitHubu.
+1. V části **Zprostředkovatelé sociální identity** vyberte **GitHub**.
+1. Vyberte **Uložit**.
+1. Pokud chcete zásady testovat, vyberte **Spustit tok uživatele**.
+1. V poli **aplikace** vyberte webovou aplikaci s názvem *testapp1* , kterou jste předtím zaregistrovali. Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
+1. Klikněte na **Spustit tok uživatele** .
 
 ::: zone-end
 
@@ -79,9 +89,9 @@ Je potřeba uložit tajný klíč klienta, který jste předtím nahráli ve sv�
 1. Pro **použití klíče** vyberte `Signature` .
 1. Klikněte na **Vytvořit**.
 
-## <a name="add-a-claims-provider"></a>Přidat zprostředkovatele deklarací identity
+## <a name="configure-github-as-an-identity-provider"></a>Konfigurace GitHubu jako poskytovatele identity
 
-Pokud chcete, aby se uživatelé přihlásili pomocí účtu GitHubu, musíte účet definovat jako zprostředkovatele deklarací identity, se kterým Azure AD B2C můžou komunikovat prostřednictvím koncového bodu. Koncový bod poskytuje sadu deklarací, které používá Azure AD B2C k ověření, že konkrétní uživatel byl ověřen.
+Pokud chcete uživatelům povolit, aby se přihlásili pomocí účtu GitHubu, musíte účet definovat jako zprostředkovatele deklarací identity, se kterým Azure AD B2C může komunikovat prostřednictvím koncového bodu. Koncový bod poskytuje sadu deklarací, které používá Azure AD B2C k ověření, že konkrétní uživatel byl ověřen.
 
 Účet GitHub můžete definovat jako zprostředkovatele deklarací, a to tak, že ho přidáte do prvku **ClaimsProviders** v souboru rozšíření zásady.
 
@@ -94,7 +104,7 @@ Pokud chcete, aby se uživatelé přihlásili pomocí účtu GitHubu, musíte ú
       <Domain>github.com</Domain>
       <DisplayName>GitHub</DisplayName>
       <TechnicalProfiles>
-        <TechnicalProfile Id="GitHub-OAUTH2">
+        <TechnicalProfile Id="GitHub-OAuth2">
           <DisplayName>GitHub</DisplayName>
           <Protocol Name="OAuth2" />
           <Metadata>
@@ -167,79 +177,28 @@ Technický profil GitHub vyžaduje, aby byly transformace deklarací **CreateIss
 </BuildingBlocks>
 ```
 
-### <a name="upload-the-extension-file-for-verification"></a>Nahrajte soubor rozšíření pro ověření.
+[!INCLUDE [active-directory-b2c-add-identity-provider-to-user-journey](../../includes/active-directory-b2c-add-identity-provider-to-user-journey.md)]
 
-Teď jste nakonfigurovali zásady tak, aby Azure AD B2C vědět, jak komunikovat s vaším účtem GitHubu. Zkuste nahrát soubor s příponou zásady jenom tak, aby se ověřilo, že zatím nemá žádné problémy.
 
-1. Na stránce **vlastní zásady** ve vašem tenantovi Azure AD B2C vyberte **Odeslat zásadu**.
-2. Pokud existuje, zapněte **zásadu přepsat** a pak vyhledejte a vyberte soubor *TrustFrameworkExtensions.xml* .
-3. Klikněte na **Odeslat**.
-
-## <a name="register-the-claims-provider"></a>Registrace zprostředkovatele deklarací identity
-
-V tuto chvíli je poskytovatel identity nastavený, ale není k dispozici na žádném z obrazovek pro registraci a přihlašování. Aby byl k dispozici, vytvořte duplikát existující cesty uživatele šablony a pak ji upravte, aby měl také poskytovatele identity GitHubu.
-
-1. Otevřete soubor *TrustFrameworkBase.xml* z úvodní sady.
-2. Vyhledejte a zkopírujte celý obsah prvku **UserJourney** , který obsahuje `Id="SignUpOrSignIn"` .
-3. Otevřete *TrustFrameworkExtensions.xml* a vyhledejte element **userjourney** . Pokud element neexistuje, přidejte jej.
-4. Vložte celý obsah elementu **UserJourney** , který jste zkopírovali jako podřízený prvek **userjourney** elementu.
-5. Přejmenujte ID cesty pro uživatele. Například `SignUpSignInGitHub`.
-
-### <a name="display-the-button"></a>Zobrazit tlačítko
-
-Element **claimsproviderselection.** se podobá tlačítku poskytovatele identity na obrazovce pro registraci a přihlašování. Pokud přidáte element **claimsproviderselection.** pro účet GitHubu, zobrazí se nové tlačítko, když se uživatel na stránce zařadí.
-
-1. Vyhledejte element **OrchestrationStep** , který obsahuje `Order="1"` cestu k uživateli, kterou jste vytvořili.
-2. Pod **ClaimsProviderSelects** přidejte následující element. Nastavte hodnotu **TargetClaimsExchangeId** na odpovídající hodnotu, například `GitHubExchange` :
-
-    ```xml
+```xml
+<OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsignin">
+  <ClaimsProviderSelections>
+    ...
     <ClaimsProviderSelection TargetClaimsExchangeId="GitHubExchange" />
-    ```
+  </ClaimsProviderSelections>
+  ...
+</OrchestrationStep>
 
-### <a name="link-the-button-to-an-action"></a>Propojit tlačítko s akcí
+<OrchestrationStep Order="2" Type="ClaimsExchange">
+  ...
+  <ClaimsExchanges>
+    <ClaimsExchange Id="GitHubExchange" TechnicalProfileReferenceId="GitHub-OAuth2" />
+  </ClaimsExchanges>
+</OrchestrationStep>
+```
 
-Teď, když máte tlačítko na místě, musíte ho propojit s akcí. Tato akce je v tomto případě určena pro Azure AD B2C ke komunikaci s účtem GitHub pro příjem tokenu.
+[!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-1. Najděte **OrchestrationStep** , který obsahuje `Order="2"` cestu k uživateli.
-2. Přidejte následující prvek **ClaimsExchange** a ujistěte se, že používáte stejnou hodnotu pro ID, které jste použili pro **TargetClaimsExchangeId**:
-
-    ```xml
-    <ClaimsExchange Id="GitHubExchange" TechnicalProfileReferenceId="GitHub-OAuth" />
-    ```
-
-    Aktualizujte hodnotu **TechnicalProfileReferenceId** na ID technického profilu, který jste vytvořili dříve. Například `GitHub-OAuth`.
-
-3. Uložte soubor *TrustFrameworkExtensions.xml* a znovu ho nahrajte pro účely ověření.
-
-::: zone-end
-
-::: zone pivot="b2c-user-flow"
-
-## <a name="add-github-identity-provider-to-a-user-flow"></a>Přidání poskytovatele identity GitHubu do toku uživatele 
-
-1. Ve vašem tenantovi Azure AD B2C vyberte **toky uživatelů**.
-1. Klikněte na tok uživatele, který chcete přidat poskytovatele identity GitHubu.
-1. V části **Zprostředkovatelé sociální identity** vyberte **GitHub**.
-1. Vyberte **Uložit**.
-1. Pokud chcete zásady testovat, vyberte **Spustit tok uživatele**.
-1. V poli **aplikace** vyberte webovou aplikaci s názvem *testapp1* , kterou jste předtím zaregistrovali. Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
-1. Klikněte na **Spustit tok uživatele** .
-
-::: zone-end
-
-::: zone pivot="b2c-custom-policy"
-
-## <a name="update-and-test-the-relying-party-file"></a>Aktualizace a testování souboru předávající strany
-
-Aktualizujte soubor předávající strany (RP), který iniciuje cestu uživatele, kterou jste vytvořili.
-
-1. Vytvořte kopii *SignUpOrSignIn.xml* v pracovním adresáři a přejmenujte ji. Přejmenujte ho například na *SignUpSignInGitHub.xml*.
-1. Otevřete nový soubor a aktualizujte hodnotu atributu **PolicyId** pro **TrustFrameworkPolicy** s jedinečnou hodnotou. Například `SignUpSignInGitHub`.
-1. Aktualizujte hodnotu **PUBLICPOLICYURI** identifikátorem URI pro zásadu. Například`http://contoso.com/B2C_1A_signup_signin_github`
-1. Aktualizujte hodnotu atributu **ReferenceId** v **DefaultUserJourney** tak, aby odpovídala ID nové cesty uživatele, kterou jste vytvořili (SignUpSignGitHub).
-1. Uložte změny a nahrajte soubor.
-1. V části **vlastní zásady** vyberte **B2C_1A_signup_signin**.
-1. V části **Vybrat aplikaci** vyberte webovou aplikaci s názvem *testapp1* , kterou jste předtím zaregistrovali. Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
-1. Vyberte **spustit hned** a vyberte GitHub pro přihlášení pomocí GitHubu a otestujte vlastní zásady.
+[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
 
 ::: zone-end
