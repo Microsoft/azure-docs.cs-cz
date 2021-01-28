@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: d19190723ebc415e9cf3053b929788dff68aeb0e
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: fe54c4495e589459fe734f315138cafa8d7cd033
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734535"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98934742"
 ---
 # <a name="spatial-analysis-operations"></a>Operace prostorových analýz
 
@@ -61,7 +61,7 @@ Jedná se o parametry, které vyžaduje každá z těchto prostorových analytic
 |---------|---------|
 | ID operace | Identifikátor operace z tabulky výše|
 | enabled | Logická hodnota: true nebo false|
-| VIDEO_URL| Adresa URL služby RTSP pro zařízení kamery (příklad: `rtsp://username:password@url` ) Prostorová analýza podporuje datový proud s kódováním H. 264 pomocí protokolu RTSP, http nebo MP4. Video_URL lze zadat jako zašifrovanou hodnotu řetězce Base64 pomocí šifrování AES a pokud je adresa URL videa zakódována `KEY_ENV` a je `IV_ENV` třeba ji zadat jako proměnné prostředí. Ukázkový nástroj, který vygeneruje klíče a šifrování, najdete [tady](/dotnet/api/system.security.cryptography.aesmanaged?preserve-view=true&view=net-5.0). |
+| VIDEO_URL| Adresa URL služby RTSP pro zařízení kamery (příklad: `rtsp://username:password@url` ) Prostorová analýza podporuje datový proud s kódováním H. 264 pomocí protokolu RTSP, http nebo MP4. Video_URL lze zadat jako zašifrovanou hodnotu řetězce Base64 pomocí šifrování AES a pokud je adresa URL videa zakódována `KEY_ENV` a je `IV_ENV` třeba ji zadat jako proměnné prostředí. Ukázkový nástroj, který vygeneruje klíče a šifrování, najdete [tady](/dotnet/api/system.security.cryptography.aesmanaged). |
 | VIDEO_SOURCE_ID | Popisný název zařízení kamery nebo streamu videa. Tím se vrátí výstup JSON události.|
 | VIDEO_IS_LIVE| True pro zařízení kamery; hodnota false pro zaznamenaná videa|
 | VIDEO_DECODE_GPU_INDEX| Který grafický procesor k dekódování snímku videa. Ve výchozím nastavení je 0. By měl být stejný jako `gpu_index` v jiné konfiguraci uzlu jako `VICA_NODE_CONFIG` , `DETECTOR_NODE_CONFIG` .|

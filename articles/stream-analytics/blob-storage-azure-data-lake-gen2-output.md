@@ -5,13 +5,13 @@ author: enkrumah
 ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: 5484d13a70d8eaf905d3c8a51d575f177427019b
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.date: 01/27/2021
+ms.openlocfilehash: 3ce22837da2ca30249b399a297b6188d950b1ea4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98882157"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935149"
 ---
 # <a name="blob-storage-and-azure-data-lake-gen2-output-from-azure-stream-analytics"></a>Gen2 BLOB Storage a Azure Data Lake výstup z Azure Stream Analytics
 
@@ -44,7 +44,7 @@ V následující tabulce jsou uvedeny názvy vlastností a jejich popisy pro vyt
 Pokud jako výstup používáte úložiště objektů blob, vytvoří se v objektu BLOB nový soubor v následujících případech:
 
 * Pokud soubor překračuje maximální povolený počet bloků (aktuálně 50 000). Můžete dosáhnout maximálního povoleného počtu bloků, aniž byste dosáhli maximální povolené velikosti objektu BLOB. Například pokud je výstupní frekvence vysoká, můžete zobrazit více bajtů na blok a velikost souboru je větší. Pokud je výstupní frekvence nízká, každý blok má méně dat a velikost souboru je menší.
-* Pokud se ve výstupu změní schéma a výstupní formát vyžaduje pevné schéma (CSV a Avro).
+* Pokud se ve výstupu změní schéma a výstupní formát vyžaduje pevné schéma (CSV, Avro, Parquet).
 * Pokud se úloha restartuje, buď ji uživatel zastavuje, nebo ji zahájí, nebo je interně údržba systému nebo zotavení po chybě.
 * Pokud je dotaz plně rozdělený a vytvoří se nový soubor pro každý výstupní oddíl.
 * Pokud uživatel odstraní soubor nebo kontejner účtu úložiště.

@@ -4,12 +4,12 @@ description: Vytvoření funkce PowerShellu bez serveru aktivovaného protokolem
 ms.topic: tutorial
 ms.date: 06/10/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7b94d583ca26b88d093810528d3193f20d765f1d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: e7315796f2f7f89800b58f5fa607e69cd7ae3447
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349244"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935408"
 ---
 # <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>Kurz: použití funkce Azure aktivované protokolem HTTP k vytvoření skupiny kontejnerů
 
@@ -105,7 +105,7 @@ Po vytvoření aplikace funkcí a použití balíčku nasazení se zobrazí ozn�
 
 ## <a name="run-the-function-in-azure"></a>Spuštění funkce v Azure
 
-Po úspěšném dokončení nasazení získáte adresu URL funkce. Například můžete použít oblast **Azure: Functions** v Visual Studio Code ke ZKOPÍROVÁNÍ adresy URL funkce **HttpTrigger** nebo získat adresu URL funkce v [Azure Portal](../azure-functions/functions-create-first-azure-function.md#test-the-function).
+Po úspěšném dokončení nasazení získáte adresu URL funkce. Například můžete použít oblast **Azure: Functions** v Visual Studio Code ke ZKOPÍROVÁNÍ adresy URL funkce **HttpTrigger** nebo získat adresu URL funkce v [Azure Portal](../azure-functions/functions-get-started.md).
 
 Adresa URL funkce má formu:
 

@@ -7,12 +7,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
 ms.date: 12/14/2020
-ms.openlocfilehash: 6ff5731e7d346c954253ec4186357595461b7678
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: e1b175a176255da465433b2db45cb3cb67d360d1
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400249"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98934505"
 ---
 # <a name="use-azure-iot-dps-ip-connection-filters"></a>Použití filtrů připojení IP pro Azure IoT DPS
 
@@ -258,5 +258,5 @@ Pokud chcete uložit nové pořadí pravidel filtru IP adres, klikněte na **Ulo
 Další informace o správě služby DPS najdete v těchto tématech:
 
 * [Principy IP adres služby IoT DPS](iot-dps-understand-ip-address.md)
-* [Konfigurace služby DPS pomocí Azure CLI](how-to-manage-dps-with-cli.md)
+* [Nastavení DPS pomocí Azure CLI](quick-setup-auto-provision-cli.md)
 * [Řízení přístupu ke službě DPS](how-to-control-access.md)

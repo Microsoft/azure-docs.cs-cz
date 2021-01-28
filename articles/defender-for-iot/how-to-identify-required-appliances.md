@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 01/13/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 25685d7e933c9d171e1547be2f5899c08443321a
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 92bf066c9769cc4b2525923b9e18ed3c0e9c577a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98246566"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937138"
 ---
 # <a name="identify-required-appliances"></a>Identifikace požadovaných zařízení
 
@@ -100,7 +100,7 @@ Tato část popisuje hardwarové specifikace pro následující zařízení:
 | Procesor | Intel Xeon stříbrné 4215 R 3,2 GHz, 11 min. cache, 8c/16T, 130 W |
 | Sad | Intel C621 |
 | Memory (Paměť) | 32 GB = 2 × 16 až GB 2666MT/s DDR4 ECC UDIMM |
-| Úložiště | 6 x 1,2-TB SAS 12G Enterprise 10 000 SFF (2,5 v) v Hot-Plug pevný disk – RAID 5 |
+| Storage | 6 x 1,2-TB SAS 12G Enterprise 10 000 SFF (2,5 v) v Hot-Plug pevný disk – RAID 5 |
 | Síťový adaptér | Na desce: 2 × 1-GB Broadcom BCM5720<br>On-Board dvěma: karta portů iDRAC 1-GB Broadcom BCM5720<br><br>Externí: 1 x Intel Ethernet i350 QP 1-GB Server Adapter, nízký profil |
 | Správa | HPE MOP Advanced |
 | Přístup k zařízení | Dvě zadní USB 3,0<br>Jeden front-USB 2,0<br>Jedna interní sběrnice USB 3,0 |
@@ -136,7 +136,7 @@ Tato část popisuje hardwarové specifikace pro následující zařízení:
 | Procesor | Intel Xeon E-2234, 3,6 GHz, 4C/8T, 71 W |
 | Sad | Intel C242 |
 | Memory (Paměť) | 2 × 16 GB duální hodnocení x8 DDR4-2666 |
-| Úložiště | 3 × 1 TB SATA 6G midline 7,2 K SFF (2,5 in) – RAID 5 s Smart Array P408i-The SR Controller |
+| Storage | 3 × 1 TB SATA 6G midline 7,2 K SFF (2,5 in) – RAID 5 s Smart Array P408i-The SR Controller |
 | Síťový adaptér | Na desce: 2 × 1 GB <br>Na desce: karta portu MOP 1 GB <br>Externí: 1 x HPE Ethernet 1-GB 4-port 366FLR Adapter |
 | Správa | HPE MOP Advanced |
 | Přístup k zařízení | Vpřed: 1 x USB 3,0, 1 x USB MOP Service port <br>Vzadu: 2 x USB 3,0 <br>Interní: 1 x USB 3,0 |
@@ -171,7 +171,7 @@ Tato část popisuje hardwarové specifikace pro následující zařízení:
 | Procesor | Intel Xeon E-2224, 3,4 GHz, 4C, 71 W |
 | Sad | Intel C242 |
 | Memory (Paměť) | 1 × 8 GB duální hodnocení x8 DDR4-2666 |
-| Úložiště | 2 × 1 TB SATA 6G midline 7,2 K SFF (2,5 in) – RAID 1 s inteligentním polem P208i-a |
+| Storage | 2 × 1 TB SATA 6G midline 7,2 K SFF (2,5 in) – RAID 1 s inteligentním polem P208i-a |
 | Síťový adaptér | Na desce: 2 × 1 GB <br>Na desce: karta portu MOP 1 GB <br>Externí: 1 x HPE Ethernet 1-GB 4-port 366FLR Adapter |
 | Správa | HPE MOP Advanced |
 | Přístup k zařízení | Vpřed: 1 x USB 3,0, 1 x USB MOP Service port <br>Vzadu: 2 x USB 3,0 <br>Interní: 1 x USB 3,0 |
@@ -203,7 +203,7 @@ Tato část popisuje hardwarové specifikace pro následující zařízení:
 |--|--|--|--|
 | Virtuální procesory | 32 | 8 | 4 |
 | Memory (Paměť) | 32 GB | 32 GB | 8 GB |
-| Úložiště | 5,6 TB | 1,8 TB | 500 GB |
+| Storage | 5,6 TB | 1,8 TB | 500 GB |
 
 ### <a name="on-premises-management-console-appliance"></a>Místní zařízení konzoly pro správu
 
@@ -212,7 +212,7 @@ Tato část popisuje hardwarové specifikace pro následující zařízení:
 | Popis | Virtuální zařízení pro podnikové typy nasazení |
 | Virtuální procesory | 8 |
 | Memory (Paměť) | 32 GB |
-| Úložiště | 1,8 TB |
+| Storage | 1,8 TB |
 
 Podporované hypervisory: VMware ESXi verze 5,0 a novější, Hyper-V
 
@@ -225,7 +225,7 @@ Tato část podrobně popisuje další zařízení, která byla certifikována s
 | Image | :::image type="content" source="media/how-to-prepare-your-network/deployment-type-enterprise-for-azure-defender-for-iot-v2.png" alt-text="Typ podnikového nasazení."::: |
 | Modelování | Dell PowerEdge R340 XL |
 | Porty monitorování | Až devět RJ45 nebo šest OPT |
-| Maximální šířka pásma [1](#anchortext2)| 1G MB/s |
+| Maximální šířka pásma [1](#anchortext2)| 1 GB/s |
 | Maximální počet chráněných zařízení | 10 000 |
 
 <a id="anchortext2">Jedna</a> Kapacita šířky pásma se může lišit v závislosti na distribuci protokolů.
@@ -244,7 +244,7 @@ Po zakoupení zařízení si přečtěte tento software v **programu Defender fo
 | Procesor | Intel Xeon E-2144G 3,6 GHz, 8 min cache, 4C/8T, Turbo (71 W) |
 | Sad | Intel C246 |
 | Memory (Paměť) | 32 GB = 2 × 16 až GB 2666MT/s DDR4 ECC UDIMM |
-| Úložiště | 3 × 2 – TB 7,2 K ot./min. SATA 6 až 2 GB 512n 3,5-in Hot-Plug hard disk-RAID 5 |
+| Storage | 3 × 2 – TB 7,2 K ot./min. SATA 6 až 2 GB 512n 3,5-in Hot-Plug hard disk-RAID 5 |
 | Síťový adaptér | Na desce: 2 × 1-GB Broadcom BCM5720<br>On-Board dvěma: karta portů iDRAC 1-GB Broadcom BCM5720 <br><br>Externí: 1 x Intel Ethernet i350 QP 1-GB Server Adapter, nízký profil |
 | Správa | iDRAC devět Enterprise |
 | Přístup k zařízení | Dvě zadní USB 3,0 <br> Jeden front-USB 3,0 |

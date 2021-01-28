@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 563ccdb0633f94acccf3ade9faf1c40c28f108ac
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9f798751065d4889569f4b798ac864342f3e54ef
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462936"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98934401"
 ---
 # <a name="usage-dashboard-in-commercial-marketplace-analytics"></a>Řídicí panel Využití v analýzách komerčního marketplace
 
@@ -127,7 +127,7 @@ _**Tabulka 1: slovník datových podmínek**_
 | SKU | SKU | Plán přidružený k této nabídce |
 | Země zákazníka | Země nebo oblast zákazníka | Název země nebo oblasti, kterou zadal zákazník. Země nebo oblast se může lišit od země nebo oblasti v předplatném Azure zákazníka. |
 | Je verze Preview SKU | Je verze Preview SKU | Hodnota se zobrazí, pokud jste SKU označili jako "Preview". Hodnota bude "Ano", pokud je odpovídajícím způsobem označena skladová jednotka a pouze předplatná Azure, která jsou autorizována, můžete nasadit a použít tuto bitovou kopii. Pokud nebyla položka SKU identifikována jako "Preview", bude hodnota "ne". |
-| Typ fakturace SKU | Typ fakturace SKU | Typ fakturace přidružený k jednotlivým položkám SKU v nabídce Možné hodnoty jsou:<ul><li>Free</li><li>Hrazen</li></ul> |
+| Typ fakturace SKU | Typ fakturace SKU | Typ fakturace přidružený k jednotlivým položkám SKU v nabídce Možné hodnoty jsou:<ul><li>Free</li><li>Placené</li></ul> |
 | Velmi interní | Zastaralé | Zastaralé |
 | Velikost virtuálního počítače | Velikost virtuálního počítače | U typů nabídek založených na virtuálních počítačích označuje tato entita velikost virtuálního počítače přidruženého k SKU nabídky. |
 | Název cloudové instance | Název cloudové instance | Microsoft Cloud, ve kterém došlo k nasazení virtuálního počítače. |
@@ -135,7 +135,7 @@ _**Tabulka 1: slovník datových podmínek**_
 | Název nabídky | Název nabídky | Název nabídky komerčního tržiště. |
 | DeploymentMethod | Zastaralé | Zastaralé (stejná definice jako typ nabídky)
  |
-| Název společnosti zákazníka | Název společnosti zákazníka | Název společnosti poskytnutý zákazníkem Název může být jiný než město v předplatném Azure zákazníka. |
+| Název společnosti zákazníka | Název společnosti zákazníka | Název společnosti poskytnutý zákazníkem Název může být jiný než název v předplatném Azure zákazníka. |
 | Datum využití | Datum využití | Datum generování události využití pro prostředky založené na využití. |
 | IsMultisolution | Je více řešení | Označuje, zda je nabídka typu nabídky s více řešeními. |
 | Je nový zákazník | Zastaralé | Zastaralé |

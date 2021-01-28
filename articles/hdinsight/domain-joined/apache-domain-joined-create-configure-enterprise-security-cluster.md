@@ -3,17 +3,14 @@ title: Vytvoření, konfigurace Balíček zabezpečení podniku clusterů – Az
 description: Naučte se vytvářet a konfigurovat clustery Balíček zabezpečení podniku ve službě Azure HDInsight.
 services: hdinsight
 ms.service: hdinsight
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 12/10/2019
-ms.openlocfilehash: 07bd92e17b827dfeede5958587cecbdc97694329
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 914acfab3935bc81e7d8382163ca9283c7f71a53
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003918"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98934046"
 ---
 # <a name="create-and-configure-enterprise-security-package-clusters-in-azure-hdinsight"></a>Vytvoření a konfigurace clusterů Balíček zabezpečení podniku ve službě Azure HDInsight
 
@@ -82,7 +79,7 @@ V této části vytvoříte uživatele, kteří budou mít přístup ke clusteru
 
         ![Vytvořit nového uživatele služby Active Directory](./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-active-directory-user.png)
 
-    1. Na stránce **Nový objekt – uživatel** zadejte pro jméno `HDIUser` a **First name** **přihlašovací jméno uživatele**. Ostatní pole se vyplní automaticky. Pak vyberte **Další**.
+    1. Na stránce **Nový objekt – uživatel** zadejte pro jméno `HDIUser` a  **přihlašovací jméno uživatele**. Ostatní pole se vyplní automaticky. Pak vyberte **Další**.
 
         ![Vytvoření prvního objektu uživatele správce](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0020.png)
 
@@ -118,7 +115,7 @@ Uživatelé budou synchronizováni se službou Azure AD.
 
 ### <a name="create-an-azure-ad-directory"></a>Vytvoření adresáře Azure AD
 
-1. Přihlaste se k webu Azure Portal.
+1. Přihlaste se k portálu Azure.
 1. Vyberte **vytvořit prostředek** a typ `directory` . Vyberte **Azure Active Directory**  >  **vytvořit**.
 1. Do **pole název organizace** zadejte `HDIFabrikam` .
 1. V části **počáteční název domény** zadejte `HDIFabrikamoutlook` .
@@ -208,15 +205,15 @@ Vytvořte správce tenanta služby Active Directory.
    ![Stránka "konfigurace dokončena"](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0078.png)
 
 1. Po dokončení synchronizace potvrďte, že uživatelé, které jste vytvořili v adresáři IaaS, se synchronizují do Azure AD.
-   1. Přihlaste se k webu Azure Portal.
-   1. Vyberte **Azure Active Directory**  >  **HDIFabrikam**  >  **Uživatelé** HDIFabrikam.
+   1. Přihlaste se k portálu Azure.
+   1. Vyberte **Azure Active Directory**  >    >  **Uživatelé** HDIFabrikam.
 
 ### <a name="create-a-user-assigned-managed-identity"></a>Vytvoření spravované identity přiřazené uživatelem
 
 Vytvořte spravovanou identitu přiřazenou uživatelem, kterou můžete použít ke konfiguraci Azure AD Domain Services (Azure služba AD DS). Další informace najdete v tématu [Vytvoření, vypsání, odstranění nebo přiřazení role k spravované identitě přiřazené uživatelem pomocí Azure Portal](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md).
 
-1. Přihlaste se k webu Azure Portal.
-1. Vyberte **vytvořit prostředek** a typ `managed identity` . Vyberte možnost vytvořit **spravovanou identitu přiřazenou uživatelem**  >  **Create**.
+1. Přihlaste se k portálu Azure.
+1. Vyberte **vytvořit prostředek** a typ `managed identity` . Vyberte možnost vytvořit **spravovanou identitu přiřazenou uživatelem**  >  .
 1. Jako **název prostředku** zadejte `HDIFabrikamManagedIdentity` .
 1. Vyberte své předplatné.
 1. V části **Skupina prostředků** vyberte **vytvořit nové** a zadejte `HDIFabrikam-CentralUS` .
@@ -247,7 +244,7 @@ Pomocí následujícího postupu povolíte Azure služba AD DS. Další informac
     $virtualNetwork | Set-AzVirtualNetwork
     ```
 
-1. Přihlaste se k webu Azure Portal.
+1. Přihlaste se k portálu Azure.
 1. Vyberte **vytvořit prostředek**, zadejte `Domain services` a vyberte **Azure AD Domain Services**  >  **vytvořit**.
 1. Na stránce **základy** :
     1. V části **název adresáře** vyberte adresář služby Azure AD, který jste vytvořili: **HDIFabrikam**.
@@ -281,7 +278,7 @@ Pomocí následujících kroků můžete nakonfigurovat službu Azure služba AD
 
 1. Vyhledejte IP adresy vašich vlastních serverů DNS.
     1. Vyberte `HDIFabrikam.com` prostředek Azure služba AD DS.
-    1. V části **Spravovat** vyberte **vlastnosti**.
+    1. V části **Spravovat** vyberte **Vlastnosti**.
     1. Vyhledá IP adresy v části **IP adresa ve virtuální síti**.
 
     ![Vyhledání vlastních IP adres DNS pro Azure služba AD DS](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0096.png)

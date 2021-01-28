@@ -2,19 +2,19 @@
 title: Kurz – Azure Toolkit for IntelliJ (aplikace Spark)
 description: Kurz – použití Azure Toolkit for IntelliJ k vývoji aplikací Spark, které jsou napsané v Scala, a jejich odeslání do fondu Apache Spark bez serveru.
 services: synapse-analytics
-author: hrasheed-msft
+author: jejiang
 ms.author: jejiang
 ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 04/15/2020
-ms.openlocfilehash: 39f39b6f53944510b5f3692bb8b3fdd472004454
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 04faaa05cf51f740958238ece0a9a211c43fca41
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121222"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935444"
 ---
 # <a name="tutorial-create-an-apache-spark-application-with-intellij-using-a-synapse-workspace"></a>Kurz: Vytvoření aplikace Apache Spark s použitím IntelliJ pomocí pracovního prostoru synapse
 
@@ -24,7 +24,7 @@ V tomto kurzu se dozvíte, jak používat modul plug-in Azure Toolkit for Intell
 - Přístup k prostředkům fondů Spark
 - Vývoj a spouštění aplikace Scala Spark lokálně
 
-V tomto kurzu:
+V tomto kurzu se naučíte:
 > [!div class="checklist"]
 >
 > - Použití modulu plug-in Azure Toolkit for IntelliJ

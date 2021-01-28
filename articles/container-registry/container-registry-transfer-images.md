@@ -4,12 +4,12 @@ description: Přenos kolekcí imagí nebo jiných artefaktů z jednoho registru 
 ms.topic: article
 ms.date: 10/07/2020
 ms.custom: ''
-ms.openlocfilehash: fd2cee972ef173853572b871bc80b92b28c505cd
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: ab6657ecd335a6de8c6c93e3c2ff392ac54c487c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932596"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935343"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>Přenos artefaktů do jiného registru
 
@@ -188,7 +188,7 @@ az deployment group create \
   --parameters userAssignedIdentity="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myUserAssignedIdentity"
 ```
 
-Ve výstupu příkazu si poznamenejte ID prostředku ( `id` ) kanálu. Tuto hodnotu můžete uložit do proměnné prostředí pro pozdější použití spuštěním vlastnosti [AZ Deployment Group show][az-deployment-group-show]. Například:
+Ve výstupu příkazu si poznamenejte ID prostředku ( `id` ) kanálu. Tuto hodnotu můžete uložit do proměnné prostředí pro pozdější použití spuštěním vlastnosti [AZ Deployment Group show][az-deployment-group-show]. Příklad:
 
 ```azurecli
 EXPORT_RES_ID=$(az deployment group show \
@@ -253,7 +253,7 @@ az deployment group create \
   --parameters userAssignedIdentity="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myUserAssignedIdentity"
 ```
 
-Pokud máte v úmyslu spustit import ručně, poznamenejte si ID prostředku ( `id` ) kanálu. Tuto hodnotu můžete uložit do proměnné prostředí pro pozdější použití spuštěním příkazu [AZ Deployment Group show][az-deployment-group-show] . Například:
+Pokud máte v úmyslu spustit import ručně, poznamenejte si ID prostředku ( `id` ) kanálu. Tuto hodnotu můžete uložit do proměnné prostředí pro pozdější použití spuštěním příkazu [AZ Deployment Group show][az-deployment-group-show] . Příklad:
 
 ```azurecli
 IMPORT_RES_ID=$(az deployment group show \
@@ -281,7 +281,7 @@ Do souboru zadejte následující hodnoty parametrů `azuredeploy.parameters.jso
 
 Pokud se znovu nasadí prostředek PipelineRun se stejnými vlastnostmi, musíte použít také vlastnost [forceUpdateTag](#redeploy-pipelinerun-resource) .
 
-Spuštěním [AZ Deployment Group Create vytvořte][az-deployment-group-create] prostředek PipelineRun. Následující příklad pojmenuje *exportPipelineRun*nasazení.
+Spuštěním [AZ Deployment Group Create vytvořte][az-deployment-group-create] prostředek PipelineRun. Následující příklad pojmenuje *exportPipelineRun* nasazení.
 
 ```azurecli
 az deployment group create \
@@ -312,7 +312,7 @@ az storage blob list \
 
 ## <a name="transfer-blob-optional"></a>Přenos objektu BLOB (volitelné) 
 
-Použijte nástroj AzCopy nebo jiné metody k [přenosu dat objektů BLOB](../storage/common/storage-use-azcopy-blobs.md#copy-blobs-between-storage-accounts) ze zdrojového účtu úložiště do cílového účtu úložiště.
+Použijte nástroj AzCopy nebo jiné metody k [přenosu dat objektů BLOB](../storage/common/storage-use-azcopy-v10.md#transfer-data) ze zdrojového účtu úložiště do cílového účtu úložiště.
 
 Následující [`azcopy copy`](../storage/common/storage-ref-azcopy-copy.md) příkaz například zkopíruje myblob z kontejneru *přenosu* ve zdrojovém účtu do kontejneru *přenosu* v cílovém účtu. Pokud objekt BLOB v cílovém účtu existuje, bude přepsán. Ověřování používá tokeny SAS s příslušnými oprávněními pro zdrojové a cílové kontejnery. (Kroky pro vytváření tokenů nejsou zobrazeny.)
 

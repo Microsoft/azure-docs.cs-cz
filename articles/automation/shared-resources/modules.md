@@ -3,14 +3,14 @@ title: Správa modulů ve službě Azure Automation
 description: Tento článek popisuje, jak pomocí modulů PowerShellu povolit rutiny v sadách Runbook a prostředcích DSC v konfiguracích DSC.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 10/22/2020
+ms.date: 01/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: c940ede63e2a467a29ae56308893d573925d0039
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: d62ed96f86078839e66a4cf2ce71f304de2abf4d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458145"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936630"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Správa modulů ve službě Azure Automation
 
@@ -25,10 +25,18 @@ Azure Automation využívá řadu modulů PowerShellu k povolení rutin v sadác
 
 Když vytvoříte účet Automation, Azure Automation ve výchozím nastavení importují některé moduly. Viz [výchozí moduly](#default-modules).
 
+## <a name="sandboxes"></a>Sandboxy
+
 Když automatizace spustí úlohy kompilace sady Runbook a DSC, načte moduly do izolovaných prostorů, kde lze Runbooky spustit a konfigurace DSC mohou být zkompilovány. Automatizace také automaticky umístí do modulů všechny prostředky DSC v modulech na serveru vyžádané replikace DSC. Počítače mohou vyžádat prostředky při použití konfigurací DSC.
 
 >[!NOTE]
 >Nezapomeňte importovat pouze moduly, které vyžaduje vaše Runbooky a konfigurace DSC. Nedoporučujeme importovat kořenový modul AZ. Obsahuje mnoho dalších modulů, které nemusí být potřeba, což může způsobit problémy s výkonem. Místo toho importujte jednotlivé moduly, jako AZ. Compute.
+
+Cloud izolovaného prostoru (sandbox) podporuje maximálně 48 systémových volání a omezuje všechna ostatní volání z bezpečnostních důvodů. Jiné funkce, jako je Správa přihlašovacích údajů a některé sítě, nejsou v izolovaném prostoru cloudu podporované.
+
+Vzhledem k počtu zahrnutých modulů a rutin je obtížné zjistit, které rutiny budou provádět Nepodporovaná volání. Obecně jsme zjistili problémy s rutinami, které vyžadují zvýšený přístup, vyžadují přihlašovací údaje jako parametr nebo rutiny související se sítí. V izolovaném prostoru (sandbox) nejsou podporované žádné rutiny, které provádějí úplné síťové operace zásobníku, včetně [Connect-AipService](/powershell/module/aipservice/connect-aipservice) z modulu AipService PowerShellu a rutiny [Resolve-DnsName](/powershell/module/dnsclient/resolve-dnsname) z modulu DNSClient.
+
+Toto jsou známá omezení pro izolovaný prostor (sandbox). Doporučeným řešením je nasazení [Hybrid Runbook Worker](../automation-hybrid-runbook-worker.md) nebo použití [Azure Functions](../../azure-functions/functions-overview.md).
 
 ## <a name="default-modules"></a>Výchozí moduly
 
@@ -51,7 +59,7 @@ Automatizace neimportuje kořenový klíč AZ Module automaticky do všech nový
 | AzureRM.Sql | 1.0.3 |
 | AzureRM.Storage | 1.0.3 |
 | ComputerManagementDsc | 5.0.0.0 |
-| GPRegistryPolicyParser | 0,2 |
+| GPRegistryPolicyParser | 0.2 |
 | Microsoft. PowerShell. Core | 0 |
 | Microsoft. PowerShell. Diagnostics |  |
 | Microsoft. PowerShell. Management |  |
@@ -62,7 +70,7 @@ Automatizace neimportuje kořenový klíč AZ Module automaticky do všech nový
 | PSDscResources | 2.9.0.0 |
 | SecurityPolicyDsc | 2.1.0.0 |
 | StateConfigCompositeResources | 1 |
-| xDSCDomainjoin | 1,1 |
+| xDSCDomainjoin | 1.1 |
 | xPowerShellExecutionPolicy | 1.1.0.0 |
 | xRemoteDesktopAdmin | 1.1.0.0 |
 
@@ -134,7 +142,7 @@ Import modulu AZ Module do účtu Automation neprovede automatický import modul
 
 Do Azure Portal můžete importovat moduly AZ Modules. Nezapomeňte importovat jenom moduly AZ, které potřebujete, a ne celý modul AZ. Automation. Vzhledem k tomu, že [AZ. Accounts](https://www.powershellgallery.com/packages/Az.Accounts/1.1.0) je závislost pro ostatní moduly AZ, nezapomeňte tento modul naimportovat před všemi ostatními.
 
-1. V účtu Automation v části **sdílené prostředky**vyberte **moduly**.
+1. V účtu Automation v části **sdílené prostředky** vyberte **moduly**.
 2. Vyberte **Procházet galerii**.  
 3. Na panelu hledání zadejte název modulu (například `Az.Accounts` ).
 4. Na stránce modul prostředí PowerShell vyberte **importovat** a importujte modul do svého účtu Automation.
@@ -316,7 +324,7 @@ Tato část definuje několik způsobů, jak můžete importovat modul do svého
 Import modulu v Azure Portal:
 
 1. Přejít na svůj účet Automation.
-2. V části **sdílené prostředky**vyberte **moduly**.
+2. V části **sdílené prostředky** vyberte **moduly**.
 3. Vyberte **Přidat modul**.
 4. Vyberte soubor **. zip** , který obsahuje váš modul.
 5. Kliknutím na **tlačítko OK** začněte importovat proces.
@@ -344,15 +352,15 @@ New-AzAutomationModule -AutomationAccountName <AutomationAccountName> -ResourceG
 Import modulu přímo z Galerie prostředí PowerShell:
 
 1. Vyhledejte https://www.powershellgallery.com modul, který chcete importovat, a vyhledejte ho.
-2. V části **Možnosti instalace**na kartě **Azure Automation** vyberte **nasadit a Azure Automation**. Tato akce otevře Azure Portal. 
+2. V části **Možnosti instalace** na kartě **Azure Automation** vyberte **nasadit a Azure Automation**. Tato akce otevře Azure Portal. 
 3. Na stránce Import vyberte svůj účet Automation a vyberte **OK**.
 
 ![Snímek obrazovky modulu Galerie prostředí PowerShell Import](../media/modules/powershell-gallery.png)
 
 Import modulu Galerie prostředí PowerShell přímo z účtu Automation:
 
-1. V části **sdílené prostředky**vyberte **moduly**. 
-2. Vyberte **Procházet galerii**a potom vyhledejte v galerii modul. 
+1. V části **sdílené prostředky** vyberte **moduly**. 
+2. Vyberte **Procházet galerii** a potom vyhledejte v galerii modul. 
 3. Vyberte modul, který chcete importovat, a vyberte **importovat**. 
 4. Výběrem **OK** spusťte proces importu.
 
@@ -366,7 +374,7 @@ Pokud máte problémy s modulem nebo se chcete vrátit k předchozí verzi modul
 
 Odebrání modulu v Azure Portal:
 
-1. Přejít na svůj účet Automation. V části **sdílené prostředky**vyberte **moduly**.
+1. Přejít na svůj účet Automation. V části **sdílené prostředky** vyberte **moduly**.
 2. Vyberte modul, který chcete odebrat.
 3. Na stránce modul vyberte **Odstranit**. Pokud je tento modul jedním z [výchozích modulů](#default-modules), vrátí se na verzi, která existovala při vytvoření účtu Automation.
 

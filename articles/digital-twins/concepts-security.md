@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d62e7566038af6647cab2992b02184a4ea5ba30b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: bf92765431ea6b0f80b96ab7d61e8e830220dc82
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96344143"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98934526"
 ---
 # <a name="secure-azure-digital-twins"></a>Zabezpečení digitálních vláken Azure
 
@@ -89,6 +89,39 @@ Následující seznam popisuje úrovně, na kterých můžete přistoupit k pros
 
 Pokud se uživatel pokusí provést akci, kterou role nepovoluje, může se zobrazit chyba z čtení žádosti o službu `403 (Forbidden)` . Další informace a postup pro řešení potíží najdete v tématu [*řešení potíží: žádost o digitální vlákna Azure se nezdařila se stavem: 403 (zakázáno)*](troubleshoot-error-403.md).
 
+## <a name="managed-identity-for-accessing-other-resources-preview"></a>Spravovaná identita pro přístup k jiným prostředkům (Preview)
+
+Nastavení **spravované identity** [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) pro instanci digitálních vláken Azure umožňuje instanci snadno přistupovat k dalším prostředkům chráněným službou Azure AD, jako je například [Azure Key Vault](../key-vault/general/overview.md). Identita je spravovaná platformou Azure a nevyžaduje zřízení ani střídání tajných kódů. Další informace o spravovaných identitách v Azure AD najdete v tématu  [*spravované identity pro prostředky Azure*](../active-directory/managed-identities-azure-resources/overview.md). 
+
+Azure podporuje dva typy spravovaných identit: přiřazeno systémem a přiřazeno uživateli. V současné době digitální vlákna Azure podporuje jenom **identity přiřazené systémem**. 
+
+Pro ověření pro [vlastní koncový bod definovaný](concepts-route-events.md#create-an-endpoint)systémem můžete použít spravovanou identitu vaší služby Azure Digital instance. Digitální vlákna Azure podporuje ověřování založené na identitě přiřazené systémem k koncovým bodům pro [centrum událostí](../event-hubs/event-hubs-about.md) a cíle [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)   a do koncového bodu [kontejneru Azure Storage](../storage/blobs/storage-blobs-introduction.md)   pro [události nedoručených zpráv](concepts-route-events.md#dead-letter-events). [Event Grid](../event-grid/overview.md)   pro spravované identity se aktuálně nepodporují koncové body.
+
+Pokyny k povolení identity spravované systémem pro digitální vlákna Azure a jejich použití ke směrování událostí najdete v tématu [*Postup: povolení spravované identity pro události směrování (Preview)*](how-to-enable-managed-identities.md).
+
+## <a name="private-network-access-with-azure-private-link-preview"></a>Přístup k privátní síti pomocí privátního propojení Azure (Preview)
+
+[Privátní propojení Azure](../private-link/private-link-overview.md) je služba, která umožňuje přístup k prostředkům Azure (jako je [azure Event Hubs](../event-hubs/event-hubs-about.md), [Azure Storage](../storage/common/storage-introduction.md)a [Azure Cosmos DB](../cosmos-db/introduction.md)) a zákaznickým a partnerským službám hostovaným v Azure prostřednictvím privátního koncového bodu ve [službě Azure Virtual Network (VNET)](../virtual-network/virtual-networks-overview.md). 
+
+Podobně můžete použít privátní koncové body pro instanci digitálního vlákna Azure, aby klienti ve vaší virtuální síti měli zabezpečený přístup k instanci prostřednictvím privátního propojení. 
+
+Privátní koncový bod používá IP adresu z adresního prostoru virtuální sítě Azure. Síťový provoz mezi klientem v privátní síti a instancí digitálních vláken Azure prochází přes virtuální síť a privátní odkaz na páteřní síť Microsoftu, což eliminuje expozici veřejnému Internetu. Toto je vizuální znázornění tohoto systému:
+
+:::image type="content" source="media/concepts-security/private-link.png" alt-text="Diagram znázorňující síť pro společnost PowerGrid, která je chráněnou virtuální sítí bez přístupu k Internetu a veřejným cloudem, a připojení prostřednictvím privátního propojení s instancí digitálních vláken Azure s názvem CityOfTwins.":::
+
+Konfigurace privátního koncového bodu pro instanci digitálních vláken Azure vám umožní zabezpečit vaši instanci digitálních vláken Azure a eliminovat veřejnou expozici a zabránit tomu, aby se data exfiltrace z vaší virtuální sítě.
+
+Pokyny, jak nastavit privátní odkaz pro digitální vlákna Azure, najdete v tématu [*How to: Enable privátní Access with Private Link (Preview)*](how-to-enable-private-link.md).
+
+### <a name="design-considerations"></a>Na co dát pozor při navrhování 
+
+Když pracujete s privátním odkazem na digitální vlákna Azure, tady je několik faktorů, které byste mohli zvážit:
+* **Ceny**: informace o cenách najdete v tématu  [ceny za privátní propojení Azure](https://azure.microsoft.com/pricing/details/private-link). 
+* **Regionální dostupnost**: u digitálních vláken Azure je tato funkce dostupná ve všech oblastech Azure, kde jsou k dispozici digitální vlákna Azure. 
+* **Maximální počet privátních koncových bodů na instanci digitálních vláken Azure**: 10
+
+Informace o omezeních privátního propojení najdete v tématu [dokumentace k privátním linkám Azure: omezení](../private-link/private-link-service-overview.md#limitations).
+
 ## <a name="service-tags"></a>Značky služeb
 
 **Značka služby** představuje skupinu předpon IP adres z dané služby Azure. Společnost Microsoft spravuje předpony adres, které jsou zahrnuté ve značce služby, a automaticky aktualizuje značku služby, protože se mění adresy. tím se minimalizuje složitost častých aktualizací pravidel zabezpečení sítě. Další informace o značkách služby najdete v tématu  [*značky virtuální sítě*](../virtual-network/service-tags-overview.md). 
@@ -99,7 +132,7 @@ Níže jsou uvedeny podrobnosti o značce služby **AzureDigitalTwins** .
 
 | Značka | Účel | Dá se použít příchozí nebo odchozí? | Je možné je rozregionovat? | Lze použít s Azure Firewall? |
 | --- | --- | --- | --- | --- |
-| AzureDigitalTwins | Azure Digital Twins<br>Poznámka: Tato značka nebo IP adresy, na které se vztahuje tato značka, se dají použít k omezení přístupu k koncovým bodům nakonfigurovaným pro [trasy událostí](concepts-route-events.md). | Příchozí | Ne | Ano |
+| AzureDigitalTwins | Azure Digital Twins<br>Poznámka: Tato značka nebo IP adresy, na které se vztahuje tato značka, se dají použít k omezení přístupu k koncovým bodům nakonfigurovaným pro [trasy událostí](concepts-route-events.md). | Příchozí | No | Yes |
 
 ### <a name="using-service-tags-for-accessing-event-route-endpoints"></a>Použití značek služby pro přístup k koncovým bodům směrování událostí 
 
@@ -117,13 +150,13 @@ Tady je postup pro přístup k koncovým bodům [Směrování událostí](concep
 
 ## <a name="encryption-of-data-at-rest"></a>Šifrování dat v klidovém umístění
 
-Digitální vlákna Azure zajišťuje Šifrování neaktivních a přenosových dat, která se zapisují v našich datových centrech, a při přístupu k nim dešifruje. K tomuto šifrování dochází pomocí spravovaného šifrovacího klíče společnosti Microsoft.
+Digitální vlákna Azure zajišťuje Šifrování neaktivních a přenosových dat, která se zapisují v našich datových centrech, a při přístupu k nim dešifruje. K tomuto šifrování dochází pomocí šifrovacího klíče spravovaného společností Microsoft.
 
 ## <a name="cross-origin-resource-sharing-cors"></a>Sdílení prostředků mezi zdroji (CORS)
 
 Digitální vlákna Azure v současné době nepodporuje **sdílení prostředků mezi zdroji (CORS)**. Výsledkem je, že pokud voláte REST API z aplikace v prohlížeči, rozhraní [API Management (APIM)](../api-management/api-management-key-concepts.md) nebo konektor [Power Apps](/powerapps/powerapps-overview) , může se zobrazit chyba zásad.
 
-Chcete-li tuto chybu vyřešit, můžete provést jednu z následujících akcí:
+Tuto chybu můžete vyřešit provedením jedné z následujících akcí:
 * Z zprávy vypruhute hlavičku CORS `Access-Control-Allow-Origin` . Tato hlavička uvádí, zda lze odpověď sdílet. 
 * Případně můžete vytvořit proxy CORS a zajistit, aby se digitální vlákna Azure REST APIa prostřednictvím něj. 
 

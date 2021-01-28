@@ -1,5 +1,5 @@
 ---
-title: Vložení dat Data Factory řádků do Azure dosah
+title: Nasdílení změn dat rodokmenu Data Factory do Azure Purview
 description: Přečtěte si informace o tom, jak vložit data Data Factory do Azure dosah.
 services: data-factory
 ms.author: lle
@@ -13,12 +13,12 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 12/3/2020
-ms.openlocfilehash: 6b50c9440a958bc1398e79ddf3c5a0984816ec45
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: e87a9d677fee94d410099db1da80a56b5539048c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96603277"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935463"
 ---
 # <a name="push-data-factory-lineage-data-to-azure-purview-preview"></a>Vložení dat Data Factory řádků do Azure dosah (Preview)
 
@@ -29,7 +29,7 @@ V tomto kurzu použijete Data Factory uživatelské rozhraní (UI) k vytvoření
 ## <a name="prerequisites"></a>Požadavky
 * **Předplatné Azure**. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * **Azure Data Factory**. Pokud nemáte Azure Data Factory, přečtěte si téma [vytvoření Azure Data Factory](./quickstart-create-data-factory-portal.md).
-* **Účet Azure dosah**. Účet dosah zachycuje všechna data na řádku generovaná objektem pro vytváření dat. Pokud nemáte účet Azure dosah, přečtěte si téma [Vytvoření Azure dosah](https://docs.microsoft.com/azure/purview/create-catalog-portal).
+* **Účet Azure dosah**. Účet dosah zachycuje všechna data na řádku generovaná objektem pro vytváření dat. Pokud nemáte účet Azure dosah, přečtěte si téma [Vytvoření Azure dosah](../purview/create-catalog-portal.md).
 
 
 ## <a name="run-data-factory-activities-and-push-lineage-data-to-azure-purview"></a>Spuštění aktivit Data Factory a vkládání dat do služby Azure dosah
@@ -76,6 +76,6 @@ Zobrazí se vám také data o vykonání aktivity balíčku SSIS.
 > V případě, že se má spustit SSIS aktivita balíčku, podporujeme jenom zdroj a cíl. Pro transformaci není ještě podporováno.
 
 ## <a name="next-steps"></a>Další kroky
-[Uživatelská příručka k linii katalogu](https://docs.microsoft.com/azure/purview/catalog-lineage-user-guide)
+[Uživatelská příručka k linii katalogu](../purview/catalog-lineage-user-guide.md)
 
 [Připojení Data Factory k Azure dosah](connect-data-factory-to-azure-purview.md)

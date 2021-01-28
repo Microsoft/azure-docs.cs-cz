@@ -3,12 +3,12 @@ title: Monitorování pomocí multi-step web Tests – Azure Application Insight
 description: Nastavení webových testů s více kroky pro monitorování webových aplikací s využitím Azure Application Insights
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.openlocfilehash: 2df8b7450423c901665090608da83f68b43b30e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0031971dc2ccd2a9e681220dd835f46d33e36dbb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87024769"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98934850"
 ---
 # <a name="multi-step-web-tests"></a>Vícekrokové webové testy
 
@@ -37,11 +37,11 @@ Pro vyhledání požadovaných testovacích nástrojů. Spusťte **instalační 
 > [!WARNING]
 > Nedoporučujeme používat nahrávání více kroků. Zapisovač byl vyvinut pro statické stránky HTML se základními interakcemi a neposkytuje funkční prostředí pro moderní webové stránky.
 
-Pokyny k vytváření webových testů sady Visual Studio najdete v [oficiální dokumentaci k sadě Visual studio 2019](/visualstudio/test/how-to-create-a-web-service-test?view=vs-2019).
+Pokyny k vytváření webových testů sady Visual Studio najdete v [oficiální dokumentaci k sadě Visual studio 2019](/visualstudio/test/how-to-create-a-web-service-test).
 
 ## <a name="upload-the-web-test"></a>Nahrát webový test
 
-1. Na portálu Application Insights v podokně dostupnost vyberte **vytvořit test**test  >  **typu**  >  **multi-step Web test**.
+1. Na portálu Application Insights v podokně dostupnost vyberte **vytvořit test** test  >  **typu**  >  **multi-step Web test**.
 
 2. Nastavte umístění testu, četnost a parametry výstrahy.
 
@@ -65,7 +65,7 @@ Pokyny k vytváření webových testů sady Visual Studio najdete v [oficiální
 |Nastavení| Vysvětlení
 |----|----|----|
 |**Téměř v reálném čase (Preview)** | Doporučujeme používat upozornění téměř v reálném čase. Konfigurace tohoto typu upozornění se provádí po vytvoření testu dostupnosti.  |
-|**Klasický** | Pro nové testy dostupnosti už nedoporučujeme používat klasické výstrahy.|
+|**Standardním** | Pro nové testy dostupnosti už nedoporučujeme používat klasické výstrahy.|
 |**Prahová hodnota umístění výstrahy**|Doporučujeme minimálně 3/5 umístění. Optimální vztah mezi prahovou hodnotou umístění výstrahy a počtem testovacích umístění je **prahová hodnota pro umístění upozornění**  =  **v umístění testovacích umístění – 2, minimálně pět umístění testu.**|
 
 ## <a name="configuration"></a>Konfigurace
@@ -106,7 +106,7 @@ Ve všech případech musíte v aplikaci vytvořit účet jenom pro účely test
 
 **Ověřování SAML**
 
-|Název vlastnosti| Description|
+|Název vlastnosti| Popis|
 |----|-----|
 | Identifikátor URI cílové skupiny | Identifikátor URI cílové skupiny pro token SAML.  Toto je identifikátor URI pro Access Control Service (ACS) – včetně oboru názvů služby ACS a názvu hostitele. |
 | Heslo certifikátu | Heslo pro klientský certifikát, kterým bude udělen přístup k vloženému privátnímu klíči. |
