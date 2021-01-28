@@ -3,18 +3,18 @@ title: Vyprázdnit značky a manifesty
 description: Pomocí příkazu vyčistit můžete odstranit více značek a manifestů z registru kontejneru Azure na základě stáří a filtru značek a volitelně naplánovat operace vyprázdnění.
 ms.topic: article
 ms.date: 01/27/2021
-ms.openlocfilehash: ab1a925092784effd07431d75e4ec1535c53ed33
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 11750965ac563d1d5b7ad5ac7b52cf996e791e56
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/28/2021
-ms.locfileid: "98927275"
+ms.locfileid: "98954034"
 ---
 # <a name="automatically-purge-images-from-an-azure-container-registry"></a>Automatické mazání imagí z Azure Container Registry
 
 Když použijete službu Azure Container Registry jako součást pracovního postupu vývoje, registr může rychle vyplnit obrázky nebo jiné artefakty, které se po krátké době nevyžadují. Možná budete chtít odstranit všechny značky, které jsou starší než určitá doba trvání nebo odpovídají zadanému filtru názvů. V tomto článku se seznámíte s `acr purge` příkazem, který můžete spustit jako na vyžádání nebo podle [plánované](container-registry-tasks-scheduled.md) ACR úlohy. 
 
-`acr purge`Příkaz je aktuálně distribuován do veřejné image kontejneru ( `mcr.microsoft.com/acr/acr-cli:0.4` ), která je sestavena ze zdrojového kódu v úložišti [ACR-CLI](https://github.com/Azure/acr-cli) v GitHubu.
+`acr purge`Příkaz je aktuálně distribuován do veřejné image kontejneru ( `mcr.microsoft.com/acr/acr-cli:0.3` ), která je sestavena ze zdrojového kódu v úložišti [ACR-CLI](https://github.com/Azure/acr-cli) v GitHubu.
 
 Příklady úloh ACR v tomto článku můžete spustit pomocí Azure Cloud Shell nebo místní instalace Azure CLI. Pokud ho chcete používat místně, je potřeba verze 2.0.76 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install]. 
 
@@ -45,7 +45,6 @@ Pokud spustíte následující příkaz, zadejte alespoň tento příkaz `acr pu
 * `--untagged` – Určuje, že se odstraní manifesty, které nemají přidružené značky (*netagované manifesty*).
 * `--dry-run` – Určuje, že nejsou odstraněna žádná data, ale výstup je stejný, jako kdyby byl příkaz spuštěn bez tohoto příznaku. Tento parametr je vhodný pro testování příkazu vyčistit, aby se zajistilo, že nechtěně neodstraní data, která máte v úmyslu zachovat.
 * `--keep` – Určuje, že bude zachováno nejnovější x počet značek k odstranění.
-* `--concurrency` – Určuje, zda jsou zpracovávány současně úlohy vyprázdnění x. Pokud není tento parametr zadán, bude použita výchozí hodnota.
 
 Další parametry získáte spuštěním `acr purge --help` . 
 

@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 40d2f957ce115b43a1dcc138b86e05ec9cc47384
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 729839c8e881f507e103c4644c012d8dffc5c8c6
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060564"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98956255"
 ---
 Tento kurz vyžaduje následující prostředky Azure:
 
@@ -26,7 +26,20 @@ Pro tento rychlý Start doporučujeme, abyste k nasazení požadovaných prostř
     bash -c "$(curl -sL https://aka.ms/lva-edge/setup-resources-for-samples)"
     ```
     
-    Po úspěšném dokončení skriptu byste měli vidět všechny požadované prostředky v rámci vašeho předplatného.
+    Po úspěšném dokončení skriptu byste měli vidět všechny požadované prostředky v rámci vašeho předplatného. Skript nastaví celkem 12 prostředků:
+    1. **Koncový bod streamování** – to vám pomůže při přehrávání zaznamenaného prostředku AMS.
+    1. **Virtuální počítač** – jedná se o virtuální počítač, který bude fungovat jako hraniční zařízení.
+    1. **Disk** – jedná se o disk úložiště, který je připojený k virtuálnímu počítači pro ukládání médií a artefaktů.
+    1. **Skupina zabezpečení sítě** – slouží k filtrování síťového provozu do a z prostředků Azure ve službě Azure Virtual Network.
+    1. **Síťové rozhraní** – umožňuje virtuálnímu počítači Azure komunikovat s internetem, Azure a dalšími prostředky.
+    1. **Připojení bastionu** – to vám umožní připojit se k virtuálnímu počítači pomocí prohlížeče a Azure Portal.
+    1. **Veřejná IP adresa** – umožňuje prostředkům Azure komunikovat s internetem a veřejně přístupnými službami Azure.
+    1. **Virtuální síť** – Tato možnost umožňuje mezi sebou zabezpečit mnoho typů prostředků Azure, jako je třeba virtuální počítač, aby bylo možné bezpečně komunikovat mezi sebou, internetem a místními sítěmi. Další informace o [virtuálních sítích](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
+    1. **IoT Hub** – slouží jako centrální Centrum zpráv pro obousměrnou komunikaci mezi aplikací IoT, IoT Edge moduly a zařízeními, která spravuje.
+    1. **Účet Media Service** – to pomáhá se správou a streamování mediálního obsahu v Azure.
+    1. **Účet úložiště** – musíte mít jeden primární účet úložiště a k vašemu Media Services účtu můžete mít k dispozici libovolný počet sekundárních účtů úložiště. Další informace najdete v tématu [účty Azure Storage s účty Azure Media Services](https://docs.microsoft.com/azure/media-services/latest/storage-account-concept).
+    1. **Registr kontejnerů** – to pomáhá ukládat a spravovat vaše soukromé image kontejnerů Docker a související artefakty.
+
 1. Po dokončení skriptu vyberte složené závorky a vystavte strukturu složek. V adresáři *~/clouddrive/lva-Sample* se zobrazí několik souborů. V tomto rychlém startu jsou důležité tyto:
 
      * ***~/clouddrive/lva-Sample/Edge-Deployment/.env** _ – Tento soubor obsahuje vlastnosti, které Visual Studio Code používá k nasazení modulů do hraničního zařízení.

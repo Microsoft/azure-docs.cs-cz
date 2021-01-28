@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/15/2021
+ms.date: 01/27/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 8a0d69ea57eb5b8b2a074c37d4798a99c576ce95
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: ea4def3cfaa19e27dc05e955bf97b41976ec2190
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98538176"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98953916"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-azure-ad-b2c-account-from-another-azure-ad-b2c-tenant"></a>Nastavení registrace a přihlášení pomocí účtu Azure AD B2C z jiného tenanta Azure AD B2C
 
@@ -37,7 +37,7 @@ Tento článek popisuje, jak nastavit federaci s jiným Azure AD B2C tenant. Kdy
 ![Azure AD B2C federace s jiným klientem Azure AD B2C](./media/identity-provider-azure-ad-b2c/azure-ad-b2c-federation.png)
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
@@ -107,6 +107,17 @@ K vytvoření aplikace.
 
 1. Vyberte **Uložit**.
 
+## <a name="add-azure-ad-b2c-identity-provider-to-a-user-flow"></a>Přidání poskytovatele identity Azure AD B2C do toku uživatele 
+
+1. Ve vašem tenantovi Azure AD B2C vyberte **toky uživatelů**.
+1. Klikněte na tok uživatele, který chcete přidat Azure AD B2C zprostředkovatele identity.
+1. V části **Zprostředkovatelé sociální identity** vyberte **Fabrikam**.
+1. Vyberte **Uložit**.
+1. Pokud chcete zásady testovat, vyberte **Spustit tok uživatele**.
+1. V poli **aplikace** vyberte webovou aplikaci s názvem *testapp1* , kterou jste předtím zaregistrovali. Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
+1. Klikněte na **Spustit tok uživatele** .
+1. Na stránce registrace nebo přihlášení vyberte *Fabrikam* pro přihlášení k druhému tenantovi Azure AD B2C.
+
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
@@ -125,9 +136,9 @@ Je potřeba uložit klíč aplikace, který jste vytvořili dříve v tenantovi 
 1. Pro **použití klíče** vyberte `Signature` .
 1. Vyberte **Vytvořit**.
 
-## <a name="add-a-claims-provider"></a>Přidat zprostředkovatele deklarací identity
+## <a name="configure-azure-ad-b2c-as-an-identity-provider"></a>Konfigurace Azure AD B2C jako zprostředkovatele identity
 
-Pokud chcete, aby se uživatelé přihlásili pomocí jiných Azure AD B2C (Fabrikam), je nutné definovat ostatní Azure AD B2C jako zprostředkovatele deklarací identity, se kterým Azure AD B2C může komunikovat prostřednictvím koncového bodu. Koncový bod poskytuje sadu deklarací, které používá Azure AD B2C k ověření, že konkrétní uživatel byl ověřen.
+Pokud chcete uživatelům povolit, aby se přihlásili pomocí účtu z jiného tenanta Azure AD B2C (Fabrikam), musíte definovat druhý Azure AD B2C jako zprostředkovatele deklarací identity, se kterým Azure AD B2C může komunikovat prostřednictvím koncového bodu. Koncový bod poskytuje sadu deklarací, které používá Azure AD B2C k ověření, že konkrétní uživatel byl ověřen.
 
 Azure AD B2C můžete definovat jako zprostředkovatele deklarací přidáním Azure AD B2C do prvku **ClaimsProvider** v souboru rozšíření zásady.
 
@@ -139,7 +150,7 @@ Azure AD B2C můžete definovat jako zprostředkovatele deklarací přidáním A
       <Domain>fabrikam.com</Domain>
       <DisplayName>Federation with Fabrikam tenant</DisplayName>
       <TechnicalProfiles>
-        <TechnicalProfile Id="Fabrikam-OpenIdConnect">
+        <TechnicalProfile Id="AzureADB2CFabrikam-OpenIdConnect">
         <DisplayName>Fabrikam</DisplayName>
         <Protocol Name="OpenIdConnect"/>
         <Metadata>
@@ -188,83 +199,29 @@ Azure AD B2C můžete definovat jako zprostředkovatele deklarací přidáním A
     |CryptographicKeys| Aktualizujte hodnotu **StorageReferenceId** na název klíče zásad, který jste vytvořili dříve. Například `B2C_1A_FabrikamAppSecret`.| 
     
 
-### <a name="upload-the-extension-file-for-verification"></a>Nahrajte soubor rozšíření pro ověření.
-
-Teď jste nakonfigurovali zásady tak, aby Azure AD B2C vědět, jak komunikovat s druhým Azure AD B2C tenant. Zkuste nahrát soubor s příponou zásady jenom tak, aby se ověřilo, že zatím nemá žádné problémy.
-
-1. Na stránce **vlastní zásady** ve vašem tenantovi Azure AD B2C vyberte **Odeslat zásadu**.
-1. Pokud existuje, zapněte **zásadu přepsat** a pak vyhledejte a vyberte soubor *TrustFrameworkExtensions.xml* .
-1. Klikněte na **Odeslat**.
-
-## <a name="register-the-claims-provider"></a>Registrace zprostředkovatele deklarací identity
-
-V tuto chvíli se poskytovatel identity nastavil, ale ještě není dostupný na žádném z přihlašovacích a přihlašovacích stránek. Aby byl k dispozici, vytvořte duplikát stávající cesty uživatele šablony a pak ho upravte, aby měl také poskytovatele identity Azure AD:
-
-1. Otevřete soubor *TrustFrameworkBase.xml* z úvodní sady.
-1. Vyhledejte a zkopírujte celý obsah prvku **UserJourney** , který obsahuje `Id="SignUpOrSignIn"` .
-1. Otevřete *TrustFrameworkExtensions.xml* a vyhledejte element **userjourney** . Pokud element neexistuje, přidejte jej.
-1. Vložte celý obsah elementu **UserJourney** , který jste zkopírovali jako podřízený prvek **userjourney** elementu.
-1. Přejmenujte ID cesty pro uživatele. Například `SignUpSignInFabrikam`.
-
-### <a name="display-the-button"></a>Zobrazit tlačítko
-
-Element **claimsproviderselection.** se podobá tlačítku poskytovatele identity na stránce pro registraci nebo přihlášení. Pokud přidáte prvek **claimsproviderselection.** pro Azure AD B2C, zobrazí se nové tlačítko, když se uživatel na stránce zařadí.
-
-1. Vyhledejte element **OrchestrationStep** , který obsahuje `Order="1"` cestu uživatele, kterou jste vytvořili v *TrustFrameworkExtensions.xml*.
-1. Pod **ClaimsProviderSelections** přidejte následující element. Nastavte hodnotu **TargetClaimsExchangeId** na odpovídající hodnotu, například `FabrikamExchange` :
-
-    ```xml
-    <ClaimsProviderSelection TargetClaimsExchangeId="FabrikamExchange" />
-    ```
-
-### <a name="link-the-button-to-an-action"></a>Propojit tlačítko s akcí
-
-Teď, když máte tlačítko na místě, musíte ho propojit s akcí. Tato akce je v tomto případě určena pro Azure AD B2C ke komunikaci s ostatními Azure AD B2C k získání tokenu. Propojte tlačítko s akcí tak, že propojíte technický profil pro Azure AD B2C zprostředkovatele deklarací identity:
-
-1. Najděte **OrchestrationStep** , který obsahuje `Order="2"` cestu k uživateli.
-1. Přidejte následující prvek **ClaimsExchange** a ujistěte se, že používáte stejnou hodnotu pro **ID** , které jste použili pro **TargetClaimsExchangeId**:
-
-    ```xml
-    <ClaimsExchange Id="FabrikamExchange" TechnicalProfileReferenceId="Fabrikam-OpenIdConnect" />
-    ```
-
-    Aktualizujte hodnotu **TechnicalProfileReferenceId** na **ID** technického profilu, který jste vytvořili dříve. Například `Fabrikam-OpenIdConnect`.
-
-1. Uložte soubor *TrustFrameworkExtensions.xml* a znovu ho nahrajte pro účely ověření.
-
-::: zone-end
-
-::: zone pivot="b2c-user-flow"
-
-## <a name="add-azure-ad-b2c-identity-provider-to-a-user-flow"></a>Přidání poskytovatele identity Azure AD B2C do toku uživatele 
-
-1. Ve vašem tenantovi Azure AD B2C vyberte **toky uživatelů**.
-1. Klikněte na tok uživatele, který chcete přidat Azure AD B2C zprostředkovatele identity.
-1. V části **Zprostředkovatelé sociální identity** vyberte **Fabrikam**.
-1. Vyberte **Uložit**.
-1. Pokud chcete zásady testovat, vyberte **Spustit tok uživatele**.
-1. V poli **aplikace** vyberte webovou aplikaci s názvem *testapp1* , kterou jste předtím zaregistrovali. Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
-1. Klikněte na **Spustit tok uživatele** .
-1. Na stránce registrace nebo přihlášení vyberte *Fabrikam* pro přihlášení k druhému tenantovi Azure AD B2C.
-
-::: zone-end
-
-::: zone pivot="b2c-custom-policy"
+[!INCLUDE [active-directory-b2c-add-identity-provider-to-user-journey](../../includes/active-directory-b2c-add-identity-provider-to-user-journey.md)]
 
 
-## <a name="update-and-test-the-relying-party-file"></a>Aktualizace a testování souboru předávající strany
+```xml
+<OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsignin">
+  <ClaimsProviderSelections>
+    ...
+    <ClaimsProviderSelection TargetClaimsExchangeId="AzureADB2CFabrikamExchange" />
+  </ClaimsProviderSelections>
+  ...
+</OrchestrationStep>
 
-Aktualizujte soubor předávající strany (RP), který iniciuje cestu uživatele, kterou jste vytvořili.
+<OrchestrationStep Order="2" Type="ClaimsExchange">
+  ...
+  <ClaimsExchanges>
+    <ClaimsExchange Id="AzureADB2CFabrikamExchange" TechnicalProfileReferenceId="AzureADB2CFabrikam-OpenIdConnect" />
+  </ClaimsExchanges>
+</OrchestrationStep>
+```
 
-1. Vytvořte kopii *SignUpOrSignIn.xml* v pracovním adresáři a přejmenujte ji. Přejmenujte ho například na *SignUpSignInFabrikam.xml*.
-1. Otevřete nový soubor a aktualizujte hodnotu atributu **PolicyId** pro **TrustFrameworkPolicy** s jedinečnou hodnotou. Například `SignUpSignInFabrikam`.
-1. Aktualizujte hodnotu **PUBLICPOLICYURI** identifikátorem URI pro zásadu. Například `http://contoso.com/B2C_1A_signup_signin_fabrikam`.
-1. Aktualizujte hodnotu atributu **ReferenceId** v **DefaultUserJourney** tak, aby odpovídala ID cesty uživatele, kterou jste vytvořili dříve. Například *SignUpSignInFabrikam*.
-1. Uložte změny a odešlete soubor.
-1. V části **vlastní zásady** vyberte v seznamu novou zásadu.
-1. V rozevíracím seznamu **Vybrat aplikaci** vyberte aplikaci Azure AD B2C, kterou jste vytvořili dříve. Například *testapp1*.
-1. Vyberte **Spustit nyní** . 
-1. Na stránce registrace nebo přihlášení vyberte *Fabrikam* pro přihlášení k druhému tenantovi Azure AD B2C.
+[!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
+
+[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
 
 ::: zone-end
 

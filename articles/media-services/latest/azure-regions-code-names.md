@@ -1,5 +1,5 @@
 ---
-title: Cloudy a oblasti, ve kterých je Azure Media Services V3 k dispozici
+title: Cloudy a oblasti pro Azure Media Services V3
 description: Tento článek pojednává o adresách URL, které se používají pro koncové body a kód pro oblasti.
 services: media-services
 author: IngridAtMicrosoft
@@ -8,14 +8,14 @@ ms.service: media-services
 ms.topic: reference
 ms.date: 10/28/2020
 ms.author: inhenkel
-ms.openlocfilehash: c17eeda91af46c4159f7c4b1747416298f24c703
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 74f30ebb766ea34603c0a30455837c47222967c0
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319631"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954323"
 ---
-# <a name="regional-code-names-and-endpoints"></a>Regionální názvy kódu a koncové body
+# <a name="regional-code-names-and-endpoints"></a>Regionální kódové názvy a koncové body
 
 ### <a name="region-code-name"></a>Název kódu oblasti
 
@@ -81,10 +81,10 @@ Následující koncové body jsou důležité pro informace o připojení k Medi
 | Authentication | `https://login.chinacloudapi.cn/` |
 | Cílová skupina tokenů |  `https://management.core.chinacloudapi.cn/` |
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 * [Oblasti Azure](https://azure.microsoft.com/global-infrastructure/regions/)
-* [Regionální názvy kódu a koncové body](azure-regions-code-names.md)
+* [Regionální kódové názvy a koncové body](azure-regions-code-names.md)
 * [Zeměpisné oblasti Azure](https://azure.microsoft.com/global-infrastructure/geographies/)
 * [Umístění Azure](https://azure.microsoft.com/global-infrastructure/locations/)
 

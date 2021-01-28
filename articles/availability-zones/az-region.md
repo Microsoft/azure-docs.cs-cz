@@ -1,18 +1,19 @@
 ---
 title: Služby Azure, které podporují zóny dostupnosti
 description: Pokud chcete vytvářet vysoce dostupné a odolné aplikace v Azure, Zóny dostupnosti poskytovat fyzicky samostatná umístění, která můžete použít ke spouštění svých prostředků.
-author: cynthn
+author: prsandhu
 ms.service: azure
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/26/2021
-ms.author: cynthn
+ms.author: prsandhu
+ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: 5883dc8b34cd1aa00ba1c5de25a09a017a130c0a
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: e8e62d92afb70ec9d4df40f677de05583ef472b0
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896880"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955779"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>Služby Azure, které podporují zóny dostupnosti
 
@@ -143,7 +144,7 @@ Pro zajištění komplexní provozní kontinuity v Azure Sestavte architekturu a
 | Virtual Machines: Ev4-Series                    |      : large_blue_diamond:  |
 | Virtual Machines: Fsv2-Series                   |      : large_blue_diamond:  |
 | Virtual Machines: řada M-Series                      |      : large_blue_diamond:  |
-| Virtual WAN                                     |      : large_blue_diamond:  |
+| Virtuální síť WAN                                     |      : large_blue_diamond:  |
 
 
 **Bez regionu**

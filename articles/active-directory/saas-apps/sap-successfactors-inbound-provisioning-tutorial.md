@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 01/19/2021
 ms.author: chmutali
-ms.openlocfilehash: ce48d87c6e04e6c349b681e953647feb5e7ddda5
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 7b59e0ae2fbb73f341d5254fd2804d50ad141a19
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570112"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98953797"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning"></a>Kurz: Konfigurace zřizování SAP SuccessFactors pro uživatele služby Active Directory 
 Cílem tohoto kurzu je Ukázat kroky, které potřebujete k tomu, abyste uživatelům zřídili SuccessFactors zaměstnanci v rámci služby Active Directory (AD) a Azure AD s volitelným zpětným zápisem e-mailové adresy na SuccessFactors. 
@@ -186,7 +186,7 @@ Tato část popisuje kroky pro zřizování uživatelských účtů z SuccessFac
 
 Aby bylo možné zřídit místní službu Active Directory, musí být agent zřizování nainstalován na server připojený k doméně, který má síťový přístup k požadované doméně služby Active Directory.
 
-Přeneste stažený instalační program agenta na hostitele serveru a podle kroků uvedených [v části Install agent](../cloud-provisioning/how-to-install.md) dokončete konfiguraci agenta.
+Přeneste stažený instalační program agenta na hostitele serveru a podle kroků uvedených [v části Install agent](../cloud-sync/how-to-install.md) dokončete konfiguraci agenta.
 
 ### <a name="part-3-in-the-provisioning-app-configure-connectivity-to-successfactors-and-active-directory"></a>Část 3: v aplikaci zřizování nakonfigurujte možnosti připojení k SuccessFactors a Active Directory.
 V tomto kroku navážeme připojení k SuccessFactors a službě Active Directory v Azure Portal. 
@@ -209,12 +209,12 @@ V tomto kroku navážeme připojení k SuccessFactors a službě Active Director
         > Toto nastavení se dá přehrát jenom pro vytváření uživatelských účtů, pokud není atribut *parentDistinguishedName* nakonfigurovaný v mapování atributů. Toto nastavení se nepoužívá pro operace vyhledávání a aktualizace uživatelů. Celý podstrom domény spadá do rozsahu operace hledání.
 
    * **E-mail s oznámením –** Zadejte svou e-mailovou adresu a zaškrtněte políčko Odeslat e-mail, pokud dojde k chybě.
-    > [!NOTE]
-    > Služba zřizování Azure AD pošle e-mailové oznámení, pokud úloha zřizování přejde do stavu [karantény](../app-provisioning/application-provisioning-quarantine-status.md) .
+     > [!NOTE]
+     > Služba zřizování Azure AD pošle e-mailové oznámení, pokud úloha zřizování přejde do stavu [karantény](../app-provisioning/application-provisioning-quarantine-status.md) .
 
    * Klikněte na tlačítko **Testovat připojení** . Pokud je test připojení úspěšný, klikněte na tlačítko **Uložit** v horní části. Pokud se to nepovede, poklikejte na to, jestli jsou přihlašovací údaje SuccessFactors a přihlašovací údaje služby AD nakonfigurované na instalaci agenta platné.
-    >[!div class="mx-imgBorder"]
-    >![Azure Portal](./media/sap-successfactors-inbound-provisioning/sf2ad-provisioning-creds.png)
+     >[!div class="mx-imgBorder"]
+     >![Azure Portal](./media/sap-successfactors-inbound-provisioning/sf2ad-provisioning-creds.png)
 
    * Po úspěšném uložení přihlašovacích údajů se v oddílu **mapování** zobrazí výchozí mapování **synchronizovat uživatele SuccessFactors do místní služby Active Directory** .
 
@@ -250,9 +250,8 @@ V této části nakonfigurujete, jak budou data uživatelů z SuccessFactors do 
 
 1. V části **mapování atributů** můžete definovat, jak se jednotlivé atributy SuccessFactors mapují na atributy služby Active Directory.
 
-  >[!NOTE]
-  >Úplný seznam atributu SuccessFactors podporovaného aplikací najdete v [referenčních informacích k atributům SuccessFactors](../app-provisioning/sap-successfactors-attribute-reference.md) .
-
+     >[!NOTE]
+     >Úplný seznam atributu SuccessFactors podporovaného aplikací najdete v [referenčních informacích k atributům SuccessFactors](../app-provisioning/sap-successfactors-attribute-reference.md) .
 
 1. Kliknutím na existující mapování atributů ho aktualizujte nebo kliknutím na **Přidat nové mapování** v dolní části obrazovky přidejte nová mapování. Jednotlivé mapování atributů podporují tyto vlastnosti:
 

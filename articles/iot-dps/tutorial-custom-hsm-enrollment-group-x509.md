@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 64064a584681d84eb6ba023c4777c0fdc4e6ec3d
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 566563dde26d2dd36f4358bc8c6dcdcfb5ba8465
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791926"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954850"
 ---
 # <a name="tutorial-provision-multiple-x509-devices-using-enrollment-groups"></a>Kurz: zřízení více zařízení X. 509 pomocí skupin registrace
 
@@ -352,6 +352,9 @@ Postup aktualizace vlastního kódu stub pro vlastní kód HSM pro tento kurz:
 Na zařízeních s jiným systémem než Windows můžete řetěz certifikátů předat z kódu jako úložiště certifikátů.
 
 V zařízeních se systémem Windows je nutné přidat podpisové certifikáty (kořenové a zprostředkující) do [úložiště certifikátů](/windows/win32/secauthn/certificate-stores)systému Windows. V opačném případě nebudou podpisové certifikáty přeneseny do DPS pomocí zabezpečeného kanálu s protokolem TLS (Transport Layer Security).
+
+> [!TIP]
+> Místo zabezpečeného kanálu (Schannel) se sadou C SDK je taky možné použít OpenSSL. Další informace o použití OpenSSL najdete v tématu [použití OpenSSL v sadě SDK](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#using-openssl-in-the-sdk).
 
 Postup přidání podpisových certifikátů do úložiště certifikátů v zařízeních se systémem Windows:
 

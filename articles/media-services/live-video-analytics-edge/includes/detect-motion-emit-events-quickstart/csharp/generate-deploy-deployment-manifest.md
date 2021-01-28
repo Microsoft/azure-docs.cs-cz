@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 055448eacf1cc12c6d021c6571a0478cb35442ba
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 32027695f914257ef245d920f00fc1d1976fa791
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89566893"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98956251"
 ---
 Manifest nasazení definuje, které moduly jsou nasazeny do hraničního zařízení. Definuje také nastavení konfigurace pro tyto moduly. 
 
@@ -14,12 +14,19 @@ Pomocí těchto kroků vygenerujte manifest ze souboru šablony a potom ho nasa�
 1. Vedle podokna **Azure IoT Hub** vyberte ikonu **Další akce** a nastavte připojovací řetězec IoT Hub. Můžete zkopírovat řetězec z *Src/Cloud-to-Device-Console-App/appsettings.jsv* souboru. 
 
     ![Nastavení připojovacího řetězce IOT](../../../media/quickstarts/set-iotconnection-string.png)
+
+> [!NOTE]
+> Můžete být vyzváni k zadání předdefinovaných informací koncového bodu pro IoT Hub. Chcete-li získat tyto informace, v Azure Portal přejděte do IoT Hub a vyhledejte v levém navigačním podokně možnost **Předdefinované koncové body** . Klikněte na něj a vyhledejte **koncový bod kompatibilní** s centrem událostí v části **koncový bod kompatibilní** s centrem událostí. Zkopírujte a použijte text v poli. Koncový bod bude vypadat přibližně takto:  
+    ```
+    Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+    ```
+
 1. Klikněte pravým tlačítkem na **Src/Edge/deployment.template.jsna** a vyberte **generovat manifest nasazení IoT Edge**.
 
     ![Vygenerovat manifest nasazení IoT Edge](../../../media/quickstarts/generate-iot-edge-deployment-manifest.png)
 
     Tato akce by měla vytvořit soubor manifestu s názvem *deployment.amd64.js* ve složce *Src/Edge/config* .
-1. Klikněte pravým tlačítkem na **Src/Edge/config/deployment.amd64.jsna**, vyberte **vytvořit nasazení pro jedno zařízení**a pak vyberte název hraničního zařízení.
+1. Klikněte pravým tlačítkem na **Src/Edge/config/deployment.amd64.jsna**, vyberte **vytvořit nasazení pro jedno zařízení** a pak vyberte název hraničního zařízení.
 
     ![Vytvoření nasazení pro jedno zařízení](../../../media/quickstarts/create-deployment-single-device.png)
 
@@ -27,7 +34,7 @@ Pomocí těchto kroků vygenerujte manifest ze souboru šablony a potom ho nasa�
 1. Po přibližně 30 sekundách se v levém dolním rohu okna aktualizují Azure IoT Hub. Hraniční zařízení nyní zobrazuje následující nasazené moduly:
 
     * Live video Analytics na IoT Edge (název modulu `lvaEdge` )
-    * Simulátor protokolu RTSP (Real-time streaming Protocol) (název modulu `rtspsim` )
+    * Simulátor protokolu RTSP (Real-Time streaming Protocol) (název modulu `rtspsim` )
 
 Modul simulátoru RTSP simuluje živý Stream videa pomocí videosouboru, který jste zkopírovali do hraničního zařízení, když jste spustili [skript pro nastavení prostředků Live video Analytics](https://github.com/Azure/live-video-analytics/tree/master/edge/setup). 
 

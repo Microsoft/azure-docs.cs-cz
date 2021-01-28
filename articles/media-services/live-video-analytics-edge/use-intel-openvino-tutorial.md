@@ -4,12 +4,12 @@ description: V tomto kurzu použijete server modelů AI, který poskytuje Intel,
 ms.topic: tutorial
 ms.date: 09/08/2020
 titleSuffix: Azure
-ms.openlocfilehash: 4ef0b919384839108c003488b0697054ebfa14a0
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: db018c5c8d8f3990fd465f4d586ef4dc70980542
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98629160"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955712"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>Kurz: Analýza živého videa pomocí OpenVINO™ modelového serveru – rozšíření AI od Intel 
 
@@ -124,6 +124,12 @@ Jako součást požadavků jste stáhli vzorový kód do složky. Pomocí těcht
     V opačném případě v levém dolním rohu poblíž podokna **Azure IoT Hub** vyberte ikonu **Další akce** a pak vyberte **nastavit IoT Hub připojovací řetězec**. Můžete zkopírovat řetězec z *appsettings.jsv* souboru. Nebo pokud chcete mít jistotu, že jste nakonfigurovali správné centrum IoT v rámci Visual Studio Code, použijte [příkaz vybrat IoT Hub](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Select-IoT-Hub).
     
     ![Nastavit připojovací řetězec IoT Hub](./media/quickstarts/set-iotconnection-string.png)
+
+> [!NOTE]
+> Můžete být vyzváni k zadání předdefinovaných informací koncového bodu pro IoT Hub. Chcete-li získat tyto informace, v Azure Portal přejděte do IoT Hub a vyhledejte v levém navigačním podokně možnost **Předdefinované koncové body** . Klikněte na něj a vyhledejte **koncový bod kompatibilní** s centrem událostí v části **koncový bod kompatibilní** s centrem událostí. Zkopírujte a použijte text v poli. Koncový bod bude vypadat přibližně takto:  
+    ```
+    Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+    ```
 
 1. Klikněte pravým tlačítkem na *Src/Edge/config/deployment.openvino.amd64.jsna* a vyberte **vytvořit nasazení pro jedno zařízení**. 
 

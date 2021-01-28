@@ -1,5 +1,5 @@
 ---
-title: Spravované identity a důvěryhodné úložiště pomocí Media Services
+title: Spravované identity a důvěryhodné úložiště
 description: Media Services lze použít se spravovanými identitami k povolení důvěryhodného úložiště.
 services: media-services
 author: IngridAtMicrosoft
@@ -8,12 +8,12 @@ ms.service: media-services
 ms.topic: conceptual
 ms.date: 11/04/2020
 ms.author: inhenkel
-ms.openlocfilehash: d0811e8f9183ee334d413bcad69f2c7b32023be3
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 291508a6beaa687b3a10f55df4591ce601ab51a0
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499352"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98956170"
 ---
 # <a name="managed-identities-and-trusted-storage-with-media-services"></a>Spravované identity a důvěryhodné úložiště pomocí Media Services
 

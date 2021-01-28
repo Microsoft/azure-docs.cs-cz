@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 6aeded077c20e59b3f9b3863a9956596382d3a82
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 1b5dd2fb4ef8cb3f6fd169477d9ee82e912c146e
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97532040"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98956256"
 ---
 ### <a name="examine-and-edit-the-sample-files"></a>Kontrola a úprava ukázkových souborů
 
@@ -53,6 +53,12 @@ Jako součást požadavků jste stáhli vzorový kód do složky. Pomocí těcht
     
     ![Nastavit připojovací řetězec IoT Hub](../../../media/quickstarts/set-iotconnection-string.png)
 
+> [!NOTE]
+> Můžete být vyzváni k zadání předdefinovaných informací koncového bodu pro IoT Hub. Chcete-li získat tyto informace, v Azure Portal přejděte do IoT Hub a vyhledejte v levém navigačním podokně možnost **Předdefinované koncové body** . Klikněte na něj a vyhledejte **koncový bod kompatibilní** s centrem událostí v části **koncový bod kompatibilní** s centrem událostí. Zkopírujte a použijte text v poli. Koncový bod bude vypadat přibližně takto:  
+    ```
+    Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+    ```
+
 1. Klikněte pravým tlačítkem na *Src/Edge/config/deployment.yolov3.amd64.jsna* a vyberte **vytvořit nasazení pro jedno zařízení**. 
 
     ![Vytvoření nasazení pro jedno zařízení](../../../media/quickstarts/create-deployment-single-device.png)
@@ -62,6 +68,15 @@ Jako součást požadavků jste stáhli vzorový kód do složky. Pomocí těcht
 
     * Modul Live video Analytics s názvem **lvaEdge**
     * Modul **rtspsim** , který simuluje Server RTSP a funguje jako zdroj živého kanálu videa
+        > [!NOTE]
+        > Výše uvedené kroky předpokládají, že používáte virtuální počítač vytvořený instalačním skriptem. Pokud místo toho používáte vlastní hraniční zařízení, přečtěte si hraniční zařízení a spusťte následující příkazy s **právy správce**, abyste mohli načíst a uložit ukázkový videosoubor, který se používá pro tento rychlý Start:  
+        
+        ```
+        mkdir /home/lvaadmin/samples
+        mkdir /home/lvaadmin/samples/input    
+        curl https://lvamedia.blob.core.windows.net/public/camera-300s.mkv > /home/lvaadmin/samples/input/camera-300s.mkv  
+        chown -R lvaadmin /home/lvaadmin/samples/  
+        ```
     * Modul **yolov3** , což je model detekce objektu yolov3, který aplikuje počítač na image a vrací více tříd typů objektů.
  
       ![Moduly, které jsou nasazené na hraničním zařízení](../../../media/quickstarts/yolov3.png)

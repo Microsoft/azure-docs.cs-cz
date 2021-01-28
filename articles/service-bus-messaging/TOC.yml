@@ -15,7 +15,7 @@
       items:
         - name: Vytvoření fronty služby Service Bus
           items:
-            - name: Azure Portal
+            - name: portál Azure
               href: service-bus-quickstart-portal.md
             - name: Azure PowerShell
               href: service-bus-quickstart-powershell.md
@@ -210,14 +210,20 @@
               href: service-bus-auto-forwarding.md
             - name: Zpracování transakcí
               href: service-bus-transactions.md
-        - name: Kompletní trasování a diagnostika
-          href: service-bus-end-to-end-tracing.md
         - name: Sestavení vícevrstvé aplikace Service Bus
           href: service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
     - name: Migrace
       items:
         - name: Migrace z ActiveMQ do služby Azure Service Bus
           href: migrate-jms-activemq-to-servicebus.md
+    - name: Monitor
+      items:
+        - name: Kompletní trasování a diagnostika
+          href: service-bus-end-to-end-tracing.md
+        - name: Diagnostické protokoly
+          href: service-bus-diagnostic-logs.md
+        - name: Azure Monitor metriky
+          href: service-bus-metrics-azure-monitor.md
     - name: Integrace
       items:
         - name: Integrace s RabbitMQ
@@ -228,12 +234,8 @@
           href: automate-update-messaging-units.md
         - name: Použití Azure PowerShellu ke zřizování entit
           href: service-bus-manage-with-ps.md
-        - name: Monitorování služby Service Bus s využitím Azure Monitoru
-          href: service-bus-metrics-azure-monitor.md
         - name: Knihovny pro správu služby Service Bus
           href: service-bus-management-libraries.md
-        - name: Protokoly prostředků
-          href: service-bus-diagnostic-logs.md
         - name: Pozastavení a opětovná aktivace entit zasílání zpráv
           href: entity-suspend.md
         - name: Použití Service Bus Exploreru k provádění operací s daty ve službě Service Bus

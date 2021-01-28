@@ -3,12 +3,12 @@ title: Kurz pro nahrávání a přehrávání videa založeného na událostech 
 description: V tomto kurzu se naučíte používat Azure Live video Analytics na Azure IoT Edge k nahrání záznamu videa založeného na událostech do cloudu a jeho přehrání z cloudu.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: cfb4648d991565470133d603194c07b797f89311
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: fb8d8c8499029777ae5765f53ff51db92b3bd587
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060431"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954459"
 ---
 # <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Kurz: nahrávání videa založeného na událostech do cloudu a přehrávání z cloudu
 
@@ -80,7 +80,7 @@ Jak znázorňuje diagram, použijete v mediálním grafu [zdrojový uzel RTSP](m
 * První cesta je uzel rozšíření HTTP. Uzel navzorkuje snímky videa na hodnotu nastavenou pomocí `samplingOptions` pole a pak přenáší snímky jako obrázky do modulu AI YOLOv3, což je objektový detektor. Uzel obdrží výsledky, což jsou objekty (vozidla v provozu) zjištěné modelem. Uzel rozšíření HTTP pak tyto výsledky publikuje prostřednictvím uzlu jímky zpráv IoT Hub do centra IoT Edge.
 * Modul objectCounter je nastavený tak, aby přijímal zprávy z centra IoT Edge, které zahrnuje výsledky detekce objektu (vozidla v provozu). Modul tyto zprávy zkontroluje a vyhledá objekty určitého typu, které byly nakonfigurovány prostřednictvím nastavení. Když takový objekt najde, tento modul pošle zprávu do centra IoT Edge. Zprávy o nalezených objektech se pak přesměrují do zdrojového uzlu IoT Hub v mediálním grafu. Po přijetí takové zprávy IoT Hub zdrojový uzel v mediálním grafu aktivuje uzel [procesoru brány signálu](media-graph-concept.md#signal-gate-processor) . Uzel procesoru brány signálu se pak otevře po nakonfigurované době. Video prochází bránou do uzlu jímka assetu za tuto dobu. Tato část živého streamu se pak prostřednictvím uzlu [jímka assetu](media-graph-concept.md#asset-sink) zaznamená do [assetu](terminology.md#asset) v účtu Azure Media Services.
 
-## <a name="set-up-your-development-environment"></a>Nastavení vývojového prostředí
+## <a name="set-up-your-development-environment"></a>Nastavíte vývojové prostředí
 
 Než začnete, ověřte, že jste dokončili třetí odrážku v části [požadavky](#prerequisites). Po dokončení skriptu pro nastavení prostředků vyberte složené závorky, které budou vystavovat strukturu složek. Zobrazí se několik souborů vytvořených v adresáři ~/clouddrive/lva-Sample.
 
@@ -170,6 +170,12 @@ Tento krok vytvoří manifest nasazení IoT Edge v umístění src/Edge/config/d
 > :::image type="content" source="./media/quickstarts/create-deployment-single-device.png" alt-text="Vytvoření nasazení pro jedno zařízení":::
 
 Pokud se jedná o váš první kurz se službou Live video Analytics na IoT Edge, Visual Studio Code vás vyzve k zadání připojovacího řetězce IoT Hub. Můžete ho zkopírovat z appsettings.jsv souboru.
+
+> [!NOTE]
+> Můžete být vyzváni k zadání předdefinovaných informací koncového bodu pro IoT Hub. Chcete-li získat tyto informace, v Azure Portal přejděte do IoT Hub a vyhledejte v levém navigačním podokně možnost **Předdefinované koncové body** . Klikněte na něj a vyhledejte **koncový bod kompatibilní** s centrem událostí v části **koncový bod kompatibilní** s centrem událostí. Zkopírujte a použijte text v poli. Koncový bod bude vypadat přibližně takto:  
+    ```
+    Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+    ```
 
 Dále Visual Studio Code požádá o výběr zařízení IoT Hub. Vyberte zařízení IoT Edge, které by mělo být lva-Sample-Device.
 

@@ -11,12 +11,12 @@ ms.author: mnark
 author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 03/05/2020
-ms.openlocfilehash: 17b2d717ac6f244cb3ddddfdbc2f29581aa1f59f
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: d8b1c2a5384e479e39d169d368554f16c300a33e
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95527305"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954542"
 ---
 # <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>Nasazení modelu pro Azure Machine Learning výpočetních instancí
 
@@ -30,7 +30,7 @@ Naučte se používat Azure Machine Learning k nasazení modelu jako webové slu
 > [!TIP]
 > Nasazení modelu z Jupyter Notebook na výpočetní instanci, do webové služby na stejném virtuálním počítači, je _místní nasazení_. V tomto případě je místní počítač výpočetní instancí. Další informace o nasazeních najdete v tématu [nasazení modelů pomocí Azure Machine Learning](how-to-deploy-and-where.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Azure Machine Learning pracovní prostor se spuštěnou výpočetní instancí. Další informace najdete v tématu [nastavení prostředí a pracovního prostoru](tutorial-1st-experiment-sdk-setup.md).
 
@@ -38,13 +38,14 @@ Naučte se používat Azure Machine Learning k nasazení modelu jako webové slu
 
 Příklad poznámkového bloku, který ukazuje místní nasazení, je součástí výpočetní instance. Pomocí následujících kroků načtete Poznámkový blok a nasadíte model jako webovou službu na virtuálním počítači:
 
-1. V [Azure Machine Learning Studiu](https://ml.azure.com)vyberte své Azure Machine Learning výpočetní instance.
+1. V [Azure Machine Learning Studiu](https://ml.azure.com)vyberte poznámkové bloky a v části ukázkové poznámkové bloky vyberte How-to-use-AzureML/Deployment/Deploy-to-Local/Register-model-Deploy-Local. ipynb. Naklonujte tento poznámkový blok do složky uživatele.
 
-1. Otevřete `samples-*` podadresář a pak otevřete `how-to-use-azureml/deployment/deploy-to-local/register-model-deploy-local.ipynb` . Po otevření spusťte Poznámkový blok.
+1. Vyhledejte Poznámkový blok Klonovaný v kroku 1, vyberte nebo vytvořte výpočetní instanci pro spuštění poznámkového bloku.
 
     ![Snímek obrazovky běžící místní služby v poznámkovém bloku](./media/how-to-deploy-local-container-notebook-vm/deploy-local-service.png)
 
-1. Poznámkový blok zobrazuje adresu URL a port, na kterém je služba spuštěná. Například, `https://localhost:6789`. Můžete také spustit buňku obsahující `print('Local service port: {}'.format(local_service.port))` k zobrazení portu.
+
+1. Poznámkový blok zobrazuje adresu URL a port, na kterém je služba spuštěná. Například `https://localhost:6789`. Můžete také spustit buňku obsahující `print('Local service port: {}'.format(local_service.port))` k zobrazení portu.
 
     ![Snímek obrazovky běžícího portu místní služby](./media/how-to-deploy-local-container-notebook-vm/deploy-local-service-port.png)
 

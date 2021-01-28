@@ -1,11 +1,25 @@
 ---
-title: Media Services metriky a diagnostické protokoly s Azure Monitor: Popis Azure Media Services: Naučte se monitorovat Azure Media Services metrik a diagnostické protokoly prostřednictvím Azure Monitor.
-služby: Media-Services documentationcenter: ' ' Author: IngridAtMicrosoft Manager: femila Editor: ' '
-
-MS. Service: Media-Services MS. rebavování: Media ms.tgt_pltfrm: na MS. devlang: na MS. téma: konceptuální MS. Date: 11/02/2020 MS. Author: inhenkel
-
+title: Metriky a diagnostické protokoly s Azure Monitor
+description: Naučte se monitorovat metriky Azure Media Services a diagnostické protokoly přes Azure Monitor.
+services: media-services
+documentationcenter: ''
+author: IngridAtMicrosoft
+manager: femila
+editor: ''
+ms.service: media-services
+ms.workload: media
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: conceptual
+ms.date: 11/02/2020
+ms.author: inhenkel
+ms.openlocfilehash: 35b0d9c2937024341be6183ac1438b7c4500d6ef
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954982"
 ---
-
 # <a name="monitor-media-services-metrics-and-diagnostic-logs-with-azure-monitor"></a>Monitorování Media Services metrik a diagnostických protokolů pomocí Azure Monitor
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
@@ -29,7 +43,7 @@ Media Services podporuje monitorování metrik pro následující prostředky:
 
 Můžete monitorovat následující metriky účtu.
 
-|Název metriky|Zobrazované jméno|Popis|
+|Název metriky|Zobrazované jméno|Description|
 |---|---|---|
 |AssetCount|Počet assetů|Prostředky ve vašem účtu.|
 |AssetQuota|Kvóta prostředků|Kvóta prostředků ve vašem účtu.|
@@ -47,7 +61,7 @@ Měli byste taky zkontrolovat [kvóty a omezení účtu](limits-quotas-constrain
 
 Jsou podporovány následující Media Services metriky [koncových bodů streamování](/rest/api/media/streamingendpoints) :
 
-|Název metriky|Zobrazované jméno|Popis|
+|Název metriky|Zobrazované jméno|Description|
 |---|---|---|
 |Žádosti|Žádosti|Poskytuje celkový počet požadavků HTTP poskytovaných koncovým bodem streamování.|
 |Výchozí přenos dat|Výchozí přenos dat|Celkový počet odchozích bajtů za minutu na koncový bod streamování.|
@@ -83,7 +97,7 @@ Media Services podporuje následující diagnostické protokoly:
 
 ### <a name="key-delivery"></a>Doručení klíče
 
-|Název|Popis|
+|Název|Description|
 |---|---|
 |Požadavek služby doručení klíčů|Protokoly, které zobrazují informace o požadavku služby doručování klíčů Další informace najdete v tématu [schémata](media-services-diagnostic-logs-schema.md).|
 

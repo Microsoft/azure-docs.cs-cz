@@ -6,19 +6,19 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 01/27/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 09dddad24794491b53a11f7b0e4347f43f11598b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: a866c21e067293481a52dd563873892de8b5444c
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92440480"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955271"
 ---
 # <a name="scenario-any-to-any"></a>Scénář: Any-to-Any
 
-Při práci s směrováním virtuálního rozbočovače WAN je k dispozici několik scénářů, které jsou v pořádku. V jakémkoli scénáři je možné, že každý paprsek má přístup k jinému paprsku. Pokud existuje víc rozbočovačů, je ve výchozím nastavení Standard Virtual WAN povolené směrování centra (označované také jako u služby Inter-hub). Další informace o směrování virtuálních rozbočovačů najdete v tématu [o směrování virtuálního rozbočovače](about-virtual-hub-routing.md).
+Při práci s směrováním virtuálního rozbočovače WAN je k dispozici několik scénářů, které jsou v pořádku. V jakémkoli scénáři je možné, že každý paprsek má přístup k jinému paprsku. Pokud existuje víc rozbočovačů, je ve výchozím nastavení Standard Virtual WAN povolené směrování centra (označované také jako u služby Inter-hub). Tuto konfiguraci můžete vytvořit pomocí různých metod, jako je Azure Portal nebo [Šablona Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/201-virtual-wan-with-all-gateways/). Další informace o směrování virtuálních rozbočovačů najdete v tématu [o směrování virtuálního rozbočovače](about-virtual-hub-routing.md). 
 
 ## <a name="design"></a><a name="design"></a>Návrh
 
@@ -44,7 +44,7 @@ Další informace o směrování virtuálních rozbočovačů najdete v tématu 
 
 ## <a name="architecture"></a><a name="architecture"></a>Architektura
 
-Na **obrázku 1**se může vzájemně navázat všechny virtuální sítě a větve (VPN, EXPRESSROUTE, P2S). Ve virtuálním rozbočovači fungují připojení následujícím způsobem:
+Na **obrázku 1** se může vzájemně navázat všechny virtuální sítě a větve (VPN, EXPRESSROUTE, P2S). Ve virtuálním rozbočovači fungují připojení následujícím způsobem:
 
 * Připojení VPN připojuje síť VPN k bráně VPN.
 * Připojení k virtuální síti připojuje virtuální síť k virtuálnímu rozbočovači. Směrovač virtuálního rozbočovače poskytuje funkci přenosu mezi virtuální sítě.

@@ -1,9 +1,25 @@
 ---
-title: Azure Media Services šifrování DRM a služba doručování licencí: Azure Media Services popis: Naučte se používat dynamické šifrování DRM a službu doručování licencí k doručování datových proudů šifrovaných pomocí licencí Microsoft PlayReady, Google Widevine nebo Apple FairPlay.
-služby: Media-Services documentationcenter: ' ' Author: IngridAtMicrosoft Manager: femila Editor: ' '
-
-MS. Service: Media-Services MS. rebavování: Media ms.tgt_pltfrm: na MS. devlang: na MS. téma: tutorial MS. Date: 08/31/2020 MS. Author: inhenkel MS. Custom: seodec18
-
+title: Media Services šifrování DRM a doručování licencí
+description: Naučte se používat dynamické šifrování DRM a službu doručování licencí k doručování streamů šifrovaných pomocí licencí Microsoft PlayReady, Google Widevine nebo Apple FairPlay.
+services: media-services
+documentationcenter: ''
+author: IngridAtMicrosoft
+manager: femila
+editor: ''
+ms.service: media-services
+ms.workload: media
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: tutorial
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.custom: seodec18
+ms.openlocfilehash: a4f5810f76af7116421bac3953b4eb65370055e3
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955169"
 ---
 # <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>Kurz: použití dynamického šifrování DRM a služby doručování licencí
 

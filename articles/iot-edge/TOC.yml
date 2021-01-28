@@ -110,7 +110,7 @@
         - name: Certifikáty IoT Edge
           href: iot-edge-certs.md
         - name: Důvěrné výpočetní operace
-          href: deploy-trusted-applications.md
+          href: deploy-confidential-applications.md
     - name: Podpora platformy
       href: support.md
     - name: Kontrolní seznam pro produkční nasazení

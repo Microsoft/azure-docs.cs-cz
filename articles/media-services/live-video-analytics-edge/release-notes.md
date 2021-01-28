@@ -3,12 +3,12 @@ title: Live video Analytics na IoT Edge – poznámky k verzi – Azure
 description: Toto téma obsahuje poznámky k verzi Live video Analytics o IoT Edge vydáních, vylepšeních, opravách chyb a známých problémech.
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 328fe97c4e03f039a1224d13ce6712ccff06b3b7
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: f130b93b8d799c371a640f2b29c22c0d77834cba
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98629772"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954391"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>Poznámky k verzi pro Live video Analytics na IoT Edge
 
@@ -35,7 +35,7 @@ mcr.microsoft.com/media/live-video-analytics:2.0.1
 > V rychlých startech a kurzech manifesty nasazení používají značku 2 (živé video-Analytics: 2). Takže jednoduše znovu nasadíte takové manifesty, které by měly aktualizovat modul na hraničních > zařízeních.
 ### <a name="bug-fixes"></a>Opravy chyb 
 
-* Pole `ActivationSignalOffset` `MinimumActivationTime` a `MaximumActivationTime` v procesorech brány signálu byly nesprávně nastaveny jako požadované vlastnosti. Nyní jsou **volitelné** vlastnosti.
+* Pole `ActivationSignalOffset` , `MinimumActivationTime` a `MaximumActivationTime` v procesorech brány signálu byly nesprávně nastavena jako požadované vlastnosti. Nyní jsou **volitelné** vlastnosti.
 * Opravili jsme chybu použití, která způsobí, že při nasazení v určitých oblastech dojde k chybě v modulu analýzy živých videí v IoT Edge.
 
 <hr width=100%>
@@ -48,7 +48,7 @@ Tato verze je ve verzi Public Preview k disukázce pro živé video analýzy v I
 ```
 ### <a name="module-updates"></a>Aktualizace modulů
 * Přidání podpory pro používání více než jednoho procesoru rozšíření HTTP a procesoru rozšíření gRPC na topologii grafu.
-* Byla přidána podpora správy místa na disku pro uzly jímky.
+* Byla přidána podpora [správy místa na disku pro uzly jímky](upgrading-lva-module.md#disk-space-management-with-sink-nodes).
 * `MediaGraphGrpcExtension` uzel teď podporuje vlastnost [extensionConfiguration](grpc-extension-protocol.md) pro použití více modelů AI v rámci jednoho serveru gRPC.
 * Přidali jsme podporu shromažďování metriky modulu Live video Analytics ve [formátu Prometheus](https://prometheus.io/docs/practices/naming/). Přečtěte si další informace o tom, jak [shromažďovat metriky a zobrazovat v Azure monitor.](monitoring-logging.md#azure-monitor-collection-via-telegraf) 
 * Byla přidána možnost filtrovat výběr výstupu. K libovolnému uzlu grafu můžete předat jenom **zvuk** nebo **jenom video** nebo **zvuk a video** `outputSelectors` . 
@@ -56,7 +56,7 @@ Tato verze je ve verzi Public Preview k disukázce pro živé video analýzy v I
     * Správa frekvence snímků je nyní k dispozici v rámci samotného uzlu procesoru rozšíření grafu.
 
 ### <a name="visual-studio-code-extension"></a>Rozšíření editoru Visual Studio Code
-* Vydávali jsme [Live video Analytics na IoT Edge](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.live-video-analytics-edge) – Visual Studio Code rozšíření, které vám pomůžou při správě LVAch mediálních grafů. Toto rozšíření spolupracuje s **modulem LVA 2,0** a nabízí úpravy a správu mediálních grafů s velmi elegantním a snadno použitelným grafickým rozhraním.
+* Vydávali jsme [Live video Analytics na IoT Edge](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.live-video-analytics-edge) – Visual Studio Code rozšíření, které vám pomůžou při správě LVAch mediálních grafů. Toto rozšíření spolupracuje s **modulem LVA 2,0** a nabízí úpravy a správu mediálních grafů s elegantním a snadno použitelným grafickým rozhraním.
 ## <a name="september-22-2020"></a>22. září 2020
 
 Tato značka vydání je určena pro 2020 aktualizace modulu v září:
@@ -76,7 +76,7 @@ mcr.microsoft.com/media/live-video-analytics:1.0.4
 ### <a name="documentation-updates"></a>Aktualizace dokumentace
 
 * [Pokyny](deploy-azure-stack-edge-how-to.md) jsou k dispozici pro používání služby Live video Analytics na IoT Edge v zařízeních Azure Stack Edge.
-* Nový kurz pro vývoj různých modelů počítačového vidění pomocí [Custom Vision služby](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/) a jeho použití k [analýze živého videa](custom-vision-tutorial.md) v reálném čase.
+* Nový kurz týkající se vývoje počítačových modelů pro konkrétní scénáře pomocí [Custom Vision služby](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/) a jeho použití k [analýze živého videa](custom-vision-tutorial.md) v reálném čase.
 
 <hr width=100%>
 
@@ -93,7 +93,7 @@ mcr.microsoft.com/media/live-video-analytics:1.0.3
 
 ### <a name="module-updates"></a>Aktualizace modulů
 
-* Nyní můžete dosáhnout vysokého výkonu přenosu dat mezi živým analýzou videa na IoT Edge a vlastním rozšířením pomocí rozhraní gRPC Framework. Začněte [tím](analyze-live-video-use-your-grpc-model-quickstart.md) , že se zobrazí.
+* Nyní můžete dosáhnout vysokého výkonu přenosu dat mezi živým analýzou videa na IoT Edge a vlastním rozšířením pomocí rozhraní gRPC Framework. Začněte [tím, že](analyze-live-video-use-your-grpc-model-quickstart.md) si začnete.
 * Širší regionální nasazení živé analýzy videí a aktualizace jenom cloudové služby.  
 * Live video Analytics je teď k dispozici v 25 dalších oblastech po celém světě. Tady je [seznam](https://azure.microsoft.com/global-infrastructure/services/?products=media-services) všech oblastí, které jsou k dispozici.  
 * [Nastavení](https://aka.ms/lva-edge/setup-resources-for-samples) pro rychlé spuštění se aktualizovalo i v případě podpory nových oblastí.
@@ -101,7 +101,7 @@ mcr.microsoft.com/media/live-video-analytics:1.0.3
 
 ### <a name="bug-fixes"></a>Opravy chyb 
 
-* Odebrání použití zastaralého rozšíření Azure ve skriptu pro nastavení
+* Odebrání použití zastaralého rozšíření Azure ve skriptu pro instalaci
 
 <hr width=100%>
 
@@ -118,7 +118,7 @@ mcr.microsoft.com/media/live-video-analytics:1.0.2
 
 ### <a name="module-updates"></a>Aktualizace modulů
 
-* Nyní můžete vytvářet topologie grafů, které mají uzel jímky assetu a také uzel jímky souborů podřízeného uzlu procesoru brány signálu. Příklad najdete v [tomto](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/evr-motion-assets-files) příkladu.
+* Nyní můžete vytvářet topologie grafů, které mají uzel jímky assetů a uzel jímky souborů podřízeného uzlu procesoru pro řízení signálů. Příklad najdete v [topologii](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/evr-motion-assets-files) .
 
 ### <a name="bug-fixes"></a>Opravy chyb
 

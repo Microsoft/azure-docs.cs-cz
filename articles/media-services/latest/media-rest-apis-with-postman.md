@@ -1,5 +1,5 @@
 ---
-title: Konfigurace metody post pro Azure Media Services V3 REST API volání
+title: Nakonfigurovat metodu post pro Azure Media Services V3 REST API
 description: V tomto článku se dozvíte, jak nakonfigurovat metodu post, aby ji bylo možné použít k volání rozhraní REST API pro Azure Media Services (AMS).
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: aa10cb207011051c30866a3a3ed693e7113b5882
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b0a521ddeee6d93ce809e5e6e85eefa1f01a3f12
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297700"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98953967"
 ---
 # <a name="configure-postman-for-media-services-v3-rest-api-calls"></a>Konfigurace metody post pro Media Services V3 REST API volání
 

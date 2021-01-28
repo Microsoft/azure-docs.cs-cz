@@ -1,5 +1,5 @@
 ---
-title: Konfigurace offline PlayReady streamování s Azure Media Services V3
+title: Konfigurace offline PlayReady streamování
 description: V tomto článku se dozvíte, jak nakonfigurovat účet Azure Media Services V3 pro streamování PlayReady pro Windows 10 v režimu offline.
 services: media-services
 keywords: POMLČKa, DRM, režim offline, Widevine, ExoPlayer, Android
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 19c930915de20d7f3a8938570e074458b32a8efb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea3d895970c6a18286d719471a693f774efaa387
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90975680"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955222"
 ---
 # <a name="offline-playready-streaming-for-windows-10-with-media-services-v3"></a>Online streamování PlayReady pro Windows 10 s Media Services V3
 
@@ -38,7 +38,7 @@ Azure Media Services podporuje stahování a přehrávání offline s ochranou D
 
 Tato část poskytuje některé pozadí při přehrávání offline režimu, zejména proč:
 
-* V některých zemích a oblastech je dostupnost Internetu a/nebo šířka pásma stále omezená.Uživatelé si můžou nejdřív stáhnout, aby mohli sledovat obsah s dostatečně vysokým rozlišením, aby se mohlo zobrazit uspokojivý zážitek. V takovém případě častěji problém není síťová dostupnost, ale je omezená šířka pásma sítě. Poskytovatelé OTT/OVP žádají o podporu offline režimu.
+* V některých zemích a oblastech je dostupnost Internetu a/nebo šířka pásma stále omezená. Uživatelé si můžou nejdřív stáhnout, aby mohli sledovat obsah s dostatečně vysokým rozlišením, aby se mohlo zobrazit uspokojivý zážitek. V takovém případě častěji problém není síťová dostupnost, ale je omezená šířka pásma sítě. Poskytovatelé OTT/OVP žádají o podporu offline režimu.
 * Jak jsme zavřeli na konferenci Netflix 2016 Q3 akcionář, stažení obsahu je funkce, kterou požadujeme, a my na ni jsme na ni otevřeli Reed Hastings, Netflix pro generálního ředitele.
 * Někteří poskytovatelé obsahu můžou zakázat doručování licencí DRM mimo hranici země nebo oblasti. Pokud uživatel potřebuje cestovat do zahraničí a pořád chce sledovat obsah, je potřeba stáhnout offline.
  

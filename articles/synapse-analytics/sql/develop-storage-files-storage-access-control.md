@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: e693bd15e5255fda135a7a1dc416dd67f24f7f25
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 9e3fe0f8c14fdcfa9b3e97a02331d777abca2600
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120406"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954255"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Řízení přístupu k účtu úložiště pro fond SQL bez serveru ve službě Azure synapse Analytics
 
@@ -107,7 +107,7 @@ Pomocí těchto kroků můžete nakonfigurovat bránu firewall účtu úložišt
     Install-Module -Name Az.Storage -RequiredVersion 3.0.1-preview -AllowPrerelease
     ```
     > [!IMPORTANT]
-    > Ujistěte se, že používáte verzi 3.0.1 nebo novější. Verzi AZ. Storage můžete ověřit spuštěním tohoto příkazu:  
+    > Ujistěte se, že používáte **verzi 3.0.1**. Verzi AZ. Storage můžete ověřit spuštěním tohoto příkazu:  
     > ```powershell 
     > Get-Module -ListAvailable -Name  Az.Storage | select Version
     > ```

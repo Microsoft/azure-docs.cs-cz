@@ -104,6 +104,8 @@
           href: overview-managed-identity.md
         - name: Standardní hodnoty zabezpečení
           href: security-baseline.md
+        - name: Mechanismy zabezpečení služby Azure Policy
+          href: ./security-controls-policy.md
     - name: Vysoká dostupnost
       items:
         - name: Odolnost a zotavení po havárii

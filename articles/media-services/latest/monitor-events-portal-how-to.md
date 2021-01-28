@@ -1,5 +1,5 @@
 ---
-title: Monitorování událostí Azure Media Services s využitím Event Grid na portálu
+title: Monitorování událostí Media Services pomocí portálu Event Grid
 description: Tento článek popisuje, jak se přihlásit k odběru Event Grid, aby bylo možné monitorovat události Azure Media Services.
 services: media-services
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 65459dbdf8eaa92525fa20eda158f4beacf58780
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f1a74ee1668594d2e28bed0ad36793bf47653fe
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89294369"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955254"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-portal"></a>Vytvoření a monitorování událostí Media Services se službou Event Grid s využitím webu Azure Portal
 
@@ -61,7 +61,7 @@ K odběru tématu se přihlašujete, aby služba Event Grid věděla, které ud�
    ![Výběr webhooku](./media/monitor-events-portal/select-web-hook.png)
 
 1. Předplatné události je předem vyplněno hodnotami pro váš účet Media Services. 
-1. Jako **Typ koncového bodu**vyberte Webhook.
+1. Jako **Typ koncového bodu** vyberte Webhook.
 1. V tomto tématu ponecháme **přihlášení k odběru všech zkontrolovaných typů událostí** . Můžete ho ale zrušit a vyfiltrovat pro konkrétní typy událostí. 
 1. Klikněte na odkaz **Vybrat koncový bod** .
 

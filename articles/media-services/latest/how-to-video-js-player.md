@@ -1,5 +1,5 @@
 ---
-title: Jak používat Video.js Player s Azure Media Services
+title: Použití přehrávače Video.js s Azure Media Services
 description: Tento článek vysvětluje, jak používat objekt HTML video a JavaScript s Azure Media Services
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-js
-ms.openlocfilehash: 99e17db99842546b7f595d62f82f8bacb0ee6a8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0b357705de04ed4c2be3223f9dd07f61f75d970
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329699"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954576"
 ---
 # <a name="how-to-use-the-videojs-player-with-azure-media-services"></a>Jak používat Video.js Player s Azure Media Services
 

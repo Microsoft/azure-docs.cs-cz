@@ -7,31 +7,30 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/17/2020
-ms.openlocfilehash: 6e0f3d318cc462b03151d5a4935ae318df46e2c5
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.date: 01/27/2021
+ms.openlocfilehash: 0d09851cf8e68cead4a67615aaa792512482f351
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96510552"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955118"
 ---
 # <a name="python-code-samples-for-azure-cognitive-search"></a>Ukázky kódu Pythonu pro Azure Kognitivní hledání
 
-Přečtěte si o ukázkách kódu Pythonu, které ukazují funkce a funkce Azure Kognitivní hledání. Primární úložiště jsou následující:
+Přečtěte si o ukázkách kódu Pythonu, které ukazují funkčnost a pracovní postup řešení Azure Kognitivní hledání. Tyto ukázky používají [**klientskou knihovnu azure kognitivní hledání**](/python/api/overview/azure/search-documents-readme) pro [**sadu Azure SDK pro Python**](/azure/developer/python/), kterou můžete prozkoumat pomocí následujících odkazů.
 
-| Repository | Popis |
-|------------|-------------|
-| [Azure-SDK-for-Python/strom/Master/SDK/Search/Azure-Search-Documents/Samples/](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/search/azure-search-documents/samples) | Ukázky vytvářené týmem Azure SDK, které se dodávají s klientskou knihovnou Azure.Search.Documents v sadě SDK Můžete si také projít [testy jednotek](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/search/azure-search-documents/tests) klientské knihovny, abyste viděli, jak jsou volána různá rozhraní API. |
-| [Azure-Samples/Azure-Search-Python-Samples](https://github.com/Azure-Samples/azure-search-python-samples) | Ukázky kódu, které doprovázejí články s návody, včetně [rychlého startu: vytvoření indexu vyhledávání v Pythonu](search-get-started-python.md).|
+| Cíl | Odkaz |
+|--------|------|
+| Stažení balíčku | [pypi.org/project/azure-search-documents/](https://pypi.org/project/azure-search-documents/) |
+| API – referenční informace | [Azure-Search – dokumenty](/python/api/azure-search-documents)  |
+| Testovací případy rozhraní API | [github.com/Azure/azure-sdk-for-python/tree/master/sdk/search/azure-search-documents/tests](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/search/azure-search-documents/tests) |
+| Zdrojový kód | [github.com/Azure/azure-sdk-for-python/tree/master/sdk/search/azure-search-documents](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/search/azure-search-documents)  |
 
-> [!Tip]
-> Vyzkoušejte si [prohlížeč ukázek](/samples/browse/?languages=python&products=azure-cognitive-search) , kde najdete ukázky kódu Microsoftu v GitHubu, filtrované podle produktu, služby a jazyka.
+## <a name="sdk-samples"></a>Ukázky sady SDK
 
-## <a name="python-sdk-samples"></a>Ukázky Python SDK
+Ukázky kódu z vývojového týmu Azure SDK ukazují použití rozhraní API. Tyto ukázky najdete v [**sadě Azure-SDK – for-Python/strom/Master/SDK/Search/Azure-Search-Documents/Samples**](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/search/azure-search-documents/samples) on GitHub.
 
-Sada Azure SDK for Python zahrnuje řadu ukázek a [úvodní stránku](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/search/azure-search-documents/samples) , která zahrnuje požadavky a instalaci balíčku. Stránka obsahuje také odkazy na následující ukázky, které jsou zde uvedeny pro usnadnění.
-
-| ukázky | Popis |
+| ukázky | Description |
 |---------|-------------|
 | [Ověření](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/search/azure-search-documents/samples/sample_authentication.py) | Ukazuje, jak nakonfigurovat klienta a ověřit službu. | 
 | [Vytvoření indexu – operace čtení i aktualizace – odstranění](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/search/azure-search-documents/samples/sample_index_crud_operations.py) | Ukazuje, jak vytvořit, aktualizovat, získat, vypsat a odstranit [vyhledávací indexy](search-what-is-an-index.md). |
@@ -43,12 +42,15 @@ Sada Azure SDK for Python zahrnuje řadu ukázek a [úvodní stránku](https://g
 | [Filtrovat dotaz](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/search/azure-search-documents/samples/sample_filter_query.py) | Ukazuje nastavení [výrazu filtru](search-filters.md). |
 | [Dotaz na omezující vlastnost](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/search/azure-search-documents/samples/sample_facet_query.py) | Ukazuje práci s [omezujícími vlastnostmi](search-filters-facets.md). |
 
-## <a name="documentation-samples"></a>Ukázky v dokumentaci
+## <a name="doc-samples"></a>Ukázky dokumentů
 
-Následující ukázky mají přidružený článek v [dokumentaci k Azure kognitivní hledání](./index.yml).
+Ukázky kódu z týmu Kognitivní hledání ukazují funkce a pracovní postupy. Mnohé z těchto ukázek jsou odkazovány v kurzech, rychlých startech a článcích s postupy. Tyto ukázky najdete v ukázkách [**Azure-Samples/Azure-Search-Python-Samples**](https://github.com/Azure-Samples/azure-search-python-samples) na GitHubu.
 
-| ukázky | Popis | 
-|---------|-------------|
-| [rychlý Start](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Quickstart) | Zdrojový kód pro [rychlý Start: vytvoření indexu vyhledávání v Pythonu](search-get-started-python.md)  |
-| [Kurz – rozšíření AI](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Tutorial-AI-Enrichment)  | Zdrojový kód pro [kurz: pomocí Pythonu a AI můžete vygenerovat prohledávatelný obsah z objektů blob Azure](cognitive-search-tutorial-blob-python.md).  |
-| [AzureML – vlastní – dovednost](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/AzureML-Custom-Skill)  | Zdrojový kód [například: Vytvoření vlastní dovednosti pomocí Pythonu](cognitive-search-custom-skill-python.md).  |
+| ukázky | Článek |
+|---------|---------|
+| [rychlý Start](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Quickstart) | Zdrojový kód pro [rychlý Start: vytvoření indexu vyhledávání v Pythonu](search-get-started-python.md) Tento článek popisuje základní pracovní postup pro vytvoření, načtení a dotazování indexu vyhledávání pomocí ukázkových dat. |
+| [Kurz – rozšíření AI](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Tutorial-AI-Enrichment)  | Zdrojový kód pro [kurz: pomocí Pythonu a AI můžete vygenerovat prohledávatelný obsah z objektů blob Azure](cognitive-search-tutorial-blob-python.md). V tomto článku se dozvíte, jak vytvořit indexer objektů BLOB s rozpoznáváním dovednosti, kde dovednosti vytváří a transformuje nezpracovaný obsah, aby bylo možné ho prohledávat nebo využít. |
+| [AzureML – vlastní – dovednost](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/AzureML-Custom-Skill)  | Zdrojový kód [například: Vytvoření vlastní dovednosti pomocí Pythonu](cognitive-search-custom-skill-python.md). Tento článek ukazuje indexovací indexer a dovednosti integraci se modely obsáhlého učení v Azure Machine Learning. |
+
+> [!Tip]
+> Vyzkoušejte si [prohlížeč ukázek](/samples/browse/?languages=python&products=azure-cognitive-search) , kde najdete ukázky kódu Microsoftu v GitHubu, filtrované podle produktu, služby a jazyka.

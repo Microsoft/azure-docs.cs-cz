@@ -1,5 +1,5 @@
 ---
-title: Monitorování událostí Azure Media Services pomocí rozhraní příkazového řádku Event Grid
+title: Monitorování událostí Azure Media Services s využitím Event Grid
 description: Tento článek popisuje, jak se přihlásit k odběru Event Grid, aby bylo možné monitorovat Azure Media Services události pomocí Azure CLI.
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d7148841083cccf4197fe353d077e5149e4afac5
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 9608dfd7ac4076e6cd74846c3f52ed2e3645777a
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98895318"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98956000"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-cli"></a>Vytváření a sledování událostí Media Services pomocí Event Grid pomocí Azure CLI
 

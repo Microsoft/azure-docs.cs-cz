@@ -1,18 +1,19 @@
 ---
 title: Oblasti a Zóny dostupnosti v Azure
 description: Přečtěte si o oblastech a Zóny dostupnosti v Azure, které odpovídají vašim technickým a zákonným požadavkům.
-author: cynthn
+author: prsandhu
 ms.service: azure
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/26/2021
-ms.author: cynthn
+ms.author: prsandhu
+ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: 0b67f113fb8ab3835419a75697e60a732d4ee390
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: dae5319e6c8b87d6a9eef98875ad7e8da623e65c
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896049"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955796"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Oblasti a Zóny dostupnosti v Azure
 
@@ -22,7 +23,7 @@ Služby Microsoft Azure Services jsou k dispozici globálně, aby bylo možné p
 
 Pro lepší pochopení oblastí a Zóny dostupnosti v Azure vám pomůže pochopit klíčové pojmy nebo koncepty.
 
-| Termín nebo koncept | Popis |
+| Termín nebo koncept | Description |
 | --- | --- |
 | oblast | Sada Datacenter nasazených v hraničním prostředí určeném pro latenci a připojená přes vyhrazenou síť s nízkou latencí. |
 | geografické | Oblast světa, která obsahuje alespoň jednu oblast Azure. Geografické oblasti definují diskrétní trh, který zachovává rozsahy dat a hranice dodržování předpisů. Zeměpisné oblasti umožňují zákazníkům se specifickými požadavky na rezidenci dat a dodržování předpisů, aby měli svoje data a aplikace blízko. Geografické oblasti jsou odolné proti chybám, které vydržely selhání celé oblasti prostřednictvím připojení k naší vyhrazené síťové infrastruktuře s vysokou kapacitou. |
@@ -152,7 +153,7 @@ Jak už bylo uvedeno výše, Azure klasifikuje služby do tří kategorií: zák
 > |                                       | Virtual Machines: Ev4-Series                      |                                                      |
 > |                                       | Virtual Machines: Fsv2-Series                     |                                                      |
 > |                                       | Virtual Machines: řada M-Series                        |                                                      |
-> |                                       | Virtual WAN                                       |                                                      |
+> |                                       | Virtuální síť WAN                                       |                                                      |
 
 
 ## <a name="next-steps"></a>Další kroky

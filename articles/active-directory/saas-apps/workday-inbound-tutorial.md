@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 01/19/2021
 ms.author: chmutali
-ms.openlocfilehash: 8e83841031593d0d1af4499f3ef9a15400ce7794
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: a34881901fd8642fff9ac37512cd2ef260ad9d1c
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98569524"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954208"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Kurz: Konfigurace pracovního dne pro Automatické zřizování uživatelů
 
@@ -157,7 +157,7 @@ V tomto kroku udělíte skupině zabezpečení oprávnění zásady zabezpečen�
 
 1. Vyhledejte a vyberte skupinu zabezpečení vytvořenou v předchozím kroku. 
    >[!div class="mx-imgBorder"]
-   >![Vybrat skupinu zabezpečení](./media/workday-inbound-tutorial/select-security-group-msft-wdad.png)
+   >![Vybrat skupinu zabezpečení](./media/workday-inbound-tutorial/select-security-group-workday.png)
 
 1. Klikněte na tlačítko se třemi tečkami (...) vedle názvu skupiny a v nabídce vyberte **Skupina zabezpečení > udržovat oprávnění domény pro skupinu zabezpečení** .
    >[!div class="mx-imgBorder"]
@@ -228,7 +228,7 @@ V tomto kroku udělíte oprávnění "zabezpečení obchodních procesů" pro da
 
 ## <a name="provisioning-agent-installation-prerequisites"></a>Požadavky na instalaci agenta zřizování
 
-Než budete pokračovat k další části, přečtěte si [předpoklady pro instalaci agenta zřizování](../cloud-provisioning/how-to-prerequisites.md) . 
+Než budete pokračovat k další části, přečtěte si [předpoklady pro instalaci agenta zřizování](../cloud-sync/how-to-prerequisites.md) . 
 
 ## <a name="configuring-user-provisioning-from-workday-to-active-directory"></a>Konfigurace zřizování uživatelů z Workday na službu Active Directory
 
@@ -267,7 +267,7 @@ Tato část popisuje kroky pro zřizování uživatelských účtů z Workday do
 
 Aby bylo možné zřídit místní službu Active Directory, musí být agent zřizování nainstalován na server připojený k doméně, který má síťový přístup k požadované doméně služby Active Directory.
 
-Přeneste stažený instalační program agenta na hostitele serveru a podle kroků uvedených [v části **install agent**](../cloud-provisioning/how-to-install.md) dokončete konfiguraci agenta.
+Přeneste stažený instalační program agenta na hostitele serveru a podle kroků uvedených [v části **install agent**](../cloud-sync/how-to-install.md) dokončete konfiguraci agenta.
 
 ### <a name="part-3-in-the-provisioning-app-configure-connectivity-to-workday-and-active-directory"></a>Část 3: v aplikaci pro zřizování nakonfigurujte připojení k Workday a službě Active Directory.
 V tomto kroku navážeme připojení k Workday a službě Active Directory v Azure Portal. 
@@ -284,9 +284,9 @@ V tomto kroku navážeme připojení k Workday a službě Active Directory v Azu
 
      | Formát URL | Použitá verze rozhraní API WWS | Jsou vyžadovány změny XPATH |
      |------------|----------------------|------------------------|
-     | https://####.workday.com/ccx/service/tenantName | v 21.1 | Ne |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | Ne |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Ano |
+     | https://####.workday.com/ccx/service/tenantName | v 21.1 | No |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | No |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Yes |
 
       > [!NOTE]
      > Pokud v adrese URL nejsou zadané žádné informace o verzi, aplikace používá WWS (Workday Web Services) v 21.1 a pro výchozí výrazy rozhraní API XPATH dodávané s aplikací se nevyžadují žádné změny. Pokud chcete použít konkrétní verzi rozhraní WWS API, zadejte v adrese URL číslo verze. <br>
@@ -336,7 +336,7 @@ V této části nakonfigurujete způsob, jakým budou data uživatelů z Workday
       * Operátor: není NULL
 
    > [!TIP]
-   > Při první konfiguraci zřizovací aplikace budete muset otestovat a ověřit mapování atributů a výrazy, abyste se ujistili, že vám poskytne požadovaný výsledek. Microsoft doporučuje pomocí filtrů oborů v **oboru zdrojového objektu** testovat mapování s několika testovacími uživateli z Workday. Jakmile ověříte, že mapování funguje, můžete buď odebrat filtr, nebo ho postupně rozšířit, aby zahrnoval více uživatelů.
+   > Při první konfiguraci zřizovací aplikace budete muset otestovat a ověřit mapování atributů a výrazy, abyste se ujistili, že vám poskytne požadovaný výsledek. Microsoft doporučuje použít pro otestování mapování s několika testovacími uživateli z Workday používání [filtrů oborů](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) v **oboru zdrojového objektu** a [zřizování na vyžádání](../app-provisioning/provision-on-demand.md) . Jakmile ověříte, že mapování funguje, můžete buď odebrat filtr, nebo ho postupně rozšířit, aby zahrnoval více uživatelů.
 
    > [!CAUTION] 
    > Výchozím chováním modulu zřizování je zakázat nebo odstranit uživatele, kteří se přestanou přidělovat z oboru. To nemusí být žádoucí pro integraci vaší pracovní doby do AD. Pokud chcete přepsat toto výchozí chování, přečtěte si článek [přeskočení odstranění uživatelských účtů, které se nacházejí mimo rozsah](../app-provisioning/skip-out-of-scope-deletions.md) .
@@ -1065,7 +1065,8 @@ S ohledem na uchovávání dat služba zřizování Azure AD negeneruje sestavy,
 
 ## <a name="next-steps"></a>Další kroky
 
+* [Další informace o scénářích Integrace Azure AD a Workday a volání webové služby](../app-provisioning/workday-integration-reference.md)
 * [Zjistěte, jak procházet protokoly a získat sestavy aktivit zřizování](../app-provisioning/check-status-user-account-provisioning.md).
 * [Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Workday a Azure Active Directory](workday-tutorial.md)
-* [Naučte se integrovat další aplikace SaaS pomocí Azure Active Directory](tutorial-list.md)
+* [Informace o tom, jak nakonfigurovat zpětný zápis do Workday](workday-writeback-tutorial.md)
 * [Naučte se používat rozhraní Microsoft Graph API ke správě konfigurací zřizování.](/graph/api/resources/synchronization-overview)

@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: e46a56742ab8b98c53c1cd05e840e8ad4b8a73da
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 53052097fa6616f889b710c58488a9f7a616168d
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88682115"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98956249"
 ---
 V kroku [generování a nasazení IoT Edge manifestu nasazení](../../../detect-motion-emit-events-quickstart.md#generate-and-deploy-the-deployment-manifest) rozbalte v části Visual Studio Code uzel **lva-Sample-Device** v rámci služby **Azure IoT Hub** (v části vlevo dole). Měly by se zobrazit následující moduly nasazené:
 
@@ -14,7 +14,7 @@ V kroku [generování a nasazení IoT Edge manifestu nasazení](../../../detect-
   ![Moduly](../../../media/quickstarts/lva-sample-device-node.png)
 
 > [!NOTE]
-> Pokud místo toho, které jste zřídili pomocí našeho skriptu pro instalaci, používáte vlastní hraniční zařízení, přečtěte si příslušné hraniční zařízení a spusťte následující příkazy s **právy správce**, abyste mohli načíst a uložit ukázkový videosoubor, který se používá pro tento rychlý Start:  
+> Výše uvedené kroky předpokládají, že používáte virtuální počítač vytvořený instalačním skriptem. Pokud místo toho používáte vlastní hraniční zařízení, přečtěte si hraniční zařízení a spusťte následující příkazy s **právy správce**, abyste mohli načíst a uložit ukázkový videosoubor, který se používá pro tento rychlý Start:  
 
 ```
 mkdir /home/lvaadmin/samples

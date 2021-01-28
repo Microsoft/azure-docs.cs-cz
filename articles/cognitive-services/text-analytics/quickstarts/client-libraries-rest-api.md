@@ -13,12 +13,12 @@ ms.author: aahi
 keywords: dolování textu, analýza míněníí, analýza textu
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: f93b7954861bf3351d2930132e1391e1f21b2a6f
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: d6bad5b8957df2a5d5668aab193de0c0851ac195
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97655114"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98953763"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library-and-rest-api"></a>Rychlý Start: použití klientské knihovny Analýza textu a REST API
 
@@ -103,5 +103,5 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 * [Přehled analýzy textu](../overview.md)
 * [Analýza mínění](../how-tos/text-analytics-how-to-sentiment-analysis.md)
 * [Rozpoznávání entit](../how-tos/text-analytics-how-to-entity-linking.md)
-* [Zjistit jazyk](../how-tos/text-analytics-how-to-keyword-extraction.md)
+* [Rozpoznání jazyka](../how-tos/text-analytics-how-to-keyword-extraction.md)
 * [Rozpoznávání jazyka](../how-tos/text-analytics-how-to-language-detection.md)

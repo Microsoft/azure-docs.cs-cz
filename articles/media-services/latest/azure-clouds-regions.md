@@ -1,5 +1,5 @@
 ---
-title: Dostupnost cloudů a oblastí Azure Media Services V3
+title: Dostupnost oblastí Azure Media Services V3
 description: Tento článek pojednává o cloudech a oblastech Azure, ve kterých je k dispozici Azure Media Services V3.
 services: media-services
 author: IngridAtMicrosoft
@@ -8,12 +8,12 @@ ms.service: media-services
 ms.topic: reference
 ms.date: 10/28/2020
 ms.author: inhenkel
-ms.openlocfilehash: 20c025cfabf6ed3cedd838f8be964bec06ad595e
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 91df515703b4b6b368b07482fad1aa8b781281f6
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242524"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954442"
 ---
 # <a name="azure-media-services-v3-clouds-and-regions-availability"></a>Dostupnost cloudů a oblastí Azure Media Services V3
 
@@ -63,10 +63,10 @@ Pomocí navigace na pravé straně Najděte oblast, které vás zajímá.
 
 [Oblasti, ve kterých je nasazená služba Azure Media Services](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 * [Oblasti Azure](https://azure.microsoft.com/global-infrastructure/regions/)
-* [Regionální názvy kódu a koncové body](azure-regions-code-names.md)
+* [Regionální kódové názvy a koncové body](azure-regions-code-names.md)
 * [Zeměpisné oblasti Azure](https://azure.microsoft.com/global-infrastructure/geographies/)
 * [Umístění Azure](https://azure.microsoft.com/global-infrastructure/locations/)
 

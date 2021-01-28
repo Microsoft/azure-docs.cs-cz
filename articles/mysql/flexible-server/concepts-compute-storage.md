@@ -5,13 +5,13 @@ author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/20/2020
-ms.openlocfilehash: 36f31ee390a6a208b202698ec9bda59b644c9e30
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.date: 01/27/2021
+ms.openlocfilehash: 267b362c94b04b3be634f7e61c2b6d67604d7854
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94534666"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954677"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server-preview"></a>Možnosti výpočtů a úložiště v Azure Database for MySQL – flexibilní Server (Preview)
 
@@ -71,7 +71,10 @@ Podrobné specifikace dostupných typů serverů jsou následující:
 
 Další podrobnosti o dostupných výpočetních řadách najdete v dokumentaci k VIRTUÁLNÍm počítačům Azure pro [shluky (B-Series)](../../virtual-machines/sizes-b-series-burstable.md), [pro obecné účely (Ddsv4-Series)](../../virtual-machines/ddv4-ddsv4-series.md)a [paměťově optimalizovaná (Edsv4-Series)](../../virtual-machines/edv4-edsv4-series.md).
 
-## <a name="storage"></a>Úložiště
+>[!NOTE]
+>U výpočetních vrstev s rozstupnou zátěží [(B-Series)](../../virtual-machines/sizes-b-series-burstable.md) v případě, že se server restartuje z nějakého důvodu, například iniciované uživatelem, plánovaná nebo neplánovaná údržba, může dojít ke ztrátě tohoto souhrnného kredit Důvodem je to, že pokaždé, když Azure Database for MySQL restartovat, zůstane na stejném uzlu, který se zachová. Naopak, když se server Azure Database for MySQL na novém uzlu začne aktualizovat, získá počáteční kredit. Další informace najdete v [nejčastějších dotazech k roztržení (B-Series)](https://docs.microsoft.com/azure/virtual-machines/sizes-b-series-burstable#q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart).
+
+## <a name="storage"></a>Storage
 
 Úložiště, které zřizujete, je množství úložné kapacity dostupné pro váš flexibilní Server. Úložiště se používá pro soubory databáze, dočasné soubory, transakční protokoly a protokoly serveru MySQL. Ve všech výpočetních úrovních je minimální podporovaná velikost úložiště 5 GiB a maximum je 16 TiB. Velikost úložiště se škáluje v 1 přírůstcích GiB a dá se škálovat až po vytvoření serveru.
 
@@ -132,7 +135,7 @@ Pokud chcete získat další informace o maximálním efektivním počtu vstupn�
 
 Maximální platnost IOPS je závislá na maximální dostupnosti IOPS za výpočetní velikost. Podívejte se na následující vzorec a vyhledejte sloupec *maximální propustnost disku bez mezipaměti: IOPS/MB/s* v dokumentaci [B-Series](../../virtual-machines/sizes-b-series-burstable.md), [Ddsv4-Series](../../virtual-machines/ddv4-ddsv4-series.md)a [Edsv4-Series](../../virtual-machines/edv4-edsv4-series.md) .
 
-**Maximální efektivní IOPS** = minimální ( *maximální propustnost disku bez mezipaměti: IOPS/MB/s* ) výpočetní velikosti, úložiště zřízené v GIB * 3)
+**Maximální efektivní IOPS** = minimální (*maximální propustnost disku bez mezipaměti: IOPS/MB/s* ) výpočetní velikosti, úložiště zřízené v GIB * 3)
 
 Spotřebu v/v můžete monitorovat v Azure Portal (s Azure Monitor) pomocí metriky v/v [%](./concepts-monitoring.md) . Pokud budete potřebovat více IOPS, budete muset zjistit, jestli je omezení výpočetní velikosti nebo zřízené úložiště omezené. Škálovat výpočetní nebo úložné úložiště serveru je odpovídajícím způsobem zajištěno.
 
@@ -153,7 +156,7 @@ Když změníte výpočetní úroveň nebo výpočetní velikost, server se rest
 
 ## <a name="pricing"></a>Ceny
 
-Nejaktuálnější informace o cenách najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/MySQL/)služeb. Chcete-li zobrazit náklady na konfiguraci, kterou požadujete, [Azure Portal](https://portal.azure.com/#create/Microsoft.MySQLServer/flexibleServers) na kartě **COMPUTE + úložiště** na základě možností, které jste vybrali, zobrazí měsíční náklady. Pokud nemáte předplatné Azure, můžete získat odhadovanou cenu pomocí cenové kalkulačky Azure. Na webu [cenové kalkulačky Azure](https://azure.microsoft.com/pricing/calculator/) vyberte **Přidat položky** , rozbalte kategorii **databáze** , zvolte **Azure Database for MySQL** a **flexibilní Server** jako typ nasazení pro přizpůsobení možností.
+Nejaktuálnější informace o cenách najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/MySQL/)služeb. Chcete-li zobrazit náklady na konfiguraci, kterou požadujete, [Azure Portal](https://portal.azure.com/#create/Microsoft.MySQLServer/flexibleServers) na kartě **COMPUTE + úložiště** na základě možností, které jste vybrali, zobrazí měsíční náklady. Pokud nemáte předplatné Azure, můžete získat odhadovanou cenu pomocí cenové kalkulačky Azure. Na webu [cenové kalkulačky Azure](https://azure.microsoft.com/pricing/calculator/) vyberte **Přidat položky**, rozbalte kategorii **databáze** , zvolte **Azure Database for MySQL** a **flexibilní Server** jako typ nasazení pro přizpůsobení možností.
 
 Pokud chcete optimalizovat náklady na server, můžete zvážit následující tipy:
 

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/22/2020
-ms.openlocfilehash: dbd7937667a3c4d5af9f13e15cdd4ff2081241f0
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 0e993cb1e53645f7081a20fc6a2785b8cfef1cce
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98723876"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954174"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>Jak připojit Azure Data Factory a Azure dosah
 
@@ -69,12 +69,22 @@ Pomocí následujících kroků připojte existující účty Data Factory ke Da
 >[!Note]
 >Nyní podporujeme přidávání více než 10 datových továren najednou. Pokud chcete přidat více než 10 datových továren najednou, uložte lístek podpory.
 
+### <a name="how-does-the-authentication-work"></a>Jak funguje ověřování?
+
+Když uživatel dosah zaregistruje Data Factory ke kterému mají přístup, dojde k následujícím akcím v back-endu:
+
+1. **Data Factory MSI** se přidá do role dosah RBAC: **dosah data kurátor**.
+
+    :::image type="content" source="./media/how-to-link-azure-data-factory/adf-msi.png" alt-text="Snímek obrazovky zobrazující Azure Data Factory MSI" lightbox="./media/how-to-link-azure-data-factory/adf-msi.png":::
+     
+2. Kanál Data Factory je třeba znovu spustit, aby se metadata na řádku mohla vrátit do dosah.
+3. Po spuštění bude Data Factory metadata vložena do dosah.
 
 ### <a name="remove-data-factory-connections"></a>Odebrat připojení Data Factory
 Pokud chcete odebrat připojení k datové továrně, udělejte toto:
 
 1. Na stránce **Data Factory připojení** vyberte tlačítko **Odebrat** vedle jednoho nebo více připojení ke službě Data Factory.
-1. V místní nabídce vyberte **Potvrdit** a odstraňte vybraná připojení ke službě Data Factory.
+2. V místní nabídce vyberte **Potvrdit** a odstraňte vybraná připojení ke službě Data Factory.
 
     :::image type="content" source="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png" alt-text="Snímek obrazovky ukazující, jak vybrat datové továrny pro odebrání připojení" lightbox="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png":::
 
@@ -99,27 +109,27 @@ Integrace mezi Data Factory a dosah podporuje pouze podmnožinu datových systé
 
 | Systém úložiště dat | Podporováno jako zdroj | Podporováno jako jímka |
 | ------------------- | ------------------- | ----------------- |
-| ADLS Gen1 | Ano | Ano (pouze bez binární kopie) |
-| ADLS Gen2 | Ano | Ano |
-| Azure Blob | Ano | Ano |
-| Azure Cosmos DB (SQL API) | Ano | Ano |
-| Azure Cosmos DB (rozhraní API Mongo) | Ano | Ano |
-| Azure Cognitive Search | Ano | Ano |
-| Průzkumník dat Azure | Ano | Ano |
-| Databáze Azure Database for Marie DB \* | Ano | Ano |
-| Azure Database for MYSQL \* | Ano | Ano |
-| Azure Database for PostgreSQL \* | Ano | Ano |
-| Azure File Storage | Ano | Ano |
-| Azure Table Storage | Ano | Ano |
-| Azure SQL Database \* | Ano | Ano |
-| Azure SQL MI \* | Ano | Ano |
-| Azure synapse Analytics (dřív SQL DW) \* | Ano | Ano |
-| SQL Server on-Prem (vyžaduje se SHIR) \* | Ano | Ano |
-| Amazon S3 | Ano | Ano |
-| Teradata | Ano | Ano |
-| SAP S4 Hana | Ano | Ano |
-| SAP ECC | Ano | Ano |
-| Hive | Ano | Ano |
+| ADLS Gen1 | Yes | Ano (pouze bez binární kopie) |
+| ADLS Gen2 | Yes | Yes |
+| Azure Blob | Yes | Yes |
+| Azure Cosmos DB (SQL API) | Yes | Yes |
+| Azure Cosmos DB (rozhraní API Mongo) | Yes | Yes |
+| Azure Cognitive Search | Yes | Yes |
+| Průzkumník dat Azure | Yes | Yes |
+| Databáze Azure Database for Marie DB \* | Yes | Yes |
+| Azure Database for MYSQL \* | Yes | Yes |
+| Azure Database for PostgreSQL \* | Yes | Yes |
+| Azure File Storage | Yes | Ano |
+| Azure Table Storage | Yes | Yes |
+| Azure SQL Database \* | Yes | Yes |
+| Azure SQL MI \* | Yes | Yes |
+| Azure synapse Analytics (dřív SQL DW) \* | Yes | Yes |
+| SQL Server on-Prem (vyžaduje se SHIR) \* | Yes | Yes |
+| Amazon S3 | Yes | Yes |
+| Teradata | Yes | Yes |
+| SAP S4 Hana | Yes | Yes |
+| SAP ECC | Yes | Yes |
+| Hive | Yes | Yes |
 
 > [!Note]
 > Funkce line má určité nároky na výkon v Data Factory aktivity kopírování. Pro ty, kteří nastavili připojení k datové továrně v dosah, se může stát, že některé úlohy kopírování trvá déle. Většinou je dopad na zanedbatelné. Pokud úlohy kopírování trvá déle než obvykle, kontaktujte prosím podporu s časovým porovnáním.
@@ -128,24 +138,24 @@ Integrace mezi Data Factory a dosah podporuje pouze podmnožinu datových systé
 
 | Systém úložiště dat | Podporováno |
 | ------------------- | ------------------- | ----------------- |
-| ADLS Gen1 | Ano |
-| ADLS Gen2 | Ano |
-| Azure Blob | Ano |
-| Azure SQL Database \* | Ano |
-| Azure synapse Analytics (dřív SQL DW) \* | Ano |
+| ADLS Gen1 | Yes |
+| ADLS Gen2 | Yes |
+| Azure Blob | Yes |
+| Azure SQL Database \* | Yes |
+| Azure synapse Analytics (dřív SQL DW) \* | Yes |
 
 ### <a name="data-factory-execute-ssis-package-support"></a>Data Factory provádění podpory balíčků SSIS
 
 | Systém úložiště dat | Podporováno |
 | ------------------- | ------------------- | ----------------- |
-| Azure Blob | Ano |
-| ADLS Gen1 | Ano |
-| ADLS Gen2 | Ano |
-| Azure SQL Database \* | Ano |
-| Azure SQL MI \*| Ano |
-| Azure synapse Analytics (dřív SQL DW) \* | Ano |
-| SQL Server Prem \* | Ano |
-| Azure File Storage | Ano |
+| Azure Blob | Yes |
+| ADLS Gen1 | Yes |
+| ADLS Gen2 | Yes |
+| Azure SQL Database \* | Yes |
+| Azure SQL MI \*| Yes |
+| Azure synapse Analytics (dřív SQL DW) \* | Yes |
+| SQL Server Prem \* | Yes |
+| Azure File Storage | Yes |
 
 *\* V případě scénářů SQL (Azure a místních) nepodporuje Azure dosah uložené procedury nebo skripty pro kontrolu a zjišťování. U pořadu je omezené jenom na tabulky a zobrazení zdrojů.*
 

@@ -1,5 +1,5 @@
 ---
-title: Systém ochrany obsahu s více DRM – Azure Media Services V3
+title: Systém ochrany obsahu s více technologiemi DRM
 description: V tomto článku najdete podrobný popis návrhu systému ochrany obsahu s více technologiemi DRM pomocí Azure Media Services.
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: 58edf1e0257cf9de8d8f3a3b56f295dcaf1f6cbf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e0104dd2761f74fbd84486aebbf8c3c4e128eb08
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89298194"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954897"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Návrh systému ochrany obsahu s více variantami DRM s využitím řízení přístupu
 
@@ -231,7 +231,7 @@ Pro pomoc s problémy s implementací použijte následující informace pro ře
 
     V [dekodéru JWT](http://jwt.calebb.net/)vidíte **AUD** a **ISS**, jak je znázorněno v tokenu JWT:
 
-    ![TOKEN](./media/design-multi-drm-system-with-access-control/media-services-1st-gotcha.png)
+    ![JWT](./media/design-multi-drm-system-with-access-control/media-services-1st-gotcha.png)
 
 * Přidejte do aplikace ve službě Azure AD oprávnění na kartě **Konfigurace** aplikace. Pro každou aplikaci jsou vyžadována oprávnění, místní i nasazená verze.
 

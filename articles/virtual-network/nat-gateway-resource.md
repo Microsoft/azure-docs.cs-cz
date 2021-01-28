@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/28/2020
+ms.date: 01/28/2021
 ms.author: allensu
-ms.openlocfilehash: d4ef8e6207d53a192b19f8343a60093e82368fa6
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 5c1f52fda2edfa0a03caa72fcd7fa8dc02d0a607
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223376"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954660"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>Navrhování virtuálních sítí pomocí prostředků brány NAT
 
@@ -339,6 +339,7 @@ Port SNAT je k dispozici pro opakované použití na stejnou cílovou IP adresu 
 - Překlad adres (NAT) je kompatibilní s veřejnou IP adresou SKU, předponou veřejné IP adresy a prostředky nástroje pro vyrovnávání zatížení.   Základní prostředky (například základní nástroj pro vyrovnávání zatížení) a jakékoli produkty, které jsou z nich odvozené, nejsou kompatibilní se službou NAT.  Základní prostředky musí být umístěné v podsíti, která není nakonfigurovaná s překladem adres (NAT).
 - Rodina adres IPv4 je podporovaná.  Překlad adres (NAT) nekomunikuje s řadou IPv6 adres.  Překlad adres (NAT) nejde nasadit v podsíti s předponou IPv6.
 - Překlad adres (NAT) nemůže zahrnovat víc virtuálních sítí.
+- Fragmentace IP adres není podporována.
 
 ## <a name="suggestions"></a>Návrhy
 

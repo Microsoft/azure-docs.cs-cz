@@ -96,6 +96,8 @@
           href: ./cicd/continuous-integration-deployment.md
         - name: Zabezpečení
           items:
+            - name: Řízení zabezpečení podle Azure Policy
+              href: ./security-controls-policy.md
             - name: Šifrování
               href: ./security/workspaces-encryption.md
             - name: Zabezpečení sítě

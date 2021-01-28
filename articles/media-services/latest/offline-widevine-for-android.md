@@ -1,5 +1,5 @@
 ---
-title: Streamování Widevine pro Android offline s Azure Media Services V3
+title: Online streamování Widevine pro Android
 description: V tomto tématu se dozvíte, jak nakonfigurovat účet Azure Media Services V3 pro offline streamování chráněného obsahu Widevine.
 services: media-services
 keywords: POMLČKa, DRM, režim offline, Widevine, ExoPlayer, Android
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b8c4bed81a73957cc80318064f2aa2a58b3cfe11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4c7adab9c14075e12cf5656f9e798e78ff26ff0b
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91597078"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955203"
 ---
 # <a name="offline-widevine-streaming-for-android-with-media-services-v3"></a>Online streamování Widevine pro Android s Media Services V3
 
@@ -124,7 +124,7 @@ Vývojáři by měli v průběhu vývoje aplikace odkazovat na [příručku pro 
 
 ### <a name="working-with-older-android-devices"></a>Práce se staršími zařízeními s Androidem
 
-U některých starších zařízení s Androidem je potřeba nastavit hodnoty pro následující vlastnosti **policy_overrides** (definované v [šabloně licence Widevine](widevine-license-template-overview.md): **rental_duration_seconds**, **playback_duration_seconds**a **license_duration_seconds**. Případně je můžete nastavit na hodnotu nula, což znamená nekonečné nebo neomezené trvání.  
+U některých starších zařízení s Androidem je potřeba nastavit hodnoty pro následující vlastnosti **policy_overrides** (definované v [šabloně licence Widevine](widevine-license-template-overview.md): **rental_duration_seconds**, **playback_duration_seconds** a **license_duration_seconds**. Případně je můžete nastavit na hodnotu nula, což znamená nekonečné nebo neomezené trvání.  
 
 Hodnoty musí být nastaveny, aby nedocházelo k chybě přetečení celého čísla. Další vysvětlení tohoto problému naleznete v tématu https://github.com/google/ExoPlayer/issues/3150 a https://github.com/google/ExoPlayer/issues/3112 . <br/>Pokud hodnoty explicitně nenastavíte, budou přiřazeny velmi velké hodnoty pro  **PlaybackDurationRemaining** a **LicenseDurationRemaining** (například 9223372036854775807, což je maximální kladná hodnota pro 64 celé číslo). V důsledku toho se zdá, že licence Widevine vypršela, a proto se k dešifrování nestane. 
 
@@ -166,6 +166,6 @@ Další informace najdete v tématu [Nejčastější dotazy k Widevine](frequent
 
 Widevine je služba od společnosti Google Inc. v souladu s podmínkami služby a zásadami ochrany osobních údajů Google, Inc.
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 Tento článek popisuje, jak implementovat přehrávání offline režimu pro ČÁRKOVANý obsah chráněný Widevine na zařízeních s Androidem.  Také si odpověděli na některé běžné otázky týkající se offline streamování chráněného obsahu Widevine.

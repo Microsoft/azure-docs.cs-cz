@@ -113,6 +113,8 @@
           href: reference-data-guidelines.md
     - name: Formát zobrazení
       href: reference-markdown-format.md
+    - name: Privátní odkazy
+      href: reference-private-endpoint.md
     - name: Formát pro dávkové testování
       href: reference-tsv-format-batch-testing.md
     - name: Šifrování

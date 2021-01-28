@@ -10,12 +10,12 @@ ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d04075b415bace4104a58e8221d764355d3318d0
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 9276fca62e96395150c9545b8f4dcb5c8c0afb87
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744274"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954238"
 ---
 # <a name="authentication-methods-in-azure-active-directory---oath-tokens"></a>Metody ověřování ve Azure Active Directory – tokeny OATH
 
@@ -37,25 +37,25 @@ Tokeny OATH TOTP jsou obvykle dodávány s tajným klíčem neboli osivem přede
 
 Programovatelné hardwarové tokeny OATH TOTP, které je možné znovu vyhodnotit, můžete nastavit pomocí Azure AD v toku nastavení softwarového tokenu.
 
-Hardwarové tokeny OATH jsou podporovány v rámci verze Public Preview. Další informace o verzích Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) verze Preview.
+Hardwarové tokeny OATH jsou podporovány v rámci verze Public Preview. Další informace o verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
 
 ![Nahrávají se tokeny OATH do okna tokeny OATH MFA.](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
 
-Po získání tokenů musí být nahrané ve formátu textového souboru s oddělovači (CSV), včetně hlavního názvu uživatele, sériového čísla, tajného klíče, časového intervalu, výrobce a modelu, jak je znázorněno v následujícím příkladu:
+Po získání tokenů musí být nahrané ve formátu textového souboru s oddělovači (CSV), který obsahuje hlavní název uživatele (UPN), sériové číslo, tajný klíč, časový interval, výrobce a model, jak je znázorněno v následujícím příkladu:
 
 ```csv
 upn,serial number,secret key,time interval,manufacturer,model
 Helga@contoso.com,1234567,1234567abcdef1234567abcdef,60,Contoso,HardwareKey
-```
+```  
 
 > [!NOTE]
 > Ujistěte se, že jste do souboru CSV zahrnuli řádek záhlaví.
 
 Po správném formátování jako souboru CSV se správce může přihlásit k Azure Portal, přejít k **Azure Active Directory > tokeny Oath zabezpečení > MFA >** a nahrát výsledný soubor CSV.
 
-V závislosti na velikosti souboru CSV může zpracování trvat několik minut. Kliknutím na tlačítko **aktualizovat** zobrazíte aktuální stav. Pokud v souboru dojde k chybám, můžete si stáhnout soubor CSV se seznamem případných chyb, které můžete vyřešit. Názvy polí ve staženém souboru CSV se liší od nahrané verze.
+V závislosti na velikosti souboru CSV může zpracování trvat několik minut. Kliknutím na tlačítko **aktualizovat** zobrazíte aktuální stav. Pokud v souboru dojde k chybám, můžete si stáhnout soubor CSV se seznamem případných chyb, které můžete vyřešit. Názvy polí ve staženém souboru CSV se liší od nahrané verze.  
 
-Až budou všechny chyby vyřešené, může správce aktivovat každý klíč tak, že vybere možnost **aktivovat** pro token a vstoupí do jednorázového hesla zobrazeného na tokenu.
+Až budou všechny chyby vyřešené, může správce aktivovat každý klíč tak, že vybere možnost **aktivovat** pro token a vstoupí do jednorázového hesla zobrazeného na tokenu. Každých 5 minut můžete aktivovat maximálně 200 tokenů OATH. 
 
 Uživatelé můžou mít kombinaci až pěti hardwarových tokenů OATH nebo ověřovacích aplikací, jako je například aplikace Microsoft Authenticator, nakonfigurovaná pro použití kdykoli.
 

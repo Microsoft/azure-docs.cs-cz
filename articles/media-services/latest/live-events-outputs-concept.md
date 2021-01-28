@@ -1,9 +1,24 @@
 ---
-title: živé události a koncepty živých výstupů ve Azure Media Services V3: Azure Media Services popis: Toto téma poskytuje přehled živých událostí a živých výstupů v Azure Media Services V3.
-služby: Media-Services documentationcenter: ' ' Author: IngridAtMicrosoft Manager: femila Editor: ' '
-
-MS. Service: Media-Services MS. rebavování: Media ms.tgt_pltfrm: na MS. devlang: ne MS. téma: konceptuální MS. Date: 10/23/2020 MS. Author: inhenkel
-
+title: Koncepce živých událostí a živých výstupů
+description: Toto téma poskytuje přehled živých událostí a živých výstupů v Azure Media Services V3.
+services: media-services
+documentationcenter: ''
+author: IngridAtMicrosoft
+manager: femila
+editor: ''
+ms.service: media-services
+ms.workload: media
+ms.tgt_pltfrm: na
+ms.devlang: ne
+ms.topic: conceptual
+ms.date: 10/23/2020
+ms.author: inhenkel
+ms.openlocfilehash: 0b223fcedfdead991f7ce374f7f7814749388f90
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955949"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Živé události a živé výstupy v Media Services
 

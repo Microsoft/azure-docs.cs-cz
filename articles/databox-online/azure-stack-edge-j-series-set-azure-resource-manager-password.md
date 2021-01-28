@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 01/27/2021
 ms.author: alkohli
-ms.openlocfilehash: 915146cd17b90272daea4ce57f5243baf1d49cb3
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 8ecd1a99d41dc1391e6dba129d50eb53a67843d1
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578786"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955334"
 ---
 # <a name="set-azure-resource-manager-password-on-azure-stack-edge-pro-gpu-device"></a>Nastavení Azure Resource Manager hesla na zařízení s grafickým procesorem Azure Stack Edge pro
 
@@ -21,53 +21,55 @@ ms.locfileid: "94578786"
 
 Tento článek popisuje, jak nastavit heslo pro Azure Resource Manager. Toto heslo musíte nastavit při připojování k místním rozhraním API zařízení prostřednictvím Azure Resource Manager.
 
-Postup nastavení hesla se může lišit v závislosti na tom, jestli používáte Azure Portal, nebo rutiny PowerShellu. Jednotlivé postupy jsou popsány v následujících částech.
+<!--The procedure to set the password can be different depending upon whether you use the Azure portal or the PowerShell cmdlets. Each of these procedures is described in the following sections.-->
 
 
 ## <a name="reset-password-via-the-azure-portal"></a>Resetování hesla pomocí Azure Portal
 
-1. V Azure Portal pro správu zařízení přejít na prostředek Azure Stack Edge, který jste vytvořili. Začněte tím, že přejdete na **Edge compute >**.
-
-2. Na panelu příkazů v pravém podokně vyberte **Resetovat heslo Edge ARM**. 
+1. V Azure Portal pro správu zařízení přejít na prostředek Azure Stack Edge, který jste vytvořili. Přejít na **Edge services > brány cloudového úložiště**.
 
     ![Resetování hesla uživatele EdgeARM 1](media/azure-stack-edge-j-series-set-azure-resource-manager-password/set-edgearm-password-1.png)
 
-3. V okně **resetovat heslo uživatele EdgeArm** zadejte heslo pro připojení k místním rozhraním API zařízení prostřednictvím Azure Resource Manager. Potvrďte heslo a vyberte **resetovat**.
+2. Na panelu příkazů v pravém podokně vyberte **Resetovat heslo Edge ARM**. 
 
     ![Resetování hesla uživatele EdgeARM 2](media/azure-stack-edge-j-series-set-azure-resource-manager-password/set-edgearm-password-2.png)
 
+3. V okně **resetovat heslo uživatele EdgeArm** zadejte heslo pro připojení k místním rozhraním API zařízení prostřednictvím Azure Resource Manager. Potvrďte heslo a vyberte **resetovat**.
+
+    ![Resetování hesla uživatele EdgeARM 3](media/azure-stack-edge-j-series-set-azure-resource-manager-password/set-edgearm-password-3.png)
 
 
-## <a name="reset-password-via-powershell"></a>Resetování hesla prostřednictvím PowerShellu
 
-1. Na webu Azure Portal přejdete na prostředek Azure Stack Edge, který jste vytvořili pro správu zařízení. Poznamenejte si následující parametry na stránce **Přehled** .
+<!--## Reset password via PowerShell
 
-    - Název prostředku Azure Stack Edge
-    - ID předplatného
+1. In the Azure Portal, go to the Azure Stack Edge resource you created to manage your device. Make a note of the following parameters in the **Overview** page.
 
-2. Přejít na **nastavení > vlastnosti**. Na stránce **vlastnosti** si poznamenejte následující parametry.
+    - Azure Stack Edge resource name
+    - Subscription ID
 
-    - Skupina prostředků
-    - CIK šifrovací klíč: Vyberte zobrazení a pak zkopírujte **šifrovací klíč**.
+2. Go to **Settings > Properties**. Make a note of the following parameters in the **Properties** page.
 
-    ![Získat šifrovací klíč CIK](media/azure-stack-edge-j-series-set-azure-resource-manager-password/get-cik-portal.png)
+    - Resource group
+    - CIK encryption key: Select view and then copy the **Encryption Key**.
+
+    ![Get CIK encryption key](media/azure-stack-edge-j-series-set-azure-resource-manager-password/get-cik-portal.png)
  
-3. Identifikujte heslo, které budete používat pro připojení k Azure Resource Manager.
+3. Identify a password that you will use to connect to Azure Resource Manager.
 
-4. Spusťte Cloud Shell. Vyberte ikonu v pravém horním rohu:
+4. Start the cloud shell. Select on the icon in the top right corner:
 
-    ![Spustit Cloud Shell](media/azure-stack-edge-j-series-set-azure-resource-manager-password/start-cloud-shell.png) 
+    ![Start cloud shell](media/azure-stack-edge-j-series-set-azure-resource-manager-password/start-cloud-shell.png) 
 
-    Po spuštění Cloud shellu budete možná muset přepnout do PowerShellu.
+    Once the cloud shell has started, you may need to switch to PowerShell.
 
-    ![Cloud Shell](media/azure-stack-edge-j-series-set-azure-resource-manager-password/cloud-shell.png)   
+    ![Cloud shell](media/azure-stack-edge-j-series-set-azure-resource-manager-password/cloud-shell.png)   
 
 
-5. Nastavte kontext. Zadejte:
+5. Set context. Type:
 
     `Set-AzContext -SubscriptionId <Subscription ID>`
 
-    Zde je ukázkový výstup:
+    Here is a sample output:
 
     
     ```azurepowershell
@@ -80,11 +82,11 @@ Postup nastavení hesla se může lišit v závislosti na tom, jestli používá
         PS Azure:/
     ```
     
-5.  Pokud máte nějaké staré moduly PS, musíte je nainstalovat.
+5.  If you have any old PS modules, you need to install those.
 
     `Remove-Module  Az.DataBoxEdge -force`
 
-    Zde je ukázkový výstup. V tomto příkladu nebyly nainstalovány žádné staré moduly.
+    Here is a sample output. In this example, there were no old modules to be installed.
 
     
     ```azurepowershell
@@ -99,7 +101,7 @@ Postup nastavení hesla se může lišit v závislosti na tom, jestli používá
         PS Azure:\
     ```
 
-6. Další sada příkazů se stáhne a spustí skript pro instalaci modulů PowerShellu.
+6. Next set of commands will download and run a script to install PowerShell modules.
     
     ```azurepowershell
         cd ~/clouddrive
@@ -108,7 +110,7 @@ Postup nastavení hesla se může lišit v závislosti na tom, jestli používá
         Import-Module ~/clouddrive/Az.DataBoxEdge/Az.DataBoxEdge.psd1 -Force
     ```
 
-7. V další sadě příkazů budete muset zadat název prostředku, název skupiny prostředků, šifrovací klíč a heslo, které jste identifikovali v předchozím kroku.
+7. In the next set of commands, you'll need to provide the resource name, resource group name, encryption key, and the password you identified in the previous step.
 
     ```azurepowershell
     $devicename = "<Azure Stack Edge resource name>"
@@ -116,18 +118,18 @@ Postup nastavení hesla se může lišit v závislosti na tom, jestli používá
     $cik = "<Encryption key>"
     $password = "<Password>"
     ```
-    Parametry hesla a šifrovacího klíče musí být předány jako zabezpečené řetězce. K převodu hesla a šifrovacího klíče na zabezpečené řetězce použijte následující rutiny.
+    The password and encryption key parameters must be passed as secure strings. Use the following cmdlets to convert the password and encryption key to secure strings.
 
     ```azurepowershell
     $pass = ConvertTo-SecureString $password -AsPlainText -Force
     $key = ConvertTo-SecureString $cik -AsPlainText -Force
     ```
-    Použijte výše generované zabezpečené řetězce jako parametry v rutině Set-AzDataBoxEdgeUser pro resetování hesla. Použijte stejnou skupinu prostředků, kterou jste použili při vytváření prostředku Azure Stack Edge pro/Data Box Gateway.
+    Use the above generated secure strings as parameters in the Set-AzDataBoxEdgeUser cmdlet to reset the password. Use the same resource group that you used when creating the Azure Stack Edge Pro/Data Box Gateway resource.
 
     ```azurepowershell
     Set-AzDataBoxEdgeUser -ResourceGroupName $resourceGroup -DeviceName $devicename -Name EdgeARMUser  -Password $pass -EncryptionKey $key
     ```
-    Zde je ukázkový výstup.
+    Here is the sample output.
     
     ```azurepowershell
     PS /home/aseuser/clouddrive> $devicename = "myaseresource"
@@ -144,7 +146,7 @@ Postup nastavení hesla se může lišit v závislosti na tom, jestli používá
     
         PS /home/aseuser/clouddrive>
     ```
-Pomocí nového hesla se připojte k Azure Resource Manager.
+Use the new password to connect to Azure Resource Manager.-->
 
 ## <a name="next-steps"></a>Další kroky
 

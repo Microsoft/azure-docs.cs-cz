@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 01/19/2021
 ms.author: chmutali
-ms.openlocfilehash: 6a73ecf18a4bd89567dc603758d9ff8501267a1f
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: a39f7701d0244eff7f914908a6708dfc14873b35
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570030"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954851"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-azure-ad-user-provisioning"></a>Kurz: Konfigurace zřizování SAP SuccessFactors pro uživatele Azure AD
 Cílem tohoto kurzu je Ukázat kroky, které musíte provést při zřizování pracovních dat od SuccessFactors zaměstnanců do Azure Active Directory, s volitelným zpětným zápisem e-mailové adresy SuccessFactors. 
@@ -223,9 +223,8 @@ V této části nakonfigurujete, jak budou data uživatelů z SuccessFactors do 
 
 1. V části **mapování atributů** můžete definovat, jak se jednotlivé atributy SuccessFactors mapují na atributy služby Active Directory.
 
-  >[!NOTE]
-  >Úplný seznam atributu SuccessFactors podporovaného aplikací najdete v [referenčních informacích k atributům SuccessFactors](../app-provisioning/sap-successfactors-attribute-reference.md) .
-
+     >[!NOTE]
+     >Úplný seznam atributu SuccessFactors podporovaného aplikací najdete v [referenčních informacích k atributům SuccessFactors](../app-provisioning/sap-successfactors-attribute-reference.md) .
 
 1. Kliknutím na existující mapování atributů ho aktualizujte nebo kliknutím na **Přidat nové mapování** v dolní části obrazovky přidejte nová mapování. Jednotlivé mapování atributů podporují tyto vlastnosti:
 

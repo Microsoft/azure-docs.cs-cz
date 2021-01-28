@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: ebefd5ccec321e8c3d580109c3b3c9dc8ba310c3
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 39c9cbdbe8be5c068f9426b53f312563e01a77bc
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97532124"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98956254"
 ---
 ### <a name="examine-and-edit-the-sample-files"></a>Kontrola a úprava ukázkových souborů
 
@@ -87,6 +87,13 @@ Jako součást požadavků jste stáhli vzorový kód do složky. Pomocí těcht
     V opačném případě v levém dolním rohu poblíž podokna **Azure IoT Hub** vyberte ikonu **Další akce** a pak vyberte **nastavit IoT Hub připojovací řetězec**. Můžete zkopírovat řetězec z *appsettings.jsv* souboru. Nebo pokud chcete mít jistotu, že jste nakonfigurovali správné centrum IoT v rámci Visual Studio Code, použijte [příkaz vybrat IoT Hub](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Select-IoT-Hub).
 
     ![Připojovací řetězec IoT Hub](../../../media/quickstarts/iot-hub-connection-string-grpc.png)
+
+> [!NOTE]
+> Můžete být vyzváni k zadání předdefinovaných informací koncového bodu pro IoT Hub. Chcete-li získat tyto informace, v Azure Portal přejděte do IoT Hub a vyhledejte v levém navigačním podokně možnost **Předdefinované koncové body** . Klikněte na něj a vyhledejte **koncový bod kompatibilní** s centrem událostí v části **koncový bod kompatibilní** s centrem událostí. Zkopírujte a použijte text v poli. Koncový bod bude vypadat přibližně takto:  
+    ```
+    Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+    ```
+
 1. Klikněte pravým tlačítkem na *Src/Edge/config/* *deployment.grpcyolov3icpu.amd64.jsna* a vyberte **vytvořit nasazení pro jedno zařízení**.
 
     ![vytvořit jedno zařízení nasazení](../../../media/quickstarts/create-deployment-single-device-grpc.png)
@@ -97,7 +104,7 @@ Jako součást požadavků jste stáhli vzorový kód do složky. Pomocí těcht
     * Modul **rtspsim** , který simuluje Server RTSP a funguje jako zdroj živého informačního kanálu.
 
         > [!NOTE]
-        > Pokud místo toho, které jste zřídili pomocí našeho skriptu pro instalaci, používáte vlastní hraniční zařízení, přečtěte si příslušné hraniční zařízení a spusťte následující příkazy s **právy správce**, abyste mohli načíst a uložit ukázkový videosoubor, který se používá pro tento rychlý Start:  
+        > Výše uvedené kroky předpokládají, že používáte virtuální počítač vytvořený instalačním skriptem. Pokud místo toho používáte vlastní hraniční zařízení, přečtěte si hraniční zařízení a spusťte následující příkazy s **právy správce**, abyste mohli načíst a uložit ukázkový videosoubor, který se používá pro tento rychlý Start:  
 
         ```
         mkdir /home/lvaadmin/samples

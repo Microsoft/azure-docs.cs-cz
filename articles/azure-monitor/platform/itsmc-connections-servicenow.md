@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
-ms.openlocfilehash: 7d1b4b3542f6914d413a5e29e57baa15e7a53346
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 3cc38fad6f26bf6f382b4a275638c450c8333a04
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98012780"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955728"
 ---
 # <a name="connect-servicenow-with-it-service-management-connector"></a>Připojení ServiceNow ke konektoru pro správu služeb IT
 
@@ -122,7 +122,7 @@ K vytvoření připojení ServiceNow použijte následující postup.
    | --- | --- |
    | **Název připojení**   | Zadejte název instance ServiceNow, ke které se chcete připojit pomocí ITSMC. Tento název použijete později v Log Analytics při konfiguraci pracovních položek ITSM a zobrazení podrobných analýz. |
    | **Typ partnera**   | Vyberte **ServiceNow**. |
-   | **Adresa URL serveru**   | Zadejte adresu URL instance ServiceNow, ke které se chcete připojit ITSMC. Adresa URL by měla ukazovat na podporovanou verzi SaaS s příponou *. ServiceNow.com*.|
+   | **Adresa URL serveru**   | Zadejte adresu URL instance ServiceNow, ke které se chcete připojit ITSMC. Adresa URL by měla ukazovat na podporovanou verzi SaaS s příponou *. ServiceNow.com* (například https://XXXXX.service-now.com/) .|
    | **Uživatelské jméno**   | Zadejte uživatelské jméno integrace, které jste vytvořili v aplikaci ServiceNow, aby se podporovalo připojení k ITSMC.|
    | **Heslo**   | Zadejte heslo přidružené k tomuto uživatelskému jménu. **Poznámka**: uživatelské jméno a heslo se používají jenom k vytváření tokenů ověřování. Neukládají se kdekoli v rámci služby ITSMC.  |
    | **ID klienta**   | Zadejte ID klienta, které chcete použít pro OAuth2 ověřování, které jste vygenerovali dříve. Další informace o generování ID klienta a tajného klíče najdete v tématu [Nastavení OAuth](https://wiki.servicenow.com/index.php?title=OAuth_Setup). |

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 01/18/2021
-ms.openlocfilehash: c3e6408a6a3473380edbe2966eba41970bd73562
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: be6d47d8f40746bfb2154ddb62cf2e9ce93e74aa
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762769"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955679"
 ---
 # <a name="errors-in-the-connector-status-section"></a>Chyby v sekci stav konektoru
 
@@ -66,6 +66,10 @@ V této části najdete běžné chyby, které se zobrazují v části stav kone
 
 * **Chyba**: něco se pokazilo. Nepovedlo se získat podrobnosti o připojení. Tato chyba se zobrazí, když zákazník definuje skupinu akcí ITSM.
 
-    **Příčina**: u nově vytvořeného KONEKTORu ITSM se ještě dokončila počáteční synchronizace.
+    **Příčina**: Tato chyba se zobrazí, když:
+    * Nově vytvořený konektor ITSM ještě pro dokončení počáteční synchronizace.
+    * Konektor nebyl správně definován.
 
-    **Řešení**: při vytvoření nového konektoru ITSM SPUSTÍ konektor ITSM synchronizaci informací ze systému ITSM, jako jsou šablony pracovních položek a pracovní položky. Synchronizujte konektor ITSM pro vygenerování nového obnovovacího tokenu, jak je vysvětleno [zde](./itsmc-resync-servicenow.md).
+    **Řešení**: 
+    * Při vytvoření nového konektoru ITSM spustí konektor ITSM synchronizaci informací ze systému ITSM, jako jsou šablony pracovních položek a pracovní položky. Synchronizujte konektor ITSM pro vygenerování nového obnovovacího tokenu, jak je vysvětleno [zde](./itsmc-resync-servicenow.md).
+    * Projděte si podrobnosti o připojení v konektoru ITSM, jak je popsáno [zde](./itsmc-connections-servicenow.md#create-a-connection) , a ověřte, že se váš konektor ITSM může úspěšně [synchronizovat](./itsmc-resync-servicenow.md).

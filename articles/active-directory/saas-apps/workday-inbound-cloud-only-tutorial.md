@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 197b7ff0a6c613a019007ba507d678b619c9afd4
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: ef4381f305292b366348aa3729209dc3f5e8c87b
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358588"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954085"
 ---
 # <a name="tutorial-configure-workday-to-azure-ad-user-provisioning"></a>Kurz: Konfigurace zřizování uživatelů v Workday na Azure AD
 Cílem tohoto kurzu je Ukázat kroky, které je třeba provést při zřizování pracovních dat z Workday do Azure Active Directory. 
@@ -103,7 +103,7 @@ Následující části popisují kroky pro konfiguraci zřizování uživatelů 
 
 6. Až se aplikace přidá a zobrazí se obrazovka s podrobnostmi aplikace, vyberte **zřizování**.
 
-7. Změňte režim **zřizování** **Mode** na **automaticky**.
+7. Změňte režim **zřizování**  na **automaticky**.
 
 8. Dokončete část **přihlašovací údaje správce** následujícím způsobem:
 
@@ -208,11 +208,11 @@ Po dokončení konfigurace aplikace pro zřizování Workday můžete službu z�
 
 ## <a name="next-steps"></a>Další kroky
 
+* [Další informace o scénářích Integrace Azure AD a Workday a volání webové služby](../app-provisioning/workday-integration-reference.md)
 * [Další informace o podporovaných atributech Workday pro příchozí zřizování](../app-provisioning/workday-attribute-reference.md)
 * [Informace o tom, jak nakonfigurovat zpětný zápis do Workday](workday-writeback-tutorial.md)
 * [Zjistěte, jak procházet protokoly a získat sestavy aktivit zřizování](../app-provisioning/check-status-user-account-provisioning.md).
 * [Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Workday a Azure Active Directory](workday-tutorial.md)
-* [Naučte se integrovat další aplikace SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Naučte se exportovat a importovat vaše konfigurace zřizování.](../app-provisioning/export-import-provisioning-configuration.md)
 
 

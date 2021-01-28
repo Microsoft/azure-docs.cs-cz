@@ -5,12 +5,12 @@ ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a41a5828a82d81c5e7e8749fee70cd15e17bb9d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f05afb3c23fc720bb0100a751a6943d7bb03453f
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84697686"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954779"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optimalizace výkonu a spolehlivosti Azure Functions
 
@@ -112,7 +112,7 @@ U funkcí jazyka C# lze typ změnit na pole silného typu.  Například namísto
 
 `host.json`Soubor v aplikaci Function App umožňuje konfiguraci chování hostitele a spuštění.  Kromě dávkování chování můžete spravovat souběžnost pro určitý počet triggerů. Často se upravují hodnoty v těchto možnostech, které mohou pokaždé škálovat každou instanci odpovídajícím způsobem pro požadavky vyvolaných funkcí.
 
-Nastavení v souboru host.json se aplikují napříč všemi funkcemi v rámci aplikace v rámci *jedné instance* funkce. Pokud máte například aplikaci funkcí se dvěma funkcemi HTTP a [`maxConcurrentRequests`](functions-bindings-http-webhook-output.md#hostjson-settings) požadavky nastavenými na 25, požadavek na Trigger http by se nacházel do sdíleného 25 souběžných požadavků.  Když se tato aplikace Functions škáluje na 10 instancí, můžou tyto dvě funkce efektivně umožňovat 250 souběžných žádostí (10 instancí × 25 souběžných požadavků na instanci). 
+Nastavení v souboru host.json se aplikují napříč všemi funkcemi v rámci aplikace v rámci *jedné instance* funkce. Pokud máte například aplikaci funkcí se dvěma funkcemi HTTP a [`maxConcurrentRequests`](functions-bindings-http-webhook-output.md#hostjson-settings) požadavky nastavenými na 25, požadavek na Trigger http by se nacházel do sdíleného 25 souběžných požadavků.  Když se tato aplikace Functions škáluje na 10 instancí, deset funkcí efektivně umožní 250 souběžných požadavků (10 instancí × 25 souběžných požadavků na instanci). 
 
 Další možnosti konfigurace hostitele najdete v [host.jsčlánku o konfiguraci](functions-host-json.md).
 

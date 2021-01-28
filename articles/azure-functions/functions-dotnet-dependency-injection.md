@@ -4,15 +4,15 @@ description: Naučte se používat vkládání závislostí k registraci a použ
 author: ggailey777
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.date: 08/15/2020
+ms.date: 01/27/2021
 ms.author: glenga
 ms.reviewer: jehollan
-ms.openlocfilehash: 70ec9248db002823e969fa5f4fba8bf1074a9af7
-ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
+ms.openlocfilehash: 66e2cd22f4bcb95be65d6d04345dcac622436a04
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97706928"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955084"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Použití injektáže závislostí ve službě Azure Functions pro .NET
 
@@ -190,7 +190,7 @@ Další informace o úrovních protokolu najdete v tématu [Configure log úrovn
 
 Hostitel funkce registruje mnoho služeb. V rámci vaší aplikace je možné v aplikaci provést zabezpečení těchto služeb:
 
-|Typ služby|Doba platnosti|Popis|
+|Typ služby|Doba platnosti|Description|
 |--|--|--|
 |`Microsoft.Extensions.Configuration.IConfiguration`|Singleton|Konfigurace modulu runtime|
 |`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|Singleton|Zodpovídá za poskytnutí ID instance hostitele.|
@@ -256,6 +256,24 @@ public class HttpTrigger
 ```
 
 Další podrobnosti týkající se práce s možnostmi najdete [v tématu vzor možností v ASP.NET Core](/aspnet/core/fundamentals/configuration/options) .
+
+## <a name="using-aspnet-core-user-secrets"></a>Používání ASP.NET Core uživatelských tajných klíčů
+
+Při vývoji místně ASP.NET Core poskytuje [Nástroj Správce tajných klíčů](/aspnet/core/security/app-secrets#secret-manager) , který umožňuje ukládat tajné informace mimo kořenový adresář projektu. Díky tomu je méně pravděpodobný, že tajné klíče jsou omylem svěřeny správě zdrojového kódu. Azure Functions Core Tools (verze 3.0.3233 nebo novější) automaticky přečtou tajné klíče vytvořené správcem ASP.NET Core tajných klíčů.
+
+Chcete-li nakonfigurovat projekt Azure Functions .NET pro použití uživatelských tajných kódů, spusťte následující příkaz v kořenovém adresáři projektu.
+
+```bash
+dotnet user-secrets init
+```
+
+Pak použijte `dotnet user-secrets set` příkaz k vytvoření nebo aktualizaci tajných kódů.
+
+```bash
+dotnet user-secrets set MySecret "my secret value"
+```
+
+Chcete-li získat přístup k hodnotám tajných kódů uživatele v kódu aplikace Function App, použijte `IConfiguration` nebo `IOptions` .
 
 ## <a name="customizing-configuration-sources"></a>Přizpůsobení zdrojů konfigurace
 

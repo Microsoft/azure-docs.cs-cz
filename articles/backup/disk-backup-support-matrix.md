@@ -4,12 +4,12 @@ description: Poskytuje souhrn nastavení podpory a omezení zálohování disku 
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 5281a5f0b833759c2594b6748cf06f2e12c03822
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 08d2ac8451e88dd8d40ed5faee0368ff7739cd16
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757470"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954694"
 ---
 # <a name="azure-disk-backup-support-matrix-in-preview"></a>Matice podpory Azure disk Backup (ve verzi Preview)
 
@@ -65,6 +65,8 @@ Další oblasti budou oznámeny, jakmile budou k dispozici.
 - Spravované disky umožňují měnit úroveň výkonu při nasazení nebo pak beze změny velikosti disku. Řešení zálohování disku Azure podporuje změny úrovně výkonu na zdrojovém disku, který se zálohuje. Během obnovení bude úroveň výkonu obnoveného disku stejná jako u zdrojového disku v době zálohování. Pokud chcete po operaci obnovení změnit úroveň výkonu [disku, postupujte](../virtual-machines/disks-performance-tiers-portal.md) podle pokynů v dokumentaci.
 
 - Podpora [privátních odkazů](../virtual-machines/disks-enable-private-links-for-import-export-portal.md) u spravovaných disků umožňuje omezit export a import spravovaných disků tak, aby se staly jenom v rámci vaší virtuální sítě Azure. Azure disk Backup podporuje zálohování disků, které mají povolené soukromé koncové body. Nezahrnuje data záloh nebo snímky, které budou přístupné prostřednictvím privátního koncového bodu.
+
+- Během období Preview nemůžete zakázat zálohování, takže možnost **Zastavit zálohování a zachovat data zálohy** se nepodporuje. Můžete odstranit instanci zálohování, která neukončí pouze zálohování, ale také odstraní všechna data zálohy.
 
 ## <a name="next-steps"></a>Další kroky
 

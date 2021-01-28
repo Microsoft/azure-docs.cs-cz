@@ -13,12 +13,12 @@ ms.date: 01/25/2021
 ms.author: marsma
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: f660bd17954afb4ae02da77e93d4d9cc36f3d355
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 560caa7e29ce12b58e151a1362aaf2c662646f13
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98763420"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954796"
 ---
 # <a name="logging-in-msal-for-python"></a>Protokolování v MSAL pro Python
 
@@ -54,6 +54,6 @@ Další informace o protokolování v Pythonu najdete v tématu protokolování 
 
 ## <a name="next-steps"></a>Další kroky
 
-Další ukázky kódu naleznete v tématu [Microsoft Identity Platform Code Samples)](sample-v2-code.md).
+Další ukázky kódu najdete v tématu [ukázky kódu Microsoft Identity Platform](sample-v2-code.md).
 
 ---

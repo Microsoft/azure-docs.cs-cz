@@ -5,12 +5,12 @@ author: naiteeks
 ms.topic: how-to
 ms.author: naiteeks
 ms.date: 12/14/2020
-ms.openlocfilehash: aa8657550c6475afd9f893acf8985c50cec0f199
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 49c17946203bc6c3655b1aaf7b04a1ee3ea67388
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98119454"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955645"
 ---
 # <a name="upgrading-live-video-analytics-on-iot-edge-from-10-to-20"></a>Upgrade živé analýzy videí v IoT Edge od 1,0 do 2,0
 
@@ -37,7 +37,7 @@ V šabloně nasazení vyhledejte svou živou analýzu videa v modulu IoT Edge po
 "image": "mcr.microsoft.com/media/live-video-analytics:2"
 ```
 > [!TIP]
-Pokud jste nezměnili název živé analýzy videí v modulu IoT Edge, hledejte `lvaEdge` pod uzlem modul.
+> Pokud jste nezměnili název živé analýzy videí v modulu IoT Edge, hledejte `lvaEdge` pod uzlem modul.
 
 ### <a name="topology-file-changes"></a>Změny souboru topologie
 V souborech topologie se ujistěte, že **`apiVersion`** je nastavená na 2,0.
@@ -58,9 +58,9 @@ V souborech topologie se ujistěte, že **`apiVersion`** je nastavená na 2,0.
 >**`outputSelectors`** Je volitelná vlastnost. Pokud se tato možnost nepoužívá, bude se v mediálním grafu předávat zvuk (Pokud je povolený) a video z příjemky přes příjem dat z kamery RTSP. 
 
 * V `MediaGraphHttpExtension` `MediaGraphGrpcExtension` procesorech a si všimněte následujících změn:  
-    * **Vlastnosti obrázku**
-        * `MediaGraphImageFormatEncoded` již není podporován. 
-        * Místo toho použijte **`MediaGraphImageFormatBmp`** nebo **`MediaGraphImageFormatJpeg`** nebo **`MediaGraphImageFormatPng`** . Třeba
+    #### <a name="image-properties"></a>Vlastnosti obrázku
+    * `MediaGraphImageFormatEncoded` již není podporován. 
+      * Místo toho použijte **`MediaGraphImageFormatBmp`** nebo **`MediaGraphImageFormatJpeg`** nebo **`MediaGraphImageFormatPng`** . Třeba
         ```
         "image": {
                 "scale": 
@@ -94,14 +94,14 @@ V souborech topologie se ujistěte, že **`apiVersion`** je nastavená na 2,0.
         >[!NOTE]
         > Možné hodnoty pixelFormat zahrnují: `yuv420p` , `rgb565be` , `rgb565le` , `rgb555be` , `rgb555le` , `rgb24` , `bgr24` , `argb` , `rgba` , `abgr` , `bgra`  
 
-    * **extensionConfiguration pro procesor rozšíření Grpc**  
-        * V `MediaGraphGrpcExtension` procesoru **`extensionConfiguration`** je k dispozici nová vlastnost s názvem, což je volitelný řetězec, který lze použít jako součást gRPC smlouvy. Toto pole lze použít k předání libovolných dat na odvozený Server a můžete definovat, jak server odvození používá tato data.  
-        Jeden případ použití této vlastnosti je v případě, že máte více modelů AI zabalených na jednom odvozeném serveru. Pomocí této vlastnosti nebude nutné vystavit uzel pro každý model AI. Místo toho pro instanci grafu jako poskytovatel rozšíření můžete definovat, jak vybrat různé modely AI pomocí **`extensionConfiguration`** vlastnosti a během provádění, lva tento řetězec předat serveru Inferencing, který může použít k vyvolání požadovaného modelu AI.  
+    #### <a name="extensionconfiguration-for-grpc-extension-processor"></a>extensionConfiguration pro procesor rozšíření Grpc  
+    * V `MediaGraphGrpcExtension` procesoru **`extensionConfiguration`** je k dispozici nová vlastnost s názvem, což je volitelný řetězec, který lze použít jako součást gRPC smlouvy. Toto pole lze použít k předání libovolných dat na odvozený Server a můžete definovat, jak server odvození používá tato data.  
+    Jeden případ použití této vlastnosti je v případě, že máte více modelů AI zabalených na jednom odvozeném serveru. Pomocí této vlastnosti nebude nutné vystavit uzel pro každý model AI. Místo toho pro instanci grafu jako poskytovatel rozšíření můžete definovat, jak vybrat různé modely AI pomocí **`extensionConfiguration`** vlastnosti a během provádění, lva tento řetězec předat serveru Inferencing, který může použít k vyvolání požadovaného modelu AI.  
 
-    * **Složení AI**
-        * Live video Analytics 2,0 teď podporuje používání více než jednoho procesoru rozšíření multimediálního grafu v rámci topologie. Snímky médií z kamery RTSP můžete předat do různých modelů AI sekvenčně, paralelně nebo v kombinaci obou. Podívejte se prosím do vzorové topologie, kde se používají dva modely AI postupně.
+    #### <a name="ai-composition"></a>Složení AI
+    * Live video Analytics 2,0 teď podporuje používání více než jednoho procesoru rozšíření multimediálního grafu v rámci topologie. Snímky médií z kamery RTSP můžete předat do různých modelů AI sekvenčně, paralelně nebo v kombinaci obou. Podívejte se prosím do vzorové topologie, kde se používají dva modely AI postupně.
 
-
+### <a name="disk-space-management-with-sink-nodes"></a>Správa místa na disku pomocí uzlů jímky
 * V uzlu **jímky souborů** teď můžete určit, kolik místa na disku může dynamická analýza videa v IoT Edge použít k uložení zpracovaných imagí. Provedete to tak, že přidáte **`maximumSizeMiB`** pole do uzlu jímky. Ukázkový uzel jímky souborů je následující:
     ```
     "sinks": [
@@ -154,6 +154,7 @@ V souborech topologie se ujistěte, že **`apiVersion`** je nastavená na 2,0.
     >[!NOTE]
     >  Cesta **jímky souborů** je rozdělená na základní cestu adresáře a vzor názvu souboru, zatímco cesta **jímky prostředků** zahrnuje základní cestu adresáře.  
 
+### <a name="frame-rate-management"></a>Správa snímkových frekvencí
 * **`MediaGraphFrameRateFilterProcessor`** se v nástroji **Live video Analytics v modulu IoT Edge 2,0** už nepoužívá.
     * Chcete-li vzorkovat příchozí video pro zpracování, přidejte **`samplingOptions`** vlastnost do MediaGraphch procesorů ( `MediaGraphHttpExtension` nebo `MediaGraphGrpcExtension` ).  
      ```
@@ -169,7 +170,7 @@ V této verzi se dá telegraf použít k odeslání metrik do Azure Monitor. Tad
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/telemetry-schema/telegraf.png" alt-text="Taxonomie událostí":::
 
-Image telegraf s vlastní konfigurací můžete snadno vytvořit pomocí Docker. Přečtěte si další informace na stránce [monitorování a protokolování](monitoring-logging.md#azure-monitor-collection-via-telegraf) .
+Image telegraf s vlastní konfigurací můžete snadno vytvořit pomocí Docker. Další informace najdete na stránce [monitorování a protokolování](monitoring-logging.md#azure-monitor-collection-via-telegraf) .
 
 ## <a name="next-steps"></a>Další kroky
 

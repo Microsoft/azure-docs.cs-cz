@@ -3,12 +3,12 @@ title: Začínáme se službou Live video Analytics v IoT Edge – Azure
 description: V tomto rychlém startu se dozvíte, jak začít pracovat se službou Live video Analytics na IoT Edge. Naučte se detekovat pohyb v živém streamu videa.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: cbe4b1280897064938222680fc932cfe289d2f32
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 2ae8292375c0b85cc4c771c1fe7d853c5fcd3afd
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98631932"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955762"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Rychlý Start: Začínáme – Live video Analytics na IoT Edge
 
@@ -59,7 +59,21 @@ Pro tento rychlý Start doporučujeme, abyste k nasazení požadovaných prostř
     bash -c "$(curl -sL https://aka.ms/lva-edge/setup-resources-for-samples)"
     ```
     
-Po úspěšném dokončení skriptu byste měli vidět všechny požadované prostředky v rámci vašeho předplatného. Ve výstupu skriptu obsahuje tabulka prostředků název centra IoT. Vyhledejte typ prostředku **`Microsoft.Devices/IotHubs`** a poznamenejte si jeho název. Tento název budete potřebovat v dalším kroku.  
+    Po úspěšném dokončení skriptu byste měli vidět všechny požadované prostředky v rámci vašeho předplatného. Skript nastaví celkem 12 prostředků:
+    1. **Koncový bod streamování** – to vám pomůže při přehrávání zaznamenaného prostředku AMS.
+    1. **Virtuální počítač** – jedná se o virtuální počítač, který bude fungovat jako hraniční zařízení.
+    1. **Disk** – jedná se o disk úložiště, který je připojený k virtuálnímu počítači pro ukládání médií a artefaktů.
+    1. **Skupina zabezpečení sítě** – slouží k filtrování síťového provozu do a z prostředků Azure ve službě Azure Virtual Network.
+    1. **Síťové rozhraní** – umožňuje virtuálnímu počítači Azure komunikovat s internetem, Azure a dalšími prostředky.
+    1. **Připojení bastionu** – to vám umožní připojit se k virtuálnímu počítači pomocí prohlížeče a Azure Portal.
+    1. **Veřejná IP adresa** – umožňuje prostředkům Azure komunikovat s internetem a veřejně přístupnými službami Azure.
+    1. **Virtuální síť** – Tato možnost umožňuje mezi sebou zabezpečit mnoho typů prostředků Azure, jako je třeba virtuální počítač, aby bylo možné bezpečně komunikovat mezi sebou, internetem a místními sítěmi. Další informace o [virtuálních sítích](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
+    1. **IoT Hub** – slouží jako centrální Centrum zpráv pro obousměrnou komunikaci mezi aplikací IoT, IoT Edge moduly a zařízeními, která spravuje.
+    1. **Účet Media Service** – to pomáhá se správou a streamování mediálního obsahu v Azure.
+    1. **Účet úložiště** – musíte mít jeden primární účet úložiště a k vašemu Media Services účtu můžete mít k dispozici libovolný počet sekundárních účtů úložiště. Další informace najdete v tématu [účty Azure Storage s účty Azure Media Services](https://docs.microsoft.com/azure/media-services/latest/storage-account-concept).
+    1. **Registr kontejnerů** – to pomáhá ukládat a spravovat vaše soukromé image kontejnerů Docker a související artefakty.
+
+Ve výstupu skriptu obsahuje tabulka prostředků název centra IoT. Vyhledejte typ prostředku **`Microsoft.Devices/IotHubs`** a poznamenejte si jeho název. Tento název budete potřebovat v dalším kroku.  
 
 > [!NOTE]
 > Skript také vygeneruje několik konfiguračních souborů v adresáři **_~/clouddrive/lva-Sample/_* _. Tyto soubory budete potřebovat později v rychlém startu.
@@ -101,6 +115,12 @@ Podle těchto pokynů se připojte ke službě IoT Hub pomocí rozšíření Azu
 1. V levém dolním rohu karty **Průzkumník** vyberte **Azure IoT Hub**.
 1. Kliknutím na ikonu **Další možnosti** zobrazíte kontextovou nabídku. Pak vyberte **nastavit IoT Hub připojovací řetězec**.
 1. Po zobrazení vstupního pole zadejte připojovací řetězec IoT Hub. V Cloud Shell můžete získat připojovací řetězec z *~/clouddrive/lva-sample/appsettings.jsna*.
+
+> [!NOTE]
+> Můžete být vyzváni k zadání předdefinovaných informací koncového bodu pro IoT Hub. Chcete-li získat tyto informace, v Azure Portal přejděte do IoT Hub a vyhledejte v levém navigačním podokně možnost **Předdefinované koncové body** . Klikněte na něj a vyhledejte **koncový bod kompatibilní** s centrem událostí v části **koncový bod kompatibilní** s centrem událostí. Zkopírujte a použijte text v poli. Koncový bod bude vypadat přibližně takto:  
+    ```
+    Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+    ```
 
 Pokud je připojení úspěšné, zobrazí se seznam hraničních zařízení. Měli byste vidět aspoň jedno zařízení s názvem **lva-Sample-Device**. Pomocí místní nabídky teď můžete spravovat zařízení IoT Edge a pracovat s Azure IoT Hub. Chcete-li zobrazit moduly nasazené na hraničním zařízení, v části **lva-Sample-Device** rozbalte uzel **moduly** .
 

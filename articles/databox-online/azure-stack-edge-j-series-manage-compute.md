@@ -6,26 +6,26 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 01/27/2021
 ms.author: alkohli
-ms.openlocfilehash: 1d4d0c591640a3528b7aeec5254f2a634ee008aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4c4fbef807d31e03a79f80db7fd29580074fb8bd
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743671"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955446"
 ---
 # <a name="manage-compute-on-your-azure-stack-edge-pro-gpu"></a>Správa výpočetních prostředků na GPU Azure Stack Edge pro
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-Tento článek popisuje, jak spravovat výpočetní prostředky na Azure Stack Edge pro. Výpočetní prostředky můžete spravovat prostřednictvím Azure Portal nebo prostřednictvím místního webového uživatelského rozhraní. Pomocí Azure Portal můžete spravovat moduly, triggery a výpočetní konfiguraci a místní webové uživatelské rozhraní pro správu výpočetních nastavení.
+Tento článek popisuje, jak spravovat výpočetní prostředky prostřednictvím služby IoT Edge na zařízení GPU Azure Stack Edge pro. Výpočetní prostředky můžete spravovat prostřednictvím Azure Portal nebo prostřednictvím místního webového uživatelského rozhraní. Pomocí Azure Portal můžete spravovat moduly, triggery a konfiguraci IoT Edge a místní webové uživatelské rozhraní pro správu výpočetních nastavení sítě.
 
 V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Spravovat triggery
-> * Spravovat výpočetní konfiguraci
+> * Správa konfigurace IoT Edge
 
 
 ## <a name="manage-triggers"></a>Spravovat triggery
@@ -40,7 +40,7 @@ Události jsou něco, co se děje v rámci cloudového prostředí nebo na zař�
 
 Pokud chcete vytvořit Trigger, proveďte následující kroky v Azure Portal.
 
-1. V Azure Portal přejdete do svého prostředku Azure Stack Edge a pak přejdete na **> Trigger COMPUTE COMPUTE pro Edge**. Na panelu příkazů vyberte **+ Přidat aktivační událost** .
+1. V Azure Portal přejdete na prostředek Azure Stack Edge a pak přejdete na **IoT Edge**. Přejít na **triggery** a na panelu příkazů vyberte **+ Přidat Trigger** .
 
     ![Vyberte Přidat aktivační událost.](media/azure-stack-edge-j-series-manage-compute/add-trigger-1m.png)
 
@@ -82,32 +82,32 @@ Chcete-li odstranit aktivační událost, proveďte následující kroky v Azure
 
 Seznam triggerů se aktualizuje tak, aby odrážel odstranění.
 
-## <a name="manage-compute-configuration"></a>Spravovat výpočetní konfiguraci
+## <a name="manage-iot-edge-configuration"></a>Správa konfigurace IoT Edge
 
 Pomocí Azure Portal můžete zobrazit konfiguraci výpočtů, odebrat existující výpočetní konfiguraci nebo aktualizovat výpočetní konfiguraci pro synchronizaci přístupových klíčů pro zařízení IoT a zařízení IoT Edge pro Azure Stack Edge pro.
 
-### <a name="view-compute-configuration"></a>Zobrazit konfiguraci výpočtů
+### <a name="view-iot-edge-configuration"></a>Zobrazit konfiguraci IoT Edge
 
-Proveďte následující kroky v Azure Portal, abyste zobrazili výpočetní konfiguraci pro vaše zařízení.
+Chcete-li zobrazit konfiguraci IoT Edge pro vaše zařízení, proveďte následující kroky v Azure Portal.
 
-1. V Azure Portal přejdete na prostředek Azure Stack Edge a pak přejdete na **Edge compute > moduly**. Na panelu příkazů vyberte **zobrazení COMPUTE** .
+1. V Azure Portal přejdete na prostředek Azure Stack Edge a pak přejdete na **IoT Edge**. Po povolení služby IoT Edge v zařízení se na stránce Přehled zobrazí zpráva, že služba IoT Edge je spuštěná správně.
 
     ![Vybrat zobrazení COMPUTE](media/azure-stack-edge-j-series-manage-compute/view-compute-1.png)
 
-2. Poznamenejte si konfiguraci výpočtů na svém zařízení. Když jste nakonfigurovali výpočetní prostředky, vytvořili jste prostředek IoT Hub. V rámci tohoto IoT Hub prostředku se nakonfigurují zařízení IoT a IoT Edge zařízení. Pro spuštění na IoT Edgeovém zařízení jsou podporovány pouze moduly Linux.
+2. Přejít na **vlastnosti** a zobrazit konfiguraci IoT Edge na vašem zařízení. Když jste nakonfigurovali výpočetní prostředky, vytvořili jste prostředek IoT Hub. V rámci tohoto IoT Hub prostředku se nakonfigurují zařízení IoT a IoT Edge zařízení. Pro spuštění na IoT Edgeovém zařízení jsou podporovány pouze moduly Linux.
 
     ![Zobrazit konfiguraci](media/azure-stack-edge-j-series-manage-compute/view-compute-2.png)
 
 
-### <a name="remove-compute-configuration"></a>Odebrat výpočetní konfiguraci
+### <a name="remove-iot-edge-service"></a>Odebrat službu IoT Edge
 
-Proveďte následující kroky v Azure Portal k odebrání existující konfigurace hraničních výpočtů pro vaše zařízení.
+Chcete-li odebrat existující konfiguraci IoT Edge pro vaše zařízení, proveďte následující kroky v Azure Portal.
 
-1. V Azure Portal přejdete na prostředek Azure Stack Edge a pak přejdete na **Edge compute > Začínáme**. Na panelu příkazů vyberte **Odebrat výpočetní** prostředky.
+1. V Azure Portal přejdete na prostředek Azure Stack Edge a pak přejdete na **IoT Edge**. Přejít na **Přehled** a na panelu příkazů vyberte **Odebrat** .
 
     ![Vyberte odebrat výpočetní prostředky.](media/azure-stack-edge-j-series-manage-compute/remove-compute-1.png)
 
-2. Pokud odeberete konfiguraci výpočtů, budete muset zařízení znovu nakonfigurovat pro případ, že budete potřebovat výpočetní výkon znovu použít. Po zobrazení výzvy k potvrzení vyberte **Ano**.
+2. Odeberete-li službu IoT Edge, je akce nevratná a nelze ji vrátit zpět. Moduly a triggery, které jste vytvořili, budou také odstraněny. Pro případ, že budete muset IoT Edge znovu použít, budete muset zařízení znovu nakonfigurovat. Po zobrazení výzvy k potvrzení vyberte **OK**.
 
     ![Vyberte odebrat výpočetní prostředky 2.](media/azure-stack-edge-j-series-manage-compute/remove-compute-2.png)
 
@@ -121,7 +121,7 @@ Pokud jsou vaše zařízení IoT a IoT Edge klíče zařízení otočené, musí
 
 V Azure Portal proveďte následující kroky, které synchronizují přístupové klíče pro vaše zařízení.
 
-1. V Azure Portal přejdete na prostředek Azure Stack Edge a pak přejdete na **Edge compute > Začínáme**. Na panelu příkazů vyberte **aktualizovat konfiguraci** .
+1. V Azure Portal přejdete na prostředek Azure Stack Edge a pak přejdete na **IoT Edge COMPUTE**. Přejít na **Přehled** a na panelu příkazů vyberte **aktualizovat konfiguraci** .
 
     ![Vybrat aktualizaci konfigurace](media/azure-stack-edge-j-series-manage-compute/refresh-configuration-1.png)
 

@@ -1,5 +1,5 @@
 ---
-title: Vysoká dostupnost pomocí Media Services a videa na vyžádání (VOD)
+title: Vysoká dostupnost s Media Services videem na vyžádání
 description: Tento článek představuje přehled služeb Azure, které můžete použít k usnadnění vysoké dostupnosti aplikace VOD.
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.custom: ''
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 15a23ab5b05ad1093069b4297ad1d292beeb3a42
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: be3fd9b3d910e64245a1b52056499bbfba2e6379
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96494949"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955847"
 ---
 # <a name="high-availability-with-media-services-and-video-on-demand-vod"></a>Vysoká dostupnost pomocí Media Services a videa na vyžádání (VOD)
 
@@ -36,7 +36,7 @@ K dispozici je ukázka, kterou můžete použít k seznámení s vysokou dostupn
 
 Mezi služby použité v tomto příkladu architektury patří:
 
-| Ikona | Název | Popis |
+| Ikona | Název | Description |
 | :--: | ---- | ----------- |
 |![Toto je ikona účtu Media Services.](media/media-services-high-availability-encoding/azure-media-services.svg)| Účet Media Services | **Popis:**<br>Media Services účet je výchozím bodem pro správu, šifrování, kódování, analýzu a streamování mediálního obsahu v Azure. Je spojen s prostředkem účtu Azure Storage. Účet a všechny přidružené úložiště musí být ve stejném předplatném Azure.<br><br>**VOD použít:**<br>Jedná se o služby, které používáte ke kódování a doručování videí a zvukových prostředků.  Pro zajištění vysoké dostupnosti byste nastavili aspoň dva Media Services účty, z nichž každá je v jiné oblasti. [Přečtěte si další informace o Azure Media Services](media-services-overview.md). |
 |![Toto je ikona účtu úložiště.](media/media-services-high-availability-encoding/storage-account.svg)| Účet úložiště | **Popis:**<br>Účet úložiště Azure obsahuje všechny datové objekty Azure Storage: objekty blob, soubory, fronty, tabulky a disky. Data jsou přístupná odkudkoli na světě přes protokol HTTP nebo HTTPS.<br><br>Každý Media Services účet by měl v každé oblasti účet úložiště ve stejné oblasti.<br><br>**VOD použít:**<br>Vstupní a výstupní data můžete ukládat pro zpracování VOD a streamování. [Přečtěte si další informace o Azure Storage](../../storage/common/storage-introduction.md). |

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: mimckitt
-ms.openlocfilehash: 24d1992db5f1826045fdb47397e44dc2e2fbdaf9
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 94506c4107a157c2b3265a28ffdf5d1eedddd256
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94962157"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954762"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Použití rozšíření vlastních skriptů Azure verze 2 s linuxovými virtuálními počítači
 Rozšíření vlastních skriptů verze 2 stáhne a spustí skripty na virtuálních počítačích Azure. Toto rozšíření je užitečné pro konfiguraci po nasazení, instalaci softwaru nebo jakoukoli jinou úlohu konfigurace nebo správy. Můžete stáhnout skripty z Azure Storage nebo jiného přístupného internetového umístění, nebo je můžete poskytnout modulu runtime rozšíření. 
@@ -59,7 +59,7 @@ Pokud je váš skript na místním serveru, můžete přesto potřebovat další
 * Nedoporučujeme spouštět skript, který způsobí zastavení nebo aktualizaci agenta virtuálního počítače. To může mít příponu ve stavu přechodu a vést k vypršení časového limitu.
 * Pokud máte skript, který způsobí restartování, nainstalujte aplikace a spusťte skripty atd. Restartování byste měli naplánovat pomocí úlohy cron nebo pomocí nástrojů, jako je DSC nebo Puppet rozšíření.
 * Rozšíření spustí pouze jeden skript, pokud chcete spustit skript při každém spuštění, můžete použít [bitovou kopii Cloud-init](../linux/using-cloud-init.md)  a použít [skripty na spouštěcí](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) modul. Případně můžete použít skript k vytvoření jednotky systémové služby.
-* Pro virtuální počítač můžete použít jenom jednu verzi rozšíření. Aby bylo možné spustit druhý vlastní skript, je nutné odebrat rozšíření vlastních skriptů a znovu ho znovu použít s aktualizovaným skriptem. 
+* Pro virtuální počítač můžete použít jenom jednu verzi rozšíření. Aby bylo možné spustit druhý vlastní skript, můžete aktualizovat existující rozšíření novou konfigurací. Alternativně můžete odebrat rozšíření vlastních skriptů a znovu ho znovu použít s aktualizovaným skriptem.
 * Pokud chcete naplánovat, kdy se skript spustí, měli byste použít rozšíření k vytvoření úlohy cron. 
 * Když je skript spuštěný, na webu Azure Portal nebo v rozhraní příkazového řádku se rozšíření zobrazí pouze v přechodném stavu. Pokud chcete častěji aktualizovat stav spuštěného skriptu, budete muset vytvořit vlastní řešení.
 * Rozšíření vlastních skriptů nepodporují nativně proxy servery, ale můžete použít nástroj pro přenos souborů, který podporuje proxy servery ve vašem skriptu, jako je například *kudrlinkou*. 
@@ -115,7 +115,7 @@ Tyto položky by měly být považovány za citlivá data a specifikována v kon
 
 | Name | Hodnota/příklad | Typ dat | 
 | ---- | ---- | ---- |
-| apiVersion | 2019-03-01 | datum |
+| apiVersion | 2019-03-01 | date |
 | vydavatel | Microsoft. Compute. Extensions | řetězec |
 | typ | CustomScript | řetězec |
 | typeHandlerVersion | 2.1 | int |

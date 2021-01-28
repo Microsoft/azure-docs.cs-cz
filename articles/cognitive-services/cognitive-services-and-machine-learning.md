@@ -7,12 +7,12 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.openlocfilehash: 4ab32cd37d732cd9f177363da547edd22bd5af77
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 77464ccfb5b80c84f091d8e6bc491908baed6486
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349261"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954999"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services a strojové učení
 
@@ -23,7 +23,7 @@ Cognitive Services poskytuje možnosti strojového učení, které řeší Obecn
 |Kategorie služby|Účel|
 |--|--|
 |[Rozhodnutí](https://azure.microsoft.com/services/cognitive-services/directory/decision/)|Sestavujte aplikace, které zveřejňují doporučení pro informované a efektivní rozhodování.|
-|[Jazyk](https://azure.microsoft.com/services/cognitive-services/directory/lang/)|Vaše aplikace můžou zpracovávat přirozený jazyk pomocí předem připravených skriptů, vyhodnocovat postoje a učit se rozpoznávat, co uživatelé chtějí.|
+|[Jazyk](https://azure.microsoft.com/services/cognitive-services/directory/lang/)|Umožněte svým aplikacím, aby zpracovávaly přirozený jazyk s využitím předem sestavených skriptů, vyhodnocovaly subjektivní hodnocení a naučily se rozpoznávat, co uživatelé chtějí.|
 |[Hledání](https://azure.microsoft.com/services/cognitive-services/directory/search/)|Do aplikací můžete přidat rozhraní API pro vyhledávání Bingu a využívat možnost pročesávat miliardy webových stránek, obrázků, videí a novinek pomocí jediného volání rozhraní API.|
 |[Speech](https://azure.microsoft.com/services/cognitive-services/directory/speech/)|Převádějte řeč na text a text na přirozeně znějící řeč. Překládejte z jednoho jazyka do druhého a používejte možnost ověření a rozpoznání mluvčího.|
 |[Obraz](https://azure.microsoft.com/services/cognitive-services/directory/vision/)|Využijte možnost rozpoznávat, identifikovat, indexovat a moderovat vaše obrázky, videa a obsah digitálního rukopisu a opatřovat je titulky.|

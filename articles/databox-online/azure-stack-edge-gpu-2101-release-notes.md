@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 01/19/2021
+ms.date: 01/27/2021
 ms.author: alkohli
-ms.openlocfilehash: 8158868a39bf8a1fe03a620f37e4dcb1c9adc14e
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 6fff5b9d41c960ebe37098695c694725de0226e0
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805187"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954610"
 ---
 # <a name="azure-stack-edge-2101-release-notes"></a>Zpráva k vydání verze Azure Stack Edge 2101
 
@@ -23,7 +23,7 @@ Poznámky k verzi se průběžně aktualizují a při zjištění kritických pr
 
 Tento článek se týká verze **Azure Stack Edge 2101** , která se mapuje na číslo verze softwaru **2.2.1473.2521**.
 
-## <a name="whats-new"></a>Co je nového
+## <a name="whats-new"></a>Novinky
 
 Ve verzi Azure Stack Edge 2101 jsou k dispozici následující nové funkce. 
 
@@ -40,7 +40,7 @@ Ve verzi Azure Stack Edge 2101 jsou k dispozici následující nové funkce.
 
 Následující tabulka poskytuje souhrn známých problémů verze 2101.
 
-| Ne. | Funkce | Problém | Alternativní řešení/komentáře |
+| No. | Funkce | Problém | Alternativní řešení/komentáře |
 | --- | --- | --- | --- |
 |**1.**|Funkce ve verzi Preview |V této verzi jsou k dispozici tyto funkce: místní Azure Resource Manager, virtuální počítače, Správa cloudu virtuálních počítačů, Kubernetes Azure ARC, VPN pro Azure Stack Edge pro R a Azure Stack hraniční Mini R, multi-procesní služba (MPS) pro grafický procesor Azure Stack Edge pro, je dostupná ve verzi Preview.  |Tyto funkce budou všeobecně dostupné v pozdějších verzích. |
 |**2.**|Řídicí panel Kubernetes | Koncový bod *https* pro řídicí panel Kubernetes s certifikátem SSL se nepodporuje. | |
@@ -57,7 +57,7 @@ Následující tabulka poskytuje souhrn známých problémů verze 2101.
 
 Následující tabulka poskytuje souhrn známých problémů přenesených z předchozích verzí.
 
-| Ne. | Funkce | Problém | Alternativní řešení/komentáře |
+| No. | Funkce | Problém | Alternativní řešení/komentáře |
 | --- | --- | --- | --- |
 | **1.** |Azure Stack Edge pro + Azure SQL | Vytvoření databáze SQL vyžaduje přístup správce.   |Proveďte následující kroky místo kroků 1-2 v [https://docs.microsoft.com/azure/iot-edge/tutorial-store-data-sql-server#create-the-sql-database](../iot-edge/tutorial-store-data-sql-server.md#create-the-sql-database) . <ul><li>V místním uživatelském rozhraní zařízení povolte výpočetní rozhraní. Vyberte **compute > port # > povolit pro výpočetní > použít.**</li><li>Stáhnout `sqlcmd` na klientském počítači z https://docs.microsoft.com/sql/tools/sqlcmd-utility </li><li>Připojte se k IP adrese rozhraní COMPUTE (port, který byl povolený), a přidejte na konec adresy znak ", 1401".</li><li>Poslední příkaz bude vypadat takto: Sqlcmd-S {Interface IP}, 1401-U SA-P "Strong! Passw0rd".</li>Pak by se měly shodovat kroky 3-4 z aktuální dokumentace. </li></ul> |
 | **2.** |Aktualizovat| Přírůstkové změny objektů BLOB obnovených prostřednictvím **aktualizace** se nepodporují. |U koncových bodů objektů BLOB jsou částečné aktualizace objektů BLOB po obnovení možné kvůli tomu, že se aktualizace nebudou nahrávat do cloudu. Například posloupnost akcí, jako například:<ul><li>Vytvoření objektu BLOB v cloudu Nebo odstraňte dříve nahraný objekt BLOB ze zařízení.</li><li>Obnovte objekt BLOB z cloudu do zařízení pomocí funkce aktualizovat.</li><li>Aktualizujte jenom část objektu BLOB pomocí rozhraní REST API sady Azure SDK.</li></ul>Tyto akce můžou vést k tomu, že aktualizované oddíly objektu BLOB se v cloudu neaktualizují. <br>**Alternativní řešení**: Nahraďte celé objekty BLOB pomocí nástrojů, jako je například Robocopy nebo běžné kopírování souborů prostřednictvím Průzkumníka nebo příkazového řádku.|
@@ -77,8 +77,7 @@ Následující tabulka poskytuje souhrn známých problémů přenesených z př
 |**16bitovém.**|Certifikáty |V některých případech může aktualizace stavu certifikátu v místním uživatelském rozhraní trvat několik sekund. |Může to mít vliv na následující scénáře v místním uživatelském rozhraní.<ul><li>Sloupec **stav** na stránce **certifikáty** .</li><li>Dlaždice **zabezpečení** na **stránce Začínáme.**</li><li>Dlaždice **Konfigurace** na stránce **Přehled** .</li></ul>  |
 |**sedmnáct.**|IoT Edge |Moduly nasazené prostřednictvím IoT Edge nemůžou používat síť hostitele. | |
 |**let.**|COMPUTE + Kubernetes |COMPUTE/Kubernetes nepodporuje webový proxy server NTLM. ||
-|**čl.**|COMPUTE + webový proxy server + aktualizace |Pokud máte výpočty nakonfigurované s webovým proxy serverem, může aktualizace COMPUTE selhat. |Doporučujeme, abyste před aktualizací zakázali výpočetní prostředky. |
-|**20o.**|Kubernetes + aktualizovat |Starší verze softwaru, například verze 2008, mají problém aktualizace konfliktu časování, který způsobí, že se aktualizace nezdaří s ClusterConnectionException. |Použití novějších buildů by mělo pomoci vyhnout se tomuto problému. Pokud se tento problém opakuje, alternativní řešení je pokus o upgrade, který by měl být v činnosti.|
+|**čl.**|Kubernetes + aktualizovat |Starší verze softwaru, například verze 2008, mají problém aktualizace konfliktu časování, který způsobí, že se aktualizace nezdaří s ClusterConnectionException. |Použití novějších buildů by mělo pomoci vyhnout se tomuto problému. Pokud se tento problém opakuje, alternativní řešení je pokus o upgrade, který by měl být v činnosti.|
 
 
 <!--|**18.**|Azure Private Edge Zone (Preview) |There is a known issue with Virtual Network Function VM if the VM was created on Azure Stack Edge device running earlier preview builds such as 2006/2007b and then the device was updated to 2009 GA release. The issue is that the VNF information can't be retrieved or any new VNFs can't be created unless the VNF VMs are deleted before the device is updated.  |Before you update Azure Stack Edge device to 2009 release, use the PowerShell command `get-mecvnf` followed by `remove-mecvnf <VNF guid>` to remove all Virtual Network Function VMs one at a time. After the upgrade, you will need to redeploy the same VNFs.|-->

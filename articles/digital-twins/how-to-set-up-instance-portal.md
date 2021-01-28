@@ -8,12 +8,12 @@ ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 61b396cbcc8c91c75c961f702de7ed6a33e676e4
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 5e0c2541c398f2e135b8763cc753ec8c20c3967d
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946998"
+ms.locfileid: "98953746"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Nastavení instance a ověřování digitálních vláken Azure (portál)
 
@@ -56,8 +56,8 @@ Pokud chcete pro instanci nakonfigurovat další podrobnosti, další část pop
 
 Tady jsou další možnosti, které můžete konfigurovat během instalace, pomocí dalších karet v procesu **vytváření prostředků** .
 
-* **Sítě**: na této kartě můžete povolit privátní koncové body s [privátním propojením Azure](../private-link/private-link-overview.md) , abyste vyloučili vystavení veřejné sítě pro vaši instanci. Pokyny najdete v tématu [*Postup: povolení privátního přístupu pomocí privátního odkazu*](how-to-enable-private-link.md#add-a-private-endpoint-during-instance-creation).
-* **Upřesnit**: na této kartě můžete povolit [systémově spravovanou identitu](../active-directory/managed-identities-azure-resources/overview.md) pro vaši instanci, kterou lze použít při předávání událostí do [koncových bodů](concepts-route-events.md). Pokyny najdete v tématu [*Postup: povolení spravovaných identit pro události směrování*](how-to-enable-managed-identities.md).
+* **Sítě**: na této kartě můžete povolit privátní koncové body s [privátním propojením Azure](../private-link/private-link-overview.md) , abyste vyloučili vystavení veřejné sítě pro vaši instanci. Pokyny najdete v tématu [*Postup: povolení privátního přístupu pomocí privátního propojení (Preview)*](how-to-enable-private-link.md#add-a-private-endpoint-during-instance-creation).
+* **Upřesnit**: na této kartě můžete povolit [systémově spravovanou identitu](../active-directory/managed-identities-azure-resources/overview.md) pro vaši instanci, kterou lze použít při předávání událostí do [koncových bodů](concepts-route-events.md). Pokyny najdete v tématu [*Postup: povolení spravovaných identit pro události směrování (Preview)*](how-to-enable-managed-identities.md#add-a-system-managed-identity-during-instance-creation).
 * **Značky**: na této kartě můžete do své instance přidat značky, které vám pomůžou je uspořádat mezi prostředky Azure. Další informace o značkách prostředků Azure najdete v tématech [*označení prostředků, skupin prostředků a předplatných pro logickou organizaci*](../azure-resource-manager/management/tag-resources.md).
 
 ### <a name="verify-success-and-collect-important-values"></a>Ověřit úspěšné a shromažďovat důležité hodnoty

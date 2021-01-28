@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: 9021d933e3808867ec784ad3c6d0f8810d608ea3
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 6971d67204beb39ff0afa6c68dbecf278d86b299
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600059"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954711"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurace experimentů automatizovaného strojového učení v Pythonu
 
@@ -203,15 +203,53 @@ Klasifikace | Regrese | Prognózování časové řady
 ### <a name="primary-metric"></a>Primární metrika
 `primary metric`Parametr určuje metriku, která se má použít během školení modelu pro optimalizaci. Dostupné metriky můžete vybrat podle typu úlohy, kterou zvolíte, a v následující tabulce jsou uvedeny platné primární metriky pro každý typ úkolu.
 
+Volba primární metriky pro optimalizaci automatizovaného strojového učení je závislá na mnoha faktorech. Doporučujeme, abyste si zvolili metriku, která nejlépe odpovídá vašim obchodním potřebám. Pak zvažte, jestli je metrika vhodná pro váš profil datové sady (velikost dat, rozsah, distribuce tříd atd.).
+
 Přečtěte si o konkrétních definicích těchto metrik v seznámení s [automatizovanými výsledky strojového učení](how-to-understand-automated-ml.md).
 
 |Klasifikace | Regrese | Prognózování časové řady
 |--|--|--
-|accuracy| spearman_correlation | spearman_correlation
-|AUC_weighted | normalized_root_mean_squared_error | normalized_root_mean_squared_error
-|average_precision_score_weighted | r2_score | r2_score
-|norm_macro_recall | normalized_mean_absolute_error | normalized_mean_absolute_error
-|precision_score_weighted |
+|`accuracy`| `spearman_correlation` | `spearman_correlation`
+|`AUC_weighted` | `normalized_root_mean_squared_error` | `normalized_root_mean_squared_error`
+|`average_precision_score_weighted` | `r2_score` | `r2_score`
+|`norm_macro_recall` | `normalized_mean_absolute_error` | `normalized_mean_absolute_error`
+|`precision_score_weighted` |
+
+### <a name="primary-metrics-for-classification-scenarios"></a>Primární metriky pro scénáře klasifikace 
+
+Vystavení prahových hodnot, jako jsou `accuracy` ,, `average_precision_score_weighted` `norm_macro_recall` a `precision_score_weighted` nemusí být optimalizováno, a také u datových sad, které jsou velmi malé, mají hodně vysokého zkosení tříd (nevyrovnanost třídy) nebo když je očekávaná hodnota metriky velmi blízko až 0,0 nebo 1,0. V těchto případech `AUC_weighted` může být lepší volbou pro primární metriku. Po dokončení automatizovaného strojového učení můžete zvolit vítězný model založený na metrikě, která nejlépe vyhovuje vašim obchodním potřebám.
+
+| Metric | Příklady případů použití |
+| ------ | ------- |
+| `accuracy` | Klasifikace imagí, analýza mínění, předpověď změn |
+| `AUC_weighted` | Detekce podvodů, klasifikace obrázků, detekce anomálií/detekce nevyžádaných zpráv |
+| `average_precision_score_weighted` | Analýza mínění |
+| `norm_macro_recall` | Předpověď změn |
+| `precision_score_weighted` |  |
+
+### <a name="primary-metrics-for-regression-scenarios"></a>Primární metriky pro scénáře regrese
+
+Metriky, jako je `r2_score` a, `spearman_correlation` mohou lépe reprezentovat kvalitu modelu, pokud se škála hodnoty k předpovědi vztahuje na mnoho objednávek podle velikosti. U odhadu poměru k instanci, kde mnoho lidí má mzdu $20 tisíc na $100 tisíc, ale škálování bude velmi vysoké s některými platy v rozsahu $100 milionů. 
+
+`normalized_mean_absolute_error` a `normalized_root_mean_squared_error` v tomto případě by se v tomto případě pocházela s chybou předpovědi $20 tisíc, která se shoduje s pracovníkem $30 tisíc plat jako pracovní proces 20 milionů. Ve skutečnosti je předpověď pouze $20 tisíc ze mzdy $20 milionů velmi blízko (malý 0,1% relativní rozdíl), zatímco příkaz $20 tisíc off z $30 tisíc není uzavřen (velký 67% relativní rozdíl). `normalized_mean_absolute_error` a `normalized_root_mean_squared_error` jsou užitečné v případě, že hodnoty, které mají být předpovězeny, jsou v podobném měřítku.
+
+| Metric | Příklady případů použití |
+| ------ | ------- |
+| `spearman_correlation` | |
+| `normalized_root_mean_squared_error` | Předpověď ceny (House/Product/Tip) – kontrola předpovědi skóre |
+| `r2_score` | Zpoždění leteckého dopravce, odhad mzdy, čas vyřešení chyby |
+| `normalized_mean_absolute_error` |  |
+
+### <a name="primary-metrics-for-time-series-forecasting-scenarios"></a>Primární metriky pro scénáře prognózy časových řad
+
+Další informace najdete v poznámkách regrese výše.
+
+| Metric | Příklady případů použití |
+| ------ | ------- |
+| `spearman_correlation` | |
+| `normalized_root_mean_squared_error` | Předpověď cen (prognózování), optimalizace inventáře, prognózování poptávky |
+| `r2_score` | Předpověď cen (prognózování), optimalizace inventáře, prognózování poptávky |
+| `normalized_mean_absolute_error` | |
 
 ### <a name="data-featurization"></a>Featurization dat
 
@@ -219,7 +257,7 @@ U každého automatizovaného experimentu strojového učení se vaše data auto
 
 Při konfiguraci experimentů ve vašem `AutoMLConfig` objektu můžete nastavení povolit nebo zakázat `featurization` . V následující tabulce jsou uvedena přijímaná nastavení pro featurization v [objektu AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig). 
 
-|Konfigurace Featurization | Popis |
+|Konfigurace Featurization | Description |
 | ------------- | ------------- |
 |`"featurization": 'auto'`| Označuje, že v rámci předběžného zpracování se [kroky guardrails a featurization](how-to-configure-auto-features.md#featurization) provádějí automaticky. **Výchozí nastavení**.|
 |`"featurization": 'off'`| Indikuje, že krok featurization se neprovádí automaticky.|

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: adcc894db630bba11e84e2f277705d2f31caf7dc
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 1222108694ff7274e5d8fd063635b70a76ffc59c
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920219"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954745"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor protokolovat vyhrazené clustery
 
@@ -81,10 +81,12 @@ Musí být zadány následující vlastnosti:
 
 Po vytvoření prostředku *clusteru* můžete upravit další vlastnosti, jako je *SKU*, * keyVaultProperties nebo *billingType*. Další podrobnosti najdete níže.
 
+Můžete mít až 2 aktivní clustery na jedno předplatné a oblast. Pokud se cluster odstraní, je stále rezervovaný po dobu 14 dnů. Můžete mít až 4 rezervované clustery na předplatné na oblast (aktivní nebo nedávno odstraněné).
+
 > [!WARNING]
 > Vytvoření clusteru aktivuje přidělení a zřizování prostředků. Dokončení této operace může trvat až hodinu. Doporučuje se spouštět asynchronně.
 
-Uživatelský účet, který vytváří clustery, musí mít standardní oprávnění pro vytváření prostředků Azure: `Microsoft.Resources/deployments/*` a oprávnění k zápisu do clusteru `(Microsoft.OperationalInsights/clusters/write)` .
+Uživatelský účet, který vytváří clustery, musí mít standardní oprávnění pro vytváření prostředků Azure: `Microsoft.Resources/deployments/*` a oprávnění k zápisu `Microsoft.OperationalInsights/clusters/write` do clusteru s tím, že má jejich role přiřazení této konkrétní akce, nebo `Microsoft.OperationalInsights/*` `*/write` .
 
 ### <a name="create"></a>Vytvořit 
 
@@ -503,7 +505,9 @@ Pomocí následujícího volání REST odstraňte cluster:
 
 ## <a name="limits-and-constraints"></a>Omezení a omezení
 
-- Maximální počet clusterů na oblast a předplatné je 2.
+- Maximální počet aktivních clusterů na oblast a předplatné je 2.
+
+- Maximální počet rezervovaných clusterů (aktivních nebo nedávno odstraněných) na oblast a předplatné je 4. 
 
 - Maximální počet propojených pracovních prostorů ke clusteru je 1000.
 

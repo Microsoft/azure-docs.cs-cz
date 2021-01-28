@@ -1,5 +1,5 @@
 ---
-title: Krok 1 – pochopení výhod migrace na rozhraní Media Services API V3
+title: Výhody migrace na rozhraní Media Services API V3
 description: V tomto článku jsou uvedené výhody migrace z Media Services V2 na v3.
 services: media-services
 author: IngridAtMicrosoft
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: 5980da900cd1394d5d9a9ddf99063662cad3c88b
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 70f64813546c66c0f9e3533e09de192315f75600
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98898371"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955067"
 ---
 # <a name="step-1---understand-the-benefits-of-migrating-to-media-services-api-v3"></a>Krok 1 – pochopení výhod migrace na rozhraní Media Services API V3
 

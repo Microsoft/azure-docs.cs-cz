@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 01/27/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to quickly deploy Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 2d1bd7d2a4f066311ea01046a8d71e6ecb52c3f5
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 642ab348cd2bb5cd2cedd2b481b0d06fb6c4b425
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98919798"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98953933"
 ---
 # <a name="quickstart-get-started-with-azure-stack-edge-pro-with-gpu"></a>Rychlý Start: Začínáme s Azure Stack Edge pro s grafickým procesorem 
 
@@ -28,7 +28,7 @@ Celkový postup by měl trvat přibližně 1,5 hodin. Podrobné pokyny najdete v
 Před nasazením se ujistěte, že jsou splněné následující předpoklady:
 
 1. Zařízení GPU Azure Stack Edge pro se doručuje na váš web, [rozbalí](azure-stack-edge-gpu-deploy-install.md#unpack-the-device) a připojí se k [racku](azure-stack-edge-gpu-deploy-install.md#rack-the-device). 
-1. Nakonfigurujte síť tak, aby zařízení mohla dosáhnout [uvedených vzorů a portů URL](azure-stack-edge-gpu-system-requirements.md#networking-port-requirements). 
+1. Nakonfigurujte síť tak, aby vaše zařízení mělo přístup k [uvedeným vzorům a portům adresy URL](azure-stack-edge-gpu-system-requirements.md#networking-port-requirements). 
 1. Máte přístup vlastníka nebo přispěvatele k předplatnému Azure.
 1. V Azure Portal můžete přejít na **předplatné domů > > poskytovatelé prostředků > předplatného**. Vyhledejte `Microsoft.DataBoxEdge` a zaregistrujte poskytovatele prostředků. Pokud se chcete zaregistrovat, `Microsoft.Devices` vytvořte IoT Hub prostředek pro nasazení výpočetních úloh, opakujte akci.
 1. Ujistěte se, že máte minimálně 2 bezplatných, statických a souvislých IP adres pro uzly Kubernetes a alespoň 1 statickou IP adresu pro IoT Edge službu. Pro každý modul nebo externí službu nasadíte, budete potřebovat 1 dodatečnou IP adresu.

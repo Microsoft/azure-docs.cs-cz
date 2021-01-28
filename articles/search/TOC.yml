@@ -91,7 +91,7 @@
     - name: Ukázky Pythonu
       href: samples-python.md
     - name: Ukázky REST
-      href: /samples/browse/?expanded=azure&languages=http&products=azure-cognitive-search
+      href: samples-rest.md
 - name: Koncepty
   items:
     - name: Fulltextové vyhledávání

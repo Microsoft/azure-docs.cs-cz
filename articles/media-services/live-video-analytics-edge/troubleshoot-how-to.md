@@ -5,12 +5,12 @@ author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
 ms.date: 12/04/2020
-ms.openlocfilehash: d23294c21d49b1c2ab83c4bf8f110d5d4bc7aafb
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: d519193d55c9535dc71206d2d9f72661d7a40d71
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878286"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954408"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>Řešení potíží se službou Live video Analytics na IoT Edge
 
@@ -97,6 +97,17 @@ Live video Analytics se nasadí jako modul IoT Edge v zařízení IoT Edge a spo
 
     > [!TIP]
     > Pokud dochází k potížím se spouštěním Azure IoT Edgech modulů ve vašem prostředí, použijte jako vodítko pro řešení potíží a diagnostiku **[Azure IoT Edge standardní diagnostické kroky](../../iot-edge/troubleshoot.md?preserve-view=true&view=iotedge-2018-06)** .
+
+K problémům se můžete setkat také při spuštění **[skriptu pro nastavení prostředků nástroje Live video Analytics](https://github.com/Azure/live-video-analytics/tree/master/edge/setup)**. Mezi běžné problémy patří:
+
+* Pomocí předplatného, ke kterému nemáte oprávnění vlastníka. Způsobí to, že se skript nezdařil s chybou **ForbiddenError** nebo **AuthorizationFailed** .
+    * Pokud chcete tento problém obdržet, ujistěte se, že máte oprávnění **vlastníka** k předplatnému, které plánujete použít. Pokud to nemůžete udělat sami, obraťte se na správce předplatného, aby udělil správná oprávnění.
+* **Nasazení šablony se nepovedlo kvůli porušení zásad.**
+    * Pokud chcete tento problém vyřešit, obraťte se prosím na správce IT a ujistěte se, že volání, která mají vytvořit virtuální počítač, se budou používat k blokování ověřování SSH. Tato akce nebude nutná, protože používáme zabezpečenou bastionu síť, která pro komunikaci s prostředky Azure vyžaduje uživatelské jméno a heslo. Tyto přihlašovací údaje se uloží do souboru **~/clouddrive/lva-sample/vm-edge-device-credentials.txt** v Cloud Shell, jakmile se virtuální počítač úspěšně vytvoří, nasadí a připojí k IoT Hub.
+* Instalační skript nemůže vytvořit instanční objekt a prostředky Azure.
+    * Pokud chcete tento problém obdržet, zkontrolujte prosím, že vaše předplatné a tenant Azure nedosáhly svých maximálních limitů služeb. Přečtěte si další informace o [limitech a omezeních služby Azure AD](https://docs.microsoft.com/azure/active-directory/enterprise-users/directory-service-limits-restrictions) a omezeních [, kvótách a omezeních předplatného a služeb Azure.](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)
+
+
 ### <a name="live-video-analytics-working-with-external-modules"></a>Live video Analytics pracuje s externími moduly
 
 Live video Analytics můžou pomocí procesorů rozšíření pro multimediální graf rozšířit mediální graf tak, aby odesílal a přijímal data z jiných IoT Edge modulů pomocí protokolů HTTP nebo gRPC. V takovém [případě](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/httpExtension)může tento mediální graf odesílat snímky videa jako obrázky do externího modulu odvození, jako je Yolo v3, a získávat výsledky analýzy založené na JSON pomocí protokolu HTTP. V takové topologii je cíl pro události většinou centrum IoT. V situacích, kdy se v centru nezobrazuje události odvození, zkontrolujte následující:
