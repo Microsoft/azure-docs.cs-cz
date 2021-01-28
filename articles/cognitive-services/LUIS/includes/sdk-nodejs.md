@@ -8,12 +8,12 @@ ms.subservice: language-understanding
 ms.date: 09/01/2020
 ms.topic: include
 ms.custom: include file, devx-track-js, cog-serv-seo-aug-2020
-ms.openlocfilehash: 0c3a02461d8ad4bc8470383244dad7b86b47f405
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: f4b9c84480940889b0278129952bcf2918d9c835
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96303685"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948062"
 ---
 K Node.js můžete použít klientské knihovny Language Understanding (LUIS):
 
@@ -22,7 +22,7 @@ K Node.js můžete použít klientské knihovny Language Understanding (LUIS):
 * Výuka a publikování aplikace
 * Modul runtime předpovědi dotazů
 
-[Referenční dokumentace](/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)  |   Zdrojový kód knihovny pro [vytváření](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-luis-authoring) a [předpovědi](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-luis-runtime) | [Vytváření](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring) a [prediktivní](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime) npm | [Ukázky](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/LUIS/sdk-3x/index.js)
+[Referenční dokumentace](/javascript/api/@azure/cognitiveservices-luis-authoring/)  |   Zdrojový kód knihovny pro [vytváření](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-luis-authoring) a [předpovědi](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-luis-runtime) | [Vytváření](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring) a [prediktivní](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime) npm | [Ukázky](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/LUIS/sdk-3x/index.js)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -87,30 +87,30 @@ Váš `package.json` vzhled by měl vypadat takto:
 
 ## <a name="authoring-object-model"></a>Vytváření objektového modelu
 
-Klient pro vytváření Language Understanding (LUIS) je objekt [LUISAuthoringClient](/javascript/api/@azure/cognitiveservices-luis-authoring/luisauthoringclient?view=azure-node-latest) , který se ověřuje v Azure, který obsahuje váš klíč pro vytváření obsahu.
+Klient pro vytváření Language Understanding (LUIS) je objekt [LUISAuthoringClient](/javascript/api/@azure/cognitiveservices-luis-authoring/luisauthoringclient) , který se ověřuje v Azure, který obsahuje váš klíč pro vytváření obsahu.
 
 ## <a name="code-examples-for-authoring"></a>Příklady kódu pro vytváření obsahu
 
 Po vytvoření klienta použijte tohoto klienta k přístupu k funkcím, včetně:
 
-* Aplikace – [Přidání](/javascript/api/@azure/cognitiveservices-luis-authoring/apps?view=azure-node-latest#add-applicationcreateobject--msrest-requestoptionsbase-), [odstranění](/javascript/api/@azure/cognitiveservices-luis-authoring/apps?view=azure-node-latest#deletemethod-string--models-appsdeletemethodoptionalparams-), [publikování](/javascript/api/@azure/cognitiveservices-luis-authoring/apps?view=azure-node-latest#publish-string--applicationpublishobject--msrest-requestoptionsbase-)
-* Příklad projevy – [Přidání v dávce](/javascript/api/@azure/cognitiveservices-luis-authoring/examples?view=azure-node-latest#batch-string--string--examplelabelobject----msrest-requestoptionsbase-), [odstranění podle ID](/javascript/api/@azure/cognitiveservices-luis-authoring/examples?view=azure-node-latest#deletemethod-string--string--number--msrest-requestoptionsbase-)
-* Funkce – Správa [seznamů frází](/javascript/api/@azure/cognitiveservices-luis-authoring/features?view=azure-node-latest#addphraselist-string--string--phraselistcreateobject--msrest-requestoptionsbase-)
-* Model – Správa [záměrů](/javascript/api/@azure/cognitiveservices-luis-authoring/model?view=azure-node-latest#addintent-string--string--modelcreateobject--msrest-requestoptionsbase-) a entit
-* Vzor – Správa [vzorů](/javascript/api/@azure/cognitiveservices-luis-authoring/pattern?view=azure-node-latest#addpattern-string--string--patternrulecreateobject--msrest-requestoptionsbase-)
-* Výuka aplikace [train](/javascript/api/@azure/cognitiveservices-luis-authoring/train?view=azure-node-latest#trainversion-string--string--msrest-requestoptionsbase-) a dotazování na [stav školení](/javascript/api/@azure/cognitiveservices-luis-authoring/train?view=azure-node-latest#getstatus-string--string--msrest-requestoptionsbase-)
-* [Verze](/javascript/api/@azure/cognitiveservices-luis-authoring/versions?view=azure-node-latest) – Správa pomocí klonování, exportu a odstranění
+* Aplikace – [Přidání](/javascript/api/@azure/cognitiveservices-luis-authoring/apps#add-applicationcreateobject--msrest-requestoptionsbase-), [odstranění](/javascript/api/@azure/cognitiveservices-luis-authoring/apps#deletemethod-string--models-appsdeletemethodoptionalparams-), [publikování](/javascript/api/@azure/cognitiveservices-luis-authoring/apps#publish-string--applicationpublishobject--msrest-requestoptionsbase-)
+* Příklad projevy – [Přidání v dávce](/javascript/api/@azure/cognitiveservices-luis-authoring/examples#batch-string--string--examplelabelobject----msrest-requestoptionsbase-), [odstranění podle ID](/javascript/api/@azure/cognitiveservices-luis-authoring/examples#deletemethod-string--string--number--msrest-requestoptionsbase-)
+* Funkce – Správa [seznamů frází](/javascript/api/@azure/cognitiveservices-luis-authoring/features#addphraselist-string--string--phraselistcreateobject--msrest-requestoptionsbase-)
+* Model – Správa [záměrů](/javascript/api/@azure/cognitiveservices-luis-authoring/model#addintent-string--string--modelcreateobject--msrest-requestoptionsbase-) a entit
+* Vzor – Správa [vzorů](/javascript/api/@azure/cognitiveservices-luis-authoring/pattern#addpattern-string--string--patternrulecreateobject--msrest-requestoptionsbase-)
+* Výuka aplikace [](/javascript/api/@azure/cognitiveservices-luis-authoring/train#trainversion-string--string--msrest-requestoptionsbase-) a dotazování na [stav školení](/javascript/api/@azure/cognitiveservices-luis-authoring/train#getstatus-string--string--msrest-requestoptionsbase-)
+* [Verze](/javascript/api/@azure/cognitiveservices-luis-authoring/versions) – Správa pomocí klonování, exportu a odstranění
 
 ## <a name="prediction-object-model"></a>Model objektu předpovědi
 
-Klient pro vytváření Language Understanding (LUIS) je objekt [LUISAuthoringClient](/javascript/api/@azure/cognitiveservices-luis-runtime/luisruntimeclient?view=azure-node-latest) , který se ověřuje v Azure, který obsahuje váš klíč pro vytváření obsahu.
+Klient pro vytváření Language Understanding (LUIS) je objekt [LUISAuthoringClient](/javascript/api/@azure/cognitiveservices-luis-runtime/luisruntimeclient) , který se ověřuje v Azure, který obsahuje váš klíč pro vytváření obsahu.
 
 ## <a name="code-examples-for-prediction-runtime"></a>Příklady kódu pro předpověď za běhu
 
 Po vytvoření klienta použijte tohoto klienta k přístupu k funkcím, včetně:
 
-* [Předpověď](/javascript/api/@azure/cognitiveservices-luis-runtime/predictionoperations?view=azure-node-latest#getslotprediction-string--string--predictionrequest--models-predictiongetslotpredictionoptionalparams-) podle `staging` nebo `production` slotu
-* [Předpověď podle verze](/javascript/api/@azure/cognitiveservices-luis-runtime/predictionoperations?view=azure-node-latest#getversionprediction-string--string--predictionrequest--models-predictiongetversionpredictionoptionalparams-)
+* [Předpověď](/javascript/api/@azure/cognitiveservices-luis-runtime/predictionoperations#getslotprediction-string--string--predictionrequest--models-predictiongetslotpredictionoptionalparams-) podle `staging` nebo `production` slotu
+* [Předpověď podle verze](/javascript/api/@azure/cognitiveservices-luis-runtime/predictionoperations#getversionprediction-string--string--predictionrequest--models-predictiongetversionpredictionoptionalparams-)
 
 [!INCLUDE [Bookmark links to same article](sdk-code-examples.md)]
 
@@ -154,7 +154,7 @@ Vytvořte dvě sady proměnných: první sada, kterou změníte, druhá sada pon
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
-Vytvořte objekt [CognitiveServicesCredentials](/javascript/api/@azure/ms-rest-js/apikeycredentials?view=azure-node-latest) s klíčem a použijte ho u svého koncového bodu k vytvoření objektu [LUISAuthoringClient](/javascript/api/@azure/cognitiveservices-luis-authoring/luisauthoringclient?view=azure-node-latest) .
+Vytvořte objekt [CognitiveServicesCredentials](/javascript/api/@azure/ms-rest-js/apikeycredentials) s klíčem a použijte ho u svého koncového bodu k vytvoření objektu [LUISAuthoringClient](/javascript/api/@azure/cognitiveservices-luis-authoring/luisauthoringclient) .
 
 [!code-javascript[Authenticate the client](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=AuthoringCreateClient)]
 
@@ -162,7 +162,7 @@ Vytvořte objekt [CognitiveServicesCredentials](/javascript/api/@azure/ms-rest-j
 
 Aplikace LUIS obsahuje model NLP (přirozený jazyk Processing), včetně záměrů, entit a příkladu projevy.
 
-Vytvořte metodu [Add](/javascript/api/@azure/cognitiveservices-luis-authoring/apps?view=azure-node-latest) objektu [AppsOperation](/javascript/api/@azure/cognitiveservices-luis-authoring/apps?view=azure-node-latest) k vytvoření aplikace. Název a jazyková verze jazyka jsou požadované vlastnosti.
+Vytvořte metodu [Add](/javascript/api/@azure/cognitiveservices-luis-authoring/apps) objektu [AppsOperation](/javascript/api/@azure/cognitiveservices-luis-authoring/apps) k vytvoření aplikace. Název a jazyková verze jazyka jsou požadované vlastnosti.
 
 [!code-javascript[Create a LUIS app](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=AuthoringCreateApplication)]
 
@@ -170,7 +170,7 @@ Vytvořte metodu [Add](/javascript/api/@azure/cognitiveservices-luis-authoring/a
 ## <a name="create-intent-for-the-app"></a>Vytvořit záměr pro aplikaci
 Primárním objektem v modelu aplikace LUIS je záměr. Záměr se zarovnává se seskupením _záměrů_ uživatelů utterance. Uživatel může požádat o dotaz nebo vytvořit příkaz, který hledá konkrétní _zamýšlenou_ odpověď z robota (nebo jiné klientské aplikace). Příklady záměrů je vyúčtování letu, dotazování na počasí v cílovém městě a dotazování na kontaktní informace pro zákaznické služby.
 
-Použijte metodu [model.add_intent](/javascript/api/@azure/cognitiveservices-luis-authoring/model?view=azure-node-latest#addintent-string--string--modelcreateobject--msrest-requestoptionsbase-) s názvem jedinečného záměru a potom předejte ID aplikace, ID verze a název nového záměru.
+Použijte metodu [model.add_intent](/javascript/api/@azure/cognitiveservices-luis-authoring/model#addintent-string--string--modelcreateobject--msrest-requestoptionsbase-) s názvem jedinečného záměru a potom předejte ID aplikace, ID verze a název nového záměru.
 
 `intentName`Hodnota je pevně zakódována `OrderPizzaIntent` jako součást proměnných v oddílu [Vytvoření proměnných pro aplikaci](#create-variables-for-the-app) .
 
@@ -178,11 +178,11 @@ Použijte metodu [model.add_intent](/javascript/api/@azure/cognitiveservices-lui
 
 ## <a name="create-entities-for-the-app"></a>Vytvoření entit pro aplikaci
 
-I když se entity nevyžadují, najdete je ve většině aplikací. Entita extrahuje informace z utterance uživatele, která je nutná k zaúmyslnému záměru uživatele. Existuje několik typů [předem sestavených](/javascript/api/@azure/cognitiveservices-luis-authoring/model?view=azure-node-latest#addcustomprebuiltentity-string--string--prebuiltdomainmodelcreateobject--msrest-requestoptionsbase-) a vlastních entit, z nichž každý má vlastní modely DTO (Data Transformation Object).  Mezi běžné předem připravené entity, které se mají přidat do vaší aplikace, patří [číslo](../luis-reference-prebuilt-number.md), [datetimeV2](../luis-reference-prebuilt-datetimev2.md), [geographyV2](../luis-reference-prebuilt-geographyv2.md)a [Ordinal](../luis-reference-prebuilt-ordinal.md).
+I když se entity nevyžadují, najdete je ve většině aplikací. Entita extrahuje informace z utterance uživatele, která je nutná k zaúmyslnému záměru uživatele. Existuje několik typů [předem sestavených](/javascript/api/@azure/cognitiveservices-luis-authoring/model#addcustomprebuiltentity-string--string--prebuiltdomainmodelcreateobject--msrest-requestoptionsbase-) a vlastních entit, z nichž každý má vlastní modely DTO (Data Transformation Object).  Mezi běžné předem připravené entity, které se mají přidat do vaší aplikace, patří [číslo](../luis-reference-prebuilt-number.md), [datetimeV2](../luis-reference-prebuilt-datetimev2.md), [geographyV2](../luis-reference-prebuilt-geographyv2.md)a [Ordinal](../luis-reference-prebuilt-ordinal.md).
 
 Je důležité, abyste věděli, že entity nejsou označené záměrem. Mohou a obvykle se vztahují na mnoho záměrů. Pouze ukázkový uživatel projevy je označen pro konkrétní, jednotlivý záměr.
 
-Metody vytváření entit jsou součástí třídy [modelu](/javascript/api/@azure/cognitiveservices-luis-authoring/model?view=azure-node-latest) . Každý typ entity má svůj vlastní model objektu pro transformaci dat (DTO).
+Metody vytváření entit jsou součástí třídy [modelu](/javascript/api/@azure/cognitiveservices-luis-authoring/model) . Každý typ entity má svůj vlastní model objektu pro transformaci dat (DTO).
 
 Kód pro vytvoření entity vytvoří entitu strojového učení s podentitami a funkcemi použitými u `Quantity` subentit.
 
@@ -198,11 +198,11 @@ Vložte následující metodu nad `quickstart` metodu a vyhledejte ID dílčí e
 
 Aby bylo možné určit záměr utterance a extrahovat entity, aplikace potřebuje příklady projevy. Příklady musí cílit na konkrétní, jediný záměr a označit všechny vlastní entity. Předem připravené entity není nutné označit.
 
-Přidejte příklad projevy vytvořením seznamu objektů [ExampleLabelObject](/javascript/api/@azure/cognitiveservices-luis-authoring/examplelabelobject?view=azure-node-latest) , jeden objekt pro každý příklad utterance. Každý příklad by měl označit všechny entity pomocí slovníku dvojic název-hodnota a hodnota entity. Hodnota entity by měla být přesně tak, jak se zobrazuje v textu příkladu utterance.
+Přidejte příklad projevy vytvořením seznamu objektů [ExampleLabelObject](/javascript/api/@azure/cognitiveservices-luis-authoring/examplelabelobject) , jeden objekt pro každý příklad utterance. Každý příklad by měl označit všechny entity pomocí slovníku dvojic název-hodnota a hodnota entity. Hodnota entity by měla být přesně tak, jak se zobrazuje v textu příkladu utterance.
 
 :::image type="content" source="../media/quickstart-sdk/labeled-example-machine-learned-entity.png" alt-text="Částečný snímek obrazovky ukazující vzorový utterance na portálu ":::
 
-[Příklady volání. Přidejte](/javascript/api/@azure/cognitiveservices-luis-authoring/examples?view=azure-node-lates) s ID aplikace, ID verze a příkladem.
+[Příklady volání. Přidejte](/javascript/api/@azure/cognitiveservices-luis-authoring/examples) s ID aplikace, ID verze a příkladem.
 
 [!code-javascript[Add example utterance to intent](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=AuthoringAddLabeledExamples)]
 
@@ -210,22 +210,22 @@ Přidejte příklad projevy vytvořením seznamu objektů [ExampleLabelObject](/
 
 Po vytvoření modelu musí být aplikace LUIS vyškolená pro tuto verzi modelu. Vyškolený model se dá použít v [kontejneru](../luis-container-howto.md)nebo ho můžete [publikovat](../luis-how-to-publish-app.md) na pracovní nebo výrobní sloty.
 
-Metoda [vlak. trainVersion](/javascript/api/@azure/cognitiveservices-luis-authoring/train?view=azure-node-latest#trainversion-string--string--msrest-requestoptionsbase-) potřebuje ID aplikace a ID verze.
+Metoda [vlak. trainVersion](/javascript/api/@azure/cognitiveservices-luis-authoring/train#trainversion-string--string--msrest-requestoptionsbase-) potřebuje ID aplikace a ID verze.
 
-Velmi malý model, jako je například tento rychlý Start, bude vlak velmi rychlý. Pro aplikace na úrovni produkčního prostředí by mělo školení aplikace zahrnovat volání metody [get_Status](/javascript/api/@azure/cognitiveservices-luis-authoring/train?view=azure-node-latest#getstatus-string--string--msrest-requestoptionsbase-) k určení, kdy nebo jestli se školení podařilo. Odpověď je seznam objektů [ModelTrainingInfo](/javascript/api/@azure/cognitiveservices-luis-authoring/modeltraininginfo?view=azure-node-latest) s odděleným stavem pro každý objekt. Aby bylo školení považovat za dokončené, musí být všechny objekty úspěšné.
+Velmi malý model, jako je například tento rychlý Start, bude vlak velmi rychlý. Pro aplikace na úrovni produkčního prostředí by mělo školení aplikace zahrnovat volání metody [get_Status](/javascript/api/@azure/cognitiveservices-luis-authoring/train#getstatus-string--string--msrest-requestoptionsbase-) k určení, kdy nebo jestli se školení podařilo. Odpověď je seznam objektů [ModelTrainingInfo](/javascript/api/@azure/cognitiveservices-luis-authoring/modeltraininginfo) s odděleným stavem pro každý objekt. Aby bylo školení považovat za dokončené, musí být všechny objekty úspěšné.
 
 [!code-javascript[Train the app](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=TrainAppVersion)]
 
 ## <a name="publish-app-to-production-slot"></a>Publikovat aplikaci do produkčního slotu
 
-Publikujte aplikaci LUIS pomocí metody [App. Publish](/javascript/api/@azure/cognitiveservices-luis-authoring/apps?view=azure-node-latest#publish-string--applicationpublishobject--msrest-requestoptionsbase-) . Tím se publikuje aktuální vyškolená verze v zadaném slotu na koncovém bodu. Klientská aplikace používá tento koncový bod k odeslání projevy uživatele pro předpověď záměru a extrakci entit.
+Publikujte aplikaci LUIS pomocí metody [App. Publish](/javascript/api/@azure/cognitiveservices-luis-authoring/apps#publish-string--applicationpublishobject--msrest-requestoptionsbase-) . Tím se publikuje aktuální vyškolená verze v zadaném slotu na koncovém bodu. Klientská aplikace používá tento koncový bod k odeslání projevy uživatele pro předpověď záměru a extrakci entit.
 
 [!code-javascript[Publish app to production slot](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=PublishVersion)]
 
 
 ## <a name="authenticate-the-prediction-runtime-client"></a>Ověření běhového klienta předpovědi
 
-Použijte pro svůj klíč objekt msRest. ApiKeyCredentials a použijte ho u svého koncového bodu k vytvoření [Luis. Objekt LUISRuntimeClient](/javascript/api/@azure/cognitiveservices-luis-runtime/luisruntimeclient?view=azure-node-latest)
+Použijte pro svůj klíč objekt msRest. ApiKeyCredentials a použijte ho u svého koncového bodu k vytvoření [Luis. Objekt LUISRuntimeClient](/javascript/api/@azure/cognitiveservices-luis-runtime/luisruntimeclient)
 
 [!INCLUDE [Caution about using authoring key](caution-authoring-key.md)]
 
@@ -233,9 +233,9 @@ Použijte pro svůj klíč objekt msRest. ApiKeyCredentials a použijte ho u sv�
 
 ## <a name="get-prediction-from-runtime"></a>Získat předpovědi z modulu runtime
 
-Přidejte následující kód, který vytvoří požadavek na modul runtime předpovědi. Uživatel utterance je součástí objektu [predictionRequest](/javascript/api/@azure/cognitiveservices-luis-runtime/predictionrequest?view=azure-node-latest) .
+Přidejte následující kód, který vytvoří požadavek na modul runtime předpovědi. Uživatel utterance je součástí objektu [predictionRequest](/javascript/api/@azure/cognitiveservices-luis-runtime/predictionrequest) .
 
-Metoda **[luisRuntimeClient. předpověď. getSlotPrediction](/javascript/api/@azure/cognitiveservices-luis-runtime/predictionoperations?view=azure-node-latest#getslotprediction-string--string--predictionrequest--models-predictiongetslotpredictionoptionalparams-)** potřebuje několik parametrů, jako je ID aplikace, název slotu a objekt žádosti o předpověď, který požadavek splní. Další možnosti jako verbose, Zobrazit všechny záměry a protokol jsou volitelné.
+Metoda **[luisRuntimeClient. předpověď. getSlotPrediction](/javascript/api/@azure/cognitiveservices-luis-runtime/predictionoperations#getslotprediction-string--string--predictionrequest--models-predictiongetslotpredictionoptionalparams-)** potřebuje několik parametrů, jako je ID aplikace, název slotu a objekt žádosti o předpověď, který požadavek splní. Další možnosti jako verbose, Zobrazit všechny záměry a protokol jsou volitelné.
 
 [!code-javascript [Get prediction from runtime](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=QueryPredictionEndpoint)]
 

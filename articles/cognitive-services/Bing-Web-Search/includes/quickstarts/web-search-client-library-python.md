@@ -8,19 +8,19 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 13e08d2c273b242a902203abf0879fd11fbdf801
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: db303d1e7bd5a9cb7b8441f0a5da634a13113066
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94386543"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947531"
 ---
 Klientská knihovna Vyhledávání na webu Bingu usnadňuje integraci Vyhledávání na webu Bingu do vaší aplikace Python. V tomto rychlém startu se naučíte poslat požadavek, přijmout odpověď JSON, filtrovat a parsovat výsledky.
 
 Chcete se rovnou podívat na kód? Ukázky pro [klientské knihovny vyhledávání Bingu pro Python](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/search) jsou k dispozici na GitHubu.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Sada SDK Bingu pro vyhledávání na webu je kompatibilní s Pythonem 2.7, 3.3, 3.4, 3.5 a 3.6. Pro tento článek Rychlý start doporučujeme použít virtuální prostředí.
 
 * Python 2.7, 3.3, 3.4, 3.5 nebo 3.6
@@ -169,7 +169,7 @@ Pokud odpověď obsahuje webové stránky, obrázky, zprávy nebo videa, vytiskn
 
 1. Nahraďte `YOUR_ENDPOINT` adresou URL koncového bodu na portálu a odeberte část "Bing/v 7.0" z koncového bodu.
 
-1. Spustíte program. Například: `python your_program.py`.
+1. Spustíte program. Příklad: `python your_program.py`.
 
 ## <a name="define-functions-and-filter-results"></a>Definice funkcí a filtrování výsledků
 
@@ -177,7 +177,7 @@ Teď, když jste provedli první volání rozhraní API Bingu pro vyhledávání
 
 ### <a name="limit-the-number-of-results-returned-by-bing"></a>Omezení počtu výsledků vrácených Bingem
 
-Tato ukázka používá `count` parametry a `offset` k omezení počtu vrácených výsledků pomocí [ `search` metody](/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python)sady SDK. Vytiskne se `name` a `url` prvního výsledku.
+Tato ukázka používá `count` parametry a `offset` k omezení počtu vrácených výsledků pomocí [ `search` metody](/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations)sady SDK. Vytiskne se `name` a `url` prvního výsledku.
 
 1. Do projektu v Pythonu přidejte tento kód:
 
@@ -266,7 +266,7 @@ Tato ukázka používá `response_filter` parametry a `freshness` k filtrování
 
 ### <a name="use-safe-search-answer-count-and-the-promote-filter"></a>Použití bezpečného hledání, počtu odpovědí a propagačního filtru
 
-Tato ukázka používá `answer_count` parametry, `promote` a `safe_search` k filtrování výsledků hledání pomocí [ `search` metody](/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python)sady SDK. Zobrazí se `name` a `url` prvního výsledku.
+Tato ukázka používá `answer_count` parametry, `promote` a `safe_search` k filtrování výsledků hledání pomocí [ `search` metody](/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations)sady SDK. Zobrazí se `name` a `url` prvního výsledku.
 
 1. Do projektu v Pythonu přidejte tento kód:
 
@@ -320,4 +320,4 @@ Až projekt dokončíte, nezapomeňte z kódu programu odebrat klíč předplatn
 
 ## <a name="see-also"></a>Viz také
 
-* [Referenční informace k sadě Azure Python SDK](/python/api/azure-cognitiveservices-search-websearch/?view=azure-python)
+* [Referenční informace k sadě Azure Python SDK](/python/api/azure-cognitiveservices-search-websearch/)

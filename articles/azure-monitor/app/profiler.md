@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 41aec98c2a8776ae128389679ad0acb324596ec4
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: b1158a614da9ba32f628aba5dd2ed2cc71b4b455
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96546824"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947042"
 ---
 # <a name="profile-live-azure-app-service-apps-with-application-insights"></a>Profilování aplikací v reálném čase Azure App Service s využitím Application Insights
 
@@ -50,7 +50,7 @@ Tady jsou nastavení potřebná k povolení profileru:
 |DiagnosticServices_EXTENSION_VERSION | ~ 3 |
 
 
-Tyto hodnoty můžete nastavit pomocí [šablon Azure Resource Manager](./azure-web-apps.md#app-service-application-settings-with-azure-resource-manager), [Azure POWERSHELL](/powershell/module/az.websites/set-azwebapp)a  [Azure CLI](/cli/azure/webapp/config/appsettings?view=azure-cli-latest).
+Tyto hodnoty můžete nastavit pomocí [šablon Azure Resource Manager](./azure-web-apps.md#app-service-application-settings-with-azure-resource-manager), [Azure POWERSHELL](/powershell/module/az.websites/set-azwebapp)a  [Azure CLI](/cli/azure/webapp/config/appsettings).
 
 ### <a name="enabling-profiler-for-other-clouds-manually"></a>Ruční povolení profileru pro ostatní cloudy
 

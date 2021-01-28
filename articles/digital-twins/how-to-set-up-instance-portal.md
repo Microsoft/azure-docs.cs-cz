@@ -8,12 +8,12 @@ ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: d38e631a5a12381b407dca4dd9e2f2ae63365453
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 61b396cbcc8c91c75c961f702de7ed6a33e676e4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98882435"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946998"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Nastavení instance a ověřování digitálních vláken Azure (portál)
 
@@ -40,7 +40,7 @@ Ve vyhledávacím poli vyhledejte *digitální vlákna Azure* a z výsledků vyb
 
 :::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins.png" alt-text="Výběr možnosti ' vytvořit ' na stránce služby Azure Digital Service":::
 
-Na následující stránce *vytvořit prostředek* vyplňte hodnoty uvedené níže:
+Na následující stránce **vytvořit prostředek** vyplňte hodnoty uvedené níže:
 * **Předplatné**: předplatné Azure, které používáte
   - **Skupina prostředků**: Skupina prostředků, do které se má instance nasadit. Pokud ještě nemáte existující skupinu prostředků, můžete si ji vytvořit tak, že vyberete odkaz *vytvořit nový* a zadáte název nové skupiny prostředků.
 * **Umístění**: oblast s povolenými digitálními podtechnologiemi Azure pro nasazení. Další podrobnosti o místní podpoře najdete v [*produktech Azure dostupných v oblasti (digitální vlákna Azure)*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins).
@@ -48,11 +48,21 @@ Na následující stránce *vytvořit prostředek* vyplňte hodnoty uvedené ní
 
 :::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins-2.png" alt-text="Naplnění popsaných hodnot k vytvoření prostředku digitálních vláken Azure":::
 
-Po dokončení vyberte _zkontrolovat + vytvořit_. Tím přejdete na stránku Souhrn, kde můžete zkontrolovat podrobnosti instance, které jste zadali, a _vytvořit_. 
+Až budete hotovi, můžete vybrat **zkontrolovat + vytvořit** , pokud nechcete konfigurovat další nastavení pro vaši instanci. Tím přejdete na stránku Souhrn, kde můžete zkontrolovat podrobnosti instance, které jste zadali, a dokončit **vytvořením**. 
+
+Pokud chcete pro instanci nakonfigurovat další podrobnosti, další část popisuje zbývající karty instalace.
+
+### <a name="additional-setup-options"></a>Další možnosti instalace
+
+Tady jsou další možnosti, které můžete konfigurovat během instalace, pomocí dalších karet v procesu **vytváření prostředků** .
+
+* **Sítě**: na této kartě můžete povolit privátní koncové body s [privátním propojením Azure](../private-link/private-link-overview.md) , abyste vyloučili vystavení veřejné sítě pro vaši instanci. Pokyny najdete v tématu [*Postup: povolení privátního přístupu pomocí privátního odkazu*](how-to-enable-private-link.md#add-a-private-endpoint-during-instance-creation).
+* **Upřesnit**: na této kartě můžete povolit [systémově spravovanou identitu](../active-directory/managed-identities-azure-resources/overview.md) pro vaši instanci, kterou lze použít při předávání událostí do [koncových bodů](concepts-route-events.md). Pokyny najdete v tématu [*Postup: povolení spravovaných identit pro události směrování*](how-to-enable-managed-identities.md).
+* **Značky**: na této kartě můžete do své instance přidat značky, které vám pomůžou je uspořádat mezi prostředky Azure. Další informace o značkách prostředků Azure najdete v tématech [*označení prostředků, skupin prostředků a předplatných pro logickou organizaci*](../azure-resource-manager/management/tag-resources.md).
 
 ### <a name="verify-success-and-collect-important-values"></a>Ověřit úspěšné a shromažďovat důležité hodnoty
 
-Po nahrání *Vytvoření* můžete zobrazit stav nasazení vaší instance v oznámeních Azure na panelu ikon portálu. Oznámení bude označovat, že nasazení proběhlo úspěšně, a budete moci vybrat tlačítko _Přejít k prostředku_ a zobrazit vytvořenou instanci.
+Po dokončení nastavení instance výběrem možnosti **vytvořit** můžete zobrazit stav nasazení vaší instance v oznámeních Azure na panelu ikon portálu. Oznámení bude označovat, že nasazení proběhlo úspěšně, a budete moci vybrat tlačítko _Přejít k prostředku_ a zobrazit vytvořenou instanci.
 
 :::image type="content" source="media/how-to-set-up-instance/portal/notifications-deployment.png" alt-text="Zobrazení oznámení Azure znázorňující úspěšné nasazení a zvýraznění tlačítka přejít na prostředek":::
 

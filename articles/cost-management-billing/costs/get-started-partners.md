@@ -3,18 +3,18 @@ title: Začínáme se službou Azure Cost Management pro partnery
 description: V tomto článku je vysvětlené, jak partneři používají funkce služby Azure Cost Management a jak k ní umožní přístup svým zákazníkům.
 author: bandersmsft
 ms.author: banders
-ms.date: 01/19/2021
+ms.date: 01/27/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 8a04cb2c590bc4f0104a93ac7c7c2cf7b71a4662
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
-ms.translationtype: HT
+ms.openlocfilehash: 40c683d98a13bf4810ec4575af3fba5ae64961f0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602178"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946988"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Začínáme se službou Azure Cost Management pro partnery
 
@@ -22,7 +22,7 @@ Azure Cost Management mají přirozeně k dispozici přímí partneři, jejichž
 
 V případě přímých partnerů a nepřímých poskytovatelů mají globální správci a agenti správy přístup ke službě Cost Management v tenantovi partnera a spravovat náklady na úrovni s fakturovaných cen.
 
-Prodejci a zákazníci mají přístup ke službě Cost Management v tenantovi zákazníka a vidí náklady pro předplatná, kde se náklady vypočítávají a zobrazují v maloobchodních sazbách. K zobrazení nákladů ale musí mít přístup Azure RBAC k předplatnému v tenantovi zákazníka. Pro tenanta zákazníka je potřeba povolit zásadu viditelnosti nákladů.
+Prodejci a zákazníci můžou získat přístup k Cost Management v tenantovi zákazníka a zobrazovat náklady na používání předplatných, kde se vypočítávají náklady a zobrazují se v maloobchodních sazbách. K zobrazení nákladů ale musí mít přístup Azure RBAC k předplatnému v tenantovi zákazníka. Pro tenanta zákazníka je potřeba povolit zásadu viditelnosti nákladů.
 
 Zákazníci můžou používat funkce služby Cost Management, pokud jim ji zpřístupní jejich partner CSP.
 
@@ -56,6 +56,8 @@ Azure Cost Management vyžaduje přístup pro čtení fakturačního účtu nebo
 Další informace o tom, jak službě Azure Cost Management povolit a přiřadit přístup k fakturačnímu účtu, najdete v tématu o [přiřazení uživatelských rolí a oprávnění](/partner-center/permissions-overview). Ve fakturačním účtu smí náklady spravovat role **globálního správce** a **agenta správy**.
 
 Přístup ke službě Azure Cost Management v rozsahu předplatného může mít každý uživatel, který má k předplatnému přístup Azure RBAC. Takový uživatel může prohlížet náklady odpovídající maloobchodním tarifům (průběžné platby). Pro tenanty zákazníků je ale potřeba povolit [zásadu viditelnosti nákladů](#enable-the-policy-to-view-azure-usage-charges). Kompletní seznam podporovaných typů účtů si můžete prohlédnout v článku [Vysvětlení dat služby Cost Management](understand-cost-mgt-data.md).
+
+Při převodu stávajících fakturačních smluv na nového partnera jsou možnosti služby cost management dostupné jenom pro aktuální fakturační vztah s partnerem. Historické náklady před přenosem na nového partnera se nepřesunou na nový fakturační účet. Historie nákladů ale zůstane u původního přidruženého fakturačního účtu.
 
 ## <a name="how-cost-management-uses-scopes"></a>Jak Cost Management používá rozsahy
 
