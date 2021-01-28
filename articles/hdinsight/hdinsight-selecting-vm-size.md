@@ -2,19 +2,16 @@
 title: Jak vybrat správnou velikost virtuálního počítače pro cluster Azure HDInsight
 description: Naučte se, jak vybrat správnou velikost virtuálního počítače pro cluster HDInsight.
 keywords: velikosti virtuálních počítačů, velikosti clusterů, konfigurace clusteru
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: d347707b0f48314dd872bc3ad34ac624817d2937
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 51043f0a1009994528783a1b56ec5ccec68e99b3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92535310"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931783"
 ---
 # <a name="selecting-the-right-vm-size-for-your-azure-hdinsight-cluster"></a>Výběr správné velikosti virtuálního počítače pro cluster Azure HDInsight
 
@@ -43,7 +40,7 @@ Rodiny virtuálních počítačů v Azure jsou optimalizované tak, aby vyhovova
 | [Vstupní úroveň](../virtual-machines/sizes-general.md)          | A, Av2  | Pro úlohy vstupní úrovně, jako je vývoj a testování, se nejlépe hodí konfigurace výkonu a paměti procesoru. Je to ekonomicky výhodná možnost, která vám umožní začít s Azure. |
 | [Obecné účely](../virtual-machines/sizes-general.md)          | D, DSv2, Dv2  | Vyvážený poměr procesorů k paměti. Tato možnost je ideální pro testování a vývoj, malé až střední databáze a webové servery s nízkým až středním provozem. |
 | [Optimalizované pro výpočty](../virtual-machines/sizes-compute.md)        | F           | Vysoký poměr procesorů k paměti. Vhodné pro webové servery se středním provozem, síťová zařízení, dávkové procesy a aplikační servery.        |
-| [Optimalizované pro paměť](../virtual-machines/sizes-memory.md)         | Esv3, Ev3  | Vysoký poměr paměti k procesoru. Velmi vhodné pro relační databázové servery, střední a velké mezipaměti a analýzu v paměti.                 |
+| [Optimalizované pro paměť](../virtual-machines/sizes-memory.md)         | Esv3, Ev3  | Vysoký poměr paměti k procesoru. Jsou velmi vhodné pro servery s relační databází, střední a velké mezipaměti a analýzu v paměti.                 |
 
 - Informace o cenách dostupných instancí virtuálních počítačů napříč oblastmi podporovanými HDInsight najdete v tématu [ceny služby HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
 

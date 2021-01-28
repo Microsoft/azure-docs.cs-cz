@@ -1,19 +1,16 @@
 ---
 title: 'Kurz: vytvoření kompletního kanálu ETL pro odvodit Sales Insights v Azure HDInsight'
 description: Naučte se, jak pomocí Azure HDInsight vytvořit kanály ETL k odvozování přehledů z prodejních dat pomocí clusterů Spark na vyžádání a Power BI.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 04/15/2020
-ms.openlocfilehash: 1031c34a44a253c7458ef78c6371b88014e882ed
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 7d026d93ebe6f6a0bd9afbd277294d58d7a2a69b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746470"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932053"
 ---
 # <a name="tutorial-create-an-end-to-end-data-pipeline-to-derive-sales-insights-in-azure-hdinsight"></a>Kurz: vytvoření uceleného datového kanálu pro odvoditelné prodejní přehledy ve službě Azure HDInsight
 
@@ -23,9 +20,9 @@ Tento datový kanál kombinuje data z různých úložišť, odebírá všechna 
 
 ![Architektura ETL](./media/hdinsight-sales-insights-etl/architecture.png)
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Azure CLI – minimálně verze 2.2.0 Viz [instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
 
@@ -214,7 +211,7 @@ Pro aktivaci kanálu můžete:
 
     Nebo
 
-* Otevřete datovou továrnu a vyberte **vytvořit & monitorování** . Aktivujte `IngestAndTransform` kanál z portálu. Informace o aktivaci kanálů prostřednictvím portálu najdete v tématu [Vytvoření clusterů Apache Hadoop na vyžádání v HDInsight pomocí Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md#trigger-a-pipeline).
+* Otevřete datovou továrnu a vyberte **vytvořit & monitorování**. Aktivujte `IngestAndTransform` kanál z portálu. Informace o aktivaci kanálů prostřednictvím portálu najdete v tématu [Vytvoření clusterů Apache Hadoop na vyžádání v HDInsight pomocí Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md#trigger-a-pipeline).
 
 Pokud chcete ověřit, že je kanál spuštěný, můžete provést jeden z následujících kroků:
 
@@ -259,7 +256,7 @@ Další způsoby, jak transformovat data pomocí služby HDInsight, najdete v [t
 1. Z dialogového okna **HDInsight Interactive Query** :
     1. Do textového pole **Server** zadejte název clusteru LLAP ve formátu `https://LLAPCLUSTERNAME.azurehdinsight.net` .
     1. Do textového pole **databáze** zadejte `default` .
-    1. Vyberte **OK** .
+    1. Vyberte **OK**.
 
 1. V dialogovém okně **AzureHive** :
     1. Do textového pole **uživatelské jméno** zadejte `admin` .

@@ -1,19 +1,16 @@
 ---
 title: Konfigurace omezení odchozích síťových přenosů – Azure HDInsight
 description: Přečtěte si, jak nakonfigurovat omezení odchozích síťových přenosů pro clustery Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/17/2020
-ms.openlocfilehash: 4c703fc1ddac4af2e3cf8716764a21da7e870b19
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 79e3349f009f71c5cd387a7c7265ad4904f2a40d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98048670"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932137"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>Konfigurace odchozího síťového provozu pro clustery Azure HDInsight pomocí brány firewall
 
@@ -69,13 +66,13 @@ Vytvořte kolekci pravidel aplikace, která umožňuje clusteru odesílat a při
 
     **Oddíl značek plně kvalifikovaného názvu domény**
 
-    | Název | Zdrojová adresa | FQDN – značka | Poznámky |
+    | Name | Zdrojová adresa | FQDN – značka | Poznámky |
     | --- | --- | --- | --- |
     | Rule_1 | * | WindowsUpdate a HDInsight | Vyžadováno pro služby HDI Services |
 
     **Oddíl cílové plně kvalifikované názvy domén**
 
-    | Název | Zdrojové adresy | Protokol:port | Cílové plně kvalifikované názvy domén | Poznámky |
+    | Name | Zdrojové adresy | Protokol:port | Cílové plně kvalifikované názvy domén | Poznámky |
     | --- | --- | --- | --- | --- |
     | Rule_2 | * | HTTPS:443 | login.windows.net | Povoluje aktivitu přihlášení systému Windows. |
     | Rule_3 | * | HTTPS:443 | login.microsoftonline.com | Povoluje aktivitu přihlášení systému Windows. |
@@ -83,7 +80,7 @@ Vytvořte kolekci pravidel aplikace, která umožňuje clusteru odesílat a při
 
    ![Title: zadejte podrobnosti kolekce pravidel aplikace.](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
 
-1. Vyberte **Add** (Přidat).
+1. Vyberte **Přidat**.
 
 ### <a name="configure-the-firewall-with-network-rules"></a>Konfigurace brány firewall pomocí síťových pravidel
 
@@ -103,14 +100,14 @@ Vytvořte Síťová pravidla pro správnou konfiguraci clusteru HDInsight.
 
     **Oddíl Service Tags**
 
-    | Název | Protokol | Zdrojové adresy | Značky služeb | Cílové porty | Poznámky |
+    | Name | Protokol | Zdrojové adresy | Značky služeb | Cílové porty | Poznámky |
     | --- | --- | --- | --- | --- | --- |
     | Rule_5 | TCP | * | SQL | 1433 | Pokud používáte výchozí SQL Server poskytovaný službou HDInsight, nakonfigurujte síťové pravidlo v části značky služby pro SQL, které vám umožní protokolovat a auditovat provoz SQL. Pokud jste nenakonfigurovali koncové body služby pro SQL Server v podsíti HDInsight, která bude bránu firewall obejít. Pokud používáte vlastní SQL Server pro Ambari, Oozie, Ranger a podregistr metaúložiště, stačí, když povolíte provoz na vlastní SQL servery.|
     | Rule_6 | TCP | * | Azure Monitor | * | volitelné Toto pravidlo by mělo přidat zákazníci, kteří chtějí používat funkci automatického škálování. |
     
    ![Title: zadejte kolekci pravidel aplikace.](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
 
-1. Vyberte **Add** (Přidat).
+1. Vyberte **Přidat**.
 
 ### <a name="create-and-configure-a-route-table"></a>Vytvoření a konfigurace směrovací tabulky
 
@@ -130,12 +127,12 @@ Pokud chcete například nakonfigurovat směrovací tabulku pro cluster vytvoře
 
 | Název trasy | Předpona adresy | Typ dalšího přesměrování | Adresa dalšího segmentu |
 |---|---|---|---|
-| 168.61.49.99 | 168.61.49.99/32 | Internet | Není k dispozici |
-| 23.99.5.239 | 23.99.5.239/32 | Internet | Není k dispozici |
-| 168.61.48.131 | 168.61.48.131/32 | Internet | Není k dispozici |
-| 138.91.141.162 | 138.91.141.162/32 | Internet | Není k dispozici |
-| 13.82.225.233 | 13.82.225.233/32 | Internet | Není k dispozici |
-| 40.71.175.99 | 40.71.175.99/32 | Internet | Není k dispozici |
+| 168.61.49.99 | 168.61.49.99/32 | Internet | NA |
+| 23.99.5.239 | 23.99.5.239/32 | Internet | NA |
+| 168.61.48.131 | 168.61.48.131/32 | Internet | NA |
+| 138.91.141.162 | 138.91.141.162/32 | Internet | NA |
+| 13.82.225.233 | 13.82.225.233/32 | Internet | NA |
+| 40.71.175.99 | 40.71.175.99/32 | Internet | NA |
 | 0.0.0.0 | 0.0.0.0/0 | Virtuální zařízení | 10.0.2.4 |
 
 Dokončete konfiguraci směrovací tabulky:

@@ -1,18 +1,15 @@
 ---
 title: Řešení potíží s VLÁKNy v Azure HDInsight
 description: Získejte odpovědi na běžné otázky týkající se práce s Apache Hadoopmi NITĚmi a Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: b8dc63030c6791779ad90500747e4e2f5c4ffeef
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b5b8ccbfd3e39415416cfc8fabcf9614f5934042
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022662"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931404"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Řešení potíží s Apache Hadoop YARN pomocí služby Azure HDInsight
 
@@ -129,7 +126,7 @@ Tyto změny jsou okamžitě viditelné v uživatelském rozhraní plánovače P�
 
     Tento příkaz vytvoří soubor protokolu s názvem containerlogs.txt.
 
-### <a name="additional-reading"></a><a name="additional-reading-2"></a>Další čtení
+### <a name="additional-reading"></a><a name="additional-reading-2"></a>Další materiály ke čtení
 
 - [Připojení k HDInsight (Apache Hadoop) pomocí SSH](./hdinsight-hadoop-linux-use-ssh-unix.md)
 - [Apache Hadoop koncepce a aplikace PŘÍZe](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html#Concepts_and_Flow)

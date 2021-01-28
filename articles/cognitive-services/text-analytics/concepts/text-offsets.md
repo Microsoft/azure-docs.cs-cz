@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/09/2020
 ms.author: aahi
 ms.reviewer: jdesousa
-ms.openlocfilehash: c587bb042601b947b71658bf790e9acdfbdbf742
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: f5b63503792b13e089568004ba67e5be8a3d0c7f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363778"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932361"
 ---
 # <a name="text-offsets-in-the-text-analytics-api-output"></a>Posunutí textu ve výstupu rozhraní API pro analýzu textu
 
@@ -34,9 +34,9 @@ Vždy, když jsou vráceny posunutí odpovědi rozhraní API, například [rozpo
 
 ## <a name="extracting-substrings-from-text-with-offsets"></a>Extrahování podřetězců z textu s posuny
 
-Posuny mohou způsobovat problémy při použití metod podřetězců založených na znacích, například metody [substring](/dotnet/api/system.string.substring?view=netframework-4.8) rozhraní .NET. Jedním z nich je, že posun může způsobit, že metoda podřetězce dokončí uprostřed grapheme kódování s více znaky namísto konce.
+Posuny mohou způsobovat problémy při použití metod podřetězců založených na znacích, například metody [substring](/dotnet/api/system.string.substring) rozhraní .NET. Jedním z nich je, že posun může způsobit, že metoda podřetězce dokončí uprostřed grapheme kódování s více znaky namísto konce.
 
-V rozhraní .NET zvažte použití třídy [StringInfo](/dotnet/api/system.globalization.stringinfo?view=netframework-4.8) , která umožňuje pracovat s řetězcem jako řadou textových prvků, nikoli jednotlivými znakovými objekty. V upřednostňovaném softwarovém prostředí můžete také vyhledat rozgraphemeelné knihovny. 
+V rozhraní .NET zvažte použití třídy [StringInfo](/dotnet/api/system.globalization.stringinfo) , která umožňuje pracovat s řetězcem jako řadou textových prvků, nikoli jednotlivými znakovými objekty. V upřednostňovaném softwarovém prostředí můžete také vyhledat rozgraphemeelné knihovny. 
 
 Rozhraní API pro analýzu textu vrátí tyto textové prvky také pro usnadnění práce.
 
@@ -54,6 +54,6 @@ Pokud `stringIndexType` požadované odpovídá programovacímu prostředí volb
 
 * [Přehled analýzy textu](../overview.md)
 * [Analýza mínění](../how-tos/text-analytics-how-to-sentiment-analysis.md)
-* [rozpoznávání entit,](../how-tos/text-analytics-how-to-entity-linking.md)
+* [Rozpoznávání entit](../how-tos/text-analytics-how-to-entity-linking.md)
 * [Rozpoznání jazyka](../how-tos/text-analytics-how-to-keyword-extraction.md)
 * [Rozpoznávání jazyka](../how-tos/text-analytics-how-to-language-detection.md)

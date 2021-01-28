@@ -1,18 +1,16 @@
 ---
 title: Značky služby skupiny zabezpečení sítě (NSG) pro Azure HDInsight
 description: Pomocí značek služby HDInsight můžete povolit příchozí provoz do vašeho clusteru z uzlů služeb stavu a správy, aniž byste museli přidávat IP adresy do skupin zabezpečení sítě.
-author: hrasheed-msft
-ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/11/2020
-ms.openlocfilehash: 1a90bc6636dcb3aa81f09b0489850c1a95b3256d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d17d067b88add3006bc5c7fb10caa6b80a80a827
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022747"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931769"
 ---
 # <a name="nsg-service-tags-for-azure-hdinsight"></a>Značky služby NSG pro Azure HDInsight
 
@@ -59,7 +57,7 @@ Pokud je váš cluster umístěný v oblasti uvedené v této tabulce, stačí d
 | Country (Země) | Region (Oblast) | Značka služby |
 | ---- | ---- | ---- |
 | Austrálie | Austrálie – východ | HDInsight. AustraliaEast |
-| &nbsp; | Australia Southeast | HDInsight. AustraliaSoutheast |
+| &nbsp; | Austrálie – jihovýchod | HDInsight. AustraliaSoutheast |
 | &nbsp; | Austrálie – střed | HDInsight. AustraliaCentral |
 | Čína | Čína – východ 2 | HDInsight. ChinaEast2 |
 | &nbsp; | Čína – sever 2 | HDInsight. ChinaNorth2 |
@@ -67,7 +65,7 @@ Pokud je váš cluster umístěný v oblasti uvedené v této tabulce, stačí d
 | &nbsp; | Západní USA 2 | HDInsight. WestUS2 |
 | &nbsp; | USA – středozápad | HDInsight. WestCentralUS |
 | Kanada | Kanada – východ | HDInsight. CanadaEast |
-| Brazílie | Brazil South | HDInsight. BrazilSouth |
+| Brazílie | Brazílie – jih | HDInsight. BrazilSouth |
 | Jižní Korea | Jižní Korea – střed | HDInsight. KoreaCentral |
 | &nbsp; | Jižní Korea – jih | HDInsight. KoreaSouth |
 | Indie | Indie – střed | HDInsight. CentralIndia |
@@ -99,7 +97,7 @@ Pokud se například v dané oblasti vytvoří cluster, budete `East US 2` muset
 | Country (Země) | Region (Oblast) | Značka služby |
 | ---- | ---- | ---- |
 | USA | USA – východ 2 | HDInsight. EastUS2 |
-| &nbsp; | Střední USA | HDInsight. CentralUS |
+| &nbsp; | USA – střed | HDInsight. CentralUS |
 | &nbsp; | NorthCentral nás | HDInsight. NorthCentralUS |
 | &nbsp; | Středojižní USA | HDInsight. SouthCentralUS |
 | &nbsp; | East US | HDInsight. EastUS |

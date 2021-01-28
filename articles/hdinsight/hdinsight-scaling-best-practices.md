@@ -1,19 +1,17 @@
 ---
 title: Škálování velikosti clusterů – Azure HDInsight
 description: Škálování Apache Hadoop clusteru elastické tak, aby odpovídalo vašemu zatížení v Azure HDInsight
-author: hrasheed-msft
 ms.author: ashish
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: 22ce91a81964ed52830fc19dbbbd52e7f170b0d4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3524b5d2274c52aa94fa1c3420fb0d3245d9b730
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022764"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932056"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Škálování clusterů Azure HDInsight
 
@@ -146,7 +144,7 @@ Pokud chcete tuto spuštěnou aplikaci odstranit ručně, spusťte v prostředí
 yarn application -kill <application_id>
 ```
 
-Například:
+Příklad:
 
 ```bash
 yarn application -kill "application_1499348398273_0003"

@@ -1,19 +1,16 @@
 ---
 title: Použití Sparku ke čtení a zápisu dat HBA – Azure HDInsight
 description: Konektor Spark HBA slouží ke čtení a zápisu dat z clusteru Spark do clusteru HBA.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 08/12/2020
-ms.openlocfilehash: eb62cf099d7ccc133a207a843a8be3debf5c5454
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 344caf4080380f5d9dfdaf452798ada6d1dc9f1c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91308414"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931227"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>Použití Apache Sparku ke čtení a zápisu dat Apache HBase
 
@@ -94,7 +91,7 @@ __Poznámka__: než budete pokračovat, ujistěte se, že jste přidali účet �
     |Vlastnost | Hodnota |
     |---|---|
     |Identifikátor URI skriptu bash|`https://hdiconfigactions.blob.core.windows.net/hbasesparkconnectorscript/connector-hbase.sh`|
-    |Typ (typy) uzlů|Oblast|
+    |Typ (typy) uzlů|Region (Oblast)|
     |Parametry|`-s SECONDARYS_STORAGE_URL`|
     |Trvalé|ano|
 

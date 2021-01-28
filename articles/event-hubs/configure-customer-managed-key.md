@@ -3,20 +3,15 @@ title: Konfigurace vlastního klíče pro šifrování dat služby Azure Event H
 description: Tento článek poskytuje informace o tom, jak nakonfigurovat vlastní klíč pro šifrování služby Azure Event Hubs data REST.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 095def84c5ab5e4dac7802027468b67eefb3161f
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 00e33bc3464aed1829968b7957e48455eaa04447
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625377"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933794"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Konfigurace klíčů spravovaných zákazníkem pro šifrování dat Azure Event Hubs v klidovém formátu pomocí Azure Portal
-Azure Event Hubs poskytuje šifrování neaktivních dat pomocí šifrování služby Azure Storage (Azure SSE). Event Hubs spoléhá na Azure Storage uložení dat a ve výchozím nastavení se všechna data uložená pomocí Azure Storage šifrují pomocí klíčů spravovaných Microsoftem. 
-
-## <a name="overview"></a>Přehled
-Azure Event Hubs teď podporuje možnost šifrování neaktivních dat buď pomocí klíčů spravovaných Microsoftem nebo klíčů spravovaných zákazníkem (Bring Your Own Key – BYOK). Tato funkce umožňuje vytvořit, otočit, zakázat a odvolat přístup k klíčům spravovaným zákazníkem, které se používají k šifrování neaktivních dat služby Azure Event Hubs.
-
-Povolení funkce BYOK je jednorázovým procesem nastavení v oboru názvů.
+Azure Event Hubs poskytuje šifrování neaktivních dat pomocí šifrování služby Azure Storage (Azure SSE). Služba Event Hubs používá Azure Storage k ukládání dat. Všechna data uložená pomocí Azure Storage se šifrují pomocí klíčů spravovaných Microsoftem. Pokud používáte vlastní klíč (také označovaný jako Bring Your Own Key (BYOK) nebo klíč spravovaný zákazníkem), data se pořád šifrují pomocí klíče spravovaného společností Microsoft, ale navíc klíč spravovaný společností Microsoft bude zašifrovaný pomocí klíče spravovaného zákazníkem. Tato funkce umožňuje vytvořit, otočit, zakázat a odvolat přístup k klíčům spravovaným zákazníkem, které se používají k šifrování klíčů spravovaných společností Microsoft. Povolení funkce BYOK je jednorázovým procesem nastavení v oboru názvů.
 
 > [!NOTE]
 > Funkce BYOK je podporována [Event Hubs vyhrazenými clustery s jedním tenantů](event-hubs-dedicated-overview.md) . Nedá se povolit pro standardní Event Hubs obory názvů.
@@ -62,7 +57,7 @@ Po povolení klíčů spravovaných zákazníkem je potřeba přidružit spravov
     1. Nyní můžete vybrat tento klíč, který chcete přidružit k oboru názvů Event Hubs pro šifrování z rozevíracího seznamu. 
 
         ![Vyberte klíč z trezoru klíčů.](./media/configure-customer-managed-key/select-key-from-key-vault.png)
-    1. Zadejte podrobnosti pro klíč a klikněte na **Vybrat**. Tím se povolí Šifrování neaktivních dat v oboru názvů pomocí klíče spravovaného zákazníkem. 
+    1. Zadejte podrobnosti pro klíč a klikněte na **Vybrat**. Tím se povolí šifrování klíče spravovaného společností Microsoft s klíčem (klíč spravovaný zákazníkem). 
 
 
 ## <a name="rotate-your-encryption-keys"></a>Otočení šifrovacích klíčů
@@ -74,7 +69,7 @@ Odvolání přístupu k šifrovacím klíčům neodstraní data z Event Hubs. K 
 Po odvolání šifrovacího klíče se služba Event Hubs v zašifrovaném oboru názvů stane nefunkčním. Pokud je povolený přístup ke klíči nebo je obnovený klíč, Event Hubs služba vybere klíč, abyste měli přístup k datům z šifrovaného názvového prostoru Event Hubs.
 
 ## <a name="set-up-diagnostic-logs"></a>Nastavení diagnostických protokolů 
-Nastavení protokolů diagnostiky pro obory názvů s povoleným BYOK poskytuje požadované informace o operacích, když je obor názvů zašifrovaný pomocí klíčů spravovaných zákazníkem. Tyto protokoly je možné povolit a později streamovat do centra událostí nebo analyzovat prostřednictvím Log Analytics nebo streamovat do úložiště a provádět přizpůsobené analýzy. Další informace o diagnostických protokolech najdete v tématu [Přehled diagnostických protokolů Azure](../azure-monitor/platform/platform-logs-overview.md).
+Nastavení protokolů diagnostiky pro obory názvů s povoleným BYOK poskytuje požadované informace o těchto operacích. Tyto protokoly je možné povolit a později streamovat do centra událostí nebo analyzovat prostřednictvím Log Analytics nebo streamovat do úložiště a provádět přizpůsobené analýzy. Další informace o diagnostických protokolech najdete v tématu [Přehled diagnostických protokolů Azure](../azure-monitor/platform/platform-logs-overview.md).
 
 ## <a name="enable-user-logs"></a>Povolit protokoly uživatelů
 Pomocí těchto kroků povolte protokoly pro klíče spravované zákazníkem.
@@ -94,7 +89,7 @@ Pomocí těchto kroků povolte protokoly pro klíče spravované zákazníkem.
 ## <a name="log-schema"></a>Schéma protokolu 
 Všechny protokoly jsou uložené ve formátu JavaScript Object Notation (JSON). Každá položka má pole řetězce, která používají formát popsaný v následující tabulce. 
 
-| Název | Description |
+| Název | Popis |
 | ---- | ----------- | 
 | /TN | Popis úlohy, která selhala. |
 | ID aktivity | Interní ID, které se používá ke sledování. |

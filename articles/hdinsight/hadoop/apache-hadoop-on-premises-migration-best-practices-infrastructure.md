@@ -1,19 +1,16 @@
 ---
 title: 'Infrastruktura: místní Apache Hadoop do Azure HDInsight'
 description: Naučte se osvědčené postupy pro migraci místních clusterů Hadoop do Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: e412b82be911f0b4ba2e5cda51495cdcd7826917
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: f66e13046a34bddfd27912e23ce51f75006fd9fa
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92542297"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932150"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>Migrace místních Apache Hadoopových clusterů do Azure HDInsight – osvědčené postupy infrastruktury
 
@@ -80,7 +77,7 @@ Další informace najdete v článku věnovaném [Apache Hadoop komponentám, kt
 
 ## <a name="customize-hdinsight-clusters-using-script-actions"></a>Přizpůsobení clusterů HDInsight pomocí akcí skriptů
 
-HDInsight poskytuje metodu konfigurace clusteru nazvanou **akce skriptu** . Akce skriptu je skript bash, který běží na uzlech v clusteru HDInsight a dá se použít k instalaci dalších komponent a změně nastavení konfigurace.
+HDInsight poskytuje metodu konfigurace clusteru nazvanou **akce skriptu**. Akce skriptu je skript bash, který běží na uzlech v clusteru HDInsight a dá se použít k instalaci dalších komponent a změně nastavení konfigurace.
 
 Akce skriptu musí být uložené na identifikátoru URI, který je přístupný z clusteru HDInsight. Dají se použít během vytváření clusteru nebo po ní a můžou se taky omezit na spouštění jenom na určitých typech uzlů.
 
@@ -152,7 +149,7 @@ Další informace najdete v článku [použití prázdných hraničních uzlů n
 
 ## <a name="use-scale-up-and-scale-down-feature-of-clusters"></a>Použití funkcí horizontálního navýšení kapacity a škálování clusterů
 
-Služba HDInsight poskytuje pružnost díky možnosti horizontálního navýšení a snížení kapacity počtu pracovních uzlů ve vašich clusterech. Tato funkce umožňuje zmenšit cluster po hodinách nebo na víkendech a rozšířit ho během špičkových obchodních požadavků. Další informace naleznete v tématech:
+Služba HDInsight poskytuje pružnost díky možnosti horizontálního navýšení a snížení kapacity počtu pracovních uzlů ve vašich clusterech. Tato funkce umožňuje zmenšit cluster po hodinách nebo na víkendech a rozšířit ho během špičkových obchodních požadavků. Další informace naleznete v tématu:
 
 * [Škálování clusterů HDInsight](../hdinsight-scaling-best-practices.md).
 * [Škálování clusterů](../hdinsight-administer-use-portal-linux.md#scale-clusters).

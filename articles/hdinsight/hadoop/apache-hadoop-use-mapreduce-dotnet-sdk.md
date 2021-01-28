@@ -1,19 +1,16 @@
 ---
 title: Odeslání úloh MapReduce pomocí sady HDInsight .NET SDK – Azure
 description: Naučte se odesílat MapReduce úlohy do Azure HDInsight Apache Hadoop pomocí sady HDInsight .NET SDK.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 01/15/2020
-ms.openlocfilehash: ddb14c321962c65d09be420d8da15f1e547aa282
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 8fbcb66be11c7c77a9bfaf0e6ec790622dcbbda7
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489536"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932186"
 ---
 # <a name="run-mapreduce-jobs-using-hdinsight-net-sdk"></a>Spouštění úloh MapReduce pomocí sady HDInsight .NET SDK
 
@@ -24,7 +21,7 @@ Naučte se odesílat MapReduce úlohy pomocí sady HDInsight .NET SDK. Clustery 
 > [!NOTE]  
 > Kroky v tomto článku je třeba provést z klienta systému Windows. Informace o použití klienta se systémem Linux, OS X nebo UNIX pro práci s podregistrem získáte pomocí voliče karet zobrazeného v horní části článku.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Cluster Apache Hadoop v HDInsight. Další informace najdete v tématu [Vytvoření clusterů Apache Hadoop pomocí Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md).
 

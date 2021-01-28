@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: 0466105ab99d191b5dd9beab1d5d5b61f4b3225e
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 68d88ef667da9f22d3e3a17f10036693fcca0c3f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98790880"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932516"
 ---
 # <a name="devops-practices-for-luis"></a>DevOps postupy pro LUIS
 
@@ -18,7 +18,7 @@ Technici softwaru, kteří vyvíjí aplikaci Language Understanding (LUIS), moho
 
 ## <a name="source-control-and-branch-strategies-for-luis"></a>Správa zdrojového kódu a strategie větvení pro LUIS
 
-Jedním z klíčových faktorů, na kterých je úspěch DevOps závislý, je [Správa zdrojového kódu](/azure/devops/user-guide/source-control?view=azure-devops). Systém správy zdrojového kódu umožňuje vývojářům spolupracovat na kódu a sledovat změny. Použití větví umožňuje vývojářům přepínat mezi různými verzemi základu kódu a pracovat nezávisle na jiných členech týmu. Když vývojáři vyvolají [žádost o](https://help.github.com/github/collaborating-with-issues-and-pull-requests/about-pull-requests) přijetí změn (PR), aby navrhli aktualizace z jedné větve do druhé nebo když jsou změny sloučeny, mohou být triggerem pro [automatizované sestavení](luis-concept-devops-automation.md) pro sestavení a průběžný testování kódu.
+Jedním z klíčových faktorů, na kterých je úspěch DevOps závislý, je [Správa zdrojového kódu](/azure/devops/user-guide/source-control). Systém správy zdrojového kódu umožňuje vývojářům spolupracovat na kódu a sledovat změny. Použití větví umožňuje vývojářům přepínat mezi různými verzemi základu kódu a pracovat nezávisle na jiných členech týmu. Když vývojáři vyvolají [žádost o](https://help.github.com/github/collaborating-with-issues-and-pull-requests/about-pull-requests) přijetí změn (PR), aby navrhli aktualizace z jedné větve do druhé nebo když jsou změny sloučeny, mohou být triggerem pro [automatizované sestavení](luis-concept-devops-automation.md) pro sestavení a průběžný testování kódu.
 
 Pomocí konceptů a návodů, které jsou popsány v tomto dokumentu, můžete vyvíjet aplikaci LUIS při sledování změn v systému správy zdrojů a postupovat podle osvědčených postupů pro Software Engineering:
 
@@ -42,7 +42,7 @@ Pomocí konceptů a návodů, které jsou popsány v tomto dokumentu, můžete v
 
 ## <a name="source-control"></a>Správa zdrojového kódu
 
-Chcete-li zachovat [definici schématu aplikace](./app-schema-definition.md) aplikace Luis v systému správy zdrojového kódu, použijte reprezentaci aplikace [LUDown Format ( `.lu` )](/azure/bot-service/file-format/bot-builder-lu-file-format?view=azure-bot-service-4.0)  . `.lu` formát je preferovaný `.json` , protože je čitelný pro člověka, což usnadňuje provádění a kontrolu změn v pr.
+Chcete-li zachovat [definici schématu aplikace](./app-schema-definition.md) aplikace Luis v systému správy zdrojového kódu, použijte reprezentaci aplikace [LUDown Format ( `.lu` )](/azure/bot-service/file-format/bot-builder-lu-file-format)  . `.lu` formát je preferovaný `.json` , protože je čitelný pro člověka, což usnadňuje provádění a kontrolu změn v pr.
 
 ### <a name="save-a-luis-app-using-the-ludown-format"></a>Uložení aplikace LUIS pomocí formátu LUDown
 
@@ -81,7 +81,7 @@ Nezahrnujte klíče předplatného ani podobné důvěrné hodnoty do souborů, 
 - LUIS vytváření a předpověď klíčů
 - Koncové body vytváření a předpovědi LUIS
 - Klíče předplatného Azure
-- Přístupové tokeny, jako je token pro [instanční objekt](/cli/azure/ad/sp?view=azure-cli-latest) Azure, který se používá pro ověřování služby Automation
+- Přístupové tokeny, jako je token pro [instanční objekt](/cli/azure/ad/sp) Azure, který se používá pro ověřování služby Automation
 
 #### <a name="strategies-for-securely-managing-secrets"></a>Strategie pro bezpečnou správu tajných kódů
 
@@ -183,7 +183,7 @@ Aplikace LUIS ve formátu LUDown je humánní čitelnost, která podporuje komun
 
 ## <a name="versioning"></a>Správa verzí
 
-Aplikace se skládá z několika komponent, které můžou zahrnovat věci, jako je robot běžící v [Azure bot Service](/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0), [QnA maker](https://www.qnamaker.ai/), [Služba Azure Speech Service](../speech-service/overview.md)a další. Aby bylo možné dosáhnout cíle volně vázaných aplikací, použijte [řízení verze](/azure/devops/learn/git/what-is-version-control) tak, aby každá komponenta aplikace byla oddělená od verze, a umožní vývojářům detekovat zásadní změny nebo aktualizace pouze tím, že si prohlíží číslo verze. Aplikaci LUIS je snazší používat nezávisle na jiných součástech, pokud ji udržujete ve vlastním úložišti.
+Aplikace se skládá z několika komponent, které můžou zahrnovat věci, jako je robot běžící v [Azure bot Service](/azure/bot-service/bot-service-overview-introduction), [QnA maker](https://www.qnamaker.ai/), [Služba Azure Speech Service](../speech-service/overview.md)a další. Aby bylo možné dosáhnout cíle volně vázaných aplikací, použijte [řízení verze](/azure/devops/learn/git/what-is-version-control) tak, aby každá komponenta aplikace byla oddělená od verze, a umožní vývojářům detekovat zásadní změny nebo aktualizace pouze tím, že si prohlíží číslo verze. Aplikaci LUIS je snazší používat nezávisle na jiných součástech, pokud ji udržujete ve vlastním úložišti.
 
 Aplikace LUIS pro hlavní větev by měla mít použité schéma správy verzí. Když sloučíte aktualizace do `.lu` aplikace Luis do Main, naimportujete aktualizovaný zdroj do nové verze v aplikaci Luis pro hlavní větev.
 

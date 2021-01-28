@@ -3,12 +3,12 @@ title: Monitorování výkonu na virtuálních počítačích Azure – Azure Ap
 description: Sledování výkonu aplikací pro virtuální počítače Azure a Azure Virtual Machine Scale Sets. Zatížení grafu a doba odezvy, informace o závislostech a nastavení výstrah pro výkon.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: ed56bc88a9d2e8a9490331605cd4a72aef6930db
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 0ea005427348e5265867a9e7ee805b0e6aa202f2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98677939"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933904"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>Nasazení agenta Azure Monitor Application Insights na virtuální počítače Azure a Azure Virtual Machine Scale Sets
 
@@ -49,7 +49,7 @@ Existují dva způsoby, jak povolit monitorování aplikací pro virtuální po�
 > Před instalací agenta Application Insights budete potřebovat připojovací řetězec. [Vytvořte nový prostředek Application Insights](./create-new-resource.md) nebo zkopírujte připojovací řetězec z existujícího prostředku Application Insights.
 
 > [!NOTE]
-> Začínáte s PowerShellem? Přečtěte si [příručku Začínáme](/powershell/azure/get-started-azureps?view=azps-2.5.0).
+> Začínáte s PowerShellem? Přečtěte si [příručku Začínáme](/powershell/azure/get-started-azureps).
 
 Instalace nebo aktualizace agenta Application Insights jako rozšíření pro virtuální počítače Azure
 ```powershell

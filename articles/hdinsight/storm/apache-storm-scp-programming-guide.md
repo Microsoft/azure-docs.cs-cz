@@ -1,19 +1,16 @@
 ---
 title: Průvodce programováním v SCP.NET pro zaplavení ve službě Azure HDInsight
 description: Naučte se používat SCP.NET k vytvoření. Topologie nenáročného zaplavení pro použití s více operačními systémy v Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 01/13/2020
-ms.openlocfilehash: d54a06c457451fc5323ae37b34b53411cdd6abda
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bd52157e2f0e20e9282d944b07f656c08d9e57da
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89000137"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932638"
 ---
 # <a name="scp-programming-guide-for-apache-storm-in-azure-hdinsight"></a>Průvodce programováním SCP pro Apache Storm ve službě Azure HDInsight
 
@@ -95,7 +92,7 @@ public interface ISCPSpout : ISCPPlugin
 
 Při volání **NextTuple** může váš kód jazyka C# vygenerovat jednu nebo více řazených kolekcí členů. Pokud není nic k vygenerování, tato metoda by se měla vrátit bez nutnosti vysílat nic.
 
-Metody **NextTuple**, **ACK**a **selžou** jsou všechny volány v těsné smyčce v jednom vlákně procesu C#. Pokud neexistují žádné řazené kolekce členů k vygenerování, **NextTuple** spánku po krátkou dobu, jako je 10 milisekund. Tento režim spánku pomáhá vyhnout se plýtvání dostupností procesoru.
+Metody **NextTuple**, **ACK** a **selžou** jsou všechny volány v těsné smyčce v jednom vlákně procesu C#. Pokud neexistují žádné řazené kolekce členů k vygenerování, **NextTuple** spánku po krátkou dobu, jako je 10 milisekund. Tento režim spánku pomáhá vyhnout se plýtvání dostupností procesoru.
 
 Metody **ACK** a **selžou** se volají pouze v případě, že soubor specifikace povoluje mechanismus potvrzení. Parametr *seqId* identifikuje řazenou kolekci členů, která je potvrzena nebo se nezdařila. Pokud je potvrzení povoleno v netransakční topologii, je třeba použít následující funkci **Emit** v Spout:
 
@@ -133,7 +130,7 @@ public interface ISCPTxSpout : ISCPPlugin
 }
 ```
 
-Stejně jako jejich netransakční protějšky, **NextTx**, **ACK**a **selhání** jsou všechny volány v těsné smyčce v jednom vlákně procesu C#. Pokud neexistují žádné řazené kolekce členů k vygenerování, **NextTx** spánku po krátkou dobu, jako je 10 milisekund. Tento režim spánku pomáhá vyhnout se plýtvání dostupností procesoru.
+Stejně jako jejich netransakční protějšky, **NextTx**, **ACK** a **selhání** jsou všechny volány v těsné smyčce v jednom vlákně procesu C#. Pokud neexistují žádné řazené kolekce členů k vygenerování, **NextTx** spánku po krátkou dobu, jako je 10 milisekund. Tento režim spánku pomáhá vyhnout se plýtvání dostupností procesoru.
 
 Když je volána metoda **NextTx** ke spuštění nové transakce, výstupní parametr *seqId* identifikuje transakci. Transakce se používá také v poli **ACK** a **selhání**. Metoda **NextTx** může emitovat data na stranu Java. Data se ukládají do ZooKeeper pro podporu opětovného přehrání. Vzhledem k tomu, že ZooKeeper má omezené kapacity, váš kód by měl generovat pouze metadata a nikoli Hromadná data v transakčních Spout.
 
@@ -161,11 +158,11 @@ SCP.NET vytvoří nový objekt **ISCPBatchBolt** pro zpracování každého obje
 
 ## <a name="object-model"></a>Objektový model
 
-SCP.NET také poskytuje jednoduchou sadu klíčových objektů, pomocí kterých můžou vývojáři programovat. Objekty jsou **Context**, **úložiště stavu SMP**a **SCPRuntime**. Jsou popsány v této části.
+SCP.NET také poskytuje jednoduchou sadu klíčových objektů, pomocí kterých můžou vývojáři programovat. Objekty jsou **Context**, **úložiště stavu SMP** a **SCPRuntime**. Jsou popsány v této části.
 
 ### <a name="context"></a>Kontext
 
-**Kontextový** objekt poskytuje běžící prostředí pro aplikaci. Každá instance **ISCPPlugin** třídy **ISCPSpout**, **ISCPBolt**, **ISCPTxSpout**nebo **ISCPBatchBolt** má odpovídající **kontextovou** instanci. Funkce poskytovaná **kontextem** je rozdělena na tyto dvě části:
+**Kontextový** objekt poskytuje běžící prostředí pro aplikaci. Každá instance **ISCPPlugin** třídy **ISCPSpout**, **ISCPBolt**, **ISCPTxSpout** nebo **ISCPBatchBolt** má odpovídající **kontextovou** instanci. Funkce poskytovaná **kontextem** je rozdělena na tyto dvě části:
 
 * Statická část, která je k dispozici v celém procesu C#
 * Dynamická část, která je k dispozici pouze pro konkrétní instanci **kontextu**
@@ -268,7 +265,7 @@ public abstract void Fail(SCPTuple tuple);
 
 ### <a name="statestore"></a>Úložiště stavu SMP
 
-Objekt **úložiště stavu SMP** poskytuje služby metadat, generování sekvence monotónní a koordinaci bez čekání. V **úložiště stavu SMP**můžete vytvořit distribuované abstrakce souběžnosti na vyšší úrovni. Mezi tyto abstrakce patří distribuované zámky, distribuované fronty, překážky a transakční služby.
+Objekt **úložiště stavu SMP** poskytuje služby metadat, generování sekvence monotónní a koordinaci bez čekání. V **úložiště stavu SMP** můžete vytvořit distribuované abstrakce souběžnosti na vyšší úrovni. Mezi tyto abstrakce patří distribuované zámky, distribuované fronty, překážky a transakční služby.
 
 Aplikace spojovacího bodu služby mohou použít objekt **State** k serializaci informací v [Apache Zookeeper](https://zookeeper.apache.org/). Tato možnost je obzvláště užitečná pro transakční topologii. Pokud transakční Spout přestane odpovídat a restartuje, může **stav** načíst potřebné informace z Zookeeper a restartovat kanál.
 
@@ -373,13 +370,13 @@ Metoda **Initialize** inicializuje běhové prostředí SPOJOVACÍho bodu služb
 
 Metoda **LaunchPlugin** spustí smyčku zpracování zpráv. V této smyčce modul plug-in jazyka C# přijímá zprávy ze strany Java. Tyto zprávy obsahují řazené kolekce členů a řídicí signály. Modul plug-in potom zpracuje zprávy, například voláním metody rozhraní poskytované vaším kódem.
 
-Vstupní parametr pro **LaunchPlugin** je delegát. Metoda může vracet objekt, který implementuje rozhraní **ISCPSpout**, **ISCPBolt**, **ISCPTxSpout**nebo **ISCPBatchBolt** .
+Vstupní parametr pro **LaunchPlugin** je delegát. Metoda může vracet objekt, který implementuje rozhraní **ISCPSpout**, **ISCPBolt**, **ISCPTxSpout** nebo **ISCPBatchBolt** .
 
 ```csharp
 public delegate ISCPPlugin newSCPPlugin(Context ctx, Dictionary<string, Object> parms);
 ```
 
-Pro **ISCPBatchBolt**můžete získat objekt **StormTxAttempt** z parametru *parametry* a použít ho k posouzení, zda se jedná o pokusy o přehrání. Pokus o opakované přehrání se často provádí na potvrzovacím poli. Tato kontrolní HelloWorldTx ukazuje příklad dále v tomto článku.
+Pro **ISCPBatchBolt** můžete získat objekt **StormTxAttempt** z parametru *parametry* a použít ho k posouzení, zda se jedná o pokusy o přehrání. Pokus o opakované přehrání se často provádí na potvrzovacím poli. Tato kontrolní HelloWorldTx ukazuje příklad dále v tomto článku.
 
 Moduly plug-in spojovacího bodu služby se obvykle spouštějí ve dvou režimech: místní testovací režim a běžný režim.
 
@@ -434,19 +431,19 @@ Specifikace topologie můžete odesílat přímo do clusteru s více podsystému
 
 SCP.NET přidal následující funkce pro definování transakčních topologií:
 
-| Nová funkce | Parametry | Description |
+| Nová funkce | Parametry | Popis |
 | --- | --- | --- |
 | **TX – topolopy** |*název topologie*<br />*Spout – mapa*<br />*Mapa šroubů* |Definuje transakční topologii s názvem topologie, mapou definice spoutů a mapou definice šrouby. |
-| **SCP – TX-Spout** |*Exec – název*<br />*argumentů*<br />*pole* |Definuje transakční Spout. Funkce spustí aplikaci, která je určena pomocí *exec-Name* a používá *args*.<br /><br />Parametr *Fields* určuje výstupní pole pro Spout. |
-| **SCP – TX-Batch-šroub** |*Exec – název*<br />*argumentů*<br />*pole* |Definuje transakčního dávkovacího šroubu. Funkce spustí aplikaci, která je určena pomocí *exec-Name* a používá *args.*<br /><br />Parametr *Fields* určuje výstupní pole pro šroub. |
-| **SCP – TX-Commit-šroub** |*Exec – název*<br />*argumentů*<br />*pole* |Definuje hodnotu transakčního potvrzení. Funkce spustí aplikaci, která je určena pomocí *exec-Name* a používá *args*.<br /><br />Parametr *Fields* určuje výstupní pole pro šroub. |
+| **SCP – TX-Spout** |*Exec – název*<br />*argumentů*<br />*fields* |Definuje transakční Spout. Funkce spustí aplikaci, která je určena pomocí *exec-Name* a používá *args*.<br /><br />Parametr *Fields* určuje výstupní pole pro Spout. |
+| **SCP – TX-Batch-šroub** |*Exec – název*<br />*argumentů*<br />*fields* |Definuje transakčního dávkovacího šroubu. Funkce spustí aplikaci, která je určena pomocí *exec-Name* a používá *args.*<br /><br />Parametr *Fields* určuje výstupní pole pro šroub. |
+| **SCP – TX-Commit-šroub** |*Exec – název*<br />*argumentů*<br />*fields* |Definuje hodnotu transakčního potvrzení. Funkce spustí aplikaci, která je určena pomocí *exec-Name* a používá *args*.<br /><br />Parametr *Fields* určuje výstupní pole pro šroub. |
 | **nontx – topologie** |*název topologie*<br />*Spout – mapa*<br />*Mapa šroubů* |Definuje netransakční topologii s názvem topologie, mapou definice spoutů a mapou definice šrouby. |
-| **SCP – Spout** |*Exec – název*<br />*argumentů*<br />*pole*<br />*ukazatelů* |Definuje netransakční Spout. Funkce spustí aplikaci, která je určena pomocí *exec-Name* a používá *args*.<br /><br />Parametr *Fields* určuje výstupní pole pro Spout.<br /><br />Parametr *Parameters* je nepovinný. Použijte ji k zadání parametrů jako "netransakční. ACK. Enabled". |
-| **SCP – šroub** |*Exec – název*<br />*argumentů*<br />*pole*<br />*ukazatelů* |Definuje netransakční šroub. Funkce spustí aplikaci, která je určena pomocí *exec-Name* a používá *args*.<br /><br />Parametr *Fields* určuje výstupní pole pro šroub<br /><br />Parametr *Parameters* je nepovinný. Použijte ji k zadání parametrů jako "netransakční. ACK. Enabled". |
+| **SCP – Spout** |*Exec – název*<br />*argumentů*<br />*fields*<br />*ukazatelů* |Definuje netransakční Spout. Funkce spustí aplikaci, která je určena pomocí *exec-Name* a používá *args*.<br /><br />Parametr *Fields* určuje výstupní pole pro Spout.<br /><br />Parametr *Parameters* je nepovinný. Použijte ji k zadání parametrů jako "netransakční. ACK. Enabled". |
+| **SCP – šroub** |*Exec – název*<br />*argumentů*<br />*fields*<br />*ukazatelů* |Definuje netransakční šroub. Funkce spustí aplikaci, která je určena pomocí *exec-Name* a používá *args*.<br /><br />Parametr *Fields* určuje výstupní pole pro šroub<br /><br />Parametr *Parameters* je nepovinný. Použijte ji k zadání parametrů jako "netransakční. ACK. Enabled". |
 
 SCP.NET definuje následující klíčová slova:
 
-| Klíčové slovo | Description |
+| Klíčové slovo | Popis |
 | --- | --- |
 | **: název** |Název topologie |
 | **: topologie** |Topologie pomocí funkcí v předchozí tabulce a integrovaných funkcích |
@@ -728,7 +725,7 @@ public void Fail(long seqId, Dictionary<string, Object> parms)
 
 ### <a name="helloworldtx"></a>HelloWorldTx
 
-Následující příklad HelloWorldTx ukazuje, jak implementovat transakční topologii. Příklad obsahuje jeden Spout nazvaný **generátor**, Batch se nazývá **částečný počet**a potvrzovací šroub s názvem **Count-suma**. Příklad také obsahuje tři existující textové soubory: DataSource0.txt, DataSource1.txt a DataSource2.txt.
+Následující příklad HelloWorldTx ukazuje, jak implementovat transakční topologii. Příklad obsahuje jeden Spout nazvaný **generátor**, Batch se nazývá **částečný počet** a potvrzovací šroub s názvem **Count-suma**. Příklad také obsahuje tři existující textové soubory: DataSource0.txt, DataSource1.txt a DataSource2.txt.
 
 V každé transakci **generátor** Spout náhodně vybere dva soubory z existujících tří souborů a vygeneruje názvy dvou souborů do šroubů s **částečným počtem** . Šroub **částečného počtu** :
 

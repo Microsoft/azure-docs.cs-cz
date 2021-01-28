@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 744be742d9f638df14f9d6720c9dad9678685af0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fb33bd4fe70c51e1e2afffece10ba3b29dcb0450
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017841"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932443"
 ---
 # <a name="deploy-a-text-analytics-container-to-azure-kubernetes-service"></a>Nasazení kontejneru Analýza textu do služby Azure Kubernetes
 
@@ -25,9 +25,9 @@ Přečtěte si, jak nasadit image kontejneru Azure Cognitive Services [Analýza 
 
 Tento postup vyžaduje několik nástrojů, které je třeba nainstalovat a spustit místně. Nepoužívejte Azure Cloud Shell. Potřebujete následující:
 
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/cognitive-services), ještě než začnete.
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services).
 * Textový editor, například [Visual Studio Code](https://code.visualstudio.com/download).
-* Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli?view=azure-cli-latest) je nainstalované.
+* Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) je nainstalované.
 * Rozhraní [CLI Kubernetes](https://kubernetes.io/docs/tasks/tools/install-kubectl/) je nainstalované.
 * Prostředek Azure se správnou cenovou úrovní. Ne všechny cenové úrovně v tomto kontejneru fungují:
     * **Azure analýza textu** prostředky s cenovou úrovní F0 nebo Standard.

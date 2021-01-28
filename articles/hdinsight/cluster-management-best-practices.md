@@ -1,19 +1,16 @@
 ---
 title: Osvědčené postupy pro správu clusteru – Azure HDInsight
 description: Seznamte se s osvědčenými postupy pro správu clusterů HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 3a96a7116c83bf9ea2c3798c335c6cefcbdbc36d
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 27f390c3634887dd616c62dbbd4ad85209efde46
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659484"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933707"
 ---
 # <a name="hdinsight-cluster-management-best-practices"></a>Osvědčené postupy pro správu clusteru HDInsight
 
@@ -21,13 +18,13 @@ Seznamte se s osvědčenými postupy pro správu clusterů HDInsight.
 
 ## <a name="how-do-i-create-hdinsight-clusters"></a>Návody vytvářet clustery HDInsight?
 
-| Možnost | Dokumenty |
+| Možnost | dokumenty. |
 |---|---|
 | Azure Data Factory | [Vytvoření clusterů Apache Hadoop na vyžádání v HDInsight pomocí Azure Data Factory](./hdinsight-hadoop-create-linux-clusters-adf.md) |
 | Šablona vlastního Správce prostředků | [Vytváření clusterů Apache Hadoop ve službě HDInsight pomocí šablon Správce prostředků](./hdinsight-hadoop-create-linux-clusters-arm-templates.md) |
 | Šablony pro rychlý start | [Šablony pro rychlý Start HDInsight](https://azure.microsoft.com/resources/templates/?term=hdinsight) |
 | ukázek Azure | [Ukázky HDInsight Azure](/samples/browse/?products=azure-hdinsight) |
-| portál Azure | [Vytváření clusterů se systémem Linux v HDInsight pomocí Azure Portal](./spark/apache-spark-intellij-tool-plugin.md) |
+| Portál Azure Portal | [Vytváření clusterů se systémem Linux v HDInsight pomocí Azure Portal](./spark/apache-spark-intellij-tool-plugin.md) |
 | Azure CLI | [Vytváření clusterů HDInsight pomocí rozhraní příkazového řádku Azure](./hdinsight-hadoop-create-linux-clusters-azure-cli.md) |
 | Azure PowerShell | [Vytváření clusterů se systémem Linux v HDInsight pomocí Azure PowerShell](./hdinsight-hadoop-create-linux-clusters-azure-powershell.md) |
 | cURL | [Vytváření clusterů Apache Hadoop pomocí Azure REST API](./hdinsight-hadoop-create-linux-clusters-curl-rest.md) |
@@ -38,7 +35,7 @@ Seznamte se s osvědčenými postupy pro správu clusterů HDInsight.
 
 ## <a name="how-do-i-customize-hdinsight-clusters"></a>Návody Přizpůsobení clusterů HDInsight?
 
-| Možnost | Dokumenty |
+| Možnost | dokumenty. |
 |---|---|
 | Akce skriptů | [Přizpůsobení clusterů Azure HDInsight pomocí akcí skriptů](./hdinsight-hadoop-customize-cluster-linux.md) |
 | Metoda bootstrap | [Přizpůsobení clusterů HDInsight pomocí Bootstrap](./hdinsight-hadoop-customize-cluster-bootstrap.md) |
@@ -56,7 +53,7 @@ Seznamte se s osvědčenými postupy pro správu clusterů HDInsight.
 
 ## <a name="how-do-i-manage-running-hdinsight-clusters"></a>Návody spravovat spuštěné clustery HDInsight?
 
-| Možnost | Dokumenty |
+| Možnost | dokumenty. |
 |---|---|
 | Automatické škálování | [Automatické škálování clusterů Azure HDInsight](./hdinsight-autoscale-clusters.md) |
 | Ruční škálování | [Škálování clusterů Azure HDInsight](./hdinsight-scaling-best-practices.md) |

@@ -7,12 +7,12 @@ author: aniket-ms
 ms.author: aadnaik
 ms.reviewer: HDI HiveLLAP Team
 ms.date: 05/05/2020
-ms.openlocfilehash: 626b061cc237f7238d47863a3e1ed88961d2f742
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 7df75077785c66215008e045ef0b1e451ba29f57
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680539"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931102"
 ---
 # <a name="azure-hdinsight-interactive-query-cluster-hive-llap-sizing-guide"></a>Průvodce nastavením velikosti clusterů Azure HDInsight Interactive Query (LLAPa registru)
 
@@ -216,7 +216,7 @@ Například: Celková kapacita clusteru = 100 GB paměti, dělená mezi LLAPí, 
  - Kapacita fronty správy úloh = 20 GB
  - Výchozí kapacita fronty = 10 GB
 
-S 20 GB v kapacitě fronty správy zatížení může plán prostředků zadat `QUERY_PARALLELISM` hodnotu jako pět, což znamená, že správa úloh může spustit pět tez AMs s velikostí kontejneru 4 GB. Pokud `QUERY_PARALLELISM` je větší než kapacita, může se stát, že některá tez AMs se ve stavu přestala reagovat `ACCEPTED` . Hiveserver2 Interactive nemůže odeslat fragmenty dotazu do tez AMs, které nejsou ve `RUNNING` stavu.
+S 20 GB v kapacitě fronty správy zatížení může plán prostředků zadat `QUERY_PARALLELISM` hodnotu jako pět, což znamená, že správa úloh může spustit pět tez AMs s velikostí kontejneru 4 GB. Pokud `QUERY_PARALLELISM` je větší než kapacita, může se stát, že některé tez AMs ve stavu přestanou reagovat `ACCEPTED` . Hiveserver2 Interactive nemůže odeslat fragmenty dotazu do tez AMs, které nejsou ve `RUNNING` stavu.
 
 
 #### <a name="next-steps"></a>**Další kroky**

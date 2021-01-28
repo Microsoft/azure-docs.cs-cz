@@ -1,19 +1,16 @@
 ---
 title: Nahrávání dat pro úlohy Apache Hadoop v HDInsight
 description: Naučte se nahrávat a přistupovat k datům pro úlohy Apache Hadoop v HDInsight. Použijte Azure Classic CLI, Průzkumník služby Azure Storage, Azure PowerShell, příkazový řádek Hadoop nebo Sqoop.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdiseo17may2017,seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: 47262e0dc7247e1d514eeb64512c21ff1ae527ab
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a8d21b88298b6092c869b89d48fe4c259c2365b6
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534817"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931343"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>Nahrávání dat pro úlohy Apache Hadoop v HDInsight
 
@@ -80,7 +77,7 @@ K dispozici je také několik aplikací, které poskytují grafické rozhraní p
 | Klient | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
 | [Microsoft Visual Studio nástroje pro HDInsight](hadoop/apache-hadoop-visual-studio-tools-get-started.md#explore-linked-resources) |✔ |✔ |✔ |
-| [Průzkumník služby Azure Storage](../storage/blobs/storage-quickstart-blobs-storage-explorer.md) |✔ |✔ |✔ |
+| [Azure Storage Explorer](../storage/blobs/storage-quickstart-blobs-storage-explorer.md) |✔ |✔ |✔ |
 | [`Cerulea`](https://www.cerebrata.com/products/cerulean/features/azure-storage) | | |✔ |
 | [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer) | | |✔ |
 | [CloudBerry Explorer pro Microsoft Azure](https://www.cloudberrylab.com/free-microsoft-azure-explorer.aspx) | | |✔ |
