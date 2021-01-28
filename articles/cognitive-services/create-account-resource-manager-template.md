@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 09/14/2020
 ms.author: aahi
 ms.custom: subject-armqs, devx-track-azurecli
-ms.openlocfilehash: 4afaad77fdff7a1ba80a385e9f2c3d8ddef8ab96
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 856fd86b08dfe74925e682661df0d20692839bd5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842103"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928644"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-an-arm-template"></a>Rychlý Start: vytvoření prostředku Cognitive Services pomocí šablony ARM
 
@@ -34,7 +34,7 @@ Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním 
 
 [![Nasazení služby rozpoznávání do Azure](../media/template-deployments/deploy-to-azure.svg "Nasazení služby rozpoznávání do Azure")](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cognitive-services-universalkey%2Fazuredeploy.json)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Pokud nemáte předplatné Azure, [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services).
 
@@ -75,7 +75,7 @@ V této šabloně je definovaný jeden prostředek Azure:
 > [!NOTE]
 > `az deployment group` Create vyžaduje Azure CLI verze 2,6 nebo novější. Pro zobrazení typu verze `az --version` . Další informace najdete v [dokumentaci](/cli/azure/deployment/group).
 
-Spusťte následující skript pomocí rozhraní příkazového řádku Azure (CLI) [na vašem místním počítači](/cli/azure/install-azure-cli?view=azure-cli-latest)nebo v prohlížeči pomocí tlačítka **vyzkoušet** . Zadejte název a umístění (například `centralus` ) pro novou skupinu prostředků a šablona ARM se použije k nasazení prostředku Cognitive Services v rámci něj. Zapamatujte si název, který používáte. Později ji budete používat k ověření nasazení.
+Spusťte následující skript pomocí rozhraní příkazového řádku Azure (CLI) [na vašem místním počítači](/cli/azure/install-azure-cli)nebo v prohlížeči pomocí tlačítka **vyzkoušet** . Zadejte název a umístění (například `centralus` ) pro novou skupinu prostředků a šablona ARM se použije k nasazení prostředku Cognitive Services v rámci něj. Zapamatujte si název, který používáte. Později ji budete používat k ověření nasazení.
 
 
 ```azurecli-interactive

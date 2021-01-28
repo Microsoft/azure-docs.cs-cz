@@ -5,12 +5,12 @@ author: aagup
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: 3d881033b8dde6cc55a9720ec94084bd876116f1
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 8566d82ef0d91caff47ff17a9cb12fcdc8241884
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207389"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928025"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>Obnovování zálohy v Azure Service Fabric
 
@@ -28,11 +28,16 @@ Můžete například nakonfigurovat službu, která bude zálohovat svá data a 
 - Aby bylo možné spustit obnovení, musí být pro cluster povolená _služba analýzy chyb (v)_ .
 - _Služba obnovení záloh (BRS)_ vytvořila zálohu.
 - Obnovení se dá aktivovat jenom v oddílu.
-- Nainstalujte modul Microsoft. ServiceFabric. PowerShell. http [v Preview] pro provedení konfiguračních volání.
+- Nainstalujte modul Microsoft. ServiceFabric. PowerShell. http (Preview) pro provedení konfiguračních volání.
 
 ```powershell
     Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
 ```
+
+> [!NOTE]
+> Pokud je verze PowerShellGet menší než 1.6.0, bude nutné aktualizovat, aby se přidala podpora pro příznak *-AllowPrerelease* :
+>
+> `Install-Module -Name PowerShellGet -Force`
 
 - `Connect-SFCluster`Před provedením libovolné žádosti o konfiguraci pomocí modulu Microsoft. ServiceFabric. PowerShell. http zajistěte, aby byl cluster připojen pomocí příkazu.
 
@@ -154,7 +159,7 @@ Také je nutné zvolit cílový oddíl v alternativním clusteru, jak je popsán
 
 Pokud je ID oddílu na alternativním clusteru `1c42c47f-439e-4e09-98b9-88b8f60800c6` , můžete ho namapovat na původní ID oddílu clusteru `974bd92a-b395-4631-8a7f-53bd4ae9cf22` porovnáním horního klíče a nízkého klíče pro _škálované dělení (UniformInt64Partition)_.
 
-U _pojmenovaných oddílů_se hodnota název porovnává s určením cílového oddílu v alternativním clusteru.
+U _pojmenovaných oddílů_ se hodnota název porovnává s určením cílového oddílu v alternativním clusteru.
 
 #### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>PowerShell s použitím modulu Microsoft. ServiceFabric. PowerShell. http
 
@@ -205,15 +210,15 @@ Můžete aktivovat obnovení z Service Fabric Explorer. Ujistěte se, že je v n
 
     ![Spouštěcí sdílená složka pro obnovení oddílu][3]
 
-### <a name="data-restore-for-_data-corruption__data-loss_"></a>Obnovení dat pro _data corruption_ / _ztrátu dat_ poškození dat
+### <a name="data-restore-for-_data-corruption__data-loss_"></a>Obnovení dat pro  / _ztrátu dat_ poškození dat
 
-V případě _ztráty dat_ nebo _poškození dat_můžete zálohovat oddíly pro spolehlivou stavovou službu a Reliable Actors oddíly obnovit do některého z vybraných záloh.
+V případě _ztráty dat_ nebo _poškození dat_ můžete zálohovat oddíly pro spolehlivou stavovou službu a Reliable Actors oddíly obnovit do některého z vybraných záloh.
 
 Následující příklad je pokračování v [Povolení pravidelného zálohování pro spolehlivou stavovou službu a Reliable Actors](service-fabric-backuprestoreservice-quickstart-azurecluster.md#enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors). V tomto příkladu jsou pro oddíl povoleny zásady zálohování a služba provádí zálohování s požadovanou frekvencí v Azure Storage.
 
 Vyberte zálohu z výstupu  [GetBackupAPI](service-fabric-backuprestoreservice-quickstart-azurecluster.md#list-backups). V tomto scénáři je záloha vygenerována ze stejného clusteru jako dříve.
 
-Chcete-li spustit obnovení, vyberte ze seznamu zálohu. U aktuálního _data loss_ / _poškození dat_ztráty dat vyberte následující zálohu:
+Chcete-li spustit obnovení, vyberte ze seznamu zálohu. U aktuálního  / _poškození dat_ ztráty dat vyberte následující zálohu:
 
 ```
 BackupId                : b0035075-b327-41a5-a58f-3ea94b68faa4
@@ -297,7 +302,7 @@ Požadavek na obnovení bude postupovat v následujícím pořadí:
     RestoredLsn   : 3552
     ```
     
-3. **Úspěch**, **selhání**nebo **časový limit**: požadovaná obnova může být dokončena v některém z následujících stavů. Každý stav má následující údaje o významu a odezvě:
+3. **Úspěch**, **selhání** nebo **časový limit**: požadovaná obnova může být dokončena v některém z následujících stavů. Každý stav má následující údaje o významu a odezvě:
     - **Úspěch**: stav obnovení _po úspěšném dokončení_ indikuje stav opětovného oddílu. Oddíl hlásí stav _RestoredEpoch_ a _RestoredLSN_ spolu s časem ve standardu UTC.
 
         ```
@@ -325,7 +330,7 @@ Požadavek na obnovení bude postupovat v následujícím pořadí:
 
 ## <a name="automatic-restore"></a>Automatické obnovení
 
-Pro _Automatické obnovení_můžete nakonfigurovat Reliable stavovou službu a Reliable Actors oddíly v clusteru Service Fabric. V části zásada zálohování je nastavena `AutoRestore` na _hodnotu true_. Povolení _automatického obnovení_ automaticky obnoví data z poslední zálohy oddílu při hlášení ztráty dat. Další informace naleznete v tématech:
+Pro _Automatické obnovení_ můžete nakonfigurovat Reliable stavovou službu a Reliable Actors oddíly v clusteru Service Fabric. V části zásada zálohování je nastavena `AutoRestore` na _hodnotu true_. Povolení _automatického obnovení_ automaticky obnoví data z poslední zálohy oddílu při hlášení ztráty dat. Další informace naleznete v tématu:
 
 - [Povolení automatického obnovení v zásadách zálohování](service-fabric-backuprestoreservice-configure-periodic-backup.md#auto-restore-on-data-loss)
 - [Reference k rozhraní API RestorePartition](/rest/api/servicefabric/sfclient-api-restorepartition)

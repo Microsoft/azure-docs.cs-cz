@@ -2,18 +2,15 @@
 title: Dvojité šifrování dat v klidovém umístění
 titleSuffix: Azure HDInsight
 description: Tento článek popisuje dvě vrstvy šifrování, které jsou k dispozici pro neaktivní data v clusterech Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: 4e895cdba1bfc16eac0450bd05271f0e41985b7b
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: c9e50885a7283d3f7fcd231bf222415389212a93
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359755"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927331"
 ---
 # <a name="azure-hdinsight-double-encryption-for-data-at-rest"></a>Dvojité šifrování Azure HDInsight pro neaktivní neaktivní data
 
@@ -104,7 +101,7 @@ HDInsight podporuje jenom Azure Key Vault. Pokud máte vlastní Trezor klíčů,
     |Vlastnost |Popis|
     |---|---|
     |Klíčová oprávnění|Vyberte **získat**, **Rozbalit klíč** a **zalomit klíč**.|
-    |Tajná oprávnění|Vyberte **získat**, **nastavit** a **Odstranit**.|
+    |Oprávnění pro tajné kódy|Vyberte **získat**, **nastavit** a **Odstranit**.|
     |Vybrat objekt zabezpečení|Vyberte uživatelem přiřazenou spravovanou identitu, kterou jste vytvořili dříve.|
 
     ![Nastavení výběru objektu zabezpečení pro zásady Azure Key Vaultho přístupu](./media/disk-encryption/azure-portal-add-access-policy.png)

@@ -1,19 +1,16 @@
 ---
 title: Apache Storm s komponentami Pythonu – Azure HDInsight
 description: Naučte se vytvářet Apache Storm topologii, která používá komponenty Pythonu ve službě Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017, devx-track-python
 ms.date: 12/16/2019
-ms.openlocfilehash: e62e2583f8a4d3872a1342f0f702a1913f733e7f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: e28d21ed71cf5f485165c639a8bd519b3a2736e1
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545459"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928985"
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>Vývoj Apache Storm topologií pomocí Pythonu ve službě HDInsight
 
@@ -22,9 +19,9 @@ Naučte se vytvářet [Apache Storm](https://storm.apache.org/) topologii, kter�
 > [!IMPORTANT]  
 > Informace v tomto dokumentu byly testovány pomocí zaplavení v HDInsight 3,6.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Cluster Apache Storm v HDInsight. Přečtěte si téma [vytvoření Apache Hadoop clusterů pomocí Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) **a výběr funkce** pro **typ clusteru** .
+* Cluster Apache Storm v HDInsight. Přečtěte si téma [vytvoření Apache Hadoop clusterů pomocí Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) **a výběr funkce** pro **typ clusteru**.
 
 * Místní vývojové prostředí s více podmnožinami (volitelné). Prostředí místního prostředí se vyžaduje jenom v případě, že chcete topologii spustit místně. Další informace najdete v tématu [Nastavení vývojového prostředí](https://storm.apache.org/releases/current/Setting-up-development-environment.html).
 
@@ -114,7 +111,7 @@ Jak bylo zmíněno dříve, existuje `storm.py` soubor, který implementuje defi
     storm kill wordcount
     ```
 
-    Alternativně můžete použít uživatelské rozhraní. V části **Akce topologie** pro topologii vyberte možnost **Kill** .
+    Alternativně můžete použít uživatelské rozhraní. V části **Akce topologie** pro topologii vyberte možnost **Kill**.
 
 ## <a name="run-the-topology-locally"></a>Místní spuštění topologie
 
@@ -141,7 +138,7 @@ Jakmile se topologie spustí, vygeneruje informace místní konzole podobně jak
 24303 [Thread-17-log-executor[3 3]] INFO  o.a.s.f.w.b.LogInfoBolt - {word=four, count=160}
 ```
 
-K zastavení topologie použijte __kombinaci kláves CTRL + C__ .
+K zastavení topologie použijte __kombinaci kláves CTRL + C__.
 
 ## <a name="next-steps"></a>Další kroky
 

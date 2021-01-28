@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/12/2019
-ms.openlocfilehash: 489b4bfee1eaa2c381b16e88dbcc0bcb7fd8555f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 288e3f0c048bddb3f3378226889dc519de27764b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91441508"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927884"
 ---
 # <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>Integrace System Center Operations Manager s funkcí map Azure Monitor pro virtuální počítače
 
@@ -57,7 +57,7 @@ Chcete-li nakonfigurovat integraci mapování Azure Monitor pro virtuální poč
 
     ![Pracovní prostor konfigurace Operations Manager](media/service-map-scom/scom-config-workspace.png)
 
-4. V okně **Výběr skupiny počítačů** vyberte, které Service map skupiny počítačů chcete Operations Manager synchronizovat. Klikněte na **Přidat nebo odebrat skupiny počítačů**, v seznamu **dostupných skupin počítačů**vyberte skupiny a klikněte na **Přidat**.  Po dokončení výběru skupin klikněte na **OK** a dokončete.
+4. V okně **Výběr skupiny počítačů** vyberte, které Service map skupiny počítačů chcete Operations Manager synchronizovat. Klikněte na **Přidat nebo odebrat skupiny počítačů**, v seznamu **dostupných skupin počítačů** vyberte skupiny a klikněte na **Přidat**.  Po dokončení výběru skupin klikněte na **OK** a dokončete.
 
     ![Skupiny počítačů konfigurace Operations Manager](media/service-map-scom/scom-config-machine-groups.png)
 
@@ -106,7 +106,7 @@ Složka Service Map má čtyři uzly:
 
 ## <a name="edit-or-delete-the-workspace"></a>Upravit nebo odstranit pracovní prostor
 
-Nakonfigurovaný pracovní prostor můžete upravit nebo odstranit pomocí podokna **přehledu Service map** (podokno**Správa** > **Operations Management Suite**  >  **Service map**).
+Nakonfigurovaný pracovní prostor můžete upravit nebo odstranit pomocí podokna **přehledu Service map** (podokno **Správa** > **Operations Management Suite**  >  **Service map**).
 
 > [!NOTE]
 > [Operations Management Suite byla sada služeb](../terminology.md#april-2018---retirement-of-operations-management-suite-brand) , které jsou součástí Log Analytics, což je teď součástí [Azure monitor](../overview.md).
@@ -117,7 +117,7 @@ V této aktuální verzi můžete nakonfigurovat pouze jeden pracovní prostor L
 
 ## <a name="configure-rules-and-overrides"></a>Konfigurace pravidel a přepsání
 
-Pravidlo *Microsoft.SystemCenter. ServiceMapImport. Rule*pravidelně načítá informace z funkce map Azure monitor pro virtuální počítače. Chcete-li upravit interval synchronizace, můžete pravidlo přepsat a změnit hodnotu parametru **IntervalMinutes**.
+Pravidlo *Microsoft.SystemCenter. ServiceMapImport. Rule* pravidelně načítá informace z funkce map Azure monitor pro virtuální počítače. Chcete-li upravit interval synchronizace, můžete pravidlo přepsat a změnit hodnotu parametru **IntervalMinutes**.
 
 ![Okno Vlastnosti Operations Manager Overrides](media/service-map-scom/scom-overrides.png)
 
@@ -139,7 +139,7 @@ Aktuální návrh přináší následující problémy a omezení:
 Oficiální dokumentaci k Azure o vytváření instančního objektu najdete v těchto tématech:
 
 * [Vytvoření instančního objektu pomocí PowerShellu](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)
-* [Vytvoření instančního objektu pomocí Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)
+* [Vytvoření instančního objektu pomocí Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli)
 * [Vytvoření instančního objektu pomocí služby Azure Portal](../../active-directory/develop/howto-create-service-principal-portal.md)
 
 ### <a name="suggestions"></a>Návrhy

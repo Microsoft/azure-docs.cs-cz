@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/14/2020
-ms.openlocfilehash: ab0ed536bd23aaf15d85af85e4f924bc2f51f3d4
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: bdbb4307f46566d1cac259cbdc4c81d1dfba5c7e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96006623"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927790"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>Odeslání dat protokolu do Azure Monitor pomocí rozhraní API kolekce dat HTTP (Public Preview)
 V tomto článku se dozvíte, jak pomocí rozhraní API kolekce dat HTTP odesílat data protokolu Azure Monitor z klienta REST API.  Popisuje, jak formátovat data shromážděná vaším skriptem nebo aplikací, jak je zahrnout do žádosti a které vyžadují autorizaci Azure Monitor.  Příklady jsou k dispozici pro PowerShell, C# a Python.
@@ -49,7 +49,7 @@ Pokud chcete použít rozhraní API kolekce dat HTTP, vytvoříte požadavek POS
 | Verze rozhraní API |Verze rozhraní API, která se má použít s touto žádostí V současné době je to 2016-04-01. |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
-| Hlavička | Description |
+| Hlavička | Popis |
 |:--- |:--- |
 | Autorizace |Podpis autorizace. Později v článku si můžete přečíst o tom, jak vytvořit hlavičku HMAC-SHA256. |
 | Log-Type |Zadejte typ záznamu dat, která se odesílají. Může obsahovat pouze písmena, číslice a podtržítka (_) a nesmí překročit 100 znaků. |
@@ -66,7 +66,7 @@ Tady je formát autorizační hlavičky:
 Authorization: SharedKey <WorkspaceID>:<Signature>
 ```
 
-*ID pracovního prostoru* je jedinečný identifikátor pro Log Analytics pracovní prostor. *Signatura* je [ověřovací kód zprávy založený na hodnotě hash (HMAC)](/dotnet/api/system.security.cryptography.hmacsha256?view=netcore-3.1) , který je vytvořen z požadavku a následně vypočítán pomocí [algoritmu SHA256](/dotnet/api/system.security.cryptography.sha256?view=netcore-3.1). Pak ho zakódujete pomocí kódování Base64.
+*ID pracovního prostoru* je jedinečný identifikátor pro Log Analytics pracovní prostor. *Signatura* je [ověřovací kód zprávy založený na hodnotě hash (HMAC)](/dotnet/api/system.security.cryptography.hmacsha256) , který je vytvořen z požadavku a následně vypočítán pomocí [algoritmu SHA256](/dotnet/api/system.security.cryptography.sha256). Pak ho zakódujete pomocí kódování Base64.
 
 Použijte tento formát ke kódování řetězce podpisu **SharedKey** :
 
@@ -183,7 +183,7 @@ Stavový kód HTTP 200 znamená, že žádost byla přijata ke zpracování. To 
 
 Tato tabulka uvádí kompletní sadu stavových kódů, které může služba vracet:
 
-| Kód | Status | Kód chyby | Description |
+| Kód | Status | Kód chyby | Popis |
 |:--- |:--- |:--- |:--- |
 | 200 |OK | |Požadavek byl úspěšně přijat. |
 | 400 |Chybný požadavek |InactiveCustomer |Pracovní prostor je uzavřený. |
@@ -647,7 +647,7 @@ public class ApiExample {
 ## <a name="alternatives-and-considerations"></a>Alternativy a požadavky
 I když by rozhraní API kolekce dat mělo zahrnovat většinu vašich potřeb ke shromažďování dat volných formulářů do protokolů Azure, existují případy, kdy může být k překonání některých omezení v rozhraní API potřeba Alternativně. K dispozici jsou následující možnosti, které obsahují hlavní důležité požadavky:
 
-| Jiné | Description | Nejlépe vhodné pro |
+| Jiné | Popis | Nejlépe vhodné pro |
 |---|---|---|
 | [Vlastní události](../app/api-custom-events-metrics.md?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#properties): ingestování na základě nativní sady SDK v Application Insights | Application Insights obvykle instrumentované prostřednictvím sady SDK v rámci aplikace, nabízí možnost odesílat vlastní data prostřednictvím vlastních událostí. | <ul><li> Data, která jsou generována v rámci aplikace, ale nejsou vyzvednuta sadou SDK prostřednictvím jednoho z výchozích datových typů (požadavky, závislosti, výjimky atd.).</li><li> Data, která jsou často korelujá s jinými daty aplikace v Application Insights </li></ul> |
 | Rozhraní API kolekce dat v protokolu Azure Monitor | Rozhraní API kolekce dat v protokolu Azure Monitor představuje zcela otevřený způsob ingestování dat. Všechna data formátovaná v objektu JSON lze odeslat zde. Po odeslání se zpracuje a v protokolech bude k dispozici, aby se mohla korelovat s ostatními daty v protokolech nebo s jinými Application Insights daty. <br/><br/> Data je poměrně snadné nahrát jako soubory do objektu blob Azure Blob, ze kterého se tyto soubory zpracují a nahrají do Log Analytics. Ukázkovou implementaci takového kanálu najdete v [tomto](./create-pipeline-datacollector-api.md) článku. | <ul><li> Data, která nejsou nutně generovaná v rámci aplikace instrumentované v rámci Application Insights.</li><li> Mezi příklady patří tabulky pro vyhledávání a fakty, referenční data, předem agregované statistiky atd. </li><li> Určeno pro data, která budou odkazována na jiné Azure Monitor data (Application Insights, jiné protokoly, Security Center, Azure Monitor pro kontejnery a virtuální počítače atd.). </li></ul> |

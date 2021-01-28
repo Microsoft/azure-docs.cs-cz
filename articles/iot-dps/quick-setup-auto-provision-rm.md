@@ -3,17 +3,17 @@ title: Rychlý Start – vytvoření Azure IoT Hub Device Provisioning Service (
 description: Rychlý Start Azure – Přečtěte si, jak vytvořit Azure IoT Hub Device Provisioning Service (DPS) pomocí šablony Azure Resource Manager (šablona ARM).
 author: wesmc7777
 ms.author: wesmc
-ms.date: 12/03/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc, subject-armqs, devx-track-azurecli
-ms.openlocfilehash: 73beed4e4262d911f68c2b4b33bc0c1ee24164f8
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: cc55d1569c85dd0873d0132833acc99bd5d06136
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746198"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928937"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-dps-with-an-arm-template"></a>Rychlý Start: nastavení IoT Hub Device Provisioning Service (DPS) pomocí šablony ARM
 
@@ -35,6 +35,9 @@ Pokud vaše prostředí splňuje požadavky a už jste obeznámeni s používán
 ## <a name="review-the-template"></a>Kontrola šablony
 
 Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-iothub-device-provisioning/).
+
+> [!NOTE]
+> V současné době není k dispozici žádná podpora šablon ARM pro vytváření registrací s využitím nových prostředků DPS. Jedná se o běžnou a srozumitelnou žádost, která se považuje za implementaci.
 
 :::code language="json" source="~/quickstart-templates/101-iothub-device-provisioning/azuredeploy.json":::
 

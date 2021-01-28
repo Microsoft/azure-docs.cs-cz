@@ -1,19 +1,16 @@
 ---
 title: Nasazení a Správa topologií Apache Storm v Azure HDInsight
 description: Naučte se nasazovat, monitorovat a spravovat Apache Storm topologie pomocí řídicího panelu pro zaplavování v HDInsight se systémem Linux. Použijte nástroje Hadoop pro Visual Studio.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
-ms.openlocfilehash: 9b190b5847c7412344e2bb09fd4000985816219b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 417819cad3bc2ee258381426dfcee7c800b69d42
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995586"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929168"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Nasazení a Správa topologií Apache Storm v Azure HDInsight
 
@@ -172,7 +169,7 @@ Uživatelské rozhraní funkce pro zaplavení poskytuje webové rozhraní pro pr
 
 Hlavní stránka uživatelského rozhraní pro zaplavení poskytuje následující informace:
 
-| Sekce | Description |
+| Sekce | Popis |
 | --- | --- |
 | Souhrn clusteru| Základní informace o clusteru zaplavení. |
 | Nimbus souhrn | Seznam základních informací Nimbus. |
@@ -188,7 +185,7 @@ Hlavní stránka uživatelského rozhraní se bude podobat této webové stránc
 
 Výběrem odkazu v části **Souhrn topologie** se zobrazí následující informace o topologii:
 
-| Sekce | Description |
+| Sekce | Popis |
 | --- | --- |
 | Souhrn topologie | Základní informace o topologii. |
 | Akce topologie| Akce správy, které lze provést pro topologii. Dostupné akce jsou popsány dále v této části. |
@@ -205,7 +202,7 @@ Stránka Souhrn topologie s více podsítěmi vypadá podobně jako tato webová
 
 V části **Akce topologie** můžete vybrat následující tlačítka k provedení akce:
 
-| Tlačítko | Description |
+| Tlačítko | Popis |
 | --- | --- |
 | Aktivovat | Obnoví zpracování deaktivované topologie. |
 | Deaktivovat | Pozastaví běžící topologii. |
@@ -219,7 +216,7 @@ V části **Akce topologie** můžete vybrat následující tlačítka k provede
 
 Výběr Spout z částí **spoutů** nebo **šrouby** zobrazí následující informace o vybrané položce:
 
-| Sekce | Description |
+| Sekce | Popis |
 | --- | --- |
 | Souhrn komponenty | Základní informace o Spout nebo šroubu |
 | Akce komponenty | **Ladění** a **zastavování tlačítek ladění** . |
@@ -249,10 +246,10 @@ Základní identifikátor URI pro REST API v clusterech HDInsight se systémem L
 
 Plně kvalifikovaný název domény (FQDN) pro hlavní uzel clusteru můžete najít několika způsoby:
 
-| Metoda zjišťování plně kvalifikovaného názvu domény | Description |
+| Metoda zjišťování plně kvalifikovaného názvu domény | Popis |
 | --- | --- |
 | Relace SSH | Použijte příkaz `headnode -f` z relace SSH do clusteru. |
-| Ambari Web | Na webové stránce clusteru Ambari ( `https://CLUSTERNAME.azurehdinsight.net` ) vyberte **služby** v horní části stránky a pak vyberte možnost přestránkovat **Storm**. Na kartě **Souhrn** vyberte možnost **Server uživatelského rozhraní**. V horní části stránky se zobrazí plně kvalifikovaný název domény uzlu, který je hostitelem uživatelského rozhraní a REST API. |
+| Ambari Web | Na webové stránce clusteru Ambari ( `https://CLUSTERNAME.azurehdinsight.net` ) vyberte **služby** v horní části stránky a pak vyberte možnost přestránkovat . Na kartě **Souhrn** vyberte možnost **Server uživatelského rozhraní**. V horní části stránky se zobrazí plně kvalifikovaný název domény uzlu, který je hostitelem uživatelského rozhraní a REST API. |
 | Ambari REST API | Pomocí příkazu `curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` načtěte informace o uzlu, na kterém běží uživatelské rozhraní a REST API. Nahraďte dvě instance *název_clusteru* názvem clusteru. Až budete vyzváni, zadejte heslo pro účet uživatele (správce). V odpovědi obsahuje položka "host_name" výstupu JSON plně kvalifikovaný název domény uzlu. |
 
 ### <a name="authentication"></a>Authentication

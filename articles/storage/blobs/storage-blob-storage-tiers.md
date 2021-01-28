@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: klaasl
-ms.openlocfilehash: 570fd7f356969bbd37ef6b661334501a062c36df
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: 67534e70904c70f7bf9dda44502e723916bdce93
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165684"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928807"
 ---
 # <a name="access-tiers-for-azure-blob-storage---hot-cool-and-archive"></a>Úrovně přístupu pro Azure Blob Storage – horká, studená a archivní
 
@@ -86,7 +86,7 @@ Mezi scénáře použití archivní úrovně přístupu patří:
 - Data o kompatibilitě a archivaci, která je potřeba ukládat po dlouhou dobu a která se špatně při použití
 
 > [!NOTE]
-> Archivní úroveň není podporována pro účty ZRS, GZRS nebo RA-GZRS.
+> Archivní úroveň není podporována pro účty ZRS, GZRS nebo RA-GZRS. Migrace z LRS na GRS není podporovaná, pokud účet úložiště obsahuje objekty BLOB v archivní úrovni.
 
 ## <a name="account-level-tiering"></a>Vrstvení na úrovni účtu
 
@@ -146,7 +146,7 @@ V následující tabulce jsou popsány porovnání úložiště objektů blob bl
 |                                           | **Výkon úrovně Premium**   | **Horká vrstva** | **Studená vrstva**       | **Úroveň archivu**  |
 | ----------------------------------------- | ------------------------- | ------------ | ------------------- | ----------------- |
 | **Dostupnost**                          | 99,9 %                     | 99,9 %        | 99 %                 | Offline           |
-| **Dostupnost** <br> **(přístupy pro čtení RA-GRS)**  | Není k dispozici                       | 99,99 %       | 99,9 %               | Offline           |
+| **Dostupnost** <br> **(přístupy pro čtení RA-GRS)**  | –                       | 99,99 %       | 99,9 %               | Offline           |
 | **Poplatky za využití**                         | Vyšší náklady na úložiště, nižší přístup a náklady na transakce | Vyšší náklady na úložiště, nižší přístup a náklady na transakce | Snížení nákladů na úložiště, vyššího přístupu a transakčních nákladů | Nejnižší náklady na úložiště, nejvyšší přístup a náklady na transakce |
 | **Minimální doba uložení**              | N/A                       | N/A          | 30 dnů<sup>1</sup> | 180 dnů
 | **Latence** <br> **(čas do prvního bajtu)** | Jednociferné číslo milisekund | milisekundy | milisekundy        | hodiny<sup>2</sup> |

@@ -1,19 +1,16 @@
 ---
 title: Apache Storm ukázka topologie Java – Azure HDInsight
 description: Naučte se vytvářet topologie Apache Storm v jazyce Java vytvořením ukázkové topologie počtu slov.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017,seoapr2020,devx-track-java
 ms.date: 04/27/2020
-ms.openlocfilehash: 881ec4aa36261958b566dc2d7c4d06475a76bad4
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 620a4e1627b25af22db68173f35924376e26f5f8
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545493"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929116"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Vytvoření topologie Apache Storm v jazyce Java
 
@@ -43,7 +40,7 @@ cd C:\HDI
 
 ## <a name="create-a-maven-project"></a>Vytvoření projektu Maven
 
-Zadejte následující příkaz a vytvořte tak projekt Maven s názvem **WORDCOUNT** :
+Zadejte následující příkaz a vytvořte tak projekt Maven s názvem **WORDCOUNT**:
 
 ```cmd
 mvn archetype:generate -DarchetypeArtifactId=maven-archetype-quickstart -DgroupId=com.microsoft.example -DartifactId=WordCount -DinteractiveMode=false
@@ -199,9 +196,9 @@ Tato část slouží k přidání modulů plug-in, prostředků a dalších mož
 
     Dalším užitečným modulem plug-in je [`Apache Maven Compiler Plugin`](https://maven.apache.org/plugins/maven-compiler-plugin/) , který se používá ke změně možností kompilace. Změňte verzi Java, kterou Maven používá pro zdroj a cíl vaší aplikace.
 
-  * Pro HDInsight __3,4 nebo starší__ nastavte zdrojovou a cílovou verzi Java na __1,7__ .
+  * Pro HDInsight __3,4 nebo starší__ nastavte zdrojovou a cílovou verzi Java na __1,7__.
 
-  * V případě HDInsight __3,5__ nastavte zdrojovou a cílovou verzi Java na __1,8__ .
+  * V případě HDInsight __3,5__ nastavte zdrojovou a cílovou verzi Java na __1,8__.
 
   Do části souboru přidejte následující text `<plugins>` `pom.xml` , který bude zahrnovat modul plug-in Maven pro Apache. Tento příklad určuje 1,8, takže cílová verze HDInsight je 3,5.
 
@@ -237,11 +234,11 @@ Tento příklad přidá adresář prostředků do kořenového adresáře projek
 
 Apache Storm topologie založené na jazyce Java se skládá ze tří komponent, které musíte vytvořit (nebo referenční) jako závislost.
 
-* **Spoutů** : čte data z externích zdrojů a vysílá proudy dat do topologie.
+* **Spoutů**: čte data z externích zdrojů a vysílá proudy dat do topologie.
 
-* **Šrouby** : zpracovává zpracování streamů emitovaných spoutů nebo jiným šrouby a vysílá jeden nebo více datových proudů.
+* **Šrouby**: zpracovává zpracování streamů emitovaných spoutů nebo jiným šrouby a vysílá jeden nebo více datových proudů.
 
-* **Topologie** : definuje způsob uspořádání spoutů a šrouby a poskytuje vstupní bod pro topologii.
+* **Topologie**: definuje způsob uspořádání spoutů a šrouby a poskytuje vstupní bod pro topologii.
 
 ### <a name="create-the-spout"></a>Vytvoření Spout
 
@@ -327,9 +324,9 @@ public class RandomSentenceSpout extends BaseRichSpout {
 
 Šrouby zpracuje zpracování dat. Šrouby může dělat cokoli, například výpočet, trvalost nebo vzmluvit s externími součástmi. Tato topologie používá dvě šrouby:
 
-* **SplitSentence** : rozdělí věty vyslané **RandomSentenceSpout** na jednotlivá slova.
+* **SplitSentence**: rozdělí věty vyslané **RandomSentenceSpout** na jednotlivá slova.
 
-* **WORDCOUNT** : spočítá počet výskytů jednotlivých slov.
+* **WORDCOUNT**: spočítá počet výskytů jednotlivých slov.
 
 #### <a name="splitsentence"></a>SplitSentence
 
