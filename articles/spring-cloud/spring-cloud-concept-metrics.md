@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: a4838dd6e8f9f4959fc1e4d0dc8dbc2218a30f30
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 119b00e67cf8337123028840ec6a7ecd29e97a05
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98755485"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051596"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>Principy metrik pro jarní cloud Azure
 
@@ -121,6 +121,7 @@ V následujících tabulkách jsou uvedeny dostupné metriky a podrobnosti.
 >| Počet GC 0. generace  | gen-0-GC-Count | Počet        | Počet kolekcí uvolnění paměti generace 0 za sekundu |
 >| Počet GC 1. generace  | Obecná-1-GC-Count | Počet        | Počet kolekcí uvolnění paměti 1. generace za sekundu |
 >| Počet GC 2. generace  | Gen-2 – GC-Count | Počet        | Počet kolekcí uvolnění paměti 2. generace za sekundu |
+>| Čas v GC      | TIMEin – GC      | Procento      | Procento času v uvolňování paměti od posledního uvolňování paměti. |
 >| Velikost haldy 0. generace | gen-0-velikost     | Bajty        | Velikost haldy generace 0 |
 >| Velikost haldy 1. generace | Obecná-1-velikost     | Bajty        | Velikost haldy 1. generace |
 >| Velikost haldy 2. generace | Obecná 2 – velikost     | Bajty        | Velikost haldy 2. generace |

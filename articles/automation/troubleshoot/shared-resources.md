@@ -3,14 +3,14 @@ title: Řešení potíží s Azure Automation sdílenými prostředky
 description: Tento článek popisuje, jak řešit problémy s Azure Automation sdílenými prostředky a řešit potíže.
 services: automation
 ms.subservice: ''
-ms.date: 03/12/2019
+ms.date: 01/27/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: c4ede0bffedc256f4af621d4945ebbbea0f8a4b6
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 1a822166ae4c2bf793e0fa50e93018f499fcc27a
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896287"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053615"
 ---
 # <a name="troubleshoot-shared-resource-issues"></a>Řešení potíží se sdílenými prostředky
 
@@ -131,7 +131,7 @@ Nemáte oprávnění, která potřebujete k vytvoření nebo aktualizaci účtu 
 
 #### <a name="resolution"></a>Řešení
 
-Chcete-li vytvořit nebo aktualizovat účet Spustit jako, je nutné mít příslušná [oprávnění](../manage-runas-account.md#permissions) k různým prostředkům používaným účtem spustit jako. 
+Chcete-li vytvořit nebo aktualizovat účet Spustit jako, je nutné mít příslušná [oprávnění](../automation-security-overview.md#permissions) k různým prostředkům používaným účtem spustit jako.
 
 Pokud k problému dochází z důvodu zámku, ověřte, že je možné zámek odebrat. Pak přejděte k prostředku, který je v Azure Portal uzamčený, klikněte pravým tlačítkem na zámek a vyberte **Odstranit**.
 
@@ -147,7 +147,7 @@ Unable to find an entry point named 'GetPerAdapterInfo' in DLL 'iplpapi.dll'
 
 #### <a name="cause"></a>Příčina
 
-Tato chyba je pravděpodobně způsobena nesprávně nakonfigurovaným [účtem spustit jako](../manage-runas-account.md).
+Tato chyba je pravděpodobně způsobena nesprávně nakonfigurovaným [účtem spustit jako](../automation-security-overview.md).
 
 #### <a name="resolution"></a>Řešení
 
@@ -166,4 +166,3 @@ Pokud tento článek problém nevyřeší, zkuste další podporu vyzkoušet v j
 * Získejte odpovědi od odborníků na Azure prostřednictvím [fór Azure](https://azure.microsoft.com/support/forums/).
 * Připojte se pomocí [@AzureSupport](https://twitter.com/azuresupport) . Jedná se o oficiální Microsoft Azure účet pro připojení komunity Azure ke správným zdrojům: odpovědi, podpora a odborníky.
 * Zasouborové incidenty podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/)a vyberte **získat podporu**.
-

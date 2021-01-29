@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9b14dcb9ce2f2426d8d1496541022602a114cb6e
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 61b45d6f6414b1e8e1f48f6d46957b21b9b8c58b
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92209671"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052494"
 ---
 # <a name="enable-change-tracking-and-inventory-from-an-azure-vm"></a>Povolení řešení Change Tracking a Inventory z virtuálního počítače Azure
 
@@ -22,7 +22,7 @@ Tento článek popisuje, jak můžete pomocí virtuálního počítače Azure po
 ## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud ještě žádné nemáte, můžete si [aktivovat výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Účet Automation](../index.yml) pro správu počítačů.
+* [Účet Automation](../automation-security-overview.md) pro správu počítačů.
 * [Virtuální počítač](../../virtual-machines/windows/quick-create-portal.md).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
@@ -35,7 +35,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 2. Vyberte virtuální počítač, pro který chcete povolit Change Tracking a inventář. Virtuální počítače můžou existovat v libovolné oblasti bez ohledu na umístění vašeho účtu Automation.
 
-3. Na stránce virtuální počítač vyberte v části **Správa konfigurace**možnost **inventarizace** nebo **sledování změn** .
+3. Na stránce virtuální počítač vyberte v části **Správa konfigurace** možnost **inventarizace** nebo **sledování změn** .
 
 4. `Microsoft.OperationalInsights/workspaces/read`Abyste mohli zjistit, jestli je virtuální počítač pro pracovní prostor povolený, musíte mít oprávnění. Další informace o dalších požadovaných oprávněních najdete v tématu [oprávnění k instalaci funkcí](../automation-role-based-access-control.md#feature-setup-permissions). Další informace o tom, jak povolit více počítačů najednou, najdete v tématu [povolení Change Tracking a inventáře z účtu Automation](enable-from-automation-account.md).
 

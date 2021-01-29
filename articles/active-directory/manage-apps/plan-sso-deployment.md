@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 14520c7c448231045b36e025c2c92332f9daac53
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 5f207a0b5f829e952c92133a66313f49e9352f51
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658719"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053204"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Plánování nasazení jednotného přihlašování
 
@@ -62,7 +62,7 @@ Existují dva základní způsoby, kterými můžete uživatelům umožnit jedno
 
 Použití Azure AD pro jednotné přihlašování pomocí hesla vyžaduje nasazení rozšíření prohlížeče, které bude bezpečně získávat přihlašovací údaje a vyplní přihlašovací formuláře. Definujte mechanismus nasazení rozšíření ve velkém měřítku s využitím [podporovaných prohlížečů](../user-help/my-apps-portal-end-user-access.md). Vaše možnosti jsou:
 
-- [Zásady skupiny pro Internet Explorer](./access-panel-deployment-plan.md)
+- [Zásady skupiny pro Internet Explorer](my-apps-deployment-plan.md)
 - [Configuration Manager pro Internet Explorer](/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
 - [Stažení a konfigurace řízená uživatelem pro Chrome, Firefox, Microsoft Edge nebo IE](../user-help/my-apps-portal-end-user-access.md)
 
@@ -203,7 +203,7 @@ Implementujte svůj komunikační plán. Ujistěte se, že zadáváte koncovým 
 
 Následující testovací případy můžete použít k provedení testů na zařízeních vlastněných společností a k zajištění toho, aby konfigurace jednotného přihlašování fungovaly podle očekávání. Níže uvedené scénáře předpokládají, že uživatel přejde k adrese URL aplikace a projde tokem ověřování iniciované poskytovatelem služeb (tok ověřování iniciované pomocí SP).
 
-| Scénář | Očekávaný výsledek při ověřování iniciované nástrojem SP uživatelem |
+| Scenario | Očekávaný výsledek při ověřování iniciované nástrojem SP uživatelem |
 |----------|---------------------------------------------------|
 | Přihlaste se k aplikaci pomocí IE při Corpnet. | Integrované ověřování systému Windows (IWA) probíhá bez dalších výzev. |
 | Přihlaste se k aplikaci pomocí IE, pokud je vypnutá Corpnet s novým pokusy o přihlášení. | Na základě formulářů se zobrazí výzva na AD FSovém serveru. Uživatel se úspěšně přihlásí a zobrazí výzvy pro MFA. |

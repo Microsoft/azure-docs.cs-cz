@@ -3,14 +3,14 @@ title: Vytvoření samostatného účtu Azure Automation
 description: V tomto článku se dozvíte, jak vytvořit samostatný účet Azure Automation a účet Spustit jako pro Azure Classic.
 services: automation
 ms.subservice: process-automation
-ms.date: 01/15/2019
+ms.date: 01/07/2021
 ms.topic: conceptual
-ms.openlocfilehash: c78a65c3cc2d913ba0b836947d2184b3a061a648
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0855395a305624bb2df96d183dc2bcac45f8e6b3
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91714651"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051460"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Vytvoření samostatného účtu Azure Automation
 
@@ -67,14 +67,14 @@ Chcete-li vytvořit účet Azure Automation v Azure Portal, proveďte následuj�
     > Názvy účtů Automation jsou jedinečné pro jednotlivé oblasti a skupiny prostředků. Názvy pro odstraněné účty Automation nemusí být okamžitě k dispozici.
 
 1. Pokud máte více než jedno předplatné, zadejte předplatné, které chcete použít pro nový účet, pomocí pole **předplatné** .
-1. V případě **skupiny prostředků**zadejte nebo vyberte novou nebo existující skupinu prostředků.
-1. Jako **umístění**vyberte umístění datacentra Azure.
+1. V případě **skupiny prostředků** zadejte nebo vyberte novou nebo existující skupinu prostředků.
+1. Jako **umístění** vyberte umístění datacentra Azure.
 1. U možnosti **vytvořit účet Spustit v Azure jako** vyberte **Ano** a pak klikněte na **vytvořit**.
 
    > [!NOTE]
-   > Pokud se rozhodnete nevytvořit účet Spustit jako, vyberte pro **Vytvoření účtu spustit v Azure jako**možnost **ne** a v podokně Přidat účet Automation se zobrazí zpráva. I když je účet vytvořen v Azure Portal, nemá účet odpovídající identitu ověřování v rámci předplatného modelu nasazení Classic nebo v adresářové službě Azure Resource Manager předplatného. Proto účet Automation nemá přístup k prostředkům ve vašem předplatném. To brání tomu, aby Runbooky, které odkazují na tento účet, mohly ověřovat a provádět úlohy s prostředky v těchto modelech nasazení.
+   > Pokud se rozhodnete nevytvořit účet Spustit jako, vyberte pro **Vytvoření účtu spustit v Azure jako** možnost **ne** a v podokně Přidat účet Automation se zobrazí zpráva. I když je účet vytvořen v Azure Portal, nemá účet odpovídající identitu ověřování v rámci předplatného modelu nasazení Classic nebo v adresářové službě Azure Resource Manager předplatného. Proto účet Automation nemá přístup k prostředkům ve vašem předplatném. To brání tomu, aby Runbooky, které odkazují na tento účet, mohly ověřovat a provádět úlohy s prostředky v těchto modelech nasazení.
    >
-   > :::image type="content" source="media/automation-create-standalone-account/create-account-decline-create-runas-msg.png" alt-text="Snímek obrazovky s výzvou nemáte oprávnění k vytvoření účtu Spustit jako v Azure Active Directory.":::
+   > :::image type="content" source="media/automation-create-standalone-account/create-account-decline-create-runas-msg.png" alt-text="Snímek obrazovky s výzvou zpráva ' zvolili jste, že nechcete vytvořit účet Spustit jako. '":::
    >
    > Pokud objekt služby není vytvořen, role přispěvatele není přiřazena.
    >
@@ -93,7 +93,7 @@ Po úspěšném vytvoření účtu Automation se pro vaší potřebu automaticky
 
 ## <a name="create-a-classic-run-as-account"></a>Vytvoření účtu Spustit jako pro Azure Classic
 
-Účty Spustit jako pro Classic se už ve výchozím nastavení nevytváří, když vytváříte účet Azure Automation. Pokud stále potřebujete účet Spustit jako pro Classic:
+Účty Spustit jako pro Classic se ve výchozím nastavení nevytvoří, když vytváříte účet Azure Automation. Pokud pro správu klasických prostředků Azure potřebujete účet Spustit jako pro Classic, proveďte následující kroky:
 
 1. Z účtu Automation vyberte **účty Spustit jako** v části **Nastavení účtu**.
 2. Vyberte **účet Spustit jako pro Azure Classic**.
@@ -104,5 +104,5 @@ Po úspěšném vytvoření účtu Automation se pro vaší potřebu automaticky
 * Další informace o vytváření grafického obsahu najdete [v tématu vytváření grafických runbooků v Azure Automation](automation-graphical-authoring-intro.md).
 * Informace o tom, jak začít se sadami Runbook PowerShellu, najdete v tématu [kurz: vytvoření Runbooku PowerShellu](learn/automation-tutorial-runbook-textual-powershell.md).
 * Pokud chcete začít s Runbooky pracovních postupů PowerShellu, přečtěte si [kurz: vytvoření Runbooku pracovního postupu PowerShellu](learn/automation-tutorial-runbook-textual.md).
-* Chcete-li začít s Runbooky Python 2, přečtěte si [kurz: vytvoření Runbooku Python 2](learn/automation-tutorial-runbook-textual-python2.md).
-* Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](/powershell/module/az.automation/?view=azps-3.7.0&preserve-view=true#automation).
+* Chcete-li začít s Runbooky Python 3, přečtěte si [kurz: vytvoření sady Runbook Python 3](learn/automation-tutorial-runbook-textual-python-3.md).
+* Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](/powershell/module/az.automation&preserve-view=true#automation).

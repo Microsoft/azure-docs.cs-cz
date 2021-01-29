@@ -12,12 +12,12 @@ ms.date: 10/29/2019
 ms.author: kenwith
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7fc688ca0981024e5e08c9fb20ecb6704efbd7f2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9552d1a0c7bdb73dbcf739144a3ab9f746705664
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997490"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053359"
 ---
 # <a name="configure-the-admin-consent-workflow-preview"></a>Konfigurace pracovního postupu pro vyjádření souhlasu správce (Preview)
 
@@ -118,7 +118,7 @@ Následující tabulka popisuje scénáře a hodnoty auditu, které jsou k dispo
 > Uživatelský kontext objektu actor v současnosti chybí ve všech scénářích. Toto je známé omezení verze Preview.
 
 
-|Scénář  |Služba Audit  |Kategorie auditu  |Aktivita auditu  |Objekt actor auditu  |Omezení protokolu auditu  |
+|Scenario  |Služba Audit  |Kategorie auditu  |Aktivita auditu  |Objekt actor auditu  |Omezení protokolu auditu  |
 |---------|---------|---------|---------|---------|---------|
 |Správce, který povoluje pracovní postup žádosti o souhlas        |Kontroly přístupu           |UserManagement           |Vytvořit šablonu zásad správného řízení          |Kontext aplikace            |Aktuálně nemůžete najít kontext uživatele.            |
 |Správce zakázal pracovní postup žádosti o souhlas.       |Kontroly přístupu           |UserManagement           |Odstranit šablonu zásad správného řízení          |Kontext aplikace            |Aktuálně nemůžete najít kontext uživatele.           |
@@ -159,4 +159,4 @@ Další informace o tom, jak se předávají aplikacím, najdete v tématu [Azur
 
 [Oprávnění a souhlas na platformě Microsoft identity](../develop/v2-permissions-and-consent.md)
 
-[Azure AD v StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
+[Azure AD v Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-active-directory.html)

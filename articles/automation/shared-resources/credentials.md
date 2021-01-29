@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 12/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: caaeb0e40d277ef5e356c0f385a818b831326d6e
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 9b9e42d55a982aeb55d7c9e26f7b1a6cbca32e0a
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734823"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052800"
 ---
 # <a name="manage-credentials-in-azure-automation"></a>Správa přihlašovacích údajů ve službě Automation
 
@@ -55,7 +55,7 @@ Import-Module Orchestrator.AssetManagement.Cmdlets -ErrorAction SilentlyContinue
 
 Funkce v následující tabulce slouží k přístupu k přihlašovacím údajům v sadě Runbook Python 2 a 3. Sady Python 3 Runbooky jsou momentálně ve verzi Preview.
 
-| Funkce | Popis |
+| Funkce | Description |
 |:---|:---|
 | `automationassets.get_automation_credential` | Načte informace o assetu přihlašovacích údajů. |
 
@@ -115,7 +115,7 @@ $securePassword = $myCredential.Password
 $password = $myCredential.GetNetworkCredential().Password
 ```
 
-Přihlašovací údaje můžete použít také k ověření v Azure pomocí [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount). Ve většině případů byste měli použít [účet Spustit jako](../manage-runas-account.md) a načíst připojení pomocí rutiny [Get-AzAutomationConnection](../automation-connections.md).
+Přihlašovací údaje můžete použít také k ověření v Azure pomocí [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount). Ve většině případů byste měli použít [účet Spustit jako](../automation-security-overview.md#run-as-accounts) a načíst připojení pomocí rutiny [Get-AzAutomationConnection](../automation-connections.md).
 
 ```powershell
 $myCred = Get-AutomationPSCredential -Name 'MyCredential'

@@ -8,12 +8,12 @@ ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 56f98d41fc73cdd2be0923de66a5af09c875a050
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 31910e92ba4d5cbb1f133eaff6880fafb809b772
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92013589"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054089"
 ---
 # <a name="manage-database-roles-and-users"></a>Správa databázových rolí a uživatelů
 
@@ -28,13 +28,15 @@ Oprávnění role zahrnují:
 
 Při vytváření projektu s tabelárním modelem vytvoříte role a přidáte uživatele nebo skupiny k těmto rolím pomocí Správce rolí v aplikaci Visual Studio s Analysis Services projekty. Při nasazení na server použijte SQL Server Management Studio (SSMS), [Analysis Services rutiny prostředí PowerShell](/analysis-services/powershell/analysis-services-powershell-reference)nebo TMSL ( [Tabular model Scripting Language](/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) ) k přidání nebo odebrání rolí a členů uživatelů.
 
-Při přidávání **skupiny zabezpečení**použijte `obj:groupid@tenantid` .
+Při přidávání **skupiny zabezpečení** použijte `obj:groupid@tenantid` .
+
+Při přidávání **instančního objektu** `app:appid@tenantid` .
 
 ## <a name="to-add-or-manage-roles-and-users-in-visual-studio"></a>Přidání nebo Správa rolí a uživatelů v aplikaci Visual Studio  
   
-1.  V **Průzkumníku tabulkových modelů**klikněte pravým tlačítkem na **role**.  
+1.  V **Průzkumníku tabulkových modelů** klikněte pravým tlačítkem na **role**.  
   
-2.  Ve **Správci rolí**klikněte na **Nový**.  
+2.  Ve **Správci rolí** klikněte na **Nový**.  
   
 3.  Zadejte název role.  
   
@@ -54,7 +56,7 @@ Při přidávání **skupiny zabezpečení**použijte `obj:groupid@tenantid` .
   
 6.  Klikněte na **Členové**  >  **Přidat externí**.  
   
-8.  V rámci **Přidat externí člen**zadejte uživatele nebo skupiny ve vašem TENANTOVI Azure AD podle e-mailové adresy. Po kliknutí na tlačítko OK a zavření správce rolí se role a členové role zobrazí v Průzkumníkovi tabulkových modelů. 
+8.  V rámci **Přidat externí člen** zadejte uživatele nebo skupiny ve vašem TENANTOVI Azure AD podle e-mailové adresy. Po kliknutí na tlačítko OK a zavření správce rolí se role a členové role zobrazí v Průzkumníkovi tabulkových modelů. 
  
      ![Role a uživatelé v Průzkumníku tabulkových modelů](./media/analysis-services-database-users/aas-roles-tmexplorer.png)
 
@@ -67,7 +69,7 @@ Chcete-li přidat role a uživatele do nasazené databáze modelů, musíte být
 
 1. V části Object Exporer klikněte pravým tlačítkem na **role**  >  **Nová role**.
 
-2. V nástroji **vytvořit roli**zadejte název a popis role.
+2. V nástroji **vytvořit roli** zadejte název a popis role.
 
 3. Vyberte oprávnění.
 
@@ -77,7 +79,7 @@ Chcete-li přidat role a uživatele do nasazené databáze modelů, musíte být
    |**Process database**|Členové mohou spustit proces a zpracovat všechny operace. Schéma modelu nelze upravovat a nelze zadávat dotazy na data.|  
    |**Oprávnění**|Členové se můžou dotazovat na data (na základě filtrů řádků), ale nemůžou upravovat schéma modelu.|  
   
-4. Klikněte na **členství**a pak zadejte uživatele nebo skupinu do svého TENANTA Azure AD podle e-mailové adresy.
+4. Klikněte na **členství** a pak zadejte uživatele nebo skupinu do svého TENANTA Azure AD podle e-mailové adresy.
 
      ![Přidat uživatele](./media/analysis-services-database-users/aas-roles-adduser-ssms.png)
 
@@ -139,7 +141,7 @@ Filtry řádků se použijí na zadané řádky a související řádky. Pokud m
   
 |Tabulka|Výraz DAX|  
 |-----------|--------------------|  
-|Oblast|= Region [Země] = "USA"|  
+|Region (Oblast)|= Region [Země] = "USA"|  
 |ProductCategory|= ProductCategory [název] = "jízdní kola"|  
 |Transakce|= Transakcí [rok] = 2016|  
   

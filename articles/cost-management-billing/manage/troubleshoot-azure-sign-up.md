@@ -8,14 +8,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: troubleshooting
-ms.date: 08/20/2020
+ms.date: 01/28/2021
 ms.author: v-miegge
-ms.openlocfilehash: 85f6e64cb20a14b9cd03776d138872d6a4191535
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
-ms.translationtype: HT
+ms.openlocfilehash: 015e6058236190a04df152573621f0e57030d23b
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96344483"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054157"
 ---
 # <a name="troubleshoot-issues-when-you-sign-up-for-a-new-account-in-azure-portal-or-azure-account-center"></a>Řešení potíží při registraci nového účtu na webu Azure Portal nebo Centru účtů Azure
 
@@ -139,19 +139,18 @@ Dokončete smlouvu.
 
 ## <a name="other-issues"></a>Další problémy
 
-### <a name="cant-activate-azure-benefit-plan-like-msdn-bizspark-bizsparkplus-or-mpn"></a>Nejde aktivovat plán výhod Azure, jako je MSDN, BizSpark, BizSparkPlus nebo MPN
+### <a name="cant-activate-azure-benefit-plan-like-visual-studio-bizspark-bizsparkplus-or-mpn"></a>Nejde aktivovat plán výhod Azure, jako je Visual Studio, BizSpark, BizSparkPlus nebo MPN.
 
 Zkontrolujte, že k přihlášení používáte správné přihlašovací údaje. Potom zkontrolujte program výhod a ujistěte se, že jste pro něj způsobilí.
-- MSDN
-  - Stav způsobilosti si můžete ověřit na [stránce účtu MSDN](https://msdn.microsoft.com/subscriptions/manage/default.aspx).
-  - Pokud si stav nemůžete ověřit, kontaktujte [centra služeb zákazníkům pro předplatná MSDN](/previous-versions/mappoint/aa493452(v=msdn.10)).
+- Visual Studio
+  - Ověřte svůj stav způsobilosti na [stránce účtu aplikace Visual Studio](https://my.visualstudio.com/Benefits).
+  - Pokud nemůžete ověřit svůj stav, obraťte se na [podporu Visual Studio Subscription](https://visualstudio.microsoft.com/subscriptions/support/).
 - Microsoft for Startups
   - Přihlaste se na [portál Microsoft for Startups](https://startups.microsoft.com/#start-two) a ověřte si stav způsobilosti pro Microsoft for Startups.
   - Pokud si stav nemůžete ověřit, můžete získat pomoc ve [fórech programu Microsoft for Startups](https://www.microsoftpartnercommunity.com/t5/Microsoft-for-Startups/ct-p/Microsoft_Startups).
 - MPN
   - Přihlaste se na [portál MPN](https://mspartner.microsoft.com/Pages/Locale.aspx) a ověřte si stav způsobilosti. Pokud máte příslušné [kompetence pro cloudovou platformu](https://mspartner.microsoft.com/pages/membership/cloud-platform-competency.aspx), můžete být způsobilí pro další výhody.
   - Pokud si stav nemůžete ověřit, kontaktujte [podporu MPN](https://mspartner.microsoft.com/Pages/Support/Premium/contact-support.aspx).
-
 
 ### <a name="cant-activate-new-azure-in-open-subscription"></a>Nejde aktivovat předplatné Azure v rámci licenčního programu Open
 

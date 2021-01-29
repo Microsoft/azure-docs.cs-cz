@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 85c4488c4e8e1e2f9591b7d734c522c34ea4ba2d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15a4dd56b509571094ef202fbce781104bda9188
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88116311"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052240"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>Jak získat AppSource Certified pro Azure Active Directory
 
@@ -111,11 +111,11 @@ Další informace o zkušebním prostředí AppSource najdete v [tomto videu](ht
 - Další informace o vytváření aplikací podporujících přihlášení k Azure AD najdete v tématu [scénáře ověřování pro Azure AD](./v1-authentication-scenarios.md).
 - Informace o tom, jak v AppSource zobrazit seznam aplikací SaaS, najdete v tématu [informace o partnerovi AppSource](https://appsource.microsoft.com/partners) .
 
-## <a name="get-support"></a>Získat podporu
+## <a name="get-support"></a>Získání podpory
 
-Pro integraci služby Azure AD používáme pro poskytování podpory [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource) s komunitou.
+Pro integraci služby Azure AD používáme pro poskytování podpory [Microsoft Q&A](https://docs.microsoft.com/answers/products/) společně s komunitou.
 
-Důrazně doporučujeme, abyste si nejdřív položili své dotazy na Stack Overflow a mohli si projít stávající problémy, abyste zjistili, jestli se někdo na svůj dotaz předá. Ujistěte se, že jsou vaše dotazy nebo komentáře označeny pomocí [ `[azure-active-directory]` a `[appsource]` ](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource).
+Důrazně doporučujeme, abyste si položili své dotazy na Microsoft Q&a Projděte si stávající problémy, abyste zjistili, jestli se někdo na vaši otázku předá dotaz. Ujistěte se, že jsou vaše dotazy nebo komentáře označené pomocí [`[azure-active-directory]`](https://docs.microsoft.com/answers/topics/azure-active-directory.html) .
 
 Následující komentáře vám poskytnou zpětnou vazbu a pomáhají nám zdokonalit a obsloužit náš obsah.
 

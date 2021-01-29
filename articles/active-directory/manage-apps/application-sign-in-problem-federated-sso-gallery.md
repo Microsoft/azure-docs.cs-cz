@@ -12,17 +12,17 @@ ms.date: 02/18/2019
 ms.author: kenwith
 ms.reviewer: luleon, asteen
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 596af29fe72a41b5a86a09e4e6d5072d63b6ac71
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 62b828a23805c6d3ab544dd2b9f78b45a3327cde
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586342"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053393"
 ---
 # <a name="problems-signing-in-to-saml-based-single-sign-on-configured-apps"></a>Problémy s přihlašováním k aplikacím s nakonfigurovaným jednotným přihlašováním založeným na SAML
 Chcete-li vyřešit potíže s přihlášením, doporučujeme následující postup, který vám umožní lépe diagnostikovat a automatizovat kroky řešení:
 
-- Nainstalujte [rozšíření prohlížeče Zabezpečené přihlašování pro Moje aplikace](./access-panel-deployment-plan.md), které umožní Azure Active Directory (Azure AD) zajistit lepší diagnostiku a řešení při používání prostředí pro testování na webu Azure Portal.
+- Nainstalujte [rozšíření prohlížeče Zabezpečené přihlašování pro Moje aplikace](my-apps-deployment-plan.md), které umožní Azure Active Directory (Azure AD) zajistit lepší diagnostiku a řešení při používání prostředí pro testování na webu Azure Portal.
 - Reprodukujte chybu s využitím prostředí pro testování na stránce konfigurace aplikace na webu Azure Portal. Další informace o [ladění aplikací jednotného přihlašování založeného na SAML](./debug-saml-sso-issues.md)
 
 Pokud používáte prostředí pro [testování](./debug-saml-sso-issues.md) v Azure Portal s rozšířením zabezpečeného prohlížeče moje aplikace, nemusíte ručně postupovat podle následujících pokynů pro otevření konfigurační stránky jednotného přihlašování založené na SAML.

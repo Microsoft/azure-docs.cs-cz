@@ -13,12 +13,12 @@ ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44e14bed3158fac1f8bed15f913dc8b7eddbbb96
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 6250aef5ec69c65dcdfe457a56d4e077b31af4d1
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98985950"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051664"
 ---
 # <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint"></a>Kurz: vývoj a plánování zřizování pro koncový bod SCIM
 
@@ -56,7 +56,7 @@ Každá aplikace vyžaduje pro vytvoření uživatele nebo skupiny jiné atribut
 |--|--|--|
 |loginName|userName|userPrincipalName (Hlavní název uživatele)|
 |firstName|name.givenName|givenName|
-|lastName|Name. lastName|lastName|
+|lastName|name.familyName|Příjmení|
 |workMail|e-maily [typ EQ "Work"]. Value|Poštovní|
 |manager|manager|manager|
 |značka|urn: IETF: params: SCIM: schémata: rozšíření: 2.0: CustomExtension: tag|extensionAttribute1|

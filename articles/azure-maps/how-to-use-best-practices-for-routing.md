@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 743710ea0d40eb31375236d4e59b0b138a217518
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 8174529def5e3924086e49f36c225f07a4da2648
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895541"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051647"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Osvědčené postupy pro službu Azure Maps Route
 
@@ -29,7 +29,7 @@ Rozhraní API pro trasy tras a směrovací matice v Azure Maps [Route Service](/
  * Optimalizujte alternativní trasy pomocí pomocných bodů. Můžete například nabídnout alternativní trasy, které předají elektricky zpoplatněné trakční vozidlo.
  * Použití [Route Service](/rest/api/maps/route) s Azure Maps Web SDK
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 1. [Vytvořit účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného.
@@ -59,10 +59,10 @@ Tady je porovnání, ve kterém se zobrazují některé možnosti směrových ce
 
 | Rozhraní API pro Azure Maps | Maximální počet dotazů v žádosti | Nepoužívat oblasti | Směrování nákladní a elektrické vozidlo | Optimalizace prodejců Waypoints a cestování | Podpůrné body |
 | :--------------: |  :--------------: |  :--------------: | :--------------: | :--------------: | :--------------: |
-| Získat směr směrování | 1 | | X | X | |
-| Pokyny pro odeslání trasy | 1 | X | X | X | X |
-| Batch – itinerář trasy | 700 | | X | X | |
-| Vyjednaná matice směrování | 700 | | × | | |
+| Získat směr směrování | 1 | | ✔ | ✔ | |
+| Pokyny pro odeslání trasy | 1 | ✔ | ✔ | ✔ | ✔ |
+| Batch – itinerář trasy | 700 | | ✔ | ✔ | |
+| Vyjednaná matice směrování | 700 | | ✔ | | |
 
 Další informace o možnostech směrování u elektrických vozidel najdete v našem kurzu o [Směrování elektrických vozidel pomocí Azure Notebooks s Pythonem](tutorial-ev-routing.md).
 
@@ -113,7 +113,7 @@ V druhém příkladu níže máme požadavek na směrování v reálném čase, 
 https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&api-version=1.0&query=47.6422356,-122.1389797:47.6641142,-122.3011268&travelMode=car&traffic=true&computeTravelTimeFor=all
 ```
 
-Odpověď obsahuje souhrn, jak je znázorněno níže. Z důvodu zahlcení je hodnota **trafficDelaysInSeconds** větší než nula. Je také větší než **historicTrafficTravelTimeInSeconds** .
+Odpověď obsahuje souhrn, jak je znázorněno níže. Z důvodu zahlcení je hodnota **trafficDelaysInSeconds** větší než nula. Je také větší než **historicTrafficTravelTimeInSeconds**.
 
 ```json
 "summary": {
@@ -140,7 +140,7 @@ Rozbalením `point` prvku zobrazíte seznam souřadnic pro cestu:
 
 ![Element Expanded Points](media/how-to-use-best-practices-for-routing/points-list-img.png)
 
-Rozhraní API pro itinerář trasy podporují různé formáty instrukcí, které lze použít zadáním parametru **instructionsType** . Chcete-li naformátovat pokyny pro snadné zpracování počítačů, použijte **instructionsType = Code** . Použijte **instructionsType = Tagged** k zobrazení instrukcí jako textu pro uživatele. Pokyny je také možné formátovat jako text, kde jsou označeny některé prvky instrukcí a instrukce se zobrazí se speciálním formátováním. Další informace najdete v [seznamu podporovaných typů instrukcí](/rest/api/maps/route/postroutedirections#routeinstructionstype).
+Rozhraní API pro itinerář trasy podporují různé formáty instrukcí, které lze použít zadáním parametru **instructionsType** . Chcete-li naformátovat pokyny pro snadné zpracování počítačů, použijte **instructionsType = Code**. Použijte **instructionsType = Tagged** k zobrazení instrukcí jako textu pro uživatele. Pokyny je také možné formátovat jako text, kde jsou označeny některé prvky instrukcí a instrukce se zobrazí se speciálním formátováním. Další informace najdete v [seznamu podporovaných typů instrukcí](/rest/api/maps/route/postroutedirections#routeinstructionstype).
 
 Po vyžádání pokynů vrátí odpověď nový element s názvem `guidance` . `guidance`Element obsahuje dvě informace: pokyny pro zapnutí a shrnutí.
 
@@ -214,7 +214,7 @@ Azure Maps v současné době poskytuje dvě formy optimalizace tras:
 
 V případě vícenásobného zastavení směrování může být v rámci jedné žádosti o trase zadán až 150 Waypoints. Spouštěcí a koncová umístění souřadnic můžou být stejná, jako by to byl případ s kulatou cestou. K provedení výpočtu trasy ale musíte zadat alespoň jeden další bod na trase. Waypoints lze přidat do dotazu v rámci souřadnic počátek a cíl.
 
-Pokud chcete optimalizovat nejlepší pořadí pro návštěvě daného waypoints, musíte zadat **computeBestOrder = true** . Tento scénář je taky známý jako problém optimalizace na cestování – prodej.
+Pokud chcete optimalizovat nejlepší pořadí pro návštěvě daného waypoints, musíte zadat **computeBestOrder = true**. Tento scénář je taky známý jako problém optimalizace na cestování – prodej.
 
 ### <a name="sample-query"></a>Ukázkový dotaz
 

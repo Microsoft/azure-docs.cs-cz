@@ -4,17 +4,17 @@ description: Pomocí funkcí služby Azure Cost Management a fakturace můžete 
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/26/2020
+ms.date: 01/28/2021
 ms.topic: overview
 ms.service: cost-management-billing
 ms.subservice: common
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 34034a99641d75e44783cb5b87af8948b4db1628
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
-ms.translationtype: HT
+ms.openlocfilehash: a070b2329777accab6f62b767f74dbc28e5d2623
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029936"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051089"
 ---
 # <a name="what-is-azure-cost-management--billing"></a>Co je Azure Cost Management a fakturace?
 
@@ -43,11 +43,11 @@ Když se zaregistrujete do Azure, vytvoří se vám fakturační účet. Ten slo
 
 Web Azure Portal aktuálně podporuje následující typy fakturačních účtů:
 
-- **Program MOSP (Microsoft Online Services Program):** Individuální fakturační účet pro program MOSP (Microsoft Online Services Program) se vytvoří, když se zaregistrujete do Azure prostřednictvím webu Azure. Když si například zaregistrujete bezplatný účet Azure, účet s průběžnými platbami nebo jste předplatitelem sady Visual Studio.
+- **Program MOSP (Microsoft Online Services Program):** Individuální fakturační účet pro program MOSP (Microsoft Online Services Program) se vytvoří, když se zaregistrujete do Azure prostřednictvím webu Azure. Například když se přihlásíte k [bezplatnému účtu Azure](./manage/create-free-services.md), účet s tarify průběžných plateb nebo jako předplatitel sady Visual Studio.
 
 - **Smlouva Enterprise:** Fakturační účet pro smlouvu Enterprise se vytvoří, když vaše organizace uzavře smlouvu Enterprise (EA) na používání Azure.
 
-- **Smlouva se zákazníkem Microsoftu:** Fakturační účet pro smlouvu se zákazníkem Microsoftu se vytvoří tehdy, když vaše organizace uzavře smlouvu se zákazníkem Microsoftu prostřednictvím zástupce Microsoftu. Fakturační účet pro smlouvu se zákazníkem Microsoftu můžou mít i někteří zákazníci ve vybraných oblastech, kteří si prostřednictvím webu Azure zaregistrují účet s průběžnými platbami nebo upgradují svůj bezplatný účet Azure.
+- **Smlouva se zákazníkem Microsoftu:** Fakturační účet pro smlouvu se zákazníkem Microsoftu se vytvoří tehdy, když vaše organizace uzavře smlouvu se zákazníkem Microsoftu prostřednictvím zástupce Microsoftu. Fakturační účet pro smlouvu se zákazníkem Microsoftu můžou mít i někteří zákazníci ve vybraných oblastech, kteří si prostřednictvím webu Azure zaregistrují účet s průběžnými platbami nebo upgradují svůj [bezplatný účet Azure](./manage/create-free-services.md).
 
 ### <a name="scopes-for-billing-accounts"></a>Rozsahy pro fakturační účty
 Obor je uzel v rámci fakturačního účtu, pomocí kterého zobrazujete a spravujete fakturaci. Právě tady spravujete fakturační údaje, platby a faktury a provádíte všeobecnou správu účtu.

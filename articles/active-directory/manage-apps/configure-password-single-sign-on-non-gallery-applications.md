@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: kenwith
-ms.openlocfilehash: 7f9d29fee78c01dd3b1ee79d564297fa0cef14d3
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 2bb190ea01098e8e7b21a00f54fc37cd817f3743
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219874"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053275"
 ---
 # <a name="understand-password-based-single-sign-on"></a>Pochopení jednotného přihlašování založeného na heslech
 
@@ -54,7 +54,7 @@ Použití Azure AD jako zprostředkovatele identity (IdP) a konfigurace jednotn�
 V [řadě rychlých startů](view-applications-portal.md)jste zjistili, jak do svého tenanta přidat aplikaci, která umožňuje, aby Azure AD věděl, že se používá jako zprostředkovatel identity (IDP) pro aplikaci. Některé aplikace jsou už předem nakonfigurované a zobrazují se v galerii Azure AD. Ostatní aplikace nejsou v galerii a Vy musíte vytvořit obecnou aplikaci a nakonfigurovat ji ručně. V závislosti na aplikaci nemusí být možnost jednotného přihlašování založená na heslech k dispozici. Pokud se seznam možností založených na heslech na stránce jednotného přihlašování pro aplikaci nezobrazuje, není k dispozici.
 
 > [!IMPORTANT]
-> Rozšíření prohlížeče moje aplikace se vyžaduje pro jednotné přihlašování založené na heslech. Další informace najdete v tématu [Plánování nasazení mých aplikací](access-panel-deployment-plan.md).
+> Rozšíření prohlížeče moje aplikace se vyžaduje pro jednotné přihlašování založené na heslech. Další informace najdete v tématu [Plánování nasazení mých aplikací](my-apps-deployment-plan.md).
 
 Konfigurační stránka jednotného přihlašování založená na heslech je jednoduchá. Obsahuje jenom adresu URL přihlašovací stránky, kterou používá aplikace. Tento řetězec musí být stránka, která obsahuje pole pro zadání uživatelského jména.
 

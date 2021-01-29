@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.openlocfilehash: 2e09607dde118ce25e5d2e5311e7614f2f18a590
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: f16db3f55ebd0f09e4d7b75750fa319daf03977e
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98890726"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053563"
 ---
 # <a name="configure-machines-to-a-desired-state"></a>Konfigurace počítačů do požadovaného stavu
 
@@ -27,7 +27,7 @@ Pro tento kurz používáme jednoduchou [konfiguraci DSC](/powershell/scripting/
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Účet Azure Automation. Pokyny k vytvoření účtu Azure Automation Spustit jako najdete v tématu [Účet Spustit jako pro Azure](./manage-runas-account.md).
+- Účet Azure Automation. Další informace o účtu Automation a jeho požadavcích najdete v tématu [Přehled ověřování účtu Automation](./automation-security-overview.md).
 - Azure Resource Manager virtuální počítač (ne Classic) se systémem Windows Server 2008 R2 nebo novějším. Pokyny k vytvoření virtuálního počítače najdete v tématu [Vytvoření prvního virtuálního počítače s Windows v Azure Portal](../virtual-machines/windows/quick-create-portal.md).
 - Azure PowerShell modul verze 3,6 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps).
 - Znalost konfigurace požadovaného stavu (DSC). Informace o DSC najdete v tématu [Přehled konfigurace požadovaného stavu Windows PowerShellu](/powershell/scripting/dsc/overview/overview).
@@ -49,7 +49,6 @@ Connect-AzAccount
 ```
 
 ## <a name="create-and-upload-a-configuration-to-azure-automation"></a>Vytvoření a nahrání konfigurace pro Azure Automation
-
 
 V textovém editoru zadejte následující příkaz a uložte ho místně jako **TestConfig.ps1**.
 

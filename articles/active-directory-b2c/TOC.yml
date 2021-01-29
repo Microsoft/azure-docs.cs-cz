@@ -188,14 +188,17 @@
       items:
         - name: Konfigurace uživatelského vstupu
           href: configure-user-input.md
-        - name: Přizpůsobení uživatelského rozhraní s využitím firemního brandingu
-          href: company-branding.md
+        - name: Přizpůsobení uživatelského rozhraní
+          displayName: company branding
+          href: customize-ui.md
         - name: Přizpůsobení uživatelského rozhraní s využitím šablony HTML
+          displayName: content definitions
           href: customize-ui-with-html.md
         - name: JavaScript a rozložení stránek
           href: javascript-and-page-layout.md
         - name: Přizpůsobení jazyka
           href: language-customization.md
+          displayName: localization
         - name: Složitost hesla
           href: password-complexity.md
         - name: Zakázání ověření e-mailu
@@ -259,12 +262,13 @@
           items:
             - name: Shromažďování protokolů pomocí Application Insights
               href: troubleshoot-with-application-insights.md
-              displayName: troubleshooting
+              displayName: 'troubleshooting, app insights'
             - name: Ověřování zásad
               href: troubleshoot-custom-policies.md
               displayName: troubleshooting
         - name: Analýza využití
           href: analytics-with-application-insights.md
+          displayName: 'application insights, app insights'
         - name: Referenční informace
           items:
             - name: TrustFrameworkPolicy

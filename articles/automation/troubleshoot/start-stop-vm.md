@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/04/2019
 ms.topic: troubleshooting
-ms.openlocfilehash: 763e1321556ade73778b82ea70926af21a83f7ec
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: ff2ef8970afa21c0218da20a5b79ea2fb782dd5c
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896270"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053580"
 ---
 # <a name="troubleshoot-startstop-vms-during-off-hours-issues"></a>Řešení potíží s Start/Stop VMs during off-hours
 
@@ -109,7 +109,7 @@ V následujícím seznamu najdete možná řešení:
   * **ScheduledStartStop_Parent**
   * **SequencedStartStop_Parent**
 
-* Ověřte, že váš [účet Spustit jako](../manage-runas-account.md) má správná oprávnění k virtuálním počítačům, které se pokoušíte spustit nebo zastavit. Informace o tom, jak kontrolovat oprávnění k prostředku, najdete v tématu [rychlý Start: Zobrazení rolí přiřazených uživateli pomocí Azure Portal](../../role-based-access-control/check-access.md). Bude nutné zadat ID aplikace pro instanční objekt používaný účtem spustit jako. Tuto hodnotu můžete načíst tak, že v Azure Portal kliknete na účet Automation. V části **Nastavení účtu** vyberte **účty Spustit jako** a vyberte příslušný účet Spustit jako.
+* Ověřte, že váš [účet Spustit jako](../automation-security-overview.md#run-as-accounts) má správná oprávnění k virtuálním počítačům, které se pokoušíte spustit nebo zastavit. Informace o tom, jak kontrolovat oprávnění k prostředku, najdete v tématu [rychlý Start: Zobrazení rolí přiřazených uživateli pomocí Azure Portal](../../role-based-access-control/check-access.md). Bude nutné zadat ID aplikace pro instanční objekt používaný účtem spustit jako. Tuto hodnotu můžete načíst tak, že v Azure Portal kliknete na účet Automation. V části **Nastavení účtu** vyberte **účty Spustit jako** a vyberte příslušný účet Spustit jako.
 
 * Pokud jsou virtuální počítače explicitně vyloučené, nemusí se spustit nebo zastavit. Vyloučené virtuální počítače se nastavují v `External_ExcludeVMNames` proměnné v účtu Automation, na který je tato funkce nasazená. Následující příklad ukazuje, jak můžete zadat dotaz na tuto hodnotu pomocí PowerShellu.
 
@@ -201,7 +201,7 @@ Tento problém může být způsoben nesprávně konfigurovaným nebo vydaným �
 
 Pokud chcete ověřit, že je váš účet Spustit jako správně nakonfigurovaný, Azure Portal v části **Nastavení účtu** vyberte účet Automation a vyberte **účty Spustit jako** . Pokud je účet Spustit jako nesprávně nakonfigurovaný nebo vypršela jeho platnost, stav zobrazuje podmínku.
 
-Pokud je váš účet Spustit jako špatně nakonfigurovaný, odstraňte a znovu vytvořte svůj účet Spustit jako. Další informace najdete v tématu [Správa účtů spustit jako Azure Automation](../manage-runas-account.md).
+Pokud je váš účet Spustit jako špatně nakonfigurovaný, odstraňte a znovu vytvořte svůj účet Spustit jako. Další informace najdete v tématu [Azure Automation účty Spustit jako](../automation-security-overview.md#run-as-accounts).
 
 Pokud vypršela platnost certifikátu pro svůj účet Spustit jako, obnovte certifikát pomocí postupu v části [obnovení certifikátu podepsaného svým držitelem](../manage-runas-account.md#cert-renewal) .
 

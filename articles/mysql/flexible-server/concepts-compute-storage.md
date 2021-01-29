@@ -1,17 +1,17 @@
 ---
 title: Možnosti COMPUTE a Storage – Azure Database for MySQL – flexibilní Server
 description: Tento článek popisuje možnosti výpočtů a úložiště v Azure Database for MySQL-flexibilním serveru.
-author: savjani
-ms.author: pariks
+author: Bashar-MSFT
+ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 01/27/2021
-ms.openlocfilehash: 267b362c94b04b3be634f7e61c2b6d67604d7854
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.date: 1/28/2021
+ms.openlocfilehash: b1e8093a1991a97220060c2b6936368f9a4be796
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954677"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052342"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server-preview"></a>Možnosti výpočtů a úložiště v Azure Database for MySQL – flexibilní Server (Preview)
 
@@ -72,7 +72,7 @@ Podrobné specifikace dostupných typů serverů jsou následující:
 Další podrobnosti o dostupných výpočetních řadách najdete v dokumentaci k VIRTUÁLNÍm počítačům Azure pro [shluky (B-Series)](../../virtual-machines/sizes-b-series-burstable.md), [pro obecné účely (Ddsv4-Series)](../../virtual-machines/ddv4-ddsv4-series.md)a [paměťově optimalizovaná (Edsv4-Series)](../../virtual-machines/edv4-edsv4-series.md).
 
 >[!NOTE]
->U výpočetních vrstev s rozstupnou zátěží [(B-Series)](../../virtual-machines/sizes-b-series-burstable.md) v případě, že se server restartuje z nějakého důvodu, například iniciované uživatelem, plánovaná nebo neplánovaná údržba, může dojít ke ztrátě tohoto souhrnného kredit Důvodem je to, že pokaždé, když Azure Database for MySQL restartovat, zůstane na stejném uzlu, který se zachová. Naopak, když se server Azure Database for MySQL na novém uzlu začne aktualizovat, získá počáteční kredit. Další informace najdete v [nejčastějších dotazech k roztržení (B-Series)](https://docs.microsoft.com/azure/virtual-machines/sizes-b-series-burstable#q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart).
+>Pokud se virtuální počítač spustí, zastaví nebo restartuje, může dojít ke ztrátě kreditů pro [výpočetní vrstvu (B-Series)](../../virtual-machines/sizes-b-series-burstable.md) . Další informace najdete v tématu [Nejčastější dotazy k roztržení (B-Series)](https://docs.microsoft.com/azure/virtual-machines/sizes-b-series-burstable#q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart).
 
 ## <a name="storage"></a>Storage
 

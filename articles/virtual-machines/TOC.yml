@@ -957,8 +957,6 @@
               href: ./linux/cloudinit-configure-swapfile.md
             - name: Spuštění existujícího skriptu Bash
               href: ./linux/cloudinit-bash-script.md
-            - name: Příprava existujícího virtuálního počítače pro cloud-init
-              href: ./linux/cloudinit-prepare-custom-image.md
         - name: Vytváření imagí Linux bez agenta zřizování
           href: ./linux/no-agent.md
         - name: Zákaz zřizování linuxových agentů
@@ -1070,6 +1068,10 @@
               href: ./windows/image-builder.md
         - name: PowerShell
           href: ./windows/image-builder-powershell.md
+        - name: Zabezpečení
+          items:
+            - name: Mechanismy zabezpečení služby Azure Policy
+              href: ./security-controls-policy-image-builder.md
         - name: Použití virtuální sítě
           items:
             - name: Rozhraní příkazového řádku
@@ -1508,7 +1510,6 @@
               href: ../bastion/create-host-cli.md
             - name: Připojení SSH v Bastionu
               href: ../bastion/bastion-connect-vm-ssh.md
-              items: null
             - name: Připojení RDP v Bastionu
               href: ../bastion/bastion-connect-vm-rdp.md
         - name: Použití řízení přístupu

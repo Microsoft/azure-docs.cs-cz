@@ -10,19 +10,19 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
-ms.openlocfilehash: d122cedbad41d6984614a0edccb2fd98269710f2
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 84aec5031dd8d19f8f2ad0aa32185002add378b1
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618072"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053975"
 ---
 # <a name="troubleshoot-password-based-single-sign-on-in-azure-ad"></a>Řešení potíží s jednotným přihlašováním založeným na heslech v Azure AD
 
 Pokud chcete v aplikacích používat jednotné přihlašování (SSO) založené na heslech, musí být nainstalované rozšíření prohlížeče. Rozšíření se automaticky stáhne při výběru aplikace, která je nakonfigurovaná pro jednotné přihlašování založené na heslech. Další informace o používání mých aplikací z perspektivy koncových uživatelů najdete v [nápovědě k portálu moje aplikace](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="my-apps-browser-extension-not-installed"></a>Rozšíření prohlížeče moje aplikace není nainstalované.
-Ujistěte se, že je nainstalované rozšíření prohlížeče. Další informace najdete v tématu [Plánování nasazení Azure Active Directory moje aplikace](access-panel-deployment-plan.md). 
+Ujistěte se, že je nainstalované rozšíření prohlížeče. Další informace najdete v tématu [Plánování nasazení Azure Active Directory moje aplikace](my-apps-deployment-plan.md). 
 
 ## <a name="single-sign-on-not-configured"></a>Jednotné přihlašování není nakonfigurované.
 Ujistěte se, že je nakonfigurováno jednotné přihlašování založené na heslech. Další informace najdete v tématu [Konfigurace jednotného přihlašování založeného na heslech](configure-password-single-sign-on-non-gallery-applications.md).
@@ -87,7 +87,7 @@ Obecně platí, že pokud automatické zachycení přihlašovacích polí nefung
 ### <a name="automatically-capture-sign-in-fields-for-an-app"></a>Automatické zachycení přihlašovacích polí pro aplikaci
 
 Pokud chcete nakonfigurovat jednotné přihlašování založené na heslech pomocí automatického zachycení pole pro přihlášení, postupujte takto:
-1. Otevřete web [Azure Portal](https://portal.azure.com/). Přihlaste se jako globální správce nebo spolusprávce.
+1. Otevřete [Azure Portal](https://portal.azure.com/). Přihlaste se jako globální správce nebo spolusprávce.
 2. V navigačním podokně na levé straně vyberte **všechny služby** a otevřete rozšíření Azure AD.
 3. Do vyhledávacího pole filtru zadejte **Azure Active Directory** a pak vyberte **Azure Active Directory**.
 4. V navigačním podokně Azure AD vyberte **podnikové aplikace** .
@@ -106,7 +106,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování založené na heslech pom
 Pokud chcete ručně zachytit pole přihlašování, musíte mít nainstalované rozšíření prohlížeče moje aplikace. Prohlížeč také nemůže běžet ve službě *InPrivate*, *anonymním* nebo *privátním* režimu.
 
 Pokud chcete pro aplikaci nakonfigurovat jednotné přihlašování na základě hesla pomocí ručního zachycení pole pro přihlášení, postupujte podle těchto kroků:
-1. Otevřete web [Azure Portal](https://portal.azure.com/). Přihlaste se jako globální správce nebo spolusprávce.
+1. Otevřete [Azure Portal](https://portal.azure.com/). Přihlaste se jako globální správce nebo spolusprávce.
 2. V navigačním podokně na levé straně vyberte **všechny služby** a otevřete rozšíření Azure AD.
 3. Do vyhledávacího pole filtru zadejte **Azure Active Directory** a pak vyberte **Azure Active Directory**.
 4. V navigačním podokně Azure AD vyberte **podnikové aplikace** .
@@ -247,4 +247,4 @@ Následující informace popisují, co jednotlivé položky oznámení znamenaj�
 
 ## <a name="next-steps"></a>Další kroky
 * [Série rychlý Start při správě aplikací](view-applications-portal.md)
-* [Plánování nasazení pro Moje aplikace](access-panel-deployment-plan.md)
+* [Plánování nasazení pro Moje aplikace](my-apps-deployment-plan.md)

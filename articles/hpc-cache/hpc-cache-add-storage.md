@@ -4,14 +4,14 @@ description: Jak definovat cíle úložiště, aby mezipaměť prostředí Azure
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 09/30/2020
+ms.date: 01/28/2021
 ms.author: v-erkel
-ms.openlocfilehash: b2497a49703ab675bde50c7845995c92de32f376
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: b4df5863cc746490f13685a8d412232217af3bc8
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657172"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054361"
 ---
 # <a name="add-storage-targets"></a>Přidání cílů úložiště
 
@@ -165,19 +165,21 @@ Cíl úložiště NFS má různá nastavení z cíle úložiště objektů BLOB.
 
 Při vytváření cíle úložiště, který odkazuje na systém úložiště NFS, je nutné zvolit model využití pro tento cíl. Tento model určuje, jak jsou data ukládána do mezipaměti.
 
+Integrované modely použití vám umožňují zvolit způsob vyrovnávání rychlé odezvy s rizikem při získávání zastaralých dat. Pokud chcete optimalizovat rychlost čtení souborů, nesmíte se starat o to, jestli jsou soubory v mezipaměti kontrolované proti back-endové soubory. Na druhé straně, pokud chcete mít jistotu, že jsou soubory vždycky aktuální se vzdáleným úložištěm, vyberte model, který se často kontroluje.
+
 Existují tři možnosti:
 
 * **Čtení těžkých, zřídka používaných zápisů** – tuto možnost použijte, pokud chcete zrychlit přístup pro čtení souborů, které jsou statické nebo zřídka změněné.
 
-  Tato možnost ukládá do mezipaměti soubory, které klienti čtou, ale předává zápis do úložiště back-endu okamžitě. Soubory uložené v mezipaměti se nikdy nerovnají souborům na svazku úložiště NFS.
+  Tato možnost ukládá do mezipaměti soubory, které klienti čtou, ale předává zápis do úložiště back-endu okamžitě. Soubory uložené v mezipaměti nejsou automaticky porovnány se soubory na svazku úložiště NFS. (Další informace najdete v poznámce k ověření back-endu.)
 
-  Tuto možnost nepoužívejte, pokud existuje riziko, že soubor může být upraven přímo v systému úložiště, aniž byste ho nejdřív napsali do mezipaměti. Pokud k tomu dojde, verze souboru v mezipaměti nebude nikdy aktualizována změnami z back-endu a datová sada může být nekonzistentní.
+  Tuto možnost nepoužívejte, pokud existuje riziko, že soubor může být upraven přímo v systému úložiště, aniž byste ho nejdřív napsali do mezipaměti. Pokud k tomu dojde, verze souboru v mezipaměti nebude synchronizována s back-end souborem.
 
 * Více **než 15% zápisů** – Tato možnost zrychluje výkon čtení i zápisu. Při použití této možnosti musí mít všichni klienti přístup k souborům přes mezipaměť prostředí Azure HPC místo přímého připojení k úložišti back-endu. Soubory v mezipaměti budou mít poslední změny, které nejsou uložené na back-endu.
 
-  V tomto modelu použití nejsou soubory v mezipaměti u souborů v úložišti back-endu kontrolovány. Předpokládá se, že verze souboru v mezipaměti je aktuálnější. Upravený soubor v mezipaměti se zapisuje do back-endového systému úložiště, po kterém byl v mezipaměti, a to za hodinu bez dalších změn.
+  V tomto modelu použití jsou soubory v mezipaměti kontrolovány pouze proti souborům v úložišti back-endu každých 8 hodin. Předpokládá se, že verze souboru v mezipaměti je aktuálnější. Upravený soubor v mezipaměti se zapisuje do back-endového systému úložiště, po kterém byl v mezipaměti, a to za hodinu bez dalších změn.
 
-* **Klienti zapisují do cíle NFS, vynechá mezipaměť** – tuto možnost vyberte, pokud klienti v pracovním postupu zapisují data přímo do systému úložiště, aniž by museli nejdřív zapisovat do mezipaměti. Soubory, které klienti požadují, jsou ukládány do mezipaměti, ale všechny změny těchto souborů z klienta jsou okamžitě předány zpět do back-endového systému úložiště.
+* **Klienti zapisují do cíle NFS, vynechá mezipaměť** – tuto možnost vyberte, pokud klienti v pracovním postupu zapisují data přímo do systému úložiště, aniž by museli nejdřív zapisovat do mezipaměti, nebo pokud chcete optimalizovat konzistenci dat. Soubory, které klienti požadují, jsou ukládány do mezipaměti, ale všechny změny těchto souborů z klienta jsou okamžitě předány zpět do back-endového systému úložiště.
 
   V tomto modelu použití jsou soubory v mezipaměti často kontrolovány proti verzím back-endu pro aktualizace. Toto ověření umožňuje změnu souborů mimo mezipaměť při zachování konzistence dat.
 
@@ -186,8 +188,11 @@ Tato tabulka shrnuje rozdíly v modelu použití:
 | Model využití                   | Režim ukládání do mezipaměti | Ověření back-endu | Maximální zpoždění před zpětným zápisem |
 |-------------------------------|--------------|-----------------------|--------------------------|
 | Čtení těžkých, nečastých zápisů | Číst         | Nikdy                 | Žádné                     |
-| Více než 15% zápisů       | Čtení/zápis   | Nikdy                 | 1 hodina                   |
+| Více než 15% zápisů       | Čtení/zápis   | 8 hodin               | 1 hodina                   |
 | Klienti obcházejí mezipaměť      | Číst         | 30 sekund            | Žádné                     |
+
+> [!NOTE]
+> Hodnota **ověření back-endu** ukazuje, kdy mezipaměť automaticky porovnává své soubory se zdrojovými soubory ve vzdáleném úložišti. Mezipaměť prostředí Azure HPC však můžete vynutit k porovnání souborů pomocí operace adresáře, která obsahuje požadavek READDIRPLUS. READDIRPLUS je standardní rozhraní API pro systém souborů NFS (označované také jako rozšířené čtení), které vrací metadata adresáře, což způsobí, že mezipaměť porovná a aktualizuje soubory.
 
 ### <a name="create-an-nfs-storage-target"></a>Vytvoření cíle úložiště NFS
 

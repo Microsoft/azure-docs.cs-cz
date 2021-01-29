@@ -3,12 +3,12 @@ title: Systémová témata v Azure Event Grid
 description: Popisuje systémová témata v Azure Event Grid.
 ms.topic: conceptual
 ms.date: 09/24/2020
-ms.openlocfilehash: b3a6e7528da2a11c2f91007425ab8beecaf920c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b1fbecb1e372602f9c252d43d2a1f93524ef1846
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91297279"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052961"
 ---
 # <a name="system-topics-in-azure-event-grid"></a>Systémová témata v Azure Event Grid
 Systémové téma v Event Grid představuje jednu nebo více událostí publikovaných službami Azure, jako jsou Azure Storage a Azure Event Hubs. Například systémové téma může představovat **všechny události objektů BLOB** nebo pouze objekty **BLOB vytvořené** a **odstraněné objekty blob** publikované pro **konkrétní účet úložiště**. Když se v tomto příkladu nahraje objekt blob do účtu úložiště, služba Azure Storage publikuje událost **vytvořeného objektu BLOB** do systémového tématu v Event Grid, která pak přepošle událost [účastníkům](event-handlers.md) tématu, které obdrží a zpracuje událost. 
@@ -34,6 +34,7 @@ Tady je aktuální seznam služeb Azure, které podporují vytváření systémo
 - [Azure Service Bus](event-schema-service-bus.md)
 - [Azure SignalR](event-schema-azure-signalr.md)
 - [Předplatná Azure](event-schema-subscriptions.md)
+- [Azure Cache for Redis](event-schema-azure-cache.md)
 
 ## <a name="system-topics-as-azure-resources"></a>Systémová témata jako prostředky Azure
 V minulosti bylo téma v systému implicitní a nebylo zveřejněné pro jednoduchost. Systémová témata se teď zobrazují jako prostředky Azure a poskytují tyto možnosti:
@@ -49,7 +50,7 @@ Systémové téma můžete vytvořit dvěma způsoby:
 - Vytvořte [odběr událostí v prostředku Azure jako prostředek rozšíření](/rest/api/eventgrid/version2020-06-01/eventsubscriptions/createorupdate), který automaticky vytvoří systémové téma s názvem ve formátu: `<Azure resource name>-<GUID>` . V případě odstranění posledního odběru událostí pro toto téma je automaticky odstraněno systémové téma vytvořené tímto způsobem. 
 - Vytvořte systémové téma pro prostředek Azure a pak vytvořte odběr událostí pro toto systémové téma. Když použijete tuto metodu, můžete zadat název systémového tématu. Když poslední odběr události odstraníte, nebude se toto téma automaticky odstraňovat. Musíte ho odstranit ručně. 
 
-    Při použití Azure Portal je tato metoda vždy používána. Když vytvoříte odběr událostí pomocí [stránky **události** prostředku Azure](blob-event-quickstart-portal.md#subscribe-to-the-blob-storage), nejprve se vytvoří systémové téma a pak se vytvoří odběr tohoto tématu. Můžete explicitně vytvořit systémové téma jako první, a to pomocí [stránky **Event Grid systémových témat** ](create-view-manage-system-topics.md#create-a-system-topic) a pak vytvořit předplatné pro toto téma. 
+    Při použití Azure Portal je tato metoda vždy používána. Když vytvoříte odběr událostí pomocí [stránky **události** prostředku Azure](blob-event-quickstart-portal.md#subscribe-to-the-blob-storage), nejprve se vytvoří systémové téma a pak se vytvoří odběr tohoto tématu. Můžete explicitně vytvořit systémové téma jako první, a to pomocí [stránky **Event Grid systémových témat**](create-view-manage-system-topics.md#create-a-system-topic) a pak vytvořit předplatné pro toto téma. 
 
 Když použijete šablonu [CLI](create-view-manage-system-topics-cli.md), [REST](/rest/api/eventgrid/version2020-06-01/eventsubscriptions/createorupdate)nebo [Azure Resource Manager](create-view-manage-system-topics-arm.md), můžete zvolit jednu z výše uvedených metod. Doporučujeme nejprve vytvořit systémové téma a pak vytvořit odběr v tématu, protože se jedná o nejnovější způsob vytváření systémových témat.
 

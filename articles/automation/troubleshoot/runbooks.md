@@ -6,12 +6,12 @@ ms.subservice: ''
 ms.date: 11/03/2020
 ms.topic: troubleshooting
 ms.custom: has-adal-ref
-ms.openlocfilehash: 116677354009c538eece02184d801cfda11574a0
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: e154284df8eaad798c5cfaf4de69c40601863cf4
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896304"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053665"
 ---
 # <a name="troubleshoot-runbook-issues"></a>Řešení problémů s runbooky
 
@@ -134,7 +134,7 @@ Run Login-AzureRMAccount to login.
 
 ### <a name="cause"></a>Příčina
 
-K této chybě může dojít, pokud nepoužíváte účet Spustit jako nebo vypršela platnost účtu Spustit jako. Další informace najdete v tématu [Správa účtů spustit jako Azure Automation](../manage-runas-account.md).
+K této chybě může dojít, pokud nepoužíváte účet Spustit jako nebo vypršela platnost účtu Spustit jako. Další informace najdete v tématu [Přehled účtů spustit jako Azure Automation](../automation-security-overview.md#run-as-accounts).
 
 Tato chyba má dvě primární příčiny:
 

@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 09/22/2020
 ms.topic: conceptual
 keywords: PowerShell, Runbook, JSON, Azure Automation
-ms.openlocfilehash: 18f1d4ced2a80f9adb5da2c209987fc1997a3f22
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d9b443d1840840d3d6202140da235589c73453cc
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91304147"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051392"
 ---
 # <a name="deploy-an-azure-resource-manager-template-in-a-powershell-runbook"></a>Nasazení šablony Azure Resource Manager v Runbooku PowerShellu
 
@@ -22,7 +22,7 @@ V tomto článku vytvoříme PowerShellový Runbook, který používá šablonu 
 ## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud ho ještě nemáte, můžete si [aktivovat výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo si [zaregistrovat bezplatný účet](https://azure.microsoft.com/free/).
-* [Účet Automation](./manage-runas-account.md), abyste si mohli runbook podržet a mohli ověřovat prostředky Azure. Tento účet musí mít oprávnění ke spuštění a zastavení virtuálního počítače.
+* [Účet Automation](./automation-security-overview.md), abyste si mohli runbook podržet a mohli ověřovat prostředky Azure. Tento účet musí mít oprávnění ke spuštění a zastavení virtuálního počítače.
 * [Azure Storage účet](../storage/common/storage-account-create.md) , do kterého chcete uložit šablonu správce prostředků.
 * Azure PowerShell nainstalované na místním počítači. Informace o tom, jak získat Azure PowerShell, najdete v tématu [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps) .
 

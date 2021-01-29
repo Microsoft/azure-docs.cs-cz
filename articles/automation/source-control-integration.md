@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: c2ddb0143bb9cba0dc2fc48ff9b9df94dc55c29c
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: e7a6b6d3e753352820cdcb910dcbfa9362793493
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579449"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99050766"
 ---
 # <a name="use-source-control-integration"></a>Použití integrace správy zdrojového kódu
 
@@ -29,7 +29,7 @@ Azure Automation podporuje tři typy správy zdrojového kódu:
 ## <a name="prerequisites"></a>Požadavky
 
 * Úložiště správy zdrojového kódu (GitHub nebo Azure Repos)
-* [Účet Spustit jako](manage-runas-account.md)
+* [Účet Spustit jako](automation-security-overview.md#run-as-accounts)
 * [Nejnovější moduly Azure](automation-update-azure-modules.md) v účtu Automation, včetně `Az.Accounts` modulu (AZ Module ekvivalent of `AzureRM.Profile` )
 
 > [!NOTE]
@@ -62,14 +62,14 @@ Pomocí tohoto postupu můžete nakonfigurovat správu zdrojového kódu pomocí
     |Cesta ke složce     | Složka, která obsahuje Runbooky, které se mají synchronizovat, například **/runbooks**. Synchronizovány jsou pouze Runbooky v zadané složce. Rekurze není podporována.        |
     |Automatická synchronizace<sup>1</sup>     | Nastavení, které zapne nebo vypne automatickou synchronizaci při provedení potvrzení v úložišti správy zdrojů.        |
     |Publikování Runbooku     | Nastavení zapnuto, pokud jsou Runbooky automaticky publikovány po synchronizaci ze správy zdrojového kódu a mimo jiné.           |
-    |Popis     | Text určující další podrobnosti o správě zdrojového kódu.        |
+    |Description     | Text určující další podrobnosti o správě zdrojového kódu.        |
 
     <sup>1</sup> Chcete-li povolit automatickou synchronizaci při konfiguraci integrace správy zdrojového kódu pomocí Azure Repos, musíte být správcem projektu.
 
    ![Souhrn správy zdrojového kódu](./media/source-control-integration/source-control-summary.png)
 
 > [!NOTE]
-> Přihlašovací údaje pro úložiště správy zdrojového kódu se můžou lišit od přihlášení k Azure Portal. Při konfiguraci správy zdrojového kódu se ujistěte, že jste přihlášeni pomocí správného účtu pro úložiště správy zdrojového kódu. Pokud dojde k nějaké pochybnosti, otevřete v prohlížeči novou kartu, odhlaste se z **dev.Azure.com** , **VisualStudio.com** nebo **GitHub.com** a zkuste se znovu připojit ke správě zdrojového kódu.
+> Přihlašovací údaje pro úložiště správy zdrojového kódu se můžou lišit od přihlášení k Azure Portal. Při konfiguraci správy zdrojového kódu se ujistěte, že jste přihlášeni pomocí správného účtu pro úložiště správy zdrojového kódu. Pokud dojde k nějaké pochybnosti, otevřete v prohlížeči novou kartu, odhlaste se z **dev.Azure.com**, **VisualStudio.com** nebo **GitHub.com** a zkuste se znovu připojit ke správě zdrojového kódu.
 
 ### <a name="configure-source-control-in-powershell"></a>Konfigurace správy zdrojového kódu v PowerShellu
 
@@ -86,7 +86,7 @@ New-AzAutomationSourceControl -Name SCGitHub -RepoUrl https://github.com/<accoun
 #### <a name="create-source-control-connection-for-azure-repos-git"></a>Vytvořit připojení správy zdrojového kódu pro Azure Repos (Git)
 
 > [!NOTE]
-> Azure Repos (Git) používá adresu URL, která přistupuje k **dev.Azure.com** místo **VisualStudio.com** , a používá se v dřívějších formátech. Starší formát adresy URL `https://<accountname>.visualstudio.com/<projectname>/_git/<repositoryname>` je zastaralý, ale je stále podporován. Doporučuje se nový formát.
+> Azure Repos (Git) používá adresu URL, která přistupuje k **dev.Azure.com** místo **VisualStudio.com**, a používá se v dřívějších formátech. Starší formát adresy URL `https://<accountname>.visualstudio.com/<projectname>/_git/<repositoryname>` je zastaralý, ale je stále podporován. Doporučuje se nový formát.
 
 
 ```powershell-interactive
@@ -96,7 +96,7 @@ New-AzAutomationSourceControl -Name SCReposGit -RepoUrl https://dev.azure.com/<a
 #### <a name="create-source-control-connection-for-azure-repos-tfvc"></a>Vytvořit připojení správy zdrojového kódu pro Azure Repos (TFVC)
 
 > [!NOTE]
-> Azure Repos (TFVC) používá adresu URL, která přistupuje k **dev.Azure.com** místo **VisualStudio.com** , které se používá v dřívějších formátech. Starší formát adresy URL `https://<accountname>.visualstudio.com/<projectname>/_versionControl` je zastaralý, ale je stále podporován. Doporučuje se nový formát.
+> Azure Repos (TFVC) používá adresu URL, která přistupuje k **dev.Azure.com** místo **VisualStudio.com**, které se používá v dřívějších formátech. Starší formát adresy URL `https://<accountname>.visualstudio.com/<projectname>/_versionControl` je zastaralý, ale je stále podporován. Doporučuje se nový formát.
 
 ```powershell-interactive
 New-AzAutomationSourceControl -Name SCReposTFVC -RepoUrl https://dev.azure.com/<accountname>/<adoprojectname>/_git/<repositoryname> -SourceType VsoTfvc -AccessToken <secureStringofPAT> -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName> -FolderPath "/Runbooks"
@@ -209,4 +209,4 @@ V současné době nemůžete použít Azure Portal k aktualizaci PAT ve správ�
 ## <a name="next-steps"></a>Další kroky
 
 * Pro integraci správy zdrojového kódu v Azure Automation naleznete v tématu [Azure Automation: integrace správy zdrojového kódu v Azure Automation](https://azure.microsoft.com/blog/azure-automation-source-control-13/).  
-* Informace o integraci správy zdrojového kódu sady Runbook ve službě Visual Studio Online naleznete v tématu [Azure Automation: integrování správy zdrojového kódu sady Runbook pomocí služby Visual Studio Online](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/).
+* Informace o integraci správy zdrojového kódu sady Runbook se sadou Visual Studio Codespaces naleznete v tématu [Azure Automation: integrování správy zdrojového kódu sady Runbook pomocí sady Visual Studio Codespaces](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/).

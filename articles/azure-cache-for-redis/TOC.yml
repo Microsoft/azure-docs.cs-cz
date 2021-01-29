@@ -45,6 +45,14 @@
       items:
         - name: Použití aplikace Spring Boot Initializer
           href: /azure/developer/java/spring-framework/configure-spring-boot-initializer-java-app-with-redis-cache
+    - name: Azure Event Grid
+      items:
+        - name: Směrování událostí s Azure Portal
+          href: cache-event-grid-quickstart-portal.md
+        - name: Směrování událostí pomocí Azure CLI
+          href: cache-event-grid-quickstart-cli.md
+        - name: Směrování událostí pomocí PowerShellu
+          href: cache-event-grid-quickstart-powershell.md
     - name: Vytváření tabulek výsledků
       href: cache-web-app-cache-aside-leaderboard.md
     - name: Nasazení modelu strojového učení
@@ -128,6 +136,8 @@
           href: cache-administration.md#schedule-updates
         - name: Konfigurace přístupu k redis-cli.exe
           href: cache-how-to-redis-cli-tool.md
+        - name: Publikování mezipaměti Azure pro události Redis
+          href: cache-event-grid.md
         - name: Odebrání TLS 1.0 a 1.1
           href: cache-remove-tls-10-11.md
         - name: Nejčastější dotazy ke správě

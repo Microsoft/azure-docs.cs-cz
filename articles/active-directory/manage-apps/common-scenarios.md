@@ -15,12 +15,12 @@ ms.date: 03/02/2019
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b78562bc3590bdf5b15e4061ba23e1284b07c16
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 882770fefbb48524ad5f11a56089132b319470aa
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94835488"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053342"
 ---
 # <a name="centralize-application-management-with-azure-ad"></a>Centralizovaná správa aplikací pomocí Azure AD
 
@@ -43,7 +43,7 @@ Hesla, jak Nightmare, tak i bolesti zaměstnanců po celém světě. To je důvo
 |Funkce  | Popis | Doporučení |
 |---------|---------|---------|
 |Jednotné přihlašování|Federované jednotné přihlašování založené na standardech pomocí důvěryhodných oborových standardů.|Vždy použijte [SAML/OIDC](../develop/v2-howto-app-gallery-listing.md) k povolení jednotného přihlašování, když ji vaše aplikace podporuje.|
-|Moje aplikace|Poskytněte uživatelům jednoduché centrum pro zjišťování a přístup ke všem jejich aplikacím. Umožněte jejich zvýšení produktivity díky funkcím samoobslužné služby, jako je vyžadování přístupu k aplikacím a skupinám nebo Správa přístupu k prostředkům jménem jiných uživatelů.| Po integraci vašich aplikací se službou Azure AD pro jednotné přihlašování můžete nasadit [Moje aplikace](./access-panel-deployment-plan.md) ve vaší organizaci.|
+|Moje aplikace|Poskytněte uživatelům jednoduché centrum pro zjišťování a přístup ke všem jejich aplikacím. Umožněte jejich zvýšení produktivity díky funkcím samoobslužné služby, jako je vyžadování přístupu k aplikacím a skupinám nebo Správa přístupu k prostředkům jménem jiných uživatelů.| Po integraci vašich aplikací se službou Azure AD pro jednotné přihlašování můžete nasadit [Moje aplikace](my-apps-deployment-plan.md) ve vaší organizaci.|
 
 ## <a name="scenario-2-automate-provisioning-and-deprovisioning"></a>Scénář 2: automatizace zřizování a rušení zřizování 
 

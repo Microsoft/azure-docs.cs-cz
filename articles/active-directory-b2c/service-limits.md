@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 01/29/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b980624ebf55c3666bcc7dd1d60f681d788c95ae
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 866af8b992374492286f47357f108a01f35e560b
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98987039"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051037"
 ---
 # <a name="azure-active-directory-b2c-service-limits-and-restrictions"></a>Omezení a omezení služby Azure Active Directory B2C
 
@@ -40,17 +40,15 @@ Následující tabulka uvádí omezení konfigurace správy ve službě Azure AD
 |Kategorie  |Omezení  |
 |---------|---------|
 |Počet aplikací na tenanta Azure AD B2C   |250           |
-|Počet zásad na tenanta Azure AD B2C       |200          |
-|Maximální velikost souboru zásad      |400 KB          |
 |Počet oborů na aplikaci        |1000          |
-|Počet vlastních atributů na uživatele <sup>1</sup>       |100         |
+|Počet [vlastních atributů](user-profile-attributes.md#extension-attributes)   na uživatele <sup>1</sup>       |100         |
 |Počet adres URL pro přesměrování na aplikaci       |100         |
 |Počet odhlašovacích adres URL na aplikaci        |1          |
 |Omezení počtu řetězců na atribut      |250 znaků          |
 |Počet tenantů B2C na předplatné      |20         |
 |Úrovně [dědičnosti](custom-policy-overview.md#inheritance-model) ve vlastních zásadách     |10         |
-|Počet zásad na tenanta Azure AD B2C      |200         |
-|Maximální velikost souboru zásad      |400 KB         |
+|Počet zásad na tenanta Azure AD B2C      |200          |
+|Maximální velikost souboru zásad      |400 KB          |
 
 <sup>1</sup> viz také omezení [a omezení služby Azure AD](../active-directory/enterprise-users/directory-service-limits-restrictions.md).
 

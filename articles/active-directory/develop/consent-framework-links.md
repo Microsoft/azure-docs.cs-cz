@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: ryanwi
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5db45ea49f7e0be674f07a3f8e077656f3d6dee2
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: cd55375f2c5970ff0620e753923f369d40478cef
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064983"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052021"
 ---
 # <a name="how-application-consent-works"></a>Jak funguje souhlas pro aplikace
 
@@ -31,4 +31,4 @@ Tento článek vám umožní získat další informace o tom, jak architektura p
 - Podrobnější informace najdete [v tématu o tom, jak je podpora podporovaná na úrovni protokolu OAuth 2,0 během toku udělení autorizačního kódu.](../azuread-dev/v1-protocols-oauth-code.md#request-an-authorization-code)
 
 ## <a name="next-steps"></a>Další kroky
-[AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
+[AzureAD Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-active-directory.html)

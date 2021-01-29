@@ -1,18 +1,18 @@
 ---
 title: Nastavení přípravného prostředí v Azure jaře cloudu | Microsoft Docs
 description: Naučte se používat nasazování s modrou zelenou službou Azure Pramenitého cloudu
-author: bmitchell287
+author: MikeDodaro
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 02/03/2020
+ms.date: 01/14/2021
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 72cf5553bec5985ba0310b4a347b0d2c60da6924
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 8cae73e03fee0b59be0c7596f0783570ac14f6ee
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090705"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053059"
 ---
 # <a name="set-up-a-staging-environment-in-azure-spring-cloud"></a>Nastavení přípravného prostředí v Azure jaře cloudu
 
@@ -20,9 +20,10 @@ ms.locfileid: "92090705"
 
 Tento článek popisuje, jak nastavit pracovní nasazení pomocí modelu nasazení Blue-zelený ve jarním cloudu Azure. Modré/zelené nasazení je vzor průběžného doručování Azure DevOps, který spoléhá na zachování živé stávající (modré) verze, zatímco probíhá nasazení nové (zelené) verze. V tomto článku se dozvíte, jak umístit toto pracovní nasazení do produkčního prostředí beze změny produkčního nasazení přímo.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-V tomto článku se předpokládá, že jste už nasadili aplikaci PiggyMetrics z našeho [kurzu o spuštění aplikace pro jarní Cloud v Azure](./spring-cloud-quickstart.md). PiggyMetrics zahrnuje tři aplikace: "brána", "Account-Service" a "auth-Service".  
+* Běžící aplikace  Další informace najdete v tématu [rychlý Start: nasazení první aplikace pro cloudovou službu Azure jaře](spring-cloud-quickstart.md).
+* Rozšíření Azure CLI [ASC](https://docs.microsoft.com/cli/azure/azure-cli-extensions-overview)
 
 Pokud chcete pro tento příklad použít jinou aplikaci, je nutné provést jednoduchou změnu ve veřejné části aplikace.  Tato změna rozlišuje vaše pracovní nasazení od výroby.
 
@@ -39,34 +40,61 @@ Nainstalujte rozšíření Azure jaře Cloud pro Azure CLI pomocí následujíc�
 az extension add --name spring-cloud
 ```
     
-## <a name="view-all-deployments"></a>Zobrazit všechna nasazení
+## <a name="view-apps-and-deployments"></a>Zobrazit aplikace a nasazení
 
-V Azure Portal přejdete do své instance služby a výběrem možnosti **Správa nasazení** zobrazíte všechna nasazení. Chcete-li zobrazit další podrobnosti, můžete vybrat jednotlivá nasazení.
+Pomocí následujících postupů zobrazte nasazené aplikace.
+
+1. V Azure Portal přejít na svou instanci cloudu Azure na jaře.
+
+1. V levém navigačním podokně otevřete **nasazení**.
+
+    [![Nasazení – zastaralé](media/spring-cloud-blue-green-staging/deployments.png)](media/spring-cloud-blue-green-staging/deployments.png)
+
+1. Otevřete okno aplikace a zobrazte aplikace pro vaši instanci služby.
+
+    [![Aplikace – Řídicí panel](media/spring-cloud-blue-green-staging/app-dashboard.png)](media/spring-cloud-blue-green-staging/app-dashboard.png)
+
+1. Můžete kliknout na aplikaci a zobrazit podrobnosti.
+
+    [![Aplikace – přehled](media/spring-cloud-blue-green-staging/app-overview.png)](media/spring-cloud-blue-green-staging/app-overview.png)
+
+1. Otevřete okno **nasazení** , kde uvidíte všechna nasazení aplikace. V mřížce nasazení se zobrazuje, zda je nasazení v produkčním prostředí nebo v pracovním prostředí.
+
+    [![Řídicí panel nasazení](media/spring-cloud-blue-green-staging/deployments-dashboard.png)](media/spring-cloud-blue-green-staging/deployments-dashboard.png)
+
+1. Kliknutím na název nasazení si můžete zobrazit přehled nasazení. V tomto případě se jediné nasazení nazývá *výchozí*.
+
+    [![Přehled nasazení](media/spring-cloud-blue-green-staging/deployments-overview.png)](media/spring-cloud-blue-green-staging/deployments-overview.png)
+    
 
 ## <a name="create-a-staging-deployment"></a>Vytvoření pracovního nasazení
 
-1. V místním vývojovém prostředí udělejte v aplikaci PiggyMetrics Gateway malou úpravu. Například změňte barvu v souboru *Gateway/src/Main/Resources/static/CSS/Launch. CSS* . Díky tomu můžete snadno odlišit tato dvě nasazení. Chcete-li sestavit balíček jar, spusťte následující příkaz: 
+1. V místním vývojovém prostředí udělejte v aplikaci malou úpravu. Díky tomu můžete snadno odlišit tato dvě nasazení. Chcete-li sestavit balíček jar, spusťte následující příkaz: 
 
     ```console
-    mvn clean package
+    mvn clean package -DskipTests
     ```
 
 1. V Azure CLI vytvořte nové nasazení a sdělte mu název pracovního nasazení "zelená".
 
     ```azurecli
-    az spring-cloud app deployment create -g <resource-group-name> -s <service-instance-name> --app gateway -n green --jar-path gateway/target/gateway.jar
+    az spring-cloud app deployment create -g <resource-group-name> -s <service-instance-name> --app default -n green --jar-path gateway/target/gateway.jar
     ```
 
-1. Po úspěšném dokončení nasazení přejděte na stránku brány z **řídicího panelu aplikace**a zobrazte všechny vaše instance na kartě **instance aplikace** vlevo.
+1. Po úspěšném dokončení nasazení rozhraní příkazového řádku přejděte na stránku aplikace z **řídicího panelu aplikace** a zobrazte všechny vaše instance na kartě **nasazení** na levé straně.
+
+   [![Řídicí panel nasazení po zeleném nasazení](media/spring-cloud-blue-green-staging/deployments-dashboard-2.png)](media/spring-cloud-blue-green-staging/deployments-dashboard-2.png)
+
   
 > [!NOTE]
 > Stav zjišťování je *OUT_OF_SERVICE* , takže provoz nebude směrován do tohoto nasazení před dokončením ověření.
 
 ## <a name="verify-the-staging-deployment"></a>Ověření pracovního nasazení
 
-1. Vraťte se na stránku **Správa nasazení** a vyberte nové nasazení. Stav nasazení by měl ukazovat na *spuštěno*. Tlačítko **přiřadit a zrušit přiřazení domény** by se mělo zobrazovat šedě, protože prostředí je přípravné prostředí.
-
-1. V podokně **Přehled** by se měl zobrazit **testovací koncový bod**. Zkopírujte a vložte ho do nového okna prohlížeče a zobrazí se nová stránka PiggyMetrics.
+Chcete-li ověřit, že zelený pracovní vývoj funguje:
+1. Přejděte do části **nasazení** a klikněte na `green` **pracovní nasazení**.
+1. Na stránce **Přehled** klikněte na **koncový bod testu**.
+1. Tím otevřete přípravný Build, ve kterém se zobrazí vaše změny.
 
 >[!TIP]
 > * Potvrďte, že koncový bod testu končí lomítkem (/), aby se zajistilo, že se soubor CSS správně načte.  
@@ -79,11 +107,17 @@ V Azure Portal přejdete do své instance služby a výběrem možnosti **Správ
     
 ## <a name="set-the-green-deployment-as-the-production-environment"></a>Nastavení zeleného nasazení jako produkčního prostředí
 
-1. Jakmile ověříte změnu v přípravném prostředí, můžete ji vložit do produkčního prostředí. Vraťte se do **správy nasazení**a zaškrtněte políčko aplikace **brány** .
+1. Jakmile ověříte změnu v přípravném prostředí, můžete ji vložit do produkčního prostředí. Vraťte se do **správy nasazení** a vyberte aplikaci, která je aktuálně v `Production` .
 
-2. Vyberte **nastavit nasazení**.
-3. V seznamu **nasazení výroby** vyberte **zelený**a pak vyberte **použít**.
-4. Přejít na stránku **Přehled** aplikace brány. Pokud jste již přiřadili doménu pro aplikaci brány, adresa URL se zobrazí v podokně **Přehled** . Chcete-li zobrazit upravenou stránku PiggyMetrics, vyberte adresu URL a pak přejít na web.
+1. Klikněte na elipsy po **stavu registrace** a nastavte produkční sestavení na `staging` .
+
+   [![Nasazení nastavení pracovního nasazení](media/spring-cloud-blue-green-staging/set-staging-deployment.png)](media/spring-cloud-blue-green-staging/set-staging-deployment.png)
+
+1. Vraťte se na stránku **správy nasazení** .  `green`Stav nasazení nasazení by se měl zobrazit. Nyní se jedná o běžící výrobní sestavení.
+
+   [![Nasazení nastaví výsledek pracovního nasazení.](media/spring-cloud-blue-green-staging/set-staging-deployment-result.png)](media/spring-cloud-blue-green-staging/set-staging-deployment-result.png)
+
+1. Zkopírujte a vložte adresu URL do nového okna prohlížeče a na nové stránce aplikace by se měly zobrazit vaše změny.
 
 >[!NOTE]
 > Po nastavení zeleného nasazení v produkčním prostředí se předchozí nasazení pokusí o pracovní nasazení.
@@ -108,4 +142,4 @@ az spring-cloud app deployment delete -n <staging-deployment-name> -g <resource-
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Rychlý Start: nasazení první aplikace pro cloudovou službu Azure jaře](spring-cloud-quickstart.md)
+* [CI/CD pro jarní cloud Azure](https://review.docs.microsoft.com/azure/spring-cloud/spring-cloud-howto-cicd?branch=pr-en-us-142929&pivots=programming-language-java)

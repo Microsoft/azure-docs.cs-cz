@@ -2,62 +2,62 @@
 title: Doručení události, identita spravované služby a privátní odkaz
 description: Tento článek popisuje, jak povolit identitu spravované služby pro téma Azure Event Grid. Použijte ji k přeposílání událostí do podporovaných cílů.
 ms.topic: how-to
-ms.date: 10/22/2020
-ms.openlocfilehash: edb3e5ac8257a29ecd3835e1dfd4c116c3cc7164
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.date: 01/28/2021
+ms.openlocfilehash: ca154c252976911627184a63386cba1544ed21e0
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368609"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054413"
 ---
 # <a name="event-delivery-with-a-managed-identity"></a>Doručování událostí se spravovanou identitou
-Tento článek popisuje, jak povolit [identitu spravované služby](../active-directory/managed-identities-azure-resources/overview.md) pro témata a domény služby Azure Event Grid. Slouží k přeposílání událostí do podporovaných cílů, jako jsou Service Bus fronty a témata, centra událostí a účty úložiště.
+Tento článek popisuje, jak povolit [identitu spravované služby](../active-directory/managed-identities-azure-resources/overview.md) pro vlastní témata nebo domény služby Azure Event Grid. Slouží k přeposílání událostí do podporovaných cílů, jako jsou Service Bus fronty a témata, centra událostí a účty úložiště.
 
 Tady je postup, který je podrobně popsaný v tomto článku:
-1. Vytvořte téma nebo doménu s identitou přiřazenou systémem, nebo aktualizujte existující téma nebo doménu, aby bylo možné identitu povolit. 
+1. Vytvořte vlastní téma nebo doménu s identitou přiřazenou systémem, nebo aktualizujte stávající vlastní téma nebo doménu, aby bylo možné identitu povolit. 
 1. Přidejte identitu do příslušné role (například Service Bus odesílatel dat) v cíli (například Service Bus Queue).
 1. Při vytváření odběrů událostí povolte použití identity k doručování událostí do cíle. 
 
 > [!NOTE]
 > V současné době není možné doručovat události pomocí [privátních koncových bodů](../private-link/private-endpoint-overview.md). Další informace najdete v části [soukromé koncové body](#private-endpoints) na konci tohoto článku. 
 
-## <a name="create-a-topic-or-domain-with-an-identity"></a>Vytvoření tématu nebo domény s identitou
+## <a name="create-a-custom-topic-or-domain-with-an-identity"></a>Vytvoření vlastního tématu nebo domény s identitou
 Nejdřív se podíváme na to, jak vytvořit téma nebo doménu s identitou spravovanou systémem.
 
 ### <a name="use-the-azure-portal"></a>Použití webu Azure Portal
-Během vytváření v Azure Portal můžete v tématu nebo doméně povolit identitu přiřazenou systémem. Následující obrázek ukazuje, jak povolit systémově spravovanou identitu pro téma. V podstatě vyberte možnost **Povolit identitu přiřazenou systému** na stránce **Upřesnit** v Průvodci vytvořením tématu. Tato možnost se zobrazí také na stránce **Upřesnit** v Průvodci vytvořením domény. 
+Identitu přiřazenou systémem můžete povolit pro vlastní téma nebo doménu při jejím vytváření v Azure Portal. Následující obrázek ukazuje, jak povolit identitu spravovanou systémem pro vlastní téma. V podstatě vyberte možnost **Povolit identitu přiřazenou systému** na stránce **Upřesnit** v Průvodci vytvořením tématu. Tato možnost se zobrazí také na stránce **Upřesnit** v Průvodci vytvořením domény. 
 
-![Povolit identitu při vytváření tématu](./media/managed-service-identity/create-topic-identity.png)
+![Povolit identitu při vytváření vlastního tématu](./media/managed-service-identity/create-topic-identity.png)
 
 ### <a name="use-the-azure-cli"></a>Použití Azure CLI
-Pomocí rozhraní příkazového řádku Azure můžete také vytvořit téma nebo doménu s identitou přiřazenou systémem. Použijte `az eventgrid topic create` příkaz s `--identity` parametrem nastaveným na `systemassigned` . Pokud hodnotu pro tento parametr nezadáte, použije se výchozí hodnota `noidentity` . 
+Pomocí rozhraní příkazového řádku Azure můžete také vytvořit vlastní téma nebo doménu s identitou přiřazenou systémem. Použijte `az eventgrid topic create` příkaz s `--identity` parametrem nastaveným na `systemassigned` . Pokud hodnotu pro tento parametr nezadáte, použije se výchozí hodnota `noidentity` . 
 
 ```azurecli-interactive
-# create a topic with a system-assigned identity
+# create a custom topic with a system-assigned identity
 az eventgrid topic create -g <RESOURCE GROUP NAME> --name <TOPIC NAME> -l <LOCATION>  --identity systemassigned
 ```
 
 Podobně můžete pomocí `az eventgrid domain create` příkazu vytvořit doménu s identitou spravovanou systémem.
 
-## <a name="enable-an-identity-for-an-existing-topic-or-domain"></a>Povolení identity pro existující téma nebo doménu
-V předchozí části jste zjistili, jak povolit systémově spravovanou identitu při vytváření tématu nebo domény. V této části se dozvíte, jak povolit systémově spravovanou identitu pro existující téma nebo doménu. 
+## <a name="enable-an-identity-for-an-existing-custom-topic-or-domain"></a>Povolení identity pro existující vlastní téma nebo doménu
+V předchozí části jste zjistili, jak povolit systémově spravovanou identitu, zatímco jste vytvořili vlastní téma nebo doménu. V této části se dozvíte, jak povolit identitu spravovanou systémem pro existující vlastní téma nebo doménu. 
 
 ### <a name="use-the-azure-portal"></a>Použití webu Azure Portal
-Následující postup ukazuje, jak v tématu Povolit identitu spravovanou systémem. Postup pro povolení identity pro doménu je podobný. 
+Následující postup ukazuje, jak povolit identitu spravovanou systémem pro vlastní téma. Postup pro povolení identity pro doménu je podobný. 
 
 1. Přejděte na [Azure Portal](https://portal.azure.com).
 2. V horní části panelu hledání vyhledejte **témata Event gridu** .
-3. Vyberte **téma** , pro které chcete spravovanou identitu povolit. 
+3. Vyberte **vlastní téma** , pro které chcete spravovanou identitu povolit. 
 4. Přepněte na kartu **Identita** . 
 5. **Zapnutím přepínače povolte identitu** . 
 1. Nastavení uložte kliknutím na **Uložit** na panelu nástrojů. 
 
-    :::image type="content" source="./media/managed-service-identity/identity-existing-topic.png" alt-text="Stránka identita pro téma"::: 
+    :::image type="content" source="./media/managed-service-identity/identity-existing-topic.png" alt-text="Stránka identita pro vlastní téma"::: 
 
 Podobný postup můžete použít k povolení identity pro doménu služby Event Grid.
 
 ### <a name="use-the-azure-cli"></a>Použití Azure CLI
-Pomocí `az eventgrid topic update` příkazu s `--identity` nastavením na `systemassigned` můžete pro existující téma povolit identitu přiřazenou systémem. Pokud chcete identitu zakázat, zadejte `noidentity` hodnotu. 
+Pomocí `az eventgrid topic update` příkazu s `--identity` nastavením na `systemassigned` Povolte identitu přiřazenou systémem pro existující vlastní téma. Pokud chcete identitu zakázat, zadejte `noidentity` hodnotu. 
 
 ```azurecli-interactive
 # Update the topic to assign a system-assigned identity. 
@@ -67,9 +67,9 @@ az eventgrid topic update -g $rg --name $topicname --identity systemassigned --s
 Příkaz pro aktualizaci existující domény je podobný ( `az eventgrid domain update` ).
 
 ## <a name="supported-destinations-and-azure-roles"></a>Podporované cíle a role Azure
-Po povolení identity pro téma nebo doménu služby Event Grid Azure automaticky vytvoří v Azure Active Directory identitu. Přidejte tuto identitu do odpovídajících rolí Azure tak, aby téma nebo doména mohly předávané události do podporovaných cílů. Přidejte například identitu do role **odesilatele dat azure Event Hubs** pro obor názvů Azure Event Hubs, aby téma Event Grid mohl předávané události do Center událostí v daném oboru názvů. 
+Po povolení identity pro vlastní téma nebo doménu služby Event Grid vytvoří Azure v Azure Active Directory automaticky identitu. Přidejte tuto identitu do odpovídajících rolí Azure, aby vlastní téma nebo doména mohly předávané události do podporovaných cílů. Přidejte například identitu do role **odesilatele dat azure Event Hubs** pro obor názvů Azure Event Hubs, aby vlastní téma Event Grid mohl předávané události do Center událostí v daném oboru názvů. 
 
-V současné době Azure Event Grid podporuje témata nebo domény nakonfigurované pomocí spravované identity přiřazené systémem k přeposílání událostí do následujících cílů. Tato tabulka také poskytuje role, ve kterých by měla být identita, aby téma mohla přecházet mezi událostmi.
+V současné době Azure Event Grid podporuje vlastní témata nebo domény nakonfigurované pomocí spravované identity přiřazené systémem k přeposílání událostí do následujících cílů. Tato tabulka také poskytuje role, ve kterých by měla být identita, aby vlastní téma mohl tyto události předaných.
 
 | Cíl | Role Azure | 
 | ----------- | --------- | 
@@ -79,35 +79,35 @@ V současné době Azure Event Grid podporuje témata nebo domény nakonfigurova
 | Azure Queue Storage |[Odesílatel zprávy s daty ve frontě úložiště](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues) | 
 
 ## <a name="add-an-identity-to-azure-roles-on-destinations"></a>Přidání identity do rolí Azure v umístěních
-Tato část popisuje, jak přidat identitu pro vaše téma nebo doménu do role Azure. 
+Tato část popisuje, jak přidat identitu pro vlastní téma nebo doménu do role Azure. 
 
 ### <a name="use-the-azure-portal"></a>Použití webu Azure Portal
-Azure Portal můžete použít k přiřazení tématu nebo doménové identity k příslušné roli, aby mohlo téma nebo doména předávané události do cílového umístění. 
+Pomocí Azure Portal můžete přiřadit vlastní téma nebo identitu domény příslušné roli, aby vlastní téma nebo doména mohly předávané události do cílového umístění. 
 
-Následující příklad přidá spravovanou identitu pro téma Event gridu s názvem **msitesttopic** do role **Azure Service Bus data Sender** pro obor názvů Service Bus, který obsahuje prostředek fronty nebo tématu. Když přidáte do role na úrovni oboru názvů, téma může přecházet události všem entitám v rámci oboru názvů. 
+Následující příklad přidá spravovanou identitu pro vlastní téma Event Grid s názvem **msitesttopic** do role **Azure Service Bus data Sender** pro obor názvů Service Bus, který obsahuje prostředek fronty nebo tématu. Když přidáte do role na úrovni oboru názvů, vlastní téma Event Grid může přecházet události všem entitám v rámci oboru názvů. 
 
 1. V [Azure Portal](https://portal.azure.com)přejít na **obor názvů Service Bus** . 
 1. V levém podokně vyberte **Access Control** . 
 1. V části **Přidání přiřazení role** vyberte **Přidat** . 
 1. Na stránce **Přidat přiřazení role** proveďte následující kroky:
     1. Vyberte roli. V tomto případě je to **Azure Service Bus odesílatel dat**. 
-    1. Vyberte **identitu** pro vaše téma nebo doménu. 
+    1. Vyberte **identitu** pro vlastní téma Event Grid nebo doménu. 
     1. Kliknutím na **Uložit** uložte konfiguraci.
 
 Postup je podobný jako při přidání identity k jiným rolím uvedeným v tabulce. 
 
 ### <a name="use-the-azure-cli"></a>Použití Azure CLI
-V příkladu v této části se dozvíte, jak pomocí rozhraní příkazového řádku Azure přidat identitu do role Azure. Ukázkové příkazy jsou k pro témata služby Event Grid. Příkazy pro domény služby Event Grid jsou podobné. 
+V příkladu v této části se dozvíte, jak pomocí rozhraní příkazového řádku Azure přidat identitu do role Azure. Ukázkové příkazy jsou k pro vlastní témata služby Event Grid. Příkazy pro domény služby Event Grid jsou podobné. 
 
-#### <a name="get-the-principal-id-for-the-topics-system-identity"></a>Získat ID objektu zabezpečení pro identitu systému tématu 
-Nejprve získejte hlavní ID identity spravovaného systémem v tématu a přiřaďte identitu k příslušným rolím.
+#### <a name="get-the-principal-id-for-the-custom-topics-system-identity"></a>Získat ID objektu zabezpečení pro identitu systému vlastního tématu 
+Nejprve získejte hlavní ID identity spravované systémem vlastního tématu a přiřaďte identitu k příslušným rolím.
 
 ```azurecli-interactive
 topic_pid=$(az ad sp list --display-name "$<TOPIC NAME>" --query [].objectId -o tsv)
 ```
 
 #### <a name="create-a-role-assignment-for-event-hubs-at-various-scopes"></a>Vytvoření přiřazení role pro centra událostí v různých oborech 
-Následující příklad rozhraní příkazového řádku ukazuje, jak přidat identitu tématu do role **odesilatele dat Azure Event Hubs** na úrovni oboru názvů nebo na úrovni centra událostí. Pokud vytvoříte přiřazení role na úrovni oboru názvů, může téma předávané události do všech Center událostí v daném oboru názvů. Pokud vytvoříte přiřazení role na úrovni centra událostí, může téma předává události jenom tomuto konkrétnímu centru událostí. 
+Následující příklad rozhraní příkazového řádku ukazuje, jak přidat identitu vlastního tématu do role **odesilatele dat Azure Event Hubs** na úrovni oboru názvů nebo na úrovni centra událostí. Pokud vytvoříte přiřazení role na úrovni oboru názvů, vlastní téma může předávané události do všech Center událostí v daném oboru názvů. Pokud vytvoříte přiřazení role na úrovni centra událostí, vlastní téma může předává události pouze do konkrétního centra událostí. 
 
 
 ```azurecli-interactive
@@ -123,7 +123,7 @@ az role assignment create --role "$role" --assignee "$topic_pid" --scope "$event
 ```
 
 #### <a name="create-a-role-assignment-for-a-service-bus-topic-at-various-scopes"></a>Vytvoření přiřazení role pro Service Bus téma v různých oborech 
-Následující příklad rozhraní příkazového řádku ukazuje, jak přidat identitu tématu do role **Azure Service Bus data Sender** na úrovni oboru názvů nebo na úrovni Service Bus tématu. Pokud vytvoříte přiřazení role na úrovni oboru názvů, téma Event gridu může přecházet události všem entitám (Service Bus fronty nebo témata) v rámci tohoto oboru názvů. Pokud vytvoříte přiřazení role na úrovni Service Bus fronty nebo tématu, může téma Event Grid přeposílání událostí pouze do této konkrétní Service Bus fronty nebo tématu. 
+Následující příklad rozhraní příkazového řádku ukazuje, jak přidat identitu vlastního tématu Event gridu do role **Azure Service Bus data Sender** na úrovni oboru názvů nebo na úrovni Service Bus tématu. Pokud vytvoříte přiřazení role na úrovni oboru názvů, téma Event gridu může přecházet události všem entitám (Service Bus fronty nebo témata) v rámci tohoto oboru názvů. Pokud vytvoříte přiřazení role na úrovni Service Bus fronty nebo tématu, může vlastní téma Event Grid přeslat události pouze do této konkrétní Service Bus fronty nebo tématu. 
 
 ```azurecli-interactive
 role="Azure Service Bus Data Sender" 
@@ -138,7 +138,7 @@ az role assignment create --role "$role" --assignee "$topic_pid" --scope "$sbust
 ```
 
 ## <a name="create-event-subscriptions-that-use-an-identity"></a>Vytvoření odběrů událostí, které používají identitu
-Jakmile budete mít téma nebo doménu s identitou spravovanou systémem a přidáte identitu do příslušné role v cíli, budete připraveni vytvořit odběry, které používají identitu. 
+Jakmile máte vlastní téma Event gridu nebo doménu s identitou spravovanou systémem a přidáte identitu do příslušné role v cíli, budete připraveni vytvořit odběry, které používají identitu. 
 
 ### <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 Když vytváříte odběr událostí, zobrazí se možnost povolit použití identity přiřazené systémem pro koncový bod v části **Podrobnosti o koncovém bodu** . 
@@ -157,7 +157,7 @@ Nejdřív zadejte hodnoty pro následující proměnné, které se použijí v p
 
 ```azurecli-interactive
 subid="<AZURE SUBSCRIPTION ID>"
-rg = "<RESOURCE GROUP of EVENT GRID TOPIC>"
+rg = "<RESOURCE GROUP of EVENT GRID CUSTOM TOPIC>"
 topicname = "<EVENT GRID TOPIC NAME>"
 
 # get the service bus queue resource id
@@ -166,7 +166,7 @@ sb_esname = "<Specify a name for the event subscription>"
 ```
 
 #### <a name="create-an-event-subscription-by-using-a-managed-identity-for-delivery"></a>Vytvoření odběru událostí pomocí spravované identity pro doručování 
-Tento ukázkový příkaz vytvoří odběr událostí pro téma Event gridu s typem koncového bodu nastaveným na **Service Bus Queue**. 
+Tento ukázkový příkaz vytvoří odběr události pro vlastní téma Event Grid s typem koncového bodu nastaveným na **Service Bus Queue**. 
 
 ```azurecli-interactive
 az eventgrid event-subscription create  
@@ -178,7 +178,7 @@ az eventgrid event-subscription create
 ```
 
 #### <a name="create-an-event-subscription-by-using-a-managed-identity-for-delivery-and-dead-lettering"></a>Vytvoření odběru událostí pomocí spravované identity pro doručení a nedoručená oznámení
-Tento ukázkový příkaz vytvoří odběr událostí pro téma Event gridu s typem koncového bodu nastaveným na **Service Bus Queue**. Také určuje, že systémově spravovaná identita má být použita pro nedoručené zprávy. 
+Tento ukázkový příkaz vytvoří odběr události pro vlastní téma Event Grid s typem koncového bodu nastaveným na **Service Bus Queue**. Také určuje, že systémově spravovaná identita má být použita pro nedoručené zprávy. 
 
 ```azurecli-interactive
 storageid=$(az storage account show --name demoStorage --resource-group gridResourceGroup --query id --output tsv)
@@ -200,15 +200,15 @@ V této části se dozvíte, jak pomocí Azure CLI povolit používání identit
 #### <a name="define-variables"></a>Definování proměnných
 ```azurecli-interactive
 subid="<AZURE SUBSCRIPTION ID>"
-rg = "<RESOURCE GROUP of EVENT GRID TOPIC>"
-topicname = "<EVENT GRID TOPIC NAME>"
+rg = "<RESOURCE GROUP of EVENT GRID CUSTOM TOPIC>"
+topicname = "<EVENT GRID CUSTOM TOPIC NAME>"
 
 hubid=$(az eventhubs eventhub show --name <EVENT HUB NAME> --namespace-name <NAMESPACE NAME> --resource-group <RESOURCE GROUP NAME> --query id --output tsv)
 eh_esname = "<SPECIFY EVENT SUBSCRIPTION NAME>" 
 ```
 
 #### <a name="create-an-event-subscription-by-using-a-managed-identity-for-delivery"></a>Vytvoření odběru událostí pomocí spravované identity pro doručování 
-Tento ukázkový příkaz vytvoří odběr událostí pro téma Event gridu s typem koncového bodu nastaveným na **Event Hubs**. 
+Tento ukázkový příkaz vytvoří odběr události pro vlastní téma Event Grid s typem koncového bodu nastaveným na **Event Hubs**. 
 
 ```azurecli-interactive
 az eventgrid event-subscription create  
@@ -220,7 +220,7 @@ az eventgrid event-subscription create
 ```
 
 #### <a name="create-an-event-subscription-by-using-a-managed-identity-for-delivery--deadletter"></a>Vytvoření odběru událostí pomocí spravované identity pro doručování a doručování zpráv 
-Tento ukázkový příkaz vytvoří odběr událostí pro téma Event gridu s typem koncového bodu nastaveným na **Event Hubs**. Také určuje, že systémově spravovaná identita má být použita pro nedoručené zprávy. 
+Tento ukázkový příkaz vytvoří odběr události pro vlastní téma Event Grid s typem koncového bodu nastaveným na **Event Hubs**. Také určuje, že systémově spravovaná identita má být použita pro nedoručené zprávy. 
 
 ```azurecli-interactive
 storageid=$(az storage account show --name demoStorage --resource-group gridResourceGroup --query id --output tsv)
@@ -243,8 +243,8 @@ V této části se dozvíte, jak pomocí Azure CLI povolit používání identit
 
 ```azurecli-interactive
 subid="<AZURE SUBSCRIPTION ID>"
-rg = "<RESOURCE GROUP of EVENT GRID TOPIC>"
-topicname = "<EVENT GRID TOPIC NAME>"
+rg = "<RESOURCE GROUP of EVENT GRID CUSTOM TOPIC>"
+topicname = "<EVENT GRID CUSTOM TOPIC NAME>"
 
 # get the storage account resource id
 storageid=$(az storage account show --name <STORAGE ACCOUNT NAME> --resource-group <RESOURCE GROUP NAME> --query id --output tsv)
@@ -282,12 +282,12 @@ az eventgrid event-subscription create
     -n $sa_esname 
 ```
 
-## <a name="private-endpoints"></a>Soukromé koncové body
+## <a name="private-endpoints"></a>Privátní koncové body
 V současné době není možné doručovat události pomocí [privátních koncových bodů](../private-link/private-endpoint-overview.md). To znamená, že pokud máte přísné požadavky na izolaci sítě, u kterých vaše doručováné události nesmí opustit privátní IP adresu, neexistuje žádná podpora. 
 
-Pokud ale vaše požadavky zavolají zabezpečený způsob, jak odesílat události pomocí šifrovaného kanálu a známé identity odesilatele (v tomto případě Event Grid) pomocí veřejného prostoru IP adres, mohli byste události doručovat do Event Hubs, Service Bus nebo Azure Storage služby pomocí tématu Azure Event Grid nebo domény s nakonfigurovanou systémem, jak je uvedeno v tomto článku. Pak můžete pomocí privátního odkazu nakonfigurovaného v Azure Functions nebo Webhooku nasazeného ve virtuální síti vyžádat události. Viz Ukázka: [připojení k privátním koncovým bodům pomocí Azure Functions](/samples/azure-samples/azure-functions-private-endpoints/connect-to-private-endpoints-with-azure-functions/).
+Pokud ale vaše požadavky zavolají zabezpečený způsob, jak odesílat události pomocí šifrovaného kanálu a známé identity odesilatele (v tomto případě Event Grid) pomocí veřejného prostoru IP adres, mohli byste události doručovat do Event Hubs, Service Bus nebo Azure Storage pomocí vlastního tématu v Azure Event gridu nebo domény s nakonfigurovanou systémem, který je nakonfigurovaný podle tohoto článku. Pak můžete pomocí privátního odkazu nakonfigurovaného v Azure Functions nebo Webhooku nasazeného ve virtuální síti vyžádat události. Viz Ukázka: [připojení k privátním koncovým bodům pomocí Azure Functions](/samples/azure-samples/azure-functions-private-endpoints/connect-to-private-endpoints-with-azure-functions/).
 
-Všimněte si, že v rámci této konfigurace přechází přenos přes veřejnou IP adresu nebo Internet z Event Grid na Event Hubs, Service Bus nebo Azure Storage, kanál ale může být zašifrovaný a používá se spravovaná identita Event Grid. Pokud nakonfigurujete Azure Functions nebo Webhook nasazený do virtuální sítě tak, aby používal Event Hubs, Service Bus nebo Azure Storage prostřednictvím privátního propojení, Tato část provozu bude v Azure zůstat v provozu.
+V rámci této konfigurace přechází přenos přes veřejnou IP adresu nebo Internet z Event Grid na Event Hubs, Service Bus nebo Azure Storage, kanál ale může být zašifrovaný a používá se spravovaná identita Event Grid. Pokud nakonfigurujete Azure Functions nebo Webhook nasazený do virtuální sítě tak, aby používal Event Hubs, Service Bus nebo Azure Storage prostřednictvím privátního propojení, Tato část provozu bude v Azure zůstat v provozu.
 
 
 ## <a name="next-steps"></a>Další kroky

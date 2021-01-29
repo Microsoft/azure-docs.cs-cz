@@ -3,12 +3,12 @@ title: Řešení potíží se sítí pomocí registru
 description: Příznaky, příčiny a řešení běžných potíží při přístupu ke službě Azure Container Registry ve virtuální síti nebo za bránou firewall
 ms.topic: article
 ms.date: 10/01/2020
-ms.openlocfilehash: 95b32b839d1b3b804a2035b797e1146a09d5236a
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 2f15eb8a830ce93ecf942663fc8a44b9df86d6d6
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351789"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052157"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>Řešení potíží se sítí pomocí registru
 
@@ -40,6 +40,8 @@ Může zahrnovat jednu nebo více z následujících možností:
 Pokud chcete získat další informace o stavu prostředí registru a volitelně získat přístup k cílovému registru, spusťte příkaz [AZ ACR check-Health](/cli/azure/acr#az-acr-check-health) . Například Diagnostikujte určité síťové připojení nebo problémy s konfigurací. 
 
 Příklady příkazů najdete v tématu o [kontrole stavu služby Azure Container Registry](container-registry-check-health.md) . Pokud dojde k chybám, přečtěte si [referenční informace o chybě](container-registry-health-error-reference.md) a v následujících oddílech, kde najdete doporučená řešení.
+
+Pokud máte potíže s použitím služby Registry wih Azure Kubernetes, spusťte pomocí příkazu [AZ AKS check-ACR](/cli/azure/aks#az_aks_check_acr) , zda je registr přístupný z clusteru AKS.
 
 > [!NOTE]
 > Při potížích s ověřováním v registru nebo autorizací může dojít k určitým potížím se síťovým připojením. Viz [Poradce při potížích s přihlášením do registru](container-registry-troubleshoot-login.md).

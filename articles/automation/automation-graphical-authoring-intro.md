@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 161272fe35ee9ea1e0880b991273e5d1a79eafb4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec74ca19978a4164289276d44b34eb14b694687f
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90987331"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051577"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>Vytváření grafických runbooků v Azure Automation
 
@@ -61,7 +61,7 @@ Vyberte aktivitu na plátně pro konfiguraci vlastností a parametrů v okně ko
 
 Sada parametrů definuje povinné a volitelné parametry, které přijímají hodnoty pro konkrétní rutinu. Všechny rutiny mají alespoň jednu sadu parametrů a některé mají několik sad. Pokud má rutina více sad parametrů, je nutné před konfigurací parametrů vybrat, která se má použít. Sadu parametrů použitou v aktivitě můžete změnit tak, že vyberete **sadu parametrů** a vyberete jinou sadu. V takovém případě ztratí všechny hodnoty parametrů, které jste již nakonfigurovali.
 
-V následujícím příkladu má rutina [Get-AzVM](/powershell/module/az.compute/get-azvm?view=azps-3.5.0&preserve-view=true) tři sady parametrů. V příkladu se používá jedna sada s názvem **ListVirtualMachineInResourceGroupParamSet**s jedním volitelným parametrem pro vrácení všech virtuálních počítačů ve skupině prostředků. V příkladu se používá také sada parametrů **GetVirtualMachineInResourceGroupParamSet** k zadání virtuálního počítače, který se má vrátit. Tato sada má dva povinné parametry a jeden volitelný parametr.
+V následujícím příkladu má rutina [Get-AzVM](/powershell/module/az.compute/get-azvm?view=azps-3.5.0&preserve-view=true) tři sady parametrů. V příkladu se používá jedna sada s názvem **ListVirtualMachineInResourceGroupParamSet** s jedním volitelným parametrem pro vrácení všech virtuálních počítačů ve skupině prostředků. V příkladu se používá také sada parametrů **GetVirtualMachineInResourceGroupParamSet** k zadání virtuálního počítače, který se má vrátit. Tato sada má dva povinné parametry a jeden volitelný parametr.
 
 ![Sada parametrů](media/automation-graphical-authoring-intro/get-azvm-parameter-sets.png)
 
@@ -95,7 +95,7 @@ Když u aktivity povolíte operaci opakovat, můžete nastavit zpoždění a pod
 
 Podmínka opakování je výraz PowerShellu, který se vyhodnocuje po každém spuštění aktivity. Pokud se výraz přeloží na hodnotu true, aktivita se znovu spustí. Pokud se výraz přeloží na false, aktivita se znovu nespustí a Runbook se přesune na další aktivitu.
 
-:::image type="content" source="media/automation-graphical-authoring-intro/retry-condition.png" alt-text="Snímek obrazovky s nastavením funkcí povolit opakování":::
+:::image type="content" source="media/automation-graphical-authoring-intro/retry-condition.png" alt-text="Snímek obrazovky znázorňující opakování, dokud tato podmínka není pravdivá, a příklady výrazů PowerShellu, které lze použít v podmínce opakování.":::
 
 Podmínka opakování může použít proměnnou s názvem `RetryData` , která poskytuje přístup k informacím o opakovaných pokusech o aktivitu. Tato proměnná má vlastnosti v následující tabulce:
 
@@ -373,7 +373,7 @@ Následující příklad používá výstup z aktivity volané `Get Twitter Conn
 
 ## <a name="authenticate-to-azure-resources"></a>Ověřování v prostředcích Azure
 
-Sady Runbook v Azure Automation, které spravují prostředky Azure, vyžadují ověřování do Azure. [Účet Spustit jako](./manage-runas-account.md), označovaný také jako instanční objekt, je výchozím mechanismem, který Runbook služby Automation používá pro přístup k Azure Resource Manager prostředkům ve vašem předplatném. Tuto funkci můžete přidat do grafického Runbooku přidáním `AzureRunAsConnection` assetu připojení, který na plátně používá rutinu PowerShellu [Get-AutomationConnection](/system-center/sma/manage-global-assets) . Můžete také přidat rutinu [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) . Tento scénář je znázorněn v následujícím příkladu.
+Sady Runbook v Azure Automation, které spravují prostředky Azure, vyžadují ověřování do Azure. [Účet Spustit jako](./automation-security-overview.md), označovaný také jako instanční objekt, je výchozím mechanismem, který Runbook služby Automation používá pro přístup k Azure Resource Manager prostředkům ve vašem předplatném. Tuto funkci můžete přidat do grafického Runbooku přidáním `AzureRunAsConnection` assetu připojení, který na plátně používá rutinu PowerShellu [Get-AutomationConnection](/system-center/sma/manage-global-assets) . Můžete také přidat rutinu [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) . Tento scénář je znázorněn v následujícím příkladu.
 
 ![Aktivity ověřování spustit jako](media/automation-graphical-authoring-intro/authenticate-run-as-account.png)
 
@@ -388,7 +388,7 @@ Další aktivita `Connect-AzAccount` přidá ověřený účet Spustit jako pro 
 >[!NOTE]
 >Pro PowerShellové Runbooky `Add-AzAccount` a `Add-AzureRMAccount` jsou aliasy pro `Connect-AzAccount` . Všimněte si, že tyto aliasy nejsou k dispozici pro vaše grafické Runbooky. Grafická sada Runbook může používat pouze `Connect-AzAccount` sebe sama.
 
-Pro pole parametrů **APPLICATIONID**, **CERTIFICATETHUMBPRINT**a **TENANTID**zadejte název vlastnosti pro cestu k poli, protože výstupem aktivity je objekt s více vlastnostmi. V opačném případě, když se sada Runbook spustí, při pokusu o ověření dojde k chybě. To je to, co potřebujete minimálně k ověření vaší sady Runbook pomocí účtu Spustit jako.
+Pro pole parametrů **APPLICATIONID**, **CERTIFICATETHUMBPRINT** a **TENANTID** zadejte název vlastnosti pro cestu k poli, protože výstupem aktivity je objekt s více vlastnostmi. V opačném případě, když se sada Runbook spustí, při pokusu o ověření dojde k chybě. To je to, co potřebujete minimálně k ověření vaší sady Runbook pomocí účtu Spustit jako.
 
 Někteří předplatitelé vytvoří účet Automation pomocí [uživatelského účtu Azure AD](./shared-resources/credentials.md) ke správě nasazení Azure Classic nebo k Azure Resource Manager prostředkům. Aby se zajistila zpětná kompatibilita pro tyto předplatitele, je mechanismus ověřování, který se má použít ve vašem Runbooku, `Add-AzureAccount` rutina s [Assetem přihlašovacích údajů](./shared-resources/credentials.md). Asset představuje uživatele služby Active Directory s přístupem k účtu Azure.
 

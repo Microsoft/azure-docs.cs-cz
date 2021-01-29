@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 03f24bf4cf379504479e554b129f34d94ca423cd
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 03814766d7bc873855df261a50a40b8d342fa69b
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896355"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054242"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Aktivace sady Runbook Azure Automation pomocí výstrahy
 
@@ -29,7 +29,7 @@ Runbooky Automation můžete používat se třemi typy výstrah:
 
 Když výstraha zavolá Runbook, samotné volání je požadavek HTTP POST Webhooku. Tělo žádosti POST obsahuje objekt ve formátu JSON, který obsahuje užitečné vlastnosti, které se vztahují k výstraze. V následující tabulce jsou uvedeny odkazy na schéma datové části pro každý typ výstrahy:
 
-|Výstrahy  |Popis|Schéma datové části  |
+|Výstrahy  |Description|Schéma datové části  |
 |---------|---------|---------|
 |[Běžná výstraha](../azure-monitor/platform/alerts-common-schema.md)|Běžné schéma výstrah, které spojuje prostředí spotřeby pro oznamování výstrah v Azure ještě dnes.|Společné schéma datové části výstrahy|
 |[Upozornění protokolu aktivit](../azure-monitor/platform/activity-log-alerts.md)    |Pošle oznámení, pokud jakákoli nová událost v protokolu aktivit Azure odpovídá specifickým podmínkám. Například při `Delete VM` výskytu operace v **myProductionResourceGroup** nebo při zobrazení nové události Azure Service Health s aktivním stavem.| [Schéma datové části upozornění protokolu aktivit](../azure-monitor/platform/activity-log-alerts-webhook.md)        |
@@ -45,7 +45,7 @@ Jak je popsáno v předchozí části, každý typ výstrahy má jiné schéma. 
 
 V tomto příkladu se používá výstraha z virtuálního počítače. Načte data virtuálního počítače z datové části a pak tyto informace použije k zastavení virtuálního počítače. Připojení musí být nastaveno v účtu Automation, ve kterém je sada Runbook spuštěna. Pokud používáte výstrahy pro aktivaci runbooků, je důležité kontrolovat stav upozornění v aktivovaném Runbooku. Sada Runbook se spustí při každé změně stavu výstrahy. Výstrahy mají více stavů, přičemž tyto dva nejběžnější jsou aktivované a vyřešené. Zkontrolujte stav v logice Runbooku, aby se zajistilo, že se Runbook nespustí víckrát než jednou. V příkladu v tomto článku se dozvíte, jak vyhledat výstrahy se stavem aktivováno.
 
-Sada Runbook používá `AzureRunAsConnection` [účet Spustit jako](./manage-runas-account.md) prostředku připojení k ověření v Azure k provedení akce správy na virtuálním počítači.
+Sada Runbook používá `AzureRunAsConnection` [účet Spustit jako](./automation-security-overview.md) prostředku připojení k ověření v Azure k provedení akce správy na virtuálním počítači.
 
 Tento příklad slouží k vytvoření sady Runbook s názvem **stop-AzureVmInResponsetoVMAlert**. Skript PowerShellu můžete upravit a použít ho s mnoha různými prostředky.
 

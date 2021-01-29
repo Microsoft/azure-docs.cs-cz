@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/30/2020
-ms.openlocfilehash: aad271875abb9024a1ecc7f45018c04d8c79ce95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95275e68d0c7674caf4dd2b20f5586db5193fd03
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842559"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054056"
 ---
 # <a name="tutorial-create-schedule-based-and-recurring-automation-workflows-with-azure-logic-apps"></a>Kurz: vytvoření pracovních postupů založených na plánech a opakovaných automatizacích pomocí Azure Logic Apps
 
@@ -43,6 +43,8 @@ Jakmile budete hotovi, vaše aplikace logiky bude na základní úrovni vypadat 
 
 * K získání doby trvání cesty pro nějakou trasu potřebujete přístupový klíč k rozhraní API Map Bing. Pokud chcete tento klíč získat, řiďte se kroky [postupu získání klíče k Mapám Bing](/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key).
 
+* Pokud vaše aplikace logiky potřebuje komunikovat přes bránu firewall, která omezuje provoz na konkrétní IP adresy, musí brána firewall povolit přístup *pro* [příchozí](logic-apps-limits-and-config.md#inbound) i [odchozí](logic-apps-limits-and-config.md#outbound) IP adresy, které používá služba Logic Apps nebo modul runtime v oblasti Azure, ve které vaše aplikace logiky existuje. Pokud vaše aplikace logiky používá i [spravované konektory](../connectors/apis-list.md#managed-api-connectors), jako je například konektor Office 365 Outlook nebo konektor SQL, nebo používá [vlastní konektory](/connectors/custom-connectors/), musí brána firewall také umožňovat přístup pro *všechny* [odchozí IP adresy spravovaného konektoru](logic-apps-limits-and-config.md#outbound) v oblasti Azure vaší aplikace logiky.
+
 ## <a name="create-your-logic-app"></a>Vytvoření aplikace logiky
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí přihlašovacích údajů svého účtu Azure. Na domovské stránce Azure vyberte **vytvořit prostředek**.
@@ -57,10 +59,10 @@ Jakmile budete hotovi, vaše aplikace logiky bude na základní úrovni vypadat 
 
    | Vlastnost | Hodnota | Popis |
    |----------|-------|-------------|
-   | **Předplatné** | <*Azure – předplatné – název*> | Název vašeho předplatného Azure. Tento příklad používá `Pay-As-You-Go` . |
+   | **Předplatné** | <*Azure – předplatné – název*> | Název vašeho předplatného Azure. Tento příklad používá `Pay-As-You-Go`. |
    | **Skupina prostředků** | LA-dobacesty-SP | Název [skupiny prostředků Azure](../azure-resource-manager/management/overview.md), která se používá k uspořádání souvisejících prostředků. Tento příklad vytvoří novou skupinu prostředků s názvem `LA-TravelTime-RG` . |
-   | **Název** | LA-dobacesty | Název vaší aplikace logiky, který může obsahovat jenom písmena, číslice, spojovníky ( `-` ), podtržítka ( `_` ), kulaté závorky ( `(` , `)` ) a tečky ( `.` ). Tento příklad používá `LA-TravelTime` . |
-   | **Umístění** | USA – západ | Oblast, kam se mají ukládat informace o aplikaci logiky Tento příklad používá `West US` . |
+   | **Název** | LA-dobacesty | Název vaší aplikace logiky, který může obsahovat jenom písmena, číslice, spojovníky ( `-` ), podtržítka ( `_` ), kulaté závorky ( `(` , `)` ) a tečky ( `.` ). Tento příklad používá `LA-TravelTime`. |
+   | **Umístění** | USA – západ | Oblast, kam se mají ukládat informace o aplikaci logiky Tento příklad používá `West US`. |
    | **Log Analytics** | Vypnuto | Pokud chcete zapnout protokolování diagnostiky, ponechte nastavení **Vypnuto**. |
    ||||
 
@@ -92,11 +94,11 @@ Dále přidejte [Trigger](../logic-apps/logic-apps-overview.md#logic-app-concept
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **Interval** | Ano | 1 | Počet intervalů, po které se má čekat mezi kontrolami |
-   | **Frekvence** | Ano | Týden | Jednotka času pro opakování |
+   | **Interval** | Yes | 1 | Počet intervalů, po které se má čekat mezi kontrolami |
+   | **Frekvence** | Yes | Týden | Jednotka času pro opakování |
    |||||
 
-1. V části **interval** a **frekvence**otevřete seznam **Přidat nový parametr** a vyberte tyto vlastnosti, které chcete přidat do triggeru.
+1. V části **interval** a **frekvence** otevřete seznam **Přidat nový parametr** a vyberte tyto vlastnosti, které chcete přidat do triggeru.
 
    * **V tyto dny**
    * **V těchto hodinách**
@@ -131,7 +133,7 @@ Teď, když máte trigger, přidejte [akci](../logic-apps/logic-apps-overview.md
 
 1. V návrháři aplikace logiky pod triggerem opakování vyberte **Nový krok**.
 
-1. V části **Zvolit operaci**vyberte **standardní**. Do vyhledávacího pole zadejte `bing maps` a vyberte akci s názvem **získat trasu**.
+1. V části **Zvolit operaci** vyberte **standardní**. Do vyhledávacího pole zadejte `bing maps` a vyberte akci s názvem **získat trasu**.
 
    ![Snímek obrazovky, který zobrazuje seznam "zvolit operaci" filtrovaný pomocí akcí mapy Bingu a vybrané akce získat trasu.](./media/tutorial-build-scheduled-recurring-logic-app-workflow/select-get-route-action.png)
 
@@ -141,15 +143,15 @@ Teď, když máte trigger, přidejte [akci](../logic-apps/logic-apps-overview.md
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **Název připojení** | Ano | PřipojeníMapyBing | Zadejte název připojení. Tento příklad používá `BingMapsConnection` . |
-   | **Klíč rozhraní API** | Ano | <*Bing – Maps – klíč rozhraní API*> | Zadejte klíč rozhraní API pro mapy Bing, který jste dříve dostali. Pokud nemáte k dispozici klíč služby Mapy Bing, přečtěte si, [jak získat klíč](/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key). |
+   | **Název připojení** | Yes | PřipojeníMapyBing | Zadejte název připojení. Tento příklad používá `BingMapsConnection`. |
+   | **Klíč rozhraní API** | Yes | <*Bing – Maps – klíč rozhraní API*> | Zadejte klíč rozhraní API pro mapy Bing, který jste dříve dostali. Pokud nemáte k dispozici klíč služby Mapy Bing, přečtěte si, [jak získat klíč](/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key). |
    |||||
 
 1. Přejmenujte akci s tímto popisem: `Get route and travel time with traffic` .
 
-1. V akci otevřete **seznam přidat nový parametr**a vyberte tyto vlastnosti.
+1. V akci otevřete **seznam přidat nový parametr** a vyberte tyto vlastnosti.
 
-   * **Zvýšit**
+   * **Optimalizace**
    * **Jednotka vzdálenosti**
    * **Způsob cestování**
 
@@ -161,9 +163,9 @@ Teď, když máte trigger, přidejte [akci](../logic-apps/logic-apps-overview.md
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **Bod na trase 1** | Ano | <*Začátek – umístění*> | Počátek vaší trasy. Tento příklad určuje ukázkovou počáteční adresu. |
-   | **Bod na trase 2** | Ano | <*koncové umístění*> | Cíl vaší trasy. Tento příklad určuje ukázkovou cílovou adresu. |
-   | **Zvýšit** | No | timeWithTraffic | Parametr k optimalizaci vaší trasy, jako je například vzdálenost, doba trvání cesty včetně dopravní situace atd. Vyberte hodnotu parametru **timeWithTraffic**. |
+   | **Bod na trase 1** | Yes | <*Začátek – umístění*> | Počátek vaší trasy. Tento příklad určuje ukázkovou počáteční adresu. |
+   | **Bod na trase 2** | Yes | <*koncové umístění*> | Cíl vaší trasy. Tento příklad určuje ukázkovou cílovou adresu. |
+   | **Optimalizace** | No | timeWithTraffic | Parametr k optimalizaci vaší trasy, jako je například vzdálenost, doba trvání cesty včetně dopravní situace atd. Vyberte hodnotu parametru **timeWithTraffic**. |
    | **Jednotka vzdálenosti** | No | <*vaše preference*> | Jednotka vzdálenosti použitá pro trasu. V tomto příkladu se jako jednotka používá **míle** . |
    | **Způsob cestování** | No | Autem | Způsob cestování pro danou trasu. Vyberte režim **řízení** . |
    |||||
@@ -182,7 +184,7 @@ Ve výchozím nastavení akce **získat trasu** vrátí aktuální dobu trvání
 
 1. V návrháři v akci **získat trasu** vyberte **Nový krok**.
 
-1. V části **Zvolit operaci**vyberte **předdefinovaná**. Do vyhledávacího pole zadejte `variables` a vyberte akci s názvem **inicializovat proměnnou**.
+1. V části **Zvolit operaci** vyberte **předdefinovaná**. Do vyhledávacího pole zadejte `variables` a vyberte akci s názvem **inicializovat proměnnou**.
 
    ![Snímek obrazovky zobrazující vybranou akci inicializovat proměnnou](./media/tutorial-build-scheduled-recurring-logic-app-workflow/select-initialize-variable-action.png)
 
@@ -192,8 +194,8 @@ Ve výchozím nastavení akce **získat trasu** vrátí aktuální dobu trvání
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **Název** | Ano | dobacesty | Název proměnné. Tento příklad používá `travelTime` . |
-   | **Typ** | Ano | Integer | Datový typ proměnné |
+   | **Název** | Yes | dobacesty | Název proměnné. Tento příklad používá `travelTime`. |
+   | **Typ** | Yes | Integer | Datový typ proměnné |
    | **Hodnota** | No | Výraz, který převede aktuální dobu trvání cesty z sekund na minuty (viz postup v této tabulce). | Počáteční hodnota proměnné |
    |||||
 
@@ -231,7 +233,7 @@ Dál přidejte podmínku, která zkontroluje, zda je aktuální doba trvání ce
 
 1. V akci **vytvořit proměnnou pro uložení doby trvání cesty** vyberte **Nový krok**.
 
-1. V části **Zvolit operaci**vyberte **předdefinovaná**. Do vyhledávacího pole zadejte `condition`. v seznamu akcí vyberte akci s názvem **Podmínka**.
+1. V části **Zvolit operaci** vyberte **předdefinovaná**. Do vyhledávacího pole zadejte `condition`. v seznamu akcí vyberte akci s názvem **Podmínka**.
 
    ![Snímek obrazovky zobrazující vybranou akci podmínka](./media/tutorial-build-scheduled-recurring-logic-app-workflow/select-condition-action.png)
 
@@ -241,7 +243,7 @@ Dál přidejte podmínku, která zkontroluje, zda je aktuální doba trvání ce
 
    1. V podmínce na levé straně podmínky klikněte do pole **zvolit hodnotu** .
 
-   1. V seznamu dynamický obsah, který se zobrazí, vyberte v části **proměnné**možnost vlastnost s názvem **dobacesty**.
+   1. V seznamu dynamický obsah, který se zobrazí, vyberte v části **proměnné** možnost vlastnost s názvem **dobacesty**.
 
       ![Snímek obrazovky zobrazující pole "zvolit hodnotu" na levé straně podmínky s otevřeným seznamem dynamického obsahu a vybranou vlastností "Dobacesty".](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-left-side.png)
 
@@ -263,7 +265,7 @@ Teď přidejte akci, která vám pošle e-mail, když doba trvání cesty překr
 
 1. V poli **pravdivá** větev podmínky vyberte **přidat akci**.
 
-1. V části **Zvolit operaci**vyberte **standardní**. Do vyhledávacího pole zadejte `send email`. Seznam vrátí mnoho výsledků, takže vám pomůžou filtrovat seznam, nejdřív vybrat e-mailový konektor, který chcete.
+1. V části **Zvolit operaci** vyberte **standardní**. Do vyhledávacího pole zadejte `send email`. Seznam vrátí mnoho výsledků, takže vám pomůžou filtrovat seznam, nejdřív vybrat e-mailový konektor, který chcete.
 
    Pokud máte například e-mailový účet Outlooku, vyberte konektor pro typ účtu:
 
@@ -358,7 +360,7 @@ Pokud chcete vytvořit další aplikace logiky, které používají Trigger **op
 
 Vaše aplikace logiky pokračuje běžet, dokud aplikaci nezakážete nebo neodstraníte. Pokud už ukázkovou aplikaci logiky nepotřebujete, odstraňte skupinu prostředků, která obsahuje vaši aplikaci logiky a související prostředky.
 
-1. Do vyhledávacího pole Azure Portal zadejte název skupiny prostředků, kterou jste vytvořili. Z výsledků v části **skupiny prostředků**vyberte skupinu prostředků.
+1. Do vyhledávacího pole Azure Portal zadejte název skupiny prostředků, kterou jste vytvořili. Z výsledků v části **skupiny prostředků** vyberte skupinu prostředků.
 
    V tomto příkladu se vytvořila skupina prostředků s názvem `LA-TravelTime-RG` .
 

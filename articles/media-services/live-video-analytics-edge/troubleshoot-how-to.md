@@ -5,12 +5,12 @@ author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
 ms.date: 12/04/2020
-ms.openlocfilehash: d519193d55c9535dc71206d2d9f72661d7a40d71
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: ee5ae7ca8b52d44f21c35df23ef92f61d38fc3c3
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954408"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051291"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>Řešení potíží se službou Live video Analytics na IoT Edge
 
@@ -107,7 +107,8 @@ K problémům se můžete setkat také při spuštění **[skriptu pro nastaven�
 * Instalační skript nemůže vytvořit instanční objekt a prostředky Azure.
     * Pokud chcete tento problém obdržet, zkontrolujte prosím, že vaše předplatné a tenant Azure nedosáhly svých maximálních limitů služeb. Přečtěte si další informace o [limitech a omezeních služby Azure AD](https://docs.microsoft.com/azure/active-directory/enterprise-users/directory-service-limits-restrictions) a omezeních [, kvótách a omezeních předplatného a služeb Azure.](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)
 
-
+> [!TIP]
+> Pokud jsou k dispozici nějaké další problémy, se kterými budete možná potřebovat pomoc, **[Shromážděte prosím protokoly a odešlete lístek podpory](#collect-logs-for-submitting-a-support-ticket)**. Můžete nás taky kontaktovat odesláním e-mailu na adresu **[amshelp@microsoft.com](mailto:amshelp@microsoft.com)** .
 ### <a name="live-video-analytics-working-with-external-modules"></a>Live video Analytics pracuje s externími moduly
 
 Live video Analytics můžou pomocí procesorů rozšíření pro multimediální graf rozšířit mediální graf tak, aby odesílal a přijímal data z jiných IoT Edge modulů pomocí protokolů HTTP nebo gRPC. V takovém [případě](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/httpExtension)může tento mediální graf odesílat snímky videa jako obrázky do externího modulu odvození, jako je Yolo v3, a získávat výsledky analýzy založené na JSON pomocí protokolu HTTP. V takové topologii je cíl pro události většinou centrum IoT. V situacích, kdy se v centru nezobrazuje události odvození, zkontrolujte následující:

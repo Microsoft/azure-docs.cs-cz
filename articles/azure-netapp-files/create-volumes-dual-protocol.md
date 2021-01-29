@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 01/22/2020
+ms.date: 01/28/2020
 ms.author: b-juche
-ms.openlocfilehash: 47aefecce846f58128335768018ba59d3520bd87
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 70b42fb5522b31b5e7e15b5715717f0d010d56dc
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98726676"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052409"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Vytvoření svazku s duálním protokolem (NFSv3 a protokolu SMB) pro Azure NetApp Files
 
@@ -51,6 +51,7 @@ Azure NetApp Files podporuje vytváření svazků pomocí systému souborů NFS 
     | `Unix`    | NFS   | Bity režimu NFSv3   | UNIX  | Systém souborů NFS a Windows   |
     | `Ntfs`    | Windows   | Seznamy řízení přístupu NTFS     | NTFS  |Systém souborů NFS a Windows|
 * Uživatelé systému UNIX, kteří přidávají svazek se zabezpečením NTFS pomocí systému souborů NFS, budou ověřeni jako uživatel systému Windows `root` pro systém UNIX `root` a `pcuser` pro všechny ostatní uživatele. Před připojením svazku při použití systému souborů NFS se ujistěte, že tyto uživatelské účty existují ve službě Active Directory. 
+* Pokud máte velké topologie a používáte `Unix` styl zabezpečení se svazkem se dvěma protokoly nebo LDAP s rozšířenými skupinami, Azure NetApp Files pravděpodobně nepůjde získat přístup ke všem serverům v topologiích.  Pokud k této situaci dojde, požádejte o pomoc tým svého účtu.  <!-- NFSAAS-15123 --> 
 * Pro vytvoření svazku se dvěma protokoly nepotřebujete certifikát kořenové certifikační autority serveru. Je vyžadován pouze v případě, že je povolen protokol LDAP over TLS.
 
 

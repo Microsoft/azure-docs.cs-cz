@@ -1,33 +1,33 @@
 ---
-title: Přizpůsobení uživatelského rozhraní
+title: Přizpůsobení uživatelského rozhraní šablonami HTML
 titleSuffix: Azure AD B2C
-description: Naučte se, jak přizpůsobit uživatelské rozhraní pro aplikace, které používají Azure Active Directory B2C.
+description: Naučte se, jak přizpůsobit uživatelské rozhraní šablonám HTML pro vaše aplikace, které používají Azure Active Directory B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/10/2020
+ms.date: 01/28/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 4a789574b736eb22bd8d13fcf1a9facec5e241c9
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 78ad2540029d78084485ae2004194f9f7c2d6052
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98058663"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99050539"
 ---
-# <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Přizpůsobení uživatelského rozhraní v Azure Active Directory B2C
+# <a name="customize-the-user-interface-with-html-templates-in-azure-active-directory-b2c"></a>Přizpůsobení uživatelského rozhraní šablonami HTML v Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
 Branding a přizpůsobení uživatelského rozhraní, které Azure Active Directory B2C (Azure AD B2C) zobrazuje vašim zákazníkům, pomáhá zajistit bezproblémové uživatelské prostředí ve vaší aplikaci. Mezi tyto možnosti patří registrace, přihlašování, úpravy profilu a resetování hesla. Tento článek představuje metody přizpůsobení uživatelského rozhraní. 
 
 > [!TIP]
-> Chcete-li upravit pouze logo banner, obrázek pozadí a barvu pozadí stránek toku uživatele, můžete vyzkoušet funkci [Branding společnosti](company-branding.md) .
+> Chcete-li upravit pouze logo banner, obrázek pozadí a barvu pozadí stránek toku uživatele, můžete vyzkoušet funkci [Branding společnosti](customize-ui.md) .
 
 ## <a name="custom-html-and-css-overview"></a>Vlastní HTML a CSS – přehled
 
@@ -59,7 +59,7 @@ Místo vytvoření vlastního obsahu stránky od začátku můžete přizpůsobi
 
 Následující tabulka uvádí výchozí obsah stránky, který poskytuje Azure AD B2C. Stáhněte si soubory a používejte je jako výchozí bod pro vytváření vlastních stránek.
 
-| Výchozí stránka | Popis | ID definice obsahu<br/>(jenom vlastní zásady) |
+| Výchozí stránka | Description | ID definice obsahu<br/>(jenom vlastní zásady) |
 |:-----------------------|:--------|-------------|
 | [exception.html](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Chybová stránka**. Tato stránka se zobrazí, pokud dojde k výjimce nebo chybě. | *rozhraní API. Chyba* |
 | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) |  **Stránka s vlastním kontrolním** výrazem. Tento soubor použijte jako obsah vlastní stránky pro přihlašovací stránku účtu sociální sítě, přihlašovací stránku místního účtu, přihlašovací stránku místního účtu, resetování hesla a další. Formulář může obsahovat různé vstupní ovládací prvky, jako je například textové pole pro zadání hesla, pole pro zadávání hesla, přepínač, rozevírací seznamy s jedním výběrem a zaškrtávací políčka vícenásobného výběru. | *API. localaccountsignin*, *API. localaccountsignup*, *API. localaccountpasswordreset*, *API. selfasserted* |
@@ -387,7 +387,15 @@ Postup použití ukázky:
 1. Nyní upravte zásady tak, aby odkazovaly na soubor HTML, jak bylo uvedeno dříve.
 1. Pokud se zobrazí chybějící písma, obrázky nebo šablony stylů CSS, zkontrolujte odkazy v zásadách rozšíření a v \* souborech. html.
 
+## <a name="use-company-branding-assets-in-custom-html"></a>Použití prostředků brandingu společnosti ve vlastním HTML
+
+Chcete-li použít prostředky [firemního brandingu](customize-ui.md#configure-company-branding) ve vlastním HTML, přidejte následující značky mimo `<div id="api">` značku. Zdroj obrázku je nahrazen symbolem obrázku pozadí a logem banner.
+
+```HTML
+<img data-tenant-branding-background="true" />
+<img data-tenant-branding-logo="true" alt="Company Logo" />
+```
+
 ## <a name="next-steps"></a>Další kroky
 
 Přečtěte si, jak povolit [Kód JavaScriptu na straně klienta](javascript-and-page-layout.md).
-

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 842b0a92ba4a2cb6b3ceb54675ef95f9c8275311
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 9f7a37fa2101e4a386c9c6f2338f185b3ecdc986
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92209725"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052613"
 ---
 # <a name="enable-change-tracking-and-inventory-from-a-runbook"></a>Povolení řešení Change Tracking a Inventory z runbooku
 
@@ -38,13 +38,13 @@ Tato metoda používá dva Runbooky:
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 ## <a name="enable-change-tracking-and-inventory"></a>Povolení řešení Change Tracking a Inventory
 
 1. V Azure Portal přejděte na **účty Automation**. Na stránce **účty Automation** v seznamu vyberte svůj účet.
 
-1. Ve svém účtu Automation v části **Správa konfigurace**vyberte **inventarizace** nebo **Change Tracking** .
+1. Ve svém účtu Automation v části **Správa konfigurace** vyberte **inventarizace** nebo **Change Tracking** .
 
 1. Vyberte pracovní prostor Log Analytics a pak klikněte na **Povolit**. Při povolování inventáře nebo Change Tracking se zobrazí banner.
 
@@ -54,7 +54,7 @@ Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 Je potřeba, abyste aktualizovali na nejnovější moduly Azure a importovali modul [AZ. OperationalInsights](/powershell/module/az.operationalinsights) , který umožňuje úspěšně povolit Update Management pro vaše virtuální počítače pomocí Runbooku.
 
-1. Ve svém účtu Automation v části **sdílené prostředky**vyberte **moduly** .
+1. Ve svém účtu Automation v části **sdílené prostředky** vyberte **moduly** .
 
 2. Vyberte **Aktualizovat moduly Azure** a aktualizujte moduly Azure na nejnovější verzi.
 
@@ -74,7 +74,7 @@ Je potřeba, abyste aktualizovali na nejnovější moduly Azure a importovali mo
 
 Po povolení Change Tracking a inventáře můžete přidat virtuální počítač Azure pro správu pomocí funkce.
 
-1. Ve svém účtu Automation v části **Správa konfigurace**vyberte možnost **sledování změn** nebo **inventarizace** .
+1. Ve svém účtu Automation v části **Správa konfigurace** vyberte možnost **sledování změn** nebo **inventarizace** .
 
 2. Kliknutím na **Přidat virtuální počítače Azure** přidejte svůj virtuální počítač.
 
@@ -87,7 +87,7 @@ Po povolení Change Tracking a inventáře můžete přidat virtuální počíta
 
 ## <a name="import-a-runbook-to-enable-change-tracking-and-inventory"></a>Import Runbooku pro povolení Change Tracking a inventáře
 
-1. Ve svém účtu Automation v části **Automatizace procesu**vyberte **Runbooky** .
+1. Ve svém účtu Automation v části **Automatizace procesu** vyberte **Runbooky** .
 
 2. Vyberte **Procházet galerii**.
 

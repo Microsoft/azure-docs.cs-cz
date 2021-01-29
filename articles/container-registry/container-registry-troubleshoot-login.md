@@ -3,12 +3,12 @@ title: Řešení potíží s přihlášením k registru
 description: Příznaky, příčiny a řešení běžných potíží při přihlašování do služby Azure Container Registry
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 5499c64bef8ce36a5f622c4d847b417ef49a5a03
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 5deb1717cf3886d8ea9c021d92afa358946b16dc
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379498"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052074"
 ---
 # <a name="troubleshoot-registry-login"></a>Řešení potíží s přihlášením k registru
 
@@ -39,6 +39,8 @@ Může zahrnovat jednu nebo více z následujících možností:
 Pokud chcete získat další informace o stavu prostředí registru a volitelně získat přístup k cílovému registru, spusťte příkaz [AZ ACR check-Health](/cli/azure/acr#az-acr-check-health) . Například Diagnostikujte chyby konfigurace Docker nebo Azure Active Directory problémy s přihlášením. 
 
 Příklady příkazů najdete v tématu o [kontrole stavu služby Azure Container Registry](container-registry-check-health.md) . Pokud dojde k chybám, přečtěte si [referenční informace o chybě](container-registry-health-error-reference.md) a v následujících oddílech, kde najdete doporučená řešení.
+
+Pokud máte potíže s použitím služby Registry wih Azure Kubernetes, spusťte pomocí příkazu [AZ AKS check-ACR](/cli/azure/aks#az_aks_check_acr) , zda je registr přístupný z clusteru AKS.
 
 > [!NOTE]
 > Pokud existují konfigurace brány firewall nebo sítě, které brání přístupu k registru, může dojít k nějakým chybám ověřování nebo autorizaci taky. Přečtěte si téma [řešení potíží se sítí pomocí registru](container-registry-troubleshoot-access.md).
@@ -77,9 +79,9 @@ Související odkazy:
 Ověřte platnost přihlašovacích údajů, které jste ve svém scénáři použili, nebo vám poskytl vlastník registru. Některé možné problémy:
 
 * Pokud používáte instanční objekt služby Active Directory, ujistěte se, že používáte správné přihlašovací údaje v tenantovi služby Active Directory:
-  * Uživatelské jméno – ID aplikace instančního objektu (označuje se také jako *ID klienta* )
-  * Heslo – hlavní heslo služby (označuje se taky jako *tajný klíč klienta* )
-* Pokud k registru přistupujete pomocí služby Azure, jako je služba Azure Kubernetes nebo Azure DevOps, potvrďte konfiguraci registru pro vaši službu.
+  * Uživatelské jméno – ID aplikace instančního objektu (označuje se také jako *ID klienta*)
+  * Heslo – hlavní heslo služby (označuje se taky jako *tajný klíč klienta*)
+* Pokud k registru přistupujete pomocí služby Azure, jako je služba Azure Kubernetes nebo Azure DevOps, potvrďte konfiguraci registru pro vaši službu. 
 * Pokud jste spustili `az acr login` s `--expose-token` možností, která umožňuje přihlášení do registru bez použití démona Docker, ujistěte se, že jste s uživatelským jménem ověřili `00000000-0000-0000-0000-000000000000` .
 * Pokud je váš registr nakonfigurovaný pro [anonymní přístup s přístupem k přístupu](container-registry-faq.md#how-do-i-enable-anonymous-pull-access), může anonymní přístup zabránit existujícím přihlašovacím údajům z doku uložených z předchozího přihlášení k dokovacímu zařízení. Spusťte `docker logout` před pokusem o anonymní operaci Pull v registru.
 

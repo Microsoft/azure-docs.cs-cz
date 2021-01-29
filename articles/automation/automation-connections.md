@@ -6,12 +6,12 @@ ms.subservice: shared-capabilities
 ms.date: 12/22/2020
 ms.topic: conceptual
 ms.custom: has-adal-ref
-ms.openlocfilehash: 8deb249dc042701ec02c3e5e30f3603be132d0ec
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 5f6494eb72084c683ddbb8b27a49acdb1fbc2bfc
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97733990"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054259"
 ---
 # <a name="manage-connections-in-azure-automation"></a>Správa připojení v Azure Automation
 
@@ -35,7 +35,7 @@ Azure Automation zpřístupní následující předdefinované typy připojení:
 * `AzureServicePrincipal` – Představuje připojení, které používá účet Spustit jako pro Azure.
 * `AzureClassicCertificate` – Představuje připojení používané účtem Azure spustit jako pro Classic.
 
-Ve většině případů nemusíte vytvářet prostředek připojení, protože se vytvoří při vytváření [účtu Spustit jako](manage-runas-account.md).
+Ve většině případů nemusíte vytvářet prostředek připojení, protože se vytvoří při vytváření [účtu Spustit jako](automation-security-overview.md).
 
 ## <a name="powershell-cmdlets-to-access-connections"></a>Rutiny prostředí PowerShell pro přístup k připojením
 
@@ -52,7 +52,7 @@ Rutiny v následující tabulce vytvářejí a spravují připojení automatizac
 
 Interní rutina v následující tabulce se používá pro přístup k připojením ve vašich sadách Runbook a konfiguracích DSC. Tato rutina se dodává s globálním modulem `Orchestrator.AssetManagement.Cmdlets` . Další informace najdete v tématu [interní rutiny](shared-resources/modules.md#internal-cmdlets).
 
-|Interní rutina|Popis|
+|Interní rutina|Description|
 |---|---|
 |`Get-AutomationConnection` | Načte hodnoty různých polí v připojení a vrátí je jako [zatřiďovací tabulku](/powershell/module/microsoft.powershell.core/about/about_hash_tables). Tuto zatřiďovací tabulku pak můžete použít s příslušnými příkazy v konfiguraci sady Runbook nebo DSC.|
 
@@ -63,7 +63,7 @@ Interní rutina v následující tabulce se používá pro přístup k připojen
 
 Funkce v následující tabulce slouží k přístupu k připojením v sadě Runbook Python 2 a 3. Sady Python 3 Runbooky jsou momentálně ve verzi Preview.
 
-| Funkce | Popis |
+| Funkce | Description |
 |:---|:---|
 | `automationassets.get_automation_connection` | Načte připojení. Vrátí slovník s vlastnostmi připojení. |
 

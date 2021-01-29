@@ -12,12 +12,12 @@ ms.date: 05/23/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: af363bb30d6515ce969afe146c780baa4b31cd83
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d50e0ed6ac67ed1595b289d27bd08a089840308
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88117205"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051902"
 ---
 # <a name="support-and-help-options-for-developers"></a>Možnosti pomoci a podpory pro vývojáře
 
@@ -26,20 +26,20 @@ Pokud se teprve začínáte integrovat s Azure Active Directory (Azure AD), Micr
 > [!div class="checklist"]
 > * Jak hledat, jestli na vaši otázku neodpověděla komunita, nebo jestli už existuje stávající dokumentace k funkci, kterou se pokoušíte implementovat
 > * V některých případech chcete použít naše nástroje podpory, které vám pomůžou s laděním konkrétního problému.
-> * Pokud nemůžete najít odpověď, kterou potřebujete, můžete klást otázky na *Stack Overflow*
+> * Pokud nemůžete najít odpověď, kterou potřebujete, můžete se zeptat na dotaz na *Microsoft Q&a* .
 > * Pokud narazíte na problém s jednou z našich knihoven pro ověřování, vyvolejte problém *GitHubu* .
 > * Nakonec, pokud potřebujete mluvit s někým, možná budete chtít otevřít žádost o podporu.
 
 ## <a name="search"></a>Hledat
 
-Pokud máte dotazy související s vývojem, možná budete moci najít odpověď v dokumentaci, [ukázkách GitHubu](https://github.com/azure-samples)nebo odpovědích na [Stack Overflow](https://www.stackoverflow.com) otázky.
+Pokud máte dotazy související s vývojem, možná budete moci najít odpověď v dokumentaci, [ukázkách GitHubu](https://github.com/azure-samples)nebo odpovědi na dotazy k [Microsoft Q&](https://docs.microsoft.com/answers/products/) .
 
 ### <a name="scoped-search"></a>Hledání v oboru
 
-Pro dosažení rychlejších výsledků můžete určit rozsah hledání Stack Overflow, dokumentaci a ukázky kódu pomocí následujícího dotazu v oblíbených vyhledávacích modulech:
+Pro dosažení rychlejších výsledků můžete určit rozsah hledání do složky Microsoft Q&A, dokumentaci a ukázky kódu pomocí následujícího dotazu v oblíbených vyhledávacích modulech:
 
 ```
-{Your Search Terms} (site:stackoverflow.com OR site:docs.microsoft.com OR site:github.com/azure-samples OR site:cloudidentity.com OR site:developer.microsoft.com/graph)
+{Your Search Terms} (site:http://www.docs.microsoft.com/answers/products/ OR site:docs.microsoft.com OR site:github.com/azure-samples OR site:cloudidentity.com OR site:developer.microsoft.com/graph)
 ```
 
 Kde *{vaše hledané výrazy}* odpovídají vašim klíčovým slovům pro hledání.
@@ -51,26 +51,26 @@ Kde *{vaše hledané výrazy}* odpovídají vašim klíčovým slovům pro hled�
 | [jwt.ms](https://jwt.ms) | Vložte ID nebo přístupový token k dekódování názvů a hodnot deklarací identity. |
 | [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)| Nástroj, který umožňuje vytvářet žádosti a zobrazovat odpovědi na rozhraní Microsoft Graph API. |
 
-## <a name="post-a-question-to-stack-overflow"></a>Vystavení otázky pro Stack Overflow
+## <a name="post-a-question-to-microsoft-qa"></a>Odeslat otázku do Microsoft Q&A
 
-Stack Overflow je preferovaným kanálem pro otázky související s vývojem. V tomto případě jsou členové komunity vývojářů a členové týmu společnosti Microsoft přímo zapojeni v rámci pomoci při řešení vašich problémů.
+Microsoft Q&A je preferovaným kanálem pro otázky související s vývojem. V tomto případě jsou členové komunity vývojářů a členové týmu společnosti Microsoft přímo zapojeni v rámci pomoci při řešení vašich problémů.
 
-Pokud nemůžete najít odpověď na svůj dotaz pomocí hledání, odešlete novou otázku pro Stack Overflow. Použijte jednu z následujících značek při dotazování otázek, které komunitu pomůžou najít a odpovědět na svůj dotaz rychleji:
+Pokud nemůžete najít odpověď na svůj dotaz pomocí hledání, odešlete novou otázku do složky Microsoft Q&A. Použijte jednu z následujících značek při dotazování otázek, které komunitu pomůžou najít a odpovědět na svůj dotaz rychleji:
 
 |Součást/oblast  | Značky |
 |---------|---------|
-| Knihovna ADAL | [modulu](https://stackoverflow.com/questions/tagged/adal) |
-| Knihovna MSAL     | [msal](https://stackoverflow.com/questions/tagged/msal) |
-| Middleware OWIN  | [[Azure-Active-Directory]](https://stackoverflow.com/questions/tagged/azure-active-directory) |
-| [Azure B2B](../external-identities/what-is-b2b.md)  | [[Azure-AD-B2B]](https://stackoverflow.com/questions/tagged/azure-ad-b2b) |
-| [B2C Azure](https://azure.microsoft.com/services/active-directory-b2c/)  | [[Azure-AD-B2C]](https://stackoverflow.com/questions/tagged/azure-ad-b2c) |
-| [Microsoft Graph API](https://developer.microsoft.com/graph/) | [[Microsoft-Graph]](https://stackoverflow.com/questions/tagged/microsoft-graph) |
-| Jakákoli další oblast související s ověřováním nebo autorizačními tématy | [[Azure-Active-Directory]](https://stackoverflow.com/questions/tagged/azure-active-directory) |
+| Knihovna ADAL | [modulu](https://docs.microsoft.com/answers/topics/azure-ad-adal-deprecation.html) |
+| Knihovna MSAL     | [msal](https://docs.microsoft.com/answers/topics/azure-ad-msal.html) |
+| Middleware OWIN  | [[Azure-Active-Directory]](https://docs.microsoft.com/answers/topics/azure-active-directory.html) |
+| [Azure B2B](../external-identities/what-is-b2b.md)  | [[Azure-AD-B2B]](https://docs.microsoft.com/answers/topics/azure-ad-b2b.html) |
+| [B2C Azure](https://azure.microsoft.com/services/active-directory-b2c/)  | [[Azure-AD-B2C]](https://docs.microsoft.com/answers/topics/azure-ad-b2c.html) |
+| [Microsoft Graph API](https://developer.microsoft.com/graph/) | [[Azure-AD-Graph]](https://docs.microsoft.com/answers/topics/azure-ad-graph.html) |
+| Jakákoli další oblast související s ověřováním nebo autorizačními tématy | [[Azure-Active-Directory]](https://docs.microsoft.com/answers/topics/azure-ad-graph.html) |
 
-Následující příspěvky z Stack Overflow obsahují tipy, jak klást otázky a jak přidat zdrojový kód. Postupujte podle těchto pokynů a zvyšte pravděpodobnost, že členové komunity budou moci rychle posoudit a reagovat na své otázky:
+Následující příspěvky z Microsoft Q&A obsahují tipy, jak klást otázky a jak přidat zdrojový kód. Postupujte podle těchto pokynů a zvyšte pravděpodobnost, že členové komunity budou moci rychle posoudit a reagovat na své otázky:
 
-* [Návody klást dobré otázky](https://stackoverflow.com/help/how-to-ask)
-* [Jak vytvořit minimální, úplný a ověřitelný příklad](https://stackoverflow.com/help/mcve)
+* [Návody klást dobré otázky](https://docs.microsoft.com/answers/articles/24951/how-to-write-a-quality-question.html)
+* [Jak vytvořit minimální, úplný a ověřitelný příklad](https://docs.microsoft.com/answers/articles/24907/how-to-write-a-quality-answer.html)
 
 ## <a name="create-a-github-issue"></a>Vytvoření problému GitHubu
 
@@ -87,6 +87,6 @@ Pokud potřebujete mluvit s někým, můžete otevřít žádost o podporu. Poku
 
 * Pokud už máte plán podpory Azure, [otevřete žádost o podporu tady](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) .
 
-* Pokud nejste zákazníkem Azure, můžete také pomocí [naší komerční podpory](https://support.microsoft.com/en-us/gp/contactus81?Audience=Commercial)otevřít žádost o podporu od Microsoftu.
+* Pokud nejste zákazníkem Azure, můžete také pomocí [naší komerční podpory](https://support.serviceshub.microsoft.com/supportforbusiness)otevřít žádost o podporu od Microsoftu.
 
 Můžete také vyzkoušet [virtuálního agenta](https://support.microsoft.com/contactus/?ws=support) a získat podporu nebo klást otázky.

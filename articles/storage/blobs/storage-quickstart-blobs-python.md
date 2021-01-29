@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: knihovna úložiště objektů BLOB v Azure V12 – Python'
+title: 'Rychlý Start: knihovna pro Azure Blob Storage V12 – Python'
 description: V tomto rychlém startu se dozvíte, jak pomocí klientské knihovny Azure Blob Storage verze 12 pro Python vytvořit kontejner a objekt BLOB v úložišti objektů BLOB (objekt). Dále se dozvíte, jak stáhnout objekt blob do místního počítače a jak zobrazit seznam všech objektů blob, které jsou v kontejneru.
 author: mhopkins-msft
 ms.author: mhopkins
@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: dbac832165c57e14e737372e12c4f4b2f3039c0d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b35144c1ff4de9324086629bc764caea4bef98b6
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995249"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052732"
 ---
 # <a name="quickstart-manage-blobs-with-python-v12-sdk"></a>Rychlý Start: Správa objektů BLOB pomocí sady Python V12 SDK
 
@@ -36,7 +36,7 @@ Další prostředky:
 
 ## <a name="setting-up"></a>Nastavení
 
-Tato část vás provede přípravou projektu pro práci s klientskou knihovnou služby Azure Blob Storage V12 for Python.
+Tato část vás provede přípravou projektu pro práci s klientskou knihovnou Azure Blob Storage V12 for Python.
 
 ### <a name="create-the-project"></a>Vytvoření projektu
 
@@ -62,13 +62,13 @@ Vytvořte aplikaci v Pythonu s názvem *BLOB-Start-V12*.
 
 ### <a name="install-the-package"></a>Instalace balíčku
 
-Ještě pořád v adresáři aplikace nainstalujte klientskou knihovnu pro úložiště objektů BLOB v Azure pro balíček Pythonu pomocí `pip install` příkazu.
+Ještě pořád v adresáři aplikace nainstalujte knihovnu klienta Azure Blob Storage pro balíček python pomocí `pip install` příkazu.
 
 ```console
 pip install azure-storage-blob
 ```
 
-Tento příkaz nainstaluje klientskou knihovnu pro úložiště objektů BLOB v Azure pro balíček Pythonu a všechny knihovny, na kterých závisí. V tomto případě je to jenom knihovna Azure Core pro Python.
+Tento příkaz nainstaluje knihovnu klienta Azure Blob Storage pro balíček Pythonu a všechny knihovny, na kterých závisí. V tomto případě je to jenom knihovna Azure Core pro Python.
 
 ### <a name="set-up-the-app-framework"></a>Nastavení aplikační architektury
 
@@ -85,7 +85,7 @@ Z adresáře projektu:
     from azure.storage.blob import BlobServiceClient, BlobClient, ContainerClient, __version__
 
     try:
-        print("Azure Blob storage v" + __version__ + " - Python quickstart sample")
+        print("Azure Blob Storage v" + __version__ + " - Python quickstart sample")
         # Quick start code goes here
     except Exception as ex:
         print('Exception:')
@@ -98,7 +98,7 @@ Z adresáře projektu:
 
 ## <a name="object-model"></a>Objektový model
 
-Úložiště objektů BLOB v Azure je optimalizované pro ukládání obrovských objemů nestrukturovaných dat. Jde o data, která nevyhovují konkrétnímu datovému modelu nebo definici, například textová nebo binární data. Úložiště objektů BLOB nabízí tři typy prostředků:
+Azure Blob Storage je optimalizovaná pro ukládání obrovských objemů nestrukturovaných dat. Jde o data, která nevyhovují konkrétnímu datovému modelu nebo definici, například textová nebo binární data. Úložiště objektů BLOB nabízí tři typy prostředků:
 
 * Účet úložiště
 * Kontejner v účtu úložiště
@@ -116,7 +116,7 @@ Pro interakci s těmito prostředky použijte následující třídy Pythonu:
 
 ## <a name="code-examples"></a>Příklady kódu
 
-Tyto ukázkové fragmenty kódu ukazují, jak provést následující s klientskou knihovnou služby Azure Blob Storage pro Python:
+Tyto ukázkové fragmenty kódu ukazují, jak provést následující s klientskou knihovnou Azure Blob Storage pro Python:
 
 * [Získání připojovacího řetězce](#get-the-connection-string)
 * [Vytvoření kontejneru](#create-a-container)
@@ -261,7 +261,7 @@ python blob-quickstart-v12.py
 Výstup aplikace je podobný následujícímu příkladu:
 
 ```output
-Azure Blob storage v12 - Python quickstart sample
+Azure Blob Storage v12 - Python quickstart sample
 
 Uploading to Azure Storage as blob:
         quickstartcf275796-2188-4057-b6fb-038352e35038.txt
@@ -290,7 +290,7 @@ V tomto rychlém startu jste zjistili, jak nahrávat, stahovat a vypisovat objek
 Pokud chcete zobrazit ukázkové aplikace služby Blob Storage, pokračujte:
 
 > [!div class="nextstepaction"]
-> [Ukázky V12 v Pythonu pro Azure Blob Storage SDK](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob/samples)
+> [Ukázky pro Azure Blob Storage SDK V12 Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob/samples)
 
 * Další informace najdete v tématu [klientské knihovny Azure Storage pro Python](/azure/developer/python/sdk/storage/overview).
 * Výukové programy, ukázky, rychlé starty a další dokumentaci najdete v [Azure pro vývojáře v Pythonu](/azure/python/).

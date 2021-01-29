@@ -2,19 +2,15 @@
 title: Začínáme s konfigurací stavu Azure Automation
 description: Tento článek obsahuje informace o tom, jak provádět nejběžnější úlohy v konfiguraci stavu Azure Automation.
 services: automation
-ms.service: automation
 ms.subservice: dsc
-author: mgoedtel
-ms.author: magoedte
 ms.date: 04/15/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 25f5e92aa8aa211782bc238781c59b9ca0511173
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 95072970004ae53663f130a78af36a84a6fab685
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897237"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051494"
 ---
 # <a name="get-started-with-azure-automation-state-configuration"></a>Začínáme s konfigurací stavu Azure Automation
 
@@ -26,7 +22,7 @@ Pokud chcete ukázkové prostředí, které už je nastavené, bez kroků popsan
 
 K dokončení příkladů v tomto článku jsou potřeba následující:
 
-- Účet Azure Automation. Pokyny k vytvoření účtu Azure Automation Spustit jako najdete v tématu [Účet Spustit jako pro Azure](./manage-runas-account.md).
+- Účet Azure Automation. Další informace o účtu Automation a jeho požadavcích najdete v tématu [Přehled ověřování účtu Automation](./automation-security-overview.md).
 - Azure Resource Manager virtuální počítač (ne Classic), na kterém běží [podporovaný operační systém](automation-dsc-overview.md#operating-system-requirements). Pokyny k vytvoření virtuálního počítače najdete v tématu [Vytvoření vašeho prvního virtuálního počítače s Windows na webu Azure Portal](../virtual-machines/windows/quick-create-portal.md).
 
 ## <a name="create-a-dsc-configuration"></a>Vytvoření konfigurace DSC

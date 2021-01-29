@@ -3,12 +3,12 @@ title: Kurz pro nahrávání a přehrávání videa založeného na událostech 
 description: V tomto kurzu se naučíte používat Azure Live video Analytics na Azure IoT Edge k nahrání záznamu videa založeného na událostech do cloudu a jeho přehrání z cloudu.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: fb8d8c8499029777ae5765f53ff51db92b3bd587
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 7f99eef626e2152e8acb01f0ade88b3b67aebcea
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954459"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052208"
 ---
 # <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Kurz: nahrávání videa založeného na událostech do cloudu a přehrávání z cloudu
 
@@ -45,7 +45,7 @@ Předpoklady pro tento kurz:
     > [!TIP]
     > Může se zobrazit výzva k instalaci Docker. Ignorovat tuto výzvu.
 * [Sada SDK .NET Core 3,1](https://dotnet.microsoft.com/download/dotnet-core/thank-you/sdk-3.1.201-windows-x64-installer) na vašem vývojovém počítači.
-* Dokončete [skript nastavení prostředků nástroje Live video Analytics](https://github.com/Azure/live-video-analytics/tree/master/edge/setup)a [nastavte prostředí](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/detect-motion-emit-events-quickstart?branch=release-preview-media-services-lva#set-up-the-environment) .
+* Dokončete [skript nastavení prostředků nástroje Live video Analytics](https://github.com/Azure/live-video-analytics/tree/master/edge/setup)a [nastavte prostředí](https://docs.microsoft.com/azure/media-services/live-video-analytics-edge/detect-motion-emit-events-quickstart?pivots=programming-language-csharp#set-up-your-development-environment) .
 
 Na konci tohoto postupu budete mít v předplatném Azure nasazené relevantní prostředky Azure:
 

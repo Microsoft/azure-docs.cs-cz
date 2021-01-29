@@ -12,12 +12,12 @@ ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: c279b7f4ec2d70e7eb6a97abf02cfbf4f2ef87f0
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 184263badc909881f597213a222272bd675fc362
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033608"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051970"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>Konfigurace způsobu vyjadřování souhlasu koncových uživatelů s aplikacemi
 
@@ -81,7 +81,7 @@ Pokud chcete povolit souhlas s uživatelem, vyberte, které zásady souhlasu apl
 
 Nahraďte `{consent-policy-id}` ID zásady, kterou chcete použít. Můžete zvolit [vlastní zásadu souhlasu s aplikací](manage-app-consent-policies.md#create-a-custom-app-consent-policy) , kterou jste vytvořili, nebo si můžete vybrat z následujících předdefinovaných zásad:
 
-| ID | Popis |
+| ID | Description |
 |:---|:------------|
 | Microsoft – uživatel – výchozí – nízká | **Povoluje uživateli souhlas s vybranými oprávněními pro aplikace od ověřených vydavatelů.**<br /> Povoluje omezený souhlas s uživatelem jenom pro aplikace od ověřených vydavatelů a aplikací registrovaných ve vašem tenantovi a jenom pro oprávnění, která klasifikujete jako "nízký dopad". (Nezapomeňte [klasifikovat oprávnění](configure-permission-classifications.md) a vybrat, která oprávnění uživatelé můžou udělit souhlas.) |
 | Microsoft – uživatel – výchozí – starší verze | **Povolení souhlasu uživatele pro aplikace**<br /> Tato možnost umožňuje všem uživatelům udělit souhlas s jakýmkoli oprávněním, které nevyžaduje souhlas správce, pro žádnou aplikaci. |
@@ -145,7 +145,7 @@ Můžete použít modul Azure AD PowerShell Preview [AzureADPreview](/powershell
 
 1. Pochopení hodnoty nastavení:
 
-    | Nastavení       | Typ         | Popis  |
+    | Nastavení       | Typ         | Description  |
     | ------------- | ------------ | ------------ |
     | _BlockUserConsentForRiskyApps_   | Logická hodnota |  Příznak označující, zda bude při zjištění rizikové žádosti zablokován souhlas uživatele |
 
@@ -185,4 +185,4 @@ Další informace najdete v tématech:
 * [Oprávnění a souhlas na platformě Microsoft identity](../develop/v2-permissions-and-consent.md)
 
 Pokud chcete získat nápovědu nebo najít odpovědi na své otázky:
-* [Azure AD v StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
+* [Azure AD v Microsoft Q&A.](https://docs.microsoft.com/answers/topics/azure-active-directory.html)

@@ -4,15 +4,15 @@ description: Základní hodnoty zabezpečení Azure pro automatizaci
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 06/22/2020
+ms.date: 01/07/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ea984e527eb526e49c87ce5385ba5715803cc72d
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 79282e99894bccad4f3c265cdffe4bee2e465950
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737248"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052749"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Základní hodnoty zabezpečení Azure pro automatizaci
 
@@ -336,11 +336,11 @@ Při použití funkce Hybrid Runbook Worker ale Azure Security Center poskytuje 
 
 **Doprovodné** materiály: použijte Azure Active Directory předdefinované role správce, které se dají explicitně přiřadit a můžou se dotazovat. Pomocí modulu Azure AD PowerShell můžete provádět ad hoc dotazy a zjišťovat účty, které jsou členy skupin pro správu. Při každém použití účtů služby Automation jako účtu Spustit jako pro vaše Runbooky se ujistěte, že tyto instanční objekty jsou ve vašem inventáři sledovány, protože mají často čas se zvýšenými oprávněními. Odstraňte všechny nepoužívané účty Spustit jako pro minimalizaci vystaveného prostoru pro útoky.
 
-* [Jak získat roli adresáře ve službě Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+* [Jak získat roli adresáře ve službě Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrole)
 
-* [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+* [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
-* [Odstranění účet Spustit jako nebo Spustit jako pro Classic](./manage-runas-account.md#delete-a-run-as-or-classic-run-as-account)
+* [Odstranění účet Spustit jako nebo Spustit jako pro Classic](./delete-run-as-account.md)
 
 * [Správa účtu Azure Automation spustit jako](./manage-runas-account.md)
 
@@ -364,7 +364,7 @@ Pomocí Azure AD Privileged Identity Management privilegovaných rolí pro služ
 
 * [Další informace o Privileged Identity Management](../active-directory/privileged-identity-management/index.yml)
 
-* [Odstranění účet Spustit jako nebo Spustit jako pro Classic](./manage-runas-account.md#delete-a-run-as-or-classic-run-as-account)
+* [Odstranění účet Spustit jako nebo Spustit jako pro Classic](./delete-run-as-account.md)
 
 * [Správa účtu Azure Automation spustit jako](./manage-runas-account.md)
 
@@ -454,7 +454,7 @@ Pomocí Azure AD Privileged Identity Management privilegovaných rolí pro služ
 
 * [Jak používat recenze Azure identity Access](../active-directory/governance/access-reviews-overview.md)
 
-* [Odstranění účet Spustit jako nebo Spustit jako pro Classic](./manage-runas-account.md#delete-a-run-as-or-classic-run-as-account)
+* [Odstranění účet Spustit jako nebo Spustit jako pro Classic](./delete-run-as-account.md)
 
 * [Správa účtu Azure Automation spustit jako](./manage-runas-account.md)
 
@@ -696,7 +696,7 @@ Pokud používáte hybridní pracovní procesy Runbooku, které jsou zajištěn�
 
 * [Jak vytvářet dotazy pomocí Azure Resource graphu](../governance/resource-graph/first-query-portal.md)
 
-* [Jak zobrazit vaše předplatná Azure](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [Jak zobrazit vaše předplatná Azure](/powershell/module/az.accounts/get-azsubscription)
 
 * [Pochopení Azure RBAC](../role-based-access-control/overview.md)
 
@@ -724,7 +724,7 @@ Pokud používáte hybridní pracovní procesy Runbooku, které jsou zajištěn�
 
 * [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
-* [Odstranění účet Spustit jako nebo Spustit jako pro Classic](./manage-runas-account.md#delete-a-run-as-or-classic-run-as-account)
+* [Odstranění účet Spustit jako nebo Spustit jako pro Classic](./delete-run-as-account.md)
 
 * [Správa účtu Azure Automation spustit jako](./manage-runas-account.md)
 
@@ -836,7 +836,7 @@ Adaptivní řízení aplikací je inteligentní, automatizované a ucelené ře�
 
 **Pokyny**: při použití funkce Hybrid Runbook Worker a v závislosti na typu skriptů můžete použít konfigurace specifické pro operační systém nebo prostředky třetích stran k omezení schopnosti uživatelů spouštět skripty v rámci výpočetních prostředků Azure. Můžete také využít Azure Security Center Adaptivní řízení aplikací, abyste zajistili, že se spustí jenom autorizovaný software, a veškerý neautorizovaný software bude zablokovaný na Azure Virtual Machines.
 
-* [Řízení spouštění skriptu PowerShellu v prostředích Windows](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
+* [Řízení spouštění skriptu PowerShellu v prostředích Windows](/powershell/module/microsoft.powershell.security/set-executionpolicy)
 
 * [Jak používat Azure Security Center Adaptivní řízení aplikací](../security-center/security-center-adaptive-application.md)
 
@@ -878,7 +878,7 @@ Azure Resource Manager taky umožňuje exportovat šablonu do JavaScript Object 
 
 Pro vaše prostředky Azure můžete také použít doporučení z Azure Security Center jako standardní hodnoty konfigurace zabezpečení.
 
-* [Jak zobrazit dostupné aliasy Azure Policy](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [Jak zobrazit dostupné aliasy Azure Policy](/powershell/module/az.resources/get-azpolicyalias)
 
 * [Kurz: vytvoření a Správa zásad pro vymáhání dodržování předpisů](../governance/policy/tutorials/create-and-manage.md)
 
@@ -942,7 +942,7 @@ Pro většinu scénářů se může při schůzi a údržbě požadavků na zabe
 
 * [Informace o vytváření šablon ARM](../virtual-machines/windows/ps-template.md)
 
-* [Jak nahrát vlastní virtuální pevný disk virtuálního počítače do Azure](/azure-stack/operator/azure-stack-add-vm-image?view=azs-1910)
+* [Jak nahrát vlastní virtuální pevný disk virtuálního počítače do Azure](/azure-stack/operator/azure-stack-add-vm-image)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -952,7 +952,7 @@ Pro většinu scénářů se může při schůzi a údržbě požadavků na zabe
 
 **Pokyny**: pomocí Azure DevOps bezpečně ukládejte a spravujte váš kód, jako jsou vlastní zásady Azure, šablony Azure Resource Manager a požadované konfigurační skripty stavu. Pokud chcete získat přístup k prostředkům, které spravujete ve službě Azure DevOps, můžete udělit nebo odepřít oprávnění konkrétním uživatelům, vestavěným skupinám zabezpečení nebo skupinám definovaným v Azure Active Directory, pokud jsou integrované s Azure DevOps nebo Active Directory, pokud jsou integrované s TFS. Pomocí funkce integrace správy zdrojového kódu můžete své Runbooky v účtu Automation udržovat v aktuálním stavu pomocí skriptů v úložišti správy zdrojových kódů.
 
-* [Jak v Azure DevOps ukládat kód](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [Jak v Azure DevOps ukládat kód](/azure/devops/repos/git/gitworkflow)
 
 * [O oprávněních a skupinách v Azure DevOps](/azure/devops/organizations/security/about-permissions)
 
@@ -1134,7 +1134,7 @@ Pomocí funkce integrace správy zdrojového kódu můžete své Runbooky v úč
 
 * [Úvod do Azure Automation](./automation-intro.md)
 
-* [Postup zálohování klíčů trezoru klíčů v Azure](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Postup zálohování klíčů trezoru klíčů v Azure](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
 * [Použití klíčů spravovaných zákazníkem pro účet Automation](./automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)
 
@@ -1160,7 +1160,7 @@ Pomocí funkce integrace správy zdrojového kódu můžete své Runbooky v úč
 
 * [Úvod do Azure Automation](./automation-intro.md)
 
-* [Postup zálohování klíčů trezoru klíčů v Azure](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Postup zálohování klíčů trezoru klíčů v Azure](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
 * [Použití klíčů spravovaných zákazníkem pro účet Automation](./automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)
 
@@ -1176,7 +1176,7 @@ Pomocí funkce integrace správy zdrojového kódu můžete své Runbooky v úč
 
 * [Nasazení prostředků pomocí šablon ARM a Azure Portal](../azure-resource-manager/templates/deploy-portal.md)
 
-* [Postup obnovení klíčů trezoru klíčů v Azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Postup obnovení klíčů trezoru klíčů v Azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey)
 
 * [Použití klíčů spravovaných zákazníkem pro účet Automation](./automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)
 
@@ -1190,7 +1190,7 @@ Pomocí funkce integrace správy zdrojového kódu můžete své Runbooky v úč
 
 Pomocí funkce integrace správy zdrojového kódu můžete své Runbooky v účtu Automation udržovat v aktuálním stavu pomocí skriptů v úložišti správy zdrojových kódů.
 
-* [Jak v Azure DevOps ukládat kód](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [Jak v Azure DevOps ukládat kód](/azure/devops/repos/git/gitworkflow)
 
 * [O oprávněních a skupinách v Azure DevOps](/azure/devops/organizations/security/about-permissions)
 

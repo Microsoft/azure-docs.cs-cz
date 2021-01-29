@@ -13,18 +13,15 @@ ms.author: ajburnle
 ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 425809339cf4c468293801460fdeb79d9e467968
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 562162e0bd42b0a46b2b0c6d44ca9b37f1841750
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89565595"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052856"
 ---
 # <a name="sign-up-for-azure-active-directory-premium-editions"></a>Registrace pro edice Azure Active Directory Premium
 K předplatnému Azure si můžete koupit a přidružit edice Azure Active Directory (Azure AD) Premium. Pokud potřebujete vytvořit nové předplatné Azure, budete také muset aktivovat svůj licenční plán a přístup ke službě Azure AD.
-
-> [!NOTE]
->Edice Premium a Basic služby Azure AD jsou zákazníkům v Číně dostupné prostřednictvím celosvětové instance služby Azure Active Directory. Edice Premium a Basic služby Azure AD v současnosti nejsou podporované ve službě Azure provozované v Číně společností 21Vianet. Můžete se na nás obrátit na [fóru služby Azure Active Directory](https://feedback.azure.com/forums/169401-azure-active-directory/), kde se dozvíte další informace.
 
 Než si zaregistrujete edice Active Directory Premium 1 nebo Premium 2, musíte napřed určit, jaké stávající předplatné nebo plán chcete použít:
 

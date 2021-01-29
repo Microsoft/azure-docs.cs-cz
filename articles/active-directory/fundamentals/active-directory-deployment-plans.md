@@ -12,12 +12,12 @@ ms.date: 12/01/2020
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ca2ade1775d7224ce55ee1c51dfdd2ae417151e
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 4185ffd644d54c419f42c78326ca10bf100443c3
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672377"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051426"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Plány nasazení Azure Active Directory
 Hledáte kompletní pokyny k nasazení funkcí Azure Active Directory (Azure AD)? Plány nasazení Azure AD vás seznámí s obchodní hodnotou, požadavky na plánování a provozními postupy potřebnými k úspěšnému nasazení běžných funkcí služby Azure AD.
@@ -39,7 +39,7 @@ Na kterékoli stránce plánu použijte možnost Tisk v prohlížeči do formát
 | Schopnost | Description|
 | -| - |
 | [Jednotné přihlašování](../manage-apps/plan-sso-deployment.md)| Jednotné přihlašování pomáhá uživatelům přistupovat k aplikacím a prostředkům, které potřebují k podnikání, a současně se přihlašuje. Až se přihlásí, můžou přejít z systém Microsoft Office do služby SalesForce do interních aplikací, aniž by se museli zadávat přihlašovací údaje podruhé. |
-| [Přístupový panel](../manage-apps/access-panel-deployment-plan.md)| Poskytněte uživatelům jednoduché centrum pro zjišťování a přístup ke všem jejich aplikacím. Umožněte jejich zvýšení produktivity díky funkcím samoobslužné služby, jako je vyžadování přístupu k aplikacím a skupinám nebo Správa přístupu k prostředkům jménem jiných uživatelů. |
+| [Moje aplikace](../manage-apps/my-apps-deployment-plan.md)| Poskytněte uživatelům jednoduché centrum pro zjišťování a přístup ke všem jejich aplikacím. Umožněte jejich zvýšení produktivity díky funkcím samoobslužné služby, jako je vyžadování přístupu k aplikacím a skupinám nebo Správa přístupu k prostředkům jménem jiných uživatelů. |
 | [Zařízení](../devices/plan-device-deployment.md) | Tento článek vám pomůže vyhodnotit metody pro integraci zařízení s Azure AD, zvolit plán implementace a poskytuje klíčové odkazy na podporované nástroje pro správu zařízení. |
 
 

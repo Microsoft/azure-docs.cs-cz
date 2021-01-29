@@ -66,14 +66,20 @@
           href: automation-create-standalone-account.md
         - name: Vytvoření účtu Automation s využitím šablony Resource Manageru
           href: quickstart-create-automation-account-template.md
+        - name: Účet Spustit jako
+          items:
+            - name: Vytvořit účet Spustit jako
+              href: create-run-as-account.md
+            - name: Odstranění účtu Spustit jako
+              href: delete-run-as-account.md
+            - name: Spravovat účet Spustit jako
+              href: manage-runas-account.md
         - name: Konfigurace ověřování s využitím Amazon Web Services
           href: automation-config-aws-account.md
         - name: Konfigurace ověřování s využitím Azure AD
           href: automation-use-azure-ad.md
-        - name: Správa záznamu DNS využívaného službou Automation
+        - name: Správa záznamů DNS používaných Automation
           href: how-to/automation-region-dns-records.md
-        - name: Správa účtu Spustit jako služby Automation
-          href: manage-runas-account.md
         - name: Privátní připojení k účtu Automation
           href: how-to/private-link-security.md
         - name: Správa oprávnění rolí a zabezpečení

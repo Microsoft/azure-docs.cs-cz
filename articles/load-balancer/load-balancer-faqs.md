@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 04/22/2020
 ms.author: errobin
-ms.openlocfilehash: e9f46b11d9c0b5251ee4d52f64d657926f6f9c5e
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 38054d983b0a9f01f396b7379fec37de452d03b7
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222985"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051868"
 ---
 # <a name="load-balancer-frequently-asked-questions"></a>Load Balancer nejčastějších dotazech
 
@@ -48,6 +48,10 @@ Pomocí příkazu nslookup můžete odeslat dotaz DNS pro název myip.opendns.co
  
 ## <a name="can-i-add-a-vm-from-the-same-availability-set-to-different-backend-pools-of-a-load-balancer"></a>Můžu přidat virtuální počítač ze stejné skupiny dostupnosti do různých back-endu Load Balancer?
 Ne, toto se stát nemůže.
+
+## <a name="what-is-the-maximum-data-throughput-that-can-be-achieved-via-an-azure-load-balancer"></a>Jaká je maximální propustnost dat, kterou je možné dosáhnout pomocí Azure Load Balancer?
+Vzhledem k tomu, že Azure diskont je průchozí síťový nástroj pro vyrovnávání zatížení, určují se omezení propustnosti podle typu virtuálního počítače použitého ve fondu back-endu. Další informace o dalších informacích o propustnosti sítě najdete v tématu [propustnost sítě virtuálních počítačů](../virtual-network/virtual-machine-network-throughput.md).
+
 
 ## <a name="how-do-connections-to-azure-storage-in-the-same-region-work"></a>Jak funguje připojení k Azure Storage ve stejné oblasti?
 Pro připojení k úložišti ve stejné oblasti jako virtuální počítač není nutné mít odchozí připojení prostřednictvím výše uvedených scénářů. Pokud to nechcete, použijte skupiny zabezpečení sítě (skupin zabezpečení sítě), jak je vysvětleno výše. Připojení k úložišti v jiných oblastech vyžaduje odchozí připojení. Pamatujte na to, že při připojování k úložišti z virtuálního počítače ve stejné oblasti bude zdrojová IP adresa v diagnostických protokolech úložiště interní adresa poskytovatele, nikoli veřejná IP adresa vašeho virtuálního počítače. Pokud chcete omezit přístup k účtu úložiště na virtuální počítače v jedné nebo více Virtual Networkch podsítích ve stejné oblasti, při konfiguraci brány firewall účtu úložiště použijte [koncové body služby Virtual Network](../virtual-network/virtual-network-service-endpoints-overview.md) a nemusíte mít veřejnou IP adresu. Po nakonfigurování koncových bodů služby se v diagnostických protokolech úložiště zobrazí vaše Virtual Network privátní IP adresa, nikoli adresa interního poskytovatele.

@@ -1,18 +1,16 @@
 ---
-title: Povolit Update Management pomocí šablony Azure Resource Manager | Microsoft Docs
+title: Povolení Update Managementu s využitím šablony Azure Resource Manageru
 description: V tomto článku se dozvíte, jak používat šablonu Azure Resource Manager k povolení Update Management.
-ms.service: automation
+services: automation
 ms.subservice: update-management
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
 ms.date: 09/18/2020
-ms.openlocfilehash: e2ebdd3d0f4a4461521ee5f412d5b4c4f872b8a0
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 47c982bff45838617b9a55f9129d4dc55d58b0d2
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183230"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99050327"
 ---
 # <a name="enable-update-management-using-azure-resource-manager-template"></a>Povolení Update Managementu s využitím šablony Azure Resource Manageru
 
@@ -29,7 +27,7 @@ K povolení funkce Update Management Azure Automation ve vaší skupině prostř
 Pokud už máte pracovní prostor Log Analytics a účet Automation je nasazený v podporované oblasti v rámci vašeho předplatného, nejsou propojené. Pomocí této šablony se úspěšně vytvoří odkaz a nasadí se Update Management.
 
 >[!NOTE]
->Vytvoření účtu Automation spustit jako není podporované, když používáte šablonu ARM. Pokud chcete vytvořit účet Spustit jako ručně z portálu nebo pomocí PowerShellu, přečtěte si téma [Správa účtů spustit jako](../manage-runas-account.md).
+>Vytvoření účtu Automation spustit jako není podporované, když používáte šablonu ARM. Pokud chcete vytvořit účet Spustit jako ručně z portálu nebo pomocí PowerShellu, přečtěte si téma [Vytvoření účtu Spustit jako](../create-run-as-account.md).
 
 Po dokončení těchto kroků je potřeba [nakonfigurovat nastavení diagnostiky](../automation-manage-send-joblogs-log-analytics.md) pro váš účet Automation, aby se odesílaly datové proudy úloh Runbooku do propojeného Log Analytics pracovního prostoru.
 
@@ -325,7 +323,7 @@ Pokud Azure Automation a Azure Monitor začínáte, je důležité, abyste poroz
 
 ## <a name="review-deployed-resources"></a>Kontrola nasazených prostředků
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 2. V Azure Portal otevřete účet Automation, který jste vytvořili.
 

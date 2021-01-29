@@ -10,12 +10,12 @@ ms.workload: data-services
 author: dcstwh
 ms.author: weetok
 manager: anandsub
-ms.openlocfilehash: 70be8d8be48f2b1e1cc275c06e4abff09e3e62f6
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 30e07b645701cf560534b152ae42559213daf838
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498570"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053767"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Role a oprávnění pro službu Azure Data Factory
 
@@ -56,6 +56,12 @@ Oprávnění pro Azure Repos a GitHub jsou nezávislá na oprávněních Data Fa
 
 > [!IMPORTANT]
 > Nasazení šablon Správce prostředků s rolí **přispěvatele Data Factory** nezvyšuje vaše oprávnění. Pokud například nasadíte šablonu, která vytvoří virtuální počítač Azure, a nemáte oprávnění k vytváření virtuálních počítačů, nasazení se nepovede a dojde k chybě autorizace.
+
+> [!IMPORTANT]
+> Oprávnění **Microsoft. DataFactory/Factory/Write** se vyžaduje v obou režimech v rámci kontextu publikování.
+
+- Toto oprávnění je vyžadováno v živém režimu pouze v případě, že zákazník mění globální parametry.
+- Toto oprávnění je vždy vyžadováno v režimu Git, protože pokaždé, když se zákazník publikuje, se aktualizuje objekt factory s posledním ID potvrzení.
 
 ### <a name="custom-scenarios-and-custom-roles"></a>Vlastní scénáře a vlastní role
 

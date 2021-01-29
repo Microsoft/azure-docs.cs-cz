@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/16/2020
+ms.date: 01/28/2021
 ms.author: jeedes
-ms.openlocfilehash: 329e0fbfdea43f3933333744f89ed1c03ef0ed13
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: d0c8364cc85cfce900021272d17456527919122b
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98729293"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99050800"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-timeclock-365-saml"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s timeclock 365 SAML
 
@@ -70,7 +70,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V Azure Portal na stránce integrace aplikace **Timeclock 365 SAML** najděte část **Správa** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu tužky pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -109,7 +109,15 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 ## <a name="configure-timeclock-365-saml-sso"></a>Konfigurace jednotného přihlašování SAML v timeclock 365
 
-1. V prohlížeči otevřete novou kartu a přihlaste se k webu timeclock 365 SAML jako správce.
+1. Pokud chcete automatizovat konfiguraci v rámci timeclock 365 SAML, je potřeba nainstalovat rozšíření **prohlížeče zabezpečeného přihlašování aplikace** kliknutím na **instalovat rozšíření**.
+
+    ![Rozšíření moje aplikace](common/install-myappssecure-extension.png)
+
+2. Po přidání rozšíření do prohlížeče klikněte na **nastavit Timeclock 365 SAML** , které vás přesměruje na aplikaci TIMECLOCK 365 SAML. Odtud zadejte přihlašovací údaje správce pro přihlášení k timeclock 365 SAML. Rozšíření prohlížeče automaticky provede konfiguraci aplikace za vás a automatizujte kroky 3-4.
+
+    ![Konfigurace instalace](common/setup-sso.png)
+
+3. Pokud chcete ručně nastavit timeclock 365 SAML, v jiném okně webového prohlížeče se přihlaste ke svému webu timeclock 365 společnosti SAML jako správce.
 
 1. Proveďte níže uvedené kroky.
 

@@ -12,12 +12,12 @@ ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 3587beaeb788665c68c1fcb6376af40566b6c35e
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: f8fe027b350968a99aab5458fc2d7c1699fb50e3
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032775"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052511"
 ---
 # <a name="manage-app-consent-policies"></a>Správa zásad souhlasu pro aplikace
 
@@ -115,7 +115,7 @@ Po vytvoření zásady pro vyjádření souhlasu s aplikací můžete této zás
 
 ## <a name="delete-a-custom-app-consent-policy"></a>Odstraní vlastní zásadu pro vyjádření souhlasu s aplikací.
 
-1. Níže vidíte, jak můžete odstranit vlastní zásadu pro vyjádření souhlasu s aplikací. **Tuto akci nelze vrátit zpět.**
+1. Níže vidíte, jak můžete odstranit vlastní zásadu pro vyjádření souhlasu s aplikací. **Tuto akci nejde vrátit zpátky.**
 
    ```powershell
    Remove-AzureADMSPermissionGrantPolicy -Id "my-custom-policy"
@@ -130,7 +130,7 @@ Po vytvoření zásady pro vyjádření souhlasu s aplikací můžete této zás
 
 Následující tabulka uvádí seznam podporovaných podmínek pro zásady pro vyjádření souhlasu s aplikacemi.
 
-| Podmínka | Popis|
+| Podmínka | Description|
 |:---------------|:----------|
 | PermissionClassification | [Klasifikace oprávnění](configure-permission-classifications.md) pro udělená oprávnění nebo "vše", aby odpovídala libovolné klasifikaci oprávnění (včetně oprávnění, která nejsou klasifikována). Výchozí hodnota je All (vše). |
 | PermissionType | Typ oprávnění uděleného oprávnění Pro delegovaná oprávnění použijte "Application" pro oprávnění aplikací (např. role aplikace) nebo delegovaný. <br><br>**Poznámka**: hodnota "delegatedUserConsentable" označuje delegovaná oprávnění, která nenakonfiguroval Vydavatel rozhraní API, aby vyžadovala souhlas správce. Tato hodnota se dá použít v předdefinovaných zásadách udělení oprávnění, ale nedá se použít v zásadách udělení vlastních oprávnění. Povinná hodnota. |
@@ -152,4 +152,4 @@ Další informace najdete v tématech:
 * [Oprávnění a souhlas na platformě Microsoft identity](../develop/v2-permissions-and-consent.md)
 
 Pokud chcete získat nápovědu nebo najít odpovědi na své otázky:
-* [Azure AD v StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
+* [Azure AD v StackOverflow](https://docs.microsoft.com/answers/topics/azure-active-directory.html)

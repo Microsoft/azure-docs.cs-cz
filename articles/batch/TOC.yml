@@ -143,6 +143,8 @@
           href: batch-sig-images.md
         - name: Vytvoření fondu s využitím prostředku spravované image
           href: batch-custom-images.md
+        - name: Vytvoření fondu napříč Zóny dostupnosti
+          href: create-pool-availability-zones.md
         - name: Vytvoření fondu s povoleným šifrováním disků
           href: disk-encryption.md
         - name: Vytvoření fondu ve virtuální síti

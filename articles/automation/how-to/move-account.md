@@ -2,19 +2,15 @@
 title: Přesunutí účtu Azure Automation do jiného předplatného
 description: V tomto článku se dozvíte, jak přesunout účet Automation do jiného předplatného.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
-ms.date: 03/11/2019
+ms.date: 01/07/2021
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 8454c5a5bb5b44d2a60ae0095a9b82a19ed27c8d
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: a86d876a723c89eb8dcdf18c8318f2a9c740a229
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896642"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051020"
 ---
 # <a name="move-your-azure-automation-account-to-another-subscription"></a>Přesunutí účtu Azure Automation do jiného předplatného
 
@@ -108,7 +104,7 @@ Nyní můžete přesunout svůj účet Automation a jeho Runbooky.
 
 ## <a name="re-create-run-as-accounts"></a>Opětovné vytvoření účtů spustit jako
 
-[Účty Spustit jako](../manage-runas-account.md) vytvoří instanční objekt v Azure Active Directory k ověřování pomocí prostředků Azure. Když změníte předplatné, účet Automation už nepoužívá existující účet Spustit jako. Postup opětovného vytvoření účtů spustit jako:
+[Účty Spustit jako](../automation-security-overview.md#run-as-accounts) vytvoří instanční objekt v Azure Active Directory k ověřování pomocí prostředků Azure. Když změníte předplatné, účet Automation už nepoužívá existující účet Spustit jako. Postup opětovného vytvoření účtů spustit jako:
 
 1. V rámci nového předplatného vyberte účet Automation a v části **Nastavení účtu** vyberte **účty Spustit jako** . Uvidíte, že účty Spustit jako jsou nyní zobrazeny jako nedokončené.
 
@@ -117,7 +113,7 @@ Nyní můžete přesunout svůj účet Automation a jeho Runbooky.
 2. Odstraňte účty Spustit jako, a to tak, že na stránce **vlastnosti** vyberete **Odstranit** . 
 
     > [!NOTE]
-    > Pokud nemáte oprávnění k vytvoření nebo zobrazení účtů spustit jako, zobrazí se následující zpráva: další `You do not have permissions to create an Azure Run As account (service principal) and grant the Contributor role to the service principal.` informace najdete v tématu [oprávnění požadovaná ke konfiguraci účtů spustit jako](../manage-runas-account.md#permissions).
+    > Pokud nemáte oprávnění k vytvoření nebo zobrazení účtů spustit jako, zobrazí se následující zpráva: další `You do not have permissions to create an Azure Run As account (service principal) and grant the Contributor role to the service principal.` informace najdete v tématu [oprávnění požadovaná ke konfiguraci účtů spustit jako](../automation-security-overview.md#permissions).
 
 3. Po odstranění účtů spustit jako vyberte v části **účet Spustit jako pro Azure** možnost **vytvořit** . 
 

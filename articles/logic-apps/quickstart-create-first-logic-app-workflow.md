@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/30/2020
-ms.openlocfilehash: 9d402599c4d6732ce92b8c64af6f660bcedbc4ba
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: d90b9e38158d951990fffc21a43317c688da12c9
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96455061"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052038"
 ---
 # <a name="quickstart-create-your-first-logic-apps-workflow---azure-portal"></a>Rychlý Start: vytvoření prvního pracovního postupu Logic Apps – Azure Portal
 
@@ -28,13 +28,16 @@ Pokud se chcete dozvědět, jak vytvořit a spravovat svou první aplikaci logik
 * [Vytváření a Správa aplikací logiky v Visual Studio Code](quickstart-create-logic-apps-visual-studio-code.md)
 * [Vytváření a Správa aplikací logiky v aplikaci Visual Studio](quickstart-create-logic-apps-with-visual-studio.md)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud ho ještě nemáte, [Zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Účet a předplatné Azure. Pokud ho ještě nemáte, [Zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+
 * E-mailový účet ze služby, kterou podporuje Logic Apps (například Office 365 Outlook nebo Outlook.com). Další podporované poskytovatele e-mailu najdete [v seznamu konektorů](/connectors/).
 
     > [!IMPORTANT]
     > Pokud používáte [konektor Gmail](/connectors/gmail/), mějte na paměti, že tento konektor může používat jenom účet G Suite bez omezení Logic Apps. Pokud máte účet služby Gmail pro příjemce, můžete tento konektor použít jenom s konkrétními službami, které jsou schválené pro Google, pokud [nevytvoříte klientskou aplikaci Google pro ověřování pomocí konektoru Gmail](/connectors/gmail/#authentication-and-bring-your-own-application). Další informace najdete v tématu [zásady zabezpečení a ochrany osobních údajů pro konektory Google v Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md).
+
+* Pokud vaše aplikace logiky potřebuje komunikovat přes bránu firewall, která omezuje provoz na konkrétní IP adresy, musí brána firewall povolit přístup *pro* [příchozí](logic-apps-limits-and-config.md#inbound) i [odchozí](logic-apps-limits-and-config.md#outbound) IP adresy, které používá služba Logic Apps nebo modul runtime v oblasti Azure, ve které vaše aplikace logiky existuje. Pokud vaše aplikace logiky používá i [spravované konektory](../connectors/apis-list.md#managed-api-connectors), jako je například konektor Office 365 Outlook nebo konektor SQL, nebo používá [vlastní konektory](/connectors/custom-connectors/), musí brána firewall také umožňovat přístup pro *všechny* [odchozí IP adresy spravovaného konektoru](logic-apps-limits-and-config.md#outbound) v oblasti Azure vaší aplikace logiky.
 
 <a name="create-logic-app"></a>
 
@@ -51,7 +54,7 @@ Pokud se chcete dozvědět, jak vytvořit a spravovat svou první aplikaci logik
    ![Obrazovka stránky Logic Apps služby v Azure Portal, která zobrazuje seznam Logic Apps a vybrané tlačítko Přidat.](./media/quickstart-create-first-logic-app-workflow/add-new-logic-app.png)
 
 1. V podokně **Aplikace logiky** zadejte základní podrobnosti a nastavení vaší aplikace logiky. Vytvořte novou [skupinu prostředků](../azure-resource-manager/management/overview.md#terminology) pro účely této ukázkové aplikace logiky.
-    
+
    | Vlastnost | Hodnota | Popis |
    |----------|-------|-------------|
    | **Název** | <*Logic-App-Name*> | Název vaší aplikace logiky, který musí být jedinečný napříč oblastmi. Název může obsahovat jenom písmena, číslice, spojovníky ( `-` ), podtržítka ( `_` ), kulaté závorky ( `(` , `)` ) a tečky ( `.` ). Tento příklad používá "moji-First-Logic-App". |

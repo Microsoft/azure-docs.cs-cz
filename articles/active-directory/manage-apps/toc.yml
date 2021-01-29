@@ -50,7 +50,7 @@
         - name: 'Plánování aplikací, které nejsou uvedené v galerii'
           href: non-gallery-apps.md
         - name: Plánování nasazení pro Moje aplikace
-          href: access-panel-deployment-plan.md
+          href: my-apps-deployment-plan.md
     - name: Jednotné přihlašování
       items:
         - name: Plánování nasazení jednotného přihlašování

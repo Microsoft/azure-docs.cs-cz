@@ -3,22 +3,18 @@ title: 'Rychlý Start: vytvoření účtu Automation – šablona Azure'
 titleSuffix: Azure Automation
 description: V tomto rychlém startu se dozvíte, jak vytvořit účet Automation pomocí šablony Azure Resource Manager.
 services: automation
-documentationcenter: na
-author: mgoedtel
 Customer intent: I want to create an Automation account by using an Azure Resource Manager template so that I can automate processes with runbooks.
-ms.service: automation
-ms.devlang: na
 ms.topic: quickstart
 ms.workload: infrastructure-services
-ms.date: 07/23/2020
+ms.date: 01/07/2021
 ms.author: magoedte
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: 9315b898e290dc758c300f9b74006b4b08888e9e
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: d0582876a08b433a10106b97179ab603d4ec5762
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078948"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99050664"
 ---
 # <a name="quickstart-create-an-automation-account-by-using-arm-template"></a>Rychlý Start: vytvoření účtu Automation pomocí šablony ARM
 
@@ -44,7 +40,7 @@ Tato ukázková šablona provede následující:
 * Přidá do účtu ukázkové Runbooky pro automatizaci.
 
 >[!NOTE]
->Vytvoření účtu Automation spustit jako není podporované, když používáte šablonu ARM. Pokud chcete vytvořit účet Spustit jako ručně z portálu nebo pomocí PowerShellu, přečtěte si téma [Správa účtů spustit jako](manage-runas-account.md).
+>Vytvoření účtu Automation spustit jako není podporované, když používáte šablonu ARM. Pokud chcete vytvořit účet Spustit jako ručně z portálu nebo pomocí PowerShellu, přečtěte si téma [Vytvoření účtu Spustit jako](create-run-as-account.md).
 
 Po dokončení těchto kroků je potřeba [nakonfigurovat nastavení diagnostiky](automation-manage-send-joblogs-log-analytics.md) pro váš účet Automation, aby se odesílaly datové proudy úloh Runbooku do propojeného Log Analytics pracovního prostoru.
 
@@ -104,7 +100,7 @@ Pokud Azure Automation a Azure Monitor začínáte, je důležité, abyste poroz
 
 ## <a name="review-deployed-resources"></a>Kontrola nasazených prostředků
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 2. V Azure Portal otevřete účet Automation, který jste právě vytvořili. 
 

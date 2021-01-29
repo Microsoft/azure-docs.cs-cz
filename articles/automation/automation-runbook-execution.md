@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 10/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6ac7d99f4a47711f9974d30d877a3237eec15443
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 71273c456b14fa4ea289e2a48d441de99ce8a4b1
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078829"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053903"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Spouštění runbooků ve službě Azure Automation
 
@@ -43,7 +43,7 @@ Můžete také použít [Hybrid Runbook Worker](automation-hybrid-runbook-worker
 
 V následující tabulce jsou uvedeny některé úlohy spuštění sady Runbook s doporučeným spouštěcím prostředím uvedeným pro každé z nich.
 
-|Úloha|Doporučení|Poznámky|
+|Úkol|Doporučení|Poznámky|
 |---|---|---|
 |Integrace s prostředky Azure|Izolovaný prostor Azure|Hostovaná v Azure je ověřování jednodušší. Pokud používáte Hybrid Runbook Worker na virtuálním počítači Azure, můžete [použít ověřování Runbooku se spravovanými identitami](automation-hrw-run-runbooks.md#runbook-auth-managed-identities).|
 |Získání optimálního výkonu pro správu prostředků Azure|Izolovaný prostor Azure|Skript se spouští ve stejném prostředí, které má méně latence.|
@@ -65,7 +65,7 @@ Pokud potřebujete vytvořit dočasné soubory jako součást logiky sady Runboo
 
 Pomocí hybridního izolovaného prostoru (sandbox) můžete použít na `C:\temp` základě dostupnosti úložiště na Hybrid Runbook Worker. V případě doporučení pro virtuální počítače Azure byste ale neměli používat [dočasný disk](../virtual-machines/managed-disks-overview.md#temporary-disk) v systému Windows nebo Linux pro data, která je třeba zachovat.
 
-## <a name="resources"></a>Zdroje a prostředky
+## <a name="resources"></a>Zdroje informací
 
 Vaše Runbooky musí zahrnovat logiku pro práci s [prostředky](/rest/api/resources/resources), například virtuální počítače, síť a prostředky v síti. Prostředky jsou vázané na předplatné Azure a runbooky vyžadují odpovídající přihlašovací údaje pro přístup k jakémukoli prostředku. Příklad zpracování prostředků v sadě Runbook najdete v tématu [zpracování prostředků](manage-runbooks.md#handle-resources).
 
@@ -79,7 +79,7 @@ ASC umisťuje omezení pro uživatele, kteří můžou na virtuálním počíta�
 
 [Předplatné](/office365/enterprise/subscriptions-licenses-accounts-and-tenants-for-microsoft-cloud-offerings) Azure je smlouvou s Microsoftem pro použití jedné nebo několika cloudových služeb, pro které se vám účtují poplatky. Pro Azure Automation je každé předplatné propojené s účtem Azure Automation a v účtu můžete [vytvořit víc předplatných](manage-runbooks.md#work-with-multiple-subscriptions) .
 
-## <a name="credentials"></a>Credentials
+## <a name="credentials"></a>Přihlašovací údaje
 
 Sada Runbook vyžaduje příslušné [přihlašovací údaje](shared-resources/credentials.md) pro přístup k jakémukoli prostředku bez ohledu na to, jestli se jedná o systémy Azure nebo třetích stran. Tyto přihlašovací údaje jsou uložené v Azure Automation, Key Vault atd.  
 
@@ -112,7 +112,7 @@ K dispozici jsou protokoly pro agenta Log Analytics a účet **nxautomation** :
 
 ## <a name="runbook-permissions"></a>Oprávnění runbooků
 
-Sada Runbook potřebuje k ověřování do Azure oprávnění prostřednictvím přihlašovacích údajů. Viz [Správa účtů spustit jako Azure Automation](manage-runas-account.md).
+Sada Runbook potřebuje k ověřování do Azure oprávnění prostřednictvím přihlašovacích údajů. Viz [Přehled ověřování Azure Automation](automation-security-overview.md).
 
 ## <a name="modules"></a>Moduly
 
@@ -139,6 +139,7 @@ Následující tabulka popisuje stavy, které jsou pro úlohu možné. Můžete 
 
 | Status | Popis |
 |:--- |:--- |
+| Aktivoval |Úloha se aktivuje. |
 | Dokončeno |Úloha se úspěšně dokončila. |
 | Neúspěšný |Nepovedlo se zkompilovat grafickou sadu Runbook pracovního postupu nebo PowerShellu. PowerShellový Runbook se nepovedlo spustit, nebo má úlohu výjimku. Viz [Azure Automation typy runbooků](automation-runbook-types.md).|
 | Selhání, čekání na prostředky |Úloha se nezdařila, protože dosáhla limitu [reálného podílu](#fair-share) třikrát a zároveň začíná ze stejného kontrolního bodu nebo od začátku Runbooku. |
@@ -204,7 +205,7 @@ function Get-ContosoFiles
 }
 ```
 
-## <a name="errors"></a>chyby
+## <a name="errors"></a>Chyby
 
 Vaše Runbooky musí zpracovávat chyby. Azure Automation podporuje dva typy chyb prostředí PowerShell, ukončení a neukončení. 
 

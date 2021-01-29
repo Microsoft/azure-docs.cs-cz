@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: contperf-fy21q1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: f3c147b292ab21bd4e568f9e52acef07396acc28
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: d1632c66791dd5e697b95a2c5aaaddea81629abf
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878218"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052818"
 ---
 # <a name="using-snat-for-outbound-connections"></a>Použití SNAT pro odchozí připojení
 
@@ -66,7 +66,7 @@ Pokud je nakonfigurován [scénář 2](#scenario2) níže, bude hostitel pro ka�
  | Veřejný Nástroj pro vyrovnávání zatížení nebo samostatný | [SNAT (zdrojový překlad adresy zdrojové sítě)](#snat) </br> nepoužívá se. | TCP (protokol řízení přenosů) </br> UDP (protokol datadatagram uživatele) </br> ICMP (Internet Control Message Protocol) </br> ESP (zapouzdření datové části zabezpečení) |
 
 
- #### <a name="description"></a>Popis
+ #### <a name="description"></a>Description
 
 
  Azure používá veřejnou IP adresu přiřazenou ke konfiguraci protokolu IP síťové karty instance pro všechny odchozí toky. Instance má k dispozici všechny dočasné porty. Nezáleží na tom, jestli je virtuální počítač vyrovnaný k vyrovnávání zatížení. Tento scénář má přednost před ostatními. 
@@ -80,10 +80,10 @@ Pokud je nakonfigurován [scénář 2](#scenario2) níže, bude hostitel pro ka�
 
  | Přidružení | Metoda | Protokoly IP |
  | ------------ | ------ | ------------ |
- | Veřejný nástroj pro vyrovnávání zatížení | Použití IP adresy front-endu nástroje pro vyrovnávání zatížení pro [SNAT](#snat).| TCP </br> UDP |
+ | Standardní veřejný Nástroj pro vyrovnávání zatížení | Použití IP adresy front-endu nástroje pro vyrovnávání zatížení pro [SNAT](#snat).| TCP </br> UDP |
 
 
- #### <a name="description"></a>Popis
+ #### <a name="description"></a>Description
 
 
  Prostředek nástroje pro vyrovnávání zatížení je nakonfigurovaný pomocí odchozího pravidla nebo pravidla vyrovnávání zatížení, které umožňuje výchozí SNAT. Toto pravidlo slouží k vytvoření propojení mezi veřejnou IP frontou front-endu a back-end fondem. 
@@ -103,15 +103,25 @@ Pokud je nakonfigurován [scénář 2](#scenario2) níže, bude hostitel pro ka�
 
  V tomto kontextu se dočasné porty používané pro SNAT nazývají porty SNAT. Důrazně doporučujeme, aby [odchozí pravidlo](./outbound-rules.md) bylo explicitně nakonfigurované. Pokud použijete výchozí SNAT prostřednictvím pravidla vyrovnávání zatížení, porty SNAT jsou předem přiděleny, jak je popsáno ve [výchozí tabulce alokace portů SNAT](#snatporttable).
 
+ ### <a name="scenario-3-virtual-machine-without-public-ip-and-behind-standard-internal-load-balancer"></a><a name="scenario3"></a>Scénář 3: virtuální počítač bez veřejné IP adresy a za standardním interním Load Balancer
 
- ### <a name="scenario-3-virtual-machine-without-public-ip-and-behind-basic-load-balancer"></a><a name="scenario3"></a>Scénář 3: virtuální počítač bez veřejné IP adresy a za základní Load Balancer
+
+ | Přidružení | Metoda | Protokoly IP |
+ | ------------ | ------ | ------------ |
+ | Standardní interní nástroj pro vyrovnávání zatížení | Bez připojení k Internetu.| Žádné |
+
+ #### <a name="description"></a>Description
+ 
+Při použití standardního interního nástroje pro vyrovnávání zatížení není k dispozici žádné použití dočasných IP adres pro SNAT. Tím se standardně podporují zabezpečení a zajišťují, že všechny IP adresy, které prostředek používá, se dají konfigurovat a můžou být rezervované. Aby bylo možné dosáhnout odchozího připojení k Internetu při použití standardního interního nástroje pro vyrovnávání zatížení, nakonfigurujte veřejnou IP adresu na úrovni instance tak, aby následovala podle chování (scénář 1) [#scenario1], nebo přidejte back-end instance ke standardnímu veřejnému nástroji pro vyrovnávání zatížení s odchozím pravidlem nakonfigurovaným v dále do interního nástroje pro vyrovnávání zatížení #scenario2, aby 
+
+ ### <a name="scenario-4-virtual-machine-without-public-ip-and-behind-basic-load-balancer"></a><a name="scenario4"></a>Scénář 4: virtuální počítač bez veřejné IP adresy a za základní Load Balancer
 
 
  | Přidružení | Metoda | Protokoly IP |
  | ------------ | ------ | ------------ |
  |Žádné </br> Základní nástroj pro vyrovnávání zatížení | [SNAT](#snat) s dynamickou IP adresou na úrovni instance| TCP </br> UDP | 
 
- #### <a name="description"></a>Popis
+ #### <a name="description"></a>Description
 
 
  Když virtuální počítač vytvoří odchozí tok, Azure převede zdrojovou IP adresu dynamicky přidělené veřejné zdrojové IP adrese. Tato veřejná IP adresa **není konfigurovatelná** a nedá se rezervovat. Tato adresa se nepočítá s omezením prostředků veřejné IP adresy předplatného. 
@@ -126,7 +136,6 @@ Pokud je nakonfigurován [scénář 2](#scenario2) níže, bude hostitel pro ka�
 
 
  Nepoužívejte tento scénář pro přidání IP adres do seznamu povolených serverů. Použijte scénář 1 nebo 2, kde explicitně deklarujete odchozí chování. Porty [SNAT](#snat) jsou předpřidělené, jak je popsáno ve [výchozí tabulce alokace portů SNAT](#snatporttable).
-
 
 ## <a name="exhausting-ports"></a><a name="scenarios"></a> Vyčerpání portů
 

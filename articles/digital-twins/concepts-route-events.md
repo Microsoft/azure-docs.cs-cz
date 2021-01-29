@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: aa3466456b99664b1b39bd415680a6a291f85acd
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: c51f8c894c9a88b6ae81460623eec616d29b62ff
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98049282"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99050511"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Směrování událostí v rámci digitálních vláken Azure a mimo ně
 
@@ -50,12 +50,12 @@ Informace o postupu při nastavení funkce Azure pro zpracování digitálních 
 
 ## <a name="create-an-endpoint"></a>Vytvoření koncového bodu
 
-Aby bylo možné definovat trasu události, vývojáři musí nejprve definovat koncové body. **Koncový bod** je cíl mimo digitální vlákna Azure, které podporuje připojení ke směrování. Mezi podporované cíle patří:
+Aby mohli vývojáři definovat trasu události, musí nejdřív definovat koncové body. **Koncový bod** je cíl mimo digitální vlákna Azure, které podporuje připojení ke směrování. Mezi podporované cíle patří:
 * Event Grid vlastní témata
 * Centrum událostí
 * Service Bus
 
-Pokud chcete vytvořit koncový bod, můžete použít [**rozhraní API plochy ovládacího prvku**](how-to-manage-routes-apis-cli.md#create-an-endpoint-for-azure-digital-twins)Azure Digital vlákna, [**příkazy CLI**](how-to-manage-routes-apis-cli.md#manage-endpoints-and-routes-with-cli)nebo [**Azure Portal**](how-to-manage-routes-portal.md#create-an-endpoint-for-azure-digital-twins). 
+Pokud chcete vytvořit koncový bod, můžete použít rozhraní REST API pro digitální vlákna Azure [, příkazy CLI](how-to-manage-routes-apis-cli.md#create-an-endpoint-for-azure-digital-twins)nebo [Azure Portal](how-to-manage-routes-portal.md#create-an-endpoint-for-azure-digital-twins).
 
 Při definování koncového bodu je potřeba zadat:
 * Název koncového bodu
@@ -71,7 +71,7 @@ Rozhraní API koncového bodu, která jsou k dispozici v řídicí rovině, jsou
 
 ## <a name="create-an-event-route"></a>Vytvoření trasy události
  
-Pokud chcete vytvořit trasu události, můžete použít [**rozhraní API roviny dat**](how-to-manage-routes-apis-cli.md#create-an-event-route)digitálních vláken Azure, [**příkazy CLI**](how-to-manage-routes-apis-cli.md#manage-endpoints-and-routes-with-cli)nebo [**Azure Portal**](how-to-manage-routes-portal.md#create-an-event-route). 
+Pokud chcete vytvořit trasu události, můžete použít rozhraní REST API služby Azure Digital revláken [, příkazy CLI](how-to-manage-routes-apis-cli.md#create-an-event-route)nebo [Azure Portal](how-to-manage-routes-portal.md#create-an-event-route).
 
 Tady je příklad vytvoření trasy události v rámci klientské aplikace pomocí `CreateOrReplaceEventRouteAsync` volání [rozhraní .NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) : 
 
@@ -85,8 +85,6 @@ Tady je příklad vytvoření trasy události v rámci klientské aplikace pomoc
 
 > [!TIP]
 > Všechny funkce sady SDK přicházejí v synchronních a asynchronních verzích.
-
-Trasy je také možné vytvořit pomocí rozhraní příkazového [řádku Azure Digital zdvojené](how-to-use-cli.md).
 
 ## <a name="dead-letter-events"></a>Nedoručené události
 

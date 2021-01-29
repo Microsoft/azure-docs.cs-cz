@@ -1,6 +1,6 @@
 ---
-title: Referenční informace ke službě Azure Blob Storage
-description: Vyhledejte Reference k rozhraní API služby Azure Blob Storage, soubory Readme a balíčky klientské knihovny.
+title: Reference k Azure Blob Storage
+description: Vyhledejte referenční informace k rozhraní API pro Azure Blob Storage, soubory Readme a balíčky klientské knihovny.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 09/10/2020
@@ -8,25 +8,25 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: ripohane
-ms.openlocfilehash: 04eca391fd02e18d4faed5e4f435e44e5675c4bd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 70178a955fe4afcfc0c695d34e3c1466773d802d
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95912276"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054072"
 ---
-# <a name="azure-blob-storage-reference"></a>Referenční informace ke službě Azure Blob Storage
+# <a name="azure-blob-storage-reference"></a>Reference k Azure Blob Storage
 
-Vyhledejte Reference k rozhraní API služby Azure Blob Storage, balíčky knihoven, soubory Readme a úvodní články.
+Najděte si referenční informace k rozhraní API pro Azure Blob Storage, balíčky knihoven, soubory Readme a úvodní články.
 
 ## <a name="net-client-libraries"></a>Klientské knihovny .NET
 
-Následující tabulka uvádí referenční dokumentaci a ukázkovou dokumentaci pro rozhraní .NET API služby Azure Blob Storage.
+Následující tabulka uvádí referenční a ukázkovou dokumentaci pro rozhraní API služby Azure Blob Storage .NET.
 
 |  Verze  | Referenční dokumentace | Balíček | Rychlé zprovoznění |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12. x | [Klientská knihovna pro úložiště objektů BLOB v Azure pro .NET](/dotnet/api/overview/azure/storage.blobs-readme) | [Balíček (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs/) | [Rychlý start: Klientská knihovna úložiště objektů blob Azure verze 12 pro .NET](./storage-quickstart-blobs-dotnet.md) |
-| 11. x | [Obor názvů Microsoft. Azure. Storage. blob](/dotnet/api/microsoft.azure.storage.blob) | [Balíček (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/) | [Rychlý Start: Klientská knihovna pro úložiště objektů BLOB v Azure V11 pro .NET](./storage-quickstart-blobs-dotnet-legacy.md) |
+| 12. x | [Klientská knihovna pro Azure Blob Storage pro .NET](/dotnet/api/overview/azure/storage.blobs-readme) | [Balíček (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs/) | [Rychlý Start: V12 klientské knihovny Azure Blob Storage pro .NET](./storage-quickstart-blobs-dotnet.md) |
+| 11. x | [Obor názvů Microsoft. Azure. Storage. blob](/dotnet/api/microsoft.azure.storage.blob) | [Balíček (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/) | [Rychlý Start: V11 klientské knihovny Azure Blob Storage pro .NET](./storage-quickstart-blobs-dotnet-legacy.md) |
 
 ### <a name="storage-management"></a>Správa úložiště
 
@@ -46,7 +46,7 @@ V následující tabulce jsou uvedeny referenční dokumentace pro Azure Storage
 
 ## <a name="java-client-libraries"></a>Klientské knihovny Java
 
-Následující tabulka uvádí referenční dokumentaci a ukázkovou dokumentaci pro rozhraní API Java služby Azure Blob Storage.
+Následující tabulka uvádí referenční a ukázkovou dokumentaci pro rozhraní API pro Azure Blob Storage Java.
 
 |  Verze  | Referenční dokumentace | Balíček | Rychlé zprovoznění |
 | :-------: | ----------------------- | ------- | ---------- |
@@ -63,7 +63,7 @@ V následující tabulce jsou uvedeny referenční dokumentace k rozhraním API 
 
 ## <a name="python-client-libraries"></a>Klientské knihovny Pythonu
 
-Následující tabulka uvádí referenční dokumentaci a ukázkovou dokumentaci pro rozhraní API Pythonu pro službu Azure Blob Storage.
+Následující tabulka uvádí referenční a ukázkovou dokumentaci pro rozhraní API služby Azure Blob Storage Python.
 
 |  Verze  | Referenční dokumentace | Balíček | Rychlé zprovoznění |
 | :-------: | ----------------------- | ------- | ---------- |
@@ -72,7 +72,7 @@ Následující tabulka uvádí referenční dokumentaci a ukázkovou dokumentaci
 
 ## <a name="javascript-client-libraries"></a>JavaScript – klientské knihovny
 
-Následující tabulka obsahuje referenční dokumentaci a ukázkovou dokumentaci pro JavaScriptová rozhraní API pro Azure Blob Storage.
+Následující tabulka uvádí referenční a ukázkovou dokumentaci pro rozhraní API pro Azure Blob Storage JavaScript.
 
 |  Verze  | Referenční dokumentace | Balíček | Rychlé zprovoznění |
 | :-------: | ----------------------- | ------- | ---------- |
