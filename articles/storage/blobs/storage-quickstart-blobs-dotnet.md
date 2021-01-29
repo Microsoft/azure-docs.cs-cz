@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: knihovna úložiště objektů BLOB v Azure V12 – .NET'
+title: 'Rychlý Start: V12 knihovny pro Azure Blob Storage – .NET'
 description: V tomto rychlém startu se dozvíte, jak pomocí klientské knihovny Azure Blob Storage verze 12 pro .NET vytvořit kontejner a objekt BLOB v úložišti objektů BLOB (objekt). Dále se dozvíte, jak stáhnout objekt blob do místního počítače a jak zobrazit seznam všech objektů blob, které jsou v kontejneru.
 author: mhopkins-msft
 ms.author: mhopkins
@@ -8,18 +8,18 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8cb8c193e09e841a8401cbb0a6ac78ce87afa01c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f8f27743d8680f5e73e1f7bb7a3f7bd6ff2e0464
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021703"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054716"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>Rychlý start: Klientská knihovna úložiště objektů blob Azure verze 12 pro .NET
+# <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>Rychlý Start: V12 klientské knihovny Azure Blob Storage pro .NET
 
-Začněte s klientskou knihovnou V12 Azure Blob Storage pro .NET. Azure Blob Storage je řešení úložiště objektů pro cloud od Microsoftu. Postupujte podle kroků a nainstalujte balíček a vyzkoušejte ukázkový kód pro základní úlohy. Služba Blob Storage je optimalizovaná pro ukládání velkých objemů nestrukturovaných dat.
+Začínáme s klientskou knihovnou V12 pro Azure Blob Storage pro .NET Azure Blob Storage je řešení úložiště objektů od Microsoftu pro Cloud. Postupujte podle kroků a nainstalujte balíček a vyzkoušejte ukázkový kód pro základní úlohy. Služba Blob Storage je optimalizovaná pro ukládání velkých objemů nestrukturovaných dat.
 
-Použijte klientskou knihovnu služby Azure Blob Storage V12 pro .NET pro:
+Pomocí V12 klientské knihovny Azure Blob Storage pro .NET:
 
 * Vytvoření kontejneru
 * Nahrání objektu blob do Azure Storage
@@ -44,7 +44,7 @@ Další prostředky:
 
 ## <a name="setting-up"></a>Nastavení
 
-Tato část vás provede přípravou projektu pro práci s klientskou knihovnou služby Azure Blob Storage V12 for .NET.
+Tato část vás provede přípravou projektu pro práci s V12 klientské knihovny Azure Blob Storage pro .NET.
 
 ### <a name="create-the-project"></a>Vytvoření projektu
 
@@ -70,7 +70,7 @@ Vytvořte aplikaci .NET Core s názvem *BlobQuickstartV12*.
 
 ### <a name="install-the-package"></a>Instalace balíčku
 
-Ještě pořád v adresáři aplikace nainstalujte klientskou knihovnu pro Azure Blob Storage pro balíček .NET pomocí `dotnet add package` příkazu.
+I když v adresáři aplikace ještě pořád nainstalujete balíček klientské knihovny Azure Blob Storage pro .NET pomocí `dotnet add package` příkazu.
 
 ```console
 dotnet add package Azure.Storage.Blobs
@@ -109,7 +109,7 @@ namespace BlobQuickstartV12
 
 ## <a name="object-model"></a>Objektový model
 
-Úložiště objektů BLOB v Azure je optimalizované pro ukládání obrovských objemů nestrukturovaných dat. Jde o data, která nevyhovují konkrétnímu datovému modelu nebo definici, například textová nebo binární data. Úložiště objektů BLOB nabízí tři typy prostředků:
+Azure Blob Storage je optimalizovaná pro ukládání obrovských objemů nestrukturovaných dat. Jde o data, která nevyhovují konkrétnímu datovému modelu nebo definici, například textová nebo binární data. Úložiště objektů BLOB nabízí tři typy prostředků:
 
 * Účet úložiště
 * Kontejner v účtu úložiště
@@ -128,7 +128,7 @@ Pro interakci s těmito prostředky použijte následující třídy .NET:
 
 ## <a name="code-examples"></a>Příklady kódu
 
-Tyto ukázkové fragmenty kódu ukazují, jak provést následující akce s klientskou knihovnou služby Azure Blob Storage pro .NET:
+Tyto ukázkové fragmenty kódu ukazují, jak provést následující s klientskou knihovnou Azure Blob Storage pro .NET:
 
 * [Získání připojovacího řetězce](#get-the-connection-string)
 * [Vytvoření kontejneru](#create-a-container)
@@ -144,7 +144,7 @@ Následující kód načte připojovací řetězec pro účet úložiště z pro
 Přidejte tento kód do `Main` metody:
 
 ```csharp
-Console.WriteLine("Azure Blob storage v12 - .NET quickstart sample\n");
+Console.WriteLine("Azure Blob Storage v12 - .NET quickstart sample\n");
 
 // Retrieve the connection string for use with the application. The storage
 // connection string is stored in an environment variable on the machine
@@ -287,7 +287,7 @@ dotnet run
 Výstup aplikace je podobný následujícímu příkladu:
 
 ```output
-Azure Blob storage v12 - .NET quickstart sample
+Azure Blob Storage v12 - .NET quickstart sample
 
 Uploading to Blob storage as blob:
          https://mystorageacct.blob.core.windows.net/quickstartblobs60c70d78-8d93-43ae-954d-8322058cfd64/quickstart2fe6c5b4-7918-46cb-96f4-8c4c5cb2fd31.txt
@@ -315,7 +315,7 @@ V tomto rychlém startu jste zjistili, jak nahrávat, stahovat a vypisovat objek
 Pokud chcete zobrazit ukázkové aplikace služby Blob Storage, pokračujte:
 
 > [!div class="nextstepaction"]
-> [Ukázky rozhraní .NET V12 pro Azure Blob Storage SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples)
+> [Ukázky V12 .NET pro Azure Blob Storage SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples)
 
 * Kurzy, ukázky, rychlé starty a další dokumentace najdete na webu [Azure pro vývojáře na platformě .NET a .NET Core](/dotnet/azure/).
 * Další informace o .NET Core najdete v tématu [Začínáme s .NET během 10 minut](https://www.microsoft.com/net/learn/get-started/).

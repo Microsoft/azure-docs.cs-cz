@@ -3,15 +3,15 @@ title: Vytváření a správa skupin akcí na webu Azure Portal
 description: Naučte se vytvářet a spravovat skupiny akcí v Azure Portal.
 author: dkamstra
 ms.topic: conceptual
-ms.date: 07/28/2020
+ms.date: 01/28/2021
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 8e260ae8310807ef9e0dad7d4fe21df8caad9b48
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 08cf66edaa67ab1853a3b246afb9364b431445c6
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735289"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055106"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Vytváření a správa skupin akcí na webu Azure Portal
 Skupina akcí je kolekce předvoleb oznámení definovaných vlastníkem předplatného Azure. Výstrahy Azure Monitor a Service Health pomocí skupin akcí upozorní uživatele na aktivaci výstrahy. Různé výstrahy můžou v závislosti na požadavcích uživatele používat stejnou skupinu akcí nebo různé skupiny akcí. 
@@ -328,139 +328,8 @@ Webhooky se zpracovávají pomocí následujících pravidel.
 - Druhé a třetí pokusy budou čekat 30 sekund na odpověď.
 - Po 3 pokusech o volání Webhooku se nezdařila žádná skupina akcí, která bude volat koncový bod po dobu 15 minut.
 
-Rozsahy zdrojových IP adres:
+Podívejte se prosím na [IP adresy skupin akcí](../app/ip-addresses.md) pro zdrojové rozsahy IP adres.
 
- - 13.66.60.119/32
- - 13.66.143.220/30
- - 13.66.202.14/32
- - 13.66.248.225/32
- - 13.66.249.211/32
- - 13.67.10.124/30
- - 13.69.109.132/30
- - 13.71.199.112/30
- - 13.77.53.216/30
- - 13.77.172.102/32
- - 13.77.183.209/32
- - 13.78.109.156/30
- - 13.84.49.247/32
- - 13.84.51.172/32
- - 13.84.52.58/32
- - 13.86.221.220/30
- - 13.106.38.142/32
- - 13.106.38.148/32
- - 13.106.54.3/32
- - 13.106.54.19/32
- - 13.106.57.181/32
- - 13.106.57.196/31
- - 20.38.149.132/30
- - 20.42.64.36/30
- - 20.43.121.124/30
- - 20.44.17.220/30
- - 20.45.123.236/30
- - 20.72.27.152/30
- - 20.150.172.228/30
- - 20.192.238.124/30
- - 20.193.202.4/30
- - 40.68.195.137/32
- - 40.68.201.58/32
- - 40.68.201.65/32
- - 40.68.201.206/32
- - 40.68.201.211/32
- - 40.68.204.18/32
- - 40.115.37.106/32
- - 40.121.219.215/32
- - 40.121.221.62/32
- - 40.121.222.201/32
- - 40.121.223.186/32
- - 51.104.9.100/30
- - 52.183.20.244/32
- - 52.183.31.0/32
- - 52.183.94.59/32
- - 52.184.145.166/32
- - 191.233.50.4/30
- - 191.233.207.64/26
- - 2603:1000:4:402::178/125
- - 2603:1000:104:402::178/125
- - 2603:1010:6:402::178/125
- - 2603:1010:101:402::178/125
- - 2603:1010:304:402::178/125
- - 2603:1010:404:402::178/125
- - 2603:1020:5:402::178/125
- - 2603:1020:206:402::178/125
- - 2603:1020:305:402::178/125
- - 2603:1020:405:402::178/125
- - 2603:1020:605:402::178/125
- - 2603:1020:705:402::178/125
- - 2603:1020:805:402::178/125
- - 2603:1020:905:402::178/125
- - 2603:1020: A04:402:: 178/125
- - 2603:1020: B04:402:: 178/125
- - 2603:1020: C04:402:: 178/125
- - 2603:1020: D04:402:: 178/125
- - 2603:1020: E04:402:: 178/125
- - 2603:1020: F04:402:: 178/125
- - 2603:1020:1004:800:: F8/125
- - 2603:1020:1104:400::178/125
- - 2603:1030: f:400:: 978/125
- - 2603:1030:10:402::178/125
- - 2603:1030:104:402::178/125
- - 2603:1030:107:400:: F0/125
- - 2603:1030:210:402::178/125
- - 2603:1030:40B: 400:: 978/125
- - 2603:1030:40C: 402:: 178/125
- - 2603:1030:504:802:: F8/125
- - 2603:1030:608:402::178/125
- - 2603:1030:807:402::178/125
- - 2603:1030: A07:402:: 8f8/125
- - 2603:1030: B04:402:: 178/125
- - 2603:1030: c06:400:: 978/125
- - 2603:1030: F05:402:: 178/125
- - 2603:1030:1005:402::178/125
- - 2603:1040:5:402::178/125
- - 2603:1040:207:402::178/125
- - 2603:1040:407:402::178/125
- - 2603:1040:606:402::178/125
- - 2603:1040:806:402::178/125
- - 2603:1040:904:402::178/125
- - 2603:1040: A06:402:: 178/125
- - 2603:1040: B04:402:: 178/125
- - 2603:1040: c06:402:: 178/125
- - 2603:1040: D04:800:: F8/125
- - 2603:1040: F05:402:: 178/125
- - 2603:1040:1104:400::178/125
- - 2603:1050:6:402::178/125
- - 2603:1050:403:400:: 1F8/125
-
-Chcete-li dostávat aktualizace o změnách těchto IP adres, doporučujeme nakonfigurovat Service Health výstrahu, která sleduje informační oznámení o službě skupin akcí.
-
-Ve skupině akcí můžete mít omezený počet akcí Webhooku.
-
-Časté aktualizace zdrojových IP adres můžou ve Webhooku trvat poměrně dlouho. Použití **značky služby pro službu** *Action* Service pomáhá minimalizovat složitost častých aktualizací IP adres ručně. Zdrojové IP adresy: předpony rozsahu sdílené výše jsou automaticky spravovány společností Microsoft, včetně **označení služby**.
-
-#### <a name="service-tag"></a>Značka služby
-Značka služby představuje skupinu předpon IP adres z dané služby Azure. Společnost Microsoft spravuje předpony adres, které jsou součástí značky služby, a automaticky aktualizuje značku služby, protože se mění adresy. tím se minimalizuje složitost častých aktualizací pravidel zabezpečení sítě pro danou akci.
-
-1. V Azure Portal v části služby Azure vyhledejte *skupinu zabezpečení sítě*.
-2. Klikněte na **Přidat** a vytvořte skupinu zabezpečení sítě.
-
-   1. Přidejte název skupiny prostředků a zadejte *Podrobnosti o instanci*.
-   1. Klikněte na tlačítko **Revize + vytvořit** a potom klikněte na tlačítko *vytvořit*.
-   
-   :::image type="content" source="media/action-groups/action-group-create-security-group.png" alt-text="Příklad vytvoření skupiny zabezpečení sítě."border="true":::
-
-3. Přejděte do skupiny prostředků a potom klikněte na *skupinu zabezpečení sítě* , kterou jste vytvořili.
-
-    1. Vyberte *příchozí pravidla zabezpečení*.
-    1. Klikněte na **Přidat**.
-    
-    :::image type="content" source="media/action-groups/action-group-add-service-tag.png" alt-text="Příklad přidání značky služby"border="true":::
-
-4. Otevře se nové okno v pravém podokně.
-    1.  Vybrat zdroj: **značka služby**
-    1.  Značka zdrojové služby: parametr **Action**
-    1.  Klikněte na **Přidat**.
-    
-    :::image type="content" source="media/action-groups/action-group-service-tag.png" alt-text="Příklad přidání značky služby"border="true":::
 
 ## <a name="next-steps"></a>Další kroky
 * Přečtěte si další informace o [chování výstrah SMS](./alerts-sms-behavior.md).  

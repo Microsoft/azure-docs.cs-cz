@@ -14,12 +14,12 @@ ms.subservice: roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12f262347938720a9d5a95e070d792a83ac9188c
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: e38ca27606ecf04b08bd29867894ba269148260c
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740801"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055242"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpečení privilegovaného přístupu pro hybridní a cloudová nasazení v Azure AD
 
@@ -150,6 +150,7 @@ Osobní e-mailové účty jsou pravidelně podvodné prostřednictvím interneto
 * Nezapomeňte vytvořit samostatné účty pro uživatele, aby mohli provádět globální úlohy správy.
 * Ujistěte se, že globální správci omylem neotevřou e-maily nebo nespouštějí programy s účty správců.
 * Ujistěte se, že tyto účty mají e-maily předané pracovní schránce.
+* Účty globálních správců (a dalších privilegovaných skupin) by měly být jenom cloudové účty, které nemají žádné vazby k místní službě Active Directory.
 
 #### <a name="ensure-the-passwords-of-administrative-accounts-have-recently-changed"></a>Zajistěte, aby se nedávno změnila hesla účtů pro správu.
 

@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 39645e8bd370dfd518d570c3088c56a22aa77748
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: b353fad64b08f5fc50af2b8d31abab77cd797e25
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98927038"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055038"
 ---
 # <a name="virtual-network-service-tags"></a>Značky služby virtuální sítě
 <a name="network-service-tags"></a>
@@ -58,7 +58,7 @@ Ve výchozím nastavení značky služby odráží rozsahy celého cloudu. Někt
 | **AzureBotService** | Azure Bot Service. | Odchozí | No | No |
 | **AzureCloud** | Všechny [veřejné IP adresy Datacenter](https://www.microsoft.com/download/details.aspx?id=56519) | Odchozí | Yes | Yes |
 | **AzureCognitiveSearch** | Kognitivní hledání Azure. <br/><br/>Tato značka nebo IP adresy, na které se vztahuje tato značka, se dají použít k udělení zabezpečeného přístupu indexerům k datovým zdrojům. Další podrobnosti najdete v [dokumentaci k připojení indexeru](../search/search-indexer-troubleshooting.md#connection-errors) . <br/><br/> *Poznámka*: IP adresa vyhledávací služby není zahrnutá v seznamu ROZSAHŮ IP adres pro tuto značku služby a musí se **taky přidat** do brány firewall IP zdrojů dat. | Příchozí | No | No |
-| **AzureConnectors** | Konektory Azure Logic Apps pro připojení sondy/back-end. | Příchozí | Yes | Yes |
+| **AzureConnectors** | Tato značka představuje IP adresy používané pro spravované konektory, které umožňují příchozí zpětná volání Webhooku službě Azure Logic Apps a odchozí volání jejich příslušných služeb, například Azure Storage nebo Azure Event Hubs. | Příchozí/odchozí | Yes | Yes |
 | **AzureContainerRegistry** | Azure Container Registry. | Odchozí | Yes | Yes |
 | **AzureCosmosDB** | Azure Cosmos DB. | Odchozí | Yes | Yes |
 | **AzureDatabricks** | Azure Databricks. | Obojí | No | No |

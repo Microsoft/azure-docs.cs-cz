@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: knihovna úložiště objektů BLOB v Azure V12 – Java'
+title: 'Rychlý Start: knihovna pro Azure Blob Storage V12 – Java'
 description: V tomto rychlém startu se dozvíte, jak pomocí klientské knihovny Azure Blob Storage verze 12 pro Java vytvořit kontejner a objekt BLOB v úložišti objektů BLOB (objekt). Dále se dozvíte, jak stáhnout objekt blob do místního počítače a jak zobrazit seznam všech objektů blob, které jsou v kontejneru.
 author: mhopkins-msft
 ms.custom: devx-track-java
@@ -8,12 +8,12 @@ ms.date: 12/01/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 02752af77d443e19278a96206bb7516fedd59d7f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: b5c34cea5d8222a246462bfadde66fd8a5ddbec7
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501120"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054699"
 ---
 # <a name="quickstart-manage-blobs-with-java-v12-sdk"></a>Rychlý Start: Správa objektů BLOB pomocí sady Java V12 SDK
 
@@ -26,7 +26,7 @@ Další prostředky:
 * [Balíček (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-blob)
 * [ukázky](../common/storage-samples-java.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - Účet služby Azure Storage. [Vytvořte účet úložiště](../common/storage-account-create.md).
@@ -37,7 +37,7 @@ Další prostředky:
 
 ## <a name="setting-up"></a>Nastavení
 
-Tato část vás provede přípravou projektu pro práci s klientskou knihovnou služby Azure Blob Storage V12 for Java.
+Tato část vás provede přípravou projektu pro práci s V12 klientské knihovny Azure Blob Storage pro Java.
 
 ### <a name="create-the-project"></a>Vytvoření projektu
 
@@ -163,7 +163,7 @@ public class App
 
 ## <a name="object-model"></a>Objektový model
 
-Úložiště objektů BLOB v Azure je optimalizované pro ukládání obrovských objemů nestrukturovaných dat. Jde o data, která nevyhovují konkrétnímu datovému modelu nebo definici, například textová nebo binární data. Úložiště objektů BLOB nabízí tři typy prostředků:
+Azure Blob Storage je optimalizovaná pro ukládání obrovských objemů nestrukturovaných dat. Jde o data, která nevyhovují konkrétnímu datovému modelu nebo definici, například textová nebo binární data. Úložiště objektů BLOB nabízí tři typy prostředků:
 
 * Účet úložiště
 * Kontejner v účtu úložiště
@@ -183,7 +183,7 @@ K interakci s těmito prostředky použijte následující třídy Java:
 
 ## <a name="code-examples"></a>Příklady kódu
 
-Tyto ukázkové fragmenty kódu ukazují, jak provést následující akce s klientskou knihovnou služby Azure Blob Storage pro jazyk Java:
+V těchto ukázkových fragmentech kódu se dozvíte, jak provést následující s klientskou knihovnou Azure Blob Storage pro Java:
 
 * [Získání připojovacího řetězce](#get-the-connection-string)
 * [Vytvoření kontejneru](#create-a-container)
@@ -199,7 +199,7 @@ Následující kód načte připojovací řetězec pro účet úložiště z pro
 Přidejte tento kód do `Main` metody:
 
 ```java
-System.out.println("Azure Blob storage v12 - Java quickstart sample\n");
+System.out.println("Azure Blob Storage v12 - Java quickstart sample\n");
 
 // Retrieve the connection string for use with the application. The storage
 // connection string is stored in an environment variable on the machine
@@ -342,7 +342,7 @@ mvn exec:java -Dexec.mainClass="com.blobs.quickstart.App" -Dexec.cleanupDaemonTh
 Výstup aplikace je podobný následujícímu příkladu:
 
 ```output
-Azure Blob storage v12 - Java quickstart sample
+Azure Blob Storage v12 - Java quickstart sample
 
 Uploading to Blob storage as blob:
         https://mystorageacct.blob.core.windows.net/quickstartblobsf9aa68a5-260e-47e6-bea2-2dcfcfa1fd9a/quickstarta9c3a53e-ae9d-4863-8b34-f3d807992d65.txt
@@ -371,7 +371,7 @@ V tomto rychlém startu jste zjistili, jak nahrávat, stahovat a vypisovat objek
 Pokud chcete zobrazit ukázkové aplikace služby Blob Storage, pokračujte:
 
 > [!div class="nextstepaction"]
-> [Ukázky V12 Java sady SDK pro Azure Blob Storage](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob)
+> [Ukázky kódu Java pro Azure Blob Storage SDK V12](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob)
 
 * Další informace najdete v tématu [sada Azure SDK pro jazyk Java](https://github.com/Azure/azure-sdk-for-java/blob/master/README.md).
 * Výukové programy, ukázky, rychlé starty a další dokumentace najdete na webu [Azure pro vývojáře v jazyce Java pro Cloud](/azure/developer/java/).

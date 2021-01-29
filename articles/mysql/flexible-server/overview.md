@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: f6ec6bced9c84e4e5b0f04cc32eebb438052bd6c
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: cdf029e0dd9ae126310842b8919c818f4721218e
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348283"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054733"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL – flexibilní Server (Preview)
 
@@ -132,20 +132,22 @@ Služba spouští komunitní verze MySQL. To umožňuje úplnou kompatibilitu ap
 
 Jednou z výhod spouštění úloh v Azure je globální dosah. Flexibilní Server pro Azure Database for MySQL je k dispozici v současnosti v následujících oblastech Azure:
 
-- West Europe
-- Severní Evropa
-- Spojené království – jih
-- USA – východ 2
-- Západní USA 2
-- Střední USA
-- East US
-- Střední Kanada
-- Southeast Asia
-- Jižní Korea – střed
-- Japan East
-- Austrálie – východ
+| Region (Oblast) | Vysoká dostupnost | 
+| --- | --- |
+| West Europe | :heavy_check_mark: | 
+| Severní Evropa | :heavy_check_mark: | 
+| Spojené království – jih | znak | 
+| USA – východ 2 | :heavy_check_mark: | 
+| Západní USA 2 | :heavy_check_mark: | 
+| USA – střed | znak | 
+| East US | :heavy_check_mark: | 
+| Střední Kanada | znak | 
+| Southeast Asia | :heavy_check_mark: | 
+| Jižní Korea – střed | znak | 
+| Japonsko – východ | znak | 
+| Austrálie – východ | :heavy_check_mark: |
 
-Pracujeme na přidávání nových serverů brzy.
+V tuto chvíli pracujeme na přidávání nových oblastí.
 
 ## <a name="contacts"></a>Kontakty
 V případě jakýchkoli otázek nebo návrhů, které byste mohli mít Azure Database for MySQL flexibilní Server, pošlete e-mail týmu Azure Database for MySQL ([ @Ask Azure DB pro MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com)). Tato e-mailová adresa není alias technické podpory.

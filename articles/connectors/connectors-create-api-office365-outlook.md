@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 11/13/2020
 tags: connectors
-ms.openlocfilehash: 9caf69a7f78c7872f0a5f8a2ed07bdc749a29023
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 790879894c3b268fcd55aafc96507319b29fe1e5
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682991"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055072"
 ---
 # <a name="manage-email-contacts-and-calendars-in-office-365-outlook-by-using-azure-logic-apps"></a>Správa e-mailů, kontaktů a kalendářů v Office 365 Outlooku s využitím Azure Logic Apps
 
@@ -92,17 +92,19 @@ Teď přidejte akci, která se spustí po aktivování triggeru. Můžete např�
 
 ## <a name="connect-using-other-accounts"></a>Připojení pomocí jiných účtů
 
-Pokud se pokusíte připojit k Outlooku pomocí jiného účtu, než který je aktuálně přihlášený k Azure, může dojít k chybám [jednotného přihlašování (SSO)](../active-directory/manage-apps/what-is-single-sign-on.md) . K tomuto problému dochází, když se přihlásíte k Azure Portal pomocí jednoho účtu, ale k vytvoření připojení použijete jiný účet. Návrhář aplikace logiky očekává použití účtu, který je přihlášený k Azure. K vyřešení tohoto problému máte tyto možnosti:
+Pokud se pokusíte připojit k Outlooku pomocí jiného účtu, než který je aktuálně přihlášený k Azure, může dojít k chybám [jednotného přihlašování (SSO)](../active-directory/manage-apps/what-is-single-sign-on.md) . K tomuto problému dochází, když se přihlásíte k Azure Portal pomocí jednoho účtu, ale k vytvoření připojení použijete jiný účet. Návrhář očekává, že použijete účet, který je přihlášený k Azure Portal. K vyřešení tohoto problému máte tyto možnosti:
 
-* Nastavte druhý účet jako **Přispěvatel** na skupinu prostředků vaší aplikace logiky.
+* Nastavte druhý účet pomocí role **přispěvatele** ve skupině prostředků vaší aplikace logiky.
 
-  1. V nabídce skupiny prostředků vaší aplikace logiky vyberte **řízení přístupu (IAM)**. Nastavte druhý účet pomocí role **Přispěvatel** . Další informace najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí webu Azure Portal](../role-based-access-control/role-assignments-portal.md).
+  1. V nabídce skupiny prostředků vaší aplikace logiky vyberte **řízení přístupu (IAM)**. Nastavte druhý účet pomocí role **Přispěvatel** . 
+  
+     Další informace najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí webu Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
-  1. Pokud jste se k Azure Portal přihlásili pomocí svého pracovního nebo školního účtu, odhlaste se a znovu se přihlaste pomocí svého jiného účtu. Nyní můžete vytvořit připojení k aplikaci Outlook pomocí druhého účtu.
+  1. Po nastavení této role se přihlaste k Azure Portal pomocí účtu, který má teď oprávnění přispěvatele. Nyní můžete tento účet použít k vytvoření připojení k aplikaci Outlook.
 
 * Nastavte druhý účet tak, aby váš pracovní nebo školní účet měl oprávnění Odeslat jako.
 
-   Pokud máte oprávnění správce, v poštovní schránce účtu služby nastavte svůj pracovní nebo školní účet s oprávněním **Odeslat** nebo **Odeslat jménem** . Další informace najdete v tématu [udělení oprávnění k poštovní schránce pro jinou nápovědu pro správce uživatele](/microsoft-365/admin/add-users/give-mailbox-permissions-to-another-user). Pak můžete vytvořit připojení pomocí svého pracovního nebo školního účtu. Nyní můžete v aktivačních událostech nebo akcích, kde můžete zadat odesílatele, použít e-mailovou adresu účtu služby.
+   Pokud máte oprávnění správce, v poštovní schránce účtu služby nastavte svůj pracovní nebo školní účet tak, aby byl buď **odeslán** , nebo **odeslán jménem** oprávnění. Další informace najdete v tématu [udělení oprávnění k poštovní schránce pro jinou nápovědu pro správce uživatele](/microsoft-365/admin/add-users/give-mailbox-permissions-to-another-user). Pak můžete vytvořit připojení pomocí svého pracovního nebo školního účtu. Nyní můžete v aktivačních událostech nebo akcích, kde můžete zadat odesílatele, použít e-mailovou adresu účtu služby.
 
    Například akce **Odeslat e-mail** má volitelný parametr **from (Odeslat jako)**, který můžete přidat do akce a jako odesílatele použít e-mailovou adresu účtu služby. Chcete-li přidat tento parametr, postupujte podle následujících kroků:
 

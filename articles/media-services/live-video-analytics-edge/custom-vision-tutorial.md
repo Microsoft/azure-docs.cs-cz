@@ -4,12 +4,12 @@ description: Naučte se používat Azure Custom Vision k vytvoření kontejnerov
 ms.topic: tutorial
 ms.date: 09/08/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: de788c337ce8030b73538565e4f374ffc7db55b8
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 0b5d011ac7832436edf1f5c898b1fe1e239d0aea
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060490"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055361"
 ---
 # <a name="tutorial-analyze-live-video-with-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>Kurz: Analýza živého videa pomocí živé analýzy videí v IoT Edge a Azure Custom Vision
 
@@ -51,7 +51,6 @@ Než začnete, přečtěte si následující články:
 
 ## <a name="prerequisites"></a>Požadavky
 
-
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [prerequisites](includes/custom-vision-tutorial/csharp/prerequisites.md)]
 ::: zone-end
@@ -59,6 +58,10 @@ Než začnete, přečtěte si následující články:
 ::: zone pivot="programming-language-python"
 [!INCLUDE [prerequisites](includes/custom-vision-tutorial/python/prerequisites.md)]
 ::: zone-end
+
+> [!IMPORTANT]
+> Tento modul Custom Vision podporuje jenom architektury **Intel x86 a amd64** . Než budete pokračovat, zkontrolujte prosím architekturu svého hraničního zařízení.
+
 ## <a name="review-the-sample-video"></a>Kontrola ukázkového videa
 
 V tomto kurzu se k simulaci živého streamu používá soubor [videa pro odvození auta](https://lvamedia.blob.core.windows.net/public/t2.mkv) . Video můžete prošetřit pomocí aplikace, jako je [VLC Media Player](https://www.videolan.org/vlc/). Vyberte **CTRL + N** a pak vložte odkaz na [video o odvození auta](https://lvamedia.blob.core.windows.net/public/t2.mkv) , kde se má začít přehrávat. Při sledování videa si všimněte, že ve videu se zobrazí ve videu ve značce 36 – 2. Vlastní model byl vyškolen k detekci tohoto konkrétního nákladní automobilu. 
@@ -81,6 +84,9 @@ Uzel rozšíření HTTP hraje roli proxy serveru.  Vypíše sadu příchozích s
 Jak název Custom Vision navrhuje, můžete ho použít k sestavení vlastního detektoru nebo třídění vlastního objektu v cloudu. Poskytuje jednoduché, snadno použitelné a intuitivní rozhraní k vytváření Custom Visionch modelů, které se dají nasadit v cloudu nebo na hraničních zařízeních prostřednictvím kontejnerů.
 
 Chcete-li vytvořit detektor automobilového vozíku, postupujte podle kroků v části [rychlý Start: sestavení objektu detektoru pomocí Custom Vision webu](../../cognitive-services/custom-vision-service/get-started-build-detector.md).
+
+> [!IMPORTANT]
+> Tento modul Custom Vision podporuje pouze architektury **Intel x86 a amd64** . Než budete pokračovat, zkontrolujte prosím architekturu svého hraničního zařízení.
 
 Další poznámky:
  

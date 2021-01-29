@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 61a8dbbdde87af792bb4337660d4d3c34f7cf802
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
-ms.translationtype: HT
+ms.openlocfilehash: 729444b1d1ccf55f34e54a4b59508131458c472b
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132291"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054800"
 ---
 # <a name="understand-and-work-with-scopes"></a>Vysvětlení a práce s rozsahy
 
@@ -63,8 +63,8 @@ Cost Management podporuje následující předdefinované role pro každý z ná
 - [**Vlastník**](../../role-based-access-control/built-in-roles.md#owner) – může zobrazit náklady a spravovat vše včetně konfigurace nákladů.
 - [**Přispěvatel**](../../role-based-access-control/built-in-roles.md#contributor) – může zobrazit náklady a spravovat vše včetně konfigurace nákladů, ale bez řízení přístupu.
 - [**Čtenář**](../../role-based-access-control/built-in-roles.md#reader) – Může zobrazit vše, včetně údajů o nákladech a konfigurace, ale nemůže provádět žádné změny.
-- [**Přispěvatel Cost Management** ](../../role-based-access-control/built-in-roles.md#cost-management-contributor) – může zobrazit náklady, spravovat konfiguraci nákladů a zobrazit doporučení.
-- [**Čtenář Cost Management** ](../../role-based-access-control/built-in-roles.md#cost-management-reader) – může zobrazit data a konfiguraci nákladů a zobrazit doporučení.
+- [**Přispěvatel Cost Management**](../../role-based-access-control/built-in-roles.md#cost-management-contributor) – může zobrazit náklady, spravovat konfiguraci nákladů a zobrazit doporučení.
+- [**Čtenář Cost Management**](../../role-based-access-control/built-in-roles.md#cost-management-reader) – může zobrazit data a konfiguraci nákladů a zobrazit doporučení.
 
 Přispěvatel Cost Management je doporučená role s nejnižší úrovní oprávnění. Tato role umožňuje uživatelům vytvářet a spravovat rozpočty a exporty za účelem efektivnějšího monitorování a vykazování nákladů. Přispěvatelé Cost Management mohou také vyžadovat další role pro podporu scénářů komplexní správy nákladů. Zvažte následující scénáře:
 
@@ -114,7 +114,7 @@ Předplatná Azure vytvořená z jednotlivých nabídek, jako jsou průběžné 
 
     Typ prostředku: Neuvedeno
 
-Jednotliví správci účtů předplatného Azure mohou zobrazovat a spravovat fakturační data, jako jsou faktury a platby, z [Centra účtů Azure](https://account.azure.com/subscriptions). Nemůžou ale zobrazovat data nákladů ani spravovat prostředky na portálu Azure Portal. Pokud chcete udělit přístup správci účtu, použijte výše zmíněné role Cost Management.
+Jednotliví správci účtů předplatného Azure můžou zobrazit a spravovat fakturační data, jako jsou faktury a platby [](https://portal.azure.com), z  >  **předplatných** Azure Portal > si vybrat předplatné.
 
 Na rozdíl od EA můžou jednotliví správci účtů předplatného Azure vidět své faktury na portálu Azure Portal. Mějte na paměti, že role Čtenář Cost Management a Přispěvatel Cost Management neumožňují přístup k fakturám. Další informace najdete v tématu [Jak udělit přístup k fakturám](../manage/manage-billing-access.md#give-read-only-access-to-billing).
 

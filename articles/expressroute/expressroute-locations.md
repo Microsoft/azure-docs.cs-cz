@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 01/22/2021
 ms.author: duau
-ms.openlocfilehash: 4856b572182646827b8016212bbb4c1b28f440ab
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 1eeb4542242415c38a585643fd74a6a60e8e526f
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740869"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054987"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>Partneři připojení ExpressRoute a umístění peeringu
 
@@ -132,7 +132,7 @@ Následující tabulka uvádí umístění podle poskytovatele služby. Pokud ch
 | **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |Podporováno |Podporováno |Amsterdam, Chicago, Praha, Londýn, Newport (Wales), Svatý Paulo, Seattle, Silicon sedl, Singapur, Washington DC |
 | **LG CNS** |Podporováno |Podporováno |Busan, Soul |
 | **[Liquid Telecom](https://www.liquidtelecom.com/products-and-services/cloud.html)** |Podporováno |Podporováno |Kapské město, Johannesburg |
-| **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |Podporováno |Podporováno |Amsterdam, Brno, Auckland, Chicago, Praha, Denver, Dubai2, Dublin, Frankfurt, Ženeva, Hongkong, Hongkong Kong2, Las Vegas, Londýn, London2, Los Angeles, Melbourne, Miami, Montreal, New York, Ósaka, Oslo, Perth, Quebec City, San Antonio, Seattle, Silicon sedl, Singapur, singapur2, Stavanger, Stockholm, Sydney, Sydney2, Tokio, Tokyo2 Toronto, Washington DC, Washington DC2, Curych |
+| **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |Podporováno |Podporováno |Amsterdam, Brno, Auckland, Chicago, Praha, Denver, Dubai2, Dublin, Frankfurt, Ženeva, Hongkong, Hongkong Kong2, Las Vegas, Londýn, London2, Los Angeles, Melbourne, Miami, Minneapolis, Montreal, New York, Ósaka, Oslo, Perth, Quebec City, San Antonio, Seattle, Brno, Singapur2, Stavanger, Sydney2, Stockholm, Sydney, Tokyo2, Tokio, Toronto Vancouver, DC2, Washington DC, Curych |
 | **[MTN](https://www.mtnbusiness.co.za/en/Cloud-Solutions/Pages/microsoft-express-route.aspx)** |Podporováno |Podporováno |Londýn |
 | **[Neutrona Networks](https://www.neutrona.com/index.php/azure-expressroute/)** |Podporováno |Podporováno |Praha, Los Angeles, Miami, Svatý Paulo, Washington DC |
 | **[Next Generation Data](https://vantage-dc-cardiff.co.uk/)** |Podporováno |Podporováno |Newport(Wales) |

@@ -2,15 +2,16 @@
 title: Povolit Azure Automation Update Management z účtu Automation
 description: V tomto článku se dozvíte, jak povolit Update Management z účtu Automation.
 services: automation
+ms.subservice: update-management
 ms.date: 11/09/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: b97e1e61401697204f79004e4678e6f2286f4a98
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 06a29cd07a870e7553d599b5f719943acb259c2a
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380534"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054919"
 ---
 # <a name="enable-update-management-from-an-automation-account"></a>Povolení Update Managementu z účtu Automation
 
@@ -22,12 +23,12 @@ Tento článek popisuje, jak můžete účet Automation použít k povolení fun
 ## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud ještě žádné nemáte, můžete si [aktivovat výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Účet Automation](../index.yml) pro správu počítačů.
+* [Účet Automation](../automation-security-overview.md) pro správu počítačů.
 * [Virtuální počítač Azure](../../virtual-machines/windows/quick-create-portal.md)nebo virtuální počítač nebo server zaregistrovaný u serverů s podporou ARC. Virtuální počítače nebo servery mimo Azure musí mít nainstalovaného [agenta Log Analytics](../../azure-monitor/platform/log-analytics-agent.md) pro Windows nebo Linux a vytváření sestav k pracovnímu prostoru, který je propojený s účtem Automation Update Management je povolený v. Doporučujeme nainstalovat agenta Log Analytics pro Windows nebo Linux, a to tak, že nejprve připojíte počítač k [serverům s podporou ARC Azure](../../azure-arc/servers/overview.md)a pak pomocí Azure Policy přiřadíte předdefinovanou zásadu pro [nasazení agenta Log Analytics pro počítače se systémem *Linux* nebo *Windows* Azure](../../governance/policy/samples/built-in-policies.md#monitoring) . Případně, pokud plánujete monitorovat počítače pomocí Azure Monitor pro virtuální počítače, použijte raději iniciativu [Enable Azure monitor pro virtuální počítače](../../governance/policy/samples/built-in-initiatives.md#monitoring) .
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 ## <a name="enable-update-management"></a>Povolení řešení Update Management
 

@@ -12,12 +12,12 @@ ms.date: 11/04/2019
 ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e56968250c10bb46553e618fd278df7d642683f
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 9fd102bad45bf482cb9a9750bf05e862b9c91e8e
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659076"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055208"
 ---
 # <a name="grant-tenant-wide-admin-consent-to-an-application"></a>Udělení souhlasu správce v rámci celého tenanta aplikaci
 
@@ -101,4 +101,4 @@ Jako vždy pečlivě zkontrolujte oprávnění, která aplikace požaduje, před
 
 [Oprávnění a souhlas na platformě Microsoft identity](../develop/v2-permissions-and-consent.md)
 
-[Azure AD v StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
+[Azure AD v Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-active-directory.html)

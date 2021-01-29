@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: genli
-ms.openlocfilehash: e1e7e78cab1f3a240737b5e25e0dff28c420add8
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 518b8e33ac9adfdd1aa121e0cb8d1558545980e7
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883108"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054850"
 ---
 # <a name="troubleshoot-outbound-smtp-connectivity-problems-in-azure"></a>Řešení potíží s odchozím připojením SMTP v Azure
 
@@ -27,7 +27,7 @@ Tato změna chování se týká jenom předplatných a nasazení, která se vytv
 
 ## <a name="recommended-method-of-sending-email"></a>Doporučený způsob odesílání e-mailů
 
-Pro posílání e-mailů z virtuálních počítačů Azure nebo z Azure App Service doporučujeme použít ověřené služby SMTP relay. (Tyto přenosové služby se obvykle připojují prostřednictvím portu TCP 587 nebo 443, ale podporují i jiné porty.) Tyto služby se používají k údržbě IP nebo reputace domény, aby se minimalizovala možnost, že poskytovatelé e-mailů od jiných výrobců odmítnou zprávy. [SendGrid](https://sendgrid.com/partners/azure/) je taková přenosová služba SMTP, ale existují další. Je možné, že máte také zabezpečenou službu SMTP relay, která běží místně, kterou můžete použít.
+Pro posílání e-mailů z virtuálních počítačů Azure nebo z Azure App Service doporučujeme použít ověřené služby SMTP relay. (Tyto přenosové služby se obvykle připojují přes port TCP 587, ale podporují jiné porty.) Tyto služby se používají k údržbě IP nebo reputace domény, aby se minimalizovala možnost, že poskytovatelé e-mailů od jiných výrobců odmítnou zprávy. [SendGrid](https://sendgrid.com/partners/azure/) je taková přenosová služba SMTP, ale existují další. Je možné, že máte také zabezpečenou službu SMTP relay, která běží místně, kterou můžete použít.
 
 Použití těchto služeb doručování e-mailů není v Azure omezené bez ohledu na typ předplatného.
 

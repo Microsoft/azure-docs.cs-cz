@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 01/22/2021
-ms.openlocfilehash: b16e95c231096b7b37175cda5233019696fba19c
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.date: 01/25/2021
+ms.openlocfilehash: 8e5b43383e0b49c0fe6fffdd9ffee6667fb540f8
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98726511"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054750"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Informace o omezeních a konfiguraci pro Azure Logic Apps
 
@@ -380,25 +380,40 @@ Když aplikaci logiky zakážete, nevytvoří se žádná nová spuštění. Vš
 Pokud odstraníte aplikaci logiky, nebudou se vytvářet žádné nové instance spuštění. Všechna probíhající a čekající spuštění se zruší. Pokud máte tisíce spuštění, jejich zrušení může trvat značnou dobu.
 
 <a name="configuration"></a>
+<a name="firewall-ip-configuration"></a>
 
 ## <a name="firewall-configuration-ip-addresses-and-service-tags"></a>Konfigurace brány firewall: IP adresy a značky služeb
 
-IP adresy, které Azure Logic Apps používá pro příchozí a odchozí volání, závisí na oblasti, ve které vaše aplikace logiky existuje. *Všechny* Logic Apps ve stejné oblasti používají stejné rozsahy IP adres. Některá volání [Automatizace](/power-automate/getting-started) , jako jsou požadavky **http** a **http + openapi** , procházejí přímo prostřednictvím služby Azure Logic Apps a pocházejí z IP adres, které jsou zde uvedeny. Další informace o IP adresách, které používá Power automat, najdete v tématu [omezení a konfigurace v Power automatizuje](/flow/limits-and-config#ip-address-configuration).
+Když aplikace logiky potřebuje komunikovat přes bránu firewall, která omezuje provoz na konkrétní IP adresy, musí tato brána firewall povolit přístup *pro* [příchozí](#inbound) i [odchozí](#outbound) IP adresy, které používá služba Logic Apps nebo modul runtime v oblasti Azure, ve které vaše aplikace logiky existuje. *Všechny* Logic Apps ve stejné oblasti používají stejné rozsahy IP adres.
 
-> [!TIP]
-> Chcete-li při vytváření pravidel zabezpečení zjednodušit složitost, můžete místo určení Logic Appsch IP adres pro každou oblast použít [značky služby](../virtual-network/service-tags-overview.md), které jsou popsané dále v této části.
-> Tyto značky fungují v oblastech, kde je služba Logic Apps k dispozici:
->
-> * **LogicAppsManagement**: představuje předpony příchozích IP adres pro službu Logic Apps.
-> * **LogicApps**: představuje předpony odchozí IP adresy pro službu Logic Apps.
+Například pro podporu volání, která Logic Apps v Západní USA oblasti odesílají nebo přijímají prostřednictvím integrovaných triggerů a akcí, jako je například [Trigger nebo akce http](../connectors/connectors-native-http.md), musí brána firewall povolit přístup pro *všechny* příchozí IP adresy služby Logic Apps *a* odchozí IP adresy, které existují v oblasti západní USA.
 
-* Pro [Azure Čína 21Vianet](/azure/china/)nejsou pevné nebo rezervované IP adresy k dispozici pro [vlastní konektory](../logic-apps/custom-connector-overview.md) a [spravované konektory](../connectors/apis-list.md#managed-api-connectors), například Azure Storage, SQL Server, Office 365 Outlook atd.
+Pokud vaše aplikace logiky používá i [spravované konektory](../connectors/apis-list.md#managed-api-connectors), jako je například konektor Office 365 Outlook nebo konektor SQL, nebo používá [vlastní konektory](/connectors/custom-connectors/), musí brána firewall také umožňovat přístup pro *všechny* [odchozí IP adresy spravovaného konektoru](#outbound) v oblasti Azure vaší aplikace logiky. Pokud navíc používáte vlastní konektory, které přistupují k místním prostředkům prostřednictvím [prostředku místní brány dat v Azure](logic-apps-gateway-connection.md), je třeba nastavit instalaci brány tak, aby povolovala přístup pro příslušné *[odchozí IP adresy](#outbound)spravovaných konektorů*.
 
-* Pro podporu volání, která vaše aplikace logiky přímo provádí pomocí [http](../connectors/connectors-native-http.md), [http + Swagger](../connectors/connectors-native-http-swagger.md)a dalších požadavků HTTP, nastavte bránu firewall pomocí všech [příchozích](#inbound) *a* [odchozích](#outbound) IP adres, které služba Logic Apps používá, na základě oblastí, ve kterých existují vaše aplikace logiky. Tyto adresy se zobrazí pod položkami **příchozí** a **odchozí** v této části a jsou seřazené podle oblasti.
+Další informace o nastavení komunikace v bráně najdete v těchto tématech:
 
-* Pro podporu volání [spravovaných konektory](../connectors/apis-list.md#managed-api-connectors) nastavte bránu firewall se *všemi* [odchozími](#outbound) IP adresami používanými těmito konektory na základě oblastí, ve kterých existují vaše aplikace logiky. Tyto adresy se zobrazí pod **výstupní** hlavičkou v této části a jsou seřazené podle oblasti.
+* [Úprava nastavení komunikace pro místní bránu dat](/data-integration/gateway/service-gateway-communication)
+* [Konfigurace nastavení proxy serveru pro místní bránu dat](/data-integration/gateway/service-gateway-proxy)
 
-* Pokud chcete povolit komunikaci pro Logic Apps, které běží v prostředí ISE (Integration Service Environment), ujistěte se, že jste [tyto porty otevřeli](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#network-ports-for-ise).
+<a name="ip-setup-considerations"></a>
+
+### <a name="firewall-ip-configuration-considerations"></a>Otázky konfigurace IP adresy brány firewall
+
+Než nastavíte bránu firewall s IP adresami, přečtěte si tyto požadavky:
+
+* Pokud používáte [Power Automatizujte](/power-automate/getting-started), můžete některé akce, jako je **http** a **http + openapi**, přejít přímo prostřednictvím služby Azure Logic Apps a pocházet z IP adres, které jsou tady uvedené. Další informace o IP adresách, které používá Power automat, najdete v tématu věnovaném [omezením a konfiguraci pro automatizaci napájení](/flow/limits-and-config#ip-address-configuration).
+
+* Pro [Azure Čína 21Vianet](/azure/china/)jsou pevné nebo rezervované IP adresy nedostupné pro [vlastní konektory](../logic-apps/custom-connector-overview.md) a pro [spravované konektory](../connectors/apis-list.md#managed-api-connectors), jako je Azure Storage, SQL Server, Office 365 Outlook atd.
+
+* Pokud vaše aplikace logiky běží v [prostředí ISE (Integration Service Environment)](connect-virtual-network-vnet-isolated-environment-overview.md), ujistěte se, že jste [tyto porty otevřeli](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#network-ports-for-ise).
+
+* Abychom vám pomohli zjednodušit všechna pravidla zabezpečení, která chcete vytvořit, můžete místo toho namísto zadání předpon IP adres pro každou oblast použít [značky služby](../virtual-network/service-tags-overview.md) . Tyto značky fungují v oblastech, kde je služba Logic Apps k dispozici:
+
+  * **LogicAppsManagement**: představuje předpony příchozích IP adres pro službu Logic Apps.
+
+  * **LogicApps**: představuje předpony odchozí IP adresy pro službu Logic Apps.
+
+  * **AzureConnectors**: představuje předpony IP adres pro spravované konektory, které umožňují příchozí zpětná volání webhooků službě Logic Apps a odchozí volání jejich příslušných služeb, jako je například Azure Storage nebo Azure Event Hubs.
 
 * Pokud vaše aplikace logiky mají problémy s přístupem k účtům Azure Storage, které používají [brány firewall a pravidla brány firewall](../storage/common/storage-network-security.md), máte k dispozici [různé možnosti pro povolení přístupu](../connectors/connectors-create-api-azureblobstorage.md#access-storage-accounts-behind-firewalls).
 
@@ -411,9 +426,7 @@ IP adresy, které Azure Logic Apps používá pro příchozí a odchozí volán�
 V této části jsou uvedeny příchozí IP adresy pouze pro službu Azure Logic Apps. Pokud máte Azure Government, přečtěte si téma [IP adresy Azure Government příchozích připojení](#azure-government-inbound).
 
 > [!TIP]
-> Chcete-li při vytváření pravidel zabezpečení zjednodušit složitost, můžete místo zadání předpony IP adres příchozích Logic Apps pro každou oblast použít [značku služby](../virtual-network/service-tags-overview.md) **LogicAppsManagement**.
-> U spravovaných konektorů můžete volitelně použít značku služby **AzureConnectors** , ale nemusíte zadávat předpony IP adres spravovaného konektoru pro každou oblast.
-> Tyto značky fungují v oblastech, kde je služba Logic Apps k dispozici.
+> Chcete-li při vytváření pravidel zabezpečení zjednodušit složitost, můžete místo zadání předpony IP adres příchozích Logic Apps pro každou oblast použít [značku služby](../virtual-network/service-tags-overview.md) **LogicAppsManagement**. Volitelně můžete také použít značku služby **AzureConnectors** pro spravované konektory, které provádějí příchozí zpětná volání webhooků do služby Logic Apps, a nemusíte pro každou oblast zadávat předpony IP adres spravovaného konektoru. Tyto značky fungují v oblastech, kde je služba Logic Apps k dispozici.
 
 <a name="multi-tenant-inbound"></a>
 
@@ -479,8 +492,7 @@ V této části jsou uvedeny příchozí IP adresy pouze pro službu Azure Logic
 V této části jsou uvedeny odchozí IP adresy pro službu Azure Logic Apps a spravované konektory. Pokud máte Azure Government, přečtěte si téma [Azure Government-odchozí IP adresy](#azure-government-outbound).
 
 > [!TIP]
-> Chcete-li při vytváření pravidel zabezpečení zjednodušit složitost, můžete místo zadání předpony IP adresy odchozího Logic Apps pro každou oblast použít [značku služby](../virtual-network/service-tags-overview.md) **LogicApps**.
-> Tato značka funguje v oblastech, kde je služba Logic Apps k dispozici. 
+> Chcete-li při vytváření pravidel zabezpečení zjednodušit složitost, můžete místo zadání předpony IP adresy odchozího Logic Apps pro každou oblast použít [značku služby](../virtual-network/service-tags-overview.md) **LogicApps**. Volitelně můžete také použít značku služby **AzureConnectors** pro spravované konektory, které provedou odchozí volání jejich příslušných služeb, jako je Azure Storage nebo Azure Event Hubs, a nemusíte pro každou oblast zadávat předpony IP adres pro odchozí spravované konektory. Tyto značky fungují v oblastech, kde je služba Logic Apps k dispozici.
 
 <a name="multi-tenant-outbound"></a>
 

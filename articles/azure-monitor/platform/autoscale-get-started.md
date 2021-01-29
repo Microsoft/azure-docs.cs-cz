@@ -4,12 +4,12 @@ description: Naučte se škálovat webovou aplikaci prostředků, cloudovou slu�
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: ee36db3f657365036bb68f641be53fd434f1b64b
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 9bbd4da77d2892064906dc7ae272bcc770b6bdc4
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97694926"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055276"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Začínáme s automatickým škálováním v Azure
 Tento článek popisuje, jak nastavit nastavení automatického škálování pro váš prostředek v portál Microsoft Azure.
@@ -59,7 +59,7 @@ Teď si projdeme jednoduchý podrobný návod k vytvoření vašeho prvního nas
    ![Škálování na základě procesoru][8]
 1. Klikněte na **Uložit**.
 
-Blahopřejeme! Úspěšně jste vytvořili první nastavení škálování pro automatické škálování webové aplikace na základě využití procesoru.
+Gratulujeme! Úspěšně jste vytvořili první nastavení škálování pro automatické škálování webové aplikace na základě využití procesoru.
 
 > [!NOTE]
 > Stejné kroky jsou použitelné pro zahájení práce se sadou škálování virtuálních počítačů nebo s rolí cloudové služby.
@@ -115,36 +115,9 @@ K automatickému škálování se můžete kdykoli vrátit kliknutím na **Povol
 
 ## <a name="route-traffic-to-healthy-instances-app-service"></a>Směrování provozu do instancí v pořádku (App Service)
 
-Při horizontálním navýšení kapacity na více instancí může App Service provádět kontroly stavu instancí, aby bylo možné směrovat provoz pouze do zdravých instancí. Provedete to tak, že otevřete portál pro App Service a v části **monitorování** vyberete **kontrolu stavu** . Vyberte **Povolit** a zadejte platnou cestu adresy URL v aplikaci, například `/health` nebo `/api/health` . Klikněte na **Uložit**.
+<a id="health-check-path"></a>
 
-Chcete-li tuto funkci povolit u šablon ARM, nastavte `healthcheckpath` vlastnost `Microsoft.Web/sites` prostředku na cestu k kontrole stavu na webu, například: `"/api/health/"` . Chcete-li funkci zakázat, nastavte vlastnost zpět na prázdný řetězec `""` .
-
-### <a name="health-check-path"></a>Cesta kontroly stavu
-
-Cesta musí odpovídat do jedné minuty se stavovým kódem mezi 200 a 299 (včetně). Pokud cesta nereaguje do jedné minuty nebo vrátí stavový kód mimo daný rozsah, instance se považuje za "není v pořádku". App Service nedodržuje 30krát (301, 302, 307 atd.) v cestě kontroly stavu – tyto stavové kódy se považují za **chybné**. Při kontrole stavu se integruje s funkcemi ověřování a autorizace v App Service bude systém kontaktovat koncový bod i v případě, že jsou povolené tyto funkce zabezpečení. Pokud používáte vlastní ověřovací systém, musí cesta k kontrole stavu umožňovat anonymní přístup. Pokud má lokalita povolenou možnost HTTP **s**, bude žádost Healthcheck odeslána prostřednictvím protokolu HTTP **s**.
-
-Cesta pro kontrolu stavu by měla kontrolovat kritické součásti aplikace. Například pokud vaše aplikace závisí na databázi a systému zasílání zpráv, koncový bod kontroly stavu by se měl k těmto součástem připojit. Pokud se aplikace nemůže připojit k důležité součásti, měla by tato cesta vracet kód odpovědi 500 na úrovni, aby označoval, že aplikace není v pořádku.
-
-#### <a name="security"></a>Zabezpečení 
-
-Vývojové týmy ve velkých podnicích často potřebují splňovat požadavky na zabezpečení pro vystavená rozhraní API. K zabezpečení koncového bodu Healthcheck byste nejdřív měli používat funkce, jako jsou [omezení IP adresy](../../app-service/app-service-ip-restrictions.md#set-an-ip-address-based-rule), [klientské certifikáty](../../app-service/app-service-ip-restrictions.md#set-an-ip-address-based-rule)nebo Virtual Network, které omezují přístup k aplikaci. Koncový bod Healthcheck můžete zabezpečit samotný tím, že vyžadujete, aby `User-Agent` příchozí požadavek odpovídal `ReadyForRequest/1.0` . User-Agent nemůže být zfalšovaný, protože tato žádost byla již zabezpečená předchozími bezpečnostními funkcemi.
-
-### <a name="behavior"></a>Chování
-
-Po zadání cesty pro kontrolu stavu App Service otestuje cestu k cestě všech instancí. Pokud kód úspěšné odpovědi po 5 příkazech otestuje neobdrží, považuje se tato instance za "není v pořádku". Instance, které nejsou v pořádku, budou z rotace vyrovnávání zatížení vyloučeny, pokud budete škálovat na 2 nebo více instancí a použijete [úroveň Basic](../../app-service/overview-hosting-plans.md) nebo vyšší. V nastavení aplikace můžete nakonfigurovat požadovaný počet neúspěšných příkazů testu pro příkazy typu test `WEBSITE_HEALTHCHECK_MAXPINGFAILURES` . Toto nastavení aplikace může být nastaveno na celé číslo mezi 2 a 10. Pokud je to například nastaveno na `2` , instance budou odebrány z nástroje pro vyrovnávání zatížení po dvou nezdařených příkazech pro ověření. Při horizontálním navýšení nebo zmenšení kapacity App Service otestuje cestu pro kontrolu stavu, aby se zajistilo, že nové instance budou připravené na žádosti před jejich přidáním do nástroje pro vyrovnávání zatížení.
-
-> [!NOTE]
-> Mějte na paměti, že váš plán App Service musí být škálované na 2 nebo více instancí a musí být pro vyrovnávání zatížení vygenerovány na **úrovni Basic nebo vyšší** . Pokud máte jenom 1 instanci, neodebere se z nástroje pro vyrovnávání zatížení, i když není v pořádku. 
-
-Kromě toho je při přidání nebo restartování instance cesta k kontrole stavu prováděna pomocí příkazového řádku, například během operací horizontálního navýšení kapacity, ručním restartování nebo nasazení kódu prostřednictvím lokality SCM. Pokud během těchto operací dojde k selhání kontroly stavu, instance, které selžou, nebudou přidány do nástroje pro vyrovnávání zatížení. To brání těmto operacím negativně ovlivnit dostupnost vaší aplikace.
-
-Při použití Healthcheck může docházet ke zvýšení zátěže ve zbývajících případech. Aby nedošlo k zahlcení zbývajících instancí, nebudou vyloučeny žádné více než polovina instancí. Pokud je například plán App Service škálované na 4 instance a 3 z nich není v pořádku, bude při rotaci nástroje pro vyrovnávání zatížení vyloučeno maximálně 2. Ostatní 2 instance (1 v pořádku a 1 poškozený) budou i nadále přijímat požadavky. V nejhorším případě, kdy nejsou všechny instance v pořádku, se nevylučují žádné. Pokud chcete toto chování přepsat, můžete `WEBSITE_HEALTHCHECK_MAXUNHEALTHYWORKERPERCENT` nastavení aplikace nastavit na hodnotu mezi `0` a `100` . Nastavení této hodnoty na vyšší znamená, že se odeberou víc instancí, které nejsou v pořádku (výchozí hodnota je 50).
-
-Pokud kontroly stavu selžou pro všechny aplikace na instanci po jednu hodinu, instance se nahradí. V jednom z nich bude za hodinu nahrazena maximálně jedna instance, a to s maximálním počtem tří instancí za den a App Service.
-
-### <a name="monitoring"></a>Monitorování
-
-Po poskytnutí cesty pro kontrolu stavu vaší aplikace můžete monitorovat stav svého webu pomocí Azure Monitor. V okně pro **kontrolu stavu** na portálu klikněte na **metriky** na horním panelu nástrojů. Otevře se nové okno, kde můžete zobrazit historický stav webu a vytvořit nové pravidlo výstrahy. Další informace o monitorování vašich lokalit najdete v [příručce k Azure monitor](../../app-service/web-sites-monitor.md).
+Když se vaše webová aplikace Azure škáluje na více instancí, App Service může provádět kontroly stavu vašich instancí, aby bylo možné směrovat provoz do zdravých instancí. Další informace najdete [v tomto článku o App Service kontrole stavu](../../app-service/monitor-instances-health-check.md).
 
 ## <a name="moving-autoscale-to-a-different-region"></a>Přesun automatického škálování do jiné oblasti
 Tato část popisuje, jak přesunout automatické škálování Azure do jiné oblasti v rámci stejného předplatného a skupiny prostředků. K přesunutí nastavení automatického škálování můžete použít REST API.

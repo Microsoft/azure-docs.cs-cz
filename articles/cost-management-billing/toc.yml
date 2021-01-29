@@ -384,15 +384,15 @@
       href: /rest/api/cost-management
     - name: Rozhraní REST API služby Azure Consumption
       href: /rest/api/consumption
-    - name: Šablona Resource Manageru
+    - name: Spotřeba REST API šablona rozpočtu ARM
       href: /azure/templates/microsoft.consumption/budgets
     - name: Ukázky rozhraní REST API služby Cost Management
       href: 'https://github.com/Azure-Samples/Cost-Management-Samples'
-    - name: Cost Management – Azure PowerShell
+    - name: Azure PowerShell rutin pro Cost Management
       href: /powershell/module/Az.CostManagement
     - name: Scénáře automatizace služby Billing
       href: manage/cost-management-automation-scenarios.md
-    - name: Přehled rozhraní API služby Azure Billing
+    - name: Maloobchodní ceny Azure REST API
       href: /rest/api/cost-management/retail-prices/azure-retail-prices
     - name: Rozhraní REST API služby Azure Billing
       href: /rest/api/billing
@@ -400,25 +400,21 @@
       href: manage/consumption-api-overview.md
     - name: Rozhraní REST API služby Azure Consumption
       href: /rest/api/consumption
-    - name: Rozhraní REST API služby RateCard
-      href: /previous-versions/azure/reference/mt219005(v=azure.100)
-    - name: Rozhraní REST API služby Usage
-      href: /previous-versions/azure/reference/mt219003(v=azure.100)
-    - name: Přehled služby Enterprise Reporting
+    - name: Přehled podnikových REST APIových sestav
       href: manage/enterprise-api.md
-    - name: Rozhraní REST API služby Enterprise Reporting
+    - name: Rozhraní REST API pro podnikové sestavy
       href: /rest/api/billing/enterprise/billing-enterprise-api-balance-summary
     - name: Reservations
       items:
         - name: Rozhraní REST API pro rezervace
           href: reservations/reservation-apis.md?toc=/azure/cost-management-billing/toc.json
-        - name: Rezervace – Azure PowerShell
+        - name: Rutiny Azure PowerShell pro rezervace
           href: /powershell/module/azurerm.reservations
-        - name: Rezervace – rozhraní příkazového řádku
+        - name: Rozhraní příkazového řádku Azure pro rezervace
           href: /cli/azure/reservations/reservation
-        - name: Cost Management – rozhraní REST API pro podrobnosti využití spotřeby
+        - name: Podrobnosti o využití REST API
           href: /rest/api/consumption/usagedetails
-        - name: Cost Management – rozhraní REST API pro podrobnosti rezervací spotřeby
+        - name: Podrobnosti rezervací REST API
           href: /rest/api/consumption/reservationsdetails
 - name: Zdroje a prostředky
   items:

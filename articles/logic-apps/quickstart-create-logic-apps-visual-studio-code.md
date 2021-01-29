@@ -7,12 +7,12 @@ ms.reviewer: jonfan, deli, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/28/2020
-ms.openlocfilehash: 170a919ca184c959800e62cb0d8ede8659c96df4
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.openlocfilehash: f46c093bffcc26b5f7975d25ccaca648bdc527da
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97708987"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054682"
 ---
 # <a name="quickstart-create-and-manage-logic-app-workflow-definitions-by-using-visual-studio-code"></a>Rychlé zprovoznění: Vytváření a správa definic pracovních postupů aplikací logiky pomocí Visual Studio Code
 
@@ -23,6 +23,8 @@ I když tyto stejné úlohy můžete provádět v [Azure Portal](https://portal.
 V tomto článku můžete vytvořit stejnou aplikaci logiky z tohoto [rychlého](../logic-apps/quickstart-create-first-logic-app-workflow.md)startu, která se zaměřuje na základní koncepty. Můžete se také [naučit vytvořit ukázkovou aplikaci v aplikaci Visual Studio](quickstart-create-logic-apps-with-visual-studio.md)a [Naučte se vytvářet a spravovat aplikace prostřednictvím rozhraní Azure Command-Line (CLI)](quickstart-logic-apps-azure-cli.md). V Visual Studio Code aplikace logiky vypadá jako v tomto příkladu:
 
 ![Příklad definice pracovního postupu aplikace logiky](./media/quickstart-create-logic-apps-visual-studio-code/visual-studio-code-overview.png)
+
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že máte tyto položky:
 
@@ -49,6 +51,8 @@ Než začnete, ujistěte se, že máte tyto položky:
     ![Potvrďte správnou instalaci rozšíření.](./media/quickstart-create-logic-apps-visual-studio-code/confirm-installed-visual-studio-code-extension.png)
 
     Další informace najdete v tématu [rozšíření Marketplace](https://code.visualstudio.com/docs/editor/extension-gallery). Pokud chcete přispět k této verzi Open Source tohoto rozšíření, navštivte [rozšíření Azure Logic Apps pro Visual Studio Code na GitHubu](https://github.com/Microsoft/vscode-azurelogicapps).
+
+* Pokud vaše aplikace logiky potřebuje komunikovat přes bránu firewall, která omezuje provoz na konkrétní IP adresy, musí brána firewall povolit přístup *pro* [příchozí](logic-apps-limits-and-config.md#inbound) i [odchozí](logic-apps-limits-and-config.md#outbound) IP adresy, které používá služba Logic Apps nebo modul runtime v oblasti Azure, ve které vaše aplikace logiky existuje. Pokud vaše aplikace logiky používá i [spravované konektory](../connectors/apis-list.md#managed-api-connectors), jako je například konektor Office 365 Outlook nebo konektor SQL, nebo používá [vlastní konektory](/connectors/custom-connectors/), musí brána firewall také umožňovat přístup pro *všechny* [odchozí IP adresy spravovaného konektoru](logic-apps-limits-and-config.md#outbound) v oblasti Azure vaší aplikace logiky.
 
 <a name="access-azure"></a>
 

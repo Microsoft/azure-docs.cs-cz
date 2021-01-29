@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: eaba099725530f24dcd6aa5da7eb59cb233efd46
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: e64f8cded851427636a19e16cccd78932dd6baac
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695641"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054953"
 ---
 # <a name="azure-functions-http-trigger"></a>Aktivační událost Azure Functions HTTP
 
@@ -448,7 +448,7 @@ Tady je *function.js* souboru:
         {
             "type": "http",
             "direction": "out",
-            "name": "res"
+            "name": "$return"
         }
     ]
 }
@@ -547,13 +547,13 @@ Python nepodporuje atributy.
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `HttpTrigger` atribut.
 
-|function.jsvlastnost | Vlastnost atributu |Popis|
+|function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
 | **textový** | Není k dispozici| Požadováno – musí být nastavené na `httpTrigger` . |
 | **směr** | Není k dispozici| Požadováno – musí být nastavené na `in` . |
 | **Jméno** | Není k dispozici| Required – název proměnné použitý v kódu funkce pro text žádosti nebo žádosti. |
 | <a name="http-auth"></a>**authLevel** |  **AuthLevel** |Určuje, které klíče (pokud existují) musí být k žádosti přítomny, aby bylo možné funkci vyvolat. Úroveň autorizace může být jedna z následujících hodnot: <ul><li><code>anonymous</code>&mdash;Není vyžadován žádný klíč rozhraní API.</li><li><code>function</code>&mdash;Klíč rozhraní API specifický pro funkci je povinný. Toto je výchozí hodnota, pokud není zadána žádná.</li><li><code>admin</code>&mdash;Hlavní klíč je povinný.</li></ul> Další informace najdete v části o [autorizačních klíčích](#authorization-keys). |
-| **methods** |**Způsobů** | Pole metod HTTP, na které funkce reaguje. Pokud není zadaný, funkce reaguje na všechny metody HTTP. Viz [přizpůsobení koncového bodu http](#customize-the-http-endpoint). |
+| **způsobů** |**Metody** | Pole metod HTTP, na které funkce reaguje. Pokud není zadaný, funkce reaguje na všechny metody HTTP. Viz [přizpůsobení koncového bodu http](#customize-the-http-endpoint). |
 | **route** | **Cestě** | Definuje šablonu směrování, která řídí, které adresy URL žádostí vaše funkce reaguje. Výchozí hodnota, pokud není zadána, je `<functionname>` . Další informace najdete v tématu [přizpůsobení koncového bodu http](#customize-the-http-endpoint). |
 | **webHookType** | **WebHookType** | _Podporováno pouze pro modul runtime verze 1. x._<br/><br/>Nakonfiguruje Trigger HTTP tak, aby sloužil jako přijímač [Webhooku](https://en.wikipedia.org/wiki/Webhook) pro zadaného zprostředkovatele. `methods`Pokud jste nastavili tuto vlastnost, nenastavujte tuto vlastnost. Typ Webhooku může být jedna z následujících hodnot:<ul><li><code>genericJson</code>&mdash;Koncový bod Webhooku pro obecné účely bez logiky pro konkrétního zprostředkovatele. Toto nastavení omezuje požadavky jenom na ty, které používají HTTP POST a s `application/json` typem obsahu.</li><li><code>github</code>&mdash;Funkce reaguje na [Webhooky GitHubu](https://developer.github.com/webhooks/). Nepoužívejte vlastnost  _authLevel_ s Webhooky GitHubu. Další informace najdete v části Webhooky GitHubu dále v tomto článku.</li><li><code>slack</code>&mdash;Funkce reaguje na [Webhooky časové rezervy](https://api.slack.com/outgoing-webhooks). Nepoužívejte vlastnost _authLevel_ s Webhooky časové rezervy. Další informace najdete v části časová pole webhooků dále v tomto článku.</li></ul>|
 

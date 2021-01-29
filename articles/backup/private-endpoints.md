@@ -3,12 +3,12 @@ title: Privátní koncové body
 description: Pochopení procesu vytváření privátních koncových bodů pro Azure Backup a scénářů, kdy použití privátních koncových bodů pomáhá udržet zabezpečení vašich prostředků.
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: b1412a79fa6137ce1f8c73d5875e52b6382048fa
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 0d9d77c139896f9067f73943dbb213fc655f00f6
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986967"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054868"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Soukromé koncové body pro Azure Backup
 
@@ -32,7 +32,7 @@ Tento článek vám pomůže pochopit proces vytváření privátních koncovýc
 
 I když jsou v trezoru povolené privátní koncové body, používají se k zálohování a obnovení úloh SQL a SAP HANA jenom na virtuálních počítačích Azure a na zálohování agenta MARS. Trezor můžete použít i pro zálohování dalších úloh (nevyžadují i privátní koncové body). Kromě zálohování úloh SQL a SAP HANA a zálohování pomocí agenta MARS se také k provádění obnovení souborů pro zálohování virtuálních počítačů Azure používá privátní koncové body. Další informace najdete v následující tabulce:
 
-| Zálohování úloh na virtuálním počítači Azure (SQL, SAP HANA), zálohování pomocí agenta MARS | Použití privátních koncových bodů se doporučuje, aby se povolilo zálohování a obnovení bez nutnosti povolení – vypíše všechny IP adresy nebo plně kvalifikované názvy domény pro Azure Backup nebo Azure Storage z vašich virtuálních sítí. |
+| Zálohování úloh na virtuálním počítači Azure (SQL, SAP HANA), zálohování pomocí agenta MARS | Použití privátních koncových bodů se doporučuje k povolení zálohování a obnovení, aniž byste museli povolených žádné IP adresy nebo plně kvalifikované názvy domény pro Azure Backup nebo Azure Storage z vašich virtuálních sítí. V takovém případě zajistěte, aby virtuální počítače, které hostují databáze SQL, mohly získat IP adresy nebo plně kvalifikované názvy domény služby Azure |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | **Zálohování virtuálních počítačů Azure**                                         | Zálohování virtuálního počítače nevyžaduje povolení přístupu k žádným IP adresám nebo plně kvalifikovaným názvům domén. Proto nevyžaduje privátní koncové body pro zálohování a obnovení disků.  <br><br>   Obnovení souborů z trezoru obsahujícího privátní koncové body by ale mělo být omezené na virtuální sítě, které obsahují privátní koncový bod pro trezor. <br><br>    Pokud používáte nespravované disky ACL'ed, ujistěte se, že účet úložiště, který obsahuje disky, umožňuje přístup k **důvěryhodným službám Microsoftu** , pokud je ACL'ed. |
 | **Zálohování souborů Azure**                                      | Zálohy souborů Azure se ukládají v místním účtu úložiště. Proto nevyžaduje privátní koncové body pro zálohování a obnovení. |
@@ -386,7 +386,7 @@ $privateEndpoint = New-AzPrivateEndpoint `
 
 #### <a name="create-dns-zones-for-custom-dns-servers"></a>Vytváření zón DNS pro vlastní servery DNS
 
-Musíte vytvořit tři privátní zóny DNS a propojit je s vaší virtuální sítí.
+Musíte vytvořit tři privátní zóny DNS a propojit je s vaší virtuální sítí. Mějte na paměti, že na rozdíl od objektů BLOB a Queue se veřejné adresy URL služby Backup neregistrují ve veřejné službě DNS Azure pro přesměrování do zón DNS privátního propojení. 
 
 | **Zóna**                                                     | **Služba** |
 | ------------------------------------------------------------ | ----------- |

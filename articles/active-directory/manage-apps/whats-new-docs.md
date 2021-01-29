@@ -9,12 +9,12 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-ms.openlocfilehash: bad312b777c57a48c3205de588325d477b5773af
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: ea2e08db91d23e9523b7bc95e01b7adc9c93b3cc
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563394"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054817"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory Správa aplikací: co je nového
 
@@ -90,7 +90,7 @@ Vítá vás novinky v Azure Active Directory dokumentaci správy aplikací. V to
 - [Jak používat Samoobslužný přístup k aplikacím](access-panel-manage-self-service-access.md)
 - [Řešení potíží s přihlášením k aplikaci z Azure AD moje aplikace](application-sign-in-other-problem-access-panel.md)
 - [Řešení potíží s jednotným přihlašováním založeným na heslech v Azure AD](troubleshoot-password-based-sso.md)
-- [Plánování nasazení Azure Active Directory moje aplikace](access-panel-deployment-plan.md)
+- [Plánování nasazení Azure Active Directory moje aplikace](my-apps-deployment-plan.md)
 - [Co je jednotné přihlašování (SSO)?](what-is-single-sign-on.md)
 - [Provedení akce na privilegovaných nebo podezřelých aplikacích v Azure Active Directory](manage-application-permissions.md)
 - [Rychlý Start: Konfigurace vlastností aplikace ve vašem tenantovi Azure Active Directory (Azure AD)](add-application-portal-configure.md)

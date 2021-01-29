@@ -9,16 +9,16 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 522b67e62e7ad8560bb48e8d056ca6daeeb45251
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
-ms.translationtype: HT
+ms.openlocfilehash: f6aad15d70157dda110fce233fbdafb7f3d896ad
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350904"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055055"
 ---
 # <a name="understand-azure-reservation-usage-for-your-individual-subscription-with-pay-as-you-go-rates-subscription"></a>Vysvětlení využití rezervací Azure u jednoho předplatného s průběžnými platbami
 
-Při vyhodnocování vašeho využití rezervací použijte hodnotu ReservationId ze [stránky Rezervace](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=Reservations&Microsoft_Azure_Reservations=true#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) a soubor s informacemi o využití z [portálu účtů Azure](https://account.azure.com).
+Použijte ReservationId ze [stránky rezervace](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=Reservations&Microsoft_Azure_Reservations=true#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) a soubor využití z [Azure Portal](https://portal.azure.com) k vyhodnocení využití rezervace.
 
 Pokud jste zákazník se smlouvou Enterprise, přečtěte si téma [Vysvětlení využití rezervací pro smlouvu Enterprise](understand-reserved-instance-usage-ea.md).
 

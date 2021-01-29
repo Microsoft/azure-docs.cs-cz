@@ -9,20 +9,19 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 12/08/2020
+ms.date: 01/27/2021
 ms.author: curtand
-ms.openlocfilehash: 7b3af7c5bd55e748b1d1f4cf8f192797187da30a
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: d499417414e560bdaa3fcd0a12255946aca413d9
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96901792"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054834"
 ---
 # <a name="microsoft-authenticator-for-android-in-the-public-cloud-in-china"></a>Microsoft Authenticator pro Android ve veřejném cloudu v Číně
 
 Aplikace Microsoft Authenticator pro Android je dostupná ke stažení v Číně. Obchod Google Play není k dispozici v Číně, takže se aplikace musí stáhnout z jiných čínských Marketplace aplikací. Aplikace Microsoft Authenticator pro Android je aktuálně dostupná v následujících úložištích v Číně:
 
-- [Baidu](https://shouji.baidu.com/software/26638379.html)
 - [Lenovo](https://www.lenovomm.com/appdetail/com.azure.authenticator/20197724)
 - [Huawei](https://appgallery.cloud.huawei.com/uowap/index.html#/detailApp/C100262999?source=appshare&subsource=C100262999&shareTo=weixin&locale=zh_CN)
 - [Samsung Galaxy Store](http://apps.samsung.com/appquery/appDetail.as?appId=com.azure.authenticator)
@@ -52,11 +51,11 @@ Microsoft Authenticator funkce | Dostupnost v Číně
 ------------------------------- | ---------------------
 Registrace MFA pomocí nabízených oznámení | No
 Již existující účet MFA ověřování identity pomocí nabízených oznámení | No
-Již existující účet MFA, který provádí ruční kontrolu oznámení | Ano
-Registrace MFA/ověřování pouze pomocí ověřovacích kódů TOTP/ověřování | Ano
+Již existující účet MFA, který provádí ruční kontrolu oznámení | Yes
+Registrace MFA/ověřování pouze pomocí ověřovacích kódů TOTP/ověřování | Yes
 Registrace přihlášení k telefonu | No
 Existující přihlášení k telefonu pomocí nabízených oznámení | No
-Stávající ověřování přihlášení k telefonu pomocí ruční kontroly žádostí o ověření | Ano
+Stávající ověřování přihlášení k telefonu pomocí ruční kontroly žádostí o ověření | Yes
 Podpora ověřovací aplikace pro osobní účty Microsoft | No
 
 ## <a name="next-steps"></a>Další kroky

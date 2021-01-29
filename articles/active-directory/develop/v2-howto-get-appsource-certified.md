@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 65d6151536eb92e2ab9b740a99984fb0b5977cab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3dfeca64804ceb522046e5c0dc10702575f60aad
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91256870"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054581"
 ---
 # <a name="get-appsource-certified-for-azure-active-directory"></a>Získání AppSource certifikace pro Azure Active Directory
 
@@ -102,11 +102,11 @@ V případě, že se při zřizování uživatele/společnosti může provést r
 
 Další informace o zkušebním prostředí AppSource najdete v [tomto videu](https://aka.ms/trialexperienceforwebapps). 
 
-## <a name="get-support"></a>Získat podporu
+## <a name="get-support"></a>Získání podpory
 
-Pro integraci služby Azure AD používáme pro poskytování podpory [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource) s komunitou.
+Pro integraci služby Azure AD používáme pro poskytování podpory [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-active-directory.html) společně s komunitou.
 
-Důrazně doporučujeme, abyste si nejdřív položili své dotazy na Stack Overflow a mohli si projít stávající problémy, abyste zjistili, jestli se někdo na svůj dotaz předá. Ujistěte se, že jsou vaše dotazy nebo komentáře označeny pomocí [ `[azure-active-directory]` a `[appsource]` ](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource).
+Důrazně doporučujeme, abyste si položili své dotazy na Microsoft Q&a Projděte si stávající problémy, abyste zjistili, jestli se někdo na vaši otázku předá dotaz. Ujistěte se, že jsou vaše dotazy nebo komentáře označené pomocí [`[azure-active-directory]`](https://docs.microsoft.com/answers/topics/azure-active-directory.html) .
 
 Následující komentáře vám poskytnou zpětnou vazbu a pomáhají nám zdokonalit a obsloužit náš obsah.
 

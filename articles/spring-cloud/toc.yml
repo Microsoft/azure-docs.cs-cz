@@ -99,6 +99,8 @@
           href: spring-cloud-howto-application-insights.md
         - name: Metriky jističe Resilience4J
           href: spring-cloud-howto-circuit-breaker-metrics.md
+        - name: Strukturovaný aplikační protokol
+          href: spring-cloud-structured-app-log.md
     - name: Síť
       items:
         - name: Nasazení jarního cloudu Azure ve virtuální síti

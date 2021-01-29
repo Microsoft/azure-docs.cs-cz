@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 413293cdefd39285c57b58d4555d3d703492ea96
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: f05c3247ecdd77fe4cf02db70c7ba4b2c534f959
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98894843"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055344"
 ---
 # <a name="update-azure-powershell-modules"></a>Aktualizace modulů Azure PowerShellu
 
@@ -23,7 +23,7 @@ Nejběžnější moduly PowerShellu jsou ve výchozím nastavení k dispozici v 
 
 Chcete-li se vyhnout vlivu na vaše Runbooky a procesy, které automatizují, proveďte testování a ověření při provádění aktualizací. Pokud nemáte pro tento účel vyhrazený účet služby Automation, zvažte jeho vytvoření, abyste mohli otestovat mnoho různých scénářů během vývoje runbooků. Toto testování by mělo zahrnovat iterativní změny, jako je například aktualizace modulů prostředí PowerShell.
 
-Ujistěte se, že váš účet Automation má vytvořené [přihlašovací údaje účtu Spustit jako pro Azure](manage-runas-account.md) .
+Ujistěte se, že má váš účet Automation vytvořený [účet Spustit jako pro Azure](automation-security-overview.md#run-as-accounts) .
 
 Pokud vaše skripty vyvíjíte místně, doporučujeme mít v místním počítači stejné verze modulu, které máte v účtu Automation při testování, abyste měli jistotu, že dostanete stejné výsledky. Po ověření výsledků a provedení všech požadovaných změn můžete změny přesunout do produkčního prostředí.
 

@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: troubleshooting
 ms.workload: identity
-ms.date: 05/08/2020
+ms.date: 01/28/2021
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 10609f2706d257dbe5d8f43b85da5f06cb986cae
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: dd1edc001e51bf20f3ff7745baa520b3844c139b
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756193"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054665"
 ---
 # <a name="troubleshoot-publisher-verification"></a>Řešení potíží s ověřením vydavatele
 Pokud se vám nedaří dokončit proces nebo došlo k neočekávanému chování při [ověřování vydavatele](publisher-verification-overview.md), měli byste začít následujícím způsobem, pokud obdržíte chyby nebo neočekávané chování: 
@@ -149,87 +149,95 @@ HTTP/1.1 200 OK
 
 Následuje seznam možných chybových kódů, které můžete obdržet, při řešení potíží s Microsoft Graph nebo v průběhu procesu na portálu pro registraci aplikací.
 
-### <a name="mpnaccountnotfoundornoaccess"></a>MPNAccountNotFoundOrNoAccess     
+### <a name="mpnaccountnotfoundornoaccess"></a>MPNAccountNotFoundOrNoAccess
 
-Zadané ID MPN ( <MPNID> ) neexistuje nebo k němu nemáte přístup. Zadejte platné ID MPN a zkuste to znovu.
+Zadané ID MPN ( `MPNID` ) neexistuje nebo k němu nemáte přístup. Zadejte platné ID MPN a zkuste to znovu.
     
 Nejčastěji způsobené přihlášeným uživatelem není členem správné role pro účet MPN v partnerském centru – viz [požadavky](publisher-verification-overview.md#requirements) na seznam oprávněných rolí a další informace najdete v tématu [běžné problémy](#common-issues) . Může to být také způsobeno tím, že je aplikace zaregistrovaná v aplikaci, není přidávána do účtu MPN nebo je neplatné ID MPN.
 
-### <a name="mpnglobalaccountnotfound"></a>MPNGlobalAccountNotFound     
+### <a name="mpnglobalaccountnotfound"></a>MPNGlobalAccountNotFound
 
-Zadané ID MPN ( <MPNID> ) je neplatné. Zadejte platné ID MPN a zkuste to znovu.
+Zadané ID MPN ( `MPNID` ) je neplatné. Zadejte platné ID MPN a zkuste to znovu.
     
 Nejčastěji to způsobuje, že je k dispozici ID programu MPN, které odpovídá účtu umístění partnera (PLA). Podporují se jenom globální účty partnera. Další podrobnosti najdete v tématu [Struktura účtu partnerského centra](/partner-center/account-structure) .
 
-### <a name="mpnaccountinvalid"></a>MPNAccountInvalid    
+### <a name="mpnaccountinvalid"></a>MPNAccountInvalid
 
-Zadané ID MPN ( <MPNID> ) je neplatné. Zadejte platné ID MPN a zkuste to znovu.
+Zadané ID MPN ( `MPNID` ) je neplatné. Zadejte platné ID MPN a zkuste to znovu.
     
 Nejčastěji je zadáno chybné ID MPN.
 
-### <a name="mpnaccountnotvetted"></a>MPNAccountNotVetted  
+### <a name="mpnaccountnotvetted"></a>MPNAccountNotVetted
 
-ID MPN ( <MPNID> ), které jste zadali, nedokončilo proces dozvíte ČSFD. Tento proces dokončete v partnerském centru a zkuste to znovu. 
+ID MPN ( `MPNID` ), které jste zadali, nedokončilo proces dozvíte ČSFD. Tento proces dokončete v partnerském centru a zkuste to znovu. 
     
 Nejčastěji je to způsobeno tím, že účet MPN nedokončil proces [ověření](/partner-center/verification-responses) .
 
-### <a name="nopublisheridonassociatedmpnaccount"></a>NoPublisherIdOnAssociatedMPNAccount  
+### <a name="nopublisheridonassociatedmpnaccount"></a>NoPublisherIdOnAssociatedMPNAccount
 
-Zadané ID MPN ( <MPNID> ) je neplatné. Zadejte platné ID MPN a zkuste to znovu. 
+Zadané ID MPN ( `MPNID` ) je neplatné. Zadejte platné ID MPN a zkuste to znovu. 
    
 Nejčastěji je zadáno chybné ID MPN.
 
-### <a name="mpniddoesnotmatchassociatedmpnaccount"></a>MPNIdDoesNotMatchAssociatedMPNAccount    
+### <a name="mpniddoesnotmatchassociatedmpnaccount"></a>MPNIdDoesNotMatchAssociatedMPNAccount
 
-Zadané ID MPN ( <MPNID> ) je neplatné. Zadejte platné ID MPN a zkuste to znovu.
+Zadané ID MPN ( `MPNID` ) je neplatné. Zadejte platné ID MPN a zkuste to znovu.
     
 Nejčastěji je zadáno chybné ID MPN.
 
-### <a name="applicationnotfound"></a>ApplicationNotFound  
+### <a name="applicationnotfound"></a>ApplicationNotFound
 
-Cílovou aplikaci ( <AppId> ) nelze nalézt. Zadejte platné ID aplikace a zkuste to znovu.
+Cílovou aplikaci ( `AppId` ) nelze nalézt. Zadejte platné ID aplikace a zkuste to znovu.
     
 Nejčastěji to způsobuje, že se provádí ověření prostřednictvím Graph API a ID poskytnuté aplikace není správné. Poznámka: musí být zadáno ID aplikace, nikoli AppId/ClientId.
 
-### <a name="b2ctenantnotallowed"></a>B2CTenantNotAllowed  
+### <a name="b2ctenantnotallowed"></a>B2CTenantNotAllowed
 
-Tato funkce není v tenantovi Azure AD B2C podporována. 
+Tato funkce není v tenantovi Azure AD B2C podporována.
 
-### <a name="emailverifiedtenantnotallowed"></a>EmailVerifiedTenantNotAllowed    
+### <a name="emailverifiedtenantnotallowed"></a>EmailVerifiedTenantNotAllowed
 
-Tato funkce není podporována v tenantovi ověřeném e-mailem. 
+Tato funkce není podporována v tenantovi ověřeném e-mailem.
 
-### <a name="nopublisherdomainonapplication"></a>NoPublisherDomainOnApplication   
+### <a name="nopublisherdomainonapplication"></a>NoPublisherDomainOnApplication
 
-Cílová aplikace ( \<AppId\> ) musí mít sadu domény vydavatele. Nastavte doménu vydavatele a zkuste to znovu.
+Cílová aplikace ( `AppId` ) musí mít sadu domény vydavatele. Nastavte doménu vydavatele a zkuste to znovu.
 
 Vyvolá se v případě, že v aplikaci není nakonfigurovaná [doména vydavatele](howto-configure-publisher-domain.md) .
 
-### <a name="publisherdomainmismatch"></a>PublisherDomainMismatch  
+### <a name="publisherdomainmismatch"></a>PublisherDomainMismatch
 
-Doména vydavatele cílové aplikace () se <publisherDomain> neshoduje s doménou použitou k ověřování e-mailů v partnerském centru ( <pcDomain> ). Zajistěte, aby tyto domény odpovídaly, a zkuste to znovu. 
+Doména vydavatele cílové aplikace () se `publisherDomain` neshoduje s doménou použitou k ověřování e-mailů v partnerském centru ( `pcDomain` ). Zajistěte, aby tyto domény odpovídaly, a zkuste to znovu. 
     
 Vyvolá se v případě, že se [doména vydavatele](howto-configure-publisher-domain.md) aplikace ani jedna z [vlastních domén](../fundamentals/add-custom-domain.md) přidaných do tenanta služby Azure AD neshodují s doménou, která se používá k ověřování e-mailů v partnerském centru.
 
-### <a name="notauthorizedtoverifypublisher"></a>NotAuthorizedToVerifyPublisher   
+### <a name="notauthorizedtoverifypublisher"></a>NotAuthorizedToVerifyPublisher
 
-Nemáte oprávnění k nastavení vlastnosti ověřený vydavatel v aplikaci ( <AppId> ). 
+Nemáte oprávnění k nastavení vlastnosti ověřený vydavatel v aplikaci (<`AppId` ) 
   
 Nejčastěji způsobené přihlášeným uživatelem není členem správné role pro účet MPN v Azure AD – viz [požadavky](publisher-verification-overview.md#requirements) na seznam oprávněných rolí a další informace najdete v tématu [běžné problémy](#common-issues) .
 
-### <a name="mpnidwasnotprovided"></a>MPNIdWasNotProvided  
+### <a name="mpnidwasnotprovided"></a>MPNIdWasNotProvided
 
-ID MPN nebylo v textu žádosti zadáno nebo typ obsahu požadavku nebyl "Application/JSON". 
+ID MPN nebylo v textu žádosti zadáno nebo typ obsahu požadavku nebyl "Application/JSON".
 
-### <a name="msanotsupported"></a>MSANotSupported  
+### <a name="msanotsupported"></a>MSANotSupported 
 
 Tato funkce není u zákaznických účtů Microsoftu podporována. Podporují se jenom aplikace zaregistrované ve službě Azure AD pro uživatele Azure AD.
 
 ### <a name="interactionrequired"></a>InteractionRequired
 
-Nastane, pokud se Multi-Factor Authentication neuskutečnil před tím, než se pokusíte přidat ověřeného vydavatele do aplikace. Další informace najdete v tématu [běžné problémy](#common-issues) . Poznámka: vícefaktorové ověřování musí být provedeno ve stejné relaci při pokusu o přidání ověřeného vydavatele. Pokud je povoleno vícefaktorové ověřování, ale není nutné ho v relaci provést, požadavek se nezdaří.   
+Nastane, pokud se Multi-Factor Authentication neuskutečnil před tím, než se pokusíte přidat ověřeného vydavatele do aplikace. Další informace najdete v tématu [běžné problémy](#common-issues) . Poznámka: vícefaktorové ověřování musí být provedeno ve stejné relaci při pokusu o přidání ověřeného vydavatele. Pokud je povoleno vícefaktorové ověřování, ale není nutné ho v relaci provést, požadavek se nezdaří. 
 
 Zobrazená chybová zpráva bude: "z důvodu změny konfigurace provedené správcem, nebo vzhledem k tomu, že jste přešli na nové umístění, musíte použít službu Multi-Factor Authentication pro pokračování."
+
+### <a name="unabletoaddpublisher"></a>UnableToAddPublisher
+
+Zobrazená chybová zpráva je: "ověřený vydavatel nelze do této aplikace přidat. O pomoc prosím požádejte správce. "
+
+Nejdřív ověřte, že jste splnili [požadavky na ověření vydavatele](publisher-verification-overview.md#requirements).
+
+Když se vytvoří žádost o přidání ověřeného vydavatele, pro vyhodnocení bezpečnostního rizika se využije určitý počet signálů. Pokud je žádost zjištěna jako riziková, bude vrácena chyba. Z bezpečnostních důvodů společnost Microsoft nezveřejňuje specifická kritéria, která se používají k určení, zda je žádost riskantní nebo ne.
 
 ## <a name="next-steps"></a>Další kroky
 

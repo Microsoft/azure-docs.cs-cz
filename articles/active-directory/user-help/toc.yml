@@ -1,4 +1,4 @@
-- name: Dokumentace uživatelské nápovědy
+- name: Dokumentace k nápovědě pro uživatele
   href: index.yml
 - name: Nápověda k dvoustupňovému ověřování
   items:
@@ -50,6 +50,8 @@
       href: auth-app-android-china.md
     - name: Zálohování a obnovení vašich účtů
       href: user-help-auth-app-backup-recovery.md
+    - name: Import hesel do ověřovací aplikace
+      href: user-help-authenticator-app-import-passwords.md
     - name: Nejčastější dotazy
       href: user-help-auth-app-faq.md
 - name: Nápověda k portálu Můj účet

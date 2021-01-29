@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla, rarayudu
 ms.topic: conceptual
 ms.date: 01/20/2021
-ms.openlocfilehash: 337e242e3c194c8ec9f66e1888926e6a8f6a8375
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: a74868beea6e5903b6b17a7bc0c82cc822fcd36f
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98633074"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055174"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Zabezpečený přístup a data v Azure Logic Apps
 
@@ -866,7 +866,7 @@ Tady jsou další způsoby, jak můžete zabezpečit koncové body, které zprac
 
 * Omezte přístup z IP adres aplikace logiky.
 
-  Všechna volání koncových bodů z aplikací logiky pocházejí z konkrétních určených IP adres, které jsou založeny na oblastech vaší Logic Apps. Můžete přidat filtrování, které přijímá požadavky pouze z těchto IP adres. Pokud chcete získat tyto IP adresy, přečtěte si téma [omezení a konfigurace pro Azure Logic Apps](logic-apps-limits-and-config.md#configuration).
+  Všechna volání koncových bodů z aplikací logiky pocházejí z konkrétních určených IP adres, které jsou založeny na oblastech vaší Logic Apps. Můžete přidat filtrování, které přijímá požadavky pouze z těchto IP adres. Pokud chcete získat tyto IP adresy, přečtěte si téma [omezení a konfigurace pro Azure Logic Apps](logic-apps-limits-and-config.md#firewall-ip-configuration).
 
 * Zvyšte zabezpečení připojení k místním systémům.
 

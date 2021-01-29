@@ -11,16 +11,18 @@ ms.topic: sample
 ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 330bd9b78c2f550ab40f1f4f3679b6c9788ddb64
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 62dae175b529bd54b2f139eece89bbde6f98cd38
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96859359"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055004"
 ---
 # <a name="get-all-application-proxy-apps-and-list-extended-information"></a>Načte všechny aplikace proxy aplikací a seznam rozšířených informací.
 
-Tento ukázkový skript PowerShellu obsahuje informace o všech aplikacích proxy aplikací pro Azure Active Directory (Azure AD), včetně ID aplikace (AppId), názvu (DisplayName), externí adresy URL (ExternalUrl), interní URL (InternalUrl) a typu ověřování (ExternalAuthenticationType).
+Tento ukázkový skript PowerShellu obsahuje informace o všech aplikacích proxy aplikací pro Azure Active Directory (Azure AD), včetně ID aplikace (AppId), názvu (DisplayName), externí adresy URL (ExternalUrl), interní URL (InternalUrl), typu ověřování (ExternalAuthenticationType), režimu jednotného přihlašování a dalších nastavení.
+
+Změna hodnoty proměnné $ssoMode umožňuje filtrovaný výstup podle režimu jednotného přihlašování. Další podrobnosti jsou popsány ve skriptu.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -28,7 +30,7 @@ Tento ukázkový skript PowerShellu obsahuje informace o všech aplikacích prox
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Tato ukázka vyžaduje [prostředí PowerShell AzureAD v2 pro modul Graph](/powershell/azure/active-directory/install-adv2) (AzureAD) nebo [prostředí AzureAD v2 PowerShell pro verzi Preview modulu grafu](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview) (AzureADPreview).
+Tato ukázka vyžaduje [powershellový modul AzureAD v2 pro Graph](/powershell/azure/active-directory/install-adv2) (AzureAD).
 
 ## <a name="sample-script"></a>Ukázkový skript
 

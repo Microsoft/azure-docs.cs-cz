@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 50188ad5fea0ee34a6896f0045e3bbcbfb553aaa
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 64eace72b6ea203d4052c39404bcbd7ce4c4bfa0
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677298"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055157"
 ---
 # <a name="enable-change-tracking-and-inventory-from-an-automation-account"></a>Povolení řešení Change Tracking a Inventory z účtu Automation
 
@@ -19,10 +19,10 @@ Tento článek popisuje, jak můžete účet Automation použít k povolení [Ch
 > [!NOTE]
 > Při povolování Change Tracking a inventáře jsou podporovány pouze určité oblasti pro propojení Log Analyticsho pracovního prostoru a účtu Automation. Seznam podporovaných dvojic mapování najdete v tématu [mapování oblastí pro účet Automation a Log Analytics pracovní prostor](../how-to/region-mappings.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud ještě žádné nemáte, můžete si [aktivovat výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Účet Automation](../index.yml) pro správu počítačů.
+* [Účet Automation](../automation-security-overview.md) pro správu počítačů.
 * [Virtuální počítač](../../virtual-machines/windows/quick-create-portal.md).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
@@ -53,7 +53,7 @@ Počítače, které nejsou v Azure, se musí přidat ručně. Doporučujeme nain
 
 1. V účtu Automation vyberte v části **Správa konfigurace** **inventarizaci** nebo **sledování změn** .
 
-2. Klikněte na **Přidat jiný počítač než Azure** . Tato akce otevře nové okno prohlížeče s [pokyny k instalaci a konfiguraci agenta Log Analytics pro systém Windows](../../azure-monitor/platform/log-analytics-agent.md) , aby počítač mohl začít vytvářet sestavy Change Tracking a operace inventáře. Pokud povolujete počítač, který je aktuálně spravován nástrojem Operations Manager, není vyžadován nový agent a informace o pracovním prostoru jsou zadány do stávajícího agenta.
+2. Klikněte na **Přidat jiný počítač než Azure**. Tato akce otevře nové okno prohlížeče s [pokyny k instalaci a konfiguraci agenta Log Analytics pro systém Windows](../../azure-monitor/platform/log-analytics-agent.md) , aby počítač mohl začít vytvářet sestavy Change Tracking a operace inventáře. Pokud povolujete počítač, který je aktuálně spravován nástrojem Operations Manager, není vyžadován nový agent a informace o pracovním prostoru jsou zadány do stávajícího agenta.
 
 ## <a name="enable-machines-in-the-workspace"></a>Povolit počítače v pracovním prostoru
 
@@ -61,13 +61,13 @@ Ručně nainstalované počítače nebo počítače, které už hlásí do vaše
 
 1. Ve svém účtu Automation v části **Správa konfigurace** vyberte **inventarizace** nebo **sledování změn** .
 
-2. Vyberte **spravovat počítače** . Pokud jste předtím zvolili možnost **Povolit na všech dostupných a budoucích počítačích** , možnost **spravovat počítače** může být šedá.
+2. Vyberte **spravovat počítače**. Pokud jste předtím zvolili možnost **Povolit na všech dostupných a budoucích počítačích** , možnost **spravovat počítače** může být šedá.
 
     ![Uložená hledání](media/enable-from-automation-account/manage-machines.png)
 
 3. Pokud chcete povolit Change Tracking a inventář pro všechny dostupné počítače, vyberte **Povolit na všech dostupných počítačích** na stránce **Správa počítačů** . Tato akce zakáže ovládacímu prvku přidat počítače jednotlivě a přidá všechny počítače, které nastavují sestavy do pracovního prostoru, do uloženého vyhledávacího dotazu skupiny počítačů. Když se tato akce vybere, zakáže se možnost **spravovat počítače** .
 
-4. Pokud chcete funkci povolit pro všechny dostupné počítače a budoucí počítače, vyberte **Povolit na všech dostupných a budoucích počítačích** . Tato možnost odstraní uloženou konfiguraci hledání a rozsahu z pracovního prostoru a otevře ji pro všechny počítače Azure a mimo Azure, které vytvářejí sestavy do pracovního prostoru. Když se tato akce vybere, zakáže se možnost **spravovat počítače** trvale, protože není k dispozici žádná konfigurace oboru.
+4. Pokud chcete funkci povolit pro všechny dostupné počítače a budoucí počítače, vyberte **Povolit na všech dostupných a budoucích počítačích**. Tato možnost odstraní uloženou konfiguraci hledání a rozsahu z pracovního prostoru a otevře ji pro všechny počítače Azure a mimo Azure, které vytvářejí sestavy do pracovního prostoru. Když se tato akce vybere, zakáže se možnost **spravovat počítače** trvale, protože není k dispozici žádná konfigurace oboru.
 
     > [!NOTE]
     > Vzhledem k tomu, že tato možnost odstraní uloženou konfiguraci hledání a rozsahu v rámci Log Analytics, je důležité před výběrem této možnosti odebrat všechna zámky pro odstranění v pracovním prostoru Log Analytics. Pokud to neuděláte, možnost odebrání konfigurací neproběhne a je nutné je odebrat ručně.

@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 01/26/2021
 ms.author: cynthn
-ms.openlocfilehash: 95f6ce2fefacd20102abe9bbe818f228139ca33d
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: a995cd1d02438ae3be7091ba55e945549558829d
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98898507"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055191"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-windows-virtual-machine"></a>Jak odpojit datový disk od virtuálního počítače s Windows
 
@@ -53,7 +53,7 @@ Můžete odstranit *datový* disk, ale zajistěte, aby tento disk aktivně nepou
 1. V nabídce vlevo vyberte **Virtual Machines**.
 1. Vyberte virtuální počítač s datovým diskem, který chcete odpojit.
 1. V části **Nastavení** vyberte **Disky**.
-1. V podokně **disky** v pravém dolním rohu datového disku, který chcete odpojit, klikněte na tlačítko **X** odstranit.
+1. V podokně **disky** v pravém dolním rohu datového disku, který chcete odpojit, klikněte na tlačítko **X odpojit** .
 1. V horní části stránky vyberte **Uložit** a uložte provedené změny.
 
 Disk zůstává v úložišti, ale už není připojený k virtuálnímu počítači.

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 05/15/2020
-ms.openlocfilehash: a36b9d20fa20df56ec53e090976ea86e689ac74b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 799e879b4d9fd54367d54c17b3d275acfc5f34c1
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322508"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054767"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Instalace místní brány dat pro Azure Logic Apps
 
@@ -91,13 +91,13 @@ Tento článek ukazuje, jak stáhnout, nainstalovat a nastavit místní bránu d
 
    ![Kontrola požadavků a přijetí podmínek použití](./media/logic-apps-gateway-install/review-and-accept-terms-of-use.png)
 
-1. Po úspěšné instalaci brány zadejte e-mailovou adresu účtu Azure a pak vyberte **Přihlásit**se, například:
+1. Po úspěšné instalaci brány zadejte e-mailovou adresu účtu Azure a pak vyberte **Přihlásit** se, například:
 
    ![Přihlaste se pomocí pracovního nebo školního účtu.](./media/logic-apps-gateway-install/sign-in-gateway-install.png)
 
    Vaše instalace brány se může propojit jenom s jedním účtem Azure.
 
-1. **V tomto počítači vyberte zaregistrovat novou bránu**  >  **Next**. Tento krok zaregistruje instalaci brány pomocí [cloudové služby brány](#gateway-cloud-service).
+1. **V tomto počítači vyberte zaregistrovat novou bránu**  >  . Tento krok zaregistruje instalaci brány pomocí [cloudové služby brány](#gateway-cloud-service).
 
    ![Registrovat bránu v místním počítači](./media/logic-apps-gateway-install/register-gateway-local-computer.png)
 
@@ -138,9 +138,15 @@ Tento článek ukazuje, jak stáhnout, nainstalovat a nastavit místní bránu d
 
 1. Nyní [vytvořte prostředek Azure pro instalaci brány](../logic-apps/logic-apps-gateway-connection.md).
 
+<a name="communication-settings"></a>
+
 ## <a name="check-or-adjust-communication-settings"></a>Kontrolovat nebo upravovat nastavení komunikace
 
-Místní brána dat závisí na [Azure Service Bus zasílání zpráv](../service-bus-messaging/service-bus-messaging-overview.md) pro cloudové připojení a stanovuje odpovídající odchozí připojení k příslušné oblasti Azure přidružené k bráně. Pokud vaše pracovní prostředí vyžaduje, aby provoz prochází přes proxy server nebo bránu firewall pro přístup k Internetu, může toto omezení zabránit místní bráně dat v připojení ke cloudové službě brány a Azure Service Bus zasílání zpráv. Brána má několik nastavení komunikace, která můžete upravit. Další informace najdete v těchto tématech:
+Místní brána dat závisí na [Azure Service Bus zasílání zpráv](../service-bus-messaging/service-bus-messaging-overview.md) pro cloudové připojení a stanovuje odpovídající odchozí připojení k příslušné oblasti Azure přidružené k bráně. Pokud vaše pracovní prostředí vyžaduje, aby provoz prochází přes proxy server nebo bránu firewall pro přístup k Internetu, může toto omezení zabránit místní bráně dat v připojení ke cloudové službě brány a Azure Service Bus zasílání zpráv. Brána má několik nastavení komunikace, která můžete upravit.
+
+Příkladem scénáře je použití vlastních konektorů, které přistupují k místním prostředkům pomocí prostředku místní brány dat v Azure. Pokud máte také bránu firewall, která omezuje provoz na konkrétní IP adresy, je třeba nastavit instalaci brány tak, aby povolovala přístup pro příslušné *[odchozí IP adresy](logic-apps-limits-and-config.md#outbound)spravovaných konektorů*. *Všechny* Logic Apps ve stejné oblasti používají stejné rozsahy IP adres.
+
+Další informace najdete v těchto tématech:
 
 * [Úprava nastavení komunikace pro místní bránu dat](/data-integration/gateway/service-gateway-communication)
 * [Konfigurace nastavení proxy serveru pro místní bránu dat](/data-integration/gateway/service-gateway-proxy)
@@ -171,7 +177,7 @@ Pokud musíte změnit umístění brány, přesunout instalaci brány do nového
 
 1. Po otevření instalačního programu se přihlaste pomocí stejného účtu Azure, který jste použili k instalaci brány.
 
-1. Vyberte možnost **migrovat, obnovit nebo převzetí existující brány**  >  **Next**, například:
+1. Vyberte možnost **migrovat, obnovit nebo převzetí existující brány**  >  , například:
 
    ![Vyberte možnost migrace, obnovení nebo převzetí existující brány.](./media/logic-apps-gateway-install/migrate-recover-take-over-gateway.png)
 
@@ -179,7 +185,7 @@ Pokud musíte změnit umístění brány, přesunout instalaci brány do nového
 
    ![Vybrat bránu a zadat obnovovací klíč](./media/logic-apps-gateway-install/select-existing-gateway.png)
 
-1. Chcete-li změnit oblast, vyberte možnost **změnit oblast**a vyberte novou oblast.
+1. Chcete-li změnit oblast, vyberte možnost **změnit oblast** a vyberte novou oblast.
 
 1. Až budete připraveni, vyberte **Konfigurovat** , aby bylo možné dokončit úlohu.
 
