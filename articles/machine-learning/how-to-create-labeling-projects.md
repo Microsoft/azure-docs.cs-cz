@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
 ms.custom: data4ml
-ms.openlocfilehash: 854504347409efb4f0eafff0d776db23ca9fda07
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 4b2777bfd9905a1caa8b69b78ff892b661e4dc4b
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98059836"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99097536"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Vytvoření popisku dat pro projekt a Export popisků 
 
@@ -24,7 +24,7 @@ Naučte se vytvářet a spouštět projekty popisků dat pro označení dat v Az
 ## <a name="data-labeling-capabilities"></a>Možnosti popisků dat
 
 > [!Important]
-> V současné době jsou podporovány pouze projekty klasifikace obrázků a označení identifikace objektu. Kromě toho musí být image dat dostupné v úložišti dat objektů BLOB v Azure. (Pokud nemáte existující úložiště dat, můžete při vytváření projektu nahrávat obrázky.)
+> V úložišti dat objektů BLOB v Azure musí být k dispozici image dat. (Pokud nemáte existující úložiště dat, můžete při vytváření projektu nahrávat obrázky.)
 
 Azure Machine Learning popisování dat je centrální místo pro vytváření, správu a sledování projektů označování:
  - Koordinuje data, popisky a členy týmu, aby bylo možné efektivně spravovat úkoly označování. 
@@ -53,6 +53,11 @@ Chcete-li vytvořit projekt, vyberte možnost **Přidat projekt**. Dejte projekt
 * Vyberte možnost **klasifikace obrázků s více třídami** pro projekty, pokud chcete použít pouze *jeden štítek* ze sady štítků na obrázek.
 * Pokud chcete použít *jeden nebo více* štítků ze sady štítků na obrázek, vyberte možnost **klasifikace obrázků – vícenásobné označení** pro projekty. Například fotografie psa může být označená pomocí *psa* i *Daytime*.
 * Vyberte možnost **Identifikace objektu (ohraničovací rámeček)** pro projekty, pokud chcete přiřadit popisek a ohraničující rámeček ke každému objektu v rámci obrázku.
+* Vyberte možnost **segmentace instancí (mnohoúhelník) (Náhled)** pro projekty, pokud chcete přiřadit popisek a nakreslit mnohoúhelník kolem každého objektu v rámci obrázku.
+
+> [!IMPORTANT]
+> Segmentace instancí (mnohoúhelník) je ve verzi Public Preview.
+> Verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Až budete připraveni pokračovat, vyberte **Další** .
 
@@ -141,6 +146,7 @@ V případě ohraničujících polí patří mezi důležité otázky:
 
 Stránka s **popisem** na základě ml vám umožní aktivovat automatické modely strojového učení a urychlit tak úlohu označování. Na začátku projektu označování se obrázky přecházejí do náhodného pořadí, aby se snížil případný posun. Nicméně všechny posuny, které jsou k dispozici v datové sadě, se projeví v trained model. Například pokud je 80% imagí z jedné třídy, pak přibližně 80% dat použitých ke výukě modelu bude tato třída. Toto školení nezahrnuje aktivní učení.
 
+
 Vyberte možnost *Povolit popisky na základě ml s asistencí* a určete GPU, která umožňuje poučení s asistencí, které se skládá ze dvou fází:
 * Clustering
 * Předznačení
@@ -150,7 +156,7 @@ Přesný počet imagí označených popiskem, které jsou nutné ke spuštění 
 Vzhledem k tomu, že závěrečné popisky stále spoléhají na vstup od štítku, tato technologie se někdy označuje jako *člověk v označení smyčky* .
 
 > [!NOTE]
-> Označení dat s asistencí podle ML nepodporuje výchozí účty úložiště zabezpečené za [virtuální sítí](how-to-network-security-overview.md). Pro označení dat s podporou ML je nutné použít jiný než výchozí účet úložiště. Účet úložiště, který není výchozí, může být zabezpečený za virtuální sítí. 
+> Označení dat s asistencí podle ML nepodporuje výchozí účty úložiště zabezpečené za [virtuální sítí](how-to-network-security-overview.md). Pro označení dat s podporou ML je nutné použít jiný než výchozí účet úložiště. Účet úložiště, který není výchozí, může být zabezpečený za virtuální sítí.
 
 ### <a name="clustering"></a>Clustering
 

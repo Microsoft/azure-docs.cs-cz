@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: daberry
-ms.openlocfilehash: 1a0943c9f87960f9fcec074941b6e8ead81d92af
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 537a301ef2c3ba1bb5ed34d92c8784655c79d97f
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98917905"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99097468"
 ---
 # <a name="ev3-and-esv3-series"></a>Řada Ev3 a Esv3
 
@@ -33,6 +33,7 @@ Funkce virtuálního počítače Ev3-Series Hyper-Threading technologie Intel®.
 [Aktualizace pro zachování paměti](maintenance-and-updates.md): podporováno<br>
 [Podpora generování virtuálních počítačů](generation-2.md): generace 1<br>
 [Akcelerované síťové služby](../virtual-network/create-vm-accelerated-networking-cli.md): podporované<br>
+[Dočasné disky s operačním systémem](ephemeral-os-disks.md): nepodporované <br>
 <br>
 
 | Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště: IOPS / čtení v MB/s / zápis v MB/s | Max. počet NIC / Šířka pásma sítě |
@@ -64,6 +65,7 @@ Funkce virtuálního počítače Esv3-Series Hyper-Threading technologie Intel®
 [Aktualizace pro zachování paměti](maintenance-and-updates.md): podporováno<br>
 [Podpora generování virtuálních počítačů](generation-2.md): generace 1 a 2<br>
 [Akcelerované síťové služby](../virtual-network/create-vm-accelerated-networking-cli.md): podporované<br>
+[Dočasné disky s operačním systémem](ephemeral-os-disks.md): podporované <br>
 <br>
 
 | Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost úložiště v mezipaměti a dočasné úložiště: IOPS/MB/s (velikost mezipaměti v GiB) | Propustnost shluku a dočasného úložiště v mezipaměti: IOPS/MB/s<sup>3</sup> | Maximální propustnost disku neuloženého v mezipaměti: IOPS/MB/s |  Propustnost neuloženého disku s nárůstem zatížení: IOPS/MB/s<sup>3</sup>| Maximální počet síťových karet/očekávaná šířka pásma sítě (MB/s) |

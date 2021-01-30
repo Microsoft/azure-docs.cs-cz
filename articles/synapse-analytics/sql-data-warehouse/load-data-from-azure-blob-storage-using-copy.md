@@ -11,12 +11,12 @@ ms.date: 11/23/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 398cbd49f79cbeb5f486e3f8ca33987d5357add6
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 35d985ee31fba52a57614cf62668d5355caf5ffa
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789442"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99097619"
 ---
 # <a name="tutorial-load-the-new-york-taxicab-dataset"></a>Kurz: načtení datové sady New York taxislužby města
 
@@ -393,7 +393,7 @@ Pomocí tohoto postupu podle potřeby vyčistěte prostředky.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se naučili vytvořit datový sklad a uživatele pro načítání dat. Použili jste jednoduchý [příkaz Copy](/sql/t-sql/statements/copy-into-transact-sql&preserve-view=true?view=azure-sqldw-latest&preserve-view=true#examples) k načtení dat do datového skladu.
+V tomto kurzu jste se naučili vytvořit datový sklad a uživatele pro načítání dat. Použili jste jednoduchý [příkaz Copy](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#examples) k načtení dat do datového skladu.
 
 Provedli jste tyto akce:
 > [!div class="checklist"]
