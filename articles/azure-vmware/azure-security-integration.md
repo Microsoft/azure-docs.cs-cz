@@ -3,12 +3,12 @@ title: Chraňte své virtuální počítače s řešeními VMware Azure pomocí 
 description: Seznamte se s postupem ochrany virtuálních počítačů řešení Azure VMware pomocí nativních nástrojů zabezpečení Azure z jednoho řídicího panelu v Azure Security Center.
 ms.topic: how-to
 ms.date: 11/06/2020
-ms.openlocfilehash: e461e7e49619f7063c0583975f36a2e3dfe5a724
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 66270c5abef48f9d9f30ed1b262a6b4f2f8144c8
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937334"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99061460"
 ---
 # <a name="protect-your-azure-vmware-solution-vms-with-azure-security-center-integration"></a>Chraňte své virtuální počítače s řešeními VMware Azure pomocí Integrace Azure Security Center
 
@@ -43,9 +43,9 @@ V pracovním prostoru Log Analytics můžete nakonfigurovat Azure Sentinel pro d
     - Prozkoumejte hrozby s využitím umělých funkcí a zjišťováním pro podezřelé aktivity se škálováním.
     - Můžete rychle reagovat na incidenty díky integrované orchestraci a automatizaci běžných úloh.
 
-## <a name="create-a-log-analytics-workspace"></a>Vytvoření pracovního prostoru Log Analytics
+## <a name="create-a-log-analytics-workspace"></a>Vytvoření pracovního prostoru služby Log Analytics
 
-Abyste mohli shromažďovat data z různých zdrojů, budete potřebovat Log Analytics pracovní prostor. Postup najdete v tématu [Vytvoření pracovního prostoru Log Analytics z Azure Portal](../azure-monitor/learn/quick-create-workspace.md). 
+Abyste mohli shromažďovat data z různých zdrojů, budete potřebovat Log Analytics pracovní prostor. Další informace najdete v tématu [Vytvoření pracovního prostoru Log Analytics z Azure Portal](../azure-monitor/learn/quick-create-workspace.md). 
 
 ## <a name="deploy-security-center-and-configure-azure-vmware-solution-vms"></a>Nasazení Security Center a konfigurace virtuálních počítačů s řešeními Azure VMware
 
@@ -78,7 +78,7 @@ Azure Defender rozšiřuje pokročilou ochranu před internetovými útoky v Azu
 5. Na kartě **Podrobnosti o prostředku** vyplňte následující podrobnosti: 
     - Předplatné
     - Skupina prostředků
-    - Oblast 
+    - Region (Oblast) 
     - Operační systém
     - Podrobnosti proxy serveru
     
@@ -155,8 +155,8 @@ Po připojení zdrojů dat ke službě Azure Sentinel můžete vytvořit pravidl
 4. Na kartě **Obecné** zadejte požadované informace.
 
     - Název
-    - Popis
-    - Taktiku
+    - Description
+    - Taktika
     - Závažnost
     - Status
 
@@ -173,7 +173,7 @@ Po připojení zdrojů dat ke službě Azure Sentinel můžete vytvořit pravidl
         |where count_ > 3
         ```
         
-    - Mapování entit
+    - Mapovat entity
     - Plánování dotazů
     - Prahová hodnota upozornění
     - Seskupování událostí
@@ -226,10 +226,10 @@ Můžete vytvářet dotazy nebo používat dostupný předem definovaný dotaz v
 2. Zadejte následující informace, chcete-li vytvořit vlastní dotaz.
 
     - Název
-    - Popis
+    - Description
     - Vlastní dotaz
     - Zadat mapování
-    - Taktiku
+    - Taktika
     
 3. Vyberte **Vytvořit**. Pak můžete vybrat vytvořený dotaz, **Spustit dotaz** a **Zobrazit výsledky**.
 

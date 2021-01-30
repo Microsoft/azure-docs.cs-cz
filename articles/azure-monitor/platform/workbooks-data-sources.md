@@ -8,12 +8,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/29/2020
-ms.openlocfilehash: d41629dd9a56272af89a06cb55e9bd88b604baee
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 3d94aca51d3d305b70c8c555e2b41e3d0ab857b3
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927902"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99061938"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Zdroje dat Azure Monitor sešity
 
@@ -59,7 +59,7 @@ Chcete-li, aby ovládací prvek dotazu použil tento zdroj dat, použijte rozev�
 
 ## <a name="azure-data-explorer"></a>Průzkumník dat Azure
 
-Sešity teď podporují dotazování z clusterů [Azure Průzkumník dat](/azure/data-explorer/) pomocí výkonného dotazovacího jazyka [Kusto](/azure/kusto/query/index) .   
+Sešity teď podporují dotazování z clusterů [Azure Průzkumník dat](/azure/data-explorer/) pomocí výkonného dotazovacího jazyka [Kusto](/azure/kusto/query/index) .
 
 ![Snímek obrazovky s oknem dotazu Kusto](./media/workbooks-overview/data-explorer.png)
 
@@ -79,9 +79,43 @@ Chcete-li, aby ovládací prvek dotazu použil tento zdroj dat, použijte rozev�
 
 ![Snímek obrazovky s dotazem výstrahy, který zobrazuje seznamy filtru stavů.](./media/workbooks-overview/resource-health.png)
 
+## <a name="change-analysis-preview"></a>Změna analýzy (Preview)
+
+Pokud chcete ovládací prvek dotazu vytvořit pomocí [analýzy změn aplikace](../app/change-analysis.md) jako zdroje dat, použijte rozevírací seznam *zdroj dat* , zvolte možnost *změnit analýzu (Preview)* a vyberte jeden prostředek. Můžete zobrazit změny za posledních 14 dní. Rozevírací seznam *úroveň* lze použít k filtrování mezi změnami "důležité", "normální" a "vysokou úrovní" a tato rozevírací seznam podporuje parametry sešitu typu [rozevírací seznam](workbooks-dropdowns.md).
+
+> [!div class="mx-imgBorder"]
+> ![Snímek obrazovky sešitu s analýzou změn](./media/workbooks-data-sources/change-analysis-data-source.png)
+
+## <a name="merge-data-from-different-sources"></a>Sloučit data z různých zdrojů
+
+Často je potřeba spojit data z různých zdrojů, které zvyšují možnosti přehledů. Příkladem je rozšíření aktivních informací o výstrahách se souvisejícími daty metriky. To uživatelům umožňuje zobrazit nejen účinek (aktivní výstraha), ale také potenciální příčiny (například vysoké využití procesoru). Monitorovací doména má mnoho takových korelačních zdrojů dat, které jsou často zásadní pro pracovní postup třídění a diagnostiky.
+
+Sešity neumožňují nejen dotazování různých zdrojů dat, ale také nabízí jednoduché ovládací prvky, které vám umožňují sloučit data a spojit je s nimi a poskytnout podrobné přehledy. `merge`Ovládací prvek je způsob, jak toho dosáhnout.
+
+Následující příklad kombinuje data výstrah s daty o výkonu virtuálního počítače Log Analytics a získá bohatou mřížku s přehledy.
+
+> [!div class="mx-imgBorder"]
+> ![Snímek obrazovky sešitu s ovládacím prvkem sloučení, který kombinuje data výstrah a Log Analytics](./media/workbooks-data-sources/merge-control.png)
+
+Pracovní sešity podporují nejrůznější sloučení:
+
+* Spojení s vnitřním jedinečným
+* Úplné vnitřní spojení
+* Úplné vnější spojení
+* Levé vnější spojení
+* Pravé vnější spojení
+* Částečně spojené s levým připojením
+* Pravé spojení
+* Připojení k levé části
+* Pravé anti-JOIN
+* Sjednocení
+* Duplicitní tabulka
+
 ## <a name="json"></a>JSON
 
 Zprostředkovatel JSON umožňuje vytvořit výsledek dotazu ze statického obsahu JSON. Nejčastěji se používá v parametrech k vytvoření parametrů rozevíracího seznamu statických hodnot. Jednoduchá pole nebo objekty JSON se automaticky převedou na řádky a sloupce mřížky.  Pro přesnější chování můžete nakonfigurovat sloupce pomocí karty výsledky a nastavení JSONPath.
+
+Tento zprostředkovatel podporuje [JSONPath](workbooks-jsonpath.md).
 
 ## <a name="alerts-preview"></a>Upozornění (Preview)
 
@@ -100,12 +134,14 @@ Chcete-li, aby ovládací prvek dotazu použil tento zdroj dat, použijte rozev�
 
 Pracovní sešity podporují získávání dat z libovolného externího zdroje. Pokud vaše data žijí mimo Azure, můžete je přenést do sešitů pomocí tohoto typu zdroje dat.
 
-Chcete-li, aby ovládací prvek dotazu použil tento zdroj dat, použijte rozevírací seznam _zdroj dat_ a vyberte možnost _vlastní koncový bod_ . Zadejte příslušné parametry, například, `Http method` `url` , a `headers` `url parameters` /nebo `body` . Ujistěte se, že zdroj dat podporuje [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) v opačném případě požadavek selže.
+Chcete-li, aby ovládací prvek dotazu použil tento zdroj dat, použijte rozevírací seznam _zdroj dat_ a vyberte možnost _vlastní koncový bod_. Zadejte příslušné parametry, například, `Http method` `url` , a `headers` `url parameters` /nebo `body` . Ujistěte se, že zdroj dat podporuje [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) v opačném případě požadavek selže.
 
-Aby nedocházelo k automatickému volání nedůvěryhodných hostitelů při používání šablon, uživatel musí označit používané hostitele jako důvěryhodné. Můžete to udělat tak, že kliknete na tlačítko _Přidat jako důvěryhodné_ nebo když ho přidáte jako důvěryhodného hostitele v nastavení sešitu. Tato nastavení budou uložená v prohlížečích, které podporují IndexDb s webovými pracovníky. Další informace [najdete tady](https://caniuse.com/#feat=indexeddb).
+Aby nedocházelo k automatickému volání nedůvěryhodných hostitelů při používání šablon, uživatel musí označit používané hostitele jako důvěryhodné. Můžete to udělat tak, že kliknete na tlačítko _Přidat jako důvěryhodné_ nebo když ho přidáte jako důvěryhodného hostitele v nastavení sešitu. Tato nastavení budou uložená v [prohlížečích, které podporují IndexDb s webovými pracovníky](https://caniuse.com/#feat=indexeddb).
 
 > [!NOTE]
 > Nepište žádné tajné kódy do žádného z polí ( `headers` , `parameters` , `body` , `url` ), protože budou viditelné pro všechny uživatele sešitu.
+
+Tento zprostředkovatel podporuje [JSONPath](workbooks-jsonpath.md).
 
 ## <a name="next-steps"></a>Další kroky
 

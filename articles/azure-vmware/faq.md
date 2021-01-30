@@ -3,12 +3,12 @@ title: Nejčastější dotazy
 description: Obsahuje odpovědi na některé běžné dotazy týkající se řešení Azure VMware.
 ms.topic: conceptual
 ms.date: 1/14/2021
-ms.openlocfilehash: 8245cd8da983ce48ba88d7faef76ab9b7ceb8c26
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 090b29b1e013ffbceb9296250fed99a04d15a82c
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218582"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062083"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Nejčastější dotazy týkající se řešení Azure VMware
 
@@ -258,7 +258,7 @@ VMware HCX Enterprise je k dispozici v rámci řešení Azure VMware jako funkce
 
 ### <a name="how-do-i-request-a-host-quota-increase-for-azure-vmware-solution"></a>Jak Návody požádat o zvýšení kvóty hostitele pro řešení Azure VMware?
 
-U předplatných spravovaných poskytovatelem CSP musí zákazník odeslat žádost partnerovi. Partnerský tým se potom zavazuje Microsoftu, aby zvýšil kvótu pro předplatné. Podrobnosti najdete v [článku Jak povolit prostředek řešení Azure VMware](enable-azure-vmware-solution.md) . 
+U předplatných spravovaných poskytovatelem CSP musí zákazník odeslat žádost partnerovi. Partnerský tým se potom zavazuje Microsoftu, aby zvýšil kvótu pro předplatné. Další informace najdete v tématu [Povolení prostředku řešení Azure VMware](enable-azure-vmware-solution.md). 
 
 Pro předplatná EA použijte následující postup. Nejdřív budete potřebovat:
 

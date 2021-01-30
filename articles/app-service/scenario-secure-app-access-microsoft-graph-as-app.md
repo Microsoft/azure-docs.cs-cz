@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 12/16/2020
+ms.date: 01/28/2021
 ms.author: ryanwi
 ms.reviewer: stsoneff
 ms.custom: azureday1
-ms.openlocfilehash: 3d6e9d1d66425655f0db5751a28746b6a6a31c86
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 06837ab0f4685787f8d2615e81d0405fdb8ec711
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631761"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062556"
 ---
 # <a name="tutorial-access-microsoft-graph-from-a-secured-app-as-the-app"></a>Kurz: přístup k Microsoft Graph z zabezpečené aplikace jako aplikace
 
@@ -125,9 +125,9 @@ Třída [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredenti
 
 Pokud chcete tento kód zobrazit jako součást ukázkové aplikace, podívejte se na [ukázku v GitHubu](https://github.com/Azure-Samples/ms-identity-easyauth-dotnet-storage-graphapi/tree/main/3-WebApp-graphapi-managed-identity).
 
-### <a name="install-the-microsoftgraph-client-library-package"></a>Instalace balíčku klientské knihovny Microsoft. Graph
+### <a name="install-the-microsoftidentitywebmicrosoftgraph-client-library-package"></a>Instalace balíčku klientské knihovny Microsoft. identity. Web. MicrosoftGraph
 
-Do projektu nainstalujte [balíček NuGet Microsoft. Graph](https://www.nuget.org/packages/Microsoft.Graph) pomocí rozhraní příkazového řádku .NET Core nebo konzoly Správce balíčků v aplikaci Visual Studio.
+Do projektu nainstalujte [balíček NuGet Microsoft. identity. Web. MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraph) pomocí rozhraní příkazového řádku .NET Core nebo konzoly Správce balíčků v aplikaci Visual Studio.
 
 # <a name="command-line"></a>[Příkazový řádek](#tab/command-line)
 
@@ -136,7 +136,7 @@ Otevřete příkazový řádek a přejděte do adresáře, který obsahuje soubo
 Spusťte příkazy install.
 
 ```dotnetcli
-dotnet add package Microsoft.Graph
+dotnet add package Microsoft.Identity.Web.MicrosoftGraph
 ```
 
 # <a name="package-manager"></a>[Správce balíčků](#tab/package-manager)
@@ -145,7 +145,7 @@ Otevřete projekt nebo řešení v aplikaci Visual Studio a otevřete konzolu po
 
 Spusťte příkazy install.
 ```powershell
-Install-Package Microsoft.Graph
+Install-Package Microsoft.Identity.Web.MicrosoftGraph
 ```
 
 ---

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: d6832238b0c76059079e2a1330d31eed3212b242
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 46e0687056d697afc2d4355bdf900af138273eaf
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685574"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99061830"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Spouštění poznámkových bloků Jupyter ve vlastním pracovním prostoru
 
@@ -255,89 +255,6 @@ Indikátor vedle rozevíracího seznamu **jádro** zobrazuje jeho stav.
 |---------|---------|
 |  Green |Připojení jádra, nečinné, zaneprázdněné|
 |  Les |Jádro není připojeno. |
-
-## <a name="shortcut-keys"></a>Klávesové zkratky
-Podobně jako Jupyter poznámkové bloky mají modální uživatelské rozhraní Azure Machine Learning Studio poznámkách. Klávesnice funguje jinak v závislosti na tom, v jakém režimu je buňka poznámkového bloku. Azure Machine Learning Studio poznámkové bloky podporují pro danou buňku kódu následující dva režimy: režim příkazů a režim úprav.
-
-### <a name="command-mode-shortcuts"></a>Klávesové zkratky v režimu příkazu
-
-Buňka je v režimu příkazu, když není k dispozici žádný textový kurzor, který je vyzván k zadání. Když je buňka v režimu příkazu, můžete Poznámkový blok upravit jako celek, ale ne psát do jednotlivých buněk. Stisknutím `ESC` nebo pomocí myši vyberte mimo oblast editoru buňky režim příkazu.  Levý okraj aktivní buňky je modrý a plný a jeho tlačítko **Spustit** je modré.
-
-   :::image type="content" source="media/how-to-run-jupyter-notebooks/command-mode.png" alt-text="Buňka poznámkového bloku v režimu příkazu ":::
-
-| Zástupce                      | Description                          |
-| ----------------------------- | ------------------------------------|
-| Enter                         | Přechod do režimu úprav             |        
-| Shift + Enter                 | Spustit buňku, vyberte níže         |     
-| Ctrl/Command + ENTER       | Spustit buňku                            |
-| ALT + ENTER                   | Spustit buňku, Vložit buňku kódu níže    |
-| Ctrl/Command + Alt + Enter | Spustit buňku, Vložit buňku Markdownu pod|
-| ALT + R                       | Spustit vše      |                       
-| Y                             | Převést buňku na kód    |                         
-| M                             | Převést buňku na Markdownu  |                       
-| Nahoru/K                          | Vybrat buňku výše    |               
-| Dolů/J                        | Vybrat buňku níže    |               
-| A                             | Vložit buňku kódu nad  |            
-| B                             | Vložit buňku kódu níže   |           
-| Ctrl/Command + Shift + A   | Vložit buňku Markdownu výše    |      
-| Ctrl/Command + Shift + B   | Vložit buňku Markdownu pod   |       
-| X                             | Vyjmout vybranou buňku    |               
-| C                             | Kopírovat vybranou buňku   |               
-| Shift + V                     | Vložit vybranou buňku výše           |
-| V                             | Vložit vybranou buňku níže    |       
-| D D                           | Odstranit vybranou buňku|                
-| O                             | Přepnout výstup         |              
-| SHIFT + O                     | Přepnout posouvání výstupu   |          
-| I JSEM                           | Jádro přerušení |                   
-| 0 0                           | Restartovat jádro |                     
-| SHIFT + MEZERNÍK                 | Posunout nahoru  |                         
-| Místo                         | Posunout dolů|
-| Karta                           | Změnit zaměření na další položku, která se zaměřuje na výběr (když je zakázané depeše tabulátoru)|
-| Ctrl/Command + S           | Uložit Poznámkový blok |                      
-| 1                             | Změnit na H1|                       
-| 2                             | Změnit na H2|                        
-| 3                             | Změnit na H3|                        
-| 4                             | Změnit na H4 |                       
-| 5                             | Změnit na H5 |                       
-| 6                             | Změnit na h6 |                       
-
-### <a name="edit-mode-shortcuts"></a>Klávesové zkratky v režimu úprav
-
-Režim úprav je označen textovým kurzorem, který vás vyzve k zadání v oblasti editoru. Když je buňka v režimu úprav, můžete zadat text do buňky. Stisknutím `Enter` nebo pomocí myši přejděte na oblast editoru buňky a vyberte režim úprav. Levý okraj aktivní buňky je zelený a šrafování a jeho tlačítko **Spustit** je zelené. V režimu úprav se také zobrazí výzva kurzoru v buňce.
-
-   :::image type="content" source="media/how-to-run-jupyter-notebooks/edit-mode.png" alt-text="Buňka poznámkového bloku v režimu úprav":::
-
-Pomocí následujících klávesových zkratek můžete snáze procházet a spouštět kód v Azure Machine Learning poznámkových blocích v režimu úprav.
-
-| Zástupce                      | Description|                                     
-| ----------------------------- | ----------------------------------------------- |
-| Escape                        | Přejít do režimu příkazu|  
-| Ctrl/Command + mezerník       | Aktivace technologie IntelliSense |
-| Shift + Enter                 | Spustit buňku, vyberte níže |                         
-| Ctrl/Command + ENTER       | Spustit buňku  |                                      
-| ALT + ENTER                   | Spustit buňku, Vložit buňku kódu níže  |              
-| Ctrl/Command + Alt + Enter | Spustit buňku, Vložit buňku Markdownu pod  |          
-| ALT + R                       | Spustit všechny buňky     |                              
-| Nahoru                            | Přesunout kurzor nahoru nebo předchozí buňku    |             
-| Dolů                          | Přesunout kurzor dolů nebo další buňka |                  
-| Ctrl/Command + S           | Uložit Poznámkový blok   |                                
-| Ctrl/Command + up          | Přejít na začátek buňky   |                             
-| Ovládací prvek/příkaz + šipka dolů        | Přejít na konec buňky |                                 
-| Karta                           | Dokončení nebo odsazení kódu (Pokud je povolené depeše na kartě) |
-| Ctrl/Command + M           | Povolit/zakázat soutisk karty  |                       
-| Ctrl/Command +]           | Rážce |                                         
-| Control/Command + [           | Zmenšit odsazení  |                                        
-| Ovládací prvek/příkaz + A           | Vybrat vše|                                      
-| Ctrl/Command + Z           | Zpět |                                           
-| Ctrl/Command + Shift + Z   | Opakovat |                                           
-| Ctrl/Command + Y           | Opakovat |                                           
-| Ovládací prvek/příkaz + Home        | Přejít na začátek buňky|                                
-| Ovládací prvek/příkaz + end         | Přejít na konec buňky   |                               
-| Ctrl/Command + šipka vlevo        | Přejít o jedno slovo doleva |                               
-| Ctrl/Command + šipka vpravo       | Přejít o jedno slovo doprava |                              
-| Ctrl/Command + Backspace   | Odstranit slovo před |                             
-| Control/Command + Delete      | Odstranit slovo za |                              
-| Ovládací prvek/příkaz +/           | Přepnout komentář na CU
 
 ## <a name="find-compute-details"></a>Najít podrobnosti o COMPUTE
 

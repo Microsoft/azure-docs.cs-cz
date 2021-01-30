@@ -4,16 +4,16 @@ description: Získejte přehled o sledování zákaznického využití pro Azure
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-author: vikrambmsft
-ms.author: vikramb
+author: cpercy737
+ms.author: camper
 ms.date: 11/4/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: e9e630f4199e0bfb67509f008f403c0a7a490887
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 989e50ec03dae5d00961d572b70d524a56b3d64c
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436687"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062201"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Obchodní partneři na webu Marketplace a přidělení zákaznického využití
 
@@ -76,7 +76,7 @@ Po přidání identifikátoru GUID do šablony nebo uživatelského agenta a reg
 
 1. V pravém horním rohu > **Nastavení účtu** vyberte **Nastavení** (ikona ozubeného kolečka).
 
-1. V nabídce identifikátory **profilů organizace**  >  **Identifiers** vyberte **Přidat identifikátor GUID sledování**.
+1. V nabídce identifikátory **profilů organizace**  >  vyberte **Přidat identifikátor GUID sledování**.
 
 1. Do pole **identifikátor GUID** zadejte identifikátor GUID sledování. Zadejte pouze identifikátor GUID bez `pid-` předpony. Do pole **Popis** zadejte název nebo popis vaší nabídky.
 

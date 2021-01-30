@@ -68,6 +68,8 @@
           href: quickstart-v2-netcore-daemon.md
         - name: Proces démon konzoly v Pythonu
           href: quickstart-v2-python-daemon.md
+        - name: Démon konzoly Java
+          href: quickstart-v2-java-daemon.md
 - name: Kurzy
   items:
     - name: Jednostránková aplikace (SPA)

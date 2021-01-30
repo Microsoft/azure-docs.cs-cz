@@ -157,6 +157,7 @@
               href: container-registry-troubleshoot-performance.md
             - name: Detekce běžných problémů
               href: container-registry-check-health.md
+              displayName: 'check, health'
             - name: Nejčastější dotazy
               href: container-registry-faq.md
 - name: Úlohy

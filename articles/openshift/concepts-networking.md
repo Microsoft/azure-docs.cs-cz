@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 11/23/2020
-ms.openlocfilehash: 9cfe8c7e7d2484649bf458524032365b692c9243
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 6d1fd873de3313678875a8c167b90fafb8ede7ae
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093515"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99061645"
 ---
 # <a name="network-concepts-for-azure-red-hat-openshift-aro"></a>Koncepty sítě pro Azure Red Hat OpenShift (ARO)
 
@@ -68,12 +68,15 @@ OpenShift software definované sítě [(SDN)](https://docs.openshift.com/contain
 
 ## <a name="networking--for-azure-red-hat-openshift"></a>Sítě pro Azure Red Hat OpenShift
 
-Následující síťové funkce jsou specifické pro Azure Red Hat OpenShift:
+Následující síťové funkce jsou specifické pro Azure Red Hat OpenShift:  
 * Uživatelé můžou vytvořit svůj cluster ARO v existující virtuální síti nebo vytvořit virtuální síť při vytváření clusteru ARO.
 * CIDRs síť pod a služba se dají konfigurovat.
 * Uzly a hlavní servery jsou v různých podsítích.
 * Podsítě uzlů a virtuálních sítí virtuálních sítí by měly být minimálně/27.
-* Hodnota pod směrováním CIDR by měla být minimálně/18 (síť pod Nesměrovatelné IP adresy a používá se jenom uvnitř OpenShift SDN).
+* Výchozí hodnota pod směrováním CIDR je 10.128.0.0/14.
+* Výchozí CIDR služby je 172.30.0.0/16.
+* CIDRs a síť služby by se neměly překrývat s ostatními rozsahy adres, které se ve vaší síti používají, a nesmí být v rozsahu IP adres virtuálních sítí vašeho clusteru.
+* V případě CIDR by měla být velikost minimálně/18. (Síť pod Nesměrovatelné IP adresy se používá jenom uvnitř OpenShift SDN.)
 * Každému uzlu je přiděleno/23 podsítě (512 IP adres) pro své lusky. Tato hodnota se nedá změnit.
 * Nemůžete připojit objekt pod k více sítím.
 * Nemůžete nakonfigurovat statickou statickou IP adresu. (Jedná se o funkci OpenShift. Informace najdete v tématu [Konfigurace odchozích IP adres](https://docs.openshift.com/container-platform/4.5/networking/openshift_sdn/assigning-egress-ips.html).

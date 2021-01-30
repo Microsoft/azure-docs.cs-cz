@@ -1,8 +1,8 @@
 ---
 title: Připojení zařízení v Azure IoT Central | Microsoft Docs
 description: Tento článek představuje klíčové koncepty týkající se připojení zařízení v Azure IoT Central
-author: TheJasonAndrew
-ms.author: v-anjaso
+author: dominicbetts
+ms.author: dobett
 ms.date: 1/15/2020
 ms.topic: conceptual
 ms.service: iot-central
@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: c633b488fab521947e4f34abb95ada2342dc2eb3
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 028088087b16ded182042aadec4be08a4b8a9589
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789766"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062674"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Připojení ke službě Azure IoT Central
 
@@ -234,11 +234,8 @@ Sady SDK pro zařízení Azure nabízí nejjednodušší způsob implementace k�
 Všechna komunikace zařízení s IoT Hub používá následující možnosti připojení IoT Hub:
 
 - [Zasílání zpráv ze zařízení do cloudu](../../iot-hub/iot-hub-devguide-messages-d2c.md)
-- [Zasílání zpráv z cloudu na zařízení](../../iot-hub/iot-hub-csharp-csharp-c2d.md)
+- [Zasílání zpráv z cloudu na zařízení](../../iot-hub/iot-hub-devguide-messages-c2d.md)
 - [Vlákna zařízení](../../iot-hub/iot-hub-devguide-device-twins.md)
-
-> [!NOTE]
-> Azure teď podporuje
 
 Následující tabulka shrnuje, jak se funkce IoT Central zařízení Azure namapují k funkcím IoT Hub:
 

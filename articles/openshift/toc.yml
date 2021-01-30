@@ -16,6 +16,10 @@
       href: tutorial-delete-cluster.md
 - name: Návody
   items:
+    - name: Operace clusteru
+      items:
+        - name: Upgrade clusteru ARO
+          href: howto-upgrade.md
     - name: Sítě
       items:
         - name: Vytvoření privátního clusteru ARO
@@ -28,6 +32,8 @@
           href: howto-create-a-storageclass.md
         - name: Použití integrovaného registru kontejneru
           href: built-in-container-registry.md
+        - name: Použití služby Azure Container Registry
+          href: howto-use-acr-with-aro.md
     - name: Zabezpečení a ověřování
       items:
         - name: Konfigurace ověřování Azure Active Directory (CLI)
