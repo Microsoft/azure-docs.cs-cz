@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/25/2021
+ms.date: 01/29/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 391d921cfe77e8efdfd93fa87f102652120786d4
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 934497f0d4debf8f21d5e12ba1e6addedd3c70f6
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98807165"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99214223"
 ---
-|Název |Popis |Zásady |Verze |
+|Název |Description |Zásady |Verze |
 |---|---|---|---|
 |[Australian Government ISM PROTECTED](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/IRAP_Audit.json) |Tato iniciativa zahrnuje zásady pro nasazování auditu a rozšíření virtuálních počítačů, které řeší podmnožinu australských ovládacích prvků (ISM) pro státní správu zabezpečení informací. Další zásady budou přidány v nadcházejících verzích. Další informace najdete na adrese [https://aka.ms/AustralianGovernmentISM-blueprint](https://aka.ms/AustralianGovernmentISM-blueprint) . |61 |4.0.0 – Preview |
 |[Canada Federal PBMM](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CanadaFederalPBMM_audit.json) |Tato iniciativa zahrnuje zásady pro nasazení auditu a rozšíření virtuálních počítačů, které řeší podmnožinu federálních PBMMch ovládacích prvků Kanady. Další zásady budou přidány v nadcházejících verzích. Další informace najdete na adrese [https://aka.ms/canadafederalpbmm-blueprint](https://aka.ms/canadafederalpbmm-blueprint) . |60 |4.0.0 |
@@ -22,7 +22,7 @@ ms.locfileid: "98807165"
 |[FedRAMP Moderate](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/FedRAMP_M_audit.json) |Tato iniciativa zahrnuje zásady pro nasazení auditu a rozšíření virtuálních počítačů, které řeší podmnožinu ovládacích prvků FedRAMP M. Další zásady budou přidány v nadcházejících verzích. Další informace najdete na adrese [https://aka.ms/fedrampm-blueprint](https://aka.ms/fedrampm-blueprint) . |62 |4.0.0 |
 |[HITRUST/HIPAA](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/HIPAA_HITRUST_audit.json) |Tato iniciativa zahrnuje zásady pro nasazení auditu a rozšíření virtuálních počítačů, které řeší podmnožinu ovládacích prvků HITRUST/HIPAA. Další zásady budou přidány v nadcházejících verzích. Další informace najdete na adrese [https://aka.ms/hipaa-blueprint](https://aka.ms/hipaa-blueprint) . |120 |5.0.0 |
 |[IRS1075. září 2016](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/IRS1075_audit.json) |Tato iniciativa zahrnuje zásady pro nasazování auditu a rozšíření virtuálních počítačů, které řeší podmnožinu IRS1075. září 2016. Další zásady budou přidány v nadcházejících verzích. Další informace najdete na adrese [https://aka.ms/irs1075-blueprint](https://aka.ms/irs1075-blueprint) . |62 |4.0.0 |
-|[ISO 27001:2013](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/ISO27001_2013_audit.json) |Tato iniciativa zahrnuje zásady pro nasazení auditu a rozšíření virtuálních počítačů, které řeší podmnožinu ovládacích prvků ISO 27001:2013. Další zásady budou přidány v nadcházejících verzích. Další informace najdete na adrese [https://aka.ms/iso27001-blueprint](https://aka.ms/iso27001-blueprint) . |53 |4.0.0 |
+|[ISO 27001:2013](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/ISO27001_2013_audit.json) |Tato iniciativa zahrnuje zásady pro nasazení auditu a rozšíření virtuálních počítačů, které řeší podmnožinu ovládacích prvků ISO 27001:2013. Další zásady budou přidány v nadcházejících verzích. Další informace najdete na adrese [https://aka.ms/iso27001-init](https://aka.ms/iso27001-init) . |53 |4.0.1 |
 |[Asociace s pohybovým obrázkem v Americe (MPAA)](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/Media_audit.json) |V této iniciativě jsou uvedené zásady pro audit a nasazení rozšíření virtuálních počítačů, které řeší podmnožinu bezpečnostních a řídicích prvků MPAA (Motion Picture Association) Další zásady budou přidány v nadcházejících verzích. Další informace najdete na adrese [https://aka.ms/mpaa-blueprint](https://aka.ms/mpaa-blueprint) . |36 |4.0.0 – Preview |
 |[NIST SP 800-171 R2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/NIST800-171_audit.json) |Tato iniciativa zahrnuje zásady auditu a rozšíření virtuálních počítačů, které řeší podmnožinu požadavků NIST SP 800-171 R2. Další zásady budou přidány v nadcházejících verzích. Další informace najdete na adrese [https://aka.ms/nist800171r2-blueprint](https://aka.ms/nist800171r2-blueprint) . |77 |5.0.0 – Preview |
 |[NIST SP 800-53 R4](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/NIST80053_audit.json) |Tato iniciativa zahrnuje zásady pro nasazení auditu a rozšíření virtuálních počítačů, které řeší podmnožinu NIST SP 800-53 R4 Controls. Další zásady budou přidány v nadcházejících verzích. Další informace najdete na adrese [https://aka.ms/nist80053-blueprint](https://aka.ms/nist80053-blueprint) . |790 |4.0.0 |

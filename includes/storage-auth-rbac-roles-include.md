@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/06/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: a4a2034d44d98de9696b435c68c97a8a54a1c351
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f014ce55dc40723faf1b60f908814f9fa0428b8e
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96025851"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99213928"
 ---
 Azure poskytuje následující předdefinované role Azure pro autorizaci přístupu k datům BLOB a front pomocí Azure AD a OAuth:
 
@@ -31,4 +31,4 @@ Pouze role definované pro přístup k datům umožňují objektu zabezpečení 
 Podrobné informace o předdefinovaných rolích Azure pro Azure Storage pro datové služby a službu pro správu najdete v části **úložiště** v [předdefinovaných rolích Azure pro službu Azure RBAC](../articles/role-based-access-control/built-in-roles.md#storage). Další informace o různých typech rolí, které poskytují oprávnění v Azure, najdete v tématu [role správců pro klasický odběr, role Azure a role Azure AD](../articles/role-based-access-control/rbac-and-directory-admin-roles.md).
 
 > [!IMPORTANT]
-> Rozšiřování přiřazení rolí Azure může trvat až pět minut.
+> Rozšiřování přiřazení rolí Azure může trvat až 30 minut.

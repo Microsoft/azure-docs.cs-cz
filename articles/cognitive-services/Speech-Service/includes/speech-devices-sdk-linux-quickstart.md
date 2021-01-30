@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: 3c093539301f3f4e3309094f0b53a1f0e8393150
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 39cead8306ece6638f85813efc318dd41a6faf8c
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95097842"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99213902"
 ---
 V tomto rychlém startu se dozvíte, jak pomocí sady Speech Devices SDK pro Linux vytvořit produkt s podporou řeči nebo ho použít jako zařízení [přepisující konverzaci](../conversation-transcription.md) . V současné době je podporována pouze služba [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) .
 
@@ -100,7 +100,7 @@ Pokud plánujete použít záměry, budete potřebovat předplatné [služby Lan
         <dependency>
              <groupId>com.microsoft.cognitiveservices.speech</groupId>
              <artifactId>client-sdk</artifactId>
-             <version>1.14.0</version>
+             <version>1.15.0</version>
         </dependency>
     </dependencies>
    ```
@@ -157,13 +157,13 @@ Pokud plánujete použít záměry, budete potřebovat předplatné [služby Lan
 
 ## <a name="run-the-sample-application-from-eclipse"></a>Spuštění ukázkové aplikace z zatmění
 
-1. V řádku nabídek zatmění spusťte příkaz **Run**  >  **Run** . 
+1. V řádku nabídek zatmění spusťte příkaz   >  **Run** . 
 
 1. Spustí se ukázka aplikace Speech Devices SDK a zobrazí následující možnosti:
 
    ![Snímek obrazovky, který zobrazuje sadu Speech pro zařízení s ukázkami, aplikace a možnosti](../media/speech-devices-sdk/java-sample-app-linux.png)
 
-1. Vyzkoušejte si novou ukázku **přepisu konverzace** . Spusťte zdlouhavého přepisování s **Session**  >  **zahájením** relace. Ve výchozím nastavení je každý host. Nicméně pokud máte signatury hlasu účastníka, mohou být umístěny do `participants.properties` složky **cíl/třídy** projektu. Pokud chcete vygenerovat hlasový podpis, podívejte se na [konverzace přepisovat (SDK)](../how-to-use-conversation-transcription.md).
+1. Vyzkoušejte si novou ukázku **přepisu konverzace** . Spusťte zdlouhavého přepisování s   >  **zahájením** relace. Ve výchozím nastavení je každý host. Nicméně pokud máte signatury hlasu účastníka, mohou být umístěny do `participants.properties` složky **cíl/třídy** projektu. Pokud chcete vygenerovat hlasový podpis, podívejte se na [konverzace přepisovat (SDK)](../how-to-use-conversation-transcription.md).
 
    ![Snímek obrazovky, který zobrazuje ukázkovou aplikaci přepisující konverzaci](../media/speech-devices-sdk/cts-sample-app-linux.png)
 

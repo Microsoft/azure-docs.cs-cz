@@ -4,15 +4,13 @@ ms.service: multiple
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: gwallace
-ms.openlocfilehash: 3590b8fdb67b25e0d4389e814aefcc4d18b1193c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5bc00f4de95d22eec71f9b1b2504b00f506232dc
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96015417"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99213926"
 ---
-Zákazníci Azure můžou každý měsíc odemknout 25 000 bezplatných e-mailů. Tyto 25 000 bezplatných měsíčních e-mailů vám umožní přístup k pokročilým vytváření sestav a analýzám a [všem rozhraním API][all APIs] (web, SMTP, Event, Analyze a další). Informace o dalších službách, které SendGrid poskytuje, najdete na stránce [SendGrid Solutions][SendGrid Solutions] (Řešení SendGrid).
-
 ### <a name="to-sign-up-for-a-sendgrid-account"></a>Registrace účtu SendGrid
 1. Přihlaste se na [Azure Portal][Azure portal].
 2. V nabídce Azure Portal nebo na domovské stránce vyberte **vytvořit prostředek**.
@@ -30,7 +28,7 @@ Zákazníci Azure můžou každý měsíc odemknout 25 000 bezplatných e-mail�
 8. Vytvořte novou **Skupinu prostředků**, nebo použijte existující.
 9. V části **Cenová úroveň** vyperte plán SendGrid, který si chcete zaregistrovat.
 
-    ![Snímek obrazovky s dialogovým oknem vytvořit nový účet SendGrid s otevřenou sekcí zvolit cenovou úroveň a vybranou cenovou úroveň Free.][sendgrid-pricing]
+    ![Snímek obrazovky s dialogovým oknem vytvořit nový účet SendGrid s otevřeným oddílem zvolit cenovou úroveň][sendgrid-pricing]
 10. Zadejte **Propagační kód**, pokud nějaký máte.
 11. Zadejte **kontaktní informace**.
 12. Přečtěte si a přijměte **Právní podmínky**.

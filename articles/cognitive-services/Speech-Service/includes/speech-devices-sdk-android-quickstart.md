@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: c341ba20ece26e15255faf086e5bd2904fbaa797
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 3b473d82eb879955a6cbdce58ba66176f5c6d6f5
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95098077"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99213803"
 ---
 V tomto rychlém startu se dozvíte, jak pomocí sady Speech Devices SDK pro Android vytvořit produkt s podporou řeči nebo ho použít jako zařízení [přepisující konverzaci](../conversation-transcription.md) .
 
@@ -96,7 +96,7 @@ Chcete-li ověřit nastavení vývojové sady, sestavte a nainstalujte ukázkovo
     Aktualizujte **Build. Gradle (Module: App)** tak, že přidáte tento řádek do oddílu závislosti. 
     
     ```xml
-    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.14.0'
+    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.15.0'
     ```
     
 1. Přidejte klíč předplatného řeči do zdrojového kódu. Pokud chcete vyzkoušet rozpoznávání záměru, přidejte také klíč předplatného [služby Language Understanding](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) a ID aplikace.

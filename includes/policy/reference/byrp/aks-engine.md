@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/25/2021
+ms.date: 01/29/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 5c07f7ee8f6da208fc09b8631e32906f7dec3943
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: b5e784684da916517a153c5dd4687d98f09ae84e
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805511"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99215488"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Description |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Nepovolit privilegované kontejnery v clusteru Kubernetes](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F95edb821-ddaf-4404-9732-666045e056b4) |Tato zásada nepovoluje vytvoření privilegovaných kontejnerů v clusteru Kubernetes. Tato zásada je všeobecně dostupná pro Kubernetes službu (AKS) a verzi Preview pro modul AKS a Azure ARC s povoleným Kubernetes. Pokyny k používání těchto zásad najdete v tématu [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc) . |audit, zamítnutí, zakázáno |[5.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ContainerNoPrivilege.json) |
 |[Vynutit příchozí přenos dat protokolu HTTPS v clusteru Kubernetes](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1a5b4dca-0b6f-4cf5-907c-56316bc1bf3d) |Tato zásada vynutila příchozí přenosy HTTPS v clusteru Kubernetes. Tato zásada je všeobecně dostupná pro Kubernetes službu (AKS) a verzi Preview pro modul AKS a Azure ARC s povoleným Kubernetes. Pokyny k používání těchto zásad najdete v tématu [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc) . |audit, zamítnutí, zakázáno |[5.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/IngressHttpsOnly.json) |

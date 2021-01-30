@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/25/2021
+ms.date: 01/29/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 6e2d33ec3239233a7896e78c1201cfd09d152cf6
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 96b22afcdc90e07d007276f52c967d1621bcc45e
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98808310"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99213855"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Description |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Nasazení GitOps do clusteru Kubernetes](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1d61c4d2-aef2-432b-87fc-7f96b019b7e1) |Tato zásada nasadí "sourceControlConfiguration" do clusterů Kubernetes, aby se zajistilo, že clustery získají ze definovaného úložiště Git svůj zdroj pravdy. Pokyny k používání těchto zásad najdete v tématu [https://aka.ms/K8sGitOpsPolicy](https://aka.ms/K8sGitOpsPolicy) . |DeployIfNotExists |[1.0.0 – Preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/Deploy-GitOps-to-Kubernetes-cluster_DINE.json) |
 |[Nepovolit privilegované kontejnery v clusteru Kubernetes](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F95edb821-ddaf-4404-9732-666045e056b4) |Tato zásada nepovoluje vytvoření privilegovaných kontejnerů v clusteru Kubernetes. Tato zásada je všeobecně dostupná pro Kubernetes službu (AKS) a verzi Preview pro modul AKS a Azure ARC s povoleným Kubernetes. Pokyny k používání těchto zásad najdete v tématu [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc) . |audit, zamítnutí, zakázáno |[5.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ContainerNoPrivilege.json) |

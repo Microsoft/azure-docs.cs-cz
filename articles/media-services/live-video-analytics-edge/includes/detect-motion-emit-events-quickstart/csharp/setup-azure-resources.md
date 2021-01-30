@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 729839c8e881f507e103c4644c012d8dffc5c8c6
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 67d6155d35f366429bf0210f18f052d9b6187820
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/28/2021
-ms.locfileid: "98956255"
+ms.locfileid: "99213708"
 ---
 Tento kurz vyžaduje následující prostředky Azure:
 
@@ -15,7 +15,7 @@ Tento kurz vyžaduje následující prostředky Azure:
 
 Pro tento rychlý Start doporučujeme, abyste k nasazení požadovaných prostředků ve vašem předplatném Azure použili [skript pro nastavení prostředků Live video Analytics](https://github.com/Azure/live-video-analytics/tree/master/edge/setup) . To můžete provést pomocí těchto kroků:
 
-1. Otevřete [Azure Cloud Shell](https://shell.azure.com).
+1. Otevřete [Azure Cloud Shell](https://ms.portal.azure.com/#cloudshell/).
 1. Pokud používáte Cloud Shell poprvé, budete vyzváni k výběru předplatného pro vytvoření účtu úložiště a sdílené složky Microsoft Azure souborů. Vyberte **vytvořit úložiště** a vytvořte účet úložiště pro informace o cloud Shell relaci. Tento účet úložiště je oddělený od účtu, který vytvoří skript pro použití s vaším účtem Azure Media Services.
 1. V rozevírací nabídce na levé straně okna Cloud Shell vyberte **bash** jako své prostředí.
 

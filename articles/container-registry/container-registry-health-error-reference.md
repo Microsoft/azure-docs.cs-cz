@@ -2,17 +2,19 @@
 title: Reference k chybě pro kontroly stavu registru
 description: Kódy chyb a možná řešení problémů nalezené spuštěním příkazu AZ ACR check-Health Diagnostic v Azure Container Registry
 ms.topic: article
-ms.date: 07/02/2019
-ms.openlocfilehash: 9136d41097207bfb17776071e958308f36a9aadd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/25/2021
+ms.openlocfilehash: 05ae5a7ac19bb7748d5313ccb4974b639ab52d9c
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91565594"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99061864"
 ---
 # <a name="health-check-error-reference"></a>Informace o chybě kontroly stavu
 
 Níže jsou uvedeny podrobnosti o kódech chyb vrácených příkazem [AZ ACR check-Health][az-acr-check-health] . Pro každou chybu jsou uvedena možná řešení.
+
+Informace o spuštění najdete `az acr check-healh` v tématu o [kontrole stavu služby Azure Container Registry](container-registry-check-health.md).
 
 ## <a name="docker_command_error"></a>DOCKER_COMMAND_ERROR
 
@@ -49,6 +51,12 @@ Tato chyba znamená, že rozhraní příkazového řádku Helm nemůže najít k
 Tato chyba znamená, že rozhraní příkazového řádku se nepodařilo zjistit nainstalovanou verzi Helm. K tomu může dojít v případě, že se používá verze Azure CLI (nebo pokud je verze Helm) zastaralá.
 
 *Potenciální řešení*: aktualizujte na nejnovější verzi rozhraní příkazového řádku Azure CLI nebo na doporučenou verzi Helm. Spusťte příkaz ručně a prozkoumejte chybovou zprávu.
+
+## <a name="cmk_error"></a>CMK_ERROR
+
+Tato chyba znamená, že registr nemůže získat přístup k spravované identitě přiřazené uživateli nebo sysem, která se používá ke konfiguraci šifrování registru pomocí klíče spravovaného zákazníkem. Spravovaná identita mohla být odstraněna.  
+
+*Potenciální řešení*: Pokud chcete tento problém vyřešit a otočit klíč pomocí jiné spravované identity, přečtěte si téma Postup řešení potíží s [uživatelem přiřazenou identitou](container-registry-customer-managed-keys.md#troubleshoot).
 
 ## <a name="connectivity_dns_error"></a>CONNECTIVITY_DNS_ERROR
 
