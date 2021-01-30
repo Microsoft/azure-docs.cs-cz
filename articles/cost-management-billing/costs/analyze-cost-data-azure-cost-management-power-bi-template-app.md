@@ -3,25 +3,25 @@ title: Analýza nákladů na Azure s využitím aplikace Power BI
 description: Tento článek vysvětluje, jak nainstalovat a používat aplikaci Power BI Azure Cost Management.
 author: bandersmsft
 ms.author: banders
-ms.date: 11/09/2020
+ms.date: 1/29/2021
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: 1c5adf58f670f3cadcedbe710568551004b77b78
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
-ms.translationtype: HT
+ms.openlocfilehash: d3439f5a86c445898d95191a32496b5f0c86be0b
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413237"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99070153"
 ---
 # <a name="analyze-cost-with-the-azure-cost-management-power-bi-app-for-enterprise-agreements-ea"></a>Analýza nákladů pomocí aplikace Power BI Azure Cost Management pro smlouvy Enterprise (EA)
 
 Tento článek vysvětluje, jak nainstalovat a používat aplikaci Power BI Azure Cost Management. Aplikace vám pomůže analyzovat a spravovat náklady na Azure v Power BI. Pomocí aplikace můžete sledovat náklady, trendy využití a identifikovat možnosti optimalizace nákladů, abyste snížili výdaje.
 
-Aplikaci můžete použít tak, jak je, nebo ji můžete upravit, abyste rozšířili výchozí filtry, zobrazení a vizualizace a přizpůsobili je svým potřebám. Pak se pomocí ní připojte k dalším datům a vytvořte přizpůsobené sestavy poskytující ucelené zobrazení vašich celkových obchodních nákladů.
+Aplikace Azure Cost Management Power BI aktuálně podporuje pouze zákazníky s [smlouva Enterprise](https://azure.microsoft.com/pricing/enterprise-agreement/).
 
-Aplikace Power BI Azure Cost Management aktuálně podporuje pouze zákazníky se [smlouvou Enterprise](https://azure.microsoft.com/pricing/enterprise-agreement/).
+Aplikace omezuje její přidanou. Pokud chcete upravit a zvětšit výchozí filtry, zobrazení a vizualizace, abyste je mohli přizpůsobit vašim potřebám, použijte místo toho [Azure cost management konektor v Power BI Desktop](/power-bi/connect-data/desktop-connect-azure-cost-management) . Pomocí konektoru Azure Cost Management se můžete připojit k dalším datům z jiných zdrojů a vytvořit přizpůsobené sestavy a získat tak holistický zobrazení vašich celkových obchodních nákladů. Konektor podporuje také smlouvy o zákaznících Microsoftu.
 
 > [!NOTE]
 > Aplikace s šablonou Power BI nepodporují stahování souboru PBIX.

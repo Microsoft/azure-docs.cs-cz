@@ -13,12 +13,12 @@ ms.date: 05/08/2020
 ms.author: rolyon
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 304d88dfcf0c72769f27911186df04c66224419e
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 501fe17734be1e73ffc516a7b94300445c331e86
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740138"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090939"
 ---
 # <a name="manage-your-users-with-my-staff-preview"></a>Správa uživatelů pomocí mých zaměstnanců (Preview)
 
@@ -89,7 +89,7 @@ Následující role mají oprávnění resetovat heslo uživatele:
 
 - [Správce ověřování](permissions-reference.md#authentication-administrator)
 - [Správce privilegovaného ověřování](permissions-reference.md#privileged-authentication-administrator)
-- [Globální správce](permissions-reference.md#global-administrator--company-administrator)
+- [Globální správce](permissions-reference.md#global-administrator)
 - [Správce helpdesku](permissions-reference.md#helpdesk-administrator)
 - [Správce uživatelů](permissions-reference.md#user-administrator)
 - [Správce hesel](permissions-reference.md#password-administrator)
@@ -117,7 +117,7 @@ Chcete-li spravovat telefonní číslo uživatele, je nutné přiřadit jednu z 
 
 - [Správce ověřování](permissions-reference.md#authentication-administrator)
 - [Správce privilegovaného ověřování](permissions-reference.md#privileged-authentication-administrator)
-- [Globální správce](permissions-reference.md#global-administrator--company-administrator)
+- [Globální správce](permissions-reference.md#global-administrator)
 
 ## <a name="search"></a>Hledat
 

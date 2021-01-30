@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/08/2019
 ms.author: jeedes
-ms.openlocfilehash: c3221063469315b2324c5039a46db622109826aa
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 0b337225c5909563ef4aeb49cf0754e11075a6fb
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673601"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090032"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bridge"></a>Kurz: Azure Active Directory integrace s mostem
 
@@ -106,7 +106,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí mostu, p
     b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru: `https://<company name>.bridgeapp.com`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta](https://community.bridgeapp.com/community/help) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta](https://community.bridgeapp.com/hc/en-us/community/topics) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
 5. Na stránce **nastavit jeden Sign-On se** stránkou SAML klikněte v části **podpisový certifikát SAML** na **Stáhnout** a Stáhněte si **certifikát (RAW)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
@@ -124,7 +124,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí mostu, p
 
 ### <a name="configure-bridge-single-sign-on"></a>Konfigurovat jeden Sign-On mostu
 
-Chcete-li konfigurovat jednotné přihlašování na straně **mostu** , je třeba odeslat stažený **certifikát (RAW)** a příslušné zkopírované adresy URL z Azure Portal pro [překlenovací tým podpory](https://community.bridgeapp.com/community/help). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
+Chcete-li konfigurovat jednotné přihlašování na straně **mostu** , je třeba odeslat stažený **certifikát (RAW)** a příslušné zkopírované adresy URL z Azure Portal pro [překlenovací tým podpory](https://community.bridgeapp.com/hc/en-us/community/topics). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
@@ -179,7 +179,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 ### <a name="create-bridge-test-user"></a>Vytvořit testovacího uživatele mostu
 
-V této části vytvoříte v Bridge uživatele s názvem Britta Simon. Pokud chcete přidat uživatele na platformě mostu, pracujte s [týmem podpory mostu](https://community.bridgeapp.com/community/help) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte v Bridge uživatele s názvem Britta Simon. Pokud chcete přidat uživatele na platformě mostu, pracujte s [týmem podpory mostu](https://community.bridgeapp.com/hc/en-us/community/topics) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 

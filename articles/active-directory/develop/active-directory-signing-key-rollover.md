@@ -12,12 +12,12 @@ ms.date: 8/11/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: bd2bd67774eb55051e55e4433984c0fd1fda5240
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: f3bf9ffeb8da8e877a27ab8758572b2c8277146d
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98755582"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090311"
 ---
 # <a name="signing-key-rollover-in-the-microsoft-identity-platform"></a>Výměna podpisových klíčů na platformě Microsoft identity
 Tento článek popisuje, co potřebujete znát o veřejných klíčích používaných platformou Microsoft identity k podepisování tokenů zabezpečení. Je důležité si uvědomit, že tyto klíče se převezmou v pravidelných intervalech a v naléhavém případě by mohlo dojít k okamžitému zavedení. Všechny aplikace, které používají platformu Microsoft Identity Platform, by měly být schopné programově zpracovat proces výměny klíčů. Pokračujte ve čtení, abyste pochopili, jak klíče fungují, jak vyhodnotit dopad přechodu na aplikaci a jak aktualizovat aplikaci nebo vytvořit pravidelný ruční proces ručního zpracování, který v případě potřeby zabere v případě potřeby klíčovou výměnu.
@@ -297,7 +297,7 @@ Pokud jste vytvořili aplikaci v WIF v 1.0, není k dispozici žádný mechanism
 
 Pokyny k aktualizaci konfigurace pomocí nástroje soubor FedUtil:
 
-1. Ověřte, že je na vašem vývojovém počítači nainstalována sada WIF v 1.0 pro sadu Visual Studio 2008 nebo 2010. Pokud jste ho ještě nenainstalovali, můžete [si ho stáhnout tady](https://www.microsoft.com/en-us/download/details.aspx?id=4451) .
+1. Ověřte, že je na vašem vývojovém počítači nainstalována sada WIF v 1.0 pro sadu Visual Studio 2008 nebo 2010. Pokud jste ho ještě nenainstalovali, můžete [si ho stáhnout tady](https://www.softpedia.com/get/Programming/Other-Programming-Files/Windows-Identity-Foundation-SDK.shtml) .
 2. V aplikaci Visual Studio otevřete řešení a klikněte pravým tlačítkem myši na příslušný projekt a vyberte možnost **aktualizovat federační metadata**. Pokud tato možnost není k dispozici, soubor FedUtil a/nebo sada SDK WIF v 1.0 nebyla nainstalována.
 3. V příkazovém řádku vyberte **aktualizovat** a začněte aktualizovat federační metadata. Máte-li přístup k prostředí serveru, kde je aplikace hostována, můžete volitelně použít [Plánovač aktualizací automatických metadat](/previous-versions/windows-identity-foundation/ee517272(v=msdn.10))soubor FedUtil.
 4. Kliknutím na **Dokončit** dokončete proces aktualizace.

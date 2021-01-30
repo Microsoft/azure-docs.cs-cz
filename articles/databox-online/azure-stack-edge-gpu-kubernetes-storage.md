@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 11/04/2020
+ms.date: 01/28/2021
 ms.author: alkohli
-ms.openlocfilehash: 34165071238ca3edf78ab9cca43639c23ce5ed2a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 2d079f2fa3e67f1ec915a02de3e195ccac538209
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448696"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063300"
 ---
 # <a name="kubernetes-storage-management-on-your-azure-stack-edge-pro-gpu-device"></a>Správa úložiště Kubernetes na zařízení GPU Azure Stack Edge pro
 
@@ -79,11 +79,11 @@ Dojde k následujícím krokům:
 
 Na zařízení Azure Stack Edge pro se staticky zřízené `PersistentVolumes` vytvoří pomocí možností úložiště pro zařízení. Když zřídíte sdílenou složku a povolíte možnost **sdílet s Edge COMPUTE** , vytvoří tato akce v clusteru Kubernetes automaticky prostředek PV.
 
-![Vytvoření místní sdílené složky v Azure Portal pro statické zřizování](./media/azure-stack-edge-gpu-kubernetes-storage/static-provisioning-azure-portal-2.png)
+![Vytvoření místní sdílené složky v Azure Portal pro statické zřizování](./media/azure-stack-edge-gpu-kubernetes-storage/static-provisioning-azure-portal-1.png)
 
 Pokud chcete použít vrstvení cloudu, můžete vytvořit sdílenou složku Edge s povoleným použitím možnosti sdílet s Edge Compute. Pro tuto sdílenou složku se automaticky vytvoří souč_hod. Všechna data aplikace, která zapisujete do sdílené složky Edge, jsou vrstvena do cloudu. 
 
-![Vytvoření sdílené složky v cloudu v Azure Portal pro statické zřizování](./media/azure-stack-edge-gpu-kubernetes-storage/static-provisioning-azure-portal-1.png)
+![Vytvoření sdílené složky v cloudu v Azure Portal pro statické zřizování](./media/azure-stack-edge-gpu-kubernetes-storage/static-provisioning-azure-portal-2.png)
 
 Sdílené složky SMB i NFS můžete vytvořit tak, aby staticky zřídily PVs pro zařízení s Azure Stack Edgem pro. Po zřízení PV odešlete virtuální okruh, který bude toto úložiště uplatňovat. Tady je příklad nasazení okruhu PVC `yaml` , který využívá úložiště a používá sdílené složky, které jste zřídili.
 

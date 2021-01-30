@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b46262e34f57b3ff9aeb6bd4ea671ec611b99df
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 3101cf3650fcfb7f9313b13c1c07a03dd734e9dd
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740342"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99089220"
 ---
 # <a name="understand-roles-in-azure-active-directory"></a>Pochopení rolí v Azure Active Directory
 
@@ -61,7 +61,7 @@ Následující tabulka se nabízí jako pomůcka pro porozumění těmto kategor
 Kategorie | Role
 ---- | ----
 Role specifické pro Azure AD | Správce aplikace<br>Vývojář aplikace<br>Správce ověřování<br>B2C IEF, správce sady klíčů<br>Správce zásad IEF B2C<br>Správce cloudové aplikace<br>Správce cloudového zařízení<br>Správce podmíněného přístupu<br>Správci služeb<br>Čtečky adresářů<br>Účty synchronizace adresářů<br>Zapisovače adresářů<br>Správce toku externího ID uživatele<br>Správce atributů toku uživatele externího ID<br>Správce externích zprostředkovatelů identity<br>Správce skupin<br>Pozvánka hosta<br>Správce helpdesku<br>Správce hybridní identity<br>Správce licencí<br>Podpora partnerů Tier1<br>Podpora partnerů 2<br>Správce hesel<br>Správce privilegovaného ověřování<br>Správce privilegovaných rolí<br>Čtečka sestav<br>Správce účtu uživatele
-Role mezi službami | Správce společnosti<br>Správce dodržování předpisů<br>Správce dat dodržování předpisů<br>Globální čtenář<br>Správce zabezpečení<br>Operátor zabezpečení<br>Čtenář zabezpečení<br>Správce služby Service support
+Role mezi službami | Globální správce<br>Správce dodržování předpisů<br>Správce dat dodržování předpisů<br>Globální čtenář<br>Správce zabezpečení<br>Operátor zabezpečení<br>Čtenář zabezpečení<br>Správce služby Service support
 Role specifické pro službu | Správce Azure DevOps<br>Správce Azure Information Protection<br>Správce fakturace<br>Správce služby CRM<br>Schvalovatel přístupu k bezpečnostnímu modulu zákazníka<br>Správce Desktop Analytics<br>Správce služby Exchange<br>Správce Insights<br>Vedoucí firmy pro Insights<br>Správce služby Intune<br>Správce Kaizala<br>Správce služby Lync<br>Čtenář ochrany osobních údajů centra zpráv<br>Čtenář centra zpráv<br>Moderní uživatel pro obchodování<br>Správce sítě<br>Správce aplikací Office<br>Správce služby Power BI<br>Správce Power Platform<br>Správce tiskárny<br>Technik tiskárny<br>Správce hledání<br>Editor hledání<br>Správce služby SharePoint<br>Správce komunikace týmů<br>Týmy Communications support inženýr<br>Týmy Communications support specialisty<br>Správci zařízení Teams<br>Správce služby Teams
 
 ## <a name="next-steps"></a>Další kroky

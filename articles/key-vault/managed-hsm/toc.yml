@@ -9,6 +9,8 @@
   items:
     - name: Rozhraní příkazového řádku
       href: quick-create-cli.md
+    - name: PowerShell
+      href: quick-create-powershell.md
     - name: Šablona Azure Resource Manageru
       href: quick-create-template.md
 - name: Kurzy

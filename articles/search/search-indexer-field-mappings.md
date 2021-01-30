@@ -3,19 +3,17 @@ title: Mapování polí v indexerech
 titleSuffix: Azure Cognitive Search
 description: Nakonfigurujte mapování polí v indexeru na účet pro rozdíly v názvech polí a reprezentace dat.
 manager: nitinme
-author: mattmsft
-ms.author: magottei
-ms.devlang: rest-api
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/11/2020
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 579d0e334b4e60815b3a5efc877833ab75a3375d
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.date: 01/28/2021
+ms.openlocfilehash: efee1e1cda7767620931ef81825708d94a1925c3
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358928"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063175"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Mapování polí a transformace pomocí indexerů Azure Kognitivní hledání
 
@@ -28,7 +26,7 @@ Některé situace, kdy je vhodné mapování polí:
 * Váš zdroj dat obsahuje pole s názvem `_id` , ale Azure kognitivní hledání nepovoluje názvy polí, které začínají podtržítkem. Mapování polí umožňuje efektivně přejmenovat pole.
 * Chcete naplnit několik polí v indexu ze stejných dat zdroje dat. Například můžete chtít u těchto polí použít různé analyzátory.
 * Chcete vyplnit pole indexu daty z více než jednoho zdroje dat a jednotlivé zdroje dat používají různé názvy polí.
-* Je potřeba kódovat nebo dekódovat data v kódování Base64. Mapování polí podporují několik **funkcí mapování** , včetně funkcí pro kódování a dekódování base64.
+* Je potřeba kódovat nebo dekódovat data v kódování Base64. Mapování polí podporují několik **funkcí mapování**, včetně funkcí pro kódování a dekódování base64.
 
 > [!NOTE]
 > Mapování polí v indexerech je jednoduchý způsob, jak mapovat datová pole k indexovaným polím, a to s určitou možností pro převod dat s lehkým zatížením. Složitější data mohou vyžadovat předběžné zpracování, aby bylo možné je znovu natvarovat do formuláře, který je přispívající k indexování. Jedna z možností, kterou můžete zvážit, je [Azure Data Factory](../data-factory/index.yml).
@@ -46,7 +44,7 @@ Mapování polí jsou přidána do `fieldMappings` pole definice indexeru.
 > [!NOTE]
 > Pokud nejsou přidána žádná mapování polí, předpokládají indexery pole zdroje dat, které by měly být mapovány na indexová pole se stejným názvem. Přidáním mapování polí dojde k odebrání těchto výchozích mapování polí pro zdrojové a cílové pole. Některé indexery, jako [je indexer úložiště objektů BLOB](search-howto-indexing-azure-blob-storage.md), přidají mapování výchozích polí pro pole klíč indexu.
 
-## <a name="map-fields-using-the-rest-api"></a>Mapování polí pomocí REST API
+## <a name="map-fields-using-rest"></a>Mapování polí pomocí REST
 
 Mapování polí můžete přidat při vytváření nového indexeru pomocí požadavku [Create indexer](/rest/api/searchservice/create-Indexer) API. Mapování polí stávajícího indexeru můžete spravovat pomocí požadavku rozhraní API pro [aktualizaci indexeru](/rest/api/searchservice/update-indexer) .
 
@@ -77,9 +75,8 @@ Na zdrojové pole se může odkazovat v mapování více polí. Následující p
 > [!NOTE]
 > Azure Kognitivní hledání používá porovnávání bez rozlišení velkých a malých písmen k překladu polí a názvů funkcí v mapování polí. To je pohodlné (nemusíte mít vše v pravém), ale to znamená, že váš zdroj dat nebo index nemůže obsahovat pole, která se liší pouze velikostí písmen.  
 >
->
 
-## <a name="map-fields-using-the-net-sdk"></a>Mapování polí pomocí sady .NET SDK
+## <a name="map-fields-using-net"></a>Mapování polí pomocí .NET
 
 Mapování polí v sadě .NET SDK definujete pomocí třídy [FieldMapping](/dotnet/api/azure.search.documents.indexes.models.fieldmapping) , která má vlastnosti a a `SourceFieldName` `TargetFieldName` volitelný `MappingFunction` odkaz.
 

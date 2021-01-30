@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: ''
 ms.date: 09/21/2020
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: 77ed71d74e75abfdf7f84aee9b116f1d9d2ccc9d
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: f42db48e0fa0e85d919d6894e5476b7ef5380698
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94985854"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99089288"
 ---
 # <a name="tutorial-secure-a-database-in-azure-sql-database"></a>Kurz: zabezpečení databáze v Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -124,7 +124,7 @@ Nastavení správce Azure AD:
     ![Výběr Active Directory](./media/secure-database-tutorial/admin-settings.png)  
 
     > [!IMPORTANT]
-    > K provedení této úlohy musíte být buď správce společnosti, nebo globální správce.
+    > K provedení této úlohy musíte být "globální správce".
 
 1. Na stránce **přidat správce** vyhledejte a vyberte uživatele nebo skupinu AD a zvolte **Vybrat**. Seznam všech členů a skupin služby Active Directory a položky zobrazené šedě nejsou podporovány jako správci služby Azure AD. Přečtěte si o [funkcích a omezeních Azure AD](authentication-aad-overview.md#azure-ad-features-and-limitations).
 
@@ -235,7 +235,7 @@ Postup při kopírování zabezpečeného připojovacího řetězce:
 
 Azure SQL Database poskytuje funkce zabezpečení, které jsou k dispozici pomocí Azure Portal. Tyto funkce jsou dostupné jak pro databázi, tak pro server, s výjimkou maskování dat, která je k dispozici pouze v databázi. Další informace najdete v tématu [Azure Defender pro SQL](azure-defender-for-sql.md), [auditování](../../azure-sql/database/auditing-overview.md), [Maskování dynamických dat](dynamic-data-masking-overview.md)a [transparentní šifrování dat](transparent-data-encryption-tde-overview.md).
 
-### <a name="azure-defender-for-sql"></a>Azure Defender pro SQL
+### <a name="azure-defender-for-sql"></a>Azure Defender for SQL
 
 Funkce Azure Defender pro SQL detekuje potenciální hrozby při jejich výskytu a poskytuje výstrahy zabezpečení pro aktivity neobvyklé. Uživatelé mohou tyto podezřelé události prozkoumat pomocí funkce auditování a určit, zda má událost přístup, porušení nebo zneužití dat v databázi. Uživatelům se taky poskytuje přehled zabezpečení, který obsahuje posouzení ohrožení zabezpečení a nástroj pro zjišťování a zjišťování dat.
 

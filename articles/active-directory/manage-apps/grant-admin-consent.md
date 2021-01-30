@@ -12,12 +12,12 @@ ms.date: 11/04/2019
 ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fd102bad45bf482cb9a9750bf05e862b9c91e8e
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: eaf8f92ec2c7d9653595b3249521582620670aaf
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99055208"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99089948"
 ---
 # <a name="grant-tenant-wide-admin-consent-to-an-application"></a>Udělení souhlasu správce v rámci celého tenanta aplikaci
 
@@ -27,7 +27,7 @@ Další informace o tom, jak se předávají aplikacím, najdete v tématu [Azur
 
 ## <a name="prerequisites"></a>Požadavky
 
-Udělení souhlasu správce pro celé tenanta vyžaduje, abyste se přihlásili jako [globální správce](../roles/permissions-reference.md#global-administrator--company-administrator), [správce aplikace](../roles/permissions-reference.md#application-administrator)nebo [správce cloudové aplikace](../roles/permissions-reference.md#cloud-application-administrator).
+Udělení souhlasu správce pro celé tenanta vyžaduje, abyste se přihlásili jako [globální správce](../roles/permissions-reference.md#global-administrator), [správce aplikace](../roles/permissions-reference.md#application-administrator)nebo [správce cloudové aplikace](../roles/permissions-reference.md#cloud-application-administrator).
 
 > [!IMPORTANT]
 > Pokud se aplikaci udělí souhlas správce na úrovni tenanta, všichni uživatelé se budou moct k aplikaci přihlásit, pokud není nakonfigurovaná tak, aby vyžadovala přiřazení uživatele. Chcete-li omezit, kteří uživatelé se mohou přihlašovat k aplikaci, vyžadovat přiřazení uživatele a pak přiřadit uživatele nebo skupiny k aplikaci. Další informace najdete v tématu [metody přiřazení uživatelů a skupin](./assign-user-or-group-access-portal.md).
@@ -47,7 +47,7 @@ Můžete udělit souhlas správce na úrovni tenanta prostřednictvím *podnikov
 
 Udělení souhlasu správce na úrovni tenanta k aplikaci uvedené v **podnikových aplikacích**:
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako [globální správce](../roles/permissions-reference.md#global-administrator--company-administrator), [správce aplikace](../roles/permissions-reference.md#application-administrator)nebo [správce cloudové aplikace](../roles/permissions-reference.md#cloud-application-administrator).
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako [globální správce](../roles/permissions-reference.md#global-administrator), [správce aplikace](../roles/permissions-reference.md#application-administrator)nebo [správce cloudové aplikace](../roles/permissions-reference.md#cloud-application-administrator).
 2. Vyberte **Azure Active Directory** **podnikové aplikace**.
 3. Vyberte aplikaci, pro kterou chcete udělit souhlas správce na úrovni tenanta.
 4. Vyberte **oprávnění** a pak klikněte na **udělit souhlas správce**.
@@ -63,7 +63,7 @@ Pro aplikace, které vaše organizace vyvinula nebo které jsou zaregistrované 
 
 Udělení souhlasu správce na úrovni tenanta od **Registrace aplikací**:
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako [globální správce](../roles/permissions-reference.md#global-administrator--company-administrator), [správce aplikace](../roles/permissions-reference.md#application-administrator)nebo [správce cloudové aplikace](../roles/permissions-reference.md#cloud-application-administrator).
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako [globální správce](../roles/permissions-reference.md#global-administrator), [správce aplikace](../roles/permissions-reference.md#application-administrator)nebo [správce cloudové aplikace](../roles/permissions-reference.md#cloud-application-administrator).
 2. Vyberte **Azure Active Directory** pak **Registrace aplikací**.
 3. Vyberte aplikaci, pro kterou chcete udělit souhlas správce na úrovni tenanta.
 4. Vyberte **oprávnění rozhraní API** a pak klikněte na **udělit souhlas správce**.

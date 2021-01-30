@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 1/17/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 2ab1b5ae87cee6265c965c45b706c7fbf10dfe3f
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: c8a5666d373852da5ff79490f435b2d66d5cc6e0
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98702950"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090362"
 ---
 # <a name="tutorial-configure-keyless-with-azure-active-directory-b2c"></a>Kurz: konfigurace bez klíčů pomocí Azure Active Directory B2C
 
@@ -50,7 +50,7 @@ V následujícím diagramu architektury se zobrazuje implementace.
 
 ![Obrázek znázorňuje diagram architektury bez klíčů](./media/partner-keyless/keyless-architecture-diagram.png)
 
-|Krok | Popis |
+|Krok | Description |
 |:-----| :-----------|
 | 1. | Uživatel dorazí na přihlašovací stránku. Uživatelé vyberou přihlášení, zaregistrují se a vstoupí do uživatelského jména.
 | 2. | Aplikace pošle atributy uživatele Azure AD B2C k ověření identity.
@@ -86,7 +86,7 @@ Pokud chcete nakonfigurovat poskytovatele identity, postupujte takto:
    |Vlastnost | Hodnota |
    |:-----| :-----------|
    | Název   | Bez klíčů |
-   | Adresa URL metadat | Vložte identifikátor URI hostované aplikace bez klíčů Authentication následovaný konkrétní cestou, například https://keyless.auth/.well-known/openid-configuration |
+   | Adresa URL metadat | Vložte identifikátor URI hostované aplikace bez klíčů Authentication, po které následuje konkrétní cesta, například ' https://keyless.auth/.well-known/openid-configuration '. |
    | Tajný klíč klienta | Tajný kód přidružený k instanci ověřování bez klíčů – není stejný jako nakonfigurovaný předtím. Vložte složitý řetězec podle vašeho výběru. Tento tajný klíč se použije později v konfiguraci kontejneru bez klíčů.|
    | ID klienta | ID klienta Toto ID se použije později v konfiguraci kontejneru bez klíčů.|
    | Obor | OpenID |

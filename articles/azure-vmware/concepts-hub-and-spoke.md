@@ -3,12 +3,12 @@ title: Koncept – integrace nasazení řešení Azure VMware v architektuře hu
 description: Přečtěte si o integraci nasazení řešení Azure VMware v architektuře hub a paprsků v Azure.
 ms.topic: conceptual
 ms.date: 10/26/2020
-ms.openlocfilehash: 0d511c8d6a96ffb6fa666bcb7c989764f398bdc9
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: bfc442e569572349b1323500fbd0b2f912ebbc62
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901381"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062741"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>Integrace řešení Azure VMware v architektuře hub a paprsků
 
@@ -76,7 +76,7 @@ Vzhledem k tomu, že brána ExpressRoute neposkytuje tranzitivní směrování m
   :::image type="content" source="./media/hub-spoke/azure-vmware-solution-hub-vnet-traffic-flow.png" alt-text="Tok provozu řešení Azure VMware do centra přenosů dat virtuální sítě" border="false" lightbox="./media/hub-spoke/azure-vmware-solution-hub-vnet-traffic-flow.png":::
 
 
-Další podrobnosti o sítích řešení Azure VMware a konceptech připojení najdete v dokumentaci k [produktu řešení Azure VMware](./concepts-networking.md).
+Další informace o sítích řešení Azure VMware a konceptech připojení najdete v [dokumentaci k produktu řešení Azure VMware](./concepts-networking.md).
 
 ### <a name="traffic-segmentation"></a>Segmentace provozu
 
@@ -103,7 +103,7 @@ Druhá úroveň segmentace přenosu dat pomocí skupin zabezpečení sítě v Pa
 
 Azure Application Gateway V1 a v2 byly testovány pomocí webových aplikací, které běží na virtuálních počítačích řešení VMware Azure jako fond back-end. Application Gateway je aktuálně jedinou podporovanou metodou pro vystavení webových aplikací běžících na virtuálních počítačích řešení VMware Azure na internetu. Můžou aplikace bezpečně zveřejnit i pro interní uživatele.
 
-Podrobnosti a požadavky najdete v článku týkajícím se [Application Gateway](./protect-azure-vmware-solution-with-application-gateway.md) pro řešení Azure VMware.
+Další informace najdete v článku věnovaném řešení Azure VMware, který je určený pro [Application Gateway](./protect-azure-vmware-solution-with-application-gateway.md).
 
 :::image type="content" source="media/hub-spoke/azure-vmware-solution-second-level-traffic-segmentation.png" alt-text="Druhá úroveň segmentace provozu pomocí skupin zabezpečení sítě" border="false":::
 

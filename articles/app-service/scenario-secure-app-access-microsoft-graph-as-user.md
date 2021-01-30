@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 11/30/2020
+ms.date: 01/28/2021
 ms.author: ryanwi
 ms.reviewer: stsoneff
 ms.custom: azureday1
-ms.openlocfilehash: e07ec17a4e14f0099d82bd444f2ee8d37abe9908
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 3413c1a3f27b48c60ae730ad230c653928702faa
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96434987"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063379"
 ---
 # <a name="tutorial-access-microsoft-graph-from-a-secured-app-as-the-user"></a>Kurz: přístup k Microsoft Graph z zabezpečené aplikace jako uživatel
 
@@ -85,7 +85,7 @@ Pokud chcete tento kód zobrazit jako součást ukázkové aplikace, podívejte 
 
 ### <a name="install-client-library-packages"></a>Nainstalovat balíčky klientské knihovny
 
-Do projektu nainstalujte balíčky [Microsoft. identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web/) a [Microsoft. Graph](https://www.nuget.org/packages/Microsoft.Graph) NuGet pomocí rozhraní příkazového řádku .NET Core nebo konzoly Správce balíčků v aplikaci Visual Studio.
+Pomocí rozhraní příkazového řádku .NET Core nebo konzoly Správce balíčků v aplikaci Visual Studio nainstalujte do svého projektu balíčky NuGet [Microsoft. identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web/) a [Microsoft. identity. Web. MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraph) .
 
 # <a name="command-line"></a>[Příkazový řádek](#tab/command-line)
 
@@ -94,18 +94,18 @@ Otevřete příkazový řádek a přejděte do adresáře, který obsahuje soubo
 Spusťte příkazy install.
 
 ```dotnetcli
-dotnet add package Microsoft.Graph
+dotnet add package Microsoft.Identity.Web.MicrosoftGraph
 
 dotnet add package Microsoft.Identity.Web
 ```
 
 # <a name="package-manager"></a>[Správce balíčků](#tab/package-manager)
 
-Otevřete projekt nebo řešení v aplikaci Visual Studio a otevřete konzolu pomocí **Tools**  >  příkazu **Správce balíčků NuGet správce** balíčků nástroje  >  **Package Manager Console** .
+Otevřete projekt nebo řešení v aplikaci Visual Studio a otevřete konzolu pomocí   >  příkazu **Správce balíčků NuGet správce** balíčků nástroje  >   .
 
 Spusťte příkazy install.
 ```powershell
-Install-Package Microsoft.Graph
+Install-Package Microsoft.Identity.Web.MicrosoftGraph
 
 Install-Package Microsoft.Identity.Web
 ```

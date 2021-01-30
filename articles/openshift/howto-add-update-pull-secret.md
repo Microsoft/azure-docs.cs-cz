@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/21/2020
 keywords: tajný kód pro vyžádání obsahu, ARO, OpenShift, Red Hat
-ms.openlocfilehash: 769b7589fb6496fc2f4123665ad1f6fe61d0cce2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b1a8e45a2eab1b7b4c8a5936049f404d5bd3441c
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89294743"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071082"
 ---
 # <a name="add-or-update-your-red-hat-pull-secret-on-an-azure-red-hat-openshift-4-cluster"></a>Přidání nebo aktualizace tajného kódu pro vyžádání Red Hat v clusteru Azure Red Hat OpenShift 4
 
@@ -231,6 +231,6 @@ Pokud nevidíte certifikované operátory a operátory Red Hat, počkejte pár m
 Aby se zajistilo, že se váš tajný kód pro vyžádání aktualizace aktualizoval a funguje správně, otevřete OperatorHub a vyhledejte všechny ověřené operátory Red Hat. Například zkontrolujte, zda je k dispozici operátor úložiště kontejneru OpenShift, a zkontrolujte, zda máte oprávnění k instalaci.
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o tajných klíčích pro vyžádání Red Hat najdete v tématu [použití tajných kódů pro vyžádání obrazu](https://docs.openshift.com/container-platform/4.5/openshift_images/managing_images/using-image-pull-secrets.html).
+Další informace o tajných klíčích pro vyžádání Red Hat najdete v tématu [použití tajných kódů pro vyžádání obrazu](https://docs.openshift.com/container-platform/4.6/openshift_images/managing_images/using-image-pull-secrets.html).
 
-Další informace o Red Hat OpenShift 4 najdete v tématu [Azure Red Hat OpenShift 4](https://docs.openshift.com/aro/4/welcome/index.html).
+Další informace o Red Hat OpenShift 4 najdete v [dokumentaci k platformě Red Hat OpenShift Container Platform](https://docs.openshift.com/container-platform/4.6/welcome/index.html).

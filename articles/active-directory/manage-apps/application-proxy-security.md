@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 794c4e1a0859fc8a36b0abf4fcc9d5243c8bd308
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: b1c0e91b08fff80c0308c0ead5fabce903421adc
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94649564"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090116"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Otázky zabezpečení při vzdáleném přístupu k aplikacím pomocí Azure Proxy aplikací služby AD
 
@@ -108,7 +108,7 @@ Konektor používá klientský certifikát k ověřování pro službu proxy apl
 Při prvním nastavení konektoru dochází k následujícím událostem toku:
 
 1. K registraci konektoru služby dochází jako součást instalace konektoru. Uživatelům se zobrazí výzva k zadání přihlašovacích údajů správce Azure AD. Token získaný z tohoto ověřování se pak zobrazí službě Azure Proxy aplikací služby AD.
-2. Služba proxy aplikací vyhodnocuje token. Kontroluje, zda je uživatel správcem společnosti v tenantovi. Pokud uživatel není správcem, proces se ukončí.
+2. Služba proxy aplikací vyhodnocuje token. Kontroluje, zda je uživatel globálním správcem v tenantovi. Pokud uživatel není správcem, proces se ukončí.
 3. Konektor vygeneruje žádost o certifikát klienta a předá ho spolu s tokenem do služby proxy aplikací. Služba zase ověří token a podepíše žádost o certifikát klienta.
 4. Konektor používá klientský certifikát pro budoucí komunikaci s proxy službou aplikace.
 5. Konektor provádí počáteční načtení dat konfigurace systému ze služby pomocí jejího klientského certifikátu a je nyní připraven k přijetí požadavků.

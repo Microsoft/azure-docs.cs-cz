@@ -3,20 +3,19 @@ title: Vytvoření a načtení atributů klíče v Azure Key Vault – Azure CLI
 description: Rychlý Start ukazující, jak nastavit a načíst klíč z Azure Key Vault pomocí Azure CLI
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
-ms.date: 03/30/2020
+ms.date: 01/27/2021
 ms.author: mbaldwin
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8da5e86362f41322102c3b5316df5743e0c2458f
-ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
+ms.openlocfilehash: 4141e60370b397e799664b7d42384bbeb096bd05
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97976979"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071167"
 ---
 # <a name="quickstart-set-and-retrieve-a-key-from-azure-key-vault-using-azure-cli"></a>Rychlý Start: nastavení a načtení klíče z Azure Key Vault pomocí rozhraní příkazového řádku Azure
 
@@ -30,30 +29,11 @@ V tomto rychlém startu vytvoříte Trezor klíčů v Azure Key Vault pomocí Az
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Následující příklad vytvoří skupinu prostředků *ContosoResourceGroup* v umístění *eastus*.
+[!INCLUDE [Create a resource group](../../../includes/key-vault-cli-rg-creation.md)]
 
-```azurecli
-az group create --name "ContosoResourceGroup" --location eastus
-```
+## <a name="create-a-key-vault"></a>Vytvořte trezor klíčů.
 
-## <a name="create-a-key-vault"></a>Vytvoření trezoru klíčů
-
-Dále ve skupině prostředků vytvořené v předchozím kroku vytvoříte službu Key Vault. Budete muset zadat několik informací:
-
-- V tomto rychlém startu používáme **Contoso-vault2**. Pro své testování musíte zadat jedinečný název.
-- Název skupiny prostředků **ContosoResourceGroup**
-- Umístění **USA – východ**
-
-```azurecli
-az keyvault create --name "Contoso-Vault2" --resource-group "ContosoResourceGroup" --location eastus
-```
-
-Výstup této rutiny zobrazuje vlastnosti nově vytvořené služby Key Vault. Poznamenejte si hodnoty dvou vlastností uvedených níže:
-
-- **Název trezoru:** V tomto příkladu je to **Contoso-Vault2**. Tento název budete používat pro další příkazy Key Vault.
-- **Identifikátor URI trezoru:** V tomto příkladu je to https://contoso-vault2.vault.azure.net/. Aplikace, které používají váš trezor prostřednictvím REST API musí používat tento identifikátor URI.
-
-V tuto chvíli je váš účet Azure jediným účtem s oprávněním provádět jakékoli operace s tímto novým trezorem.
+[!INCLUDE [Create a key vault](../../../includes/key-vault-cli-kv-creation.md)]
 
 ## <a name="add-a-key-to-key-vault"></a>Přidat klíč pro Key Vault
 
@@ -62,33 +42,28 @@ Pokud chcete do trezoru přidat klíč, stačí provést několik dalších krok
 Zadáním následujících příkazů vytvořte klíč s názvem **ExampleKey** :
 
 ```azurecli
-az keyvault key create --vault-name "Contoso-Vault2" -n ExampleKey --protection software
+az keyvault key create --vault-name "<your-unique-keyvault-name>" -n ExampleKey --protection software
 ```
 
-Nyní můžete odkazovat na tento klíč, který jste přidali do Azure Key Vault pomocí jeho identifikátoru URI. K získání aktuální verze použijte ' **https://Contoso-Vault2.vault.azure.net/keys/ExampleKey '** . 
+Nyní můžete odkazovat na tento klíč, který jste přidali do Azure Key Vault pomocí jeho identifikátoru URI. K získání aktuální verze použijte **https://<pro název trezoru klíčů,>. Vault.Azure.NET/Keys/ExampleKey.** 
 
 Postup zobrazení dříve uloženého klíče:
 
 ```azurecli
 
-az keyvault key show --name "ExampleKey" --vault-name "Contoso-Vault2"
+az keyvault key show --name "ExampleKey" --vault-name "<your-unique-keyvault-name>"
 ```
 
 Nyní jste vytvořili Key Vault, uložili klíč a načetli jste ho.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Další rychlé starty a kurzy v této kolekci vycházejí z tohoto rychlého startu. Pokud chcete pokračovat v práci s dalšími rychlými starty a kurzy, možná budete chtít tyto prostředky zachovat.
-Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků a všech souvisejících prostředků použít příkaz [az group delete](/cli/azure/group). Prostředky můžete odstranit následujícím způsobem:
-
-```azurecli
-az group delete --name ContosoResourceGroup
-```
+[!INCLUDE [Create a key vault](../../../includes/key-vault-cli-delete-resources.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste vytvořili Key Vault a v něm jste uložili klíč. Další informace o Key Vault a o tom, jak je integrovat s vašimi aplikacemi, najdete dál v článcích níže.
 
 - Přečtěte si [přehled Azure Key Vault](../general/overview.md)
-- Podívejte se na referenční informace pro [Azure CLI AZ klíčů trezor](/cli/azure/keyvault?view=azure-cli-latest) .
+- Podívejte se na referenční informace pro [Azure CLI AZ klíčů trezor](/cli/azure/keyvault) .
 - Přečtěte si [Přehled zabezpečení Key Vault](../general/security-overview.md)

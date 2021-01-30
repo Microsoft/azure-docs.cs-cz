@@ -3,12 +3,12 @@ title: Vytvoření nového prostředku založeného na pracovním prostoru Azure
 description: Přečtěte si o krocích požadovaných k povolení nových Azure Monitorch Application Insightsch prostředků založených na pracovních prostorech.
 ms.topic: conceptual
 ms.date: 10/06/2020
-ms.openlocfilehash: f1cc7db7eea4485ad40062a0e11a76dc14234b41
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 23994190df89b47d9c7e90ed62a724545389b1fe
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98956037"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063362"
 ---
 # <a name="workspace-based-application-insights-resources"></a>Prostředky Application Insights založené na pracovním prostoru
 
@@ -33,8 +33,8 @@ Application Insights na základě pracovního prostoru vám umožní využít v�
 
 Přihlaste se k [Azure Portal](https://portal.azure.com)a vytvořte prostředek Application Insights:
 
-[!div class="mx-imgBorder"]
-![Prostředek Application Insights založený na pracovním prostoru](./media/create-workspace-resource/create-workspace-based.png)
+> [!div class="mx-imgBorder"]
+> ![Prostředek Application Insights založený na pracovním prostoru](./media/create-workspace-resource/create-workspace-based.png)
 
 Pokud ještě nemáte existující Log Analytics pracovní prostor, [Projděte si dokumentaci k vytváření pracovních prostorů Log Analytics](../learn/quick-create-workspace.md).
 

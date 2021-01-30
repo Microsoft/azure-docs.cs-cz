@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 07/31/2020
-ms.openlocfilehash: 3a474228776c689dbbd6f15ddd926f29383400ce
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 69417945bcd5234a0e5e8d2d6aee42859bc95c20
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964707"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071048"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Nejčastější dotazy k Azure Red Hat OpenShift
 
@@ -41,7 +41,7 @@ Azure Red Hat OpenShift 3,11 má limit 50 pod uzlem a 20 omezení výpočetních
 
 ### <a name="can-a-cluster-have-compute-nodes-across-multiple-azure-regions"></a>Může cluster počítat výpočetní uzly napříč několika oblastmi Azure?
 
-Ne. Všechny uzly v clusteru Azure Red Hat OpenShift musí pocházet ze stejné oblasti Azure.
+No. Všechny uzly v clusteru Azure Red Hat OpenShift musí pocházet ze stejné oblasti Azure.
 
 ### <a name="can-a-cluster-be-deployed-across-multiple-availability-zones"></a>Dá se cluster nasadit napříč několika zónami dostupnosti?
 
@@ -49,7 +49,7 @@ Ano. K tomu dojde automaticky v případě, že je váš cluster nasazený do ob
 
 ### <a name="are-control-plane-nodes-abstracted-away-as-they-are-with-azure-kubernetes-service-aks"></a>Jsou uzly řídicí plochy abstraktní, protože se jedná o službu Azure Kubernetes Service (AKS)?
 
-Ne. Všechny prostředky, včetně hlavních uzlů clusteru, se spouštějí v rámci zákaznického předplatného. Tyto typy prostředků jsou vloženy do skupiny prostředků jen pro čtení.
+No. Všechny prostředky, včetně hlavních uzlů clusteru, se spouštějí v rámci zákaznického předplatného. Tyto typy prostředků jsou vloženy do skupiny prostředků jen pro čtení.
 
 ### <a name="does-the-cluster-reside-in-a-customer-subscription"></a>Je cluster umístěn v rámci předplatného zákazníka? 
 
@@ -81,7 +81,7 @@ Uzly se restartují jako součást upgradu.
 
 ### <a name="can-i-use-prometheus-to-monitor-my-applications"></a>Můžu použít Prometheus k monitorování mých aplikací?
 
-Prometheus je součástí předinstalovaného a nakonfigurovaného pro clustery Azure Red Hat OpenShift 4. x. Přečtěte si další informace o [monitorování clusteru](https://docs.openshift.com/container-platform/3.11/install_config/prometheus_cluster_monitoring.html).
+Prometheus je součástí předinstalovaného a nakonfigurovaného pro clustery Azure Red Hat OpenShift 4. x. Přečtěte si další informace o [monitorování clusteru](https://docs.openshift.com/container-platform/4.6/operators/operator_sdk/osdk-monitoring-prometheus.html).
 
 Pro clustery Azure Red Hat OpenShift 3,11 můžete v oboru názvů nasadit Prometheus a monitorovat aplikace ve vašem oboru názvů. Další informace najdete v tématu [nasazení instance Prometheus v clusteru Azure Red Hat OpenShift](howto-deploy-prometheus.md).
 
@@ -97,7 +97,7 @@ Protokoly z podkladových virtuálních počítačů jsou zpracovávány spravov
 
 ### <a name="how-can-a-customer-get-access-to-metrics-like-cpumemory-at-the-node-level-to-take-action-to-scale-debug-issues-etc-i-cannot-seem-to-run-kubectl-top-on-an-azure-red-hat-openshift-cluster"></a>Jak může zákazník získat přístup k metrikám, jako je CPU/paměť na úrovni uzlu, aby bylo možné provést akci škálování, problémů ladění atd.? Nemůžu spustit kubectl v clusteru Azure Red Hat OpenShift.
 
-Pro clustery Azure Red Hat OpenShift 4. x obsahuje webová konzola OpenShift všechny metriky na úrovni uzlu. Další informace najdete v dokumentaci k Red Hat o [zobrazení informací o clusteru](https://docs.openshift.com/aro/4/web_console/using-dashboard-to-get-cluster-information.html).
+Pro clustery Azure Red Hat OpenShift 4. x obsahuje webová konzola OpenShift všechny metriky na úrovni uzlu. Další informace najdete v dokumentaci k Red Hat o [zobrazení informací o clusteru](https://docs.openshift.com/container-platform/4.6/web_console/using-dashboard-to-get-cluster-information.html).
 
 Pro clustery Azure Red Hat OpenShift 3,11 můžou zákazníci získat přístup k metrikám CPU nebo paměti na úrovni uzlu pomocí příkazu `oc adm top nodes` nebo `kubectl top nodes` s rolí clusteru Customer-admin. Zákazníci můžou k metrikám CPU nebo paměti přistoupit také `pods` pomocí příkazu `oc adm top pods` nebo `kubectl top pods` .
 
@@ -116,14 +116,14 @@ Při použití určitých popisků se musí použít upozornění:
 - Název hostitele nesmí být použit. Název hostitele se často otáčí s upgrady a aktualizacemi a má zaručenou změnu.
 - Pokud zákazník obsahuje požadavek na konkrétní štítky nebo strategii nasazení, může to být dosaženo, ale vyžaduje technické úsilí a ještě dnes není podporovaný.
 
-Další informace najdete v tématu [řízení umístění pod](https://docs.openshift.com/aro/4/nodes/scheduling/nodes-scheduler-about.html).
+Další informace najdete v tématu [řízení umístění pod](https://docs.openshift.com/container-platform/4.6/nodes/scheduling/nodes-scheduler-about.html).
 
 ### <a name="is-the-image-registry-available-externally-so-i-can-use-tools-such-as-jenkins"></a>Je registr image externě dostupný, takže můžu používat nástroje, jako je Jenkinse?
 
 U clusterů 4. x je nutné vystavit zabezpečený registr a nakonfigurovat ověřování. Další informace najdete v následující dokumentaci k Red Hat:
 
-- [Zveřejňuje se registr.](https://docs.openshift.com/aro/4/registry/securing-exposing-registry.html)
-- [Přístup k registru](https://docs.openshift.com/aro/4/registry/accessing-the-registry.html)
+- [Zveřejňuje se registr.](https://docs.openshift.com/container-platform/4.6/registry/securing-exposing-registry.html)
+- [Přístup k registru](https://docs.openshift.com/container-platform/4.6/registry/accessing-the-registry.html)
 
 V případě clusterů 3,11 je k dispozici registr Docker image. Registr Docker je k dispozici z `https://docker-registry.apps.<clustername>.<region>.azmosa.io/` . Můžete také použít Azure Container Registry.
 
@@ -181,24 +181,24 @@ oc adm policy \
 
 Další informace najdete v dokumentaci OpenShift o zakázání samoobslužného zřizování pro vaši verzi clusteru:
 
-- [Zakázání samoobslužného zřizování v clusterech 4,3](https://docs.openshift.com/aro/4/applications/projects/configuring-project-creation.html#disabling-project-self-provisioning_configuring-project-creation)
+- [Zakázání samoobslužného zřizování v clusterech 4,6](https://docs.openshift.com/container-platform/4.6/applications/projects/configuring-project-creation.html#disabling-project-self-provisioning_configuring-project-creation)
 - [Zakázání samoobslužného zřizování v clusterech 3,11](https://docs.openshift.com/container-platform/3.11/admin_guide/managing_projects.html#disabling-self-provisioning)
 
 ### <a name="which-unix-rights-in-iaas-are-available-for-mastersinfraapp-nodes"></a>Která práva systému UNIX (v IaaS) jsou k dispozici pro uzly Master/infrastruktura/aplikace?
 
-V případě clusterů 4. x je přístup k uzlu dostupný prostřednictvím role Správce clusteru. Další informace najdete v tématu [Přehled KUBERNETES RBAC](https://docs.openshift.com/container-platform/4.3/authentication/using-rbac.html).
+V případě clusterů 4. x je přístup k uzlu dostupný prostřednictvím role Správce clusteru. Další informace najdete v tématu [Přehled KUBERNETES RBAC](https://docs.openshift.com/container-platform/4.6/authentication/using-rbac.html).
 
 V případě clusterů 3,11 je přístup k uzlu zakázán.
 
 ### <a name="which-ocp-rights-do-we-have-cluster-admin-project-admin"></a>Jaká práva OCP máme? Správce clusteru? Projekt – správce?
 
-Pro clustery s frekvencí 4. x je k dispozici role Správce clusteru. Další informace najdete v tématu [Přehled KUBERNETES RBAC](https://docs.openshift.com/container-platform/4.3/authentication/using-rbac.html).
+Pro clustery s frekvencí 4. x je k dispozici role Správce clusteru. Další informace najdete v tématu [Přehled KUBERNETES RBAC](https://docs.openshift.com/container-platform/4.6/authentication/using-rbac.html).
 
 Clustery 3,11 najdete v tématu [Přehled správy clusteru](https://docs.openshift.com/aro/admin_guide/index.html) , kde najdete další podrobnosti.
 
 ### <a name="which-identity-providers-are-available"></a>Kteří zprostředkovatelé identity jsou k dispozici?
 
-U clusterů 4. x nakonfigurujete vlastního poskytovatele identity. Další informace najdete v dokumentaci k Red Hat týkající se [Konfigurace identity prodivers](https://docs.openshift.com/aro/4/authentication/identity_providers/configuring-ldap-identity-provider.html).
+U clusterů 4. x nakonfigurujete vlastního poskytovatele identity. Další informace najdete v dokumentaci k Red Hat týkající se [Konfigurace zprostředkovatelů identity](https://docs.openshift.com/container-platform/4.6/authentication/identity_providers/configuring-ldap-identity-provider.html).
 
 Pro clustery 3,11 můžete použít integraci Azure AD. 
 
@@ -210,16 +210,16 @@ Ve výchozím nastavení jsou data v klidovém stavu šifrovaná. Platforma Azur
 
 ### <a name="is-data-stored-in-etcd-encrypted-on-azure-red-hat-openshift"></a>Jsou data uložená v etcd zašifrovaná na Azure Red Hat OpenShift?
 
-Pro clustery Azure Red Hat OpenShift 4 nejsou data ve výchozím nastavení zašifrovaná, ale máte možnost povolit šifrování. Další informace najdete v příručce k [šifrování etcd](https://docs.openshift.com/container-platform/4.3/authentication/encrypting-etcd.html).
+Pro clustery Azure Red Hat OpenShift 4 nejsou data ve výchozím nastavení zašifrovaná, ale máte možnost povolit šifrování. Další informace najdete v příručce k [šifrování etcd](https://docs.openshift.com/container-platform/4.6/security/encrypting-etcd.html).
 
 V případě clusterů 3,11 nejsou data na úrovni etcd šifrovaná. Možnost zapnout šifrování není momentálně podporovaná. OpenShift podporuje tuto funkci, ale k jejímu vytváření na mapě se vyžadují technické úsilí. Data se šifrují na úrovni disku. Další informace najdete [v tématu šifrování dat ve vrstvě úložiště dat](https://docs.openshift.com/container-platform/3.11/admin_guide/encrypting_data.html) .
 
 ### <a name="can-we-choose-any-persistent-storage-solution-like-ocs"></a>Můžeme zvolit trvalé řešení úložiště, jako je třeba OCS? 
 
-Pro clustery 4. x je disk Azure (Premium_LRS) nakonfigurovaný jako výchozí třída úložiště. Další poskytovatele úložiště a podrobnosti o konfiguraci (včetně souboru Azure) najdete v dokumentaci k Red Hat v [trvalém úložišti](https://docs.openshift.com/aro/4/storage/understanding-persistent-storage.html).
+Pro clustery 4. x je disk Azure (Premium_LRS) nakonfigurovaný jako výchozí třída úložiště. Další poskytovatele úložiště a podrobnosti o konfiguraci (včetně souboru Azure) najdete v dokumentaci k Red Hat v [trvalém úložišti](https://docs.openshift.com/container-platform/4.6/storage/understanding-persistent-storage.html).
 
 Pro clustery 3,11 jsou ve výchozím nastavení k dispozici dvě třídy úložiště: jeden pro disk Azure (Premium_LRS) a jeden pro soubor Azure.
 
 ## <a name="does-aro-store-any-customer-data-outside-of-the-clusters-region"></a>Ukládá ARO všechna zákaznická data mimo oblast clusteru?
 
-Ne. Všechna data vytvořená v clusteru ARO se udržují v rámci oblasti clusteru.
+No. Všechna data vytvořená v clusteru ARO se udržují v rámci oblasti clusteru.

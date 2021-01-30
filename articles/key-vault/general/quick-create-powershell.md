@@ -3,19 +3,18 @@ title: Rychlý Start – vytvoření Azure Key Vault s využitím Azure PowerShe
 description: Rychlý Start ukazující, jak vytvořit Azure Key Vault pomocí Azure PowerShell
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: quickstart
-ms.date: 12/08/2020
+ms.date: 01/27/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 73d247464f167040c6f7129bdf7014b877317fc5
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: e77493bc73bc2d6f590d9bdcf891171fbd71f74e
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936256"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99070182"
 ---
 # <a name="quickstart-create-a-key-vault-using-powershell"></a>Rychlý Start: vytvoření trezoru klíčů pomocí PowerShellu
 
@@ -33,44 +32,15 @@ Login-AzAccount
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte skupinu prostředků Azure pomocí [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. 
-
-```azurepowershell-interactive
-New-AzResourceGroup -Name 'myResourceGroup" -Location "EastUS"
-```
+[!INCLUDE [Create a resource group](../../../includes/key-vault-powershell-rg-creation.md)]
 
 ## <a name="create-a-key-vault"></a>Vytvořte trezor klíčů.
 
-Ve skupině prostředků z předchozího kroku vytvořte Key Vault. Budete muset zadat několik informací:
-
-- Název trezoru klíčů: řetězec na 3 až 24 znaků, který může obsahovat jenom číslice (0-9), písmena (A-z, A-Z) a spojovníky (-).
-
-  > [!Important]
-  > Každý Trezor klíčů musí mít jedinečný název. V následujících příkladech nahraďte <název trezoru klíčů jedinečných> s názvem vašeho trezoru klíčů.
-
-- Název skupiny prostředků: **myResourceGroup**.
-- Umístění: **EastUS**.
-
-```azurepowershell-interactive
-New-AzKeyVault -Name "<your-unique-key-vault-name>" -ResourceGroupName "myResourceGroup" -Location "East US"
-```
-
-Výstup této rutiny zobrazuje vlastnosti nově vytvořeného trezoru klíčů. Poznamenejte si hodnoty dvou vlastností uvedených níže:
-
-- **Název trezoru**: název, který jste zadali do parametru--name výše.
-- **Identifikátor URI trezoru**: v tomto příkladu se jedná o https://<název trezoru klíčů>. Vault.Azure.NET/. Aplikace, které používají váš trezor prostřednictvím REST API musí používat tento identifikátor URI.
-
-V tuto chvíli je váš účet Azure jediným účtem s oprávněním provádět jakékoli operace s tímto novým trezorem.
+[!INCLUDE [Create a key vault](../../../includes/key-vault-powershell-kv-creation.md)]
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Další rychlé starty a kurzy v této kolekci vycházejí z tohoto rychlého startu. Pokud chcete pokračovat v práci s dalšími rychlými starty a kurzy, možná budete chtít tyto prostředky zachovat.
-
-Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků a všech souvisejících prostředků použít příkaz Azure PowerShell [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) .
-
-```azurepowershell-interactive
-Remove-AzResourceGroup -Name "myResourceGroup"
-```
+[!INCLUDE [Create a key vault](../../../includes/key-vault-powershell-delete-resources.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

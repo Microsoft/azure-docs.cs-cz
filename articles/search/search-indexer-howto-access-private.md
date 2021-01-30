@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: ff8aa6688d8a838fa2e06d2eef546025cdd9213f
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 762db9d165358f3347fc9b7f3aaaf39f0c762308
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340049"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063192"
 ---
 # <a name="make-indexer-connections-through-a-private-endpoint"></a>Vytvoření připojení indexeru prostřednictvím privátního koncového bodu
 
@@ -47,7 +47,7 @@ V následující tabulce jsou uvedeny prostředky Azure, pro které můžete vyt
 
 Pomocí [seznamu podporovaných rozhraní API](/rest/api/searchmanagement/privatelinkresources/listsupported)můžete také zadat dotaz na prostředky Azure, pro které jsou připojení odchozího koncového bodu podporovaná.
 
-Ve zbývající části tohoto článku se k předvedení REST API volání používají kombinace rozhraní API pro [ARMClient](https://github.com/projectkudu/ARMClient) a [post](https://www.postman.com/) .
+Ve zbývající části tohoto článku se k předvedení REST API volání používají kombinace rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/) (nebo [ARMClient](https://github.com/projectkudu/ARMClient) , pokud dáváte přednost) a [post](https://www.postman.com/) (nebo jiného klienta http, jako je například [kudrlinkou](https://curl.se/) ).
 
 > [!NOTE]
 > Příklady v tomto článku jsou založené na následujících předpokladech:
@@ -69,7 +69,11 @@ Nakonfigurujte účet úložiště tak, aby [povoloval přístup jenom z konkré
 
 ### <a name="step-1-create-a-shared-private-link-resource-to-the-storage-account"></a>Krok 1: vytvoření sdíleného prostředku privátního propojení s účtem úložiště
 
-Pokud chcete pro Azure Kognitivní hledání požádat o vytvoření odchozího připojení privátního koncového bodu k účtu úložiště, udělejte toto volání rozhraní API: 
+Pokud chcete pro Azure Kognitivní hledání požádat o vytvoření odchozího připojení privátního koncového bodu k účtu úložiště, udělejte toto volání rozhraní API, například pomocí [Azure CLI](https://docs.microsoft.com/cli/azure/): 
+
+`az rest --method put --uri https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search/sharedPrivateLinkResources/blob-pe?api-version=2020-08-01 --body @create-pe.json`
+
+Nebo pokud dáváte přednost použití [ARMClient](https://github.com/projectkudu/ARMClient):
 
 `armclient PUT https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search/sharedPrivateLinkResources/blob-pe?api-version=2020-08-01 create-pe.json`
 
@@ -100,6 +104,10 @@ Stejně jako u všech asynchronních operací Azure `PUT` vrátí volání `Azur
 
 Tento identifikátor URI můžete pravidelně dotazovat, aby se získal stav operace. Než budete pokračovat, doporučujeme počkat, dokud stav operace sdíleného privátního propojení nedosáhne stavu terminálu (to znamená, že stav operace je *úspěšný*).
 
+`az rest --method get --uri https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search/sharedPrivateLinkResources/blob-pe/operationStatuses/08586060559526078782?api-version=2020-08-01`
+
+Nebo pomocí ARMClient:
+
 `armclient GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search/sharedPrivateLinkResources/blob-pe/operationStatuses/08586060559526078782?api-version=2020-08-01"`
 
 ```json
@@ -119,7 +127,7 @@ Tento identifikátor URI můžete pravidelně dotazovat, aby se získal stav ope
 
    ![Snímek obrazovky Azure Portal se zobrazením okna připojení privátního koncového bodu.](media\search-indexer-howto-secure-access\storage-privateendpoint-approval.png)
 
-1. Vyberte privátní koncový bod, který služba Azure Kognitivní hledání vytvořila. Ve sloupci **privátní koncový bod** Identifikujte připojení privátního koncového bodu názvem zadaným v předchozím rozhraní API, vyberte **schválit**a pak zadejte příslušnou zprávu. Obsah zprávy není významný. 
+1. Vyberte privátní koncový bod, který služba Azure Kognitivní hledání vytvořila. Ve sloupci **privátní koncový bod** Identifikujte připojení privátního koncového bodu názvem zadaným v předchozím rozhraní API, vyberte **schválit** a pak zadejte příslušnou zprávu. Obsah zprávy není významný. 
 
    Zajistěte, aby se připojení privátního koncového bodu zobrazovalo na následujícím snímku obrazovky. Aktualizace stavu na portálu může trvat jednu až dvě minuty.
 
@@ -130,6 +138,10 @@ Po schválení žádosti o připojení privátního koncového bodu se provoz *m
 ### <a name="step-2b-query-the-status-of-the-shared-private-link-resource"></a>Krok 2b: dotaz na stav sdíleného prostředku privátního propojení
 
 Pokud chcete ověřit, že se prostředek sdíleného privátního propojení aktualizoval po schválení, získejte jeho stav pomocí [rozhraní Get API](/rest/api/searchmanagement/sharedprivatelinkresources/get).
+
+`az rest --method get --uri https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search/sharedPrivateLinkResources/blob-pe?api-version=2020-08-01`
+
+Nebo pomocí ARMClient:
 
 `armclient GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search/sharedPrivateLinkResources/blob-pe?api-version=2020-08-01`
 
@@ -178,7 +190,7 @@ Pokud je v `properties.provisioningState` prostředku `Succeeded` a je to `prope
 - Pokud vytvoříte indexer bez nastavení jeho `executionEnvironment` vlastnosti, vytvoření může být úspěšné, ale jeho historie provádění zobrazí, že indexer běží neúspěšně. Chcete-li tento problém vyřešit:
    * [Aktualizujte indexer](/rest/api/searchservice/update-indexer) a určete spouštěcí prostředí.
 
-- Pokud jste indexer vytvořili bez nastavování `executionEnvironment` vlastnosti a úspěšně se spustí, znamená to, že služba Azure kognitivní hledání rozhodla, že se jedná o příslušné prostředí pro spuštění, *private* které je specifické pro vyhledávací službu. To se může změnit v závislosti na prostředcích spotřebovaných indexerem, zatížení služby vyhledávání a dalších faktorech a může selhat později. Chcete-li tento problém vyřešit:
+- Pokud jste indexer vytvořili bez nastavování `executionEnvironment` vlastnosti a úspěšně se spustí, znamená to, že služba Azure kognitivní hledání rozhodla, že se jedná o příslušné prostředí pro spuštění,  které je specifické pro vyhledávací službu. To se může změnit v závislosti na prostředcích spotřebovaných indexerem, zatížení služby vyhledávání a dalších faktorech a může selhat později. Chcete-li tento problém vyřešit:
   * Důrazně doporučujeme nastavit `executionEnvironment` vlastnost na, aby `private` se zajistilo, že v budoucnu nebude úspěšná.
 
 [Kvóty a omezení](search-limits-quotas-capacity.md) určují, kolik sdílených prostředků privátních propojení lze vytvořit a závisí na SKU vyhledávací služby.

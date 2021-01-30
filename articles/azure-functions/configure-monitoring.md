@@ -4,12 +4,12 @@ description: Naučte se, jak připojit aplikaci Function App k Application Insig
 ms.date: 8/31/2020
 ms.topic: how-to
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 73ed679288d9d03b81a0b01670aa0f574a14839f
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: e24f2b1a61d77dafd7a23b04d225d0301f82ca59
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684704"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99070136"
 ---
 # <a name="how-to-configure-monitoring-for-azure-functions"></a>Postup konfigurace monitorování pro Azure Functions
 
@@ -246,7 +246,7 @@ Když zvolíte **vytvořit**, vytvoří se prostředek Application Insights s ap
 <a id="manually-connect-an-app-insights-resource"></a>
 ### <a name="add-to-an-existing-function-app"></a>Přidat do existující aplikace Function App 
 
-Pokud se ve vaší aplikaci Function App nevytvořily prostředky Application Insights, vytvořte prostředek pomocí následujícího postupu. Potom můžete do aplikace Function app přidat klíč instrumentace z tohoto prostředku jako [nastavení aplikace](functions-how-to-use-azure-function-app-settings.md#settings) .
+Pokud se prostředek Application Insights pomocí aplikace Function App nevytvořil, vytvořte prostředek pomocí následujícího postupu. Potom můžete do aplikace Function app přidat klíč instrumentace z tohoto prostředku jako [nastavení aplikace](functions-how-to-use-azure-function-app-settings.md#settings) .
 
 1. V [Azure Portal](https://portal.azure.com)vyhledejte a vyberte **aplikace Function App** a pak zvolte aplikaci Function App. 
 
@@ -271,6 +271,30 @@ Pokud se ve vaší aplikaci Function App nevytvořily prostředky Application In
 
 > [!NOTE]
 > Dřívější verze funkcí používaly integrované monitorování, které se už nedoporučuje. Když povolíte integraci Application Insights pro takovou aplikaci Function App, musíte taky [zakázat integrované protokolování](#disable-built-in-logging).  
+
+## <a name="query-scale-controller-logs"></a>Protokoly řadiče pro škálování dotazů
+
+Po povolení protokolování škálování kontroléru a Application Insights integrace můžete pomocí hledání protokolu Application Insights vyhledat dotaz na vysílané protokoly řadiče pro škálování. Protokoly řadiče škálování se ukládají do `traces` kolekce pod kategorií **ScaleControllerLogs** .
+
+Následující dotaz se dá použít k vyhledání všech protokolů řadiče škálování pro aktuální aplikaci Function App během zadaného časového období:
+
+```kusto
+traces 
+| extend CustomDimensions = todynamic(tostring(customDimensions))
+| where CustomDimensions.Category == "ScaleControllerLogs"
+```
+
+Následující dotaz rozbalí předchozí dotaz a ukáže, jak získat pouze protokoly indikující změnu ve velikosti:
+
+```kusto
+traces 
+| extend CustomDimensions = todynamic(tostring(customDimensions))
+| where CustomDimensions.Category == "ScaleControllerLogs"
+| where message == "Instance count changed"
+| extend Reason = CustomDimensions.Reason
+| extend PreviousInstanceCount = CustomDimensions.PreviousInstanceCount
+| extend NewInstanceCount = CustomDimensions.CurrentInstanceCount
+```
 
 ## <a name="disable-built-in-logging"></a>Zákaz integrovaného protokolování
 

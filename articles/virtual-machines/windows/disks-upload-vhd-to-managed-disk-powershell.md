@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 1655c48eeb9227bf934c7fd9bb37610327b2b98c
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: a3474d62a28ea8c2214a9da5d517c679ba976130
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736267"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090396"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-powershell"></a>Nahrání virtuálního pevného disku do Azure nebo zkopírování spravovaného disku do jiné oblasti – Azure PowerShell
 
@@ -49,7 +49,7 @@ Teď v místním prostředí vytvořte prázdný standardní pevný disk pro nah
 Nahraďte `<yourdiskname>` , `<yourresourcegroupname>` a `<yourregion>` poté spusťte následující příkazy:
 
 > [!TIP]
-> Pokud vytváříte disk s operačním systémem, přidejte-HyperVGeneration <yourGeneration> do `New-AzDiskConfig` .
+> Pokud vytváříte disk s operačním systémem, přidejte `-HyperVGeneration '<yourGeneration>'` do `New-AzDiskConfig` .
 
 ```powershell
 $vhdSizeBytes = (Get-Item "<fullFilePathHere>").length

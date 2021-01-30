@@ -7,12 +7,12 @@ ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 11/19/2020
 tags: connectors
-ms.openlocfilehash: 4997853fea97d14491bd9e9101f79f324807a6a1
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 83ffccb7bae4fabc10796c36e782e72c661bd346
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920827"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063008"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Příjem a odpověď na příchozí požadavky HTTPS v Azure Logic Apps
 
@@ -30,7 +30,7 @@ V tomto článku se dozvíte, jak použít akci triggeru a odpovědi žádosti, 
 
 Další informace o zabezpečení autorizace a šifrování příchozích volání do vaší aplikace logiky, jako je například TLS ( [Transport Layer Security](https://en.wikipedia.org/wiki/Transport_Layer_Security)), dříve označované jako SSL (Secure SOCKETS Layer) (SSL), [Azure Active Directory otevřené ověřování (Azure AD OAuth)](../active-directory/develop/index.yml), vystavení vaší aplikace logiky pomocí služby Azure API Management nebo omezení IP adres, které pocházejí z příchozích volání, najdete v tématu [zabezpečený přístup a přístup k datům pro příchozí volání aktivačních událostí](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet a předplatné Azure. Pokud předplatné nemáte, můžete si [zaregistrovat bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -44,7 +44,7 @@ Tato integrovaná aktivační událost vytvoří ručně koncový bod, který m�
 
 Vaše aplikace logiky udržuje příchozí požadavek otevřený pouze po dobu [omezeného času](../logic-apps/logic-apps-limits-and-config.md#http-limits). Za předpokladu, že vaše aplikace logiky zahrnuje [akci odpovědi](#add-response), pokud vaše aplikace logiky po uplynutí této doby neodešle odpověď zpět volajícímu, vrátí vaše aplikace logiky `504 GATEWAY TIMEOUT` stav volajícímu. Pokud vaše aplikace logiky neobsahuje akci odpovědi, aplikace logiky okamžitě vrátí `202 ACCEPTED` stav volajícímu.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com). Vytvoření prázdné aplikace logiky
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Vytvoření prázdné aplikace logiky
 
 1. Po otevření návrháře aplikace logiky zadejte do vyhledávacího pole `http request` jako filtr. V seznamu triggery vyberte, **když se přijme požadavek HTTP** .
 
@@ -56,8 +56,8 @@ Vaše aplikace logiky udržuje příchozí požadavek otevřený pouze po dobu [
 
    | Název vlastnosti | Název vlastnosti JSON | Povinné | Popis |
    |---------------|--------------------|----------|-------------|
-   | **ADRESA URL PRO POST HTTP** | nTato | Ano | Adresa URL koncového bodu, která se generuje po uložení aplikace logiky a která se používá pro volání aplikace logiky |
-   | **Schéma JSON pro tělo požadavku** | `schema` | Ne | Schéma JSON, které popisuje vlastnosti a hodnoty v textu příchozí žádosti |
+   | **ADRESA URL PRO POST HTTP** | nTato | Yes | Adresa URL koncového bodu, která se generuje po uložení aplikace logiky a která se používá pro volání aplikace logiky |
+   | **Schéma JSON pro tělo požadavku** | `schema` | No | Schéma JSON, které popisuje vlastnosti a hodnoty v textu příchozí žádosti |
    |||||
 
 1. V poli **schématu JSON textu žádosti** můžete volitelně zadat schéma JSON, které popisuje tělo v příchozím požadavku, například:
@@ -163,8 +163,8 @@ Vaše aplikace logiky udržuje příchozí požadavek otevřený pouze po dobu [
 
    | Název vlastnosti | Název vlastnosti JSON | Povinné | Popis |
    |---------------|--------------------|----------|-------------|
-   | **Metoda** | `method` | Ne | Metoda, kterou musí příchozí požadavek použít k volání aplikace logiky |
-   | **Relativní cesta** | `relativePath` | Ne | Relativní cesta k parametru, který adresa URL koncového bodu aplikace logiky může přijmout |
+   | **Metoda** | `method` | No | Metoda, kterou musí příchozí požadavek použít k volání aplikace logiky |
+   | **Relativní cesta** | `relativePath` | No | Relativní cesta k parametru, který adresa URL koncového bodu aplikace logiky může přijmout |
    |||||
 
    Tento příklad přidá vlastnost **metody** :
@@ -216,7 +216,7 @@ Když použijete Trigger žádosti pro zpracování příchozích požadavků, m
 > Pokud akce odpovědi zahrnuje tyto hlavičky, Logic Apps tyto hlavičky z vygenerované zprávy odpovědi odebrat bez zobrazení upozornění nebo chyby:
 >
 > * `Allow`
-> * `Content-*` s těmito výjimkami: `Content-Disposition` , `Content-Encoding` a `Content-Type`
+> * `Content-*` hlavičky s výjimkou `Content-Disposition` , `Content-Encoding` a `Content-Type` při použití operací post a PUT, ale nejsou zahrnuté pro operace Get
 > * `Cookie`
 > * `Expires`
 > * `Last-Modified`
@@ -255,9 +255,9 @@ Když použijete Trigger žádosti pro zpracování příchozích požadavků, m
 
    | Název vlastnosti | Název vlastnosti JSON | Povinné | Popis |
    |---------------|--------------------|----------|-------------|
-   | **Stavový kód** | `statusCode` | Ano | Stavový kód, který se má vrátit v odpovědi |
-   | **Hlavičky** | `headers` | Ne | Objekt JSON, který popisuje jednu nebo více hlaviček, které mají být zahrnuty do odpovědi |
-   | **Text** | `body` | Ne | Tělo odpovědi |
+   | **Stavový kód** | `statusCode` | Yes | Stavový kód, který se má vrátit v odpovědi |
+   | **Hlavičky** | `headers` | No | Objekt JSON, který popisuje jednu nebo více hlaviček, které mají být zahrnuty do odpovědi |
+   | **Text** | `body` | No | Tělo odpovědi |
    |||||
 
 1. Chcete-li zadat další vlastnosti, jako je například schéma JSON pro tělo odpovědi, otevřete seznam **Přidat nový parametr** a vyberte parametry, které chcete přidat.

@@ -257,7 +257,7 @@
               href: log-query/query-audit.md
             - name: Optimalizace dotazů
               href: log-query/query-optimization.md
-            - name: Funkce
+            - name: Functions
               href: log-query/functions.md
             - name: Analýza textových dat
               href: log-query/parse-text.md
@@ -586,10 +586,12 @@
                   href: platform/it-service-management-connector-secure-webhook-connections.md
                 - name: Zabezpečený export konfigurace Azure
                   href: platform/itsm-connector-secure-webhook-connections-azure-configuration.md
-                - name: Řadič BMC
-                  href: platform/itsmc-secure-webhook-connections-bmc.md
-                - name: ServiceNow
-                  href: platform/itsmc-secure-webhook-connections-servicenow.md
+                - name: Nastavení partnerů pro ITSM konektor
+                  items:
+                    - name: Řadič BMC
+                      href: platform/itsmc-secure-webhook-connections-bmc.md
+                    - name: ServiceNow
+                      href: platform/itsmc-secure-webhook-connections-servicenow.md
         - name: Migrace klasických pravidel upozornění
           items:
             - name: Informace o klasických upozorněních

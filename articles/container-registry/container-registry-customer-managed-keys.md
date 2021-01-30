@@ -4,12 +4,12 @@ description: Přečtěte si o šifrování v klidovém prostředí služby Azure
 ms.topic: article
 ms.date: 12/03/2020
 ms.custom: ''
-ms.openlocfilehash: 708a42a4f965f484060d42d89ea4f535c4365a10
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: fb30610457e539250c33d7d9726fe10f9c0f8c5a
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620430"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062724"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>Šifrování registru pomocí klíče spravovaného zákazníkem
 
@@ -48,7 +48,7 @@ Když konfigurujete šifrování registru pomocí klíče spravovaného zákazn�
 
 Podrobnosti najdete v části [Výběr ID klíče s nebo bez verze klíče](#choose-key-id-with-or-without-key-version) a [verze aktualizace klíče](#update-key-version)dále v tomto článku.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete použít kroky Azure CLI v tomto článku, potřebujete Azure CLI verze 2.2.0 nebo novější, nebo Azure Cloud Shell. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
@@ -497,7 +497,7 @@ Nastavení **šifrování** registru použijte k aktualizaci trezoru klíčů, k
 Pokud například chcete nakonfigurovat nový klíč:
 
 1. Na portálu přejděte do svého registru.
-1. V části **Nastavení** vyberte **Encryption**  >  **klíč pro změnu** šifrování.
+1. V části **Nastavení** vyberte   >  **klíč pro změnu** šifrování.
 
     :::image type="content" source="media/container-registry-customer-managed-keys/rotate-key.png" alt-text="Otočit klíč v Azure Portal":::
 1. V části **šifrování** vyberte jednu z následujících možností:
@@ -548,7 +548,7 @@ Pokud chcete identitě udělit přístup k vašemu trezoru klíčů:
 Aktualizace nastavení šifrování registru pro použití identity:
 
 1. Na portálu přejděte do svého registru.
-1. V části **Nastavení** vyberte **Encryption**  >  **klíč pro změnu** šifrování.
+1. V části **Nastavení** vyberte   >  **klíč pro změnu** šifrování.
 1. V položce **Identita** vyberte **přiřazeno systému** a vyberte **Uložit**.
 
 ### <a name="enable-key-vault-bypass"></a>Povolit obcházení trezoru klíčů
@@ -566,21 +566,31 @@ Po dokončení předchozích kroků otočte klíč k novému klíči v trezoru k
 
 ## <a name="troubleshoot"></a>Řešení potíží
 
-### <a name="removing-user-assigned-identity"></a>Odebrání uživatelsky přiřazené identity
+### <a name="removing-managed-identity"></a>Odebírá se spravovaná identita.
 
-Pokud se pokusíte odebrat uživatelem přiřazenou identitu z registru, který se používá k šifrování, může se zobrazit chybová zpráva podobná této:
+
+Pokud se pokusíte odebrat spravovanou identitu přiřazenou uživatelem nebo systémem z registru, který se používá ke konfiguraci šifrování, může se zobrazit chybová zpráva podobná této:
  
 ```
 Azure resource '/subscriptions/xxxx/resourcegroups/myGroup/providers/Microsoft.ContainerRegistry/registries/myRegistry' does not have access to identity 'xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx' Try forcibly adding the identity to the registry <registry name>. For more information on bring your own key, please visit 'https://aka.ms/acr/cmk'.
 ```
  
-Nebudete také moci změnit (otočit) šifrovací klíč. Pokud k tomuto problému dojde, napřed znovu přiřaďte identitu pomocí identifikátoru GUID zobrazeného v chybové zprávě. Příklad:
+Nebudete také moci změnit (otočit) šifrovací klíč. Postup řešení závisí na typu identity, která se používá k šifrování.
+
+**Identita přiřazená uživatelem**
+
+Pokud k tomuto problému dochází s uživatelem přiřazenou identitou, nejdřív znovu přiřaďte identitu pomocí identifikátoru GUID zobrazeného v chybové zprávě. Příklad:
 
 ```azurecli
 az acr identity assign -n myRegistry --identities xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx
 ```
         
 Po změně klíče a přiřazení jiné identity můžete odebrat původní identitu přiřazenou uživatelem.
+
+**Identita přiřazená systémem**
+
+Pokud k tomuto problému dochází s identitou přiřazenou systémem, [Vytvořte si lístek podpory Azure](https://azure.microsoft.com/support/create-ticket/) , který vám poskytne pomoc k obnovení identity.
+
 
 ## <a name="next-steps"></a>Další kroky
 

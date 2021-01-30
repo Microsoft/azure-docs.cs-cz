@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: jushiman
-ms.openlocfilehash: 972eaf3aa20324bc68ce24d2b7c0db041bb8baa4
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: a8f39b5a1994574fa3d1472a2b53a3b080f82952
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98918632"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99089237"
 ---
 # <a name="m-series"></a>Řada M
 
@@ -28,6 +28,7 @@ Funkce virtuálního počítače řady M-Series &reg; Hyper-Threading technologi
 [Podpora generování virtuálních počítačů](generation-2.md): generace 1 a 2<br>
 [Akcelerátor zápisu](./how-to-enable-write-accelerator.md): podporováno<br>
 [Akcelerované síťové služby](../virtual-network/create-vm-accelerated-networking-cli.md): podporované<br>
+[Dočasné disky s operačním systémem](ephemeral-os-disks.md): nepodporované <br>
 <br>
 
 | Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost úložiště v mezipaměti a dočasné úložiště: IOPS/MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku neuloženého v mezipaměti: IOPS/MB/s | Maximální počet síťových karet|Očekávaná šířka pásma sítě (MB/s) |

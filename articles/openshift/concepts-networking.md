@@ -6,16 +6,16 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 11/23/2020
-ms.openlocfilehash: 6d1fd873de3313678875a8c167b90fafb8ede7ae
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: 07b0dd38b616525728c264bd315c5cb8ddcaa79a
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/29/2021
-ms.locfileid: "99061645"
+ms.locfileid: "99072048"
 ---
 # <a name="network-concepts-for-azure-red-hat-openshift-aro"></a>Koncepty sítě pro Azure Red Hat OpenShift (ARO)
 
-Tato příručka obsahuje přehled sítí v Azure Red Hat OpenShift na clusterech OpenShift 4 společně s diagramem a seznamem důležitých koncových bodů. Další informace o základních konceptech OpenShift sítě najdete v [dokumentaci k síti Azure Red Hat OpenShift 4](https://docs.openshift.com/aro/4/networking/understanding-networking.html).
+Tato příručka obsahuje přehled sítí v Azure Red Hat OpenShift na clusterech OpenShift 4 společně s diagramem a seznamem důležitých koncových bodů. Další informace o základních konceptech OpenShift sítě najdete v [dokumentaci k síti Azure Red Hat OpenShift 4](https://docs.openshift.com/container-platform/4.6/networking/understanding-networking.html).
 
 ![Diagram sítě Azure Red Hat OpenShift 4](./media/concepts-networking/aro4-networking-diagram.png)
 
@@ -64,7 +64,7 @@ Následující seznam obsahuje důležité síťové součásti v clusteru Azure
 
 ## <a name="networking-basics-in-openshift"></a>Základy sítě v OpenShift
 
-OpenShift software definované sítě [(SDN)](https://docs.openshift.com/container-platform/4.5/networking/openshift_sdn/about-openshift-sdn.html) se používá ke konfiguraci překryté sítě pomocí Open virtuálního přepínače [(OVS)](https://www.openvswitch.org/), implementace technologii OpenFlow založeného na specifikaci CNI (Container Network Interface). SDN podporuje různé moduly plug-in – zásada sítě je modul plug-in používaný v Azure Red Hat na OpenShift 4. Veškerá síťová komunikace je spravovaná pomocí SDN, takže ve vašich virtuálních sítích nejsou potřeba žádné další trasy, aby bylo možné využít komunikaci pod technologií pod.
+OpenShift software definované sítě [(SDN)](https://docs.openshift.com/container-platform/4.6/networking/openshift_sdn/about-openshift-sdn.html) se používá ke konfiguraci překryté sítě pomocí Open virtuálního přepínače [(OVS)](https://www.openvswitch.org/), implementace technologii OpenFlow založeného na specifikaci CNI (Container Network Interface). SDN podporuje různé moduly plug-in – zásada sítě je modul plug-in používaný v Azure Red Hat na OpenShift 4. Veškerá síťová komunikace je spravovaná pomocí SDN, takže ve vašich virtuálních sítích nejsou potřeba žádné další trasy, aby bylo možné využít komunikaci pod technologií pod.
 
 ## <a name="networking--for-azure-red-hat-openshift"></a>Sítě pro Azure Red Hat OpenShift
 
@@ -79,7 +79,7 @@ Následující síťové funkce jsou specifické pro Azure Red Hat OpenShift:
 * V případě CIDR by měla být velikost minimálně/18. (Síť pod Nesměrovatelné IP adresy se používá jenom uvnitř OpenShift SDN.)
 * Každému uzlu je přiděleno/23 podsítě (512 IP adres) pro své lusky. Tato hodnota se nedá změnit.
 * Nemůžete připojit objekt pod k více sítím.
-* Nemůžete nakonfigurovat statickou statickou IP adresu. (Jedná se o funkci OpenShift. Informace najdete v tématu [Konfigurace odchozích IP adres](https://docs.openshift.com/container-platform/4.5/networking/openshift_sdn/assigning-egress-ips.html).
+* Nemůžete nakonfigurovat statickou statickou IP adresu. (Jedná se o funkci OpenShift. Informace najdete v tématu [Konfigurace odchozích IP adres](https://docs.openshift.com/container-platform/4.6/networking/openshift_sdn/assigning-egress-ips.html).
 
 ## <a name="network-settings"></a>Nastavení sítě
 
@@ -98,7 +98,7 @@ Skupiny zabezpečení sítě se vytvoří v rámci skupiny prostředků uzlu, kt
 S veřejně viditelným serverem API nemůžete vytvářet skupiny zabezpečení sítě a přiřazovat je k síťovým kartám.
 
 ## <a name="domain-forwarding"></a>Předávání domény
-Azure Red Hat OpenShift používá CoreDNS. Je možné nakonfigurovat předávání domény. Do virtuálních sítí nemůžete přenášet vlastní DNS. Další informace najdete v dokumentaci k [používání předávání DNS](https://docs.openshift.com/aro/4/networking/dns-operator.html#nw-dns-forward_dns-operator).
+Azure Red Hat OpenShift používá CoreDNS. Je možné nakonfigurovat předávání domény. Do virtuálních sítí nemůžete přenášet vlastní DNS. Další informace najdete v dokumentaci k [používání předávání DNS](https://docs.openshift.com/container-platform/4.6/networking/dns-operator.html#nw-dns-forward_dns-operator).
 
 ## <a name="whats-new-in-openshift-45"></a>Co je nového v OpenShift 4,5
 

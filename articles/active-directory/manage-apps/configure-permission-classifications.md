@@ -12,12 +12,12 @@ ms.date: 06/01/2020
 ms.author: phsignor
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 9b014775f55671ef1297e040620390c23f842ce0
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: c07cc08f086b87e6b4ad35b569eef1a0d6b509ce
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99053244"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090003"
 ---
 # <a name="configure-permission-classifications"></a>Konfigurace klasifikací oprávnění
 
@@ -34,7 +34,7 @@ V současné době je podporována pouze klasifikace oprávnění "nízká dopad
 
 Pomocí následujících kroků můžete klasifikovat oprávnění pomocí Azure Portal:
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako [globální správce](../roles/permissions-reference.md#global-administrator--company-administrator), [správce aplikace](../roles/permissions-reference.md#application-administrator)nebo [správce cloudové aplikace](../roles/permissions-reference.md#cloud-application-administrator) .
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako [globální správce](../roles/permissions-reference.md#global-administrator), [správce aplikace](../roles/permissions-reference.md#application-administrator)nebo [správce cloudové aplikace](../roles/permissions-reference.md#cloud-application-administrator) .
 1. Vyberte **Azure Active Directory**  >  souhlasu **podnikových aplikací**  >  **a**  >  **klasifikace oprávnění**.
 1. Zvolením možnosti **Přidat oprávnění** Klasifikujte jiné oprávnění jako "nízký dopad".
 1. Vyberte rozhraní API a pak vyberte delegovaná oprávnění.

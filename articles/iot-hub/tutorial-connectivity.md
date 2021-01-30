@@ -16,12 +16,12 @@ ms.custom:
 ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: 060ed8bfc424fcb9dab8fc12faf5e3822fa86a31
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: d9ca9dd345be7fb8f1a2b613386bdca7bdcd835a
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621440"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99070326"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>Kurz: Použití simulovaného zařízení k otestování připojení k IoT Hubu
 
@@ -176,7 +176,7 @@ Jakmile se zařízení připojí, obvykle se pokusí začít odesílat telemetri
 Nejdřív pomocí následujícího příkazu do simulovaného zařízení načtěte aktuální připojovací řetězec:
 
 ```azurecli-interactive
-az iot hub device-identity show-connection-string --device-id MyTestDevice --output table --hub-name {YourIoTHubName}
+az iot hub device-identity connection-string show --device-id MyTestDevice --output table --hub-name {YourIoTHubName}
 ```
 
 Chcete-li spustit simulované zařízení, které odesílá zprávy, přejděte do složky **IoT-hub\Tutorials\ConnectivityTests** v kódu, který jste stáhli.

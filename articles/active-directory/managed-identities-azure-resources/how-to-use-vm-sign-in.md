@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/01/2017
+ms.date: 01/29/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 08fe856fd43baad4189d81f7743396a71cd5de48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61e83bd27c9434c4222e0161e3b643b183d1aa84
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266319"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090956"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>Použití spravovaných identit pro prostředky Azure na virtuálním počítači Azure pro přihlášení 
 
@@ -90,12 +90,7 @@ Odpovědi, jako například následující, mohou znamenat, že spravovaná iden
 - PowerShell: *Invoke-WebRequest: nejde se připojit ke vzdálenému serveru.*
 - CLI: *MSI: Nepodařilo se načíst token z `http://localhost:50342/oauth2/token` s chybou ' HTTPConnectionPool (host = ' localhost ', port = 50342)* 
 
-Pokud se zobrazí jedna z těchto chyb, vraťte se k virtuálnímu počítači Azure v [Azure Portal](https://portal.azure.com) a:
-
-- Přejít na stránku **Identita** a zajistěte, aby byl **přiřazený systém** nastaven na Ano.
-- Přejít na stránku **rozšíření** a ujistěte se, že se úspěšně nasadily rozšíření spravované identity pro prostředky Azure **(plánované pro vyřazení z ledna 2019)** .
-
-Pokud je některá z těchto chybná, možná budete muset znovu nasadit spravované identity pro prostředky Azure ve svém prostředku nebo vyřešit chybu nasazení. Pokud potřebujete pomoc s konfigurací virtuálních počítačů, přečtěte si téma [Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači pomocí Azure Portal](qs-configure-portal-windows-vm.md) .
+Pokud se zobrazí jedna z těchto chyb, vraťte se k virtuálnímu počítači Azure ve [Azure Portal](https://portal.azure.com) a přejděte na stránku **Identita** a ujistěte se, že **přiřazený systém** je nastavený na Ano.
 
 ## <a name="next-steps"></a>Další kroky
 

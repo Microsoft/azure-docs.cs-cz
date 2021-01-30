@@ -14,12 +14,12 @@ ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ebe34de0fa7847a23d9335dcdb0a38a33e006fdc
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: aa0d0d032c2ab6ae1d6c5e6b1c8b1793a6b3bd7c
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355201"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090633"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Řešení potíží s Azure Active Directory spolupráce B2B
 
@@ -92,7 +92,7 @@ Uživatel, který má účet Guest, se nemůže přihlásit a přijímá násled
     AADSTS65005: Using application 'AppName' is currently not supported for your organization contoso.com because it is in an unmanaged state. An administrator needs to claim ownership of the company by DNS validation of contoso.com before the application AppName can be provisioned.
 ```
 
-Uživatel má uživatelský účet Azure a je to virového tenanta, který byl opuštěn nebo nespravovaný. Kromě toho neexistují žádní globální správci nebo správci společnosti v tenantovi.
+Uživatel má uživatelský účet Azure a je to virového tenanta, který byl opuštěn nebo nespravovaný. V tenantovi nejsou navíc žádní globální správci.
 
 Chcete-li tento problém vyřešit, musíte převzít klienta, který se zrušil. Přečtěte si, jak  [přebírat nespravovaný adresář jako správce v Azure Active Directory](../enterprise-users/domains-admin-takeover.md). K tomu, aby bylo možné poskytnout přímý důkaz, který ovládáte v oboru názvů, musíte mít také přístup k internetovému serveru DNS pro příslušnou příponu domény. Až se klient vrátí do spravovaného stavu, poradí se se zákazníkem, ať už se jedná o nejlepší možnost pro svou organizaci.
 

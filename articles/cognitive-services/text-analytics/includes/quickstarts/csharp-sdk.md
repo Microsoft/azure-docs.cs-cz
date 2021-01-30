@@ -6,25 +6,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 12/11/2020
+ms.date: 01/20/2021
 ms.author: aahi
 ms.reviewer: assafi
-ms.openlocfilehash: aee064a15d465c412d16dd313279168c37af0e98
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 6e71d9b4006d0353b094306424ba0fe99c581279
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98947360"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090701"
 ---
 <a name="HOLTop"></a>
 
 # <a name="version-31-preview"></a>[Verze 3,1 Preview](#tab/version-3-1)
 
-[Referenční dokumentace](/dotnet/api/azure.ai.textanalytics?preserve-view=true&view=azure-dotnet-previews)  |  verze 3.1 [zdrojový kód](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics)  |  knihovny v 3.1 [balíček verze 3.1 (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics/5.1.0-beta.3)  |  [ukázky v 3.1](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
+[Referenční dokumentace](/dotnet/api/azure.ai.textanalytics?preserve-view=true&view=azure-dotnet-preview)  |  verze 3.1 [zdrojový kód](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics)  |  knihovny v 3.1 [balíček verze 3.1 (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics/5.1.0-beta.3)  |  [ukázky v 3.1](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
 
 # <a name="version-30"></a>[Verze 3,0](#tab/version-3)
 
-[Referenční dokumentace V3](/dotnet/api/azure.ai.textanalytics)  |  [zdrojový kód](https://github.com/Azure/azure-sdk-for-net/tree/Azure.AI.TextAnalytics_5.0.0/sdk/textanalytics/Azure.AI.TextAnalytics)  |  knihovny v3 [balíček V3 (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics)  |  [ukázky V3](https://github.com/Azure/azure-sdk-for-net/tree/Azure.AI.TextAnalytics_5.0.0/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
+[Referenční dokumentace V3](/dotnet/api/azure.ai.textanalytics?preserve-view=true&view=azure-dotnet)  |  [zdrojový kód](https://github.com/Azure/azure-sdk-for-net/tree/Azure.AI.TextAnalytics_5.0.0/sdk/textanalytics/Azure.AI.TextAnalytics)  |  knihovny v3 [balíček V3 (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics)  |  [ukázky V3](https://github.com/Azure/azure-sdk-for-net/tree/Azure.AI.TextAnalytics_5.0.0/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
 
 # <a name="version-21"></a>[Verze 2,1](#tab/version-2)
 
@@ -812,8 +812,7 @@ Key phrases:
 
 # <a name="version-31-preview"></a>[Verze 3,1 Preview](#tab/version-3-1)
 
-> [!CAUTION]
-> Pokud chcete použít operaci analyzovat, ujistěte se, že váš prostředek Azure používá cenovou úroveň Standard.
+[!INCLUDE [Analyze operation pricing](../analyze-operation-pricing-caution.md)]
 
 Vytvořte novou funkci s názvem `AnalyzeOperationExample()` , která převezme klienta, který jste vytvořili dříve, a zavolejte jeho `StartAnalyzeOperationBatch()` funkci. Vrácený `AnalyzeOperation` objekt bude obsahovat `Operation` objekt rozhraní pro `AnalyzeOperationResult` . Vzhledem k tomu, že se jedná o dlouhodobou provozní operaci, `await` `operation.WaitForCompletionAsync()` pro hodnotu, která se má aktualizovat. Jakmile `WaitForCompletionAsync()` je dokončeno, kolekce by měla být aktualizována v `operation.Value` . Pokud došlo k chybě, vyvolá se `RequestFailedException` .
 

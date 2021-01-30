@@ -6,12 +6,12 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: a105df6b27be943b14a29bb25fd048bfd294c867
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 7fe0817abfac3070f77303bb0d2d662d18010862
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097426"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090464"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB NoSQL migrace a partneři pro vývoj aplikací
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -31,7 +31,7 @@ Z NoSQL migrace do vývoje aplikací si můžete vybrat z nejrůznějších part
 | [Capgemini](https://www.capgemini.com/) | Maloobchodní (inventář), IoT, Operational Analytics (Spark), vývoj aplikací | USA, Francie, Spojené království, Nizozemsko, Finsko  |
 | [Společnost Cognizant](https://www.cognizant.com/) | IoT, přizpůsobení, maloobchodní (inventář), Operational Analytics (Spark), vývoj aplikací |USA, Kanada, Spojené království, Dánsko, Nizozemsko, Švýcarsko, Austrálie, Japonsko |
 |[Infosys](https://www.infosys.com/)     | Vývoj aplikací      |    USA    |  
-| [Systémy Lagash](https://www.lagash.com/) | IoT, architektura bez serveru, vývoj aplikací | Argentina, Chile, Kolumbie, Mexiko|
+| [Systémy Lagash](https://www.devex.com/organizations/lagash-systems-131346) | IoT, architektura bez serveru, vývoj aplikací | Argentina, Chile, Kolumbie, Mexiko|
 | [Lambda3 informatikou](https://www.lambda3.com.br/) | Přizpůsobení v reálném čase, maloobchodní inventář, vývoj aplikací | Brazílie|
 |[Neal Analytics](https://www.nealanalytics.com/)    |     Individuální nastavení, maloobchodní (inventář), Operational Analytics (Spark), vývoj aplikací  |    USA     |  
 |[Software s antivirovým softwarem](https://www.pragmaticworks.com/)    |   Migrace NoSQL      |   USA      |

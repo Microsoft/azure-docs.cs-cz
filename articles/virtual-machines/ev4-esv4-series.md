@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: 9918c978ecb98b7586272da714bdc8d25920d114
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 7d0e3f8c55a2c8eff40c196719213390e96efb0a
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920320"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99089304"
 ---
 # <a name="ev4-and-esv4-series"></a>Řada Ev4 a Esv4
 
@@ -36,6 +36,7 @@ Velikosti řady Ev4-Series běží na Intel Xeon &reg; Platinum 8272CL (Cascade 
 [Aktualizace pro zachování paměti](maintenance-and-updates.md): podporováno<br>
 [Podpora generování virtuálních počítačů](generation-2.md): generace 1<br>
 [Akcelerované síťové služby](../virtual-network/create-vm-accelerated-networking-cli.md): podporované<br>
+[Dočasné disky s operačním systémem](ephemeral-os-disks.md): nepodporované <br>
 <br>
 
 | Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální počet síťových karet|Očekávaná šířka pásma sítě (MB/s) |
@@ -61,6 +62,7 @@ Velikosti řady Esv4-Series běží na Intel &reg; Xeon &reg; Platinum 8272CL (C
 [Aktualizace pro zachování paměti](maintenance-and-updates.md): podporováno<br>
 [Podpora generování virtuálních počítačů](generation-2.md): generace 1 a 2<br>
 [Akcelerované síťové služby](../virtual-network/create-vm-accelerated-networking-cli.md): podporované<br>
+[Dočasné disky s operačním systémem](ephemeral-os-disks.md): nepodporované <br>
 <br>
 
 | Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost disku neuloženého v mezipaměti: IOPS/MB/s | Maximální počet síťových karet|Očekávaná šířka pásma sítě (MB/s) |

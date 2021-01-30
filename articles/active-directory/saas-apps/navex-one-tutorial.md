@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/13/2021
+ms.date: 01/28/2021
 ms.author: jeedes
-ms.openlocfilehash: e8a392f72af1ae5a3da8d8e3306f05cdec390591
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: c6eac316a8d1849e193add2d74e81f8652c7a676
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735890"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090583"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-navex-one"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s jedním NAVEX
 
@@ -76,10 +76,32 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V části **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://<CLIENT_KEY>.navexglobal.com`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí jednoho z následujících vzorů:
+
+    | Přihlašovací adresa URL |
+    |--------------|
+    | `https://<CLIENT_KEY>.navexglobal.com` |
+    | `https://<CLIENT_KEY>.navexglobal.eu` |
+    |
+
+    b. Do textového pole **identifikátor** zadejte jednu z následujících adres URL:
+
+    | Identifikátor |
+    |--------------|
+    | `https://doorman.navexglobal.com/Shibboleth` |
+    | `https://doorman.navexglobal.eu/Shibboleth` |
+    |
+
+    c. Do textového pole **Adresa URL odpovědi** zadejte jednu z těchto adres URL:
+
+    | Adresa URL odpovědi |
+    |--------------|
+    | `https://doorman.navexglobal.com/Shibboleth.sso/SAML2/POST` |
+    | `https://doorman.navexglobal.eu/Shibboleth.sso/SAML2/POST` |
+    |
 
     > [!NOTE]
-    > Hodnota není reálné číslo. Aktualizujte hodnotu skutečnou adresou Sign-On. Pokud chcete získat hodnotu, obraťte se na [NAVEX tým podpory jednoho klienta](mailto:ethicspoint@navexglobal.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Hodnota přihlašovací adresy URL není reálné číslo. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. Pokud chcete získat hodnotu, obraťte se na [NAVEX tým podpory jednoho klienta](mailto:ethicspoint@navexglobal.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** kliknutím na tlačítko Kopírovat zkopírujte **adresu URL federačních metadat aplikace** a uložte ji do svého počítače.
 

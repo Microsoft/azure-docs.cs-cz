@@ -12,12 +12,12 @@ ms.date: 09/23/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
 ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40
-ms.openlocfilehash: aa8c00d1ee2a0dc3d019cc75b4e411ede984e74a
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 570314bcaedb86cc593846ffc1d6846d1d2fe335
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756060"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090183"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform"></a>Oprávnění a souhlas na platformě Microsoft identity
 
@@ -164,7 +164,7 @@ Pokud aplikace požaduje oprávnění aplikace a správce udělí tato oprávně
 
 Po použití koncového bodu souhlasu správce k udělení souhlasu správce jste hotovi. Uživatelé nemusejí provádět žádné další akce. Po udělení souhlasu správce můžou uživatelé získat přístupový token prostřednictvím typického toku ověřování. Výsledný přístupový token má odsouhlasená oprávnění.
 
-Když správce společnosti používá vaši aplikaci a přesměruje na koncový bod autorizace, detekuje platforma Microsoftu roli uživatele. Požádá, pokud správce společnosti chce souhlasit jménem celého tenanta s požadovanými oprávněními. Místo toho můžete pomocí vyhrazeného koncového bodu souhlasu správce proaktivně požádat správce o udělení oprávnění jménem celého tenanta. Tento koncový bod je také nutný pro vyžádání oprávnění aplikace. Oprávnění aplikace nelze požadovat pomocí koncového bodu autorizace.
+Když globální správce používá vaši aplikaci a přesměruje se na koncový bod autorizace, detekuje platforma Microsoftu roli uživatele. Žádá se o to, že globální správce chce pro požadovaná oprávnění souhlasit jménem celého tenanta. Místo toho můžete pomocí vyhrazeného koncového bodu souhlasu správce proaktivně požádat správce o udělení oprávnění jménem celého tenanta. Tento koncový bod je také nutný pro vyžádání oprávnění aplikace. Oprávnění aplikace nelze požadovat pomocí koncového bodu autorizace.
 
 Pokud budete postupovat podle těchto kroků, může vaše aplikace požádat o oprávnění pro všechny uživatele v tenantovi, včetně rozsahů s omezeným oprávněním správce. Tato operace má vysoké oprávnění. Operaci použijte pouze v případě potřeby pro váš scénář.
 

@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 10/26/2020
-ms.openlocfilehash: 7b0aead6ada87ca259c838f3f56e68f1030302a2
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 909385b4f670d084a9357b6ac2840a9458604667
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675718"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063025"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Kurz: Vytvoření clusteru Azure Red Hat OpenShift 4
 
@@ -92,7 +92,7 @@ Pokud pro svůj cluster zadáte vlastní doménu, Všimněte si následujících
 
 ### <a name="create-a-virtual-network-containing-two-empty-subnets"></a>Vytvoření virtuální sítě obsahující dvě prázdné podsítě
 
-V dalším kroku vytvoříte virtuální síť obsahující dvě prázdné podsítě.
+V dalším kroku vytvoříte virtuální síť obsahující dvě prázdné podsítě. Pokud máte existující virtuální síť, která vyhovuje vašim potřebám, můžete tento krok přeskočit.
 
 1. **Nastavte následující proměnné v prostředí prostředí, ve kterém budete provádět `az` příkazy.**
 
@@ -131,7 +131,7 @@ V dalším kroku vytvoříte virtuální síť obsahující dvě prázdné pods�
 
 2. **Vytvořte virtuální síť.**
 
-   Clustery Azure Red Hat OpenShift se systémem OpenShift 4 vyžadují pro hlavní a pracovní uzly virtuální síť se dvěma prázdnými podsítěmi.
+   Clustery Azure Red Hat OpenShift se systémem OpenShift 4 vyžadují pro hlavní a pracovní uzly virtuální síť se dvěma prázdnými podsítěmi. Můžete buď vytvořit novou virtuální síť, nebo použít stávající virtuální síť.
 
    Vytvořte novou virtuální síť ve stejné skupině prostředků, kterou jste vytvořili dříve:
 

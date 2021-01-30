@@ -50,19 +50,21 @@
         - name: Řešení potíží
           href: data-box-gateway-troubleshoot.md
         - name: Kontaktovat podporu Microsoftu
-          href: ../databox-online/azure-stack-edge-contact-microsoft-support.md?toc=/azure/databox-online/toc.json&bc=/azure/databox-gateway/breadcrumb/toc.json
-- name: "Poznámky k\_verzi"
-  items:
-    - name: 2007 – aktuální
-      href: data-box-gateway-2007-release-notes.md
-    - name: 1911
-      href: data-box-gateway-1911-release-notes.md
-    - name: 1906
-      href: data-box-gateway-1906-release-notes.md
-    - name: 1905
-      href: data-box-gateway-1905-release-notes.md
-    - name: Všeobecná dostupnost (GA)
-      href: data-box-gateway-release-notes.md
+          href: ../databox-online/azure-stack-edge-contact-microsoft-support.md
+    - name: "Poznámky k\_verzi"
+      items:
+        - name: 2101 – aktuální
+          href: data-box-gateway-2101-release-notes.md
+        - name: 2007
+          href: data-box-gateway-2007-release-notes.md
+        - name: 1911
+          href: data-box-gateway-1911-release-notes.md
+        - name: 1906
+          href: data-box-gateway-1906-release-notes.md
+        - name: 1905
+          href: data-box-gateway-1905-release-notes.md
+        - name: Všeobecná dostupnost (GA)
+          href: data-box-gateway-release-notes.md
 - name: Zdroje a prostředky
   items:
     - name: Ceny

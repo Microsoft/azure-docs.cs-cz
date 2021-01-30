@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e2623ebf929f6a24cfc977896acea514634ffb23
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: d25a429873ccf8b546c0919456c97e64445f184c
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054500"
+ms.locfileid: "99071694"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Správa koncových bodů a tras v Azure Digital revláken (rozhraní API a CLI)
 
@@ -48,7 +48,7 @@ V této části se dozvíte, jak tyto koncové body vytvořit pomocí rozhraní 
 
 ### <a name="create-the-endpoint"></a>Vytvoření koncového bodu
 
-Jakmile vytvoříte prostředky koncového bodu, můžete je použít pro koncový bod digitálních vláken Azure. Následující příklady znázorňují způsob vytváření koncových bodů pomocí `az dt endpoint create` příkazu pro rozhraní příkazového [řádku Azure Digital revlákens](how-to-use-cli.md). Zástupné symboly v příkazech nahraďte podrobnostmi vašich vlastních prostředků.
+Jakmile vytvoříte prostředky koncového bodu, můžete je použít pro koncový bod digitálních vláken Azure. Následující příklady ukazují, jak vytvořit koncové body pomocí příkazu [AZ DT Endpoint Create](/cli/azure/ext/azure-iot/dt/endpoint/create?view=azure-cli-latest&preserve-view=true) pro rozhraní příkazového [řádku Azure Digital zdvojené](how-to-use-cli.md). Zástupné symboly v příkazech nahraďte podrobnostmi vašich vlastních prostředků.
 
 Vytvoření koncového bodu Event Grid:
 
@@ -56,21 +56,39 @@ Vytvoření koncového bodu Event Grid:
 az dt endpoint create eventgrid --endpoint-name <Event-Grid-endpoint-name> --eventgrid-resource-group <Event-Grid-resource-group-name> --eventgrid-topic <your-Event-Grid-topic-name> -n <your-Azure-Digital-Twins-instance-name>
 ```
 
-Vytvoření koncového bodu Event Hubs:
+Vytvoření koncového bodu Event Hubs (ověřování pomocí klíče):
 ```azurecli-interactive
 az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --eventhub-resource-group <Event-Hub-resource-group> --eventhub-namespace <Event-Hub-namespace> --eventhub <Event-Hub-name> --eventhub-policy <Event-Hub-policy> -n <your-Azure-Digital-Twins-instance-name>
 ```
 
-Postup vytvoření koncového bodu tématu Service Bus:
+Vytvoření koncového bodu tématu Service Bus (ověřování pomocí klíče):
 ```azurecli-interactive 
 az dt endpoint create servicebus --endpoint-name <Service-Bus-endpoint-name> --servicebus-resource-group <Service-Bus-resource-group-name> --servicebus-namespace <Service-Bus-namespace> --servicebus-topic <Service-Bus-topic-name> --servicebus-policy <Service-Bus-topic-policy> -n <your-Azure-Digital-Twins-instance-name>
 ```
 
 Po úspěšném spuštění těchto příkazů budou k dispozici jako koncový bod v rámci digitálních vláken Azure pod názvem, který jste zadali s argumentem, a Service Bus téma Event Grid, Event hub nebo. `--endpoint-name` Tento název obvykle použijete jako cíl **trasy události**, kterou vytvoříte [později v tomto článku](#create-an-event-route).
 
+#### <a name="create-an-endpoint-with-identity-based-authentication"></a>Vytvoření koncového bodu s ověřováním na základě identity
+
+Můžete také vytvořit koncový bod, který má ověřování na základě identity, a použít koncový bod se [spravovanou identitou](concepts-security.md#managed-identity-for-accessing-other-resources-preview). Tato možnost je k dispozici pouze pro centra událostí a koncové body typu Service Bus (není podporováno pro Event Grid).
+
+Příkaz CLI pro vytvoření tohoto typu koncového bodu je uvedený níže. K připojení zástupných symbolů v příkazu budete potřebovat následující hodnoty:
+* ID prostředku Azure instance digitálního vlákna Azure
+* název koncového bodu
+* Typ koncového bodu
+* obor názvů prostředku koncového bodu
+* název centra událostí nebo Service Bus tématu
+* umístění instance digitálního vlákna Azure
+
+```azurecli-interactive
+az resource create --id <Azure-Digital-Twins-instance-Azure-resource-ID>/endpoints/<endpoint-name> --properties '{\"properties\": { \"endpointType\": \"<endpoint-type>\", \"authenticationType\": \"IdentityBased\", \"endpointUri\": \"sb://<endpoint-namespace>.servicebus.windows.net\", \"entityPath\": \"<name-of-event-hub-or-Service-Bus-topic>\"}, \"location\":\"<instance-location>\" }' --is-full-object
+```
+
 ### <a name="create-an-endpoint-with-dead-lettering"></a>Vytvoření koncového bodu s nedoručenými písmeny
 
 Když koncový bod nemůže doručovat událost v určitém časovém období nebo po pokusu o doručení události v určitém počtu opakování, může odeslat nedoručenou událost do účtu úložiště. Tento proces se označuje jako **nedoručené**.
+
+Koncové body s povoleným nedoručenými zprávami je možné nastavit pomocí rozhraní příkazového [řádku](how-to-use-cli.md) Azure Digital vláknas CLI nebo [řídicí roviny](how-to-use-apis-sdks.md#overview-control-plane-apis).
 
 Další informace o nedoručených písmenech najdete v tématu [*Koncepty: směrování událostí*](concepts-route-events.md#dead-letter-events). Pokyny, jak nastavit koncový bod pomocí nedoručených zpráv, můžete pokračovat ve zbytku této části.
 
@@ -78,7 +96,7 @@ Další informace o nedoručených písmenech najdete v tématu [*Koncepty: smě
 
 Před nastavením umístění nedoručených zpráv musíte mít v účtu Azure nastavený [účet úložiště](../storage/common/storage-account-create.md?tabs=azure-portal) s [kontejnerem](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container) . 
 
-Adresu URL tohoto kontejneru zadáte při pozdějším vytvoření koncového bodu. Umístění nedoručených zpráv se poskytne koncovému bodu jako adresa URL kontejneru s [tokenem SAS](../storage/common/storage-sas-overview.md). Tento token potřebuje `write` oprávnění pro cílový kontejner v rámci účtu úložiště. Plně vytvořená adresa URL bude ve formátu: `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>` .
+Identifikátor URI pro tento kontejner zadáte při pozdějším vytvoření koncového bodu. Umístění nedoručených zpráv se poskytne koncovému bodu jako identifikátor URI kontejneru s [tokenem SAS](../storage/common/storage-sas-overview.md). Tento token potřebuje `write` oprávnění pro cílový kontejner v rámci účtu úložiště. Plně vytvořený **identifikátor URI SAS pro nedoručené písmeno** bude ve formátu: `https://<storage-account-name>.blob.core.windows.net/<container-name>?<SAS-token>` .
 
 Postupujte podle následujících kroků a nastavte tyto prostředky úložiště ve vašem účtu Azure, abyste se připravili na nastavení připojení koncového bodu v další části.
 
@@ -99,25 +117,44 @@ Postupujte podle následujících kroků a nastavte tyto prostředky úložišt�
 
     :::image type="content" source="./media/how-to-manage-routes-apis-cli/copy-sas-token.png" alt-text="Kopírovat token SAS pro použití v tajných klíčích nedoručených zpráv" lightbox="./media/how-to-manage-routes-apis-cli/copy-sas-token.png":::
     
-#### <a name="configure-the-endpoint"></a>Konfigurace koncového bodu
+#### <a name="create-the-dead-letter-endpoint"></a>Vytvoření koncového bodu s nedoručenými písmeny
 
-Pokud chcete vytvořit koncový bod, který má povolenou nedoručené e-maily, můžete koncový bod vytvořit pomocí rozhraní Azure Resource Manager API. 
+Pokud chcete vytvořit koncový bod, který má povolené nedoručené zprávy, přidejte následující parametr nedoručených zpráv do příkazu [AZ DT Endpoint Create](/cli/azure/ext/azure-iot/dt/endpoint/create?view=azure-cli-latest&preserve-view=true) pro rozhraní příkazového [řádku Azure Digital revlákens](how-to-use-cli.md).
 
-1. Nejprve pomocí [dokumentace rozhraní api Azure Resource Manager](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) nastavte požadavek na vytvoření koncového bodu a vyplňte požadované parametry žádosti. 
+Hodnota parametru je **identifikátor URI SAS nedoručených zpráv** , který se skládá z názvu účtu úložiště, názvu kontejneru a tokenu SAS, který jste shromáždili v [předchozí části](#set-up-storage-resources). Tento parametr vytvoří koncový bod s ověřováním pomocí klíče.
 
-2. Dále přidejte `deadLetterSecret` pole do objektu Properties v **těle** žádosti. Nastavte tuto hodnotu podle níže uvedené šablony, která vytvoří adresu URL z názvu účtu úložiště, názvu kontejneru a hodnoty tokenu SAS, které jste shromáždili v [předchozí části](#set-up-storage-resources).
-      
-  :::code language="json" source="~/digital-twins-docs-samples/api-requests/deadLetterEndpoint.json":::
+```azurecli
+--deadletter-sas-uri https://<storage-account-name>.blob.core.windows.net/<container-name>?<SAS-token>
+```
 
-3. Odešlete žádost o vytvoření koncového bodu.
+Tento parametr přidejte na konec příkazů pro vytváření koncových bodů v části [*Vytvoření koncového bodu*](#create-the-endpoint) dříve a vytvořte koncový bod požadovaného typu, který má povoleno nedoručené e-maily.
 
-Další informace o strukturování této žádosti najdete v části digitální vlákna Azure REST API dokumentaci: [koncové body – DigitalTwinsEndpoint CreateOrUpdate](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate).
+Alternativně můžete vytvořit koncové body s nedoručenými písmeny pomocí [rozhraní API plochy pro řízení digitálních vláken Azure](how-to-use-apis-sdks.md#overview-control-plane-apis) místo rozhraní příkazového řádku. Provedete to tak, že si prohlédněte [dokumentaci k DigitalTwinsEndpoint](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) , kde najdete informace o tom, jak strukturovat požadavek a přidat parametry nedoručených zpráv.
 
-### <a name="message-storage-schema"></a>Schéma úložiště zpráv
+#### <a name="create-a-dead-letter-endpoint-with-identity-based-authentication"></a>Vytvoření koncového bodu s nedoručenými zprávami s ověřováním na základě identity
+
+Můžete také vytvořit koncový bod nedoručených zpráv, který má ověřování na základě identity, pro použití koncového bodu se [spravovanou identitou](concepts-security.md#managed-identity-for-accessing-other-resources-preview). Tato možnost je k dispozici pouze pro centra událostí a koncové body typu Service Bus (není podporováno pro Event Grid).
+
+Pokud chcete vytvořit tento typ koncového bodu, použijte stejný příkaz CLI ze starší verze a [vytvořte koncový bod s ověřováním založeným na identitě](#create-an-endpoint-with-identity-based-authentication)s polem extra v datové části JSON pro `deadLetterUri` .
+
+Tady jsou hodnoty, které budete muset připojit k zástupným symbolům v příkazu:
+* ID prostředku Azure instance digitálního vlákna Azure
+* název koncového bodu
+* Typ koncového bodu
+* obor názvů prostředku koncového bodu
+* název centra událostí nebo Service Bus tématu
+* Podrobnosti o **identifikátoru URI SAS nedoručených písmen** : název účtu úložiště, název kontejneru
+* umístění instance digitálního vlákna Azure
+
+```azurecli-interactive
+az resource create --id <Azure-Digital-Twins-instance-Azure-resource-ID>/endpoints/<endpoint-name> --properties '{\"properties\": { \"endpointType\": \"<endpoint-type>\", \"authenticationType\": \"IdentityBased\", \"endpointUri\": \"sb://<endpoint-namespace>.servicebus.windows.net\", \"entityPath\": \"<name-of-event-hub-or-Service-Bus-topic>\", \"deadLetterUri\": \"https://<storage-account-name>.blob.core.windows.net/<container-name>\"}, \"location\":\"<instance-location>\" }' --is-full-object
+```
+
+#### <a name="message-storage-schema"></a>Schéma úložiště zpráv
 
 Po nastavení koncového bodu s nedoručenými zprávami budou v účtu úložiště uloženy nedoručené zprávy v následujícím formátu:
 
-`{container}/{endpointName}/{year}/{month}/{day}/{hour}/{eventId}.json`
+`{container}/{endpoint-name}/{year}/{month}/{day}/{hour}/{event-ID}.json`
 
 Nedoručené zprávy budou odpovídat schématu původní události, která byla určena k doručení do původního koncového bodu.
 
@@ -128,7 +165,7 @@ Tady je příklad zprávy nedoručených zpráv pro [dvojitou dobu vytvoření o
   "specversion": "1.0",
   "id": "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxxxxx",
   "type": "Microsoft.DigitalTwins.Twin.Create",
-  "source": "<yourInstance>.api.<yourregion>.da.azuredigitaltwins-test.net",
+  "source": "<your-instance>.api.<your-region>.da.azuredigitaltwins-test.net",
   "data": {
     "$dtId": "<yourInstance>xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxxxxx",
     "$etag": "W/\"xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxxxxx\"",

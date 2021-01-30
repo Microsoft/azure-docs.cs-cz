@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 558c6dc24f6d0d17c9a82bbc79f39649f63dc7f4
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 25515c29ae3e5623b447232ed6f935a668a58c3a
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658481"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090065"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>Neočekávaná chyba při provádění souhlasu s aplikací
 
@@ -35,7 +35,7 @@ Aby mohl uživatel udělit souhlas s oprávněními, které aplikace vyžaduje, 
 * **AADSTS90093:** &lt; clientAppDisplayName &gt; požaduje jedno nebo více oprávnění, která nemáte autorizaci udělit. Obraťte se na správce, který může tuto aplikaci vyjádřit vaším jménem.
 * **AADSTS90094:** &lt; clientAppDisplayName &gt; potřebuje oprávnění pro přístup k prostředkům ve vaší organizaci, které může udělit jenom správce. Please ask an admin to grant permission to this app before you can use it. (Test udělení souhlasu vyžaduje ve vaší organizaci pro přístup k prostředkům oprávnění, které může udělit pouze správce. Než budete moct tuto aplikaci použít, požádejte správce o udělení oprávnění.)
 
-K této chybě dochází, když se uživatel, který není správcem společnosti, pokusí použít aplikaci požadující oprávnění, která může udělit jenom správce. Tuto chybu může vyřešit správce, který uděluje přístup k aplikaci jménem své organizace.
+K této chybě dochází, když se uživatel, který není globálním správcem, pokusí použít aplikaci, která požaduje oprávnění, která může udělit pouze správce. Tuto chybu může vyřešit správce, který uděluje přístup k aplikaci jménem své organizace.
 
 K této chybě může dojít také v případě, že uživatel brání v souhlasu s aplikací kvůli tomu, že je žádost o oprávnění riskantní. V takovém případě se událost auditu bude protokolovat jako kategorie "ApplicationManagement", typ aktivity "souhlas s aplikací" a důvod stavu "riziková aplikace zjištěná".
 
@@ -44,7 +44,7 @@ K této chybě může dojít v jiném scénáři, pokud je pro aplikaci vyžadov
 ## <a name="policy-prevents-granting-permissions-error"></a>Zásada zabraňuje udělení oprávnění k chybě.
 * **AADSTS90093:** Správce &lt; tenantDisplayName &gt; nastavil zásadu, která vám zabrání v udělení &lt; názvu aplikace oprávnění, která &gt; požaduje. Kontaktujte správce &lt; tenantDisplayName &gt; , který vám může udělit oprávnění k této aplikaci vaším jménem.
 
-K této chybě dojde, když správce společnosti vypne možnost souhlasu uživatelů s aplikacemi, pak se uživatel bez oprávnění správce pokusí použít aplikaci, která vyžaduje souhlas. Tuto chybu může vyřešit správce, který uděluje přístup k aplikaci jménem své organizace.
+K této chybě dochází, pokud globální správce vypne možnost souhlasu uživatelů s aplikacemi, pak se uživatel bez oprávnění správce pokusí použít aplikaci, která vyžaduje souhlas. Tuto chybu může vyřešit správce, který uděluje přístup k aplikaci jménem své organizace.
 
 ## <a name="intermittent-problem-error"></a>Chyba přerušovaného problému
 * **AADSTS90090:** Vypadá to, že při procesu přihlašování došlo k přerušovanému problému se záznamem oprávnění, která jste se pokusili udělit &lt; clientAppDisplayName &gt; . Zkuste to znovu později.

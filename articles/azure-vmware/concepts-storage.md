@@ -3,12 +3,12 @@ title: Koncepty – úložiště
 description: Seznamte se s možnostmi úložiště klíčů v privátních cloudech řešení Azure VMware.
 ms.topic: conceptual
 ms.date: 11/03/2020
-ms.openlocfilehash: 394b755f5dc8fdbcaa6092419e9451ae1691aa67
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 8ad1fc3ff2e514330a9ffc680494b5564b1184e4
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289246"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062791"
 ---
 #  <a name="azure-vmware-solution-storage-concepts"></a>Koncepty úložiště řešení Azure VMware
 
@@ -32,7 +32,7 @@ Místní úložiště v hostitelích clusteru se používá v síti vSAN úloži
 
 ## <a name="scaling"></a>Škálování
 
-Kapacita úložiště nativního clusteru se škáluje přidáním hostitelů do clusteru. U clusterů, které používají hostitele, se nezpracovaná kapacita v rámci clusteru zvyšuje o 15,4 TB s každým dalším hostitelem. Clustery vytvořené s hostiteli GP mají svou nezpracovanou kapacitu zvýšenou o 7,7 TB s každým dalším hostitelem. V obou typech clusterů zabere hostitel do clusteru přibližně 10 minut. Pokyny k škálování clusterů najdete v [kurzu škálování privátního cloudu][tutorial-scale-private-cloud] .
+Kapacita úložiště nativního clusteru se škáluje přidáním hostitelů do clusteru. U clusterů, které používají hostitele, se nezpracovaná kapacita v rámci clusteru zvyšuje o 15,4 TB s každým dalším hostitelem. Clustery vytvořené s hostiteli GP mají svou nezpracovanou kapacitu zvýšenou o 7,7 TB s každým dalším hostitelem. V obou typech clusterů zabere hostitel do clusteru přibližně 10 minut. Pokyny k škálování clusterů najdete v [kurzu škálování privátního cloudu][tutorial-scale-private-cloud].
 
 ## <a name="azure-storage-integration"></a>Integrace úložiště Azure
 

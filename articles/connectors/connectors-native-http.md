@@ -7,12 +7,12 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/14/2020
 tags: connectors
-ms.openlocfilehash: f005bdfa5643ea187fb2973cac065563c4cc2ee6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2835bda8ac7242b7a3ea4ea63401f26b9c8e426
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91292451"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062991"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Volání koncových bodů služby přes HTTP nebo HTTPS z Azure Logic Apps
 
@@ -44,11 +44,11 @@ Informace o šifrování, zabezpečení a autorizaci pro odchozí volání z va�
 
 Tato integrovaná aktivační událost provede volání HTTP na zadanou adresu URL pro koncový bod a vrátí odpověď.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Otevřete prázdnou aplikaci logiky v návrháři aplikace logiky.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Otevřete prázdnou aplikaci logiky v návrháři aplikace logiky.
 
 1. V poli hledání návrháře vyberte možnost **předdefinované**. Do vyhledávacího pole zadejte `http` jako filtr. V seznamu **triggery** vyberte Trigger **http** .
 
-   ![Vyberte Aktivační událost HTTP.](./media/connectors-native-http/select-http-trigger.png)
+   ![Vybrat Trigger HTTP](./media/connectors-native-http/select-http-trigger.png)
 
    V tomto příkladu se aktivační událost přejmenuje na Trigger HTTP, aby měl krok výstižnější název. Dále tento příklad přidá akci HTTP a oba názvy musí být jedinečné.
 
@@ -73,7 +73,7 @@ Tato integrovaná aktivační událost provede volání HTTP na zadanou adresu U
 
 Tato Vestavěná akce provede volání HTTP na zadanou adresu URL pro koncový bod a vrátí odpověď.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Otevřete aplikaci logiky v návrháři aplikace logiky.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Otevřete aplikaci logiky v návrháři aplikace logiky.
 
    V tomto příkladu se jako první krok používá Trigger HTTP.
 
@@ -81,7 +81,7 @@ Tato Vestavěná akce provede volání HTTP na zadanou adresu URL pro koncový b
 
    Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku mezi jednotlivými kroky. Vyberte symbol plus ( **+** ), který se zobrazí, a pak vyberte **přidat akci**.
 
-1. V části **zvolit akci**vyberte **předdefinovaná**. Do vyhledávacího pole zadejte `http` jako filtr. V seznamu **Akce** vyberte akci **http** .
+1. V části **zvolit akci** vyberte **předdefinovaná**. Do vyhledávacího pole zadejte `http` jako filtr. V seznamu **Akce** vyberte akci **http** .
 
    ![Vybrat akci HTTP](./media/connectors-native-http/select-http-action.png)
 
@@ -249,7 +249,7 @@ Pokud aktivační událost nebo akce HTTP obsahují tyto hlavičky, Logic Apps o
 
 * `Accept-*` hlavičky s výjimkou `Accept-version`
 * `Allow`
-* `Content-*` s těmito výjimkami: `Content-Disposition` , `Content-Encoding` a `Content-Type`
+* `Content-*` hlavičky s výjimkou `Content-Disposition` , `Content-Encoding` a `Content-Type` při použití operací post a PUT, ale nejsou zahrnuté pro operace Get
 * `Cookie`
 * `Expires`
 * `Host`

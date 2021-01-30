@@ -1,18 +1,18 @@
 ---
 title: Předdefinované definice zásad pro Azure Kognitivní hledání
 description: Seznam Azure Policy integrovaných definic zásad pro Azure Kognitivní hledání. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
-ms.date: 01/25/2021
+ms.date: 01/29/2021
 ms.topic: reference
 author: HeidiSteen
 ms.author: heidist
 ms.service: search
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 28c7d5bcd5921f9ae09496d4e7248bad93e6842c
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 2dad3d14fc52109063b39331cbef872c805180e6
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98806697"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99091076"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-cognitive-search"></a>Azure Policy předdefinované definice pro Azure Kognitivní hledání
 

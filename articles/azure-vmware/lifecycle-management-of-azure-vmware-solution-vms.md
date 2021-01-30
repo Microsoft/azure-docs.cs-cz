@@ -3,12 +3,12 @@ title: Správa životního cyklu virtuálních počítačů řešení Azure VMwa
 description: Naučte se spravovat všechny aspekty životního cyklu virtuálních počítačů řešení Azure VMware pomocí Microsoft Azurech nativních nástrojů.
 ms.topic: conceptual
 ms.date: 09/11/2020
-ms.openlocfilehash: ff1032900fa936895f3adfcb0d8a872f24948aca
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 5bba9cbbc8783cc285ff09f790ee1b35b20ba358
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326807"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062892"
 ---
 # <a name="lifecycle-management-of-azure-vmware-solution-vms"></a>Správa životního cyklu virtuálních počítačů řešení Azure VMware
 
@@ -81,13 +81,13 @@ Azure Security Center nevyžaduje nasazení. Další informace najdete v seznamu
 
 Azure ARC rozšiřuje správu Azure do jakékoli infrastruktury, včetně řešení Azure VMware, místních nebo jiných cloudových platforem.
 
-- V tématu [připojení hybridních počítačů ke službě Azure ve velkém měřítku](../azure-arc/servers/onboard-service-principal.md) povolte servery s podporou ARC Azure pro více virtuálních počítačů se systémem Windows nebo Linux.
+- Informace o povolení serverů s podporou ARC Azure pro více virtuálních počítačů se systémem Windows nebo Linux najdete v tématu věnovaném [připojení hybridních počítačů k Azure ve velkém měřítku](../azure-arc/servers/onboard-service-principal.md).
 
 ### <a name="onboard-hybrid-kubernetes-clusters-with-arc-enabled-kubernetes"></a>Připojení hybridních clusterů Kubernetes s povoleným Kubernetesem ARC
 
 Cluster Kubernetes hostovaný v prostředí řešení Azure VMware můžete připojit pomocí Kubernetes s povoleným ARC Azure. 
 
-- Přečtěte si téma [Vytvoření instančního objektu s podporou ARC Azure](../azure-arc/kubernetes/create-onboarding-service-principal.md).
+- Další informace najdete v tématu [Vytvoření instančního objektu s podporou ARC Azure](../azure-arc/kubernetes/create-onboarding-service-principal.md).
 
 ### <a name="deploy-the-log-analytics-agent"></a>Nasazení agenta Log Analytics
 

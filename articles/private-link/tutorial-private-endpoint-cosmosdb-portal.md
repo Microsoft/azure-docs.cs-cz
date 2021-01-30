@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: private-link
 ms.topic: tutorial
 ms.date: 9/25/2020
-ms.openlocfilehash: 477856bd5772cdc0a9ec00d81adf9c50847afdd0
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 3a7e75641f6bb84b490231fcd06e04c3cbad06d3
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631945"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063463"
 ---
 # <a name="tutorial-connect-to-an-azure-cosmos-account-using-an-azure-private-endpoint"></a>Kurz: připojení k účtu Azure Cosmos pomocí privátního koncového bodu Azure
 
@@ -53,7 +53,7 @@ Hostitel bastionu se bude používat k zabezpečenému připojení k virtuální
     | Skupina prostředků   | Vybrat **myResourceGroup** |
     | **Podrobnosti o instancích** |                                                                 |
     | Name             | Zadejte **myVNet**                                    |
-    | Oblast           | Vyberte **východní USA** |
+    | Region (Oblast)           | Vyberte **východní USA** |
 
 3. Vyberte kartu **IP adresy** nebo v dolní části stránky vyberte tlačítko **Další: IP adresy** .
 
@@ -104,9 +104,9 @@ V této části vytvoříte virtuální počítač, který se použije k otestov
     | Skupina prostředků | Vybrat **myResourceGroup** |
     | **Podrobnosti o instancích** |  |
     | Název virtuálního počítače | Zadejte **myVM** |
-    | Oblast | Vyberte **východní USA** |
+    | Region (Oblast) | Vyberte **východní USA** |
     | Možnosti dostupnosti | Vyberte možnost **nepožaduje se žádná redundance infrastruktury** . |
-    | Obrázek | Vyberte **Windows Server 2019 Datacenter – Gen1** |
+    | Image | Vyberte **Windows Server 2019 Datacenter – Gen1** |
     | Instance Azure Spot | Vybrat **ne** |
     | Velikost | Vyberte velikost virtuálního počítače nebo použijte výchozí nastavení. |
     | **Účet správce** |  |
@@ -174,7 +174,7 @@ V této části vytvoříte účet Cosmos DB a nakonfigurujete privátní koncov
     | Předplatné | Vyberte své předplatné Azure. |
     | Skupina prostředků | Vybrat **myResourceGroup** |
     | Umístění | Vyberte **východní USA** |
-    | Název | Zadejte **myPrivateEndpoint** |
+    | Name | Zadejte **myPrivateEndpoint** |
     | Cílový podprostředek | Ponechat výchozí **jádro (SQL)** |
     | **Sítě** |  |
     | Virtuální síť | Vybrat **myVNet** |
@@ -218,19 +218,19 @@ V této části použijete virtuální počítač, který jste vytvořili v pře
 
 1. V levém navigačním podokně vyberte **skupiny prostředků** .
 
-2. Vyberte **myResourceGroup**.
+1. Vyberte **myResourceGroup**.
 
-3. Vyberte **myVM**.
+1. Vyberte **myVM**.
 
-4. Na stránce Přehled pro **myVM** vyberte **připojit** a pak **bastionu**.
+1. Na stránce Přehled pro **myVM** vyberte **připojit** a pak **bastionu**.
 
-5. Vyberte tlačítko modrého **použití bastionu** .
+1. Vyberte tlačítko modrého **použití bastionu** .
 
-6. Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače.
+1. Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače.
 
-7. Po připojení otevřete Windows PowerShell na serveru.
+1. Po připojení otevřete Windows PowerShell na serveru.
 
-8. Zadejte `nslookup <cosmosdb-account-name>.documents.azure.com`. Nahraďte **\<cosmosdb-account-name>** názvem Cosmos DB účtu, který jste vytvořili v předchozích krocích. 
+1. Zadejte `nslookup <cosmosdb-account-name>.documents.azure.com` a ověřte překlad názvů. Nahraďte **\<cosmosdb-account-name>** názvem Cosmos DB účtu, který jste vytvořili v předchozích krocích. 
 
     ```powershell
     Server:  UnKnown
@@ -241,28 +241,31 @@ V této části použijete virtuální počítač, který jste vytvořili v pře
     Address:  10.1.0.5
     Aliases:  mycosmosdb8675.documents.azure.com
     ```
-
     Pro název Cosmos DB účtu se vrátí privátní IP adresa **10.1.0.5** .  Tato adresa je v podsíti virtuální sítě, kterou jste vytvořili dříve.
+    
+1. Získejte Azure Cosmos DB primární připojovací řetězec z portálu. Platný připojovací řetězec je ve formátu:
+   
+   Pro účty rozhraní SQL API: `https://<accountName>.documents.azure.com:443/;AccountKey=<accountKey>;` pro Azure Cosmos DB API pro MongoDB: `mongodb://<accountName>:<accountKey>@cdbmongo36.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&retrywrites=false`
 
-9. Nainstalujte na virtuální počítač [Průzkumník služby Microsoft Azure Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows&toc=%2fazure%2fstorage%2fblobs%2ftoc.json) .
+1. Nainstalujte na virtuální počítač [Průzkumník služby Microsoft Azure Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows&toc=%2fazure%2fstorage%2fblobs%2ftoc.json) .
 
-10. Po instalaci **Průzkumník služby Microsoft Azure Storage** vyberte **Dokončit** .  Ponechte zaškrtnuté políčko pro otevření aplikace.
+1. Po instalaci **Průzkumník služby Microsoft Azure Storage** vyberte **Dokončit** .  Ponechte zaškrtnuté políčko pro otevření aplikace.
 
-11. Na obrazovce **připojit k Azure Storage** vyberte **Zrušit**.
+1. Na obrazovce **připojit k Azure Storage** vyberte **Zrušit**.
 
-12. V Průzkumník služby Storage vyberte v **Cosmos DB účtech** pravé tlačítko myši a vyberte **připojit k Cosmos DB**.
+1. V Průzkumník služby Storage vyberte v **Cosmos DB účtech** pravé tlačítko myši a vyberte **připojit k Cosmos DB**.
 
-13. V části **Vybrat rozhraní API** ponechte výchozí hodnotu **SQL** .
+1. V části **Vybrat rozhraní API** ponechte výchozí hodnotu **SQL** .
 
-14. V poli **připojovací řetězec** vložte připojovací řetězec z účtu Cosmos DB, který jste zkopírovali v předchozích krocích.
+1. V poli **připojovací řetězec** vložte připojovací řetězec z účtu Cosmos DB, který jste zkopírovali v předchozích krocích.
 
-15. Vyberte **Další**.
+1. Vyberte **Další**.
 
-16. Ověřte správnost nastavení v **souhrnu připojení**.  
+1. Ověřte správnost nastavení v **souhrnu připojení**.  
 
-17. Vyberte **Connect** (Připojit).
+1. Vyberte **Connect** (Připojit).
 
-18. Ukončete připojení k **myVM**.
+1. Ukončete připojení k **myVM**.
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků

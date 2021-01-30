@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
-ms.openlocfilehash: 3cc38fad6f26bf6f382b4a275638c450c8333a04
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 221678da819d32539d0078b72a87c61851ed3e8f
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955728"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99089254"
 ---
 # <a name="connect-servicenow-with-it-service-management-connector"></a>Připojení ServiceNow ke konektoru pro správu služeb IT
 
@@ -125,7 +125,7 @@ K vytvoření připojení ServiceNow použijte následující postup.
    | **Adresa URL serveru**   | Zadejte adresu URL instance ServiceNow, ke které se chcete připojit ITSMC. Adresa URL by měla ukazovat na podporovanou verzi SaaS s příponou *. ServiceNow.com* (například https://XXXXX.service-now.com/) .|
    | **Uživatelské jméno**   | Zadejte uživatelské jméno integrace, které jste vytvořili v aplikaci ServiceNow, aby se podporovalo připojení k ITSMC.|
    | **Heslo**   | Zadejte heslo přidružené k tomuto uživatelskému jménu. **Poznámka**: uživatelské jméno a heslo se používají jenom k vytváření tokenů ověřování. Neukládají se kdekoli v rámci služby ITSMC.  |
-   | **ID klienta**   | Zadejte ID klienta, které chcete použít pro OAuth2 ověřování, které jste vygenerovali dříve. Další informace o generování ID klienta a tajného klíče najdete v tématu [Nastavení OAuth](https://wiki.servicenow.com/index.php?title=OAuth_Setup). |
+   | **ID klienta**   | Zadejte ID klienta, které chcete použít pro OAuth2 ověřování, které jste vygenerovali dříve. Další informace o generování ID klienta a tajného klíče najdete v tématu [Nastavení OAuth](https://old.wiki/index.php/OAuth_Setup). |
    | **Tajný kód klienta**   | Zadejte tajný klíč klienta generovaný pro toto ID.   |
    | **Rozsah synchronizace dat (ve dnech)** | Zadejte počet uplynulých dní, z nichž mají být data. Limit je 120 dní. |
    | **Pracovní položky, které se mají synchronizovat**   | Vyberte ServiceNow pracovní položky, které chcete synchronizovat s Azure Log Analytics prostřednictvím ITSMC. Vybrané hodnoty se importují do Log Analytics. Možnosti jsou incidenty a žádosti o změnu.|
