@@ -15,12 +15,12 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff2651d2fed9c307bbb90623572b4a74d750d3a4
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 1fa195fd8d40c6b67a9c446f0b2320fe47d75259
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94836066"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092662"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Nejčastější dotazy k Azure Active Directory Connect
 
@@ -117,7 +117,7 @@ Tady je informační dokument, který představuje některé z osvědčených po
 - Udržování konzistence verzí mezi Azure AD Connect servery co nejvíce 
 
 **Otázka: můžu Azure AD Connect vytvořit účet konektoru Azure AD na počítači pracovní skupiny?**
-Ne.  Aby bylo možné Azure AD Connect automaticky vytvořit účet konektoru služby Azure AD, musí být počítač připojený k doméně.  
+No.  Aby bylo možné Azure AD Connect automaticky vytvořit účet konektoru služby Azure AD, musí být počítač připojený k doméně.  
 
 ## <a name="network"></a>Síť
 **Otázka: Mám bránu firewall, síťové zařízení nebo něco jiného, co omezuje dobu, po kterou mohou připojení zůstat otevřená v síti. Co má prahová hodnota časového limitu na straně klienta při použití Azure AD Connect?**  
@@ -147,10 +147,10 @@ Postupujte podle pokynů uvedených v článku [obnovení certifikátů](how-to-
 
 ## <a name="environment"></a>Prostředí
 **Otázka: je podporováno přejmenování serveru po instalaci nástroje Azure AD Connect?**  
-Ne. Změna názvu serveru vykresluje synchronizační modul se nemůže připojit k instanci databáze SQL a službu nelze spustit.
+No. Změna názvu serveru vykresluje synchronizační modul se nemůže připojit k instanci databáze SQL a službu nelze spustit.
 
 **Otázka: jsou podporovaná pravidla synchronizace služby NGC (Next Generation Cryptographic) podporovaná na počítači s podporou standardu FIPS?**  
-Ne.  Není to podporováno.
+No.  Není to podporováno.
 
 **Č. Pokud je v Azure Portal zakázané synchronizované zařízení (například: HAADJ), proč se znovu aktivuje?**<br>
 Synchronizovaná zařízení můžou být vytvořená nebo spravovaná místně. Pokud je synchronizované zařízení povolené místně, může se v Azure Portal znovu povolit, i když ho správce předtím zakázal. Pokud chcete zakázat synchronizované zařízení, použijte k zakázání účtu počítače místní službu Active Directory.
@@ -162,8 +162,8 @@ Synchronizovaná uživatelé mohou být vytvořeni nebo v místním prostředí.
 **Otázka: Proč atribut userPrincipalName (UPN) ve službě Azure AD neodpovídá místnímu hlavnímu názvu uživatele (UPN)?**  
 Informace najdete v těchto článcích:
 
-* [Uživatelská jména v Microsoft 365, Azure nebo Intune se neshodují s místním hlavním názvem uživatele (UPN) nebo alternativním přihlašovacím ID.](https://support.microsoft.com/kb/2523192)
-* [Po změně hlavního názvu uživatele (UPN) uživatelského účtu na používání jiné federované domény nejsou změny synchronizované nástrojem Azure Active Directory Sync.](https://support.microsoft.com/kb/2669550)
+* [Uživatelská jména v Microsoft 365, Azure nebo Intune se neshodují s místním hlavním názvem uživatele (UPN) nebo alternativním přihlašovacím ID.](https://mskb.pkisolutions.com/kb/2523192)
+* [Po změně hlavního názvu uživatele (UPN) uživatelského účtu na používání jiné federované domény nejsou změny synchronizované nástrojem Azure Active Directory Sync.](https://mskb.pkisolutions.com/kb/2669550)
 
 Můžete taky nakonfigurovat službu Azure AD tak, aby synchronizačnímu modulu umožnila aktualizovat hlavní název uživatele (UPN), jak je popsáno v tématu [funkce služby Azure AD Connect Sync](how-to-connect-syncservice-features.md).
 
@@ -178,7 +178,7 @@ Ne, ručně nastavovat atribut ImmutableId u stávající skupiny Azure AD nebo 
 S výjimkou rutin, které jsou popsány v tomto webu, jiné rutiny prostředí PowerShell nalezené v Azure AD Connect nejsou podporovány pro použití zákazníkem.
 
 **Otázka: je možné použít možnost Import serveru/import serveru, která se nachází v Synchronization Service Manager pro přesunutí konfigurace mezi servery?**  
-Ne. Tato možnost nenačte všechna nastavení konfigurace a neměla by se používat. Místo toho použijte průvodce k vytvoření základní konfigurace na druhém serveru a pomocí editoru pravidla synchronizace vygenerujte skripty PowerShellu pro přesunutí libovolného vlastního pravidla mezi servery. Další informace najdete v tématu věnovaném [migraci](how-to-upgrade-previous-version.md#swing-migration).
+No. Tato možnost nenačte všechna nastavení konfigurace a neměla by se používat. Místo toho použijte průvodce k vytvoření základní konfigurace na druhém serveru a pomocí editoru pravidla synchronizace vygenerujte skripty PowerShellu pro přesunutí libovolného vlastního pravidla mezi servery. Další informace najdete v tématu věnovaném [migraci](how-to-upgrade-previous-version.md#swing-migration).
 
 **Otázka: je možné ukládat hesla do mezipaměti pro přihlašovací stránku Azure a může být ukládání do mezipaměti znemožněno, protože obsahuje element vstupu hesla s atributem *AutoComplete = "false"* ?**  
 V současné době není podporována změna atributů HTML pole **heslo** , včetně značky automatického dokončování. V současné době pracujeme na funkci, která umožňuje vlastní JavaScript, který umožňuje přidat libovolný atribut do pole **heslo** .
@@ -187,7 +187,7 @@ V současné době není podporována změna atributů HTML pole **heslo** , vč
 V současné době není podporována změna atributů HTML pole pro zadání **hesla** , včetně značky automatického dokončování. V současné době pracujeme na funkci, která umožňuje vlastní JavaScript, který umožňuje přidat libovolný atribut do pole **heslo** .
 
 **Otázka: existuje způsob, jak zabránit souběžným relacím?**  
-Ne.
+No.
 
 ## <a name="auto-upgrade"></a>Automatický upgrade
 

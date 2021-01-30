@@ -8,19 +8,19 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 78d4d9a8b5023731530c5e348f5c9ba72815d410
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 594dd2fd154b37eed49c069cef1b539e13ca6876
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445638"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99094238"
 ---
 # <a name="managed-hsm-role-management"></a>Správa rolí pro Managed HSM
 
 > [!NOTE]
 > Key Vault podporuje dva typy prostředků: trezory a spravované HSM. Tento článek se týká **spravovaného modulu HSM**. Pokud se chcete dozvědět, jak spravovat trezor, přečtěte si téma [správa Key Vault pomocí rozhraní příkazového řádku Azure CLI](../general/manage-with-cli2.md).
 
-Přehled spravovaného modulu HSM najdete v tématu [co je spravovaný modul HSM?](overview.md). Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Přehled spravovaného modulu HSM najdete v tématu [co je spravovaný modul HSM?](overview.md). Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 Tento článek ukazuje, jak spravovat role pro spravovanou rovinu dat HSM. Další informace o spravovaném modelu řízení přístupu HSM najdete v tématu [spravované řízení přístupu HSM](access-control.md).
 
@@ -28,7 +28,7 @@ Aby objekt zabezpečení (například uživatel, instanční objekt, skupina neb
 
 Seznam všech spravovaných rolí modulu HSM a operací, které umožňují, najdete v tématu [vestavěné předdefinované role HSM](built-in-roles.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete používat příkazy rozhraní příkazového řádku Azure CLI v tomto článku, musíte mít následující položky:
 
@@ -81,6 +81,9 @@ Všechna přiřazení rolí na úrovni HSM pro určitého uživatele **user1@con
 ```azurecli-interactive
 az keyvault role assignment list --hsm-name ContosoMHSM --assignee user@contoso.com
 ```
+
+> [!NOTE]
+> Když je Scope/(nebo/Keys), příkaz list zobrazí jenom všechna přiřazení rolí na nejvyšší úrovni a nezobrazuje přiřazení rolí na úrovni jednotlivých klíčů.
 
 Všechna přiřazení rolí pro konkrétního uživatele **user2@contoso.com** pro konkrétní klíč **myrsakey**.
 

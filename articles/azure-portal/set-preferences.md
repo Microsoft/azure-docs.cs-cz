@@ -4,12 +4,12 @@ description: Výchozí nastavení Azure Portal můžete změnit tak, aby splňov
 keywords: nastavení, časový limit, jazyk, oblast
 ms.date: 08/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 07dd3eb5cb132adf87852f29d867be772294d189
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 5a108f1cd3b5af6655b592e7283192d4d54498ac
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745634"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99094106"
 ---
 # <a name="manage-azure-portal-settings-and-preferences"></a>Správa nastavení a předvoleb na webu Azure Portal
 
@@ -91,7 +91,7 @@ Pokud správce povolil zásady časových limitů nečinnosti, můžete nastavit
 
 ### <a name="change-the-directory-timeout-setting-admin"></a>Změna nastavení časového limitu adresáře (správce)
 
-Správci v [roli globálního správce](../active-directory/roles/permissions-reference.md#global-administrator--company-administrator) můžou vymáhat maximální dobu nečinnosti před odhlášením relace. Nastavení časového limitu nečinnosti se vztahuje na úrovni adresáře. Nastavení se projeví pro nové relace. Nebude okamžitě platit pro všechny uživatele, kteří jsou už přihlášení. Další informace o adresářích najdete v tématu [přehled Active Directory Domain Services](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview).
+Správci v [roli globálního správce](../active-directory/roles/permissions-reference.md#global-administrator) můžou vymáhat maximální dobu nečinnosti před odhlášením relace. Nastavení časového limitu nečinnosti se vztahuje na úrovni adresáře. Nastavení se projeví pro nové relace. Nebude okamžitě platit pro všechny uživatele, kteří jsou už přihlášení. Další informace o adresářích najdete v tématu [přehled Active Directory Domain Services](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview).
 
 Pokud jste globální správce a chcete vyhodnotit nastavení časového limitu nečinnosti pro všechny uživatele Azure Portal, postupujte podle následujících kroků:
 

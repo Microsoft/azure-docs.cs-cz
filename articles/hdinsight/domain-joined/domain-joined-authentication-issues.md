@@ -4,12 +4,12 @@ description: Problémy s ověřováním ve službě Azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/24/2020
-ms.openlocfilehash: a0ca7cb8797b90d8cf933733c48be299e79be8aa
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: b5a55b3b5f9affcd9f34e1c0d4c439a7ada8c0b9
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98933612"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99095120"
 ---
 # <a name="authentication-issues-in-azure-hdinsight"></a>Problémy s ověřováním ve službě Azure HDInsight
 
@@ -35,7 +35,7 @@ Kód chyby Azure AD 50126 znamená, že `AllowCloudPasswordValidation` klient ne
 
 ### <a name="resolution"></a>Řešení
 
-Správce společnosti tenanta Azure AD by měl povolit, aby služba Azure AD používala pro uživatele v AD FS hodnoty hash hesel.  Použijte, `AllowCloudPasswordValidationPolicy` jak je uvedeno v článku [použití balíček zabezpečení podniku ve službě HDInsight](../domain-joined/apache-domain-joined-architecture.md).
+Globální správce tenanta Azure AD by měl povolit, aby služba Azure AD používala hodnoty hash hesel pro uživatele se službou AD FS.  Použijte, `AllowCloudPasswordValidationPolicy` jak je uvedeno v článku [použití balíček zabezpečení podniku ve službě HDInsight](../domain-joined/apache-domain-joined-architecture.md).
 
 ---
 

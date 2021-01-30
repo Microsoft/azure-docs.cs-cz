@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 619f2c2670d8e376ad0bca7cf8b93b971be067a0
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: fd39f5e0af34c702cddc8e08b6a94e428c7f0167
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880721"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092046"
 ---
 # <a name="security-control-v2-privileged-access"></a>Řízení zabezpečení v2: privilegovaný přístup
 
@@ -26,7 +26,7 @@ Privilegovaný přístup pokrývá ovládací prvky pro ochranu privilegovaného
 
 Omezte počet vysoce privilegovaných uživatelských účtů a chraňte tyto účty na vyšší úrovni. Nejdůležitější předdefinované role v Azure AD jsou globální správce a správce privilegovaných rolí, protože uživatelé přiřazení k těmto dvěma rolím můžou delegovat role správce. Díky těmto oprávněním můžou uživatelé přímo nebo nepřímo číst a upravovat všechny prostředky v prostředí Azure:
 
-- Globální správce/správce společnosti: uživatelé s touto rolí mají přístup ke všem funkcím pro správu ve službě Azure AD a službám, které používají identity Azure AD.
+- Globální správce: uživatelé s touto rolí mají přístup ke všem funkcím pro správu v Azure AD a službám, které používají identity Azure AD.
 
 - Správce privilegovaných rolí: uživatelé s touto rolí můžou spravovat přiřazení rolí v Azure AD i v Azure AD Privileged Identity Management (PIM). Tato role navíc umožňuje správu všech aspektů PIM a administrativních jednotek.
 

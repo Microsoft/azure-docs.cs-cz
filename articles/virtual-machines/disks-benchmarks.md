@@ -1,26 +1,26 @@
 ---
-title: Srovnávací testování vaší aplikace v Azure Disk Storage
+title: Srovnávací test aplikace v Azure Disk Storage
 description: Přečtěte si o procesu srovnávacích testů vaší aplikace v Azure.
 author: roygara
 ms.author: rogarana
-ms.date: 01/11/2019
+ms.date: 01/29/2021
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 0d1fb4d51aa08ce1c4889e82d7284da05a68aa17
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: bfda14acc2e50005e25faafa3037805af871c1df
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98540602"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99094587"
 ---
-# <a name="benchmarking-a-disk"></a>Srovnávací testování disku
+# <a name="benchmark-a-disk"></a>Srovnávací test disku
 
-Srovnávací testy je proces simulace různých úloh ve vaší aplikaci a měření výkonu aplikace pro jednotlivé úlohy. Pomocí kroků popsaných v [článku návrh pro vysoký výkon](premium-storage-performance.md)jste shromáždili požadavky na výkon aplikace. Spuštěním nástrojů srovnávacích testů na virtuálních počítačích, které hostují aplikaci, můžete určit úrovně výkonu, které může vaše aplikace dosáhnout, pomocí Premium Storage. V tomto článku poskytujeme příklady srovnávacích testů standardního virtuálního počítače s DS14, které jsou zřízené pomocí disků Azure Premium Storage.
+Srovnávací testy je proces simulace různých úloh ve vaší aplikaci a měření výkonu aplikace pro jednotlivé úlohy. Pomocí kroků popsaných v [článku návrh pro vysoký výkon](premium-storage-performance.md)jste shromáždili požadavky na výkon aplikace. Spuštěním nástrojů srovnávacích testů na virtuálních počítačích, které hostují aplikaci, můžete určit úrovně výkonu, které aplikace může dosáhnout pomocí Premium SSD. V tomto článku vám poskytneme příklady srovnávacích testů pro virtuální počítač s Standard_D8ds_v4em zřízeným pomocí Azure Premium SSD.
 
-V uvedeném pořadí jsme používali běžné nástroje pro srovnávací testy IOMeter a FIO pro systémy Windows a Linux. Tyto nástroje sestaví více vláken simulujch produkční prostředí, jako je úloha, a změřte výkon systému. Pomocí nástrojů můžete také nakonfigurovat parametry jako velikost bloku a hloubku fronty, které obvykle nelze pro aplikaci změnit. Díky tomu máte větší flexibilitu pro zajištění maximálního výkonu pro virtuální počítač s vysokým rozsahem zřízeného pomocí prémiových disků pro různé typy úloh aplikací. Další informace o nástroji pro srovnávací testy najdete v [IOMeter](http://www.iometer.org/) a [FIO](http://freecode.com/projects/fio).
+V uvedeném pořadí jsme používali běžné nástroje pro srovnávací testy DiskSpd a FIO pro systémy Windows a Linux. Tyto nástroje sestaví více vláken simulujch produkční prostředí, jako je úloha, a změřte výkon systému. Pomocí nástrojů můžete také nakonfigurovat parametry jako velikost bloku a hloubku fronty, které obvykle nelze pro aplikaci změnit. Díky tomu máte větší flexibilitu pro zajištění maximálního výkonu na vysoce škálovatelném virtuálním počítači s SSD Premium pro různé typy úloh aplikací. Další informace o nástroji pro srovnávací testy najdete v [DiskSpd](https://github.com/Microsoft/diskspd/wiki/) a [FIO](http://freecode.com/projects/fio).
 
-Pokud chcete postupovat podle níže uvedených příkladů, vytvořte standardní virtuální počítač s DS14 a připojte 11 Premium Storage disků k virtuálnímu počítači. Z 11 disků nakonfigurujte 10 disků s ukládáním do mezipaměti hostitele jako "none" a je do svazku s názvem NoCacheWrites. Nakonfigurujte ukládání do mezipaměti hostitele jako "ReadOnly" na zbývajícím disku a vytvořte svazek s názvem CacheReads s tímto diskem. Pomocí tohoto nastavení můžete zobrazit maximální výkon čtení a zápisu ze standardního virtuálního počítače DS14. Podrobné pokyny k vytvoření virtuálního počítače s DS14 pomocí Premium SSD najdete v [návrhu pro vysoký výkon](premium-storage-performance.md).
+Pokud chcete postupovat podle níže uvedených příkladů, vytvořte Standard_D8ds_v4 a připojte k virtuálnímu počítači čtyři SSD úrovně Premium. Na čtyřech discích nakonfigurujte tři s ukládáním do mezipaměti hostitele jako "none" a propruhujte je na svazek s názvem NoCacheWrites. Nakonfigurujte ukládání do mezipaměti hostitele jako "ReadOnly" na zbývajícím disku a vytvořte svazek s názvem CacheReads s tímto diskem. Pomocí tohoto nastavení můžete zobrazit maximální výkon čtení a zápisu z Standard_D8ds_v4 virtuálního počítače. Podrobné pokyny k vytvoření Standard_D8ds_v4 s využitím Premium SSD najdete v tématu [navrhování pro vysoký výkon](premium-storage-performance.md).
 
 [!INCLUDE [virtual-machines-disks-benchmarking](../../includes/virtual-machines-managed-disks-benchmarking.md)]
 

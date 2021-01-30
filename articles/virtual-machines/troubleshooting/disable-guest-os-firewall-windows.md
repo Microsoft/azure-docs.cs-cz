@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: c0426c5359e4d82d0316613586b9298596d82605
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74d06d3d4aaa0d76b80257d2148fb62f71c3fdb0
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87009760"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99093191"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>Zakázání brány firewall hostovaného operačního systému na virtuálním počítači Azure
 
@@ -47,7 +47,7 @@ Pokud máte funkčního agenta Azure, můžete použít [rozšíření vlastníc
 >   ```
 > * Pokud je brána firewall nastavená prostřednictvím zásad služby Active Directory, můžete pro dočasný přístup použít příkaz Spustit následující skript. 
 >   ```
->   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile' -name "EnableFirewall" -Value 0
+>   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile' -name "EnableFirewall" -Value 0
 >   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile' -name "EnableFirewall" -Value 0
 >   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile' -name "EnableFirewall" -Value 0
 >   Restart-Service -Name mpssvc
@@ -88,7 +88,7 @@ Pokud máte funkčního agenta Azure, můžete použít [rozšíření vlastníc
 
 #### <a name="mitigation-4-remote-registry"></a>Zmírnění 4: vzdálený registr 
 
-Při použití [vzdáleného registru](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry)použijte následující postup.
+Při použití [vzdáleného registru](https://www.betaarchive.com/wiki/index.php?title=Microsoft_KB_Archive/314837)použijte následující postup.
 
 1.  Na virtuálním počítači pro řešení potíží spusťte Editor registru a pak klikněte na **soubor**  >  **připojit k síťovému registru**.
 
@@ -126,7 +126,7 @@ Pokud máte situaci, kdy se k virtuálnímu počítači nemůžete dostat pomoc�
 
 4.  Než provedete jakékoli změny, vytvořte kopii složky \Windows\System32\Config v případě, že je nutné vrátit zpět změny.
 
-5.  Na virtuálním počítači pro řešení potíží spusťte Editor registru (regedit.exe). 
+5.  Na virtuálním počítači pro řešení potíží spusťte Editor registru (regedit.exe). 
 
 6.  Pro tento postup řešení potíží Namontujte podregistry jako BROKENSYSTEM a BROKENSOFTWARE.
 

@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: 7c3bca9e5ad87c681fc38a5c618331a3f7a97ae1
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 8b46d08da87565d133962c23e8281b221544d9ca
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897506"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092513"
 ---
 # <a name="tutorial-discover-hyper-v-vms-with-server-assessment"></a>Kurz: zjišťování virtuálních počítačů Hyper-V pomocí posouzení serveru
 
@@ -87,7 +87,7 @@ Ověření požadavků hostitele | Kontroluje, zda je na hostiteli spuštěná p
 Ověřit verzi PowerShellu | Kontroluje, zda spouštíte skript v podporované verzi prostředí PowerShell. | Podívejte se na hostitele Hyper-V, na kterém běží PowerShell verze 4,0 nebo novější.
 Vytvoření účtu | Ověřuje, zda máte správná oprávnění pro hostitele Hyper-V.<br/><br/> Umožňuje vytvořit místní uživatelský účet se správnými oprávněními. | Možnost 1: Připravte účet s přístupem správce k hostitelskému počítači Hyper-V.<br/><br/> Možnost 2: Připravte účet místního správce nebo účet správce domény a přidejte tento účet do těchto skupin: Uživatelé vzdálené správy, Správci technologie Hyper-V a uživatelé nástroje Performance Monitor.
 Povolit vzdálenou komunikaci PowerShellu | Povolí vzdálenou komunikaci PowerShellu na hostiteli, aby zařízení Azure Migrate mohlo spouštět na hostiteli příkazy PowerShellu přes připojení WinRM. | Pokud chcete nastavit, otevřete v každém hostiteli konzolu PowerShellu jako správce a spusťte tento příkaz: ``` powershell Enable-PSRemoting -force ```
-Nastavení integračních služeb technologie Hyper-V | Kontroluje, zda jsou integrační služby technologie Hyper-V povoleny na všech virtuálních počítačích spravovaných hostitelem. | Povolte na každém virtuálním počítači [integrační služby technologie Hyper-V](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services.md) .<br/><br/> Pokud používáte systém Windows Server 2003, [postupujte podle těchto pokynů](prepare-windows-server-2003-migration.md).
+Nastavení integračních služeb technologie Hyper-V | Kontroluje, zda jsou integrační služby technologie Hyper-V povoleny na všech virtuálních počítačích spravovaných hostitelem. | Povolte na každém virtuálním počítači [integrační služby technologie Hyper-V](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services) .<br/><br/> Pokud používáte systém Windows Server 2003, [postupujte podle těchto pokynů](prepare-windows-server-2003-migration.md).
 Delegovat přihlašovací údaje, pokud se disky virtuálních počítačů nacházejí ve vzdálených sdílených složkách protokolu SMB | Delegáti pověření | Spuštěním tohoto příkazu povolíte zprostředkovateli CredSSP delegovat přihlašovací údaje na hostitelích, na kterých běží virtuální počítače Hyper-V s disky ve sdílených složkách SMB: ```powershell Enable-WSManCredSSP -Role Server -Force ```<br/><br/> Tento příkaz můžete spustit vzdáleně na všech hostitelích Hyper-V.<br/><br/> Pokud přidáte nové uzly hostitele v clusteru, jsou automaticky přidány pro zjišťování, ale je nutné povolit zprostředkovatele CredSSP ručně.<br/><br/> Když zařízení nastavíte, dokončíte nastavení CredSSP [jeho povolením na zařízení](#delegate-credentials-for-smb-vhds). 
 
 ### <a name="run-the-script"></a>Spuštění skriptu

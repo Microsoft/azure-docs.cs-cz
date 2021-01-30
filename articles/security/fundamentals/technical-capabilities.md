@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2020
 ms.author: terrylan
-ms.openlocfilehash: 575486a89cd078325b76fa684ff9bd3d59a619c9
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 353b1708a1c6014f9108ad2be62f22c1e0b0604c
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844263"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092764"
 ---
 # <a name="azure-security-technical-capabilities"></a>Technické možnosti zabezpečení Azure
 Tento článek poskytuje Úvod do služby zabezpečení v Azure, které vám pomůžou chránit vaše data, prostředky a aplikace v cloudu a splňovat požadavky na zabezpečení vaší firmy.
@@ -181,7 +181,7 @@ Pro organizace, které potřebují zabezpečený přístup z několika pracovní
 
 Pro organizace, které potřebují zabezpečený přístup z jedné pracovní stanice umístěné místně do Azure, použijte [VPN typu Point-to-site](../../vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal.md).
 
-Větší sady dat lze přesunout pomocí vyhrazeného vysokorychlostního propojení WAN, například [ExpressRoute](https://azure.microsoft.com/services/expressroute/). Pokud se rozhodnete používat ExpressRoute, můžete také šifrovat data na úrovni aplikace pomocí [protokolu SSL/TLS](https://support.microsoft.com/kb/257591) nebo jiných protokolů pro přidání ochrany.
+Větší sady dat lze přesunout pomocí vyhrazeného vysokorychlostního propojení WAN, například [ExpressRoute](https://azure.microsoft.com/services/expressroute/). Pokud se rozhodnete používat ExpressRoute, můžete také šifrovat data na úrovni aplikace pomocí [protokolu SSL/TLS](https://web.archive.org/web/20150221085231/http://support.microsoft.com:80/kb/257591) nebo jiných protokolů pro přidání ochrany.
 
 Pokud spolupracujete s Azure Storage prostřednictvím webu Azure Portal, všechny transakce nastávají prostřednictvím protokolu HTTPS. K interakci s [Azure Storage](https://azure.microsoft.com/services/storage/) a [Azure SQL Database](https://azure.microsoft.com/services/sql-database/)je také možné použít [REST API úložiště](/rest/api/storageservices/) prostřednictvím protokolu HTTPS.
 
@@ -339,7 +339,7 @@ Tato metoda umožňuje konsolidovat data z nejrůznějších zdrojů, takže mů
 
 Služba Security Center analyzuje stav zabezpečení vašich prostředků Azure, aby identifikovala potenciální ohrožení zabezpečení. Seznam doporučení vás provede procesem konfigurace potřebných kontrol.
 
-Příklady:
+Mezi příklady patří:
 
 - Zřizování antimalwaru, aby se pomohl identifikovat a odebrat škodlivý software
 

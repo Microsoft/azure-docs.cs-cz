@@ -1,17 +1,17 @@
 ---
 title: Přehled redundantní vysoké dostupnosti zóny s Azure Database for MySQLm flexibilním serverem
 description: Přečtěte si o konceptech redundantní vysoké dostupnosti zóny s Azure Database for MySQL flexibilním serverem.
-author: mksuni
-ms.author: sumuth
+author: ambhatna
+ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 09/21/2020
-ms.openlocfilehash: cd7be998c49a710ee7652cf18c35bed743606ffd
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.date: 01/29/2021
+ms.openlocfilehash: f01a0869f7786ee6197835610456f4bb1cbd6b03
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93241180"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99097113"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-mysql-flexible-server-preview"></a>Koncepty vysoké dostupnosti v Azure Database for MySQL flexibilním serveru (Preview)
 
@@ -48,7 +48,7 @@ Tady jsou některé výhody použití funkce redundance v zóně s vysokou dostu
 -   Pohotovostní replika bude nasazena v přesné konfiguraci virtuálního počítače, jako je například virtuální jádra, Storage, nastavení sítě (virtuální síť, brána firewall) atd.
 -   Možnost odebrání záložní repliky tím, že zakážete vysokou dostupnost.
 -   Automatické zálohování jsou založené na snímku, který se provádí z primárního databázového serveru a je uložený v zóně redundantního úložiště.
--   Pokud dojde k převzetí služeb při selhání, v původní primární zóně dostupnosti se zřídí nová záložní replika.
+-   V případě převzetí služeb při selhání bude Azure Database for MySQL flexibilní server automaticky převzetí služeb při selhání do pohotovostní repliky, pokud je povolená vysoká dostupnost. Nastavení vysoké dostupnosti monitoruje primární server a vrátí ho zpátky do režimu online.
 -   Klienti se vždy připojují k primárnímu databázovému serveru.
 -   Pokud dojde k selhání databáze nebo selhání uzlu, bude proveden pokus o restartování na stejném uzlu. V případě selhání se aktivuje automatické převzetí služeb při selhání.
 -   Možnost restartovat server a vybrat všechny změny parametrů statického serveru.

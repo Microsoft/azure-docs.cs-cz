@@ -3,17 +3,17 @@ title: Co je nového ve virtuálním počítači s Windows? – Azure
 description: Nové funkce a aktualizace produktů pro virtuální počítač s Windows
 author: Heidilohr
 ms.topic: overview
-ms.date: 01/06/2021
+ms.date: 01/29/2021
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: 2f49ec0fef5aa79c602e561746eb0f6dba16cb33
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 56013a51937915cc240e2bd0ec26342c24c79807
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98876593"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99095902"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Co je nového ve virtuálním počítači s Windows?
 
@@ -25,6 +25,61 @@ Virtuální počítače s Windows se pravidelně aktualizují. V tomto článku 
 - Opravy chyb
 
 Tento článek se aktualizuje měsíčně. Nezapomeňte se podívat, jak často se budou zobrazovat nové aktualizace.
+
+## <a name="client-updates"></a>Aktualizace klienta
+
+V těchto článcích najdete informace o aktualizacích pro naše klienty pro virtuální počítače a službu Vzdálená plocha systému Windows:
+
+- [Windows](/windows-server/remote/remote-desktop-services/clients/windowsdesktop-whatsnew)
+- [macOS](/windows-server/remote/remote-desktop-services/clients/mac-whatsnew)
+- [iOS](/windows-server/remote/remote-desktop-services/clients/ios-whatsnew)
+- [Android](/windows-server/remote/remote-desktop-services/clients/android-whatsnew)
+- [Web](/windows-server/remote/remote-desktop-services/clients/web-client-whatsnew)
+
+## <a name="fslogix-updates"></a>FSLogix aktualizace
+
+Zajímá se o nejnovějších aktualizacích pro FSLogix? Podívejte se, [co je nového na FSLogix](/fslogix/whats-new.md).
+
+## <a name="january-2021"></a>Leden 2021
+
+Tady je postup, který se změnil v lednu 2021:
+
+### <a name="new-windows-virtual-desktop-offer"></a>Nová nabídka virtuálních počítačů s Windows
+
+Noví zákazníci ušetří po použití nativního řešení společnosti Microsoft náklady na výpočetní výkon virtuálních počítačů s Windows pro virtuální počítače řady D-Series a BS-Series po dobu až 90 dnů. Tuto nabídku můžete uplatnit v Azure Portal do 31. března 2021. Další informace najdete na naší [stránce nabídky virtuálních počítačů s Windows](https://azure.microsoft.com/services/virtual-desktop/offer/).
+
+### <a name="networksecuritygrouprules-value-change"></a>Změna hodnoty networkSecurityGroupRules 
+
+Ve vnořené šabloně Azure Resource Manager jsme změnili výchozí hodnotu pro networkSecurityGroupRules z objektu na Array. Tato akce zabrání jakýmkoli chybám, pokud použijete managedDisks-customimagevm.jsna bez zadání hodnoty pro networkSecurityGroupRules. Nejedná se o zásadní změnu, která je zpětně kompatibilní.
+
+### <a name="fslogix-hotfix-update"></a>Aktualizace hotfix FSLogix
+
+Vydali jsme FSLogix, verze 2009 HF_01 (2.9.7654.46150), která řeší problémy v předchozí verzi (2.9.7621.30127). Doporučujeme zastavit používání předchozí verze a co nejdříve aktualizovat FSLogix.
+
+Další informace najdete v poznámkách k verzi v tématu [co je nového v FSLogix](/fslogix/whats-new.md#fslogix-apps-2009-hf_01-29765446150).
+
+### <a name="azure-portal-experience-improvements"></a>Vylepšení Azure Portalho prostředí
+
+Provedli jsme následující vylepšení Azure Portalho prostředí:
+
+- Nyní můžete přidat pověření místního správce virtuálního počítače přímo místo nutnosti přidat místní účet vytvořený s přihlašovacími údaji účtu služby Active Directory Domain JOIN.
+- Uživatelé teď můžou v jednotlivých uživatelích a skupinách zobrazit seznam přiřazení jednotlivců i skupin na samostatných kartách.
+- Číslo verze agenta virtuálního počítače s Windows je teď viditelné v přehledu virtuálních počítačů pro fondy hostitelů.
+- Přidání hromadného odstranění pro fondy hostitelů a skupiny aplikací.
+- Nyní můžete zapnout nebo vypnout režim vyprázdnění pro více hostitelů relací v hostitelském fondu.
+- Ze stránky s podrobnostmi virtuálního počítače se odebralo pole veřejné IP adresy.
+
+### <a name="windows-virtual-desktop-agent-troubleshooting"></a>Řešení potíží s agentem virtuálních počítačů s Windows
+
+Nedávno jsme nastavili [příručku pro odstraňování potíží s agentem virtuálního počítače s Windows](troubleshoot-agent.md) , která pomůže zákazníkům, kteří narazili na běžné problémy.
+
+### <a name="microsoft-defender-for-endpoint-integration"></a>Microsoft Defender pro integraci koncových bodů
+
+Integrace Microsoft Defenderu pro Endpoint Integration je teď všeobecně dostupná. Tato funkce poskytuje virtuálním počítačům s Windows stejné možnosti šetření jako místní počítač s Windows 10. Pokud používáte více než Windows 10 Enterprise multi-session, Microsoft Defender pro koncové body bude podporovat až 50 souběžných uživatelských připojení a poskytuje vám úspory nákladů na Windows 10 Enterprise a spolehlivost programu Microsoft Defender pro koncový bod. Další informace najdete v našem [blogovém příspěvku](https://techcommunity.microsoft.com/t5/microsoft-defender-for-endpoint/windows-virtual-desktop-support-is-now-generally-available/ba-p/2103712).
+
+### <a name="azure-security-baseline-for-windows-virtual-desktop"></a>Základní hodnoty zabezpečení Azure pro virtuální počítače s Windows
+
+Nedávno jsme publikovali [článek o směrném plánu zabezpečení Azure](security-baseline.md) pro virtuální počítače s Windows, na který bychom rádi volali vaši pozornost. Tyto pokyny obsahují informace o tom, jak použít srovnávací testy zabezpečení Azure verze 2,0 pro virtuální počítače s Windows. Srovnávací test zabezpečení Azure popisuje nastavení a postupy, které doporučujeme použít k zabezpečení cloudových řešení v Azure.
 
 ## <a name="december-2020"></a>Prosinec 2020
 
@@ -257,16 +312,6 @@ Přidali jsme nový cluster brány v Jižní Africe, aby se snížila latence p�
 Provedli jsme několik vylepšení Microsoft Teams pro virtuální počítače s Windows. Nejdůležitější je, že Windows Virtual Desktop teď podporuje zvukové a vizuální přesměrování pro volání. Přesměrování vylepšuje latenci vytvořením přímých cest mezi uživateli při volání pomocí zvuku nebo videa. Menší vzdálenost znamená menší počet segmentů směrování, což způsobí, že volání budou vypadat a hladce zvuk.
 
 Další informace najdete v [našem blogovém příspěvku](https://azure.microsoft.com/updates/windows-virtual-desktop-media-optimization-for-microsoft-teams-is-now-available-in-public-preview/).
-
-## <a name="client-updates"></a>Aktualizace klienta
-
-V těchto článcích najdete informace o aktualizacích pro naše klienty pro virtuální počítače a službu Vzdálená plocha systému Windows:
-
-- [Windows](/windows-server/remote/remote-desktop-services/clients/windowsdesktop-whatsnew)
-- [macOS](/windows-server/remote/remote-desktop-services/clients/mac-whatsnew)
-- [iOS](/windows-server/remote/remote-desktop-services/clients/ios-whatsnew)
-- [Android](/windows-server/remote/remote-desktop-services/clients/android-whatsnew)
-- [Web](/windows-server/remote/remote-desktop-services/clients/web-client-whatsnew)
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -192,6 +192,8 @@
       items:
         - name: Standardní hodnoty zabezpečení
           href: security-baseline.md
+        - name: Mechanismy zabezpečení služby Azure Policy
+          href: ./security-controls-policy.md
         - name: Ověřování doručování událostí do obslužných rutin událostí
           href: security-authentication.md
         - name: Ověřování klientů publikování

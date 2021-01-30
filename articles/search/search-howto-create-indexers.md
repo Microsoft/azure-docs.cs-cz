@@ -8,26 +8,26 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/28/2021
-ms.openlocfilehash: 0483030312493dde9a50ab9000fbe29f19bfaff4
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: c26529f48d03b8cd038ce4fea8164a305dfc17f3
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063931"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99097636"
 ---
 # <a name="create-a-search-indexer"></a>Vytvořit indexer vyhledávání
 
-Indexer vyhledávání poskytuje automatizované pracovní postupy pro přenos dokumentů a obsahu z externího zdroje dat do indexu vyhledávání v rámci vyhledávací služby. Jak jsme původně navrhli, extrahuje text a metadata ze zdrojů dat Azure, rozbalí dokumenty do formátu JSON a předá výsledné dokumenty do vyhledávacího modulu pro indexování. Od tohoto okamžiku se rozšířila podpora [rozšíření AI](cognitive-search-concept-intro.md) pro zpracování hloubkového obsahu. 
+Indexer vyhledávání poskytuje automatizované pracovní postupy pro přenos dokumentů a obsahu z externího zdroje dat do indexu vyhledávání v rámci vyhledávací služby. Jak jsme původně navrhli, extrahuje text a metadata ze zdroje dat Azure, zabalí dokumenty do formátu JSON a předá výsledné dokumenty do vyhledávacího modulu pro indexování. Od tohoto okamžiku se rozšířila podpora [rozšíření AI](cognitive-search-concept-intro.md) pro zpracování hloubkového obsahu. 
 
-Použití indexerů významně snižuje množství a složitost kódu, který potřebujete napsat. Tento článek se zaměřuje na mechanismy a strukturu indexerů, které zapisuje základ před zkoumáním indexerů specifických pro zdroj a [dovednosti](cognitive-search-working-with-skillsets.md).
+Použití indexerů významně snižuje množství a složitost kódu, který potřebujete napsat. Tento článek se zaměřuje na mechanismy vytváření indexeru jako přípravy pro pokročilejší práci s indexery specifickými pro zdroj a [dovednosti](cognitive-search-working-with-skillsets.md).
 
 ## <a name="whats-an-indexer-definition"></a>Co je definice indexeru?
 
-Indexery se používají pro indexaci založené na textu, který získává text ze zdrojových polí do polí indexu nebo zpracování na bázi AI, které analyzuje nerozlišený text pro strukturu nebo analyzuje obrázky pro text a informace. Následující definice indexu jsou typické z toho, co můžete vytvořit pro kterýkoli scénář.
+Indexery se používají pro indexování založené na textu, které vydávají alfanumerický obsah ze zdrojových polí do polí indexu nebo zpracování na bázi AI, které analyzuje nerozlišený text pro strukturu nebo analyzuje obrázky pro text a informace a také přidává obsah do indexu. Následující definice indexu jsou typické z toho, co můžete vytvořit pro kterýkoli scénář.
 
 ### <a name="indexers-for-text-content"></a>Indexery pro textový obsah
 
-Původní účel indexeru byl zjednodušit složitý proces načítání indexu tím, že poskytuje mechanismus pro připojení a čtení textu a číselného obsahu z polí ve zdroji dat, serializaci tohoto obsahu jako dokumentů JSON a předání těchto dokumentů do vyhledávacího modulu pro indexování. Toto je stále primární případ použití a pro tuto operaci budete muset vytvořit indexer s vlastnostmi definovanými v této části.
+Původní účel indexeru byl zjednodušit složitý proces načítání indexu tím, že poskytuje mechanismus pro připojení a čtení textu a číselného obsahu z polí ve zdroji dat, serializaci tohoto obsahu jako dokumentů JSON a předání těchto dokumentů do vyhledávacího modulu pro indexování. Toto je stále primární případ použití a pro tuto operaci budete muset vytvořit indexer s vlastnostmi definovanými v následujícím příkladu.
 
 ```json
 {
@@ -42,17 +42,18 @@ Původní účel indexeru byl zjednodušit složitý proces načítání indexu 
   "fieldMappings": [ optional unless there are field discrepancies that need resolution]
 }
 ```
-**`name`** Vlastnosti, **`dataSourceName`** a **`targetIndexName`** jsou požadovány a v závislosti na způsobu vytváření indexeru již musí existovat zdroj dat i index, aby bylo možné spustit indexer. 
 
-**`parameters`** Vlastnost informuje chování v době běhu, například počet chyb, které se mají přijmout před selháním celé úlohy. Parametry jsou také způsob, jakým byste určili chování specifické pro zdroj. Pokud je zdrojem například úložiště objektů blob, můžete nastavit parametr, který filtruje přípony souborů: `"parameters" : { "configuration" : { "indexedFileNameExtensions" : ".pdf,.docx" } }` .
+**`name`** Vlastnosti, **`dataSourceName`** a **`targetIndexName`** jsou povinné a v závislosti na tom, jak vytvoříte indexer, musí zdroj dat i index ve službě existovat předtím, než můžete spustit indexer. 
 
-**`field mappings`** Vlastnost se používá k explicitnímu mapování polí source-to-destination, pokud se tato pole liší podle názvu nebo typu. Další vlastnosti (nezobrazuje se), které se používají k určení plánu, vytvoření indexeru v zakázaném stavu, nebo zadání šifrovacího klíče pro doplňující Šifrování neaktivních dat.
+**`parameters`** Vlastnost upraví chování běhu, například počet chyb, které se mají přijmout před selháním celé úlohy. Parametry jsou také způsob, jakým byste určili chování specifické pro zdroj. Pokud je zdrojem například úložiště objektů blob, můžete nastavit parametr, který filtruje přípony souborů: `"parameters" : { "configuration" : { "indexedFileNameExtensions" : ".pdf,.docx" } }` .
+
+**`field mappings`** Vlastnost se používá k explicitnímu mapování polí source-to-destination, pokud se tato pole liší podle názvu nebo typu. Další vlastnosti (nezobrazuje se), které se používají k [určení plánu](search-howto-schedule-indexers.md), vytvoření indexeru v zakázaném stavu, nebo zadání [šifrovacího klíče](search-security-manage-encryption-keys.md) pro doplňující Šifrování neaktivních dat.
 
 ### <a name="indexers-for-ai-indexing"></a>Indexery pro indexování AI
 
-Protože indexery jsou mechanismy, pomocí kterých vyhledávací služba zpřístupňuje odchozí požadavky, indexery se rozšířily na podporu rozšíření AI, přidávání kroků a objektů nezbytných pro tento případ použití.
+Protože indexery jsou mechanismy, pomocí kterých vyhledávací služba zpřístupňuje odchozí požadavky, indexery se rozšířily tak, aby podporovaly rozšíření AI, přidání infrastruktury a objektů pro implementaci tohoto případu použití.
 
-Všechny výše uvedené vlastnosti a parametry se vztahují na indexery, které provádějí obohacení AI, s přidáním tří vlastností, které jsou specifické pro rozšíření AI: **`skillSets`** , **`outputFieldMappings`** , **`cache`** (jenom verze Preview a REST). 
+Všechny výše uvedené vlastnosti a parametry se vztahují na indexery, které provádějí obohacení AI. Následující vlastnosti jsou specifické pro rozšíření AI: **`skillSets`** , **`outputFieldMappings`** , **`cache`** (jenom verze Preview a REST). 
 
 ```json
 {
@@ -74,7 +75,7 @@ Všechny výše uvedené vlastnosti a parametry se vztahují na indexery, které
 }
 ```
 
-Rozšíření AI překračuje rozsah tohoto článku. Pokud chcete získat další informace, začněte s [dovednosti v Azure kognitivní hledání](cognitive-search-working-with-skillsets.md) nebo [vytvořte dovednosti (REST)](/rest/api/searchservice/create-skillset).
+Rozšíření AI překračuje rozsah tohoto článku. Další informace najdete v těchto článcích: [rozšíření AI](cognitive-search-concept-intro.md), [dovednosti v Azure kognitivní hledání](cognitive-search-working-with-skillsets.md)a [vytváření dovednosti (REST)](/rest/api/searchservice/create-skillset).
 
 ## <a name="choose-an-indexer-client-and-create-the-indexer"></a>Zvolit klienta indexeru a vytvořit indexer
 
@@ -90,7 +91,7 @@ Všechny [úrovně služeb omezují](search-limits-quotas-capacity.md#indexer-li
 
 ### <a name="use-azure-portal-to-create-an-indexer"></a>Vytvoření indexeru pomocí Azure Portal
 
-Portál nabízí dvě možnosti pro vytvoření indexeru: [**Import dat**](search-import-data-portal.md) a **Nový indexer** , který poskytuje pole pro zadání definice indexeru. Průvodce je jedinečný v tom, že vytvoří všechny požadované prvky. Další přístupy vyžadují, abyste nastavili zdroj dat a index.
+Portál nabízí dvě možnosti pro vytvoření indexeru: [**Průvodce importem dat**](search-import-data-portal.md) a **nového indexeru** , který poskytuje pole pro zadání definice indexeru. Průvodce je jedinečný v tom, že vytvoří všechny požadované prvky. Další přístupy vyžadují, abyste nastavili zdroj dat a index.
 
 Následující snímek obrazovky ukazuje, kde najdete tyto funkce na portálu. 
 
@@ -120,11 +121,20 @@ Pro Kognitivní hledání sady SDK Azure implementují všeobecně dostupné fun
 
 ## <a name="run-the-indexer"></a>Spuštění indexeru
 
-Indexer se spustí automaticky při vytváření indexeru ve službě. Jedná se o momentně pravdy, kde zjistíte, jestli dojde k chybám připojení ke zdroji dat, potížím s mapováním polí nebo k problémům s dovednosti. Interaktivní požadavek HTTP pro [Vytvoření indexeru](/rest/api/searchservice/create-indexer) nebo [indexer aktualizace](/rest/api/searchservice/update-indexer) spustí indexer. Spuštění programu, který volá metody SearchIndexerClient, spustí také indexer.
+Indexer se spustí automaticky při vytváření indexeru ve službě. Jedná se o momentně pravdy, kde zjistíte, jestli dojde k chybám připojení ke zdroji dat, potížím s mapováním polí nebo k problémům s dovednosti. 
 
-Aby se zabránilo okamžitému spuštění indexeru při vytváření, přidejte **`disabled=true`** do definice indexeru.
+Existuje několik způsobů, jak spustit indexer:
 
-Jakmile indexer existuje, můžete ho spustit na vyžádání pomocí [indexeru Run (REST)](/rest/api/searchservice/run-indexer) nebo ekvivalentní metody sady SDK. Nebo uveďte indexer [podle plánu](search-howto-schedule-indexers.md) , který bude volat zpracování v pravidelných intervalech. 
++ Odešlete požadavek HTTP pro [Vytvoření indexeru](/rest/api/searchservice/create-indexer) nebo [aktualizaci indexeru](/rest/api/searchservice/update-indexer) pro přidání nebo změnu definice a spuštění indexeru.
+
++ Odešlete požadavek HTTP na [indexer spustit](/rest/api/searchservice/run-indexer) , aby se spustil indexer bez změn definice.
+
++ Spusťte program, který volá SearchIndexerClient metody pro vytvoření, aktualizaci nebo spuštění.
+
+> [!NOTE]
+> Aby se zabránilo okamžitému spuštění indexeru při vytváření, přidejte **`disabled=true`** do definice indexeru.
+
+Alternativně vložte indexer [podle plánu](search-howto-schedule-indexers.md) , který bude volat zpracování v pravidelných intervalech. 
 
 Naplánované zpracování se obvykle shoduje s potřebou přírůstkového indexování změněného obsahu. Logika detekce změn je funkce, která je integrovaná do zdrojových platforem. Indexer automaticky detekuje změny v kontejneru objektů BLOB. Pokyny k využití zjišťování změn v jiných zdrojích dat najdete v dokumentaci k indexeru pro konkrétní zdroje dat:
 
@@ -135,9 +145,9 @@ Naplánované zpracování se obvykle shoduje s potřebou přírůstkového inde
 
 ## <a name="know-your-data"></a>Znát data
 
-Indexery očekávají sadu tabelárních řádků, kde se každý řádek v indexu zobrazí jako úplný nebo částečný dokument hledání. Často existuje úplná korespondence mezi řádkem a výsledným vyhledávacím dokumentem, kde jsou všechna pole v souladu. Indexery ale můžete použít ke generování pouze části dokumentu, například pokud k sestavení indexu používáte více indexerů nebo přístupů. 
+Indexery očekávají sadu tabelárních řádků, kde se každý řádek v indexu zobrazí jako úplný nebo částečný dokument hledání. Často existuje korespondence 1:1 mezi řádkem a výsledným vyhledávacím dokumentem, kde všechna pole v řádku nastavená pro každý dokument plně naplní. Indexery ale můžete použít ke generování pouze části dokumentu, například pokud k sestavení indexu používáte více indexerů nebo přístupů. 
 
-Pro sloučení relačních dat do sady řádků může být nutné vytvořit zobrazení SQL nebo vytvořit dotaz, který vrátí nadřazené a podřízené záznamy na stejném řádku. Například předdefinovaná ukázková datová sada pro hotely je databáze SQL, která má 50 záznamů (jeden pro každý Hotel) propojených se záznamy místností v související tabulce. Dotaz, který sloučí kolektivní data do sady řádků, vloží všechny informace o místnostech v dokumentech JSON v každém záznamu hotelu. Informace o vložené místnosti jsou vygenerovány dotazem, který používá klauzuli **for JSON auto** . Další informace o této technikě najdete v [definici dotazu, který vrací vložené JSON](index-sql-relational-data.md#define-a-query-that-returns-embedded-json). Toto je pouze jeden příklad; můžete najít další přístupy, které budou mít stejný účinek.
+Pro sloučení relačních dat do sady řádků byste měli vytvořit zobrazení SQL nebo vytvořit dotaz, který vrátí nadřazené a podřízené záznamy na stejném řádku. Například předdefinovaná ukázková datová sada pro hotely je databáze SQL, která má 50 záznamů (jeden pro každý Hotel) propojených se záznamy místností v související tabulce. Dotaz, který sloučí kolektivní data do sady řádků, vloží všechny informace o místnostech v dokumentech JSON v každém záznamu hotelu. Informace o vložené místnosti jsou vygenerovány dotazem, který používá klauzuli **for JSON auto** . Další informace o této technikě najdete v [definici dotazu, který vrací vložené JSON](index-sql-relational-data.md#define-a-query-that-returns-embedded-json). Toto je pouze jeden příklad; můžete najít další přístupy, které budou mít stejný účinek.
 
 Kromě plochých dat je důležité vyžádat si pouze data, která lze prohledávat. Hledaná data jsou alfanumerické. Kognitivní hledání nemůže prohledávat binární data v libovolném formátu, i když může extrahovat a odvodit textové popisy souborů obrázků (viz [rozšíření AI](cognitive-search-concept-intro.md)) a vytvořit prohledávatelný obsah. Podobně použití obohacení AI může velký text analyzovat modely přirozeného jazyka, aby bylo možné najít strukturu nebo relevantní informace a generovat nový obsah, který můžete přidat do vyhledávacího dokumentu.
 
@@ -147,7 +157,7 @@ Vzhledem k tomu, že indexery neopravují problémy s daty, mohou být potřeba 
 
 Odvolat tyto indexery, které přecházejí z vyhledávacích dokumentů do vyhledávacího modulu pro indexování. Stejně jako indexery mají vlastnosti, které určují chování při spuštění, schéma indexu má vlastnosti, které se provedly podle toho, jak jsou řetězce indexovány (analyzují se pouze řetězce a tokeny). V závislosti na přiřazení analyzátoru se indexované řetězce můžou lišit od toho, co jste předali. Můžete vyhodnotit účinky analyzátorů pomocí nástroje [analyzovat text (REST)](/rest/api/searchservice/test-analyzer). Další informace o analyzátorech najdete v tématu [analyzátory pro zpracování textu](search-analyzers.md).
 
-Indexery kontrolují pouze názvy a typy polí. Neexistuje žádný krok ověření, který zajišťuje správné zadání příchozího obsahu pro odpovídající vyhledávací pole v indexu. Jako ověřovací krok můžete spouštět dotazy na vyplněný index, který vrací celé dokumenty nebo vybraná pole. Další informace o dotazování obsahu indexu najdete v tématu [Vytvoření základního dotazu](search-query-create.md).
+V souvislosti s tím, jak indexery komunikují s indexem, indexer pouze kontroluje názvy a typy polí. Neexistuje žádný krok ověření, který zajišťuje správné zadání příchozího obsahu pro odpovídající vyhledávací pole v indexu. Jako ověřovací krok můžete spouštět dotazy na vyplněný index, který vrací celé dokumenty nebo vybraná pole. Další informace o dotazování obsahu indexu najdete v tématu [Vytvoření základního dotazu](search-query-create.md).
 
 ## <a name="next-steps"></a>Další kroky
 

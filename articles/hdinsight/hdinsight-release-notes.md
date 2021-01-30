@@ -5,12 +5,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: 76bf9376d3eb33153584f74c9d0d9196706428ae
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 88e2161cfddf95f7f250b8b76c067d045f1529da
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98932102"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092230"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Poznámky k verzi Azure HDInsight
 
@@ -50,6 +50,9 @@ HDInsight přidal skupiny zabezpečení sítě (skupin zabezpečení sítě) a u
 ## <a name="upcoming-changes"></a>Nadcházející změny
 V nadcházejících verzích dojde k následujícím změnám.
 
+### <a name="breaking-change-for-net-for-apache-spark-100"></a>Průlomová změna pro .NET pro Apache Spark 1.0.0
+HDInsight zavede první hlavní oficiální verzi rozhraní .NET pro Apache Spark v další verzi. Zajišťuje úplnost rozhraní API dataframe pro Spark 2.4. x a Spark 3.0. x spolu s dalšími funkcemi. U této hlavní verze dojde k zásadním změnám. pro pochopení kroků potřebných k aktualizaci kódu a kanálů si přečtěte [Tento identifikátor GUID migrace](https://github.com/dotnet/spark/blob/master/docs/migration-guide.md#upgrading-from-microsoftspark-0x-to-10) . Další informace najdete [tady](https://docs.microsoft.com/azure/hdinsight/spark/spark-dotnet-version-update#using-net-for-apache-spark-v10-in-hdinsight).
+
 ### <a name="default-cluster-vm-size-will-be-changed-to-ev3-family"></a>Výchozí velikost virtuálního počítače clusteru se změní na Ev3 rodinu.
 Od další verze (od konce ledna) se výchozí velikosti virtuálních počítačů clusteru změní z řady D na rodinu Ev3. Tato změna se vztahuje na hlavní uzly a pracovní uzly. Chcete-li se této změně vyhnout, zadejte velikosti virtuálních počítačů, které chcete použít v šabloně ARM.
 
@@ -71,7 +74,7 @@ Pro tuto verzi se nezměnila žádná verze součásti. V [tomto dokumentu](./hd
 ## <a name="known-issues"></a>Známé problémy
 ### <a name="prevent-hdinsight-cluster-vms-from-rebooting-periodically"></a>Znemožnění pravidelného restartování virtuálních počítačů clusteru HDInsight
 
-Od poloviny listopadu 2020 jste si pravděpodobně všimli, že virtuální počítače clusteru HDInsight se pravidelně restartují. Příčinou může být:
+Od poloviny listopadu 2020 jste si mohli pravidelně zaznamenali restartování virtuálních počítačů clusteru HDInsight. Příčinou může být:
 
 1.  V clusteru je povolený ClamAV. Nový balíček azsec-ClamAV spotřebovává velké množství paměti, které aktivuje restartování uzlu. 
 2.  Úloha CRON je naplánována denně, která sleduje změny v seznamu certifikačních autorit používaných službami Azure. Když je k dispozici nový certifikát certifikační autority, skript přidá certifikát do úložiště důvěry JDK a naplánuje restart.

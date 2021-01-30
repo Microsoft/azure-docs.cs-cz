@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: 88483b29c8951f8e3f38f7cdc5bbdfb80eeca2b1
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: bc809cf02b827b7498890cb7d929c44bd360ab53
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370113"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99094705"
 ---
 # <a name="tutorial-assign-directory-readers-role-to-an-azure-ad-group-and-manage-role-assignments"></a>Kurz: přiřazení role čtenářů adresáře ke skupině Azure AD a správa přiřazení rolí
 
@@ -23,13 +23,13 @@ ms.locfileid: "92370113"
 > [!NOTE]
 > Přiřazení role **čtenáři adresáře** ke skupině v tomto článku je ve **verzi Public Preview**. 
 
-Tento článek vás provede vytvořením skupiny v Azure Active Directory (Azure AD) a přiřazením této skupiny k roli [**čtenáři adresáře**](../../active-directory/roles/permissions-reference.md#directory-readers) . Oprávnění čtenářů adresářů umožňují vlastníkům skupiny přidávat do skupiny další členy, jako je [spravovaná identita](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) [Azure SQL Database](sql-database-paas-overview.md), [spravovaná instance Azure SQL](../managed-instance/sql-managed-instance-paas-overview.md)a [Azure synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md). To obchází nutnost, aby správce [globálního správce](../../active-directory/roles/permissions-reference.md#global-administrator--company-administrator) nebo [privilegované role](../../active-directory/roles/permissions-reference.md#privileged-role-administrator) přiřadil roli čtenářů adresáře přímo pro každou identitu logického serveru Azure SQL v tenantovi.
+Tento článek vás provede vytvořením skupiny v Azure Active Directory (Azure AD) a přiřazením této skupiny k roli [**čtenáři adresáře**](../../active-directory/roles/permissions-reference.md#directory-readers) . Oprávnění čtenářů adresářů umožňují vlastníkům skupiny přidávat do skupiny další členy, jako je [spravovaná identita](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) [Azure SQL Database](sql-database-paas-overview.md), [spravovaná instance Azure SQL](../managed-instance/sql-managed-instance-paas-overview.md)a [Azure synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md). To obchází nutnost, aby správce [globálního správce](../../active-directory/roles/permissions-reference.md#global-administrator) nebo [privilegované role](../../active-directory/roles/permissions-reference.md#privileged-role-administrator) přiřadil roli čtenářů adresáře přímo pro každou identitu logického serveru Azure SQL v tenantovi.
 
 V tomto kurzu se používá funkce zavedené v části [použití cloudových skupin ke správě přiřazení rolí v Azure Active Directory (Preview)](../../active-directory/roles/groups-concept.md). 
 
 Další informace o výhodách přiřazení role čtenáři adresáře ke skupině Azure AD pro Azure SQL najdete v tématu [role čtečky adresářů v Azure Active Directory pro Azure SQL](authentication-aad-directory-readers-role.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Instance Azure AD. Další informace najdete v tématu [Konfigurace a Správa ověřování Azure AD pomocí Azure SQL](authentication-aad-configure.md).
 - SQL Database, Managed instance SQL nebo Azure synapse.
@@ -38,7 +38,7 @@ Další informace o výhodách přiřazení role čtenáři adresáře ke skupin
 
 ### <a name="create-a-new-group-and-assign-owners-and-role"></a>Vytvoří novou skupinu a přiřadí vlastníky a role.
 
-1. Pro tuto úvodní instalaci se vyžaduje oprávnění správce s [globálním správcem](../../active-directory/roles/permissions-reference.md#global-administrator--company-administrator) nebo [privilegovaný rolí](../../active-directory/roles/permissions-reference.md#privileged-role-administrator) .
+1. Pro tuto úvodní instalaci se vyžaduje oprávnění správce s [globálním správcem](../../active-directory/roles/permissions-reference.md#global-administrator) nebo [privilegovaný rolí](../../active-directory/roles/permissions-reference.md#privileged-role-administrator) .
 1. Přihlaste se privilegovanému uživateli do [Azure Portal](https://portal.azure.com).
 1. Přejít na prostředek **Azure Active Directory** . V části **spravováno**, přejít na **skupiny**. Vyberte **Nová skupina** a vytvořte novou skupinu.
 1. Jako typ skupiny vyberte **zabezpečení** a vyplňte zbývající pole. Ujistěte se, že nastavení **rolí Azure AD je možné přiřadit ke skupině (Preview)** , která je přepnuta na **Ano**. Pak skupině přiřaďte roli **čtenáři adresáře** Azure AD.
@@ -55,7 +55,7 @@ Další informace o výhodách přiřazení role čtenáři adresáře ke skupin
 
 Chcete-li ověřit a spravovat vytvořenou skupinu, vraťte se zpět do podokna **skupiny** v Azure Portal a vyhledejte název skupiny. Další vlastníky a členy lze přidat do nabídky **vlastníci** a **Členové** v nastavení **Spravovat** po výběru skupiny. Můžete také zkontrolovat **přiřazené role** pro skupinu.
 
-:::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-group-created.png" alt-text="AAD-New-Group":::
+:::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-group-created.png" alt-text="Snímek obrazovky podokna skupiny s odkazy, které otevřou nabídky nastavení pro členy, vlastníky a přiřazené role (Preview) zvýrazněné.":::
 
 ### <a name="add-azure-sql-managed-identity-to-the-group"></a>Přidat spravovanou identitu SQL Azure do skupiny
 
@@ -68,17 +68,17 @@ Pro následné kroky už správce globálního správce nebo privilegované role
 
 1. V Azure Portal vyhledejte název prostředku **spravované instance SQL** .
 
-   :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-managed-instance.png" alt-text="AAD-New-Group":::
+   :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-managed-instance.png" alt-text="Snímek obrazovky spravované instance SQL s názvem instance SQL ssomitest a názvem podsítě ManagedInstance zvýrazněný.":::
 
    Během vytváření spravované instance SQL se pro vaši instanci vytvořila identita Azure. Vytvořená identita má stejný název jako předpona názvu spravované instance SQL. Instanční objekt pro identitu spravované instance SQL, který se vytvoří jako aplikace Azure AD, najdete pomocí následujících kroků:
 
     - Přejít na prostředek **Azure Active Directory** . V nastavení **Spravovat** vyberte **podnikové aplikace**. **ID objektu** je identita instance.
     
-    :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-managed-instance-service-principal.png" alt-text="AAD-New-Group":::
+    :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-managed-instance-service-principal.png" alt-text="Snímek obrazovky se stránkou podnikových aplikací pro Azure Active Directory prostředek s ID objektu spravované instance SQL zvýrazněný":::
 
 1. Přejít na prostředek **Azure Active Directory** . V části **spravováno**, přejít na **skupiny**. Vyberte skupinu, kterou jste vytvořili. V části **spravované** nastavení vaší skupiny vyberte **Členové**. Vyberte **přidat členy** a přidejte instanční objekt spravované instance SQL jako člena skupiny, a to tak, že vyhledáte výše uvedený název.
 
-   :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-add-managed-instance-service-principal.png" alt-text="AAD-New-Group":::
+   :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-add-managed-instance-service-principal.png" alt-text="Snímek obrazovky se stránkou členů pro Azure Active Directory prostředek s možnostmi zvýrazněnými pro přidání spravované instance SQL jako nového člena.":::
 
 > [!NOTE]
 > Rozšíření oprávnění instančního objektu prostřednictvím systému Azure může trvat několik minut, než se povolí přístup k Graph APIům služby Azure AD. Možná budete muset několik minut počkat, než zřídíte správce Azure AD pro spravovanou instanci SQL.
@@ -94,7 +94,7 @@ Přiřazení role **čtenáři adresáře** k identitě serveru není vyžadová
 ## <a name="directory-readers-role-assignment-using-powershell"></a>Přiřazení role čtenáři adresáře pomocí PowerShellu
 
 > [!IMPORTANT]
-> Správce [globálního správce](../../active-directory/roles/permissions-reference.md#global-administrator--company-administrator) nebo [privilegované role](../../active-directory/roles/permissions-reference.md#privileged-role-administrator) bude muset spustit tyto úvodní kroky. Kromě PowerShellu nabízí Azure AD Microsoft Graph rozhraní API k [Vytvoření skupiny s přiřazením rolí v Azure AD](../../active-directory/roles/groups-create-eligible.md#using-microsoft-graph-api).
+> Správce [globálního správce](../../active-directory/roles/permissions-reference.md#global-administrator) nebo [privilegované role](../../active-directory/roles/permissions-reference.md#privileged-role-administrator) bude muset spustit tyto úvodní kroky. Kromě PowerShellu nabízí Azure AD Microsoft Graph rozhraní API k [Vytvoření skupiny s přiřazením rolí v Azure AD](../../active-directory/roles/groups-create-eligible.md#using-microsoft-graph-api).
 
 1. Stáhněte si modul Azure AD Preview PowerShellu pomocí následujících příkazů. Může být nutné spustit PowerShell jako správce.
 

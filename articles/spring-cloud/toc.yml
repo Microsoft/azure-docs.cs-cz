@@ -45,8 +45,12 @@
       href: spring-cloud-concept-metrics.md
     - name: Ovladač Azure Spring Boot
       href: spring-cloud-concept-manage-monitor-app-spring-boot-actuator.md
-    - name: Ovládací prvky zabezpečení
-      href: spring-cloud-concept-security-controls.md
+    - name: Zabezpečení
+      items:
+        - name: Ovládací prvky zabezpečení
+          href: spring-cloud-concept-security-controls.md
+        - name: Mechanismy zabezpečení služby Azure Policy
+          href: ./security-controls-policy.md
     - name: Principy stavu aplikací
       href: spring-cloud-concept-app-status.md
     - name: Plán pro zotavení po havárii

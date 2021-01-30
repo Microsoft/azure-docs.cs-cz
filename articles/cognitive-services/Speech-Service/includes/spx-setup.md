@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 87af99d5136a8bed93854e9396895cddeb22549a
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 68362b61aa0d919bd0e95f3cebb1cf1189f9f0f3
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98540476"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99095173"
 ---
 ## <a name="download-and-install"></a>Stažení a instalace
 
@@ -19,9 +19,15 @@ ms.locfileid: "98540476"
 Pomocí těchto kroků nainstalujete rozhraní příkazového řádku pro rozpoznávání řeči ve Windows:
 
 1. V systému Windows potřebujete [Microsoft Visual C++ distribuovatelné součásti pro Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) pro vaši platformu. První instalace může vyžadovat restartování.
-2. Stáhněte si [archiv zip](https://aka.ms/speech/spx-zips.zip)pro rozpoznávání řeči a pak ho rozbalte.
-3. Přejít do adresáře, do kterého jste extrahovali `spx-zips` . Tato složka obsahuje programové soubory pro rozhraní příkazového řádku pro rozpoznávání řeči na různých platformách. 
-4. Extrahujte soubory pro vaši platformu ( `spx-net471` pro .NET Framework 4,7 nebo `spx-netcore-win-x64` pro .net Core 3,0 na CPU x64). Mějte na paměti, že budete spouštět `spx` z tohoto adresáře.
+1. Nainstalujte [.NET Core 3,1](/dotnet/core/install/linux.md).
+2. Zadáním tohoto příkazu nainstalujte rozhraní příkazového řádku pro rozpoznávání řeči pomocí NuGet:
+
+    `dotnet tool install --global Microsoft.CognitiveServices.Speech.CLI --version 1.15.0`
+
+Zadáním `spx` zobrazíte nápovědu k rozhraní příkazového řádku pro rozpoznávání řeči.
+
+> [!NOTE]
+> Jako alternativu k NuGet můžete stáhnout a extrahovat [komprimovaný archiv zip](https://aka.ms/speech/spx-zips.zip)CLI, najít a extrahovat vaši platformu z `spx-zips` adresáře a přidat `spx` cestu k proměnné systémové **cesty** .
 
 ### <a name="run-the-speech-cli"></a>Spuštění funkce CLI pro rozpoznávání řeči
 
@@ -43,15 +49,16 @@ Pokud výstup do souboru, textový editor, jako je například Poznámkový blok
 
 Pomocí těchto kroků nainstalujete rozhraní příkazového řádku pro rozpoznávání řeči v systému Linux na procesor x64:
 
-1. Nainstalujte [.NET Core 3,0](https://dotnet.microsoft.com/download/dotnet-core/3.0).
-2. Stáhněte si [archiv zip](https://aka.ms/speech/spx-zips.zip)pro rozpoznávání řeči a pak ho rozbalte.
-3. Přejít do kořenového adresáře `spx-zips` , který jste extrahovali ze staženého souboru, a extrahovat `spx-netcore-30-linux-x64` do nového `~/spx` adresáře.
-4. V terminálu zadejte tyto příkazy:
-   1. `cd ~/spx`
-   2. `sudo chmod +r+x spx`
-   3. `PATH=~/spx:$PATH`
+1. Nainstalujte [.NET Core 3,1](/dotnet/core/install/linux.md).
+2. Zadáním tohoto příkazu nainstalujte rozhraní příkazového řádku pro rozpoznávání řeči pomocí NuGet:
+
+    `dotnet tool install --global Microsoft.CognitiveServices.Speech.CLI --version 1.15.0`
 
 Zadáním `spx` zobrazíte nápovědu k rozhraní příkazového řádku pro rozpoznávání řeči.
+
+> [!NOTE]
+> Jako alternativu k NuGet si můžete stáhnout binární soubory v [archivu zip](https://aka.ms/speech/spx-zips.zip), extrahovat `spx-netcore-30-linux-x64` do nového `~/spx` adresáře, zadat `sudo chmod +r+x spx` binární soubor a přidat `~/spx` cestu k systémové proměnné cesty.
+
 
 #### <a name="docker-install-windows-linux-macos"></a>[Instalace Docker (Windows, Linux, macOS)](#tab/dockerinstall)
 

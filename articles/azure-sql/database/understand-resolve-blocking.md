@@ -14,12 +14,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
 ms.date: 1/14/2020
-ms.openlocfilehash: b73e72969a851428034499d447ecb162a61aa9ab
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 1341d0e64a01ff428fe42735d198c5e6b74b0ce8
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98725782"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99093304"
 ---
 # <a name="understand-and-resolve-azure-sql-database-blocking-problems"></a>Pochopení a řešení potíží s blokováním Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -286,8 +286,8 @@ Tabulka níže mapuje běžné příznaky na jejich pravděpodobné příčiny.
 |:-|:-|:-|:-|:-|:-|--|
 | 1 | NENÍ NULL | >= 0 | spustitelný | Ano, když se dotaz dokončí. | V sys.dm_exec_sessions se v průběhu času budou **číst**, **cpu_time** a **memory_usage** sloupce. Doba trvání dotazu bude vysoká, až se dokončí. |
 | 2 | NULL | \>0,8 | režimu spánku | Ne, můžete ale ukončit SPID. | Oznámení se může zobrazit v relaci rozšířené události pro toto ID SPID, která indikuje časový limit dotazu nebo zrušení. |
-| 3 | NULL | \>= 0 | spustitelný | Ne. Nebude vyřešen, dokud klient nenačte všechny řádky nebo ukončí připojení. SPID může být ukončeno, ale může trvat až 30 sekund. | Pokud open_transaction_count = 0 a SPID udržuje zámky, zatímco je úroveň izolace transakce výchozí (čtení COMMMITTED), je to Pravděpodobná příčina. |  
-| 4 | Různé | \>= 0 | spustitelný | Ne. Nebude vyřešen, dokud klient zruší dotazy nebo ukončí připojení. SPIDs lze ukončit, ale může trvat až 30 sekund. | Sloupec **hostname** v sys.DM_EXEC_SESSIONS pro SPID na začátku řetězce blokování bude stejný jako jeden z identifikátoru SPID, který blokuje. |  
+| 3 | NULL | \>= 0 | spustitelný | No. Nebude vyřešen, dokud klient nenačte všechny řádky nebo ukončí připojení. SPID může být ukončeno, ale může trvat až 30 sekund. | Pokud open_transaction_count = 0 a SPID udržuje zámky, zatímco je úroveň izolace transakce výchozí (čtení COMMMITTED), je to Pravděpodobná příčina. |  
+| 4 | Různé | \>= 0 | spustitelný | No. Nebude vyřešen, dokud klient zruší dotazy nebo ukončí připojení. SPIDs lze ukončit, ale může trvat až 30 sekund. | Sloupec **hostname** v sys.DM_EXEC_SESSIONS pro SPID na začátku řetězce blokování bude stejný jako jeden z identifikátoru SPID, který blokuje. |  
 | 5 | NULL | \>0,8 | návrat | Ano. | Oznámení se může zobrazit v relaci rozšířených událostí pro toto ID SPID, která indikuje časový limit dotazu nebo zrušení, nebo byl vydán pouze příkaz ROLLBACK. |  
 | 6 | NULL | \>0,8 | režimu spánku | Takže. Pokud systém Windows NT zjistí, že relace již není aktivní, připojení Azure SQL Database bude přerušeno. | `last_request_start_time`Hodnota v sys.dm_exec_sessions je mnohem starší než aktuální čas. |
 
@@ -371,7 +371,7 @@ Následující scénáře se v těchto scénářích rozšíří.
 
 ## <a name="see-also"></a>Viz také
 
-* [Monitorování a ladění výkonu ve službách Azure SQL Database a Azure SQL Managed Instance](/monitor-tune-overview.md)
+* [Monitorování a ladění výkonu ve službách Azure SQL Database a Azure SQL Managed Instance](/azure/azure-sql/database/monitor-tune-overview)
 * [Monitorování výkonu pomocí úložiště dotazů](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)
 * [Průvodce uzamykáním transakcí a správou verzí řádků](/sql/relational-databases/sql-server-transaction-locking-and-row-versioning-guide)
 * [NASTAVIT ÚROVEŇ IZOLACE TRANSAKCE](/sql/t-sql/statements/set-transaction-isolation-level-transact-sql)

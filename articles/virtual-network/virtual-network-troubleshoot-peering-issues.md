@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: 75b62eb00b1a1a534be01f9f118b4d5066e44a37
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: cb5ce421b6a38edcb8d92866f749a544eff927d6
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222883"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99096385"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>Řešení potíží s partnerskými vztahy virtuálních sítí
 
@@ -87,7 +87,7 @@ Postupujte podle kroků v části [Konfigurace přenosu brány VPN pro partnersk
 Další informace najdete v tématu [řetězení služeb](./virtual-network-peering-overview.md#service-chaining).
 
 > [!Note]
-> Pokud potřebujete podporu k nastavení síťové virtuální zařízení, [obraťte se na dodavatele síťové virtuální zařízení](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
+> Pokud potřebujete podporu k nastavení síťové virtuální zařízení, [obraťte se na dodavatele síťové virtuální zařízení](https://mskb.pkisolutions.com/kb/2984655).
 
 Pomoc při řešení potíží s nastavením a směrováním zařízení síťové virtuální zařízení najdete v tématu [problémy se síťovým virtuálním zařízením v Azure](./virtual-network-troubleshoot-nva.md).
 
@@ -190,7 +190,7 @@ Pro připojení Point-to-site:
 
 Síť rozbočovače musí zahrnovat síťové virtuální zařízení. Nakonfigurujte udr v paprskech, které mají síťové virtuální zařízení sadu jako další segment směrování, a povolte možnost **Povolit předaný provoz** ve virtuální síti rozbočovače.
 
-Další informace najdete v tématu [řetězení služeb](./virtual-network-peering-overview.md#service-chaining)a diskuzi o těchto požadavcích s [dodavatelem síťové virtuální zařízení](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines) podle vašeho výběru.
+Další informace najdete v tématu [řetězení služeb](./virtual-network-peering-overview.md#service-chaining)a diskuzi o těchto požadavcích s [dodavatelem síťové virtuální zařízení](https://mskb.pkisolutions.com/kb/2984655) podle vašeho výběru.
 
 ## <a name="troubleshoot-a-hub-spoke-network-connectivity-issue-between-spoke-virtual-networks-in-different-regions"></a>Řešení problémů se síťovým připojením centra mezi virtuálními sítěmi v různých oblastech mezi koncovými servery
 

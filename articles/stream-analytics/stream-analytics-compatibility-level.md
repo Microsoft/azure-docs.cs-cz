@@ -6,12 +6,12 @@ ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 8105988cd2036f44d214befad3365cf9ee96ee0d
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 07df391e664fe04b9c7d2eda34960666c44a2e06
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98015976"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99094075"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Úroveň kompatibility pro úlohy Azure Stream Analytics
 
@@ -43,7 +43,7 @@ Postup aktualizace úrovně kompatibility úlohy v Azure Portal:
 4. Vyberte hodnotu úrovně kompatibility, kterou chcete.
 5. V dolní části stránky vyberte **Save (Uložit** ).
 
-![Úroveň kompatibility Stream Analytics v Azure Portal](media/stream-analytics-compatibility-level/stream-analytics-compatibility.png)
+![Úroveň kompatibility Stream Analytics v Azure Portal](media/stream-analytics-compatibility-level/stream-analytics-compat-level-1-2.png)
 
 Při aktualizaci úrovně kompatibility T-Compiler ověří úlohu se syntaxí, která odpovídá vybrané úrovni kompatibility.
 
@@ -121,7 +121,7 @@ V úrovni kompatibility 1,1 jsou představeny tyto hlavní změny:
 
 ### <a name="service-bus-xml-format"></a>Service Bus formát XML
 
-**úroveň 1,0:** Azure Stream Analytics použila DataContractSerializer, takže obsah zprávy obsahuje značky XML. Například:
+**úroveň 1,0:** Azure Stream Analytics použila DataContractSerializer, takže obsah zprávy obsahuje značky XML. Příklad:
 
 `@\u0006string\b3http://schemas.microsoft.com/2003/10/Serialization/\u0001{ "SensorId":"1", "Temperature":64\}\u0001`
 

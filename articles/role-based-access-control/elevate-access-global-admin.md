@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 06/09/2020
 ms.author: rolyon
-ms.openlocfilehash: 6e57e495d34a265b5e0691106996206029656c5a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 850d50bc9e427ff559782d587d74b33089332a8d
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371116"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99091659"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Zvýšení úrovně přístupu pro správu všech předplatných Azure a skupin pro správu
 
@@ -33,7 +33,7 @@ Pokud jste globální správce, může nastat situace, kdy budete chtít provés
 
 ## <a name="how-does-elevated-access-work"></a>Jak funguje zvýšený přístup?
 
-Prostředky Azure AD a Azure jsou zabezpečené nezávisle na sobě. To znamená, že přiřazení rolí Azure AD neudělí přístup k prostředkům Azure a přiřazení rolí Azure neuděluje přístup ke službě Azure AD. Pokud jste však [globálním správcem](../active-directory/roles/permissions-reference.md#company-administrator-permissions) služby Azure AD, můžete sami sobě přiřadit přístup ke všem předplatným Azure a skupinám pro správu v adresáři. Tuto možnost použijte, pokud nemáte přístup k prostředkům předplatného Azure, jako jsou například virtuální počítače nebo účty úložiště, a chcete pro získání přístupu k těmto prostředkům použít globální oprávnění správce.
+Prostředky Azure AD a Azure jsou zabezpečené nezávisle na sobě. To znamená, že přiřazení rolí Azure AD neudělí přístup k prostředkům Azure a přiřazení rolí Azure neuděluje přístup ke službě Azure AD. Pokud jste však [globálním správcem](../active-directory/roles/permissions-reference.md#global-administrator-permissions) služby Azure AD, můžete sami sobě přiřadit přístup ke všem předplatným Azure a skupinám pro správu v adresáři. Tuto možnost použijte, pokud nemáte přístup k prostředkům předplatného Azure, jako jsou například virtuální počítače nebo účty úložiště, a chcete pro získání přístupu k těmto prostředkům použít globální oprávnění správce.
 
 Po zvýšení úrovně přístupu vám bude přiřazena role [Správce přístupu uživatele](built-in-roles.md#user-access-administrator) v Azure v kořenovém oboru ( `/` ).To vám umožní zobrazit všechny prostředky a přiřadit přístup v rámci předplatného nebo skupiny pro správu v adresáři. Přiřazení role správce přístupu uživatele můžete odebrat pomocí Azure PowerShell, Azure CLI nebo REST API.
 
@@ -41,7 +41,7 @@ Tento přístup se zvýšeným oprávněním byste měli odebrat, jakmile proved
 
 ![Zvýšení přístupu](./media/elevate-access-global-admin/elevate-access.png)
 
-## <a name="azure-portal"></a>portál Azure
+## <a name="azure-portal"></a>Portál Azure Portal
 
 ### <a name="elevate-access-for-a-global-administrator"></a>Zvýšení přístupu pro globálního správce
 
@@ -53,11 +53,11 @@ Pomocí těchto kroků můžete zvýšit přístup pro globálního správce pom
 
 1. Otevřete **Azure Active Directory**.
 
-1. V části **Spravovat**vyberte **vlastnosti**.
+1. V části **Spravovat** vyberte **Vlastnosti**.
 
    ![Vybrat vlastnosti pro Azure Active Directory vlastnosti – snímek obrazovky](./media/elevate-access-global-admin/azure-active-directory-properties.png)
 
-1. V části **Správa přístupu pro prostředky Azure**nastavte přepínač na **Ano**.
+1. V části **Správa přístupu pro prostředky Azure** nastavte přepínač na **Ano**.
 
    ![Správa přístupu pro prostředky Azure – snímek obrazovky](./media/elevate-access-global-admin/aad-properties-global-admin-setting.png)
 
@@ -241,7 +241,7 @@ Můžete vypsat všechna přiřazení zamítnutí pro uživatele v kořenovém o
 
 Když zavoláte `elevateAccess` , vytvoříte přiřazení role sami, takže odvoláte tato oprávnění, která potřebujete k odebrání přiřazení role správce přístupu uživatele v kořenovém oboru ( `/` ).
 
-1. Pokud [GET roleDefinitions](/rest/api/authorization/roledefinitions/get) `roleName` chcete zjistit ID názvu role správce přístupu uživatele, zavolejte funkci get roleDefinitions, kde se rovná správce přístupu uživatele.
+1. Pokud [](/rest/api/authorization/roledefinitions/get) `roleName` chcete zjistit ID názvu role správce přístupu uživatele, zavolejte funkci get roleDefinitions, kde se rovná správce přístupu uživatele.
 
     ```http
     GET https://management.azure.com/providers/Microsoft.Authorization/roleDefinitions?api-version=2015-07-01&$filter=roleName+eq+'User Access Administrator'

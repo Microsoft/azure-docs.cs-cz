@@ -273,8 +273,8 @@
       topicHref: /azure/partner-solutions/
       items:
         - name: Apache Kafka pro Cloud s nefluentmi
-          tocHref: /azure/partner-solutions/apache-kafka-confluent-cloud
-          topicHref: /azure/partner-solutions/apache-kafka-confluent-cloud
+          tocHref: /azure/partner-solutions/apache-kafka-confluent-cloud/overview
+          topicHref: /azure/partner-solutions/apache-kafka-confluent-cloud/overview
     - name: Služba SignalR
       tocHref: /azure/azure-signalr/
       topicHref: /azure/azure-signalr/

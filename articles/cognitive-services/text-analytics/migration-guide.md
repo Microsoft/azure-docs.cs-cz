@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 12/17/2020
+ms.date: 01/22/2021
 ms.author: aahi
-ms.openlocfilehash: 6a71bcbfb8341098711e330cebf8545e1fd2751c
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 0faa7a6f5a3d2efc8bbef11308b308e3305a00d5
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656950"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99096317"
 ---
 # <a name="migrate-to-version-3x-of-the-text-analytics-api"></a>Migrace na verzi 3. x z rozhraní API pro analýzu textu
 
@@ -46,9 +46,6 @@ Příklady odpovědi JSON najdete v referenční dokumentaci.
 
 ### <a name="feature-changes"></a>Změny funkcí
 
-> [!NOTE] 
-> V současné době se [kategorie entity V3](named-entity-types.md) vrátí jenom pro anglický a španělský text. Rozhraní API vrátí výsledky verze 2,1 pro žádosti v jiných jazycích za předpokladu, že jsou podporované ve verzi 2,1.
-
 Ve verzi 2,1 používá rozhraní API pro analýzu textu jeden koncový bod pro rozpoznávání pojmenovaných entit (NER) a propojení entit. Verze 3 poskytuje rozšířenou detekci pojmenovaných entit a používá samostatné koncové body pro žádosti NER a propojení entit. Počínaje verzí v 3.1 – Preview. 1 může NER dále detekovat osobní `pii` `phi` údaje a informace o stavu. 
 
 ### <a name="steps-to-migrate"></a>Postup migrace
@@ -73,6 +70,35 @@ Příklady odpovědi JSON najdete v referenční dokumentaci.
 #### <a name="client-libraries"></a>Klientské knihovny
 
 [!INCLUDE [Client library migration information](includes/client-library-migration-section.md)]
+
+#### <a name="version-21-entity-categories"></a>Kategorie entit verze 2,1
+
+V následující tabulce jsou uvedeny kategorie entit vrácené pro NER v 2.1.
+
+| Kategorie   | Popis                          |
+|------------|--------------------------------------|
+| Person (Osoba)   |   Jména lidí.  |
+|Umístění    | Přírodní a lidský orientačních bodů, struktur, geografických funkcí a geopolitických entit |
+|Organizace | Společnosti, politické skupiny, hudební pásma, sportovní klub, státní orgány a veřejné organizace. Státní příslušníky a náboženství nejsou zahrnuté do tohoto typu entity. |
+| PhoneNumber | Telefonní čísla (jenom USA a telefonní čísla EU). |
+| E-mail | E-mailové adresy. |
+| URL | Adresy URL webů. |
+| IP adresa | Síťové IP adresy. |
+| DateTime | Data a denní doba.| 
+| Date (Datum) | Kalendářní data kalendáře |
+| Čas | Denní doba |
+| Rozsah dat | Rozsahy dat. |
+| Časový rozsah | Časové rozsahy. |
+| Doba trvání | Dob trvání. |
+| Nastavit | Nastavte opakující se časy. |
+| Množství | Čísla a číselná množství. |
+| Číslo | Hodnoty. |
+| Procento | Procenta.|
+| Řádová číslovka | Pořadová čísla |
+| Věk | Ve věku. |
+| Měna | Měnami. |
+| Dimenze | Rozměry a měření. |
+| Teplota | Teplot. |
 
 ## <a name="language-detection"></a>[Rozpoznávání jazyka](#tab/language-detection)
 

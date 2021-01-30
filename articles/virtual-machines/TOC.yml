@@ -1742,7 +1742,7 @@
         - name: Zálohování několika virtuálních počítačů
           href: ../backup/tutorial-backup-vm-at-scale.md
         - name: Možnosti obnovení
-          href: ../backup/backup-azure-arm-restore-vms.md
+          href: /azure/backup/backup-azure-arm-restore-vms
         - name: Matice podpory
           href: ../backup/backup-support-matrix-iaas.md
         - name: Ceny

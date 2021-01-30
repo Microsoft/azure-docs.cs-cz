@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: sttsinar
-ms.openlocfilehash: 31a65cab7dfdd478560b7babba156cec7645cf33
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 833d96b8ca252cff5384cde114390aba8c2f51c3
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98917247"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99097686"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>Velikosti virtuálních počítačů řady B-Series
 
@@ -28,6 +28,7 @@ Virtuální počítače řady B-Series jsou ideální pro úlohy, které nepotř
 [Aktualizace pro zachování paměti](maintenance-and-updates.md): podporováno<br>
 [Podpora generování virtuálních počítačů](generation-2.md): generace 1 a 2<br>
 [Akcelerované síťové služby](../virtual-network/create-vm-accelerated-networking-cli.md): podporované * *<br>
+[Dočasné disky s operačním systémem](ephemeral-os-disks.md): podporované <br>
 
 * Virtuální počítače řady B-Series jsou nenáročné, takže ACU čísla se budou lišit v závislosti na úlohách a základním využití.<br>
 * * Akcelerované síťové služby se podporují jenom pro *Standard_B12ms*, *Standard_B16ms* a *Standard_B20ms*.

@@ -127,6 +127,10 @@
           href: iot-data-flow.md
         - name: Šablony mapování konektoru Azure IoT pro FHIR (Preview)
           href: iot-mapping-templates.md
+    - name: Zabezpečení
+      items:
+        - name: Mechanismy zabezpečení služby Azure Policy
+          href: ./security-controls-policy.md
 - name: Zdroje a prostředky
   items:
     - name: Nejčastější dotazy

@@ -18,12 +18,12 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.custom: devx-track-js
-ms.openlocfilehash: 34962686ae36764a6dc16b164e91004be9ef038d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a7ef6ef85ea9d256303852e4b281071da455ebb0
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91250415"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99097669"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Posílání nabízených oznámení pomocí Azure Notification Hubs a Node.js
 
@@ -83,7 +83,7 @@ var notificationHubService = azure.createNotificationHubService('hubname','conne
 `connectionstring`Pomocí následujících kroků Získejte hodnotu připojení z [Azure Portal] :
 
 1. V levém navigačním podokně klikněte na **Procházet**.
-2. Vyberte **Notification Hubs**a pak najděte rozbočovač, který chcete použít pro ukázku. Pokud potřebujete pomáhat s vytvořením nového centra oznámení, přečtěte si [kurz Windows Store Začínáme](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) .
+2. Vyberte **Notification Hubs** a pak najděte rozbočovač, který chcete použít pro ukázku. Pokud potřebujete pomáhat s vytvořením nového centra oznámení, přečtěte si [kurz Windows Store Začínáme](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) .
 3. Vyberte **Nastavení**.
 4. Klikněte na **zásady přístupu**. Zobrazí se oba řetězce připojení Shared i Full Access.
 
@@ -109,7 +109,7 @@ var notificationHubService = azure.createNotificationHubService('hubname','conne
 - **Datová část** – datová část JSON nebo nezpracovaných řetězců zprávy.
 - **Zpětné volání** – funkce zpětného volání.
 
-Další informace o formátu datové části najdete v dokumentaci k [datové části](https://distriqt.github.io/ANE-PushNotifications/m.FCM-GCM%20Payload).
+Další informace o formátu datové části najdete v dokumentaci k [datové části](https://payload.readthedocs.io/en/latest/).
 
 Následující kód používá `GcmService` instanci zveřejněnou `NotificationHubService` pro odeslání nabízeného oznámení všem registrovaným klientům.
 
@@ -155,7 +155,7 @@ notificationHubService.apns.send(null, payload, function(error){
 
 - **Tags** – identifikátor značky. Pokud není zadaná žádná značka, pošle se oznámení všem klientům.
 - **Datová** část XML zprávy.
-- **TargetName**  -  Cílový_název `toast` pro informační zprávy. `token` pro oznámení na dlaždici.
+-   -  Cílový_název `toast` pro informační zprávy. `token` pro oznámení na dlaždici.
 - **NotificationClass** – priorita oznámení Platné hodnoty najdete v části **elementy hlavičky protokolu HTTP** v [nabízených oznámeních z dokumentu serveru](/previous-versions/windows/xna/bb200104(v=xnagamestudio.41)) .
 - **Možnosti** – nepovinné hlavičky požadavku.
 - **Zpětné volání** – funkce zpětného volání.
