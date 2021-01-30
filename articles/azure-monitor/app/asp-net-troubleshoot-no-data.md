@@ -4,12 +4,12 @@ description: Nezobrazuje se data v Azure Application Insights? Zkuste to prosím
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/21/2020
-ms.openlocfilehash: 26ba586715c7b76ff8972c6574c3c29b837713a1
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: e41b0a9ce1ff86bc6010e12fdf5d3320f303fd87
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96904461"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092447"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>Řešení potíží bez Application Insights dat pro .NET/.NET Core
 
@@ -188,7 +188,7 @@ Viz [telemetrie závislostí](./asp-net-dependencies.md) a [telemetrie výjimek]
 * Ověřte, že jste ve skutečnosti zkopírovali všechny společnosti Microsoft. ApplicationInsights knihovny DLL do serveru společně s Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll
 * V bráně firewall možná budete muset [otevřít některé porty TCP](./ip-addresses.md).
 * Pokud k odeslání z vaší podnikové sítě používáte proxy server, nastavte [defaultProxy](/previous-versions/dotnet/netframework-1.1/aa903360(v=vs.71)) v Web.config
-* Windows Server 2008: Ujistěte se, že máte nainstalované následující aktualizace: [KB2468871](https://support.microsoft.com/kb/2468871), [KB2533523](https://support.microsoft.com/kb/2533523), [KB2600217](https://support.microsoft.com/kb/2600217).
+* Windows Server 2008: Ujistěte se, že máte nainstalované následující aktualizace: [KB2468871](https://support.microsoft.com/kb/2468871), [KB2533523](https://support.microsoft.com/kb/2533523), [KB2600217](https://web.archive.org/web/20150129090641/http://support.microsoft.com/kb/2600217).
 
 ## <a name="i-used-to-see-data-but-it-has-stopped"></a>Zobrazil (a) jsem data, ale zastavila se
 * Dosáhli jste měsíční kvóty datových bodů? Pokud chcete zjistit, otevřete nastavení/kvótu a ceny. Pokud ano, můžete upgradovat svůj plán nebo platit za další kapacitu. Podívejte se na téma [cenové schéma](https://azure.microsoft.com/pricing/details/application-insights/).

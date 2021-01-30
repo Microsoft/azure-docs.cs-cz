@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 17616a223292ec07186b0a3fba264400423977ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ee27f429dbfd1e550a45bbc26413a1c259c4fbe
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87058764"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092364"
 ---
 # <a name="enable-or-disable-a-firewall-rule-on-an-azure-vm-guest-os"></a>Povolení nebo zakázání pravidla brány firewall na hostovaném operačním systému virtuálního počítače Azure
 
@@ -95,7 +95,7 @@ Pokud je virtuální počítač online a dá se k němu přistoupit na jiném vi
 
 #### <a name="mitigation-4-remote-registry"></a>Zmírnění 4: vzdálený registr
 
-Pokud je virtuální počítač online a lze k němu přistupovat na jiném virtuálním počítači ve stejné virtuální síti, můžete použít [Vzdálený registr](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry) na jiném virtuálním počítači.
+Pokud je virtuální počítač online a lze k němu přistupovat na jiném virtuálním počítači ve stejné virtuální síti, můžete použít [Vzdálený registr](https://www.betaarchive.com/wiki/index.php?title=Microsoft_KB_Archive/314837) na jiném virtuálním počítači.
 
 1.  Na virtuálním počítači pro řešení potíží spusťte Editor registru (regedit.exe) a pak vyberte **soubor**  >  **připojit síťový registr**.
 
@@ -135,14 +135,14 @@ Než budete postupovat podle těchto kroků, pořiďte snímek systémového dis
 
 5.  Na virtuálním počítači pro řešení potíží spusťte Editor registru (regedit.exe).
 
-6.  Zvýrazněte **HKEY_LOCAL_MACHINE** klíč a potom z nabídky vyberte **File**možnost  >  **načíst** soubor.
+6.  Zvýrazněte **HKEY_LOCAL_MACHINE** klíč a potom z nabídky vyberte možnost  >  **načíst** soubor.
 
     ![Programu](./media/enable-or-disable-firewall-rule-guest-os/load-registry-hive.png)
 
 7.  Vyhledejte a otevřete soubor \windows\system32\config\SYSTEM. 
 
     > [!Note]
-    > Zobrazí se výzva k zadání názvu. Zadejte **BROKENSYSTEM**a potom rozbalte **HKEY_LOCAL_MACHINE**. Zobrazí se teď další klíč s názvem **BROKENSYSTEM**. Pro účely tohoto řešení se tyto podregistry namontují jako **BROKENSYSTEM**.
+    > Zobrazí se výzva k zadání názvu. Zadejte **BROKENSYSTEM** a potom rozbalte **HKEY_LOCAL_MACHINE**. Zobrazí se teď další klíč s názvem **BROKENSYSTEM**. Pro účely tohoto řešení se tyto podregistry namontují jako **BROKENSYSTEM**.
 
 8.  Ve větvi BROKENSYSTEM proveďte následující změny:
 
@@ -164,7 +164,7 @@ Než budete postupovat podle těchto kroků, pořiďte snímek systémového dis
         
         `v2.22|Action=Allow|Active=FALSE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=\@FirewallAPI.dll,-28775|Desc=\@FirewallAPI.dll,-28756|EmbedCtxt=\@FirewallAPI.dll,-28752|`
 
-9.  Zvýrazněte **BROKENSYSTEM**a pak z nabídky vyberte **soubor**  >  **Uvolnit podregistr** .
+9.  Zvýrazněte **BROKENSYSTEM** a pak z nabídky vyberte **soubor**  >  **Uvolnit podregistr** .
 
 10. [Odpojte systémový disk a vytvořte virtuální počítač znovu](troubleshoot-recovery-disks-portal-windows.md).
 
