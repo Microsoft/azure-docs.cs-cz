@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: d1360589fe2c2ec13c341dd14793db0ca8b809c4
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 9afe50e419f9c180b0b5efcd6182eb693dc6622a
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358873"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99093938"
 ---
 # <a name="migration-overview-sql-server-to-sql-managed-instance"></a>Přehled migrace: SQL Server do spravované instance SQL
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -147,7 +147,7 @@ Sestavy SQL Server Reporting Services (SSRS) je možné migrovat na stránkovan�
 
 #### <a name="sql-server-analysis-services"></a>SQL Server Analysis Services
 
-SQL Server Analysis Services tabulkové modely z SQL Server 2012 a novějších se dají migrovat do Azure Analysis Services, což je model nasazení PaaS pro Analysis Services tabelární model v Azure. Další informace o migraci Prem modelů a jejich Azure Analysis Services najdete v tomto [výukovém kurzu](https://azure.microsoft.com/resources/videos/azure-analysis-services-moving-models/).
+Služba Analysis Services serveru SQL tabulkové modely z SQL Server 2012 a novějších se dají migrovat do Azure Analysis Services, což je model nasazení PaaS pro Analysis Services tabelární model v Azure. Další informace o migraci Prem modelů a jejich Azure Analysis Services najdete v tomto [výukovém kurzu](https://azure.microsoft.com/resources/videos/azure-analysis-services-moving-models/).
 
 Případně můžete také zvážit migraci místních Analysis Services tabelárních modelů do [Power BI Premium pomocí nových koncových bodů pro čtení a zápis XMLA](/power-bi/admin/service-premium-connect-tools). 
 > [!NOTE]
@@ -172,7 +172,7 @@ Přihlášení SQL ze zdrojového SQL Server můžete přesunout do spravované 
 
 Ve výchozím nastavení Azure Database Migration Service podporuje pouze migraci přihlašovacích údajů SQL. Můžete ale povolit možnost migrovat přihlášení Windows pomocí:
 
-Zajistěte, aby cílová instance SQL Managed instance měla přístup ke čtení Azure AD, který je možné nakonfigurovat prostřednictvím Azure Portal uživatelem s rolí **Správce společnosti** nebo **globální správce**.
+Zajistěte, aby cílová instance SQL Managed instance měla přístup ke čtení Azure AD, který je možné nakonfigurovat prostřednictvím Azure Portal uživatelem s rolí **globálního správce** .
 Konfigurace instance Azure Database Migration Service, aby se povolily migrace přihlášení uživatelů nebo skupin systému Windows, které se nastaví přes Azure Portal, na stránce konfigurace. Po povolení tohoto nastavení restartujte službu, aby se změny projevily.
 
 Po restartování služby se zobrazí přihlášení uživatele nebo skupiny systému Windows v seznamu přihlášení, která jsou k dispozici pro migraci. U všech přihlášení uživatelů nebo skupin systému Windows, které migrujete, budete vyzváni k zadání přidruženého názvu domény. Uživatelské účty služby (účet s názvem domény NT AUTHORITY) a virtuální uživatelské účty (název účtu s názvem domény NT) nejsou podporovány.
@@ -203,7 +203,7 @@ Některé funkce jsou dostupné až po změně [úrovně kompatibility databáze
 
 Další pomoc najdete v následujících materiálech, které byly vyvinuty pro projekty z reálného světa migrace.
 
-|Prostředek  |Popis  |
+|Prostředek  |Description  |
 |---------|---------|
 |[Model a nástroj pro vyhodnocení datových úloh](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| Tento nástroj poskytuje navrženou cílovou platformu "nejlépe vyhovující", připravenost na Cloud a úroveň nápravy aplikace nebo databáze pro danou úlohu. Nabízí jednoduché výpočetní operace s jedním kliknutím a generování sestav, které pomáhají zrychlit vyhodnocení velkých nemovitostí tím, že zajišťují a automatizují a automatizují rozhodovací procesy na základě cílové platformy.|
 |[Nástroj DBLoader](https://github.com/microsoft/DataMigrationTeam/tree/master/DBLoader%20Utility)|DBLoader lze použít k načtení dat z textových souborů s oddělovači do SQL Server. Tento nástroj konzoly Windows používá rozhraní SQL Server BulkLoad Native Client, které funguje na všech verzích SQL Server, včetně Azure SQL MI.|

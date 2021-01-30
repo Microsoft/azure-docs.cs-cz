@@ -15,12 +15,12 @@ ms.date: 10/29/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a668fa9bf0ef4fd3b5451ff4c815b676fe237e51
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 88fda4ec810d0b410dcd75ac9c6be69bd54b16d9
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410619"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092645"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>Řešení chyb při synchronizaci
 Pokud jsou data identity synchronizovaná ze služby Windows Server Active Directory (služba AD DS) do Azure Active Directory (Azure AD), může dojít k chybám. Tento článek poskytuje přehled různých typů chyb synchronizace, některé z možných scénářů, které způsobují tyto chyby a potenciální způsoby, jak chyby opravit. Tento článek zahrnuje běžné typy chyb a nemusí pokrývat všechny možné chyby.
@@ -34,14 +34,14 @@ Od 1. září Azure Active Directory 2016 bude funkce [odolnosti atributů s dup
 Azure AD Connect provádí tři typy operací z adresářů, které uchovává synchronizace: import, synchronizace a export. V rámci všech operací může dojít k chybám. Tento článek se zaměřuje hlavně na chyby při exportu do Azure AD.
 
 ## <a name="errors-during-export-to-azure-ad"></a>Chyby při exportu do služby Azure AD
-Následující část popisuje různé typy chyb synchronizace, ke kterým může dojít během operace exportu do služby Azure AD pomocí konektoru služby Azure AD. Tento konektor můžete identifikovat pomocí formátu názvu "contoso". *onmicrosoft.com* ".
+Následující část popisuje různé typy chyb synchronizace, ke kterým může dojít během operace exportu do služby Azure AD pomocí konektoru služby Azure AD. Tento konektor můžete identifikovat pomocí formátu názvu "contoso". *onmicrosoft.com*".
 Chyby při exportu do služby Azure AD znamenají, že operace \( Přidání, aktualizace, odstranění atd. \) \( Azure Active Directory Azure AD Connect synchronizace \) neproběhla úspěšně.
 
 ![Přehled chyb exportu](./media/tshoot-connect-sync-errors/Export_Errors_Overview_01.png)
 
 ## <a name="data-mismatch-errors"></a>Chyby neshody dat
 ### <a name="invalidsoftmatch"></a>InvalidSoftMatch
-#### <a name="description"></a>Popis
+#### <a name="description"></a>Description
 * Když Azure AD Connect \( synchronizačního modulu \) instruuje Azure Active Directory, aby přidal nebo aktualizoval objekty, služba Azure AD odpovídá příchozímu objektu pomocí atributu **SourceAnchor** pro atribut **immutableId** objektů v Azure AD. Tato shoda se nazývá **těžká shoda**.
 * Když Azure AD **nenajde** žádný objekt, který by odpovídal atributu **immutableId** s atributem **sourceAnchor** příchozího objektu, před zřízením nového objektu se vrátí k použití atributů proxyAddresses a userPrincipalName k nalezení shody. Tato shoda se nazývá **měkká shoda**. Měkké porovnávání je navrženo tak, aby odpovídalo objektům, které již existují ve službě Azure AD (které jsou ve službě Azure AD), s novými přidanými a aktualizovanými objekty během synchronizace, které představují stejnou entitu (uživatele, skupiny) místně.
 * K chybě **InvalidSoftMatch** dojde v případě, že se při neshodě nenalezne žádný odpovídající objekt **a** měkké porovnávání najde odpovídající objekt, ale tento objekt má jinou hodnotu *immutableId* než *SourceAnchor* příchozích objektů, což naznačuje, že odpovídající objekt byl synchronizován s jiným objektem z místní služby Active Directory.
@@ -78,7 +78,7 @@ Azure Active Directory schéma neumožňuje, aby dva nebo více objektů mělo s
    * SMTP bobs@contoso.com
    * SMTP bob.smith@contoso.com
    * **SMTP: Bob \@ contoso.com**
-5. Nový uživatel, **Bob Taylor** , se přidá do místní služby Active Directory.
+5. Nový uživatel, **Bob Taylor**, se přidá do místní služby Active Directory.
 6. Atribut **userPrincipalName** Taylor je nastaven jako **bobt \@ contoso.com**.
 7. **"abcdefghijkl0123456789 = =" "** je **sourceAnchor** vypočtený pomocí Azure AD Connect pomocí objektu **objectGUID** Taylor z místní služby Active Directory. Objekt Bob Taylor se ještě nesynchronizoval na Azure Active Directory.
 8. Bob Taylor má následující hodnoty pro atribut proxyAddresses
@@ -109,7 +109,7 @@ Zprávy o chybách synchronizace v rámci Azure AD Connect Health pro synchroniz
 * [Duplicitní a neplatné atributy zabraňují synchronizaci adresářů v Microsoft 365](https://support.microsoft.com/kb/2647098)
 
 ### <a name="objecttypemismatch"></a>ObjectTypeMismatch
-#### <a name="description"></a>Popis
+#### <a name="description"></a>Description
 Když se služba Azure AD pokusí dočasná shoda dvou objektů, je možné, že dva objekty různého typu objektu (například uživatel, skupina, kontakt atd.) mají stejné hodnoty pro atributy používané k provedení měkké shody. Vzhledem k tomu, že duplikace těchto atributů není ve službě Azure AD povolená, může operace způsobit chybu synchronizace "ObjectTypeMismatch".
 
 #### <a name="example-scenarios-for-objecttypemismatch-error"></a>Příklady scénářů pro chybu ObjectTypeMismatch
@@ -130,7 +130,7 @@ Nejběžnějším důvodem pro chybu ObjectTypeMismatch jsou dva objekty různý
 
 ## <a name="duplicate-attributes"></a>Duplicitní atributy
 ### <a name="attributevaluemustbeunique"></a>AttributeValueMustBeUnique
-#### <a name="description"></a>Popis
+#### <a name="description"></a>Description
 Azure Active Directory schéma neumožňuje, aby dva nebo více objektů mělo stejnou hodnotu následujících atributů. To znamená, že každý objekt ve službě Azure AD má v dané instanci jedinečnou hodnotu těchto atributů.
 
 * ProxyAddresses
@@ -148,7 +148,7 @@ Pokud se Azure AD Connect pokusí přidat nový objekt nebo aktualizovat existuj
    * SMTP bobs@contoso.com
    * SMTP bob.smith@contoso.com
    * **SMTP: Bob \@ contoso.com**
-4. Nový uživatel, **Bob Taylor** , se přidá do místní služby Active Directory.
+4. Nový uživatel, **Bob Taylor**, se přidá do místní služby Active Directory.
 5. Atribut **userPrincipalName** Taylor je nastaven jako **bobt \@ contoso.com**.
 6. **Bob Taylor** má následující hodnoty pro atribut **proxyAddresses** i. SMTP: bobt@contoso.com II. SMTP bob.taylor@contoso.com
 7. Objekt Bob Taylor se úspěšně synchronizuje se službou Azure AD.
@@ -168,7 +168,7 @@ Nejběžnějším důvodem pro chybu AttributeValueMustBeUnique je, že dva obje
 
 ## <a name="data-validation-failures"></a>Selhání ověřování dat
 ### <a name="identitydatavalidationfailed"></a>IdentityDataValidationFailed
-#### <a name="description"></a>Popis
+#### <a name="description"></a>Description
 Azure Active Directory před tím, než povolí zápis těchto dat do adresáře, vynutila různá omezení nad samotnými daty. Tato omezení slouží k zajištění toho, aby koncoví uživatelé získali nejlepší možné prostředí při používání aplikací, které jsou na těchto datech závislé.
 
 #### <a name="scenarios"></a>Scénáře
@@ -182,7 +182,7 @@ a. Ujistěte se, že atribut userPrincipalName má podporované znaky a požadov
 * [Příprava na zřízení uživatelů prostřednictvím synchronizace adresářů na Microsoft 365](https://support.office.com/article/Prepare-to-provision-users-through-directory-synchronization-to-Office-365-01920974-9e6f-4331-a370-13aea4e82b3e)
 
 ### <a name="federateddomainchangeerror"></a>FederatedDomainChangeError
-#### <a name="description"></a>Popis
+#### <a name="description"></a>Description
 V takovém případě dojde k chybě synchronizace **"FederatedDomainChangeError"** , pokud je přípona názvu userPrincipalName uživatele změněna z jedné federované domény na jinou federované domény.
 
 #### <a name="scenarios"></a>Scénáře
@@ -195,16 +195,16 @@ Pro synchronizovaného uživatele se přípona UserPrincipalName změnila z jedn
 4. Hodnota userPrincipalName elementu Bob se neaktualizuje a výsledkem je chyba synchronizace "FederatedDomainChangeError".
 
 #### <a name="how-to-fix"></a>Jak problém vyřešit
-Pokud byla přípona UserPrincipalName uživatele aktualizována z bob@ **contoso.com** na Bob \@ **fabrikam.com** , kde **contoso.com** i **fabrikam.com** jsou **federované domény** , opravte chybu synchronizace pomocí těchto kroků.
+Pokud byla přípona UserPrincipalName uživatele aktualizována z bob@**contoso.com** na Bob \@ **fabrikam.com**, kde **contoso.com** i **fabrikam.com** jsou **federované domény**, opravte chybu synchronizace pomocí těchto kroků.
 
 1. Aktualizujte v Azure AD atribut UserPrincipalName uživatele z bob@contoso.com na bob@contoso.onmicrosoft.com . Pomocí modulu Azure AD PowerShell můžete použít následující příkaz prostředí PowerShell: `Set-MsolUserPrincipalName -UserPrincipalName bob@contoso.com -NewUserPrincipalName bob@contoso.onmicrosoft.com`
 2. Umožněte dalšímu synchronizačnímu cyklu pokus o synchronizaci. Tato doba synchronizace bude úspěšná a bude aktualizovat UserPrincipalName aplikace Bob na bob@fabrikam.com podle očekávání.
 
 #### <a name="related-articles"></a>Související články
-* [Po změně hlavního názvu uživatele (UPN) uživatelského účtu na používání jiné federované domény nejsou změny synchronizované nástrojem Azure Active Directory Sync.](https://support.microsoft.com/help/2669550/changes-aren-t-synced-by-the-azure-active-directory-sync-tool-after-you-change-the-upn-of-a-user-account-to-use-a-different-federated-domain)
+* [Po změně hlavního názvu uživatele (UPN) uživatelského účtu na používání jiné federované domény nejsou změny synchronizované nástrojem Azure Active Directory Sync.](/azure/active-directory/hybrid/howto-troubleshoot-upn-changes)
 
 ## <a name="largeobject"></a>LargeObject
-### <a name="description"></a>Popis
+### <a name="description"></a>Description
 Pokud atribut překročí povolený limit velikosti, omezení délky nebo omezení počtu, který je nastaven Azure Active Directory schématem, výsledkem operace synchronizace je chyba synchronizace **LargeObject** nebo **ExceededAllowedLength** . K této chybě obvykle dochází pro následující atributy.
 
 * userCertificate
@@ -223,7 +223,7 @@ Pokud atribut překročí povolený limit velikosti, omezení délky nebo omezen
 
 ## <a name="existing-admin-role-conflict"></a>Konflikt stávající role správce
 
-### <a name="description"></a>Popis
+### <a name="description"></a>Description
 **Ke konfliktu role správce** dojde v uživatelském objektu během synchronizace, pokud má tento objekt uživatele:
 
 - oprávnění správce a

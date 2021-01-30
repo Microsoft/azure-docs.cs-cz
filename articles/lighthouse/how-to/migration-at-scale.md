@@ -1,27 +1,27 @@
 ---
-title: Správa projektů migrace ve velkém měřítku pomocí Azure Migrate
+title: Správa Azure Migrate projektů se škálováním pomocí Azure Lighthouse
 description: Naučte se efektivně používat Azure Migrate na delegovaných zákaznických zdrojích.
-ms.date: 12/4/2020
+ms.date: 01/29/2021
 ms.topic: how-to
-ms.openlocfilehash: 53f7c390d9f16dcbccbb1d09f46e63fec13eee2d
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 8e8ba21881ea5dad36ae640632b6307cd9a22a73
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98788939"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99093604"
 ---
-# <a name="manage-migration-projects-at-scale-with-azure-migrate"></a>Správa projektů migrace ve velkém měřítku pomocí Azure Migrate
+# <a name="manage-azure-migrate-projects-at-scale-with-azure-lighthouse"></a>Správa Azure Migrate projektů se škálováním pomocí Azure Lighthouse
 
-Jako poskytovatel služeb můžete mít k [Azure Lighthouse](../overview.md)k dispozici několik klientů pro zákazníky. Azure Lighthouse umožňuje poskytovatelům služeb provádět operace ve velkém měřítku napříč několika klienty Azure Active Directory (Azure AD) najednou a díky tomu se úlohy správy zefektivňují efektivněji.
+Toto téma poskytuje přehled o tom, jak vám [Azure Lighthouse](../overview.md) umožňuje škálovatelný způsob používání [Azure Migrate](../../migrate/migrate-services-overview.md) v rámci více TENANTŮ Azure Active Directory (Azure AD).
 
-[Azure Migrate](../../migrate/migrate-services-overview.md) poskytuje centralizované centrum pro vyhodnocení a migraci na místní servery, infrastrukturu, aplikace a data Azure. Partneři, kteří provádějí posouzení a migraci ve velkém měřítku pro více zákazníků, musí mít k jednotlivým zákaznickým předplatným přístup jednotlivě pomocí [modelu předplatného (Cloud Solution Provider)](/partner-center/customers-revoke-admin-privileges) nebo [vytvořením uživatele typu Host v tenantovi zákazníka](../../active-directory/external-identities/what-is-b2b.md).
+Azure Lighthouse umožňuje poskytovatelům služeb provádět operace ve velkém měřítku napříč několika klienty najednou, což usnadňuje úlohy správy.
+
+Azure Migrate poskytuje centralizované centrum pro vyhodnocení a migraci na místní servery, infrastrukturu, aplikace a data Azure. Partneři, kteří provádějí posouzení a migraci ve velkém měřítku pro více zákazníků, musí mít k jednotlivým zákaznickým předplatným přístup jednotlivě pomocí [modelu předplatného (Cloud Solution Provider)](/partner-center/customers-revoke-admin-privileges) nebo [vytvořením uživatele typu Host v tenantovi zákazníka](../../active-directory/external-identities/what-is-b2b.md).
 
 Integrace se službou Azure Lighthouse s Azure Migrate umožňuje poskytovatelům služeb zjišťovat, hodnotit a migrovat úlohy pro různé zákazníky ve velkém měřítku a umožnit tak zákazníkům úplnou viditelnost a kontrolu nad jejich prostředími. Prostřednictvím delegované správy prostředků Azure mají poskytovatelé služeb jedno zobrazení všech Azure Migratech projektů, které spravují v rámci více zákaznických klientů.
 
 > [!NOTE]
 > Prostřednictvím Azure Lighthouse můžou partneři provádět zjišťování, posuzování a migraci místních virtuálních počítačů VMware, virtuálních počítačů Hyper-V, fyzických serverů a instancí AWS/GCP. Existují dvě možnosti [migrace virtuálních počítačů VMware](../../migrate/server-migrate-overview.md). V současné době je možné při práci na projektu migrace v rámci delegovaného zákazníka použít jenom metodu migrace založenou na agentovi. migrace pomocí replikace bez agentů se v současné době nepodporuje prostřednictvím delegovaného přístupu k oboru zákazníka.
-
-V tomto tématu najdete přehled způsobu použití [Azure Migrate](../../migrate/migrate-services-overview.md) škálovatelným způsobem.
 
 > [!TIP]
 > I když v tomto tématu odkazujeme na poskytovatele služeb a zákazníky, tyto doprovodné materiály se vztahují také na [podniky, které používají Azure Lighthouse ke správě více tenantů](../concepts/enterprise.md).
@@ -72,11 +72,11 @@ Poznámka: před nasazením musíte upravit soubor parametrů tak, aby odrážel
 
 ## <a name="partner-recognition-for-customer-migrations"></a>Rozpoznávání partnerů pro migrace zákazníků
 
-Jako člen [Microsoft Partner Network](https://partner.microsoft.com)můžete propojit ID partnera s přihlašovacími údaji použitými ke správě prostředků delegovaných zákazníků. Společnost Microsoft může prostřednictvím partnerského propojení pro správce (PAL) ovlivnit jeho vliv a výnosy z Azure na vaši organizaci na základě úloh, které provádíte pro zákazníky, včetně projektů migrace.
+Jako člen [Microsoft Partner Network](https://partner.microsoft.com)můžete propojit ID partnera s přihlašovacími údaji použitými ke správě prostředků delegovaných zákazníků. To umožňuje Microsoftu ovlivnit jeho vliv a výnosy z Azure na vaši organizaci na základě úloh, které provádíte pro zákazníky, včetně projektů migrace.
 
 Další informace najdete v tématu o [připojení vašeho ID partnera za účelem sledování vašeho dopadu na delegované prostředky](partner-earned-credit.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si o [Azure Migrate](../../migrate/migrate-services-overview.md).
-- Přečtěte si o [prostředích pro správu mezi klienty](../concepts/cross-tenant-management-experience.md).
+- Přečtěte si další informace o [Azure Migrate](../../migrate/migrate-services-overview.md).
+- Seznamte se s dalšími [prostředími pro správu mezi klienty](../concepts/cross-tenant-management-experience.md) , které podporuje Azure Lighthouse.

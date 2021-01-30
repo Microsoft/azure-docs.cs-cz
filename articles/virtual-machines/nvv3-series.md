@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: ceefcb41dec1ce40d55f412ba51cb1b2cc02daea
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: c1238a45a7175101253f43e6bbd199ff1c913650
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98919693"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99095652"
 ---
 # <a name="nvv3-series"></a>Řada NVv3
 
@@ -27,6 +27,7 @@ Každý grafický procesor v NVv3 instancích obsahuje licenci na MŘÍŽKu. Tat
 [Aktualizace pro zachování paměti](maintenance-and-updates.md): nepodporováno<br>
 [Podpora generování virtuálních počítačů](generation-2.md): generace 1 a 2<br>
 [Akcelerované síťové služby](../virtual-network/create-vm-accelerated-networking-cli.md): podporované<br>
+[Dočasné disky s operačním systémem](ephemeral-os-disks.md): nepodporované <br>
 <br>
 
 | Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | GPU | Paměť GPU: GiB | Max. datových disků | Maximální propustnost disku neuloženého v mezipaměti: IOPS/MB/s | Maximální počet síťových karet/očekávaná šířka pásma sítě (MB/s) | Virtuální pracovní stanice | Virtuální aplikace |

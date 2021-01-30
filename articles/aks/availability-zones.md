@@ -5,12 +5,12 @@ services: container-service
 ms.custom: fasttrack-edit, references_regions, devx-track-azurecli
 ms.topic: article
 ms.date: 09/04/2020
-ms.openlocfilehash: 15f66e836a2900349007fb5068a172b89f39d4de
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 9953b51dc93738093ef56f9dbc64b4e1165cc40c
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352792"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99091391"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Vytvoření clusteru služby Azure Kubernetes (AKS), který používá zóny dostupnosti
 
@@ -34,7 +34,7 @@ Clustery AKS se teď dají vytvářet pomocí zón dostupnosti v následujícíc
 * East US 
 * USA – východ 2
 * Francie – střed
-* Japan East
+* Japonsko – východ
 * Severní Evropa
 * Jihovýchodní Asie
 * Spojené království – jih
@@ -204,4 +204,4 @@ V tomto článku se dozvíte, jak vytvořit cluster AKS, který používá zóny
 
 <!-- LINKS - external -->
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
-[kubectl-well_known_labels]: https://kubernetes.io/docs/reference/kubernetes-api/labels-annotations-taints/
+[kubectl-well_known_labels]: https://kubernetes.io/docs/reference/labels-annotations-taints/

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
-ms.openlocfilehash: 6fb460c65d37723b03c1dfd4fba2c353c19455bd
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: a1b5ba56d30124bea7a814c2ffcf0cfff28903aa
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944580"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062184"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>Azure Private Link pro Azure Data Factory
 
@@ -37,7 +37,7 @@ Místní prostředí Integration runtime můžete také nainstalovat do místní
 
 Mezi Azure Data Factory a zákaznickou virtuální sítí se vyžaduje několik komunikačních kanálů, jak je znázorněno v následující tabulce:
 
-| Doména | Port | Popis |
+| Doména | Port | Description |
 | ---------- | -------- | --------------- |
 | `adf.azure.com` | 443 | Rovina ovládacího prvku, kterou vyžaduje Data Factory vytváření a monitorování. |
 | `*.{region}.datafactory.azure.net` | 443 | Požadováno místním prostředím Integration runtime pro připojení ke službě Data Factory. |
@@ -48,7 +48,7 @@ Díky podpoře privátního odkazu pro Azure Data Factory můžete:
 * Vytvořte ve virtuální síti privátní koncový bod.
 * Povolí privátní připojení ke konkrétní instanci objektu pro vytváření dat. 
 
-Komunikace se službou Azure Data Factory přechodem přes privátní odkaz a zajištění zabezpečeného privátního připojení. Pro zajištění bezpečnějšího způsobu ochrany prostředků není nutné konfigurovat předchozí doménu a port ve virtuální síti ani v podnikové bráně firewall.  
+Komunikace se službou Azure Data Factory přechodem přes privátní odkaz a zajištění zabezpečeného privátního připojení. 
 
 ![Diagram privátního odkazu pro architekturu Azure Data Factory.](./media/data-factory-private-link/private-link-architecture.png)
 
@@ -62,6 +62,9 @@ Povolení služby privátního propojení pro každý z předchozích komunikač
 
    > [!NOTE]
    > U funkcí, které aktuálně nejsou podporovány, je stále nutné nakonfigurovat dříve uvedenou doménu a port ve virtuální síti nebo v podnikové bráně firewall. 
+
+   > [!NOTE]
+   > Připojení k Azure Data Factory prostřednictvím privátního koncového bodu platí pouze pro místní prostředí Integration runtime ve službě Data Factory. V synapse se nepodporuje.
 
 > [!WARNING]
 > Když vytvoříte propojenou službu, ujistěte se, že vaše přihlašovací údaje jsou uložené v trezoru klíčů Azure. Jinak přihlašovací údaje nebudou fungovat, když povolíte privátní odkaz v Azure Data Factory.

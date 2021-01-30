@@ -14,12 +14,12 @@ ms.subservice: roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e38ca27606ecf04b08bd29867894ba269148260c
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 6ae8dbf6ffd2d827bbcd0fd723f63255d71d47a5
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99055242"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090786"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpečení privilegovaného přístupu pro hybridní a cloudová nasazení v Azure AD
 
@@ -40,7 +40,7 @@ Zabezpečení privilegovaného přístupu vyžaduje změny:
 Zabezpečte privilegovaný přístup takovým způsobem, který je spravovaný a nahlášený ve službách Microsoftu, které vás zajímají. Pokud máte místní účty správců, přečtěte si pokyny pro místní a hybridní privilegovaný přístup ve službě Active Directory při [zabezpečení privilegovaného přístupu](/windows-server/identity/securing-privileged-access/securing-privileged-access).
 
 > [!NOTE]
-> Pokyny v tomto článku se primárně vztahují k funkcím Azure Active Directory, které jsou zahrnuté v Azure Active Directory Premiumch plánech P1 a P2. Azure Active Directory Premium P2 je součástí EMS E5 Suite a Microsoft 365 E5 Suite. V těchto pokynech předpokládáme, že vaše organizace už má pro vaše uživatele zakoupené licence Azure AD Premium P2. Pokud tyto licence nemáte, nemusí se některé doprovodné materiály vztahovat na vaši organizaci. V celém tomto článku se taky pojem globální správce (neboli globální správce) označuje jako správce společnosti nebo správce tenanta.
+> Pokyny v tomto článku se primárně vztahují k funkcím Azure Active Directory, které jsou zahrnuté v Azure Active Directory Premiumch plánech P1 a P2. Azure Active Directory Premium P2 je součástí EMS E5 Suite a Microsoft 365 E5 Suite. V těchto pokynech předpokládáme, že vaše organizace už má pro vaše uživatele zakoupené licence Azure AD Premium P2. Pokud tyto licence nemáte, nemusí se některé doprovodné materiály vztahovat na vaši organizaci. I v celém tomto článku pojem globální správce znamená stejné věci jako správce společnosti nebo správce tenanta.
 
 ## <a name="develop-a-roadmap"></a>Vývoj plánu
 
@@ -93,7 +93,7 @@ Po zapnutí Azure AD Privileged Identity Management se podívejte na uživatele,
 * Správce Exchange
 * Správce SharePointu
 
-Pokud ve vaší organizaci nemáte Azure AD Privileged Identity Management, můžete použít [rozhraní PowerShell API](/powershell/module/azuread/get-azureaddirectoryrolemember). Začněte s rolí globálního správce, protože globální správce má stejná oprávnění pro všechny cloudové služby, pro které má vaše organizace předplacené předplatné. Tato oprávnění se udělují bez ohledu na to, kam byla přiřazena: v centru pro správu Microsoft 365, Azure Portal nebo modulu Azure AD pro Microsoft PowerShell.
+Pokud ve vaší organizaci nemáte Azure AD Privileged Identity Management, můžete použít [rozhraní PowerShell API](/powershell/module/azuread/get-azureaddirectoryrolemember). Zahajte roli globálního správce, protože globální správce má stejná oprávnění pro všechny cloudové služby, pro které má vaše organizace předplacené předplatné. Tato oprávnění se udělují bez ohledu na to, kam byla přiřazena: v centru pro správu Microsoft 365, Azure Portal nebo modulu Azure AD pro Microsoft PowerShell.
 
 Odeberte všechny účty, které už v těchto rolích nepotřebujete. Pak zařaďte do kategorií zbývající účty, které jsou přiřazené rolím Správce:
 
@@ -147,7 +147,7 @@ Pokud vaše počáteční globální správci při zahájení používání slu�
 
 Osobní e-mailové účty jsou pravidelně podvodné prostřednictvím internetoví útočníků, což je riziko, že osobní e-mailové adresy neumožňují nesouhlasit s globálním účtem správce. Chcete-li pomoci oddělit Internetová rizika od oprávnění správce, vytvořte vyhrazené účty pro každého uživatele s oprávněními správce.
 
-* Nezapomeňte vytvořit samostatné účty pro uživatele, aby mohli provádět globální úlohy správy.
+* Nezapomeňte vytvořit samostatné účty pro uživatele, aby mohli provádět úlohy globálního správce.
 * Ujistěte se, že globální správci omylem neotevřou e-maily nebo nespouštějí programy s účty správců.
 * Ujistěte se, že tyto účty mají e-maily předané pracovní schránce.
 * Účty globálních správců (a dalších privilegovaných skupin) by měly být jenom cloudové účty, které nemají žádné vazby k místní službě Active Directory.

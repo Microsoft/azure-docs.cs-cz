@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 6428f3eafc9d19060fb065082ea3cbe06bb74d81
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 15a5b1d9659d33ee6eb56434bbdd4322d53c99c3
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98916998"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99094716"
 ---
 # <a name="nd-series"></a>Řada ND
 
@@ -24,6 +24,7 @@ Virtuální počítače řady ND-Series jsou nově přidané do rodiny GPU navr�
 [Aktualizace pro zachování paměti](maintenance-and-updates.md): nepodporováno<br>
 [Podpora generování virtuálních počítačů](generation-2.md): generace 1 a 2<br>
 [Akcelerované síťové služby](../virtual-network/create-vm-accelerated-networking-cli.md): nepodporováno<br>
+[Dočasné disky s operačním systémem](ephemeral-os-disks.md): nepodporované <br>
 NVIDIA NVLink Interconnect: nepodporováno<br>
 
 > [!IMPORTANT]

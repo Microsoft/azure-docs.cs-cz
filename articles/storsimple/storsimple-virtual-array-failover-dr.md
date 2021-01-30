@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 509a3ac383cebd91821e9c4b872c253ab3b0a947
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6a321b2eb79ea01bbf94e1a413c189ac7f4614ad
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005856"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99096419"
 ---
 # <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>Zotavení po havárii a převzetí služeb při selhání zařízení StorSimple Virtual Array prostřednictvím webu Azure Portal
 
@@ -40,7 +40,7 @@ DR se modeluje jako úplné obnovení zařízení pomocí vrstvení a sledován�
 > 
 > 
 
-Zotavení po havárii probíhá prostřednictvím funkce převzetí služeb při selhání zařízení a inicializuje se z okna **zařízení** . Toto okno tabulates všechna zařízení StorSimple připojená ke službě StorSimple Device Manager. Pro každé zařízení můžete zobrazit popisný název, stav, zřízené a maximální kapacitu, typ a model.
+Zotavení po havárii probíhá prostřednictvím funkce převzetí služeb při selhání zařízení a inicializuje se z okna **zařízení** . Toto okno tabulates všechna zařízení StorSimple připojená ke službě StorSimple Správce zařízení. Pro každé zařízení můžete zobrazit popisný název, stav, zřízené a maximální kapacitu, typ a model.
 
 ## <a name="prerequisites-for-device-failover"></a>Požadavky na převzetí služeb při selhání zařízení
 
@@ -92,7 +92,7 @@ Po úspěšném dokončení programu DR se vlastnictví cloudových dat na zdroj
 
 ## <a name="fail-over-to-a-virtual-array"></a>Převzetí služeb při selhání virtuálním polem
 
-Před spuštěním tohoto postupu doporučujeme zřídit, nakonfigurovat a zaregistrovat jiné virtuální pole StorSimple pomocí služby StorSimple Device Manager.
+Před spuštěním tohoto postupu doporučujeme zřídit, nakonfigurovat a zaregistrovat jiné virtuální pole StorSimple pomocí služby StorSimple Správce zařízení.
 
 > [!IMPORTANT]
 > 
@@ -102,7 +102,7 @@ Před spuštěním tohoto postupu doporučujeme zřídit, nakonfigurovat a zareg
 
 Provedením následujících kroků obnovíte zařízení na cílové virtuální zařízení StorSimple.
 
-1. Zřízení a konfigurace cílového zařízení, které splňuje [požadavky pro převzetí služeb při selhání zařízení](#prerequisites). Dokončete konfiguraci zařízení prostřednictvím místního webového uživatelského rozhraní a zaregistrujte ho do služby StorSimple Device Manager. Pokud vytváříte souborový server, použijte krok 1 [Nastavení souborového serveru](storsimple-virtual-array-deploy3-fs-setup.md#step-1-complete-the-local-web-ui-setup-and-register-your-device). Pokud vytváříte server iSCSI, přejít ke kroku 1 v [nastavení serveru iSCSI](storsimple-virtual-array-deploy3-iscsi-setup.md#step-1-complete-the-local-web-ui-setup-and-register-your-device).
+1. Zřízení a konfigurace cílového zařízení, které splňuje [požadavky pro převzetí služeb při selhání zařízení](#prerequisites). Dokončete konfiguraci zařízení prostřednictvím místního webového uživatelského rozhraní a zaregistrujte ho do služby StorSimple Správce zařízení. Pokud vytváříte souborový server, použijte krok 1 [Nastavení souborového serveru](storsimple-virtual-array-deploy3-fs-setup.md#step-1-complete-the-local-web-ui-setup-and-register-your-device). Pokud vytváříte server iSCSI, přejít ke kroku 1 v [nastavení serveru iSCSI](storsimple-virtual-array-deploy3-iscsi-setup.md#step-1-complete-the-local-web-ui-setup-and-register-your-device).
 
 2. Převeďte svazky nebo sdílené složky na hostiteli v režimu offline. Pokud chcete svazky nebo sdílené složky převést do režimu offline, přečtěte si pokyny pro hostitele na základě konkrétního operačního systému. Pokud jste to ještě neučinili offline, musíte na zařízení přebírat všechny svazky nebo sdílené složky, a to následujícím způsobem.
    
@@ -116,7 +116,7 @@ Provedením následujících kroků obnovíte zařízení na cílové virtuáln�
    
     5. Klikněte na **převést do režimu offline**.
 
-3. Ve službě StorSimple Device Manager, navštivte **> Správa zařízení**. V okně **zařízení** vyberte a klikněte na zdrojové zařízení.
+3. Ve službě StorSimple Správce zařízení, navštivte **> Správa zařízení**. V okně **zařízení** vyberte a klikněte na zdrojové zařízení.
 
 4. V okně **řídicí panel zařízení** klikněte na **deaktivovat**.
 
@@ -156,7 +156,7 @@ Provedením následujících kroků obnovíte zařízení na cílové virtuáln�
     1. Vyberte a klikněte na zařízení StorSimple, které se použilo jako cílové zařízení pro proces převzetí služeb při selhání.
     2. Přejít na **nastavení > správa > sdílené složky** (nebo **svazky** , pokud server iSCSI). V okně **akcie** můžete zobrazit všechny sdílené složky (svazky) ze starého zařízení.
         ![Snímek obrazovky okna zařízení Cílové zařízení je uvedené ve stavu online.](./media/storsimple-virtual-array-failover-dr/failover9.png)
-14. Budete muset [vytvořit alias DNS](https://support.microsoft.com/kb/168322) , aby se všechny aplikace, které se snaží připojit, mohly přesměrovat na nové zařízení.
+14. Budete muset [vytvořit alias DNS](https://web.archive.org/web/20150307000707/http://support.microsoft.com:80/kb/168322) , aby se všechny aplikace, které se snaží připojit, mohly přesměrovat na nové zařízení.
 
 ## <a name="errors-during-dr"></a>Chyby během zotavení po havárii
 
@@ -174,7 +174,7 @@ Pokud některá z předkontrol není splněná, zobrazí se chyba předkontroly.
 
 ## <a name="business-continuity-disaster-recovery-bcdr"></a>Zotavení po havárii pro provozní kontinuitu (BCDR)
 
-Když celé datacentrum Azure přestane fungovat, nastane Scénář zotavení po havárii (BCDR) pro provozní kontinuitu. To může mít vliv na vaši službu StorSimple Device Manager a přidružená zařízení StorSimple.
+Když celé datacentrum Azure přestane fungovat, nastane Scénář zotavení po havárii (BCDR) pro provozní kontinuitu. To může mít vliv na vaši službu StorSimple Správce zařízení a přidružená zařízení StorSimple.
 
 Pokud se StorSimple zařízení, která byla zaregistrována těsně před haváriemi, je možné, že tato zařízení StorSimple bude nutné odstranit. Po havárii můžete tato zařízení znovu vytvořit a nakonfigurovat.
 

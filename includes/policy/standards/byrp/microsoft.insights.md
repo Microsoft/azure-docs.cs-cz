@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/25/2021
+ms.date: 01/29/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 0ba9a31c2b7cb76f7630c2d8dbde02d420c7c8c5
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: be367ed401ac0748f0d4f65bfa6643f08d767cc1
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98859849"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99093276"
 ---
 ## <a name="azure-security-benchmark"></a>Srovnávací test zabezpečení Azure
 
@@ -154,6 +154,17 @@ Další informace o tomto standardu dodržování předpisů najdete v tématu [
 |Protokoly správců a operátorů |1270.09 ad1System. 12 – 09.ad |Organizace zajišťuje správné protokolování, aby mohl auditovat činnosti správců. a pravidelně kontroluje správce a obsluha systému. |[Pro konkrétní operace správy by měla existovat výstraha protokolu aktivit.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb954148f-4c11-4c38-8221-be76711e194a) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLog_AdministrativeOperations_Audit.json) |
 |Protokoly správců a operátorů |1271.09 ad1System. 1 – 09.ad |Systém zjišťování neoprávněných vniknutí spravovaný mimo kontrolu systémových a síťových správců se používá k monitorování dodržování předpisů pro činnosti správy systému a sítě. |[Pro konkrétní operace správy by měla existovat výstraha protokolu aktivit.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb954148f-4c11-4c38-8221-be76711e194a) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLog_AdministrativeOperations_Audit.json) |
 |Ovládací prvky sítě |0860.09 m1Organizational. 9 – 09. m |Organizace formálně spravuje zařízení v síti, včetně zařízení v oblastech uživatele. |[Nasadit nastavení diagnostiky pro skupiny zabezpečení sítě](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc9c29499-c1d1-4195-99bd-2ec9e3a9dc89) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/DiagnosticSettingsForNSG_Deploy.json) |
+
+## <a name="iso-270012013"></a>ISO 27001:2013
+
+Pokud chcete zjistit, jak jsou dostupné Azure Policy vestavěné pro všechny služby Azure namapovány na tento standard dodržování předpisů, přečtěte si téma [Azure Policy dodržování předpisů – ISO 27001:2013](../../../../articles/governance/policy/samples/iso-27001.md).
+Další informace o tomto standardu dodržování předpisů najdete v tématu [ISO 27001:2013](https://www.iso.org/isoiec-27001-information-security.html).
+
+|Doména |ID ovládacího prvku |Název ovládacího prvku |Zásady<br /><sub>(Azure Portal)</sub> |Verze zásady<br /><sub>GitHubu</sub>  |
+|---|---|---|---|---|
+|Zabezpečení provozu |12.4.1 |Protokolování událostí |[Auditování nastavení diagnostiky](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7f89b1eb-583c-429a-8828-af049802c1d9) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/DiagnosticSettingsForTypes_Audit.json) |
+|Zabezpečení provozu |12.4.3 |Protokoly správců a operátorů |[Auditování nastavení diagnostiky](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7f89b1eb-583c-429a-8828-af049802c1d9) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/DiagnosticSettingsForTypes_Audit.json) |
+|Zabezpečení provozu |12.4.4 |Synchronizace hodin |[Auditování nastavení diagnostiky](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7f89b1eb-583c-429a-8828-af049802c1d9) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/DiagnosticSettingsForTypes_Audit.json) |
 
 ## <a name="nist-sp-800-171-r2"></a>NIST SP 800-171 R2
 

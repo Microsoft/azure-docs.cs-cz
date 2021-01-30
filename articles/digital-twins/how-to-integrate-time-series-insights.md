@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 1/19/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 97f1f5d0f1f351164e05d18b9f80c7f26450f31b
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 951c52cdba191aa291061259e1c15b9190513770
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98661585"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092705"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Integrace digitálních vláken Azure s Azure Time Series Insights
 
@@ -120,7 +120,7 @@ Pokud chcete vytvořit druhé centrum událostí, můžete použít níže uvede
 3. Vytvořte [autorizační pravidlo](/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest&preserve-view=true#az-eventhubs-eventhub-authorization-rule-create) s oprávněními Odeslat a přijmout. Zadejte název pravidla.
 
     ```azurecli-interactive
-        az eventhubs eventhub authorization-rule create --rights Listen Send --resource-group <resource group name> --namespace-name <Event Hubs namespace from earlier> --eventhub-name <TSI event hub name from above> --name <name for your TSI auth rule>
+    az eventhubs eventhub authorization-rule create --rights Listen Send --resource-group <resource group name> --namespace-name <Event Hubs namespace from earlier> --eventhub-name <TSI event hub name from above> --name <name for your TSI auth rule>
     ```
 
 ## <a name="configure-your-function"></a>Konfigurace funkce
@@ -149,7 +149,7 @@ V dalším kroku budete muset ve své aplikaci Function App nastavovat proměnn�
     az eventhubs eventhub authorization-rule keys list --resource-group <resource group name> --namespace-name <Event Hubs namespace> --eventhub-name <TSI event hub name> --name <TSI auth rule>
     ```
 
-2. Ve vaší aplikaci funkcí vytvořte nastavení aplikace, které bude obsahovat připojovací řetězec:
+2. Použijte hodnotu *primaryConnectionString* z výsledku k vytvoření nastavení aplikace ve vaší aplikaci Function App, která obsahuje váš připojovací řetězec:
 
     ```azurecli-interactive
     az functionapp config appsettings set --settings "EventHubAppSetting-TSI=<TSI event hub connection string>" -g <resource group> -n <your App Service (function app) name>
@@ -163,7 +163,9 @@ V dalším kroku nastavíte instanci Time Series Insights pro příjem dat z va�
     1. Vyberte cenovou úroveň **Gen2 (L1)** .
     2. Pro toto prostředí budete muset zvolit **ID časové řady** . Vaše ID časové řady může mít až tři hodnoty, které použijete k hledání vašich dat v Time Series Insights. Pro tento kurz můžete použít **$dtId**. Přečtěte si další informace o výběru hodnoty ID v tématu [*osvědčené postupy pro výběr ID časové řady*](../time-series-insights/how-to-select-tsid.md).
     
-        :::image type="content" source="media/how-to-integrate-time-series-insights/create-twin-id.png" alt-text="UŽIVATELSKÉ rozhraní portálu pro vytváření Time Series Insightsho prostředí. Je vybraná cenová úroveň Gen2 (L1) a název vlastnosti časové řady je $dtId" lightbox="media/how-to-integrate-time-series-insights/create-twin-id.png":::
+        :::image type="content" source="media/how-to-integrate-time-series-insights/create-time-series-insights-environment-1.png" alt-text="UŽIVATELSKÉ rozhraní portálu pro vytváření Time Series Insightsho prostředí. V příslušných rozevíracích seznamech vyberte své předplatné, skupinu prostředků a umístění a zvolte název svého prostředí." lightbox="media/how-to-integrate-time-series-insights/create-time-series-insights-environment-1.png":::
+        
+        :::image type="content" source="media/how-to-integrate-time-series-insights/create-time-series-insights-environment-2.png" alt-text="UŽIVATELSKÉ rozhraní portálu pro vytváření Time Series Insightsho prostředí. Je vybraná cenová úroveň Gen2 (L1) a název vlastnosti časové řady je $dtId" lightbox="media/how-to-integrate-time-series-insights/create-time-series-insights-environment-2.png":::
 
 2. Vyberte **Další: zdroj události** a z předchozích verzí vyberte informace o centru událostí TSI. Budete také muset vytvořit novou Event Hubs skupinu uživatelů.
     

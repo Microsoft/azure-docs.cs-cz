@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
 ms.custom: data4ml
-ms.openlocfilehash: eb8c69a6bf009543e104a472469c243638726f60
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 5ba399418d8f93204b168c1058be20ffc775ef70
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060363"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99096962"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Označení obrázků v projektu s popisem 
 
@@ -63,11 +63,7 @@ Azure povolí tlačítko **Odeslat** , když jste označili všechny obrázky na
 
 Po odeslání značek pro data v Azure aktualizuje stránku pomocí nové sady imagí z pracovní fronty.
 
-### <a name="assisted-machine-learning-preview"></a>Strojové učení s asistencí (Preview) 
-
-> [!IMPORTANT]
-> Strojové učení s asistencí je aktuálně ve verzi Public Preview.
-> Verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+### <a name="assisted-machine-learning"></a>Strojové učení s asistencí
 
 Můžou se aktivovat algoritmy strojového učení. Pokud jsou tyto algoritmy v projektu povolené, může se zobrazit následující:
 
@@ -75,7 +71,14 @@ Můžou se aktivovat algoritmy strojového učení. Pokud jsou tyto algoritmy v 
 
 * Později se můžete podívat na úkoly, které jsou **označené** vedle názvu projektu.  Obrázky se pak zobrazí s navrhovaným popiskem, který pochází z modelu klasifikace Machine Learning. Žádný model strojového učení nemá 100% přesnost. I když používáme jenom image, pro které je model jistý, můžou být tyto image pořád nesprávně označené.  Když vidíte tyto popisky, před odesláním stránky opravte případné nesprávné popisky.  
 
-* Pro modely detekce objektů můžete vidět ohraničená pole a popisky, které už existují.  Opravte všechny, které jsou nesprávné před odesláním stránky.
+* U modelů pro identifikaci objektů můžete vidět ohraničená pole a popisky, které už existují.  Opravte všechny, které jsou nesprávné před odesláním stránky.
+
+* V případě modelů segmentace můžete vidět mnohoúhelníky a popisky, které už existují.  Opravte všechny, které jsou nesprávné před odesláním stránky. 
+
+    > [!IMPORTANT]
+    > Funkce uvedené ve verzi Preview jsou ve verzi Public Preview.   
+    > Verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 Model strojového učení, který je zvláště zpočátku v rámci označování projektu, může být dostatečně přesný, aby bylo možné předoznačit malou podmnožinu imagí. Po označení těchto imagí se projekt označování vrátí k ručnímu označování, aby se získalo více dat pro další kolo školení o modelu. V průběhu času se model bude spolehlivější o větší část imagí, což vede k pozdějšímu předznačení úkolů v projektu.
 

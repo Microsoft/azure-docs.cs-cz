@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: reference
-ms.date: 11/05/2020
+ms.date: 01/29/2020
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 535b49cb20d60bd9ab294543b82bdb24b040eb7b
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 5f0c8d237e270177ef38c60c523364054bae15af
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879473"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090854"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -222,14 +222,9 @@ Tento správce spravuje federace mezi organizacemi Azure AD a externími zprost�
 * Organizace Azure AD pro zaměstnance a partnery: Přidání federace (např. Gmail) okamžitě ovlivní všechny pozvánky hostů, které ještě nebyly uplatněny. Viz téma [Přidání Google jako zprostředkovatele identity pro uživatele typu Host B2B](../external-identities/google-federation.md).
 * Azure Active Directory B2C organizace: Přidání federace (například s Facebookem nebo s jinou organizací Azure AD) okamžitě nemá vliv na toky koncového uživatele, dokud se poskytovatel identity nepřidá jako možnost v toku uživatele (označované také jako předdefinované zásady). Příklad najdete v tématu [konfigurace účet Microsoft jako zprostředkovatele identity](../../active-directory-b2c/identity-provider-microsoft-account.md) . Pro změnu toků uživatelů se vyžaduje omezená role "správce toku uživatelů B2C".
 
-### <a name="global-administrator--company-administrator"></a>[Globální správce/správce společnosti](#company-administrator-permissions)
+### <a name="global-administrator"></a>[Globální správce](#global-administrator-permissions)
 
-Uživatelé s touto rolí mají přístup ke všem funkcím pro správu v Azure Active Directory a také službám, které používají Azure Active Directory identity, jako je Microsoft 365 Security Center, Microsoft 365 Center pro dodržování předpisů, Exchange Online, SharePoint Online a Online Skype pro firmy. Kromě toho můžou globální správci [zvýšit úroveň přístupu](../../role-based-access-control/elevate-access-global-admin.md) ke správě všech předplatných Azure a skupin pro správu. Díky tomu můžou globální správci získat úplný přístup ke všem prostředkům Azure pomocí příslušného tenanta Azure AD. Osoba, která se zaregistruje do organizace Azure AD, se stal globálním správcem. Ve vaší společnosti může být víc než jeden globální správce. Globální správci můžou resetovat heslo kteréhokoliv uživatele a všech ostatních správců.
-
-> [!NOTE]
-> V rozhraní Microsoft Graph API a Azure AD PowerShell je tato role označená jako správce společnosti. Jedná se o globální správce v [Azure Portal](https://portal.azure.com).
->
->
+Uživatelé s touto rolí mají přístup ke všem funkcím pro správu v Azure Active Directory a také službám, které používají Azure Active Directory identity, jako je Microsoft 365 Security Center, Microsoft 365 Center pro dodržování předpisů, Exchange Online, SharePoint Online a Online Skype pro firmy. Globální správci navíc můžou [zvýšit úroveň přístupu](../../role-based-access-control/elevate-access-global-admin.md) ke správě všech předplatných Azure a skupin pro správu. Díky tomu můžou globální správci získat úplný přístup ke všem prostředkům Azure pomocí příslušného tenanta Azure AD. Osoba, která se zaregistruje do organizace Azure AD, se stal globálním správcem. Ve vaší společnosti může být víc než jeden globální správce. Globální správci můžou resetovat heslo pro každého uživatele a všechny ostatní správce.
 
 ### <a name="global-reader"></a>[Globální čtenář](#global-reader-permissions)
 
@@ -445,7 +440,7 @@ V | Může
 --- | ---
 [Microsoft 365 Security Center](https://protection.office.com) | Zobrazení zásad souvisejících se zabezpečením napříč Microsoft 365 službami<br>Zobrazit bezpečnostní hrozby a výstrahy<br>Zobrazení sestav
 Centrum služby Identity Protection | Čtení všech sestav zabezpečení a informací o nastavení pro funkce zabezpečení<br><ul><li>Ochrana proti nevyžádané poště<li>Šifrování<li>Prevence ztráty dat<li>Ochrana proti malwaru<li>Rozšířená ochrana před internetovými útoky<li>Ochrana proti podvodným zprávám<li>Pravidla mailflow
-[Privileged Identity Management](../privileged-identity-management/pim-configure.md) | Má přístup jen pro čtení ke všem informacím, které jsou v Azure AD Privileged Identity Management: zásady a sestavy pro přiřazení rolí Azure AD a recenze zabezpečení.<br>**Nelze** se zaregistrovat k Azure AD Privileged Identity Management ani provádět žádné změny. V portálu Privileged Identity Management nebo prostřednictvím PowerShellu může osoba v této roli aktivovat další role (například správce globálních správců nebo privilegovaných rolí), pokud je pro ně uživatel oprávněný.
+[Privileged Identity Management](../privileged-identity-management/pim-configure.md) | Má přístup jen pro čtení ke všem informacím, které jsou v Azure AD Privileged Identity Management: zásady a sestavy pro přiřazení rolí Azure AD a recenze zabezpečení.<br>**Nelze** se zaregistrovat k Azure AD Privileged Identity Management ani provádět žádné změny. V Privileged Identity Managementovém portálu nebo prostřednictvím prostředí PowerShell může osoba v této roli aktivovat další role (například správce globálního správce nebo privilegované role), pokud je pro ně uživatel oprávněný.
 [Office 365 Security & – centrum dodržování předpisů](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Zobrazení zásad zabezpečení<br>Zobrazit a prozkoumat bezpečnostní hrozby<br>Zobrazení sestav
 Ochrana ATP a EDR v programu Windows Defender | Zobrazit a prozkoumat výstrahy. Když zapnete řízení přístupu na základě role v ochraně ATP v programu Windows Defender, uživatelé s oprávněním jen pro čtení, jako je role čtenář zabezpečení Azure AD, ztratí přístup, dokud nebudou přiřazeni k roli ochrany ATP v programu Windows Defender.
 [Intune](/intune/role-based-access-control) | Zobrazí informace o uživatelích, zařízeních, registraci, konfiguraci a aplikacích. Nemůže provádět změny v Intune.
@@ -747,9 +742,9 @@ Může vytvářet a spravovat všechny aspekty registrací aplikací a podnikov�
 | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
 | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
 
-### <a name="company-administrator-permissions"></a>Oprávnění správce společnosti
+### <a name="global-administrator-permissions"></a>Oprávnění globálního správce
 
-Může spravovat všechny aspekty Azure AD a služeb Microsoftu, které používají identity Azure AD. Tato role je také známá jako role globálního správce. 
+Může spravovat všechny aspekty Azure AD a služeb Microsoftu, které používají identity Azure AD.
 
 > [!NOTE]
 > Tato role má další oprávnění mimo Azure Active Directory. Další informace najdete v tématu Popis role výše.
@@ -1749,10 +1744,12 @@ Vytvoří a spravuje události zabezpečení.
 | Microsoft. Directory/cloudAppSecurity/allProperties/allTasks | Čtení a konfigurace Microsoft Cloud App Security. |
 | Microsoft. Directory/identityProtection/allProperties/Read | Načte všechny prostředky v Microsoft. aad. identityProtection. |
 | Microsoft. Directory/privilegedIdentityManagement/allProperties/Read | Načte všechny prostředky v Microsoft. aad. privilegedIdentityManagement. |
+| Microsoft. Directory/provisioningLogs/allProperties/Read | Načte všechny vlastnosti protokolů zřizování. |
 | Microsoft. Intune/allEntities/allTasks | Spravujte všechny aspekty Intune. |
 | Microsoft. Office 365. securityComplianceCenter/allEntities/allTasks | Přečtěte si a nakonfigurujte & Security Center pro dodržování předpisů. |
 | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
 | Microsoft. Windows. defenderAdvancedThreatProtection/allEntities/Read | Čtení a konfigurace rozšířené ochrany před internetovými útoky v programu Windows Defender |
+
 
 ### <a name="security-reader-permissions"></a>Oprávnění čtenáře zabezpečení
 

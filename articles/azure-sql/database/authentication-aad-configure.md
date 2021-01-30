@@ -12,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 08/17/2020
-ms.openlocfilehash: e19bf5b4ee5b6c48f002ca79711646cca7b0ec5f
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: b8711b3995c322614c547434850d7c031abfadd5
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98729114"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99094939"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Konfigurace a Správa ověřování Azure AD pomocí Azure SQL
 
@@ -71,15 +71,15 @@ Při použití Azure Active Directory s geografickou replikací musí být sprá
 ## <a name="provision-azure-ad-admin-sql-managed-instance"></a>Zřízení správce Azure AD (spravovaná instance SQL)
 
 > [!IMPORTANT]
-> Postupovat pouze v případě, že zřizujete spravovanou instanci Azure SQL. Tuto operaci může provést jenom globální správce nebo správce společnosti nebo správce privilegované role v Azure AD.
+> Postupovat pouze v případě, že zřizujete spravovanou instanci Azure SQL. Tuto operaci může spustit jenom globální správce nebo správce privilegované role v Azure AD.
 >
 > Ve **verzi Public Preview** můžete přiřadit roli **čtenáři adresáře** ke skupině ve službě Azure AD. Vlastníci skupiny pak můžou přidat identitu spravované instance jako člena této skupiny, což vám umožní zřídit správce Azure AD pro spravovanou instanci SQL. Další informace o této funkci najdete v tématu [role čtečky adresářů v Azure Active Directory pro Azure SQL](authentication-aad-directory-readers-role.md).
 
 Vaše spravovaná instance SQL potřebuje oprávnění ke čtení služby Azure AD, aby bylo možné úspěšně provádět úlohy, jako je například ověřování uživatelů prostřednictvím členství ve skupině zabezpečení nebo vytváření nových uživatelů. Aby to fungovalo, musíte pro čtení Azure AD udělit oprávnění ke spravované instanci SQL. Můžete to provést pomocí Azure Portal nebo PowerShellu.
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure Portal
 
-Pokud chcete vašemu účtu SQL Managed instance udělit oprávnění ke čtení Azure AD pomocí Azure Portal, přihlaste se jako globální správce nebo jako správce společnosti ve službě Azure AD a proveďte tyto kroky:
+Pokud chcete vašemu účtu SQL Managed instance udělit oprávnění ke čtení Azure AD pomocí Azure Portal, přihlaste se jako globální správce v Azure AD a postupujte podle těchto kroků:
 
 1. V [Azure Portal](https://portal.azure.com)v pravém horním rohu vyberte připojení z rozevíracího seznamu možných aktivních adresářů.
 
@@ -126,7 +126,7 @@ Pokud chcete udělit oprávnění ke čtení Azure AD spravované instance SQL p
 
 ```powershell
 # Gives Azure Active Directory read permission to a Service Principal representing the SQL Managed Instance.
-# Can be executed only by a "Company Administrator", "Global Administrator", or "Privileged Role Administrator" type of user.
+# Can be executed only by a "Global Administrator" or "Privileged Role Administrator" type of user.
 
 $aadTenant = "<YourTenantId>" # Enter your tenant ID
 $managedInstanceName = "MyManagedInstance"
@@ -190,7 +190,7 @@ Pokud chcete zřídit správce Azure AD, spusťte následující příkazy Azure
 
 Rutiny používané ke zřízení a správě správce Azure AD pro vaši spravovanou instanci SQL jsou uvedené v následující tabulce:
 
-| Název rutiny | Popis |
+| Název rutiny | Description |
 | --- | --- |
 | [Set-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlinstanceactivedirectoryadministrator) |Zřídí správce Azure AD pro spravovanou instanci SQL v aktuálním předplatném. (Musí být z aktuálního předplatného)|
 | [Remove-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlinstanceactivedirectoryadministrator) |Odebere správce Azure AD pro spravovanou instanci SQL v aktuálním předplatném. |
@@ -236,7 +236,7 @@ Další informace o příkazech rozhraní příkazového řádku najdete v téma
 
 Následující dva postupy vám ukážou, jak zřídit správce Azure Active Directory pro váš server v Azure Portal a pomocí PowerShellu.
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure Portal
 
 1. V [Azure Portal](https://portal.azure.com/)v pravém horním rohu výběrem svého připojení vyrozevíracíte seznam možných aktivních adresářů. Vyberte správnou službu Active Directory jako výchozí službu Azure AD. Tento krok propojí službu Active Directory přidruženou k předplatnému se serverem, aby se zajistilo, že se stejné předplatné používá pro Azure AD i server.
 
@@ -279,7 +279,7 @@ Pokud chcete spustit rutiny PowerShellu, musíte mít Azure PowerShell nainstalo
 
 Rutiny používané ke zřízení a správě správce Azure AD pro SQL Database a Azure synapse:
 
-| Název rutiny | Popis |
+| Název rutiny | Description |
 | --- | --- |
 | [Set-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlserveractivedirectoryadministrator) |Zřídí správce Azure Active Directory pro server hostující SQL Database nebo Azure synapse. (Musí být z aktuálního předplatného) |
 | [Remove-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlserveractivedirectoryadministrator) |Odebere správce Azure Active Directory pro server hostující SQL Database nebo Azure synapse.|

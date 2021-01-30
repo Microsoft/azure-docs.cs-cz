@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Nasazení Azure IoT Edgech úloh
 keywords: Kubernetes, oblouk, Azure, K8s, Containers
-ms.openlocfilehash: bfaa43a03ddd98616b22fc3fc7b4dccb4c38f44c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88c480f93bfe28a424441a1c5857c623efb4e1d3
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86103972"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99091643"
 ---
 # <a name="deploy-azure-iot-edge-workloads-preview"></a>Nasazení Azure IoT Edgech úloh (Preview)
 
@@ -29,7 +29,7 @@ Azure ARC a Azure IoT Edge společně doplňují možnosti. Azure ARC poskytuje 
 
 * Použijte [podporu IoT Edge pro Kubernetes](https://aka.ms/edgek8sdoc) k jejímu nasazení prostřednictvím operátoru toku služby Azure ARC.
 
-* Stáhněte si soubor [**Values. yaml**](https://github.com/Azure/iotedge/blob/master/kubernetes/charts/edge-kubernetes/values.yaml) pro IoT Edge graf Helm a nahraďte zástupný text **deviceConnectionString** na konci souboru, který jste si poznamenali v kroku 1. V případě potřeby můžete nastavit jiné podporované možnosti instalace grafu. Vytvořte obor názvů pro úlohu IoT Edge a vytvořte v něm tajný klíč:
+* Stáhněte si soubor [**Values. yaml**](https://github.com/Azure/iotedge/blob/preview/iiot/kubernetes/charts/edge-kubernetes/values.yaml) pro IoT Edge graf Helm a nahraďte zástupný text **deviceConnectionString** na konci souboru, který jste si poznamenali v kroku 1. V případě potřeby můžete nastavit jiné podporované možnosti instalace grafu. Vytvořte obor názvů pro úlohu IoT Edge a vytvořte v něm tajný klíč:
 
     ```
     $ kubectl create ns iotedge

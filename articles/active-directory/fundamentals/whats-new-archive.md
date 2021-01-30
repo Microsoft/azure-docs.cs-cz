@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/18/2020
+ms.date: 1/29/2021
 ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b83d798d00df674fd4b0502a24681c07875bc3b0
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: c8ab84511c21f41c5120ac050159b6f2e049b7ca
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98694321"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99091523"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archivujte, co je nového v Azure Active Directory?
 
@@ -33,6 +33,176 @@ Co je nového v Azure Active Directory? Poznámky k verzi obsahují informace o:
 - Plánuje změny
 
 ---
+## <a name="july-2020"></a>Červenec 2020
+
+### <a name="as-an-it-admin-i-want-to-target-client-apps-using-conditional-access"></a>Jako správce IT chci cílit na klientské aplikace pomocí podmíněného přístupu.
+
+**Zadejte:** Plánování změn   
+**Kategorie služby:** Podmíněný přístup  
+**Schopnost produktu:** Zabezpečení identity & ochrana
+ 
+V případě, že je v podmíněném přístupu dostupná verze GA klientských aplikací, nové zásady se teď ve výchozím nastavení použijí pro všechny klientské aplikace. Patří sem starší klienti ověřování. Existující zásady zůstanou beze změny, ale přepínač *Konfigurovat ano/ne* se odebere z existujících zásad, aby bylo možné snadno zjistit, které klientské aplikace jsou zásadami aplikovány. 
+
+Při vytváření nové zásady se ujistěte, že vyloučíte uživatele a účty služeb, které pořád používají starší verze ověřování. Pokud to neuděláte, budou zablokovány. [Přečtěte si další informace](../conditional-access/concept-conditional-access-conditions.md).
+ 
+---
+
+### <a name="upcoming-scim-compliance-fixes"></a>Nadcházející opravy dodržování předpisů SCIM
+
+**Zadejte:** Plánování změn  
+**Kategorie služby:** Zřizování aplikací  
+**Schopnost produktu:** Správa životního cyklu identit
+ 
+Služba zřizování Azure AD využívá standard SCIM pro integraci s aplikacemi. Naše implementace standardu SCIM se vyvíjí a očekáváme, že provedeme změny v našem chování, jak provedeme operace opravy, a také nastavit vlastnost "aktivní" na prostředku. [Přečtěte si další informace](../app-provisioning/application-provisioning-config-problem-scim-compatibility.md).
+ 
+---
+
+### <a name="group-owner-setting-on-azure-admin-portal-will-be-changed"></a>Nastavení vlastník skupiny na portálu pro správu Azure se změní.
+
+**Zadejte:** Plánování změn  
+**Kategorie služby:** Správa skupin  
+**Schopnost produktu:** Prostřednictvím
+
+Na portálu pro správu Azure a přístupovém panelu můžete nakonfigurovat nastavení vlastníka na stránce Obecné nastavení skupiny, aby se omezila oprávnění přiřazování vlastníků k omezené skupině uživatelů. Brzy bude možné přiřazovat oprávnění vlastníka skupiny nejen na těchto dvou portálech UX, ale taky vymáhat zásady na back-endu, aby poskytovaly konzistentní chování v rámci koncových bodů, jako je například PowerShell a Microsoft Graph. 
+
+Začneme deaktivovat aktuální nastavení pro zákazníky, kteří ho nepoužívají, a nabídne vám možnost určit v následujících několika měsících možnost oboru uživatelů pro oprávnění vlastníka skupiny. Pokyny k aktualizaci nastavení skupiny najdete v tématu Úprava informací o skupině pomocí [Azure Active Directory](./active-directory-groups-settings-azure-portal.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context).
+
+---
+
+### <a name="azure-active-directory-registration-service-is-ending-support-for-tls-10-and-11"></a>Služba Azure Active Directory Registration Service končí na podporu TLS 1,0 a 1,1
+
+**Zadejte:** Plánování změn  
+**Kategorie služby:** Registrace a Správa zařízení  
+**Schopnost produktu:** Platformy
+
+Protokol TLS (Transport Layer Security) 1,2 a servery aktualizací a klienti budou brzy komunikovat se službou Azure Active Directory Device Registration. Podpora TLS 1,0 a 1,1 pro komunikaci se službou Device Registration Service pro Azure AD vyřadí:
+- 31. srpna 2020 ve všech cloudech v svrchovaném moři (na úrovni RSZ, DoD atd.)
+- 30. října 2020 ve všech komerčních cloudech
+
+[Přečtěte si další informace](../devices/reference-device-registration-tls-1-2.md) o TLS 1,2 pro službu Azure AD Registration Service.
+
+---
+
+### <a name="windows-hello-for-business-sign-ins-visible-in-azure-ad-sign-in-logs"></a>Přihlašování Windows Hello pro firmy zobrazené v protokolech přihlášení Azure AD
+
+**Zadejte:** Určí  
+**Kategorie služby:** Zpravodajský  
+**Schopnost produktu:** Monitorování & vytváření sestav
+ 
+Windows Hello pro firmy umožňuje koncovým uživatelům přihlašovat se k počítačům s Windows pomocí gesta (například PIN nebo biometriky). Správci Azure AD můžou chtít odlišit přihlášení Windows Hello pro firmy od jiných přihlášení k Windows v rámci cesty organizace k ověřování pomocí hesla. 
+
+Správci teď můžou zjistit, jestli ověřování Windows používalo Windows Hello pro firmy, a to tak, že na kartě Podrobnosti ověření pro přihlašovací událost Windows v okně Azure AD Sign-Ins v Azure Portal. Ověřování Windows Hello pro firmy bude v poli Metoda ověřování zahrnovat "WindowsHelloForBusiness". Další informace o interpretaci Sign-Inch protokolů najdete v [dokumentaci k přihlašovacím protokolům](../reports-monitoring/concept-sign-ins.md).
+ 
+---
+
+### <a name="fixes-to-group-deletion-behavior-and-performance-improvements"></a>Opravy chování při odstraňování skupin a zlepšení výkonu
+
+**Zadejte:** Určí  
+**Kategorie služby:** Zřizování aplikací  
+**Schopnost produktu:** Správa životního cyklu identit
+ 
+Když jste dřív změnili skupinu z "in-Scope" na "out-of-Scope" a správce klikl na restart před dokončením změny, objekt skupiny se neodstraní. Objekt skupiny se teď odstraní z cílové aplikace, když se dostane mimo rozsah (zakázaný, odstraněný, nepřiřazený nebo neprojde filtr oboru). [Přečtěte si další informace](../app-provisioning/how-provisioning-works.md#incremental-cycles).
+ 
+---
+
+### <a name="public-preview-admins-can-now-add-custom-content-in-the-email-to-reviewers-when-creating-an-access-review"></a>Public Preview: Správci teď můžou do e-mailu přidat vlastní obsah při vytváření kontroly přístupu.
+
+**Zadejte:** Nová funkce  
+**Kategorie služby:** Kontroly přístupu  
+**Schopnost produktu:** Zásady správného řízení identity
+ 
+Při vytvoření nové kontroly přístupu obdrží kontrolor e-mail s žádostí o dokončení kontroly přístupu. Řada našich zákazníků požádala o možnost přidat vlastní obsah do e-mailu, jako jsou kontaktní údaje nebo jiný další podpůrný obsah, který vás provede kontrolorem. 
+
+V rámci veřejné verze Preview můžou správci zadat vlastní obsah e-mailu odeslanému revidujícím přidáním obsahu v části Upřesnit v tématu kontroly přístupu Azure AD. Pokyny k vytváření kontrol přístupu najdete v tématu [Vytvoření kontroly přístupu skupin a aplikací v prohlídekch Azure AD Access](../governance/create-access-review.md).
+ 
+---
+
+### <a name="authorization-code-flow-for-single-page-apps-available"></a>Tok autorizačního kódu pro jednostránkové aplikace k dispozici
+
+**Zadejte:** Nová funkce  
+**Kategorie služby:** Ověřování (přihlášení)  
+**Schopnost produktu:** Vývojářské prostředí
+ 
+Vzhledem k tomu, že se v moderních prohlížečích používají omezení souborů cookie třetích stran, jako je Safari ITP, bude muset jednostránkové používat tok autorizačního kódu místo implicitního toku pro udržování jednotného přihlašování a MSAL.js v 2. x teď bude podporovat tok autorizačního kódu. 
+
+Existují odpovídající aktualizace Azure Portal, takže můžete zabezpečené ověřování hesla aktualizovat tak, aby bylo typu "Spa", a používat tok kódu ověřování. Další pokyny najdete v tématech [přihlášení uživatelů a získání přístupového tokenu v zabezpečeném kódu v JavaScriptu pomocí toku kódu ověřování](../develop/quickstart-v2-javascript-auth-code.md) .
+ 
+---
+
+### <a name="azure-ad-application-proxy-now-supports-the-remote-desktop-services-web-client"></a>Služba Azure Proxy aplikací služby AD nyní podporuje webového klienta vzdálené plochy.
+
+**Zadejte:** Nová funkce  
+**Kategorie služby:** Proxy aplikace  
+**Schopnost produktu:** Access Control
+
+Služba Azure Proxy aplikací služby AD nyní podporuje webového klienta vzdálené plochy (RDS). Webový klient RDS umožňuje uživatelům přístup k infrastruktuře vzdálené plochy prostřednictvím libovolného prohlížeče podporujícího HTLM5, jako je Microsoft Edge, Internet Explorer 11, Google Chrome atd. Uživatelé můžou komunikovat se vzdálenými aplikacemi nebo počítači, jako by se k nim měli místní zařízení odkudkoli. Pomocí Azure Proxy aplikací služby AD můžete zvýšit zabezpečení nasazení RDS tím, že vynucujete zásady podmíněného ověřování a podmíněného přístupu pro všechny typy bohatých klientských aplikací. Pokyny najdete v tématu [publikování vzdálené plochy pomocí Azure proxy aplikací služby AD](../manage-apps/application-proxy-integrate-with-remote-desktop-services.md).
+ 
+---
+
+### <a name="next-generation-azure-ad-b2c-user-flows-in-public-preview"></a>Nové generace Azure AD B2C toky uživatelů ve verzi Public Preview
+
+**Zadejte:** Nová funkce  
+**Kategorie služby:** B2C – Správa identit uživatelů  
+**Schopnost produktu:** B2B/B2C
+ 
+Zjednodušené uživatelské prostředí nabízí paritu funkcí s funkcemi verze Preview a je domovkou pro všechny nové funkce. Uživatelé budou moci povolit nové funkce v rámci stejného toku uživatelů a snížit tak nutnost vytvářet více verzí s každou novou verzí funkce. Nakonec nově uživatelsky přívětivé uživatelské prostředí zjednodušuje výběr a vytváření toků uživatelů. Vyzkoušejte si to hned [vytvořením toku uživatele](../../active-directory-b2c/tutorial-create-user-flows.md). 
+
+Další informace o tokůch uživatelů najdete [v tématu verze toku uživatele v Azure Active Directory B2C](../../active-directory-b2c/user-flow-versions.md).
+
+---
+
+### <a name="new-federated-apps-available-in-azure-ad-application-gallery---july-2020"></a>V galerii aplikací Azure AD jsou k dispozici nové federované aplikace – červenec 2020
+
+**Zadejte:** Nová funkce  
+**Kategorie služby:** Podnikové aplikace  
+**Schopnost produktu:** integrace třetích stran
+ 
+V červenci 2020 jsme do Galerie aplikací přidali následující 55 nových aplikací s podporou federace:
+
+[CLAP své ruce](http://www.rmit.com.ar/), [Appreiz](https://microsoftteams.appreiz.com/), [Inextor trezor](https://inexto.com/inexto-suite/inextor), [Beekast](https://my.beekast.com/), [Templafy OpenID Connect](https://app.templafy.com/), [PeterConnects recepční](https://msteams.peterconnects.com/), [AlohaCloud](https://appfusions.alohacloud.com/auth), [Control Tower](https://bpm.tnxcorp.com/sso/microsoft), [Cocoom](https://start.cocoom.com/), [mince konstrukcí Cloud](https://sso.coinsconstructioncloud.com/#login/), [Medxnote MT](https://task.teamsmain.medx.im/authorization), [Reflekt](https://reflekt.konsolute.com/login), [rever](https://app.reverscore.net/access), [MyCompanyArchive](https://login.mycompanyarchive.com/), [GReminders](https://app.greminders.com/o365-oauth), [Titanfile, Wootric](../saas-apps/titanfile-tutorial.md) [, SolarWinds](../saas-apps/wootric-tutorial.md) [Orion](https://support.solarwinds.com/SuccessCenter/s/orion-platform?language=en_US),  [OpenText adresářových služeb](../saas-apps/opentext-directory-services-tutorial.md), [DataSite](../saas-apps/datasite-tutorial.md) [, BlogIn, IntSights](../saas-apps/blogin-tutorial.md) [, KPIFIRE](../saas-apps/intsights-tutorial.md) [, TextLine](../saas-apps/kpifire-tutorial.md) [,](../saas-apps/textline-tutorial.md) [Cloud Academy – SSO](../saas-apps/cloud-academy-sso-tutorial.md), [Community Spark](../saas-apps/community-spark-tutorial.md), [ChatWork](../saas-apps/chatwork-tutorial.md) [, CloudSign,](../saas-apps/cloudsign-tutorial.md) [C3M Cloud Control](../saas-apps/c3m-cloud-control-tutorial.md), [SmartHR](https://smarthr.jp/), [NumlyEngage™](../saas-apps/numlyengage-tutorial.md), [Michigan jednotné přihlašování ke službě data hub](../saas-apps/michigan-data-hub-single-sign-on-tutorial.md), [výstup](../saas-apps/egress-tutorial.md), [SendSafely](../saas-apps/sendsafely-tutorial.md), [Eletive](https://app.eletive.com/), [pravá ruka kyberbezpečnosti ADI](https://right-hand.ai/), [Fyde Enterprise Authentication](https://enterprise.fyde.com/), [verme](../saas-apps/verme-tutorial.md), [lenses.IO](../saas-apps/lensesio-tutorial.md), [chvilka](../saas-apps/momenta-tutorial.md), [zvýšení](https://app.uprise.co/sign-in), [Q](https://q.moduleq.com/login), [CloudCords](../saas-apps/cloudcords-tutorial.md), [Tellme robot](https://tellme365liteweb.azurewebsites.net/), [inspirovat](https://app.inspiresoftware.com/), [Maverics identity Orchestrator – konektor SAML](https://www.strata.io/identity-fabric/), [Smartschool (systém pro správu školy)](https://smartschoolz.com/login), [Zepto – inteligentní Timekeeping](https://user.zepto-ai.com/signin), [Studi.ly](https://studi.ly/), [Trackplan](http://www.trackplanfm.com/), [Skedda](../saas-apps/skedda-tutorial.md), [WhosOnLocation](../saas-apps/whos-on-location-tutorial.md), [Coggle](../saas-apps/coggle-tutorial.md), [kemp LoadMaster](https://kemptechnologies.com/cloud-load-balancer/), [jednotné přihlašování browserstackem](../saas-apps/browserstack-single-sign-on-tutorial.md)
+
+Dokumentaci pro všechny aplikace můžete také najít tady. https://aka.ms/AppsTutorial
+
+Pokud chcete zobrazit seznam aplikací v galerii aplikací Azure AD, přečtěte si prosím podrobnosti. https://aka.ms/AzureADAppRequest
+
+---
+
+### <a name="new-provisioning-connectors-in-the-azure-ad-application-gallery---july-2020"></a>Nové zřizovací konektory v galerii aplikací Azure AD – červenec 2020
+
+**Zadejte:** Nová funkce  
+**Kategorie služby:** Zřizování aplikací  
+**Schopnost produktu:** integrace třetích stran
+
+Nyní můžete automatizovat vytváření, aktualizaci a odstraňování uživatelských účtů pro nově integrovanou [výuku LinkedInu](../saas-apps/linkedin-learning-provisioning-tutorial.md)aplikace.
+
+Další informace o tom, jak lépe zabezpečit vaši organizaci pomocí automatizovaného zřizování uživatelských účtů, najdete v tématu [Automatizace zřizování uživatelů při SaaS aplikací pomocí Azure AD](../app-provisioning/user-provisioning.md).
+
+---
+
+### <a name="view-role-assignments-across-all-scopes-and-ability-to-download-them-to-a-csv-file"></a>Zobrazení přiřazení rolí napříč všemi obory a možnost je stáhnout do souboru CSV
+
+**Zadejte:** Změněná funkce  
+**Kategorie služby:** Role Azure AD  
+**Schopnost produktu:** Access Control
+ 
+Nyní můžete zobrazit přiřazení rolí napříč všemi obory role na kartě role a správci na portálu Azure AD. Tato přiřazení rolí můžete také stáhnout pro každou roli do souboru CSV. Pokyny k zobrazení a přidání přiřazení rolí najdete v tématu [zobrazení a přiřazení rolí správce v Azure Active Directory](../roles/manage-roles-portal.md).
+ 
+---
+
+### <a name="azure-multi-factor-authentication-software-development-azure-mfa-sdk-deprecation"></a>Azure Multi-Factor Authentication Software Development (Azure MFA SDK) – vyřazení
+
+**Zadejte:** Zastaralé  
+**Kategorie služby:** VÍCEFAKTOROVÉHO  
+**Schopnost produktu:** Zabezpečení identity & ochrana
+ 
+Vývoj softwaru Azure Multi-Factor Authentication (Azure MFA SDK) dosáhl konce životnosti v listopadu 14 2018, jak je uvedeno poprvé v listopadu 2017. Microsoft vypíná platnost služby SDK až do 30. září 2020. Všechna volání, která sada SDK provede, selžou.
+
+Pokud vaše organizace používá sadu Azure MFA SDK, je nutné migrovat do 30. září 2020:
+- Azure MFA SDK pro MIM: Pokud používáte sadu SDK s MIM, měli byste migrovat na Azure MFA Server a aktivovat Privileged Access Management (PAM) podle těchto [pokynů](/microsoft-identity-manager/working-with-mfaserver-for-mim).   
+- Azure MFA SDK pro vlastní aplikace: Zvažte integraci vaší aplikace do služby Azure AD a použití podmíněného přístupu k prosazování MFA. Pokud chcete začít, podívejte se na tuto [stránku](../manage-apps/plan-an-application-integration.md). 
+
+---
+
 ## <a name="june-2020"></a>Červen 2020 
 
 ### <a name="user-risk-condition-in-conditional-access-policy"></a>Podmínka rizika uživatele v zásadách podmíněného přístupu

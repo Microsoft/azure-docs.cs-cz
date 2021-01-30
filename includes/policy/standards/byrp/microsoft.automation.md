@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/25/2021
+ms.date: 01/29/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 08cdf44931e9aab28fad5fb5c670d0e2b9361e52
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 7c7e036cb2b26d46ba12ac27efe723f974ee9f8a
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98859737"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092916"
 ---
 ## <a name="azure-security-benchmark"></a>Srovnávací test zabezpečení Azure
 
@@ -41,4 +41,13 @@ Další informace o tomto standardu dodržování předpisů najdete v tématu [
 |---|---|---|---|---|
 |Ochrana systémů a komunikací |SC. 3.177 |Využívejte kryptografii ověřenou FIPS při použití k ochraně důvěrnosti CUI. |[Proměnné účtu Automation by se měly šifrovat.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3657f5a0-770e-44a3-b44e-9431ba1e9735) |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Automation/Automation_AuditUnencryptedVars_Audit.json) |
 |Ochrana systémů a komunikací |SC. 3.191 |Chránit důvěrnost CUI v klidovém znění. |[Proměnné účtu Automation by se měly šifrovat.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3657f5a0-770e-44a3-b44e-9431ba1e9735) |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Automation/Automation_AuditUnencryptedVars_Audit.json) |
+
+## <a name="iso-270012013"></a>ISO 27001:2013
+
+Pokud chcete zjistit, jak jsou dostupné Azure Policy vestavěné pro všechny služby Azure namapovány na tento standard dodržování předpisů, přečtěte si téma [Azure Policy dodržování předpisů – ISO 27001:2013](../../../../articles/governance/policy/samples/iso-27001.md).
+Další informace o tomto standardu dodržování předpisů najdete v tématu [ISO 27001:2013](https://www.iso.org/isoiec-27001-information-security.html).
+
+|Doména |ID ovládacího prvku |Název ovládacího prvku |Zásady<br /><sub>(Azure Portal)</sub> |Verze zásady<br /><sub>GitHubu</sub>  |
+|---|---|---|---|---|
+|Kryptografie |10.1.1 |Zásady používání kryptografických ovládacích prvků |[Proměnné účtu Automation by se měly šifrovat.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3657f5a0-770e-44a3-b44e-9431ba1e9735) |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Automation/Automation_AuditUnencryptedVars_Audit.json) |
 

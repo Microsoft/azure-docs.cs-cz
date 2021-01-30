@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: aae2c8b51fabf22419028a17f5bbce6c97530ed5
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: b8eeb06b75ba0e0bdaf19957699ad638c6937891
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98917298"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99094754"
 ---
 # <a name="ncv3-series"></a>Řada NCv3
 
@@ -24,6 +24,7 @@ Virtuální počítače řady NCv3-Series využívají grafické procesory NVIDI
 [Aktualizace pro zachování paměti](maintenance-and-updates.md): nepodporováno<br>
 [Podpora generování virtuálních počítačů](generation-2.md): generace 1 a 2<br>
 [Akcelerované síťové služby](../virtual-network/create-vm-accelerated-networking-cli.md): nepodporováno<br>
+[Dočasné disky s operačním systémem](ephemeral-os-disks.md): nepodporované <br>
 NVIDIA NVLink Interconnect: nepodporováno<br>
 
 > [!IMPORTANT]

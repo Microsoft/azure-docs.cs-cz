@@ -9,12 +9,12 @@ ms.date: 01/27/2021
 ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 5a1ad898b745bbb49421c1bc0b5a9b2e5c8ec0f6
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: c8807f0200f96dc12a3b3d43fa50a91bec85ed38
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98985988"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071175"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurace bran firewall Azure Storage a virtuálních sítí
 
@@ -590,8 +590,8 @@ V následující tabulce jsou uvedeny služby, které mohou mít přístup k dat
 | Azure IoT Hub                  | Microsoft. Devices/IotHubs              | Umožňuje zapsat data z služby IoT Hub do úložiště objektů BLOB. [Další informace](../../iot-hub/virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing) |
 | Azure Logic Apps               | Microsoft. Logic/Workflows              | Povoluje Logic Apps přístup k účtům úložiště. [Přečtěte si další informace](../../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity). |
 | Služba Azure Machine Learning | Microsoft.MachineLearningServices      | Autorizované pracovní prostory Azure Machine Learning zapisují výstup, modely a protokoly do úložiště objektů BLOB a čtou data z experimentu. [Přečtěte si další informace](../../machine-learning/how-to-network-security-overview.md#secure-the-workspace-and-associated-resources). | 
-| Azure Synapse Analytics       | Microsoft.Sql                          | Umožňuje importovat a exportovat data z konkrétních databází SQL pomocí příkazu COPY nebo základny. [Přečtěte si další informace](../../azure-sql/database/vnet-service-endpoint-rule-overview.md). |
-| Azure SQL Database       | Microsoft.Sql                          | Umožňuje [importovat](/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) data z účtů úložiště a [zapisovat](../../azure-sql/database/audit-write-storage-account-behind-vnet-firewall.md) data auditu do účtů úložiště za bránou firewall. |
+| Azure Synapse Analytics       | Microsoft.Sql                          | Umožňuje importovat a exportovat data z konkrétních databází SQL pomocí příkazu COPY nebo základny (ve vyhrazeném fondu) nebo `openrowset` funkce a externích tabulek ve fondu bez serveru. [Přečtěte si další informace](../../azure-sql/database/vnet-service-endpoint-rule-overview.md). |
+| Azure SQL Database       | Microsoft.Sql                          | Povoluje [zápis](../../azure-sql/database/audit-write-storage-account-behind-vnet-firewall.md) dat auditu do účtů úložiště za bránou firewall. |
 | Azure Stream Analytics         | Microsoft. StreamAnalytics             | Umožňuje zapsat data z úlohy streamování do úložiště objektů BLOB. [Přečtěte si další informace](../../stream-analytics/blob-output-managed-identity.md). |
 | Azure Synapse Analytics        | Microsoft. synapse/pracovní prostory          | Umožňuje přístup k datům v Azure Storage z Azure synapse Analytics. |
 

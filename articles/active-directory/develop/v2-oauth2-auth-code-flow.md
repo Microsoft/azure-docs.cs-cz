@@ -13,12 +13,12 @@ ms.date: 01/11/2021
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: a313633c6c1799136b8b8911ae780ca13be5d2c3
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 5b3f7f8016d9b5da70d76322aead551613b8d9c3
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756120"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090217"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft Identity Platform a tok autorizačního kódu OAuth 2,0
 
@@ -48,7 +48,7 @@ Pak je potřeba navštívit registraci vaší aplikace a aktualizovat identifik�
 
 ## <a name="request-an-authorization-code"></a>Vyžádání autorizačního kódu
 
-Tok autorizačního kódu začíná klientem, který uživatele přesměruje na `/authorize` koncový bod. V této žádosti klient požaduje `openid` `offline_access` oprávnění, a `https://graph.microsoft.com/mail.read ` od uživatele.  Některá oprávnění jsou omezená na správce, například zápis dat do adresáře organizace pomocí `Directory.ReadWrite.All` . Pokud vaše aplikace požaduje přístup k některé z těchto oprávnění od uživatele organizace, obdrží chybová zpráva s oznámením, že nemají oprávnění k souhlasu s oprávněními vaší aplikace. Chcete-li požádat o přístup k oborům s omezeným oprávněním správce, měli byste je požádat přímo od správce společnosti.  Další informace najdete v tématu [oprávnění s omezeným oprávněním pro správu](v2-permissions-and-consent.md#admin-restricted-permissions).
+Tok autorizačního kódu začíná klientem, který uživatele přesměruje na `/authorize` koncový bod. V této žádosti klient požaduje `openid` `offline_access` oprávnění, a `https://graph.microsoft.com/mail.read ` od uživatele.  Některá oprávnění jsou omezená na správce, například zápis dat do adresáře organizace pomocí `Directory.ReadWrite.All` . Pokud vaše aplikace požaduje přístup k některé z těchto oprávnění od uživatele organizace, obdrží chybová zpráva s oznámením, že nemají oprávnění k souhlasu s oprávněními vaší aplikace. Chcete-li požádat o přístup k oborům s omezeným oprávněním správce, měli byste je požádat přímo od globálního správce.  Další informace najdete v tématu [oprávnění s omezeným oprávněním pro správu](v2-permissions-and-consent.md#admin-restricted-permissions).
 
 ```
 // Line breaks for legibility only
@@ -68,7 +68,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > Pro spuštění této žádosti klikněte na odkaz níže. Po přihlášení by měl být v prohlížeči přesměrován na adresu na adresním `https://localhost/myapp/` `code` řádku.
 > <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=query&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read&state=12345" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
 
-| Parametr    | Požadováno/volitelné | Popis |
+| Parametr    | Požadováno/volitelné | Description |
 |--------------|-------------|--------------|
 | `tenant`    | vyžadováno    | `{tenant}`Hodnotu v cestě k požadavku lze použít k řízení, kdo se může přihlásit k aplikaci. Povolené hodnoty jsou `common` `organizations` `consumers` identifikátory klientů,, a. Další podrobnosti najdete v tématu [základy protokolu](active-directory-v2-protocols.md#endpoints).  |
 | `client_id`   | vyžadováno    | **ID aplikace (klienta)** , které [Azure Portal – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) prostředí přiřazené k vaší aplikaci.  |
@@ -124,7 +124,7 @@ error=access_denied
 
 Následující tabulka popisuje různé chybové kódy, které mohou být vráceny v `error` parametru chybové odpovědi.
 
-| Kód chyby  | Popis    | Akce klienta   |
+| Kód chyby  | Description    | Akce klienta   |
 |-------------|----------------|-----------------|
 | `invalid_request` | Chyba protokolu, například chybějící požadovaný parametr. | Opravte a odešlete požadavek znovu. Toto je chyba vývoje obvykle zachycena při počátečním testování. |
 | `unauthorized_client` | Klientská aplikace nemá oprávnění vyžadovat autorizační kód. | K této chybě obvykle dochází, když klientská aplikace není registrovaná v Azure AD nebo není přidaná do tenanta Azure AD uživatele. Aplikace může uživatele vyzvat k instalaci aplikace a jejímu přidání do Azure AD. |
@@ -206,7 +206,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > [!TIP]
 > Zkuste tento požadavek provést v nástroji post! (Nezapomeňte nahradit `code` ) [ ![ Pokus o spuštění této žádosti v předzálohovacím](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
-| Parametr  | Požadováno/volitelné | Popis     |
+| Parametr  | Požadováno/volitelné | Description     |
 |------------|-------------------|----------------|
 | `tenant`   | vyžadováno   | `{tenant}`Hodnotu v cestě k požadavku lze použít k řízení, kdo se může přihlásit k aplikaci. Povolené hodnoty jsou `common` `organizations` `consumers` identifikátory klientů,, a. Další podrobnosti najdete v tématu [základy protokolu](active-directory-v2-protocols.md#endpoints).  |
 | `client_id` | vyžadováno  | ID aplikace (klienta), které stránka [Azure Portal – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) přiřazená k vaší aplikaci. |
@@ -269,7 +269,7 @@ Chybové odpovědi budou vypadat takto:
 
 ### <a name="error-codes-for-token-endpoint-errors"></a>Chybové kódy pro chyby koncového bodu tokenu
 
-| Kód chyby         | Popis        | Akce klienta    |
+| Kód chyby         | Description        | Akce klienta    |
 |--------------------|--------------------|------------------|
 | `invalid_request`  | Chyba protokolu, například chybějící požadovaný parametr. | Opravte registraci žádosti nebo aplikace a odešlete žádost znovu.   |
 | `invalid_grant`    | Autorizační kód nebo ověřovatel kódu PKCE je neplatný nebo vypršela jeho platnost. | Vyzkoušejte nový požadavek na `/authorize` koncový bod a ověřte, zda byl zadán správný parametr code_verifier.  |
@@ -328,7 +328,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > Zkuste tento požadavek provést v nástroji post! (Nezapomeňte nahradit `refresh_token` ) [ ![ Pokus o spuštění této žádosti v předzálohovacím](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 >
 
-| Parametr     | Typ           | Popis        |
+| Parametr     | Typ           | Description        |
 |---------------|----------------|--------------------|
 | `tenant`        | vyžadováno     | `{tenant}`Hodnotu v cestě k požadavku lze použít k řízení, kdo se může přihlásit k aplikaci. Povolené hodnoty jsou `common` `organizations` `consumers` identifikátory klientů,, a. Další podrobnosti najdete v tématu [základy protokolu](active-directory-v2-protocols.md#endpoints).   |
 | `client_id`     | vyžadováno    | **ID aplikace (klienta)** , které [Azure Portal – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) prostředí přiřazené k vaší aplikaci. |

@@ -12,12 +12,12 @@ author: dalechen
 ms.author: ninarn
 ms.reviewer: sstein, vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: f8c94e36a1a6d1f675e9d6a7dde456dbf6eb8897
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9f2e755047910aefa89c2f187cda956aca608b98
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791354"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99093753"
 ---
 # <a name="troubleshoot-transient-connection-errors-in-sql-database-and-sql-managed-instance"></a>Řešení chyb přechodného připojení v SQL Database a spravované instanci SQL
 
@@ -31,7 +31,7 @@ Tento článek popisuje, jak předejít, řešit a zmírnit chyby připojení a 
 
 Přechodná chyba, známá také jako přechodná chyba, má základní příčinu, která se brzy vyřeší. Příležitostné příčiny přechodných chyb je, když systém Azure rychle posune hardwarové prostředky, aby lépe vyrovnal různé zatížení. Většina těchto událostí překonfigurace se dokončí za méně než 60 sekund. Během této doby rekonfigurace může dojít k problémům s připojením k databázi v SQL Database. Aplikace, které se připojují k vaší databázi, by měly být sestavené tak, aby byly tyto přechodné chyby očekávat Aby je bylo možné zpracovat, implementujte logiku opakování ve svém kódu namísto jejich zpřístupnění uživatelům jako chyby aplikace.
 
-Pokud klientský program používá ADO.NET, váš program je o přechodné chybě vynásobený voláním **SqlException** .
+Pokud klientský program používá ADO.NET, váš program je o přechodné chybě vynásobený voláním **SqlException**.
 
 <a id="connection-versus-command" name="connection-versus-command"></a>
 
@@ -126,7 +126,7 @@ Aby byl tento test praktický, váš program rozpozná parametr modulu runtime, 
 
 ## <a name="net-sqlconnection-parameters-for-connection-retry"></a>Parametry .NET SqlConnection pro opakování připojení
 
-Pokud se klientský program připojuje k vaší databázi v SQL Database pomocí .NET Framework třídy **System. data. SqlClient. SqlConnection** , použijte .NET 4.6.1 nebo novější (nebo .NET Core), abyste mohli použít funkci opakování připojení. Další informace o této funkci naleznete v tématu [vlastnost SqlConnection. ConnectionString](/dotnet/api/system.data.sqlclient.sqlconnection.connectionstring?view=netframework-4.8&preserve-view=true).
+Pokud se klientský program připojuje k vaší databázi v SQL Database pomocí .NET Framework třídy **System. data. SqlClient. SqlConnection**, použijte .NET 4.6.1 nebo novější (nebo .NET Core), abyste mohli použít funkci opakování připojení. Další informace o této funkci naleznete v tématu [vlastnost SqlConnection. ConnectionString](/dotnet/api/system.data.sqlclient.sqlconnection.connectionstring?view=netframework-4.8&preserve-view=true).
 
 <!--
 2015-11-30, FwLink 393996 points to dn632678.aspx, which links to a downloadable .docx related to SqlClient and SQL Server 2014.
@@ -134,9 +134,9 @@ Pokud se klientský program připojuje k vaší databázi v SQL Database pomocí
 
 Při sestavování [připojovacího řetězce](/dotnet/api/system.data.sqlclient.sqlconnection.connectionstring) pro objekt **SqlConnection** koordinovat hodnoty mezi následujícími parametry:
 
-- **Atributu ConnectRetryCount** : &nbsp; &nbsp; Výchozí hodnota je 1. Rozsah je od 0 do 255.
-- **Atributu ConnectRetryInterval** : &nbsp; &nbsp; Výchozí hodnota je 10 sekund. Rozsah je 1 až 60.
-- **Časový limit připojení** : &nbsp; &nbsp; Výchozí hodnota je 15 sekund. Rozsah je od 0 do 2147483647.
+- **Atributu ConnectRetryCount**: &nbsp; &nbsp; Výchozí hodnota je 1. Rozsah je od 0 do 255.
+- **Atributu ConnectRetryInterval**: &nbsp; &nbsp; Výchozí hodnota je 10 sekund. Rozsah je 1 až 60.
+- **Časový limit připojení**: &nbsp; &nbsp; Výchozí hodnota je 15 sekund. Rozsah je od 0 do 2147483647.
 
 Konkrétně by vaše zvolené hodnoty měly platit z následujících rovností: časový limit připojení = atributu ConnectRetryCount * ConnectionRetryInterval
 
@@ -189,7 +189,7 @@ Obvykle je nutné zajistit, aby byl pro odchozí komunikaci v počítači, kter�
 Pokud je například klientský program hostovaný v počítači se systémem Windows, můžete k otevření portu 1433 použít bránu Windows Firewall na hostiteli.
 
 1. Otevřete okno Ovládací panely.
-2. Vybrat **všechny položky Ovládacích panelů**  >  nastavení nastavení odchozí pravidla **brány Windows Firewall**  >  **Upřesnit nastavení**  >  **Outbound Rules**  >  **Akce**  >  **nové pravidlo** .
+2. Vybrat **všechny položky Ovládacích panelů**  >  nastavení nastavení odchozí pravidla **brány Windows Firewall**  >  **Upřesnit nastavení**  >    >  **Akce**  >  **nové pravidlo**.
 
 Pokud je váš klientský program hostovaný na virtuálním počítači Azure (VM), přečtěte si [porty, které přesahují 1433 pro ADO.NET 4,5 a SQL Database](adonet-v12-develop-direct-route-ports.md).
 
@@ -276,7 +276,7 @@ Enterprise Library 6 (EntLib60) nabízí pro pomoc s protokolováním spravovan�
 
 Tady jsou některé příkazy SELECT jazyka Transact-SQL, které dotazují protokoly chyb a další informace.
 
-| Dotaz na protokol | Popis |
+| Dotaz na protokol | Description |
 |:--- |:--- |
 | `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` |Zobrazení [Sys.event_log](/sql/relational-databases/system-catalog-views/sys-event-log-azure-sql-database) nabízí informace o jednotlivých událostech, které obsahují některé, které mohou způsobit přechodné chyby nebo selhání připojení.<br/><br/>V ideálním případě můžete sladit **start_time** nebo **end_time** hodnoty informacemi o tom, kdy došlo k potížím s klientským programem.<br/><br/>Chcete-li spustit tento dotaz, je nutné se připojit k *Hlavní* databázi. |
 | `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |Zobrazení [Sys.database_connection_stats](/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database) nabízí agregované počty typů událostí pro další diagnostiku.<br/><br/>Chcete-li spustit tento dotaz, je nutné se připojit k *Hlavní* databázi. |
@@ -331,7 +331,7 @@ Enterprise Library 6 (EntLib60) je architektura tříd .NET, která pomáhá imp
 Logika opakování pro zpracování přechodných chyb je jednou z oblastí, ve které může EntLib60 pomoct. Další informace najdete v tématu [4 – Perseverance, tajný kód všech triumphs: použijte blok aplikace pro zpracování přechodného selhání](/previous-versions/msp-n-p/dn440719(v=pandp.60)).
 
 > [!NOTE]
-> Zdrojový kód pro EntLib60 je k dispozici pro veřejné stažení ze [služby Stažení softwaru](https://go.microsoft.com/fwlink/p/?LinkID=290898). Microsoft nemá žádné plány na další aktualizace funkcí ani aktualizace údržby EntLib.
+> Zdrojový kód pro EntLib60 je k dispozici pro veřejné stažení ze [služby Stažení softwaru](https://github.com/MicrosoftArchive/enterprise-library). Microsoft nemá žádné plány na další aktualizace funkcí ani aktualizace údržby EntLib.
 
 <a id="entlib60-classes-for-transient-errors-and-retry" name="entlib60-classes-for-transient-errors-and-retry"></a>
 
@@ -339,7 +339,7 @@ Logika opakování pro zpracování přechodných chyb je jednou z oblastí, ve 
 
 Následující třídy EntLib60 jsou zvláště užitečné pro logiku opakování. Všechny tyto třídy se nacházejí v oboru názvů **Microsoft. Practices. EnterpriseLibrary. TransientFaultHandling** nebo pod ním.
 
-V oboru názvů **Microsoft. Practices. EnterpriseLibrary. TransientFaultHandling** :
+V oboru názvů **Microsoft. Practices. EnterpriseLibrary. TransientFaultHandling**:
 
 - **RetryPolicy** – třída
   - Metoda **ExecuteAction**
@@ -348,7 +348,7 @@ V oboru názvů **Microsoft. Practices. EnterpriseLibrary. TransientFaultHandlin
 - **ReliableSqlConnection** – třída
   - Metoda **ExecuteCommand**
 
-V oboru názvů **Microsoft. Practices. EnterpriseLibrary. TransientFaultHandling. TestSupport** :
+V oboru názvů **Microsoft. Practices. EnterpriseLibrary. TransientFaultHandling. TestSupport**:
 
 - **AlwaysTransientErrorDetectionStrategy** – třída
 - **NeverTransientErrorDetectionStrategy** – třída

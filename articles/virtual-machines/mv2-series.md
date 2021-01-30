@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
-ms.openlocfilehash: 0c279916eb25c5ffe0b0b655818dd1a07849e582
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 7ef4a1542a050918249f602bbc63567cc8e13f2a
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98917452"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99091710"
 ---
 # <a name="mv2-series"></a>Řada Mv2
 
@@ -27,6 +27,7 @@ Funkce virtuálního počítače Mv2-Series Hyper-Threading technologie Intel®
 [Podpora generování virtuálních počítačů](generation-2.md): generace 1 a 2<br>
 [Akcelerátor zápisu](./how-to-enable-write-accelerator.md): podporováno<br>
 [Akcelerované síťové služby](../virtual-network/create-vm-accelerated-networking-cli.md): podporované<br>
+[Dočasné disky s operačním systémem](ephemeral-os-disks.md): nepodporované <br>
 <br>
 
 |Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště a úložiště v mezipaměti: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Maximální počet síťových karet | Očekávaná šířka pásma sítě (MB/s) |

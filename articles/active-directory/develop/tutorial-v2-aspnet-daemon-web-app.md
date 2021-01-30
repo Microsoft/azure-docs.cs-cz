@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: bc7893746cbb98a2d4adc4dabb39e22d015ab2c8
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: d4f8ab190d0418fbb25dad2cd7af231eabfe0f02
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99050393"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090251"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>Kurz: sestavení démona s více klienty, který používá platformu Microsoft identity
 
@@ -45,7 +45,7 @@ Aplikace je sestavená jako aplikace ASP.NET MVC. K přihlašování uživatelů
 
 Komponentou "démon" v této ukázce je kontroler rozhraní API, `SyncController.cs` . Když se kontroler zavolá, vyžádá si seznam uživatelů v tenantovi Azure Active Directory zákazníka (Azure AD) z Microsoft Graph. `SyncController.cs` je aktivován voláním AJAX ve webové aplikaci. K získání přístupového tokenu pro Microsoft Graph používá [Microsoft Authentication Library (MSAL) pro .NET](msal-overview.md) .
 
-Vzhledem k tomu, že aplikace je víceklientské aplikace pro obchodní zákazníky Microsoftu, musí zákazníkům poskytnout způsob, jak se zaregistrovat nebo připojit k datům společnosti. Během toku připojení správce společnosti nejprve udělí *oprávnění aplikace* přímo aplikaci, aby mohl přistupovat k firemním datům neinteraktivním způsobem bez přihlášeného uživatele. Většina logiky v této ukázce ukazuje, jak dosáhnout tohoto toku připojení pomocí koncového bodu [souhlasu správce](v2-permissions-and-consent.md#using-the-admin-consent-endpoint) platformy identity.
+Vzhledem k tomu, že aplikace je víceklientské aplikace pro obchodní zákazníky Microsoftu, musí zákazníkům poskytnout způsob, jak se zaregistrovat nebo připojit k datům společnosti. Během toku připojení globální správce nejprve udělí *oprávnění aplikace* přímo do aplikace, aby mohl přistupovat k firemním datům neinteraktivním způsobem bez přihlášeného uživatele. Většina logiky v této ukázce ukazuje, jak dosáhnout tohoto toku připojení pomocí koncového bodu [souhlasu správce](v2-permissions-and-consent.md#using-the-admin-consent-endpoint) platformy identity.
 
 ![Diagram zobrazuje aplikaci v UserSync se třemi místními položkami připojujícími se k Azure. ověřování pomocí spouštěcích teček znovu získává token, který umožňuje interaktivní připojení k Azure a D, AccountController získání souhlasu správce pro připojení k Azure a D a SyncController čtení uživatele pro připojení k Microsoft Graph.](./media/tutorial-v2-aspnet-daemon-webapp/topology.png)
 

@@ -4,16 +4,16 @@ description: Zjistěte, jak pomocí sady Azure SDK stahovat velké objemy náhod
 author: roygara
 ms.service: storage
 ms.topic: tutorial
-ms.date: 02/20/2018
+ms.date: 01/26/2021
 ms.author: rogarana
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 466a61fd27fd9eeb32d004af1ab6bb43503e6233
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: acfaed10cf627e87691a3068ad0b8cffe9d3b2ee
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020724"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99096284"
 ---
 # <a name="download-large-amounts-of-random-data-from-azure-storage"></a>Stahování velkých objemů náhodných dat z úložiště Azure
 
@@ -34,7 +34,7 @@ K dokončení tohoto kurzu je nutné dokončit předchozí kurz o službě Stora
 
  Pokud chcete s virtuálním počítačem vytvořit relaci vzdálené plochy, použijte na svém místním počítači následující příkaz. IP adresu nahraďte veřejnou IP adresou vašeho virtuálního počítače. Po zobrazení výzvy zadejte přihlašovací údaje, které jste použili při vytváření virtuálního počítače.
 
-```
+```console
 mstsc /v:<publicIpAddress>
 ```
 
@@ -46,8 +46,10 @@ V předchozím kurzu jste do účtu úložiště pouze nahrávali soubory. V tex
 public static void Main(string[] args)
 {
     Console.WriteLine("Azure Blob storage performance and scalability sample");
-    // Set threading and default connection limit to 100 to ensure multiple threads and connections can be opened.
-    // This is in addition to parallelism with the storage client library that is defined in the functions below.
+    // Set threading and default connection limit to 100 to 
+    // ensure multiple threads and connections can be opened.
+    // This is in addition to parallelism with the storage 
+    // client library that is defined in the functions below.
     ThreadPool.SetMinThreads(100, 4);
     ServicePointManager.DefaultConnectionLimit = 100; // (Or More)
 
@@ -55,11 +57,12 @@ public static void Main(string[] args)
     try
     {
         // Call the UploadFilesAsync function.
-        UploadFilesAsync().GetAwaiter().GetResult();
+        // await UploadFilesAsync();
 
-        // Uncomment the following line to enable downloading of files from the storage account.  This is commented out
-        // initially to support the tutorial at https://docs.microsoft.com/azure/storage/blobs/storage-blob-scalable-app-download-files.
-        // DownloadFilesAsync().GetAwaiter().GetResult();
+        // Uncomment the following line to enable downloading of files from the storage account.
+        // This is commented out initially to support the tutorial at 
+        // https://docs.microsoft.com/azure/storage/blobs/storage-blob-scalable-app-download-files
+        await DownloadFilesAsync();
     }
     catch (Exception ex)
     {
@@ -68,11 +71,13 @@ public static void Main(string[] args)
     }
     finally
     {
-        // The following function will delete the container and all files contained in them.  This is commented out initially
-        // As the tutorial at https://docs.microsoft.com/azure/storage/blobs/storage-blob-scalable-app-download-files has you upload only for one tutorial and download for the other. 
+        // The following function will delete the container and all files contained in them.
+        // This is commented out initially as the tutorial at 
+        // https://docs.microsoft.com/azure/storage/blobs/storage-blob-scalable-app-download-files
+        // has you upload only for one tutorial and download for the other.
         if (!exception)
         {
-            // DeleteExistingContainersAsync().GetAwaiter().GetResult();
+            // await DeleteExistingContainersAsync();
         }
         Console.WriteLine("Press any key to exit the application");
         Console.ReadKey();
@@ -82,7 +87,7 @@ public static void Main(string[] args)
 
 Po aktualizaci aplikace je potřeba ji znovu sestavit. Otevřete `Command Prompt` (příkazový řádek) a přejděte do umístění `D:\git\storage-dotnet-perf-scale-app`. Znovu sestavte aplikaci spuštěním příkazu `dotnet build`, jak je vidět v následujícím příkladu:
 
-```
+```console
 dotnet build
 ```
 
@@ -92,33 +97,44 @@ Když je teď aplikace znovu sestavená, je čas spustit aplikaci s aktualizovan
 
 Zadáním příkazu `dotnet run` spusťte aplikaci.
 
-```
+```console
 dotnet run
 ```
 
-Aplikace načte kontejnery v účtu úložiště zadaném v hodnotě **storageconnectionstring** (připojovací řetězec úložiště). Pomocí metody [ListBlobsSegmented](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer) prochází objekty blob v kontejnerech po 10 najednou a pomocí metody [DownloadToFileAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadtofileasync) je stahuje do místního počítače.
-Následující tabulka obsahuje možnosti [BlobRequestOptions](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions), které se při stahování definují pro každý objekt blob.
+Úloha `DownloadFilesAsync` je znázorněná v následujícím příkladu:
+
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+
+Aplikace načte kontejnery v účtu úložiště zadaném v hodnotě **storageconnectionstring** (připojovací řetězec úložiště). Projde objekty BLOB pomocí metody [Getblobs](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobs) a stáhne je do místního počítače pomocí metody [DownloadToAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.downloadtoasync) .
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Scalable.cs" id="Snippet_DownloadFilesAsync":::
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
+Aplikace načte kontejnery v účtu úložiště zadaném v hodnotě **storageconnectionstring** (připojovací řetězec úložiště). Projde objekty blob 10 v čase pomocí metody [ListBlobsSegmentedAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listblobssegmentedasync) v kontejnerech a stáhne je do místního počítače pomocí metody [DownloadToFileAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadtofileasync) .
+
+V následující tabulce je uveden [BlobRequestOptions](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions) definovaný pro každý objekt BLOB při stažení.
 
 |Vlastnost|Hodnota|Popis|
 |---|---|---|
 |[DisableContentMD5Validation](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.disablecontentmd5validation)| true| Tato vlastnost zakazuje kontrolu hodnoty hash MD5 nahrávaného obsahu. Zakázáním ověřování MD5 dosáhnete rychlejšího přenosu. Neprovádí se však potvrzení platnosti ani integrity přenášených souborů. |
 |[StoreBlobContentMD5](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.storeblobcontentmd5)| false (nepravda)| Tato vlastnost určuje, jestli se počítá a ukládá hodnota hash MD5.   |
 
-Úloha `DownloadFilesAsync` je znázorněná v následujícím příkladu:
-
 ```csharp
 private static async Task DownloadFilesAsync()
 {
     CloudBlobClient blobClient = GetCloudBlobClient();
 
-    // Define the BlobRequestOptions on the download, including disabling MD5 hash validation for this example, this improves the download speed.
+    // Define the BlobRequestOptions on the download, including disabling MD5 
+    // hash validation for this example, this improves the download speed.
     BlobRequestOptions options = new BlobRequestOptions
     {
         DisableContentMD5Validation = true,
         StoreBlobContentMD5 = false
     };
 
-    // Retrieve the list of containers in the storage account.  Create a directory and configure variables for use later.
+    // Retrieve the list of containers in the storage account.
+    // Create a directory and configure variables for use later.
     BlobContinuationToken continuationToken = null;
     List<CloudBlobContainer> containers = new List<CloudBlobContainer>();
     do
@@ -140,7 +156,8 @@ private static async Task DownloadFilesAsync()
         int max_outstanding = 100;
         int completed_count = 0;
 
-        // Create a new instance of the SemaphoreSlim class to define the number of threads to use in the application.
+        // Create a new instance of the SemaphoreSlim class to
+        // define the number of threads to use in the application.
         SemaphoreSlim sem = new SemaphoreSlim(max_outstanding, max_outstanding);
 
         // Iterate through the containers
@@ -148,7 +165,7 @@ private static async Task DownloadFilesAsync()
         {
             do
             {
-                // Return the blobs from the container lazily 10 at a time.
+                // Return the blobs from the container, 10 at a time.
                 resultSegment = await container.ListBlobsSegmentedAsync(null, true, BlobListingDetails.All, 10, continuationToken, null, null);
                 continuationToken = resultSegment.ContinuationToken;
                 {
@@ -188,11 +205,13 @@ private static async Task DownloadFilesAsync()
 }
 ```
 
+---
+
 ### <a name="validate-the-connections"></a>Ověření připojení
 
-V průběhu stahování souborů můžete ověřit počet souběžných připojení k vašemu účtu úložiště. Otevřete `Command Prompt` (příkazový řádek) a zadejte `netstat -a | find /c "blob:https"`. Tento příkaz zobrazí počet aktuálně otevřených připojení pomocí příkazu `netstat`. Když budete postupovat podle kurzu, zobrazí se podobný výstup jako v následujícím příkladu. Jak je vidět z příkladu, při stahování náhodných souborů z účtu úložiště se otevřelo více než 280 připojení.
+V průběhu stahování souborů můžete ověřit počet souběžných připojení k vašemu účtu úložiště. Otevřete okno konzoly a zadejte `netstat -a | find /c "blob:https"` . Tento příkaz zobrazuje počet aktuálně otevřených připojení. Jak vidíte v následujícím příkladu, během stahování souborů z účtu úložiště se otevřelo více než 280 připojení.
 
-```
+```console
 C:\>netstat -a | find /c "blob:https"
 289
 
@@ -201,13 +220,13 @@ C:\>
 
 ## <a name="next-steps"></a>Další kroky
 
-V třetí části série jste se seznámili se stahováním velkých objemů náhodných dat z účtu úložiště a naučili jste se například:
+Ve třetí části série jste se dozvěděli o stahování velkých objemů dat z účtu úložiště, včetně toho, jak:
 
 > [!div class="checklist"]
 > * Spuštění aplikace
 > * Ověření počtu připojení
 
-Přejděte ke čtvrté části série, kde na portálu ověříte metriky latence a propustnosti.
+Přejít do čtvrté části série a ověřit metriky propustnosti a latence na portálu.
 
 > [!div class="nextstepaction"]
 > [Ověření metrik latence a propustnosti na portálu](storage-blob-scalable-app-verify-metrics.md)

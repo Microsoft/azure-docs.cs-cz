@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b750d4cc911dc72b60974171dd884b373921fad5
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 3e123ab6d5b9d801908112239cf3e9cb72b4abbb
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734592"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99093959"
 ---
 # <a name="azure-security-baseline-for-azure-signalr-service"></a>Směrný plán zabezpečení Azure pro službu Azure Signal
 
@@ -220,7 +220,7 @@ Rozšířená ochrana před internetovými útoky (ATP) v Azure je řešení zab
 
 **Doprovodné** materiály: nejdůležitější předdefinované role jsou Azure Active Directory (Azure AD) jsou globální správce a správce privilegovaných rolí, protože uživatelé přiřazení k těmto dvěma rolím můžou delegovat role správce:
 
-- Globální správce/správce společnosti: uživatelé s touto rolí mají přístup ke všem funkcím pro správu ve službě Azure AD a službám, které používají identity Azure AD.
+- Globální správce: uživatelé s touto rolí mají přístup ke všem funkcím pro správu v Azure AD a službám, které používají identity Azure AD.
 
 - Správce privilegovaných rolí: uživatelé s touto rolí můžou spravovat přiřazení rolí v Azure Active Directory (Azure AD) i v Azure AD Privileged Identity Management (PIM). Tato role navíc umožňuje správu všech aspektů PIM a administrativních jednotek.
 

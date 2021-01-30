@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 09/03/2020
 ms.author: ceespino
 ms.reviewer: daperlov
-ms.openlocfilehash: 0bd0421a74679ff0c9498540d722a74ebf3d58af
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 8bb4ff3198764a35bebc124ee1ce99a93428693d
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92632563"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99095951"
 ---
 # <a name="troubleshoot-azure-data-factory-ux-issues"></a>Řešení potíží s Azure Data Factorym UX
 
@@ -28,7 +28,7 @@ Tento článek popisuje běžné metody řešení potíží pro Azure Data Facto
 
 ### <a name="third-party-cookies-blocked"></a>Blokované soubory cookie třetích stran
 
-UX v uživatelském rozhraní ADF používá soubory cookie prohlížeče k zachování uživatelské relace a umožňuje interaktivní vývojové a monitorovací prostředí. Je možné, že prohlížeč blokuje soubory cookie třetích stran, protože používáte relaci anonymním nebo máte povolený blokování služby Active Directory. Blokování souborů cookie třetích stran může při načítání portálu způsobit problémy, jako je například přesměrování na prázdnou stránku, https://adf.azure.com/accesstoken.html nebo získání varovné zprávy s informací o tom, že soubory cookie třetích stran jsou zablokované. Pokud chcete tento problém vyřešit, povolte v prohlížeči možnosti souborů cookie třetích stran pomocí následujících kroků:
+UX v uživatelském rozhraní ADF používá soubory cookie prohlížeče k zachování uživatelské relace a umožňuje interaktivní vývojové a monitorovací prostředí. Je možné, že prohlížeč blokuje soubory cookie třetích stran, protože používáte relaci anonymním nebo máte povolený blokování služby Active Directory. Blokování souborů cookie třetích stran může při načítání portálu způsobit problémy, jako je například přesměrování na prázdnou stránku, https://adf.azure.com/accesstoken.html nebo získání zprávy s upozorněním, že soubory cookie třetích stran jsou zablokovány. Pokud chcete tento problém vyřešit, povolte v prohlížeči možnosti souborů cookie třetích stran pomocí následujících kroků:
 
 ### <a name="google-chrome"></a>Google Chrome
 
@@ -42,7 +42,7 @@ UX v uživatelském rozhraní ADF používá soubory cookie prohlížeče k zach
 
 #### <a name="only-allow-adf-ux-to-use-cookies"></a>Umožněte použití souborů cookie jenom v uživatelském prostředí ADF.
 Pokud nechcete povolit všechny soubory cookie, můžete volitelně povolit jenom uživatelské prostředí ADF:
-1. Navštivte **Chrome://Settings/cookies** .
+1. Navštivte **Chrome://Settings/cookies**.
 1. Vyberte možnost **Přidat** do **webů, které můžou vždycky používat soubory cookie** . 
 
     ![Přidání uživatelského prostředí ADF do povolených webů v Chrome](media/data-factory-ux-troubleshoot-guide/chrome-only-adf-cookies-1.png)
@@ -63,7 +63,7 @@ Pokud nechcete povolit všechny soubory cookie, můžete volitelně povolit jeno
 
 Pokud nechcete povolit všechny soubory cookie, můžete volitelně povolit jenom uživatelské prostředí ADF:
 
-1. Navštivte **Edge://Settings/Content/cookies** .
+1. Navštivte **Edge://Settings/Content/cookies**.
 1. V části **povoleno** vyberte **Přidat** a přidat web **ADF.Azure.com** . 
 
     ![Přidání uživatelského prostředí ADF do povolených lokalit na hraničních zařízeních](media/data-factory-ux-troubleshoot-guide/edge-allow-adf-cookies.png)
@@ -71,17 +71,17 @@ Pokud nechcete povolit všechny soubory cookie, můžete volitelně povolit jeno
 
 ## <a name="connection-failed-on-adf-ux"></a>Nepovedlo se připojit k UŽIVATELSKÉmu prostředí ADF
 
-Někdy se vám v uživatelském prostředí ADF po kliknutí na **test Connection** , **Preview** atd. zobrazí chyby "připojení nebylo úspěšné".
+Někdy se vám v uživatelském prostředí ADF po kliknutí na **test Connection**, **Preview** atd. zobrazí chyby "připojení nebylo úspěšné".
 
 ![Připojení selhalo.](media/data-factory-ux-troubleshoot-guide/connection-failed.png)
 
 V takovém případě můžete v prohlížeči nejprve vyzkoušet stejnou operaci s režimem procházení InPrivate.
 
-Pokud to pořád nefunguje, otevřete v prohlížeči stisknutím klávesy F12 **vývojářské nástroje** . Vraťte se na kartu **síť** , vyhledejte možnost **Zakázat mezipaměť** , opakujte neúspěšnou operaci a najděte neúspěšnou žádost (červeně).
+Pokud to pořád nefunguje, otevřete v prohlížeči stisknutím klávesy F12 **vývojářské nástroje**. Vraťte se na kartu **síť** , vyhledejte možnost **Zakázat mezipaměť**, opakujte neúspěšnou operaci a najděte neúspěšnou žádost (červeně).
 
 ![Neúspěšná žádost](media/data-factory-ux-troubleshoot-guide/failed-request.png)
 
-Pak vyhledejte **název hostitele** (v tomto případě **dpnortheurope.svc.DataFactory.Azure.com** ) z **adresy URL požadavku** neúspěšného požadavku.
+Pak vyhledejte **název hostitele** (v tomto případě **dpnortheurope.svc.DataFactory.Azure.com**) z **adresy URL požadavku** neúspěšného požadavku.
 
 Zadejte **název hostitele** přímo do adresního řádku prohlížeče. Pokud se v prohlížeči zobrazí 404, obvykle to znamená, že je na straně klienta ok a problém je na straně služby ADF. Zasouborte lístek podpory s **ID aktivity** z chybové zprávy uživatelského rozhraní ADF.
 
@@ -91,7 +91,7 @@ Pokud ne nebo se v prohlížeči zobrazí podobná chyba, obvykle to znamená, �
 
 ![Chyba na straně klienta](media/data-factory-ux-troubleshoot-guide/client-side-error.png)
 
-Otevřete **příkazový řádek** a zadejte příkaz **nslookup dpnortheurope.svc.DataFactory.Azure.com** . Normální odpověď by měla vypadat nějak takto:
+Otevřete **příkazový řádek** a zadejte příkaz **nslookup dpnortheurope.svc.DataFactory.Azure.com**. Normální odpověď by měla vypadat nějak takto:
 
 ![Odezva příkazu 1](media/data-factory-ux-troubleshoot-guide/command-response-1.png)
 
@@ -119,5 +119,5 @@ Pro další nápovědu k řešení potíží zkuste tyto prostředky:
 * [Žádosti o Data Factory funkcí](https://feedback.azure.com/forums/270578-data-factory)
 * [Stack Overflow fórum pro Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
 * [Informace o Twitteru týkající se Data Factory](https://twitter.com/hashtag/DataFactory)
-* [Videa k Azure](https://azure.microsoft.com/resources/videos/index/)
+* [Videa Azure](https://azure.microsoft.com/resources/videos/index/)
 * [Stránka s otázkou Microsoft Q&](/answers/topics/azure-data-factory.html)

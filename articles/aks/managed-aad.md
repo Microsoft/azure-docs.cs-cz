@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/26/2020
 ms.author: thomasge
-ms.openlocfilehash: f229075d0bad4f9522e02e30bdabc1d42bb086cf
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 534c355961bb87a816f5ba50a3cc2d397e544a15
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684181"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99072299"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>Integrace Azure Active Directory spravovaná v AKS
 
@@ -46,7 +46,6 @@ kubelogin --version
 ```
 
 [Tyto pokyny](https://kubernetes.io/docs/tasks/tools/install-kubectl/) použijte pro jiné operační systémy.
-
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -188,6 +187,50 @@ Pokud chcete získat přístup ke clusteru, postupujte podle kroků uvedených [
 
 Existují některé neinteraktivní scénáře, jako jsou kanály průběžné integrace, které nejsou aktuálně k dispozici v kubectl. Můžete použít [`kubelogin`](https://github.com/Azure/kubelogin) pro přístup ke clusteru pomocí neinteraktivního přihlašování instančního objektu.
 
+## <a name="use-conditional-access-with-azure-ad-and-aks"></a>Použití podmíněného přístupu s Azure AD a AKS
+
+Při integraci Azure AD s clusterem AKS můžete také použít [podmíněný přístup][aad-conditional-access] k řízení přístupu ke clusteru.
+
+> [!NOTE]
+> Podmíněný přístup Azure AD je Azure AD Premium funkce.
+
+Pokud chcete vytvořit ukázkovou zásadu podmíněného přístupu pro použití s AKS, proveďte následující kroky:
+
+1. V horní části Azure Portal vyhledejte a vyberte Azure Active Directory.
+1. V nabídce pro Azure Active Directory na levé straně vyberte *podnikové aplikace*.
+1. V nabídce u podnikových aplikací na levé straně vyberte *podmíněný přístup*.
+1. V nabídce pro podmíněný přístup na levé straně vyberte *zásady* a pak *nové zásady*.
+    :::image type="content" source="./media/managed-aad/conditional-access-new-policy.png" alt-text="Přidání zásady podmíněného přístupu":::
+1. Zadejte název zásady, jako je například *AKS-Policy*.
+1. Vyberte *Uživatelé a skupiny* a pak v části *Zahrnout* vyberte *Vybrat uživatele a skupiny*. Vyberte uživatele a skupiny, u kterých chcete zásady použít. V tomto příkladu vyberte stejnou skupinu Azure AD, která má k vašemu clusteru přístup pro správu.
+    :::image type="content" source="./media/managed-aad/conditional-access-users-groups.png" alt-text="Výběr uživatelů nebo skupin pro uplatnění zásad podmíněného přístupu":::
+1. Vyberte *cloudové aplikace nebo akce* a potom v části *Zahrnout* vyberte *vybrat aplikace*. Vyhledejte *službu Azure Kubernetes* a vyberte *Azure Kubernetes Service AAD Server*.
+    :::image type="content" source="./media/managed-aad/conditional-access-apps.png" alt-text="Výběr serveru AD služby Azure Kubernetes pro použití zásad podmíněného přístupu":::
+1. V části *Ovládací prvky přístupu* zvolte *Udělení*. Vyberte *udělit přístup* , pak *vyžadovat, aby zařízení bylo označené jako vyhovující*.
+    :::image type="content" source="./media/managed-aad/conditional-access-grant-compliant.png" alt-text="Výběr pro povolení zásad podmíněného přístupu pro zařízení splňující předpisy":::
+1. V části *Povolit zásadu* vyberte *zapnuto* a pak *vytvořit*.
+    :::image type="content" source="./media/managed-aad/conditional-access-enable-policy.png" alt-text="Povolení zásad podmíněného přístupu":::
+
+Získejte přihlašovací údaje uživatele pro přístup ke clusteru, například:
+
+```azurecli-interactive
+ az aks get-credentials --resource-group myResourceGroup --name myManagedCluster
+```
+
+Pokud se chcete přihlásit, postupujte podle pokynů.
+
+Pomocí `kubectl get nodes` příkazu Zobrazte uzly v clusteru:
+
+```azurecli-interactive
+kubectl get nodes
+```
+
+Znovu se přihlaste podle pokynů. Všimněte si, že je k dispozici chybová zpráva s oznámením, že jste úspěšně přihlášeni, ale váš správce vyžaduje, aby zařízení, které žádá o přístup, bylo spravováno službou Azure AD pro přístup k prostředku.
+
+V Azure Portal přejděte na Azure Active Directory, vyberte *podnikové aplikace* a potom v části *aktivita* vyberte *přihlášení*. Všimněte si, že záznam v horní části se *stavem* *selhalo* a *podmíněný přístup* *úspěch*. Vyberte položku a pak v *podrobnostech* vyberte *podmíněný přístup* . Všimněte si, že jsou uvedené vaše zásady podmíněného přístupu.
+
+:::image type="content" source="./media/managed-aad/conditional-access-sign-in-activity.png" alt-text="Neúspěšná položka přihlášení kvůli zásadám podmíněného přístupu":::
+
 ## <a name="next-steps"></a>Další kroky
 
 * Další informace o [integraci Azure RBAC pro autorizaci Kubernetes][azure-rbac-integration]
@@ -202,6 +245,7 @@ Existují některé neinteraktivní scénáře, jako jsou kanály průběžné i
 [aks-arm-template]: /azure/templates/microsoft.containerservice/managedclusters
 
 <!-- LINKS - Internal -->
+[aad-conditional-access]: ../active-directory/conditional-access/overview.md
 [azure-rbac-integration]: manage-azure-rbac.md
 [aks-concepts-identity]: concepts-identity.md
 [azure-ad-rbac]: azure-ad-rbac.md

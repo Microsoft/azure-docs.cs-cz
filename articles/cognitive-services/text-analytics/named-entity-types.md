@@ -8,18 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 07/28/2020
+ms.date: 01/22/2021
 ms.author: aahi
-ms.openlocfilehash: 77b75b1134bbc8366478b1f9f4d14e86e9684f70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 883c5a20612f4dab44c0d06776ee287b27174ab9
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91709312"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99097256"
 ---
 # <a name="supported-entity-categories-in-the-text-analytics-api-v3"></a>Podporované kategorie entit v rozhraní API pro analýzu textu V3
 
-Pomocí tohoto článku můžete najít kategorie entit, které mohou být vráceny funkcí [rozpoznávání pojmenovaných entit](how-tos/text-analytics-how-to-entity-linking.md) (ner). K dispozici je také verze Preview NER verze 3.1, která zahrnuje schopnost zjišťovat osobní údaje ( `PII` ) a `PHI` informace o stavu (). Kromě toho klikněte na kartu **stav** a zobrazte seznam podporovaných kategorií v analýza textu pro stav.
+Pomocí tohoto článku můžete najít kategorie entit, které mohou být vráceny funkcí [rozpoznávání pojmenovaných entit](how-tos/text-analytics-how-to-entity-linking.md) (ner). NER spustí prediktivní model pro identifikaci a kategorizaci pojmenovaných entit ze vstupního dokumentu.
+
+K dispozici je také verze Preview NER verze 3.1, která zahrnuje schopnost zjišťovat osobní údaje ( `PII` ) a `PHI` informace o stavu (). Kromě toho klikněte na kartu **stav** a zobrazte seznam podporovaných kategorií v analýza textu pro stav. 
+
+Seznam typů vrácených verzí 2,1 najdete v [Průvodci migrací](migration-guide.md?tabs=named-entity-recognition) .
 
 ## <a name="entity-categories"></a>Kategorie entit
 
@@ -35,8 +39,8 @@ Pomocí tohoto článku můžete najít kategorie entit, které mohou být vrác
 
 [!INCLUDE [biomedical entity types](./includes/entity-types/health-entities.md)]
 
-***
+**_
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Jak používat rozpoznávání pojmenovaných entit v Analýza textu](how-tos/text-analytics-how-to-entity-linking.md)
+_ [Jak použít rozpoznávání pojmenovaných entit v analýza textu](how-tos/text-analytics-how-to-entity-linking.md)

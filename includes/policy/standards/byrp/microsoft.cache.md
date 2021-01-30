@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/25/2021
+ms.date: 01/29/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: c925eb4e9cbd9fa5df472844d7e3bcae278c2102
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 329393fb1e4ea7959d78f1a6b40614812be2b0b5
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98860140"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99093781"
 ---
 ## <a name="azure-security-benchmark"></a>Srovnávací test zabezpečení Azure
 
@@ -58,6 +58,16 @@ Další informace o tomto standardu dodržování předpisů najdete v tématu [
 |Řízení připojení k síti |0814.01 n1Organizational. 12.01. n |Schopnost uživatelů připojit se k interní síti je omezená pomocí zásad pro řízení přístupu, které jsou ve spravovaných rozhraních a jsou v souladu se zásadami řízení přístupu, a požadavky klinických a obchodních aplikací. |[Měla by být povolená jenom zabezpečená připojení k vaší mezipaměti Azure pro Redis.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F22bee202-a82f-4305-9a2a-6d7f44d4dedb) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cache/RedisCache_AuditSSLPort_Audit.json) |
 |Identifikace rizik souvisejících s externími stranami |1451.05 iCSPOrganizational. 2.5. i |Poskytovatelé cloudových služeb navrhují a implementují ovládací prvky, které umožňují zmírnit a zahrnovat rizika zabezpečení dat prostřednictvím správného oddělení povinností, přístupu na základě role a přístupu k minimálnímu oprávnění pro všechny zaměstnance v rámci jejich dodavatelského řetězce. |[Měla by být povolená jenom zabezpečená připojení k vaší mezipaměti Azure pro Redis.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F22bee202-a82f-4305-9a2a-6d7f44d4dedb) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cache/RedisCache_AuditSSLPort_Audit.json) |
 |Transakce na řádku |0946.09 y2Organizational. 14 – 09. y |Organizace vyžaduje použití šifrování mezi a používání elektronických podpisů každou ze smluvních stran, které jsou zapojeny do transakce. |[Měla by být povolená jenom zabezpečená připojení k vaší mezipaměti Azure pro Redis.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F22bee202-a82f-4305-9a2a-6d7f44d4dedb) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cache/RedisCache_AuditSSLPort_Audit.json) |
+
+## <a name="iso-270012013"></a>ISO 27001:2013
+
+Pokud chcete zjistit, jak jsou dostupné Azure Policy vestavěné pro všechny služby Azure namapovány na tento standard dodržování předpisů, přečtěte si téma [Azure Policy dodržování předpisů – ISO 27001:2013](../../../../articles/governance/policy/samples/iso-27001.md).
+Další informace o tomto standardu dodržování předpisů najdete v tématu [ISO 27001:2013](https://www.iso.org/isoiec-27001-information-security.html).
+
+|Doména |ID ovládacího prvku |Název ovládacího prvku |Zásady<br /><sub>(Azure Portal)</sub> |Verze zásady<br /><sub>GitHubu</sub>  |
+|---|---|---|---|---|
+|Kryptografie |10.1.1 |Zásady používání kryptografických ovládacích prvků |[Měla by být povolená jenom zabezpečená připojení k vaší mezipaměti Azure pro Redis.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F22bee202-a82f-4305-9a2a-6d7f44d4dedb) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cache/RedisCache_AuditSSLPort_Audit.json) |
+|Zabezpečení komunikace |13.2.1 |Zásady a postupy přenosu informací |[Měla by být povolená jenom zabezpečená připojení k vaší mezipaměti Azure pro Redis.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F22bee202-a82f-4305-9a2a-6d7f44d4dedb) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cache/RedisCache_AuditSSLPort_Audit.json) |
 
 ## <a name="nist-sp-800-171-r2"></a>NIST SP 800-171 R2
 

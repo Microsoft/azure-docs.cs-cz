@@ -11,18 +11,18 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: d480239c0eb99ed48c13ec2fdb5b052574acc318
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 0dcffe6731c177d1d45c569361fcb200f23af86c
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092495"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99095354"
 ---
-# <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Použití koncových bodů a pravidel služby virtuální sítě pro servery v Azure SQL Database
+# <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Použití koncových bodů služeb virtuální sítě a pravidel pro servery služby Azure SQL Database
 
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-*Pravidla virtuální sítě* jsou bezpečnostní funkce firewallu, která určuje, jestli Server pro vaše databáze a elastické fondy v [Azure SQL Database](sql-database-paas-overview.md) nebo pro vaše databáze ve [službě Azure synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) přijímá komunikaci, která se odesílají z konkrétních podsítí ve virtuálních sítích. Tento článek vysvětluje, proč jsou pravidla virtuální sítě někdy nejlepší volbou pro bezpečné povolení komunikace s databází v SQL Database a Azure synapse Analytics.
+*Pravidla virtuální sítě* jsou funkcí zabezpečení brány firewall, která určuje, jestli Server pro vaše databáze a elastické fondy v [Azure SQL Database](sql-database-paas-overview.md) nebo pro vaše vyhrazené databáze SQL (dříve SQL DW) ve [službě Azure synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) přijímá komunikaci, která se odesílají z konkrétních podsítí ve virtuálních sítích. Tento článek vysvětluje, proč jsou pravidla virtuální sítě někdy nejlepší volbou pro bezpečné povolení komunikace s databází v SQL Database a Azure synapse Analytics.
 
 > [!NOTE]
 > Tento článek se týká SQL Database a Azure synapse Analytics. V zájmu jednoduchosti se pojem *databáze* týká obou databází v SQL Database a Azure synapse Analytics. Podobně všechny odkazy na *Server* odkazují na [logický SQL Server](logical-servers.md) , který je hostitelem SQL Database a Azure synapse Analytics.
@@ -244,7 +244,7 @@ Musíte už mít podsíť, která je označená konkrétním *typem* koncového 
 
 ## <a name="azure-portal-steps"></a>Azure Portal kroky
 
-1. Přihlaste se k webu [Azure Portal][http-azure-portal-link-ref-477t].
+1. Přihlaste se na [Azure Portal][http-azure-portal-link-ref-477t].
 
 1. Vyhledejte a vyberte **SQL servery** a pak vyberte svůj server. V části **zabezpečení** vyberte možnost **brány firewall a virtuální sítě**.
 

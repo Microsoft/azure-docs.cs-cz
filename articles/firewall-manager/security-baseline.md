@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/24/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b8dc91851ee736fd15f1fed8ef50c2cd7c7ab778
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 5ef40b048fbc50174afb662aecd3335d97eb0106
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98788294"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99095968"
 ---
 # <a name="azure-security-baseline-for-azure-firewall-manager"></a>Základní hodnoty zabezpečení Azure pro správce Azure Firewall
 
@@ -129,7 +129,7 @@ Rozšířená ochrana před internetovými útoky (ATP) v Azure je řešení zab
 ### <a name="pa-1-protect-and-limit-highly-privileged-users"></a>PA-1: Ochrana a omezení vysoce privilegovaných uživatelů
 
 **Pokyny**: Azure firewall Manager používá pro identitu a přístup Azure Active Directory (Azure AD). Nejdůležitější předdefinované role jsou globální správce a správce privilegovaných rolí, protože uživatelé přiřazení k těmto dvěma rolím můžou delegovat role správce:
-- Globální správce/správce společnosti: uživatelé s touto rolí mají přístup ke všem funkcím pro správu ve službě Azure AD a službám, které používají identity Azure AD.
+- Globální správce: uživatelé s touto rolí mají přístup ke všem funkcím pro správu v Azure AD a službám, které používají identity Azure AD.
 - Správce privilegovaných rolí: uživatelé s touto rolí můžou spravovat přiřazení rolí v Azure AD i v Azure AD Privileged Identity Management (PIM). Tato role navíc umožňuje správu všech aspektů PIM a administrativních jednotek.
 
 Pokud používáte vlastní role s přiřazenými konkrétními privilegovanými oprávněními, můžete mít jiné kritické role, které je potřeba řídit. A můžete také chtít použít podobné ovládací prvky pro účet správce důležitých obchodních prostředků.

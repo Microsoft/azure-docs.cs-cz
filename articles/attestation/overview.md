@@ -8,16 +8,16 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: 0d1b2bd039f3e110c83d7ad4bf32f1e53e4c7a79
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: a2b26ae8debf1c52693018ce9a758bfa9b029fa2
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610144"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99093372"
 ---
-# <a name="microsoft-azure-attestation-preview"></a>Microsoft Azure Attestation (Preview)
+# <a name="microsoft-azure-attestation"></a>Microsoft Azure Attestation 
 
-Ověřování identity Microsoft Azure (Preview) je jednotné řešení pro vzdálené ověření věrohodnosti platformy a integrity binárních souborů, které jsou v ní spuštěné. Služba podporuje ověřování platforem, které jsou zajištěny pomocí čipy TPM (Trusted Platform Module), spolu s možností ověření stavu prostředí pro důvěryhodné spuštění (TEEs), jako je například [rozšíření Intel® software Guard](https://www.intel.com/content/www/us/en/architecture-and-technology/software-guard-extensions.html) (SGX) Enclaves a [zabezpečení založené na virtualizaci](/windows-hardware/design/device-experiences/oem-vbs) (VBS) enclaves. 
+Ověření Microsoft Azure je jednotné řešení pro vzdálené ověření věrohodnosti platformy a integrity binárních souborů, které v ní běží. Služba podporuje ověřování platforem, které jsou zajištěny pomocí čipy TPM (Trusted Platform Module), spolu s možností ověření stavu prostředí pro důvěryhodné spuštění (TEEs), jako je například [rozšíření Intel® software Guard](https://www.intel.com/content/www/us/en/architecture-and-technology/software-guard-extensions.html) (SGX) Enclaves a [zabezpečení založené na virtualizaci](/windows-hardware/design/device-experiences/oem-vbs) (VBS) enclaves. 
 
 Ověření identity je proces, který demonstruje, že binární soubory softwaru byly správně vytvořeny na důvěryhodné platformě. Vzdálené předávající strany pak mohou získat jistotu, že na důvěryhodném hardwaru je spuštěn pouze takový zamýšlený software. Ověření identity Azure je jednotná služba a architektura pro uživatele, které jsou pro ověřování identity zaměřené na zákazníky.
 

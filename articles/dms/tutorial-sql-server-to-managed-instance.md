@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019,fasttrack-edit
 ms.topic: tutorial
 ms.date: 01/08/2020
-ms.openlocfilehash: 210d5b06cfe417f581995ad5b356d62e1c35a6d2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 995fe7bc81b0fae75ebf93338722c21bd12bde49
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95972606"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99095569"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-offline-using-dms"></a>Kurz: migrace SQL Server do spravované instance Azure SQL do offline režimu pomocí DMS
 
@@ -66,7 +66,7 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
     >[!NOTE]
     >Ve výchozím nastavení Azure Database Migration Service podporuje pouze migraci přihlašovacích údajů SQL. Můžete ale povolit možnost migrovat přihlášení Windows pomocí:
     >
-    >- Zajistěte, aby cílová instance SQL Managed instance měla oprávnění ke čtení AAD, které je možné nakonfigurovat prostřednictvím Azure Portal uživatelem s rolí **Správce společnosti** nebo **globální správce**.
+    >- Zajistěte, aby cílová instance SQL Managed instance měla oprávnění ke čtení AAD, které je možné nakonfigurovat prostřednictvím Azure Portal uživatelem s rolí **globálního správce** .
     >- Konfigurace instance Azure Database Migration Service, aby se povolily migrace přihlášení uživatelů nebo skupin systému Windows, které se nastaví přes Azure Portal, na stránce konfigurace. Po povolení tohoto nastavení restartujte službu, aby se změny projevily.
     >
     > Po restartování služby se zobrazí přihlášení uživatele nebo skupiny systému Windows v seznamu přihlášení, která jsou k dispozici pro migraci. U všech přihlášení uživatelů nebo skupin systému Windows, které migrujete, budete vyzváni k zadání přidruženého názvu domény. Uživatelské účty služby (účet s názvem domény NT AUTHORITY) a virtuální uživatelské účty (název účtu s názvem domény NT) nejsou podporovány.

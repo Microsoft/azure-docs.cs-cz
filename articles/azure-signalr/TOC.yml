@@ -86,6 +86,8 @@
       items:
         - name: Standardní hodnoty zabezpečení
           href: security-baseline.md
+        - name: Mechanismy zabezpečení služby Azure Policy
+          href: ./security-controls-policy.md
 - name: Návody
   items:
     - name: Měřítko
