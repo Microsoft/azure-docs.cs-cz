@@ -2,13 +2,13 @@
 title: Nejčastější dotazy
 description: Obsahuje odpovědi na některé běžné dotazy týkající se řešení Azure VMware.
 ms.topic: conceptual
-ms.date: 1/14/2021
-ms.openlocfilehash: 090b29b1e013ffbceb9296250fed99a04d15a82c
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.date: 1/27/2021
+ms.openlocfilehash: 3ef3d1b9e6fc76b5f09acf8c300dbea901b4aef2
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062083"
+ms.locfileid: "99072264"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Nejčastější dotazy týkající se řešení Azure VMware
 
@@ -79,6 +79,12 @@ No. Azure Load Balancer interní – podporuje jenom virtuální počítače Azu
 
 ### <a name="can-an-existing-expressroute-gateway-be-used-to-connect-to-azure-vmware-solution"></a>Může se pro připojení k řešení Azure VMware použít existující brána ExpressRoute?
 Ano. Použijte existující bránu ExpressRoute pro připojení k řešení VMware Azure, pokud nepřekračuje limit čtyř ExpressRoute okruhů na jednu virtuální síť. Pokud chcete získat přístup k řešení Azure VMware z místního prostředí prostřednictvím ExpressRoute, musíte mít ExpressRoute Global Reach, protože brána ExpressRoute neposkytuje přechodné směrování mezi připojenými okruhy.
+
+### <a name="why-does-azure-vmware-solution-use-a-public-4-byte-autonomous-system-number-asn"></a>Proč řešení Azure VMware používá veřejné číslo 4 bajty autonomního systému (ASN)?
+Řešení Azure VMware používá úředně registrované veřejné 4 bajty čísla ASN, aby se zajistilo, že nedojde ke konfliktu s vaším místním používáním privátních čísla ASN v cestě směrování zákazníka do řešení Azure VMware.
+ 
+### <a name="how-can-i-use-expressroute-to-connect-to-azure-vmware-solution-if-the-on-premises-expressroute-carrier-partnersisps-dont-support-4-byte-asn"></a>Jak se dá použít ExpressRoute k připojení k řešení VMware Azure, pokud místní partneři ExpressRoute/poskytovatelé služeb (ISP) nepodporují 4 bajty ASN?
+Jediným způsobem, jak se připojit k řešení Azure VMware prostřednictvím ExpressRoute, je pro vaše prostředí a místní partneři ExpressRoute/poskytovatelé, kteří podporují 4 bajty ASN, nebo mají zpětnou kompatibilitu ze 4 bajtů až po 2 bajtové číslo ASN v předponě protokolu BGP ASN.
 
 ## <a name="compute-network-storage-and-backup"></a>Výpočetní výkon, síť, úložiště a záloha
 

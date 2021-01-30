@@ -5,14 +5,14 @@ ms.date: 01/25/2021
 ms.topic: sample
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 9d1a74ce6655b11684ad5d5100d64d19ff6642b5
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 4b9a15d23d422b93c7ac0575953dfe4f87b0e7ad
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98796139"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071880"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-database-for-mariadb"></a>Azure Policy kontroly dodržování předpisů pro Azure Database for MariaDB
 

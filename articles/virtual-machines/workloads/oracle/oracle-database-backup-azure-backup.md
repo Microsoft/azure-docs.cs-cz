@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/28/2021
 ms.author: cholse
 ms.reviewer: dbakevlar
-ms.openlocfilehash: d623d7b7ec25c096ebf54c030cf302e0a72e7fb2
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: 3122b1c5d7ac8b9dca0e244a4b7e73a57c4c5fca
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063894"
+ms.locfileid: "99072400"
 ---
 # <a name="back-up-and-recover-an-oracle-database-19c-database-on-an-azure-linux-vm-using-azure-backup"></a>Zálohování a obnovení databáze Oracle Database 19c na virtuálním počítači Azure Linux pomocí Azure Backup
 
@@ -39,19 +39,19 @@ Pro přípravu prostředí proveďte tyto kroky:
 
 ### <a name="connect-to-the-vm"></a>Připojení k virtuálnímu počítači
 
-Pokud chcete vytvořit relaci Secure Shell (SSH) s virtuálním počítačem, použijte následující příkaz. Nahraďte IP adresu a název hostitele kombinací `<publicIpAddress>` hodnoty pro váš virtuální počítač.
+1. Pokud chcete vytvořit relaci Secure Shell (SSH) s virtuálním počítačem, použijte následující příkaz. Nahraďte IP adresu a název hostitele kombinací `<publicIpAddress>` hodnoty pro váš virtuální počítač.
     
    ```bash
    ssh azureuser@<publicIpAddress>
    ```
    
-Přepněte na uživatele *root* :
+1. Přepněte na uživatele *root* :
 
    ```bash
    sudo su -
    ```
     
-Přidejte uživatele Oracle do souboru */etc/sudoers* :
+1. Přidejte uživatele Oracle do souboru */etc/sudoers* :
 
    ```bash
    echo "oracle   ALL=(ALL)      NOPASSWD: ALL" >> /etc/sudoers
@@ -59,9 +59,9 @@ Přidejte uživatele Oracle do souboru */etc/sudoers* :
 
 ### <a name="prepare-the-database"></a>Příprava databáze
 
-1. Tento krok předpokládá, že máte instanci Oracle (*test*), která je spuštěná na virtuálním počítači s názvem *vmoracle19c*.
+Tento krok předpokládá, že máte instanci Oracle (*test*), která je spuštěná na virtuálním počítači s názvem *vmoracle19c*.
 
-   Přepněte uživatele na uživatele *Oracle* :
+1. Přepněte uživatele na uživatele *Oracle* :
  
    ```bash
     sudo su - oracle
@@ -156,7 +156,7 @@ Přidejte uživatele Oracle do souboru */etc/sudoers* :
     NOARCHIVELOG
     ```
 
-    A v režimu NOARCHIVELOG spusťte následující příkazy:
+    Pokud je v režimu NOARCHIVELOG, spusťte následující příkazy:
 
     ```bash
     SQL> SHUTDOWN IMMEDIATE;
@@ -205,19 +205,19 @@ Služba Azure Backup poskytuje jednoduchá, zabezpečená a cenově výhodná ř
 
 Služba Azure Backup poskytuje [rozhraní](../../../backup/backup-azure-linux-app-consistent.md) pro zajištění konzistence aplikací během zálohování virtuálních počítačů s Windows a Linux pro různé aplikace, jako je Oracle, MySQL, Mongo DB, SAP Hana a PostGreSQL. To zahrnuje vyvolání předzálohovacího skriptu (k nečinnosti aplikací) před pořizováním snímku disků a voláním následného skriptu (příkazy pro uvolnění aplikací) po dokončení snímku, aby se aplikace vracely do normálního režimu. I když je na GitHubu k dispozici ukázka předzálohovacích a potištěných skriptů, je vytváření a údržba těchto skriptů vaše zodpovědnost. 
 
-Nyní Azure Backup poskytuje vylepšené rozhraní s předzálohovacími a pozálohovacími skripty, kde služba Azure Backup poskytne zabalené předběžné skripty a následné skripty pro vybrané aplikace. Azure Backup uživatelé pouze potřebují aplikaci pojmenovat a pak zálohování virtuálních počítačů Azure automaticky vyvolá příslušné skripty před odesláním. Zabalené předzálohovací skripty a post-Script budou spravovány Azure Backup týmem, aby se uživatelé mohli spolehnout na podporu, vlastnictví a platnost těchto skriptů. V současné době jsou podporované aplikace pro vylepšené rozhraní ***Oracle a MySQL** _ a v budoucnu jsou očekávané další typy aplikací.
+Nyní Azure Backup poskytuje vylepšené rozhraní s předzálohovacími a pozálohovacími skripty, kde služba Azure Backup poskytne zabalené předběžné skripty a následné skripty pro vybrané aplikace. Azure Backup uživatelé pouze potřebují aplikaci pojmenovat a pak zálohování virtuálních počítačů Azure automaticky vyvolá příslušné skripty před odesláním. Zabalené předzálohovací skripty a post-Script budou spravovány Azure Backup týmem, aby se uživatelé mohli spolehnout na podporu, vlastnictví a platnost těchto skriptů. V současné době jsou podporované aplikace pro vylepšené rozhraní *Oracle* a *MySQL*.
 
-V této části použijete Azure Backup Enhanced Framework k tomu, aby se snímky konzistentní vzhledem k aplikacím používaly ve spuštěném VIRTUÁLNÍm počítači a databázi Oracle. Databáze bude umístěna do režimu zálohování, což umožňuje, aby při Azure Backup pořizování snímku disků virtuálních počítačů probíhalo reakční konzistentní online zálohování. Snímek bude úplnou kopií úložiště, a ne přírůstkovým nebo kopírovacím snímkem zápisu, takže se jedná o efektivní médium pro obnovení databáze z. Výhodou použití Azure Backup snímků konzistentních vzhledem k aplikacím je to, že jsou extrémně rychlé bez ohledu na to, jak velká je databáze, a snímek lze použít pro operace obnovení ihned po jejím pořízení, aniž byste museli čekat na přenos do trezoru Recovery Services.
+V této části použijete Azure Backup Enhanced Framework k tomu, aby se snímky konzistentní vzhledem k aplikacím používaly ve spuštěném virtuálním počítači a databázi Oracle. Databáze bude umístěna do režimu zálohování, což umožňuje, aby při Azure Backup pořizování snímku disků virtuálních počítačů probíhalo reakční konzistentní online zálohování. Snímek bude úplnou kopií úložiště, a ne přírůstkovým nebo kopírovacím snímkem zápisu, takže se jedná o efektivní médium pro obnovení databáze z. Výhodou použití Azure Backup snímků konzistentních vzhledem k aplikacím je to, že jsou extrémně rychlé bez ohledu na to, jak velká je databáze, a snímek lze použít pro operace obnovení ihned po jejich pořízení, aniž by bylo nutné čekat na přenos do trezoru Recovery Services.
 
 Pokud chcete použít Azure Backup k zálohování databáze, proveďte tyto kroky:
 
-1. Připravte prostředí pro zálohování konzistentní s aplikací.
+1. Připravte prostředí pro zálohování konzistentní vzhledem k aplikacím.
 1. Nastavte zálohy konzistentní s aplikací.
-1. Aktivovat zálohování virtuálního počítače konzistentního vzhledem k aplikacím
+1. Spusťte zálohování virtuálního počítače konzistentního vzhledem k aplikacím.
 
-### <a name="prepare-the-environment-for-application-consistent-backup"></a>Příprava prostředí pro zálohování konzistentní s aplikací
+### <a name="prepare-the-environment-for-an-application-consistent-backup"></a>Příprava prostředí pro zálohování konzistentní vzhledem k aplikacím
 
-1. Přepněte do *kořenového adresáře* _ * uživatel:
+1. Přepněte na uživatele *root* :
 
    ```bash
    sudo su -
@@ -229,7 +229,7 @@ Pokud chcete použít Azure Backup k zálohování databáze, proveďte tyto kro
    useradd -G backupdba azbackup
    ```
    
-2. Nastavení uživatelského prostředí pro zálohování:
+2. Nastavte zálohovací prostředí uživatele:
 
    ```bash
    echo "export ORACLE_SID=test" >> ~azbackup/.bashrc
@@ -237,16 +237,15 @@ Pokud chcete použít Azure Backup k zálohování databáze, proveďte tyto kro
    echo export PATH='$ORACLE_HOME'/bin:'$PATH' >> ~azbackup/.bashrc
    ```
    
-3. Nastavte externí ověřování pro nového uživatele záloh. 
-   Uživatel zálohování musí mít přístup k databázi pomocí externího ověřování, takže nemusíte být vyzváni heslem.
+3. Nastavte externí ověřování pro nového uživatele zálohování. Uživatel zálohování musí mít přístup k databázi pomocí externího ověřování, takže nemusíte být vyzváni heslem.
 
-   Nejprve přepněte zpět na uživatele **Oracle** :
+   Nejprve přepněte zpět na uživatele *Oracle* :
 
    ```bash
    su - oracle
    ```
 
-   Přihlaste se k databázi pomocí sqlplus a podívejte se na výchozí nastavení pro externí ověřování.
+   Přihlaste se k databázi pomocí sqlplus a podívejte se na výchozí nastavení pro externí ověřování:
    
    ```bash
    sqlplus / as sysdba
@@ -254,7 +253,7 @@ Pokud chcete použít Azure Backup k zálohování databáze, proveďte tyto kro
    SQL> show parameter remote_os_authent
    ```
    
-   Výstup by měl zobrazovat 
+   Výstup by měl vypadat jako v tomto příkladu: 
 
    ```output
    NAME                                 TYPE        VALUE
@@ -263,23 +262,30 @@ Pokud chcete použít Azure Backup k zálohování databáze, proveďte tyto kro
    remote_os_authent                    boolean     FALSE
    ```
 
-   Teď vytvořte databázi uživatele azbackup ověřená externě a udělte sysbackup oprávnění:
+   Nyní vytvořte uživatele databáze *azbackup* ověřený externě a udělte oprávnění sysbackup:
    
    ```bash
    SQL> CREATE USER ops$azbackup IDENTIFIED EXTERNALLY;
    SQL> GRANT CREATE SESSION, ALTER SESSION, SYSBACKUP TO ops$azbackup;
    ```
 
-   >[!IMPORTANT] 
-   >Pokud se zobrazí chyba "ORA-46953: soubor hesla není ve formátu 12,2".  Když spustíte příkaz GRANT výše, postupujte podle těchto kroků a migrujte soubor orapwd do formátu 12,2:
+   > [!IMPORTANT] 
+   > Pokud při `ORA-46953: The password file is not in the 12.2 format.`  spuštění `GRANT` příkazu dojde k chybě, postupujte podle těchto kroků a migrujte soubor orapwd do formátu 12,2:
    >
-   >Ukončete sqlplus, přesuňte soubor hesla se starým formátem do nového názvu, migrujte soubor hesla a pak odeberte starý soubor. Po spuštění níže uvedených příkazů znovu spusťte operaci udělení výše v sqlplus.
-   
-   ```bash
-   mv $ORACLE_HOME/dbs/orapwtest $ORACLE_HOME/dbs/orapwtest.tmp
-   orapwd file=$ORACLE_HOME/dbs/orapwtest input_file=$ORACLE_HOME/dbs/orapwtest.tmp
-   rm $ORACLE_HOME/dbs/orapwtest.tmp
-   ```
+   > 1. Ukončete sqlplus.
+   > 1. Přesuňte soubor hesla ve starém formátu do nového názvu.
+   > 1. Migrujte soubor hesla.
+   > 1. Odeberte starý soubor.
+   > 1. Spusťte následující příkaz:
+   >
+   >    ```bash
+   >    mv $ORACLE_HOME/dbs/orapwtest $ORACLE_HOME/dbs/orapwtest.tmp
+   >    orapwd file=$ORACLE_HOME/dbs/orapwtest input_file=$ORACLE_HOME/dbs/orapwtest.tmp
+   >    rm $ORACLE_HOME/dbs/orapwtest.tmp
+   >    ```
+   >
+   > 1. Spusťte `GRANT` operaci znovu v sqlplus.
+   >
    
 4. Vytvořte uloženou proceduru pro protokolování zpráv o zálohování do protokolu upozornění databáze:
 
@@ -302,18 +308,22 @@ Pokud chcete použít Azure Backup k zálohování databáze, proveďte tyto kro
    
 ### <a name="set-up-application-consistent-backups"></a>Nastavení zálohování konzistentního vzhledem k aplikacím  
 
-1. Přepnout na uživatele root 
+1. Přepněte na uživatele *root* :
+
    ```bash
    sudo su -
    ```
 
-2. Vytvoření pracovního adresáře zálohování konzistentního vzhledem k aplikacím
+2. Vytvořte pracovní adresář zálohování konzistentní vzhledem k aplikacím:
+
    ```bash
    if [ ! -d "/etc/azure" ]; then
       sudo mkdir /etc/azure
    fi
    ```
-3. Vytvořte soubor v adresáři složce/etc/Azure s názvem **úlohy. conf** s následujícím obsahem, který musí začínat na `[workload]` . V následujícím příkazu se vytvoří soubor a naplní se obsah:
+
+3. Vytvořte soubor v adresáři *složce/etc/Azure* s názvem *úlohy. conf* s následujícím obsahem, který musí začínat na `[workload]` . V následujícím příkazu se vytvoří soubor a naplní se obsah:
+
    ```bash
    echo "[workload]
    workload_name = oracle
@@ -321,14 +331,16 @@ Pokud chcete použít Azure Backup k zálohování databáze, proveďte tyto kro
    timeout = 90
    linux_user = azbackup" > /etc/azure/workload.conf
    ```
-1. Stáhněte si z [úložiště GitHubu](https://github.com/Azure/azure-linux-extensions/tree/master/VMBackup/main/workloadPatch/DefaultScripts) skripty preOracleMaster. SQL a postOracleMaster. SQL a zkopírujte je do adresáře složce/etc/Azure
 
-4. Změnit oprávnění souboru
-   ```bash
+4. Stáhněte si z [úložiště GitHubu](https://github.com/Azure/azure-linux-extensions/tree/master/VMBackup/main/workloadPatch/DefaultScripts) skripty preOracleMaster. SQL a postOracleMaster. SQL a zkopírujte je do adresáře *složce/etc/Azure* .
+
+5. Změnit oprávnění souboru
+
+```bash
    chmod 744 workload.conf preOracleMaster.sql postOracleMaster.sql 
    ```
 
-### <a name="trigger-application-consistent-backup-of-the-vm"></a>Aktivovat zálohování virtuálního počítače konzistentního vzhledem k aplikacím
+### <a name="trigger-an-application-consistent-backup-of-the-vm"></a>Aktivace zálohy virtuálního počítače konzistentního vzhledem k aplikacím
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
@@ -375,7 +387,8 @@ Pokud chcete použít Azure Backup k zálohování databáze, proveďte tyto kro
    ```azurecli
    az backup vault create --location eastus --name myVault --resource-group rg-oracle
    ```
-2. Povolení ochrany záloh pro virtuální počítač
+
+2. Povolit ochranu před zálohováním pro virtuální počítač:
 
    ```azurecli
    az backup protection enable-for-vm \
@@ -384,7 +397,8 @@ Pokud chcete použít Azure Backup k zálohování databáze, proveďte tyto kro
       --vm vmoracle19c \
       --policy-name DefaultPolicy
    ```
-3. Aktivujte zálohování, které se má spustit, a ne čekání na aktivaci služby Backup ve výchozím plánu (5:00 UTC). 
+
+3. Aktivovat zálohování, které se má spustit nyní, místo čekání na aktivaci služby Backup ve výchozím plánu (5 UTC): 
 
    ```azurecli
    az backup protection backup-now \
@@ -394,7 +408,8 @@ Pokud chcete použít Azure Backup k zálohování databáze, proveďte tyto kro
       --container-name vmoracle19c \
       --item-name vmoracle19c 
    ```
-   Průběh úlohy zálohování můžete monitorovat pomocí `az backup job list` a. `az backup job show`
+
+   Průběh úlohy zálohování můžete monitorovat pomocí `az backup job list` a `az backup job show` .
 
 ---
 
@@ -433,15 +448,15 @@ Později v tomto článku se dozvíte, jak otestovat proces obnovení. Než bude
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-1. V Azure Portal vyhledejte položku trezory Recovery Services *myVault* a klikněte na ni.
+1. V Azure Portal vyhledejte položku trezory Recovery Services *myVault* a vyberte ji.
 
     ![Trezory Recovery Services myVault zálohované položky](./media/oracle-backup-recovery/recovery-service-06.png)
 
-2. V okně **Přehled** vyberte **zálohované položky** a vyberte *_virtuální počítač Azure_* _, který by měl mít hodnotu anon (počet zálohovaných položek).
+2. V okně **Přehled** vyberte **zálohované položky** a vyberte **virtuální počítač Azure**, který by měl být v seznamu anon – počet zálohovaných položek.
 
     ![Počet zálohovaných položek virtuálních počítačů Azure v trezoru Recovery Services](./media/oracle-backup-recovery/recovery-service-07.png)
 
-3. Na stránce zálohované položky (Azure Virtual Machines) se zobrazí váš virtuální počítač _ *vmoracle19c**. Kliknutím na tři tečky na pravé straně zobrazte nabídku a vyberte **obnovení souboru**.
+3. Na stránce zálohované položky (Azure Virtual Machines) se zobrazí váš **vmoracle19c** virtuálního počítače. Kliknutím na tři tečky na pravé straně zobrazte nabídku a vyberte **obnovení souboru**.
 
     ![Snímek obrazovky se stránkou pro obnovení souborů trezorů Recovery Services](./media/oracle-backup-recovery/recovery-service-08.png)
 
@@ -455,6 +470,7 @@ Později v tomto článku se dozvíte, jak otestovat proces obnovení. Než bude
 
     > [!IMPORTANT]
     > V následujícím příkladu se ujistěte, že aktualizujete hodnoty IP adresy a složky. Hodnoty musí být namapovány do složky, kde je soubor uložen.
+    >
 
     ```bash
     $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
@@ -500,6 +516,7 @@ Následující příklad ukazuje, jak pomocí příkazu zabezpečeného kopírov
 
 > [!IMPORTANT]
 > V následujícím příkladu se ujistěte, že aktualizujete hodnoty IP adresy a složky. Hodnoty musí být namapovány do složky, kde je soubor uložen.
+>
 
 ```bash
 $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
@@ -510,7 +527,7 @@ $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
 
 1. Vytvořte přípojný bod obnovení a zkopírujte do něj skript.
 
-    V následujícím příkladu vytvořte adresář **_/Restore_* _, ke kterému se má snímek připojit, přesuňte soubor do adresáře a změňte soubor tak, aby byl vlastněn kořenovým uživatelem a udělal spustitelný soubor.
+    V následujícím příkladu vytvořte adresář */Restore* , ke kterému se má snímek připojit, přesuňte soubor do adresáře a změňte soubor tak, aby jeho vlastníkem bylo kořenový uživatel a měl spustitelný soubor.
 
     ```bash 
     ssh azureuser@<publicIpAddress>
@@ -528,7 +545,7 @@ $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
     ./vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py
     ```
 
-    Následující příklad ukazuje, co byste měli vidět po spuštění předchozího skriptu. Až budete vyzváni k pokračování, zadejte _ * Y * *.
+    Následující příklad ukazuje, co byste měli vidět po spuštění předchozího skriptu. Až budete vyzváni k pokračování, zadejte **Y**.
 
     ```output
     Microsoft Azure VM Backup - File Recovery
@@ -676,30 +693,28 @@ Pro obnovení celého virtuálního počítače proveďte tyto kroky:
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-1. Vytvořte účet úložiště pro přípravu:
-   
-   Konfigurace File Storage v Azure Portal
+1. Vytvořte účet úložiště pro přípravu v Azure Portal.
 
-   V Azure Portal vyberte **_+ vytvořit prostředek_* _ a vyhledejte a vyberte _*_účet úložiště_*_ .
+   1. V Azure Portal vyberte **+ vytvořit prostředek** a vyhledejte a vyberte **účet úložiště**.
     
-   ![Přidat stránku účtu úložiště](./media/oracle-backup-recovery/storage-1.png)
+      ![Přidat stránku účtu úložiště](./media/oracle-backup-recovery/storage-1.png)
     
     
-   Na stránce Vytvořit účet úložiště vyberte existující skupinu prostředků _*_RG-Oracle_*_, pojmenujte svůj účet úložiště _*_Oracrestore_*_ a pro druh účtu vyberte _*_Storage v2 (GeneralPurpose v2)_*_ . Změňte replikaci na _*_místně redundantní úložiště (LRS)_*_ a nastavte výkon na _*_standardní_*_. Zajistěte, aby se umístění nastavilo na stejnou oblast jako všechny ostatní prostředky ve skupině prostředků. 
+   1. Na stránce Vytvořit účet úložiště vyberte existující skupinu prostředků **RG-Oracle**, pojmenujte svůj účet úložiště **Oracrestore** a pro druh účtu vyberte **Storage v2 (GeneralPurpose v2)** . Změňte replikaci na **místně redundantní úložiště (LRS)** a nastavte výkon na **standardní**. Zajistěte, aby se umístění nastavilo na stejnou oblast jako všechny ostatní prostředky ve skupině prostředků. 
     
-   ![Přidat stránku účtu úložiště](./media/oracle-backup-recovery/recovery-storage-1.png)
+      ![Přidat stránku účtu úložiště](./media/oracle-backup-recovery/recovery-storage-1.png)
    
-   Klikněte na tlačítko revize + vytvořit a potom klikněte na tlačítko vytvořit.
+   1. Klikněte na tlačítko revize + vytvořit a potom klikněte na tlačítko vytvořit.
 
-2. V Azure Portal vyhledejte položku _myVault * Recovery Services trezory a klikněte na ni.
+2. V Azure Portal vyhledejte položku trezory Recovery Services *myVault* a klikněte na ni.
 
     ![Trezory Recovery Services myVault zálohované položky](./media/oracle-backup-recovery/recovery-service-06.png)
     
-3.  V okně **Přehled** vyberte **zálohované položky** a vyberte *_virtuální počítač Azure_* _, který by měl mít hodnotu anon (počet zálohovaných položek).
+3.  V okně **Přehled** vyberte **zálohované položky** a vyberte **virtuální počítač Azure**, který by měl být v seznamu anon – počet zálohovaných položek.
 
     ![Počet zálohovaných položek virtuálních počítačů Azure v trezoru Recovery Services](./media/oracle-backup-recovery/recovery-service-07.png)
 
-4.  V seznamu zálohované položky (Azure Virtual Machines) se zobrazí stránka váš virtuální počítač _ *vmoracle19c**. Klikněte na název virtuálního počítače.
+4.  V části zálohované položky (Azure Virtual Machines) se zobrazí stránka **vmoracle19c** vašeho virtuálního počítače. Klikněte na název virtuálního počítače.
 
     ![Stránka virtuálního počítače pro obnovení](./media/oracle-backup-recovery/recover-vm-02.png)
 
@@ -916,11 +931,11 @@ Po obnovení virtuálního počítače byste měli původní IP adresu znovu př
 
 ### <a name="connect-to-the-vm"></a>Připojení k virtuálnímu počítači
 
-* Pokud se chcete připojit k virtuálnímu počítači, použijte tento skript:
+Pokud se chcete připojit k virtuálnímu počítači, použijte tento skript:
 
-    ```azurecli
-    ssh <publicIpAddress>
-    ```
+```azurecli
+ssh <publicIpAddress>
+```
 
 ### <a name="start-the-database-to-mount-stage-and-perform-recovery"></a>Spusťte databázi pro připojení fáze a proveďte obnovení.
 

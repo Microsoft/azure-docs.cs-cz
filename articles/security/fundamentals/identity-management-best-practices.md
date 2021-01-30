@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: d2abc357a5a636aa15909a3645e284c978fb903f
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: b609d8389504eb10dd35a5ab74b0c198d3da57a6
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197587"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090488"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Osvědčené postupy zabezpečení správy identit a řízení přístupu v Azure
 
@@ -102,7 +102,7 @@ Organizace, které neintegrují svou místní identitu s jejich cloudovou identi
 > Musíte zvolit, které adresáře se budou nacházet v a jestli se používá pracovní stanice pro správu, kterou používají nové cloudové služby nebo stávající procesy. Používání stávajících procesů správy a zřizování identit může snížit některá rizika, ale může také vytvořit riziko narušení místního účtu a jeho překlopení do cloudu. Můžete chtít použít jinou strategii pro různé role (například správce IT vs. obchodní jednotky Admins). Máte dvě možnosti. První možností je vytvořit účty Azure AD, které nejsou synchronizované s vaší místní instancí Active Directory. Připojte se k pracovní stanici správce k Azure AD, kterou můžete spravovat a opravovat pomocí Microsoft Intune. Druhou možností je použít stávající účty správců synchronizací do místní instance služby Active Directory. Pro správu a zabezpečení použijte existující pracovní stanice v doméně služby Active Directory.
 
 ## <a name="manage-connected-tenants"></a>Spravovat připojené klienty
-Vaše organizace zabezpečení potřebuje viditelnost, aby posoudila riziko a určila, jestli jsou dodržovány zásady vaší organizace a jakékoli zákonné požadavky. Měli byste zajistit, aby vaše organizace zabezpečení měla přehled o všech předplatných připojených k vašemu provoznímu prostředí a síti (prostřednictvím [Azure ExpressRoute](../../expressroute/expressroute-introduction.md) nebo [VPN typu Site-to-site](../../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)). [Globální správce nebo správce společnosti](../../active-directory/roles/permissions-reference.md#company-administrator-permissions) ve službě Azure AD může zvýšit přístup k roli [Správce přístupu uživatele](../../role-based-access-control/built-in-roles.md#user-access-administrator) a zobrazit všechna předplatná a spravované skupiny připojené k vašemu prostředí.
+Vaše organizace zabezpečení potřebuje viditelnost, aby posoudila riziko a určila, jestli jsou dodržovány zásady vaší organizace a jakékoli zákonné požadavky. Měli byste zajistit, aby vaše organizace zabezpečení měla přehled o všech předplatných připojených k vašemu provoznímu prostředí a síti (prostřednictvím [Azure ExpressRoute](../../expressroute/expressroute-introduction.md) nebo [VPN typu Site-to-site](../../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)). [Globální správce](../../active-directory/roles/permissions-reference.md#global-administrator-permissions) ve službě Azure AD může zvýšit přístup k roli [Správce přístupu uživatele](../../role-based-access-control/built-in-roles.md#user-access-administrator) a zobrazit všechna předplatná a spravované skupiny připojené k vašemu prostředí.
 
 Projděte si téma [zvýšení přístupu ke správě všech předplatných Azure a skupin pro správu](../../role-based-access-control/elevate-access-global-admin.md) , abyste měli jistotu, že máte a vaše skupina zabezpečení budou zobrazovat všechna předplatná nebo skupiny pro správu připojené k vašemu prostředí. Tento přístup se zvýšeným oprávněním byste měli po vyhodnocení rizik odebrat.
 

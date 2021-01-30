@@ -1,63 +1,62 @@
 ---
-title: Chyba při šetření pomocí řídicího panelu
-description: Tento dokument obsahuje informace o chybě při šetření pomocí řídicího panelu.
+title: Prozkoumat chyby pomocí řídicího panelu
+description: Tento dokument obsahuje informace o chybách na řídicím panelu ITSMC.
 ms.subservice: alerts
 ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 01/15/2021
-ms.openlocfilehash: 9a43318ed935dd1e71b6da75c9f078fbebbd29eb
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: ebd59e637e498b8088fe9a302b1bb12efdf2c173
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98599018"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99089271"
 ---
-# <a name="error-investigation-using-the-dashboard"></a>Chyba při šetření pomocí řídicího panelu
+# <a name="investigate-errors-by-using-the-itsmc-dashboard"></a>Prozkoumání chyb pomocí řídicího panelu ITSMC
 
-Tato stránka obsahuje informace o řídicím panelu konektoru ITSM. Tento řídicí panel vám pomůže prozkoumat stav konektoru ITSM.
+Tento článek obsahuje informace o řídicím panelu ITSMC (IT Service Management Connector). Řídicí panel vám pomůže prozkoumat stav ITSMC.
 
-## <a name="how-to-view-the-dashboard"></a>Jak zobrazit řídicí panel
+## <a name="view-the-dashboard"></a>Zobrazení řídicího panelu
 
-Chcete-li zobrazit chyby na řídicím panelu, postupujte podle následujících kroků:
+Pomocí těchto kroků otevřete řídicí panel.
 
-1. Ve **všech prostředcích** vyhledejte **partnera (*název vašeho pracovního prostoru*)**:
+1. Vyberte **všechny prostředky** a pak vyhledejte **partnera (*název pracovního prostoru*)**.
 
-   ![Snímek obrazovky, který zobrazuje poslední prostředky v Azure Portal.](media/itsmc-definition/create-new-connection-from-resource.png)
+   ![Snímek obrazovky, který zobrazuje prostředky ve službách Azure.](media/itsmc-definition/create-new-connection-from-resource.png)
 
-2. V části **zdroje dat pracovního prostoru** v levém podokně vyberte **připojení ITSM**:
+1. V levém podokně vyberte **zdroje dat pracovního prostoru** a pak vyberte **připojení ITSM**.
 
-   ![Snímek obrazovky zobrazující položku nabídky připojení ITSM](media/itsmc-overview/add-new-itsm-connection.png)
+   ![Snímek obrazovky zobrazující výběr připojení ITSM v části zdroje dat na pracovišti](media/itsmc-overview/add-new-itsm-connection.png)
 
-3. V části **Souhrn** v levém okně **konektor správy služby IT** vyberte **Zobrazit souhrn**:
+1. V části **Souhrn** vyberte **Zobrazit souhrn** pro zobrazení souhrnného grafu.
 
-    ![Snímek obrazovky, který zobrazuje souhrn zobrazení](media/itsmc-resync-servicenow/dashboard-view-summary.png)
+    ![Snímek obrazovky znázorňující možnost zobrazení souhrnu v části Souhrn](media/itsmc-resync-servicenow/dashboard-view-summary.png)
 
-4. V části **Souhrn** v levém okně **konektor Service Management Connector** klikněte na graf:
+1. Výběrem grafu v části **Souhrn** otevřete řídicí panel.
 
-    ![Snímek obrazovky znázorňující kliknutí na graf](media/itsmc-resync-servicenow/dashboard-graph-click.png)
+    ![Snímek obrazovky, který zobrazuje výběr grafu souhrnu.](media/itsmc-resync-servicenow/dashboard-graph-click.png)
 
-5. Pomocí tohoto řídicího panelu budete moct zkontrolovat stav a chyby ve vašem konektoru.
-    ![Snímek obrazovky zobrazující stav konektoru](media/itsmc-resync-servicenow/connector-dashboard.png)
+1. Zkontrolujte řídicí panel pro stav a případné chyby ve vašem konektoru.
+    ![Snímek obrazovky zobrazující řídicí panel](media/itsmc-resync-servicenow/connector-dashboard.png)
 
-## <a name="dashboard-elements"></a>Prvky řídicího panelu
+## <a name="understand-dashboard-elements"></a>Principy prvků řídicího panelu
 
 Řídicí panel obsahuje informace o výstrahách, které byly odeslány do nástroje ITSM pomocí tohoto konektoru.
+
 Řídicí panel je rozdělen na čtyři části:
 
-1. Pracovní položka vytvořena: graf a níže uvedená tabulka obsahují počet pracovních položek na typ. Pokud kliknete na graf nebo v tabulce, můžete zobrazit další podrobnosti o pracovních položkách.
-    ![Snímek obrazovky, který ukazuje vytvořenou pracovní položku.](media/itsmc-resync-servicenow/itsm-dashboard-workitems.png)
-2. Ovlivněné počítače: tabulky obsahují podrobné informace o položkách konfigurace, které vytvořily položky konfigurace.
-    Kliknutím na řádky v tabulkách můžete získat další podrobnosti o položkách konfigurace.
-    Tabulka obsahuje omezený počet řádků, pokud chcete zobrazit všechny seznamy, můžete kliknout na Zobrazit vše.
-    ![Snímek obrazovky zobrazující ovlivněné počítače](media/itsmc-resync-servicenow/itsm-dashboard-impacted-comp.png)
-3. Stav konektoru: graf a níže uvedená tabulka obsahují zprávy o stavu konektoru. Kliknutím na graf na řádcích v tabulce můžete získat další podrobnosti o zprávách o stavu konektoru.
-    Tabulka obsahuje omezený počet řádků, pokud chcete zobrazit všechny seznamy, můžete kliknout na Zobrazit vše.
+- **Pracovní položky byly vytvořeny**: v grafu a tabulce se zobrazuje počet pracovních položek podle typu. Pokud chcete získat další informace o pracovních položkách, vyberte graf nebo tabulku.
+      ![Snímek obrazovky se zobrazeným oddílem pracovní položky](media/itsmc-resync-servicenow/itsm-dashboard-workitems.png)
+- **Ovlivněné počítače**: tabulka obsahuje podrobnosti o položkách konfigurace, které vytvořily pracovní položky.
+      Kliknutím na řádky v tabulkách zobrazíte další podrobnosti o položkách konfigurace.
+      Tabulka obsahuje omezený počet řádků. Pokud chcete zobrazit celý seznam, vyberte **Zobrazit vše**.
+      ![Snímek obrazovky, který zobrazuje část ovlivněné počítače.](media/itsmc-resync-servicenow/itsm-dashboard-impacted-comp.png)
+- **Stav konektoru**: graf a tabulka obsahují informace o stavu konektoru. Kliknutím na graf nebo zprávy v tabulce zobrazíte další podrobnosti. V tabulce je zobrazen omezený počet řádků. Pokud chcete zobrazit celý seznam, vyberte **Zobrazit vše**.
+      ![Snímek obrazovky zobrazující oddíl stav konektoru](media/itsmc-resync-servicenow/itsm-dashboard-connector-status.png)
+- **Pravidla výstrah**: v této části jsou uvedeny informace o počtu zjištěných pravidel výstrahy. Vyberte řádky v tabulkách, kde najdete další podrobnosti o zjištěných pravidlech. Tabulka má omezený počet řádků. Pokud chcete zobrazit celý seznam, vyberte **Zobrazit vše**.
+      ![Snímek obrazovky, který zobrazuje část pravidla upozornění](media/itsmc-resync-servicenow/itsm-dashboard-alert-rules.png)
 
-    Můžete zobrazit podrobnosti o zprávách v tabulce – [tady](itsmc-dashboard-errors.md).
+## <a name="next-steps"></a>Další kroky
 
-    ![Snímek obrazovky zobrazující stav konektoru](media/itsmc-resync-servicenow/itsm-dashboard-connector-status.png)
-4. Pravidla výstrah: tabulky obsahují informace o počtu zjištěných pravidel výstrahy.
-    Kliknutím na řádky v tabulkách můžete získat další podrobnosti o zjištěných pravidlech.
-    Tabulka obsahuje omezený počet řádků, pokud chcete zobrazit všechny seznamy, můžete kliknout na Zobrazit vše.
-    ![Snímek obrazovky, který zobrazuje pravidla výstrah.](media/itsmc-resync-servicenow/itsm-dashboard-alert-rules.png)
+Podívejte se na [běžné chyby stavu konektoru](itsmc-dashboard-errors.md).

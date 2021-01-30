@@ -4,8 +4,6 @@
   items:
     - name: Informace o službě Azure Digital Twins
       href: overview.md
-    - name: Rozdíly oproti předchozím verzím
-      href: overview-differences.md
 - name: Rychlé starty
   expanded: true
   items:
@@ -169,6 +167,8 @@
           href: 'https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins'
     - name: Požadavky na zákaznická data
       href: resources-customer-data-requests.md
+    - name: Rozdíly z původní verze
+      href: resources-compare-original-release.md
     - name: Rozhraní API a sady SDK
       items:
         - name: Řídicí rovina

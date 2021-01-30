@@ -8,19 +8,27 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 12/02/2020
+ms.date: 01/27/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 625fe5f53318ebc641d102e679ef7fd0607ef683
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 3f403308c77e5ee0dfc066ec3dc53100e520d274
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97652837"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090667"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Co je nového v rozhraní API pro analýzu textu?
 
 Rozhraní API pro analýzu textu se aktualizuje průběžně. V tomto článku najdete informace o nových vydaných verzích a funkcích, abyste měli přehled o aktuálním vývoji.
+
+## <a name="january-2021"></a>Leden 2021
+
+* `2021-01-15`Verze modelu pro [rozpoznávání pojmenovaných entit](how-tos/text-analytics-how-to-entity-linking.md) v3. x, která poskytuje 
+  * Rozšířená podpora jazyků pro [několik obecných kategorií entit](named-entity-types.md) 
+  * Vylepšená kvalita AI pro obecné kategorie entit pro všechny podporované jazyky v3. 
+
+* `2021-01-05`Verze modelu pro [detekci jazyka](how-tos/text-analytics-how-to-language-detection.md), která poskytuje další [jazykovou podporu](language-support.md?tabs=language-detection).
 
 ## <a name="december-2020"></a>Prosinec 2020
 
@@ -66,7 +74,7 @@ Rozhraní API pro analýzu textu se aktualizuje průběžně. V tomto článku n
 ### <a name="text-analytics-for-health-container-updates"></a>Analýza textu pro aktualizace kontejneru stavu
 
 Následující aktualizace jsou specifické pro září vydané verze Analýza textu jenom pro kontejner Health.
-* Do úložiště containerpreview byla vydána nová image kontejneru s označením `1.1.013530001-amd64-preview` s novým modelem verze `2020-09-03` . 
+* Do úložiště náhledu kontejneru se uvolnila nová image kontejneru s označením `1.1.013530001-amd64-preview` s novým modelem verze `2020-09-03` . 
 * Tato verze modelu přináší vylepšení rozpoznávání entit, detekce zkratky a vylepšení latence.
 
 > [!div class="nextstepaction"]

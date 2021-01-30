@@ -3,12 +3,12 @@ title: Postup vytváření zásad konfigurace hosta pro Windows
 description: Naučte se vytvářet Azure Policy zásady konfigurace hostů pro Windows.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 85ffda54d58db0544858ca8ab61335b61f18299e
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: ae9af51ad3b2eb237f8655c996a1345140a8a635
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881782"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99070640"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Postup vytváření zásad konfigurace hosta pro Windows
 
@@ -261,6 +261,16 @@ New-GuestConfigurationPackage -Name AuditBitlocker -Configuration ./Config/Audit
 ```
 
 Dalším krokem je publikování souboru do Azure Blob Storage. Příkaz `Publish-GuestConfigurationPackage` vyžaduje `Az.Storage` modul.
+
+Parametry `Publish-GuestConfigurationPackage` rutiny:
+
+- **Cesta**: umístění balíčku, který se má publikovat
+- **ResourceGroupName**: název skupiny prostředků, ve které se nachází účet úložiště.
+- **StorageAccountName**: název účtu úložiště, do kterého se má balíček publikovat
+- **StorageContainerName**: (výchozí: *guestconfiguration*) název kontejneru úložiště v účtu úložiště
+- **Force (vynutit**): přepsat existující balíček v účtu úložiště se stejným názvem
+
+Následující příklad publikuje balíček do kontejneru úložiště s názvem guestconfiguration.
 
 ```azurepowershell-interactive
 Publish-GuestConfigurationPackage -Path ./AuditBitlocker.zip -ResourceGroupName myResourceGroupName -StorageAccountName myStorageAccountName

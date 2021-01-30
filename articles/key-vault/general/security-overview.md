@@ -9,22 +9,21 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/05/2021
 ms.author: mbaldwin
-ms.openlocfilehash: c4e9f0cd6a7421f5be29200816bb00a56b141367
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: c7635fdc2012ab404709733d8f5849465c2ee82f
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937654"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071559"
 ---
-# <a name="azure-key-vault-security-overview"></a>Přehled zabezpečení Azure Key Vault
+# <a name="azure-key-vault-security"></a>Zabezpečení služby Azure Key Vault
 
 Azure Key Vault slouží k ochraně šifrovacích klíčů a tajných kódů, jako jsou certifikáty, připojovací řetězce a hesla v cloudu. Při ukládání citlivých a důležitých podnikových dat je nutné provést kroky k maximalizaci zabezpečení trezorů a dat, která jsou v nich uložená.
 
-Tento článek obsahuje přehled funkcí zabezpečení a osvědčených postupů pro Azure Key Vault. Úplný seznam doporučení na základě [srovnávacího testu zabezpečení Azure](../../security/benchmarks/introduction.md)najdete v tématu základní informace o [zabezpečení pro Azure Key Vault](security-baseline.md).
+Tento článek obsahuje přehled funkcí zabezpečení a osvědčených postupů pro Azure Key Vault. 
 
-## <a name="general-guidance"></a>Obecné pokyny
-
-Naším doporučením je použití trezoru pro jednotlivé aplikace (vývoj, předprodukční a produkční prostředí). To vám pomůže sdílet tajné klíče mezi prostředími a zároveň snižuje riziko v případě porušení.
+> [!NOTE]
+> Úplný seznam Azure Key Vaultch doporučení zabezpečení najdete v tématu základní informace o [zabezpečení pro Azure Key Vault](security-baseline.md).
 
 ## <a name="network-security"></a>Zabezpečení sítě
 
@@ -109,20 +108,9 @@ Ochrana pomocí Azure Key Vaultho obnovitelného odstranění a vymazání umož
 
 Měli byste také při aktualizaci, odstranění nebo vytváření objektů v rámci trezoru provést pravidelnou zálohu vašeho trezoru.  
 
-Příkazy zálohování Azure PowerShell:
-
-* [Záložní certifikát](/powershell/module/azurerm.keyvault/Backup-AzureKeyVaultCertificate)
-* [Záložní klíč](/powershell/module/azurerm.keyvault/Backup-AzureKeyVaultKey)
-* [Tajný klíč zálohy](/powershell/module/azurerm.keyvault/Backup-AzureKeyVaultSecret)
-
-Příkazy zálohování Azure CLI
-
-* [Záložní certifikát](/cli/azure/keyvault/certificate#az-keyvault-certificate-backup)
-* [Záložní klíč](/cli/azure/keyvault/key#az-keyvault-key-backup)
-* [Tajný klíč zálohy](/cli/azure/keyvault/secret#az-keyvault-secret-backup)
-
-
 ## <a name="next-steps"></a>Další kroky
 
-- [Koncové body služby virtuální sítě pro Azure Key Vault](overview-vnet-service-endpoints.md)
+- [Základní Azure Key Vault zabezpečení](security-baseline.md)
+- [Azure Key Vault osvědčené postupy](security-baseline.md)
+- [Koncové body služby Azure Key Vault pro virtuální síť](overview-vnet-service-endpoints.md)
 - [Azure RBAC: předdefinované role](../../role-based-access-control/built-in-roles.md)

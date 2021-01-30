@@ -1,32 +1,32 @@
 ---
 title: 'Rychlý Start: vytvoření indexu vyhledávání v Pythonu'
 titleSuffix: Azure Cognitive Search
-description: Vysvětluje, jak vytvořit index, načíst data a spustit dotazy pomocí Pythonu, poznámkových bloků a Azure.Documents. Hledání v knihovně.
+description: Naučte se vytvářet vyhledávací index, načítat data a spouštět dotazy pomocí Pythonu, Jupyter Notebook a Azure.Documents. Vyhledat klientskou knihovnu pro Python
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 11/19/2020
+ms.date: 01/29/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: 126fc69678148d4d478c96ff8d05f194c7e3d1b3
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: eb5de33fd41d3a454f4d0b8d44325ed30f9c5d47
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861863"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071626"
 ---
-# <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebooks"></a>Rychlý Start: vytvoření indexu služby Azure Kognitivní hledání v Pythonu pomocí poznámkových bloků Jupyter
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebook"></a>Rychlý Start: vytvoření indexu služby Azure Kognitivní hledání v Pythonu pomocí Jupyter Notebook
 
 > [!div class="op_single_selector"]
 > * [Python](search-get-started-python.md)
-> * [PowerShell (REST)](./search-get-started-powershell.md)
-> * [C#](./search-get-started-dotnet.md)
+> * [PowerShell (REST)](search-get-started-powershell.md)
+> * [C#](search-get-started-dotnet.md)
 > * [REST](search-get-started-rest.md)
 > * [Azure Portal](search-get-started-portal.md)
 >
 
-Sestavte Jupyter Notebook, který vytvoří, načte a zadá dotaz na index Azure Kognitivní hledání pomocí Pythonu a [knihovny Azure-Search-Documents](/python/api/overview/azure/search-documents-readme) v sadě Azure SDK pro Python. Tento článek vysvětluje, jak vytvořit Poznámkový blok krok za krokem. Případně můžete [Stáhnout a spustit dokončený Poznámkový blok Pythonu Jupyter](https://github.com/Azure-Samples/azure-search-python-samples).
+Vytvoření poznámkového bloku, který vytváří, načítá a odesílá dotazy do indexu služby Azure Kognitivní hledání pomocí Pythonu a [knihovny Azure-Search-Documents](/python/api/overview/azure/search-documents-readme) v sadě Azure SDK pro Python. Tento článek vysvětluje, jak vytvořit Poznámkový blok krok za krokem. Případně můžete [Stáhnout a spustit dokončený Poznámkový blok Pythonu Jupyter](https://github.com/Azure-Samples/azure-search-python-samples).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -38,7 +38,7 @@ V tomto rychlém startu jsou vyžadovány následující služby a nástroje.
 
 * [Azure-Search-Documents – balíček](https://pypi.org/project/azure-search-documents/)
 
-* [Vytvořte službu Azure kognitivní hledání](search-create-service-portal.md) nebo [Najděte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Úroveň Free můžete použít pro tento rychlý Start. 
+* [Vytvořte vyhledávací službu](search-create-service-portal.md) nebo [vyhledejte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Úroveň Free můžete použít pro tento rychlý Start. 
 
 ## <a name="copy-a-key-and-url"></a>Zkopírování klíče a adresy URL
 
@@ -48,7 +48,7 @@ Volání REST vyžadují pro každý požadavek adresu URL služby a přístupov
 
 1. V části **Nastavení**  >  **klíče** Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
 
-![Získání koncového bodu HTTP a přístupového klíče](media/search-get-started-rest/get-url-key.png "Získání koncového bodu HTTP a přístupového klíče")
+   ![Získání koncového bodu HTTP a přístupového klíče](media/search-get-started-rest/get-url-key.png "Získání koncového bodu HTTP a přístupového klíče")
 
 Všechny požadavky vyžadují klíč rozhraní API na všech žádostech odeslaných službě. Platný klíč vytváří na základě žádosti vztah důvěryhodnosti mezi aplikací, která žádost odeslala, a službou, která ji zpracovává.
 
@@ -63,7 +63,7 @@ V této úloze spusťte Jupyter Notebook a ověřte, že se můžete připojit k
    ```python
     !pip install azure-search-documents --pre
     !pip show azure-search-documents
-
+    
     import os
     from azure.core.credentials import AzureKeyCredential
     from azure.search.documents.indexes import SearchIndexClient 
@@ -82,17 +82,17 @@ V této úloze spusťte Jupyter Notebook a ověřte, že se můžete připojit k
 1. Do druhé buňky zadejte prvky požadavku, které budou konstanty u všech požadavků. Zadejte název vyhledávací služby, klíč rozhraní API pro správu a klíč rozhraní API pro dotaz, který jste zkopírovali v předchozím kroku. Tato buňka také nastaví klienty, které budete používat pro konkrétní operace: [SearchIndexClient](/python/api/azure-search-documents/azure.search.documents.indexes.searchindexclient) k vytvoření indexu a [SearchClient](/python/api/azure-search-documents/azure.search.documents.searchclient) k dotazování indexu.
 
    ```python
-    service_name = ["SEARCH_ENDPOINT - do not include search.windows.net"]
-    admin_key = ["Cognitive Search Admin API Key"]
-
+    service_name = "YOUR-SEARCH-SERIVCE-NAME"
+    admin_key = "YOUR-SEARCH-SERVICE-ADMIN-API-KEY"
+    
     index_name = "hotels-quickstart"
-
+    
     # Create an SDK client
     endpoint = "https://{}.search.windows.net/".format(service_name)
     admin_client = SearchIndexClient(endpoint=endpoint,
                           index_name=index_name,
                           credential=AzureKeyCredential(admin_key))
-
+    
     search_client = SearchClient(endpoint=endpoint,
                           index_name=index_name,
                           credential=AzureKeyCredential(admin_key))
@@ -121,6 +121,7 @@ Tento index má název "hotely-rychlý Start" a obsahuje definice polí, které 
 1. V další buňce vložte následující příklad do buňky pro zadání schématu.
 
     ```python
+    # Specify the index schema
     name = index_name
     fields = [
             SimpleField(name="HotelId", type=SearchFieldDataType.String, key=True),
@@ -128,13 +129,13 @@ Tento index má název "hotely-rychlý Start" a obsahuje definice polí, které 
             SearchableField(name="Description", type=SearchFieldDataType.String, analyzer_name="en.lucene"),
             SearchableField(name="Description_fr", type=SearchFieldDataType.String, analyzer_name="fr.lucene"),
             SearchableField(name="Category", type=SearchFieldDataType.String, facetable=True, filterable=True, sortable=True),
-
+        
             SearchableField(name="Tags", collection=True, type=SearchFieldDataType.String, facetable=True, filterable=True),
-
+    
             SimpleField(name="ParkingIncluded", type=SearchFieldDataType.Boolean, facetable=True, filterable=True, sortable=True),
             SimpleField(name="LastRenovationDate", type=SearchFieldDataType.DateTimeOffset, facetable=True, filterable=True, sortable=True),
             SimpleField(name="Rating", type=SearchFieldDataType.Double, facetable=True, filterable=True, sortable=True),
-
+    
             ComplexField(name="Address", fields=[
                 SearchableField(name="StreetAddress", type=SearchFieldDataType.String),
                 SearchableField(name="City", type=SearchFieldDataType.String, facetable=True, filterable=True, sortable=True),
@@ -150,20 +151,20 @@ Tento index má název "hotely-rychlý Start" a obsahuje definice polí, které 
 
 1. V jiné buňce formulujte požadavek. Tato create_index požadavek cílí na kolekci indexů vaší vyhledávací služby a vytvoří [SearchIndex](/python/api/azure-search-documents/azure.search.documents.indexes.models.searchindex) založenou na schématu indexu, které jste zadali v předchozí buňce.
 
-   ```python
+    ```python
     index = SearchIndex(
         name=name,
         fields=fields,
         scoring_profiles=scoring_profiles,
         suggesters = suggester,
         cors_options=cors_options)
-
+    
     try:
         result = admin_client.create_index(index)
         print ('Index', result.name, 'created')
     except Exception as ex:
         print (ex)
-   ```
+    ```
 
 1. Spusťte jednotlivé kroky.
 
@@ -176,8 +177,7 @@ Chcete-li načíst dokumenty, vytvořte kolekci dokumentů pomocí [Akce indexu]
 1. V nové buňce poskytněte čtyři dokumenty, které odpovídají schématu indexu. Zadejte akci odeslání pro každý dokument.
 
     ```python
-    documents = {
-        "value": [
+    documents = [
         {
         "@search.action": "upload",
         "HotelId": "1",
@@ -255,98 +255,96 @@ Chcete-li načíst dokumenty, vytvořte kolekci dokumentů pomocí [Akce indexu]
             }
         }
     ]
-    }
     ```  
 
 1. V jiné buňce formulujte požadavek. Tato upload_documents požadavek cílí na kolekci docs v indexu pro rychlé zprovoznění a nahraje dokumenty v předchozím kroku do indexu Kognitivní hledání.
 
-
-   ```python
+    ```python
     try:
         result = search_client.upload_documents(documents=documents)
         print("Upload of new document succeeded: {}".format(result[0].succeeded))
     except Exception as ex:
         print (ex.message)
-   ```
+    ```
 
 1. Spusťte jednotlivé kroky a nahrajte dokumenty do indexu ve vyhledávací službě.
 
 ## <a name="3---search-an-index"></a>3. Prohledání indexu
 
-V tomto kroku se dozvíte, jak zadat dotaz na index pomocí [vyhledávacích dokumentů REST API](/rest/api/searchservice/search-documents).
+V tomto kroku se dozvíte, jak zadat dotaz na index pomocí [vyhledávacích dokumentů (REST)](/rest/api/searchservice/search-documents).
 
 1. Pro tuto operaci použijte search_client. Tento dotaz spustí prázdné hledání ( `search=*` ) a vrátí Neseřazený seznam (skóre hledání = 1,0) libovolných dokumentů. Vzhledem k tomu, že nejsou k dispozici žádná kritéria, jsou do výsledků zahrnuty všechny dokumenty. Tento dotaz vytiskne pouze dvě pole v každém dokumentu. Také přidá `include_total_count=True` k získání počtu všech dokumentů (4) ve výsledcích.
 
-   ```python
+    ```python
     results =  search_client.search(search_text="*", include_total_count=True)
-
+    
     print ('Total Documents Matching Query:', results.get_count())
     for result in results:
         print("{}: {}".format(result["HotelId"], result["HotelName"]))
-   ```
+    ```
 
 1. Další dotaz přidá celé výrazy do vyhledávacího výrazu ("WiFi"). Tento dotaz určuje, že výsledky obsahují pouze pole v `select` příkazu. Omezením polí, která se vrátí, minimalizuje množství dat odesílaných zpět po drátu a zkracuje latenci hledání.
 
-   ```python
+    ```python
     results =  search_client.search(search_text="wifi", include_total_count=True, select='HotelId,HotelName,Tags')
-
+    
     print ('Total Documents Matching Query:', results.get_count())
     for result in results:
         print("{}: {}: {}".format(result["HotelId"], result["HotelName"], result["Tags"]))
-   ```
+    ```
 
 1. Dále použijte výraz filtru, který vrátí pouze hotely s hodnocením větším než 4 seřazené v sestupném pořadí.
 
-   ```python
+    ```python
     results =  search_client.search(search_text="hotels", select='HotelId,HotelName,Rating', filter='Rating gt 4', order_by='Rating desc')
-
+    
     for result in results:
         print("{}: {} - {} rating".format(result["HotelId"], result["HotelName"], result["Rating"]))
-   ```
+    ```
 
 1. Přidat `search_fields` k oboru dotazu odpovídajícího jednomu poli
 
-   ```python
+    ```python
     results =  search_client.search(search_text="sublime", search_fields='HotelName', select='HotelId,HotelName')
-
+    
     for result in results:
         print("{}: {}".format(result["HotelId"], result["HotelName"]))
-   ```
+    ```
 
 1. Omezující vlastnosti jsou popisky, které lze použít k vytvoření struktury navigace omezující vlastnosti. Tento dotaz vrací charakteristiky a počty pro kategorii.
 
-   ```python
+    ```python
     results =  search_client.search(search_text="*", facets=["Category"])
-
+    
     facets = results.get_facets()
-
+    
     for facet in facets["Category"]:
         print("    {}".format(facet))
-   ```
+    ```
 
 1. V tomto příkladu vyhledejte konkrétní dokument založený na jeho klíči. Obvykle byste chtěli vrátit dokument, když uživatel klikne na dokument ve výsledku hledání.
 
-   ```python
+    ```python
     result = search_client.get_document(key="3")
-
+    
     print("Details for hotel '3' are:")
-    print("        Name: {}".format(result["HotelName"]))
-    print("      Rating: {}".format(result["Rating"]))
-    print("    Category: {}".format(result["Category"]))
-   ```
+    print("Name: {}".format(result["HotelName"]))
+    print("Rating: {}".format(result["Rating"]))
+    print("Category: {}".format(result["Category"]))
+    ```
 
 1. V tomto příkladu použijeme funkci automatického dokončování. Obvykle se používá ve vyhledávacím poli, které umožňuje automatické dokončování potenciálních shod jako uživatelských typů do vyhledávacího pole.
 
    Při vytvoření indexu byl v rámci žádosti vytvořen i modul pro návrhy s názvem "SG". Definice modulu pro návrhy určuje, která pole lze použít k nalezení potenciálních shod pro žádosti navrhovat. V tomto příkladu jsou tato pole "Tags", "adresa/město", "adresa/země". Chcete-li simulovat automatické dokončování, předejte písmena "sa" jako částečný řetězec. Metoda AutoComplete [SearchClient](/python/api/azure-search-documents/azure.search.documents.searchclient) odesílá zpět potenciální shodné termíny.
 
-   ```python
+    ```python
     search_suggestion = 'sa'
     results = search_client.autocomplete(search_text=search_suggestion, suggester_name="sg", mode='twoTerms')
-
+    
     print("Autocomplete for:", search_suggestion)
     for result in results:
         print (result['text'])
-   ```
+    ```
 
 ## <a name="clean-up"></a>Vyčištění
 

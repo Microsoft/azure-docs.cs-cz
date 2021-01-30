@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/15/2021
+ms.date: 01/29/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: f550f96a8bd2e402556089061604654b11d47844
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: b62e341d35a4ff7fd5a7ddd6d9f19b138aaf0aa9
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762888"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071643"
 ---
 # <a name="perform-a-point-in-time-restore-on-block-blob-data"></a>Provedení obnovení k určitému bodu v čase u dat objektů blob bloku
 
@@ -185,6 +185,17 @@ az storage blob restore \
     --account-name <storage-account> \
     --time-to-restore 2021-01-14T06:31:22Z \
     --no-wait
+```
+
+Chcete-li zjistit vlastnosti operace obnovení, zavolejte volání [AZ Storage Account show](/cli/azure/storage/account#az_storage_account_show) a rozbalte vlastnost **blobRestoreStatus** . Následující příklad ukazuje, jak kontrolovat vlastnost **status** .
+
+```azurecli
+az storage account show \
+    --name <storage-account> \
+    --resource-group <resource_group> \ 
+    --expand blobRestoreStatus \
+    --query blobRestoreStatus.status \
+    --output tsv
 ```
 
 Pokud chcete spustit příkaz **AZ Storage BLOB Restore** synchronně a zablokovat spuštění, dokud se nedokončí operace obnovení, vynechejte `--no-wait` parametr.

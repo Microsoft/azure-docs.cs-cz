@@ -4,12 +4,12 @@ description: Naučte se konfigurovat šifrování založené na hostiteli v clus
 services: container-service
 ms.topic: article
 ms.date: 01/27/2021
-ms.openlocfilehash: 1d071305b457cddde56a11982e08c9331e1d5463
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: ac28c698a766f1f3febaff582038906f658d58dd
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98919644"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071846"
 ---
 # <a name="host-based-encryption-on-azure-kubernetes-service-aks-preview"></a>Šifrování založené na hostiteli ve službě Azure Kubernetes (AKS) (Preview)
 
@@ -25,37 +25,7 @@ Tato funkce se dá nastavit jenom při vytváření clusteru nebo při vytváře
 
 ### <a name="prerequisites"></a>Požadavky
 
-- Ujistěte se, že máte `aks-preview` nainstalovanou příponu CLI v 0.4.73 nebo novější verzi.
-- Ujistěte se, že je `EnableEncryptionAtHostPreview` v části `Microsoft.ContainerService` povoleno příznak funkce.
-
-Aby bylo možné používat šifrování na hostiteli pro vaše virtuální počítače nebo služby Virtual Machine Scale Sets, musíte ve svém předplatném mít povolenou funkci. Pokud chcete encryptionAtHost@microsoft funkci povolit pro vaše předplatná, odešlete e-mail na adresu. com s ID předplatného.
-
-### <a name="register-encryptionathost--preview-features"></a>Registrace `EncryptionAtHost`  funkcí ve verzi Preview
-
-> [!IMPORTANT]
-> Abyste encryptionAtHost@microsoft získali funkci pro výpočetní prostředky, musíte poslat e-mail. com s ID předplatného. Pro tyto prostředky ji nemůžete povolit. Můžete ji povolit ve službě kontejneru.
-
-Pokud chcete vytvořit cluster AKS, který používá šifrování založené na hostiteli, musíte `EncryptionAtHost` u svého předplatného povolit příznak funkce.
-
-Zaregistrujte `EncryptionAtHost` příznak funkce pomocí příkazu [AZ Feature Register][az-feature-register] , jak je znázorněno v následujícím příkladu:
-
-```azurecli-interactive
-az feature register --namespace "Microsoft.ContainerService"  --name "EnableEncryptionAtHost"
-```
-
-Zobrazení stavu v *registraci* trvá několik minut. Stav registrace můžete zjistit pomocí příkazu [AZ Feature list][az-feature-list] :
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableEncryptionAtHost')].{Name:name,State:properties.state}"
-```
-
-Až budete připraveni, aktualizujte registraci `Microsoft.ContainerService` `Microsoft.Compute` zprostředkovatelů prostředků a pomocí příkazu [AZ Provider Register][az-provider-register] :
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
+- Ujistěte se, že máte `aks-preview` nainstalovanou verzi rozhraní příkazového řádku CLI verze 0.4.73 nebo novější.
 
 ### <a name="install-aks-preview-cli-extension"></a>Instalace rozšíření rozhraní příkazového řádku aks-preview
 
@@ -77,23 +47,23 @@ az extension update --name aks-preview
 
 ## <a name="use-host-based-encryption-on-new-clusters-preview"></a>Použití šifrování založeného na hostiteli pro nové clustery (Preview)
 
-Nakonfigurujte uzly agenta clusteru tak, aby při vytvoření clusteru používaly šifrování založené na hostiteli. `--aks-custom-headers`K nastavení záhlaví použijte příznak `EnableEncryptionAtHost` .
+Nakonfigurujte uzly agenta clusteru tak, aby při vytvoření clusteru používaly šifrování založené na hostiteli. 
 
 ```azurecli-interactive
-az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_DS2_v2 -l westus2 --aks-custom-headers --enable-encryption-at-host
+az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_DS2_v2 -l westus2 --enable-encryption-at-host
 ```
 
-Pokud chcete vytvořit clustery bez šifrování založeného na hostiteli, můžete to udělat tak, že vynecháte vlastní `--aks-custom-headers` parametr.
+Pokud chcete vytvořit clustery bez šifrování založeného na hostiteli, můžete to udělat tak, že tento parametr vynecháte `--enable-encryption-at-host` .
 
 ## <a name="use-host-based-encryption-on-existing-clusters-preview"></a>Použití šifrování založeného na hostiteli na existujících clusterech (Preview)
 
-V existujících clusterech můžete povolit šifrování založené na hostiteli přidáním nového fondu uzlů do clusteru. Nakonfigurujte nový fond uzlů pro použití šifrování založeného na hostiteli pomocí `--aks-custom-headers` příznaku.
+V existujících clusterech můžete povolit šifrování založené na hostiteli přidáním nového fondu uzlů do clusteru. Nakonfigurujte nový fond uzlů pro použití šifrování založeného na hostiteli pomocí `--enable-encryption-at-host` parametru.
 
 ```azurecli
-az aks nodepool add --name hostencrypt --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_DS2_v2 -l westus2 --aks-custom-headers --enable-encryption-at-host
+az aks nodepool add --name hostencrypt --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_DS2_v2 -l westus2 --enable-encryption-at-host
 ```
 
-Pokud chcete vytvořit nové fondy uzlů bez funkce šifrování založené na hostiteli, můžete to udělat tak, že vynecháte vlastní `--aks-custom-headers` parametr.
+Pokud chcete vytvořit nové fondy uzlů bez funkce šifrování založené na hostiteli, můžete to udělat tak, že parametr vynecháte `--enable-encryption-at-host` .
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -43,9 +43,11 @@
   items:
     - name: Základní koncepty
       href: basic-concepts.md
+    - name: Osvědčené postupy
+      href: best-practices.md
     - name: Zabezpečení
       items:
-        - name: Přehled zabezpečení
+        - name: Přehled
           href: security-overview.md
         - name: Zabezpečení přístupu k trezoru klíčů
           href: secure-your-key-vault.md

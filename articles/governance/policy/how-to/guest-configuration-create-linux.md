@@ -4,12 +4,12 @@ description: Naučte se vytvářet Azure Policy zásady konfigurace hostů pro L
 ms.date: 08/17/2020
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 705c12cff5f4377249674ef9db155d1ed321ce42
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.openlocfilehash: 38579bb43f012cac2b373bbbbb6ad757604f4c07
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97755867"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99070685"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Postup vytváření zásad konfigurace hosta pro Linux
 
@@ -204,7 +204,17 @@ Rutina podporuje také vstup z kanálu PowerShellu. Přesměrování výstupu `N
 New-GuestConfigurationPackage -Name AuditFilePathExists -Configuration ./Config/AuditFilePathExists.mof -ChefInspecProfilePath './' | Test-GuestConfigurationPackage
 ```
 
-Dalším krokem je publikování souboru do Azure Blob Storage.  Příkaz `Publish-GuestConfigurationPackage` vyžaduje `Az.Storage` modul.
+Dalším krokem je publikování souboru do Azure Blob Storage. Příkaz `Publish-GuestConfigurationPackage` vyžaduje `Az.Storage` modul.
+
+Parametry `Publish-GuestConfigurationPackage` rutiny:
+
+- **Cesta**: umístění balíčku, který se má publikovat
+- **ResourceGroupName**: název skupiny prostředků, ve které se nachází účet úložiště.
+- **StorageAccountName**: název účtu úložiště, do kterého se má balíček publikovat
+- **StorageContainerName**: (výchozí: *guestconfiguration*) název kontejneru úložiště v účtu úložiště
+- **Force (vynutit**): přepsat existující balíček v účtu úložiště se stejným názvem
+
+Následující příklad publikuje balíček do kontejneru úložiště s názvem guestconfiguration.
 
 ```azurepowershell-interactive
 Publish-GuestConfigurationPackage -Path ./AuditBitlocker.zip -ResourceGroupName myResourceGroupName -StorageAccountName myStorageAccountName

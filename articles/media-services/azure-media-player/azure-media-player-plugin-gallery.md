@@ -6,22 +6,22 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
-ms.openlocfilehash: 6d592064729bbdd64e485e0bd0373b2d471597e0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 71fa79cb8847d16ac0890f9aba647cb8f5e2e444
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87282479"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99089338"
 ---
 # <a name="azure-media-player-plugin-gallery"></a>Galerie modulů plug-in Azure Media Player #
 
 ## <a name="plugins"></a>Moduly plug-in ##
 
-| Název modulu plug-in                         | Ukázková adresa URL                    | Zdrojový kód                | Popis    |
+| Název modulu plug-in                         | Ukázková adresa URL                    | Zdrojový kód                | Description    |
 |-------------------------------------|-----------------------------|----------------------------|----------------|
 | Další funkce                 | | | |
 | **New!** AMP360Video                | [Demo](http://www.babylonjs.com/demos/amp360video/)                        | [GitHub](https://github.com/BabylonJS/Extensions/tree/master/Amp360Video)                     | Modul plug-in umožňuje vizualizovat 360 video v amp buď na vašem počítači, nebo na zařízeních kompatibilních s VR. Úplná dokumentace je k dispozici [zde](https://doc.babylonjs.com/extensions/amp360video): |
-|  Popis Sprite                         | [Demo](http://www.skymedia.tv/asset/sprite)                        | [GitHub](https://github.com/RickShahid/SpriteTip)                    | Azure Media Player (AMP) modul plug-in pro vykreslování zobrazení časové osy miniatury obrazu, který je vygenerovaný z Azure Media Services (AMS) Media Encoder Standard (status) |
+|  Popis Sprite                         | [Demo](https://www.smwcentral.net/?p=section&a=details&id=10301)                        | [GitHub](https://github.com/RickShahid/SpriteTip)                    | Azure Media Player (AMP) modul plug-in pro vykreslování zobrazení časové osy miniatury obrazu, který je vygenerovaný z Azure Media Services (AMS) Media Encoder Standard (status) |
 | Překryvná Diagnostika                 | [Demo](https://openidconnectweb.azurewebsites.net/Diagnoverlay.html)                        | [GitHub](https://github.com/willzhan/diagnoverlay)                     | Tento modul plug-in zobrazí všechny klíčové parametry, statistiky videa, všechny události v životním cyklu přehrávání videa a informace o ochraně DRM, jako je ID klíče, adresy URL pro získání licence, pokud jsou chráněné.                                                                                                                                                                      |
 | Snímková frekvence a timecode kalkulačka | Není dostupná žádná ukázka. | [GitHub](https://github.com/mconverti/media-services-javascript-azure-media-player-framerate-timecode-calculator-plugin)                     | Tento modul plug-in vypočítá snímkový kmitočet videa na základě `tfhd` / `trun` polí MP4 prvního fragmentu videa MPEG-pomlčky, analyzuje hodnotu časového měřítka z manifestu klienta MPEG-spojovník a poskytuje způsob, jak vygenerovat timecode pro daný absolutní čas v přehrávači (a také poskytuje pro daný timecode absolutní čas). |
 | <strike>Rychlost přehrávání</strike>                      | [Demo](https://azure-samples.github.io/media-services-javascript-Azure-Media-Player-playback-rate-plugin/)                        | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-time-tip-plugin)                     | Tento modul plug-in umožňuje čtenářům řídit rychlost videa. *Tato funkce je k dispozici automaticky ve verzi AMP v 2.0.0 +, ale ve výchozím nastavení zakázána.* Pokud se chcete dozvědět, jak ho povolit, podívejte se na [naše ukázky.](https://github.com/Azure-Samples/azure-media-player-samples) |

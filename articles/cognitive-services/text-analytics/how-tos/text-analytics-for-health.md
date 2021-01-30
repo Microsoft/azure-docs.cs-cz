@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 12/17/2020
+ms.date: 01/21/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 8159010486371d619aa14a845050a0eb38aaeda8
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: d7f71afd1cf47ab1a94d984090e8fb52ee69c6b4
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97683534"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99088934"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>Postupy: použití Analýza textu pro stav (Preview)
 
@@ -26,8 +26,8 @@ ms.locfileid: "97683534"
 
 Analýza textu pro stav je funkce služby rozhraní API pro analýzu textu, která extrahuje a štítky relevantní lékařské informace z nestrukturovaných textů, jako jsou například poznámky lékaře, souhrny vypouštění, klinické dokumenty a elektronické záznamy o stavu.  Existují dva způsoby, jak tuto službu využít: 
 
-* Webové rozhraní API (asynchronní) 
-* Kontejner Docker (synchronní)   
+* [Webové rozhraní API (asynchronní)](#structure-the-api-request-for-the-hosted-asynchronous-web-api)
+* [Kontejner Docker (synchronní)](#hosted-asynchronous-web-api-response)   
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Introducing-Text-Analytics-for-Health/player]
 

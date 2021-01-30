@@ -1,6 +1,6 @@
 ---
-title: Monitorování služby Azure Blob Storage | Microsoft Docs
-description: Naučte se monitorovat výkon a dostupnost služby Azure Blob Storage. Monitorujte data služby Azure Blob Storage, zjistěte informace o konfiguraci a analyzujte data metrik a protokolů.
+title: Monitorování Azure Blob Storage | Microsoft Docs
+description: Naučte se monitorovat výkon a dostupnost Azure Blob Storage. Monitorujte data Blob Storage Azure, Naučte se konfigurovat a analyzujte data metrik a protokolů.
 author: normesta
 services: storage
 ms.service: storage
@@ -9,14 +9,14 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 9224d02e36dbca96d3e54946330d3135ff811829
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 76f266ec915754b5746f06a340b21146b84fa711
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590762"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071660"
 ---
-# <a name="monitoring-azure-blob-storage"></a>Monitorování služby Azure Blob Storage
+# <a name="monitoring-azure-blob-storage"></a>Monitorování Blob Storage Azure
 
 Pokud máte důležité aplikace a obchodní procesy, které spoléhají na prostředky Azure, budete chtít tyto prostředky sledovat pro jejich dostupnost, výkon a provoz. Tento článek popisuje data monitorování vygenerovaná službou Azure Blob Storage a způsob použití funkcí Azure Monitor k analýze výstrah na těchto datech.
 
@@ -42,9 +42,9 @@ Následující části jsou uvedené v tomto článku, které popisují konkrét
 
 ## <a name="monitoring-data"></a>Data monitorování
 
-Azure Blob Storage shromažďuje stejné druhy dat monitorování jako jiné prostředky Azure, které jsou popsané v tématu [monitorování dat z prostředků Azure](../../azure-monitor/insights/monitor-azure-resource.md#monitoring-data). 
+Azure Blob Storage shromažďuje stejné typy dat monitorování jako jiné prostředky Azure, které jsou popsány v tématu [monitorování dat z prostředků Azure](../../azure-monitor/insights/monitor-azure-resource.md#monitoring-data). 
 
-Podrobné informace o metrikách a protokolech vytvořených službou Azure Blob Storage najdete v referenčních informacích k [datům monitorování služby Azure Blob Storage](monitor-blob-storage-reference.md) .
+Podrobné informace o metrikách a protokolech, které vytvořila služba Azure Blob Storage, najdete v tématu Referenční informace o [službě azure BLOB Storage monitoring data](monitor-blob-storage-reference.md) .
 
 Metriky a protokoly v Azure Monitor podporují jenom účty úložiště Azure Resource Manager. Azure Monitor nepodporuje účty klasického úložiště. Pokud chcete používat metriky nebo protokoly v klasickém účtu úložiště, musíte migrovat na účet úložiště Azure Resource Manager. Viz [migrace na Azure Resource Manager](../../virtual-machines/migration-classic-resource-manager-overview.md).
 
@@ -76,7 +76,7 @@ Obecné pokyny najdete v tématu [Vytvoření nastavení diagnostiky pro shroma�
 
 ### <a name="azure-portal"></a>[Azure Portal](#tab/azure-portal)
 
-1. Přihlaste se k webu Azure Portal.
+1. Přihlaste se k portálu Azure.
 
 2. Přejděte na svůj účet úložiště.
 
@@ -279,7 +279,7 @@ Pro metriky, které podporují dimenze, můžete metriku filtrovat pomocí poža
 
 Úplný seznam dimenzí, které Azure Storage podporuje, najdete v tématu věnovaném [dimenzím metrik](monitor-blob-storage-reference.md#metrics-dimensions).
 
-Metriky pro službu Azure Blob Storage jsou v těchto oborech názvů: 
+Metriky pro Azure Blob Storage jsou v těchto oborech názvů: 
 
 - Microsoft. Storage/storageAccounts
 - Microsoft. Storage/storageAccounts/blobServices
@@ -483,7 +483,7 @@ Není k dispozici.
 
 Protokoly prostředků můžete přistupovat buď jako objekt BLOB v účtu úložiště, jako data události, nebo prostřednictvím analytických dotazů log.
 
-Podrobné informace o polích, která se zobrazují v těchto protokolech, najdete v tématu Referenční informace k [datům monitorování služby Azure Blob Storage](monitor-blob-storage-reference.md).
+Podrobný referenční informace o polích, která se zobrazují v těchto protokolech, najdete v tématu Referenční informace ke [službě Azure Blob Storage monitoring data](monitor-blob-storage-reference.md).
 
 > [!NOTE]
 > Protokoly Azure Storage v Azure Monitor jsou ve verzi Public Preview a jsou dostupné pro testování ve verzi Preview ve všech oblastech veřejného cloudu. Tato verze Preview umožňuje protokoly pro objekty BLOB (včetně Azure Data Lake Storage Gen2), soubory, fronty, tabulky, účty Premium Storage pro obecné účely V1 a účty úložiště pro obecné účely v2. Klasické účty úložiště se nepodporují.
@@ -593,7 +593,7 @@ Tyto dotazy vám pomůžou monitorovat účty Azure Storage:
     | sort by count_ desc 
     | render piechart
     ```
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 **Podporuje Azure Storage metriky pro Managed Disks nebo nespravované disky?**
 
@@ -601,6 +601,6 @@ No. Azure COMPUTE podporuje metriky na discích. Další informace najdete v té
 
 ## <a name="next-steps"></a>Další kroky
 
-- Odkaz na protokoly a metriky vytvořené službou Azure Blob Storage najdete v referenčních informacích k [datům monitorování služby Azure Blob Storage](monitor-blob-storage-reference.md).
+- Odkaz na protokoly a metriky, které vytvořila služba Azure Blob Storage, najdete v tématu Referenční informace ke [službě azure BLOB Storage monitoring data](monitor-blob-storage-reference.md).
 - Podrobnosti o monitorování prostředků Azure najdete v tématu [monitorování prostředků Azure pomocí Azure monitor](../../azure-monitor/insights/monitor-azure-resource.md).
 - Další informace o migraci metrik najdete v tématu [Azure Storage migrace metrik](../common/storage-metrics-migration.md).

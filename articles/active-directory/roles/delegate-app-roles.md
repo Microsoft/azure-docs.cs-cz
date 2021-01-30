@@ -14,18 +14,18 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e36a29048d97798c2e1621fbdc957bde51b5a383
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: b5cb7e1521c649be4abc155d9f28a49b43a11e6d
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740597"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071256"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Delegovat oprávnění k registraci aplikace v Azure Active Directory
 
 Tento článek popisuje, jak pomocí oprávnění udělených vlastními rolemi v Azure Active Directory (Azure AD) řešit potřeby správy aplikací. V Azure AD můžete delegovat vytváření aplikací a oprávnění pro správu následujícími způsoby:
 
-- [Omezení toho, kdo může vytvářet aplikace](#restrict-who-can-create-applications) a spravovat aplikace, které vytvářejí. Ve výchozím nastavení ve službě Azure AD mohou všichni uživatelé registrovat registrace aplikací a spravovat všechny aspekty aplikací, které vytvářejí. Dá se omezit tak, aby se povolily jenom vybraným lidem, které mají oprávnění.
+- [Omezení toho, kdo může vytvářet aplikace](#restrict-who-can-create-applications) a spravovat aplikace, které vytvářejí. Ve výchozím nastavení ve službě Azure AD mohou všichni uživatelé registrovat aplikace a spravovat všechny aspekty aplikací, které vytvářejí. Dá se omezit tak, aby se povolily jenom vybraným lidem, které mají oprávnění.
 - [Přiřazení jednoho nebo více vlastníků k aplikaci](#assign-application-owners). Toto je jednoduchý způsob, jak někomu udělit možnost spravovat všechny aspekty konfigurace Azure AD pro konkrétní aplikaci.
 - [Přiřazení předdefinované role správce](#assign-built-in-application-admin-roles) , která uděluje přístup ke správě konfigurace ve službě Azure AD pro všechny aplikace. Toto je doporučený způsob, jak udělit odborníkům na IT přístup ke správě rozsáhlých oprávnění konfigurace aplikace bez udělení přístupu ke správě jiných částí služby Azure AD, které nesouvisí s konfigurací aplikace.
 - [Vytvoření vlastní role](#create-and-assign-a-custom-role-preview) definující velmi specifická oprávnění a jejich přiřazení někomu jinému jako omezeného vlastníka nebo v oboru adresáře (všechny aplikace) jako omezeného správce.
@@ -34,7 +34,7 @@ Je důležité zvážit udělení přístupu pomocí jedné z výše uvedených 
 
 ## <a name="restrict-who-can-create-applications"></a>Omezit, kdo může vytvářet aplikace
 
-Ve výchozím nastavení ve službě Azure AD mohou všichni uživatelé registrovat registrace aplikací a spravovat všechny aspekty aplikací, které vytvářejí. Všichni uživatelé mají taky možnost vyjádřit souhlas s aplikacemi, které přistupují k firemním datům jejich jménem. Můžete zvolit selektivní udělení těchto oprávnění tím, že nastavíte globální přepínače na ne a přidáte vybrané uživatele do role vývojář aplikace.
+Ve výchozím nastavení ve službě Azure AD mohou všichni uživatelé registrovat aplikace a spravovat všechny aspekty aplikací, které vytvářejí. Všichni uživatelé mají taky možnost vyjádřit souhlas s aplikacemi, které přistupují k firemním datům jejich jménem. Můžete zvolit selektivní udělení těchto oprávnění tím, že nastavíte globální přepínače na ne a přidáte vybrané uživatele do role vývojář aplikace.
 
 ### <a name="to-disable-the-default-ability-to-create-application-registrations-or-consent-to-applications"></a>Zakázání výchozí možnosti vytváření registrací aplikací nebo jejich souhlasu s aplikacemi
 

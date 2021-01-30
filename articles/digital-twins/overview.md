@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 91915f204a68d59a603b8bdea383b497a5b33d34
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: c0bc245a4be1ab7c326fa27cc1422878aca6331d
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98664023"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071677"
 ---
 # <a name="what-is-azure-digital-twins"></a>Co je služba Azure Digital Twins?
 
@@ -94,10 +94,10 @@ Následující diagram znázorňuje, kde se digitální vlákna Azure nachází 
 
 ## <a name="service-limits"></a>Omezení služby
 
-Seznam omezení digitálních vláken Azure najdete v tématu [*referenční informace: omezení služby*](reference-service-limits.md).
+Seznam omezení digitálních vláken Azure najdete v tématu [*omezení služby digitálních vláken Azure*](reference-service-limits.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste pracovali s první verzí Preview digitálních vláken Azure (říjen 2018), přečtěte si, co se změnilo: [*Přehled: rozdíly od první verze*](overview-differences.md).
+* Podrobně se na práci s digitálními podmnožinami Azure v rychlém startu: [*rychlý Start: Prozkoumejte ukázkový scénář*](quickstart-adt-explorer.md).
 
-Nebo se dostanete k práci s digitálními podmnožinami Azure pomocí rychlého startu: rychlý Start: [*Prozkoumejte ukázkový scénář*](quickstart-adt-explorer.md)a podrobně se na něj.
+* Nebo začněte číst informace o konceptech digitálních vláken Azure s [*Koncepty: vlastní modely*](concepts-models.md).

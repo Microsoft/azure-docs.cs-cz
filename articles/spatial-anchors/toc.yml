@@ -83,6 +83,8 @@
           href: how-tos/set-up-coarse-reloc-cpp-ndk.md
         - name: V C++/WinRT
           href: how-tos/set-up-coarse-reloc-cpp-winrt.md
+    - name: Použít hrubou reprostředí bez relace kotvy
+      href: how-tos/use-coarse-relocalization-without-anchor-session.md
     - name: Nastavení projektu
       items:
         - name: C++/WinRT

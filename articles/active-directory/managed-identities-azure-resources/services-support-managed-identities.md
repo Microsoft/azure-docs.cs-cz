@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 0f7c97e5d84b3ee2d40c714625d0158fe60f2c95
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 520d572478074a86c9b5cececacd34d7cd41539d
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986069"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071609"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Služby, které podporují spravované identity prostředků Azure
 
@@ -402,6 +402,15 @@ Pokud chcete nakonfigurovat přístup k Azure Resource Manager, přečtěte si n
 | Azure Government | `https://database.usgovcloudapi.net/` | ![K dispozici][check] |
 | Azure (Německo) | `https://database.cloudapi.de/` | ![K dispozici][check] |
 | Azure (Čína) 21Vianet | `https://database.chinacloudapi.cn/` | ![K dispozici][check] |
+
+### <a name="azure-data-explorer"></a>Průzkumník dat Azure
+
+| Cloud | ID prostředku | Status |
+|--------|------------|:-:|
+| Globální Azure | `https://<account>.<region>.kusto.windows.net` | ![K dispozici][check] |
+| Azure Government | `https://<account>.<region>.kusto.usgovcloudapi.net` | ![K dispozici][check] |
+| Azure (Německo) | `https://<account>.<region>.kusto.cloudapi.de` | ![K dispozici][check] |
+| Azure (Čína) 21Vianet | `https://<account>.<region>.kusto.chinacloudapi.cn` | ![K dispozici][check] |
 
 ### <a name="azure-event-hubs"></a>Azure Event Hubs
 
