@@ -443,7 +443,7 @@
           href: /python/api/overview/azure/mediaservices/management
         - name: Node.js
           href: /javascript/api/overview/azure/mediaservices/management
-        - name: Přejít
+        - name: Go
           href: 'https://aka.ms/ams-v3-go-ref'
     - name: Šablona Resource Manageru
       href: /azure/templates/microsoft.media/allversions
@@ -459,7 +459,8 @@
       displayName: 'forums, twitter, feedback'
       href: media-services-community.md
     - name: Plány Azure do budoucna
-      href: 'https://azure.microsoft.com/roadmap/?category=web-mobile'
+      displayName: azure updates
+      href: 'https://azure.microsoft.com/updates/?category=media'
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/media-services/'
     - name: Videa

@@ -1,14 +1,14 @@
 ---
 title: 'Kurz: Vytvoření zásad pro vymáhání dodržování předpisů'
 description: V tomto kurzu použijete zásady k vymáhání standardů, řízení nákladů, údržbě zabezpečení a zavedení zásad pro návrh na podnikové požadavky.
-ms.date: 10/05/2020
+ms.date: 01/29/2021
 ms.topic: tutorial
-ms.openlocfilehash: bf3da82abcdcada1fc38df29efc988a1805c3020
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a643e7ccede4966719972694ea29eeb77789595e
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005431"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221189"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>Kurz: vytvoření a Správa zásad pro vymáhání dodržování předpisů
 
@@ -71,6 +71,10 @@ Prvním krokem při vynucování dodržování předpisů pomocí služby Azure 
 1. Ponechte položku **vytvořit úlohu nápravy** nezaškrtnutou. V tomto poli můžete vytvořit úlohu pro změnu existujících prostředků kromě nových nebo aktualizovaných prostředků. Další informace najdete v tématu o [nápravě prostředků](../how-to/remediate-resources.md).
 
 1. Možnost **vytvořit spravovanou identitu** se automaticky kontroluje, protože tato definice zásady používá efekt [změny](../concepts/effects.md#modify) . **Oprávnění** se automaticky nastaví na _Přispěvatel_ na základě definice zásady. Další informace najdete v tématech věnovaných [spravovaným identitám](../../../active-directory/managed-identities-azure-resources/overview.md) a [principu fungování zabezpečení náprav](../how-to/remediate-resources.md#how-remediation-security-works).
+
+1. V horní části průvodce vyberte kartu **zprávy o nedodržení předpisů** .
+
+1. Nastavte **zprávu nesplňující požadavky** na _Tento prostředek nemá požadovanou značku_. Tato vlastní zpráva se zobrazí, pokud je prostředek odepřený nebo nevyhovujícím prostředkům během pravidelného vyhodnocení.
 
 1. V horní části průvodce vyberte kartu **Revize + vytvořit** .
 

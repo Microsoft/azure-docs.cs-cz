@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 09/30/2020
+ms.date: 01/29/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: rozpoznávání obrázků, aplikace pro rozpoznávání obrázků, vlastní vize
-ms.openlocfilehash: b27864fc1fd1f94f99fccacd90a66120e6d044c4
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 5ecd5fee565a8d31e0ff05f3b234771446242d02
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132575"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221291"
 ---
 # <a name="quickstart-build-an-object-detector-with-the-custom-vision-website"></a>Rychlý Start: sestavení objektu detektoru pomocí Custom Vision webu
 
@@ -70,7 +70,7 @@ Ve webovém prohlížeči přejděte na [webovou stránku Custom Vision](https:/
 
 V této části nahrajete a ručně označíte obrázky, které vám pomůžou naučit detektor. 
 
-1. Pokud chcete přidat obrázky, klikněte na tlačítko __Přidat image__ a pak vyberte __Procházet místní soubory__. Vyberte __otevřít__ a nahrajte obrázky.
+1. Pokud chcete přidat obrázky, vyberte __Přidat image__ a pak vyberte __Procházet místní soubory__. Vyberte __otevřít__ a nahrajte obrázky.
 
     ![Ovládací prvek přidat obrázky se zobrazí v levém horním rohu a jako tlačítko ve spodní části středu.](./media/get-started-build-detector/add-images.png)
 
@@ -78,7 +78,7 @@ V této části nahrajete a ručně označíte obrázky, které vám pomůžou n
 
     ![Nahrané obrázky v oddílu bez příznaku](./media/get-started-build-detector/images-untagged.png)
 
-1. Klikněte na obdélník kolem objektu v imagi a přetáhněte ho. Pak zadejte nový název značky s **+** tlačítkem nebo vyberte existující značku z rozevíracího seznamu. Je velmi důležité označit všechny instance objektů, které chcete detekovat, protože detektor používá oblast bez příznaku na pozadí jako negativní příklad při výuce. Po dokončení označování značek klikněte na šipku vpravo a uložte značky a přejděte k dalšímu obrázku.
+1. Klikněte na obdélník kolem objektu v imagi a přetáhněte ho. Pak zadejte nový název značky s **+** tlačítkem nebo vyberte existující značku z rozevíracího seznamu. Je důležité označit všechny instance objektů, které chcete detekovat, protože detektor používá oblast bez příznaku na pozadí jako negativní příklad v rámci školení. Po dokončení označování značek klikněte na šipku vpravo a uložte značky a přejděte k dalšímu obrázku.
 
     ![Označení objektu obdélníkovým výběrem](./media/get-started-build-detector/image-tagging.png)
 
@@ -114,7 +114,7 @@ Posuvník **prahová hodnota překrytí** se zabývá tím, jak opravit předpov
 
 ## <a name="manage-training-iterations"></a>Spravovat iterace cvičení
 
-Při každém výukovém detektoru vytvoříte novou _iteraci_ s vlastní aktualizovanou metrikou výkonu. Všechny své iterace můžete zobrazit v levém podokně karty **výkon** . V levém podokně se zobrazí také tlačítko **Odstranit** , které můžete použít k odstranění iterace, pokud je zastaralá. Odstraněním iterace odstraníte všechny bitové kopie, které s ní jsou jednoznačně přidružené.
+Při každém výukovém detektoru vytvoříte novou _iteraci_ s vlastní aktualizovanou metrikou výkonu. Všechny své iterace můžete zobrazit v levém podokně karty **výkon** . V levém podokně najdete také tlačítko **Odstranit** , které můžete použít k odstranění iterace, pokud je zastaralá. Odstraněním iterace odstraníte všechny bitové kopie, které s ní jsou jednoznačně přidružené.
 
 Informace o tom, jak programově přistupovat k vašim vyškolených modelům, najdete v tématu [použití modelu s prediktivním rozhraním API](./use-prediction-api.md) .
 

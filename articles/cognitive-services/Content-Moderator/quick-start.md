@@ -8,22 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 09/29/2020
+ms.date: 01/29/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: moderátor obsahu, Moderování obsahu
-ms.openlocfilehash: c026c42fe3c7a7f3f0d6b80e3123904077c104cf
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: f8ad9c135fea4e582e6ba47764d0401936f8c295
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905209"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221172"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>Rychlý Start: Vyzkoušejte Content Moderator na webu
 
 V tomto rychlém startu použijete nástroj online Content Moderator recenze k otestování základních funkcí Content Moderator bez nutnosti psát jakýkoli kód. Pokud chcete tuto službu integrovat do aplikace pro moderování obsahu rychleji, přečtěte si další rychlé starty v části [Další kroky](#next-steps) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Webový prohlížeč
 
@@ -88,6 +88,6 @@ Nebo pokračujte dalšími kroky, abyste mohli začít používat rozhraní API 
 ## <a name="next-steps"></a>Další kroky
 
 Naučte se používat rozhraní API pro moderování ve vaší aplikaci.
-- Implementujte moderování imagí. Použijte [konzolu rozhraní API](try-image-api.md) nebo použijte [klientskou knihovnu nebo REST API rychlý Start](client-libraries.md) pro skenování imagí a detekci potenciálního dospělého a pikantní obsahu pomocí značek, hodnocení spolehlivosti a dalších extrahovaných informací.
-- Implementujte moderování textu. Použijte [konzolu rozhraní API](try-text-api.md) nebo použijte [klientskou knihovnu nebo REST API rychlý Start](client-libraries.md) pro kontrolu textového obsahu pro potenciální vulgární výrazy, nepotřebnou klasifikaci textu s asistencí počítače (Preview) a osobní údaje.
+- Implementujte moderování imagí. Použijte [konzolu rozhraní API](try-image-api.md) nebo postupujte podle pokynů k [rychlému](client-libraries.md) zprovoznění a pomocí značek, hodnocení spolehlivosti a dalších extrahovaných informací vyhledejte potenciální obsah pro dospělé a pikantní.
+- Implementujte moderování textu. Použijte [konzolu rozhraní API](try-text-api.md) nebo postupujte podle pokynů k [rychlému](client-libraries.md) zprovoznění a naskenujte textový obsah pro potenciální vulgární výrazy, osobní údaje a další nežádoucí text.
 - Implementujte moderování videa. Postupujte podle pokynů v tématu [postup pro jazyk C#](video-moderation-api.md) , který vám pomůže při skenování videí a detekci potenciálního dospělého a pikantní obsahu. 

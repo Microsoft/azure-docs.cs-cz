@@ -6,12 +6,12 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: 4c0017a36d84973a4d99c49a5ea33faeb189b35f
-ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
+ms.openlocfilehash: e4149864e16196b695d38a8c46ab5af835453412
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2020
-ms.locfileid: "94639235"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221206"
 ---
 # <a name="understanding-windows-virtual-desktop-network-connectivity"></a>Principy připojení k síti virtuálních počítačů s Windows
 
@@ -50,7 +50,7 @@ Pořadí připojení klienta popsané níže:
 
 ## <a name="connection-security"></a>Zabezpečení připojení
 
-TLS 1,2 se používá pro všechna připojení inicializovaná z klientů a hostitelů relací k součástem infrastruktury virtuálních počítačů s Windows.
+TLS 1,2 se používá pro všechna připojení inicializovaná z klientů a hostitelů relací k součástem infrastruktury virtuálních počítačů s Windows. Virtuální počítač s Windows používá stejné šifry TLS 1,2 jako [přední dveře Azure](../frontdoor/front-door-faq.md#what-are-the-current-cipher-suites-supported-by-azure-front-door). Je důležité se ujistit, že klientské počítače i hostitelé relací můžou tyto šifry použít.
 Pro přenos zpětného připojení se klient a hostitel relace připojí k bráně virtuální plochy Windows. Po navázání připojení TCP klient nebo hostitel relace ověří certifikát brány virtuální plochy Windows.
 Po zřízení základního přenosu protokol RDP vytvoří vnořené připojení TLS mezi klientem a hostitelem relace pomocí certifikátů hostitele relace. Ve výchozím nastavení se certifikát používaný pro šifrování RDP během nasazení vygeneruje v operačním systému sami. V případě potřeby můžou zákazníci nasazovat centrálně spravované certifikáty vydané certifikační autoritou organizace. Další informace o konfiguraci certifikátů najdete v [dokumentaci k Windows serveru](/troubleshoot/windows-server/remote/remote-desktop-listener-certificate-configurations).
 

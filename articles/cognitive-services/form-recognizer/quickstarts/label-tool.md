@@ -7,16 +7,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 09/30/2020
+ms.date: 01/29/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: zpracování dokumentů
-ms.openlocfilehash: a1cf919e17e22cb6280dce27faceb7cd034a6962
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 813f5a06915ca7f5dfc0f4cc9a3f9b3e232ca31a
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845539"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221087"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Výukový model pro rozpoznávání formulářů pomocí popisků pomocí nástroje pro vzorkování popisků
 
@@ -202,7 +202,7 @@ V dalším kroku vytvoříte značky (popisky) a použijete je na textové prvky
    1. Kliknutím **+** vytvoříte novou značku.
    1. Zadejte název značky.
    1. Stisknutím klávesy ENTER značku uložíte.
-1. V hlavním editoru kliknutím vyberte slova z zvýrazněných textových prvků. Ve _verzi v 2.1 Preview. 2_ můžete také kliknout na výběr _značek výběru_ , jako jsou přepínače a zaškrtávací políčka jako páry klíč-hodnota. Nástroj pro rozpoznávání formulářů určí, zda je jako hodnota vybrána možnost "výběr" nebo "Nevybráno".
+1. V hlavním editoru kliknutím vyberte slova z zvýrazněných textových prvků. V rozhraní API _verze 2.1 Preview. 2_ můžete také kliknout na možnost vybrat _značky výběru_ , jako jsou přepínače a zaškrtávací políčka jako páry klíč-hodnota. Nástroj pro rozpoznávání formulářů určí, zda je jako hodnota vybrána možnost "výběr" nebo "Nevybráno".
 1. Klikněte na značku, kterou chcete použít, nebo stiskněte odpovídající klávesovou zkratku. Číselné klíče se přiřazují jako klávesové zkratky pro prvních 10 značek. Můžete změnit pořadí značek pomocí ikon šipky nahoru a dolů v podokně editor značek.
     > [!Tip]
     > Při označování formulářů mějte na paměti následující tipy.
@@ -246,7 +246,7 @@ V současné době jsou podporovány následující typy hodnot a variace:
 > 
 > Je nutné zadat formát ( `dmy` , `mdy` , `ymd` ) pro práci formátování data.
 >
-> Následující znaky lze použít jako oddělovače data: `, - / . \` . Prázdný znak nelze použít jako oddělovač. Například:
+> Následující znaky lze použít jako oddělovače data: `, - / . \` . Prázdný znak nelze použít jako oddělovač. Příklad:
 > * 01, 01, 2020
 > * 01-01-2020
 > * 01/01/2020
@@ -290,7 +290,7 @@ Tato funkce je aktuálně dostupná v v 2.1. Tisk.
 
 S využitím funkce Model Compose můžete vytvořit až 100 modelů s jedním ID modelu. Když zavoláte analýzu s tímto složeným ID modelu, Rozpoznávání formulářů nejprve provede klasifikaci odeslaného formuláře, najde shodu s nejlépe odpovídajícím modelem a pak vrátí výsledky pro tento model. To je užitečné v případě, že příchozí formuláře můžou patřit k jedné z několika šablon.
 
-Chcete-li vytvořit modely v nástroji pro označování ukázkových popisků, klikněte na ikonu vytvořit model (šipka vlevo) na levé straně. Na levé straně vyberte modely, které chcete vytvořit dohromady. Modely s ikonou šipky jsou již vytvořeny jako modely. Klikněte na tlačítko "vytvořit". V překryvném okně pojmenujte nový složený model a klikněte na "vytvořit". Po dokončení operace by se nový sestavený model měl zobrazit v seznamu. 
+Chcete-li vytvořit modely v nástroji pro označování ukázkových popisků, klikněte na ikonu vytvořit model (šipka vlevo) na levé straně. Na levé straně vyberte modely, které chcete vytvořit dohromady. Modely s ikonou šipky jsou již vytvořeny jako modely. Klikněte na tlačítko "vytvořit". V automaticky otevíraném okně pojmenujte nový složený model a klikněte na "vytvořit". Po dokončení operace by se nový sestavený model měl zobrazit v seznamu. 
 
 :::image type="content" source="../media/label-tool/model-compose.png" alt-text="Zobrazení uživatelského rozhraní pro vytváření modelů.":::
 

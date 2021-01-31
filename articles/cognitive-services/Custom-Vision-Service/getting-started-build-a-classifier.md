@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 09/29/2020
+ms.date: 01/29/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: rozpoznávání obrázků, aplikace pro rozpoznávání obrázků, vlastní vize
-ms.openlocfilehash: d644c323cb60e5ef9a89670cd9b828e3e9676299
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: d25b226f5dfff34aa572b40d1e4de142cf8e0b7b
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131691"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221240"
 ---
 # <a name="quickstart-build-a-classifier-with-the-custom-vision-website"></a>Rychlý Start: vytvoření klasifikátoru pomocí Custom Vision Web
 
@@ -71,7 +71,7 @@ Ve webovém prohlížeči přejděte na [webovou stránku Custom Vision](https:/
 
 V této části nahrajete a ručně označíte obrázky, které vám pomůžou rozučit třídění. 
 
-1. Pokud chcete přidat obrázky, klikněte na tlačítko __Přidat image__ a pak vyberte __Procházet místní soubory__. Vyberte __otevřít__ a přejděte k označení. Výběr značek bude použit pro celou skupinu imagí, které jste vybrali k nahrání, takže je snazší nahrávat obrázky do samostatných skupin podle jejich požadovaných značek. Můžete také změnit značky pro jednotlivé obrázky po jejich nahrání.
+1. Pokud chcete přidat obrázky, vyberte __Přidat image__ a pak vyberte __Procházet místní soubory__. Vyberte __otevřít__ a přejděte k označení. Výběr značek bude použit pro celou skupinu imagí, které jste vybrali k nahrání, takže je snazší nahrávat obrázky do samostatných skupin podle jejich použitých značek. Můžete také změnit značky pro jednotlivé obrázky po jejich nahrání.
 
     ![Ovládací prvek přidat obrázky se zobrazí v levém horním rohu a jako tlačítko ve spodní části středu.](./media/getting-started-build-a-classifier/add-images01.png)
 

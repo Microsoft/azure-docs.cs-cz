@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 10/23/2020
+ms.date: 01/29/2021
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6d105528404c99f7273687fcdea6972b4212fcf1
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 211f58e26ec89c393bf9f91cc3a05044c6b1e802
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913683"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221274"
 ---
 # <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>Kurz: středně náročné image produktů elektronického obchodování s využitím Azure Content Moderator
 
-V tomto kurzu se naučíte, jak používat Azure Cognitive Services, včetně Content Moderator, ke klasifikaci a mírnému používání imagí produktu pro scénář elektronického obchodování. Pomocí Počítačové zpracování obrazu a Custom Vision použijete značky (štítky) na obrázky a pak vytvoříte tým, který kombinuje Content Moderator technologie založené na strojovém učení s týmy pro personálního přezkoumání, aby poskytovala inteligentní systém moderování.
+V tomto kurzu se naučíte, jak používat Azure Cognitive Services, včetně Content Moderator, ke klasifikaci a mírnému používání imagí produktu pro scénář elektronického obchodování. Použijete Počítačové zpracování obrazu a Custom Vision k aplikování značek (popisků) na obrázky a potom vytvoříte tým, který kombinuje Content Moderator technologie založené na strojovém učení s týmy pro personálního přezkoumání, aby poskytovala inteligentní systém moderování.
 
 V tomto kurzu získáte informace o následujících postupech:
 
@@ -33,9 +33,9 @@ V tomto kurzu získáte informace o následujících postupech:
 
 Kompletní vzorový kód je k dispozici v [ukázkách úložiště moderování katalogu elektronického obchodování](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration) na GitHubu.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/cognitive-services/), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Klíč předplatného Content Moderatoru. Podle pokynů v části [Vytvoření účtu Cognitive Services](../cognitive-services-apis-create-account.md) se přihlaste k odběru služby Content moderator a Získejte svůj klíč.
 - Počítačové zpracování obrazu klíč předplatného (stejné pokyny jako výše).
@@ -48,17 +48,17 @@ Pokyny, jak se zaregistrovat do [Nástroje pro kontrolu Content moderator](https
 
 ## <a name="create-custom-moderation-tags"></a>Vytváření vlastních značek moderování
 
-Dále vytvořte vlastní značky v nástroji pro revizi (viz článek [značky](./review-tool-user-guide/configure.md#tags) , pokud potřebujete s tímto procesem pomáhat). V tomto případě přidáme následující značky: **celebrit** , **USA** , **příznak** , **hračky** a **pero** . Ne všechny značky musí být zjistitelné kategorie v Počítačové zpracování obrazu (například **celebrit** ); vlastní značky můžete přidat, pokud Custom Vision třídění, abyste je mohli později zjistit.
+Dále vytvořte vlastní značky v nástroji pro revizi (viz článek [značky](./review-tool-user-guide/configure.md#tags) , pokud potřebujete s tímto procesem pomáhat). V tomto případě přidáme následující značky: **celebrit**, **USA**, **příznak**, **hračky** a **pero**. Ne všechny značky musí být zjistitelné kategorie v Počítačové zpracování obrazu (například **celebrit**); vlastní značky můžete přidat, pokud Custom Vision třídění, abyste je mohli později zjistit.
 
 ![Konfigurace vlastních značek](images/tutorial-ecommerce-tags2.PNG)
 
 ## <a name="create-visual-studio-project"></a>Vytvoření projektu v sadě Visual Studio
 
-1. V aplikaci Visual Studio otevřete dialogové okno Nový projekt. Rozbalte položku **nainstalované** a pak **Visual C#** a pak vyberte **Konzolová aplikace (.NET Framework)** .
-1. Pojmenujte aplikaci **EcommerceModeration** a pak klikněte na **OK** .
+1. V aplikaci Visual Studio otevřete dialogové okno Nový projekt. Rozbalte položku **nainstalované** a pak **Visual C#** a pak vyberte **Konzolová aplikace (.NET Framework)**.
+1. Pojmenujte aplikaci **EcommerceModeration** a pak vyberte **OK**.
 1. Pokud přidáváte tento projekt do existujícího řešení, vyberte tento projekt jako jeden spouštěný projekt.
 
-V tomto kurzu se zvýrazní kód, který je centrální pro projekt, ale nepokrývá každý řádek kódu. Zkopírujte celý obsah _program.cs_ z ukázkového projektu ( [Samples elektronického obchodování pro moderování katalogu](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration)) do souboru _program.cs_ vašeho nového projektu. Potom si Projděte následující části, kde se dozvíte, jak projekt funguje a jak ho použít sami.
+V tomto kurzu se zvýrazní kód, který je centrální pro projekt, ale nepokrývá každý řádek kódu. Zkopírujte celý obsah _program.cs_ z ukázkového projektu ([Samples elektronického obchodování pro moderování katalogu](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration)) do souboru _program.cs_ vašeho nového projektu. Potom si Projděte následující části, kde se dozvíte, jak projekt funguje a jak ho použít sami.
 
 ## <a name="define-api-keys-and-endpoints"></a>Definování klíčů a koncových bodů rozhraní API
 
@@ -78,13 +78,13 @@ Podívejte se na následující kód v metodě **Main** , který projde seznamem
 
 ## <a name="evaluateadultracy-method"></a>Metoda EvaluateAdultRacy
 
-Podívejte se na metodu **EvaluateAdultRacy** ve třídě **program** . Tato metoda přebírá adresu URL obrázku a pole párů klíč-hodnota jako parametry. Volá rozhraní API pro Content Moderator Image (pomocí REST) k získání výsledků pro dospělé a Pikantníi obrázku. Pokud je skóre pro jednu z hodnot větší než 0,4 (rozsah je mezi 0 a 1), nastaví odpovídající hodnotu v poli **ReviewTags** na **hodnotu true** .
+Podívejte se na metodu **EvaluateAdultRacy** ve třídě **program** . Tato metoda přebírá adresu URL obrázku a pole párů klíč-hodnota jako parametry. Volá rozhraní API pro Content Moderator Image (pomocí REST) k získání výsledků pro dospělé a Pikantníi obrázku. Pokud je skóre pro jednu z hodnot větší než 0,4 (rozsah je mezi 0 a 1), nastaví odpovídající hodnotu v poli **ReviewTags** na **hodnotu true**.
 
 [!code-csharp[define EvaluateAdultRacy method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=73-113)]
 
 ## <a name="evaluatecomputervisiontags-method"></a>Metoda EvaluateComputerVisionTags
 
-Další metoda přebírá adresu URL obrázku a informace o Počítačové zpracování obrazu předplatném a analyzuje obrázek pro přítomnost celebrit. Pokud se najde aspoň jeden celebrit, nastaví se odpovídající hodnota v poli **ReviewTags** na **true** .
+Další metoda přebírá adresu URL obrázku a informace o Počítačové zpracování obrazu předplatném a analyzuje obrázek pro přítomnost celebrit. Pokud se najde aspoň jeden celebrit, nastaví se odpovídající hodnota v poli **ReviewTags** na **true**.
 
 [!code-csharp[define EvaluateCustomVisionTags method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=115-146)]
 
@@ -94,13 +94,13 @@ Dále si prohlédněte metodu **EvaluateCustomVisionTags** , která klasifikuje 
 
 ![Custom Vision webové stránky s školicími snímky pro pera, hračky a příznaky](images/tutorial-ecommerce-custom-vision.PNG)
 
-Jakmile provedete klasifikátor, Získejte adresu URL koncového bodu a předpovědi předpovědi (viz [získat adresu URL a klíč předpovědi](../custom-vision-service/use-prediction-api.md#get-the-url-and-prediction-key) , pokud potřebujete pomoc s jejich načtením) a přiřadit tyto hodnoty k `CustomVisionKey` polím a v `CustomVisionUri` uvedeném pořadí. Metoda používá tyto hodnoty k dotazování klasifikátoru. Pokud klasifikátor najde jednu nebo více vlastních značek v obrázku, tato metoda nastaví odpovídající hodnoty v poli **ReviewTags** na **hodnotu true** .
+Jakmile provedete klasifikátor, Získejte adresu URL koncového bodu a předpovědi předpovědi (viz [získat adresu URL a klíč předpovědi](../custom-vision-service/use-prediction-api.md#get-the-url-and-prediction-key) , pokud potřebujete pomoc s jejich načtením) a přiřadit tyto hodnoty k `CustomVisionKey` polím a v `CustomVisionUri` uvedeném pořadí. Metoda používá tyto hodnoty k dotazování klasifikátoru. Pokud klasifikátor najde jednu nebo více vlastních značek v obrázku, tato metoda nastaví odpovídající hodnoty v poli **ReviewTags** na **hodnotu true**.
 
 [!code-csharp[define EvaluateCustomVisionTags method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=148-171)]
 
 ## <a name="create-reviews-for-review-tool"></a>Vytvořit recenze pro nástroj pro kontrolu
 
-V předchozích částech jste prozkoumali, jak aplikace kontroluje příchozí obrázky pro dospělé a pikantní obsah (Content Moderator), celebrit (Počítačové zpracování obrazu) a různé další objekty (Custom Vision). Dále si přečtěte část metoda **CreateReview** , která nahraje obrázky se všemi použitými značkami (předaných jako _metadata_ ) do nástroje pro kontrolu Content moderator.
+V předchozích částech jste prozkoumali, jak aplikace kontroluje příchozí obrázky pro dospělé a pikantní obsah (Content Moderator), celebrit (Počítačové zpracování obrazu) a různé další objekty (Custom Vision). Dále si přečtěte část metoda **CreateReview** , která nahraje obrázky se všemi použitými značkami (předaných jako _metadata_) do nástroje pro kontrolu Content moderator.
 
 [!code-csharp[define CreateReview method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=173-196)]
 

@@ -3,14 +3,14 @@ title: Spuštění Azure Automation runbooků na Hybrid Runbook Worker
 description: Tento článek popisuje, jak na počítačích v místním datovém centru nebo v jiném poskytovateli cloudu spouštět Runbooky pomocí Hybrid Runbook Worker.
 services: automation
 ms.subservice: process-automation
-ms.date: 10/06/2020
+ms.date: 01/29/2021
 ms.topic: conceptual
-ms.openlocfilehash: 4a080505f780e724bfd2ab997f5c823e467c4bec
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 8ea668ab2266a1deae108542687c89f3a221568e
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896965"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99220969"
 ---
 # <a name="run-runbooks-on-a-hybrid-runbook-worker"></a>Spouštění runbooků ve funkci Hybrid Runbook Worker
 
@@ -94,6 +94,10 @@ K určení účtu Spustit jako pro skupinu Hybrid Runbook Worker použijte násl
 ## <a name="install-run-as-account-certificate"></a><a name="runas-script"></a>Nainstalovat certifikát účtu Spustit jako
 
 Jako součást procesu automatizovaného sestavování pro nasazení prostředků v Azure můžete vyžadovat přístup k místním systémům pro podporu úlohy nebo sady kroků v sekvenci nasazení. Chcete-li zajistit ověřování v Azure pomocí účtu Spustit jako, je nutné nainstalovat certifikát účtu Spustit jako.
+
+>[!NOTE]
+>Tento Runbook PowerShellu v tuto chvíli neběží na počítačích se systémem LInux. Spouští se jenom na počítačích s Windows.
+>
 
 Následující PowerShellový Runbook s názvem **Export-RunAsCertificateToHybridWorker** exportuje certifikát spustit jako z účtu Azure Automation. Sada Runbook stáhne a importuje certifikát do úložiště certifikátů místního počítače na Hybrid Runbook Worker, která je připojena ke stejnému účtu. Jakmile tento krok dokončí, sada Runbook ověří, že se pracovní proces může úspěšně ověřit v Azure pomocí účtu Spustit jako.
 
