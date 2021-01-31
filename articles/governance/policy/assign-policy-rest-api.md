@@ -1,14 +1,14 @@
 ---
 title: 'Rychlý Start: nové přiřazení zásad s REST API'
 description: V tomto rychlém startu použijete REST API k vytvoření přiřazení Azure Policy k identifikaci prostředků, které nedodržují předpisy.
-ms.date: 10/14/2020
+ms.date: 01/29/2021
 ms.topic: quickstart
-ms.openlocfilehash: ab05079c5bb319f0808a743a1d668649df51b1b3
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 438d8004cd50e6e2ef7586c51adc63257f37978b
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074001"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219973"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-rest-api"></a>Rychlý Start: vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy, pomocí REST API
 
@@ -47,6 +47,11 @@ Spuštěním následujícího příkazu vytvořte přiřazení zásady:
          "displayName": "Audit VMs without managed disks Assignment",
          "description": "Shows all virtual machines not using managed disks",
          "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/06a78e20-9358-41c9-923c-fb736d382a4d",
+         "nonComplianceMessages": [
+             {
+                 "message": "Virtual machines should use a managed disk"
+             }
+         ]
        }
      }
      ```
@@ -56,7 +61,7 @@ Předchozí koncový bod a tělo požadavku používají následující informac
 REST API IDENTIFIKÁTOR URI:
 - **Scope** – Obor určuje, pro které prostředky nebo skupiny prostředků se toto přiřazení zásady bude vynucovat. Může být v rozsahu od skupiny pro správu k individuálnímu prostředku. Nezapomeňte nahradit `{scope}` jedním z následujících způsobů:
   - Skupina pro správu: `/providers/Microsoft.Management/managementGroups/{managementGroup}`
-  - Formě `/subscriptions/{subscriptionId}`
+  - Předplatné: `/subscriptions/{subscriptionId}`
   - Skupina prostředků: `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}`
   - Partner `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}`
 - **Name** – skutečný název přiřazení. V tomto příkladu je použitý název _audit-vm-manageddisks_.
@@ -65,6 +70,7 @@ Text žádosti:
 - **DisplayName** – zobrazovaný název přiřazení zásady. V takovém případě použijete _přiřazení audit virtuálních počítačů bez spravovaných disků_.
 - **Popis** – podrobnější vysvětlení toho, co zásada dělá nebo proč je přiřazena tomuto oboru.
 - **policyDefinitionId** – ID definice zásady, na základě kterého používáte k vytvoření přiřazení. V tomto případě se jedná o ID _virtuálních počítačů auditu definice zásad, které nepoužívají spravované disky_.
+- **nonComplianceMessages** – nastaví zprávu, která se zobrazí, když je prostředek zamítnutý kvůli nedodržení předpisů nebo vyhodnocení, že nedodržuje předpisy. Další informace najdete v tématu [zprávy o neshodě přiřazení](./concepts/assignment-structure.md#non-compliance-messages).
 
 ## <a name="identify-non-compliant-resources"></a>Zjištění nevyhovujících prostředků
 

@@ -1,14 +1,14 @@
 ---
 title: Podrobnosti struktury přiřazení zásad
 description: Popisuje definici přiřazení zásad, kterou používá Azure Policy k přidružení definic a parametrů zásad k prostředkům pro vyhodnocení.
-ms.date: 09/22/2020
+ms.date: 01/29/2021
 ms.topic: conceptual
-ms.openlocfilehash: e930e9ddcc04846a35c8db7784a349007c71580b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12acbe368c9ccd6fa5654d3394e0fecb286984bf
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90904071"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219562"
 ---
 # <a name="azure-policy-assignment-structure"></a>Struktura přiřazení Azure Policy
 
@@ -17,11 +17,12 @@ Přiřazení zásad používají Azure Policy k definování prostředků, kter�
 K vytvoření přiřazení zásady použijte JSON. Přiřazení zásady obsahuje prvky pro:
 
 - zobrazované jméno
-- Popis
+- description
 - zprostředkovatele identity
 - režim vynucení
 - vyloučené obory
 - definice zásad
+- zprávy o neshodě
 - parameters
 
 Například následující JSON zobrazuje přiřazení zásady v režimu _DoNotEnforce_ s dynamickými parametry:
@@ -37,6 +38,11 @@ Například následující JSON zobrazuje přiřazení zásady v režimu _DoNotE
         "enforcementMode": "DoNotEnforce",
         "notScopes": [],
         "policyDefinitionId": "/subscriptions/{mySubscriptionID}/providers/Microsoft.Authorization/policyDefinitions/ResourceNaming",
+        "nonComplianceMessages": [
+            {
+                "message": "Resource names must start with 'DeptA' and end with '-LC'."
+            }
+        ],
         "parameters": {
             "prefix": {
                 "value": "DeptA"
@@ -61,7 +67,7 @@ Vlastnost **enforcementMode** poskytuje zákazníkům možnost Testovat výslede
 
 Tato vlastnost má následující hodnoty:
 
-|Mode |Hodnota JSON |Typ |Opravit ručně |Položka protokolu aktivit |Description |
+|Režim |Hodnota JSON |Typ |Opravit ručně |Položka protokolu aktivit |Description |
 |-|-|-|-|-|-|
 |Povoleno |Výchozí |řetězec |Yes |Yes |Účinek zásad se vynutil při vytváření nebo aktualizaci prostředku. |
 |Zakázáno |DoNotEnforce |řetězec |Yes |No | Při vytváření nebo aktualizaci prostředku není uplatněna zásada. |
@@ -79,6 +85,32 @@ Pokud není v definici zásady nebo iniciativy zadaný **enforcementMode** , pou
 
 Toto pole musí být úplný název cesty buď definice zásady, nebo definice iniciativy.
 `policyDefinitionId` je řetězec, nikoli pole. Doporučuje se, aby se místo toho k použití [iniciativy](./initiative-definition-structure.md) používala i v případě, že je často přiřazováno více zásad.
+
+## <a name="non-compliance-messages"></a>Zprávy o neshodě
+
+Chcete-li nastavit vlastní zprávu s popisem příčin, proč prostředek není kompatibilní s definicí zásady nebo iniciativou, nastavte `nonComplianceMessages` v definici přiřazení. Tento uzel je pole `message` záznamů. Tato vlastní zpráva je kromě výchozí chybové zprávy při nedodržení předpisů a volitelná.
+
+```json
+"nonComplianceMessages": [
+    {
+        "message": "Default message"
+    }
+]
+```
+
+Pokud je přiřazení v iniciativě, můžete pro každou definici zásad v iniciativě nakonfigurovat různé zprávy. Zprávy používají `policyDefinitionReferenceId` hodnotu nakonfigurovanou v definici iniciativy. Podrobnosti najdete v tématu [vlastnosti definic](./initiative-definition-structure.md#policy-definition-properties)vlastností.
+
+```json
+"nonComplianceMessages": [
+    {
+        "message": "Default message"
+    },
+    {
+        "message": "Message for just this policy definition by reference ID",
+        "policyDefinitionReferenceId": "10420126870854049575"
+    }
+]
+```
 
 ## <a name="parameters"></a>Parametry
 

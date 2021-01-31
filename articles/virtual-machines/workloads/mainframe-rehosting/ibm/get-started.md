@@ -13,18 +13,18 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: efc4f6293623278314df3ac55b2fecae2e28f7d8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: a2b5350e1aebeff3cc9dc3996f7e0a92c424ecf3
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968345"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219990"
 ---
 # <a name="ibm-workloads-on-azure"></a>Úlohy IBM v Azure
 
 Spousta úloh na sálových počítačích IBM na základě z/OS se dá replikovat v Azure bez ztráty funkčnosti, aniž by uživatelé dokonce všímáte změny v jejich podkladových systémech. Opětovné hostování aplikací v Azure vám poskytne sálové funkce, které potřebujete, a také flexibilitu, dostupnost a potenciální úsporu nákladů cloudu.
 
-Azure podporuje integraci se stávajícími sálovými prostředími IBM, což vám umožní migrovat applicatesy, které mají smysl, spouštět hybridní řešení v případě potřeby a provádět migraci v průběhu času. I když můžete zcela přepsat existující programy založené na sálovém platformě Azure, je jejich hostování mnohem jednodušší. Přepisování přináší do projektů migrace náklady, složitost a čas. Pomocí opětovného hostování můžete:
+Azure podporuje integraci se stávajícími sálovými prostředími IBM a umožňuje migrovat aplikace, které jsou vhodné, spouštět hybridní řešení v případě potřeby a provádět migraci v průběhu času. I když můžete zcela přepsat existující programy založené na sálovém platformě Azure, je jejich hostování mnohem jednodušší. Přepisování přináší do projektů migrace náklady, složitost a čas. Pomocí opětovného hostování můžete:
 
 - Přesuňte aplikace do emulátoru založeného na cloudu.
 
@@ -41,4 +41,4 @@ K dispozici je rozsáhlý partnerský ekosystém, který vám umožní migrovat 
 - [Migrace sálového počítače: mýty a fakta](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
 - [Instalace IBM zD&T dev/test Environment v Azure](./install-ibm-z-environment.md)
 - [Nastavení vývojářů aplikací řízených distribucí (ADCD) v IBM zD&T V1](./demo.md)
-- [IBM DB2 pureScale v Azure](../../../linux/ibm-db2-purescale-azure.md)
+- [IBM DB2 pureScale v Azure](ibm-db2-purescale-azure.md)

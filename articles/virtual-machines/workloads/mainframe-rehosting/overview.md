@@ -10,12 +10,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: d754f27a1510d9db0837eabb96b3a7cf75f76fc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f62cb6d5277ae202e8ea864aa99a3e19c3beef22
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87835523"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99220747"
 ---
 # <a name="mainframe-rehosting-on-azure-virtual-machines"></a>Opětovné hostování sálového počítače na virtuálních počítačích Azure
 
@@ -70,9 +70,9 @@ Jak začít:
 
 Prostředí IBM DB2 pureScale poskytuje databázový cluster pro Azure. Není totožný s původním prostředím, ale nabízí podobnou dostupnost a škálování jako IBM DB2 pro z/OS běžící v paralelní instalaci Sysplex.
 
-Informace o tom, jak začít, najdete v článku [IBM DB2 pureScale v Azure](../../linux/ibm-db2-purescale-azure.md).
+Informace o tom, jak začít, najdete v článku [IBM DB2 pureScale v Azure](.//ibm/ibm-db2-purescale-azure.md).
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Požadavky
 
 Když migrujete sálové úlohy do infrastruktury Azure jako služby (IaaS), můžete si vybrat z několika typů škálovatelných výpočetních prostředků na vyžádání, včetně virtuálních počítačů Azure. Azure nabízí řadu virtuálních počítačů se systémy [Linux](../../linux/overview.md) a [Windows](../../windows/overview.md) .
 

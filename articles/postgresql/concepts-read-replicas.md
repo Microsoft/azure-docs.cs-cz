@@ -5,13 +5,13 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 11/05/2020
-ms.openlocfilehash: dc19b95e891235ac35c703adef50a23a9f70fbdb
-ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
+ms.date: 01/29/2021
+ms.openlocfilehash: 62ef47e7d8f98241009c1c1f3d8c111113be432c
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97706792"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99220764"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Čtení replik v Azure Database for PostgreSQL – jeden server
 
@@ -56,8 +56,6 @@ Kromě oblastí univerzální repliky můžete vytvořit repliku pro čtení ve 
 Pokud používáte repliky mezi jednotlivými oblastmi pro plánování zotavení po havárii, doporučujeme vytvořit repliku v spárované oblasti namísto jedné z ostatních oblastí. Spárované oblasti zabraňují souběžným aktualizacím a přiřazují fyzickou izolaci a zasídlí dat.  
 
 Je potřeba vzít v úvahu omezení: 
-
-* Oblast dostupnosti: Azure Database for PostgreSQL je k dispozici ve Francii – střed, Spojené arabské emiráty Severní a Německo – střed. Nicméně jejich spárované oblasti nejsou k dispozici.
     
 * Jednosměrné páry: některé oblasti Azure jsou spárovány pouze v jednom směru. Mezi tyto oblasti patří Západní Indie, Brazílie – jih. 
    To znamená, že primární server v Západní Indie může vytvořit repliku v Jižní Indie. Primární server v Jižní Indie ale nemůže vytvořit repliku v Západní Indie. Důvodem je to, že sekundární oblast Západní Indie je Jižní Indie, ale sekundární oblast Jižní Indie není Západní Indie.

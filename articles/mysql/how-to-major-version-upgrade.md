@@ -1,19 +1,23 @@
 ---
 title: Upgrade hlavní verze v Azure Database for MySQL – jeden server
 description: Tento článek popisuje, jak můžete upgradovat hlavní verzi pro Azure Database for MySQL pro jeden server.
-author: ambhatna
-ms.author: ambhatna
+author: Bashar-MSFT
+ms.author: bahusse
 ms.service: mysql
 ms.topic: how-to
-ms.date: 1/13/2021
-ms.openlocfilehash: b62f4ebc61ac27478788d8b2bae5e4145f87ac8b
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.date: 1/28/2021
+ms.openlocfilehash: 62faaed3672f721b26587d1bca3ddb0947f733e7
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98630196"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99220832"
 ---
 # <a name="major-version-upgrade-in-azure-database-for-mysql-single-server"></a>Upgrade hlavní verze v Azure Database for MySQL jednom serveru
+
+> [!NOTE]
+> Tento článek obsahuje odkazy na _podřízený_ termín, termín, který už Microsoft nepoužívá. Po odebrání termínu ze softwaru ho odebereme z tohoto článku.
+>
 
 > [!IMPORTANT]
 > Upgrade hlavní verze pro jeden server Azure Database for MySQL je ve verzi Public Preview.
@@ -23,9 +27,8 @@ Tento článek popisuje, jak můžete na Azure Database for MySQL jednom serveru
 Tato funkce umožní zákazníkům provést místní upgrady svých serverů MySQL 5,6 na MySQL 5,7 pomocí tlačítka bez přesunu dat nebo nutnosti změny připojovacího řetězce aplikace.
 
 > [!Note]
-> * Upgrade hlavní verze je k dispozici jenom pro upgrade hlavní verze z MySQL 5,6 na MySQL 5,7.<br>
-> * Upgrade hlavní verze se ještě na serveru repliky nepodporuje.
-> * Server nebude během operace upgradu dostupný. Proto se doporučuje provádět upgrady během plánovaného časového období údržby.
+> * Upgrade hlavní verze je k dispozici jenom pro upgrade hlavní verze z MySQL 5,6 na MySQL 5,7.
+> * Server nebude během operace upgradu dostupný. Proto se doporučuje provádět upgrady během plánovaného časového období údržby. Při [provádění minimálního výpadku hlavní verze z mysql 5,6 na mysql 5,7 pomocí repliky pro čtení](#perform-minimal-downtime-major-version-upgrade-from-mysql-56-to-mysql-57-using-read-replicas) můžete uvažovat.
 
 ## <a name="perform-major-version-upgrade-from-mysql-56-to-mysql-57-using-azure-portal"></a>Proveďte upgrade hlavní verze z MySQL 5,6 na MySQL 5,7 pomocí Azure Portal
 
@@ -57,12 +60,58 @@ Postupujte podle těchto kroků, abyste provedli upgrade hlavní verze Azure Dat
    Tento upgrade vyžaduje verzi Azure CLI 2.16.0 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná. Spuštěním příkazu az version zjistěte verzi a závislé knihovny, které jsou nainstalované. Pokud chcete upgradovat na nejnovější verzi, spusťte az upgrade.
 
 2. Po přihlášení spusťte příkaz [AZ MySQL server upgrade](https://docs.microsoft.com/cli/azure/mysql/server?view=azure-cli-latest#az_mysql_server_upgrade&preserve-view=true) :
-    
+
    ```azurecli
    az mysql server upgrade --name testsvr --resource-group testgroup --subscription MySubscription --target-server-version 5.7"
    ```
    
    Na příkazovém řádku se zobrazuje zpráva "-Running". Po zobrazení této zprávy už se upgrade verze dokončí.
+
+## <a name="perform-major-version-upgrade-from-mysql-56-to-mysql-57-on-read-replica-using-azure-portal"></a>Proveďte upgrade hlavní verze z MySQL 5,6 na MySQL 5,7 v replice pro čtení pomocí Azure Portal
+
+1. V [Azure Portal](https://portal.azure.com/)vyberte existující server repliky Azure Database for MySQL 5,6 pro čtení.
+
+2. Na stránce **Přehled** klikněte na panelu nástrojů na tlačítko **upgradovat** .
+
+3. V části **upgrade** vyberte **OK** , pokud chcete upgradovat Azure Database for MySQL 5,6 čtení serveru repliky na Server 5,7.
+
+   :::image type="content" source="./media/how-to-major-version-upgrade-portal/upgrade.png" alt-text="Azure Database for MySQL – přehled – upgrade":::
+
+4. Oznámení potvrdí, že upgrade proběhl úspěšně.
+
+5. Na stránce **Přehled** ověřte, že verze serveru repliky pro čtení Azure Database for MySQL je 5,7.
+
+6. Teď přejdete na primární server a [proveďte upgrade hlavní verze](#perform-major-version-upgrade-from-mysql-56-to-mysql-57-using-azure-portal) .
+
+## <a name="perform-minimal-downtime-major-version-upgrade-from-mysql-56-to-mysql-57-using-read-replicas"></a>Provedení minimálního výpadku hlavní verze z MySQL 5,6 na MySQL 5,7 pomocí replik pro čtení
+
+Upgrade hlavní verze s minimálními výpadky můžete provést z databáze MySQL 5,6 na MySQL 5,7 pomocí replik pro čtení. Je třeba nejprve upgradovat repliku čtení serveru na 5,7 a později převzít služby při selhání, aby odkazovaly na repliku pro čtení a načetli si ji nový primární.
+
+1. V [Azure Portal](https://portal.azure.com/)vyberte stávající Azure Database for MySQL 5,6.
+
+2. Vytvořte z primárního serveru [repliku pro čtení](https://docs.microsoft.com/azure/mysql/concepts-read-replicas#create-a-replica) .
+
+3. [Upgradujte repliku pro čtení](#perform-major-version-upgrade-from-mysql-56-to-mysql-57-on-read-replica-using-azure-portal) na verzi 5,7.
+
+4. Jakmile ověříte, že na serveru repliky běží verze 5,7, zastavte aplikaci, aby se nepřipojovala k primárnímu serveru.
+ 
+5. Zkontrolujte stav replikace a ujistěte se, že je replika zachytila s primárním, takže všechna data jsou synchronizovaná a zajistěte, aby v primárním stavu nebyly žádné nové operace.
+
+   Voláním [`show slave status`](https://dev.mysql.com/doc/refman/5.7/en/show-slave-status.html) příkazu na serveru repliky zobrazte stav replikace.
+
+   ```sql
+   SHOW SLAVE STATUS\G
+   ```
+
+   Pokud je stav `Slave_IO_Running` a v `Slave_SQL_Running` hodnotě "Ano" a hodnota `Seconds_Behind_Master` je "0", replikace funguje dobře. `Seconds_Behind_Master` Určuje, jak pozdě je replika. Pokud hodnota není "0", znamená to, že replika zpracovává aktualizace. Jakmile ověříte, `Seconds_Behind_Master` že je "0", je bezpečné zastavit replikaci.
+
+6. Povýšit repliku pro čtení na primární [zastavením replikace](https://docs.microsoft.com/azure/mysql/howto-read-replicas-portal#stop-replication-to-a-replica-server).
+
+7. Nasměrujte svoji aplikaci na novou primární (předchozí repliku), na které běží Server 5,7. Každý server má jedinečný připojovací řetězec. Aktualizujte svou aplikaci tak, aby odkazovala na (bývalé) repliku místo zdroje.
+
+> [!Note]
+> V tomto scénáři dojde k výpadkům během kroků 4, 5 a 6.
+
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 

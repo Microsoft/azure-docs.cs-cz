@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/27/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 3f403308c77e5ee0dfc066ec3dc53100e520d274
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 45b52f98f9f3670f2a68c22cfe9e27a86b2a74cc
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090667"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99220696"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Co je nového v rozhraní API pro analýzu textu?
 
@@ -29,6 +29,11 @@ Rozhraní API pro analýzu textu se aktualizuje průběžně. V tomto článku n
   * Vylepšená kvalita AI pro obecné kategorie entit pro všechny podporované jazyky v3. 
 
 * `2021-01-05`Verze modelu pro [detekci jazyka](how-tos/text-analytics-how-to-language-detection.md), která poskytuje další [jazykovou podporu](language-support.md?tabs=language-detection).
+
+Tyto verze modelů nejsou aktuálně k dispozici v Východní USA oblasti. 
+
+> [!div class="nextstepaction"]
+> [Další informace o novém modelu NER](https://azure.microsoft.com/updates/text-analytics-ner-improved-ai-quality)
 
 ## <a name="december-2020"></a>Prosinec 2020
 

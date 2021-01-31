@@ -8,12 +8,12 @@ ms.date: 10/16/2020
 ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: 56505c95e65911cafbaaa403cd09332695439d97
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: c35b6d27a5e6d7ffd2a9f76ea201af4a138a77df
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825666"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219107"
 ---
 # <a name="quickstart-create-an-azure-app-configuration-store-by-using-an-arm-template"></a>Rychlý Start: vytvoření úložiště konfigurace aplikace Azure pomocí šablony ARM
 
@@ -108,7 +108,7 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o vytváření dalších aplikací s konfigurací aplikace Azure najdete v následujícím článku:
+Další informace o Přidání příznaku funkce a Key Vault odkazování na úložiště konfigurace aplikace najdete pod příklady šablon ARM.
 
-> [!div class="nextstepaction"]
-> [Rychlý Start: Vytvoření aplikace ASP.NET Core s využitím konfigurace aplikace Azure](quickstart-aspnet-core-app.md)
+- [101-konfigurace aplikace-Store-FF](https://github.com/Azure/azure-quickstart-templates/tree/master/101-app-configuration-store-ff)
+- [101 – App-Configuration-Store-keyvaultref](https://github.com/Azure/azure-quickstart-templates/tree/master/101-app-configuration-store-keyvaultref)

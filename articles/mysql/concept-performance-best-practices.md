@@ -1,21 +1,21 @@
 ---
 title: Osvědčené postupy pro výkon – Azure Database for MySQL
-description: Tento článek popisuje osvědčené postupy pro monitorování a ladění výkonu Azure Database for MySQL.
-author: mksuni
-ms.author: sumuth
+description: Tento článek popisuje některá doporučení pro monitorování a ladění výkonu Azure Database for MySQL.
+author: Bashar-MSFT
+ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/23/2020
-ms.openlocfilehash: 30176e2df850e6d2794ab9c1542bcb6a89d8f89f
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.date: 1/28/2021
+ms.openlocfilehash: 46c7952247babd528b230dfa0e70b0eb47878912
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880402"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99217750"
 ---
 # <a name="best-practices-for-optimal-performance-of-your-azure-database-for-mysql---single-server"></a>Osvědčené postupy pro zajištění optimálního výkonu Azure Database for MySQL a jednoho serveru
 
-Přečtěte si o osvědčených postupech pro získání nejlepšího výkonu při práci s Azure Database for MySQLm na jednom serveru. Jakmile na platformu přidáváme nové možnosti, budeme v této části dále upřesňovat osvědčené postupy popsané v této části.
+Naučte se, jak dosáhnout nejlepšího výkonu při práci s Azure Database for MySQLem na jednom serveru. Jakmile na platformu přidáváme nové možnosti, budeme v této části pokračovat v vylepšování našich doporučení.
 
 ## <a name="physical-proximity"></a>Fyzická blízkost
 
@@ -47,8 +47,25 @@ Vytvoření nového připojení je vždycky náročná a časově náročná úl
 Osvědčeným postupem z hlediska výkonu Azure Database for MySQL je přidělit dostatek paměti RAM, abyste pracovní sadu měli skoro kompletně v paměti. 
 
 - Ověřte, jestli je procento využití paměti používané při dosažení [limitů](./concepts-pricing-tiers.md) [za použití metriky pro server MySQL](./concepts-monitoring.md). 
-- Nastavte výstrahy na těchto číslech, abyste měli jistotu, že když servery dosáhnou omezení, můžete s jejich opravou provádět akce s výzvou. V závislosti na definovaných omezeních ověřte, zda vertikální navýšení kapacity databáze – buď na vyšší výpočetní velikost, nebo na lepší cenovou úroveň, což vede k výraznému nárůstu výkonu. 
+- Nastavte výstrahy na těchto číslech, abyste měli jistotu, že když servery dosáhnou omezení, můžete s jejich opravou provádět akce s výzvou. V závislosti na definovaných omezeních Zjistěte, jestli se má škálovat SKU databáze, a to buď na vyšší výpočetní kapacitu, nebo na vyšší cenovou úroveň, což vede k výraznému nárůstu výkonu. 
 - Horizontální navýšení kapacity až po operaci škálování se už neprojeví. Informace o monitorování metrik instance databáze najdete v tématu [metriky databáze MySQL](./concepts-monitoring.md#metrics).
+ 
+## <a name="use-innodb-buffer-pool-warmup"></a>Použití InnoDB fondu vyrovnávací paměti zahřívání
+
+Po restartování serveru Azure Database for MySQL se data, která se nacházejí v úložišti, načítají při dotazování na tabulky, což vede ke zvýšení latence a zpomalení výkonu při prvním spuštění dotazů. To nemusí být přijatelné pro úlohy citlivé na latenci. 
+
+Použití fondu vyrovnávacích pamětí InnoDB zahřívání zkrátí dobu zahřívání tím, že znovu načte stránky disku, které byly ve fondu vyrovnávací paměti před restartováním, nikoli čekáním na operace DML nebo SELECT pro přístup k odpovídajícím řádkům.
+
+Po restartování serveru Azure Database for MySQL můžete zkrátit dobu zahřívání, která představuje výhodu výkonu konfigurací [parametrů serveru fondu vyrovnávací paměti InnoDB](https://dev.mysql.com/doc/refman/8.0/en/innodb-preload-buffer-pool.html). InnoDB uloží procento naposledy použitých stránek pro každý fond vyrovnávacích pamětí při vypnutí serveru a obnoví tyto stránky při spuštění serveru.
+
+Je také důležité si uvědomit, že vyšší výkon je poskytován na úkor delšího času spuštění serveru. Pokud je tento parametr povolený, očekává se, že se čas spuštění a restartování serveru narůstá v závislosti na IOPS zřízené na serveru. 
+
+Doporučujeme otestovat a monitorovat čas restartování, aby se zajistilo, že je výkon při spuštění a restartování přijatelný, protože server během této doby není dostupný. Nedoporučuje se používat tento parametr s méně než 1000 zřízenými IOPS (nebo jinými slovy, pokud je úložiště zřízené méně než 335 GB).
+
+Pokud chcete uložit stav fondu vyrovnávací paměti při vypnutí serveru, nastavte parametr serveru `innodb_buffer_pool_dump_at_shutdown` na `ON` . Podobně nastavte parametr serveru `innodb_buffer_pool_load_at_startup` na `ON` Obnovit stav fondu vyrovnávací paměti při spuštění serveru. Vlivem a vyladěním hodnoty parametru serveru můžete ovlivnit čas spuštění a restartování `innodb_buffer_pool_dump_pct` . Ve výchozím nastavení je tento parametr nastaven na hodnotu `25` .
+
+> [!Note]
+> Parametry zahřívání fondu vyrovnávací paměti InnoDB se podporují jenom v serverech úložiště pro obecné účely s úložištěm o velikosti až 16 TB. Další informace o [možnostech úložiště Azure Database for MySQL najdete tady](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage).
 
 ## <a name="next-steps"></a>Další kroky
 

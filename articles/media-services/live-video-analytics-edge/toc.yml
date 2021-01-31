@@ -128,3 +128,9 @@
       href: production-readiness.md
     - name: Zásady transparentnosti a zodpovědné umělé inteligence
       href: 'https://azure.microsoft.com/resources/transparency-note-live-video-analytics-lva/'
+- name: Zdroje a prostředky
+  items:
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/updates/?category=media'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/media-services/'

@@ -4,16 +4,16 @@ description: Naplánujte nasazení pomocí Synchronizace souborů Azure služby,
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/15/2020
+ms.date: 01/29/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 28b7419dfc889d1149765b884f1a5990a1e28f03
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 65293df5fae523bff36240273afb93c4dd8485df
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98898100"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219472"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Plánování nasazení Synchronizace souborů Azure
 
@@ -302,48 +302,16 @@ Další informace o šifrování v přenosu najdete v tématu [vyžadování zab
 [!INCLUDE [storage-files-tiers-large-file-share-availability](../../../includes/storage-files-tiers-large-file-share-availability.md)]
 
 ## <a name="azure-file-sync-region-availability"></a>Dostupnost oblasti služby Azure File Sync
-Synchronizace souborů Azure je k dispozici v následujících oblastech:
 
-| Cloud Azure | Zeměpisná oblast | Oblast Azure | Kód oblasti |
-|-------------|-------------------|--------------|-------------|
-| Veřejná | Asie | Východní Asie | `eastasia` |
-| Veřejná | Asie | Southeast Asia | `southeastasia` |
-| Veřejná | Austrálie | Austrálie – východ | `australiaeast` |
-| Veřejná | Austrálie | Austrálie – jihovýchod | `australiasoutheast` |
-| Veřejná | Brazílie | Brazílie – jih | `brazilsouth` |
-| Veřejná | Kanada | Střední Kanada | `canadacentral` |
-| Veřejná | Kanada | Kanada – východ | `canadaeast` |
-| Veřejná | Evropa | Severní Evropa | `northeurope` |
-| Veřejná | Evropa | West Europe | `westeurope` |
-| Veřejná | Francie | Francie – střed | `francecentral` |
-| Veřejná | Francie | Francie – jih * | `francesouth` |
-| Veřejná | Indie | Indie – střed | `centralindia` |
-| Veřejná | Indie | Indie – jih | `southindia` |
-| Veřejná | Japonsko | Japonsko – východ | `japaneast` |
-| Veřejná | Japonsko | Japonsko – západ | `japanwest` |
-| Veřejná | Jižní Korea | Jižní Korea – střed | `koreacentral` |
-| Veřejná | Jižní Korea | Jižní Korea – jih | `koreasouth` |
-| Veřejná | Jižní Afrika | Jižní Afrika – sever | `southafricanorth` |
-| Veřejná | Jižní Afrika | Jižní Afrika – západ * | `southafricawest` |
-| Veřejná | Spojené arabské emiráty | Spojené arabské emiráty střed * | `uaecentral` |
-| Veřejná | Spojené arabské emiráty | Spojené arabské emiráty sever | `uaenorth` |
-| Veřejná | UK | Spojené království – jih | `uksouth` |
-| Veřejná | UK | Spojené království – západ | `ukwest` |
-| Veřejná | USA | USA – střed | `centralus` |
-| Veřejná | USA | East US | `eastus` |
-| Veřejná | USA | USA – východ 2 | `eastus2` |
-| Veřejná | USA | USA – středosever | `northcentralus` |
-| Veřejná | USA | Středojižní USA | `southcentralus` |
-| Veřejná | USA | USA – středozápad | `westcentralus` |
-| Veřejná | USA | USA – západ | `westus` |
-| Veřejná | USA | Západní USA 2 | `westus2` |
-| US Gov | USA | USA (Gov) – Arizona | `usgovarizona` |
-| US Gov | USA | USA (Gov) – Texas | `usgovtexas` |
-| US Gov | USA | USA (Gov) – Virginia | `usgovvirginia` |
+Informace o regionální dostupnosti najdete v tématu [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=storage).
 
-Synchronizace souborů Azure podporuje synchronizaci jenom se sdílenou složkou Azure, která je ve stejné oblasti jako služba synchronizace úložiště.
+Následující oblasti vyžadují, abyste požádali o přístup k Azure Storage, abyste mohli Synchronizace souborů Azure použít:
 
-U oblastí označených hvězdičkami musíte kontaktovat podporu Azure a požádat o přístup k Azure Storage v těchto oblastech. Tento postup je popsaný v [tomto dokumentu](https://azure.microsoft.com/global-infrastructure/geographies/).
+- Francie – jih
+- Jižní Afrika – západ
+- Spojené arabské emiráty – střed
+
+Pokud chcete pro tyto oblasti požádat o přístup, postupujte podle kroků v [tomto dokumentu](https://azure.microsoft.com/global-infrastructure/geographies/).
 
 ## <a name="redundancy"></a>Redundance
 [!INCLUDE [storage-files-redundancy-overview](../../../includes/storage-files-redundancy-overview.md)]

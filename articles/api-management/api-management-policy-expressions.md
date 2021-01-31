@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
-ms.openlocfilehash: ab83344f779f93107b59ca28348da3a66f1efc1a
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: aec1967f0652e18c4a24ca258c14a103355b22af
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076857"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219311"
 ---
 # <a name="api-management-policy-expressions"></a>API Management výrazy zásad
 Tento článek popisuje syntaxi výrazů zásad v jazyce C# 7. Každý výraz má přístup k implicitně zadané [kontextové](api-management-policy-expressions.md#ContextVariables) proměnné a povolené [podmnožině](api-management-policy-expressions.md#CLRTypes) typů .NET Framework.
@@ -220,7 +220,7 @@ Proměnná s názvem `context` je implicitně dostupná ve všech [výrazech](ap
 |<a id="ref-context-request-headers"></a>kontext řetězce. Request. Headers. GetValueOrDefault (Header: řetězec, defaultValue: String)|záhlaví: řetězec<br /><br /> VýchozíHodnota: řetězec<br /><br /> Vrátí hodnoty záhlaví žádosti oddělené čárkou nebo `defaultValue` , pokud záhlaví není nalezeno.|
 |<a id="ref-context-response"></a>souvislost. Základě|Tělo: [IMessageBody](#ref-imessagebody)<br /><br /> [Headers](#ref-context-response-headers): IReadOnlyDictionary<String, String [] ><br /><br /> StatusCode: int<br /><br /> StatusReason: řetězec|
 |<a id="ref-context-response-headers"></a>kontext řetězce. Response. Headers. GetValueOrDefault (Header: řetězec, defaultValue: String)|záhlaví: řetězec<br /><br /> VýchozíHodnota: řetězec<br /><br /> Vrátí hodnoty záhlaví odpovědi oddělené čárkou nebo `defaultValue` Pokud záhlaví není nalezeno.|
-|<a id="ref-context-subscription"></a>souvislost. Formě|CreatedTime: DateTime<br /><br /> EndDate: DateTime?<br /><br /> ID: řetězec<br /><br /> Klíč: řetězec<br /><br /> Název: řetězec<br /><br /> PrimaryKey: řetězec<br /><br /> SecondaryKey: řetězec<br /><br /> StartDate: DateTime?|
+|<a id="ref-context-subscription"></a>souvislost. Formě|CreatedDate: DateTime<br /><br /> EndDate: DateTime?<br /><br /> ID: řetězec<br /><br /> Klíč: řetězec<br /><br /> Název: řetězec<br /><br /> PrimaryKey: řetězec<br /><br /> SecondaryKey: řetězec<br /><br /> StartDate: DateTime?|
 |<a id="ref-context-user"></a>souvislost. Uživatelský|E-mail: řetězec<br /><br /> FirstName: řetězec<br /><br /> Skupiny: IEnumerable<[IGroup](#ref-igroup)\><br /><br /> ID: řetězec<br /><br /> Identity: IEnumerable<[IUserIdentity](#ref-iuseridentity)\><br /><br /> LastName: String<br /><br /> Poznámka: řetězec<br /><br /> RegistrationDate: DateTime|
 |<a id="ref-iapi"></a>IApi|ID: řetězec<br /><br /> Název: řetězec<br /><br /> Cesta: řetězec<br /><br /> Protokoly: IEnumerable<řetězec\><br /><br /> ServiceUrl: [IUrl](#ref-iurl)<br /><br /> SubscriptionKeyParameterNames: [ISubscriptionKeyParameterNames](#ref-isubscriptionkeyparameternames)|
 |<a id="ref-igroup"></a>IGroup|ID: řetězec<br /><br /> Název: řetězec|

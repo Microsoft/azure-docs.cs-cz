@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/25/2021
+ms.date: 01/29/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 53189840968056f60d0e99ab782a124f02f6065e
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: bd37f8fa23a4ea31e4380e0cc9f7a598c6f871db
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98807614"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99220237"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Description |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Azure Backup by měla být povolená Virtual Machines](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F013e242c-8828-4970-87b3-ab247555486d) |Zajistěte ochranu Virtual Machines Azure tím, že povolíte Azure Backup. Azure Backup je bezpečné a nákladově efektivní řešení ochrany dat pro Azure. |AuditIfNotExists, zakázáno |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Backup/VirtualMachines_EnableAzureBackup_Audit.json) |
 |[Konfigurace zálohování virtuálních počítačů pomocí dané značky do nového trezoru služby Recovery Services s výchozími zásadami](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F83644c87-93dd-49fe-bf9f-6aff8fd0834e) |Vysaďte zálohu pro všechny virtuální počítače nasazením trezoru služby Recovery Services ve stejném umístění a skupině prostředků jako virtuální počítač. To je užitečné v případě, že různé týmy aplikace ve vaší organizaci mají přidělené samostatné skupiny prostředků a potřebují spravovat svoje vlastní zálohy a obnovení. Volitelně můžete zahrnout virtuální počítače obsahující určitou značku k řízení rozsahu přiřazení. Si [https://aka.ms/AzureVMAppCentricBackupIncludeTag](https://aka.ms/AzureVMAppCentricBackupIncludeTag) |deployIfNotExists |[1.0.0 – Preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Backup/VirtualMachineApplicationCentricBackup_Backup_Deploy_WithTag.json) |

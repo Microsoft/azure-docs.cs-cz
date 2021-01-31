@@ -1,15 +1,15 @@
 ---
 title: Seznam předdefinovaných iniciativ zásad
 description: Seznam předdefinovaných iniciativ zásad pro Azure Policy. Kategorie zahrnují dodržování předpisů, konfiguraci hostů a další.
-ms.date: 01/25/2021
+ms.date: 01/29/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 741c807b8ebdcf0a095a2d388b2d617fc5296598
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 7bec632388c59e2e94e7c7bc31359450107f7674
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98807137"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219770"
 ---
 # <a name="azure-policy-built-in-initiative-definitions"></a>Azure Policy předdefinované definice iniciativ
 
@@ -17,7 +17,7 @@ Tato stránka je indexem Azure Policy integrovaných definic iniciativ.
 
 Název na každém z vestavěných odkazů na zdroj definice iniciativy v [úložišti Azure Policy GitHubu](https://github.com/Azure/azure-policy). Předdefinované jsou seskupené podle vlastnosti **Category** v **metadatech**. Chcete-li přejít do konkrétní **kategorie**, použijte nabídku na pravé straně stránky. V opačném případě použijte k použití funkce hledání v prohlížeči <kbd>kombinaci kláves CTRL</kbd> - <kbd>F</kbd> .
 
-## <a name="cosmos-db"></a>Databáze Cosmos
+## <a name="cosmos-db"></a>Cosmos DB
 
 [!INCLUDE [azure-policy-reference-policysets-cosmos-db](../../../../includes/policy/reference/bycat/policysets-cosmos-db.md)]
 

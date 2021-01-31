@@ -13,12 +13,12 @@ ms.date: 08/07/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 3280952636a915cca4bade40d3e56b795050c321
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: f32c81d4d247eb6c819adf5015cf36c846f4e83b
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99053461"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99218226"
 ---
 # <a name="migrate-applications-to-the-microsoft-authentication-library-msal"></a>Migrace aplikací do knihovny Microsoft Authentication Library (MSAL)
 
@@ -73,7 +73,7 @@ __Otázka: jak MSAL pracuje s AD FS?__
 Odpověď: MSAL.NET podporuje určité scénáře ověřování proti AD FS 2019. Pokud vaše aplikace potřebuje získat tokeny přímo z dřívější verze AD FS, měli byste zůstat na ADAL. [Přečtěte si další informace](msal-net-adfs-support.md).
 
 __Otázka: Návody získat pomoc při migraci své aplikace?__  
-Odpověď: viz část [pokyny k migraci](#migration-guidance) v tomto článku. Pokud po přečtení příručky pro platformu vaší aplikace máte další otázky, můžete na Microsoft Q&odeslat značku `[azure-ad-adal-deprecation]` nebo otevřít problém v úložišti GitHub knihovny. Odkazy na úložiště každé knihovny najdete v části [jazyky a architektury](msal-overview.md#languages-and-frameworks) v článku MSAL Overview.
+Odpověď: viz část [pokyny k migraci](#migration-guidance) v tomto článku. Pokud po přečtení příručky pro platformu vaší aplikace máte další otázky, můžete na [Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-ad-adal-deprecation.html) odeslat značku `[azure-ad-adal-deprecation]` nebo otevřít problém v úložišti GitHub knihovny. Odkazy na úložiště každé knihovny najdete v části [jazyky a architektury](msal-overview.md#languages-and-frameworks) v článku MSAL Overview.
 
 ## <a name="next-steps"></a>Další kroky
 

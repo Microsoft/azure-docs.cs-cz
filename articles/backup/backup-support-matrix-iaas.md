@@ -4,12 +4,12 @@ description: Poskytuje souhrn nastavení podpory a omezení při zálohování v
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: d3329d9cac9547fbe9ec971bb8944f50971732b5
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 3d1238bffd785a47b6e0ffab70366a15dfff0ef3
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757402"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99218107"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Matice podpory pro zálohování virtuálních počítačů Azure
 
@@ -150,6 +150,7 @@ Virtuální počítače s Gen2 | Podporováno <br> Azure Backup podporuje záloh
 Zálohování virtuálních počítačů Azure s zámky | Nepodporované pro nespravované virtuální počítače. <br><br> Podporováno pro spravované virtuální počítače.
 [Spotové virtuální počítače](../virtual-machines/spot-vms.md) | Neplatné. Azure Backup obnoví virtuální počítače na místě jako běžné virtuální počítače Azure.
 [Vyhrazený hostitel Azure](https://docs.microsoft.com/azure/virtual-machines/dedicated-hosts) | Podporováno
+Konfigurace prostorů úložiště Windows na samostatných virtuálních počítačích Azure | Podporováno 
 
 ## <a name="vm-storage-support"></a>Podpora úložiště virtuálních počítačů
 
@@ -209,10 +210,10 @@ Zabezpečení dat:
 
 **Počítač** | **Při přenosu** | **V klidovém umístění**
 --- | --- | ---
-Místní počítače s Windows bez DPM/MABS | ![Ano][green] | ![Ano][green]
-Virtuální počítače Azure | ![Ano][green] | ![Ano][green]
-Místní nebo virtuální počítače Azure s DPM | ![Ano][green] | ![Ano][green]
-Místní nebo virtuální počítače Azure s MABS | ![Ano][green] | ![Ano][green]
+Místní počítače s Windows bez DPM/MABS | ![Yes][green] | ![Yes][green]
+Virtuální počítače Azure | ![Yes][green] | ![Yes][green]
+Místní nebo virtuální počítače Azure s DPM | ![Yes][green] | ![Yes][green]
+Místní nebo virtuální počítače Azure s MABS | ![Yes][green] | ![Yes][green]
 
 ## <a name="vm-compression-support"></a>Podpora komprese virtuálních počítačů
 
@@ -225,8 +226,8 @@ Zálohování podporuje komprimaci provozu zálohování, jak je shrnuto v násl
 --- | --- | ---
 Místní počítače s Windows bez DPM/MABS | Není k dispozici | ![Ano][green]
 Virtuální počítače Azure | Není k dispozici | Není k dispozici
-Místní nebo virtuální počítače Azure s DPM | ![Ano][green] | ![Ano][green]
-Místní nebo virtuální počítače Azure s MABS | ![Ano][green] | ![Ano][green]
+Místní nebo virtuální počítače Azure s DPM | ![Yes][green] | ![Yes][green]
+Místní nebo virtuální počítače Azure s MABS | ![Yes][green] | ![Ano][green]
 
 ## <a name="next-steps"></a>Další kroky
 

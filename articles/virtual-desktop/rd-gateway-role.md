@@ -3,19 +3,24 @@ title: Nasazení Brána VP role virtuálního počítače s Windows rolí – Az
 description: Postup nasazení role Brána VP na virtuálním počítači s Windows
 author: Heidilohr
 ms.topic: how-to
-ms.date: 01/26/2021
+ms.date: 01/30/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ca3c36f339d5cbca6d5b5990415fba180ae42a13
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 71bd7d38727d99c05a15c54e5141c613960d9050
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98798391"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99220815"
 ---
-# <a name="deploy-the-rd-gateway-role-in-windows-virtual-desktop"></a>Nasazení role Brána VP na virtuálním počítači s Windows
+# <a name="deploy-the-rd-gateway-role-in-windows-virtual-desktop-preview"></a>Nasazení role Brána VP na virtuálním počítači s Windows (Preview)
 
-V tomto článku se dozvíte, jak nasadit Brána vzdálené plochy servery ve vašem prostředí. Role serveru můžete nainstalovat na fyzické počítače nebo virtuální počítače v závislosti na tom, jestli vytváříte místní, cloudové nebo hybridní prostředí.
+> [!IMPORTANT]
+> Tato funkce je aktuálně ve verzi Public Preview.
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučujeme ji používat pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
+> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+V tomto článku se dozvíte, jak pomocí role Brána VP (Preview) nasadit Brána vzdálené plochy servery ve vašem prostředí. Role serveru můžete nainstalovat na fyzické počítače nebo virtuální počítače v závislosti na tom, jestli vytváříte místní, cloudové nebo hybridní prostředí.
 
 ## <a name="install-the-rd-gateway-role"></a>Instalace role Brána VP
 

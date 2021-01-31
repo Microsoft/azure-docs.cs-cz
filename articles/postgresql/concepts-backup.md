@@ -5,13 +5,13 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/25/2020
-ms.openlocfilehash: c712af41fdc191cab4fd08c9d8175a849d4f286a
-ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
+ms.date: 01/29/2021
+ms.openlocfilehash: e74c96e0c03d75f34a16d95d0bed642c1900f558
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97706766"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219719"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>Zálohování a obnovení v Azure Database for PostgreSQL – jeden server
 
@@ -82,6 +82,16 @@ Obnovení k bodu v čase je užitečné ve více scénářích. Například kdy�
 
 Možná budete muset počkat, než bude provedena další záloha protokolu transakcí, než bude možné provést obnovení k určitému bodu v čase během posledních pěti minut.
 
+Pokud chcete obnovit vyřazenou tabulku, 
+1. Obnoví zdrojový server pomocí metody v čase.
+2. Vypíše tabulku pomocí `pg_dump` obnoveného serveru.
+3. Přejmenovat zdrojovou tabulku na původním serveru.
+4. Import tabulky pomocí příkazového řádku psql na původním serveru.
+5. Můžete volitelně odstranit obnovený server.
+
+>[!Note]
+> Doporučuje se nevytvářet více obnovení pro stejný server současně. 
+
 ### <a name="geo-restore"></a>Geografické obnovení
 
 Server můžete obnovit do jiné oblasti Azure, kde je služba k dispozici, pokud jste server nakonfigurovali pro geograficky redundantní zálohy. Servery, které podporují až 4 TB úložiště, se dají obnovit do geografické spárované oblasti nebo do jakékoli oblasti, která podporuje až 16 TB úložiště. Pro servery, které podporují až 16 TB úložiště, se geografické zálohy dají obnovit v libovolné oblasti, která podporuje i 16 TB serverů. Seznam podporovaných oblastí najdete v [Azure Database for PostgreSQL cenové úrovně](concepts-pricing-tiers.md) .
@@ -97,7 +107,7 @@ Během geografického obnovení můžou konfigurace serveru, které je možné z
 
 Po obnovení z některého mechanismu obnovení byste měli provést následující úlohy, aby se uživatelé a aplikace mohli zálohovat a spustit:
 
-- Pokud má nový server nahradit původní server, přesměrujte klienty a klientské aplikace na nový server.
+- Pokud by nový server chtěl nahradit původní server, přesměrujte klienty a klientské aplikace na nový server. Také změňte uživatelské jméno na `username@new-restored-server-name` .
 - Aby se uživatelé mohli připojit, zajistěte, aby byla k dismístě vhodná pravidla brány firewall na úrovni serveru a sítě. Tato pravidla se nekopírují z původního serveru.
 - Zajistěte, aby byla zajištěna příslušná přihlášení a oprávnění na úrovni databáze.
 - Podle potřeby nakonfigurujte výstrahy.

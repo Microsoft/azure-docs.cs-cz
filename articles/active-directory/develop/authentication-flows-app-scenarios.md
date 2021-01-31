@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/03/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: c441d8e9fa5a3375b1ec4cd3e68d92e92738261d
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: c302e10a169a190d11f016620ec048cc58e3ac28
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98755787"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99220160"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>Toky ověřování a scénáře aplikací
 
@@ -42,8 +42,8 @@ V následujících částech jsou popsány kategorie aplikací.
 
 Scénáře ověřování zahrnují dvě aktivity:
 
-- **Získávání tokenů zabezpečení pro chráněné webové rozhraní API**: Doporučujeme, abyste k získání tokenů používali [klientské knihovny podporované Microsoftem](reference-v2-libraries.md#microsoft-supported-client-libraries) . Konkrétně doporučujeme rodinu Microsoft Authentication Library (MSAL).
-- **Ochrana webového rozhraní API nebo webové aplikace**: jedna výzva k ochraně těchto prostředků ověřuje token zabezpečení. Na některých platformách Microsoft nabízí [knihovny middlewaru](reference-v2-libraries.md#microsoft-supported-server-middleware-libraries).
+- **Získání tokenů zabezpečení pro chráněné webové rozhraní API**: Doporučujeme, abyste používali [Microsoft Authentication Library (MSAL)](reference-v2-libraries.md)vyvinutou a podporovanou Microsoftem.
+- **Ochrana webového rozhraní API nebo webové aplikace**: jedna výzva k ochraně těchto prostředků ověřuje token zabezpečení. Na některých platformách Microsoft nabízí [knihovny middlewaru](reference-v2-libraries.md).
 
 ### <a name="with-users-or-without-users"></a>S uživateli nebo bez uživatelů
 
@@ -65,7 +65,7 @@ Tokeny zabezpečení lze získat pomocí více typů aplikací. Tyto aplikace js
   - Aplikace klasické pracovní plochy, které volají webová rozhraní API jménem přihlášeného uživatele
   - Mobilní aplikace
   - Aplikace běžící na zařízeních, která nemají prohlížeč, podobně jako u aplikací využívajících IoT
-  
+
 - **Důvěrné klientské aplikace**: aplikace v této kategorii zahrnují:
   - Webové aplikace, které volají webové rozhraní API
   - Webová rozhraní API, která volají webové rozhraní API
@@ -95,7 +95,7 @@ Aplikace používají k přihlašování uživatelů různé toky ověřování 
 
 Mnohé moderní webové aplikace jsou sestavené jako jednostránkové aplikace na straně klienta. Tyto aplikace používají jazyk JavaScript nebo rozhraní, jako je například úhlová, Vue a reakce. Tyto aplikace běží ve webovém prohlížeči.
 
-Jednostránkové aplikace se liší od tradičních webových aplikací na straně serveru z hlediska charakteristik ověřování. Pomocí Microsoft Identity Platform se můžou jednostránkové aplikace přihlašovat uživatelům a získat tokeny pro přístup k back-endové službě nebo webovým rozhraním API. Platforma Microsoft Identity nabízí dva typy udělení pro aplikace JavaScriptu: 
+Jednostránkové aplikace se liší od tradičních webových aplikací na straně serveru z hlediska charakteristik ověřování. Pomocí Microsoft Identity Platform se můžou jednostránkové aplikace přihlašovat uživatelům a získat tokeny pro přístup k back-endové službě nebo webovým rozhraním API. Platforma Microsoft Identity nabízí dva typy udělení pro aplikace JavaScriptu:
 
 | MSAL.js (2. x) | MSAL.js (1. x) |
 |---|---|
@@ -160,7 +160,7 @@ Další informace najdete v tématu [mobilní aplikace, která volá webová roz
 
 ### <a name="protected-web-api"></a>Chráněné webové rozhraní API
 
-Pomocí platformy Microsoft Identity můžete zabezpečit webové služby, jako je webové rozhraní API RESTful vaší aplikace. Chráněné webové rozhraní API se volá prostřednictvím přístupového tokenu. Token pomáhá zabezpečit data rozhraní API a ověřovat příchozí požadavky. Volající webového rozhraní API připojí přístupový token v autorizační hlavičce požadavku HTTP.
+Pomocí koncového bodu Microsoft Identity Platform můžete zabezpečit webové služby, jako je webové rozhraní API RESTful vaší aplikace. Chráněné webové rozhraní API se volá prostřednictvím přístupového tokenu. Token pomáhá zabezpečit data rozhraní API a ověřovat příchozí požadavky. Volající webového rozhraní API připojí přístupový token v autorizační hlavičce požadavku HTTP.
 
 Pokud chcete chránit rozhraní API ASP.NET nebo ASP.NET Core webového rozhraní API, musíte ověřit přístupový token. Pro toto ověření použijete middleware ASP.NET JWT. Ověřování provádí [rozšíření IdentityModel pro knihovnu .NET](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) , nikoli MSAL.NET.
 
@@ -309,7 +309,7 @@ Ve sloupci Windows v následující tabulce se pokaždé, když je uvedeno rozhr
 | [Aplikace démona](scenario-daemon-overview.md) <br/> [![Aplikace démona](media/scenarios/daemon-app.svg)](scenario-daemon-overview.md) | ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL v Javě](media/sample-v2-code/small_logo_java.png)<br/>MSAL v Javě<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png) MSAL.NET ![MSAL v Javě](media/sample-v2-code/small_logo_java.png)<br/>MSAL v Javě<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL v Javě](media/sample-v2-code/small_logo_java.png)<br/>MSAL v Javě<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python
 | [Webové rozhraní API, které volá webová rozhraní API](scenario-web-api-call-api-overview.md) <br/><br/> [![Webové rozhraní API, které volá webová rozhraní API](media/scenarios/web-api.svg)](scenario-web-api-call-api-overview.md) | ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL v Javě](media/sample-v2-code/small_logo_java.png)<br/>MSAL v Javě<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL v Javě](media/sample-v2-code/small_logo_java.png)<br/>MSAL v Javě<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL v Javě](media/sample-v2-code/small_logo_java.png)<br/>MSAL v Javě<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python
 
-Další informace najdete v tématu [knihovny podporované Microsoftem podle operačního systému nebo jazyka](reference-v2-libraries.md#microsoft-supported-libraries-by-os--language).
+Další informace najdete v tématu [knihovny ověřování platformy Microsoft Identity Platform](reference-v2-libraries.md).
 
 ## <a name="next-steps"></a>Další kroky
 

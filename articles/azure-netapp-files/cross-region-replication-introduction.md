@@ -12,14 +12,15 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/21/2021
+ms.date: 01/29/2021
 ms.author: b-juche
-ms.openlocfilehash: e51297e8fe5c3dccf43318a066ac5da4a7d24cb2
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.custom: references_regions
+ms.openlocfilehash: fd3e8295820cd9388bd7999d3008b4c583dbf295
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696087"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99220900"
 ---
 # <a name="cross-region-replication-of-azure-netapp-files-volumes"></a>Replikace Azure NetApp Files svazků mezi oblastmi
 
@@ -28,26 +29,31 @@ Funkce replikace Azure NetApp Files zajišťuje ochranu dat prostřednictvím re
 > [!IMPORTANT]
 > Funkce replikace mezi oblastmi je aktuálně ve verzi Public Preview. Pro přístup k této funkci musíte odeslat žádost pořadníku Azure NetApp Files prostřednictvím stránky pro [odeslání pořadníku replikace mezi oblastmi](https://aka.ms/anfcrrpreviewsignup). Než použijete funkci replikace mezi oblastmi, počkejte na oficiální e-mail s potvrzením od Azure NetApp Files týmu.
 
-## <a name="supported-region-pairs"></a>Podporované páry oblastí
+## <a name="supported-cross-region-replication-pairs"></a><a name="supported-region-pairs"></a>Podporované páry replikace mezi oblastmi
 
-Replikace svazku Azure NetApp Files je aktuálně dostupná v následujících dvojicích pevné oblasti:  
+Replikace svazků Azure NetApp Files je podporovaná mezi různými [regionálními páry Azure](/azure/best-practices-availability-paired-regions#azure-regional-pairs) a nepáry. Replikace svazku Azure NetApp Files je v současné době k dispozici mezi těmito oblastmi:  
 
-* USA – západ a USA – východ
-* USA – západ 2 a USA – východ 
-* USA (střed) – jih a USA – střed 
-* USA (střed) – jih a USA – východ
-* USA (střed) – jih a USA – východ 2 
-* USA – východ a USA – východ 2  
-* USA – východ 2 a USA – střed 
+### <a name="azure-regional-pairs"></a>Regionální páry Azure
+
+* Východní USA a Západní USA
+* Východní USA 2 a Střed USA
 * Austrálie – východ a Austrálie – jihovýchod
 * Kanada – střed a Kanada – východ
-* Střed Indie a Jižní Indie
+* Jižní Indie a Střed Indie 
 * Německo – středozápad a Německo – sever
 * Japonsko – východ a Japonsko – západ
 * Severní Evropa a Západní Evropa
-* Jihovýchodní Asie a Austrálie – východ
-* Velká Británie – jih a Německo – středozápad
 * Velká Británie – jih a Velká Británie – západ
+
+### <a name="azure-regional-non-pairs"></a>Místní non-páry Azure
+
+*   Západní USA 2 a Východní USA
+*   Střed USA – jih a Střed USA
+*   Střed USA – jih a Východní USA
+*   Střed USA – jih a Východní USA 2
+*   Východní USA a Východní USA 2
+*   Austrálie – východ a jihovýchodní Asie 
+*   Německo – středozápad a Velká Británie – jih
 
 ## <a name="service-level-objectives"></a>Cíle na úrovni služby
 

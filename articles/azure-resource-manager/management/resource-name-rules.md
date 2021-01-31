@@ -2,13 +2,13 @@
 title: Omezení pojmenování prostředků
 description: Zobrazuje pravidla a omezení pro pojmenování prostředků Azure.
 ms.topic: conceptual
-ms.date: 01/26/2021
-ms.openlocfilehash: d298688dbd13cc32c9cca078b5e20e6a5f054450
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.date: 01/27/2021
+ms.openlocfilehash: dbe19dae4509e1dd6aa95763e4d034c339bb0531
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98806885"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99220849"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Omezení a pravidla pojmenování prostředků Azure
 
@@ -92,7 +92,7 @@ V následujících tabulkách pojem alfanumerický označuje:
 > [!div class="mx-tableFixed"]
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
-> | automationAccounts | skupina prostředků | 6-50 | Alfanumerické znaky a spojovníky.<br><br>Začíná písmenem a končí alfanumerickým znakem. |
+> | automationAccounts | Skupina prostředků & oblast <br>(Viz poznámka níže) | 6-50 | Alfanumerické znaky a spojovníky.<br><br>Začíná písmenem a končí alfanumerickým znakem. |
 > | automationAccounts/certifikáty | účet služby Automation | 1-128 | Nejde použít:<br> `<>*%&:\?.+/` <br><br>Nemůže končit mezerou.  |
 > | automationAccounts/připojení | účet služby Automation | 1-128 | Nejde použít:<br> `<>*%&:\?.+/` <br><br>Nemůže končit mezerou. |
 > | automationAccounts/přihlašovací údaje | účet služby Automation | 1-128 | Nejde použít:<br> `<>*%&:\?.+/` <br><br>Nemůže končit mezerou. |
@@ -101,6 +101,9 @@ V následujících tabulkách pojem alfanumerický označuje:
 > | automationAccounts/proměnné | účet služby Automation | 1-128 | Nejde použít:<br> `<>*%&:\?.+/` <br><br>Nemůže končit mezerou. |
 > | automationAccounts/sledovací procesy | účet služby Automation | 1–63 |  Alfanumerické znaky, podtržítka a spojovníky.<br><br>Začíná písmenem. |
 > | automationAccounts nebo Webhooky | účet služby Automation | 1-128 | Nejde použít:<br> `<>*%&:\?.+/` <br><br>Nemůže končit mezerou. |
+
+> [!NOTE]
+> Názvy účtů Automation jsou jedinečné pro jednotlivé oblasti a skupiny prostředků. Názvy pro odstraněné účty Automation nemusí být okamžitě k dispozici.
 
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 

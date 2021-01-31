@@ -12,12 +12,12 @@ ms.date: 05/23/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 1d50e0ed6ac67ed1595b289d27bd08a089840308
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: bce9479d063d091eb4fa68d2452d8a4218d45db9
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99051902"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219939"
 ---
 # <a name="support-and-help-options-for-developers"></a>Možnosti pomoci a podpory pro vývojáře
 
@@ -36,7 +36,7 @@ Pokud máte dotazy související s vývojem, možná budete moci najít odpově�
 
 ### <a name="scoped-search"></a>Hledání v oboru
 
-Pro dosažení rychlejších výsledků můžete určit rozsah hledání do složky Microsoft Q&A, dokumentaci a ukázky kódu pomocí následujícího dotazu v oblíbených vyhledávacích modulech:
+Pro dosažení rychlejších výsledků můžete určit rozsah hledání do složky [Microsoft Q&](https://docs.microsoft.com/answers/products/)dokumentaci a ukázky kódu pomocí následujícího dotazu v oblíbených vyhledávacích modulech:
 
 ```
 {Your Search Terms} (site:http://www.docs.microsoft.com/answers/products/ OR site:docs.microsoft.com OR site:github.com/azure-samples OR site:cloudidentity.com OR site:developer.microsoft.com/graph)
@@ -53,9 +53,9 @@ Kde *{vaše hledané výrazy}* odpovídají vašim klíčovým slovům pro hled�
 
 ## <a name="post-a-question-to-microsoft-qa"></a>Odeslat otázku do Microsoft Q&A
 
-Microsoft Q&A je preferovaným kanálem pro otázky související s vývojem. V tomto případě jsou členové komunity vývojářů a členové týmu společnosti Microsoft přímo zapojeni v rámci pomoci při řešení vašich problémů.
+[Microsoft Q&A](https://docs.microsoft.com/answers/products/) je preferovaným kanálem pro otázky související s vývojem. V tomto případě jsou členové komunity vývojářů a členové týmu společnosti Microsoft přímo zapojeni v rámci pomoci při řešení vašich problémů.
 
-Pokud nemůžete najít odpověď na svůj dotaz pomocí hledání, odešlete novou otázku do složky Microsoft Q&A. Použijte jednu z následujících značek při dotazování otázek, které komunitu pomůžou najít a odpovědět na svůj dotaz rychleji:
+Pokud nemůžete najít odpověď na svůj dotaz pomocí hledání, odešlete novou otázku do složky [Microsoft Q&a](https://docs.microsoft.com/answers/products/) . Použijte jednu z následujících značek při dotazování otázek, které komunitu pomůžou najít a odpovědět na svůj dotaz rychleji:
 
 |Součást/oblast  | Značky |
 |---------|---------|
@@ -65,9 +65,9 @@ Pokud nemůžete najít odpověď na svůj dotaz pomocí hledání, odešlete no
 | [Azure B2B](../external-identities/what-is-b2b.md)  | [[Azure-AD-B2B]](https://docs.microsoft.com/answers/topics/azure-ad-b2b.html) |
 | [B2C Azure](https://azure.microsoft.com/services/active-directory-b2c/)  | [[Azure-AD-B2C]](https://docs.microsoft.com/answers/topics/azure-ad-b2c.html) |
 | [Microsoft Graph API](https://developer.microsoft.com/graph/) | [[Azure-AD-Graph]](https://docs.microsoft.com/answers/topics/azure-ad-graph.html) |
-| Jakákoli další oblast související s ověřováním nebo autorizačními tématy | [[Azure-Active-Directory]](https://docs.microsoft.com/answers/topics/azure-ad-graph.html) |
+| Jakákoli další oblast související s ověřováním nebo autorizačními tématy | [[Azure-Active-Directory]](https://docs.microsoft.com/answers/topics/azure-active-directory.html) |
 
-Následující příspěvky z Microsoft Q&A obsahují tipy, jak klást otázky a jak přidat zdrojový kód. Postupujte podle těchto pokynů a zvyšte pravděpodobnost, že členové komunity budou moci rychle posoudit a reagovat na své otázky:
+Následující příspěvky z [Microsoft Q&a](https://docs.microsoft.com/answers/products/) obsahují tipy, jak klást otázky a jak přidat zdrojový kód. Postupujte podle těchto pokynů a zvyšte pravděpodobnost, že členové komunity budou moci rychle posoudit a reagovat na své otázky:
 
 * [Návody klást dobré otázky](https://docs.microsoft.com/answers/articles/24951/how-to-write-a-quality-question.html)
 * [Jak vytvořit minimální, úplný a ověřitelný příklad](https://docs.microsoft.com/answers/articles/24907/how-to-write-a-quality-answer.html)

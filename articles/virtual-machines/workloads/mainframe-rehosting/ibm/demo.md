@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: dcd354b906b4d6c92d8b3186fc8e09c94a31ca55
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: c76768fa94b524763ac8ad94c9c3f5bb3a73dddb
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968396"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219434"
 ---
 # <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>Nastavení vývojářů aplikací řízených distribucí (ADCD) v IBM zD&T V1
 
@@ -57,7 +57,7 @@ Je vyžadován přístup k médiu ADCD. Níže uvedený postup předpokládá, �
 
 4. Zadejte popis části nebo číslo součásti a klikněte na tlačítko **Finder**.
 
-5. Volitelně můžete kliknutím na seznam abecedních objednávek zobrazit a zobrazit theproduct podle názvu.
+5. Případně můžete kliknutím na seznam abecedních objednávek zobrazit a zobrazit produkt podle názvu.
 
 6. Vyberte možnost **všechny operační systémy** v **poli operační systém** a **všechny jazyky** v **poli jazyky**. Pak klikněte na tlačítko **Přejít**.
 
@@ -190,7 +190,7 @@ Gratulujeme! Nyní používáte sálové prostředí IBM v Azure.
 ## <a name="learn-more"></a>Další informace
 
 - [Migrace sálového počítače: mýty a fakta](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
-- [IBM DB2 pureScale v Azure](../../../linux/ibm-db2-purescale-azure.md)
+- [IBM DB2 pureScale v Azure](ibm-db2-purescale-azure.md)
 - [Řešení potíží](../../../troubleshooting/index.yml)
 - [Migrace Demystifying z sálového počítače do Azure](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
 

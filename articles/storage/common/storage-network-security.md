@@ -9,12 +9,12 @@ ms.date: 01/27/2021
 ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: c8807f0200f96dc12a3b3d43fa50a91bec85ed38
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 8172abb5e220f28061c7826af24a5d9a2043f4ad
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071175"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219904"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurace bran firewall Azure Storage a virtuálních sítí
 
@@ -538,11 +538,11 @@ az storage account network-rule list \
 <a id="exceptions"></a>
 <a id="trusted-microsoft-services"></a>
 
-## <a name="grant-access-to-azure-services"></a>Udělení přístupu ke službám Azure 
+## <a name="grant-access-to-trusted-azure-services"></a>Udělení přístupu k důvěryhodným službám Azure 
 
-Některé služby Azure fungují ze sítí, které není možné zahrnout do svých síťových pravidel. K účtu úložiště můžete udělit podmnožinu takových důvěryhodných služeb Azure a přitom zachovat Síťová pravidla pro ostatní aplikace. Tyto důvěryhodné služby pak budou používat silné ověřování pro zabezpečené připojení k vašemu účtu úložiště. 
+Některé služby Azure fungují ze sítí, které není možné zahrnout do svých síťových pravidel. K účtu úložiště můžete udělit podmnožinu takových důvěryhodných služeb Azure a přitom zachovat Síťová pravidla pro ostatní aplikace. Tyto důvěryhodné služby pak budou používat silné ověřování pro zabezpečené připojení k vašemu účtu úložiště.
 
-Vytvořením výjimky pro síťové pravidlo můžete udělit přístup k důvěryhodným službám Azure. Podrobné pokyny najdete v části [Správa výjimek](#manage-exceptions) v tomto článku. 
+Vytvořením výjimky pro síťové pravidlo můžete udělit přístup k důvěryhodným službám Azure. Podrobné pokyny najdete v části [Správa výjimek](#manage-exceptions) v tomto článku.
 
 Když udělíte přístup k důvěryhodným službám Azure, udělíte jim následující typy přístupu:
 
@@ -583,17 +583,23 @@ V následující tabulce jsou uvedeny služby, které mohou mít přístup k dat
 | :----------------------------- | :------------------------------------- | :----------------- |
 | Azure API Management           | Microsoft.ApiManagement/service        | Umožňuje službě API Management přístup k účtům úložiště za bránou firewall pomocí zásad. [Přečtěte si další informace](../../api-management/api-management-authentication-policies.md#use-managed-identity-in-send-request-policy). |
 | Azure Cognitive Search         | Microsoft. Search/searchServices        | Umožňuje službám Kognitivní hledání získat přístup k účtům úložiště pro indexování, zpracování a dotazování. |
-| Azure Cognitive Services       | Microsoft. CognitiveService             | Povolí Cognitive Services k přístupu k účtům úložiště. |
+| Azure Cognitive Services       | Microsoft. CognitiveService/účty    | Povolí Cognitive Services k přístupu k účtům úložiště. |
 | Úlohy Azure Container Registry | Microsoft. ContainerRegistry/Registry | ACR úlohy mají přístup k účtům úložiště při vytváření imagí kontejneru. |
 | Azure Data Factory             | Microsoft. DataFactory/továrny        | Umožňuje přístup k účtům úložiště pomocí modulu runtime ADF. |
 | Azure Data Share               | Microsoft. datashare/Accounts           | Umožňuje přístup k účtům úložiště prostřednictvím sdílení dat. |
+| Azure DevTest Labs             | Microsoft. DevTestLab/Labs              | Umožňuje přístup k účtům úložiště prostřednictvím DevTest Labs. |
 | Azure IoT Hub                  | Microsoft. Devices/IotHubs              | Umožňuje zapsat data z služby IoT Hub do úložiště objektů BLOB. [Další informace](../../iot-hub/virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing) |
 | Azure Logic Apps               | Microsoft. Logic/Workflows              | Povoluje Logic Apps přístup k účtům úložiště. [Přečtěte si další informace](../../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity). |
-| Služba Azure Machine Learning | Microsoft.MachineLearningServices      | Autorizované pracovní prostory Azure Machine Learning zapisují výstup, modely a protokoly do úložiště objektů BLOB a čtou data z experimentu. [Přečtěte si další informace](../../machine-learning/how-to-network-security-overview.md#secure-the-workspace-and-associated-resources). | 
-| Azure Synapse Analytics       | Microsoft.Sql                          | Umožňuje importovat a exportovat data z konkrétních databází SQL pomocí příkazu COPY nebo základny (ve vyhrazeném fondu) nebo `openrowset` funkce a externích tabulek ve fondu bez serveru. [Přečtěte si další informace](../../azure-sql/database/vnet-service-endpoint-rule-overview.md). |
-| Azure SQL Database       | Microsoft.Sql                          | Povoluje [zápis](../../azure-sql/database/audit-write-storage-account-behind-vnet-firewall.md) dat auditu do účtů úložiště za bránou firewall. |
-| Azure Stream Analytics         | Microsoft. StreamAnalytics             | Umožňuje zapsat data z úlohy streamování do úložiště objektů BLOB. [Přečtěte si další informace](../../stream-analytics/blob-output-managed-identity.md). |
-| Azure Synapse Analytics        | Microsoft. synapse/pracovní prostory          | Umožňuje přístup k datům v Azure Storage z Azure synapse Analytics. |
+| Služba Azure Machine Learning | Microsoft.MachineLearningServices      | Autorizované pracovní prostory Azure Machine Learning zapisují výstup, modely a protokoly do úložiště objektů BLOB a čtou data z experimentu. [Přečtěte si další informace](../../machine-learning/how-to-network-security-overview.md#secure-the-workspace-and-associated-resources). |
+| Azure Media Services           | Microsoft. Media/MediaServices          | Umožňuje přístup k účtům úložiště prostřednictvím Media Services. |
+| Azure Migrate                  | Microsoft. migruje/migrateprojects      | Umožňuje přístup k účtům úložiště prostřednictvím Azure Migrate. |
+| Azure Purview                  | Microsoft. dosah/účty             | Povoluje dosah přístup k účtům úložiště. |
+| Azure Remote Rendering         | Microsoft. MixedReality/remoteRenderingAccounts | Umožňuje přístup k účtům úložiště prostřednictvím vzdáleného vykreslování. |
+| Azure Site Recovery            | Microsoft. RecoveryServices/trezory      | Umožňuje přístup k účtům úložiště prostřednictvím Site Recovery. |
+| Azure SQL Database             | Microsoft.Sql                          | Povoluje [zápis](../../azure-sql/database/audit-write-storage-account-behind-vnet-firewall.md) dat auditu do účtů úložiště za bránou firewall. |
+| Azure Synapse Analytics        | Microsoft.Sql                          | Umožňuje importovat a exportovat data z konkrétních databází SQL pomocí příkazu COPY nebo základny (ve vyhrazeném fondu) nebo `openrowset` funkce a externích tabulek ve fondu bez serveru. [Přečtěte si další informace](../../azure-sql/database/vnet-service-endpoint-rule-overview.md). |
+| Azure Stream Analytics         | Microsoft. StreamAnalytics              | Umožňuje zapsat data z úlohy streamování do úložiště objektů BLOB. [Přečtěte si další informace](../../stream-analytics/blob-output-managed-identity.md). |
+| Azure Synapse Analytics        | Microsoft. synapse/pracovní prostory           | Umožňuje přístup k datům v Azure Storage z Azure synapse Analytics. |
 
 ## <a name="grant-access-to-storage-analytics"></a>Udělení přístupu k analýze úložiště
 

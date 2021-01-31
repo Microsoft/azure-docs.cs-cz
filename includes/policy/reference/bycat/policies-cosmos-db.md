@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/25/2021
+ms.date: 01/29/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 8f5e8257e8e642f48f2af954b2f4106e2e855f1a
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 14bdaaf81b369d18bac912d43a5151cf982ef7b6
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98807716"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99220230"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Description |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Účty Azure Cosmos DB by měly mít pravidla brány firewall](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F862e97cf-49fc-4a5c-9de4-40d4e2e7c8eb) |Pravidla brány firewall by měla být definovaná na vašich Azure Cosmos DB účtech, aby nedocházelo k provozu z neautorizovaných zdrojů. Účty, které mají definováno aspoň jedno pravidlo IP s povoleným filtrem virtuální sítě, se považují za vyhovující. Účty, které zakazují veřejný přístup, se taky považují za vyhovující. |Audit, zamítnutí, zakázáno |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cosmos%20DB/Cosmos_NetworkRulesExist_Audit.json) |
 |[Azure Cosmos DB účty by měly používat klíče spravované zákazníkem k šifrování neaktivních dat](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1f905d99-2ab7-462c-a6b0-f709acca6c8f) |Pomocí klíčů spravovaných zákazníkem můžete spravovat šifrování v klidovém Azure Cosmos DB. Ve výchozím nastavení jsou data v klidovém stavu zašifrovaná pomocí klíčů spravovaných službou, ale klíče spravované zákazníkem (CMK) se běžně vyžadují ke splnění standardů dodržování legislativních předpisů. CMKs povolí šifrování dat pomocí Azure Key Vaultho klíče vytvořeného a vlastněného vámi. Máte plnou kontrolu a zodpovědnost za životní cyklus klíčů, včetně rotace a správy. Další informace o šifrování CMK najdete na adrese [https://aka.ms/cosmosdb-cmk](https://aka.ms/cosmosdb-cmk) . |audit, zamítnutí, zakázáno |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cosmos%20DB/Cosmos_CMK_Deny.json) |

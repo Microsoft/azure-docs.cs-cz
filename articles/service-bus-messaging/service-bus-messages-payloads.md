@@ -2,13 +2,13 @@
 title: Azure Service Bus zprávy, datové části a serializace | Microsoft Docs
 description: Tento článek poskytuje přehled Azure Service Busch zpráv, datových částí, směrování zpráv a serializaci.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: d426489776dff652cbf72d640f3e74b1bc8e30d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/29/2021
+ms.openlocfilehash: db1989004e60c305341e54e62e42f31e40e47487
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85341675"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219175"
 ---
 # <a name="messages-payloads-and-serialization"></a>Zprávy, datové části a serializace
 
@@ -22,7 +22,7 @@ Předdefinované vlastnosti zprostředkovatele jsou uvedeny v následující tab
  
 Ekvivalentní názvy používané na úrovni protokolu AMQP jsou uvedeny v závorkách. 
 
-| Název vlastnosti                         | Popis                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| Název vlastnosti                         | Description                                                                                                                                                                                                                                                                                                                                                                                                                               |
 |---------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |  [ContentType](/dotnet/api/microsoft.azure.servicebus.message.contenttype) (Content-Type)           | Volitelně popisuje datovou část zprávy s popisovačem po formátu RFC2045, oddíl 5; například `application/json` .                                                                                                                                                                                                                                                                                             |
 |  [ID korelace (ID](/dotnet/api/microsoft.azure.servicebus.message.correlationid#Microsoft_Azure_ServiceBus_Message_CorrelationId) korelace)       | Umožňuje aplikaci pro účely korelace určit kontext pro zprávu. například odráží zprávu **MessageID** zprávy, na kterou je odpovězeno.                                                                                                                                                                                                                                                                  |
@@ -57,7 +57,7 @@ Podmnožina výše popsaných vlastností zprostředkovatele, konkrétně [pro](
 - **Jednoduchý požadavek/odpověď**: Vydavatel pošle zprávu do fronty a očekává odpověď od příjemce zprávy. Pro příjem odpovědi Vydavatel vlastní frontu, do které očekává doručení odpovědí. Adresa této fronty je vyjádřena ve vlastnosti **ReplyTo** odchozí zprávy. Když příjemce odpoví, zkopíruje identifikátor **MessageID** zprávy o zpracování do vlastnosti **ID korelace** zprávy s odpovědí a doručí zprávu do cíle označeného vlastností **ReplyTo** . Jedna zpráva může vracet více odpovědí v závislosti na kontextu aplikace.
 - **Požadavek nebo odpověď vícesměrového vysílání**: jako variantu předchozího vzoru pošle Vydavatel zprávu do tématu a více předplatitelům bude mít nárok na tuto zprávu spotřebovat. Každý předplatitel může reagovat způsobem popsaným výše. Tento model se používá ve scénářích zjišťování nebo navracení se změnami a respondent obvykle identifikuje vlastnost uživatele nebo uvnitř datové části. Pokud **ReplyTo** odkazuje na téma, taková sada odpovědí zjišťování může být distribuována cílové skupině.
 - **Multiplexing**: Tato funkce relace umožňuje multiplexování datových proudů souvisejících zpráv prostřednictvím jedné fronty nebo předplatného, aby se všechny relace (nebo skupiny) souvisejících zpráv, které jsou určené odpovídajícími hodnotami **SessionID** , směrovaly na konkrétního příjemce, zatímco příjemce udržuje relaci pod zámkem. Přečtěte si další informace o tom, jaké jsou podrobnosti [o relacích](message-sessions.md).
-- **Multiplexovaná žádost o odpověď**: Tato funkce relace umožňuje přemultiplexované odpovědi, aby několik vydavatelů sdílelo frontu odpovědí. Nastavením **ReplyToSessionId**může vydavatel dát uživateli pokyn ke zkopírování této hodnoty do vlastnosti **SessionID** zprávy s odpovědí. Fronta nebo téma publikování nemusí být v relaci. Jak je zpráva odeslána, vydavatel pak může konkrétně počkat na relaci s daným **identifikátorem SessionID** , aby se vyhodnotit ve frontě, a to podmínkou přijetí přijímače relace. 
+- **Multiplexovaná žádost o odpověď**: Tato funkce relace umožňuje přemultiplexované odpovědi, aby několik vydavatelů sdílelo frontu odpovědí. Nastavením **ReplyToSessionId** může vydavatel dát uživateli pokyn ke zkopírování této hodnoty do vlastnosti **SessionID** zprávy s odpovědí. Fronta nebo téma publikování nemusí být v relaci. Jak je zpráva odeslána, vydavatel pak může konkrétně počkat na relaci s daným **identifikátorem SessionID** , aby se vyhodnotit ve frontě, a to podmínkou přijetí přijímače relace. 
 
 Směrování v rámci oboru názvů Service Bus lze realizovat pomocí pravidel automatického přeposílání a předplatných tématu. Směrování mezi obory názvů může být realizované [pomocí Azure LogicApps](https://azure.microsoft.com/services/logic-apps/). Jak je uvedeno v předchozím seznamu, vlastnost **to** je vyhrazena pro budoucí použití a může být nakonec interpretována zprostředkovatelem s funkcí speciálně povolenou. Aplikace, které chtějí implementovat směrování, by tak měly být založené na vlastnostech uživatele a nemusejí zacházet z štíhlé vlastnosti **to** ; Teď to ale nebude způsobovat problémy s kompatibilitou.
 
@@ -70,8 +70,6 @@ Na rozdíl od variant Java nebo .NET Standard, .NET Framework verze rozhraní AP
 Při použití starší verze protokolu SBMP jsou tyto objekty serializovány pomocí výchozího binárního serializátoru nebo pomocí serializátoru, který je externě dodán. Při použití protokolu AMQP je objekt serializován do objektu AMQP. Příjemce může tyto objekty načíst pomocí metody [GetBody \<T> ()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) , a to zadáním očekávaného typu. Pomocí AMQP jsou objekty serializovány do AMQP grafu objektů **ArrayList** a **IDictionary<řetězců, objektů>** objektů a libovolného klienta AMQP je může dekódovat. 
 
 I když je tato skrytá serializace Magic užitečná, aplikace by měly přebírat explicitní kontrolu serializace objektů a přepínat své objekty do datových proudů před jejich zahrnutím do zprávy a vracet je zpět na straně přijímače. Výsledkem je interoperabilní výsledky. Mělo by se také poznamenat, že zatímco AMQP má výkonný binární kódovací model, je svázán s ekosystémem zasílání zpráv AMQP a klienti HTTP budou mít problémy dekódovat taková datová část. 
-
-Obecně doporučujeme JSON a Apache Avro jako formáty datové části pro strukturovaná data.
 
 Varianty rozhraní API pro .NET Standard a Java přijímají pouze pole bajtů, což znamená, že aplikace musí zpracovat ovládací prvek serializace objektu. 
 

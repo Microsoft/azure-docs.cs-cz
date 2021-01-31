@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 68e282f192b87b9f2217e0727753e7d37ff1aeb1
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 18a3216855516156792524dc577ecef725d3119d
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516089"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99218770"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Poznámky pro vývojáře pro vlastní zásady v Azure Active Directory B2C
 
@@ -37,14 +37,14 @@ I když je většina dostupných vlastních možností zásad všeobecně dostup
 
 ## <a name="responsibilities-of-custom-policy-feature-set-developers"></a>Zodpovědnosti funkce vlastní zásady – nastavení vývojářů
 
-Ruční konfigurace zásad uděluje přístup na nižší úrovni k základní platformě Azure AD B2C a má za následek vytvoření jedinečného, důvěryhodného rozhraní. Mnoho možných permutací vlastních zprostředkovatelů identity, vztahů důvěryhodnosti, integrace s externími službami a podrobných pracovních postupů vyžaduje přístup k návrhu a konfiguraci.
+Ruční konfigurace zásad uděluje přístup na nižší úrovni k základní platformě Azure AD B2C a má za následek vytvoření jedinečného, důvěryhodného rozhraní. Mnoho možných permutací vlastních zprostředkovatelů identity, vztahů důvěryhodnosti, integrace s externími službami a krok za krokem pracovní postupy vyžaduje přístup k návrhu a konfiguraci.
 
 Vývojáři, kteří používají sadu funkcí vlastní zásady, by měli dodržovat následující pokyny:
 
 - Seznamte se s jazykem konfigurace vlastních zásad a správou klíčů a tajných kódů. Další informace najdete v tématu [TrustFrameworkPolicy](trustframeworkpolicy.md).
 - Převezměte vlastnictví scénářů a vlastních integrací. Zdokumentujte svou práci a informujte svou organizaci s živým webem.
 - Proveďte testování scénáře metod.
-- Dodržujte osvědčené postupy vývoje softwaru a přípravy s minimálním nasazením jednoho vývojového a testovacího prostředí a jednoho provozního prostředí.
+- Řiďte se doporučenými postupy pro vývoj softwaru a přípravu. Doporučuje se minimálně jedno vývojové a testovací prostředí.
 - Informujte se o novém vývoji od zprostředkovatelů identity a služeb, které do nástroje integrujete. Můžete například sledovat změny v tajných klíčích a naplánovaných a neplánovaných změnách služby.
 - Nastavte aktivní monitorování a sledujte rychlost odezvy v produkčním prostředí. Další informace o integraci s Application Insights najdete v tématu [Azure Active Directory B2C: shromažďování protokolů](analytics-with-application-insights.md).
 - Udržujte kontaktní e-mailové adresy aktuální v rámci předplatného Azure a zůstaňte reagovat na e-maily týmu živého webu společnosti Microsoft.
@@ -58,93 +58,93 @@ Vývojáři, kteří používají sadu funkcí vlastní zásady, by měli dodrž
 
 ## <a name="features-by-stage-and-known-issues"></a>Funkce podle fáze a známé problémy
 
-Možnosti architektury prostředí vlastních zásad a identit jsou v rámci stálého a rychlého vývoje. V následující tabulce je index funkcí a dostupnosti součástí.
+Možnosti vlastních zásad jsou v rámci Stálého vývoje. V následující tabulce je index funkcí a dostupnosti součástí.
 
 
 ### <a name="protocols-and-authorization-flows"></a>Protokoly a autorizační toky
 
-| Příznak | Vývoj | Preview | GA | Poznámky |
+| Funkce | Vývoj | Preview | GA | Poznámky |
 |-------- | :-----------: | :-------: | :--: | ----- |
-| [Autorizační kód OAuth2](authorization-code-flow.md) |  |  | X |  |
-| OAuth2 autorizační kód s PKCE |  |  | X | [Veřejné klienty a jednostránkové aplikace](authorization-code-flow.md)  |
-| [OAuth2 implicitní tok](implicit-flow-single-page-application.md) |  |  | X |  |
-| [Přihlašovací údaje pro heslo vlastníka prostředku OAuth2](ropc-custom.md) |  | X |  |  |
-| [OIDC připojit](openid-connect.md) |  |  | X |  |
-| [TYPU Saml2](connect-with-saml-service-providers.md)  |  |  |X  | Vystavení a přesměrování vazeb. |
+| [Autorizační kód OAuth2](authorization-code-flow.md) |  |  | × |  |
+| OAuth2 autorizační kód s PKCE |  |  | × | [Veřejné klienty a jednostránkové aplikace](authorization-code-flow.md)  |
+| [OAuth2 implicitní tok](implicit-flow-single-page-application.md) |  |  | × |  |
+| [Přihlašovací údaje pro heslo vlastníka prostředku OAuth2](ropc-custom.md) |  | × |  |  |
+| [OIDC připojit](openid-connect.md) |  |  | × |  |
+| [TYPU Saml2](connect-with-saml-service-providers.md)  |  |  |×  | Vystavení a přesměrování vazeb. |
 | OAuth1 |  |  |  | Nepodporováno |
-| WSFED | X |  |  |  |
+| WSFED | × |  |  |  |
 
 ### <a name="identify-providers-federation"></a>Identifikace federačních zprostředkovatelů 
 
-| Příznak | Vývoj | Preview | GA | Poznámky |
+| Funkce | Vývoj | Preview | GA | Poznámky |
 |-------- | :-----------: | :-------: | :--: | ----- |
-| [OpenID Connect](openid-connect-technical-profile.md) |  |  | X | Například Google +.  |
-| [OAuth2](oauth2-technical-profile.md) |  |  | X | Například Facebook.  |
-| [OAuth1](oauth1-technical-profile.md) |  | X |  | Například Twitter. |
-| [TYPU Saml2](saml-identity-provider-technical-profile.md) |  |   | X | Například Salesforce, ADFS. |
-| WSFED| X |  |  |  |
+| [OpenID Connect](openid-connect-technical-profile.md) |  |  | × | Například Google +.  |
+| [OAuth2](oauth2-technical-profile.md) |  |  | × | Například Facebook.  |
+| [OAuth1](oauth1-technical-profile.md) |  | × |  | Například Twitter. |
+| [TYPU Saml2](saml-identity-provider-technical-profile.md) |  |   | × | Například Salesforce, ADFS. |
+| WSFED| × |  |  |  |
 
 
 ### <a name="rest-api-integration"></a>Integrace REST API
 
-| Příznak | Vývoj | Preview | GA | Poznámky |
+| Funkce | Vývoj | Preview | GA | Poznámky |
 |-------- | :-----------: | :-------: | :--: | ----- |
-| [REST API se základním ověřováním](secure-rest-api.md#http-basic-authentication) |  |  | X |  |
-| [REST API s ověřováním klientským certifikátem](secure-rest-api.md#https-client-certificate-authentication) |  |  | X |  |
-| [REST API s ověřováním Bearer OAuth2](secure-rest-api.md#oauth2-bearer-authentication) |  | X |  |  |
+| [REST API se základním ověřováním](secure-rest-api.md#http-basic-authentication) |  |  | × |  |
+| [REST API s ověřováním klientským certifikátem](secure-rest-api.md#https-client-certificate-authentication) |  |  | × |  |
+| [REST API s ověřováním Bearer OAuth2](secure-rest-api.md#oauth2-bearer-authentication) |  | × |  |  |
 
 ### <a name="component-support"></a>Podpora komponent
 
-| Příznak | Vývoj | Preview | GA | Poznámky |
+| Funkce | Vývoj | Preview | GA | Poznámky |
 | ------- | :-----------: | :-------: | :--: | ----- |
-| [Ověřování pro telefonní faktor](phone-factor-technical-profile.md) |  |  | X |  |
-| [Ověřování Azure AD MFA](multi-factor-auth-technical-profile.md) |  | X |  |  |
-| [Jednorázové heslo](one-time-password-technical-profile.md) |  | X |  |  |
-| [Azure Active Directory](active-directory-technical-profile.md) jako místní adresář |  |  | X |  |
-| Podsystém e-mailů Azure pro ověření e-mailu |  |  | X |  |
-| [Poskytovatelé e-mailových služeb třetích stran](custom-email-mailjet.md) |  |X  |  |  |
-| [Podpora více jazyků](localization.md)|  |  | X |  |
-| [Ověřování predikátů](predicates.md) |  |  | X | Například složitost hesla. |
-| [Ovládací prvky zobrazení](display-controls.md) |  |X  |  |  |
+| [Ověřování pro telefonní faktor](phone-factor-technical-profile.md) |  |  | × |  |
+| [Ověřování Azure AD MFA](multi-factor-auth-technical-profile.md) |  | × |  |  |
+| [Jednorázové heslo](one-time-password-technical-profile.md) |  | × |  |  |
+| [Azure Active Directory](active-directory-technical-profile.md) jako místní adresář |  |  | × |  |
+| Podsystém e-mailů Azure pro ověření e-mailu |  |  | × |  |
+| [Poskytovatelé e-mailových služeb třetích stran](custom-email-mailjet.md) |  |×  |  |  |
+| [Podpora více jazyků](localization.md)|  |  | × |  |
+| [Ověřování predikátů](predicates.md) |  |  | × | Například složitost hesla. |
+| [Ovládací prvky zobrazení](display-controls.md) |  |×  |  |  |
 
 
 ### <a name="app-ief-integration"></a>Integrace aplikací – IEF
 
-| Příznak | Vývoj | Preview | GA | Poznámky |
+| Funkce | Vývoj | Preview | GA | Poznámky |
 | ------- | :-----------: | :-------: | :--: | ----- |
-| Parametr řetězce dotazu `domain_hint` |  |  | X | K dispozici jako deklarace identity, se dají předat do IDP. |
-| Parametr řetězce dotazu `login_hint` |  |  | X | K dispozici jako deklarace identity, se dají předat do IDP. |
-| Vložení formátu JSON do cesty uživatele prostřednictvím `client_assertion` | X |  |  | Bude zastaralá. |
-| Vložení formátu JSON do cesty uživatele jako `id_token_hint` |  | X |  | Přejít k předávanému přístupu a předávat JSON. |
-| [Předání tokenu identity provider do aplikace](idp-pass-through-user-flow.md) |  | X |  | Například z Facebooku do aplikace. |
+| Parametr řetězce dotazu `domain_hint` |  |  | × | K dispozici jako deklarace identity, se dají předat do IDP. |
+| Parametr řetězce dotazu `login_hint` |  |  | × | K dispozici jako deklarace identity, se dají předat do IDP. |
+| Vložení formátu JSON do cesty uživatele prostřednictvím `client_assertion` | × |  |  | Bude zastaralá. |
+| Vložení formátu JSON do cesty uživatele jako `id_token_hint` |  | × |  | Přejít k předávanému přístupu a předávat JSON. |
+| [Předání tokenu identity provider do aplikace](idp-pass-through-user-flow.md) |  | × |  | Například z Facebooku do aplikace. |
 
 
 ### <a name="session-management"></a>Správa relací
 
-| Příznak | Vývoj | Preview | GA | Poznámky |
+| Funkce | Vývoj | Preview | GA | Poznámky |
 | ------- | :-----------: | :-------: | :--: | ----- |
-| [Výchozí zprostředkovatel relace jednotného přihlašování](custom-policy-reference-sso.md#defaultssosessionprovider) |  |  | X |  |
-| [Externí zprostředkovatel přihlašovací relace](custom-policy-reference-sso.md#externalloginssosessionprovider) |  |  | X |  |
-| [Zprostředkovatel relací SAML SSO](custom-policy-reference-sso.md#samlssosessionprovider) |  |  | X |  |
-| [OAuthSSOSessionProvider](custom-policy-reference-sso.md#oauthssosessionprovider)  |  | X |  |  |
-| [Jednotné odhlašování](session-behavior.md#sign-out)  |  | X |  |  |
+| [Výchozí zprostředkovatel relace jednotného přihlašování](custom-policy-reference-sso.md#defaultssosessionprovider) |  |  | × |  |
+| [Externí zprostředkovatel přihlašovací relace](custom-policy-reference-sso.md#externalloginssosessionprovider) |  |  | × |  |
+| [Zprostředkovatel relací SAML SSO](custom-policy-reference-sso.md#samlssosessionprovider) |  |  | × |  |
+| [OAuthSSOSessionProvider](custom-policy-reference-sso.md#oauthssosessionprovider)  |  | × |  |  |
+| [Jednotné odhlašování](session-behavior.md#sign-out)  |  | × |  |  |
 
 ### <a name="security"></a>Zabezpečení
 
-| Příznak | Vývoj | Preview | GA | Poznámky |
+| Funkce | Vývoj | Preview | GA | Poznámky |
 |-------- | :-----------: | :-------: | :--: | ----- |
-| Klíče zásad – vygenerování, ruční, nahrání |  |  | X |  |
-| Klíče zásad – RSA/certifikát, tajné klíče |  |  | X |  |
+| Klíče zásad – vygenerování, ruční, nahrání |  |  | × |  |
+| Klíče zásad – RSA/certifikát, tajné klíče |  |  | × |  |
 
 
 ### <a name="developer-interface"></a>Vývojové rozhraní
 
-| Příznak | Vývoj | Preview | GA | Poznámky |
+| Funkce | Vývoj | Preview | GA | Poznámky |
 | ------- | :-----------: | :-------: | :--: | ----- |
-| Portál Azure – IEF UX |  |  | X |  |
-| Nahrávání zásad |  |  | X |  |
-| [Protokoly cest uživatelů Application Insights](troubleshoot-with-application-insights.md) |  | X |  | Používá se pro řešení potíží během vývoje.  |
-| [Protokoly událostí Application Insights](application-insights-technical-profile.md) |  | X |  | Slouží k monitorování toků uživatelů v produkčním prostředí. |
+| Portál Azure – IEF UX |  |  | × |  |
+| Nahrávání zásad |  |  | × |  |
+| [Protokoly cest uživatelů Application Insights](troubleshoot-with-application-insights.md) |  | × |  | Používá se pro řešení potíží během vývoje.  |
+| [Protokoly událostí Application Insights](analytics-with-application-insights.md) |  | × |  | Slouží k monitorování toků uživatelů v produkčním prostředí. |
 
 
 ## <a name="next-steps"></a>Další kroky
