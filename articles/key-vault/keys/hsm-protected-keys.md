@@ -8,14 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: tutorial
-ms.date: 05/29/2020
+ms.date: 02/01/2021
 ms.author: ambapat
-ms.openlocfilehash: 7fa8590b4fb148b2a8969c4f474f6627cea263df
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 17ef0cb7efcd2a76b46a6bb0dbc82268895dae00
+ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935321"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99222196"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault"></a>Import klíčů chráněných modulem HSM do služby Key Vault
 
@@ -40,6 +40,7 @@ Přenos klíčů chráněných modulem HSM do Key Vault se podporuje dvěma růz
 |Cryptomathic|ISV (Enterprise Key Management System)|Několik značek HSM a modelů, včetně<ul><li>Podpůrný software nCipher</li><li>Thales</li><li>Utimaco</li></ul>Podrobnosti najdete v tématu [Cryptomathic web](https://www.cryptomathic.com/azurebyok) .|[Použít novou metodu BYOK](hsm-protected-keys-byok.md)|
 |Securosys SA|Výrobce, HSM jako služba|Primus, rodina HSM, Securosys cloudy HSM|[Použít novou metodu BYOK](hsm-protected-keys-byok.md)|
 |StorMagic|ISV (Enterprise Key Management System)|Několik značek HSM a modelů, včetně<ul><li>Utimaco</li><li>Thales</li><li>Podpůrný software nCipher</li></ul>Podrobnosti najdete v tématu [StorMagic web](https://stormagic.com/doc/svkms/Content/Integrations/Azure_KeyVault_BYOK.htm) .|[Použít novou metodu BYOK](hsm-protected-keys-byok.md)|
+|IBM|Manufacturer|IBM 476x, CryptoExpress|Použijte novou metodu BYOK] (HSM-Protected-Keys-byok.md)|
 |||||
 
 ## <a name="next-steps"></a>Další kroky

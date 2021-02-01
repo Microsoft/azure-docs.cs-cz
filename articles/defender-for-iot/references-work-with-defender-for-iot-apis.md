@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/14/2020
 ms.topic: reference
 ms.service: azure
-ms.openlocfilehash: 44ea6e8343203a9cb18947f31f45aa0b023178b0
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 73c5d1f31d9e0651ee710593aa4e1b68fe972560
+ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624570"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99222089"
 ---
 # <a name="defender-for-iot-sensor-and-management-console-apis"></a>Defender pro rozhraní API pro senzory IoT a konzolu pro správu
 
@@ -56,33 +56,31 @@ Vygenerování tokenu:
 
 Tato část popisuje následující rozhraní API snímače:
 
-- /api/v1/devices
+- [Načíst informace o zařízení –/API/v1/Devices](#retrieve-device-information---apiv1devices)
 
-- /api/v1/devices/connections
+- [Načíst informace o připojení zařízení –/API/v1/Devices/Connections](#retrieve-device-connection-information---apiv1devicesconnections)
 
-- /api/v1/devices/cves
+- [Načtení informací o CVEs-/API/v1/Devices/CVEs](#retrieve-information-on-cves---apiv1devicescves)
 
-- /api/v1/alerts
+- [Načíst informace o výstraze –/API/v1/Alerts](#retrieve-alert-information---apiv1alerts)
 
-- /api/v1/events
+- [Načtení událostí časové osy –/API/v1/Events](#retrieve-timeline-events---apiv1events)
 
-- /api/v1/reports/vulnerabilities/devices
+- [Načíst informace o ohrožení zabezpečení –/API/v1/Reports/Vulnerabilities/Devices](#retrieve-vulnerability-information---apiv1reportsvulnerabilitiesdevices)
 
-- /api/v1/reports/vulnerabilities/security
+- [Načtení slabých míst zabezpečení –/API/v1/Reports/Vulnerabilities/Security](#retrieve-security-vulnerabilities---apiv1reportsvulnerabilitiessecurity)
 
-- /api/v1/reports/vulnerabilities/operational
+- [Načtení provozní chyby zabezpečení –/API/v1/Reports/Vulnerabilities/Operational](#retrieve-operational-vulnerabilities---apiv1reportsvulnerabilitiesoperational)
 
-- /api/external/authentication/validation
+- [Ověřit přihlašovací údaje uživatele –/API/External/Authentication/Validation](#validate-user-credentials---apiexternalauthenticationvalidation)
 
-- /External/Authentication/set_password
+- [Změna hesla –/External/Authentication/set_password](#change-password---externalauthenticationset_password)
 
-- /External/Authentication/set_password_by_admin
+- [Aktualizace hesla uživatele správcem systému –/External/Authentication/set_password_by_admin](#user-password-update-by-system-admin---externalauthenticationset_password_by_admin)
 
-### <a name="retrieve-device-information"></a>Načíst informace o zařízení
+### <a name="retrieve-device-information---apiv1devices"></a>Načíst informace o zařízení –/API/v1/Devices
 
 Pomocí tohoto rozhraní API si můžete vyžádat seznam všech zařízení, která zjistil Defender pro IoT snímač.
-
-#### <a name="apiv1devices"></a>/api/v1/devices
 
 #### <a name="method"></a>Metoda
 
@@ -279,11 +277,15 @@ Pole objektů JSON, které reprezentují zařízení.
 ]
 ```
 
-### <a name="retrieve-device-connection-information"></a>Načíst informace o připojení zařízení
+#### <a name="curl-command"></a>Příkaz cURL
+
+| Typ | Rozhraní API | Příklad |
+|--|--|--|
+| GET | "Authorization-k-H" Authorization: <AUTH_TOKEN> "https://<IP_ADDRESS>/API/v1/Devices | "Authorization-k-H" autorizace: 1234b734a9244d54ab8d40aedddcabcd "https: <span> //127 <span> . 0.0.1/API/v1/zařízení? autorizováno = true |
+
+### <a name="retrieve-device-connection-information---apiv1devicesconnections"></a>Načíst informace o připojení zařízení –/API/v1/Devices/Connections
 
 Pomocí tohoto rozhraní API si můžete vyžádat seznam všech připojení na zařízení.
-
-#### <a name="apiv1devicesconnections"></a>/api/v1/devices/connections
 
 #### <a name="method"></a>Metoda
 
@@ -447,11 +449,17 @@ Pole objektů JSON, která reprezentují připojení zařízení.
 ]
 ```
 
-### <a name="retrieve-information-on-cves"></a>Načtení informací o CVEs
+#### <a name="curl-command"></a>Příkaz cURL
+
+> [!div class="mx-tdBreakAll"]
+> | Typ | Rozhraní API | Příklad |
+> |--|--|--|
+> | GET | "Authorization-k-H" Authorization: <AUTH_TOKEN> "https://<IP_ADDRESS>/API/v1/Devices/Connections | Autorizace typu kudrlinkou-k-H: 1234b734a9244d54ab8d40aedddcabcd "https:/ <span> /127.0.0.1/API/v1/Devices/Connections |
+> | GET | "Authorization-k-H" Authorization: <AUTH_TOKEN> "" https://<IP_ADDRESS>/API/v1/Devices/ <deviceId> /Connections? lastActiveInMinutes =&discoveredBefore =&discoveredAfter = " | "Authorization-k-H" autorizace: 1234b734a9244d54ab8d40aedddcabcd "" https:/ <span> /127.0.0.1/API/v1/Devices/2/Connections? lastActiveInMinutes = 20&discoveredBefore = 1594550986000&discoveredAfter = 1594550986000 " |
+
+### <a name="retrieve-information-on-cves---apiv1devicescves"></a>Načtení informací o CVEs-/API/v1/Devices/CVEs
 
 Pomocí tohoto rozhraní API si můžete vyžádat seznam všech známých CVEs zjištěných na zařízeních v síti.
-
-#### <a name="apiv1devicescves"></a>/api/v1/devices/cves
 
 #### <a name="method"></a>Metoda
 
@@ -557,11 +565,16 @@ Pole objektů JSON, které reprezentují CVEs identifikované na IP adresách.
 ]
 ```
 
-### <a name="retrieve-alert-information"></a>Načíst informace o výstrahách
+#### <a name="curl-command"></a>Příkaz cURL
+
+| Typ | Rozhraní API | Příklad |
+|--|--|--|
+| GET | "Authorization-k-H" Authorization: <AUTH_TOKEN> "https://<IP_ADDRESS>/API/v1/Devices/CVEs | Autorizace typu kudrlinkou-k-H: 1234b734a9244d54ab8d40aedddcabcd "https:/ <span> /127.0.0.1/API/v1/Devices/CVEs |
+| GET | "Authorization-k-H" autorizace: <AUTH_TOKEN> "https://<IP_ADDRESS>/API/v1/Devices/ <deviceIpAddress> /CVEs? Top = | Autorizace typu kudrlinkou-k-H: 1234b734a9244d54ab8d40aedddcabcd "https:/ <span> /127.0.0.1/API/v1/Devices/10.10.10.15/CVEs? Top = 50 |
+
+### <a name="retrieve-alert-information---apiv1alerts"></a>Načíst informace o výstraze –/API/v1/Alerts
 
 Pomocí tohoto rozhraní API můžete vyžádat seznam všech upozornění, které program Defender pro IoT snímač zjistil.
-
-#### <a name="apiv1alerts"></a>/api/v1/alerts
 
 #### <a name="method"></a>Metoda
 
@@ -685,11 +698,16 @@ Pole objektů JSON, které reprezentují výstrahy.
 
 ```
 
-### <a name="retrieve-timeline-events"></a>Načtení událostí časové osy
+#### <a name="curl-command"></a>Příkaz cURL
+
+> [!div class="mx-tdBreakAll"]
+> | Typ | Rozhraní API | Příklad |
+> |--|--|--|
+> | GET | "Authorization-k-H" autorizace: <AUTH_TOKEN> "" https://<IP_ADDRESS>/API/v1/Alerts? State =&fromTime =&toTime =&typ = ' | "Authorization-k-H" autorizace: 1234b734a9244d54ab8d40aedddcabcd "" https:/ <span> /127.0.0.1/API/v1/Alerts? stav = neošetřený&fromTime = 1594550986000&toTime = 1594550986001&typ = odpojení |
+
+### <a name="retrieve-timeline-events---apiv1events"></a>Načtení událostí časové osy –/API/v1/Events
 
 Pomocí tohoto rozhraní API můžete vyžádat seznam událostí hlášených na časovou osu události.
-
-#### <a name="apiv1events"></a>/api/v1/events
 
 #### <a name="method"></a>Metoda
 
@@ -802,11 +820,15 @@ Pole objektů JSON, které reprezentují výstrahy.
 
 ```
 
-### <a name="retrieve-vulnerability-information"></a>Načíst informace o ohrožení zabezpečení
+#### <a name="curl-command"></a>Příkaz cURL
+
+| Typ | Rozhraní API | Příklad |
+|--|--|--|
+| GET | "Authorization-k-H" Authorization: <AUTH_TOKEN> "" https://<IP_ADDRESS>/API/v1/Events? minutesTimeFrame =&typ = " | "autorizace ze složeného k-H": 1234b734a9244d54ab8d40aedddcabcd "' https:/ <span> /127.0.0.1/API/v1/Events? minutesTimeFrame = 20&Type = DEVICE_CONNECTION_CREATED ' |
+
+### <a name="retrieve-vulnerability-information---apiv1reportsvulnerabilitiesdevices"></a>Načíst informace o ohrožení zabezpečení –/API/v1/Reports/Vulnerabilities/Devices
 
 Toto rozhraní API použijte k vyžádání výsledků posouzení ohrožení zabezpečení pro každé zařízení.
-
-#### <a name="apiv1reportsvulnerabilitiesdevices"></a>/api/v1/reports/vulnerabilities/devices
 
 #### <a name="method"></a>Metoda
 
@@ -1052,13 +1074,17 @@ Objekt zařízení obsahuje:
 
 ```
 
-### <a name="retrieve-security-vulnerabilities"></a>Načtení slabých míst zabezpečení
+#### <a name="curl-command"></a>Příkaz cURL
+
+| Typ | Rozhraní API | Příklad |
+|--|--|--|
+| GET | "Authorization-k-H" Authorization: <AUTH_TOKEN> "https://<IP_ADDRESS>/API/v1/Reports/Vulnerabilities/Devices | Autorizace typu kudrlinkou-k-H: 1234b734a9244d54ab8d40aedddcabcd "https:/ <span> /127.0.0.1/API/v1/Reports/Vulnerabilities/Devices |
+
+### <a name="retrieve-security-vulnerabilities---apiv1reportsvulnerabilitiessecurity"></a>Načtení slabých míst zabezpečení –/API/v1/Reports/Vulnerabilities/Security
 
 Pomocí tohoto rozhraní API si můžete vyžádat výsledky obecného posouzení ohrožení zabezpečení. Toto posouzení poskytuje přehled o úrovni zabezpečení vašeho systému.
 
 Toto posouzení je založeno na obecných síťových a systémových informacích a ne na konkrétním vyhodnocování zařízení.
-
-#### <a name="apiv1reportsvulnerabilitiessecurity"></a>/api/v1/reports/vulnerabilities/security
 
 #### <a name="method"></a>Metoda
 
@@ -1295,11 +1321,15 @@ Objekt JSON, který představuje hodnocené výsledky. Každý klíč může mí
 
 ```
 
-### <a name="retrieve-operational-vulnerabilities"></a>Načíst provozní chyby zabezpečení
+#### <a name="curl-command"></a>Příkaz cURL
+
+| Typ | Rozhraní API | Příklad |
+|--|--|--|
+| GET | "Authorization-k-H" Authorization: <AUTH_TOKEN> "https://<IP_ADDRESS>/API/v1/Reports/Vulnerabilities/Security | Autorizace typu kudrlinkou-k-H: 1234b734a9244d54ab8d40aedddcabcd "https:/ <span> /127.0.0.1/API/v1/Reports/Vulnerabilities/Security |
+
+### <a name="retrieve-operational-vulnerabilities---apiv1reportsvulnerabilitiesoperational"></a>Načtení provozní chyby zabezpečení –/API/v1/Reports/Vulnerabilities/Operational
 
 Pomocí tohoto rozhraní API si můžete vyžádat výsledky obecného posouzení ohrožení zabezpečení. Toto posouzení poskytuje přehled o provozním stavu vaší sítě. Vychází z obecných informací o síti a systému a nikoli na konkrétním vyhodnocování zařízení.
-
-#### <a name="apiv1reportsvulnerabilitiesoperational"></a>/api/v1/reports/vulnerabilities/operational
 
 #### <a name="method"></a>Metoda
 
@@ -1333,7 +1363,7 @@ Objekt JSON, který představuje hodnocené výsledky. Každý klíč obsahuje p
 | Název pole | Typ | Seznam hodnot |
 |--|--|--|
 | **adresy** s | Číselný | - |
-| **sítě** | Řetězec | IP adresa |
+| **network** | Řetězec | IP adresa |
 | **Vlastnost maska** | Řetězec | Maska podsítě |
 
 **protocolProblems**
@@ -1488,13 +1518,17 @@ Objekt JSON, který představuje hodnocené výsledky. Každý klíč obsahuje p
 
 ```
 
-### <a name="validate-user-credentials"></a>Ověřit přihlašovací údaje uživatele
+#### <a name="curl-command"></a>Příkaz cURL
+
+| Typ | Rozhraní API | Příklad |
+|--|--|--|
+| GET | "Authorization-k-H" Authorization: <AUTH_TOKEN> "https://<IP_ADDRESS>/API/v1/Reports/Vulnerabilities/Operational | Autorizace typu kudrlinkou-k-H: 1234b734a9244d54ab8d40aedddcabcd "https:/ <span> /127.0.0.1/API/v1/Reports/Vulnerabilities/Operational |
+
+### <a name="validate-user-credentials---apiexternalauthenticationvalidation"></a>Ověřit přihlašovací údaje uživatele –/API/External/Authentication/Validation
 
 Použijte toto rozhraní API k ověření uživatelského jména a hesla v programu IoT. S rozhraním API můžou pracovat všechny role uživatelů v rámci služby IoT.
 
 Pro použití tohoto rozhraní API nepotřebujete k používání tohoto rozhraní API Defender pro přístup k IoT.
-
-#### <a name="apiexternalauthenticationvalidation"></a>/api/external/authentication/validation
 
 #### <a name="method"></a>Metoda
 
@@ -1551,11 +1585,15 @@ response:
 
 ```
 
-### <a name="change-password"></a>Změna hesla
+#### <a name="curl-command"></a>Příkaz cURL
+
+| Typ | Rozhraní API | Příklad |
+|--|--|--|
+| GET | "Authorization-k-H" Authorization: <AUTH_TOKEN> "https://<IP_ADDRESS>/API/External/Authentication/Validation | Autorizace typu kudrlinkou-k-H: 1234b734a9244d54ab8d40aedddcabcd "https:/ <span> /127.0.0.1/API/External/Authentication/Validation |
+
+### <a name="change-password---externalauthenticationset_password"></a>Změna hesla –/External/Authentication/set_password
 
 Pomocí tohoto rozhraní API můžete uživatelům umožnit změnit si vlastní hesla. S rozhraním API můžou pracovat všechny role uživatelů v rámci služby IoT. Pro použití tohoto rozhraní API nepotřebujete k používání tohoto rozhraní API Defender pro přístup k IoT.
-
-#### <a name="externalauthenticationset_password"></a>/External/Authentication/set_password
 
 #### <a name="method"></a>Metoda
 
@@ -1621,11 +1659,15 @@ response:
 | **heslo** | Řetězec | No |
 | **new_password** | Řetězec | No |
 
-### <a name="user-password-update-by-system-admin"></a>Aktualizace hesla uživatele správcem systému
+#### <a name="curl-command"></a>Příkaz cURL
+
+| Typ | Rozhraní API | Příklad |
+|--|--|--|
+| POST | složené-k-d "{" username ":" <USER_NAME> "," Password ":" <CURRENT_PASSWORD> "," new_password ":" <NEW_PASSWORD> "}"-H "Content-Type: Application/JSON ' https://<IP_ADDRESS>/API/External/Authentication/set_password | složené až k-d "{" username ":" myUser "," Password ":" 1234@abcd "," new_password ":" abcd@1234 "}"-H "Content-Type: Application/JSON" https:/ <span> /127.0.0.1/API/External/Authentication/Set_password |
+
+### <a name="user-password-update-by-system-admin---externalauthenticationset_password_by_admin"></a>Aktualizace hesla uživatele správcem systému –/External/Authentication/set_password_by_admin
 
 Pomocí tohoto rozhraní API umožněte správcům systému měnit hesla pro zadané uživatele. V programu Defender pro role uživatelů Správce služby IoT můžete pracovat s rozhraním API. Pro použití tohoto rozhraní API nepotřebujete k používání tohoto rozhraní API Defender pro přístup k IoT.
-
-#### <a name="externalauthenticationset_password_by_admin"></a>/External/Authentication/set_password_by_admin
 
 #### <a name="method"></a>Metoda
 
@@ -1697,6 +1739,13 @@ response:
 | **jmen** | Řetězec | No |
 | **new_password** | Řetězec | No |
 
+#### <a name="curl-command"></a>Příkaz cURL
+
+> [!div class="mx-tdBreakAll"]
+> | Typ | Rozhraní API | Příklad |
+> |--|--|--|
+> | POST | složené-k-d ' {"admin_username": "<ADMIN_USERNAME>", "admin_password": "<ADMIN_PASSWORD>", "username": "<USER_NAME>", "new_password": "<NEW_PASSWORD>"} '-H ' Content-Type: Application/JSON ' https://<IP_address>/API/External/Authentication/set_password_by_admin | kudrlinkou-k-d "{" admin_user ":" adminUser "," admin_password ":" 1234@abcd "," username ":" myUser "," new_password ":" abcd@1234 "}"-H "Content-Type: Application/JSON ' https:/ <span> /127.0.0.1/API/External/Authentication/set_password_by_admin |
+
 ## <a name="on-premises-management-console-api-specifications"></a>Specifikace rozhraní API pro místní konzolu pro správu
 
 Tato část popisuje následující místní rozhraní API konzoly pro správu:
@@ -1726,23 +1775,17 @@ Rozhraní API, která tady definujete, se zobrazí v okně **vyloučení výstra
 
 ```
 
-#### <a name="change-password"></a>Změna hesla
+#### <a name="change-password---externalauthenticationset_password"></a>Změna hesla –/External/Authentication/set_password
 
 Pomocí tohoto rozhraní API můžete uživatelům umožnit změnit si vlastní hesla. S rozhraním API můžou pracovat všechny role uživatelů v rámci služby IoT. Pro použití tohoto rozhraní API nepotřebujete k používání tohoto rozhraní API Defender pro přístup k IoT.
 
-- **/External/Authentication/set_password**
-
-#### <a name="user-password-update-by-system-admin"></a>Aktualizace hesla uživatele správcem systému
+#### <a name="user-password-update-by-system-admin---externalauthenticationset_password_by_admin"></a>Aktualizace hesla uživatele správcem systému –/External/Authentication/set_password_by_admin
 
 Pomocí tohoto rozhraní API umožněte správcům systému měnit hesla pro konkrétní uživatele. Aplikace Defender pro role uživatelů správce IoT můžou pracovat s rozhraním API. Pro použití tohoto rozhraní API nepotřebujete k používání tohoto rozhraní API Defender pro přístup k IoT.
 
-- **/External/Authentication/set_password_by_admin**
-
-### <a name="retrieve-device-information"></a>Načíst informace o zařízení
+### <a name="retrieve-device-information---externalv1devices"></a>Načíst informace o zařízení –/External/v1/Devices
 
 Toto rozhraní API vyžádá seznam všech zařízení zjištěných programem Defender pro senzory IoT, které jsou připojené k místní konzole pro správu.
-
-- **/external/v1/devices**
 
 #### <a name="method"></a>Metoda
 
@@ -1959,11 +2002,15 @@ Pole objektů JSON, které reprezentují zařízení.
 ]
 ```
 
-### <a name="retrieve-alert-information"></a>Načíst informace o výstrahách
+#### <a name="curl-command"></a>Příkaz cURL
+
+| Typ | Rozhraní API | Příklad |
+|--|--|--|
+| GET | "Authorization-k-H" Authorization: <AUTH_TOKEN> "" https://<>IP_ADDRESS>/External/v1/Devices? ID =&zoneId =&sensorId =&autorizován = " | "autorizace ze složeného k-H": 1234b734a9244d54ab8d40aedddcabcd "' https:/ <span> /127.0.0.1/External/v1/Devices? ID = 1&zoneId = 2&sensorId = 5&autorizován = true ' |
+
+### <a name="retrieve-alert-information---externalv1alerts"></a>Načíst informace o výstraze –/External/v1/Alerts
 
 Pomocí tohoto rozhraní API můžete načíst všechny nebo filtrované výstrahy z místní konzoly pro správu.
-
-#### <a name="externalv1alerts"></a>/external/v1/alerts
 
 #### <a name="method"></a>Metoda
 
@@ -2116,6 +2163,13 @@ Pomocí tohoto rozhraní API můžete načíst všechny nebo filtrované výstra
 ]
 ```
 
+#### <a name="curl-command"></a>Příkaz cURL
+
+> [!div class="mx-tdBreakAll"]
+> | Typ | Rozhraní API | Příklad |
+> |--|--|--|
+> | GET | "Authorization-k-H" Authorization: <AUTH_TOKEN> "" https://<>IP_ADDRESS>/External/v1/Alerts? State =&zoneId =&fromTime =&toTime =&ID =&snímač = ' | "Authorization-k-H" autorizace: 1234b734a9244d54ab8d40aedddcabcd "" https:/ <span> /127.0.0.1/External/v1/Alerts? State = unošetřená&zoneId = 1&fromTime = 0&toTime = 1594551777000&ID = 1&senzor = 1 |
+
 ### <a name="qradar-alerts"></a>QRadar výstrahy
 
 QRadar Integration with Defender for IoT vám pomůže identifikovat výstrahy vygenerované v programu Defender pro IoT a provádět akce s těmito výstrahami. QRadar přijímá data z Defenderu pro IoT a potom kontaktuje místní součást místní konzoly pro správu rozhraní API.
@@ -2213,15 +2267,19 @@ Pole objektů JSON, které reprezentují zařízení.
 }
 ```
 
-### <a name="alert-exclusions-maintenance-window"></a>Vyloučení výstrah (časové období údržby)
+#### <a name="curl-command"></a>Příkaz cURL
+
+| Typ | Rozhraní API | Příklad |
+|--|--|--|
+| PUT | složené-k-X PUT-d "{" Action ":" <ACTION> "}"-H "Authorization: <AUTH_TOKEN>" https://<IP_ADDRESS>/External/v1/Alerts/<UUID> | kudrlinkou-k-X PUT-d "{" Action ":" Handle "}-H" Authorization: 1234b734a9244d54ab8d40aedddcabcd "https:/ <span> /127.0.0.1/External/v1/Alerts/1-1594550943000 |
+
+### <a name="alert-exclusions-maintenance-window---externalv1maintenancewindow"></a>Vyloučení výstrah (časové období údržby) –/external/v1/maintenanceWindow
 
 Definujte podmínky, za kterých se výstrahy neodesílají. Například definujte a aktualizujte časy zastavení a zahájení, zařízení nebo podsítě, které mají být vyloučeny při aktivaci výstrah nebo Defender pro moduly IoT, které mají být vyloučeny. Například při časovém intervalu pro správu a údržbu můžete zastavit doručování výstrah všech výstrah, s výjimkou upozornění na malware na důležitých zařízeních.
 
 Rozhraní API, která tady definujete, se zobrazí v okně **vyloučení výstrah** v místní konzole pro správu jako pravidlo vyloučení jen pro čtení.
 
 :::image type="content" source="media/references-work-with-defender-for-iot-apis/alert-exclusion-window.png" alt-text="Okno vyloučení výstrah zobrazuje seznam všech pravidel vyloučení. ":::
-
-#### <a name="externalv1maintenancewindow"></a>/external/v1/maintenanceWindow
 
 #### <a name="method---post"></a>Metoda – POST
 
@@ -2367,11 +2425,18 @@ Pole objektů JSON, které reprezentují operace oken údržby
 | **TTL** | Číselný | - | ano |
 | **Typem operace OperationType** | Řetězec | Hodnoty jsou "otevřít", "aktualizovat" a "Zavřít". | ne |
 
-### <a name="authenticate-user-credentials"></a>Ověření přihlašovacích údajů uživatele
+#### <a name="curl-command"></a>Příkaz cURL
+
+| Typ | Rozhraní API | Příklad |
+|--|--|--|
+| POST | složené-k-X POST-d ' {"ticketId": "<TICKET_ID>", TTL ": <TIME_TO_LIVE>," moduly ": [<ENGINE1, ENGINE2... ENGINEn>], "sensorIds": [<SENSOR_ID1, SENSOR_ID2... SENSOR_IDn>], "podsítě": [<SUBNET1, podsíť SUBNET2.... SUBNETn>]} '-H "autorizace: <AUTH_TOKEN>" https:/ <span> /127.0.0.1/External/v1/maintenanceWindow | složené-k-X POST-d "{" ticketId ":" a5fe99c-d914-4bda-9332-307384fe40bf "," TTL ":" 20 "," moduly ": [" ANOMÁLIe "];" sensorIds ": [" 5 "," 3 "]," podsítě ": [" 10.0.0.3 "]}"-H "autorizace: 1234b734a9244d54ab8d40aedddcabcd" https:/ <span> /127.0.0.1/External/v1/maintenanceWindow |
+| PUT | kudrlinkou-k-X PUT-d ' {"ticketId": "<TICKET_ID>", TTL ":" <TIME_TO_LIVE> "}"-H "autorizace: <AUTH_TOKEN>" https:/ <span> /127.0.0.1/External/v1/maintenanceWindow | kudrlinkou-k-X PUT-d ' {"ticketId": "a5fe99c-d914-4bda-9332-307384fe40bf", "TTL": "20"}-H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https:/ <span> /127.0.0.1/External/v1/maintenanceWindow |
+| DELETE | složené až k-X DELETE-d ' {"ticketId": "<TICKET_ID>"} "-H" Authorization: <AUTH_TOKEN> "https:/ <span> /127.0.0.1/External/v1/maintenanceWindow | kudrlinkou-k-X DELETE-d ' {"ticketId": "a5fe99c-d914-4bda-9332-307384fe40bf"}-H "autorizace: 1234b734a9244d54ab8d40aedddcabcd" https:/ <span> /127.0.0.1/External/v1/maintenanceWindow |
+| GET | "Authorization-k-H" Authorization: <AUTH_TOKEN> "" https://<IP_ADDRESS>/external/v1/maintenanceWindow? fromDate =&do =&ticketId =&token = ' | "Authorization-k-H" autorizace: 1234b734a9244d54ab8d40aedddcabcd "" https:/ <span> /127.0.0.1/External/v1/maintenanceWindow? fromDate = 2020-01-01&do: 2020-07-14&ticketId = a5fe99c-d914-4bda-9332-307384fe40bf&tokenu = a " |
+
+### <a name="authenticate-user-credentials---externalauthenticationvalidation"></a>Ověření přihlašovacích údajů uživatele –/External/Authentication/Validation
 
 Pomocí tohoto rozhraní API ověříte přihlašovací údaje uživatele. S rozhraním API můžou pracovat všechny role uživatelů v rámci služby IoT. Pro použití tohoto rozhraní API nepotřebujete k používání tohoto rozhraní API Defender pro přístup k IoT.
-
-#### <a name="externalauthenticationvalidation"></a>/external/authentication/validation
 
 #### <a name="method"></a>Metoda
 
@@ -2426,11 +2491,15 @@ response:
 }
 ```
 
-### <a name="change-password"></a>Změna hesla
+#### <a name="curl-command"></a>Příkaz cURL
+
+| Typ | Rozhraní API | Příklad |
+|--|--|--|
+| POST | složené – k-d "{" username ":" <USER_NAME> "," heslo ":" heslo "}" https://<IP_ADDRESS>/External/Authentication/Validation " | složené až k-d "{" username ":" myUser "," Password ":" 1234@abcd "}" https:/ <span> /127.0.0.1/External/Authentication/Validation " |
+
+### <a name="change-password---externalauthenticationset_password"></a>Změna hesla –/External/Authentication/set_password
 
 Pomocí tohoto rozhraní API můžete uživatelům umožnit změnit si vlastní hesla. S rozhraním API můžou pracovat všechny role uživatelů v rámci služby IoT. Pro použití tohoto rozhraní API nepotřebujete k používání tohoto rozhraní API Defender pro přístup k IoT.
-
-#### <a name="externalauthenticationset_password"></a>/External/Authentication/set_password
 
 #### <a name="method"></a>Metoda
 
@@ -2496,11 +2565,15 @@ response:
 | **heslo** | Řetězec | No |
 | **new_password** | Řetězec | No |
 
-### <a name="user-password-update-by-system-admin"></a>Aktualizace hesla uživatele správcem systému
+#### <a name="curl-command"></a>Příkaz cURL
+
+| Typ | Rozhraní API | Příklad |
+|--|--|--|
+| POST | složené-k-d "{" username ":" <USER_NAME> "," Password ":" <CURRENT_PASSWORD> "," new_password ":" <NEW_PASSWORD> "}"-H "Content-Type: Application/JSON ' https://<IP_ADDRESS>/External/Authentication/set_password | složené až k-d "{" username ":" myUser "," Password ":" 1234@abcd "," new_password ":" abcd@1234 "}"-H "Content-Type: Application/JSON" https:/ <span> /127.0.0.1/External/Authentication/Set_password |
+
+### <a name="user-password-update-by-system-admin---externalauthenticationset_password_by_admin"></a>Aktualizace hesla uživatele správcem systému –/External/Authentication/set_password_by_admin
 
 Pomocí tohoto rozhraní API umožněte správcům systému měnit hesla pro zadané uživatele. Aplikace Defender pro role uživatelů správce IoT můžou pracovat s rozhraním API. Pro použití tohoto rozhraní API nepotřebujete k používání tohoto rozhraní API Defender pro přístup k IoT.
-
-#### <a name="externalauthenticationset_password_by_admin"></a>/External/Authentication/set_password_by_admin
 
 #### <a name="method"></a>Metoda
 
@@ -2572,6 +2645,15 @@ response:
 | **jmen** | Řetězec | No |
 | **new_password** | Řetězec | No |
 
-## <a name="see-also"></a>Viz také
-[Prozkoumat detekci senzorů v inventáři zařízení](how-to-investigate-sensor-detections-in-a-device-inventory.md) 
- [Prozkoumat všechna zjišťování podnikového senzoru v inventáři zařízení](how-to-investigate-all-enterprise-sensor-detections-in-a-device-inventory.md)
+#### <a name="curl-command"></a>Příkaz cURL
+
+> [!div class="mx-tdBreakAll"]
+> | Typ | Rozhraní API | Příklad |
+> |--|--|--|
+> | POST | složené-k-d ' {"admin_username": "<ADMIN_USERNAME>", "admin_password": "<ADMIN_PASSWORD>", "username": "<USER_NAME>", "new_password": "<NEW_PASSWORD>"} '-H ' Content-Type: Application/JSON ' https://<IP_address>/External/Authentication/set_password_by_admin | kudrlinkou-k-d "{" admin_user ":" adminUser "," admin_password ":" 1234@abcd "," username ":" myUser "," new_password ":" abcd@1234 "}"-H "Content-Type: Application/JSON ' https:/ <span> /127.0.0.1/External/Authentication/set_password_by_admin |
+
+## <a name="next-steps"></a>Další kroky
+
+- [Prošetření detekovaných senzorů v inventáři zařízení](how-to-investigate-sensor-detections-in-a-device-inventory.md)
+
+- [Prošetření všech detekovaných podnikových senzorů v inventáři zařízení](how-to-investigate-all-enterprise-sensor-detections-in-a-device-inventory.md)

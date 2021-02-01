@@ -1,5 +1,5 @@
 ---
-title: Použití AI k pochopení dat služby Blob Storage
+title: Použití AI k obohacení obsahu objektu BLOB
 titleSuffix: Azure Cognitive Search
 description: Přečtěte si informace o funkcích přirozeného jazyka a analýz obrázků v Azure Kognitivní hledání a o tom, jak se tyto procesy vztahují k obsahu uloženému v objektech blob Azure.
 manager: nitinme
@@ -7,17 +7,17 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: a0d32f00bd3c7f8daa2984bdc7c9b9dfb5add218
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/02/2021
+ms.openlocfilehash: 3d427d80e502eed0825165e640acc0755515c5b0
+ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362793"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99222044"
 ---
-# <a name="use-ai-to-understand-blob-storage-data"></a>Použití AI k pochopení dat služby Blob Storage
+# <a name="use-ai-to-process-and-analyze-blob-content-in-azure-cognitive-search"></a>Použití AI ke zpracování a analýze obsahu objektů BLOB v Azure Kognitivní hledání
 
-Data v úložišti objektů BLOB v Azure jsou často řadou nestrukturovaných obsahu, jako jsou obrázky, dlouhé texty, soubory PDF a dokumenty Office. Díky funkcím AI v Azure Kognitivní hledání můžete pochopit a extrahovat cenné informace z objektů BLOB mnoha různými způsoby. Mezi příklady použití AI na obsah objektu BLOB patří:
+Obsah ve službě Azure Blob Storage, který se skládá z obrázků nebo dlouhý nerozlišený text, může projít analýzou hloubkového učení, aby se odhalily a mohly extrahovat cenné informace užitečné pro podřízené aplikace. Pomocí [rozšíření AI](cognitive-search-concept-intro.md)můžete:
 
 + Extrakce textu z obrázků pomocí optického rozpoznávání znaků (OCR)
 + Vytvoření popisu nebo značek scény z fotky
@@ -26,23 +26,23 @@ Data v úložišti objektů BLOB v Azure jsou často řadou nestrukturovaných o
 
 I když budete možná potřebovat jenom jednu z těchto funkcí AI, je běžné zkombinovat několik z nich do stejného kanálu (například extrakce textu ze skenovaného obrázku a hledání všech dat a míst, na které se odkazuje). Také je běžné zahrnout vlastní zpracování AI nebo strojového učení ve formě špičkových externích balíčků a modelů na pracovišti přizpůsobených vašim datům a vašim požadavkům.
 
-Rozšíření AI vytvoří nové informace zachycené jako text, které jsou uloženy v polích. Po obohacení můžete k těmto informacím přistupovat z indexu hledání prostřednictvím fulltextového vyhledávání nebo posílat obohacené dokumenty zpátky do služby Azure Storage, abyste mohli zasílat nová prostředí aplikací, která zahrnují zkoumání dat pro scénáře zjišťování nebo analýzy. 
+I když můžete použít rozšíření AI na libovolný zdroj dat podporovaný indexerem vyhledávání, objekty blob jsou nejčastěji používané struktury v kanálu rozšíření. Výsledky se připravují do indexu vyhledávání pro fulltextové vyhledávání, nebo se přesměrují zpátky na Azure Storage, aby se nové prostředí aplikace, které zahrnuje zkoumání dat pro scénáře zjišťování nebo analýzy, přidalo. 
 
 V tomto článku zobrazujeme obohacení AI prostřednictvím celé čočky, abyste mohli rychle poznat celý proces, od transformace nezpracovaných dat v objektech blob, aby se Queryable informace buď v indexu vyhledávání nebo ve znalostní bázi.
 
 ## <a name="what-it-means-to-enrich-blob-data-with-ai"></a>Co znamená "obohacení" dat objektů BLOB pomocí AI
 
-*Rozšíření AI* je součástí architektury indexování služby Azure kognitivní hledání, která integruje integrovaný AI od společnosti Microsoft nebo vlastního AI, který zadáte. Pomáhá implementovat ucelené scénáře, kdy potřebujete zpracovat objekty BLOB (jak existující, tak i nové, když jsou v nástroji nebo aktualizované), trhliny otevřou všechny formáty souborů pro extrakci obrázků a textu, extrakci požadovaných informací pomocí různých funkcí AI a jejich indexování v indexu vyhledávání pro rychlé hledání, načítání a průzkum. 
+*Rozšíření AI* je součástí architektury indexování služby Azure kognitivní hledání, která integruje modely strojového učení ze společnosti Microsoft nebo vlastních výukových modelů, které zadáte. Pomáhá implementovat ucelené scénáře, kdy potřebujete zpracovat objekty BLOB (jak existující, tak i nové, když jsou v nástroji nebo aktualizované), trhliny otevřou všechny formáty souborů pro extrakci obrázků a textu, extrakci požadovaných informací pomocí různých funkcí AI a jejich indexování v indexu vyhledávání pro rychlé hledání, načítání a průzkum. 
 
 Vstupy jsou vaše objekty BLOB v jednom kontejneru v úložišti objektů BLOB v Azure. Objekty blob můžou být skoro jakýkoli druh dat typu text nebo obrázek. 
 
 Výstupem je vždy index vyhledávání, který se používá pro rychlé vyhledávání textu, načítání a průzkum v klientských aplikacích. Kromě toho může být výstup také [*úložištěm znalostní báze*](knowledge-store-concept-intro.md) , které projekty rozšiřují do objektů blob Azure nebo tabulek Azure pro účely analýzy pro příjem dat v nástrojích, jako je Power BI nebo v úlohách v oblasti datových věd.
 
-V mezi je samotná architektura kanálu. Kanál je založen na funkci *indexeru* , ke které můžete přiřadit *dovednosti*, který se skládá z jedné nebo více *dovedností* , které poskytují AI. Účelem tohoto kanálu je vytvořit *obohacené dokumenty* , které vstupují jako nezpracovaný obsah, ale při přesouvání přes kanál si můžete vybrat další strukturu, kontext a informace. Obohacené dokumenty se při indexování spotřebují k vytváření obrácených indexů a dalších struktur používaných při fulltextovém vyhledávání nebo průzkumu a analýzách.
+V mezi je samotná architektura kanálu. Kanál je založen na [*indexerech*](search-indexer-overview.md), ke kterým můžete přiřadit [*dovednosti*](cognitive-search-working-with-skillsets.md), který se skládá z jedné nebo více *dovedností* poskytujících AI. Účelem tohoto kanálu je vytvořit *obohacené dokumenty* , které zadávají kanál jako nezpracovaný obsah, ale při přesunu kanálu si můžete vybrat další strukturu, kontext a informace. Obohacené dokumenty se při indexování spotřebují k vytváření obrácených indexů a dalších struktur používaných při fulltextovém vyhledávání nebo průzkumu a analýzách.
 
 ## <a name="required-resources"></a>Požadované prostředky
 
-Potřebujete službu Azure Blob Storage, Azure Kognitivní hledání a třetí službu nebo mechanismus, který poskytuje AI:
+Kromě služby Azure Blob Storage a Azure Kognitivní hledání potřebujete třetí službu nebo mechanismus, který poskytuje AI:
 
 + V případě integrovaných AI Kognitivní hledání integruje s rozhraními API Azure Cognitive Services Vision a přirozeného jazyka pro zpracování. [Prostředek Cognitive Services můžete připojit](cognitive-search-attach-cognitive-services.md) k přidání optického rozpoznávání znaků (OCR), analýzy obrázků nebo zpracování přirozeného jazyka (rozpoznávání jazyka, překlad textu, rozpoznávání entit, extrakce klíčových frází). 
 

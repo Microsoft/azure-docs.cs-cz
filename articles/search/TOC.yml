@@ -230,7 +230,7 @@
           items:
             - name: Prohledávání objektů blob
               href: search-blob-storage-integration.md
-            - name: Principy objektů blob s využitím AI
+            - name: Obohacení AI přes objekty blob
               href: search-blob-ai-integration.md
             - name: Konfigurace indexeru objektů blob
               href: search-howto-indexing-azure-blob-storage.md

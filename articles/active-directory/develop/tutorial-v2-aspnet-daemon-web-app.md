@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: d4f8ab190d0418fbb25dad2cd7af231eabfe0f02
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: a85ae227d45c8de6c3d04e4a058ebf9715421ca2
+ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090251"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99222061"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>Kurz: sestavení démona s více klienty, který používá platformu Microsoft identity
 
@@ -237,8 +237,8 @@ Pokud už je nepotřebujete, odstraňte objekt aplikace, který jste vytvořili 
 
 ## <a name="get-help"></a>Získání pomoci
 
-K získání podpory od komunity použijte [Microsoft Q&a](https://docs.microsoft.com/answers/topics/azure-ad-msal.html) .
-Položte své dotazy na Microsoft Q&a Projděte si stávající problémy, abyste viděli, jestli se někdo na svůj dotaz předá dotaz.
+K získání podpory od komunity použijte [Microsoft Q&a](https://docs.microsoft.com/answers/products/) .
+Položte své dotazy na [Microsoft Q&](https://docs.microsoft.com/answers/products/) a Projděte si stávající problémy, abyste viděli, jestli se někdo na svůj dotaz předá dotaz.
 Ujistěte se, že vaše dotazy nebo komentáře jsou označené jako "Azure-AD-ADAL-vyřazení", "Azure-AD-msal a" dotnet-Standard ".
 
 Pokud v ukázce zjistíte chybu, vyřešte prosím problém na [problémech na GitHubu](https://github.com/Azure-Samples/ms-identity-aspnet-daemon-webapp/issues).

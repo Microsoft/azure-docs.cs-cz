@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 09/12/2020
 ms.author: memildin
-ms.openlocfilehash: dfa562be4561e8aaec66d4bff51aadeba77cf35f
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: ce0808bc53ae663b80da793bf33b5b371d881961
+ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131334"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99222179"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>Ochrana úloh Kubernetes
 
@@ -62,7 +62,7 @@ Pokud chcete nakonfigurovat doporučení, nainstalujte  **doplněk Azure Policy 
         > [!TIP]
         > Doporučení je součástí pěti různých ovládacích prvků zabezpečení a nezáleží na tom, který z nich vybíráte v dalším kroku.
 
-    1. Z jakéhokoli ovládacího prvku zabezpečení vyberte doporučení a zobrazte prostředky, na které můžete nainstalovat doplněk.
+    1. V jakémkoli z ovládacích prvků zabezpečení vyberte doporučení, abyste viděli prostředky, na které můžete doplněk nainstalovat.
     1. Vyberte příslušný cluster a **opravte** ho.
 
         :::image type="content" source="./media/defender-for-kubernetes-usage/recommendation-to-install-policy-add-on-for-kubernetes-details.png" alt-text="Stránka s podrobnostmi doporučení pro * * Azure Policy doplňku pro Kubernetes by měla být na vašich clusterech nainstalována a povolena * *":::
