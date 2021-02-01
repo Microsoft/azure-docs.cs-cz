@@ -13,12 +13,12 @@ ms.date: 11/22/2019
 ms.author: negoe
 ms.reviewer: marsma, nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 5a032f45027cc4bffc7f2bc46c6ea1a69a1b83e4
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 2f9396e20ae0f426dddd57b32297cfe98e135c44
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178615"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225812"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>Použití MSAL v národním cloudovém prostředí
 
@@ -84,7 +84,7 @@ Povolení aplikace MSAL.js pro cloudy svrchovaného prostředí:
 1. Na stránce **Přehled** si poznamenejte hodnotu **ID aplikace (klienta)** pro pozdější použití.
     Tento kurz vyžaduje, abyste povolili [postup implicitního udělení](v2-oauth2-implicit-grant-flow.md). 
 1. V části **Spravovat** vyberte **ověřování**.
-1. V části **implicitní udělení** vyberte možnost **tokeny ID** a **přístupové tokeny**. Tokeny ID a přístupové tokeny jsou povinné, protože tato aplikace musí přihlašovat uživatele a volat rozhraní API.
+1. V části **implicitní udělení a hybridní toky** vyberte **tokeny ID** a **přístupové tokeny**. Tokeny ID a přístupové tokeny jsou povinné, protože tato aplikace musí přihlašovat uživatele a volat rozhraní API.
 1. Vyberte **Uložit**.
 
 ### <a name="step-2--set-up-your-web-server-or-project"></a>Krok 2: nastavení webového serveru nebo projektu

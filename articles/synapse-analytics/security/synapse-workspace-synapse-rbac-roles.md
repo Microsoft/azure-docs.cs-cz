@@ -1,5 +1,5 @@
 ---
-title: Synapse role RBAC
+title: Role Synapse RBAC
 description: Tento článek popisuje předdefinované role RBAC synapse
 author: billgib
 ms.service: synapse-analytics
@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: a978113265e5e61c0fc09ef0daeb1da9826f294d
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 1ffbb5579ea19d7d608dd9c9d600342cd89d371c
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572792"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225070"
 ---
 # <a name="synapse-rbac-roles"></a>Synapse role RBAC
 
@@ -39,7 +39,7 @@ Následující tabulka popisuje předdefinované role a obory, ve kterých se da
 
 |Role |Oprávnění|Obory|
 |---|---|-----|
-|Správce synapse  |Úplný synapse přístup k fondům SQL bez serveru, fondům Apache Spark a modulům Integration runtime.  Zahrnuje přístup pro vytváření, čtení, aktualizace a odstraňování všech publikovaných artefaktů kódu.  Zahrnuje výpočetní operátor, propojená Data Manager a uživatelská oprávnění přihlašovacích údajů pro přihlašovací údaje identity systému pracovního prostoru.  Zahrnuje přiřazování rolí synapse RBAC.  K vytváření, odstraňování a správě výpočetních prostředků se vyžadují oprávnění Azure. </br></br>_Může číst a zapisovat artefakty </br> mohou provádět všechny akce pro aktivity Spark. </br> Zobrazení protokolů fondů Spark může </br> Zobrazit uložený Poznámkový blok a výstup kanálu můžou </br> použít tajné klíče uložené pomocí propojených služeb nebo přihlašovací údaje </br> se můžou připojit k koncovým bodům bez SQL serveru pomocí SQL `db_datareader` , `db_datawriter` , `connect` a `grant` oprávnění </br> může přiřazovat a odvolávat synapse role RBAC v aktuálním oboru._|Pracovní prostor </br> Fond Spark<br/>Prostředí Integration Runtime </br>Propojená služba</br>Přihlašovací údaj |
+|Správce synapse  |Úplný synapse přístup k fondům SQL bez serveru, fondům Apache Spark a modulům Integration runtime.  Zahrnuje přístup pro vytváření, čtení, aktualizace a odstraňování všech publikovaných artefaktů kódu.  Zahrnuje výpočetní operátor, propojená Data Manager a uživatelská oprávnění přihlašovacích údajů pro přihlašovací údaje identity systému pracovního prostoru.  Zahrnuje přiřazování rolí synapse RBAC. Kromě správce synapse můžou vlastníci Azure také přiřadit role synapse RBAC. K vytváření, odstraňování a správě výpočetních prostředků se vyžadují oprávnění Azure. </br></br>_Může číst a zapisovat artefakty </br> mohou provádět všechny akce pro aktivity Spark. </br> Zobrazení protokolů fondů Spark může </br> Zobrazit uložený Poznámkový blok a výstup kanálu můžou </br> použít tajné klíče uložené pomocí propojených služeb nebo přihlašovací údaje </br> se můžou připojit k koncovým bodům bez SQL serveru pomocí SQL `db_datareader` , `db_datawriter` , `connect` a `grant` oprávnění </br> může přiřazovat a odvolávat synapse role RBAC v aktuálním oboru._|Pracovní prostor </br> Fond Spark<br/>Prostředí Integration Runtime </br>Propojená služba</br>Přihlašovací údaj |
 |Správce Apache Spark synapse</br>|Úplný přístup Synapse k fondům Apache Spark.  Vytváření, čtení, aktualizace a odstraňování přístupu k publikovaným definicím úloh Spark, poznámkovým blokům a jejich výstupům a ke knihovnám, propojeným službám a přihlašovacím údajům.  Zahrnuje přístup pro čtení všech ostatních publikovaných artefaktů kódu. Nezahrnuje oprávnění k používání přihlašovacích údajů a spouštění kanálů. Nezahrnuje udělení přístupu. </br></br>_Může provádět všechny akce u artefaktů Sparku, které </br> můžou provádět všechny akce v aktivitách Sparku._|Pracovní prostor</br>Fond Spark|
 |Správce synapse SQL|Úplný přístup Synapse k fondům SQL bez serveru.  Vytváření, čtení, aktualizace a odstraňování přístupu k publikovaným skriptům SQL, přihlašovacím údajům a propojeným službám.  Zahrnuje přístup pro čtení všech ostatních publikovaných artefaktů kódu.  Nezahrnuje oprávnění k používání přihlašovacích údajů a spouštění kanálů. Nezahrnuje udělení přístupu. </br></br>*Může provádět všechny akce s skripty SQL <br/> , které se můžou připojit k koncovým bodům bez SQL serveru pomocí SQL `db_datareader` ,, `db_datawriter` `connect` a `grant` oprávnění.*|Pracovní prostor|
 |Přispěvatel synapse|Úplný přístup Synapse k fondům SQL bez serveru, fondům Apache Spark prostředí Integration runtime.  Zahrnuje přístup k vytváření, čtení, aktualizaci a odstraňování všech publikovaných artefaktů kódu a jejich výstupů, včetně přihlašovacích údajů a propojených služeb.  Zahrnuje oprávnění operátora Compute. Nezahrnuje oprávnění k používání přihlašovacích údajů a spouštění kanálů. Nezahrnuje udělení přístupu. </br></br>_Může číst a zapisovat artefakty, které mohou </br> Zobrazit uložený Poznámkový blok a výstup kanálu, může zobrazit </br> všechny akce v aktivitách Spark, které </br> mohou zobrazovat protokoly fondů Spark_|Pracovní prostor </br> Fond Spark<br/> Prostředí Integration Runtime|

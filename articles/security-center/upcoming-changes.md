@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/25/2021
 ms.author: memildin
-ms.openlocfilehash: 99dadea37a519289120fcf30e394df1e0f7af5e7
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 83c1d8ac316703d9d22d0716c86c5731c3db7133
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757707"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226467"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Důležité nadcházející změny Azure Security Center
 
@@ -83,7 +83,7 @@ Další informace o těchto doporučeních najdete na [referenční stránce dop
 
 **Odhadované datum změny:** Q2 2021
 
-Aktuální verze **citlivých dat v databázích SQL by měla být klasifikována** v části použití řízení zabezpečení **klasifikace dat** se bude zařazovat a nahrazena novou verzí, která je lépe zarovnaná s strategií klasifikace dat společnosti Microsoft. Výsledek:
+Aktuální verze **citlivých dat v databázích SQL by měla být klasifikována** v části použít bezpečnostní ovládací prvek zabezpečení **klasifikace dat** bude nahrazena novou verzí, která je lépe zarovnána s strategií klasifikace dat společnosti Microsoft. Výsledek:
 
 - Doporučení už nebude mít vliv na vaše zabezpečené skóre.
 - Řízení zabezpečení (použití klasifikace dat) už nebude mít vliv na vaše zabezpečené skóre.

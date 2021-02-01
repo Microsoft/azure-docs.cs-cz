@@ -14,21 +14,21 @@ ms.workload: infrastructure
 ms.date: 01/04/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5ec3500c124d3e4f8cb1b46445c28c6a64c93526
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: d941bd9735149d08bfbd63ec97337dd7a3bac43b
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195445"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226654"
 ---
 #  <a name="what-is-sap-hana-on-azure-large-instances"></a>Co je SAP HANA ve velkých instancích Azure?
 
-SAP HANA v Azure (velké instance) je jedinečné řešení pro Azure. Kromě poskytování virtuálních počítačů pro nasazení a spouštění SAP HANA vám Azure nabízí možnost spouštět a nasazovat SAP HANA na holé servery, které jsou pro vás vyhrazené. Řešení SAP HANA v Azure (velké instance) sestavuje na nesdíleném hardwaru hosta/serveru, který vám byl přiřazen. Serverový hardware je vložený do větších razítek, která obsahují výpočetní výkon, server, síť a infrastrukturu úložiště. V kombinaci se jedná o certifikaci HANA (Data Center Integration) s certifikací. SAP HANA v Azure (velké instance) nabízí různé serverové SKU a velikosti. Jednotky můžou mít 36 procesory Intel a 768 GB paměti a můžou jít až o jednotky, které mají až 480 procesorů Intel a až 24 TB paměti.
+SAP HANA v Azure (velké instance) je jedinečné řešení pro Azure. Kromě poskytování virtuálních počítačů pro nasazení a spouštění SAP HANA vám Azure nabízí možnost spouštět a nasazovat SAP HANA na holé servery, které jsou pro vás vyhrazené. Řešení SAP HANA v Azure (velké instance) sestavuje na nesdíleném hardwaru hosta/serveru, který vám byl přiřazen. Serverový hardware je vložený do větších razítek, která obsahují výpočetní výkon, server, síť a infrastrukturu úložiště. SAP HANA v Azure (velké instance) nabízí různé serverové SKU a velikosti. Jednotky můžou mít 36 procesory Intel a 768 GB paměti a můžou jít až o jednotky, které mají až 480 procesorů Intel a až 24 TB paměti.
 
 Izolace zákazníka v rámci razítka infrastruktury se provádí v klientech, což vypadá takto:
 
 - **Sítě**: izolace zákazníků v rámci infrastruktury služby Virtual Networks na zákazníka přiřazeného zákazníka. Tenant je přiřazen jednomu zákazníkovi. Zákazník může mít více tenantů. Izolace sítě klientů zakazuje síťovou komunikaci mezi klienty v úrovni razítka infrastruktury, a to i v případě, že klienti patří stejnému zákazníkovi.
-- **Komponenty úložiště**: izolace prostřednictvím virtuálních počítačů úložiště, ke kterým jsou přiřazené svazky úložiště. Svazky úložiště se dají přiřadit jenom k jednomu virtuálnímu počítači úložiště. Virtuální počítač úložiště se přiřazuje výhradně jednomu klientovi v SAP HANA TDI Certified Infrastructure Stack. V důsledku toho jsou svazky úložiště přiřazené k virtuálnímu počítači úložiště dostupné jenom v jednom konkrétním a souvisejícím tenantovi. Nejsou viditelné mezi různými nasazenými klienty.
+- **Komponenty úložiště**: izolace prostřednictvím virtuálních počítačů úložiště, ke kterým jsou přiřazené svazky úložiště. Svazky úložiště se dají přiřadit jenom k jednomu virtuálnímu počítači úložiště. Virtuální počítač úložiště se přiřazuje výhradně jednomu klientovi v zásobníku infrastruktury. V důsledku toho jsou svazky úložiště přiřazené k virtuálnímu počítači úložiště dostupné jenom v jednom konkrétním a souvisejícím tenantovi. Nejsou viditelné mezi různými nasazenými klienty.
 - **Server nebo hostitel**: jednotka serveru nebo hostitele není sdílená mezi zákazníky nebo klienty. Server nebo hostitel, který je nasazený pro zákazníka, je atomická výpočetní jednotka, která je přiřazená jednomu jednomu tenantovi. Nepoužívají se *žádné* hardwarové oddíly ani softwarové dělení, což by mohlo mít za následek sdílení hostitele nebo serveru s jiným zákazníkem. Svazky úložiště, které jsou přiřazené k virtuálnímu počítači úložiště určitého tenanta, jsou připojené k tomuto serveru. Tenant může mít jednu z několika serverových jednotek různých SKU, které jsou výhradně přiřazeny.
 - V rámci SAP HANA na infrastruktuře infrastruktury Azure (velké instance) se nasazuje a izoluje mnoho různých tenantů, a to prostřednictvím konceptů tenanta na úrovni sítě, úložiště a výpočetní úrovně. 
 

@@ -1,18 +1,18 @@
 ---
 title: Konfigurace vlastního nastavení
 description: Nakonfigurujte nastavení, která se vztahují na celé Azure App Service prostředí. Naučte se, jak to udělat pomocí Azure Resource Manager šablon.
-author: stefsch
+author: ccompy
 ms.assetid: 1d1d85f3-6cc6-4d57-ae1a-5b37c642d812
 ms.topic: tutorial
-ms.date: 10/03/2020
-ms.author: stefsch
+ms.date: 01/29/2021
+ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 88163c07d570df5e0ff343776c17c463010ce368
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c1e81d02aa35a40a296f04e456be09eeed10331
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91713286"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226385"
 ---
 # <a name="custom-configuration-settings-for-app-service-environments"></a>Vlastní nastavení konfigurace pro App Service prostředí
 ## <a name="overview"></a>Přehled
@@ -61,7 +61,7 @@ Například pokud má App Service Environment čtyři front-endy, bude trvat př
 
 ## <a name="enable-internal-encryption"></a>Povolit interní šifrování
 
-App Service Environment funguje jako černý rámeček, kde nelze zobrazit interní součásti nebo komunikaci v rámci systému. Pokud chcete povolit vyšší propustnost, šifrování není ve výchozím nastavení povolené mezi interními součástmi. Systém je zabezpečený, protože provoz je zcela nepřístupný ke sledování nebo přístupu. Pokud máte požadavek na dodržování předpisů, přestože vyžaduje úplné šifrování cesty k datům z koncového konce, existuje způsob, jak to povolit s clusterSetting.  
+App Service Environment funguje jako černý rámeček, kde nelze zobrazit interní součásti nebo komunikaci v rámci systému. Pokud chcete povolit vyšší propustnost, šifrování není ve výchozím nastavení povolené mezi interními součástmi. Systém je zabezpečený, protože provoz je nepřístupný ke sledování nebo přístupu. Pokud máte požadavek na dodržování předpisů, přestože vyžaduje úplné šifrování cesty k datům z koncového konce, existuje způsob, jak povolit šifrování úplné cesty k datům pomocí clusterSetting.  
 
 ```json
 "clusterSettings": [
@@ -71,10 +71,10 @@ App Service Environment funguje jako černý rámeček, kde nelze zobrazit inter
     }
 ],
 ```
-Tím se zašifruje interní síťový provoz ve vašem přihlašování mezi front-endy a pracovními procesy, zašifruje se stránkovací soubor a také zašifruje pracovní disky. Jakmile je InternalEncryption clusterSetting povolený, může to mít dopad na výkon systému. Když provedete změnu a povolíte InternalEncryption, váš pomocný stav bude v nestabilním stavu, dokud se změna zcela nerozšíří. Dokončení šíření změny může trvat několik hodin, a to v závislosti na tom, kolik instancí jste v pomocném mechanismu. Důrazně doporučujeme, abyste tuto možnost nepovolili u pomocného mechanismu, když se používá. Pokud potřebujete tuto možnost povolit u aktivně využívaného mechanismu přihlašování, důrazně doporučujeme, abyste přepnuli provoz do prostředí zálohování, dokud se operace nedokončí. 
+Nastavení InternalEncryption na hodnotu true šifruje interní síťový provoz ve vašem pomocném mechanismu mezi front-endy a pracovními procesy, šifruje stránkovací soubor a také šifruje pracovní disky. Jakmile je InternalEncryption clusterSetting povolený, může to mít dopad na výkon systému. Když provedete změnu a povolíte InternalEncryption, váš pomocný stav bude v nestabilním stavu, dokud se změna zcela nerozšíří. Dokončení šíření změny může trvat několik hodin, a to v závislosti na tom, kolik instancí jste v pomocném mechanismu. Důrazně doporučujeme, abyste InternalEncryption při použití pomocného mechanismu nepovolili. Pokud potřebujete povolit InternalEncryption v aktivně používaném pomocném mechanismem, důrazně doporučujeme, abyste přepnuli provoz do prostředí zálohování, dokud se operace nedokončí. 
 
 
-## <a name="disable-tls-10-and-tls-11"></a>Zakázat TLS 1,0 a TLS 1,1
+## <a name="disable-tls-10-and-tls-11"></a>Zákaz protokolu TLS 1.0 a TLS 1.1
 
 Pokud chcete v aplikaci spravovat nastavení TLS podle aplikace, můžete použít pokyny uvedené v dokumentaci k [Nastavení Vynutilí TLS](../configure-ssl-bindings.md#enforce-tls-versions) . 
 
@@ -92,13 +92,13 @@ Pokud chcete zakázat všechny příchozí přenosy TLS 1,0 a TLS 1,1 pro všech
 Název nastavení říká 1,0, ale při konfiguraci zakáže protokol TLS 1,0 i TLS 1,1.
 
 ## <a name="change-tls-cipher-suite-order"></a>Změna pořadí šifrovací sady TLS
-Další otázkou od zákazníků je, že pokud můžou upravit seznam šifr vydaných serverem a můžete to dosáhnout úpravou **clusterSettings** , jak je znázorněno níže. Seznam šifrovacích sad, které jsou k dispozici, lze načíst z [tohoto článku na webu MSDN](https://msdn.microsoft.com/library/windows/desktop/aa374757\(v=vs.85\).aspx).
+Pomocného nástroje podporuje změnu šifrovací sady z výchozího nastavení. Výchozí sadou šifr je stejná sada, která se používá ve službě pro více tenantů. Změna šifrovacích sad má vliv na celé nasazení App Service tím, že je to možné jenom v samoobslužném přihlášení k jednomu tenantovi. Pro pomocného objekt pro pořízení jsou vyžadovány dvě šifrovací sady; TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 a TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256. Pokud chcete, aby váš správce služby pracoval s nejsilnějšími a největšími sadami šifrovacích sad, použijte pouze dvě požadované šifry. Chcete-li nakonfigurovat pomocného mechanismu pro použití pouze těch šifr, které vyžaduje, upravte **clusterSettings** , jak je uvedeno níže. 
 
 ```json
 "clusterSettings": [
     {
         "name": "FrontEndSSLCipherSuiteOrder",
-        "value": "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384_P256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256_P256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P256"
+        "value": "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256"
     }
 ],
 ```

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 131cb325e3581a135be7a88f26c59637d35bc5f3
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: b2ae48c76ccba80d274e7463b31782b4fbc6a976
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937965"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225710"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Rychlý Start: přihlášení uživatelů a získání přístupového tokenu v ZABEZPEČENÉm kódu JavaScript
 
@@ -55,8 +55,9 @@ Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.
 > 1. V části **podporované typy účtů** vyberte **účty v libovolném organizačním adresáři a osobní účty Microsoft**.
 > 1. Vyberte **Zaregistrovat**. Na stránce **Přehled** aplikace si poznamenejte hodnotu **ID aplikace (klienta)** pro pozdější použití.
 > 1. Tento rychlý Start vyžaduje, aby byl povolený [tok implicitního udělení](v2-oauth2-implicit-grant-flow.md) . V části **Spravovat** vyberte **ověřování**.
-> 1. V části **konfigurace platformy** vyberte **Přidat platformu**. Panel se otevře vlevo. Vyberte oblast **webové aplikace** .
-> 1. Pořád na levé straně nastavte hodnotu **identifikátoru URI přesměrování** na `http://localhost:3000/` . Pak vyberte **přístupový token** a **token ID**.
+> 1. V části **Konfigurace platforem**  >  **přidejte platformu**. Vyberte **Web**.
+> 1. Nastavte hodnotu **identifikátoru URI přesměrování** na `http://localhost:3000/` . 
+> 1. V části **implicitní udělení a hybridní toky** vyberte **přístupové tokeny** a **tokeny ID** .
 > 1. Vyberte **Konfigurovat**.
 
 > [!div class="sxs-lookup" renderon="portal"]

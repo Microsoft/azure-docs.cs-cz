@@ -7,23 +7,23 @@ manager: celestedg
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 09/01/2020
+ms.date: 02/01/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: edff5354d0565bd32cd0332b4aa0f215c2980d73
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: a54ed9dc6557d9b613485bf28e74af0c59fc9e5e
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949781"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225204"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Model fakturace pro Azure Active Directory B2C
 
 Ceny za Azure Active Directory B2C (Azure AD B2C) jsou založené na měsíčních aktivních uživatelích (MAU), což je počet jedinečných uživatelů s aktivitou ověřování v kalendářním měsíci. Tento model fakturace se vztahuje na klienty Azure AD B2C a [spolupráci uživatelů Azure AD hosta (B2B)](../active-directory/external-identities/external-identities-pricing.md). MAU účtování pomáhá snižovat náklady tím, že nabízí bezplatnou úroveň a flexibilní a předvídatelné ceny. V tomto článku se dozvíte o fakturaci MAU, propojování klientů Azure AD B2C k předplatnému a změně cenové úrovně.
 
 > [!IMPORTANT]
-> Tento článek neobsahuje informace o cenách. Nejnovější informace o fakturaci a cenách využití najdete v tématu [Azure Active Directory B2C ceny](https://azure.microsoft.com/pricing/details/active-directory-b2c/).
+> Tento článek neobsahuje informace o cenách. Nejnovější informace o fakturaci a cenách využití najdete v tématu [Azure Active Directory B2C ceny](https://azure.microsoft.com/pricing/details/active-directory-b2c/). Podrobnosti o tom, kde je služba Azure AD B2C dostupná a kde jsou uložená uživatelská data, najdete v tématu také [Azure AD B2C dostupnost oblasti a data](data-residency.md) .
 
 ## <a name="what-do-i-need-to-do"></a>Co musím udělat?
 
@@ -78,7 +78,7 @@ Tenant musí být propojený s příslušnou cenovou úrovní Azure na základě
 
 Pokud chcete změnit cenovou úroveň, postupujte podle těchto kroků.
 
-1. Přihlaste se k webu Azure Portal.
+1. Přihlaste se k portálu Azure.
 
 2. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje předplatné Azure, se kterým je váš TENANT Azure B2C *propojený (nevybírejte* samotného klienta Azure AD B2C).
 
@@ -125,7 +125,7 @@ Tady je postup, jak převést MAU na fakturaci na stávající prostředek Azure
 
 Měření založené na MAU je povolené, jakmile budete vy, předplatné nebo vlastníka prostředků, potvrďte změnu. Vaše měsíční vyúčtování bude odrážet jednotky ověřování účtované do změny a nové jednotky MAU, které začínají změnou.
 
-Uživatelům se během přechodného měsíce nepočítá dvakrát. Jedinečným aktivním uživatelům, kteří se před změnou ověřují, se za kalendářní měsíc účtuje sazba za ověřování. Tyto stejné uživatele nejsou zahrnuté do výpočtu MAU pro zbytek fakturačního cyklu předplatného. Například:
+Uživatelům se během přechodného měsíce nepočítá dvakrát. Jedinečným aktivním uživatelům, kteří se před změnou ověřují, se za kalendářní měsíc účtuje sazba za ověřování. Tyto stejné uživatele nejsou zahrnuté do výpočtu MAU pro zbytek fakturačního cyklu předplatného. Příklad:
 
 * Tenant společnosti Contoso B2C má 1 000 uživatelů. 250 uživatelů v daném měsíci jsou aktivní. Správce předplatného se od desátého dne v měsíci změní z ověřování na měsíčně aktivních uživatelů (MAU).
 * Fakturace za 1. den se účtuje podle modelu ověřování.

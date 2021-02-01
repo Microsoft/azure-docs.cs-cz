@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 02/01/2021
 ms.author: panosper
-ms.openlocfilehash: a6f75a80fd73844c975b332db8a0e8919cde9f0d
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 61768991fc4e72b44568bd92278427e6af398d52
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98072169"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226552"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Časté otázky týkající se řeči na text
 
@@ -83,7 +83,7 @@ Odpověď **: můžete** použít [REST API](https://centralus.dev.cognitive.mic
 
 **Otázka: jsou protokolovány moje požadavky?**
 
-Odpověď **: ve** výchozím nastavení se požadavky neprotokolují (ani zvuk ani přepis). V případě potřeby můžete při [vytváření vlastního koncového bodu](./how-to-custom-speech-train-model.md)vybrat *obsah protokolu z této možnosti koncového bodu* . Můžete také povolit protokolování zvuku v [sadě Speech SDK](speech-sdk.md) na základě jednotlivých požadavků bez vytvoření vlastního koncového bodu. V obou případech budou výsledky zvuku a rozpoznávání požadavků uloženy v zabezpečeném úložišti. U předplatných, která používají úložiště vlastněná společností Microsoft, budou k dispozici po dobu 30 dnů.
+Odpověď **: ve** výchozím nastavení se požadavky neprotokolují (ani zvuk ani přepis). V případě potřeby můžete při [vytváření vlastního koncového bodu](how-to-custom-speech-train-model.md#deploy-a-custom-model)vybrat *obsah protokolu z této možnosti koncového bodu* . Můžete také povolit protokolování zvuku v [sadě Speech SDK](how-to-use-logging.md) na základě jednotlivých požadavků bez vytvoření vlastního koncového bodu. V obou případech budou výsledky zvuku a rozpoznávání požadavků uloženy v zabezpečeném úložišti. U předplatných, která používají úložiště vlastněná společností Microsoft, budou k dispozici po dobu 30 dnů.
 
 Pokud používáte vlastní koncový bod s *obsahem protokolu z tohoto koncového bodu* , můžete soubory protokolu exportovat na stránce nasazení v nástroji Speech Studio. Pokud je povoleno protokolování zvuku prostřednictvím sady SDK, zavolejte [rozhraní API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetBaseModelLogs) pro přístup k souborům.
 
@@ -181,4 +181,4 @@ Prostředí pro rozpoznávání řeči, která jsou integrovaná do Microsoft 36
 ## <a name="next-steps"></a>Další kroky
 
 - [Řešení potíží](troubleshooting.md)
-- [Poznámky k verzi](releasenotes.md)
+- [Zpráva k vydání verze](releasenotes.md)

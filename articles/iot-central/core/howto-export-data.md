@@ -8,12 +8,12 @@ ms.date: 11/05/2020
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperf-fy21q1, contperf-fy21q3
-ms.openlocfilehash: 74de0481bf6786d245fb96f5d102ab72a00031c8
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 350cd7c14a4f1ee5058a60ccf60c1205ce97916a
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98760894"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226056"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>Export dat IoT do cloudových cílů pomocí exportu dat
 
@@ -166,7 +166,7 @@ Teď, když máte cíl exportovat data do, nastavte export dat do aplikace IoT C
 
 1. Po dokončení nastavení exportu vyberte **Uložit**. Po několika minutách se vaše data zobrazí ve vašich cílech.
 
-## <a name="export-contents-and-format"></a>Exportovat obsah a formát
+## <a name="destinations"></a>Cíle
 
 ### <a name="azure-blob-storage-destination"></a>Cíl Azure Blob Storage
 
@@ -187,7 +187,7 @@ Poznámky nebo kontejner systému vlastností zprávy obsahují `iotcentral-devi
 
 V případě míst pro Webhooky se data exportují i téměř v reálném čase. Data v těle zprávy jsou ve stejném formátu jako pro Event Hubs a Service Bus.
 
-### <a name="telemetry-format"></a>Formát telemetrie
+## <a name="telemetry-format"></a>Formát telemetrie
 
 Každá exportovaná zpráva obsahuje normalizovanou podobu celé zprávy odeslané zařízením v těle zprávy. Zpráva je ve formátu JSON a je kódovaná jako UTF-8. Mezi informace v každé zprávě patří:
 
@@ -231,6 +231,102 @@ Následující příklad ukazuje exportovanou zprávu telemetrie:
     "messageProperties": {
       "messageProp": "value"
     }
+}
+```
+
+### <a name="message-properties"></a>Vlastnosti zprávy
+
+Zprávy telemetrie mají kromě datové části telemetrie také vlastnosti pro metadata. Předchozí fragment kódu ukazuje příklady systémových zpráv, například `deviceId` a `enqueuedTime` . Další informace o vlastnostech systémové zprávy najdete v tématu [systémové vlastnosti D2C zpráv o IoT Hub](../../iot-hub/iot-hub-devguide-messages-construct.md#system-properties-of-d2c-iot-hub-messages).
+
+Pokud potřebujete do zpráv telemetrie přidat vlastní metadata, můžete do zpráv telemetrie přidat vlastnosti. Například je třeba přidat časové razítko, když zařízení vytvoří zprávu.
+
+Následující fragment kódu ukazuje, jak přidat `iothub-creation-time-utc` vlastnost do zprávy při jejím vytváření na zařízení:
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+```javascript
+async function sendTelemetry(deviceClient, index) {
+  console.log('Sending telemetry message %d...', index);
+  const msg = new Message(
+    JSON.stringify(
+      deviceTemperatureSensor.updateSensor().getCurrentTemperatureObject()
+    )
+  );
+  msg.properties.add("iothub-creation-time-utc", new Date().toISOString());
+  msg.contentType = 'application/json';
+  msg.contentEncoding = 'utf-8';
+  await deviceClient.sendEvent(msg);
+}
+```
+
+# <a name="java"></a>[Java](#tab/java)
+
+```java
+private static void sendTemperatureTelemetry() {
+  String telemetryName = "temperature";
+  String telemetryPayload = String.format("{\"%s\": %f}", telemetryName, temperature);
+
+  Message message = new Message(telemetryPayload);
+  message.setContentEncoding(StandardCharsets.UTF_8.name());
+  message.setContentTypeFinal("application/json");
+  message.setProperty("iothub-creation-time-utc", Instant.now().toString());
+
+  deviceClient.sendEventAsync(message, new MessageIotHubEventCallback(), message);
+  log.debug("My Telemetry: Sent - {\"{}\": {}°C} with message Id {}.", telemetryName, temperature, message.getMessageId());
+  temperatureReadings.put(new Date(), temperature);
+}
+```
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+```csharp
+private async Task SendTemperatureTelemetryAsync()
+{
+  const string telemetryName = "temperature";
+
+  string telemetryPayload = $"{{ \"{telemetryName}\": {_temperature} }}";
+  using var message = new Message(Encoding.UTF8.GetBytes(telemetryPayload))
+  {
+      ContentEncoding = "utf-8",
+      ContentType = "application/json",
+  };
+  message.Properties.Add("iothub-creation-time-utc", DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ssZ"));
+  await _deviceClient.SendEventAsync(message);
+  _logger.LogDebug($"Telemetry: Sent - {{ \"{telemetryName}\": {_temperature}°C }}.");
+}
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+async def send_telemetry_from_thermostat(device_client, telemetry_msg):
+    msg = Message(json.dumps(telemetry_msg))
+    msg.custom_properties["iothub-creation-time-utc"] = datetime.now(timezone.utc).isoformat()
+    msg.content_encoding = "utf-8"
+    msg.content_type = "application/json"
+    print("Sent message")
+    await device_client.send_message(msg)
+```
+
+---
+
+Následující fragment kódu ukazuje tuto vlastnost ve zprávě exportované do úložiště objektů BLOB:
+
+```json
+{
+  "applicationId":"5782ed70-b703-4f13-bda3-1f5f0f5c678e",
+  "messageSource":"telemetry",
+  "deviceId":"sample-device-01",
+  "schema":"default@v1",
+  "templateId":"urn:modelDefinition:mkuyqxzgea:e14m1ukpn",
+  "enqueuedTime":"2021-01-29T16:45:39.143Z",
+  "telemetry":{
+    "temperature":8.341033560421833
+  },
+  "messageProperties":{
+    "iothub-creation-time-utc":"2021-01-29T16:45:39.021Z"
+  },
+  "enrichments":{}
 }
 ```
 

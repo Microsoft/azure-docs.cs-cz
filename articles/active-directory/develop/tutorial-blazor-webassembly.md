@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 4d6401c53071235784a5371a4a6315e4e25a438f
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 30b7f1054f7bfee8dc58638791f0b8a424de92a4
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98680261"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226418"
 ---
 # <a name="tutorial-sign-in-users-and-call-a-protected-api-from-a-blazor-webassembly-app"></a>Kurz: přihlášení uživatelů a volání chráněného rozhraní API z aplikace Blazor WebAssembly
 
@@ -42,7 +42,7 @@ Každá aplikace, která používá Azure Active Directory (Azure AD) pro ověř
 - U **podporovaných typů účtů** vyberte **účty jenom v tomto organizačním adresáři**.
 - Rozevírací seznam **identifikátor URI přesměrování** nastavte na **Web** a zadejte `https://localhost:5001/authentication/login-callback` . Výchozí port pro aplikaci běžící na Kestrel je 5001. Pokud je aplikace k dispozici na jiném portu, zadejte číslo portu místo `5001` .
 
-Po registraci zaškrtněte v části **ověřování**  >  **implicitní udělení oprávnění** zaškrtnutí políček pro **přístupové tokeny** a **tokeny ID** a pak vyberte tlačítko **Uložit** .
+Po registraci vyberte v části **Spravovat** možnost **ověřování**  >  **implicitní udělení a hybridní toky**. Vyberte **přístupové tokeny** a **tokeny ID** a pak vyberte **Uložit**.
 
 ## <a name="create-the-app-using-the-net-core-cli"></a>Vytvoření aplikace pomocí .NET Core CLI
 
@@ -80,7 +80,7 @@ Součásti této šablony, které povolují přihlášení pomocí služby Azure
 
 [Microsoft Graph](/graph/overview) obsahuje rozhraní API, která poskytují přístup k datům Microsoft 365 pro vaše uživatele, a podporují tokeny vydané platformou Microsoft identity, což umožňuje, aby jako příklad používalo správné chráněné rozhraní API. V této části přidáte kód pro volání Microsoft Graph a zobrazení e-mailů uživatele na stránce načíst data aplikace.
 
-Tato část je napsaná pomocí společného přístupu k volání chráněného rozhraní API pomocí pojmenovaného klienta. Stejnou metodu lze použít pro jiná chráněná rozhraní API, která chcete volat. Pokud však plánujete volat Microsoft Graph z vaší aplikace, můžete použít sadu Graph SDK ke snížení často používaného textu. Dokumentace .NET obsahuje pokyny [k používání sady Graph SDK](/aspnet/core/blazor/security/webassembly/graph-api?view=aspnetcore-5.0).
+Tato část je napsaná pomocí společného přístupu k volání chráněného rozhraní API pomocí pojmenovaného klienta. Stejnou metodu lze použít pro jiná chráněná rozhraní API, která chcete volat. Pokud však plánujete volat Microsoft Graph z vaší aplikace, můžete použít sadu Graph SDK ke snížení často používaného textu. Dokumentace .NET obsahuje pokyny [k používání sady Graph SDK](/aspnet/core/blazor/security/webassembly/graph-api?view=aspnetcore-5.0&preserve-view=true).
 
 Než začnete, odhlaste se od své aplikace, protože budete provádět změny požadovaných oprávnění a váš aktuální token nebude fungovat. Pokud jste to ještě neudělali, spusťte aplikaci znovu a před aktualizací kódu níže vyberte možnost **Odhlásit** se.
 

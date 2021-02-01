@@ -8,12 +8,12 @@ ms.date: 01/26/2021
 ms.author: prsandhu
 ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: e8e62d92afb70ec9d4df40f677de05583ef472b0
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 3916cd43a42ef273a45a9992b45d8b9f043c9364
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955779"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226620"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>Služby Azure, které podporují zóny dostupnosti
 
@@ -47,16 +47,16 @@ Pro zajištění komplexní provozní kontinuity v Azure Sestavte architekturu a
 ## <a name="azure-regions-with-availability-zones"></a>Oblasti Azure s Zóny dostupnosti
 
 
-| Amerika           | Evropa         | Německo              | Afrika              | Asie a Tichomoří   |
-|--------------------|----------------|----------------------|---------------------|----------------|
-|                    |                |                      |                     |                |
-| Střední Kanada     | Francie – střed | Německo – středozápad | Jihoafrická Jižní Afrika – sever * | Japonsko – východ     |
-| USA – střed         | Severní Evropa   |                      |                     | Jihovýchodní Asie |
-| East US            | Spojené království – jih       |                      |                     | Austrálie – východ |
-| USA – východ 2          | West Europe    |                      |                     |                |
-| Střed USA – jih |                |                      |                     |                |
-| US Gov – Virginie * |                |                      |                     |                |
-| Západní USA 2        |                |                      |                     |                |
+| Amerika           | Evropa               | Afrika              | Asie a Tichomoří   |
+|--------------------|----------------------|---------------------|----------------|
+|                    |                      |                     |                |
+| Střední Kanada     | Francie – střed       | Jihoafrická Jižní Afrika – sever * | Japonsko – východ     |
+| USA – střed         | Německo – středozápad |                     | Southeast Asia |
+| East US            | Severní Evropa         |                     | Austrálie – východ |
+| USA – východ 2          | Spojené království – jih             |                     |                |
+| Střed USA – jih | West Europe          |                     |                |
+| US Gov – Virginie * |                      |                     |                |
+| Západní USA 2        |                      |                     |                |
 
 
 \* Další informace o podpoře Zóny dostupnosti a dostupných služeb v těchto oblastech vám poskytne zástupce Microsoftu pro prodej nebo zákazníky. Informace o nadcházejících oblastech, které budou podporovat Zóny dostupnosti, najdete v tématu geografické oblasti [Azure](https://azure.microsoft.com/en-us/global-infrastructure/geographies/).

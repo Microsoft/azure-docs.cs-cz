@@ -11,12 +11,12 @@ author: knicholasa
 ms.author: nichola
 manager: martinco
 ms.date: 11/23/2020
-ms.openlocfilehash: b32f9dd10d9bd03a7e446616d9941e7bd1a9c3ed
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: bc3b041e44fad66a4edc6ff34c0e534dc423de86
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98724904"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226586"
 ---
 # <a name="increase-the-resilience-of-authentication-and-authorization-in-client-applications-you-develop"></a>Zvýšení odolnosti při ověřování a autorizaci v klientských aplikacích, které vyvíjíte
 
@@ -97,7 +97,7 @@ Obecně platí, že aplikace, která používá moderní ověřování, zavolá 
 
 ### <a name="cache-tokens"></a>Tokeny mezipaměti
 
-Aplikace by měly správně dodržet tokeny mezipaměti od identity Microsoftu. Pokud vaše aplikace obdrží tokeny, odpověď HTTP obsahující tokeny obsahuje také vlastnost "expires_in", která oznamuje aplikaci, jak dlouho ukládat do mezipaměti a znovu použít token. V takovém případě je důležité, aby aplikace používaly vlastnost "expires_in" k určení životnosti tokenu. Aplikace se nikdy nepokouší dekódovat přístupový token rozhraní API.
+Aplikace by měly správně dodržet tokeny mezipaměti od identity Microsoftu. Pokud vaše aplikace obdrží tokeny, odpověď HTTP obsahující tokeny obsahuje také vlastnost "expires_in", která oznamuje aplikaci, jak dlouho ukládat do mezipaměti a znovu použít token. Je důležité, aby aplikace používaly vlastnost "expires_in" k určení životnosti tokenu. Aplikace se nikdy nepokouší dekódovat přístupový token rozhraní API.
 
 ![Aplikace, která volá Microsoft identity, ale volání prochází přes mezipaměť tokenů na zařízení, na kterém je aplikace spuštěná.](media/resilience-client-app/token-cache.png)
 

@@ -3,12 +3,12 @@ title: Správa zásad nahrávání – Azure
 description: Toto téma vysvětluje, jak spravovat zásady nahrávání.
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: d3a1be915dc1cc8714e49cc7b2fe68bbe9cad161
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec72f28496c1392b9d95134c343e1892998a0c28
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87011477"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99224985"
 ---
 # <a name="manage-recording-policy"></a>Správa zásad nahrávání
 
@@ -45,7 +45,7 @@ Výše uvedené pravidlo:
 * Určuje, že když se objekty blob dostanou déle než 30 dní, přesunou se z [vrstvy Hot Accessu na studenou](../../storage/blobs/storage-blob-storage-tiers.md?tabs=azure-portal).
 * A když jsou objekty blob mladší než 90 dní, budou se odstraňovat.
 
-Vzhledem k tomu, že Live video Analytics archivuje vaše video v určených časových jednotkách, váš Asset bude obsahovat řadu objektů blob, jeden objekt blob na segment. Když zásady správy životního cyklu nastanou a odstraní starší objekty blob, budete mít nadále přístup k zbývajícím objektům blob a jejich přehrávání prostřednictvím rozhraní API služby Media Service. Další informace najdete v tématu [Přehrávání nahrávek](playback-recordings-how-to.md). 
+Když použijete Live video Analytics k nahrání do assetu, zadáte `segmentLength` vlastnost, která modulu oznámí minimální dobu trvání videa (v sekundách) před zápisem do cloudu. Vaše Asset bude obsahovat řadu segmentů, z nichž každá má časové razítko vytvoření, které je `segmentLength` novější než předchozí. Když se zásada správy životního cyklu zahájí, odstraní segmenty starší než zadaná prahová hodnota. Dál ale budete mít přístup ke zbývajícím segmentům přes rozhraní API služby Media Service a můžete je přehrávat zpátky. Další informace najdete v tématu [přehrání záznamů](playback-recordings-how-to.md). 
 
 ## <a name="limitations"></a>Omezení
 

@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 01/28/2021
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 369ec11050fa7dbc09159d88793685ad5fbdb3e5
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: f4640bbd445b27942d757cc4e09aa7e673550ebc
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99053956"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226518"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Nejčastější dotazy k aplikaci Microsoft Authenticator
 
@@ -238,7 +238,7 @@ Odpověď **: proveďte následující kroky:**
    - V systému iOS v části **Nastavení** vyberte **zapnout automatické vyplňování** v části nastavení automatického vyplňování, kde se dozvíte, jak nastavit ověřovací data jako výchozího poskytovatele automatického vyplňování.
    - V Androidu v části **Nastavení** vyberte v části nastavení automatického vyplňování možnost **nastavit jako zprostředkovatele automatického vyplňování** .
 
-**Otázka**: Co když pro mě v nastavení není k dispozici přepínač pro **Automatické vyplňování** ?
+**Otázka**: Co když **Automatické vyplňování** není pro mě v nastavení k dispozici?
 
 Odpověď **: Pokud** automatické vyplňování není pro vás v ověřovateli k dispozici, může to být způsobeno tím, že pro vaši organizaci nebo typ účtu ještě není povolené automatické vyplňování. Tuto funkci můžete použít na zařízení, kam nepřidáte pracovní nebo školní účet. Další informace o tom, jak pro vaši organizaci zapnout automatické vyplňování, najdete v tématu [Automatické vyplňování pro správce IT](#autofill-for-it-admins).
 

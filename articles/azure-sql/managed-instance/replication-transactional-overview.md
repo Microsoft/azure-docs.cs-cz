@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 04/20/2020
-ms.openlocfilehash: 76bb4ffb4ebeb01baf8236d6be84c900b23ffbc0
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3e4b4fc3d4a6c9529c7c0ac0daef8a28173e0bf3
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790810"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225339"
 ---
 # <a name="transactional-replication-with-azure-sql-managed-instance-preview"></a>Transakční replikace se spravovanou instancí Azure SQL (Preview)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -39,7 +39,7 @@ Transakční replikaci můžete použít k nahrání změn provedených ve sprav
 
 ### <a name="components"></a>Komponenty
 
-Klíčovými součástmi transakční replikace jsou **Vydavatel** , **distributor** a **předplatitel** , jak je znázorněno na následujícím obrázku:  
+Klíčovými součástmi transakční replikace jsou **Vydavatel**, **distributor** a **předplatitel**, jak je znázorněno na následujícím obrázku:  
 
 ![replikace s SQL Database](./media/replication-transactional-overview/replication-to-sql-database.png)
 
@@ -109,7 +109,7 @@ Transakční replikace je užitečná v následujících scénářích:
 | Kategorie | Synchronizace dat | Transakční replikace |
 |---|---|---|
 | Výhody | – Aktivní – aktivní podpora<br/>– Obousměrné mezi místními a Azure SQL Database | – Nižší latence<br/>– Transakční konzistence<br/>-Opětovné použití existující topologie po migraci |
-| Nevýhody | – 5 min nebo větší latence<br/>-Žádná transakční konzistence<br/>– Vyšší dopad na výkon | -Nelze publikovat z Azure SQL Database <br/>– Náklady vysoké údržby |
+| Nevýhody | -Žádná transakční konzistence<br/>– Vyšší dopad na výkon | -Nelze publikovat z Azure SQL Database <br/>– Náklady vysoké údržby |
 
 ## <a name="common-configurations"></a>Běžné konfigurace
 
@@ -197,7 +197,7 @@ Další informace o konfiguraci transakční replikace najdete v následujícíc
 - [Konfigurace replikace mezi vydavatelem a odběratelem spravované instance SQL](../managed-instance/replication-between-two-instances-configure-tutorial.md)
 - [Konfigurace replikace mezi vydavatelem spravované instance SQL, distributorem spravované instance SQL a předplatitelem SQL Server](../managed-instance/replication-two-instances-and-sql-server-configure-tutorial.md)
 - [Vytvořte publikaci](/sql/relational-databases/replication/publish/create-a-publication).
-- [Vytvořte nabízený odběr](/sql/relational-databases/replication/create-a-push-subscription) pomocí názvu serveru jako odběratele (například `N'azuresqldbdns.database.windows.net` a databáze v Azure SQL Database název jako cílovou databázi (například **AdventureWorks** ). )
+- [Vytvořte nabízený odběr](/sql/relational-databases/replication/create-a-push-subscription) pomocí názvu serveru jako odběratele (například `N'azuresqldbdns.database.windows.net` a databáze v Azure SQL Database název jako cílovou databázi (například **AdventureWorks**). )
 
 ## <a name="see-also"></a>Viz také  
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 8b12df62a7080e57e47b52cb79ed8a67e12bd526
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 17cff66d3f8c816099bcc61322a1d331bfe58872
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753104"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226300"
 ---
 # <a name="tutorial-add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Kurz: přidání přihlášení do Microsoftu do webové aplikace v ASP.NET
 
@@ -383,7 +383,7 @@ Pokud chcete zaregistrovat aplikaci a ručně přidat informace o registraci apl
 1. Přidejte adresu URL protokolu SSL, kterou jste zkopírovali ze sady Visual Studio v kroku 1 (například `https://localhost:44368/` ) v **identifikátoru URI přesměrování**.
 1. Vyberte **Zaregistrovat**.
 1. V části **Spravovat** vyberte **ověřování**.
-1. V části **implicitní udělení** vyberte možnost **tokeny ID** a pak vyberte **Uložit**.
+1. V části **implicitní udělení a hybridní toky** vyberte **tokeny ID** a pak vyberte **Uložit**.
 1. V souboru web.config přidejte následující příkaz, který se nachází v kořenové složce v `configuration\appSettings` části:
 
     ```xml

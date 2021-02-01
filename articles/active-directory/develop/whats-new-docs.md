@@ -11,12 +11,12 @@ ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
 ms.author: marsma
-ms.openlocfilehash: 0beaef9162f4bdb540764a100243c579b40d1324
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 11f32d893ccc26dd30d9997d4348661d45f84eb8
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98755952"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225475"
 ---
 # <a name="microsoft-identity-platform-docs-whats-new"></a>Microsoft Identity Platform Docs: co je nového
 
@@ -24,13 +24,25 @@ Vítejte v dokumentaci k platformě Microsoft Identity Platform. V tomto článk
 
 ## <a name="january-2021"></a>Leden 2021
 
+### <a name="new-articles"></a>Nové články
+
+- [Protokolování v MSAL pro Android](msal-logging-android.md)
+- [Protokolování v MSAL.NET](msal-logging-dotnet.md)
+- [Protokolování v MSAL pro iOS/macOS](msal-logging-ios.md)
+- [Protokolování v MSAL pro Javu](msal-logging-java.md)
+- [Protokolování v MSAL.js](msal-logging-js.md)
+- [Protokolování v MSAL pro Python](msal-logging-python.md)
+
 ### <a name="updated-articles"></a>Aktualizované články
 
+- [Řešení potíží s ověřením vydavatele](troubleshoot-publisher-verification.md)
+- [Aplikační model](application-model.md)
 - [Ověřování vs. autorizace](authentication-vs-authorization.md)
 - [Postupy: omezení aplikace Azure AD na skupinu uživatelů v tenantovi Azure AD](howto-restrict-your-app-to-a-set-of-users.md)
 - [Oprávnění a souhlas v koncovém bodu Microsoft Identity Platform](v2-permissions-and-consent.md)
 - [Konfigurovatelné životnosti tokenů v platformě Microsoft Identity Platform (Preview)](active-directory-configurable-token-lifetimes.md)
 - [Konfigurace zásad životnosti tokenů (Preview)](configure-token-lifetimes.md)
+- [Knihovny ověřování platformy Microsoft identity](reference-v2-libraries.md)
 - [Microsoft Identity Platform a tok autorizačního kódu OAuth 2,0](v2-oauth2-auth-code-flow.md)
 
 ## <a name="december-2020"></a>Prosinec 2020

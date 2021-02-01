@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/11/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 05e14b5bdc2f603ffe802b12ed33b7b57be25b69
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: b2e42dcaeb72a053f20afa47439d1825445b0ad8
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98938198"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225829"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Rychlý Start: Přidání přihlašování s Microsoftem do webové aplikace ASP.NET Core
 
@@ -57,7 +57,7 @@ Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.
 > 1. V části **Spravovat** vyberte **ověřování**.
 > 1. V části **identifikátory URI pro přesměrování** vyberte **Přidat URI** a pak zadejte `https://localhost:44321/signin-oidc` .
 > 1. Zadejte **adresu URL pro odhlášení front-Channel** `https://localhost:44321/signout-oidc` .
-> 1. V části **Implicitní udělení** vyberte **Tokeny ID**.
+> 1. V části **implicitní udělení a hybridní toky** vyberte **tokeny ID**.
 > 1. Vyberte **Uložit**.
 
 > [!div class="sxs-lookup" renderon="portal"]

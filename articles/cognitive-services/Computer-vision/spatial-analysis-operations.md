@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: fe54c4495e589459fe734f315138cafa8d7cd033
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 4e389114dc873d067a32389b288e1bb98d497850
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98934742"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226046"
 ---
 # <a name="spatial-analysis-operations"></a>Operace prostorových analýz
 
@@ -130,7 +130,7 @@ Toto je příklad parametrů DETECTOR_NODE_CONFIG pro všechny operace prostorov
 | `threshold` | float| Pokud je spolehlivost modelů AI větší nebo rovna této hodnotě, dojde k odchozímu přenosu událostí. |
 | `type` | řetězec| Pro **cognitiveservices Account. Vision. spatialanalysis-personcount** by to mělo být `count` .|
 | `trigger` | řetězec| Typ triggeru pro odeslání události. Podporované hodnoty jsou `event` pro odesílání událostí při změně počtu nebo `interval` pro pravidelné posílání událostí bez ohledu na to, jestli se počet změnil nebo ne.
-| `interval` | řetězec| Čas v sekundách, po který se celkový počet uživatelů agreguje před vyvyvoláním události. Operace bude pokračovat v analýze scény s konstantní frekvencí a v tomto intervalu vrátí nejběžnější počet. Agregační interval platí pro i `event` `interval` .|
+| `output_frequency` | int | Rychlost, s jakou jsou události odchozí Když `output_frequency` je = X, každá událost X je výstupní, ex. `output_frequency` = 2 znamená, že každá další událost je výstup. `output_frequency`Je použitelný pro i `event` `interval` . |
 | `focus` | řetězec| Umístění bodu v ohraničujícím poli osoby používané k výpočtu událostí. Hodnota fokusu může být `footprint` (nároky na osobu), (v ohraničujícím poli ve středu osoby) (v `bottom_center` `center` ohraničujícím poli středu).|
 
 ### <a name="line-configuration-for-cognitiveservicesvisionspatialanalysis-personcrossingline"></a>Konfigurace řádku pro cognitiveservices Account. Vision. spatialanalysis-personcrossingline
@@ -255,8 +255,7 @@ Toto je příklad vstupu JSON pro parametr SPACEANALYTICS_CONFIG, který konfigu
 | `threshold` | float| Pokud je spolehlivost modelů AI větší nebo rovna této hodnotě, dojde k odchozímu přenosu událostí. |
 | `type` | řetězec| Pro **cognitiveservices Account. Vision. spatialanalysis-persondistance** by to mělo být `people_distance` .|
 | `trigger` | řetězec| Typ triggeru pro odeslání události. Podporované hodnoty jsou `event` pro odesílání událostí při změně počtu nebo `interval` pro pravidelné posílání událostí bez ohledu na to, jestli se počet změnil nebo ne.
-| `interval` | řetězec | Čas v sekundách, po který budou všechna porušení agregována před vyvyvoláním události. Agregační interval platí pro i `event` `interval` .|
-| `output_frequency` | int | Rychlost, s jakou jsou události odchozí Když `output_frequency` je = X, každá událost X je výstupní, ex. `output_frequency` = 2 znamená, že každá další událost je výstup. Output_frequency platí pro i `event` `interval` .|
+| `output_frequency` | int | Rychlost, s jakou jsou události odchozí Když `output_frequency` je = X, každá událost X je výstupní, ex. `output_frequency` = 2 znamená, že každá další událost je výstup. `output_frequency`Je použitelný pro i `event` `interval` .|
 | `minimum_distance_threshold` | float| Vzdálenost ve stopách, která aktivuje událost "TooClose", pokud jsou lidé méně, než je vzdálenost od sebe.|
 | `maximum_distance_threshold` | float| Vzdálenost ve stopách, která spustí událost "TooFar", pokud jsou lidé větší než vzdálenost.|
 | `focus` | řetězec| Umístění bodu v ohraničujícím poli osoby používané k výpočtu událostí. Hodnota fokusu může být `footprint` (nároky na osobu), (v ohraničujícím poli ve středu osoby) (v `bottom_center` `center` ohraničujícím poli středu).|

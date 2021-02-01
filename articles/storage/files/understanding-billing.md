@@ -1,23 +1,45 @@
 ---
-title: Princip fakturace služby soubory Azure | Microsoft Docs
+title: Vysvětlení fakturace služby soubory Azure | Microsoft Docs
 description: Přečtěte si, jak interpretovat modely fakturace zřízené a průběžné platby pro sdílené složky Azure.
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/20/2021
+ms.date: 01/27/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 19ecbea70d9cb6b8cc31c72ed3c1294cd137ce93
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 6bb608492327baae958c32be05d8f2a1bb4dbfbf
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632474"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226637"
 ---
-# <a name="understanding-azure-files-billing"></a>Principy fakturace souborů Azure
+# <a name="understand-azure-files-billing"></a>Vysvětlení fakturace souborů Azure
 Soubory Azure nabízí dva odlišné modely fakturace: zřízené a průběžné platby. Zřízený model je k dispozici jenom pro sdílené složky Premium, což jsou sdílené složky nasazené v typu **účtu úložiště souborů** . Model průběžných plateb je dostupný jenom pro standardní sdílené složky, což jsou sdílené složky nasazené v typu účtu úložiště pro **obecné účely verze 2 (GPv2)** . Tento článek vysvětluje, jak oba modely pracují, aby vám pomohly pochopit měsíční poplatky za soubory Azure.
 
-Aktuální ceny za službu Azure Files najdete na [stránce s cenami souborů Azure](https://azure.microsoft.com/pricing/details/storage/files/).
+Informace o cenách služby soubory Azure najdete na [stránce s cenami souborů Azure](https://azure.microsoft.com/pricing/details/storage/files/).
+
+## <a name="storage-units"></a>Jednotky úložiště    
+Služba soubory Azure používá pro reprezentaci kapacity úložiště základní 2 jednotky: KiB, MiB, GiB a TiB. Operační systém může nebo nemusí používat stejnou jednotku měření nebo inventarizace.
+
+### <a name="windows"></a>Windows
+
+Operační systém Windows i soubory Azure měří kapacitu úložiště pomocí systému inventury Standard-2, ale při označování jednotek je k dispozici rozdíl. Služba soubory Azure zaměří kapacitu úložiště se základními a 2 jednotkami měření, zatímco systém Windows označí kapacitu úložiště v jednotkách základní-10. Při vytváření sestav kapacity úložiště Windows nepřevede svoji kapacitu úložiště ze základu 2 na Base-10.
+
+|Akronym  |Definice  |Jednotka  |Systém Windows zobrazí jako  |
+|---------|---------|---------|---------|
+|KiB     |1 024 bajtů         |kibibyte         |KB (kilobajty)         |
+|IGMP     |1 024 KiB (1 048 576 bajtů)         |mebibyte         |MB (megabajtů)         |
+|GiB     |1024 MiB (1 073 741 824 bajtů)         |gibibajt         |GB (gigabajt)         |
+|TiB     |1024 GiB (1 099 511 627 776 bajtů)         |tebibyte         |TB (terabajt)         |
+
+### <a name="macos"></a>macOS
+
+Podívejte se, jak zařízení se systémem [iOS a MacOS nahlásí kapacitu úložiště](https://support.apple.com/HT201402) na webu společnosti Apple a určí, který systém inventury se používá.
+
+### <a name="linux"></a>Linux
+
+Každý operační systém nebo jednotlivý software může použít jiný systém počítání. Informace o tom, jak nahlásit kapacitu úložiště, najdete v dokumentaci.
 
 ## <a name="provisioned-model"></a>Zřízený model
 Azure Files používá zřízený model pro sdílené složky Premium. V zřízeném podnikovém modelu proaktivně zadáte službě soubory Azure požadavky na úložiště, které se místo toho účtují na základě toho, co využijete. To se podobá zakoupenému hardwaru v místním prostředí, v tom, že když zřizujete sdílenou složku Azure s určitou velikostí úložiště, platíte za toto úložiště bez ohledu na to, jestli ho používáte, nebo ne, stejně jako Vy nezačínáte platit náklady na fyzické médium, když začnete používat místo. Na rozdíl od zakoupení fyzických médií je možné zřízené sdílené složky dynamicky škálovat nahoru nebo dolů v závislosti na charakteristikách výkonu úložiště a vstupně-výstupních operací.
@@ -77,7 +99,7 @@ Pokud do optimalizované úrovně transakce vložíte úlohu s nečastým využi
 
 Podobně platí, že pokud zadáte úlohu s vysokou dostupností ve studené vrstvě, platíte za transakce spoustu dalších nákladů, ale méně pro náklady na úložiště dat. To může vést k situaci, kdy se zvýšené náklady z ceny za transakce zvyšují z ceny za sníženou cenu za úložiště dat, což vám umožní platit více peněz na studenou dobu, než by to mělo být optimalizované transakce. Je možné, že některé úrovně využití, které jsou na úrovni Hot, jsou nákladově efektivní úrovně, takže studená vrstva bude dražší než optimalizace transakcí.
 
-Vaše zatížení a úroveň aktivity budou určovat nejvyšší úroveň efektivity pro vaši standardní sdílenou složku. Nejlepším způsobem, jak vybrat nejvyšší nákladovou úroveň, je, že je potřeba se podívat na skutečnou spotřebu prostředků sdílené složky (data uložená, operace zápisu atd.).
+Vaše zatížení a úroveň aktivity budou určovat nejvyšší úroveň efektivity pro vaši standardní sdílenou složku. Nejlepším způsobem, jak vybrat nejvyšší nákladovou úroveň, je, že se můžete podívat na skutečnou spotřebu prostředků sdílené složky (data uložená, operace zápisu atd.).
 
 ### <a name="what-are-transactions"></a>Co jsou transakce?
 Transakce jsou operace nebo požadavky na soubory Azure, které umožňují nahrávat, stahovat nebo jinak manipulovat s obsahem sdílené složky. Každá akce provedená u sdílené složky se překládá na jednu nebo více transakcí a na standardních sdílených složkách, které používají model fakturace s průběžnými platbami, které se vztahují na transakční náklady.

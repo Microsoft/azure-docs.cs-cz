@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: a85ae227d45c8de6c3d04e4a058ebf9715421ca2
-ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
+ms.openlocfilehash: a5f0a7d8221e970c8c1aa3c1ddffbfc56f2d5715
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/01/2021
-ms.locfileid: "99222061"
+ms.locfileid: "99226182"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>Kurz: sestavení démona s více klienty, který používá platformu Microsoft identity
 
@@ -110,7 +110,7 @@ Pokud nechcete používat automatizaci, postupujte podle kroků v následující
 1. Na stránce **Přehled** aplikace vyhledejte hodnotu **ID aplikace (klienta)** a zaznamenejte ji pro pozdější použití. Budete ho potřebovat ke konfiguraci konfiguračního souboru sady Visual Studio pro tento projekt.
 1. V části **Spravovat** vyberte **ověřování**.
 1. Nastavte **adresu URL pro odhlášení front-Channel** na `https://localhost:44316/Account/EndSession` .
-1. V části **implicitní udělení** **přístupu vyberte přístupové tokeny** a **tokeny ID**. Tato ukázka vyžaduje, aby byl [tok implicitního udělení](v2-oauth2-implicit-grant-flow.md) povolen pro přihlášení uživatele a volání rozhraní API.
+1. V části **implicitní udělení a hybridní toky** vyberte **přístupové tokeny** a **tokeny ID**. Tato ukázka vyžaduje, aby byl [tok implicitního udělení](v2-oauth2-implicit-grant-flow.md) povolen pro přihlášení uživatele a volání rozhraní API.
 1. Vyberte **Uložit**.
 1. V části **Správa** vyberte **Certifikáty a tajné kódy**.
 1. V části **tajné klíče klienta** vyberte **nový tajný klíč klienta**. 

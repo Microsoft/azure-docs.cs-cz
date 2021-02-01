@@ -1,14 +1,14 @@
 ---
 title: Index ukázek podrobných plánů
 description: Index ukázek dodržování předpisů a standardních ukázek pro nasazování prostředí, zásad a základů architektury přechodu na cloud s využitím Azure Blueprints
-ms.date: 01/27/2021
+ms.date: 02/01/2021
 ms.topic: sample
-ms.openlocfilehash: 7865a3ea5be374f36de70e62c7bc215fc88d04a5
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 17bacecf8fcf7c0f1969a489561a3a3ac976872e
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98915688"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225137"
 ---
 # <a name="azure-blueprints-samples"></a>Ukázky Azure Blueprints
 
@@ -28,7 +28,7 @@ Následující tabulka obsahuje odkazy na ukázky pro Azure Blueprints. Všechny
 | [FedRAMP High](./fedramp-h/index.md) | Poskytuje sadu zásad, které pomáhají dodržovat standard FedRAMP High. |
 | [HIPAA HITRUST 9.2](./hipaa-hitrust-9-2.md) | Poskytuje sadu zásad, které pomáhají dodržovat standard HIPAA HITRUST. |
 | [IRS 1075](./irs-1075/index.md) | Poskytuje guardrails pro dodržování předpisů finančnímu úřadu. 1075.|
-| [ISO 27001](./iso27001/index.md) | Poskytuje ochranné mantinely pro dodržování předpisů ISO 27001. |
+| [ISO 27001](./iso-27001-2013.md) | Poskytuje ochranné mantinely pro dodržování předpisů ISO 27001. |
 | [ISO 27001: Sdílené služby](./iso27001-shared/index.md) | Poskytuje sadu kompatibilních vzorů infrastruktury a ochranné mantinely zásad, které pomáhají zajistit osvědčení ISO 27001. |
 | [Úloha ISO 27001 App Service Environment/SQL Database](./iso27001-ase-sql-workload/index.md) | Poskytuje další infrastrukturu pro ukázka podrobného plánu [sdílených služeb ISO 27001](./iso27001-shared/index.md) . |
 | [Média](./media/index.md) | Poskytuje sadu zásad, které pomáhají dodržovat MPAA pro média. |

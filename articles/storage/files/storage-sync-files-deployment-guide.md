@@ -1,41 +1,41 @@
 ---
-title: Nasadit Azure File Sync | Microsoft Docs
-description: Naučte se, jak nasadit Azure File Sync, od začátku do konce, pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure.
+title: Nasadit Synchronizace souborů Azure | Microsoft Docs
+description: Naučte se, jak nasadit Synchronizace souborů Azure, od začátku do konce, pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure.
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 11/05/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2af8db1a6e8c774f1004b380c8aaaa06ba61d8c3
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 4814a12a870d5317ad91c3514327ba0daad7ed69
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862346"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225366"
 ---
 # <a name="deploy-azure-file-sync"></a>Nasazení Synchronizace souborů Azure
-Pomocí Azure File Sync můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
+Pomocí Synchronizace souborů Azure můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
 
-Před dokončením kroků popsaných v tomto článku důrazně doporučujeme, abyste si přečetli [Plánování nasazení souborů Azure](storage-files-planning.md) a [Plánování nasazení Azure File Sync](storage-sync-files-planning.md) .
+Před dokončením kroků popsaných v tomto článku důrazně doporučujeme, abyste si přečetli [Plánování nasazení souborů Azure](storage-files-planning.md) a [Plánování nasazení synchronizace souborů Azure](storage-sync-files-planning.md) .
 
 ## <a name="prerequisites"></a>Požadavky
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-1. Sdílená složka Azure ve stejné oblasti, kterou chcete nasadit Azure File Sync. Další informace najdete v tématech:
-    - [Dostupnost oblasti](storage-sync-files-planning.md#azure-file-sync-region-availability) pro Azure File Sync.
+1. Sdílená složka Azure ve stejné oblasti, kterou chcete nasadit Synchronizace souborů Azure. Další informace najdete v tématech:
+    - [Dostupnost oblasti](storage-sync-files-planning.md#azure-file-sync-region-availability) pro synchronizace souborů Azure.
     - [Vytvořte sdílenou složku](storage-how-to-create-file-share.md) , kde najdete podrobný popis postupu vytvoření sdílené složky.
-1. Minimálně jedna podporovaná instance clusteru Windows serveru nebo Windows serveru pro synchronizaci s Azure File Sync. Další informace o podporovaných verzích systému Windows Server a doporučených systémových prostředcích najdete v tématu [požadavky na souborový server systému Windows](storage-sync-files-planning.md#windows-file-server-considerations).
+1. Minimálně jedna podporovaná instance clusteru Windows serveru nebo Windows serveru pro synchronizaci s Synchronizace souborů Azure. Další informace o podporovaných verzích systému Windows Server a doporučených systémových prostředcích najdete v tématu [požadavky na souborový server systému Windows](storage-sync-files-planning.md#windows-file-server-considerations).
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-1. Sdílená složka Azure ve stejné oblasti, kterou chcete nasadit Azure File Sync. Další informace najdete v tématech:
-    - [Dostupnost oblasti](storage-sync-files-planning.md#azure-file-sync-region-availability) pro Azure File Sync.
+1. Sdílená složka Azure ve stejné oblasti, kterou chcete nasadit Synchronizace souborů Azure. Další informace najdete v tématech:
+    - [Dostupnost oblasti](storage-sync-files-planning.md#azure-file-sync-region-availability) pro synchronizace souborů Azure.
     - [Vytvořte sdílenou složku](storage-how-to-create-file-share.md) , kde najdete podrobný popis postupu vytvoření sdílené složky.
-1. Minimálně jedna podporovaná instance clusteru Windows serveru nebo Windows serveru pro synchronizaci s Azure File Sync. Další informace o podporovaných verzích systému Windows Server a doporučených systémových prostředcích najdete v tématu [požadavky na souborový server systému Windows](storage-sync-files-planning.md#windows-file-server-considerations).
+1. Minimálně jedna podporovaná instance clusteru Windows serveru nebo Windows serveru pro synchronizaci s Synchronizace souborů Azure. Další informace o podporovaných verzích systému Windows Server a doporučených systémových prostředcích najdete v tématu [požadavky na souborový server systému Windows](storage-sync-files-planning.md#windows-file-server-considerations).
 
-1. Modul AZ PowerShell lze použít buď s PowerShellem 5,1, nebo s PowerShellem 6 +. Můžete použít modul AZ PowerShell pro Azure File Sync v jakémkoli podporovaném systému, včetně systémů, které nejsou systémy Windows, ale rutina registrace serveru musí být vždycky spuštěná na instanci Windows serveru, kterou zaregistrujete (dá se udělat přímo nebo prostřednictvím vzdálené komunikace PowerShellu). V systému Windows Server 2012 R2 můžete ověřit, zda používáte alespoň PowerShell 5,1. \* Podívejte se na hodnotu vlastnosti **PSVersion** objektu **$PSVersionTable** :
+1. Modul AZ PowerShell lze použít buď s PowerShellem 5,1, nebo s PowerShellem 6 +. Můžete použít modul AZ PowerShell pro Synchronizace souborů Azure v jakémkoli podporovaném systému, včetně systémů, které nejsou systémy Windows, ale rutina registrace serveru musí být vždycky spuštěná na instanci Windows serveru, kterou zaregistrujete (dá se udělat přímo nebo prostřednictvím vzdálené komunikace PowerShellu). V systému Windows Server 2012 R2 můžete ověřit, zda používáte alespoň PowerShell 5,1. \* Podívejte se na hodnotu vlastnosti **PSVersion** objektu **$PSVersionTable** :
 
     ```powershell
     $PSVersionTable.PSVersion
@@ -63,10 +63,10 @@ Před dokončením kroků popsaných v tomto článku důrazně doporučujeme, a
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-1. Sdílená složka Azure ve stejné oblasti, kterou chcete nasadit Azure File Sync. Další informace najdete v tématech:
-    - [Dostupnost oblasti](storage-sync-files-planning.md#azure-file-sync-region-availability) pro Azure File Sync.
+1. Sdílená složka Azure ve stejné oblasti, kterou chcete nasadit Synchronizace souborů Azure. Další informace najdete v tématech:
+    - [Dostupnost oblasti](storage-sync-files-planning.md#azure-file-sync-region-availability) pro synchronizace souborů Azure.
     - [Vytvořte sdílenou složku](storage-how-to-create-file-share.md) , kde najdete podrobný popis postupu vytvoření sdílené složky.
-1. Minimálně jedna podporovaná instance clusteru Windows serveru nebo Windows serveru pro synchronizaci s Azure File Sync. Další informace o podporovaných verzích systému Windows Server a doporučených systémových prostředcích najdete v tématu [požadavky na souborový server systému Windows](storage-sync-files-planning.md#windows-file-server-considerations).
+1. Minimálně jedna podporovaná instance clusteru Windows serveru nebo Windows serveru pro synchronizaci s Synchronizace souborů Azure. Další informace o podporovaných verzích systému Windows Server a doporučených systémových prostředcích najdete v tématu [požadavky na souborový server systému Windows](storage-sync-files-planning.md#windows-file-server-considerations).
 
 1. [Instalace Azure CLI](/cli/azure/install-azure-cli)
 
@@ -103,11 +103,11 @@ Před dokončením kroků popsaných v tomto článku důrazně doporučujeme, a
 ---
 
 ## <a name="prepare-windows-server-to-use-with-azure-file-sync"></a>Příprava Windows Serveru na použití se Synchronizací souborů Azure
-Pro každý server, který máte v úmyslu používat s Azure File Sync, včetně každého uzlu serveru v clusteru s podporou převzetí služeb při selhání, zakažte **konfiguraci rozšířeného zabezpečení aplikace Internet Explorer**. To se vyžaduje jenom při prvotní registraci serveru. Po zaregistrování serveru můžete tuto možnost znovu povolit.
+Pro každý server, který máte v úmyslu používat s Synchronizace souborů Azure, včetně každého uzlu serveru v clusteru s podporou převzetí služeb při selhání, zakažte **konfiguraci rozšířeného zabezpečení aplikace Internet Explorer**. To se vyžaduje jenom při prvotní registraci serveru. Po zaregistrování serveru můžete tuto možnost znovu povolit.
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 > [!Note]  
-> Tento krok můžete přeskočit, pokud nasazujete Azure File Sync na jádro Windows serveru.
+> Tento krok můžete přeskočit, pokud nasazujete Synchronizace souborů Azure na jádro Windows serveru.
 
 1. Spusťte Správce serveru.
 2. Klikněte na **místní server**:  
@@ -147,20 +147,20 @@ Postupujte podle pokynů pro Azure Portal nebo PowerShell.
 ---
 
 ## <a name="deploy-the-storage-sync-service"></a>Nasazení služby synchronizace úložiště 
-Nasazení Azure File Sync začíná umístěním prostředku **služby synchronizace úložiště** do skupiny prostředků vybraného předplatného. V případě potřeby doporučujeme zřídit tyto požadavky co nejvíce. Vytvoříte vztah důvěryhodnosti mezi servery a tímto prostředkem a Server lze registrovat pouze do jedné služby synchronizace úložiště. V důsledku toho se doporučuje nasadit tolik služeb synchronizace úložiště, kolik potřebujete k oddělení skupin serverů. Mějte na paměti, že servery z různých služeb synchronizace úložiště se vzájemně nemůžou synchronizovat.
+Nasazení Synchronizace souborů Azure začíná umístěním prostředku **služby synchronizace úložiště** do skupiny prostředků vybraného předplatného. V případě potřeby doporučujeme zřídit tyto požadavky co nejvíce. Vytvoříte vztah důvěryhodnosti mezi servery a tímto prostředkem a Server lze registrovat pouze do jedné služby synchronizace úložiště. V důsledku toho se doporučuje nasadit tolik služeb synchronizace úložiště, kolik potřebujete k oddělení skupin serverů. Mějte na paměti, že servery z různých služeb synchronizace úložiště se vzájemně nemůžou synchronizovat.
 
 > [!Note]
 > Služba synchronizace úložiště dědí přístupová oprávnění z předplatného a skupiny prostředků, do které byla nasazena. Doporučujeme pečlivě zkontrolovat, kdo k němu má přístup. Entity s přístupem pro zápis můžou začít synchronizovat nové sady souborů ze serverů zaregistrovaných do této služby synchronizace úložiště a způsobit, že se data přenášejí do úložiště Azure, ke kterému mají přístup.
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
-Pokud chcete nasadit službu synchronizace úložiště, přejděte na [Azure Portal](https://portal.azure.com/), klikněte na *vytvořit prostředek* a vyhledejte Azure File Sync. Ve výsledcích hledání vyberte **Azure File Sync** a pak výběrem **vytvořit** otevřete kartu **nasadit synchronizaci úložiště** .
+Pokud chcete nasadit službu synchronizace úložiště, přejděte na [Azure Portal](https://portal.azure.com/), klikněte na *vytvořit prostředek* a vyhledejte synchronizace souborů Azure. Ve výsledcích hledání vyberte **synchronizace souborů Azure** a pak výběrem **vytvořit** otevřete kartu **nasadit synchronizaci úložiště** .
 
 V podokně, které se otevře, zadejte následující informace:
 
 - **Název**: jedinečný název (v jednotlivých oblastech) pro službu synchronizace úložiště.
 - **Předplatné**: předplatné, ve kterém chcete vytvořit službu synchronizace úložiště. V závislosti na strategii konfigurace vaší organizace může mít přístup k jednomu nebo několika předplatným. Předplatné Azure je nejzákladnější kontejner pro fakturaci každé cloudové služby (například soubory Azure).
-- **Skupina prostředků**: Skupina prostředků je logická skupina prostředků Azure, jako je například účet úložiště nebo služba synchronizace úložiště. Můžete vytvořit novou skupinu prostředků, nebo použít existující skupinu prostředků pro Azure File Sync. (Doporučujeme používat skupiny prostředků jako kontejnery k logické izolaci prostředků pro vaši organizaci, jako je například seskupení zdrojů lidských zdrojů nebo zdrojů pro konkrétní projekt.)
-- **Umístění**: oblast, do které chcete nasadit Azure File Sync. V tomto seznamu jsou k dispozici pouze podporované oblasti.
+- **Skupina prostředků**: Skupina prostředků je logická skupina prostředků Azure, jako je například účet úložiště nebo služba synchronizace úložiště. Můžete vytvořit novou skupinu prostředků, nebo použít existující skupinu prostředků pro Synchronizace souborů Azure. (Doporučujeme používat skupiny prostředků jako kontejnery k logické izolaci prostředků pro vaši organizaci, jako je například seskupení zdrojů lidských zdrojů nebo zdrojů pro konkrétní projekt.)
+- **Umístění**: oblast, do které chcete nasadit synchronizace souborů Azure. V tomto seznamu jsou k dispozici pouze podporované oblasti.
 
 Po dokončení vyberte **vytvořit** a nasaďte službu synchronizace úložiště.
 
@@ -221,22 +221,22 @@ Postupujte podle pokynů pro Azure Portal nebo PowerShell.
 Agent Synchronizace souborů Azure je balíček ke stažení, který umožňuje synchronizaci Windows Serveru se sdílenou složkou Azure. 
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
-Agenta si můžete stáhnout z webu [Microsoft Download Center](https://go.microsoft.com/fwlink/?linkid=858257). Po dokončení stahování poklikejte na balíček MSI a spusťte instalaci agenta Azure File Sync.
+Agenta si můžete stáhnout z webu [Microsoft Download Center](https://go.microsoft.com/fwlink/?linkid=858257). Po dokončení stahování poklikejte na balíček MSI a spusťte instalaci agenta Synchronizace souborů Azure.
 
 > [!Important]  
-> Pokud máte v úmyslu použít Azure File Sync s clusterem s podporou převzetí služeb při selhání, musí být agent Azure File Sync nainstalovaný na všech uzlech v clusteru. Aby bylo možné pracovat s Azure File Sync, musí být každý uzel v clusteru zaregistrován.
+> Pokud máte v úmyslu použít Synchronizace souborů Azure s clusterem s podporou převzetí služeb při selhání, musí být agent Synchronizace souborů Azure nainstalovaný na všech uzlech v clusteru. Aby bylo možné pracovat s Synchronizace souborů Azure, musí být každý uzel v clusteru zaregistrován.
 
 Doporučujeme, abyste provedli následující akce:
 - Pokud chcete zjednodušit řešení potíží a údržbu serveru, ponechte výchozí instalační cestu (C:\Program Files\Azure\StorageSyncAgent).
-- Povolte Microsoft Update, aby zůstaly aktuální Azure File Sync. Všechny aktualizace a Agent Azure File Sync, včetně aktualizací funkcí a oprav hotfix, se vyskytují v Microsoft Update. Doporučujeme nainstalovat nejnovější aktualizaci pro Azure File Sync. Další informace najdete v tématu [Azure File Sync Update Policy](storage-sync-files-planning.md#azure-file-sync-agent-update-policy).
+- Povolte Microsoft Update, aby zůstaly aktuální Synchronizace souborů Azure. Všechny aktualizace a Agent Synchronizace souborů Azure, včetně aktualizací funkcí a oprav hotfix, se vyskytují v Microsoft Update. Doporučujeme nainstalovat nejnovější aktualizaci pro Synchronizace souborů Azure. Další informace najdete v tématu [synchronizace souborů Azure Update Policy](storage-sync-files-planning.md#azure-file-sync-agent-update-policy).
 
-Po dokončení instalace agenta Azure File Sync se automaticky otevře uživatelské rozhraní pro registraci serveru. Před registrací musíte mít službu synchronizace úložiště. informace o tom, jak vytvořit službu synchronizace úložiště, najdete v další části.
+Po dokončení instalace agenta Synchronizace souborů Azure se automaticky otevře uživatelské rozhraní pro registraci serveru. Před registrací musíte mít službu synchronizace úložiště. informace o tom, jak vytvořit službu synchronizace úložiště, najdete v další části.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-Spusťte následující kód PowerShellu ke stažení příslušné verze agenta Azure File Sync pro váš operační systém a nainstalujte ho do svého systému.
+Spusťte následující kód PowerShellu ke stažení příslušné verze agenta Synchronizace souborů Azure pro váš operační systém a nainstalujte ho do svého systému.
 
 > [!Important]  
-> Pokud máte v úmyslu použít Azure File Sync s clusterem s podporou převzetí služeb při selhání, musí být agent Azure File Sync nainstalovaný na všech uzlech v clusteru. Aby bylo možné pracovat s Azure File Sync, musí být každý uzel v clusteru zaregistrován.
+> Pokud máte v úmyslu použít Synchronizace souborů Azure s clusterem s podporou převzetí služeb při selhání, musí být agent Synchronizace souborů Azure nainstalovaný na všech uzlech v clusteru. Aby bylo možné pracovat s Synchronizace souborů Azure, musí být každý uzel v clusteru zaregistrován.
 
 ```powershell
 # Gather the OS version
@@ -289,7 +289,7 @@ Je taky možné odlišit správce, kteří můžou registrovat servery z těch, 
 * "Microsoft. StorageSync/storageSyncServices/Workflows/Operations/Read"
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
-Uživatelské rozhraní pro registraci serveru by se mělo po instalaci agenta Azure File Sync otevřít automaticky. Pokud ne, můžete ho otevřít ručně z umístění jeho souboru: C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe. Po otevření uživatelského rozhraní registrace serveru vyberte možnost **Přihlásit** se a začněte.
+Uživatelské rozhraní pro registraci serveru by se mělo po instalaci agenta Synchronizace souborů Azure otevřít automaticky. Pokud ne, můžete ho otevřít ručně z umístění jeho souboru: C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe. Po otevření uživatelského rozhraní registrace serveru vyberte možnost **Přihlásit** se a začněte.
 
 Po přihlášení se zobrazí výzva k zadání následujících informací:
 
@@ -317,7 +317,7 @@ Skupina synchronizace definuje topologii synchronizace sady souborů. Koncové b
 Koncový bod cloudu je ukazatel na sdílenou složku Azure. Všechny koncové body serveru budou synchronizovány s koncovým bodem cloudu, což nastaví koncový bod cloudu jako rozbočovač. Účet úložiště pro sdílenou složku Azure se musí nacházet ve stejné oblasti jako služba synchronizace úložiště. Celá sdílená složka Azure bude synchronizována s jednou výjimkou: speciální složka srovnatelná se skrytou složkou "informace o systémovém svazku" na svazku NTFS se zřídí. Tento adresář se nazývá ". SystemShareInformation". Obsahuje důležitá synchronizovaná metadata, která se nesynchronizují s jinými koncovými body. Nepoužívejte ani neodstraňujte IT!
 
 > [!Important]  
-> Můžete provádět změny libovolného koncového bodu cloudu nebo koncového bodu serveru ve skupině synchronizace a nechat soubory synchronizované s ostatními koncovými body ve skupině synchronizace. Pokud provedete přímo změnu koncového bodu cloudu (sdílená složka Azure), je třeba nejprve zjistit změny Azure File Sync úlohy zjišťování změn. Úloha detekce změn se iniciuje pro koncový bod cloudu jenom jednou za 24 hodin. Další informace najdete v [nejčastějších dotazech k souborům Azure](storage-files-faq.md#afs-change-detection).
+> Můžete provádět změny libovolného koncového bodu cloudu nebo koncového bodu serveru ve skupině synchronizace a nechat soubory synchronizované s ostatními koncovými body ve skupině synchronizace. Pokud provedete přímo změnu koncového bodu cloudu (sdílená složka Azure), je třeba nejprve zjistit změny Synchronizace souborů Azure úlohy zjišťování změn. Úloha detekce změn se iniciuje pro koncový bod cloudu jenom jednou za 24 hodin. Další informace najdete v [nejčastějších dotazech k souborům Azure](storage-files-faq.md#afs-change-detection).
 
 Správce vytvářející koncový bod cloudu musí být členem **vlastníka** role správy pro účet úložiště, který obsahuje sdílenou složku Azure, na kterou koncový bod cloudu odkazuje. To se dá nakonfigurovat v části **Access Control (IAM)** v Azure Portal pro účet úložiště.
 
@@ -505,18 +505,18 @@ Pokud chcete službu Azure File Sync nakonfigurovat tak, aby fungovala s nastave
 
 ![Konfigurace nastavení brány firewall a virtuální sítě pro práci se službou Azure File Sync](media/storage-sync-files-deployment-guide/firewall-and-vnet.png)
 
-## <a name="onboarding-with-azure-file-sync"></a>Připojování pomocí Azure File Sync
-Doporučený postup při zapínání na Azure File Sync pro první s nulovým prostojem při zachování úplné věrnosti souborů a seznamu řízení přístupu (ACL) jsou následující:
+## <a name="onboarding-with-azure-file-sync"></a>Připojování pomocí Synchronizace souborů Azure
+Doporučený postup pro zapínání Synchronizace souborů Azure při prvním spuštění s nulovými výpadky při zachování plné přesnosti souborů a seznamu řízení přístupu (ACL) jsou následující:
  
 1. Nasaďte službu synchronizace úložiště.
 1. Vytvořte skupinu synchronizace.
-1. Nainstalujte agenta Azure File Sync na server s celou sadou dat.
+1. Nainstalujte agenta Synchronizace souborů Azure na server s celou sadou dat.
 1. Zaregistrujte tento server a vytvořte koncový bod serveru ve sdílené složce. 
 1. Umožněte synchronizaci provést úplné odeslání do sdílené složky Azure (koncový bod cloudu).  
-1. Po dokončení počátečního nahrávání nainstalujte Azure File Sync agenta na všechny zbývající servery.
+1. Po dokončení počátečního nahrávání nainstalujte Synchronizace souborů Azure agenta na všechny zbývající servery.
 1. Na všech zbývajících serverech vytvořte nové sdílené složky.
 1. V případě potřeby vytvořte koncové body serveru pro nové sdílené složky se zásadami vytváření cloudových vrstev. (Tento krok vyžaduje, aby bylo k dispozici další úložiště pro počáteční nastavení.)
-1. Umožněte Azure File Sync agenta rychlé obnovení celého oboru názvů bez skutečného přenosu dat. Po úplné synchronizaci oboru názvů provede synchronizační modul místo na místním disku na základě zásad cloudové vrstvy pro koncový bod serveru. 
+1. Umožněte Synchronizace souborů Azure agenta rychlé obnovení celého oboru názvů bez skutečného přenosu dat. Po úplné synchronizaci oboru názvů provede synchronizační modul místo na místním disku na základě zásad cloudové vrstvy pro koncový bod serveru. 
 1. Zajistěte, aby se synchronizace dokončila, a podle potřeby otestujte topologii. 
 1. Přesměruje uživatele a aplikace do této nové sdílené složky.
 1. Volitelně můžete na serverech odstranit všechny duplicitní sdílené složky.
@@ -525,13 +525,13 @@ Pokud nemáte dodatečné úložiště pro počáteční registraci a chcete se 
  
 1. Zajistěte, aby se data na žádném ze serverů během procesu připojování neměnila.
 1. Předprodejní sdílené složky Azure s daty serveru pomocí libovolného nástroje pro přenos dat přes protokol SMB. Robocopy například. AzCopy můžete použít i přes REST. Nezapomeňte použít AzCopy s příslušnými přepínači pro zachování časových razítek a atributů seznamů ACL.
-1. Vytvořte Azure File Sync topologii s požadovanými koncovými body serveru ukazující na existující sdílené složky.
+1. Vytvořte Synchronizace souborů Azure topologii s požadovanými koncovými body serveru ukazující na existující sdílené složky.
 1. Umožněte proces sladění dokončení synchronizace u všech koncových bodů. 
 1. Po dokončení odsouhlasení můžete otevřít sdílené složky pro změny.
  
 V současné době má přístup před osazením několik omezení – 
 - Změny dat na serveru před tím, než je topologie synchronizace zcela v provozu, můžou způsobit konflikty na koncových bodech serveru.  
-- Po vytvoření koncového bodu cloudu Azure File Sync spustí proces zjišťování souborů v cloudu před zahájením počáteční synchronizace. Doba potřebná k dokončení tohoto procesu se liší v závislosti na různých faktorech, jako je rychlost sítě, dostupná šířka pásma a počet souborů a složek. V případě hrubého odhadu ve verzi Preview se proces zjišťování spouští přibližně v 10 souborech za sekundu.  A to i v případě, že předběžné osazení běží rychle, může být celková doba pro plně běžící systém výrazně delší, než se data v cloudu předem dosadí.
+- Po vytvoření koncového bodu cloudu Synchronizace souborů Azure spustí proces zjišťování souborů v cloudu před zahájením počáteční synchronizace. Doba potřebná k dokončení tohoto procesu se liší v závislosti na různých faktorech, jako je rychlost sítě, dostupná šířka pásma a počet souborů a složek. V případě hrubého odhadu ve verzi Preview se proces zjišťování spouští přibližně v 10 souborech za sekundu.  A to i v případě, že předběžné osazení běží rychle, může být celková doba pro plně běžící systém výrazně delší, než se data v cloudu předem dosadí.
 
 ## <a name="self-service-restore-through-previous-versions-and-vss-volume-shadow-copy-service"></a>Samoobslužné obnovení prostřednictvím předchozích verzí a služby VSS (služba Stínová kopie svazku)
 
@@ -541,7 +541,7 @@ V současné době má přístup před osazením několik omezení –
 Předchozí verze je funkce systému Windows, která umožňuje využívat snímky stínové kopie svazku (VSS) na straně serveru k prezentaci obnovitelné verzí souboru klientovi SMB.
 To umožňuje účinný scénář, který se běžně označuje jako samoobslužné obnovení, přímo pro informační pracovníky, nikoli v závislosti na obnovení od správce IT.
 
-Snímky a předchozí verze služby Stínová kopie svazku fungují nezávisle na Azure File Sync. Vrstvení cloudu ale musí být nastavené na kompatibilní režim. Na stejném svazku může existovat mnoho koncových bodů serveru Azure File Sync. Je nutné provést následující volání prostředí PowerShell pro každý svazek, který má i jeden koncový bod serveru, kde plánujete nebo používáte vrstvu cloudu.
+Snímky a předchozí verze služby Stínová kopie svazku fungují nezávisle na Synchronizace souborů Azure. Vrstvení cloudu ale musí být nastavené na kompatibilní režim. Na stejném svazku může existovat mnoho koncových bodů serveru Synchronizace souborů Azure. Je nutné provést následující volání prostředí PowerShell pro každý svazek, který má i jeden koncový bod serveru, kde plánujete nebo používáte vrstvu cloudu.
 
 ```powershell
 Import-Module '<SyncAgentInstallPath>\StorageSync.Management.ServerCmdlets.dll'
@@ -581,9 +581,9 @@ Aby se nový limit mohl projevit, musíte rutinu znovu spustit, aby se zajistila
 
 S agentem verze 11 se nový režim bude k dispozici na koncovém bodu serveru. Tento režim umožňuje globálně distribuovaným společnostem uchovávat mezipaměť serveru ve vzdálené oblasti předem vyplněnou ještě předtím, než místní uživatelé přistupují k souborům. Pokud je tato možnost povolená na koncovém bodu serveru, tento režim způsobí, že tento server bude navracet soubory, které se vytvořily nebo změnily ve sdílené složce Azure.
 
-### <a name="scenario"></a>Scénář
+### <a name="scenario"></a>Scenario
 
-Globálně distribuovaná společnost obsahuje pobočky v USA a v Indii. V dopoledne (čas USA) si pracovní procesy vytvoří novou složku a nové soubory pro úplně nový projekt a budou na něm fungovat celý den. Azure File Sync bude synchronizovat složku a soubory do sdílené složky Azure (koncový bod cloudu). Informační pracovníci v Indii budou v tomto časovém pásmu pokračovat v práci na projektu. Po doručení do ráno musí místní server Azure File Sync, v Indii, mít tyto nové soubory místně k dispozici, aby tým Indie mohl efektivně pracovat s místní mezipamětí. Povolením tohoto režimu zabráníte, aby byl počáteční přístup k souborům pomalejší z důvodu odvolání na vyžádání a aby server mohl znovu aktivovat soubory ihned po změně nebo vytvoření ve sdílené složce Azure.
+Globálně distribuovaná společnost obsahuje pobočky v USA a v Indii. V dopoledne (čas USA) si pracovní procesy vytvoří novou složku a nové soubory pro úplně nový projekt a budou na něm fungovat celý den. Synchronizace souborů Azure bude synchronizovat složku a soubory do sdílené složky Azure (koncový bod cloudu). Informační pracovníci v Indii budou v tomto časovém pásmu pokračovat v práci na projektu. Po doručení do ráno musí místní server Synchronizace souborů Azure, v Indii, mít tyto nové soubory místně k dispozici, aby tým Indie mohl efektivně pracovat s místní mezipamětí. Povolením tohoto režimu zabráníte, aby byl počáteční přístup k souborům pomalejší z důvodu odvolání na vyžádání a aby server mohl znovu aktivovat soubory ihned po změně nebo vytvoření ve sdílené složce Azure.
 
 > [!IMPORTANT]
 > Je důležité si uvědomit, že sledování změn ve sdílené složce Azure, které úzce na serveru, můžou zvýšit váš výstupní provoz a vysílat z Azure. Pokud se soubory, které jsou na serveru znovu navolají, nejsou ve skutečnosti potřeba v místním prostředí, může mít zbytečné odvolání serveru negativní následky. Tento režim použijte, pokud víte, že před vyplněním mezipaměti na serveru s nedávnými změnami v cloudu bude mít pozitivní vliv na uživatele nebo aplikace používající soubory na tomto serveru.
@@ -610,23 +610,23 @@ Set-AzStorageSyncServerEndpoint -InputObject <PSServerEndpoint> -LocalCacheMode 
 
 ---
 
-## <a name="migrate-a-dfs-replication-dfs-r-deployment-to-azure-file-sync"></a>Migrace nasazení Replikace DFS (DFS-R) do Azure File Sync
-Migrace nasazení systému souborů DFS-R na Azure File Sync:
+## <a name="migrate-a-dfs-replication-dfs-r-deployment-to-azure-file-sync"></a>Migrace nasazení Replikace DFS (DFS-R) do Synchronizace souborů Azure
+Migrace nasazení systému souborů DFS-R na Synchronizace souborů Azure:
 
 1. Vytvořte skupinu synchronizace, která bude představovat topologii DFS-R, kterou nahrazujete.
-2. Na serveru, který má úplnou sadu dat v topologii DFS-R, začněte migrovat. Nainstalujte na tento server Azure File Sync.
+2. Na serveru, který má úplnou sadu dat v topologii DFS-R, začněte migrovat. Nainstalujte na tento server Synchronizace souborů Azure.
 3. Zaregistrujte tento server a vytvořte koncový bod serveru pro první server, který se má migrovat. Nepovolujte vrstvení cloudu.
 4. Umožněte synchronizaci všech dat do sdílené složky Azure (koncový bod cloudu).
-5. Nainstalujte a zaregistrujte agenta Azure File Sync na všech zbývajících serverech DFS-R.
+5. Nainstalujte a zaregistrujte agenta Synchronizace souborů Azure na všech zbývajících serverech DFS-R.
 6. Zakáže DFS-R. 
 7. Vytvořte koncový bod serveru na každém serveru DFS-R. Nepovolujte vrstvení cloudu.
 8. Zajistěte, aby se synchronizace dokončila, a podle potřeby otestujte topologii.
 9. Vyřaďte DFS-R.
 10. Na libovolném koncovém bodu serveru se teď dá povolit vrstvení cloudu, jak je potřeba.
 
-Další informace najdete v tématu [Azure File Sync interoperability s systém souborů DFS (Distributed File System) (DFS)](storage-sync-files-planning.md#distributed-file-system-dfs).
+Další informace najdete v tématu [synchronizace souborů Azure interoperability s systém souborů DFS (Distributed File System) (DFS)](storage-sync-files-planning.md#distributed-file-system-dfs).
 
 ## <a name="next-steps"></a>Další kroky
-- [Přidání nebo odebrání koncového bodu serveru Azure File Sync](storage-sync-files-server-endpoint.md)
-- [Registrace nebo zrušení registrace serveru s Azure File Sync](storage-sync-files-server-registration.md)
+- [Přidání nebo odebrání koncového bodu serveru Synchronizace souborů Azure](storage-sync-files-server-endpoint.md)
+- [Registrace nebo zrušení registrace serveru s Synchronizace souborů Azure](storage-sync-files-server-registration.md)
 - [Sledování služby Synchronizace souborů Azure](storage-sync-files-monitoring.md)

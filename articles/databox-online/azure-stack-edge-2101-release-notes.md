@@ -6,18 +6,18 @@ author: v-dalc
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 01/29/2021
+ms.date: 02/01/2021
 ms.author: alkohli
-ms.openlocfilehash: 025694dc020bb18ce66574bac476f34034353721
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 7c1f78f405a67687168457448f62d46a39da165f
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99072567"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225120"
 ---
 # <a name="azure-stack-edge-pro-with-fpga-2101-release-notes"></a>Azure Stack Edge pro s poznámkou k verzi FPGA 2101
 
-Následující poznámky k verzi identifikují kritické otevřené problémy a vyřešené problémy pro vydání 2101 Azure Stack Edge pro s vestavěným polem programovatelné brány (FPGA).
+Následující poznámky k verzi identifikují kritické otevřené problémy a vyřešené problémy pro vydání 2101 Azure Stack Edge pro s integrovaným polem programovatelné brány (FPGA).
 
 Poznámky k verzi se průběžně aktualizují. Jako kritické problémy, které vyžadují řešení, se přidají. Před nasazením Azure Stack hraničního zařízení pečlivě zkontrolujte informace v poznámkách k verzi.  
 
@@ -38,7 +38,6 @@ Tato verze také obsahuje následující aktualizace:
 
 - Všechny kumulativní aktualizace systému Windows a aktualizace rozhraní .NET Framework vydané až do října 2020.
 - Verze firmwaru řadiče pro správu základní desky (BMC) je upgradována z 3.32.32.32 na 3.36.36.36 během instalace výrobního programu pro řešení nekompatibility s novějšími jednotkami napájení Dell.
-- Statická IP adresa pro Azure Data Box Gateway se zachovává mezi aktualizacemi softwaru.
 - Tato verze podporuje IoT Edge 1.0.9.3 na hraničních zařízeních Azure Stack.
 
 ## <a name="known-issues-in-this-release"></a>Známé problémy v této verzi

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5d79c296163dfcb1d81b4713f8a8673485950e05
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 9fd10d6a4fb748a61b5e1d9e27777c2fa1134039
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98919761"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225609"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Použití funkce OPENROWSET s použitím fondu SQL bez serveru ve službě Azure synapse Analytics
 
@@ -222,6 +222,7 @@ Specifické pro analyzátor CSV verze 1,0:
 Specifické pro analyzátor CSV verze 2,0:
 
 - Ne všechny datové typy jsou podporovány.
+- Maximální délka sloupce znaků je 8000.
 - Maximální omezení velikosti řádku je 8 MB.
 - Následující možnosti nejsou podporovány: DATA_COMPRESSION.
 - Prázdný řetězec v uvozovkách ("") je interpretován jako prázdný řetězec.

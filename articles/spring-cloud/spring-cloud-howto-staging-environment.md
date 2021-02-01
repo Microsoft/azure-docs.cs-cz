@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 8cae73e03fee0b59be0c7596f0783570ac14f6ee
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 991a335207fc29cef7b243d7e520dd5f62ff691f
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99053059"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226100"
 ---
 # <a name="set-up-a-staging-environment-in-azure-spring-cloud"></a>Nastavení přípravného prostředí v Azure jaře cloudu
 
@@ -22,6 +22,7 @@ Tento článek popisuje, jak nastavit pracovní nasazení pomocí modelu nasazen
 
 ## <a name="prerequisites"></a>Požadavky
 
+* Instance Azure jarního cloudu s **cenovou úrovní** *Standard* .
 * Běžící aplikace  Další informace najdete v tématu [rychlý Start: nasazení první aplikace pro cloudovou službu Azure jaře](spring-cloud-quickstart.md).
 * Rozšíření Azure CLI [ASC](https://docs.microsoft.com/cli/azure/azure-cli-extensions-overview)
 
@@ -78,7 +79,7 @@ Pomocí následujících postupů zobrazte nasazené aplikace.
 1. V Azure CLI vytvořte nové nasazení a sdělte mu název pracovního nasazení "zelená".
 
     ```azurecli
-    az spring-cloud app deployment create -g <resource-group-name> -s <service-instance-name> --app default -n green --jar-path gateway/target/gateway.jar
+    az spring-cloud app deployment create -g <resource-group-name> -s <service-instance-name> --app <appName> -n green --jar-path gateway/target/gateway.jar
     ```
 
 1. Po úspěšném dokončení nasazení rozhraní příkazového řádku přejděte na stránku aplikace z **řídicího panelu aplikace** a zobrazte všechny vaše instance na kartě **nasazení** na levé straně.
@@ -113,11 +114,11 @@ Chcete-li ověřit, že zelený pracovní vývoj funguje:
 
    [![Nasazení nastavení pracovního nasazení](media/spring-cloud-blue-green-staging/set-staging-deployment.png)](media/spring-cloud-blue-green-staging/set-staging-deployment.png)
 
-1. Vraťte se na stránku **správy nasazení** .  `green`Stav nasazení nasazení by se měl zobrazit. Nyní se jedná o běžící výrobní sestavení.
+1. Vraťte se na stránku **správy nasazení** . Nastavte `green` nasazení na `production` . Až se nastavení dokončí, váš `green` stav nasazení by se měl zobrazit. Nyní se jedná o běžící výrobní sestavení.
 
    [![Nasazení nastaví výsledek pracovního nasazení.](media/spring-cloud-blue-green-staging/set-staging-deployment-result.png)](media/spring-cloud-blue-green-staging/set-staging-deployment-result.png)
 
-1. Zkopírujte a vložte adresu URL do nového okna prohlížeče a na nové stránce aplikace by se měly zobrazit vaše změny.
+1. Adresa URL aplikace by měla zobrazit vaše změny.
 
 >[!NOTE]
 > Po nastavení zeleného nasazení v produkčním prostředí se předchozí nasazení pokusí o pracovní nasazení.

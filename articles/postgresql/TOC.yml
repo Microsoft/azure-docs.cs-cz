@@ -611,6 +611,8 @@
           items:
             - name: Monitorování a ladění
               href: concepts-hyperscale-monitoring.md
+            - name: Protokoly auditu
+              href: concepts-hyperscale-audit.md
         - name: Možnosti konfigurace
           href: concepts-hyperscale-configuration-options.md
         - name: Předplacení záložní kapacity

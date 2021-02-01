@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-js
-ms.openlocfilehash: ab3677ede2805fc8ecb076e8a40da605c038b54b
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: fec130ff02d9796fb9a6cea7a831bbdcb25cb1ed
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937936"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225626"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Rychlý Start: přidání přihlášení pomocí OpenID připojení k webové aplikaci Node.js
 
@@ -45,7 +45,7 @@ V tomto rychlém startu si stáhnete a spustíte ukázku kódu, která ukazuje, 
 1. Vyberte **Přidat**  >  **Web** platformy. 
 1. V části **identifikátory URI pro přesměrování** zadejte `http://localhost:3000/auth/openid/return` .
 1. Zadejte **adresu URL pro odhlášení front-Channel** `https://localhost:3000` .
-1. V části implicitní udělení **ID ověřte tokeny** , protože tato ukázka vyžaduje, aby byl [tok implicitního udělení](./v2-oauth2-implicit-grant-flow.md) povolen pro přihlášení uživatele.
+1. V části **implicitní udělení a hybridní toky** vyberte možnost **tokeny ID** , protože tato ukázka vyžaduje, aby byl [tok implicitního udělení](./v2-oauth2-implicit-grant-flow.md) povolen pro přihlášení uživatele.
 1. Vyberte **Konfigurovat**.
 1. V části **Spravovat** vyberte **certifikáty & tajných klíčů**  >  **nový tajný klíč klienta**.
 1. Zadejte popis klíče (např. tajný klíč aplikace).

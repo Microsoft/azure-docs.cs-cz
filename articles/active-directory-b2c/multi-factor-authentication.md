@@ -12,18 +12,18 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 5d656a27017f3c7ec97362efc6207917ffcd1a56
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 8449c5437bad6d0036d332ca5c35709b5d571cfa
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97111171"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225154"
 ---
-# <a name="enable-multi-factor-authentication-in-azure-active-directory-b2c"></a>Povolit službu Multi-Factor Authentication v Azure Active Directory B2C
+# <a name="enable-multi-factor-authentication-in-azure-active-directory-b2c"></a>Povolení vícefaktorového ověřování ve službě Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
-Azure Active Directory B2C (Azure AD B2C) se přímo integruje s [Azure AD Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md) , abyste mohli přidat druhou vrstvu zabezpečení pro registraci a přihlašování v aplikacích. Službu Multi-Factor Authentication povolíte bez psaní jediného řádku kódu. Pokud jste už vytvořili zápisy uživatelů pro registraci a přihlašování, můžete přesto povolit službu Multi-Factor Authentication.
+Azure Active Directory B2C (Azure AD B2C) se přímo integruje s [Azure AD Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md) , abyste mohli přidat druhou vrstvu zabezpečení pro registraci a přihlašování v aplikacích. Vícefaktorové ověřování můžete povolit bez napsání jediného řádku kódu. Pokud jste už vytvořili zápisy uživatelů pro registraci a přihlašování, můžete přesto povolit službu Multi-Factor Authentication.
 
 Tato funkce pomáhá aplikacím zpracovávat scénáře, jako například:
 
@@ -40,7 +40,9 @@ Tato funkce pomáhá aplikacím zpracovávat scénáře, jako například:
 1. Vyberte **toky uživatelů**.
 1. Vyberte tok uživatele, pro který chcete povolit MFA. Například *B2C_1_signinsignup*.
 1. Vyberte **Vlastnosti**.
-1. V části vícefaktorového **ověřování** vyberte požadovanou **metodu MFA** a potom v části **vynucení MFA** vyberte možnost **vždy zapnuto**, nebo **[podmíněný](conditional-access-user-flow.md) (doporučeno)**. Pro podmíněný postup vytvořte zásadu [zásad podmíněného přístupu](conditional-access-identity-protection-setup.md) a určete aplikace, pro které chcete zásady použít. 
+1. V části vícefaktorového **ověřování** vyberte požadovanou **metodu MFA** a potom v části **vynucení MFA** vyberte možnost **vždy zapnuto**, nebo **podmíněný (doporučeno)**.
+  > [!NOTE]
+  > Pokud vyberete **podmíněný (doporučeno)**, budete také muset [Přidat zásadu podmíněného přístupu](conditional-access-identity-protection-setup.md#add-a-conditional-access-policy) a určit aplikace, pro které chcete zásady použít.
 1. Vyberte Uložit. Pro tento tok uživatelů je nyní povoleno vícefaktorové ověřování.
 
 K ověření prostředí můžete použít **tok spuštění uživatele** . Potvrďte následující scénář:

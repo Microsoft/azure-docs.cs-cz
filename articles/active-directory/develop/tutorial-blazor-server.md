@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.openlocfilehash: b67d75ac99f247659723ac0b5a90fd32ebf627e3
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 5a631d9ae7a7d1792e3c4e4a2cbf8281e1168283
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98569874"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226013"
 ---
 # <a name="tutorial-create-a-blazor-server-app-that-uses-the-microsoft-identity-platform-for-authentication"></a>Kurz: Vytvoření aplikace serveru Blazor, která pro ověřování používá platformu Microsoft Identity Platform
 
@@ -40,7 +40,7 @@ Každá aplikace, která používá Azure Active Directory (Azure AD) pro ověř
 - U **podporovaných typů účtů** vyberte **účty jenom v tomto organizačním adresáři**.
 - Rozevírací seznam **identifikátor URI přesměrování** nastavte na **Web** a zadejte `https://localhost:5001/signin-oidc` . Výchozí port pro aplikaci běžící na Kestrel je 5001. Pokud je aplikace k dispozici na jiném portu, zadejte číslo portu místo `5001` .
 
-V části **ověřování**  >  **implicitního udělení** zaškrtněte políčka pro **přístupové tokeny** a **tokeny ID** a pak vyberte tlačítko **Uložit** .
+V části **Spravovat** vyberte **ověřování**  >  **implicitní udělení a hybridní toky**. Vyberte **přístupové tokeny** a **tokeny ID** a pak vyberte **Uložit**.
 
 Vzhledem k tomu, že aplikace volá chráněné rozhraní API (v tomto případě Microsoft Graph), potřebuje klientský klíč klienta, aby ověřil jeho identitu, když požádá o přístupový token pro volání rozhraní API.
 

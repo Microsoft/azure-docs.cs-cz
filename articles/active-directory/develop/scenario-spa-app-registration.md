@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/19/2020
 ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: d4189e466d5e9b41247723165ce2a5c14c4a8dfa
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 39a675ff4947e7eca64298e1e68160cd6149f081
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756410"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226334"
 ---
 # <a name="single-page-application-app-registration"></a>Jednostránkové aplikace: registrace aplikace
 
@@ -47,7 +47,7 @@ Pomocí těchto kroků přidejte identifikátor URI přesměrování pro aplikac
 1. V Azure Portal vyberte registraci aplikace, kterou jste vytvořili dříve v části [Vytvoření registrace aplikace](#create-the-app-registration).
 1. V části **Spravovat** vyberte **ověřování**  >  **Přidat platformu**.
 1. V části **webové aplikace** vyberte dlaždici **aplikace s jednou stránkou** .
-1. V části **identifikátory URI pro přesměrování** zadejte [identifikátor URI pro přesměrování](reply-url.md). Nevybírejte **buď** CheckBox v rámci **implicitního udělení**.
+1. V části **identifikátory URI pro přesměrování** zadejte [identifikátor URI pro přesměrování](reply-url.md). Nevybírejte **buď zaškrtávací políčko v** části **implicitní udělení a hybridní toky**.
 1. Vyberte **Konfigurovat** a dokončete přidávání identifikátoru URI přesměrování.
 
 Právě jste dokončili registraci jednostránkové aplikace (SPA) a nakonfigurovali identifikátor URI pro přesměrování, ke kterému bude klient přesměrován, a budou odeslány všechny tokeny zabezpečení. Když nakonfigurujete identifikátor URI pro přesměrování pomocí dlaždice **jednostránkové aplikace** v podokně **Přidat platformu** , registrace vaší aplikace je nakonfigurovaná tak, aby podporovala tok autorizačního kódu s PKCE a CORS.
@@ -62,7 +62,7 @@ Pomocí těchto kroků přidejte identifikátor URI pro přesměrování pro jed
 1. V části **Spravovat** vyberte **ověřování**  >  **Přidat platformu**.
 1. V části **webové aplikace** vyberte dlaždici **aplikace s jednou stránkou** .
 1. V části **identifikátory URI pro přesměrování** zadejte [identifikátor URI pro přesměrování](reply-url.md).
-1. Povolit **implicitní tok**:
+1. Povolení **implicitních a hybridních toků**:
     - Pokud se vaše aplikace přihlásí uživatelům, vyberte **tokeny ID**.
     - Pokud vaše aplikace také potřebuje volat chráněné webové rozhraní API, vyberte **přístupové tokeny**. Další informace o těchto typech tokenů najdete v tématu [tokeny ID](id-tokens.md) a [přístupové tokeny](access-tokens.md).
 1. Vyberte **Konfigurovat** a dokončete přidávání identifikátoru URI přesměrování.
