@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 048b53186aa0be388d9d801cd6590d4295a4faa7
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: e523b35afca33213a40060819a1293e94d413b00
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353166"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99222861"
 ---
 # <a name="plan-your-qna-maker-app"></a>Plánování aplikace QnA Maker
 
@@ -94,13 +94,13 @@ V rámci stejného QnA Maker prostředku teď můžete mít základy znalostní 
 
 ### <a name="ingest-data-sources"></a>Přijímání zdrojů dat
 
-K vytvoření znalostní báze můžete použít jeden z následujících zpracovaných [zdrojů dat](../index.yml) :
+K vytvoření znalostní báze můžete použít jeden z následujících zpracovaných [zdrojů dat](../Concepts/data-sources-and-content.md) :
 
 * Veřejná adresa URL
 * Privátní adresa URL SharePointu
 * Soubor
 
-Proces přijímání převede [podporované typy obsahu](../index.yml) na Markdownu. Všechny další úpravy *odpovědi* se provádí pomocí Markdownu. Po vytvoření znalostní báze můžete [QnA páry](question-answer-set.md) upravovat na portálu QnA maker s [bohatým vytvářením textu](../how-to/edit-knowledge-base.md#rich-text-editing-for-answer).
+Proces přijímání převede [podporované typy obsahu](../reference-document-format-guidelines.md) na Markdownu. Všechny další úpravy *odpovědi* se provádí pomocí Markdownu. Po vytvoření znalostní báze můžete [QnA páry](question-answer-set.md) upravovat na portálu QnA maker s [bohatým vytvářením textu](../how-to/edit-knowledge-base.md#rich-text-editing-for-answer).
 
 ### <a name="data-format-considerations"></a>Požadavky na formát dat
 
@@ -124,7 +124,7 @@ Měli byste navrhnout svůj postup konverzace s použitím smyčky, aby uživate
 
 Spolupracovníci můžou být jiní vývojáři, kteří sdílejí úplný vývojový zásobník aplikace znalostní báze Knowledge Base nebo můžou být omezené jenom na vytváření znalostní báze.
 
-Vytváření znalostí ve znalostní bázi podporuje několik [oprávnění pro přístup na základě rolí](../index.yml) , které použijete v Azure Portal k omezení rozsahu schopností spolupracovníka.
+Vytváření znalostí ve znalostní bázi podporuje několik [oprávnění pro přístup na základě rolí](../reference-role-based-access-control.md) , které použijete v Azure Portal k omezení rozsahu schopností spolupracovníka.
 
 ## <a name="integration-with-client-applications"></a>Integrace s klientskými aplikacemi
 

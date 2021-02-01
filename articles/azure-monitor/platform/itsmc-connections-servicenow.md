@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
-ms.openlocfilehash: 221678da819d32539d0078b72a87c61851ed3e8f
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: cc4f961c399e9ac5e853085106924584eb3935d0
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99089254"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99223385"
 ---
 # <a name="connect-servicenow-with-it-service-management-connector"></a>Připojení ServiceNow ke konektoru pro správu služeb IT
 
@@ -29,10 +29,11 @@ Informace o instalaci ITSMC najdete v tématu [Přidání řešení IT Service M
 
 ### <a name="oauth-setup"></a>Nastavení OAuth
 
-Mezi podporované verze ServiceNow patří Orlandu, New York, Madrid, Londýn, Kingston, Jakarta, Istanbul, Helsinky a Ženeva.
+Mezi podporované verze ServiceNow patří Paříž, Orlandu, New York, Madrid, Londýn, Kingston, Jakarta, Istanbul, Helsinky a Ženeva.
 
 Správci ServiceNow musí pro svou instanci ServiceNow vygenerovat ID klienta a tajný klíč klienta. V případě potřeby si přečtěte následující informace:
 
+- [Nastavit OAuth pro Paříž](https://docs.servicenow.com/bundle/paris-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
 - [Nastavení OAuth pro Orlandu](https://docs.servicenow.com/bundle/orlando-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
 - [Nastavit OAuth pro New York](https://docs.servicenow.com/bundle/newyork-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
 - [Nastavte OAuth pro Madrid.](https://docs.servicenow.com/bundle/madrid-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)

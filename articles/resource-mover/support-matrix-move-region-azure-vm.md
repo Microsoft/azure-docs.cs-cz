@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 10/11/2020
 ms.author: raynew
-ms.openlocfilehash: 00b220e07dc3fa7580100d6d36108c14fe598d40
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: fa0017b0633d856906609818dd56b5971b1879a7
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98572183"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99222794"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>Podpora pro přesun virtuálních počítačů Azure mezi oblastmi Azure
 
@@ -154,7 +154,7 @@ Disk úrovně Premium P20 nebo P30 nebo P40 nebo P50 | 16 kB nebo větší |20 M
 --- | --- | ---
 NIC | Podporováno | Zadejte existující prostředek v cílové oblasti nebo vytvořte nový prostředek během procesu přípravy. 
 Interní nástroj pro vyrovnávání zatížení | Podporováno | Zadejte existující prostředek v cílové oblasti nebo vytvořte nový prostředek během procesu přípravy.  
-Veřejný nástroj pro vyrovnávání zatížení | Aktuálně se nepodporuje. | Zadejte existující prostředek v cílové oblasti nebo vytvořte nový prostředek během procesu přípravy.  
+Veřejný nástroj pro vyrovnávání zatížení | Podporováno | Zadejte existující prostředek v cílové oblasti nebo vytvořte nový prostředek během procesu přípravy.  
 Veřejná IP adresa | Podporováno | Zadejte existující prostředek v cílové oblasti nebo vytvořte nový prostředek během procesu přípravy.<br/><br/> Veřejná IP adresa je specifická pro oblast a v cílové oblasti se po přesunutí nezachová. Pamatujte na to, když upravíte nastavení sítě (včetně pravidel vyrovnávání zatížení) v cílovém umístění.
 Skupina zabezpečení sítě | Podporováno | Zadejte existující prostředek v cílové oblasti nebo vytvořte nový prostředek během procesu přípravy.  
 Rezervovaná (statická) IP adresa | Podporováno | Tuto konfiguraci teď nejde nakonfigurovat. Výchozí hodnota je zdrojová hodnota. <br/><br/> Pokud má síťová karta ve zdrojovém virtuálním počítači statickou IP adresu a v cílové podsíti je k dispozici stejná IP adresa, je přiřazena k cílovému virtuálnímu počítači.<br/><br/> Pokud cílová podsíť nemá k dispozici stejnou IP adresu, iniciace virtuálního počítače se nezdaří.

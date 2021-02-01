@@ -10,13 +10,13 @@ ms.service: multiple
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/11/2019
-ms.openlocfilehash: bb9f2673eb080ee2919297fcbb5199f99d176bce
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 01/29/2021
+ms.openlocfilehash: 1d9e43aafbe1f9fdd48596c54138075e23a25590
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013679"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99222912"
 ---
 # <a name="copy-and-transform-data-in-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>Kopírování a transformace dat v Azure Cosmos DB (SQL API) pomocí Azure Data Factory
 
@@ -160,6 +160,7 @@ V části **zdroj** aktivity kopírování jsou podporovány následující vlas
 | query |Zadejte Azure Cosmos DB dotaz pro čtení dat.<br/><br/>Příklad:<br /> `SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |No <br/><br/>Pokud není zadán, je proveden příkaz SQL: `select <columns defined in structure> from mycollection` |
 | preferredRegions | Upřednostňovaný seznam oblastí, ke kterým se má připojit při načítání dat z Cosmos DB. | No |
 | pageSize | Počet dokumentů na stránku výsledku dotazu. Výchozí hodnota je-1, což znamená, že na straně služby se používá dynamická velikost stránky až na 1000. | No |
+| detectDatetime | Určuje, zda se má detekovat hodnota DateTime z řetězcových hodnot v dokumentech. Povolené hodnoty jsou: **true** (výchozí), **false**. | No |
 
 Použijete-li zdroj typu "DocumentDbCollectionSource", je stále podporováno, protože je z důvodu zpětné kompatibility. Navrhnete použití nového modelu, který bude poskytovat rozsáhlejší možnosti kopírování dat z Cosmos DB.
 
@@ -295,13 +296,16 @@ Nastavení specifická pro Azure Cosmos DB jsou k dispozici na kartě **Nastaven
 * Žádné: v kolekci se neprovede žádná akce.
 * Znovu vytvořit: kolekce se vynechá a znovu vytvoří.
 
-**Velikost dávky**: Určuje, kolik řádků je v jednotlivých intervalech zapisováno. Větší velikosti dávek zlepšují kompresi a optimalizaci paměti, ale při ukládání dat do mezipaměti riskuje výjimky z paměti.
+**Velikost dávky**: celé číslo, které představuje počet objektů zapsaných do kolekce Cosmos DB v každé dávce. Obvykle je výchozí velikost dávky od postačující. Pro další ladění této hodnoty si všimněte:
+
+- Cosmos DB omezuje velikost jednoho požadavku na 2 MB. Vzorec je "velikost požadavku = jedna velikost dokumentu * velikost dávky". Pokud se zobrazí chybová zpráva "velikost požadavku je příliš velká", snižte hodnotu velikosti dávky.
+- Čím větší je velikost dávky, tím vyšší propustnost ADF dosáhne, a přitom se ujistěte, že přidělíte dostatečné ru k tomu, aby vaše zatížení dokázalo.
 
 **Klíč oddílu:** Zadejte řetězec, který představuje klíč oddílu pro kolekci. Příklad: ```/movies/title```
 
 **Propustnost:** Nastavte volitelnou hodnotu pro počet ru, který chcete použít pro kolekci CosmosDB pro každé spuštění tohoto toku dat. Minimum je 400.
 
-**Rozpočet propustnosti zápisu:** Celé číslo představující počet ru, který chcete přidělit úloze Spark pro hromadnou příjem. Toto číslo je mimo celkovou propustnost přidělenou kolekci.
+**Rozpočet propustnosti zápisu:** Celé číslo, které představuje ru, který chcete přidělit pro tuto operaci zápisu toku dat, z celkové propustnosti přidělené kolekci.
 
 ## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
 

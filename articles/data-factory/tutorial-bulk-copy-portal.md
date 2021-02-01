@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 01/12/2021
-ms.openlocfilehash: 2fcb8f6d22e93f3a95be26b7bc61f3b5226ba090
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.date: 01/29/2021
+ms.openlocfilehash: cb5ea99223b803435ecd8716a7a57152266878a8
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98117108"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99223356"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>Hromadné kopírování více tabulek pomocí Azure Data Factory v Azure Portal
 
@@ -63,7 +63,7 @@ Pokud chcete toto nastavení ověřit a zapnout, přejděte na server > zabezpe�
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
 1. Spusťte webový prohlížeč **Microsoft Edge** nebo **Google Chrome**. Uživatelské rozhraní služby Data Factory podporují v současnosti jenom webové prohlížeče Microsoft Edge a Google Chrome.
-1. Přejděte na web [Azure Portal](https://portal.azure.com). 
+1. Přejděte na [Azure Portal](https://portal.azure.com). 
 1. Na levé straně nabídky Azure Portal vyberte **vytvořit data Factory pro**  >  **integraci** prostředků  >  . 
 
    ![Výběr datové továrny v podokně Nový](./media/doc-common-process/new-azure-data-factory-menu.png)
@@ -261,7 +261,6 @@ Kanál  **IterateAndCopySQLTables** jako parametr používá seznam tabulek. Pro
         ```
 
         ![Nastavení jímky kopírování](./media/tutorial-bulk-copy-portal/copy-sink-settings.png)
-
 
 1. Přepněte na kartu **Nastavení** a proveďte následující kroky: 
 

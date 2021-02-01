@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 09/21/2020
-ms.openlocfilehash: 5d15947254d80d97b6a241a717fb7d33a3d5ccb5
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: d3f859590b30aaeeaebaed7b1f2f85e1a86a92c9
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98724012"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99223402"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Nejčastější dotazy ke službě Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -262,7 +262,7 @@ Ano. Po zřízení spravované instance můžete nastavit NSG, který řídí p�
 
 **Můžu nastavit síťové virtuální zařízení nebo místní bránu firewall pro filtrování odchozího provozu správy na základě plně kvalifikovaných názvů domén?**
 
-Ne. Tato akce není podporována z několika důvodů:
+No. Tato akce není podporována z několika důvodů:
 -   Směrování provozu, který reprezentuje odpověď na příchozí požadavek na správu, by bylo asymetrické a nebylo možné ho použít.
 -   Směrování provozu na úložiště by ovlivnilo omezení propustnosti a latenci, takže nebudeme moct poskytovat očekávanou kvalitu a dostupnost služby.
 -   Na základě zkušeností jsou tyto konfigurace náchylné k chybám a nepodporují se.
@@ -281,7 +281,7 @@ V případě, že v podsíti, ve které je zřízena vaše spravovaná instance,
 
 **Potřebuji prázdnou podsíť pro vytvoření spravované instance?**
 
-Ne. Můžete použít buď prázdnou podsíť, nebo podsíť, která již obsahuje spravované instance. 
+No. Můžete použít buď prázdnou podsíť, nebo podsíť, která již obsahuje spravované instance. 
 
 **Můžu změnit rozsah adres podsítě?**
 
@@ -289,7 +289,7 @@ Není v případě, že jsou k dispozici spravované instance. Toto je omezení 
 
 **Můžu svoje spravované instance přesunout do jiné podsítě?**
 
-Ne. Toto je aktuální omezení návrhu spravované instance. Můžete ale zřídit novou instanci v jiné podsíti a ručně zálohovat a obnovovat data mezi starou a novou instancí nebo provést [obnovení k určitému časovému okamžiku](point-in-time-restore.md?tabs=azure-powershell)mezi instancemi.
+No. Toto je aktuální omezení návrhu spravované instance. Můžete ale zřídit novou instanci v jiné podsíti a ručně zálohovat a obnovovat data mezi starou a novou instancí nebo provést [obnovení k určitému časovému okamžiku](point-in-time-restore.md?tabs=azure-powershell)mezi instancemi.
 
 **Potřebuji k vytvoření spravované instance prázdnou virtuální síť?**
 
@@ -297,7 +297,7 @@ Tento krok není povinný. Můžete buď [vytvořit virtuální síť pro spravo
 
 **Můžu v podsíti umístit spravovanou instanci na jiné služby?**
 
-Ne. V současné době nepodporujeme umístění spravované instance v podsíti, která už obsahuje jiné typy prostředků.
+No. V současné době nepodporujeme umístění spravované instance v podsíti, která už obsahuje jiné typy prostředků.
 
 ## <a name="connectivity"></a>Připojení 
 
@@ -363,7 +363,7 @@ Ano. Podívejte [se, jak nakonfigurovat vlastní DNS pro spravovanou instanci SQ
 
 **Můžu aktualizovat DNS?**
 
-V současné době neposkytujeme funkci pro aktualizaci konfigurace serveru DNS pro spravovanou instanci SQL.
+Ano. Viz [synchronizace nastavení serverů DNS virtuální sítě ve virtuálním clusteru spravované instance SQL](./synchronize-vnet-dns-servers-setting-on-virtual-cluster.md).
 
 Konfigurace DNS se nakonec aktualizuje:
 

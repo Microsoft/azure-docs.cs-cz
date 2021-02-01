@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: evansma
 ms.service: resource-move
 ms.topic: conceptual
-ms.date: 09/14/2020
+ms.date: 02/01/2021
 ms.author: raynew
-ms.openlocfilehash: 68e5f937b8ad8367abf488598bda311a39d462c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb8cfa3e1aa874f807ce46b254a22f3003c2f600
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90600649"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99222811"
 ---
 # <a name="common-questions"></a>Časté dotazy
 
@@ -62,7 +62,7 @@ Ano, jak při přenosu, tak i v klidovém režimu.
 
 ### <a name="how-is-managed-identity-used-in-resource-mover"></a>Jak se používá spravovaná identita v nástroji Resource stěhovací?
 
-[Spravovaná identita](../active-directory/managed-identities-azure-resources/overview.md) (dřív označovaná jako identita spravované služby (MIS)) poskytuje služby Azure s automaticky spravovanou identitou ve službě Azure AD.
+[Spravovaná identita](../active-directory/managed-identities-azure-resources/overview.md) (dřív označovaná jako identita spravované služby (MSI)) poskytuje služby Azure s automaticky spravovanou identitou ve službě Azure AD.
 - Resource stěhovací používá spravovanou identitu, aby mohl přistupovat k předplatným Azure, aby bylo možné přesouvat prostředky do různých oblastí.
 - Kolekce přesunů potřebuje identitu přiřazenou systémem a přístup k předplatnému, které obsahuje prostředky, které přesouváte.
 
@@ -74,7 +74,7 @@ Ano, jak při přenosu, tak i v klidovém režimu.
 Spravovaná identita služby Azure Resource Mover musí mít alespoň tato oprávnění: 
 
 - Oprávnění k zápisu a vytváření prostředků v předplatném uživatele, která jsou k dispozici v roli *Přispěvatel* . 
-- Oprávnění k vytváření přiřazení rolí. Obvykle k dispozici s rolemi *vlastník* nebo *Správce přístupu uživatelů* nebo s vlastní rolí, která má přiřazené *přiřazení Microsoft. Authorization/role/oprávnění k zápisu* . Toto oprávnění není nutné, pokud je spravované identitě prostředku sdílení dat již udělen přístup k úložišti dat Azure. 
+- Oprávnění k vytváření přiřazení rolí. Obvykle k dispozici s rolemi *vlastník* nebo *Správce přístupu uživatelů* nebo s vlastní rolí, která má přiřazené *přiřazení Microsoft. Authorization/role/oprávnění k zápisu* . Toto oprávnění není potřeba, pokud má spravovaná identita prostředku sdílené datové složky již udělený přístup k úložišti dat Azure. 
  
 Pokud přidáte prostředky v centru Resource Mover na portálu, oprávnění se zajistí automaticky za předpokladu, že uživatel má výše popsaná oprávnění. Pokud přidáte prostředky pomocí PowerShellu, přiřadíte oprávnění ručně.
 

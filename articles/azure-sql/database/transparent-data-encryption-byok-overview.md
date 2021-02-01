@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
-ms.date: 03/18/2020
-ms.openlocfilehash: 2a7d77579eaebd3ee951d0184e25937783420806
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.date: 02/01/2021
+ms.openlocfilehash: 74c0dbaaa511e2fd2f20a3c245a561a177dd2b9a
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325192"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99223436"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Transparentní šifrování dat Azure SQL s využitím klíče spravovaného zákazníkem
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -185,11 +185,9 @@ Další aspekty pro soubory protokolu: zálohované soubory protokolu zůstávaj
 
 ## <a name="high-availability-with-customer-managed-tde"></a>Vysoká dostupnost pomocí TDE spravovaných zákazníky
 
-I v případě, že není k dispozici žádná nakonfigurovaná geografická redundance pro server, důrazně doporučujeme nakonfigurovat server tak, aby používal dvě různé trezory klíčů ve dvou různých oblastech se stejným materiálem klíče. Dá se dosáhnout vytvořením ochrany TDE pomocí primárního trezoru klíčů umístěného ve stejné oblasti jako server a klonování klíče do trezoru klíčů v jiné oblasti Azure, aby měl server přístup k druhému trezoru klíčů, aby při práci s databází probíhal výpadek primárního trezoru klíčů.
+I v případě, že není k dispozici žádná nakonfigurovaná geografická redundance pro server, důrazně doporučujeme nakonfigurovat server tak, aby používal dvě různé trezory klíčů ve dvou různých oblastech se stejným materiálem klíče. Klíč v trezoru sekundárního klíče v jiné oblasti by neměl být označený jako TDE Protector a není ani povolený. Pokud dojde k výpadku, který má vliv na primární Trezor klíčů, systém se automaticky přepne na druhý propojený klíč se stejným kryptografickým otiskem v sekundárním trezoru klíčů, pokud existuje. Poznámka: Tento přepínač se nestane, pokud je ochrana TDE nepřístupná z důvodu odvolaných přístupových práv, nebo protože se odstranil klíč nebo Trezor klíčů, protože by mohl zákazník záměrně chtít, aby k tomuto klíči omezil přístup serveru. Poskytnutí stejného klíčového materiálu dvěma trezorům klíčů v různých oblastech je možné provést vytvořením klíče mimo Trezor klíčů a jejich importem do obou trezorů klíčů. 
 
-Pomocí rutiny Backup-AzKeyVaultKey načtěte klíč v šifrovaném formátu z primárního trezoru klíčů a potom pomocí rutiny Restore-AzKeyVaultKey zadejte do druhé oblasti Trezor klíčů, ve kterém se klíč naklonuje. Případně můžete k zálohování a obnovení klíče použít Azure Portal. Klíč v trezoru sekundárního klíče v jiné oblasti by neměl být označený jako TDE Protector a není ani povolený.
-
-Pokud dojde k výpadku, který má vliv na primární Trezor klíčů, systém se automaticky přepne na druhý propojený klíč se stejným kryptografickým otiskem v sekundárním trezoru klíčů, pokud existuje. Poznámka: Tento přepínač se nestane, pokud je ochrana TDE nepřístupná z důvodu odvolaných přístupových práv, nebo protože se odstranil klíč nebo Trezor klíčů, protože by mohl zákazník záměrně chtít, aby k tomuto klíči omezil přístup serveru.
+Alternativně se dá vytvořit klíč tak, že se pomocí primárního trezoru klíčů nachází ve stejné oblasti jako server a klonuje se klíč do trezoru klíčů v jiné oblasti Azure. Pomocí rutiny [Backup-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/Backup-AzKeyVaultKey) načtěte klíč v šifrovaném formátu z primárního trezoru klíčů a potom pomocí rutiny [Restore-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey) zadejte do druhé oblasti Trezor klíčů pro klonování klíče. Případně můžete k zálohování a obnovení klíče použít Azure Portal. Operace zálohování a obnovení klíče je povolená jenom mezi trezory klíčů v rámci stejného předplatného Azure a [geografické oblasti Azure](https://azure.microsoft.com/global-infrastructure/geographies/).  
 
 ![Single-Server HA](./media/transparent-data-encryption-byok-overview/customer-managed-tde-with-ha.png)
 

@@ -3,12 +3,12 @@ title: Zálohování a obnovení šifrovaných virtuálních počítačů Azure
 description: Popisuje postup zálohování a obnovení šifrovaných virtuálních počítačů Azure pomocí služby Azure Backup.
 ms.topic: conceptual
 ms.date: 08/18/2020
-ms.openlocfilehash: ee7fedffd58ffb9e98f8c412833d151eb1a95530
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: db06b64fba203fb3d2ed54d34235504ac6aa4e2d
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96547147"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99223453"
 ---
 # <a name="back-up-and-restore-encrypted-azure-virtual-machines"></a>Zálohování a obnovení šifrovaných virtuálních počítačů Azure
 
@@ -36,19 +36,19 @@ Azure Backup můžou zálohovat a obnovovat virtuální počítače Azure pomoc�
 
 **Typ disku virtuálního počítače** | **ADE (klíče bek/dm-crypt)** | **ADE a KEK**
 --- | --- | ---
-**Nespravovaný** | Ano | Ano
-**Spravované**  | Ano | Ano
+**Nespravovaný** | Yes | Yes
+**Spravované**  | Yes | Yes
 
 - Přečtěte si další informace o [ADE](../security/fundamentals/azure-disk-encryption-vms-vmss.md), [Key Vault](../key-vault/general/overview.md)a [KEK](../virtual-machine-scale-sets/disk-encryption-key-vault.md#set-up-a-key-encryption-key-kek).
 - Přečtěte si [Nejčastější dotazy](../security/fundamentals/azure-disk-encryption-vms-vmss.md) k šifrování disků virtuálních počítačů Azure.
 
 ### <a name="limitations"></a>Omezení
 
-- Můžete zálohovat a obnovit šifrované virtuální počítače v rámci stejného předplatného a oblasti.
+- Můžete zálohovat a obnovit šifrované virtuální počítače ADE v rámci stejného předplatného a oblasti.
 - Azure Backup podporuje virtuální počítače šifrované pomocí samostatných klíčů. Libovolný klíč, který je součástí certifikátu používaného k šifrování virtuálního počítače, se v tuto chvíli nepodporuje.
-- Můžete zálohovat a obnovit šifrované virtuální počítače v rámci stejného předplatného a oblasti jako úložiště záloh služby Recovery Services.
-- Šifrované virtuální počítače nelze obnovit na úrovni souboru nebo složky. K obnovení souborů a složek je potřeba obnovit celý virtuální počítač.
-- Při obnovování virtuálního počítače nemůžete použít možnost [nahradit existující virtuální počítač](backup-azure-arm-restore-vms.md#restore-options) pro šifrované virtuální počítače. Tato možnost je podporována pouze pro nešifrované spravované disky.
+- Můžete zálohovat a obnovit šifrované virtuální počítače ADE v rámci stejného předplatného a oblasti jako úložiště záloh Recovery Services.
+- Šifrované virtuální počítače ADE nelze obnovit na úrovni souboru nebo složky. K obnovení souborů a složek je potřeba obnovit celý virtuální počítač.
+- Při obnovování virtuálního počítače nemůžete použít možnost [nahradit existující virtuální počítač](backup-azure-arm-restore-vms.md#restore-options) pro šifrované virtuální počítače ADE. Tato možnost je podporována pouze pro nešifrované spravované disky.
 
 ## <a name="before-you-start"></a>Než začnete
 
@@ -112,7 +112,7 @@ Počáteční zálohování se spustí podle plánu, ale můžete ho spustit hne
 3. V seznamu **zálohované položky** vyberte tři tečky (...).
 4. Vyberte **Zálohovat nyní**.
 5. V části **Zálohovat nyní** pomocí ovládacího prvku kalendáře vyberte poslední den, kdy se má bod obnovení zachovat. Pak vyberte **OK**.
-6. Monitorujte oznámení na portálu. Průběh úlohy můžete monitorovat na řídicím panelu trezoru > probíhající **úlohy zálohování**  >  **In progress**. V závislosti na velikosti virtuálního počítače může vytváření prvotní zálohy chvíli trvat.
+6. Monitorujte oznámení na portálu. Průběh úlohy můžete monitorovat na řídicím panelu trezoru > probíhající **úlohy zálohování**  >  . V závislosti na velikosti virtuálního počítače může vytváření prvotní zálohy chvíli trvat.
 
 ## <a name="provide-permissions"></a>Poskytnout oprávnění
 
@@ -125,6 +125,17 @@ Nastavení oprávnění:
 
 1. V Azure Portal vyberte **všechny služby** a vyhledejte **trezory klíčů**.
 1. Vyberte Trezor klíčů přidružený k zašifrovanému virtuálnímu počítači, který jste zálohovali.
+
+    >[!TIP]
+    >K identifikaci úložiště klíčů přidruženého k virtuálnímu počítači použijte následující příkaz PowerShellu. Nahraďte název skupiny prostředků a název virtuálního počítače:
+    >
+    >`Get-AzVm -ResourceGroupName "MyResourceGroup001" -VMName "VM001" -Status`
+    >
+    > Vyhledejte název trezoru klíčů na tomto řádku:
+    >
+    >`SecretUrl            : https://<keyVaultName>.vault.azure.net`
+    >
+
 1. Vyberte **zásady přístupu**  >  **Přidat zásady přístupu**.
 
     ![Přidat zásady přístupu](./media/backup-azure-vms-encryption/add-access-policy.png)
@@ -148,9 +159,9 @@ Nastavení oprávnění:
 Následujícím způsobem obnovte šifrované virtuální počítače:
 
 1. [Obnovte disk virtuálního počítače](backup-azure-arm-restore-vms.md#restore-disks).
-2. Znovu vytvořte instanci virtuálního počítače jedním z následujících způsobů:
-    1. Použijte šablonu generovanou během operace obnovení k přizpůsobení nastavení virtuálního počítače a aktivaci nasazení virtuálního počítače. [Další informace](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm).
-    2. Vytvořte nový virtuální počítač z obnovených disků pomocí PowerShellu. [Další informace](backup-azure-vms-automation.md#create-a-vm-from-restored-disks).
+2. Vytvořte instanci virtuálního počítače znovu tak, že provedete jednu z následujících akcí:
+    1. Použijte šablonu generovanou během operace obnovení k přizpůsobení nastavení virtuálního počítače a aktivaci nasazení virtuálního počítače. [Přečtěte si další informace](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm).
+    2. Vytvořte nový virtuální počítač z obnovených disků pomocí PowerShellu. [Přečtěte si další informace](backup-azure-vms-automation.md#create-a-vm-from-restored-disks).
 3. Pro virtuální počítače se systémem Linux přeinstalujte rozšíření ADE, aby byly datové disky otevřené a připojené.
 
 ## <a name="next-steps"></a>Další kroky

@@ -3,18 +3,18 @@ title: Geografické zotavení po havárii – Azure Event Hubs | Microsoft Docs
 description: Použití geografických oblastí k převzetí služeb při selhání a zotavení po havárii v Azure Event Hubs
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 0e0a207630898eb7fe7613acb311364a64f9b38b
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 4470b55973f53c924caba8665199d261fe63a8fc
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98681679"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99222878"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs – geografická zotavení po havárii 
 
 Odolnost proti katastrofální důsledkym výpadků prostředků zpracování dat je požadavkem pro mnoho podniků a v některých případech i v případě potřeby i podle odvětví. 
 
-Azure Event Hubs už šíří riziko závažných chyb jednotlivých počítačů nebo dokonce kompletních stojanů napříč clustery, které v rámci datového centra přesahují více domén selhání, a implementuje transparentní mechanismy detekce selhání a převzetí služeb při selhání, takže služba bude dále fungovat v rámci zajištěných úrovní služeb a obvykle bez znatelného přerušení v případě takových selhání. Pokud byl vytvořen obor názvů Event Hubs s možností povolení pro [zóny dostupnosti](../availability-zones/az-overview.md), riziko výpadku je dále rozdělené mezi tři fyzicky oddělená zařízení a služba má dostatečné rezervy na kapacitu, aby se okamžitě vypořádat s kompletní a velmi závažnou ztrátou celého zařízení. 
+Azure Event Hubs už šíří riziko závažných chyb jednotlivých počítačů nebo dokonce kompletních stojanů napříč clustery, které v rámci datového centra přesahují více domén selhání, a implementuje transparentní mechanismy detekce selhání a převzetí služeb při selhání, takže služba bude dále fungovat v rámci zajištěných úrovní služeb a obvykle bez znatelného přerušení v případě takových selhání. Pokud byl vytvořen obor názvů Event Hubs s povolenou možností pro [zóny dostupnosti](../availability-zones/az-overview.md), je riziko výpadku dále rozdělené mezi tři fyzicky oddělená zařízení a služba má dostatek rezerv pro kapacitu, aby se okamžitě vypořádat s kompletní a závažnou ztrátou celého zařízení. 
 
 Model clusteru pro všechny aktivní služby Azure Event Hubs s podporou zóny dostupnosti poskytuje odolnost proti čárkám, které nestačí k selhání hardwaru, i i k závažným ztrátám celých zařízení Datacenter. Pořád se může stát, že v případě vysokého fyzického zničení dojde k závažné situaci, že i tyto míry nemůžou dostatečně bránit. 
 
@@ -23,7 +23,7 @@ Event Hubs funkce geografického zotavení po havárii je navržená tak, aby se
 Funkce obnovení Geo-Disaster zajišťuje, aby byla celá konfigurace oboru názvů (Event Hubs, skupiny uživatelů a nastavení) průběžně replikována z primárního oboru názvů do sekundárního oboru názvů, pokud je spárována, a umožňuje kdykoli spustit pouze jednou převzetí služeb při selhání z primární na sekundární. Přesunutí převzetí služeb při selhání znovu nasměruje zvolený název aliasu oboru názvů na sekundární obor názvů a potom přeruší párování. Převzetí služeb při selhání je skoro okamžité po zahájení. 
 
 > [!IMPORTANT]
-> Tato funkce umožňuje okamžitou kontinuitu operací se stejnou konfigurací, ale **nereplikuje data události**. Pokud havárie nezpůsobí ztrátu všech zón, data události se po převzetí služeb při selhání v primárním centru událostí zachovají a historické události se dají získat hned po obnovení přístupu. Pokud chcete replikovat data událostí a provozovat odpovídající obory názvů v aktivních/aktivních konfiguracích a vypořádat se s výpadky a katastrofami, nevybírejte tuto sadu funkcí geografického zotavení po havárii, ale postupujte podle [pokynů pro replikaci](event-hubs-federation-overview.md).  
+> Tato funkce umožňuje okamžitou kontinuitu operací se stejnou konfigurací, ale **nereplikuje data události**. Pokud havárie nezpůsobí ztrátu všech zón, data události, která se zachovají v primárním centru událostí po převzetí služeb při selhání, bude možné obnovit a v případě, že dojde k obnovení přístupu, může dojít k získání historických událostí. Pokud chcete replikovat data událostí a provozovat odpovídající obory názvů v aktivních/aktivních konfiguracích a vypořádat se s výpadky a katastrofami, nevybírejte tuto sadu funkcí geografického zotavení po havárii, ale postupujte podle [pokynů pro replikaci](event-hubs-federation-overview.md).  
 
 ## <a name="outages-and-disasters"></a>Výpadky a havárie
 
