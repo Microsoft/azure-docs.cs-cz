@@ -3,7 +3,7 @@ title: Použití omezení tenanta ke správě přístupu k SaaS aplikacím – A
 description: Jak používat omezení tenanta ke správě uživatelů, kteří budou mít přístup k aplikacím na základě jejich tenanta Azure AD.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.date: 10/26/2020
 ms.author: kenwith
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d69755c36bf37dd591e81bea7983e25905798d4d
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: f605b2bb48855d70ea305dcda194b26da71ee9ec
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286216"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99252470"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Použití omezení tenanta ke správě přístupu k SaaS cloudovým aplikacím
 
@@ -33,13 +33,13 @@ Tento článek se zaměřuje na omezení tenanta pro Microsoft 365, ale tato fun
 
 Celkové řešení zahrnuje tyto komponenty:
 
-1. **Azure AD** : Pokud `Restrict-Access-To-Tenants: <permitted tenant list>` je hlavička k dispozici, Azure AD vydává tokeny zabezpečení jenom pro povolené klienty.
+1. **Azure AD**: Pokud `Restrict-Access-To-Tenants: <permitted tenant list>` je hlavička k dispozici, Azure AD vydává tokeny zabezpečení jenom pro povolené klienty.
 
-2. **Místní infrastruktura proxy server** : Tato infrastruktura je proxy zařízení podporující kontrolu TLS (Transport Layer Security). Musíte nakonfigurovat proxy server, aby se vložila hlavička obsahující seznam povolených klientů do provozu určeného pro Azure AD.
+2. **Místní infrastruktura proxy server**: Tato infrastruktura je proxy zařízení podporující kontrolu TLS (Transport Layer Security). Musíte nakonfigurovat proxy server, aby se vložila hlavička obsahující seznam povolených klientů do provozu určeného pro Azure AD.
 
-3. **Klientský software** : aby bylo možné podporovat omezení klientů, musí klientský software požádat o tokeny přímo z Azure AD, aby mohla infrastruktura proxy zachytit provoz. Microsoft 365 aplikace založené na prohlížeči aktuálně podporují omezení tenanta, stejně jako klienti Office, kteří používají moderní ověřování (například OAuth 2,0).
+3. **Klientský software**: aby bylo možné podporovat omezení klientů, musí klientský software požádat o tokeny přímo z Azure AD, aby mohla infrastruktura proxy zachytit provoz. Microsoft 365 aplikace založené na prohlížeči aktuálně podporují omezení tenanta, stejně jako klienti Office, kteří používají moderní ověřování (například OAuth 2,0).
 
-4. **Moderní ověřování** : cloudové služby musí používat moderní ověřování k používání omezení tenanta a zablokovat přístup ke všem nepovoleným klientům. Ve výchozím nastavení musíte nakonfigurovat Microsoft 365 cloudové služby pro použití moderních ověřovacích protokolů. Nejnovější informace o podpoře moderního ověřování v Microsoft 365 najdete v tématu [aktualizované moderní ověřování pro Office 365](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/).
+4. **Moderní ověřování**: cloudové služby musí používat moderní ověřování k používání omezení tenanta a zablokovat přístup ke všem nepovoleným klientům. Ve výchozím nastavení musíte nakonfigurovat Microsoft 365 cloudové služby pro použití moderních ověřovacích protokolů. Nejnovější informace o podpoře moderního ověřování v Microsoft 365 najdete v tématu [aktualizované moderní ověřování pro Office 365](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/).
 
 Následující diagram znázorňuje tok provozu na vysoké úrovni. Omezení klientů vyžadují kontrolu TLS pouze při provozu do služby Azure AD, nikoli do cloudové služby Microsoft 365. Toto rozlišení je důležité, protože objem provozu pro ověřování do služby Azure AD je obvykle mnohem menší než objem přenosu, aby SaaS aplikace jako Exchange Online a SharePoint Online.
 
@@ -57,7 +57,7 @@ Aby bylo možné použít omezení tenanta, klienti musí být schopni se připo
 
 K povolení omezení klientů prostřednictvím vaší proxy infrastruktury se vyžaduje následující konfigurace. Tyto doprovodné materiály jsou obecné, takže byste měli v dokumentaci dodavatele proxy serveru vyhledat konkrétní kroky implementace.
 
-#### <a name="prerequisites"></a>Předpoklady
+#### <a name="prerequisites"></a>Požadavky
 
 - Proxy musí být schopné provádět zachycení protokolu TLS, vkládání hlaviček HTTP a filtrovat cíle pomocí plně kvalifikovaného názvu domény nebo adresy URL.
 
@@ -176,7 +176,7 @@ Fiddler je bezplatný proxy server pro ladění, který se dá použít k zachyc
       }
       ```
 
-      Pokud potřebujete povolení více tenantů, oddělte názvy klientů čárkou. Například:
+      Pokud potřebujete povolení více tenantů, oddělte názvy klientů čárkou. Příklad:
 
       `oSession.oRequest["Restrict-Access-To-Tenants"] = "contoso.onmicrosoft.com,fabrikam.onmicrosoft.com";`
 

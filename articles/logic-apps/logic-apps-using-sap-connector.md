@@ -7,14 +7,14 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
-ms.date: 01/25/2021
+ms.date: 02/01/2021
 tags: connectors
-ms.openlocfilehash: 93e705eea39443ffc15fbdd079e1376ec46cb51c
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: edf4ce188c9239e697e2148d4fff51966d91f85a
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98786686"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99252606"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Připojení k systémům SAP z Azure Logic Apps
 
@@ -529,6 +529,18 @@ V případě úplných chybových zpráv se podívejte na rozšířené protokol
 
 V případě verzí pro místní bránu dat od června 2020 a novějších můžete [Povolit protokoly brány v nastavení aplikace](/data-integration/gateway/service-gateway-tshoot#collect-logs-from-the-on-premises-data-gateway-app). 
 
+* Výchozí úroveň protokolování je **Upozornění**.
+
+* Pokud povolíte  **Další protokolování** v nastavení **diagnostiky** aplikace místní brány dat, zvýší se úroveň protokolování na **informativní**.
+
+* Pokud chcete zvýšit úroveň protokolování na **verbose**, aktualizujte následující nastavení konfiguračního souboru. Konfigurační soubor je obvykle umístěn na adrese `C:\Program Files\On-premises data gateway\Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config` .
+
+```json
+<setting name="SapTraceLevel" serializeAs="String">
+   <value>Verbose</value>
+</setting>
+```
+
 V případě verzí pro místní bránu dat od dubna 2020 a novějších jsou protokoly ve výchozím nastavení zakázané.
 
 ### <a name="extended-sap-logging-in-on-premises-data-gateway"></a>Rozšířené protokolování SAP v místní bráně dat
@@ -717,7 +729,7 @@ Tady je příklad, který ukazuje, jak extrahovat jednotlivé IDocs z paketu pom
 
 1. Než začnete, budete potřebovat aplikaci logiky s triggerem SAP. Pokud tuto aplikaci logiky ještě nemáte, pomocí předchozích kroků v tomto tématu [nastavte aplikaci logiky pomocí triggeru SAP](#receive-message-from-sap).
 
-   Například:
+   Příklad:
 
    ![Přidání triggeru SAP do aplikace logiky](./media/logic-apps-using-sap-connector/first-step-trigger.png)
 

@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: d7d34b61e584b63c517b6c0f8af4cb4adcc7fefe
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: e75786c42b54882c249b5ed7100ebd12f3f78e78
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289505"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99254355"
 ---
 # <a name="importing-azure-key-vault-certificates-faq"></a>Nejčastější dotazy k importu Azure Key Vault certifikátů
 
@@ -62,6 +62,10 @@ Další informace najdete v tématu [získání operace odstranění certifikát
 Tato chyba může být způsobena jednou ze dvou důvodů:    
 * Název subjektu certifikátu je omezený na 200 znaků.
 * Heslo certifikátu je omezené na 200 znaků.
+
+
+### <a name="error-the-specified-pem-x509-certificate-content-is-in-an-unexpected-format-please-check-if-certificate-is-in-valid-pem-format"></a>Chyba: zadaný obsah certifikátu PEM X. 509 je v neočekávaném formátu. Zkontrolujte prosím, jestli je certifikát v platném formátu PEM. "
+Ověřte prosím, že obsah v souboru PEM používá oddělovače řádků ve stylu systému UNIX. `(\n)`
 
 ### <a name="can-i-import-an-expired-certificate-to-azure-key-vault"></a>Můžu do Azure Key Vault importovat certifikát s vypršenou platností?
     

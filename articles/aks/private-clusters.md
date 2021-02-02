@@ -4,12 +4,12 @@ description: Zjistěte, jak vytvořit privátní cluster služby Azure Kubernete
 services: container-service
 ms.topic: article
 ms.date: 7/17/2020
-ms.openlocfilehash: 66072032b3fd1ac33bef60922c62f73a8cfb11bd
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 56d3b36d17ee044ce7aba2337429c45123801ca5
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734660"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99254508"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Vytvoření privátního clusteru služby Azure Kubernetes
 
@@ -130,7 +130,6 @@ Jak už bylo zmíněno, partnerský vztah virtuálních sítí je jedním ze zp�
 * Pro zákazníky, kteří potřebují povolit Azure Container Registry pro práci s privátními AKS, musí mít Container Registry virtuální síť partnerský vztah s virtuální sítí clusteru agenta.
 * Žádná podpora pro převod stávajících clusterů AKS na privátní clustery
 * Odstraněním nebo úpravou privátního koncového bodu v podsíti zákazníka dojde k zastavení fungování clusteru. 
-* Služba Azure Monitor for Containers Live data není v současné době podporovaná.
 * Jakmile si zákazníci aktualizují záznam A na svých vlastních serverech DNS, budou tyto lusky i po migraci dál překládat apiserver plně kvalifikovaný název domény na starší IP adresu, dokud se nerestartují. Zákazníci musí po migraci řídicí plochy restartovat hostNetwork lusky a výchozí-DNSPolicy lusky.
 * V případě údržby na rovině ovládacího prvku se může vaše [IP adresa AKS](./limit-egress-traffic.md) změnit. V takovém případě musíte aktualizovat záznam A odkazující na server rozhraní API privátní IP adresu na svém vlastním serveru DNS a restartovat jakékoli vlastní lusky nebo nasazení pomocí hostNetwork.
 

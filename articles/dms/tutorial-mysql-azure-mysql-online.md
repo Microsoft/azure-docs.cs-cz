@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/08/2020
-ms.openlocfilehash: ab03e0bdf7761e45a134ec90685955403fbc433b
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 1d3ab2df51e80b44dce6057b02975fe210ebaa24
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060380"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99254321"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>Kurz: Online migrace MySQL do služby Azure Database for MySQL pomocí DMS
 
@@ -49,7 +49,7 @@ V tomto kurzu se naučíte:
 
 Pro absolvování tohoto kurzu je potřeba provést následující:
 
-* Stáhněte a nainstalujte [MySQL Community Edition](https://dev.mysql.com/downloads/mysql/) verze 5.6 nebo 5.7. Verze místního MySQL musí odpovídat verzi služby Azure Database for MySQL. Například MySQL verze 5.6 je možné migrovat pouze do služby Azure Database for MySQL verze 5.6, u které neproběhl upgrade na verzi 5.7. Migrace do MySQL 8,0 se nepodporují. Migrace do MySQL 8,0 se nepodporují.
+* Stáhněte a nainstalujte [MySQL Community Edition](https://dev.mysql.com/downloads/mysql/) verze 5.6 nebo 5.7. Verze místního MySQL musí odpovídat verzi služby Azure Database for MySQL. Například MySQL verze 5.6 je možné migrovat pouze do služby Azure Database for MySQL verze 5.6, u které neproběhl upgrade na verzi 5.7. Migrace do MySQL 8,0 se nepodporují.
 * [Vytvořte instanci ve službě Azure Database for MySQL](../mysql/quickstart-create-mysql-server-database-using-azure-portal.md). Podrobnosti o připojení a vytvoření databáze pomocí webu Azure Portal najdete v článku [Připojení a dotazování dat pomocí aplikace MySQL Workbench](../mysql/connect-workbench.md).  
 * Vytvořte Microsoft Azure Virtual Network pro Azure Database Migration Service pomocí modelu nasazení Azure Resource Manager, který zajišťuje připojení typu Site-to-site k místním zdrojovým serverům pomocí [ExpressRoute](../expressroute/expressroute-introduction.md) nebo [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md). Další informace o vytváření virtuálních sítí najdete v [dokumentaci k Virtual Network](../virtual-network/index.yml)a zejména v článcích rychlý Start s podrobnými údaji.
 
@@ -62,8 +62,8 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
     >
     > Tato konfigurace je nezbytná, protože Azure Database Migration Service nemá připojení k Internetu.
 
-* Zajistěte, aby pravidla skupiny zabezpečení sítě virtuálních sítí neblokovala následující příchozí komunikační porty Azure Database Migration Service: 443, 53, 9354, 445, 12000. Další podrobnosti o filtrování provozu NSG virtuální sítě najdete v článku [filtrování provozu sítě pomocí skupin zabezpečení sítě](../virtual-network/virtual-network-vnet-plan-design-arm.md).
-* Nakonfigurujte bránu [Windows Firewall pro přístup k databázovému stroji](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
+* Zajistěte, aby pravidla skupiny zabezpečení sítě virtuálních sítí neblokovala následující odchozí komunikační porty Azure Database Migration Service: 443, 53, 9354, 445, 12000. Další podrobnosti o filtrování provozu NSG virtuální sítě najdete v článku [filtrování provozu sítě pomocí skupin zabezpečení sítě](../virtual-network/virtual-network-vnet-plan-design-arm.md).
+* Nakonfigurujte bránu [Windows Firewall pro přístup k databázovému stroji](https://docs.microsoft.com/azure/mysql/concepts-firewall-rules).
 * Otevřete bránu Windows Firewall, abyste povolili Azure Database Migration Service přístup ke zdrojovému serveru MySQL, který je ve výchozím nastavení port TCP 3306.
 * Pokud používáte zařízení brány firewall před zdrojovými databázemi, budete možná muset přidat pravidla firewallu, která Azure Database Migration Service umožní přístup ke zdrojovým databázím pro migraci.
 * Vytvořte [pravidlo brány firewall](../azure-sql/database/firewall-configure.md) na úrovni serveru pro Azure Database for MySQL, které povolí Azure Database Migration Service přístup k cílovým databázím. Zadejte rozsah podsítě virtuální sítě, která se používá pro Azure Database Migration Service.

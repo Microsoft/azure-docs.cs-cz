@@ -3,7 +3,7 @@ title: Ukázka prostředí PowerShell – aplikace proxy aplikací bez certifik�
 description: Příklad PowerShellu, který obsahuje seznam všech aplikací proxy aplikací Azure Active Directory (Azure AD), které používají vlastní domény, ale nemají platný certifikát TLS/SSL.
 services: active-directory
 author: kenwith
-manager: CelesteDG
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 49a7c0729fae8eb009bfcbe0661ecaca600dd3ec
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: b197206529ca27a2e22cddd64755a9cfee97d44f
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861659"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99253675"
 ---
 # <a name="get-all-azure-ad-proxy-application-apps-published-with-no-certificate-uploaded"></a>Získání všech aplikací proxy aplikace Azure AD publikovaných bez nahraného certifikátu
 

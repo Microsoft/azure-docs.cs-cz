@@ -478,6 +478,18 @@
       href: page-layout.md
     - name: Rezidence dat a dostupnost oblastí
       href: data-residency.md
+    - name: Sestavení pro zajištění odolnosti
+      items:
+        - name: Seznámení s odolností Azure AD B2C
+          href: ../active-directory/fundamentals/resilience-b2c.md?bc=%2fazure%2factive-directory-b2c%2fbread%2ftoc.json&toc=%2fazure%2factive-directory-b2c%2fTOC.json
+        - name: Prostředí koncového uživatele
+          href: ../active-directory/fundamentals/resilient-end-user-experience.md?bc=%2fazure%2factive-directory-b2c%2fbread%2ftoc.json&toc=%2fazure%2factive-directory-b2c%2fTOC.json
+        - name: Rozhraní s externími procesy
+          href: ../active-directory/fundamentals/resilient-external-processes.md?bc=%2fazure%2factive-directory-b2c%2fbread%2ftoc.json&toc=%2fazure%2factive-directory-b2c%2fTOC.json
+        - name: Osvědčené postupy vývojářů pro Azure AD B2C
+          href: ../active-directory/fundamentals/resilience-b2c-developer-best-practices.md?bc=%2fazure%2factive-directory-b2c%2fbread%2ftoc.json&toc=%2fazure%2factive-directory-b2c%2fTOC.json
+        - name: Sledování a analýza
+          href: ../active-directory/fundamentals/resilience-with-monitoring-alerting.md?bc=%2fazure%2factive-directory-b2c%2fbread%2ftoc.json&toc=%2fazure%2factive-directory-b2c%2fTOC.json
     - name: Řízení rizik
       href: threat-management.md
       displayName: security

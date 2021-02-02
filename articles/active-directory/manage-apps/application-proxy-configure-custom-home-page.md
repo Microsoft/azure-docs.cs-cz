@@ -4,7 +4,7 @@ description: Zahrnuje základní informace o konektorech Azure Proxy aplikací s
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 155a91ded6c814e2d868e8edd4572459460d006f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ebef93455414c114fb60df9af8ebc629769a33e6
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88642057"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99254424"
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>Nastavení vlastní domovské stránky publikovaných aplikací s využitím Azure Proxy aplikací služby AD
 
@@ -56,9 +56,9 @@ Adresu URL domovské stránky můžete nastavit buď pomocí Azure Portal, nebo 
 Pokud chcete změnit adresu URL domovské stránky vaší aplikace prostřednictvím portálu Azure AD, postupujte takto:
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/) jako správce.
-1. Vyberte **Azure Active Directory**a potom **Registrace aplikací**. Zobrazí se seznam registrovaných aplikací.
+1. Vyberte **Azure Active Directory** a potom **Registrace aplikací**. Zobrazí se seznam registrovaných aplikací.
 1. Vyberte aplikaci ze seznamu. Zobrazí se stránka se zobrazenými podrobnostmi o registrované aplikaci.
-1. V části **Spravovat**vyberte **branding**.
+1. V části **Spravovat** vyberte **branding**.
 1. Aktualizujte **adresu URL domovské stránky**  novou cestou.
 
    ![Stránka branding pro registrovanou aplikaci, která zobrazuje pole adresy URL domovské stránky](media/application-proxy-configure-custom-home-page/app-proxy-app-branding.png)
@@ -75,7 +75,7 @@ Pokud chcete nakonfigurovat domovskou stránku aplikace pomocí PowerShellu, mus
 
 ### <a name="install-the-azure-ad-powershell-module"></a>Instalace modulu Azure AD PowerShell
 
-Před definováním vlastní adresy URL domovské stránky pomocí PowerShellu nainstalujte modul Azure AD PowerShell.Balíček si můžete stáhnout z [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/AzureAD/2.0.2.16), který používá koncový bod Graph API.
+Před definováním vlastní adresy URL domovské stránky pomocí PowerShellu nainstalujte modul Azure AD PowerShell. Balíček si můžete stáhnout z [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/AzureAD/2.0.2.16), který používá koncový bod Graph API.
 
 K instalaci balíčku použijte následující postup:
 
@@ -115,8 +115,8 @@ Identifikátor ObjectId aplikace získáte tak, že ji vyhledáte jeho zobrazova
 
    ```console
    DisplayName : SharePoint
-   Homepage    : https://sharepoint-iddemo.msappproxy.net/
-   ObjectId    : 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4
+   Homepage    : https://sharepoint-iddemo.msappproxy.net/
+   ObjectId    : 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4
    ```
 
    Alternativně můžete načíst seznam všech aplikací, vyhledat seznam pro aplikaci pomocí konkrétního zobrazovaného jména nebo domovské stránky a zkopírovat ObjectId aplikace, jakmile se aplikace najde.
@@ -169,8 +169,8 @@ Vytvořte adresu URL domovské stránky a aktualizujte aplikaci s touto hodnotou
 
    ```console
    DisplayName : SharePoint
-   Homepage    : https://sharepoint-iddemo.msappproxy.net/hybrid/
-   ObjectId    : 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4
+   Homepage    : https://sharepoint-iddemo.msappproxy.net/hybrid/
+   ObjectId    : 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4
    ```
 
 1. Restartujte aplikaci a potvrďte tak, že se Domovská stránka zobrazí jako první obrazovka, podle očekávání.

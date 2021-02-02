@@ -3,7 +3,7 @@ title: Možnosti jednotného přihlašování v Azure AD
 description: Přečtěte si o dostupných možnostech jednotného přihlašování (SSO) v Azure Active Directory.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
-ms.openlocfilehash: f7ec8a913634322be5a1eb854972cfa2a0217381
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 2bf84a22a384e6079c2d85c833b34ba37eecaa46
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651919"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99252351"
 ---
 # <a name="single-sign-on-options-in-azure-ad"></a>Možnosti jednotného přihlašování v Azure AD
 
@@ -55,9 +55,9 @@ Následující tabulka shrnuje metody jednotného přihlašování a odkazy na d
 
 Při vývoji nových aplikací použijte moderní protokoly jako OpenID Connect a OAuth, abyste dosáhli nejlepšího jednotného přihlašování pro vaši aplikaci napříč různými platformami zařízení. OAuth umožňuje uživatelům nebo správcům [udělit souhlas](configure-user-consent.md) s chráněnými prostředky, jako je [Microsoft Graph](/graph/overview). Nabízíme snadnou přípravu [sad SDK](../develop/reference-v2-libraries.md) pro vaši aplikaci a navíc je vaše aplikace připravená k použití [Microsoft Graph](/graph/overview).
 
-Další informace najdete tady:
+Další informace naleznete v tématu:
 
-- [OAuth 2.0](../develop/v2-oauth2-auth-code-flow.md)
+- [OAuth 2,0](../develop/v2-oauth2-auth-code-flow.md)
 - [OpenID Connect 1.0](../develop/v2-protocols-oidc.md)
 - [Příručka pro vývojáře Microsoft Identity Platform](../develop/index.yml).
 

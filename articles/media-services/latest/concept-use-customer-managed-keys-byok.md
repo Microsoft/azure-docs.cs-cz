@@ -5,13 +5,13 @@ author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: conceptual
-ms.date: 10/14/2020
-ms.openlocfilehash: c11bb0e369075c3024824d65290e8aecfa68e6f4
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.date: 1/28/2020
+ms.openlocfilehash: 7e58daf72522071eb7d0031d4ea236a21c6d8bfb
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98956136"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99252317"
 ---
 # <a name="bring-your-own-key-customer-managed-keys-with-media-services"></a>Přineste si vlastní klíč (klíče spravované zákazníky) pomocí Media Services
 
@@ -36,6 +36,12 @@ Můžete zadat název klíče a verzi klíče nebo jenom název klíče. Když p
 
 > [!WARNING]
 > Media Services monitoruje přístup k tomuto klíči zákazníka. Pokud je klíč zákazníka nepřístupný (například klíč byl odstraněn nebo byl odstraněn Key Vault nebo byl odebrán přístup), Media Services účet převede do stavu "nepřístupný klíč zákazníka" (efektivně zakáže účet). Účet však lze v tomto stavu odstranit. Jedinými podporovanými operacemi je účet GET, LIST a DELETE; všechny ostatní požadavky (kódování, streamování atd.) selžou, dokud nebude obnoven přístup k klíči účtu.
+
+## <a name="double-encryption"></a>Dvojité šifrování
+
+Media Services podporuje dvojité šifrování.  Další informace o dvojitém šifrování najdete v tématu [dvojité šifrování v Azure](../../security/fundamentals/double-encryption.md).
+
+Na účtu Media Services se automaticky povolí dvojité šifrování. Je ale potřeba nakonfigurovat na svém účtu úložiště samostatně spravovaný klíč zákazníka a dvakrát ho zašifrovat.
 
 ## <a name="tutorials"></a>Kurzy
 

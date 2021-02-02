@@ -6,14 +6,14 @@ author: caitlinv39
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 1/21/2021
+ms.date: 1/30/2021
 ms.author: cavoeg
-ms.openlocfilehash: 28c01e99c0e8708750341b445b4a31f6eaeab3ce
-ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.openlocfilehash: 0ee32d37ca8e3a32ba603fd84cee81890ddac98b
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98747521"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99252113"
 ---
 # <a name="features"></a>Funkce
 
@@ -34,20 +34,20 @@ Předchozí verze, které jsou aktuálně podporované, zahrnují: `3.0.2`
 | update                         | Ano       | Ano       | Ano       |                                                     |
 | aktualizace s optimistické uzamykání | Ano       | Ano       | Ano       |                                                     |
 | aktualizovat (podmíněné)           | Ano       | Ano       | Ano       |                                                     |
-| použita                          | No        | No        | No        |                                                     |
+| použita                          | Ne        | Ne        | Ne        |                                                     |
 | odstranění                         | Ano       | Ano       | Ano       |                                                     |
-| Odstranit (podmíněné)           | No        | No        | No        |                                                     |
+| Odstranit (podmíněné)           | Ne        | Ne        | Ne        |                                                     |
 | historie                        | Ano       | Ano       | Ano       |                                                     |
 | vytvoření                         | Ano       | Ano       | Ano       | Podpora pro POST/PUT                               |
 | vytvořit (podmíněné)           | Ano       | Ano       | Ano       | Problém [#1382](https://github.com/microsoft/fhir-server/issues/1382) |
 | search                         | Částečné   | Částečné   | Částečné   | Viz níže                                           |
-| zřetězené hledání                 | No        | Ano       | No        |                                           |
-| zpětné zřetězené hledání         | No        | No        | No        |                                            |
+| zřetězené hledání                 | Ne        | Ano       | Ne        |                                                     |
+| zpětné zřetězené hledání         | Ne        | Ano       | Ne        |                                                     |
 | možnosti                   | Ano       | Ano       | Ano       |                                                     |
 | dávka                          | Ano       | Ano       | Ano       |                                                     |
-| transakce                    | No        | Ano       | No        |                                                     |
+| transakce                    | Ne        | Ano       | Ne        |                                                     |
 | přenosu                         | Částečné   | Částečné   | Částečné   | `self` a `next` jsou podporovány                     |
-| prostředníci                 | No        | No        | No        |                                                     |
+| prostředníci                 | Ne        | Ne        | Ne        |                                                     |
 
 ## <a name="search"></a>Hledat
 
@@ -63,7 +63,7 @@ Všechny typy parametrů vyhledávání jsou podporovány.
 | Složený             | Ano       | Ano       | Ano       |         |
 | Množství              | Ano       | Ano       | Ano       |         |
 | Identifikátor URI                   | Ano       | Ano       | Ano       |         |
-| Speciální               | No        | No        | No        |         |
+| Speciální               | Ne        | Ne        | Ne        |         |
 
 
 | Modifikátory             | Podporováno – PaaS | Podporováno – OSS (SQL) | Podporované – OSS (Cosmos DB) | Komentář |
@@ -72,42 +72,42 @@ Všechny typy parametrů vyhledávání jsou podporovány.
 |`:exact`               | Ano       | Ano       | Ano       |         |
 |`:contains`            | Ano       | Ano       | Ano       |         |
 |`:text`                | Ano       | Ano       | Ano       |         |
-|`:in` klíčové          | No        | No        | No        |         |
-|`:below` klíčové       | No        | No        | No        |         |
-|`:above` klíčové       | No        | No        | No        |         |
-|`:not-in` klíčové      | No        | No        | No        |         |
-|`:[type]` odkaz  | No        | No        | No        |         |
+|`:[type]` odkaz  | Ano       | Ano       | Ano       |         |
+|`:not`                 | Ano       | Ano       | Ano       |         |
 |`:below` identifikátor URI         | Ano       | Ano       | Ano       |         |
-|`:not`                 | No        | No        | No        |         |
-|`:above` identifikátor URI         | No        | No        | No        | Problém [#158](https://github.com/Microsoft/fhir-server/issues/158) |
+|`:above` identifikátor URI         | Ne        | Ne        | Ne        | Problém [#158](https://github.com/Microsoft/fhir-server/issues/158) |
+|`:in` klíčové          | Ne        | Ne        | Ne        |         |
+|`:below` klíčové       | Ne        | Ne        | Ne        |         |
+|`:above` klíčové       | Ne        | Ne        | Ne        |         |
+|`:not-in` klíčové      | Ne        | Ne        | Ne        |         |
 
 | Společný parametr hledání | Podporováno – PaaS | Podporováno – OSS (SQL) | Podporované – OSS (Cosmos DB) | Komentář |
 |-------------------------| ----------| ----------| ----------|---------|
 | `_id`                   | Ano       | Ano       | Ano       |         |
 | `_lastUpdated`          | Ano       | Ano       | Ano       |         |
 | `_tag`                  | Ano       | Ano       | Ano       |         |
-| `_profile`              | Částečné   | Částečné   | Částečné   | Podporováno pouze v STU3, žádná podpora v R4 |
-| `_security`             | Ano       | Ano       | Ano       |         |
-| `_text`                 | No        | No        | No        |         |
-| `_content`              | No        | No        | No        |         |
 | `_list`                 | Ano       | Ano       | Ano       |         |
-| `_has`                  | No        | No        | No        |         |
-| `_type`                 | Ano       | Ano       | Ano       |         |
-| `_query`                | No        | No        | No        |         |
-| `_filter`               | No        | No        | No        |         |
+| `_type`                 | Ano       | Ano       | Ano       | Problém [#1562](https://github.com/microsoft/fhir-server/issues/1562)        |
+| `_security`             | Ano       | Ano       | Ano       |         |
+| `_profile`              | Částečné   | Částečné   | Částečné   | Podporováno pouze v STU3, žádná podpora v R4 |
+| `_text`                 | Ne        | Ne        | Ne        |         |
+| `_content`              | Ne        | Ne        | Ne        |         |
+| `_has`                  | Ne        | Ne        | Ne        |         |
+| `_query`                | Ne        | Ne        | Ne        |         |
+| `_filter`               | Ne        | Ne        | Ne        |         |
 
 | Parametry výsledků hledání | Podporováno – PaaS | Podporováno – OSS (SQL) | Podporované – OSS (Cosmos DB) | Komentář |
 |-------------------------|-----------|-----------|-----------|---------|
-| `_sort`                 | Částečné        | Částečné   | Částečné        |   `_sort=_lastUpdated` je podporováno       |
+| `_elements`             | Ano       | Ano       | Ano       | Problém [#1256](https://github.com/microsoft/fhir-server/issues/1256)        |
 | `_count`                | Ano       | Ano       | Ano       | `_count` je omezen na 100 znaků. Pokud je nastavena na hodnotu vyšší než 100, bude vrácena pouze 100 a v balíčku bude vráceno upozornění. |
 | `_include`              | Ano       | Ano       | Ano       |Zahrnuté položky jsou omezeny na 100. Zahrnutí do PaaS a OSS v Cosmos DB nezahrnuje: iterace podpora.|
-| `_revinclude`           | Ano       | Ano       | Ano       | Zahrnuté položky jsou omezeny na 100. Zahrnutí do PaaS a OSS v Cosmos DB nezahrnuje: iterace podpora.|
+| `_revinclude`           | Ano       | Ano       | Ano       | Zahrnuté položky jsou omezeny na 100. Zahrnutí do PaaS a OSS v Cosmos DB [nezahrnuje: iterace podpora](https://github.com/microsoft/fhir-server/issues/1313). Problém [#1319](https://github.com/microsoft/fhir-server/issues/1319)|
 | `_summary`              | Částečné   | Částečné   | Částečné   | `_summary=count` je podporováno |
-| `_total`                | Částečné   | Částečné   | Částečné   | _total = non and _total = přesný      |
-| `_elements`             | Ano       | Ano       | Ano       |         |
-| `_contained`            | No        | No        | No        |         |
-| `containedType`         | No        | No        | No        |         |
-| `_score`                | No        | No        | No        |         |
+| `_total`                | Částečné   | Částečné   | Částečné   | `_total=none` a `_total=accurate`      |
+| `_sort`                 | Částečné   | Částečné   | Částečné   |   `_sort=_lastUpdated` je podporováno       |
+| `_contained`            | Ne        | Ne        | Ne        |         |
+| `containedType`         | Ne        | Ne        | Ne        |         |
+| `_score`                | Ne        | Ne        | Ne        |         |
 
 ## <a name="extended-operations"></a>Rozšířené operace
 
